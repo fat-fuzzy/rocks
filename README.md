@@ -1,0 +1,1 @@
+# MAD App starter kit
