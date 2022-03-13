@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "build:doc": "adr-log -d ./packages/doc/decisions",
+    "build:design": "node  ./packages/design/node_modules/.bin/build.js",
     "build": "npm run build:doc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Patricia Boh <lapatiboh@gmail.com> (https://www.lds.is/)",
   "license": "ISC",
-  "dependencies": {   
+  "dependencies": {
     "adr-log": "2.2.0",
-    "madr": "2.1.2"
+    "madr": "2.1.2",
+    "style-dictionary": "3.7.0"
   }
 }
