@@ -3,14 +3,6 @@
   "version": "0.0.1",
   "description": "MAD app starter kit",
   "main": "index.js",
-  "scripts": {
-    "build": "adr-log -i",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Patricia Boh <lapatiboh@gmail.com> (https://www.lds.is/)",
-  "license": "ISC",
-  "devDependencies": {
-    "adr-log": "2.2.0",
-    "madr": "2.1.2"
-  }
+  "license": "ISC"
 }
