@@ -3,6 +3,8 @@
 <!-- adrlog -->
 
 * [ADR-0000](decisions/0000-use-markdown-architectural-decision-records.md) - Use Markdown Architectural Decision Records
+* [ADR-0001](decisions/0001-use-monorepo.md) - Use Monorepo with pnpm
+* [ADR-0002](decisions/0002-define-initial-packages-and-stack.md) - Define Initial Packages and Stack
 * [ADR-1](decisions/index.md) - Architectural Decision Log
 * [ADR-2](decisions/template.md) - [short title of solved problem and solution]
 * [ADR-3](node_modules/adr-log/CHANGELOG.md) - Changelog
@@ -13,5 +15,7 @@
 * [ADR-8](templates/arc42-template-EN-withhelp-markdown/arc42-template-EN.md) -
 
 <!-- adrlogstop -->
+
+
 
 
