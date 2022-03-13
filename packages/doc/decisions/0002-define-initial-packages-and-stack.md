@@ -30,9 +30,10 @@ Resulting architecture is based on:
 
 Initial package structure:
 
-* **api** for API code
-* **client** for frontend code
-* **design** for design tokens and other relevant design resources
-* **doc** for documenting architectural decisions and other doc-worthy information
-* **resources** for backend resources (database, auth, storage, etc)
-* **utils** for common utilities
+* **api** API code
+* **client** frontend application structure
+* **components** frontend component library
+* **design** design tokens and other relevant design resources
+* **doc** architectural decisions and other doc-worthy information
+* **resources** backend resources (database, auth, storage, etc)
+* **utils** common utilities

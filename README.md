@@ -1,12 +1,23 @@
 # MAD App starter kit
 
-Motivation: having a way to bootstrap web applications with a starter kit that answers the following needs:
+Motivation: having a way to bootstrap web applications with a starter kit that meets the following needs:
 
 * integrates an automated design workflow
 * is flexible
 * is efficiently documented
 * is well tested and easily testable
 * has a low maintenance cost
+
+## Packages
+
+* **api** API code
+* **client** frontend application structure
+* **components** frontend component library
+* **design** design tokens and other relevant design resources
+* **doc** architectural decisions and other doc-worthy information
+* **resources** backend resources (database, auth, storage, etc)
+* **utils** common utilities
+
 
 ## WIP
 
