@@ -1,1 +1,1 @@
-export {default as Button}  from './src/Button.svelte'
+export {default as Playground}  from './src/lib/Playground.svelte'
