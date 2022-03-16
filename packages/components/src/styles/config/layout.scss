@@ -43,7 +43,6 @@
   }
 }
 
-// yeah
 @mixin square() {
   @include aspect-ratio-min-width(aspect-ratio-1-1, sm) {
     @content;
@@ -83,7 +82,7 @@
   grid-column-start: 1;
   grid-row-start: 1;
   position: relative;
-  z-index: getVar(z-index-input);
+  // z-index: getVar(z-index-input); 
   height: getVar(header-height-sm);
 
   @include phone-landscape(){ // grid item props

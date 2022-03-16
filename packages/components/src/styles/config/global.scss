@@ -56,7 +56,6 @@ input:disabled {
 button {
 	color: getVar(color-dark);
 	background-color: getVar(color-light);
-	outline: none;
 }
 
 button:disabled {
