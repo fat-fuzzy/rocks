@@ -1,5 +1,5 @@
 <script context="module">
-	import { getGeometryDefaults } from '../gl/animations.js';
+	import { animations as glAnimations } from '@fat-fuzzy/lib';
 	import { uiState, emojiFeedback, animations, currentAnimationId } from '../stores.js';
 	import Feedback from './Feedback.svelte';
 	import Geometry from './Geometry.svelte';
@@ -19,7 +19,7 @@
 	// Audio
 	let drumroll;
 	// TODO : fix - gepometry state is not reactive
-	let geometry = getGeometryDefaults(canvasWidth, canvasHeight);
+	let geometry = glAnimations.getGeometryDefaults(canvasWidth, canvasHeight);
 
 	// animations
 	let animationStartTime;

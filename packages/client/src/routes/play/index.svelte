@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Playground } from '@fat-fuzzy/components';
+	import Button from '@fat-fuzzy/components';
 </script>
 
 <svelte:head>
@@ -10,5 +10,5 @@
 	<h1>Fuzzy Playground</h1>
 </header>
 <div class="grid">
-	<Playground />
+	<Button />
 </div>
