@@ -15,3 +15,7 @@ Peer dependencies that should be installed:
 react-dom@">=16.8.0 <17.0.0 || >=17.0.1 <18.0.0"
 webpack@>=2.0.0
 ```
+
+## Quick Start
+
+`pnpm run storybook`
