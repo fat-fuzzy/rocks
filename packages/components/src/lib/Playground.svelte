@@ -169,33 +169,31 @@
 </script>
 
 <Menu on:input={loadAnimation} />
-<main>
-	<div
-		data-cy="output"
-		class={outputClass}
-		bind:offsetWidth={canvasWidth}
-		bind:offsetHeight={canvasHeight}
-	>
-		<canvas data-cy="canvas" class={canvasClass} bind:this={canvas} />
-		<Feedback {stacktrace} />
-	</div>
-	<div class={sidebarClass}>
-		{#if animation.interactive}
-			<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
-		{/if}
-	</div>
-	<Controls {play} {stop} {toggleSidebar} bind:showHandles={animation.interactive} />
-	<audio
-		data-cy="drumroll"
-		duration={animation.duration}
-		playbackRate={animation.playbackRate}
-		bind:this={drumroll}
-	>
-		<source src="drumroll.ogg" type="audio/ogg" />
-		<track kind="captions" srclang="en" />
-		<!-- TODO: fix caption src -->
-	</audio>
-</main>
+<div
+	data-cy="output"
+	class={outputClass}
+	bind:offsetWidth={canvasWidth}
+	bind:offsetHeight={canvasHeight}
+>
+	<canvas data-cy="canvas" class={canvasClass} bind:this={canvas} />
+	<Feedback {stacktrace} />
+</div>
+<div class={sidebarClass}>
+	{#if animation.interactive}
+		<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
+	{/if}
+</div>
+<Controls {play} {stop} {toggleSidebar} bind:showHandles={animation.interactive} />
+<audio
+	data-cy="drumroll"
+	duration={animation.duration}
+	playbackRate={animation.playbackRate}
+	bind:this={drumroll}
+>
+	<source src="drumroll.ogg" type="audio/ogg" />
+	<track kind="captions" srclang="en" />
+	<!-- TODO: fix caption src -->
+</audio>
 
 {#each emojis as emoji}
 	<span
