@@ -1,9 +1,9 @@
 import * as draw from './draw.js'
 import * as utils from './utils.js'
 
-import {frag} from './gl/fragment-shader-2d'
-import {vert} from './gl/vertex-shader-2d'
-import {vert as vert2d} from './gl/vertex-shader-scale-2d'
+import {frag} from './shaders/fragment-shader-2d'
+import {vert} from './shaders/vertex-shader-2d'
+import {vert as vert2d} from './shaders/vertex-shader-scale-2d'
 
 export const animations = [
   {

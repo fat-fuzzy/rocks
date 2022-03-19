@@ -33,6 +33,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@fat-fuzzy/lib": "workspace:0.0.1",
     "@fontsource/fira-mono": "^4.5.0",
     "@fontsource/fira-mono": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",
