@@ -1,9 +1,11 @@
 <script lang="ts">
-	import Button from '$lib/Button.svelte';
 	import Playground from '$lib/Playground.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<Button />
-<Playground />
+<main class="grid">
+	<Playground />
+</main>
+
+<style lang="scss" global>
+  @import '../styles/config/main.scss';
+</style>

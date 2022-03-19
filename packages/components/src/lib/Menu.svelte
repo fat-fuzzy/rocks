@@ -15,7 +15,7 @@
 	const handleClick = (event) => {
 		const element = event.target;
 		dispatch('input', {
-			animationId: element.getAttribute('data-id')
+			animationId: element.getAttribute('id')
 		});
 	};
 </script>

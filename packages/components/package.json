@@ -14,7 +14,7 @@
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
 	},
 	"exports": {
-		".": "./src/lib/Button.svelte"
+		".": "./src/lib/Playground.svelte"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.20.0",

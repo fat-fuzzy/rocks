@@ -83,7 +83,7 @@
   grid-row-start: 1;
   position: relative;
   // z-index: getVar(z-index-input); 
-  height: getVar(header-height-sm);
+  // height: getVar(header-height-sm);
 
   @include phone-landscape(){ // grid item props
     grid-column-start: 2;
@@ -91,7 +91,7 @@
 
   @include square() {
     position: unset;
-    height: getVar(header-height-md);
+    // height: getVar(header-height-md);
   }
 }
 

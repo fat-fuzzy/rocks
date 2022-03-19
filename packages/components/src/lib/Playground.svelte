@@ -1,5 +1,5 @@
 <script context="module">
-	import { animations as glAnimations } from '@fat-fuzzy/lib';
+	import { getGeometryDefaults } from '../gl/animations.js';
 	import { uiState, emojiFeedback, animations, currentAnimationId } from '../stores.js';
 	import Feedback from './Feedback.svelte';
 	import Geometry from './Geometry.svelte';
@@ -19,7 +19,7 @@
 	// Audio
 	let drumroll;
 	// TODO : fix - gepometry state is not reactive
-	let geometry = glAnimations.getGeometryDefaults(canvasWidth, canvasHeight);
+	let geometry = getGeometryDefaults(canvasWidth, canvasHeight);
 
 	// animations
 	let animationStartTime;
@@ -122,7 +122,7 @@
 	}
 
 	function clearCanvas() {
-		if (animation.interactive && animation.webGlProps) {
+		if (animation && animation.interactive && animation.webGlProps) {
 			geometry = getGeometryDefaults(canvasWidth, canvasHeight);
 			animation.update(geometry);
 		}
@@ -149,6 +149,14 @@
 	}
 
 	function loadAnimation(event) {
+		console.log('animation');
+		console.log(animation);
+		console.log('animations');
+		console.log(animations);
+		console.log('event');
+		console.log(event);
+		console.log('event.detail');
+		console.log(event.detail);
 		stop();
 		currentAnimationId.set(event.detail.animationId);
 		animation = $animations.find((animation) => animation.id === animationId);
