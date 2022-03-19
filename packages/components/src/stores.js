@@ -1,7 +1,7 @@
 import {writable, derived, readable} from 'svelte/store'
 
 import * as constants from './types/constants.js'
-import * as _animations from './libs/animations.js'
+import * as _animations from './gl/animations.js'
 
 export const uiState = writable(constants.uiState.DEFAULT)
 
