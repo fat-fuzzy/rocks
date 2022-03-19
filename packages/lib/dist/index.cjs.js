@@ -1,3 +1,7 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
 // @ts-check
 /**
  ***********************
@@ -734,4 +738,7 @@ var animations$1 = /*#__PURE__*/Object.freeze({
   getGeometryDefaults: getGeometryDefaults
 });
 
-export { animations$1 as animations, draw, utils, utilsWebGL as utilsWebGl };
+exports.animations = animations$1;
+exports.draw = draw;
+exports.utils = utils;
+exports.utilsWebGl = utilsWebGL;
