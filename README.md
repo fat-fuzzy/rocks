@@ -1,4 +1,4 @@
-# MAD App starter kit
+# Playground / App starter kit
 
 Motivation: having a way to bootstrap web applications with a starter kit that meets the following needs:
 
