@@ -3,6 +3,7 @@
 </script>
 
 <script>
+	import Fieldset from '$lib/Fieldset.svelte'
 	import Toggle from '$lib/toggle/Toggle.svelte'
 </script>
 
@@ -10,4 +11,8 @@
 	<title>State Machines</title>
 </svelte:head>
 
-<Toggle />
+<form class="form-sidebar">
+	<Fieldset slug="toggle" label="Toggle" size="md">
+		<Toggle />
+	</Fieldset>
+</form>

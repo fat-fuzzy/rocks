@@ -250,7 +250,6 @@
 @mixin layout-fieldset() {
   padding: 0 getVar(padding-md);
   margin: 0 getVar(margin-sm);
-  width: 100%;
   max-width: 100%;
 
   &:last-of-type {
