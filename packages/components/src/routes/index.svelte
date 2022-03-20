@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Sandbox</title>
 </svelte:head>
 
 <h1>Current Experiments</h1>
