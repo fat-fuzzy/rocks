@@ -19,21 +19,31 @@
 
 <style lang="scss">
 	@import '../styles/config/main.scss';
-
 	.projects {
 		list-style: none;
 		padding-left: 0;
 		display: flex;
 
 		& > * + * {
-			margin-left: 0.2em;
+			margin-left: getVar(margin-md);
 		}
 	}
 	.card {
-		min-width: calc(50% - 0.2em);
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		min-width: calc(50% - getVar(margin-md));
 		text-align: center;
-		padding: 2em 0;
 		border-radius: 3px;
 		border: 1px solid getVar(color-dark);
+		padding: getVar(padding-sm) 0;
+		min-height: 4em;
+	}
+	.card a {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 </style>
