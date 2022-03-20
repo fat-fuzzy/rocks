@@ -1,20 +1,18 @@
 {
-  "name": "@fat-fuzzy/mad",
-  "version": "0.0.1",
-  "description": "MAD app starter kit",
-  "main": "index.js",
-  "scripts": {
-    "build:doc": "adr-log -d ./packages/doc/decisions",
-    "build:design": "node  ./packages/design/node_modules/.bin/build.js",
-    "build": "npm run build:doc",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Patricia Boh <lapatiboh@gmail.com> (https://www.lds.is/)",
-  "license": "ISC",
-  "dependencies": {
-    "adr-log": "2.2.0",
-    "madr": "2.1.2",
-    "node-sass": "7.0.1",
-    "sass": "1.49.9"
-  }
+	"name": "@fat-fuzzy/mad",
+	"version": "0.0.1",
+	"description": "MAD app starter kit",
+	"main": "index.js",
+	"scripts": {
+		"build:doc": "adr-log -d ./packages/doc/decisions",
+		"build:design": "node  ./packages/design/node_modules/.bin/build.js",
+		"build": "npm run build:doc",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Patricia Boh <lapatiboh@gmail.com> (https://www.lds.is/)",
+	"license": "ISC",
+	"dependencies": {
+		"adr-log": "2.2.0",
+		"madr": "2.1.2"
+	}
 }
