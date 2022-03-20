@@ -19,9 +19,13 @@
 	"main": "./src/lib/index.ts",
 	"exports": {
 		".": {
-			"import": "./src/lib/index.ts"
+			"import": "./src/lib/"
 		},
-		"./lib/*": "./src/lib/*.svelte"
+		"./lib/*": "./src/lib/**/*.svelte",
+		"./styles/*": "./src/styles/*.scss",
+		"./types/": "./src/types/",
+		"./gl/": "./src/gl/",
+		"./stores.js": "./src/stores.js"
 	},
 	"devDependencies": {
 		"@babel/core": "7.17.8",
