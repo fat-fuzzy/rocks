@@ -18,6 +18,6 @@
 	const {state, send} = useMachine(toggleMachine)
 </script>
 
-<button on:click={() => send('TOGGLE')} aria-label="Toggle button">
+<button type="button" on:click={() => send('TOGGLE')} aria-label="Toggle button">
 	{$state.value === 'inactive' ? 'Click to activate' : 'Active! Click to deactivate'}
 </button>
