@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Playground from '@fat-fuzzy/components';
+	import {default as components} from '@fat-fuzzy/components'
+	const {Playground} = components
 </script>
 
 <svelte:head>
