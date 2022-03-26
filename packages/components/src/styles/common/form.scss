@@ -1,7 +1,10 @@
 @import '../config/main.scss';
 
 .form-sidebar {
-  font: menu;
-  @include layout-form();
-}
+	font: menu;
+	@include layout-form();
 
+	> * + * {
+		margin-left: 1em;
+	}
+}

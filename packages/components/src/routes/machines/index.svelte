@@ -20,3 +20,7 @@
 		<SignIn />
 	</Fieldset>
 </form>
+
+<style lang="scss">
+	@import '../../styles/common/form.scss';
+</style>
