@@ -44,7 +44,7 @@ importers:
     devDependencies:
       '@playwright/test': 1.20.0
       '@sveltejs/adapter-auto': 1.0.0-next.33
-      '@sveltejs/kit': 1.0.0-next.301_svelte@3.46.4
+      '@sveltejs/kit': 1.0.0-next.303_svelte@3.46.4
       '@types/cookie': 0.4.1
       '@typescript-eslint/eslint-plugin': 5.15.0_5400bdff049a1444f15d03ace6195cd2
       '@typescript-eslint/parser': 5.15.0_eslint@7.32.0+typescript@4.6.2
@@ -101,8 +101,11 @@ importers:
       svelte2tsx: 0.5.5
       tslib: ^2.3.1
       typescript: ~4.6.2
+      validator: 13.7.0
       webpack: 5.70.0
       xstate: 4.30.6
+    dependencies:
+      validator: 13.7.0
     devDependencies:
       '@babel/core': 7.17.8
       '@playwright/test': 1.20.0
@@ -119,7 +122,7 @@ importers:
       '@storybook/svelte': 6.4.19_7efb6a056566cbf9cfd64f6425824267
       '@storybook/theming': 6.4.19_react-dom@17.0.2+react@17.0.2
       '@sveltejs/adapter-auto': 1.0.0-next.33
-      '@sveltejs/kit': 1.0.0-next.301_sass@1.49.9+svelte@3.46.4
+      '@sveltejs/kit': 1.0.0-next.303_sass@1.49.9+svelte@3.46.4
       '@typescript-eslint/eslint-plugin': 5.15.0_5400bdff049a1444f15d03ace6195cd2
       '@typescript-eslint/parser': 5.15.0_eslint@7.32.0+typescript@4.6.2
       '@xstate/svelte': 0.2.1_svelte@3.46.4+xstate@4.30.6
@@ -235,7 +238,7 @@ packages:
       '@babel/traverse': 7.17.3
       '@babel/types': 7.17.0
       convert-source-map: 1.8.0
-      debug: 4.3.3
+      debug: 4.3.4
       gensync: 1.0.0-beta.2
       json5: 2.2.0
       semver: 6.3.0
@@ -4531,8 +4534,8 @@ packages:
       esbuild: 0.14.27
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.301_sass@1.49.9+svelte@3.46.4:
-    resolution: {integrity: sha512-F/XP1VEu+fpvgY04JekNxAFupccNMKOyXtbox0LwNJvBulL15/Tzy6tf4g+9t2Jy7mprwI3h0ZC9G/nVujRFnQ==}
+  /@sveltejs/kit/1.0.0-next.303_sass@1.49.9+svelte@3.46.4:
+    resolution: {integrity: sha512-WdxDc8OiF1WEd/bEza7CBdzA+3qIcCi1GKBj/gieKX9I3N8iDJt/Cg2POrLo9wQoJ47nZcAd1eOhfr7XEX1aIQ==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -4550,8 +4553,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.301_svelte@3.46.4:
-    resolution: {integrity: sha512-F/XP1VEu+fpvgY04JekNxAFupccNMKOyXtbox0LwNJvBulL15/Tzy6tf4g+9t2Jy7mprwI3h0ZC9G/nVujRFnQ==}
+  /@sveltejs/kit/1.0.0-next.303_svelte@3.46.4:
+    resolution: {integrity: sha512-WdxDc8OiF1WEd/bEza7CBdzA+3qIcCi1GKBj/gieKX9I3N8iDJt/Cg2POrLo9wQoJ47nZcAd1eOhfr7XEX1aIQ==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -14797,6 +14800,11 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
+
+  /validator/13.7.0:
+    resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
+    engines: {node: '>= 0.10'}
+    dev: false
 
   /vary/1.1.2:
     resolution: {integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=}
