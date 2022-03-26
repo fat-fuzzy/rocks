@@ -40,6 +40,7 @@
 		"@storybook/client-logger": "6.4.19",
 		"@storybook/components": "6.4.19",
 		"@storybook/core-events": "6.4.19",
+		"@storybook/preset-scss": "1.0.3",
 		"@storybook/svelte": "6.4.19",
 		"@storybook/theming": "6.4.19",
 		"@sveltejs/adapter-auto": "next",
@@ -84,6 +85,9 @@
 		"webpack": "5.70.0"
 	},
 	"dependencies": {
+		"css-loader": "6.7.1",
+		"sass-loader": "12.6.0",
+		"style-loader": "3.3.1",
 		"validator": "13.7.0"
 	}
 }
