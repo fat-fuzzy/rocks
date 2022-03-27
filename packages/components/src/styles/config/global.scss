@@ -1,22 +1,27 @@
 @include theme-main();
 
-html, body {
+html,
+body {
 	@include cover();
+}
+
+:root {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+		'Helvetica Neue', sans-serif;
 }
 
 body {
 	color: getVar(color-black);
 	margin: 0;
-  padding: getVar(padding-md);
+	padding: getVar(padding-md);
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 nav > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
 // default from Svelte template
@@ -38,7 +43,10 @@ label {
 	display: block;
 }
 
-input, button, select, textarea {
+input,
+button,
+select,
+textarea {
 	font-family: inherit;
 	font-size: inherit;
 	-webkit-padding: 0.4em 0;
