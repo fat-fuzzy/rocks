@@ -40,6 +40,7 @@ $_cssvars: ();
 
 @mixin theme-main() {
 	@include generateCssVars($breakpoints, $theme-prefix);
+	@include generateCssVars($scale, $theme-prefix);
 	@include generateCssVars($theme-colors, $theme-prefix);
 	@include generateCssVars($theme-layout, $theme-prefix);
 	@include generateCssVars($theme-typography, $theme-prefix);

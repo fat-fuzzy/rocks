@@ -15,6 +15,7 @@ body {
 	margin: 0;
 	padding: getVar(padding-md);
 	box-sizing: border-box;
+	line-height: var(--ratio);
 }
 
 nav > ul {
