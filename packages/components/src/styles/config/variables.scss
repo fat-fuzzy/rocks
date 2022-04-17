@@ -63,6 +63,10 @@ $theme-layout: (
 	sidebar-width-lg: 50ch,
 	sidebar-width-xl: 70ch,
 
+	radius-nul: 0,
+	radius-base: 3px,
+	radius-lg: 5px,
+
 	z-index-input: 2,
 );
 
@@ -88,6 +92,11 @@ $breakpoints: (
 	lg: 1200px,
 	xl: 1920px,
 );
+
+//==
+// CUBE CSS-ish
+// Adaptted from: https://piccalil.li/tutorial/build-a-dashboard-with-cube-css/
+//==
 
 //== TYPOGRAPHIC SCALE
 // See: https://piccalil.li/tutorial/improve-the-readability-of-the-content-on-your-website/
@@ -119,4 +128,26 @@ $scale: (
 	s3: calc(var(--#{$theme-prefix}-s2) * var(--#{$theme-prefix}-ratio)),
 	s4: calc(var(--#{$theme-prefix}-s3) * var(--#{$theme-prefix}-ratio)),
 	s5: calc(var(--#{$theme-prefix}-s4) * var(--#{$theme-prefix}-ratio)),
+);
+
+//== BASE SIZE
+/// All calculations are based on this. It’s recommended that
+/// you keep it at 1rem because that is the root font size. You
+/// can set it to whatever you like and whatever unit you like.
+///
+$base-size: 1rem;
+
+/// SIZE SCALE
+/// This is a Major Third scale that powers all the utilities that
+/// it is relevant for (font-size, margin, padding). All items are
+/// calcuated off the base size, so change that and cascade across
+/// your whole project.
+///
+$size-scale: (
+	'300': $base-size * 0.8,
+	'400': $base-size,
+	'500': $base-size * 1.25,
+	'600': $base-size * 1.6,
+	'700': $base-size * 2,
+	'900': $base-size * 3,
 );

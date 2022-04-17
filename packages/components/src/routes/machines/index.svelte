@@ -12,15 +12,11 @@
 	<title>State Machines</title>
 </svelte:head>
 
-<form class="form-sidebar">
-	<Fieldset slug="toggle" label="Toggle" size="md">
+<form class="l-stack lg l-wrapper">
+	<Fieldset slug="toggle" label="Toggle" size="sm">
 		<Toggle />
 	</Fieldset>
-	<Fieldset slug="signIn" label="SignIn" size="md">
+	<Fieldset slug="signIn" label="Sign In" size="sm">
 		<SignIn />
 	</Fieldset>
 </form>
-
-<style lang="scss">
-	@import '../../styles/common/form.scss';
-</style>

@@ -1,20 +1,20 @@
 <script>
-	import { onMount } from 'svelte';
+	import {onMount} from 'svelte'
 
-	import EmojiButton from './EmojiButton.svelte';
+	import EmojiButton from './EmojiButton.svelte'
 
-	export let play = () => {};
-	export let stop = () => {};
-	export let toggleSidebar = () => {};
-	export let showHandles;
+	export let play = () => {}
+	export let stop = () => {}
+	export let toggleSidebar = () => {}
+	export let showHandles
 
-	let disabled = false;
+	let disabled = false
 
 	onMount(() => {
 		return () => {
 			// uiStateUnsub()
-		};
-	});
+		}
+	})
 </script>
 
 <!-- handleBlur={playBlur} -->
@@ -45,5 +45,5 @@
 </div>
 
 <style lang="scss">
-	@import '../styles/components/controls.scss';
+	@import '../styles/blocks/controls.scss';
 </style>

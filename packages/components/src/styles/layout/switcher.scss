@@ -1,0 +1,11 @@
+.l-switcher > * {
+	display: flex;
+	flex-wrap: wrap;
+	gap: getVar(margin-md);
+	--threshold: getVar(sidebar-width-sm);
+}
+
+.l-switcher > * > * {
+	flex-grow: 1;
+	flex-basis: calc((var(--threshold) - 100%) * 999);
+}

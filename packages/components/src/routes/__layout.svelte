@@ -4,7 +4,7 @@
 
 <Header />
 
-<main class="grid">
+<main class="l-sidebar">
 	<slot />
 </main>
 
@@ -13,7 +13,7 @@
 </footer>
 
 <style lang="scss" global>
-	@import '../styles/config/main.scss';
+	@import '../styles/main.scss';
 	main {
 		flex: 1;
 		display: flex;
@@ -23,6 +23,7 @@
 		max-width: 1024px;
 		margin: 0 auto;
 		box-sizing: border-box;
+		height: 100ù;
 	}
 
 	footer {
@@ -30,16 +31,10 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 10px;
+		padding: getVar(padding-sm);
 	}
 
 	footer a {
 		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
 	}
 </style>

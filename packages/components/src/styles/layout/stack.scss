@@ -1,20 +1,35 @@
-[class^='stack'] > * {
+[class^='l-stack'] > * {
 	/* top and bottom margins in horizontal-tb writing mode */
 	margin-block: 0;
 }
 
-.stack > * + * {
-	margin-block-start: pix2em(getVar(margin-block-md));
+.l-stack {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
-.stack-recursive * + * {
-	margin-block-start: pix2em(getVar(margin-block-md));
+.l-stack:only-child {
+	/* ↓ `height` in horizontal-tb writing mode */
+	block-size: 100%;
 }
 
-.stack-large > * + * {
-	margin-block-start: 3rem;
+.l-stack > * + * {
+	margin-block-start: getVar(400);
 }
 
-.stack-small > * + * {
-	margin-block-end: 0.5rem;
+.l-stack-recursive * + * {
+	margin-block-start: getVar(400);
+}
+
+.l-stack.lg > * + * {
+	margin-block-start: getVar(500);
+}
+
+.l-stack.md > * + * {
+	margin-block-start: getVar(400);
+}
+
+.l-stack.sm > * + * {
+	margin-block-start: getVar(300);
 }

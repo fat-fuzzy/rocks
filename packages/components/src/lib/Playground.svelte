@@ -1,189 +1,192 @@
 <script context="module">
-	import { getGeometryDefaults } from '../gl/animations.js';
-	import { uiState, emojiFeedback, animations, currentAnimationId } from '../stores.js';
-	import Feedback from './Feedback.svelte';
-	import Geometry from './Geometry.svelte';
-	import Menu from './Menu.svelte';
-	import Controls from './Controls.svelte';
+	import {getGeometryDefaults} from '../gl/animations.js'
+	import {uiState, emojiFeedback, animations, currentAnimationId} from '../stores.js'
+	import Feedback from './Feedback.svelte'
+	import Geometry from './Geometry.svelte'
+	import Menu from './Menu.svelte'
+	import Controls from './Controls.svelte'
 </script>
 
 <script>
-	import * as constants from '../types/constants.js';
-	import * as utils from '../gl/utils.js';
+	import * as constants from '../types/constants.js'
+	import * as utils from '../gl/utils.js'
 	// Canvas
-	let canvas;
-	let canvasWidth = 300;
-	let canvasHeight = 150;
-	let animationFrame;
+	let canvas
+	let canvasWidth = 300
+	let canvasHeight = 150
+	let animationFrame
 
 	// Audio
-	let drumroll;
+	let drumroll
 	// TODO : fix - gepometry state is not reactive
-	let geometry = getGeometryDefaults(canvasWidth, canvasHeight);
+	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 
 	// animations
-	let animationStartTime;
+	let animationStartTime
 
 	// UI feedback
-	let playgroundState;
-	let emojiFrame;
-	let emojis = [];
-	let stacktrace = '';
-	let animationId = $currentAnimationId;
-	let animation;
+	let playgroundState
+	let emojiFrame
+	let emojis = []
+	let stacktrace = ''
+	let animationId = $currentAnimationId
+	let animation
 
-	let showSidebar = false;
+	let showSidebar = false
 
-	$: animation = $animations.find((animation) => animation.id === animationId);
-	$: sidebarClass = showSidebar ? 'sidebar' : 'hidden';
-	$: canvasClass = playgroundState === constants.uiState.ACTIVE ? 'canvas' : 'hidden';
-	$: outputClass = `output ${playgroundState}`;
+	$: animation = $animations.find((animation) => animation.id === animationId)
+	$: sidebarClass = showSidebar ? 'sidebar' : 'hidden'
+	$: canvasClass = playgroundState === constants.uiState.ACTIVE ? 'canvas' : 'hidden'
+	$: outputClass = `output ${playgroundState}`
 
 	uiState.subscribe((value) => {
-		playgroundState = value;
-	});
+		playgroundState = value
+	})
 
 	emojiFeedback.subscribe((value) => {
-		emojis = utils.multiply(Object.values(value));
-	});
+		emojis = utils.multiply(Object.values(value))
+	})
 
 	currentAnimationId.subscribe((value) => {
-		animationId = value;
-	});
+		animationId = value
+	})
 
 	function feedbackLoop() {
-		emojiFrame = requestAnimationFrame(feedbackLoop);
+		emojiFrame = requestAnimationFrame(feedbackLoop)
 
 		emojis = emojis.map((emoji) => {
 			if (!emoji.character) {
-				emoji.character = '💩 undefined';
+				emoji.character = '💩 undefined'
 			}
-			emoji.class = 'emoji';
-			emoji.y += 0.7 * emoji.ratio;
-			if (emoji.y > 100) emoji.y = -20;
-			return emoji;
-		});
+			emoji.class = 'emoji'
+			emoji.y += 0.7 * emoji.ratio
+			if (emoji.y > 100) emoji.y = -20
+			return emoji
+		})
 	}
 
 	function clearEmojis() {
-		cancelAnimationFrame(emojiFrame);
-		emojis = [];
+		cancelAnimationFrame(emojiFrame)
+		emojis = []
 	}
 
 	function resetAudio() {
-		drumroll.pause();
-		drumroll.currentTime = 0;
+		drumroll.pause()
+		drumroll.currentTime = 0
 	}
 
 	function runLoop(timestamp, duration) {
-		const runtime = timestamp - animationStartTime;
+		const runtime = timestamp - animationStartTime
 		if (duration && runtime >= duration) {
-			uiState.set(constants.uiState.SUCCESS);
-			feedbackLoop();
+			uiState.set(constants.uiState.SUCCESS)
+			feedbackLoop()
 		} else {
 			// if duration not met yet
 			try {
 				if (animation.interactive) {
 					if (animation.webGlProps) {
-						animation.update(geometry);
+						animation.update(geometry)
 					} else {
-						animation.run(canvas, geometry);
+						animation.run(canvas, geometry)
 					}
 				} else {
-					animation.run(canvas);
+					animation.run(canvas)
 				}
 				animationFrame = requestAnimationFrame(function (t) {
 					// call requestAnimationFrame again with parameters
-					runLoop(t, duration);
-				});
+					runLoop(t, duration)
+				})
 			} catch (error) {
-				handleError(error);
+				handleError(error)
 			}
 		}
 	}
 
 	function play() {
-		stop();
-		uiState.set(constants.uiState.ACTIVE);
+		stop()
+		uiState.set(constants.uiState.ACTIVE)
 		if (animation.audio) {
-			drumroll.play();
+			drumroll.play()
 		}
 		if (animation.interactive) {
-			toggleSidebar(true);
+			toggleSidebar(true)
 		}
 		animationFrame = requestAnimationFrame(function (timestamp) {
-			animationStartTime = timestamp || new Date().getTime();
-			let { duration, playbackRate } = animation;
+			animationStartTime = timestamp || new Date().getTime()
+			let {duration, playbackRate} = animation
 			if (playbackRate) {
-				runLoop(timestamp, duration / playbackRate);
+				runLoop(timestamp, duration / playbackRate)
 			}
-			runLoop(timestamp, duration);
-		});
+			runLoop(timestamp, duration)
+		})
 	}
 
 	function clearCanvas() {
 		if (animation && animation.interactive && animation.webGlProps) {
-			geometry = getGeometryDefaults(canvasWidth, canvasHeight);
-			animation.update(geometry);
+			geometry = getGeometryDefaults(canvasWidth, canvasHeight)
+			animation.update(geometry)
 		}
-		cancelAnimationFrame(animationFrame);
-		animation.clear();
+		cancelAnimationFrame(animationFrame)
+		animation.clear()
 	}
 
 	function stop() {
-		toggleSidebar(false);
-		clearCanvas();
-		clearEmojis();
-		resetAudio();
-		uiState.set(constants.uiState.DEFAULT);
+		toggleSidebar(false)
+		clearCanvas()
+		clearEmojis()
+		resetAudio()
+		uiState.set(constants.uiState.DEFAULT)
 	}
 
 	function handleError(error) {
-		uiState.set(constants.uiState.ERROR);
-		stacktrace = `${error}\n${stacktrace}`;
-		feedbackLoop();
+		uiState.set(constants.uiState.ERROR)
+		stacktrace = `${error}\n${stacktrace}`
+		feedbackLoop()
 	}
 
 	function toggleSidebar(value = null) {
-		showSidebar = value === null ? !showSidebar : value;
+		showSidebar = value === null ? !showSidebar : value
 	}
 
 	function loadAnimation(event) {
-		console.log('animation');
-		console.log(animation);
-		console.log('animations');
-		console.log(animations);
-		console.log('event');
-		console.log(event);
-		console.log('event.detail');
-		console.log(event.detail);
-		stop();
-		currentAnimationId.set(event.detail.animationId);
-		animation = $animations.find((animation) => animation.id === animationId);
-		play();
+		console.log('animation')
+		console.log(animation)
+		console.log('animations')
+		console.log(animations)
+		console.log('event')
+		console.log(event)
+		console.log('event.detail')
+		console.log(event.detail)
+		stop()
+		currentAnimationId.set(event.detail.animationId)
+		animation = $animations.find((animation) => animation.id === animationId)
+		play()
 	}
 
 	function updateGeometry(event) {
-		geometry = { ...geometry, ...event.detail.value };
+		geometry = {...geometry, ...event.detail.value}
 	}
 </script>
 
-<Menu on:input={loadAnimation} />
-<div
-	data-cy="output"
-	class={outputClass}
-	bind:offsetWidth={canvasWidth}
-	bind:offsetHeight={canvasHeight}
->
-	<canvas data-cy="canvas" class={canvasClass} bind:this={canvas} />
-	<Feedback {stacktrace} />
+<div class="not-sidebar">
+	<div
+		data-cy="output"
+		class={outputClass}
+		bind:offsetWidth={canvasWidth}
+		bind:offsetHeight={canvasHeight}
+	>
+		<canvas data-cy="canvas" class={canvasClass} bind:this={canvas} />
+		<Feedback {stacktrace} />
+	</div>
 </div>
-<div class={sidebarClass}>
+<aside class="sidebar">
+	<Menu on:input={loadAnimation} />
+	<Controls {play} {stop} {toggleSidebar} bind:showHandles={animation.interactive} />
 	{#if animation.interactive}
 		<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
 	{/if}
-</div>
-<Controls {play} {stop} {toggleSidebar} bind:showHandles={animation.interactive} />
+</aside>
+
 <audio
 	data-cy="drumroll"
 	duration={animation.duration}
@@ -206,5 +209,6 @@
 {/each}
 
 <style lang="scss">
-	@import '../styles/components/playground.scss';
+	@import '../styles/blocks/playground.scss';
+	@import '../styles/layout/sidebar.scss';
 </style>

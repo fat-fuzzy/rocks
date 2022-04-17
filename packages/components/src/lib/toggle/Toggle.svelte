@@ -7,7 +7,3 @@
 <button type="button" on:click={() => send('TOGGLE')} aria-label="Toggle button">
 	{$state.value === 'inactive' ? 'Click to activate' : 'Active! Click to deactivate'}
 </button>
-
-<style lang="scss">
-	@import '../../styles/components/buttons.scss';
-</style>

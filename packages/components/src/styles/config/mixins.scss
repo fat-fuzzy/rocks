@@ -41,9 +41,10 @@ $_cssvars: ();
 @mixin theme-main() {
 	@include generateCssVars($breakpoints, $theme-prefix);
 	@include generateCssVars($scale, $theme-prefix);
+	@include generateCssVars($size-scale, $theme-prefix);
+	@include generateCssVars($theme-typography, $theme-prefix);
 	@include generateCssVars($theme-colors, $theme-prefix);
 	@include generateCssVars($theme-layout, $theme-prefix);
-	@include generateCssVars($theme-typography, $theme-prefix);
 }
 
 /**
@@ -97,7 +98,7 @@ $_cssvars: ();
 	@return $num / ($num * 0 + 1);
 }
 
-@function calculateUnitlessValue($font-size) {
+@function calcUnitlessValue($font-size) {
 	$unitless_value: strip-unit($font-size);
 	$remSize: $unitless_value / 16;
 	@return #{$remSize};
@@ -107,14 +108,14 @@ $_cssvars: ();
 // * Use this in conjunction with body{font-size:10px;} for base 10 conversion
 @mixin pix2rem($size) {
 	font-size: ($size); //Fallback in px
-	font-size: calculateUnitlessValue($size) + rem;
+	font-size: calcUnitlessValue($size) + rem;
 }
 
 // /* EM mixin : produces EM values with px fallback
 // * Use this in conjunction with body{font-size:10px;} for base 10 conversion
 @mixin pix2em($size) {
 	font-size: ($size); //Fallback in px
-	font-size: calculateUnitlessValue($size) + em;
+	font-size: calcUnitlessValue($size) + em;
 }
 
 //== WIDTHS & HEIGHTS
