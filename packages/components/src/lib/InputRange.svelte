@@ -33,5 +33,18 @@
 />
 
 <style lang="scss">
-	@import '../styles/common/input.scss';
+	label {
+		font: inherit;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+		padding: getVar(margin-sm) getVar(margin-xs) getVar(margin-sm);
+		width: 100%;
+		max-width: 100%;
+	}
+
+	input {
+		width: 100%;
+	}
 </style>

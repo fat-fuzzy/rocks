@@ -11,3 +11,9 @@
 .l-stack.fieldset > * + .error {
 	margin-block-start: getVar('300');
 }
+
+.fieldset {
+	// @include layout-fieldset();
+	border-radius: 3px;
+	border: 1px solid getVar(color-dark);
+}

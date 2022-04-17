@@ -12,7 +12,7 @@
 	<title>State Machines</title>
 </svelte:head>
 
-<form class="l-stack lg l-wrapper">
+<form class="l-stack l-wrapper lg">
 	<Fieldset slug="toggle" label="Toggle" size="sm">
 		<Toggle />
 	</Fieldset>
