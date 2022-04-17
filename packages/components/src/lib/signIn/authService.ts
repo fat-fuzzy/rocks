@@ -4,21 +4,32 @@
 // error code 4 - internal server error
 
 const isNoResponse = () => Math.random() >= 0.75
+const isLoginFailed = (email, password) => email !== 'admin@admin.com' || password !== 'admin'
+const passwordRecoveryMaybe = (email) => ({email})
+const isSignInEmailSent = (email) => ({email})
 
-export const signIn = (email, password) =>
+export const authenticate = (email, password) =>
 	new Promise((resolve, reject) => {
 		setTimeout(() => {
-			if (email !== 'admin@admin.com') {
-				reject({code: 1})
+			if (isLoginFailed(email, password)) {
+				reject({code: 2})
 			}
 
-			if (password !== 'admin') {
-				reject({code: 2})
+			if (isSignInEmailSent(email)) {
+				resolve({code: 0, payload: {email}})
+			}
+
+			if (passwordRecoveryMaybe(email)) {
+				resolve({code: 1, payload: {email}})
 			}
 
 			if (isNoResponse()) {
 				reject({code: 3})
 			}
+
+			// if (isInternalServerErr()) {
+			// 	reject({code: 4})
+			// }
 
 			resolve(null)
 		}, 1500)

@@ -1,21 +1,17 @@
 import {assign} from 'xstate'
 import {isEmail} from 'validator'
-import {signIn} from './authService'
+import {authenticate} from './authService'
 
 const isNoEmail = (context, event) => {
-	console.log('isNoEmail - context')
-	console.log(context)
-
-	console.log('isNoEmail - event')
-	console.log(event)
-
-	return context.email.length === 0
+	return event.type === 'SUBMIT' && context.email.length === 0
 }
-const isEmailBadFormat = (context, event) => context.email.length > 0 && !isEmail(context.email)
-const isNoPassword = (context, event) => context.password.length === 0
-const isPasswordShort = (context, event) => context.password.length < 5
-const isNoAccount = (context, event) => event.data.code === 1
-const isIncorrectPassword = (context, event) => event.data.code === 2
+const isEmailBadFormat = (context, event) =>
+	event.type === 'SUBMIT' && context.email.length > 0 && !isEmail(context.email)
+const isNoPassword = (context, event) => event.type === 'SUBMIT' && context.password.length === 0
+const isPasswordShort = (context, event) => event.type === 'SUBMIT' && context.password.length < 5
+const isLoginFailed = (context, event) => event.data.code === 2
+const passwordRecoveryMaybe = (context, event) => event.data.code === 1
+const isSignInEmailSent = (context, event) => event.data.code === 0
 const isNoResponse = (context, event) => event.data.code === 3
 const isInternalServerErr = (context, event) => event.data.code === 4
 
@@ -30,13 +26,14 @@ function initMachineOptions({
 			isEmailBadFormat,
 			isNoPassword,
 			isPasswordShort,
-			isNoAccount,
-			isIncorrectPassword,
+			isLoginFailed,
+			passwordRecoveryMaybe,
+			isSignInEmailSent,
 			isNoResponse,
 			isInternalServerErr,
 		},
 		services: {
-			requestSignIn: (context, event) => signIn(context.email, context.password),
+			requestSignIn: (context, event) => authenticate(context.email, context.password),
 		},
 		actions: {
 			focusEmailInput: handleEmailInputFocus,

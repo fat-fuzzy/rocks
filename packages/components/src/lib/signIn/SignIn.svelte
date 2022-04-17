@@ -32,7 +32,6 @@
 	}
 
 	const handleEmailChange = (event) => {
-		console.log(event)
 		send({
 			type: 'INPUT_EMAIL',
 			email: event.target.value,
@@ -47,7 +46,6 @@
 	}
 
 	const handleSubmit = (event) => {
-		console.log(event)
 		send({
 			type: 'SUBMIT',
 		})
@@ -69,23 +67,62 @@
 
 	$: email = $state.context.email
 	$: password = $state.context.password
+	$: isNoEmail = $state.matches('loggedOut.email.error.empty')
+	$: isEmailBadFormat = $state.matches('loggedOut.email.error.badFormat')
+	$: isNoPassword = $state.matches('loggedOut.password.error.empty')
+	$: isPasswordShort = $state.matches('loggedOut.password.error.tooShort')
+	$: isLoginFailed = $state.matches('loggedOut.authService.error.login')
+	$: errPassword = isNoPassword || isPasswordShort
+	$: errEmail = isNoEmail || isEmailBadFormat
+	$: errForm = isLoginFailed
+	$: emailInputClass = errEmail ? 'error' : ''
+	$: passwordInputClass = errPassword ? 'error' : ''
 </script>
 
-<input type="text" value={email} bind:this={emailInput} on:change={handleEmailChange} />
+<label for="email"> Email </label>
 <input
+	id="email"
+	type="text"
+	value={email}
+	class={emailInputClass}
+	bind:this={emailInput}
+	on:change={handleEmailChange}
+/>
+{#if errEmail}
+	<small class="error">
+		{#if isNoEmail} <p>Please fill in your email</p>{/if}
+		{#if isEmailBadFormat} <p>Please check your email</p>{/if}
+	</small>
+{/if}
+<label for="password"> Password </label>
+<input
+	id="password"
 	type="password"
 	value={password}
+	class={passwordInputClass}
 	bind:this={passwordInput}
 	on:change={handlePasswordChange}
 />
-<button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
-	Cancel
-</button>
+{#if errPassword}
+	<small class="error">
+		{#if isNoPassword} <p>Please fill in your password</p>{/if}
+		{#if isEmailBadFormat} <p>Password length is too short</p>{/if}
+	</small>
+{/if}
+{#if errForm}
+	<small class="error">
+		{#if isLoginFailed} <p>Login failed. Invalid user ID or password.</p>{/if}
+	</small>
+{/if}
 <button type="submit" bind:this={submitButton} on:click|preventDefault={handleSubmit}>
 	Sign In
 </button>
+<button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
+	Cancel
+</button>
 
 <style lang="scss">
-	@import '../../styles/common/form.scss';
-	@import '../../styles/common/input.scss';
+	input {
+		min-width: 44ch; // anticipate error message length
+	}
 </style>
