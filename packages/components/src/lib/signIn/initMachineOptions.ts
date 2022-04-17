@@ -1,6 +1,6 @@
 import {assign} from 'xstate'
 import {isEmail} from 'validator'
-import {authenticate} from './authService'
+import {authenticate, requestPassword} from './authService'
 
 const isNoEmail = (context, event) => {
 	return event.type === 'SUBMIT' && context.email.length === 0
@@ -10,8 +10,8 @@ const isEmailBadFormat = (context, event) =>
 const isNoPassword = (context, event) => event.type === 'SUBMIT' && context.password.length === 0
 const isPasswordShort = (context, event) => event.type === 'SUBMIT' && context.password.length < 5
 const isLoginFailed = (context, event) => event.data.code === 2
-const passwordRecoveryMaybe = (context, event) => event.data.code === 1
-const isSignInEmailSent = (context, event) => event.data.code === 0
+const isPasswordRecoveryMaybe = (context, event) => event.data.code === 1
+const isSignInEmailSent = (context, event) => event.data.code === 1
 const isNoResponse = (context, event) => event.data.code === 3
 const isInternalServerErr = (context, event) => event.data.code === 4
 
@@ -27,13 +27,14 @@ function initMachineOptions({
 			isNoPassword,
 			isPasswordShort,
 			isLoginFailed,
-			passwordRecoveryMaybe,
+			isPasswordRecoveryMaybe,
 			isSignInEmailSent,
 			isNoResponse,
 			isInternalServerErr,
 		},
 		services: {
 			requestSignIn: (context, event) => authenticate(context.email, context.password),
+			requestNewPassword: (context, event) => requestPassword(context.email),
 		},
 		actions: {
 			focusEmailInput: handleEmailInputFocus,
@@ -49,6 +50,11 @@ function initMachineOptions({
 			})),
 			onSuccess: assign(() => {
 				alert('🎉 Signed in')
+			}),
+			isPasswordRecoveryMaybe: assign(() => {
+				alert(
+					'💌  If that email address is in our database, we will send you an email to reset your password.',
+				)
 			}),
 		},
 	}

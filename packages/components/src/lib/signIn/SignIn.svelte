@@ -8,6 +8,7 @@
 	let passwordInput
 	let submitButton
 	let cancelButton
+	let resetButton
 
 	const delay = (func) => setTimeout(() => func())
 
@@ -50,6 +51,13 @@
 			type: 'SUBMIT',
 		})
 	}
+
+	const handleReset = (event) => {
+		send({
+			type: 'RESET',
+		})
+	}
+
 	const handleCancel = (event) => {
 		send({
 			type: 'CANCEL',
@@ -72,6 +80,7 @@
 	$: isNoPassword = $state.matches('loggedOut.password.error.empty')
 	$: isPasswordShort = $state.matches('loggedOut.password.error.tooShort')
 	$: isLoginFailed = $state.matches('loggedOut.authService.error.login')
+	$: isPasswordRecoveryMaybe = $state.matches('loggedOut.authService.error.login')
 	$: errPassword = isNoPassword || isPasswordShort
 	$: errEmail = isNoEmail || isEmailBadFormat
 	$: errForm = isLoginFailed
@@ -119,6 +128,9 @@
 </button>
 <button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
 	Cancel
+</button>
+<button type="button" bind:this={resetButton} on:click|preventDefault={handleReset}>
+	Forgot password
 </button>
 
 <style lang="scss">

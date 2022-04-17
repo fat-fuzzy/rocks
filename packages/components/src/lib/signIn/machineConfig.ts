@@ -45,6 +45,11 @@ const authServiceStates = {
 						SUBMIT: '#signInForm.loading',
 					},
 				},
+				reset: {
+					on: {
+						RESET: '#signInForm.forgotPassword',
+					},
+				},
 				internal: {},
 			},
 		},
@@ -92,6 +97,19 @@ const machineConfig = {
 						target: 'loading',
 					},
 				],
+				RESET: [
+					{
+						cond: 'isNoEmail',
+						target: 'loggedOut.email.error.empty',
+					},
+					{
+						cond: 'isEmailBadFormat',
+						target: 'loggedOut.email.error.badFormat',
+					},
+					{
+						target: 'forgotPassword',
+					},
+				],
 				CANCEL: [
 					{
 						target: 'loggedOut',
@@ -125,6 +143,31 @@ const machineConfig = {
 					{
 						cond: 'isInternalServerErr',
 						target: 'loggedOut.authService.error.internal',
+					},
+				],
+			},
+		},
+		forgotPassword: {
+			on: {
+				CANCEL: 'loggedOut',
+			},
+			invoke: {
+				src: 'requestNewPassword',
+				onDone: {
+					actions: 'isPasswordRecoveryMaybe',
+				},
+				onError: [
+					{
+						cond: 'isNoEmail',
+						target: 'loggedOut.email.error.empty',
+					},
+					{
+						cond: 'isEmailBadFormat',
+						target: 'loggedOut.email.error.badFormat',
+					},
+					{
+						cond: 'isNoResponse',
+						target: 'loggedOut.authService.error.communication',
 					},
 				],
 			},
