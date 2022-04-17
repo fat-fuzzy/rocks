@@ -18,6 +18,7 @@ textarea {
 	border-radius: getVar(radius-base);
 }
 
-input:disabled {
+[disabled] {
 	color: getVar(gray-1);
+	cursor: not-allowed;
 }

@@ -75,17 +75,19 @@
 
 	$: email = $state.context.email
 	$: password = $state.context.password
+
 	$: isNoEmail = $state.matches('loggedOut.email.error.empty')
 	$: isEmailBadFormat = $state.matches('loggedOut.email.error.badFormat')
 	$: isNoPassword = $state.matches('loggedOut.password.error.empty')
 	$: isPasswordShort = $state.matches('loggedOut.password.error.tooShort')
 	$: isLoginFailed = $state.matches('loggedOut.authService.error.login')
-	$: isPasswordRecoveryMaybe = $state.matches('loggedOut.authService.error.login')
 	$: errPassword = isNoPassword || isPasswordShort
 	$: errEmail = isNoEmail || isEmailBadFormat
 	$: errForm = isLoginFailed
+
 	$: emailInputClass = errEmail ? 'error' : ''
 	$: passwordInputClass = errPassword ? 'error' : ''
+	$: loading = $state.matches('loading')
 </script>
 
 <label for="email"> Email </label>
@@ -123,13 +125,23 @@
 		{#if isLoginFailed} <p>Login failed. Invalid user ID or password.</p>{/if}
 	</small>
 {/if}
-<button type="submit" bind:this={submitButton} on:click|preventDefault={handleSubmit}>
+<button
+	type="submit"
+	disabled={loading}
+	bind:this={submitButton}
+	on:click|preventDefault={handleSubmit}
+>
 	Sign In
 </button>
 <button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
 	Cancel
 </button>
-<button type="button" bind:this={resetButton} on:click|preventDefault={handleReset}>
+<button
+	type="button"
+	disabled={loading}
+	bind:this={resetButton}
+	on:click|preventDefault={handleReset}
+>
 	Forgot password
 </button>
 
