@@ -118,7 +118,6 @@
 	$: isNoResponse = $state.matches('loggedOut.authService.error.communication')
 	$: errPassword = isNoPassword || isPasswordShort
 	$: errEmail = isNoEmail || isEmailBadFormat
-	$: errForm = isLoginFailed
 
 	$: loading = $state.matches('loading')
 	$: resetPassword = $state.matches('resetPassword')
@@ -143,12 +142,10 @@
 			bind:this={emailInput}
 			on:change={handleEmailChange}
 		/>
-		{#if errEmail}
-			<small class="error">
-				{#if isNoEmail} <p>Please enter your email</p>{/if}
-				{#if isEmailBadFormat} <p>Please enter a valid email</p>{/if}
-			</small>
-		{/if}
+		<div class="error">
+			{#if isNoEmail} <p>Please enter your email</p>{/if}
+			{#if isEmailBadFormat} <p>Please enter a valid email</p>{/if}
+		</div>
 
 		{#if showPasswordInput}
 			<label for="password"> Password </label>
@@ -161,20 +158,15 @@
 				bind:this={passwordInput}
 				on:change={handlePasswordChange}
 			/>
-			{#if errPassword}
-				<small class="error">
-					{#if isNoPassword} <p>Please fill in your password</p>{/if}
-					{#if isEmailBadFormat} <p>Password length is too short</p>{/if}
-				</small>
-			{/if}
-		{/if}
-		{#if errForm}
-			<small class="error">
+			<div class="error">
+				{#if isNoPassword} <p>Please fill in your password</p>{/if}
+				{#if isPasswordShort}
+					<!-- TODO: This error should only appear in SignUp form --->
+					<p>Password length is too short</p>
+				{/if}
 				{#if isLoginFailed} <p>Login failed: invalid email or password</p>{/if}
 				{#if isNoResponse} <p>Login failed: please try again later</p>{/if}
-			</small>
-		{/if}
-		{#if showPasswordInput}
+			</div>
 			<button
 				type="submit"
 				class="primary"

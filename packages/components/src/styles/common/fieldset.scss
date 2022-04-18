@@ -10,6 +10,7 @@
 
 .l-stack.fieldset > * + .error {
 	margin-block-start: getVar('300');
+	min-height: getVar('400');
 }
 
 .fieldset {
