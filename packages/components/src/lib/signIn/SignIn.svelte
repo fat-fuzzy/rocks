@@ -128,6 +128,7 @@
 	$: emailInputClass = errEmail ? 'error' : ''
 	$: passwordInputClass = errPassword ? 'error' : ''
 	$: resetButtonClass = showPasswordInput ? 'link' : 'primary'
+	$: feedbackClass = errEmail || errPassword || isLoginFailed || isNoResponse ? 'error' : ''
 </script>
 
 <Fieldset slug="signIn" label="Sign In" size="sm">
@@ -142,7 +143,7 @@
 			bind:this={emailInput}
 			on:change={handleEmailChange}
 		/>
-		<div class="error">
+		<div class="feedback {feedbackClass}">
 			{#if isNoEmail} <p>Please enter your email</p>{/if}
 			{#if isEmailBadFormat} <p>Please enter a valid email</p>{/if}
 		</div>
@@ -158,7 +159,7 @@
 				bind:this={passwordInput}
 				on:change={handlePasswordChange}
 			/>
-			<div class="error">
+			<div class="feedback {feedbackClass}">
 				{#if isNoPassword} <p>Please fill in your password</p>{/if}
 				{#if isPasswordShort}
 					<!-- TODO: This error should only appear in SignUp form --->
@@ -202,6 +203,6 @@
 <style lang="scss" global>
 	@import '../../styles/main.scss';
 	fieldset {
-		min-width: 40ch; // anticipate error message length
+		min-width: 30ch; // anticipate error message length
 	}
 </style>

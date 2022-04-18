@@ -8,7 +8,7 @@
 	margin-block-start: getVar(margin-block-lg);
 }
 
-.l-stack.fieldset > * + .error {
+.l-stack.fieldset > * + .feedback {
 	margin-block-start: getVar('300');
 	min-height: getVar('400');
 }

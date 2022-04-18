@@ -1,4 +1,5 @@
-label {
+label,
+.feedback {
 	font: menu;
 	display: block;
 }
@@ -8,7 +9,7 @@ button,
 select,
 textarea {
 	font: menu;
-	padding: getVar(padding-md);
+	padding: getVar(padding-lg);
 	border: 1px solid getVar(gray-1);
 	border-radius: getVar(radius-base);
 }
