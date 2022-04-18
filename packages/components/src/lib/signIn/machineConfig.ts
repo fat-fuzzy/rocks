@@ -54,7 +54,11 @@ const authServiceStates = {
 						RESET_PASSWORD: '#signInForm.resetPassword',
 					},
 				},
-				reset: {},
+				reset: {
+					on: {
+						RESET_PASSWORD: '#signInForm.resetPassword',
+					},
+				},
 				internal: {},
 			},
 		},
@@ -126,6 +130,7 @@ const machineConfig = {
 				src: 'requestSignIn',
 				onDone: {
 					actions: 'onSuccess',
+					target: 'loggedIn',
 				},
 				onError: [
 					{
@@ -189,6 +194,11 @@ const machineConfig = {
 						target: 'forgotPassword.authService.error.communication',
 					},
 				],
+			},
+		},
+		loggedIn: {
+			on: {
+				LOGOUT: 'loggedOut',
 			},
 		},
 	},

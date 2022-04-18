@@ -9,6 +9,7 @@ export const Events = {
 	RESET_PASSWORD: 'RESET_PASSWORD',
 	INPUT_EMAIL: 'INPUT_EMAIL',
 	INPUT_PASSWORD: 'INPUT_PASSWORD',
+	LOGOUT: 'LOGOUT',
 }
 
 const testEmailEventType = (event) =>
