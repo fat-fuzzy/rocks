@@ -1,9 +1,5 @@
-form {
-	font: menu;
-	// @include layout-form();
-}
-
 label {
+	font: menu;
 	display: block;
 }
 
@@ -11,8 +7,7 @@ input,
 button,
 select,
 textarea {
-	font-family: inherit;
-	font-size: inherit;
+	font: menu;
 	padding: getVar(padding-md);
 	border: 1px solid getVar(gray-1);
 	border-radius: getVar(radius-base);

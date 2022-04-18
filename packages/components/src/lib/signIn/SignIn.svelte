@@ -201,7 +201,7 @@
 
 <style lang="scss" global>
 	@import '../../styles/main.scss';
-	input {
-		min-width: 44ch; // anticipate error message length
+	fieldset {
+		min-width: 40ch; // anticipate error message length
 	}
 </style>
