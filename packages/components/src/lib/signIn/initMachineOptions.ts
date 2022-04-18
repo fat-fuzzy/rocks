@@ -78,6 +78,10 @@ function initMachineOptions({
 				alert(
 					'💌  If that email address is in our database, we will send you an email to reset your password.',
 				)
+				return {
+					email: '',
+					password: '',
+				}
 			}),
 		},
 	}
