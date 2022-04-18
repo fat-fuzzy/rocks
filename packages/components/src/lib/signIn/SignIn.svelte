@@ -115,7 +115,8 @@
 	$: isLoggedIn = $state.matches('loggedIn')
 	$: isPasswordShort = $state.matches('loggedOut.password.error.tooShort')
 	$: isLoginFailed = $state.matches('loggedOut.authService.error.login')
-	$: isNoResponse = $state.matches('loggedOut.authService.error.communication')
+	$: isNoResponseSignIn = $state.matches('loggedOut.authService.error.communication')
+	$: isNoResponseReset = $state.matches('resetPassword.authService.error.communication')
 	$: errPassword = isNoPassword || isPasswordShort
 	$: errEmail = isNoEmail || isEmailBadFormat
 
@@ -128,7 +129,10 @@
 	$: emailInputClass = errEmail ? 'error' : ''
 	$: passwordInputClass = errPassword ? 'error' : ''
 	$: resetButtonClass = showPasswordInput ? 'link' : 'primary'
-	$: feedbackClass = errEmail || errPassword || isLoginFailed || isNoResponse ? 'error' : ''
+	$: feedbackClass =
+		errEmail || errPassword || isLoginFailed || isNoResponseSignIn || isNoResponseReset
+			? 'error'
+			: ''
 </script>
 
 <Fieldset slug="signIn" label="Sign In" size="sm">
@@ -146,6 +150,7 @@
 		<div class="feedback {feedbackClass}">
 			{#if isNoEmail} <p>Please enter your email</p>{/if}
 			{#if isEmailBadFormat} <p>Please enter a valid email</p>{/if}
+			{#if isNoResponseReset} <p>Reset failed: please try again later</p>{/if}
 		</div>
 
 		{#if showPasswordInput}
@@ -166,7 +171,7 @@
 					<p>Password length is too short</p>
 				{/if}
 				{#if isLoginFailed} <p>Login failed: invalid email or password</p>{/if}
-				{#if isNoResponse} <p>Login failed: please try again later</p>{/if}
+				{#if isNoResponseSignIn} <p>Login failed: please try again later</p>{/if}
 			</div>
 			<button
 				type="submit"
@@ -203,6 +208,6 @@
 <style lang="scss" global>
 	@import '../../styles/main.scss';
 	fieldset {
-		min-width: 30ch; // anticipate error message length
+		min-width: 26ch; // anticipate error message length
 	}
 </style>
