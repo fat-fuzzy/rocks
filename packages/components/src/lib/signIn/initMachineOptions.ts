@@ -1,21 +1,36 @@
 import {assign} from 'xstate'
 import {isEmail} from 'validator'
-import {signIn} from './authService'
+import {authenticate, requestPassword} from './authService'
 
-const isNoEmail = (context, event) => {
-	console.log('isNoEmail - context')
-	console.log(context)
-
-	console.log('isNoEmail - event')
-	console.log(event)
-
-	return context.email.length === 0
+export const Events = {
+	SUBMIT: 'SUBMIT',
+	CANCEL: 'CANCEL',
+	FORGOT_PASSWORD: 'FORGOT_PASSWORD',
+	RESET_PASSWORD: 'RESET_PASSWORD',
+	INPUT_EMAIL: 'INPUT_EMAIL',
+	INPUT_PASSWORD: 'INPUT_PASSWORD',
+	LOGOUT: 'LOGOUT',
 }
-const isEmailBadFormat = (context, event) => context.email.length > 0 && !isEmail(context.email)
-const isNoPassword = (context, event) => context.password.length === 0
-const isPasswordShort = (context, event) => context.password.length < 5
-const isNoAccount = (context, event) => event.data.code === 1
-const isIncorrectPassword = (context, event) => event.data.code === 2
+
+const testEmailEventType = (event) =>
+	event.type === Events.SUBMIT ||
+	event.type === Events.RESET_PASSWORD ||
+	event.type === Events.INPUT_EMAIL
+const isNoEmail = (context, event) => {
+	const eventType = testEmailEventType(event)
+	return eventType && context.email.length === 0
+}
+const isEmailBadFormat = (context, event) => {
+	const eventType = testEmailEventType(event)
+	return eventType && context.email.length > 0 && !isEmail(context.email)
+}
+const isNoPassword = (context, event) =>
+	event.type === Events.SUBMIT && context.password.length === 0
+const isPasswordShort = (context, event) =>
+	event.type === Events.SUBMIT && context.password.length < 5
+const isSignInEmailSent = (context, event) => event.data.code === 0
+const isPasswordRecoveryMaybe = (context, event) => event.data.code === 1
+const isLoginFailed = (context, event) => event.data.code === 2
 const isNoResponse = (context, event) => event.data.code === 3
 const isInternalServerErr = (context, event) => event.data.code === 4
 
@@ -30,13 +45,15 @@ function initMachineOptions({
 			isEmailBadFormat,
 			isNoPassword,
 			isPasswordShort,
-			isNoAccount,
-			isIncorrectPassword,
+			isLoginFailed,
+			isPasswordRecoveryMaybe,
+			isSignInEmailSent,
 			isNoResponse,
 			isInternalServerErr,
 		},
 		services: {
-			requestSignIn: (context, event) => signIn(context.email, context.password),
+			requestSignIn: (context, event) => authenticate(context.email, context.password),
+			requestNewPassword: (context, event) => requestPassword(context.email),
 		},
 		actions: {
 			focusEmailInput: handleEmailInputFocus,
@@ -50,8 +67,17 @@ function initMachineOptions({
 			cachePassword: assign((context, event) => ({
 				password: event.password,
 			})),
+			onLoginFailed: assign(() => ({
+				email: '',
+				password: '',
+			})),
 			onSuccess: assign(() => {
 				alert('🎉 Signed in')
+			}),
+			isPasswordRecoveryMaybe: assign(() => {
+				alert(
+					'💌  If that email address is in our database, we will send you an email to reset your password.',
+				)
 			}),
 		},
 	}

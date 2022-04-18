@@ -7,7 +7,6 @@ const emailStates = {
 			states: {
 				empty: {},
 				badFormat: {},
-				noAccount: {},
 			},
 			onEntry: 'focusEmailInput',
 		},
@@ -23,7 +22,6 @@ const passwordStates = {
 			states: {
 				empty: {},
 				tooShort: {},
-				incorrect: {},
 			},
 			onEntry: 'focusPasswordInput',
 		},
@@ -39,7 +37,26 @@ const authServiceStates = {
 			states: {
 				communication: {
 					on: {
-						SUBMIT: '#signInForm.awaitingResponse',
+						SUBMIT: '#signInForm.loading',
+					},
+				},
+				login: {
+					on: {
+						SUBMIT: {
+							target: '#signInForm.loggedOut',
+							// actions: 'onLoginFailed',
+						},
+						FORGOT_PASSWORD: '#signInForm.forgotPassword',
+					},
+				},
+				forgot: {
+					on: {
+						RESET_PASSWORD: '#signInForm.resetPassword',
+					},
+				},
+				reset: {
+					on: {
+						RESET_PASSWORD: '#signInForm.resetPassword',
 					},
 				},
 				internal: {},
@@ -54,38 +71,48 @@ const machineConfig = {
 		email: '',
 		password: '',
 	},
-	initial: 'ready',
+	initial: 'loggedOut',
 	states: {
-		ready: {
+		loggedOut: {
 			type: 'parallel' as const,
 			on: {
 				INPUT_EMAIL: {
 					actions: 'cacheEmail',
-					target: 'ready.email.noError',
+					target: 'loggedOut.email.noError',
 				},
 				INPUT_PASSWORD: {
 					actions: 'cachePassword',
-					target: 'ready.password.noError',
+					target: 'loggedOut.password.noError',
 				},
 				SUBMIT: [
 					{
 						cond: 'isNoEmail',
-						target: 'ready.email.error.empty',
+						target: 'loggedOut.email.error.empty',
 					},
 					{
 						cond: 'isEmailBadFormat',
-						target: 'ready.email.error.badFormat',
+						target: 'loggedOut.email.error.badFormat',
 					},
 					{
 						cond: 'isNoPassword',
-						target: 'ready.password.error.empty',
+						target: 'loggedOut.password.error.empty',
 					},
 					{
 						cond: 'isPasswordShort',
-						target: 'ready.password.error.tooShort',
+						target: 'loggedOut.password.error.tooShort',
 					},
 					{
-						target: 'awaitingResponse',
+						target: 'loading',
+					},
+				],
+				FORGOT_PASSWORD: [
+					{
+						target: 'forgotPassword',
+					},
+				],
+				CANCEL: [
+					{
+						target: 'loggedOut',
 					},
 				],
 			},
@@ -95,33 +122,83 @@ const machineConfig = {
 				authService: {...authServiceStates},
 			},
 		},
-		awaitingResponse: {
+		loading: {
 			on: {
-				CANCEL: 'ready',
+				CANCEL: 'loggedOut',
 			},
 			invoke: {
 				src: 'requestSignIn',
 				onDone: {
 					actions: 'onSuccess',
+					target: 'loggedIn',
 				},
 				onError: [
 					{
-						cond: 'isNoAccount',
-						target: 'ready.email.error.noAccount',
-					},
-					{
-						cond: 'isIncorrectPassword',
-						target: 'ready.password.error.incorrect',
+						cond: 'isLoginFailed',
+						target: 'loggedOut.authService.error.login',
 					},
 					{
 						cond: 'isNoResponse',
-						target: 'ready.authService.error.communication',
+						target: 'loggedOut.authService.error.communication',
 					},
 					{
 						cond: 'isInternalServerErr',
-						target: 'ready.authService.error.internal',
+						target: 'loggedOut.authService.error.internal',
 					},
 				],
+			},
+		},
+		forgotPassword: {
+			on: {
+				INPUT_EMAIL: {
+					actions: 'cacheEmail',
+					target: 'forgotPassword.email.noError',
+				},
+				RESET_PASSWORD: [
+					{
+						cond: 'isNoEmail',
+						target: 'forgotPassword.email.error.empty',
+					},
+					{
+						cond: 'isEmailBadFormat',
+						target: 'forgotPassword.email.error.badFormat',
+					},
+					{
+						target: 'resetPassword',
+					},
+				],
+				CANCEL: [
+					{
+						target: 'loggedOut',
+					},
+				],
+			},
+			states: {
+				email: {...emailStates},
+				authService: {...authServiceStates},
+			},
+		},
+		resetPassword: {
+			on: {
+				CANCEL: 'loggedOut',
+			},
+			invoke: {
+				src: 'requestNewPassword',
+				onDone: {
+					actions: 'isPasswordRecoveryMaybe',
+					target: 'loggedOut',
+				},
+				onError: [
+					{
+						cond: 'isNoResponse',
+						target: 'forgotPassword.authService.error.communication',
+					},
+				],
+			},
+		},
+		loggedIn: {
+			on: {
+				LOGOUT: 'loggedOut',
 			},
 		},
 	},

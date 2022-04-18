@@ -1,0 +1,43 @@
+button {
+	color: getVar(color-dark);
+	background-color: getVar(color-light);
+}
+
+button:disabled {
+	color: getVar(gray-3);
+}
+
+button:not(:disabled):active {
+	background-color: getVar(gray-2);
+}
+
+button:focus {
+	border-color: getVar(gray-4);
+}
+
+.btn-emoji {
+	font: menu;
+	padding: getVar(padding-xs) getVar(padding-md);
+	margin: getVar(margin-xs);
+
+	@include min-width(md) {
+		font: unset;
+		padding: getVar(padding-xs) getVar(padding-sm);
+	}
+}
+
+.link {
+	border: none;
+	background-color: inherit;
+	padding: getVar(padding-xs);
+}
+
+.primary {
+	border-color: getVar(primary);
+	background-color: getVar(primary);
+	color: getVar(color-light);
+}
+
+.primary:disabled {
+	background-color: getVar(primary-disabled);
+}

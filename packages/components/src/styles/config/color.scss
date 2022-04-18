@@ -1,0 +1,17 @@
+.bg-light {
+	color: getVar(color-dark);
+	background-color: getVar(color-light);
+}
+
+.bg-dark {
+	color: getVar(color-light);
+	background-color: getVar(color-dark);
+}
+
+.error {
+	color: getVar(danger);
+}
+
+.error:focus {
+	outline-color: getVar(danger);
+}

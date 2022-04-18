@@ -1,0 +1,31 @@
+.l-sidebar {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.l-sidebar-main {
+	flex-basis: 0;
+	flex-grow: 999;
+	// ~ min-width in horizontal-tb writing mode: if (width < 50%) -> wrap
+	min-inline-size: 65%;
+}
+
+// adjusts to width of contents
+.l-sidebar-side {
+	flex-grow: 1;
+}
+
+.l-sidebar-side-sm {
+	flex-basis: getVar(sidebar-width-sm);
+	flex-grow: 1;
+}
+
+.l-sidebar-side-md {
+	flex-basis: getVar(sidebar-width-md);
+	flex-grow: 1;
+}
+
+.l-sidebar-side-lg {
+	flex-basis: getVar(sidebar-width-lg);
+	flex-grow: 1;
+}

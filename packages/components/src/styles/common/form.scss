@@ -1,10 +1,24 @@
-@import '../config/main.scss';
-
-.form-sidebar {
+form {
 	font: menu;
-	@include layout-form();
+	// @include layout-form();
+}
 
-	> * + * {
-		margin-left: 1em;
-	}
+label {
+	display: block;
+}
+
+input,
+button,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	padding: getVar(padding-md);
+	border: 1px solid getVar(gray-1);
+	border-radius: getVar(radius-base);
+}
+
+[disabled] {
+	color: getVar(gray-1);
+	cursor: not-allowed;
 }

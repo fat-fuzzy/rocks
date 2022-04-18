@@ -18,7 +18,6 @@
 </ul>
 
 <style lang="scss">
-	@import '../styles/config/main.scss';
 	.projects {
 		list-style: none;
 		padding-left: 0;

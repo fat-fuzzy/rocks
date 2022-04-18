@@ -36,7 +36,7 @@
 
 <style lang="scss">
 	@import '../../styles/config/variables.scss';
-	@import '../../styles/components/nav.scss';
+	@import '../../styles/blocks/nav.scss';
 
 	header {
 		display: flex;

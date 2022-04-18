@@ -3,7 +3,6 @@
 </script>
 
 <script>
-	import Fieldset from '$lib/Fieldset.svelte'
 	import Toggle from '$lib/toggle/Toggle.svelte'
 	import SignIn from '$lib/signIn/SignIn.svelte'
 </script>
@@ -12,15 +11,7 @@
 	<title>State Machines</title>
 </svelte:head>
 
-<form class="form-sidebar">
-	<Fieldset slug="toggle" label="Toggle" size="md">
-		<Toggle />
-	</Fieldset>
-	<Fieldset slug="signIn" label="SignIn" size="md">
-		<SignIn />
-	</Fieldset>
+<form class="l-stack l-wrapper lg">
+	<Toggle />
+	<SignIn />
 </form>
-
-<style lang="scss">
-	@import '../../styles/common/form.scss';
-</style>
