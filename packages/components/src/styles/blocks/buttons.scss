@@ -1,5 +1,3 @@
-@import '../main.scss';
-
 button {
 	color: getVar(color-dark);
 	background-color: getVar(color-light);
@@ -26,4 +24,20 @@ button:focus {
 		font: unset;
 		padding: getVar(padding-xs) getVar(padding-sm);
 	}
+}
+
+.link {
+	border: none;
+	background-color: inherit;
+	padding: getVar(padding-xs);
+}
+
+.primary {
+	border-color: getVar(primary);
+	background-color: getVar(primary);
+	color: getVar(color-light);
+}
+
+.primary:disabled {
+	background-color: getVar(primary-disabled);
 }
