@@ -3,6 +3,7 @@
 	import {useMachine} from '@xstate/svelte'
 	import machineConfig from './machineConfig'
 	import initMachineOptions, {Events} from './initMachineOptions'
+	import Fieldset from '../Fieldset.svelte'
 
 	let emailInput
 	let passwordInput
@@ -114,78 +115,85 @@
 	$: errEmail = isNoEmail || isEmailBadFormat
 	$: errForm = isLoginFailed
 
-	$: emailInputClass = errEmail ? 'error' : ''
-	$: passwordInputClass = errPassword ? 'error' : ''
 	$: loading = $state.matches('loading')
 	$: resetPassword = $state.matches('resetPassword')
 	$: forgotPassword = $state.matches('forgotPassword')
 	$: showPasswordInput = !resetPassword && !forgotPassword
 	$: resetButtonLabel = showPasswordInput ? 'Forgot password' : 'Reset password'
+
+	$: emailInputClass = errEmail ? 'error' : ''
+	$: passwordInputClass = errPassword ? 'error' : ''
+	$: resetButtonClass = showPasswordInput ? 'link' : 'primary'
 </script>
 
-<label for="email"> Email </label>
-<input
-	id="email"
-	type="text"
-	value={email}
-	class={emailInputClass}
-	disabled={loading || resetPassword}
-	bind:this={emailInput}
-	on:change={handleEmailChange}
-/>
-{#if errEmail}
-	<small class="error">
-		{#if isNoEmail} <p>Please enter your email</p>{/if}
-		{#if isEmailBadFormat} <p>Please check your email</p>{/if}
-	</small>
-{/if}
-
-{#if showPasswordInput}
-	<label for="password"> Password </label>
+<Fieldset slug="signIn" label="Sign In" size="sm">
+	<label for="email"> Email </label>
 	<input
-		id="password"
-		type="password"
-		value={password}
-		class={passwordInputClass}
-		disabled={loading}
-		bind:this={passwordInput}
-		on:change={handlePasswordChange}
+		id="email"
+		type="text"
+		value={email}
+		class={emailInputClass}
+		disabled={loading || resetPassword}
+		bind:this={emailInput}
+		on:change={handleEmailChange}
 	/>
-	{#if errPassword}
+	{#if errEmail}
 		<small class="error">
-			{#if isNoPassword} <p>Please fill in your password</p>{/if}
-			{#if isEmailBadFormat} <p>Password length is too short</p>{/if}
+			{#if isNoEmail} <p>Please enter your email</p>{/if}
+			{#if isEmailBadFormat} <p>Please check your email</p>{/if}
 		</small>
 	{/if}
-{/if}
-{#if errForm}
-	<small class="error">
-		{#if isLoginFailed} <p>Login failed: invalid email or password</p>{/if}
-	</small>
-{/if}
-{#if showPasswordInput}
-	<button
-		type="submit"
-		disabled={loading || errPassword || errEmail}
-		bind:this={submitButton}
-		on:click|preventDefault={handleSubmit}
-	>
-		Sign In
-	</button>
-{/if}
-<button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
-	Cancel
-</button>
-<button
-	type="button"
-	disabled={loading || resetPassword}
-	bind:this={resetButton}
-	on:click|preventDefault={handleResetButtonAction}
->
-	{resetButtonLabel}
-</button>
 
-<style lang="scss">
+	{#if showPasswordInput}
+		<label for="password"> Password </label>
+		<input
+			id="password"
+			type="password"
+			value={password}
+			class={passwordInputClass}
+			disabled={loading}
+			bind:this={passwordInput}
+			on:change={handlePasswordChange}
+		/>
+		{#if errPassword}
+			<small class="error">
+				{#if isNoPassword} <p>Please fill in your password</p>{/if}
+				{#if isEmailBadFormat} <p>Password length is too short</p>{/if}
+			</small>
+		{/if}
+	{/if}
+	{#if errForm}
+		<small class="error">
+			{#if isLoginFailed} <p>Login failed: invalid email or password</p>{/if}
+		</small>
+	{/if}
+	{#if showPasswordInput}
+		<button
+			type="submit"
+			class="primary"
+			disabled={loading || errPassword || errEmail}
+			bind:this={submitButton}
+			on:click|preventDefault={handleSubmit}
+		>
+			Sign In
+		</button>
+	{/if}
+	<button
+		type="button"
+		class={resetButtonClass}
+		disabled={loading || resetPassword}
+		bind:this={resetButton}
+		on:click|preventDefault={handleResetButtonAction}
+	>
+		{resetButtonLabel}
+	</button>
+	<button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
+		Cancel
+	</button>
+</Fieldset>
+
+<style lang="scss" global>
+	@import '../../styles/main.scss';
 	input {
 		min-width: 44ch; // anticipate error message length
 	}
