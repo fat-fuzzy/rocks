@@ -86,14 +86,10 @@
 	}
 
 	const handleCancel = (event) => {
-		if (loading) {
-			send({
-				type: Events.CANCEL,
-			})
-		} else {
-			send({
-				type: Events.CANCEL,
-			})
+		send({
+			type: Events.CANCEL,
+		})
+		if (!loading) {
 			handleResetForm()
 		}
 	}

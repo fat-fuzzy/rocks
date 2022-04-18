@@ -9,11 +9,10 @@
 
 body {
 	line-height: getVar(ratio);
-	overflow-x: hidden;
+	overflow-x: hidden; // TODO - remove
 	padding-bottom: getVar('600');
 	font-weight: getVar('300');
 	// @include apply-utility('weight', 'medium');
-	@include cover();
 }
 
 h1,
