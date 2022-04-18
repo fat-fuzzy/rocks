@@ -5,6 +5,7 @@
 	import initMachineOptions, {Events} from './initMachineOptions'
 	import Fieldset from '../Fieldset.svelte'
 
+	export let size = 'md'
 	let emailInput
 	let passwordInput
 	let submitButton
@@ -133,7 +134,7 @@
 			: ''
 </script>
 
-<Fieldset slug="signIn" label="Sign In" size="md">
+<Fieldset slug="signIn" label="Sign In" {size}>
 	{#if !isLoggedIn}
 		<label for="email"> Email </label>
 		<input

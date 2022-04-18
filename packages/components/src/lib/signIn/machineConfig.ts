@@ -207,9 +207,6 @@ const machineConfig = {
 						cond: 'isNoResponse',
 						target: 'resetPassword.authService.error.communication',
 					},
-					{
-						target: 'forgotPassword',
-					},
 				],
 			},
 			states: {
