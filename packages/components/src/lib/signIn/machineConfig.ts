@@ -42,7 +42,10 @@ const authServiceStates = {
 				},
 				login: {
 					on: {
-						SUBMIT: '#signInForm.loading',
+						SUBMIT: {
+							target: '#signInForm.loggedOut',
+							// actions: 'onLoginFailed',
+						},
 						FORGOT_PASSWORD: '#signInForm.forgotPassword',
 					},
 				},

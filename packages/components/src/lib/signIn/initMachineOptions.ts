@@ -66,6 +66,10 @@ function initMachineOptions({
 			cachePassword: assign((context, event) => ({
 				password: event.password,
 			})),
+			onLoginFailed: assign(() => ({
+				email: '',
+				password: '',
+			})),
 			onSuccess: assign(() => {
 				alert('🎉 Signed in')
 			}),

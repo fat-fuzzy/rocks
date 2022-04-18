@@ -33,6 +33,17 @@
 		delay(() => submitButton.focus())
 	}
 
+	const handleResetForm = () => {
+		send({
+			type: Events.INPUT_EMAIL,
+			email: '',
+		})
+		send({
+			type: Events.INPUT_PASSWORD,
+			password: '',
+		})
+	}
+
 	const handleEmailChange = (event) => {
 		send({
 			type: Events.INPUT_EMAIL,
@@ -67,9 +78,16 @@
 	}
 
 	const handleCancel = (event) => {
-		send({
-			type: Events.CANCEL,
-		})
+		if (loading) {
+			send({
+				type: Events.CANCEL,
+			})
+		} else {
+			send({
+				type: Events.CANCEL,
+			})
+			handleResetForm()
+		}
 	}
 
 	const machineOptions = initMachineOptions({
@@ -117,13 +135,13 @@
 />
 {#if errEmail}
 	<small class="error">
-		{#if isNoEmail} <p>Please fill in your email</p>{/if}
+		{#if isNoEmail} <p>Please enter your email</p>{/if}
 		{#if isEmailBadFormat} <p>Please check your email</p>{/if}
 	</small>
 {/if}
-<label for="password"> Password </label>
 
 {#if showPasswordInput}
+	<label for="password"> Password </label>
 	<input
 		id="password"
 		type="password"
@@ -142,13 +160,13 @@
 {/if}
 {#if errForm}
 	<small class="error">
-		{#if isLoginFailed} <p>Login failed. Invalid email or password.</p>{/if}
+		{#if isLoginFailed} <p>Login failed: invalid email or password</p>{/if}
 	</small>
 {/if}
 {#if showPasswordInput}
 	<button
 		type="submit"
-		disabled={loading}
+		disabled={loading || errPassword || errEmail}
 		bind:this={submitButton}
 		on:click|preventDefault={handleSubmit}
 	>
@@ -160,7 +178,7 @@
 </button>
 <button
 	type="button"
-	disabled={resetPassword}
+	disabled={loading || resetPassword}
 	bind:this={resetButton}
 	on:click|preventDefault={handleResetButtonAction}
 >
