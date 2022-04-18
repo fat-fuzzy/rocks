@@ -9,9 +9,15 @@ button,
 select,
 textarea {
 	font: menu;
-	padding: getVar(padding-lg);
 	border: 1px solid getVar(gray-1);
 	border-radius: getVar(radius-base);
+}
+
+input,
+button:not(.link),
+select,
+textarea {
+	padding: getVar(padding-md);
 }
 
 [disabled] {

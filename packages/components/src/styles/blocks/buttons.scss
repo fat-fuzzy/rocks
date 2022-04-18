@@ -27,9 +27,10 @@ button:focus {
 }
 
 .link {
+	font: menu;
 	border: none;
 	background-color: inherit;
-	padding: getVar(padding-xs);
+	padding: 0 getVar(padding-xs);
 }
 
 .primary {

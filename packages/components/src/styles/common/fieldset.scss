@@ -6,12 +6,63 @@
 
 .l-stack.fieldset {
 	> legend + * {
-		margin-block-start: calc(getVar(margin-block-xs) * getVar(s-1));
+		margin-block-start: getVar('200');
 	}
 
 	> * + .feedback {
 		margin-block-start: getVar('100');
-		min-height: getVar('400');
+		min-height: getVar('200');
+	}
+
+	&.xs {
+		> legend + * {
+			margin-block-start: getVar('200');
+		}
+
+		> * + .feedback {
+			margin-block-start: getVar('100');
+			min-height: getVar('600');
+		}
+	}
+	&.sm {
+		> legend + * {
+			margin-block-start: getVar('300');
+		}
+
+		> * + .feedback {
+			margin-block-start: getVar('200');
+			min-height: getVar('300');
+		}
+	}
+	&.md {
+		> legend + * {
+			margin-block-start: getVar('400');
+		}
+
+		> * + .feedback {
+			margin-block-start: getVar('300');
+			min-height: getVar('400');
+		}
+	}
+	&.lg {
+		> legend + * {
+			margin-block-start: getVar('500');
+		}
+
+		> * + .feedback {
+			margin-block-start: getVar('400');
+			min-height: getVar('500');
+		}
+	}
+	&.xl {
+		> legend + * {
+			margin-block-start: getVar('600');
+		}
+
+		> * + .feedback {
+			margin-block-start: getVar('500');
+			min-height: getVar('600');
+		}
 	}
 }
 
@@ -23,13 +74,23 @@
 }
 
 fieldset.xs {
-	min-width: 10ch; // anticipate error message length
+	min-width: 15ch; // anticipate error message length
 
 	input,
 	button,
 	select,
 	textarea {
+		font-size: getVar('200');
+	}
+	input,
+	button:not(.link),
+	select,
+	textarea {
 		padding: getVar(padding-xs);
+	}
+	label,
+	.feedback {
+		font-size: getVar('100');
 	}
 }
 fieldset.sm {
@@ -38,7 +99,17 @@ fieldset.sm {
 	button,
 	select,
 	textarea {
+		font-size: getVar('300');
+	}
+	input,
+	button:not(.link),
+	select,
+	textarea {
 		padding: getVar(padding-sm);
+	}
+	label,
+	.feedback {
+		font-size: getVar('200');
 	}
 }
 fieldset.md {
@@ -47,7 +118,17 @@ fieldset.md {
 	button,
 	select,
 	textarea {
+		font-size: getVar('400');
+	}
+	input,
+	button:not(.link),
+	select,
+	textarea {
 		padding: getVar(padding-md);
+	}
+	label,
+	.feedback {
+		font-size: getVar('300');
 	}
 }
 fieldset.lg {
@@ -56,7 +137,17 @@ fieldset.lg {
 	button,
 	select,
 	textarea {
+		font-size: getVar('400');
+	}
+	input,
+	button:not(.link),
+	select,
+	textarea {
 		padding: getVar(padding-lg);
+	}
+	label,
+	.feedback {
+		font-size: getVar('300');
 	}
 }
 fieldset.xl {
@@ -65,6 +156,16 @@ fieldset.xl {
 	button,
 	select,
 	textarea {
+		font-size: getVar('400');
+	}
+	input,
+	button:not(.link),
+	select,
+	textarea {
 		padding: getVar(padding-xl);
+	}
+	label,
+	.feedback {
+		font-size: getVar('300');
 	}
 }
