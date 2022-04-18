@@ -2,13 +2,14 @@
 	import {createMachine} from 'xstate'
 	import {useMachine} from '@xstate/svelte'
 	import machineConfig from './machineConfig'
-	import initMachineOptions from './initMachineOptions'
+	import initMachineOptions, {Events} from './initMachineOptions'
 
 	let emailInput
 	let passwordInput
 	let submitButton
 	let cancelButton
 	let resetButton
+	let resetPassword = false
 
 	const delay = (func) => setTimeout(() => func())
 
@@ -34,33 +35,40 @@
 
 	const handleEmailChange = (event) => {
 		send({
-			type: 'INPUT_EMAIL',
+			type: Events.INPUT_EMAIL,
 			email: event.target.value,
 		})
 	}
 
 	const handlePasswordChange = (event) => {
 		send({
-			type: 'INPUT_PASSWORD',
+			type: Events.INPUT_PASSWORD,
 			password: event.target.value,
 		})
 	}
 
 	const handleSubmit = (event) => {
 		send({
-			type: 'SUBMIT',
+			type: Events.SUBMIT,
 		})
 	}
 
-	const handleReset = (event) => {
-		send({
-			type: 'RESET',
-		})
+	const handleResetButtonAction = (event) => {
+		if (forgotPassword) {
+			send({
+				type: Events.RESET_PASSWORD,
+				email: event.target.value,
+			})
+		} else {
+			send({
+				type: Events.FORGOT_PASSWORD,
+			})
+		}
 	}
 
 	const handleCancel = (event) => {
 		send({
-			type: 'CANCEL',
+			type: Events.CANCEL,
 		})
 	}
 
@@ -75,9 +83,12 @@
 
 	$: email = $state.context.email
 	$: password = $state.context.password
-
-	$: isNoEmail = $state.matches('loggedOut.email.error.empty')
-	$: isEmailBadFormat = $state.matches('loggedOut.email.error.badFormat')
+	$: isNoEmail =
+		$state.matches('loggedOut.email.error.empty') ||
+		$state.matches('forgotPassword.email.error.empty')
+	$: isEmailBadFormat =
+		$state.matches('loggedOut.email.error.badFormat') ||
+		$state.matches('forgotPassword.email.error.badFormat')
 	$: isNoPassword = $state.matches('loggedOut.password.error.empty')
 	$: isPasswordShort = $state.matches('loggedOut.password.error.tooShort')
 	$: isLoginFailed = $state.matches('loggedOut.authService.error.login')
@@ -88,6 +99,10 @@
 	$: emailInputClass = errEmail ? 'error' : ''
 	$: passwordInputClass = errPassword ? 'error' : ''
 	$: loading = $state.matches('loading')
+	$: resetPassword = $state.matches('resetPassword')
+	$: forgotPassword = $state.matches('forgotPassword')
+	$: showPasswordInput = !resetPassword && !forgotPassword
+	$: resetButtonLabel = showPasswordInput ? 'Forgot password' : 'Reset password'
 </script>
 
 <label for="email"> Email </label>
@@ -96,6 +111,7 @@
 	type="text"
 	value={email}
 	class={emailInputClass}
+	disabled={loading || resetPassword}
 	bind:this={emailInput}
 	on:change={handleEmailChange}
 />
@@ -106,43 +122,49 @@
 	</small>
 {/if}
 <label for="password"> Password </label>
-<input
-	id="password"
-	type="password"
-	value={password}
-	class={passwordInputClass}
-	bind:this={passwordInput}
-	on:change={handlePasswordChange}
-/>
-{#if errPassword}
-	<small class="error">
-		{#if isNoPassword} <p>Please fill in your password</p>{/if}
-		{#if isEmailBadFormat} <p>Password length is too short</p>{/if}
-	</small>
+
+{#if showPasswordInput}
+	<input
+		id="password"
+		type="password"
+		value={password}
+		class={passwordInputClass}
+		disabled={loading}
+		bind:this={passwordInput}
+		on:change={handlePasswordChange}
+	/>
+	{#if errPassword}
+		<small class="error">
+			{#if isNoPassword} <p>Please fill in your password</p>{/if}
+			{#if isEmailBadFormat} <p>Password length is too short</p>{/if}
+		</small>
+	{/if}
 {/if}
 {#if errForm}
 	<small class="error">
-		{#if isLoginFailed} <p>Login failed. Invalid user ID or password.</p>{/if}
+		{#if isLoginFailed} <p>Login failed. Invalid email or password.</p>{/if}
 	</small>
 {/if}
-<button
-	type="submit"
-	disabled={loading}
-	bind:this={submitButton}
-	on:click|preventDefault={handleSubmit}
->
-	Sign In
-</button>
+{#if showPasswordInput}
+	<button
+		type="submit"
+		disabled={loading}
+		bind:this={submitButton}
+		on:click|preventDefault={handleSubmit}
+	>
+		Sign In
+	</button>
+{/if}
 <button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
 	Cancel
 </button>
 <button
 	type="button"
-	disabled={loading}
+	disabled={resetPassword}
 	bind:this={resetButton}
-	on:click|preventDefault={handleReset}
+	on:click|preventDefault={handleResetButtonAction}
 >
-	Forgot password
+	{resetButtonLabel}
 </button>
 
 <style lang="scss">

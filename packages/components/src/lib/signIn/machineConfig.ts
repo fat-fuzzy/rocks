@@ -43,13 +43,15 @@ const authServiceStates = {
 				login: {
 					on: {
 						SUBMIT: '#signInForm.loading',
+						FORGOT_PASSWORD: '#signInForm.forgotPassword',
 					},
 				},
-				reset: {
+				forgot: {
 					on: {
-						RESET: '#signInForm.forgotPassword',
+						RESET_PASSWORD: '#signInForm.resetPassword',
 					},
 				},
+				reset: {},
 				internal: {},
 			},
 		},
@@ -66,7 +68,6 @@ const machineConfig = {
 	states: {
 		loggedOut: {
 			type: 'parallel' as const,
-			onEntry: ['error'],
 			on: {
 				INPUT_EMAIL: {
 					actions: 'cacheEmail',
@@ -97,15 +98,7 @@ const machineConfig = {
 						target: 'loading',
 					},
 				],
-				RESET: [
-					{
-						cond: 'isNoEmail',
-						target: 'loggedOut.email.error.empty',
-					},
-					{
-						cond: 'isEmailBadFormat',
-						target: 'loggedOut.email.error.badFormat',
-					},
+				FORGOT_PASSWORD: [
 					{
 						target: 'forgotPassword',
 					},
@@ -149,25 +142,48 @@ const machineConfig = {
 		},
 		forgotPassword: {
 			on: {
+				INPUT_EMAIL: {
+					actions: 'cacheEmail',
+					target: 'forgotPassword.email.noError',
+				},
+				RESET_PASSWORD: [
+					{
+						cond: 'isNoEmail',
+						target: 'forgotPassword.email.error.empty',
+					},
+					{
+						cond: 'isEmailBadFormat',
+						target: 'forgotPassword.email.error.badFormat',
+					},
+					{
+						target: 'resetPassword',
+					},
+				],
+				CANCEL: [
+					{
+						target: 'loggedOut',
+					},
+				],
+			},
+			states: {
+				email: {...emailStates},
+				authService: {...authServiceStates},
+			},
+		},
+		resetPassword: {
+			on: {
 				CANCEL: 'loggedOut',
 			},
 			invoke: {
 				src: 'requestNewPassword',
 				onDone: {
 					actions: 'isPasswordRecoveryMaybe',
+					target: 'loggedOut',
 				},
 				onError: [
 					{
-						cond: 'isNoEmail',
-						target: 'loggedOut.email.error.empty',
-					},
-					{
-						cond: 'isEmailBadFormat',
-						target: 'loggedOut.email.error.badFormat',
-					},
-					{
 						cond: 'isNoResponse',
-						target: 'loggedOut.authService.error.communication',
+						target: 'forgotPassword.authService.error.communication',
 					},
 				],
 			},

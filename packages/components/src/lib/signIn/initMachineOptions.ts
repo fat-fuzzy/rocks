@@ -2,16 +2,34 @@ import {assign} from 'xstate'
 import {isEmail} from 'validator'
 import {authenticate, requestPassword} from './authService'
 
-const isNoEmail = (context, event) => {
-	return event.type === 'SUBMIT' && context.email.length === 0
+export const Events = {
+	SUBMIT: 'SUBMIT',
+	CANCEL: 'CANCEL',
+	FORGOT_PASSWORD: 'FORGOT_PASSWORD',
+	RESET_PASSWORD: 'RESET_PASSWORD',
+	INPUT_EMAIL: 'INPUT_EMAIL',
+	INPUT_PASSWORD: 'INPUT_PASSWORD',
 }
-const isEmailBadFormat = (context, event) =>
-	event.type === 'SUBMIT' && context.email.length > 0 && !isEmail(context.email)
-const isNoPassword = (context, event) => event.type === 'SUBMIT' && context.password.length === 0
-const isPasswordShort = (context, event) => event.type === 'SUBMIT' && context.password.length < 5
-const isLoginFailed = (context, event) => event.data.code === 2
+
+const testEmailEventType = (event) =>
+	event.type === Events.SUBMIT ||
+	event.type === Events.RESET_PASSWORD ||
+	event.type === Events.INPUT_EMAIL
+const isNoEmail = (context, event) => {
+	const eventType = testEmailEventType(event)
+	return eventType && context.email.length === 0
+}
+const isEmailBadFormat = (context, event) => {
+	const eventType = testEmailEventType(event)
+	return eventType && context.email.length > 0 && !isEmail(context.email)
+}
+const isNoPassword = (context, event) =>
+	event.type === Events.SUBMIT && context.password.length === 0
+const isPasswordShort = (context, event) =>
+	event.type === Events.SUBMIT && context.password.length < 5
+const isSignInEmailSent = (context, event) => event.data.code === 0
 const isPasswordRecoveryMaybe = (context, event) => event.data.code === 1
-const isSignInEmailSent = (context, event) => event.data.code === 1
+const isLoginFailed = (context, event) => event.data.code === 2
 const isNoResponse = (context, event) => event.data.code === 3
 const isInternalServerErr = (context, event) => event.data.code === 4
 
