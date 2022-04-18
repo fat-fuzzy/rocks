@@ -35,11 +35,11 @@ $theme-layout: (
 	orientation-portrait: portrait,
 	orientation-landscape: landscape,
 
-	padding-xs: 2px,
-	padding-sm: 4px,
-	padding-md: 8px,
-	padding-lg: 12px,
-	padding-xl: 16px,
+	padding-xs: 4px,
+	padding-sm: 6px,
+	padding-md: 10px,
+	padding-lg: 16px,
+	padding-xl: 20px,
 
 	margin-nul: 0,
 	margin-xs: 1px,
@@ -62,12 +62,11 @@ $theme-layout: (
 
 	sidebar-height-sm: 140px,
 	sidebar-height-md: 240px,
-	sidebar-width-xs: 10ch,
-	sidebar-width-sm: 20ch,
-	sidebar-width-md: 30ch,
-	sidebar-width-lg: 50ch,
-	sidebar-width-xl: 70ch,
-
+	sidebar-width-xs: calc(10ch + calc(2 * var(--#{$theme-prefix}-padding-xs))),
+	sidebar-width-sm: calc(20ch + calc(2 * var(--#{$theme-prefix}-padding-sm))),
+	sidebar-width-md: calc(30ch + calc(2 * var(--#{$theme-prefix}-padding-md))),
+	sidebar-width-lg: calc(40ch + calc(2 * var(--#{$theme-prefix}-padding-lg))),
+	sidebar-width-xl: calc(50ch + calc(2 * var(--#{$theme-prefix}-padding-xl))),
 	radius-nul: 0,
 	radius-base: 3px,
 	radius-lg: 5px,
@@ -149,6 +148,8 @@ $base-size: 1rem;
 /// your whole project.
 ///
 $size-scale: (
+	'100': $base-size * 0.65,
+	'200': $base-size * 0.75,
 	'300': $base-size * 0.8,
 	'400': $base-size,
 	'500': $base-size * 1.25,

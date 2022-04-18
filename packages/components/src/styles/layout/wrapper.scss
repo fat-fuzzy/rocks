@@ -1,6 +1,25 @@
 .l-wrapper {
-	max-width: getVar(sidebar-width-xl);
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0 getVar('500');
+}
+
+.l-wrapper.xs {
+	max-width: getVar(sidebar-width-xs);
+}
+
+.l-wrapper.sm {
+	max-width: getVar(sidebar-width-sm);
+}
+
+.l-wrapper.md {
+	max-width: getVar(sidebar-width-md);
+}
+
+.l-wrapper.lg {
+	max-width: getVar(sidebar-width-lg);
+}
+
+.l-wrapper.xl {
+	max-width: getVar(sidebar-width-xl);
 }

@@ -4,13 +4,15 @@
 	border: 1px solid getVar(color-dark);
 }
 
-.l-stack.fieldset > legend + * {
-	margin-block-start: getVar(margin-block-lg);
-}
+.l-stack.fieldset {
+	> legend + * {
+		margin-block-start: calc(getVar(margin-block-xs) * getVar(s-1));
+	}
 
-.l-stack.fieldset > * + .feedback {
-	margin-block-start: getVar('300');
-	min-height: getVar('400');
+	> * + .feedback {
+		margin-block-start: getVar('100');
+		min-height: getVar('400');
+	}
 }
 
 .fieldset {
@@ -18,4 +20,51 @@
 	font-weight: bold;
 	border-radius: 3px;
 	border: 1px solid getVar(color-dark);
+}
+
+fieldset.xs {
+	min-width: 10ch; // anticipate error message length
+
+	input,
+	button,
+	select,
+	textarea {
+		padding: getVar(padding-xs);
+	}
+}
+fieldset.sm {
+	min-width: 20ch; // anticipate error message length
+	input,
+	button,
+	select,
+	textarea {
+		padding: getVar(padding-sm);
+	}
+}
+fieldset.md {
+	min-width: 30ch; // anticipate error message length
+	input,
+	button,
+	select,
+	textarea {
+		padding: getVar(padding-md);
+	}
+}
+fieldset.lg {
+	min-width: 40ch; // anticipate error message length
+	input,
+	button,
+	select,
+	textarea {
+		padding: getVar(padding-lg);
+	}
+}
+fieldset.xl {
+	min-width: 60ch; // anticipate error message length
+	input,
+	button,
+	select,
+	textarea {
+		padding: getVar(padding-xl);
+	}
 }

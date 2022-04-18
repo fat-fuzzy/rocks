@@ -11,14 +11,16 @@
 		primary: {control: 'boolean'},
 		backgroundColor: {control: 'color'},
 		size: {
-			control: {type: 'select', options: ['small', 'medium', 'large']},
+			control: {type: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl']},
 		},
 		onClick: {action: 'onClick'},
 	}}
 />
 
 <Template let:args>
-	<SignIn {...args} on:click={args.onClick} />
+	<form class={`l-stack l-wrapper ${args.size}`}>
+		<SignIn {...args} on:click={args.onClick} />
+	</form>
 </Template>
 
 <Story name="Labeled" args={{primary: true, label: 'Check me'}} />

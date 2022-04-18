@@ -8,8 +8,6 @@
 	let emailInput
 	let passwordInput
 	let submitButton
-	let cancelButton
-	let resetButton
 	let resetPassword = false
 
 	const delay = (func) => setTimeout(() => func())
@@ -135,7 +133,7 @@
 			: ''
 </script>
 
-<Fieldset slug="signIn" label="Sign In" size="sm">
+<Fieldset slug="signIn" label="Sign In" size="md">
 	{#if !isLoggedIn}
 		<label for="email"> Email </label>
 		<input
@@ -187,27 +185,19 @@
 			type="button"
 			class={resetButtonClass}
 			disabled={loading || resetPassword || errEmail}
-			bind:this={resetButton}
 			on:click|preventDefault={handleResetButtonAction}
 		>
 			{resetButtonLabel}
 		</button>
-		<button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
-			Cancel
-		</button>
+		<button type="button" on:click|preventDefault={handleCancel}> Cancel </button>
 	{/if}
 
 	{#if isLoggedIn}
 		<h2>Welcome!</h2>
-		<button type="button" bind:this={cancelButton} on:click|preventDefault={handleLogout}>
-			Logout
-		</button>
+		<button type="button" on:click|preventDefault={handleLogout}> Logout </button>
 	{/if}
 </Fieldset>
 
 <style lang="scss" global>
 	@import '../../styles/main.scss';
-	fieldset {
-		min-width: 26ch; // anticipate error message length
-	}
 </style>
