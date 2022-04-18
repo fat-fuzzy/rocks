@@ -14,16 +14,16 @@
 		min-height: getVar('200');
 	}
 
-	&.xs {
-		> legend + * {
-			margin-block-start: getVar('200');
-		}
+	// &.xs {
+	// 	> legend + * {
+	// 		margin-block-start: getVar('200');
+	// 	}
 
-		> * + .feedback {
-			margin-block-start: getVar('100');
-			min-height: getVar('600');
-		}
-	}
+	// 	> * + .feedback {
+	// 		margin-block-start: getVar('100');
+	// 		min-height: getVar('200');
+	// 	}
+	// }
 	&.sm {
 		> legend + * {
 			margin-block-start: getVar('300');
@@ -46,22 +46,22 @@
 	}
 	&.lg {
 		> legend + * {
-			margin-block-start: getVar('500');
+			margin-block-start: getVar('400');
 		}
 
 		> * + .feedback {
 			margin-block-start: getVar('400');
-			min-height: getVar('500');
+			min-height: getVar('400');
 		}
 	}
 	&.xl {
 		> legend + * {
-			margin-block-start: getVar('600');
+			margin-block-start: getVar('500');
 		}
 
 		> * + .feedback {
 			margin-block-start: getVar('500');
-			min-height: getVar('600');
+			min-height: getVar('400');
 		}
 	}
 }

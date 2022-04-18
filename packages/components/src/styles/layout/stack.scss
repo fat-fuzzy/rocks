@@ -15,27 +15,27 @@
 }
 
 .l-stack > * + * {
-	margin-block-start: getVar(400);
+	margin-block-start: getVar(200);
 }
 
 .l-stack-recursive * + * {
-	margin-block-start: getVar(400);
+	margin-block-start: getVar(200);
 }
 
 .l-stack.xl > * + * {
-	margin-block-start: getVar(500);
-}
-
-.l-stack.lg > * + * {
 	margin-block-start: getVar(400);
 }
 
-.l-stack.md > * + * {
+.l-stack.lg > * + * {
 	margin-block-start: getVar(300);
 }
 
-.l-stack.sm > * + * {
+.l-stack.md > * + * {
 	margin-block-start: getVar(200);
+}
+
+.l-stack.sm > * + * {
+	margin-block-start: getVar(100);
 }
 
 .l-stack.xs > * + * {
