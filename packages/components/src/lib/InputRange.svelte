@@ -1,36 +1,50 @@
 <script>
-  import { createEventDispatcher } from 'svelte'
+	import {createEventDispatcher} from 'svelte'
 
-  const dispatch = createEventDispatcher()
+	const dispatch = createEventDispatcher()
 
-  // @ts-check
-  export let label = ''
-  export let value = 0
-  export let min = 0
-  export let max = 0
-  export let step = '1'
+	// @ts-check
+	export let label = ''
+	export let value = 0
+	export let min = 0
+	export let max = 0
+	export let step = '1'
 
-  const handleInput = () => {
-    dispatch('input', {
-      value,
-    })
-  }
+	const handleInput = () => {
+		dispatch('input', {
+			value,
+		})
+	}
 </script>
 
-<label>
-  {label}:
-  {value}
-  <input
-    data-cy={`${label}-range`}
-    type="range"
-    bind:value
-    {min}
-    {max}
-    {step}
-    on:input={handleInput}
-  />
+<label for={`${label}-range`}>
+	{label}:
+	{value}
 </label>
+<input
+	id={`${label}-range`}
+	data-cy={`${label}-range`}
+	type="range"
+	bind:value
+	{min}
+	{max}
+	{step}
+	on:input={handleInput}
+/>
 
 <style lang="scss">
-  @import '../styles/common/input.scss';
+	label {
+		font: inherit;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+		padding: getVar(margin-sm) getVar(margin-xs) getVar(margin-sm);
+		width: 100%;
+		max-width: 100%;
+	}
+
+	input {
+		width: 100%;
+	}
 </style>

@@ -1,23 +1,23 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-	import { animations } from '../stores.js';
+	import {createEventDispatcher} from 'svelte'
+	import {animations} from '../stores.js'
 
-	const dispatch = createEventDispatcher();
-	let menumItems = [];
+	const dispatch = createEventDispatcher()
+	let menumItems = []
 
 	function getLabel(emoji, name) {
-		return `${emoji} ${name}`;
+		return `${emoji} ${name}`
 	}
 	animations.subscribe((value) => {
-		menumItems = value;
-	});
+		menumItems = value
+	})
 
 	const handleClick = (event) => {
-		const element = event.target;
+		const element = event.target
 		dispatch('input', {
-			animationId: element.getAttribute('id')
-		});
-	};
+			animationId: element.getAttribute('id'),
+		})
+	}
 </script>
 
 <nav data-cy="nav" class="nav">
@@ -35,5 +35,5 @@
 
 <style lang="scss">
 	// this menu will be the app nav. TODO: routes
-	@import '../styles/components/nav.scss';
+	@import '../styles/blocks/nav.scss';
 </style>

@@ -3,7 +3,3 @@
 </script>
 
 <Playground />
-
-<style lang="scss" global>
-	@import '../../styles/config/main.scss';
-</style>
