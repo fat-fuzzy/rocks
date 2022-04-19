@@ -1,20 +1,14 @@
 <script>
-	import {onMount} from 'svelte'
-
-	import EmojiButton from './EmojiButton.svelte'
+	import EmojiButton from '$lib//button/EmojiButton.svelte'
 
 	export let play = () => {}
 	export let stop = () => {}
-	export let toggleSidebar = () => {}
-	export let showHandles
 
+	let showHandles = true
 	let disabled = false
-
-	onMount(() => {
-		return () => {
-			// uiStateUnsub()
-		}
-	})
+	function toggleInputs() {
+		console.log('Toggle geometry inputs visibility')
+	}
 </script>
 
 <!-- handleBlur={playBlur} -->
@@ -38,12 +32,12 @@
 			dataCy="btn-handles"
 			buttonClass="handles"
 			buttonLabel="🕹 Handles"
-			handleClick={() => toggleSidebar()}
+			handleClick={() => toggleInputs()}
 			{disabled}
 		/>
 	{/if}
 </div>
 
 <style lang="scss">
-	@import '../styles/blocks/controls.scss';
+	@import '../../styles/main.scss';
 </style>

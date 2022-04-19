@@ -1,7 +1,7 @@
 <script>
 	import {onMount} from 'svelte'
 
-	import {uiState} from '../stores.js'
+	import {uiState} from '../../stores.js'
 
 	// Inputs
 	let emojiButton
@@ -42,5 +42,5 @@
 </button>
 
 <style lang="scss">
-	@import '../styles/main.scss';
+	@import '../../styles/main.scss';
 </style>

@@ -3,7 +3,7 @@
 </script>
 
 <nav>
-	<ul>
+	<ul class="list">
 		<li>
 			<a aria-current={segment === undefined ? 'page' : undefined} href="."> Playground </a>
 		</li>
@@ -16,6 +16,5 @@
 </nav>
 
 <style lang="scss">
-	@import '../styles/config/variables.scss';
-	@import '../styles/blocks/nav.scss';
+	@import '../styles/main.scss';
 </style>

@@ -1,6 +1,6 @@
 <script>
 	import {createEventDispatcher} from 'svelte'
-	import {animations} from '../stores.js'
+	import {animations} from '../../stores.js'
 
 	const dispatch = createEventDispatcher()
 	let menumItems = []
@@ -34,6 +34,5 @@
 </nav>
 
 <style lang="scss">
-	// this menu will be the app nav. TODO: routes
-	@import '../styles/blocks/nav.scss';
+	@import '../../styles/main.scss';
 </style>

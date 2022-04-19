@@ -6,16 +6,20 @@
 	<title>Sandbox</title>
 </svelte:head>
 
-<h1>Current Experiments</h1>
+<header>
+	<h1>✨ Project Highlights</h1>
+</header>
 
-<ul class="projects">
-	<li class="card">
-		<a sveltekit:prefetch href="/play">Play</a>
-	</li>
-	<li class="card">
-		<a sveltekit:prefetch href="/machines">Machines</a>
-	</li>
-</ul>
+<section>
+	<ul class="projects">
+		<li class="card">
+			<a sveltekit:prefetch href="/play">Play</a>
+		</li>
+		<li class="card">
+			<a sveltekit:prefetch href="/machines">Machines</a>
+		</li>
+	</ul>
+</section>
 
 <style lang="scss">
 	.projects {
