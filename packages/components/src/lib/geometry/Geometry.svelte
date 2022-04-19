@@ -1,9 +1,9 @@
 <script context="module">
 	import {onMount, createEventDispatcher} from 'svelte'
 	import {getGeometryDefaults} from '../../gl/animations.js'
-	import Position from '../Position.svelte'
-	import Scale from '../Scale.svelte'
-	import Rotation from '../Rotation.svelte'
+	import Position from '$lib/geometry/Position.svelte'
+	import Scale from '$lib/geometry/Scale.svelte'
+	import Rotation from '$lib/geometry/Rotation.svelte'
 </script>
 
 <script>
@@ -93,7 +93,3 @@
 	<Scale bind:scaleX bind:scaleY maxX={5} maxY={5} minX={-5} minY={-5} on:input={update} />
 	<Rotation bind:angle max={360} on:input={update} />
 </form>
-
-<style lang="scss">
-	@import '../../styles/main.scss';
-</style>

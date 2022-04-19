@@ -1,12 +1,15 @@
-<script>
+<script lang="ts">
 	import {createEventDispatcher} from 'svelte'
-	import InputRange from './InputRange.svelte'
+
+	import Fieldset from '$lib/form/Fieldset.svelte'
+	import InputRange from '$lib/form/InputRange.svelte'
 
 	const dispatch = createEventDispatcher()
 
+	export let size = 'md'
+	const label = 'Rotation'
 	export let angle = 0
 	export let max = 0
-	const label = 'Rotation'
 
 	function update() {
 		dispatch('input', {
@@ -15,13 +18,8 @@
 	}
 </script>
 
-<fieldset class="rotation" data-cy="rotation">
-	<legend>{label}</legend>
+<Fieldset slug="rotation" {label} {size}>
 	<!--https://css-tricks.com/accessible-svgs/-->
 	<!-- <svg id="InteractiveSVG" role="group" /> -->
 	<InputRange bind:value={angle} label="angle" {max} on:input={update} />
-</fieldset>
-
-<style lang="scss">
-	@import '../styles/blocks/fieldset.scss';
-</style>
+</Fieldset>

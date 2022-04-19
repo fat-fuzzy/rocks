@@ -7,7 +7,7 @@
 	import Feedback from '$lib/feedback/Feedback.svelte'
 	import Menu from '$lib/menu/Menu.svelte'
 
-	let showcanvas = false
+	let showcanvas = true
 	let showFeedback = !showcanvas
 	let feedback = ''
 

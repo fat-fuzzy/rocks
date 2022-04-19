@@ -5,7 +5,7 @@
 <script>
 	import Controls from '$lib/controls/Controls.svelte'
 	import Geometry from '$lib/geometry/Geometry.svelte'
-	export let show = false
+	export let show = true
 	// Canvas
 	let canvas
 	let canvasWidth = 300

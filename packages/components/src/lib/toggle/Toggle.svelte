@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import {useMachine} from '@xstate/svelte'
 	import toggleMachine from './machineConfig'
 
-	import Fieldset from '../Fieldset.svelte'
+	import Fieldset from '$lib/form/Fieldset.svelte'
 
 	export let size = 'md'
 	const {state, send} = useMachine(toggleMachine)
