@@ -67,11 +67,11 @@ const authServiceStates = {
 
 const machineConfig = {
 	id: 'signInForm',
+	initial: 'loggedOut',
 	context: {
 		email: '',
 		password: '',
 	},
-	initial: 'loggedOut',
 	states: {
 		loggedOut: {
 			type: 'parallel' as const,
