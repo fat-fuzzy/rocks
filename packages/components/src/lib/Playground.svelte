@@ -1,10 +1,10 @@
 <script context="module">
 	import {getGeometryDefaults} from '../gl/animations.js'
 	import {uiState, emojiFeedback, animations, currentAnimationId} from '../stores.js'
-	import Feedback from './Feedback.svelte'
-	import Geometry from './Geometry.svelte'
-	import Menu from './Menu.svelte'
-	import Controls from './Controls.svelte'
+	import Feedback from './feedback/Feedback.svelte'
+	import Geometry from './geometry/Geometry.svelte'
+	import Menu from './menu/Menu.svelte'
+	import Controls from './controls/Controls.svelte'
 </script>
 
 <script>
