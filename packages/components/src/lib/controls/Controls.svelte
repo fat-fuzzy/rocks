@@ -1,43 +1,29 @@
 <script>
-	import EmojiButton from '$lib//button/EmojiButton.svelte'
+	import {createEventDispatcher} from 'svelte'
+
+	import Button from '$lib/button/Button.svelte'
 
 	export let play = () => {}
 	export let stop = () => {}
+	export let interactive = true
 
-	let showHandles = true
+	const dispatch = createEventDispatcher()
 	let disabled = false
 	function toggleInputs() {
 		console.log('Toggle geometry inputs visibility')
+		dispatch('toggleInputs')
 	}
 </script>
 
 <!-- handleBlur={playBlur} -->
-<div class="controls">
-	<EmojiButton
-		dataCy="btn-play"
-		buttonClass="play"
-		buttonLabel="👾 Play"
-		handleClick={() => play()}
+<Button testId="btn-play" icon="play" label="👾 Play" handleClick={() => play()} {disabled} />
+<Button testId="btn-stop" icon="stop" label="🏁 Stop" handleClick={() => stop()} {disabled} />
+{#if interactive}
+	<Button
+		testId="btn-handles"
+		icon="handles"
+		label="🕹 Handles"
+		handleClick={() => toggleInputs()}
 		{disabled}
 	/>
-	<EmojiButton
-		dataCy="btn-stop"
-		buttonClass="stop"
-		buttonLabel="🏁 Stop"
-		handleClick={() => stop()}
-		{disabled}
-	/>
-	{#if showHandles}
-		<EmojiButton
-			dataCy="btn-handles"
-			buttonClass="handles"
-			buttonLabel="🕹 Handles"
-			handleClick={() => toggleInputs()}
-			{disabled}
-		/>
-	{/if}
-</div>
-
-<style lang="scss">
-	@import '../../styles/main.scss';
-</style>
+{/if}
