@@ -15,15 +15,17 @@
 	}
 </script>
 
-<!-- handleBlur={playBlur} -->
-<Button testId="btn-play" icon="play" label="👾 Play" handleClick={() => play()} {disabled} />
-<Button testId="btn-stop" icon="stop" label="🏁 Stop" handleClick={() => stop()} {disabled} />
-{#if interactive}
-	<Button
-		testId="btn-handles"
-		icon="handles"
-		label="🕹 Handles"
-		handleClick={() => toggleInputs()}
-		{disabled}
-	/>
-{/if}
+<div>
+	<!-- handleBlur={playBlur} -->
+	<Button testId="btn-play" icon="play" label="👾 Play" handleClick={() => play()} {disabled} />
+	<Button testId="btn-stop" icon="stop" label="🏁 Stop" handleClick={() => stop()} {disabled} />
+	{#if interactive}
+		<Button
+			testId="btn-handles"
+			icon="handles"
+			label="🕹 Handles"
+			handleClick={() => toggleInputs()}
+			{disabled}
+		/>
+	{/if}
+</div>

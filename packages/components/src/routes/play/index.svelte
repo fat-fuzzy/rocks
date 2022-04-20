@@ -33,12 +33,12 @@
 	<h1>👾 Playground</h1>
 </header>
 
-<section class="l-sidebar u-main sm">
+<section class="l-sidebar xs">
+	<div class="l-sidebar-side">
+		<Menu on:input={loadAnimation} />
+	</div>
 	<div class="l-sidebar-main">
 		<Canvas show={showcanvas} {animation} />
 		<Feedback {feedback} show={showFeedback} />
-	</div>
-	<div class="l-sidebar-side">
-		<Menu on:input={loadAnimation} />
 	</div>
 </section>

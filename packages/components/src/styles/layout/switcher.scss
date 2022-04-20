@@ -1,11 +1,36 @@
-.l-switcher > * {
+.l-switcher {
 	display: flex;
 	flex-wrap: wrap;
-	gap: getVar(margin-md);
+	gap: getVar(margin-xs);
+	--threshold: getVar(sidebar-width-xl);
+}
+
+.l-switcher.xs {
+	gap: getVar(margin-xs);
+	--threshold: getVar(sidebar-width-xs);
+}
+
+.l-switcher.sm {
+	gap: getVar(margin-sm);
 	--threshold: getVar(sidebar-width-sm);
 }
 
-.l-switcher > * > * {
+.l-switcher.md {
+	gap: getVar(margin-md);
+	--threshold: getVar(sidebar-width-md);
+}
+
+.l-switcher.lg {
+	gap: getVar(margin-lg);
+	--threshold: getVar(sidebar-width-lg);
+}
+
+.l-switcher.xl {
+	gap: getVar(margin-xl);
+	--threshold: getVar(sidebar-width-xl);
+}
+
+.l-switcher > * {
 	flex-grow: 1;
 	flex-basis: calc((var(--threshold) - 100%) * 999);
 }

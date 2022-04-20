@@ -4,7 +4,7 @@
 
 <Header />
 
-<main class="l-cover">
+<main>
 	<slot />
 </main>
 

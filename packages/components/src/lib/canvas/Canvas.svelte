@@ -67,11 +67,12 @@
 <svelte:head>
 	<title>State Machines</title>
 </svelte:head>
-<div class="l-frame video" bind:offsetWidth={canvasWidth} bind:offsetHeight={canvasHeight}>
+<div class="l-frame video xl" bind:offsetWidth={canvasWidth} bind:offsetHeight={canvasHeight}>
 	<canvas data-test="canvas" class={canvasClass} bind:this={canvas} />
 </div>
-
-<Controls {play} {stop} on:toggleInputs={toggleHandles} {interactive} />
-{#if showGeometryInputs}
-	<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
-{/if}
+<div class="l-switcher xs">
+	<Controls {play} {stop} on:toggleInputs={toggleHandles} {interactive} />
+	{#if showGeometryInputs}
+		<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
+	{/if}
+</div>

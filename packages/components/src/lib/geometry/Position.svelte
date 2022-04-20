@@ -6,7 +6,7 @@
 
 	const dispatch = createEventDispatcher()
 
-	export let size = 'xs'
+	export let size = 'nul'
 	export let coordX = 0
 	export let coordY = 0
 	export let maxX = 0

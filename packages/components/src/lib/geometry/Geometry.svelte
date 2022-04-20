@@ -88,7 +88,7 @@
 	})
 </script>
 
-<form class="l-wrapper xs">
+<form class="l-switcher xl">
 	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} />
 	<Scale bind:scaleX bind:scaleY maxX={5} maxY={5} minX={-5} minY={-5} on:input={update} />
 	<Rotation bind:angle max={360} on:input={update} />

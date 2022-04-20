@@ -7,12 +7,11 @@
 	flex-basis: 0;
 	flex-grow: 999;
 	// ~ min-width in horizontal-tb writing mode: if (width < 50%) -> wrap
-	min-inline-size: 65%;
+	min-inline-size: 75%;
 }
 
 // adjusts to width of contents
 .l-sidebar-side {
-	flex-basis: getVar(sidebar-width-md);
 	flex-grow: 1;
 }
 

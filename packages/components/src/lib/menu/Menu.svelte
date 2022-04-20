@@ -21,7 +21,7 @@
 </script>
 
 <nav data-test="nav" class="nav">
-	<ul class="l-stack sm">
+	<ul class="l-stack">
 		{#each menumItems as { name, emoji, id, type }}
 			<li>
 				<button class="btn-menu {type}" on:click={handleClick} {id} data-test={id}>

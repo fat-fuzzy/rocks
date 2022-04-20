@@ -4,7 +4,7 @@
 	import InputRange from '../form/InputRange.svelte'
 	import Fieldset from '../form/Fieldset.svelte'
 
-	export let size = 'xs'
+	export let size = 'nul'
 	export let scaleX = 0
 	export let scaleY = 0
 	export let minX = 0

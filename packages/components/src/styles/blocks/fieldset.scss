@@ -5,25 +5,22 @@
 }
 
 .l-stack.fieldset {
-	> legend + * {
-		margin-block-start: getVar('200');
+	&.nul {
+		> * + * {
+			margin-block-start: 0;
+			min-height: 0;
+		}
 	}
+	&.xs {
+		> legend + * {
+			margin-block-start: getVar('100');
+		}
 
-	> * + .feedback {
-		margin-block-start: getVar('100');
-		min-height: getVar('200');
+		> * + .feedback {
+			margin-block-start: getVar('100');
+			min-height: getVar('100');
+		}
 	}
-
-	// &.xs {
-	// 	> legend + * {
-	// 		margin-block-start: getVar('200');
-	// 	}
-
-	// 	> * + .feedback {
-	// 		margin-block-start: getVar('100');
-	// 		min-height: getVar('200');
-	// 	}
-	// }
 	&.sm {
 		> legend + * {
 			margin-block-start: getVar('300');
@@ -73,9 +70,13 @@
 	border: 1px solid getVar(color-dark);
 }
 
+fieldset.nul,
 fieldset.xs {
 	min-width: 15ch; // anticipate error message length
 
+	legend {
+		font-size: getVar('300');
+	}
 	input,
 	button,
 	select,
@@ -95,6 +96,9 @@ fieldset.xs {
 }
 fieldset.sm {
 	min-width: 20ch; // anticipate error message length
+	legend {
+		font-size: getVar('400');
+	}
 	input,
 	button,
 	select,
@@ -114,6 +118,9 @@ fieldset.sm {
 }
 fieldset.md {
 	min-width: 30ch; // anticipate error message length
+	legend {
+		font-size: getVar('500');
+	}
 	input,
 	button,
 	select,
@@ -133,6 +140,9 @@ fieldset.md {
 }
 fieldset.lg {
 	min-width: 40ch; // anticipate error message length
+	legend {
+		font-size: getVar('600');
+	}
 	input,
 	button,
 	select,
@@ -152,6 +162,9 @@ fieldset.lg {
 }
 fieldset.xl {
 	min-width: 60ch; // anticipate error message length
+	legend {
+		font-size: getVar('700');
+	}
 	input,
 	button,
 	select,
