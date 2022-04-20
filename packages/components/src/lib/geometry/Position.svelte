@@ -1,12 +1,12 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import InputRange from '$lib/form/InputRange.svelte'
-	import Fieldset from '$lib/form/Fieldset.svelte'
+	import InputRange from '../form/InputRange.svelte'
+	import Fieldset from '../form/Fieldset.svelte'
 
 	const dispatch = createEventDispatcher()
 
-	export let size = 'md'
+	export let size = 'xs'
 	export let coordX = 0
 	export let coordY = 0
 	export let maxX = 0

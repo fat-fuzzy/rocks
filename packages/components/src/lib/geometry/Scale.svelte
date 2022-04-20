@@ -1,11 +1,10 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import InputRange from '$lib/form/InputRange.svelte'
-	import Fieldset from '$lib/form/Fieldset.svelte'
+	import InputRange from '../form/InputRange.svelte'
+	import Fieldset from '../form/Fieldset.svelte'
 
-	const dispatch = createEventDispatcher()
-	export let size = 'md'
+	export let size = 'xs'
 	export let scaleX = 0
 	export let scaleY = 0
 	export let minX = 0
@@ -13,6 +12,7 @@
 	export let minY = 0
 	export let maxY = 0
 
+	const dispatch = createEventDispatcher()
 	const label = 'Scale'
 
 	function updateX() {

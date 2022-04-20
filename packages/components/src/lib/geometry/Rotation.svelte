@@ -1,12 +1,12 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import Fieldset from '$lib/form/Fieldset.svelte'
-	import InputRange from '$lib/form/InputRange.svelte'
+	import Fieldset from '../form/Fieldset.svelte'
+	import InputRange from '../form/InputRange.svelte'
 
 	const dispatch = createEventDispatcher()
 
-	export let size = 'md'
+	export let size = 'xs'
 	const label = 'Rotation'
 	export let angle = 0
 	export let max = 0
