@@ -20,11 +20,11 @@
 	}
 </script>
 
-<nav data-cy="nav" class="nav">
-	<ul>
+<nav data-test="nav" class="nav">
+	<ul class="l-stack sm">
 		{#each menumItems as { name, emoji, id, type }}
 			<li>
-				<button class="btn-menu {type}" on:click={handleClick} {id} data-cy={id}>
+				<button class="btn-menu {type}" on:click={handleClick} {id} data-test={id}>
 					<!--TODO: make routes for animations-->
 					{getLabel(emoji, name)}
 				</button>

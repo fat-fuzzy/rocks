@@ -3,7 +3,7 @@
 	import {useMachine} from '@xstate/svelte'
 	import machineConfig from './machineConfig'
 	import initMachineOptions, {Events} from './initMachineOptions'
-	import Fieldset from '$lib/form/Fieldset.svelte'
+	import Fieldset from '../form/Fieldset.svelte'
 
 	export let size = 'md'
 	let emailInput
