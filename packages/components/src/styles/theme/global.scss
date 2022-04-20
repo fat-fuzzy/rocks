@@ -8,11 +8,8 @@
 }
 
 body {
-	line-height: getVar(ratio);
-	overflow-x: hidden; // TODO - remove
-	padding-bottom: getVar('600');
 	font-weight: getVar('300');
-	// @include apply-utility('weight', 'medium');
+	line-height: getVar(ratio);
 }
 
 h1,

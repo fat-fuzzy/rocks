@@ -12,20 +12,26 @@
 
 // adjusts to width of contents
 .l-sidebar-side {
-	flex-grow: 1;
-}
-
-.l-sidebar-side-sm {
-	flex-basis: getVar(sidebar-width-sm);
-	flex-grow: 1;
-}
-
-.l-sidebar-side-md {
 	flex-basis: getVar(sidebar-width-md);
 	flex-grow: 1;
 }
 
-.l-sidebar-side-lg {
+.l-sidebar.xs > .l-sidebar-side {
+	flex-basis: getVar(sidebar-width-xs);
+}
+
+.l-sidebar.sm > .l-sidebar-side {
+	flex-basis: getVar(sidebar-width-sm);
+}
+
+.l-sidebar.md > .l-sidebar-side {
+	flex-basis: getVar(sidebar-width-md);
+}
+
+.l-sidebar.lg > .l-sidebar-side {
 	flex-basis: getVar(sidebar-width-lg);
-	flex-grow: 1;
+}
+
+.l-sidebar.xl > .l-sidebar-side {
+	flex-basis: getVar(sidebar-width-xl);
 }
