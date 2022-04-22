@@ -21,10 +21,11 @@
  *
  * Will result in
  *
- * root {
- *    --prefix-var-name: value;
- *    --prefix-var-name: value;
- *    --prefix-var-name: value;
+ * :root {
+ *    --prefix-base-font-size: 65.5%,
+ *    --prefix-font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+ *    --prefix-primary-color:  #33b5e5;
+ *    --prefix-secondary-color: #ff500a,
  * }
  *
  */
@@ -59,7 +60,7 @@ $_cssvars: ();
  * Will result in
  *
  * .selector {
- *    color: getVar(prefix-primary-color);
+ *    color: var(--prefix-primary-color);
  * }
  */
 @function getVar($name, $prefix: $theme-prefix) {
@@ -81,7 +82,7 @@ $_cssvars: ();
  * Will result in
  *
  * .selector {
- *    color: getVar(prefix-primary-color);
+ *    color: getVar(--prefix-primary-color);
  * }
  * .selector--variant {
  *   --pm-button-height, 56px
