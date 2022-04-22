@@ -75,9 +75,14 @@ $theme-layout: (
 );
 
 $theme-typography: (
-	body-font-size: 10px,
+	font-family-body: #{'HelveticaNeue',
+	'Helvetica Neue',
+	Helvetica,
+	Arial,
+	sans-serif},
+
 	font-size-base: 1rem,
-	font-size-small: 0.75em,
+	font-size-sm: 0.75em,
 	font-size-h1: 2em,
 	font-size-h2: 1.85em,
 	font-size-h3: 1.65em,
@@ -90,11 +95,11 @@ $theme-typography: (
 );
 
 $breakpoints: (
-	xs: 576px,
-	sm: 768px,
-	md: 992px,
-	lg: 1200px,
-	xl: 1920px,
+	bp-xs: 320,
+	bp-sm: 768,
+	bp-md: 992,
+	bp-lg: 1200,
+	bp-xl: 1920,
 );
 
 //==
@@ -156,4 +161,75 @@ $size-scale: (
 	'600': $base-size * 1.6,
 	'700': $base-size * 2,
 	'900': $base-size * 3,
+);
+
+//== FLUID SCALE
+// Source: https://utopia.fyi/blog/css-modular-scales/
+
+$modular-scale: (
+	fluid-min-width: 320,
+	fluid-max-width: 1920,
+	fluid-min-size: 16,
+	fluid-max-size: 20,
+	fluid-min-ratio: 1.2,
+	fluid-max-ratio: 1.36,
+
+	fluid-screen: 100vw,
+	fluid-bp:
+		calc(
+			calc(
+					var(--#{$theme-prefix}-fluid-screen) -
+						calc((var(--#{$theme-prefix}-fluid-min-width) / 16) * 1rem)
+				) /
+				calc(
+					calc(var(--#{$theme-prefix}-fluid-max-width) / 16) -
+						calc(var(--#{$theme-prefix}-fluid-min-width) / 16)
+				)
+		),
+	fluid-min-scale-0: var(--#{$theme-prefix}-fluid-min-ratio),
+	fluid-min-scale-1:
+		calc(var(--#{$theme-prefix}-fluid-min-scale-0) * var(--#{$theme-prefix}-fluid-min-ratio)),
+	fluid-min-scale-2:
+		calc(var(--#{$theme-prefix}-fluid-min-scale-1) * var(--#{$theme-prefix}-fluid-min-ratio)),
+	fluid-max-scale-0: var(--#{$theme-prefix}-fluid-max-ratio),
+	fluid-max-scale-1:
+		calc(var(--#{$theme-prefix}-fluid-max-scale-0) * var(--#{$theme-prefix}-fluid-max-ratio)),
+	fluid-max-scale-2:
+		calc(var(--#{$theme-prefix}-fluid-max-scale-1) * var(--#{$theme-prefix}-fluid-max-ratio)),
+	fluid-min-size-0: calc(var(--#{$theme-prefix}-fluid-min-size) / 16),
+	fluid-min-size-1:
+		calc(
+			calc(var(--#{$theme-prefix}-fluid-min-size) * var(--#{$theme-prefix}-fluid-min-scale-0)) / 16
+		),
+	fluid-min-size-2:
+		calc(
+			calc(var(--#{$theme-prefix}-fluid-min-size) * var(--#{$theme-prefix}-fluid-min-scale-1)) / 16
+		),
+	fluid-max-size-0: calc((var(--#{$theme-prefix}-fluid-max-size)) / 16),
+	fluid-max-size-1:
+		calc(
+			calc(var(--#{$theme-prefix}-fluid-max-size) * var(--#{$theme-prefix}-fluid-max-scale-0)) / 16
+		),
+	fluid-max-size-2:
+		calc(
+			calc(var(--#{$theme-prefix}-fluid-max-size) * var(--#{$theme-prefix}-fluid-max-scale-1)) / 16
+		),
+	fluid-0:
+		calc(
+			calc(var(--#{$theme-prefix}-fluid-min-size-0) * 1rem) +
+				calc(var(--#{$theme-prefix}-fluid-max-size-0) - var(--#{$theme-prefix}-fluid-min-size-0)) *
+				var(--#{$theme-prefix}-fluid-bp)
+		),
+	fluid-1:
+		calc(
+			calc(var(--#{$theme-prefix}-fluid-min-size-1) * 1rem) +
+				calc(var(--#{$theme-prefix}-fluid-max-size-1) - var(--#{$theme-prefix}-fluid-min-size-1)) *
+				var(--#{$theme-prefix}-fluid-bp)
+		),
+	fluid-2:
+		calc(
+			calc(var(--#{$theme-prefix}-fluid-min-size-2) * 1rem) +
+				calc(var(--#{$theme-prefix}-fluid-max-size-2) - var(--#{$theme-prefix}-fluid-min-size-2)) *
+				var(--#{$theme-prefix}-fluid-bp)
+		),
 );

@@ -39,6 +39,15 @@ $_cssvars: ();
 	}
 }
 
+@mixin generateModularScale($design_tokens, $prefix: $theme-prefix, $breakpoint: $max-breakpoint) {
+	@include generateCssVars($design_tokens, $theme-prefix);
+	@include min-width(#{$breakpoint}) {
+		:root {
+			--#{$prefix}-fluid-screen: calc(var(--#{$prefix}-fluid-max-width) * 1px);
+		}
+	}
+}
+
 @mixin theme-main() {
 	@include generateCssVars($breakpoints, $theme-prefix);
 	@include generateCssVars($scale, $theme-prefix);
@@ -46,6 +55,7 @@ $_cssvars: ();
 	@include generateCssVars($theme-typography, $theme-prefix);
 	@include generateCssVars($theme-colors, $theme-prefix);
 	@include generateCssVars($theme-layout, $theme-prefix);
+	@include generateModularScale($modular-scale, $theme-prefix, bp-xl);
 }
 
 /**
@@ -153,7 +163,7 @@ $_cssvars: ();
 @mixin min-width($breakpoint) {
 	@if map-has-key($breakpoints, $breakpoint) {
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
-		@media screen and (min-width: #{$breakpoint-value}) {
+		@media screen and (min-width: '#{$breakpoint-value}px') {
 			@content;
 		}
 	} @else {
@@ -164,7 +174,7 @@ $_cssvars: ();
 @mixin max-width($breakpoint) {
 	@if map-has-key($breakpoints, $breakpoint) {
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
-		@media screen and (max-width: #{$breakpoint-value}) {
+		@media screen and (max-width: '#{$breakpoint-value}px') {
 			@content;
 		}
 	} @else {
@@ -176,7 +186,7 @@ $_cssvars: ();
 	@if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
 		$min-value: map-get($breakpoints, $min);
 		$max-value: map-get($breakpoints, $max);
-		@media screen and (min-width: #{$min-value}) and  (max-width: #{$max-value}) {
+		@media screen and (min-width: '#{$min-value}px') and  (max-width: '#{$max-value}px') {
 			@content;
 		}
 	} @else {
