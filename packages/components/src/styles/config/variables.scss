@@ -1,6 +1,6 @@
 $_cssvars: null;
 $theme-prefix: ffp-;
-$theme-colors: (
+$colors: (
 	'color-white': rgba(256, 256, 256, 1),
 	'color-black': rgb(0, 0, 0),
 	'color-light': rgba(244, 244, 244, 1),
@@ -25,70 +25,25 @@ $theme-colors: (
 	'primary-disabled': var(--#{$theme-prefix}color-light),
 );
 
-$theme-layout: (
-	aspect-ratio-1-1: calc(1 / 1),
-	aspect-ratio-1-2: calc(1 / 2),
-	aspect-ratio-2-1: calc(2 / 1),
-	aspect-ratio-16-9: calc(16 / 9),
-	aspect-ratio-1-1dot35: calc(1 / 1.35),
-	aspect-ratio-1dot35-1: calc(1.35 / 1),
-	orientation-portrait: portrait,
-	orientation-landscape: landscape,
-
-	padding-xs: 4px,
-	padding-sm: 6px,
-	padding-md: 10px,
-	padding-lg: 12px,
-	padding-xl: 16px,
-
-	margin-nul: 0,
-	margin-xs: 1px,
-	margin-sm: 4px,
-	margin-md: 8px,
-	margin-lg: 12px,
-
-	margin-block-nul: 0,
-	margin-block-xs: 1px,
-	margin-block-sm: 4px,
-	margin-block-md: 8px,
-	margin-block-lg: 12px,
-
-	header-height-sm: 80px,
-	header-height-md: 100px,
-	header-height-lg: 110px,
-
-	footer-height-sm: 40px,
-	footer-height-md: 40px,
-
-	sidebar-height-sm: 140px,
-	sidebar-height-md: 240px,
-	sidebar-width-xs: 10ch,
-	sidebar-width-sm: 20ch,
-	sidebar-width-md: 30ch,
-	sidebar-width-lg: 40ch,
-	sidebar-width-xl: 50ch,
-	radius-nul: 0,
-	radius-base: 3px,
-	radius-lg: 5px,
-
-	z-index-input: 2,
-);
-
-$theme-typography: (
+$typography: (
 	font-family-body: #{'HelveticaNeue',
 	'Helvetica Neue',
 	Helvetica,
 	Arial,
 	sans-serif},
-
-	font-size-base: 1rem,
-	font-size-sm: 0.75em,
-	font-size-h1: 2em,
-	font-size-h2: 1.85em,
-	font-size-h3: 1.65em,
-	font-size-h4: 1.35em,
-	font-size-h5: 0.15em,
-
+	font-size-md: var(--#{$theme-prefix}fluid-0),
+	font-size-lg: var(--#{$theme-prefix}fluid-1),
+	font-size-xl: var(--#{$theme-prefix}fluid-2),
+	font-size-xxl: var(--#{$theme-prefix}fluid-3),
+	font-size-xs: calc(var(--#{$theme-prefix}font-size-sm) / var(--#{$theme-prefix}ratio)),
+	font-size-sm: calc(var(--#{$theme-prefix}font-size-md) / var(--#{$theme-prefix}ratio)),
+	//
+	font-size-base: var(--#{$theme-prefix}fluid-0),
+	font-size-h5: var(--#{$theme-prefix}fluid-1),
+	font-size-h4: var(--#{$theme-prefix}fluid-2),
+	font-size-h3: var(--#{$theme-prefix}fluid-3),
+	font-size-h2: var(--#{$theme-prefix}fluid-4),
+	font-size-h1: var(--#{$theme-prefix}fluid-5),
 	font-weight-light: 100,
 	font-weight-medium: 300,
 	font-weight-bold: 500,
@@ -181,9 +136,61 @@ $modular-scale-steps: 1, 2, 3, 4, 5; // skip 0: it will be automatically generat
 $modular-scale: (
 	fluid-min-width: 320,
 	fluid-max-width: 1920,
-	fluid-min-size: 16,
-	fluid-max-size: 20,
+	fluid-min-size: 10,
+	fluid-max-size: 16,
 	fluid-min-ratio: 1.2,
-	fluid-max-ratio: 1.36,
+	fluid-max-ratio: 1.33,
 	fluid-screen: 100vw,
+);
+
+$layout: (
+	aspect-ratio-1-1: calc(1 / 1),
+	aspect-ratio-1-2: calc(1 / 2),
+	aspect-ratio-2-1: calc(2 / 1),
+	aspect-ratio-16-9: calc(16 / 9),
+	aspect-ratio-1-1dot35: calc(1 / 1.35),
+	aspect-ratio-1dot35-1: calc(1.35 / 1),
+	orientation-portrait: portrait,
+	orientation-landscape: landscape,
+	//
+	padding-xs: var(--#{$theme-prefix}s-4),
+	padding-sm: var(--#{$theme-prefix}s-3),
+	padding-md: var(--#{$theme-prefix}s-2),
+	padding-lg: var(--#{$theme-prefix}s-1),
+	padding-xl: var(--#{$theme-prefix}s0),
+	//
+	margin-nul: 0,
+	margin-xs: var(--#{$theme-prefix}s-5),
+	margin-sm: var(--#{$theme-prefix}s-4),
+	margin-md: var(--#{$theme-prefix}s-3),
+	margin-lg: var(--#{$theme-prefix}s-2),
+	margin-xl: var(--#{$theme-prefix}s-1),
+	//
+	margin-block-nul: 0,
+	margin-block-xs: var(--#{$theme-prefix}s-5),
+	margin-block-sm: var(--#{$theme-prefix}s-4),
+	margin-block-md: var(--#{$theme-prefix}s-3),
+	margin-block-lg: var(--#{$theme-prefix}s-2),
+	margin-block-xl: var(--#{$theme-prefix}s-1),
+	//
+	// header-height-sm: 80px,
+	// header-height-md: 100px,
+	// header-height-lg: 110px,
+	//
+	// footer-height-sm: 40px,
+	// footer-height-md: 40px,
+	//
+	// sidebar-height-sm: 140px,
+	// sidebar-height-md: 240px,
+	sidebar-width-xs: 10ch,
+	sidebar-width-sm: 20ch,
+	sidebar-width-md: 30ch,
+	sidebar-width-lg: 40ch,
+	sidebar-width-xl: 50ch,
+	//
+	radius-nul: 0,
+	radius-base: 3px,
+	radius-lg: 5px,
+
+	z-index-input: 2,
 );

@@ -3,12 +3,11 @@
 // Global CSS starts
 
 :root {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-		'Helvetica Neue', sans-serif;
+	font-family: getVar(font-family-body);
 }
 
 body {
-	font-weight: getVar('300');
+	font-weight: getVar(font-size-base);
 	line-height: getVar(ratio);
 }
 
@@ -19,12 +18,19 @@ h3 {
 }
 
 h1 {
-	font-size: getVar('700');
+	font-size: getVar(font-size-h1);
 }
-
-h2,
+h2 {
+	font-size: getVar(font-size-h2);
+}
 h3 {
-	font-size: getVar('600');
+	font-size: getVar(font-size-h3);
+}
+h4 {
+	font-size: getVar(font-size-h4);
+}
+h5 {
+	font-size: getVar(font-size-h5);
 }
 
 a,
