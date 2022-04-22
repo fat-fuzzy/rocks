@@ -1,5 +1,5 @@
 $_cssvars: null;
-$theme-prefix: ffp;
+$theme-prefix: ffp-;
 $theme-colors: (
 	'color-white': rgba(256, 256, 256, 1),
 	'color-black': rgb(0, 0, 0),
@@ -18,11 +18,11 @@ $theme-colors: (
 	'handles-focus': rgb(217, 234, 252),
 	'danger': rgba(238, 9, 123, 0.6),
 	'danger-focus': rgb(255, 235, 245),
-	'primary': var(--#{$theme-prefix}-play),
-	'primary-hover': var(--#{$theme-prefix}-play),
-	'primary-focus': var(--#{$theme-prefix}-play),
-	'primary-active': var(--#{$theme-prefix}-play),
-	'primary-disabled': var(--#{$theme-prefix}-color-light),
+	'primary': var(--#{$theme-prefix}play),
+	'primary-hover': var(--#{$theme-prefix}play),
+	'primary-focus': var(--#{$theme-prefix}play),
+	'primary-active': var(--#{$theme-prefix}play),
+	'primary-disabled': var(--#{$theme-prefix}color-light),
 );
 
 $theme-layout: (
@@ -126,17 +126,17 @@ $breakpoints: (
 
 $scale: (
 	ratio: 1.5,
-	s-5: calc(var(--#{$theme-prefix}-s-4) / var(--#{$theme-prefix}-ratio)),
-	s-4: calc(var(--#{$theme-prefix}-s-3) / var(--#{$theme-prefix}-ratio)),
-	s-3: calc(var(--#{$theme-prefix}-s-2) / var(--#{$theme-prefix}-ratio)),
-	s-2: calc(var(--#{$theme-prefix}-s-1) / var(--#{$theme-prefix}-ratio)),
-	s-1: calc(var(--#{$theme-prefix}-s0) / var(--#{$theme-prefix}-ratio)),
+	s-5: calc(var(--#{$theme-prefix}s-4) / var(--#{$theme-prefix}ratio)),
+	s-4: calc(var(--#{$theme-prefix}s-3) / var(--#{$theme-prefix}ratio)),
+	s-3: calc(var(--#{$theme-prefix}s-2) / var(--#{$theme-prefix}ratio)),
+	s-2: calc(var(--#{$theme-prefix}s-1) / var(--#{$theme-prefix}ratio)),
+	s-1: calc(var(--#{$theme-prefix}s0) / var(--#{$theme-prefix}ratio)),
 	s0: 1rem,
-	s1: calc(var(--#{$theme-prefix}-s0) * var(--#{$theme-prefix}-ratio)),
-	s2: calc(var(--#{$theme-prefix}-s1) * var(--#{$theme-prefix}-ratio)),
-	s3: calc(var(--#{$theme-prefix}-s2) * var(--#{$theme-prefix}-ratio)),
-	s4: calc(var(--#{$theme-prefix}-s3) * var(--#{$theme-prefix}-ratio)),
-	s5: calc(var(--#{$theme-prefix}-s4) * var(--#{$theme-prefix}-ratio)),
+	s1: calc(var(--#{$theme-prefix}s0) * var(--#{$theme-prefix}ratio)),
+	s2: calc(var(--#{$theme-prefix}s1) * var(--#{$theme-prefix}ratio)),
+	s3: calc(var(--#{$theme-prefix}s2) * var(--#{$theme-prefix}ratio)),
+	s4: calc(var(--#{$theme-prefix}s3) * var(--#{$theme-prefix}ratio)),
+	s5: calc(var(--#{$theme-prefix}s4) * var(--#{$theme-prefix}ratio)),
 );
 
 //== BASE SIZE
