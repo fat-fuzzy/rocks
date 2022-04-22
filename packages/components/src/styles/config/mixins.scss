@@ -39,8 +39,62 @@ $_cssvars: ();
 	}
 }
 
-@mixin generateModularScale($design_tokens, $prefix: $theme-prefix, $breakpoint: $max-breakpoint) {
-	@include generateCssVars($design_tokens, $theme-prefix);
+@mixin generateModularScale(
+	$design_tokens,
+	$prefix: $theme-prefix,
+	$steps: $modular-scale-steps,
+	$breakpoint: $max-breakpoint
+) {
+	@include generateCssVars($design_tokens, $prefix);
+	:root {
+		--#{$prefix}-fluid-bp: calc(
+			calc(var(--#{$prefix}-fluid-screen) - calc((var(--#{$prefix}-fluid-min-width) / 16) * 1rem)) /
+				calc(
+					calc(var(--#{$prefix}-fluid-max-width) / 16) -
+						calc(var(--#{$prefix}-fluid-min-width) / 16)
+				)
+		);
+		--#{$prefix}-fluid-min-scale-0: var(--#{$prefix}-fluid-min-ratio);
+		--#{$prefix}-fluid-max-scale-0: var(--#{$prefix}-fluid-max-ratio);
+		--#{$prefix}-fluid-min-size-0: calc(var(--#{$prefix}-fluid-min-size) / 16);
+		--#{$prefix}-fluid-max-size-0: calc(var(--#{$prefix}-fluid-max-size) / 16);
+		--#{$prefix}-fluid-0: --#{$prefix}-fluid-0: calc(
+			calc(var(--#{$prefix}-fluid-min-size-0) * 1rem) +
+				calc(var(--#{$prefix}-fluid-max-size-0) - var(--#{$prefix}-fluid-min-size-0)) *
+				var(--#{$prefix}-fluid-bp)
+		);
+	}
+
+	@each $step in $steps {
+		$previous-step: calc($step - 1);
+		:root {
+			--#{$prefix}-fluid-min-scale-#{$step}: calc(
+				var(--#{$prefix}-fluid-min-scale-#{$previous-step}) * var(--#{$prefix}-fluid-min-ratio)
+			);
+			--#{$prefix}-fluid-max-scale-#{$step}: calc(
+				var(--#{$prefix}-fluid-max-scale-#{$previous-step}) * var(--#{$prefix}-fluid-max-ratio)
+			);
+			--#{$prefix}-fluid-min-size-#{$step}: calc(
+				calc(
+						var(--#{$prefix}-fluid-min-size) * var(--#{$prefix}-fluid-min-scale-#{$previous-step})
+					) /
+					16
+			);
+			--#{$prefix}-fluid-max-size-#{$step}: calc(
+				calc(
+						var(--#{$prefix}-fluid-max-size) * var(--#{$prefix}-fluid-max-scale-#{$previous-step})
+					) /
+					16
+			);
+			--#{$prefix}-fluid-#{$step}: calc(
+				calc(var(--#{$prefix}-fluid-min-size-#{$step}) * 1rem) +
+					calc(
+						var(--#{$prefix}-fluid-max-size-#{$step}) - var(--#{$prefix}-fluid-min-size-#{$step})
+					) *
+					var(--#{$prefix}-fluid-bp)
+			);
+		}
+	}
 	@include min-width(#{$breakpoint}) {
 		:root {
 			--#{$prefix}-fluid-screen: calc(var(--#{$prefix}-fluid-max-width) * 1px);
@@ -55,7 +109,7 @@ $_cssvars: ();
 	@include generateCssVars($theme-typography, $theme-prefix);
 	@include generateCssVars($theme-colors, $theme-prefix);
 	@include generateCssVars($theme-layout, $theme-prefix);
-	@include generateModularScale($modular-scale, $theme-prefix, bp-xl);
+	@include generateModularScale($modular-scale, $theme-prefix, $modular-scale-steps, bp-xl);
 }
 
 /**
