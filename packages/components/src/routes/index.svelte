@@ -7,7 +7,7 @@
 </svelte:head>
 
 <header>
-	<h1>✨ Project Highlights</h1>
+	<h1>✨ Highlights</h1>
 </header>
 
 <section class="l-wrapper xl">
