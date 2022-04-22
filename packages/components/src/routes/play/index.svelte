@@ -33,7 +33,7 @@
 	<h1>👾 Playground</h1>
 </header>
 
-<section class="l-sidebar xs">
+<section class="l-sidebar sm">
 	<div class="l-sidebar-side">
 		<Menu on:input={loadAnimation} />
 	</div>

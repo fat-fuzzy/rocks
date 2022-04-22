@@ -2,3 +2,11 @@ header {
 	display: flex;
 	justify-content: space-between;
 }
+
+header + * {
+	margin-block-start: getVar(fluid-3);
+}
+
+main > header {
+	justify-content: center;
+}

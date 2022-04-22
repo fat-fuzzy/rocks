@@ -8,10 +8,14 @@
 </script>
 
 <svelte:head>
-	<title>State Machines</title>
+	<title>Sandbox | 🤖 State Machines</title>
 </svelte:head>
 
-<form class="l-stack l-wrapper lg">
+<header>
+	<h1>🤖 State Machines</h1>
+</header>
+
+<form class="l-stack l-wrapper md">
 	<Toggle />
 	<SignIn />
 </form>
