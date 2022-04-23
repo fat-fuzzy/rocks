@@ -10,8 +10,8 @@
 	<h1>✨ Highlights</h1>
 </header>
 
-<section class="l-wrapper xl">
-	<ul class="l-switcher no-list xs">
+<section class="l-wrapper u-side">
+	<ul class="l-switcher no-list">
 		<li class="card">
 			<a sveltekit:prefetch href="/play">Play</a>
 		</li>

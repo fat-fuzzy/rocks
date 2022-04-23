@@ -15,7 +15,7 @@
 	<h1>🤖 State Machines</h1>
 </header>
 
-<form class="l-stack l-wrapper md">
+<form class="l-stack l-wrapper u-side">
 	<Toggle />
 	<SignIn />
 </form>

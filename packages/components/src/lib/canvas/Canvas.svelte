@@ -64,10 +64,7 @@
 	$: interactive = animation.interactive
 </script>
 
-<svelte:head>
-	<title>State Machines</title>
-</svelte:head>
-<div class="l-frame video xl" bind:offsetWidth={canvasWidth} bind:offsetHeight={canvasHeight}>
+<div class="l-frame video layer xl" bind:offsetWidth={canvasWidth} bind:offsetHeight={canvasHeight}>
 	<canvas data-test="canvas" class={canvasClass} bind:this={canvas} />
 </div>
 <div class="l-switcher xs">

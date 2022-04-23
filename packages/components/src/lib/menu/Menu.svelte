@@ -3,6 +3,7 @@
 	import {animations} from '../../stores.js'
 
 	const dispatch = createEventDispatcher()
+	export let className = ''
 	let menumItems = []
 
 	function getLabel(emoji, name) {
@@ -20,7 +21,7 @@
 	}
 </script>
 
-<nav data-test="nav" class="nav">
+<menu data-test="menu" class={className}>
 	<ul class="l-stack">
 		{#each menumItems as { name, emoji, id, type }}
 			<li>
@@ -31,8 +32,4 @@
 			</li>
 		{/each}
 	</ul>
-</nav>
-
-<style lang="scss">
-	@import '../../styles/main.scss';
-</style>
+</menu>

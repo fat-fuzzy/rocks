@@ -33,11 +33,9 @@
 	<h1>👾 Playground</h1>
 </header>
 
-<section class="l-sidebar sm">
-	<div class="l-sidebar-side">
-		<Menu on:input={loadAnimation} />
-	</div>
-	<div class="l-sidebar-main">
+<section class="l-sidebar">
+	<Menu on:input={loadAnimation} className="l-sidebar-side sm" />
+	<div class="l-sidebar-main l-stack">
 		<Canvas show={showcanvas} {animation} />
 		<Feedback {feedback} show={showFeedback} />
 	</div>

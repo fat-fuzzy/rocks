@@ -4,7 +4,7 @@
 
 <Header />
 
-<main>
+<main class="l-wrapper">
 	<slot />
 </main>
 
@@ -14,8 +14,4 @@
 
 <style lang="scss" global>
 	@import '../styles/main.scss';
-
-	main {
-		min-height: calc(100vh - 90px);
-	}
 </style>
