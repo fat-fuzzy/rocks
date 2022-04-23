@@ -1,5 +1,5 @@
 button {
-	color: getVar(color-dark);
+	color: getVar(font-color-body);
 	background-color: getVar(color-light);
 }
 
@@ -8,11 +8,8 @@ button:disabled {
 }
 
 button:not(:disabled):active {
-	background-color: getVar(gray-2);
-}
-
-button:focus {
-	border-color: getVar(gray-4);
+	color: getVar(font-color-body);
+	background-color: getVar(color-light);
 }
 
 .link {
@@ -28,6 +25,12 @@ button:focus {
 	color: getVar(color-light);
 }
 
-.primary:disabled {
-	background-color: getVar(primary-disabled);
+.secondary {
+	border-color: getVar(primary);
+	background-color: getVar(color-white);
+}
+
+.primary:disabled,
+.secondary:disabled {
+	background-color: getVar(color-light);
 }

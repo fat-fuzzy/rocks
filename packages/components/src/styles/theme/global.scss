@@ -9,6 +9,7 @@
 body {
 	font-weight: getVar(font-size-base);
 	line-height: getVar(ratio);
+	color: getVar(font-color-body);
 }
 
 h1,
@@ -53,7 +54,7 @@ a:hover,
 
 a:visited,
 .link:visited {
-	color: getVar(handles);
+	color: getVar(primary-light);
 }
 
 table {
@@ -65,7 +66,7 @@ th {
 }
 
 :focus {
-	outline: 2px dotted;
+	outline: 2px dotted getVar(primary);
 	outline-offset: 0.25rem;
 }
 
