@@ -20,3 +20,7 @@
 .l-frame.video {
 	aspect-ratio: 16 / 9;
 }
+
+.l-frame.xl {
+	max-block-size: calc(100vh - 240px); // TODO : fix magic numbers
+}

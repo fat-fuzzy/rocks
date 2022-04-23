@@ -1,12 +1,16 @@
 header {
 	display: flex;
-	justify-content: space-between;
 }
 
-header + * {
-	margin-block-start: getVar(fluid-3);
+html > header {
+	justify-content: space-between;
 }
 
 main > header {
 	justify-content: center;
+}
+
+body > header + *,
+main > header + * {
+	margin-block-start: getVar(fluid-1);
 }

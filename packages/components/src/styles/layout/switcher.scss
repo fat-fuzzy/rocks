@@ -1,36 +1,35 @@
 .l-switcher {
 	display: flex;
 	flex-wrap: wrap;
-	gap: getVar(margin-xs);
-	--threshold: getVar(sidebar-width-xl);
-}
-
-.l-switcher.xs {
-	gap: getVar(margin-xs);
-	--threshold: getVar(sidebar-width-xs);
-}
-
-.l-switcher.sm {
-	gap: getVar(margin-sm);
-	--threshold: getVar(sidebar-width-sm);
-}
-
-.l-switcher.md {
-	gap: getVar(margin-md);
-	--threshold: getVar(sidebar-width-md);
-}
-
-.l-switcher.lg {
-	gap: getVar(margin-lg);
-	--threshold: getVar(sidebar-width-lg);
-}
-
-.l-switcher.xl {
-	gap: getVar(margin-xl);
-	--threshold: getVar(sidebar-width-xl);
+	gap: getVar(gap);
 }
 
 .l-switcher > * {
 	flex-grow: 1;
 	flex-basis: calc((var(--threshold) - 100%) * 999);
+}
+
+.l-switcher.xs {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-xs);
+}
+
+.l-switcher.sm {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-sm);
+}
+
+.l-switcher.md {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-md);
+}
+
+.l-switcher.lg {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-lg);
+}
+
+.l-switcher.xl {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-xl);
 }

@@ -1,6 +1,7 @@
 .l-sidebar {
 	display: flex;
 	flex-wrap: wrap;
+	gap: getVar(gap);
 }
 
 .l-sidebar-main {
@@ -15,22 +16,22 @@
 	flex-grow: 1;
 }
 
-.l-sidebar.xs > .l-sidebar-side {
+.l-sidebar-side.xs {
 	flex-basis: getVar(sidebar-width-xs);
 }
 
-.l-sidebar.sm > .l-sidebar-side {
+.l-sidebar-side.sm {
 	flex-basis: getVar(sidebar-width-sm);
 }
 
-.l-sidebar.md > .l-sidebar-side {
+.l-sidebar-side.md {
 	flex-basis: getVar(sidebar-width-md);
 }
 
-.l-sidebar.lg > .l-sidebar-side {
+.l-sidebar-side.lg {
 	flex-basis: getVar(sidebar-width-lg);
 }
 
-.l-sidebar.xl > .l-sidebar-side {
+.l-sidebar-side.xl {
 	flex-basis: getVar(sidebar-width-xl);
 }

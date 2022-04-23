@@ -61,38 +61,6 @@ $breakpoints: (
 // Adaptted from: https://piccalil.li/tutorial/build-a-dashboard-with-cube-css/
 //==
 
-//== TYPOGRAPHIC SCALE
-// See: https://piccalil.li/tutorial/improve-the-readability-of-the-content-on-your-website/
-/*
-* --ratio: 1.5;
-* --s-5: calc(var(--s-4) / var(--ratio));
-* --s-4: calc(var(--s-3) / var(--ratio));
-* --s-3: calc(var(--s-2) / var(--ratio));
-* --s-2: calc(var(--s-1) / var(--ratio));
-* --s-1: calc(var(--s0) / var(--ratio));
-* --s0: 1rem;
-* --s1: calc(var(--s0) * var(--ratio));
-* --s2: calc(var(--s1) * var(--ratio));
-* --s3: calc(var(--s2) * var(--ratio));
-* --s4: calc(var(--s3) * var(--ratio));
-* --s5: calc(var(--s4) * var(--ratio));
-*/
-
-$scale: (
-	ratio: 1.5,
-	s-5: calc(var(--#{$theme-prefix}s-4) / var(--#{$theme-prefix}ratio)),
-	s-4: calc(var(--#{$theme-prefix}s-3) / var(--#{$theme-prefix}ratio)),
-	s-3: calc(var(--#{$theme-prefix}s-2) / var(--#{$theme-prefix}ratio)),
-	s-2: calc(var(--#{$theme-prefix}s-1) / var(--#{$theme-prefix}ratio)),
-	s-1: calc(var(--#{$theme-prefix}s0) / var(--#{$theme-prefix}ratio)),
-	s0: 1rem,
-	s1: calc(var(--#{$theme-prefix}s0) * var(--#{$theme-prefix}ratio)),
-	s2: calc(var(--#{$theme-prefix}s1) * var(--#{$theme-prefix}ratio)),
-	s3: calc(var(--#{$theme-prefix}s2) * var(--#{$theme-prefix}ratio)),
-	s4: calc(var(--#{$theme-prefix}s3) * var(--#{$theme-prefix}ratio)),
-	s5: calc(var(--#{$theme-prefix}s4) * var(--#{$theme-prefix}ratio)),
-);
-
 //== BASE SIZE
 /// All calculations are based on this. It’s recommended that
 /// you keep it at 1rem because that is the root font size. You
@@ -117,6 +85,38 @@ $size-scale: (
 	'900': $base-size * 3,
 );
 
+//== TYPOGRAPHIC SCALE
+// See: https://piccalil.li/tutorial/improve-the-readability-of-the-content-on-your-website/
+/*
+* --ratio: 1.5;
+* --s-5: calc(var(--s-4) / var(--ratio));
+* --s-4: calc(var(--s-3) / var(--ratio));
+* --s-3: calc(var(--s-2) / var(--ratio));
+* --s-2: calc(var(--s-1) / var(--ratio));
+* --s-1: calc(var(--s0) / var(--ratio));
+* --s0: 1rem;
+* --s1: calc(var(--s0) * var(--ratio));
+* --s2: calc(var(--s1) * var(--ratio));
+* --s3: calc(var(--s2) * var(--ratio));
+* --s4: calc(var(--s3) * var(--ratio));
+* --s5: calc(var(--s4) * var(--ratio));
+*/
+
+$scale: (
+	ratio: 1.5,
+	s-5: calc(var(--#{$theme-prefix}s-4) / var(--#{$theme-prefix}ratio)),
+	s-4: calc(var(--#{$theme-prefix}s-3) / var(--#{$theme-prefix}ratio)),
+	s-3: calc(var(--#{$theme-prefix}s-2) / var(--#{$theme-prefix}ratio)),
+	s-2: calc(var(--#{$theme-prefix}s-1) / var(--#{$theme-prefix}ratio)),
+	s-1: calc(var(--#{$theme-prefix}s0) / var(--#{$theme-prefix}ratio)),
+	s0: $base-size,
+	s1: calc(var(--#{$theme-prefix}s0) * var(--#{$theme-prefix}ratio)),
+	s2: calc(var(--#{$theme-prefix}s1) * var(--#{$theme-prefix}ratio)),
+	s3: calc(var(--#{$theme-prefix}s2) * var(--#{$theme-prefix}ratio)),
+	s4: calc(var(--#{$theme-prefix}s3) * var(--#{$theme-prefix}ratio)),
+	s5: calc(var(--#{$theme-prefix}s4) * var(--#{$theme-prefix}ratio)),
+);
+
 //== FLUID SCALE
 
 /**
@@ -138,7 +138,7 @@ $modular-scale: (
 	fluid-min-size: 10,
 	fluid-max-size: 16,
 	fluid-min-ratio: 1.2,
-	fluid-max-ratio: 1.33,
+	fluid-max-ratio: 1.3,
 	fluid-screen: 100vw,
 );
 
@@ -151,6 +151,7 @@ $layout: (
 	aspect-ratio-1dot35-1: calc(1.35 / 1),
 	orientation-portrait: portrait,
 	orientation-landscape: landscape,
+	gap: $base-size,
 	//
 	padding-xs: var(--#{$theme-prefix}s-4),
 	padding-sm: var(--#{$theme-prefix}s-3),
@@ -190,6 +191,22 @@ $layout: (
 	radius-nul: 0,
 	radius-base: 3px,
 	radius-lg: 5px,
-
+	//
+	border-width: 1px,
 	z-index-input: 2,
+
+	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
+	// using shadow-3
+	shadow: #{0 -1px 3px 0 hsl(
+			var(--#{$theme-prefix}shadow-color) / calc(var(--#{$theme-prefix}shadow-strength) + 2%)
+		),
+	0 1px 2px -5px hsl(var(--#{$theme-prefix}shadow-color) /
+				calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(--#{$theme-prefix}shadow-color) /
+				calc(var(--#{$theme-prefix}shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(--#{$theme-prefix}shadow-color) /
+				calc(var(--#{$theme-prefix}shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(--#{$theme-prefix}shadow-color) /
+				calc(var(--#{$theme-prefix}shadow-strength) + 7%)),
+	},
 );
