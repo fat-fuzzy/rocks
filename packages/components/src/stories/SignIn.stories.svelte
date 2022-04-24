@@ -19,7 +19,7 @@
 
 <Template let:args>
 	<form class={`l-wrapper ${args.size}`}>
-		<SignIn {...args} on:click={args.onClick} />
+		<SignIn {...args} on:click={args.onClick} size={args.size} />
 	</form>
 </Template>
 

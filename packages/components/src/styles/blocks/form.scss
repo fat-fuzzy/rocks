@@ -30,7 +30,7 @@ textarea {
 .nul,
 .xs {
 	legend {
-		font-size: getVar(font-size-base);
+		font-size: getVar(font-size-sm);
 	}
 
 	legend + * {
@@ -62,6 +62,16 @@ textarea {
 	.link + *,
 	input + .feedback {
 		margin-block-start: getVar(margin-block-xxs);
+	}
+}
+
+.nul {
+	legend + * {
+		margin-block-start: getVar(margin-block-xxs);
+	}
+	input[type='range'] {
+		font-size: getVar(font-size-xs);
+		padding: 0;
 	}
 }
 
