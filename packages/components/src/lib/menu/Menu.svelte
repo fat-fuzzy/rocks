@@ -9,6 +9,7 @@
 	function getLabel(emoji, name) {
 		return `${emoji} ${name}`
 	}
+
 	animations.subscribe((value) => {
 		menumItems = value
 	})
@@ -25,7 +26,7 @@
 	<ul class="l-stack">
 		{#each menumItems as { name, emoji, id, type }}
 			<li>
-				<button class="btn-menu {type}" on:click={handleClick} {id} data-test={id}>
+				<button class={type} on:click={handleClick} {id} data-test={id}>
 					<!--TODO: make routes for animations-->
 					{getLabel(emoji, name)}
 				</button>

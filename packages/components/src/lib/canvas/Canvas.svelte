@@ -34,8 +34,9 @@
 		})
 	}
 
-	function updateGeometry() {
+	function updateGeometry(event) {
 		console.log('Update Geometry')
+		geometry = {...geometry, ...event.detail.value}
 	}
 
 	function play() {

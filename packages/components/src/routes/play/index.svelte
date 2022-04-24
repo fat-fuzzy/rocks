@@ -15,6 +15,10 @@
 	let showFeedback = !showcanvas
 	let feedback = ''
 
+	currentAnimationId.subscribe((value) => {
+		animationId = value
+	})
+
 	function loadAnimation(event) {
 		console.log('Load animation')
 		currentAnimationId.set(event.detail.animationId)
