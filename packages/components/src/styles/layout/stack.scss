@@ -14,30 +14,30 @@
 	block-size: 100%;
 }
 
+.l-stack.recursive * + * {
+	margin-block-start: getVar(margin-block-xs);
+}
+
 .l-stack > * + * {
-	margin-block-start: getVar(200);
-}
-
-.l-stack-recursive * + * {
-	margin-block-start: getVar(200);
-}
-
-.l-stack.xl > * + * {
-	margin-block-start: getVar(400);
-}
-
-.l-stack.lg > * + * {
-	margin-block-start: getVar(300);
-}
-
-.l-stack.md > * + * {
-	margin-block-start: getVar(200);
-}
-
-.l-stack.sm > * + * {
-	margin-block-start: getVar(100);
+	margin-block-start: getVar(margin-block-xs);
 }
 
 .l-stack.xs > * + * {
-	margin-block-start: getVar(100);
+	margin-block-start: getVar(margin-block-xs);
+}
+
+.l-stack.sm > * + * {
+	margin-block-start: getVar(margin-block-sm);
+}
+
+.l-stack.md > * + * {
+	margin-block-start: getVar(margin-block-md);
+}
+
+.l-stack.lg > * + * {
+	margin-block-start: getVar(margin-block-lg);
+}
+
+.l-stack.xl > * + * {
+	margin-block-start: getVar(margin-block-xl);
 }

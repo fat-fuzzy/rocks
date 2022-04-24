@@ -5,27 +5,210 @@ form {
 
 label,
 .feedback {
-	font: menu;
 	display: block;
+}
+
+label,
+legend {
+	font-weight: 500;
 }
 
 input,
 button,
 select,
 textarea {
-	font: menu;
 	border: 1px solid getVar(gray-1);
 	border-radius: getVar(radius-base);
-}
-
-input,
-button:not(.link),
-select,
-textarea {
-	padding: getVar(padding-md);
+	margin-bottom: calc(getVar(outline-offset) + 2px);
 }
 
 [disabled] {
 	color: getVar(gray-1);
 	cursor: not-allowed;
+}
+
+.nul,
+.xs {
+	legend {
+		font-size: getVar(font-size-base);
+	}
+
+	legend + * {
+		margin-block-start: getVar(margin-block-xs);
+	}
+
+	input,
+	button,
+	select,
+	textarea {
+		font-size: getVar(font-size-xs);
+		padding: getVar(padding-xs);
+	}
+
+	label {
+		font-size: getVar(font-size-xs);
+	}
+
+	.feedback {
+		font-size: getVar(font-size-xxs);
+		min-height: calc(getVar(font-size-xxs) * getVar(ratio));
+	}
+
+	.link {
+		padding: 0 getVar(padding-xs);
+	}
+
+	.link,
+	.link + *,
+	input + .feedback {
+		margin-block-start: getVar(margin-block-xxs);
+	}
+}
+
+.sm {
+	legend {
+		font-size: getVar(font-size-h5);
+	}
+
+	legend + * {
+		margin-block-start: getVar(margin-block-sm);
+	}
+
+	input,
+	button,
+	select,
+	textarea {
+		font-size: getVar(font-size-sm);
+		padding: getVar(padding-sm);
+	}
+
+	label {
+		font-size: getVar(font-size-sm);
+	}
+
+	.feedback {
+		font-size: getVar(font-size-xs);
+		min-height: calc(getVar(font-size-xs) * getVar(ratio));
+	}
+
+	.link {
+		padding: 0 getVar(padding-sm);
+	}
+
+	.link,
+	.link + *,
+	input + .feedback {
+		margin-block-start: getVar(margin-block-xs);
+	}
+}
+
+.md {
+	legend {
+		font-size: getVar(font-size-h4);
+	}
+
+	legend + * {
+		margin-block-start: getVar(margin-block-md);
+	}
+
+	input,
+	button,
+	select,
+	textarea {
+		font-size: getVar(font-size-md);
+		padding: getVar(padding-md);
+	}
+
+	label {
+		font-size: getVar(font-size-md);
+	}
+
+	.feedback {
+		font-size: getVar(font-size-sm);
+		min-height: calc(getVar(font-size-sm) * getVar(ratio));
+	}
+
+	.link {
+		padding: 0 getVar(padding-md);
+	}
+
+	.link,
+	.link + *,
+	input + .feedback {
+		margin-block-start: getVar(margin-block-sm);
+	}
+}
+
+.lg {
+	legend {
+		font-size: getVar(font-size-h3);
+	}
+
+	legend + * {
+		margin-block-start: getVar(margin-block-lg);
+	}
+
+	input,
+	button,
+	select,
+	textarea {
+		font-size: getVar(font-size-lg);
+		padding: getVar(padding-lg);
+	}
+
+	label {
+		font-size: getVar(font-size-lg);
+	}
+
+	.feedback {
+		font-size: getVar(font-size-md);
+		min-height: calc(getVar(font-size-md) * getVar(ratio));
+	}
+
+	.link {
+		padding: 0 getVar(padding-lg);
+	}
+
+	.link,
+	.link + *,
+	input + .feedback {
+		margin-block-start: getVar(margin-block-md);
+	}
+}
+
+.xl {
+	legend {
+		font-size: getVar(font-size-h2);
+	}
+
+	legend + * {
+		margin-block-start: getVar(margin-block-xl);
+	}
+
+	input,
+	button,
+	select,
+	textarea {
+		font-size: getVar(font-size-xl);
+		padding: getVar(padding-xl);
+	}
+
+	label {
+		font-size: getVar(font-size-xl);
+	}
+
+	.feedback {
+		font-size: getVar(font-size-lg);
+		min-height: calc(getVar(font-size-lg) * getVar(ratio));
+	}
+
+	.link {
+		padding: 0 getVar(padding-xl);
+	}
+
+	.link,
+	.link + *,
+	input + .feedback {
+		margin-block-start: getVar(margin-block-lg);
+	}
 }

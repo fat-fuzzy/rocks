@@ -1,184 +1,19 @@
 .fieldset {
 	// @include layout-fieldset();
 	border-radius: 3px;
-	border: 1px solid getVar(color-dark);
-}
-
-.l-stack.fieldset {
-	&.nul {
-		> * + * {
-			margin-block-start: 0;
-			min-height: 0;
-		}
-	}
-	&.xs {
-		> legend + * {
-			margin-block-start: getVar('100');
-		}
-
-		> * + .feedback {
-			margin-block-start: getVar('100');
-			min-height: getVar('100');
-		}
-	}
-	&.sm {
-		> legend + * {
-			margin-block-start: getVar('300');
-		}
-
-		> * + .feedback {
-			margin-block-start: getVar('200');
-			min-height: getVar('300');
-		}
-	}
-	&.md {
-		> legend + * {
-			margin-block-start: getVar('400');
-		}
-
-		> * + .feedback {
-			margin-block-start: getVar('300');
-			min-height: getVar('400');
-		}
-	}
-	&.lg {
-		> legend + * {
-			margin-block-start: getVar('400');
-		}
-
-		> * + .feedback {
-			margin-block-start: getVar('400');
-			min-height: getVar('400');
-		}
-	}
-	&.xl {
-		> legend + * {
-			margin-block-start: getVar('500');
-		}
-
-		> * + .feedback {
-			margin-block-start: getVar('500');
-			min-height: getVar('400');
-		}
+	border: 1px solid getVar(font-color-body);
+	max-width: 100%;
+	> legend {
+		font-weight: bold;
 	}
 }
 
-.fieldset {
-	// @include layout-fieldset();
-	font-weight: bold;
-	border-radius: 3px;
-	border: 1px solid getVar(color-dark);
+.fieldset > * {
+	max-width: 100%;
 }
 
-fieldset.nul,
-fieldset.xs {
-	min-width: 15ch; // anticipate error message length
-
-	legend {
-		font-size: getVar('300');
-	}
-	input,
-	button,
-	select,
-	textarea {
-		font-size: getVar('200');
-	}
-	input,
-	button:not(.link),
-	select,
-	textarea {
-		padding: getVar(padding-xs);
-	}
-	label,
-	.feedback {
-		font-size: getVar('100');
-	}
-}
-fieldset.sm {
-	min-width: 20ch; // anticipate error message length
-	legend {
-		font-size: getVar('400');
-	}
-	input,
-	button,
-	select,
-	textarea {
-		font-size: getVar('300');
-	}
-	input,
-	button:not(.link),
-	select,
-	textarea {
-		padding: getVar(padding-sm);
-	}
-	label,
-	.feedback {
-		font-size: getVar('200');
-	}
-}
-fieldset.md {
-	min-width: 30ch; // anticipate error message length
-	legend {
-		font-size: getVar('500');
-	}
-	input,
-	button,
-	select,
-	textarea {
-		font-size: getVar('400');
-	}
-	input,
-	button:not(.link),
-	select,
-	textarea {
-		padding: getVar(padding-md);
-	}
-	label,
-	.feedback {
-		font-size: getVar('300');
-	}
-}
-fieldset.lg {
-	min-width: 40ch; // anticipate error message length
-	legend {
-		font-size: getVar('600');
-	}
-	input,
-	button,
-	select,
-	textarea {
-		font-size: getVar('400');
-	}
-	input,
-	button:not(.link),
-	select,
-	textarea {
-		padding: getVar(padding-lg);
-	}
-	label,
-	.feedback {
-		font-size: getVar('300');
-	}
-}
-fieldset.xl {
-	min-width: 60ch; // anticipate error message length
-	legend {
-		font-size: getVar('700');
-	}
-	input,
-	button,
-	select,
-	textarea {
-		font-size: getVar('400');
-	}
-	input,
-	button:not(.link),
-	select,
-	textarea {
-		padding: getVar(padding-xl);
-	}
-	label,
-	.feedback {
-		font-size: getVar('300');
+fieldset.nul {
+	> * + * {
+		margin-block-start: 0;
 	}
 }

@@ -66,8 +66,8 @@ th {
 }
 
 :focus {
-	outline: 2px dotted getVar(primary);
-	outline-offset: 0.25rem;
+	outline: 1px dotted getVar(primary);
+	outline-offset: getVar(outline-offset);
 }
 
 .no-list {

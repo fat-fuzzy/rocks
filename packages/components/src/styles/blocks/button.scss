@@ -1,4 +1,5 @@
 button {
+	font-weight: 500;
 	color: getVar(font-color-body);
 	background-color: getVar(color-light);
 }
@@ -13,10 +14,10 @@ button:not(:disabled):active {
 }
 
 .link {
-	font: menu;
 	border: none;
 	background-color: inherit;
 	padding: 0 getVar(padding-xs);
+	color: getVar(primary);
 }
 
 .primary {
