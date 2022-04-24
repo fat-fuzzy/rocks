@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import {animations, currentAnimationId} from '../../stores.js'
+	import {currentAnimationId} from '../../stores.js'
 	import Canvas from '../../lib/canvas/Canvas.svelte'
 	import Feedback from '../../lib/feedback/Feedback.svelte'
 	import Menu from '../../lib/menu/Menu.svelte'
@@ -22,11 +22,8 @@
 	function loadAnimation(event) {
 		console.log('Load animation')
 		currentAnimationId.set(event.detail.animationId)
-		animation = $animations.find((animation) => animation.id === animationId)
 		console.log(animation)
 	}
-
-	$: animation = $animations.find((animation) => animation.id === animationId)
 </script>
 
 <svelte:head>
@@ -40,7 +37,7 @@
 <section class="l-sidebar">
 	<Menu on:input={loadAnimation} className="l-sidebar-side sm" />
 	<div class="l-sidebar-main l-stack">
-		<Canvas show={showcanvas} {animation} />
+		<Canvas show={showcanvas} />
 		<Feedback {feedback} show={showFeedback} />
 	</div>
 </section>

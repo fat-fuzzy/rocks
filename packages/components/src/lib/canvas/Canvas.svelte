@@ -4,19 +4,24 @@
 </script>
 
 <script>
+	import {animations, currentAnimationId} from '../../stores.js'
 	import Controls from '../controls/Controls.svelte'
 	import Geometry from '../geometry/Geometry.svelte'
 	export let show = true
-	export let animation
 	// Canvas
 	let canvas
 	let canvasWidth = 300
 	let canvasHeight = 600
+	let animationId = $currentAnimationId
 	let animationFrame
 
 	let showGeometryInputs = false
 	// TODO : fix - geometry state is not reactive
 	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
+
+	currentAnimationId.subscribe((value) => {
+		animationId = value
+	})
 
 	function runLoop(timestamp, duration) {
 		if (animation.interactive) {
@@ -62,6 +67,7 @@
 	}
 
 	$: canvasClass = show ? 'canvas' : 'u-hidden'
+	$: animation = $animations.find((animation) => animation.id === animationId)
 	$: interactive = animation.interactive
 </script>
 
