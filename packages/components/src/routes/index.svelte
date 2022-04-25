@@ -4,6 +4,7 @@
 
 <svelte:head>
 	<title>Sandbox</title>
+	<meta name="description" content="A sandbox for experimenting with web app interfaces." />
 </svelte:head>
 
 <header>

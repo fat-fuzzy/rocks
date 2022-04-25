@@ -15,14 +15,16 @@
 			value,
 		})
 	}
+
+	$: id = `${label.replaceAll(' ', '-')}-range`
 </script>
 
-<label for={`${label}-range`}>
+<label for={id}>
 	{label}:
 	{value}
 </label>
 <input
-	id={`${label}-range`}
+	{id}
 	data-test={`${label}-range`}
 	type="range"
 	bind:value

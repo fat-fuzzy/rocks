@@ -1,3 +1,5 @@
+<svelte:options accessors={true} />
+
 <script>
 	// Inputs
 	export let label = 'Click'
@@ -14,5 +16,5 @@
 </script>
 
 <button data-test={testId} on:click={handleClick} class={className} aria-label={label} {disabled}>
-	{label}
+	<slot />
 </button>

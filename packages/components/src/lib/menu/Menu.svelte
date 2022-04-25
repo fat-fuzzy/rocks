@@ -1,10 +1,11 @@
 <script>
 	import {createEventDispatcher} from 'svelte'
-	import {animations} from '../../stores.js'
+	import {animations, currentAnimationId} from '../../stores.js'
 
 	const dispatch = createEventDispatcher()
-	export let className = ''
 	let menumItems = []
+
+	let animationId = $currentAnimationId
 
 	function getLabel(emoji, name) {
 		return `${emoji} ${name}`
@@ -12,6 +13,10 @@
 
 	animations.subscribe((value) => {
 		menumItems = value
+	})
+
+	currentAnimationId.subscribe((value) => {
+		animationId = value
 	})
 
 	const handleClick = (event) => {
@@ -22,15 +27,11 @@
 	}
 </script>
 
-<menu data-test="menu" class={className}>
-	<ul class="l-stack">
-		{#each menumItems as { name, emoji, id, type }}
-			<li>
-				<button class={type} on:click={handleClick} {id} data-test={id}>
-					<!--TODO: make routes for animations-->
-					{getLabel(emoji, name)}
-				</button>
-			</li>
-		{/each}
-	</ul>
+<menu data-test="menu" class="l-stack">
+	{#each menumItems as { name, emoji, id }}
+		<button class:primary={id === animationId} on:click={handleClick} {id} data-test={id}>
+			<!--TODO: make routes for animations-->
+			{getLabel(emoji, name)}
+		</button>
+	{/each}
 </menu>

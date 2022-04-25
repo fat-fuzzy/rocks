@@ -10,14 +10,9 @@
 
 	let showcanvas = true
 	let animation
-	let animationId = $currentAnimationId
 
 	let showFeedback = !showcanvas
 	let feedback = ''
-
-	currentAnimationId.subscribe((value) => {
-		animationId = value
-	})
 
 	function loadAnimation(event) {
 		console.log('Load animation')
@@ -28,6 +23,10 @@
 
 <svelte:head>
 	<title>Sandbox | 👾 Playground</title>
+	<meta
+		name="description"
+		content="Playground: a sandbox environment to experiment and learn web-based computer graphics."
+	/>
 </svelte:head>
 
 <header>
@@ -35,7 +34,9 @@
 </header>
 
 <section class="l-sidebar">
-	<Menu on:input={loadAnimation} className="l-sidebar-side sm" />
+	<div class="l-sidebar-side xs">
+		<Menu on:input={loadAnimation} />
+	</div>
 	<div class="l-sidebar-main l-stack">
 		<Canvas show={showcanvas} />
 		<Feedback {feedback} show={showFeedback} />

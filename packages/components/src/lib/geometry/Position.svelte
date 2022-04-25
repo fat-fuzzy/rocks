@@ -27,6 +27,6 @@
 </script>
 
 <Fieldset slug="position" {label} {size}>
-	<InputRange bind:value={coordX} label="x" max={maxX} on:input={updateX} />
-	<InputRange bind:value={coordY} label="y" max={maxY} on:input={updateY} />
+	<InputRange bind:value={coordX} label="{label} x" max={maxX} on:input={updateX} />
+	<InputRange bind:value={coordY} label="{label} y" max={maxY} on:input={updateY} />
 </Fieldset>

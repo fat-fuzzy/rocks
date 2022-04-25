@@ -5,6 +5,7 @@
 
 <script>
 	import {animations, currentAnimationId} from '../../stores.js'
+	import Button from '../button/Button.svelte'
 	import Controls from '../controls/Controls.svelte'
 	import Geometry from '../geometry/Geometry.svelte'
 	export let show = true
@@ -62,21 +63,39 @@
 		animation.clear()
 	}
 
-	function toggleHandles() {
+	function togglelDetails() {
 		showGeometryInputs = !showGeometryInputs
 	}
-
 	$: canvasClass = show ? 'canvas' : 'u-hidden'
 	$: animation = $animations.find((animation) => animation.id === animationId)
 	$: interactive = animation.interactive
+	$: details = interactive
+	$: detailsIcon = showGeometryInputs ? '⬆️' : '⬇️'
 </script>
 
-<div class="l-frame video layer xl" bind:offsetWidth={canvasWidth} bind:offsetHeight={canvasHeight}>
-	<canvas data-test="canvas" class={canvasClass} bind:this={canvas} />
-</div>
-<div class="l-switcher xs">
-	<Controls {play} {stop} on:toggleInputs={toggleHandles} {interactive} />
-	{#if showGeometryInputs}
-		<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
-	{/if}
+<div class="l-sidebar">
+	<div class="l-sidebar-main">
+		<div
+			class="l-frame video layer xl"
+			bind:offsetWidth={canvasWidth}
+			bind:offsetHeight={canvasHeight}
+		>
+			<canvas alt="WebGL Canvas" data-test="canvas" class={canvasClass} bind:this={canvas} />
+		</div>
+		<Controls {play} {stop} />
+	</div>
+	<div class="l-sidebar-side sm">
+		<aside class="l-stack">
+			{#if details}
+				<Button testId="btn-details" variant="secondary" handleClick={() => togglelDetails()}>
+					{detailsIcon} Details
+				</Button>
+				{#if interactive}
+					{#if showGeometryInputs}
+						<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
+					{/if}
+				{/if}
+			{/if}
+		</aside>
+	</div>
 </div>
