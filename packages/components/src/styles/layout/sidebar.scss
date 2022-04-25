@@ -8,7 +8,8 @@
 	flex-basis: 0;
 	flex-grow: 999;
 	// ~ min-width in horizontal-tb writing mode: if (width < 50%) -> wrap
-	min-inline-size: 75%;
+	min-inline-size: 70%;
+	gap: getVar(gap);
 }
 
 // adjusts to width of contents

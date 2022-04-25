@@ -74,3 +74,9 @@ th {
 	list-style: none;
 	padding-left: 0;
 }
+
+// Strech page
+
+body main {
+	min-height: calc(100vh - 200px);
+}

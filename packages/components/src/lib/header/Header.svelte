@@ -1,6 +1,14 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	// import logo from './svelte-logo.svg'
+
+	let actionsMenuExpanded = false
+
+	function toggleActionsMenu(event) {
+		actionsMenuExpanded = !actionsMenuExpanded
+	}
+
+	$: actionsMenuClass = actionsMenuExpanded ? 'l-switcher md' : 'l-switcher md collapsed'
 </script>
 
 <header class="l-sidebar u-main layer">
@@ -20,9 +28,14 @@
 			</li>
 		</ul>
 	</nav>
-	<form class="l-sidebar-side l-switcher">
-		<p>Login</p>
-		<p>Language</p>
-		<p>Dark / Light</p>
-	</form>
+	<div class="l-sidebar-side">
+		<button class="toggle" aria-expanded={actionsMenuExpanded} on:click={toggleActionsMenu}>
+			Toggle Actions
+		</button>
+		<form class={actionsMenuClass}>
+			<p>Login</p>
+			<p>Language</p>
+			<p>Dark / Light</p>
+		</form>
+	</div>
 </header>

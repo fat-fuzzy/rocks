@@ -1,8 +1,3 @@
-form {
-	padding-left: getVar(gap);
-	padding-right: getVar(gap);
-}
-
 label,
 .feedback {
 	display: block;
@@ -19,7 +14,10 @@ select,
 textarea {
 	border: 1px solid getVar(gray-1);
 	border-radius: getVar(radius-base);
-	margin-bottom: calc(getVar(outline-offset) + 2px);
+}
+
+* + .feedback {
+	margin-block-start: calc(getVar(outline-offset) + 2px);
 }
 
 [disabled] {
@@ -27,8 +25,8 @@ textarea {
 	cursor: not-allowed;
 }
 
-.nul,
-.xs {
+form.xxs,
+form.xs {
 	legend {
 		font-size: getVar(font-size-sm);
 	}
@@ -55,7 +53,7 @@ textarea {
 	}
 
 	.link {
-		padding: 0 getVar(padding-xs);
+		padding: getVar(padding-xs);
 	}
 
 	.link,
@@ -65,7 +63,7 @@ textarea {
 	}
 }
 
-.nul {
+form.xxs {
 	legend + * {
 		margin-block-start: getVar(margin-block-xxs);
 	}
@@ -75,7 +73,7 @@ textarea {
 	}
 }
 
-.sm {
+form.sm {
 	legend {
 		font-size: getVar(font-size-h5);
 	}
@@ -102,7 +100,7 @@ textarea {
 	}
 
 	.link {
-		padding: 0 getVar(padding-sm);
+		padding: getVar(padding-sm);
 	}
 
 	.link,
@@ -112,7 +110,7 @@ textarea {
 	}
 }
 
-.md {
+form.md {
 	legend {
 		font-size: getVar(font-size-h4);
 	}
@@ -139,7 +137,7 @@ textarea {
 	}
 
 	.link {
-		padding: 0 getVar(padding-md);
+		padding: getVar(padding-md);
 	}
 
 	.link,
@@ -149,7 +147,7 @@ textarea {
 	}
 }
 
-.lg {
+form.lg {
 	legend {
 		font-size: getVar(font-size-h3);
 	}
@@ -176,7 +174,7 @@ textarea {
 	}
 
 	.link {
-		padding: 0 getVar(padding-lg);
+		padding: getVar(padding-lg);
 	}
 
 	.link,
@@ -186,7 +184,7 @@ textarea {
 	}
 }
 
-.xl {
+form.xl {
 	legend {
 		font-size: getVar(font-size-h2);
 	}
@@ -213,7 +211,7 @@ textarea {
 	}
 
 	.link {
-		padding: 0 getVar(padding-xl);
+		padding: getVar(padding-xl);
 	}
 
 	.link,

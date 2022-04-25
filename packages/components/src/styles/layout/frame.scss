@@ -22,5 +22,9 @@
 }
 
 .l-frame.xl {
-	max-block-size: calc(100vh - 240px); // TODO : fix magic numbers
+	max-block-size: calc(100vh - 200px); // TODO : fix magic numbers
+}
+
+.l-frame + * {
+	margin-block-start: getVar(s0);
 }

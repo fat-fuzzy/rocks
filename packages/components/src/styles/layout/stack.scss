@@ -41,3 +41,11 @@
 .l-stack.xl > * + * {
 	margin-block-start: getVar(margin-block-xl);
 }
+
+.l-stack {
+	max-width: 100%;
+}
+
+.l-stack > * {
+	max-width: 100%;
+}
