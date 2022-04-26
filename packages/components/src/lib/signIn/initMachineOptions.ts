@@ -16,6 +16,7 @@ const testEmailEventType = (event) =>
 	event.type === Events.SUBMIT ||
 	event.type === Events.RESET_PASSWORD ||
 	event.type === Events.INPUT_EMAIL
+
 const isNoEmail = (context, event) => {
 	const eventType = testEmailEventType(event)
 	return eventType && context.email.length === 0
@@ -40,21 +41,6 @@ function initMachineOptions({
 	handleSubmitButtonFocus,
 }) {
 	const machineOptions = {
-		guards: {
-			isNoEmail,
-			isEmailBadFormat,
-			isNoPassword,
-			isPasswordShort,
-			isLoginFailed,
-			isPasswordRecoveryMaybe,
-			isSignInEmailSent,
-			isNoResponse,
-			isInternalServerErr,
-		},
-		services: {
-			requestSignIn: (context, event) => authenticate(context.email, context.password),
-			requestNewPassword: (context, event) => requestPassword(context.email),
-		},
 		actions: {
 			focusEmailInput: handleEmailInputFocus,
 			focusPasswordInput: handlePasswordInputFocus,
@@ -78,7 +64,26 @@ function initMachineOptions({
 				alert(
 					'💌  If that email address is in our database, we will send you an email to reset your password.',
 				)
+				return {
+					email: '',
+					password: '',
+				}
 			}),
+		},
+		guards: {
+			isNoEmail,
+			isEmailBadFormat,
+			isNoPassword,
+			isPasswordShort,
+			isLoginFailed,
+			isPasswordRecoveryMaybe,
+			isSignInEmailSent,
+			isNoResponse,
+			isInternalServerErr,
+		},
+		services: {
+			requestSignIn: (context, event) => authenticate(context.email, context.password),
+			requestNewPassword: (context, event) => requestPassword(context.email),
 		},
 	}
 

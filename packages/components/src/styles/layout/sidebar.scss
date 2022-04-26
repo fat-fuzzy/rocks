@@ -1,13 +1,15 @@
 .l-sidebar {
 	display: flex;
 	flex-wrap: wrap;
+	gap: getVar(gap);
 }
 
 .l-sidebar-main {
 	flex-basis: 0;
 	flex-grow: 999;
 	// ~ min-width in horizontal-tb writing mode: if (width < 50%) -> wrap
-	min-inline-size: 65%;
+	min-inline-size: 70%;
+	gap: getVar(gap);
 }
 
 // adjusts to width of contents
@@ -15,17 +17,38 @@
 	flex-grow: 1;
 }
 
-.l-sidebar-side-sm {
+.l-sidebar-side.xs {
+	flex-basis: getVar(sidebar-width-xs);
+}
+
+.l-sidebar-side.sm {
 	flex-basis: getVar(sidebar-width-sm);
-	flex-grow: 1;
 }
 
-.l-sidebar-side-md {
+.l-sidebar-side.md {
 	flex-basis: getVar(sidebar-width-md);
-	flex-grow: 1;
 }
 
-.l-sidebar-side-lg {
+.l-sidebar-side.lg {
 	flex-basis: getVar(sidebar-width-lg);
-	flex-grow: 1;
+}
+
+.l-sidebar-side.xl {
+	flex-basis: getVar(sidebar-width-xl);
+}
+
+@include max-width(bp-md) {
+	.l-sidebar-side.sm + .l-sidebar-main {
+		min-inline-size: calc(100% - getVar(sidebar-width-sm));
+		gap: getVar(gap);
+	}
+}
+
+@include min-width(bp-md) {
+	.l-sidebar-main .layer {
+		margin-block-start: getVar(margin-md);
+	}
+	.l-sidebar-side aside {
+		padding: getVar(padding-md);
+	}
 }

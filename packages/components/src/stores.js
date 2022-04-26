@@ -6,15 +6,17 @@ import * as _animations from './gl/animations.js'
 export const uiState = writable(constants.uiState.DEFAULT)
 
 export const emojiFeedback = derived(uiState, ($uiState) => {
-  return constants.emojis[$uiState] ? constants.emojis[$uiState] : []
+	return constants.emojis[$uiState] ? constants.emojis[$uiState] : []
 })
 
 // Use small cursor only for now
 export const currentCursor = derived(uiState, ($uiState) => {
-  if (Object.keys(constants.emojis.animate).includes($uiState)) {
-    return constants.cursor[$uiState]
-  }
+	if (Object.keys(constants.emojis.animate).includes($uiState)) {
+		return constants.cursor[$uiState]
+	}
 })
 
 export const animations = readable(_animations.animations)
 export const currentAnimationId = writable('random-rect')
+export const theme = writable('light')
+export const lang = writable('en')

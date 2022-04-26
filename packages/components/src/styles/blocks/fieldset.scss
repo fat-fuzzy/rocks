@@ -1,0 +1,19 @@
+.fieldset {
+	// @include layout-fieldset();
+	border-radius: 3px;
+	border: 1px solid getVar(font-color-body);
+	max-width: 100%;
+	> legend {
+		font-weight: bold;
+	}
+}
+
+.fieldset > * {
+	max-width: 100%;
+}
+
+fieldset.nul {
+	> * + * {
+		margin-block-start: 0;
+	}
+}

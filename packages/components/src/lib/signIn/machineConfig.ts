@@ -67,11 +67,11 @@ const authServiceStates = {
 
 const machineConfig = {
 	id: 'signInForm',
+	initial: 'loggedOut',
 	context: {
 		email: '',
 		password: '',
 	},
-	initial: 'loggedOut',
 	states: {
 		loggedOut: {
 			type: 'parallel' as const,
@@ -149,6 +149,7 @@ const machineConfig = {
 			},
 		},
 		forgotPassword: {
+			initial: 'noError',
 			on: {
 				INPUT_EMAIL: {
 					actions: 'cacheEmail',
@@ -174,12 +175,25 @@ const machineConfig = {
 				],
 			},
 			states: {
+				noError: {},
+				error: {
+					initial: 'empty',
+					states: {
+						empty: {},
+					},
+					onEntry: 'focusEmailInput',
+				},
 				email: {...emailStates},
 				authService: {...authServiceStates},
 			},
 		},
 		resetPassword: {
+			initial: 'noError',
 			on: {
+				INPUT_EMAIL: {
+					actions: 'cacheEmail',
+					target: 'resetPassword.email.noError',
+				},
 				CANCEL: 'loggedOut',
 			},
 			invoke: {
@@ -191,9 +205,21 @@ const machineConfig = {
 				onError: [
 					{
 						cond: 'isNoResponse',
-						target: 'forgotPassword.authService.error.communication',
+						target: 'resetPassword.authService.error.communication',
 					},
 				],
+			},
+			states: {
+				noError: {},
+				error: {
+					initial: 'empty',
+					states: {
+						empty: {},
+					},
+					onEntry: 'focusEmailInput',
+				},
+				email: {...emailStates},
+				authService: {...authServiceStates},
 			},
 		},
 		loggedIn: {

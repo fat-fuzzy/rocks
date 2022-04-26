@@ -1,0 +1,25 @@
+// @import '../main.scss';
+
+// .nav {
+// 	@include layout-header();
+// }
+
+menu {
+	display: flex;
+	justify-content: stretch;
+	padding: 0;
+}
+
+menu.l-stack {
+	padding: 0;
+}
+
+menu.l-stack button {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+menu.md {
+	padding: getVar(padding-md);
+}

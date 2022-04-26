@@ -1,22 +1,61 @@
 <script lang="ts">
+	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
+	import {theme, lang} from '../../stores'
 	// import logo from './svelte-logo.svg'
+
+	let actionsMenuExpanded = false
+	let currentTheme = $theme
+	let currentLang = $lang
+	let app
+
+	function toggleActionsMenu(event) {
+		actionsMenuExpanded = !actionsMenuExpanded
+	}
+
+	function toggleTheme(event) {
+		const _theme = currentTheme === 'bg-light' ? 'bg-dark' : 'bg-light'
+		theme.set(_theme)
+	}
+	function setLanguage(event) {
+		lang.set(event.detail)
+	}
+
+	theme.subscribe((value) => {
+		if (app) {
+			app.classList.remove(currentTheme)
+		}
+		currentTheme = value
+		if (app) {
+			app.classList.add(currentTheme)
+		}
+	})
+
+	lang.subscribe((value) => {
+		currentLang = value
+	})
+
+	onMount(() => {
+		app = document.getElementById('app')
+		app.classList.add(currentTheme)
+	})
+
+	$: actionsMenuClass = actionsMenuExpanded
+		? 'menu l-switcher md show right'
+		: 'menu l-switcher md hide'
+	$: themeIcon = currentTheme === 'bg-light' ? '☀️' : '🌙'
+	$: langIcon = currentLang === 'fr' ? '🇫🇷 FR' : currentLang === 'es' ? '🇪🇸 ES' : '🇬🇧 EN'
 </script>
 
-<header>
-	<div class="corner">
-		<a href="./" alt="Home" class="emoji">
-			<!-- <img src={logo} alt="SvelteKit" /> -->
-			👾
-		</a>
-	</div>
-
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
+<header class="l-sidebar u-main layer">
+	<nav class="l-sidebar-main">
+		<ul class="l-wrapper">
+			<li class:active={$page.url.pathname === '/'} class="home">
+				<a sveltekit:prefetch href="/">
+					<span class="l-square" alt="Home">🐣</span>
+					Home
+				</a>
+			</li>
 			<li class:active={$page.url.pathname === '/play'}>
 				<a sveltekit:prefetch href="/play">Play</a>
 			</li>
@@ -24,109 +63,30 @@
 				<a sveltekit:prefetch href="/machines">Machines</a>
 			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
+	<div class="l-sidebar-side">
+		<form class="dropdown sm">
+			<button
+				type="button"
+				class="toggle collapse primary"
+				aria-expanded={actionsMenuExpanded}
+				on:click={toggleActionsMenu}
+			>
+				➕ Settings
+			</button>
+			<menu class={actionsMenuClass}>
+				<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
-	<div class="corner">
-		<!-- TODO put something else here? github link? -->
+				<!--button>Login</-button-->
+				<div class="dropdown sm">
+					<button type="button" on:click={setLanguage}>{langIcon}</button>
+					<!-- <menu class={actionsMenuClass}>
+						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
+						<button type="button" on:click={setLanguage}>{langIcon}</button>
+						<!--button>Login</-button -- >
+					</menu> -->
+				</div>
+			</menu>
+		</form>
 	</div>
 </header>
-
-<style lang="scss">
-	@import '../../styles/config/variables.scss';
-	@import '../../styles/blocks/nav.scss';
-
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	.corner .emoji {
-		font-size: 2.8em;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li.active::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--accent-color);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 1em;
-		color: var(--heading-color);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--accent-color);
-	}
-</style>

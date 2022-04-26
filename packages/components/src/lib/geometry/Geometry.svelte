@@ -1,13 +1,13 @@
 <script context="module">
 	import {onMount, createEventDispatcher} from 'svelte'
-	import {getGeometryDefaults} from '../gl/animations.js'
+	import {getGeometryDefaults} from '../../gl/animations.js'
 	import Position from './Position.svelte'
 	import Scale from './Scale.svelte'
 	import Rotation from './Rotation.svelte'
 </script>
 
 <script>
-	import * as utils from '../gl/utils.js'
+	import * as utils from '../../gl/utils.js'
 
 	export let canvasWidth
 	export let canvasHeight
@@ -85,16 +85,12 @@
 
 	onMount(() => {
 		init()
+		update()
 	})
 </script>
 
-<form class="switcher">
+<form class="xxs">
 	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} />
 	<Scale bind:scaleX bind:scaleY maxX={5} maxY={5} minX={-5} minY={-5} on:input={update} />
 	<Rotation bind:angle max={360} on:input={update} />
 </form>
-
-<style lang="scss">
-	@import '../styles/layout/switcher.scss';
-	// @import '../styles/common/form.scss';
-</style>
