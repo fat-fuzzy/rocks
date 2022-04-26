@@ -36,15 +36,8 @@ h5 {
 
 a,
 .link {
-	// color: currentColor;
-
-	color: getVar(play);
-}
-
-a,
-.link {
-	color: getVar(play);
-	text-decoration: none;
+	color: currentColor;
+	// text-decoration: none;
 }
 
 a:hover,
@@ -66,7 +59,7 @@ th {
 }
 
 :focus {
-	outline: 1px dotted getVar(primary);
+	outline: 2px dotted currentColor;
 	outline-offset: getVar(outline-offset);
 }
 
