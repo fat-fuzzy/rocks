@@ -14,22 +14,38 @@
 	block-size: 100%;
 }
 
+.l-stack.recursive * + * {
+	margin-block-start: getVar(margin-block-xs);
+}
+
 .l-stack > * + * {
-	margin-block-start: getVar(400);
+	margin-block-start: getVar(margin-block-xs);
 }
 
-.l-stack-recursive * + * {
-	margin-block-start: getVar(400);
-}
-
-.l-stack.lg > * + * {
-	margin-block-start: getVar(500);
-}
-
-.l-stack.md > * + * {
-	margin-block-start: getVar(400);
+.l-stack.xs > * + * {
+	margin-block-start: getVar(margin-block-xs);
 }
 
 .l-stack.sm > * + * {
-	margin-block-start: getVar(300);
+	margin-block-start: getVar(margin-block-sm);
+}
+
+.l-stack.md > * + * {
+	margin-block-start: getVar(margin-block-md);
+}
+
+.l-stack.lg > * + * {
+	margin-block-start: getVar(margin-block-lg);
+}
+
+.l-stack.xl > * + * {
+	margin-block-start: getVar(margin-block-xl);
+}
+
+.l-stack {
+	max-width: 100%;
+}
+
+.l-stack > * {
+	max-width: 100%;
 }

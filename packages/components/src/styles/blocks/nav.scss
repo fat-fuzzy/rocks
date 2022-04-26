@@ -1,7 +1,6 @@
-@import '../main.scss';
-
-.nav {
-	@include layout-header();
+nav {
+	display: flex;
+	justify-content: center;
 }
 
 nav > ul {
@@ -9,4 +8,45 @@ nav > ul {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+}
+
+.u-main > nav > ul {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	height: getVar(s3);
+	display: flex;
+	align-items: center;
+	list-style: none;
+	background-size: contain;
+}
+
+.u-main > nav li {
+	position: relative;
+	height: 100%;
+}
+
+.u-main > nav li.active::before {
+	--size: 6px;
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: calc(50% - var(--size));
+	border: var(--size) solid transparent;
+}
+
+.u-main > nav a {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	padding: 0 1em;
+	color: inherit;
+	font-weight: 700;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+	transition: color 0.2s linear;
 }

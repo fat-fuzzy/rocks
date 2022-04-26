@@ -3,7 +3,7 @@
 </script>
 
 <nav>
-	<ul>
+	<ul class="list">
 		<li>
 			<a aria-current={segment === undefined ? 'page' : undefined} href="."> Playground </a>
 		</li>
@@ -14,8 +14,3 @@
 		<!-- <li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">blog</a></li> -->
 	</ul>
 </nav>
-
-<style lang="scss">
-	@import '../styles/config/variables.scss';
-	@import '../styles/blocks/nav.scss';
-</style>

@@ -1,0 +1,179 @@
+.bg-light {
+	color: getVar(color-dark);
+	background-color: getVar(color-white);
+}
+
+.bg-dark {
+	color: getVar(color-light);
+	background-color: getVar(color-dark);
+}
+
+//== Primary / Accent / Highlight colors: Links, buttons & utility class
+
+.bg-light button:not(.link) {
+	color: getVar(color-dark);
+	background-color: getVar(color-light);
+	border-color: getVar(primary-lighter);
+}
+
+.bg-dark button:not(.link) {
+	color: getVar(color-white);
+	background-color: getVar(gray-5);
+	border-color: getVar(primary-light);
+}
+
+.bg-light .link {
+	color: getVar(primary);
+}
+
+.bg-dark .link {
+	color: getVar(primary-light);
+}
+
+.bk-dark :visited,
+.bk-dark .link:visited {
+	color: getVar(primary-light);
+}
+
+.bk-light a:visited,
+.bk-light .link:visited {
+	color: getVar(primary-light);
+}
+
+.bg-light .primary,
+.bg-light button.primary {
+	color: getVar(color-white);
+	background-color: getVar(primary);
+	border-color: getVar(primary);
+}
+
+.bg-dark .primary,
+.bg-dark button.primary {
+	color: getVar(color-dark);
+	background-color: getVar(primary-light);
+	border-color: getVar(primary-light);
+}
+
+.bg-light .secondary,
+.bg-light button.secondary {
+	color: getVar(primary);
+	background-color: getVar(color-white);
+	border-color: getVar(primary);
+}
+
+.bg-dark .secondary,
+.bg-dark button.secondary {
+	color: getVar(color-white);
+	background-color: getVar(color-dark);
+	border-color: getVar(primary-light);
+}
+
+.bg-light .accent,
+.bg-light button.accent,
+.bg-dark button.accent {
+	color: getVar(color-white);
+	background-color: getVar(accent);
+	border-color: getVar(accent);
+}
+
+.bg-light .highlight,
+.bg-light button.highlight,
+.bg-dark button.highlight {
+	color: getVar(color-dark);
+	background-color: getVar(highlight);
+	border-color: getVar(highlight);
+}
+
+.bg-light .accent.secondary,
+.bg-light button.accent.secondary {
+	color: getVar(color-dark);
+	background-color: getVar(color-white);
+	border-color: getVar(accent);
+}
+
+.bg-dark .accent.secondary,
+.bg-dark button.accent.secondary {
+	color: getVar(color-white);
+	background-color: getVar(gray-5);
+	border-color: getVar(accent);
+}
+
+.bg-light .highlight.secondary,
+.bg-light button.highlight.secondary {
+	color: getVar(color-dark);
+	background-color: getVar(color-white);
+	border-color: getVar(highlight);
+}
+
+.bg-dark .highlight.secondary,
+.bg-dark button.highlight.secondary {
+	color: getVar(color-white);
+	background-color: getVar(gray-5);
+	border-color: getVar(highlight);
+}
+
+//== Header & Navs
+
+.bg-dark > header {
+	color: getVar(color-light);
+	background: getVar(gray-5);
+}
+.bg-light > header {
+	color: getVar(primary);
+	background: getVar(color-white);
+}
+
+.bg-dark .u-main > nav a:hover {
+	color: getVar(primary-light);
+}
+.bg-light .u-main > nav a:hover {
+	color: getVar(gray-5);
+}
+
+.bg-dark .u-main > nav li.active a {
+	color: getVar(primary-lighter);
+}
+.bg-light .u-main > nav li.active a {
+	color: getVar(gray-5);
+}
+
+.bg-dark .u-main > nav li.active::before {
+	border-top: var(--size) solid getVar(primary-lighter);
+}
+.bg-light .u-main > nav li.active::before {
+	border-top: var(--size) solid getVar(gray-4);
+}
+
+//== Errors
+
+.bg-light .error {
+	color: getVar(danger);
+}
+
+.bg-light .error:focus {
+	outline-color: getVar(danger);
+}
+
+.bg-dark .error {
+	color: getVar(danger-light);
+}
+
+.bg-dark .error:focus {
+	outline-color: getVar(danger-light);
+}
+
+//== shadows
+
+.bg-light .layer {
+	box-shadow: getVar(shadow);
+}
+.bg-dark .layer {
+	box-shadow: getVar(shadow-light);
+}
+
+.bg-light .l-frame {
+	background-color: getVar(color-light);
+}
+.bg-dark .l-frame {
+	background-color: getVar(color-light);
+}

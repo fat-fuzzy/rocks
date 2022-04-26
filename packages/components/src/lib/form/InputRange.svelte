@@ -15,15 +15,17 @@
 			value,
 		})
 	}
+
+	$: id = `${label.replaceAll(' ', '-')}-range`
 </script>
 
-<label for={`${label}-range`}>
+<label for={id}>
 	{label}:
 	{value}
 </label>
 <input
-	id={`${label}-range`}
-	data-cy={`${label}-range`}
+	{id}
+	data-test={`${label}-range`}
 	type="range"
 	bind:value
 	{min}
@@ -31,20 +33,3 @@
 	{step}
 	on:input={handleInput}
 />
-
-<style lang="scss">
-	label {
-		font: inherit;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: space-between;
-		padding: getVar(margin-sm) getVar(margin-xs) getVar(margin-sm);
-		width: 100%;
-		max-width: 100%;
-	}
-
-	input {
-		width: 100%;
-	}
-</style>

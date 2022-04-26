@@ -1,62 +1,62 @@
 <script context="module">
-	import * as constants from '../types/constants.js';
-	import { uiState, emojiFeedback, animations, currentAnimationId } from '../stores.js';
-	import Feedback from './Feedback.svelte';
-	import GeometryControls from './GeometryControls.svelte';
-	import AnimationsMenu from './AnimationsMenu.svelte';
-	import Controls from './Controls.svelte';
+	import * as constants from '../types/constants.js'
+	import {uiState, emojiFeedback, animations, currentAnimationId} from '../stores.js'
+	import Feedback from './feedback/Feedback.svelte'
+	import GeometryControls from './GeometryControls.svelte'
+	import AnimationsMenu from './AnimationsMenu.svelte'
+	import Controls from './controls/Controls.svelte'
 </script>
 
 <script>
-	import * as utils from '../gl/utils.js';
+	import * as utils from '../gl/utils.js'
 	// Canvas
-	let canvas;
-	let canvasWidth = 300;
-	let canvasHeight = 150;
-	let animationFrame;
+	let canvas
+	let canvasWidth = 300
+	let canvasHeight = 150
+	let animationFrame
 
 	// Audio
-	let drumroll;
-	let playbackRate = 2;
+	let drumroll
+	let playbackRate = 2
 
 	// WebGL Geometry
-	const width = 100; // of geometry
-	const height = 30; // of geometry
+	const width = 100 // of geometry
+	const height = 30 // of geometry
 
 	const geometryStateDefault = {
 		color: [Math.random(), Math.random(), Math.random(), 1],
 		translation: [canvasWidth / 2, canvasHeight / 2],
 		rotation: [0, 0],
-		scale: [1, 1]
-	};
+		scale: [1, 1],
+	}
 	// TODO : fix - gepometry state is not reactive
-	let geometryState = geometryStateDefault;
+	let geometryState = geometryStateDefault
 
 	// animations
-	let animationStartTime;
-	const animationDuration = 4179 / playbackRate;
+	let animationStartTime
+	const animationDuration = 4179 / playbackRate
 
 	// UI feedback
-	let playgroundState;
-	let animationId = $currentAnimationId;
-	let animation = $animations.find((animation) => animation.id === animationId);
+	let playgroundState
+	let animationId = $currentAnimationId
+	let animation = $animations.find((animation) => animation.id === animationId)
 
 	uiState.subscribe((value) => {
-		playgroundState = value;
-	});
+		playgroundState = value
+	})
 	currentAnimationId.subscribe((value) => {
-		animationId = value;
-	});
+		animationId = value
+	})
 
 	function resetAudio() {
-		drumroll.pause();
-		drumroll.currentTime = 0;
+		drumroll.pause()
+		drumroll.currentTime = 0
 	}
 
 	function runLoop(timestamp, duration) {
-		const runtime = timestamp - animationStartTime;
+		const runtime = timestamp - animationStartTime
 		if (duration && runtime >= duration) {
-			celebrate();
+			celebrate()
 		} else {
 			// if duration not met yet
 			if (animation.position) {
@@ -67,76 +67,76 @@
 					geometryState.scale,
 					geometryState.color,
 					width,
-					height
-				);
+					height,
+				)
 			} else {
-				animation.run(canvas);
+				animation.run(canvas)
 			}
 			animationFrame = requestAnimationFrame(function (t) {
 				// call requestAnimationFrame again with parameters
-				runLoop(t, duration);
-			});
+				runLoop(t, duration)
+			})
 		}
 	}
 
 	function animate(duration) {
-		uiState.set(constants.uiState.ACTIVE);
+		uiState.set(constants.uiState.ACTIVE)
 		if (animation.audio) {
-			drumroll.play();
+			drumroll.play()
 		}
 		animationFrame = requestAnimationFrame(function (timestamp) {
-			animationStartTime = timestamp || new Date().getTime();
-			runLoop(timestamp, duration);
-		});
+			animationStartTime = timestamp || new Date().getTime()
+			runLoop(timestamp, duration)
+		})
 	}
 
 	function celebrate() {
-		cancelAnimationFrame(animationFrame);
+		cancelAnimationFrame(animationFrame)
 		// ...
 	}
 
 	function resetPlayground() {
-		resetAudio();
-		cancelAnimationFrame(animationFrame);
-		animation.clear();
+		resetAudio()
+		cancelAnimationFrame(animationFrame)
+		animation.clear()
 	}
 
 	function play() {
-		resetPlayground();
+		resetPlayground()
 		try {
 			if (animation.loop) {
-				animate(animationDuration);
+				animate(animationDuration)
 			} else {
-				animate();
+				animate()
 			}
 		} catch (error) {
-			handleError(error);
+			handleError(error)
 		}
 	}
 
 	function refresh() {
-		resetPlayground();
-		location.reload(); // TODO - reload gl code only ?
+		resetPlayground()
+		location.reload() // TODO - reload gl code only ?
 	}
 
 	function stop() {
-		resetPlayground();
+		resetPlayground()
 	}
 
 	function handleLoadAnimation(event) {
-		resetPlayground();
-		currentAnimationId.set(event.detail.animationId);
-		animation = $animations.find((animation) => animation.id === animationId);
-		play();
+		resetPlayground()
+		currentAnimationId.set(event.detail.animationId)
+		animation = $animations.find((animation) => animation.id === animationId)
+		play()
 	}
 
 	function updateGeometry(event) {
-		const { color, translation, rotation, scale } = event.detail.value;
-		geometryState = { ...geometryState, color, translation, rotation, scale };
+		const {color, translation, rotation, scale} = event.detail.value
+		geometryState = {...geometryState, color, translation, rotation, scale}
 		if (animation.position && animation.webGlProps) {
-			animation.update(translation, rotation, scale);
+			animation.update(translation, rotation, scale)
 		} else {
-			play();
+			play()
 		}
 	}
 </script>

@@ -3,13 +3,12 @@
 	import {useMachine} from '@xstate/svelte'
 	import machineConfig from './machineConfig'
 	import initMachineOptions, {Events} from './initMachineOptions'
-	import Fieldset from '../Fieldset.svelte'
+	import Fieldset from '../form/Fieldset.svelte'
 
+	export let size = 'md'
 	let emailInput
 	let passwordInput
 	let submitButton
-	let cancelButton
-	let resetButton
 	let resetPassword = false
 
 	const delay = (func) => setTimeout(() => func())
@@ -86,14 +85,10 @@
 	}
 
 	const handleCancel = (event) => {
-		if (loading) {
-			send({
-				type: Events.CANCEL,
-			})
-		} else {
-			send({
-				type: Events.CANCEL,
-			})
+		send({
+			type: Events.CANCEL,
+		})
+		if (!loading) {
 			handleResetForm()
 		}
 	}
@@ -119,10 +114,10 @@
 	$: isLoggedIn = $state.matches('loggedIn')
 	$: isPasswordShort = $state.matches('loggedOut.password.error.tooShort')
 	$: isLoginFailed = $state.matches('loggedOut.authService.error.login')
-	$: isNoResponse = $state.matches('loggedOut.authService.error.communication')
+	$: isNoResponseSignIn = $state.matches('loggedOut.authService.error.communication')
+	$: isNoResponseReset = $state.matches('resetPassword.authService.error.communication')
 	$: errPassword = isNoPassword || isPasswordShort
 	$: errEmail = isNoEmail || isEmailBadFormat
-	$: errForm = isLoginFailed
 
 	$: loading = $state.matches('loading')
 	$: resetPassword = $state.matches('resetPassword')
@@ -133,9 +128,13 @@
 	$: emailInputClass = errEmail ? 'error' : ''
 	$: passwordInputClass = errPassword ? 'error' : ''
 	$: resetButtonClass = showPasswordInput ? 'link' : 'primary'
+	$: feedbackClass =
+		errEmail || errPassword || isLoginFailed || isNoResponseSignIn || isNoResponseReset
+			? 'error'
+			: ''
 </script>
 
-<Fieldset slug="signIn" label="Sign In" size="sm">
+<Fieldset slug="signIn" label="Sign In" {size}>
 	{#if !isLoggedIn}
 		<label for="email"> Email </label>
 		<input
@@ -147,12 +146,11 @@
 			bind:this={emailInput}
 			on:change={handleEmailChange}
 		/>
-		{#if errEmail}
-			<small class="error">
-				{#if isNoEmail} <p>Please enter your email</p>{/if}
-				{#if isEmailBadFormat} <p>Please enter a valid email</p>{/if}
-			</small>
-		{/if}
+		<div class="feedback {feedbackClass}">
+			{#if isNoEmail} <p>Please enter your email</p>{/if}
+			{#if isEmailBadFormat} <p>Please enter a valid email</p>{/if}
+			{#if isNoResponseReset} <p>Reset failed: please try again later</p>{/if}
+		</div>
 
 		{#if showPasswordInput}
 			<label for="password"> Password </label>
@@ -165,20 +163,15 @@
 				bind:this={passwordInput}
 				on:change={handlePasswordChange}
 			/>
-			{#if errPassword}
-				<small class="error">
-					{#if isNoPassword} <p>Please fill in your password</p>{/if}
-					{#if isEmailBadFormat} <p>Password length is too short</p>{/if}
-				</small>
-			{/if}
-		{/if}
-		{#if errForm}
-			<small class="error">
+			<div class="feedback {feedbackClass}">
+				{#if isNoPassword} <p>Please fill in your password</p>{/if}
+				{#if isPasswordShort}
+					<!-- TODO: This error should only appear in SignUp form --->
+					<p>Password length is too short</p>
+				{/if}
 				{#if isLoginFailed} <p>Login failed: invalid email or password</p>{/if}
-				{#if isNoResponse} <p>Login failed: please try again later</p>{/if}
-			</small>
-		{/if}
-		{#if showPasswordInput}
+				{#if isNoResponseSignIn} <p>Login failed: please try again later</p>{/if}
+			</div>
 			<button
 				type="submit"
 				class="primary"
@@ -193,27 +186,19 @@
 			type="button"
 			class={resetButtonClass}
 			disabled={loading || resetPassword || errEmail}
-			bind:this={resetButton}
 			on:click|preventDefault={handleResetButtonAction}
 		>
 			{resetButtonLabel}
 		</button>
-		<button type="button" bind:this={cancelButton} on:click|preventDefault={handleCancel}>
-			Cancel
-		</button>
+		<button type="button" on:click|preventDefault={handleCancel}> Cancel </button>
 	{/if}
 
 	{#if isLoggedIn}
 		<h2>Welcome!</h2>
-		<button type="button" bind:this={cancelButton} on:click|preventDefault={handleLogout}>
-			Logout
-		</button>
+		<button type="button" on:click|preventDefault={handleLogout}> Logout </button>
 	{/if}
 </Fieldset>
 
 <style lang="scss" global>
 	@import '../../styles/main.scss';
-	input {
-		min-width: 44ch; // anticipate error message length
-	}
 </style>
