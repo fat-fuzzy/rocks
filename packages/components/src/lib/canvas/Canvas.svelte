@@ -16,7 +16,6 @@
 	let animationId = $currentAnimationId
 	let animationFrame
 
-	let showGeometryInputs = false
 	// TODO : fix - geometry state is not reactive
 	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 
@@ -66,10 +65,11 @@
 	function togglelDetails() {
 		showGeometryInputs = !showGeometryInputs
 	}
-	$: canvasClass = show ? 'canvas' : 'u-hidden'
+	$: canvasClass = show ? 'canvas' : 'u-visually-hidden'
 	$: animation = $animations.find((animation) => animation.id === animationId)
 	$: interactive = animation.interactive
 	$: details = interactive
+	$: showGeometryInputs = details
 	$: detailsIcon = showGeometryInputs ? '⬆️' : '⬇️'
 </script>
 
@@ -80,7 +80,12 @@
 			bind:offsetWidth={canvasWidth}
 			bind:offsetHeight={canvasHeight}
 		>
-			<canvas alt="WebGL Canvas" data-test="canvas" class={canvasClass} bind:this={canvas} />
+			<canvas
+				alt={`HTML Canvas displaying scene: ${animation.name}`}
+				data-test="canvas"
+				class={canvasClass}
+				bind:this={canvas}
+			/>
 		</div>
 		<Controls {play} {stop} />
 	</div>

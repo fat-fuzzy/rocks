@@ -8,7 +8,7 @@
 		actionsMenuExpanded = !actionsMenuExpanded
 	}
 
-	$: actionsMenuClass = actionsMenuExpanded ? 'menu l-switcher md' : 'menu l-switcher md collapsed'
+	$: actionsMenuClass = actionsMenuExpanded ? 'menu l-switcher md show' : 'menu l-switcher md hide'
 </script>
 
 <header class="l-sidebar u-main layer">
@@ -29,10 +29,10 @@
 		</ul>
 	</nav>
 	<div class="l-sidebar-side">
-		<form class="sm">
+		<form class="dropdown sm">
 			<button
 				type="button"
-				class="toggle primary"
+				class="toggle collapse primary"
 				aria-expanded={actionsMenuExpanded}
 				on:click={toggleActionsMenu}
 			>
@@ -40,8 +40,8 @@
 			</button>
 			<menu class={actionsMenuClass}>
 				<button>Lang</button>
-				<button>Color</button>
-				<button>Login</button>
+				<button>Theme</button>
+				<!--button>Login</-button-->
 			</menu>
 		</form>
 	</div>

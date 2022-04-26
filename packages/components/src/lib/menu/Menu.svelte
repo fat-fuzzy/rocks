@@ -19,19 +19,42 @@
 		animationId = value
 	})
 
+	let animationsMenuExpanded = false
+
+	function toggleAnimationsMenu(event) {
+		animationsMenuExpanded = !animationsMenuExpanded
+	}
+
 	const handleClick = (event) => {
 		const element = event.target
 		dispatch('input', {
 			animationId: element.getAttribute('id'),
 		})
 	}
+	$: animationsMenuClass = animationsMenuExpanded ? 'l-stack show left' : 'l-stack hide'
 </script>
 
-<menu data-test="menu" class="l-stack">
-	{#each menumItems as { name, emoji, id }}
-		<button class:primary={id === animationId} on:click={handleClick} {id} data-test={id}>
-			<!--TODO: make routes for animations-->
-			{getLabel(emoji, name)}
-		</button>
-	{/each}
-</menu>
+<form class="dropdown sm">
+	<button
+		type="button"
+		class="toggle collapse primary"
+		aria-expanded={animationsMenuExpanded}
+		on:click={toggleAnimationsMenu}
+	>
+		Scenes
+	</button>
+	<menu class={animationsMenuClass}>
+		{#each menumItems as { name, emoji, id }}
+			<button
+				type="button"
+				class:secondary={id === animationId}
+				on:click={handleClick}
+				{id}
+				data-test={id}
+			>
+				<!--TODO: make routes for animations-->
+				{getLabel(emoji, name)}
+			</button>
+		{/each}
+	</menu>
+</form>

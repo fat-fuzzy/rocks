@@ -34,7 +34,7 @@
 </header>
 
 <section class="l-sidebar">
-	<div class="l-sidebar-side xs">
+	<div class="l-sidebar-side sm">
 		<Menu on:input={loadAnimation} />
 	</div>
 	<div class="l-sidebar-main l-stack">
