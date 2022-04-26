@@ -4,7 +4,7 @@
 </script>
 
 <script>
-	import {animations, currentAnimationId} from '../../stores.js'
+	import {animations, currentAnimationId, theme} from '../../stores.js'
 	import Button from '../button/Button.svelte'
 	import Controls from '../controls/Controls.svelte'
 	import Geometry from '../geometry/Geometry.svelte'
@@ -15,9 +15,18 @@
 	let canvasHeight = 600
 	let animationId = $currentAnimationId
 	let animationFrame
+	let variant = 'accent'
 
 	// TODO : fix - geometry state is not reactive
 	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
+
+	theme.subscribe((value) => {
+		if (value === 'bg-dark') {
+			variant = 'highlight'
+		} else {
+			variant = 'accent'
+		}
+	})
 
 	currentAnimationId.subscribe((value) => {
 		animationId = value
@@ -92,11 +101,7 @@
 	<div class="l-sidebar-side sm">
 		<aside class="l-stack">
 			{#if details}
-				<Button
-					testId="btn-details"
-					variant="secondary accent"
-					handleClick={() => togglelDetails()}
-				>
+				<Button testId="btn-details" {variant} handleClick={() => togglelDetails()}>
 					{detailsIcon} Details
 				</Button>
 				{#if interactive}

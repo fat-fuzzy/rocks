@@ -19,8 +19,11 @@ $colors: (
 	'accent': rgb(6, 143, 167),
 	'accent-light': rgb(161, 249, 228),
 	'accent-lighter': rgb(217, 234, 252),
+	'highlight': rgb(246, 226, 10),
+	'highlight-light': rgb(255, 247, 158),
+	'highlight-lighter': rgb(255, 251, 212),
 	// 'shadow-color': var(--#{$theme-prefix}color-dark),
-	'highlight-color': 220 80% 80%,
+	'shadow-light-color': 220 80% 80%,
 	'shadow-color': 220 3% 15%,
 	'shadow-strength': 1%,
 );
@@ -267,15 +270,15 @@ $layout: (
 	0 12px 15px -5px hsl(var(--#{$theme-prefix}shadow-color) /
 				calc(var(--#{$theme-prefix}shadow-strength) + 7%)),
 	},
-	highlight: #{0 -1px 3px 0 hsl(var(--#{$theme-prefix}highlight-color) /
+	shadow-light: #{0 -1px 3px 0 hsl(var(--#{$theme-prefix}shadow-light-color) /
 				calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
-	0 1px 2px -5px hsl(var(--#{$theme-prefix}highlight-color) /
+	0 1px 2px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
 				calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(--#{$theme-prefix}highlight-color) /
+	0 2px 5px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
 				calc(var(--#{$theme-prefix}shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(--#{$theme-prefix}highlight-color) /
+	0 4px 12px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
 				calc(var(--#{$theme-prefix}shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(--#{$theme-prefix}highlight-color) /
+	0 12px 15px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
 				calc(var(--#{$theme-prefix}shadow-strength) + 7%)),
 	},
 );

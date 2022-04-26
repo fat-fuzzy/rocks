@@ -26,20 +26,26 @@ button:not(:disabled):active {
 	color: getVar(color-white);
 }
 
+.highlight {
+	border-color: getVar(highlight);
+	background-color: getVar(highlight);
+	color: getVar(color-dark);
+}
+
 .secondary {
 	border-color: getVar(primary);
 	background-color: getVar(color-white);
 }
 
-.accent {
+.secondary.accent {
 	border-color: getVar(accent);
-	background-color: getVar(accent);
-	color: getVar(color-white);
+	color: getVar(color-dark);
+	background-color: getVar(color-white);
 }
 
-.secondary.accent {
-	border-color: getVar(secondary);
-	color: getVar(accent);
+.secondary.highlight {
+	border-color: getVar(highlight);
+	color: getVar(color-dark);
 	background-color: getVar(color-white);
 }
 
@@ -50,7 +56,7 @@ button:not(:disabled):active {
 
 .link {
 	border: none;
-	background-color: inherit;
+	background-color: transparent;
 	padding: 0 getVar(padding-xs);
 	color: getVar(primary);
 }
