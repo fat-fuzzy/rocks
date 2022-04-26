@@ -6,6 +6,8 @@ label,
 label,
 legend {
 	font-weight: 500;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 input,
@@ -70,7 +72,9 @@ form.xxs {
 	}
 	input[type='range'] {
 		font-size: getVar(font-size-xs);
-		padding: 0;
+		padding: calc(getVar(padding-xxs) / getVar(ratio));
+		margin-block-start: calc(getVar(margin-sm) * getVar(ratio));
+		margin-block-end: calc(getVar(margin-md) * getVar(ratio));
 	}
 }
 

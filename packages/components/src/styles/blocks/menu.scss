@@ -19,3 +19,7 @@ menu.l-stack button {
 	justify-content: flex-start;
 	width: 100%;
 }
+
+menu.md {
+	padding: getVar(padding-md);
+}

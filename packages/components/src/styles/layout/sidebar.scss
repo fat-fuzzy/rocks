@@ -43,3 +43,12 @@
 		gap: getVar(gap);
 	}
 }
+
+@include min-width(bp-md) {
+	.l-sidebar-main .layer {
+		margin-block-start: getVar(margin-md);
+	}
+	.l-sidebar-side aside {
+		padding: getVar(padding-md);
+	}
+}

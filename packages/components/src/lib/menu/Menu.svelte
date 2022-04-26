@@ -31,7 +31,7 @@
 			animationId: element.getAttribute('id'),
 		})
 	}
-	$: animationsMenuClass = animationsMenuExpanded ? 'l-stack show left' : 'l-stack hide'
+	$: animationsMenuClass = animationsMenuExpanded ? 'l-stack md show left' : 'l-stack md hide'
 </script>
 
 <form class="dropdown sm">
@@ -41,7 +41,7 @@
 		aria-expanded={animationsMenuExpanded}
 		on:click={toggleAnimationsMenu}
 	>
-		Scenes
+		➕ Scenes
 	</button>
 	<menu class={animationsMenuClass}>
 		{#each menumItems as { name, emoji, id }}

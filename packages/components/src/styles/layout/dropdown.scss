@@ -10,18 +10,18 @@
 	position: absolute;
 	top: 2.5em;
 	z-index: getVar(z-index-dropdown);
-	background-color: getVar(color-white);
 	padding: getVar(padding-md);
 	box-shadow: getVar(shadow);
+	background-color: inherit;
 	border-radius: getVar(radius-base);
 }
 
 .dropdown .toggle.collapse + .show.left {
-	left: calc(-1 * getVar(padding-md));
+	left: 0;
 }
 
 .dropdown .toggle.collapse + .show.right {
-	right: calc(-1 * getVar(padding-md));
+	right: 0;
 }
 
 .dropdown .toggle.collapse + .hide {
@@ -59,6 +59,10 @@
 		max-width: unset;
 		box-shadow: unset;
 	}
+}
+
+.dropdown .toggle.collapse + .md {
+	padding: getVar(padding-md);
 }
 
 // @include min-width(bp-md) {
