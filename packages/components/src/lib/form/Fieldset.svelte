@@ -5,12 +5,10 @@
 
 	let className = ''
 
-	$: className = `fieldset ${size} `
+	$: className = `fieldset l-stack ${size} `
 </script>
 
 <fieldset data-cy={slug} class={className}>
-	<div class="l-stack">
-		<legend>{label}</legend>
-		<slot />
-	</div>
+	<legend>{label}</legend>
+	<slot />
 </fieldset>
