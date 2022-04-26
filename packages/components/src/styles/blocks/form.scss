@@ -14,6 +14,7 @@ select,
 textarea {
 	border: 1px solid getVar(gray-1);
 	border-radius: getVar(radius-base);
+	color: currentColor;
 }
 
 * + .feedback {

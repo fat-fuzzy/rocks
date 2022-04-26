@@ -1,13 +1,6 @@
-// @import '../main.scss';
-
-// .nav {
-// 	@include layout-header();
-// }
-
 nav {
 	display: flex;
 	justify-content: center;
-	--background: getVar(color-white);
 }
 
 nav > ul {
@@ -25,7 +18,6 @@ nav > ul {
 	display: flex;
 	align-items: center;
 	list-style: none;
-	background: getVar(color-white);
 	background-size: contain;
 }
 
@@ -43,7 +35,6 @@ nav > ul {
 	top: 0;
 	left: calc(50% - var(--size));
 	border: var(--size) solid transparent;
-	border-top: var(--size) solid getVar(gray-4);
 }
 
 .u-main > nav a {
@@ -51,19 +42,11 @@ nav > ul {
 	height: 100%;
 	align-items: center;
 	padding: 0 1em;
-	color: getVar(primary);
+	color: inherit;
 	font-weight: 700;
 	font-size: 0.8rem;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	text-decoration: none;
 	transition: color 0.2s linear;
-}
-
-.u-main > nav a:hover {
-	color: getVar(gray-4);
-}
-
-.u-main > nav li.active a {
-	color: getVar(gray-4);
 }

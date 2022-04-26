@@ -70,7 +70,7 @@
 	$: interactive = animation.interactive
 	$: details = interactive
 	$: showGeometryInputs = details
-	$: detailsIcon = showGeometryInputs ? '⬆️' : '⬇️'
+	$: detailsIcon = showGeometryInputs ? '➖' : '➕'
 </script>
 
 <div class="l-sidebar">
@@ -92,7 +92,11 @@
 	<div class="l-sidebar-side sm">
 		<aside class="l-stack">
 			{#if details}
-				<Button testId="btn-details" variant="secondary" handleClick={() => togglelDetails()}>
+				<Button
+					testId="btn-details"
+					variant="secondary accent"
+					handleClick={() => togglelDetails()}
+				>
 					{detailsIcon} Details
 				</Button>
 				{#if interactive}

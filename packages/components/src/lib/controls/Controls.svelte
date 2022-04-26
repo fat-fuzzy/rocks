@@ -8,10 +8,10 @@
 </script>
 
 <form class="sm">
-	<Button testId="btn-play" variant="secondary" handleClick={() => play()} type="button" {disabled}>
+	<Button testId="btn-play" variant="accent" handleClick={() => play()} type="button" {disabled}>
 		▶️ &nbsp;Play
 	</Button>
-	<Button testId="btn-stop" variant="secondary" handleClick={() => stop()} type="button" {disabled}>
+	<Button testId="btn-stop" variant="accent" handleClick={() => stop()} type="button" {disabled}>
 		⏹ &nbsp;Stop
 	</Button>
 </form>

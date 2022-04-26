@@ -9,7 +9,6 @@ body > header {
 main > header {
 	justify-content: center;
 }
-
 body > header + *,
 main > header + * {
 	margin-block-start: calc(getVar(fluid-1) / getVar(ratio));

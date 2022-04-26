@@ -1,17 +1,149 @@
 .bg-light {
 	color: getVar(color-dark);
-	background-color: getVar(color-light);
+	background-color: getVar(color-white);
 }
 
 .bg-dark {
 	color: getVar(color-light);
 	background-color: getVar(color-dark);
 }
+//== Links & buttons
+.bg-light button {
+	color: getVar(color-dark);
+	background-color: getVar(color-light);
+	border-color: getVar(primary-lighter);
+}
 
-.error {
+.bg-dark button {
+	color: getVar(color-white);
+	background-color: getVar(gray-5);
+	border-color: getVar(primary-light);
+}
+
+.bk-dark :visited,
+.bk-dark .link:visited {
+	color: getVar(primary-light);
+}
+
+.bk-light a:visited,
+.bk-light .link:visited {
+	color: getVar(primary-light);
+}
+
+//== Primary & Accent colors
+
+.bg-light .primary {
+	color: getVar(color-white);
+	background-color: getVar(primary);
+	border-color: getVar(primary);
+}
+
+.bg-dark .primary {
+	color: getVar(color-dark);
+	background-color: getVar(primary-light);
+	border-color: getVar(primary-light);
+}
+
+.bg-light .secondary {
+	color: getVar(primary);
+	background-color: getVar(color-white);
+	border-color: getVar(primary);
+}
+
+.bg-dark .secondary {
+	color: getVar(color-white);
+	background-color: getVar(color-dark);
+	border-color: getVar(primary-light);
+}
+
+.bg-light .accent,
+.bg-dark .accent {
+	color: getVar(color-white);
+	background-color: getVar(accent);
+	border-color: getVar(accent);
+}
+
+// .bg-dark .accent {
+// 	color: getVar(color-dark);
+// 	background-color: getVar(accent-lighter);
+// }
+
+.bg-light .accent.secondary {
+	color: getVar(color-dark);
+	background-color: getVar(color-white);
+	border-color: getVar(accent);
+}
+
+.bg-dark .accent.secondary {
+	color: getVar(color-white);
+	background-color: getVar(gray-5);
+	border-color: getVar(accent);
+}
+
+//== Header & Navs
+
+.bg-dark > header {
+	color: getVar(color-light);
+	background: getVar(gray-5);
+}
+.bg-light > header {
+	color: getVar(primary);
+	background: getVar(color-white);
+}
+
+.bg-dark .u-main > nav a:hover {
+	color: getVar(primary-light);
+}
+.bg-light .u-main > nav a:hover {
+	color: getVar(gray-5);
+}
+
+.bg-dark .u-main > nav li.active a {
+	color: getVar(primary-lighter);
+}
+.bg-light .u-main > nav li.active a {
+	color: getVar(gray-5);
+}
+
+.bg-dark .u-main > nav li.active::before {
+	border-top: var(--size) solid getVar(primary-lighter);
+}
+.bg-light .u-main > nav li.active::before {
+	border-top: var(--size) solid getVar(gray-4);
+}
+
+//== Errors
+
+.bg-light .error {
 	color: getVar(danger);
 }
 
-.error:focus {
+.bg-light .error:focus {
 	outline-color: getVar(danger);
+}
+
+.bg-dark .error {
+	color: getVar(danger-light);
+}
+
+.bg-dark .error:focus {
+	outline-color: getVar(danger-light);
+}
+
+//== shadows
+
+.bg-light .layer {
+	box-shadow: getVar(shadow);
+}
+.bg-dark .layer {
+	box-shadow: getVar(highlight);
+}
+
+.bg-light .l-frame {
+	box-shadow: getVar(shadow);
+	background-color: getVar(color-light);
+}
+.bg-dark .l-frame {
+	box-shadow: getVar(highlight);
+	background-color: getVar(color-light);
 }

@@ -14,13 +14,6 @@ button:not(:disabled):active {
 	background-color: getVar(color-light);
 }
 
-.link {
-	border: none;
-	background-color: inherit;
-	padding: 0 getVar(padding-xs);
-	color: getVar(primary);
-}
-
 .primary {
 	border-color: getVar(primary);
 	background-color: getVar(primary);
@@ -53,4 +46,11 @@ button:not(:disabled):active {
 .primary:disabled,
 .secondary:disabled {
 	background-color: getVar(color-light);
+}
+
+.link {
+	border: none;
+	background-color: inherit;
+	padding: 0 getVar(padding-xs);
+	color: getVar(primary);
 }
