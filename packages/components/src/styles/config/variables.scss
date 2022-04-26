@@ -238,10 +238,10 @@ $layout: (
 	sidebar-width-xxs: 10ch,
 	sidebar-width-xs: 15ch,
 	sidebar-width-sm: 20ch,
-	sidebar-width-md: 30ch,
-	sidebar-width-lg: 40ch,
-	sidebar-width-xl: 50ch,
-	sidebar-width-xxl: 60ch,
+	sidebar-width-md: 25ch,
+	sidebar-width-lg: 30ch,
+	sidebar-width-xl: 35ch,
+	sidebar-width-xxl: 40ch,
 	//
 	radius-nul: 0,
 	radius-base: 3px,
@@ -249,6 +249,7 @@ $layout: (
 	//
 	border-width: 1px,
 	z-index-input: 2,
+	z-index-dropdown: 1,
 	outline-offset: 0.25rem,
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3

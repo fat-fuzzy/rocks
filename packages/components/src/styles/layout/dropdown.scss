@@ -1,0 +1,87 @@
+.dropdown {
+	position: relative;
+}
+
+.dropdown .toggle.collapse {
+	margin-block-end: 0;
+}
+
+.dropdown .toggle.collapse + .show {
+	position: absolute;
+	top: 2.5em;
+	z-index: getVar(z-index-dropdown);
+	background-color: getVar(color-white);
+	padding: getVar(padding-md);
+	box-shadow: getVar(shadow);
+	border-radius: getVar(radius-base);
+}
+
+.dropdown .toggle.collapse + .show.left {
+	left: calc(-1 * getVar(padding-md));
+}
+
+.dropdown .toggle.collapse + .show.right {
+	right: calc(-1 * getVar(padding-md));
+}
+
+.dropdown .toggle.collapse + .hide {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+@include min-width(bp-md) {
+	.dropdown .toggle.collapse {
+		display: none;
+	}
+
+	.dropdown .toggle.collapse + .hide {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: wrap;
+	}
+
+	.dropdown .toggle.collapse + .show {
+		position: unset;
+		width: 100%;
+		max-width: unset;
+		box-shadow: unset;
+	}
+}
+
+// @include min-width(bp-md) {
+// 	.sm .dropdown .toggle.collapse {
+// 		display: none;
+// 	}
+
+// 	.sm .dropdown .toggle.collapse + .hide {
+// 		border: unset;
+// 		clip: unset;
+// 		height: auto;
+// 		margin: unset;
+// 		overflow: hidden;
+// 		padding: unset;
+// 		position: unset;
+// 		width: auto;
+// 		white-space: wrap;
+// 	}
+
+// 	.sm .dropdown .toggle.collapse + .show {
+// 		position: unset;
+// 		width: 100%;
+// 		max-width: unset;
+// 		box-shadow: unset;
+// 	}
+// }

@@ -36,3 +36,10 @@
 .l-sidebar-side.xl {
 	flex-basis: getVar(sidebar-width-xl);
 }
+
+@include max-width(bp-md) {
+	.l-sidebar-side.sm + .l-sidebar-main {
+		min-inline-size: calc(100% - getVar(sidebar-width-sm));
+		gap: getVar(gap);
+	}
+}
