@@ -2,26 +2,19 @@
 @import './config/reset';
 @import './config/variables';
 @import './config/mixins';
+@import './layout/layout'; // layout mixins
 
 /* Layout */
 @import './layout/stack';
 @import './layout/sidebar';
 @import './layout/switcher';
 @import './layout/wrapper';
-@import './layout/layout';
 @import './layout/square';
 @import './layout/cover';
 @import './layout/frame';
 @import './layout/grid';
 @import './layout/card';
 @import './layout/dropdown';
-
-/* Theme */
-@import './theme/global';
-@import './theme/color';
-@import './theme/text';
-@import './theme/icons';
-@import './theme/layers';
 
 /* Blocks ("components") */
 @import './blocks/header';
@@ -32,6 +25,13 @@
 @import './blocks/button';
 @import './blocks/fieldset';
 @import './blocks/form';
+
+/* Theme */
+@import './theme/global';
+@import './theme/color';
+@import './theme/text';
+@import './theme/icons';
+@import './theme/layers';
 
 /* Overrides */
 @import './config/utility';
