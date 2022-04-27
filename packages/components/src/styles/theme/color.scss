@@ -195,3 +195,55 @@ header menu.bg-light {
 .highlight > a {
 	color: getVar(color-dark);
 }
+
+input,
+select,
+textarea {
+	color: getVar(color-dark);
+}
+
+.bg-dark button:hover,
+.bg-light button:hover {
+	color: getVar(gray-4);
+	background-color: getVar(color-white);
+}
+.bg-dark button.primary:hover,
+.bg-light button.primary:hover {
+	color: getVar(gray-4);
+	background-color: getVar(primary-lighter);
+}
+.bg-dark button.accent:hover,
+.bg-light button.accent:hover {
+	color: getVar(gray-4);
+	background-color: getVar(accent-lighter);
+}
+.bg-dark button.highlight:hover,
+.bg-light button.highlight:hover {
+	color: getVar(gray-4);
+	background-color: getVar(highlight-lighter);
+}
+.bg-dark button.link:hover {
+	color: getVar(color-light);
+	background-color: inherit;
+}
+
+.bg-dark button:disabled,
+.bg-light button:disabled,
+.bg-dark button.primary:disabled,
+.bg-dark button.accent:disabled,
+.bg-dark button.highlight:disabled {
+	color: getVar(color-light);
+	background-color: getVar(gray-4);
+}
+.bg-light button.primary:disabled,
+.bg-light button.accent:disabled,
+.bg-light button.highlight:disabled {
+	color: getVar(gray-4);
+	background-color: getVar(color-light);
+}
+.bg-dark button.link:disabled {
+	color: getVar(color-light);
+}
+.bg-light button.link:disabled {
+	color: getVar(gray-4);
+}
