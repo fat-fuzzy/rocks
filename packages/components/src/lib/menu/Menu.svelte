@@ -1,8 +1,9 @@
 <script>
 	import {createEventDispatcher} from 'svelte'
-	import {animations, currentAnimationId} from '../../stores.js'
+	import {theme, animations, currentAnimationId} from '../../stores.js'
 
 	const dispatch = createEventDispatcher()
+	let currentTheme = $theme
 	let menumItems = []
 
 	let animationId = $currentAnimationId
@@ -31,7 +32,9 @@
 			animationId: element.getAttribute('id'),
 		})
 	}
-	$: animationsMenuClass = animationsMenuExpanded ? 'l-stack md show left' : 'l-stack md hide'
+	$: animationsMenuClass = animationsMenuExpanded
+		? `${currentTheme} l-stack md show left`
+		: `${currentTheme} l-stack md hide`
 </script>
 
 <form class="dropdown sm">

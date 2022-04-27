@@ -41,8 +41,8 @@
 	})
 
 	$: actionsMenuClass = actionsMenuExpanded
-		? 'menu l-switcher md show right'
-		: 'menu l-switcher md hide'
+		? `${currentTheme} menu l-switcher md show right`
+		: `${currentTheme} menu l-switcher md hide`
 	$: themeIcon = currentTheme === 'bg-light' ? '☀️' : '🌙'
 	$: langIcon = currentLang === 'fr' ? '🇫🇷 FR' : currentLang === 'es' ? '🇪🇸 ES' : '🇬🇧 EN'
 </script>
@@ -78,7 +78,7 @@
 				<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
 				<!--button>Login</-button-->
-				<div class="dropdown sm">
+				<div class="l-stack dropdown sm">
 					<button type="button" on:click={setLanguage}>{langIcon}</button>
 					<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
