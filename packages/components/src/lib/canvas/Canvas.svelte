@@ -14,17 +14,19 @@
 	let canvasWidth = 300
 	let canvasHeight = 600
 	let animationId = $currentAnimationId
+	let showGeometryInputs = true
 	let animationFrame
-	let variant = 'accent'
+	let variant = 'outline'
+	const btnVariant = 'outline'
 
 	// TODO : fix - geometry state is not reactive
 	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 
 	theme.subscribe((value) => {
 		if (value === 'bg-dark') {
-			variant = 'highlight'
+			variant = `${btnVariant} highlight`
 		} else {
-			variant = 'accent'
+			variant = `${btnVariant} accent`
 		}
 	})
 

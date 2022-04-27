@@ -47,7 +47,7 @@
 		{#each menumItems as { name, emoji, id }}
 			<button
 				type="button"
-				class:secondary={id === animationId}
+				class:outline={id === animationId}
 				on:click={handleClick}
 				{id}
 				data-test={id}

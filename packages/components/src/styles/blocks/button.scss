@@ -32,25 +32,25 @@ button:not(:disabled):active {
 	color: getVar(color-dark);
 }
 
-.secondary {
+.outline {
 	border-color: getVar(primary);
 	background-color: getVar(color-white);
 }
 
-.secondary.accent {
+.outline.accent {
 	border-color: getVar(accent);
 	color: getVar(color-dark);
 	background-color: getVar(color-white);
 }
 
-.secondary.highlight {
+.outline.highlight {
 	border-color: getVar(highlight);
 	color: getVar(color-dark);
 	background-color: getVar(color-white);
 }
 
 .primary:disabled,
-.secondary:disabled {
+.outline:disabled {
 	background-color: getVar(color-light);
 }
 
