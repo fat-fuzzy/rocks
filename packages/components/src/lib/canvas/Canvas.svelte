@@ -80,7 +80,6 @@
 	$: animation = $animations.find((animation) => animation.id === animationId)
 	$: interactive = animation.interactive
 	$: details = interactive
-	$: showGeometryInputs = details
 	$: detailsIcon = showGeometryInputs ? '➖' : '➕'
 </script>
 
@@ -106,11 +105,12 @@
 				<Button testId="btn-details" {variant} handleClick={() => togglelDetails()}>
 					{detailsIcon} Details
 				</Button>
-				{#if interactive}
-					{#if showGeometryInputs}
-						<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
-					{/if}
-				{/if}
+				<Geometry
+					show={showGeometryInputs}
+					on:update={updateGeometry}
+					{canvasWidth}
+					{canvasHeight}
+				/>
 			{/if}
 		</aside>
 	</div>
