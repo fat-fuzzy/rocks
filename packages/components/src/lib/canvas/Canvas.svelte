@@ -19,7 +19,7 @@
 	let variant = 'outline'
 	const btnVariant = 'outline'
 
-	// TODO : fix - geometry state is not reactive
+	// TODO : fix
 	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 
 	theme.subscribe((value) => {
@@ -51,12 +51,10 @@
 	}
 
 	function updateGeometry(event) {
-		console.log('Update Geometry')
 		geometry = {...geometry, ...event.detail.value}
 	}
 
 	function play() {
-		console.log('Play animation')
 		animationFrame = requestAnimationFrame(function (timestamp) {
 			let {duration} = animation
 			runLoop(timestamp, duration)
@@ -64,8 +62,7 @@
 	}
 
 	function stop() {
-		console.log('Stop animation')
-		if (animation && animation.interactive && animation.webGlProps) {
+		if (animation?.interactive && animation?.webGlProps) {
 			geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 			animation.update(geometry)
 		}

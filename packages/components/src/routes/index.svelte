@@ -26,10 +26,12 @@
 <section class="l-wrapper u-side xxl">
 	<ul class="l-stack lg no-list">
 		<li class={cardClass}>
-			<a sveltekit:prefetch href="/play">Play</a>
+			<div>👾</div>
+			<a sveltekit:prefetch href="/play"> Play</a>
 		</li>
 		<li class={cardClass}>
-			<a sveltekit:prefetch href="/machines">Machines</a>
+			<div>🤖</div>
+			<a sveltekit:prefetch href="/machines"> Machines</a>
 		</li>
 	</ul>
 </section>

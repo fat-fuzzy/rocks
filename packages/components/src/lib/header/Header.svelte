@@ -2,8 +2,10 @@
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import {theme, lang} from '../../stores'
+	import {emojis} from '../../types/constants'
 	// import logo from './svelte-logo.svg'
 
+	export let className = ''
 	let actionsMenuExpanded = false
 	let currentTheme = $theme
 	let currentLang = $lang
@@ -40,14 +42,15 @@
 		theme.set('bg-light')
 	})
 
+	$: mainMenuClass = `${className} l-sidebar u-main layer`
 	$: actionsMenuClass = actionsMenuExpanded
 		? `${currentTheme} menu l-switcher md show right`
 		: `${currentTheme} menu l-switcher md hide`
-	$: themeIcon = currentTheme === 'bg-light' ? '☀️' : '🌙'
-	$: langIcon = currentLang === 'fr' ? '🇫🇷 FR' : currentLang === 'es' ? '🇪🇸 ES' : '🇬🇧 EN'
+	$: themeIcon = emojis[currentTheme]
+	$: langIcon = emojis[currentLang]
 </script>
 
-<header class="l-sidebar u-main layer">
+<header class={mainMenuClass}>
 	<nav class="l-sidebar-main">
 		<ul class="l-wrapper">
 			<li class:active={$page.url.pathname === '/'} class="home">
