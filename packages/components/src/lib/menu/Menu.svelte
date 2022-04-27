@@ -20,6 +20,9 @@
 		animationId = value
 	})
 
+	theme.subscribe((value) => {
+		currentTheme = value
+	})
 	let animationsMenuExpanded = false
 
 	function toggleAnimationsMenu(event) {
@@ -33,8 +36,8 @@
 		})
 	}
 	$: animationsMenuClass = animationsMenuExpanded
-		? `${currentTheme} l-stack md show left`
-		: `${currentTheme} l-stack md hide`
+		? `${currentTheme} menu l-stack md show left`
+		: `${currentTheme} menu l-stack md hide`
 </script>
 
 <form class="dropdown sm">

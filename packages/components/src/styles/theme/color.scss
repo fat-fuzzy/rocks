@@ -112,7 +112,7 @@
 	border-color: getVar(highlight);
 }
 
-//== Header & Navs
+//== Header, Navs, Menus
 
 .bg-dark > header {
 	color: getVar(color-light);
@@ -120,6 +120,13 @@
 }
 .bg-light > header {
 	color: getVar(primary);
+	background: getVar(color-white);
+}
+
+header menu.bg-dark {
+	background: getVar(gray-5);
+}
+header menu.bg-light {
 	background: getVar(color-white);
 }
 
@@ -143,7 +150,6 @@
 .bg-light .u-main > nav li.active::before {
 	border-top: var(--size) solid getVar(gray-4);
 }
-
 //== Errors
 
 .bg-light .error {
@@ -176,4 +182,16 @@
 }
 .bg-dark .l-frame {
 	background-color: getVar(color-light);
+}
+
+.accent > a {
+	color: getVar(accent-lighter);
+}
+
+.primary > a {
+	color: getVar(primary-lighter);
+}
+
+.highlight > a {
+	color: getVar(color-dark);
 }

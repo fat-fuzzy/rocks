@@ -8,6 +8,7 @@ menu {
 	display: flex;
 	justify-content: stretch;
 	padding: 0;
+	border-radius: getVar(radius-base);
 }
 
 menu.l-stack {

@@ -7,6 +7,22 @@
 	max-width: calc(100% - calc(2 * getVar(gap))); // width of parent minus base padding
 }
 
-.l-wrapper.u-side {
+.l-wrapper.u-side.sm {
+	max-width: getVar(sidebar-width-sm); // TODO : generate (selector + style) by size
+}
+
+.l-wrapper.u-side.md {
+	max-width: getVar(sidebar-width-md); // TODO : generate (selector + style) by size
+}
+
+.l-wrapper.u-side.lg {
 	max-width: getVar(sidebar-width-lg); // TODO : generate (selector + style) by size
+}
+
+.l-wrapper.u-side.xl {
+	max-width: getVar(sidebar-width-xl); // TODO : generate (selector + style) by size
+}
+
+.l-wrapper.u-side.xxl {
+	max-width: getVar(sidebar-width-xxl); // TODO : generate (selector + style) by size
 }
