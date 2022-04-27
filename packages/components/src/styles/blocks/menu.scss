@@ -21,6 +21,43 @@ menu.l-stack button {
 	width: 100%;
 }
 
+menu.xxs,
+menu.xs {
+	padding: getVar(padding-xs);
+	button {
+		font-size: getVar(font-size-xs);
+		padding: getVar(padding-xs) getVar(padding-sm);
+	}
+}
+
+menu.sm {
+	padding: getVar(padding-sm);
+	button {
+		font-size: getVar(font-size-sm);
+		padding: getVar(padding-sm) getVar(padding-md);
+	}
+}
+
 menu.md {
 	padding: getVar(padding-md);
+	button {
+		font-size: getVar(font-size-md);
+		padding: getVar(padding-md) getVar(padding-lg);
+	}
+}
+
+menu.lg {
+	padding: getVar(padding-lg);
+	button {
+		font-size: getVar(font-size-lg);
+		padding: getVar(padding-lg) getVar(padding-xl);
+	}
+}
+
+menu.xl {
+	padding: getVar(padding-xl);
+	button {
+		font-size: getVar(font-size-xl);
+		padding: getVar(padding-xl) getVar(padding-xxl);
+	}
 }

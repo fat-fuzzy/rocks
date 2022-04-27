@@ -47,7 +47,7 @@
 		aria-expanded={animationsMenuExpanded}
 		on:click={toggleAnimationsMenu}
 	>
-		➕ Scenes
+		👾 Scenes
 	</button>
 	<menu class={animationsMenuClass}>
 		{#each menumItems as { name, emoji, id }}

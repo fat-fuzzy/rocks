@@ -72,7 +72,7 @@
 				aria-expanded={actionsMenuExpanded}
 				on:click={toggleActionsMenu}
 			>
-				➕ Settings
+				🎛 &nbsp;Settings
 			</button>
 			<menu class={actionsMenuClass}>
 				<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>

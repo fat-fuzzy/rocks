@@ -80,13 +80,13 @@
 	$: animation = $animations.find((animation) => animation.id === animationId)
 	$: interactive = animation.interactive
 	$: details = interactive
-	$: detailsIcon = showGeometryInputs ? '➖' : '➕'
+	$: detailsIcon = showGeometryInputs ? '👇' : '👉'
 </script>
 
 <div class="l-sidebar">
 	<div class="l-sidebar-main">
 		<div
-			class="l-frame video layer xl"
+			class="l-frame video layer"
 			bind:offsetWidth={canvasWidth}
 			bind:offsetHeight={canvasHeight}
 		>
@@ -99,7 +99,7 @@
 		</div>
 		<Controls {play} {stop} />
 	</div>
-	<div class="l-sidebar-side sm">
+	<div class="l-sidebar-side md">
 		<aside class="l-stack">
 			{#if details}
 				<Button testId="btn-details" {variant} handleClick={() => togglelDetails()}>

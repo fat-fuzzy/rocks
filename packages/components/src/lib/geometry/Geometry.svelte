@@ -88,7 +88,7 @@
 		init()
 		update()
 	})
-	$: showDetailsClass = show ? 'xxs' : 'u-visually-hidden'
+	$: showDetailsClass = show ? 'l-switcher xxs' : 'u-visually-hidden'
 </script>
 
 <form class={showDetailsClass}>
