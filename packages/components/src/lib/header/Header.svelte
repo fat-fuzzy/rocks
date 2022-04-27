@@ -37,7 +37,7 @@
 
 	onMount(() => {
 		app = document.getElementById('app')
-		app.classList.add(currentTheme)
+		theme.set('bg-light')
 	})
 
 	$: actionsMenuClass = actionsMenuExpanded
