@@ -1,10 +1,12 @@
 <script>
 	import {createEventDispatcher} from 'svelte'
-	import {theme, animations, currentAnimationId} from '../../stores.js'
+	import {animations, currentAnimationId} from '../../stores.js'
 
 	const dispatch = createEventDispatcher()
-	let currentTheme = $theme
-	let menumItems = []
+	export let layout = `l-stack`
+	export let size = `sm`
+	export let variant = `primary`
+	export let menumItems = []
 
 	let animationId = $currentAnimationId
 
@@ -20,13 +22,10 @@
 		animationId = value
 	})
 
-	theme.subscribe((value) => {
-		currentTheme = value
-	})
-	let animationsMenuExpanded = false
+	let menuExpanded = false
 
 	function toggleAnimationsMenu(event) {
-		animationsMenuExpanded = !animationsMenuExpanded
+		menuExpanded = !menuExpanded
 	}
 
 	const handleClick = (event) => {
@@ -35,21 +34,19 @@
 			animationId: element.getAttribute('id'),
 		})
 	}
-	$: animationsMenuClass = animationsMenuExpanded
-		? `${currentTheme} menu l-stack md show left`
-		: `${currentTheme} menu l-stack md hide`
+	$: show = menuExpanded ? `show left` : `hide`
 </script>
 
-<form class="dropdown sm">
+<menu class="dropdown sm">
 	<button
 		type="button"
-		class="toggle collapse primary"
-		aria-expanded={animationsMenuExpanded}
+		class={`toggle collapse ${variant}`}
+		aria-expanded={menuExpanded}
 		on:click={toggleAnimationsMenu}
 	>
 		👾 Scenes
 	</button>
-	<menu class={animationsMenuClass}>
+	<menu class={`${layout} ${size} ${show}`}>
 		{#each menumItems as { name, emoji, id }}
 			<button
 				type="button"
@@ -63,4 +60,4 @@
 			</button>
 		{/each}
 	</menu>
-</form>
+</menu>

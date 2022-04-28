@@ -16,18 +16,14 @@
 	let animationId = $currentAnimationId
 	let showGeometryInputs = true
 	let animationFrame
-	let variant = 'outline'
+	let variant = ''
 	const btnVariant = 'outline'
 
 	// TODO : fix
 	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 
 	theme.subscribe((value) => {
-		if (value === 'bg-dark') {
-			variant = `${btnVariant} highlight`
-		} else {
-			variant = `${btnVariant} accent`
-		}
+		variant = value ? `${btnVariant} accent` : `${btnVariant} highlight`
 	})
 
 	currentAnimationId.subscribe((value) => {

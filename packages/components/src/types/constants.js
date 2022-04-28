@@ -7,6 +7,8 @@ export const uiState = {
 	ERROR: 'error',
 }
 
+export const themes = ['bg-dark', 'bg-light']
+
 export const emojis = {
 	'bg-light': '☀️',
 	'bg-dark': '🌙',

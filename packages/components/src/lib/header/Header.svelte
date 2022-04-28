@@ -2,12 +2,11 @@
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import {theme, lang} from '../../stores'
-	import {emojis} from '../../types/constants'
-	// import logo from './svelte-logo.svg'
+	import {emojis, themes} from '../../types/constants'
 
 	export let className = ''
 	let actionsMenuExpanded = false
-	let currentTheme = $theme
+	let currentTheme = themes[$theme]
 	let currentLang = $lang
 	let app
 
@@ -16,7 +15,7 @@
 	}
 
 	function toggleTheme(event) {
-		const _theme = currentTheme === 'bg-light' ? 'bg-dark' : 'bg-light'
+		const _theme = $theme ? 0 : 1
 		theme.set(_theme)
 	}
 	function setLanguage(event) {
@@ -27,7 +26,7 @@
 		if (app) {
 			app.classList.remove(currentTheme)
 		}
-		currentTheme = value
+		currentTheme = themes[value]
 		if (app) {
 			app.classList.add(currentTheme)
 		}
@@ -39,13 +38,12 @@
 
 	onMount(() => {
 		app = document.getElementById('app')
-		theme.set('bg-light')
 	})
 
 	$: mainMenuClass = `${className} l-sidebar u-main layer`
 	$: actionsMenuClass = actionsMenuExpanded
-		? `${currentTheme} menu l-switcher md show right`
-		: `${currentTheme} menu l-switcher md hide`
+		? `menu l-switcher sm show right`
+		: `menu l-switcher sm hide`
 	$: themeIcon = emojis[currentTheme]
 	$: langIcon = emojis[currentLang]
 </script>
@@ -68,7 +66,7 @@
 		</ul>
 	</nav>
 	<div class="l-sidebar-side">
-		<form class="dropdown sm">
+		<menu class="dropdown sm">
 			<button
 				type="button"
 				class="toggle collapse primary"
@@ -90,6 +88,6 @@
 					</menu> -->
 				</div>
 			</menu>
-		</form>
+		</menu>
 	</div>
 </header>

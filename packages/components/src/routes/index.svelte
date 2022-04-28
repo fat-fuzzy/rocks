@@ -1,17 +1,18 @@
 <script context="module" lang="ts">
+	import {themes} from '../types/constants'
 	export const prerender = true
 </script>
 
 <script>
 	import {theme} from '../stores.js'
 
-	let currentTheme = $theme
+	let currentTheme = themes[$theme]
 
 	theme.subscribe((value) => {
-		currentTheme = value
+		currentTheme = themes[value]
 	})
 
-	$: cardClass = currentTheme === 'bg-light' ? `card accent` : `card highlight`
+	$: cardClass = $theme ? `card accent` : `card highlight`
 </script>
 
 <svelte:head>
