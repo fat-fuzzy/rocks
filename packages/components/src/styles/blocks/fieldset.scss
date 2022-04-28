@@ -1,7 +1,7 @@
 .fieldset {
 	// @include layout-fieldset();
 	border-radius: 3px;
-	border: 1px solid getVar(font-color-body);
+	border: 1px solid currentColor;
 	max-width: 100%;
 	> legend {
 		font-weight: bold;
