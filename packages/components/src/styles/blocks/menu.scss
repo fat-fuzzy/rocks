@@ -5,19 +5,9 @@ menu {
 	border-radius: getVar(radius-base);
 }
 
-menu.l-stack {
-	padding: 0;
-}
-
-menu.l-stack button {
-	display: flex;
-	justify-content: flex-start;
-	width: 100%;
-}
-
 menu.xxs,
 menu.xs {
-	padding: getVar(padding-xs);
+	padding: getVar(padding-sm);
 	button {
 		font-size: getVar(font-size-xs);
 		padding: getVar(padding-xs) getVar(padding-sm);
@@ -25,7 +15,7 @@ menu.xs {
 }
 
 menu.sm {
-	padding: getVar(padding-sm);
+	padding: getVar(padding-md);
 	button {
 		font-size: getVar(font-size-sm);
 		padding: getVar(padding-sm) getVar(padding-md);
@@ -33,7 +23,7 @@ menu.sm {
 }
 
 menu.md {
-	padding: getVar(padding-md);
+	padding: getVar(padding-lg);
 	button {
 		font-size: getVar(font-size-md);
 		padding: getVar(padding-md) getVar(padding-lg);
@@ -41,7 +31,7 @@ menu.md {
 }
 
 menu.lg {
-	padding: getVar(padding-lg);
+	padding: getVar(padding-xl);
 	button {
 		font-size: getVar(font-size-lg);
 		padding: getVar(padding-lg) getVar(padding-xl);
@@ -49,9 +39,20 @@ menu.lg {
 }
 
 menu.xl {
-	padding: getVar(padding-xl);
+	padding: getVar(padding-xxl);
 	button {
 		font-size: getVar(font-size-xl);
 		padding: getVar(padding-xl) getVar(padding-xxl);
 	}
+}
+
+// TODO: decouple l-stack from menu
+menu.l-stack button {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+menu.l-stack.sm > * + button {
+	margin-block-start: getVar(margin-block-md);
 }

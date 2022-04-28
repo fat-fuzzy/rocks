@@ -22,7 +22,7 @@ header {
 }
 
 .header-app > .l-sidebar-side {
-	flex-basis: getVar(sidebar-width-xs);
+	flex-basis: getVar(sidebar-width-sm);
 	position: relative;
 	display: flex;
 	justify-content: flex-end;
@@ -33,7 +33,7 @@ header {
 
 @include min-width(bp-md) {
 	.header-app > .l-sidebar-side {
-		flex-basis: getVar(sidebar-width-md);
+		flex-basis: getVar(sidebar-width-lg);
 	}
 }
 
