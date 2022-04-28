@@ -3,7 +3,10 @@
 	import {animations, currentAnimationId} from '../../stores.js'
 
 	const dispatch = createEventDispatcher()
-	let menumItems = []
+	export let layout = `l-stack`
+	export let size = `sm`
+	export let variant = `primary`
+	export let menumItems = []
 
 	let animationId = $currentAnimationId
 
@@ -19,10 +22,10 @@
 		animationId = value
 	})
 
-	let animationsMenuExpanded = false
+	let menuExpanded = false
 
 	function toggleAnimationsMenu(event) {
-		animationsMenuExpanded = !animationsMenuExpanded
+		menuExpanded = !menuExpanded
 	}
 
 	const handleClick = (event) => {
@@ -31,23 +34,23 @@
 			animationId: element.getAttribute('id'),
 		})
 	}
-	$: animationsMenuClass = animationsMenuExpanded ? 'l-stack md show left' : 'l-stack md hide'
+	$: show = menuExpanded ? `show left` : `hide`
 </script>
 
-<form class="dropdown sm">
+<menu class="dropdown sm">
 	<button
 		type="button"
-		class="toggle collapse primary"
-		aria-expanded={animationsMenuExpanded}
+		class={`toggle collapse ${variant}`}
+		aria-expanded={menuExpanded}
 		on:click={toggleAnimationsMenu}
 	>
-		➕ Scenes
+		👾 Scenes
 	</button>
-	<menu class={animationsMenuClass}>
+	<menu class={`${layout} ${size} ${show}`}>
 		{#each menumItems as { name, emoji, id }}
 			<button
 				type="button"
-				class:secondary={id === animationId}
+				class:outline={id === animationId}
 				on:click={handleClick}
 				{id}
 				data-test={id}
@@ -57,4 +60,4 @@
 			</button>
 		{/each}
 	</menu>
-</form>
+</menu>

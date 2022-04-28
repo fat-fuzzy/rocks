@@ -9,6 +9,7 @@
 <script>
 	import * as utils from '../../gl/utils.js'
 
+	export let show = true
 	export let canvasWidth
 	export let canvasHeight
 
@@ -87,9 +88,10 @@
 		init()
 		update()
 	})
+	$: showDetailsClass = show ? 'l-switcher xxs' : 'u-visually-hidden'
 </script>
 
-<form class="xxs">
+<form class={showDetailsClass}>
 	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} />
 	<Scale bind:scaleX bind:scaleY maxX={5} maxY={5} minX={-5} minY={-5} on:input={update} />
 	<Rotation bind:angle max={360} on:input={update} />

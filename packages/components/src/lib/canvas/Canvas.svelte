@@ -14,18 +14,16 @@
 	let canvasWidth = 300
 	let canvasHeight = 600
 	let animationId = $currentAnimationId
+	let showGeometryInputs = true
 	let animationFrame
-	let variant = 'accent'
+	let variant = ''
+	const btnVariant = 'outline'
 
-	// TODO : fix - geometry state is not reactive
+	// TODO : fix
 	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 
 	theme.subscribe((value) => {
-		if (value === 'bg-dark') {
-			variant = 'highlight'
-		} else {
-			variant = 'accent'
-		}
+		variant = value ? `${btnVariant} accent` : `${btnVariant} highlight`
 	})
 
 	currentAnimationId.subscribe((value) => {
@@ -49,12 +47,10 @@
 	}
 
 	function updateGeometry(event) {
-		console.log('Update Geometry')
 		geometry = {...geometry, ...event.detail.value}
 	}
 
 	function play() {
-		console.log('Play animation')
 		animationFrame = requestAnimationFrame(function (timestamp) {
 			let {duration} = animation
 			runLoop(timestamp, duration)
@@ -62,8 +58,7 @@
 	}
 
 	function stop() {
-		console.log('Stop animation')
-		if (animation && animation.interactive && animation.webGlProps) {
+		if (animation?.interactive && animation?.webGlProps) {
 			geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 			animation.update(geometry)
 		}
@@ -78,14 +73,13 @@
 	$: animation = $animations.find((animation) => animation.id === animationId)
 	$: interactive = animation.interactive
 	$: details = interactive
-	$: showGeometryInputs = details
-	$: detailsIcon = showGeometryInputs ? '➖' : '➕'
+	$: detailsIcon = showGeometryInputs ? '👇' : '👉'
 </script>
 
 <div class="l-sidebar">
 	<div class="l-sidebar-main">
 		<div
-			class="l-frame video layer xl"
+			class="l-frame video layer"
 			bind:offsetWidth={canvasWidth}
 			bind:offsetHeight={canvasHeight}
 		>
@@ -98,17 +92,18 @@
 		</div>
 		<Controls {play} {stop} />
 	</div>
-	<div class="l-sidebar-side sm">
+	<div class="l-sidebar-side md">
 		<aside class="l-stack">
 			{#if details}
 				<Button testId="btn-details" {variant} handleClick={() => togglelDetails()}>
 					{detailsIcon} Details
 				</Button>
-				{#if interactive}
-					{#if showGeometryInputs}
-						<Geometry on:update={updateGeometry} {canvasWidth} {canvasHeight} />
-					{/if}
-				{/if}
+				<Geometry
+					show={showGeometryInputs}
+					on:update={updateGeometry}
+					{canvasWidth}
+					{canvasHeight}
+				/>
 			{/if}
 		</aside>
 	</div>

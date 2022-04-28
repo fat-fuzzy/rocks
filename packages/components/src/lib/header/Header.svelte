@@ -2,10 +2,11 @@
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import {theme, lang} from '../../stores'
-	// import logo from './svelte-logo.svg'
+	import {emojis, themes} from '../../types/constants'
 
+	export let className = ''
 	let actionsMenuExpanded = false
-	let currentTheme = $theme
+	let currentTheme = themes[$theme]
 	let currentLang = $lang
 	let app
 
@@ -14,7 +15,7 @@
 	}
 
 	function toggleTheme(event) {
-		const _theme = currentTheme === 'bg-light' ? 'bg-dark' : 'bg-light'
+		const _theme = $theme ? 0 : 1
 		theme.set(_theme)
 	}
 	function setLanguage(event) {
@@ -25,7 +26,7 @@
 		if (app) {
 			app.classList.remove(currentTheme)
 		}
-		currentTheme = value
+		currentTheme = themes[value]
 		if (app) {
 			app.classList.add(currentTheme)
 		}
@@ -37,17 +38,17 @@
 
 	onMount(() => {
 		app = document.getElementById('app')
-		app.classList.add(currentTheme)
 	})
 
+	$: mainMenuClass = `${className} l-sidebar u-main layer`
 	$: actionsMenuClass = actionsMenuExpanded
-		? 'menu l-switcher md show right'
-		: 'menu l-switcher md hide'
-	$: themeIcon = currentTheme === 'bg-light' ? '☀️' : '🌙'
-	$: langIcon = currentLang === 'fr' ? '🇫🇷 FR' : currentLang === 'es' ? '🇪🇸 ES' : '🇬🇧 EN'
+		? `menu l-switcher sm show right`
+		: `menu l-switcher sm hide`
+	$: themeIcon = emojis[currentTheme]
+	$: langIcon = emojis[currentLang]
 </script>
 
-<header class="l-sidebar u-main layer">
+<header class={mainMenuClass}>
 	<nav class="l-sidebar-main">
 		<ul class="l-wrapper">
 			<li class:active={$page.url.pathname === '/'} class="home">
@@ -65,20 +66,20 @@
 		</ul>
 	</nav>
 	<div class="l-sidebar-side">
-		<form class="dropdown sm">
+		<menu class="dropdown sm">
 			<button
 				type="button"
 				class="toggle collapse primary"
 				aria-expanded={actionsMenuExpanded}
 				on:click={toggleActionsMenu}
 			>
-				➕ Settings
+				🎛 &nbsp;Settings
 			</button>
 			<menu class={actionsMenuClass}>
 				<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
 				<!--button>Login</-button-->
-				<div class="dropdown sm">
+				<div class="l-stack dropdown sm">
 					<button type="button" on:click={setLanguage}>{langIcon}</button>
 					<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
@@ -87,6 +88,6 @@
 					</menu> -->
 				</div>
 			</menu>
-		</form>
+		</menu>
 	</div>
 </header>

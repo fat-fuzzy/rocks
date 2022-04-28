@@ -16,7 +16,7 @@
  *  font-family: #{"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif},
  * 
  *  primary-color: #33b5e5,
- *  secondary-color: #ff500a,
+ *  outline-color: #ff500a,
  * ));
  *
  * Will result in
@@ -25,7 +25,7 @@
  *    --prefix-base-font-size: 65.5%,
  *    --prefix-font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
  *    --prefix-primary-color:  #33b5e5;
- *    --prefix-secondary-color: #ff500a,
+ *    --prefix-outline-color: #ff500a,
  * }
  *
  */

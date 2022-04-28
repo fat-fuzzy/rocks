@@ -6,7 +6,7 @@
 
 	const dispatch = createEventDispatcher()
 
-	export let size = 'nul'
+	export let size = 'xxs'
 	const label = 'Rotation'
 	export let angle = 0
 	export let max = 0

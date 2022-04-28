@@ -17,11 +17,13 @@
 	})
 </script>
 
-<form class="sm">
-	<Button testId="btn-play" {variant} handleClick={() => play()} type="button" {disabled}>
-		▶️ &nbsp;Play
-	</Button>
-	<Button testId="btn-stop" {variant} handleClick={() => stop()} type="button" {disabled}>
-		⏹ &nbsp;Stop
-	</Button>
-</form>
+<div class="l-wrapper u-side xxl">
+	<menu class="menu l-switcher sm">
+		<Button testId="btn-play" {variant} handleClick={() => play()} type="button" {disabled}>
+			▶︎ &nbsp;Play
+		</Button>
+		<Button testId="btn-stop" {variant} handleClick={() => stop()} type="button" {disabled}>
+			◼ &nbsp;Stop
+		</Button>
+	</menu>
+</div>

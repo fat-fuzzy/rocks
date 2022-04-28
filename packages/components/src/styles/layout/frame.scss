@@ -21,10 +21,6 @@
 	aspect-ratio: 16 / 9;
 }
 
-.l-frame.xl {
-	max-block-size: calc(100vh - 220px); // TODO : fix magic numbers
-}
-
 .l-frame + * {
 	margin-block-start: getVar(s0);
 }

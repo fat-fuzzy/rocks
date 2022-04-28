@@ -82,8 +82,6 @@
 	grid-column-start: 1;
 	grid-row-start: 1;
 	position: relative;
-	// z-index: getVar(z-index-input);
-	// height: getVar(header-height-sm);
 
 	@include phone-landscape() {
 		// grid item props
