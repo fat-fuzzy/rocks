@@ -6,15 +6,9 @@
 	export let stop = () => {}
 
 	let disabled = false
-	let variant = 'accent'
+	let variant = ``
 
-	theme.subscribe((value) => {
-		if (value === 'bg-dark') {
-			variant = 'highlight'
-		} else {
-			variant = 'accent'
-		}
-	})
+	$: variant = $theme ? `accent` : `highlight`
 </script>
 
 <div class="l-wrapper u-side xxl">
