@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import {theme, lang} from '../../stores'
 	import {emojis, themes} from '../../types/constants'
@@ -8,7 +7,6 @@
 	let actionsMenuExpanded = false
 	let currentTheme = themes[$theme]
 	let currentLang = $lang
-	let app
 
 	function toggleActionsMenu(event) {
 		actionsMenuExpanded = !actionsMenuExpanded
@@ -23,27 +21,15 @@
 	}
 
 	theme.subscribe((value) => {
-		if (app) {
-			app.classList.remove(currentTheme)
-		}
 		currentTheme = themes[value]
-		if (app) {
-			app.classList.add(currentTheme)
-		}
 	})
 
 	lang.subscribe((value) => {
 		currentLang = value
 	})
 
-	onMount(() => {
-		app = document.getElementById('app')
-	})
-
 	$: mainMenuClass = `${className} l-sidebar u-main layer`
-	$: actionsMenuClass = actionsMenuExpanded
-		? `menu l-switcher sm show right`
-		: `menu l-switcher sm hide`
+	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
 	$: themeIcon = emojis[currentTheme]
 	$: langIcon = emojis[currentLang]
 </script>
@@ -75,19 +61,21 @@
 			>
 				🎛 &nbsp;Settings
 			</button>
-			<menu class={actionsMenuClass}>
-				<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
+			<div class={actionsMenuClass}>
+				<menu class="l-switcher sm">
+					<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
-				<!--button>Login</-button-->
-				<div class="l-stack dropdown sm">
-					<button type="button" on:click={setLanguage}>{langIcon}</button>
-					<!-- <menu class={actionsMenuClass}>
+					<!--button>Login</-button-->
+					<div class="l-stack dropdown sm">
+						<button type="button" on:click={setLanguage}>{langIcon}</button>
+						<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 						<button type="button" on:click={setLanguage}>{langIcon}</button>
 						<!--button>Login</-button -- >
 					</menu> -->
-				</div>
-			</menu>
+					</div>
+				</menu>
+			</div>
 		</menu>
 	</div>
 </header>

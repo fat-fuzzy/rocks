@@ -46,18 +46,20 @@
 	>
 		👾 Scenes
 	</button>
-	<menu class={`${layout} ${size} ${show}`}>
-		{#each menumItems as { name, emoji, id }}
-			<button
-				type="button"
-				class:outline={id === animationId}
-				on:click={handleClick}
-				{id}
-				data-test={id}
-			>
-				<!--TODO: make routes for animations-->
-				{getLabel(emoji, name)}
-			</button>
-		{/each}
-	</menu>
+	<div class={show}>
+		<menu class={`menu ${layout} ${size}`}>
+			{#each menumItems as { name, emoji, id }}
+				<button
+					type="button"
+					class:outline={id === animationId}
+					on:click={handleClick}
+					{id}
+					data-test={id}
+				>
+					<!--TODO: make routes for animations-->
+					{getLabel(emoji, name)}
+				</button>
+			{/each}
+		</menu>
+	</div>
 </menu>
