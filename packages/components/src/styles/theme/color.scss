@@ -13,13 +13,13 @@
 .bg-light button:not(.link) {
 	color: getVar(color-dark);
 	background-color: getVar(color-light);
-	border-color: getVar(primary-lighter);
+	border-color: getVar(gray-1);
 }
 
 .bg-dark button:not(.link) {
 	color: getVar(color-white);
 	background-color: getVar(gray-5);
-	border-color: getVar(primary-light);
+	border-color: getVar(gray-3);
 }
 
 .bg-light .link {
@@ -56,7 +56,7 @@
 
 .bg-light .outline,
 .bg-light button.outline {
-	color: getVar(primary);
+	color: getVar(color-dark);
 	background-color: getVar(color-white);
 	border-color: getVar(primary);
 }
@@ -87,7 +87,7 @@
 .bg-light .accent.outline,
 .bg-light button.accent.outline {
 	color: getVar(color-dark);
-	background-color: getVar(color-white);
+	background-color: getVar(color-light);
 	border-color: getVar(accent);
 }
 
@@ -101,7 +101,7 @@
 .bg-light .highlight.outline,
 .bg-light button.highlight.outline {
 	color: getVar(color-dark);
-	background-color: getVar(color-white);
+	background-color: getVar(color-light);
 	border-color: getVar(highlight);
 }
 
@@ -184,15 +184,51 @@ header menu.bg-light {
 	background-color: getVar(color-light);
 }
 
-.accent > a {
+.bg-dark a,
+.bg-dark .link {
+	color: getVar(primary-lighter);
+}
+.bg-light a,
+.bg-light .link {
+	color: getVar(primary);
+}
+
+.bg-dark a:visited,
+.bg-dark .link:visited {
+	color: getVar(primary-light);
+}
+.bg-dark a:hover,
+.bg-dark .link:hover {
+	color: getVar(accent-light);
+}
+.bg-light a:visited,
+.bg-light .link:visited {
+	color: getVar(accent);
+}
+.bg-light a:hover,
+.bg-light .link:hover {
+	color: getVar(accent);
+}
+
+.bg-dark .accent > a {
 	color: getVar(color-white);
 }
 
-.primary > a {
+.bg-light .accent > a {
+	color: getVar(color-white);
+}
+
+.bg-dark .primary > a {
+	color: getVar(primary-lighter);
+}
+.bg-light .primary > a {
 	color: getVar(primary-lighter);
 }
 
-.highlight > a {
+.bg-dark .highlight > a {
+	color: getVar(color-dark);
+}
+.bg-light .highlight > a {
 	color: getVar(color-dark);
 }
 
@@ -201,11 +237,17 @@ select,
 textarea {
 	color: getVar(color-dark);
 }
-
-.bg-dark button:hover,
+.bg-dark button.primary:focus,
+.bg-light button.primary:focus {
+	outline-color: getVar(primary);
+}
 .bg-light button:hover {
-	color: getVar(gray-4);
-	background-color: getVar(color-white);
+	color: inherit;
+	background-color: inherit;
+}
+.bg-dark button:hover {
+	color: inherit;
+	background-color: getVar(color-dark);
 }
 .bg-dark button.primary:hover,
 .bg-light button.primary:hover {
@@ -222,8 +264,13 @@ textarea {
 	color: getVar(gray-4);
 	background-color: getVar(highlight-lighter);
 }
+
 .bg-dark button.link:hover {
 	color: getVar(color-light);
+	background-color: inherit;
+}
+.bg-light button.link:hover {
+	color: getVar(gray-4);
 	background-color: inherit;
 }
 
@@ -243,7 +290,11 @@ textarea {
 }
 .bg-dark button.link:disabled {
 	color: getVar(color-light);
+	background-color: inherit;
+	text-decoration: none;
 }
 .bg-light button.link:disabled {
 	color: getVar(gray-4);
+	background-color: inherit;
+	text-decoration: none;
 }

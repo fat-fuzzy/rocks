@@ -63,28 +63,3 @@
 .dropdown .toggle.collapse + .md {
 	padding: getVar(padding-md);
 }
-
-// @include min-width(bp-md) {
-// 	.sm .dropdown .toggle.collapse {
-// 		display: none;
-// 	}
-
-// 	.sm .dropdown .toggle.collapse + .hide {
-// 		border: unset;
-// 		clip: unset;
-// 		height: auto;
-// 		margin: unset;
-// 		overflow: hidden;
-// 		padding: unset;
-// 		position: unset;
-// 		width: auto;
-// 		white-space: wrap;
-// 	}
-
-// 	.sm .dropdown .toggle.collapse + .show {
-// 		position: unset;
-// 		width: 100%;
-// 		max-width: unset;
-// 		box-shadow: unset;
-// 	}
-// }
