@@ -17,6 +17,12 @@
 	flex-grow: 1;
 }
 
+// adjusts to width of contents
+.l-sidebar-side.shrink {
+	flex-grow: 0;
+	flex-basis: 0;
+}
+
 .l-sidebar-side.xs {
 	flex-basis: getVar(sidebar-width-xs);
 }
@@ -40,7 +46,7 @@
 @include max-width(bp-md) {
 	.l-sidebar-side.sm + .l-sidebar-main {
 		min-inline-size: calc(100% - getVar(sidebar-width-sm));
-		gap: getVar(gap);
+		gap: calc(getVar(gap) / 2);
 	}
 }
 

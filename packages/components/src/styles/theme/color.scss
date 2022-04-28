@@ -112,44 +112,6 @@
 	border-color: getVar(highlight);
 }
 
-//== Header, Navs, Menus
-
-.bg-dark > header {
-	color: getVar(color-light);
-	background: getVar(gray-5);
-}
-.bg-light > header {
-	color: getVar(primary);
-	background: getVar(color-white);
-}
-
-header menu.bg-dark {
-	background: getVar(gray-5);
-}
-header menu.bg-light {
-	background: getVar(color-white);
-}
-
-.bg-dark .u-main > nav a:hover {
-	color: getVar(primary-light);
-}
-.bg-light .u-main > nav a:hover {
-	color: getVar(gray-5);
-}
-
-.bg-dark .u-main > nav li.active a {
-	color: getVar(primary-lighter);
-}
-.bg-light .u-main > nav li.active a {
-	color: getVar(gray-5);
-}
-
-.bg-dark .u-main > nav li.active::before {
-	border-top: var(--size) solid getVar(primary-lighter);
-}
-.bg-light .u-main > nav li.active::before {
-	border-top: var(--size) solid getVar(gray-4);
-}
 //== Errors
 
 .bg-light .error {
@@ -186,7 +148,7 @@ header menu.bg-light {
 
 .bg-dark a,
 .bg-dark .link {
-	color: getVar(primary-lighter);
+	color: getVar(primary-light);
 }
 .bg-light a,
 .bg-light .link {
@@ -195,15 +157,15 @@ header menu.bg-light {
 
 .bg-dark a:visited,
 .bg-dark .link:visited {
-	color: getVar(primary-light);
-}
-.bg-dark a:hover,
-.bg-dark .link:hover {
-	color: getVar(accent-light);
+	color: getVar(highlight-light);
 }
 .bg-light a:visited,
 .bg-light .link:visited {
-	color: getVar(accent);
+	color: getVar(accent-light);
+}
+.bg-dark a:hover,
+.bg-dark .link:hover {
+	color: getVar(highlight);
 }
 .bg-light a:hover,
 .bg-light .link:hover {
@@ -232,15 +194,43 @@ header menu.bg-light {
 	color: getVar(color-dark);
 }
 
-input,
-select,
-textarea {
+// a:visited,
+// .link:visited {
+// 	color: getVar(primary-light);
+// }
+
+.bg-dark input,
+.bg-dark select,
+.bg-dark textarea {
+	color: getVar(color-white);
+}
+.bg-light input,
+.bg-light select,
+.bg-light textarea {
 	color: getVar(color-dark);
 }
-.bg-dark button.primary:focus,
+
 .bg-light button.primary:focus {
 	outline-color: getVar(primary);
 }
+.bg-dark button.primary:focus {
+	outline-color: getVar(primary-light);
+}
+
+.bg-light button.highlight:focus {
+	outline-color: getVar(highlight);
+}
+.bg-dark button.highlight:focus {
+	outline-color: getVar(highlight-light);
+}
+
+.bg-light button.accent:focus {
+	outline-color: getVar(accent);
+}
+.bg-dark button.accent:focus {
+	outline-color: getVar(accent-light);
+}
+
 .bg-light button:hover {
 	color: inherit;
 	background-color: inherit;
@@ -297,4 +287,56 @@ textarea {
 	color: getVar(gray-4);
 	background-color: inherit;
 	text-decoration: none;
+}
+
+//== Header, Navs, Menus
+
+.bg-dark > header {
+	color: getVar(color-light);
+	background: getVar(gray-5);
+}
+.bg-light > header {
+	color: getVar(primary);
+	background: getVar(color-white);
+}
+
+.bg-dark menu {
+	background: getVar(color-dark);
+}
+.bg-dark header menu {
+	background: getVar(gray-5);
+}
+.bg-light menu {
+	background: getVar(color-white);
+}
+
+.bg-dark .u-main > nav a,
+.bg-dark .u-main > nav a:visited {
+	color: getVar(color-light);
+}
+
+.bg-light .u-main > nav a,
+.bg-light .u-main > nav a:visited {
+	color: getVar(gray-4);
+}
+
+.bg-dark .u-main > nav a:hover {
+	color: getVar(primary-light);
+}
+.bg-light .u-main > nav a:hover {
+	color: getVar(primary-light);
+}
+
+.bg-dark .u-main > nav li.active a {
+	color: getVar(primary-lighter);
+}
+.bg-light .u-main > nav li.active a {
+	color: getVar(primary);
+}
+
+.bg-dark .u-main > nav li.active::before {
+	border-top: var(--size) solid getVar(primary-lighter);
+}
+.bg-light .u-main > nav li.active::before {
+	border-top: var(--size) solid getVar(primary);
 }

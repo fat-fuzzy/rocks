@@ -2,15 +2,29 @@
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import Header from '../lib/header/Header.svelte'
+	import {themes} from '../types/constants'
 	import {theme} from '../stores'
+
+	let app
+	let currentTheme = themes[$theme]
 
 	function getClassNameFromUrl(url) {
 		return url.pathname === '/' ? 'home' : url.pathname.substr(1, url.pathname.length)
 	}
 	$: className = getClassNameFromUrl($page.url)
 
+	theme.subscribe((value) => {
+		if (app) {
+			app.classList.remove(currentTheme)
+		}
+		currentTheme = themes[value]
+		if (app) {
+			app.classList.add(currentTheme)
+		}
+	})
+
 	onMount(() => {
-		theme.set(1)
+		app = document.getElementById('app')
 	})
 </script>
 

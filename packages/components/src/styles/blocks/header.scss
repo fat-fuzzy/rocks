@@ -33,7 +33,7 @@ header {
 
 @include min-width(bp-md) {
 	.header-app > .l-sidebar-side {
-		flex-basis: getVar(sidebar-width-md);
+		flex-basis: getVar(sidebar-width-lg);
 	}
 }
 

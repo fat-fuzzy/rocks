@@ -49,11 +49,6 @@ button:not(:disabled):hover {
 	cursor: pointer;
 }
 
-a:visited,
-.link:visited {
-	color: getVar(primary-light);
-}
-
 table {
 	border-collapse: collapse;
 }
