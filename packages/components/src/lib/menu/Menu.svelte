@@ -37,29 +37,31 @@
 	$: show = menuExpanded ? `show left` : `hide`
 </script>
 
-<menu class="dropdown sm">
-	<button
-		type="button"
-		class={`toggle collapse ${variant}`}
-		aria-expanded={menuExpanded}
-		on:click={toggleAnimationsMenu}
-	>
-		👾 Scenes
-	</button>
-	<div class={show}>
-		<menu class={`menu ${layout} ${size}`}>
-			{#each menumItems as { name, emoji, id }}
-				<button
-					type="button"
-					class:outline={id === animationId}
-					on:click={handleClick}
-					{id}
-					data-test={id}
-				>
-					<!--TODO: make routes for animations-->
-					{getLabel(emoji, name)}
-				</button>
-			{/each}
-		</menu>
-	</div>
-</menu>
+<div class="dropdown sm">
+	<menu class="l-stack">
+		<button
+			type="button"
+			class={`toggle collapse ${variant}`}
+			aria-expanded={menuExpanded}
+			on:click={toggleAnimationsMenu}
+		>
+			👾 Scenes
+		</button>
+		<div class={show}>
+			<menu class={`menu ${layout} ${size}`}>
+				{#each menumItems as { name, emoji, id }}
+					<button
+						type="button"
+						class:outline={id === animationId}
+						on:click={handleClick}
+						{id}
+						data-test={id}
+					>
+						<!--TODO: make routes for animations-->
+						{getLabel(emoji, name)}
+					</button>
+				{/each}
+			</menu>
+		</div>
+	</menu>
+</div>

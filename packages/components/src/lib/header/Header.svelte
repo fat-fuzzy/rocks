@@ -51,7 +51,7 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="l-sidebar-side">
+	<div class="l-sidebar-side shrink">
 		<menu class="dropdown sm">
 			<button
 				type="button"

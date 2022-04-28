@@ -12,8 +12,14 @@
 	max-width: 100%;
 }
 
-fieldset.nul {
+fieldset.xxs {
 	> * + * {
 		margin-block-start: 0;
+	}
+}
+
+fieldset.xs {
+	> * + * {
+		margin-block-start: getVar(margin-block-xs);
 	}
 }

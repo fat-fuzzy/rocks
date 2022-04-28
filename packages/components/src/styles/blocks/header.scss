@@ -22,7 +22,7 @@ header {
 }
 
 .header-app > .l-sidebar-side {
-	flex-basis: getVar(sidebar-width-sm);
+	flex-basis: getVar(sidebar-width-xs);
 	position: relative;
 	display: flex;
 	justify-content: flex-end;
