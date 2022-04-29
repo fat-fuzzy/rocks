@@ -30,7 +30,6 @@
 	}
 
 	function handleClickOutside(event) {
-		console.log(event)
 		menuExpanded = false
 	}
 

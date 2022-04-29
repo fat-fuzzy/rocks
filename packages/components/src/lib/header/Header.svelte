@@ -10,7 +10,6 @@
 	let currentLang = $lang
 
 	function handleClickOutside(event) {
-		console.log(event)
 		actionsMenuExpanded = false
 	}
 
