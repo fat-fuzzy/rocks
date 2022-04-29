@@ -291,11 +291,11 @@
 
 //== Header, Navs, Menus
 
-.bg-dark > header {
+.bg-dark .header-app {
 	color: getVar(color-light);
 	background: getVar(gray-5);
 }
-.bg-light > header {
+.bg-light .header-app {
 	color: getVar(primary);
 	background: getVar(color-white);
 }
