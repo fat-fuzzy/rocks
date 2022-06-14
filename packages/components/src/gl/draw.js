@@ -56,13 +56,7 @@ function drawRectangle(gl, colorUniformLocation) {
   )
 
   // Set a random color.
-  gl.uniform4f(
-    colorUniformLocation,
-    Math.random(),
-    Math.random(),
-    Math.random(),
-    1,
-  )
+  gl.uniform4f(colorUniformLocation, Math.random(), Math.random(), Math.random(), 1)
 
   // Draw the rectangle.
   // WebGL has 3 types of primitives: points, lines, and triangles
@@ -80,14 +74,7 @@ function drawRectangle(gl, colorUniformLocation) {
  * TRANSLATIONS
  * @param {WebGLRenderingContext} gl
  */
-function renderTranslationRectangle(
-  gl,
-  colorUniformLocation,
-  translation,
-  color,
-  width,
-  height,
-) {
+function renderTranslationRectangle(gl, colorUniformLocation, translation, color, width, height) {
   gl.uniform4fv(colorUniformLocation, color)
   setRectangle(gl, translation[0], translation[1], width, height)
 
@@ -168,16 +155,8 @@ export function initScene(canvas, vert, frag) {
   const vertexShaderSrc = vert
   const fragmentShaderSrc = frag
 
-  const vertexShader = utilsWebGl.createShader(
-    gl,
-    gl.VERTEX_SHADER,
-    vertexShaderSrc,
-  )
-  const fragmentShader = utilsWebGl.createShader(
-    gl,
-    gl.FRAGMENT_SHADER,
-    fragmentShaderSrc,
-  )
+  const vertexShader = utilsWebGl.createShader(gl, gl.VERTEX_SHADER, vertexShaderSrc)
+  const fragmentShader = utilsWebGl.createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSrc)
   // 3. Create WebGL program w and tell WebGL to use our shaders
   const program = utilsWebGl.createProgram(gl, vertexShader, fragmentShader)
   gl.useProgram(program)
@@ -192,15 +171,9 @@ export function initScene(canvas, vert, frag) {
   // bind u_color
   const colorUniformLocation = gl.getUniformLocation(program, 'u_color')
   // bind u_translation
-  const translationUniformLocation = gl.getUniformLocation(
-    program,
-    'u_translation',
-  )
+  const translationUniformLocation = gl.getUniformLocation(program, 'u_translation')
   // bind u_resolution
-  const resolutionUniformLocation = gl.getUniformLocation(
-    program,
-    'u_resolution',
-  )
+  const resolutionUniformLocation = gl.getUniformLocation(program, 'u_resolution')
   // bind u_rotation
   const rotationUniformLocation = gl.getUniformLocation(program, 'u_rotation')
   // bind u_scale
@@ -236,12 +209,7 @@ export function initScene(canvas, vert, frag) {
   } webGlProps
  */
 export function drawScene(webGlProps) {
-  const {
-    gl,
-    resolutionUniformLocation,
-    positionAttributeLocation,
-    positionBuffer,
-  } = webGlProps
+  const {gl, resolutionUniformLocation, positionAttributeLocation, positionBuffer} = webGlProps
   /************************
    * RENDERING CODE
    * Code that gets executed every time we draw
@@ -276,14 +244,7 @@ export function drawScene(webGlProps) {
   const normalize = false // don't normalize the data
   const stride = 0 // 0: move forward (size * sizeof(type)) each iteration to get to the next position
   const offset = 0 // start at the beginning of the buffer
-  gl.vertexAttribPointer(
-    positionAttributeLocation,
-    size,
-    type,
-    normalize,
-    stride,
-    offset,
-  )
+  gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
 }
 
 // Draw the scene.
@@ -326,14 +287,7 @@ export function drawSceneT2DGL(options) {
   const normalize = false // don't normalize the data
   const stride = 0 // 0 = move forward size * sizeof(type) each iteration to get the next position
   let offset = 0 // start at the beginning of the buffer
-  gl.vertexAttribPointer(
-    positionAttributeLocation,
-    size,
-    type,
-    normalize,
-    stride,
-    offset,
-  )
+  gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
   // set the resolution
   gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)
 
@@ -364,25 +318,12 @@ export function rectanglesScene(webGlProps) {
   drawRectangles(gl, colorUniformLocation, 1)
 }
 
-export function translationSceneViaDOM(
-  webGlProps,
-  translation,
-  color,
-  width,
-  height,
-) {
+export function translationSceneViaDOM(webGlProps, translation, color, width, height) {
   const {gl, colorUniformLocation} = webGlProps
   drawScene(webGlProps)
   // 3. Draw!!
   // - Draw 3 random rectangles
-  renderTranslationRectangle(
-    gl,
-    colorUniformLocation,
-    translation,
-    color,
-    width,
-    height,
-  )
+  renderTranslationRectangle(gl, colorUniformLocation, translation, color, width, height)
 }
 
 export function translationSceneViaWebGL(options) {
