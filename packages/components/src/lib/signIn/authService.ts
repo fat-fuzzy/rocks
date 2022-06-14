@@ -8,46 +8,53 @@
 // https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html#authentication-responses
 
 const isNoResponse = () => Math.random() >= 0.75
+const isNoResponseFake = () => true
 const isLoginFailed = (email, password) => email !== 'admin@admin.com' || password !== 'admin'
 const passwordRecoveryMaybe = (email) => ({email})
 const isSignInEmailSent = (email) => ({email})
 
 export const requestPassword = (email) =>
-	new Promise((resolve, reject) => {
-		setTimeout(() => {
-			if (isNoResponse()) {
-				reject({code: 3})
-			}
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const noResponse = isNoResponseFake()
+      if (noResponse) {
+        reject({code: 3})
+        console.log('noResponse')
+        console.log(noResponse)
+      } else {
+        const passwordRecovery = passwordRecoveryMaybe(email)
+        if (passwordRecovery) {
+          resolve({code: 1, payload: {email}})
+          console.log('passwordRecovery')
+          console.log(passwordRecovery)
+        }
+        // if (isInternalServerErr()) {
+        // 	reject({code: 4})
+        // }
+      }
 
-			if (passwordRecoveryMaybe(email)) {
-				resolve({code: 1, payload: {email}})
-			}
-			// if (isInternalServerErr()) {
-			// 	reject({code: 4})
-			// }
-
-			resolve(null)
-		}, 1500)
-	})
+      resolve(null)
+    }, 1500)
+  })
 
 export const authenticate = (email, password) =>
-	new Promise((resolve, reject) => {
-		setTimeout(() => {
-			if (isLoginFailed(email, password)) {
-				reject({code: 2})
-			}
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (isLoginFailed(email, password)) {
+        reject({code: 2})
+      }
 
-			if (isNoResponse()) {
-				reject({code: 3})
-			}
+      if (isNoResponse()) {
+        reject({code: 3})
+      }
 
-			if (isSignInEmailSent(email)) {
-				resolve({code: 0, payload: {email}})
-			}
-			// if (isInternalServerErr()) {
-			// 	reject({code: 4})
-			// }
+      if (isSignInEmailSent(email)) {
+        resolve({code: 0, payload: {email}})
+      }
+      // if (isInternalServerErr()) {
+      // 	reject({code: 4})
+      // }
 
-			resolve(null)
-		}, 1500)
-	})
+      resolve(null)
+    }, 1500)
+  })
