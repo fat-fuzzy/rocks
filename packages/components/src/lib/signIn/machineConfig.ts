@@ -9,6 +9,13 @@ const emailStates = {
         badFormat: {},
       },
       onEntry: 'focusEmailInput',
+      on: {
+        INPUT_EMAIL: {
+          cond: 'isEmailMinLength',
+          actions: 'cacheEmail',
+          target: 'noError',
+        },
+      },
     },
   },
 }
@@ -24,6 +31,13 @@ const passwordStates = {
         tooShort: {},
       },
       onEntry: 'focusPasswordInput',
+      on: {
+        INPUT_PASSWORD: {
+          cond: 'isPasswordMinLength',
+          actions: 'cachePassword',
+          target: 'noError',
+        },
+      },
     },
   },
 }
@@ -42,21 +56,27 @@ const authServiceStates = {
         },
         login: {
           on: {
-            SUBMIT: {
-              target: '#signInForm.loggedOut',
-              // actions: 'onLoginFailed',
-            },
-            FORGOT_PASSWORD: '#signInForm.forgotPassword',
+            SUBMIT: '#signInForm.loading',
+            FORGOT_PASSWORD: 'forgot',
           },
         },
         forgot: {
           on: {
-            RESET_PASSWORD: '#signInForm.resetPassword',
+            RESET_PASSWORD: [
+              {
+                target: 'reset',
+              },
+            ],
+            CANCEL: [
+              {
+                target: '#signInForm.loggedOut',
+              },
+            ],
           },
         },
         reset: {
           on: {
-            RESET_PASSWORD: '#signInForm.resetPassword',
+            SUBMIT: '#signInForm.loading',
           },
         },
         internal: {},
@@ -74,52 +94,36 @@ const machineConfig = {
   },
   states: {
     loggedOut: {
-      type: 'parallel' as const,
       on: {
         INPUT_EMAIL: {
           actions: 'cacheEmail',
-          target: 'loggedOut.email.noError',
         },
         INPUT_PASSWORD: {
           actions: 'cachePassword',
-          target: 'loggedOut.password.noError',
         },
         SUBMIT: [
           {
             cond: 'isNoEmail',
-            target: 'loggedOut.email.error.empty',
+            target: 'email.error.empty',
           },
           {
             cond: 'isEmailBadFormat',
-            target: 'loggedOut.email.error.badFormat',
+            target: 'email.error.badFormat',
           },
           {
             cond: 'isNoPassword',
-            target: 'loggedOut.password.error.empty',
+            target: 'password.error.empty',
           },
           {
             cond: 'isPasswordShort',
-            target: 'loggedOut.password.error.tooShort',
+            target: 'password.error.tooShort',
           },
           {
             target: 'loading',
           },
         ],
-        FORGOT_PASSWORD: [
-          {
-            target: 'forgotPassword',
-          },
-        ],
-        CANCEL: [
-          {
-            target: 'loggedOut',
-          },
-        ],
-      },
-      states: {
-        email: {...emailStates},
-        password: {...passwordStates},
-        authService: {...authServiceStates},
+        FORGOT_PASSWORD: 'authService.error.forgot',
+        CANCEL: {},
       },
     },
     loading: {
@@ -135,91 +139,35 @@ const machineConfig = {
         onError: [
           {
             cond: 'isLoginFailed',
-            target: 'loggedOut.authService.error.login',
+            target: 'authService.error.login',
           },
           {
             cond: 'isNoResponse',
-            target: 'loggedOut.authService.error.communication',
+            target: 'authService.error.communication',
           },
-          {
-            cond: 'isInternalServerErr',
-            target: 'loggedOut.authService.error.internal',
-          },
+          // {
+          //   cond: 'isInternalServerErr',
+          //   target: 'loggedOut.authService.error.internal',
+          // },
         ],
-      },
-    },
-    forgotPassword: {
-      initial: 'noError',
-      on: {
-        INPUT_EMAIL: {
-          actions: 'cacheEmail',
-          target: 'forgotPassword.email.noError',
-        },
-        RESET_PASSWORD: [
-          {
-            cond: 'isNoEmail',
-            target: 'forgotPassword.email.error.empty',
-          },
-          {
-            cond: 'isEmailBadFormat',
-            target: 'forgotPassword.email.error.badFormat',
-          },
-          {
-            target: 'resetPassword',
-          },
-        ],
-        CANCEL: [
-          {
-            target: 'loggedOut',
-          },
-        ],
-      },
-      states: {
-        noError: {},
-        error: {
-          initial: 'empty',
-          states: {
-            empty: {},
-          },
-          onEntry: 'focusEmailInput',
-        },
-        email: {...emailStates},
-        authService: {...authServiceStates},
       },
     },
     resetPassword: {
-      initial: 'noError',
       on: {
-        INPUT_EMAIL: {
-          actions: 'cacheEmail',
-          target: 'resetPassword.email.noError',
-        },
         CANCEL: 'loggedOut',
       },
       invoke: {
         src: 'requestNewPassword',
         onDone: {
-          actions: 'isPasswordRecoveryMaybe',
+          actions: 'isPasswordRecoveryEmailSent',
           target: 'loggedOut',
         },
         onError: [
           {
             cond: 'isNoResponse',
-            target: 'resetPassword.authService.error.communication',
+            target: 'authService.error.communication',
           },
         ],
-      },
-      states: {
-        noError: {},
-        error: {
-          initial: 'empty',
-          states: {
-            empty: {},
-          },
-          onEntry: 'focusEmailInput',
-        },
-        email: {...emailStates},
-        authService: {...authServiceStates},
       },
     },
     loggedIn: {
@@ -227,6 +175,9 @@ const machineConfig = {
         LOGOUT: 'loggedOut',
       },
     },
+    email: {...emailStates},
+    password: {...passwordStates},
+    authService: {...authServiceStates},
   },
 }
 export default machineConfig
