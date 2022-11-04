@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import {createEventDispatcher} from 'svelte'
+	import {clickOutside} from '../../utils/click-outside.js'
 	import {animations, currentAnimationId} from '../../stores.js'
 
 	const dispatch = createEventDispatcher()
@@ -28,6 +29,10 @@
 		menuExpanded = !menuExpanded
 	}
 
+	function handleClickOutside(event) {
+		menuExpanded = false
+	}
+
 	const handleClick = (event) => {
 		const element = event.target
 		dispatch('input', {
@@ -38,7 +43,7 @@
 </script>
 
 <div class="dropdown sm">
-	<menu class="l-stack">
+	<menu class="l-stack" use:clickOutside on:click_outside={handleClickOutside}>
 		<button
 			type="button"
 			class={`toggle collapse ${variant}`}

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
-	import Header from '../lib/header/Header.svelte'
 	import {themes} from '../types/constants'
 	import {theme} from '../stores'
+	import Header from '../lib/header/Header.svelte'
 
 	let app
 	let currentTheme = themes[$theme]

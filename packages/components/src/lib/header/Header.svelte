@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
+	import {clickOutside} from '../../utils/click-outside.js'
 	import {theme, lang} from '../../stores'
 	import {emojis, themes} from '../../types/constants'
 
@@ -7,6 +8,10 @@
 	let actionsMenuExpanded = false
 	let currentTheme = themes[$theme]
 	let currentLang = $lang
+
+	function handleClickOutside(event) {
+		actionsMenuExpanded = false
+	}
 
 	function toggleActionsMenu(event) {
 		actionsMenuExpanded = !actionsMenuExpanded
@@ -52,7 +57,7 @@
 		</ul>
 	</nav>
 	<div class="l-sidebar-side shrink">
-		<menu class="dropdown sm">
+		<menu class="dropdown sm" use:clickOutside on:click_outside={handleClickOutside}>
 			<button
 				type="button"
 				class="toggle collapse primary"

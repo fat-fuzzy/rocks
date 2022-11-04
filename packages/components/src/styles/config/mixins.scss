@@ -50,15 +50,14 @@ $_cssvars: ();
 		--#{$prefix}fluid-bp: calc(
 			calc(var(--#{$prefix}fluid-screen) - calc((var(--#{$prefix}fluid-min-width) / 16) * 1rem)) /
 				calc(
-					calc(var(--#{$prefix}fluid-max-width) / 16) -
-						calc(var(--#{$prefix}fluid-min-width) / 16)
+					calc(var(--#{$prefix}fluid-max-width) / 16) - calc(var(--#{$prefix}fluid-min-width) / 16)
 				)
 		);
 		--#{$prefix}fluid-min-scale-0: var(--#{$prefix}fluid-min-ratio);
 		--#{$prefix}fluid-max-scale-0: var(--#{$prefix}fluid-max-ratio);
 		--#{$prefix}fluid-min-size-0: calc(var(--#{$prefix}fluid-min-size) / 16);
 		--#{$prefix}fluid-max-size-0: calc(var(--#{$prefix}fluid-max-size) / 16);
-		--#{$prefix}fluid-0: --#{$prefix}fluid-0: calc(
+		--#{$prefix}fluid-0: calc(
 			calc(var(--#{$prefix}fluid-min-size-0) * 1rem) +
 				calc(var(--#{$prefix}fluid-max-size-0) - var(--#{$prefix}fluid-min-size-0)) *
 				var(--#{$prefix}fluid-bp)
@@ -75,15 +74,11 @@ $_cssvars: ();
 				var(--#{$prefix}fluid-max-scale-#{$previous-step}) * var(--#{$prefix}fluid-max-ratio)
 			);
 			--#{$prefix}fluid-min-size-#{$step}: calc(
-				calc(
-						var(--#{$prefix}fluid-min-size) * var(--#{$prefix}fluid-min-scale-#{$previous-step})
-					) /
+				calc(var(--#{$prefix}fluid-min-size) * var(--#{$prefix}fluid-min-scale-#{$previous-step})) /
 					16
 			);
 			--#{$prefix}fluid-max-size-#{$step}: calc(
-				calc(
-						var(--#{$prefix}fluid-max-size) * var(--#{$prefix}fluid-max-scale-#{$previous-step})
-					) /
+				calc(var(--#{$prefix}fluid-max-size) * var(--#{$prefix}fluid-max-scale-#{$previous-step})) /
 					16
 			);
 			--#{$prefix}fluid-#{$step}: calc(
@@ -104,9 +99,13 @@ $_cssvars: ();
 
 @mixin theme-main() {
 	@include generateCssVars($breakpoints, $theme-prefix);
+
+	// WIP - still experimenting with scale
 	@include generateCssVars($scale, $theme-prefix);
 	@include generateCssVars($size-scale, $theme-prefix);
 	@include generateModularScale($modular-scale, $modular-scale-steps, $theme-prefix, bp-xl);
+	// -----------
+
 	@include generateCssVars($layout, $theme-prefix);
 	@include generateCssVars($typography, $theme-prefix);
 	@include generateCssVars($colors, $theme-prefix);
@@ -139,22 +138,23 @@ $_cssvars: ();
  * .selector {
  *   color: getVar(primary-color);
      &--variant {
-        @include setCssVar(button-height, 56px);
+        height: @include setCssVar(button-height, 56px);
       }
  * }
  *
  * Will result in
  *
  * .selector {
- *    color: getVar(--prefix-primary-color);
+ *    color: var(--prefix-primary-color);
  * }
  * .selector--variant {
- *   --pm-button-height, 56px
+ *    height: var(--pm-button-height, 56px);
 *  }
  */
-@mixin setCssVar($name, $value: '', $prefix: $theme-prefix) {
-	--#{$prefix}#{$name}: #{$value};
-}
+// not sure this works as intended
+// @mixin setCssVar($name, $value: '', $prefix: $theme-prefix) {
+// 	--#{$prefix}#{$name}: #{$value};
+// }
 
 //== UNITS
 

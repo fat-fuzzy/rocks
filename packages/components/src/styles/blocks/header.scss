@@ -27,8 +27,8 @@ header {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	padding-left: getVar(gap);
-	padding-right: getVar(gap);
+	padding-left: calc(getVar(gap) / 2);
+	padding-right: calc(getVar(gap) / 2);
 }
 
 @include min-width(bp-md) {

@@ -1,20 +1,20 @@
 export const uiState = {
-	DEFAULT: 'default',
-	FOCUS: 'focus',
-	HOVER: 'hover',
-	ACTIVE: 'active',
-	SUCCESS: 'success',
-	ERROR: 'error',
+  DEFAULT: 'default',
+  FOCUS: 'focus',
+  HOVER: 'hover',
+  ACTIVE: 'active',
+  SUCCESS: 'success',
+  ERROR: 'error',
 }
 
-export const themes = ['bg-dark', 'bg-light']
+export const themes = ['dark', 'light']
 
 export const emojis = {
-	'bg-light': '☀️',
-	'bg-dark': '🌙',
-	fr: '🇫🇷 FR',
-	es: '🇪🇸 ES',
-	en: '🇬🇧 EN',
+  light: '☀️',
+  dark: '🌙',
+  fr: '🇫🇷 FR',
+  es: '🇪🇸 ES',
+  en: '🇬🇧 EN',
 }
 
 // export const emojis = {
