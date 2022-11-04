@@ -1,27 +1,23 @@
 <script>
-	import {theme} from '../../stores'
-	import Button from '../button/Button.svelte'
+  import {theme} from '../../stores'
+  import Button from '../button/Button.svelte'
 
-	export let play = () => {}
-	export let stop = () => {}
+  export let play = () => {}
+  export let stop = () => {}
 
-	let disabled = false
-	let variant = 'accent'
+  let disabled = false
+  let variant = ``
 
-	theme.subscribe((value) => {
-		if (value === 'bg-dark') {
-			variant = 'highlight'
-		} else {
-			variant = 'accent'
-		}
-	})
+  $: variant = $theme ? `accent` : `highlight`
 </script>
 
-<form class="sm">
-	<Button testId="btn-play" {variant} handleClick={() => play()} type="button" {disabled}>
-		▶️ &nbsp;Play
-	</Button>
-	<Button testId="btn-stop" {variant} handleClick={() => stop()} type="button" {disabled}>
-		⏹ &nbsp;Stop
-	</Button>
-</form>
+<div class="l-wrapper u-side xxl">
+  <menu class="menu l-switcher sm">
+    <Button testId="btn-play" {variant} handleClick={() => play()} type="button" {disabled}>
+      ▶︎ &nbsp;Play
+    </Button>
+    <Button testId="btn-stop" {variant} handleClick={() => stop()} type="button" {disabled}>
+      ◼ &nbsp;Stop
+    </Button>
+  </menu>
+</div>

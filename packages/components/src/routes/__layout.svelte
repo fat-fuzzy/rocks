@@ -1,10 +1,36 @@
 <script lang="ts">
-	import Header from '$lib/header/Header.svelte'
+	import {onMount} from 'svelte'
+	import {page} from '$app/stores'
+	import {themes} from '../types/constants'
+	import {theme} from '../stores'
+	import Header from '../lib/header/Header.svelte'
+
+	let app
+	let currentTheme = themes[$theme]
+
+	function getClassNameFromUrl(url) {
+		return url.pathname === '/' ? 'home' : url.pathname.substr(1, url.pathname.length)
+	}
+	$: className = getClassNameFromUrl($page.url)
+
+	theme.subscribe((value) => {
+		if (app) {
+			app.classList.remove(currentTheme)
+		}
+		currentTheme = themes[value]
+		if (app) {
+			app.classList.add(currentTheme)
+		}
+	})
+
+	onMount(() => {
+		app = document.getElementById('app')
+	})
 </script>
 
-<Header />
+<Header className="header-app" />
 
-<main class="l-wrapper">
+<main class="l-wrapper {className}">
 	<slot />
 </main>
 

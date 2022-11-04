@@ -1,75 +1,75 @@
 $_cssvars: null;
 $theme-prefix: ffp-;
 $colors: (
-	'gray-1': #ccc,
-	'gray-2': #ddd,
-	'gray-3': #999,
-	'gray-4': #666,
-	'gray-5': rgb(92, 91, 94),
-	'color-white': rgba(255, 255, 255, 1),
-	'color-black': rgba(0, 0, 0, 1),
-	'color-light': rgba(244, 244, 244, 1),
-	'color-dark': rgb(54, 49, 58),
-	'danger': rgba(238, 9, 123, 1),
-	'danger-light': rgb(251, 153, 183, 1),
-	'danger-lighter': rgba(255, 235, 245, 1),
-	'primary': rgb(106, 75, 179),
-	'primary-light': rgb(181, 165, 252, 1),
-	'primary-lighter': rgba(231, 219, 255, 1),
-	'accent': rgb(6, 143, 167),
-	'accent-light': rgb(161, 249, 228),
-	'accent-lighter': rgb(217, 234, 252),
-	'highlight': rgb(246, 226, 10),
-	'highlight-light': rgb(255, 247, 158),
-	'highlight-lighter': rgb(255, 251, 212),
-	// 'shadow-color': var(--#{$theme-prefix}color-dark),
-	'shadow-light-color': 220 80% 80%,
-	'shadow-color': 220 3% 15%,
-	'shadow-strength': 1%,
+  'gray-1': #ccc,
+  'gray-2': #ddd,
+  'gray-3': #999,
+  'gray-4': #666,
+  'gray-5': rgb(92, 91, 94),
+  'color-white': rgba(255, 255, 255, 1),
+  'color-black': rgba(0, 0, 0, 1),
+  'color-light': rgba(244, 244, 244, 1),
+  'color-dark': rgb(54, 49, 58),
+  'danger': rgba(238, 9, 123, 1),
+  'danger-light': rgb(251, 153, 183, 1),
+  'danger-lighter': rgba(255, 235, 245, 1),
+  'primary': rgb(106, 75, 179),
+  'primary-light': rgb(181, 165, 252, 1),
+  'primary-lighter': rgba(231, 219, 255, 1),
+  'accent': rgb(0, 131, 136),
+  'accent-light': rgb(71, 191, 185),
+  'accent-lighter': rgb(215, 247, 240),
+  'highlight': rgb(246, 226, 10),
+  'highlight-light': rgb(251, 244, 162),
+  'highlight-lighter': rgb(249, 243, 190),
+  // 'shadow-color': var(--#{$theme-prefix}color-dark),
+  'shadow-light-color': 220 80% 80%,
+  'shadow-color': 220 3% 15%,
+  'shadow-strength': 1%,
 );
 
 $typography: (
-	font-family-body: #{'HelveticaNeue',
-	'Helvetica Neue',
-	Helvetica,
-	Arial,
-	sans-serif},
-	//
-	font-size-base: var(--#{$theme-prefix}fluid-0),
-	font-size-h5: var(--#{$theme-prefix}fluid-1),
-	font-size-h4: var(--#{$theme-prefix}fluid-2),
-	font-size-h3: var(--#{$theme-prefix}fluid-3),
-	font-size-h2: var(--#{$theme-prefix}fluid-4),
-	font-size-h1: var(--#{$theme-prefix}fluid-5),
-	//
-	font-size-md: var(--#{$theme-prefix}fluid-0),
-	font-size-lg: var(--#{$theme-prefix}fluid-1),
-	font-size-xl: var(--#{$theme-prefix}fluid-2),
-	font-size-xxl: var(--#{$theme-prefix}fluid-3),
-	// font-size-sm: calc(var(--#{$theme-prefix}font-size-md) * var(--#{$theme-prefix}s-1)),
-	// font-size-xs: calc(var(--#{$theme-prefix}font-size-md) * var(--#{$theme-prefix}s-2)),
-	// font-size-xxs: calc(var(--#{$theme-prefix}font-size-md) * var(--#{$theme-prefix}s-3)),
-	font-size-sm: var(--#{$theme-prefix}300),
-	font-size-xs: var(--#{$theme-prefix}200),
-	font-size-xxs: var(--#{$theme-prefix}100),
-	//
-	font-weight-light: 100,
-	font-weight-medium: 300,
-	font-weight-bold: 500,
-	font-color-body: var(--#{$theme-prefix}gray-4),
+  font-family-body: #{'HelveticaNeue',
+  'Helvetica Neue',
+  Helvetica,
+  Arial,
+  sans-serif},
+  //
+  font-size-base: var(--#{$theme-prefix}fluid-0),
+  font-size-h5: var(--#{$theme-prefix}fluid-1),
+  font-size-h4: var(--#{$theme-prefix}fluid-2),
+  font-size-h3: var(--#{$theme-prefix}fluid-3),
+  font-size-h2: var(--#{$theme-prefix}fluid-4),
+  font-size-h1: var(--#{$theme-prefix}fluid-5),
+  //
+  font-size-md: var(--#{$theme-prefix}fluid-0),
+  font-size-lg: var(--#{$theme-prefix}fluid-1),
+  font-size-xl: var(--#{$theme-prefix}fluid-2),
+  font-size-xxl: var(--#{$theme-prefix}fluid-3),
+  // font-size-sm: calc(var(--#{$theme-prefix}font-size-md) * var(--#{$theme-prefix}s-1)),
+  // font-size-xs: calc(var(--#{$theme-prefix}font-size-md) * var(--#{$theme-prefix}s-2)),
+  // font-size-xxs: calc(var(--#{$theme-prefix}font-size-md) * vars(--#{$theme-prefix}s-3)),
+  font-size-sm: var(--#{$theme-prefix}300),
+  font-size-xs: var(--#{$theme-prefix}200),
+  font-size-xxs: var(--#{$theme-prefix}100),
+  //
+  font-weight-light: 100,
+  font-weight-medium: 300,
+  font-weight-bold: 500,
+  font-color-body: var(--#{$theme-prefix}color-dark),
 );
 
 $breakpoints: (
-	bp-xs: 320,
-	bp-sm: 768,
-	bp-md: 992,
-	bp-lg: 1200,
-	bp-xl: 1920,
+  bp-xs: 320,
+  bp-sm: 768,
+  bp-md: 992,
+  bp-lg: 1200,
+  bp-xl: 1920,
 );
 
 //==
 // CUBE CSS-ish
-// Adaptted from: https://piccalil.li/tutorial/build-a-dashboard-with-cube-css/
+// Adapted from: https://piccalil.li/tutorial/build-a-dashboard-with-cube-css/
 //==
 
 //== BASE SIZE
@@ -86,14 +86,14 @@ $base-size: 1rem;
 /// your whole project.
 ///
 $size-scale: (
-	'100': $base-size * 0.6,
-	'200': $base-size * 0.7,
-	'300': $base-size * 0.8,
-	'400': $base-size,
-	'500': $base-size * 1.25,
-	'600': $base-size * 1.6,
-	'700': $base-size * 2,
-	'900': $base-size * 3,
+  '100': $base-size * 0.6,
+  '200': $base-size * 0.7,
+  '300': $base-size * 0.8,
+  '400': $base-size,
+  '500': $base-size * 1.25,
+  '600': $base-size * 1.6,
+  '700': $base-size * 2,
+  '900': $base-size * 3,
 );
 
 //== TYPOGRAPHIC SCALE
@@ -114,18 +114,18 @@ $size-scale: (
 */
 
 $scale: (
-	ratio: 1.5,
-	s-5: calc(var(--#{$theme-prefix}s-4) / var(--#{$theme-prefix}ratio)),
-	s-4: calc(var(--#{$theme-prefix}s-3) / var(--#{$theme-prefix}ratio)),
-	s-3: calc(var(--#{$theme-prefix}s-2) / var(--#{$theme-prefix}ratio)),
-	s-2: calc(var(--#{$theme-prefix}s-1) / var(--#{$theme-prefix}ratio)),
-	s-1: calc(var(--#{$theme-prefix}s0) / var(--#{$theme-prefix}ratio)),
-	s0: $base-size,
-	s1: calc(var(--#{$theme-prefix}s0) * var(--#{$theme-prefix}ratio)),
-	s2: calc(var(--#{$theme-prefix}s1) * var(--#{$theme-prefix}ratio)),
-	s3: calc(var(--#{$theme-prefix}s2) * var(--#{$theme-prefix}ratio)),
-	s4: calc(var(--#{$theme-prefix}s3) * var(--#{$theme-prefix}ratio)),
-	s5: calc(var(--#{$theme-prefix}s4) * var(--#{$theme-prefix}ratio)),
+  ratio: 1.5,
+  s-5: calc(var(--#{$theme-prefix}s-4) / var(--#{$theme-prefix}ratio)),
+  s-4: calc(var(--#{$theme-prefix}s-3) / var(--#{$theme-prefix}ratio)),
+  s-3: calc(var(--#{$theme-prefix}s-2) / var(--#{$theme-prefix}ratio)),
+  s-2: calc(var(--#{$theme-prefix}s-1) / var(--#{$theme-prefix}ratio)),
+  s-1: calc(var(--#{$theme-prefix}s0) / var(--#{$theme-prefix}ratio)),
+  s0: $base-size,
+  s1: calc(var(--#{$theme-prefix}s0) * var(--#{$theme-prefix}ratio)),
+  s2: calc(var(--#{$theme-prefix}s1) * var(--#{$theme-prefix}ratio)),
+  s3: calc(var(--#{$theme-prefix}s2) * var(--#{$theme-prefix}ratio)),
+  s4: calc(var(--#{$theme-prefix}s3) * var(--#{$theme-prefix}ratio)),
+  s5: calc(var(--#{$theme-prefix}s4) * var(--#{$theme-prefix}ratio)),
 );
 
 //== FLUID SCALE
@@ -144,141 +144,140 @@ $scale: (
 
 $modular-scale-steps: 1, 2, 3, 4, 5; // skip 0: it will be automatically generated
 $modular-scale: (
-	fluid-min-width: 320,
-	fluid-max-width: 1920,
-	fluid-min-size: 10,
-	fluid-max-size: 16,
-	fluid-min-ratio: 1.2,
-	fluid-max-ratio: 1.3,
-	fluid-screen: 100vw,
+  fluid-min-width: 320,
+  fluid-max-width: 1920,
+  fluid-min-size: 10,
+  fluid-max-size: 16,
+  fluid-min-ratio: 1.2,
+  fluid-max-ratio: 1.3,
+  fluid-screen: 100vw,
 );
 
 $layout: (
-	aspect-ratio-1-1: calc(1 / 1),
-	aspect-ratio-1-2: calc(1 / 2),
-	aspect-ratio-2-1: calc(2 / 1),
-	aspect-ratio-16-9: calc(16 / 9),
-	aspect-ratio-1-1dot35: calc(1 / 1.35),
-	aspect-ratio-1dot35-1: calc(1.35 / 1),
-	orientation-portrait: portrait,
-	orientation-landscape: landscape,
-	gap: $base-size,
-	//
-	padding-nul: 0,
-	padding-xxs: var(--#{$theme-prefix}s-5),
-	padding-xs: var(--#{$theme-prefix}s-4),
-	padding-sm: var(--#{$theme-prefix}s-3),
-	padding-md: var(--#{$theme-prefix}s-2),
-	padding-lg: var(--#{$theme-prefix}s-1),
-	padding-xl: var(--#{$theme-prefix}s0),
-	padding-xxl: var(--#{$theme-prefix}s1),
-	//
-	margin-nul: 0,
-	margin-xxs: var(--#{$theme-prefix}s-5),
-	margin-xs: var(--#{$theme-prefix}s-4),
-	margin-sm: var(--#{$theme-prefix}s-3),
-	margin-md: var(--#{$theme-prefix}s-2),
-	margin-lg: var(--#{$theme-prefix}s-1),
-	margin-xl: var(--#{$theme-prefix}s0),
-	margin-xxl: var(--#{$theme-prefix}s1),
-	//
-	margin-block-nul: 0,
-	margin-block-xxs: var(--#{$theme-prefix}s-5),
-	margin-block-xs: var(--#{$theme-prefix}s-4),
-	margin-block-sm: var(--#{$theme-prefix}s-3),
-	margin-block-md: var(--#{$theme-prefix}s-2),
-	margin-block-lg: var(--#{$theme-prefix}s-1),
-	margin-block-xl: var(--#{$theme-prefix}s0),
-	margin-block-xxl: var(--#{$theme-prefix}s1),
-	// //
-	// padding-nul: 0,
-	// padding-xs: var(--#{$theme-prefix}100),
-	// padding-sm: var(--#{$theme-prefix}200),
-	// padding-md: var(--#{$theme-prefix}300),
-	// padding-lg: var(--#{$theme-prefix}400),
-	// padding-xl: var(--#{$theme-prefix}500),
-	// //
-	// margin-nul: 0,
-	// margin-xs: var(--#{$theme-prefix}100),
-	// margin-sm: var(--#{$theme-prefix}200),
-	// margin-md: var(--#{$theme-prefix}300),
-	// margin-lg: var(--#{$theme-prefix}400),
-	// margin-xl: var(--#{$theme-prefix}500),
-	// //
-	// margin-block-nul: 0,
-	// margin-block-xs: var(--#{$theme-prefix}100),
-	// margin-block-sm: var(--#{$theme-prefix}200),
-	// margin-block-md: var(--#{$theme-prefix}300),
-	// margin-block-lg: var(--#{$theme-prefix}400),
-	// margin-block-xl: var(--#{$theme-prefix}500),
-	// padding-nul: 0,
-	// padding-xs: 2px,
-	// padding-sm: 4px,
-	// padding-md: 8px,
-	// padding-lg: 12px,
-	// padding-xl: 16px,
-	// //
-	// margin-nul: 0,
-	// margin-xs: 1px,
-	// margin-sm: 4px,
-	// margin-md: 8px,
-	// margin-lg: 12px,
-	// margin-xl: 16px,
-	// //
-	// margin-block-nul: 0,
-	// margin-block-xs: 1px,
-	// margin-block-sm: 4px,
-	// margin-block-md: 8px,
-	// margin-block-lg: 12px,
-	// margin-block--xl: 16px,
-	// header-height-sm: 80px,
-	// header-height-md: 100px,
-	// header-height-lg: 110px,
-	//
-	// footer-height-sm: 40px,
-	// footer-height-md: 40px,
-	//
-	// sidebar-height-sm: 140px,
-	// sidebar-height-md: 240px,
-	sidebar-width-xxs: 10ch,
-	sidebar-width-xs: 15ch,
-	sidebar-width-sm: 20ch,
-	sidebar-width-md: 25ch,
-	sidebar-width-lg: 30ch,
-	sidebar-width-xl: 35ch,
-	sidebar-width-xxl: 40ch,
-	//
-	radius-nul: 0,
-	radius-base: 3px,
-	radius-lg: 5px,
-	//
-	border-width: 1px,
-	z-index-input: 2,
-	z-index-dropdown: 1,
-	outline-offset: 0.25rem,
-	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
-	// using shadow-3
-	shadow: #{0 -1px 3px 0 hsl(
-			var(--#{$theme-prefix}shadow-color) / calc(var(--#{$theme-prefix}shadow-strength) + 2%)
-		),
-	0 1px 2px -5px hsl(var(--#{$theme-prefix}shadow-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(--#{$theme-prefix}shadow-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(--#{$theme-prefix}shadow-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(--#{$theme-prefix}shadow-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 7%)),
-	},
-	shadow-light: #{0 -1px 3px 0 hsl(var(--#{$theme-prefix}shadow-light-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
-	0 1px 2px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
-				calc(var(--#{$theme-prefix}shadow-strength) + 7%)),
-	},
+  aspect-ratio-1-1: calc(1 / 1),
+  aspect-ratio-1-2: calc(1 / 2),
+  aspect-ratio-2-1: calc(2 / 1),
+  aspect-ratio-16-9: calc(16 / 9),
+  aspect-ratio-1-1dot35: calc(1 / 1.35),
+  aspect-ratio-1dot35-1: calc(1.35 / 1),
+  orientation-portrait: portrait,
+  orientation-landscape: landscape,
+  gap: $base-size,
+  //
+  padding-nul: 0,
+  padding-xxs: var(--#{$theme-prefix}s-5),
+  padding-xs: var(--#{$theme-prefix}s-4),
+  padding-sm: var(--#{$theme-prefix}s-3),
+  padding-md: var(--#{$theme-prefix}s-2),
+  padding-lg: var(--#{$theme-prefix}s-1),
+  padding-xl: var(--#{$theme-prefix}s0),
+  padding-xxl: var(--#{$theme-prefix}s1),
+  //
+  margin-nul: 0,
+  margin-xxs: var(--#{$theme-prefix}s-5),
+  margin-xs: var(--#{$theme-prefix}s-4),
+  margin-sm: var(--#{$theme-prefix}s-3),
+  margin-md: var(--#{$theme-prefix}s-2),
+  margin-lg: var(--#{$theme-prefix}s-1),
+  margin-xl: var(--#{$theme-prefix}s0),
+  margin-xxl: var(--#{$theme-prefix}s1),
+  //
+  margin-block-nul: 0,
+  margin-block-xxs: var(--#{$theme-prefix}s-5),
+  margin-block-xs: var(--#{$theme-prefix}s-4),
+  margin-block-sm: var(--#{$theme-prefix}s-3),
+  margin-block-md: var(--#{$theme-prefix}s-2),
+  margin-block-lg: var(--#{$theme-prefix}s-1),
+  margin-block-xl: var(--#{$theme-prefix}s0),
+  margin-block-xxl: var(--#{$theme-prefix}s1),
+  // //
+  // padding-nul: 0,
+  // padding-xs: var(--#{$theme-prefix}100),
+  // padding-sm: var(--#{$theme-prefix}200),
+  // padding-md: var(--#{$theme-prefix}300),
+  // padding-lg: var(--#{$theme-prefix}400),
+  // padding-xl: var(--#{$theme-prefix}500),
+  // //
+  // margin-nul: 0,
+  // margin-xs: var(--#{$theme-prefix}100),
+  // margin-sm: var(--#{$theme-prefix}200),
+  // margin-md: var(--#{$theme-prefix}300),
+  // margin-lg: var(--#{$theme-prefix}400),
+  // margin-xl: var(--#{$theme-prefix}500),
+  // //
+  // margin-block-nul: 0,
+  // margin-block-xs: var(--#{$theme-prefix}100),
+  // margin-block-sm: var(--#{$theme-prefix}200),
+  // margin-block-md: var(--#{$theme-prefix}300),
+  // margin-block-lg: var(--#{$theme-prefix}400),
+  // margin-block-xl: var(--#{$theme-prefix}500),
+  // padding-nul: 0,
+  // padding-xs: 2px,
+  // padding-sm: 4px,
+  // padding-md: 8px,
+  // padding-lg: 12px,
+  // padding-xl: 16px,
+  // //
+  // margin-nul: 0,
+  // margin-xs: 1px,
+  // margin-sm: 4px,
+  // margin-md: 8px,
+  // margin-lg: 12px,
+  // margin-xl: 16px,
+  // //
+  // margin-block-nul: 0,
+  // margin-block-xs: 1px,
+  // margin-block-sm: 4px,
+  // margin-block-md: 8px,
+  // margin-block-lg: 12px,
+  // margin-block--xl: 16px,
+  // header-height-sm: 80px,
+  // header-height-md: 100px,
+  // header-height-lg: 110px,
+  //
+  // footer-height-sm: 40px,
+  // footer-height-md: 40px,
+  //
+  // sidebar-height-sm: 140px,
+  // sidebar-height-md: 240px,
+  sidebar-width-xxs: 10ch,
+  sidebar-width-xs: 15ch,
+  sidebar-width-sm: 20ch,
+  sidebar-width-md: 25ch,
+  sidebar-width-lg: 30ch,
+  sidebar-width-xl: 35ch,
+  sidebar-width-xxl: 40ch,
+  //
+  radius-nul: 0,
+  radius-base: 3px,
+  radius-lg: 5px,
+  //
+  border-width: 1px,
+  z-index-dropdown: 1,
+  outline-offset: 0.25rem,
+  // src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
+  // using shadow-3
+  shadow: #{0 -1px 3px 0 hsl(
+      var(--#{$theme-prefix}shadow-color) / calc(var(--#{$theme-prefix}shadow-strength) + 2%)
+    ),
+  0 1px 2px -5px hsl(var(--#{$theme-prefix}shadow-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
+  0 2px 5px -5px hsl(var(--#{$theme-prefix}shadow-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 4%)),
+  0 4px 12px -5px hsl(var(--#{$theme-prefix}shadow-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 5%)),
+  0 12px 15px -5px hsl(var(--#{$theme-prefix}shadow-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 7%)),
+  },
+  shadow-light: #{0 -1px 3px 0 hsl(var(--#{$theme-prefix}shadow-light-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
+  0 1px 2px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 2%)),
+  0 2px 5px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 4%)),
+  0 4px 12px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 5%)),
+  0 12px 15px -5px hsl(var(--#{$theme-prefix}shadow-light-color) /
+        calc(var(--#{$theme-prefix}shadow-strength) + 7%)),
+  },
 );

@@ -1,62 +1,62 @@
 button {
-	width: auto;
-	font-weight: 500;
-	color: getVar(font-color-body);
-	background-color: getVar(color-light);
+  width: auto;
+  font-weight: 500;
+  color: getVar(font-color-body);
+  background-color: getVar(color-light);
 }
 
 button:disabled {
-	color: getVar(gray-3);
+  color: getVar(gray-3);
 }
 
 button:not(:disabled):active {
-	color: getVar(font-color-body);
-	background-color: getVar(color-light);
+  color: getVar(font-color-body);
+  background-color: getVar(color-light);
 }
 
 .primary {
-	border-color: getVar(primary);
-	background-color: getVar(primary);
-	color: getVar(color-light);
+  border-color: getVar(primary);
+  background-color: getVar(primary);
+  color: getVar(color-light);
 }
 
 .accent {
-	border-color: getVar(accent);
-	background-color: getVar(accent);
-	color: getVar(color-white);
+  border-color: getVar(accent);
+  background-color: getVar(accent);
+  color: getVar(color-white);
 }
 
 .highlight {
-	border-color: getVar(highlight);
-	background-color: getVar(highlight);
-	color: getVar(color-dark);
+  border-color: getVar(highlight);
+  background-color: getVar(highlight);
+  color: getVar(color-dark);
 }
 
-.secondary {
-	border-color: getVar(primary);
-	background-color: getVar(color-white);
+.outline {
+  border-color: getVar(primary);
+  background-color: getVar(color-white);
 }
 
-.secondary.accent {
-	border-color: getVar(accent);
-	color: getVar(color-dark);
-	background-color: getVar(color-white);
+.outline.accent {
+  border-color: getVar(accent);
+  color: getVar(color-dark);
+  background-color: getVar(color-white);
 }
 
-.secondary.highlight {
-	border-color: getVar(highlight);
-	color: getVar(color-dark);
-	background-color: getVar(color-white);
+.outline.highlight {
+  border-color: getVar(highlight);
+  color: getVar(color-dark);
+  background-color: getVar(color-white);
 }
 
 .primary:disabled,
-.secondary:disabled {
-	background-color: getVar(color-light);
+.outline:disabled {
+  background-color: getVar(color-light);
 }
 
 .link {
-	border: none;
-	background-color: transparent;
-	padding: 0 getVar(padding-xs);
-	color: getVar(primary);
+  border: none;
+  background-color: transparent;
+  padding: 0 getVar(padding-xs);
+  color: getVar(primary);
 }

@@ -9,6 +9,11 @@
 	flex-basis: calc((var(--threshold) - 100%) * 999);
 }
 
+.l-switcher.xxs {
+	gap: calc(getVar(gap) / 2);
+	--threshold: getVar(sidebar-width-xs);
+}
+
 .l-switcher.xs {
 	gap: getVar(gap);
 	--threshold: getVar(sidebar-width-xs);

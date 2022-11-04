@@ -1,20 +1,24 @@
 <script lang="ts">
-	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
+	import {clickOutside} from '../../utils/click-outside.js'
 	import {theme, lang} from '../../stores'
-	// import logo from './svelte-logo.svg'
+	import {emojis, themes} from '../../types/constants'
 
+	export let className = ''
 	let actionsMenuExpanded = false
-	let currentTheme = $theme
+	let currentTheme = themes[$theme]
 	let currentLang = $lang
-	let app
+
+	function handleClickOutside(event) {
+		actionsMenuExpanded = false
+	}
 
 	function toggleActionsMenu(event) {
 		actionsMenuExpanded = !actionsMenuExpanded
 	}
 
 	function toggleTheme(event) {
-		const _theme = currentTheme === 'bg-light' ? 'bg-dark' : 'bg-light'
+		const _theme = $theme ? 0 : 1
 		theme.set(_theme)
 	}
 	function setLanguage(event) {
@@ -22,32 +26,20 @@
 	}
 
 	theme.subscribe((value) => {
-		if (app) {
-			app.classList.remove(currentTheme)
-		}
-		currentTheme = value
-		if (app) {
-			app.classList.add(currentTheme)
-		}
+		currentTheme = themes[value]
 	})
 
 	lang.subscribe((value) => {
 		currentLang = value
 	})
 
-	onMount(() => {
-		app = document.getElementById('app')
-		app.classList.add(currentTheme)
-	})
-
-	$: actionsMenuClass = actionsMenuExpanded
-		? 'menu l-switcher md show right'
-		: 'menu l-switcher md hide'
-	$: themeIcon = currentTheme === 'bg-light' ? '☀️' : '🌙'
-	$: langIcon = currentLang === 'fr' ? '🇫🇷 FR' : currentLang === 'es' ? '🇪🇸 ES' : '🇬🇧 EN'
+	$: mainMenuClass = `${className} l-sidebar u-main layer`
+	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
+	$: themeIcon = emojis[currentTheme]
+	$: langIcon = emojis[currentLang]
 </script>
 
-<header class="l-sidebar u-main layer">
+<header class={mainMenuClass}>
 	<nav class="l-sidebar-main">
 		<ul class="l-wrapper">
 			<li class:active={$page.url.pathname === '/'} class="home">
@@ -64,29 +56,31 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="l-sidebar-side">
-		<form class="dropdown sm">
+	<div class="l-sidebar-side shrink">
+		<menu class="dropdown sm" use:clickOutside on:click_outside={handleClickOutside}>
 			<button
 				type="button"
 				class="toggle collapse primary"
 				aria-expanded={actionsMenuExpanded}
 				on:click={toggleActionsMenu}
 			>
-				➕ Settings
+				🎛 &nbsp;Settings
 			</button>
-			<menu class={actionsMenuClass}>
-				<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
+			<div class={actionsMenuClass}>
+				<menu class="l-switcher sm">
+					<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
-				<!--button>Login</-button-->
-				<div class="dropdown sm">
-					<button type="button" on:click={setLanguage}>{langIcon}</button>
-					<!-- <menu class={actionsMenuClass}>
+					<!--button>Login</-button-->
+					<div class="l-stack dropdown sm">
+						<button type="button" on:click={setLanguage}>{langIcon}</button>
+						<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 						<button type="button" on:click={setLanguage}>{langIcon}</button>
 						<!--button>Login</-button -- >
 					</menu> -->
-				</div>
-			</menu>
-		</form>
+					</div>
+				</menu>
+			</div>
+		</menu>
 	</div>
 </header>

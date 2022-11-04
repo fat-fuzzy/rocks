@@ -1,9 +1,13 @@
-<script>
+<script lang="ts">
 	import {createEventDispatcher} from 'svelte'
+	import {clickOutside} from '../../utils/click-outside.js'
 	import {animations, currentAnimationId} from '../../stores.js'
 
 	const dispatch = createEventDispatcher()
-	let menumItems = []
+	export let layout = `l-stack`
+	export let size = `sm`
+	export let variant = `primary`
+	export let menumItems = []
 
 	let animationId = $currentAnimationId
 
@@ -19,10 +23,14 @@
 		animationId = value
 	})
 
-	let animationsMenuExpanded = false
+	let menuExpanded = false
 
 	function toggleAnimationsMenu(event) {
-		animationsMenuExpanded = !animationsMenuExpanded
+		menuExpanded = !menuExpanded
+	}
+
+	function handleClickOutside(event) {
+		menuExpanded = false
 	}
 
 	const handleClick = (event) => {
@@ -31,30 +39,34 @@
 			animationId: element.getAttribute('id'),
 		})
 	}
-	$: animationsMenuClass = animationsMenuExpanded ? 'l-stack md show left' : 'l-stack md hide'
+	$: show = menuExpanded ? `show left` : `hide`
 </script>
 
-<form class="dropdown sm">
-	<button
-		type="button"
-		class="toggle collapse primary"
-		aria-expanded={animationsMenuExpanded}
-		on:click={toggleAnimationsMenu}
-	>
-		➕ Scenes
-	</button>
-	<menu class={animationsMenuClass}>
-		{#each menumItems as { name, emoji, id }}
-			<button
-				type="button"
-				class:secondary={id === animationId}
-				on:click={handleClick}
-				{id}
-				data-test={id}
-			>
-				<!--TODO: make routes for animations-->
-				{getLabel(emoji, name)}
-			</button>
-		{/each}
+<div class="dropdown sm">
+	<menu class="l-stack" use:clickOutside on:click_outside={handleClickOutside}>
+		<button
+			type="button"
+			class={`toggle collapse ${variant}`}
+			aria-expanded={menuExpanded}
+			on:click={toggleAnimationsMenu}
+		>
+			👾 Scenes
+		</button>
+		<div class={show}>
+			<menu class={`menu ${layout} ${size}`}>
+				{#each menumItems as { name, emoji, id }}
+					<button
+						type="button"
+						class:outline={id === animationId}
+						on:click={handleClick}
+						{id}
+						data-test={id}
+					>
+						<!--TODO: make routes for animations-->
+						{getLabel(emoji, name)}
+					</button>
+				{/each}
+			</menu>
+		</div>
 	</menu>
-</form>
+</div>
