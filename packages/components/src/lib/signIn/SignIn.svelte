@@ -176,6 +176,6 @@
 	{/if}
 </Fieldset>
 
-<style lang="scss">
-	@import '../../styles/blocks/button.scss';
+<style lang="scss" global>
+	@import '../../styles/main.scss';
 </style>
