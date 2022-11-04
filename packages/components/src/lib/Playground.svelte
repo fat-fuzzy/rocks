@@ -210,5 +210,4 @@
 
 <style lang="scss">
 	@import '../styles/blocks/playground.scss';
-	@import '../styles/layout/sidebar.scss';
 </style>
