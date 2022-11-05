@@ -94,7 +94,7 @@
 		<Controls {play} {stop} />
 	</div>
 	<div class="l-sidebar-side md">
-		<aside class="l-stack md">
+		<aside class="l-stack sm">
 			{#if details}
 				<Button testId="btn-details" {variant} handleClick={() => togglelDetails()}>
 					{detailsIcon} Details
