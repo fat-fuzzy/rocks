@@ -1,16 +1,14 @@
-.fieldset {
-	// @include layout-fieldset();
-	border-radius: 3px;
-	border: 1px solid currentColor;
-	max-width: 100%;
+fieldset {
+	border-radius: getVar(radius-base);
+	border: 1px solid currentcolor;
 	> legend {
 		font-weight: bold;
 	}
 }
 
-.fieldset > * {
-	max-width: 100%;
-}
+// fieldset > * {
+// 	max-width: 100%;
+// }
 
 fieldset.xxs {
 	> * + * {

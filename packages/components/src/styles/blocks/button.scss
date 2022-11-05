@@ -64,28 +64,28 @@ button:not(:disabled):active {
 // == Size button in relation to container
 // TODO: check container queries for this
 
-.xxs button,
-.xs button {
+.xxs > button,
+.xs > button {
 	font-size: getVar(font-size-xs);
 	padding: getVar(padding-xs) getVar(padding-sm);
 }
 
-.sm button {
+.sm > button {
 	font-size: getVar(font-size-sm);
 	padding: getVar(padding-sm) getVar(padding-md);
 }
 
-.md button {
+.md > button {
 	font-size: getVar(font-size-md);
 	padding: getVar(padding-md) getVar(padding-lg);
 }
 
-.lg button {
+.lg > button {
 	font-size: getVar(font-size-lg);
 	padding: getVar(padding-lg) getVar(padding-xl);
 }
 
-.xl button {
+.xl > button {
 	font-size: getVar(font-size-xl);
 	padding: getVar(padding-xl) getVar(padding-xxl);
 }

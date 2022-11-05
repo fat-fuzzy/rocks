@@ -41,7 +41,7 @@ $typography: (
 	font-size-h3: var(--#{$theme-prefix}fluid-3),
 	font-size-h2: var(--#{$theme-prefix}fluid-4),
 	font-size-h1: var(--#{$theme-prefix}fluid-5),
-	//
+	//// TODO: fix font-size-md - This font-size is not right
 	font-size-md: var(--#{$theme-prefix}fluid-0),
 	font-size-lg: var(--#{$theme-prefix}fluid-1),
 	font-size-xl: var(--#{$theme-prefix}fluid-2),
