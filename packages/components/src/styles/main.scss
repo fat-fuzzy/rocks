@@ -2,7 +2,6 @@
 @import './config/reset';
 @import './config/variables';
 @import './config/mixins';
-// @import './layout/mixins';
 
 /* Layout */
 @import './layout/stack';
@@ -12,9 +11,6 @@
 @import './layout/frame';
 @import './layout/card';
 @import './layout/dropdown';
-// @import './layout/grid';
-// @import './layout/square';
-// @import './layout/cover';
 
 /* Blocks ("components") */
 @import './blocks/header';
