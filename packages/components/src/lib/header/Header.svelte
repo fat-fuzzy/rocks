@@ -43,16 +43,16 @@
 	<nav class="l-sidebar-main">
 		<ul class="l-wrapper">
 			<li class:active={$page.url.pathname === '/'} class="home">
-				<a sveltekit:prefetch href="/">
+				<a data-sveltekit-prefetch href="/">
 					<span class="l-square" alt="Home">🐣</span>
 					Home
 				</a>
 			</li>
 			<li class:active={$page.url.pathname === '/play'}>
-				<a sveltekit:prefetch href="/play">Play</a>
+				<a data-sveltekit-prefetch href="/play">Play</a>
 			</li>
 			<li class:active={$page.url.pathname === '/machines'}>
-				<a sveltekit:prefetch href="/machines">Machines</a>
+				<a data-sveltekit-prefetch href="/machines">Machines</a>
 			</li>
 		</ul>
 	</nav>
