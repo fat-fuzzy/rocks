@@ -83,6 +83,7 @@ importers:
       '@typescript-eslint/parser': ^5.10.1
       '@xstate/svelte': 0.2.1
       babel-loader: 8.2.3
+      cloudflare: link:@svelte/adapter/cloudflare
       css-loader: 6.7.1
       eslint: ^7.32.0
       eslint-config-prettier: ^8.3.0
@@ -131,11 +132,12 @@ importers:
       '@storybook/svelte': 6.4.22_9c15518a5bc6d63562b7dddc58c064ec
       '@storybook/theming': 6.4.22_react-dom@17.0.2+react@17.0.2
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.548_svelte@3.46.6+vite@3.2.4
+      '@sveltejs/kit': 1.0.0-next.551_svelte@3.46.6+vite@3.2.4
       '@typescript-eslint/eslint-plugin': 5.15.0_5400bdff049a1444f15d03ace6195cd2
       '@typescript-eslint/parser': 5.15.0_eslint@7.32.0+typescript@4.6.2
       '@xstate/svelte': 0.2.1_svelte@3.46.6+xstate@4.30.6
       babel-loader: 8.2.3_fa907c5a4f16ccc493e21649ccc59574
+      cloudflare: link:@svelte/adapter/cloudflare
       eslint: 7.32.0
       eslint-config-prettier: 8.5.0_eslint@7.32.0
       eslint-plugin-storybook: 0.5.11_eslint@7.32.0+typescript@4.6.2
@@ -4606,8 +4608,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.548_svelte@3.46.6+vite@3.2.4:
-    resolution: {integrity: sha512-MiKZ+7uWiRLm7lcBXa3V1RPDhxUQ03ARCSaujn/ysoh7zbSN4zvcLwwt+lwF5X0FfJnmHj9w3xbpZN6WPKZ0Ww==}
+  /@sveltejs/kit/1.0.0-next.551_svelte@3.46.6+vite@3.2.4:
+    resolution: {integrity: sha512-pZXPoKHFcEXCEN64bw87Xv3cZO7sGztPKYXyLuzceie4qNzAQOMejxewm1xSYcaublleYXLdBWcrWwGlaSWnyw==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
