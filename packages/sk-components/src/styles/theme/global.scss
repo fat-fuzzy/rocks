@@ -1,0 +1,74 @@
+@include theme-main();
+
+// Global CSS starts
+
+:root {
+  font-family: getVar(font-family-body);
+}
+
+body {
+  font-weight: getVar(font-size-base);
+  line-height: getVar(ratio);
+  color: getVar(font-color-body);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: getVar(font-size-h1);
+}
+h2 {
+  font-size: getVar(font-size-h2);
+}
+h3 {
+  font-size: getVar(font-size-h3);
+}
+h4 {
+  font-size: getVar(font-size-h4);
+}
+h5 {
+  font-size: getVar(font-size-h5);
+}
+
+a,
+.link {
+  color: currentColor;
+  text-decoration: none;
+}
+
+a:hover,
+.link:hover {
+  text-decoration: underline;
+}
+
+button:not(:disabled):hover {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+}
+
+:focus {
+  outline: 2px dotted currentColor;
+  outline-offset: getVar(outline-offset);
+}
+
+.no-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+// Stretch page
+
+body main {
+  min-height: calc(100vh - 200px);
+}
