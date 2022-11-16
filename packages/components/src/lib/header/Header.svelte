@@ -1,7 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {clickOutside} from '../../utils/click-outside.js'
-	import {theme, lang} from '../../stores'
+	import {lang} from '../../stores/intl'
+	import {theme} from '../../stores/theme'
 	import {emojis, themes} from '../../types/constants'
 
 	export let className = ''

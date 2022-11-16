@@ -1,7 +1,6 @@
-import {writable, derived, readable} from 'svelte/store'
+import {writable, derived} from 'svelte/store'
 
-import * as constants from './types/constants.js'
-import * as _animations from './gl/animations.js'
+import * as constants from '../types/constants.js'
 
 export const uiState = writable(constants.uiState.DEFAULT)
 
@@ -16,7 +15,5 @@ export const currentCursor = derived(uiState, ($uiState) => {
 	}
 })
 
-export const animations = readable(_animations.animations)
-export const currentAnimationId = writable('random-rect')
 export const theme = writable(1)
 export const lang = writable('en')

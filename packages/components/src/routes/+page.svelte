@@ -1,5 +1,5 @@
 <script>
-	import {theme} from '../stores.js'
+	import {theme} from '../stores/theme'
 	let variant = ``
 
 	$: variant = $theme ? `accent` : `highlight`

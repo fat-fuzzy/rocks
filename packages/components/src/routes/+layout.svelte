@@ -2,7 +2,7 @@
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import {themes} from '../types/constants'
-	import {theme} from '../stores'
+	import {theme} from '../stores/theme'
 	import Header from '../lib/header/Header.svelte'
 
 	let app

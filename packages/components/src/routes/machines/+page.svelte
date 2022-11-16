@@ -1,18 +1,18 @@
 <script>
-  import Toggle from '$lib/toggle/Toggle.svelte'
-  import SignIn from '$lib/signIn/SignIn.svelte'
+	import Toggle from '$lib/toggle/Toggle.svelte'
+	import SignIn from '$lib/signIn/SignIn.svelte'
 </script>
 
 <svelte:head>
-  <title>Sandbox | 🤖 Machines</title>
-  <meta name="description" content="A collection of state machines for learning purposes." />
+	<title>Sandbox | 🤖 Machines</title>
+	<meta name="description" content="A collection of state machines for learning purposes." />
 </svelte:head>
 
 <header>
-  <h1>🤖 Machines</h1>
+	<h1>🤖 Machines</h1>
 </header>
 
 <form class="l-stack l-wrapper u-side md">
-  <Toggle />
-  <SignIn />
+	<Toggle />
+	<SignIn />
 </form>
