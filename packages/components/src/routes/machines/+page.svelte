@@ -1,7 +1,3 @@
-<script context="module" lang="ts">
-  export const prerender = true
-</script>
-
 <script>
   import Toggle from '$lib/toggle/Toggle.svelte'
   import SignIn from '$lib/signIn/SignIn.svelte'
