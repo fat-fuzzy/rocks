@@ -5,11 +5,10 @@
 	"type": "module",
 	"main": "./src/lib/index.ts",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite sync && vite dev",
 		"build": "vite build",
 		"package": "vite package",
 		"preview": "vite preview",
-		"prepare": "vite sync",
 		"test": "playwright test",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
