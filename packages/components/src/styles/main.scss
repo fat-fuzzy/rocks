@@ -12,15 +12,15 @@
 @import './layout/card';
 @import './layout/dropdown';
 
-/* Blocks ("components") */
-@import './blocks/header';
-@import './blocks/footer';
-@import './blocks/nav';
-@import './blocks/menu';
-@import './blocks/media';
-@import './blocks/button';
-@import './blocks/fieldset';
-@import './blocks/form';
+/* Components (CUBE CSS "blocks") */
+@import './components/header';
+@import './components/footer';
+@import './components/nav';
+@import './components/menu';
+@import './components/media';
+@import './components/button';
+@import './components/fieldset';
+@import './components/form';
 
 /* Theme */
 @import './theme/global';
