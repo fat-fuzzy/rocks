@@ -1,0 +1,23 @@
+fieldset {
+	border-radius: getVar(radius-base);
+	border: 1px solid currentcolor;
+	> legend {
+		font-weight: bold;
+	}
+}
+
+// fieldset > * {
+// 	max-width: 100%;
+// }
+
+fieldset.xxs {
+	> * + * {
+		margin-block-start: 0;
+	}
+}
+
+fieldset.xs {
+	> * + * {
+		margin-block-start: getVar(margin-block-xs);
+	}
+}

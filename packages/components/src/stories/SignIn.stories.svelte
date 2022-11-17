@@ -1,6 +1,6 @@
 <script>
 	import {Meta, Template, Story} from '@storybook/addon-svelte-csf'
-	import SignIn from '../lib/signIn/SignIn.svelte'
+	import SignIn from '../lib/components/signIn/SignIn.svelte'
 </script>
 
 <Meta
