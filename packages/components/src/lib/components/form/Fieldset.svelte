@@ -5,7 +5,7 @@
 
 	let className = ''
 
-	$: className = `fieldset l-stack ${size} `
+	$: className = `l-stack ${size} `
 </script>
 
 <fieldset data-cy={slug} class={className}>

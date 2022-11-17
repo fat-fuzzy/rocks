@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
-	import {clickOutside} from '../../utils/click-outside.js'
-	import {animations, currentAnimationId} from '../../stores/gfx'
+	import {clickOutside} from '../../../utils/click-outside.js'
+	import {animations, currentAnimationId} from '../../../stores/gfx'
 
 	const dispatch = createEventDispatcher()
 	export let layout = `l-stack`
@@ -42,8 +42,8 @@
 	$: show = menuExpanded ? `show left` : `hide`
 </script>
 
-<div class="dropdown sm">
-	<menu class="l-stack" use:clickOutside on:click_outside={handleClickOutside}>
+<div class="dropdown">
+	<menu class={`${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
 		<button
 			type="button"
 			class={`toggle collapse ${variant}`}
@@ -53,7 +53,7 @@
 			👾 Scenes
 		</button>
 		<div class={show}>
-			<menu class={`menu ${layout} ${size}`}>
+			<menu class={`${layout} ${size}`}>
 				{#each menumItems as { name, emoji, id }}
 					<button
 						type="button"

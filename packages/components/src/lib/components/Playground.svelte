@@ -1,7 +1,7 @@
 <script context="module">
-	import {getGeometryDefaults} from '../gl/animations.js'
-	import {uiState, emojiFeedback} from '../stores/ui'
-	import {animations, currentAnimationId} from '../stores/gfx'
+	import {getGeometryDefaults} from '$utils/gl/animations.js'
+	import {uiState, emojiFeedback} from '$stores/ui'
+	import {animations, currentAnimationId} from '$stores/gfx'
 	import Feedback from './feedback/Feedback.svelte'
 	import Geometry from './geometry/Geometry.svelte'
 	import Menu from './menu/Menu.svelte'
@@ -9,8 +9,8 @@
 </script>
 
 <script>
-	import * as constants from '../types/constants.js'
-	import * as utils from '../gl/utils.js'
+	import * as constants from '$types/constants.js'
+	import * as utils from '$utils/gl/utils.js'
 	// Canvas
 	let canvas
 	let canvasWidth = 300
@@ -210,5 +210,5 @@
 {/each}
 
 <style lang="scss">
-	@import '../styles/blocks/playground.scss';
+	@import '../../styles/components/playground.scss';
 </style>

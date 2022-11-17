@@ -2,6 +2,8 @@
 	"package": "@fat-fuzzy/components",
 	"name": "@fat-fuzzy/components",
 	"version": "0.0.1",
+	"type": "module",
+	"main": "./src/lib/index.ts",
 	"scripts": {
 		"dev": "vite sync && vite dev",
 		"build": "vite build",
@@ -15,16 +17,17 @@
 		"sb": "start-storybook -p 6006",
 		"build:sb": "build-storybook"
 	},
-	"main": "./src/lib/index.ts",
 	"exports": {
 		".": {
 			"import": "./src/lib/"
 		},
 		"./lib/*": "./src/lib/**/*.svelte",
+		"./components/*": "./src/lib/components/**/*.svelte",
+		"./layout/*": "./src/lib/layout/**/*.svelte",
 		"./styles/*": "./src/styles/*.scss",
 		"./types/": "./src/types/",
 		"./gl/": "./src/gl/",
-		"./stores.js": "./src/stores.js"
+		"./stores/*": "./src/stores/**/*.ts"
 	},
 	"devDependencies": {
 		"@babel/core": "7.17.8",
@@ -59,7 +62,7 @@
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
 		"sass": "1.49.9",
-		"svelte": "3.46.6",
+		"svelte": "^3.53.1",
 		"svelte-check": "^2.2.6",
 		"svelte-loader": "3.1.2",
 		"svelte-preprocess": "^4.10.1",
@@ -73,6 +76,5 @@
 		"sass-loader": "12.6.0",
 		"style-loader": "3.3.1",
 		"validator": "13.7.0"
-	},
-	"type": "module"
+	}
 }
