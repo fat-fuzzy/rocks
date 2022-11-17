@@ -1,7 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {clickOutside} from '../../utils/click-outside.js'
-	import {theme, lang} from '../../stores'
+	import {lang} from '../../stores/intl'
+	import {theme} from '../../stores/theme'
 	import {emojis, themes} from '../../types/constants'
 
 	export let className = ''
@@ -43,16 +44,16 @@
 	<nav class="l-sidebar-main">
 		<ul class="l-wrapper">
 			<li class:active={$page.url.pathname === '/'} class="home">
-				<a sveltekit:prefetch href="/">
+				<a data-sveltekit-prefetch href="/">
 					<span class="l-square" alt="Home">🐣</span>
 					Home
 				</a>
 			</li>
 			<li class:active={$page.url.pathname === '/play'}>
-				<a sveltekit:prefetch href="/play">Play</a>
+				<a data-sveltekit-prefetch href="/play">Play</a>
 			</li>
 			<li class:active={$page.url.pathname === '/machines'}>
-				<a sveltekit:prefetch href="/machines">Machines</a>
+				<a data-sveltekit-prefetch href="/machines">Machines</a>
 			</li>
 		</ul>
 	</nav>

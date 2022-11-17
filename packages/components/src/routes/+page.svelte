@@ -1,9 +1,5 @@
-<script context="module" lang="ts">
-	export const prerender = true
-</script>
-
 <script>
-	import {theme} from '../stores.js'
+	import {theme} from '../stores/theme'
 	let variant = ``
 
 	$: variant = $theme ? `accent` : `highlight`
@@ -22,11 +18,11 @@
 	<ul class="l-stack lg no-list">
 		<li class={`card ${variant}`}>
 			<div>👾</div>
-			<a sveltekit:prefetch href="/play"> Play</a>
+			<a data-sveltekit-prefetch href="/play"> Play</a>
 		</li>
 		<li class={`card ${variant}`}>
 			<div>🤖</div>
-			<a sveltekit:prefetch href="/machines"> Machines</a>
+			<a data-sveltekit-prefetch href="/machines"> Machines</a>
 		</li>
 	</ul>
 </section>

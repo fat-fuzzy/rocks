@@ -1,12 +1,8 @@
-<script context="module" lang="ts">
-	export const prerender = true
-</script>
-
 <script>
-	import {currentAnimationId, animations} from '../../stores.js'
-	import Canvas from '../../lib/canvas/Canvas.svelte'
-	import Feedback from '../../lib/feedback/Feedback.svelte'
-	import Menu from '../../lib/menu/Menu.svelte'
+	import {currentAnimationId, animations} from '../../stores/gfx'
+	import Canvas from '$lib/canvas/Canvas.svelte'
+	import Feedback from '$lib/feedback/Feedback.svelte'
+	import Menu from '$lib/menu/Menu.svelte'
 
 	let showcanvas = true
 	let animationId = $currentAnimationId
