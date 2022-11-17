@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 13 Mar 2022 18:56:27 GMT
+ * Generated on Thu, 17 Nov 2022 23:25:49 GMT
  */
 
 export const AssetFontIconName = "MaterialIcons";

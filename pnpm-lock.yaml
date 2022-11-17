@@ -158,8 +158,10 @@ importers:
 
   packages/design:
     specifiers:
+      open-props: 1.4.25
       style-dictionary: latest
     devDependencies:
+      open-props: 1.4.25
       style-dictionary: 3.7.1
 
   packages/doc:
@@ -11238,6 +11240,10 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       mimic-fn: 2.1.0
+    dev: true
+
+  /open-props/1.4.25:
+    resolution: {integrity: sha512-EeEBulAmoPBZCgphPQzZY+0ZzaNgz4gCnsMx0zZjBrUVohZ2FppE9F/zep8AVcVDjJOVlxwhE6ohj3AOGx824w==}
     dev: true
 
   /open/7.4.2:

@@ -1,20 +1,25 @@
 {
-  "source": ["tokens/**/*.json"],
-  "platforms": {
-    "scss": {
-      "transformGroup": "scss",
-      "buildPath": "build/scss/",
-      "files": [{
-        "destination": "tokens.scss",
-        "format": "scss/variables"
-      }]
-    },
-    "js": {
-      "transformGroup": "js",
-      "files": [{
-        "destination": "tokens.js",
-        "format": "javascript/es6"
-      }]
-    }
-  }
+	"source": ["src/tokens/**/*.json"],
+	"platforms": {
+		"scss": {
+			"transformGroup": "scss",
+			"buildPath": "build/style-dictionary/",
+			"files": [
+				{
+					"destination": "tokens.scss",
+					"format": "scss/variables"
+				}
+			]
+		},
+		"js": {
+			"transformGroup": "js",
+			"buildPath": "build/style-dictionary/",
+			"files": [
+				{
+					"destination": "tokens.js",
+					"format": "javascript/es6"
+				}
+			]
+		}
+	}
 }
