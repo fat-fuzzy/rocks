@@ -1,5 +1,5 @@
 <script>
-	import {theme} from '../../stores/theme'
+	import {theme} from '../../../stores/theme'
 	import Button from '../button/Button.svelte'
 
 	export let play = () => {}

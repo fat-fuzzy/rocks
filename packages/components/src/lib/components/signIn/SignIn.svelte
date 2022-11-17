@@ -177,5 +177,5 @@
 </Fieldset>
 
 <style lang="scss" global>
-	@import '../../styles/main.scss';
+	@import '../../../styles/main.scss';
 </style>

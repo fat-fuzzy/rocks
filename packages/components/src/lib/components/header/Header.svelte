@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {clickOutside} from '../../utils/click-outside.js'
-	import {lang} from '../../stores/intl'
-	import {theme} from '../../stores/theme'
-	import {emojis, themes} from '../../types/constants'
+	import {clickOutside} from '../../../utils/click-outside.js'
+	import {lang} from '../../../stores/intl'
+	import {theme} from '../../../stores/theme'
+	import {emojis, themes} from '../../../types/constants'
 
 	export let className = ''
 	let actionsMenuExpanded = false

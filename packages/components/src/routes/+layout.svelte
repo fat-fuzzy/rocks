@@ -3,7 +3,7 @@
 	import {page} from '$app/stores'
 	import {themes} from '../types/constants'
 	import {theme} from '../stores/theme'
-	import Header from '../lib/header/Header.svelte'
+	import Header from '../lib/components/header/Header.svelte'
 
 	let app
 	let currentTheme = themes[$theme]

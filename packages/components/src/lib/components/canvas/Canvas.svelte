@@ -1,14 +1,14 @@
 <script context="module" lang="ts">
-	import {getGeometryDefaults} from '../../gl/animations.js'
+	import {getGeometryDefaults} from '$utils/gl/animations.js'
 	export const prerender = true
 </script>
 
 <script>
-	import {theme} from '../../stores/theme'
-	import {animations, currentAnimationId} from '../../stores/gfx'
-	import Button from '../button/Button.svelte'
-	import Controls from '../controls/Controls.svelte'
-	import Geometry from '../geometry/Geometry.svelte'
+	import {theme} from '$stores/theme'
+	import {animations, currentAnimationId} from '$stores/gfx'
+	import Button from '$components/button/Button.svelte'
+	import Controls from '$components/controls/Controls.svelte'
+	import Geometry from '$components/geometry/Geometry.svelte'
 	export let show = true
 	// Canvas
 	let canvas

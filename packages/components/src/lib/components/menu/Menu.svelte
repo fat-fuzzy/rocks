@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
-	import {clickOutside} from '../../utils/click-outside.js'
-	import {animations, currentAnimationId} from '../../stores/gfx'
+	import {clickOutside} from '../../../utils/click-outside.js'
+	import {animations, currentAnimationId} from '../../../stores/gfx'
 
 	const dispatch = createEventDispatcher()
 	export let layout = `l-stack`
