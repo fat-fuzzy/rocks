@@ -36,11 +36,5 @@
 		"tslib": "^2.3.1",
 		"typescript": "~4.6.2"
 	},
-	"type": "module",
-	"dependencies": {
-		"@fat-fuzzy/components": "workspace:0.0.1",
-		"@fontsource/fira-mono": "^4.5.0",
-		"@lukeed/uuid": "^2.0.0",
-		"cookie": "^0.4.1"
-	}
+	"type": "module"
 }
