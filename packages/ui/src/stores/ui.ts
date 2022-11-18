@@ -1,6 +1,6 @@
 import {writable, derived} from 'svelte/store'
 
-import * as constants from '../types/constants.js'
+import * as constants from '../types/constants.js.js'
 
 export const uiState = writable(constants.uiState.DEFAULT)
 

@@ -1,6 +1,6 @@
 {
-	"package": "@fat-fuzzy/components",
-	"name": "@fat-fuzzy/components",
+	"package": "@fat-fuzzy/ui",
+	"name": "@fat-fuzzy/ui",
 	"version": "0.0.1",
 	"type": "module",
 	"main": "./src/lib/index.ts",

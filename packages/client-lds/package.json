@@ -1,5 +1,5 @@
 {
-	"name": "sk-components",
+	"name": "@fat-fuzzy/client",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
