@@ -1,9 +1,9 @@
 <script context="module">
 	import {onMount, createEventDispatcher} from 'svelte'
 	import {getGeometryDefaults} from '$utils/gl/animations.js'
-	import Position from './Position.svelte'
-	import Scale from './Scale.svelte'
-	import Rotation from './Rotation.svelte'
+	import Position from '$blocks/geometry/Position.svelte'
+	import Scale from '$blocks/geometry/Scale.svelte'
+	import Rotation from '$blocks/geometry/Rotation.svelte'
 </script>
 
 <script>

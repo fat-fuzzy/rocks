@@ -2,10 +2,10 @@
 	import {getGeometryDefaults} from '$utils/gl/animations.js'
 	import {uiState, emojiFeedback} from '$stores/ui'
 	import {animations, currentAnimationId} from '$stores/gfx'
-	import Feedback from './feedback/Feedback.svelte'
-	import Geometry from './geometry/Geometry.svelte'
-	import Menu from './menu/Menu.svelte'
-	import Controls from './controls/Controls.svelte'
+	import Feedback from '$blocks/feedback/Feedback.svelte'
+	import Geometry from '$blocks/geometry/Geometry.svelte'
+	import Menu from '$blocks/menu/Menu.svelte'
+	import Controls from '$blocks/controls/Controls.svelte'
 </script>
 
 <script>
@@ -210,5 +210,5 @@
 {/each}
 
 <style lang="scss">
-	@import '../../styles/components/playground.scss';
+	@import '../../../styles/blocks/playground.scss';
 </style>

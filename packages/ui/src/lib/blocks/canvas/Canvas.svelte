@@ -6,9 +6,9 @@
 <script>
 	import {theme} from '$stores/theme'
 	import {animations, currentAnimationId} from '$stores/gfx'
-	import Button from '$components/button/Button.svelte'
-	import Controls from '$components/controls/Controls.svelte'
-	import Geometry from '$components/geometry/Geometry.svelte'
+	import Button from '$blocks/button/Button.svelte'
+	import Controls from '$blocks/controls/Controls.svelte'
+	import Geometry from '$blocks/geometry/Geometry.svelte'
 	export let show = true
 	// Canvas
 	let canvas

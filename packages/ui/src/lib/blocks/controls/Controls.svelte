@@ -1,9 +1,13 @@
 <script>
-	import {theme} from '../../../stores/theme'
-	import Button from '../button/Button.svelte'
+	import {theme} from '$stores/theme'
+	import Button from '$blocks/button/Button.svelte'
 
-	export let play = () => {}
-	export let stop = () => {}
+	export let play = function () {
+		return
+	}
+	export let stop = function () {
+		return
+	}
 
 	let disabled = false
 	let variant = ``
