@@ -1,0 +1,51 @@
+[class^='l-stack'] > * {
+	/* top and bottom margins in horizontal-tb writing mode */
+	margin-block: 0;
+}
+
+.l-stack {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.l-stack:only-child {
+	/* ↓ `height` in horizontal-tb writing mode */
+	block-size: 100%;
+}
+
+.l-stack.recursive * + * {
+	margin-block-start: getVar(margin-block-xs);
+}
+
+.l-stack > * + * {
+	margin-block-start: getVar(margin-block-xs);
+}
+
+.l-stack.xs > * + * {
+	margin-block-start: getVar(margin-block-xs);
+}
+
+.l-stack.sm > * + * {
+	margin-block-start: getVar(margin-block-sm);
+}
+
+.l-stack.md > * + * {
+	margin-block-start: getVar(margin-block-md);
+}
+
+.l-stack.lg > * + * {
+	margin-block-start: getVar(margin-block-lg);
+}
+
+.l-stack.xl > * + * {
+	margin-block-start: getVar(margin-block-xl);
+}
+
+.l-stack {
+	max-width: 100%;
+}
+
+.l-stack > * {
+	max-width: 100%;
+}
