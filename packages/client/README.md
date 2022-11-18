@@ -14,6 +14,16 @@ npm create svelte@latest
 npm create svelte@latest my-app
 ```
 
+## Migration guide
+
+For migrating to the release candidate version (living on the edge version), follow this [migration guide](https://github.com/sveltejs/kit/discussions/5774)
+
+in pnpm, start by:
+
+```bash
+pnpm dlx svelte-migrate routes
+```
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
