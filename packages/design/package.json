@@ -1,21 +1,24 @@
 {
-  "name": "style-dictionary-example-complete",
-  "version": "1.0.0",
-  "description": "",
-  "main": "build.js",
-  "files": [
-    "build",
-    "properties"
-  ],
-  "scripts": {
-    "build": "node_modules/.bin/style-dictionary build",
-    "clean": "rm -rf build",
-    "prepublishOnly": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "Apache-2.0",
-  "devDependencies": {
-    "style-dictionary": "latest"
-  }
+	"package": "@fat-fuzzy/design",
+	"name": "@fat-fuzzy/design",
+	"version": "0.0.1",
+	"type": "module",
+	"description": "Design presets",
+	"main": "build.js",
+	"files": [
+		"build",
+		"properties"
+	],
+	"scripts": {
+		"build:sd": "node_modules/.bin/style-dictionary build",
+		"clean:sd": "rm -rf build/style-dictionary",
+		"prepublishOnly": "npm run build:sd",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Patricia Boh",
+	"license": "Apache-2.0",
+	"devDependencies": {
+		"open-props": "1.4.25",
+		"style-dictionary": "latest"
+	}
 }
