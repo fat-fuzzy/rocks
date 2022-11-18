@@ -1,8 +1,0 @@
-{
-  "name": "@fat-fuzzy/utils",
-  "version": "0.0.1",
-  "type": "module",
-  "main":"index.js",
-	"author": "Patricia Boh",
-	"license": "Apache-2.0"
-}
