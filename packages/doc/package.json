@@ -1,8 +1,8 @@
 {
-  "name": "@fat-fuzzy/doc",
-  "version": "0.0.1",
-  "description": "MAD app starter kit",
-  "main": "index.js",
-  "author": "Patricia Boh <lapatiboh@gmail.com> (https://www.lds.is/)",
-  "license": "ISC"
+	"name": "@fat-fuzzy/doc",
+	"version": "0.0.1",
+	"description": "Global doc for @fat-fuzzy packages",
+	"main": "index.js",
+	"author": "Patricia Boh",
+	"license": "Apache-2.0"
 }

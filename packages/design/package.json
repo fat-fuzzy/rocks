@@ -15,7 +15,7 @@
 		"prepublishOnly": "npm run build:sd",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"author": "",
+	"author": "Patricia Boh",
 	"license": "Apache-2.0",
 	"devDependencies": {
 		"open-props": "1.4.25",

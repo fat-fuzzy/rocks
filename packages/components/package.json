@@ -17,6 +17,8 @@
 		"sb": "start-storybook -p 6006",
 		"build:sb": "build-storybook"
 	},
+	"author": "Patricia Boh",
+	"license": "Apache-2.0",
 	"exports": {
 		".": {
 			"import": "./src/lib/"
