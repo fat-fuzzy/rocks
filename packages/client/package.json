@@ -1,7 +1,6 @@
 {
-	"name": "client-lds",
+	"name": "@fat-fuzzy/client",
 	"version": "0.0.1",
-	"private": true,
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -12,6 +11,8 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"author": "Patricia Boh",
+	"license": "Apache-2.0",
 	"devDependencies": {
 		"@playwright/test": "1.25.0",
 		"@sveltejs/adapter-auto": "next",

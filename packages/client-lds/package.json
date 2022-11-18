@@ -1,6 +1,7 @@
 {
-	"name": "@fat-fuzzy/client",
+	"name": "@fat-fuzzy/client-lds",
 	"version": "0.0.1",
+	"private": true,
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
