@@ -1,8 +1,8 @@
 <script>
-	import {currentAnimationId, animations} from '../../stores/gfx'
-	import Canvas from '$lib/components/canvas/Canvas.svelte'
-	import Feedback from '$lib/components/feedback/Feedback.svelte'
-	import Menu from '$lib/components/menu/Menu.svelte'
+	import {currentAnimationId, animations} from '$stores/gfx'
+	import Canvas from '$lib/blocks/canvas/Canvas.svelte'
+	import Feedback from '$lib/blocks/feedback/Feedback.svelte'
+	import Menu from '$lib/blocks/menu/Menu.svelte'
 
 	let showcanvas = true
 	let animationId = $currentAnimationId

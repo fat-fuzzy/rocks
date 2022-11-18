@@ -24,7 +24,7 @@
 			"import": "./src/lib/"
 		},
 		"./lib/*": "./src/lib/**/*.svelte",
-		"./components/*": "./src/lib/components/**/*.svelte",
+		"./blocks/*": "./src/lib/blocks/**/*.svelte",
 		"./layout/*": "./src/lib/layout/**/*.svelte",
 		"./styles/*": "./src/styles/*.scss",
 		"./types/": "./src/types/",
