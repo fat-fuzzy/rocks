@@ -103,14 +103,3 @@ export const animations = [
 		},
 	},
 ]
-
-export function getGeometryDefaults(canvasWidth, canvasHeight) {
-	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [canvasWidth / 2, canvasHeight / 2],
-		rotation: [0, 0],
-		scale: [1, 1],
-		width: utils.round((canvasWidth * 0.3) / 5, 2),
-		height: utils.round(canvasHeight / 5, 2),
-	}
-}

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
-	import {themes} from '../types/constants'
-	import {theme} from '../stores/theme'
+	import {themes} from '$lib/types/constants'
+	import {theme} from '$lib/stores/theme'
 	import Header from '$lib/blocks/header/Header.svelte'
 
 	let app
@@ -39,5 +39,5 @@
 </footer>
 
 <style lang="scss" global>
-	@import '../styles/main.scss';
+	@import '../lib/styles/main.scss';
 </style>

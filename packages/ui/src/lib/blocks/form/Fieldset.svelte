@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let slug = ''
 	export let label = ''
 	export let size = 'sm'

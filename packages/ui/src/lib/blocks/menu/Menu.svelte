@@ -1,31 +1,21 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
-	import {clickOutside} from '$utils/click-outside.js'
-	import {animations, currentAnimationId} from '$stores/gfx'
+	import {clickOutside} from '$lib/utils/click-outside.js'
+	import {currentItemId} from '$lib/stores/gfx'
 
 	const dispatch = createEventDispatcher()
 	export let layout = `l-stack`
 	export let size = `sm`
 	export let variant = `primary`
-	export let menumItems = []
+	export let menuItems: {id: string; title: string; emoji: string}[] = []
 
-	let animationId = $currentAnimationId
-
-	function getLabel(emoji, name) {
-		return `${emoji} ${name}`
+	function getLabel(emoji, title) {
+		return `${emoji} ${title}`
 	}
-
-	animations.subscribe((value) => {
-		menumItems = value
-	})
-
-	currentAnimationId.subscribe((value) => {
-		animationId = value
-	})
 
 	let menuExpanded = false
 
-	function toggleAnimationsMenu(event) {
+	function toggleDropdown(event) {
 		menuExpanded = !menuExpanded
 	}
 
@@ -36,7 +26,7 @@
 	const handleClick = (event) => {
 		const element = event.target
 		dispatch('input', {
-			animationId: element.getAttribute('id'),
+			selectedId: element.getAttribute('id'),
 		})
 	}
 	$: show = menuExpanded ? `show left` : `hide`
@@ -48,22 +38,22 @@
 			type="button"
 			class={`toggle collapse ${variant}`}
 			aria-expanded={menuExpanded}
-			on:click={toggleAnimationsMenu}
+			on:click={toggleDropdown}
 		>
 			👾 Scenes
 		</button>
 		<div class={show}>
 			<menu class={`${layout} ${size}`}>
-				{#each menumItems as { name, emoji, id }}
+				{#each menuItems as { title, emoji, id }}
 					<button
 						type="button"
-						class:outline={id === animationId}
+						class:outline={id === $currentItemId}
 						on:click={handleClick}
 						{id}
 						data-test={id}
 					>
 						<!--TODO: make routes for animations-->
-						{getLabel(emoji, name)}
+						{getLabel(emoji, title)}
 					</button>
 				{/each}
 			</menu>

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import InputRange from '$blocks/form/InputRange.svelte'
-	import Fieldset from '$blocks/form/Fieldset.svelte'
+	import InputRange from '../form/InputRange.svelte'
+	import Fieldset from '../form/Fieldset.svelte'
 
 	const dispatch = createEventDispatcher()
 

@@ -17,9 +17,9 @@
 	flex-grow: 1;
 }
 
+// adjusts to width of contents
 .l-sidebar-side.shrink {
 	flex-grow: 0;
-	flex-basis: 0;
 }
 
 .l-sidebar-side.xs {

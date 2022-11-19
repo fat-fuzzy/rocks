@@ -1,13 +1,10 @@
-<script context="module">
+<script lang="ts">
+	import * as utils from '$lib/utils/gl/utils.js'
 	import {onMount, createEventDispatcher} from 'svelte'
-	import {getGeometryDefaults} from '$utils/gl/animations.js'
-	import Position from '$blocks/geometry/Position.svelte'
-	import Scale from '$blocks/geometry/Scale.svelte'
-	import Rotation from '$blocks/geometry/Rotation.svelte'
-</script>
-
-<script>
-	import * as utils from '$utils/gl/utils.js'
+	import {getGeometryDefaults} from '../../utils/gl/utils.js'
+	import Position from '$lib/blocks/geometry/Position.svelte'
+	import Scale from '$lib/blocks/geometry/Scale.svelte'
+	import Rotation from '$lib/blocks/geometry/Rotation.svelte'
 
 	export let show = true
 	export let canvasWidth

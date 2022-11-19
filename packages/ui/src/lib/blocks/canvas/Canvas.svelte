@@ -1,46 +1,48 @@
-<script context="module" lang="ts">
-	import {getGeometryDefaults} from '$utils/gl/animations.js'
-	export const prerender = true
-</script>
+<script lang="ts">
+	import * as draw from '../../utils/gl/draw.js'
+	import {getGeometryDefaults} from '../../utils/gl/utils.js'
+	import type {Sketch} from '../../../../data/data'
+	import {theme} from '../../stores/theme'
+	import {currentItemId} from '../../stores/gfx'
+	import Button from '../button/Button.svelte'
+	import Controls from '../controls/Controls.svelte'
+	import Geometry from '../geometry/Geometry.svelte'
 
-<script>
-	import {theme} from '$stores/theme'
-	import {animations, currentAnimationId} from '$stores/gfx'
-	import Button from '$blocks/button/Button.svelte'
-	import Controls from '$blocks/controls/Controls.svelte'
-	import Geometry from '$blocks/geometry/Geometry.svelte'
 	export let show = true
+	export let sketches: Sketch[] = []
 	// Canvas
 	let canvas
 	let canvasWidth = 300
 	let canvasHeight = 600
-	let animationId = $currentAnimationId
-	let showGeometryInputs = true
+	let showDetails = true
 	let animationFrame
 	let variant = ''
 	const btnVariant = 'outline'
+	let webGlOptions
 
 	// TODO : fix
 	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
 
-	theme.subscribe((value) => {
-		variant = value ? `${btnVariant} accent` : `${btnVariant} highlight`
-	})
+	function run(sketch) {
+		if (!sketch.draw) {
+			return // TODO: throw error
+		}
+		if (!webGlOptions) {
+			webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
+		}
+		if (sketch.interactive) {
+			drawFunction({webGlOptions, ...geometry})
+		} else {
+			drawFunction(webGlOptions)
+		}
+	}
 
-	currentAnimationId.subscribe((value) => {
-		animationId = value
-	})
+	function clearCanvas() {
+		draw.clear(webGlOptions)
+	}
 
 	function runLoop(timestamp, duration) {
-		if (animation.interactive) {
-			if (animation.webGlProps) {
-				animation.update(geometry)
-			} else {
-				animation.run(canvas, geometry)
-			}
-		} else {
-			animation.run(canvas)
-		}
+		run(sketch)
 		animationFrame = requestAnimationFrame(function (t) {
 			// call requestAnimationFrame again with parameters
 			runLoop(t, duration)
@@ -52,29 +54,28 @@
 	}
 
 	function play() {
+		webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
 		animationFrame = requestAnimationFrame(function (timestamp) {
-			let {duration} = animation
+			let {duration} = sketch
 			runLoop(timestamp, duration)
 		})
 	}
 
 	function stop() {
-		if (animation?.interactive && animation?.webGlProps) {
-			geometry = getGeometryDefaults(canvasWidth, canvasHeight)
-			animation.update(geometry)
-		}
 		cancelAnimationFrame(animationFrame)
-		animation.clear()
+		clearCanvas()
 	}
 
 	function togglelDetails() {
-		showGeometryInputs = !showGeometryInputs
+		showDetails = !showDetails
 	}
-	$: canvasClass = show ? 'canvas' : 'u-visually-hidden'
-	$: animation = $animations.find((animation) => animation.id === animationId)
-	$: interactive = animation.interactive
-	$: details = interactive
-	$: detailsIcon = showGeometryInputs ? '👇' : '👉'
+
+	$: canvasClass = show ? '' : 'u-visually-hidden'
+	$: sketch = sketches.find((sketch) => sketch.id === $currentItemId) // TODO: harmonize this naming
+	$: details = sketch.interactive
+	$: detailsIcon = showDetails ? '👇' : '👉'
+	$: variant = $theme ? `${btnVariant} accent` : `${btnVariant} highlight`
+	$: drawFunction = draw[sketch.draw]
 </script>
 
 <div class="l-sidebar">
@@ -85,7 +86,7 @@
 			bind:offsetHeight={canvasHeight}
 		>
 			<canvas
-				alt={`HTML Canvas displaying scene: ${animation.name}`}
+				alt={`HTML Canvas displaying scene: ${sketch.title}`}
 				data-test="canvas"
 				class={canvasClass}
 				bind:this={canvas}
@@ -99,12 +100,7 @@
 				<Button testId="btn-details" {variant} handleClick={() => togglelDetails()}>
 					{detailsIcon} Details
 				</Button>
-				<Geometry
-					show={showGeometryInputs}
-					on:update={updateGeometry}
-					{canvasWidth}
-					{canvasHeight}
-				/>
+				<Geometry show={showDetails} on:update={updateGeometry} {canvasWidth} {canvasHeight} />
 			{/if}
 		</aside>
 	</div>

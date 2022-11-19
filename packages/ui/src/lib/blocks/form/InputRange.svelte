@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()
@@ -25,7 +25,7 @@
 </label>
 <input
 	{id}
-	data-test={`${label}-range`}
+	data-test={`${id}-range`}
 	type="range"
 	bind:value
 	{min}

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {clickOutside} from '$utils/click-outside.js'
-	import {lang} from '$stores/intl'
-	import {theme} from '$stores/theme'
-	import {emojis, themes} from '$types/constants'
+	import {clickOutside} from '$lib/utils/click-outside.js'
+	import {lang} from '$lib/stores/intl'
+	import {theme} from '$lib/stores/theme'
+	import {emojis, themes} from '$lib/types/constants.js'
 
 	export let className = ''
 	let actionsMenuExpanded = false
@@ -57,7 +57,7 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="l-sidebar-side shrink">
+	<div class="l-sidebar-side">
 		<menu class="dropdown sm" use:clickOutside on:click_outside={handleClickOutside}>
 			<button
 				type="button"

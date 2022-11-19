@@ -1,25 +1,25 @@
-<script>
-	import {currentAnimationId, animations} from '$stores/gfx'
+<script lang="ts">
+	import type {PageData} from './$types'
+	import {currentItemId} from '$lib/stores/gfx'
 	import Canvas from '$lib/blocks/canvas/Canvas.svelte'
 	import Feedback from '$lib/blocks/feedback/Feedback.svelte'
 	import Menu from '$lib/blocks/menu/Menu.svelte'
 
+	export let data: PageData
+	const {sketches} = data
+
+	const menuItems: {id: string; title: string; emoji: string}[] = sketches
 	let showcanvas = true
-	let animationId = $currentAnimationId
-	let animation
+	let currentItem
 
 	let showFeedback = !showcanvas
 	let feedback = ''
 
-	currentAnimationId.subscribe((value) => {
-		animationId = value
-	})
-
-	function loadAnimation(event) {
-		currentAnimationId.set(event.detail.animationId)
+	function loadSketch(event) {
+		currentItemId.set(event.detail.selectedId)
 	}
 
-	$: animation = $animations.find((a) => a.id === animationId)
+	$: currentItem = menuItems.find((a) => a.id === $currentItemId)
 </script>
 
 <svelte:head>
@@ -32,15 +32,15 @@
 
 <header class="header-main">
 	<h1>👾 Play</h1>
-	<h2>&nbsp;❤︎&nbsp;{animation.name}&nbsp;{animation.emoji}</h2>
+	<h2>&nbsp;❤︎&nbsp;{currentItem.title}&nbsp;{currentItem.emoji}</h2>
 </header>
 
 <section class="l-sidebar">
 	<div class="l-sidebar-side sm shrink">
-		<Menu on:input={loadAnimation} />
+		<Menu on:input={loadSketch} {menuItems} />
 	</div>
 	<div class="l-sidebar-main l-stack">
-		<Canvas show={showcanvas} />
+		<Canvas show={showcanvas} {sketches} />
 		<Feedback {feedback} show={showFeedback} />
 	</div>
 </section>

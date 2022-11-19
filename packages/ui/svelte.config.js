@@ -15,12 +15,19 @@ const config = {
 			$styles: path.resolve('./src/styles'),
 			$stores: path.resolve('./src/stores'),
 			$types: path.resolve('./src/types'),
+			$data: path.resolve('./src/data'),
+		},
+
+		prerender: {
+			crawl: true,
 		},
 	},
 
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: preprocess(),
+	preprocess: preprocess({
+		postcss: true,
+	}),
 }
 
 export default config

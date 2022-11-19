@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	// UI feedback
 	export let feedback = ''
 	export let show = false

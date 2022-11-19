@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte'
-	import * as draw from '$utils/gl/draw.js'
+	import * as draw from '$lib/utils/gl/draw.js'
 
 	let maxX
 	let maxY

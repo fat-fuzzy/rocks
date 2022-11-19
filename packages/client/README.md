@@ -24,6 +24,16 @@ in pnpm, start by:
 pnpm dlx svelte-migrate routes
 ```
 
+Then:
+
+```bash
+1: git commit -m "svelte-migrate: renamed files"
+2: Review the migration guide at https://github.com/sveltejs/kit/discussions/5774
+3: Search codebase for "@migration" and manually complete migration tasks
+4: git add -A
+5: git commit -m "svelte-migrate: updated files"
+```
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
@@ -34,6 +44,8 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+
+````
 
 ## Building
 
@@ -46,3 +58,4 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+````

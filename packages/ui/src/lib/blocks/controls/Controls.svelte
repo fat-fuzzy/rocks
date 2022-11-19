@@ -1,13 +1,9 @@
-<script>
-	import {theme} from '$stores/theme'
-	import Button from '$blocks/button/Button.svelte'
+<script lang="ts">
+	import {theme} from '$lib/stores/theme'
+	import Button from '$lib/blocks/button/Button.svelte'
 
-	export let play = function () {
-		return
-	}
-	export let stop = function () {
-		return
-	}
+	export let play = () => {}
+	export let stop = () => {}
 
 	let disabled = false
 	let variant = ``
@@ -17,10 +13,10 @@
 
 <div class="l-wrapper u-side xxl">
 	<menu class="menu l-switcher sm">
-		<Button testId="btn-play" {variant} handleClick={() => play()} type="button" {disabled}>
+		<Button testId="btn-play" {variant} handleClick={play} type="button" {disabled}>
 			▶︎ &nbsp;Play
 		</Button>
-		<Button testId="btn-stop" {variant} handleClick={() => stop()} type="button" {disabled}>
+		<Button testId="btn-stop" {variant} handleClick={stop} type="button" {disabled}>
 			◼ &nbsp;Stop
 		</Button>
 	</menu>
