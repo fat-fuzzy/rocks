@@ -12,7 +12,7 @@
 	<h1>🤖 Machines</h1>
 </header>
 
-<form class="l-stack l-wrapper u-side md">
+<form class="l-stack l-wrapper md">
 	<Toggle />
 	<SignIn />
 </form>

@@ -27,10 +27,10 @@
 
 	$: mainMenuClass = `${className} l-sidebar u-main layer`
 	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
-	$: themeIcon = emojis[currentTheme]
-	$: langIcon = emojis[currentLang]
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang
+	$: themeIcon = emojis[currentTheme]
+	$: langIcon = emojis[currentLang]
 </script>
 
 <header class={mainMenuClass}>

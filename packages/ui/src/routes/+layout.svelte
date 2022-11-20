@@ -5,12 +5,13 @@
 	import {theme} from '$lib/stores/theme'
 	import Header from '$lib/blocks/header/Header.svelte'
 
-	let app
+	let app: Element | null
 	let currentTheme = themes[$theme]
 
-	function getClassNameFromUrl(url) {
-		return url.pathname === '/' ? 'home' : url.pathname.substr(1, url.pathname.length)
+	function getClassNameFromUrl(url: URL) {
+		return url.pathname === '/' ? 'home' : url.pathname.slice(1, url.pathname.length)
 	}
+
 	$: className = getClassNameFromUrl($page.url)
 
 	theme.subscribe((value) => {
@@ -25,6 +26,9 @@
 
 	onMount(() => {
 		app = document.getElementById('app')
+		if (app) {
+			app.classList.add(currentTheme)
+		}
 	})
 </script>
 
@@ -34,8 +38,9 @@
 	<slot />
 </main>
 
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+<footer class="l-wrapper font-size:sm">
+	<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
+	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
 
 <style lang="scss" global>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {theme} from '../../stores/theme'
-	import Button from '../../blocks/button/Button.svelte'
+	import Button from '../button/Button.svelte'
 
 	export let play = () => {}
 	export let stop = () => {}
@@ -11,7 +11,7 @@
 	$: variant = $theme ? `accent` : `highlight`
 </script>
 
-<div class="l-wrapper u-side xxl">
+<div class="l-wrapper xxl">
 	<menu class="menu l-switcher sm">
 		<Button testId="btn-play" {variant} handleClick={play} type="button" {disabled}>
 			▶︎ &nbsp;Play

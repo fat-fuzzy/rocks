@@ -1,28 +1,25 @@
 .l-wrapper {
 	margin-left: auto;
 	margin-right: auto;
-}
-
-.l-wrapper {
 	max-width: calc(100% - calc(2 * getVar(gap))); // width of parent minus base padding
 }
 
-.l-wrapper.u-side.sm {
+.l-wrapper.sm {
 	max-width: getVar(sidebar-width-sm); // TODO : generate (selector + style) by size
 }
 
-.l-wrapper.u-side.md {
+.l-wrapper.md {
 	max-width: getVar(sidebar-width-md); // TODO : generate (selector + style) by size
 }
 
-.l-wrapper.u-side.lg {
+.l-wrapper.lg {
 	max-width: getVar(sidebar-width-lg); // TODO : generate (selector + style) by size
 }
 
-.l-wrapper.u-side.xl {
+.l-wrapper.xl {
 	max-width: getVar(sidebar-width-xl); // TODO : generate (selector + style) by size
 }
 
-.l-wrapper.u-side.xxl {
+.l-wrapper.xxl {
 	max-width: getVar(sidebar-width-xxl); // TODO : generate (selector + style) by size
 }
