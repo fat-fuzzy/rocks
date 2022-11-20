@@ -8,7 +8,7 @@
 	export let data: PageData
 	const {sketches} = data
 
-	let sketchId = 'random-rect'
+	let sketchId = 'default'
 	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
 	const menuItems: {id: string; title: string; emoji: string}[] = sketches
 
@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>Sandbox | 👾 Play</title>
+	<title>UI Sandbox | 👾 Play</title>
 	<meta
 		name="description"
 		content="Playground: a sandbox environment to experiment and learn web-based computer graphics."

@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Sandbox | 🤖 Machines</title>
+	<title>UI Sandbox | 🤖 Machines</title>
 	<meta name="description" content="A collection of state machines for learning purposes." />
 </svelte:head>
 
