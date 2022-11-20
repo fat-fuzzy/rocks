@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {PageData} from './$types'
-	import {currentItemId} from '$lib/stores/gfx'
+	import type { Sketch } from '$data/data';
 	import Canvas from '$lib/blocks/canvas/Canvas.svelte'
 	import Feedback from '$lib/blocks/feedback/Feedback.svelte'
 	import Menu from '$lib/blocks/menu/Menu.svelte'
@@ -8,18 +8,19 @@
 	export let data: PageData
 	const {sketches} = data
 
+	let sketchId = 'random-rect'
+	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
 	const menuItems: {id: string; title: string; emoji: string}[] = sketches
-	let showcanvas = true
-	let currentItem
 
+	let showcanvas = true
 	let showFeedback = !showcanvas
 	let feedback = ''
 
 	function loadSketch(event) {
-		currentItemId.set(event.detail.selected)
+		sketchId = event.detail.selected
 	}
 
-	$: currentItem = menuItems.find((a) => a.id === $currentItemId)
+	$: sketch = sketches.find((a) => a.id === sketchId)
 </script>
 
 <svelte:head>
@@ -32,7 +33,7 @@
 
 <header class="header-main">
 	<h1>👾 Play</h1>
-	<h2>&nbsp;❤︎&nbsp;{currentItem.title}&nbsp;{currentItem.emoji}</h2>
+	{#if sketch} <h2>&nbsp;❤︎&nbsp;{sketch.title}&nbsp;{sketch.emoji}</h2> {/if}
 </header>
 
 <section class="l-sidebar">
@@ -40,7 +41,7 @@
 		<Menu on:input={loadSketch} {menuItems} />
 	</div>
 	<div class="l-sidebar-main l-stack">
-		<Canvas show={showcanvas} {sketches} />
+		<Canvas show={showcanvas} {sketch} />
 		<Feedback {feedback} show={showFeedback} />
 	</div>
 </section>

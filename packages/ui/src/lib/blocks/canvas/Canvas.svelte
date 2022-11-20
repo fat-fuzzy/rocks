@@ -10,7 +10,7 @@
 	const {draw, utils} = gl
 
 	export let show = true
-	export let sketch: Sketch
+	export let sketch: Sketch | undefined
 	
 	// Canvas
 	let canvas
@@ -61,11 +61,13 @@
 	}
 
 	function play() {
-		webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
-		animationFrame = requestAnimationFrame(function (timestamp) {
-			let {duration} = sketch
-			runLoop(timestamp, duration)
-		})
+		if(sketch){
+			webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
+			animationFrame = requestAnimationFrame(function (timestamp) {
+				let {duration} = sketch
+				runLoop(timestamp, duration)
+			})
+		}
 	}
 
 	function stop() {
