@@ -88,7 +88,7 @@
 			<canvas
 				alt={sketch ? `Current sketch: ${sketch.title}` :  'No sketch selected yet'}
 				data-test="canvas"
-				class={!show ? 'u-visually-hidden' : ''}
+				class={!show ? 'visually-hidden' : ''}
 				bind:this={canvas}
 			/>
 		</div>
