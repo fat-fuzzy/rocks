@@ -1,25 +1,30 @@
 {
-  "name": "@fat-fuzzy/lib",
-  "version": "0.0.1",
-  "description": "MAD app lib folder",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "pretest": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+	"package": "@fat-fuzzy/lib",
+	"name": "@fat-fuzzy/lib",
+	"version": "0.0.1",
+	"description": "MAD app lib folder",
+	"main": "package/index.cjs.js",
+	"module": "package/index.esm.js",
+	"browser": "package/index.umd.min.js",
+	"scripts": {
+		"build": "rollup -c",
+		"dev": "rollup -c -w",
+		"pretest": "npm run build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"exports": {
+		"./package.json": "./package.json",
+		".": "./package/index.esm.js"
+	},
 	"author": "Patricia Boh",
 	"license": "Apache-2.0",
-  "exports": {
-    ".": "./index.js"
-  },
-  "devDependencies": {
-    "@rollup/plugin-json": "4.1.0",
-    "rollup": "2.70.1",
-    "rollup-plugin-terser": "7.0.2"
-  },
-  "files": [
-    "dist"
-  ]
+	"devDependencies": {
+		"@rollup/plugin-json": "4.1.0",
+		"rollup": "2.70.1",
+		"rollup-plugin-terser": "7.0.2"
+	},
+	"type": "module",
+	"files": [
+		"package"
+	]
 }

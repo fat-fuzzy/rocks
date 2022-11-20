@@ -8,13 +8,31 @@ If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
 # create a new project in the current directory
-npm init svelte@next
+npm create svelte@latest
 
 # create a new project in my-app
-npm init svelte@next my-app
+npm create svelte@latest my-app
 ```
 
-> Note: the `@next` is temporary
+## Migration guide
+
+For migrating to the release candidate version (living on the edge version), follow this [migration guide](https://github.com/sveltejs/kit/discussions/5774)
+
+in pnpm, start by:
+
+```bash
+pnpm dlx svelte-migrate routes
+```
+
+Then:
+
+```bash
+1: git commit -m "svelte-migrate: renamed files"
+2: Review the migration guide at https://github.com/sveltejs/kit/discussions/5774
+3: Search codebase for "@migration" and manually complete migration tasks
+4: git add -A
+5: git commit -m "svelte-migrate: updated files"
+```
 
 ## Developing
 
