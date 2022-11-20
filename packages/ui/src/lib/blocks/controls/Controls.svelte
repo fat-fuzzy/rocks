@@ -1,6 +1,6 @@
 <script lang="ts">
-	import {theme} from '$lib/stores/theme'
-	import Button from '$lib/blocks/button/Button.svelte'
+	import {theme} from '../../stores/theme'
+	import Button from '../../blocks/button/Button.svelte'
 
 	export let play = () => {}
 	export let stop = () => {}

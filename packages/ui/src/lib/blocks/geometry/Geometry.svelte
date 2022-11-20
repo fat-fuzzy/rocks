@@ -1,14 +1,15 @@
 <script lang="ts">
-	import * as utils from '$lib/utils/gl/utils.js'
+	import {gl} from '@fat-fuzzy/lib'
 	import {onMount, createEventDispatcher} from 'svelte'
-	import {getGeometryDefaults} from '../../utils/gl/utils.js'
-	import Position from '$lib/blocks/geometry/Position.svelte'
-	import Scale from '$lib/blocks/geometry/Scale.svelte'
-	import Rotation from '$lib/blocks/geometry/Rotation.svelte'
+	import Position from './Position.svelte'
+	import Scale from './Scale.svelte'
+	import Rotation from './Rotation.svelte'
 
 	export let show = true
 	export let canvasWidth
 	export let canvasHeight
+
+	const {utils} = gl
 
 	const dispatch = createEventDispatcher()
 
@@ -38,7 +39,7 @@
 	let scale
 
 	function init() {
-		geometry = getGeometryDefaults(canvasWidth, canvasHeight)
+		geometry = utils.getGeometryDefaults(canvasWidth, canvasHeight)
 
 		// Shape
 		color = geometry.color
@@ -85,10 +86,9 @@
 		init()
 		update()
 	})
-	$: showDetailsClass = show ? 'l-switcher xxs' : 'u-visually-hidden'
 </script>
 
-<form class={showDetailsClass}>
+<form class={show ? 'l-switcher xxs' : 'u-visually-hidden'}>
 	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} />
 	<Scale bind:scaleX bind:scaleY maxX={5} maxY={5} minX={-5} minY={-5} on:input={update} />
 	<Rotation bind:angle max={360} on:input={update} />

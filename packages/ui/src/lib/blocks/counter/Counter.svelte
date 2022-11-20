@@ -96,9 +96,4 @@
 		width: 100%;
 		height: 100%;
 	}
-
-	.u-visually-hidden {
-		top: -100%;
-		user-select: none;
-	}
 </style>

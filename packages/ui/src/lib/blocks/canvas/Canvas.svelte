@@ -1,15 +1,18 @@
 <script lang="ts">
-	import * as draw from '../../utils/gl/draw.js'
-	import {getGeometryDefaults} from '../../utils/gl/utils.js'
-	import type {Sketch} from '../../../../data/data'
+	// @ts-ignore
+	import {gl} from '@fat-fuzzy/lib'
+	import type {Sketch} from '../../../data/data'
 	import {theme} from '../../stores/theme'
 	import {currentItemId} from '../../stores/gfx'
 	import Button from '../button/Button.svelte'
 	import Controls from '../controls/Controls.svelte'
 	import Geometry from '../geometry/Geometry.svelte'
 
+	const {draw, utils} = gl
+
 	export let show = true
 	export let sketches: Sketch[] = []
+	
 	// Canvas
 	let canvas
 	let canvasWidth = 300
@@ -21,7 +24,13 @@
 	let webGlOptions
 
 	// TODO : fix
-	let geometry = getGeometryDefaults(canvasWidth, canvasHeight)
+	let geometry = utils.getGeometryDefaults(canvasWidth, canvasHeight)
+
+	$: sketch = sketches.find((sketch) => sketch.id === $currentItemId) // TODO: harmonize this naming
+	$: details = sketch ? sketch.interactive : false
+	$: detailsIcon = showDetails ? '👇' : '👉'
+	$: variant = $theme ? `${btnVariant} accent` : `${btnVariant} highlight`
+	$: drawFunction = sketch ? draw[sketch.draw] : null
 
 	function run(sketch) {
 		if (!sketch.draw) {
@@ -69,13 +78,6 @@
 	function togglelDetails() {
 		showDetails = !showDetails
 	}
-
-	$: canvasClass = show ? '' : 'u-visually-hidden'
-	$: sketch = sketches.find((sketch) => sketch.id === $currentItemId) // TODO: harmonize this naming
-	$: details = sketch.interactive
-	$: detailsIcon = showDetails ? '👇' : '👉'
-	$: variant = $theme ? `${btnVariant} accent` : `${btnVariant} highlight`
-	$: drawFunction = draw[sketch.draw]
 </script>
 
 <div class="l-sidebar">
@@ -86,9 +88,9 @@
 			bind:offsetHeight={canvasHeight}
 		>
 			<canvas
-				alt={`HTML Canvas displaying scene: ${sketch.title}`}
+				alt={sketch ? `Current sketch: ${sketch.title}` :  'No sketch selected yet'}
 				data-test="canvas"
-				class={canvasClass}
+				class={!show ? 'u-visually-hidden' : ''}
 				bind:this={canvas}
 			/>
 		</div>

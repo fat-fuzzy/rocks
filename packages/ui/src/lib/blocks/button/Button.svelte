@@ -1,6 +1,6 @@
 <svelte:options accessors={true} />
 
-<script>
+<script lang="ts">
 	// Inputs
 	export let size = 'md'
 	export let icon = ''

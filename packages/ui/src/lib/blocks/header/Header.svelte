@@ -1,14 +1,12 @@
 <script lang="ts">
-	import {page} from '$app/stores'
-	import {clickOutside} from '$lib/utils/click-outside.js'
-	import {lang} from '$lib/stores/intl'
-	import {theme} from '$lib/stores/theme'
-	import {emojis, themes} from '$lib/types/constants.js'
+	import {clickOutside} from '../../utils/click-outside.js'
+	import {lang} from '../../stores/intl'
+	import {theme} from '../../stores/theme'
+	import {emojis, themes} from '../../types/constants.js'
 
 	export let className = ''
+	export let page
 	let actionsMenuExpanded = false
-	let currentTheme = themes[$theme]
-	let currentLang = $lang
 
 	function handleClickOutside(event) {
 		actionsMenuExpanded = false
@@ -22,37 +20,32 @@
 		const _theme = $theme ? 0 : 1
 		theme.set(_theme)
 	}
+
 	function setLanguage(event) {
 		lang.set(event.detail)
 	}
-
-	theme.subscribe((value) => {
-		currentTheme = themes[value]
-	})
-
-	lang.subscribe((value) => {
-		currentLang = value
-	})
 
 	$: mainMenuClass = `${className} l-sidebar u-main layer`
 	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
 	$: themeIcon = emojis[currentTheme]
 	$: langIcon = emojis[currentLang]
+	$: currentTheme = themes[$theme]
+	$: currentLang = $lang
 </script>
 
 <header class={mainMenuClass}>
 	<nav class="l-sidebar-main">
 		<ul class="l-wrapper">
-			<li class:active={$page.url.pathname === '/'} class="home">
+			<li class:active={page.url.pathname === '/'} class="home">
 				<a data-sveltekit-prefetch href="/">
 					<span class="l-square" alt="Home">🐣</span>
 					Home
 				</a>
 			</li>
-			<li class:active={$page.url.pathname === '/play'}>
+			<li class:active={page.url.pathname === '/play'}>
 				<a data-sveltekit-prefetch href="/play">Play</a>
 			</li>
-			<li class:active={$page.url.pathname === '/machines'}>
+			<li class:active={page.url.pathname === '/machines'}>
 				<a data-sveltekit-prefetch href="/machines">Machines</a>
 			</li>
 		</ul>

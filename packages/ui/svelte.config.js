@@ -4,11 +4,14 @@ import preprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+	// Consult https://github.com/sveltejs/svelte-preprocess
+	// for more information about preprocessors
+	// preprocess: preprocess(),
+
 	kit: {
 		adapter: adapter(),
 
 		alias: {
-			$lib: path.resolve('./src/lib'),
 			$layout: path.resolve('./src/lib/layout'),
 			$blocks: path.resolve('./src/lib/blocks'),
 			$utils: path.resolve('./src/utils'),
@@ -22,7 +25,10 @@ const config = {
 			crawl: true,
 		},
 	},
-
+	package: {
+		source: path.resolve('./src/lib'),
+		dir: path.resolve('./package'),
+	},
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
 	preprocess: preprocess({

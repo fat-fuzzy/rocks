@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
-	import {clickOutside} from '$lib/utils/click-outside.js'
-	import {currentItemId} from '$lib/stores/gfx'
+	import {clickOutside} from '../../utils/click-outside.js'
 
 	const dispatch = createEventDispatcher()
 	export let layout = `l-stack`
@@ -9,6 +8,7 @@
 	export let variant = `primary`
 	export let menuItems: {id: string; title: string; emoji: string}[] = []
 
+	let selected = ''
 	function getLabel(emoji, title) {
 		return `${emoji} ${title}`
 	}
@@ -25,8 +25,9 @@
 
 	const handleClick = (event) => {
 		const element = event.target
+		selected = element.getAttribute('id')
 		dispatch('input', {
-			selectedId: element.getAttribute('id'),
+			selected,
 		})
 	}
 	$: show = menuExpanded ? `show left` : `hide`
@@ -47,7 +48,7 @@
 				{#each menuItems as { title, emoji, id }}
 					<button
 						type="button"
-						class:outline={id === $currentItemId}
+						class:outline={id === selected}
 						on:click={handleClick}
 						{id}
 						data-test={id}
