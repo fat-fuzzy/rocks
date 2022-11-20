@@ -1,4 +1,5 @@
 {
+	"package": "@fat-fuzzy/sample-lib",
 	"name": "@fat-fuzzy/sample-lib",
 	"version": "0.0.1",
 	"scripts": {
