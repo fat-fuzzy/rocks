@@ -1,29 +1,30 @@
-<script>
-	import {currentAnimationId, animations} from '../../stores/gfx'
-	import Canvas from '$lib/components/canvas/Canvas.svelte'
-	import Feedback from '$lib/components/feedback/Feedback.svelte'
-	import Menu from '$lib/components/menu/Menu.svelte'
+<script lang="ts">
+	import type {PageData} from './$types'
+	import type { Sketch } from '$data/data';
+	import Canvas from '$lib/blocks/canvas/Canvas.svelte'
+	import Feedback from '$lib/blocks/feedback/Feedback.svelte'
+	import Menu from '$lib/blocks/menu/Menu.svelte'
+
+	export let data: PageData
+	const {sketches} = data
+
+	let sketchId = 'default'
+	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
+	const menuItems: {id: string; title: string; emoji: string}[] = sketches
 
 	let showcanvas = true
-	let animationId = $currentAnimationId
-	let animation
-
 	let showFeedback = !showcanvas
 	let feedback = ''
 
-	currentAnimationId.subscribe((value) => {
-		animationId = value
-	})
-
-	function loadAnimation(event) {
-		currentAnimationId.set(event.detail.animationId)
+	function loadSketch(event) {
+		sketchId = event.detail.selected
 	}
 
-	$: animation = $animations.find((a) => a.id === animationId)
+	$: sketch = sketches.find((a) => a.id === sketchId)
 </script>
 
 <svelte:head>
-	<title>Sandbox | 👾 Play</title>
+	<title>UI Sandbox | 👾 Play</title>
 	<meta
 		name="description"
 		content="Playground: a sandbox environment to experiment and learn web-based computer graphics."
@@ -32,15 +33,15 @@
 
 <header class="header-main">
 	<h1>👾 Play</h1>
-	<h2>&nbsp;❤︎&nbsp;{animation.name}&nbsp;{animation.emoji}</h2>
+	{#if sketch} <h2>&nbsp;❤︎&nbsp;{sketch.title}&nbsp;{sketch.emoji}</h2> {/if}
 </header>
 
 <section class="l-sidebar">
 	<div class="l-sidebar-side sm shrink">
-		<Menu on:input={loadAnimation} />
+		<Menu on:input={loadSketch} {menuItems} />
 	</div>
 	<div class="l-sidebar-main l-stack">
-		<Canvas show={showcanvas} />
+		<Canvas show={showcanvas} {sketch} />
 		<Feedback {feedback} show={showFeedback} />
 	</div>
 </section>

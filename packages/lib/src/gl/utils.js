@@ -12,16 +12,16 @@
  * @param {HTMLCanvasElement} canvas
  */
 export function resize(canvas) {
-  // Get the size that the browser is displaying the canvas
-  const displayWidth = canvas.clientWidth
-  const displayHeight = canvas.clientHeight
+	// Get the size that the browser is displaying the canvas
+	const displayWidth = canvas.clientWidth
+	const displayHeight = canvas.clientHeight
 
-  // Check if the canvas is the same size
-  if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
-    // If not, make it the same
-    canvas.width = displayWidth
-    canvas.height = displayHeight
-  }
+	// Check if the canvas is the same size
+	if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
+		// If not, make it the same
+		canvas.width = displayWidth
+		canvas.height = displayHeight
+	}
 }
 
 /**
@@ -30,24 +30,24 @@ export function resize(canvas) {
  * @param {HTMLCanvasElement} canvas
  */
 export function resizeHD(canvas) {
-  const realToCSSPixels = window.devicePixelRatio
+	const realToCSSPixels = window.devicePixelRatio
 
-  // - Get the size that the browser is displaying the canvas in CSS pixels
-  // - Compute the size needed to make the drawing buffer match it in device pixels
-  const displayWidth = Math.floor(canvas.clientWidth * realToCSSPixels)
-  const displayHeight = Math.floor(canvas.clientHeight * realToCSSPixels)
+	// - Get the size that the browser is displaying the canvas in CSS pixels
+	// - Compute the size needed to make the drawing buffer match it in device pixels
+	const displayWidth = Math.floor(canvas.clientWidth * realToCSSPixels)
+	const displayHeight = Math.floor(canvas.clientHeight * realToCSSPixels)
 
-  // Check if the canvas is the same size
-  if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
-    // If not, make it the same
-    canvas.width = displayWidth
-    canvas.height = displayHeight
-  }
+	// Check if the canvas is the same size
+	if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
+		// If not, make it the same
+		canvas.width = displayWidth
+		canvas.height = displayHeight
+	}
 }
 
 // Returns a random integer from 0 to range - 1.
 export function randomInt(range) {
-  return Math.floor(Math.random() * range)
+	return Math.floor(Math.random() * range)
 }
 
 /**
@@ -55,24 +55,35 @@ export function randomInt(range) {
  * @param {*} characters
  */
 export function multiply(characters) {
-  return new Array(100) // code from Svelte tutorial confetti
-    .fill(0)
-    .map((_, i) => {
-      return {
-        class: 'hidden',
-        character: characters[i % characters.length],
-        x: Math.random() * 100,
-        y: -10 - Math.random() * 100,
-        ratio: 0.1 + Math.random() * 1,
-      }
-    })
-    .sort((a, b) => a.ratio - b.ratio)
+	return new Array(100) // code from Svelte tutorial confetti
+		.fill(0)
+		.map((_, i) => {
+			return {
+				class: 'hidden',
+				character: characters[i % characters.length],
+				x: Math.random() * 100,
+				y: -10 - Math.random() * 100,
+				ratio: 0.1 + Math.random() * 1,
+			}
+		})
+		.sort((a, b) => a.ratio - b.ratio)
 }
 
 export function degToRad(degrees) {
-  return degrees * (Math.PI / 180)
+	return degrees * (Math.PI / 180)
 }
 
 export function round(n, decimals) {
-  return Number(Math.round(n + 'e' + decimals) + 'e-' + decimals)
+	return Number(Math.round(n + 'e' + decimals) + 'e-' + decimals)
+}
+
+export function getGeometryDefaults(canvasWidth, canvasHeight) {
+	return {
+		color: [Math.random(), Math.random(), Math.random(), 1],
+		translation: [canvasWidth / 2, canvasHeight / 2],
+		rotation: [0, 0],
+		scale: [1, 1],
+		width: round((canvasWidth * 0.3) / 5, 2), // of geometry
+		height: round(canvasHeight / 5, 2), // of geometry
+	}
 }
