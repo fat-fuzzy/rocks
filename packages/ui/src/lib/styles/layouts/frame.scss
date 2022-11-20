@@ -1,0 +1,26 @@
+.l-frame {
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.l-frame > img,
+.l-frame > video,
+.l-frame > canvas {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+}
+
+.l-frame.square {
+	aspect-ratio: 1 / 1;
+}
+
+.l-frame.video {
+	aspect-ratio: 16 / 9;
+}
+
+.l-frame + * {
+	margin-block-start: getVar(s0);
+}

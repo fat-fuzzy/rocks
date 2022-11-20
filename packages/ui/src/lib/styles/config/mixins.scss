@@ -1,0 +1,396 @@
+@use 'sass:map';
+
+//== CSS VARS
+
+/**
+ * src https://dev.to/felipperegazio/css-custom-properties-vars-with-sass-scss-a-practical-architecture-strategy-1m88
+ * Use this mixin to declare a set of CSS Custom Properties.
+ * The variables in $design_tokens will be prefixed with the given $theme-prefix
+ * You can use this mixin to output different global designs ("themes") while relying on
+ * common core CSS functionality to generate layout, typography, color, etc (using $design_tokens)
+ * 
+ *
+ * Usage:
+ * @include generateCssVars((
+ *  base-font-size: 65.5%,
+ *  font-family: #{"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif},
+ * 
+ *  primary-color: #33b5e5,
+ *  outline-color: #ff500a,
+ * ));
+ *
+ * Will result in
+ *
+ * :root {
+ *    --prefix-base-font-size: 65.5%,
+ *    --prefix-font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+ *    --prefix-primary-color:  #33b5e5;
+ *    --prefix-outline-color: #ff500a,
+ * }
+ *
+ */
+$_cssvars: ();
+@mixin generateCssVars($design_tokens, $prefix: $theme-prefix) {
+	$_cssvars: map-merge($_cssvars, $design_tokens);
+	:root {
+		@each $name, $value in $design_tokens {
+			--#{$prefix}#{$name}: #{$value};
+		}
+	}
+}
+
+@mixin generateModularScale(
+	$design_tokens,
+	$steps: $modular-scale-steps,
+	$prefix: $theme-prefix,
+	$breakpoint: $max-breakpoint
+) {
+	@include generateCssVars($design_tokens, $prefix);
+	:root {
+		--#{$prefix}fluid-bp: calc(
+			calc(var(--#{$prefix}fluid-screen) - calc((var(--#{$prefix}fluid-min-width) / 16) * 1rem)) /
+				calc(
+					calc(var(--#{$prefix}fluid-max-width) / 16) - calc(var(--#{$prefix}fluid-min-width) / 16)
+				)
+		);
+		--#{$prefix}fluid-min-scale-0: var(--#{$prefix}fluid-min-ratio);
+		--#{$prefix}fluid-max-scale-0: var(--#{$prefix}fluid-max-ratio);
+		--#{$prefix}fluid-min-size-0: calc(var(--#{$prefix}fluid-min-size) / 16);
+		--#{$prefix}fluid-max-size-0: calc(var(--#{$prefix}fluid-max-size) / 16);
+		--#{$prefix}fluid-0: calc(
+			calc(var(--#{$prefix}fluid-min-size-0) * 1rem) +
+				calc(var(--#{$prefix}fluid-max-size-0) - var(--#{$prefix}fluid-min-size-0)) *
+				var(--#{$prefix}fluid-bp)
+		);
+	}
+
+	@each $step in $steps {
+		$previous-step: calc($step - 1);
+		:root {
+			--#{$prefix}fluid-min-scale-#{$step}: calc(
+				var(--#{$prefix}fluid-min-scale-#{$previous-step}) * var(--#{$prefix}fluid-min-ratio)
+			);
+			--#{$prefix}fluid-max-scale-#{$step}: calc(
+				var(--#{$prefix}fluid-max-scale-#{$previous-step}) * var(--#{$prefix}fluid-max-ratio)
+			);
+			--#{$prefix}fluid-min-size-#{$step}: calc(
+				calc(var(--#{$prefix}fluid-min-size) * var(--#{$prefix}fluid-min-scale-#{$previous-step})) /
+					16
+			);
+			--#{$prefix}fluid-max-size-#{$step}: calc(
+				calc(var(--#{$prefix}fluid-max-size) * var(--#{$prefix}fluid-max-scale-#{$previous-step})) /
+					16
+			);
+			--#{$prefix}fluid-#{$step}: calc(
+				calc(var(--#{$prefix}fluid-min-size-#{$step}) * 1rem) +
+					calc(
+						var(--#{$prefix}fluid-max-size-#{$step}) - var(--#{$prefix}fluid-min-size-#{$step})
+					) *
+					var(--#{$prefix}fluid-bp)
+			);
+		}
+	}
+	@include min-width(#{$breakpoint}) {
+		:root {
+			--#{$prefix}fluid-screen: calc(var(--#{$prefix}fluid-max-width) * 1px);
+		}
+	}
+}
+
+@mixin theme-main() {
+	@include generateCssVars($breakpoints, $theme-prefix);
+
+	// WIP - still experimenting with scale
+	@include generateCssVars($scale, $theme-prefix);
+	@include generateCssVars($size-scale, $theme-prefix);
+	@include generateModularScale($modular-scale, $modular-scale-steps, $theme-prefix, bp-xl);
+	// -----------
+
+	@include generateCssVars($layout, $theme-prefix);
+	@include generateCssVars($typography, $theme-prefix);
+	@include generateCssVars($colors, $theme-prefix);
+}
+
+/**
+ * Retrieve a css variable value with prefix
+ *
+ * Usage
+ *
+ * .selector {
+ *   color: getVar(primary-color);
+ * }
+ *
+ * Will result in
+ *
+ * .selector {
+ *    color: var(--prefix-primary-color);
+ * }
+ */
+@function getVar($name, $prefix: $theme-prefix) {
+	@return var(--#{$prefix}#{$name}, map-get($_cssvars, $name));
+}
+
+/**
+ * Set a css variable value with prefix
+ *
+ * Usage
+ *
+ * .selector {
+ *   color: getVar(primary-color);
+     &--variant {
+        height: @include setCssVar(button-height, 56px);
+      }
+ * }
+ *
+ * Will result in
+ *
+ * .selector {
+ *    color: var(--prefix-primary-color);
+ * }
+ * .selector--variant {
+ *    height: var(--pm-button-height, 56px);
+*  }
+ */
+// not sure this works as intended
+// @mixin setCssVar($name, $value: '', $prefix: $theme-prefix) {
+// 	--#{$prefix}#{$name}: #{$value};
+// }
+
+//== UNITS
+
+// // Remove the unit of a value
+// @function strip-unit($num) {
+// 	@return $num / ($num * 0 + 1);
+// }
+
+// @function calcUnitlessValue($font-size) {
+// 	$unitless_value: strip-unit($font-size);
+// 	$remSize: $unitless_value / 16;
+// 	@return #{$remSize};
+// }
+
+// // /* REM mixin : produces REM values with px fallback
+// // * Use this in conjunction with body{font-size:10px;} for base 10 conversion
+// @mixin pix2rem($size) {
+// 	font-size: ($size); //Fallback in px
+// 	font-size: calcUnitlessValue($size) + rem;
+// }
+
+// // /* EM mixin : produces EM values with px fallback
+// // * Use this in conjunction with body{font-size:10px;} for base 10 conversion
+// @mixin pix2em($size) {
+// 	font-size: ($size); //Fallback in px
+// 	font-size: calcUnitlessValue($size) + em;
+// }
+
+//== WIDTHS & HEIGHTS
+
+// @mixin calcWidth($width, $multiple, $margin: false) {
+// 	@if $margin == false and map-has-key($theme-layout, $width) {
+// 		$width-value: map-get($theme-layout, $width);
+
+// 		width: calc(#{$width-value} * #{$multiple});
+// 	}
+// 	@if map-has-key($theme-layout, $width) and map-has-key($theme-layout, $margin) {
+// 		$width-value: map-get($theme-layout, $width);
+// 		$margin-value: map-get($theme-layout, $margin);
+
+// 		width: calc(#{$width-value} * #{$multiple} - #{$margin-value});
+// 	} @else {
+// 		@if (map-has-key($theme-layout, $width) == false) {
+// 			@warn 'Invalid width value: #{$width}.';
+// 		}
+
+// 		@if (map-has-key($theme-layout, $margin) == false) {
+// 			@warn 'Invalid margin value: #{$margin}.';
+// 		}
+// 	}
+// }
+
+//== FLEX
+// @mixin wrap-space-between() {
+// 	flex-wrap: wrap;
+// 	justify-content: space-between;
+// }
+
+//== MEDIA QUERIES
+@mixin min-width($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		@media screen and (min-width: '#{$breakpoint-value}px') {
+			@content;
+		}
+	} @else {
+		@warn 'Invalid breakpoint: #{$breakpoint}.';
+	}
+}
+
+@mixin max-width($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		@media screen and (max-width: '#{$breakpoint-value}px') {
+			@content;
+		}
+	} @else {
+		@warn 'Invalid breakpoint: #{$breakpoint}.';
+	}
+}
+
+// @mixin min-and-max-width($min, $max) {
+// 	@if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+// 		$min-value: map-get($breakpoints, $min);
+// 		$max-value: map-get($breakpoints, $max);
+// 		@media screen and (min-width: '#{$min-value}px') and  (max-width: '#{$max-value}px') {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $min) == false) {
+// 			@warn 'Invalid breakpoint min value: #{$min}.';
+// 		}
+
+// 		@if (map-has-key($breakpoints, $max) == false) {
+// 			@warn 'Invalid breakpoint max value: #{$max}.';
+// 		}
+// 	}
+// }
+
+// @mixin min-aspect-ratio($aspect-ratio) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) {
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (min-aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin max-aspect-ratio($aspect-ratio) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) {
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (max-aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin min-aspect-ratio-min-width($aspect-ratio, $breakpoint) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+// 		$breakpoint-value: map-get($breakpoints, $breakpoint);
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (min-width: #{$breakpoint-value}) and (min-aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $breakpoint) == false) {
+// 			@warn 'Invalid breakpoint: #{$breakpoint}.';
+// 		}
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin min-aspect-ratio-max-width($aspect-ratio, $breakpoint) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+// 		$breakpoint-value: map-get($breakpoints, $breakpoint);
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (max-width: #{$breakpoint-value}) and (min-aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $breakpoint) == false) {
+// 			@warn 'Invalid breakpoint: #{$breakpoint}.';
+// 		}
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin max-aspect-ratio-min-width($aspect-ratio, $breakpoint) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+// 		$breakpoint-value: map-get($breakpoints, $breakpoint);
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (min-width: #{$breakpoint-value}) and (max-aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $breakpoint) == false) {
+// 			@warn 'Invalid breakpoint: #{$breakpoint}.';
+// 		}
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin max-aspect-ratio-max-width($aspect-ratio, $breakpoint) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+// 		$breakpoint-value: map-get($breakpoints, $breakpoint);
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (max-width: #{$breakpoint-value}) and (max-aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $breakpoint) == false) {
+// 			@warn 'Invalid breakpoint: #{$breakpoint}.';
+// 		}
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin aspect-ratio($aspect-ratio) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) {
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin aspect-ratio-min-width($aspect-ratio, $breakpoint) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+// 		$breakpoint-value: map-get($breakpoints, $breakpoint);
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (min-width: #{$breakpoint-value}) and (aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $breakpoint) == false) {
+// 			@warn 'Invalid breakpoint: #{$breakpoint}.';
+// 		}
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin orientation-min-width($orientation, $breakpoint) {
+// 	@if map-has-key($theme-layout, $orientation) and map-has-key($breakpoints, $breakpoint) {
+// 		$breakpoint-value: map-get($breakpoints, $breakpoint);
+// 		$orientation-value: map-get($theme-layout, $orientation);
+// 		@media screen and (min-width: #{$breakpoint-value}) and (orientation: #{$orientation-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $breakpoint) == false) {
+// 			@warn 'Invalid breakpoint: #{$breakpoint}.';
+// 		}
+// 		@if (map-has-key($theme-layout, $orientation) == false) {
+// 			@warn 'Invalid apect-ratio: #{$orientation}.';
+// 		}
+// 	}
+// }

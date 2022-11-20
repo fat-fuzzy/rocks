@@ -1,0 +1,40 @@
+.l-switcher {
+	display: flex;
+	flex-wrap: wrap;
+	gap: getVar(gap);
+}
+
+.l-switcher > * {
+	flex-grow: 1;
+	flex-basis: calc((var(--threshold) - 100%) * 999);
+}
+
+.l-switcher.xxs {
+	gap: calc(getVar(gap) / 2);
+	--threshold: getVar(sidebar-width-xs);
+}
+
+.l-switcher.xs {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-xs);
+}
+
+.l-switcher.sm {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-sm);
+}
+
+.l-switcher.md {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-md);
+}
+
+.l-switcher.lg {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-lg);
+}
+
+.l-switcher.xl {
+	gap: getVar(gap);
+	--threshold: getVar(sidebar-width-xl);
+}

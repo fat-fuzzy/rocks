@@ -1,0 +1,342 @@
+.light {
+	color: getVar(color-dark);
+	background-color: getVar(color-white);
+}
+
+.dark {
+	color: getVar(color-light);
+	background-color: getVar(color-dark);
+}
+
+//== Primary / Accent / Highlight colors: Links, buttons & utility class
+
+.light button:not(.link) {
+	color: getVar(color-dark);
+	background-color: getVar(color-light);
+	border-color: getVar(gray-1);
+}
+
+.dark button:not(.link) {
+	color: getVar(color-white);
+	background-color: getVar(gray-5);
+	border-color: getVar(gray-3);
+}
+
+.light .link {
+	color: getVar(primary);
+}
+
+.dark .link {
+	color: getVar(primary-light);
+}
+
+.dark :visited,
+.dark .link:visited {
+	color: getVar(primary-light);
+}
+
+.light a:visited,
+.light .link:visited {
+	color: getVar(primary-light);
+}
+
+.light .primary,
+.light button.primary {
+	color: getVar(color-white);
+	background-color: getVar(primary);
+	border-color: getVar(primary);
+}
+
+.dark .primary,
+.dark button.primary {
+	color: getVar(color-dark);
+	background-color: getVar(primary-light);
+	border-color: getVar(primary-light);
+}
+
+.light .outline,
+.light button.outline {
+	color: getVar(color-dark);
+	background-color: getVar(color-white);
+	border-color: getVar(primary);
+}
+
+.dark .outline,
+.dark button.outline {
+	color: getVar(color-white);
+	background-color: getVar(color-dark);
+	border-color: getVar(primary-light);
+}
+
+.light .accent,
+.light button.accent,
+.dark button.accent {
+	color: getVar(color-white);
+	background-color: getVar(accent);
+	border-color: getVar(accent);
+}
+
+.light .highlight,
+.light button.highlight,
+.dark button.highlight {
+	color: getVar(color-dark);
+	background-color: getVar(highlight);
+	border-color: getVar(highlight);
+}
+
+.light .accent.outline,
+.light button.accent.outline {
+	color: getVar(color-dark);
+	background-color: getVar(color-light);
+	border-color: getVar(accent);
+}
+
+.dark .accent.outline,
+.dark button.accent.outline {
+	color: getVar(color-white);
+	background-color: getVar(gray-5);
+	border-color: getVar(accent);
+}
+
+.light .highlight.outline,
+.light button.highlight.outline {
+	color: getVar(color-dark);
+	background-color: getVar(color-light);
+	border-color: getVar(highlight);
+}
+
+.dark .highlight.outline,
+.dark button.highlight.outline {
+	color: getVar(color-white);
+	background-color: getVar(gray-5);
+	border-color: getVar(highlight);
+}
+
+//== Errors
+
+.light .error {
+	color: getVar(danger);
+}
+
+.light .error:focus {
+	outline-color: getVar(danger);
+}
+
+.dark .error {
+	color: getVar(danger-light);
+}
+
+.dark .error:focus {
+	outline-color: getVar(danger-light);
+}
+
+//== shadows
+
+.light .layer {
+	box-shadow: getVar(shadow);
+}
+.dark .layer {
+	box-shadow: getVar(shadow-light);
+}
+
+.light .l-frame {
+	background-color: getVar(color-light);
+}
+.dark .l-frame {
+	background-color: getVar(color-light);
+}
+
+.dark a,
+.dark .link {
+	color: getVar(primary-light);
+}
+.light a,
+.light .link {
+	color: getVar(primary);
+}
+
+.dark a:visited,
+.dark .link:visited {
+	color: getVar(highlight-light);
+}
+.light a:visited,
+.light .link:visited {
+	color: getVar(accent-light);
+}
+.dark a:hover,
+.dark .link:hover {
+	color: getVar(highlight);
+}
+.light a:hover,
+.light .link:hover {
+	color: getVar(accent);
+}
+
+.dark .accent > a {
+	color: getVar(color-white);
+}
+
+.light .accent > a {
+	color: getVar(color-white);
+}
+
+.dark .primary > a {
+	color: getVar(primary-lighter);
+}
+.light .primary > a {
+	color: getVar(primary-lighter);
+}
+
+.dark .highlight > a {
+	color: getVar(color-dark);
+}
+.light .highlight > a {
+	color: getVar(color-dark);
+}
+
+// a:visited,
+// .link:visited {
+// 	color: getVar(primary-light);
+// }
+
+.dark input,
+.dark select,
+.dark textarea {
+	color: getVar(color-dark);
+}
+.light input,
+.light select,
+.light textarea {
+	color: getVar(color-dark);
+}
+
+.light button.primary:focus {
+	outline-color: getVar(primary);
+}
+.dark button.primary:focus {
+	outline-color: getVar(primary-light);
+}
+
+.light button.highlight:focus {
+	outline-color: getVar(highlight);
+}
+.dark button.highlight:focus {
+	outline-color: getVar(highlight-light);
+}
+
+.light button.accent:focus {
+	outline-color: getVar(accent);
+}
+.dark button.accent:focus {
+	outline-color: getVar(accent-light);
+}
+
+.light button:hover {
+	color: inherit;
+	background-color: inherit;
+}
+.dark button:hover {
+	color: inherit;
+	background-color: getVar(color-dark);
+}
+.dark button.primary:hover,
+.light button.primary:hover {
+	color: getVar(gray-4);
+	background-color: getVar(primary-lighter);
+}
+.dark button.accent:hover,
+.light button.accent:hover {
+	color: getVar(gray-4);
+	background-color: getVar(accent-lighter);
+}
+.dark button.highlight:hover,
+.light button.highlight:hover {
+	color: getVar(gray-4);
+	background-color: getVar(highlight-lighter);
+}
+
+.dark button.link:hover {
+	color: getVar(color-light);
+	background-color: inherit;
+}
+.light button.link:hover {
+	color: getVar(gray-4);
+	background-color: inherit;
+}
+
+.dark button:disabled,
+.light button:disabled,
+.dark button.primary:disabled,
+.dark button.accent:disabled,
+.dark button.highlight:disabled {
+	color: getVar(color-light);
+	background-color: getVar(gray-4);
+}
+.light button.primary:disabled,
+.light button.accent:disabled,
+.light button.highlight:disabled {
+	color: getVar(gray-4);
+	background-color: getVar(color-light);
+}
+.dark button.link:disabled {
+	color: getVar(color-light);
+	background-color: inherit;
+	text-decoration: none;
+}
+.light button.link:disabled {
+	color: getVar(gray-4);
+	background-color: inherit;
+	text-decoration: none;
+}
+
+//== Header, Navs, Menus
+
+.dark .header-app {
+	color: getVar(color-light);
+	background: getVar(gray-5);
+}
+.light .header-app {
+	color: getVar(primary);
+	background: getVar(color-white);
+}
+
+.dark menu {
+	background: getVar(color-dark);
+}
+.dark header menu {
+	background: getVar(gray-5);
+}
+.light menu {
+	background: getVar(color-white);
+}
+
+.dark .u-main > nav a,
+.dark .u-main > nav a:visited {
+	color: getVar(color-light);
+}
+
+.light .u-main > nav a,
+.light .u-main > nav a:visited {
+	color: getVar(gray-4);
+}
+
+.dark .u-main > nav a:hover {
+	color: getVar(primary-light);
+}
+.light .u-main > nav a:hover {
+	color: getVar(primary-light);
+}
+
+.dark .u-main > nav li.active a {
+	color: getVar(primary-lighter);
+}
+.light .u-main > nav li.active a {
+	color: getVar(primary);
+}
+
+.dark .u-main > nav li.active::before {
+	border-top: var(--size) solid getVar(primary-lighter);
+}
+.light .u-main > nav li.active::before {
+	border-top: var(--size) solid getVar(primary);
+}

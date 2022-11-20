@@ -9,6 +9,7 @@ import * as gfx from './stores/gfx'
 import * as theme from './stores/theme'
 import * as ui from './stores/ui'
 import * as intl from './stores/intl'
+import * as styles from './styles/main.scss'
 
 const utils = {
 	clickOutside,
@@ -19,4 +20,4 @@ const stores = {
 	ui,
 	intl,
 }
-export {Button, Canvas, Feedback, Menu, utils, stores, constants}
+export {Button, Canvas, Feedback, Menu, utils, stores, constants, styles}

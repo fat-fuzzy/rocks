@@ -1,0 +1,38 @@
+menu {
+	display: flex;
+	justify-content: stretch;
+	padding: 0;
+	border-radius: getVar(radius-base);
+}
+
+menu.xxs,
+menu.xs {
+	padding: getVar(padding-sm);
+}
+
+menu.sm {
+	padding: getVar(padding-md);
+}
+
+menu.md {
+	padding: getVar(padding-lg);
+}
+
+menu.lg {
+	padding: getVar(padding-xl);
+}
+
+menu.xl {
+	padding: getVar(padding-xxl);
+}
+
+// TODO: decouple l-stack from menu
+menu.l-stack button {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+menu.l-stack.sm > * + button {
+	margin-block-start: getVar(margin-block-md);
+}
