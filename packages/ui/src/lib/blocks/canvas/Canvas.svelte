@@ -3,7 +3,6 @@
 	import {gl} from '@fat-fuzzy/lib'
 	import type {Sketch} from '../../../data/data'
 	import {theme} from '../../stores/theme'
-	import {currentItemId} from '../../stores/gfx'
 	import Button from '../button/Button.svelte'
 	import Controls from '../controls/Controls.svelte'
 	import Geometry from '../geometry/Geometry.svelte'
@@ -11,7 +10,7 @@
 	const {draw, utils} = gl
 
 	export let show = true
-	export let sketches: Sketch[] = []
+	export let sketch: Sketch
 	
 	// Canvas
 	let canvas
@@ -26,7 +25,6 @@
 	// TODO : fix
 	let geometry = utils.getGeometryDefaults(canvasWidth, canvasHeight)
 
-	$: sketch = sketches.find((sketch) => sketch.id === $currentItemId) // TODO: harmonize this naming
 	$: details = sketch ? sketch.interactive : false
 	$: detailsIcon = showDetails ? '👇' : '👉'
 	$: variant = $theme ? `${btnVariant} accent` : `${btnVariant} highlight`
