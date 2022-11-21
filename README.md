@@ -1,8 +1,12 @@
 # 🪨 Fat Fuzzy Rocks 🪨
 
-App starter kit
+This project is a way to scratch my own itch:
 
-Motivation: having a way to bootstrap web applications with a starter kit that meets the following needs:
+- help me bootstrap new web applications (websites or other types)
+- have a reliable UI library I can re-use as a source of truth common to my web projects
+- keep track of new ideas and setup capabilities (back/front/design) as I go along
+
+Ideally, this starter kit will meet the following requirements:
 
 - [x] integrates a design workflow
 - [x] is flexible
@@ -16,7 +20,7 @@ Motivation: having a way to bootstrap web applications with a starter kit that m
 - **client** frontend application structure
 - **ui** frontend component library
 - **design** design tokens and other relevant design resources
-- **doc** architectural decisions and other doc-worthy information
+- **doc** decisions, UI library doc, other doc-worthy information
 - **resources** backend resources (database, auth, storage, etc)
 - **lib** libraries unrelated to building an interface or accessing backend resources (logic and experiments)
 
