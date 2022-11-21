@@ -14,10 +14,10 @@ const config = {
 		alias: {
 			$layout: path.resolve('./src/lib/layout'),
 			$blocks: path.resolve('./src/lib/blocks'),
-			$utils: path.resolve('./src/utils'),
-			$styles: path.resolve('./src/styles'),
-			$stores: path.resolve('./src/stores'),
-			$types: path.resolve('./src/types'),
+			$utils: path.resolve('./src/lib/utils'),
+			$styles: path.resolve('./src/lib/styles'),
+			$stores: path.resolve('./src/lib/stores'),
+			$types: path.resolve('./src/lib/types'),
 			$data: path.resolve('./src/data'),
 		},
 

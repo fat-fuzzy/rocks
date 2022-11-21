@@ -1,8 +1,8 @@
 <script lang="ts">
 	// @ts-ignore
 	import {gl} from '@fat-fuzzy/lib'
-	import type {Sketch} from '../../../data/data'
-	import {theme} from '../../stores/theme'
+	import type {Sketch} from '$data/data' // seems to accept aliases outside lib folder
+	import {theme} from '../../stores/theme' // ... but not inside lib folder
 	import Button from '../button/Button.svelte'
 	import Controls from '../controls/Controls.svelte'
 	import Geometry from '../geometry/Geometry.svelte'
@@ -11,7 +11,7 @@
 
 	export let show = true
 	export let sketch: Sketch | undefined
-	
+
 	// Canvas
 	let canvas
 	let canvasWidth = 300
@@ -61,7 +61,7 @@
 	}
 
 	function play() {
-		if(sketch){
+		if (sketch) {
 			webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
 			animationFrame = requestAnimationFrame(function (timestamp) {
 				let {duration} = sketch
@@ -88,7 +88,7 @@
 			bind:offsetHeight={canvasHeight}
 		>
 			<canvas
-				alt={sketch ? `Current sketch: ${sketch.title}` :  'No sketch selected yet'}
+				alt={sketch ? `Current sketch: ${sketch.title}` : 'No sketch selected yet'}
 				data-test="canvas"
 				class={!show ? 'visually-hidden' : ''}
 				bind:this={canvas}
