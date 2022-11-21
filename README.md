@@ -24,7 +24,7 @@ Ideally, this starter kit will meet the following requirements:
 - **resources** backend resources (database, auth, storage, etc)
 - **lib** libraries unrelated to building an interface or accessing backend resources (logic and experiments)
 
-## 🚧 WIP - Package Details
+### 🚧 WIP - Package Details
 
 - **doc**
   - Decisions (architecture, tech, etc)
@@ -38,6 +38,7 @@ Ideally, this starter kit will meet the following requirements:
   - Open Props
     - https://open-props.style/
   - SASS:
+    - https://sass-lang.com/
     - https://www.alwaystwisted.com/articles/creating-utility-classes-with-design-tokens-using-sass
   - Design System
     - https://open-ui.org/
@@ -58,11 +59,15 @@ Ideally, this starter kit will meet the following requirements:
 
 ## 🚧 WIP - Testing
 
-ttps://playwright.dev/
-
+- https://github.com/testing-library/dom-testing-library
+- https://playwright.dev/
 - https://www.cypress.io/
 
 ## 🚧 WIP - Maintenance
 
 - Monorepo
   - https://pnpm.io/
+- Code / Env
+  - https://github.com/commitizen/cz-cli
+  - https://verdaccio.org/
+  - https://www.docker.com/
