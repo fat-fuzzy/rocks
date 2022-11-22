@@ -1,0 +1,20 @@
+---
+title: Svex up your markdown
+count: 25
+color: cadetblue
+list: [1, 2, 3, 4, "boo"]
+---
+
+<script>
+	import { Canvas } from '@fat-fuzzy/ui';
+</script>
+
+<svelte:head>
+	<title>FatFuzzy Doc | UI</title>
+	<meta name="description" content="Fat Fuzzy UI Library documentation" />
+</svelte:head>
+
+# 🚧 WIP - Fat Fuzzy UI doc 🚧
+
+Testing FatFuzzy `<Canvas />` component in a mdsvex file
+<Canvas />

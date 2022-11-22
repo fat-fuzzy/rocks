@@ -15,9 +15,9 @@
 	"author": "Patricia Boh",
 	"license": "see LICENSE file",
 	"devDependencies": {
+		"@fat-fuzzy/ui": "workspace:0.0.1",
 		"@fontsource/fira-mono": "^4.5.0",
 		"@neoconfetti/svelte": "^1.0.0",
-		"@fat-fuzzy/ui": "workspace:0.0.1",
 		"@playwright/test": "1.25.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
