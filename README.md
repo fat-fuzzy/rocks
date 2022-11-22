@@ -47,7 +47,15 @@ Ideally, this starter kit will meet the following requirements:
     - https://inclusive-components.design/
     - https://tink.uk/accessible-svg-line-graphs/
 - **lib**
-  - 👾 gl
+  - 👾 gl - everything related to working with webgl
+    - https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
+    - https://webglfundamentals.org/
+    - https://webgl2fundamentals.org/
+    - https://thebookofshaders.com/
+    - https://iquilezles.org/
+    - https://learnwebgl.brown37.net/index.html
+    - https://math.hws.edu/graphicsbook/index.html
+    - https://dev.opera.com/articles/introduction-to-webgl-part-1/
   - 🤖 state machines
     - https://xstate.js.org/docs/
     - https://github.com/statelyai/xstate
@@ -56,6 +64,7 @@ Ideally, this starter kit will meet the following requirements:
     - https://statecharts.dev/
     - https://stately.ai/registry/new
   - ➕ maths
+    - https://github.com/patiboh/minimath
 
 ## 🚧 WIP - Testing
 
