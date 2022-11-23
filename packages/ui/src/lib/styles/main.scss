@@ -1,7 +1,6 @@
-/* Global config */
-@import './config/reset';
-@import './config/variables';
-@import './config/mixins';
+/* Prefix fallback */
+// TODO - Fix prefixing themes
+$prefix: 'ui-';
 
 /* Layout */
 @import './layouts/stack';

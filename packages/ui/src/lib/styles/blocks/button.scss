@@ -1,64 +1,64 @@
 button {
 	width: auto;
 	font-weight: 500;
-	color: getVar(font-color-body);
-	background-color: getVar(color-light);
+	color: var(--#{$prefix}font-color-body);
+	background-color: var(--#{$prefix}color-light);
 }
 
 button:disabled {
-	color: getVar(gray-3);
+	color: var(--#{$prefix}gray-3);
 }
 
 button:not(:disabled):active {
-	color: getVar(font-color-body);
-	background-color: getVar(color-light);
+	color: var(--#{$prefix}font-color-body);
+	background-color: var(--#{$prefix}color-light);
 }
 
 .primary {
-	border-color: getVar(primary);
-	background-color: getVar(primary);
-	color: getVar(color-light);
+	border-color: var(--#{$prefix}primary);
+	background-color: var(--#{$prefix}primary);
+	color: var(--#{$prefix}color-light);
 }
 
 .accent {
-	border-color: getVar(accent);
-	background-color: getVar(accent);
-	color: getVar(color-white);
+	border-color: var(--#{$prefix}accent);
+	background-color: var(--#{$prefix}accent);
+	color: var(--#{$prefix}color-white);
 }
 
 .highlight {
-	border-color: getVar(highlight);
-	background-color: getVar(highlight);
-	color: getVar(color-dark);
+	border-color: var(--#{$prefix}highlight);
+	background-color: var(--#{$prefix}highlight);
+	color: var(--#{$prefix}color-dark);
 }
 
 .outline {
-	border-color: getVar(primary);
-	background-color: getVar(color-white);
+	border-color: var(--#{$prefix}primary);
+	background-color: var(--#{$prefix}color-white);
 }
 
 .outline.accent {
-	border-color: getVar(accent);
-	color: getVar(color-dark);
-	background-color: getVar(color-white);
+	border-color: var(--#{$prefix}accent);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}color-white);
 }
 
 .outline.highlight {
-	border-color: getVar(highlight);
-	color: getVar(color-dark);
-	background-color: getVar(color-white);
+	border-color: var(--#{$prefix}highlight);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}color-white);
 }
 
 .primary:disabled,
 .outline:disabled {
-	background-color: getVar(color-light);
+	background-color: var(--#{$prefix}color-light);
 }
 
 .link {
-	padding: 0 getVar(padding-xs);
+	padding: 0 var(--#{$prefix}padding-xs);
 	border: none;
 	background-color: transparent;
-	color: getVar(primary);
+	color: var(--#{$prefix}primary);
 }
 
 // == Size button in relation to container
@@ -66,26 +66,26 @@ button:not(:disabled):active {
 
 .xxs > button,
 .xs > button {
-	font-size: getVar(font-size-xs);
-	padding: getVar(padding-xs) getVar(padding-sm);
+	font-size: var(--#{$prefix}font-size-xs);
+	padding: var(--#{$prefix}padding-xs) var(--#{$prefix}padding-sm);
 }
 
 .sm > button {
-	font-size: getVar(font-size-sm);
-	padding: getVar(padding-sm) getVar(padding-md);
+	font-size: var(--#{$prefix}font-size-sm);
+	padding: var(--#{$prefix}padding-sm) var(--#{$prefix}padding-md);
 }
 
 .md > button {
-	font-size: getVar(font-size-md);
-	padding: getVar(padding-md) getVar(padding-lg);
+	font-size: var(--#{$prefix}font-size-md);
+	padding: var(--#{$prefix}padding-md) var(--#{$prefix}padding-lg);
 }
 
 .lg > button {
-	font-size: getVar(font-size-lg);
-	padding: getVar(padding-lg) getVar(padding-xl);
+	font-size: var(--#{$prefix}font-size-lg);
+	padding: var(--#{$prefix}padding-lg) var(--#{$prefix}padding-xl);
 }
 
 .xl > button {
-	font-size: getVar(font-size-xl);
-	padding: getVar(padding-xl) getVar(padding-xxl);
+	font-size: var(--#{$prefix}font-size-xl);
+	padding: var(--#{$prefix}padding-xl) var(--#{$prefix}padding-xxl);
 }

@@ -15,31 +15,31 @@
 }
 
 .l-stack.recursive * + * {
-	margin-block-start: getVar(margin-block-xs);
+	margin-block-start: var(--#{$prefix}margin-block-xs);
 }
 
 .l-stack > * + * {
-	margin-block-start: getVar(margin-block-xs);
+	margin-block-start: var(--#{$prefix}margin-block-xs);
 }
 
 .l-stack.xs > * + * {
-	margin-block-start: getVar(margin-block-xs);
+	margin-block-start: var(--#{$prefix}margin-block-xs);
 }
 
 .l-stack.sm > * + * {
-	margin-block-start: getVar(margin-block-sm);
+	margin-block-start: var(--#{$prefix}margin-block-sm);
 }
 
 .l-stack.md > * + * {
-	margin-block-start: getVar(margin-block-md);
+	margin-block-start: var(--#{$prefix}margin-block-md);
 }
 
 .l-stack.lg > * + * {
-	margin-block-start: getVar(margin-block-lg);
+	margin-block-start: var(--#{$prefix}margin-block-lg);
 }
 
 .l-stack.xl > * + * {
-	margin-block-start: getVar(margin-block-xl);
+	margin-block-start: var(--#{$prefix}margin-block-xl);
 }
 
 .l-stack {

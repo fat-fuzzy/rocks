@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {browser} from '$app/environment'
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import {themes} from '$lib/types/constants'
@@ -25,9 +26,11 @@
 	})
 
 	onMount(() => {
-		app = document.getElementById('app')
-		if (app) {
-			app.classList.add(currentTheme)
+		if (browser) {
+			app = document.getElementById('app')
+			if (app) {
+				app.classList.add(currentTheme)
+			}
 		}
 	})
 </script>
@@ -44,5 +47,5 @@
 </footer>
 
 <style lang="scss" global>
-	@import '../lib/styles/main.scss';
+	@import '../lib/styles/styles.scss';
 </style>

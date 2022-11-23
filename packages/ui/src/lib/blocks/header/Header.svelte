@@ -61,7 +61,7 @@
 				🎛 &nbsp;Settings
 			</button>
 			<div class={actionsMenuClass}>
-				<menu class="l-switcher sm">
+				<menu class="l-switcher xs">
 					<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
 					<!--button>Login</-button-->
