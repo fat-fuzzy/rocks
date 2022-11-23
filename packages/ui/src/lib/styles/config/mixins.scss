@@ -97,7 +97,7 @@ $_cssvars: ();
 	}
 }
 
-@mixin theme-main() {
+@mixin theme-main($theme-prefix) {
 	@include generateCssVars($breakpoints, $theme-prefix);
 
 	// WIP - still experimenting with scale
@@ -110,51 +110,6 @@ $_cssvars: ();
 	@include generateCssVars($typography, $theme-prefix);
 	@include generateCssVars($colors, $theme-prefix);
 }
-
-/**
- * Retrieve a css variable value with prefix
- *
- * Usage
- *
- * .selector {
- *   color: getVar(primary-color);
- * }
- *
- * Will result in
- *
- * .selector {
- *    color: var(--prefix-primary-color);
- * }
- */
-@function getVar($name, $prefix: $theme-prefix) {
-	@return var(--#{$prefix}#{$name}, map-get($_cssvars, $name));
-}
-
-/**
- * Set a css variable value with prefix
- *
- * Usage
- *
- * .selector {
- *   color: getVar(primary-color);
-     &--variant {
-        height: @include setCssVar(button-height, 56px);
-      }
- * }
- *
- * Will result in
- *
- * .selector {
- *    color: var(--prefix-primary-color);
- * }
- * .selector--variant {
- *    height: var(--pm-button-height, 56px);
-*  }
- */
-// not sure this works as intended
-// @mixin setCssVar($name, $value: '', $prefix: $theme-prefix) {
-// 	--#{$prefix}#{$name}: #{$value};
-// }
 
 //== UNITS
 

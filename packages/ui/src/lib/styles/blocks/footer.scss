@@ -1,5 +1,5 @@
 footer {
 	text-align: center;
-	padding-top: getVar(padding-sm);
-	padding-bottom: getVar(padding-sm);
+	padding-top: var(--#{$prefix}padding-sm);
+	padding-bottom: var(--#{$prefix}padding-sm);
 }
