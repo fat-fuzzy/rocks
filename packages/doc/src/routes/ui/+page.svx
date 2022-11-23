@@ -14,7 +14,7 @@ list: [1, 2, 3, 4, "boo"]
 	<meta name="description" content="Fat Fuzzy UI Library documentation" />
 </svelte:head>
 
-# 🚧 WIP - Fat Fuzzy UI doc 🚧
+# 🚧 WIP - Fat Fuzzy UI 🚧
 
 Testing FatFuzzy `<Canvas />` component in a mdsvex file
 <Canvas />

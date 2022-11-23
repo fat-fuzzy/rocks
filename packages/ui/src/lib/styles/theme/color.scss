@@ -1,234 +1,234 @@
 .light {
-	color: getVar(color-dark);
-	background-color: getVar(color-white);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}color-white);
 }
 
 .dark {
-	color: getVar(color-light);
-	background-color: getVar(color-dark);
+	color: var(--#{$prefix}color-light);
+	background-color: var(--#{$prefix}color-dark);
 }
 
 //== Primary / Accent / Highlight colors: Links, buttons & utility class
 
 .light button:not(.link) {
-	color: getVar(color-dark);
-	background-color: getVar(color-light);
-	border-color: getVar(gray-1);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}color-light);
+	border-color: var(--#{$prefix}gray-1);
 }
 
 .dark button:not(.link) {
-	color: getVar(color-white);
-	background-color: getVar(gray-5);
-	border-color: getVar(gray-3);
+	color: var(--#{$prefix}color-white);
+	background-color: var(--#{$prefix}gray-5);
+	border-color: var(--#{$prefix}gray-3);
 }
 
 .light .link {
-	color: getVar(primary);
+	color: var(--#{$prefix}primary);
 }
 
 .dark .link {
-	color: getVar(primary-light);
+	color: var(--#{$prefix}primary-light);
 }
 
 .dark :visited,
 .dark .link:visited {
-	color: getVar(primary-light);
+	color: var(--#{$prefix}primary-light);
 }
 
 .light a:visited,
 .light .link:visited {
-	color: getVar(primary-light);
+	color: var(--#{$prefix}primary-light);
 }
 
 .light .primary,
 .light button.primary {
-	color: getVar(color-white);
-	background-color: getVar(primary);
-	border-color: getVar(primary);
+	color: var(--#{$prefix}color-white);
+	background-color: var(--#{$prefix}primary);
+	border-color: var(--#{$prefix}primary);
 }
 
 .dark .primary,
 .dark button.primary {
-	color: getVar(color-dark);
-	background-color: getVar(primary-light);
-	border-color: getVar(primary-light);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}primary-light);
+	border-color: var(--#{$prefix}primary-light);
 }
 
 .light .outline,
 .light button.outline {
-	color: getVar(color-dark);
-	background-color: getVar(color-white);
-	border-color: getVar(primary);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}color-white);
+	border-color: var(--#{$prefix}primary);
 }
 
 .dark .outline,
 .dark button.outline {
-	color: getVar(color-white);
-	background-color: getVar(color-dark);
-	border-color: getVar(primary-light);
+	color: var(--#{$prefix}color-white);
+	background-color: var(--#{$prefix}color-dark);
+	border-color: var(--#{$prefix}primary-light);
 }
 
 .light .accent,
 .light button.accent,
 .dark button.accent {
-	color: getVar(color-white);
-	background-color: getVar(accent);
-	border-color: getVar(accent);
+	color: var(--#{$prefix}color-white);
+	background-color: var(--#{$prefix}accent);
+	border-color: var(--#{$prefix}accent);
 }
 
 .light .highlight,
 .light button.highlight,
 .dark button.highlight {
-	color: getVar(color-dark);
-	background-color: getVar(highlight);
-	border-color: getVar(highlight);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}highlight);
+	border-color: var(--#{$prefix}highlight);
 }
 
 .light .accent.outline,
 .light button.accent.outline {
-	color: getVar(color-dark);
-	background-color: getVar(color-light);
-	border-color: getVar(accent);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}color-light);
+	border-color: var(--#{$prefix}accent);
 }
 
 .dark .accent.outline,
 .dark button.accent.outline {
-	color: getVar(color-white);
-	background-color: getVar(gray-5);
-	border-color: getVar(accent);
+	color: var(--#{$prefix}color-white);
+	background-color: var(--#{$prefix}gray-5);
+	border-color: var(--#{$prefix}accent);
 }
 
 .light .highlight.outline,
 .light button.highlight.outline {
-	color: getVar(color-dark);
-	background-color: getVar(color-light);
-	border-color: getVar(highlight);
+	color: var(--#{$prefix}color-dark);
+	background-color: var(--#{$prefix}color-light);
+	border-color: var(--#{$prefix}highlight);
 }
 
 .dark .highlight.outline,
 .dark button.highlight.outline {
-	color: getVar(color-white);
-	background-color: getVar(gray-5);
-	border-color: getVar(highlight);
+	color: var(--#{$prefix}color-white);
+	background-color: var(--#{$prefix}gray-5);
+	border-color: var(--#{$prefix}highlight);
 }
 
 //== Errors
 
 .light .error {
-	color: getVar(danger);
+	color: var(--#{$prefix}danger);
 }
 
 .light .error:focus {
-	outline-color: getVar(danger);
+	outline-color: var(--#{$prefix}danger);
 }
 
 .dark .error {
-	color: getVar(danger-light);
+	color: var(--#{$prefix}danger-light);
 }
 
 .dark .error:focus {
-	outline-color: getVar(danger-light);
+	outline-color: var(--#{$prefix}danger-light);
 }
 
 //== shadows
 
 .light .layer {
-	box-shadow: getVar(shadow);
+	box-shadow: var(--#{$prefix}shadow);
 }
 .dark .layer {
-	box-shadow: getVar(shadow-light);
+	box-shadow: var(--#{$prefix}shadow-light);
 }
 
 .light .l-frame {
-	background-color: getVar(color-light);
+	background-color: var(--#{$prefix}color-light);
 }
 .dark .l-frame {
-	background-color: getVar(color-light);
+	background-color: var(--#{$prefix}color-light);
 }
 
 .dark a,
 .dark .link {
-	color: getVar(primary-light);
+	color: var(--#{$prefix}primary-light);
 }
 .light a,
 .light .link {
-	color: getVar(primary);
+	color: var(--#{$prefix}primary);
 }
 
 .dark a:visited,
 .dark .link:visited {
-	color: getVar(highlight-light);
+	color: var(--#{$prefix}highlight-light);
 }
 .light a:visited,
 .light .link:visited {
-	color: getVar(accent-light);
+	color: var(--#{$prefix}accent-light);
 }
 .dark a:hover,
 .dark .link:hover {
-	color: getVar(highlight);
+	color: var(--#{$prefix}highlight);
 }
 .light a:hover,
 .light .link:hover {
-	color: getVar(accent);
+	color: var(--#{$prefix}accent);
 }
 
 .dark .accent > a {
-	color: getVar(color-white);
+	color: var(--#{$prefix}color-white);
 }
 
 .light .accent > a {
-	color: getVar(color-white);
+	color: var(--#{$prefix}color-white);
 }
 
 .dark .primary > a {
-	color: getVar(primary-lighter);
+	color: var(--#{$prefix}primary-lighter);
 }
 .light .primary > a {
-	color: getVar(primary-lighter);
+	color: var(--#{$prefix}primary-lighter);
 }
 
 .dark .highlight > a {
-	color: getVar(color-dark);
+	color: var(--#{$prefix}color-dark);
 }
 .light .highlight > a {
-	color: getVar(color-dark);
+	color: var(--#{$prefix}color-dark);
 }
 
 // a:visited,
 // .link:visited {
-// 	color: getVar(primary-light);
+// 	color: var(--#{$prefix}primary-light);
 // }
 
 .dark input,
 .dark select,
 .dark textarea {
-	color: getVar(color-dark);
+	color: var(--#{$prefix}color-dark);
 }
 .light input,
 .light select,
 .light textarea {
-	color: getVar(color-dark);
+	color: var(--#{$prefix}color-dark);
 }
 
 .light button.primary:focus {
-	outline-color: getVar(primary);
+	outline-color: var(--#{$prefix}primary);
 }
 .dark button.primary:focus {
-	outline-color: getVar(primary-light);
+	outline-color: var(--#{$prefix}primary-light);
 }
 
 .light button.highlight:focus {
-	outline-color: getVar(highlight);
+	outline-color: var(--#{$prefix}highlight);
 }
 .dark button.highlight:focus {
-	outline-color: getVar(highlight-light);
+	outline-color: var(--#{$prefix}highlight-light);
 }
 
 .light button.accent:focus {
-	outline-color: getVar(accent);
+	outline-color: var(--#{$prefix}accent);
 }
 .dark button.accent:focus {
-	outline-color: getVar(accent-light);
+	outline-color: var(--#{$prefix}accent-light);
 }
 
 .light button:hover {
@@ -237,30 +237,30 @@
 }
 .dark button:hover {
 	color: inherit;
-	background-color: getVar(color-dark);
+	background-color: var(--#{$prefix}color-dark);
 }
 .dark button.primary:hover,
 .light button.primary:hover {
-	color: getVar(gray-4);
-	background-color: getVar(primary-lighter);
+	color: var(--#{$prefix}gray-4);
+	background-color: var(--#{$prefix}primary-lighter);
 }
 .dark button.accent:hover,
 .light button.accent:hover {
-	color: getVar(gray-4);
-	background-color: getVar(accent-lighter);
+	color: var(--#{$prefix}gray-4);
+	background-color: var(--#{$prefix}accent-lighter);
 }
 .dark button.highlight:hover,
 .light button.highlight:hover {
-	color: getVar(gray-4);
-	background-color: getVar(highlight-lighter);
+	color: var(--#{$prefix}gray-4);
+	background-color: var(--#{$prefix}highlight-lighter);
 }
 
 .dark button.link:hover {
-	color: getVar(color-light);
+	color: var(--#{$prefix}color-light);
 	background-color: inherit;
 }
 .light button.link:hover {
-	color: getVar(gray-4);
+	color: var(--#{$prefix}gray-4);
 	background-color: inherit;
 }
 
@@ -269,22 +269,22 @@
 .dark button.primary:disabled,
 .dark button.accent:disabled,
 .dark button.highlight:disabled {
-	color: getVar(color-light);
-	background-color: getVar(gray-4);
+	color: var(--#{$prefix}color-light);
+	background-color: var(--#{$prefix}gray-4);
 }
 .light button.primary:disabled,
 .light button.accent:disabled,
 .light button.highlight:disabled {
-	color: getVar(gray-4);
-	background-color: getVar(color-light);
+	color: var(--#{$prefix}gray-4);
+	background-color: var(--#{$prefix}color-light);
 }
 .dark button.link:disabled {
-	color: getVar(color-light);
+	color: var(--#{$prefix}color-light);
 	background-color: inherit;
 	text-decoration: none;
 }
 .light button.link:disabled {
-	color: getVar(gray-4);
+	color: var(--#{$prefix}gray-4);
 	background-color: inherit;
 	text-decoration: none;
 }
@@ -292,51 +292,51 @@
 //== Header, Navs, Menus
 
 .dark .header-app {
-	color: getVar(color-light);
-	background: getVar(gray-5);
+	color: var(--#{$prefix}color-light);
+	background: var(--#{$prefix}gray-5);
 }
 .light .header-app {
-	color: getVar(primary);
-	background: getVar(color-white);
+	color: var(--#{$prefix}primary);
+	background: var(--#{$prefix}color-white);
 }
 
 .dark menu {
-	background: getVar(color-dark);
+	background: var(--#{$prefix}color-dark);
 }
 .dark header menu {
-	background: getVar(gray-5);
+	background: var(--#{$prefix}gray-5);
 }
 .light menu {
-	background: getVar(color-white);
+	background: var(--#{$prefix}color-white);
 }
 
 .dark .u-main > nav a,
 .dark .u-main > nav a:visited {
-	color: getVar(color-light);
+	color: var(--#{$prefix}color-light);
 }
 
 .light .u-main > nav a,
 .light .u-main > nav a:visited {
-	color: getVar(gray-4);
+	color: var(--#{$prefix}gray-4);
 }
 
 .dark .u-main > nav a:hover {
-	color: getVar(primary-light);
+	color: var(--#{$prefix}primary-light);
 }
 .light .u-main > nav a:hover {
-	color: getVar(primary-light);
+	color: var(--#{$prefix}primary-light);
 }
 
 .dark .u-main > nav li.active a {
-	color: getVar(primary-lighter);
+	color: var(--#{$prefix}primary-lighter);
 }
 .light .u-main > nav li.active a {
-	color: getVar(primary);
+	color: var(--#{$prefix}primary);
 }
 
 .dark .u-main > nav li.active::before {
-	border-top: var(--size) solid getVar(primary-lighter);
+	border-top: var(--size) solid var(--#{$prefix}primary-lighter);
 }
 .light .u-main > nav li.active::before {
-	border-top: var(--size) solid getVar(primary);
+	border-top: var(--size) solid var(--#{$prefix}primary);
 }

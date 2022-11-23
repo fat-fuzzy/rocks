@@ -1,32 +1,27 @@
-.font-family-body {
-	font-family: getVar(font-family-body);
-	font-size: getVar(fluid-0);
-}
-
 .font-size\:base {
-	font-size: getVar(fluid-0);
+	font-size: var(--#{$prefix}fluid-0);
 }
 
 .font-size\:xs {
-	font-size: getVar(font-size-xs);
+	font-size: var(--#{$prefix}font-size-xs);
 }
 
 .font-size\:sm {
-	font-size: getVar(font-size-sm);
+	font-size: var(--#{$prefix}font-size-sm);
 }
 
 .font-size\:md {
-	font-size: getVar(font-size-md);
+	font-size: var(--#{$prefix}font-size-md);
 }
 
 .font-size\:lg {
-	font-size: getVar(font-size-lg);
+	font-size: var(--#{$prefix}font-size-lg);
 }
 
 .font-size\:xl {
-	font-size: getVar(font-size-xl);
+	font-size: var(--#{$prefix}font-size-xl);
 }
 
 .font-size\:xxl {
-	font-size: getVar(font-size-xxl);
+	font-size: var(--#{$prefix}font-size-xxl);
 }

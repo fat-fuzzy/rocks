@@ -175,7 +175,3 @@
 		<button type="button" on:click|preventDefault={handleLogout}> Logout </button>
 	{/if}
 </Fieldset>
-
-<style lang="scss" global>
-	@import '../../styles/main.scss';
-</style>

@@ -9,7 +9,7 @@ import * as gfx from './stores/gfx'
 import * as theme from './stores/theme'
 import * as ui from './stores/ui'
 import * as intl from './stores/intl'
-import * as styles from './styles/main.scss'
+import * as styles from './styles/styles.scss' // TODO: figure out a way to export styles independently of variables
 
 const utils = {
 	clickOutside,
