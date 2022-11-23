@@ -9,9 +9,6 @@ import * as gfx from './stores/gfx'
 import * as theme from './stores/theme'
 import * as ui from './stores/ui'
 import * as intl from './stores/intl'
-import * as styles from './styles/styles.scss' // TODO: figure out a way to export one stylesheet only (import theme styles)
-import * as stylesDoc from './styles/styles-doc.scss' // TODO: figure out a way to export one stylesheet only (import theme styles)
-
 const utils = {
 	clickOutside,
 }
@@ -21,4 +18,13 @@ const stores = {
 	ui,
 	intl,
 }
-export {Button, Canvas, Feedback, Menu, utils, stores, constants, styles, stylesDoc}
+const styles = {
+	default: './styles/styles-default.scss',
+	doc: './styles/styles-doc.scss',
+	client: './styles/styles-client.scss',
+}
+async function getStyles(theme) {
+	const themedStyles = await import(styles[theme])
+	return themedStyles
+}
+export {Button, Canvas, Feedback, Menu, utils, stores, constants, getStyles}

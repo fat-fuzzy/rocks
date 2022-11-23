@@ -47,5 +47,5 @@
 </footer>
 
 <style lang="scss" global>
-	@import '../lib/styles/styles.scss';
+	@import '../lib/styles/styles-default.scss';
 </style>
