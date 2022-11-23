@@ -1,5 +1,7 @@
 <script>
 	import Header from './Header.svelte'
+	import {getStyles} from '@fat-fuzzy/ui'
+	getStyles('client')
 </script>
 
 <div class="app">

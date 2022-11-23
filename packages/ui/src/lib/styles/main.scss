@@ -1,7 +1,3 @@
-/* Prefix fallback */
-// TODO - Fix prefixing themes
-$prefix: 'ui-';
-
 /* Layout */
 @import './layouts/stack';
 @import './layouts/sidebar';
@@ -22,12 +18,11 @@ $prefix: 'ui-';
 @import './blocks/form';
 
 /* Theme */
-@import './theme/global';
-@import './theme/color';
-@import './theme/text';
-@import './theme/icons';
-@import './theme/layers';
+@import './globals/global';
+@import './globals/color';
+@import './globals/text';
+@import './globals/icons';
+@import './globals/layers';
 
 /* Overrides */
-@import './theme/pages';
 @import './config/utility';
