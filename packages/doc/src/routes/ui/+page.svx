@@ -6,7 +6,8 @@ list: [1, 2, 3, 4, "boo"]
 ---
 
 <script>
-	import { Canvas } from '@fat-fuzzy/ui';
+	import {blocks} from '@fat-fuzzy/ui'
+	const { Canvas } = blocks
 </script>
 
 <svelte:head>

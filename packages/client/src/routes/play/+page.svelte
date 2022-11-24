@@ -1,11 +1,12 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import type { Sketch } from '$data/data';
-	import { Canvas,Feedback, Menu } from '@fat-fuzzy/ui'
+	import type {PageData} from './$types'
+	import type {Sketch} from '$data/data'
+	import {blocks} from '@fat-fuzzy/ui'
 
-	export let data: PageData;
-	let {sketches}  = data
-	
+	export let data: PageData
+	let {sketches} = data
+	const {Canvas, Feedback, Menu} = blocks
+
 	let sketchId = 'default'
 	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
 	const menuItems: {id: string; title: string; emoji: string}[] = sketches
@@ -36,10 +37,10 @@
 
 <section class="l-sidebar">
 	<div class="l-sidebar-side sm shrink">
-		<Menu on:input={loadAnimation} {menuItems}/>
+		<Menu on:input={loadAnimation} {menuItems} />
 	</div>
 	<div class="l-sidebar-main l-stack">
-		<Canvas show={showcanvas} {sketch}/>
+		<Canvas show={showcanvas} {sketch} />
 		<Feedback {feedback} show={showFeedback} />
 	</div>
 </section>
