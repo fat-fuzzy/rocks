@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {clickOutside} from '../../utils/click-outside.js'
+	import {clickOutside} from '../utils/click-outside.js'
 
 	export let layout = `l-stack`
 	export let size = `md`
