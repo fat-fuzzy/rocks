@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {PageData} from './$types'
-	import type { Sketch } from '$data/data';
+	import type {Sketch} from '$data/data'
 	import Canvas from '$lib/blocks/canvas/Canvas.svelte'
 	import Feedback from '$lib/blocks/feedback/Feedback.svelte'
 	import Menu from '$lib/blocks/menu/Menu.svelte'
@@ -37,10 +37,10 @@
 </header>
 
 <section class="l-sidebar">
-	<div class="l-sidebar-side sm shrink">
+	<div class="l-side sm shrink">
 		<Menu on:input={loadSketch} {menuItems} />
 	</div>
-	<div class="l-sidebar-main l-stack">
+	<div class="l-main l-stack">
 		<Canvas show={showcanvas} {sketch} />
 		<Feedback {feedback} show={showFeedback} />
 	</div>

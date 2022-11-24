@@ -3,8 +3,10 @@
 	flex-wrap: wrap;
 	gap: var(--#{$prefix}gap);
 }
-
-.l-sidebar-main {
+.l-sidebar.end {
+	flex-direction: row-reverse;
+}
+.l-main {
 	flex-basis: 0;
 	flex-grow: 999;
 	// ~ min-width in horizontal-tb writing mode: if (width < 70%) -> wrap
@@ -13,47 +15,48 @@
 }
 
 // adjusts to width of contents
-.l-sidebar-side {
+.l-side {
 	flex-grow: 1;
 }
 
 // adjusts to width of contents
-.l-sidebar-side.shrink {
+.l-side.shrink {
 	flex-grow: 0;
 }
 
-.l-sidebar-side.xs {
+.l-side.xs {
 	flex-basis: var(--#{$prefix}sidebar-width-xs);
 }
 
-.l-sidebar-side.sm {
+.l-side.sm {
 	flex-basis: var(--#{$prefix}sidebar-width-sm);
 }
 
-.l-sidebar-side.md {
+.l-side.md {
 	flex-basis: var(--#{$prefix}sidebar-width-md);
 }
 
-.l-sidebar-side.lg {
+.l-side.lg {
 	flex-basis: var(--#{$prefix}sidebar-width-lg);
 }
 
-.l-sidebar-side.xl {
+.l-side.xl {
 	flex-basis: var(--#{$prefix}sidebar-width-xl);
 }
 
 @include max-width(bp-md) {
-	.l-sidebar-side.sm + .l-sidebar-main {
+	.l-side.sm + .l-main {
 		min-inline-size: calc(100% - var(--#{$prefix}sidebar-width-sm));
 		gap: calc(var(--#{$prefix}gap) / 2);
 	}
 }
 
 @include min-width(bp-md) {
-	.l-sidebar-main .layer {
+	.l-main .layer {
 		margin-block-start: var(--#{$prefix}margin-md);
 	}
-	.l-sidebar-side aside {
+	// TODO: remove this from layout
+	.l-side aside {
 		padding: var(--#{$prefix}padding-md);
 	}
 }

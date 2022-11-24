@@ -6,8 +6,9 @@ list: [1, 2, 3, 4, "boo"]
 ---
 
 <script lang="ts">
-	import { Canvas } from '@fat-fuzzy/ui';
 	import Decisions from '../../data/decisions/decisions.md';
+	import {blocks} from '@fat-fuzzy/ui'
+	const { Canvas } = blocks
 
 </script>
 

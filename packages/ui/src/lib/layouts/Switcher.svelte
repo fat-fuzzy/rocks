@@ -3,7 +3,7 @@
 
 	let className = ''
 
-	$: className = `l-stack ${size} `
+	$: className = `l-switcher ${size} `
 </script>
 
 <div class={className}>

@@ -81,7 +81,7 @@
 </script>
 
 <div class="l-sidebar">
-	<div class="l-sidebar-main">
+	<div class="l-main">
 		<div
 			class="l-frame video layer"
 			bind:offsetWidth={canvasWidth}
@@ -96,7 +96,7 @@
 		</div>
 		<Controls {play} {stop} />
 	</div>
-	<div class="l-sidebar-side md">
+	<div class="l-side md">
 		<aside class="l-stack sm">
 			{#if details}
 				<Button testId="btn-details" {variant} handleClick={() => togglelDetails()}>
