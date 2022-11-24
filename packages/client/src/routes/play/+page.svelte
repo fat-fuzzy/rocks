@@ -36,10 +36,10 @@
 </header>
 
 <section class="l-sidebar">
-	<div class="l-sidebar-side sm shrink">
+	<div class="l-side sm shrink">
 		<Menu on:input={loadAnimation} {menuItems} />
 	</div>
-	<div class="l-sidebar-main l-stack">
+	<div class="l-main l-stack">
 		<Canvas show={showcanvas} {sketch} />
 		<Feedback {feedback} show={showFeedback} />
 	</div>

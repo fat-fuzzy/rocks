@@ -5,7 +5,7 @@ color: cadetblue
 list: [1, 2, 3, 4, "boo"]
 ---
 
-<script>
+<script lang="ts">
 	import {blocks} from '@fat-fuzzy/ui'
 	const { Canvas } = blocks
 </script>

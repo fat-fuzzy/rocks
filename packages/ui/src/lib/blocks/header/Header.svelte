@@ -34,7 +34,7 @@
 </script>
 
 <header class={mainMenuClass}>
-	<nav class="l-sidebar-main">
+	<nav class="l-main">
 		<ul class="l-wrapper">
 			<li class:active={page.url.pathname === '/'} class="home">
 				<a data-sveltekit-prefetch href="/">
@@ -50,7 +50,7 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="l-sidebar-side">
+	<div class="l-side">
 		<menu class="dropdown sm" use:clickOutside on:click_outside={handleClickOutside}>
 			<button
 				type="button"

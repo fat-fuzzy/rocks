@@ -17,11 +17,11 @@ header {
 // 	justify-content: space-between;
 // }
 
-.header-app > .l-sidebar-main {
+.header-app > .l-main {
 	min-inline-size: 55%;
 }
 
-.header-app > .l-sidebar-side {
+.header-app > .l-side {
 	flex-basis: var(--#{$prefix}sidebar-width-xs);
 	position: relative;
 	display: flex;
@@ -32,7 +32,7 @@ header {
 }
 
 @include min-width(bp-md) {
-	.header-app > .l-sidebar-side {
+	.header-app > .l-side {
 		flex-basis: var(--#{$prefix}sidebar-width-lg);
 	}
 }
