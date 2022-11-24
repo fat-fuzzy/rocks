@@ -18,7 +18,7 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		<div>to your new SvelteKit app</div>
 	</h1>
 
 	<h2>
@@ -40,7 +40,9 @@
 	h1 {
 		width: 100%;
 	}
-
+	h1 div {
+		text-align: center;
+	}
 	.welcome {
 		display: block;
 		position: relative;

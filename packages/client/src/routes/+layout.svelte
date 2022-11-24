@@ -5,11 +5,11 @@
 <div class="app">
 	<Header />
 
-	<main>
+	<main class="l-wrapper">
 		<slot />
 	</main>
 
-	<footer>
+	<footer class="l-wrapper">
 		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 	</footer>
 </div>
