@@ -9,9 +9,9 @@
 .dropdown .toggle.collapse + .show {
 	position: absolute;
 	top: 2.5em;
-	z-index: var(--#{$prefix}z-index-dropdown);
-	box-shadow: var(--#{$prefix}shadow);
-	border-radius: var(--#{$prefix}radius-base);
+	z-index: var(#{$prefix}-z-index-dropdown);
+	box-shadow: var(#{$prefix}-shadow);
+	border-radius: var(#{$prefix}-radius-base);
 }
 
 .dropdown .toggle.collapse + .show.left {
@@ -60,5 +60,5 @@
 }
 
 .dropdown .toggle.collapse + .md {
-	padding: var(--#{$prefix}padding-md);
+	padding: var(#{$prefix}-size-md);
 }

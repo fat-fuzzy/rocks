@@ -1,7 +1,7 @@
 .emoji {
-	padding: var(--#{$prefix}font-size-base);
+	padding: var(#{$prefix}-font-size-base);
 }
 
 .icon.lg {
-	font-size: var(--#{$prefix}font-size-lg);
+	font-size: var(#{$prefix}-font-size-lg);
 }

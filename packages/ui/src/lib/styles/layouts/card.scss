@@ -4,7 +4,7 @@
 	flex-wrap: wrap;
 	text-align: center;
 	border-radius: 3px;
-	border: 1px solid var(--#{$prefix}primary);
-	color: var(--#{$prefix}primary);
-	padding: var(--#{$prefix}padding-md);
+	border: 1px solid var(#{$prefix}-primary);
+	color: var(#{$prefix}-primary);
+	padding: var(#{$prefix}-size-md);
 }

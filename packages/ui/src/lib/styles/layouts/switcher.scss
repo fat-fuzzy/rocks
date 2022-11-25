@@ -1,7 +1,7 @@
 .l-switcher {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--#{$prefix}gap);
+	gap: var(#{$prefix}-gap);
 }
 
 .l-switcher > * {
@@ -10,31 +10,31 @@
 }
 
 .l-switcher.xxs {
-	gap: calc(var(--#{$prefix}gap) / 2);
-	--threshold: var(--#{$prefix}sidebar-width-xs);
+	gap: calc(var(#{$prefix}-gap) / 2);
+	--threshold: var(#{$prefix}-sidebar-width-xs);
 }
 
 .l-switcher.xs {
-	gap: var(--#{$prefix}gap);
-	--threshold: var(--#{$prefix}sidebar-width-xs);
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-xs);
 }
 
 .l-switcher.sm {
-	gap: var(--#{$prefix}gap);
-	--threshold: var(--#{$prefix}sidebar-width-sm);
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-sm);
 }
 
 .l-switcher.md {
-	gap: var(--#{$prefix}gap);
-	--threshold: var(--#{$prefix}sidebar-width-md);
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-md);
 }
 
 .l-switcher.lg {
-	gap: var(--#{$prefix}gap);
-	--threshold: var(--#{$prefix}sidebar-width-lg);
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-lg);
 }
 
 .l-switcher.xl {
-	gap: var(--#{$prefix}gap);
-	--threshold: var(--#{$prefix}sidebar-width-xl);
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-xl);
 }
