@@ -75,6 +75,10 @@ I departed from a fresh SvelteKit lib project for the **ui** package, and it did
 
 ADR templates are useful, I'm keeping them for reference and for decision docs.
 
-🚧 Chosen option for doc:
+🚧 Chosen option for doc: []()
 
-WIP - I will look at the projects above more closely. Back soon
+- Used [mdsvex svelte adder](https://github.com/svelte-add/mdsvex) which went smoothly using this command for pnpm:
+
+```bash
+pnpm dlx svelte-add@latest mdsvex
+```
