@@ -3,9 +3,9 @@
 	import {clickOutside} from '../../utils/click-outside.js'
 
 	const dispatch = createEventDispatcher()
-	export let layout = `stack`
-	export let size = `sm`
-	export let variant = `primary`
+	export let layout = 'stack'
+	export let size = 'sm'
+	export let variant = 'primary'
 	export let items: {id: string; title: string; emoji: string}[] = []
 
 	let selected = ''
@@ -30,7 +30,7 @@
 			selected,
 		})
 	}
-	$: show = menuExpanded ? `show left` : `hide`
+	$: show = menuExpanded ? 'show left' : 'hide'
 </script>
 
 <div class="dropdown">

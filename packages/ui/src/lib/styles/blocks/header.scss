@@ -2,12 +2,12 @@ header {
 	display: flex;
 }
 
-.header-main {
+.header-page {
 	align-items: baseline;
 }
 
 .header-app + *,
-.header-main + * {
+.header-page + * {
 	margin-block-start: calc(var(--#{$prefix}gap) / 2);
 }
 

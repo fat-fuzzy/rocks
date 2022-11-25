@@ -310,33 +310,33 @@
 	background: var(--#{$prefix}color-white);
 }
 
-.dark .l-main > nav a,
-.dark .l-main > nav a:visited {
+.dark .header-app > nav a,
+.dark .header-app > nav a:visited {
 	color: var(--#{$prefix}color-light);
 }
 
-.light .l-main > nav a,
-.light .l-main > nav a:visited {
+.light .header-app > nav a,
+.light .header-app > nav a:visited {
 	color: var(--#{$prefix}gray-4);
 }
 
-.dark .l-main > nav a:hover {
+.dark .header-app > nav a:hover {
 	color: var(--#{$prefix}primary-light);
 }
-.light .l-main > nav a:hover {
+.light .header-app > nav a:hover {
 	color: var(--#{$prefix}primary-light);
 }
 
-.dark .l-main > nav li.active a {
+.dark .header-app > nav li.active a {
 	color: var(--#{$prefix}primary-lighter);
 }
-.light .l-main > nav li.active a {
+.light .header-app > nav li.active a {
 	color: var(--#{$prefix}primary);
 }
 
-.dark .l-main > nav li.active::before {
+.dark .header-app > nav li.active::before {
 	border-top: var(--size) solid var(--#{$prefix}primary-lighter);
 }
-.light .l-main > nav li.active::before {
+.light .header-app > nav li.active::before {
 	border-top: var(--size) solid var(--#{$prefix}primary);
 }

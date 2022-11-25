@@ -1,10 +1,10 @@
 <script lang="ts">
 	import {clickOutside} from '../utils/click-outside.js'
 
-	export let layout = `stack`
-	export let size = `md`
-	export let variant = `primary`
-	export let alignment = `left`
+	export let layout = 'stack'
+	export let size = 'md'
+	export let variant = 'primary'
+	export let alignment = 'left'
 	let expanded = false
 
 	function toggleDropdown(event) {
@@ -15,7 +15,7 @@
 		expanded = false
 	}
 
-	$: show = expanded ? `show ${alignment}` : `hide`
+	$: show = expanded ? `show ${alignment}` : 'hide'
 </script>
 
 <div class="dropdown">
