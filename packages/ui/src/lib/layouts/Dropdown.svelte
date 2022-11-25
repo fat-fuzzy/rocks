@@ -19,7 +19,7 @@
 </script>
 
 <div class="dropdown">
-	<menu class={`l-${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
+	<menu class={`l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
 		<slot name="toggle">
 			<button
 				type="button"

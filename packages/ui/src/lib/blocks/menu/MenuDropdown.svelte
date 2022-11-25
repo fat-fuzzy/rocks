@@ -3,10 +3,10 @@
 	import {clickOutside} from '../../utils/click-outside.js'
 
 	const dispatch = createEventDispatcher()
-	export let layout = `l-stack`
+	export let layout = `stack`
 	export let size = `sm`
 	export let variant = `primary`
-	export let menuItems: {id: string; title: string; emoji: string}[] = []
+	export let items: {id: string; title: string; emoji: string}[] = []
 
 	let selected = ''
 	function getLabel(emoji, title) {
@@ -34,7 +34,7 @@
 </script>
 
 <div class="dropdown">
-	<menu class={`l-${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
+	<menu class={`l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
 		<button
 			type="button"
 			class={`toggle collapse ${variant}`}
@@ -45,7 +45,7 @@
 		</button>
 		<div class={show}>
 			<menu class={`${layout} ${size}`}>
-				{#each menuItems as { title, emoji, id }}
+				{#each items as { title, emoji, id }}
 					<button
 						type="button"
 						class:outline={id === selected}

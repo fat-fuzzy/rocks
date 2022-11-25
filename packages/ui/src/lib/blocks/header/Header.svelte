@@ -51,7 +51,7 @@
 		</ul>
 	</nav>
 	<div class="l-side">
-		<menu class="dropdown sm" use:clickOutside on:click_outside={handleClickOutside}>
+		<menu class="dropdown sm" use:clickOutside on:clickOutside={handleClickOutside}>
 			<button
 				type="button"
 				class="toggle collapse primary"
