@@ -30,7 +30,7 @@
 	/>
 </svelte:head>
 
-<header class="header-main">
+<header class="header-page">
 	<h1>👾 Play</h1>
 	{#if sketch} <h2>&nbsp;❤︎&nbsp;{sketch.title}&nbsp;{sketch.emoji}</h2> {/if}
 </header>

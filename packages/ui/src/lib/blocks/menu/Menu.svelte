@@ -18,8 +18,7 @@
 		return emoji ? `${emoji} ${title}` : title
 	}
 	const handleClick = (event) => {
-		const element = event.target
-		selected = element.getAttribute('id')
+		selected = event.target.getAttribute('id')
 		dispatch('input', {
 			selected,
 		})
