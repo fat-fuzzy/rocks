@@ -1,18 +1,11 @@
 <script>
 	import Header from './Header.svelte';
-
-	import { blocks, layouts } from '@fat-fuzzy/ui';
-	const { Sidebar } = layouts;
-	const { Menu } = blocks;
 </script>
 
 <div class="app">
-	<Header />
+	<Header clqss="header-app" />
 	<main class="l-wrapper">
-		<Sidebar size="sm">
-			<div slot="side"><Menu layout="switcher" /></div>
-			<div slot="main"><slot /></div>
-		</Sidebar>
+		<slot />
 	</main>
 
 	<footer class="l-wrapper">

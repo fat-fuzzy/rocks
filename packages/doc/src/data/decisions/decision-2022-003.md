@@ -59,12 +59,11 @@ Removed dependencies in root package.json:
 Removed scripts in root package.json:
 
 ```json
-	"scripts": {
-		"build:doc": "adr-log -d ./packages/doc/decisions",
-		"build:design": "node  ./packages/design/node_modules/.bin/build.js",
-		"build": "npm run build:doc",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
+"scripts": {
+    "build:doc": "adr-log -d ./packages/doc/decisions",
+    "build:design": "node  ./packages/design/node_modules/.bin/build.js",
+    "build": "npm run build:doc",
+},
 ```
 
 Removed storybook
