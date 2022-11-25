@@ -10,7 +10,7 @@
 
 	let sketchId = 'default'
 	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
-	const menuItems: {id: string; title: string; emoji: string}[] = sketches
+	const items: {id: string; title: string; emoji: string}[] = sketches
 
 	let showcanvas = true
 	let showFeedback = !showcanvas
@@ -38,7 +38,7 @@
 
 <section class="l-sidebar">
 	<div class="l-side sm shrink">
-		<Menu on:input={loadSketch} {menuItems} />
+		<Menu on:input={loadSketch} {items} />
 	</div>
 	<div class="l-main l-stack">
 		<Canvas show={showcanvas} {sketch} />
