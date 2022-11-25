@@ -1,11 +1,7 @@
 <script lang="ts">
 	export let size = 'md'
-
-	let className = ''
-
-	$: className = `l-stack ${size} `
 </script>
 
-<div class={className}>
+<div class={`l-stack ${size}`}>
 	<slot />
 </div>

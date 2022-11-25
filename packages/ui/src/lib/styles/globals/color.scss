@@ -310,33 +310,33 @@
 	background: var(--#{$prefix}color-white);
 }
 
-.dark .u-main > nav a,
-.dark .u-main > nav a:visited {
+.dark .l-main > nav a,
+.dark .l-main > nav a:visited {
 	color: var(--#{$prefix}color-light);
 }
 
-.light .u-main > nav a,
-.light .u-main > nav a:visited {
+.light .l-main > nav a,
+.light .l-main > nav a:visited {
 	color: var(--#{$prefix}gray-4);
 }
 
-.dark .u-main > nav a:hover {
+.dark .l-main > nav a:hover {
 	color: var(--#{$prefix}primary-light);
 }
-.light .u-main > nav a:hover {
+.light .l-main > nav a:hover {
 	color: var(--#{$prefix}primary-light);
 }
 
-.dark .u-main > nav li.active a {
+.dark .l-main > nav li.active a {
 	color: var(--#{$prefix}primary-lighter);
 }
-.light .u-main > nav li.active a {
+.light .l-main > nav li.active a {
 	color: var(--#{$prefix}primary);
 }
 
-.dark .u-main > nav li.active::before {
+.dark .l-main > nav li.active::before {
 	border-top: var(--size) solid var(--#{$prefix}primary-lighter);
 }
-.light .u-main > nav li.active::before {
+.light .l-main > nav li.active::before {
 	border-top: var(--size) solid var(--#{$prefix}primary);
 }

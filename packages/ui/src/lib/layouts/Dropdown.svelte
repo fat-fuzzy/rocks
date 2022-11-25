@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {clickOutside} from '../utils/click-outside.js'
 
-	export let layout = `l-stack`
+	export let layout = `stack`
 	export let size = `md`
 	export let variant = `primary`
 	export let alignment = `left`
@@ -19,7 +19,7 @@
 </script>
 
 <div class="dropdown">
-	<menu class={`${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
+	<menu class={`l-${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
 		<slot name="toggle">
 			<button
 				type="button"

@@ -10,7 +10,7 @@ nav > ul {
 	width: 100%;
 }
 
-.u-main > nav > ul {
+.l-main > nav > ul {
 	position: relative;
 	padding: 0;
 	margin: 0;
@@ -21,12 +21,12 @@ nav > ul {
 	background-size: contain;
 }
 
-.u-main > nav li {
+.l-main > nav li {
 	position: relative;
 	height: 100%;
 }
 
-.u-main > nav li.active::before {
+.l-main > nav li.active::before {
 	--size: 6px;
 	content: '';
 	width: 0;
@@ -37,7 +37,7 @@ nav > ul {
 	border: var(--size) solid transparent;
 }
 
-.u-main > nav a {
+.l-main > nav a {
 	display: flex;
 	height: 100%;
 	align-items: center;

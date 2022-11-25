@@ -34,7 +34,7 @@
 </script>
 
 <div class="dropdown">
-	<menu class={`${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
+	<menu class={`l-${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
 		<button
 			type="button"
 			class={`toggle collapse ${variant}`}

@@ -25,7 +25,7 @@
 		lang.set(event.detail)
 	}
 
-	$: mainMenuClass = `${className} l-sidebar u-main layer`
+	$: mainMenuClass = `${className} l-sidebar l-wrapper l-main layer`
 	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang
@@ -35,7 +35,7 @@
 
 <header class={mainMenuClass}>
 	<nav class="l-main">
-		<ul class="l-wrapper">
+		<ul>
 			<li class:active={page.url.pathname === '/'} class="home">
 				<a data-sveltekit-prefetch href="/">
 					<span class="l-square" alt="Home">🐣</span>
