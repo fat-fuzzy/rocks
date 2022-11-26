@@ -34,7 +34,7 @@
 </script>
 
 <header class={mainMenuClass}>
-	<nav class="l-main  l-wrapper">
+	<nav class="l-main l-burrito">
 		<ul>
 			<li class:active={page.url.pathname === '/'} class="home">
 				<a data-sveltekit-prefetch href="/">

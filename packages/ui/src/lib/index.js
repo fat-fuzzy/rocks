@@ -5,7 +5,7 @@
 import Dropdown from './layouts/Dropdown.svelte'
 import Sidebar from './layouts/Sidebar.svelte'
 import Stack from './layouts/Stack.svelte'
-import Wrapper from './layouts/Wrapper.svelte'
+import Burrito from './layouts/Burrito.svelte'
 
 /**
  * Block components
@@ -45,7 +45,7 @@ const layouts = {
 	Dropdown,
 	Sidebar,
 	Stack,
-	Wrapper,
+	Burrito,
 }
 const blocks = {
 	Button,
