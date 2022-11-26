@@ -44,7 +44,7 @@
 			👾 Scenes
 		</button>
 		<div class={show}>
-			<menu class={`${layout} ${size}`}>
+			<menu class={`l-${layout} ${size}`}>
 				{#each items as { title, emoji, id }}
 					<button
 						type="button"

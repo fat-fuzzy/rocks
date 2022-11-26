@@ -3,7 +3,7 @@
 	import type {Sketch} from '$data/data'
 	import Canvas from '$lib/blocks/canvas/Canvas.svelte'
 	import Feedback from '$lib/blocks/feedback/Feedback.svelte'
-	import Menu from '$lib/blocks/menu/Menu.svelte'
+	import MenuDropdown from '$lib/blocks/menu/MenuDropdown.svelte'
 
 	export let data: PageData
 	const {sketches} = data
@@ -38,7 +38,7 @@
 
 <section class="l-sidebar">
 	<div class="l-side sm shrink">
-		<Menu on:input={loadSketch} {items} />
+		<MenuDropdown on:input={loadSketch} {items} />
 	</div>
 	<div class="l-main l-stack">
 		<Canvas show={showcanvas} {sketch} />
