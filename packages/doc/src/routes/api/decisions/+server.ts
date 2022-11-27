@@ -1,16 +1,20 @@
 import type { RequestHandler } from './$types';
-import data from '$data/decisions';
+import { json } from '@sveltejs/kit';
+import { fetchMarkdownData } from '$utils';
 
-const { decisions } = data;
-
-export const GET: RequestHandler = async ({ url }) => {
-	const content = await import(url);
-	return {
-		decisions: decisions.map((d) => {
-			return {
-				...d,
-				content: content.default
-			};
-		})
-	};
+/**
+ * API Endpoint /api/decisions
+ * @returns array of decisions
+ */
+export const GET: RequestHandler = async () => {
+	try {
+		const allPosts = await fetchMarkdownData();
+		const sortedPosts = allPosts.sort((a, b) => {
+			return a.meta.id < b.meta.id ? -1 : b.meta.id < a.meta.id ? 1 : 0;
+		});
+		return json(sortedPosts);
+	} catch (error) {
+		console.log(error);
+		// TODO: proper error handling
+	}
 };
