@@ -13,7 +13,12 @@
 </svelte:head>
 
 <Sidebar>
-	<Menu slot="side" items={decisions} />
+	<div slot="side">
+		{#each decisions as { meta, path }}
+			<a href={path}>{meta.title}</a>
+			Published {meta.year}
+		{/each}
+	</div>
 	<div slot="main" class="l-stack">
 		<slot />
 	</div>
