@@ -1,23 +1,27 @@
 export interface Decision {
 	id: string;
+	year: number;
 	title: string; // for reference only, not sure I'll keep it
-	content?: string;
 }
 const decisions: Decision[] = [
 	{
-		id: 'decision-2022-000',
+		id: '000',
+		year: 2022,
 		title: 'Architectural decisions'
 	},
 	{
-		id: 'decision-2022-001',
+		id: '001',
+		year: 2022,
 		title: 'Monorepo'
 	},
 	{
-		id: 'decision-2022-002',
+		id: '002',
+		year: 2022,
 		title: 'Initial Packages and Stack'
 	},
 	{
-		id: 'decision-2022-003',
+		id: '003',
+		year: 2022,
 		title: 'Document and simplify'
 	}
 ];

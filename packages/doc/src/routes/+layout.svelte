@@ -3,7 +3,7 @@
 </script>
 
 <div class="app">
-	<Header clqss="header-app" />
+	<Header />
 	<main class="l-burrito">
 		<slot />
 	</main>
