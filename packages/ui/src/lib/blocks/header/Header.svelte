@@ -3,6 +3,7 @@
 	import {lang} from '../../stores/intl'
 	import {theme} from '../../stores/theme'
 	import {emojis, themes} from '../../types/constants.js'
+	import github from '$lib/images/github.svg'
 
 	export let className = ''
 	export let page
@@ -53,6 +54,11 @@
 	<div class="l-side">
 		<menu class="dropdown sm" use:clickOutside on:clickOutside={handleClickOutside}>
 			<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
+			<div class="corner">
+				<a href="https://github.com/fat-fuzzy/rocks">
+					<img src={github} alt="GitHub" />
+				</a>
+			</div>
 			<!--button
 				type="button"
 				class="md toggle collapse primary"
@@ -79,3 +85,27 @@
 		</menu>
 	</div>
 </header>
+
+<style lang="scss">
+	/* TODO: cleanup this css (sveltekit app styles) */
+	.corner {
+		width: 2em;
+		height: 2em;
+		margin-inline-start: 1em;
+	}
+
+	.corner a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		border-radius: var(--ui-radius-base);
+	}
+
+	.corner img {
+		height: 100%;
+		width: auto;
+		object-fit: contain;
+	}
+</style>

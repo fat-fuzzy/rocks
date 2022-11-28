@@ -28,7 +28,7 @@
 			</a>
 		</div>
 		<div class="corner">
-			<a href="https://github.com/sveltejs/kit">
+			<a href="https://github.com/fat-fuzzy/rocks">
 				<img src={github} alt="GitHub" />
 			</a>
 		</div>
