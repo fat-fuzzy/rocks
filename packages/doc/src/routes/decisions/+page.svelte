@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	export let data: PageData;
-	let { decisions } = data;
+	import { page } from '$app/stores';
+	const { decisions } = $page.data;
 </script>
 
 {#each decisions as { meta, path }}

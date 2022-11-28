@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { LayoutData } from './$types';
-	export let data: LayoutData;
-	const { decisions } = data;
+	import { page } from '$app/stores';
+	const { decisions } = $page.data;
 	import { blocks, layouts } from '@fat-fuzzy/ui';
 	const { Sidebar } = layouts;
 	const { Menu } = blocks;
