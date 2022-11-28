@@ -1,10 +1,10 @@
 /**
- * Load data from markdown file based on route parameters
- * @param params Request parameters
- * @returns { title, year, Content } frontmatter metadata and a Content svelte component that renders the contents of the file
+ * Load Decision data from markdown files contained in 'src/data/decisions'
+ *
+ * @returns { meta, path } frontmatter metadata and path of markdown files to load
  */
 
-export const fetchMarkdownData = async () => {
+export const fetchDecisionsFileData = async () => {
 	const allMDFiles = import.meta.glob('/src/data/decisions/*.md');
 	const iterableMDFiles = Object.entries(allMDFiles);
 

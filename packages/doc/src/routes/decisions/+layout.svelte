@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	const { decisions } = $page.data;
 	import { blocks, layouts } from '@fat-fuzzy/ui';
 	const { Sidebar } = layouts;
 	const { Menu } = blocks;
+
+	$: decisions = $page.data.decisions;
 </script>
 
 <svelte:head>
