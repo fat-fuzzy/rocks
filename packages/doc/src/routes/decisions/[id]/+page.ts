@@ -1,21 +1,23 @@
+import { error } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
+
+const DATA_PATH = '../../../data/decisions/';
 /**
- * Load data from [.md] file based on route parameters
+ * Load data from markdown file based on route parameters
  * @param params Request parameters
- * @returns
+ * @returns { title, year, Content } frontmatter metadata and a Content svelte component that renders the contents of the file
  */
-export async function load({ params }) {
-	try {
-		const post = await import(`../${params.id}.md`);
-		const { title, year } = post.metadata;
-		const Content = post.default;
+export const load: PageLoad = async ({ params }) => {
+	const markdown = await import(`${DATA_PATH}${params.id}.md`);
+	if (markdown) {
+		const { title, year } = markdown.metadata;
+		const Content = markdown.default;
 
 		return {
 			title,
 			year,
-			Content // capitalize this to use component <Content />
+			Content // capitalize this to use component <Content /> in +page.svelte
 		};
-	} catch (error) {
-		console.log(error);
-		// TODO: proper error handling
 	}
-}
+	throw error(404, 'Not found');
+};
