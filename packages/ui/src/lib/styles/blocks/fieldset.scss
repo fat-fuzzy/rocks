@@ -1,5 +1,5 @@
 fieldset {
-	border-radius: var(--#{$prefix}radius-base);
+	border-radius: var(#{$prefix}-radius-base);
 	border: 1px solid currentcolor;
 	> legend {
 		font-weight: bold;
@@ -18,6 +18,6 @@ fieldset.xxs {
 
 fieldset.xs {
 	> * + * {
-		margin-block-start: var(--#{$prefix}margin-block-xs);
+		margin-block-start: var(#{$prefix}-size-xs);
 	}
 }

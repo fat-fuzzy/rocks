@@ -11,7 +11,7 @@
 	$: variant = $theme ? `accent` : `highlight`
 </script>
 
-<div class="l-wrapper xxl">
+<div class="l-burrito xxl">
 	<menu class="menu l-switcher sm">
 		<Button testId="btn-play" {variant} handleClick={play} type="button" {disabled}>
 			▶︎ &nbsp;Play

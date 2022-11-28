@@ -2,13 +2,13 @@ header {
 	display: flex;
 }
 
-.header-main {
+.header-page {
 	align-items: baseline;
 }
 
 .header-app + *,
-.header-main + * {
-	margin-block-start: calc(var(--#{$prefix}gap) / 2);
+.header-page + * {
+	margin-block-start: calc(var(#{$prefix}-gap) / 2);
 }
 
 //== App header
@@ -22,17 +22,17 @@ header {
 }
 
 .header-app > .l-side {
-	flex-basis: var(--#{$prefix}sidebar-width-xs);
+	flex-basis: var(#{$prefix}-sidebar-width-xs);
 	position: relative;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	padding-left: calc(var(--#{$prefix}gap) / 2);
-	padding-right: calc(var(--#{$prefix}gap) / 2);
+	padding-left: calc(var(#{$prefix}-gap) / 2);
+	padding-right: calc(var(#{$prefix}-gap) / 2);
 }
 
 @include min-width(bp-md) {
 	.header-app > .l-side {
-		flex-basis: var(--#{$prefix}sidebar-width-lg);
+		flex-basis: var(#{$prefix}-sidebar-width-lg);
 	}
 }

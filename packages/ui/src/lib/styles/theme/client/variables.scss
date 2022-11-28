@@ -1,5 +1,5 @@
 $_cssvars: null;
-$prefix: client-;
+$prefix: --client;
 $colors: (
 	'gray-1': #ccc,
 	'gray-2': #ddd,
@@ -22,7 +22,7 @@ $colors: (
 	'highlight': rgb(246, 226, 10),
 	'highlight-light': rgb(251, 244, 162),
 	'highlight-lighter': rgb(249, 243, 190),
-	// 'shadow-color': var(--#{$prefix}color-dark),
+	// 'shadow-color': var(#{$prefix}-color-dark),
 	'shadow-light-color': 220 80% 80%,
 	'shadow-color': 220 3% 15%,
 	'shadow-strength': 1%,
@@ -31,28 +31,28 @@ $colors: (
 $typography: (
 	font-family-base: serif,
 	//
-	font-size-base: var(--#{$prefix}fluid-0),
-	font-size-h5: var(--#{$prefix}fluid-1),
-	font-size-h4: var(--#{$prefix}fluid-2),
-	font-size-h3: var(--#{$prefix}fluid-3),
-	font-size-h2: var(--#{$prefix}fluid-4),
-	font-size-h1: var(--#{$prefix}fluid-5),
+	font-size-base: var(#{$prefix}-fluid-0),
+	font-size-h5: var(#{$prefix}-fluid-1),
+	font-size-h4: var(#{$prefix}-fluid-2),
+	font-size-h3: var(#{$prefix}-fluid-3),
+	font-size-h2: var(#{$prefix}-fluid-4),
+	font-size-h1: var(#{$prefix}-fluid-5),
 	//// TODO: fix font-size-md - This font-size is not right
-	font-size-md: var(--#{$prefix}fluid-0),
-	font-size-lg: var(--#{$prefix}fluid-1),
-	font-size-xl: var(--#{$prefix}fluid-2),
-	font-size-xxl: var(--#{$prefix}fluid-3),
-	// font-size-sm: calc(var(--#{$prefix}font-size-md) * var(--#{$prefix}s-1)),
-	// font-size-xs: calc(var(--#{$prefix}font-size-md) * var(--#{$prefix}s-2)),
-	// font-size-xxs: calc(var(--#{$prefix}font-size-md) * vars(--#{$prefix}s-3)),
-	font-size-sm: var(--#{$prefix}300),
-	font-size-xs: var(--#{$prefix}200),
-	font-size-xxs: var(--#{$prefix}100),
+	font-size-md: var(#{$prefix}-fluid-0),
+	font-size-lg: var(#{$prefix}-fluid-1),
+	font-size-xl: var(#{$prefix}-fluid-2),
+	font-size-xxl: var(#{$prefix}-fluid-3),
+	// font-size-sm: calc(var(#{$prefix}-font-size-md) * var(#{$prefix}-s-1)),
+	// font-size-xs: calc(var(#{$prefix}-font-size-md) * var(#{$prefix}-s-2)),
+	// font-size-xxs: calc(var(#{$prefix}-font-size-md) * vars(#{$prefix}-s-3)),
+	font-size-sm: var(#{$prefix}-300),
+	font-size-xs: var(#{$prefix}-200),
+	font-size-xxs: var(#{$prefix}-100),
 	//
 	font-weight-light: 100,
 	font-weight-medium: 300,
 	font-weight-bold: 500,
-	font-color-base: var(--#{$prefix}color-dark),
+	font-color-base: var(#{$prefix}-color-dark),
 );
 
 $breakpoints: (
@@ -111,17 +111,17 @@ $size-scale: (
 
 $scale: (
 	ratio: 1.5,
-	s-5: calc(var(--#{$prefix}s-4) / var(--#{$prefix}ratio)),
-	s-4: calc(var(--#{$prefix}s-3) / var(--#{$prefix}ratio)),
-	s-3: calc(var(--#{$prefix}s-2) / var(--#{$prefix}ratio)),
-	s-2: calc(var(--#{$prefix}s-1) / var(--#{$prefix}ratio)),
-	s-1: calc(var(--#{$prefix}s0) / var(--#{$prefix}ratio)),
+	s-5: calc(var(#{$prefix}-s-4) / var(#{$prefix}-ratio)),
+	s-4: calc(var(#{$prefix}-s-3) / var(#{$prefix}-ratio)),
+	s-3: calc(var(#{$prefix}-s-2) / var(#{$prefix}-ratio)),
+	s-2: calc(var(#{$prefix}-s-1) / var(#{$prefix}-ratio)),
+	s-1: calc(var(#{$prefix}-s0) / var(#{$prefix}-ratio)),
 	s0: $base-size,
-	s1: calc(var(--#{$prefix}s0) * var(--#{$prefix}ratio)),
-	s2: calc(var(--#{$prefix}s1) * var(--#{$prefix}ratio)),
-	s3: calc(var(--#{$prefix}s2) * var(--#{$prefix}ratio)),
-	s4: calc(var(--#{$prefix}s3) * var(--#{$prefix}ratio)),
-	s5: calc(var(--#{$prefix}s4) * var(--#{$prefix}ratio)),
+	s1: calc(var(#{$prefix}-s0) * var(#{$prefix}-ratio)),
+	s2: calc(var(#{$prefix}-s1) * var(#{$prefix}-ratio)),
+	s3: calc(var(#{$prefix}-s2) * var(#{$prefix}-ratio)),
+	s4: calc(var(#{$prefix}-s3) * var(#{$prefix}-ratio)),
+	s5: calc(var(#{$prefix}-s4) * var(#{$prefix}-ratio)),
 );
 
 //== FLUID SCALE
@@ -133,7 +133,7 @@ $scale: (
  * 
  *
  * body {
- *   font-size: var(--#{$prefix}fluid-0)
+ *   font-size: var(#{$prefix}-fluid-0)
  * }
  *
  */
@@ -150,42 +150,16 @@ $modular-scale: (
 );
 
 $layout: (
-	aspect-ratio-1-1: calc(1 / 1),
-	aspect-ratio-1-2: calc(1 / 2),
-	aspect-ratio-2-1: calc(2 / 1),
-	aspect-ratio-16-9: calc(16 / 9),
-	aspect-ratio-1-1dot35: calc(1 / 1.35),
-	aspect-ratio-1dot35-1: calc(1.35 / 1),
-	orientation-portrait: portrait,
-	orientation-landscape: landscape,
 	gap: $base-size,
 	//
-	padding-nul: 0,
-	padding-xxs: var(--#{$prefix}s-5),
-	padding-xs: var(--#{$prefix}s-4),
-	padding-sm: var(--#{$prefix}s-3),
-	padding-md: var(--#{$prefix}s-2),
-	padding-lg: var(--#{$prefix}s-1),
-	padding-xl: var(--#{$prefix}s0),
-	padding-xxl: var(--#{$prefix}s1),
-	//
-	margin-nul: 0,
-	margin-xxs: var(--#{$prefix}s-5),
-	margin-xs: var(--#{$prefix}s-4),
-	margin-sm: var(--#{$prefix}s-3),
-	margin-md: var(--#{$prefix}s-2),
-	margin-lg: var(--#{$prefix}s-1),
-	margin-xl: var(--#{$prefix}s0),
-	margin-xxl: var(--#{$prefix}s1),
-	//
-	margin-block-nul: 0,
-	margin-block-xxs: var(--#{$prefix}s-5),
-	margin-block-xs: var(--#{$prefix}s-4),
-	margin-block-sm: var(--#{$prefix}s-3),
-	margin-block-md: var(--#{$prefix}s-2),
-	margin-block-lg: var(--#{$prefix}s-1),
-	margin-block-xl: var(--#{$prefix}s0),
-	margin-block-xxl: var(--#{$prefix}s1),
+	size-nul: 0,
+	size-xxs: var(#{$prefix}-s-5),
+	size-xs: var(#{$prefix}-s-4),
+	size-sm: var(#{$prefix}-s-3),
+	size-md: var(#{$prefix}-s-2),
+	size-lg: var(#{$prefix}-s-1),
+	size-xl: var(#{$prefix}-s0),
+	size-xxl: var(#{$prefix}-s1),
 	//
 	sidebar-width-xxs: 10ch,
 	sidebar-width-xs: 15ch,
@@ -205,22 +179,20 @@ $layout: (
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3
 	shadow: #{0 -1px 3px 0 hsl(
-			var(--#{$prefix}shadow-color) / calc(var(--#{$prefix}shadow-strength) + 2%)
+			var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 2%)
 		),
-	0 1px 2px -5px hsl(var(--#{$prefix}shadow-color) / calc(var(--#{$prefix}shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(--#{$prefix}shadow-color) / calc(var(--#{$prefix}shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(--#{$prefix}shadow-color) / calc(var(--#{$prefix}shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(--#{$prefix}shadow-color) / calc(var(--#{$prefix}shadow-strength) + 7%)),
+	0 1px 2px -5px hsl(var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 7%)),
 	},
-	shadow-light: #{0 -1px 3px 0 hsl(var(--#{$prefix}shadow-light-color) /
-				calc(var(--#{$prefix}shadow-strength) + 2%)),
-	0 1px 2px -5px hsl(var(--#{$prefix}shadow-light-color) /
-				calc(var(--#{$prefix}shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(--#{$prefix}shadow-light-color) /
-				calc(var(--#{$prefix}shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(--#{$prefix}shadow-light-color) /
-				calc(var(--#{$prefix}shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(--#{$prefix}shadow-light-color) /
-				calc(var(--#{$prefix}shadow-strength) + 7%)),
+	shadow-light: #{0 -1px 3px 0 hsl(var(#{$prefix}-shadow-light-color) /
+				calc(var(#{$prefix}-shadow-strength) + 2%)),
+	0 1px 2px -5px hsl(var(#{$prefix}-shadow-light-color) / calc(var(#{$prefix}-shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(#{$prefix}-shadow-light-color) / calc(var(#{$prefix}-shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(#{$prefix}-shadow-light-color) /
+				calc(var(#{$prefix}-shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(#{$prefix}-shadow-light-color) /
+				calc(var(#{$prefix}-shadow-strength) + 7%)),
 	},
 );

@@ -3,10 +3,10 @@
 	import {clickOutside} from '../../utils/click-outside.js'
 
 	const dispatch = createEventDispatcher()
-	export let layout = `l-stack`
-	export let size = `sm`
-	export let variant = `primary`
-	export let menuItems: {id: string; title: string; emoji: string}[] = []
+	export let layout = 'stack'
+	export let size = 'sm'
+	export let variant = 'primary'
+	export let items: {id: string; title: string; emoji: string}[] = []
 
 	let selected = ''
 	function getLabel(emoji, title) {
@@ -30,25 +30,26 @@
 			selected,
 		})
 	}
-	$: show = menuExpanded ? `show left` : `hide`
+	$: show = menuExpanded ? 'show left' : 'hide'
 </script>
 
 <div class="dropdown">
-	<menu class={`${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
+	<menu class={`l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
 		<button
 			type="button"
-			class={`toggle collapse ${variant}`}
+			class={`md toggle collapse ${variant}`}
 			aria-expanded={menuExpanded}
 			on:click={toggleDropdown}
 		>
 			👾 Scenes
 		</button>
 		<div class={show}>
-			<menu class={`${layout} ${size}`}>
-				{#each menuItems as { title, emoji, id }}
+			<menu class={`l-${layout} ${size}`}>
+				{#each items as { title, emoji, id }}
 					<button
 						type="button"
 						class:outline={id === selected}
+						class="md"
 						on:click={handleClick}
 						{id}
 						data-test={id}

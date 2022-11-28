@@ -1,11 +1,11 @@
-# ✨ 👾 🪨 Fat Fuzzy Rocks 🪨 🐙 🌊
+# 🪨 👾 ✨ Fat Fuzzy Rocks 🫧 🐙 🪨
 
 This project aims to:
 
 - provide a way to quickly bootstrap new web applications (websites or other types)
 - be a learning resource
 
-Ideally, this project will meet the following requirements:
+Ideally, this project will:
 
 - [x] integrate a design workflow
 - [x] be flexible

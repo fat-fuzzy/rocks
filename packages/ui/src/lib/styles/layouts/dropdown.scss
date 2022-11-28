@@ -9,9 +9,9 @@
 .dropdown .toggle.collapse + .show {
 	position: absolute;
 	top: 2.5em;
-	z-index: var(--#{$prefix}z-index-dropdown);
-	box-shadow: var(--#{$prefix}shadow);
-	border-radius: var(--#{$prefix}radius-base);
+	z-index: var(#{$prefix}-z-index-dropdown);
+	box-shadow: var(#{$prefix}-shadow);
+	border-radius: var(#{$prefix}-radius-base);
 }
 
 .dropdown .toggle.collapse + .show.left {
@@ -20,6 +20,11 @@
 
 .dropdown .toggle.collapse + .show.right {
 	right: 0;
+}
+
+// TODO: figure out why this is not rendering identically in Header menu vs Play page submenu
+.dropdown .toggle.collapse.md + .show {
+	top: 3em;
 }
 
 .dropdown .toggle.collapse + .hide {
@@ -60,5 +65,5 @@
 }
 
 .dropdown .toggle.collapse + .md {
-	padding: var(--#{$prefix}padding-md);
+	padding: var(#{$prefix}-size-md);
 }

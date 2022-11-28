@@ -3,14 +3,14 @@
 	import type {Sketch} from '$data/data'
 	import Canvas from '$lib/blocks/canvas/Canvas.svelte'
 	import Feedback from '$lib/blocks/feedback/Feedback.svelte'
-	import Menu from '$lib/blocks/menu/Menu.svelte'
+	import MenuDropdown from '$lib/blocks/menu/MenuDropdown.svelte'
 
 	export let data: PageData
 	const {sketches} = data
 
 	let sketchId = 'default'
 	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
-	const menuItems: {id: string; title: string; emoji: string}[] = sketches
+	const items: {id: string; title: string; emoji: string}[] = sketches
 
 	let showcanvas = true
 	let showFeedback = !showcanvas
@@ -31,14 +31,14 @@
 	/>
 </svelte:head>
 
-<header class="header-main">
+<header class="header-page">
 	<h1>👾 Play</h1>
 	{#if sketch} <h2>&nbsp;❤︎&nbsp;{sketch.title}&nbsp;{sketch.emoji}</h2> {/if}
 </header>
 
 <section class="l-sidebar">
 	<div class="l-side sm shrink">
-		<Menu on:input={loadSketch} {menuItems} />
+		<MenuDropdown on:input={loadSketch} {items} />
 	</div>
 	<div class="l-main l-stack">
 		<Canvas show={showcanvas} {sketch} />

@@ -1,7 +1,7 @@
 .l-sidebar {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--#{$prefix}gap);
+	gap: var(#{$prefix}-gap);
 }
 .l-sidebar.end {
 	flex-direction: row-reverse;
@@ -11,7 +11,7 @@
 	flex-grow: 999;
 	// ~ min-width in horizontal-tb writing mode: if (width < 70%) -> wrap
 	min-inline-size: 70%;
-	gap: var(--#{$prefix}gap);
+	gap: var(#{$prefix}-gap);
 }
 
 // adjusts to width of contents
@@ -25,38 +25,38 @@
 }
 
 .l-side.xs {
-	flex-basis: var(--#{$prefix}sidebar-width-xs);
+	flex-basis: var(#{$prefix}-sidebar-width-xs);
 }
 
 .l-side.sm {
-	flex-basis: var(--#{$prefix}sidebar-width-sm);
+	flex-basis: var(#{$prefix}-sidebar-width-sm);
 }
 
 .l-side.md {
-	flex-basis: var(--#{$prefix}sidebar-width-md);
+	flex-basis: var(#{$prefix}-sidebar-width-md);
 }
 
 .l-side.lg {
-	flex-basis: var(--#{$prefix}sidebar-width-lg);
+	flex-basis: var(#{$prefix}-sidebar-width-lg);
 }
 
 .l-side.xl {
-	flex-basis: var(--#{$prefix}sidebar-width-xl);
+	flex-basis: var(#{$prefix}-sidebar-width-xl);
 }
 
 @include max-width(bp-md) {
 	.l-side.sm + .l-main {
-		min-inline-size: calc(100% - var(--#{$prefix}sidebar-width-sm));
-		gap: calc(var(--#{$prefix}gap) / 2);
+		min-inline-size: calc(100% - var(#{$prefix}-sidebar-width-sm));
+		gap: calc(var(#{$prefix}-gap) / 2);
 	}
 }
 
 @include min-width(bp-md) {
 	.l-main .layer {
-		margin-block-start: var(--#{$prefix}margin-md);
+		margin-block-start: var(#{$prefix}-size-md);
 	}
 	// TODO: remove this from layout
 	.l-side aside {
-		padding: var(--#{$prefix}padding-md);
+		padding: var(#{$prefix}-size-md);
 	}
 }
