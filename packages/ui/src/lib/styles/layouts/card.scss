@@ -1,10 +1,11 @@
 .card {
 	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	text-align: center;
-	border-radius: 3px;
+	align-items: center;
+	border-radius: var(#{$prefix}-radius-base);
 	border: 1px solid var(#{$prefix}-primary);
-	color: var(#{$prefix}-primary);
 	padding: var(#{$prefix}-size-md);
+}
+
+.card > * + * {
+	margin-inline-start: 1em;
 }

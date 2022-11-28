@@ -11,7 +11,7 @@
 
 .l-switcher.xxs {
 	gap: calc(var(#{$prefix}-gap) / 2);
-	--threshold: var(#{$prefix}-sidebar-width-xs);
+	--threshold: var(#{$prefix}-sidebar-width-xxs);
 }
 
 .l-switcher.xs {
