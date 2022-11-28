@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 	export let data: LayoutData;
 	const { decisions } = data;
@@ -15,8 +14,9 @@
 
 <Sidebar>
 	<div slot="side">
-		{#each decisions as { meta, path }}
-			<a data-sveltekit-prefetch href={path}>{meta.title}</a><br />
+		{#each decisions as { meta }}
+			<a href={meta.id}>{meta.title}</a><br />
+			Published {meta.year}<br />
 		{/each}
 	</div>
 	<div slot="main" class="l-stack">

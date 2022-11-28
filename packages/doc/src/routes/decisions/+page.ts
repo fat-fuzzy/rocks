@@ -1,13 +1,18 @@
-export const load = async ({ fetch }) => {
-	try {
-		const response = await fetch('/api/decisions');
-		const decisions = await response.json();
+import { error } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
 
+/**
+ * Load decisions
+ * @param params Request parameters
+ * @returns { decisions } frontmatter metadata and a Content svelte component that renders the contents of the file
+ */
+export const load: PageLoad = async ({ fetch }) => {
+	const response = await fetch('/api/decisions');
+	if (response) {
+		const decisions = await response.json();
 		return {
 			decisions
 		};
-	} catch (error) {
-		console.log(error);
-		// TODO: proper error handling
 	}
+	throw error(404, 'Not found');
 };

@@ -5,6 +5,5 @@
 </script>
 
 {#each decisions as { meta, path }}
-	<a href={path}>{meta.title}</a>
-	Published {meta.year}
+	<a class="font-size:xxl" href={path}>{meta.title}</a>
 {/each}
