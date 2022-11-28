@@ -36,6 +36,7 @@
 </header>
 
 <style>
+	/* TODO: cleanup this css (sveltekit app styles) */
 	.corner {
 		width: 3em;
 		height: 3em;

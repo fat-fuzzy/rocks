@@ -15,7 +15,6 @@
 	<div slot="side">
 		{#each decisions as { meta }}
 			<a href={meta.id}>{meta.title}</a><br />
-			Published {meta.year}<br />
 		{/each}
 	</div>
 	<div slot="main" class="l-stack">

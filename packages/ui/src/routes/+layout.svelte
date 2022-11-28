@@ -15,6 +15,7 @@
 
 	$: className = getClassNameFromUrl($page.url)
 
+	// [TODO:] check if this can be done using reactive variables ($:)
 	theme.subscribe((value) => {
 		if (app) {
 			app.classList.remove(currentTheme)
