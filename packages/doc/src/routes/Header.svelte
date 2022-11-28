@@ -1,7 +1,10 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+
+	// TODO: make svg css themeable / fix dark theme
+	import githubLight from '$lib/images/icon-dark-100-optim-github.svg';
+	import github from '$lib/images/icon-dark-100-optim-github.svg';
 </script>
 
 <header class="header-app l-sidebar">
@@ -23,12 +26,12 @@
 	</nav>
 	<div class="l-side">
 		<div class="corner">
-			<a href="https://kit.svelte.dev">
+			<a href="https://kit.svelte.dev" target="_blank" rel="noreferrer">
 				<img src={logo} alt="SvelteKit" />
 			</a>
 		</div>
 		<div class="corner">
-			<a href="https://github.com/fat-fuzzy/rocks">
+			<a href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
 				<img src={github} alt="GitHub" />
 			</a>
 		</div>
@@ -38,8 +41,9 @@
 <style>
 	/* TODO: cleanup this css (sveltekit app styles) */
 	.corner {
-		width: 3em;
-		height: 3em;
+		height: 100%;
+		width: auto;
+		padding: 0.5em;
 	}
 
 	.corner a {
@@ -48,11 +52,12 @@
 		justify-content: center;
 		width: 100%;
 		height: 100%;
+		border-radius: var(--doc-radius-base);
 	}
 
 	.corner img {
-		width: 2em;
-		height: 2em;
+		height: 2.25em;
+		width: 2.25em;
 		object-fit: contain;
 	}
 </style>

@@ -55,7 +55,7 @@
 		<menu class="dropdown sm" use:clickOutside on:clickOutside={handleClickOutside}>
 			<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 			<div class="corner">
-				<a href="https://github.com/fat-fuzzy/rocks">
+				<a href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
 					<img src={github} alt="GitHub" />
 				</a>
 			</div>
