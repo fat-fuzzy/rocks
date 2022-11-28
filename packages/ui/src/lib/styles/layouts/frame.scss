@@ -22,5 +22,5 @@
 }
 
 .l-frame + * {
-	margin-block-start: var(--#{$prefix}s0);
+	margin-block-start: var(#{$prefix}-s0);
 }

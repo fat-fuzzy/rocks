@@ -1,63 +1,41 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
-	import {clickOutside} from '../../utils/click-outside.js'
 
 	const dispatch = createEventDispatcher()
-	export let layout = `l-stack`
-	export let size = `sm`
-	export let variant = `primary`
-	export let menuItems: {id: string; title: string; emoji: string}[] = []
+	export let layout = `stack`
+	export let size = `md`
+	export let items: {id: string; title: string; emoji?: string}[] = [
+		{id: 'item-1', title: 'Item 1'},
+		{id: 'item-2', title: 'Item  2'},
+		{id: 'item-3', title: 'Item  3'},
+		{id: 'item-4', title: 'Item  4'},
+		{id: 'item-5', title: 'Item  5'},
+		{id: 'item-6', title: 'Item  6'},
+	]
 
 	let selected = ''
-	function getLabel(emoji, title) {
-		return `${emoji} ${title}`
+	function getLabel(title, emoji) {
+		return emoji ? `${emoji} ${title}` : title
 	}
-
-	let menuExpanded = false
-
-	function toggleDropdown(event) {
-		menuExpanded = !menuExpanded
-	}
-
-	function handleClickOutside(event) {
-		menuExpanded = false
-	}
-
 	const handleClick = (event) => {
-		const element = event.target
-		selected = element.getAttribute('id')
+		selected = event.target.getAttribute('id')
 		dispatch('input', {
 			selected,
 		})
 	}
-	$: show = menuExpanded ? `show left` : `hide`
 </script>
 
-<div class="dropdown">
-	<menu class={`${layout} ${size}`} use:clickOutside on:click_outside={handleClickOutside}>
+<menu class={`l-${layout} ${size}`}>
+	{#each items as { id, title, emoji }}
 		<button
 			type="button"
-			class={`toggle collapse ${variant}`}
-			aria-expanded={menuExpanded}
-			on:click={toggleDropdown}
+			class:outline={id === selected}
+			on:click={handleClick}
+			{id}
+			data-test={id}
 		>
-			👾 Scenes
+			<!--TODO: make routes for animations-->
+			{getLabel(title, emoji)}
 		</button>
-		<div class={show}>
-			<menu class={`${layout} ${size}`}>
-				{#each menuItems as { title, emoji, id }}
-					<button
-						type="button"
-						class:outline={id === selected}
-						on:click={handleClick}
-						{id}
-						data-test={id}
-					>
-						<!--TODO: make routes for animations-->
-						{getLabel(emoji, title)}
-					</button>
-				{/each}
-			</menu>
-		</div>
-	</menu>
-</div>
+	{/each}
+</menu>

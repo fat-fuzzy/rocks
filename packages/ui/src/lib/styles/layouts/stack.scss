@@ -15,31 +15,31 @@
 }
 
 .l-stack.recursive * + * {
-	margin-block-start: var(--#{$prefix}margin-block-xs);
+	margin-block-start: var(#{$prefix}-size-xs);
 }
 
 .l-stack > * + * {
-	margin-block-start: var(--#{$prefix}margin-block-xs);
+	margin-block-start: var(#{$prefix}-size-xs);
 }
 
 .l-stack.xs > * + * {
-	margin-block-start: var(--#{$prefix}margin-block-xs);
+	margin-block-start: var(#{$prefix}-size-xs);
 }
 
 .l-stack.sm > * + * {
-	margin-block-start: var(--#{$prefix}margin-block-sm);
+	margin-block-start: var(#{$prefix}-size-sm);
 }
 
 .l-stack.md > * + * {
-	margin-block-start: var(--#{$prefix}margin-block-md);
+	margin-block-start: var(#{$prefix}-size-md);
 }
 
 .l-stack.lg > * + * {
-	margin-block-start: var(--#{$prefix}margin-block-lg);
+	margin-block-start: var(#{$prefix}-size-lg);
 }
 
 .l-stack.xl > * + * {
-	margin-block-start: var(--#{$prefix}margin-block-xl);
+	margin-block-start: var(#{$prefix}-size-xl);
 }
 
 .l-stack {

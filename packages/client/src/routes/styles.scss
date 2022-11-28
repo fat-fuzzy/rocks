@@ -1,5 +1,2 @@
 /* Global config */
-@import './variables'; // TODO: FIX: necessary for theme-main($prefix) to function, but variables are overridden in '@fat-fuzzy/ui'
-@import '@fat-fuzzy/ui/package/styles/config';
-@include theme-main($prefix);
-@import '@fat-fuzzy/ui/package/styles/main';
+@import '@fat-fuzzy/ui/package/styles/styles-client';

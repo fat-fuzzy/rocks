@@ -15,6 +15,7 @@
 
 	$: className = getClassNameFromUrl($page.url)
 
+	// [TODO:] check if this can be done using reactive variables ($:)
 	theme.subscribe((value) => {
 		if (app) {
 			app.classList.remove(currentTheme)
@@ -37,15 +38,15 @@
 
 <Header className="header-app" page={$page} />
 
-<main class="l-wrapper {className}">
+<main class="l-burrito {className}">
 	<slot />
 </main>
 
-<footer class="l-wrapper font-size:sm">
+<footer class="l-burrito font-size:sm">
 	<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
 	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
 
 <style lang="scss" global>
-	@import '../lib/styles/styles.scss';
+	@import '../lib/styles/styles-ui.scss';
 </style>

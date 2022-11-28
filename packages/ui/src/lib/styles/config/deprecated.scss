@@ -1,0 +1,218 @@
+//== UNITS
+
+// Remove the unit of a value
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function calcUnitlessValue($font-size) {
+	$unitless_value: strip-unit($font-size);
+	$remSize: $unitless_value / 16;
+	@return #{$remSize};
+}
+
+// /* REM mixin : produces REM values with px fallback
+// * Use this in conjunction with body{font-size:10px;} for base 10 conversion
+@mixin pix2rem($size) {
+	font-size: ($size); //Fallback in px
+	font-size: calcUnitlessValue($size) + rem;
+}
+
+// /* EM mixin : produces EM values with px fallback
+// * Use this in conjunction with body{font-size:10px;} for base 10 conversion
+@mixin pix2em($size) {
+	font-size: ($size); //Fallback in px
+	font-size: calcUnitlessValue($size) + em;
+}
+
+//== WIDTHS & HEIGHTS
+
+@mixin calcWidth($width, $multiple, $margin: false) {
+	@if $margin == false and map-has-key($theme-layout, $width) {
+		$width-value: map-get($theme-layout, $width);
+
+		width: calc(#{$width-value} * #{$multiple});
+	}
+	@if map-has-key($theme-layout, $width) and map-has-key($theme-layout, $margin) {
+		$width-value: map-get($theme-layout, $width);
+		$margin-value: map-get($theme-layout, $margin);
+
+		width: calc(#{$width-value} * #{$multiple} - #{$margin-value});
+	} @else {
+		@if (map-has-key($theme-layout, $width) == false) {
+			@warn 'Invalid width value: #{$width}.';
+		}
+
+		@if (map-has-key($theme-layout, $margin) == false) {
+			@warn 'Invalid margin value: #{$margin}.';
+		}
+	}
+}
+
+//== FLEX
+
+@mixin wrap-space-between() {
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+//== MEDIA QUERIES
+
+@mixin min-and-max-width($min, $max) {
+	@if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+		$min-value: map-get($breakpoints, $min);
+		$max-value: map-get($breakpoints, $max);
+		@media screen and (min-width: '#{$min-value}px') and  (max-width: '#{$max-value}px') {
+			@content;
+		}
+	} @else {
+		@if (map-has-key($breakpoints, $min) == false) {
+			@warn 'Invalid breakpoint min value: #{$min}.';
+		}
+
+		@if (map-has-key($breakpoints, $max) == false) {
+			@warn 'Invalid breakpoint max value: #{$max}.';
+		}
+	}
+}
+
+@mixin min-aspect-ratio($aspect-ratio) {
+	@if map-has-key($theme-layout, $aspect-ratio) {
+		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+		@media screen and (min-aspect-ratio: #{$aspect-ratio-value}) {
+			@content;
+		}
+	} @else {
+		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+		}
+	}
+}
+
+@mixin max-aspect-ratio($aspect-ratio) {
+	@if map-has-key($theme-layout, $aspect-ratio) {
+		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+		@media screen and (max-aspect-ratio: #{$aspect-ratio-value}) {
+			@content;
+		}
+	} @else {
+		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+		}
+	}
+}
+
+@mixin min-aspect-ratio-min-width($aspect-ratio, $breakpoint) {
+	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+		@media screen and (min-width: #{$breakpoint-value}) and (min-aspect-ratio: #{$aspect-ratio-value}) {
+			@content;
+		}
+	} @else {
+		@if (map-has-key($breakpoints, $breakpoint) == false) {
+			@warn 'Invalid breakpoint: #{$breakpoint}.';
+		}
+		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+		}
+	}
+}
+
+@mixin min-aspect-ratio-max-width($aspect-ratio, $breakpoint) {
+	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+		@media screen and (max-width: #{$breakpoint-value}) and (min-aspect-ratio: #{$aspect-ratio-value}) {
+			@content;
+		}
+	} @else {
+		@if (map-has-key($breakpoints, $breakpoint) == false) {
+			@warn 'Invalid breakpoint: #{$breakpoint}.';
+		}
+		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+		}
+	}
+}
+
+@mixin max-aspect-ratio-min-width($aspect-ratio, $breakpoint) {
+	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+		@media screen and (min-width: #{$breakpoint-value}) and (max-aspect-ratio: #{$aspect-ratio-value}) {
+			@content;
+		}
+	} @else {
+		@if (map-has-key($breakpoints, $breakpoint) == false) {
+			@warn 'Invalid breakpoint: #{$breakpoint}.';
+		}
+		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+		}
+	}
+}
+
+@mixin max-aspect-ratio-max-width($aspect-ratio, $breakpoint) {
+	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+		@media screen and (max-width: #{$breakpoint-value}) and (max-aspect-ratio: #{$aspect-ratio-value}) {
+			@content;
+		}
+	} @else {
+		@if (map-has-key($breakpoints, $breakpoint) == false) {
+			@warn 'Invalid breakpoint: #{$breakpoint}.';
+		}
+		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+		}
+	}
+}
+
+// @mixin aspect-ratio($aspect-ratio) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) {
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin aspect-ratio-min-width($aspect-ratio, $breakpoint) {
+// 	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+// 		$breakpoint-value: map-get($breakpoints, $breakpoint);
+// 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
+// 		@media screen and (min-width: #{$breakpoint-value}) and (aspect-ratio: #{$aspect-ratio-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $breakpoint) == false) {
+// 			@warn 'Invalid breakpoint: #{$breakpoint}.';
+// 		}
+// 		@if (map-has-key($theme-layout, $aspect-ratio) == false) {
+// 			@warn 'Invalid apect-ratio: #{$aspect-ratio}.';
+// 		}
+// 	}
+// }
+
+// @mixin orientation-min-width($orientation, $breakpoint) {
+// 	@if map-has-key($theme-layout, $orientation) and map-has-key($breakpoints, $breakpoint) {
+// 		$breakpoint-value: map-get($breakpoints, $breakpoint);
+// 		$orientation-value: map-get($theme-layout, $orientation);
+// 		@media screen and (min-width: #{$breakpoint-value}) and (orientation: #{$orientation-value}) {
+// 			@content;
+// 		}
+// 	} @else {
+// 		@if (map-has-key($breakpoints, $breakpoint) == false) {
+// 			@warn 'Invalid breakpoint: #{$breakpoint}.';
+// 		}
+// 		@if (map-has-key($theme-layout, $orientation) == false) {
+// 			@warn 'Invalid apect-ratio: #{$orientation}.';
+// 		}
+// 	}
+// }

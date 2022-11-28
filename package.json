@@ -4,9 +4,6 @@
 	"description": "MAD app starter kit",
 	"main": "index.js",
 	"scripts": {
-		"build:doc": "adr-log -d ./packages/doc/decisions",
-		"build:design": "node  ./packages/design/node_modules/.bin/build.js",
-		"build": "npm run build:doc",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "Patricia Boh",

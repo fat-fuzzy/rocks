@@ -3,6 +3,7 @@
 	import {lang} from '../../stores/intl'
 	import {theme} from '../../stores/theme'
 	import {emojis, themes} from '../../types/constants.js'
+	import github from '$lib/images/github.svg'
 
 	export let className = ''
 	export let page
@@ -25,7 +26,7 @@
 		lang.set(event.detail)
 	}
 
-	$: mainMenuClass = `${className} l-sidebar u-main layer`
+	$: mainMenuClass = `${className} l-sidebar layer`
 	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang
@@ -34,8 +35,8 @@
 </script>
 
 <header class={mainMenuClass}>
-	<nav class="l-sidebar-main">
-		<ul class="l-wrapper">
+	<nav class="l-main l-burrito">
+		<ul>
 			<li class:active={page.url.pathname === '/'} class="home">
 				<a data-sveltekit-prefetch href="/">
 					<span class="l-square" alt="Home">🐣</span>
@@ -50,31 +51,61 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="l-sidebar-side">
-		<menu class="dropdown sm" use:clickOutside on:click_outside={handleClickOutside}>
-			<button
+	<div class="l-side">
+		<menu class="dropdown sm" use:clickOutside on:clickOutside={handleClickOutside}>
+			<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
+			<div class="corner">
+				<a href="https://github.com/fat-fuzzy/rocks">
+					<img src={github} alt="GitHub" />
+				</a>
+			</div>
+			<!--button
 				type="button"
-				class="toggle collapse primary"
+				class="md toggle collapse primary"
 				aria-expanded={actionsMenuExpanded}
 				on:click={toggleActionsMenu}
 			>
 				🎛 &nbsp;Settings
-			</button>
+			</!--button>
 			<div class={actionsMenuClass}>
-				<menu class="l-switcher xs">
+				<menu class="l-switcher xxs">
 					<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
-					<!--button>Login</-button-->
+					<button>Login</-button>
 					<div class="l-stack dropdown sm">
-						<button type="button" on:click={setLanguage}>{langIcon}</button>
+						<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
 						<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 						<button type="button" on:click={setLanguage}>{langIcon}</button>
 						<!--button>Login</-button -- >
-					</menu> -->
+					</menu>
 					</div>
 				</menu>
-			</div>
+			</div> -->
 		</menu>
 	</div>
 </header>
+
+<style lang="scss">
+	/* TODO: cleanup this css (sveltekit app styles) */
+	.corner {
+		width: 2em;
+		height: 2em;
+		margin-inline-start: 1em;
+	}
+
+	.corner a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		border-radius: var(--ui-radius-base);
+	}
+
+	.corner img {
+		height: 100%;
+		width: auto;
+		object-fit: contain;
+	}
+</style>

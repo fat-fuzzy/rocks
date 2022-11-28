@@ -10,23 +10,23 @@ nav > ul {
 	width: 100%;
 }
 
-.u-main > nav > ul {
+.header-app > nav > ul {
 	position: relative;
 	padding: 0;
 	margin: 0;
-	height: var(--#{$prefix}s3);
+	height: var(#{$prefix}-s3);
 	display: flex;
 	align-items: center;
 	list-style: none;
 	background-size: contain;
 }
 
-.u-main > nav li {
+.header-app > nav li {
 	position: relative;
 	height: 100%;
 }
 
-.u-main > nav li.active::before {
+.header-app > nav li.active::before {
 	--size: 6px;
 	content: '';
 	width: 0;
@@ -37,7 +37,7 @@ nav > ul {
 	border: var(--size) solid transparent;
 }
 
-.u-main > nav a {
+.header-app > nav a {
 	display: flex;
 	height: 100%;
 	align-items: center;

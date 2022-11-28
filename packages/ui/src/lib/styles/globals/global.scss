@@ -1,13 +1,13 @@
 // Global CSS starts
 
 :root {
-	font-family: var(--#{$prefix}font-family-base);
+	font-family: var(#{$prefix}-font-family-base);
 }
 
 body {
-	font-weight: var(--#{$prefix}font-size-base);
-	line-height: var(--#{$prefix}ratio);
-	color: var(--#{$prefix}font-color-base);
+	font-weight: var(#{$prefix}-font-size-base);
+	line-height: var(#{$prefix}-ratio);
+	color: var(#{$prefix}-font-color-base);
 }
 
 h1,
@@ -17,19 +17,19 @@ h3 {
 }
 
 h1 {
-	font-size: var(--#{$prefix}font-size-h1);
+	font-size: var(#{$prefix}-font-size-h1);
 }
 h2 {
-	font-size: var(--#{$prefix}font-size-h2);
+	font-size: var(#{$prefix}-font-size-h2);
 }
 h3 {
-	font-size: var(--#{$prefix}font-size-h3);
+	font-size: var(#{$prefix}-font-size-h3);
 }
 h4 {
-	font-size: var(--#{$prefix}font-size-h4);
+	font-size: var(#{$prefix}-font-size-h4);
 }
 h5 {
-	font-size: var(--#{$prefix}font-size-h5);
+	font-size: var(#{$prefix}-font-size-h5);
 }
 
 a,
@@ -57,7 +57,7 @@ th {
 
 :focus {
 	outline: 2px dotted currentColor;
-	outline-offset: var(--#{$prefix}outline-offset);
+	outline-offset: var(#{$prefix}-outline-offset);
 }
 
 .no-list {
