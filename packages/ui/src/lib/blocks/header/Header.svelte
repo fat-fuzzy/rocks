@@ -52,29 +52,30 @@
 	</nav>
 	<div class="l-side">
 		<menu class="dropdown sm" use:clickOutside on:clickOutside={handleClickOutside}>
-			<button
+			<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
+			<!--button
 				type="button"
 				class="md toggle collapse primary"
 				aria-expanded={actionsMenuExpanded}
 				on:click={toggleActionsMenu}
 			>
 				🎛 &nbsp;Settings
-			</button>
+			</!--button>
 			<div class={actionsMenuClass}>
 				<menu class="l-switcher xxs">
 					<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
-					<!--button>Login</-button-->
+					<button>Login</-button>
 					<div class="l-stack dropdown sm">
 						<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
 						<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 						<button type="button" on:click={setLanguage}>{langIcon}</button>
 						<!--button>Login</-button -- >
-					</menu> -->
+					</menu>
 					</div>
 				</menu>
-			</div>
+			</div> -->
 		</menu>
 	</div>
 </header>
