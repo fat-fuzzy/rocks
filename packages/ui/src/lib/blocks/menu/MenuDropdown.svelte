@@ -37,7 +37,7 @@
 	<menu class={`l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
 		<button
 			type="button"
-			class={`toggle collapse ${variant}`}
+			class={`md toggle collapse ${variant}`}
 			aria-expanded={menuExpanded}
 			on:click={toggleDropdown}
 		>
@@ -49,6 +49,7 @@
 					<button
 						type="button"
 						class:outline={id === selected}
+						class="md"
 						on:click={handleClick}
 						{id}
 						data-test={id}

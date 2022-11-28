@@ -54,7 +54,7 @@
 		<menu class="dropdown sm" use:clickOutside on:clickOutside={handleClickOutside}>
 			<button
 				type="button"
-				class="toggle collapse primary"
+				class="md toggle collapse primary"
 				aria-expanded={actionsMenuExpanded}
 				on:click={toggleActionsMenu}
 			>
@@ -66,7 +66,7 @@
 
 					<!--button>Login</-button-->
 					<div class="l-stack dropdown sm">
-						<button type="button" on:click={setLanguage}>{langIcon}</button>
+						<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
 						<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 						<button type="button" on:click={setLanguage}>{langIcon}</button>
