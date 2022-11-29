@@ -1,4 +1,6 @@
 const vert = `
+//VERTEX SHADER
+
 // an attribute will receive data from a buffer
 // attribute vec4 a_position; vec4 not necessary for 2D
 attribute vec2 a_position;
