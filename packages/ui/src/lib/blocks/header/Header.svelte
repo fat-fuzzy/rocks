@@ -3,7 +3,10 @@
 	import {lang} from '../../stores/intl'
 	import {theme} from '../../stores/theme'
 	import {emojis, themes} from '../../types/constants.js'
-	import github from '$lib/images/github.svg'
+
+	// TODO: make svg css themeable / fix dark theme
+	import githubLight from '$lib/images/icon-dark-100-optim-github.svg'
+	import github from '$lib/images/icon-dark-100-optim-github.svg'
 
 	export let className = ''
 	export let page

@@ -50,3 +50,7 @@ nav > ul {
 	text-decoration: none;
 	transition: color 0.2s linear;
 }
+
+.header-app > nav a:focus {
+	outline-offset: 0;
+}

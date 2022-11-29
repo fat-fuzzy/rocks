@@ -2,16 +2,14 @@
 	import Header from './Header.svelte';
 </script>
 
-<div class="app">
-	<Header />
-	<main class="l-burrito">
-		<slot />
-	</main>
+<Header />
+<main class="l-burrito">
+	<slot />
+</main>
 
-	<footer class="l-burrito">
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
-</div>
+<footer class="l-burrito">
+	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+</footer>
 
 <style lang="scss" global>
 	@import './styles.scss'; // TODO: get back to a css import
