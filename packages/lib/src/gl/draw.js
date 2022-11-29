@@ -10,7 +10,7 @@ import * as utilsWebGl from './utilsWebGL.js'
 
 /**
  * @param {WebGLRenderingContext} gl
- * @param {Array} coords
+ * @param {Array<number>} coords
  */
 function setGeometry(gl, coords) {
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)
@@ -31,13 +31,13 @@ function setRectangle(gl, x, y, width, height) {
 	const y2 = y + height
 	// prettier-ignore
 	const coords = [
-     x1, y1,
-     x2, y1,
-     x1, y2,
-     x1, y2,
-     x2, y1,
-     x2, y2,
-   ]
+		x1, y1,
+		x2, y1,
+		x1, y2,
+		x1, y2,
+		x2, y1,
+		x2, y2,
+	]
 	setGeometry(gl, coords)
 }
 
@@ -93,30 +93,30 @@ function renderTranslationGeometry(gl, colorUniformLocation, color) {
 	// TODO here: extract values from coordinates (width + height)
 	/* prettier-ignore */
 	const coords = [
-     // left column
-     0, 0,
-     30, 0,
-     0, 150,
-     0, 150,
-     30, 0,
-     30, 150,
- 
-     // top rung
-     30, 0,
-     100, 0,
-     30, 30,
-     30, 30,
-     100, 0,
-     100, 30,
- 
-     // middle rung
-     30, 60,
-     67, 60,
-     30, 90,
-     30, 90,
-     67, 60,
-     67, 90,
-   ]
+		// left column
+		0, 0,
+		30, 0,
+		0, 150,
+		0, 150,
+		30, 0,
+		30, 150,
+
+		// top rung
+		30, 0,
+		100, 0,
+		30, 30,
+		30, 30,
+		100, 0,
+		100, 30,
+
+		// middle rung
+		30, 60,
+		67, 60,
+		30, 90,
+		30, 90,
+		67, 60,
+		67, 90,
+	]
 	gl.uniform4fv(colorUniformLocation, color)
 	setGeometry(gl, coords)
 
@@ -126,6 +126,7 @@ function renderTranslationGeometry(gl, colorUniformLocation, color) {
 	const count = 18
 	gl.drawArrays(primitiveType, offset, count)
 }
+
 /**
  * @param {WebGLRenderingContext} gl
  * @param {number} count number of rectangles to draw
@@ -213,13 +214,13 @@ export function initScene(canvas, vert, frag) {
 }
 
 /* **
-  * @param  {
-     gl,
-     resolutionUniformLocation,
-     positionAttributeLocation,
-     positionBuffer,
-   } webGlOptions
-  */
+	* @param  {
+		gl,
+		resolutionUniformLocation,
+		positionAttributeLocation,
+		positionBuffer,
+	} webGlOptions
+	*/
 export function drawScene(webGlOptions) {
 	const {gl, resolutionUniformLocation, positionAttributeLocation, positionBuffer} = webGlOptions
 	/************************
@@ -330,15 +331,21 @@ export function rectanglesScene(webGlOptions) {
 	drawRectangles(gl, colorUniformLocation, 1)
 }
 
-export function translationSceneViaDOM(webGlOptions, translation, color, width, height) {
+export function rectangle2D(options) {
+	const {webGlOptions, color} = options
 	const {gl, colorUniformLocation} = webGlOptions
-	drawScene(webGlOptions)
-	// 3. Draw!!
-	// - Draw 3 random rectangles
 	renderTranslationRectangle(gl, colorUniformLocation, translation, color, width, height)
+	drawScene(options)
 }
 
-export function translationSceneViaWebGL(options) {
+export function geometry2D(options) {
+	const {webGlOptions, color} = options
+	const {gl, colorUniformLocation} = webGlOptions
+	renderTranslationGeometry(gl, colorUniformLocation, color) // Set the translation.
+	drawSceneT2DGL(options)
+}
+
+export function matrices2D(options) {
 	const {webGlOptions, color} = options
 	const {gl, colorUniformLocation} = webGlOptions
 	renderTranslationGeometry(gl, colorUniformLocation, color) // Set the translation.

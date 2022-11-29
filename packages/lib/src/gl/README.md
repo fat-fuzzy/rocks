@@ -6,7 +6,7 @@ https://webglfundamentals.org
 
 If you're looking for information on WebGL, and you haven't yet visited that site, I recommend you go there first.
 
-## Licence Credits
+## Licence
 
 The code examples in https://webglfundamentals.org, used here with modifications, contain the following Copyright notice:
 
