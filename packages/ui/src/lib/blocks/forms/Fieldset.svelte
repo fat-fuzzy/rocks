@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let slug = ''
-	export let label = ''
+	export let legend = ''
 	export let size = 'sm'
 
 	let className = ''
@@ -9,6 +9,6 @@
 </script>
 
 <fieldset data-cy={slug} class={className}>
-	<legend>{label}</legend>
+	<legend>{legend}</legend>
 	<slot />
 </fieldset>

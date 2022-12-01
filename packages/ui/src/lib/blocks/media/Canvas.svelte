@@ -3,9 +3,9 @@
 	import {gl} from '@fat-fuzzy/lib'
 	import type {Sketch} from '$data/data' // seems to accept aliases outside lib folder
 	import {theme} from '../../stores/theme' // ... but not inside lib folder
-	import Button from '../button/Button.svelte'
-	import Controls from '../controls/Controls.svelte'
-	import Geometry from '../geometry/Geometry.svelte'
+	import Button from '../buttons/Button.svelte'
+	import Controls from '../graphics/Controls.svelte'
+	import Geometry from '../graphics/Geometry.svelte'
 
 	const {draw, utils} = gl
 
@@ -31,13 +31,17 @@
 	$: drawFunction = sketch ? draw[sketch.draw] : null
 
 	function run(sketch) {
+		console.log('RUN')
 		if (!sketch.draw) {
 			return // TODO: throw error
 		}
-		if (!webGlOptions) {
-			webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
-		}
+		// if (!webGlOptions) {
+		// 	console.log('webGlOptions Once')
+		// 	webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
+		// }
 		if (sketch.interactive) {
+			console.log('sketch.interactive')
+			console.log(geometry)
 			drawFunction({webGlOptions, ...geometry})
 		} else {
 			drawFunction(webGlOptions)
@@ -49,6 +53,7 @@
 	}
 
 	function runLoop(timestamp, duration) {
+		console.log('RUN LOOP', duration)
 		run(sketch)
 		animationFrame = requestAnimationFrame(function (t) {
 			// call requestAnimationFrame again with parameters
@@ -57,13 +62,17 @@
 	}
 
 	function updateGeometry(event) {
+		console.log('Geometry event')
+		console.log(event)
 		geometry = {...geometry, ...event.detail.value}
 	}
 
 	function play() {
+		updateGeometry({detail: {value: {}}})
 		if (sketch) {
 			webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
 			animationFrame = requestAnimationFrame(function (timestamp) {
+				console.log('PLAY')
 				let {duration} = sketch
 				runLoop(timestamp, duration)
 			})
@@ -72,6 +81,9 @@
 
 	function stop() {
 		cancelAnimationFrame(animationFrame)
+		// if (animationFrame) {
+		// 	cancelAnimationFrame(animationFrame)
+		// }
 		clearCanvas()
 	}
 

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type {PageData} from './$types'
 	import type {Sketch} from '$data/data'
-	import Canvas from '$lib/blocks/canvas/Canvas.svelte'
-	import Feedback from '$lib/blocks/feedback/Feedback.svelte'
-	import MenuDropdown from '$lib/blocks/menu/MenuDropdown.svelte'
+	import Canvas from '$blocks/media/Canvas.svelte'
+	import Feedback from '$blocks/cards/Feedback.svelte'
+	import MenuDropdown from '$blocks/navs/MenuDropdown.svelte'
 
 	export let data: PageData
 	const {sketches} = data

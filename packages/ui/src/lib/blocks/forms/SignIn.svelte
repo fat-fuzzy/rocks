@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {createMachine} from 'xstate'
 	import {useMachine} from '@xstate/svelte'
-	import machineConfig from './machineConfig'
-	import initMachineOptions, {Events} from './initMachineOptions'
-	import Fieldset from '../form/Fieldset.svelte'
+	import machineConfig from '$lib/machines/signIn/machineConfig'
+	import initMachineOptions, {Events} from '$lib/machines/signIn/initMachineOptions'
+	import Fieldset from './Fieldset.svelte'
 
 	export let size = 'md'
 	let emailInput
@@ -115,7 +115,7 @@
 			: ''
 </script>
 
-<Fieldset slug="signIn" label="Sign In" {size}>
+<Fieldset slug="signIn" legend="Sign In" {size}>
 	{#if !isLoggedIn}
 		<label for="email"> Email </label>
 		<input

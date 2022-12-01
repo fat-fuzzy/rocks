@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import InputRange from '../form/InputRange.svelte'
-	import Fieldset from '../form/Fieldset.svelte'
+	import InputRange from '../forms/InputRange.svelte'
+	import Fieldset from '../forms/Fieldset.svelte'
 
 	export let size = 'xxs'
 	export let scaleX = 0
@@ -28,7 +28,7 @@
 	}
 </script>
 
-<Fieldset slug="scale" {label} {size}>
+<Fieldset slug="scale" legend={label} {size}>
 	<InputRange bind:value={scaleX} label="{label} x" min={minX} max={maxX} on:input={updateX} />
 	<InputRange bind:value={scaleY} label="{label} y" min={minY} max={maxY} on:input={updateY} />
 </Fieldset>

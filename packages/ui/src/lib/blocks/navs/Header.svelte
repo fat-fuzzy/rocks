@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {clickOutside} from '../../utils/click-outside.js'
-	import {lang} from '../../stores/intl'
+	import {lang} from '$stores/intl'
 	import {theme} from '../../stores/theme'
-	import {emojis, themes} from '../../types/constants.js'
+	import {emojis, themes} from '$types/constants.js'
 
 	// TODO: make svg css themeable / fix dark theme
 	import githubLight from '$lib/images/icon-dark-100-optim-github.svg'

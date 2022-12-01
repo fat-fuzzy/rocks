@@ -10,10 +10,10 @@ import Burrito from './layouts/Burrito.svelte'
 /**
  * Block components
  */
-import Button from './blocks/button/Button.svelte'
-import Canvas from './blocks/canvas/Canvas.svelte'
-import Feedback from './blocks/feedback/Feedback.svelte'
-import Menu from './blocks/menu/Menu.svelte'
+import Button from './blocks/buttons/Button.svelte'
+import Canvas from './blocks/media/Canvas.svelte'
+import Feedback from './blocks/cards/Feedback.svelte'
+import Menu from './blocks/navs/Menu.svelte'
 
 /**
  * Stores

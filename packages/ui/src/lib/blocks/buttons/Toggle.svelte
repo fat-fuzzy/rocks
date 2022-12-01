@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {useMachine} from '@xstate/svelte'
-	import toggleMachine from './machineConfig'
+	import toggleMachine from '$lib/machines/toggle/machineConfig'
 
-	import Fieldset from '../form/Fieldset.svelte'
+	import Fieldset from '../forms/Fieldset.svelte'
 
 	export let size = 'md'
 	const {state, send} = useMachine(toggleMachine)
@@ -11,7 +11,7 @@
 	$: stateClass = pressed ? 'primary accent' : 'outline accent' /* TODO: use aria state to style*/
 </script>
 
-<Fieldset slug="toggle" label="Toggle" {size}>
+<Fieldset slug="toggle" legend="Toggle" {size}>
 	<button
 		type="button"
 		on:click={() => send('TOGGLE')}

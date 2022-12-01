@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import Fieldset from '../form/Fieldset.svelte'
-	import InputRange from '../form/InputRange.svelte'
+	import Fieldset from '../forms/Fieldset.svelte'
+	import InputRange from '../forms/InputRange.svelte'
 
 	const dispatch = createEventDispatcher()
 
@@ -18,7 +18,7 @@
 	}
 </script>
 
-<Fieldset slug="rotation" {label} {size}>
+<Fieldset slug="rotation" legend={label} {size}>
 	<!--https://css-tricks.com/accessible-svgs/-->
 	<!-- <svg id="InteractiveSVG" role="group" /> -->
 	<InputRange bind:value={angle} label="angle" {max} on:input={update} />

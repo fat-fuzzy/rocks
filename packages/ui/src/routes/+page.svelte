@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import {themes} from '$lib/types/constants'
 	import {theme} from '$lib/stores/theme'
 	let variant = ``
