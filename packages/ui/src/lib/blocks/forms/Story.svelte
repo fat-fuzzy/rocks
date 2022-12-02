@@ -44,7 +44,7 @@
 
 <h3>{title}</h3>
 
-<Sidebar placement="end">
+<Sidebar>
 	<svelte:fragment slot="main">
 		<slot name="component">
 			{#if component}

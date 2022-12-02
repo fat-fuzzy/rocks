@@ -36,12 +36,12 @@
 	{#if sketch} <h2>&nbsp;❤︎&nbsp;{sketch.title}&nbsp;{sketch.emoji}</h2> {/if}
 </header>
 
-<section class="l-sidebar">
-	<div class="l-side sm shrink">
-		<MenuDropdown on:input={loadSketch} {items} />
-	</div>
+<section class="l-sidebar start">
 	<div class="l-main l-stack">
 		<Canvas show={showcanvas} {sketch} />
 		<Feedback {feedback} show={showFeedback} />
+	</div>
+	<div class="l-side sm shrink">
+		<MenuDropdown on:input={loadSketch} {items} />
 	</div>
 </section>
