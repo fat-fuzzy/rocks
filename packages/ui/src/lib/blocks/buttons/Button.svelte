@@ -8,6 +8,7 @@
 	export let testId = 'btn'
 	export let disabled = false
 	export let type = 'button'
+	export let text = 'Button'
 
 	// Event Handlers
 	export let handleClick = () => {}
@@ -16,5 +17,5 @@
 </script>
 
 <button data-test={testId} on:click={handleClick} class={className} {disabled} {type}>
-	<slot />
+	<slot>{text}</slot>
 </button>

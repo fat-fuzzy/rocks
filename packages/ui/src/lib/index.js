@@ -13,6 +13,7 @@ import Burrito from './layouts/Burrito.svelte'
 import Button from './blocks/buttons/Button.svelte'
 import Canvas from './blocks/media/Canvas.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
+import Story from './blocks/forms/Story.svelte'
 import Menu from './blocks/navs/Menu.svelte'
 
 /**
@@ -52,6 +53,7 @@ const blocks = {
 	Canvas,
 	Feedback,
 	Menu,
+	Story,
 }
 const sass = {
 	default: './sass/styles-default.scss',
