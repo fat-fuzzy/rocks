@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { blocks, layouts } from '@fat-fuzzy/ui';
+	import { blocks, layouts, stories } from '@fat-fuzzy/ui';
 	import type { ComponentType } from 'svelte';
 
-	const { Story } = blocks;
+	const { Story } = stories;
 
 	let title: string;
 	let components: { [key: string]: ComponentType };
@@ -15,12 +15,10 @@
 <article>
 	<h1>{title}</h1>
 	{#each keys as key}
-		{components}<br />
 		{@const Component = components[key]}
-		{Component}<br />
-		<!-- <Story
-			{title}
-			slug=""
+		<Story
+			title={key}
+			slug={key.toLowerCase()}
 			componentProps={{ icon: '', size: 'md', theme: 'dark', variant: 'primary' }}
 			storyProps={{
 				icons: [],
@@ -29,6 +27,6 @@
 				themes: ['light', 'dark']
 			}}
 			component={Component}
-		/> -->
+		/>
 	{/each}
 </article>

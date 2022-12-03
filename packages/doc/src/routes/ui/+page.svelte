@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { blocks } from '@fat-fuzzy/ui';
-	const { Button, Canvas, Menu, Story } = blocks;
+	import { blocks, stories } from '@fat-fuzzy/ui';
+	const { Button, Canvas, Menu } = blocks;
+	const { Story } = stories;
 </script>
 
 <svelte:head>
 	<title>FatFuzzy Doc | UI</title>
 	<meta name="description" content="Fat Fuzzy UI Library documentation" />
 </svelte:head>
-
+<h1>UI Library Stories</h1>
 <Story
 	title="Button"
 	slug="button-1"

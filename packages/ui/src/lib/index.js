@@ -13,8 +13,13 @@ import Burrito from './layouts/Burrito.svelte'
 import Button from './blocks/buttons/Button.svelte'
 import Canvas from './blocks/media/Canvas.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
-import Story from './blocks/forms/Story.svelte'
 import Menu from './blocks/navs/Menu.svelte'
+
+/**
+ * Story components
+ */
+import Story from './stories/Story.svelte'
+import StoryActions from './stories/StoryActions.svelte'
 
 /**
  * Stores
@@ -43,17 +48,20 @@ const stores = {
 	intl,
 }
 const layouts = {
+	Burrito,
 	Dropdown,
 	Sidebar,
 	Stack,
-	Burrito,
 }
 const blocks = {
 	Button,
 	Canvas,
 	Feedback,
 	Menu,
+}
+const stories = {
 	Story,
+	StoryActions,
 }
 const sass = {
 	default: './sass/styles-default.scss',
@@ -65,4 +73,4 @@ async function getSass(theme) {
 	const themedStyles = await import(sass[theme])
 	return themedStyles
 }
-export {blocks, layouts, utils, stores, constants, getSass}
+export {blocks, layouts, stories, utils, stores, constants, getSass}

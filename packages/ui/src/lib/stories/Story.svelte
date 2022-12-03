@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import Fieldset from './Fieldset.svelte'
-	import Sidebar from '../../layouts/Sidebar.svelte'
+	import Fieldset from '../blocks/forms/Fieldset.svelte'
+	import Sidebar from '../layouts/Sidebar.svelte'
 	type UICOmponentChildren = string | ComponentType | (string | ComponentType)[]
 	type UIComponentProps = {
 		icon?: string

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import type { ComponentType } from 'svelte';
-	import { blocks } from '@fat-fuzzy/ui';
-	const { Story } = blocks;
+	import { stories } from '@fat-fuzzy/ui';
+	const { Story } = stories;
 
 	let title: string;
 	let category: string;
