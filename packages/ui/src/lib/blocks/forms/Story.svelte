@@ -21,6 +21,7 @@
 
 	// TODO: figure out if I can deduct types
 	export let title = 'Unnamed Component'
+	export let slug = 'unnamed-component'
 	export let component: ComponentType
 	export let componentProps: UIComponentProps | undefined
 	export let storyProps: StoryProps
@@ -42,7 +43,7 @@
 	$: [selectedIcon, selectedSize, selectedVariant, selectedTheme] = selected
 </script>
 
-<h3>{title}</h3>
+<h3 id={slug}>{title}</h3>
 
 <Sidebar>
 	<svelte:fragment slot="main">
@@ -54,52 +55,54 @@
 	</svelte:fragment>
 	<svelte:fragment slot="side">
 		<form on:submit|preventDefault={handleSubmit} class="l-stack">
-			{#if icons}
-				<Fieldset slug="field-select-icon" legend="Icons">
-					<label for="select-icon">Select Icon:</label>
-					<select id="select-icon">
-						<option value="">--Please choose an option--</option>
-						{#each icons as { name, asset }}
-							<option id={name} value={name} selected={name === selectedIcon}>{asset}</option>
-						{/each}
-					</select>
-				</Fieldset>
-			{/if}
-			{#if sizes}
-				<Fieldset slug="field-select-size" legend="Select Size">
-					<label for="select-size">Select Size:</label>
-					<select id="select-size">
-						<option value="">--Please choose an option--</option>
-						{#each sizes as size}
-							<option id={size} value={size} selected={size === selectedSize}>{size}</option>
-						{/each}
-					</select>
-				</Fieldset>
-			{/if}
-			{#if variants}
-				<Fieldset slug="field-select-variant" legend="Variant">
-					<label for="select-variant">Select Variant:</label>
-					<select id="select-variant">
-						<option value="">--Please choose an option--</option>
-						{#each variants as variant}
-							<option id={variant} value={variant} selected={variant === selectedVariant}>
-								{variant}
-							</option>
-						{/each}
-					</select>
-				</Fieldset>
-			{/if}
-			{#if themes}
-				<Fieldset slug="field-select-theme" legend="Theme">
-					<label for="select-theme">Select Variant:</label>
-					<select id="select-theme">
-						<option value="">--Please choose an option--</option>
-						{#each themes as theme}
-							<option id={theme} value={theme} selected={theme === selectedTheme}>{theme}</option>
-						{/each}
-					</select>
-				</Fieldset>
-			{/if}
+			<div class="l-switcher">
+				{#if icons}
+					<Fieldset slug="field-select-icon" legend="Icons">
+						<label for="select-icon">Select Icon:</label>
+						<select id="select-icon">
+							<option value="">--Please choose an option--</option>
+							{#each icons as { name, asset }}
+								<option id={name} value={name} selected={name === selectedIcon}>{asset}</option>
+							{/each}
+						</select>
+					</Fieldset>
+				{/if}
+				{#if sizes}
+					<Fieldset slug="field-select-size" legend="Select Size">
+						<label for="select-size">Select Size:</label>
+						<select id="select-size">
+							<option value="">--Please choose an option--</option>
+							{#each sizes as size}
+								<option id={size} value={size} selected={size === selectedSize}>{size}</option>
+							{/each}
+						</select>
+					</Fieldset>
+				{/if}
+				{#if variants}
+					<Fieldset slug="field-select-variant" legend="Variant">
+						<label for="select-variant">Select Variant:</label>
+						<select id="select-variant">
+							<option value="">--Please choose an option--</option>
+							{#each variants as variant}
+								<option id={variant} value={variant} selected={variant === selectedVariant}>
+									{variant}
+								</option>
+							{/each}
+						</select>
+					</Fieldset>
+				{/if}
+				{#if themes}
+					<Fieldset slug="field-select-theme" legend="Theme">
+						<label for="select-theme">Select Variant:</label>
+						<select id="select-theme">
+							<option value="">--Please choose an option--</option>
+							{#each themes as theme}
+								<option id={theme} value={theme} selected={theme === selectedTheme}>{theme}</option>
+							{/each}
+						</select>
+					</Fieldset>
+				{/if}
+			</div>
 			<button type="submit" class="highlight">Update</button>
 		</form>
 	</svelte:fragment>
