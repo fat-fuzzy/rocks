@@ -8,7 +8,7 @@
 	<title>FatFuzzy Doc | UI</title>
 	<meta name="description" content="Fat Fuzzy UI Library documentation" />
 </svelte:head>
-<h1>UI Library Stories</h1>
+<h1>Fat Fuzzy Stories</h1>
 <Story
 	title="Button"
 	slug="button-1"
