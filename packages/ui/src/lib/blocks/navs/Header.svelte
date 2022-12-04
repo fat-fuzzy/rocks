@@ -55,7 +55,7 @@
 		</ul>
 	</nav>
 	<div class="l-side">
-		<menu class="dropdown sm" use:clickOutside on:clickOutside={handleClickOutside}>
+		<menu class="l-reveal sm" use:clickOutside on:clickOutside={handleClickOutside}>
 			<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 			<div class="corner">
 				<a href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
@@ -75,7 +75,7 @@
 					<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
 					<button>Login</-button>
-					<div class="l-stack dropdown sm">
+					<div class="l-stack l-reveal sm">
 						<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
 						<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>

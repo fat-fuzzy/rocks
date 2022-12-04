@@ -33,7 +33,7 @@
 	$: show = menuExpanded ? 'show left' : 'hide'
 </script>
 
-<div class="dropdown">
+<div class="l-reveal">
 	<menu class={`l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
 		<button
 			type="button"

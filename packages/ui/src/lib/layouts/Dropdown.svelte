@@ -18,7 +18,7 @@
 	$: show = expanded ? `show ${alignment}` : 'hide'
 </script>
 
-<div class="dropdown">
+<div class="l-reveal">
 	<menu class={`l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
 		<slot name="toggle">
 			<button
