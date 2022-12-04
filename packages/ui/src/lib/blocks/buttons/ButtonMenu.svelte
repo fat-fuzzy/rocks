@@ -31,7 +31,6 @@
 	}
 </script>
 
-import Button from '../buttons/Button.svelte'
 <menu class={`l-${layout} ${size}`} role="group">
 	{#each items as { id, title, emoji }}
 		<li>

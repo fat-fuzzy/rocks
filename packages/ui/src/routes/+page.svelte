@@ -19,7 +19,7 @@
 
 <section class="l-burrito xxl">
 	<h2>✨ Highlights</h2>
-	<ul class="l-stack lg list-none">
+	<ul class="l-stack lg" role="group">
 		<li class={`card ${variant}`}>
 			<span>👾</span>
 			<a data-sveltekit-prefetch href="/play"> Play</a>
