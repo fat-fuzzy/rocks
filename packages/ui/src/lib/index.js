@@ -11,7 +11,7 @@ import Burrito from './layouts/Burrito.svelte'
  * Block components
  */
 import Button from './blocks/buttons/Button.svelte'
-import ButtonsMenu from './blocks/buttons/ButtonsMenu.svelte'
+import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
 import Canvas from './blocks/media/Canvas.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
 
@@ -55,7 +55,7 @@ const layouts = {
 }
 const blocks = {
 	Button,
-	ButtonsMenu,
+	ButtonMenu,
 	Canvas,
 	Feedback,
 }

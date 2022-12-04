@@ -111,7 +111,7 @@
 	<div class="l-side md">
 		<aside class="l-stack sm">
 			{#if details}
-				<Button testId="btn-details" {variant} handleClick={() => togglelDetails()}>
+				<Button id="btn-details" {variant} onClick={() => togglelDetails()}>
 					{detailsIcon} Details
 				</Button>
 				<Geometry show={showDetails} on:update={updateGeometry} {canvasWidth} {canvasHeight} />
