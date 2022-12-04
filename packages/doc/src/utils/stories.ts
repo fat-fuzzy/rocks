@@ -6,8 +6,8 @@
 
 export const fetchComponentData = async () => {
 	const uiImports = await import('@fat-fuzzy/ui');
-	const blocks = Object.keys(uiImports.blocks).map((k) => k.toLowerCase());
-	const layouts = Object.keys(uiImports.layouts).map((k) => k.toLowerCase());
+	const blocks = Object.keys(uiImports.blocks);
+	const layouts = Object.keys(uiImports.layouts);
 
 	// const allData = await Promise.all(
 	// 	// TODO: understand this vite functionality

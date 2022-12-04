@@ -2,7 +2,7 @@
 /**
  * Layout components
  */
-import Dropdown from './layouts/Dropdown.svelte'
+import Reveal from './layouts/Reveal.svelte'
 import Sidebar from './layouts/Sidebar.svelte'
 import Stack from './layouts/Stack.svelte'
 import Burrito from './layouts/Burrito.svelte'
@@ -11,9 +11,9 @@ import Burrito from './layouts/Burrito.svelte'
  * Block components
  */
 import Button from './blocks/buttons/Button.svelte'
+import ButtonsMenu from './blocks/buttons/ButtonsMenu.svelte'
 import Canvas from './blocks/media/Canvas.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
-import Menu from './blocks/navs/Menu.svelte'
 
 /**
  * Story components
@@ -49,15 +49,15 @@ const stores = {
 }
 const layouts = {
 	Burrito,
-	Dropdown,
+	Reveal,
 	Sidebar,
 	Stack,
 }
 const blocks = {
 	Button,
+	ButtonsMenu,
 	Canvas,
 	Feedback,
-	Menu,
 }
 const stories = {
 	Story,
