@@ -7,30 +7,27 @@
 }
 
 .l-reveal .toggle.collapse + .show {
+	#{$prefix}-show-top: calc(calc(2 * var(#{$prefix}-prev-offset-limit)) + 2em);
 	position: absolute;
-	top: 2.5em;
-	z-index: var(#{$prefix}-z-index-l-reveal);
-	box-shadow: var(#{$prefix}-shadow);
-	border-radius: var(#{$prefix}-radius-base);
-}
-
-.l-reveal .toggle.collapse + .show.left {
+	top: var(#{$prefix}-show-top);
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-bg-color);
 	left: 0;
-}
-
-.l-reveal .toggle.collapse + .show.right {
 	right: 0;
 }
 
-// TODO: figure out why this is not rendering identically in Header menu vs Play page submenu
-.l-reveal .toggle.collapse.md + .show {
-	top: 3em;
+.l-reveal .toggle.collapse + .show.start {
+	justify-self: flex-start;
+}
+
+.l-reveal .toggle.collapse + .show.end {
+	justify-self: flex-end;
 }
 
 .l-reveal .toggle.collapse + .hide {
 	border: 0;
 	clip: rect(0 0 0 0);
-	height: auto;
+	height: 0;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
@@ -62,8 +59,4 @@
 		max-width: unset;
 		box-shadow: unset;
 	}
-}
-
-.l-reveal .toggle.collapse + .md {
-	padding: var(#{$prefix}-size-md);
 }

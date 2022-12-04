@@ -115,3 +115,12 @@ button.xl {
 	font-size: var(#{$prefix}-font-size-xl);
 	padding: var(#{$prefix}-size-xl) var(#{$prefix}-size-xxl);
 }
+
+//== Alignment
+
+.start button {
+	text-align: start;
+}
+.end button {
+	text-align: end;
+}
