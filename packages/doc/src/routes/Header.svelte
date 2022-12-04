@@ -7,7 +7,7 @@
 	import github from '$lib/images/icon-dark-100-optim-github.svg';
 </script>
 
-<header class="header-app l-sidebar">
+<header class="header-app l-sidebar layer">
 	<nav>
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
