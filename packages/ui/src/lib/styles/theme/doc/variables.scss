@@ -13,10 +13,10 @@ $colors: (
 	'danger': rgba(238, 9, 123, 1),
 	'danger-light': rgb(251, 153, 183, 1),
 	'danger-lighter': rgba(255, 235, 245, 1),
-	'primary': rgb(255, 42, 244),
+	'primary': rgb(106, 75, 179),
 	'primary-light': rgb(181, 165, 252, 1),
 	'primary-lighter': rgba(231, 219, 255, 1),
-	'accent': rgb(209, 32, 189),
+	'accent': rgb(0, 131, 136),
 	'accent-light': rgb(71, 191, 185),
 	'accent-lighter': rgb(215, 247, 240),
 	'highlight': rgb(246, 226, 10),
@@ -132,9 +132,8 @@ $scale: (
 
 /**
  * Source: https://utopia.fyi/blog/css-modular-scales/
- *
- * Usage:
- * 
+ * Usage: 
+ *  TODO: Doc + link to mixin generateModularScale
  *
  * body {
  *   font-size: var(#{$prefix}-fluid-0)
@@ -182,6 +181,7 @@ $layout: (
 	outline-offset: 0.25rem,
 	outline-width: 2px,
 	prev-offset-limit: calc(calc(var(#{$prefix}-outline-offset) + var(#{$prefix}-outline-width))),
+	//
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3
 	shadow: #{0 -1px 3px 0 hsl(
