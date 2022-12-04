@@ -25,7 +25,7 @@
 	}
 </script>
 
-<menu class={`l-${layout} ${size} list-none`}>
+<menu class={`l-${layout} ${size}`} role="group">
 	{#each items as { id, title, emoji }}
 		<li>
 			<button
