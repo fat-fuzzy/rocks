@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {browser} from '$app/environment'
 	import Button from '../buttons/Button.svelte'
 	import {createEventDispatcher} from 'svelte'
 
@@ -19,14 +20,17 @@
 		{id: 'btn-3', title: 'Button  3', type: 'button'},
 	]
 
-	let selected = ''
-	function formatText(title, emoji) {
+	let clickedId = ''
+	const formatText = (title, emoji) => {
 		return emoji ? `${emoji} ${title}` : title
 	}
-	const onClick = (event) => {
-		selected = event.target.getAttribute('id')
-		dispatch('input', {
-			selected,
+	export let onClick = (event) => {
+		if (browser) {
+			window.alert(`${event.target.textContent} Clicked`)
+		}
+		clickedId = event.target.id
+		dispatch('click', {
+			clicked: clickedId,
 		})
 	}
 </script>
@@ -34,7 +38,7 @@
 <menu class={`l-${layout} ${size}`} role="group">
 	{#each items as { id, title, emoji }}
 		<li>
-			<Button {id} {onClick} variant={id === selected ? 'outline' : variant}>
+			<Button {id} {onClick} variant={id === clickedId ? `alt ${variant}` : variant}>
 				{formatText(title, emoji)}
 			</Button>
 		</li>
