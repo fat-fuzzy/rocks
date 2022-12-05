@@ -3,14 +3,14 @@
 	import type {Sketch} from '$data/data'
 	import Canvas from '$blocks/media/Canvas.svelte'
 	import Feedback from '$blocks/cards/Feedback.svelte'
-	import NavReveal from '$blocks/navs/NavReveal.svelte'
+	import ButtonMenuReveal from '$blocks/buttons/ButtonMenuReveal.svelte'
 
 	export let data: PageData
 	const {sketches} = data
 
 	let sketchId = 'default'
 	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
-	const items: {id: string; title: string; emoji: string}[] = sketches
+	const items: {slug: string; title: string; emoji: string}[] = sketches
 
 	let showcanvas = true
 	let showFeedback = !showcanvas
@@ -42,6 +42,7 @@
 		<Feedback {feedback} show={showFeedback} />
 	</div>
 	<div class="l-side sm shrink">
-		<NavReveal on:input={loadSketch} {items} />
+		<!--TODO: make routes for animations & use Nav -->
+		<ButtonMenuReveal on:click={loadSketch} {items} />
 	</div>
 </section>
