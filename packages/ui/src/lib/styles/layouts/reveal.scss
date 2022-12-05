@@ -7,7 +7,10 @@
 }
 
 .l-reveal .toggle.collapse + .show {
-	#{$prefix}-show-top: calc(calc(2 * var(#{$prefix}-prev-offset-limit)) + 2em);
+	#{$prefix}-show-top: calc(
+		calc(2 * var(#{$prefix}-prev-offset-limit)) + calc(1em + calc(2 * var(#{$prefix}-current-size))) +
+			calc(2 * var(#{$prefix}-border-width))
+	);
 	position: absolute;
 	top: var(#{$prefix}-show-top);
 	color: var(#{$prefix}-current-color);
@@ -36,12 +39,13 @@
 	white-space: nowrap;
 }
 
+// TODO: decouple container breakpoint from scale of content
 @include min-width(bp-md) {
-	.l-reveal .toggle.collapse {
+	.l-reveal.md .toggle.collapse {
 		display: none;
 	}
 
-	.l-reveal .toggle.collapse + .hide {
+	.l-reveal.md .toggle.collapse + .hide {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -53,7 +57,7 @@
 		white-space: normal;
 	}
 
-	.l-reveal .toggle.collapse + .show {
+	.l-reveal.md .toggle.collapse + .show {
 		position: unset;
 		width: 100%;
 		max-width: unset;
