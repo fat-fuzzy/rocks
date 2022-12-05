@@ -5,7 +5,7 @@
 
 	const dispatch = createEventDispatcher()
 	export let layout = `stack`
-	export let size = `md`
+	export let size = ``
 	export let variant = 'primary'
 
 	export let items: {

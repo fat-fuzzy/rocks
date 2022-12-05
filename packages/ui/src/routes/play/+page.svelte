@@ -43,6 +43,6 @@
 	</div>
 	<div class="l-side sm shrink">
 		<!--TODO: make routes for animations & use Nav -->
-		<ButtonMenuReveal on:click={loadSketch} {items} />
+		<ButtonMenuReveal on:click={loadSketch} {items} size="md" />
 	</div>
 </section>

@@ -16,7 +16,7 @@
 <Story
 	{title}
 	{slug}
-	componentProps={{ size: 'md', theme: 'dark', variant: 'primary' }}
+	componentProps={{ size: 'lg', theme: 'dark', variant: 'primary' }}
 	storyProps={{
 		icons: [],
 		sizes: ['sm', 'md'],

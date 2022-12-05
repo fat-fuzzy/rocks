@@ -3,7 +3,7 @@
 <script lang="ts">
 	// Inputs
 	import {browser} from '$app/environment'
-	export let size = 'md'
+	export let size = ''
 	export let icon = ''
 	export let variant = 'primary' // TODO: Figure algorithmic light/dark + alt button color schemes
 	export let id = 'btn'

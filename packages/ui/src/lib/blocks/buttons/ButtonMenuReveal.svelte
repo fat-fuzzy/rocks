@@ -4,7 +4,7 @@
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
-	export let size = 'md'
+	export let size = ''
 	export let variant = 'primary'
 	export let alignment = 'start'
 	export let items: {slug: string; title: string; emoji: string}[] = []
@@ -51,7 +51,7 @@
 				<button
 					type="button"
 					class:outline={slug === selected}
-					class="md"
+					class={size}
 					on:click={onClick}
 					id={slug}
 					data-test={slug}

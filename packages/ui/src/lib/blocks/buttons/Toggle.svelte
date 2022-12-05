@@ -4,7 +4,7 @@
 
 	import Fieldset from '../forms/Fieldset.svelte'
 
-	export let size = 'md'
+	export let size = ''
 	const {state, send} = useMachine(toggleMachine)
 	$: pressed = $state.value === 'active'
 	$: toggleClass = pressed ? 'outline accent' : 'primary accent' /* TODO: use aria state to style*/

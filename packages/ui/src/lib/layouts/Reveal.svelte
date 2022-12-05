@@ -2,7 +2,7 @@
 	import {clickOutside} from '../utils/click-outside.js'
 
 	export let layout = 'stack'
-	export let size = 'md'
+	export let size = ''
 	export let variant = 'primary'
 	export let alignment = 'start'
 	let expanded = false

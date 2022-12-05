@@ -3,7 +3,7 @@
 	import Nav from './Nav.svelte'
 
 	export let layout = 'stack'
-	export let size = 'md'
+	export let size = ''
 	export let variant = 'primary'
 	export let alignment = 'start'
 	export let items: {slug: string; title: string; emoji?: string}[] = []
