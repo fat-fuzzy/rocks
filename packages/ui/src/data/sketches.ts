@@ -42,7 +42,7 @@ export const sketches: Sketch[] = [
 	// },
 	{
 		id: '2d-geometry',
-		slug: 'd-geometry',
+		slug: '2d-geometry',
 		title: '2D Geometry',
 		emoji: '📐',
 		interactive: true,
