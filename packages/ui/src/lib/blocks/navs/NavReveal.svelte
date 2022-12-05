@@ -1,18 +1,12 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
 	import {clickOutside} from '../../utils/click-outside.js'
+	import Nav from './Nav.svelte'
 
-	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
 	export let size = 'md'
 	export let variant = 'primary'
 	export let alignment = 'start'
-	export let items: {id: string; title: string; emoji: string}[] = []
-
-	let selected = ''
-	function getLabel(emoji, title) {
-		return `${emoji} ${title}`
-	}
+	export let items: {slug: string; title: string; emoji?: string}[] = []
 
 	let expanded = false
 
@@ -22,14 +16,6 @@
 
 	function handleClickOutside(event) {
 		expanded = false
-	}
-
-	const handleClick = (event) => {
-		const element = event.target
-		selected = element.getAttribute('id')
-		dispatch('input', {
-			selected,
-		})
 	}
 	$: show = expanded ? 'show' : 'hide'
 </script>
@@ -41,23 +27,9 @@
 		aria-expanded={expanded}
 		on:click={toggleReveal}
 	>
-		👾 Scenes
+		👾 Sketches
 	</button>
 	<div class={`${alignment} ${show}`}>
-		<menu class={`l-${layout} ${size} card layer`}>
-			{#each items as { title, emoji, id }}
-				<button
-					type="button"
-					class:outline={id === selected}
-					class="md"
-					on:click={handleClick}
-					{id}
-					data-test={id}
-				>
-					<!--TODO: make routes for animations-->
-					{getLabel(emoji, title)}
-				</button>
-			{/each}
-		</menu>
+		<Nav id="nav-sketches" {items} {layout} {size} path="/play" />
 	</div>
 </menu>
