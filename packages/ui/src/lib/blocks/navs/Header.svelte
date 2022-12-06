@@ -38,7 +38,7 @@
 </script>
 
 <header class={mainMenuClass}>
-	<nav class="l-main l-burrito">
+	<nav class="l-main l-burrito" aria-label="primary-navigation">
 		<ul>
 			<li class:active={page.url.pathname === '/'} class="home">
 				<a data-sveltekit-prefetch href="/">

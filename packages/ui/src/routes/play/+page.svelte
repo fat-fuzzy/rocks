@@ -1,16 +1,11 @@
 <script lang="ts">
 	import type {PageData} from './$types'
-	import type {Sketch} from '$data/data'
-	import Canvas from '$blocks/media/Canvas.svelte'
 	import Feedback from '$blocks/cards/Feedback.svelte'
-	import ButtonMenuReveal from '$blocks/buttons/ButtonMenuReveal.svelte'
-	import SubNav from '$blocks/navs/SubNav.svelte'
 
 	export let data: PageData
 	const {sketches} = data
 
 	let sketchId = 'default'
-	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
 	const items: {slug: string; title: string; emoji: string}[] = sketches
 
 	let showcanvas = true
@@ -20,8 +15,6 @@
 	function loadSketch(event) {
 		sketchId = event.detail.selected
 	}
-
-	$: sketch = sketches.find((a) => a.id === sketchId)
 </script>
 
 <svelte:head>
@@ -34,17 +27,10 @@
 
 <header class="header-page">
 	<h1>👾 Play</h1>
-	{#if sketch} <h2>&nbsp;❤︎&nbsp;{sketch.title}&nbsp;{sketch.emoji}</h2> {/if}
 </header>
 
-<section class="l-sidebar">
-	<header class="l-side sm shrink">
-		<!--TODO: make routes for animations & use Nav -->
-		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
-		<!-- <ButtonMenuReveal on:click={loadSketch} {items} size="md" /> -->
-	</header>
-	<div class="l-main l-stack">
-		<Canvas show={showcanvas} {sketch} />
-		<Feedback {feedback} show={showFeedback} />
-	</div>
-</section>
+{#each sketches as sketch}
+	<pre>{sketch}</pre>
+{/each}
+
+<Feedback {feedback} show={showFeedback} />

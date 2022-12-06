@@ -1,121 +1,25 @@
 <script lang="ts">
-	// @ts-ignore
-	import {gl} from '@fat-fuzzy/lib'
-	import type {Sketch} from '$data/data' // seems to accept aliases outside lib folder
-	import {theme} from '../../stores/theme' // ... but not inside lib folder
-	import Button from '../buttons/Button.svelte'
-	import Controls from '../graphics/Controls.svelte'
-	import Geometry from '../graphics/Geometry.svelte'
+	export let title = ''
+	export let dimensions = 'video'
+	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
+	export let canvas: HTMLCanvasElement
 
-	const {draw, utils} = gl
-
-	export let show = true
-	export let sketch: Sketch | undefined
-
-	// Canvas
-	let canvas
-	let canvasWidth = 300
-	let canvasHeight = 600
-	let showDetails = true
-	let animationFrame
-	let variant = ''
-	const btnVariant = 'outline'
-	let webGlOptions
-
-	// TODO : fix
-	let geometry = utils.getGeometryDefaults(canvasWidth, canvasHeight)
-
-	$: details = sketch ? sketch.interactive : false
-	$: detailsIcon = showDetails ? '👇' : '👉'
-	$: variant = $theme ? `${btnVariant} accent` : `${btnVariant} highlight`
-	$: drawFunction = sketch ? draw[sketch.draw] : null
-
-	function run(sketch) {
-		console.log('RUN')
-		if (!sketch.draw) {
-			return // TODO: throw error
-		}
-		// if (!webGlOptions) {
-		// 	console.log('webGlOptions Once')
-		// 	webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
-		// }
-		if (sketch.interactive) {
-			console.log('sketch.interactive')
-			console.log(geometry)
-			drawFunction({webGlOptions, ...geometry})
-		} else {
-			drawFunction(webGlOptions)
-		}
-	}
-
-	function clearCanvas() {
-		draw.clear(webGlOptions)
-	}
-
-	function runLoop(timestamp, duration) {
-		console.log('RUN LOOP', duration)
-		run(sketch)
-		animationFrame = requestAnimationFrame(function (t) {
-			// call requestAnimationFrame again with parameters
-			runLoop(t, duration)
-		})
-	}
-
-	function updateGeometry(event) {
-		console.log('Geometry event')
-		console.log(event)
-		geometry = {...geometry, ...event.detail.value}
-	}
-
-	function play() {
-		updateGeometry({detail: {value: {}}})
-		if (sketch) {
-			webGlOptions = draw.initScene(canvas, sketch.vert, sketch.frag)
-			animationFrame = requestAnimationFrame(function (timestamp) {
-				console.log('PLAY')
-				let {duration} = sketch
-				runLoop(timestamp, duration)
-			})
-		}
-	}
-
-	function stop() {
-		cancelAnimationFrame(animationFrame)
-		// if (animationFrame) {
-		// 	cancelAnimationFrame(animationFrame)
-		// }
-		clearCanvas()
-	}
-
-	function togglelDetails() {
-		showDetails = !showDetails
-	}
+	/**
+	 * Responsive canvas
+	 *  Thes default width and height of the canvas (declarations below) will change responsively,
+	 *  thanks to the combination of the following:
+	 *  - the `l-frame` class used on the canvas container does the following:
+	 *     - it sets a fixed ratio specified by the `dimensions` class
+	 *     - it resizes itself responsively to the size its container
+	 *  - the width and height of the canvas are bound reactively to the offsetWidth and offsetHeight of the above frame
+	 *  - the canvas element will adjust to the dimensions provided by the reactive width and height properties
+	 */
+	let width = 300
+	let height = 600
 </script>
 
-<div class="l-sidebar">
-	<div class="l-main">
-		<div
-			class="l-frame video layer"
-			bind:offsetWidth={canvasWidth}
-			bind:offsetHeight={canvasHeight}
-		>
-			<canvas
-				alt={sketch ? `Current sketch: ${sketch.title}` : 'No sketch selected yet'}
-				data-test="canvas"
-				class={!show ? 'visually-hidden' : ''}
-				bind:this={canvas}
-			/>
-		</div>
-		<Controls {play} {stop} />
-	</div>
-	<div class="l-side md">
-		<aside class="l-stack sm">
-			{#if details}
-				<Button id="btn-details" {variant} onClick={() => togglelDetails()}>
-					{detailsIcon} Details
-				</Button>
-				<Geometry show={showDetails} on:update={updateGeometry} {canvasWidth} {canvasHeight} />
-			{/if}
-		</aside>
-	</div>
+<div class={`l-frame ${dimensions} ${layer}`} bind:offsetWidth={width} bind:offsetHeight={height}>
+	<canvas aria-label={title} data-test="canvas" bind:this={canvas}>
+		You need HTML5 canvas support to display this content
+	</canvas>
 </div>
