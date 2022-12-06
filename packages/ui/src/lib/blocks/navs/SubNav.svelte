@@ -1,11 +1,13 @@
 <script lang="ts">
 	import {clickOutside} from '../../utils/click-outside.js'
-	import Nav from './Nav.svelte'
+	import LinkList from './LinkList.svelte'
 
 	export let layout = 'stack'
 	export let size = ''
 	export let variant = 'primary'
-	export let alignment = 'start'
+	export let id = 'sub-nav'
+	export let title = 'Sun Navigation'
+	export let align = 'start'
 	export let items: {slug: string; title: string; emoji?: string}[] = []
 
 	let expanded = false
@@ -17,19 +19,25 @@
 	function handleClickOutside(event) {
 		expanded = false
 	}
+
 	$: show = expanded ? 'show' : 'hide'
 </script>
 
-<menu class={`l-reveal l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
+<nav
+	aria-labelledby={id}
+	class={`l-reveal l-${layout} ${size} sub-nav`}
+	use:clickOutside
+	on:clickOutside={handleClickOutside}
+>
 	<button
+		{id}
 		type="button"
 		class={`toggle collapse  ${size} ${variant}`}
 		aria-expanded={expanded}
+		aria-controls={`${id}-menu-list`}
 		on:click={toggleReveal}
 	>
-		👾 Sketches
+		{title}
 	</button>
-	<div class={`${alignment} ${show}`}>
-		<Nav id="nav-sketches" {items} {layout} {size} path="/play" />
-	</div>
-</menu>
+	<LinkList id={`${id}-menu-list`} path="/play" {items} {layout} {size} {align} {show} />
+</nav>

@@ -17,13 +17,14 @@
 	background-color: var(#{$prefix}-current-bg-color);
 	left: 0;
 	right: 0;
+	z-index: var(#{$prefix}-z-index-reveal);
 }
 
-.l-reveal .toggle.collapse + .show.start {
+.l-reveal .toggle.collapse + .start {
 	justify-self: flex-start;
 }
 
-.l-reveal .toggle.collapse + .show.end {
+.l-reveal .toggle.collapse + .end {
 	justify-self: flex-end;
 }
 

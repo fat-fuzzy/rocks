@@ -4,6 +4,7 @@
 	import Canvas from '$blocks/media/Canvas.svelte'
 	import Feedback from '$blocks/cards/Feedback.svelte'
 	import ButtonMenuReveal from '$blocks/buttons/ButtonMenuReveal.svelte'
+	import SubNav from '$blocks/navs/SubNav.svelte'
 
 	export let data: PageData
 	const {sketches} = data
@@ -36,13 +37,14 @@
 	{#if sketch} <h2>&nbsp;❤︎&nbsp;{sketch.title}&nbsp;{sketch.emoji}</h2> {/if}
 </header>
 
-<section class="l-sidebar start">
+<section class="l-sidebar">
+	<header class="l-side sm shrink">
+		<!--TODO: make routes for animations & use Nav -->
+		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
+		<!-- <ButtonMenuReveal on:click={loadSketch} {items} size="md" /> -->
+	</header>
 	<div class="l-main l-stack">
 		<Canvas show={showcanvas} {sketch} />
 		<Feedback {feedback} show={showFeedback} />
-	</div>
-	<div class="l-side sm shrink">
-		<!--TODO: make routes for animations & use Nav -->
-		<ButtonMenuReveal on:click={loadSketch} {items} size="md" />
 	</div>
 </section>
