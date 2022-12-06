@@ -1,5 +1,4 @@
 import type { LayoutLoad } from './$types';
-import * as ui from '@fat-fuzzy/ui';
 
 export const load: LayoutLoad = async ({ params, fetch }) => {
 	try {

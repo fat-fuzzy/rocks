@@ -13,9 +13,6 @@
 </svelte:head>
 
 <Sidebar placement="start">
-	<div slot="main" class="l-stack">
-		<slot />
-	</div>
 	<div slot="side" class="sticky">
 		<a data-sveltekit-prefetch href={`/ui`}><h1>Stories</h1></a><br />
 		<a data-sveltekit-prefetch href={`/ui/blocks`}><h2>Blocks</h2></a><br />
@@ -26,5 +23,8 @@
 		{#each components.layouts as layout}
 			<a data-sveltekit-prefetch href={`/ui/layouts/${layout}`}>{layout}</a><br />
 		{/each}
+	</div>
+	<div slot="main" class="l-stack">
+		<slot />
 	</div>
 </Sidebar>
