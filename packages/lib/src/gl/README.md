@@ -1,45 +1,124 @@
-# Notes on WebGL Fundamentals tutorials
+# Notes on WebGL
 
-The files in this folder contain mostly code examples, notes or libraries taken from the following website:
+## Raw WebGL - Nick Desaulniers
 
-https://webglfundamentals.org
+Src: https://www.youtube.com/embed/H4c8t6myAWU/
 
-If you're looking for information on WebGL, and you haven't yet visited that site, I recommend you go there first.
+A webGL app consists of three types of assets
 
-## Licence
+- shaders
+  - vertex
+  - fragment
+- buffers (arrays of moving data)
+  - camera position
+  - light position
+  - color
+  - generic data
+- textures: bitmap mapped to a mesh=model
+  - images
+  - video
 
-The code examples in https://webglfundamentals.org, used here with modifications, contain the following Copyright notice:
+### Glossary
 
-Copyright 2012, Gregg Tavares.
+**Samples** (sampling = reduction of continuous signal to discrete signal)
 
-All rights reserved.
+- sound
+- images = sampling (analog to digital)
 
-- Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are
-  met:
+**Fragment** pixel data generated during rasterisation process. It contains info on:
 
-- Redistributions of source code must retain the above copyright
-  notice, this list of conditions and the following disclaimer.
+- color
+- depth
+- value
+- texture coordinates
+- ...
 
-- Redistributions in binary form must reproduce the above
-  copyright notice, this list of conditions and the following disclaimer
-  in the documentation and/or other materials provided with the
-  distribution.
+**Frame** Individual still image out of a moving picture, displayed during `displayAnimationFrame`
 
-- Neither the name of Gregg Tavares. nor the names of his
-  contributors may be used to endorse or promote products derived from
-  this software without specific prior written permission.
+**Shading** Modeling 2D pixel information from 3D data
 
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**Material** Description of how a surface reacts to light
 
-// SRC: https://webglfundamentals.org/webgl/resources/webgl-utils.js
+**Shaders** Programs that come in pairs and that describe how pixels should display on any given frame by running massively in parallel in the GPU
+
+- a vertex shader can feed into a fragment shader
+- they can be mixed as long as the outputs of one match the inputs of the other
+- apparently the are like Mr Potato head:- I can re-use shaders that i wrote before and mix them with other shaders
+- Vertex shaders : run once for every vertex
+- Fragment shader: run once for every fragment, color values are interpolated between fragments
+
+## Field of View
+
+Viewing space in the shape of a Frustum beyond which objects get culled=dropped
+
+Clipping planes of a Frustum:
+
+- near clipping plane
+- far clipping plane
+- top clipping plane
+- bottom clipping plane
+- right clipping plane
+- left clipping plane
+
+## Coordinate systems
+
+### Canvas 3D
+
+A `2*2*2` cube:
+
+- x=[-1, 1]
+- y=[-1, 1]
+- z=[-1, 1]
+
+Anything drawn outside the coordinate system gets culled
+
+Physical representation of origin:
+
+- right hand:
+  - index up = +y
+  - thumb out = +x
+  - middle in = +z
+
+### Textures
+
+`st` or `uv`
+
+Same coordinate system as Canvas 3D, without the `z`.
+
+- [1, 1] = top right corner
+
+BUT: bitmaps store vertical data in reverse: we need to flip the `y` coordinates data to use it
+
+### GLSL Types
+
+Uniforms and Attributes are shader inputs
+
+#### Uniforms
+
+- inputs for vertex & fragment shaders
+- same for all vertices & fragments
+
+#### Attributes
+
+- inputs for vertex shaders
+- unique per vertex
+
+#### Varyings
+
+- Communication channel between shaders: vertex shader feeds into fragment shader:
+  - vertex output
+  - fragment input
+
+### Running a program
+
+1. Get WebGL context from a canvas
+1. Clear the canvas
+1. [...write shaders]
+   1. vertex shaders
+      - objective = assign values to `gl_Position`
+      - optional objective = assign values to `gl_PointSize` (if we are drawing points)
+   1. fragment shaders
+      - must specify resolution of floating point math (targets mobile device support - not best webgl support (?))
+      - objective = assign values to uniform `gl_FragColor`
+1. Grab shaders: compile shaders into a program
+   - write a helper function to compile (will re-use)
