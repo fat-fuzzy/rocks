@@ -1,35 +1,13 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import Controls from '../graphics/Controls.svelte'
-	export let title = ''
-	export let dimensions = 'video'
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
 	export let sketch
+	let {title, init, dimensions, clear} = sketch
 
-	const {init, render, clear, duration} = sketch
 	let canvas: HTMLCanvasElement
-	let frame: number
-
-	function runLoop(timestamp, duration) {
-		render(canvas)
-		frame = requestAnimationFrame(function (t) {
-			// call requestAnimationFrame again with parameters
-			runLoop(t, duration)
-		})
-	}
-
-	function play() {
-		clear(canvas)
-		frame = requestAnimationFrame(function (timestamp) {
-			runLoop(timestamp, duration)
-		})
-	}
-
-	function stop() {
-		cancelAnimationFrame(frame)
-		clear(canvas)
-	}
-
+	let width
+	let height
 	/**
 	 * Responsive canvas
 	 *  Thes default width and height of the canvas (declarations below) will change responsively,
@@ -40,17 +18,15 @@
 	 *  - the width and height of the canvas are bound reactively to the offsetWidth and offsetHeight of the above frame
 	 *  - the canvas element will adjust to the dimensions provided by the reactive width and height properties
 	 */
-	let width = 300
-	let height = 600
 	onMount(() => {
 		init(canvas)
-		return () => clear(canvas)
+		return () => clear(canvas) // TODO: figure this out : clear doesn't reset the webgl context
 	})
 </script>
 
 <div class={`l-frame ${dimensions} ${layer}`} bind:offsetWidth={width} bind:offsetHeight={height}>
-	<canvas aria-label={title} data-test="canvas" bind:this={canvas}>
+	<canvas aria-label={title} data-test="canvas" bind:this={canvas} {width} {height}>
 		You need HTML5 canvas support to display this content
 	</canvas>
 </div>
-<Controls {play} {stop} />
+<Controls {sketch} {canvas} />

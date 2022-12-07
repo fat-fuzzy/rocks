@@ -5,17 +5,14 @@
 	// import Geometry from '../graphics/Geometry.svelte'
 
 	export let sketch
-	const {title, details, geometry} = sketch
+	let title = ''
+	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
+	let {details, geometry} = sketch
 
 	// Canvas
 	let showDetails = true
 	let variant = ''
 	const btnVariant = 'outline'
-
-	let geometry = {}
-
-	// TODO : fix
-	// let geometry = utils.getGeometryDefaults(canvasWidth, canvasHeight)
 
 	$: detailsIcon = showDetails ? '👇' : '👉'
 	$: variant = $theme ? `${btnVariant} accent` : `${btnVariant} highlight`
@@ -40,7 +37,7 @@
 		<Button id="btn-details" {variant} onClick={() => togglelDetails()}>
 			{detailsIcon} Details
 		</Button>
-		{#if details}
+		{#if geometry}
 			<!-- <Geometry
 				show={showDetails}
 				on:update={updateGeometry}
