@@ -3,8 +3,9 @@
 	import Sidebar from '$lib/layouts/Sidebar.svelte'
 	import SubNav from '$blocks/navs/SubNav.svelte'
 
-	$: sketches = $page.data.sketches
-	const items: {slug: string; title: string; emoji: string}[] = sketches
+	$: items = $page.data.sketches
+	console.log('layout items')
+	console.log($page.data)
 
 	// TODO: fix links
 </script>

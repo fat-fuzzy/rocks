@@ -1,5 +1,5 @@
-import * as gl from './gl/index'
+import gfx from './gfx/index'
 
 export default {
-	gl,
+	gfx,
 }

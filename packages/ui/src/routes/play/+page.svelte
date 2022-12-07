@@ -6,7 +6,7 @@
 	const {sketches} = data
 
 	let sketchId = 'default'
-	const items: {slug: string; title: string; emoji: string}[] = sketches
+	const items: {id: string; slug: string; title: string; emoji: string}[] = sketches
 
 	let showcanvas = true
 	let showFeedback = !showcanvas
@@ -30,7 +30,7 @@
 </header>
 
 {#each sketches as sketch}
-	<pre>{sketch}</pre>
+	<pre>{sketch.title}</pre>
 {/each}
 
 <Feedback {feedback} show={showFeedback} />

@@ -1,65 +1,34 @@
 <script lang="ts">
 	import {gl} from '@fat-fuzzy/lib'
-	import {onMount, createEventDispatcher} from 'svelte'
+	import {createEventDispatcher} from 'svelte'
 	import Position from './Position.svelte'
 	import Scale from './Scale.svelte'
 	import Rotation from './Rotation.svelte'
 
 	export let show = true
-	export let canvasWidth
-	export let canvasHeight
+	export let canvasWidth: number
+	export let canvasHeight: number
+	export let geometry
 
 	const {utils} = gl
 
 	const dispatch = createEventDispatcher()
 
-	let geometry
-	let color
-	let width
-	let height
+	let color = geometry.color
+	let width = geometry.width
+	let height = geometry.height
 
 	// input attributes
-	let maxX
-	let maxY
-	let angle
+	let angle = 0
 
 	// Position
-	let coordX
-	let coordY
-	let translation
+	let [coordX, coordY] = geometry.translation
 
 	// Rotation
-	let radCoordX
-	let radCoordY
-	let rotation
+	let [radCoordX, radCoordY] = geometry.rotation
 
 	// Scale
-	let scaleX
-	let scaleY
-	let scale
-
-	function init() {
-		geometry = utils.getGeometryDefaults(canvasWidth, canvasHeight)
-
-		// Shape
-		color = geometry.color
-		width = geometry.width
-		height = geometry.height
-
-		// Position
-		;[coordX, coordY] = geometry.translation
-
-		// Rotation
-		;[radCoordX, radCoordY] = geometry.rotation
-
-		// Scale
-		;[scaleX, scaleY] = geometry.scale
-
-		// input attributes
-		maxX = canvasWidth
-		maxY = canvasHeight
-		angle = 0
-	}
+	let [scaleX, scaleY] = geometry.scale
 
 	$: maxX = canvasWidth
 	$: maxY = canvasHeight
@@ -81,11 +50,6 @@
 		dispatch('update', {
 			value: geometry,
 		})
-
-	onMount(() => {
-		init()
-		update()
-	})
 </script>
 
 <form class={show ? 'l-switcher xxs' : 'visually-hidden'}>

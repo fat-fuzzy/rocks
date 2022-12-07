@@ -97,7 +97,7 @@ function drawRectangles(gl, colorUniformLocation, count) {
  * Code that gets executed once before the program runs
  * @param {HTMLCanvasElement} canvas
  */
-export function init(canvas) {
+function init(canvas) {
 	// 1. Get A WebGL context
 	gl = canvas.getContext('webgl')
 
@@ -165,7 +165,7 @@ export function init(canvas) {
 		positionBuffer,
 	} webGlOptions
 	*/
-export function drawScene() {
+const draw = () => {
 	/************************
 	 * RENDERING CODE
 	 * Code that gets executed every time we draw
@@ -203,18 +203,25 @@ export function drawScene() {
 	gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
 }
 
-export function render() {
-	drawScene()
+const render = () => {
+	draw()
 	// 3. Draw!!
 	// - Draw 3 random rectangles
 	drawRectangles(gl, colorUniformLocation, 1)
 }
 
-export function clear() {
+const clear = () => {
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
 	// Set the clear color to darkish green.
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
 	// the function call that actually does the drawing.
 	gl.clear(gl.COLOR_BUFFER_BIT)
+}
+
+export default {
+	init,
+	render,
+	// draw,
+	clear,
 }

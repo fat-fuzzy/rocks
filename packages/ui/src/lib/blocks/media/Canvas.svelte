@@ -1,8 +1,34 @@
 <script lang="ts">
+	import {onMount} from 'svelte'
+	import Controls from '../graphics/Controls.svelte'
 	export let title = ''
 	export let dimensions = 'video'
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
-	export let canvas: HTMLCanvasElement
+	export let sketch
+
+	const {init, render, clear, duration} = sketch
+	let canvas: HTMLCanvasElement
+	let frame: number
+
+	function runLoop(timestamp, duration) {
+		render(canvas)
+		frame = requestAnimationFrame(function (t) {
+			// call requestAnimationFrame again with parameters
+			runLoop(t, duration)
+		})
+	}
+
+	function play() {
+		clear(canvas)
+		frame = requestAnimationFrame(function (timestamp) {
+			runLoop(timestamp, duration)
+		})
+	}
+
+	function stop() {
+		cancelAnimationFrame(frame)
+		clear(canvas)
+	}
 
 	/**
 	 * Responsive canvas
@@ -16,6 +42,10 @@
 	 */
 	let width = 300
 	let height = 600
+	onMount(() => {
+		init(canvas)
+		return () => clear(canvas)
+	})
 </script>
 
 <div class={`l-frame ${dimensions} ${layer}`} bind:offsetWidth={width} bind:offsetHeight={height}>
@@ -23,3 +53,4 @@
 		You need HTML5 canvas support to display this content
 	</canvas>
 </div>
+<Controls {play} {stop} />
