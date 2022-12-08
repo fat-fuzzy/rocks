@@ -26,14 +26,20 @@ export const sketches = [
 	// },
 	{
 		id: '003',
-		slug: '2d-geometry',
-		title: '2D Geometry',
+		slug: 'rectangle-2d',
+		title: 'Rectangle 2D ',
 		emoji: '📐',
 	},
 	{
 		id: '004',
-		slug: '2d-matrices',
-		title: '2D Matrices',
+		slug: 'geometry-2d',
+		title: 'Geometry 2D ',
+		emoji: '📐',
+	},
+	{
+		id: '005',
+		slug: 'matrix-2d',
+		title: 'Matrix 2D',
 		emoji: '📐',
 	},
 	// {

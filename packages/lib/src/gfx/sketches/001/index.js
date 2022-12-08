@@ -5,8 +5,8 @@
  ***********************
  */
 
-import * as utils from './utils.js'
-import * as utilsWebGl from './utilsWebGL.js'
+import * as utils from '../../lib/utils.js'
+import * as utilsWebGl from '../../lib/utilsWebGL.js'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader'
@@ -167,10 +167,10 @@ function init(canvas) {
 		resolutionUniformLocation,
 		positionAttributeLocation,
 		positionBuffer,
-	} webGlOptions
+	} options
 	*/
-function drawScene(webGlOptions) {
-	const {gl, resolutionUniformLocation, positionAttributeLocation, positionBuffer} = webGlOptions
+function draw(options) {
+	const {gl, resolutionUniformLocation, positionAttributeLocation, positionBuffer} = options
 	/************************
 	 * RENDERING CODE
 	 * Code that gets executed every time we draw
@@ -209,9 +209,9 @@ function drawScene(webGlOptions) {
 }
 
 function render(canvas) {
-	const webGlOptions = init(canvas)
-	const {gl, colorUniformLocation} = webGlOptions
-	drawScene(webGlOptions)
+	const options = init(canvas)
+	const {gl, colorUniformLocation} = options
+	draw(options)
 	// 3. Draw!!
 	// - Draw 3 random rectangles
 	drawRectangles(gl, colorUniformLocation, 1)
@@ -219,6 +219,10 @@ function render(canvas) {
 
 function clear(canvas) {
 	const gl = canvas.getContext('webgl')
+	if (!gl) {
+		// TODO: handle error
+		return
+	}
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
 	// Set the clear color to darkish green.
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)

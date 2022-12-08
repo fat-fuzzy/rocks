@@ -5,9 +5,13 @@
  ***********************
  */
 
-import * as utils from '../../utils.js'
-import * as utilsWebGl from '../../utilsWebGL.js'
+import * as utils from '../../lib/utils.js'
+import * as utilsWebGl from '../../lib/utilsWebGL.js'
 
+import {frag} from './shaders/fragment-shader'
+import {vert} from './shaders/vertex-shader-scale-2d'
+
+let geometry = utils.getGeometryDefaults()
 /**
  * @param {WebGLRenderingContext} gl
  * @param {Array<number>} coords
@@ -42,39 +46,10 @@ function setRectangle(gl, x, y, width, height) {
 }
 
 /**
- * @param {WebGLRenderingContext} gl
- * @param {number} colorUniformLocation
- */
-function drawRectangle(gl, colorUniformLocation) {
-	// Setup a random rectangle
-	setRectangle(
-		gl,
-		utils.randomInt(300),
-		utils.randomInt(300),
-		utils.randomInt(300),
-		utils.randomInt(300),
-	)
-
-	// Set a random color.
-	gl.uniform4f(colorUniformLocation, Math.random(), Math.random(), Math.random(), 1)
-
-	// Draw the rectangle.
-	// WebGL has 3 types of primitives: points, lines, and triangles
-	// const primitiveType = gl.TRIANGLES // each iteration, WebGL will draw a triangle based on the values set in gl_Position
-	// const count = 6 // number of times the shader will execute: 3
-	// 1st Iteration: a_position.x & a_position.y of the vertex shader will be set to the first 2 values in the positionBuffer
-	// 2nd Iteration: a_position.x & a_position.y => next pair of values of positionBuffer
-	// 3rd Iteration: a_position.x & a_position.y => next (last) pair of values of positionBuffer
-	// offset = 0
-	// gl.drawArrays(primitiveType, offset, count)
-	gl.drawArrays(gl.TRIANGLES, 0, 6)
-}
-
-/**
  * TRANSLATIONS
  * @param {WebGLRenderingContext} gl
  */
-function renderTranslationRectangle(gl, colorUniformLocation, translation, color, width, height) {
+function renderTranslationRectangle(gl, colorUniformLocation, {translation, color, width, height}) {
 	gl.uniform4fv(colorUniformLocation, color)
 	setRectangle(gl, translation[0], translation[1], width, height)
 
@@ -86,63 +61,11 @@ function renderTranslationRectangle(gl, colorUniformLocation, translation, color
 }
 
 /**
- * TRANSLATIONS
- * @param {WebGLRenderingContext} gl
- */
-function renderTranslationGeometry(gl, colorUniformLocation, color) {
-	// TODO here: extract values from coordinates (width + height)
-	/* prettier-ignore */
-	const coords = [
-		// left column
-		0, 0,
-		30, 0,
-		0, 150,
-		0, 150,
-		30, 0,
-		30, 150,
-
-		// top rung
-		30, 0,
-		100, 0,
-		30, 30,
-		30, 30,
-		100, 0,
-		100, 30,
-
-		// middle rung
-		30, 60,
-		67, 60,
-		30, 90,
-		30, 90,
-		67, 60,
-		67, 90,
-	]
-	gl.uniform4fv(colorUniformLocation, color)
-	setGeometry(gl, coords)
-
-	// Draw the rectangle.
-	const primitiveType = gl.TRIANGLES
-	const offset = 0
-	const count = 18
-	gl.drawArrays(primitiveType, offset, count)
-}
-
-/**
- * @param {WebGLRenderingContext} gl
- * @param {number} count number of rectangles to draw
- */
-function drawRectangles(gl, colorUniformLocation, count) {
-	for (let index = 0; index < count; ++index) {
-		drawRectangle(gl, colorUniformLocation)
-	}
-}
-
-/**
  * INITIALIZATION CODE
  * Code that gets executed once before the program runs
  * @param {HTMLCanvasElement} canvas
  */
-export function initScene(canvas, vert, frag) {
+function init(canvas) {
 	// 1. Get A WebGL context
 	const gl = canvas.getContext('webgl')
 
@@ -221,8 +144,8 @@ export function initScene(canvas, vert, frag) {
 		positionBuffer,
 	} webGlOptions
 	*/
-export function drawScene(webGlOptions) {
-	const {gl, resolutionUniformLocation, positionAttributeLocation, positionBuffer} = webGlOptions
+function draw(options) {
+	const {gl, resolutionUniformLocation, positionAttributeLocation, positionBuffer} = options
 	/************************
 	 * RENDERING CODE
 	 * Code that gets executed every time we draw
@@ -260,109 +183,31 @@ export function drawScene(webGlOptions) {
 	gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
 }
 
-// Draw the scene.
-export function drawSceneT2DGL(options) {
-	const {webGlOptions, translation, rotation, scale, color} = options
-	const {
-		gl,
-		resolutionUniformLocation,
-		colorUniformLocation,
-		translationUniformLocation,
-		positionAttributeLocation,
-		rotationUniformLocation,
-		scaleUniformLocation,
-		positionBuffer,
-	} = webGlOptions
-	/************************
-	 * RENDERING CODE
-	 * Code that gets executed every time we draw
-	 ************************/
-	const canvas = /** @type {HTMLCanvasElement} */ (gl.canvas)
-	// 1. Setup canvas
-	// - resize canvas to fit screen display
-	utils.resize(canvas)
-
-	// Tell WebGL how to convert from clip space to pixels
-	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
-	// Clear the canvas.
-	gl.clearColor(0, 0, 0, 0) // set color to use as default when clearing buffer
-	gl.clear(gl.COLOR_BUFFER_BIT)
-
-	// Turn on the attribute
-	gl.enableVertexAttribArray(positionAttributeLocation)
-
-	// Bind the position buffer.
-	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-
-	// Tell the attribute how to get data out of positionBuffer (ARRAY_BUFFER)
-	const size = 2 // 2 components per iteration
-	const type = gl.FLOAT // the data is 32bit floats
-	const normalize = false // don't normalize the data
-	const stride = 0 // 0 = move forward size * sizeof(type) each iteration to get the next position
-	let offset = 0 // start at the beginning of the buffer
-	gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
-	// set the resolution
-	gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)
-
-	// set the color
-	gl.uniform4fv(colorUniformLocation, color)
-
-	// Set the translation.
-	gl.uniform2fv(translationUniformLocation, translation)
-
-	// Set the rotation.
-	gl.uniform2fv(rotationUniformLocation, rotation)
-
-	// Set the scale.
-	gl.uniform2fv(scaleUniformLocation, scale)
-
-	// Draw the geometry.
-	const primitiveType = gl.TRIANGLES
-	offset = 0
-	const count = 18 // 6 triangles in the 'F', 3 points per triangle
-	gl.drawArrays(primitiveType, offset, count)
+function render(canvas) {
+	const options = init(canvas)
+	const {gl, colorUniformLocation} = options
+	renderTranslationRectangle(gl, colorUniformLocation, geometry)
+	draw(options)
 }
 
-export function rectanglesScene(webGlOptions) {
-	const {gl, colorUniformLocation} = webGlOptions
-	drawScene(webGlOptions)
-	// 3. Draw!!
-	// - Draw 3 random rectangles
-	drawRectangles(gl, colorUniformLocation, 1)
-}
-
-export function rectangle2D(options) {
-	const {webGlOptions, color} = options
-	const {gl, colorUniformLocation} = webGlOptions
-	renderTranslationRectangle(gl, colorUniformLocation, translation, color, width, height)
-	drawScene(options)
-}
-
-export function geometry2D(options) {
-	const {webGlOptions, color} = options
-	const {gl, colorUniformLocation} = webGlOptions
-	renderTranslationGeometry(gl, colorUniformLocation, color) // Set the translation.
-	drawSceneT2DGL(options)
-}
-
-export function matrices2D(options) {
-	const {webGlOptions, color} = options
-	const {gl, colorUniformLocation} = webGlOptions
-	renderTranslationGeometry(gl, colorUniformLocation, color) // Set the translation.
-	drawSceneT2DGL(options)
-}
-
-export function render() {}
-
-export function clear(webGlOptions) {
-	if (!webGlOptions) {
+function clear(canvas) {
+	const gl = canvas.getContext('webgl')
+	if (!gl) {
+		// TODO: handle error
 		return
 	}
-	const {gl} = webGlOptions
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
 	// Set the clear color to darkish green.
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
 	// the function call that actually does the drawing.
 	gl.clear(gl.COLOR_BUFFER_BIT)
+}
+
+export default {
+	init,
+	render,
+	// draw,
+	clear,
+	geometry,
 }

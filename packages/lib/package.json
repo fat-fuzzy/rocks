@@ -14,7 +14,8 @@
 	},
 	"exports": {
 		"./package.json": "./package.json",
-		".": "./package/index.esm.js"
+		".": "./package/index.esm.js",
+		"./src/gfx/sketches/*": "./src/gfx/sketches/*"
 	},
 	"author": "Patricia Boh",
 	"license": "Apache-2.0",
