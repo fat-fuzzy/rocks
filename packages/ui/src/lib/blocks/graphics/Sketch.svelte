@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {theme} from '../../stores/theme' // ... but not inside lib folder
+	import {theme} from '$stores/theme' // TODO: figure out whubut not inside lib folder
 	import Button from '../buttons/Button.svelte'
 	import Canvas from '../media/Canvas.svelte'
 	// import Geometry from '../graphics/Geometry.svelte'
@@ -7,15 +7,14 @@
 	export let sketch
 	let title = ''
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
-	let {details, geometry} = sketch
+	let {geometry} = sketch
 
 	// Canvas
 	let showDetails = true
-	let variant = ''
-	const btnVariant = 'outline'
+	let variant = 'outline'
 
 	$: detailsIcon = showDetails ? '👇' : '👉'
-	$: variant = $theme ? `${btnVariant} accent` : `${btnVariant} highlight`
+	$: variant = $theme ? `${variant} accent` : `${variant} highlight` // TODO:  fix this in css
 
 	function updateGeometry(event) {
 		console.log('Geometry event')

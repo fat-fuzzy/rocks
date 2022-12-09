@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {gl} from '@fat-fuzzy/lib'
+	import {gfx} from '@fat-fuzzy/lib'
 	import {createEventDispatcher} from 'svelte'
 	import Position from './Position.svelte'
 	import Scale from './Scale.svelte'
@@ -10,7 +10,7 @@
 	export let canvasHeight: number
 	export let geometry
 
-	const {utils} = gl
+	const {utils} = gfx
 
 	const dispatch = createEventDispatcher()
 

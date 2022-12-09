@@ -56,7 +56,7 @@ const layouts = {
 const blocks = {
 	Button,
 	ButtonMenu,
-	Canvas,
+	// Canvas, TODO: init canvas with example Sketch
 	Feedback,
 }
 const stories = {

@@ -1,4 +1,3 @@
-// @ts-check
 /**
  ***********************
  * HELPER FUNCTIONS
@@ -11,7 +10,7 @@
  * - Number of pixels displayed inside the canvas
  * @param {HTMLCanvasElement} canvas
  */
-export function resize(canvas) {
+function resize(canvas) {
 	// Get the size that the browser is displaying the canvas
 	const displayWidth = canvas.clientWidth
 	const displayHeight = canvas.clientHeight
@@ -29,7 +28,7 @@ export function resize(canvas) {
  * -> it might be better to let the GPU take over
  * @param {HTMLCanvasElement} canvas
  */
-export function resizeHD(canvas) {
+function resizeHD(canvas) {
 	const realToCSSPixels = window.devicePixelRatio
 
 	// - Get the size that the browser is displaying the canvas in CSS pixels
@@ -46,7 +45,7 @@ export function resizeHD(canvas) {
 }
 
 // Returns a random integer from 0 to range - 1.
-export function randomInt(range) {
+function randomInt(range) {
 	return Math.floor(Math.random() * range)
 }
 
@@ -54,7 +53,7 @@ export function randomInt(range) {
  *
  * @param {*} characters
  */
-export function multiply(characters) {
+function multiply(characters) {
 	return new Array(100) // code from Svelte tutorial confetti
 		.fill(0)
 		.map((_, i) => {
@@ -69,15 +68,15 @@ export function multiply(characters) {
 		.sort((a, b) => a.ratio - b.ratio)
 }
 
-export function degToRad(degrees) {
+function degToRad(degrees) {
 	return degrees * (Math.PI / 180)
 }
 
-export function round(n, decimals) {
+function round(n, decimals) {
 	return Number(Math.round(n + 'e' + decimals) + 'e-' + decimals)
 }
 
-export function getGeometryDefaults(canvasWidth, canvasHeight) {
+function getGeometryDefaults(canvasWidth, canvasHeight) {
 	return {
 		color: [Math.random(), Math.random(), Math.random(), 1],
 		translation: [canvasWidth / 2, canvasHeight / 2],
@@ -86,4 +85,14 @@ export function getGeometryDefaults(canvasWidth, canvasHeight) {
 		width: round((canvasWidth * 0.3) / 5, 2), // of geometry
 		height: round(canvasHeight / 5, 2), // of geometry
 	}
+}
+
+export default {
+	resize,
+	resizeHD,
+	randomInt,
+	multiply,
+	degToRad,
+	round,
+	getGeometryDefaults,
 }
