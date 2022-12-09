@@ -3,35 +3,26 @@
 	import Button from '../buttons/Button.svelte'
 
 	export let canvas: HTMLCanvasElement
-	export let sketch
+	export let animation
 	let frame: number
-	let {render, clear, duration} = sketch
 
-	function runLoop(timestamp, duration) {
-		render(canvas)
-		frame = requestAnimationFrame(function (t) {
+	const loop = () => {
+		animation.draw()
+		frame = requestAnimationFrame((t) => {
 			// call requestAnimationFrame again with parameters
-			runLoop(t, duration)
+			loop()
 		})
 	}
 
-	function play() {
-		clear(canvas)
-		frame = requestAnimationFrame(function (timestamp) {
-			runLoop(timestamp, duration)
-		})
+	const play = () => loop()
+
+	const stop = () => {
+		cancelAnimationFrame(frame)
+		animation.clear()
 	}
 
-	function stop() {
-		cancelAnimationFrame(frame)
-		clear(canvas)
-	}
-
-	function pause() {
-		cancelAnimationFrame(frame)
-	}
+	const pause = () => cancelAnimationFrame(frame)
 	let disabled = false
-	let variant = ``
 
 	$: variant = $theme ? `accent` : `highlight`
 </script>

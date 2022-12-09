@@ -1,39 +1,43 @@
 <script lang="ts">
-	import {gfx} from '@fat-fuzzy/lib'
+	import * as lib from '@fat-fuzzy/lib'
 	import {createEventDispatcher} from 'svelte'
 	import Position from './Position.svelte'
 	import Scale from './Scale.svelte'
 	import Rotation from './Rotation.svelte'
 
-	export let show = true
 	export let canvasWidth: number
 	export let canvasHeight: number
-	export let geometry
+	export let animation
 
-	const {utils} = gfx
-
+	const mathUtils = lib.default.math.utils
+	console.log('mathUtils')
+	console.log(mathUtils)
+	console.log('canvasWidth')
+	console.log(canvasWidth)
+	console.log('canvasHeight')
+	console.log(canvasHeight)
+	console.log('animation')
+	console.log(animation)
 	const dispatch = createEventDispatcher()
 
-	let color = geometry.color
-	let width = geometry.width
-	let height = geometry.height
+	let {color, width, height, scale, translation, rotation} = animation.geometry
 
 	// input attributes
 	let angle = 0
 
 	// Position
-	let [coordX, coordY] = geometry.translation
+	let [coordX, coordY] = translation
 
 	// Rotation
-	let [radCoordX, radCoordY] = geometry.rotation
+	let [radCoordX, radCoordY] = rotation
 
 	// Scale
-	let [scaleX, scaleY] = geometry.scale
+	let [scaleX, scaleY] = scale
 
 	$: maxX = canvasWidth
 	$: maxY = canvasHeight
-	$: radCoordX = Math.cos(utils.degToRad(angle))
-	$: radCoordY = Math.sin(utils.degToRad(angle))
+	$: radCoordX = Math.cos(mathUtils.degToRad(angle))
+	$: radCoordY = Math.sin(mathUtils.degToRad(angle))
 	$: translation = [coordX, coordY]
 	$: rotation = [radCoordX, radCoordY]
 	$: scale = [scaleX, scaleY]
@@ -46,13 +50,10 @@
 		height,
 	}
 
-	const update = () =>
-		dispatch('update', {
-			value: geometry,
-		})
+	const update = () => animation.update(geometry)
 </script>
 
-<form class={show ? 'l-switcher xxs' : 'visually-hidden'}>
+<form class="l-switcher xxs">
 	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} />
 	<Scale bind:scaleX bind:scaleY maxX={5} maxY={5} minX={-5} minY={-5} on:input={update} />
 	<Rotation bind:angle max={360} on:input={update} />

@@ -1,19 +1,18 @@
 <script lang="ts">
 	import lib from '@fat-fuzzy/lib'
-	import type {PageData} from '../[id]/$types'
+	import type {PageData} from './$types'
 	import Sketch from '$lib/blocks/graphics/Sketch.svelte'
+	const {gfx} = lib
 
 	export let data: PageData
-	const {sketches} = data
-	import {page} from '$app/stores'
-
-	const {gfx} = lib
-	let sketch
-	const sketchFound = sketches.find((s) => {
-		return s.slug === $page.params.slug
-	})
-	if (sketchFound) {
-		sketch = gfx.sketches[sketchFound.id]
+	let SketchClass
+	const {sketchData} = data
+	let title: string
+	let dimensions: string
+	if (sketchData) {
+		title = sketchData.title
+		dimensions = sketchData.dimensions
+		SketchClass = gfx.sketches[sketchData.id]
 	}
 </script>
 
@@ -28,4 +27,4 @@
 <header class="header-page">
 	<h1>👾 Play</h1>
 </header>
-<Sketch {sketch} />
+<Sketch Sketch={SketchClass} {title} {dimensions} />
