@@ -122,3 +122,21 @@ Uniforms and Attributes are shader inputs
       - objective = assign values to uniform `gl_FragColor`
 1. Grab shaders: compile shaders into a program
    - write a helper function to compile (will re-use)
+
+## Perspective
+
+1. **Model matrix** matrix of transformations of model relative to its original coordinates (scale, rotation, translation)
+1. **View matrix** describes position of the viewer, where the viewer is looking and direction of where "up" is located
+1. **Projection matrix** Describes the viewing angle, aspect ratio and near and far clipping planes of viewing frustum: points farther away get smaller
+
+## Drawing modes
+
+`gl.drawArrays(mode, start, numVertices)` can take:
+
+- `gl.POINTS`
+- `gl.LINES`
+- `gl.LINE_STRIP`
+- `gl.LINE_LOOP`
+- `gl.TRIANGLES`
+- `gl.TRIANGLE_STRIP`
+- `gl.TRIANGLE_FAN`
