@@ -79,3 +79,5 @@ function update(geometry) {
 }
 
 export default {main, draw, clear, update}
+
+// TODO: add destroy

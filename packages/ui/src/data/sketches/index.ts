@@ -1,12 +1,12 @@
 export const SKETCHES_FOLDER = './sketches'
 export const sketches = [
-	// {
-	// 	id: '001',
-	// 	slug: 'random-rect',
-	// 	title: 'Random',
-	// 	emoji: '🎰',
-	// 	dimensions: 'video',
-	// },
+	{
+		id: '001',
+		slug: 'random-rect',
+		title: 'Random',
+		emoji: '🎰',
+		dimensions: 'video',
+	},
 	// {
 	// 	id: '002',
 	// 	slug: 'random-rect-audio',

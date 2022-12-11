@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {theme} from '$stores/theme' // TODO: figure out whubut not inside lib folder
-	import {onMount} from 'svelte'
+	import {onMount, afterUpdate} from 'svelte'
 	import Button from '../buttons/Button.svelte'
 	import Geometry from '../graphics/Geometry.svelte'
 	import Player from './Player.svelte'
@@ -32,6 +32,11 @@
 		programInfo = sketch.main(canvas)
 		geometry = programInfo.geometry
 	})
+	afterUpdate(() => {
+		programInfo = sketch.main(canvas)
+		geometry = programInfo.geometry
+	})
+	// TODO clean gl data when switching animations
 </script>
 
 <article class="l-sidebar">

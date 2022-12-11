@@ -82,8 +82,19 @@ function getGeometryDefaults(canvasWidth, canvasHeight) {
 		translation: [canvasWidth / 2, canvasHeight / 2],
 		rotation: [0, 0],
 		scale: [1, 1],
-		width: round((canvasWidth * 0.3) / 5, 2), // of geometry
+		width: round(canvasWidth / 5, 2), // of geometry
 		height: round(canvasHeight / 5, 2), // of geometry
+	}
+}
+
+function getGeometryRandom(canvasWidth, canvasHeight) {
+	return {
+		color: [Math.random(), Math.random(), Math.random(), 1],
+		translation: [randomInt(canvasWidth), randomInt(canvasHeight)],
+		rotation: [0, 0],
+		scale: [1, 1],
+		width: randomInt(canvasWidth), // of geometry
+		height: randomInt(canvasHeight), // of geometry
 	}
 }
 
@@ -95,4 +106,5 @@ export default {
 	degToRad,
 	round,
 	getGeometryDefaults,
+	getGeometryRandom,
 }
