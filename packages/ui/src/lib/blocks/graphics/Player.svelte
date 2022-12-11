@@ -3,11 +3,11 @@
 	import Button from '../buttons/Button.svelte'
 
 	export let canvas: HTMLCanvasElement
-	export let animation
+	export let sketch
 	let frame: number
 
 	const loop = () => {
-		animation.draw()
+		sketch.draw()
 		frame = requestAnimationFrame((t) => {
 			// call requestAnimationFrame again with parameters
 			loop()
@@ -18,7 +18,7 @@
 
 	const stop = () => {
 		cancelAnimationFrame(frame)
-		animation.clear()
+		sketch.clear()
 	}
 
 	const pause = () => cancelAnimationFrame(frame)

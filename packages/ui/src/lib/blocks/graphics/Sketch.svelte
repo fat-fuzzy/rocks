@@ -5,16 +5,16 @@
 	import Geometry from '../graphics/Geometry.svelte'
 	import Player from './Player.svelte'
 
-	export let Sketch
+	export let sketch
 	export let title: string
 	export let dimensions: string
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
 
-	let animation
 	let canvas: HTMLCanvasElement
 	let width
 	let height
 	let geometry
+	let programInfo
 	// Canvas
 	let showDetails = true
 	let variant = 'outline'
@@ -22,25 +22,15 @@
 	$: detailsIcon = showDetails ? '👇' : '👉'
 	$: variant = $theme ? `${variant} accent` : `${variant} highlight` // TODO:  fix this in css
 
-	function updateGeometry(event) {
-		if (!animation) {
-			return
-		}
-		console.log('Geometry event')
-		console.log(event)
-		animation.update(event.detail.value)
-	}
-
 	function togglelDetails() {
 		showDetails = !showDetails
 	}
-
+	function update(event) {
+		sketch.update(event.detail.value)
+	}
 	onMount(() => {
-		animation = new Sketch(canvas)
-		console.log('animation')
-		console.log(animation)
-		geometry = animation.geometry
-		animation.reflect()
+		programInfo = sketch.main(canvas)
+		geometry = programInfo.geometry
 	})
 </script>
 
@@ -55,7 +45,7 @@
 				You need HTML5 canvas support to display this content
 			</canvas>
 		</div>
-		<Player {animation} {canvas} />
+		<Player {sketch} {canvas} />
 	</div>
 	<aside class="l-side l-stack sm">
 		<h2>{title}</h2>
@@ -63,13 +53,8 @@
 			{detailsIcon} Details
 		</Button>
 		<div class={showDetails ? 'l-stack' : 'visually-hidden'}>
-			{#if geometry && width && height}
-				<Geometry
-					on:update={updateGeometry}
-					{animation}
-					canvasWidth={width}
-					canvasHeight={height}
-				/>
+			{#if geometry}
+				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
 			{/if}
 		</div>
 	</aside>

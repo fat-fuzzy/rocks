@@ -5,15 +5,10 @@
 	const {gfx} = lib
 
 	export let data: PageData
-	let SketchClass
+	let sketch
 	const {sketchData} = data
-	let title: string
-	let dimensions: string
-	if (sketchData) {
-		title = sketchData.title
-		dimensions = sketchData.dimensions
-		SketchClass = gfx.sketches[sketchData.id]
-	}
+	const {title, dimensions, id} = sketchData
+	sketch = gfx.sketches[id]
 </script>
 
 <svelte:head>
@@ -27,4 +22,4 @@
 <header class="header-page">
 	<h1>👾 Play</h1>
 </header>
-<Sketch Sketch={SketchClass} {title} {dimensions} />
+<Sketch {sketch} {title} {dimensions} />

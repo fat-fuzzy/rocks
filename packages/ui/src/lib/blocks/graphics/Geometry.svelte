@@ -7,20 +7,17 @@
 
 	export let canvasWidth: number
 	export let canvasHeight: number
-	export let animation
+	export let geometry
 
 	const mathUtils = lib.default.math.utils
-	console.log('mathUtils')
-	console.log(mathUtils)
-	console.log('canvasWidth')
-	console.log(canvasWidth)
-	console.log('canvasHeight')
-	console.log(canvasHeight)
-	console.log('animation')
-	console.log(animation)
 	const dispatch = createEventDispatcher()
 
-	let {color, width, height, scale, translation, rotation} = animation.geometry
+	let update = () =>
+		dispatch('update', {
+			value,
+		})
+
+	let {color, width, height, scale, translation, rotation} = geometry
 
 	// input attributes
 	let angle = 0
@@ -41,7 +38,7 @@
 	$: translation = [coordX, coordY]
 	$: rotation = [radCoordX, radCoordY]
 	$: scale = [scaleX, scaleY]
-	$: geometry = {
+	$: value = {
 		color,
 		translation,
 		rotation,
@@ -49,8 +46,6 @@
 		width,
 		height,
 	}
-
-	const update = () => animation.update(geometry)
 </script>
 
 <form class="l-switcher xxs">
