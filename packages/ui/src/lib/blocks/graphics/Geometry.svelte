@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as lib from '@fat-fuzzy/lib'
-	import {createEventDispatcher} from 'svelte'
+	import {createEventDispatcher, onMount} from 'svelte'
 	import Position from './Position.svelte'
 	import Scale from './Scale.svelte'
 	import Rotation from './Rotation.svelte'
