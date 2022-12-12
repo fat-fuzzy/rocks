@@ -1,5 +1,11 @@
 # create-svelte
 
+What you find in this package is essentially the default app setup for SvelteKit
+The only specific parts here are, for example purposes:
+
+- the inclusion of the project in a monorepo
+- the loading of Svelte components from a sample component library placed in the same monorepo
+
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
 ## Creating a project
