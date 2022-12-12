@@ -19,12 +19,12 @@ export const sketches = [
 		title: 'Rectangle 2D ',
 		emoji: '📐',
 	},
-	// {
-	// 	id: '004',
-	// 	slug: 'geometry-2d',
-	// 	title: 'Geometry 2D ',
-	// 	emoji: '📐',
-	// },
+	{
+		id: '004',
+		slug: 'geometry-2d',
+		title: 'Geometry 2D ',
+		emoji: '📐',
+	},
 	// {
 	// 	id: '005',
 	// 	slug: 'matrix-2d',
