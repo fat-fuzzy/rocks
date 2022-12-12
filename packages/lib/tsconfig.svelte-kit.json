@@ -2,8 +2,8 @@
 	"compilerOptions": {
 		"baseUrl": "..",
 		"paths": {
-			"$gl": ["src/gl"],
-			"$gl/*": ["src/gl/*"],
+			"$gfx": ["src/gfx"],
+			"$gfx/*": ["src/gfx/*"],
 			"$intl": ["src/intl"],
 			"$intl/*": ["src/intl*"],
 			"$math": ["src/math"],
