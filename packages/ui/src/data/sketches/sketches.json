@@ -1,0 +1,39 @@
+{
+	"sketches": [
+		{
+			"title": "Random",
+			"year": "2022",
+			"slug": "random-rect",
+			"id": "001",
+			"emoji": "🎰"
+		},
+		{
+			"title": "Audio",
+			"year": "2022'",
+			"slug": "random-rect-audio",
+			"id": "002",
+			"emoji": "🥁"
+		},
+		{
+			"title": "Rectangle 2D",
+			"year": "2022",
+			"slug": "rectangle-2d",
+			"id": "003",
+			"emoji": "📐"
+		},
+		{
+			"title": "2D Geometry",
+			"year": "'2022'",
+			"slug": "geometry-2d",
+			"id": "'004",
+			"emoji": "'📐'"
+		},
+		{
+			"title": "2D Matrix",
+			"year": "2022",
+			"slug": "matrix-2d",
+			"id": "005",
+			"emoji": "📐"
+		}
+	]
+}
