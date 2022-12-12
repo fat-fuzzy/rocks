@@ -2,7 +2,7 @@
 	"package": "@fat-fuzzy/lib",
 	"name": "@fat-fuzzy/lib",
 	"version": "0.0.1",
-	"description": "MAD app lib folder",
+	"description": "Fat Fuzzy Libraries",
 	"main": "package/index.cjs.js",
 	"module": "package/index.esm.js",
 	"browser": "package/index.umd.min.js",

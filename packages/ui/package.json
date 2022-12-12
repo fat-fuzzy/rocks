@@ -1,6 +1,10 @@
 {
+	"package": "@fat-fuzzy/ui",
 	"name": "@fat-fuzzy/ui",
 	"version": "0.0.1",
+	"description": "Fat Fuzzy UI",
+	"author": "Patricia Boh",
+	"license": "Apache-2.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "svelte-kit sync && svelte-package",
