@@ -12,7 +12,7 @@
 	<meta name="description" content="Fat Fuzzy Doc - Log of architectural decisions" />
 </svelte:head>
 
-<Sidebar placement="start">
+<Sidebar>
 	<div slot="main" class="l-stack">
 		<slot />
 	</div>

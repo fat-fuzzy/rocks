@@ -12,7 +12,7 @@
 	<meta name="description" content="Fat Fuzzy Doc - UI" />
 </svelte:head>
 
-<Sidebar placement="start">
+<Sidebar>
 	<div slot="side" class="sticky">
 		<a data-sveltekit-prefetch href={`/ui`}><h1>Stories</h1></a><br />
 		<a data-sveltekit-prefetch href={`/ui/blocks`}><h2>Blocks</h2></a><br />
