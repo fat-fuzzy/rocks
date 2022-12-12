@@ -1,6 +1,6 @@
 <script>
-	import Toggle from '$lib/blocks/toggle/Toggle.svelte'
-	import SignIn from '$lib/blocks/signIn/SignIn.svelte'
+	import Toggle from '$blocks/buttons/Toggle.svelte'
+	import SignIn from '$blocks/forms/SignIn.svelte'
 </script>
 
 <svelte:head>

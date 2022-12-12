@@ -1,11 +1,14 @@
 .light {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-white);
+	#{$prefix}-current-bg-color: var(#{$prefix}-color-white);
+	#{$prefix}-current-color: var(#{$prefix}-color-dark);
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-bg-color);
 }
-
 .dark {
-	color: var(#{$prefix}-color-light);
-	background-color: var(#{$prefix}-color-dark);
+	#{$prefix}-current-bg-color: var(#{$prefix}-color-dark);
+	#{$prefix}-current-color: var(#{$prefix}-color-light);
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-bg-color);
 }
 
 //== Primary / Accent / Highlight colors: Links, buttons & utility class
@@ -41,28 +44,32 @@
 }
 
 .light .primary,
-.light button.primary {
+.light button.primary,
+.light button.outline.alt {
 	color: var(#{$prefix}-color-white);
 	background-color: var(#{$prefix}-primary);
 	border-color: var(#{$prefix}-primary);
 }
 
 .dark .primary,
-.dark button.primary {
+.dark button.primary,
+.dark button.outline.alt {
 	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-primary-light);
 	border-color: var(#{$prefix}-primary-light);
 }
 
 .light .outline,
-.light button.outline {
+.light button.outline,
+.light button.primary.alt {
 	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-color-white);
 	border-color: var(#{$prefix}-primary);
 }
 
 .dark .outline,
-.dark button.outline {
+.dark button.outline,
+.dark button.primary.alt {
 	color: var(#{$prefix}-color-white);
 	background-color: var(#{$prefix}-color-dark);
 	border-color: var(#{$prefix}-primary-light);

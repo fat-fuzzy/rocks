@@ -2,7 +2,7 @@
 /**
  * Layout components
  */
-import Dropdown from './layouts/Dropdown.svelte'
+import Reveal from './layouts/Reveal.svelte'
 import Sidebar from './layouts/Sidebar.svelte'
 import Stack from './layouts/Stack.svelte'
 import Burrito from './layouts/Burrito.svelte'
@@ -10,10 +10,16 @@ import Burrito from './layouts/Burrito.svelte'
 /**
  * Block components
  */
-import Button from './blocks/button/Button.svelte'
-import Canvas from './blocks/canvas/Canvas.svelte'
-import Feedback from './blocks/feedback/Feedback.svelte'
-import Menu from './blocks/menu/Menu.svelte'
+import Button from './blocks/buttons/Button.svelte'
+import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
+import Canvas from './blocks/media/Canvas.svelte'
+import Feedback from './blocks/cards/Feedback.svelte'
+
+/**
+ * Story components
+ */
+import Story from './stories/Story.svelte'
+import StoryActions from './stories/StoryActions.svelte'
 
 /**
  * Stores
@@ -42,16 +48,20 @@ const stores = {
 	intl,
 }
 const layouts = {
-	Dropdown,
+	Burrito,
+	Reveal,
 	Sidebar,
 	Stack,
-	Burrito,
 }
 const blocks = {
 	Button,
-	Canvas,
+	ButtonMenu,
+	// Canvas, TODO: init canvas with example Sketch
 	Feedback,
-	Menu,
+}
+const stories = {
+	Story,
+	StoryActions,
 }
 const sass = {
 	default: './sass/styles-default.scss',
@@ -63,4 +73,4 @@ async function getSass(theme) {
 	const themedStyles = await import(sass[theme])
 	return themedStyles
 }
-export {blocks, layouts, utils, stores, constants, getSass}
+export {blocks, layouts, stories, utils, stores, constants, getSass}

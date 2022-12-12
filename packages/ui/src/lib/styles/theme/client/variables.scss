@@ -174,8 +174,10 @@ $layout: (
 	radius-lg: 5px,
 	//
 	border-width: 1px,
-	z-index-dropdown: 1,
+	z-index-reveal: 1,
 	outline-offset: 0.25rem,
+	outline-width: 2px,
+	prev-offset-limit: calc(calc(var(#{$prefix}-outline-offset) + var(#{$prefix}-outline-width))),
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3
 	shadow: #{0 -1px 3px 0 hsl(

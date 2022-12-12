@@ -3,9 +3,16 @@
 	flex-wrap: wrap;
 	gap: var(#{$prefix}-gap);
 }
-.l-sidebar.end {
+
+/* NOTE: The following declaration assume that the markup declares .main before .side */
+.l-sidebar.start {
 	flex-direction: row-reverse;
 }
+// TODO: not sure this rule is necessary
+// .l-sidebar.end {
+// 	flex-direction: row;
+// }
+
 .l-main {
 	flex-basis: 0;
 	flex-grow: 999;

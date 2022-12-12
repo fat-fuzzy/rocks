@@ -56,15 +56,9 @@ th {
 }
 
 :focus {
-	outline: 2px dotted currentColor;
+	outline: var(#{$prefix}-outline-width) dotted currentColor;
 	outline-offset: var(#{$prefix}-outline-offset);
 }
-
-.no-list {
-	list-style: none;
-	padding-left: 0;
-}
-
 // Stretch page
 
 body main {

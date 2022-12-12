@@ -1,4 +1,9 @@
-# [short title of solved problem and solution]
+---
+title: Decision title
+year: 'YYYY'
+slug: decision-title
+id: 'same-as-name-of-file-without-extension'
+---
 
 - Status: [proposed | rejected | accepted | deprecated | … | superseded by [ADR-0005](0005-example.md)] <!-- optional -->
 - Deciders: [list everyone involved in the decision] <!-- optional -->
