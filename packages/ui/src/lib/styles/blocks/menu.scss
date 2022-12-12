@@ -7,32 +7,21 @@ menu {
 
 menu.xxs,
 menu.xs {
-	padding: var(#{$prefix}-size-sm);
+	padding: var(#{$prefix}-size-xs);
 }
 
 menu.sm {
-	padding: var(#{$prefix}-size-md);
+	padding: var(#{$prefix}-size-sm);
 }
 
 menu.md {
-	padding: var(#{$prefix}-size-lg);
+	padding: var(#{$prefix}-size-md);
 }
 
 menu.lg {
-	padding: var(#{$prefix}-size-xl);
+	padding: var(#{$prefix}-size-lg);
 }
 
 menu.xl {
-	padding: var(#{$prefix}-size-xxl);
-}
-
-// TODO: decouple l-stack from menu
-menu.l-stack button {
-	display: flex;
-	justify-content: flex-start;
-	width: 100%;
-}
-
-menu.l-stack.sm > * + button {
-	margin-block-start: var(#{$prefix}-size-md);
+	padding: var(#{$prefix}-size-xl);
 }

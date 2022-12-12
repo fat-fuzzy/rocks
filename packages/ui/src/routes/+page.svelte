@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import {themes} from '$lib/types/constants'
 	import {theme} from '$lib/stores/theme'
 	let variant = ``
@@ -19,7 +19,7 @@
 
 <section class="l-burrito xxl">
 	<h2>✨ Highlights</h2>
-	<ul class="l-stack lg no-list">
+	<ul class="l-stack lg" role="group">
 		<li class={`card ${variant}`}>
 			<span>👾</span>
 			<a data-sveltekit-prefetch href="/play"> Play</a>

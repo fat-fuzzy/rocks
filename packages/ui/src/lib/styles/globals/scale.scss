@@ -1,0 +1,21 @@
+.xxs {
+	#{$prefix}-current-size: var(#{$prefix}-size-xxs);
+}
+.xs {
+	#{$prefix}-current-size: var(#{$prefix}-size-xs);
+}
+.sm {
+	#{$prefix}-current-size: var(#{$prefix}-size-sm);
+}
+.md {
+	#{$prefix}-current-size: var(#{$prefix}-size-md);
+}
+.lg {
+	#{$prefix}-current-size: var(#{$prefix}-size-lg);
+}
+.xl {
+	#{$prefix}-current-size: var(#{$prefix}-size-xl);
+}
+.xxl {
+	#{$prefix}-current-size: var(#{$prefix}-size-xxl);
+}

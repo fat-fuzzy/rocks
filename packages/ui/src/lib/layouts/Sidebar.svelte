@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let size = 'md'
-	export let placement = 'start'
+	export let placement = ''
 </script>
 
 <div class={`l-sidebar ${placement}`}>

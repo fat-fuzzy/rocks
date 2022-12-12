@@ -14,10 +14,16 @@ button:not(:disabled):active {
 	background-color: var(#{$prefix}-color-light);
 }
 
-.primary {
+.primary,
+.outline.alt {
 	border-color: var(#{$prefix}-primary);
 	background-color: var(#{$prefix}-primary);
 	color: var(#{$prefix}-color-light);
+}
+.outline,
+.primary.alt {
+	border-color: var(#{$prefix}-primary);
+	background-color: var(#{$prefix}-color-white);
 }
 
 .accent {
@@ -25,25 +31,20 @@ button:not(:disabled):active {
 	background-color: var(#{$prefix}-accent);
 	color: var(#{$prefix}-color-white);
 }
+.outline.accent,
+.accent.alt {
+	border-color: var(#{$prefix}-accent);
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-white);
+}
 
 .highlight {
 	border-color: var(#{$prefix}-highlight);
 	background-color: var(#{$prefix}-highlight);
 	color: var(#{$prefix}-color-dark);
 }
-
-.outline {
-	border-color: var(#{$prefix}-primary);
-	background-color: var(#{$prefix}-color-white);
-}
-
-.outline.accent {
-	border-color: var(#{$prefix}-accent);
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-white);
-}
-
-.outline.highlight {
+.outline.highlight,
+.highlight.alt {
 	border-color: var(#{$prefix}-highlight);
 	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-color-white);
@@ -114,4 +115,13 @@ button.lg {
 button.xl {
 	font-size: var(#{$prefix}-font-size-xl);
 	padding: var(#{$prefix}-size-xl) var(#{$prefix}-size-xxl);
+}
+
+//== Alignment
+
+.start button {
+	text-align: start;
+}
+.end button {
+	text-align: end;
 }

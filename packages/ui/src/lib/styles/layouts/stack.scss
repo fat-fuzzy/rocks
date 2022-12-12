@@ -12,6 +12,8 @@
 .l-stack:only-child {
 	/* ↓ `height` in horizontal-tb writing mode */
 	block-size: 100%;
+	/* ↓ `width` in horizontal-tb writing mode */
+	inline-size: 100%;
 }
 
 .l-stack.recursive * + * {

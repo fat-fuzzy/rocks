@@ -7,7 +7,5 @@
 	"trailingComma": "all",
 	"arrowParens": "always",
 	"tabWidth": 2,
-	"plugins": ["prettier-plugin-svelte"],
-	"pluginSearchDirs": ["."],
-	"overrides": [{"files": "*.svelte", "options": {"parser": "svelte"}}]
+	"pluginSearchDirs": ["."]
 }

@@ -14,14 +14,22 @@
 	},
 	"exports": {
 		"./package.json": "./package.json",
-		".": "./package/index.esm.js"
+		".": "./package/index.esm.js",
+		"./src/gfx/sketches/*": "./src/gfx/sketches/*"
 	},
 	"author": "Patricia Boh",
 	"license": "Apache-2.0",
 	"devDependencies": {
 		"@rollup/plugin-json": "4.1.0",
+		"@typescript-eslint/eslint-plugin": "^5.27.0",
+		"@typescript-eslint/parser": "^5.27.0",
+		"eslint": "^8.16.0",
+		"eslint-config-prettier": "^8.3.0",
+		"prettier": "^2.6.2",
 		"rollup": "2.70.1",
-		"rollup-plugin-terser": "7.0.2"
+		"rollup-plugin-terser": "7.0.2",
+		"tslib": "^2.3.1",
+		"typescript": "^4.7.4"
 	},
 	"type": "module",
 	"files": [

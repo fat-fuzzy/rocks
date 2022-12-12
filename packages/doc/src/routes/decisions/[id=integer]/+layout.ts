@@ -5,9 +5,7 @@ export const load: LayoutLoad = async ({ fetch }) => {
 		const response = await fetch('/api/decisions');
 		const decisions = await response.json();
 
-		return {
-			decisions
-		};
+		return { decisions };
 	} catch (error) {
 		console.log(error);
 		// TODO: proper error handling

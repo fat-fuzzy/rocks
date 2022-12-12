@@ -12,13 +12,13 @@
 	<meta name="description" content="Fat Fuzzy Doc - Log of architectural decisions" />
 </svelte:head>
 
-<Sidebar>
+<Sidebar placement="start">
+	<div slot="main" class="l-stack">
+		<slot />
+	</div>
 	<div slot="side">
 		{#each decisions as { meta, path }}
 			<a data-sveltekit-prefetch href={path}>{meta.title}</a><br />
 		{/each}
-	</div>
-	<div slot="main" class="l-stack">
-		<slot />
 	</div>
 </Sidebar>

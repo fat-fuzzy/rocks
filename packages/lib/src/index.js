@@ -1,9 +1,7 @@
-import * as utils from './gl/utils'
-import * as draw from './gl/draw'
-import * as utilsWebGl from './gl/utilsWebGL'
+import gfx from './gfx/index'
+import math from './math/index'
 
-export const gl = {
-	utils,
-	draw,
-	utilsWebGl,
+export default {
+	gfx,
+	math,
 }
