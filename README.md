@@ -29,7 +29,7 @@ Ideally, this project will:
   - new ideas and foundational decisions (architecture, tech, etc)
   - setup capabilities (back, front, design, etc)
 - **lib** Libraries unrelated to building an interface or accessing backend resources (logic and experiments)
-  - 👾 gl - everything related to working with webgl
+  - 👾 gfx - everything related to working with webgl
   - 🤖 state machines
   - ➕ maths
 - **resources** Backend resources (database, auth, storage, etc)
@@ -72,7 +72,7 @@ Ideally, this project will:
 
 #### lib
 
-- 👾 gl - everything related to working with webgl
+- 👾 gfx - everything related to working with webgl
   - [MDN WebGL API Doc](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   - [WebGL Fundamentals](https://webglfundamentals.org/)
   - [WebGL Fundamentals - 2](https://webgl2fundamentals.org/)
