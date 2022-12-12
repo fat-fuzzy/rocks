@@ -46,6 +46,9 @@
 		width,
 		height,
 	}
+	onMount(() => {
+		update()
+	})
 </script>
 
 <form class="l-switcher xxs">
