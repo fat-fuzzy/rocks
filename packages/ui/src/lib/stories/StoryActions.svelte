@@ -26,8 +26,8 @@
 	export let storyProps: StoryProps
 	export let children: UICOmponentChildren
 
-	let {icon, size, variant, theme, ...handlers} = componentProps
-	const {icons, sizes, variants, themes, ...actions} = storyProps
+	let {icon, size, variant, theme, layout, ...handlers} = componentProps
+	const {icons, sizes, variants, themes, layouts, ...actions} = storyProps
 
 	let selected = [icon, size, variant, theme]
 
@@ -39,7 +39,7 @@
 		console.log(...data)
 	}
 
-	$: [selectedIcon, selectedSize, selectedVariant, selectedTheme] = selected
+	$: [selectedIcon, selectedSize, selectedVariant, selectedTheme, selectedLayout] = selected
 </script>
 
 <h3>{title}</h3>
@@ -53,7 +53,7 @@
 		</slot>
 	</svelte:fragment>
 	<svelte:fragment slot="side">
-		<form on:submit|preventDefault={handleSubmit} class="l-stack">
+		<form on:submit|preventDefault={handleSubmit} class={`l-${layout} ${size}`}>
 			{#if icons}
 				<Fieldset slug="field-select-icon" legend="Icons">
 					<label for="select-icon">Select Icon:</label>
@@ -96,6 +96,19 @@
 						<option value="">--Please choose an option--</option>
 						{#each themes as theme}
 							<option id={theme} value={theme} selected={theme === selectedTheme}>{theme}</option>
+						{/each}
+					</select>
+				</Fieldset>
+			{/if}
+			{#if layouts}
+				<Fieldset slug="field-select-theme" legend="Theme">
+					<label for="select-theme">Select Variant:</label>
+					<select id="select-theme">
+						<option value="">--Please choose an option--</option>
+						{#each layouts as layout}
+							<option id={layout} value={layout} selected={layout === selectedLayout}>
+								{layout}
+							</option>
 						{/each}
 					</select>
 				</Fieldset>

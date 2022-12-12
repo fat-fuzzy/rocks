@@ -6,7 +6,7 @@
 	export let size = ''
 	export let variant = 'primary'
 	export let id = 'sub-nav'
-	export let title = 'Sun Navigation'
+	export let title = 'Sub Nav'
 	export let align = 'start'
 	export let items: {slug: string; title: string; emoji?: string}[] = []
 
