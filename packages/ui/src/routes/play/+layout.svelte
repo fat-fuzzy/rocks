@@ -4,10 +4,6 @@
 	import SubNav from '$blocks/navs/SubNav.svelte'
 
 	$: items = $page.data.sketches
-	console.log('layout items')
-	console.log($page.data)
-
-	// TODO: fix links
 </script>
 
 <svelte:head>
@@ -15,7 +11,7 @@
 	<meta name="description" content="Fat Fuzzy Doc - UI Library stories" />
 </svelte:head>
 
-<Sidebar placement="start">
+<Sidebar>
 	<div slot="side" class="sticky">
 		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
 	</div>

@@ -19,7 +19,6 @@
 	let showDetails = true
 	let variant = 'outline'
 
-	$: detailsIcon = showDetails ? '👇' : '👉'
 	$: variant = $theme ? `${variant} accent` : `${variant} highlight` // TODO:  fix this in css
 
 	function togglelDetails() {
@@ -55,7 +54,7 @@
 	<aside class="l-side l-stack sm">
 		<h2>{title}</h2>
 		<Button id="btn-details" {variant} onClick={() => togglelDetails()}>
-			{detailsIcon} Details
+			{showDetails ? '👇' : '👉'} Details
 		</Button>
 		<div class={showDetails ? 'l-stack' : 'visually-hidden'}>
 			{#if geometry}

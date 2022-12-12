@@ -5,16 +5,9 @@
 	export let data: PageData
 	const {sketches} = data
 
-	let sketchId = 'default'
-	const items: {id: string; slug: string; title: string; emoji: string}[] = sketches
-
 	let showcanvas = true
 	let showFeedback = !showcanvas
 	let feedback = ''
-
-	function loadSketch(event) {
-		sketchId = event.detail.selected
-	}
 </script>
 
 <svelte:head>

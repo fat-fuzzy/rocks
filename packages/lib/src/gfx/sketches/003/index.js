@@ -42,8 +42,6 @@ function main(canvas) {
 
 	clear()
 
-	const maxWidth = canvas.clientWidth
-	const maxHeight = canvas.clientHeight
 	const vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	const fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
 	const program = setup.link(gl, vertexShader, fragmentShader)
@@ -66,7 +64,7 @@ function main(canvas) {
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
 		},
-		geometry: utils.getGeometryDefaults(maxWidth, maxHeight),
+		geometry: utils.getGeometryDefaults(canvas.clientWidth, canvas.clientHeight),
 	}
 	buffers = initBuffers(gl, programInfo)
 	return programInfo

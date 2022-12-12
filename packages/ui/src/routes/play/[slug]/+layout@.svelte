@@ -13,7 +13,7 @@
 <header class="header-page">
 	<h1>👾 Play</h1>
 </header>
-<Sidebar placement="start">
+<Sidebar>
 	<div slot="side" class="sticky">
 		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
 	</div>
