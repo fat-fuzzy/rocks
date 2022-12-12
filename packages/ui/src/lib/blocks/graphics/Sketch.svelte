@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {theme} from '$stores/theme' // TODO: figure out whubut not inside lib folder
+	import {theme} from '../../stores/theme' // TODO: figure out whubut not inside lib folder
 	import {onMount, afterUpdate} from 'svelte'
 	import Button from '../buttons/Button.svelte'
 	import Geometry from '../graphics/Geometry.svelte'
@@ -21,7 +21,7 @@
 
 	$: variant = $theme ? `${variant} accent` : `${variant} highlight` // TODO:  fix this in css
 
-	function togglelDetails() {
+	function toggleDetails() {
 		showDetails = !showDetails
 	}
 	function update(event) {
@@ -53,7 +53,7 @@
 	</div>
 	<aside class="l-side l-stack sm">
 		<h2>{title}</h2>
-		<Button id="btn-details" {variant} onClick={() => togglelDetails()}>
+		<Button id="btn-details" {variant} onClick={() => toggleDetails()}>
 			{showDetails ? '👇' : '👉'} Details
 		</Button>
 		<div class={showDetails ? 'l-stack' : 'visually-hidden'}>

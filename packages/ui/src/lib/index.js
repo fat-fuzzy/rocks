@@ -14,6 +14,9 @@ import Button from './blocks/buttons/Button.svelte'
 import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
 import Canvas from './blocks/media/Canvas.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
+import Nav from './blocks/navs/Nav.svelte'
+import SubNav from './blocks/navs/SubNav.svelte'
+import Sketch from './blocks/graphics/Sketch.svelte'
 
 /**
  * Story components
@@ -57,6 +60,9 @@ const blocks = {
 	Button,
 	ButtonMenu,
 	// Canvas, TODO: init canvas with example Sketch
+	Nav,
+	SubNav,
+	Sketch,
 	Feedback,
 }
 const stories = {

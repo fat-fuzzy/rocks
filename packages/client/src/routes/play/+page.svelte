@@ -1,25 +1,23 @@
 <script lang="ts">
 	import type {PageData} from './$types'
-	import type {Sketch} from '$data/data'
-	import {blocks} from '@fat-fuzzy/ui'
+	import {blocks, layouts} from '@fat-fuzzy/ui'
 
 	export let data: PageData
 	let {sketches} = data
-	const {Canvas, Feedback, Menu} = blocks
+	const {Sidebar} = layouts
+	const {Sketch, SubNav} = blocks
 
-	let sketchId = 'default'
-	let sketch: Sketch | undefined = sketches.find((a) => a.id === sketchId)
-	const menuItems: {id: string; title: string; emoji: string}[] = sketches
-
-	let showcanvas = true
-	let showFeedback = !showcanvas
-	let feedback = ''
-
-	function loadAnimation(event) {
-		sketchId = event.detail.selected
+	let sketchId = '001'
+	let title
+	let emoji
+	let dimensions
+	let sketchData = sketches.find((a) => a.id === sketchId)
+	if (sketchData) {
+		title = sketchData.title
+		emoji = sketchData.emoji
+		dimensions = sketchData.dimensions
 	}
-
-	$: sketch = sketches.find((a) => a.id === sketchId)
+	$: items = sketches
 </script>
 
 <svelte:head>
@@ -32,15 +30,15 @@
 
 <header class="header-page">
 	<h1>👾 Play</h1>
-	{#if sketch} <h2>&nbsp;❤︎&nbsp;{sketch.title}&nbsp;{sketch.emoji}</h2> {/if}
+	{#if sketchData} <h2>&nbsp;❤︎&nbsp;{title}&nbsp;{emoji}</h2> {/if}
 </header>
 
-<section class="l-sidebar">
-	<div class="l-side sm shrink">
-		<Menu on:input={loadAnimation} {menuItems} />
+<Sidebar>
+	<div slot="side" class="sticky">
+		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
 	</div>
-	<div class="l-main l-stack">
-		<Canvas show={showcanvas} {sketch} />
-		<Feedback {feedback} show={showFeedback} />
+	<div slot="main" class="l-stack">
+		🚧 WIP 🚧
+		<!-- <Sketch {sketch} {title} {dimensions} /> -->
 	</div>
-</section>
+</Sidebar>
