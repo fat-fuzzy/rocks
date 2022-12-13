@@ -6,12 +6,12 @@
 
 /* NOTE: The following declaration assume that the markup declares .main before .side */
 .l-sidebar.start {
-	flex-direction: row-reverse;
+	flex-direction: row;
 }
 // TODO: not sure this rule is necessary
-// .l-sidebar.end {
-// 	flex-direction: row;
-// }
+.l-sidebar.end {
+	flex-direction: row-reverse;
+}
 
 .l-main {
 	flex-basis: 0;

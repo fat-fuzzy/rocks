@@ -145,9 +145,9 @@ $modular-scale-steps: 1, 2, 3, 4, 5; // skip 0: it will be automatically generat
 $modular-scale: (
 	fluid-min-width: 320,
 	fluid-max-width: 1920,
-	fluid-min-size: 10,
+	fluid-min-size: 8,
 	fluid-max-size: 16,
-	fluid-min-ratio: 1.2,
+	fluid-min-ratio: 1.15,
 	fluid-max-ratio: 1.3,
 	fluid-screen: 100vw,
 );

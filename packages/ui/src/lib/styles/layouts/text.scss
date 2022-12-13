@@ -1,0 +1,35 @@
+/**
+ * Set max line width for text:
+ * - improve readability by using ch units to adapt to user zoom settings
+ * Compose with l-burrito (l-center) class on the same HTML element:
+ * - the l-burrito (l-center) class will set a max width 
+ *   to stop content from overflowing a responsive centered layout
+ */
+
+.l-text {
+	width: 80ch;
+}
+
+.l-text.xs {
+	width: 80ch;
+}
+
+.l-text.sm {
+	width: 80ch;
+}
+
+.l-text.md {
+	width: 80ch;
+}
+
+.l-text.lg {
+	width: 80ch;
+}
+
+.l-text.xl {
+	width: 80ch;
+}
+
+.l-text.xxl {
+	width: 80ch;
+}

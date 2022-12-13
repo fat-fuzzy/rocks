@@ -1,8 +1,10 @@
 /* Layout */
-@import './layouts/stack';
-@import './layouts/sidebar';
-@import './layouts/switcher';
-@import './layouts/burrito';
-@import './layouts/frame';
-@import './layouts/card';
-@import './layouts/reveal';
+@import './layouts/text'; // Used for text content width
+@import './layouts/stack'; // Used for stacked column content
+@import './layouts/sidebar'; // Used for sidebar layouts = layouts containing two children: "main" and "side"
+@import './layouts/switcher'; // Used for layouts that switch between row an column on a give threshold of the container size
+@import './layouts/center'; // Used for main content centering
+@import './layouts/burrito'; // Used for side content centering
+@import './layouts/frame'; // Used for displaying content with a given aspect ratio
+@import './layouts/card'; // Used for displaying self-contained content items
+@import './layouts/reveal'; // Used for displaying hidden content with a button action

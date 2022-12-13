@@ -17,6 +17,7 @@ textarea {
 	border: 1px solid var(#{$prefix}-gray-1);
 	border-radius: var(#{$prefix}-radius-base);
 	color: currentColor;
+	background: var(#{$prefix}-color-white);
 }
 
 * + .feedback {
@@ -28,8 +29,8 @@ textarea {
 	cursor: not-allowed;
 }
 
-form.xxs,
-form.xs {
+.xxs,
+.xs {
 	legend {
 		font-size: var(#{$prefix}-font-size-sm);
 	}
@@ -66,7 +67,7 @@ form.xs {
 	}
 }
 
-form.xxs {
+.xxs {
 	legend + * {
 		margin-block-start: var(#{$prefix}-size-xxs);
 	}
@@ -78,7 +79,7 @@ form.xxs {
 	}
 }
 
-form.sm {
+.sm {
 	legend {
 		font-size: var(#{$prefix}-font-size-h5);
 	}
@@ -115,7 +116,7 @@ form.sm {
 	}
 }
 
-form.md {
+.md {
 	legend {
 		font-size: var(#{$prefix}-font-size-h4);
 	}
@@ -152,7 +153,7 @@ form.md {
 	}
 }
 
-form.lg {
+.lg {
 	legend {
 		font-size: var(#{$prefix}-font-size-h3);
 	}
@@ -189,7 +190,7 @@ form.lg {
 	}
 }
 
-form.xl {
+.xl {
 	legend {
 		font-size: var(#{$prefix}-font-size-h2);
 	}

@@ -17,7 +17,7 @@
 	<p>Welcome to the Fat Fuzzy UI library Sandbox!</p>
 </header>
 
-<section class="l-burrito xxl">
+<section class="l-text l-center xxs">
 	<h2>✨ Highlights</h2>
 	<ul class="l-stack lg" role="group">
 		<li class={`card ${variant}`}>
