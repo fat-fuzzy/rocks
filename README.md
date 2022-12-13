@@ -90,3 +90,15 @@ Ideally, this project will:
   - [Statecharts Doc](https://statecharts.dev/)
 - ➕ maths
   - [minimath](https://github.com/patiboh/minimath)
+
+## 🚧 LICENSES
+
+This repository uses the following license:
+
+Apache-2.0
+
+The packages, folders and files it contains may have different licenses:
+
+MIT
+Apache-2.0
+Custom licenses
