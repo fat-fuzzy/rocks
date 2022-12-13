@@ -12,20 +12,17 @@
 	export let multiple = true
 </script>
 
-<form method="post" enctype="multipart/form-data" class={size}>
-	<Fieldset slug={legend.toLowerCase()} {legend}>
-		<label for={id}>{label}</label>
-		<input
-			type="file"
-			{id}
-			{name}
-			accept={fileType}
-			aria-describedby={`${id}-hint`}
-			class={variant}
-			{multiple}
-		/>
-		<p id={`${id}-hint`} class="hint">{hint}</p>
-
-		<button>Submit</button>
-	</Fieldset>
-</form>
+<Fieldset slug={legend.toLowerCase()} {legend} {size}>
+	<label for={id}>{label}</label>
+	<input
+		type="file"
+		{id}
+		{name}
+		accept={fileType}
+		aria-describedby={/* TODO: check is this correct? */ hint ? `${id}-hint` : ''}
+		class={variant}
+		{multiple}
+	/>
+	{#if hint}<p id={`${id}-hint`} class="hint">{hint}</p> {/if}
+	<button>Submit</button>
+</Fieldset>

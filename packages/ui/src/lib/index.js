@@ -12,12 +12,12 @@ import Burrito from './layouts/Burrito.svelte'
  */
 import Button from './blocks/buttons/Button.svelte'
 import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
-import Canvas from './blocks/media/Canvas.svelte'
+// import Canvas from './blocks/media/Canvas.svelte'
 import Upload from './blocks/forms/Upload.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
 import Nav from './blocks/navs/Nav.svelte'
 import SubNav from './blocks/navs/SubNav.svelte'
-import Sketch from './blocks/graphics/Sketch.svelte'
+// import Sketch from './blocks/graphics/Sketch.svelte'
 
 /**
  * Story components
@@ -64,7 +64,7 @@ const blocks = {
 	Upload,
 	Nav,
 	SubNav,
-	Sketch,
+	// Sketch,
 	Feedback,
 }
 const stories = {

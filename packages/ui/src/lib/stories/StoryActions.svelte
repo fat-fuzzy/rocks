@@ -44,7 +44,7 @@
 
 <h3>{title}</h3>
 
-<Sidebar placement="end">
+<Sidebar>
 	<svelte:fragment slot="main">
 		<slot name="component">
 			{#if component}
@@ -66,7 +66,7 @@
 				</Fieldset>
 			{/if}
 			{#if sizes}
-				<Fieldset slug="field-select-size" legend="Select Size">
+				<Fieldset slug="field-select-size" legend="Size">
 					<label for="select-size">Select Size:</label>
 					<select id="select-size">
 						<option value="">--Please choose an option--</option>

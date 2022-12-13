@@ -43,9 +43,9 @@
 	$: [selectedIcon, selectedSize, selectedVariant, selectedTheme] = selected
 </script>
 
-<h3 id={slug}>{title}</h3>
+<h3 id={slug}>{title} Options</h3>
 
-<Sidebar>
+<Sidebar placement="end">
 	<svelte:fragment slot="main">
 		<slot name="component">
 			{#if component}
@@ -54,7 +54,7 @@
 		</slot>
 	</svelte:fragment>
 	<svelte:fragment slot="side">
-		<form on:submit|preventDefault={handleSubmit} class="l-stack">
+		<form on:submit|preventDefault={handleSubmit} class="l-stack start">
 			<div class="l-switcher">
 				{#if icons}
 					<Fieldset slug="field-select-icon" legend="Icons">
@@ -68,7 +68,7 @@
 					</Fieldset>
 				{/if}
 				{#if sizes}
-					<Fieldset slug="field-select-size" legend="Select Size">
+					<Fieldset slug="field-select-size" legend="Size">
 						<label for="select-size">Select Size:</label>
 						<select id="select-size">
 							<option value="">--Please choose an option--</option>
