@@ -92,6 +92,7 @@ button:not(:disabled):active {
 }
 
 // == Override button size in relation to container (CSS rules above) on a per-button basis
+button.xxs,
 button.xs {
 	font-size: var(#{$prefix}-font-size-xs);
 	padding: var(#{$prefix}-size-xs) var(#{$prefix}-size-sm);

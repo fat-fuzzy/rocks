@@ -22,32 +22,37 @@ $colors: (
 	'highlight': rgb(246, 226, 10),
 	'highlight-light': rgb(251, 244, 162),
 	'highlight-lighter': rgb(249, 243, 190),
-	// 'shadow-color': var(#{$prefix}-color-dark),
+	// 'shadow-color': var(# {$prefix}-color-dark),
 	'shadow-light-color': 220 80% 80%,
 	'shadow-color': 220 3% 15%,
 	'shadow-strength': 1%,
 );
 
 $typography: (
-	font-family-base: serif,
+	font-family-base: #{'HelveticaNeue',
+	'Helvetica Neue',
+	Helvetica,
+	Arial,
+	sans-serif},
 	//
-	font-size-base: var(#{$prefix}-fluid-0),
-	font-size-h5: var(#{$prefix}-fluid-1),
-	font-size-h4: var(#{$prefix}-fluid-2),
-	font-size-h3: var(#{$prefix}-fluid-3),
-	font-size-h2: var(#{$prefix}-fluid-4),
-	font-size-h1: var(#{$prefix}-fluid-5),
+	font-size-small: var(#{$prefix}-fluid-0),
+	font-size-base: var(#{$prefix}-fluid-1),
+	font-size-h5: var(#{$prefix}-fluid-2),
+	font-size-h4: var(#{$prefix}-fluid-3),
+	font-size-h3: var(#{$prefix}-fluid-4),
+	font-size-h2: var(#{$prefix}-fluid-5),
+	font-size-h1: var(#{$prefix}-fluid-6),
 	//// TODO: fix font-size-md - This font-size is not right
-	font-size-md: var(#{$prefix}-fluid-0),
-	font-size-lg: var(#{$prefix}-fluid-1),
-	font-size-xl: var(#{$prefix}-fluid-2),
-	font-size-xxl: var(#{$prefix}-fluid-3),
-	// font-size-sm: calc(var(#{$prefix}-font-size-md) * var(#{$prefix}-s-1)),
-	// font-size-xs: calc(var(#{$prefix}-font-size-md) * var(#{$prefix}-s-2)),
-	// font-size-xxs: calc(var(#{$prefix}-font-size-md) * vars(#{$prefix}-s-3)),
-	font-size-sm: var(#{$prefix}-300),
-	font-size-xs: var(#{$prefix}-200),
-	font-size-xxs: var(#{$prefix}-100),
+	font-size-xxs: calc(var(#{$prefix}-font-size-small) * var(#{$prefix}-s-2)),
+	font-size-xs: calc(var(#{$prefix}-font-size-small) * var(#{$prefix}-s-1)),
+	font-size-sm: var(#{$prefix}-font-size-small),
+	font-size-md: var(#{$prefix}-font-size-base),
+	font-size-lg: var(#{$prefix}-font-size-h5),
+	font-size-xl: var(#{$prefix}-font-size-h4),
+	font-size-xxl: var(#{$prefix}-font-size-h3),
+	// font-size-sm: calc(var(# {$prefix}-font-size-md) * var(# {$prefix}-s-1)),
+	// font-size-xs: calc(var(# {$prefix}-font-size-md) * var(# {$prefix}-s-2)),
+	// font-size-xxs: calc(var(# {$prefix}-font-size-md) * vars(# {$prefix}-s-3)),
 	//
 	font-weight-light: 100,
 	font-weight-medium: 300,
@@ -128,9 +133,8 @@ $scale: (
 
 /**
  * Source: https://utopia.fyi/blog/css-modular-scales/
- *
  * Usage:
- * 
+ *  TODO: Doc + link to mixin generateModularScale
  *
  * body {
  *   font-size: var(#{$prefix}-fluid-0)
@@ -138,7 +142,7 @@ $scale: (
  *
  */
 
-$modular-scale-steps: 1, 2, 3, 4, 5; // skip 0: it will be automatically generated
+$modular-scale-steps: 1, 2, 3, 4, 5, 6; // skip 0: it will be automatically generated
 $modular-scale: (
 	fluid-min-width: 320,
 	fluid-max-width: 1920,

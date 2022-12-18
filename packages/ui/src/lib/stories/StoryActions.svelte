@@ -8,6 +8,7 @@
 		size?: string
 		theme?: string
 		variant?: string
+		layout?: string
 	} & {
 		[handler: string]: (event: Event) => unknown
 	}
