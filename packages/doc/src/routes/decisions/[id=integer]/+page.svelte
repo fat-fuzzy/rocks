@@ -10,7 +10,7 @@
 	$: Content = $page.data.Content;
 </script>
 
-<article>
+<article class="l-text">
 	<h1>{title}</h1>
 	<p>Published: {year}</p>
 	<svelte:component this={Content} />

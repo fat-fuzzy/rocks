@@ -3,11 +3,11 @@
 </script>
 
 <Header />
-<main class="l-burrito">
+<main class="l-center">
 	<slot />
 </main>
 
-<footer class="l-burrito">
+<footer class="l-center">
 	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
 

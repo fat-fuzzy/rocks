@@ -13,11 +13,12 @@
 <header class="header-page">
 	<h1>👾 Play</h1>
 </header>
-<Sidebar>
-	<div slot="side" class="sticky">
-		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
-	</div>
-	<div slot="main" class="l-stack">
+
+<Sidebar size="xs">
+	<svelte:fragment slot="side">
+		<SubNav {items} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
+	</svelte:fragment>
+	<svelte:fragment slot="main">
 		<slot />
-	</div>
+	</svelte:fragment>
 </Sidebar>

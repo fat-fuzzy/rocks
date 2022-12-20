@@ -12,12 +12,12 @@
 </svelte:head>
 
 <Sidebar>
-	<div slot="side">
+	<svelte:fragment slot="side">
 		{#each decisions as { meta }}
 			<a href={meta.id}>{meta.title}</a><br />
 		{/each}
-	</div>
-	<div slot="main" class="l-stack">
+	</svelte:fragment>
+	<svelte:fragment slot="main">
 		<slot />
-	</div>
+	</svelte:fragment>
 </Sidebar>

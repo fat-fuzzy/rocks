@@ -12,8 +12,8 @@
 	<meta name="description" content="Fat Fuzzy Doc - Log of architectural components" />
 </svelte:head>
 
-<Sidebar>
-	<div slot="side" class="sticky">
+<Sidebar size="xs">
+	<svelte:fragment slot="side">
 		<a data-sveltekit-prefetch href={`/ui`}><h1>Stories</h1></a><br />
 		<a data-sveltekit-prefetch href={`/ui/blocks`}><h2>Blocks</h2></a><br />
 		{#each components.blocks as block}
@@ -23,8 +23,8 @@
 		{#each components.layouts as layout}
 			<a data-sveltekit-prefetch href={`/ui/layouts/${layout}`}>{layout}</a><br />
 		{/each}
-	</div>
-	<div slot="main" class="l-stack">
+	</svelte:fragment>
+	<svelte:fragment slot="main">
 		<slot />
-	</div>
+	</svelte:fragment>
 </Sidebar>
