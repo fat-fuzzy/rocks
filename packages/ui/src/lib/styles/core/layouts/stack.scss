@@ -43,11 +43,3 @@
 .l-stack.xl > * + * {
 	margin-block-start: var(#{$prefix}-size-xl);
 }
-
-.l-stack {
-	max-width: 100%;
-}
-
-.l-stack > * {
-	max-width: 100%;
-}

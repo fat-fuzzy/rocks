@@ -1,13 +1,13 @@
 // TODO: Use @use instead of @import https://sass-lang.com/documentation/at-rules/use
 
 /* Layout */
-@import './layouts';
+@import './layouts/main';
 
 /* CSS blocks   ("components") */
-@import './blocks';
+@import './blocks/main';
 
-/* Theme */
-@import './globals';
+/* Resets and global styles */
+@import './globals/main';
 
 /* Overrides */
 @import './config/utility';

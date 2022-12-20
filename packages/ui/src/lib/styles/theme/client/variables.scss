@@ -1,5 +1,5 @@
 $_cssvars: null;
-$prefix: --client;
+$prefix: --ui;
 $colors: (
 	'gray-1': #ccc,
 	'gray-2': #ddd,
@@ -13,59 +13,18 @@ $colors: (
 	'danger': rgba(238, 9, 123, 1),
 	'danger-light': rgb(251, 153, 183, 1),
 	'danger-lighter': rgba(255, 235, 245, 1),
-	'primary': rgb(26, 97, 190),
+	'primary': rgb(106, 75, 179),
 	'primary-light': rgb(181, 165, 252, 1),
 	'primary-lighter': rgba(231, 219, 255, 1),
-	'accent': rgb(209, 159, 32),
+	'accent': rgb(0, 131, 136),
 	'accent-light': rgb(71, 191, 185),
 	'accent-lighter': rgb(215, 247, 240),
 	'highlight': rgb(246, 226, 10),
 	'highlight-light': rgb(251, 244, 162),
 	'highlight-lighter': rgb(249, 243, 190),
-	// 'shadow-color': var(# {$prefix}-color-dark),
 	'shadow-light-color': 220 80% 80%,
 	'shadow-color': 220 3% 15%,
 	'shadow-strength': 1%,
-);
-
-$typography: (
-	font-family-base: #{'HelveticaNeue',
-	'Helvetica Neue',
-	Helvetica,
-	Arial,
-	sans-serif},
-	//
-	font-size-small: var(#{$prefix}-fluid-0),
-	font-size-base: var(#{$prefix}-fluid-1),
-	font-size-h5: var(#{$prefix}-fluid-2),
-	font-size-h4: var(#{$prefix}-fluid-3),
-	font-size-h3: var(#{$prefix}-fluid-4),
-	font-size-h2: var(#{$prefix}-fluid-5),
-	font-size-h1: var(#{$prefix}-fluid-6),
-	//// TODO: fix font-size-md - This font-size is not right
-	font-size-xxs: calc(var(#{$prefix}-font-size-small) * var(#{$prefix}-s-2)),
-	font-size-xs: calc(var(#{$prefix}-font-size-small) * var(#{$prefix}-s-1)),
-	font-size-sm: var(#{$prefix}-font-size-small),
-	font-size-md: var(#{$prefix}-font-size-base),
-	font-size-lg: var(#{$prefix}-font-size-h5),
-	font-size-xl: var(#{$prefix}-font-size-h4),
-	font-size-xxl: var(#{$prefix}-font-size-h3),
-	// font-size-sm: calc(var(# {$prefix}-font-size-md) * var(# {$prefix}-s-1)),
-	// font-size-xs: calc(var(# {$prefix}-font-size-md) * var(# {$prefix}-s-2)),
-	// font-size-xxs: calc(var(# {$prefix}-font-size-md) * vars(# {$prefix}-s-3)),
-	//
-	font-weight-light: 100,
-	font-weight-medium: 300,
-	font-weight-bold: 500,
-	font-color-base: var(#{$prefix}-color-dark),
-);
-
-$breakpoints: (
-	bp-xs: 320,
-	bp-sm: 768,
-	bp-md: 992,
-	bp-lg: 1200,
-	bp-xl: 1920,
 );
 
 //==
@@ -78,6 +37,7 @@ $breakpoints: (
 /// you keep it at 1rem because that is the root font size. You
 /// can set it to whatever you like and whatever unit you like.
 ///
+
 $base-size: 1rem;
 
 /// SIZE SCALE
@@ -85,6 +45,7 @@ $base-size: 1rem;
 /// it is relevant for (font-size, margin, padding). All items are
 /// calcuated off the base size, so change that and cascade across
 /// your whole project.
+///
 ///
 $size-scale: (
 	'100': $base-size * 0.6,
@@ -114,7 +75,20 @@ $size-scale: (
 * --s5: calc(var(--s4) * var(--ratio));
 */
 
-$scale: (
+//== Spacing Scale N to N+1
+$scale-space: (
+	ratio: 1.5,
+	space--3: calc(var(#{$prefix}-s-2) / var(#{$prefix}-ratio)),
+	space--2: calc(var(#{$prefix}-s-1) / var(#{$prefix}-ratio)),
+	space--1: calc(var(#{$prefix}-s0) / var(#{$prefix}-ratio)),
+	space-0: $base-size,
+	space-1: calc(var(#{$prefix}-s0) * var(#{$prefix}-ratio)),
+	space-2: calc(var(#{$prefix}-s1) * var(#{$prefix}-ratio)),
+	space-3: calc(var(#{$prefix}-s2) * var(#{$prefix}-ratio)),
+);
+
+//== Spacing Scale N to N^X
+$scale-space-pairs: (
 	ratio: 1.5,
 	s-5: calc(var(#{$prefix}-s-4) / var(#{$prefix}-ratio)),
 	s-4: calc(var(#{$prefix}-s-3) / var(#{$prefix}-ratio)),
@@ -127,6 +101,82 @@ $scale: (
 	s3: calc(var(#{$prefix}-s2) * var(#{$prefix}-ratio)),
 	s4: calc(var(#{$prefix}-s3) * var(#{$prefix}-ratio)),
 	s5: calc(var(#{$prefix}-s4) * var(#{$prefix}-ratio)),
+);
+
+$breakpoints: (
+	bp-xs: 320,
+	bp-sm: 768,
+	bp-md: 992,
+	bp-lg: 1240,
+	bp-xl: 1620,
+);
+
+$typography: (
+	// == Font families
+	font-family-serif: #{'Trirong',
+	serif},
+	font-family-heading: #{'Encode Sans SC',
+	sans-serif},
+	font-family-subheading: #{'Encode Sans SC',
+	sans-serif},
+	font-family-sans: #{'Montserrat',
+	sans-serif},
+	font-family-mono: #{'Anonymous Pro',
+	monospace},
+	font-family-base: var(#{$prefix}-font-family-sans),
+	//
+	font-family-h1: var(#{$prefix}-font-family-heading),
+	font-family-h2: var(#{$prefix}-font-family-subheading),
+	font-family-h3: var(#{$prefix}-font-family-subheading),
+	font-family-h4: var(#{$prefix}-font-family-subheading),
+	font-family-h5: var(#{$prefix}-font-family-subheading),
+	font-family-body: var(#{$prefix}-font-family-base),
+	font-family-code: var(#{$prefix}-font-family-mono),
+	font-family-ui: var(#{$prefix}-font-family-sans),
+	// == Font weight
+	font-weight-800: 800,
+	font-weight-700: 700,
+	font-weight-600: 600,
+	font-weight-500: 500,
+	font-weight-400: 400,
+	font-weight-300: 300,
+	font-weight-200: 200,
+	font-weight-100: 100,
+	//
+	font-weight-bold: 800,
+	font-weight-semibold: 600,
+	font-weight-medium: 500,
+	font-weight-base: 200,
+	font-weight-light: 200,
+	//
+	font-weight-h1: var(#{$prefix}-font-weight-bold),
+	font-weight-h2: var(#{$prefix}-font-weight-semibold),
+	font-weight-h3: var(#{$prefix}-font-weight-semibold),
+	font-weight-h4: var(#{$prefix}-font-weight-medium),
+	font-weight-h5: var(#{$prefix}-font-weight-medium),
+	font-weight-body: var(#{$prefix}-font-weight-medium),
+	font-weight-code: var(#{$prefix}-font-weight-medium),
+	font-weight-ui: var(#{$prefix}-font-weight-bold),
+	// == Font size
+	font-size-h1: var(#{$prefix}-fluid-4),
+	font-size-h2: var(#{$prefix}-fluid-2),
+	font-size-h3: var(#{$prefix}-fluid-1),
+	font-size-h4: var(#{$prefix}-fluid-0),
+	font-size-h5: var(#{$prefix}-fluid--1),
+	font-size-body: var(#{$prefix}-fluid--1),
+	font-size-code: var(#{$prefix}-fluid--1),
+	font-size-ui: var(#{$prefix}-fluid--1),
+	font-size-small: var(#{$prefix}-fluid--2),
+	//
+	font-size-xxl: var(#{$prefix}-font-size-h1),
+	font-size-xl: var(#{$prefix}-font-size-h2),
+	font-size-lg: var(#{$prefix}-font-size-h3),
+	font-size-md: var(#{$prefix}-font-size-h4),
+	font-size-sm: var(#{$prefix}-font-size-h5),
+	font-size-xs: var(#{$prefix}-font-size-body),
+	font-size-xxs: var(#{$prefix}-font-size-small),
+	// == Font color
+	font-color-base: var(#{$prefix}-color-dark)
 );
 
 //== FLUID SCALE
@@ -142,14 +192,15 @@ $scale: (
  *
  */
 
-$modular-scale-steps: 1, 2, 3, 4, 5, 6; // skip 0: it will be automatically generated
+$modular-scale-steps-plus: 1, 2, 3, 4;
+$modular-scale-steps-minus: -1, -2;
 $modular-scale: (
 	fluid-min-width: 320,
-	fluid-max-width: 1320,
-	fluid-min-size: 10,
-	fluid-max-size: 16,
+	fluid-max-width: 1240,
+	fluid-min-size: 16,
+	fluid-max-size: 18,
 	fluid-min-ratio: 1.2,
-	fluid-max-ratio: 1.3,
+	fluid-max-ratio: 1.33,
 	fluid-screen: 100vw,
 );
 
@@ -165,13 +216,13 @@ $layout: (
 	size-xl: var(#{$prefix}-s0),
 	size-xxl: var(#{$prefix}-s1),
 	//
-	sidebar-width-xxs: 10ch,
-	sidebar-width-xs: 15ch,
-	sidebar-width-sm: 20ch,
-	sidebar-width-md: 25ch,
-	sidebar-width-lg: 30ch,
-	sidebar-width-xl: 35ch,
-	sidebar-width-xxl: 40ch,
+	sidebar-width-xxs: 10rem,
+	sidebar-width-xs: 15rem,
+	sidebar-width-sm: 20rem,
+	sidebar-width-md: 25rem,
+	sidebar-width-lg: 30rem,
+	sidebar-width-xl: 35rem,
+	sidebar-width-xxl: 40rem,
 	//
 	radius-nul: 0,
 	radius-base: 3px,
@@ -182,6 +233,7 @@ $layout: (
 	outline-offset: 0.25rem,
 	outline-width: 2px,
 	prev-offset-limit: calc(calc(var(#{$prefix}-outline-offset) + var(#{$prefix}-outline-width))),
+	//
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3
 	shadow: #{0 -1px 3px 0 hsl(

@@ -119,6 +119,12 @@
 	border-color: var(#{$prefix}-highlight);
 }
 
+//== Text
+
+.light pre {
+	color: var(#{$prefix}-color-light);
+}
+
 //== Errors
 
 .light .error {

@@ -1,0 +1,11 @@
+menu {
+	display: flex;
+	justify-content: stretch;
+	padding: 0;
+	border-radius: var(#{$prefix}-radius-base);
+	padding: var(#{$prefix}-current-size);
+}
+
+menu > li > * {
+	width: 100%;
+}

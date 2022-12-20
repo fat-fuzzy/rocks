@@ -1,0 +1,56 @@
+/**
+ * Set max line width for text:
+ * - improve readability by using ch units to adapt to user zoom settings
+ * Compose with l-center class on the same HTML element:
+ * - the l-center class will set a max-width to stop the text content from overflowing its container
+ */
+
+.l-text {
+	width: 80ch;
+	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus);
+	max-width: calc(100% - calc(2 * var(#{$prefix}-gap))); // width of parent minus base padding
+}
+
+.l-text > * + h1,
+.l-text > * + h2,
+.l-text > * + h3,
+.l-text > * + h4,
+.l-text > * + h5 {
+	margin-block-start: var(#{$prefix}-s2);
+}
+
+.l-text > h1 + *,
+.l-text > h2 + *,
+.l-text > h3 + *,
+.l-text > h4 + *,
+.l-text > h5 + * {
+	margin-block-start: var(#{$prefix}-s0);
+}
+
+.l-text.xxs {
+	width: 20ch;
+}
+
+.l-text.xs {
+	width: 30ch;
+}
+
+.l-text.sm {
+	width: 40ch;
+}
+
+.l-text.md {
+	width: 50ch;
+}
+
+.l-text.lg {
+	width: 60ch;
+}
+
+.l-text.xl {
+	width: 70ch;
+}
+
+.l-text.xxl {
+	width: 80ch;
+}

@@ -99,6 +99,7 @@ $_cssvars: ();
 * Attempting this:
 * - https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
 * - https://utopia.fyi/blog/clamp
+* It can probably be improved with better usage of sass syntax
 */
 @mixin generateTypographicScale(
 	$design_tokens,
