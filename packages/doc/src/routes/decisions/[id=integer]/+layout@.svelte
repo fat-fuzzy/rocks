@@ -11,7 +11,7 @@
 	<meta name="description" content="Fat Fuzzy Doc - Log of architectural decisions" />
 </svelte:head>
 
-<Sidebar>
+<Sidebar size="xs">
 	<svelte:fragment slot="side">
 		{#each decisions as { meta }}
 			<a href={meta.id}>{meta.title}</a><br />

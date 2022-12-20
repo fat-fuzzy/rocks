@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {theme} from '../../stores/theme' // TODO: figure out whubut not inside lib folder
+	import {theme} from '../../stores/theme' // TODO: get theme from system
 	import {onMount, afterUpdate} from 'svelte'
 	import Button from '../buttons/Button.svelte'
 	import Geometry from '../graphics/Geometry.svelte'
@@ -38,7 +38,7 @@
 	// TODO clean gl data when switching animations
 </script>
 
-<article class="l-sidebar l-center">
+<article class="l-sidebar">
 	<div class="l-main">
 		<div
 			class={`l-frame ${dimensions} ${layer}`}
