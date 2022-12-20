@@ -4,8 +4,8 @@
 	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()
-	export let layout = `stack`
-	export let size = ``
+	export let layout = `switcher`
+	export let size = `md`
 	export let variant = 'primary'
 
 	export let items: {

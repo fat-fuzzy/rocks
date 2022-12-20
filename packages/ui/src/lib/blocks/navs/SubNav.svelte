@@ -4,6 +4,7 @@
 
 	export let layout = 'stack'
 	export let size = ''
+	export let breakpoint = ''
 	export let variant = 'primary'
 	export let id = 'sub-nav'
 	export let title = 'Sub Nav'
@@ -25,7 +26,7 @@
 
 <nav
 	aria-labelledby={id}
-	class={`l-reveal l-${layout} ${size} sub-nav`}
+	class={`l-reveal l-${layout} ${size} ${breakpoint} sub-nav`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >

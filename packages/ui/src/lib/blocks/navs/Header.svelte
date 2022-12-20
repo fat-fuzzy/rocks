@@ -9,7 +9,9 @@
 	import github from '$lib/images/icon-dark-100-optim-github.svg'
 
 	export let className = ''
+	export let breakpoint = 'bp:md'
 	export let page
+
 	let actionsMenuExpanded = false
 
 	function handleClickOutside(event) {
@@ -55,7 +57,7 @@
 		</ul>
 	</nav>
 	<div class="l-side">
-		<menu class="l-reveal sm" use:clickOutside on:clickOutside={handleClickOutside}>
+		<menu class={`l-reveal sm ${breakpoint}`} use:clickOutside on:clickOutside={handleClickOutside}>
 			<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 			<div class="corner">
 				<a href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
