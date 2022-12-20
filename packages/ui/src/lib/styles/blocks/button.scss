@@ -3,6 +3,7 @@ button {
 	font-weight: 500;
 	color: var(#{$prefix}-font-color-body);
 	background-color: var(#{$prefix}-color-light);
+	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 }
 
 button:disabled {
@@ -64,58 +65,47 @@ button:not(:disabled):active {
 
 // == Size button in relation to container
 // TODO: check container queries for this
-
 .xxs button,
 .xs button {
 	font-size: var(#{$prefix}-font-size-xs);
-	padding: var(#{$prefix}-size-xs) var(#{$prefix}-size-sm);
 }
 
 .sm button {
 	font-size: var(#{$prefix}-font-size-sm);
-	padding: var(#{$prefix}-size-sm) var(#{$prefix}-size-md);
 }
 
 .md button {
 	font-size: var(#{$prefix}-font-size-md);
-	padding: var(#{$prefix}-size-md) var(#{$prefix}-size-lg);
 }
 
 .lg button {
 	font-size: var(#{$prefix}-font-size-lg);
-	padding: var(#{$prefix}-size-lg) var(#{$prefix}-size-xl);
 }
 
 .xl button {
 	font-size: var(#{$prefix}-font-size-xl);
-	padding: var(#{$prefix}-size-xl) var(#{$prefix}-size-xxl);
 }
 
 // == Override button size in relation to container (CSS rules above) on a per-button basis
 button.xxs,
 button.xs {
 	font-size: var(#{$prefix}-font-size-xs);
-	padding: var(#{$prefix}-size-xs) var(#{$prefix}-size-sm);
 }
 
 button.sm {
 	font-size: var(#{$prefix}-font-size-sm);
-	padding: var(#{$prefix}-size-sm) var(#{$prefix}-size-md);
 }
 
 button.md {
 	font-size: var(#{$prefix}-font-size-md);
-	padding: var(#{$prefix}-size-md) var(#{$prefix}-size-lg);
 }
 
 button.lg {
 	font-size: var(#{$prefix}-font-size-lg);
-	padding: var(#{$prefix}-size-lg) var(#{$prefix}-size-xl);
 }
 
 button.xl {
 	font-size: var(#{$prefix}-font-size-xl);
-	padding: var(#{$prefix}-size-xl) var(#{$prefix}-size-xxl);
 }
 
 //== Alignment

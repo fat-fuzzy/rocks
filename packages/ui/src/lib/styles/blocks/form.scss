@@ -1,3 +1,7 @@
+form * {
+	font-family: var(#{$prefix}-font-family-ui);
+}
+
 label,
 .feedback {
 	display: block;
@@ -5,7 +9,7 @@ label,
 
 label,
 legend {
-	font-weight: 500;
+	font-weight: var(#{$prefix}-font-weight-ui);
 	padding-left: 0;
 	padding-right: 0;
 }

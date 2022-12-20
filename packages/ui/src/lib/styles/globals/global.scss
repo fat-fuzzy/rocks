@@ -1,13 +1,13 @@
 // Global CSS starts
 
 :root {
-	font-family: var(#{$prefix}-font-family-base);
+	font-family: var(#{$prefix}-font-family-body);
 }
 
 body {
-	font-weight: var(#{$prefix}-font-size-base);
+	font-weight: var(#{$prefix}-font-weight-body);
 	line-height: var(#{$prefix}-ratio);
-	color: var(#{$prefix}-font-color-base);
+	color: var(#{$prefix}-font-color-body);
 }
 
 h1,
@@ -18,24 +18,53 @@ h3 {
 
 h1 {
 	font-size: var(#{$prefix}-font-size-h1);
+	font-family: var(#{$prefix}-font-family-h1);
+	font-weight: var(#{$prefix}-font-weight-h1);
 }
 h2 {
 	font-size: var(#{$prefix}-font-size-h2);
+	font-family: var(#{$prefix}-font-family-h2);
+	font-weight: var(#{$prefix}-font-weight-h2);
 }
 h3 {
 	font-size: var(#{$prefix}-font-size-h3);
+	font-family: var(#{$prefix}-font-family-h3);
+	font-weight: var(#{$prefix}-font-weight-h3);
 }
 h4 {
 	font-size: var(#{$prefix}-font-size-h4);
+	font-family: var(#{$prefix}-font-family-h4);
+	font-weight: var(#{$prefix}-font-weight-h4);
 }
 h5 {
 	font-size: var(#{$prefix}-font-size-h5);
+	font-family: var(#{$prefix}-font-family-h5);
+	font-weight: var(#{$prefix}-font-weight-h5);
 }
 
 a,
 .link {
 	color: currentColor;
 	text-decoration: none;
+	font-size: var(#{$prefix}-font-size-ui);
+	font-family: var(#{$prefix}-font-family-ui);
+	font-weight: var(#{$prefix}-font-weight-ui);
+}
+
+button {
+	font-size: var(#{$prefix}-font-size-ui);
+	font-family: var(#{$prefix}-font-family-ui);
+	font-weight: var(#{$prefix}-font-weight-ui);
+}
+
+pre {
+	font-family: var(#{$prefix}-font-family-code);
+	padding: calc(var(#{$prefix}-current-size) * var(#{$prefix}-ratio))
+		var(#{$prefix}-current-size-plus);
+	margin: var(#{$prefix}-current-size-plus) 0;
+	background-color: var(#{$prefix}-color-light);
+	border-radius: var(#{$prefix}-radius-base);
+	overflow: auto;
 }
 
 a:hover,
@@ -49,6 +78,7 @@ button:not(:disabled):hover {
 
 table {
 	border-collapse: collapse;
+	font-family: var(#{$prefix}-font-family-ui);
 }
 
 th {

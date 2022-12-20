@@ -95,13 +95,92 @@ $_cssvars: ();
 	}
 }
 
+/**
+* Attempting this:
+* - https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+* - https://utopia.fyi/blog/clamp
+*/
+@mixin generateTypographicScale(
+	$design_tokens,
+	$prefix: $theme-prefix,
+	$steps-plus: $modular-scale-steps-plus,
+	$steps-minus: $modular-scale-steps-minus,
+	$min-breakpoint: $min-breakpoint,
+	$max-breakpoint: $max-breakpoint
+) {
+	@include generateCssVars($design_tokens, $prefix);
+	$width-min: calc(var(#{$prefix}-fluid-min-width) / 16);
+	$width-max: calc(var(#{$prefix}-fluid-max-width) / 16);
+	$size-min: calc(var(#{$prefix}-fluid-min-size) / 16); // Min font size
+	$size-max: calc(var(#{$prefix}-fluid-max-size) / 16); // Max font size
+	$width-neg: calc(-1 * $width-min); // Precalc
+	$fluid-width: calc($width-max - $width-min); // Precalc
+	$slope: calc(calc($size-max - $size-min) / calc($width-max - $width-min));
+	$y-axis: calc(calc(-1 * $width-min) * $slope + $size-min);
+	:root {
+		#{$prefix}-f-slope: $slope;
+		#{$prefix}-f-y-axis: $y-axis;
+		#{$prefix}-f-size-min-0: $size-max;
+		#{$prefix}-f-size-max-0: $size-min;
+		#{$prefix}-fluid-0: clamp($size-min * 1rem, $y-axis * 1rem + $slope * 100vw, $size-max * 1rem);
+	}
+
+	@each $step in $steps-plus {
+		$previous-step: calc($step - 1);
+		:root {
+			#{$prefix}-f-size-min-#{$step}: calc(
+				var(#{$prefix}-f-size-min-#{$previous-step}) * var(#{$prefix}-fluid-min-ratio)
+			);
+			#{$prefix}-f-size-max-#{$step}: calc(
+				var(#{$prefix}-f-size-max-#{$previous-step}) * var(#{$prefix}-fluid-max-ratio)
+			);
+			#{$prefix}-f-width-neg-#{$step}: calc(-1 * var(#{$prefix}-f-size-min-#{$step}));
+			#{$prefix}-y-axis-#{$step}: calc(
+				var(#{$prefix}-f-width-neg-#{$step}) * $slope + var(#{$prefix}-f-size-min-#{$step})
+			);
+			#{$prefix}-fluid-#{$step}: clamp(
+				var(#{$prefix}-f-size-min-#{$step}) * 1rem,
+				var(#{$prefix}-y-axis-#{$step}) * 1rem + $slope * 100vw,
+				var(#{$prefix}-f-size-max-#{$step}) * 1rem
+			);
+		}
+	}
+	@each $step in $steps-minus {
+		$previous-step: calc($step + 1);
+		:root {
+			#{$prefix}-f-size-min-#{$step}: calc(
+				var(#{$prefix}-f-size-min-#{$previous-step}) / var(#{$prefix}-fluid-min-ratio)
+			);
+			#{$prefix}-f-size-max-#{$step}: calc(
+				var(#{$prefix}-f-size-max-#{$previous-step}) / var(#{$prefix}-fluid-max-ratio)
+			);
+			#{$prefix}-f-width-neg-#{$step}: calc(-1 * var(#{$prefix}-f-size-min-#{$step}));
+			#{$prefix}-y-axis-#{$step}: calc(
+				var(#{$prefix}-f-width-neg-#{$step}) * $slope + var(#{$prefix}-f-size-min-#{$step})
+			);
+			#{$prefix}-fluid-#{$step}: clamp(
+				var(#{$prefix}-f-size-min-#{$step}) * 1rem,
+				var(#{$prefix}-y-axis-#{$step}) * 1rem + $slope * 100vw,
+				var(#{$prefix}-f-size-max-#{$step}) * 1rem
+			);
+		}
+	}
+}
+
 @mixin theme-main($theme-prefix) {
 	@include generateCssVars($breakpoints, $theme-prefix);
 
 	// WIP - still experimenting with scale
-	@include generateCssVars($scale, $theme-prefix);
+	@include generateCssVars($scale-space-pairs, $theme-prefix);
 	@include generateCssVars($size-scale, $theme-prefix);
-	@include generateModularScale($modular-scale, $modular-scale-steps, $theme-prefix, bp-xl);
+	@include generateTypographicScale(
+		$modular-scale,
+		$theme-prefix,
+		$modular-scale-steps-plus,
+		$modular-scale-steps-minus,
+		bp-xs,
+		bp-xl
+	);
 	// -----------
 
 	@include generateCssVars($layout, $theme-prefix);
@@ -131,4 +210,31 @@ $_cssvars: ();
 	} @else {
 		@warn 'Invalid breakpoint: #{$breakpoint}.';
 	}
+}
+
+//== UNITS
+
+// Remove the unit of a value
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function calcUnitlessValue($font-size) {
+	$unitless_value: strip-unit($font-size);
+	$remSize: $unitless_value / 16;
+	@return #{$remSize};
+}
+
+// /* REM mixin : produces REM values with px fallback
+// * Use this in conjunction with body{font-size:10px;} for base 10 conversion
+@mixin pix2rem($size) {
+	font-size: ($size); //Fallback in px
+	font-size: calcUnitlessValue($size) + rem;
+}
+
+// /* EM mixin : produces EM values with px fallback
+// * Use this in conjunction with body{font-size:10px;} for base 10 conversion
+@mixin pix2em($size) {
+	font-size: ($size); //Fallback in px
+	font-size: calcUnitlessValue($size) + em;
 }

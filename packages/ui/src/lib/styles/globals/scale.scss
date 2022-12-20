@@ -1,21 +1,35 @@
 .xxs {
 	#{$prefix}-current-size: var(#{$prefix}-size-xxs);
+	#{$prefix}-current-size-plus: var(#{$prefix}-size-sm);
+	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xxs);
 }
 .xs {
 	#{$prefix}-current-size: var(#{$prefix}-size-xs);
+	#{$prefix}-current-size-plus: var(#{$prefix}-size-md);
+	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xs);
 }
 .sm {
 	#{$prefix}-current-size: var(#{$prefix}-size-sm);
+	#{$prefix}-current-size-plus: var(#{$prefix}-size-lg);
+	#{$prefix}-current-font-size: var(#{$prefix}-font-size-sm);
 }
 .md {
 	#{$prefix}-current-size: var(#{$prefix}-size-md);
+	#{$prefix}-current-size-plus: var(#{$prefix}-size-xl);
+	#{$prefix}-current-font-size: var(#{$prefix}-font-size-md);
 }
 .lg {
 	#{$prefix}-current-size: var(#{$prefix}-size-lg);
+	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
+	#{$prefix}-current-font-size: var(#{$prefix}-font-size-lg);
 }
 .xl {
 	#{$prefix}-current-size: var(#{$prefix}-size-xl);
+	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
+	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xl);
 }
 .xxl {
 	#{$prefix}-current-size: var(#{$prefix}-size-xxl);
+	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
+	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xxl);
 }
