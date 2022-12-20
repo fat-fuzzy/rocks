@@ -7,8 +7,8 @@
 
 .l-text {
 	width: 80ch;
-	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus);
-	max-width: calc(100% - calc(2 * var(#{$prefix}-gap))); // width of parent minus base padding
+	padding-block-end: var(#{$prefix}-current-size-plus);
+	max-width: 100%; // width of parent minus base padding
 }
 
 .l-text > * + h1,
