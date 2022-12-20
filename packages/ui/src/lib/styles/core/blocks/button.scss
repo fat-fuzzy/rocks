@@ -7,7 +7,7 @@ button {
 }
 
 button:disabled {
-	color: var(#{$prefix}-gray-3);
+	color: var(#{$prefix}-color-gray-3);
 }
 
 button:not(:disabled):active {
@@ -17,50 +17,49 @@ button:not(:disabled):active {
 
 .primary,
 .outline.alt {
-	border-color: var(#{$prefix}-primary);
-	background-color: var(#{$prefix}-primary);
-	color: var(#{$prefix}-color-light);
+	color: var(#{$prefix}-current-color-alt);
+	border-color: var(#{$prefix}-current-primary);
+	background-color: var(#{$prefix}-current-primary);
 }
 .outline,
 .primary.alt {
-	border-color: var(#{$prefix}-primary);
-	background-color: var(#{$prefix}-color-white);
+	color: currentColor;
+	background-color: var(#{$prefix}-current-bg-color);
+	border-color: var(#{$prefix}-current-primary);
 }
 
 .accent {
-	border-color: var(#{$prefix}-accent);
-	background-color: var(#{$prefix}-accent);
-	color: var(#{$prefix}-color-white);
+	border-color: var(#{$prefix}-current-accent);
+	background-color: var(#{$prefix}-current-accent);
+	color: var(#{$prefix}-color-light);
 }
+
 .outline.accent,
 .accent.alt {
-	border-color: var(#{$prefix}-accent);
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-white);
+	border-color: var(#{$prefix}-current-accent);
 }
 
 .highlight {
-	border-color: var(#{$prefix}-highlight);
-	background-color: var(#{$prefix}-highlight);
+	border-color: var(#{$prefix}-current-highlight);
+	background-color: var(#{$prefix}-current-highlight);
 	color: var(#{$prefix}-color-dark);
 }
+
 .outline.highlight,
 .highlight.alt {
-	border-color: var(#{$prefix}-highlight);
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-white);
+	border-color: var(#{$prefix}-current-highlight);
 }
 
 .primary:disabled,
 .outline:disabled {
-	background-color: var(#{$prefix}-color-light);
+	background-color: var(#{$prefix}-current-gray);
 }
 
 .link {
-	padding: 0 var(#{$prefix}-size-xs);
+	padding: 0 var(#{$prefix}-current-size);
 	border: none;
 	background-color: transparent;
-	color: var(#{$prefix}-primary);
+	color: var(#{$prefix}-color-primary);
 }
 
 // == Size button in relation to container

@@ -18,7 +18,7 @@ input,
 button,
 select,
 textarea {
-	border: 1px solid var(#{$prefix}-gray-1);
+	border: 1px solid var(#{$prefix}-color-gray-1);
 	border-radius: var(#{$prefix}-radius-base);
 	color: currentColor;
 	background: var(#{$prefix}-color-white);
@@ -29,7 +29,7 @@ textarea {
 }
 
 [disabled] {
-	color: var(#{$prefix}-gray-1);
+	color: var(#{$prefix}-color-gray-1);
 	cursor: not-allowed;
 }
 

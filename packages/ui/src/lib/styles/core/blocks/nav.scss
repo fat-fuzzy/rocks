@@ -1,7 +1,6 @@
 nav {
 	display: flex;
 	justify-content: center;
-	padding: 0 var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus);
 }
 
 nav > ul {
@@ -57,24 +56,6 @@ nav > ul {
 	outline-offset: 0;
 }
 
-.sub-nav.xxs > ul {
-	padding: var(#{$prefix}-size-xxs);
-}
-.sub-nav.xs > ul {
-	padding: var(#{$prefix}-size-xs);
-}
-.sub-nav.sm > ul {
-	padding: var(#{$prefix}-size-sm);
-}
-.sub-nav.md > ul {
-	padding: var(#{$prefix}-size-md);
-}
-.sub-nav.lg > ul {
-	padding: var(#{$prefix}-size-lg);
-}
-.sub-nav.xl > ul {
-	padding: var(#{$prefix}-size-xl);
-}
-.sub-nav.xxl > ul {
-	padding: var(#{$prefix}-size-xxl);
+.sub-nav > ul {
+	padding: var(#{$prefix}-current-size);
 }

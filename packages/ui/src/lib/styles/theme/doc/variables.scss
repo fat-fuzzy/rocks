@@ -1,29 +1,29 @@
 $_cssvars: null;
 $prefix: --ui;
 $colors: (
-	'gray-1': #ccc,
-	'gray-2': #ddd,
-	'gray-3': #999,
-	'gray-4': #666,
-	'gray-5': rgb(92, 91, 94),
+	'color-gray-1': #ccc,
+	'color-gray-2': #ddd,
+	'color-gray-3': #999,
+	'color-gray-4': #666,
+	'color-gray-5': rgb(92, 91, 94),
 	'color-white': rgba(255, 255, 255, 1),
 	'color-black': rgba(0, 0, 0, 1),
 	'color-light': rgba(244, 244, 244, 1),
 	'color-dark': rgb(54, 49, 58),
-	'danger': rgba(238, 9, 123, 1),
-	'danger-light': rgb(251, 153, 183, 1),
-	'danger-lighter': rgba(255, 235, 245, 1),
-	'primary': rgb(106, 75, 179),
-	'primary-light': rgb(181, 165, 252, 1),
-	'primary-lighter': rgba(231, 219, 255, 1),
-	'accent': rgb(0, 131, 136),
-	'accent-light': rgb(71, 191, 185),
-	'accent-lighter': rgb(215, 247, 240),
-	'highlight': rgb(246, 226, 10),
-	'highlight-light': rgb(251, 244, 162),
-	'highlight-lighter': rgb(249, 243, 190),
-	'shadow-light-color': 220 80% 80%,
-	'shadow-color': 220 3% 15%,
+	'color-danger': rgba(238, 9, 123, 1),
+	'color-danger-light': rgb(251, 153, 183, 1),
+	'color-danger-lighter': rgba(255, 235, 245, 1),
+	'color-primary': rgb(106, 75, 179),
+	'color-primary-light': rgb(181, 165, 252, 1),
+	'color-primary-lighter': rgba(231, 219, 255, 1),
+	'color-accent': rgb(0, 131, 136),
+	'color-accent-light': rgb(71, 191, 185),
+	'color-accent-lighter': rgb(215, 247, 240),
+	'color-highlight': rgb(246, 226, 10),
+	'color-highlight-light': rgb(251, 244, 162),
+	'color-highlight-lighter': rgb(249, 243, 190),
+	'color-shadow-light': 220 80% 80%,
+	'color-shadow': 220 3% 15%,
 	'shadow-strength': 1%,
 );
 
@@ -244,20 +244,20 @@ $layout: (
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3
 	shadow: #{0 -1px 3px 0 hsl(
-			var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 2%)
+			var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 2%)
 		),
-	0 1px 2px -5px hsl(var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(#{$prefix}-shadow-color) / calc(var(#{$prefix}-shadow-strength) + 7%)),
+	0 1px 2px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 7%)),
 	},
-	shadow-light: #{0 -1px 3px 0 hsl(var(#{$prefix}-shadow-light-color) /
+	shadow-light: #{0 -1px 3px 0 hsl(var(#{$prefix}-color-shadow-light) /
 				calc(var(#{$prefix}-shadow-strength) + 2%)),
-	0 1px 2px -5px hsl(var(#{$prefix}-shadow-light-color) / calc(var(#{$prefix}-shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(#{$prefix}-shadow-light-color) / calc(var(#{$prefix}-shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(#{$prefix}-shadow-light-color) /
+	0 1px 2px -5px hsl(var(#{$prefix}-color-shadow-light) / calc(var(#{$prefix}-shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(#{$prefix}-color-shadow-light) / calc(var(#{$prefix}-shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(#{$prefix}-color-shadow-light) /
 				calc(var(#{$prefix}-shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(#{$prefix}-shadow-light-color) /
+	0 12px 15px -5px hsl(var(#{$prefix}-color-shadow-light) /
 				calc(var(#{$prefix}-shadow-strength) + 7%)),
 	},
 );
