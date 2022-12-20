@@ -1,6 +1,6 @@
 button {
 	width: auto;
-	font-weight: 500;
+	font-weight: var(#{$prefix}-font-weight-ui);
 	color: var(#{$prefix}-font-color-body);
 	background-color: var(#{$prefix}-color-light);
 	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
@@ -82,6 +82,7 @@ button:not(:disabled):active {
 	font-size: var(#{$prefix}-font-size-lg);
 }
 
+.xxl button,
 .xl button {
 	font-size: var(#{$prefix}-font-size-xl);
 }
@@ -104,6 +105,7 @@ button.lg {
 	font-size: var(#{$prefix}-font-size-lg);
 }
 
+button.xxl,
 button.xl {
 	font-size: var(#{$prefix}-font-size-xl);
 }

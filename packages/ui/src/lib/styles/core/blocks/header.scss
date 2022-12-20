@@ -8,10 +8,8 @@ header {
 
 .header-app + *,
 .header-page + * {
-	margin-block-start: calc(var(#{$prefix}-gap) / 2);
+	margin-block-start: var(#{$prefix}-header-margin);
 }
-
-//== App header
 
 .header-app > .l-main {
 	min-inline-size: 55%;

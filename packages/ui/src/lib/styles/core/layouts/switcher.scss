@@ -9,32 +9,32 @@
 	flex-basis: calc((var(--threshold) - 100%) * 999);
 }
 
-.l-switcher.xxs {
+.l-switcher.bp\:xxs {
 	gap: calc(var(#{$prefix}-gap) / 2);
 	--threshold: var(#{$prefix}-sidebar-width-xxs);
 }
 
-.l-switcher.xs {
+.l-switcher.bp\:xs {
 	gap: var(#{$prefix}-gap);
 	--threshold: var(#{$prefix}-sidebar-width-xs);
 }
 
-.l-switcher.sm {
+.l-switcher.bp\:sm {
 	gap: var(#{$prefix}-gap);
 	--threshold: var(#{$prefix}-sidebar-width-sm);
 }
 
-.l-switcher.md {
+.l-switcher.bp\:md {
 	gap: var(#{$prefix}-gap);
 	--threshold: var(#{$prefix}-sidebar-width-md);
 }
 
-.l-switcher.lg {
+.l-switcher.bp\:lg {
 	gap: var(#{$prefix}-gap);
 	--threshold: var(#{$prefix}-sidebar-width-lg);
 }
 
-.l-switcher.xl {
+.l-switcher.bp\:xl {
 	gap: var(#{$prefix}-gap);
 	--threshold: var(#{$prefix}-sidebar-width-xl);
 }

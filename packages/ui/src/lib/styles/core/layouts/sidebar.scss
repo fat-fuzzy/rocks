@@ -24,46 +24,10 @@
 // adjusts to width of contents
 .l-side {
 	flex-grow: 1;
+	flex-basis: var(#{$prefix}-current-side-size);
 }
 
-// adjusts to width of contents
+// adjusts to width of sibling (main)
 .l-side.shrink {
 	flex-grow: 0;
-}
-
-.l-side.xs {
-	flex-basis: var(#{$prefix}-sidebar-width-xs);
-}
-
-.l-side.sm {
-	flex-basis: var(#{$prefix}-sidebar-width-sm);
-}
-
-.l-side.md {
-	flex-basis: var(#{$prefix}-sidebar-width-md);
-}
-
-.l-side.lg {
-	flex-basis: var(#{$prefix}-sidebar-width-lg);
-}
-
-.l-side.xl {
-	flex-basis: var(#{$prefix}-sidebar-width-xl);
-}
-
-@include max-width(bp-md) {
-	.l-side.sm + .l-main {
-		min-inline-size: calc(100% - var(#{$prefix}-sidebar-width-sm));
-		gap: calc(var(#{$prefix}-gap) / 2);
-	}
-}
-
-@include min-width(bp-md) {
-	.l-main .layer {
-		margin-block-start: var(#{$prefix}-size-md);
-	}
-	// TODO: remove this from layout
-	.l-side aside {
-		padding: var(#{$prefix}-size-md);
-	}
 }

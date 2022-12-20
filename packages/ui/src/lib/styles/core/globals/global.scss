@@ -7,6 +7,7 @@
 body {
 	#{$prefix}-current-size: var(#{$prefix}-s0);
 	#{$prefix}-current-size-plus: var(#{$prefix}-s1);
+	#{$prefix}-current-size-side: var(#{$prefix}-s0);
 	font-weight: var(#{$prefix}-font-weight-body);
 	line-height: var(#{$prefix}-ratio);
 	color: var(#{$prefix}-font-color-body);
@@ -92,7 +93,18 @@ th {
 }
 
 // Stretch page
-// TODO: fix magic number
 body main {
-	min-height: calc(100vh - 200px);
+	min-height: calc(
+		100vh - var(#{$prefix}-header-height) - 2 * var(#{$prefix}-header-margin) -
+			var(#{$prefix}-footer-height)
+	);
+}
+
+// Set max height for main if inner containers are set to scroll (see sidebar layout)
+body main.scroll {
+	height: calc(
+		100vh - var(#{$prefix}-header-height) - 2 * var(#{$prefix}-header-margin) -
+			var(#{$prefix}-footer-height)
+	);
+	overflow: hidden;
 }

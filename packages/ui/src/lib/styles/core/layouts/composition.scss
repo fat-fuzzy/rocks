@@ -1,0 +1,13 @@
+//== App header
+.fixed\:top > header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: inherit;
+	z-index: var(#{$prefix}-z-index-sticky);
+}
+
+.fixed\:top > main {
+	padding-block-start: calc(var(#{$prefix}-header-height) + var(#{$prefix}-header-margin));
+}

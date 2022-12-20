@@ -1,6 +1,7 @@
 nav {
 	display: flex;
 	justify-content: center;
+	padding: var(#{$prefix}-current-size);
 }
 
 nav > ul {
@@ -14,11 +15,15 @@ nav > ul {
 	position: relative;
 	padding: 0;
 	margin: 0;
-	height: var(#{$prefix}-s3);
+	height: var(#{$prefix}-header-height);
 	display: flex;
 	align-items: center;
 	list-style: none;
 	background-size: contain;
+}
+
+.header-app > nav {
+	padding: 0;
 }
 
 .header-app > nav li {
@@ -43,10 +48,7 @@ nav > ul {
 	align-items: center;
 	padding: 0 1em;
 	color: inherit;
-	// font-weight: 700;
-	// font-size: 0.8rem;
 	text-transform: uppercase;
-	// letter-spacing: 0.1em;
 	text-decoration: none;
 	transition: color 0.2s linear;
 }

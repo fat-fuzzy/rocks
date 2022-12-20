@@ -34,7 +34,7 @@
 </header>
 
 <Sidebar>
-	<div slot="side" class="sticky">
+	<div slot="side">
 		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
 	</div>
 	<div slot="main" class="l-stack">

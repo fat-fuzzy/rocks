@@ -224,12 +224,19 @@ $layout: (
 	sidebar-width-xl: 35rem,
 	sidebar-width-xxl: 40rem,
 	//
+	header-height: var(#{$prefix}-s3),
+	header-margin: calc(var(#{$prefix}-gap) / 2),
+	// footer height = font-size * line-height + 2 * padding
+	footer-height:
+		calc(var(#{$prefix}-font-size-body) * var(#{$prefix}-ratio) + 2 * var(#{$prefix}-size-sm)),
+	//
 	radius-nul: 0,
 	radius-base: 3px,
 	radius-lg: 5px,
 	//
 	border-width: 1px,
 	z-index-reveal: 1,
+	z-index-sticky: 2,
 	outline-offset: 0.25rem,
 	outline-width: 2px,
 	prev-offset-limit: calc(calc(var(#{$prefix}-outline-offset) + var(#{$prefix}-outline-width))),

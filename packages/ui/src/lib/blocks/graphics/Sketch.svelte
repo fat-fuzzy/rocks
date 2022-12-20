@@ -38,7 +38,7 @@
 	// TODO clean gl data when switching animations
 </script>
 
-<article class="l-sidebar">
+<article class="l-sidebar l-center">
 	<div class="l-main">
 		<div
 			class={`l-frame ${dimensions} ${layer}`}
@@ -51,8 +51,7 @@
 		</div>
 		<Player {sketch} {canvas} />
 	</div>
-	<aside class="l-side l-stack sm">
-		<h2>{title}</h2>
+	<aside class="l-side l-stack xs">
 		<Button id="btn-details" {variant} onClick={() => toggleDetails()}>
 			{showDetails ? '👇' : '👉'} Details
 		</Button>

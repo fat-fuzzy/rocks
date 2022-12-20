@@ -4,21 +4,23 @@
 	import SubNav from '$blocks/navs/SubNav.svelte'
 
 	$: items = $page.data.sketches
+	$: title = $page.data.title
 </script>
 
 <svelte:head>
 	<title>FatFuzzy Doc | UI</title>
 	<meta name="description" content="Fat Fuzzy Doc - UI Library stories" />
 </svelte:head>
-<header class="header-page">
-	<h1>👾 Play</h1>
-</header>
 
 <Sidebar size="xs">
+	<svelte:fragment slot="main">
+		<header class="header-page">
+			<h1>👾 Play&nbsp;</h1>
+			<h2>❤︎&nbsp;&nbsp;{title}</h2>
+		</header>
+		<slot />
+	</svelte:fragment>
 	<svelte:fragment slot="side">
 		<SubNav {items} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
-	</svelte:fragment>
-	<svelte:fragment slot="main">
-		<slot />
 	</svelte:fragment>
 </Sidebar>

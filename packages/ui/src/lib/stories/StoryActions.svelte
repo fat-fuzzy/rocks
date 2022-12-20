@@ -45,14 +45,7 @@
 
 <h3>{title}</h3>
 
-<Sidebar>
-	<svelte:fragment slot="main">
-		<slot name="component">
-			{#if component}
-				<svelte:component this={component} {...componentProps} />
-			{/if}
-		</slot>
-	</svelte:fragment>
+<Sidebar size="xs">
 	<svelte:fragment slot="side">
 		<form on:submit|preventDefault={handleSubmit} class={`l-${layout} ${size}`}>
 			{#if icons}
@@ -114,7 +107,14 @@
 					</select>
 				</Fieldset>
 			{/if}
-			<button type="submit" class="highlight">Update</button>
+			<!-- <button type="submit" class="highlight">Update</button> -->
 		</form>
+	</svelte:fragment>
+	<svelte:fragment slot="main">
+		<slot name="component">
+			{#if component}
+				<svelte:component this={component} {...componentProps} />
+			{/if}
+		</slot>
 	</svelte:fragment>
 </Sidebar>
