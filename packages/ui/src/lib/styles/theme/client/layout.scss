@@ -1,0 +1,65 @@
+$breakpoints: (
+	bp-xs: 320,
+	bp-sm: 768,
+	bp-md: 992,
+	bp-lg: 1240,
+	bp-xl: 1620,
+);
+
+$layout: (
+	gap: $base-size,
+	//
+	size-nul: 0,
+	size-xxs: var(#{$prefix}-s-5),
+	size-xs: var(#{$prefix}-s-4),
+	size-sm: var(#{$prefix}-s-3),
+	size-md: var(#{$prefix}-s-2),
+	size-lg: var(#{$prefix}-s-1),
+	size-xl: var(#{$prefix}-s0),
+	size-xxl: var(#{$prefix}-s1),
+	//
+	sidebar-width-xxs: 10rem,
+	sidebar-width-xs: 15rem,
+	sidebar-width-sm: 20rem,
+	sidebar-width-md: 25rem,
+	sidebar-width-lg: 30rem,
+	sidebar-width-xl: 35rem,
+	sidebar-width-xxl: 40rem,
+	//
+	header-height: var(#{$prefix}-s3),
+	header-margin: calc(var(#{$prefix}-gap) / 2),
+	// footer height = font-size * line-height + 2 * padding
+	footer-height:
+		calc(var(#{$prefix}-font-size-body) * var(#{$prefix}-ratio) + 2 * var(#{$prefix}-size-sm)),
+	//
+	radius-nul: 0,
+	radius-base: 3px,
+	radius-lg: 5px,
+	//
+	border-width: 1px,
+	z-index-reveal: 1,
+	z-index-sticky: 2,
+	outline-offset: 0.25rem,
+	outline-width: 2px,
+	prev-offset-limit: calc(calc(var(#{$prefix}-outline-offset) + var(#{$prefix}-outline-width))),
+	//
+	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
+	// using shadow-3
+	shadow: #{0 -1px 3px 0 hsl(
+			var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 2%)
+		),
+	0 1px 2px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 7%)),
+	},
+	shadow-light: #{0 -1px 3px 0 hsl(var(#{$prefix}-color-shadow-light) /
+				calc(var(#{$prefix}-shadow-strength) + 2%)),
+	0 1px 2px -5px hsl(var(#{$prefix}-color-shadow-light) / calc(var(#{$prefix}-shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(#{$prefix}-color-shadow-light) / calc(var(#{$prefix}-shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(#{$prefix}-color-shadow-light) /
+				calc(var(#{$prefix}-shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(#{$prefix}-color-shadow-light) /
+				calc(var(#{$prefix}-shadow-strength) + 7%)),
+	},
+);

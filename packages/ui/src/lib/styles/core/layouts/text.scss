@@ -1,14 +1,12 @@
 /**
  * Set max line width for text:
  * - improve readability by using ch units to adapt to user zoom settings
- * Compose with l-center class on the same HTML element:
- * - the l-center class will set a max-width to stop the text content from overflowing its container
  */
 
 .l-text {
 	width: 80ch;
 	padding-block-end: var(#{$prefix}-current-size-plus);
-	max-width: 100%; // width of parent minus base padding
+	max-width: 100%;
 }
 
 .l-text > * + h1,
@@ -32,25 +30,25 @@
 }
 
 .l-text.xs {
-	width: 30ch;
+	width: 35ch;
 }
 
 .l-text.sm {
-	width: 40ch;
-}
-
-.l-text.md {
 	width: 50ch;
 }
 
+.l-text.md {
+	width: 65ch;
+}
+
 .l-text.lg {
-	width: 60ch;
+	width: 80ch;
 }
 
 .l-text.xl {
-	width: 70ch;
+	width: 95ch;
 }
 
 .l-text.xxl {
-	width: 80ch;
+	width: 110ch;
 }
