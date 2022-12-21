@@ -6,8 +6,11 @@ header {
 	align-items: baseline;
 }
 
-.header-app + *,
 .header-page + * {
+	margin-block-start: var(#{$prefix}-current-size);
+}
+
+.header-app + * {
 	margin-block-start: var(#{$prefix}-header-margin);
 }
 
