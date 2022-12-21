@@ -105,7 +105,7 @@
 	$: forgotPassword = $state.matches('forgotPassword')
 	$: showPasswordInput = !resetPassword && !forgotPassword
 	$: resetButtonLabel = forgotPassword ? 'Forgot password' : 'Reset password'
-	$: resetButtonClass = forgotPassword ? 'link' : 'primary'
+	$: resetButtonClass = forgotPassword ? 'bare' : 'primary'
 
 	$: emailInputClass = errEmail ? 'error' : ''
 	$: passwordInputClass = errPassword ? 'error' : ''

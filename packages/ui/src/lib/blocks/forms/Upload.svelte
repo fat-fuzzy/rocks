@@ -8,7 +8,7 @@
 	export let name = 'upload-image'
 	export let hint = 'File types accepted: png, jpeg'
 	export let fileType = 'image/png, image/jpeg'
-	export let variant = 'primary'
+	export let variant = ''
 	export let multiple = true
 </script>
 

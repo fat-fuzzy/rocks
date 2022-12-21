@@ -6,7 +6,7 @@
 	export let layout = 'stack'
 	export let size = ''
 	export let breakpoint = ''
-	export let variant = 'primary'
+	export let variant = ''
 	export let alignment = 'start'
 	export let items: {slug: string; title: string; emoji: string}[] = []
 

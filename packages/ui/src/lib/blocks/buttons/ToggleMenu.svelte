@@ -38,7 +38,7 @@
 <menu class={`l-${layout} ${size}`} role="group">
 	{#each items as { id, title, emoji }}
 		<li>
-			<Button {id} {onClick} variant={id === clickedId ? `alt ${variant}` : variant}>
+			<Button {id} {onClick} {variant}>
 				{formatText(title, emoji)}
 			</Button>
 		</li>

@@ -4,7 +4,7 @@
 	export let layout = 'stack'
 	export let size = ''
 	export let breakpoint = ''
-	export let variant = 'primary'
+	export let variant = ''
 	export let alignment = 'start'
 	let expanded = false
 

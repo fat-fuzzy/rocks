@@ -5,7 +5,7 @@
 	export let layout = 'stack'
 	export let size = ''
 	export let breakpoint = ''
-	export let variant = 'primary'
+	export let variant = ''
 	export let id = 'sub-nav'
 	export let title = 'Sub Nav'
 	export let align = 'start'
