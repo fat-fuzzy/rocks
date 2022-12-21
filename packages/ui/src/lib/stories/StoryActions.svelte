@@ -2,35 +2,20 @@
 	import type {ComponentType} from 'svelte'
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import Sidebar from '../layouts/Sidebar.svelte'
-	type UICOmponentChildren = string | ComponentType | (string | ComponentType)[]
-	type UIComponentProps = {
-		icon?: string
-		size?: string
-		theme?: string
-		variant?: string
-		layout?: string
-	} & {
-		[handler: string]: (event: Event) => unknown
-	}
-	type StoryProps = {
-		icons?: Array<{name: string; asset: SVGElement}>
-		sizes?: Array<string>
-		themes?: Array<string>
-		variants?: Array<string>
-		actions?: Array<string>
-	}
+	import type {UIPropOptions, UIProps, UIChildren} from './ui-options'
 
-	// TODO: figure out if I can deduct types
+	// TODO: figure out if I can deduct props
 	export let title = 'Unnamed Component'
+	export let slug = 'unnamed-component'
 	export let component: ComponentType
-	export let componentProps: UIComponentProps | undefined
-	export let storyProps: StoryProps
-	export let children: UICOmponentChildren
+	export let selected: UIProps
+	export let options: UIPropOptions
+	export let children: UIChildren
 
-	let {icon, size, variant, theme, layout, ...handlers} = componentProps
-	const {icons, sizes, variants, themes, layouts, ...actions} = storyProps
+	const {icons, sizes, variants, themes, layouts, ...actions} = options
+	let {icon, size, variant, theme, layout, ...handlers} = selected
 
-	let selected = [icon, size, variant, theme]
+	let current = [icon, size, variant, theme, layout]
 
 	function handleSubmit(event) {
 		console.log('event')
@@ -40,7 +25,7 @@
 		console.log(...data)
 	}
 
-	$: [selectedIcon, selectedSize, selectedVariant, selectedTheme, selectedLayout] = selected
+	$: [currentIcon, currentSize, currentVariant, currentTheme, currentLayout] = current
 </script>
 
 <h3>{title}</h3>
@@ -53,8 +38,8 @@
 					<label for="select-icon">Select Icon:</label>
 					<select id="select-icon">
 						<option value="">--Please choose an option--</option>
-						{#each icons as { name, asset }}
-							<option id={name} value={name} selected={name === selectedIcon}>{asset}</option>
+						{#each icons.items as { id, value }}
+							<option {id} {value} selected={id === currentIcon}>{value}</option>
 						{/each}
 					</select>
 				</Fieldset>
@@ -64,8 +49,8 @@
 					<label for="select-size">Select Size:</label>
 					<select id="select-size">
 						<option value="">--Please choose an option--</option>
-						{#each sizes as size}
-							<option id={size} value={size} selected={size === selectedSize}>{size}</option>
+						{#each sizes.items as { id, value }}
+							<option {id} {value} selected={id === currentSize}>{value}</option>
 						{/each}
 					</select>
 				</Fieldset>
@@ -75,10 +60,8 @@
 					<label for="select-variant">Select Variant:</label>
 					<select id="select-variant">
 						<option value="">--Please choose an option--</option>
-						{#each variants as variant}
-							<option id={variant} value={variant} selected={variant === selectedVariant}>
-								{variant}
-							</option>
+						{#each variants.items as { id, value }}
+							<option {id} {value} selected={id === currentVariant}>{value}</option>
 						{/each}
 					</select>
 				</Fieldset>
@@ -88,8 +71,8 @@
 					<label for="select-theme">Select Variant:</label>
 					<select id="select-theme">
 						<option value="">--Please choose an option--</option>
-						{#each themes as theme}
-							<option id={theme} value={theme} selected={theme === selectedTheme}>{theme}</option>
+						{#each themes.items as { id, value }}
+							<option {id} {value} selected={id === currentTheme}>{value}</option>
 						{/each}
 					</select>
 				</Fieldset>
@@ -99,10 +82,8 @@
 					<label for="select-theme">Select Variant:</label>
 					<select id="select-theme">
 						<option value="">--Please choose an option--</option>
-						{#each layouts as layout}
-							<option id={layout} value={layout} selected={layout === selectedLayout}>
-								{layout}
-							</option>
+						{#each layouts.items as { id, value }}
+							<option {id} {value} selected={id === currentLayout}>{value}</option>
 						{/each}
 					</select>
 				</Fieldset>
@@ -113,7 +94,7 @@
 	<svelte:fragment slot="main">
 		<slot name="component">
 			{#if component}
-				<svelte:component this={component} {...componentProps} />
+				<svelte:component this={component} {...current} />
 			{/if}
 		</slot>
 	</svelte:fragment>

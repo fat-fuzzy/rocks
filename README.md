@@ -37,17 +37,19 @@ Ideally, this project will:
 ## 🚧 WIP - Testing
 
 - [DOM testing library](https://github.com/testing-library/dom-testing-library)
-- [Playright](https://playwright.dev/)
-- [Cypress](https://www.cypress.io/)
+- [Playright](https://playwright.dev/)(choose one)
+- [Cypress](https://www.cypress.io/)(choose one)
 
 ## 🚧 WIP - Maintenance
 
 - Monorepo
   - [pnpm](https://pnpm.io/)
+  - [Turborepo](https://turbo.build/)
 - Code / Env
   - [commitizen](https://github.com/commitizen/cz-cli)
   - [verdaccio](https://verdaccio.org/)
   - [docker](https://www.docker.com/)
+  - [stylelint](https://stylelint.io/)
 
 ## 🚧 WIP - Licenses
 
