@@ -28,7 +28,7 @@
 		<li aria-current={current(slug)}>
 			<a data-sveltekit-prefetch href={formatHref(slug)}>{formatTitle(title, emoji)}</a>
 			{#if subItems}
-				<svelte:self items={subItems} {path} {layout} {size} {align} />
+				<svelte:self items={subItems} path={formatHref(slug)} {layout} {size} {align} />
 			{/if}
 		</li>
 	{/each}

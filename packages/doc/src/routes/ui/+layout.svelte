@@ -5,21 +5,21 @@
 	const { Nav } = blocks;
 
 	$: components = $page.data.components;
-	$: path = '/ui';
+	$: path = '';
 	$: items = [
 		{
-			slug: '',
+			slug: 'ui',
 			title: 'Library',
 			items: [
 				{
 					slug: 'blocks',
 					title: 'Blocks',
-					items: components.blocks.map((c) => ({ slug: c.toLowerCase(), title: c }))
+					items: components.blocks.map((c) => ({ slug: c, title: c }))
 				},
 				{
 					slug: 'layouts',
 					title: 'Layouts',
-					items: components.layouts.map((c) => ({ slug: c.toLowerCase(), title: c }))
+					items: components.layouts.map((c) => ({ slug: c, title: c }))
 				}
 			]
 		}
