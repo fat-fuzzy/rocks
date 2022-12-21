@@ -4,7 +4,7 @@
 	import type { ComponentType } from 'svelte';
 
 	const { Story } = stories;
-
+	const selected = { size: 'md', variant: 'primary' };
 	let title: string;
 	let components: { [key: string]: ComponentType };
 	$: title = $page.data.title;
@@ -12,21 +12,8 @@
 	$: keys = Object.keys(components);
 </script>
 
-<article>
-	<h1>{title}</h1>
-	{#each keys as key}
-		{@const Component = components[key]}
-		<Story
-			title={key}
-			slug={key.toLowerCase()}
-			componentProps={{ icon: '', size: 'md', theme: 'dark', variant: 'primary' }}
-			storyProps={{
-				icons: [],
-				sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
-				variants: ['outline', 'primary'],
-				themes: ['light', 'dark']
-			}}
-			component={Component}
-		/>
-	{/each}
-</article>
+<h1>Fat Fuzzy {title}</h1>
+{#each keys as key}
+	{@const Component = components[key]}
+	<Story title={key} slug={key.toLowerCase()} component={Component} {selected} />
+{/each}

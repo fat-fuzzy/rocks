@@ -14,7 +14,7 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<a data-sveltekit-prefetch href={`/ui`}><h1>Stories</h1></a><br />
+		<a data-sveltekit-prefetch href={`/ui`}><h1>Library</h1></a><br />
 		<a data-sveltekit-prefetch href={`/ui/blocks`}><h2>Blocks</h2></a><br />
 		{#each components.blocks as block}
 			<a data-sveltekit-prefetch href={`/ui/blocks/${block}`}>{block}</a><br />
@@ -24,7 +24,7 @@
 			<a data-sveltekit-prefetch href={`/ui/layouts/${layout}`}>{layout}</a><br />
 		{/each}
 	</svelte:fragment>
-	<svelte:fragment slot="main">
+	<div slot="main" class="l-stack l-text">
 		<slot />
-	</svelte:fragment>
+	</div>
 </Sidebar>

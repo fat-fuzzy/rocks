@@ -4,5 +4,5 @@
 </script>
 
 {#each decisions as { meta, path }}
-	<a class="font-size:xxl" href={path}>{meta.title}</a>
+	<a class="font:xxl" href={path}>{meta.title}</a>
 {/each}
