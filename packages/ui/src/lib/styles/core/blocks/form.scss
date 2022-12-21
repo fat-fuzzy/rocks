@@ -15,7 +15,6 @@ legend {
 }
 
 input,
-button,
 select,
 textarea {
 	border: 1px solid var(#{$prefix}-color-gray-1);
@@ -44,7 +43,6 @@ textarea {
 	}
 
 	input,
-	// button,
 	select,
 	textarea {
 		font-size: var(#{$prefix}-font-size-xs);
@@ -93,7 +91,6 @@ textarea {
 	}
 
 	input,
-	// button,
 	select,
 	textarea {
 		font-size: var(#{$prefix}-font-size-sm);
@@ -130,7 +127,6 @@ textarea {
 	}
 
 	input,
-	// button,
 	select,
 	textarea {
 		font-size: var(#{$prefix}-font-size-md);
@@ -204,7 +200,6 @@ textarea {
 	}
 
 	input,
-	// button,
 	select,
 	textarea {
 		font-size: var(#{$prefix}-font-size-xl);

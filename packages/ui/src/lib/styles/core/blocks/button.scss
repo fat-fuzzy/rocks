@@ -4,14 +4,14 @@ button {
 	font-family: var(#{$prefix}-font-family-ui);
 	font-weight: var(#{$prefix}-font-weight-ui);
 	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
+	border-radius: var(#{$prefix}-radius-base);
 }
 
 //== Button default colors
-
 button {
 	color: currentColor;
 	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-color);
+	border: 1px solid var(#{$prefix}-current-gray);
 }
 
 button:not(:disabled):hover {
@@ -25,6 +25,7 @@ button:not(:disabled):focus {
 }
 
 button:not(:disabled):active {
+	color: var(#{$prefix}-color-light);
 	background-color: var(#{$prefix}-color-gray-4);
 }
 
@@ -39,7 +40,7 @@ button:not(:disabled):hover {
 
 //== Button theme colors
 
-button {
+.primary {
 	color: var(#{$prefix}-current-color-alt);
 	border-color: var(#{$prefix}-current-primary);
 	background-color: var(#{$prefix}-current-primary);
