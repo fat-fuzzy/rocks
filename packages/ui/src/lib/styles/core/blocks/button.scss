@@ -1,69 +1,143 @@
 button {
 	width: auto;
+	font-size: var(#{$prefix}-font-size-ui);
+	font-family: var(#{$prefix}-font-family-ui);
 	font-weight: var(#{$prefix}-font-weight-ui);
-	color: var(#{$prefix}-font-color-body);
-	background-color: var(#{$prefix}-color-light);
 	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 }
 
-button:disabled {
-	color: var(#{$prefix}-color-gray-3);
+//== Button default colors
+
+button {
+	color: currentColor;
+	background-color: var(#{$prefix}-current-bg-color);
+	border-color: var(#{$prefix}-current-color);
+}
+
+button:not(:disabled):hover {
+	background-color: var(#{$prefix}-color-gray-2);
+}
+
+//== All  colors
+button:not(:disabled):focus {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-white);
 }
 
 button:not(:disabled):active {
-	color: var(#{$prefix}-font-color-body);
-	background-color: var(#{$prefix}-color-light);
+	background-color: var(#{$prefix}-color-gray-4);
 }
 
-.primary,
-.outline.alt {
+button:disabled {
+	color: var(#{$prefix}-color-gray-4);
+	background-color: var(#{$prefix}-color-gray-1);
+}
+
+button:not(:disabled):hover {
+	cursor: pointer;
+}
+
+//== Button theme colors
+
+button {
 	color: var(#{$prefix}-current-color-alt);
 	border-color: var(#{$prefix}-current-primary);
 	background-color: var(#{$prefix}-current-primary);
 }
-.outline,
-.primary.alt {
+.outline {
 	color: currentColor;
 	background-color: var(#{$prefix}-current-bg-color);
 	border-color: var(#{$prefix}-current-primary);
 }
+.outline:not(:disabled):hover,
+.primary:not(:disabled):hover {
+	background-color: var(#{$prefix}-color-primary-lighter);
+}
+.primary:not(:disabled):active,
+.outline:not(:disabled):active {
+	background-color: var(#{$prefix}-current-primary-light);
+}
 
+//== Accent  color
 .accent {
+	color: var(#{$prefix}-color-light);
 	border-color: var(#{$prefix}-current-accent);
 	background-color: var(#{$prefix}-current-accent);
-	color: var(#{$prefix}-color-light);
+	outline-color: var(#{$prefix}-current-accent);
 }
-
-.outline.accent,
-.accent.alt {
+.outline.accent {
 	border-color: var(#{$prefix}-current-accent);
 }
+.accent:not(:disabled):hover,
+.outline.accent:not(:disabled):hover {
+	background-color: var(#{$prefix}-color-accent-lighter);
+}
+.accent:not(:disabled):active,
+.outline.accent:not(:disabled):active {
+	background-color: var(#{$prefix}-color-accent-light);
+}
+
+//== Highlight  color
 
 .highlight {
 	border-color: var(#{$prefix}-current-highlight);
 	background-color: var(#{$prefix}-current-highlight);
 	color: var(#{$prefix}-color-dark);
+	outline-color: var(#{$prefix}-current-highlight);
 }
-
-.outline.highlight,
-.highlight.alt {
+.outline.highlight {
 	border-color: var(#{$prefix}-current-highlight);
 }
+.highlight:not(:disabled):hover,
+.outline.highlight:not(:disabled):hover {
+	background-color: var(#{$prefix}-color-highlight-lighter);
+}
+.highlight:not(:disabled):active,
+.outline.highlight:not(:disabled):active {
+	background-color: var(#{$prefix}-color-highlight-light);
+}
 
-.primary:disabled,
-.outline:disabled {
+//== All  colors
+.primary:not(:disabled):focus,
+.outline:not(:disabled):focus,
+.accent:not(:disabled):focus,
+.highlight:not(:disabled):focus {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-white);
+}
+
+button:disabled {
+	color: currentColor;
 	background-color: var(#{$prefix}-current-gray);
 }
 
-.link {
-	padding: 0 var(#{$prefix}-current-size);
-	border: none;
+//== Bare buttons (no background, no border)
+
+.bare {
+	font-size: var(#{$prefix}-font-size-ui);
+	font-family: var(#{$prefix}-font-family-ui);
+	font-weight: var(#{$prefix}-font-weight-ui);
+	color: var(#{$prefix}-current-primary);
 	background-color: transparent;
-	color: var(#{$prefix}-color-primary);
+	border: none;
+	padding: 0 var(#{$prefix}-current-size);
 }
 
-// == Size button in relation to container
-// TODO: check container queries for this
+.bare:hover {
+	text-decoration: underline;
+}
+
+//== Alignment
+
+.start > button {
+	text-align: start;
+}
+.end > button {
+	text-align: end;
+}
+
+// == Button sizes according to context
+// TODO: check container queries for this / fix: use current-font-size
 .xxs button,
 .xs button {
 	font-size: var(#{$prefix}-font-size-xs);
@@ -86,7 +160,7 @@ button:not(:disabled):active {
 	font-size: var(#{$prefix}-font-size-xl);
 }
 
-// == Override button size in relation to container (CSS rules above) on a per-button basis
+// == Override button size according to context (CSS rules above) on a per-button basis
 button.xxs,
 button.xs {
 	font-size: var(#{$prefix}-font-size-xs);
@@ -107,13 +181,4 @@ button.lg {
 button.xxl,
 button.xl {
 	font-size: var(#{$prefix}-font-size-xl);
-}
-
-//== Alignment
-
-.start > button {
-	text-align: start;
-}
-.end > button {
-	text-align: end;
 }

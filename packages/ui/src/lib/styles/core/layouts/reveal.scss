@@ -51,7 +51,7 @@
 		height: auto;
 		margin: unset;
 		overflow: hidden;
-		padding: unset;
+		padding: var(#{$prefix}-current-size);
 		position: unset;
 		width: auto;
 		white-space: normal;

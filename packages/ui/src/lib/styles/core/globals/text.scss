@@ -1,27 +1,68 @@
-.font-size\:base {
+h1,
+h2,
+h3 {
+	line-height: 1.2;
+}
+
+h1 {
+	font-size: var(#{$prefix}-font-size-h1);
+	font-family: var(#{$prefix}-font-family-h1);
+	font-weight: var(#{$prefix}-font-weight-h1);
+}
+h2 {
+	font-size: var(#{$prefix}-font-size-h2);
+	font-family: var(#{$prefix}-font-family-h2);
+	font-weight: var(#{$prefix}-font-weight-h2);
+}
+h3 {
+	font-size: var(#{$prefix}-font-size-h3);
+	font-family: var(#{$prefix}-font-family-h3);
+	font-weight: var(#{$prefix}-font-weight-h3);
+}
+h4 {
+	font-size: var(#{$prefix}-font-size-h4);
+	font-family: var(#{$prefix}-font-family-h4);
+	font-weight: var(#{$prefix}-font-weight-h4);
+}
+h5 {
+	font-size: var(#{$prefix}-font-size-h5);
+	font-family: var(#{$prefix}-font-family-h5);
+	font-weight: var(#{$prefix}-font-weight-h5);
+}
+
+.font\:base {
 	font-size: var(#{$prefix}-fluid-0);
 }
 
-.font-size\:xs {
+.font\:xs {
 	font-size: var(#{$prefix}-font-size-xs);
 }
 
-.font-size\:sm {
+.font\:sm {
 	font-size: var(#{$prefix}-font-size-sm);
 }
 
-.font-size\:md {
+.font\:md {
 	font-size: var(#{$prefix}-font-size-md);
 }
 
-.font-size\:lg {
+.font\:lg {
 	font-size: var(#{$prefix}-font-size-lg);
 }
 
-.font-size\:xl {
+.font\:xl {
 	font-size: var(#{$prefix}-font-size-xl);
 }
 
-.font-size\:xxl {
+.font\:xxl {
 	font-size: var(#{$prefix}-font-size-xxl);
+}
+
+pre {
+	font-family: var(#{$prefix}-font-family-code);
+	padding: var(#{$prefix}-current-size-plus);
+	margin: var(#{$prefix}-current-size-plus) 0;
+	border-radius: var(#{$prefix}-radius-base);
+	background-color: var(#{$prefix}-color-gray-5);
+	overflow: auto;
 }

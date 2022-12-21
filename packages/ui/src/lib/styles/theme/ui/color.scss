@@ -23,4 +23,13 @@ $colors: (
 	'color-shadow-light': 220 80% 80%,
 	'color-shadow': 220 3% 15%,
 	'shadow-strength': 1%,
+	// Button colors
+	'color-ui': var(#{$prefix}-color-dark),
+	'color-ui-bg': var(#{$prefix}-color-gray-1),
+	'color-ui-bg-hover': var(#{$prefix}-color-gray-1),
+	'color-ui-bg-focus': var(#{$prefix}-color-gray-2),
+	'color-ui-active': var(#{$prefix}-color-light),
+	'color-ui-bg-active': var(#{$prefix}-color-gray-3),
+	'color-ui-disabled': var(#{$prefix}-color-gray5),
+	'color-ui-bg-disabled': var(#{$prefix}-color-gray-1),
 );

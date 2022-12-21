@@ -6,8 +6,8 @@ nav {
 nav > ul {
 	list-style: none;
 	margin: 0;
-	padding: 0;
 	width: 100%;
+	padding: var(#{$prefix}-current-size);
 }
 
 .header-app > nav > ul {

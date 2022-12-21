@@ -1,9 +1,17 @@
+body {
+	#{$prefix}-current-size: var(#{$prefix}-s0);
+	#{$prefix}-current-size-plus: var(#{$prefix}-s1);
+	#{$prefix}-current-size-side: var(#{$prefix}-sidebar-width-sm);
+	#{$prefix}-current-primary: var(#{$prefix}-color-gray-5);
+}
+
 .light {
 	#{$prefix}-current-bg-color: var(#{$prefix}-color-light);
 	#{$prefix}-current-gray: var(#{$prefix}-color-gray-1);
 	#{$prefix}-current-color: var(#{$prefix}-color-dark);
 	#{$prefix}-current-color-alt: var(#{$prefix}-color-light);
 	#{$prefix}-current-primary: var(#{$prefix}-color-primary);
+	#{$prefix}-current-primary-light: var(#{$prefix}-color-primary-light);
 	#{$prefix}-current-accent: var(#{$prefix}-color-accent);
 	#{$prefix}-current-highlight: var(#{$prefix}-color-highlight); // TODO: Fix
 	#{$prefix}-current-danger: var(#{$prefix}-color-danger);
@@ -17,6 +25,7 @@
 	#{$prefix}-current-color: var(#{$prefix}-color-light);
 	#{$prefix}-current-color-alt: var(#{$prefix}-color-dark);
 	#{$prefix}-current-primary: var(#{$prefix}-color-primary-light);
+	#{$prefix}-current-primary-light: var(#{$prefix}-color-primary);
 	#{$prefix}-current-accent: var(#{$prefix}-color-accent);
 	#{$prefix}-current-highlight: var(#{$prefix}-color-highlight); // TODO: Fix
 	#{$prefix}-current-danger: var(#{$prefix}-color-danger-light);
@@ -26,23 +35,6 @@
 }
 
 //== Primary / Accent / Highlight colors: Links, buttons & utility class
-
-button:not(.link) {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-color);
-}
-
-.link {
-	color: var(#{$prefix}-current-primary);
-}
-
-button,
-button.outline.alt {
-	color: var(#{$prefix}-current-color-alt);
-	background-color: currentColor;
-	border-color: currentColor;
-}
 
 .outline,
 button.alt {

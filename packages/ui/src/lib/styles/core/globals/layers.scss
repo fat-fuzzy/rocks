@@ -5,3 +5,7 @@
 .box {
 	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
 }
+
+.offset {
+	background-color: var(#{$prefix}-color-white);
+}
