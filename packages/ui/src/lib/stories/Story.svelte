@@ -24,7 +24,7 @@
 	}
 </script>
 
-<article class="card box">
+<article class="l-text">
 	<h3 id={slug}>{title}</h3>
 
 	<Sidebar size="xs" placement="end">
