@@ -17,9 +17,8 @@
 	let programInfo
 	// Canvas
 	let showDetails = true
-	let variant = 'outline'
 
-	$: variant = $theme ? `${variant} accent` : `${variant} highlight` // TODO:  fix this in css
+	$: variant = $theme === 1 ? 'outline accent' : 'outline highlight' // TODO:  fix this
 
 	function toggleDetails() {
 		showDetails = !showDetails
