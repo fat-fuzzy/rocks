@@ -12,7 +12,7 @@
 	$: keys = Object.keys(components);
 </script>
 
-<h1>Fat Fuzzy {title}</h1>
+<h1>{title}</h1>
 {#each keys as key}
 	{@const Component = components[key]}
 	<Story title={key} slug={key.toLowerCase()} component={Component} {selected} />

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {page} from '$app/stores'
 	import type {ComponentType} from 'svelte'
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import Sidebar from '../layouts/Sidebar.svelte'
@@ -24,16 +25,18 @@
 	}
 </script>
 
-<article class="l-text">
-	<h3 id={slug}>{title}</h3>
+<article class="l-stack">
+	{#if $page.params.component === slug}
+		<h1 id={slug}>{title}</h1>
+	{:else}
+		<h2 id={slug}>{title}</h2>
+	{/if}
 
 	<Sidebar size="xs" placement="end">
 		<svelte:fragment slot="main">
-			<slot name="component">
-				{#if component}
-					<svelte:component this={component} {...current} />
-				{/if}
-			</slot>
+			{#if component}
+				<svelte:component this={component} {...current} />
+			{/if}
 		</svelte:fragment>
 		<svelte:fragment slot="side">
 			{#if showOptions}
