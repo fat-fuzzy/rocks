@@ -11,6 +11,7 @@
 // TODO: not sure this rule is necessary
 .l-sidebar.end {
 	flex-direction: row-reverse;
+	flex-wrap: wrap-reverse;
 }
 
 .l-main {

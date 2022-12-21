@@ -1,3 +1,7 @@
 .layer {
 	box-shadow: var(#{$prefix}-shadow);
 }
+
+.box {
+	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
+}

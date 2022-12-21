@@ -21,25 +21,5 @@
 }
 
 .l-stack > * + * {
-	margin-block-start: var(#{$prefix}-size-xs);
-}
-
-.l-stack.xs > * + * {
-	margin-block-start: var(#{$prefix}-size-xs);
-}
-
-.l-stack.sm > * + * {
-	margin-block-start: var(#{$prefix}-size-sm);
-}
-
-.l-stack.md > * + * {
-	margin-block-start: var(#{$prefix}-size-md);
-}
-
-.l-stack.lg > * + * {
-	margin-block-start: var(#{$prefix}-size-lg);
-}
-
-.l-stack.xl > * + * {
-	margin-block-start: var(#{$prefix}-size-xl);
+	margin-block-start: var(#{$prefix}-current-size);
 }
