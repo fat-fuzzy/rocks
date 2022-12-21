@@ -39,7 +39,7 @@
 	}
 </script>
 
-<article class="card layer">
+<article class="card box">
 	<h3 id={slug}>{title}</h3>
 
 	<Sidebar size="xs" placement="end">

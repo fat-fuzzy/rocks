@@ -45,7 +45,7 @@
 
 <h3>{title}</h3>
 
-<Sidebar size="xs">
+<Sidebar size="xs" placement="end">
 	<svelte:fragment slot="side">
 		<form on:submit|preventDefault={handleSubmit} class={`l-${layout} ${size}`}>
 			{#if icons}
