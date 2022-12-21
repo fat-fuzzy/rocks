@@ -6,7 +6,7 @@
 	export let align = 'start'
 	export let show = ''
 	export let id = ''
-	export let items: {slug: string; title: string; emoji?: string}[] = [
+	export let items: {slug: string; title: string; emoji?: string; items?: []}[] = [
 		{slug: '', title: 'Home'},
 		{slug: 'about', title: 'About'},
 	]
@@ -22,9 +22,14 @@
 </script>
 
 <ul {id} class={`l-${layout} ${size} ${align} ${show}`}>
-	{#each items as { slug, title, emoji }}
+	{#each items as item}
+		{@const {slug, title, emoji} = item}
+		{@const subItems = item.items}
 		<li aria-current={current(slug)}>
-			<a href={formatHref(slug)}>{formatTitle(title, emoji)}</a>
+			<a data-sveltekit-prefetch href={formatHref(slug)}>{formatTitle(title, emoji)}</a>
+			{#if subItems}
+				<svelte:self items={subItems} {path} {layout} {size} {align} />
+			{/if}
 		</li>
 	{/each}
 </ul>
