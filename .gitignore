@@ -1,5 +1,6 @@
 # Default Sapper
 .DS_Store
+**/.DS_Store
 /node_modules/
 /src/node_modules/@sapper/
 yarn-error.log
@@ -67,6 +68,12 @@ typings/
 .env
 .env.test
 
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
@@ -120,7 +127,3 @@ Temporary Items
 
 ## Cyrpess
 /cypress/videos/
-
-## Fuzzy Playground
-
-_doc
