@@ -10,6 +10,16 @@ nav ul {
 	padding: 0;
 }
 
+//= Keep nav links to one line with ellipsis
+nav li {
+	width: 100%;
+	max-width: var(#{$prefix}-current-side-size);
+	padding-inline-end: 1ch;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 nav li a {
 	text-decoration: none;
 }
@@ -80,6 +90,8 @@ ul.depth-0 > li > a {
 .header-app > nav li {
 	position: relative;
 	height: 100%;
+	padding-inline-end: unset; // override settings for ellipsis (search CSS comments for 'ellipsis' for reference)
+	overflow: initial; // override settings for ellipsis
 }
 
 .header-app > nav li[aria-current='page'] a {
