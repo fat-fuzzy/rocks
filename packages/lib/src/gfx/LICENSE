@@ -1,16 +1,8 @@
-### Licence
+# Licence
 
-## Notes on WebGL Fundamentals tutorials
+Some of the files in the `sketches` folder contain code examples, notes or libraries taken from the following website: https://webglfundamentals.org
 
-The files in this folder contain mostly code examples, notes or libraries taken from the following website:
-
-https://webglfundamentals.org
-
-If you're looking for information on WebGL, and you haven't yet visited that site, I recommend you go there first.
-
----
-
-The code examples in https://webglfundamentals.org, used here with modifications, contain the following Copyright notice:
+The code examples in https://webglfundamentals.org, used here with some modifications, contain the following Copyright notice:
 
 Copyright 2012, Gregg Tavares.
 

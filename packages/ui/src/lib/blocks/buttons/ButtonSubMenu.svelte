@@ -5,7 +5,8 @@
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
 	export let size = ''
-	export let variant = 'primary'
+	export let breakpoint = ''
+	export let variant = ''
 	export let alignment = 'start'
 	export let items: {slug: string; title: string; emoji: string}[] = []
 
@@ -36,7 +37,11 @@
 	$: show = expanded ? 'show' : 'hide'
 </script>
 
-<menu class={`l-reveal l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
+<menu
+	class={`l-reveal l-${layout} ${size} ${breakpoint}`}
+	use:clickOutside
+	on:clickOutside={handleClickOutside}
+>
 	<button
 		type="button"
 		class={`toggle collapse  ${size} ${variant}`}

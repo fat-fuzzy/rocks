@@ -1,0 +1,34 @@
+.l-sidebar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(#{$prefix}-gap);
+}
+
+/* NOTE: The following declaration assume that the markup declares .main before .side */
+.l-sidebar.start {
+	flex-direction: row;
+}
+// TODO: not sure this rule is necessary
+.l-sidebar.end {
+	flex-direction: row-reverse;
+	flex-wrap: wrap-reverse;
+}
+
+.l-main {
+	flex-basis: 0;
+	flex-grow: 999;
+	// ~ min-width in horizontal-tb writing mode: if (width < 70%) -> wrap
+	min-inline-size: 70%;
+	gap: var(#{$prefix}-gap);
+}
+
+// adjusts to width of contents
+.l-side {
+	flex-grow: 1;
+	flex-basis: var(#{$prefix}-current-side-size);
+}
+
+// adjusts to width of sibling (main)
+.l-side.shrink {
+	flex-grow: 0;
+}

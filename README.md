@@ -29,7 +29,7 @@ Ideally, this project will:
   - new ideas and foundational decisions (architecture, tech, etc)
   - setup capabilities (back, front, design, etc)
 - **lib** Libraries unrelated to building an interface or accessing backend resources (logic and experiments)
-  - 👾 gl - everything related to working with webgl
+  - 👾 gfx - everything related to working with webgl
   - 🤖 state machines
   - ➕ maths
 - **resources** Backend resources (database, auth, storage, etc)
@@ -37,17 +37,19 @@ Ideally, this project will:
 ## 🚧 WIP - Testing
 
 - [DOM testing library](https://github.com/testing-library/dom-testing-library)
-- [Playright](https://playwright.dev/)
-- [Cypress](https://www.cypress.io/)
+- [Playright](https://playwright.dev/)(choose one)
+- [Cypress](https://www.cypress.io/)(choose one)
 
 ## 🚧 WIP - Maintenance
 
 - Monorepo
   - [pnpm](https://pnpm.io/)
+  - [Turborepo](https://turbo.build/)
 - Code / Env
   - [commitizen](https://github.com/commitizen/cz-cli)
   - [verdaccio](https://verdaccio.org/)
   - [docker](https://www.docker.com/)
+  - [stylelint](https://stylelint.io/)
 
 ## 🚧 WIP - Licenses
 
@@ -72,7 +74,7 @@ Ideally, this project will:
 
 #### lib
 
-- 👾 gl - everything related to working with webgl
+- 👾 gfx - everything related to working with webgl
   - [MDN WebGL API Doc](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   - [WebGL Fundamentals](https://webglfundamentals.org/)
   - [WebGL Fundamentals - 2](https://webgl2fundamentals.org/)
@@ -90,3 +92,56 @@ Ideally, this project will:
   - [Statecharts Doc](https://statecharts.dev/)
 - ➕ maths
   - [minimath](https://github.com/patiboh/minimath)
+
+## 🚧 LICENSES
+
+This repository uses the following license:
+
+Apache-2.0
+
+The packages, folders and files it contains may have different licenses:
+
+MIT
+Apache-2.0
+Custom licenses
+
+## 🚧 Getting started
+
+## Docker
+
+### App image
+
+Ex. static doc site
+
+Build
+
+```
+ docker build -t rocks-image .
+```
+
+Run app on port 8080
+
+```
+docker run -t -p 8080:80 rocks-image
+```
+
+Debug:
+
+1. Remove code until it builds, then see what is inside image using shell:
+
+```
+docker run -it rocks-image sh
+```
+
+1. See what the output of turbo is:
+
+```
+ pnpm turbo prune --scope="packagename" --docker
+```
+
+TODO: Or with docker-compose
+
+```
+docker-compose build rocks-image
+docker-compose up -d rocks-image
+```

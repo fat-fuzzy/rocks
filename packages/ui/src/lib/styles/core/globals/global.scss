@@ -1,0 +1,47 @@
+// Global CSS starts
+
+:root {
+	font-family: var(#{$prefix}-font-family-body);
+}
+
+body {
+	#{$prefix}-current-size: var(#{$prefix}-s0);
+	#{$prefix}-current-size-plus: var(#{$prefix}-s1);
+	#{$prefix}-current-size-side: var(#{$prefix}-s0);
+	color: var(#{$prefix}-font-color-body);
+	font-weight: var(#{$prefix}-font-weight-body);
+	line-height: var(#{$prefix}-ratio);
+}
+
+a {
+	color: var(#{$prefix}-current-primary);
+	font-size: var(#{$prefix}-font-size-ui);
+	font-family: var(#{$prefix}-font-family-ui);
+	font-weight: var(#{$prefix}-font-weight-ui);
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+	font-family: var(#{$prefix}-font-family-ui);
+}
+
+th {
+	text-align: left;
+}
+
+:focus {
+	outline: var(#{$prefix}-outline-width) dotted var(#{$prefix}-current-primary);
+	outline-offset: var(#{$prefix}-outline-offset);
+}
+
+// Stretch page // TODO: fix
+body main {
+	min-height: calc(
+		100vh - var(#{$prefix}-header-height) - 2 * var(#{$prefix}-header-margin) -
+			var(#{$prefix}-footer-height)
+	);
+}

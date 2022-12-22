@@ -11,11 +11,11 @@
 	<meta name="description" content="Fat Fuzzy Doc - UI Library stories" />
 </svelte:head>
 
-<Sidebar>
-	<div slot="side" class="sticky">
-		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
-	</div>
-	<div slot="main" class="l-stack">
+<Sidebar size="xs">
+	<svelte:fragment slot="side">
+		<SubNav {items} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
+	</svelte:fragment>
+	<div slot="main" class="l-text">
 		<slot />
 	</div>
 </Sidebar>

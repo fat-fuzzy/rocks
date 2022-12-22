@@ -1,11 +1,28 @@
 {
 	"name": "@fat-fuzzy/mad",
 	"version": "0.0.1",
-	"description": "MAD app starter kit",
+	"private": true,
+	"description": "Fat Fuzzy Rocks",
 	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
 	"author": "Patricia Boh",
-	"license": "Apache-2.0"
+	"license": "Apache-2.0",
+	"scripts": {
+		"build": "turbo run build",
+		"clean": "turbo run clean",
+		"dev": "turbo run dev --parallel",
+		"lint": "turbo run lint",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\""
+	},
+	"devDependencies": {
+		"eslint": "^8.0.0",
+		"eslint-config-custom": "workspace:*",
+		"prettier": "^2.7.1",
+		"prettier-plugin-svelte": "^2.7.0",
+		"turbo": "latest"
+	},
+	"packageManager": "pnpm@7.18.2",
+	"engines": {
+		"node": ">=18.0.0",
+		"npm": ">=9.2.0"
+	}
 }

@@ -1,6 +1,0 @@
-/* Global config */
-@import './theme/ui/variables'; // TODO: find a way to override in client
-@import './config';
-@include theme-main($prefix);
-@import './main';
-@import './theme/ui/pages';

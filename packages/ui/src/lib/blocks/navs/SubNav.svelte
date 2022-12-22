@@ -4,9 +4,11 @@
 
 	export let layout = 'stack'
 	export let size = ''
-	export let variant = 'primary'
+	export let breakpoint = ''
+	export let variant = ''
+	export let path = ''
 	export let id = 'sub-nav'
-	export let title = 'Sun Navigation'
+	export let title = 'Sub Nav'
 	export let align = 'start'
 	export let items: {slug: string; title: string; emoji?: string}[] = []
 
@@ -25,7 +27,7 @@
 
 <nav
 	aria-labelledby={id}
-	class={`l-reveal l-${layout} ${size} sub-nav`}
+	class={`l-reveal l-${layout} ${size} ${breakpoint} sub-nav`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -39,5 +41,5 @@
 	>
 		{title}
 	</button>
-	<LinkList id={`${id}-menu-list`} path="/play" {items} {layout} {size} {align} {show} />
+	<LinkList id={`${id}-menu-list`} {path} {items} {layout} {size} {align} {show} depth={0} />
 </nav>

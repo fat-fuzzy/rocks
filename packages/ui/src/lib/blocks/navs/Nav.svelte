@@ -1,8 +1,8 @@
 <script lang="ts">
 	import LinkList from './LinkList.svelte'
 	export let id = ''
-	export let layout = `stack`
-	export let size = `md`
+	export let layout = 'stack'
+	export let size = ''
 	export let path = ''
 	export let align = 'start'
 	export let items: {slug: string; title: string; emoji?: string}[] = [
@@ -12,5 +12,5 @@
 </script>
 
 <nav {id}>
-	<LinkList {items} {path} {layout} {size} {align} />
+	<LinkList {items} {path} depth={0} {layout} {size} {align} />
 </nav>

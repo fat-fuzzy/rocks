@@ -4,9 +4,10 @@
 	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()
-	export let layout = `stack`
-	export let size = ``
-	export let variant = 'primary'
+	export let layout = 'switcher'
+	export let size = ''
+	export let breakpoint = 'bp:md'
+	export let variant = ''
 
 	export let items: {
 		id: string
@@ -35,10 +36,10 @@
 	}
 </script>
 
-<menu class={`l-${layout} ${size}`} role="group">
+<menu class={`l-${layout} ${size} ${breakpoint}`} role="group">
 	{#each items as { id, title, emoji }}
 		<li>
-			<Button {id} {onClick} variant={id === clickedId ? `alt ${variant}` : variant}>
+			<Button {id} {onClick} {variant}>
 				{formatText(title, emoji)}
 			</Button>
 		</li>
