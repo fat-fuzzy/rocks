@@ -14,8 +14,7 @@ body {
 }
 
 a {
-	color: currentColor;
-	text-decoration: none;
+	color: var(#{$prefix}-current-primary);
 	font-size: var(#{$prefix}-font-size-ui);
 	font-family: var(#{$prefix}-font-family-ui);
 	font-weight: var(#{$prefix}-font-weight-ui);

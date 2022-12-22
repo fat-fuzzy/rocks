@@ -11,7 +11,17 @@ nav ul {
 }
 
 nav li a {
+	text-decoration: none;
+}
+
+nav li a,
+nav li a:visited {
+	color: var(#{$prefix}-current-color);
 	font-weight: var(#{$prefix}-font-weight-medium);
+}
+
+nav a:hover {
+	color: var(#{$prefix}-current-primary);
 }
 
 //== SubNav (tree-like navigation menus)
@@ -50,7 +60,8 @@ ul.depth-0 > li > a {
 	font-weight: var(#{$prefix}-font-weight-semibold);
 }
 
-// Main navigation (in application header)
+//== Main navigation (in application Header)
+// - Change these styles to adapt to design
 .header-app > nav > ul {
 	position: relative;
 	padding: 0;
@@ -71,7 +82,11 @@ ul.depth-0 > li > a {
 	height: 100%;
 }
 
-.header-app > nav li.active::before {
+.header-app > nav li[aria-current='page'] a {
+	color: var(#{$prefix}-current-primary);
+}
+
+.header-app > nav li[aria-current='page']::before {
 	--size: 6px;
 	content: '';
 	width: 0;
@@ -80,6 +95,7 @@ ul.depth-0 > li > a {
 	top: 0;
 	left: calc(50% - var(--size));
 	border: var(--size) solid transparent;
+	border-top: var(--size) solid var(#{$prefix}-current-primary-light);
 }
 
 .header-app > nav a {
@@ -95,4 +111,14 @@ ul.depth-0 > li > a {
 
 .header-app > nav a:focus {
 	outline-offset: 0;
+}
+
+.header-app nav a:hover {
+	color: var(#{$prefix}-current-primary-light);
+}
+
+//== Need to override global <a> hover styles in nav and header <a>
+nav a:hover,
+.header-app a:hover {
+	background-color: initial;
 }

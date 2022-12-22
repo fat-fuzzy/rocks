@@ -19,7 +19,6 @@ header {
 }
 
 .header-app > .l-side {
-	flex-basis: var(#{$prefix}-current-size-side);
 	position: relative;
 	display: flex;
 	justify-content: flex-end;

@@ -114,7 +114,8 @@ button.highlight.outline {
 }
 
 //== Links
-
+// - The styles below are global: for example they will apply to links in text
+// - Links in navs have specific styles (except for hover), see: `styles/core/blocks/nav.scss`
 a,
 .link {
 	color: var(#{$prefix}-current-primary);
@@ -122,20 +123,14 @@ a,
 
 a:visited,
 .link:visited {
-	color: currentColor;
-}
-
-nav a {
-	color: currentColor;
-}
-
-nav a:visited {
-	opacity: 0.9;
+	text-decoration-color: var(#{$prefix}-current-gray);
 }
 
 a:hover,
 .link:hover {
-	color: var(#{$prefix}-current-primary);
+	color: var(#{$prefix}-color-light);
+	background-color: var(#{$prefix}-current-primary);
+	text-decoration-color: var(#{$prefix}-current-primary);
 }
 
 input,
@@ -208,16 +203,4 @@ button.link:disabled {
 
 menu {
 	background-color: inherit;
-}
-
-.header-app > nav a:hover {
-	color: var(#{$prefix}-primary-light); // TODO: Fix
-}
-
-.header-app > nav li.active a {
-	color: var(#{$prefix}-current-primary);
-}
-
-.header-app > nav li.active::before {
-	border-top: var(--size) solid var(#{$prefix}-current-primary);
 }
