@@ -10,7 +10,10 @@
 		{
 			slug: 'decisions',
 			title: 'Decisions',
-			items: decisions.map(({ meta, path }) => ({ slug: path, title: meta.title }))
+			items: decisions.map(({ meta, path }) => ({
+				slug: path,
+				title: `${meta.id} - ${meta.title}`
+			}))
 		}
 	];
 </script>
@@ -22,7 +25,7 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<SubNav title="Fat Fuzzy UI" {items} {path} breakpoint="bp:md" />
+		<SubNav title="Fat Fuzzy Decisions" {items} {path} breakpoint="bp:md" />
 	</svelte:fragment>
 	<div slot="main" class="l-stack l-text">
 		<slot />
