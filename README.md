@@ -104,3 +104,44 @@ The packages, folders and files it contains may have different licenses:
 MIT
 Apache-2.0
 Custom licenses
+
+## 🚧 Getting started
+
+## Docker
+
+### App image
+
+Ex. static doc site
+
+Build
+
+```
+ docker build -t rocks-image .
+```
+
+Run app on port 8080
+
+```
+docker run -t -p 8080:80 rocks-image
+```
+
+Debug:
+
+1. Remove code until it builds, then see what is inside image using shell:
+
+```
+docker run -it rocks-image sh
+```
+
+1. See what the output of turbo is:
+
+```
+ pnpm turbo prune --scope="packagename" --docker
+```
+
+TODO: Or with docker-compose
+
+```
+docker-compose build rocks-image
+docker-compose up -d rocks-image
+```
