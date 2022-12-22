@@ -10,6 +10,11 @@ nav ul {
 	padding: 0;
 }
 
+nav li a {
+	font-weight: var(#{$prefix}-font-weight-medium);
+}
+
+//== SubNav (tree-like navigation menus)
 ul.depth-1 {
 	padding-inline-start: var(#{$prefix}-current-size-plus);
 }
@@ -26,12 +31,26 @@ ul.depth-5 {
 	padding-inline-start: calc(4 * var(#{$prefix}-current-size-plus));
 }
 
+ul[class*='depth-'] * + ul {
+	margin-block-start: var(#{$prefix}-current-size-plus);
+	margin-block-end: var(#{$prefix}-current-size-plus);
+}
+
 // Active Link
 nav li[aria-current='page'] a {
 	color: var(#{$prefix}-current-primary);
-	font-weight: var(#{$prefix}-font-weight-bold); // TODO: fix missing weight
+	font-weight: var(#{$prefix}-font-weight-semibold);
 }
 
+// override Active Link styles for top level link
+.sub-nav button,
+ul.depth-0 > li > a {
+	color: var(#{$prefix}-current-color); // default text color
+	font-family: var(#{$prefix}-font-family-heading);
+	font-weight: var(#{$prefix}-font-weight-semibold);
+}
+
+// Main navigation (in application header)
 .header-app > nav > ul {
 	position: relative;
 	padding: 0;
@@ -76,8 +95,4 @@ nav li[aria-current='page'] a {
 
 .header-app > nav a:focus {
 	outline-offset: 0;
-}
-
-.sub-nav > ul {
-	padding: var(#{$prefix}-current-size);
 }

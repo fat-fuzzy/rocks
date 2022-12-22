@@ -68,7 +68,7 @@ $typography: (
 	font-weight-h5: var(#{$prefix}-font-weight-medium),
 	font-weight-body: var(#{$prefix}-font-weight-medium),
 	font-weight-code: var(#{$prefix}-font-weight-medium),
-	font-weight-ui: var(#{$prefix}-font-weight-bold),
+	font-weight-ui: var(#{$prefix}-font-weight-semibold),
 	// == Font size
 	font-size-h1: var(#{$prefix}-fluid-4),
 	font-size-h2: var(#{$prefix}-fluid-2),
