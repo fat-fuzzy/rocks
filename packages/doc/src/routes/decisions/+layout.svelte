@@ -20,7 +20,7 @@
 	<meta name="description" content="Fat Fuzzy Doc - Log of architectural decisions" />
 </svelte:head>
 
-<Sidebar size="sm">
+<Sidebar size="xs">
 	<svelte:fragment slot="side">
 		<SubNav title="Fat Fuzzy UI" {items} {path} breakpoint="bp:md" />
 	</svelte:fragment>
