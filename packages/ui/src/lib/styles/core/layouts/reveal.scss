@@ -9,7 +9,8 @@
 .l-reveal .toggle.collapse + .show {
 	#{$prefix}-show-top: calc(
 		calc(2 * var(#{$prefix}-prev-offset-limit)) +
-			calc(0.5em + calc(2 * var(#{$prefix}-current-size))) + calc(2 * var(#{$prefix}-border-width))
+			calc(0.5em + calc(2 * var(#{$prefix}-current-size-plus))) +
+			calc(2 * var(#{$prefix}-border-width))
 	);
 	position: absolute;
 	top: var(#{$prefix}-show-top);
@@ -51,7 +52,7 @@
 		height: auto;
 		margin: unset;
 		overflow: hidden;
-		padding: var(#{$prefix}-current-size);
+		padding: var(#{$prefix}-current-size-plus);
 		position: unset;
 		width: auto;
 		white-space: normal;
@@ -76,7 +77,7 @@
 		height: auto;
 		margin: unset;
 		overflow: hidden;
-		padding: var(#{$prefix}-current-size);
+		padding: var(#{$prefix}-current-size-plus);
 		position: unset;
 		width: auto;
 		white-space: normal;
