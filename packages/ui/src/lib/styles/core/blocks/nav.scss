@@ -17,8 +17,7 @@ nav li {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding: var(#{$prefix}-outline-offset) var(#{$prefix}-outline-offset)
-		var(#{$prefix}-outline-offset);
+	padding: var(#{$prefix}-outline-offset);
 	margin-block: 0;
 }
 

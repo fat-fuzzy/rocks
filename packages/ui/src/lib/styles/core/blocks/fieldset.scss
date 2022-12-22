@@ -6,10 +6,6 @@ fieldset {
 	}
 }
 
-// fieldset > * {
-// 	max-width: 100%;
-// }
-
 fieldset.xxs {
 	> * + * {
 		margin-block-start: 0;
