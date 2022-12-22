@@ -1,0 +1,40 @@
+.l-switcher {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(#{$prefix}-gap);
+}
+
+.l-switcher > * {
+	flex-grow: 1;
+	flex-basis: calc((var(--threshold) - 100%) * 999);
+}
+
+.l-switcher.bp\:xxs {
+	gap: calc(var(#{$prefix}-gap) / 2);
+	--threshold: var(#{$prefix}-sidebar-width-xxs);
+}
+
+.l-switcher.bp\:xs {
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-xs);
+}
+
+.l-switcher.bp\:sm {
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-sm);
+}
+
+.l-switcher.bp\:md {
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-md);
+}
+
+.l-switcher.bp\:lg {
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-lg);
+}
+
+.l-switcher.bp\:xl {
+	gap: var(#{$prefix}-gap);
+	--threshold: var(#{$prefix}-sidebar-width-xl);
+}

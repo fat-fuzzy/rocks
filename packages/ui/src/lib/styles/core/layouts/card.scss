@@ -1,0 +1,8 @@
+.card {
+	border-radius: var(#{$prefix}-radius-base);
+	padding: var(#{$prefix}-current-size);
+}
+
+.card.plus {
+	padding: var(#{$prefix}-current-size-plus);
+}

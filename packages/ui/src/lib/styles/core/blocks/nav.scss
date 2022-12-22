@@ -1,0 +1,141 @@
+nav {
+	display: flex;
+	justify-content: center;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	width: 100%;
+	padding: 0;
+}
+
+//= Keep nav links to one line with ellipsis
+nav li {
+	width: 100%;
+	max-width: calc(var(#{$prefix}-current-side-size) - var(#{$prefix}-outline-offset));
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding: var(#{$prefix}-outline-offset);
+	margin-block: 0;
+}
+
+nav li a {
+	text-decoration: none;
+	max-width: 100%;
+	display: inline-block;
+	text-overflow: ellipsis; // TODO: find out why I need to repeat ellipsis in <li> and <a>
+	overflow: hidden;
+	line-height: 1;
+}
+
+nav li a,
+nav li a:visited {
+	color: var(#{$prefix}-current-color);
+	font-weight: var(#{$prefix}-font-weight-medium);
+}
+
+nav a:hover {
+	color: var(#{$prefix}-current-primary);
+}
+
+nav a:focus {
+	outline-offset: var(#{$prefix}-outline-offset-nav);
+}
+
+//== SubNav (tree-like navigation menus)
+ul.depth-1 {
+	padding-inline-start: var(#{$prefix}-current-size-plus);
+}
+
+ul.depth-2 {
+	padding-inline-start: calc(2 * var(#{$prefix}-current-size-plus));
+}
+
+ul.depth-3 {
+	padding-inline-start: calc(3 * var(#{$prefix}-current-size-plus));
+}
+
+ul.depth-4 {
+	padding-inline-start: calc(4 * var(#{$prefix}-current-size-plus));
+}
+
+ul[class*='depth-'] * + ul {
+	margin-block-start: var(#{$prefix}-current-size-plus);
+}
+
+// Active Link
+nav li[aria-current='page'] a {
+	color: var(#{$prefix}-current-primary);
+	font-weight: var(#{$prefix}-font-weight-semibold);
+}
+
+// override Active Link styles for top level link
+.sub-nav button,
+ul.depth-0 > li > a {
+	color: var(#{$prefix}-current-color); // default text color
+	font-family: var(#{$prefix}-font-family-heading);
+	font-weight: var(#{$prefix}-font-weight-semibold);
+}
+
+//== Main navigation (in application Header)
+// - Change these styles to adapt to design
+.header-app > nav > ul {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	height: var(#{$prefix}-header-height);
+	display: flex;
+	align-items: center;
+	list-style: none;
+	background-size: contain;
+}
+
+.header-app > nav {
+	padding: 0;
+}
+
+.header-app > nav li {
+	position: relative;
+	height: 100%;
+	padding-inline-end: unset; // override settings for ellipsis (search CSS comments for 'ellipsis' for reference)
+	overflow: initial; // override settings for ellipsis
+}
+
+.header-app > nav li[aria-current='page'] a {
+	color: var(#{$prefix}-current-primary);
+}
+
+.header-app > nav li[aria-current='page']::before {
+	--size: 6px;
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: calc(50% - var(--size));
+	border: var(--size) solid transparent;
+	border-top: var(--size) solid var(#{$prefix}-current-primary-light);
+}
+
+.header-app > nav a {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	padding: 0 1em;
+	color: inherit;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: color 0.2s linear;
+}
+
+.header-app nav a:hover {
+	color: var(#{$prefix}-current-primary-light);
+}
+
+//== Need to override global <a> hover styles in nav and header <a>
+nav a:hover,
+.header-app a:hover {
+	background-color: initial;
+}

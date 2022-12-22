@@ -2,7 +2,8 @@
 
 ## Raw WebGL - Nick Desaulniers
 
-Src: https://www.youtube.com/embed/H4c8t6myAWU/
+Src: https://www.youtube.com/watch?v=H4c8t6myAWU
+Slides: https://nickdesaulniers.github.io/RawWebGL/#/
 
 A webGL app consists of three types of assets
 

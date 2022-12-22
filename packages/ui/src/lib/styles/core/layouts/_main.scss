@@ -1,0 +1,11 @@
+/* Layout */
+@import './text'; // Use for text content width
+@import './stack'; // Use for stacked column content
+@import './sidebar'; // Use for sidebar layouts = layouts containing two children: "main" and "side"
+@import './switcher'; // Use for items that switch between row and column layout when the container reaches a threshold width
+@import './center'; // Use for main content centering (wide columns with max-width set using: percentage - margin (in em units))
+@import './burrito'; // Use for side content centering (narrow columns with max-width set using sidebar width variables (in ch units))
+@import './frame'; // Use for displaying content with a given aspect ratio
+@import './card'; // Use for displaying self-contained content items
+@import './reveal'; // Use for displaying hidden content with a button action
+@import './composition'; // Use for composing layouts and targeting specific elements

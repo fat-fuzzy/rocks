@@ -3,7 +3,8 @@
 
 	export let layout = 'stack'
 	export let size = ''
-	export let variant = 'primary'
+	export let breakpoint = ''
+	export let variant = ''
 	export let alignment = 'start'
 	let expanded = false
 
@@ -18,7 +19,11 @@
 	$: show = expanded ? 'show' : 'hide'
 </script>
 
-<div class={`l-reveal l-${layout} ${size}`} use:clickOutside on:clickOutside={handleClickOutside}>
+<div
+	class={`l-reveal l-${layout} ${size} ${breakpoint}`}
+	use:clickOutside
+	on:clickOutside={handleClickOutside}
+>
 	<slot name="toggle">
 		<button
 			type="button"

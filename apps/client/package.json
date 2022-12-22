@@ -1,0 +1,36 @@
+{
+	"package": "@fat-fuzzy/client",
+	"name": "@fat-fuzzy/client",
+	"version": "0.0.1",
+	"private": true,
+	"description": "Fat Fuzzy Client (sandbox)",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"test": "playwright test",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"author": "Patricia Boh",
+	"license": "Apache-2.0",
+	"devDependencies": {
+		"@fat-fuzzy/ui": "workspace:*",
+		"@fontsource/fira-mono": "^4.5.10",
+		"@neoconfetti/svelte": "^1.0.0",
+		"@playwright/test": "1.25.0",
+		"@sveltejs/adapter-auto": "latest",
+		"@sveltejs/kit": "latest",
+		"@types/cookie": "^0.5.1",
+		"eslint-config-custom": "workspace:*",
+		"svelte": "^3.54.0",
+		"svelte-check": "^2.10.2",
+		"svelte-preprocess": "^4.10.7",
+		"tslib": "^2.4.1",
+		"typescript": "^4.9.4",
+		"vite": "^4.0.0"
+	},
+	"type": "module"
+}
