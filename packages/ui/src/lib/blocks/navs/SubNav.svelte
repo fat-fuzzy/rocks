@@ -6,6 +6,7 @@
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
+	export let path = ''
 	export let id = 'sub-nav'
 	export let title = 'Sub Nav'
 	export let align = 'start'
@@ -40,5 +41,5 @@
 	>
 		{title}
 	</button>
-	<LinkList id={`${id}-menu-list`} path="/play" {items} {layout} {size} {align} {show} />
+	<LinkList id={`${id}-menu-list`} {path} {items} {layout} {size} {align} {show} depth={0} />
 </nav>

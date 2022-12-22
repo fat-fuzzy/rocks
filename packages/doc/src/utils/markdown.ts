@@ -12,7 +12,7 @@ export const fetchDecisionsFileData = async () => {
 		// TODO: understand this vite functionality
 		iterableMDFiles.map(async ([path, resolver]) => {
 			const { metadata } = await resolver();
-			const filePath = path.slice(10, -3); // removes '/src/data' and '*.md'
+			const filePath = path.slice(20, -3); // removes '/src/data' and '*.md'
 
 			return {
 				meta: metadata,

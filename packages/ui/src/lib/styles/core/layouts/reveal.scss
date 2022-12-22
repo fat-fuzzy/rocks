@@ -40,6 +40,31 @@
 	white-space: nowrap;
 }
 
+@include min-width(bp-sm) {
+	.l-reveal.bp\:sm .toggle.collapse {
+		display: none;
+	}
+
+	.l-reveal.bp\:sm .toggle.collapse + .hide {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: var(#{$prefix}-current-size);
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+
+	.l-reveal.bp\:sm .toggle.collapse + .show {
+		position: unset;
+		width: 100%;
+		max-width: unset;
+		box-shadow: unset;
+	}
+}
+
 @include min-width(bp-md) {
 	.l-reveal.bp\:md .toggle.collapse {
 		display: none;

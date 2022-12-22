@@ -12,5 +12,5 @@
 </script>
 
 <nav {id}>
-	<LinkList {items} {path} {layout} {size} {align} />
+	<LinkList {items} {path} depth={0} {layout} {size} {align} />
 </nav>

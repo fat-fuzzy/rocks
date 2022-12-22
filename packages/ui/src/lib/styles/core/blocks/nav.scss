@@ -3,11 +3,33 @@ nav {
 	justify-content: center;
 }
 
-nav > ul {
+nav ul {
 	list-style: none;
 	margin: 0;
 	width: 100%;
-	padding: var(#{$prefix}-current-size);
+	padding: 0;
+}
+
+ul.depth-1 {
+	padding-inline-start: var(#{$prefix}-current-size-plus);
+}
+
+ul.depth-2 {
+	padding-inline-start: calc(2 * var(#{$prefix}-current-size-plus));
+}
+
+ul.depth-4 {
+	padding-inline-start: calc(3 * var(#{$prefix}-current-size-plus));
+}
+
+ul.depth-5 {
+	padding-inline-start: calc(4 * var(#{$prefix}-current-size-plus));
+}
+
+// Active Link
+nav li[aria-current='page'] a {
+	color: var(#{$prefix}-current-primary);
+	font-weight: var(#{$prefix}-font-weight-bold); // TODO: fix missing weight
 }
 
 .header-app > nav > ul {

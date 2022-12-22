@@ -2,14 +2,14 @@
 	import { page } from '$app/stores';
 	import { blocks, layouts } from '@fat-fuzzy/ui';
 	const { Sidebar } = layouts;
-	const { Nav } = blocks;
+	const { SubNav } = blocks;
 
 	$: components = $page.data.components;
 	$: path = '';
 	$: items = [
 		{
 			slug: 'ui',
-			title: 'Library',
+			title: 'UI Library',
 			items: [
 				{
 					slug: 'blocks',
@@ -24,7 +24,6 @@
 			]
 		}
 	];
-	// TODO: fix links
 </script>
 
 <svelte:head>
@@ -34,7 +33,7 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<Nav {items} {path} />
+		<SubNav title="Fat Fuzzy UI" {items} {path} breakpoint="bp:md" />
 	</svelte:fragment>
 	<div slot="main" class="l-stack l-text">
 		<slot />

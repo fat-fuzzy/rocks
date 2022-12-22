@@ -2,9 +2,17 @@
 	import { page } from '$app/stores';
 	import { blocks, layouts } from '@fat-fuzzy/ui';
 	const { Sidebar } = layouts;
-	const { Menu } = blocks;
+	const { SubNav } = blocks;
 
 	$: decisions = $page.data.decisions;
+	$: path = '';
+	$: items = [
+		{
+			slug: 'decisions',
+			title: 'Decisions',
+			items: decisions.map(({ meta, path }) => ({ slug: path, title: meta.title }))
+		}
+	];
 </script>
 
 <svelte:head>
@@ -12,13 +20,11 @@
 	<meta name="description" content="Fat Fuzzy Doc - Log of architectural decisions" />
 </svelte:head>
 
-<Sidebar size="xs">
-	<div slot="main" class="l-stack">
+<Sidebar size="sm">
+	<svelte:fragment slot="side">
+		<SubNav title="Fat Fuzzy UI" {items} {path} breakpoint="bp:md" />
+	</svelte:fragment>
+	<div slot="main" class="l-stack l-text">
 		<slot />
-	</div>
-	<div slot="side">
-		{#each decisions as { meta, path }}
-			<a data-sveltekit-prefetch href={path}>{meta.title}</a><br />
-		{/each}
 	</div>
 </Sidebar>
