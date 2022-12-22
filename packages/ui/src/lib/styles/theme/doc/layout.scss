@@ -40,6 +40,7 @@ $layout: (
 	z-index-reveal: 1,
 	z-index-sticky: 2,
 	outline-offset: 0.25rem,
+	outline-offset-nav: 0.15rem,
 	outline-width: 2px,
 	prev-offset-limit: calc(calc(var(#{$prefix}-outline-offset) + var(#{$prefix}-outline-width))),
 	//
