@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LinkList from './LinkList.svelte'
 	export let id = ''
-	export let layout = 'stack'
+	export let layout = ''
 	export let size = ''
 	export let path = ''
 	export let align = 'start'

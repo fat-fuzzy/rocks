@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	export let path = ''
-	export let layout = `stack`
-	export let size = `md`
+	export let layout = ''
+	export let size = 'md'
 	export let align = 'start'
 	export let show = ''
 	export let id = ''
