@@ -43,16 +43,16 @@
 	<nav class="l-main l-burrito" aria-label="primary-navigation">
 		<ul>
 			<li class:active={page.url.pathname === '/'} class="home">
-				<a data-sveltekit-prefetch href="/">
+				<a data-sveltekit-preload-data href="/">
 					<span class="l-square" alt="Home">🐣</span>
 					Home
 				</a>
 			</li>
 			<li class:active={page.url.pathname === '/play'}>
-				<a data-sveltekit-prefetch href="/play">Play</a>
+				<a data-sveltekit-preload-data href="/play">Play</a>
 			</li>
 			<li class:active={page.url.pathname === '/machines'}>
-				<a data-sveltekit-prefetch href="/machines">Machines</a>
+				<a data-sveltekit-preload-data href="/machines">Machines</a>
 			</li>
 		</ul>
 	</nav>

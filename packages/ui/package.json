@@ -19,7 +19,7 @@
 	"dependencies": {
 		"@fat-fuzzy/lib": "workspace:*",
 		"@playwright/test": "1.25.0",
-		"@sveltejs/adapter-auto": "latest",
+		"@sveltejs/adapter-static": "latest",
 		"@sveltejs/kit": "latest",
 		"@sveltejs/package": "latest",
 		"@typescript-eslint/eslint-plugin": "^5.46.0",

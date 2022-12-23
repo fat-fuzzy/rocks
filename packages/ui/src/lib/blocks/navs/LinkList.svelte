@@ -27,7 +27,7 @@
 		{@const {slug, title, emoji} = item}
 		{@const subItems = item.items}
 		<li aria-current={current(slug)}>
-			<a data-sveltekit-prefetch href={formatHref(slug)}>{formatTitle(title, emoji)}</a>
+			<a data-sveltekit-preload-data href={formatHref(slug)}>{formatTitle(title, emoji)}</a>
 			{#if subItems}
 				<svelte:self
 					items={subItems}

@@ -1,13 +1,11 @@
 import path from 'path'
-import adapter from '@sveltejs/adapter-auto'
+import adapter from '@sveltejs/adapter-static'
 import preprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter({
-			fallback: 'index.html',
-		}),
+		adapter: adapter(),
 
 		alias: {
 			$layout: path.resolve('./src/lib/layout'),
@@ -22,10 +20,6 @@ const config = {
 		prerender: {
 			crawl: true,
 		},
-	},
-	package: {
-		source: path.resolve('./src/lib'),
-		dir: path.resolve('./package'),
 	},
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
