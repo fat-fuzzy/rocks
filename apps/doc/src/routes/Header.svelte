@@ -11,16 +11,16 @@
 	<nav id="primary-navigation">
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
+				<a data-sveltekit-preload-data href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
+			<li aria-current={$page.url.pathname.startsWith('/about') ? 'page' : undefined}>
+				<a data-sveltekit-preload-data href="/about">About</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/ui') ? 'page' : undefined}>
-				<a href="/ui">UI</a>
+				<a data-sveltekit-preload-data href="/ui">UI</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/decisions') ? 'page' : undefined}>
-				<a href="/decisions">Decisions</a>
+				<a data-sveltekit-preload-data href="/decisions">Decisions</a>
 			</li>
 		</ul>
 	</nav>
