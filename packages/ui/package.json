@@ -22,8 +22,6 @@
 		"@sveltejs/kit": "latest",
 		"@sveltejs/package": "latest",
 		"@xstate/svelte": "0.2.1",
-		"imagemin": "8.0.1",
-		"imagemin-webp": "7.0.0",
 		"postcss": "8.4.12",
 		"postcss-load-config": "4.0.1",
 		"sass": "1.57.0",
