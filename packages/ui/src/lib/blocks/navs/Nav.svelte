@@ -1,6 +1,6 @@
 <script lang="ts">
 	import LinkList from './LinkList.svelte'
-	export let id = ''
+	export let id = 'nav-block'
 	export let layout = ''
 	export let size = ''
 	export let path = ''
@@ -11,6 +11,6 @@
 	]
 </script>
 
-<nav {id}>
+<nav {id} aria-label={id}>
 	<LinkList {items} {path} depth={0} {layout} {size} {align} />
 </nav>

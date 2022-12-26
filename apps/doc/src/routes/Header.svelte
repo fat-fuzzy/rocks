@@ -1,14 +1,14 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
+	import {page} from '$app/stores'
+	import logo from '$lib/images/svelte-logo.svg'
 
 	// TODO: make svg css themeable / fix dark theme
-	import githubLight from '$lib/images/icon-dark-100-optim-github.svg';
-	import github from '$lib/images/icon-dark-100-optim-github.svg';
+	import githubLight from '$lib/images/icon-dark-100-optim-github.svg'
+	import github from '$lib/images/icon-dark-100-optim-github.svg'
 </script>
 
 <header class="header-app l-sidebar layer">
-	<nav>
+	<nav id="primary-navigation">
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>

@@ -5,12 +5,14 @@
 	export let size = 'md'
 	export let align = 'start'
 	export let show = ''
-	export let id = ''
+	export let id = 'list'
 	export let depth = 0
 	export let items: {slug: string; title: string; emoji?: string; items?: []}[] = [
 		{slug: '', title: 'Home'},
 		{slug: 'about', title: 'About'},
 	]
+
+	let layoutClass = layout ? `l-${layout}` : ''
 
 	function formatTitle(title, emoji) {
 		return emoji ? `${emoji} ${title}` : title
@@ -22,7 +24,7 @@
 	$: current = (slug: string) => ($page.url.pathname === formatHref(slug) ? 'page' : undefined)
 </script>
 
-<ul {id} class={`l-${layout} ${size} ${align} ${show} depth-${depth}`}>
+<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${size} ${align} ${show} depth-${depth}`}>
 	{#each items as item}
 		{@const {slug, title, emoji} = item}
 		{@const subItems = item.items}
@@ -32,6 +34,7 @@
 				<svelte:self
 					items={subItems}
 					path={formatHref(slug)}
+					id={`${slug}-${id}`}
 					{layout}
 					{size}
 					{align}

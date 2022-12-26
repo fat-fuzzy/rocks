@@ -40,7 +40,7 @@
 </script>
 
 <header class={mainMenuClass}>
-	<nav class="l-main l-burrito" aria-label="primary-navigation">
+	<nav class="l-main l-burrito" id="primary-navigation">
 		<ul>
 			<li class:active={page.url.pathname === '/'} class="home">
 				<a data-sveltekit-preload-data href="/">
