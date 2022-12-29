@@ -25,9 +25,6 @@ export const fetchSketchesFileData = async () => {
 		iterableMDFiles.map(async ([path, resolver]) => {
 			const {metadata} = await resolver()
 			const filePath = path.slice(10, -5) // removes '/src/data' and '*.md'
-			console.log('path')
-			console.log(path)
-
 			return {
 				path: filePath,
 			}
