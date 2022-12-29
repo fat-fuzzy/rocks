@@ -23,7 +23,7 @@
 	<svelte:fragment slot="side">
 		<SubNav {items} {path} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
 	</svelte:fragment>
-	<div slot="main">
+	<svelte:fragment slot="main">
 		<slot />
-	</div>
+	</svelte:fragment>
 </Sidebar>

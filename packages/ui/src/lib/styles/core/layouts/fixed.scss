@@ -9,5 +9,5 @@
 }
 
 .fixed\:top > main {
-	padding-block-start: calc(var(#{$prefix}-header-height) + var(#{$prefix}-header-margin));
+	padding-block-start: calc(var(#{$prefix}-header-height) + 2 * var(#{$prefix}-header-margin));
 }

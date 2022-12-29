@@ -10,10 +10,6 @@ header {
 	margin-block-start: var(#{$prefix}-current-size);
 }
 
-.header-app + * {
-	margin-block-start: var(#{$prefix}-header-margin);
-}
-
 .header-app > .l-main {
 	min-inline-size: 55%;
 }
