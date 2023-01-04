@@ -5,21 +5,21 @@
  */
 
 export const fetchDecisionsFileData = async () => {
-	const allMDFiles = import.meta.glob('/src/data/decisions/*.md');
-	const iterableMDFiles = Object.entries(allMDFiles);
+	const allMDFiles = import.meta.glob('/src/data/decisions/*.md')
+	const iterableMDFiles = Object.entries(allMDFiles)
 
 	const allData = await Promise.all(
 		// TODO: understand this vite functionality
 		iterableMDFiles.map(async ([path, resolver]) => {
-			const { metadata } = await resolver();
-			const filePath = path.slice(20, -3); // removes '/src/data' and '*.md'
+			const {metadata} = await resolver()
+			const filePath = path.slice(20, -3) // removes '/src/data' and '*.md'
 
 			return {
 				meta: metadata,
-				path: filePath
-			};
-		})
-	);
+				path: filePath,
+			}
+		}),
+	)
 
-	return allData;
-};
+	return allData
+}

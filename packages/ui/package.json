@@ -18,15 +18,10 @@
 	"main": "./src/lib/index.js",
 	"dependencies": {
 		"@fat-fuzzy/lib": "workspace:*",
-		"@playwright/test": "1.25.0",
-		"@sveltejs/adapter-auto": "latest",
+		"@sveltejs/adapter-static": "latest",
 		"@sveltejs/kit": "latest",
 		"@sveltejs/package": "latest",
-		"@typescript-eslint/eslint-plugin": "^5.46.0",
-		"@typescript-eslint/parser": "^5.46.0",
 		"@xstate/svelte": "0.2.1",
-		"imagemin": "8.0.1",
-		"imagemin-webp": "7.0.0",
 		"postcss": "8.4.12",
 		"postcss-load-config": "4.0.1",
 		"sass": "1.57.0",
@@ -40,7 +35,8 @@
 		"xstate": "4.30.6"
 	},
 	"devDependencies": {
-		"eslint-config-custom": "workspace:*"
+		"eslint-config-custom": "workspace:*",
+		"@playwright/test": "1.25.0"
 	},
 	"type": "module"
 }

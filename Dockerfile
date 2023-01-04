@@ -34,30 +34,6 @@ COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 RUN pnpm turbo run build
 
-# FROM node:18-alpine AS runner
-# WORKDIR /app
-
-# # Don't run production as root
-# RUN addgroup --system --gid 1001 nodejs
-# RUN adduser --system --uid 1001 sveltekit
-# USER sveltekit
-
-# # Copy app source
-# COPY --from=installer /app/apps/@fat-fuzzy/doc/svelte.config.js .
-# COPY --from=installer /app/apps/@fat-fuzzy/doc/vite.config.js .
-# COPY --from=installer /app/apps/@fat-fuzzy/doc/tsconfig.json .
-# COPY --from=installer /app/apps/@fat-fuzzy/doc/package.json .
-
-# # Automatically leverage output traces to reduce image size
-# # https://nextjs.org/@fat-fuzzy/doc/advanced-features/output-file-tracing
-
-# COPY --from=installer --chown=sveltekit:nodejs /app/apps/@fat-fuzzy/doc/.svelte-kit .
-# # COPY --from=installer --chown=sveltekit:nodejs /app/apps/@fat-fuzzy/doc/static .
-
-
-# CMD node build/index.js
-
+# Serve
 FROM nginx:1.23.3-alpine
 COPY --from=installer /app/apps/doc/build /usr/share/nginx/html
-
-# COPY --from=installer /app/apps/doc/.svelte-kit/output/prerendered/pages /usr/share/nginx/html

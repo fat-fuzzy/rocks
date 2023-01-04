@@ -1,6 +1,5 @@
 nav {
 	display: flex;
-	justify-content: center;
 }
 
 nav ul {
@@ -90,6 +89,7 @@ ul.depth-0 > li > a {
 	align-items: center;
 	list-style: none;
 	background-size: contain;
+	width: unset;
 }
 
 .header-app > nav {

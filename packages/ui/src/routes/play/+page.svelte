@@ -22,8 +22,9 @@
 	<h1>👾 Play</h1>
 </header>
 
-{#each sketches as sketch}
-	<pre>{sketch.title}</pre>
-{/each}
-
-<Feedback {feedback} show={showFeedback} />
+<div class="l-text">
+	{#each sketches as sketch}
+		<pre>{sketch.title}</pre>
+	{/each}
+	<Feedback {feedback} show={showFeedback} />
+</div>

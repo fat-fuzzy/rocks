@@ -41,7 +41,7 @@ th {
 // Stretch page // TODO: fix
 body main {
 	min-height: calc(
-		100vh - var(#{$prefix}-header-height) - 2 * var(#{$prefix}-header-margin) -
+		100vh - var(#{$prefix}-header-height) - 3 * var(#{$prefix}-header-margin) -
 			var(#{$prefix}-footer-height)
 	);
 }

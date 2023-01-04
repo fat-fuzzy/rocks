@@ -1,26 +1,26 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
+	import {page} from '$app/stores'
+	import logo from '$lib/images/svelte-logo.svg'
 
 	// TODO: make svg css themeable / fix dark theme
-	import githubLight from '$lib/images/icon-dark-100-optim-github.svg';
-	import github from '$lib/images/icon-dark-100-optim-github.svg';
+	import githubLight from '$lib/images/icon-dark-100-optim-github.svg'
+	import github from '$lib/images/icon-dark-100-optim-github.svg'
 </script>
 
 <header class="header-app l-sidebar layer">
-	<nav>
+	<nav id="primary-navigation">
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
+				<a data-sveltekit-preload-data href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
+			<li aria-current={$page.url.pathname.startsWith('/about') ? 'page' : undefined}>
+				<a data-sveltekit-preload-data href="/about">About</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/ui') ? 'page' : undefined}>
-				<a href="/ui">UI</a>
+				<a data-sveltekit-preload-data href="/ui">UI</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/decisions') ? 'page' : undefined}>
-				<a href="/decisions">Decisions</a>
+				<a data-sveltekit-preload-data href="/decisions">Decisions</a>
 			</li>
 		</ul>
 	</nav>

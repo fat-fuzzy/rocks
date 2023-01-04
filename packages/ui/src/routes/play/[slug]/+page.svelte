@@ -19,4 +19,8 @@
 	/>
 </svelte:head>
 
+<header class="header-page">
+	<h1>👾 Play</h1>
+	<h2>&nbsp;❤︎ {title}</h2>
+</header>
 <Sketch {sketch} {title} {dimensions} />

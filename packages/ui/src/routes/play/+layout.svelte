@@ -3,7 +3,15 @@
 	import Sidebar from '$lib/layouts/Sidebar.svelte'
 	import SubNav from '$blocks/navs/SubNav.svelte'
 
-	$: items = $page.data.sketches
+	$: sketches = $page.data.sketches
+	$: path = ''
+	$: items = [
+		{
+			slug: 'play',
+			title: '❤︎ Sketches',
+			items: sketches,
+		},
+	]
 </script>
 
 <svelte:head>
@@ -13,9 +21,9 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<SubNav {items} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
+		<SubNav {items} {path} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
 	</svelte:fragment>
-	<div slot="main" class="l-text">
+	<svelte:fragment slot="main">
 		<slot />
-	</div>
+	</svelte:fragment>
 </Sidebar>

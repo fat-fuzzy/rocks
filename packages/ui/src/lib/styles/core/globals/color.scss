@@ -75,7 +75,7 @@ button.highlight {
 
 .accent.outline,
 button.accent.outline {
-	color: currentColor;
+	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
 	border-color: var(#{$prefix}-current-accent);
 }
@@ -117,20 +117,54 @@ button.highlight.outline {
 // - The styles below are global: for example they will apply to links in text
 // - Links in navs have specific styles (except for hover), see: `styles/core/blocks/nav.scss`
 a,
-.link {
+.bare {
 	color: var(#{$prefix}-current-primary);
 }
 
 a:visited,
-.link:visited {
+.bare:visited {
 	text-decoration-color: var(#{$prefix}-current-gray);
 }
 
 a:hover,
-.link:hover {
+.bare:hover {
 	color: var(#{$prefix}-color-light);
 	background-color: var(#{$prefix}-current-primary);
 	text-decoration-color: var(#{$prefix}-current-primary);
+}
+
+.accent a,
+.accent .bare {
+	color: var(#{$prefix}-current-light);
+}
+
+.accent a:visited,
+.accent .bare:visited {
+	text-decoration-color: var(#{$prefix}-current-gray);
+}
+
+.accent a:hover,
+.accent .bare:hover {
+	color: var(#{$prefix}-color-light);
+	background-color: inherit;
+	text-decoration-color: var(#{$prefix}-current-light);
+}
+
+.highlight a,
+.highlight .bare {
+	color: var(#{$prefix}-current-dark);
+}
+
+.highlight a:visited,
+.highlight .bare:visited {
+	text-decoration-color: var(#{$prefix}-current-gray);
+}
+
+.highlight a:hover,
+.highlight .bare:hover {
+	color: var(#{$prefix}-color-light);
+	background-color: inherit;
+	text-decoration-color: var(#{$prefix}-current-dark);
 }
 
 input,
@@ -152,7 +186,7 @@ button.accent:focus {
 }
 
 button:hover {
-	color: currentColor;
+	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
 }
 
