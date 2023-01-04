@@ -2,7 +2,7 @@
 	import {clickOutside} from '../../utils/click-outside.js'
 	import LinkList from './LinkList.svelte'
 
-	export let layout = 'stack'
+	export let layout = ''
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''

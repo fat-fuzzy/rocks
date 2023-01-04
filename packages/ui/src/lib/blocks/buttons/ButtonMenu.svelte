@@ -36,7 +36,7 @@
 	}
 </script>
 
-<menu class={`l-${layout} ${size} ${breakpoint}`} role="group">
+<menu class={`l-${layout} ${size} ${breakpoint}`}>
 	{#each items as { id, title, emoji }}
 		<li>
 			<Button {id} {onClick} {variant}>

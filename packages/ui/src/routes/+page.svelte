@@ -22,11 +22,11 @@
 	<ul class="l-stack xl" role="group">
 		<li class={`card ${variant}`}>
 			<span>👾</span>
-			<a data-sveltekit-prefetch href="/play"> Play</a>
+			<a data-sveltekit-preload-data href="/play"> Play</a>
 		</li>
 		<li class={`card ${variant}`}>
 			<span>🤖</span>
-			<a data-sveltekit-prefetch href="/machines"> Machines</a>
+			<a data-sveltekit-preload-data href="/machines"> Machines</a>
 		</li>
 	</ul>
 </section>

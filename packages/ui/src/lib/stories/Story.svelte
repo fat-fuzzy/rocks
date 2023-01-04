@@ -27,9 +27,9 @@
 
 <article class="l-stack">
 	{#if $page.params.component === slug}
-		<h1 id={slug}>{title}</h1>
+		<h1>{title}</h1>
 	{:else}
-		<h2 id={slug}>{title}</h2>
+		<h2>{title}</h2>
 	{/if}
 
 	<Sidebar size="xs" placement="end">
