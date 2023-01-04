@@ -1,6 +1,5 @@
 <script>
 	import Toggle from '$blocks/buttons/Toggle.svelte'
-	import SignIn from '$blocks/forms/SignIn.svelte'
 </script>
 
 <svelte:head>
@@ -14,5 +13,4 @@
 
 <form class="l-stack l-burrito md">
 	<Toggle />
-	<SignIn />
 </form>
