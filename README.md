@@ -79,11 +79,14 @@ This repository is organized into two package types following [Turborepo's works
 ### Apps
 
 - **doc** A place for doc-worthy information such as:
+
   - User doc
   - **ui** library doc
   - new ideas and foundational decisions (architecture, tech, etc)
   - setup capabilities (back, front, design, etc)
-    This app is a website that uses and documents the **ui** library package
+
+  This app is a website that uses and documents the **ui** library package
+
 - **client** A frontend application example that uses the **ui** library package
   - WIP
 
