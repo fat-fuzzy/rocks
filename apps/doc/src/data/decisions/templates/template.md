@@ -3,6 +3,7 @@ title: Decision title
 year: 'YYYY'
 slug: decision-title
 id: 'same-as-name-of-file-without-extension'
+tags: ['example', 'doc', 'monorepo']
 ---
 
 - Status: [proposed | rejected | accepted | deprecated | … | superseded by [ADR-0005](0005-example.md)] <!-- optional -->

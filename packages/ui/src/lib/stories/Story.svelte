@@ -25,7 +25,7 @@
 	}
 </script>
 
-<article class="l-stack">
+<article class={`l-stack card ${current.theme}`}>
 	{#if $page.params.component === slug}
 		<h1>{title}</h1>
 	{:else}
@@ -59,7 +59,7 @@
 								<select id="select-size" on:change={(event) => setCurrent(event, 'size')}>
 									<option value="">--Please choose an option--</option>
 									{#each options.size.items as { id, value }}
-										<option {id} {value} selected={id === current.icon}>{value}</option>
+										<option {id} {value} selected={id === current.size}>{value}</option>
 									{/each}
 								</select>
 							</Fieldset>
@@ -77,22 +77,22 @@
 						{/if}
 						{#if options.theme}
 							<Fieldset slug="field-select-theme" legend="Theme">
-								<label for="select-theme">Select Variant:</label>
+								<label for="select-theme">Select Theme:</label>
 								<select id="select-theme" on:change={(event) => setCurrent(event, 'theme')}>
 									<option value="">--Please choose an option--</option>
 									{#each options.theme.items as { id, value }}
-										<option {id} {value} selected={id === current.icon}>{value}</option>
+										<option {id} {value} selected={id === current.theme}>{value}</option>
 									{/each}
 								</select>
 							</Fieldset>
 						{/if}
 						{#if options.layout}
-							<Fieldset slug="field-select-theme" legend="Theme">
-								<label for="select-theme">Select Variant:</label>
-								<select id="select-theme" on:change={(event) => setCurrent(event, 'theme')}>
+							<Fieldset slug="field-select-theme" legend="Layout">
+								<label for="select-layout">Select Layout:</label>
+								<select id="select-layout" on:change={(event) => setCurrent(event, 'layout')}>
 									<option value="">--Please choose an option--</option>
 									{#each options.layout.items as { id, value }}
-										<option {id} {value} selected={id === current.icon}>{value}</option>
+										<option {id} {value} selected={id === current.layout}>{value}</option>
 									{/each}
 								</select>
 							</Fieldset>
