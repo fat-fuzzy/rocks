@@ -13,32 +13,84 @@ Ideally, this project will:
 - [ ] be well tested and easily testable
 - [ ] have a low maintenance cost
 
-## 🚧 WIP - Packages
+## 🚧 WIP - Getting started
+
+## Docker
+
+### App image
+
+Run **apps/doc** site in a docker container
+
+Build
+
+```
+ docker build -t rocks-image .
+```
+
+Run app on port 8080
+
+```
+docker run -t -p 8080:80 rocks-image
+```
+
+Debug:
+
+1. Remove code until it builds, then see what is inside image using shell:
+
+   ```
+   docker run -it rocks-image sh
+   ```
+
+1. See what the output of turbo is:
+
+   ```
+   pnpm turbo prune --scope="packagename" --docker
+   ```
+
+**TODO:** Or with docker-compose
+
+```
+docker-compose build rocks-image
+docker-compose up -d rocks-image
+```
+
+## Monorepo overview
+
+This repository is organized into two package types following [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces)
+
+### Packages
 
 - **api** API code
-- **client** A frontend application example that uses the **ui** library
+  - WIP
 - **ui** A frontend component library
   - A reliable UI library that can be used as a common source of truth for web projects
 - **design** A place to make design experiments and decisions
   - use this package to isolate design work from the UI library
   - test designs here: if the pattern can be re-used, _then_ consider migrating it as a component in the UI library
   - design assets and collections go here
-- **doc** A place for doc-worthy information such as:
-  - User doc
-  - UI library doc
-  - new ideas and foundational decisions (architecture, tech, etc)
-  - setup capabilities (back, front, design, etc)
 - **lib** Libraries unrelated to building an interface or accessing backend resources (logic and experiments)
   - 👾 gfx - everything related to working with webgl
   - 🤖 state machines
   - ➕ maths
+    These libraries are generally always WIP unless specifically stated
 - **resources** Backend resources (database, auth, storage, etc)
+  - WIP
+
+### Apps
+
+- **doc** A place for doc-worthy information such as:
+  - User doc
+  - **ui** library doc
+  - new ideas and foundational decisions (architecture, tech, etc)
+  - setup capabilities (back, front, design, etc)
+    This app is a website that uses and documents the **ui** library package
+- **client** A frontend application example that uses the **ui** library package
+  - WIP
 
 ## 🚧 WIP - Testing
 
-- [DOM testing library](https://github.com/testing-library/dom-testing-library)
-- [Playright](https://playwright.dev/)(choose one)
-- [Cypress](https://www.cypress.io/)(choose one)
+- [Testing library](https://github.com/testing-library)
+- [Playright](https://playwright.dev/)
 
 ## 🚧 WIP - Maintenance
 
@@ -46,18 +98,31 @@ Ideally, this project will:
   - [pnpm](https://pnpm.io/)
   - [Turborepo](https://turbo.build/)
 - Code / Env
-  - [commitizen](https://github.com/commitizen/cz-cli)
-  - [verdaccio](https://verdaccio.org/)
-  - [docker](https://www.docker.com/)
-  - [stylelint](https://stylelint.io/)
+  - WIP
+    - [docker](https://www.docker.com/)
+    - [verdaccio](https://verdaccio.org/)
+  - TODO
+    - [changesets](https://github.com/changesets/changesets)
+    - [commitizen](https://github.com/commitizen/cz-cli)
+    - [stylelint](https://stylelint.io/)
 
 ## 🚧 WIP - Licenses
 
 [TODO] Detail Licenses per package
 
-### Tools & Resources
+This repository uses the following license:
 
-#### design
+Apache-2.0
+
+The packages, folders and files it contains may have different licenses:
+
+- MIT
+- Apache-2.0
+- Custom licenses
+
+## Tools & Resources
+
+### design
 
 - Design System
   - [CUBE CSS](https://cube.fyi)
@@ -72,7 +137,7 @@ Ideally, this project will:
   - [Managing and Exporting design tokens with style dictionary](https://www.michaelmang.dev/blog/managing-and-exporting-design-tokens-with-style-dictionary)
 - [Open Props](https://open-props.style/)
 
-#### lib
+### lib
 
 - 👾 gfx - everything related to working with webgl
   - [MDN WebGL API Doc](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
@@ -92,56 +157,3 @@ Ideally, this project will:
   - [Statecharts Doc](https://statecharts.dev/)
 - ➕ maths
   - [minimath](https://github.com/patiboh/minimath)
-
-## 🚧 LICENSES
-
-This repository uses the following license:
-
-Apache-2.0
-
-The packages, folders and files it contains may have different licenses:
-
-MIT
-Apache-2.0
-Custom licenses
-
-## 🚧 Getting started
-
-## Docker
-
-### App image
-
-Ex. static doc site
-
-Build
-
-```
- docker build -t rocks-image .
-```
-
-Run app on port 8080
-
-```
-docker run -t -p 8080:80 rocks-image
-```
-
-Debug:
-
-1. Remove code until it builds, then see what is inside image using shell:
-
-```
-docker run -it rocks-image sh
-```
-
-1. See what the output of turbo is:
-
-```
- pnpm turbo prune --scope="packagename" --docker
-```
-
-TODO: Or with docker-compose
-
-```
-docker-compose build rocks-image
-docker-compose up -d rocks-image
-```
