@@ -32,6 +32,31 @@ textarea {
 	cursor: not-allowed;
 }
 
+.primary {
+	input,
+	select,
+	textarea {
+		accent-color: var(#{$prefix}-current-primary-light);
+	}
+}
+
+.accent {
+	input,
+	select,
+	textarea {
+		accent-color: var(#{$prefix}-current-accent-light);
+	}
+}
+
+.highlight {
+	input,
+	select,
+	textarea {
+		accent-color: var(#{$prefix}-current-highlight);
+	}
+}
+
+// TODO : cleanup - use "current" size values
 .xxs,
 .xs {
 	legend {

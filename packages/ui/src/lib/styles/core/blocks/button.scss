@@ -8,6 +8,7 @@ button {
 }
 
 //== Button default colors
+
 button {
 	color: currentColor;
 	background-color: var(#{$prefix}-current-bg-color);
@@ -18,20 +19,14 @@ button:not(:disabled):hover {
 	background-color: var(#{$prefix}-color-gray-2);
 }
 
-//== All  colors
-button:not(:disabled):focus {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-white);
+button:disabled {
+	color: currentColor;
+	background-color: var(#{$prefix}-current-gray);
 }
 
 button:not(:disabled):active {
-	color: var(#{$prefix}-color-light);
-	background-color: var(#{$prefix}-color-gray-4);
-}
-
-button:disabled {
-	color: var(#{$prefix}-color-gray-4);
-	background-color: var(#{$prefix}-color-gray-1);
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-gray-3);
 }
 
 button:not(:disabled):hover {
@@ -45,17 +40,19 @@ button:not(:disabled):hover {
 	border-color: var(#{$prefix}-current-primary);
 	background-color: var(#{$prefix}-current-primary);
 }
-.outline {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-color);
+button.outline {
+	color: inherit;
+	background-color: inherit;
 	border-color: var(#{$prefix}-current-primary);
 }
-.outline:not(:disabled):hover,
-.primary:not(:disabled):hover {
+button.outline:not(:disabled):hover,
+button.primary:not(:disabled):hover {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-color-primary-lighter);
 }
-.primary:not(:disabled):active,
-.outline:not(:disabled):active {
+button.primary:not(:disabled):active,
+button.outline:not(:disabled):active {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-primary-light);
 }
 
@@ -66,15 +63,19 @@ button:not(:disabled):hover {
 	background-color: var(#{$prefix}-current-accent);
 	outline-color: var(#{$prefix}-current-accent);
 }
-.outline.accent {
+button.outline.accent {
+	color: inherit;
+	background-color: inherit;
 	border-color: var(#{$prefix}-current-accent);
 }
-.accent:not(:disabled):hover,
+button.accent:not(:disabled):hover,
 .outline.accent:not(:disabled):hover {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-color-accent-lighter);
 }
-.accent:not(:disabled):active,
+button.accent:not(:disabled):active,
 .outline.accent:not(:disabled):active {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-color-accent-light);
 }
 
@@ -86,30 +87,23 @@ button:not(:disabled):hover {
 	color: var(#{$prefix}-color-dark);
 	outline-color: var(#{$prefix}-current-highlight);
 }
-.outline.highlight {
+button.outline.highlight {
+	color: inherit;
+	background-color: inherit;
 	border-color: var(#{$prefix}-current-highlight);
 }
-.highlight:not(:disabled):hover,
-.outline.highlight:not(:disabled):hover {
+.light button.outline.highlight {
+	border-color: var(#{$prefix}-color-highlight-dark);
+}
+button.highlight:not(:disabled):hover,
+button.outline.highlight:not(:disabled):hover {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-color-highlight-lighter);
 }
-.highlight:not(:disabled):active,
-.outline.highlight:not(:disabled):active {
-	background-color: var(#{$prefix}-color-highlight-light);
-}
-
-//== All  colors
-.primary:not(:disabled):focus,
-.outline:not(:disabled):focus,
-.accent:not(:disabled):focus,
-.highlight:not(:disabled):focus {
+button.highlight:not(:disabled):active,
+button.outline.highlight:not(:disabled):active {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-white);
-}
-
-button:disabled {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-gray);
+	background-color: var(#{$prefix}-color-highlight-light);
 }
 
 //== Bare buttons (no background, no border)
@@ -121,11 +115,72 @@ button:disabled {
 	color: var(#{$prefix}-current-primary);
 	background-color: transparent;
 	border: none;
-	padding: 0 var(#{$prefix}-current-size);
+	padding: var(#{$prefix}-current-size);
 }
 
 .bare:hover {
 	text-decoration: underline;
+}
+
+//== Toggle  colors
+
+[aria-pressed='true'],
+[aria-pressed='true']:active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-primary-light);
+	box-shadow: var(#{$prefix}-shadow-inset);
+}
+[aria-pressed='true']:hover,
+[aria-pressed='false']:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-primary-lighter);
+}
+[aria-pressed='false']:hover {
+	box-shadow: var(#{$prefix}-shadow);
+}
+[aria-pressed='false']:active {
+	background-color: var(#{$prefix}-current-bg-color);
+}
+.outline[aria-pressed='true'],
+.outline[aria-pressed='true']:active {
+	background-color: var(#{$prefix}-current-primary-light);
+}
+.accent[aria-pressed='true'],
+.accent[aria-pressed='true']:active {
+	color: var(#{$prefix}-color);
+	background-color: var(#{$prefix}-current-accent-light);
+}
+.accent[aria-pressed='true']:hover,
+.accent[aria-pressed='false']:hover {
+	background-color: var(#{$prefix}-current-accent-lighter);
+}
+.accent.outline[aria-pressed='true'],
+.accent.outline[aria-pressed='true']:active {
+	background-color: var(#{$prefix}-current-accent-light);
+}
+.highlight[aria-pressed='true'],
+.highlight[aria-pressed='true']:active {
+	color: var(#{$prefix}-color);
+	background-color: var(#{$prefix}-current-highlight-light);
+}
+.highlight[aria-pressed='true']:hover,
+.highlight[aria-pressed='false']:hover {
+	background-color: var(#{$prefix}-current-highlight-lighter);
+}
+.highlight.outline[aria-pressed='true'],
+.highlight.outline[aria-pressed='true']:active {
+	background-color: var(#{$prefix}-current-highlight-light);
+}
+
+.bare[aria-pressed='true']:hover,
+.bare[aria-pressed='false']:hover {
+	box-shadow: var(#{$prefix}-shadow);
+}
+
+.bare[aria-pressed='true'],
+.bare[aria-pressed='true']:active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-primary-lighter);
 }
 
 //== Alignment

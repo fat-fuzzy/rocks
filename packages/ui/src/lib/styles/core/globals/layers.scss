@@ -9,3 +9,7 @@
 .offset {
 	background-color: var(#{$prefix}-color-white);
 }
+
+.inset {
+	box-shadow: var(#{$prefix}-shadow-inset);
+}
