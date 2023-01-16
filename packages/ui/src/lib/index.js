@@ -12,6 +12,9 @@ import Burrito from './layouts/Burrito.svelte'
  */
 import Button from './blocks/buttons/Button.svelte'
 import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
+import ButtonSubMenu from './blocks/buttons/ButtonSubMenu.svelte'
+import Toggle from './blocks/buttons/Toggle.svelte'
+import ToggleMenu from './blocks/buttons/ToggleMenu.svelte'
 // import Canvas from './blocks/media/Canvas.svelte'
 import Upload from './blocks/forms/Upload.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
@@ -60,6 +63,9 @@ const layouts = {
 const blocks = {
 	Button,
 	ButtonMenu,
+	ButtonSubMenu,
+	Toggle,
+	ToggleMenu,
 	// Canvas, TODO: init canvas with example Sketch
 	Upload,
 	Nav,
