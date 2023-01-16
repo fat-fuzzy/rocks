@@ -51,7 +51,7 @@
 	}
 </script>
 
-<menu class={`l-${layout} ${size}`} role="group">
+<menu class={`l-${layout} ${size}`}>
 	{#each items as { id, label, icon }}
 		<li>
 			<Toggle {id} on:toggle={onToggle} {variant} {color} text={formatText(label, icon)} />
