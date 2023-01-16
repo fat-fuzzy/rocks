@@ -74,15 +74,17 @@ export const options: UIPropOptions = {
 			{id: 'switcher', label: 'switcher'},
 		],
 	},
-	app: {
-		name: 'App',
-		input: 'radio',
-		items: [
-			{id: 'doc', label: 'doc'},
-			{id: 'client', label: 'client'},
-			{id: 'ui', label: 'ui'},
-		],
-	},
+
+	// TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component context): maybe: use web components ?
+	// app: {
+	// 	name: 'App',
+	// 	input: 'radio',
+	// 	items: [
+	// 		{id: 'doc', label: 'doc'},
+	// 		{id: 'client', label: 'client'},
+	// 		{id: 'ui', label: 'ui'},
+	// 	],
+	// },
 	icon: {
 		name: 'Icon',
 		input: 'datalist',
