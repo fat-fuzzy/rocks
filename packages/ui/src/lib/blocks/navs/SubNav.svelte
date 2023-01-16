@@ -10,7 +10,38 @@
 	export let id = 'sub-nav'
 	export let title = 'Sub Nav'
 	export let align = 'start'
-	export let items: {slug: string; title: string; emoji?: string}[] = []
+	export let items = [
+		{
+			slug: 'ui',
+			title: 'UI LIbrary Link - SubNav Example',
+			items: [
+				{
+					slug: 'blocks',
+					title: 'Blocks Link 1',
+					items: [
+						{slug: 'SubNav', title: 'SubNav Item  1 A'},
+						{slug: 'SubNav', title: 'SubNav Item  1 B'},
+					],
+				},
+				{
+					slug: 'blocks',
+					title: 'Blocks Link 2',
+				},
+				{
+					slug: 'blocks',
+					title: 'Blocks Link 3',
+					items: [
+						{slug: 'SubNav', title: 'SubNav Item 2 A'},
+						{slug: 'SubNav', title: 'SubNav Item 2 B'},
+					],
+				},
+				{
+					slug: 'blocks',
+					title: 'Blocks Link 4',
+				},
+			],
+		},
+	]
 
 	let expanded = false
 

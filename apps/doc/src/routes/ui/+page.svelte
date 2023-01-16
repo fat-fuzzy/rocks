@@ -1,11 +1,21 @@
 <script lang="ts">
-	import { blocks, stories } from '@fat-fuzzy/ui';
-	const { Story } = stories;
+	import {blocks, stories} from '@fat-fuzzy/ui'
+	const {Story} = stories
 
-	const components = blocks;
-	const selected = { size: 'md' };
+	const components = blocks
 
-	$: keys = Object.keys(components);
+	// TODO : move to store : see also in other templates
+	let initial = {
+		variant: '',
+		size: 'md',
+		color: 'primary',
+		theme: 'light',
+		layout: 'switcher',
+		app: 'ui',
+		icon: '✨',
+	}
+
+	$: keys = Object.keys(components)
 </script>
 
 <svelte:head>
@@ -19,5 +29,5 @@
 
 {#each keys as key}
 	{@const Component = components[key]}
-	<Story title={key} slug={key.toLowerCase()} component={Component} {selected} />
+	<Story title={key} slug={key.toLowerCase()} component={Component} {initial} />
 {/each}

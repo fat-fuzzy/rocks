@@ -26,7 +26,6 @@ import SubNav from './blocks/navs/SubNav.svelte'
  * Story components
  */
 import Story from './stories/Story.svelte'
-import StoryActions from './stories/StoryActions.svelte'
 
 /**
  * Stores
@@ -75,7 +74,6 @@ const blocks = {
 }
 const stories = {
 	Story,
-	StoryActions,
 }
 const sass = {
 	default: './sass/styles-default.scss',
@@ -87,4 +85,5 @@ async function getSass(theme) {
 	const themedStyles = await import(sass[theme])
 	return themedStyles
 }
+
 export {blocks, layouts, stories, utils, stores, constants, getSass}

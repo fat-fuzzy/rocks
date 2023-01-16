@@ -35,7 +35,7 @@
 	<svelte:fragment slot="side">
 		<SubNav title="Fat Fuzzy UI" id="nav-page" {items} {path} breakpoint="bp:md" />
 	</svelte:fragment>
-	<div slot="main" class="l-stack l-text">
+	<div slot="main" class="l-stack card">
 		<slot />
 	</div>
 </Sidebar>
