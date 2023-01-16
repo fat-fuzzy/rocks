@@ -1,5 +1,6 @@
 <script>
 	import Toggle from '$blocks/buttons/Toggle.svelte'
+	import Fieldset from '$blocks/forms/Fieldset.svelte'
 </script>
 
 <svelte:head>
@@ -12,5 +13,7 @@
 </header>
 
 <form class="l-stack l-burrito md">
-	<Toggle />
+	<Fieldset slug="toggle" legend="Toggle" {size}>
+		<Toggle />
+	</Fieldset>
 </form>
