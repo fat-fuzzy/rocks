@@ -14,6 +14,11 @@
 	// TODO: figure out how I can deduct props from component
 	let selected = {...initial}
 
+	// TODO: rigure out a way to let user resize component container
+	let frame
+	let width
+	let height
+
 	const setCurrent = (event) => {
 		selected = {...selected, [event.detail.id]: event.detail.value}
 		console.log('Story - selected')
