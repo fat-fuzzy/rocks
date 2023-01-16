@@ -13,7 +13,11 @@ body {
 	#{$prefix}-current-primary: var(#{$prefix}-color-primary);
 	#{$prefix}-current-primary-light: var(#{$prefix}-color-primary-light);
 	#{$prefix}-current-accent: var(#{$prefix}-color-accent);
+	#{$prefix}-current-accent-light: var(#{$prefix}-color-accent-light); // TODO: Fix
+	#{$prefix}-current-accent-lighter: var(#{$prefix}-color-accent-lighter); // TODO: Fix
 	#{$prefix}-current-highlight: var(#{$prefix}-color-highlight); // TODO: Fix
+	#{$prefix}-current-highlight-light: var(#{$prefix}-color-highlight-light); // TODO: Fix
+	#{$prefix}-current-highlight-lighter: var(#{$prefix}-color-highlight-lighter); // TODO: Fix
 	#{$prefix}-current-danger: var(#{$prefix}-color-danger);
 	#{$prefix}-current-shadow: var(#{$prefix}-color-shadow);
 	color: var(#{$prefix}-current-color);
@@ -27,65 +31,18 @@ body {
 	#{$prefix}-current-primary: var(#{$prefix}-color-primary-light);
 	#{$prefix}-current-primary-light: var(#{$prefix}-color-primary);
 	#{$prefix}-current-accent: var(#{$prefix}-color-accent);
+	#{$prefix}-current-accent-light: var(#{$prefix}-color-accent-light); // TODO: Fix
+	#{$prefix}-current-accent-lighter: var(#{$prefix}-color-accent-lighter); // TODO: Fix
 	#{$prefix}-current-highlight: var(#{$prefix}-color-highlight); // TODO: Fix
+	#{$prefix}-current-highlight-light: var(#{$prefix}-color-highlight-light); // TODO: Fix
+	#{$prefix}-current-highlight-lighter: var(#{$prefix}-color-highlight-lighter); // TODO: Fix
 	#{$prefix}-current-danger: var(#{$prefix}-color-danger-light);
 	#{$prefix}-current-shadow: var(#{$prefix}-color-shadow-light);
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
 }
 
-//== Primary / Accent / Highlight colors: Links, buttons & utility class
-
-.outline,
-button.alt {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-color);
-}
-
-.primary,
-button.primary,
-button.outline.alt {
-	color: var(#{$prefix}-current-color-alt);
-	background-color: var(#{$prefix}-current-primary);
-	border-color: var(#{$prefix}-current-primary);
-}
-
-.outline,
-button.outline,
-button.primary.alt {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-primary);
-}
-
-.accent,
-button.accent {
-	color: var(#{$prefix}-current-color-alt);
-	background-color: var(#{$prefix}-current-accent);
-	border-color: var(#{$prefix}-current-accent);
-}
-
-.highlight,
-button.highlight {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-highlight);
-	border-color: var(#{$prefix}-current-highlight);
-}
-
-.accent.outline,
-button.accent.outline {
-	color: var(#{$prefix}-current-color);
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-accent);
-}
-
-.highlight.outline,
-button.highlight.outline {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-highlight);
-}
+//== Primary / Accent / Highlight colors
 
 //== Text
 
@@ -111,6 +68,28 @@ button.highlight.outline {
 
 .l-frame {
 	background-color: var(#{$prefix}-color-white);
+}
+
+.light {
+	form,
+	.l-text {
+		color: var(#{$prefix}-color-dark);
+	}
+	form,
+	.output {
+		background-color: var(#{$prefix}-color-white);
+	}
+}
+
+.dark {
+	form,
+	.l-text {
+		color: var(#{$prefix}-color-light);
+	}
+	form,
+	.output {
+		background-color: var(#{$prefix}-current-gray);
+	}
 }
 
 //== Links
