@@ -1,4 +1,6 @@
 button {
+	display: flex;
+	justify-content: center;
 	width: auto;
 	font-size: var(#{$prefix}-font-size-ui);
 	font-family: var(#{$prefix}-font-family-ui);
