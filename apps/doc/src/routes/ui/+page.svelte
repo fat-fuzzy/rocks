@@ -11,7 +11,7 @@
 		color: 'primary',
 		theme: 'light',
 		layout: 'switcher',
-		app: 'ui',
+		// app: 'ui', // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component context): maybe: use web components ?
 		icon: '✨',
 	}
 
