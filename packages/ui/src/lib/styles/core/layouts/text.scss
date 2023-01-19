@@ -3,7 +3,7 @@
  * - improve readability by using ch units to adapt to user zoom settings
  */
 
-.l-text {
+[class^='l-text'] {
 	width: 80ch;
 	padding-block-end: var(#{$prefix}-current-size-plus);
 	max-width: 100%;

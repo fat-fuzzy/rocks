@@ -37,11 +37,3 @@ th {
 	outline: var(#{$prefix}-outline-width) dotted var(#{$prefix}-current-primary);
 	outline-offset: var(#{$prefix}-outline-offset);
 }
-
-// Stretch page // TODO: fix
-body main {
-	min-height: calc(
-		100vh - var(#{$prefix}-header-height) - 3 * var(#{$prefix}-header-margin) -
-			var(#{$prefix}-footer-height)
-	);
-}

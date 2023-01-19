@@ -10,4 +10,8 @@
 
 .fixed\:top > main {
 	padding-block-start: calc(var(#{$prefix}-header-height) + 2 * var(#{$prefix}-header-margin));
+	min-height: calc(
+		100vh - var(#{$prefix}-header-height) - 3 * var(#{$prefix}-header-margin) -
+			var(#{$prefix}-footer-height)
+	);
 }
