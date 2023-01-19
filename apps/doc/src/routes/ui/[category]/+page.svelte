@@ -5,16 +5,7 @@
 
 	const {Story} = stories
 
-	// TODO : move to store : see also in other templates
-	let initial = {
-		theme: {light: 'day', contrast: 'contrast'},
-		variant: '',
-		size: 'md',
-		color: 'primary',
-		layout: 'switcher',
-		// app: 'ui', // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component context): maybe: use web components ?
-		icon: '✨',
-	}
+	let initial = $page.data.components.initial
 
 	let title: string
 	let components: {[key: string]: ComponentType}
