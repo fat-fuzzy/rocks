@@ -2,10 +2,13 @@ fieldset {
 	border-radius: var(#{$prefix}-radius-base);
 	border: 1px solid currentcolor;
 	> legend {
-		font-weight: bold;
+		font-weight: var(#{$prefix}-font-weight-ui);
+	}
+	> p {
+		font-size: var(#{$prefix}-font-size-ui);
+		font-weight: var(#{$prefix}-font-weight-ui);
 	}
 }
-
 fieldset.xxs {
 	> * + * {
 		margin-block-start: 0;

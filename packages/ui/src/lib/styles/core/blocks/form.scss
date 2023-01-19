@@ -2,6 +2,10 @@ form * {
 	font-family: var(#{$prefix}-font-family-ui);
 }
 
+fieldset > * + * {
+	margin-block-start: var(#{$prefix}-current-size);
+}
+
 label,
 .feedback {
 	display: block;
@@ -14,11 +18,11 @@ legend {
 	padding-right: 0;
 }
 
-.radio-group {
+.input-group {
 	width: auto;
 }
 
-.radio-group label {
+.input-group label {
 	display: flex;
 	justify-content: space-between;
 }

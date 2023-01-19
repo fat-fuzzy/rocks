@@ -70,26 +70,10 @@ body {
 	background-color: var(#{$prefix}-color-white);
 }
 
-.light {
-	form,
-	.l-text {
-		color: var(#{$prefix}-color-dark);
-	}
-	form,
-	.output {
-		background-color: var(#{$prefix}-color-white);
-	}
-}
-
-.dark {
-	form,
-	.l-text {
-		color: var(#{$prefix}-color-light);
-	}
-	form,
-	.output {
-		background-color: var(#{$prefix}-current-gray);
-	}
+form,
+.l-text {
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-bg-color);
 }
 
 //== Links
