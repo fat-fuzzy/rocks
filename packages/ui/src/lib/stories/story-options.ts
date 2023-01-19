@@ -3,7 +3,8 @@ export type UIChildren = string | ComponentType | (string | ComponentType)[]
 export type UIProps = {
 	icon?: string
 	size?: string
-	theme?: string
+	light?: string
+	contrast?: string
 	variant?: string
 	color?: string
 	layout?: string
@@ -21,57 +22,103 @@ export type UIProps = {
  */
 
 export type UIPropOptions = {
+	name: string
+	input: string
+	layout?: string
+	items: Array<{id: string; label: string; asset?: string | SVGElement}>
+}
+export type StoryOptions = {
 	[key: string]: {
 		name: string
-		input: string
-		items: Array<{id: string; label: string; asset?: string | SVGElement}>
+		layout?: string
+		exclude?: string[]
+		items: UIPropOptions[]
 	}
 }
 
-export const options: UIPropOptions = {
+export const options: StoryOptions = {
+	theme: {
+		name: 'Theme',
+		items: [
+			{
+				name: 'Light',
+				input: 'toggle',
+				layout: 'switcher',
+				items: [
+					{id: 'day', label: 'day'},
+					{id: 'night', label: 'night'},
+				],
+			},
+			{
+				name: 'Contrast',
+				input: 'toggle',
+				layout: 'switcher',
+				items: [
+					{id: 'contrast', label: 'high'}, // TODO : fix color vars & classes
+					{id: 'blend', label: 'low'},
+					// {id: 'polar', label: 'polar'},
+				],
+			},
+		],
+	},
 	variant: {
 		name: 'Variant',
-		input: 'toggle',
+		exclude: ['Nav', 'Burrito', 'Sidebar', 'Stack'],
 		items: [
-			{id: 'full', label: 'full'},
-			{id: 'outline', label: 'outline'},
-			{id: 'bare', label: 'bare'},
+			{
+				name: 'Variant',
+				input: 'toggle',
+				items: [
+					{id: 'full', label: 'full'},
+					{id: 'outline', label: 'outline'},
+					{id: 'bare', label: 'bare'},
+				],
+			},
 		],
 	},
 	size: {
 		name: 'Size',
-		input: 'radio',
 		items: [
-			{id: 'xs', label: 'xs'},
-			{id: 'sm', label: 'sm'},
-			{id: 'md', label: 'md'},
-			{id: 'lg', label: 'lg'},
-			{id: 'xl', label: 'xl'},
+			{
+				name: 'Size',
+				input: 'toggle',
+				items: [
+					{id: 'xs', label: 'xs'},
+					{id: 'sm', label: 'sm'},
+					{id: 'md', label: 'md'},
+					{id: 'lg', label: 'lg'},
+					{id: 'xl', label: 'xl'},
+				],
+			},
 		],
 	},
 	color: {
 		name: 'Color',
-		input: 'radio',
+		exclude: ['Burrito', 'Sidebar', 'Stack'],
 		items: [
-			{id: 'primary', label: 'primary'},
-			{id: 'accent', label: 'accent'},
-			{id: 'highlight', label: 'highlight'},
-		],
-	},
-	theme: {
-		name: 'Theme',
-		input: 'radio',
-		items: [
-			{id: 'light', label: 'light'},
-			{id: 'dark', label: 'dark'},
+			{
+				name: 'Color',
+				input: 'toggle',
+				items: [
+					{id: 'primary', label: 'primary'},
+					{id: 'accent', label: 'accent'},
+					{id: 'highlight', label: 'highlight'},
+				],
+			},
 		],
 	},
 	layout: {
 		name: 'Layout',
-		input: 'radio',
+		exclude: ['Button', 'Toggle', 'Burrito', 'Sidebar', 'Stack'],
 		items: [
-			{id: 'stack', label: 'stack'},
-			{id: 'switcher', label: 'switcher'},
+			{
+				name: 'Layout',
+				input: 'toggle',
+				items: [
+					{id: 'stack', label: 'stack'},
+					{id: 'switcher', label: 'switcher'},
+				],
+			},
 		],
 	},
 
@@ -87,11 +134,17 @@ export const options: UIPropOptions = {
 	// },
 	icon: {
 		name: 'Icon',
-		input: 'datalist',
+		exclude: ['ButtonMenu', 'ToggleMenu'],
 		items: [
-			{id: 'idea', label: 'idea', asset: '💡'},
-			{id: 'user', label: 'user', asset: '🦁'},
-			{id: 'favorite', label: 'favorite', asset: '❤️'},
+			{
+				name: 'Icon',
+				input: 'datalist',
+				items: [
+					{id: 'idea', label: 'idea', asset: '💡'},
+					{id: 'user', label: 'user', asset: '🦁'},
+					{id: 'favorite', label: 'favorite', asset: '❤️'},
+				],
+			},
 		],
 	},
 }

@@ -36,8 +36,8 @@
 	</slot>
 	<div class={`${alignment} ${show}`}>
 		<slot name="content">
-			<div class={`l-${layout} ${size} card layer`}>
-				<h4>Revealed Content</h4>
+			<div class="card plus layer">
+				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>
 		</slot>
