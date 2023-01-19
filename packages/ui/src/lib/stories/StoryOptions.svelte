@@ -10,8 +10,9 @@
 	// TODO: figure out if I can deduct props
 	export let selected: UIProps
 	export let size = 'sm'
+	export let component = ''
 
-	let {layout} = selected
+	let {layout, color} = selected
 
 	let current = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
 
@@ -20,34 +21,32 @@
 		return emoji ? `${emoji} ${name}` : name
 	}
 
-	function handleRadio(event) {
+	function handleInput(event, name) {
 		const payload = {
-			id: event.target.name.toLowerCase(),
-			value: event.target.value,
+			name,
+			items: [
+				{
+					id: event.target.name.toLowerCase(),
+					value: event.target.value,
+				},
+			],
 		}
-		console.log('handleRadio payload')
+		console.log('handleInput payload')
 		console.log(payload)
-
 		dispatch('changed', payload)
 	}
 
-	function handleDatalist(event) {
-		const payload = {
-			id: event.target.name.toLowerCase(),
-			value: event.target.value,
-		}
-		console.log('handleDatalist payload')
-		console.log(payload)
-
-		dispatch('changed', payload)
-	}
-
-	function handleToggle(event, name) {
+	function handleToggle(event, id, name) {
 		const selected = event.detail.selected // TODO: no multiple values for now
 		if (selected.length) {
 			const payload = {
-				id: name.toLowerCase(),
-				value: selected[0].pressed ? selected[0].id : '',
+				name,
+				items: [
+					{
+						id: id.toLowerCase(),
+						value: selected[0].pressed ? selected[0].id : '',
+					},
+				],
 			}
 			console.log('handleToggle payload')
 			console.log(payload)
@@ -57,38 +56,63 @@
 	}
 </script>
 
-<form on:submit|preventDefault class={`l-${layout} ${size} card:lg layer  primary`}>
+<form on:submit|preventDefault class={`l-${layout} ${size} card:lg layer ${color}`}>
 	{#each current as option}
-		{@const {name, input, items} = options[option.name]}
-		<Fieldset legend={name} slug={`field-${input}-${name}`} type="radio-group">
-			{#if input === 'radio'}
-				{#each items as { id, label }}
-					{@const checked = id === option.value}
-					<label for={`radio-${id}`}>
-						{label}
-						<input
-							type="radio"
-							id={`radio-${id}`}
-							value={id}
-							{name}
-							{checked}
-							on:input={handleRadio}
+		{#if options[option.name] && !options[option.name].exclude?.includes(component)}
+			{@const optionItems = options[option.name].items}
+			{@const optionName = options[option.name].name}
+			{@const optionLayout = options[option.name].layout}
+			<Fieldset
+				legend={optionName}
+				slug={`field-${optionName}`}
+				type="input-group"
+				layout={optionLayout}
+			>
+				{#each optionItems as optionGroup}
+					{@const {name, input, items, layout} = optionGroup}
+					{@const classes = layout ? `l-${layout}` : ``}
+					{#if input === 'radio' || input === 'checkbox'}
+						{#each items as { id, label }}
+							{@const checked = id === option.value}
+							<label for={`${input}-${id}`} class={classes}>
+								{label}
+								<input
+									type={input}
+									id={`${input}-${id}`}
+									value={id}
+									{name}
+									{checked}
+									class="primary"
+									on:input={(event) => handleInput(event, optionName)}
+								/>
+							</label>
+						{/each}
+					{/if}
+					{#if input === 'toggle'}
+						<ToggleMenu
+							id={name}
+							title={name !== optionName ? name : ''}
+							{items}
+							{layout}
+							on:changed={(event) => handleToggle(event, name, optionName)}
 						/>
-					</label>
+					{/if}
+					{#if input === 'datalist'}
+						<label for={`choice-${name}`}>{`Select ${name}`}</label>
+						<input
+							list={`items-${name}`}
+							id={`choice-${name}`}
+							{name}
+							on:input={(event) => handleInput(event, optionName)}
+						/>
+						<datalist id={`items-${name}`}>
+							{#each items as { id, label, asset }}
+								<option {id} value={asset}>{formatText(label, asset)}</option>
+							{/each}
+						</datalist>
+					{/if}
 				{/each}
-			{/if}
-			{#if input === 'toggle'}
-				<ToggleMenu id={name} {items} on:changed={(event) => handleToggle(event, name)} />
-			{/if}
-			{#if input === 'datalist'}
-				<label for={`choice-${name}`}>{`Select ${name}`}</label>
-				<input list={`items-${name}`} id={`choice-${name}`} {name} on:input={handleDatalist} />
-				<datalist id={`items-${name}`}>
-					{#each items as { id, label, asset }}
-						<option {id} value={asset}>{formatText(label, asset)}</option>
-					{/each}
-				</datalist>
-			{/if}
-		</Fieldset>
+			</Fieldset>
+		{/if}
 	{/each}
 </form>

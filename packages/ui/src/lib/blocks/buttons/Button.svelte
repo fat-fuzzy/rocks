@@ -6,7 +6,7 @@
 	export let size = ''
 	export let icon = ''
 	export let color = ''
-	export let variant = '' // TODO: Figure algorithmic light/dark + alt button color schemes
+	export let variant = '' // TODO: Figure algorithmic day/night + alt button color schemes
 	export let id = 'btn'
 	export let disabled = false
 	export let text = 'Button'

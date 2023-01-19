@@ -26,11 +26,6 @@
 	]
 </script>
 
-<svelte:head>
-	<title>FatFuzzy Doc | UI</title>
-	<meta name="description" content="Fat Fuzzy Doc - UI Library stories" />
-</svelte:head>
-
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
 		<SubNav title="Fat Fuzzy UI" id="nav-page" {items} {path} breakpoint="bp:md" />

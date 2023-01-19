@@ -3,7 +3,9 @@
 	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()
+
 	export let id = ''
+	export let title = ''
 	export let size = 'sm'
 	export let layout = 'stack'
 	export let color = ''
@@ -51,6 +53,7 @@
 	}
 </script>
 
+{#if title}<p>{title}</p>{/if}
 <menu class={`l-${layout} ${size}`}>
 	{#each items as { id, label, icon }}
 		<li>

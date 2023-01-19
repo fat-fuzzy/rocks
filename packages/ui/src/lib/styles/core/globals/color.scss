@@ -5,8 +5,10 @@ body {
 	#{$prefix}-current-primary: var(#{$prefix}-color-gray-5);
 }
 
-.light {
+.day {
 	#{$prefix}-current-bg-color: var(#{$prefix}-color-light);
+	#{$prefix}-current-bg-contrast: var(#{$prefix}-color-white);
+	#{$prefix}-current-polar: var(#{$prefix}-color-white);
 	#{$prefix}-current-gray: var(#{$prefix}-color-gray-1);
 	#{$prefix}-current-color: var(#{$prefix}-color-dark);
 	#{$prefix}-current-color-alt: var(#{$prefix}-color-light);
@@ -23,8 +25,10 @@ body {
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
 }
-.dark {
+.night {
 	#{$prefix}-current-bg-color: var(#{$prefix}-color-dark);
+	#{$prefix}-current-bg-contrast: var(#{$prefix}-current-gray);
+	#{$prefix}-current-polar: var(#{$prefix}-color-dark);
 	#{$prefix}-current-gray: var(#{$prefix}-color-gray-5);
 	#{$prefix}-current-color: var(#{$prefix}-color-light);
 	#{$prefix}-current-color-alt: var(#{$prefix}-color-dark);
@@ -46,7 +50,7 @@ body {
 
 //== Text
 
-.light pre {
+.day pre {
 	color: var(#{$prefix}-color-light);
 }
 
@@ -189,11 +193,11 @@ button.link:disabled {
 
 //== Header, Navs, Menus
 
-.dark .header-app {
+.night .header-app {
 	color: var(#{$prefix}-color-light);
 	background-color: var(#{$prefix}-current-gray);
 }
-.light .header-app {
+.day .header-app {
 	color: var(#{$prefix}-primary);
 	background-color: var(#{$prefix}-current-bg-color);
 }

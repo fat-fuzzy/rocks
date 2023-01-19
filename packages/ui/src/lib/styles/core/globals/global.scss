@@ -8,7 +8,8 @@ body {
 	#{$prefix}-current-size: var(#{$prefix}-s0);
 	#{$prefix}-current-size-plus: var(#{$prefix}-s1);
 	#{$prefix}-current-size-side: var(#{$prefix}-s0);
-	color: var(#{$prefix}-font-color-body);
+	color: var(#{$prefix}-current-color);
+	background: var(#{$prefix}-current-bg-color);
 	font-weight: var(#{$prefix}-font-weight-body);
 	line-height: var(#{$prefix}-ratio);
 }

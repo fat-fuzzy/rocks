@@ -1,12 +1,10 @@
 <script lang="ts">
-	import {page} from '$app/stores'
 	import type {ComponentType} from 'svelte'
 	import StoryOptions from './StoryOptions.svelte'
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import type {UIProps} from './story-options'
 
-	export let title = 'Unnamed Component'
-	export let slug = 'unnamed-component'
+	export let title = ''
 	export let component: ComponentType
 	export let initial: UIProps
 	export let showOptions = false
@@ -20,29 +18,32 @@
 	let height
 
 	const setCurrent = (event) => {
-		selected = {...selected, [event.detail.id]: event.detail.value}
-		console.log('Story - selected')
-		console.log(selected)
+		const updated = event.detail.items.reduce((values, option) => {
+			return {...values, [option.id]: option.value}
+		}, {})
+		selected = {
+			...selected,
+			...updated,
+		}
 	}
 </script>
 
-<article class={`l-stack card:lg`}>
-	{#if $page.params.component === slug}
-		<h1>{title}</h1>
-	{:else}
-		<h2>{title}</h2>
+<article class={`card box ${selected.light ?? ''}`}>
+	{#if title}
+		<h3>{title}</h3>
 	{/if}
-
-	<Sidebar size="xs" placement="end" theme={`card:lg ${selected.theme ?? 'card:lg'}`}>
-		<svelte:fragment slot="main">
+	<Sidebar size="sm" placement="end">
+		<main slot="main" class={`card plus ${selected.contrast ?? ''}`}>
 			{#if component}
 				<svelte:component this={component} {...selected} />
 			{/if}
-		</svelte:fragment>
-		<svelte:fragment slot="side">
+		</main>
+		<aside slot="side">
 			{#if showOptions}
-				<StoryOptions {selected} on:changed={setCurrent} />
+				<StoryOptions {selected} component={title} on:changed={setCurrent} />
+			{:else}
+				<!-- TODO: <a class="font:lg bare" href={`/ui/blocks/${title}`}>View</a> -->
 			{/if}
-		</svelte:fragment>
+		</aside>
 	</Sidebar>
 </article>
