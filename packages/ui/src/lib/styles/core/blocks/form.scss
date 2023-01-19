@@ -2,6 +2,10 @@ form * {
 	font-family: var(#{$prefix}-font-family-ui);
 }
 
+fieldset > * + * {
+	margin-block-start: var(#{$prefix}-current-size);
+}
+
 label,
 .feedback {
 	display: block;
@@ -12,6 +16,15 @@ legend {
 	font-weight: var(#{$prefix}-font-weight-ui);
 	padding-left: 0;
 	padding-right: 0;
+}
+
+.input-group {
+	width: auto;
+}
+
+.input-group label {
+	display: flex;
+	justify-content: space-between;
 }
 
 input,
@@ -32,6 +45,31 @@ textarea {
 	cursor: not-allowed;
 }
 
+.primary {
+	input,
+	select,
+	textarea {
+		accent-color: var(#{$prefix}-current-primary-light);
+	}
+}
+
+.accent {
+	input,
+	select,
+	textarea {
+		accent-color: var(#{$prefix}-current-accent-light);
+	}
+}
+
+.highlight {
+	input,
+	select,
+	textarea {
+		accent-color: var(#{$prefix}-current-highlight);
+	}
+}
+
+// TODO : cleanup - use "current" size values
 .xxs,
 .xs {
 	legend {

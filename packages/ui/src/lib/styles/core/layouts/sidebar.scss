@@ -19,7 +19,10 @@
 	flex-grow: 999;
 	// ~ min-width in horizontal-tb writing mode: if (width < 70%) -> wrap
 	min-inline-size: 70%;
-	gap: var(#{$prefix}-gap);
+
+	> main {
+		block-size: 100%;
+	}
 }
 
 // adjusts to width of contents

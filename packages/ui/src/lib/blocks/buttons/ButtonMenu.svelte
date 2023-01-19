@@ -7,23 +7,24 @@
 	export let layout = 'switcher'
 	export let size = ''
 	export let breakpoint = 'bp:md'
+	export let color = ''
 	export let variant = ''
 
 	export let items: {
 		id: string
-		title: string
+		label: string
 		type: string
-		emoji?: string
+		icon?: string
 		disabled?: boolean
 	}[] = [
-		{id: 'btn-1', title: 'Button 1', type: 'button'},
-		{id: 'btn-2', title: 'Button  2', type: 'button'},
-		{id: 'btn-3', title: 'Button  3', type: 'button'},
+		{id: 'btn-1', label: 'Button 1', type: 'button', icon: '💡'},
+		{id: 'btn-2', label: 'Button 2', type: 'button', icon: '🦁'},
+		{id: 'btn-3', label: 'Button 3', type: 'button', icon: '❤️'},
 	]
 
 	let clickedId = ''
-	const formatText = (title, emoji) => {
-		return emoji ? `${emoji} ${title}` : title
+	const formatText = (label, icon) => {
+		return icon ? `${icon} ${label}` : label
 	}
 	export let onClick = (event) => {
 		if (browser) {
@@ -37,10 +38,10 @@
 </script>
 
 <menu class={`l-${layout} ${size} ${breakpoint}`}>
-	{#each items as { id, title, emoji }}
+	{#each items as { id, label, icon }}
 		<li>
-			<Button {id} {onClick} {variant}>
-				{formatText(title, emoji)}
+			<Button {id} {onClick} {variant} {color}>
+				{formatText(label, icon)}
 			</Button>
 		</li>
 	{/each}

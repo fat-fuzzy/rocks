@@ -6,6 +6,54 @@
 	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
 }
 
-.offset {
-	background-color: var(#{$prefix}-color-white);
+.day {
+	// TODO: Fix contrast combination
+	.contrast {
+		background-color: var(#{$prefix}-current-bg-contrast);
+	}
+
+	.blend {
+		background-color: var(#{$prefix}-current-bg-color);
+	}
+}
+
+.night {
+	// TODO: Fix contrast combination
+	.contrast {
+		background-color: var(#{$prefix}-current-bg-color);
+	}
+
+	.blend {
+		background-color: var(#{$prefix}-current-bg-contrast);
+	}
+}
+
+.polar {
+	background-color: var(#{$prefix}-current-polar);
+}
+
+.inset {
+	box-shadow: var(#{$prefix}-shadow-inset);
+}
+
+/* TODO: cleanup this css (sveltekit app styles) */
+.corner {
+	width: 2em;
+	height: 2em;
+	margin-inline-start: 1em;
+}
+
+.corner a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	border-radius: var(--ui-radius-base);
+}
+
+.corner img {
+	height: 100%;
+	width: auto;
+	object-fit: contain;
 }

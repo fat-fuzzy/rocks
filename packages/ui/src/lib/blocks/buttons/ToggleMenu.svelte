@@ -1,46 +1,63 @@
 <script lang="ts">
-	import {browser} from '$app/environment'
-	import Button from '../buttons/Button.svelte'
+	import Toggle from '../buttons/Toggle.svelte'
 	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()
-	export let layout = `stack`
-	export let size = ``
-	export let variant = 'primary'
+
+	export let id = ''
+	export let title = ''
+	export let size = 'sm'
+	export let layout = 'stack'
+	export let color = ''
+	export let variant = ''
+	export let multiple = false
 
 	export let items: {
 		id: string
-		title: string
-		type: string
-		emoji?: string
+		label: string
+		type?: string
+		icon?: string
 		disabled?: boolean
 	}[] = [
-		{id: 'btn-1', title: 'Button 1', type: 'button'},
-		{id: 'btn-2', title: 'Button  2', type: 'button'},
-		{id: 'btn-3', title: 'Button  3', type: 'button'},
+		{id: 'btn-toggle-1', label: 'Toggle 1'},
+		{id: 'btn-toggle-2', label: 'Toggle 2'},
+		{id: 'btn-toggle-3', label: 'Toggle 3'},
 	]
 
-	let clickedId = ''
-	const formatText = (title, emoji) => {
-		return emoji ? `${emoji} ${title}` : title
+	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
+
+	const formatText = (label, icon) => {
+		return icon ? `${icon} ${label}` : label
 	}
-	export let onClick = (event) => {
-		if (browser) {
-			window.alert(`${event.target.textContent} Clicked`)
+
+	export let onToggle = (event: any) => {
+		if (multiple) {
+			if (event.detail.pressed) {
+				selected = [...selected, event.detail]
+			} else {
+				selected = selected.filter((c) => c.id !== event.detail.id)
+			}
+		} else {
+			if (event.detail.pressed) {
+				selected.map((c) => {
+					if (c.id !== event.detail.id && c.pressed) {
+						c.send('TOGGLE')
+					}
+				})
+			}
+			selected = [event.detail]
 		}
-		clickedId = event.target.id
-		dispatch('click', {
-			clicked: clickedId,
+		dispatch('changed', {
+			selected,
 		})
 	}
 </script>
 
-<menu class={`l-${layout} ${size}`} role="group">
-	{#each items as { id, title, emoji }}
+{#if title}<p>{title}</p>{/if}
+<menu class={`l-${layout} ${size}`}>
+	{#each items as { id, label, icon }}
 		<li>
-			<Button {id} {onClick} {variant}>
-				{formatText(title, emoji)}
-			</Button>
+			<Toggle {id} on:toggle={onToggle} {variant} {color} text={formatText(label, icon)} />
 		</li>
 	{/each}
 </menu>

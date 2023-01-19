@@ -2,10 +2,10 @@
 	export let slug = ''
 	export let legend = ''
 	export let size = 'sm'
+	export let layout = 'stack'
+	export let type = ''
 
-	let className = ''
-
-	$: className = `l-stack ${size} `
+	$: className = `l-${layout} ${size} ${type}`
 </script>
 
 <fieldset data-cy={slug} class={className}>

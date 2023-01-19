@@ -5,7 +5,7 @@
 	import {emojis, themes} from '$types/constants.js'
 
 	// TODO: make svg css themeable / fix dark theme
-	import githubLight from '$lib/images/icon-dark-100-optim-github.svg'
+	import githubDay from '$lib/images/icon-dark-100-optim-github.svg'
 	import github from '$lib/images/icon-dark-100-optim-github.svg'
 
 	export let className = ''
@@ -31,7 +31,7 @@
 		lang.set(event.detail)
 	}
 
-	$: mainMenuClass = `${className} l-sidebar layer`
+	$: headerClass = `${className} l-sidebar layer contrast`
 	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang
@@ -39,8 +39,8 @@
 	$: langIcon = emojis[currentLang]
 </script>
 
-<header class={mainMenuClass}>
-	<nav class="l-main l-burrito" id="primary-navigation">
+<header class={headerClass}>
+	<nav id="nav-primary" class="l-main l-burrito">
 		<ul>
 			<li class:active={page.url.pathname === '/'} class="home">
 				<a data-sveltekit-preload-data href="/">
@@ -58,7 +58,9 @@
 	</nav>
 	<div class="l-side">
 		<menu class={`l-reveal sm ${breakpoint}`} use:clickOutside on:clickOutside={handleClickOutside}>
-			<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
+			<button type="button" on:click={toggleTheme} class="polar">
+				{themeIcon}&nbsp;&nbsp;Theme
+			</button>
 			<div class="corner">
 				<a href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
 					<img src={github} alt="GitHub" />
@@ -90,27 +92,3 @@
 		</menu>
 	</div>
 </header>
-
-<style lang="scss">
-	/* TODO: cleanup this css (sveltekit app styles) */
-	.corner {
-		width: 2em;
-		height: 2em;
-		margin-inline-start: 1em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-		border-radius: var(--ui-radius-base);
-	}
-
-	.corner img {
-		height: 100%;
-		width: auto;
-		object-fit: contain;
-	}
-</style>

@@ -6,10 +6,9 @@
 	export let size = ''
 	export let icon = ''
 	export let color = ''
-	export let variant = '' // TODO: Figure algorithmic light/dark + alt button color schemes
+	export let variant = '' // TODO: Figure algorithmic day/night + alt button color schemes
 	export let id = 'btn'
 	export let disabled = false
-	export let type = 'submit'
 	export let text = 'Button'
 
 	// Event Handlers
@@ -18,9 +17,13 @@
 			window.alert(`${text} Clicked`)
 		}
 	}
-	$: className = `${icon} ${size} ${variant} ${color}`
+	// TODO: extract common function for constructing icon + string
+	const formatText = (name, icon) => {
+		return icon ? `${icon} ${name}` : name
+	}
+	$: classes = `${size} ${variant} ${color}`
 </script>
 
-<button {id} data-test={id} on:click={onClick} class={className} {disabled} {type}>
-	<slot>{text}</slot>
+<button {id} data-test={id} on:click={onClick} class={classes} {disabled}>
+	<slot>{formatText(text, icon)}</slot>
 </button>

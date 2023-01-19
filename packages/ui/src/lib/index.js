@@ -12,6 +12,9 @@ import Burrito from './layouts/Burrito.svelte'
  */
 import Button from './blocks/buttons/Button.svelte'
 import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
+import ButtonSubMenu from './blocks/buttons/ButtonSubMenu.svelte'
+import Toggle from './blocks/buttons/Toggle.svelte'
+import ToggleMenu from './blocks/buttons/ToggleMenu.svelte'
 // import Canvas from './blocks/media/Canvas.svelte'
 import Upload from './blocks/forms/Upload.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
@@ -23,7 +26,6 @@ import SubNav from './blocks/navs/SubNav.svelte'
  * Story components
  */
 import Story from './stories/Story.svelte'
-import StoryActions from './stories/StoryActions.svelte'
 
 /**
  * Stores
@@ -60,6 +62,9 @@ const layouts = {
 const blocks = {
 	Button,
 	ButtonMenu,
+	ButtonSubMenu,
+	Toggle,
+	ToggleMenu,
 	// Canvas, TODO: init canvas with example Sketch
 	Upload,
 	Nav,
@@ -69,7 +74,6 @@ const blocks = {
 }
 const stories = {
 	Story,
-	StoryActions,
 }
 const sass = {
 	default: './sass/styles-default.scss',
@@ -81,4 +85,5 @@ async function getSass(theme) {
 	const themedStyles = await import(sass[theme])
 	return themedStyles
 }
+
 export {blocks, layouts, stories, utils, stores, constants, getSass}

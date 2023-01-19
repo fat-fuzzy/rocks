@@ -24,9 +24,10 @@ nav li a {
 	text-decoration: none;
 	max-width: 100%;
 	display: inline-block;
+	font-size: var(#{$prefix}-font-size-md);
+	line-height: 1;
 	text-overflow: ellipsis; // TODO: find out why I need to repeat ellipsis in <li> and <a>
 	overflow: hidden;
-	line-height: 1;
 }
 
 nav li a,
