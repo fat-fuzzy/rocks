@@ -17,27 +17,26 @@ button {
 	border: 1px solid var(#{$prefix}-current-gray);
 }
 
-button:not(:disabled):hover {
-	background-color: var(#{$prefix}-color-gray-2);
-}
-
 button:disabled {
 	color: currentColor;
-	background-color: var(#{$prefix}-current-gray);
-}
-
-button:not(:disabled):active {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-gray-3);
+	opacity: 0.7;
 }
 
 button:not(:disabled):hover {
 	cursor: pointer;
+	color: var(#{$prefix}-current-color);
+	background-color: inherit;
+	border-color: var(#{$prefix}-color-gray-3);
+}
+
+button:not(:disabled):active {
+	color: var(#{$prefix}-color-light);
+	background-color: var(#{$prefix}-color-gray-3);
 }
 
 //== Button theme colors
 
-.primary {
+button.primary {
 	color: var(#{$prefix}-current-color-alt);
 	border-color: var(#{$prefix}-current-primary);
 	background-color: var(#{$prefix}-current-primary);
@@ -47,15 +46,15 @@ button.outline {
 	background-color: inherit;
 	border-color: var(#{$prefix}-current-primary);
 }
-button.outline:not(:disabled):hover,
-button.primary:not(:disabled):hover {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-primary-lighter);
-}
-button.primary:not(:disabled):active,
-button.outline:not(:disabled):active {
+button.primary:not(.bare):not(:disabled):hover,
+button.primary.outline:not(.bare):not(:disabled):hover {
 	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-primary-light);
+}
+button.primary:not(.bare):not(:disabled):active,
+button.primary.outline:not(.bare):not(:disabled):active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-primary-lighter);
 }
 
 //== Accent  color
@@ -66,19 +65,17 @@ button.outline:not(:disabled):active {
 	outline-color: var(#{$prefix}-current-accent);
 }
 button.outline.accent {
-	color: inherit;
-	background-color: inherit;
 	border-color: var(#{$prefix}-current-accent);
 }
 button.accent:not(:disabled):hover,
 .outline.accent:not(:disabled):hover {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-accent-lighter);
+	background-color: var(#{$prefix}-color-accent-light);
 }
 button.accent:not(:disabled):active,
 .outline.accent:not(:disabled):active {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-accent-light);
+	background-color: var(#{$prefix}-color-accent-lighter);
 }
 
 //== Highlight  color
@@ -90,8 +87,6 @@ button.accent:not(:disabled):active,
 	outline-color: var(#{$prefix}-current-highlight);
 }
 button.outline.highlight {
-	color: inherit;
-	background-color: inherit;
 	border-color: var(#{$prefix}-current-highlight);
 }
 .light button.outline.highlight {
@@ -114,75 +109,173 @@ button.outline.highlight:not(:disabled):active {
 	font-size: var(#{$prefix}-font-size-ui);
 	font-family: var(#{$prefix}-font-family-ui);
 	font-weight: var(#{$prefix}-font-weight-ui);
-	color: var(#{$prefix}-current-primary);
-	background-color: transparent;
+	color: var(#{$prefix}-current-color);
+	background-color: inherit;
 	border: none;
 	padding: var(#{$prefix}-current-size);
 }
 
-.bare:hover {
-	text-decoration: underline;
+.bare.primary,
+.bare.primary:active {
+	color: var(#{$prefix}-current-primary);
+	background-color: inherit;
+}
+
+.bare.accent,
+.bare.accent:active {
+	color: var(#{$prefix}-current-accent);
+}
+
+.bare.highlight,
+.bare.highlight:active {
+	color: var(#{$prefix}-current-highlight-dark);
 }
 
 //== Toggle  colors
 
 [aria-pressed='true'],
 [aria-pressed='true']:active {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-primary-light);
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-bg-contrast);
 	box-shadow: var(#{$prefix}-shadow-inset);
 }
-[aria-pressed='true']:hover,
-[aria-pressed='false']:hover {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-primary-lighter);
-}
+
 [aria-pressed='false']:hover {
 	box-shadow: var(#{$prefix}-shadow);
 }
 [aria-pressed='false']:active {
 	background-color: var(#{$prefix}-current-bg-color);
 }
-.outline[aria-pressed='true'],
-.outline[aria-pressed='true']:active {
+
+.primary[aria-pressed='true'],
+.primary[aria-pressed='true']:active {
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-primary-light);
+	box-shadow: var(#{$prefix}-shadow-inset);
+}
+// .primary[aria-pressed='true']:hover {
+// 	color: var(#{$prefix}-color-dark);
+// 	background-color: var(#{$prefix}-current-primary-light);
+// }
+.primary[aria-pressed='false']:active {
+	background-color: var(#{$prefix}-color-primary-light);
+}
+.primary[aria-pressed='false']:hover,
+.primary.outline[aria-pressed='false']:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-primary-lighter);
+}
+.primary.outline[aria-pressed='true'],
+.primary.outline[aria-pressed='true']:active {
 	background-color: var(#{$prefix}-current-primary-light);
 }
 .accent[aria-pressed='true'],
 .accent[aria-pressed='true']:active {
-	color: var(#{$prefix}-color);
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-accent-light);
 }
-.accent[aria-pressed='true']:hover,
+.accent[aria-pressed='true']:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-accent-light);
+}
 .accent[aria-pressed='false']:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-accent-light);
+}
+.accent.outline[aria-pressed='false']:hover {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-accent-lighter);
 }
 .accent.outline[aria-pressed='true'],
 .accent.outline[aria-pressed='true']:active {
 	background-color: var(#{$prefix}-current-accent-light);
 }
+
 .highlight[aria-pressed='true'],
 .highlight[aria-pressed='true']:active {
-	color: var(#{$prefix}-color);
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-light);
 }
-.highlight[aria-pressed='true']:hover,
+.highlight[aria-pressed='true']:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-highlight-light);
+}
 .highlight[aria-pressed='false']:hover {
-	background-color: var(#{$prefix}-current-highlight-lighter);
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-highlight);
 }
 .highlight.outline[aria-pressed='true'],
 .highlight.outline[aria-pressed='true']:active {
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 
-.bare[aria-pressed='true']:hover,
 .bare[aria-pressed='false']:hover {
 	box-shadow: var(#{$prefix}-shadow);
+	background-color: inherit;
 }
 
 .bare[aria-pressed='true'],
 .bare[aria-pressed='true']:active {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-primary-lighter);
+	background-color: var(#{$prefix}-current-gray);
+}
+
+.primary.bare[aria-pressed='false']:hover {
+	border-color: var(#{$prefix}-current-primary);
+	background-color: var(#{$prefix}-color-primary-lighter);
+}
+
+.accent.bare[aria-pressed='false']:hover {
+	border-color: var(#{$prefix}-current-accent-light);
+}
+
+.highlight.bare[aria-pressed='false']:hover {
+	border-color: var(#{$prefix}-current-highlight-light);
+}
+
+.bare.primary[aria-pressed='true'],
+.bare.primary[aria-pressed='true']:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-primary-lighter);
+}
+
+.bare.accent[aria-pressed='true'],
+.bare.accent[aria-pressed='true']:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-accent-lighter);
+}
+
+.bare.highlight[aria-pressed='true'],
+.bare.highlight[aria-pressed='true']:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-highlight-light);
+}
+
+.primary.bare[aria-pressed='false']:active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-primary-light);
+}
+.primary.bare[aria-pressed='true']:active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-primary-lighter);
+}
+
+.bare.accent[aria-pressed='false']:active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-accent-light);
+}
+.bare.accent[aria-pressed='true']:active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-accent-lighter);
+}
+
+.bare.highlight[aria-pressed='false']:active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-highlight-light);
+}
+.bare.highlight[aria-pressed='true']:active {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-highlight-lighter);
 }
 
 //== Alignment
