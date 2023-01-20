@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 	import {clickOutside} from '../../utils/click-outside.js'
+	import format from '../../utils/format'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
@@ -11,10 +12,6 @@
 	export let items: {slug: string; title: string; emoji: string}[] = []
 
 	let selected = ''
-
-	const formatText = (emoji, title) => {
-		return `${emoji} ${title}`
-	}
 
 	let expanded = false
 
@@ -61,7 +58,7 @@
 					id={slug}
 					data-test={slug}
 				>
-					{formatText(emoji, title)}
+					{format.formatLabel(emoji, title)}
 				</button>
 			{/each}
 		</menu>

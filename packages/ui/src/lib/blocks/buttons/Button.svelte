@@ -3,6 +3,7 @@
 <script lang="ts">
 	// Inputs
 	import {browser} from '$app/environment'
+	import format from '../../utils/format'
 	export let size = ''
 	export let icon = ''
 	export let color = ''
@@ -17,13 +18,10 @@
 			window.alert(`${text} Clicked`)
 		}
 	}
-	// TODO: extract common function for constructing icon + string
-	const formatText = (name, icon) => {
-		return icon ? `${icon} ${name}` : name
-	}
+
 	$: classes = `${size} ${variant} ${color}`
 </script>
 
 <button {id} data-test={id} on:click={onClick} class={classes} {disabled}>
-	<slot>{formatText(text, icon)}</slot>
+	<slot>{format.formatLabel(text, icon)}</slot>
 </button>

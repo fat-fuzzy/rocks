@@ -1,8 +1,9 @@
 <script lang="ts">
-	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
-	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import type {UIProps} from './story-options'
 	import {options} from './story-options'
+	import format from '../utils/format'
+	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
+	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()
@@ -16,11 +17,6 @@
 
 	let current = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
 
-	// TODO: extract common function for constructing emoji + string
-	const formatText = (name, emoji) => {
-		return emoji ? `${emoji} ${name}` : name
-	}
-
 	function handleInput(event, name) {
 		const payload = {
 			name,
@@ -31,8 +27,6 @@
 				},
 			],
 		}
-		console.log('handleInput payload')
-		console.log(payload)
 		dispatch('changed', payload)
 	}
 
@@ -107,7 +101,7 @@
 						/>
 						<datalist id={`items-${name}`}>
 							{#each items as { id, label, asset }}
-								<option {id} value={asset}>{formatText(label, asset)}</option>
+								<option {id} value={asset}>{format.formatLabel(label, asset)}</option>
 							{/each}
 						</datalist>
 					{/if}

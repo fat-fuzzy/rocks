@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {browser} from '$app/environment'
+	import {createEventDispatcher} from 'svelte'
 	import format from '../../utils/format'
 	import Button from '../buttons/Button.svelte'
-	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'switcher'
