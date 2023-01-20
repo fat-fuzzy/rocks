@@ -1,4 +1,5 @@
 <script lang="ts">
+	import format from '../../utils/format'
 	import Toggle from '../buttons/Toggle.svelte'
 	import {createEventDispatcher} from 'svelte'
 
@@ -23,14 +24,10 @@
 		{id: 'btn-toggle-2', label: 'Toggle 2'},
 		{id: 'btn-toggle-3', label: 'Toggle 3'},
 	]
-
+	const menuId = id
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
 
-	const formatText = (label, icon) => {
-		return icon ? `${icon} ${label}` : label
-	}
-
-	export let onToggle = (event: any) => {
+	export let onToggle = (event) => {
 		if (multiple) {
 			if (event.detail.pressed) {
 				selected = [...selected, event.detail]
@@ -54,10 +51,10 @@
 </script>
 
 {#if title}<p>{title}</p>{/if}
-<menu class={`l-${layout} ${size}`}>
+<menu id={menuId} class={`l-${layout} ${size}`}>
 	{#each items as { id, label, icon }}
 		<li>
-			<Toggle {id} on:toggle={onToggle} {variant} {color} text={formatText(label, icon)} />
+			<Toggle {id} on:toggle={onToggle} {variant} {color} text={format.formatLabel(label, icon)} />
 		</li>
 	{/each}
 </menu>

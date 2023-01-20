@@ -1,10 +1,11 @@
 <script lang="ts">
 	import {page} from '$app/stores'
+	import format from '../../utils/format'
+
 	export let path = ''
 	export let layout = ''
 	export let size = 'md'
 	export let align = 'start'
-	export let show = ''
 	export let id = 'list'
 	export let depth = 0
 	export let items: {slug: string; title: string; emoji?: string; items?: []}[] = [
@@ -13,27 +14,24 @@
 	]
 
 	let layoutClass = layout ? `l-${layout}` : ''
+	let depthClass = `depth-${depth}`
 
-	function formatTitle(title, emoji) {
-		return emoji ? `${emoji} ${title}` : title
-	}
-	function formatHref(slug) {
-		return `${path}/${slug}`
-	}
-
-	$: current = (slug: string) => ($page.url.pathname === formatHref(slug) ? 'page' : undefined)
+	$: current = (slug: string) =>
+		$page.url.pathname === format.formatHref(path, slug) ? 'page' : undefined
 </script>
 
-<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${size} ${align} ${show} depth-${depth}`}>
+<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${size} ${align} ${depthClass}`}>
 	{#each items as item}
 		{@const {slug, title, emoji} = item}
 		{@const subItems = item.items}
 		<li aria-current={current(slug)}>
-			<a data-sveltekit-preload-data href={formatHref(slug)}>{formatTitle(title, emoji)}</a>
+			<a data-sveltekit-preload-data href={format.formatHref(path, slug)}
+				>{format.formatLabel(title, emoji)}</a
+			>
 			{#if subItems}
 				<svelte:self
 					items={subItems}
-					path={formatHref(slug)}
+					path={format.formatHref(path, slug)}
 					id={`${slug}-${id}`}
 					{layout}
 					{size}
