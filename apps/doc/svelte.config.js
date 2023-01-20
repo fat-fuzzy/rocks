@@ -18,11 +18,7 @@ const config = {
 		}),
 
 		alias: {
-			$lib: path.resolve('./src/lib'),
 			$utils: path.resolve('./src/utils'),
-			$styles: path.resolve('./src/styles'),
-			$stores: path.resolve('./src/stores'),
-			$types: path.resolve('./src/types'),
 			$data: path.resolve('./src/data'),
 		},
 	},
