@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import Sidebar from '$lib/layouts/Sidebar.svelte'
-	import SubNav from '$blocks/navs/SubNav.svelte'
+	import RevealNav from '$blocks/navs/RevealNav.svelte'
 
 	$: sketches = $page.data.sketches
 	$: path = ''
@@ -21,7 +21,7 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<SubNav {items} {path} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
+		<RevealNav {items} {path} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
 	</svelte:fragment>
 	<svelte:fragment slot="main">
 		<slot />

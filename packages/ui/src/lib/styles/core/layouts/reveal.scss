@@ -14,6 +14,8 @@
 	);
 	position: absolute;
 	top: var(#{$prefix}-show-top);
+
+	// TODO : fix color / bg color- cannot override for now
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
 	left: 0;
@@ -21,8 +23,11 @@
 	z-index: var(#{$prefix}-z-index-reveal);
 }
 
-.l-reveal .toggle.collapse + .start {
-	justify-self: flex-start;
+// TODO: Fix bg color
+.l-reveal .toggle.collapse + .show.contrast {
+	// TODO : fix color / bg color- cannot override for now
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-bg-contrast);
 }
 
 .l-reveal .toggle.collapse + .end {

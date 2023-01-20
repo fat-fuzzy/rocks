@@ -23,17 +23,15 @@
 		{id: 'btn-3', label: 'Button 3', type: 'button', icon: '❤️'},
 	]
 
-	let clickedId = ''
-	const formatText = (label, icon) => {
-		return icon ? `${icon} ${label}` : label
-	}
+	let clicked = ''
+
 	export let onClick = (event) => {
 		if (browser) {
 			window.alert(`${event.target.textContent} Clicked`)
 		}
-		clickedId = event.target.id
+		clicked = event.target.id
 		dispatch('click', {
-			clicked: clickedId,
+			clicked,
 		})
 	}
 </script>
