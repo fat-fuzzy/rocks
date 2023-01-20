@@ -1,6 +1,9 @@
 <script>
 	import Toggle from '$blocks/buttons/Toggle.svelte'
 	import Fieldset from '$blocks/forms/Fieldset.svelte'
+
+	export let size ='md'
+	export let variant ='primary'
 </script>
 
 <svelte:head>
@@ -12,8 +15,8 @@
 	<h1>🤖 Machines</h1>
 </header>
 
-<form class="l-stack l-burrito md">
-	<Fieldset slug="toggle" legend="Toggle" {size}>
-		<Toggle />
+<form class={`l-stack l-burrito ${size}`}>
+	<Fieldset slug="toggle" legend="Toggle">
+		<Toggle {size} {variant} />
 	</Fieldset>
 </form>
