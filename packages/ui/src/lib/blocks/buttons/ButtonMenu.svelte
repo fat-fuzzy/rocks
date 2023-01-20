@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {browser} from '$app/environment'
+	import format from '../../utils/format'
 	import Button from '../buttons/Button.svelte'
 	import {createEventDispatcher} from 'svelte'
 
@@ -41,7 +42,7 @@
 	{#each items as { id, label, icon }}
 		<li>
 			<Button {id} {onClick} {variant} {color}>
-				{formatText(label, icon)}
+				{format.formatLabel(label, icon)}
 			</Button>
 		</li>
 	{/each}
