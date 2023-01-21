@@ -44,7 +44,7 @@ nav a:focus {
 	outline-offset: var(#{$prefix}-outline-offset-nav);
 }
 
-//== SubNav (tree-like navigation menus)
+//== RevealNav (tree-like navigation menus)
 ul.depth-1 {
 	padding-inline-start: var(#{$prefix}-current-size-plus);
 }

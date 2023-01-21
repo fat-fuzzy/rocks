@@ -6,17 +6,14 @@ import preprocess from 'svelte-preprocess'
 const config = {
 	kit: {
 		adapter: adapter(),
-
 		alias: {
-			$layout: path.resolve('./src/lib/layout'),
+			$layouts: path.resolve('./src/lib/layouts'),
 			$blocks: path.resolve('./src/lib/blocks'),
-			$utils: path.resolve('./src/lib/utils'),
-			$styles: path.resolve('./src/lib/styles'),
+			$utils: path.resolve('./src/utils'),
+			$data: path.resolve('./src/data'),
 			$stores: path.resolve('./src/lib/stores'),
 			$types: path.resolve('./src/lib/types'),
-			$data: path.resolve('./src/data'),
 		},
-
 		prerender: {
 			crawl: true,
 		},
