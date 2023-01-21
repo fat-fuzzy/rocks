@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import format from '../../utils/format'
+	import fixtures from '../../../data/fixtures'
 
 	export let path = ''
 	export let layout = ''
@@ -8,11 +9,7 @@
 	export let align = 'start'
 	export let id = 'list'
 	export let depth = 0
-	export let items: {slug: string; title: string; emoji?: string; items?: []}[] = [
-		{slug: '', title: 'Home'},
-		{slug: 'about', title: 'About'},
-	]
-
+	export let items: {slug: string; title: string; emoji?: string; items?: []}[] = fixtures.links
 	let layoutClass = layout ? `l-${layout}` : ''
 	let depthClass = `depth-${depth}`
 

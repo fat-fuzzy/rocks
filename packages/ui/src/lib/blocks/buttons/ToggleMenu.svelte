@@ -2,6 +2,7 @@
 	import format from '../../utils/format'
 	import Toggle from '../buttons/Toggle.svelte'
 	import {createEventDispatcher} from 'svelte'
+	import fixtures from '../../../data/fixtures'
 
 	const dispatch = createEventDispatcher()
 
@@ -12,18 +13,14 @@
 	export let color = ''
 	export let variant = ''
 	export let multiple = false
-
 	export let items: {
 		id: string
 		label: string
 		type?: string
 		icon?: string
 		disabled?: boolean
-	}[] = [
-		{id: 'btn-toggle-1', label: 'Toggle 1'},
-		{id: 'btn-toggle-2', label: 'Toggle 2'},
-		{id: 'btn-toggle-3', label: 'Toggle 3'},
-	]
+	}[] = fixtures.toggle
+
 	const menuId = id
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
 

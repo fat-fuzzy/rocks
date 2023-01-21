@@ -131,6 +131,10 @@ ul.depth-0 > li > a {
 	transition: color 0.2s linear;
 }
 
+.header-app ul li > a {
+	font-weight: var(#{$prefix}-font-weight-400);
+}
+
 .header-app nav a:hover {
 	color: var(#{$prefix}-current-primary-light);
 }
