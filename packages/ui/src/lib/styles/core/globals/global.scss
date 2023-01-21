@@ -35,6 +35,6 @@ th {
 }
 
 :focus {
-	outline: var(#{$prefix}-outline-width) dotted var(#{$prefix}-current-primary);
+	outline: var(#{$prefix}-outline-width) dotted var(#{$prefix}-current-color);
 	outline-offset: var(#{$prefix}-outline-offset);
 }
