@@ -3,6 +3,7 @@
 	import {createEventDispatcher} from 'svelte'
 	import format from '../../utils/format'
 	import Button from '../buttons/Button.svelte'
+	import fixtures from '../../../data/fixtures'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'switcher'
@@ -17,11 +18,7 @@
 		type: string
 		icon?: string
 		disabled?: boolean
-	}[] = [
-		{id: 'btn-1', label: 'Button 1', type: 'button', icon: '💡'},
-		{id: 'btn-2', label: 'Button 2', type: 'button', icon: '🦁'},
-		{id: 'btn-3', label: 'Button 3', type: 'button', icon: '❤️'},
-	]
+	}[] = fixtures.menu
 
 	let clicked = ''
 

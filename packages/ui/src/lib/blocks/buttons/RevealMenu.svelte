@@ -4,6 +4,7 @@
 	import {clickOutside} from '../../utils/click-outside.js'
 	import format from '../../utils/format'
 	import Button from './Button.svelte'
+	import fixtures from '../../../data/fixtures'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
@@ -22,11 +23,7 @@
 		icon?: string
 		variant?: string
 		disabled?: boolean
-	}[] = [
-		{id: 'btn-1', label: 'Button 1', type: 'button', variant: '', icon: '💡'},
-		{id: 'btn-2', label: 'Button 2', type: 'button', variant: '', icon: '🦁'},
-		{id: 'btn-3', label: 'Button 3', type: 'button', variant: '', icon: '❤️'},
-	]
+	}[] = fixtures.menu
 
 	let expanded = false
 

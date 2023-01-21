@@ -3,6 +3,8 @@
 	import {lang} from '$stores/intl'
 	import {theme} from '../../stores/theme'
 	import {emojis, themes} from '$types/constants.js'
+	import Nav from './Nav.svelte'
+	import {links} from '../../../data/nav'
 
 	// TODO: make svg css themeable / fix dark theme
 	import githubDay from '$lib/images/icon-dark-100-optim-github.svg'
@@ -40,22 +42,7 @@
 </script>
 
 <header class={headerClass}>
-	<nav id="nav-primary" class="l-main l-burrito">
-		<ul>
-			<li class:active={page.url.pathname === '/'} class="home">
-				<a data-sveltekit-preload-data href="/">
-					<span class="l-square" alt="Home">🐣</span>
-					Home
-				</a>
-			</li>
-			<li class:active={page.url.pathname === '/play'}>
-				<a data-sveltekit-preload-data href="/play">Play</a>
-			</li>
-			<li class:active={page.url.pathname === '/machines'}>
-				<a data-sveltekit-preload-data href="/machines">Machines</a>
-			</li>
-		</ul>
-	</nav>
+	<Nav id="nav-primary" items={links} layout="burrito main" />
 	<div class="l-side">
 		<menu class={`l-reveal sm ${breakpoint}`} use:clickOutside on:clickOutside={handleClickOutside}>
 			<button type="button" on:click={toggleTheme} class="polar">
