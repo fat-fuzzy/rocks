@@ -36,3 +36,9 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Troubleshooting
+
+Building for cloudflare
+
+https://community.cloudflare.com/t/add-pnpm-to-pre-installed-cloudflare-pages-tools/288514/5
