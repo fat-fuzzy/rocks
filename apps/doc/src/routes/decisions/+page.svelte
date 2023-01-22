@@ -2,7 +2,14 @@
 	import {page} from '$app/stores'
 
 	$: decisions = $page.data.decisions
+
+	let title = 'Fat Fuzzy Decisions'
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={`${title} documentation`} />
+</svelte:head>
 
 <header class="header-page">
 	<h1>Fat Fuzzy Decisions</h1>

@@ -12,7 +12,6 @@
 
 	export let className = ''
 	export let breakpoint = 'bp:md'
-	export let page
 
 	let actionsMenuExpanded = false
 
