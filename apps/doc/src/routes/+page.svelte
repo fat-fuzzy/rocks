@@ -1,29 +1,18 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import welcome from '$assets/images/001-intro.jpeg'
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Fat Fuzzy Doc | Home</title>
+	<meta name="description" content="Fat Fuzzy Rocks documentation home page" />
 </svelte:head>
 
-<section class="l-text l-center">
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		<div>to your new SvelteKit app</div>
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+<section class="l-text:xl l-center">
+	<header>
+		<h1>Welcome to Fat Fuzzy Doc!</h1>
+		<h2>This is the documentation for the Fat Fuzzy Rocks project</h2>
+	</header>
+	<picture class="card:lg">
+		<img src={welcome} alt="Creating a Webapp: where to start ?" />
+	</picture>
 </section>

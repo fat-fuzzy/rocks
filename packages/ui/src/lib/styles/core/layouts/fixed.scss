@@ -8,8 +8,11 @@
 	z-index: var(#{$prefix}-z-index-sticky);
 }
 
-.fixed\:top > main {
+.fixed\:top {
 	padding-block-start: calc(var(#{$prefix}-header-height) + 2 * var(#{$prefix}-header-margin));
+}
+
+.fixed\:top > main {
 	min-height: calc(
 		100vh - var(#{$prefix}-header-height) - 3 * var(#{$prefix}-header-margin) -
 			var(#{$prefix}-footer-height)

@@ -1,9 +1,16 @@
-<script>
-	import Header from './Header.svelte';
+<script lang="ts">
+	import {page} from '$app/stores'
+	import Header from './Header.svelte'
+
+	function getClassNameFromUrl(url: URL) {
+		return url.pathname === '/' ? 'home' : url.pathname.slice(1, url.pathname.length)
+	}
+
+	$: className = getClassNameFromUrl($page.url)
 </script>
 
 <Header />
-<main class="l-center">
+<main class="l-center {className}">
 	<slot />
 </main>
 

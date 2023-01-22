@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>About</title>
+	<title>Fat Fuzzy Rocks | About</title>
 	<meta name="description" content="About this app" />
 </svelte:head>
 

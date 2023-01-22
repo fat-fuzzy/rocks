@@ -36,7 +36,7 @@
 	})
 </script>
 
-<Header className="header-app" page={$page} />
+<Header className="header-app" />
 
 <main class="l-center {className}">
 	<slot />

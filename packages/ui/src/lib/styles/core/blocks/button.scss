@@ -48,6 +48,8 @@ button.primary {
 	background-color: var(#{$prefix}-current-primary);
 }
 button.outline.primary {
+	color: var(#{$prefix}-current-primary);
+	background-color: inherit;
 	border-color: var(#{$prefix}-current-primary);
 }
 button.primary:not(.bare):not([aria-pressed]):not(:disabled):hover,
@@ -111,7 +113,7 @@ button.outline.highlight:not(:disabled):active {
 
 //== Bare buttons (no background, no border)
 
-.bare {
+button.bare {
 	font-size: var(#{$prefix}-font-size-ui);
 	font-family: var(#{$prefix}-font-family-ui);
 	font-weight: var(#{$prefix}-font-weight-ui);
