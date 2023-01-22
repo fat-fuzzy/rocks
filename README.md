@@ -154,6 +154,7 @@ The packages, folders and files it contains may have different licenses:
 Resources for building a blog site using Svelte and SvelteKit
 
 - [mdsvex](https://mdsvex.pngwn.io/)
+- [bluwy/website](https://github.com/bluwy/website)
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
 
 ### Design System
@@ -188,8 +189,8 @@ Resources for building a blog site using Svelte and SvelteKit
 - [XState Doc](https://xstate.js.org/docs/)
 - [XState visual Editor](https://stately.ai/registry/new)
 - [xstate GitHub](https://github.com/statelyai/xstate)
-- [xstate-svelte GitHub](https://github.com/statelyai/xstate/tree/main/packages/xstate-svelte)
-- [svelte-fsm GitHub](https://github.com/kenkunz/svelte-fsm)
+- [xstate-svelte](https://github.com/statelyai/xstate/tree/main/packages/xstate-svelte)
+- [svelte-fsm](https://github.com/kenkunz/svelte-fsm)
 - [Statecharts Doc](https://statecharts.dev/)
 
 ### Maths

@@ -20,6 +20,7 @@ TODO: CSS
 - Improve color workflow and design
   - Create thoughtful color system
   - Improve css vars color system
+- Design + dev: `transitions.scss` and `motion.scss`
 - I'd like to output CSS files and load `block/*.css` to corresponding `block/*.svelte` components in Svelte library (for now all css is global as I concentrated on the content of the css rather than its loading mechanism)
 - Post css cleanup and Stylelint
 - Consider integrating [Jit Props](https://github.com/GoogleChromeLabs/postcss-jit-props) to lighten the CSS load
