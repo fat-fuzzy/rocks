@@ -26,6 +26,4 @@ const fetchDecisions = async () => {
 	return allData
 }
 
-const decisionsHtml = await fetchDecisions()
-
-export default decisionsHtml
+export default fetchDecisions
