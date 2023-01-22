@@ -3,14 +3,14 @@
 
 	let title: string
 	let year: string
-	let content: {html: string}
-	$: title = $page.data.title
-	$: year = $page.data.year
-	$: content = $page.data.content
+	$: decision = $page.data.decisions.find((d)=> d.path === $page.data.path)
+	$: title = decision.meta.title
+	$: year = decision.meta.year
+	$: html = $page.data.html
 </script>
 
 <article class="l-text">
 	<h1>{title}</h1>
 	<p>Published: {year}</p>
-	{@html content}
+	{@html html}
 </article>

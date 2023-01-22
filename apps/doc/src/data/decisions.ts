@@ -1,4 +1,6 @@
-const decisionsMarkdowns = import.meta.glob('/src/assets/decisions/*.md')
+const decisionsMarkdowns = import.meta.glob('../assets/decisions/*.md', {
+	import: 'default',
+})
 /**
  * Load Decision data from markdown files contained in 'src/data/decisions'
  *
@@ -12,17 +14,18 @@ const fetchDecisions = async () => {
 		// TODO: understand this vite functionality
 		decisions.map(async ([path, resolver]) => {
 			const result: any = await resolver()
-			console.log('fetchDecisions resolver result')
-			console.log(result)
-
-			const filePath = path.slice(22, -3) // removes '/src/assets' and '*.md'
+			const filePath = path.slice(20, -3) // removes '/src/assets' and '*.md'
 
 			return {
-				meta: result?.metadata,
 				path: filePath,
+				html: result.render().html,
 			}
 		}),
 	)
 
 	return allData
 }
+
+const decisionsHtml = await fetchDecisions()
+
+export default decisionsHtml
