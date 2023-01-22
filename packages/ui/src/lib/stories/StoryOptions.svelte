@@ -42,9 +42,6 @@
 					},
 				],
 			}
-			console.log('handleToggle payload')
-			console.log(payload)
-
 			dispatch('changed', payload)
 		}
 	}
