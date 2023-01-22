@@ -1,5 +1,5 @@
 <script>
-	import welcome from '$lib/images/001-intro.jpeg'
+	import welcome from '$assets/images/001-intro.jpeg'
 </script>
 
 <svelte:head>
