@@ -23,6 +23,9 @@ const config = {
 	preprocess: preprocess({
 		postcss: true,
 	}),
+	build: {
+		target: 'esnext',
+	},
 }
 
 export default config

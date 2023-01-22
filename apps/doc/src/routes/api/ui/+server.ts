@@ -1,7 +1,7 @@
 import {error} from '@sveltejs/kit'
 import type {RequestHandler} from './$types'
 import {json} from '@sveltejs/kit'
-import {fetchComponentData} from '$utils/stories'
+import {fetchComponentData} from '$data/stories'
 
 const DEFAULT_OPTIONS = {
 	theme: {light: 'day', contrast: 'low'},

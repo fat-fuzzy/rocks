@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	const { decisions } = $page.data;
+	import {page} from '$app/stores'
+
+	$: decisions = $page.data.decisions
 </script>
 
 <header class="header-page">

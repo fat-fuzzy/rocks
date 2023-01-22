@@ -1,13 +1,13 @@
-import { defineMDSveXConfig as defineConfig } from 'mdsvex';
+import {defineMDSveXConfig as defineConfig} from 'mdsvex'
 
 const config = defineConfig({
 	extensions: ['.svelte', '.md', '.svx'],
 	smartypants: {
-		dashes: 'oldschool'
+		dashes: 'oldschool',
 	},
 
 	remarkPlugins: [],
-	rehypePlugins: []
-});
+	rehypePlugins: [],
+})
 
-export default config;
+export default config

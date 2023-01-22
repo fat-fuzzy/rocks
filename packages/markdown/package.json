@@ -1,0 +1,16 @@
+{
+	"package": "@fat-fuzzy/markdown",
+	"name": "@fat-fuzzy/markdown",
+	"version": "0.0.1",
+	"author": "Patricia Boh",
+	"license": "Apache-2.0",
+	"type": "module",
+	"exports": "./index.js",
+	"dependencies": {
+		"rehype-parse": "8.0.4",
+		"rehype-remark": "9.1.2",
+		"remark-gfm": "3.0.1",
+		"remark-stringify": "10.0.2",
+		"unified": "10.1.2"
+	}
+}

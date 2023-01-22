@@ -4,13 +4,12 @@
 	const {Sidebar} = layouts
 	const {RevealNav} = blocks
 
-	$: decisions = $page.data.decisions
 	$: path = ''
 	$: items = [
 		{
 			slug: 'decisions',
 			title: 'Decisions',
-			items: decisions.map(({meta, path}) => ({
+			items: $page.data.decisions.map(({meta, path}) => ({
 				slug: path,
 				title: `${meta.id} - ${meta.title}`,
 			})),
