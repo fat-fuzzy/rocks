@@ -17,11 +17,10 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@fat-fuzzy/ui": "workspace*",
-		"@fontsource/fira-mono": "^4.5.10",
-		"@neoconfetti/svelte": "^1.0.0",
+		"@fat-fuzzy/ui": "workspace:*",
+		"@fat-fuzzy/markdown": "workspace:*",
 		"@playwright/test": "1.25.0",
-		"@sveltejs/adapter-static": "latest",
+		"@sveltejs/adapter-cloudflare": "latest",
 		"@sveltejs/kit": "latest",
 		"@types/cookie": "^0.5.1",
 		"eslint-config-custom": "workspace:*",
