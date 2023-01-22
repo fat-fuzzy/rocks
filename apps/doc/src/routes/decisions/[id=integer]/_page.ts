@@ -1,6 +1,5 @@
 import {error} from '@sveltejs/kit'
 import type {PageLoad} from './$types'
-import markdown from '@fat-fuzzy/markdown'
 
 // TODO: [fetch this from some bucket type storage] < Maybe not - fix copying of md assets into server build first
 const DATA_PATH = '../../../assets/decisions/'

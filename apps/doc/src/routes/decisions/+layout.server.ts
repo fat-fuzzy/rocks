@@ -3,14 +3,10 @@ const decisionsMarkdowns = import.meta.glob('/src/assets/decisions/*.md')
 
 export const load: LayoutServerLoad = async () => {
 	const decisions = Object.entries(decisionsMarkdowns)
-	console.log('decisions')
-	console.log(decisions)
 	const allData = await Promise.all(
 		// TODO: understand this vite functionality
 		decisions.map(async ([path, resolver]) => {
 			const result: any = await resolver()
-			console.log('fetchDecisions resolver result')
-			console.log(result)
 
 			const filePath = path.slice(22, -3) // removes '/src/assets' and '*.md'
 
