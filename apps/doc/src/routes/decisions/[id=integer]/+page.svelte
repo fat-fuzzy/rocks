@@ -1,17 +1,16 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import type { ComponentType } from 'svelte';
+	import {page} from '$app/stores'
 
-	let title: string;
-	let year: string;
-	let Content: ComponentType;
-	$: title = $page.data.title;
-	$: year = $page.data.year;
-	$: Content = $page.data.Content;
+	let title: string
+	let year: string
+	let content: {html: string}
+	$: title = $page.data.title
+	$: year = $page.data.year
+	$: content = $page.data.content
 </script>
 
 <article class="l-text">
 	<h1>{title}</h1>
 	<p>Published: {year}</p>
-	<svelte:component this={Content} />
+	{@html content}
 </article>

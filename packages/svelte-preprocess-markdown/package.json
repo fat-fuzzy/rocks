@@ -1,0 +1,12 @@
+{
+	"package": "@fat-fuzzy/svelte-preprocess-markdown",
+	"name": "@fat-fuzzy/svelte-preprocess-markdown",
+	"version": "0.0.1",
+	"author": "Patricia Boh",
+	"license": "Apache-2.0",
+	"type": "module",
+	"exports": "./index.js",
+	"dependencies": {
+		"@fat-fuzzy/markdown": "workspace:*"
+	}
+}

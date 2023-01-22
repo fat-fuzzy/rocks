@@ -1,8 +1,9 @@
 import {error} from '@sveltejs/kit'
 import type {PageLoad} from './$types'
+import markdown from '@fat-fuzzy/markdown'
 
-// TODO: fetch this from some bucket type storage
-const DATA_PATH = '../../../data/decisions/'
+// TODO: [fetch this from some bucket type storage] < Maybe not - fix copying of md assets into server build first
+const DATA_PATH = '../../../assets/decisions/'
 /**
  * Load data from markdown file based on route parameters
  * @param params Request parameters
@@ -10,6 +11,7 @@ const DATA_PATH = '../../../data/decisions/'
  */
 export const load: PageLoad = async ({params}) => {
 	const markdown = await import(`${DATA_PATH}${params.id}.md`)
+
 	if (markdown) {
 		const {title, year} = markdown.metadata
 		const Content = markdown.default

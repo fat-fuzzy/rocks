@@ -9,7 +9,7 @@
 	export let variant = ''
 	export let color = ''
 	export let path = ''
-	export let id = 'sub-nav'
+	export let id = 'reveal-nav'
 	export let title = 'RevealNav'
 	export let icon = ''
 	export let align = 'start'
@@ -59,12 +59,7 @@
 	$: show = expanded ? 'show card:lg layer contrast' : 'hide'
 </script>
 
-<nav
-	aria-labelledby={id}
-	class={`l-reveal l-${layout} ${size} ${breakpoint} sub-nav`}
-	use:clickOutside
-	on:clickOutside={handleClickOutside}
->
+<nav aria-labelledby={id} class={`l-reveal l-${layout} ${size} ${breakpoint} sub-nav`}>
 	<button
 		{id}
 		type="button"
@@ -72,6 +67,8 @@
 		aria-expanded={expanded}
 		aria-controls={`${id}-menu-list`}
 		on:click={toggleReveal}
+		use:clickOutside
+		on:clickOutside={(event) => handleClickOutside(event)}
 	>
 		{format.formatLabel(title, icon)}
 	</button>
