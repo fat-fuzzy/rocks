@@ -1,7 +1,7 @@
 import path from 'path'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
-import adapter from '@sveltejs/adapter-static'
+import adapter from '@sveltejs/adapter-cloudflare'
 import preprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -13,18 +13,16 @@ const config = {
 	preprocess: [preprocess(), mdsvex(mdsvexConfig)],
 
 	kit: {
-		adapter: adapter({
-			fallback: 'index.html',
-		}),
+		adapter: adapter(),
 
 		alias: {
-			$lib: path.resolve('./src/lib'),
 			$utils: path.resolve('./src/utils'),
-			$styles: path.resolve('./src/styles'),
-			$stores: path.resolve('./src/stores'),
-			$types: path.resolve('./src/types'),
 			$data: path.resolve('./src/data'),
+			$assets: path.resolve('./src/assets'),
 		},
+	},
+	build: {
+		target: 'esnext',
 	},
 }
 

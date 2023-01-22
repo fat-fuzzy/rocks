@@ -1,11 +1,14 @@
 {
 	"name": "@fat-fuzzy/api",
 	"version": "0.0.1",
-	"description": "MAD app starter kit",
+	"description": "Fat Fuzzy API infrastructure configuration",
 	"main": "index.js",
 	"scripts": {
+		"sls": "serverless",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "Patricia Boh",
-	"license": "Apache-2.0"
+	"license": "Apache-2.0",
+	"devDependencies": {
+	}
 }

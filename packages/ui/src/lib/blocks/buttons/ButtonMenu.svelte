@@ -1,46 +1,43 @@
 <script lang="ts">
 	import {browser} from '$app/environment'
-	import Button from '../buttons/Button.svelte'
 	import {createEventDispatcher} from 'svelte'
+	import format from '../../utils/format'
+	import Button from '../buttons/Button.svelte'
+	import fixtures from '../../../data/fixtures'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'switcher'
 	export let size = ''
 	export let breakpoint = 'bp:md'
+	export let color = ''
 	export let variant = ''
 
 	export let items: {
 		id: string
-		title: string
+		label: string
 		type: string
-		emoji?: string
+		icon?: string
 		disabled?: boolean
-	}[] = [
-		{id: 'btn-1', title: 'Button 1', type: 'button'},
-		{id: 'btn-2', title: 'Button  2', type: 'button'},
-		{id: 'btn-3', title: 'Button  3', type: 'button'},
-	]
+	}[] = fixtures.menu
 
-	let clickedId = ''
-	const formatText = (title, emoji) => {
-		return emoji ? `${emoji} ${title}` : title
-	}
+	let clicked = ''
+
 	export let onClick = (event) => {
 		if (browser) {
 			window.alert(`${event.target.textContent} Clicked`)
 		}
-		clickedId = event.target.id
+		clicked = event.target.id
 		dispatch('click', {
-			clicked: clickedId,
+			clicked,
 		})
 	}
 </script>
 
 <menu class={`l-${layout} ${size} ${breakpoint}`}>
-	{#each items as { id, title, emoji }}
+	{#each items as { id, label, icon }}
 		<li>
-			<Button {id} {onClick} {variant}>
-				{formatText(title, emoji)}
+			<Button {id} {onClick} {variant} {color}>
+				{format.formatLabel(label, icon)}
 			</Button>
 		</li>
 	{/each}

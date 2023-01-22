@@ -3,13 +3,13 @@
 <script lang="ts">
 	// Inputs
 	import {browser} from '$app/environment'
+	import format from '../../utils/format'
 	export let size = ''
 	export let icon = ''
 	export let color = ''
-	export let variant = '' // TODO: Figure algorithmic light/dark + alt button color schemes
+	export let variant = '' // TODO: Figure algorithmic day/night + alt button color schemes
 	export let id = 'btn'
 	export let disabled = false
-	export let type = 'submit'
 	export let text = 'Button'
 
 	// Event Handlers
@@ -18,9 +18,10 @@
 			window.alert(`${text} Clicked`)
 		}
 	}
-	$: className = `${icon} ${size} ${variant} ${color}`
+
+	$: classes = `${size} ${variant} ${color}`
 </script>
 
-<button {id} data-test={id} on:click={onClick} class={className} {disabled} {type}>
-	<slot>{text}</slot>
+<button {id} data-test={id} on:click={onClick} class={classes} {disabled}>
+	<slot>{format.formatLabel(text, icon)}</slot>
 </button>

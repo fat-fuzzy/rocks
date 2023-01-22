@@ -3,7 +3,7 @@
 	import logo from '$lib/images/svelte-logo.svg'
 
 	// TODO: make svg css themeable / fix dark theme
-	import githubLight from '$lib/images/icon-dark-100-optim-github.svg'
+	import githubDay from '$lib/images/icon-dark-100-optim-github.svg'
 	import github from '$lib/images/icon-dark-100-optim-github.svg'
 </script>
 

@@ -66,3 +66,8 @@ pre {
 	background-color: var(#{$prefix}-color-gray-5);
 	overflow: auto;
 }
+
+article,
+.l-text {
+	background-color: inherit;
+}

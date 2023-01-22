@@ -5,91 +5,58 @@ body {
 	#{$prefix}-current-primary: var(#{$prefix}-color-gray-5);
 }
 
-.light {
+.day {
 	#{$prefix}-current-bg-color: var(#{$prefix}-color-light);
+	#{$prefix}-current-bg-contrast: var(#{$prefix}-color-white);
+	#{$prefix}-current-polar: var(#{$prefix}-color-white);
 	#{$prefix}-current-gray: var(#{$prefix}-color-gray-1);
+	#{$prefix}-current-gray-contrast: var(#{$prefix}-color-gray-2);
 	#{$prefix}-current-color: var(#{$prefix}-color-dark);
-	#{$prefix}-current-color-alt: var(#{$prefix}-color-light);
+	#{$prefix}-current-color-contrast: var(#{$prefix}-color-light);
 	#{$prefix}-current-primary: var(#{$prefix}-color-primary);
 	#{$prefix}-current-primary-light: var(#{$prefix}-color-primary-light);
+	#{$prefix}-current-primary-lighter: var(#{$prefix}-color-primary-lighter);
 	#{$prefix}-current-accent: var(#{$prefix}-color-accent);
+	#{$prefix}-current-accent-light: var(#{$prefix}-color-accent-light); // TODO: Fix
+	#{$prefix}-current-accent-lighter: var(#{$prefix}-color-accent-lighter); // TODO: Fix
+	#{$prefix}-current-highlight-dark: var(#{$prefix}-color-highlight-dark); // TODO: Fix
 	#{$prefix}-current-highlight: var(#{$prefix}-color-highlight); // TODO: Fix
+	#{$prefix}-current-highlight-light: var(#{$prefix}-color-highlight-light); // TODO: Fix
+	#{$prefix}-current-highlight-lighter: var(#{$prefix}-color-highlight-lighter); // TODO: Fix
 	#{$prefix}-current-danger: var(#{$prefix}-color-danger);
 	#{$prefix}-current-shadow: var(#{$prefix}-color-shadow);
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
 }
-.dark {
+.night {
 	#{$prefix}-current-bg-color: var(#{$prefix}-color-dark);
+	#{$prefix}-current-bg-contrast: var(#{$prefix}-current-gray);
+	#{$prefix}-current-polar: var(#{$prefix}-color-dark);
 	#{$prefix}-current-gray: var(#{$prefix}-color-gray-5);
+	#{$prefix}-current-gray-contrast: var(#{$prefix}-color-gray-4);
 	#{$prefix}-current-color: var(#{$prefix}-color-light);
-	#{$prefix}-current-color-alt: var(#{$prefix}-color-dark);
+	#{$prefix}-current-color-contrast: var(#{$prefix}-color-dark);
 	#{$prefix}-current-primary: var(#{$prefix}-color-primary-light);
-	#{$prefix}-current-primary-light: var(#{$prefix}-color-primary);
+	#{$prefix}-current-primary-light: var(#{$prefix}-color-primary-lighter);
+	#{$prefix}-current-primary-lighter: var(#{$prefix}-color-primary-lightest);
 	#{$prefix}-current-accent: var(#{$prefix}-color-accent);
+	#{$prefix}-current-accent-light: var(#{$prefix}-color-accent-light); // TODO: Fix
+	#{$prefix}-current-accent-lighter: var(#{$prefix}-color-accent-lighter); // TODO: Fix
+	#{$prefix}-current-highlight-dark: var(#{$prefix}-color-highlight); // TODO: Fix
 	#{$prefix}-current-highlight: var(#{$prefix}-color-highlight); // TODO: Fix
+	#{$prefix}-current-highlight-light: var(#{$prefix}-color-highlight-light); // TODO: Fix
+	#{$prefix}-current-highlight-lighter: var(#{$prefix}-color-highlight-lighter); // TODO: Fix
 	#{$prefix}-current-danger: var(#{$prefix}-color-danger-light);
 	#{$prefix}-current-shadow: var(#{$prefix}-color-shadow-light);
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
 }
 
-//== Primary / Accent / Highlight colors: Links, buttons & utility class
-
-.outline,
-button.alt {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-color);
-}
-
-.primary,
-button.primary,
-button.outline.alt {
-	color: var(#{$prefix}-current-color-alt);
-	background-color: var(#{$prefix}-current-primary);
-	border-color: var(#{$prefix}-current-primary);
-}
-
-.outline,
-button.outline,
-button.primary.alt {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-primary);
-}
-
-.accent,
-button.accent {
-	color: var(#{$prefix}-current-color-alt);
-	background-color: var(#{$prefix}-current-accent);
-	border-color: var(#{$prefix}-current-accent);
-}
-
-.highlight,
-button.highlight {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-highlight);
-	border-color: var(#{$prefix}-current-highlight);
-}
-
-.accent.outline,
-button.accent.outline {
-	color: var(#{$prefix}-current-color);
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-accent);
-}
-
-.highlight.outline,
-button.highlight.outline {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-color);
-	border-color: var(#{$prefix}-current-highlight);
-}
+//== Primary / Accent / Highlight colors
 
 //== Text
 
-.light pre {
+.day pre {
 	color: var(#{$prefix}-color-light);
 }
 
@@ -113,12 +80,18 @@ button.highlight.outline {
 	background-color: var(#{$prefix}-color-white);
 }
 
+form,
+.l-text {
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-bg-color);
+}
+
 //== Links
 // - The styles below are global: for example they will apply to links in text
 // - Links in navs have specific styles (except for hover), see: `styles/core/blocks/nav.scss`
 a,
 .bare {
-	color: var(#{$prefix}-current-primary);
+	color: var(#{$prefix}-current-color);
 }
 
 a:visited,
@@ -173,16 +146,14 @@ textarea {
 	color: var(#{$prefix}-color-dark);
 }
 
-button.primary:focus {
+.primary:focus {
 	outline-color: var(#{$prefix}-current-primary);
 }
-
-button.highlight:focus {
-	outline-color: var(#{$prefix}-current-highlight);
-}
-
-button.accent:focus {
+.accent:focus {
 	outline-color: var(#{$prefix}-current-accent);
+}
+.highlight:focus {
+	outline-color: var(#{$prefix}-current-highlight);
 }
 
 button:hover {
@@ -226,11 +197,11 @@ button.link:disabled {
 
 //== Header, Navs, Menus
 
-.dark .header-app {
+.night .header-app {
 	color: var(#{$prefix}-color-light);
 	background-color: var(#{$prefix}-current-gray);
 }
-.light .header-app {
+.day .header-app {
 	color: var(#{$prefix}-primary);
 	background-color: var(#{$prefix}-current-bg-color);
 }

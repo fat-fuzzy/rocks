@@ -1,21 +1,20 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { blocks, layouts } from '@fat-fuzzy/ui';
-	const { Sidebar } = layouts;
-	const { SubNav } = blocks;
+	import {page} from '$app/stores'
+	import {blocks, layouts} from '@fat-fuzzy/ui'
+	const {Sidebar} = layouts
+	const {RevealNav} = blocks
 
-	$: decisions = $page.data.decisions;
-	$: path = '';
+	$: path = ''
 	$: items = [
 		{
 			slug: 'decisions',
 			title: 'Decisions',
-			items: decisions.map(({ meta, path }) => ({
+			items: $page.data.decisions.map(({meta, path}) => ({
 				slug: path,
-				title: `${meta.id} - ${meta.title}`
-			}))
-		}
-	];
+				title: `${meta.id} - ${meta.title}`,
+			})),
+		},
+	]
 </script>
 
 <svelte:head>
@@ -25,7 +24,7 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<SubNav title="Fat Fuzzy Decisions" {items} {path} breakpoint="bp:md" />
+		<RevealNav title="Fat Fuzzy Decisions" {items} {path} breakpoint="bp:md" size="md" />
 	</svelte:fragment>
 	<div slot="main" class="l-stack l-text">
 		<slot />

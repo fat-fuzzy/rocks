@@ -24,9 +24,10 @@ nav li a {
 	text-decoration: none;
 	max-width: 100%;
 	display: inline-block;
+	font-size: var(#{$prefix}-font-size-md);
+	line-height: 1;
 	text-overflow: ellipsis; // TODO: find out why I need to repeat ellipsis in <li> and <a>
 	overflow: hidden;
-	line-height: 1;
 }
 
 nav li a,
@@ -43,7 +44,7 @@ nav a:focus {
 	outline-offset: var(#{$prefix}-outline-offset-nav);
 }
 
-//== SubNav (tree-like navigation menus)
+//== RevealNav (tree-like navigation menus)
 ul.depth-1 {
 	padding-inline-start: var(#{$prefix}-current-size-plus);
 }
@@ -128,6 +129,10 @@ ul.depth-0 > li > a {
 	text-transform: uppercase;
 	text-decoration: none;
 	transition: color 0.2s linear;
+}
+
+.header-app ul li > a {
+	font-weight: var(#{$prefix}-font-weight-400);
 }
 
 .header-app nav a:hover {

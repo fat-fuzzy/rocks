@@ -1,22 +1,19 @@
 import path from 'path'
-import adapter from '@sveltejs/adapter-static'
+import adapter from '@sveltejs/adapter-cloudflare'
 import preprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
 		adapter: adapter(),
-
 		alias: {
-			$layout: path.resolve('./src/lib/layout'),
+			$layouts: path.resolve('./src/lib/layouts'),
 			$blocks: path.resolve('./src/lib/blocks'),
-			$utils: path.resolve('./src/lib/utils'),
-			$styles: path.resolve('./src/lib/styles'),
+			$utils: path.resolve('./src/utils'),
+			$data: path.resolve('./src/data'),
 			$stores: path.resolve('./src/lib/stores'),
 			$types: path.resolve('./src/lib/types'),
-			$data: path.resolve('./src/data'),
 		},
-
 		prerender: {
 			crawl: true,
 		},
@@ -26,6 +23,9 @@ const config = {
 	preprocess: preprocess({
 		postcss: true,
 	}),
+	build: {
+		target: 'esnext',
+	},
 }
 
 export default config

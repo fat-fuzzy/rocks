@@ -2,7 +2,7 @@
 	import {page} from '$app/stores'
 	import {blocks, layouts} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
-	const {SubNav} = blocks
+	const {RevealNav} = blocks
 
 	$: components = $page.data.components
 	$: path = ''
@@ -26,16 +26,11 @@
 	]
 </script>
 
-<svelte:head>
-	<title>FatFuzzy Doc | UI</title>
-	<meta name="description" content="Fat Fuzzy Doc - UI Library stories" />
-</svelte:head>
-
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<SubNav title="Fat Fuzzy UI" id="nav-page" {items} {path} breakpoint="bp:md" />
+		<RevealNav title="Fat Fuzzy UI" id="nav-page" {items} {path} breakpoint="bp:md" size="md" />
 	</svelte:fragment>
-	<div slot="main" class="l-stack l-text">
+	<div slot="main" class="l-stack card">
 		<slot />
 	</div>
 </Sidebar>

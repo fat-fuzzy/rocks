@@ -1,41 +1,53 @@
+<svelte:options accessors={true} />
+
 <script lang="ts">
+	import {createEventDispatcher} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
-	import toggleMachine from '$lib/machines/toggle/machineConfig'
+	import {createMachine} from 'xstate'
+	import format from '../../utils/format'
 
-	import Fieldset from '../forms/Fieldset.svelte'
+	const dispatch = createEventDispatcher()
 
+	export let id = 'toggle'
 	export let size = ''
-	const {state, send} = useMachine(toggleMachine)
+	export let icon = ''
+	export let variant = ''
+	export let initial = false
+	export let color = ''
+	export let text = 'Toggle'
+	export let disabled = false
+
+	let machineConfig = {
+		id: `toggle-${id}`,
+		initial: 'inactive',
+		states: {
+			inactive: {
+				on: {TOGGLE: 'active'},
+			},
+			active: {
+				on: {TOGGLE: 'inactive'},
+			},
+		},
+	}
+	let machine = createMachine(machineConfig)
+	let {state, send} = useMachine(machine)
+
+	let pressed = initial
+
+	$: classes = `${icon} ${size} ${variant} ${color}`
 	$: pressed = $state.value === 'active'
-	$: toggleClass = pressed ? 'outline accent' : 'primary accent' /* TODO: use aria state to style*/
-	$: stateClass = pressed ? 'primary accent' : 'outline accent' /* TODO: use aria state to style*/
+
+	const onClick = () => {
+		send('TOGGLE')
+		const payload = {
+			id,
+			pressed: $state.value === 'active',
+			send,
+		}
+		dispatch('toggle', payload)
+	}
 </script>
 
-<Fieldset slug="toggle" legend="Toggle" {size}>
-	<button
-		type="button"
-		on:click={() => send('TOGGLE')}
-		aria-pressed={pressed}
-		class={`${toggleClass}`}
-	>
-		Toggle
-		<span class={`${stateClass}`}>{pressed ? 'ON' : 'OFF'} </span>
-	</button>
-</Fieldset>
-
-<style>
-	/* TODO  Move Toggle styles to lib */
-	button {
-		display: flex;
-		justify-content: space-evenly;
-		align-items: center;
-	}
-	button.primary:hover span {
-		color: var(--ui-color-white);
-		background-color: var(--ui-accent);
-	}
-	span {
-		padding: 0.25em 0.5em;
-		border-radius: var(--ui-radius-lg);
-	}
-</style>
+<button {id} type="button" on:click={onClick} aria-pressed={pressed} class={classes} {disabled}>
+	{format.formatLabel(text, icon)}
+</button>

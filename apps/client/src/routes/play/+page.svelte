@@ -5,7 +5,7 @@
 	export let data: PageData
 	let {sketches} = data
 	const {Sidebar} = layouts
-	const {Sketch, SubNav} = blocks
+	const {Sketch, RevealNav} = blocks
 
 	let sketchId = '001'
 	let title
@@ -35,7 +35,7 @@
 
 <Sidebar>
 	<div slot="side">
-		<SubNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
+		<RevealNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
 	</div>
 	<div slot="main" class="l-stack">
 		🚧 WIP 🚧

@@ -13,9 +13,33 @@ Ideally, this project will:
 - [ ] be well tested and easily testable
 - [ ] have a low maintenance cost
 
-## 🚧 WIP - Getting started
+## Getting started
 
-## Docker
+This repository contains several packages, which can be used together or independently, depending on the use case.
+
+### Use cases
+
+#### Using a single package in another project
+
+[TODO]
+
+#### Using more than one package in another project
+
+[TODO]
+
+#### Using an app template
+
+[TODO]
+
+#### Using the monorepository architecture
+
+[TODO]
+
+#### Using the CSS library in another project
+
+[TODO]
+
+## Using Docker
 
 ### App image
 
@@ -23,33 +47,33 @@ Run **apps/doc** site in a docker container
 
 Build
 
-```
+```shell
  docker build -t rocks-image .
 ```
 
-Run app on port 8080
+Run app on port 5173
 
-```
-docker run -t -p 8080:80 rocks-image
+```shell
+docker run -t -p 5173:80 rocks-image
 ```
 
 Debug:
 
 1. Remove code until it builds, then see what is inside image using shell:
 
-   ```
+   ```shell
    docker run -it rocks-image sh
    ```
 
 1. See what the output of turbo is:
 
-   ```
+   ```shell
    pnpm turbo prune --scope="packagename" --docker
    ```
 
 **TODO:** Or with docker-compose
 
-```
+```shell
 docker-compose build rocks-image
 docker-compose up -d rocks-image
 ```
@@ -79,11 +103,14 @@ This repository is organized into two package types following [Turborepo's works
 ### Apps
 
 - **doc** A place for doc-worthy information such as:
+
   - User doc
   - **ui** library doc
   - new ideas and foundational decisions (architecture, tech, etc)
   - setup capabilities (back, front, design, etc)
-    This app is a website that uses and documents the **ui** library package
+
+  This app is a website that uses and documents the **ui** library package
+
 - **client** A frontend application example that uses the **ui** library package
   - WIP
 
@@ -122,7 +149,15 @@ The packages, folders and files it contains may have different licenses:
 
 ## Tools & Resources
 
-### design
+### Svelte libraries
+
+Resources for building a blog site using Svelte and SvelteKit
+
+- [mdsvex](https://mdsvex.pngwn.io/)
+- [bluwy/website](https://github.com/bluwy/website)
+- [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
+
+### Design System
 
 - Design System
   - [CUBE CSS](https://cube.fyi)
@@ -137,9 +172,9 @@ The packages, folders and files it contains may have different licenses:
   - [Managing and Exporting design tokens with style dictionary](https://www.michaelmang.dev/blog/managing-and-exporting-design-tokens-with-style-dictionary)
 - [Open Props](https://open-props.style/)
 
-### lib
+### Graphics
 
-- 👾 gfx - everything related to working with webgl
+- 👾 Everything related to working with webgl
   - [MDN WebGL API Doc](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
   - [WebGL Fundamentals](https://webglfundamentals.org/)
   - [WebGL Fundamentals - 2](https://webgl2fundamentals.org/)
@@ -148,12 +183,19 @@ The packages, folders and files it contains may have different licenses:
   - [Learn WebGL](https://learnwebgl.brown37.net/index.html)
   - [Introduction to computer graphics](https://math.hws.edu/graphicsbook/index.html)
   - [Introduction to WebGL](https://dev.opera.com/articles/introduction-to-webgl-part-1/)
-- 🤖 state machines
-  - [XState Doc](https://xstate.js.org/docs/)
-  - [XState visual Editor](https://stately.ai/registry/new)
-  - [xstate GitHub](https://github.com/statelyai/xstate)
-  - [xstate-svelte GitHub](https://github.com/statelyai/xstate/tree/main/packages/xstate-svelte)
-  - [svelte-fsm GitHub](https://github.com/kenkunz/svelte-fsm)
-  - [Statecharts Doc](https://statecharts.dev/)
+
+### State Machines
+
+- [XState Doc](https://xstate.js.org/docs/)
+- [XState visual Editor](https://stately.ai/registry/new)
+- [xstate GitHub](https://github.com/statelyai/xstate)
+- [xstate-svelte](https://github.com/statelyai/xstate/tree/main/packages/xstate-svelte)
+- [svelte-fsm](https://github.com/kenkunz/svelte-fsm)
+- [Statecharts Doc](https://statecharts.dev/)
+
+### Maths
+
+WIP
+
 - ➕ maths
   - [minimath](https://github.com/patiboh/minimath)

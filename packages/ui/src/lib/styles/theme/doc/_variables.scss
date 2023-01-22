@@ -5,8 +5,8 @@
 $_cssvars: null;
 $prefix: --doc;
 
-@import './color.scss';
 @import './scale.scss';
 // @import './fonts.scss';
 @import './typography.scss';
 @import './layout.scss';
+@import './color.scss';
