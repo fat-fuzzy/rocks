@@ -20,7 +20,7 @@
 		"@fat-fuzzy/ui": "workspace:*",
 		"@fat-fuzzy/markdown": "workspace:*",
 		"@playwright/test": "1.25.0",
-		"@sveltejs/adapter-cloudflare": "latest",
+		"@sveltejs/adapter-vercel": "latest",
 		"@sveltejs/kit": "latest",
 		"@types/cookie": "^0.5.1",
 		"eslint-config-custom": "workspace:*",
