@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import StoryOptions from './StoryOptions.svelte'
+	import Api from './Api.svelte'
 	import Sidebar from '../layouts/Sidebar.svelte'
-	import type {UIProps} from './story-options'
+	import type {UIProps} from './api-options'
 
 	export let title = ''
 	export let component: ComponentType
@@ -40,7 +40,7 @@
 		</main>
 		<aside slot="side">
 			{#if showOptions}
-				<StoryOptions {selected} component={title} on:changed={setCurrent} />
+				<Api {selected} component={title} on:changed={setCurrent} />
 			{:else}
 				<!-- TODO: <a class="font:lg bare" href={`/ui/blocks/${title}`}>View</a> -->
 			{/if}

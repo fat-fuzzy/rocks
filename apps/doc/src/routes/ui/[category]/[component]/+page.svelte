@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import type {ComponentType} from 'svelte'
-	import {stories} from '@fat-fuzzy/ui'
-	const {Story} = stories
+	import {api} from '@fat-fuzzy/ui'
+	const {Block} = api
 
 	let title: string
 	let Component: ComponentType
@@ -18,4 +18,4 @@
 	<h1>{title}</h1>
 </header>
 
-<Story {slug} showOptions={true} component={Component} {initial} />
+<Block {slug} showOptions={true} component={Component} {initial} />

@@ -1,5 +1,3 @@
-<svelte:options accessors={true} />
-
 <script lang="ts">
 	// Inputs
 	import {browser} from '$app/environment'

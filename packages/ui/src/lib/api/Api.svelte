@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {UIProps} from './story-options'
-	import {options} from './story-options'
+	import type {UIProps} from './api-options'
+	import {options} from './api-options'
 	import format from '../utils/format'
 	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
