@@ -32,7 +32,7 @@
 	{#if title}
 		<h3>{title}</h3>
 	{/if}
-	<Sidebar size="sm" placement="end">
+	<Sidebar size="xs" placement="end">
 		<main slot="main" class={`card plus ${selected.contrast ?? ''}`}>
 			{#if component}
 				<svelte:component this={component} {...selected} />

@@ -2,6 +2,7 @@
 	import {clickOutside} from '../../utils/click-outside.js'
 	import format from '../../utils/format'
 	import LinkList from './LinkList.svelte'
+	import fixtures from '../../../data/fixtures'
 
 	export let layout = ''
 	export let size = ''
@@ -13,38 +14,7 @@
 	export let title = 'RevealNav'
 	export let icon = ''
 	export let align = 'start'
-	export let items = [
-		{
-			slug: 'ui',
-			title: 'UI LIbrary Link - RevealNav Example',
-			items: [
-				{
-					slug: 'blocks',
-					title: 'Blocks Link 1',
-					items: [
-						{slug: 'RevealNav', title: 'RevealNav Item  1 A'},
-						{slug: 'RevealNav', title: 'RevealNav Item  1 B'},
-					],
-				},
-				{
-					slug: 'blocks',
-					title: 'Blocks Link 2',
-				},
-				{
-					slug: 'blocks',
-					title: 'Blocks Link 3',
-					items: [
-						{slug: 'RevealNav', title: 'RevealNav Item 2 A'},
-						{slug: 'RevealNav', title: 'RevealNav Item 2 B'},
-					],
-				},
-				{
-					slug: 'blocks',
-					title: 'Blocks Link 4',
-				},
-			],
-		},
-	]
+	export let items = fixtures.nav
 
 	let expanded = false
 

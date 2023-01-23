@@ -19,8 +19,8 @@
 			<li aria-current={$page.url.pathname.startsWith('/ui') ? 'page' : undefined}>
 				<a data-sveltekit-preload-data href="/ui">UI</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/decisions') ? 'page' : undefined}>
-				<a data-sveltekit-preload-data href="/decisions">Decisions</a>
+			<li aria-current={$page.url.pathname.startsWith('/log') ? 'page' : undefined}>
+				<a data-sveltekit-preload-data href="/log">Log</a>
 			</li>
 		</ul>
 	</nav>
@@ -37,27 +37,3 @@
 		</div>
 	</div>
 </header>
-
-<style>
-	/* TODO: cleanup this css (sveltekit app styles) */
-	.corner {
-		height: 100%;
-		width: auto;
-		padding: 0.5em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-		border-radius: var(--doc-radius-base);
-	}
-
-	.corner img {
-		height: 2.25em;
-		width: 2.25em;
-		object-fit: contain;
-	}
-</style>

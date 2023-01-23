@@ -1,6 +1,6 @@
 ---
 title: Decision title
-year: 'YYYY'
+date: 'YYYY-MM-DD'
 slug: decision-title
 id: 'same-as-name-of-file-without-extension'
 tags: ['example', 'doc', 'monorepo']
