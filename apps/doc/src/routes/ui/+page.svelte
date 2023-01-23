@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {blocks, stories} from '@fat-fuzzy/ui'
-	const {Story} = stories
+	import {blocks, api} from '@fat-fuzzy/ui'
+	const {Block} = api
 
 	let title = 'Fat Fuzzy UI'
 	const components = blocks
@@ -24,6 +24,6 @@
 	<h2>Blocks</h2>
 	{#each keys as key}
 		{@const Component = components[key]}
-		<Story title={key} slug={key.toLowerCase()} component={Component} {initial} />
+		<Block title={key} slug={key.toLowerCase()} component={Component} {initial} />
 	{/each}
 </section>

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {blocks, layouts, stories} from '@fat-fuzzy/ui'
+	import {blocks, layouts, api} from '@fat-fuzzy/ui'
 	import type {ComponentType} from 'svelte'
 
-	const {Story} = stories
+	const {Block} = api
 
 	let initial = $page.data.components.initial
 
@@ -21,6 +21,6 @@
 <section class="l-text:xl l-stack">
 	{#each keys as key}
 		{@const Component = components[key]}
-		<Story title={key} slug={key.toLowerCase()} component={Component} {initial} />
+		<Block title={key} slug={key.toLowerCase()} component={Component} {initial} />
 	{/each}
 </section>

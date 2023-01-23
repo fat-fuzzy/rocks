@@ -10,6 +10,7 @@ import Burrito from './layouts/Burrito.svelte'
 /**
  * Block components
  */
+
 import Button from './blocks/buttons/Button.svelte'
 import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
 import RevealMenu from './blocks/buttons/RevealMenu.svelte'
@@ -23,9 +24,10 @@ import RevealNav from './blocks/navs/RevealNav.svelte'
 // import Sketch from './blocks/graphics/Sketch.svelte'
 
 /**
- * Story components
+ * Api components
+ * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
-import Story from './stories/Story.svelte'
+import Block from './api/Block.svelte'
 
 /**
  * Stores
@@ -72,8 +74,8 @@ const blocks = {
 	// Sketch,
 	Feedback,
 }
-const stories = {
-	Story,
+const api = {
+	Block,
 }
 const sass = {
 	default: './sass/styles-default.scss',
@@ -86,4 +88,4 @@ async function getSass(theme) {
 	return themedStyles
 }
 
-export {blocks, layouts, stories, utils, stores, constants, getSass}
+export {blocks, layouts, api, utils, stores, constants, getSass}
