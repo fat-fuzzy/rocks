@@ -33,8 +33,8 @@ importers:
     devDependencies:
       '@fat-fuzzy/ui': link:../../packages/ui
       '@playwright/test': 1.25.0
-      '@sveltejs/adapter-cloudflare': 1.1.0_@sveltejs+kit@1.2.2
-      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.0
+      '@sveltejs/adapter-cloudflare': 1.1.0_@sveltejs+kit@1.2.3
+      '@sveltejs/kit': 1.2.3_svelte@3.55.1+vite@4.0.0
       '@types/cookie': 0.5.1
       eslint-config-custom: link:../../packages/eslint-config-custom
       svelte: 3.55.1
@@ -64,8 +64,8 @@ importers:
       '@fat-fuzzy/markdown': link:../../packages/markdown
       '@fat-fuzzy/ui': link:../../packages/ui
       '@playwright/test': 1.25.0
-      '@sveltejs/adapter-cloudflare': 1.1.0_@sveltejs+kit@1.2.2
-      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.0
+      '@sveltejs/adapter-cloudflare': 1.1.0_@sveltejs+kit@1.2.3
+      '@sveltejs/kit': 1.2.3_svelte@3.55.1+vite@4.0.0
       '@types/cookie': 0.5.1
       eslint-config-custom: link:../../packages/eslint-config-custom
       mdsvex: 0.10.6_svelte@3.55.1
@@ -148,18 +148,6 @@ importers:
   packages/resources:
     specifiers: {}
 
-  packages/rollup-plugin-markdown:
-    specifiers:
-      '@fat-fuzzy/markdown': workspace:*
-    dependencies:
-      '@fat-fuzzy/markdown': link:../markdown
-
-  packages/svelte-preprocess-markdown:
-    specifiers:
-      '@fat-fuzzy/markdown': workspace:*
-    dependencies:
-      '@fat-fuzzy/markdown': link:../markdown
-
   packages/ui:
     specifiers:
       '@fat-fuzzy/lib': workspace:*
@@ -182,8 +170,8 @@ importers:
       xstate: 4.35.1
     dependencies:
       '@fat-fuzzy/lib': link:../lib
-      '@sveltejs/adapter-cloudflare': 1.1.0_@sveltejs+kit@1.2.2
-      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.0
+      '@sveltejs/adapter-cloudflare': 1.1.0_@sveltejs+kit@1.2.3
+      '@sveltejs/kit': 1.2.3_svelte@3.55.1+vite@4.0.0
       '@sveltejs/package': 1.0.2_atrrhq7vg4ekua4nnyrpuardle
       '@xstate/svelte': 2.0.1_2ztbbx2iwect2bfqya64x5thxi
       postcss: 8.4.20
@@ -521,18 +509,18 @@ packages:
       rollup: 2.70.1
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.1.0_@sveltejs+kit@1.2.2:
+  /@sveltejs/adapter-cloudflare/1.1.0_@sveltejs+kit@1.2.3:
     resolution: {integrity: sha512-OkQy2WBu11xLn1BAbPYOmfzw69OFgdOIQQSvWmK52Zeg45sjsa7gqcQpkjiXs3OnfhfSweKEnxVHT6+noao1+A==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
       '@cloudflare/workers-types': 4.20221111.1
-      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.0
+      '@sveltejs/kit': 1.2.3_svelte@3.55.1+vite@4.0.0
       esbuild: 0.16.4
       worktop: 0.8.0-next.14
 
-  /@sveltejs/kit/1.2.2_svelte@3.55.1+vite@4.0.0:
-    resolution: {integrity: sha512-aZUjAZ/6gWEYFQDrDNINuvOi6VxlG86kCcIDRWDIFJjI38Ueieo1fySb0j0d2VkQVrYXU7VqjTVMBZFix+hByA==}
+  /@sveltejs/kit/1.2.3_svelte@3.55.1+vite@4.0.0:
+    resolution: {integrity: sha512-VyXiFoqoxV/2gNYPGsoreqGXRfUz1ASBKH+b+1VnF4LXnOvA2h1lTAgniotlamuC6yBM94DkztQSlIRwiS+REA==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -553,7 +541,7 @@ packages:
       sirv: 2.0.2
       svelte: 3.55.1
       tiny-glob: 0.2.9
-      undici: 5.15.1
+      undici: 5.15.2
       vite: 4.0.0
     transitivePeerDependencies:
       - supports-color
@@ -2898,8 +2886,8 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
 
-  /undici/5.15.1:
-    resolution: {integrity: sha512-XLk8g0WAngdvFqTI+VKfBtM4YWXgdxkf1WezC771Es0Dd+Pm1KmNx8t93WTC+Hh9tnghmVxkclU1HN+j+CvIUA==}
+  /undici/5.15.2:
+    resolution: {integrity: sha512-JsN6meyJESMJaLqOuozstwrolSkLWlTIT4qpGoKepNdnZy7HJMPKB0v0Td/CepGgoiPpUSvVO9Nh/5N9QrmDgQ==}
     engines: {node: '>=12.18'}
     dependencies:
       busboy: 1.6.0
