@@ -9,7 +9,7 @@
 
 <section class="l-text:xl l-center">
 	<header>
-		<h1>Welcome to Fat Fuzzy Doc!</h1>
+		<h1>Welcome to the Fat Fuzzy Doc!</h1>
 		<h2>This is the documentation for the Fat Fuzzy Rocks project</h2>
 	</header>
 	<picture class="card:lg">

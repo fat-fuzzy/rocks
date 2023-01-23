@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import Header from './Header.svelte'
-	import '$data/assets'
 
 	function getClassNameFromUrl(url: URL) {
 		return url.pathname === '/' ? 'home' : url.pathname.slice(1, url.pathname.length)
