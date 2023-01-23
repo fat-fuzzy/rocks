@@ -1,5 +1,5 @@
-<script>
-	import welcome from '$assets/images/001-intro.jpeg'
+<script lang="ts">
+	const variant = `accent`
 </script>
 
 <svelte:head>
@@ -9,10 +9,21 @@
 
 <section class="l-text:xl l-center">
 	<header>
-		<h1>Welcome to Fat Fuzzy Doc!</h1>
-		<h2>This is the documentation for the Fat Fuzzy Rocks project</h2>
+		<h1>Fuzzy Rocks</h1>
+		<h2>Welcome to the Fat Fuzzy Doc !</h2>
 	</header>
-	<picture class="card:lg">
-		<img src={welcome} alt="Creating a Webapp: where to start ?" />
-	</picture>
+
+	<section class="l-text:md l-center">
+		<h2>✨ Highlights</h2>
+		<ul class="l-stack xl" role="group">
+			<li class={`card ${variant}`}>
+				<span>🌈</span>
+				<a data-sveltekit-preload-data href="/ui">UI Library</a>
+			</li>
+			<li class={`card ${variant}`}>
+				<span>💡</span>
+				<a data-sveltekit-preload-data href="/decisions">Decisions</a>
+			</li>
+		</ul>
+	</section>
 </section>
