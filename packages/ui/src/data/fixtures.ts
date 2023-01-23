@@ -43,9 +43,9 @@ const menu = [
 ]
 
 const toggle = [
-	{id: 'btn-toggle-1', label: 'Toggle 1'},
-	{id: 'btn-toggle-2', label: 'Toggle 2'},
-	{id: 'btn-toggle-3', label: 'Toggle 3'},
+	{id: 'toggle-1', label: 'Toggle 1'},
+	{id: 'toggle-2', label: 'Toggle 2'},
+	{id: 'toggle-3', label: 'Toggle 3'},
 ]
 
 const sketch = {

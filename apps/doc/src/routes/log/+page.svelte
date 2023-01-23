@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	$: decisions = $page.data.decisions
+	$: logs = $page.data.logs
 
-	let title = 'Fat Fuzzy Decisions'
+	let title = 'Fat Fuzzy Log'
 </script>
 
 <svelte:head>
@@ -12,9 +12,9 @@
 </svelte:head>
 
 <header class="header-page">
-	<h1>Fat Fuzzy Decisions</h1>
+	<h1>Fat Fuzzy Log</h1>
 </header>
 
-{#each decisions as { meta, path }}
-	<a class="font:xxl" href={`/decisions/${path}`}>{meta.id} {meta.title}</a>
+{#each logs as { meta, path }}
+	<a class="font:xxl" href={`/log/${path}`}>{meta.id} {meta.title}</a>
 {/each}
