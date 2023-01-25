@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import Api from './Api.svelte'
-	import Sidebar from '../layouts/Sidebar.svelte'
 	import type {ComponentProps} from './options'
+	import Sidebar from '../layouts/Sidebar.svelte'
+	import Api from './Api.svelte'
 	import {blocks, shared, DEFAULT_OPTIONS} from './options'
 
 	export let title = ''
@@ -31,7 +31,7 @@
 	}
 </script>
 
-<article class={`card box ${selected.light ?? ''}`}>
+<article class={`card box ${selected.brightness ?? ''}`}>
 	{#if !isPage}
 		<svelte:element this={`h${depth}`}>{title}</svelte:element>
 	{/if}

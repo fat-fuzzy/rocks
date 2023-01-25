@@ -96,7 +96,7 @@ button.accent:not(:disabled):active,
 button.outline.highlight {
 	border-color: var(#{$prefix}-current-highlight-dark);
 }
-.light button.outline.highlight {
+.day button.outline.highlight {
 	border-color: var(#{$prefix}-current-highlight-dark);
 }
 button.highlight:not(:disabled):hover,
