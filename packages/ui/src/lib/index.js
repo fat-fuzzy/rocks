@@ -28,6 +28,7 @@ import RevealNav from './blocks/navs/RevealNav.svelte'
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
 import Block from './api/Block.svelte'
+import Layout from './api/Layout.svelte'
 
 /**
  * Stores
@@ -74,14 +75,18 @@ const blocks = {
 	// Sketch,
 	Feedback,
 }
+
 const api = {
 	Block,
+	Layout,
 }
+
 const sass = {
 	default: './sass/styles-default.scss',
 	doc: './styles/styles-doc.scss',
 	client: './styles/styles-client.scss',
 }
+
 // [TODO:] Not sure this is useful
 async function getSass(theme) {
 	const themedStyles = await import(sass[theme])

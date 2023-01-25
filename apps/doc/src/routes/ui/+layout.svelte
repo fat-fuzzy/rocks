@@ -1,10 +1,19 @@
 <script lang="ts">
-	import {page} from '$app/stores'
 	import {blocks, layouts} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
 	const {RevealNav} = blocks
 
-	$: components = $page.data.components
+	// TODO: move to utils / clean
+	function sortAsc(a, b) {
+		return a < b ? -1 : b < a ? 1 : 0
+	}
+	function sortDesc(a, b) {
+		return a > b ? -1 : b > a ? 1 : 0
+	}
+
+	const blockNames = Object.keys(blocks).sort(sortAsc)
+	const layoutNames = Object.keys(layouts).sort(sortAsc)
+
 	$: path = ''
 	$: items = [
 		{
@@ -14,12 +23,12 @@
 				{
 					slug: 'blocks',
 					title: 'Blocks',
-					items: components.blocks.map((c) => ({slug: c, title: c})),
+					items: blockNames.map((c) => ({slug: c, title: c})),
 				},
 				{
 					slug: 'layouts',
 					title: 'Layouts',
-					items: components.layouts.map((c) => ({slug: c, title: c})),
+					items: layoutNames.map((c) => ({slug: c, title: c})),
 				},
 			],
 		},
