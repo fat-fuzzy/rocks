@@ -16,4 +16,4 @@
 	<h1>{title}</h1>
 </header>
 
-<svelte:component this={Api} showOptions={true} component={Component} />
+<svelte:component this={Api} isPage={true} {title} component={Component} />

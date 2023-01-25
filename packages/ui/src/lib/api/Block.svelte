@@ -1,20 +1,21 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import Api from './Api.svelte'
-	import Sidebar from '../layouts/Sidebar.svelte'
 	import type {ComponentProps} from './options'
+	import Sidebar from '../layouts/Sidebar.svelte'
+	import Api from './Api.svelte'
 	import {blocks, shared, DEFAULT_OPTIONS} from './options'
 
 	export let title = ''
+	export let depth = 3
+	export let isPage = false
 	export let component: ComponentType
-	export let initial: ComponentProps = {...DEFAULT_OPTIONS['blocks'], ...DEFAULT_OPTIONS['shared']}
-	export let showOptions = false
+	export let initial: ComponentProps = {...DEFAULT_OPTIONS['shared'], ...DEFAULT_OPTIONS['blocks']}
 
 	// TODO: figure out how I can deduct props from component
 	let selected = {...initial}
 	const options = {...blocks, ...shared}
 
-	// TODO: rigure out a way to let user resize component container
+	// TODO: figure out a way to let user resize component container
 	let frame
 	let width
 	let height
@@ -30,9 +31,9 @@
 	}
 </script>
 
-<article class={`card box ${selected.light ?? ''}`}>
-	{#if title}
-		<h3>{title}</h3>
+<article class={`card box ${selected.brightness ?? ''}`}>
+	{#if !isPage}
+		<svelte:element this={`h${depth}`}>{title}</svelte:element>
 	{/if}
 	<Sidebar size="xs" placement="end">
 		<main slot="main" class={`card plus ${selected.contrast ?? ''}`}>
@@ -41,8 +42,8 @@
 			{/if}
 		</main>
 		<aside slot="side">
-			{#if showOptions}
-				<Api {selected} component={title} {options} on:changed={setCurrent} />
+			{#if isPage}
+				<Api {title} {options} {selected} on:changed={setCurrent} />
 			{:else}
 				<!-- TODO: <a class="font:lg bare" href={`/ui/blocks/${title}`}>View</a> -->
 			{/if}

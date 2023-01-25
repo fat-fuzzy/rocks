@@ -3,7 +3,7 @@ export type ComponentChild = string | ComponentType | (string | ComponentType)[]
 export enum StyleEnum {
 	icon = 'icon',
 	size = 'size',
-	light = 'light',
+	brightness = 'brightness',
 	contrast = 'contrast',
 	variant = 'variant',
 	color = 'color',
@@ -12,7 +12,7 @@ export enum StyleEnum {
 export type ComponentProps = {
 	icon?: string
 	size?: string
-	light?: string
+	brightness?: string
 	contrast?: string
 	variant?: string
 	color?: string
@@ -78,6 +78,7 @@ export const app: ApiOptions = {
 			{
 				name: 'App',
 				input: 'toggle',
+				layout: 'switcher',
 				items: [
 					{id: 'ui', label: 'ui'},
 					{id: 'doc', label: 'doc'},
@@ -90,7 +91,7 @@ export const app: ApiOptions = {
 		name: 'Theme',
 		items: [
 			{
-				name: 'Light',
+				name: 'Brightness',
 				input: 'toggle',
 				layout: 'switcher',
 				items: [
@@ -115,7 +116,6 @@ export const app: ApiOptions = {
 export const blocks: ApiOptions = {
 	variant: {
 		name: 'Variant',
-		exclude: ['Nav', 'Burrito', 'Sidebar', 'Stack'],
 		items: [
 			{
 				name: 'Variant',
@@ -130,7 +130,6 @@ export const blocks: ApiOptions = {
 	},
 	color: {
 		name: 'Color',
-		exclude: ['Burrito', 'Sidebar', 'Stack'],
 		items: [
 			{
 				name: 'Color',
@@ -160,7 +159,8 @@ export const blocks: ApiOptions = {
 	},
 	layout: {
 		name: 'Layout',
-		exclude: ['Button', 'Toggle', 'Burrito', 'Sidebar', 'Stack'],
+		layout: 'switcher',
+		exclude: ['Button', 'Toggle'],
 		items: [
 			{
 				name: 'Layout',
@@ -181,9 +181,24 @@ export const layouts: ApiOptions = {
 			{
 				name: 'Container',
 				input: 'toggle',
+				layout: 'switcher',
 				items: [
-					{id: 'main', label: 'main'},
-					{id: 'side', label: 'side'},
+					{id: 'center', label: 'center'},
+					{id: 'text', label: 'text'},
+					{
+						id: 'sidebar',
+						label: 'sidebar',
+						items: [
+							{
+								input: 'radio',
+								layout: 'switcher',
+								items: [
+									{id: 'main', label: 'main'},
+									{id: 'side', label: 'side'},
+								],
+							},
+						],
+					},
 				],
 			},
 			{
@@ -231,7 +246,7 @@ export const shared: ApiOptions = {
 }
 
 export const DEFAULT_OPTIONS = {
-	app: {theme: {light: 'day', contrast: 'low'}},
+	app: {brightness: 'day', contrast: 'low', app: 'ui'},
 	blocks: {
 		variant: '',
 		color: '',
@@ -240,8 +255,9 @@ export const DEFAULT_OPTIONS = {
 		icon: '✨',
 	},
 	layouts: {
-		container: '',
-		content: '',
+		container: 'center',
+		content: 'stack',
+		breakpoint: 'md',
 	},
 	shared: {
 		size: 'md',

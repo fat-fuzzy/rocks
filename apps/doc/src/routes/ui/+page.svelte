@@ -21,6 +21,6 @@
 	<h2>Blocks</h2>
 	{#each componentNames as name}
 		{@const Component = components[name]}
-		<Block title={name} component={Component} />
+		<Block title={name} depth="3" component={Component} />
 	{/each}
 </section>
