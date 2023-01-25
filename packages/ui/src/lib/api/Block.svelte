@@ -2,15 +2,17 @@
 	import type {ComponentType} from 'svelte'
 	import Api from './Api.svelte'
 	import Sidebar from '../layouts/Sidebar.svelte'
-	import type {UIProps} from './api-options'
+	import type {ComponentProps} from './options'
+	import {blocks, shared, DEFAULT_OPTIONS} from './options'
 
 	export let title = ''
 	export let component: ComponentType
-	export let initial: UIProps
+	export let initial: ComponentProps = {...DEFAULT_OPTIONS['blocks'], ...DEFAULT_OPTIONS['shared']}
 	export let showOptions = false
 
 	// TODO: figure out how I can deduct props from component
 	let selected = {...initial}
+	const options = {...blocks, ...shared}
 
 	// TODO: rigure out a way to let user resize component container
 	let frame
@@ -40,7 +42,7 @@
 		</main>
 		<aside slot="side">
 			{#if showOptions}
-				<Api {selected} component={title} on:changed={setCurrent} />
+				<Api {selected} component={title} {options} on:changed={setCurrent} />
 			{:else}
 				<!-- TODO: <a class="font:lg bare" href={`/ui/blocks/${title}`}>View</a> -->
 			{/if}

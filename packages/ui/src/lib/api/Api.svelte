@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type {UIProps} from './api-options'
-	import {options} from './api-options'
+	import type {ComponentProps, ApiOptions} from './options'
 	import format from '../utils/format'
 	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
@@ -8,10 +7,11 @@
 
 	const dispatch = createEventDispatcher()
 
-	// TODO: figure out if I can deduct props
-	export let selected: UIProps
+	// TODO: figure out how I can deduct props from Svelte component
+	export let selected: ComponentProps
 	export let size = 'sm'
 	export let component = ''
+	export let options: ApiOptions
 
 	let {layout, color} = selected
 
