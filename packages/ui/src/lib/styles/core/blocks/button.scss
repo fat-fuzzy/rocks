@@ -13,31 +13,27 @@ button {
 
 button {
 	color: currentColor;
-	background-color: var(#{$prefix}-current-bg-contrast);
 	border: 1px solid var(#{$prefix}-current-gray);
 }
 
 button:disabled {
-	color: currentColor;
-	opacity: 0.7;
+	opacity: 0.65;
 }
 
-button:not(:disabled):hover {
+button:not(.outline):not(:disabled):hover {
 	cursor: pointer;
 	color: var(#{$prefix}-current-color);
 	background-color: inherit;
-	border-color: var(#{$prefix}-color-gray-3);
 }
 
-button:not(:disabled):active {
-	color: var(#{$prefix}-color-light);
-	background-color: var(#{$prefix}-color-gray-3);
+button:not(.outline):not(:disabled):active {
+	border: 1px solid var(#{$prefix}-current-gray-contrast);
 }
 
 button.outline {
 	color: inherit;
 	background-color: inherit;
-	border-color: var(#{$prefix}-current-bg-contrast);
+	border: 1px solid var(#{$prefix}-current-gray-contrast);
 }
 
 //== Button theme colors
@@ -141,10 +137,6 @@ button.bare {
 
 //== Toggle  colors
 
-[aria-pressed='false'] {
-	color: var(#{$prefix}-current-color);
-	background-color: var(#{$prefix}-current-bg-contrast);
-}
 [aria-pressed='false']:hover {
 	box-shadow: var(#{$prefix}-shadow);
 	background-color: var(#{$prefix}-current-bg-color);
@@ -178,7 +170,7 @@ button.bare {
 	color: var(#{$prefix}-current-primary);
 	background-color: inherit;
 }
-.primary[aria-pressed='false']:hover,
+button.primary[aria-pressed='false']:hover,
 .primary.outline[aria-pressed='false']:hover {
 	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-primary-light);
