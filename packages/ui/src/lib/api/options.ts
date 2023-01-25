@@ -231,7 +231,7 @@ export const shared: ApiOptions = {
 }
 
 export const DEFAULT_OPTIONS = {
-	app: {theme: {light: 'day', contrast: 'low'}},
+	app: {light: 'day', contrast: 'low', app: 'ui'},
 	blocks: {
 		variant: '',
 		color: '',

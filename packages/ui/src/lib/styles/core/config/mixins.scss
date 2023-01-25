@@ -29,9 +29,12 @@
  * }
  *
  */
-$_cssvars: ();
+
+// $current_cssvars holds the CSS variables that have been generated so far. It is initially set to null
+$current_cssvars: ();
+
 @mixin generateCssVars($design_tokens, $prefix: $theme-prefix) {
-	$_cssvars: map-merge($_cssvars, $design_tokens);
+	$current_cssvars: map-merge($current_cssvars, $design_tokens);
 	:root {
 		@each $name, $value in $design_tokens {
 			#{$prefix}-#{$name}: #{$value};
