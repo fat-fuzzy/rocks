@@ -12,6 +12,11 @@
 	$: Api = category === 'blocks' ? api.Block : api.Layout // TODO: try dynamic import
 </script>
 
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={`${title} documentation`} />
+</svelte:head>
+
 <header class="header-page">
 	<h1>{title}</h1>
 </header>

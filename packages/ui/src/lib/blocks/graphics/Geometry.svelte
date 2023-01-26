@@ -1,15 +1,16 @@
 <script lang="ts">
-	import * as lib from '@fat-fuzzy/lib'
+	import lib from '@fat-fuzzy/lib'
 	import {createEventDispatcher, onMount} from 'svelte'
 	import Position from './Position.svelte'
 	import Scale from './Scale.svelte'
 	import Rotation from './Rotation.svelte'
 
+	const mathUtils = lib.math.utils
+
 	export let canvasWidth: number
 	export let canvasHeight: number
 	export let geometry
 
-	const mathUtils = lib.default.math.utils
 	const dispatch = createEventDispatcher()
 
 	let update = () =>

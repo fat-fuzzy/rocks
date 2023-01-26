@@ -10,7 +10,7 @@
 	import githubDay from '$lib/images/icon-dark-100-optim-github.svg'
 	import github from '$lib/images/icon-dark-100-optim-github.svg'
 
-	export let className = ''
+	export let className = 'header-app'
 	export let breakpoint = 'bp:md'
 
 	let actionsMenuExpanded = false
@@ -32,7 +32,7 @@
 		lang.set(event.detail)
 	}
 
-	$: headerClass = `${className} l-sidebar layer contrast`
+	$: headerClass = `${className} l-sidebar layer`
 	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang

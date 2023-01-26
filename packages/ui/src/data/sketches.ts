@@ -1,4 +1,3 @@
-export const SKETCHES_FOLDER = './sketches'
 export const sketches = [
 	{
 		id: '001',

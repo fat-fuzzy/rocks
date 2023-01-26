@@ -9,6 +9,11 @@
 	$: componentNames = Object.keys(components)
 </script>
 
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={`${title} documentation`} />
+</svelte:head>
+
 <header class="header-page">
 	<h1>{title}</h1>
 </header>

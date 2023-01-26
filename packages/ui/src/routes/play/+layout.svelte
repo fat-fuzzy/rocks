@@ -8,15 +8,18 @@
 	$: items = [
 		{
 			slug: 'play',
-			title: '❤︎ Sketches',
+			title: '👾 Sketches',
 			items: sketches,
 		},
 	]
 </script>
 
 <svelte:head>
-	<title>FatFuzzy Doc | UI</title>
-	<meta name="description" content="Fat Fuzzy Doc - UI Library stories" />
+	<title>FatFuzzy Sketches</title>
+	<meta
+		name="description"
+		content="Fat Fuzzy Sketches - canvas & web graphics experiments & tutorial notes"
+	/>
 </svelte:head>
 
 <Sidebar size="xs">

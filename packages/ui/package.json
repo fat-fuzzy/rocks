@@ -18,14 +18,14 @@
 	"main": "./src/lib/index.js",
 	"dependencies": {
 		"@fat-fuzzy/lib": "workspace:*",
-		"@sveltejs/adapter-cloudflare": "latest",
-		"@sveltejs/kit": "latest",
-		"@sveltejs/package": "latest",
+		"@sveltejs/adapter-cloudflare": "^1.0.0",
+		"@sveltejs/kit": "^1.0.0",
+		"@sveltejs/package": "^1.0.0",
 		"@xstate/svelte": "2.0.1",
 		"postcss": "8.4.20",
 		"postcss-load-config": "4.0.1",
 		"sass": "1.57.1",
-		"svelte": "^3.55.0",
+		"svelte": "^3.54.0",
 		"svelte-check": "^2.10.2",
 		"svelte-preprocess": "^4.10.7",
 		"tslib": "^2.4.1",
@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"eslint-config-custom": "workspace:*",
-		"@playwright/test": "1.25.0"
+		"@playwright/test": "^1.28.1"
 	},
 	"type": "module"
 }
