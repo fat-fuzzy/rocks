@@ -1,6 +1,6 @@
 ---
 title: Random
-year: '2022'
+date: '2022'
 slug: random-rect
 id: '001'
 emoji: '🎰'

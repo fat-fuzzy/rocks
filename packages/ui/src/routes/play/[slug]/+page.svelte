@@ -3,12 +3,10 @@
 	import {page} from '$app/stores'
 	import Sketch from '$lib/blocks/graphics/Sketch.svelte'
 
-	const {gfx} = lib
-
 	$: title = $page.data.title
 	$: dimensions = $page.data.dimensions
 	$: id = $page.data.id
-	$: sketch = gfx.sketches[id]
+	$: sketch = lib.gfx.sketches[id]
 </script>
 
 <svelte:head>

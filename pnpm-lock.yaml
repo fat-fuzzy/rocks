@@ -79,12 +79,6 @@ importers:
   packages/api:
     specifiers: {}
 
-  packages/api/services/doc:
-    specifiers:
-      uuid: 9.0.0
-    dependencies:
-      uuid: 9.0.0
-
   packages/design:
     specifiers:
       open-props: 1.4.25

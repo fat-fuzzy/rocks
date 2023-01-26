@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type {PageData} from './$types'
+	import {page} from '$app/stores'
 	import Feedback from '$blocks/cards/Feedback.svelte'
 
-	export let data: PageData
-	const {sketches} = data
+	$: sketches = $page.data.sketches
 
 	let showcanvas = true
 	let showFeedback = !showcanvas
