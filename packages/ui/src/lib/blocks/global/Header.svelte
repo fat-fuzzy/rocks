@@ -1,9 +1,10 @@
 <script lang="ts">
+	import {page} from '$app/stores'
 	import {clickOutside} from '../../utils/click-outside.js'
 	import {lang} from '$stores/intl'
 	import {theme} from '../../stores/theme'
 	import {emojis, themes} from '$types/constants.js'
-	import Nav from './Nav.svelte'
+	import Nav from '../navs/Nav.svelte'
 	import {links} from '../../../data/nav'
 
 	// TODO: make svg css themeable / fix dark theme
@@ -41,7 +42,18 @@
 </script>
 
 <header class={headerClass}>
-	<Nav id="nav-primary" items={links} layout="burrito main" />
+	<nav id="primary-navigation">
+		<ul>
+			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+				<a data-sveltekit-preload-data href="/">Home</a>
+			</li>
+			{#each links as { slug, title }}
+				<li aria-current={$page.url.pathname.startsWith(`/${slug}`) ? 'page' : undefined}>
+					<a data-sveltekit-preload-data href={`/${slug}`}>{title}</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
 	<div class="l-side">
 		<menu class={`l-reveal sm ${breakpoint}`} use:clickOutside on:clickOutside={handleClickOutside}>
 			<button type="button" on:click={toggleTheme} class="polar">

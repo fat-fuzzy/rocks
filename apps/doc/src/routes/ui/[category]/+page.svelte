@@ -21,6 +21,6 @@
 <section class="l-text:xl l-stack">
 	{#each componentNames as name}
 		{@const Component = components[name]}
-		<svelte:component this={Api} title={name} component={Component} />
+		<svelte:component this={Api} title={name} depth="2" component={Component} />
 	{/each}
 </section>

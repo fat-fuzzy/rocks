@@ -188,16 +188,16 @@ export const layouts: ApiOptions = {
 					{
 						id: 'sidebar',
 						label: 'sidebar',
-						items: [
-							{
-								input: 'radio',
-								layout: 'switcher',
-								items: [
-									{id: 'main', label: 'main'},
-									{id: 'side', label: 'side'},
-								],
-							},
-						],
+						// items: [
+						// 	{
+						// 		input: 'radio',
+						// 		layout: 'switcher',
+						// 		items: [
+						// 			{id: 'main', label: 'main'},
+						// 			{id: 'side', label: 'side'},
+						// 		],
+						// 	},
+						// ],
 					},
 				],
 			},

@@ -21,4 +21,4 @@
 	<h1>{title}</h1>
 </header>
 
-<svelte:component this={Api} isPage={true} {title} component={Component} />
+<svelte:component this={Api} isPage={true} depth="1" {title} component={Component} />
