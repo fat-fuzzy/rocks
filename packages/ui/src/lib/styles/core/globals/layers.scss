@@ -8,22 +8,22 @@
 
 .day {
 	// TODO: Fix contrast combination
-	.contrast {
+	&.contrast {
 		background-color: var(#{$prefix}-current-bg-contrast);
 	}
 
-	.blend {
+	&.blend {
 		background-color: var(#{$prefix}-current-bg-color);
 	}
 }
 
 .night {
 	// TODO: Fix contrast combination
-	.contrast {
+	&.contrast {
 		background-color: var(#{$prefix}-current-bg-color);
 	}
 
-	.blend {
+	&.blend {
 		background-color: var(#{$prefix}-current-bg-contrast);
 	}
 }
@@ -38,8 +38,6 @@
 
 /* TODO: cleanup this css (sveltekit app styles) */
 .corner {
-	width: 2em;
-	height: 2em;
 	margin-inline-start: 1em;
 }
 
@@ -47,13 +45,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
-	height: 100%;
-	border-radius: var(--ui-radius-base);
+	border-radius: var(#{$prefix}-radius-base);
 }
 
 .corner img {
-	height: 100%;
+	width: 2em;
+	height: 2em;
 	width: auto;
 	object-fit: contain;
 }

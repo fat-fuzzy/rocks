@@ -13,18 +13,17 @@
 	let layoutClass = layout ? `l-${layout}` : ''
 	let depthClass = `depth-${depth}`
 
-	$: current = (slug: string) =>
-		$page.url.pathname === format.formatHref(path, slug) ? 'page' : undefined
+	$: current = (slug: string) => $page.url.pathname === format.formatHref(path, slug)
 </script>
 
 <ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${size} ${align} ${depthClass}`}>
 	{#each items as item}
 		{@const {slug, title, emoji} = item}
 		{@const subItems = item.items}
-		<li aria-current={current(slug)}>
-			<a data-sveltekit-preload-data href={format.formatHref(path, slug)}
-				>{format.formatLabel(title, emoji)}</a
-			>
+		<li aria-current={current(slug) ? 'page' : undefined}>
+			<a data-sveltekit-preload-data href={format.formatHref(path, slug)}>
+				{format.formatLabel(title, emoji)}
+			</a>
 			{#if subItems}
 				<svelte:self
 					items={subItems}

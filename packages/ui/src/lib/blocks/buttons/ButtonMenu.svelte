@@ -8,9 +8,10 @@
 	const dispatch = createEventDispatcher()
 	export let layout = 'switcher'
 	export let size = ''
-	export let breakpoint = 'bp:md'
+	export let breakpoint = 'md'
 	export let color = ''
 	export let variant = ''
+	export let id = 'btn-menu'
 
 	export let items: {
 		id: string
@@ -21,6 +22,7 @@
 	}[] = fixtures.menu
 
 	let clicked = ''
+	let menuId = id
 
 	export let onClick = (event) => {
 		if (browser) {
@@ -33,10 +35,10 @@
 	}
 </script>
 
-<menu class={`l-${layout} ${size} ${breakpoint}`}>
+<menu id={menuId} class={`l-${layout} ${size} bp:${breakpoint}`}>
 	{#each items as { id, label, icon }}
 		<li>
-			<Button {id} {onClick} {variant} {color}>
+			<Button id={`${menuId}-${id}`} {onClick} {variant} {color}>
 				{format.formatLabel(label, icon)}
 			</Button>
 		</li>
