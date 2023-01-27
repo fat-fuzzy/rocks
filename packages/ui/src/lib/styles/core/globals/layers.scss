@@ -8,22 +8,22 @@
 
 .day {
 	// TODO: Fix contrast combination
-	.contrast {
+	&.contrast {
 		background-color: var(#{$prefix}-current-bg-contrast);
 	}
 
-	.blend {
+	&.blend {
 		background-color: var(#{$prefix}-current-bg-color);
 	}
 }
 
 .night {
 	// TODO: Fix contrast combination
-	.contrast {
+	&.contrast {
 		background-color: var(#{$prefix}-current-bg-color);
 	}
 
-	.blend {
+	&.blend {
 		background-color: var(#{$prefix}-current-bg-contrast);
 	}
 }

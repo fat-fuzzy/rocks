@@ -2,19 +2,16 @@ button {
 	display: flex;
 	justify-content: center;
 	width: auto;
-	font-size: var(#{$prefix}-font-size-ui);
-	font-family: var(#{$prefix}-font-family-ui);
+	font-size: var(#{$prefix}-current-font-size);
+	font-family: var(#{$prefix}-current-font-family);
 	font-weight: var(#{$prefix}-font-weight-ui);
 	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 	border-radius: var(#{$prefix}-radius-base);
+	color: var(#{$prefix}-color-dark);
+	border: 1px solid var(#{$prefix}-current-gray);
 }
 
 //== Button default colors
-
-button {
-	color: currentColor;
-	border: 1px solid var(#{$prefix}-current-gray);
-}
 
 button:disabled {
 	opacity: 0.65;
@@ -110,7 +107,7 @@ button.outline.highlight:not(:disabled):active {
 //== Bare buttons (no background, no border)
 
 button.bare {
-	font-size: var(#{$prefix}-font-size-ui);
+	font-size: var(#{$prefix}-current-font-size);
 	font-family: var(#{$prefix}-font-family-ui);
 	font-weight: var(#{$prefix}-font-weight-ui);
 	color: var(#{$prefix}-current-color);
@@ -363,51 +360,4 @@ button.highlight.outline[aria-pressed='false']:hover {
 }
 .end > button {
 	text-align: end;
-}
-
-// == Button sizes according to context
-// TODO: check container queries for this / fix: use current-font-size
-.xxs button,
-.xs button {
-	font-size: var(#{$prefix}-font-size-xs);
-}
-
-.sm button {
-	font-size: var(#{$prefix}-font-size-sm);
-}
-
-.md button {
-	font-size: var(#{$prefix}-font-size-md);
-}
-
-.lg button {
-	font-size: var(#{$prefix}-font-size-lg);
-}
-
-.xxl button,
-.xl button {
-	font-size: var(#{$prefix}-font-size-xl);
-}
-
-// == Override button size according to context (CSS rules above) on a per-button basis
-button.xxs,
-button.xs {
-	font-size: var(#{$prefix}-font-size-xs);
-}
-
-button.sm {
-	font-size: var(#{$prefix}-font-size-sm);
-}
-
-button.md {
-	font-size: var(#{$prefix}-font-size-md);
-}
-
-button.lg {
-	font-size: var(#{$prefix}-font-size-lg);
-}
-
-button.xxl,
-button.xl {
-	font-size: var(#{$prefix}-font-size-xl);
 }
