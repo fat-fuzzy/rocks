@@ -13,18 +13,14 @@
 	let layoutClass = layout ? `l-${layout}` : ''
 	let depthClass = `depth-${depth}`
 
-	// Use to highlight leaf node but not its children (if any)
-	function currentItem(slug: string) {
-		const currentItem = $page.url.pathname === format.formatHref(path, slug)
-		return currentItem
-	}
+	$: current = (slug: string) => $page.url.pathname === format.formatHref(path, slug)
 </script>
 
 <ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${size} ${align} ${depthClass}`}>
 	{#each items as item}
 		{@const {slug, title, emoji} = item}
 		{@const subItems = item.items}
-		<li aria-current={currentItem(slug) ? 'page' : undefined}>
+		<li aria-current={current(slug) ? 'page' : undefined}>
 			<a data-sveltekit-preload-data href={format.formatHref(path, slug)}>
 				{format.formatLabel(title, emoji)}
 			</a>

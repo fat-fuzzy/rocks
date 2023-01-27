@@ -27,8 +27,8 @@ import RevealNav from './blocks/navs/RevealNav.svelte'
  * Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
-import Block from './api/Block.svelte'
-import Layout from './api/Layout.svelte'
+import Element from './api/Element.svelte'
+import Collection from './api/Collection.svelte'
 
 /**
  * Stores
@@ -77,8 +77,8 @@ const blocks = {
 }
 
 const api = {
-	Block,
-	Layout,
+	Element,
+	Collection,
 }
 
 const sass = {

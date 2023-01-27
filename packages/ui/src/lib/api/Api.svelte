@@ -7,13 +7,12 @@
 
 	const dispatch = createEventDispatcher()
 
-	export let size = 'sm'
 	export let title = ''
 	export let options: ApiOptions
 	// TODO: figure out how I can deduct props from Svelte component
 	export let selected: ComponentProps
 
-	let {layout, color} = selected
+	let apiLayout = 'stack'
 
 	let current = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
 
@@ -45,9 +44,11 @@
 			dispatch('changed', payload)
 		}
 	}
+
+	// TODO: clean, comment
 </script>
 
-<form on:submit|preventDefault class={`l-${layout} ${size} card:lg layer ${color}`}>
+<form on:submit|preventDefault class={`l-${apiLayout}`}>
 	{#each current as option}
 		{#if options[option.name]}
 			{@const optionExclude = options[option.name].exclude}

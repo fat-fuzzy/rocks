@@ -1,11 +1,12 @@
 <script lang="ts">
+	import {page} from '$app/stores'
 	import {blocks, api} from '@fat-fuzzy/ui'
-	const {Block} = api
+	const {Collection} = api
 
 	let title = 'Fat Fuzzy UI'
 	const components = blocks
-
-	$: componentNames = Object.keys(components)
+	let category = 'blocks' // TODO: fix content
+	let path = $page.url.pathname
 </script>
 
 <svelte:head>
@@ -17,10 +18,13 @@
 	<h1>{title}</h1>
 </header>
 
-<section class="l-text:xl l-stack">
-	<h2>Blocks</h2>
-	{#each componentNames as name}
-		{@const Component = components[name]}
-		<Block title={name} depth="3" component={Component} />
-	{/each}
+<section class="l-stack">
+	<Collection
+		{title}
+		depth="1"
+		isPage={true}
+		path={`${path}/${category}`}
+		{components}
+		{category}
+	/>
 </section>

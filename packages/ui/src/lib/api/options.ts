@@ -5,6 +5,7 @@ export enum StyleEnum {
 	size = 'size',
 	brightness = 'brightness',
 	contrast = 'contrast',
+	app = 'app',
 	variant = 'variant',
 	color = 'color',
 	layout = 'layout',
@@ -14,6 +15,7 @@ export type ComponentProps = {
 	size?: string
 	brightness?: string
 	contrast?: string
+	app?: string
 	variant?: string
 	color?: string
 	layout?: string
@@ -72,21 +74,6 @@ export interface LayoutOptions extends ApiOptions {
 }
 
 export const app: ApiOptions = {
-	theme: {
-		name: 'App',
-		items: [
-			{
-				name: 'App',
-				input: 'toggle',
-				layout: 'switcher',
-				items: [
-					{id: 'ui', label: 'ui'},
-					{id: 'doc', label: 'doc'},
-					{id: 'website', label: 'website'},
-				],
-			},
-		],
-	},
 	settings: {
 		name: 'Theme',
 		items: [
@@ -107,6 +94,21 @@ export const app: ApiOptions = {
 					{id: 'contrast', label: 'high'}, // TODO : fix color vars & classes
 					{id: 'blend', label: 'low'},
 					// {id: 'polar', label: 'polar'},
+				],
+			},
+		],
+	},
+	theme: {
+		name: 'App',
+		items: [
+			{
+				name: 'App',
+				input: 'toggle',
+				layout: 'switcher',
+				items: [
+					{id: 'ui', label: 'ui'},
+					{id: 'doc', label: 'doc'},
+					{id: 'website', label: 'website'},
 				],
 			},
 		],
@@ -233,6 +235,7 @@ export const shared: ApiOptions = {
 			{
 				name: 'Size',
 				input: 'toggle',
+				layout: 'stack',
 				items: [
 					{id: 'xs', label: 'xs'},
 					{id: 'sm', label: 'sm'},
@@ -245,12 +248,19 @@ export const shared: ApiOptions = {
 	},
 }
 
-export const DEFAULT_OPTIONS = {
-	app: {brightness: 'day', contrast: 'low', app: 'ui'},
+export const API_OPTIONS: {[family: string]: ApiOptions} = {app, blocks, layouts, shared}
+
+export const DEFAULT_OPTIONS: {
+	[family: string]: {[option: string]: {[option: string]: string} | string}
+} = {
+	app: {theme: 'ui', settings: {brightness: 'day', contrast: 'low'}},
+	shared: {
+		size: 'md',
+	},
 	blocks: {
 		variant: '',
-		color: '',
 		layout: 'switcher',
+		color: '',
 		// app: 'ui', // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component context): maybe: use web components ?
 		icon: '✨',
 	},
@@ -258,8 +268,5 @@ export const DEFAULT_OPTIONS = {
 		container: 'center',
 		content: 'stack',
 		breakpoint: 'md',
-	},
-	shared: {
-		size: 'md',
 	},
 }

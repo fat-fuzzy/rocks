@@ -3,13 +3,15 @@
 	import type {ComponentType} from 'svelte'
 	import {api} from '@fat-fuzzy/ui'
 
+	const {Element} = api
+
 	let title: string
 	let Component: ComponentType
 
 	$: category = $page.data.category
 	$: title = $page.data.title
 	$: Component = $page.data.Component
-	$: Api = category === 'blocks' ? api.Block : api.Layout // TODO: try dynamic import
+	$: path = $page.url.pathname
 </script>
 
 <svelte:head>
@@ -21,4 +23,4 @@
 	<h1>{title}</h1>
 </header>
 
-<svelte:component this={Api} isPage={true} depth="1" {title} component={Component} />
+<Element isPage={true} depth="1" {title} {path} {category} component={Component} />

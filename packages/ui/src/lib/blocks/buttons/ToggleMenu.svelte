@@ -8,8 +8,8 @@
 
 	export let id = ''
 	export let title = ''
-	export let size = 'sm'
-	export let layout = 'stack'
+	export let size = ''
+	export let layout = 'switcher'
 	export let color = ''
 	export let variant = ''
 	export let multiple = false
