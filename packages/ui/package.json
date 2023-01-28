@@ -22,7 +22,7 @@
 		"@sveltejs/kit": "^1.0.0",
 		"@sveltejs/package": "^1.0.0",
 		"@xstate/svelte": "2.0.1",
-		"postcss": "8.4.20",
+		"postcss": "8.4.21",
 		"postcss-load-config": "4.0.1",
 		"sass": "1.57.1",
 		"svelte": "^3.54.0",
