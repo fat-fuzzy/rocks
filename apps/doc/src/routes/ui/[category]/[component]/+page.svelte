@@ -10,7 +10,7 @@
 
 	$: category = $page.data.category
 	$: categoryItems = $page.data.items
-	$: title = `${$page.params.component.charAt(0).toUpperCase()}${$page.params.component.slice(1)}`
+	$: title = $page.params.component
 	$: Component = categoryItems[title]
 	$: path = $page.url.pathname
 </script>

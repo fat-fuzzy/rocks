@@ -108,7 +108,7 @@ export const app: ApiOptions = {
 		name: 'Theme',
 		items: [
 			{
-				name: 'App',
+				name: 'Theme',
 				input: 'toggle',
 				layout: 'switcher',
 				items: [
@@ -188,11 +188,12 @@ export const blocks: ApiOptions = {
 export const layouts: ApiOptions = {
 	context: {
 		name: 'Context',
+		layout: 'switcher',
 		items: [
 			{
 				name: 'Container',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				items: [
 					{id: 'center', label: 'center'},
 					{
@@ -201,7 +202,7 @@ export const layouts: ApiOptions = {
 						// items: [
 						// 	{
 						// 		input: 'radio',
-						// 		layout: 'switcher',
+						// 		layout: 'stack',
 						// 		items: [
 						// 			{id: 'main', label: 'main'},
 						// 			{id: 'side', label: 'side'},
@@ -214,7 +215,7 @@ export const layouts: ApiOptions = {
 			{
 				name: 'Content',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				items: [
 					{id: 'card', label: 'card'},
 					{id: 'form', label: 'form'},
@@ -224,7 +225,7 @@ export const layouts: ApiOptions = {
 			{
 				name: 'Breakpoint',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				items: [
 					{id: 'xs', label: 'xs'},
 					{id: 'sm', label: 'sm'},
