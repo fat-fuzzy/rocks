@@ -1,10 +1,13 @@
-/* CSS blocks   ("components") */
-@import './header';
-@import './footer';
-@import './nav';
-@import './menu';
-@import './media';
-@import './button';
-@import './fieldset';
-@import './form';
-@import './feedback';
+/**
+ * CSS blocks   ("components")
+ * These stylesheets use the tokens defined in `styles/app/my-app/*`
+ */
+@import './header'; // Use for headers: main app header, page header
+@import './footer'; // Use for main (only) footer
+@import './nav'; // Use for nav and derived elements
+@import './menu'; // Use for menu and derived elements
+@import './media'; // Use for framed elements: video, img, picture, canvas
+@import './button'; // Use for normal and toggle buttons
+@import './fieldset'; // Use for fieldset element: TODO: maybe move to form
+@import './form'; // Use for form and form inputs
+@import './feedback'; // Use for feedback elements (success, warnings, errors, etc)
