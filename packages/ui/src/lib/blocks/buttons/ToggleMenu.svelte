@@ -47,8 +47,8 @@
 	}
 </script>
 
-{#if title}<p>{title}</p>{/if}
 <menu id={menuId} class={`l-${layout} ${size}`}>
+	{#if title}<p>{title}</p>{/if}
 	{#each items as { id, label, icon }}
 		<li>
 			<Toggle {id} on:toggle={onToggle} {variant} {color} text={format.formatLabel(label, icon)} />

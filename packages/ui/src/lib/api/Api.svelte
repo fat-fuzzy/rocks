@@ -12,7 +12,7 @@
 	// TODO: figure out how I can deduct props from Svelte component
 	export let selected: ComponentProps
 
-	let apiLayout = 'stack'
+	let apiLayout = 'switcher'
 
 	let current = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
 
@@ -60,11 +60,11 @@
 					legend={optionName}
 					slug={`field-${optionName}`}
 					type="input-group"
-					layout={optionLayout}
+					layout={`${optionLayout} xs`}
 				>
 					{#each optionItems as optionGroup}
 						{@const {name, input, items, layout} = optionGroup}
-						{@const classes = layout ? `l-${layout}` : ``}
+						{@const classes = layout ? `l-${layout} xs` : `xs`}
 						{#if input === 'radio' || input === 'checkbox'}
 							{#each items as { id, label }}
 								{@const checked = id === option.value}
@@ -87,7 +87,7 @@
 								id={name}
 								title={name !== optionName ? name : ''}
 								{items}
-								{layout}
+								layout={`${layout} xs`}
 								on:changed={(event) => handleToggle(event, name, optionName)}
 							/>
 						{/if}

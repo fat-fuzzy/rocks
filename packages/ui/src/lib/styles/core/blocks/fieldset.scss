@@ -5,10 +5,6 @@ fieldset {
 		font-size: var(#{$prefix}-current-font-size);
 		font-weight: var(#{$prefix}-font-weight-ui);
 	}
-	> p {
-		font-size: var(#{$prefix}-current-font-size);
-		font-weight: var(#{$prefix}-font-weight-ui);
-	}
 }
 
 fieldset {

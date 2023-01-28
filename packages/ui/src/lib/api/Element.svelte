@@ -4,11 +4,12 @@
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import {API_OPTIONS, DEFAULT_OPTIONS} from './options'
+	import fixtures from '../../data/fixtures'
 
 	export let title = ''
 	export let depth = 0
 	export let isPage = false
-	export let category = 'app'
+	export let category = ''
 	export let path = ''
 	export let component: ComponentType
 	export let initial: ComponentProps = {
@@ -17,10 +18,11 @@
 		...DEFAULT_OPTIONS['app'],
 	}
 
+	let options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
+
 	// TODO: figure out how I can deduct props from component
 	let updated = {...initial}
 	let selected = {...updated}
-	const options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
 
 	// TODO: rigure out a way to let user resize component container
 	let frame
@@ -37,24 +39,51 @@
 	$: brightness = selected.brightness ?? ''
 	$: contrast = selected.contrast ?? ''
 	$: size = selected.size ?? ''
-	$: element = isPage ? 'card:lg layer' : ''
-	$: article = !isPage ? 'card:lg l-text' : ''
-	$: classes = `${element} ${brightness} ${contrast} ${size}`
+	$: container = selected.container ?? ''
+	$: content = selected.content ?? ''
+	$: breakpoint = selected.breakpoint ?? ''
+	$: element = isPage ? `card:lg inset half l-${container}` : ''
+	$: articleClasses = !isPage ? 'card:lg l-text' : ''
+	$: elementClasses = `${element} ${brightness} ${contrast} ${size}`
 	$: selected = {
 		...selected,
 		...updated,
 	}
 </script>
 
-<article class={article}>
+<article class={articleClasses}>
 	{#if !isPage}
 		<svelte:element this={`h${String(depth)}`}>{title}</svelte:element>
-		<svelte:component this={component} {...selected} />
+		{#if category === 'layouts'}
+			<svelte:component this={component} {...selected}>
+				{#if content === 'text'}
+					{fixtures[content]}
+				{:else if content === 'card' || content === 'form'}
+					{#each fixtures[content] as item}
+						<div class={`${item}`}>{item}</div>
+					{/each}
+				{/if}
+			</svelte:component>
+		{:else}
+			<svelte:component this={component} {...selected} />
+		{/if}
 		<a class="primary" href={`${path}/${title}`}>View {title} API</a>
 	{:else}
-		<Sidebar size="md" placement="end">
-			<main slot="main" class={classes}>
-				<svelte:component this={component} {...selected} />
+		<Sidebar size="sm" placement="end">
+			<main slot="main" class={elementClasses}>
+				{#if category === 'layouts'}
+					<svelte:component this={component} {...selected}>
+						{#if content === 'text'}
+							{fixtures[content]}
+						{:else if content === 'card' || content === 'form'}
+							{#each fixtures[content] as item}
+								<div class={`${item}`}>{item}</div>
+							{/each}
+						{/if}
+					</svelte:component>
+				{:else}
+					<svelte:component this={component} {...selected} />
+				{/if}
 			</main>
 			<aside slot="side">
 				<Api {title} {options} {selected} on:changed={updateSelected} />

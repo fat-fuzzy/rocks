@@ -25,6 +25,13 @@
 	}
 }
 
+.l-main.half {
+	min-inline-size: 50%;
+}
+.l-main.half + .l-side {
+	flex-basis: 50%;
+}
+
 // adjusts to width of contents
 .l-side {
 	flex-grow: 1;
