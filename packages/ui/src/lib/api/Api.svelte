@@ -29,7 +29,7 @@
 		dispatch('changed', payload)
 	}
 
-	function handleToggle(event, id, name) {
+	function handleToggle(event, name, id) {
 		const selected = event.detail.selected // TODO: no multiple values for now
 		if (selected.length) {
 			const payload = {
@@ -88,7 +88,7 @@
 								title={name !== optionName ? name : ''}
 								{items}
 								layout={`${layout} xxs`}
-								on:changed={(event) => handleToggle(event, name, optionName)}
+								on:changed={(event) => handleToggle(event, optionName, name)}
 							/>
 						{/if}
 						{#if input === 'datalist'}

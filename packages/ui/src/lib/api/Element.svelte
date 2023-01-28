@@ -20,12 +20,13 @@
 	}
 	let updated = selected
 
-	// TODO: rigure out a way to let user resize component container
+	// TODO: figure out a way to let user resize component container
 	let frame
 	let width
 	let height
 
 	const updateSelected = (event) => {
+		// TODO: Fix bug updating grouped options (test: change *container* and *content* in a Layouts item in doc site)
 		updated = event.detail.items.reduce((values, option) => {
 			return {...values, [option.id]: option.value}
 		}, {})
