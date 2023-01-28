@@ -22,6 +22,7 @@
 			items: [
 				{
 					id: event.target.name.toLowerCase(),
+					name: event.target.name,
 					value: event.target.value,
 				},
 			],
@@ -37,6 +38,7 @@
 				items: [
 					{
 						id: id.toLowerCase(),
+						name: id,
 						value: selected[0].pressed ? selected[0].id : '',
 					},
 				],

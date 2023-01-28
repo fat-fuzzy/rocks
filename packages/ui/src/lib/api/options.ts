@@ -80,7 +80,7 @@ export interface LayoutOptions extends ApiOptions {
 
 export const app: ApiOptions = {
 	settings: {
-		name: 'Theme',
+		name: 'Settings',
 		layout: 'switcher',
 		items: [
 			{
@@ -105,7 +105,7 @@ export const app: ApiOptions = {
 		],
 	},
 	theme: {
-		name: 'App',
+		name: 'Theme',
 		items: [
 			{
 				name: 'App',

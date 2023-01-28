@@ -26,11 +26,21 @@
 	let height
 
 	const updateSelected = (event) => {
-		// TODO: Fix bug updating grouped options (test: change *container* and *content* in a Layouts item in doc site)
 		updated = event.detail.items.reduce((values, option) => {
-			return {...values, [option.id]: option.value}
-		}, {})
+			if (event.detail.name.toLowerCase() === option.id) {
+				return {...values, [option.id]: option.value}
+			}
+			return {
+				...values,
+				[event.detail.name.toLowerCase()]: {
+					...values[event.detail.name.toLowerCase()],
+					[option.id]: option.value,
+				},
+			}
+		}, updated)
 	}
+
+	// TODO: improve this code - make it easier to understand !
 
 	$: options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
 	$: initial = {
@@ -39,11 +49,15 @@
 		...DEFAULT_OPTIONS['app'],
 	}
 	$: app = selected.app ?? ''
-	$: brightness = selected.brightness ?? ''
-	$: contrast = selected.contrast ?? ''
+	$: brightness =
+		selected.settings && typeof selected.settings !== 'string' ? selected.settings.brightness : ''
+	$: contrast =
+		selected.settings && typeof selected.settings !== 'string' ? selected.settings.contrast : ''
 	$: size = selected.size ?? ''
-	$: container = selected.container ?? ''
-	$: content = selected.content ?? ''
+	$: container =
+		selected.context && typeof selected.context !== 'string' ? selected.context.container : ''
+	$: content =
+		selected.context && typeof selected.context !== 'string' ? selected.context.content : ''
 	$: breakpoint = selected.breakpoint ?? ''
 	$: element = isPage ? `card:lg inset half l-${container}` : ''
 	$: articleClasses = !isPage ? 'card:lg l-text' : ''
