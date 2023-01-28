@@ -1,6 +1,8 @@
 /**
- * CSS blocks   ("components")
- * These stylesheets use the tokens defined in `styles/app/my-app/*`
+ * CSS blocks
+ * (= "actual content", not layout)
+ * These stylesheets must use the tokens defined in `styles/app/my-app/*`
+ * where  `my-app` is any folder inside `styles/app` that uses or overrides the design tokens declared in the `styles/app/ui` folder
  */
 @import './header'; // Use for headers: main app header, page header
 @import './footer'; // Use for main (only) footer
@@ -11,4 +13,4 @@
 @import './fieldset'; // Use for fieldset element: TODO: maybe move to form
 @import './form'; // Use for form and form inputs
 @import './feedback'; // Use for feedback elements (success, warnings, errors, etc)
-@import './api'; // Use for feedback elements (success, warnings, errors, etc)
+@import './api'; // Use for API components (used in Doc website)
