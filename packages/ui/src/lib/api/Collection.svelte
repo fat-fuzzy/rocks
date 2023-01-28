@@ -34,21 +34,19 @@
 		...selected,
 		...updated,
 	}
-	$: classes = `${selected.size || 'md'} ${selected.brightness ?? ''} ${selected.contrast ?? ''}`
+	$: classes = `${selected.size || 'lg'} ${selected.brightness ?? ''} ${selected.contrast ?? ''}`
 </script>
 
 <article>
 	<Sidebar size="sm" placement="end">
-		<main slot="main" class={`l-${layout} box ${classes} ${selected.size}`}>
+		<main slot="main" class={`l-${layout} ${classes}`}>
 			{#each componentNames as name}
 				{@const Component = components[name]}
 				<Element title={name} {category} depth={Number(depth) + 1} {path} component={Component} />
 			{/each}
 		</main>
 		<aside slot="side">
-			{#if isPage}
-				<Api {title} {options} {selected} on:changed={updateSelected} />
-			{/if}
+			<Api {title} {options} {selected} on:changed={updateSelected} />
 		</aside>
 	</Sidebar>
 </article>

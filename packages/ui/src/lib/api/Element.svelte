@@ -60,14 +60,16 @@
 		selected.context && typeof selected.context !== 'string' ? selected.context.content : ''
 	$: breakpoint = selected.breakpoint ?? ''
 	$: element = isPage ? `card:lg inset half l-${container}` : ''
-	$: articleClasses = !isPage ? 'card:lg l-text' : ''
+	$: articleClasses = !isPage ? `card:lg box l-stack` : ''
 	$: elementClasses = `ui-element ${element} ${brightness} ${contrast} ${size}`
 	$: selected = {...initial, ...updated}
 </script>
 
 <article class={articleClasses}>
 	{#if !isPage}
-		<svelte:element this={`h${String(depth)}`}>{title}</svelte:element>
+		<a class="primary" href={`${path}/${title}`}>
+			<svelte:element this={`h${String(depth)}`} class="font:lg">{title} API 🔗</svelte:element>
+		</a>
 		{#if category === 'layouts'}
 			<svelte:component this={component} {...selected}>
 				{#if content === 'text'}
@@ -81,7 +83,6 @@
 		{:else}
 			<svelte:component this={component} {...selected} />
 		{/if}
-		<a class="primary" href={`${path}/${title}`}>View {title} API</a>
 	{:else}
 		<Sidebar size="sm" placement="end">
 			<main slot="main" class={elementClasses}>

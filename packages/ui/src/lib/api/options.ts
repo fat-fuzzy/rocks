@@ -195,7 +195,6 @@ export const layouts: ApiOptions = {
 				layout: 'switcher',
 				items: [
 					{id: 'center', label: 'center'},
-					{id: 'text', label: 'text'},
 					{
 						id: 'sidebar',
 						label: 'sidebar',

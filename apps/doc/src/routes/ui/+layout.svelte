@@ -13,12 +13,13 @@
 
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
+	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
 	$: path = ''
 	$: items = [
 		{
 			slug: 'ui',
-			title: 'UI Library',
+			title,
 			items: [
 				{
 					slug: 'blocks',
@@ -37,7 +38,7 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<RevealNav title="Fat Fuzzy UI" id="nav-page" {items} {path} breakpoint="bp:md" size="md" />
+		<RevealNav {title} id="nav-page" {items} {path} breakpoint="bp:md" size="md" />
 	</svelte:fragment>
 	<div slot="main" class="l-stack card">
 		<slot />

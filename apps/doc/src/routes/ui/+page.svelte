@@ -3,7 +3,7 @@
 	import {blocks, api} from '@fat-fuzzy/ui'
 	const {Collection} = api
 
-	let title = 'Fat Fuzzy UI'
+	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
 	const components = blocks
 	let category = 'blocks' // TODO: fix content
 	let path = $page.url.pathname
