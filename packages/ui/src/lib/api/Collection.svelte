@@ -39,7 +39,7 @@
 
 <article>
 	<Sidebar size="sm" placement="end">
-		<main slot="main" class={`l-${layout} layer ${classes} ${selected.size}`}>
+		<main slot="main" class={`l-${layout} box ${classes} ${selected.size}`}>
 			{#each componentNames as name}
 				{@const Component = components[name]}
 				<Element

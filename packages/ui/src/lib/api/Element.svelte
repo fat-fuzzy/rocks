@@ -44,7 +44,7 @@
 	$: breakpoint = selected.breakpoint ?? ''
 	$: element = isPage ? `card:lg inset half l-${container}` : ''
 	$: articleClasses = !isPage ? 'card:lg l-text' : ''
-	$: elementClasses = `${element} ${brightness} ${contrast} ${size}`
+	$: elementClasses = `ui-element ${element} ${brightness} ${contrast} ${size}`
 	$: selected = {
 		...selected,
 		...updated,
