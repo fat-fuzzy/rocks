@@ -74,10 +74,7 @@ textarea {
 .xs {
 	legend {
 		font-size: var(#{$prefix}-font-size-sm);
-	}
-
-	legend + * {
-		margin-block-start: var(#{$prefix}-size-xs);
+		margin-block-end: var(#{$prefix}-size-xs);
 	}
 
 	input,
@@ -108,8 +105,8 @@ textarea {
 }
 
 .xxs {
-	legend + * {
-		margin-block-start: var(#{$prefix}-size-xxs);
+	legend {
+		margin-block-end: var(#{$prefix}-size-xxs);
 	}
 	input[type='range'] {
 		font-size: var(#{$prefix}-font-size-xs);
@@ -122,10 +119,7 @@ textarea {
 .sm {
 	legend {
 		font-size: var(#{$prefix}-font-size-h5);
-	}
-
-	legend + * {
-		margin-block-start: var(#{$prefix}-size-sm);
+		margin-block-end: var(#{$prefix}-size-sm);
 	}
 
 	input,
@@ -158,10 +152,7 @@ textarea {
 .md {
 	legend {
 		font-size: var(#{$prefix}-font-size-h4);
-	}
-
-	legend + * {
-		margin-block-start: var(#{$prefix}-size-md);
+		margin-block-end: var(#{$prefix}-size-md);
 	}
 
 	input,
@@ -194,10 +185,7 @@ textarea {
 .lg {
 	legend {
 		font-size: var(#{$prefix}-font-size-h3);
-	}
-
-	legend + * {
-		margin-block-start: var(#{$prefix}-size-lg);
+		margin-block-end: var(#{$prefix}-size-lg);
 	}
 
 	input,
@@ -231,10 +219,7 @@ textarea {
 .xl {
 	legend {
 		font-size: var(#{$prefix}-font-size-h2);
-	}
-
-	legend + * {
-		margin-block-start: var(#{$prefix}-size-xl);
+		margin-block-end: var(#{$prefix}-size-xl);
 	}
 
 	input,

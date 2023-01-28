@@ -156,45 +156,6 @@ textarea {
 	outline-color: var(#{$prefix}-current-highlight);
 }
 
-button:hover {
-	color: var(#{$prefix}-current-color);
-	background-color: var(#{$prefix}-current-bg-color);
-}
-
-button.primary:hover {
-	color: var(#{$prefix}-color-gray-4);
-	background-color: var(#{$prefix}-primary-lighter);
-}
-
-button.accent:hover {
-	color: var(#{$prefix}-color-gray-4);
-	background-color: var(#{$prefix}-color-accent-lighter);
-}
-
-button.highlight:hover {
-	color: var(#{$prefix}-color-gray-4);
-	background-color: var(#{$prefix}-color-highlight-lighter);
-}
-
-button.link:hover {
-	color: currentColor;
-	background-color: inherit;
-}
-
-button:disabled,
-button.primary:disabled,
-button.accent:disabled,
-button.highlight:disabled {
-	color: currentColor;
-	background-color: var(#{$prefix}-current-gray);
-}
-
-button.link:disabled {
-	color: var(#{$prefix}-current-gray);
-	background-color: inherit;
-	text-decoration: none;
-}
-
 //== Header, Navs, Menus
 
 .night .header-app {

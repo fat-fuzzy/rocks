@@ -74,7 +74,6 @@ nav li[aria-current='page'] a {
 // override Active Link styles for top level link
 .sub-nav button,
 ul.depth-0 > li > a {
-	color: var(#{$prefix}-current-color); // default text color
 	font-family: var(#{$prefix}-font-family-heading);
 	font-weight: var(#{$prefix}-font-weight-semibold);
 }

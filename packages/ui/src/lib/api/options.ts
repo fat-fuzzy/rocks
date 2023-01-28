@@ -5,6 +5,9 @@ export enum StyleEnum {
 	size = 'size',
 	brightness = 'brightness',
 	contrast = 'contrast',
+	container = 'container',
+	content = 'content',
+	breakpoint = 'breakpoint',
 	app = 'app',
 	variant = 'variant',
 	color = 'color',
@@ -16,6 +19,9 @@ export type ComponentProps = {
 	brightness?: string
 	contrast?: string
 	app?: string
+	container?: string
+	content?: string
+	breakpoint?: string
 	variant?: string
 	color?: string
 	layout?: string
@@ -69,18 +75,18 @@ export interface BlockOptions extends ApiOptions {
 	layout: StyleFamily
 }
 export interface LayoutOptions extends ApiOptions {
-	container: StyleFamily
-	content: StyleFamily
+	context: StyleFamily
 }
 
 export const app: ApiOptions = {
 	settings: {
-		name: 'Theme',
+		name: 'Settings',
+		layout: 'switcher',
 		items: [
 			{
 				name: 'Brightness',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				items: [
 					{id: 'day', label: 'day'},
 					{id: 'night', label: 'night'},
@@ -89,7 +95,7 @@ export const app: ApiOptions = {
 			{
 				name: 'Contrast',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				items: [
 					{id: 'contrast', label: 'high'}, // TODO : fix color vars & classes
 					{id: 'blend', label: 'low'},
@@ -99,10 +105,10 @@ export const app: ApiOptions = {
 		],
 	},
 	theme: {
-		name: 'App',
+		name: 'Theme',
 		items: [
 			{
-				name: 'App',
+				name: 'Theme',
 				input: 'toggle',
 				layout: 'switcher',
 				items: [
@@ -122,6 +128,7 @@ export const blocks: ApiOptions = {
 			{
 				name: 'Variant',
 				input: 'toggle',
+				layout: 'stack',
 				items: [
 					{id: 'full', label: 'full'},
 					{id: 'outline', label: 'outline'},
@@ -136,6 +143,7 @@ export const blocks: ApiOptions = {
 			{
 				name: 'Color',
 				input: 'toggle',
+				layout: 'stack',
 				items: [
 					{id: 'primary', label: 'primary'},
 					{id: 'accent', label: 'accent'},
@@ -147,6 +155,7 @@ export const blocks: ApiOptions = {
 	icon: {
 		name: 'Icon',
 		exclude: ['ButtonMenu', 'ToggleMenu'],
+		layout: 'stack',
 		items: [
 			{
 				name: 'Icon',
@@ -161,12 +170,12 @@ export const blocks: ApiOptions = {
 	},
 	layout: {
 		name: 'Layout',
-		layout: 'switcher',
 		exclude: ['Button', 'Toggle'],
 		items: [
 			{
 				name: 'Layout',
 				input: 'toggle',
+				layout: 'stack',
 				items: [
 					{id: 'stack', label: 'stack'},
 					{id: 'switcher', label: 'switcher'},
@@ -179,21 +188,21 @@ export const blocks: ApiOptions = {
 export const layouts: ApiOptions = {
 	context: {
 		name: 'Context',
+		layout: 'switcher',
 		items: [
 			{
 				name: 'Container',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				items: [
 					{id: 'center', label: 'center'},
-					{id: 'text', label: 'text'},
 					{
 						id: 'sidebar',
 						label: 'sidebar',
 						// items: [
 						// 	{
 						// 		input: 'radio',
-						// 		layout: 'switcher',
+						// 		layout: 'stack',
 						// 		items: [
 						// 			{id: 'main', label: 'main'},
 						// 			{id: 'side', label: 'side'},
@@ -206,15 +215,16 @@ export const layouts: ApiOptions = {
 			{
 				name: 'Content',
 				input: 'toggle',
+				layout: 'stack',
 				items: [
-					{id: 'stack', label: 'stack'},
-					{id: 'switcher', label: 'switcher'},
+					{id: 'card', label: 'card'},
+					{id: 'form', label: 'form'},
 					{id: 'text', label: 'text'},
 				],
 			},
 			{
 				name: 'Breakpoint',
-				input: 'radio',
+				input: 'toggle',
 				layout: 'stack',
 				items: [
 					{id: 'xs', label: 'xs'},
@@ -248,12 +258,12 @@ export const shared: ApiOptions = {
 	},
 }
 
-export const API_OPTIONS: {[family: string]: ApiOptions} = {app, blocks, layouts, shared}
+export const API_OPTIONS: {[family: string]: ApiOptions} = {app, shared, blocks, layouts}
 
 export const DEFAULT_OPTIONS: {
 	[family: string]: {[option: string]: {[option: string]: string} | string}
 } = {
-	app: {theme: 'ui', settings: {brightness: 'day', contrast: 'low'}},
+	app: {settings: {brightness: 'day', contrast: 'low'}, theme: 'ui'},
 	shared: {
 		size: 'md',
 	},
@@ -265,8 +275,6 @@ export const DEFAULT_OPTIONS: {
 		icon: '✨',
 	},
 	layouts: {
-		container: 'center',
-		content: 'stack',
-		breakpoint: 'md',
+		context: {container: 'center', content: 'card', breakpoint: 'md'},
 	},
 }

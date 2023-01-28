@@ -16,53 +16,37 @@
 	export let initial: ComponentProps = {
 		...DEFAULT_OPTIONS['app'],
 	}
-	if (category) {
-		initial = {...initial, ...DEFAULT_OPTIONS['shared']}
-	}
 	// TODO: figure out how I can deduct props from component
 	let updated = {...initial}
 	let selected = {...updated}
 
 	// TODO: figure out a way to let user resize component container
-	let frame
-	let width
-	let height
-
 	const updateSelected = (event) => {
 		updated = event.detail.items.reduce((values, option) => {
 			return {...values, [option.id]: option.value}
 		}, {})
 	}
 
-	$: options = {...API_OPTIONS['app'], ...API_OPTIONS['shared']}
+	$: options = {...API_OPTIONS['app']}
 	$: componentNames = Object.keys(components)
 	$: app = selected.app ?? ''
 	$: selected = {
 		...selected,
 		...updated,
 	}
-	$: classes = `${selected.brightness} ${selected.contrast}`
+	$: classes = `${selected.size || 'lg'} ${selected.brightness ?? ''} ${selected.contrast ?? ''}`
 </script>
 
 <article>
-	<Sidebar size="md" placement="end">
-		<main slot="main" class={`l-${layout} layer ${classes}`}>
+	<Sidebar size="sm" placement="end">
+		<main slot="main" class={`l-${layout} ${classes}`}>
 			{#each componentNames as name}
 				{@const Component = components[name]}
-				<Element
-					title={name}
-					{category}
-					depth={Number(depth) + 1}
-					initial={selected}
-					{path}
-					component={Component}
-				/>
+				<Element title={name} {category} depth={Number(depth) + 1} {path} component={Component} />
 			{/each}
 		</main>
 		<aside slot="side">
-			{#if isPage}
-				<Api {title} {options} {selected} on:changed={updateSelected} />
-			{/if}
+			<Api {title} {options} {selected} on:changed={updateSelected} />
 		</aside>
 	</Sidebar>
 </article>

@@ -12,9 +12,9 @@
 	// TODO: figure out how I can deduct props from Svelte component
 	export let selected: ComponentProps
 
-	let apiLayout = 'stack'
+	let apiLayout = 'switcher'
 
-	let current = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
+	$: current = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
 
 	function handleInput(event, name) {
 		const payload = {
@@ -22,6 +22,7 @@
 			items: [
 				{
 					id: event.target.name.toLowerCase(),
+					name: event.target.name,
 					value: event.target.value,
 				},
 			],
@@ -29,7 +30,7 @@
 		dispatch('changed', payload)
 	}
 
-	function handleToggle(event, id, name) {
+	function handleToggle(event, name, id) {
 		const selected = event.detail.selected // TODO: no multiple values for now
 		if (selected.length) {
 			const payload = {
@@ -37,6 +38,7 @@
 				items: [
 					{
 						id: id.toLowerCase(),
+						name: id,
 						value: selected[0].pressed ? selected[0].id : '',
 					},
 				],
@@ -60,11 +62,11 @@
 					legend={optionName}
 					slug={`field-${optionName}`}
 					type="input-group"
-					layout={optionLayout}
+					layout={`${optionLayout}`}
 				>
 					{#each optionItems as optionGroup}
 						{@const {name, input, items, layout} = optionGroup}
-						{@const classes = layout ? `l-${layout}` : ``}
+						{@const classes = layout ? `l-${layout} xxs` : `xxs`}
 						{#if input === 'radio' || input === 'checkbox'}
 							{#each items as { id, label }}
 								{@const checked = id === option.value}
@@ -87,8 +89,8 @@
 								id={name}
 								title={name !== optionName ? name : ''}
 								{items}
-								{layout}
-								on:changed={(event) => handleToggle(event, name, optionName)}
+								layout={`${layout} xxs`}
+								on:changed={(event) => handleToggle(event, optionName, name)}
 							/>
 						{/if}
 						{#if input === 'datalist'}

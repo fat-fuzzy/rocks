@@ -11,3 +11,8 @@ menu {
 menu > li > * {
 	width: 100%;
 }
+
+.menu > p {
+	font-size: var(#{$prefix}-current-font-size);
+	font-weight: var(#{$prefix}-font-weight-ui);
+}

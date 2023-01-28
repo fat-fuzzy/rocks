@@ -47,11 +47,35 @@
 	}
 </script>
 
-{#if title}<p>{title}</p>{/if}
-<menu id={menuId} class={`l-${layout} ${size}`}>
-	{#each items as { id, label, icon }}
-		<li>
-			<Toggle {id} on:toggle={onToggle} {variant} {color} text={format.formatLabel(label, icon)} />
-		</li>
-	{/each}
-</menu>
+{#if title}
+	<div class={`menu l-stack ${size}`}>
+		<p>{title}</p>
+		<menu id={menuId} class={`l-${layout} ${size}`}>
+			{#each items as { id, label, icon }}
+				<li>
+					<Toggle
+						{id}
+						on:toggle={onToggle}
+						{variant}
+						{color}
+						text={format.formatLabel(label, icon)}
+					/>
+				</li>
+			{/each}
+		</menu>
+	</div>
+{:else}
+	<menu id={menuId} class={`l-${layout} ${size}`}>
+		{#each items as { id, label, icon }}
+			<li>
+				<Toggle
+					{id}
+					on:toggle={onToggle}
+					{variant}
+					{color}
+					text={format.formatLabel(label, icon)}
+				/>
+			</li>
+		{/each}
+	</menu>
+{/if}

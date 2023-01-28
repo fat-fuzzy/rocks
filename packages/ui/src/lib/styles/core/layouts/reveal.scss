@@ -8,8 +8,7 @@
 
 .l-reveal .toggle.collapse + .show {
 	#{$prefix}-show-top: calc(
-		calc(2 * var(#{$prefix}-prev-offset-limit)) +
-			calc(0.5em + calc(2 * var(#{$prefix}-current-size-plus))) +
+		calc(2 * var(#{$prefix}-prev-offset-limit)) + calc(2 * var(#{$prefix}-current-size-plus)) +
 			calc(2 * var(#{$prefix}-border-width))
 	);
 	position: absolute;

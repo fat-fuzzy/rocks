@@ -1,3 +1,4 @@
+//== Button default colors
 button {
 	display: flex;
 	justify-content: center;
@@ -10,30 +11,28 @@ button {
 	color: var(#{$prefix}-color-dark);
 	border: 1px solid var(#{$prefix}-current-gray);
 }
-
-//== Button default colors
-
-button:disabled {
-	opacity: 0.65;
-}
-
-button:not(.outline):not(:disabled):hover {
+button:hover {
 	cursor: pointer;
 	color: var(#{$prefix}-current-color);
 	background-color: inherit;
 }
-
-button:not(.outline):not(:disabled):active {
+button:active {
 	border: 1px solid var(#{$prefix}-current-gray-contrast);
 }
-
 button.outline {
 	color: inherit;
 	background-color: inherit;
 	border: 1px solid var(#{$prefix}-current-gray-contrast);
 }
 
-//== Button theme colors
+button:disabled {
+	opacity: 0.65;
+}
+button:disabled:hover {
+	opacity: 0.85;
+}
+
+//== Button primary
 
 button.primary {
 	color: var(#{$prefix}-color-light);
@@ -56,7 +55,8 @@ button.primary.outline:not(.bare):not([aria-pressed]):not(:disabled):active {
 	background-color: var(#{$prefix}-current-primary-lighter);
 }
 
-//== Accent  color
+//== Button accent
+
 .accent {
 	color: var(#{$prefix}-color-light);
 	border-color: var(#{$prefix}-current-accent);
@@ -69,6 +69,7 @@ button.outline.accent {
 }
 button.accent:not(:disabled):hover,
 .outline.accent:not(:disabled):hover {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-accent-lighter);
 	border-color: var(#{$prefix}-current-accent);
 }
@@ -78,7 +79,7 @@ button.accent:not(:disabled):active,
 	background-color: var(#{$prefix}-current-accent-light);
 }
 
-//== Highlight  color
+//== Button highlight
 
 .highlight {
 	border-color: var(#{$prefix}-current-highlight);
@@ -132,7 +133,7 @@ button.bare {
 	color: var(#{$prefix}-current-highlight-dark);
 }
 
-//== Toggle  colors
+//== Toggle  default
 
 [aria-pressed='false']:hover {
 	box-shadow: var(#{$prefix}-shadow);
@@ -158,6 +159,8 @@ button.bare {
 .outline[aria-pressed='true'] {
 	border-color: var(#{$prefix}-current-gray);
 }
+
+//== Toggle  primary
 
 .primary[aria-pressed='false'] {
 	color: var(#{$prefix}-current-color-contrast);
@@ -196,6 +199,8 @@ button.primary.outline[aria-pressed='true']:active {
 	background-color: var(#{$prefix}-current-primary-light);
 }
 
+//== Toggle  accent
+
 .accent[aria-pressed='false'] {
 	color: var(#{$prefix}-color-light);
 	background-color: var(#{$prefix}-current-accent);
@@ -229,6 +234,8 @@ button.accent.outline[aria-pressed='false']:hover {
 	background-color: var(#{$prefix}-current-accent-light);
 }
 
+//== Toggle  highlight
+
 .highlight[aria-pressed='false'] {
 	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight);
@@ -260,6 +267,8 @@ button.highlight.outline[aria-pressed='false']:hover {
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 
+//== Toggle  bare default
+
 .bare[aria-pressed='false'] {
 	color: var(#{$prefix}-current-color);
 	background-color: inherit;
@@ -282,6 +291,8 @@ button.highlight.outline[aria-pressed='false']:hover {
 	color: var(#{$prefix}-current-color);
 	background-color: inherit;
 }
+
+//== Toggle bare primary
 
 .bare.primary[aria-pressed='false'] {
 	color: var(#{$prefix}-current-primary);
@@ -307,6 +318,8 @@ button.highlight.outline[aria-pressed='false']:hover {
 	background-color: var(#{$prefix}-color-primary-lighter);
 }
 
+//== Toggle  bare accent
+
 .bare.accent[aria-pressed='false'] {
 	color: var(#{$prefix}-current-accent);
 	background-color: inherit;
@@ -330,6 +343,8 @@ button.highlight.outline[aria-pressed='false']:hover {
 	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-accent-lighter);
 }
+
+//== Toggle  bare highlight
 
 .bare.highlight[aria-pressed='false'] {
 	color: var(#{$prefix}-current-highlight-dark);
