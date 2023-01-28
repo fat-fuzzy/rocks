@@ -18,7 +18,7 @@
 		...DEFAULT_OPTIONS['app'],
 	}
 
-	let options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
+	$: options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
 
 	// TODO: figure out how I can deduct props from component
 	let updated = {...initial}
