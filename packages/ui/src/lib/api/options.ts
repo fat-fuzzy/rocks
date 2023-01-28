@@ -215,6 +215,7 @@ export const layouts: ApiOptions = {
 			{
 				name: 'Content',
 				input: 'toggle',
+				layout: 'switcher',
 				items: [
 					{id: 'card', label: 'card'},
 					{id: 'form', label: 'form'},
@@ -223,8 +224,8 @@ export const layouts: ApiOptions = {
 			},
 			{
 				name: 'Breakpoint',
-				input: 'radio',
-				layout: 'stack',
+				input: 'toggle',
+				layout: 'switcher',
 				items: [
 					{id: 'xs', label: 'xs'},
 					{id: 'sm', label: 'sm'},
@@ -274,8 +275,6 @@ export const DEFAULT_OPTIONS: {
 		icon: '✨',
 	},
 	layouts: {
-		container: 'center',
-		content: 'card',
-		breakpoint: 'md',
+		context: {container: 'center', content: 'card', breakpoint: 'md'},
 	},
 }

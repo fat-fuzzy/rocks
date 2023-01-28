@@ -42,14 +42,7 @@
 		<main slot="main" class={`l-${layout} box ${classes} ${selected.size}`}>
 			{#each componentNames as name}
 				{@const Component = components[name]}
-				<Element
-					title={name}
-					{category}
-					depth={Number(depth) + 1}
-					{initial}
-					{path}
-					component={Component}
-				/>
+				<Element title={name} {category} depth={Number(depth) + 1} {path} component={Component} />
 			{/each}
 		</main>
 		<aside slot="side">

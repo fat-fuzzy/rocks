@@ -14,7 +14,7 @@
 
 	let apiLayout = 'switcher'
 
-	let current = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
+	$: current = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
 
 	function handleInput(event, name) {
 		const payload = {

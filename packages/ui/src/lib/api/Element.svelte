@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {ComponentProps} from './options'
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import {API_OPTIONS, DEFAULT_OPTIONS} from './options'
@@ -12,17 +11,14 @@
 	export let category = ''
 	export let path = ''
 	export let component: ComponentType
-	export let initial: ComponentProps = {
+
+	// TODO: figure out how I can deduct props from component
+	let selected = {
 		...DEFAULT_OPTIONS[category],
 		...DEFAULT_OPTIONS['shared'],
 		...DEFAULT_OPTIONS['app'],
 	}
-
-	$: options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
-
-	// TODO: figure out how I can deduct props from component
-	let updated = {...initial}
-	let selected = {...updated}
+	let updated = selected
 
 	// TODO: rigure out a way to let user resize component container
 	let frame
@@ -35,6 +31,12 @@
 		}, {})
 	}
 
+	$: options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
+	$: initial = {
+		...DEFAULT_OPTIONS[category],
+		...DEFAULT_OPTIONS['shared'],
+		...DEFAULT_OPTIONS['app'],
+	}
 	$: app = selected.app ?? ''
 	$: brightness = selected.brightness ?? ''
 	$: contrast = selected.contrast ?? ''
@@ -45,10 +47,7 @@
 	$: element = isPage ? `card:lg inset half l-${container}` : ''
 	$: articleClasses = !isPage ? 'card:lg l-text' : ''
 	$: elementClasses = `ui-element ${element} ${brightness} ${contrast} ${size}`
-	$: selected = {
-		...selected,
-		...updated,
-	}
+	$: selected = {...initial, ...updated}
 </script>
 
 <article class={articleClasses}>
@@ -60,7 +59,7 @@
 					{fixtures[content]}
 				{:else if content === 'card' || content === 'form'}
 					{#each fixtures[content] as item}
-						<div class={`${item}`}>{item}</div>
+						<div class={`card box ${item}`}>{item}</div>
 					{/each}
 				{/if}
 			</svelte:component>
@@ -77,7 +76,7 @@
 							{fixtures[content]}
 						{:else if content === 'card' || content === 'form'}
 							{#each fixtures[content] as item}
-								<div class={`${item}`}>{item}</div>
+								<div class={`card box ${item}`}>{item}</div>
 							{/each}
 						{/if}
 					</svelte:component>
