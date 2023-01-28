@@ -3,14 +3,15 @@
 	import type {ComponentType} from 'svelte'
 	import {api} from '@fat-fuzzy/ui'
 
-	const {Element} = api
+	let {Element} = api
 
 	let title: string
 	let Component: ComponentType
 
 	$: category = $page.data.category
-	$: title = $page.data.title
-	$: Component = $page.data.Component
+	$: categoryItems = $page.data.items
+	$: title = `${$page.params.component.charAt(0).toUpperCase()}${$page.params.component.slice(1)}`
+	$: Component = categoryItems[title]
 	$: path = $page.url.pathname
 </script>
 
