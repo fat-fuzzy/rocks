@@ -1,4 +1,3 @@
-import {error} from '@sveltejs/kit'
 import type {LayoutLoad} from './$types'
 import * as ui from '@fat-fuzzy/ui'
 /**

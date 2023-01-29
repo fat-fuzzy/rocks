@@ -1,32 +1,12 @@
-const logComponents = import.meta.glob('../assets/log/*.md', {
-	import: 'default',
-})
-/**
- * Load Log data from markdown files contained in 'src/data/logs'
- *
- * @returns { meta, path } frontmatter metadata and path of markdown files to load
- */
+import markdownUtils from './markdown'
 
-const pathPrefix = '../assets/log/'
-const fetchLogs = async () => {
-	const logImports = Object.entries(logComponents)
+const pathPrefix = '/src/assets/log/'
 
-	const logs = await Promise.all(
-		// TODO: understand this vite functionality
-		logImports.map(async ([path, resolver]) => {
-			const result: any = await resolver()
-			const filePath = path.slice(pathPrefix.length, -3) // removes '/src/assets' and '*.md'
-			const [id, slug] = filePath.split('+')
-			return {
-				path: filePath,
-				html: result.render().html,
-				id,
-				slug,
-			}
-		}),
-	)
+const imports = import.meta.glob('/src/assets/log/*.md')
 
+async function fetchMarkdowns() {
+	const logs = await markdownUtils.fetchMarkdowns(pathPrefix, imports)
 	return logs
 }
 
-export default fetchLogs
+export default {fetchMarkdowns}
