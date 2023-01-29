@@ -7,10 +7,9 @@ import fetchLogs from '$data/log'
  * @returns { title, year, rawHtml } frontmatter metadata and markdown content as a rawHtml string
  */
 export const load: PageServerLoad = async ({params}) => {
-	const {id} = params
-
+	const {slug} = params
 	const logs = await fetchLogs()
-	const html = logs?.find((v) => v.path === id)
+	const html = logs?.find((v) => v.slug === slug)
 	if (!html) {
 		throw error(404, 'Not found')
 	}

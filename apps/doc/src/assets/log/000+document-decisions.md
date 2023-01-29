@@ -1,7 +1,7 @@
 ---
 title: Document decisions
 date: '2022'
-slug: architectural-decisions
+slug: document-decisions
 id: '000'
 tags: ['architecture', 'doc', 'dependencies']
 ---

@@ -16,10 +16,12 @@ const fetchLogs = async () => {
 		logImports.map(async ([path, resolver]) => {
 			const result: any = await resolver()
 			const filePath = path.slice(pathPrefix.length, -3) // removes '/src/assets' and '*.md'
-
+			const [id, slug] = filePath.split('+')
 			return {
 				path: filePath,
 				html: result.render().html,
+				id,
+				slug,
 			}
 		}),
 	)

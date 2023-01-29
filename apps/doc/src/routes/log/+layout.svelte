@@ -4,25 +4,25 @@
 	const {Sidebar} = layouts
 	const {RevealNav} = blocks
 
+	let title = ' FatFuzzy Log'
+	let description = 'Fat Fuzzy Log: thoughts and choices that provide context for this project'
 	$: path = ''
 	$: items = [
 		{
 			slug: 'log',
 			title: 'Log',
 			items: $page.data.logs.map(({meta, path}) => ({
-				slug: path,
-				title: `${meta.id} - ${meta.title}`,
+				id: meta.id,
+				slug: meta.slug,
+				title: meta.title,
 			})),
 		},
 	]
 </script>
 
 <svelte:head>
-	<title>FatFuzzy Log</title>
-	<meta
-		name="description"
-		content="Fat Fuzzy Log: thoughts and choices that provide context for this project"
-	/>
+	<title>{title}</title>
+	<meta name="description" content={description} />
 </svelte:head>
 
 <Sidebar size="xs">
