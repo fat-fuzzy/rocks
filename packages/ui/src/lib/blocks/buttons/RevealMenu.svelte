@@ -52,7 +52,7 @@
 
 <menu
 	aria-labelledby={id}
-	class={`l-reveal l-${layout} ${size} ${breakpoint}`}
+	class={`l-reveal l-${layout} ${size} bp:${breakpoint}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >

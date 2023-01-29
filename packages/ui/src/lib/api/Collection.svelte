@@ -10,7 +10,6 @@
 	export let depth = 0
 	export let path = ''
 	export let layout = 'stack'
-	export let isPage = true
 	export let components: ComponentType[]
 	export let category = ''
 	export let initial: ComponentProps = {

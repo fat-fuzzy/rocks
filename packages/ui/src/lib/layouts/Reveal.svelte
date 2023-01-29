@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class={`l-reveal l-${layout} ${size} ${breakpoint}`}
+	class={`l-reveal l-${layout} ${size} bp:${breakpoint}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -36,7 +36,7 @@
 	</slot>
 	<div class={`${alignment} ${show}`}>
 		<slot name="content">
-			<div class="card plus layer">
+			<div class="card layer">
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>
