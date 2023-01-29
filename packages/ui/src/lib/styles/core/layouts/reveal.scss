@@ -46,6 +46,56 @@
 	white-space: nowrap;
 }
 
+@include min-width(bp-xxs) {
+	.l\:reveal.bp\:xxs .toggle.collapse {
+		display: none;
+	}
+
+	.l\:reveal.bp\:xxs .toggle.collapse + .hide {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+
+	.l\:reveal.bp\:xxs .toggle.collapse + .show {
+		position: unset;
+		width: 100%;
+		max-width: unset;
+		box-shadow: unset;
+	}
+}
+
+@include min-width(bp-xs) {
+	.l\:reveal.bp\:xs .toggle.collapse {
+		display: none;
+	}
+
+	.l\:reveal.bp\:xs .toggle.collapse + .hide {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+
+	.l\:reveal.bp\:xs .toggle.collapse + .show {
+		position: unset;
+		width: 100%;
+		max-width: unset;
+		box-shadow: unset;
+	}
+}
+
 @include min-width(bp-sm) {
 	.l\:reveal.bp\:sm .toggle.collapse {
 		display: none;

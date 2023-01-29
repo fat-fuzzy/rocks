@@ -39,6 +39,7 @@
 	}
 
 	const getFamilyOptionValue = (styleFamily: StyleFamily, styleOption: string) => {
+		// TODO: filter include / exclude in here
 		return typeof styleFamily !== 'string' ? styleFamily[styleOption] : ''
 	}
 	// TODO: improve this code - make it easier to understand ! (use store ?)
@@ -56,9 +57,10 @@
 	$: sideContent = selected.content && getFamilyOptionValue(selected.content, 'side')
 	$: mainContent = selected.content && getFamilyOptionValue(selected.content, 'main')
 	$: size = selected.context && getFamilyOptionValue(selected.context, 'size')
+	$: container = selected.context && getFamilyOptionValue(selected.context, 'container')
 	$: element = isPage ? `card:lg inset` : '' // TODO: fix container usage (container sidebar, in blocks)
 	$: articleClasses = !isPage ? `card:lg box l:stack` : ''
-	$: elementClasses = `ui-element ${element} ${brightness} ${contrast} ${size}`
+	$: contextClasses = `ui-element ${element} ${brightness} ${contrast} ${size} l:${container}`
 	$: selected = {...initial, ...updated}
 	$: selectedProps = Object.keys(selected).reduce(
 		(props, family) => ({...props, ...selected[family]}),
@@ -88,7 +90,7 @@
 		<Sidebar size="xs" align="end">
 			<svelte:fragment slot="main">
 				{#if category === 'layouts'}
-					<main class={elementClasses}>
+					<main class={contextClasses}>
 						{#if title === 'Sidebar'}
 							<svelte:component this={component} {...selectedProps}>
 								<div slot="side">
@@ -123,13 +125,13 @@
 						{/if}
 					</main>
 				{:else}
-					<main class={elementClasses}>
+					<main class={contextClasses}>
 						<svelte:component this={component} {...selectedProps} />
 					</main>
 				{/if}
 			</svelte:fragment>
 			<aside slot="side">
-				<Api {title} {options} {selected} on:changed={updateSelected} />
+				<Api {title} {options} {selected} {category} on:changed={updateSelected} />
 			</aside>
 		</Sidebar>
 	{/if}

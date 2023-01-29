@@ -45,7 +45,7 @@
 			{/each}
 		</main>
 		<aside slot="side">
-			<Api {title} {options} {selected} on:changed={updateSelected} />
+			<Api {title} {options} {selected} {category} on:changed={updateSelected} />
 		</aside>
 	</Sidebar>
 </article>

@@ -140,12 +140,6 @@ a:hover,
 	text-decoration-color: var(#{$prefix}-current-dark);
 }
 
-input,
-select,
-textarea {
-	color: var(#{$prefix}-color-dark);
-}
-
 .primary:focus {
 	outline-color: var(#{$prefix}-current-primary);
 }
@@ -169,4 +163,21 @@ textarea {
 
 menu {
 	background-color: inherit;
+}
+
+// == Layouts
+
+[class^='card'].primary {
+	color: var(#{$prefix}-color-white);
+	background-color: var(#{$prefix}-current-primary);
+}
+
+[class^='card'].highlight {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-highlight);
+}
+
+[class^='card'].accent {
+	color: var(#{$prefix}-color-white);
+	background-color: var(#{$prefix}-current-accent);
 }

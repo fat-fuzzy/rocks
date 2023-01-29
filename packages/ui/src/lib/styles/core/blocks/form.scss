@@ -16,6 +16,7 @@ legend {
 	font-weight: var(#{$prefix}-font-weight-ui);
 	padding-left: 0;
 	padding-right: 0;
+	background-color: inherit;
 }
 
 .input-group {
@@ -32,7 +33,7 @@ select,
 textarea {
 	border: 1px solid var(#{$prefix}-color-gray-1);
 	border-radius: var(#{$prefix}-radius-base);
-	color: currentColor;
+	color: var(#{$prefix}-color-dark);
 	background: var(#{$prefix}-color-white);
 }
 

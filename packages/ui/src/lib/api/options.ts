@@ -176,21 +176,6 @@ export const blocks: ApiOptions = {
 			},
 		],
 	},
-	layout: {
-		name: 'Layout',
-		exclude: ['Button', 'Toggle'],
-		items: [
-			{
-				name: 'Layout',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'stack', label: 'stack'},
-					{id: 'switcher', label: 'switcher'},
-				],
-			},
-		],
-	},
 }
 
 export const layouts: ApiOptions = {
@@ -256,13 +241,34 @@ export const shared: ApiOptions = {
 				name: 'Breakpoint',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['Button', 'Toggle'],
+				exclude: ['Button', 'Toggle', 'Stack', 'Burrito'],
 				items: [
 					{id: 'xs', label: 'xs'},
 					{id: 'sm', label: 'sm'},
 					{id: 'md', label: 'md'},
 					{id: 'lg', label: 'lg'},
 					{id: 'xl', label: 'xl'},
+				],
+			},
+			{
+				name: 'Layout',
+				input: 'toggle',
+				layout: 'switcher',
+				exclude: ['layouts', 'Button', 'Toggle'],
+				items: [
+					{id: 'stack', label: 'stack'},
+					{id: 'switcher', label: 'switcher'},
+				],
+			},
+			{
+				name: 'Container',
+				input: 'toggle',
+				layout: 'switcher',
+				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito'],
+				items: [
+					{id: 'center', label: 'center'},
+					{id: 'text', label: 'text'},
+					{id: 'burrito', label: 'burrito'},
 				],
 			},
 		],
@@ -276,11 +282,10 @@ export const DEFAULT_OPTIONS: {
 } = {
 	app: {settings: {brightness: 'day', contrast: 'low'}, theme: {theme: 'ui'}},
 	shared: {
-		context: {size: 'md', breakpoint: 'xs'},
+		context: {size: 'md', breakpoint: '', layout: 'switcher', container: 'center'},
 	},
 	blocks: {
 		variant: {variant: ''},
-		layout: {layout: 'switcher'},
 		color: {color: ''},
 		// app: 'ui', // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
 		icons: {icon: '✨'},

@@ -48,6 +48,18 @@ const toggle = [
 	{id: 'toggle-3', label: 'Toggle 3'},
 ]
 
+const radio = [
+	{id: 'radio-1', label: 'Radio 1'},
+	{id: 'radio-2', label: 'Radio 2'},
+	{id: 'radio-3', label: 'Radio 3'},
+]
+
+const checkbox = [
+	{id: 'check-1', label: 'Checkbox 1'},
+	{id: 'check-2', label: 'Checkbox 2'},
+	{id: 'check-3', label: 'Checkbox 3'},
+]
+
 const card = ['Card 1', 'Card 2', 'Card 3']
 const form = ['Form input 1', 'Form input 2', 'Form input 3']
 const text =

@@ -1,5 +1,5 @@
 <script lang="ts">
-	const variant = `accent`
+	const variant = 'accent'
 </script>
 
 <svelte:head>

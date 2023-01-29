@@ -58,7 +58,7 @@ button.primary.outline:not(.bare):not([aria-pressed]):not(:disabled):active {
 
 //== Button accent
 
-.accent {
+button.accent {
 	color: var(#{$prefix}-color-light);
 	border-color: var(#{$prefix}-current-accent);
 	background-color: var(#{$prefix}-current-accent);
@@ -67,6 +67,7 @@ button.primary.outline:not(.bare):not([aria-pressed]):not(:disabled):active {
 button.outline.accent {
 	color: var(#{$prefix}-current-accent);
 	border-color: var(#{$prefix}-current-accent);
+	background-color: inherit;
 }
 button.accent:not(:disabled):hover,
 .outline.accent:not(:disabled):hover {
@@ -82,7 +83,7 @@ button.accent:not(:disabled):active,
 
 //== Button highlight
 
-.highlight {
+button.highlight {
 	border-color: var(#{$prefix}-current-highlight);
 	background-color: var(#{$prefix}-current-highlight);
 	color: var(#{$prefix}-color-dark);

@@ -10,11 +10,11 @@ header {
 	margin-block-start: var(#{$prefix}-current-size);
 }
 
-.header-app > .l-main {
+.header-app > .l\:main {
 	min-inline-size: 55%;
 }
 
-.header-app > .l-side {
+.header-app > .l\:side {
 	position: relative;
 	display: flex;
 	justify-content: flex-end;
