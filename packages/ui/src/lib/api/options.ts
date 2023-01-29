@@ -241,7 +241,7 @@ export const shared: ApiOptions = {
 				name: 'Breakpoint',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['Button', 'Toggle', 'Stack', 'Burrito'],
+				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 				items: [
 					{id: 'xs', label: 'xs'},
 					{id: 'sm', label: 'sm'},
@@ -253,7 +253,7 @@ export const shared: ApiOptions = {
 			{
 				name: 'Layout',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				exclude: ['layouts', 'Button', 'Toggle'],
 				items: [
 					{id: 'stack', label: 'stack'},
@@ -263,7 +263,7 @@ export const shared: ApiOptions = {
 			{
 				name: 'Container',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito'],
 				items: [
 					{id: 'center', label: 'center'},
