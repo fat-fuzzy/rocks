@@ -33,7 +33,7 @@
 		lang.set(event.detail)
 	}
 
-	$: headerClass = `${className} l-sidebar layer`
+	$: headerClass = `${className} l:sidebar layer`
 	$: actionsMenuClass = actionsMenuExpanded ? `show right` : `hide`
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang
@@ -54,8 +54,8 @@
 			{/each}
 		</ul>
 	</nav>
-	<div class="l-side">
-		<menu class={`l-reveal sm ${breakpoint}`} use:clickOutside on:clickOutside={handleClickOutside}>
+	<div class="l:side">
+		<menu class={`l:reveal sm ${breakpoint}`} use:clickOutside on:clickOutside={handleClickOutside}>
 			<button type="button" on:click={toggleTheme} class="polar">
 				{themeIcon}&nbsp;&nbsp;Theme
 			</button>
@@ -73,11 +73,11 @@
 				🎛 &nbsp;Settings
 			</!--button>
 			<div class={actionsMenuClass}>
-				<menu class="l-switcher bp:xxs">
+				<menu class="l:switcher bp:xxs">
 					<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
 					<button>Login</-button>
-					<div class="l-stack l-reveal sm">
+					<div class="l:stack l:reveal sm">
 						<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
 						<!-- <menu class={actionsMenuClass}>
 						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>

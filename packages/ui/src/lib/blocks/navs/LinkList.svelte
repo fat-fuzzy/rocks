@@ -10,7 +10,7 @@
 	export let id = 'list'
 	export let depth = 0
 	export let items: {slug: string; title: string; emoji?: string; items?: []}[] = fixtures.links
-	let layoutClass = layout ? `l-${layout}` : ''
+	let layoutClass = layout ? `l:${layout}` : ''
 	let depthClass = `depth-${depth}`
 
 	$: current = (slug: string) => $page.url.pathname === format.formatHref(path, slug)

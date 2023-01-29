@@ -11,7 +11,7 @@
 	 * Responsive canvas
 	 *  Thes default width and height of the canvas will change responsively,
 	 *  thanks to the combination of the following:
-	 *  - the `l-frame` class used on the canvas container does the following:
+	 *  - the `l:frame` class used on the canvas container does the following:
 	 *     - it sets a fixed ratio specified by the `dimensions` class
 	 *     - it resizes itself responsively to the size its container
 	 *  - the width and height of the canvas are bound reactively to the offsetWidth and offsetHeight of the container frame
@@ -24,8 +24,8 @@
 	})
 </script>
 
-<div class="l-main">
-	<div class={`l-frame ${dimensions} ${layer}`} bind:offsetWidth={width} bind:offsetHeight={height}>
+<div class="l:main">
+	<div class={`l:frame ${dimensions} ${layer}`} bind:offsetWidth={width} bind:offsetHeight={height}>
 		<canvas aria-label={title} data-test="canvas" bind:this={canvas}>
 			You need HTML5 canvas support to display this content
 		</canvas>

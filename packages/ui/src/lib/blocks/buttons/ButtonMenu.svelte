@@ -35,7 +35,7 @@
 	}
 </script>
 
-<menu id={menuId} class={`l-${layout} ${size} bp:${breakpoint}`}>
+<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
 	{#each items as { id, label, icon }}
 		<li>
 			<Button id={`${menuId}-${id}`} {onClick} {variant} {color}>

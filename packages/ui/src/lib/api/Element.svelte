@@ -57,7 +57,7 @@
 	$: mainContent = selected.content && getFamilyOptionValue(selected.content, 'main')
 	$: size = selected.context && getFamilyOptionValue(selected.context, 'size')
 	$: element = isPage ? `card:lg inset` : '' // TODO: fix container usage (container sidebar, in blocks)
-	$: articleClasses = !isPage ? `card:lg box l-stack` : ''
+	$: articleClasses = !isPage ? `card:lg box l:stack` : ''
 	$: elementClasses = `ui-element ${element} ${brightness} ${contrast} ${size}`
 	$: selected = {...initial, ...updated}
 	$: selectedProps = Object.keys(selected).reduce(

@@ -37,7 +37,7 @@
 	<div slot="side">
 		<RevealNav {items} id="nav-sketches" title="👾 Sketches" size="md" />
 	</div>
-	<div slot="main" class="l-stack">
+	<div slot="main" class="l:stack">
 		🚧 WIP 🚧
 		<!-- <Sketch {sketch} {title} {dimensions} /> -->
 	</div>

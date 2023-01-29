@@ -76,12 +76,12 @@ body {
 	box-shadow: var(#{$prefix}-current-shadow);
 }
 
-.l-frame {
+.l\:frame {
 	background-color: var(#{$prefix}-color-white);
 }
 
 form,
-.l-text {
+.l\:text {
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
 }

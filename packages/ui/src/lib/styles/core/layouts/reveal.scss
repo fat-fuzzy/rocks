@@ -1,12 +1,12 @@
-.l-reveal {
+.l\:reveal {
 	position: relative;
 }
 
-.l-reveal .toggle.collapse {
+.l\:reveal .toggle.collapse {
 	margin-block-end: 0;
 }
 
-.l-reveal .toggle.collapse + .show {
+.l\:reveal .toggle.collapse + .show {
 	#{$prefix}-show-top: calc(
 		calc(2 * var(#{$prefix}-prev-offset-limit)) +
 			calc(0.5em + calc(2 * var(#{$prefix}-current-size-plus))) +
@@ -24,17 +24,17 @@
 }
 
 // TODO: Fix bg color
-.l-reveal .toggle.collapse + .show.contrast {
+.l\:reveal .toggle.collapse + .show.contrast {
 	// TODO : fix color / bg color- cannot override for now
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-contrast);
 }
 
-.l-reveal .toggle.collapse + .end {
+.l\:reveal .toggle.collapse + .end {
 	justify-self: flex-end;
 }
 
-.l-reveal .toggle.collapse + .hide {
+.l\:reveal .toggle.collapse + .hide {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 0;
@@ -47,11 +47,11 @@
 }
 
 @include min-width(bp-sm) {
-	.l-reveal.bp\:sm .toggle.collapse {
+	.l\:reveal.bp\:sm .toggle.collapse {
 		display: none;
 	}
 
-	.l-reveal.bp\:sm .toggle.collapse + .hide {
+	.l\:reveal.bp\:sm .toggle.collapse + .hide {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -63,7 +63,7 @@
 		white-space: normal;
 	}
 
-	.l-reveal.bp\:sm .toggle.collapse + .show {
+	.l\:reveal.bp\:sm .toggle.collapse + .show {
 		position: unset;
 		width: 100%;
 		max-width: unset;
@@ -72,11 +72,11 @@
 }
 
 @include min-width(bp-md) {
-	.l-reveal.bp\:md .toggle.collapse {
+	.l\:reveal.bp\:md .toggle.collapse {
 		display: none;
 	}
 
-	.l-reveal.bp\:md .toggle.collapse + .hide {
+	.l\:reveal.bp\:md .toggle.collapse + .hide {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -88,7 +88,7 @@
 		white-space: normal;
 	}
 
-	.l-reveal.bp\:md .toggle.collapse + .show {
+	.l\:reveal.bp\:md .toggle.collapse + .show {
 		position: unset;
 		width: 100%;
 		max-width: unset;

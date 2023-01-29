@@ -68,7 +68,7 @@
 								{@const {name, input, items, layout, include, exclude} = styleOptions}
 								{#if !include || include.indexOf(title) !== -1}
 									{#if !exclude || exclude.indexOf(title) === -1}
-										{@const classes = layout ? `l-${layout} xxs` : `xxs`}
+										{@const classes = layout ? `l:${layout} xxs` : `xxs`}
 										{#if input === 'radio' || input === 'checkbox'}
 											{#each items as { id, label }}
 												{@const checked = id === prop.value}

@@ -38,7 +38,7 @@
 
 <article>
 	<Sidebar size="sm" align="end">
-		<main slot="main" class={`l-${layout} ${classes}`}>
+		<main slot="main" class={`l:${layout} ${classes}`}>
 			{#each componentNames as name}
 				{@const Component = components[name]}
 				<Element title={name} {category} depth={Number(depth) + 1} {path} component={Component} />

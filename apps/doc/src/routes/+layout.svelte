@@ -10,11 +10,11 @@
 </script>
 
 <Header />
-<main class="l-center {className}">
+<main class="l:center {className}">
 	<slot />
 </main>
 
-<footer class="l-center">
+<footer class="l:center">
 	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
 

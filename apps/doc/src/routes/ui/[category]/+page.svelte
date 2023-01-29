@@ -18,6 +18,6 @@
 	<h1>{title}</h1>
 </header>
 
-<section class="l-stack">
+<section class="l:stack">
 	<Collection {title} depth="1" isPage={true} {components} {path} {category} />
 </section>

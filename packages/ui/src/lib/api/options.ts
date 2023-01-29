@@ -276,7 +276,7 @@ export const DEFAULT_OPTIONS: {
 } = {
 	app: {settings: {brightness: 'day', contrast: 'low'}, theme: {theme: 'ui'}},
 	shared: {
-		context: {size: 'md', breakpoint: 'md'},
+		context: {size: 'md', breakpoint: 'xs'},
 	},
 	blocks: {
 		variant: {variant: ''},

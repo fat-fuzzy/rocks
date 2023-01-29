@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class={`l-reveal l-${layout} ${size} bp:${breakpoint}`}
+	class={`l:reveal l:${layout} ${size} bp:${breakpoint}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
