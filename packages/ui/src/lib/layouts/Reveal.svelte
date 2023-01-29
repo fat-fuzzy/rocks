@@ -1,11 +1,11 @@
 <script lang="ts">
 	import {clickOutside} from '../utils/click-outside.js'
 
-	export let layout = 'stack'
+	export let layout = ''
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
-	export let alignment = 'start'
+	export let align = 'start'
 	let expanded = false
 
 	function toggleReveal(event) {
@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class={`l-reveal l-${layout} ${size} ${breakpoint}`}
+	class={`l:reveal l:${layout} ${size} bp:${breakpoint}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -34,9 +34,9 @@
 			Click to Reveal
 		</button>
 	</slot>
-	<div class={`${alignment} ${show}`}>
+	<div class={`${align} ${show}`}>
 		<slot name="content">
-			<div class="card plus layer">
+			<div class="card layer">
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>

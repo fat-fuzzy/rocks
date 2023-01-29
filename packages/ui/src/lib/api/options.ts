@@ -31,10 +31,13 @@ export enum AppEnum {
 	doc = 'doc',
 	website = 'website',
 }
+
 export type StyleOption = {
 	name: string
 	input: string
 	layout?: string
+	exclude?: string[] // Add component names here to apply styles to all but excluded components
+	include?: string[] // Add component names here to apply styles to included components
 	items: Array<{id: string; label: string; asset?: string | SVGElement}>
 }
 
@@ -50,11 +53,16 @@ export type StyleOption = {
 }
  */
 
-export interface StyleFamily {
-	name: string
+export interface Styles {
+	[key: string]: string | string[] | StyleOption[] | undefined
+}
+
+export interface StyleFamily extends Styles {
+	name?: string
 	layout?: string
-	exclude?: string[]
-	items: StyleOption[]
+	exclude?: string[] // Add component names here to apply styles to all but excluded components
+	include?: string[] // Add component names here to apply styles to included components
+	items?: StyleOption[]
 }
 
 export interface ApiOptions {
@@ -75,7 +83,7 @@ export interface BlockOptions extends ApiOptions {
 	layout: StyleFamily
 }
 export interface LayoutOptions extends ApiOptions {
-	context: StyleFamily
+	content: StyleFamily
 }
 
 export const app: ApiOptions = {
@@ -97,8 +105,8 @@ export const app: ApiOptions = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'contrast', label: 'high'}, // TODO : fix color vars & classes
-					{id: 'blend', label: 'low'},
+					{id: 'contrast', label: 'contrast'}, // TODO : fix color vars & classes
+					{id: 'blend', label: 'blend'},
 					// {id: 'polar', label: 'polar'},
 				],
 			},
@@ -130,7 +138,7 @@ export const blocks: ApiOptions = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'full', label: 'full'},
+					{id: '', label: 'default'},
 					{id: 'outline', label: 'outline'},
 					{id: 'bare', label: 'bare'},
 				],
@@ -168,54 +176,18 @@ export const blocks: ApiOptions = {
 			},
 		],
 	},
-	layout: {
-		name: 'Layout',
-		exclude: ['Button', 'Toggle'],
-		items: [
-			{
-				name: 'Layout',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'stack', label: 'stack'},
-					{id: 'switcher', label: 'switcher'},
-				],
-			},
-		],
-	},
 }
 
 export const layouts: ApiOptions = {
-	context: {
-		name: 'Context',
+	content: {
+		name: 'Content',
 		layout: 'switcher',
 		items: [
-			{
-				name: 'Container',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'center', label: 'center'},
-					{
-						id: 'sidebar',
-						label: 'sidebar',
-						// items: [
-						// 	{
-						// 		input: 'radio',
-						// 		layout: 'stack',
-						// 		items: [
-						// 			{id: 'main', label: 'main'},
-						// 			{id: 'side', label: 'side'},
-						// 		],
-						// 	},
-						// ],
-					},
-				],
-			},
 			{
 				name: 'Content',
 				input: 'toggle',
 				layout: 'stack',
+				exclude: ['Sidebar'],
 				items: [
 					{id: 'card', label: 'card'},
 					{id: 'form', label: 'form'},
@@ -223,15 +195,25 @@ export const layouts: ApiOptions = {
 				],
 			},
 			{
-				name: 'Breakpoint',
+				name: 'Side',
 				input: 'toggle',
 				layout: 'stack',
+				include: ['Sidebar'],
 				items: [
-					{id: 'xs', label: 'xs'},
-					{id: 'sm', label: 'sm'},
-					{id: 'md', label: 'md'},
-					{id: 'lg', label: 'lg'},
-					{id: 'xl', label: 'xl'},
+					{id: 'card', label: 'card'},
+					{id: 'form', label: 'form'},
+					{id: 'text', label: 'text'},
+				],
+			},
+			{
+				name: 'Main',
+				input: 'toggle',
+				layout: 'stack',
+				include: ['Sidebar'],
+				items: [
+					{id: 'card', label: 'card'},
+					{id: 'form', label: 'form'},
+					{id: 'text', label: 'text'},
 				],
 			},
 		],
@@ -239,8 +221,9 @@ export const layouts: ApiOptions = {
 }
 
 export const shared: ApiOptions = {
-	size: {
-		name: 'Size',
+	context: {
+		name: 'Context',
+		layout: 'switcher',
 		items: [
 			{
 				name: 'Size',
@@ -254,27 +237,60 @@ export const shared: ApiOptions = {
 					{id: 'xl', label: 'xl'},
 				],
 			},
+			{
+				name: 'Breakpoint',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: ['Button', 'Toggle', 'Stack', 'Burrito'],
+				items: [
+					{id: 'xs', label: 'xs'},
+					{id: 'sm', label: 'sm'},
+					{id: 'md', label: 'md'},
+					{id: 'lg', label: 'lg'},
+					{id: 'xl', label: 'xl'},
+				],
+			},
+			{
+				name: 'Layout',
+				input: 'toggle',
+				layout: 'switcher',
+				exclude: ['layouts', 'Button', 'Toggle'],
+				items: [
+					{id: 'stack', label: 'stack'},
+					{id: 'switcher', label: 'switcher'},
+				],
+			},
+			{
+				name: 'Container',
+				input: 'toggle',
+				layout: 'switcher',
+				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito'],
+				items: [
+					{id: 'center', label: 'center'},
+					{id: 'text', label: 'text'},
+					{id: 'burrito', label: 'burrito'},
+				],
+			},
 		],
 	},
 }
 
-export const API_OPTIONS: {[family: string]: ApiOptions} = {app, shared, blocks, layouts}
+export const API_OPTIONS: {[target: string]: ApiOptions} = {app, shared, blocks, layouts}
 
 export const DEFAULT_OPTIONS: {
-	[family: string]: {[option: string]: {[option: string]: string} | string}
+	[target: string]: ApiOptions
 } = {
-	app: {settings: {brightness: 'day', contrast: 'low'}, theme: 'ui'},
+	app: {settings: {brightness: 'day', contrast: 'low'}, theme: {theme: 'ui'}},
 	shared: {
-		size: 'md',
+		context: {size: 'md', breakpoint: '', layout: 'switcher', container: 'center'},
 	},
 	blocks: {
-		variant: '',
-		layout: 'switcher',
-		color: '',
-		// app: 'ui', // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component context): maybe: use web components ?
-		icon: '✨',
+		variant: {variant: ''},
+		color: {color: ''},
+		// app: 'ui', // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
+		icons: {icon: '✨'},
 	},
 	layouts: {
-		context: {container: 'center', content: 'card', breakpoint: 'md'},
+		content: {content: 'card', side: 'card', main: 'text'},
 	},
 }

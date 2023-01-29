@@ -38,11 +38,11 @@
 
 <Header className="header-app" />
 
-<main class="l-center {className}">
+<main class="l:center {className}">
 	<slot />
 </main>
 
-<footer class="l-center font:sm">
+<footer class="l:center font:sm">
 	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
 

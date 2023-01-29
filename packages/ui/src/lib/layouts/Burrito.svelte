@@ -3,7 +3,7 @@
 
 	let className = ''
 
-	$: className = `l-burrito ${size}`
+	$: className = `l:burrito ${size}`
 </script>
 
 <div class={className}>

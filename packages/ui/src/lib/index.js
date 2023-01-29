@@ -2,10 +2,11 @@
 /**
  * Layout components
  */
+import Burrito from './layouts/Burrito.svelte'
 import Reveal from './layouts/Reveal.svelte'
 import Sidebar from './layouts/Sidebar.svelte'
 import Stack from './layouts/Stack.svelte'
-import Burrito from './layouts/Burrito.svelte'
+import Switcher from './layouts/Switcher.svelte'
 
 /**
  * Block components
@@ -17,6 +18,8 @@ import RevealMenu from './blocks/buttons/RevealMenu.svelte'
 import Toggle from './blocks/buttons/Toggle.svelte'
 import ToggleMenu from './blocks/buttons/ToggleMenu.svelte'
 // import Canvas from './blocks/media/Canvas.svelte'
+import InputRadio from './blocks/forms/InputRadio.svelte'
+import InputCheck from './blocks/forms/InputCheck.svelte'
 import Upload from './blocks/forms/Upload.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
 import Nav from './blocks/navs/Nav.svelte'
@@ -61,6 +64,7 @@ const layouts = {
 	Reveal,
 	Sidebar,
 	Stack,
+	Switcher,
 }
 const blocks = {
 	Button,
@@ -69,6 +73,8 @@ const blocks = {
 	Toggle,
 	ToggleMenu,
 	// Canvas, TODO: init canvas with example Sketch
+	InputRadio,
+	InputCheck,
 	Upload,
 	Nav,
 	RevealNav,

@@ -93,7 +93,9 @@ $current_cssvars: ();
 	}
 	@include min-width(#{$breakpoint}) {
 		:root {
-			#{$prefix}-fluid-screen: calc(var(#{$prefix}-fluid-max-width) * 1px);
+			#{$prefix}-fluid-screen: calc(
+				var(#{$prefix}-fluid-max-width) * 1px
+			); // adds px unit to unitless value
 		}
 	}
 }

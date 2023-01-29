@@ -10,7 +10,6 @@
 	export let depth = 0
 	export let path = ''
 	export let layout = 'stack'
-	export let isPage = true
 	export let components: ComponentType[]
 	export let category = ''
 	export let initial: ComponentProps = {
@@ -38,15 +37,15 @@
 </script>
 
 <article>
-	<Sidebar size="sm" placement="end">
-		<main slot="main" class={`l-${layout} ${classes}`}>
+	<Sidebar size="sm" align="end">
+		<main slot="main" class={`l:${layout} ${classes}`}>
 			{#each componentNames as name}
 				{@const Component = components[name]}
 				<Element title={name} {category} depth={Number(depth) + 1} {path} component={Component} />
 			{/each}
 		</main>
 		<aside slot="side">
-			<Api {title} {options} {selected} on:changed={updateSelected} />
+			<Api {title} {options} {selected} {category} on:changed={updateSelected} />
 		</aside>
 	</Sidebar>
 </article>

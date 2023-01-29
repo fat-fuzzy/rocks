@@ -52,7 +52,7 @@
 
 <menu
 	aria-labelledby={id}
-	class={`l-reveal l-${layout} ${size} ${breakpoint}`}
+	class={`l:reveal l:${layout} ${size} bp:${breakpoint}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -65,7 +65,7 @@
 		{format.formatLabel(title, icon)}
 	</button>
 	<div class={`${align} ${show}`}>
-		<menu class={`l-${layout} ${size}`}>
+		<menu class={`l:${layout} ${size}`}>
 			{#each items as { id, label, icon, variant }}
 				<li>
 					<Button {id} {onClick} {variant} {color}>

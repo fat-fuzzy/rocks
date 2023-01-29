@@ -48,9 +48,9 @@
 </script>
 
 {#if title}
-	<div class={`menu l-stack ${size}`}>
+	<div class={`menu l:stack ${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l-${layout} ${size}`}>
+		<menu id={menuId} class={`l:${layout} ${size}`}>
 			{#each items as { id, label, icon }}
 				<li>
 					<Toggle
@@ -65,7 +65,7 @@
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l-${layout} ${size}`}>
+	<menu id={menuId} class={`l:${layout} ${size}`}>
 		{#each items as { id, label, icon }}
 			<li>
 				<Toggle

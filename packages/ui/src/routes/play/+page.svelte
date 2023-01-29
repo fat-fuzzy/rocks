@@ -21,7 +21,7 @@
 	<h1>👾 Play</h1>
 </header>
 
-<div class="l-text">
+<div class="l:text">
 	{#each sketches as sketch}
 		<pre>{sketch.title}</pre>
 	{/each}

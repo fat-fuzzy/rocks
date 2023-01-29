@@ -24,7 +24,7 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<RevealNav {items} {path} id="nav-sketches" title="👾 Sketches" breakpoint="bp:md" size="md" />
+		<RevealNav {items} {path} id="nav-sketches" title="👾 Sketches" breakpoint="xs" size="md" />
 	</svelte:fragment>
 	<svelte:fragment slot="main">
 		<slot />

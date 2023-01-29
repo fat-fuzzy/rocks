@@ -5,7 +5,7 @@
 	export let layout = 'stack'
 	export let type = ''
 
-	$: className = `l-${layout} ${size} ${type}`
+	$: className = `l:${layout} ${size} ${type}`
 </script>
 
 <fieldset data-cy={slug} class={className}>

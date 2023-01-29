@@ -27,9 +27,9 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<RevealNav title="Fat Fuzzy Log" {items} {path} breakpoint="bp:md" size="md" />
+		<RevealNav title="Fat Fuzzy Log" {items} {path} breakpoint="md" size="md" />
 	</svelte:fragment>
-	<div slot="main" class="l-stack l-text">
+	<div slot="main" class="l:stack l:text">
 		<slot />
 	</div>
 </Sidebar>

@@ -5,11 +5,11 @@
 <div class="app">
 	<Header />
 
-	<main class="l-burrito">
+	<main class="l:burrito">
 		<slot />
 	</main>
 
-	<footer class="l-burrito">
+	<footer class="l:burrito">
 		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 	</footer>
 </div>

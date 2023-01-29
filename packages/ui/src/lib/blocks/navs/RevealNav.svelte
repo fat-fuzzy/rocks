@@ -29,7 +29,7 @@
 	$: show = expanded ? 'show card:lg layer contrast' : 'hide'
 </script>
 
-<nav aria-labelledby={id} class={`l-reveal l-${layout} ${size} ${breakpoint} sub-nav`}>
+<nav aria-labelledby={id} class={`l:reveal l:${layout} bp:${breakpoint} ${size}`}>
 	<button
 		{id}
 		type="button"

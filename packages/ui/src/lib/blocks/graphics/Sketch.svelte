@@ -37,10 +37,10 @@
 	// TODO clean gl data when switching animations
 </script>
 
-<article class="l-sidebar">
-	<div class="l-main">
+<article class="l:sidebar">
+	<div class="l:main">
 		<div
-			class={`l-frame ${dimensions} ${layer}`}
+			class={`l:frame ${dimensions} ${layer}`}
 			bind:offsetWidth={width}
 			bind:offsetHeight={height}
 		>
@@ -50,11 +50,11 @@
 		</div>
 		<Player {sketch} {canvas} />
 	</div>
-	<aside class="l-side l-stack xs">
+	<aside class="l:side l:stack xs">
 		<Button id="btn-details" {variant} onClick={() => toggleDetails()}>
 			{showDetails ? '👇' : '👉'} Details
 		</Button>
-		<div class={showDetails ? 'l-stack' : 'visually-hidden'}>
+		<div class={showDetails ? 'l:stack' : 'visually-hidden'}>
 			{#if geometry}
 				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
 			{/if}
