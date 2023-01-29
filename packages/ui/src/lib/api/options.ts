@@ -280,7 +280,12 @@ export const API_OPTIONS: {[target: string]: ApiOptions} = {app, shared, blocks,
 export const DEFAULT_OPTIONS: {
 	[target: string]: ApiOptions
 } = {
-	app: {settings: {brightness: 'day', contrast: 'low'}, theme: {theme: 'ui'}},
+	app: {
+		settings: {
+			brightness: 'day',
+			contrast: 'low',
+		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
+	},
 	shared: {
 		context: {size: 'md', breakpoint: '', layout: 'switcher', container: 'center'},
 	},

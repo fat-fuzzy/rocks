@@ -87,10 +87,11 @@ const api = {
 	Collection,
 }
 
+// TODO: see if I can use this to configure styles from assets (design tokens) in app project folder
 const sass = {
-	default: './sass/styles-default.scss',
-	doc: './styles/styles-doc.scss',
-	client: './styles/styles-client.scss',
+	ui: './styles/app/ui/_main.scss',
+	doc: './styles/app/doc/_main.scss',
+	website: './styles/app/client/_main.scss',
 }
 
 // [TODO:] Not sure this is useful
