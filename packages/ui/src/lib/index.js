@@ -2,10 +2,11 @@
 /**
  * Layout components
  */
+import Burrito from './layouts/Burrito.svelte'
 import Reveal from './layouts/Reveal.svelte'
 import Sidebar from './layouts/Sidebar.svelte'
 import Stack from './layouts/Stack.svelte'
-import Burrito from './layouts/Burrito.svelte'
+import Switcher from './layouts/Switcher.svelte'
 
 /**
  * Block components
@@ -61,6 +62,7 @@ const layouts = {
 	Reveal,
 	Sidebar,
 	Stack,
+	Switcher,
 }
 const blocks = {
 	Button,

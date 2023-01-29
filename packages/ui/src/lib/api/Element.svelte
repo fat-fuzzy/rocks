@@ -56,7 +56,6 @@
 	$: sideContent = selected.content && getFamilyOptionValue(selected.content, 'side')
 	$: mainContent = selected.content && getFamilyOptionValue(selected.content, 'main')
 	$: size = selected.context && getFamilyOptionValue(selected.context, 'size')
-	$: breakpoint = selected.context && getFamilyOptionValue(selected.context, 'breakpoint')
 	$: element = isPage ? `card:lg inset` : '' // TODO: fix container usage (container sidebar, in blocks)
 	$: articleClasses = !isPage ? `card:lg box l-stack` : ''
 	$: elementClasses = `ui-element ${element} ${brightness} ${contrast} ${size}`
@@ -86,7 +85,7 @@
 			<svelte:component this={component} {...selectedProps} />
 		{/if}
 	{:else}
-		<Sidebar size="xs" placement="end">
+		<Sidebar size="xs" align="end">
 			<svelte:fragment slot="main">
 				{#if category === 'layouts'}
 					<main class={elementClasses}>

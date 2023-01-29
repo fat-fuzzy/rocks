@@ -2,7 +2,8 @@
 button {
 	display: flex;
 	justify-content: center;
-	width: auto;
+	flex-wrap: nowrap;
+	min-width: max-content;
 	font-size: var(#{$prefix}-current-font-size);
 	font-family: var(#{$prefix}-current-font-family);
 	font-weight: var(#{$prefix}-font-weight-ui);
