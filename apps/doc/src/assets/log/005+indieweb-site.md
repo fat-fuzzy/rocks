@@ -3,7 +3,7 @@ title: Indieweb site
 date: '2022'
 slug: indieweb-site
 id: '005'
-tags: ['indieweb', 'apps', 'rust']
+tags: ['indieweb', 'app', 'rust']
 ---
 
 ## Context and Problem

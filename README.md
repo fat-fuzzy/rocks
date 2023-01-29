@@ -19,64 +19,7 @@ This repository contains several packages, which can be used together or indepen
 
 ### Use cases
 
-#### Using a single package in another project
-
-[TODO]
-
-#### Using more than one package in another project
-
-[TODO]
-
-#### Using an app template
-
-[TODO]
-
-#### Using the monorepository architecture
-
-[TODO]
-
-#### Using the CSS library in another project
-
-[TODO]
-
-## Using Docker
-
-### App image
-
-Run **apps/doc** site in a docker container
-
-Build
-
-```shell
- docker build -t rocks-image .
-```
-
-Run app on port 5173
-
-```shell
-docker run -t -p 5173:80 rocks-image
-```
-
-Debug:
-
-1. Remove code until it builds, then see what is inside image using shell:
-
-   ```shell
-   docker run -it rocks-image sh
-   ```
-
-1. See what the output of turbo is:
-
-   ```shell
-   pnpm turbo prune --scope="packagename" --docker
-   ```
-
-**TODO:** Or with docker-compose
-
-```shell
-docker-compose build rocks-image
-docker-compose up -d rocks-image
-```
+🚧 WIP: doc/usage
 
 ## Monorepo overview
 
@@ -117,7 +60,7 @@ This repository is organized into two package types following [Turborepo's works
 ## 🚧 WIP - Testing
 
 - [Testing library](https://github.com/testing-library)
-- [Playright](https://playwright.dev/)
+- [Playwright](https://playwright.dev/)
 
 ## 🚧 WIP - Maintenance
 

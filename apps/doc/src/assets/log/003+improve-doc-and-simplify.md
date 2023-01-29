@@ -26,19 +26,19 @@ Considered:
 - [mdsvex](https://mdsvex.pngwn.io/)
   - ✅ simple and flexible
   - ✅ based on Svelte
-  - ❔feature complete
-  - ❔can be easily used for styleguide
+  - ❓feature complete
+  - ❓can be easily used for styleguide
   - ❌ old Svelte version
 - [bookit](https://github.com/leveluptuts/bookit)
   - ✅ based on Svelte
-  - ❔feature complete
-  - ❔can be easily used for more than styleguide
+  - ❓feature complete
+  - ❓can be easily used for more than styleguide
   - ❌ light on doc
 - [Histoire](https://histoire.dev/)
   - ✅ feature rich and flexible
   - ✅ replaces Storybook
-  - ❔can be easily used for more than styleguide
-  - ❔dependencies
+  - ❓can be easily used for more than styleguide
+  - ❓dependencies
   - ❌ based on Vue (but has project for Svelte)
 
 ## Decision
