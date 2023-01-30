@@ -293,7 +293,7 @@ export const DEFAULT_OPTIONS: {
 		variant: {variant: ''},
 		color: {color: ''},
 		// app: 'ui', // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-		icons: {icon: '✨'},
+		icon: {icon: '✨'},
 	},
 	layouts: {
 		content: {content: 'card', side: 'card', main: 'text'},
