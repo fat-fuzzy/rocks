@@ -62,12 +62,44 @@ body {
 
 //== Errors
 
+// Color in text
+
+.hint {
+	color: var(#{$prefix}-current-hint);
+}
+.hint:focus {
+	outline-color: var(#{$prefix}-current-hint);
+}
+.hint:hover {
+	background-color: var(#{$prefix}-current-hint);
+}
+
+.info {
+	color: var(#{$prefix}-current-info);
+}
+.info:focus {
+	outline-color: var(#{$prefix}-current-info);
+}
+
+.success {
+	color: var(#{$prefix}-current-success);
+}
+.success:focus {
+	outline-color: var(#{$prefix}-current-success);
+}
+
+.warning {
+	color: var(#{$prefix}-current-warning);
+}
+.warning:focus {
+	outline-color: var(#{$prefix}-current-warning);
+}
+
 .error {
 	color: var(#{$prefix}-current-danger);
 }
-
 .error:focus {
-	outline-color: var(#{$prefix}-danger);
+	outline-color: var(#{$prefix}-current-error);
 }
 
 //== Layers & Media
