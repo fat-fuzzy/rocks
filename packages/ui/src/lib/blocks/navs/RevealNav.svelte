@@ -10,7 +10,7 @@
 	export let variant = ''
 	export let color = ''
 	export let path = ''
-	export let id = 'reveal-nav'
+	export let id = ''
 	export let title = 'RevealNav'
 	export let icon = ''
 	export let align = 'start'
@@ -43,6 +43,6 @@
 		{format.formatLabel(title, icon)}
 	</button>
 	<div id={`${id}-menu-list`} class={show}>
-		<LinkList {path} {items} {size} {align} depth={0} />
+		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</div>
 </nav>

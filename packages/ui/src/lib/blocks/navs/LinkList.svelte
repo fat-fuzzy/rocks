@@ -7,7 +7,7 @@
 	export let layout = ''
 	export let size = 'md'
 	export let align = 'start'
-	export let id = 'list'
+	export let id = ''
 	export let depth = 0
 	export let items: {slug: string; title: string; emoji?: string; items?: []}[] = fixtures.links
 	let layoutClass = layout ? `l:${layout}` : ''
@@ -28,7 +28,7 @@
 				<svelte:self
 					items={subItems}
 					path={format.formatHref(path, slug)}
-					id={`${slug}-${id}`}
+					id={`${id}-${slug}`}
 					{layout}
 					{size}
 					{align}

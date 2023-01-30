@@ -6,31 +6,27 @@ const links = [
 const nav = [
 	{
 		slug: 'ui',
-		title: 'UI LIbrary Link - RevealNav Example',
+		title: 'RevealNav Example',
 		items: [
 			{
+				slug: 'design-tokens',
+				title: 'Design Tokens',
+			},
+			{
 				slug: 'blocks',
-				title: 'Blocks Link 1',
+				title: 'Block',
 				items: [
-					{slug: 'item-1-a', title: 'RevealNav Item  1 A'},
-					{slug: 'item-2-b', title: 'RevealNav Item  1 B'},
+					{slug: 'nav', title: 'Nav'},
+					{slug: 'reveal-nav', title: 'RevealNav'},
 				],
 			},
 			{
-				slug: 'blocks',
-				title: 'Blocks Link 2',
-			},
-			{
-				slug: 'blocks',
-				title: 'Blocks Link 3',
+				slug: 'layouts',
+				title: 'Layouts',
 				items: [
-					{slug: 'item-2-a', title: 'RevealNav Item 2 A'},
-					{slug: 'item-2-b', title: 'RevealNav Item 2 B'},
+					{slug: 'burrito', title: 'Burrito'},
+					{slug: 'stack', title: 'Stack'},
 				],
-			},
-			{
-				slug: 'blocks',
-				title: 'Blocks Link 4',
 			},
 		],
 	},
