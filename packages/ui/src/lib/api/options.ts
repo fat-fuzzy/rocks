@@ -264,7 +264,7 @@ export const shared: ApiOptions = {
 				name: 'Container',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito'],
+				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
 					{id: 'center', label: 'center'},
 					{id: 'text', label: 'text'},
