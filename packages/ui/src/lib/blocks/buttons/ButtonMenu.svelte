@@ -6,12 +6,13 @@
 	import fixtures from '../../../data/fixtures'
 
 	const dispatch = createEventDispatcher()
-	export let layout = 'switcher'
+	export let id = ''
+	export let title = ''
 	export let size = ''
-	export let breakpoint = 'md'
+	export let breakpoint = ''
+	export let layout = ''
 	export let color = ''
 	export let variant = ''
-	export let id = 'btn-menu'
 
 	export let items: {
 		id: string
@@ -35,12 +36,27 @@
 	}
 </script>
 
-<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
-	{#each items as { id, label, icon }}
-		<li>
-			<Button id={`${menuId}-${id}`} {onClick} {variant} {color}>
-				{format.formatLabel(label, icon)}
-			</Button>
-		</li>
-	{/each}
-</menu>
+{#if title}
+	<div class={`menu l:stack ${size}`}>
+		<p>{title}</p>
+		<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
+			{#each items as { id, label, icon }}
+				<li>
+					<Button id={`${menuId}-${id}`} {onClick} {variant} {color}>
+						{format.formatLabel(label, icon)}
+					</Button>
+				</li>
+			{/each}
+		</menu>
+	</div>
+{:else}
+	<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
+		{#each items as { id, label, icon }}
+			<li>
+				<Button id={`${menuId}-${id}`} {onClick} {variant} {color}>
+					{format.formatLabel(label, icon)}
+				</Button>
+			</li>
+		{/each}
+	</menu>
+{/if}
