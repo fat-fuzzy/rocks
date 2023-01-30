@@ -76,6 +76,8 @@
 
 	function handleToggle(event: CustomEvent, familyName: string, id: string) {
 		const selected = event.detail.selected // TODO: no multiple values for now
+		console.log('selected')
+		console.log(selected)
 		if (selected.length) {
 			const payload = {
 				name: familyName,

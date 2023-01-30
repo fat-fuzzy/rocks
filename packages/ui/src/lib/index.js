@@ -40,6 +40,9 @@ import Api from './api/Api.svelte'
 import Element from './api/Element.svelte'
 import Collection from './api/Collection.svelte'
 import * as stylesApi from './api/styles-api'
+import StyleCapsule from './api/StyleCapsule.wc.svelte'
+import StyleCapsuleDoc from './api/StyleCapsuleDoc.wc.svelte'
+import StyleCapsuleWebsite from './api/StyleCapsuleWebsite.wc.svelte'
 
 /**
  * Stores
