@@ -13,6 +13,8 @@ I particularly recommend reading this open access blog post on algorithmic desig
 
 - [Every Layout blog post on Algorithmic design](https://every-layout.dev/blog/algorithmic-design/)
 
+## TODO
+
 There is still a lot of work in progress:
 
 TODO: CSS

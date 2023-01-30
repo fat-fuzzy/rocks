@@ -91,12 +91,13 @@ form,
 // - Links in navs have specific styles (except for hover), see: `styles/core/blocks/nav.scss`
 a,
 .bare {
-	color: var(#{$prefix}-current-color);
+	color: var(#{$prefix}-current-primary);
 }
 
 a:visited,
 .bare:visited {
-	text-decoration-color: var(#{$prefix}-current-gray);
+	color: var(#{$prefix}-current-color);
+	text-decoration-color: var(#{$prefix}-current-primary);
 }
 
 a:hover,
@@ -108,12 +109,13 @@ a:hover,
 
 .accent a,
 .accent .bare {
-	color: var(#{$prefix}-current-light);
+	color: var(#{$prefix}-current-accent);
 }
 
 .accent a:visited,
 .accent .bare:visited {
-	text-decoration-color: var(#{$prefix}-current-gray);
+	color: var(#{$prefix}-current-color);
+	text-decoration-color: var(#{$prefix}-current-accent);
 }
 
 .accent a:hover,
@@ -125,12 +127,13 @@ a:hover,
 
 .highlight a,
 .highlight .bare {
-	color: var(#{$prefix}-current-dark);
+	color: var(#{$prefix}-current-highlight-dark); // TODO: check this
 }
 
 .highlight a:visited,
 .highlight .bare:visited {
-	text-decoration-color: var(#{$prefix}-current-gray);
+	color: var(#{$prefix}-current-color);
+	text-decoration-color: var(#{$prefix}-current-highlight-dark);
 }
 
 .highlight a:hover,

@@ -1,9 +1,12 @@
 ---
-title: Decision title
-date: 'YYYY-MM-DD'
-slug: decision-title
-id: 'same-as-name-of-file-without-extension'
+title: Example title
+id: '000'
+slug: Same as name of file without '000+' prefix and '.md' suffix
+status: draft (draft/published/archived)
 tags: ['example', 'doc', 'monorepo']
+created: 'YYYY-MM-DD' or '' for draft
+updated: 'YYYY-MM-DD' or '' for draft
+author: 'Me'
 ---
 
 - Status: [proposed | rejected | accepted | deprecated | … | superseded by [ADR-0005](0005-example.md)] <!-- optional -->
