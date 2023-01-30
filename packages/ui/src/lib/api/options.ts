@@ -38,7 +38,7 @@ export type StyleOption = {
 	layout?: string
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components
-	items: Array<{id: string; label: string; asset?: string | SVGElement}>
+	items: Array<{id: string; label: string; asset?: string | SVGElement; options?: StyleOption[]}>
 }
 
 /**
@@ -70,23 +70,22 @@ export interface ApiOptions {
 }
 
 export interface AppOptions extends ApiOptions {
-	theme: StyleFamily
+	// theme: StyleFamily  // TODO : figure out if it is possible to do a dynamic import of app theme
 	settings: StyleFamily
 }
 export interface SharedOptions extends ApiOptions {
-	size: StyleFamily
+	context: StyleFamily
 }
 export interface BlockOptions extends ApiOptions {
 	variant: StyleFamily
 	color: StyleFamily
 	icon: StyleFamily
-	layout: StyleFamily
 }
 export interface LayoutOptions extends ApiOptions {
 	content: StyleFamily
 }
 
-export const app: ApiOptions = {
+export const app: AppOptions = {
 	settings: {
 		name: 'Settings',
 		layout: 'switcher',
@@ -112,24 +111,98 @@ export const app: ApiOptions = {
 			},
 		],
 	},
-	theme: {
-		name: 'Theme',
+	// TODO : figure out if it is possible to do a dynamic import of app theme
+	// theme: {
+	// 	name: 'Theme',
+	// 	items: [
+	// 		{
+	// 			name: 'Theme',
+	// 			input: 'toggle',
+	// 			layout: 'switcher',
+	// 			items: [
+	// 				{id: 'ui', label: 'ui'},
+	// 				{id: 'doc', label: 'doc'},
+	// 				{id: 'website', label: 'website'},
+	// 			],
+	// 		},
+	// 	],
+	// },
+}
+
+export const shared: SharedOptions = {
+	context: {
+		name: 'Context',
+		layout: 'switcher',
 		items: [
 			{
-				name: 'Theme',
+				name: 'Layout',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: ['layouts', 'Button', 'Toggle'],
+				items: [
+					{id: 'stack', label: 'stack'},
+					{
+						id: 'switcher',
+						label: 'switcher',
+						options: [
+							{
+								name: 'Breakpoint',
+								input: 'toggle',
+								layout: 'stack',
+								exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
+								items: [
+									{id: 'xs', label: 'xs'},
+									{id: 'sm', label: 'sm'},
+									{id: 'md', label: 'md'},
+									{id: 'lg', label: 'lg'},
+									{id: 'xl', label: 'xl'},
+								],
+							},
+						],
+					},
+				],
+			},
+			{
+				name: 'Size',
+				input: 'toggle',
+				layout: 'stack',
+				items: [
+					{id: 'xs', label: 'xs'},
+					{id: 'sm', label: 'sm'},
+					{id: 'md', label: 'md'},
+					{id: 'lg', label: 'lg'},
+					{id: 'xl', label: 'xl'},
+				],
+			},
+			{
+				name: 'Breakpoint',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: ['blocks', 'Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
+				items: [
+					{id: 'xs', label: 'xs'},
+					{id: 'sm', label: 'sm'},
+					{id: 'md', label: 'md'},
+					{id: 'lg', label: 'lg'},
+					{id: 'xl', label: 'xl'},
+				],
+			},
+			{
+				name: 'Container',
 				input: 'toggle',
 				layout: 'switcher',
+				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
-					{id: 'ui', label: 'ui'},
-					{id: 'doc', label: 'doc'},
-					{id: 'website', label: 'website'},
+					{id: 'center', label: 'center'},
+					{id: 'text', label: 'text'},
+					{id: 'burrito', label: 'burrito'},
 				],
 			},
 		],
 	},
 }
 
-export const blocks: ApiOptions = {
+export const blocks: BlockOptions = {
 	variant: {
 		name: 'Variant',
 		items: [
@@ -178,7 +251,7 @@ export const blocks: ApiOptions = {
 	},
 }
 
-export const layouts: ApiOptions = {
+export const layouts: LayoutOptions = {
 	content: {
 		name: 'Content',
 		layout: 'switcher',
@@ -220,65 +293,13 @@ export const layouts: ApiOptions = {
 	},
 }
 
-export const shared: ApiOptions = {
-	context: {
-		name: 'Context',
-		layout: 'switcher',
-		items: [
-			{
-				name: 'Size',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'xs', label: 'xs'},
-					{id: 'sm', label: 'sm'},
-					{id: 'md', label: 'md'},
-					{id: 'lg', label: 'lg'},
-					{id: 'xl', label: 'xl'},
-				],
-			},
-			{
-				name: 'Breakpoint',
-				input: 'toggle',
-				layout: 'stack',
-				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
-				items: [
-					{id: 'xs', label: 'xs'},
-					{id: 'sm', label: 'sm'},
-					{id: 'md', label: 'md'},
-					{id: 'lg', label: 'lg'},
-					{id: 'xl', label: 'xl'},
-				],
-			},
-			{
-				name: 'Layout',
-				input: 'toggle',
-				layout: 'stack',
-				exclude: ['layouts', 'Button', 'Toggle'],
-				items: [
-					{id: 'stack', label: 'stack'},
-					{id: 'switcher', label: 'switcher'},
-				],
-			},
-			{
-				name: 'Container',
-				input: 'toggle',
-				layout: 'stack',
-				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
-				items: [
-					{id: 'center', label: 'center'},
-					{id: 'text', label: 'text'},
-					{id: 'burrito', label: 'burrito'},
-				],
-			},
-		],
-	},
-}
-
 export const API_OPTIONS: {[target: string]: ApiOptions} = {app, shared, blocks, layouts}
 
 export const DEFAULT_OPTIONS: {
-	[target: string]: ApiOptions
+	app: AppOptions
+	shared: SharedOptions
+	blocks: BlockOptions
+	layouts: LayoutOptions
 } = {
 	app: {
 		settings: {
@@ -292,7 +313,7 @@ export const DEFAULT_OPTIONS: {
 	blocks: {
 		variant: {variant: ''},
 		color: {color: ''},
-		// app: 'ui', // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
+		// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
 		icon: {icon: '✨'},
 	},
 	layouts: {
