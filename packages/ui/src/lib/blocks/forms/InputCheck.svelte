@@ -3,7 +3,6 @@
 
 	const dispatch = createEventDispatcher()
 
-	// @ts-check
 	export let label = 'Checkbox input'
 	export let name = ''
 	export let id = ''
@@ -14,7 +13,7 @@
 	export let layout = ''
 	export let breakpoint = ''
 	export let size = ''
-	export let align = 'start'
+	export let align = ''
 
 	function handleInput(event) {
 		const payload = {

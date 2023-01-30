@@ -14,6 +14,7 @@
 	export let layout = ''
 	export let breakpoint = ''
 	export let size = ''
+	export let align = ''
 
 	function handleInput(event) {
 		const payload = {
@@ -23,7 +24,7 @@
 		dispatch('input', payload)
 	}
 	$: inputId = `radio-${id}`
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant}`
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 </script>
 
 <label for={inputId} class={classes}>

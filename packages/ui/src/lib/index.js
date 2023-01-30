@@ -20,7 +20,7 @@ import ToggleMenu from './blocks/buttons/ToggleMenu.svelte'
 // import Canvas from './blocks/media/Canvas.svelte'
 import InputRadio from './blocks/forms/InputRadio.svelte'
 import InputCheck from './blocks/forms/InputCheck.svelte'
-import Upload from './blocks/forms/Upload.svelte'
+import InputFile from './blocks/forms/InputFile.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
 import Nav from './blocks/navs/Nav.svelte'
 import RevealNav from './blocks/navs/RevealNav.svelte'
@@ -75,7 +75,7 @@ const blocks = {
 	// Canvas, TODO: init canvas with example Sketch
 	InputRadio,
 	InputCheck,
-	Upload,
+	InputFile,
 	Nav,
 	RevealNav,
 	// Sketch,

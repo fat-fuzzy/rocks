@@ -9,6 +9,6 @@
 </script>
 
 <fieldset data-cy={slug} class={className}>
-	<legend>{legend}</legend>
+	{#if legend}<legend>{legend}</legend>{/if}
 	<slot />
 </fieldset>
