@@ -7,6 +7,8 @@ $breakpoints: (
 	bp-xl: 2048,
 );
 
+$base-sidebar-size: 18rem;
+
 $layout: (
 	gap: $base-size,
 	//
@@ -18,14 +20,20 @@ $layout: (
 	size-lg: var(#{$prefix}-s-1),
 	size-xl: var(#{$prefix}-s0),
 	size-xxl: var(#{$prefix}-s1),
-	//
-	sidebar-width-xxs: 10rem,
-	sidebar-width-xs: 12rem,
-	sidebar-width-sm: 16rem,
-	sidebar-width-md: 18rem,
-	sidebar-width-lg: 22rem,
-	sidebar-width-xl: 24rem,
-	sidebar-width-xxl: 28rem,
+	/// Test SIZE SCALE for sidebar width
+	/// This is a Major Third scale that powers all the utilities that
+	/// it is relevant for (font-size, margin, padding). All items are
+	/// calculated off the base size, so change that and cascade across
+	/// your whole project.
+	///
+	///
+	sidebar-width-xxs: $base-sidebar-size * 0.6,
+	sidebar-width-xs: $base-sidebar-size * 0.7,
+	sidebar-width-sm: $base-sidebar-size * 0.8,
+	sidebar-width-md: $base-sidebar-size,
+	sidebar-width-lg: $base-sidebar-size * 1.25,
+	sidebar-width-xl: $base-sidebar-size * 1.6,
+	sidebar-width-xxl: $base-sidebar-size * 2,
 	//
 	header-height: var(#{$prefix}-s3),
 	header-margin: calc(var(#{$prefix}-gap) / 2),

@@ -114,7 +114,7 @@ a:hover,
 
 .accent a:visited,
 .accent .bare:visited {
-	color: var(#{$prefix}-current-color);
+	color: var(#{$prefix}-color-light);
 	text-decoration-color: var(#{$prefix}-current-accent);
 }
 
