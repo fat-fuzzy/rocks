@@ -26,8 +26,11 @@
 	let width
 	let height
 
-	const updateSelected = (event) => {
-		updated = event.detail.items.reduce((values, option) => {
+	const updateSelected = async (event) => {
+		updated = await event.detail.items.reduce(async (values, option) => {
+			if (event.detail.name.toLowerCase() === 'theme') {
+				// TODO : figure out if it is possible to do a dynamic import of app theme
+			}
 			return {
 				...values,
 				[event.detail.name.toLowerCase()]: {

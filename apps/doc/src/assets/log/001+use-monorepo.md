@@ -24,4 +24,4 @@ Chosen option: to create a Monorepo with **pnpm**
 
 - A Monorepo should facilitate dependency management and hopefully remove some maintenance overhead
 - A Monorepo will more easily enable me to spawn new applications using shared resources
-- **pnpm** is widely used by the Svelte community, and the project will use Svelte as a frontend framework
+- **pnpm** is widely used by the Svelte community, and the project will use Svelte as a frontend framework (likely to find examples and resources).

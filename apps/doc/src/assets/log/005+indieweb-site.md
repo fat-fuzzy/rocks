@@ -3,17 +3,12 @@ title: Indieweb site
 date: '2022'
 slug: indieweb-site
 id: '005'
-tags: ['indieweb', 'apps', 'rust']
+tags: ['indieweb', 'app', 'rust']
 ---
 
 ## Context and Problem
 
-I want to be able to publish content on the internet independently of intermediary third party publishing mediums such as:
-
-- twitter / instagram / youtube / tiktok / facebook / linkedin / medium / dev.to / github
-- mastodon (this one is a bit apart in category because it shares notions of [federation](https://framatube.org/w/9dRFC6Ya11NCVeYKn8ZhiD) with the IndieWeb [TODO: investigate])
-
-These platforms may have some benefits, primarily (but not unquestionably) the benefit of reach, but many of them lack severely in other areas:
+I want to be able to publish content on the internet independently of intermediary third party publishing mediums. These platforms have some benefits, primarily (but not unquestionably) the benefit of reach, but many of them lack severely in other areas:
 
 - overreaching tracking practices and / or disregard for privacy
 - questionable or opaque usage of user data

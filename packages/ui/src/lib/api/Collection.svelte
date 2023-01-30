@@ -37,7 +37,7 @@
 </script>
 
 <article>
-	<Sidebar size="sm" align="end">
+	<Sidebar size="xs" align="end">
 		<main slot="main" class={`l:${layout} ${classes}`}>
 			{#each componentNames as name}
 				{@const Component = components[name]}

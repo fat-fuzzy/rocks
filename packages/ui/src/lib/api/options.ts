@@ -241,7 +241,7 @@ export const shared: ApiOptions = {
 				name: 'Breakpoint',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['Button', 'Toggle', 'Stack', 'Burrito'],
+				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 				items: [
 					{id: 'xs', label: 'xs'},
 					{id: 'sm', label: 'sm'},
@@ -253,7 +253,7 @@ export const shared: ApiOptions = {
 			{
 				name: 'Layout',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				exclude: ['layouts', 'Button', 'Toggle'],
 				items: [
 					{id: 'stack', label: 'stack'},
@@ -263,7 +263,7 @@ export const shared: ApiOptions = {
 			{
 				name: 'Container',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito'],
 				items: [
 					{id: 'center', label: 'center'},
@@ -280,7 +280,12 @@ export const API_OPTIONS: {[target: string]: ApiOptions} = {app, shared, blocks,
 export const DEFAULT_OPTIONS: {
 	[target: string]: ApiOptions
 } = {
-	app: {settings: {brightness: 'day', contrast: 'low'}, theme: {theme: 'ui'}},
+	app: {
+		settings: {
+			brightness: 'day',
+			contrast: 'low',
+		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
+	},
 	shared: {
 		context: {size: 'md', breakpoint: '', layout: 'switcher', container: 'center'},
 	},
