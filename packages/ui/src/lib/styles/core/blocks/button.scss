@@ -256,7 +256,8 @@ button.highlight.outline[aria-pressed='false']:hover {
 .highlight.outline[aria-pressed='false']:active {
 	background-color: var(#{$prefix}-current-highlight-lighter);
 }
-.highlight[aria-pressed='true'] {
+.highlight[aria-pressed='true'],
+.outline.highlight[aria-pressed='true'] {
 	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-light);
 }

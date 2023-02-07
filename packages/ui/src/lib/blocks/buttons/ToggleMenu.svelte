@@ -1,5 +1,4 @@
 <script lang="ts">
-	import format from '../../utils/format'
 	import Toggle from '../buttons/Toggle.svelte'
 	import {createEventDispatcher} from 'svelte'
 	import fixtures from '../../../data/fixtures'
@@ -43,21 +42,25 @@
 </script>
 
 {#if title}
-	<div class={`menu l:stack ${size} ${color} ${variant}`}>
+	<div class={`menu l:stack`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
+		<menu id={menuId} class={`l:${layout} ${size} ${color} ${variant} bp:${breakpoint}`}>
 			{#each items as toggleProps}
+				{@const itemColor = toggleProps.color ?? color}
+				{@const itemVariant = toggleProps.variant ?? variant}
 				<li>
-					<Toggle on:toggle={onToggle} {...toggleProps} />
+					<Toggle on:toggle={onToggle} {...toggleProps} color={itemColor} variant={itemVariant} />
 				</li>
 			{/each}
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
+	<menu id={menuId} class={`l:${layout} ${size} ${color} ${variant} bp:${breakpoint}`}>
 		{#each items as toggleProps}
+			{@const itemColor = toggleProps.color ?? color}
+			{@const itemVariant = toggleProps.variant ?? variant}
 			<li>
-				<Toggle on:toggle={onToggle} {...toggleProps} />
+				<Toggle on:toggle={onToggle} {...toggleProps} color={itemColor} variant={itemVariant} />
 			</li>
 		{/each}
 	</menu>
