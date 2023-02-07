@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {browser} from '$app/environment'
 	import {createEventDispatcher} from 'svelte'
-	import format from '../../utils/format'
 	import Button from '../buttons/Button.svelte'
 	import fixtures from '../../../data/fixtures'
 
@@ -14,13 +13,7 @@
 	export let color = ''
 	export let variant = ''
 
-	export let items: {
-		id: string
-		label: string
-		type: string
-		asset?: string
-		disabled?: boolean
-	}[] = fixtures.menu
+	export let items = fixtures.menu
 
 	let clicked = ''
 	let menuId = id
@@ -39,19 +32,23 @@
 {#if title}
 	<div class={`menu l:stack ${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
+		<menu id={menuId} class={`l:${layout} ${size} ${color} ${variant} bp:${breakpoint}`}>
 			{#each items as buttonProps}
+				{@const itemColor = buttonProps.color ?? color}
+				{@const itemVariant = buttonProps.variant ?? variant}
 				<li>
-					<Button {onClick} {...buttonProps} />
+					<Button {onClick} {...buttonProps} color={itemColor} variant={itemVariant} />
 				</li>
 			{/each}
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
+	<menu id={menuId} class={`l:${layout} ${size} ${color} ${variant} bp:${breakpoint}`}>
 		{#each items as buttonProps}
+			{@const itemColor = buttonProps.color ?? color}
+			{@const itemVariant = buttonProps.variant ?? variant}
 			<li>
-				<Button {onClick} {...buttonProps} />
+				<Button {onClick} {...buttonProps} color={itemColor} variant={itemVariant} />
 			</li>
 		{/each}
 	</menu>
