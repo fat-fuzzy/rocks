@@ -14,13 +14,13 @@
 	export let color = ''
 	export let id = 'reveal-menu'
 	export let title = 'RevealMenu'
-	export let icon = ''
+	export let asset = ''
 	export let align = 'start'
 	export let items: {
 		id: string
 		label: string
 		type: string
-		icon?: string
+		asset?: string
 		variant?: string
 		disabled?: boolean
 	}[] = fixtures.menu
@@ -62,15 +62,13 @@
 		aria-expanded={expanded}
 		on:click={toggleReveal}
 	>
-		{format.formatLabel(title, icon)}
+		{format.formatLabel(title, asset)}
 	</button>
 	<div class={`${align} ${show}`}>
 		<menu class={`l:${layout} ${size}`}>
-			{#each items as { id, label, icon, variant }}
+			{#each items as buttonProps}
 				<li>
-					<Button {id} {onClick} {variant} {color}>
-						{format.formatLabel(label, icon)}
-					</Button>
+					<Button {onClick} {...buttonProps} />
 				</li>
 			{/each}
 		</menu>

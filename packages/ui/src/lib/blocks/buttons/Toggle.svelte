@@ -5,17 +5,18 @@
 	import {useMachine} from '@xstate/svelte'
 	import {createMachine} from 'xstate'
 	import format from '../../utils/format'
+	import fixtures from '../../../data/fixtures'
 
 	const dispatch = createEventDispatcher()
 
 	export let id = 'toggle'
 	export let size = ''
-	export let icon = ''
 	export let variant = ''
 	export let initial = false
 	export let color = ''
-	export let text = 'Toggle'
 	export let disabled = false
+	export let asset = fixtures.toggle.asset
+	export let text = fixtures.toggle.text
 
 	let machineConfig = {
 		id: `toggle-${id}`,
@@ -34,7 +35,7 @@
 
 	let pressed = initial
 
-	$: classes = `${icon} ${size} ${variant} ${color}`
+	$: classes = `${size} ${variant} ${color}`
 	$: pressed = $state.value === 'active'
 
 	const onClick = () => {
@@ -49,5 +50,5 @@
 </script>
 
 <button {id} type="button" on:click={onClick} aria-pressed={pressed} class={classes} {disabled}>
-	{format.formatLabel(text, icon)}
+	{format.formatLabel(text, asset)}
 </button>

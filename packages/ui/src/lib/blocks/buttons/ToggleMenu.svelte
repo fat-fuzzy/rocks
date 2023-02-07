@@ -14,13 +14,7 @@
 	export let color = ''
 	export let variant = ''
 	export let multiple = false
-	export let items: {
-		id: string
-		label: string
-		type?: string
-		icon?: string
-		disabled?: boolean
-	}[] = fixtures.toggle
+	export let items = fixtures.toggleMenu
 
 	const menuId = id
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
@@ -49,33 +43,21 @@
 </script>
 
 {#if title}
-	<div class={`menu l:stack ${size}`}>
+	<div class={`menu l:stack ${size} ${color} ${variant}`}>
 		<p>{title}</p>
 		<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
-			{#each items as { id, label, icon }}
+			{#each items as toggleProps}
 				<li>
-					<Toggle
-						{id}
-						on:toggle={onToggle}
-						{variant}
-						{color}
-						text={format.formatLabel(label, icon)}
-					/>
+					<Toggle on:toggle={onToggle} {...toggleProps} />
 				</li>
 			{/each}
 		</menu>
 	</div>
 {:else}
 	<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
-		{#each items as { id, label, icon }}
+		{#each items as toggleProps}
 			<li>
-				<Toggle
-					{id}
-					on:toggle={onToggle}
-					{variant}
-					{color}
-					text={format.formatLabel(label, icon)}
-				/>
+				<Toggle on:toggle={onToggle} {...toggleProps} />
 			</li>
 		{/each}
 	</menu>

@@ -18,7 +18,7 @@
 		id: string
 		label: string
 		type: string
-		icon?: string
+		asset?: string
 		disabled?: boolean
 	}[] = fixtures.menu
 
@@ -40,22 +40,18 @@
 	<div class={`menu l:stack ${size}`}>
 		<p>{title}</p>
 		<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
-			{#each items as { id, label, icon }}
+			{#each items as buttonProps}
 				<li>
-					<Button id={`${menuId}-${id}`} {onClick} {variant} {color}>
-						{format.formatLabel(label, icon)}
-					</Button>
+					<Button {onClick} {...buttonProps} />
 				</li>
 			{/each}
 		</menu>
 	</div>
 {:else}
 	<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
-		{#each items as { id, label, icon }}
+		{#each items as buttonProps}
 			<li>
-				<Button id={`${menuId}-${id}`} {onClick} {variant} {color}>
-					{format.formatLabel(label, icon)}
-				</Button>
+				<Button {onClick} {...buttonProps} />
 			</li>
 		{/each}
 	</menu>

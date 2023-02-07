@@ -9,7 +9,7 @@ function emojiLabel(text: string, emoji: string) {
 }
 
 function svgLabel(text: string, svg: SVGElement) {
-	// TODO: format SVG icon
+	// TODO: format SVG icon + text node
 	return text
 }
 

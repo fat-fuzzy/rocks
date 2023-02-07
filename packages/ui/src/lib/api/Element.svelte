@@ -77,7 +77,7 @@
 			<svelte:element this={`h${String(depth)}`} class="font:lg">{title} API 🔗</svelte:element>
 		</a>
 		{#if category === 'layouts'}
-			<svelte:component this={component} {...selectedProps}>
+			<svelte:component this={component} id={title} {...selectedProps}>
 				{#if content === 'text'}
 					{fixtures[content]}
 				{:else if content === 'card' || content === 'form'}
@@ -87,7 +87,7 @@
 				{/if}
 			</svelte:component>
 		{:else}
-			<svelte:component this={component} {...selectedProps} />
+			<svelte:component this={component} id={title} {...selectedProps} />
 		{/if}
 	{:else}
 		<Sidebar size="xs" align="end">
@@ -95,7 +95,7 @@
 				{#if category === 'layouts'}
 					<main class={contextClasses}>
 						{#if title === 'Sidebar'}
-							<svelte:component this={component} {...selectedProps}>
+							<svelte:component this={component} id={title} {...selectedProps}>
 								<div slot="side">
 									{#if sideContent === 'text'}
 										{fixtures[sideContent]}
@@ -116,7 +116,7 @@
 								</div>
 							</svelte:component>
 						{:else}
-							<svelte:component this={component} {...selectedProps}>
+							<svelte:component this={component} id={title} {...selectedProps}>
 								{#if content === 'text'}
 									{fixtures[content]}
 								{:else if content === 'card' || content === 'form'}
@@ -129,7 +129,7 @@
 					</main>
 				{:else}
 					<main class={contextClasses}>
-						<svelte:component this={component} {...selectedProps} />
+						<svelte:component this={component} id={title} {...selectedProps} />
 					</main>
 				{/if}
 			</svelte:fragment>

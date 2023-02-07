@@ -90,9 +90,11 @@ button.highlight {
 	outline-color: var(#{$prefix}-current-highlight);
 }
 button.outline.highlight {
+	background-color: inherit;
 	border-color: var(#{$prefix}-current-highlight-dark);
 }
 .day button.outline.highlight {
+	color: var(#{$prefix}-current-highlight-dark);
 	border-color: var(#{$prefix}-current-highlight-dark);
 }
 button.highlight:not(:disabled):hover,

@@ -4,11 +4,18 @@
 	const dispatch = createEventDispatcher()
 
 	// @ts-check
-	export let label = ''
+	export let id = ''
+	export let label = 'Range'
 	export let value = 0
 	export let min = 0
-	export let max = 0
+	export let max = 100
 	export let step = '1'
+	export let color = ''
+	export let variant = ''
+	export let layout = ''
+	export let breakpoint = ''
+	export let size = ''
+	export let align = ''
 
 	const handleInput = () => {
 		dispatch('input', {
@@ -16,20 +23,21 @@
 		})
 	}
 
-	$: id = `${label.replaceAll(' ', '-')}-range`
+	$: inputId = `range-${id}`
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 </script>
 
-<label for={id}>
+<label for={inputId} class={classes}>
 	{label}:
 	{value}
+	<input
+		{id}
+		data-test={`${id}-range`}
+		type="range"
+		bind:value
+		{min}
+		{max}
+		{step}
+		on:input={handleInput}
+	/>
 </label>
-<input
-	{id}
-	data-test={`${id}-range`}
-	type="range"
-	bind:value
-	{min}
-	{max}
-	{step}
-	on:input={handleInput}
-/>

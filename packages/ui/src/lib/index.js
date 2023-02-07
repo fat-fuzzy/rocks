@@ -18,8 +18,9 @@ import RevealMenu from './blocks/buttons/RevealMenu.svelte'
 import Toggle from './blocks/buttons/Toggle.svelte'
 import ToggleMenu from './blocks/buttons/ToggleMenu.svelte'
 // import Canvas from './blocks/media/Canvas.svelte'
-import InputRadio from './blocks/forms/InputRadio.svelte'
 import InputCheck from './blocks/forms/InputCheck.svelte'
+import InputRadio from './blocks/forms/InputRadio.svelte'
+import InputRange from './blocks/forms/InputRange.svelte'
 import InputFile from './blocks/forms/InputFile.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
 import Nav from './blocks/navs/Nav.svelte'
@@ -73,9 +74,10 @@ const blocks = {
 	Toggle,
 	ToggleMenu,
 	// Canvas, TODO: init canvas with example Sketch
-	InputRadio,
 	InputCheck,
 	InputFile,
+	InputRadio,
+	InputRange,
 	Nav,
 	RevealNav,
 	// Sketch,
