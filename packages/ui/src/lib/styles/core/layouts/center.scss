@@ -6,6 +6,44 @@
 	max-width: calc(100% - calc(2 * var(#{$prefix}-gap))); // width of parent minus base padding
 }
 
-.l\:center:is(.xxs, .xs, .sm, .md, .lg, .xl, .xxl) {
-	max-width: calc(100% - calc(2 * var(#{$prefix}-current-size)));
+.l\:center.xxs {
+	max-width: calc(
+		100% - calc(2 * var(#{$prefix}-size-xxl))
+	); // TODO : generate (selector + style) by size
+}
+
+.l\:center.xs {
+	max-width: calc(
+		100% - calc(2 * var(#{$prefix}-size-xl))
+	); // TODO : generate (selector + style) by size
+}
+
+.l\:center.sm {
+	max-width: calc(
+		100% - calc(2 * var(#{$prefix}-size-lg))
+	); // TODO : generate (selector + style) by size
+}
+
+.l\:center.md {
+	max-width: calc(
+		100% - calc(2 * var(#{$prefix}-size-md))
+	); // TODO : generate (selector + style) by size
+}
+
+.l\:center.lg {
+	max-width: calc(
+		100% - calc(2 * var(#{$prefix}-size-sm))
+	); // TODO : generate (selector + style) by size
+}
+
+.l\:center.xl {
+	max-width: calc(
+		100% - calc(2 * var(#{$prefix}-size-xs))
+	); // TODO : generate (selector + style) by size
+}
+
+.l\:center.xxl {
+	max-width: calc(
+		100% - calc(2 * var(#{$prefix}-size-xxs))
+	); // TODO : generate (selector + style) by size
 }
