@@ -44,7 +44,7 @@
 {#if title}
 	<div class={`menu l:stack`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout} ${size} ${color} ${variant} bp:${breakpoint}`}>
+		<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
 			{#each items as toggleProps}
 				{@const itemColor = toggleProps.color ?? color}
 				{@const itemVariant = toggleProps.variant ?? variant}
@@ -55,7 +55,7 @@
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout} ${size} ${color} ${variant} bp:${breakpoint}`}>
+	<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
 		{#each items as toggleProps}
 			{@const itemColor = toggleProps.color ?? color}
 			{@const itemVariant = toggleProps.variant ?? variant}
