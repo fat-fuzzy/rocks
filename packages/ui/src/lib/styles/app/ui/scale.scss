@@ -15,14 +15,14 @@ $base-size: 1rem;
 ///
 ///
 $size-scale: (
-	'100': $base-size * 0.6,
+	'100': $base-size * 0.5,
 	'200': $base-size * 0.7,
-	'300': $base-size * 0.8,
+	'300': $base-size * 0.9,
 	'400': $base-size,
-	'500': $base-size * 1.25,
-	'600': $base-size * 1.6,
-	'700': $base-size * 2,
-	'900': $base-size * 3,
+	'500': $base-size * 1.3,
+	'600': $base-size * 1.7,
+	'700': $base-size * 2.1,
+	'900': $base-size * 3.3,
 );
 
 //== FLUID SCALE
@@ -37,9 +37,9 @@ $modular-scale-steps-plus: 1, 2, 3, 4;
 $modular-scale-steps-minus: -1, -2;
 $modular-scale: (
 	fluid-min-width: 320,
-	fluid-max-width: 1240,
-	fluid-min-size: 14,
-	fluid-max-size: 16,
+	fluid-max-width: 2048,
+	fluid-min-size: 13,
+	fluid-max-size: 20,
 	fluid-min-ratio: 1.2,
 	fluid-max-ratio: 1.25,
 	fluid-screen: 100vw,
