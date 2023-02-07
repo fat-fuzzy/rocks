@@ -219,6 +219,7 @@ export const shared: SharedOptions = {
 export const blocks: BlockOptions = {
 	variant: {
 		name: 'Variant',
+		exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 		items: [
 			{
 				name: 'Variant',
@@ -249,7 +250,7 @@ export const blocks: BlockOptions = {
 	},
 	asset: {
 		name: 'Asset',
-		exclude: ['ButtonMenu', 'ToggleMenu'],
+		exclude: ['ButtonMenu', 'ToggleMenu', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 		layout: 'stack',
 		items: [
 			{
