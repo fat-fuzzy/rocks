@@ -7,5 +7,5 @@
 }
 
 .l\:burrito:is(.xxs, .xs, .sm, .md, .lg, .xl, .xxl) {
-	max-width: var(#{$prefix}-current-sidebar-width);
+	max-width: var(#{$prefix}-current-side-size);
 }
