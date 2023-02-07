@@ -1,7 +1,7 @@
 import type {ComponentType} from 'svelte'
 export type ComponentChild = string | ComponentType | (string | ComponentType)[]
 export enum StyleEnum {
-	icon = 'icon',
+	asset = 'asset',
 	size = 'size',
 	brightness = 'brightness',
 	contrast = 'contrast',
@@ -13,9 +13,12 @@ export enum StyleEnum {
 	color = 'color',
 	layout = 'layout',
 }
-export type ComponentProps = {
-	icon?: string
+export interface ComponentProps {
+	id?: string
+	asset?: string
 	size?: string
+	label?: string
+	text?: string
 	brightness?: string
 	contrast?: string
 	app?: string
@@ -25,6 +28,15 @@ export type ComponentProps = {
 	variant?: string
 	color?: string
 	layout?: string
+	// options?: StyleOption
+}
+export interface InputProps extends ComponentProps {
+	label?: string
+}
+export interface ButtonProps extends ComponentProps {
+	text?: string
+	type?: string
+	asset?: string
 }
 export enum AppEnum {
 	ui = 'ui',
@@ -38,13 +50,13 @@ export type StyleOption = {
 	layout?: string
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components
-	items: Array<{id: string; label: string; asset?: string | SVGElement; options?: StyleOption[]}>
+	items: Array<ComponentProps>
 }
 
 /**
 {
 	theme?: {input: string; items: Array<{id: string; value: string}>}
-	icon?: {input: string; items: Array<{id: string; value: string; asset: SVGElement}>}
+	asset?: {input: string; items: Array<{id: string; value: string; asset: SVGElement}>}
 	size?: {input: string; items: Array<{id: string; value: string}>}
 	variant?: {input: string; items: Array<{id: string; value: string}>}
 	color?: {input: string; items: Array<{id: string; value: string}>}
@@ -79,7 +91,7 @@ export interface SharedOptions extends ApiOptions {
 export interface BlockOptions extends ApiOptions {
 	variant: StyleFamily
 	color: StyleFamily
-	icon: StyleFamily
+	asset: StyleFamily
 }
 export interface LayoutOptions extends ApiOptions {
 	content: StyleFamily
@@ -95,8 +107,8 @@ export const app: AppOptions = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'day', label: 'day'},
-					{id: 'night', label: 'night'},
+					{id: 'day', text: 'day', asset: '☀️'},
+					{id: 'night', text: 'night', asset: '🌙'},
 				],
 			},
 			{
@@ -104,8 +116,8 @@ export const app: AppOptions = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'contrast', label: 'contrast'}, // TODO : fix color vars & classes
-					{id: 'blend', label: 'blend'},
+					{id: 'contrast', text: 'contrast', asset: '🌗'}, // TODO : fix color vars & classes
+					{id: 'blend', text: 'blend', asset: '🌑'}, // TODO: night / day asset option
 					// {id: 'polar', label: 'polar'},
 				],
 			},
@@ -140,25 +152,27 @@ export const shared: SharedOptions = {
 				layout: 'stack',
 				exclude: ['layouts', 'Button', 'Toggle'],
 				items: [
-					{id: 'stack', label: 'stack'},
+					{id: 'stack', text: 'stack', asset: ''},
 					{
 						id: 'switcher',
-						label: 'switcher',
-						options: [
-							{
-								name: 'Breakpoint',
-								input: 'toggle',
-								layout: 'stack',
-								exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
-								items: [
-									{id: 'xs', label: 'xs'},
-									{id: 'sm', label: 'sm'},
-									{id: 'md', label: 'md'},
-									{id: 'lg', label: 'lg'},
-									{id: 'xl', label: 'xl'},
-								],
-							},
-						],
+						text: 'switcher',
+						asset: '',
+						// options: [
+						// 	//TODO: display breakpoint options conditionally
+						// 	{
+						// 		name: 'Breakpoint',
+						// 		input: 'toggle',
+						// 		layout: 'stack',
+						// 		exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
+						// 		items: [
+						// 			{id: 'xs', text: 'xs', asset: ''},
+						// 			{id: 'sm', text: 'sm', asset: ''},
+						// 			{id: 'md', text: 'md', asset: ''},
+						// 			{id: 'lg', text: 'lg', asset: ''},
+						// 			{id: 'xl', text: 'xl', asset: ''},
+						// 		],
+						// 	},
+						// ],
 					},
 				],
 			},
@@ -167,24 +181,24 @@ export const shared: SharedOptions = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'xs', label: 'xs'},
-					{id: 'sm', label: 'sm'},
-					{id: 'md', label: 'md'},
-					{id: 'lg', label: 'lg'},
-					{id: 'xl', label: 'xl'},
+					{id: 'xs', text: 'xs', asset: ''},
+					{id: 'sm', text: 'sm', asset: ''},
+					{id: 'md', text: 'md', asset: ''},
+					{id: 'lg', text: 'lg', asset: ''},
+					{id: 'xl', text: 'xl', asset: ''},
 				],
 			},
 			{
 				name: 'Breakpoint',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['blocks', 'Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
+				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 				items: [
-					{id: 'xs', label: 'xs'},
-					{id: 'sm', label: 'sm'},
-					{id: 'md', label: 'md'},
-					{id: 'lg', label: 'lg'},
-					{id: 'xl', label: 'xl'},
+					{id: 'xs', text: 'xs', asset: ''},
+					{id: 'sm', text: 'sm', asset: ''},
+					{id: 'md', text: 'md', asset: ''},
+					{id: 'lg', text: 'lg', asset: ''},
+					{id: 'xl', text: 'xl', asset: ''},
 				],
 			},
 			{
@@ -193,9 +207,9 @@ export const shared: SharedOptions = {
 				layout: 'switcher',
 				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
-					{id: 'center', label: 'center'},
-					{id: 'text', label: 'text'},
-					{id: 'burrito', label: 'burrito'},
+					{id: 'center', text: 'center', asset: ''},
+					{id: 'text', text: 'text', asset: ''},
+					{id: 'burrito', text: 'burrito', asset: ''},
 				],
 			},
 		],
@@ -211,9 +225,9 @@ export const blocks: BlockOptions = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: '', label: 'default'},
-					{id: 'outline', label: 'outline'},
-					{id: 'bare', label: 'bare'},
+					{id: '', text: 'default', asset: ''},
+					{id: 'outline', text: 'outline', asset: ''},
+					{id: 'bare', text: 'bare', asset: ''},
 				],
 			},
 		],
@@ -226,25 +240,25 @@ export const blocks: BlockOptions = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'primary', label: 'primary'},
-					{id: 'accent', label: 'accent'},
-					{id: 'highlight', label: 'highlight'},
+					{id: 'primary', text: 'primary', variant: 'outline', color: 'primary', asset: ''},
+					{id: 'accent', text: 'accent', variant: 'outline', color: 'accent', asset: ''},
+					{id: 'highlight', text: 'highlight', variant: 'outline', color: 'highlight', asset: ''},
 				],
 			},
 		],
 	},
-	icon: {
-		name: 'Icon',
+	asset: {
+		name: 'Asset',
 		exclude: ['ButtonMenu', 'ToggleMenu'],
 		layout: 'stack',
 		items: [
 			{
-				name: 'Icon',
+				name: 'Emoji',
 				input: 'datalist',
 				items: [
-					{id: 'idea', label: 'idea', asset: '💡'},
-					{id: 'user', label: 'user', asset: '🦁'},
-					{id: 'favorite', label: 'favorite', asset: '❤️'},
+					{id: 'idea', text: 'idea', asset: '💡'},
+					{id: 'user', text: 'user', asset: '🦁'},
+					{id: 'favorite', text: 'favorite', asset: '❤️'},
 				],
 			},
 		],
@@ -262,9 +276,9 @@ export const layouts: LayoutOptions = {
 				layout: 'stack',
 				exclude: ['Sidebar'],
 				items: [
-					{id: 'card', label: 'card'},
-					{id: 'form', label: 'form'},
-					{id: 'text', label: 'text'},
+					{id: 'card', text: 'card', asset: ''},
+					{id: 'form', text: 'form', asset: ''},
+					{id: 'text', text: 'text', asset: ''},
 				],
 			},
 			{
@@ -273,9 +287,9 @@ export const layouts: LayoutOptions = {
 				layout: 'stack',
 				include: ['Sidebar'],
 				items: [
-					{id: 'card', label: 'card'},
-					{id: 'form', label: 'form'},
-					{id: 'text', label: 'text'},
+					{id: 'card', text: 'card', asset: ''},
+					{id: 'form', text: 'form', asset: ''},
+					{id: 'text', text: 'text', asset: ''},
 				],
 			},
 			{
@@ -284,9 +298,9 @@ export const layouts: LayoutOptions = {
 				layout: 'stack',
 				include: ['Sidebar'],
 				items: [
-					{id: 'card', label: 'card'},
-					{id: 'form', label: 'form'},
-					{id: 'text', label: 'text'},
+					{id: 'card', text: 'card', asset: ''},
+					{id: 'form', text: 'form', asset: ''},
+					{id: 'text', text: 'text', asset: ''},
 				],
 			},
 		],
@@ -295,12 +309,7 @@ export const layouts: LayoutOptions = {
 
 export const API_OPTIONS: {[target: string]: ApiOptions} = {app, shared, blocks, layouts}
 
-export const DEFAULT_OPTIONS: {
-	app: AppOptions
-	shared: SharedOptions
-	blocks: BlockOptions
-	layouts: LayoutOptions
-} = {
+export const DEFAULT_OPTIONS: {[target: string]: ApiOptions} = {
 	app: {
 		settings: {
 			brightness: 'day',
@@ -314,7 +323,7 @@ export const DEFAULT_OPTIONS: {
 		variant: {variant: ''},
 		color: {color: ''},
 		// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-		icon: {icon: '✨'},
+		asset: {emoji: '✨'},
 	},
 	layouts: {
 		content: {content: 'card', side: 'card', main: 'text'},

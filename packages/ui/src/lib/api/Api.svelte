@@ -32,6 +32,22 @@
 				},
 			],
 		}
+
+		dispatch('changed', payload)
+	}
+
+	function handleSelect(event, name) {
+		const payload = {
+			name,
+			items: [
+				{
+					id: name.toLowerCase(),
+					name: name,
+					value: event.target.value,
+				},
+			],
+		}
+
 		dispatch('changed', payload)
 	}
 
@@ -81,18 +97,19 @@
 									{#if !exclude || (exclude.indexOf(category) === -1 && exclude.indexOf(title) === -1)}
 										{#if input === 'radio' || input === 'checkbox'}
 											{@const InputComponent = COMPONENT_IMPORTS[input]}
-											{#each items as { id, label }}
+											{#each items as { id, ...inputProps }}
 												{@const checked = id === prop.value}
 												<svelte:component
 													this={InputComponent}
 													id={`${input}-${id}`}
 													value={id}
-													{label}
+													{...inputProps}
 													{name}
 													{checked}
 													variant={apiVariant || ''}
 													layout={layout || ''}
 													size={apiSize || ''}
+													on:input={(event) => handleInput(event, styleFamily.name)}
 												/>
 											{/each}
 										{/if}
@@ -112,11 +129,13 @@
 												list={`items-${name}`}
 												id={`choice-${name}`}
 												{name}
-												on:input={(event) => handleInput(event, styleFamily.name)}
+												on:input={(event) => handleSelect(event, styleFamily.name)}
 											/>
 											<datalist id={`items-${name}`}>
-												{#each items as { id, label, asset }}
-													<option {id} value={asset}>{format.formatLabel(label, asset)}</option>
+												{#each items as { id, text, asset }}
+													<option {id} value={asset}>
+														{format.formatLabel(text || '', asset)}
+													</option>
 												{/each}
 											</datalist>
 										{/if}

@@ -32,16 +32,20 @@ const nav = [
 	},
 ]
 
+const button = {id: 'idea', text: 'Idea', type: 'button', variant: '', emoji: '💡'}
+
+const toggle = {id: 'favorite', text: 'Favorite', type: 'button', variant: '', emoji: '❤️'}
+
 const menu = [
-	{id: 'btn-1', label: 'Button 1', type: 'button', variant: '', icon: '💡'},
-	{id: 'btn-2', label: 'Button 2', type: 'button', variant: '', icon: '🦁'},
-	{id: 'btn-3', label: 'Button 3', type: 'button', variant: '', icon: '❤️'},
+	{id: 'invader', text: 'Invader', asset: '👾'},
+	{id: 'ally', text: 'Ally', asset: '🐙'},
+	{id: 'player', text: 'Player', asset: '🐳'},
 ]
 
-const toggle = [
-	{id: 'toggle-1', label: 'Toggle 1'},
-	{id: 'toggle-2', label: 'Toggle 2'},
-	{id: 'toggle-3', label: 'Toggle 3'},
+const toggleMenu = [
+	{id: 'idea', text: 'Idea', type: 'button', variant: '', asset: '💡'},
+	{id: 'user', text: 'User', type: 'button', variant: '', asset: '🦁'},
+	{id: 'favorite', text: 'Favorite', type: 'button', variant: '', asset: '❤️'},
 ]
 
 const radio = [
@@ -71,8 +75,12 @@ const sketch = {
 export default {
 	links,
 	nav,
+	button,
 	menu,
 	toggle,
+	toggleMenu,
+	radio,
+	checkbox,
 	card,
 	form,
 	text,
