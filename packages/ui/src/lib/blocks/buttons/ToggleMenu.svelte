@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Toggle from '../buttons/Toggle.svelte'
 	import {createEventDispatcher} from 'svelte'
-	import fixtures from '../../../data/fixtures'
+	import mocks from '../../../data/mocks'
 
 	const dispatch = createEventDispatcher()
 
@@ -13,7 +13,7 @@
 	export let color = ''
 	export let variant = ''
 	export let multiple = false
-	export let items = fixtures.toggleMenu
+	export let items = mocks.toggleMenu
 
 	const menuId = id
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []

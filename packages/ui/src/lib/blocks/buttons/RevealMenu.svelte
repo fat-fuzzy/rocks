@@ -4,7 +4,7 @@
 	import {clickOutside} from '../../utils/click-outside.js'
 	import format from '../../utils/format'
 	import Button from './Button.svelte'
-	import fixtures from '../../../data/fixtures'
+	import mocks from '../../../data/mocks'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
@@ -16,14 +16,7 @@
 	export let title = 'RevealMenu'
 	export let asset = ''
 	export let align = 'start'
-	export let items: {
-		id: string
-		label: string
-		type: string
-		asset?: string
-		variant?: string
-		disabled?: boolean
-	}[] = fixtures.menu
+	export let items = mocks.menu
 
 	let expanded = false
 

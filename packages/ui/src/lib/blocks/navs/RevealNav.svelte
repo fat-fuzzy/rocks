@@ -2,7 +2,7 @@
 	import {clickOutside} from '../../utils/click-outside.js'
 	import format from '../../utils/format'
 	import LinkList from './LinkList.svelte'
-	import fixtures from '../../../data/fixtures'
+	import mocks from '../../../data/mocks'
 
 	export let layout = ''
 	export let size = ''
@@ -14,7 +14,7 @@
 	export let title = 'RevealNav'
 	export let icon = ''
 	export let align = 'start'
-	export let items = fixtures.nav
+	export let items = mocks.nav
 
 	let expanded = false
 

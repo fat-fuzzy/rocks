@@ -4,7 +4,7 @@
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import {API_OPTIONS, DEFAULT_OPTIONS} from './options'
-	import fixtures from '../../data/fixtures'
+	import mocks from '../../data/mocks'
 
 	export let title = ''
 	export let depth = 0
@@ -79,9 +79,9 @@
 		{#if category === 'layouts'}
 			<svelte:component this={component} id={title} {...selectedProps}>
 				{#if content === 'text'}
-					{fixtures[content]}
+					{mocks[content]}
 				{:else if content === 'card' || content === 'form'}
-					{#each fixtures[content] as item}
+					{#each mocks[content] as item}
 						<div class={`card box ${item}`}>{item}</div>
 					{/each}
 				{/if}
@@ -98,18 +98,18 @@
 							<svelte:component this={component} id={title} {...selectedProps}>
 								<div slot="side">
 									{#if sideContent === 'text'}
-										{fixtures[sideContent]}
+										{mocks[sideContent]}
 									{:else if sideContent === 'card' || sideContent === 'form'}
-										{#each fixtures[sideContent] as item}
+										{#each mocks[sideContent] as item}
 											<div class={`card box ${item}`}>{item}</div>
 										{/each}
 									{/if}
 								</div>
 								<div slot="main">
 									{#if mainContent === 'text'}
-										{fixtures[mainContent]}
+										{mocks[mainContent]}
 									{:else if mainContent === 'card' || mainContent === 'form'}
-										{#each fixtures[mainContent] as item}
+										{#each mocks[mainContent] as item}
 											<div class={`card box ${item}`}>{item}</div>
 										{/each}
 									{/if}
@@ -118,9 +118,9 @@
 						{:else}
 							<svelte:component this={component} id={title} {...selectedProps}>
 								{#if content === 'text'}
-									{fixtures[content]}
+									{mocks[content]}
 								{:else if content === 'card' || content === 'form'}
-									{#each fixtures[content] as item}
+									{#each mocks[content] as item}
 										<div class={`card box ${item}`}>{item}</div>
 									{/each}
 								{/if}
