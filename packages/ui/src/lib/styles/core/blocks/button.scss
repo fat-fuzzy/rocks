@@ -93,19 +93,17 @@ button.outline.highlight {
 	background-color: inherit;
 	border-color: var(#{$prefix}-current-highlight-dark);
 }
-.day button.outline.highlight {
-	color: var(#{$prefix}-current-highlight-dark);
+button.outline.highlight {
+	color: var(#{$prefix}-color-dark);
 	border-color: var(#{$prefix}-current-highlight-dark);
 }
 button.highlight:not(:disabled):hover,
 button.outline.highlight:not(:disabled):hover {
-	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-lighter);
 	border-color: var(#{$prefix}-current-highlight);
 }
 button.highlight:not(:disabled):active,
 button.outline.highlight:not(:disabled):active {
-	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 
