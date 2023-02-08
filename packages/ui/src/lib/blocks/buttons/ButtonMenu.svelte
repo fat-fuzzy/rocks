@@ -32,7 +32,7 @@
 {#if title}
 	<div class={`menu l:stack ${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout} ${size} ${color} ${variant} bp:${breakpoint}`}>
+		<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
 			{#each items as buttonProps}
 				{@const itemColor = buttonProps.color ?? color}
 				{@const itemVariant = buttonProps.variant ?? variant}
@@ -43,7 +43,7 @@
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout} ${size} ${color} ${variant} bp:${breakpoint}`}>
+	<menu id={menuId} class={`l:${layout} ${size} bp:${breakpoint}`}>
 		{#each items as buttonProps}
 			{@const itemColor = buttonProps.color ?? color}
 			{@const itemVariant = buttonProps.variant ?? variant}

@@ -124,17 +124,29 @@ button.bare {
 .bare.primary,
 .bare.primary:active {
 	color: var(#{$prefix}-current-primary);
-	background-color: inherit;
+	background-color: unset;
+}
+.bare.primary:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-primary-light);
 }
 
 .bare.accent,
 .bare.accent:active {
 	color: var(#{$prefix}-current-accent);
 }
+.bare.accent:hover {
+	color: var(#{$prefix}-current-accent);
+	background-color: var(#{$prefix}-current-accent-light);
+}
 
 .bare.highlight,
 .bare.highlight:active {
 	color: var(#{$prefix}-current-highlight-dark);
+}
+.bare.highlight:hover {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-accent-light);
 }
 
 //== Toggle  default
