@@ -37,14 +37,14 @@ const button = {id: 'idea', text: 'Idea', type: 'button', variant: '', emoji: '�
 const toggle = {id: 'favorite', text: 'Favorite', type: 'button', variant: '', emoji: '❤️'}
 
 const menu = [
-	{id: 'invader', text: 'Invader', asset: '👾'},
-	{id: 'ally', text: 'Ally', asset: '🐙'},
-	{id: 'player', text: 'Player', asset: '🐳'},
+	{id: 'vader', text: 'Vader', asset: '👾'},
+	{id: 'ollie', text: 'Ollie', asset: '🐙'},
+	{id: 'moby', text: 'Moby', asset: '🐳'},
 ]
 
 const toggleMenu = [
 	{id: 'idea', text: 'Idea', type: 'button', asset: '💡'},
-	{id: 'user', text: 'User', type: 'button', asset: '🦁'},
+	{id: 'profile', text: 'Profile', type: 'button', asset: '🦁'},
 	{id: 'favorite', text: 'Favorite', type: 'button', asset: '❤️'},
 ]
 

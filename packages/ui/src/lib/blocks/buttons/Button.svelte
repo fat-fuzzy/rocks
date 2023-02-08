@@ -2,7 +2,7 @@
 	// Inputs
 	import {browser} from '$app/environment'
 	import format from '../../utils/format'
-	import fixtures from '../../../data/fixtures'
+	import mocks from '../../../data/mocks'
 
 	export let id = ''
 	export let disabled = false
@@ -12,8 +12,8 @@
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
-	export let asset = fixtures.button.emoji
-	export let text = fixtures.button.text
+	export let asset = mocks.button.emoji
+	export let text = mocks.button.text
 	// Event Handlers
 
 	export let onClick = (event) => {

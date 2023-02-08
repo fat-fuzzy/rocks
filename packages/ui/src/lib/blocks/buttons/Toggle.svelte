@@ -5,7 +5,7 @@
 	import {useMachine} from '@xstate/svelte'
 	import {createMachine} from 'xstate'
 	import format from '../../utils/format'
-	import fixtures from '../../../data/fixtures'
+	import mocks from '../../../data/mocks'
 
 	const dispatch = createEventDispatcher()
 
@@ -15,8 +15,8 @@
 	export let initial = false
 	export let color = ''
 	export let disabled = false
-	export let asset = fixtures.toggle.asset
-	export let text = fixtures.toggle.text
+	export let asset = mocks.toggle.emoji // TODO: emoji OR svg
+	export let text = mocks.toggle.text
 
 	let machineConfig = {
 		id: `toggle-${id}`,

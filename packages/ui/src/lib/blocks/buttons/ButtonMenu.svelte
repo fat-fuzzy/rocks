@@ -2,7 +2,7 @@
 	import {browser} from '$app/environment'
 	import {createEventDispatcher} from 'svelte'
 	import Button from '../buttons/Button.svelte'
-	import fixtures from '../../../data/fixtures'
+	import mocks from '../../../data/mocks'
 
 	const dispatch = createEventDispatcher()
 	export let id = ''
@@ -13,7 +13,7 @@
 	export let color = ''
 	export let variant = ''
 
-	export let items = fixtures.menu
+	export let items = mocks.menu
 
 	let clicked = ''
 	let menuId = id
