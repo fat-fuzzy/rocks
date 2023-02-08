@@ -260,10 +260,12 @@ button.accent.outline[aria-pressed='false']:hover {
 }
 button.highlight[aria-pressed='false']:hover,
 button.highlight.outline[aria-pressed='false']:hover {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 .highlight[aria-pressed='false']:active,
 .highlight.outline[aria-pressed='false']:active {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-lighter);
 }
 .highlight[aria-pressed='true'],
@@ -273,12 +275,10 @@ button.highlight.outline[aria-pressed='false']:hover {
 }
 .highlight[aria-pressed='true']:hover,
 .highlight.outline[aria-pressed='true']:hover {
-	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-highlight-lighter);
 }
 .highlight[aria-pressed='true']:active,
 .highlight.outline[aria-pressed='true']:active {
-	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 
