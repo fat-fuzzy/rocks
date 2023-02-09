@@ -128,8 +128,6 @@ $current_cssvars: ();
 		#{$prefix}-fluid-0: clamp($size-min * 1rem, $y-axis * 1rem + $slope * 100vw, $size-max * 1rem);
 	}
 
-	// TODO: fix - this is not giving the expected results
-
 	$previous-step: 0;
 	$size-min-step: $size-min;
 	$size-max-step: $size-max;
@@ -153,6 +151,8 @@ $current_cssvars: ();
 		}
 		$previous-step: calc($previous-step + 1);
 	}
+
+	// TODO: fix - small scale is not giving the expected results
 	$previous-step: 0;
 	$size-min-step: $size-min;
 	$size-max-step: $size-max;
