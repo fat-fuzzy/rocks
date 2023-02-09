@@ -3,8 +3,10 @@
 	import type {StyleFamily} from './options'
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
-	import {API_OPTIONS, DEFAULT_OPTIONS} from './options'
-	import mocks from '../../data/mocks'
+	import Block from './Block.svelte'
+	import Layout from './Layout.svelte'
+	import {API_OPTIONS} from './options'
+	import {selectedBlock, selectedLayout} from '../stores/api'
 
 	export let title = ''
 	export let depth = 0
@@ -13,33 +15,8 @@
 	export let path = ''
 	export let component: ComponentType
 
-	// TODO: figure out how I can deduct props from component
-	let selected = {
-		...DEFAULT_OPTIONS[category],
-		...DEFAULT_OPTIONS['shared'],
-		...DEFAULT_OPTIONS['app'],
-	}
-	let updated = selected
-
-	// TODO: figure out a way to let user resize component container
-	let frame
-	let width
-	let height
-
-	const updateSelected = async (event) => {
-		updated = await event.detail.items.reduce(async (values, option) => {
-			if (event.detail.name.toLowerCase() === 'theme') {
-				// TODO : figure out if it is possible to do a dynamic import of app theme
-			}
-			return {
-				...values,
-				[event.detail.name.toLowerCase()]: {
-					...values[event.detail.name.toLowerCase()],
-					[option.id]: option.value,
-				},
-			}
-		}, updated)
-	}
+	let uiElement = category === 'layouts' ? Layout : Block
+	let selected = category === 'layouts' ? $selectedLayout : $selectedBlock
 
 	const getFamilyOptionValue = (styleFamily: StyleFamily, styleOption: string) => {
 		// TODO: filter include / exclude in here
@@ -48,27 +25,10 @@
 	// TODO: improve this code - make it easier to understand ! (use store ?)
 
 	$: options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
-	$: initial = {
-		...DEFAULT_OPTIONS[category],
-		...DEFAULT_OPTIONS['shared'],
-		...DEFAULT_OPTIONS['app'],
-	}
 	$: theme = selected.settings && getFamilyOptionValue(selected.settings, 'theme')
-	$: brightness = selected.settings && getFamilyOptionValue(selected.settings, 'brightness')
-	$: contrast = selected.settings && getFamilyOptionValue(selected.settings, 'contrast')
-	$: content = selected.content && getFamilyOptionValue(selected.content, 'content')
-	$: sideContent = selected.content && getFamilyOptionValue(selected.content, 'side')
-	$: mainContent = selected.content && getFamilyOptionValue(selected.content, 'main')
-	$: size = selected.context && getFamilyOptionValue(selected.context, 'size')
-	$: container = selected.context && getFamilyOptionValue(selected.context, 'container')
-	$: element = isPage ? `card:lg inset` : '' // TODO: fix container usage (container sidebar, in blocks)
-	$: articleClasses = !isPage ? `card:lg box l:stack` : ''
-	$: contextClasses = `ui:element ${element} ${brightness} ${contrast} ${size} l:${container}`
-	$: selected = {...initial, ...updated}
-	$: selectedProps = Object.keys(selected).reduce(
-		(props, family) => ({...props, ...selected[family]}),
-		{},
-	)
+	$: articleClasses = !isPage ? `l:stack md` : ''
+	$: selected = category === 'layouts' ? $selectedLayout : $selectedBlock
+	// TODO: figure out a way to let user resize component container
 </script>
 
 <article class={articleClasses}>
@@ -76,65 +36,14 @@
 		<a class="primary" href={`${path}/${title}`}>
 			<svelte:element this={`h${String(depth)}`} class="font:lg">{title} API 🔗</svelte:element>
 		</a>
-		{#if category === 'layouts'}
-			<svelte:component this={component} id={title} {...selectedProps}>
-				{#if content === 'text'}
-					{mocks[content]}
-				{:else if content === 'card' || content === 'form'}
-					{#each mocks[content] as item}
-						<div class={`card box ${item}`}>{item}</div>
-					{/each}
-				{/if}
-			</svelte:component>
-		{:else}
-			<svelte:component this={component} id={title} {...selectedProps} />
-		{/if}
+		<svelte:component this={uiElement} {component} />
 	{:else}
 		<Sidebar size="xs" align="end">
-			<svelte:fragment slot="main">
-				{#if category === 'layouts'}
-					<main class={contextClasses}>
-						{#if title === 'Sidebar'}
-							<svelte:component this={component} id={title} {...selectedProps}>
-								<div slot="side">
-									{#if sideContent === 'text'}
-										{mocks[sideContent]}
-									{:else if sideContent === 'card' || sideContent === 'form'}
-										{#each mocks[sideContent] as item}
-											<div class={`card box ${item}`}>{item}</div>
-										{/each}
-									{/if}
-								</div>
-								<div slot="main">
-									{#if mainContent === 'text'}
-										{mocks[mainContent]}
-									{:else if mainContent === 'card' || mainContent === 'form'}
-										{#each mocks[mainContent] as item}
-											<div class={`card box ${item}`}>{item}</div>
-										{/each}
-									{/if}
-								</div>
-							</svelte:component>
-						{:else}
-							<svelte:component this={component} id={title} {...selectedProps}>
-								{#if content === 'text'}
-									{mocks[content]}
-								{:else if content === 'card' || content === 'form'}
-									{#each mocks[content] as item}
-										<div class={`card box ${item}`}>{item}</div>
-									{/each}
-								{/if}
-							</svelte:component>
-						{/if}
-					</main>
-				{:else}
-					<main class={contextClasses}>
-						<svelte:component this={component} id={title} {...selectedProps} />
-					</main>
-				{/if}
-			</svelte:fragment>
+			<main slot="main" class="card:lg inset">
+				<svelte:component this={uiElement} {component} />
+			</main>
 			<aside slot="side">
-				<Api {title} {options} {selected} {category} on:changed={updateSelected} />
+				<Api {title} {options} {category} />
 			</aside>
 		</Sidebar>
 	{/if}

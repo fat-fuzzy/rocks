@@ -3,8 +3,6 @@ menu {
 	justify-content: stretch;
 	padding: 0;
 	border-radius: var(#{$prefix}-radius-base);
-	padding-block-start: var(#{$prefix}-current-size);
-	padding-block-end: var(#{$prefix}-current-size);
 	list-style: none;
 }
 

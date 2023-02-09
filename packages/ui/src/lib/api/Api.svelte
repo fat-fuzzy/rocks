@@ -1,24 +1,33 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {ComponentProps, ApiOptions} from './options'
+	import type {ApiOptions} from './options'
+	import {selectedBlock, selectedLayout} from '../stores/api'
 	import format from '../utils/format'
 	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
-	import {createEventDispatcher} from 'svelte'
-
-	const dispatch = createEventDispatcher()
 
 	export let title = ''
 	export let options: ApiOptions
 	export let category = ''
-	// TODO: figure out how I can deduct props from Svelte component
-	export let selected: ComponentProps
+	let selected = category === 'layouts' ? $selectedLayout : $selectedBlock
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
+	}
+
+	const updateSelected = (payload) => {
+		const toUpdate = payload.items.reduce((values, option) => {
+			return {...values, [option.id]: option.value}
+		}, {})
+		if (category === 'layouts') {
+			selectedLayout.set({...selected, ...toUpdate})
+		}
+		if (category === 'blocks') {
+			selectedBlock.set({...selected, ...toUpdate})
+		}
 	}
 
 	function handleInput(event, name) {
@@ -32,8 +41,7 @@
 				},
 			],
 		}
-
-		dispatch('changed', payload)
+		updateSelected(payload)
 	}
 
 	function handleSelect(event, name) {
@@ -47,8 +55,7 @@
 				},
 			],
 		}
-
-		dispatch('changed', payload)
+		updateSelected(payload)
 	}
 
 	function handleToggle(event, name, id) {
@@ -64,8 +71,7 @@
 					},
 				],
 			}
-
-			dispatch('changed', payload)
+			updateSelected(payload)
 		}
 	}
 
@@ -74,7 +80,7 @@
 	let apiVariant = ''
 
 	$: elementOptions = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
-
+	$: selected = category === 'layouts' ? $selectedLayout : $selectedBlock
 	// TODO: clean, comment
 </script>
 
@@ -98,7 +104,7 @@
 										{#if input === 'radio' || input === 'checkbox'}
 											{@const InputComponent = COMPONENT_IMPORTS[input]}
 											{#each items as { id, ...inputProps }}
-												{@const checked = id === prop.value}
+												{@const checked = id === prop.value.name}
 												<svelte:component
 													this={InputComponent}
 													id={`${input}-${id}`}
