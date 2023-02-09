@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {ApiOptions} from './options'
-	import {selectedBlock, selectedLayout} from '../stores/api'
+	import {selectedStore, optionsStore} from '../stores/api'
 	import format from '../utils/format'
 	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
@@ -9,25 +8,26 @@
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
 
 	export let title = ''
-	export let options: ApiOptions
-	export let category = ''
-	let selected = category === 'layouts' ? $selectedLayout : $selectedBlock
-
+	export let category: string
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
 	}
 
-	const updateSelected = (payload) => {
+	let selected = $selectedStore
+	let options = $optionsStore
+
+	const updateSelected = (payload, name) => {
 		const toUpdate = payload.items.reduce((values, option) => {
 			return {...values, [option.id]: option.value}
 		}, {})
-		if (category === 'layouts') {
-			selectedLayout.set({...selected, ...toUpdate})
-		}
-		if (category === 'blocks') {
-			selectedBlock.set({...selected, ...toUpdate})
-		}
+		selected.update((data) => {
+			return {...data, [name]: {...data[name], ...toUpdate}}
+		})
+
+		selectedStore.update((data) => {
+			return {...data, ...selected}
+		})
 	}
 
 	function handleInput(event, name) {
@@ -41,7 +41,7 @@
 				},
 			],
 		}
-		updateSelected(payload)
+		updateSelected(payload, name.toLowerCase())
 	}
 
 	function handleSelect(event, name) {
@@ -55,7 +55,7 @@
 				},
 			],
 		}
-		updateSelected(payload)
+		updateSelected(payload, name.toLowerCase())
 	}
 
 	function handleToggle(event, name, id) {
@@ -71,7 +71,7 @@
 					},
 				],
 			}
-			updateSelected(payload)
+			updateSelected(payload, name.toLowerCase())
 		}
 	}
 
@@ -79,15 +79,20 @@
 	let apiSize = 'xxs'
 	let apiVariant = ''
 
-	$: elementOptions = Object.keys(selected).map((key) => ({name: key, value: selected[key]}))
-	$: selected = category === 'layouts' ? $selectedLayout : $selectedBlock
-	// TODO: clean, comment
+	$: selectedOptions = Object.keys($selected).map((key) => {
+		return {
+			name: key,
+			value: $selected[key],
+		}
+	})
 </script>
 
 <form on:submit|preventDefault class={`l:${apiLayout}`}>
-	{#each elementOptions as prop}
-		{#if options[prop.name]}
-			{@const styleFamily = options[prop.name]}
+	{#each selectedOptions as prop}
+		NAME {prop.name}<br />
+		{#if $options[prop.name]}
+			{@const styleFamily = $options[prop.name]}
+			OPT {styleFamily}<br />
 			{#if !styleFamily.include || styleFamily.include.indexOf(title) !== -1}
 				{#if !styleFamily.exclude || (styleFamily.exclude.indexOf(category) === -1 && styleFamily.exclude.indexOf(title) === -1)}
 					<Fieldset

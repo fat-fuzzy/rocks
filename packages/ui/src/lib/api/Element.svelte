@@ -1,34 +1,31 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StyleFamily} from './options'
+	import {beforeUpdate} from 'svelte'
+	import {categoryStore} from '../stores/api'
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
-	import {API_OPTIONS} from './options'
-	import {selectedBlock, selectedLayout} from '../stores/api'
 
 	export let title = ''
 	export let depth = 0
 	export let isPage = false
-	export let category = ''
 	export let path = ''
-	export let component: ComponentType
+	export let UiElement: ComponentType
 
-	let uiElement = category === 'layouts' ? Layout : Block
-	let selected = category === 'layouts' ? $selectedLayout : $selectedBlock
+	export let category: string
 
-	const getFamilyOptionValue = (styleFamily: StyleFamily, styleOption: string) => {
-		// TODO: filter include / exclude in here
-		return typeof styleFamily !== 'string' ? styleFamily[styleOption] : ''
+	let ApiElement: {[category: string]: ComponentType} = {
+		layouts: Layout,
+		blocks: Block,
 	}
 	// TODO: improve this code - make it easier to understand ! (use store ?)
 
-	$: options = {...API_OPTIONS[category], ...API_OPTIONS['shared'], ...API_OPTIONS['app']}
-	$: theme = selected.settings && getFamilyOptionValue(selected.settings, 'theme')
 	$: articleClasses = !isPage ? `l:stack md` : ''
-	$: selected = category === 'layouts' ? $selectedLayout : $selectedBlock
-	// TODO: figure out a way to let user resize component container
+	// TODO: figure out a way to let user resize component container	// TODO: clean, comment
+	beforeUpdate(() => {
+		categoryStore.set(category)
+	})
 </script>
 
 <article class={articleClasses}>
@@ -36,14 +33,14 @@
 		<a class="primary" href={`${path}/${title}`}>
 			<svelte:element this={`h${String(depth)}`} class="font:lg">{title} API 🔗</svelte:element>
 		</a>
-		<svelte:component this={uiElement} {component} />
+		<svelte:component this={ApiElement[category]} component={UiElement} />
 	{:else}
 		<Sidebar size="xs" align="end">
 			<main slot="main" class="card:lg inset">
-				<svelte:component this={uiElement} {component} />
+				<svelte:component this={ApiElement[category]} component={UiElement} />
 			</main>
 			<aside slot="side">
-				<Api {title} {options} {category} />
+				<Api {title} {category} />
 			</aside>
 		</Sidebar>
 	{/if}
