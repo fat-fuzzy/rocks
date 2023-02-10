@@ -31,6 +31,7 @@ import RevealNav from './blocks/navs/RevealNav.svelte'
  * Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
+import Api from './api/Api.svelte'
 import Element from './api/Element.svelte'
 import Collection from './api/Collection.svelte'
 
@@ -85,8 +86,9 @@ const blocks = {
 }
 
 const api = {
-	Element,
+	Api,
 	Collection,
+	Element,
 }
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder

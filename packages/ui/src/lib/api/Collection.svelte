@@ -10,9 +10,14 @@
 	export let depth = 0
 	export let path = ''
 	export let layout = 'stack'
+	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category
 	let classes = ''
+	// TODO: color code sections
+	// TODO; tokens section
+	// TODO: composition section
+	// TODO: feedback colors & component
 
 	$: selected = $selectedStore
 	$: componentNames = Object.keys(components)
@@ -21,16 +26,33 @@
 </script>
 
 <Sidebar size="xs" align="end">
-	<main slot="main" class={`card:lg inset ${classes}`}>
-		<section class={`l:${layout}`}>
-			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">{category}</svelte:element>
-			{#each componentNames as name}
-				{@const component = components[name]}
-				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
-			{/each}
-		</section>
+	<main slot="main" class={`l:${layout} ${classes}`}>
+		{#if category === title.toLowerCase()}
+			<section class={`l:${layout} card:xl inset`}>
+				{#each componentNames as name}
+					{@const component = components[name]}
+					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+				{/each}
+			</section>
+		{:else}
+			<details>
+				<summary class="l:switcher bp:xs card:lg box bg:primary:light">
+					<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+						{category}
+					</svelte:element>
+				</summary>
+				<section class={`l:${layout} card:xl inset`}>
+					{#each componentNames as name}
+						{@const component = components[name]}
+						<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+					{/each}
+				</section>
+			</details>
+		{/if}
 	</main>
 	<aside slot="side">
-		<Api {title} {category} />
+		{#if isPage}
+			<Api {title} {category} />
+		{/if}
 	</aside>
 </Sidebar>

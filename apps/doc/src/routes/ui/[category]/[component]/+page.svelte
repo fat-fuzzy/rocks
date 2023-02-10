@@ -20,8 +20,4 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="header-page">
-	<h1>{title}</h1>
-</header>
-
 <Element isPage={true} depth="1" {title} {path} {category} component={Component} />
