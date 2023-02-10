@@ -128,7 +128,8 @@ a,
 
 a:visited,
 .bare:visited {
-	text-decoration-color: var(#{$prefix}-current-gray);
+	color: var(#{$prefix}-current-color);
+	text-decoration-color: var(#{$prefix}-current-color);
 }
 
 a:hover,
@@ -146,7 +147,7 @@ a:hover,
 .accent a:visited,
 .accent .bare:visited {
 	color: var(#{$prefix}-color-light);
-	text-decoration-color: var(#{$prefix}-current-accent);
+	text-decoration-color: var(#{$prefix}-color-light);
 }
 
 .accent a:hover,
@@ -172,6 +173,12 @@ a:hover,
 	color: var(#{$prefix}-color-light);
 	background-color: inherit;
 	text-decoration-color: var(#{$prefix}-current-dark);
+}
+
+a > *,
+.bare > * {
+	color: inherit;
+	background-color: inherit;
 }
 
 .primary:focus {
