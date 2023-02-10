@@ -12,7 +12,7 @@
 	export let layout = 'stack'
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
-	export let category = $page.params.category
+	export let category = $page.params.category || 'app'
 	let classes = ''
 	// TODO: color code sections
 	// TODO; tokens section

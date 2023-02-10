@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
+	import {page} from '$app/stores'
 	import {beforeUpdate} from 'svelte'
 	import {categoryStore} from '../stores/api'
-	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
@@ -13,7 +13,7 @@
 	export let path = ''
 	export let component: ComponentType
 
-	export let category = ''
+	export let category = $page.params.category || 'app'
 
 	let ApiElement: {[category: string]: ComponentType} = {
 		layouts: Layout,

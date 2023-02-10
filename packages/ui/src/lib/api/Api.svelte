@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import {selectedStore, optionsStore} from '../stores/api'
+	import {selectedStore} from '../stores/api'
 	import format from '../utils/format'
 	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
+	import {API_OPTIONS} from '../api/options'
 
 	export let title = ''
 	export let category: string
@@ -14,9 +15,6 @@
 		checkbox: InputCheck,
 	}
 
-	let selected = $selectedStore
-	let options = $optionsStore
-
 	const updateSelected = (payload, name) => {
 		const toUpdate = payload.items.reduce((values, option) => {
 			return {...values, [option.id]: option.value}
@@ -24,7 +22,7 @@
 		selected.update((data) => {
 			return {...data, [name]: {...data[name], ...toUpdate}}
 		})
-
+		// TODO here: fix update store
 		selectedStore.update((data) => {
 			return {...data, ...selected}
 		})
@@ -79,18 +77,37 @@
 	let apiSize = 'xxs'
 	let apiVariant = ''
 
+	$: options = {
+		...API_OPTIONS[category],
+		...API_OPTIONS['shared'],
+		...API_OPTIONS['app'],
+	}
+	$: selected = {...$selectedStore}
 	$: selectedOptions = Object.keys($selected).map((key) => {
 		return {
 			name: key,
 			value: $selected[key],
 		}
 	})
+	$: initialOptions = Object.keys(options).map((key) => {
+		return {
+			name: key,
+			value: options[key],
+		}
+	})
+
+	$: apiFormOptions = Object.keys(options).map((key) => {
+		return {
+			name: key,
+			value: options[key],
+		}
+	})
 </script>
 
 <form on:submit|preventDefault class={`l:${apiLayout}`}>
-	{#each selectedOptions as prop}
-		{#if $options[prop.name]}
-			{@const styleFamily = $options[prop.name]}
+	{#each initialOptions as prop}
+		{#if options[prop.name]}
+			{@const styleFamily = options[prop.name]}
 			{#if !styleFamily.include || styleFamily.include.indexOf(title) !== -1}
 				{#if !styleFamily.exclude || (styleFamily.exclude.indexOf(category) === -1 && styleFamily.exclude.indexOf(title) === -1)}
 					<Fieldset
