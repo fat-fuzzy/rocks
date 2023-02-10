@@ -18,16 +18,16 @@
 	const updateSelected = (payload) => {
 		const toUpdate = payload.items.reduce((values, option) => {
 			return {...values, [option.id]: option.value}
-		}, {})
+		}, selected)
 
 		// TODO: this works, not sure how: understand how
 		selected.update((data) => {
 			return {...data, ...toUpdate}
 		})
+
 		selectedStore.update((data) => {
 			return {...data, ...selected}
 		})
-		selectedStore.set({...selected, ...toUpdate})
 	}
 
 	function handleInput(event, name) {

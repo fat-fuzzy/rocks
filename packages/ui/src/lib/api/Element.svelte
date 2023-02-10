@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import {page} from '$app/stores'
-	import {beforeUpdate} from 'svelte'
-	import {categoryStore} from '../stores/api'
 	import Api from './Api.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
+	import {selectedStore} from '../stores/api'
 
 	export let title = ''
 	export let depth = 0
@@ -21,27 +20,33 @@
 	}
 	// TODO: improve this code - make it easier to understand ! (use store ?)
 
-	$: articleClasses = !isPage ? 'l:stack md' : 'l:sidebar xs align:end'
-	// TODO: figure out a way to let user resize component container	// TODO: clean, comment
-	beforeUpdate(() => {
-		categoryStore.set(category)
-	})
+	$: selected = $selectedStore
+	$: brightness = $selected.brightness ?? ''
+	$: contrast = $selected.contrast ?? ''
+	$: size = $selected.size ?? ''
+	$: container = $selected.container ? `l:${$selected.container} inset` : ''
+	$: layout = $selected.layout ? `l:${$selected.layout}` : ''
+	$: breakpoint = $selected.breakpoint ? `bp:${$selected.breakpoint}` : ''
+	$: appSettings = `${brightness} ${contrast}`
+	$: contextClasses = `${container} ${layout} ${breakpoint} ${size}`
 </script>
 
 {#if !isPage}
 	<a class="primary" href={`${path}/${title}`}>
 		<svelte:element this={`h${String(depth)}`} class="font:sm">{title} API 🔗</svelte:element>
 	</a>
-	<article class={articleClasses}>
+	<article class="l:stack md">
 		<svelte:component this={ApiElement[category]} {component} />
 	</article>
 {:else}
 	<header class="header-page">
 		<h1>{title}</h1>
 	</header>
-	<article class={articleClasses}>
-		<main class="l:main card:xl md inset">
-			<svelte:component this={ApiElement[category]} {component} />
+	<article class="l:sidebar xs align:end">
+		<main class={`l:main card:xl md inset ${appSettings}`}>
+			<div class={`card:xl ${contextClasses}`}>
+				<svelte:component this={ApiElement[category]} {component} />
+			</div>
 		</main>
 		<aside class="l:side">
 			<Api {title} {category} />

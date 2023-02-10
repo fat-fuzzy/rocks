@@ -21,13 +21,18 @@
 
 	$: selected = $selectedStore
 	$: componentNames = Object.keys(components)
-	$: classes = `${$selected.brightness ?? ''} ${$selected.contrast ?? ''}`
+	$: brightness = $selected.brightness ?? ''
+	$: contrast = $selected.contrast ?? ''
+	$: container = $selected.container ? `l:${$selected.container}` : ''
+	$: layout = $selected.layout ? `l:${$selected.layout}` : ''
+	$: breakpoint = $selected.breakpoint ? `bp:${$selected.breakpoint}` : ''
+	$: classes = `${brightness} ${contrast} ${container} ${layout} ${breakpoint}`
 	$: titleDepth = Number(depth) + 1
 </script>
 
 {#if isPage}
 	<Sidebar size="xs" align="end">
-		<section slot="main" class={`l:${layout} card:xl inset ${classes}`}>
+		<section slot="main" class={`card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
@@ -44,7 +49,7 @@
 				{category}
 			</svelte:element>
 		</summary>
-		<section class={`l:${layout} card:xl inset ${classes}`}>
+		<section class={`card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />

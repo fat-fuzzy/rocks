@@ -4,6 +4,7 @@
 
 	export let title = ''
 	export let component: ComponentType
+	$: selected = $selectedStore
 </script>
 
-<svelte:component this={component} id={title} {...$selectedStore} />
+<svelte:component this={component} id={title} {...$selected} />
