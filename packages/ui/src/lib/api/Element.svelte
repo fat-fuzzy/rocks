@@ -21,7 +21,7 @@
 	}
 	// TODO: improve this code - make it easier to understand ! (use store ?)
 
-	$: articleClasses = !isPage ? `l:stack md` : ''
+	$: articleClasses = !isPage ? 'l:stack md' : ''
 	// TODO: figure out a way to let user resize component container	// TODO: clean, comment
 	beforeUpdate(() => {
 		categoryStore.set(category)
@@ -31,7 +31,7 @@
 <article class={articleClasses}>
 	{#if !isPage}
 		<a class="primary" href={`${path}/${title}`}>
-			<svelte:element this={`h${String(depth)}`} class="font:lg">{title} API 🔗</svelte:element>
+			<svelte:element this={`h${String(depth)}`} class="font:sm">{title} API 🔗</svelte:element>
 		</a>
 		<svelte:component this={ApiElement[category]} {component} />
 	{:else}

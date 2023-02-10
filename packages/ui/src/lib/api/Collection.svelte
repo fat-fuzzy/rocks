@@ -17,18 +17,20 @@
 	$: selected = $selectedStore
 	$: componentNames = Object.keys(components)
 	$: classes = `${$selected.settings.brightness ?? ''} ${$selected.settings.contrast ?? ''}`
+	$: titleDepth = Number(depth) + 1
 </script>
 
-<article>
-	<Sidebar size="xs" align="end">
-		<main slot="main" class={`l:${layout} card:lg inset ${classes}`}>
+<Sidebar size="xs" align="end">
+	<main slot="main" class={`card:lg inset ${classes}`}>
+		<section class={`l:${layout}`}>
+			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">{category}</svelte:element>
 			{#each componentNames as name}
 				{@const component = components[name]}
-				<Element title={name} depth={Number(depth) + 1} {path} {category} {component} />
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
 			{/each}
-		</main>
-		<aside slot="side">
-			<Api {title} {category} />
-		</aside>
-	</Sidebar>
-</article>
+		</section>
+	</main>
+	<aside slot="side">
+		<Api {title} {category} />
+	</aside>
+</Sidebar>
