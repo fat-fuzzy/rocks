@@ -11,11 +11,21 @@ export const categoryStore = writable('app')
 export const optionsApp = readable(API_OPTIONS['app'])
 export const optionsShared = readable(API_OPTIONS['shared'])
 export const optionsCategory = derived(categoryStore, ($category) => API_OPTIONS[$category])
-export const optionsStore = derived(categoryStore, () => ({
+export const defaultOptionsStore = derived(categoryStore, () => ({
 	...optionsCategory,
 	...optionsShared,
 	...optionsApp,
 }))
+// API Form options for current category
+// TODO: figure out how I can deduct props from Svelte component
+
+// export const categoryOptionsApp = writable(API_OPTIONS['app'])
+// export const categoryOptionsShared = writable(API_OPTIONS['shared'])
+// export const optionsStore = writable({
+// 	...optionsCategory,
+// 	...categoryOptionsShared,
+// 	...categoryOptionsApp,
+// })
 
 // Default values
 // TODO: figure out how I can deduct props from Svelte component

@@ -15,17 +15,19 @@
 		checkbox: InputCheck,
 	}
 
-	const updateSelected = (payload, name) => {
+	const updateSelected = (payload) => {
 		const toUpdate = payload.items.reduce((values, option) => {
 			return {...values, [option.id]: option.value}
 		}, {})
+
+		// TODO: this works, not sure how: understand how
 		selected.update((data) => {
-			return {...data, [name]: {...data[name], ...toUpdate}}
+			return {...data, ...toUpdate}
 		})
-		// TODO here: fix update store
 		selectedStore.update((data) => {
 			return {...data, ...selected}
 		})
+		selectedStore.set({...selected, ...toUpdate})
 	}
 
 	function handleInput(event, name) {
@@ -82,13 +84,7 @@
 		...API_OPTIONS['shared'],
 		...API_OPTIONS['app'],
 	}
-	$: selected = {...$selectedStore}
-	$: selectedOptions = Object.keys($selected).map((key) => {
-		return {
-			name: key,
-			value: $selected[key],
-		}
-	})
+	$: selected = $selectedStore
 	$: initialOptions = Object.keys(options).map((key) => {
 		return {
 			name: key,
@@ -96,12 +92,8 @@
 		}
 	})
 
-	$: apiFormOptions = Object.keys(options).map((key) => {
-		return {
-			name: key,
-			value: options[key],
-		}
-	})
+	// TODO: select default options in form
+	// TODO: try co clean this code 👇 some more
 </script>
 
 <form on:submit|preventDefault class={`l:${apiLayout}`}>

@@ -21,7 +21,7 @@
 
 	$: selected = $selectedStore
 	$: componentNames = Object.keys(components)
-	$: classes = `${$selected.settings.brightness ?? ''} ${$selected.settings.contrast ?? ''}`
+	$: classes = `${$selected.brightness ?? ''} ${$selected.contrast ?? ''}`
 	$: titleDepth = Number(depth) + 1
 </script>
 
