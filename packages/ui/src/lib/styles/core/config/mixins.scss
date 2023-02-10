@@ -110,9 +110,7 @@ $current_cssvars: ();
 	$design_tokens,
 	$prefix: $theme-prefix,
 	$steps-plus: $modular-scale-steps-plus,
-	$steps-minus: $modular-scale-steps-minus,
-	$min-breakpoint: $min-breakpoint,
-	$max-breakpoint: $max-breakpoint
+	$steps-minus: $modular-scale-steps-minus
 ) {
 	@include generateCssVars($design_tokens, $prefix);
 	$width-min: calc(var(#{$prefix}-fluid-min-width) / 16);
@@ -125,51 +123,58 @@ $current_cssvars: ();
 	$y-axis: calc(calc(-1 * $width-min) * $slope + $size-min);
 	:root {
 		#{$prefix}-f-slope: $slope;
-		#{$prefix}-f-y-axis: $y-axis;
 		#{$prefix}-f-size-min-0: $size-max;
 		#{$prefix}-f-size-max-0: $size-min;
 		#{$prefix}-fluid-0: clamp($size-min * 1rem, $y-axis * 1rem + $slope * 100vw, $size-max * 1rem);
 	}
 
+	$previous-step: 0;
+	$size-min-step: $size-min;
+	$size-max-step: $size-max;
+	$width-neg-step: $width-neg;
+	$y-axis-step: $y-axis;
 	@each $step in $steps-plus {
-		$previous-step: calc($step - 1);
+		$size-min-step: calc($size-min-step * var(#{$prefix}-fluid-min-ratio));
+		$size-max-step: calc($size-min-step * var(#{$prefix}-fluid-max-ratio));
+		$width-neg-step: calc(-1 * $size-min-step);
+		$y-axis-step: calc($width-neg-step * $slope + $size-min-step);
 		:root {
-			#{$prefix}-f-size-min-#{$step}: calc(
-				var(#{$prefix}-f-size-min-#{$previous-step}) * var(#{$prefix}-fluid-min-ratio)
-			);
-			#{$prefix}-f-size-max-#{$step}: calc(
-				var(#{$prefix}-f-size-max-#{$previous-step}) * var(#{$prefix}-fluid-max-ratio)
-			);
-			#{$prefix}-f-width-neg-#{$step}: calc(-1 * var(#{$prefix}-f-size-min-#{$step}));
-			#{$prefix}-y-axis-#{$step}: calc(
-				var(#{$prefix}-f-width-neg-#{$step}) * $slope + var(#{$prefix}-f-size-min-#{$step})
-			);
+			#{$prefix}-f-size-min-#{$step}: #{$size-min-step};
+			#{$prefix}-f-size-max-#{$step}: #{$size-max-step};
+			#{$prefix}-f-width-neg-#{$step}: #{$width-neg-step};
+			#{$prefix}-y-axis-#{$step}: #{$y-axis-step};
 			#{$prefix}-fluid-#{$step}: clamp(
 				var(#{$prefix}-f-size-min-#{$step}) * 1rem,
-				var(#{$prefix}-y-axis-#{$step}) * 1rem + $slope * 100vw,
+				var(#{$prefix}-y-axis-#{$step}) * 1rem + #{$slope} * 100vw,
 				var(#{$prefix}-f-size-max-#{$step}) * 1rem
 			);
 		}
+		$previous-step: calc($previous-step + 1);
 	}
+
+	// TODO: fix - small scale is not giving the expected results
+	$previous-step: 0;
+	$size-min-step: $size-min;
+	$size-max-step: $size-max;
+	$width-neg-step: $width-neg;
+	$y-axis-step: $y-axis;
 	@each $step in $steps-minus {
-		$previous-step: calc($step + 1);
+		$size-min-step: calc($size-min-step / var(#{$prefix}-fluid-min-ratio));
+		$size-max-step: calc($size-min-step / var(#{$prefix}-fluid-max-ratio));
+		$width-neg-step: calc(-1 * $size-min-step);
+		$y-axis-step: calc($width-neg-step * $slope + $size-min-step);
 		:root {
-			#{$prefix}-f-size-min-#{$step}: calc(
-				var(#{$prefix}-f-size-min-#{$previous-step}) / var(#{$prefix}-fluid-min-ratio)
-			);
-			#{$prefix}-f-size-max-#{$step}: calc(
-				var(#{$prefix}-f-size-max-#{$previous-step}) / var(#{$prefix}-fluid-max-ratio)
-			);
-			#{$prefix}-f-width-neg-#{$step}: calc(-1 * var(#{$prefix}-f-size-min-#{$step}));
-			#{$prefix}-y-axis-#{$step}: calc(
-				var(#{$prefix}-f-width-neg-#{$step}) * $slope + var(#{$prefix}-f-size-min-#{$step})
-			);
+			#{$prefix}-f-size-min-#{$step}: #{$size-min-step};
+			#{$prefix}-f-size-max-#{$step}: #{$size-max-step};
+			#{$prefix}-f-width-neg-#{$step}: #{$width-neg-step};
+			#{$prefix}-y-axis-#{$step}: #{$y-axis-step};
 			#{$prefix}-fluid-#{$step}: clamp(
 				var(#{$prefix}-f-size-min-#{$step}) * 1rem,
-				var(#{$prefix}-y-axis-#{$step}) * 1rem + $slope * 100vw,
+				var(#{$prefix}-y-axis-#{$step}) * 1rem + #{$slope} * 100vw,
 				var(#{$prefix}-f-size-max-#{$step}) * 1rem
 			);
 		}
+		$previous-step: calc($previous-step - 1);
 	}
 }
 
@@ -183,9 +188,7 @@ $current_cssvars: ();
 		$modular-scale,
 		$theme-prefix,
 		$modular-scale-steps-plus,
-		$modular-scale-steps-minus,
-		bp-xs,
-		bp-xl
+		$modular-scale-steps-minus
 	);
 	// -----------
 

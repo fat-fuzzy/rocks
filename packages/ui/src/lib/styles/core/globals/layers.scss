@@ -6,6 +6,17 @@
 	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
 }
 
+.polar {
+	background-color: var(#{$prefix}-current-polar);
+}
+
+.inset {
+	box-shadow: var(#{$prefix}-shadow-inset);
+	// padding: var(#{$prefix}-padding-inset);
+}
+
+// Contrast
+
 .day {
 	// TODO: Fix contrast combination
 	&.contrast {
@@ -26,14 +37,6 @@
 	&.blend {
 		background-color: var(#{$prefix}-current-bg-contrast);
 	}
-}
-
-.polar {
-	background-color: var(#{$prefix}-current-polar);
-}
-
-.inset {
-	box-shadow: var(#{$prefix}-shadow-inset);
 }
 
 /* TODO: cleanup this css (sveltekit app styles) */

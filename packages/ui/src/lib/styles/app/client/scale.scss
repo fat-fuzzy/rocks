@@ -25,7 +25,7 @@ $size-scale: (
 	'900': $base-size * 3,
 );
 
-//== FLUID SCALES
+//== FLUID SCALE
 
 /**
  * Source: https://utopia.fyi/blog/css-modular-scales/
@@ -37,11 +37,13 @@ $modular-scale-steps-plus: 1, 2, 3, 4;
 $modular-scale-steps-minus: -1, -2;
 $modular-scale: (
 	fluid-min-width: 320,
-	fluid-max-width: 2048,
+	fluid-max-width: 1340,
+	// min size of base font
 	fluid-min-size: 14,
-	fluid-max-size: 16,
+	// max size of base font
+	fluid-max-size: 18,
 	fluid-min-ratio: 1.2,
-	fluid-max-ratio: 1.25,
+	fluid-max-ratio: 1.27,
 	fluid-screen: 100vw,
 );
 

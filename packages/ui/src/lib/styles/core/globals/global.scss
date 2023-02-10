@@ -10,6 +10,7 @@ body {
 	#{$prefix}-current-size-side: var(#{$prefix}-s0);
 	color: var(#{$prefix}-current-color);
 	background: var(#{$prefix}-current-bg-color);
+	font-size: var(#{$prefix}-font-size-body);
 	font-weight: var(#{$prefix}-font-weight-body);
 	line-height: var(#{$prefix}-ratio);
 }

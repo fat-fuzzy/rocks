@@ -74,4 +74,5 @@ $layout: (
 	},
 	shadow-inset: #{inset 0 1px 4px 0
 		hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength-inset) + 9%))},
+	padding-inset: 4px,
 );

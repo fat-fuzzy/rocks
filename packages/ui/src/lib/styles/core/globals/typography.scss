@@ -31,7 +31,11 @@ h5 {
 }
 
 .font\:base {
-	font-size: var(#{$prefix}-fluid-0);
+	font-size: var(#{$prefix}-font-size-base);
+}
+
+.font\:xxs {
+	font-size: var(#{$prefix}-font-size-xxs);
 }
 
 .font\:xs {

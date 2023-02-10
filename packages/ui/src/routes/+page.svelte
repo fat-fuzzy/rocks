@@ -2,7 +2,7 @@
 	import {theme} from '$lib/stores/theme'
 	let variant = ``
 
-	$: variant = $theme ? `accent` : `highlight`
+	$: variant = $theme ? `bg:accent:light` : `bg:highlight`
 </script>
 
 <svelte:head>

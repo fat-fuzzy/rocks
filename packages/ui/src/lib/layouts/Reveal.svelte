@@ -17,6 +17,8 @@
 	}
 
 	$: show = expanded ? 'show' : 'hide'
+
+	// TODO: use detail + summary tags
 </script>
 
 <div

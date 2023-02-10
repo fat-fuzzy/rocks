@@ -90,11 +90,8 @@ button.highlight {
 	outline-color: var(#{$prefix}-current-highlight);
 }
 button.outline.highlight {
-	background-color: inherit;
-	border-color: var(#{$prefix}-current-highlight-dark);
-}
-button.outline.highlight {
 	color: var(#{$prefix}-color-dark);
+	background-color: inherit;
 	border-color: var(#{$prefix}-current-highlight-dark);
 }
 button.highlight:not(:disabled):hover,
@@ -186,16 +183,17 @@ button.bare {
 }
 button.primary[aria-pressed='false']:hover,
 .primary.outline[aria-pressed='false']:hover {
-	color: var(#{$prefix}-color-dark);
+	color: var(#{$prefix}-color-white);
 	background-color: var(#{$prefix}-current-primary-light);
 }
 .primary[aria-pressed='false']:active,
 .primary.outline[aria-pressed='false']:active {
+	color: var(#{$prefix}-current-primary);
 	background-color: var(#{$prefix}-current-primary-lighter);
 }
 button.primary[aria-pressed='true'],
 button.primary.outline[aria-pressed='true'] {
-	color: var(#{$prefix}-color-dark);
+	color: var(#{$prefix}-color-white);
 	background-color: var(#{$prefix}-current-primary-light);
 	border-color: var(#{$prefix}-current-primary-light);
 }
@@ -204,12 +202,12 @@ button.primary.outline[aria-pressed='true'] {
 }
 button.primary[aria-pressed='true']:hover,
 button.primary.outline[aria-pressed='true']:hover {
-	color: var(#{$prefix}-color-dark);
+	color: var(#{$prefix}-current-primary);
 	background-color: var(#{$prefix}-current-primary-lighter);
 }
 button.primary[aria-pressed='true']:active,
 button.primary.outline[aria-pressed='true']:active {
-	color: var(#{$prefix}-color-dark);
+	color: var(#{$prefix}-color-white);
 	background-color: var(#{$prefix}-current-primary-light);
 }
 
@@ -255,7 +253,6 @@ button.accent.outline[aria-pressed='false']:hover {
 	background-color: var(#{$prefix}-current-highlight);
 }
 .highlight.outline[aria-pressed='false'] {
-	color: var(#{$prefix}-current-highlight-dark);
 	background-color: inherit;
 }
 button.highlight[aria-pressed='false']:hover,
@@ -268,17 +265,14 @@ button.highlight.outline[aria-pressed='false']:hover {
 }
 .highlight[aria-pressed='true'],
 .outline.highlight[aria-pressed='true'] {
-	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 .highlight[aria-pressed='true']:hover,
 .highlight.outline[aria-pressed='true']:hover {
-	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-highlight-lighter);
 }
 .highlight[aria-pressed='true']:active,
 .highlight.outline[aria-pressed='true']:active {
-	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 

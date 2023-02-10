@@ -1,5 +1,6 @@
 <script lang="ts">
-	const variant = 'accent'
+	let theme = 1
+	$: variant = theme ? `bg:accent` : `bg:highlight`
 </script>
 
 <svelte:head>

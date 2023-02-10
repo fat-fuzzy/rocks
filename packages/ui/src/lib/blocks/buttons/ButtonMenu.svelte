@@ -9,7 +9,7 @@
 	export let title = ''
 	export let size = ''
 	export let breakpoint = ''
-	export let layout = ''
+	export let layout = 'switcher'
 	export let color = ''
 	export let variant = ''
 

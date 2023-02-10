@@ -1,51 +1,59 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {ComponentProps} from './options'
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
-	import {API_OPTIONS, DEFAULT_OPTIONS} from './options'
+	import {page} from '$app/stores'
+	import {selectedStore} from '../stores/api'
 
 	export let title = ''
 	export let depth = 0
 	export let path = ''
 	export let layout = 'stack'
-	export let components: ComponentType[]
-	export let category = ''
-	export let initial: ComponentProps = {
-		...DEFAULT_OPTIONS['app'],
-	}
-	// TODO: figure out how I can deduct props from component
-	let updated = {...initial}
-	let selected = {...updated}
+	export let isPage = false
+	export let components: {[name: string]: ComponentType}
+	export let category = $page.params.category || 'app'
+	let classes = ''
+	// TODO: color code sections
+	// TODO; tokens section
+	// TODO: composition section
+	// TODO: feedback colors & component
 
-	// TODO: figure out a way to let user resize component container
-	const updateSelected = (event) => {
-		updated = event.detail.items.reduce((values, option) => {
-			return {...values, [option.id]: option.value}
-		}, {})
-	}
-
-	$: options = {...API_OPTIONS['app']}
+	$: selected = $selectedStore
 	$: componentNames = Object.keys(components)
-	$: app = selected.app ?? ''
-	$: selected = {
-		...selected,
-		...updated,
-	}
-	$: classes = `${selected.size || 'lg'} ${selected.brightness ?? ''} ${selected.contrast ?? ''}`
+	$: brightness = $selected.brightness ?? ''
+	$: contrast = $selected.contrast ?? ''
+	$: container = $selected.container ? `l:${$selected.container}` : ''
+	$: layout = $selected.layout ? `l:${$selected.layout}` : ''
+	$: breakpoint = $selected.breakpoint ? `bp:${$selected.breakpoint}` : ''
+	$: classes = `${brightness} ${contrast} ${container} ${layout} ${breakpoint}`
+	$: titleDepth = Number(depth) + 1
 </script>
 
-<article>
+{#if isPage}
 	<Sidebar size="xs" align="end">
-		<main slot="main" class={`l:${layout} ${classes}`}>
+		<section slot="main" class={`card:xl inset ${classes}`}>
 			{#each componentNames as name}
-				{@const Component = components[name]}
-				<Element title={name} {category} depth={Number(depth) + 1} {path} component={Component} />
+				{@const component = components[name]}
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
 			{/each}
-		</main>
+		</section>
 		<aside slot="side">
-			<Api {title} {options} {selected} {category} on:changed={updateSelected} />
+			<Api {title} {category} />
 		</aside>
 	</Sidebar>
-</article>
+{:else}
+	<details class="l:stack">
+		<summary class="l:switcher bp:xs card:lg box bg:primary:light">
+			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+				{category}
+			</svelte:element>
+		</summary>
+		<section class={`card:xl inset ${classes}`}>
+			{#each componentNames as name}
+				{@const component = components[name]}
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+			{/each}
+		</section>
+	</details>
+{/if}

@@ -1,11 +1,14 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {blocks, api} from '@fat-fuzzy/ui'
-	const {Collection} = api
+	import {blocks, layouts, api} from '@fat-fuzzy/ui'
+	const {Collection, Api} = api
+	const {Sidebar} = layouts
 
 	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
-	const components = blocks
-	let category = 'blocks' // TODO: fix content
+	const components = [
+		{category: 'blocks', items: blocks},
+		{category: 'layouts', items: layouts},
+	]
 	let path = $page.url.pathname
 </script>
 
@@ -18,13 +21,21 @@
 	<h1>{title}</h1>
 </header>
 
-<section class="l:stack">
-	<Collection
-		{title}
-		depth="1"
-		isPage={true}
-		path={`${path}/${category}`}
-		{components}
-		{category}
-	/>
-</section>
+<Sidebar size="xs" align="end">
+	<main slot="main" class="l:stack md">
+		{#each components as { category, items }}
+			<Collection
+				{title}
+				depth="1"
+				isPage={false}
+				path={`${path}/${category}`}
+				components={items}
+				{category}
+			/>
+		{/each}
+	</main>
+
+	<aside slot="side">
+		<Api {title} category="app" />
+	</aside>
+</Sidebar>
