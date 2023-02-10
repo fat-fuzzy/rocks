@@ -3,6 +3,7 @@
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
+	import {page} from '$app/stores'
 	import {selectedStore} from '../stores/api'
 
 	export let title = ''
@@ -10,7 +11,7 @@
 	export let path = ''
 	export let layout = 'stack'
 	export let components: {[name: string]: ComponentType}
-	export let category = ''
+	export let category = $page.params.category
 	let classes = ''
 
 	$: selected = $selectedStore
@@ -22,8 +23,8 @@
 	<Sidebar size="xs" align="end">
 		<main slot="main" class={`l:${layout} card:lg inset ${classes}`}>
 			{#each componentNames as name}
-				{@const UiElement = components[name]}
-				<Element title={name} {category} depth={Number(depth) + 1} {path} {UiElement} />
+				{@const component = components[name]}
+				<Element title={name} depth={Number(depth) + 1} {path} {category} {component} />
 			{/each}
 		</main>
 		<aside slot="side">

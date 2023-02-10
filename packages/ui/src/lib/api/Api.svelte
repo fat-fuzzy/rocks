@@ -89,10 +89,8 @@
 
 <form on:submit|preventDefault class={`l:${apiLayout}`}>
 	{#each selectedOptions as prop}
-		NAME {prop.name}<br />
 		{#if $options[prop.name]}
 			{@const styleFamily = $options[prop.name]}
-			OPT {styleFamily}<br />
 			{#if !styleFamily.include || styleFamily.include.indexOf(title) !== -1}
 				{#if !styleFamily.exclude || (styleFamily.exclude.indexOf(category) === -1 && styleFamily.exclude.indexOf(title) === -1)}
 					<Fieldset

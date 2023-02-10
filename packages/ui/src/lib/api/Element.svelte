@@ -11,9 +11,9 @@
 	export let depth = 0
 	export let isPage = false
 	export let path = ''
-	export let UiElement: ComponentType
+	export let component: ComponentType
 
-	export let category: string
+	export let category = ''
 
 	let ApiElement: {[category: string]: ComponentType} = {
 		layouts: Layout,
@@ -33,11 +33,11 @@
 		<a class="primary" href={`${path}/${title}`}>
 			<svelte:element this={`h${String(depth)}`} class="font:lg">{title} API 🔗</svelte:element>
 		</a>
-		<svelte:component this={ApiElement[category]} component={UiElement} />
+		<svelte:component this={ApiElement[category]} {component} />
 	{:else}
 		<Sidebar size="xs" align="end">
 			<main slot="main" class="card:lg inset">
-				<svelte:component this={ApiElement[category]} component={UiElement} />
+				<svelte:component this={ApiElement[category]} {component} />
 			</main>
 			<aside slot="side">
 				<Api {title} {category} />
