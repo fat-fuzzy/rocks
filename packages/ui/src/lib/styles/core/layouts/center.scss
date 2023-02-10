@@ -8,19 +8,19 @@
 
 .l\:center.xxs {
 	max-width: calc(
-		100% - calc(2 * var(#{$prefix}-size-xxl))
+		100% - calc(2 * var(#{$prefix}-size-xxs))
 	); // TODO : generate (selector + style) by size
 }
 
 .l\:center.xs {
 	max-width: calc(
-		100% - calc(2 * var(#{$prefix}-size-xl))
+		100% - calc(2 * var(#{$prefix}-size-xs))
 	); // TODO : generate (selector + style) by size
 }
 
 .l\:center.sm {
 	max-width: calc(
-		100% - calc(2 * var(#{$prefix}-size-lg))
+		100% - calc(2 * var(#{$prefix}-size-sm))
 	); // TODO : generate (selector + style) by size
 }
 
@@ -32,18 +32,18 @@
 
 .l\:center.lg {
 	max-width: calc(
-		100% - calc(2 * var(#{$prefix}-size-sm))
+		100% - calc(2 * var(#{$prefix}-size-lg))
 	); // TODO : generate (selector + style) by size
 }
 
 .l\:center.xl {
 	max-width: calc(
-		100% - calc(2 * var(#{$prefix}-size-xs))
+		100% - calc(2 * var(#{$prefix}-size-xl))
 	); // TODO : generate (selector + style) by size
 }
 
 .l\:center.xxl {
 	max-width: calc(
-		100% - calc(2 * var(#{$prefix}-size-xxs))
+		100% - calc(2 * var(#{$prefix}-size-xxl))
 	); // TODO : generate (selector + style) by size
 }

@@ -200,19 +200,41 @@ menu {
 	background-color: inherit;
 }
 
-// == Layouts
-
-[class^='card'].primary {
+.bg\:primary {
 	color: var(#{$prefix}-color-white);
-	background-color: var(#{$prefix}-current-primary);
+	background-color: var(#{$prefix}-color-primary);
 }
-
-[class^='card'].highlight {
+.bg\:primary\:light {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-highlight);
+	background-color: var(#{$prefix}-color-primary-light);
+}
+.bg\:primary\:lighter {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-primary-lighter);
 }
 
-[class^='card'].accent {
+.bg\:accent {
 	color: var(#{$prefix}-color-white);
-	background-color: var(#{$prefix}-current-accent);
+	background-color: var(#{$prefix}-color-accent);
+}
+.bg\:accent\:light {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-accent-light);
+}
+.bg\:accent\:lighter {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-accent-lighter);
+}
+
+.bg\:highlight {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-highlight);
+}
+.bg\:highlight\:light {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-highlight-light);
+}
+.bg\:highlight\:lighter {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-color-highlight-lighter);
 }
