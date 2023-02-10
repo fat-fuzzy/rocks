@@ -128,8 +128,7 @@ a,
 
 a:visited,
 .bare:visited {
-	color: var(#{$prefix}-current-color);
-	text-decoration-color: var(#{$prefix}-current-primary);
+	text-decoration-color: var(#{$prefix}-current-gray);
 }
 
 a:hover,
