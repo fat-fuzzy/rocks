@@ -25,34 +25,30 @@
 	$: titleDepth = Number(depth) + 1
 </script>
 
-<Sidebar size="xs" align="end">
-	<main slot="main" class={`l:${layout} ${classes}`}>
-		{#if category === title.toLowerCase()}
-			<section class={`l:${layout} card:xl inset`}>
-				{#each componentNames as name}
-					{@const component = components[name]}
-					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
-				{/each}
-			</section>
-		{:else}
-			<details>
-				<summary class="l:switcher bp:xs card:lg box bg:primary:light">
-					<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
-						{category}
-					</svelte:element>
-				</summary>
-				<section class={`l:${layout} card:xl inset`}>
-					{#each componentNames as name}
-						{@const component = components[name]}
-						<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
-					{/each}
-				</section>
-			</details>
-		{/if}
-	</main>
-	<aside slot="side">
-		{#if isPage}
+{#if isPage}
+	<Sidebar size="xs" align="end">
+		<section slot="main" class={`l:${layout} card:xl inset`}>
+			{#each componentNames as name}
+				{@const component = components[name]}
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+			{/each}
+		</section>
+		<aside slot="side">
 			<Api {title} {category} />
-		{/if}
-	</aside>
-</Sidebar>
+		</aside>
+	</Sidebar>
+{:else}
+	<details class="l:stack">
+		<summary class="l:switcher bp:xs card:lg box bg:primary:light">
+			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+				{category}
+			</svelte:element>
+		</summary>
+		<section class={`l:${layout} card:xl inset`}>
+			{#each componentNames as name}
+				{@const component = components[name]}
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+			{/each}
+		</section>
+	</details>
+{/if}

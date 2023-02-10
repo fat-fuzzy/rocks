@@ -40,7 +40,7 @@
 	<svelte:fragment slot="side">
 		<RevealNav {title} id="nav-page" {items} {path} breakpoint="xs" size="md" />
 	</svelte:fragment>
-	<div slot="main" class="l:stack card">
+	<svelte:fragment slot="main">
 		<slot />
-	</div>
+	</svelte:fragment>
 </Sidebar>
