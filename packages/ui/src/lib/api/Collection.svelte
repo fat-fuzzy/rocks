@@ -27,7 +27,7 @@
 
 {#if isPage}
 	<Sidebar size="xs" align="end">
-		<section slot="main" class={`l:${layout} card:xl inset`}>
+		<section slot="main" class={`l:${layout} card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
@@ -44,7 +44,7 @@
 				{category}
 			</svelte:element>
 		</summary>
-		<section class={`l:${layout} card:xl inset`}>
+		<section class={`l:${layout} card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
