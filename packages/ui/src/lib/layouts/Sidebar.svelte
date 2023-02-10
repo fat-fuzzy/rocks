@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let size = 'd'
+	export let size = ''
 	export let align = ''
 	export let theme = ''
 </script>

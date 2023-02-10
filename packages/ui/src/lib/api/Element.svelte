@@ -23,12 +23,7 @@
 	$: selected = $selectedStore
 	$: brightness = $selected.brightness ?? ''
 	$: contrast = $selected.contrast ?? ''
-	$: size = $selected.size ?? ''
-	$: container = $selected.container ? `l:${$selected.container} inset` : ''
-	$: layout = $selected.layout ? `l:${$selected.layout}` : ''
-	$: breakpoint = $selected.breakpoint ? `bp:${$selected.breakpoint}` : ''
 	$: appSettings = `${brightness} ${contrast}`
-	$: contextClasses = `${container} ${layout} ${breakpoint} ${size}`
 </script>
 
 {#if !isPage}
@@ -36,7 +31,7 @@
 		<svelte:element this={`h${String(depth)}`} class="font:sm">{title} API 🔗</svelte:element>
 	</a>
 	<article class="l:stack md">
-		<svelte:component this={ApiElement[category]} {component} />
+		<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 	</article>
 {:else}
 	<header class="header-page">
@@ -44,9 +39,7 @@
 	</header>
 	<article class="l:sidebar xs align:end">
 		<main class={`l:main card:xl md inset ${appSettings}`}>
-			<div class={`card:xl ${contextClasses}`}>
-				<svelte:component this={ApiElement[category]} {component} />
-			</div>
+			<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 		</main>
 		<aside class="l:side">
 			<Api {title} {category} />
