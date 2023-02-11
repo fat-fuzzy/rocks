@@ -147,12 +147,12 @@ export const app: AppOptions = {
 export const shared: SharedOptions = {
 	context: {
 		name: 'Context',
-		layout: 'stack',
+		layout: 'switcher',
 		items: [
 			{
 				name: 'Container',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
 					{id: 'center', text: 'center', asset: ''},
@@ -160,21 +160,9 @@ export const shared: SharedOptions = {
 				],
 			},
 			{
-				name: 'Size',
-				input: 'toggle',
-				layout: 'switcher',
-				items: [
-					{id: 'xs', text: 'xs', asset: ''},
-					{id: 'sm', text: 'sm', asset: ''},
-					{id: 'md', text: 'md', asset: ''},
-					{id: 'lg', text: 'lg', asset: ''},
-					{id: 'xl', text: 'xl', asset: ''},
-				],
-			},
-			{
 				name: 'Layout',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				exclude: ['layouts', 'Button', 'Toggle'],
 				items: [
 					{id: 'stack', text: 'stack', asset: ''},
@@ -202,9 +190,21 @@ export const shared: SharedOptions = {
 				],
 			},
 			{
+				name: 'Size',
+				input: 'toggle',
+				layout: 'stack',
+				items: [
+					{id: 'xs', text: 'xs', asset: ''},
+					{id: 'sm', text: 'sm', asset: ''},
+					{id: 'md', text: 'md', asset: ''},
+					{id: 'lg', text: 'lg', asset: ''},
+					{id: 'xl', text: 'xl', asset: ''},
+				],
+			},
+			{
 				name: 'Breakpoint',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 				items: [
 					{id: 'xs', text: 'xs', asset: ''},
@@ -221,7 +221,6 @@ export const shared: SharedOptions = {
 export const blocks: BlockOptions = {
 	element: {
 		name: 'Element',
-		exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 		layout: 'switcher',
 		items: [
 			{
@@ -238,6 +237,7 @@ export const blocks: BlockOptions = {
 				name: 'Variant',
 				input: 'toggle',
 				layout: 'stack',
+				exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
 					{id: '', text: 'default', asset: ''},
 					{id: 'outline', text: 'outline', asset: ''},
