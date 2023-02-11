@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
+	import type {PageData} from './$types'
 	import {enhance} from '$app/forms'
 	import {selectedStore} from '../stores/api'
 	import format from '../utils/format'
@@ -7,7 +8,9 @@
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
-	import {API_OPTIONS} from './ui-api-options'
+	import {API_OPTIONS} from './ui-options'
+
+	export let data: PageData
 
 	export let title = ''
 	export let category = 'app'
@@ -98,10 +101,16 @@
 			value: options[key],
 		}
 	})
+	$: initialValues = Object.keys(data).reduce((values, key) => {
+		return {
+			...values,
+			...data[key],
+		}
+	}, {})
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
-	 * desktop users can use the keyboard to play the game
+	 * desktop users can use the keyboard
 	 */
 	function keydown(event: KeyboardEvent) {
 		if (event.metaKey) return
@@ -142,12 +151,13 @@
 						{#if styleFamily.items}
 							{#each styleFamily.items as styleOptions}
 								{@const {name, input, items, layout, include, exclude} = styleOptions}
+								{@const styleValue = initialValues[prop.name]}
 								{#if !include || include.indexOf(title) !== -1}
 									{#if !exclude || (exclude.indexOf(category) === -1 && exclude.indexOf(title) === -1)}
 										{#if input === 'radio' || input === 'checkbox'}
 											{@const InputComponent = COMPONENT_IMPORTS[input]}
 											{#each items as { id, ...inputProps }}
-												{@const checked = id === prop.value.name}
+												{@const checked = styleValue && id === styleValue[id]}
 												<svelte:component
 													this={InputComponent}
 													id={`${input}-${id}`}
@@ -163,10 +173,18 @@
 											{/each}
 										{/if}
 										{#if input === 'toggle'}
+											{@const updatedItems = items.map((i) => {
+												return {
+													...i,
+													text: i.text || '',
+													asset: i.asset || '',
+													pressed: styleValue && i.id === styleValue[i.id],
+												}
+											})}
 											<ToggleMenu
 												id={name.toLowerCase()}
 												title={name !== styleFamily.name ? name : ''}
-												{items}
+												items={updatedItems}
 												{layout}
 												size={apiSize}
 												{page}
@@ -201,5 +219,5 @@
 			{/if}
 		{/if}
 	{/each}
-	<button data-key="enter">Update UI</button>
+	<!-- <button data-key="enter">Update UI</button> -->
 </form>

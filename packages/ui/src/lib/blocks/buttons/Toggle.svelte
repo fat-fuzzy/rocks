@@ -13,9 +13,9 @@
 	export let name = 'toggle'
 	export let size = ''
 	export let variant = ''
-	export let initial = false
 	export let color = ''
 	export let disabled = false
+	export let pressed = false
 	export let asset = mocks.toggle.emoji // TODO: emoji OR svg
 	export let text = mocks.toggle.text
 	export let formaction = 'update'
@@ -45,8 +45,6 @@
 	}
 	let machine = createMachine(machineConfig)
 	let {state, send} = useMachine(machine)
-
-	let pressed = initial
 
 	$: classes = `${size} ${variant} ${color}`
 	$: pressed = $state.value === 'active'

@@ -6,6 +6,8 @@
 	import Layout from './Layout.svelte'
 	import {selectedStore} from '../stores/api'
 
+	export let data: PageData
+
 	export let title = ''
 	export let depth = 0
 	export let isPage = false
@@ -43,7 +45,7 @@
 			<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 		</main>
 		<aside class="l:side">
-			<Api {action} {title} {category} />
+			<Api {title} {category} {data} />
 		</aside>
 	</article>
 {/if}

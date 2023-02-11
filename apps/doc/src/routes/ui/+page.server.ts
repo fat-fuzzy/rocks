@@ -8,11 +8,11 @@ export const load = (({ cookies }) => {
 	return {
 		// App settings
 		app: uiState.app,
-		// App settings
+		// Shared styles
 		shared: uiState.shared,
-		// App settings
+		// Block styles & context
 		blocks: uiState.blocks,
-		// App settings
+		// Layout context 
 		layouts: uiState.layouts,
 	};
 }) satisfies PageServerLoad;
@@ -25,9 +25,9 @@ export const actions = {
 	update: async ({ request, cookies }) => {
 		const uiState = new UiState(cookies.get('fat-fuzzy-ui'));
 
+		// App settings
+		// TODO: set UI API form state from data
 		const data = await request.formData();
-		console.log('Update data');
-		console.log(data);
 		
 		if (!uiState.enter(data)) {
 			return fail(400, { uiStateError: true });
@@ -42,9 +42,13 @@ export const actions = {
 	enter: async ({ request, cookies }) => {
 		const uiState = new UiState(cookies.get('fat-fuzzy-ui'));
 
+		// App settings
+		// TODO: set UI API form state from data
 		const data = await request.formData();
-		console.log('Enter data');
-		console.log(data);
+		
+		if (!uiState.enter(data)) {
+			return fail(400, { uiStateError: true });
+		}
 
 		cookies.set('fat-fuzzy-ui', uiState.toString());
 	},
