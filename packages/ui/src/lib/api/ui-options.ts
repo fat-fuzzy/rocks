@@ -14,7 +14,7 @@ export enum StyleEnum {
 	layout = 'layout',
 }
 export interface ComponentProps {
-	id?: string
+	id: string
 	asset?: string
 	size?: string
 	label?: string
@@ -89,12 +89,15 @@ export interface SharedOptions extends ApiOptions {
 	context: StyleFamily
 }
 export interface BlockOptions extends ApiOptions {
-	variant: StyleFamily
-	color: StyleFamily
-	asset: StyleFamily
+	element: StyleFamily
 }
 export interface LayoutOptions extends ApiOptions {
 	content: StyleFamily
+}
+export interface ApiValues {
+	[styleFamily: string]: {
+		[style: string]: string
+	}
 }
 
 export const app: AppOptions = {
@@ -146,6 +149,16 @@ export const shared: SharedOptions = {
 		name: 'Context',
 		layout: 'switcher',
 		items: [
+			{
+				name: 'Container',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
+				items: [
+					{id: 'center', text: 'center', asset: ''},
+					{id: 'burrito', text: 'burrito', asset: ''},
+				],
+			},
 			{
 				name: 'Layout',
 				input: 'toggle',
@@ -201,40 +214,14 @@ export const shared: SharedOptions = {
 					{id: 'xl', text: 'xl', asset: ''},
 				],
 			},
-			{
-				name: 'Container',
-				input: 'toggle',
-				layout: 'switcher',
-				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
-				items: [
-					{id: 'center', text: 'center', asset: ''},
-					{id: 'text', text: 'text', asset: ''},
-					{id: 'burrito', text: 'burrito', asset: ''},
-				],
-			},
 		],
 	},
 }
 
 export const blocks: BlockOptions = {
-	variant: {
-		name: 'Variant',
-		exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
-		items: [
-			{
-				name: 'Variant',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: '', text: 'default', asset: ''},
-					{id: 'outline', text: 'outline', asset: ''},
-					{id: 'bare', text: 'bare', asset: ''},
-				],
-			},
-		],
-	},
-	color: {
-		name: 'Color',
+	element: {
+		name: 'Element',
+		layout: 'switcher',
 		items: [
 			{
 				name: 'Color',
@@ -244,6 +231,17 @@ export const blocks: BlockOptions = {
 					{id: 'primary', text: 'primary', variant: 'outline', color: 'primary', asset: ''},
 					{id: 'accent', text: 'accent', variant: 'outline', color: 'accent', asset: ''},
 					{id: 'highlight', text: 'highlight', variant: 'outline', color: 'highlight', asset: ''},
+				],
+			},
+			{
+				name: 'Variant',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+				items: [
+					{id: '', text: 'default', asset: ''},
+					{id: 'outline', text: 'outline', asset: ''},
+					{id: 'bare', text: 'bare', asset: ''},
 				],
 			},
 		],
@@ -256,10 +254,11 @@ export const blocks: BlockOptions = {
 			{
 				name: 'Emoji',
 				input: 'datalist',
+				layout: 'stack',
 				items: [
-					{id: 'idea', text: 'idea', asset: '💡'},
-					{id: 'user', text: 'user', asset: '🦁'},
-					{id: 'favorite', text: 'favorite', asset: '❤️'},
+					{id: 'eye', text: 'eye', asset: '👁️'},
+					{id: 'love', text: 'love', asset: '❤️'},
+					{id: 'cats', text: 'cats', asset: '🦁'},
 				],
 			},
 		],
@@ -310,7 +309,7 @@ export const layouts: LayoutOptions = {
 
 export const API_OPTIONS: {[target: string]: ApiOptions} = {app, shared, blocks, layouts}
 
-export const DEFAULT_OPTIONS: {[target: string]: ApiOptions} = {
+export const DEFAULT_OPTIONS: {[target: string]: ApiValues} = {
 	app: {
 		settings: {
 			brightness: 'day',
@@ -318,13 +317,15 @@ export const DEFAULT_OPTIONS: {[target: string]: ApiOptions} = {
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {
-		context: {size: 'md', breakpoint: '', layout: 'switcher', container: 'center'},
+		context: {layout: 'switcher', container: 'center', size: 'md', breakpoint: ''},
 	},
 	blocks: {
-		variant: {variant: ''},
-		color: {color: ''},
-		// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-		asset: {emoji: '✨'},
+		element: {
+			variant: '',
+			color: '',
+			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
+			emoji: '✨',
+		},
 	},
 	layouts: {
 		content: {content: 'card', side: 'card', main: 'text'},

@@ -10,13 +10,26 @@
 	const dispatch = createEventDispatcher()
 
 	export let id = 'toggle'
+	export let name = 'toggle'
 	export let size = ''
 	export let variant = ''
-	export let initial = false
 	export let color = ''
 	export let disabled = false
+	export let pressed = false
 	export let asset = mocks.toggle.emoji // TODO: emoji OR svg
 	export let text = mocks.toggle.text
+	export let formaction = 'update'
+	export let page = ''
+
+	export let onClick = (event: MouseEvent) => {
+		send('TOGGLE')
+		const payload = {
+			id,
+			pressed: $state.value === 'active',
+			send,
+		}
+		dispatch('click', payload)
+	}
 
 	let machineConfig = {
 		id: `toggle-${id}`,
@@ -33,22 +46,20 @@
 	let machine = createMachine(machineConfig)
 	let {state, send} = useMachine(machine)
 
-	let pressed = initial
-
 	$: classes = `${size} ${variant} ${color}`
 	$: pressed = $state.value === 'active'
-
-	const onClick = () => {
-		send('TOGGLE')
-		const payload = {
-			id,
-			pressed: $state.value === 'active',
-			send,
-		}
-		dispatch('toggle', payload)
-	}
 </script>
 
-<button {id} type="button" on:click={onClick} aria-pressed={pressed} class={classes} {disabled}>
+<button
+	{id}
+	data-key={`${name}-${id}`}
+	on:click|preventDefault={onClick}
+	aria-pressed={pressed}
+	class={classes}
+	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}
+	{disabled}
+	value={id}
+	{name}
+>
 	{format.formatLabel(text, asset)}
 </button>

@@ -4,7 +4,8 @@
 	import format from '../../utils/format'
 	import mocks from '../../../data/mocks'
 
-	export let id = ''
+	export let id = 'button'
+	export let name = 'button'
 	export let disabled = false
 	export let color = ''
 	export let variant = ''
@@ -14,18 +15,28 @@
 	export let align = ''
 	export let asset = mocks.button.emoji
 	export let text = mocks.button.text
-	// Event Handlers
+	export let formaction = 'enter'
+	export let page = ''
 
-	export let onClick = (event) => {
+	export let onClick = (event: MouseEvent) => {
+		console.log(event)
 		if (browser) {
 			window.alert(`${text} Clicked`)
 		}
 	}
 
-	$: buttonId = `btn-${id}`
 	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 </script>
 
-<button {id} data-test={buttonId} on:click={onClick} class={classes} {disabled}>
+<button
+	{id}
+	data-key={`${name}-${id}`}
+	on:click|preventDefault={onClick}
+	class={classes}
+	{disabled}
+	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}
+	value={id}
+	{name}
+>
 	<slot>{format.formatLabel(text, asset)}</slot>
 </button>

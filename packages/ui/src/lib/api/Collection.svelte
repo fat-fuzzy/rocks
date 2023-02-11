@@ -1,10 +1,13 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
+	import type {PageData} from './$types'
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 	import {page} from '$app/stores'
 	import {selectedStore} from '../stores/api'
+
+	export let data: PageData
 
 	export let title = ''
 	export let depth = 0
@@ -35,11 +38,11 @@
 		<section slot="main" class={`card:xl l:stack xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
-				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {data} />
 			{/each}
 		</section>
 		<aside slot="side">
-			<Api {title} {category} />
+			<Api {title} {category} {data} />
 		</aside>
 	</Sidebar>
 {:else}
@@ -49,10 +52,10 @@
 				{category}
 			</svelte:element>
 		</summary>
-		<section class={`l:stack xl card:xl inset ${classes}`}>
+		<section class={`card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
-				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {data} />
 			{/each}
 		</section>
 	</details>

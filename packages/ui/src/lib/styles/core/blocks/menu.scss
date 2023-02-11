@@ -11,6 +11,6 @@ menu > li > * {
 }
 
 .menu > p {
-	font-size: var(#{$prefix}-current-font-size);
+	font-size: var(#{$prefix}-font-size-small);
 	font-weight: var(#{$prefix}-font-weight-ui);
 }

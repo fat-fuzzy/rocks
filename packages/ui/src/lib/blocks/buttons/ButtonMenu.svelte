@@ -12,13 +12,14 @@
 	export let layout = 'switcher'
 	export let color = ''
 	export let variant = ''
-
 	export let items = mocks.menu
+	export let formaction = 'enter'
+	export let page = ''
 
 	let clicked = ''
 	let menuId = id
 
-	export let onClick = (event) => {
+	export let onClick = (event: MouseEvent) => {
 		if (browser) {
 			window.alert(`${event.target.textContent} Clicked`)
 		}
@@ -37,7 +38,15 @@
 				{@const itemColor = buttonProps.color ?? color}
 				{@const itemVariant = buttonProps.variant ?? variant}
 				<li>
-					<Button {onClick} {...buttonProps} color={itemColor} variant={itemVariant} />
+					<Button
+						{onClick}
+						name={menuId}
+						{page}
+						{formaction}
+						{...buttonProps}
+						color={itemColor}
+						variant={itemVariant}
+					/>
 				</li>
 			{/each}
 		</menu>
@@ -48,7 +57,15 @@
 			{@const itemColor = buttonProps.color ?? color}
 			{@const itemVariant = buttonProps.variant ?? variant}
 			<li>
-				<Button {onClick} {...buttonProps} color={itemColor} variant={itemVariant} />
+				<Button
+					{onClick}
+					name={menuId}
+					{page}
+					{formaction}
+					{...buttonProps}
+					color={itemColor}
+					variant={itemVariant}
+				/>
 			</li>
 		{/each}
 	</menu>

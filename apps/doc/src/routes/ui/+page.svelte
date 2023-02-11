@@ -1,6 +1,12 @@
 <script lang="ts">
+	import type {PageData, ActionData} from './$types'
 	import {page} from '$app/stores'
 	import {blocks, layouts, api} from '@fat-fuzzy/ui'
+
+	export let data: PageData
+
+	export let form: ActionData
+
 	const {Collection, Api} = api
 	const {Sidebar} = layouts
 
@@ -31,11 +37,12 @@
 				path={`${path}/${category}`}
 				components={items}
 				{category}
+				{data}
 			/>
 		{/each}
 	</main>
 
 	<aside slot="side">
-		<Api {title} category="app" />
+		<Api {title} category="app" {data} />
 	</aside>
 </Sidebar>

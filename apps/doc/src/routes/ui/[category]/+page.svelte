@@ -1,7 +1,10 @@
 <script lang="ts">
+	import type {PageData} from './$types'
 	import {page} from '$app/stores'
 	import {blocks, layouts, api} from '@fat-fuzzy/ui'
 	const {Collection} = api
+
+	export let data: PageData
 
 	$: category = $page.params.category
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
@@ -18,4 +21,4 @@
 	<h1>{title}</h1>
 </header>
 
-<Collection {title} depth="1" isPage={true} {components} {path} {category} />
+<Collection {title} depth="1" isPage={true} {components} {path} {category} {data} />

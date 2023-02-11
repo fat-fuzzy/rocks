@@ -1,7 +1,10 @@
 <script lang="ts">
+	import type {PageData} from './$types'
 	import {page} from '$app/stores'
 	import type {ComponentType} from 'svelte'
 	import {api} from '@fat-fuzzy/ui'
+
+	export let data: PageData
 
 	let {Element} = api
 
@@ -20,4 +23,4 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<Element isPage={true} depth="1" {title} {path} {category} component={Component} />
+<Element isPage={true} depth="1" {title} {path} {category} component={Component} {data} />
