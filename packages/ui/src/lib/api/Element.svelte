@@ -11,6 +11,7 @@
 	export let isPage = false
 	export let path = ''
 	export let component: ComponentType
+	export let action = 'enter'
 
 	export let category = $page.params.category || 'app'
 
@@ -42,7 +43,7 @@
 			<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 		</main>
 		<aside class="l:side">
-			<Api {title} {category} />
+			<Api {action} {title} {category} />
 		</aside>
 	</article>
 {/if}

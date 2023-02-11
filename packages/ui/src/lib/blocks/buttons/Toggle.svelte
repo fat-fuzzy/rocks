@@ -10,6 +10,7 @@
 	const dispatch = createEventDispatcher()
 
 	export let id = 'toggle'
+	export let key = 'toggle'
 	export let size = ''
 	export let variant = ''
 	export let initial = false
@@ -17,9 +18,8 @@
 	export let disabled = false
 	export let asset = mocks.toggle.emoji // TODO: emoji OR svg
 	export let text = mocks.toggle.text
-	export let onClick = (event: MouseEvent) => {
-		console.log(event)
 
+	export let onClick = (event: MouseEvent) => {
 		send('TOGGLE')
 		const payload = {
 			id,
@@ -53,6 +53,7 @@
 <button
 	{id}
 	type="button"
+	data-key={key}
 	on:click|preventDefault={onClick}
 	aria-pressed={pressed}
 	class={classes}

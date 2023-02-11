@@ -19,7 +19,6 @@
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
 
 	const onClick = (event: MouseEvent) => {
-		console.log(event)
 		if (multiple) {
 			if (event.detail.pressed) {
 				selected = [...selected, event.detail]

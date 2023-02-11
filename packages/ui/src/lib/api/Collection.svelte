@@ -6,6 +6,7 @@
 	import {page} from '$app/stores'
 	import {selectedStore} from '../stores/api'
 
+	export let action = 'enter'
 	export let title = ''
 	export let depth = 0
 	export let path = ''
@@ -39,7 +40,7 @@
 			{/each}
 		</section>
 		<aside slot="side">
-			<Api {title} {category} />
+			<Api {action} {title} {category} />
 		</aside>
 	</Sidebar>
 {:else}

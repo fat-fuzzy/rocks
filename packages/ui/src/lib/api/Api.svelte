@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
+	import {enhance} from '$app/forms'
 	import {selectedStore} from '../stores/api'
 	import format from '../utils/format'
 	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
@@ -9,7 +10,10 @@
 	import {API_OPTIONS} from '../api/options'
 
 	export let title = ''
-	export let category: string
+	export let category = 'app'
+	export let method = 'POST'
+	export let action = 'enter'
+
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
@@ -96,7 +100,18 @@
 	// TODO: try co clean this code 👇 some more
 </script>
 
-<form on:submit|preventDefault class={`l:${apiLayout}`}>
+<form
+	{method}
+	action={`?/${action}`}
+	use:enhance={() => {
+		// prevent default callback from resetting the form
+		return ({update}) => {
+			// this update function comes from +page.server.ts
+			update({reset: false})
+		}
+	}}
+	class={`l:${apiLayout}`}
+>
 	{#each initialOptions as prop}
 		{#if options[prop.name]}
 			{@const styleFamily = options[prop.name]}
