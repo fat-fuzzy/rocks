@@ -38,7 +38,7 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<RevealNav {title} id="nav-page" {items} {path} breakpoint="xs" size="md" />
+		<RevealNav {title} id="nav-page" {items} {path} breakpoint="md" size="md" />
 	</svelte:fragment>
 	<svelte:fragment slot="main">
 		<slot />

@@ -27,10 +27,10 @@
 </script>
 
 {#if !isPage}
-	<a class="primary" href={`${path}/${title}`}>
-		<svelte:element this={`h${String(depth)}`} class="font:sm">{title} API 🔗</svelte:element>
-	</a>
-	<article class="l:stack md">
+	<article class="l:stack card:xl md">
+		<a class="primary" href={`${path}/${title}`}>
+			<svelte:element this={`h${String(depth)}`} class="font:sm">{title} API 🔗</svelte:element>
+		</a>
 		<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 	</article>
 {:else}

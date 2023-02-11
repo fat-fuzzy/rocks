@@ -21,19 +21,19 @@ nav li {
 }
 
 nav li a {
-	text-decoration: none;
 	max-width: 100%;
-	display: inline-block;
-	font-size: var(#{$prefix}-font-size-md);
+	font-size: var(#{$prefix}-font-size-ui);
+	font-weight: var(#{$prefix}-font-weight-semibold);
 	line-height: 1;
 	text-overflow: ellipsis; // TODO: find out why I need to repeat ellipsis in <li> and <a>
 	overflow: hidden;
+	text-decoration: none;
 }
 
 nav li a,
 nav li a:visited {
 	color: var(#{$prefix}-current-color);
-	font-weight: var(#{$prefix}-font-weight-medium);
+	font-weight: var(#{$prefix}-font-weight-semibold);
 }
 
 nav a:hover {
@@ -66,9 +66,12 @@ ul[class*='depth-'] * + ul {
 }
 
 // Active Link
-nav li[aria-current='page'] a {
+nav li[aria-current='page'] a,
+nav li[aria-current='page'] a:visited {
 	color: var(#{$prefix}-current-primary);
 	font-weight: var(#{$prefix}-font-weight-semibold);
+	text-decoration: none;
+	text-decoration-color: var(#{$prefix}-current-gray);
 }
 
 // override Active Link styles for top level link
@@ -104,6 +107,7 @@ ul.depth-0 > li > a {
 
 .header-app > nav li[aria-current='page'] a {
 	color: var(#{$prefix}-current-primary);
+	text-decoration: none;
 }
 
 .header-app > nav li[aria-current='page']::before {

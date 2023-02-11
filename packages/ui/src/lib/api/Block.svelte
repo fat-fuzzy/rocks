@@ -12,6 +12,6 @@
 	$: contextClasses = `${container} ${layout} ${breakpoint} ${size}`
 </script>
 
-<div class={`card:xl ${contextClasses}`}>
+<div class={`${contextClasses}`}>
 	<svelte:component this={component} id={title} {...$selected} />
 </div>

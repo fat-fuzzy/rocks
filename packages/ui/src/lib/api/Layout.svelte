@@ -18,7 +18,7 @@
 	$: contextClasses = `${container} ${layout} ${breakpoint} ${size}`
 </script>
 
-<div class={`card ${contextClasses}`}>
+<div class={`${contextClasses}`}>
 	{#if !isPage}
 		{#if title === 'Sidebar'}
 			<svelte:component this={component} id={title} {...$selected}>
