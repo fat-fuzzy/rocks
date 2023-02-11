@@ -11,6 +11,9 @@
 // TODO: not sure this rule is necessary
 .l\:sidebar.end {
 	flex-direction: row-reverse;
+}
+// TODO: not sure this rule is necessary
+.l\:sidebar.end\:reverse {
 	flex-wrap: wrap-reverse;
 }
 
