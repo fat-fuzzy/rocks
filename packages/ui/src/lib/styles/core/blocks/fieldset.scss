@@ -2,18 +2,17 @@ fieldset {
 	border-radius: var(#{$prefix}-radius-base);
 	border: 1px solid var(#{$prefix}-current-gray);
 	> legend {
-		font-size: var(#{$prefix}-current-font-size);
+		font-size: var(#{$prefix}-font-size-ui);
 		font-weight: var(#{$prefix}-font-weight-ui);
 	}
 	> p {
-		font-size: var(#{$prefix}-current-font-size);
+		font-size: var(#{$prefix}-font-size-small);
 		font-weight: var(#{$prefix}-font-weight-ui);
 	}
 }
 
 fieldset {
-	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus)
-		var(#{$prefix}-current-size-plus);
+	padding: 0 var(#{$prefix}-current-size-plus) var(#{$prefix}-current-size-plus);
 	> * + * {
 		margin-block-start: var(#{$prefix}-current-size);
 	}

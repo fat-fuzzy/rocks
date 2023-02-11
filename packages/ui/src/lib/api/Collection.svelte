@@ -49,7 +49,7 @@
 				{category}
 			</svelte:element>
 		</summary>
-		<section class={`l:stack xl card:xl inset ${classes}`}>
+		<section class={`card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />

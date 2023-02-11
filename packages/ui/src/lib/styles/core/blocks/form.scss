@@ -75,7 +75,7 @@ textarea {
 .xxs,
 .xs {
 	legend {
-		font-size: var(#{$prefix}-font-size-sm);
+		font-size: var(#{$prefix}-font-size-xs);
 		margin-block-end: var(#{$prefix}-size-xs);
 	}
 
@@ -87,7 +87,7 @@ textarea {
 	}
 
 	label {
-		font-size: var(#{$prefix}-font-size-xs);
+		font-size: var(#{$prefix}-font-size-xxs);
 	}
 
 	.feedback {
@@ -96,7 +96,7 @@ textarea {
 	}
 
 	.link {
-		padding: var(#{$prefix}-size-xs);
+		padding: var(#{$prefix}-size-xxs);
 	}
 
 	.link,
@@ -120,19 +120,19 @@ textarea {
 
 .sm {
 	legend {
-		font-size: var(#{$prefix}-font-size-h5);
+		font-size: var(#{$prefix}-font-size-sm);
 		margin-block-end: var(#{$prefix}-size-sm);
 	}
 
 	input,
 	select,
 	textarea {
-		font-size: var(#{$prefix}-font-size-sm);
+		font-size: var(#{$prefix}-font-size-xs);
 		padding: var(#{$prefix}-size-sm) var(#{$prefix}-size-md);
 	}
 
 	label {
-		font-size: var(#{$prefix}-font-size-sm);
+		font-size: var(#{$prefix}-font-size-xs);
 	}
 
 	.feedback {
@@ -153,19 +153,19 @@ textarea {
 
 .md {
 	legend {
-		font-size: var(#{$prefix}-font-size-h4);
+		font-size: var(#{$prefix}-font-size-md);
 		margin-block-end: var(#{$prefix}-size-md);
 	}
 
 	input,
 	select,
 	textarea {
-		font-size: var(#{$prefix}-font-size-md);
+		font-size: var(#{$prefix}-font-size-sm);
 		padding: var(#{$prefix}-size-md) var(#{$prefix}-size-lg);
 	}
 
 	label {
-		font-size: var(#{$prefix}-font-size-md);
+		font-size: var(#{$prefix}-font-size-sm);
 	}
 
 	.feedback {
@@ -186,7 +186,7 @@ textarea {
 
 .lg {
 	legend {
-		font-size: var(#{$prefix}-font-size-h3);
+		font-size: var(#{$prefix}-font-size-lg);
 		margin-block-end: var(#{$prefix}-size-lg);
 	}
 
@@ -194,12 +194,12 @@ textarea {
 	// button,
 	select,
 	textarea {
-		font-size: var(#{$prefix}-font-size-lg);
+		font-size: var(#{$prefix}-font-size-md);
 		padding: var(#{$prefix}-size-lg) var(#{$prefix}-size-xl);
 	}
 
 	label {
-		font-size: var(#{$prefix}-font-size-lg);
+		font-size: var(#{$prefix}-font-size-md);
 	}
 
 	.feedback {
@@ -220,19 +220,19 @@ textarea {
 
 .xl {
 	legend {
-		font-size: var(#{$prefix}-font-size-h2);
+		font-size: var(#{$prefix}-font-size-xl);
 		margin-block-end: var(#{$prefix}-size-xl);
 	}
 
 	input,
 	select,
 	textarea {
-		font-size: var(#{$prefix}-font-size-xl);
+		font-size: var(#{$prefix}-font-size-lg);
 		padding: var(#{$prefix}-size-xl) var(#{$prefix}-size-xxl);
 	}
 
 	label {
-		font-size: var(#{$prefix}-font-size-xl);
+		font-size: var(#{$prefix}-font-size-lg);
 	}
 
 	.feedback {
@@ -241,7 +241,7 @@ textarea {
 	}
 
 	.link {
-		padding: var(#{$prefix}-size-xl);
+		padding: var(#{$prefix}-size-lg);
 	}
 
 	.link,

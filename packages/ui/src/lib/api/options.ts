@@ -89,9 +89,7 @@ export interface SharedOptions extends ApiOptions {
 	context: StyleFamily
 }
 export interface BlockOptions extends ApiOptions {
-	variant: StyleFamily
-	color: StyleFamily
-	asset: StyleFamily
+	element: StyleFamily
 }
 export interface LayoutOptions extends ApiOptions {
 	content: StyleFamily
@@ -144,12 +142,34 @@ export const app: AppOptions = {
 export const shared: SharedOptions = {
 	context: {
 		name: 'Context',
-		layout: 'switcher',
+		layout: 'stack',
 		items: [
+			{
+				name: 'Container',
+				input: 'toggle',
+				layout: 'switcher',
+				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
+				items: [
+					{id: 'center', text: 'center', asset: ''},
+					{id: 'burrito', text: 'burrito', asset: ''},
+				],
+			},
+			{
+				name: 'Size',
+				input: 'toggle',
+				layout: 'switcher',
+				items: [
+					{id: 'xs', text: 'xs', asset: ''},
+					{id: 'sm', text: 'sm', asset: ''},
+					{id: 'md', text: 'md', asset: ''},
+					{id: 'lg', text: 'lg', asset: ''},
+					{id: 'xl', text: 'xl', asset: ''},
+				],
+			},
 			{
 				name: 'Layout',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'switcher',
 				exclude: ['layouts', 'Button', 'Toggle'],
 				items: [
 					{id: 'stack', text: 'stack', asset: ''},
@@ -177,21 +197,9 @@ export const shared: SharedOptions = {
 				],
 			},
 			{
-				name: 'Size',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'xs', text: 'xs', asset: ''},
-					{id: 'sm', text: 'sm', asset: ''},
-					{id: 'md', text: 'md', asset: ''},
-					{id: 'lg', text: 'lg', asset: ''},
-					{id: 'xl', text: 'xl', asset: ''},
-				],
-			},
-			{
 				name: 'Breakpoint',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'switcher',
 				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 				items: [
 					{id: 'xs', text: 'xs', asset: ''},
@@ -201,26 +209,26 @@ export const shared: SharedOptions = {
 					{id: 'xl', text: 'xl', asset: ''},
 				],
 			},
-			{
-				name: 'Container',
-				input: 'toggle',
-				layout: 'switcher',
-				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
-				items: [
-					{id: 'center', text: 'center', asset: ''},
-					{id: 'text', text: 'text', asset: ''},
-					{id: 'burrito', text: 'burrito', asset: ''},
-				],
-			},
 		],
 	},
 }
 
 export const blocks: BlockOptions = {
-	variant: {
-		name: 'Variant',
+	element: {
+		name: 'Element',
 		exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+		layout: 'switcher',
 		items: [
+			{
+				name: 'Color',
+				input: 'toggle',
+				layout: 'stack',
+				items: [
+					{id: 'primary', text: 'primary', variant: 'outline', color: 'primary', asset: ''},
+					{id: 'accent', text: 'accent', variant: 'outline', color: 'accent', asset: ''},
+					{id: 'highlight', text: 'highlight', variant: 'outline', color: 'highlight', asset: ''},
+				],
+			},
 			{
 				name: 'Variant',
 				input: 'toggle',
@@ -233,21 +241,6 @@ export const blocks: BlockOptions = {
 			},
 		],
 	},
-	color: {
-		name: 'Color',
-		items: [
-			{
-				name: 'Color',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'primary', text: 'primary', variant: 'outline', color: 'primary', asset: ''},
-					{id: 'accent', text: 'accent', variant: 'outline', color: 'accent', asset: ''},
-					{id: 'highlight', text: 'highlight', variant: 'outline', color: 'highlight', asset: ''},
-				],
-			},
-		],
-	},
 	asset: {
 		name: 'Asset',
 		exclude: ['ButtonMenu', 'ToggleMenu', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
@@ -256,10 +249,11 @@ export const blocks: BlockOptions = {
 			{
 				name: 'Emoji',
 				input: 'datalist',
+				layout: 'stack',
 				items: [
-					{id: 'idea', text: 'idea', asset: '💡'},
-					{id: 'user', text: 'user', asset: '🦁'},
-					{id: 'favorite', text: 'favorite', asset: '❤️'},
+					{id: 'eye', text: 'eye', asset: '👁️'},
+					{id: 'love', text: 'love', asset: '❤️'},
+					{id: 'cats', text: 'cats', asset: '🦁'},
 				],
 			},
 		],
@@ -318,13 +312,15 @@ export const DEFAULT_OPTIONS: {[target: string]: ApiOptions} = {
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {
-		context: {size: 'md', breakpoint: '', layout: 'switcher', container: 'center'},
+		context: {layout: 'switcher', container: 'center', size: 'md', breakpoint: ''},
 	},
 	blocks: {
-		variant: {variant: ''},
-		color: {color: ''},
-		// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-		asset: {emoji: '✨'},
+		element: {
+			variant: '',
+			color: '',
+			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
+			emoji: '✨',
+		},
 	},
 	layouts: {
 		content: {content: 'card', side: 'card', main: 'text'},

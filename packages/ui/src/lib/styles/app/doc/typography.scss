@@ -78,15 +78,15 @@ $typography: (
 	font-size-body: var(#{$prefix}-fluid-0),
 	font-size-code: var(#{$prefix}-fluid-0),
 	font-size-ui: var(#{$prefix}-fluid-0),
-	font-size-small: var(#{$prefix}-fluid--2),
+	font-size-small: var(#{$prefix}-fluid--1),
 	//
-	font-size-xxl: var(#{$prefix}-font-size-h1),
-	font-size-xl: var(#{$prefix}-font-size-h2),
-	font-size-lg: var(#{$prefix}-font-size-h3),
-	font-size-md: var(#{$prefix}-font-size-h4),
-	font-size-sm: var(#{$prefix}-font-size-h5),
-	font-size-xs: var(#{$prefix}-font-size-body),
-	font-size-xxs: var(#{$prefix}-font-size-small),
+	font-size-xxl: var(#{$prefix}-fluid-4),
+	font-size-xl: var(#{$prefix}-fluid-3),
+	font-size-lg: var(#{$prefix}-fluid-2),
+	font-size-md: var(#{$prefix}-fluid-1),
+	font-size-sm: var(#{$prefix}-fluid-0),
+	font-size-xs: var(#{$prefix}-fluid--1),
+	font-size-xxs: var(#{$prefix}-fluid--2),
 	// == Font color
 	font-color-base: var(#{$prefix}-color-dark)
 );

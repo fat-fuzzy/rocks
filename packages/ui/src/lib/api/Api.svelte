@@ -142,20 +142,22 @@
 											/>
 										{/if}
 										{#if input === 'datalist'}
-											<label for={`choice-${name}`}>{`Select ${name}`}</label>
-											<input
-												list={`items-${name}`}
-												id={`choice-${name}`}
-												{name}
-												on:input={(event) => handleSelect(event, styleFamily.name)}
-											/>
-											<datalist id={`items-${name}`}>
-												{#each items as { id, text, asset }}
-													<option {id} value={asset}>
-														{format.formatLabel(text || '', asset)}
-													</option>
-												{/each}
-											</datalist>
+											<label for={`choice-${name}`} class="l:stack">
+												{`Select ${name}`}
+												<input
+													list={`items-${name}`}
+													id={`choice-${name}`}
+													{name}
+													on:input={(event) => handleSelect(event, styleFamily.name)}
+												/>
+												<datalist id={`items-${name}`}>
+													{#each items as { id, text, asset }}
+														<option {id} value={asset}>
+															{format.formatLabel(text || '', asset)}
+														</option>
+													{/each}
+												</datalist>
+											</label>
 										{/if}
 									{/if}
 								{/if}
