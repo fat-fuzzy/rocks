@@ -41,7 +41,7 @@
 				},
 			],
 		}
-		updateSelected(payload, name.toLowerCase())
+		updateSelected(payload)
 	}
 
 	function handleSelect(event, name) {
@@ -55,7 +55,7 @@
 				},
 			],
 		}
-		updateSelected(payload, name.toLowerCase())
+		updateSelected(payload)
 	}
 
 	function handleToggle(event, name, id) {
@@ -71,7 +71,7 @@
 					},
 				],
 			}
-			updateSelected(payload, name.toLowerCase())
+			updateSelected(payload)
 		}
 	}
 
@@ -138,7 +138,7 @@
 												{items}
 												{layout}
 												size={apiSize}
-												on:changed={(event) => handleToggle(event, styleFamily.name, name)}
+												on:click={(event) => handleToggle(event, styleFamily.name, name)}
 											/>
 										{/if}
 										{#if input === 'datalist'}

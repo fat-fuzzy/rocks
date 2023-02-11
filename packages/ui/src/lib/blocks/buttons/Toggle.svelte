@@ -17,6 +17,17 @@
 	export let disabled = false
 	export let asset = mocks.toggle.emoji // TODO: emoji OR svg
 	export let text = mocks.toggle.text
+	export let onClick = (event: MouseEvent) => {
+		console.log(event)
+
+		send('TOGGLE')
+		const payload = {
+			id,
+			pressed: $state.value === 'active',
+			send,
+		}
+		dispatch('click', payload)
+	}
 
 	let machineConfig = {
 		id: `toggle-${id}`,
@@ -37,18 +48,15 @@
 
 	$: classes = `${size} ${variant} ${color}`
 	$: pressed = $state.value === 'active'
-
-	const onClick = () => {
-		send('TOGGLE')
-		const payload = {
-			id,
-			pressed: $state.value === 'active',
-			send,
-		}
-		dispatch('toggle', payload)
-	}
 </script>
 
-<button {id} type="button" on:click={onClick} aria-pressed={pressed} class={classes} {disabled}>
+<button
+	{id}
+	type="button"
+	on:click|preventDefault={onClick}
+	aria-pressed={pressed}
+	class={classes}
+	{disabled}
+>
 	{format.formatLabel(text, asset)}
 </button>

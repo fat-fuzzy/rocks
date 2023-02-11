@@ -12,13 +12,12 @@
 	export let layout = 'switcher'
 	export let color = ''
 	export let variant = ''
-
 	export let items = mocks.menu
 
 	let clicked = ''
 	let menuId = id
 
-	export let onClick = (event) => {
+	export let onClick = (event: MouseEvent) => {
 		if (browser) {
 			window.alert(`${event.target.textContent} Clicked`)
 		}

@@ -14,9 +14,8 @@
 	export let align = ''
 	export let asset = mocks.button.emoji
 	export let text = mocks.button.text
-	// Event Handlers
-
-	export let onClick = (event) => {
+	export let onClick = (event: MouseEvent) => {
+		console.log(event)
 		if (browser) {
 			window.alert(`${text} Clicked`)
 		}
@@ -26,6 +25,6 @@
 	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 </script>
 
-<button {id} data-test={buttonId} on:click={onClick} class={classes} {disabled}>
+<button {id} data-test={buttonId} on:click|preventDefault={onClick} class={classes} {disabled}>
 	<slot>{format.formatLabel(text, asset)}</slot>
 </button>

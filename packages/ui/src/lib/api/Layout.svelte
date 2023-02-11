@@ -8,9 +8,9 @@
 	export let component: ComponentType
 
 	$: selected = $selectedStore
-	$: content = $selected.content?.content ?? 'card'
-	$: sideContent = $selected.content?.side ?? 'card'
-	$: mainContent = $selected.content?.main ?? 'text'
+	$: content = $selected.content ?? 'card'
+	$: sideContent = $selected.side ?? 'card'
+	$: mainContent = $selected.main ?? 'text'
 	$: size = $selected.size ?? ''
 	$: container = $selected.container ? `l:${$selected.container} inset` : ''
 	$: layout = $selected.layout ? `l:${$selected.layout}` : ''

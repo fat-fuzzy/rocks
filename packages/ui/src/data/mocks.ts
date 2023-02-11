@@ -43,9 +43,9 @@ const menu = [
 ]
 
 const toggleMenu = [
-	{id: 'idea', text: 'Idea', type: 'button', asset: '💡'},
-	{id: 'profile', text: 'Profile', type: 'button', asset: '🦁'},
-	{id: 'favorite', text: 'Favorite', type: 'button', asset: '❤️'},
+	{id: 'idea', text: 'Idea', asset: '💡'},
+	{id: 'profile', text: 'Profile', asset: '🦁'},
+	{id: 'favorite', text: 'Favorite', asset: '❤️'},
 ]
 
 const radio = [

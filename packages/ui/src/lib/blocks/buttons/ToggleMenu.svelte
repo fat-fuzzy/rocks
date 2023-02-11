@@ -18,7 +18,8 @@
 	const menuId = id
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
 
-	export let onToggle = (event) => {
+	const onClick = (event: MouseEvent) => {
+		console.log(event)
 		if (multiple) {
 			if (event.detail.pressed) {
 				selected = [...selected, event.detail]
@@ -35,7 +36,7 @@
 			}
 			selected = [event.detail]
 		}
-		dispatch('changed', {
+		dispatch('click', {
 			selected,
 		})
 	}
@@ -49,7 +50,7 @@
 				{@const itemColor = toggleProps.color ?? color}
 				{@const itemVariant = toggleProps.variant ?? variant}
 				<li>
-					<Toggle on:toggle={onToggle} {...toggleProps} color={itemColor} variant={itemVariant} />
+					<Toggle on:click={onClick} {...toggleProps} color={itemColor} variant={itemVariant} />
 				</li>
 			{/each}
 		</menu>
@@ -60,7 +61,7 @@
 			{@const itemColor = toggleProps.color ?? color}
 			{@const itemVariant = toggleProps.variant ?? variant}
 			<li>
-				<Toggle on:toggle={onToggle} {...toggleProps} color={itemColor} variant={itemVariant} />
+				<Toggle on:click={onClick} {...toggleProps} color={itemColor} variant={itemVariant} />
 			</li>
 		{/each}
 	</menu>

@@ -94,6 +94,11 @@ export interface BlockOptions extends ApiOptions {
 export interface LayoutOptions extends ApiOptions {
 	content: StyleFamily
 }
+export interface ApiValues {
+	[styleFamily: string]: {
+		[style: string]: string
+	}
+}
 
 export const app: AppOptions = {
 	settings: {
@@ -304,7 +309,7 @@ export const layouts: LayoutOptions = {
 
 export const API_OPTIONS: {[target: string]: ApiOptions} = {app, shared, blocks, layouts}
 
-export const DEFAULT_OPTIONS: {[target: string]: ApiOptions} = {
+export const DEFAULT_OPTIONS: {[target: string]: ApiValues} = {
 	app: {
 		settings: {
 			brightness: 'day',
