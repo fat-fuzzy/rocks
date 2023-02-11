@@ -18,6 +18,8 @@
 	export let disabled = false
 	export let asset = mocks.toggle.emoji // TODO: emoji OR svg
 	export let text = mocks.toggle.text
+	export let formaction = 'enter'
+	export let page = ''
 
 	export let onClick = (event: MouseEvent) => {
 		send('TOGGLE')
@@ -52,11 +54,11 @@
 
 <button
 	{id}
-	type="button"
 	data-key={key}
 	on:click|preventDefault={onClick}
 	aria-pressed={pressed}
 	class={classes}
+	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}
 	{disabled}
 >
 	{format.formatLabel(text, asset)}

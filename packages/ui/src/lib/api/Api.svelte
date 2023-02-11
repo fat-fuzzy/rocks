@@ -11,8 +11,11 @@
 
 	export let title = ''
 	export let category = 'app'
+	export let page = 'ui'
 	export let method = 'POST'
-	export let action = 'enter'
+	export let enter = 'enter'
+	export let update = 'update'
+	export let reset = 'reset'
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -95,14 +98,13 @@
 			value: options[key],
 		}
 	})
-
 	// TODO: select default options in form
 	// TODO: try co clean this code 👇 some more
 </script>
 
 <form
 	{method}
-	action={`?/${action}`}
+	action={page ? `/${page}?/${enter}` : `?/${enter}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
@@ -153,6 +155,8 @@
 												{items}
 												{layout}
 												size={apiSize}
+												{page}
+												formaction={update}
 												on:click={(event) => handleToggle(event, styleFamily.name, name)}
 											/>
 										{/if}
@@ -183,4 +187,5 @@
 			{/if}
 		{/if}
 	{/each}
+	<button data-key="enter">Update UI</button>
 </form>

@@ -25,10 +25,10 @@ export class UiState {
 			this.layouts = layouts
 		} else {
 		
-			this.app = '';
-			this.shared = ''
-			this.blocks = ''
-			this.layouts = ''
+			this.app = 'app';
+			this.shared = 'shared'
+			this.blocks = 'blocks'
+			this.layouts = 'layouts'
 		}
 	}
 

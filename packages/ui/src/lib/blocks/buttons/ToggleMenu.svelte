@@ -14,6 +14,8 @@
 	export let variant = ''
 	export let multiple = false
 	export let items = mocks.toggleMenu
+	export let formaction = 'enter'
+	export let page = ''
 
 	const menuId = id
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
@@ -49,7 +51,14 @@
 				{@const itemColor = toggleProps.color ?? color}
 				{@const itemVariant = toggleProps.variant ?? variant}
 				<li>
-					<Toggle on:click={onClick} {...toggleProps} color={itemColor} variant={itemVariant} />
+					<Toggle
+						on:click={onClick}
+						{formaction}
+						{page}
+						{...toggleProps}
+						color={itemColor}
+						variant={itemVariant}
+					/>
 				</li>
 			{/each}
 		</menu>
@@ -60,7 +69,14 @@
 			{@const itemColor = toggleProps.color ?? color}
 			{@const itemVariant = toggleProps.variant ?? variant}
 			<li>
-				<Toggle on:click={onClick} {...toggleProps} color={itemColor} variant={itemVariant} />
+				<Toggle
+					on:click={onClick}
+					{formaction}
+					{page}
+					{...toggleProps}
+					color={itemColor}
+					variant={itemVariant}
+				/>
 			</li>
 		{/each}
 	</menu>
