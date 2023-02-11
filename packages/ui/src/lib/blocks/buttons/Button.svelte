@@ -4,7 +4,8 @@
 	import format from '../../utils/format'
 	import mocks from '../../../data/mocks'
 
-	export let id = ''
+	export let id = 'button'
+	export let name = 'button'
 	export let disabled = false
 	export let color = ''
 	export let variant = ''
@@ -24,17 +25,18 @@
 		}
 	}
 
-	$: buttonId = `btn-${id}`
 	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 </script>
 
 <button
 	{id}
-	data-test={buttonId}
+	data-key={`${name}-${id}`}
 	on:click|preventDefault={onClick}
 	class={classes}
 	{disabled}
 	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}
+	value={id}
+	{name}
 >
 	<slot>{format.formatLabel(text, asset)}</slot>
 </button>

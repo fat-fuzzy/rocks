@@ -10,7 +10,7 @@
 	const dispatch = createEventDispatcher()
 
 	export let id = 'toggle'
-	export let key = 'toggle'
+	export let name = 'toggle'
 	export let size = ''
 	export let variant = ''
 	export let initial = false
@@ -18,7 +18,7 @@
 	export let disabled = false
 	export let asset = mocks.toggle.emoji // TODO: emoji OR svg
 	export let text = mocks.toggle.text
-	export let formaction = 'enter'
+	export let formaction = 'update'
 	export let page = ''
 
 	export let onClick = (event: MouseEvent) => {
@@ -54,12 +54,14 @@
 
 <button
 	{id}
-	data-key={key}
+	data-key={`${name}-${id}`}
 	on:click|preventDefault={onClick}
 	aria-pressed={pressed}
 	class={classes}
 	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}
 	{disabled}
+	value={id}
+	{name}
 >
 	{format.formatLabel(text, asset)}
 </button>

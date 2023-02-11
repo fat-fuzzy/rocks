@@ -14,7 +14,7 @@
 	export let variant = ''
 	export let multiple = false
 	export let items = mocks.toggleMenu
-	export let formaction = 'enter'
+	export let formaction = 'update'
 	export let page = ''
 
 	const menuId = id
@@ -53,6 +53,7 @@
 				<li>
 					<Toggle
 						on:click={onClick}
+						name={menuId}
 						{formaction}
 						{page}
 						{...toggleProps}
@@ -71,6 +72,7 @@
 			<li>
 				<Toggle
 					on:click={onClick}
+					name={menuId}
 					{formaction}
 					{page}
 					{...toggleProps}

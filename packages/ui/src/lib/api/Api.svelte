@@ -7,7 +7,7 @@
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
-	import {API_OPTIONS} from '../api/options'
+	import {API_OPTIONS} from './ui-api-options'
 
 	export let title = ''
 	export let category = 'app'
@@ -98,9 +98,23 @@
 			value: options[key],
 		}
 	})
+
+	/**
+	 * Trigger form logic in response to a keydown event, so that
+	 * desktop users can use the keyboard to play the game
+	 */
+	function keydown(event: KeyboardEvent) {
+		if (event.metaKey) return
+
+		document
+			.querySelector(`[data-key="${event.key}" i]`)
+			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
+	}
 	// TODO: select default options in form
 	// TODO: try co clean this code 👇 some more
 </script>
+
+<svelte:window on:keydown={keydown} />
 
 <form
 	{method}
@@ -150,7 +164,7 @@
 										{/if}
 										{#if input === 'toggle'}
 											<ToggleMenu
-												id={name}
+												id={name.toLowerCase()}
 												title={name !== styleFamily.name ? name : ''}
 												{items}
 												{layout}

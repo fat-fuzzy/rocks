@@ -40,6 +40,7 @@
 				<li>
 					<Button
 						{onClick}
+						name={menuId}
 						{page}
 						{formaction}
 						{...buttonProps}
@@ -58,6 +59,7 @@
 			<li>
 				<Button
 					{onClick}
+					name={menuId}
 					{page}
 					{formaction}
 					{...buttonProps}

@@ -14,7 +14,7 @@ export enum StyleEnum {
 	layout = 'layout',
 }
 export interface ComponentProps {
-	id?: string
+	id: string
 	asset?: string
 	size?: string
 	label?: string
