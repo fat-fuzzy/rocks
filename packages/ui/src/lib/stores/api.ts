@@ -1,5 +1,5 @@
 import {readable, writable, derived} from 'svelte/store'
-import {API_OPTIONS, DEFAULT_OPTIONS} from '../api/ui-options'
+import {API_OPTIONS, DEFAULT_OPTIONS} from '../api/style-api'
 
 // Initial values
 

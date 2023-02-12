@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {PageData} from './$types'
 	import type {ComponentType} from 'svelte'
 	import {page} from '$app/stores'
 	import Api from './Api.svelte'
@@ -13,7 +14,6 @@
 	export let isPage = false
 	export let path = ''
 	export let component: ComponentType
-	export let action = 'enter'
 
 	export let category = $page.params.category || 'app'
 

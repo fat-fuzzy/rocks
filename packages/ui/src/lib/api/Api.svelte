@@ -8,7 +8,8 @@
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
-	import {API_OPTIONS} from './ui-options'
+	import {API_OPTIONS} from './style-api'
+	import {onMount} from 'svelte'
 
 	export let data: PageData
 
@@ -19,6 +20,10 @@
 	export let enter = 'enter'
 	export let update = 'update'
 	export let reset = 'reset'
+
+	let options = {
+		...API_OPTIONS['app'],
+	}
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -89,10 +94,18 @@
 	let apiSize = 'xxs'
 	let apiVariant = ''
 
-	$: options = {
-		...API_OPTIONS[category],
-		...API_OPTIONS['shared'],
-		...API_OPTIONS['app'],
+	$: {
+		if (category === 'app') {
+			options = {
+				...API_OPTIONS['app'],
+			}
+		} else {
+			options = {
+				...API_OPTIONS[category],
+				...API_OPTIONS['shared'],
+				...API_OPTIONS['app'],
+			}
+		}
 	}
 	$: selected = $selectedStore
 	$: initialOptions = Object.keys(options).map((key) => {
@@ -101,12 +114,14 @@
 			value: options[key],
 		}
 	})
-	$: initialValues = Object.keys(data).reduce((values, key) => {
-		return {
-			...values,
-			...data[key],
-		}
-	}, {})
+	$: initialValues =
+		data &&
+		Object.keys(data).reduce((values, key) => {
+			return {
+				...values,
+				...data[key],
+			}
+		}, {})
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
