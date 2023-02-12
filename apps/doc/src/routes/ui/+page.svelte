@@ -28,7 +28,7 @@
 </header>
 
 <Sidebar size="xs" align="end">
-	<main slot="main" class="l:stack md">
+	<main slot="main">
 		{#each components as { category, items }}
 			<Collection
 				{title}

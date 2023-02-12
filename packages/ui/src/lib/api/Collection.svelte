@@ -12,7 +12,7 @@
 	export let title = ''
 	export let depth = 0
 	export let path = ''
-	export let layout = 'stack'
+	export let layout = 'switcher' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'app'
@@ -26,16 +26,13 @@
 	$: componentNames = Object.keys(components)
 	$: brightness = $selected.brightness ?? ''
 	$: contrast = $selected.contrast ?? ''
-	$: container = $selected.container ? `l:${$selected.container}` : ''
-	$: layout = $selected.layout ? `l:${$selected.layout}` : ''
-	$: breakpoint = $selected.breakpoint ? `bp:${$selected.breakpoint}` : ''
-	$: classes = `${brightness} ${contrast} ${container} ${layout} ${breakpoint}`
+	$: classes = `${brightness} ${contrast} l:${layout} bp:xs`
 	$: titleDepth = Number(depth) + 1
 </script>
 
 {#if isPage}
 	<Sidebar size="xs" align="end">
-		<section slot="main" class={`card:xl l:stack xl inset ${classes}`}>
+		<section slot="main" class={`card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {data} />
@@ -46,7 +43,7 @@
 		</aside>
 	</Sidebar>
 {:else}
-	<details class="l:stack xl">
+	<details>
 		<summary class="l:switcher bp:xs card:lg box bg:primary:light">
 			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 				{category}
