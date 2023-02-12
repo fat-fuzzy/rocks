@@ -1,75 +1,43 @@
+import type {StyleTree} from '@fat-fuzzy/ui'
 import {api} from '@fat-fuzzy/ui'
 
 export class UiState {
-	app: string
-	shared: string
-	blocks: string
-	layouts: string
+	styles: StyleTree
 	/**
 	 * Create a UI state object from the user's cookie, or initialize a new UI state
 	 */
 	constructor(serialized: string | undefined = undefined) {
 		if (serialized) {
 			const {app, shared, blocks, layouts} = JSON.parse(serialized)
-			this.app = app
-			this.shared = shared
-			this.blocks = blocks
-			this.layouts = layouts
+			this.styles = {app, shared, blocks, layouts}
 		} else {
-			this.app = api.stylesApi.DEFAULT_OPTIONS['app']
-			this.shared = api.stylesApi.DEFAULT_OPTIONS['shared']
-			this.blocks = api.stylesApi.DEFAULT_OPTIONS['blocks']
-			this.layouts = api.stylesApi.DEFAULT_OPTIONS['layouts']
+			this.styles = api.stylesApi.DEFAULT_STYLES
 		}
 	}
 
 	/**
 	 * Update UI library state based on inputs
 	 */
-	enter(data) {
+	enter(styles: StyleTree) {
 		console.log('ui-state/enter - ApiValues')
-		for (const value of data.values()) {
+		for (const value of styles.values()) {
 			console.log(value)
 		}
-		for (const key of data.keys()) {
-			const value = data.get(key)
-			for (const option of Object.keys(this.app)) {
-				if (this.app[option][key] === '' || this.app[option][key]) {
-					this.app[option][key] = value
-					return true
-				}
-			}
-			for (const option of Object.keys(this.shared)) {
-				if (this.shared[option][key] === '' || this.shared[option][key]) {
-					this.shared[option][key] = value
-					return true
-				}
-			}
-			for (const option of Object.keys(this.blocks)) {
-				if (this.blocks[option][key] === '' || this.blocks[option][key]) {
-					this.blocks[option][key] = value
-					return true
-				}
-			}
-			for (const option of Object.keys(this.layouts)) {
-				if (this.layouts[option][key] === '' || this.layouts[option][key]) {
-					this.layouts[option][key] = value
-					return true
-				}
-			}
-		}
+		this.styles = styles
 		return true
 	}
 
+	getStyleTree(category: string) {
+		return this.styles[category]
+	}
+
+	getCategoryOptions(category: string) {
+		return JSON.stringify(this.styles[category])
+	}
 	/**
 	 * Serialize game state so it can be set as a cookie
 	 */
 	toString() {
-		return JSON.stringify({
-			app: this.app,
-			shared: this.shared,
-			blocks: this.blocks,
-			layouts: this.layouts,
-		})
+		return JSON.stringify(this.styles)
 	}
 }

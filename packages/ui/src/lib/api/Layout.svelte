@@ -8,20 +8,20 @@
 	export let component: ComponentType
 
 	$: selected = $selectedStore
-	$: content = $selected.content ?? 'card'
-	$: sideContent = $selected.side ?? 'card'
-	$: mainContent = $selected.main ?? 'text'
-	$: size = $selected.size ?? ''
-	$: container = $selected.container ? `l:${$selected.container} inset` : ''
-	$: layout = $selected.layout ? `l:${$selected.layout}` : ''
-	$: breakpoint = $selected.breakpoint ? `bp:${$selected.breakpoint}` : ''
+	$: content = selected.content ?? 'card'
+	$: sideContent = selected.side ?? 'card'
+	$: mainContent = selected.main ?? 'text'
+	$: size = selected.size ?? ''
+	$: container = selected.container ? `l:${selected.container} inset` : ''
+	$: layout = selected.layout ? `l:${selected.layout}` : ''
+	$: breakpoint = selected.breakpoint ? `bp:${selected.breakpoint}` : ''
 	$: contextClasses = `${container} ${layout} ${breakpoint} ${size}`
 </script>
 
 <div class={`${contextClasses}`}>
 	{#if !isPage}
 		{#if title === 'Sidebar'}
-			<svelte:component this={component} id={title} {...$selected}>
+			<svelte:component this={component} id={title} {...selected}>
 				<div slot="side">
 					{#if sideContent === 'text'}
 						{mocks[sideContent]}
@@ -42,7 +42,7 @@
 				</div>
 			</svelte:component>
 		{:else}
-			<svelte:component this={component} id={title} {...$selected}>
+			<svelte:component this={component} id={title} {...selected}>
 				{#if content === 'text'}
 					{mocks[content]}
 				{:else if content === 'card' || content === 'form'}
@@ -53,7 +53,7 @@
 			</svelte:component>
 		{/if}
 	{:else if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {...$selected}>
+		<svelte:component this={component} id={title} {...selected}>
 			<div slot="side">
 				{#if sideContent === 'text'}
 					{mocks[sideContent]}
@@ -74,7 +74,7 @@
 			</div>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {...$selected}>
+		<svelte:component this={component} id={title} {...selected}>
 			{#if content === 'text'}
 				{mocks[content]}
 			{:else if content === 'card' || content === 'form'}

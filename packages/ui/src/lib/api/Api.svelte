@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {PageData} from './$types'
 	import {enhance} from '$app/forms'
 	import {selectedStore} from '../stores/api'
 	import format from '../utils/format'
@@ -8,10 +7,7 @@
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
-	import {API_OPTIONS} from './style-api'
-	import {onMount} from 'svelte'
-
-	export let data: PageData
+	import {getDefaultOptions} from '../api/style-api'
 
 	export let title = ''
 	export let category = 'app'
@@ -21,9 +17,7 @@
 	export let update = 'update'
 	export let reset = 'reset'
 
-	let options = {
-		...API_OPTIONS['app'],
-	}
+	const apiOptions = getDefaultOptions()
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -35,13 +29,8 @@
 			return {...values, [option.id]: option.value}
 		}, selected)
 
-		// TODO: this works, not sure how: understand how
-		selected.update((data) => {
-			return {...data, ...toUpdate}
-		})
-
 		selectedStore.update((data) => {
-			return {...data, ...selected}
+			return {...data, ...toUpdate}
 		})
 	}
 
@@ -94,34 +83,8 @@
 	let apiSize = 'xxs'
 	let apiVariant = ''
 
-	$: {
-		if (category === 'app') {
-			options = {
-				...API_OPTIONS['app'],
-			}
-		} else {
-			options = {
-				...API_OPTIONS[category],
-				...API_OPTIONS['shared'],
-				...API_OPTIONS['app'],
-			}
-		}
-	}
 	$: selected = $selectedStore
-	$: initialOptions = Object.keys(options).map((key) => {
-		return {
-			name: key,
-			value: options[key],
-		}
-	})
-	$: initialValues =
-		data &&
-		Object.keys(data).reduce((values, key) => {
-			return {
-				...values,
-				...data[key],
-			}
-		}, {})
+	$: styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -134,8 +97,6 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
-	// TODO: select default options in form
-	// TODO: try co clean this code 👇 some more
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -152,86 +113,83 @@
 	}}
 	class={`l:${apiLayout}`}
 >
-	{#each initialOptions as prop}
-		{#if options[prop.name]}
-			{@const styleFamily = options[prop.name]}
-			{#if !styleFamily.include || styleFamily.include.indexOf(title) !== -1}
-				{#if !styleFamily.exclude || (styleFamily.exclude.indexOf(category) === -1 && styleFamily.exclude.indexOf(title) === -1)}
+	{#each styleCategories as styleCategory}
+		{@const styles = apiOptions.getCategoryOptions(styleCategory)}
+		{#if styles}
+			{@const styleFamilies = Object.keys(styles)}
+			{#each styleFamilies as familyName}
+				{@const styleFamily = styles[familyName]}
+				{#if styleFamily.includes(title) && !styleFamily.excludes(category) && !styleFamily.excludes(title)}
 					<Fieldset
-						legend={styleFamily.name}
-						slug={`field-${styleFamily.name}`}
+						legend={familyName}
+						slug={`fieldset-${familyName}`}
 						type="input-group"
 						layout={`${styleFamily.layout}`}
 					>
-						{#if styleFamily.items}
-							{#each styleFamily.items as styleOptions}
-								{@const {name, input, items, layout, include, exclude} = styleOptions}
-								{@const styleValue = initialValues[prop.name]}
-								{#if !include || include.indexOf(title) !== -1}
-									{#if !exclude || (exclude.indexOf(category) === -1 && exclude.indexOf(title) === -1)}
-										{#if input === 'radio' || input === 'checkbox'}
-											{@const InputComponent = COMPONENT_IMPORTS[input]}
-											{#each items as { id, ...inputProps }}
-												{@const checked = styleValue && id === styleValue[id]}
-												<svelte:component
-													this={InputComponent}
-													id={`${input}-${id}`}
-													value={id}
-													{...inputProps}
-													{name}
-													{checked}
-													variant={apiVariant || ''}
-													layout={layout || ''}
-													size={apiSize || ''}
-													on:input={(event) => handleInput(event, styleFamily.name)}
-												/>
-											{/each}
-										{/if}
-										{#if input === 'toggle'}
-											{@const updatedItems = items.map((i) => {
-												return {
-													...i,
-													text: i.text || '',
-													asset: i.asset || '',
-													pressed: styleValue && i.id === styleValue[i.id],
-												}
-											})}
-											<ToggleMenu
-												id={name.toLowerCase()}
-												title={name !== styleFamily.name ? name : ''}
-												items={updatedItems}
-												{layout}
-												size={apiSize}
-												{page}
-												formaction={update}
-												on:click={(event) => handleToggle(event, styleFamily.name, name)}
-											/>
-										{/if}
-										{#if input === 'datalist'}
-											<label for={`choice-${name}`} class="l:stack">
-												{`Select ${name}`}
-												<input
-													list={`items-${name}`}
-													id={`choice-${name}`}
-													{name}
-													on:input={(event) => handleSelect(event, styleFamily.name)}
-												/>
-												<datalist id={`items-${name}`}>
-													{#each items as { id, text, asset }}
-														<option {id} value={asset}>
-															{format.formatLabel(text || '', asset)}
-														</option>
-													{/each}
-												</datalist>
-											</label>
-										{/if}
-									{/if}
+						{#each styleFamily.items as styleOption}
+							{@const {name, input, value, items, layout} = styleOption}
+							{#if styleOption.includes(title) && !styleOption.excludes(category) && !styleOption.excludes(title)}
+								{#if input === 'radio' || input === 'checkbox'}
+									{@const InputComponent = COMPONENT_IMPORTS[input]}
+									{#each items as { id, ...inputProps }}
+										{@const checked = value && id === value}
+										<svelte:component
+											this={InputComponent}
+											id={`${input}-${id}`}
+											value={id}
+											{...inputProps}
+											{name}
+											{checked}
+											variant={apiVariant || ''}
+											layout={layout || ''}
+											size={apiSize || ''}
+											on:input={(event) => handleInput(event, familyName)}
+										/>
+									{/each}
 								{/if}
-							{/each}
-						{/if}
+								{#if input === 'toggle'}
+									{@const updatedItems = items.map((i) => {
+										return {
+											...i,
+											text: i.text || '',
+											asset: i.asset || '',
+											pressed: value && i.id === value,
+										}
+									})}
+									<ToggleMenu
+										id={name.toLowerCase()}
+										title={name !== familyName ? name : ''}
+										items={updatedItems}
+										{layout}
+										size={apiSize}
+										{page}
+										formaction={update}
+										on:click={(event) => handleToggle(event, familyName, name)}
+									/>
+								{/if}
+								{#if input === 'datalist'}
+									<label for={`choice-${name}`} class="l:stack">
+										{`Select ${name}`}
+										<input
+											list={`items-${name}`}
+											id={`choice-${name}`}
+											{name}
+											on:input={(event) => handleSelect(event, familyName)}
+										/>
+										<datalist id={`items-${name}`}>
+											{#each items as { id, text, asset }}
+												<option {id} value={asset}>
+													{format.formatLabel(text || '', asset)}
+												</option>
+											{/each}
+										</datalist>
+									</label>
+								{/if}
+							{/if}
+						{/each}
 					</Fieldset>
 				{/if}
-			{/if}
+			{/each}
 		{/if}
 	{/each}
 	<!-- <button data-key="enter">Update UI</button> -->

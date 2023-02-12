@@ -6,14 +6,7 @@ export const load = (({cookies}) => {
 	const uiState = new UiState(cookies.get('fat-fuzzy-ui'))
 
 	return {
-		// App settings
-		app: uiState.app,
-		// App settings
-		shared: uiState.shared,
-		// App settings
-		blocks: uiState.blocks,
-		// App settings
-		layouts: uiState.layouts,
+		uiState: uiState.toString(),
 	}
 }) satisfies PageServerLoad
 

@@ -11,11 +11,14 @@
 	const {Sidebar} = layouts
 
 	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
+
 	const components = [
 		{category: 'blocks', items: blocks},
 		{category: 'layouts', items: layouts},
 	]
 	let path = $page.url.pathname
+
+	$: uiState = JSON.parse(data.uiState)
 </script>
 
 <svelte:head>
@@ -37,12 +40,11 @@
 				path={`${path}/${category}`}
 				components={items}
 				{category}
-				{data}
 			/>
 		{/each}
 	</main>
 
 	<aside slot="side">
-		<Api {title} category="app" {data} />
+		<Api {title} category="app" {uiState} />
 	</aside>
 </Sidebar>

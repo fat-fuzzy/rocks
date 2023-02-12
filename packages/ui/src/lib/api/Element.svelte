@@ -24,10 +24,10 @@
 	// TODO: improve this code - make it easier to understand ! (use store ?)
 
 	$: selected = $selectedStore
-	$: brightness = $selected.brightness ?? ''
-	$: contrast = $selected.contrast ?? ''
-	$: container = $selected.container ? `l:${$selected.container}` : ''
-	$: breakpoint = $selected.breakpoint ? `bp:${$selected.breakpoint}` : ''
+	$: brightness = selected.brightness ?? ''
+	$: contrast = selected.contrast ?? ''
+	$: container = selected.container ? `l:${selected.container}` : ''
+	$: breakpoint = selected.breakpoint ? `bp:${selected.breakpoint}` : ''
 	$: appSettings = `${brightness} ${contrast}`
 	$: layoutContext = `${container} ${breakpoint}`
 </script>

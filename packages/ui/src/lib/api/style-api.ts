@@ -19,22 +19,14 @@ export interface ComponentProps {
 	layout?: string
 	// options?: StyleOption
 }
-// export interface InputProps extends ComponentProps {
-// 	label: string
-// }
-// export interface ButtonProps extends ComponentProps {
-// 	text: string
-// 	asset?: string
-// }
 
-type StyleTree = {
+export type StyleTree = {
 	[category: string]: {
 		[family: string]: {
 			[style: string]: string
 		}
 	}
 }
-
 type StyleTreeFlat = {
 	category: string
 	family: string
@@ -79,6 +71,14 @@ class StyleInput {
 		}
 	}
 
+	getValue(): string | undefined {
+		return this.value
+	}
+
+	setValue(value: string) {
+		this.value = value
+	}
+
 	getStyleTree(): StyleTree {
 		const [category, family, style] = this.id.split('.')
 		return {[category]: {[family]: {[style]: this.value}}}
@@ -89,12 +89,12 @@ class StyleInput {
 		return {category, family, style, value: this.value}
 	}
 
-	getValue(): string | undefined {
-		return this.value
+	includes(item: string): boolean {
+		return this.include ? this.include.indexOf(item) !== -1 : true
 	}
 
-	setValue(value: string) {
-		this.value = value
+	excludes(item: string): boolean {
+		return this.exclude ? this.exclude.indexOf(item) !== -1 : false
 	}
 }
 
@@ -106,7 +106,6 @@ interface StyleFamilyOptions {
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components only
 }
-
 class StyleFamily {
 	/**
 	 * StyleFamilys provide form inputs for related styles that apply to a single StyleCategory
@@ -155,6 +154,14 @@ class StyleFamily {
 		return {category, family, style, value: this.items.map((item) => item.name)}
 	}
 
+	includes(item: string): boolean {
+		return this.include ? this.include.indexOf(item) !== -1 : true
+	}
+
+	excludes(item: string): boolean {
+		return this.exclude ? this.exclude.indexOf(item) !== -1 : false
+	}
+
 	applyStyles(styles: {name: string; value: string}[]) {
 		styles.forEach(({name, value}) => {
 			const item = this.itemsMap.get(name)
@@ -190,7 +197,7 @@ interface StylesApiOptions {
 	blocks: BlockStyles
 	layouts: LayoutStyles
 }
-class StylesApi {
+export class StylesApi {
 	app: AppStyles
 	shared: SharedStyles
 	blocks: BlockStyles
@@ -517,9 +524,9 @@ const layouts: LayoutStyles = {
 	}),
 }
 
-export const API_OPTIONS = new StylesApi({app, shared, blocks, layouts})
+export const getDefaultOptions = () => new StylesApi({app, shared, blocks, layouts})
 
-export const DEFAULT_OPTIONS: StyleTree = {
+export const DEFAULT_STYLES: StyleTree = {
 	app: {
 		settings: {
 			brightness: 'day',
