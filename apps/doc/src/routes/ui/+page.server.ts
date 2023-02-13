@@ -4,7 +4,6 @@ import type {PageServerLoad, Actions} from './$types'
 
 export const load = (({cookies}) => {
 	const uiState = new UiState(cookies.get('fat-fuzzy-ui'))
-
 	return {
 		uiState: uiState.toString(),
 	}
