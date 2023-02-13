@@ -1,9 +1,10 @@
 import {fail} from '@sveltejs/kit'
-import {UiState} from './ui-state'
+import {UiState} from '../../ui-state'
 import type {PageServerLoad, Actions} from './$types'
 
 export const load = (({cookies}) => {
 	const uiState = new UiState(cookies.get('fat-fuzzy-ui'))
+
 	return {
 		uiState: uiState.toString(),
 	}

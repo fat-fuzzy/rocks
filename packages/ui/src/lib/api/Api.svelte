@@ -12,7 +12,7 @@
 	export let title = ''
 	export let uiState = ''
 	export let category = 'app'
-	export let page = 'ui'
+	export let page = ''
 	export let method = 'POST'
 	export let enter = 'enter'
 	export let update = 'update'

@@ -5,7 +5,7 @@
 
 	export let data: PageData
 
-	let uiState: any
+	let uiState = data.uiState
 
 	const {Collection, Api} = api
 	const {Sidebar} = layouts
@@ -42,6 +42,7 @@
 				path={`${path}/${category}`}
 				components={items}
 				{category}
+				{uiState}
 			/>
 		{/each}
 	</main>
