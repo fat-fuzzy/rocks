@@ -33,7 +33,7 @@
 
 	let machineConfig = {
 		id: `toggle-${id}`,
-		initial: 'inactive',
+		initial: pressed ? 'active' : 'inactive',
 		states: {
 			inactive: {
 				on: {TOGGLE: 'active'},
