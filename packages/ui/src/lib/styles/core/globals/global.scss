@@ -12,7 +12,7 @@ body {
 	background: var(#{$prefix}-current-bg-color);
 	font-size: var(#{$prefix}-font-size-body);
 	font-weight: var(#{$prefix}-font-weight-body);
-	line-height: var(#{$prefix}-ratio);
+	line-height: var(#{$prefix}-line-height-body);
 }
 
 a {
@@ -29,6 +29,7 @@ a:hover {
 table {
 	border-collapse: collapse;
 	font-family: var(#{$prefix}-font-family-ui);
+	line-height: var(#{$prefix}-line-height-ui);
 }
 
 th {

@@ -7,6 +7,7 @@ button {
 	font-size: var(#{$prefix}-current-font-size);
 	font-family: var(#{$prefix}-current-font-family);
 	font-weight: var(#{$prefix}-font-weight-ui);
+	line-height: var(#{$prefix}-line-height-ui);
 	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 	border-radius: var(#{$prefix}-radius-base);
 	color: var(#{$prefix}-color-dark);

@@ -15,7 +15,9 @@
 </svelte:head>
 
 <article class="l:text:md">
-	<h1>{title}</h1>
-	<p>Published: {date}</p>
+	<header class="l:stack xxs">
+		<h1>{title}</h1>
+		<p>Published: {date}</p>
+	</header>
 	{@html html}
 </article>

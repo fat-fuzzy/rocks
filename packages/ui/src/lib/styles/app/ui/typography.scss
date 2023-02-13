@@ -88,5 +88,9 @@ $typography: (
 	font-size-xs: var(#{$prefix}-fluid--1),
 	font-size-xxs: var(#{$prefix}-fluid--2),
 	// == Font color
-	font-color-base: var(#{$prefix}-color-dark)
+	font-color-base: var(#{$prefix}-color-dark),
+	//
+	line-height-heading: 1.4,
+	line-height-ui: 1.4,
+	line-height-body: 2
 );
