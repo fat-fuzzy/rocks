@@ -2,10 +2,10 @@
 	import {page} from '$app/stores'
 
 	let title: string
-	let year: string
+	let date: string
 	$: log = $page.data.logs.find((d) => d.path === $page.data.path)
 	$: title = log.meta.title
-	$: year = log.meta.year
+	$: date = log.meta.date
 	$: html = $page.data.html
 </script>
 
@@ -14,8 +14,8 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<article class="l:text">
+<article class="l:text:md">
 	<h1>{title}</h1>
-	<p>Published: {year}</p>
+	<p>Published: {date}</p>
 	{@html html}
 </article>
