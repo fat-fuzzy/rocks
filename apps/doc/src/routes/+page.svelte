@@ -15,14 +15,14 @@
 
 <section class="l:text:md l:center">
 	<h2>✨ Highlights</h2>
-	<ul class="l:stack xl" role="group">
-		<li class={`card:lg font:xl ${variant}`}>
+	<ul class="l:stack" role="group">
+		<li class={`card:lg font:lg align:center ${variant}`}>
 			<span>🌈</span>
 			<a data-sveltekit-preload-data href="/ui">UI</a>
 		</li>
-		<li class={`card:lg font:xl ${variant}`}>
+		<li class={`card:lg font:lg align:center ${variant}`}>
 			<span>💡</span>
-			<a data-sveltekit-preload-data href="/log">Log</a>
+			<a data-sveltekit-preload-data href="/log">LOG</a>
 		</li>
 	</ul>
 </section>

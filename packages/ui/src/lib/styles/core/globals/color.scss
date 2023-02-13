@@ -121,64 +121,49 @@ form,
 //== Links
 // - The styles below are global: for example they will apply to links in text
 // - Links in navs have specific styles (except for hover), see: `styles/core/blocks/nav.scss`
-a,
-.bare {
+a {
 	color: var(#{$prefix}-current-primary);
 }
-
-a:visited,
-.bare:visited {
+a:visited {
 	color: var(#{$prefix}-current-color);
 	text-decoration-color: var(#{$prefix}-current-color);
 }
-
-a:hover,
-.bare:hover {
+a:hover {
 	color: var(#{$prefix}-color-light);
 	background-color: var(#{$prefix}-current-primary);
 	text-decoration-color: var(#{$prefix}-current-primary);
 }
 
-.accent a,
-.accent .bare {
-	color: var(#{$prefix}-current-accent);
+.bg\:accent a {
+	color: var(#{$prefix}-color-light);
 }
-
-.accent a:visited,
-.accent .bare:visited {
+.bg\:accent a:visited {
 	color: var(#{$prefix}-color-light);
 	text-decoration-color: var(#{$prefix}-color-light);
 }
-
-.accent a:hover,
-.accent .bare:hover {
-	color: var(#{$prefix}-color-light);
-	background-color: inherit;
-	text-decoration-color: var(#{$prefix}-current-light);
+.bg\:accent a:hover {
+	color: var(#{$prefix}-current-accent);
+	background-color: var(#{$prefix}-color-light);
+	text-decoration-color: var(#{$prefix}-current-accent);
+}
+.bg\:accent a:focus {
+	outline-color: var(#{$prefix}-color-light);
 }
 
-.highlight a,
-.highlight .bare {
+.bg\:highlight a {
 	color: var(#{$prefix}-current-highlight-dark); // TODO: check this
 }
-
-.highlight a:visited,
-.highlight .bare:visited {
+.bg\:highlight a:visited {
 	color: var(#{$prefix}-current-color);
 	text-decoration-color: var(#{$prefix}-current-highlight-dark);
 }
-
-.highlight a:hover,
-.highlight .bare:hover {
+.bg\:highlight a:hover {
 	color: var(#{$prefix}-color-light);
 	background-color: inherit;
 	text-decoration-color: var(#{$prefix}-current-dark);
 }
-
-a > *,
-.bare > * {
-	color: inherit;
-	background-color: inherit;
+.bg\:highlight a:focus {
+	outline-color: var(#{$prefix}-color-hightlight--dark);
 }
 
 .primary:focus {
