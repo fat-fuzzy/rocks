@@ -5,14 +5,14 @@
 	import mocks from '../../../data/mocks'
 
 	const dispatch = createEventDispatcher()
-	export let id = ''
+	export let id = 'menu'
 	export let title = ''
 	export let size = ''
 	export let breakpoint = ''
 	export let layout = 'switcher'
 	export let color = ''
 	export let variant = ''
-	export let items = mocks.menu
+	export let items = mocks.menu.map((button) => ({...button, id: `${id}.${button.id}`}))
 	export let formaction = 'enter'
 	export let page = ''
 

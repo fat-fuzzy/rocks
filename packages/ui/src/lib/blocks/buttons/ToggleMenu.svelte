@@ -5,7 +5,7 @@
 
 	const dispatch = createEventDispatcher()
 
-	export let id = ''
+	export let id = 'toggle-menu'
 	export let title = ''
 	export let size = ''
 	export let breakpoint = ''
@@ -13,7 +13,7 @@
 	export let color = ''
 	export let variant = ''
 	export let multiple = false
-	export let items = mocks.toggleMenu
+	export let items = mocks.toggleMenu.map((button) => ({...button, id: `${id}.${button.id}`}))
 	export let formaction = 'update'
 	export let page = ''
 

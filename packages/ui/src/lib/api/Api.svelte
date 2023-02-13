@@ -164,7 +164,7 @@
 										}
 									})}
 									<ToggleMenu
-										id={name.toLowerCase()}
+										id={`${styleFamily.id}.${styleOption.id}`}
 										title={name !== familyName ? name : ''}
 										items={updatedItems}
 										{layout}
