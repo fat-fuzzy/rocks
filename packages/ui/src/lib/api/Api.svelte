@@ -7,9 +7,10 @@
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
-	import {getDefaultOptions} from '../api/style-api'
+	import {getDefaultOptions} from './styles-api'
 
 	export let title = ''
+	export let uiState = ''
 	export let category = 'app'
 	export let page = 'ui'
 	export let method = 'POST'
@@ -26,7 +27,7 @@
 
 	const updateSelected = (payload) => {
 		const toUpdate = payload.items.reduce((values, option) => {
-			return {...values, [option.id]: option.value}
+			return {...values, [option.name]: option.value}
 		}, selected)
 
 		selectedStore.update((data) => {
@@ -39,8 +40,8 @@
 			name,
 			items: [
 				{
-					id: event.target.name.toLowerCase(),
-					name: event.target.name,
+					id: event.target.id,
+					name: event.target.name.toLowerCase(),
 					value: event.target.value,
 				},
 			],
@@ -48,13 +49,14 @@
 		updateSelected(payload)
 	}
 
-	function handleSelect(event, name) {
+	function handleSelect(event, familyName, name) {
+		// TODO: reject input if it's not in values list -> form validation /!\
 		const payload = {
-			name,
+			name: familyName.toLowerCase(),
 			items: [
 				{
-					id: name.toLowerCase(),
-					name: name,
+					id: event.target.id,
+					name: name.toLowerCase(),
 					value: event.target.value,
 				},
 			],
@@ -62,15 +64,16 @@
 		updateSelected(payload)
 	}
 
-	function handleToggle(event, name, id) {
+	function handleToggle(event, familyName, id) {
 		const selected = event.detail.selected // TODO: no multiple values for now
+		const [category, family, style] = id.split('.')
 		if (selected.length) {
 			const payload = {
-				name,
+				name: familyName,
 				items: [
 					{
-						id: id.toLowerCase(),
-						name: id,
+						id,
+						name: style, // TODO: clean this
 						value: selected[0].pressed ? selected[0].id : '',
 					},
 				],
@@ -85,6 +88,9 @@
 
 	$: selected = $selectedStore
 	$: styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
+	$: {
+		uiState && apiOptions.applyStyles(JSON.parse(uiState))
+	}
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -122,9 +128,10 @@
 				{#if styleFamily.includes(title) && !styleFamily.excludes(category) && !styleFamily.excludes(title)}
 					<Fieldset
 						legend={familyName}
-						slug={`fieldset-${familyName}`}
+						id={styleFamily.id}
 						type="input-group"
 						layout={`${styleFamily.layout}`}
+						name={familyName}
 					>
 						{#each styleFamily.items as styleOption}
 							{@const {name, input, value, items, layout} = styleOption}
@@ -136,9 +143,8 @@
 										<svelte:component
 											this={InputComponent}
 											id={`${input}-${id}`}
-											value={id}
 											{...inputProps}
-											{name}
+											name={styleOption.id}
 											{checked}
 											variant={apiVariant || ''}
 											layout={layout || ''}
@@ -151,6 +157,7 @@
 									{@const updatedItems = items.map((i) => {
 										return {
 											...i,
+											name: styleOption.id,
 											text: i.text || '',
 											asset: i.asset || '',
 											pressed: value && i.id === value,
@@ -164,19 +171,19 @@
 										size={apiSize}
 										{page}
 										formaction={update}
-										on:click={(event) => handleToggle(event, familyName, name)}
+										on:click={(event) => handleToggle(event, familyName, styleOption.id)}
 									/>
 								{/if}
 								{#if input === 'datalist'}
 									<label for={`choice-${name}`} class="l:stack">
 										{`Select ${name}`}
 										<input
-											list={`items-${name}`}
-											id={`choice-${name}`}
-											{name}
-											on:input={(event) => handleSelect(event, familyName)}
+											list={`${styleOption.name}-${name}`}
+											id={styleOption.id}
+											name={styleOption.id}
+											on:input={(event) => handleSelect(event, familyName, name)}
 										/>
-										<datalist id={`items-${name}`}>
+										<datalist id={`${styleOption.name}-${name}`}>
 											{#each items as { id, text, asset }}
 												<option {id} value={asset}>
 													{format.formatLabel(text || '', asset)}

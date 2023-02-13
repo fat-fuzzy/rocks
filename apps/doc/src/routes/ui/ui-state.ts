@@ -18,22 +18,30 @@ export class UiState {
 	/**
 	 * Update UI library state based on inputs
 	 */
-	enter(styles: StyleTree) {
-		console.log('ui-state/enter - ApiValues')
-		for (const value of styles.values()) {
-			console.log(value)
+	enter(data: FormData) {
+		const styleValues = []
+
+		// TODO: see how I can improve this
+
+		for (const pair of data.entries()) {
+			const [category, family, style] = pair[0].split('.')
+			const styleValue = {[style]: pair[1]}
+			const familyValue = {[family]: styleValue}
+			// TODO: Fix / understand:
+			// - for some reason, the only way to get values out of FormData is to push them into an array
+			// - if I set {name, value} properties in `this.styles`, all other properties except the last one updated become unset
+			//    (i.e. once out of this loop, the only property of `this.styles` is the last one set in the loop)
+			styleValues.push({id: pair[0], value: {[category]: familyValue}})
 		}
-		this.styles = styles
+
+		styleValues.forEach(({id, value}) => {
+			const [category, family, style] = id.split('.')
+			this.styles[category][family][style] = value[category][family][style]
+		})
+
 		return true
 	}
 
-	getStyleTree(category: string) {
-		return this.styles[category]
-	}
-
-	getCategoryOptions(category: string) {
-		return JSON.stringify(this.styles[category])
-	}
 	/**
 	 * Serialize game state so it can be set as a cookie
 	 */

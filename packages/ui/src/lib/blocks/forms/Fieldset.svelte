@@ -1,14 +1,15 @@
 <script lang="ts">
-	export let slug = ''
+	export let id = ''
+	export let name = ''
 	export let legend = ''
+	export let type = ''
 	export let size = 'sm'
 	export let layout = 'stack'
-	export let type = ''
 
 	$: className = `l:${layout} ${size} ${type}`
 </script>
 
-<fieldset data-cy={slug} class={className}>
+<fieldset {id} {name} data-key={id} class={className}>
 	{#if legend}<legend>{legend}</legend>{/if}
 	<slot />
 </fieldset>

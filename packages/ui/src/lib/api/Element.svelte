@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {PageData} from './$types'
 	import type {ComponentType} from 'svelte'
 	import {page} from '$app/stores'
 	import Api from './Api.svelte'
@@ -7,7 +6,7 @@
 	import Layout from './Layout.svelte'
 	import {selectedStore} from '../stores/api'
 
-	export let data: PageData
+	export let uiState = '' // TODO: figure out how to avoid this prop drilling
 
 	export let title = ''
 	export let depth = 0
@@ -35,7 +34,9 @@
 {#if !isPage}
 	<article class={`l:stack card:xl`}>
 		<a class="primary" href={`${path}/${title}`}>
-			<svelte:element this={`h${String(depth)}`} class="font:sm">{title} API 🔗</svelte:element>
+			<svelte:element this={`h${String(depth)}`} class="font:sm">
+				<span class="font:xs">🔗</span>&nbsp;{title}
+			</svelte:element>
 		</a>
 		<div class={container}>
 			<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
@@ -52,7 +53,7 @@
 			</div>
 		</main>
 		<aside class="l:side">
-			<Api {title} {category} {data} />
+			<Api {title} {category} {uiState} />
 		</aside>
 	</article>
 {/if}

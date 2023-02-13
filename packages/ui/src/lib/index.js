@@ -34,7 +34,7 @@ import RevealNav from './blocks/navs/RevealNav.svelte'
 import Api from './api/Api.svelte'
 import Element from './api/Element.svelte'
 import Collection from './api/Collection.svelte'
-import * as stylesApi from './api/style-api'
+import * as stylesApi from './api/styles-api'
 
 /**
  * Stores

@@ -1,5 +1,5 @@
 import {writable} from 'svelte/store'
-import {DEFAULT_STYLES} from '../api/style-api'
+import {DEFAULT_STYLES} from '../api/styles-api'
 
 // Initial values
 

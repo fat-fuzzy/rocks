@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {PageData, ActionData} from './$types'
+	import type {PageData} from './$types'
 	import {page} from '$app/stores'
 	import {blocks, layouts, api} from '@fat-fuzzy/ui'
 
 	export let data: PageData
 
-	export let form: ActionData
+	let uiState: any
 
 	const {Collection, Api} = api
 	const {Sidebar} = layouts
@@ -18,7 +18,9 @@
 	]
 	let path = $page.url.pathname
 
-	$: uiState = JSON.parse(data.uiState)
+	$: {
+		uiState = data.uiState
+	}
 </script>
 
 <svelte:head>

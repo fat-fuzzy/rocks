@@ -2,12 +2,13 @@ import type {ComponentType} from 'svelte'
 export type ComponentChild = string | ComponentType | (string | ComponentType)[] // TODO: figure out if I really need this
 
 // TODO: figure out if I can extract this info from Svelte component
-export interface ComponentProps {
+export interface StyleInputProps {
 	id: string
 	asset?: string
 	size?: string
 	label?: string
 	text?: string
+	value: string
 	brightness?: string
 	contrast?: string
 	app?: string
@@ -20,13 +21,22 @@ export interface ComponentProps {
 	// options?: StyleOption
 }
 
-export type StyleTree = {
-	[category: string]: {
-		[family: string]: {
-			[style: string]: string
-		}
-	}
+export type StylesFormValue = {[style: string]: string}
+
+export type StylesApiInput = {
+	[category: string]: {[family: string]: StylesFormValue}
 }
+
+export type StyleNode = {
+	[style: string]: string
+}
+export type StyleBranch = {
+	[family: string]: StyleNode
+}
+export type StyleTree = {
+	[category: string]: StyleBranch
+}
+
 type StyleTreeFlat = {
 	category: string
 	family: string
@@ -38,7 +48,7 @@ interface StyleInputOptions {
 	id: string
 	name: string
 	input: string
-	items: Array<ComponentProps>
+	items: Array<StyleInputProps>
 	value: string
 	layout?: string
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
@@ -47,8 +57,9 @@ interface StyleInputOptions {
 class StyleInput {
 	id: string
 	name: string
+	slug: string
 	input: string
-	items: Array<ComponentProps>
+	items: Array<StyleInputProps>
 	value: string
 	layout?: string
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
@@ -57,6 +68,7 @@ class StyleInput {
 	constructor({id, name, input, items, value, layout, exclude, include}: StyleInputOptions) {
 		this.id = id
 		this.name = name
+		this.slug = name.toLowerCase()
 		this.items = items
 		this.input = input
 		this.value = value ?? ''
@@ -79,9 +91,9 @@ class StyleInput {
 		this.value = value
 	}
 
-	getStyleTree(): StyleTree {
+	getStyleTree(): StyleNode {
 		const [category, family, style] = this.id.split('.')
-		return {[category]: {[family]: {[style]: this.value}}}
+		return {[style]: this.value}
 	}
 
 	getStyleTreeFlat(): StyleTreeFlat {
@@ -126,7 +138,7 @@ class StyleFamily {
 
 		const itemsMap = new Map()
 		items.forEach((item) => {
-			itemsMap.set(item.name, item)
+			itemsMap.set(item.slug, item)
 		})
 		this.itemsMap = itemsMap
 
@@ -141,17 +153,17 @@ class StyleFamily {
 		}
 	}
 
-	getStyleTree(): StyleTree {
+	getStyleTree(): StyleBranch {
 		const [category, family] = this.id.split('.')
 		const children = this.items.reduce((childrenTrees, style) => {
-			return {...childrenTrees, [style.name]: style.getStyleTree()}
+			return {...childrenTrees, ...style.getStyleTree()}
 		}, {})
-		return {[category]: {[family]: {...children}}}
+		return {[family]: {...children}}
 	}
 
 	getStyleTreeFlat(): StyleTreeFlat {
 		const [category, family, style] = this.id.split('.')
-		return {category, family, style, value: this.items.map((item) => item.name)}
+		return {category, family, style, value: this.items.map((item) => item.id)}
 	}
 
 	includes(item: string): boolean {
@@ -162,12 +174,12 @@ class StyleFamily {
 		return this.exclude ? this.exclude.indexOf(item) !== -1 : false
 	}
 
-	applyStyles(styles: {name: string; value: string}[]) {
-		styles.forEach(({name, value}) => {
-			const item = this.itemsMap.get(name)
+	applyStyles(styles: StylesFormValue) {
+		Object.keys(styles).forEach((key) => {
+			const item = this.itemsMap.get(key)
 			if (item) {
-				item.setValue(value)
-				this.itemsMap.set(name, item)
+				item.setValue(styles[key])
+				this.itemsMap.set(key, item)
 			}
 		})
 	}
@@ -188,7 +200,7 @@ interface BlockStyles extends StyleCategory {
 	element: StyleFamily
 }
 interface LayoutStyles extends StyleCategory {
-	content: StyleFamily
+	children: StyleFamily
 }
 
 interface StylesApiOptions {
@@ -233,17 +245,21 @@ export class StylesApi {
 	}
 
 	getStyleTree(): StyleTree {
+		// TODO: loop for [X] style families
+		const appStylesTree = this.app?.settings?.getStyleTree() || {}
+		const sharedStylesTree = this.shared?.context?.getStyleTree() || {}
+		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
+		const layoutsStylesTree = this.layouts?.children?.getStyleTree() || {}
+
 		return {
-			...this.app.settings.getStyleTree(),
-			...this.shared.context.getStyleTree(),
-			...this.blocks.element.getStyleTree(),
-			...this.layouts.children.getStyleTree(),
+			app: appStylesTree,
+			shared: sharedStylesTree,
+			blocks: blocksStylesTree,
+			layouts: layoutsStylesTree,
 		}
 	}
 
-	applyStyles(updatedStyles: {
-		[category: string]: {[family: string]: {name: string; value: string}[]}
-	}) {
+	applyStyles(updatedStyles: StylesApiInput) {
 		Object.keys(updatedStyles).map((updatedCategory) => {
 			const category = updatedStyles[updatedCategory]
 			let families: string[] = []
@@ -267,8 +283,8 @@ export class StylesApi {
 					break
 			}
 			families.map((family) => {
-				const updated = category[family]
-				styles[family].applyStyles(updated)
+				const updatedFamily = category[family]
+				styles[family].applyStyles(updatedFamily)
 			})
 		})
 	}
@@ -283,24 +299,24 @@ const app: AppStyles = {
 			new StyleInput({
 				name: 'Brightness',
 				id: 'app.settings.brightness',
-				value: '',
+				value: 'day',
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'day', text: 'day', asset: '☀️'},
-					{id: 'night', text: 'night', asset: '🌙'},
+					{id: 'day', text: 'day', asset: '☀️', value: ''},
+					{id: 'night', text: 'night', asset: '🌙', value: ''},
 				],
 			}),
 			new StyleInput({
 				name: 'Contrast',
 				id: 'app.settings.contrast',
-				value: '',
+				value: 'blend',
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'contrast', text: 'contrast', asset: '🌗'}, // TODO : fix color vars & classes
-					{id: 'blend', text: 'blend', asset: '🌑'}, // TODO: night / day asset option
-					// {id: 'polar', label: 'polar'},
+					{id: 'contrast', text: 'contrast', asset: '🌗', value: ''}, // TODO : fix color vars & classes
+					{id: 'blend', text: 'blend', asset: '🌑', value: ''}, // TODO: night / day asset option
+					// {id: 'polar', label: 'polar', value: ''},
 				],
 			}),
 		],
@@ -337,23 +353,24 @@ const shared: SharedStyles = {
 				layout: 'stack',
 				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
-					{id: 'center', text: 'center', asset: ''},
-					{id: 'burrito', text: 'burrito', asset: ''},
+					{id: 'center', text: 'center', asset: '', value: ''},
+					{id: 'burrito', text: 'burrito', asset: '', value: ''},
 				],
 			}),
 			new StyleInput({
 				name: 'Layout',
 				id: 'shared.context.layout',
-				value: '',
+				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
 				exclude: ['layouts', 'Button', 'Toggle'],
 				items: [
-					{id: 'stack', text: 'stack', asset: ''},
+					{id: 'stack', text: 'stack', asset: '', value: ''},
 					{
 						id: 'switcher',
 						text: 'switcher',
 						asset: '',
+						value: '',
 						// options: [
 						// 	//TODO: display breakpoint options conditionally
 						// 	{
@@ -362,11 +379,11 @@ const shared: SharedStyles = {
 						// 		layout: 'stack',
 						// 		exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 						// 		items: [
-						// 			{id: 'xs', text: 'xs', asset: ''},
-						// 			{id: 'sm', text: 'sm', asset: ''},
-						// 			{id: 'md', text: 'md', asset: ''},
-						// 			{id: 'lg', text: 'lg', asset: ''},
-						// 			{id: 'xl', text: 'xl', asset: ''},
+						// 			{id: 'xs', text: 'xs', asset: '', value: ''},
+						// 			{id: 'sm', text: 'sm', asset: '', value: ''},
+						// 			{id: 'md', text: 'md', asset: '', value: ''},
+						// 			{id: 'lg', text: 'lg', asset: '', value: ''},
+						// 			{id: 'xl', text: 'xl', asset: '', value: ''},
 						// 		],
 						// 	},
 						// ],
@@ -376,30 +393,30 @@ const shared: SharedStyles = {
 			new StyleInput({
 				name: 'Size',
 				id: 'shared.context.size',
-				value: '',
+				value: 'md',
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'xs', text: 'xs', asset: ''},
-					{id: 'sm', text: 'sm', asset: ''},
-					{id: 'md', text: 'md', asset: ''},
-					{id: 'lg', text: 'lg', asset: ''},
-					{id: 'xl', text: 'xl', asset: ''},
+					{id: 'xs', text: 'xs', asset: '', value: ''},
+					{id: 'sm', text: 'sm', asset: '', value: ''},
+					{id: 'md', text: 'md', asset: '', value: ''},
+					{id: 'lg', text: 'lg', asset: '', value: ''},
+					{id: 'xl', text: 'xl', asset: '', value: ''},
 				],
 			}),
 			new StyleInput({
 				name: 'Breakpoint',
 				id: 'shared.context.breakpoint',
-				value: '',
+				value: 'md',
 				input: 'toggle',
 				layout: 'stack',
 				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 				items: [
-					{id: 'xs', text: 'xs', asset: ''},
-					{id: 'sm', text: 'sm', asset: ''},
-					{id: 'md', text: 'md', asset: ''},
-					{id: 'lg', text: 'lg', asset: ''},
-					{id: 'xl', text: 'xl', asset: ''},
+					{id: 'xs', text: 'xs', asset: '', value: ''},
+					{id: 'sm', text: 'sm', asset: '', value: ''},
+					{id: 'md', text: 'md', asset: '', value: ''},
+					{id: 'lg', text: 'lg', asset: '', value: ''},
+					{id: 'xl', text: 'xl', asset: '', value: ''},
 				],
 			}),
 		],
@@ -415,26 +432,52 @@ const blocks: BlockStyles = {
 			new StyleInput({
 				name: 'Color',
 				id: 'blocks.element.color',
-				value: 'primary',
+				value: '',
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'primary', text: 'primary', variant: 'outline', color: 'primary', asset: ''},
-					{id: 'accent', text: 'accent', variant: 'outline', color: 'accent', asset: ''},
-					{id: 'highlight', text: 'highlight', variant: 'outline', color: 'highlight', asset: ''},
+					{
+						id: 'primary',
+						text: 'primary',
+						variant: 'outline',
+						color: 'primary',
+						value: '',
+					},
+					{id: 'accent', text: 'accent', variant: 'outline', color: 'accent', value: ''},
+					{
+						id: 'highlight',
+						text: 'highlight',
+						variant: 'outline',
+						color: 'highlight',
+						value: '',
+					},
 				],
 			}),
 			new StyleInput({
 				name: 'Variant',
 				id: 'blocks.element.variant',
-				value: '',
+				value: 'default',
 				input: 'toggle',
 				layout: 'stack',
 				exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
-					{id: '', text: 'default', asset: ''},
-					{id: 'outline', text: 'outline', asset: ''},
-					{id: 'bare', text: 'bare', asset: ''},
+					{id: 'default', text: 'default', asset: '', value: ''},
+					{id: 'outline', text: 'outline', asset: '', value: ''},
+					{id: 'bare', text: 'bare', asset: '', value: ''},
+				],
+			}),
+			new StyleInput({
+				name: 'Size',
+				id: 'blocks.element.size',
+				value: 'md',
+				input: 'toggle',
+				layout: 'switcher',
+				items: [
+					{id: 'xs', text: 'xs', asset: '', value: ''},
+					{id: 'sm', text: 'sm', asset: '', value: ''},
+					{id: 'md', text: 'md', asset: '', value: ''},
+					{id: 'lg', text: 'lg', asset: '', value: ''},
+					{id: 'xl', text: 'xl', asset: '', value: ''},
 				],
 			}),
 			new StyleInput({
@@ -452,23 +495,9 @@ const blocks: BlockStyles = {
 					'InputFile',
 				],
 				items: [
-					{id: 'eye', text: 'eye', asset: '👁️'},
-					{id: 'love', text: 'love', asset: '❤️'},
-					{id: 'cat', text: 'cat', asset: '🦁'},
-				],
-			}),
-			new StyleInput({
-				name: 'Own Size',
-				id: 'blocks.element.size',
-				value: 'md',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'xs', text: 'xs', asset: ''},
-					{id: 'sm', text: 'sm', asset: ''},
-					{id: 'md', text: 'md', asset: ''},
-					{id: 'lg', text: 'lg', asset: ''},
-					{id: 'xl', text: 'xl', asset: ''},
+					{id: 'cat', text: 'cat', asset: '🦁', value: ''},
+					{id: 'love', text: 'love', asset: '❤️', value: ''},
+					{id: 'sparkles', text: 'sparkles', asset: '✨', value: ''},
 				],
 			}),
 		],
@@ -476,7 +505,7 @@ const blocks: BlockStyles = {
 }
 
 const layouts: LayoutStyles = {
-	content: new StyleFamily({
+	children: new StyleFamily({
 		name: 'Children',
 		id: 'layouts.children',
 		layout: 'switcher',
@@ -489,9 +518,9 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				exclude: ['Sidebar'],
 				items: [
-					{id: 'card', text: 'card', asset: ''},
-					{id: 'form', text: 'form', asset: ''},
-					{id: 'text', text: 'text', asset: ''},
+					{id: 'card', text: 'card', asset: '', value: ''},
+					{id: 'form', text: 'form', asset: '', value: ''},
+					{id: 'text', text: 'text', asset: '', value: ''},
 				],
 			}),
 			new StyleInput({
@@ -502,9 +531,9 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				include: ['Sidebar'],
 				items: [
-					{id: 'card', text: 'card', asset: ''},
-					{id: 'form', text: 'form', asset: ''},
-					{id: 'text', text: 'text', asset: ''},
+					{id: 'card', text: 'card', asset: '', value: ''},
+					{id: 'form', text: 'form', asset: '', value: ''},
+					{id: 'text', text: 'text', asset: '', value: ''},
 				],
 			}),
 			new StyleInput({
@@ -515,9 +544,9 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				include: ['Sidebar'],
 				items: [
-					{id: 'card', text: 'card', asset: ''},
-					{id: 'form', text: 'form', asset: ''},
-					{id: 'text', text: 'text', asset: ''},
+					{id: 'card', text: 'card', asset: '', value: ''},
+					{id: 'form', text: 'form', asset: '', value: ''},
+					{id: 'text', text: 'text', asset: '', value: ''},
 				],
 			}),
 		],

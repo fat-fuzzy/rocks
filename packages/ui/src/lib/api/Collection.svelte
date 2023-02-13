@@ -1,13 +1,12 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {PageData} from './$types'
 	import Sidebar from '../layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 	import {page} from '$app/stores'
 	import {selectedStore} from '../stores/api'
 
-	export let data: PageData
+	export let uiState = '' // TODO: figure out how to avoid this prop drilling
 
 	export let title = ''
 	export let depth = 0
@@ -35,11 +34,11 @@
 		<section slot="main" class={`card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
-				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {data} />
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {uiState} />
 			{/each}
 		</section>
 		<aside slot="side">
-			<Api {title} {category} {data} />
+			<Api {title} {category} {uiState} />
 		</aside>
 	</Sidebar>
 {:else}
@@ -52,7 +51,7 @@
 		<section class={`card:xl inset ${classes}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
-				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {data} />
+				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {uiState} />
 			{/each}
 		</section>
 	</details>
