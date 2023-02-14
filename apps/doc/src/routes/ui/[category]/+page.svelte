@@ -6,10 +6,16 @@
 
 	export let data: PageData
 
+	let uiState = data.uiState
+
 	$: category = $page.params.category
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
 	$: components = category === 'blocks' ? blocks : layouts
 	$: path = $page.url.pathname
+
+	$: {
+		uiState = JSON.parse(data.uiState)
+	}
 </script>
 
 <svelte:head>
@@ -21,4 +27,4 @@
 	<h1>{title}</h1>
 </header>
 
-<Collection {title} depth="1" isPage={true} {components} {path} {category} {data} />
+<Collection {title} depth="1" isPage={true} {components} {path} {category} {uiState} />

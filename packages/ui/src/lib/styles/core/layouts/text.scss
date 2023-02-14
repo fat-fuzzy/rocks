@@ -6,23 +6,28 @@
 [class^='l:text'] {
 	width: 80ch;
 	padding-block-end: var(#{$prefix}-current-size-plus);
+	padding-inline: var(#{$prefix}-current-size);
 	max-width: 100%;
 }
 
-.l\:text > * + h1,
-.l\:text > * + h2,
-.l\:text > * + h3,
-.l\:text > * + h4,
-.l\:text > * + h5 {
+[class^='l:text'] > * + h1,
+[class^='l:text'] > * + h2,
+[class^='l:text'] > * + h3,
+[class^='l:text'] > * + h4,
+[class^='l:text'] > * + h5 {
 	margin-block-start: var(#{$prefix}-s2);
 }
 
-.l\:text > h1 + *,
-.l\:text > h2 + *,
-.l\:text > h3 + *,
-.l\:text > h4 + *,
-.l\:text > h5 + * {
-	margin-block-start: var(#{$prefix}-s0);
+[class^='l:text'] > h1 + *,
+[class^='l:text'] > h2 + *,
+[class^='l:text'] > h3 + *,
+[class^='l:text'] > h4 + *,
+[class^='l:text'] > h5 + * {
+	margin-block-start: var(#{$prefix}-s1);
+}
+
+[class^='l:text'] ul {
+	margin-block: var(#{$prefix}-s0);
 }
 
 .l\:text\:xxs {
@@ -51,4 +56,8 @@
 
 .l\:text\:xxl {
 	width: 110ch;
+}
+
+.align\:center {
+	text-align: center;
 }

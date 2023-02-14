@@ -15,6 +15,8 @@
 	<h1>Fat Fuzzy Log</h1>
 </header>
 
-{#each logs as { meta }}
-	<a class="font:xxl" href={`/log/${meta.slug}`}>{meta.title}</a>
-{/each}
+<div class="l:stack l:text md">
+	{#each logs as { meta }}
+		<a class="font:xxl" href={`/log/${meta.slug}`}>{meta.title}</a>
+	{/each}
+</div>

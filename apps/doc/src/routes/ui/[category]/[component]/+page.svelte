@@ -2,20 +2,28 @@
 	import type {PageData} from './$types'
 	import {page} from '$app/stores'
 	import type {ComponentType} from 'svelte'
-	import {api} from '@fat-fuzzy/ui'
+	import * as ui from '@fat-fuzzy/ui'
 
 	export let data: PageData
 
-	let {Element} = api
+	let {Element} = ui.api
+	let category: string
+	let categoryItems: {[name: string]: ComponentType}
+	let uiState = data.uiState
 
 	let title: string
 	let Component: ComponentType
 
-	$: category = $page.data.category
-	$: categoryItems = $page.data.items
+	$: {
+		category = $page.params.category
+		categoryItems = ui[category]
+	}
 	$: title = $page.params.component
 	$: Component = categoryItems[title]
 	$: path = $page.url.pathname
+	$: {
+		uiState = JSON.parse(data.uiState)
+	}
 </script>
 
 <svelte:head>
@@ -23,4 +31,4 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<Element isPage={true} depth="1" {title} {path} {category} component={Component} {data} />
+<Element isPage={true} depth="1" {title} {path} {category} component={Component} {uiState} />

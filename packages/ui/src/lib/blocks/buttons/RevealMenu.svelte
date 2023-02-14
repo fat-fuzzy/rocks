@@ -16,7 +16,7 @@
 	export let title = 'RevealMenu'
 	export let asset = ''
 	export let align = 'start'
-	export let items = mocks.menu
+	export let items = mocks.menu.map((button) => ({...button, id: `${id}.${button.id}`}))
 
 	let expanded = false
 

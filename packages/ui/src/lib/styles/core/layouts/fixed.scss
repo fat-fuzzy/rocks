@@ -9,7 +9,7 @@
 }
 
 .fixed\:top {
-	padding-block-start: calc(var(#{$prefix}-header-height) + 2 * var(#{$prefix}-header-margin));
+	padding-block-start: calc(var(#{$prefix}-header-height) + 3 * var(#{$prefix}-header-margin));
 }
 
 .fixed\:top > main {

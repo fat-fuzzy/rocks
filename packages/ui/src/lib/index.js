@@ -34,7 +34,7 @@ import RevealNav from './blocks/navs/RevealNav.svelte'
 import Api from './api/Api.svelte'
 import Element from './api/Element.svelte'
 import Collection from './api/Collection.svelte'
-import * as uiOptions from './api/ui-options'
+import * as stylesApi from './api/styles-api'
 
 /**
  * Stores
@@ -90,7 +90,7 @@ const api = {
 	Api,
 	Collection,
 	Element,
-	uiOptions,
+	stylesApi,
 }
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder

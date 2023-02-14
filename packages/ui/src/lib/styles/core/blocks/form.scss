@@ -2,10 +2,6 @@ form * {
 	font-family: var(#{$prefix}-font-family-ui);
 }
 
-fieldset > * + * {
-	margin-block-start: var(#{$prefix}-current-size);
-}
-
 label,
 .feedback {
 	display: block;
@@ -74,43 +70,43 @@ textarea {
 // TODO : cleanup - use "current" size values
 .xxs,
 .xs {
-	legend {
+	> legend {
 		font-size: var(#{$prefix}-font-size-xs);
 		margin-block-end: var(#{$prefix}-size-xs);
 	}
 
-	input,
-	select,
-	textarea {
+	> input,
+	> select,
+	> textarea {
 		font-size: var(#{$prefix}-font-size-xs);
 		padding: var(#{$prefix}-size-xs) var(#{$prefix}-size-sm);
 	}
 
-	label {
+	> label {
 		font-size: var(#{$prefix}-font-size-xxs);
 	}
 
-	.feedback {
+	> .feedback {
 		font-size: var(#{$prefix}-font-size-xxs);
 		min-height: calc(var(#{$prefix}-font-size-xxs) * var(#{$prefix}-ratio));
 	}
 
-	.link {
+	> .link {
 		padding: var(#{$prefix}-size-xxs);
 	}
 
-	.link,
-	.link + *,
-	input + .feedback {
+	> .link,
+	> .link + *,
+	> input + .feedback {
 		margin-block-start: var(#{$prefix}-size-xxs);
 	}
 }
 
 .xxs {
-	legend {
+	> legend {
 		margin-block-end: var(#{$prefix}-size-xxs);
 	}
-	input[type='range'] {
+	> input[type='range'] {
 		font-size: var(#{$prefix}-font-size-xs);
 		padding: calc(var(#{$prefix}-size-xxs) / var(#{$prefix}-ratio));
 		margin-block-start: calc(var(#{$prefix}-size-sm) * var(#{$prefix}-ratio));
@@ -119,134 +115,134 @@ textarea {
 }
 
 .sm {
-	legend {
+	> legend {
 		font-size: var(#{$prefix}-font-size-sm);
 		margin-block-end: var(#{$prefix}-size-sm);
 	}
 
-	input,
-	select,
-	textarea {
+	> input,
+	> select,
+	> textarea {
 		font-size: var(#{$prefix}-font-size-xs);
 		padding: var(#{$prefix}-size-sm) var(#{$prefix}-size-md);
 	}
 
-	label {
+	> label {
 		font-size: var(#{$prefix}-font-size-xs);
 	}
 
-	.feedback {
+	> .feedback {
 		font-size: var(#{$prefix}-font-size-xs);
 		min-height: calc(var(#{$prefix}-font-size-xs) * var(#{$prefix}-ratio));
 	}
 
-	.link {
+	> .link {
 		padding: var(#{$prefix}-size-sm);
 	}
 
-	.link,
+	> .link,
 	.link + *,
-	input + .feedback {
+	> input + .feedback {
 		margin-block-start: var(#{$prefix}-size-xs);
 	}
 }
 
 .md {
-	legend {
+	> legend {
 		font-size: var(#{$prefix}-font-size-md);
 		margin-block-end: var(#{$prefix}-size-md);
 	}
 
-	input,
-	select,
-	textarea {
+	> input,
+	> select,
+	> textarea {
 		font-size: var(#{$prefix}-font-size-sm);
 		padding: var(#{$prefix}-size-md) var(#{$prefix}-size-lg);
 	}
 
-	label {
+	> label {
 		font-size: var(#{$prefix}-font-size-sm);
 	}
 
-	.feedback {
+	> .feedback {
 		font-size: var(#{$prefix}-font-size-sm);
 		min-height: calc(var(#{$prefix}-font-size-sm) * var(#{$prefix}-ratio));
 	}
 
-	.link {
+	> .link {
 		padding: var(#{$prefix}-size-md);
 	}
 
-	.link,
-	.link + *,
+	> .link,
+	> .link + *,
 	input + .feedback {
 		margin-block-start: var(#{$prefix}-size-sm);
 	}
 }
 
 .lg {
-	legend {
+	> legend {
 		font-size: var(#{$prefix}-font-size-lg);
 		margin-block-end: var(#{$prefix}-size-lg);
 	}
 
-	input,
+	> input,
 	// button,
-	select,
-	textarea {
+	> select,
+	> textarea {
 		font-size: var(#{$prefix}-font-size-md);
 		padding: var(#{$prefix}-size-lg) var(#{$prefix}-size-xl);
 	}
 
-	label {
+	> label {
 		font-size: var(#{$prefix}-font-size-md);
 	}
 
-	.feedback {
+	> .feedback {
 		font-size: var(#{$prefix}-font-size-md);
 		min-height: calc(var(#{$prefix}-font-size-md) * var(#{$prefix}-ratio));
 	}
 
-	.link {
+	> .link {
 		padding: var(#{$prefix}-size-lg);
 	}
 
-	.link,
-	.link + *,
+	> .link,
+	> .link + *,
 	input + .feedback {
 		margin-block-start: var(#{$prefix}-size-md);
 	}
 }
 
 .xl {
-	legend {
+	> legend {
 		font-size: var(#{$prefix}-font-size-xl);
 		margin-block-end: var(#{$prefix}-size-xl);
 	}
 
-	input,
-	select,
-	textarea {
+	> input,
+	> select,
+	> textarea {
 		font-size: var(#{$prefix}-font-size-lg);
 		padding: var(#{$prefix}-size-xl) var(#{$prefix}-size-xxl);
 	}
 
-	label {
+	> label {
 		font-size: var(#{$prefix}-font-size-lg);
 	}
 
-	.feedback {
+	> .feedback {
 		font-size: var(#{$prefix}-font-size-lg);
 		min-height: calc(var(#{$prefix}-font-size-lg) * var(#{$prefix}-ratio));
 	}
 
-	.link {
+	> .link {
 		padding: var(#{$prefix}-size-lg);
 	}
 
-	.link,
-	.link + *,
-	input + .feedback {
+	> .link,
+	> .link + *,
+	> input + .feedback {
 		margin-block-start: var(#{$prefix}-size-lg);
 	}
 }
