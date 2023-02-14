@@ -2,10 +2,6 @@ form * {
 	font-family: var(#{$prefix}-font-family-ui);
 }
 
-fieldset > * + * {
-	margin-block-start: var(#{$prefix}-current-size);
-}
-
 label,
 .feedback {
 	display: block;

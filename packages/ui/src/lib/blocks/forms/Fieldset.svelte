@@ -5,8 +5,9 @@
 	export let type = ''
 	export let size = 'sm'
 	export let layout = 'stack'
+	export let container = 'burrito'
 
-	$: className = `l:${layout} ${size} ${type}`
+	$: className = `l:${layout} l:${container} ${size} ${type}`
 </script>
 
 <fieldset {id} {name} data-key={id} class={className}>

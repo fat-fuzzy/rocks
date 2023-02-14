@@ -3,33 +3,33 @@
 .l\:burrito {
 	margin-left: auto;
 	margin-right: auto;
-	min-width: calc(100% - calc(2 * var(#{$prefix}-gap))); // width of parent minus base padding
+	max-width: calc(100% - calc(2 * var(#{$prefix}-gap))); // width of parent minus base padding
 }
 
 .l\:burrito.xxs {
-	min-width: var(#{$prefix}-sidebar-width-xxs); // TODO : generate (selector + style) by size
+	max-width: var(#{$prefix}-sidebar-width-xxs); // TODO : generate (selector + style) by size
 }
 
 .l\:burrito.xs {
-	min-width: var(#{$prefix}-sidebar-width-xs); // TODO : generate (selector + style) by size
+	max-width: var(#{$prefix}-sidebar-width-xs); // TODO : generate (selector + style) by size
 }
 
 .l\:burrito.sm {
-	min-width: var(#{$prefix}-sidebar-width-sm); // TODO : generate (selector + style) by size
+	max-width: var(#{$prefix}-sidebar-width-sm); // TODO : generate (selector + style) by size
 }
 
 .l\:burrito.md {
-	min-width: var(#{$prefix}-sidebar-width-md); // TODO : generate (selector + style) by size
+	max-width: var(#{$prefix}-sidebar-width-md); // TODO : generate (selector + style) by size
 }
 
 .l\:burrito.lg {
-	min-width: var(#{$prefix}-sidebar-width-lg); // TODO : generate (selector + style) by size
+	max-width: var(#{$prefix}-sidebar-width-lg); // TODO : generate (selector + style) by size
 }
 
 .l\:burrito.xl {
-	min-width: var(#{$prefix}-sidebar-width-xl); // TODO : generate (selector + style) by size
+	max-width: var(#{$prefix}-sidebar-width-xl); // TODO : generate (selector + style) by size
 }
 
 .l\:burrito.xxl {
-	min-width: var(#{$prefix}-sidebar-width-xxl); // TODO : generate (selector + style) by size
+	max-width: var(#{$prefix}-sidebar-width-xxl); // TODO : generate (selector + style) by size
 }
