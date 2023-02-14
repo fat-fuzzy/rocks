@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>Fat Fuzzy UI | {title}</title>
+	<title>Fat Fuzzy Rocks | {title}</title>
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 

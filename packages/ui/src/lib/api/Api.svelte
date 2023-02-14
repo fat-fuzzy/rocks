@@ -1,16 +1,18 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
+	import type {StyleTree} from './styles-api'
 	import {enhance} from '$app/forms'
-	import {selectedStore} from '../stores/api'
 	import format from '../utils/format'
 	import ToggleMenu from '../blocks/buttons/ToggleMenu.svelte'
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
 	import {getDefaultOptions} from './styles-api'
+	import {selectedStore} from '../stores/api'
+
+	export let uiState: StyleTree // TODO: figure out how to avoid this prop drilling
 
 	export let title = ''
-	export let uiState = ''
 	export let category = 'app'
 	export let page = ''
 	export let method = 'POST'
@@ -18,21 +20,31 @@
 	export let update = 'update'
 	export let reset = 'reset'
 
-	const apiOptions = getDefaultOptions()
+	let apiLayout = 'switcher'
+	let apiSize = 'xxs'
+	let apiVariant = ''
+	let selected = uiState
+
+	let ApiOptions = getDefaultOptions()
+	let styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
+	let formOptions = styleCategories.map((cat) => ApiOptions.getCategoryOptions(cat))
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
+		toggle: ToggleMenu,
 	}
 
-	const updateSelected = (payload) => {
-		const toUpdate = payload.items.reduce((values, option) => {
-			return {...values, [option.name]: option.value}
-		}, selected)
-
-		selectedStore.update((data) => {
-			return {...data, ...toUpdate}
-		})
+	const updateSelected = (payload: {name: string; items: {id: string; value: string}[]}) => {
+		let styleValues = payload.items.reduce((styles: StyleTree, {id, value}) => {
+			const [category, family, style, name] = id.split('.')
+			const styleValue = {[style]: value}
+			const familyValue = {[family]: styleValue}
+			return {...styles, [category]: familyValue}
+		}, {})
+		selected = styleValues
+		ApiOptions.applyStyles(selected)
+		selectedStore.set(ApiOptions.getStyleTree())
 	}
 
 	function handleInput(event, name) {
@@ -64,17 +76,15 @@
 		updateSelected(payload)
 	}
 
-	function handleToggle(event, familyName, id) {
+	function handleToggle(event: CustomEvent, familyName: string, id: string) {
 		const selected = event.detail.selected // TODO: no multiple values for now
-		const [category, family, style] = id.split('.')
 		if (selected.length) {
 			const payload = {
 				name: familyName,
 				items: [
 					{
 						id,
-						name: style, // TODO: clean this
-						value: selected[0].pressed ? selected[0].id : '',
+						value: selected[0].pressed ? selected[0].value : '',
 					},
 				],
 			}
@@ -82,16 +92,11 @@
 		}
 	}
 
-	let apiLayout = 'switcher'
-	let apiSize = 'xxs'
-	let apiVariant = ''
-
-	$: selected = $selectedStore
-	$: styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
 	$: {
-		uiState && apiOptions.applyStyles(JSON.parse(uiState))
+		selected && ApiOptions.applyStyles(selected)
 	}
-
+	$: styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
+	$: formOptions = styleCategories.map((cat) => ApiOptions.getCategoryOptions(cat))
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard
@@ -119,8 +124,7 @@
 	}}
 	class={`l:${apiLayout}`}
 >
-	{#each styleCategories as styleCategory}
-		{@const styles = apiOptions.getCategoryOptions(styleCategory)}
+	{#each formOptions as styles}
 		{#if styles}
 			{@const styleFamilies = Object.keys(styles)}
 			{#each styleFamilies as familyName}
@@ -133,21 +137,21 @@
 						layout={`${styleFamily.layout}`}
 						name={familyName}
 					>
-						{#each styleFamily.items as styleOption}
-							{@const {name, input, value, items, layout} = styleOption}
-							{#if styleOption.includes(title) && !styleOption.excludes(category) && !styleOption.excludes(title)}
+						{#each styleFamily.items as styleInput}
+							{@const {input, value, items} = styleInput}
+							{#if styleInput.includes(title) && !styleInput.excludes(category) && !styleInput.excludes(title)}
 								{#if input === 'radio' || input === 'checkbox'}
 									{@const InputComponent = COMPONENT_IMPORTS[input]}
 									{#each items as { id, ...inputProps }}
 										{@const checked = value && id === value}
 										<svelte:component
 											this={InputComponent}
-											id={`${input}-${id}`}
+											id={styleInput.id}
 											{...inputProps}
-											name={styleOption.id}
+											name={styleInput.id}
 											{checked}
+											layout={styleInput.layout || ''}
 											variant={apiVariant || ''}
-											layout={layout || ''}
 											size={apiSize || ''}
 											on:input={(event) => handleInput(event, familyName)}
 										/>
@@ -155,35 +159,37 @@
 								{/if}
 								{#if input === 'toggle'}
 									{@const updatedItems = items.map((i) => {
-										return {
+										const pressed = value !== '' && i.value === value
+										const updatedItem = {
 											...i,
-											name: styleOption.id,
 											text: i.text || '',
 											asset: i.asset || '',
-											pressed: value && i.id === value,
+											initial: pressed,
+											name: i.id,
 										}
+										return updatedItem
 									})}
 									<ToggleMenu
-										id={`${styleFamily.id}.${styleOption.id}`}
-										title={name !== familyName ? name : ''}
+										id={styleInput.id}
+										title={styleInput.name !== familyName ? styleInput.name : ''}
 										items={updatedItems}
-										{layout}
-										size={apiSize}
 										{page}
+										layout={styleInput.layout || ''}
 										formaction={update}
-										on:click={(event) => handleToggle(event, familyName, styleOption.id)}
+										size={apiSize || ''}
+										on:click={(event) => handleToggle(event, familyName, styleInput.id)}
 									/>
 								{/if}
 								{#if input === 'datalist'}
-									<label for={`choice-${name}`} class="l:stack">
-										{`Select ${name}`}
+									<label for={`choice-${styleInput.name}`} class="l:stack">
+										{`Select ${styleInput.name}`}
 										<input
-											list={`${styleOption.name}-${name}`}
-											id={styleOption.id}
-											name={styleOption.id}
-											on:input={(event) => handleSelect(event, familyName, name)}
+											list={`${styleInput.name}-${styleInput.name}`}
+											id={styleInput.id}
+											name={styleInput.id}
+											on:input={(event) => handleSelect(event, familyName, styleInput.name)}
 										/>
-										<datalist id={`${styleOption.name}-${name}`}>
+										<datalist id={`${styleInput.name}-${styleInput.name}`}>
 											{#each items as { id, text, asset }}
 												<option {id} value={asset}>
 													{format.formatLabel(text || '', asset)}

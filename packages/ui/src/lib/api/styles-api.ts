@@ -182,6 +182,7 @@ class StyleFamily {
 				this.itemsMap.set(key, item)
 			}
 		})
+		this.items = Array.from(this.itemsMap.values())
 	}
 }
 
@@ -303,8 +304,8 @@ const app: AppStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'day', text: 'day', asset: '☀️', value: ''},
-					{id: 'night', text: 'night', asset: '🌙', value: ''},
+					{id: 'app.settings.brightness.day', text: 'day', asset: '☀️', value: 'day'},
+					{id: 'app.settings.brightness.night', text: 'night', asset: '🌙', value: 'night'},
 				],
 			}),
 			new StyleInput({
@@ -314,8 +315,8 @@ const app: AppStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'contrast', text: 'contrast', asset: '🌗', value: ''}, // TODO : fix color vars & classes
-					{id: 'blend', text: 'blend', asset: '🌑', value: ''}, // TODO: night / day asset option
+					{id: 'app.settings.contrast.contrast', text: 'contrast', asset: '🌗', value: 'contrast'}, // TODO : fix color vars & classes
+					{id: 'app.settings.contrast.blend', text: 'blend', asset: '🌑', value: 'blend'}, // TODO: night / day asset option
 					// {id: 'polar', label: 'polar', value: ''},
 				],
 			}),
@@ -344,6 +345,7 @@ const shared: SharedStyles = {
 		name: 'Context',
 		layout: 'switcher',
 		id: 'shared.context',
+		exclude: ['Button', 'Toggle'],
 		items: [
 			new StyleInput({
 				name: 'Container',
@@ -353,8 +355,8 @@ const shared: SharedStyles = {
 				layout: 'stack',
 				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
-					{id: 'center', text: 'center', asset: '', value: ''},
-					{id: 'burrito', text: 'burrito', asset: '', value: ''},
+					{id: 'shared.context.container.center', text: 'center', asset: '', value: 'center'},
+					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
 				],
 			}),
 			new StyleInput({
@@ -365,12 +367,12 @@ const shared: SharedStyles = {
 				layout: 'stack',
 				exclude: ['layouts', 'Button', 'Toggle'],
 				items: [
-					{id: 'stack', text: 'stack', asset: '', value: ''},
+					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
-						id: 'switcher',
+						id: 'shared.context.layout.switcher',
 						text: 'switcher',
 						asset: '',
-						value: '',
+						value: 'switcher',
 						// options: [
 						// 	//TODO: display breakpoint options conditionally
 						// 	{
@@ -397,11 +399,11 @@ const shared: SharedStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				items: [
-					{id: 'xs', text: 'xs', asset: '', value: ''},
-					{id: 'sm', text: 'sm', asset: '', value: ''},
-					{id: 'md', text: 'md', asset: '', value: ''},
-					{id: 'lg', text: 'lg', asset: '', value: ''},
-					{id: 'xl', text: 'xl', asset: '', value: ''},
+					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'shared.context.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'shared.context.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 			new StyleInput({
@@ -412,11 +414,11 @@ const shared: SharedStyles = {
 				layout: 'stack',
 				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 				items: [
-					{id: 'xs', text: 'xs', asset: '', value: ''},
-					{id: 'sm', text: 'sm', asset: '', value: ''},
-					{id: 'md', text: 'md', asset: '', value: ''},
-					{id: 'lg', text: 'lg', asset: '', value: ''},
-					{id: 'xl', text: 'xl', asset: '', value: ''},
+					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'shared.context.breakpoint.md', text: 'md', asset: '', value: 'md'},
+					{id: 'shared.context.breakpoint.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'shared.context.breakpoint.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 		],
@@ -437,19 +439,25 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				items: [
 					{
-						id: 'primary',
+						id: 'blocks.element.color.primary',
 						text: 'primary',
 						variant: 'outline',
 						color: 'primary',
-						value: '',
+						value: 'primary',
 					},
-					{id: 'accent', text: 'accent', variant: 'outline', color: 'accent', value: ''},
 					{
-						id: 'highlight',
+						id: 'blocks.element.color.accent',
+						text: 'accent',
+						variant: 'outline',
+						color: 'accent',
+						value: 'accent',
+					},
+					{
+						id: 'blocks.element.color.highlight',
 						text: 'highlight',
 						variant: 'outline',
 						color: 'highlight',
-						value: '',
+						value: 'highlight',
 					},
 				],
 			}),
@@ -461,9 +469,9 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
-					{id: 'default', text: 'default', asset: '', value: ''},
-					{id: 'outline', text: 'outline', asset: '', value: ''},
-					{id: 'bare', text: 'bare', asset: '', value: ''},
+					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
+					{id: 'blocks.element.variant.outline', text: 'outline', asset: '', value: 'outline'},
+					{id: 'blocks.element.variant.bare', text: 'bare', asset: '', value: 'bare'},
 				],
 			}),
 			new StyleInput({
@@ -473,11 +481,11 @@ const blocks: BlockStyles = {
 				input: 'toggle',
 				layout: 'switcher',
 				items: [
-					{id: 'xs', text: 'xs', asset: '', value: ''},
-					{id: 'sm', text: 'sm', asset: '', value: ''},
-					{id: 'md', text: 'md', asset: '', value: ''},
-					{id: 'lg', text: 'lg', asset: '', value: ''},
-					{id: 'xl', text: 'xl', asset: '', value: ''},
+					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'blocks.element.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'blocks.element.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'blocks.element.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 			new StyleInput({
@@ -495,9 +503,9 @@ const blocks: BlockStyles = {
 					'InputFile',
 				],
 				items: [
-					{id: 'cat', text: 'cat', asset: '🦁', value: ''},
-					{id: 'love', text: 'love', asset: '❤️', value: ''},
-					{id: 'sparkles', text: 'sparkles', asset: '✨', value: ''},
+					{id: 'blocks.element.emoji.cat', text: 'cat', asset: '🦁', value: 'cat'},
+					{id: 'blocks.element.emoji.love', text: 'love', asset: '❤️', value: 'love'},
+					{id: 'blocks.element.emoji.sparkles', text: 'sparkles', asset: '✨', value: 'sparkles'},
 				],
 			}),
 		],
@@ -518,9 +526,9 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				exclude: ['Sidebar'],
 				items: [
-					{id: 'card', text: 'card', asset: '', value: ''},
-					{id: 'form', text: 'form', asset: '', value: ''},
-					{id: 'text', text: 'text', asset: '', value: ''},
+					{id: 'layouts.children.content.card', text: 'card', asset: '', value: 'card'},
+					{id: 'layouts.children.content.form', text: 'form', asset: '', value: 'form'},
+					{id: 'layouts.children.content.text', text: 'text', asset: '', value: 'text'},
 				],
 			}),
 			new StyleInput({
@@ -531,9 +539,9 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				include: ['Sidebar'],
 				items: [
-					{id: 'card', text: 'card', asset: '', value: ''},
-					{id: 'form', text: 'form', asset: '', value: ''},
-					{id: 'text', text: 'text', asset: '', value: ''},
+					{id: 'layouts.children.side.card', text: 'card', asset: '', value: 'card'},
+					{id: 'layouts.children.side.form', text: 'form', asset: '', value: 'form'},
+					{id: 'layouts.children.side.text', text: 'text', asset: '', value: 'text'},
 				],
 			}),
 			new StyleInput({
@@ -544,9 +552,9 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				include: ['Sidebar'],
 				items: [
-					{id: 'card', text: 'card', asset: '', value: ''},
-					{id: 'form', text: 'form', asset: '', value: ''},
-					{id: 'text', text: 'text', asset: '', value: ''},
+					{id: 'layouts.children.main.card', text: 'card', asset: '', value: 'card'},
+					{id: 'layouts.children.main.form', text: 'form', asset: '', value: 'form'},
+					{id: 'layouts.children.main.text', text: 'text', asset: '', value: 'text'},
 				],
 			}),
 		],
@@ -559,7 +567,7 @@ export const DEFAULT_STYLES: StyleTree = {
 	app: {
 		settings: {
 			brightness: 'day',
-			contrast: 'low',
+			contrast: 'blend',
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {
