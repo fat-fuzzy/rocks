@@ -50,7 +50,7 @@
 		</aside>
 	</Sidebar>
 {:else}
-	<details>
+	<details class="l:stack md">
 		<summary class="l:switcher bp:xs card:lg box bg:primary:light">
 			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 				{category}

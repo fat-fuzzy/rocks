@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onMount, type ComponentType} from 'svelte'
+	import type {ComponentType} from 'svelte'
 	import {page} from '$app/stores'
 	import Api from './Api.svelte'
 	import Block from './Block.svelte'
@@ -37,9 +37,7 @@
 		selected = $selectedStore
 		brightness = selected.app?.settings.brightness ?? brightness
 		contrast = selected.app?.settings.contrast ?? contrast
-		container = selected.shared?.context.container
-			? `l:${selected.shared?.context.container} inset`
-			: ''
+		container = selected.shared?.context.container ? `l:${selected.shared?.context.container}` : ''
 		layout = selected.shared?.context.layout ? `l:${selected.shared?.context.layout}` : ''
 		breakpoint = selected.shared?.context.breakpoint
 			? `bp:${selected.shared?.context.breakpoint}`
@@ -47,7 +45,7 @@
 		size = selected.shared?.context.size ?? ''
 	}
 	$: appSettings = `${brightness} ${contrast}`
-	$: layoutContext = `${container} ${breakpoint}`
+	$: layoutContext = `${container} ${breakpoint} ${size} ${layout}`
 </script>
 
 {#if !isPage}
