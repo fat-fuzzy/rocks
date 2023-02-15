@@ -1,0 +1,41 @@
+details {
+	// TODO
+}
+
+details > summary {
+	cursor: pointer;
+	display: inline-block;
+}
+
+.day details > summary {
+	color: var(#{$prefix}-color-white);
+	background-color: var(#{$prefix}-current-accent);
+	font-weight: var(#{$prefix}-font-weight-ui);
+}
+.night details > summary {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-highlight);
+}
+
+details > summary::before {
+	content: '👉';
+	margin-inline-end: var(#{$prefix}-s-1);
+}
+
+details > p {
+	// TODO
+}
+
+.day details[open] > summary {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-accent-light);
+}
+.night details[open] > summary {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-highlight-light);
+}
+
+details[open] > summary::before {
+	content: '👇';
+	margin-inline-end: var(#{$prefix}-s-1);
+}

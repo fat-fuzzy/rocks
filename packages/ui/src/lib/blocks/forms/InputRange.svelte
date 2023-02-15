@@ -28,8 +28,10 @@
 </script>
 
 <label for={inputId} class={classes}>
-	{label}:
-	{value}
+	<span class={`font:${size}`}>
+		{label}:
+		{value}
+	</span>
 	<input
 		{id}
 		data-test={`${id}-range`}

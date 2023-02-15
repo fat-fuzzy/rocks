@@ -16,23 +16,36 @@
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'app'
-	let classes = ''
 	let selected = uiState
+
+	let brightness = ''
+	let contrast = ''
+	let container = ''
+
 	// TODO: color code sections
 	// TODO; tokens section
 	// TODO: composition section
 	// TODO: feedback colors & component
-	$: selected = $selectedStore
+
+	$: {
+		selected = $selectedStore
+		// App settings (user controlled)
+		brightness = selected.app?.settings.brightness ?? brightness
+		contrast = selected.app?.settings.contrast ?? contrast
+		// Container options
+		// - [container + size] work together
+		container = selected.shared?.context.container ?? container
+	}
 	$: componentNames = Object.keys(components)
 	$: brightness = selected.app?.settings.brightness ?? ''
 	$: contrast = selected.app?.settings.contrast ?? ''
-	$: classes = `${brightness} ${contrast} l:${layout} bp:xs`
+	$: classes = `card:xl inset l:${layout} bp:xs ${brightness} ${contrast}`
 	$: titleDepth = Number(depth) + 1
 </script>
 
 {#if isPage}
 	<Sidebar size="xs" align="end">
-		<section slot="main" class={`card:xl inset ${classes}`}>
+		<section slot="main" class={classes}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element
@@ -50,13 +63,12 @@
 		</aside>
 	</Sidebar>
 {:else}
-	<details class="l:stack md">
-		<summary class="l:switcher bp:xs card:lg box bg:primary:light">
-			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
-				{category}
-			</svelte:element>
-		</summary>
-		<section class={`card:xl inset ${classes}`}>
+	<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+		{category}
+	</svelte:element>
+	<details class="l:stack sm">
+		<summary class="card:lg box">{category} collection</summary>
+		<section class={classes}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element
