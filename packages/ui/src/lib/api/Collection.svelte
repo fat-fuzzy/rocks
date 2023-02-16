@@ -37,8 +37,6 @@
 		container = selected.shared?.context.container ?? container
 	}
 	$: componentNames = Object.keys(components)
-	$: brightness = selected.app?.settings.brightness ?? ''
-	$: contrast = selected.app?.settings.contrast ?? ''
 	$: classes = `card:xl inset l:${layout} bp:xs ${brightness} ${contrast}`
 	$: titleDepth = Number(depth) + 1
 </script>

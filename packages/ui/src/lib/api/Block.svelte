@@ -27,4 +27,13 @@
 	}
 </script>
 
-<svelte:component this={component} id={title} {color} {variant} {size} {layout} {breakpoint} />
+<svelte:component
+	this={component}
+	id={title}
+	{title}
+	{color}
+	{variant}
+	{size}
+	{layout}
+	{breakpoint}
+/>

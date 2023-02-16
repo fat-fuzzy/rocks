@@ -43,6 +43,7 @@ import * as gfx from './stores/gfx'
 import * as theme from './stores/theme'
 import * as ui from './stores/ui'
 import * as intl from './stores/intl'
+import * as stylesStore from './stores/api'
 
 /**
  * Utilities
@@ -91,6 +92,7 @@ const api = {
 	Collection,
 	Element,
 	stylesApi,
+	stylesStore,
 }
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder

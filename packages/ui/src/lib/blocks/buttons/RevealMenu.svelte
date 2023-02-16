@@ -13,7 +13,7 @@
 	export let variant = ''
 	export let color = ''
 	export let id = 'reveal-menu'
-	export let title = 'RevealMenu'
+	export let title = ''
 	export let asset = ''
 	export let align = 'start'
 	export let items = mocks.menu.map((button) => ({...button, id: `${id}.${button.id}`}))
@@ -29,6 +29,7 @@
 	}
 
 	let clicked = ''
+	let innerVariant = ''
 
 	export let onClick = (event) => {
 		if (browser) {
@@ -39,8 +40,13 @@
 			clicked,
 		})
 	}
-
+	const VARIANT_MATCH: {[key: string]: string} = {
+		outline: 'bare',
+		bare: 'outline',
+		default: 'outline',
+	}
 	$: show = expanded ? 'show card:lg layer' : 'hide'
+	$: innerVariant = VARIANT_MATCH[variant]
 </script>
 
 <menu
@@ -61,7 +67,7 @@
 		<menu class={`l:${layout} ${size}`}>
 			{#each items as buttonProps}
 				<li>
-					<Button {onClick} {...buttonProps} />
+					<Button {onClick} {...buttonProps} variant={innerVariant} {color} />
 				</li>
 			{/each}
 		</menu>
