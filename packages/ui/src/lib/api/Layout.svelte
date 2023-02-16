@@ -11,23 +11,35 @@
 	export let component: ComponentType
 
 	let selected = uiState
+	let size = '' // element's own size
+	let breakpoint = '' // element's own breakpoint
+	let content = ''
+	let sideContent = ''
+	let mainContent = ''
 
-	$: selected = $selectedStore
-	$: content = selected.layouts?.children.content ?? 'card'
-	$: sideContent = selected.layouts?.children.side ?? 'card'
-	$: mainContent = selected.layouts?.children.main ?? 'text'
-	$: size = selected.shared?.context.size ?? ''
+	$: {
+		selected = $selectedStore
+		// Element options
+		size = selected.shared?.context.size ?? ''
+		// Container options
+		// - [container + size] work together
+		breakpoint = selected.shared?.context.breakpoint ?? breakpoint
+		// Content options
+		content = selected.layouts?.children.content ?? 'card'
+		sideContent = selected.layouts?.children.side ?? 'card'
+		mainContent = selected.layouts?.children.main ?? 'text'
+	}
 </script>
 
 {#if !isPage}
 	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {...selected}>
+		<svelte:component this={component} id={title} {size}>
 			<div slot="side">
 				{#if sideContent === 'text'}
 					{mocks[sideContent]}
 				{:else if sideContent === 'card' || sideContent === 'form'}
 					{#each mocks[sideContent] as item}
-						<div class={`card box ${item} ${size}`}>{item}</div>
+						<div class={`card box ${item}`}>{item}</div>
 					{/each}
 				{/if}
 			</div>
@@ -36,30 +48,30 @@
 					{mocks[mainContent]}
 				{:else if mainContent === 'card' || mainContent === 'form'}
 					{#each mocks[mainContent] as item}
-						<div class={`card box ${item} ${size}`}>{item}</div>
+						<div class={`card box ${item}`}>{item}</div>
 					{/each}
 				{/if}
 			</div>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {...selected}>
+		<svelte:component this={component} id={title} {size} {breakpoint}>
 			{#if content === 'text'}
 				{mocks[content]}
 			{:else if content === 'card' || content === 'form'}
 				{#each mocks[content] as item}
-					<div class={`card box ${item} ${size}`}>{item}</div>
+					<div class={`card box ${item}`}>{item}</div>
 				{/each}
 			{/if}
 		</svelte:component>
 	{/if}
 {:else if title === 'Sidebar'}
-	<svelte:component this={component} id={title}>
+	<svelte:component this={component} id={title} {size} {breakpoint}>
 		<div slot="side">
 			{#if sideContent === 'text'}
 				{mocks[sideContent]}
 			{:else if sideContent === 'card' || sideContent === 'form'}
 				{#each mocks[sideContent] as item}
-					<div class={`card box ${item} ${size}`}>{item}</div>
+					<div class={`card box ${item}`}>{item}</div>
 				{/each}
 			{/if}
 		</div>
@@ -68,18 +80,18 @@
 				{mocks[mainContent]}
 			{:else if mainContent === 'card' || mainContent === 'form'}
 				{#each mocks[mainContent] as item}
-					<div class={`card box ${item} ${size}`}>{item}</div>
+					<div class={`card box ${item}`}>{item}</div>
 				{/each}
 			{/if}
 		</div>
 	</svelte:component>
 {:else}
-	<svelte:component this={component} id={title} {...selected}>
+	<svelte:component this={component} id={title} {size} {breakpoint}>
 		{#if content === 'text'}
 			{mocks[content]}
 		{:else if content === 'card' || content === 'form'}
 			{#each mocks[content] as item}
-				<div class={`card box ${item} ${size}`}>{item}</div>
+				<div class={`card box ${item}`}>{item}</div>
 			{/each}
 		{/if}
 	</svelte:component>

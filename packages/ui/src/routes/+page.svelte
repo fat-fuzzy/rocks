@@ -2,7 +2,7 @@
 	import {theme} from '$lib/stores/theme'
 	let variant = ``
 
-	$: variant = $theme ? `bg:accent:light` : `bg:highlight`
+	$: variant = $theme ? `bg:accent` : `bg:highlight`
 </script>
 
 <svelte:head>
@@ -17,7 +17,7 @@
 
 <section class="l:text:md l:center">
 	<h2>✨ Highlights</h2>
-	<ul class="l:stack xl" role="group">
+	<ul class="l:stack xl">
 		<li class={`card align:center ${variant}`}>
 			<span>👾</span>
 			<a data-sveltekit-preload-data href="/play"> Play</a>

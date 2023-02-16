@@ -14,11 +14,11 @@
 	export let multiple = true
 
 	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
-	$: hintClasses = `form:element font:sm ${color} ${variant} ${align}`
+	$: hintClasses = `form:element font:${size}:minus ${color} ${variant} ${align}`
 </script>
 
 <label for={id} class={classes}>
-	{label}
+	<span class={`font:${size} ${color}`}>{label}</span>
 	<input
 		type="file"
 		{id}
@@ -26,6 +26,7 @@
 		accept={fileType}
 		aria-describedby={/* TODO: check is this correct? */ hint ? `${id}-hint` : ''}
 		{multiple}
+		class={`bg:${color}`}
 	/>
 </label>
 {#if hint}<p id={`${id}-hint`} class={hintClasses}>{hint}</p> {/if}

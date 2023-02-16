@@ -137,33 +137,62 @@ a:hover {
 .bg\:accent a {
 	color: var(#{$prefix}-color-light);
 }
+.bg\:accent\:light a {
+	color: var(#{$prefix}-color-dark);
+}
+.bg\:accent\:lighter a {
+	color: var(#{$prefix}-color-accent);
+}
 .bg\:accent a:visited {
 	color: var(#{$prefix}-color-light);
 	text-decoration-color: var(#{$prefix}-color-light);
 }
-.bg\:accent a:hover {
+.bg\:accent\:light a:visited {
+	color: var(#{$prefix}-color-dark);
+	text-decoration-color: var(#{$prefix}-color-dark);
+}
+.bg\:accent\:lighter a:visited {
+	color: var(#{$prefix}-color-accent);
+	text-decoration-color: var(#{$prefix}-color-accent);
+}
+.bg\:accent a:hover,
+.bg\:accent\:light a:hover,
+.bg\:accent\:lighter a:hover {
 	color: var(#{$prefix}-current-accent);
 	background-color: var(#{$prefix}-color-light);
 	text-decoration-color: var(#{$prefix}-current-accent);
 }
-.bg\:accent a:focus {
+.bg\:accent a:focus,
+.bg\:accent\:light a:focus {
 	outline-color: var(#{$prefix}-color-light);
 }
 
-.bg\:highlight a {
+.bg\:accent\:lighter a:focus {
+	outline-color: var(#{$prefix}-color-accent);
+}
+
+.bg\:highlight a,
+.bg\:highlight\:light a,
+.bg\:highlight\:lighter a {
 	color: var(#{$prefix}-current-highlight-dark); // TODO: check this
 }
-.bg\:highlight a:visited {
+.bg\:highlight a:visited,
+.bg\:highlight\:light a:visited,
+.bg\:highlight\:lighter a:visited {
 	color: var(#{$prefix}-current-color);
 	text-decoration-color: var(#{$prefix}-current-highlight-dark);
 }
-.bg\:highlight a:hover {
+.bg\:highlight a:hover,
+.bg\:highlight\:light a:hover,
+.bg\:highlight\:lighter a:hover {
 	color: var(#{$prefix}-color-light);
 	background-color: inherit;
 	text-decoration-color: var(#{$prefix}-current-dark);
 }
-.bg\:highlight a:focus {
-	outline-color: var(#{$prefix}-color-hightlight--dark);
+.bg\:highlight a:focus,
+.bg\:highlight\:light a:focus,
+.bg\:highlighter\:light a:focus {
+	outline-color: var(#{$prefix}-color-highlight--dark);
 }
 
 .primary:focus {

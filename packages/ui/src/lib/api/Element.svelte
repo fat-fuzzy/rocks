@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onMount, type ComponentType} from 'svelte'
+	import type {ComponentType} from 'svelte'
 	import {page} from '$app/stores'
 	import Api from './Api.svelte'
 	import Block from './Block.svelte'
@@ -28,26 +28,20 @@
 	let brightness = ''
 	let contrast = ''
 	let container = ''
-	let breakpoint = ''
-	let layout = ''
-	let size = ''
+	let size = '' // Container size
 
-	// $: families = Object.keys(category)
 	$: {
 		selected = $selectedStore
+		// App settings (user controlled)
 		brightness = selected.app?.settings.brightness ?? brightness
 		contrast = selected.app?.settings.contrast ?? contrast
-		container = selected.shared?.context.container
-			? `l:${selected.shared?.context.container} inset`
-			: ''
-		layout = selected.shared?.context.layout ? `l:${selected.shared?.context.layout}` : ''
-		breakpoint = selected.shared?.context.breakpoint
-			? `bp:${selected.shared?.context.breakpoint}`
-			: ''
-		size = selected.shared?.context.size ?? ''
+		// Container options
+		// - [container + size] work together
+		container = selected.shared?.context.container ?? container
+		size = selected.shared?.context.size ?? size
 	}
 	$: appSettings = `${brightness} ${contrast}`
-	$: layoutContext = `${container} ${breakpoint}`
+	$: containerContext = `l:${container} ${size}`
 </script>
 
 {#if !isPage}
@@ -57,7 +51,7 @@
 				<span class="font:xs">🔗</span>&nbsp;{title}
 			</svelte:element>
 		</a>
-		<div class={layoutContext}>
+		<div class={containerContext}>
 			<svelte:component
 				this={ApiElement[category]}
 				{isPage}
@@ -73,7 +67,7 @@
 	</header>
 	<article class="l:sidebar xs align:end">
 		<main class={`l:main card:xl inset ${appSettings}`}>
-			<div class={layoutContext}>
+			<div class={containerContext}>
 				<svelte:component
 					this={ApiElement[category]}
 					{isPage}

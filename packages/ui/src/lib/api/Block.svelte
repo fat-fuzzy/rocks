@@ -8,9 +8,32 @@
 	export let component: ComponentType
 
 	let selected = uiState
+	let breakpoint = ''
+	let layout = ''
+	let color = ''
+	let variant = ''
+	let size = '' // element's own size
 
-	$: selected = $selectedStore
-	$: styles = selected.blocks?.element ?? {}
+	$: {
+		selected = $selectedStore
+		// Block options
+		variant = selected.blocks?.element.variant ?? variant
+		color = selected.blocks?.element.color ?? color
+		size = selected.blocks?.element.size ?? size
+		// Layout options
+		// - [layout + breakpoint] work together
+		layout = selected.shared?.context.layout ?? layout
+		breakpoint = selected.shared?.context.breakpoint ?? breakpoint
+	}
 </script>
 
-<svelte:component this={component} id={title} {...styles} />
+<svelte:component
+	this={component}
+	id={title}
+	{title}
+	{color}
+	{variant}
+	{size}
+	{layout}
+	{breakpoint}
+/>

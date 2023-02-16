@@ -43,6 +43,7 @@ import * as gfx from './stores/gfx'
 import * as theme from './stores/theme'
 import * as ui from './stores/ui'
 import * as intl from './stores/intl'
+import * as stylesStore from './stores/api'
 
 /**
  * Utilities
@@ -65,25 +66,25 @@ const stores = {
 const layouts = {
 	Burrito,
 	Reveal,
-	Sidebar,
 	Stack,
 	Switcher,
+	Sidebar,
 }
 const blocks = {
 	Button,
-	ButtonMenu,
-	RevealMenu,
 	Toggle,
+	ButtonMenu,
 	ToggleMenu,
 	// Canvas, TODO: init canvas with example Sketch
-	InputCheck,
-	InputFile,
-	InputRadio,
-	InputRange,
 	Nav,
 	RevealNav,
+	RevealMenu,
 	// Sketch,
 	Feedback,
+	InputCheck,
+	InputRadio,
+	InputRange,
+	InputFile,
 }
 
 const api = {
@@ -91,6 +92,7 @@ const api = {
 	Collection,
 	Element,
 	stylesApi,
+	stylesStore,
 }
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder

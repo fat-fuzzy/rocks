@@ -15,6 +15,10 @@
 	// padding: var(#{$prefix}-padding-inset);
 }
 
+.dotted {
+	border: var(#{$prefix}-border-width-lg) dotted var(#{$prefix}-current-primary);
+}
+
 // Contrast
 
 .day {

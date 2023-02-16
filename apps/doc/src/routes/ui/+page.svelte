@@ -5,9 +5,9 @@
 
 	export let data: PageData
 
-	let uiState = data.uiState
+	let uiState = JSON.parse(data.uiState)
 
-	const {Collection, Api} = api
+	const {Collection, Api, stylesStore} = api
 	const {Sidebar} = layouts
 
 	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
@@ -19,7 +19,7 @@
 	let path = $page.url.pathname
 
 	$: {
-		uiState = JSON.parse(data.uiState)
+		uiState = stylesStore
 	}
 </script>
 
@@ -33,7 +33,7 @@
 </header>
 
 <Sidebar size="xs" align="end">
-	<main slot="main">
+	<main slot="main" class="l:stack lg">
 		{#each components as { category, items }}
 			<Collection
 				{title}

@@ -18,7 +18,7 @@
 
 	$: show = expanded ? 'show' : 'hide'
 
-	// TODO: use detail + summary tags
+	// TODO: use detail + summary tags (?)
 </script>
 
 <div
@@ -28,7 +28,6 @@
 >
 	<slot name="toggle">
 		<button
-			type="button"
 			class={`toggle collapse ${size} ${variant}`}
 			aria-expanded={expanded}
 			on:click={toggleReveal}
@@ -38,7 +37,7 @@
 	</slot>
 	<div class={`${align} ${show}`}>
 		<slot name="content">
-			<div class="card layer">
+			<div class="card layer l:${layout}">
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>

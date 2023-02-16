@@ -27,7 +27,7 @@
 </script>
 
 <label for={inputId} class={classes}>
-	<div>{label}</div>
+	<span class={`font:${size}`}>{label}</span>
 	<input
 		id={inputId}
 		data-test={inputId}
