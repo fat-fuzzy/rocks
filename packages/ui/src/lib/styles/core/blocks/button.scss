@@ -124,7 +124,7 @@ button.bare {
 }
 .bare.primary:hover {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-primary-light);
+	background-color: var(#{$prefix}-current-primary-lighter);
 }
 
 .bare.accent,
@@ -133,7 +133,7 @@ button.bare {
 }
 .bare.accent:hover {
 	color: var(#{$prefix}-current-accent);
-	background-color: var(#{$prefix}-current-accent-light);
+	background-color: var(#{$prefix}-current-accent-lighter);
 }
 
 .bare.highlight,
@@ -142,7 +142,7 @@ button.bare {
 }
 .bare.highlight:hover {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-accent-light);
+	background-color: var(#{$prefix}-current-highlight-lighter);
 }
 
 //== Toggle  default

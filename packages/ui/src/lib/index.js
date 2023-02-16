@@ -66,25 +66,25 @@ const stores = {
 const layouts = {
 	Burrito,
 	Reveal,
-	Sidebar,
 	Stack,
 	Switcher,
+	Sidebar,
 }
 const blocks = {
 	Button,
-	ButtonMenu,
-	RevealMenu,
 	Toggle,
+	ButtonMenu,
 	ToggleMenu,
 	// Canvas, TODO: init canvas with example Sketch
-	InputCheck,
-	InputFile,
-	InputRadio,
-	InputRange,
 	Nav,
 	RevealNav,
+	RevealMenu,
 	// Sketch,
 	Feedback,
+	InputCheck,
+	InputRadio,
+	InputRange,
+	InputFile,
 }
 
 const api = {
