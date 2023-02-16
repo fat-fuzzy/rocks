@@ -64,7 +64,7 @@
 	<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 		{category}
 	</svelte:element>
-	<details class="l:stack sm">
+	<details class="l:stack sm" open>
 		<summary class="card:lg box">{category} collection</summary>
 		<section class={classes}>
 			{#each componentNames as name}

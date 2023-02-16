@@ -49,8 +49,7 @@
 	$: innerVariant = VARIANT_MATCH[variant]
 </script>
 
-<menu
-	aria-labelledby={id}
+<div
 	class={`l:reveal l:${layout} ${size} bp:${breakpoint}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
@@ -59,17 +58,17 @@
 		type="button"
 		class={`toggle collapse  ${size} ${variant} ${color}`}
 		aria-expanded={expanded}
+		aria-haspopup="menu"
+		aria-controls={id}
 		on:click={toggleReveal}
 	>
 		{format.formatLabel(title, asset)}
 	</button>
-	<div class={`${align} ${show}`}>
-		<menu class={`l:${layout} ${size}`}>
-			{#each items as buttonProps}
-				<li>
-					<Button {onClick} {...buttonProps} variant={innerVariant} {color} />
-				</li>
-			{/each}
-		</menu>
-	</div>
-</menu>
+	<menu {id} class={`l:${layout} ${size} align:${align} ${show}`}>
+		{#each items as buttonProps}
+			<li>
+				<Button {onClick} {...buttonProps} variant={innerVariant} {color} />
+			</li>
+		{/each}
+	</menu>
+</div>

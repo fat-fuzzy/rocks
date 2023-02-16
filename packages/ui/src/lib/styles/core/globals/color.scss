@@ -141,7 +141,7 @@ a:hover {
 	color: var(#{$prefix}-color-dark);
 }
 .bg\:accent\:lighter a {
-	color: var(#{$prefix}-color-accent);
+	color: var(#{$prefix}-current-accent);
 }
 .bg\:accent a:visited {
 	color: var(#{$prefix}-color-light);
@@ -153,7 +153,7 @@ a:hover {
 }
 .bg\:accent\:lighter a:visited {
 	color: var(#{$prefix}-color-accent);
-	text-decoration-color: var(#{$prefix}-color-accent);
+	text-decoration-color: var(#{$prefix}-current-accent);
 }
 .bg\:accent a:hover,
 .bg\:accent\:light a:hover,
@@ -168,7 +168,7 @@ a:hover {
 }
 
 .bg\:accent\:lighter a:focus {
-	outline-color: var(#{$prefix}-color-accent);
+	outline-color: var(#{$prefix}-current-accent);
 }
 
 .bg\:highlight a,
@@ -192,7 +192,7 @@ a:hover {
 .bg\:highlight a:focus,
 .bg\:highlight\:light a:focus,
 .bg\:highlighter\:light a:focus {
-	outline-color: var(#{$prefix}-color-highlight--dark);
+	outline-color: var(#{$prefix}-current-highlight-dark);
 }
 
 .primary:focus {
@@ -221,40 +221,40 @@ menu {
 }
 
 .bg\:primary {
-	color: var(#{$prefix}-color-white);
-	background-color: var(#{$prefix}-color-primary);
+	color: var(#{$prefix}-color-light);
+	background-color: var(#{$prefix}-current-primary);
 }
 .bg\:primary\:light {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-primary-light);
+	background-color: var(#{$prefix}-current-primary-light);
 }
 .bg\:primary\:lighter {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-primary-lighter);
+	background-color: var(#{$prefix}-current-primary-lighter);
 }
 
 .bg\:accent {
-	color: var(#{$prefix}-color-white);
-	background-color: var(#{$prefix}-color-accent);
+	color: var(#{$prefix}-color-light);
+	background-color: var(#{$prefix}-current-accent);
 }
 .bg\:accent\:light {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-accent-light);
+	background-color: var(#{$prefix}-current-accent-light);
 }
 .bg\:accent\:lighter {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-accent-lighter);
+	background-color: var(#{$prefix}-current-accent-lighter);
 }
 
 .bg\:highlight {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-highlight);
+	background-color: var(#{$prefix}-current-highlight);
 }
 .bg\:highlight\:light {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-highlight-light);
+	background-color: var(#{$prefix}-current-highlight-light);
 }
 .bg\:highlight\:lighter {
 	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-color-highlight-lighter);
+	background-color: var(#{$prefix}-current-highlight-lighter);
 }

@@ -24,7 +24,7 @@ export class UiState {
 		// TODO: see how I can improve this
 
 		for (const pair of data.entries()) {
-			const [category, family, style, value] = pair[0].split('.')
+			const [category, family, style, _] = pair[0].split('.')
 			const styleValue = {[style]: pair[1]}
 			const familyValue = {[family]: styleValue}
 			// TODO: Fix / understand:
@@ -35,7 +35,7 @@ export class UiState {
 		}
 
 		styleValues.forEach(({id, value}) => {
-			const [category, family, style] = id.split('.')
+			const [category, family, style, _] = id.split('.')
 			this.styles[category][family][style] = value[category][family][style]
 		})
 		return true

@@ -54,7 +54,7 @@
 		<Button id="btn-details" {variant} onClick={() => toggleDetails()}>
 			{showDetails ? '👇' : '👉'} Details
 		</Button>
-		<div class={showDetails ? 'l:stack' : 'visually-hidden'}>
+		<div class={showDetails ? 'l:stack' : 'hidden:viz-only'}>
 			{#if geometry}
 				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
 			{/if}
