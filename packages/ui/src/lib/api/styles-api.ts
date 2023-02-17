@@ -201,6 +201,7 @@ interface BlockStyles extends StyleCategory {
 	element: StyleFamily
 }
 interface LayoutStyles extends StyleCategory {
+	element: StyleFamily
 	children: StyleFamily
 }
 
@@ -250,7 +251,12 @@ export class StylesApi {
 		const appStylesTree = this.app?.settings?.getStyleTree() || {}
 		const sharedStylesTree = this.shared?.context?.getStyleTree() || {}
 		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
-		const layoutsStylesTree = this.layouts?.children?.getStyleTree() || {}
+		const layoutsChildrenStylesTree = this.layouts?.children?.getStyleTree() || {}
+		const layoutsElementStylesTree = this.layouts?.element?.getStyleTree() || {}
+		const layoutsStylesTree = {
+			...layoutsChildrenStylesTree,
+			...layoutsElementStylesTree,
+		}
 
 		return {
 			app: appStylesTree,
@@ -365,7 +371,7 @@ const shared: SharedStyles = {
 				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['layouts', 'Button', 'Toggle'],
+				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
@@ -559,6 +565,27 @@ const layouts: LayoutStyles = {
 			}),
 		],
 	}),
+	element: new StyleFamily({
+		name: 'Element',
+		id: 'layouts.element',
+		layout: 'switcher',
+		items: [
+			new StyleInput({
+				name: 'Size',
+				id: 'layouts.element.size',
+				value: 'md',
+				input: 'toggle',
+				layout: 'stack',
+				items: [
+					{id: 'layouts.element.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'layouts.element.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'layouts.element.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'layouts.element.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'layouts.element.size.xl', text: 'xl', asset: '', value: 'xl'},
+				],
+			}),
+		],
+	}),
 }
 
 export const getDefaultOptions = () => new StylesApi({app, shared, blocks, layouts})
@@ -584,5 +611,6 @@ export const DEFAULT_STYLES: StyleTree = {
 	},
 	layouts: {
 		children: {content: 'card', side: 'card', main: 'text'},
+		element: {size: 'md'},
 	},
 }

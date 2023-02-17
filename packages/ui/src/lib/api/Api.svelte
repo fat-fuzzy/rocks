@@ -10,8 +10,6 @@
 	import {getDefaultOptions} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
-	export let uiState: StyleTree // TODO: figure out how to avoid this prop drilling
-
 	export let title = ''
 	export let category = 'app'
 	export let page = ''
@@ -20,10 +18,10 @@
 	export let update = 'update'
 	export let reset = 'reset'
 
+	let selected: StyleTree
 	let apiLayout = 'switcher'
 	let apiSize = 'xxs'
 	let apiVariant = ''
-	let selected = uiState
 
 	let ApiOptions = getDefaultOptions()
 	let styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
@@ -36,15 +34,17 @@
 	}
 
 	const updateSelected = (payload: {name: string; items: {id: string; value: string}[]}) => {
-		let styleValues = payload.items.reduce((styles: StyleTree, {id, value}) => {
+		payload.items.forEach(({id, value}) => {
 			const [category, family, style, name] = id.split('.')
 			const styleValue = {[style]: value}
 			const familyValue = {[family]: styleValue}
-			return {...styles, [category]: familyValue}
-		}, {})
-		selected = styleValues
+			selected[category] = {...selected[category], ...familyValue}
+		})
 		ApiOptions.applyStyles(selected)
 		selectedStore.set(ApiOptions.getStyleTree())
+
+		console.log('Api updateSelected = selectedStore')
+		console.log(selectedStore)
 	}
 
 	function handleInput(event, name) {
@@ -93,10 +93,14 @@
 	}
 
 	$: {
+		console.log('API - $selectedStore')
+		console.log($selectedStore)
+
+		selected = $selectedStore
 		selected && ApiOptions.applyStyles(selected)
+		styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
+		formOptions = styleCategories.map((cat) => ApiOptions.getCategoryOptions(cat))
 	}
-	$: styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
-	$: formOptions = styleCategories.map((cat) => ApiOptions.getCategoryOptions(cat))
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard

@@ -14,7 +14,7 @@
 	$: path = $page.url.pathname
 
 	$: {
-		uiState = JSON.parse(data.uiState)
+		uiState = data.uiState
 	}
 </script>
 

@@ -1,13 +1,8 @@
 <script lang="ts">
-	import type {PageData} from './$types'
 	import {page} from '$app/stores'
 	import {blocks, layouts, api} from '@fat-fuzzy/ui'
 
-	export let data: PageData
-
-	let uiState = JSON.parse(data.uiState)
-
-	const {Collection, Api, stylesStore} = api
+	const {Collection, Api} = api
 	const {Sidebar} = layouts
 
 	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
@@ -17,10 +12,6 @@
 		{category: 'layouts', items: layouts},
 	]
 	let path = $page.url.pathname
-
-	$: {
-		uiState = stylesStore
-	}
 </script>
 
 <svelte:head>
@@ -42,12 +33,11 @@
 				path={`${path}/${category}`}
 				components={items}
 				{category}
-				{uiState}
 			/>
 		{/each}
 	</main>
 
 	<aside slot="side">
-		<Api {title} category="app" {uiState} />
+		<Api {title} category="app" />
 	</aside>
 </Sidebar>

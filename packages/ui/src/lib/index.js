@@ -63,13 +63,7 @@ const stores = {
 	ui,
 	intl,
 }
-const layouts = {
-	Burrito,
-	Reveal,
-	Stack,
-	Switcher,
-	Sidebar,
-}
+
 const blocks = {
 	Button,
 	Toggle,
@@ -77,14 +71,27 @@ const blocks = {
 	ToggleMenu,
 	// Canvas, TODO: init canvas with example Sketch
 	Nav,
-	RevealNav,
-	RevealMenu,
+	RevealNav, // TODO: use content option in UI lib API in docs
+	RevealMenu, // TODO: use content option in UI lib API in docs
 	// Sketch,
 	Feedback,
 	InputCheck,
 	InputRadio,
 	InputRange,
 	InputFile,
+}
+
+const layouts = {
+	Burrito,
+	Reveal,
+	Stack,
+	Switcher,
+	Sidebar,
+}
+
+const compositions = {
+	RevealNav, // TODO: use content option in UI lib API in docs
+	RevealMenu, // TODO: use content option in UI lib API in docs
 }
 
 const api = {
@@ -108,4 +115,4 @@ async function getSass(theme) {
 	return themedStyles
 }
 
-export {blocks, layouts, api, utils, stores, constants, getSass}
+export {blocks, layouts, compositions, api, utils, stores, constants, getSass}

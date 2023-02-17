@@ -2,16 +2,16 @@ import type {StyleTree} from '@fat-fuzzy/ui'
 import {api} from '@fat-fuzzy/ui'
 
 export class UiState {
-	styles: StyleTree
+	api: api.StylesApi
 	/**
 	 * Create a UI state object from the user's cookie, or initialize a new UI state
 	 */
-	constructor(serialized: string | undefined = undefined) {
-		if (serialized) {
-			const {app, shared, blocks, layouts} = JSON.parse(serialized)
-			this.styles = {app, shared, blocks, layouts}
-		} else {
-			this.styles = api.stylesApi.DEFAULT_STYLES
+	constructor(styles: StyleTree | undefined = undefined) {
+		if (!this.api) {
+			this.api = api.stylesApi.getDefaultOptions()
+		}
+		if (styles) {
+			this.api.applyStyles(styles)
 		}
 	}
 
@@ -33,11 +33,12 @@ export class UiState {
 			//    (i.e. once out of this loop, the only property of `this.styles` is the last one set in the loop)
 			styleValues.push({id: pair[0], value: {[category]: familyValue}})
 		}
-
+		const styles: StyleTree = this.api.getStyleTree()
 		styleValues.forEach(({id, value}) => {
 			const [category, family, style, _] = id.split('.')
-			this.styles[category][family][style] = value[category][family][style]
+			styles[category][family][style] = value[category][family][style]
 		})
+		this.api.applyStyles(styles)
 		return true
 	}
 
@@ -45,6 +46,7 @@ export class UiState {
 	 * Serialize game state so it can be set as a cookie
 	 */
 	toString() {
-		return JSON.stringify(this.styles)
+		const styleTree = this.api.getStyleTree()
+		return JSON.stringify(styleTree)
 	}
 }

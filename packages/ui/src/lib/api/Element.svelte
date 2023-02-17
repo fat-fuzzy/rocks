@@ -7,8 +7,6 @@
 	import type {StyleTree} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
-	export let uiState: StyleTree // TODO: figure out how to avoid this prop drilling
-
 	export let title = ''
 	export let depth = 0
 	export let isPage = false
@@ -22,9 +20,8 @@
 		layouts: Layout,
 		blocks: Block,
 	}
-	// TODO: improve this code - make it easier to understand ! (use store ?)
-	let selected = uiState
 
+	let selected: StyleTree
 	let brightness = ''
 	let contrast = ''
 	let container = ''
@@ -52,13 +49,7 @@
 			</svelte:element>
 		</a>
 		<div class={containerContext}>
-			<svelte:component
-				this={ApiElement[category]}
-				{isPage}
-				{title}
-				{component}
-				uiState={selected}
-			/>
+			<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 		</div>
 	</article>
 {:else}
@@ -68,17 +59,11 @@
 	<article class="l:sidebar xs align:end">
 		<main class={`l:main card:xl inset ${appSettings}`}>
 			<div class={containerContext}>
-				<svelte:component
-					this={ApiElement[category]}
-					{isPage}
-					{title}
-					{component}
-					uiState={selected}
-				/>
+				<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 			</div>
 		</main>
 		<aside class="l:side">
-			<Api {title} {category} uiState={selected} />
+			<Api {title} {category} />
 		</aside>
 	</article>
 {/if}
