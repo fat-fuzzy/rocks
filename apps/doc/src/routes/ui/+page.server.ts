@@ -16,7 +16,6 @@ export const actions = {
 	 */
 	update: async ({request, cookies}) => {
 		const uiState = new UiState(stylesStore.$selectedStore)
-
 		const data = await request.formData()
 
 		if (!uiState.enter(data)) {

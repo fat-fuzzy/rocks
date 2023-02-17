@@ -41,10 +41,7 @@
 			selected[category] = {...selected[category], ...familyValue}
 		})
 		ApiOptions.applyStyles(selected)
-		selectedStore.set(ApiOptions.getStyleTree())
-
-		console.log('Api updateSelected = selectedStore')
-		console.log(selectedStore)
+		selectedStore.set(ApiOptions.getStyleTree()) // This updates on the client if JS is available
 	}
 
 	function handleInput(event, name) {
@@ -93,9 +90,6 @@
 	}
 
 	$: {
-		console.log('API - $selectedStore')
-		console.log($selectedStore)
-
 		selected = $selectedStore
 		selected && ApiOptions.applyStyles(selected)
 		styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
