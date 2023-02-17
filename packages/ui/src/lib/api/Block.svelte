@@ -3,11 +3,10 @@
 	import type {StyleTree} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
-	export let uiState: StyleTree // TODO: figure out how to avoid this prop drilling
+	let selected: StyleTree
 	export let title = ''
 	export let component: ComponentType
 
-	let selected = uiState
 	let breakpoint = ''
 	let layout = ''
 	let color = ''

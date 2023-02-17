@@ -5,16 +5,13 @@ details {
 details > summary {
 	cursor: pointer;
 	display: inline-block;
+	color: var(#{$prefix}-color-light);
+	font-weight: var(#{$prefix}-font-weight-ui);
+	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-primary);
 }
 
-.day details > summary {
-	color: var(#{$prefix}-color-white);
-	background-color: var(#{$prefix}-current-accent);
-	font-weight: var(#{$prefix}-font-weight-ui);
-}
-.night details > summary {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-highlight);
+details > summary {
+	background-color: var(#{$prefix}-current-primary);
 }
 
 details > summary::before {
@@ -26,13 +23,9 @@ details > p {
 	// TODO
 }
 
-.day details[open] > summary {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-accent-light);
-}
-.night details[open] > summary {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-highlight-light);
+details[open] > summary {
+	background-color: var(#{$prefix}-current-primary-light);
+	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-primary);
 }
 
 details[open] > summary::before {

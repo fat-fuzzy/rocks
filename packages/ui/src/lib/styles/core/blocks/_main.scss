@@ -6,12 +6,13 @@
  */
 @import './header'; // Use for headers: main app header, page header
 @import './footer'; // Use for main (only) footer
-@import './nav'; // Use for nav and derived elements
-@import './menu'; // Use for menu and derived elements
+@import './nav'; // Use for navigation (navigation = links = hrefs = <a>) and derived elements
+@import './menu'; // Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements
 @import './media'; // Use for framed elements: video, img, picture, canvas
 @import './button'; // Use for normal and toggle buttons
 @import './fieldset'; // Use for fieldset element: TODO: maybe move to form
 @import './form'; // Use for form and form inputs
+@import './tables'; // Use for tables = tabular data: https://www.w3.org/TR/tabular-data-model/
 @import './feedback'; // Use for feedback elements (success, warnings, errors, etc)
 @import './detail'; // Use for detail + summary element
 @import './api'; // Use for API components (used in Doc website)

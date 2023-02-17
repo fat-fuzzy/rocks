@@ -1,12 +1,12 @@
+import type {PageServerLoad, Actions} from './$types'
 import {fail} from '@sveltejs/kit'
 import {UiState} from './ui-state'
-import type {PageServerLoad, Actions} from './$types'
+import {api} from '@fat-fuzzy/ui'
+const {stylesStore} = api
 
-export const load = (({cookies}) => {
-	const uiState = new UiState(cookies.get('fat-fuzzy-ui'))
-	return {
-		uiState: uiState.toString(),
-	}
+export const load = (async ({parent}) => {
+	const uiState = await parent()
+	return uiState
 }) satisfies PageServerLoad
 
 export const actions = {
@@ -15,15 +15,17 @@ export const actions = {
 	 * is available, this will happen in the browser instead of here
 	 */
 	update: async ({request, cookies}) => {
-		const uiState = new UiState(cookies.get('fat-fuzzy-ui'))
-
+		const uiState = new UiState(stylesStore.$selectedStore)
 		const data = await request.formData()
 
 		if (!uiState.enter(data)) {
 			return fail(400, {uiStateError: true})
 		}
 
+		stylesStore.selectedStore.set(uiState.api.getStyleTree())
 		cookies.set('fat-fuzzy-ui', uiState.toString(), {path: '/'})
+
+		return {success: true}
 	},
 
 	/**
@@ -31,18 +33,20 @@ export const actions = {
 	 * the server, so that people can't cheat by peeking at the JavaScript
 	 */
 	enter: async ({request, cookies}) => {
-		const uiState = new UiState(cookies.get('fat-fuzzy-ui'))
+		const uiState = new UiState(stylesStore.$selectedStore)
 
 		const data = await request.formData()
 
 		if (!uiState.enter(data)) {
 			return fail(400, {uiStateError: true})
 		}
-
+		stylesStore.selectedStore.set(uiState.api.getStyleTree())
 		cookies.set('fat-fuzzy-ui', uiState.toString(), {path: '/'})
+
+		return {success: true}
 	},
 
 	restart: async ({cookies}) => {
-		cookies.delete('fat-fuzzy-ui')
+		cookies.delete('fat-fuzzy-ui', {path: '/'})
 	},
 } satisfies Actions

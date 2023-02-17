@@ -47,7 +47,7 @@ textarea {
 	input,
 	select,
 	textarea {
-		accent-color: var(#{$prefix}-current-primary-light);
+		accent-color: var(#{$prefix}-current-primary);
 	}
 }
 
@@ -55,7 +55,7 @@ textarea {
 	input,
 	select,
 	textarea {
-		accent-color: var(#{$prefix}-current-accent-light);
+		accent-color: var(#{$prefix}-current-accent);
 	}
 }
 

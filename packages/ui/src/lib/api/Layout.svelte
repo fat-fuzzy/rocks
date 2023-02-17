@@ -3,15 +3,17 @@
 	import type {StyleTree} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
-	export let uiState: StyleTree // TODO: figure out how to avoid this prop drilling	import {selectedStore} from '../stores/api'
 	import mocks from '../../data/mocks'
 
 	export let title = ''
 	export let isPage = false
 	export let component: ComponentType
 
-	let selected = uiState
+	let selected: StyleTree
 	let size = '' // element's own size
+	let layout = '' // element's own layout
+	let containerSize = '' // element's own size
+	let containerLayout = '' // element's own layout
 	let breakpoint = '' // element's own breakpoint
 	let content = ''
 	let sideContent = ''
@@ -20,8 +22,11 @@
 	$: {
 		selected = $selectedStore
 		// Element options
-		size = selected.shared?.context.size ?? ''
+		size = selected.layouts?.element?.size ?? ''
 		// Container options
+		// - [layout + breakpoint] work together
+		containerSize = selected.shared?.context.size ?? ''
+		containerLayout = selected.shared?.context.layout ?? ''
 		// - [container + size] work together
 		breakpoint = selected.shared?.context.breakpoint ?? breakpoint
 		// Content options
@@ -54,7 +59,7 @@
 			</div>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {size} {breakpoint}>
+		<svelte:component this={component} id={title} {size} {layout} {breakpoint}>
 			{#if content === 'text'}
 				{mocks[content]}
 			{:else if content === 'card' || content === 'form'}
@@ -86,7 +91,7 @@
 		</div>
 	</svelte:component>
 {:else}
-	<svelte:component this={component} id={title} {size} {breakpoint}>
+	<svelte:component this={component} id={title} {size} {layout} {breakpoint}>
 		{#if content === 'text'}
 			{mocks[content]}
 		{:else if content === 'card' || content === 'form'}

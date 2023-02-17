@@ -1,8 +1,25 @@
-.hidden {
+// == Visibility and DOM node accessibility control
+
+// Remove DOM node from document
+// - DOM node becomes inaccessible to everyone
+.hidden\:rm-node {
 	display: none;
 }
 
-.visually-hidden {
+// Render DOM node invisible (1):
+// - DOM node becomes inaccessible to assistive tech
+// - layout remains unchanged (w/ exceptions: see tables)
+// - node is not removed from document
+.hidden\:sr-never {
+	visibility: hidden;
+}
+
+// Render DOM node invisible (2):
+// - DOM node remains accessible to assistive tech
+// - style element to free the space taken up by its box in the document layout
+// - node is not removed from document
+.hidden\:sr-always,
+.hidden\:viz-only {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: auto;
@@ -12,4 +29,18 @@
 	position: absolute;
 	width: 1px;
 	white-space: nowrap;
+}
+
+// == DOM content selection control
+
+.unselectable {
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none;
+}
+
+.copy-text {
+	-webkit-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
 }
