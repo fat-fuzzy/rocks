@@ -18,3 +18,12 @@
 			var(#{$prefix}-footer-height)
 	);
 }
+
+.fixed\:start {
+	position: fixed;
+	width: auto; // TODO: clean this
+}
+.fixed\:start .layer {
+	height: 100%;
+	overflow: auto;
+}

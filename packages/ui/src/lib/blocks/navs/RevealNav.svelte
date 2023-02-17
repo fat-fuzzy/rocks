@@ -1,10 +1,9 @@
 <script lang="ts">
-	import {clickOutside} from '../../utils/click-outside.js'
 	import format from '../../utils/format'
 	import LinkList from './LinkList.svelte'
 	import mocks from '../../../data/mocks'
 
-	export let layout = ''
+	export let layout = 'stack'
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
@@ -15,34 +14,32 @@
 	export let icon = ''
 	export let align = 'start'
 	export let items = mocks.nav
+	export let fixed = true
 
-	let expanded = false
+	let expanded = true
 
 	function toggleReveal(event) {
 		expanded = !expanded
 	}
 
-	function handleClickOutside(event) {
-		expanded = false
-	}
-
-	$: show = expanded ? 'show card:lg layer contrast' : 'hide'
+	$: show = expanded ? 'layer card:lg contrast' : 'hidden:viz-only'
 </script>
 
-<nav aria-labelledby={id} class={`l:reveal l:${layout} bp:${breakpoint} ${size}`}>
-	<button
+<details
+	aria-labelledby={id}
+	class={`l:reveal fixed:start l:${layout} bp:${breakpoint} ${size}`}
+	open
+>
+	<summary
 		{id}
-		type="button"
-		class={`toggle collapse  ${size} ${variant} ${color}`}
+		class="card:lg box"
 		aria-expanded={expanded}
 		aria-controls={`${id}-menu-list`}
 		on:click={toggleReveal}
-		use:clickOutside
-		on:clickOutside={(event) => handleClickOutside(event)}
 	>
 		{format.formatLabel(title, icon)}
-	</button>
+	</summary>
 	<div id={`${id}-menu-list`} class={show}>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</div>
-</nav>
+</details>
