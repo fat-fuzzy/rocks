@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	$: logs = $page.data.logs
+	$: usages = $page.data.usages
 
-	let title = 'Fat Fuzzy Log'
+	let title = 'Fat Fuzzy Usage'
 </script>
 
 <svelte:head>
@@ -16,7 +16,7 @@
 </header>
 
 <div class="l:stack l:text md">
-	{#each logs as { meta }}
-		<a class="font:xxl" href={`/log/${meta.slug}`}>{meta.title}</a>
+	{#each usages as { meta }}
+		<a class="font:xxl" href={`/usage/${meta.slug}`}>{meta.title}</a>
 	{/each}
 </div>

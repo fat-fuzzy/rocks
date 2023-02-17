@@ -4,14 +4,14 @@
 	const {Sidebar} = layouts
 	const {RevealNav} = blocks
 
-	let title = ' FatFuzzy Log'
-	let description = 'Fat Fuzzy Log: thoughts and choices that provide context for this project'
+	let title = ' FatFuzzy Usage'
+	let description = 'Fat Fuzzy Usage: how to use the packages in this project'
 	$: path = ''
 	$: items = [
 		{
-			slug: 'log',
-			title: 'Log',
-			items: $page.data.logs.map(({meta, path}) => ({
+			slug: 'usage',
+			title: 'Usage',
+			items: $page.data.usages.map(({meta, path}) => ({
 				id: meta.id,
 				slug: meta.slug,
 				title: meta.title,
@@ -29,7 +29,7 @@
 	<svelte:fragment slot="side">
 		<RevealNav {title} {items} {path} breakpoint="md" size="md" />
 	</svelte:fragment>
-	<svelte:fragment slot="main">
+	<div slot="main" class="l:stack l:text">
 		<slot />
-	</svelte:fragment>
+	</div>
 </Sidebar>
