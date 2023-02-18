@@ -10,7 +10,7 @@ button {
 	line-height: var(#{$prefix}-line-height-ui);
 	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 	border-radius: var(#{$prefix}-radius-base);
-	color: var(#{$prefix}-color-dark);
+	color: inherit;
 	border: 1px solid var(#{$prefix}-current-gray);
 }
 button:hover {
@@ -91,7 +91,7 @@ button.highlight {
 	outline-color: var(#{$prefix}-current-highlight);
 }
 button.outline.highlight {
-	color: var(#{$prefix}-color-dark);
+	color: inherit;
 	background-color: inherit;
 	border-color: var(#{$prefix}-current-highlight-dark);
 }
