@@ -16,7 +16,7 @@
 	// TODO: use detail + summary tags (?)
 </script>
 
-<details class={`l:reveal l:${layout}:${size} bp:${breakpoint}`} open>
+<details class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>
 	<slot name="summary">
 		<summary
 			class={`${variant}`}
@@ -29,7 +29,7 @@
 	</slot>
 	<div class={`${align} ${show}`}>
 		<slot name="content">
-			<div class="card layer l:${layout}:${size}">
+			<div class="card layer l:${layout} bp:${breakpoint} ${size}">
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>

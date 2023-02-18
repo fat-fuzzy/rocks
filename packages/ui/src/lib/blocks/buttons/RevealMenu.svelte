@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {browser} from '$app/environment'
 	import {createEventDispatcher} from 'svelte'
-	import {clickOutside} from '../../utils/click-outside.js'
 	import format from '../../utils/format'
 	import Button from './Button.svelte'
 	import mocks from '../../../data/mocks'
@@ -45,7 +44,7 @@
 	$: innerVariant = VARIANT_MATCH[variant]
 </script>
 
-<details aria-labelledby={id} class={`l:reveal l:${layout}:${size} bp:${breakpoint} ${size}`} open>
+<details aria-labelledby={id} class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>
 	<summary
 		{id}
 		class={`card:${size} ${variant} ${color}`}
@@ -56,7 +55,7 @@
 	>
 		{format.formatLabel(title, asset)}
 	</summary>
-	<menu id={`menu-${id}`} class={`l:${layout}:${size} align:${align} ${show}`}>
+	<menu id={`menu-${id}`} class={`l:${layout} bp:${breakpoint} ${size} align:${align} ${show}`}>
 		{#each items as buttonProps}
 			<li>
 				<Button {onClick} {...buttonProps} variant={innerVariant} {color} />

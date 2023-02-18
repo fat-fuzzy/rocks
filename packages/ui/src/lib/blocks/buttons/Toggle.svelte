@@ -11,12 +11,15 @@
 
 	export let id = 'toggle'
 	export let name = 'toggle'
-	export let size = ''
-	export let variant = ''
-	export let color = ''
-	export let disabled = false
 	export let initial = false
 	export let value = ''
+	export let disabled = false
+	export let color = ''
+	export let variant = ''
+	export let layout = 'switcher'
+	export let breakpoint = ''
+	export let size = ''
+	export let align = ''
 	export let asset = mocks.toggle.asset // TODO: emoji OR svg
 	export let text = mocks.toggle.text
 	export let formaction = 'update'
@@ -36,9 +39,6 @@
 	}
 	let machine = createMachine(machineConfig)
 	let {state, send} = useMachine(machine)
-
-	$: classes = `${size} ${variant} ${color}`
-	$: pressed = $state.value === 'active'
 
 	export let onClick = (event: MouseEvent) => {
 		send('TOGGLE')
@@ -62,6 +62,9 @@
 			dispatch('click', payload)
 		}
 	})
+
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
+	$: pressed = $state.value === 'active'
 </script>
 
 <button

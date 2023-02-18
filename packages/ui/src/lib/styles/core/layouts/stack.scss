@@ -1,25 +1,25 @@
-[class^='l:stack'] > * {
+.l\:stack > * {
 	/* top and bottom margins in horizontal\:tb writing mode */
 	margin-block: 0;
 }
 
-[class^='l:stack'] {
+.l\:stack {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
 
-[class^='l:stack']:only-child {
+.l\:stack:only-child {
 	/* ↓ `height` in horizontal\:tb writing mode */
 	block-size: 100%;
 	/* ↓ `width` in horizontal\:tb writing mode */
 	inline-size: 100%;
 }
 
-[class^='l:stack:'].recursive * + * {
+.l\:stack.recursive * + * {
 	margin-block-start: var(#{$prefix}-current-size);
 }
 
-[class^='l:stack:'] > * + * {
+.l\:stack > * + * {
 	margin-block-start: var(#{$prefix}-current-size);
 }

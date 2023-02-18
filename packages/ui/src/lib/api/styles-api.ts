@@ -370,6 +370,7 @@ const shared: SharedStyles = {
 				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
+				exclude: [/* 'layouts', */ 'Switcher'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
@@ -402,6 +403,7 @@ const shared: SharedStyles = {
 				value: 'md',
 				input: 'toggle',
 				layout: 'stack',
+				exclude: [/* 'layouts', */ 'Switcher'],
 				items: [
 					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -482,7 +484,7 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.size',
 				value: 'md',
 				input: 'toggle',
-				layout: 'switcher',
+				layout: 'stack',
 				items: [
 					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -595,11 +597,11 @@ export const DEFAULT_STYLES: StyleTree = {
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {
-		context: {layout: 'switcher', container: 'center', size: 'md', breakpoint: ''},
+		context: {layout: 'switcher', container: 'center', size: 'md', breakpoint: 'md'},
 	},
 	blocks: {
 		element: {
-			variant: '',
+			variant: 'default',
 			color: '',
 			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
 			emoji: '✨',

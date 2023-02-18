@@ -13,7 +13,7 @@
 	export let fileType = 'image/png, image/jpeg'
 	export let multiple = true
 
-	$: classes = `l:${layout}:${size} bp:${breakpoint} font:${size} ${color} ${variant} ${align}`
+	$: classes = `l:${layout} bp:${breakpoint} font:${size} ${size} ${color} ${variant} ${align}`
 	$: hintClasses = `form:element font:minus:${size} ${color} ${variant} ${align}`
 </script>
 

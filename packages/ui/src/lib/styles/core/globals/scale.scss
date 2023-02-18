@@ -1,5 +1,5 @@
 .xxs,
-[class*=':xxs'] {
+[class*=':xxs']:not(.bp\:xxs) {
 	#{$prefix}-current-size: var(#{$prefix}-size-xxs);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-sm);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xxs);
@@ -11,7 +11,7 @@
 }
 
 .xs,
-[class*=':xs'] {
+[class*=':xs']:not(.bp\:xs) {
 	#{$prefix}-current-size: var(#{$prefix}-size-xs);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-md);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xs);
@@ -23,11 +23,9 @@
 }
 
 .sm,
-[class*=':sm'] {
+[class*=':sm']:not(.bp\:sm) {
 	#{$prefix}-current-size: var(#{$prefix}-size-sm);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-lg);
-}
-[class*=':sm'] {
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-sm);
 	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-xxs);
 	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-lg);
@@ -35,7 +33,7 @@
 }
 
 .md,
-[class*=':md'] {
+[class*=':md']:not(.bp\:md) {
 	#{$prefix}-current-size: var(#{$prefix}-size-md);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-xl);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-md);
@@ -45,7 +43,7 @@
 }
 
 .lg,
-[class*=':lg'] {
+[class*=':lg']:not(.bp\:lg) {
 	#{$prefix}-current-size: var(#{$prefix}-size-lg);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-lg);
@@ -55,7 +53,7 @@
 }
 
 .xl,
-[class*=':xl'] {
+[class*=':xl']:not(.bp\:xl) {
 	#{$prefix}-current-size: var(#{$prefix}-size-xl);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xl);
@@ -67,7 +65,7 @@
 }
 
 .xxl,
-[class*=':xxl'] {
+[class*=':xxl']:not(.bp\:xxl) {
 	#{$prefix}-current-size: var(#{$prefix}-size-xxl);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xxl);
@@ -78,24 +76,24 @@
 	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xxl);
 }
 
-[class^='bp:xxs'] {
+.bp\:xxs {
 	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xxs);
 }
-[class^='bp:xs'] {
+.bp\:xs {
 	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xs);
 }
-[class^='bp:sm'] {
+.bp\:sm {
 	#{$prefix}-current-bp-size: var(#{$prefix}-bp-sm);
 }
-[class^='bp:md'] {
+.bp\:md {
 	#{$prefix}-current-bp-size: var(#{$prefix}-bp-md);
 }
-[class^='bp:lg'] {
+.bp\:lg {
 	#{$prefix}-current-bp-size: var(#{$prefix}-bp-lg);
 }
-[class^='bp:xl'] {
+.bp\:xl {
 	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xl);
 }
-[class^='bp:xxl'] {
+.bp\:xxl {
 	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xxl);
 }
