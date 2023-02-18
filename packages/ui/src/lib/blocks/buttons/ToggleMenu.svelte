@@ -13,15 +13,15 @@
 	export let color = ''
 	export let variant = ''
 	export let multiple = false
+	export let formaction = 'update'
+	export let page = ''
 	export let items = mocks.toggleMenu.map((button) => ({
 		...button,
 		id: `${id}.${button.id}`,
 		value: button.text,
 	}))
-	export let formaction = 'update'
-	export let page = ''
 
-	const menuId = id
+	let menuId = id
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
 
 	const onClick = (event: CustomEvent) => {
@@ -48,36 +48,44 @@
 </script>
 
 {#if title}
-	<div class={`menu ${size}`}>
+	<div class={`menu l:stack ${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout}:${size} bp:${breakpoint}`}>
+		<menu id={menuId} class={`l:${layout} bp:${breakpoint} ${size}`}>
 			{#each items as toggle}
+				{@const itemColor = toggle.color ?? color}
+				{@const itemVariant = toggle.variant ?? variant}
+				{@const itemSize = toggle.size ?? size}
 				<li>
 					<Toggle
 						on:click={onClick}
 						name={toggle.value}
-						{color}
-						{variant}
 						{formaction}
 						{page}
 						{...toggle}
+						color={itemColor}
+						variant={itemVariant}
+						size={itemSize}
 					/>
 				</li>
 			{/each}
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout}:${size} bp:${breakpoint} ${size}`}>
+	<menu id={menuId} class={`l:${layout} bp:${breakpoint} ${size}`}>
 		{#each items as toggle}
+			{@const itemColor = toggle.color ?? color}
+			{@const itemVariant = toggle.variant ?? variant}
+			{@const itemSize = toggle.size ?? size}
 			<li>
 				<Toggle
 					on:click={onClick}
 					name={toggle.value}
-					{color}
-					{variant}
 					{formaction}
 					{page}
 					{...toggle}
+					color={itemColor}
+					variant={itemVariant}
+					size={itemSize}
 				/>
 			</li>
 		{/each}

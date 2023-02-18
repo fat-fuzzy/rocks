@@ -5,21 +5,21 @@
 	import mocks from '../../../data/mocks'
 
 	const dispatch = createEventDispatcher()
-	export let id = 'menu'
+	export let id = 'button-menu'
 	export let title = ''
 	export let size = ''
 	export let breakpoint = ''
 	export let layout = 'switcher'
 	export let color = ''
 	export let variant = ''
-	export let items = mocks.menu.map((button) => ({...button, id: `${id}.${button.id}`}))
 	export let formaction = 'enter'
 	export let page = ''
+	export let items = mocks.menu.map((button) => ({...button, id: `${id}.${button.id}`}))
 
 	let clicked = ''
 	let menuId = id
 
-	export let onClick = (event: MouseEvent) => {
+	export let onClick = (event: CustomEvent) => {
 		if (browser) {
 			window.alert(`${event.target.textContent} Clicked`)
 		}
@@ -33,38 +33,42 @@
 {#if title}
 	<div class={`menu l:stack:${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout}:${size} bp:${breakpoint} ${size}`}>
-			{#each items as buttonProps}
-				{@const itemColor = buttonProps.color ?? color}
-				{@const itemVariant = buttonProps.variant ?? variant}
+		<menu id={menuId} class={`l:${layout} bp:${breakpoint} ${size}`}>
+			{#each items as button}
+				{@const itemColor = button.color ?? color}
+				{@const itemVariant = button.variant ?? variant}
+				{@const itemSize = button.size ?? size}
 				<li>
 					<Button
-						{onClick}
+						on:click={onClick}
 						name={menuId}
 						{page}
 						{formaction}
-						{...buttonProps}
+						{...button}
 						color={itemColor}
 						variant={itemVariant}
+						size={itemSize}
 					/>
 				</li>
 			{/each}
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout}:${size} bp:${breakpoint} ${size}`}>
-		{#each items as buttonProps}
-			{@const itemColor = buttonProps.color ?? color}
-			{@const itemVariant = buttonProps.variant ?? variant}
+	<menu id={menuId} class={`l:${layout} bp:${breakpoint} ${size}`}>
+		{#each items as button}
+			{@const itemColor = button.color ?? color}
+			{@const itemVariant = button.variant ?? variant}
+			{@const itemSize = button.size ?? size}
 			<li>
 				<Button
-					{onClick}
+					on:click={onClick}
 					name={menuId}
 					{page}
 					{formaction}
-					{...buttonProps}
+					{...button}
 					color={itemColor}
 					variant={itemVariant}
+					size={itemSize}
 				/>
 			</li>
 		{/each}

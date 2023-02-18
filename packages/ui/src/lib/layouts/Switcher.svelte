@@ -1,8 +1,7 @@
 <script lang="ts">
-	export let size = ''
 	export let breakpoint = ''
 </script>
 
-<div class={`l:switcher:${size} bp:${breakpoint}`}>
+<div class={`l:switcher bp:${breakpoint}`}>
 	<slot />
 </div>

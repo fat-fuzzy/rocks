@@ -21,6 +21,7 @@
 	let selected: StyleTree
 	let apiLayout = 'switcher'
 	let apiSize = 'xxs'
+	let apiBreakpoint = 'xxl'
 	let apiVariant = ''
 
 	let ApiOptions = getDefaultOptions()
@@ -120,7 +121,7 @@
 			update({reset: false})
 		}
 	}}
-	class={`l:${apiLayout}:${apiSize}`}
+	class={`l:${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 >
 	{#each formOptions as styles}
 		{#if styles}
@@ -133,7 +134,7 @@
 						id={styleFamily.id}
 						type="input-group"
 						layout={styleFamily.layout}
-						size={apiSize}
+						breakpoint={apiBreakpoint}
 						name={familyName}
 					>
 						{#each styleFamily.items as styleInput}
@@ -180,13 +181,13 @@
 									/>
 								{/if}
 								{#if input === 'datalist'}
-									<label for={`choice-${styleInput.name}`} class="l:stack:${apiSize}">
+									<label for={`choice-${styleInput.name}`} class={`l:stack ${apiSize}`}>
 										{`Select ${styleInput.name}`}
 										<input
 											list={`${styleInput.name}-${styleInput.name}`}
 											id={styleInput.id}
 											name={styleInput.id}
-											class={`${apiSize}`}
+											class={apiSize}
 											on:input={(event) => handleSelect(event, familyName, styleInput.name)}
 										/>
 										<datalist id={`${styleInput.name}-${styleInput.name}`}>

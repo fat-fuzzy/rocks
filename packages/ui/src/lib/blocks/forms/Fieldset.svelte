@@ -6,12 +6,12 @@
 	export let size = 'sm'
 	export let layout = 'stack'
 	export let container = 'burrito'
-	export let breakpoint = 'md'
+	export let breakpoint = ''
 
-	$: className = `l:${layout}:${size} l:${container}:${size} bp:${breakpoint} ${size} ${type}`
+	$: classes = `l:${layout} bp:${breakpoint} l:${container}:${size} ${size} ${type}`
 </script>
 
-<fieldset {id} {name} data-key={id} class={className}>
+<fieldset {id} {name} data-key={id} class={classes}>
 	{#if legend}<legend>{legend}</legend>{/if}
 	<slot />
 </fieldset>

@@ -10,7 +10,7 @@
 	export let depth = 0
 	export let path = ''
 	export let layout = 'switcher' // TODO: expose breakpoint too
-	export let breakpoint = 'md' // TODO: expose breakpoint too
+	export let breakpoint = 'xxl' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'app'
@@ -19,7 +19,6 @@
 
 	let brightness = ''
 	let contrast = ''
-	let container = ''
 	let classes = ''
 
 	// TODO: color code sections
@@ -32,13 +31,11 @@
 		// App settings (user controlled)
 		brightness = selected.app?.settings.brightness ?? brightness
 		contrast = selected.app?.settings.contrast ?? contrast
-		// Container options
-		// - [container + size] work together
-		container = selected.shared?.context.container ?? container
-		classes = `l:${layout}:xs bp:${breakpoint} ${brightness} ${contrast}`
+		classes = `l:${layout} bp:${breakpoint} ${brightness} ${contrast}`
 	}
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
+	$: classes = category !== 'app' ? `l:${layout} bp:${breakpoint} ${brightness} ${contrast}` : ''
 </script>
 
 {#if isPage}

@@ -34,7 +34,7 @@
 	>
 		{format.formatLabel(title, icon)}
 	</summary>
-	<nav id={`nav-${id}`} class={`${show} ${size} l:${layout}:${size} bp:${breakpoint}`}>
+	<nav id={`nav-${id}`} class={`l:${layout} bp:${breakpoint} ${size} ${show}`}>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
 </details>

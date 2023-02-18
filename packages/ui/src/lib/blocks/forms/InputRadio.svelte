@@ -24,7 +24,7 @@
 		dispatch('input', payload)
 	}
 	$: inputId = `radio-${id}`
-	$: classes = `l:${layout}:${size} bp:${breakpoint} ${color} ${variant} ${align}`
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 </script>
 
 <label for={inputId} class={classes}>
