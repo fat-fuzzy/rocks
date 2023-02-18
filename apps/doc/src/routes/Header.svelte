@@ -16,8 +16,8 @@
 			<li aria-current={$page.url.pathname.startsWith('/about') ? 'page' : undefined}>
 				<a data-sveltekit-preload-data href="/about">About</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/usage') ? 'page' : undefined}>
-				<a data-sveltekit-preload-data href="/usage">Usage</a>
+			<li aria-current={$page.url.pathname.startsWith('/dev') ? 'page' : undefined}>
+				<a data-sveltekit-preload-data href="/dev">Dev</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/ui') ? 'page' : undefined}>
 				<a data-sveltekit-preload-data href="/ui">UI</a>

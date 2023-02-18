@@ -1,5 +1,5 @@
 import type {LayoutServerLoad} from './$types'
-import logData from '$data/log'
+import markdownData from '$data/log'
 // TODO: move to utils / clean
 function sortAsc(a, b) {
 	return a.meta.id < b.meta.id ? -1 : b.meta.id < a.meta.id ? 1 : 0
@@ -9,8 +9,8 @@ function sortDesc(a, b) {
 }
 
 export const load: LayoutServerLoad = async () => {
-	const logs = await logData.fetchMarkdowns()
-	const sorted = logs.sort(sortDesc)
+	const markdowns = await markdownData.fetchMarkdowns()
+	const sorted = markdowns.sort(sortDesc)
 
-	return {logs: sorted}
+	return {markdowns: sorted}
 }

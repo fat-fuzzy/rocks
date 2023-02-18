@@ -3,9 +3,9 @@
 
 	let title: string
 	let date: string
-	$: usage = $page.data.usages.find((d) => d.path === $page.data.path)
-	$: title = usage.meta.title
-	$: date = usage.meta.date
+	$: markdown = $page.data.markdowns.find((d) => d.path === $page.data.path)
+	$: title = markdown.meta.title
+	$: date = markdown.meta.date
 	$: html = $page.data.html
 </script>
 
@@ -14,7 +14,7 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<article class="l:text">
+<article class="l:text:md">
 	<h1>{title}</h1>
 	<p>Published: {date}</p>
 	{@html html}

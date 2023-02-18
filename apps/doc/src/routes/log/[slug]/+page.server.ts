@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import type {PageServerLoad} from './$types'
-import logData from '$data/log'
+import markdownData from '$data/log'
 /**
  * Load data from markdown file based on route parameters
  * @param params Request parameters
@@ -8,8 +8,8 @@ import logData from '$data/log'
  */
 export const load: PageServerLoad = async ({params}) => {
 	const {slug} = params
-	const logs = await logData.fetchMarkdowns()
-	const html = logs?.find((v) => v.meta.slug === slug)
+	const markdowns = await markdownData.fetchMarkdowns()
+	const html = markdowns?.find((v) => v.meta.slug === slug)
 
 	if (!html) {
 		throw error(404, 'Not found')

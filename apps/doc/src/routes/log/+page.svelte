@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	$: logs = $page.data.logs
+	$: markdowns = $page.data.markdowns
 
 	let title = 'Fat Fuzzy Log'
 </script>
@@ -15,8 +15,8 @@
 	<h1>{title}</h1>
 </header>
 
-<div class="l:stack l:text md">
-	{#each logs as { meta }}
+<div class="l:stack l:text:md">
+	{#each markdowns as { meta }}
 		<a class="font:xxl" href={`/log/${meta.slug}`}>{meta.title}</a>
 	{/each}
 </div>

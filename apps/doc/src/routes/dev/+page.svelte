@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	$: usages = $page.data.usages
+	$: markdowns = $page.data.markdowns
 
-	let title = 'Fat Fuzzy Usage'
+	let title = 'Fat Fuzzy Dev'
 </script>
 
 <svelte:head>
@@ -15,8 +15,8 @@
 	<h1>{title}</h1>
 </header>
 
-<div class="l:stack l:text md">
-	{#each usages as { meta }}
-		<a class="font:xxl" href={`/usage/${meta.slug}`}>{meta.title}</a>
+<div class="l:stack:md">
+	{#each markdowns as { meta }}
+		<a class="font:xxl" href={`/dev/${meta.slug}`}>{meta.title}</a>
 	{/each}
 </div>

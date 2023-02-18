@@ -3,9 +3,9 @@
 
 	let title: string
 	let date: string
-	$: log = $page.data.logs.find((d) => d.path === $page.data.path)
-	$: title = log.meta.title
-	$: date = log.meta.date
+	$: markdown = $page.data.markdowns.find((d) => d.path === $page.data.path)
+	$: title = markdown.meta.title
+	$: date = markdown.meta.date
 	$: html = $page.data.html
 </script>
 

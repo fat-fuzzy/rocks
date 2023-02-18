@@ -13,9 +13,9 @@
 	<p>Welcome to the Fat Fuzzy Doc !</p>
 </header>
 
-<section class="l:text:md l:center">
+<section class="l:burrito:xxl">
 	<h2>✨ Highlights</h2>
-	<div class="l:stack">
+	<div class="l:stack:xl">
 		<article class={`card:lg font:lg align:center ${variant}`}>
 			<span>🌈</span>
 			<a data-sveltekit-preload-data href="/ui">UI</a>

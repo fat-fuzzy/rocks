@@ -11,7 +11,7 @@
 		{
 			slug: 'log',
 			title: 'Log',
-			items: $page.data.logs.map(({meta, path}) => ({
+			items: $page.data.markdowns.map(({meta, path}) => ({
 				id: meta.id,
 				slug: meta.slug,
 				title: meta.title,
@@ -29,7 +29,7 @@
 	<svelte:fragment slot="side">
 		<RevealNav {title} {items} {path} breakpoint="md" size="md" />
 	</svelte:fragment>
-	<svelte:fragment slot="main">
+	<div slot="main" class="card:xxl">
 		<slot />
-	</svelte:fragment>
+	</div>
 </Sidebar>
