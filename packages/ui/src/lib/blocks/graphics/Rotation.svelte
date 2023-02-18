@@ -21,5 +21,5 @@
 <Fieldset slug="rotation" legend={label} {size}>
 	<!--https://css-tricks.com/accessible-svgs/-->
 	<!-- <svg id="InteractiveSVG" role="group" /> -->
-	<InputRange bind:value={angle} label="angle" {max} on:input={update} />
+	<InputRange bind:value={angle} label="angle" {max} on:input={update} layout="stack" {size} />
 </Fieldset>

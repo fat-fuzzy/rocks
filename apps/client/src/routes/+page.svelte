@@ -12,9 +12,9 @@
 	<p>Welcome to the Fat Fuzzy Doc !</p>
 </header>
 
-<section class="l:text:md l:center:md">
+<section class="l:burrito:xxl">
 	<h2>✨ Highlights</h2>
-	<ul class="l:stack xl" role="group">
+	<ul class="l:stack:xl" role="group">
 		<li class={`card:lg font:xl ${variant}`}>
 			<span>🌈</span>
 			<a data-sveltekit-preload-data href="/about">About</a>

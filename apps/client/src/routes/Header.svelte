@@ -4,7 +4,7 @@
 	import github from '$lib/images/github.svg'
 </script>
 
-<header class="header-app l:sidebar contrast box">
+<header class="header-app l:sidebar:sm contrast box">
 	<nav id="primary-navigation" class="l:main">
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>

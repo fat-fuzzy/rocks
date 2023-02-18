@@ -15,7 +15,7 @@
 	<h1>🤖 Machines</h1>
 </header>
 
-<form class={`l:stack:${size} l:burrito:${size}`}>
+<form class={`l:burrito:${size}`}>
 	<Fieldset legend="Toggle">
 		<Toggle {size} {variant} />
 	</Fieldset>

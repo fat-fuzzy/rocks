@@ -50,14 +50,14 @@
 		</div>
 		<Player {sketch} {canvas} />
 	</div>
-	<aside class="l:side l:stack xs">
-		<Button id="btn-details" {variant} onClick={() => toggleDetails()}>
-			{showDetails ? '👇' : '👉'} Details
-		</Button>
-		<div class={showDetails ? 'l:stack' : 'hidden:viz-only'}>
-			{#if geometry}
-				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
-			{/if}
-		</div>
+	<aside class="l:side:xxs">
+		<details open>
+			<summary class="card:sm box" onClick={() => toggleDetails()}> Details </summary>
+			<div class={showDetails ? 'l:stack:md' : 'hidden:viz-only'}>
+				{#if geometry}
+					<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
+				{/if}
+			</div>
+		</details>
 	</aside>
 </article>
