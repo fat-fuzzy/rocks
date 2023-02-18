@@ -38,11 +38,11 @@
 		size = selected.shared?.context.size ?? size
 	}
 	$: appSettings = `${brightness} ${contrast}`
-	$: containerContext = `l:${container}:${size}`
+	$: containerContext = category !== 'app' ? `l:${container}:${size}` : ''
 </script>
 
 {#if !isPage}
-	<article class={`l:stack xxl card:xl`}>
+	<article class={`l:stack card:xl l:burrito:xs`}>
 		<a class="primary" href={`${path}/${title}`}>
 			<svelte:element this={`h${String(depth)}`} class="font:sm">
 				<span class="font:xs">🔗</span>&nbsp;{title}

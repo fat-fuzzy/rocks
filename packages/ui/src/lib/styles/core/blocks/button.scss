@@ -10,8 +10,9 @@ button {
 	line-height: var(#{$prefix}-line-height-ui);
 	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 	border-radius: var(#{$prefix}-radius-base);
-	color: inherit;
-	border: 1px solid var(#{$prefix}-current-gray);
+	color: var(#{$prefix}-color-dark);
+	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
+	background-color: var(#{$prefix}-current-gray);
 }
 button:hover {
 	cursor: pointer;
@@ -19,12 +20,12 @@ button:hover {
 	background-color: inherit;
 }
 button:active {
-	border: 1px solid var(#{$prefix}-current-gray-contrast);
+	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
 }
 button.outline {
 	color: inherit;
 	background-color: inherit;
-	border: 1px solid var(#{$prefix}-current-gray-contrast);
+	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-color);
 }
 
 button:disabled {
@@ -166,10 +167,10 @@ button.bare {
 	background-color: var(#{$prefix}-current-bg-contrast);
 }
 .outline[aria-pressed='false'] {
-	border-color: var(#{$prefix}-current-gray);
+	border-color: var(#{$prefix}-current-color);
 }
 .outline[aria-pressed='true'] {
-	border-color: var(#{$prefix}-current-gray);
+	border-color: var(#{$prefix}-current-color);
 }
 
 //== Toggle  primary

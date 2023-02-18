@@ -35,6 +35,7 @@
 	}
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
+	$: classes = category !== 'app' ? `l:${layout} bp:${breakpoint} ${brightness} ${contrast}` : ''
 </script>
 
 {#if isPage}
