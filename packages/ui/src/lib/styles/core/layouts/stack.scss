@@ -3,23 +3,23 @@
 	margin-block: 0;
 }
 
-.l\:stack {
+[class^='l:stack'] {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
 
-.l\:stack:only-child {
+[class^='l:stack']:only-child {
 	/* ↓ `height` in horizontal\:tb writing mode */
 	block-size: 100%;
 	/* ↓ `width` in horizontal\:tb writing mode */
 	inline-size: 100%;
 }
 
-.l\:stack.recursive * + * {
+[class^='l:stack:'].recursive * + * {
 	margin-block-start: var(#{$prefix}-current-size);
 }
 
-.l\:stack > * + * {
-	margin-block-start: var(#{$prefix}-current-size-plus);
+[class^='l:stack:'] > * + * {
+	margin-block-start: var(#{$prefix}-current-size);
 }

@@ -10,13 +10,13 @@
 	export let id = ''
 	export let depth = 0
 	export let items = mocks.links
-	let layoutClass = layout ? `l:${layout}` : ''
+	let layoutClass = layout ? `l:${layout}:${size}` : ''
 	let depthClass = `depth-${depth}`
 
 	$: current = (slug: string) => $page.url.pathname === format.formatHref(path, slug)
 </script>
 
-<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${size} ${align} ${depthClass}`}>
+<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${align} ${depthClass}`}>
 	{#each items as item}
 		{@const {slug, title, emoji} = item}
 		{@const subItems = item.items}

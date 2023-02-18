@@ -351,7 +351,7 @@ const shared: SharedStyles = {
 		name: 'Context',
 		layout: 'switcher',
 		id: 'shared.context',
-		exclude: ['Button', 'Toggle'],
+		exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 		items: [
 			new StyleInput({
 				name: 'Container',
@@ -359,7 +359,6 @@ const shared: SharedStyles = {
 				value: '',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
 					{id: 'shared.context.container.center', text: 'center', asset: '', value: 'center'},
 					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
@@ -371,7 +370,6 @@ const shared: SharedStyles = {
 				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
@@ -418,7 +416,6 @@ const shared: SharedStyles = {
 				value: 'md',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},

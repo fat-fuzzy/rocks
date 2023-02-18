@@ -10,6 +10,7 @@
 	export let depth = 0
 	export let path = ''
 	export let layout = 'switcher' // TODO: expose breakpoint too
+	export let breakpoint = 'md' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'app'
@@ -34,7 +35,7 @@
 		// Container options
 		// - [container + size] work together
 		container = selected.shared?.context.container ?? container
-		classes = `card:xl inset l:${layout} bp:xs ${brightness} ${contrast}`
+		classes = `l:${layout}:xs bp:${breakpoint} ${brightness} ${contrast}`
 	}
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
@@ -42,12 +43,14 @@
 
 {#if isPage}
 	<Sidebar size="xs" align="end">
-		<section slot="main" class={classes}>
-			{#each componentNames as name}
-				{@const component = components[name]}
-				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
-			{/each}
-		</section>
+		<div slot="main" class="card:lg inset">
+			<section class={classes}>
+				{#each componentNames as name}
+					{@const component = components[name]}
+					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+				{/each}
+			</section>
+		</div>
 		<aside slot="side">
 			<Api {title} {category} />
 		</aside>
@@ -56,13 +59,15 @@
 	<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 		{category}
 	</svelte:element>
-	<details class="l:stack sm" open>
+	<details class="l:stack:sm" open>
 		<summary class="card:lg box">{category} collection</summary>
-		<section class={classes}>
-			{#each componentNames as name}
-				{@const component = components[name]}
-				<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
-			{/each}
-		</section>
+		<div class="card:lg inset">
+			<section class={classes}>
+				{#each componentNames as name}
+					{@const component = components[name]}
+					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+				{/each}
+			</section>
+		</div>
 	</details>
 {/if}

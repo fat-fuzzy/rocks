@@ -120,7 +120,7 @@
 			update({reset: false})
 		}
 	}}
-	class={`l:${apiLayout}`}
+	class={`l:${apiLayout}:${apiSize}`}
 >
 	{#each formOptions as styles}
 		{#if styles}
@@ -132,7 +132,8 @@
 						legend={familyName}
 						id={styleFamily.id}
 						type="input-group"
-						layout={`${styleFamily.layout}`}
+						layout={styleFamily.layout}
+						size={apiSize}
 						name={familyName}
 					>
 						{#each styleFamily.items as styleInput}
@@ -179,12 +180,13 @@
 									/>
 								{/if}
 								{#if input === 'datalist'}
-									<label for={`choice-${styleInput.name}`} class="l:stack">
+									<label for={`choice-${styleInput.name}`} class="l:stack:${apiSize}">
 										{`Select ${styleInput.name}`}
 										<input
 											list={`${styleInput.name}-${styleInput.name}`}
 											id={styleInput.id}
 											name={styleInput.id}
+											class={`${apiSize}`}
 											on:input={(event) => handleSelect(event, familyName, styleInput.name)}
 										/>
 										<datalist id={`${styleInput.name}-${styleInput.name}`}>

@@ -1,19 +1,14 @@
 <script lang="ts">
-	import {clickOutside} from '../utils/click-outside.js'
-
 	export let layout = ''
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
 	export let align = 'start'
+	export let id = 'reveal'
 	let expanded = false
 
 	function toggleReveal(event) {
 		expanded = !expanded
-	}
-
-	function handleClickOutside(event) {
-		expanded = false
 	}
 
 	$: show = expanded ? 'show' : 'hide'
@@ -21,26 +16,23 @@
 	// TODO: use detail + summary tags (?)
 </script>
 
-<div
-	class={`l:reveal l:${layout} ${size} bp:${breakpoint}`}
-	use:clickOutside
-	on:clickOutside={handleClickOutside}
->
-	<slot name="toggle">
-		<button
-			class={`toggle collapse ${size} ${variant}`}
+<details class={`l:reveal l:${layout}:${size} bp:${breakpoint}`} open>
+	<slot name="summary">
+		<summary
+			class={`${variant}`}
 			aria-expanded={expanded}
+			aria-controls={`${id}-menu-list`}
 			on:click={toggleReveal}
 		>
 			Click to Reveal
-		</button>
+		</summary>
 	</slot>
 	<div class={`${align} ${show}`}>
 		<slot name="content">
-			<div class="card layer l:${layout}">
+			<div class="card layer l:${layout}:${size}">
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>
 		</slot>
 	</div>
-</div>
+</details>

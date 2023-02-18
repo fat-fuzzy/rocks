@@ -2,25 +2,16 @@
 	position: relative;
 }
 
-.l\:reveal.l\:stack {
-	inline-size: unset;
-	inline-size: calc(100% - 2 * var(#{$prefix}-gap));
-}
-
 .l\:reveal .layer {
-	#{$prefix}-layer-top: calc(
-		calc(2 * var(#{$prefix}-prev-offset-limit)) +
-			calc(0.5em + calc(2 * var(#{$prefix}-current-size-plus))) +
-			calc(2 * var(#{$prefix}-border-width))
-	);
-	position: absolute;
-	top: var(#{$prefix}-layer-top);
-	left: 0;
-	right: 0;
+	position: relative;
 	z-index: var(#{$prefix}-z-index-reveal);
-	// TODO : fix color / bg color- cannot override for now
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
+	min-block-size: 100%;
+}
+
+.l\:reveal.l\:stack:not([open]) {
+	block-size: unset;
 }
 
 .l\:reveal .end {
@@ -40,21 +31,8 @@
 		width: auto;
 		white-space: normal;
 	}
-	.l\:reveal.bp\:xxs [class^='fixed:'] {
-		position: unset;
-		width: 100%; // TODO: use inline-size
-		max-width: unset;
-	}
 	.l\:reveal.bp\:xxs.l\:stack:only-child {
-		inline-size: unset;
-		inline-size: var(#{$prefix}-current-sidebar-width);
-	}
-}
-@include max-width(bp-xxs) {
-	.l\:reveal.bp\:xxs [class^='fixed:'] {
-		max-width: unset;
-		// box-shadow: none; // TODO: decide
-		background-color: inherit;
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }
 
@@ -70,22 +48,8 @@
 		width: auto;
 		white-space: normal;
 	}
-	.l\:reveal.bp\:xs [class^='fixed:'] {
-		position: unset;
-		width: 100%;
-		max-width: unset;
-		inline-size: unset;
-	}
 	.l\:reveal.bp\:xs.l\:stack:only-child {
-		inline-size: unset;
-		inline-size: var(#{$prefix}-current-sidebar-width);
-	}
-}
-@include max-width(bp-xs) {
-	.l\:reveal.bp\:xs [class^='fixed:'] {
-		max-width: unset;
-		// box-shadow: none; // TODO: decide
-		background-color: inherit;
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }
 
@@ -101,22 +65,8 @@
 		width: auto;
 		white-space: normal;
 	}
-	.l\:reveal.bp\:sm [class^='fixed:'] {
-		position: unset;
-		width: 100%;
-		max-width: unset;
-		inline-size: unset;
-	}
 	.l\:reveal.bp\:sm.l\:stack:only-child {
-		inline-size: unset;
-		inline-size: var(#{$prefix}-current-sidebar-width);
-	}
-}
-@include max-width(bp-sm) {
-	.l\:reveal.bp\:sm [class^='fixed:'] {
-		max-width: unset;
-		// box-shadow: none; // TODO: decide
-		background-color: inherit;
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }
 
@@ -132,22 +82,8 @@
 		width: auto;
 		white-space: normal;
 	}
-	.l\:reveal.bp\:md [class^='fixed:'] {
-		position: unset;
-		width: 100%;
-		max-width: unset;
-		inline-size: unset;
-	}
 	.l\:reveal.bp\:md.l\:stack:only-child {
-		inline-size: unset;
-		inline-size: var(#{$prefix}-current-sidebar-width);
-	}
-}
-@include max-width(bp-md) {
-	.l\:reveal.bp\:md [class^='fixed:'] {
-		max-width: unset;
-		// box-shadow: none; // TODO: decide
-		background-color: inherit;
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }
 
@@ -163,22 +99,8 @@
 		width: auto;
 		white-space: normal;
 	}
-	.l\:reveal.bp\:lg [class^='fixed:'] {
-		position: unset;
-		width: 100%;
-		max-width: unset;
-		inline-size: unset;
-	}
 	.l\:reveal.bp\:lg.l\:stack:only-child {
-		inline-size: unset;
-		inline-size: var(#{$prefix}-current-sidebar-width);
-	}
-}
-@include max-width(bp-lg) {
-	.l\:reveal.bp\:lg [class^='fixed:'] {
-		max-width: unset;
-		// box-shadow: none; // TODO: decide
-		background-color: inherit;
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }
 
@@ -194,21 +116,7 @@
 		width: auto;
 		white-space: normal;
 	}
-	.l\:reveal.bp\:xl [class^='fixed:'] {
-		position: unset;
-		width: 100%;
-		max-width: unset;
-		inline-size: unset;
-	}
 	.l\:reveal.bp\:xl.l\:stack:only-child {
-		inline-size: unset;
-		inline-size: var(#{$prefix}-current-sidebar-width);
-	}
-}
-@include max-width(bp-xl) {
-	.l\:reveal.bp\:xl [class^='fixed:'] {
-		max-width: unset;
-		// box-shadow: none; // TODO: decide
-		background-color: inherit;
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }

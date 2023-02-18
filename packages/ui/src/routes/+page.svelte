@@ -15,7 +15,7 @@
 	<p>Welcome to the Fat Fuzzy UI library Sandbox!</p>
 </header>
 
-<section class="l:text:md l:center">
+<section class="l:text:md l:center:md">
 	<h2>✨ Highlights</h2>
 	<ul class="l:stack xl">
 		<li class={`card align:center ${variant}`}>

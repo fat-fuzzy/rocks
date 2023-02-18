@@ -38,7 +38,7 @@
 
 <Header className="header-app" />
 
-<main class="l:center {className}">
+<main class={`l:center:md ${className}`}>
 	<slot />
 </main>
 

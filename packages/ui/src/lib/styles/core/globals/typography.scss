@@ -34,62 +34,14 @@ h5 {
 	font-size: var(#{$prefix}-font-size-base);
 }
 
-.font\:xxs {
-	font-size: var(#{$prefix}-font-size-xxs);
+[class*='font:'] {
+	font-size: var(#{$prefix}-current-font-size);
 }
-
-.font\:xs\:minus {
-	font-size: var(#{$prefix}-font-size-xxs);
+[class*='font:minus:'] {
+	font-size: var(#{$prefix}-current-font-size-minus);
 }
-.font\:xs {
-	font-size: var(#{$prefix}-font-size-xs);
-}
-.font\:xs\:plus {
-	font-size: var(#{$prefix}-font-size-sm);
-}
-
-.font\:sm\:minus {
-	font-size: var(#{$prefix}-font-size-xxs);
-}
-.font\:sm {
-	font-size: var(#{$prefix}-font-size-sm);
-}
-.font\:sm\:plus {
-	font-size: var(#{$prefix}-font-size-md);
-}
-
-.font\:md\:minus {
-	font-size: var(#{$prefix}-font-size-xs);
-}
-.font\:md {
-	font-size: var(#{$prefix}-font-size-md);
-}
-.font\:md\:plus {
-	font-size: var(#{$prefix}-font-size-lg);
-}
-
-.font\:lg\:minus {
-	font-size: var(#{$prefix}-font-size-sm);
-}
-.font\:lg {
-	font-size: var(#{$prefix}-font-size-lg);
-}
-.font\:lg\:plus {
-	font-size: var(#{$prefix}-font-size-xl);
-}
-
-.font\:xl\:minus {
-	font-size: var(#{$prefix}-font-size-md);
-}
-.font\:xl {
-	font-size: var(#{$prefix}-font-size-xl);
-}
-.font\:xl\:plus {
-	font-size: var(#{$prefix}-font-size-xxl);
-}
-
-.font\:xxl {
-	font-size: var(#{$prefix}-font-size-xxl);
+[class*='font:plus:'] {
+	font-size: var(#{$prefix}-current-font-size-plus);
 }
 
 pre {

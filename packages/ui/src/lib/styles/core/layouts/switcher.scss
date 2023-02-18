@@ -1,45 +1,21 @@
-.l\:switcher {
+[class^='l:switcher'] {
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(#{$prefix}-gap);
 }
 
-.l\:switcher > * {
+[class^='l:switcher'] > * {
 	flex-grow: 1;
 	flex-basis: calc((var(--threshold) - 100%) * 999);
 }
 
 /**
-*  Use a breakpoint to force wrap into stack layout at the breakpoint value.
-* In this way, contents will wrap together as a stack
+*  Use a breakpoint to force wrap into switcher layout at the breakpoint value.
+* In this way, contents will wrap together as a switcher
 * (instead of normal wrap where items will wrap independently of one another)
 */
-.l\:switcher.bp\:xxs {
-	gap: calc(var(#{$prefix}-gap) / 2);
-	--threshold: calc(var(#{$prefix}-bp-xxs) * 1px); // adds px unit to unitless value
-}
 
-.l\:switcher.bp\:xs {
+[class^='l:switcher'] {
 	gap: var(#{$prefix}-gap);
-	--threshold: calc(var(#{$prefix}-bp-xs) * 1px);
-}
-
-.l\:switcher.bp\:sm {
-	gap: var(#{$prefix}-gap);
-	--threshold: calc(var(#{$prefix}-bp-sm) * 1px);
-}
-
-.l\:switcher.bp\:md {
-	gap: var(#{$prefix}-gap);
-	--threshold: calc(var(#{$prefix}-bp-md) * 1px);
-}
-
-.l\:switcher.bp\:lg {
-	gap: var(#{$prefix}-gap);
-	--threshold: calc(var(#{$prefix}-bp-lg) * 1px);
-}
-
-.l\:switcher.bp\:xl {
-	gap: var(#{$prefix}-gap);
-	--threshold: calc(var(#{$prefix}-bp-xl) * 1px);
+	--threshold: calc(var(#{$prefix}-current-bp-size) * 1px); // adds px unit to unitless value
 }

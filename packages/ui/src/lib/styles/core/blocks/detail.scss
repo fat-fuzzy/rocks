@@ -4,7 +4,7 @@ details {
 
 details > summary {
 	cursor: pointer;
-	display: inline-block;
+	display: block;
 	color: var(#{$prefix}-color-light);
 	font-weight: var(#{$prefix}-font-weight-ui);
 	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-primary);

@@ -6,8 +6,9 @@
 	export let size = 'sm'
 	export let layout = 'stack'
 	export let container = 'burrito'
+	export let breakpoint = 'md'
 
-	$: className = `l:${layout} l:${container} ${size} ${type}`
+	$: className = `l:${layout}:${size} l:${container}:${size} bp:${breakpoint} ${size} ${type}`
 </script>
 
 <fieldset {id} {name} data-key={id} class={className}>
