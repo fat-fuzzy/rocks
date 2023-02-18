@@ -57,7 +57,7 @@
 		{category}
 	</svelte:element>
 	<details class="l:stack:sm" open>
-		<summary class="card:lg box">{category} collection</summary>
+		<summary class="card:lg box bg:primary">{category} collection</summary>
 		<div class="card:lg inset">
 			<section class={classes}>
 				{#each componentNames as name}
