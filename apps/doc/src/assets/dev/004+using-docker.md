@@ -3,7 +3,7 @@ title: Using Docker
 date: 'YYYY-MM-DD'
 slug: using-docker
 id: '004'
-tags: ['example', 'doc', 'app']
+tags: ['example', 'doc', 'docker']
 ---
 
 ## Use Case Example

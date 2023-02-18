@@ -1,7 +1,7 @@
 ---
-title: Using individual packages
+title: Using Packages
 date: 'YYYY-MM-DD'
-slug: using-individual-packages
+slug: using-packages
 id: '001'
 tags: ['example', 'doc', 'packages']
 ---

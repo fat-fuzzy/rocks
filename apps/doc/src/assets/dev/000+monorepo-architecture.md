@@ -1,7 +1,7 @@
 ---
-title: Using the monorepo architecture
+title: Monorepo Architecture
 date: 'YYYY-MM-DD'
-slug: using-monorepo
+slug: monorepo-architecture
 id: '000'
 tags: ['example', 'doc', 'monorepo']
 ---
