@@ -27,7 +27,7 @@
 <details aria-labelledby={id} class={`l:reveal`} open>
 	<summary
 		{id}
-		class={`card:${size} ${variant} ${color}`}
+		class={`card:${size} ${variant} bg:${color}`}
 		aria-expanded={expanded}
 		aria-controls={`nav-${id}`}
 		on:click={toggleReveal}

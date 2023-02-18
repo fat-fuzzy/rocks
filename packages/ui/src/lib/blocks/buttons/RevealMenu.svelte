@@ -47,7 +47,7 @@
 <details aria-labelledby={id} class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>
 	<summary
 		{id}
-		class={`card:${size} ${variant} ${color}`}
+		class={`card:${size} ${variant} bg:${color}`}
 		aria-expanded={expanded}
 		aria-haspopup="menu"
 		aria-controls={`menu-${id}`}

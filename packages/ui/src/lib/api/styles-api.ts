@@ -202,7 +202,6 @@ interface BlockStyles extends StyleCategory {
 }
 interface LayoutStyles extends StyleCategory {
 	element: StyleFamily
-	children: StyleFamily
 }
 
 interface StylesApiOptions {
@@ -251,12 +250,7 @@ export class StylesApi {
 		const appStylesTree = this.app?.settings?.getStyleTree() || {}
 		const sharedStylesTree = this.shared?.context?.getStyleTree() || {}
 		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
-		const layoutsChildrenStylesTree = this.layouts?.children?.getStyleTree() || {}
-		const layoutsElementStylesTree = this.layouts?.element?.getStyleTree() || {}
-		const layoutsStylesTree = {
-			...layoutsChildrenStylesTree,
-			...layoutsElementStylesTree,
-		}
+		const layoutsStylesTree = this.layouts?.element?.getStyleTree() || {}
 
 		return {
 			app: appStylesTree,
@@ -354,6 +348,21 @@ const shared: SharedStyles = {
 		exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 		items: [
 			new StyleInput({
+				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
+				id: 'shared.context.size',
+				value: 'md',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: [/* 'layouts', */ 'Switcher'],
+				items: [
+					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'shared.context.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'shared.context.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
+				],
+			}),
+			new StyleInput({
 				name: 'Container',
 				id: 'shared.context.container',
 				value: '',
@@ -395,21 +404,6 @@ const shared: SharedStyles = {
 						// 	},
 						// ],
 					},
-				],
-			}),
-			new StyleInput({
-				name: 'Size',
-				id: 'shared.context.size',
-				value: 'md',
-				input: 'toggle',
-				layout: 'stack',
-				exclude: [/* 'layouts', */ 'Switcher'],
-				items: [
-					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
-					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
-					{id: 'shared.context.size.md', text: 'md', asset: '', value: 'md'},
-					{id: 'shared.context.size.lg', text: 'lg', asset: '', value: 'lg'},
-					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 			new StyleInput({
@@ -518,59 +512,13 @@ const blocks: BlockStyles = {
 }
 
 const layouts: LayoutStyles = {
-	children: new StyleFamily({
-		name: 'Children',
-		id: 'layouts.children',
-		layout: 'switcher',
-		items: [
-			new StyleInput({
-				name: 'Content',
-				id: 'layouts.children.content',
-				value: 'card',
-				input: 'toggle',
-				layout: 'stack',
-				exclude: ['Sidebar'],
-				items: [
-					{id: 'layouts.children.content.card', text: 'card', asset: '', value: 'card'},
-					{id: 'layouts.children.content.form', text: 'form', asset: '', value: 'form'},
-					{id: 'layouts.children.content.text', text: 'text', asset: '', value: 'text'},
-				],
-			}),
-			new StyleInput({
-				name: 'Side',
-				id: 'layouts.children.side',
-				value: 'card',
-				input: 'toggle',
-				layout: 'stack',
-				include: ['Sidebar'],
-				items: [
-					{id: 'layouts.children.side.card', text: 'card', asset: '', value: 'card'},
-					{id: 'layouts.children.side.form', text: 'form', asset: '', value: 'form'},
-					{id: 'layouts.children.side.text', text: 'text', asset: '', value: 'text'},
-				],
-			}),
-			new StyleInput({
-				name: 'Main',
-				id: 'layouts.children.main',
-				value: 'text',
-				input: 'toggle',
-				layout: 'stack',
-				include: ['Sidebar'],
-				items: [
-					{id: 'layouts.children.main.card', text: 'card', asset: '', value: 'card'},
-					{id: 'layouts.children.main.form', text: 'form', asset: '', value: 'form'},
-					{id: 'layouts.children.main.text', text: 'text', asset: '', value: 'text'},
-				],
-			}),
-		],
-	}),
 	element: new StyleFamily({
 		name: 'Element',
 		id: 'layouts.element',
 		layout: 'switcher',
 		items: [
 			new StyleInput({
-				name: 'Size',
+				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
 				id: 'layouts.element.size',
 				value: 'md',
 				input: 'toggle',
@@ -581,6 +529,45 @@ const layouts: LayoutStyles = {
 					{id: 'layouts.element.size.md', text: 'md', asset: '', value: 'md'},
 					{id: 'layouts.element.size.lg', text: 'lg', asset: '', value: 'lg'},
 					{id: 'layouts.element.size.xl', text: 'xl', asset: '', value: 'xl'},
+				],
+			}),
+			new StyleInput({
+				name: 'Content',
+				id: 'layouts.element.content',
+				value: 'card',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: ['Sidebar'],
+				items: [
+					{id: 'layouts.element.content.card', text: 'card', asset: '', value: 'card'},
+					{id: 'layouts.element.content.form', text: 'form', asset: '', value: 'form'},
+					{id: 'layouts.element.content.text', text: 'text', asset: '', value: 'text'},
+				],
+			}),
+			new StyleInput({
+				name: 'Side',
+				id: 'layouts.element.side',
+				value: 'card',
+				input: 'toggle',
+				layout: 'stack',
+				include: ['Sidebar'],
+				items: [
+					{id: 'layouts.element.side.card', text: 'card', asset: '', value: 'card'},
+					{id: 'layouts.element.side.form', text: 'form', asset: '', value: 'form'},
+					{id: 'layouts.element.side.text', text: 'text', asset: '', value: 'text'},
+				],
+			}),
+			new StyleInput({
+				name: 'Main',
+				id: 'layouts.element.main',
+				value: 'text',
+				input: 'toggle',
+				layout: 'stack',
+				include: ['Sidebar'],
+				items: [
+					{id: 'layouts.element.main.card', text: 'card', asset: '', value: 'card'},
+					{id: 'layouts.element.main.form', text: 'form', asset: '', value: 'form'},
+					{id: 'layouts.element.main.text', text: 'text', asset: '', value: 'text'},
 				],
 			}),
 		],
@@ -609,7 +596,6 @@ export const DEFAULT_STYLES: StyleTree = {
 		},
 	},
 	layouts: {
-		children: {content: 'card', side: 'card', main: 'text'},
-		element: {size: 'md'},
+		element: {size: 'md', content: 'card', side: 'card', main: 'text'},
 	},
 }

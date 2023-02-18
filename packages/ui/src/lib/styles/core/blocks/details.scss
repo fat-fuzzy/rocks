@@ -1,0 +1,80 @@
+details {
+	// TODO
+}
+
+details > summary {
+	cursor: pointer;
+	display: block;
+	color: var(#{$prefix}-color-light);
+	font-weight: var(#{$prefix}-font-weight-ui);
+	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-color);
+}
+
+details > summary {
+	background-color: var(#{$prefix}-current-color);
+}
+
+details > summary::before {
+	content: '👉';
+	margin-inline-end: var(#{$prefix}-s-1);
+}
+
+details > p {
+	// TODO
+}
+
+details[open] > summary {
+	color: var(#{$prefix}-current-color);
+	background-color: var(#{$prefix}-current-bg-contrast);
+	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
+}
+
+details[open] > summary::before {
+	content: '👇';
+	margin-inline-end: var(#{$prefix}-s-1);
+}
+
+// same as .bg\:primary\:light
+details[open] > summary.bg\:primary {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-primary-light);
+}
+// same as .bg\:accent\:light
+details[open] > summary.bg\:accent {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-accent-light);
+}
+// same as .bg\:highlight\:light
+details[open] > summary.bg\:highlight {
+	color: var(#{$prefix}-color-dark);
+	background-color: var(#{$prefix}-current-highlight-light);
+}
+
+// Stops menu from changing width on open/close - TODO: investigate
+.l\:burrito\:xxs summary {
+	inline-size: var(#{$prefix}-sidebar-width-xxs);
+}
+// Stops menu from changing width on open/close - TODO: investigate
+.l\:burrito\:xs summary {
+	inline-size: var(#{$prefix}-sidebar-width-xs);
+}
+// Stops menu from changing width on open/close - TODO: investigate
+.l\:burrito\:sm summary {
+	inline-size: var(#{$prefix}-sidebar-width-sm);
+}
+// Stops menu from changing width on open/close - TODO: investigate
+.l\:burrito\:md summary {
+	inline-size: var(#{$prefix}-sidebar-width-md);
+}
+// Stops menu from changing width on open/close - TODO: investigate
+.l\:burrito\:lg summary {
+	inline-size: var(#{$prefix}-sidebar-width-lg);
+}
+// Stops menu from changing width on open/close - TODO: investigate
+.l\:burrito\:xl summary {
+	inline-size: var(#{$prefix}-sidebar-width-xl);
+}
+// Stops menu from changing width on open/close - TODO: investigate
+.l\:burrito\:xxl summary {
+	inline-size: var(#{$prefix}-sidebar-width-xxl);
+}

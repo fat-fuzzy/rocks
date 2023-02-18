@@ -22,9 +22,9 @@
 		size = selected.layouts?.element?.size ?? ''
 		breakpoint = selected.shared?.context.breakpoint ?? breakpoint
 		// Content options
-		content = selected.layouts?.children.content ?? 'card'
-		sideContent = selected.layouts?.children.side ?? 'card'
-		mainContent = selected.layouts?.children.main ?? 'text'
+		content = selected.layouts?.element.content ?? 'card'
+		sideContent = selected.layouts?.element.side ?? 'card'
+		mainContent = selected.layouts?.element.main ?? 'text'
 	}
 </script>
 
