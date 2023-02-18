@@ -3,12 +3,12 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="l:text:md l:center">
+<article class="l:burrito:xxl">
 	<h1>About this app</h1>
 
 	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
+		This is a <a href="https://kit.svelte.dev" class="font:md">SvelteKit</a> app. You can make your own
+		by typing the following into your command line and following the prompts:
 	</p>
 
 	<pre>npm create svelte@latest</pre>
@@ -18,4 +18,4 @@
 		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
 		the devtools network panel and reloading.
 	</p>
-</div>
+</article>

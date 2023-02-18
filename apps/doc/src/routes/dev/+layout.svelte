@@ -4,13 +4,13 @@
 	const {Sidebar} = layouts
 	const {RevealNav} = blocks
 
-	let title = ' FatFuzzy Log'
-	let description = 'Fat Fuzzy Log: thoughts and choices that provide context for this project'
+	let title = ' Fat Fuzzy Dev'
+	let description = 'Fat Fuzzy Dev: how to use the packages in this project to develop other apps'
 	$: path = ''
 	$: items = [
 		{
-			slug: 'log',
-			title: 'Log',
+			slug: 'dev',
+			title: 'Dev',
 			items: $page.data.markdowns.map(({meta, path}) => ({
 				id: meta.id,
 				slug: meta.slug,

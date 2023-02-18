@@ -29,6 +29,22 @@
 </script>
 
 <Fieldset slug="scale" legend={label} {size}>
-	<InputRange bind:value={scaleX} label="{label} x" min={minX} max={maxX} on:input={updateX} />
-	<InputRange bind:value={scaleY} label="{label} y" min={minY} max={maxY} on:input={updateY} />
+	<InputRange
+		bind:value={scaleX}
+		label="{label} x"
+		min={minX}
+		max={maxX}
+		on:input={updateX}
+		layout="stack"
+		{size}
+	/>
+	<InputRange
+		bind:value={scaleY}
+		label="{label} y"
+		min={minY}
+		max={maxY}
+		on:input={updateY}
+		layout="stack"
+		{size}
+	/>
 </Fieldset>

@@ -25,7 +25,7 @@
 		}
 	}
 
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
+	$: classes = `l:${layout}:${size} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 </script>
 
 <button

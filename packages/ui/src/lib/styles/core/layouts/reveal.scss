@@ -2,56 +2,25 @@
 	position: relative;
 }
 
-.l\:reveal .toggle.collapse {
-	margin-block-end: 0;
-}
-
-.l\:reveal .toggle.collapse + .show {
-	#{$prefix}-show-top: calc(
-		calc(2 * var(#{$prefix}-prev-offset-limit)) +
-			calc(0.5em + calc(2 * var(#{$prefix}-current-size-plus))) +
-			calc(2 * var(#{$prefix}-border-width))
-	);
-	position: absolute;
-	top: var(#{$prefix}-show-top);
-
-	// TODO : fix color / bg color- cannot override for now
+.l\:reveal .layer {
+	position: relative;
+	z-index: var(#{$prefix}-z-index-reveal);
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-color);
-	left: 0;
-	right: 0;
-	z-index: var(#{$prefix}-z-index-reveal);
+	min-block-size: 100%;
 }
 
-// TODO: Fix bg color
-.l\:reveal .toggle.collapse + .show.contrast {
-	// TODO : fix color / bg color- cannot override for now
-	color: var(#{$prefix}-current-color);
-	background-color: var(#{$prefix}-current-bg-contrast);
+.l\:reveal.l\:stack:not([open]) {
+	block-size: unset;
 }
 
-.l\:reveal .toggle.collapse + .end {
+.l\:reveal .end {
 	justify-self: flex-end;
 }
-
-.l\:reveal .toggle.collapse + .hide {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 0;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
-}
+// TODO: set [inline/block] size according to alignment
 
 @include min-width(bp-xxs) {
-	.l\:reveal.bp\:xxs .toggle.collapse {
-		display: none;
-	}
-
-	.l\:reveal.bp\:xxs .toggle.collapse + .hide {
+	.l\:reveal.bp\:xxs [class^='hidden:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -62,21 +31,13 @@
 		width: auto;
 		white-space: normal;
 	}
-
-	.l\:reveal.bp\:xxs .toggle.collapse + .show {
-		position: unset;
-		width: 100%;
-		max-width: unset;
-		box-shadow: unset;
+	.l\:reveal.bp\:xxs.l\:stack:only-child {
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }
 
 @include min-width(bp-xs) {
-	.l\:reveal.bp\:xs .toggle.collapse {
-		display: none;
-	}
-
-	.l\:reveal.bp\:xs .toggle.collapse + .hide {
+	.l\:reveal.bp\:xs [class^='hidden:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -87,21 +48,13 @@
 		width: auto;
 		white-space: normal;
 	}
-
-	.l\:reveal.bp\:xs .toggle.collapse + .show {
-		position: unset;
-		width: 100%;
-		max-width: unset;
-		box-shadow: unset;
+	.l\:reveal.bp\:xs.l\:stack:only-child {
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }
 
 @include min-width(bp-sm) {
-	.l\:reveal.bp\:sm .toggle.collapse {
-		display: none;
-	}
-
-	.l\:reveal.bp\:sm .toggle.collapse + .hide {
+	.l\:reveal.bp\:sm [class^='hidden:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -112,21 +65,13 @@
 		width: auto;
 		white-space: normal;
 	}
-
-	.l\:reveal.bp\:sm .toggle.collapse + .show {
-		position: unset;
-		width: 100%;
-		max-width: unset;
-		box-shadow: unset;
+	.l\:reveal.bp\:sm.l\:stack:only-child {
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }
 
 @include min-width(bp-md) {
-	.l\:reveal.bp\:md .toggle.collapse {
-		display: none;
-	}
-
-	.l\:reveal.bp\:md .toggle.collapse + .hide {
+	.l\:reveal.bp\:md [class^='hidden:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -137,11 +82,41 @@
 		width: auto;
 		white-space: normal;
 	}
+	.l\:reveal.bp\:md.l\:stack:only-child {
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
+	}
+}
 
-	.l\:reveal.bp\:md .toggle.collapse + .show {
+@include min-width(bp-lg) {
+	.l\:reveal.bp\:lg [class^='hidden:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
 		position: unset;
-		width: 100%;
-		max-width: unset;
-		box-shadow: unset;
+		width: auto;
+		white-space: normal;
+	}
+	.l\:reveal.bp\:lg.l\:stack:only-child {
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
+	}
+}
+
+@include min-width(bp-xl) {
+	.l\:reveal.bp\:xl [class^='hidden:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+	.l\:reveal.bp\:xl.l\:stack:only-child {
+		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
 	}
 }

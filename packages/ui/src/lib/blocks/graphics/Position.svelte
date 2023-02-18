@@ -6,7 +6,7 @@
 
 	const dispatch = createEventDispatcher()
 
-	export let size = 'xxs'
+	export let size = 'xs'
 	export let coordX = 0
 	export let coordY = 0
 	export let maxX = 0
@@ -26,7 +26,21 @@
 	}
 </script>
 
-<Fieldset slug="position" legend={label} {size}>
-	<InputRange bind:value={coordX} label="{label} x" max={maxX} on:input={updateX} />
-	<InputRange bind:value={coordY} label="{label} y" max={maxY} on:input={updateY} />
+<Fieldset legend={label} {size}>
+	<InputRange
+		bind:value={coordX}
+		label="{label} x"
+		max={maxX}
+		on:input={updateX}
+		layout="stack"
+		{size}
+	/>
+	<InputRange
+		bind:value={coordY}
+		label="{label} y"
+		max={maxY}
+		on:input={updateY}
+		layout="stack"
+		{size}
+	/>
 </Fieldset>

@@ -1,42 +1,101 @@
-.xxs {
+.xxs,
+[class*=':xxs'] {
 	#{$prefix}-current-size: var(#{$prefix}-size-xxs);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-sm);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xxs);
+	#{$prefix}-current-font-size-minus: calc(
+		var(#{$prefix}-font-size-xxs) / var(#{$prefix}-fluid-min-ratio)
+	);
+	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-sm);
 	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xxs);
 }
-.xs {
+
+.xs,
+[class*=':xs'] {
 	#{$prefix}-current-size: var(#{$prefix}-size-xs);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-md);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xs);
+	#{$prefix}-current-font-size-minus: calc(
+		var(#{$prefix}-font-size-xxs) / var(#{$prefix}-fluid-min-ratio)
+	);
+	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-md);
 	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xs);
 }
-.sm {
+
+.sm,
+[class*=':sm'] {
 	#{$prefix}-current-size: var(#{$prefix}-size-sm);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-lg);
+}
+[class*=':sm'] {
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-sm);
+	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-xxs);
+	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-lg);
 	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-sm);
 }
-.md {
+
+.md,
+[class*=':md'] {
 	#{$prefix}-current-size: var(#{$prefix}-size-md);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-xl);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-md);
+	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-xs);
+	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-xl);
 	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-md);
 }
-.lg {
+
+.lg,
+[class*=':lg'] {
 	#{$prefix}-current-size: var(#{$prefix}-size-lg);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-lg);
+	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-sm);
+	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-xxl);
 	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-lg);
 }
-.xl {
+
+.xl,
+[class*=':xl'] {
 	#{$prefix}-current-size: var(#{$prefix}-size-xl);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xl);
+	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-md);
+	#{$prefix}-current-font-size-plus: calc(
+		var(#{$prefix}-font-size-xxl) * var(#{$prefix}-fluid-min-ratio)
+	);
 	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xl);
 }
-.xxl {
+
+.xxl,
+[class*=':xxl'] {
 	#{$prefix}-current-size: var(#{$prefix}-size-xxl);
 	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
 	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xxl);
+	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-xl);
+	#{$prefix}-current-font-size-plus: calc(
+		var(#{$prefix}-font-size-xxl) * var(#{$prefix}-fluid-min-ratio)
+	);
 	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xxl);
+}
+
+[class^='bp:xxs'] {
+	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xxs);
+}
+[class^='bp:xs'] {
+	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xs);
+}
+[class^='bp:sm'] {
+	#{$prefix}-current-bp-size: var(#{$prefix}-bp-sm);
+}
+[class^='bp:md'] {
+	#{$prefix}-current-bp-size: var(#{$prefix}-bp-md);
+}
+[class^='bp:lg'] {
+	#{$prefix}-current-bp-size: var(#{$prefix}-bp-lg);
+}
+[class^='bp:xl'] {
+	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xl);
+}
+[class^='bp:xxl'] {
+	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xxl);
 }

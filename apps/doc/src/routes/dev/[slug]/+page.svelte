@@ -10,14 +10,12 @@
 </script>
 
 <svelte:head>
-	<title>Fat Fuzzy Rocks | {title}</title>
+	<title>Fat Fuzzy UI | {title}</title>
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
 <article class="l:text:md">
-	<header class="l:stack xxs">
-		<h1>{title}</h1>
-		<p>Published: {date}</p>
-	</header>
+	<h1>{title}</h1>
+	<p>Published: {date}</p>
 	{@html html}
 </article>

@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import type {PageServerLoad} from './$types'
-import markdownData from '$data/log'
+import markdownData from '$data/dev'
 /**
  * Load data from markdown file based on route parameters
  * @param params Request parameters

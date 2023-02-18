@@ -23,7 +23,7 @@
 		dispatch('input', payload)
 	}
 	$: inputId = `checkbox-${id}`
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
+	$: classes = `l:${layout}:${size} bp:${breakpoint} ${color} ${variant} ${align}`
 </script>
 
 <label for={inputId} class={classes}>

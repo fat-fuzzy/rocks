@@ -24,10 +24,6 @@
 		expanded = !expanded
 	}
 
-	const handleClickOutside = (event) => {
-		expanded = false
-	}
-
 	let clicked = ''
 	let innerVariant = ''
 
@@ -49,26 +45,22 @@
 	$: innerVariant = VARIANT_MATCH[variant]
 </script>
 
-<div
-	class={`l:reveal l:${layout} ${size} bp:${breakpoint}`}
-	use:clickOutside
-	on:clickOutside={handleClickOutside}
->
-	<button
-		type="button"
-		class={`toggle collapse  ${size} ${variant} ${color}`}
+<details aria-labelledby={id} class={`l:reveal l:${layout}:${size} bp:${breakpoint} ${size}`} open>
+	<summary
+		{id}
+		class={`card:${size} ${variant} ${color}`}
 		aria-expanded={expanded}
 		aria-haspopup="menu"
-		aria-controls={id}
+		aria-controls={`menu-${id}`}
 		on:click={toggleReveal}
 	>
 		{format.formatLabel(title, asset)}
-	</button>
-	<menu {id} class={`l:${layout} ${size} align:${align} ${show}`}>
+	</summary>
+	<menu id={`menu-${id}`} class={`l:${layout}:${size} align:${align} ${show}`}>
 		{#each items as buttonProps}
 			<li>
 				<Button {onClick} {...buttonProps} variant={innerVariant} {color} />
 			</li>
 		{/each}
 	</menu>
-</div>
+</details>

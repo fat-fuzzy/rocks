@@ -56,14 +56,14 @@
 	</nav>
 	<div class="l:side">
 		<menu
-			class={`l:reveal sm bp:${breakpoint}`}
+			class={`l:reveal:sm bp:${breakpoint}`}
 			use:clickOutside
 			on:clickOutside={handleClickOutside}
 		>
-			<button type="button" on:click={toggleTheme} class="polar">
+			<button on:click={toggleTheme} class="polar font:sm">
 				{themeIcon}&nbsp;&nbsp;Theme
 			</button>
-			<div class="corner">
+			<div class="corner font:sm">
 				<a href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
 					<img src={github} alt="GitHub" />
 				</a>

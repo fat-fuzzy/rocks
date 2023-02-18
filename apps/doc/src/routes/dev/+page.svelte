@@ -3,7 +3,7 @@
 
 	$: markdowns = $page.data.markdowns
 
-	let title = 'Fat Fuzzy Log'
+	let title = 'Fat Fuzzy Dev'
 </script>
 
 <svelte:head>
@@ -15,8 +15,8 @@
 	<h1>{title}</h1>
 </header>
 
-<div class="l:stack l:text:md">
+<div class="l:stack:md">
 	{#each markdowns as { meta }}
-		<a class="font:xxl" href={`/log/${meta.slug}`}>{meta.title}</a>
+		<a class="font:xxl" href={`/dev/${meta.slug}`}>{meta.title}</a>
 	{/each}
 </div>

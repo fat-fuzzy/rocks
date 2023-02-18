@@ -3,24 +3,6 @@
 	padding: var(#{$prefix}-current-size);
 }
 
-.card\:xxs {
-	padding: var(#{$prefix}-size-xxs);
-}
-.card\:xs {
-	padding: var(#{$prefix}-size-xs);
-}
-.card\:sm {
-	padding: var(#{$prefix}-size-sm);
-}
-.card\:md {
-	padding: var(#{$prefix}-size-md);
-}
-.card\:lg {
-	padding: var(#{$prefix}-size-lg);
-}
-.card\:xl {
-	padding: var(#{$prefix}-size-xl);
-}
-.card\:xxl {
-	padding: var(#{$prefix}-size-xxl);
+[class*='card:'] {
+	padding: var(#{$prefix}-current-size);
 }

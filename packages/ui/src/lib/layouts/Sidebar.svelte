@@ -5,7 +5,7 @@
 </script>
 
 <div class={`l:sidebar ${align} ${theme}`}>
-	<div class={`l:side ${size}`}>
+	<div class={`l:side:${size}`}>
 		<slot name="side"><!-- optional fallback --></slot>
 	</div>
 	<div class={'l:main'}>
