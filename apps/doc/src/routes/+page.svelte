@@ -15,7 +15,7 @@
 
 <section class="l:burrito:xxl">
 	<h2>✨ Highlights</h2>
-	<div class="l:stack:xl">
+	<div class="l:stack xl">
 		<article class={`card:lg font:lg align:center ${variant}`}>
 			<span>🌈</span>
 			<a data-sveltekit-preload-data href="/ui">UI</a>
