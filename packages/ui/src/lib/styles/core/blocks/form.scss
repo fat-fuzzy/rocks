@@ -34,6 +34,10 @@ textarea {
 	background: var(#{$prefix}-color-white);
 }
 
+label > input {
+	max-width: 100%;
+}
+
 * + .feedback {
 	margin-block-start: calc(var(#{$prefix}-outline-offset) + 2px);
 }

@@ -1,11 +1,13 @@
 // Center main content
 
+// Use Center class without a size to set a full width with default padding
 [class^='l:center'] {
 	margin-left: auto;
 	margin-right: auto;
 	max-width: calc(100% - calc(2 * var(#{$prefix}-gap))); // width of parent minus base padding
 }
 
+// Use Center class with a size to set a max-width with size-based padding
 [class^='l:center:'] {
 	max-width: calc(
 		100% - calc(2 * var(#{$prefix}-current-size))
