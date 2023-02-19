@@ -15,22 +15,6 @@ button {
 	background-color: var(#{$prefix}-current-polar);
 }
 
-// TODO: used for DOC only for now:  fix color pairs
-.night button.default {
-	background-color: var(#{$prefix}-current-bg-contrast);
-}
-.night.contrast button.default {
-	color: var(#{$prefix}-color-dark); // TODO:  fix color pairs
-	background-color: var(#{$prefix}-color-light); // TODO:  fix color pairs
-}
-.night.blend button.default {
-	background-color: var(#{$prefix}-current-polar); // TODO:  fix color pairs
-}
-.day.contrast button.default {
-	color: var(#{$prefix}-color-light); // TODO:  fix color pairs
-	background-color: var(#{$prefix}-color-dark); // TODO:  fix color pairs
-}
-
 button:hover {
 	cursor: pointer;
 	color: var(#{$prefix}-current-color);
@@ -131,7 +115,7 @@ button.bare {
 	font-weight: var(#{$prefix}-font-weight-ui);
 	color: var(#{$prefix}-current-color);
 	background-color: inherit;
-	border-color: transparent;
+	border-color: var(#{$prefix}-current-bg-color);
 	padding: var(#{$prefix}-current-size);
 }
 
@@ -278,10 +262,12 @@ button.accent.outline[aria-pressed='false']:hover {
 	background-color: var(#{$prefix}-current-highlight);
 }
 .highlight.outline[aria-pressed='false'] {
+	color: var(#{$prefix}-current-highlight-dark);
 	background-color: inherit;
 }
 button.highlight[aria-pressed='false']:hover,
 button.highlight.outline[aria-pressed='false']:hover {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 .highlight[aria-pressed='false']:active,
@@ -295,6 +281,7 @@ button.highlight.outline[aria-pressed='false']:hover {
 }
 .highlight[aria-pressed='true']:hover,
 .highlight.outline[aria-pressed='true']:hover {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-lighter);
 }
 .highlight[aria-pressed='true']:active,
