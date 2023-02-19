@@ -4,8 +4,7 @@
 </svelte:head>
 
 <article class="l:burrito:xxl">
-	<h1>About this app</h1>
-
+	<h1>About Fat Fuzzy Rocks</h1>
 	<p>
 		This is a <a href="https://kit.svelte.dev" class="font:md">SvelteKit</a> app. You can make your own
 		by typing the following into your command line and following the prompts:

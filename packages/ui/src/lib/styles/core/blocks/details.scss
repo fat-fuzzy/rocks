@@ -12,6 +12,10 @@ details > summary {
 	max-width: 100%;
 }
 
+.night summary {
+	color: var(#{$prefix}-color-dark); // TODO: fix color contrast pairs
+}
+
 details > summary {
 	background-color: var(#{$prefix}-current-color);
 	margin-block-end: var(#{$prefix}-current-size-plus);
@@ -37,6 +41,19 @@ details[open] > summary {
 	color: var(#{$prefix}-current-color);
 	background-color: var(#{$prefix}-current-bg-contrast);
 	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
+}
+
+.night details[open] > summary {
+	color: var(#{$prefix}-color-light); // TODO: fix color contrast pairs
+}
+.night.blend details[open] > summary {
+	background-color: var(#{$prefix}-color-light); // TODO: fix color contrast pairs
+}
+.night.blend details[open] > summary {
+	background-color: var(#{$prefix}-current-polar); // TODO: fix color contrast pairs
+}
+.day.contrast details[open] > summary {
+	color: var(#{$prefix}-color-dark); // TODO: fix color contrast pairs
 }
 
 details[open] > summary::before {
