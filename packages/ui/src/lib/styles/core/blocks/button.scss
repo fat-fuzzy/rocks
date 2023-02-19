@@ -16,17 +16,17 @@ button {
 }
 
 // TODO: used for DOC only for now:  fix color pairs
-.night button {
+.night button.default {
 	background-color: var(#{$prefix}-current-bg-contrast);
 }
-.night.contrast button {
+.night.contrast button.default {
 	color: var(#{$prefix}-color-dark); // TODO:  fix color pairs
 	background-color: var(#{$prefix}-color-light); // TODO:  fix color pairs
 }
-.night.blend button {
+.night.blend button.default {
 	background-color: var(#{$prefix}-current-polar); // TODO:  fix color pairs
 }
-.day.contrast button {
+.day.contrast button.default {
 	color: var(#{$prefix}-color-light); // TODO:  fix color pairs
 	background-color: var(#{$prefix}-color-dark); // TODO:  fix color pairs
 }
@@ -167,21 +167,25 @@ button.bare {
 
 [aria-pressed='false']:hover {
 	box-shadow: var(#{$prefix}-shadow);
-	background-color: var(#{$prefix}-current-bg-color);
-}
-[aria-pressed='false']:active {
-	background-color: var(#{$prefix}-current-gray);
 }
 [aria-pressed='true'] {
 	color: var(#{$prefix}-current-color);
-	border-color: var(#{$prefix}-current-gray); // TODO: improve color / border / background comps
-	background-color: var(#{$prefix}-current-gray); // TODO: improve color / border / background comps
 	box-shadow: var(#{$prefix}-shadow-inset);
 }
-[aria-pressed='true']:hover {
+.default[aria-pressed='false']:hover {
+	background-color: var(#{$prefix}-current-bg-color);
+}
+.default[aria-pressed='false']:active {
 	background-color: var(#{$prefix}-current-gray);
 }
-[aria-pressed='true']:active {
+.default[aria-pressed='true'] {
+	border-color: var(#{$prefix}-current-gray); // TODO: improve color / border / background comps
+	background-color: var(#{$prefix}-current-gray); // TODO: improve color / border / background comps
+}
+.default[aria-pressed='true']:hover {
+	background-color: var(#{$prefix}-current-gray);
+}
+.default[aria-pressed='true']:active {
 	background-color: var(#{$prefix}-current-bg-contrast);
 }
 .outline[aria-pressed='false'] {
@@ -218,6 +222,7 @@ button.primary.outline[aria-pressed='true'] {
 	border-color: var(#{$prefix}-current-primary-light);
 }
 button.primary.outline[aria-pressed='true'] {
+	color: var(#{$prefix}-color-dark);
 	border-color: var(#{$prefix}-current-primary);
 }
 button.primary[aria-pressed='true']:hover,
@@ -285,6 +290,7 @@ button.highlight.outline[aria-pressed='false']:hover {
 }
 .highlight[aria-pressed='true'],
 .outline.highlight[aria-pressed='true'] {
+	color: var(#{$prefix}-color-dark);
 	background-color: var(#{$prefix}-current-highlight-light);
 }
 .highlight[aria-pressed='true']:hover,

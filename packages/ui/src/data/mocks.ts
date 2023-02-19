@@ -68,7 +68,7 @@ const textIntro = `<p>Layouts are components that are used to organize how conte
 const layouts = `${textIntro}
 <p>These Layouts are largely based on the teachings and examples put forth in <a href="https://every-layout.dev/" target="_blank" rel="noreferrer">every-layout.dev</a>, and aim to use minimal HTML markup and carefully written CSS that allow a varied range of design options.</p>
 
-<p>Layouts are designed to be combined in <a href="https://cube.fyi/composition.html" target="_blank" rel="noreferrer">compositions</a>. This means that a Layout can contain Blocks and other Layouts. This is a simple yet very versatile and powerful way to create web page designs.</p>
+<p>Layouts are designed to be combined in <a href="https://cube.fyi/composition.html" target="_blank" rel="noreferrer">compositions</a>. This means that a Layout can contain Blocks and other Layouts, which is a versatile yet intuitive way to create web page designs.</p>
 ` // TODO: use README.md
 const containers = `<p>Containers are a type of Layout that limit the amount of horizontal space occupied by its contents. This means that containers can only affect: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties" target="_blank" rel="noreferrer">inline logical properties</a>, <code>width</code> and related properties, and spacing properties that affect horizontal dimensions (<code>padding-[left/right]</code>, etc).</p>
 <pIf the only direct child of a Container is another Container, it might be a good idea to review how that markup is constructed.</p>
