@@ -10,10 +10,27 @@ button {
 	line-height: var(#{$prefix}-line-height-ui);
 	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 	border-radius: var(#{$prefix}-radius-base);
-	color: var(#{$prefix}-color-dark);
+	color: var(#{$prefix}-current-color);
 	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
-	background-color: var(#{$prefix}-current-gray);
+	background-color: var(#{$prefix}-current-polar);
 }
+
+// TODO: used for DOC only for now:  fix color pairs
+.night button {
+	background-color: var(#{$prefix}-current-bg-contrast);
+}
+.night.contrast button {
+	color: var(#{$prefix}-color-dark); // TODO:  fix color pairs
+	background-color: var(#{$prefix}-color-light); // TODO:  fix color pairs
+}
+.night.blend button {
+	background-color: var(#{$prefix}-current-polar); // TODO:  fix color pairs
+}
+.day.contrast button {
+	color: var(#{$prefix}-color-light); // TODO:  fix color pairs
+	background-color: var(#{$prefix}-color-dark); // TODO:  fix color pairs
+}
+
 button:hover {
 	cursor: pointer;
 	color: var(#{$prefix}-current-color);
@@ -157,7 +174,8 @@ button.bare {
 }
 [aria-pressed='true'] {
 	color: var(#{$prefix}-current-color);
-	background-color: var(#{$prefix}-current-bg-color);
+	border-color: var(#{$prefix}-current-gray); // TODO: improve color / border / background comps
+	background-color: var(#{$prefix}-current-gray); // TODO: improve color / border / background comps
 	box-shadow: var(#{$prefix}-shadow-inset);
 }
 [aria-pressed='true']:hover {
