@@ -39,7 +39,7 @@
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
 		<RevealNav
-			title="Component Library"
+			title="Design Library"
 			id="nav-page"
 			{items}
 			{path}
