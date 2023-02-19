@@ -1,5 +1,5 @@
 <script lang="ts">
-	import imageIntro from '$assets/images/pages/001-intro.jpg'
+	// import imageIntro from '$assets/images/pages/001-intro.jpg'
 	let theme = 1
 	$: variant = 'bg:primary:light'
 </script>
@@ -11,7 +11,7 @@
 
 <header class="l:center polar card:xxl">
 	<div class="l:frame l:burrito:xxl">
-		<img src={imageIntro} alt="Creating a web app: where to start?" />
+		<!-- <img src={imageIntro} alt="Creating a web app: where to start?" /> -->
 	</div>
 	<h1>Fat Fuzzy Rocks</h1>
 </header>
