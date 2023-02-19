@@ -3,7 +3,7 @@
 	import type {StyleTree} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
-	import mocks from '../../data/mocks'
+	import mocks from '../../data/mocks' // TODO: load text from README.md
 
 	export let title = ''
 	export let isPage = false
@@ -37,7 +37,7 @@
 				{/each}
 			</div>
 			<div slot="main">
-				{@html mocks[`textIntro`]}
+				{@html mocks['doc'][`textIntro`]}
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'Burrito'}
@@ -60,7 +60,7 @@
 		<svelte:component this={component} id={title} {size} {breakpoint}>
 			<div slot="side">
 				{#if sideContent === 'text'}
-					{@html mocks[sideContent]}
+					{@html mocks['doc'][sideContent]}
 				{:else if sideContent === 'card' || sideContent === 'form'}
 					{#each mocks[sideContent] as item}
 						<div class={`card:${size} box ${item} ${size}`}>{item}</div>
@@ -69,7 +69,7 @@
 			</div>
 			<div slot="main">
 				{#if mainContent === 'text'}
-					{@html mocks[mainContent]}
+					{@html mocks['doc'][mainContent]}
 				{:else if mainContent === 'card' || mainContent === 'form'}
 					{#each mocks[mainContent] as item}
 						<div class={`card:${size} box ${item} ${size}`}>{item}</div>
@@ -81,7 +81,7 @@
 		<svelte:component this={component} id={title} {size} {breakpoint}>
 			<div slot="content">
 				{#if content === 'text'}
-					{@html mocks[`${content}Intro`]}
+					{@html mocks['doc'][`${content}Intro`]}
 				{:else if content === 'card' || content === 'form'}
 					{#each mocks[content] as item}
 						<div class={`card:${size} box ${item} ${size}`}>{item}</div>
@@ -92,7 +92,7 @@
 	{:else}
 		<svelte:component this={component} id={title} {size} {breakpoint}>
 			{#if content === 'text'}
-				{@html mocks[content]}
+				{@html mocks['doc'][content]}
 			{:else if content === 'card' || content === 'form'}
 				{#each mocks[content] as item}
 					<div class={`card:${size} box ${item} ${size}`}>{item}</div>

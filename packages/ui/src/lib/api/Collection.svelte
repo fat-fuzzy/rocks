@@ -6,6 +6,8 @@
 	import {page} from '$app/stores'
 	import {selectedStore} from '../stores/api'
 
+	import mocks from '../../data/mocks' // TODO: load text from README.md
+
 	export let title = ''
 	export let depth = 0
 	export let path = ''
@@ -50,16 +52,22 @@
 			</section>
 		</div>
 		<aside slot="side">
+			<div class="card:xl">
+				{@html mocks['doc'][category]}
+			</div>
 			<Api {title} {category} />
 		</aside>
 	</Sidebar>
 {:else}
-	<details class="l:stack:sm" open>
+	<details class="l:stack:xl" open>
 		<summary class={`card:lg box bg:${color}`}>
 			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 				{category}
 			</svelte:element>
 		</summary>
+		<div class="card:xl">
+			{@html mocks['doc'][category]}
+		</div>
 		<div class="card:lg inset">
 			<section class={classes}>
 				{#each componentNames as name}
