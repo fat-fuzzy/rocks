@@ -11,6 +11,7 @@
 	export let path = ''
 	export let layout = 'switcher' // TODO: expose breakpoint too
 	export let breakpoint = 'xxl' // TODO: expose breakpoint too
+	export let color = 'highlight' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'app'
@@ -54,7 +55,7 @@
 	</Sidebar>
 {:else}
 	<details class="l:stack:sm" open>
-		<summary class="card:lg box bg:primary">
+		<summary class={`card:lg box bg:${color}`}>
 			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 				{category}
 			</svelte:element>
