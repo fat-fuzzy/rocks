@@ -1,6 +1,5 @@
 <script>
 	import {page} from '$app/stores'
-	import logo from '$lib/images/svelte-logo.svg'
 
 	// TODO: make svg css themeable / fix dark theme
 	import githubDay from '$lib/images/icon-dark-100-optim-github.svg'
@@ -28,11 +27,11 @@
 		</ul>
 	</nav>
 	<div class="l:side">
-		<div class="corner">
+		<!-- <div class="corner">
 			<a href="https://kit.svelte.dev" target="_blank" rel="noreferrer">
 				<img src={logo} alt="SvelteKit" />
 			</a>
-		</div>
+		</div> -->
 		<div class="corner">
 			<a href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
 				<img src={github} alt="GitHub" />
