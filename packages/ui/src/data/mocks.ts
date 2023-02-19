@@ -79,14 +79,30 @@ const blocks = `
 <p>Blocks can be <a href="https://cube.fyi/composition.html" target="_blank" rel="noreferrer">composed</a> with Layouts and other Blocks to create simple or elaborate interfaces while respecting HTML semantics and document structure.</p>` // TODO: use README.md
 
 const app = `
-<p>Fat Fuzzy UI is a component library that aims to maximize use HTML and CSS's native capabilities to produce harmonious and robust designs.</p>
-<p>The components are built using <a href="https://svelte.dev" target="_blank" rel="noreferrer">Svelte</a> and are built based on the ideas put forth in <a href="https://every-layout.dev/blog/algorithmic-design/" target="_blank" rel="noreferrer">Algorithmic Design</a>, 
-and <a href="https://cube.fyi/" target="_blank" rel="noreferrer">CUBE CSS</a></p>
+<p>
+			Fat Fuzzy UI is a component library that aims to maximize use HTML and CSS's native
+			capabilities to produce harmonious and robust designs.
+		</p>
+		<p>
+			The components are built using <a href="https://svelte.dev" target="_blank" rel="noreferrer">
+				Svelte
+			</a>
+			and <a href="https://kit.svelte.dev/" target="_blank" rel="noreferrer"> SvelteKit </a>, and
+			the structure of the library as well as the way the components are designed are based on the
+			ideas put forth in
+			<a href="https://every-layout.dev/blog/algorithmic-design/" target="_blank" rel="noreferrer">
+				Algorithmic Design
+			</a>
+			and <a href="https://cube.fyi/" target="_blank" rel="noreferrer">CUBE CSS</a>.
+		</p>
 ` // TODO: use README.md
 
 const wip = `
-<p>🚧 This documentation is a Work in Progress</p>
-<p>Thank you for your patience!</p>
+<p>
+🚧 The library as well as its documentation are still a work in progress and under active
+development.
+</p>
+<p>Thank you for your patience! ❤️</p>
 ` // TODO: use README.md
 const text = `${mockIntro} ${app}`
 
