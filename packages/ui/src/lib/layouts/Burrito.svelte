@@ -3,5 +3,5 @@
 </script>
 
 <div class={`l:burrito:${size}`}>
-	<slot />
+	<slot name="content" />
 </div>

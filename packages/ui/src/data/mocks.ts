@@ -62,9 +62,42 @@ const checkbox = [
 
 const card = ['Card 1', 'Card 2', 'Card 3']
 const form = ['Form input 1', 'Form input 2', 'Form input 3']
-const text =
-	'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?' // TODO: lorem ipsum
 
+const mockIntro = `<p>This is some text that shows you how text content will adapt inside a chosen Layout.</p>`
+const textIntro = `<p>Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.</p>`
+const layouts = `${textIntro}
+<p>These Layouts are largely based on the teachings and examples put forth in <a href="https://every-layout.dev/" target="_blank" rel="noreferrer">every-layout.dev</a>, and aim to use minimal HTML markup and carefully written CSS that allow a varied range of design options.</p>
+
+<p>Layouts are designed to be combined in <a href="https://cube.fyi/composition.html" target="_blank" rel="noreferrer">compositions</a>. This means that a Layout can contain Blocks and other Layouts. This is a simple yet very versatile and powerful way to create web page designs.</p>
+` // TODO: use README.md
+const containers = `<p>Containers are a type of Layout that limit the amount of horizontal space occupied by its contents. This means that containers can only affect: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties" target="_blank" rel="noreferrer">inline logical properties</a>, <code>width</code> and related properties, and spacing properties that affect horizontal dimensions (<code>padding-[left/right]</code>, etc).</p>
+<pIf the only direct child of a Container is another Container, it might be a good idea to review how that markup is constructed.</p>
+` // TODO: use README.md
+const blocks = `
+<p>Blocks are components that render the contentful elements of the application. Contentful in this context means elements that provide information, actions, or navigation options to the user of the app.</p>
+<p>They are implemented using the <a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noreferrer">web platform</a>'s capabilities and with help from the examples provided in <a href="https://inclusive-components.design/" target="_blank" rel="noreferrer">Inclusive Components</a>.</p>
+<p>Blocks can be <a href="https://cube.fyi/composition.html" target="_blank" rel="noreferrer">composed</a> with Layouts and other Blocks to create simple or elaborate interfaces while respecting HTML semantics and document structure.</p>` // TODO: use README.md
+
+const app = `
+<p>Fat Fuzzy UI is a component library that aims to maximize use HTML and CSS's native capabilities to produce harmonious and robust designs.</p>
+<p>The components are built using <a href="https://svelte.dev" target="_blank" rel="noreferrer">Svelte</a> and are built based on the ideas put forth in <a href="https://every-layout.dev/blog/algorithmic-design/" target="_blank" rel="noreferrer">Algorithmic Design</a>, 
+and <a href="https://cube.fyi/" target="_blank" rel="noreferrer">CUBE CSS</a></p>
+` // TODO: use README.md
+
+const wip = `
+<p>🚧 This documentation is a Work in Progress</p>
+<p>Thank you for your patience!</p>
+` // TODO: use README.md
+const text = `${mockIntro} ${app}`
+
+const doc: {[category: string]: string} = {
+	text,
+	textIntro,
+	layouts,
+	containers,
+	blocks,
+	app: `${app} ${wip}`,
+}
 const sketch = {
 	id: '004',
 	slug: 'geometry-2d',
@@ -83,6 +116,6 @@ export default {
 	checkbox,
 	card,
 	form,
-	text,
+	doc,
 	sketch,
 }

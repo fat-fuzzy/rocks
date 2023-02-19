@@ -1,9 +1,11 @@
 header {
 	display: flex;
+	margin-block-end: var(#{$prefix}-current-size);
 }
 
 .header-page {
 	align-items: baseline;
+	margin-block-end: unset;
 }
 
 .header-page + * {

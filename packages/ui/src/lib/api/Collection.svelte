@@ -6,11 +6,14 @@
 	import {page} from '$app/stores'
 	import {selectedStore} from '../stores/api'
 
+	import mocks from '../../data/mocks' // TODO: load text from README.md
+
 	export let title = ''
 	export let depth = 0
 	export let path = ''
 	export let layout = 'switcher' // TODO: expose breakpoint too
 	export let breakpoint = 'xxl' // TODO: expose breakpoint too
+	export let color = 'highlight' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'app'
@@ -49,15 +52,22 @@
 			</section>
 		</div>
 		<aside slot="side">
+			<div class="card:xl">
+				{@html mocks['doc'][category]}
+			</div>
 			<Api {title} {category} />
 		</aside>
 	</Sidebar>
 {:else}
-	<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
-		{category}
-	</svelte:element>
-	<details class="l:stack:sm" open>
-		<summary class="card:lg box bg:primary">{category} collection</summary>
+	<details class="l:stack:xl" open>
+		<summary class={`card:lg box bg:${color}`}>
+			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+				{category}
+			</svelte:element>
+		</summary>
+		<div class="card:xl">
+			{@html mocks['doc'][category]}
+		</div>
 		<div class="card:lg inset">
 			<section class={classes}>
 				{#each componentNames as name}

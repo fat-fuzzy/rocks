@@ -20,7 +20,7 @@
 
 	let selected: StyleTree
 	let apiLayout = 'switcher'
-	let apiSize = 'xxs'
+	let apiSize = 'xs'
 	let apiBreakpoint = 'xxl'
 	let apiVariant = ''
 

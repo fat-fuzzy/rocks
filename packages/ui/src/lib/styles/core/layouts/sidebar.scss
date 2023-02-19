@@ -40,6 +40,5 @@
 }
 
 [class^='l:side:'] > * {
-	min-inline-size: var(#{$prefix}-current-side-size);
 	min-block-size: 100%;
 }

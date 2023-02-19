@@ -12,6 +12,8 @@
 		{category: 'layouts', items: layouts},
 	]
 	let path = $page.url.pathname
+
+	// TODO: load text content to README.md
 </script>
 
 <svelte:head>
@@ -24,7 +26,25 @@
 </header>
 
 <Sidebar size="xs" align="end">
-	<main slot="main" class="l:stack lg">
+	<section slot="main" class="l:stack lg">
+		<p>
+			Fat Fuzzy UI is a component library that aims to maximize use HTML and CSS's native
+			capabilities to produce harmonious and robust designs.
+		</p>
+		<p>
+			The components are built using <a href="https://svelte.dev" target="_blank" rel="noreferrer">
+				Svelte
+			</a>
+			and are is inspired by the ideas in the post
+			<a href="https://every-layout.dev/blog/algorithmic-design/" target="_blank" rel="noreferrer">
+				Algorithmic Design
+			</a>, and <a href="https://cube.fyi/" target="_blank" rel="noreferrer">CUBE CSS</a>
+		</p>
+		<p>
+			🚧 The library as well as its documentation is still a work in progress and is under active
+			development.
+		</p>
+		<p>Thank you for your patience! ❤️</p>
 		{#each components as { category, items }}
 			<Collection
 				{title}
@@ -35,9 +55,5 @@
 				{category}
 			/>
 		{/each}
-	</main>
-
-	<aside slot="side">
-		<Api {title} category="app" />
-	</aside>
+	</section>
 </Sidebar>

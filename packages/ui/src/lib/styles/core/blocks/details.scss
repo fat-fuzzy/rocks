@@ -8,10 +8,20 @@ details > summary {
 	color: var(#{$prefix}-color-light);
 	font-weight: var(#{$prefix}-font-weight-ui);
 	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-color);
+	padding: var(#{$prefix}-current-size-minus);
+	max-width: 100%;
 }
 
 details > summary {
 	background-color: var(#{$prefix}-current-color);
+	margin-block-end: var(#{$prefix}-current-size-plus);
+}
+
+details > summary > h1, // TODO: not sure h1 inside detail is a good idea, check
+details > summary > h2,
+details > summary > h3,
+details > summary > h4 {
+	display: inline-block;
 }
 
 details > summary::before {

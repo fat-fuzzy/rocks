@@ -38,17 +38,19 @@
 		size = selected.shared?.context.size ?? size
 	}
 	$: appSettings = `${brightness} ${contrast}`
-	$: containerContext = category !== 'app' ? `l:${container}:${size}` : ''
+	$: containerContext = category !== 'app' ? `l:${container}:${size}` : 'l:burrito:xs'
 </script>
 
 {#if !isPage}
-	<article class={`l:stack card:xl l:burrito:xs`}>
-		<a class="primary" href={`${path}/${title}`}>
-			<svelte:element this={`h${String(depth)}`} class="font:sm">
-				<span class="font:xs">🔗</span>&nbsp;{title}
-			</svelte:element>
-		</a>
-		<div class={containerContext}>
+	<article class={`card:xl`}>
+		<header>
+			<a class="primary header" href={`${path}/${title}`}>
+				<svelte:element this={`h${String(depth)}`} class="font:sm">
+					<span class="font:xs">🔗</span>&nbsp;{title}
+				</svelte:element>
+			</a>
+		</header>
+		<div class="card l:burrito:xs">
 			<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 		</div>
 	</article>

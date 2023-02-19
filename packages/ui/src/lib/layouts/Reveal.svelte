@@ -17,16 +17,14 @@
 </script>
 
 <details class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>
-	<slot name="summary">
-		<summary
-			class={`${variant}`}
-			aria-expanded={expanded}
-			aria-controls={`${id}-menu-list`}
-			on:click={toggleReveal}
-		>
-			Click to Reveal
-		</summary>
-	</slot>
+	<summary
+		class={`${variant}`}
+		aria-expanded={expanded}
+		aria-controls={`${id}-menu-list`}
+		on:click={toggleReveal}
+	>
+		<slot name="summary">Click to Reveal</slot>
+	</summary>
 	<div class={`${align} ${show}`}>
 		<slot name="content">
 			<div class="card layer l:${layout} bp:${breakpoint} ${size}">

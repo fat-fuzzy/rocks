@@ -15,7 +15,7 @@
 	<h1>{title}</h1>
 </header>
 
-<div class="l:stack l:text:md">
+<div class="l:stack">
 	{#each markdowns as { meta }}
 		<a class="font:xxl" href={`/log/${meta.slug}`}>{meta.title}</a>
 	{/each}
