@@ -2,6 +2,4 @@
 	export let size = 'md'
 </script>
 
-<div class={`l:burrito:${size}`}>
-	<slot />
-</div>
+<slot name="content" class={`l:burrito:${size}`} />

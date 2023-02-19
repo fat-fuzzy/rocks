@@ -53,11 +53,12 @@
 		</aside>
 	</Sidebar>
 {:else}
-	<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
-		{category}
-	</svelte:element>
 	<details class="l:stack:sm" open>
-		<summary class="card:lg box bg:primary">{category} collection</summary>
+		<summary class="card:lg box bg:primary">
+			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+				{category}
+			</svelte:element>
+		</summary>
 		<div class="card:lg inset">
 			<section class={classes}>
 				{#each componentNames as name}
