@@ -10,7 +10,9 @@
 </svelte:head>
 
 <header class="l:center polar card:xxl">
-	<img src={imageIntro} alt="Creating a web app: where to start?" class="l:burrito:xxl" />
+	<div class="l:frame l:burrito:xxl">
+		<img src={imageIntro} alt="Creating a web app: where to start?" />
+	</div>
 	<h1>Fat Fuzzy Rocks</h1>
 </header>
 
