@@ -35,15 +35,16 @@
 			The components are built using <a href="https://svelte.dev" target="_blank" rel="noreferrer">
 				Svelte
 			</a>
-			and <a href="https://kit.svelte.dev/" target="_blank" rel="noreferrer"> SvelteKit </a>
-			and are built based on the ideas put forth in
+			and <a href="https://kit.svelte.dev/" target="_blank" rel="noreferrer"> SvelteKit </a>, and
+			the structure of the library as well as the way the components are designed are based on the
+			ideas put forth in
 			<a href="https://every-layout.dev/blog/algorithmic-design/" target="_blank" rel="noreferrer">
 				Algorithmic Design
 			</a>
-			and <a href="https://cube.fyi/" target="_blank" rel="noreferrer">CUBE CSS</a>
+			and <a href="https://cube.fyi/" target="_blank" rel="noreferrer">CUBE CSS</a>.
 		</p>
 		<p>
-			🚧 The library as well as its documentation is still a work in progress and is under active
+			🚧 The library as well as its documentation are still a work in progress and under active
 			development.
 		</p>
 		<p>Thank you for your patience! ❤️</p>
