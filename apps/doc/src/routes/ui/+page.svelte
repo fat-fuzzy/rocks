@@ -24,7 +24,7 @@
 </header>
 
 <Sidebar size="xs" align="end">
-	<main slot="main" class="l:stack lg">
+	<section slot="main" class="l:stack lg">
 		{#each components as { category, items }}
 			<Collection
 				{title}
@@ -35,7 +35,7 @@
 				{category}
 			/>
 		{/each}
-	</main>
+	</section>
 
 	<aside slot="side">
 		<Api {title} category="app" />
