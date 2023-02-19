@@ -24,8 +24,8 @@
 			window.alert(`${text} Clicked`)
 		}
 	}
-
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
+	$: variantClass = variant === 'default' ? '' : variant
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variantClass} ${align}`
 </script>
 
 <button
