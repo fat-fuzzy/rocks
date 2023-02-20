@@ -37,7 +37,7 @@
 	}
 	const VARIANT_MATCH: {[key: string]: string} = {
 		outline: 'bare',
-		bare: 'outline',
+		bare: 'bare',
 		default: 'outline',
 	}
 	$: show = expanded ? 'show card:lg layer' : 'hide'
