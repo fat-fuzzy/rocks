@@ -12,6 +12,10 @@ details > summary {
 	max-width: 100%;
 }
 
+details > summary:hover {
+	box-shadow: var(#{$prefix}-shadow);
+}
+
 .night summary {
 	color: var(#{$prefix}-color-dark); // TODO: fix color contrast pairs
 }
@@ -47,9 +51,7 @@ details[open] > summary {
 	color: var(#{$prefix}-color-light); // TODO: fix color contrast pairs
 }
 .night.blend details[open] > summary {
-	background-color: var(#{$prefix}-color-light); // TODO: fix color contrast pairs
-}
-.night.blend details[open] > summary {
+	color: var(#{$prefix}-color-light); // TODO: fix color contrast pairs
 	background-color: var(#{$prefix}-current-polar); // TODO: fix color contrast pairs
 }
 .day.contrast details[open] > summary {
@@ -61,20 +63,23 @@ details[open] > summary::before {
 	margin-inline-end: var(#{$prefix}-s-1);
 }
 
-// same as .bg\:primary\:light
-details[open] > summary.bg\:primary {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-primary-light);
-}
-// same as .bg\:accent\:light
-details[open] > summary.bg\:accent {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-accent-light);
-}
-// same as .bg\:highlight\:light
-details[open] > summary.bg\:highlight {
-	color: var(#{$prefix}-color-dark);
-	background-color: var(#{$prefix}-current-highlight-light);
+.night,
+.day {
+	// same as .bg\:primary\:light
+	details[open] > summary.bg\:primary {
+		color: var(#{$prefix}-color-dark);
+		background-color: var(#{$prefix}-current-primary-light);
+	}
+	// same as .bg\:accent\:light
+	details[open] > summary.bg\:accent {
+		color: var(#{$prefix}-color-dark);
+		background-color: var(#{$prefix}-current-accent-light);
+	}
+	// same as .bg\:highlight\:light
+	details[open] > summary.bg\:highlight {
+		color: var(#{$prefix}-color-dark);
+		background-color: var(#{$prefix}-current-highlight-light);
+	}
 }
 
 // Stops menu from changing width on open/close - TODO: investigate
