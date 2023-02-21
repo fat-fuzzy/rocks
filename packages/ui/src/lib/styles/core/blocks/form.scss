@@ -72,37 +72,23 @@ label > input {
 }
 
 // TODO : cleanup - use "current" size values
+legend {
+	font-size: var(#{$prefix}-current-font-size);
+	margin-block-end: var(#{$prefix}-current-size);
+}
 
-[class*='l:burrito:'],
-[class*='l:center:'] {
-	> legend {
-		font-size: var(#{$prefix}-current-font-size);
-		margin-block-end: var(#{$prefix}-current-size);
-	}
+input,
+select,
+textarea {
+	font-size: var(#{$prefix}-current-font-size);
+	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus);
+}
 
-	> input,
-	> select,
-	> textarea {
-		font-size: var(#{$prefix}-current-font-size);
-		padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size-plus);
-	}
+label {
+	font-size: var(#{$prefix}-current-font-size);
+}
 
-	> label {
-		font-size: var(#{$prefix}-current-font-size-minus);
-	}
-
-	> .feedback {
-		font-size: var(#{$prefix}-current-font-size-minus);
-		min-height: calc(var(#{$prefix}-current-font-size-minus) * var(#{$prefix}-ratio));
-	}
-
-	> .link {
-		padding: var(#{$prefix}-current-size-minus);
-	}
-
-	> .link,
-	> .link + *,
-	> input + .feedback {
-		margin-block-start: var(#{$prefix}-current-size-minus);
-	}
+.feedback {
+	font-size: var(#{$prefix}-current-font-size-minus);
+	min-height: calc(var(#{$prefix}-current-font-size-minus) * var(#{$prefix}-ratio));
 }
