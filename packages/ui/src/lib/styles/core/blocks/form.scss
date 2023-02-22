@@ -91,6 +91,10 @@ label {
 label > [type='file'] {
 	color: var(#{$prefix}-color-dark); // TODO: move to color management - fixes iOS
 	font-size: var(#{$prefix}-current-font-size-minus);
+	padding: var(#{$prefix}-current-size) var(#{$prefix}-current-size)
+		var(#{$prefix}-current-size-minus);
+	display: flex;
+	align-items: center;
 }
 
 .feedback {
