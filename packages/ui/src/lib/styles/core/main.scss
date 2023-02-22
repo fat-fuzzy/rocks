@@ -3,11 +3,14 @@
 /* Resets and global styles, set --current-* CSS var values used in layouts and blocks*/
 @import './globals/main';
 
-/* Layout */
+/* Layout (organizational components) */
 @import './layouts/main';
 
-/* CSS blocks   ("components") */
+/* CSS blocks (contentful components) */
 @import './blocks/main';
+
+/* CSS motion (animations, transitions, user-initiated movement) */
+@import './motion/main';
 
 /* Overrides */
 @import './config/utility';

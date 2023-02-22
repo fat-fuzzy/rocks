@@ -181,7 +181,10 @@
 									/>
 								{/if}
 								{#if input === 'datalist'}
-									<label for={`choice-${styleInput.name}`} class={`l:stack ${apiSize}`}>
+									<label
+										for={`choice-${styleInput.name}`}
+										class={`l:stack ${apiSize} font:${apiSize}`}
+									>
 										{`Select ${styleInput.name}`}
 										<input
 											list={`${styleInput.name}-${styleInput.name}`}
