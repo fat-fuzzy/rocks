@@ -88,6 +88,11 @@ label {
 	font-size: var(#{$prefix}-current-font-size);
 }
 
+label > [type='file'] {
+	color: var(#{$prefix}-color-dark); // TODO: move to color management - fixes iOS
+	font-size: var(#{$prefix}-current-font-size-minus);
+}
+
 .feedback {
 	font-size: var(#{$prefix}-current-font-size-minus);
 	min-height: calc(var(#{$prefix}-current-font-size-minus) * var(#{$prefix}-ratio));
