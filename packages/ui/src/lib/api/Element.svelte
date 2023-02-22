@@ -50,7 +50,7 @@
 				</svelte:element>
 			</a>
 		</header>
-		<div class="card l:burrito:xs">
+		<div class="card l:freeze:burrito:xs">
 			<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 		</div>
 	</article>

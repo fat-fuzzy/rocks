@@ -9,3 +9,7 @@
 [class*='l:burrito:'] {
 	max-width: var(#{$prefix}-current-side-size); // TODO : generate (selector + style) by size
 }
+
+[class*='l:freeze:burrito:'] {
+	width: var(#{$prefix}-current-side-size); // TODO : generate (selector + style) by size
+}
