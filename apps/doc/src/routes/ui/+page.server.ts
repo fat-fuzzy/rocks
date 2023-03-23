@@ -29,8 +29,7 @@ export const actions = {
 	},
 
 	/**
-	 * Modify uiState state in reaction to a guessed word. This logic always runs on
-	 * the server, so that people can't cheat by peeking at the JavaScript
+	 * Modify uiState state in reaction to user input
 	 */
 	enter: async ({request, cookies}) => {
 		const uiState = new UiState(stylesStore.$selectedStore)
