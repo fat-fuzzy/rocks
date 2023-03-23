@@ -1,0 +1,8 @@
+# LICENSE
+
+Code in this folder is adapted from:
+
+- AWS documentation examples, which are copyrighted as follows:
+  > Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+  > Licensed under the [Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+- [Vercel's public templates](https://vercel.com/templates)
