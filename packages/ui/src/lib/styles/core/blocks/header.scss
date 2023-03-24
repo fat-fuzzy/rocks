@@ -1,6 +1,6 @@
 header {
 	display: flex;
-	margin-block-end: var(#{$prefix}-current-size);
+	margin-block-end: var(--current-size);
 }
 
 .header-page {
@@ -9,7 +9,7 @@ header {
 }
 
 .header-page + * {
-	margin-block-start: var(#{$prefix}-current-size);
+	margin-block-start: var(--current-size);
 }
 
 .header-app > .l\:main {
@@ -21,6 +21,6 @@ header {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	padding-left: calc(var(#{$prefix}-gap) / 2);
-	padding-right: calc(var(#{$prefix}-gap) / 2);
+	padding-left: calc(var(--gap) / 2);
+	padding-right: calc(var(--gap) / 2);
 }

@@ -2,11 +2,8 @@
 // CUBE CSS-ish
 //==
 
-$current_cssvars: null;
-$prefix: --ui;
-
-@import './scale.scss';
-// @import './fonts.scss';
-@import './typography.scss';
-@import './layout.scss';
-@import './color.scss';
+@forward './scale.scss';
+// @forward './fonts.scss';
+@forward './typography.scss';
+@forward './layout.scss';
+@forward './color.scss';

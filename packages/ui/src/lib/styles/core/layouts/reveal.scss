@@ -1,12 +1,14 @@
+@use '../config/mixins';
+
 .l\:reveal {
 	position: relative;
 }
 
 .l\:reveal .layer {
 	position: relative;
-	z-index: var(#{$prefix}-z-index-reveal);
-	color: var(#{$prefix}-current-color);
-	background-color: var(#{$prefix}-current-bg-color);
+	z-index: var(--z-index-reveal);
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
 	min-block-size: 100%;
 }
 
@@ -19,7 +21,7 @@
 }
 // TODO: set [inline/block] size according to alignment
 
-@include min-width(bp-xxs) {
+@media screen and (min-width: 320px) {
 	.l\:reveal.bp\:xxs [class^='hidden:'] {
 		border: unset;
 		clip: unset;
@@ -32,11 +34,11 @@
 		white-space: normal;
 	}
 	.l\:reveal.bp\:xxs.l\:stack:only-child {
-		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
-@include min-width(bp-xs) {
+@media screen and (min-width: 768px) {
 	.l\:reveal.bp\:xs [class^='hidden:'] {
 		border: unset;
 		clip: unset;
@@ -49,11 +51,11 @@
 		white-space: normal;
 	}
 	.l\:reveal.bp\:xs.l\:stack:only-child {
-		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
-@include min-width(bp-sm) {
+@media screen and (min-width: 992px) {
 	.l\:reveal.bp\:sm [class^='hidden:'] {
 		border: unset;
 		clip: unset;
@@ -66,11 +68,11 @@
 		white-space: normal;
 	}
 	.l\:reveal.bp\:sm.l\:stack:only-child {
-		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
-@include min-width(bp-md) {
+@media screen and (min-width: 1240px) {
 	.l\:reveal.bp\:md [class^='hidden:'] {
 		border: unset;
 		clip: unset;
@@ -83,11 +85,11 @@
 		white-space: normal;
 	}
 	.l\:reveal.bp\:md.l\:stack:only-child {
-		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
-@include min-width(bp-lg) {
+@media screen and (min-width: 1620px) {
 	.l\:reveal.bp\:lg [class^='hidden:'] {
 		border: unset;
 		clip: unset;
@@ -100,11 +102,11 @@
 		white-space: normal;
 	}
 	.l\:reveal.bp\:lg.l\:stack:only-child {
-		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
-@include min-width(bp-xl) {
+@media screen and (min-width: 2048px) {
 	.l\:reveal.bp\:xl [class^='hidden:'] {
 		border: unset;
 		clip: unset;
@@ -117,6 +119,6 @@
 		white-space: normal;
 	}
 	.l\:reveal.bp\:xl.l\:stack:only-child {
-		inline-size: calc(var(#{$prefix}-current-side-size) - 2 * var(#{$prefix}-gap));
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }

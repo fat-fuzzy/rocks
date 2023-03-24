@@ -1,55 +1,55 @@
 h1,
 h2,
 h3 {
-	line-height: var(#{$prefix}-line-height-heading);
+	line-height: var(--line-height-heading);
 }
 
 h1 {
-	font-size: var(#{$prefix}-font-size-h1);
-	font-family: var(#{$prefix}-font-family-h1);
-	font-weight: var(#{$prefix}-font-weight-h1);
+	font-size: var(--font-size-h1);
+	font-family: var(--font-family-h1);
+	font-weight: var(--font-weight-h1);
 }
 h2 {
-	font-size: var(#{$prefix}-font-size-h2);
-	font-family: var(#{$prefix}-font-family-h2);
-	font-weight: var(#{$prefix}-font-weight-h2);
+	font-size: var(--font-size-h2);
+	font-family: var(--font-family-h2);
+	font-weight: var(--font-weight-h2);
 }
 h3 {
-	font-size: var(#{$prefix}-font-size-h3);
-	font-family: var(#{$prefix}-font-family-h3);
-	font-weight: var(#{$prefix}-font-weight-h3);
+	font-size: var(--font-size-h3);
+	font-family: var(--font-family-h3);
+	font-weight: var(--font-weight-h3);
 }
 h4 {
-	font-size: var(#{$prefix}-font-size-h4);
-	font-family: var(#{$prefix}-font-family-h4);
-	font-weight: var(#{$prefix}-font-weight-h4);
+	font-size: var(--font-size-h4);
+	font-family: var(--font-family-h4);
+	font-weight: var(--font-weight-h4);
 }
 h5 {
-	font-size: var(#{$prefix}-font-size-h5);
-	font-family: var(#{$prefix}-font-family-h5);
-	font-weight: var(#{$prefix}-font-weight-h5);
+	font-size: var(--font-size-h5);
+	font-family: var(--font-family-h5);
+	font-weight: var(--font-weight-h5);
 }
 
 .font\:base {
-	font-size: var(#{$prefix}-font-size-base);
+	font-size: var(--font-size-base);
 }
 
 [class*='font:'] {
-	font-size: var(#{$prefix}-current-font-size);
+	font-size: var(--current-font-size);
 }
 [class*='font:minus:'] {
-	font-size: var(#{$prefix}-current-font-size-minus);
+	font-size: var(--current-font-size-minus);
 }
 [class*='font:plus:'] {
-	font-size: var(#{$prefix}-current-font-size-plus);
+	font-size: var(--current-font-size-plus);
 }
 
 pre {
-	font-family: var(#{$prefix}-font-family-code);
-	padding: var(#{$prefix}-current-size-plus);
-	margin: var(#{$prefix}-current-size-plus) 0;
-	border-radius: var(#{$prefix}-radius-base);
-	background-color: var(#{$prefix}-color-gray-5);
+	font-family: var(--font-family-code);
+	padding: var(--current-size-plus);
+	margin: var(--current-size-plus) 0;
+	border-radius: var(--radius-base);
+	background-color: var(--color-gray-5);
 	overflow: auto;
 }
 

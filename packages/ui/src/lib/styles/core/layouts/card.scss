@@ -1,8 +1,8 @@
 [class^='card'] {
-	border-radius: var(#{$prefix}-radius-base);
-	padding: var(#{$prefix}-current-size);
+	border-radius: var(--radius-base);
+	padding: var(--current-size);
 }
 
 [class*='card:'] {
-	padding: var(#{$prefix}-current-size);
+	padding: var(--current-size);
 }

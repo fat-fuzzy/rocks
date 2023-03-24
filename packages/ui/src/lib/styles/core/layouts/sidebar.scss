@@ -1,7 +1,7 @@
 [class^='l:sidebar'] {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(#{$prefix}-gap);
+	gap: var(--gap);
 }
 
 /* NOTE: The following declaration assume that the markup declares .main before .side */
@@ -31,7 +31,7 @@
 // adjusts to width of contents
 [class^='l:side'] {
 	flex-grow: 1;
-	flex-basis: var(#{$prefix}-current-side-size);
+	flex-basis: var(--current-side-size);
 }
 
 // adjusts to width of sibling (main)

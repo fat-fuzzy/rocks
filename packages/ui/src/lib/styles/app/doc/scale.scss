@@ -4,7 +4,6 @@
 /// you keep it at 1rem because that is the root font size. You
 /// can set it to whatever you like and whatever unit you like.
 ///
-
 $base-size: 1rem;
 
 /// SIZE SCALE
@@ -14,6 +13,7 @@ $base-size: 1rem;
 /// your whole project.
 ///
 ///
+
 $size-scale: (
 	'100': $base-size * 0.6,
 	'200': $base-size * 0.7,
@@ -50,27 +50,27 @@ $modular-scale: (
 //== TODO: fix // Spacing Scale N to N+1
 $scale-space: (
 	ratio: 1.5,
-	space--3: calc(var(#{$prefix}-s-2) / var(#{$prefix}-ratio)),
-	space--2: calc(var(#{$prefix}-s-1) / var(#{$prefix}-ratio)),
-	space--1: calc(var(#{$prefix}-s0) / var(#{$prefix}-ratio)),
+	space--3: calc(var(--s-2) / var(--ratio)),
+	space--2: calc(var(--s-1) / var(--ratio)),
+	space--1: calc(var(--s0) / var(--ratio)),
 	space-0: $base-size,
-	space-1: calc(var(#{$prefix}-s0) * var(#{$prefix}-ratio)),
-	space-2: calc(var(#{$prefix}-s1) * var(#{$prefix}-ratio)),
-	space-3: calc(var(#{$prefix}-s2) * var(#{$prefix}-ratio)),
+	space-1: calc(var(--s0) * var(--ratio)),
+	space-2: calc(var(--s1) * var(--ratio)),
+	space-3: calc(var(--s2) * var(--ratio)),
 );
 
 //== TODO: fix // Spacing Scale N to N^X
 $scale-space-pairs: (
 	ratio: 1.5,
-	s-5: calc(var(#{$prefix}-s-4) / var(#{$prefix}-ratio)),
-	s-4: calc(var(#{$prefix}-s-3) / var(#{$prefix}-ratio)),
-	s-3: calc(var(#{$prefix}-s-2) / var(#{$prefix}-ratio)),
-	s-2: calc(var(#{$prefix}-s-1) / var(#{$prefix}-ratio)),
-	s-1: calc(var(#{$prefix}-s0) / var(#{$prefix}-ratio)),
+	s-5: calc(var(--s-4) / var(--ratio)),
+	s-4: calc(var(--s-3) / var(--ratio)),
+	s-3: calc(var(--s-2) / var(--ratio)),
+	s-2: calc(var(--s-1) / var(--ratio)),
+	s-1: calc(var(--s0) / var(--ratio)),
 	s0: $base-size,
-	s1: calc(var(#{$prefix}-s0) * var(#{$prefix}-ratio)),
-	s2: calc(var(#{$prefix}-s1) * var(#{$prefix}-ratio)),
-	s3: calc(var(#{$prefix}-s2) * var(#{$prefix}-ratio)),
-	s4: calc(var(#{$prefix}-s3) * var(#{$prefix}-ratio)),
-	s5: calc(var(#{$prefix}-s4) * var(#{$prefix}-ratio)),
+	s1: calc(var(--s0) * var(--ratio)),
+	s2: calc(var(--s1) * var(--ratio)),
+	s3: calc(var(--s2) * var(--ratio)),
+	s4: calc(var(--s3) * var(--ratio)),
+	s5: calc(var(--s4) * var(--ratio)),
 );

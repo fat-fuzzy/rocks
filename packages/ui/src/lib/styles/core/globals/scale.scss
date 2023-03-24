@@ -1,105 +1,97 @@
 .xxs,
 [class*=':xxs']:not(.bp\:xxs) {
-	#{$prefix}-current-size-minus: var(#{$prefix}-size-xxs);
-	#{$prefix}-current-size: var(#{$prefix}-size-xxs);
-	#{$prefix}-current-size-plus: var(#{$prefix}-size-sm);
-	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xxs);
-	#{$prefix}-current-font-size-minus: calc(
-		var(#{$prefix}-font-size-xxs) / var(#{$prefix}-fluid-min-ratio)
-	);
-	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-sm);
-	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xxs);
+	--current-size-minus: var(--size-xxs);
+	--current-size: var(--size-xxs);
+	--current-size-plus: var(--size-sm);
+	--current-font-size: var(--font-size-xxs);
+	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
+	--current-font-size-plus: var(--font-size-sm);
+	--current-side-size: var(--sidebar-width-xxs);
 }
 
 .xs,
 [class*=':xs']:not(.bp\:xs) {
-	#{$prefix}-current-size-minus: var(#{$prefix}-size-xxs);
-	#{$prefix}-current-size: var(#{$prefix}-size-xs);
-	#{$prefix}-current-size-plus: var(#{$prefix}-size-md);
-	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xs);
-	#{$prefix}-current-font-size-minus: calc(
-		var(#{$prefix}-font-size-xxs) / var(#{$prefix}-fluid-min-ratio)
-	);
-	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-md);
-	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xs);
+	--current-size-minus: var(--size-xxs);
+	--current-size: var(--size-xs);
+	--current-size-plus: var(--size-md);
+	--current-font-size: var(--font-size-xs);
+	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
+	--current-font-size-plus: var(--font-size-md);
+	--current-side-size: var(--sidebar-width-xs);
 }
 
 .sm,
 [class*=':sm']:not(.bp\:sm) {
-	#{$prefix}-current-size-minus: var(#{$prefix}-size-xs);
-	#{$prefix}-current-size: var(#{$prefix}-size-sm);
-	#{$prefix}-current-size-plus: var(#{$prefix}-size-lg);
-	#{$prefix}-current-font-size: var(#{$prefix}-font-size-sm);
-	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-xxs);
-	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-lg);
-	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-sm);
+	--current-size-minus: var(--size-xs);
+	--current-size: var(--size-sm);
+	--current-size-plus: var(--size-lg);
+	--current-font-size: var(--font-size-sm);
+	--current-font-size-minus: var(--font-size-xxs);
+	--current-font-size-plus: var(--font-size-lg);
+	--current-side-size: var(--sidebar-width-sm);
 }
 
 .md,
 [class*=':md']:not(.bp\:md) {
-	#{$prefix}-current-size-minus: var(#{$prefix}-size-sm);
-	#{$prefix}-current-size: var(#{$prefix}-size-md);
-	#{$prefix}-current-size-plus: var(#{$prefix}-size-xl);
-	#{$prefix}-current-font-size: var(#{$prefix}-font-size-md);
-	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-xs);
-	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-xl);
-	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-md);
+	--current-size-minus: var(--size-sm);
+	--current-size: var(--size-md);
+	--current-size-plus: var(--size-xl);
+	--current-font-size: var(--font-size-md);
+	--current-font-size-minus: var(--font-size-xs);
+	--current-font-size-plus: var(--font-size-xl);
+	--current-side-size: var(--sidebar-width-md);
 }
 
 .lg,
 [class*=':lg']:not(.bp\:lg) {
-	#{$prefix}-current-size-minus: var(#{$prefix}-size-md);
-	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
-	#{$prefix}-current-font-size: var(#{$prefix}-font-size-lg);
-	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-sm);
-	#{$prefix}-current-font-size-plus: var(#{$prefix}-font-size-xxl);
-	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-lg);
+	--current-size-minus: var(--size-md);
+	--current-size-plus: var(--size-xxl);
+	--current-font-size: var(--font-size-lg);
+	--current-font-size-minus: var(--font-size-sm);
+	--current-font-size-plus: var(--font-size-xxl);
+	--current-side-size: var(--sidebar-width-lg);
 }
 
 .xl,
 [class*=':xl']:not(.bp\:xl) {
-	#{$prefix}-current-size-minus: var(#{$prefix}-size-lg);
-	#{$prefix}-current-size: var(#{$prefix}-size-xl);
-	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
-	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xl);
-	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-md);
-	#{$prefix}-current-font-size-plus: calc(
-		var(#{$prefix}-font-size-xxl) * var(#{$prefix}-fluid-min-ratio)
-	);
-	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xl);
+	--current-size-minus: var(--size-lg);
+	--current-size: var(--size-xl);
+	--current-size-plus: var(--size-xxl);
+	--current-font-size: var(--font-size-xl);
+	--current-font-size-minus: var(--font-size-md);
+	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
+	--current-side-size: var(--sidebar-width-xl);
 }
 
 .xxl,
 [class*=':xxl']:not(.bp\:xxl) {
-	#{$prefix}-current-size-minus: var(#{$prefix}-size-xl);
-	#{$prefix}-current-size: var(#{$prefix}-size-xxl);
-	#{$prefix}-current-size-plus: var(#{$prefix}-size-xxl);
-	#{$prefix}-current-font-size: var(#{$prefix}-font-size-xxl);
-	#{$prefix}-current-font-size-minus: var(#{$prefix}-font-size-xl);
-	#{$prefix}-current-font-size-plus: calc(
-		var(#{$prefix}-font-size-xxl) * var(#{$prefix}-fluid-min-ratio)
-	);
-	#{$prefix}-current-side-size: var(#{$prefix}-sidebar-width-xxl);
+	--current-size-minus: var(--size-xl);
+	--current-size: var(--size-xxl);
+	--current-size-plus: var(--size-xxl);
+	--current-font-size: var(--font-size-xxl);
+	--current-font-size-minus: var(--font-size-xl);
+	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
+	--current-side-size: var(--sidebar-width-xxl);
 }
 
 .bp\:xxs {
-	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xxs);
+	--current-bp-size: var(--bp-xxs);
 }
 .bp\:xs {
-	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xs);
+	--current-bp-size: var(--bp-xs);
 }
 .bp\:sm {
-	#{$prefix}-current-bp-size: var(#{$prefix}-bp-sm);
+	--current-bp-size: var(--bp-sm);
 }
 .bp\:md {
-	#{$prefix}-current-bp-size: var(#{$prefix}-bp-md);
+	--current-bp-size: var(--bp-md);
 }
 .bp\:lg {
-	#{$prefix}-current-bp-size: var(#{$prefix}-bp-lg);
+	--current-bp-size: var(--bp-lg);
 }
 .bp\:xl {
-	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xl);
+	--current-bp-size: var(--bp-xl);
 }
 .bp\:xxl {
-	#{$prefix}-current-bp-size: var(#{$prefix}-bp-xxl);
+	--current-bp-size: var(--bp-xxl);
 }

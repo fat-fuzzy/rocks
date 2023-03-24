@@ -2,7 +2,7 @@ menu {
 	display: flex;
 	justify-content: stretch;
 	padding: 0;
-	border-radius: var(#{$prefix}-radius-base);
+	border-radius: var(--radius-base);
 	list-style: none;
 }
 
@@ -11,6 +11,6 @@ menu > li > * {
 }
 
 .menu > p {
-	font-size: var(#{$prefix}-font-size-small);
-	font-weight: var(#{$prefix}-font-weight-ui);
+	font-size: var(--font-size-small);
+	font-weight: var(--font-weight-ui);
 }

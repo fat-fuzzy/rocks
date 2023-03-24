@@ -12,18 +12,18 @@ nav ul {
 //= Keep nav links to one line with ellipsis
 nav li {
 	width: 100%;
-	max-width: calc(var(#{$prefix}-current-side-size) - var(#{$prefix}-outline-offset));
+	max-width: calc(var(--current-side-size) - var(--outline-offset));
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding: 0 var(#{$prefix}-outline-offset);
+	padding: 0 var(--outline-offset);
 	margin-block: 0;
 }
 
 nav li a {
 	max-width: 100%;
-	font-size: var(#{$prefix}-font-size-ui);
-	font-weight: var(#{$prefix}-font-weight-semibold);
+	font-size: var(--font-size-ui);
+	font-weight: var(--font-weight-semibold);
 	line-height: 1;
 	text-overflow: ellipsis; // TODO: find out why I need to repeat ellipsis in <li> and <a>
 	overflow: hidden;
@@ -32,53 +32,53 @@ nav li a {
 
 nav li a,
 nav li a:visited {
-	color: var(#{$prefix}-current-color);
-	font-weight: var(#{$prefix}-font-weight-semibold);
+	color: var(--current-color);
+	font-weight: var(--font-weight-semibold);
 }
 
 nav a:hover {
-	color: var(#{$prefix}-current-primary);
+	color: var(--current-primary);
 }
 
 nav a:focus {
-	outline-offset: var(#{$prefix}-outline-offset-nav);
+	outline-offset: var(--outline-offset-nav);
 }
 
 //== RevealNav (tree-like navigation menus)
 ul.depth-1 {
-	padding-inline-start: var(#{$prefix}-current-size-plus);
+	padding-inline-start: var(--current-size-plus);
 }
 
 ul.depth-2 {
-	padding-inline-start: calc(2 * var(#{$prefix}-current-size-plus));
+	padding-inline-start: calc(2 * var(--current-size-plus));
 }
 
 ul.depth-3 {
-	padding-inline-start: calc(3 * var(#{$prefix}-current-size-plus));
+	padding-inline-start: calc(3 * var(--current-size-plus));
 }
 
 ul.depth-4 {
-	padding-inline-start: calc(4 * var(#{$prefix}-current-size-plus));
+	padding-inline-start: calc(4 * var(--current-size-plus));
 }
 
 ul[class*='depth-'] * + ul,
 ul[class*='depth-'] li:has(ul) {
-	margin-block-start: var(#{$prefix}-current-size);
+	margin-block-start: var(--current-size);
 }
 
 // Active Link
 nav li[aria-current='page'] a,
 nav li[aria-current='page'] a:visited {
-	color: var(#{$prefix}-current-primary);
-	font-weight: var(#{$prefix}-font-weight-semibold);
+	color: var(--current-primary);
+	font-weight: var(--font-weight-semibold);
 	text-decoration: none;
-	text-decoration-color: var(#{$prefix}-current-gray);
+	text-decoration-color: var(--current-gray);
 }
 
 // override Active Link styles for top level link
 ul.depth-0 > li > a {
-	font-family: var(#{$prefix}-font-family-heading);
-	font-weight: var(#{$prefix}-font-weight-semibold);
+	font-family: var(--font-family-heading);
+	font-weight: var(--font-weight-semibold);
 }
 
 //== Main navigation (in application Header)
@@ -87,7 +87,7 @@ ul.depth-0 > li > a {
 	position: relative;
 	padding: 0;
 	margin: 0;
-	height: var(#{$prefix}-header-height);
+	height: var(--header-height);
 	display: flex;
 	align-items: center;
 	list-style: none;
@@ -107,7 +107,7 @@ ul.depth-0 > li > a {
 }
 
 .header-app > nav li[aria-current='page'] a {
-	color: var(#{$prefix}-current-primary);
+	color: var(--current-primary);
 	text-decoration: none;
 }
 
@@ -120,7 +120,7 @@ ul.depth-0 > li > a {
 	top: 0;
 	left: calc(50% - var(--size));
 	border: var(--size) solid transparent;
-	border-top: var(--size) solid var(#{$prefix}-current-primary-light);
+	border-top: var(--size) solid var(--current-primary-light);
 }
 
 .header-app > nav a {
@@ -135,11 +135,11 @@ ul.depth-0 > li > a {
 }
 
 .header-app ul li > a {
-	font-weight: var(#{$prefix}-font-weight-400);
+	font-weight: var(--font-weight-400);
 }
 
 .header-app nav a:hover {
-	color: var(#{$prefix}-current-primary-light);
+	color: var(--current-primary-light);
 }
 
 //== Need to override global <a> hover styles in nav and header <a>
