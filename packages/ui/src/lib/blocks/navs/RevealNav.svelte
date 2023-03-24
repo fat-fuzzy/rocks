@@ -1,7 +1,7 @@
 <script lang="ts">
 	import format from '../../utils/format'
 	import LinkList from './LinkList.svelte'
-	import mocks from '../../../data/mocks'
+	import mocks from '../../data/mocks'
 
 	export let layout = 'stack'
 	export let size = ''

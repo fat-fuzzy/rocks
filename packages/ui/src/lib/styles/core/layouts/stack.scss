@@ -17,9 +17,9 @@
 }
 
 .l\:stack.recursive * + * {
-	margin-block-start: var(#{$prefix}-current-size-plus);
+	margin-block-start: var(--current-size-plus);
 }
 
 .l\:stack > * + * {
-	margin-block-start: var(#{$prefix}-current-size-plus);
+	margin-block-start: var(--current-size-plus);
 }

@@ -10,16 +10,15 @@ $breakpoints: (
 $base-sidebar-size: 22.75em;
 
 $layout: (
-	gap: $base-size,
-	//
+	gap: 1rem,
 	size-nul: 0,
-	size-xxs: var(#{$prefix}-s-5),
-	size-xs: var(#{$prefix}-s-4),
-	size-sm: var(#{$prefix}-s-3),
-	size-md: var(#{$prefix}-s-2),
-	size-lg: var(#{$prefix}-s-1),
-	size-xl: var(#{$prefix}-s0),
-	size-xxl: var(#{$prefix}-s1),
+	size-xxs: var(--s-5),
+	size-xs: var(--s-4),
+	size-sm: var(--s-3),
+	size-md: var(--s-2),
+	size-lg: var(--s-1),
+	size-xl: var(--s0),
+	size-xxl: var(--s1),
 	/// Test SIZE SCALE for sidebar width
 	/// This is a Major Third scale that powers all the utilities that
 	/// it is relevant for (font-size, margin, padding). All items are
@@ -34,11 +33,10 @@ $layout: (
 	sidebar-width-lg: $base-sidebar-size * 1.25,
 	sidebar-width-xl: $base-sidebar-size * 1.6,
 	sidebar-width-xxl: $base-sidebar-size * 2,
-	header-height: var(#{$prefix}-s3),
-	header-margin: calc(var(#{$prefix}-gap) / 2),
+	header-height: var(--s3),
+	header-margin: calc(var(--gap) / 2),
 	// footer height = font-size * line-height + 2 * padding
-	footer-height:
-		calc(var(#{$prefix}-font-size-body) * var(#{$prefix}-ratio) + 2 * var(#{$prefix}-size-sm)),
+	footer-height: calc(var(--font-size-body) * var(--ratio) + 2 * var(--size-sm)),
 	//
 	radius-nul: 0,
 	radius-base: 3px,
@@ -51,28 +49,23 @@ $layout: (
 	outline-offset: 0.25rem,
 	outline-offset-nav: 0.15rem,
 	outline-width: 2px,
-	prev-offset-limit: calc(calc(var(#{$prefix}-outline-offset) + var(#{$prefix}-outline-width))),
+	prev-offset-limit: calc(calc(var(--outline-offset) + var(--outline-width))),
 	//
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3
-	shadow: #{0 -1px 3px 0 hsl(
-			var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 2%)
-		),
-	0 1px 2px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength) + 7%)),
+	shadow: #{0 -1px 3px 0 hsl(var(--color-shadow) / calc(var(--shadow-strength) + 2%)),
+	0 1px 2px -5px hsl(var(--color-shadow) / calc(var(--shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(--color-shadow) / calc(var(--shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(--color-shadow) / calc(var(--shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(--color-shadow) / calc(var(--shadow-strength) + 7%)),
 	},
-	shadow-light: #{0 -1px 3px 0 hsl(var(#{$prefix}-color-shadow-light) /
-				calc(var(#{$prefix}-shadow-strength) + 2%)),
-	0 1px 2px -5px hsl(var(#{$prefix}-color-shadow-light) / calc(var(#{$prefix}-shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(#{$prefix}-color-shadow-light) / calc(var(#{$prefix}-shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(#{$prefix}-color-shadow-light) /
-				calc(var(#{$prefix}-shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(#{$prefix}-color-shadow-light) /
-				calc(var(#{$prefix}-shadow-strength) + 7%)),
+	shadow-light: #{0 -1px 3px 0 hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 2%)),
+	0 1px 2px -5px hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 7%)),
 	},
 	shadow-inset: #{inset 0 1px 4px 0
-		hsl(var(#{$prefix}-color-shadow) / calc(var(#{$prefix}-shadow-strength-inset) + 9%))},
+		hsl(var(--color-shadow) / calc(var(--shadow-strength-inset) + 9%))},
 	padding-inset: 4px,
 );

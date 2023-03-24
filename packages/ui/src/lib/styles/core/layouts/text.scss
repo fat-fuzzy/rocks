@@ -5,8 +5,8 @@
 
 [class^='l:text'] {
 	width: 80ch;
-	padding-block-end: var(#{$prefix}-current-size-plus);
-	padding-inline: var(#{$prefix}-current-size);
+	padding-block-end: var(--current-size-plus);
+	padding-inline: var(--current-size);
 	max-width: 100%;
 }
 
@@ -15,7 +15,7 @@
 [class^='l:text'] > * + h3,
 [class^='l:text'] > * + h4,
 [class^='l:text'] > * + h5 {
-	margin-block-start: var(#{$prefix}-s2);
+	margin-block-start: var(--s2);
 }
 
 [class^='l:text'] > h1 + *,
@@ -23,11 +23,11 @@
 [class^='l:text'] > h3 + *,
 [class^='l:text'] > h4 + *,
 [class^='l:text'] > h5 + * {
-	margin-block-start: var(#{$prefix}-s1);
+	margin-block-start: var(--s1);
 }
 
 [class^='l:text'] ul {
-	margin-block: var(#{$prefix}-s0);
+	margin-block: var(--s0);
 }
 
 .l\:text\:xxs {

@@ -1,19 +1,19 @@
 fieldset {
-	border-radius: var(#{$prefix}-radius-base);
-	border: 1px solid var(#{$prefix}-current-gray);
+	border-radius: var(--radius-base);
+	border: 1px solid var(--current-gray);
 	> legend {
-		font-size: var(#{$prefix}-font-size-ui);
-		font-weight: var(#{$prefix}-font-weight-ui);
+		font-size: var(--font-size-ui);
+		font-weight: var(--font-weight-ui);
 	}
 	> p {
-		font-size: var(#{$prefix}-font-size-small);
-		font-weight: var(#{$prefix}-font-weight-ui);
+		font-size: var(--font-size-small);
+		font-weight: var(--font-weight-ui);
 	}
 }
 
 fieldset {
-	padding: 0 var(#{$prefix}-current-size-plus) var(#{$prefix}-current-size-plus);
+	padding: 0 var(--current-size-plus) var(--current-size-plus);
 	> * + * {
-		margin-block-start: var(#{$prefix}-current-size);
+		margin-block-start: var(--current-size);
 	}
 }

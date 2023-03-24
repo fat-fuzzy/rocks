@@ -1,29 +1,29 @@
 // Global CSS starts
 
 :root {
-	font-family: var(#{$prefix}-font-family-body);
+	font-family: var(--font-family-body);
 }
 
 body {
-	#{$prefix}-current-size: var(#{$prefix}-s0);
-	#{$prefix}-current-size-plus: var(#{$prefix}-s1);
-	#{$prefix}-current-size-side: var(#{$prefix}-s0);
-	color: var(#{$prefix}-current-color);
-	background: var(#{$prefix}-current-bg-color);
-	font-size: var(#{$prefix}-font-size-body);
-	font-weight: var(#{$prefix}-font-weight-body);
-	line-height: var(#{$prefix}-line-height-body);
+	--current-size: var(--s0);
+	--current-size-plus: var(--s1);
+	--current-size-side: var(--s0);
+	color: var(--current-color);
+	background: var(--current-bg-color);
+	font-size: var(--font-size-body);
+	font-weight: var(--font-weight-body);
+	line-height: var(--line-height-body);
 }
 
 a {
-	color: var(#{$prefix}-current-primary);
-	font-size: var(#{$prefix}-font-size-ui);
-	font-family: var(#{$prefix}-font-family-ui);
-	font-weight: var(#{$prefix}-font-weight-ui);
+	color: var(--current-primary);
+	font-size: var(--font-size-ui);
+	font-family: var(--font-family-ui);
+	font-weight: var(--font-weight-ui);
 }
 
 a[class^='font:'] {
-	color: var(#{$prefix}-current-font-size);
+	color: var(--current-font-size);
 }
 
 a:hover {
@@ -32,8 +32,8 @@ a:hover {
 
 table {
 	border-collapse: collapse;
-	font-family: var(#{$prefix}-font-family-ui);
-	line-height: var(#{$prefix}-line-height-ui);
+	font-family: var(--font-family-ui);
+	line-height: var(--line-height-ui);
 }
 
 th {
@@ -41,6 +41,6 @@ th {
 }
 
 :focus {
-	outline: var(#{$prefix}-outline-width) dotted var(#{$prefix}-current-color);
-	outline-offset: var(#{$prefix}-outline-offset);
+	outline: var(--outline-width) dotted var(--current-color);
+	outline-offset: var(--outline-offset);
 }

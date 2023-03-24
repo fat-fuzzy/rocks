@@ -5,7 +5,7 @@
 	import {theme} from '../../stores/theme'
 	import {emojis, themes} from '$types/constants.js'
 	import Nav from '../navs/Nav.svelte'
-	import {links} from '../../../data/nav'
+	import {links} from '../../data/nav'
 
 	// TODO: make svg css themeable / fix dark theme
 	import githubDay from '$lib/images/icon-dark-100-optim-github.svg'

@@ -1,16 +1,16 @@
 // TODO: Use @use instead of @import https://sass-lang.com/documentation/at-rules/use
 
 /* Resets and global styles, set --current-* CSS var values used in layouts and blocks*/
-@import './globals/main';
+@forward './globals';
 
 /* Layout (organizational components) */
-@import './layouts/main';
+@forward './layouts';
 
 /* CSS blocks (contentful components) */
-@import './blocks/main';
+@forward './blocks';
 
 /* CSS motion (animations, transitions, user-initiated movement) */
-@import './motion/main';
+@forward './motion';
 
 /* Overrides */
-@import './config/utility';
+@forward './config/utility';

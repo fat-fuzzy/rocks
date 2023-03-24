@@ -1,22 +1,22 @@
 .layer {
-	box-shadow: var(#{$prefix}-shadow);
+	box-shadow: var(--shadow);
 }
 
 .box {
-	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
+	border: var(--border-width) solid var(--current-gray);
 }
 
 .polar {
-	background-color: var(#{$prefix}-current-polar);
+	background-color: var(--current-polar);
 }
 
 .inset {
-	box-shadow: var(#{$prefix}-shadow-inset);
-	// padding: var(#{$prefix}-padding-inset);
+	box-shadow: var(--shadow-inset);
+	// padding: var(--padding-inset);
 }
 
 .dotted {
-	border: var(#{$prefix}-border-width-lg) dotted var(#{$prefix}-current-primary);
+	border: var(--border-width-lg) dotted var(--current-primary);
 }
 
 // Contrast
@@ -24,22 +24,22 @@
 .day {
 	// TODO: Fix contrast combination
 	&.contrast {
-		background-color: var(#{$prefix}-current-bg-contrast);
+		background-color: var(--current-bg-contrast);
 	}
 
 	&.blend {
-		background-color: var(#{$prefix}-current-bg-color);
+		background-color: var(--current-bg-color);
 	}
 }
 
 .night {
 	// TODO: Fix contrast combination
 	&.contrast {
-		background-color: var(#{$prefix}-current-bg-color);
+		background-color: var(--current-bg-color);
 	}
 
 	&.blend {
-		background-color: var(#{$prefix}-current-bg-contrast);
+		background-color: var(--current-bg-contrast);
 	}
 }
 
@@ -52,7 +52,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: var(#{$prefix}-radius-base);
+	border-radius: var(--radius-base);
 }
 
 .corner img {

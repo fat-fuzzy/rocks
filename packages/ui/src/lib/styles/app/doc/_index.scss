@@ -1,0 +1,24 @@
+/* Global config */
+
+// TODO: find a way to override in client
+@forward '../../core/config';
+@forward '../../core';
+@forward './pages';
+
+@use './scale.scss';
+// @use './fonts.scss';
+@use './typography.scss';
+@use './layout.scss';
+@use './color.scss';
+@use '../../core/config/mixins'; // TODO: find a way to override in client
+@include mixins.theme-main(
+	layout.$breakpoints,
+	layout.$layout,
+	scale.$scale-space-pairs,
+	scale.$size-scale,
+	scale.$modular-scale,
+	scale.$modular-scale-steps-plus,
+	scale.$modular-scale-steps-minus,
+	typography.$typography,
+	color.$colors
+);

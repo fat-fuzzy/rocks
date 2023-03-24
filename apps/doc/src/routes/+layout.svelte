@@ -19,5 +19,5 @@
 </footer>
 
 <style lang="scss" global>
-	@import './styles.scss'; // TODO: get back to a css import
+	@forward './styles.scss'; // TODO: get back to a css import
 </style>

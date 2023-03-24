@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import format from '../../utils/format'
-	import mocks from '../../../data/mocks'
+	import mocks from '../../data/mocks'
 
 	export let path = ''
 	export let layout = ''

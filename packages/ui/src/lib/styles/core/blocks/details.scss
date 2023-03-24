@@ -5,24 +5,24 @@ details {
 details > summary {
 	cursor: pointer;
 	display: block;
-	color: var(#{$prefix}-color-light);
-	font-weight: var(#{$prefix}-font-weight-ui);
-	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-color);
-	padding: var(#{$prefix}-current-size-minus);
+	color: var(--color-light);
+	font-weight: var(--font-weight-ui);
+	border: var(--border-width) solid var(--current-color);
+	padding: var(--current-size-minus);
 	max-width: 100%;
 }
 
 details > summary:hover {
-	box-shadow: var(#{$prefix}-shadow);
+	box-shadow: var(--shadow);
 }
 
 .night summary {
-	color: var(#{$prefix}-color-dark); // TODO: fix color contrast pairs
+	color: var(--color-dark); // TODO: fix color contrast pairs
 }
 
 details > summary {
-	background-color: var(#{$prefix}-current-color);
-	margin-block-end: var(#{$prefix}-current-size-plus);
+	background-color: var(--current-color);
+	margin-block-end: var(--current-size-plus);
 }
 
 details > summary > h1, // TODO: not sure h1 inside detail is a good idea, check
@@ -34,7 +34,7 @@ details > summary > h4 {
 
 details > summary::before {
 	content: '👉';
-	margin-inline-end: var(#{$prefix}-s-1);
+	margin-inline-end: var(--s-1);
 }
 
 details > p {
@@ -42,71 +42,71 @@ details > p {
 }
 
 details[open] > summary {
-	color: var(#{$prefix}-current-color);
-	background-color: var(#{$prefix}-current-bg-contrast);
-	border: var(#{$prefix}-border-width) solid var(#{$prefix}-current-gray);
+	color: var(--current-color);
+	background-color: var(--current-bg-contrast);
+	border: var(--border-width) solid var(--current-gray);
 }
 
 .night details[open] > summary {
-	color: var(#{$prefix}-color-light); // TODO: fix color contrast pairs
+	color: var(--color-light); // TODO: fix color contrast pairs
 }
 .night.blend details[open] > summary {
-	color: var(#{$prefix}-color-light); // TODO: fix color contrast pairs
-	background-color: var(#{$prefix}-current-polar); // TODO: fix color contrast pairs
+	color: var(--color-light); // TODO: fix color contrast pairs
+	background-color: var(--current-polar); // TODO: fix color contrast pairs
 }
 .day.contrast details[open] > summary {
-	color: var(#{$prefix}-color-dark); // TODO: fix color contrast pairs
+	color: var(--color-dark); // TODO: fix color contrast pairs
 }
 
 details[open] > summary::before {
 	content: '👇';
-	margin-inline-end: var(#{$prefix}-s-1);
+	margin-inline-end: var(--s-1);
 }
 
 .night,
 .day {
 	// same as .bg\:primary\:light
 	details[open] > summary.bg\:primary {
-		color: var(#{$prefix}-color-dark);
-		background-color: var(#{$prefix}-current-primary-light);
+		color: var(--color-dark);
+		background-color: var(--current-primary-light);
 	}
 	// same as .bg\:accent\:light
 	details[open] > summary.bg\:accent {
-		color: var(#{$prefix}-color-dark);
-		background-color: var(#{$prefix}-current-accent-light);
+		color: var(--color-dark);
+		background-color: var(--current-accent-light);
 	}
 	// same as .bg\:highlight\:light
 	details[open] > summary.bg\:highlight {
-		color: var(#{$prefix}-color-dark);
-		background-color: var(#{$prefix}-current-highlight-light);
+		color: var(--color-dark);
+		background-color: var(--current-highlight-light);
 	}
 }
 
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:xxs summary {
-	inline-size: var(#{$prefix}-sidebar-width-xxs);
+	inline-size: var(--sidebar-width-xxs);
 }
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:xs summary {
-	inline-size: var(#{$prefix}-sidebar-width-xs);
+	inline-size: var(--sidebar-width-xs);
 }
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:sm summary {
-	inline-size: var(#{$prefix}-sidebar-width-sm);
+	inline-size: var(--sidebar-width-sm);
 }
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:md summary {
-	inline-size: var(#{$prefix}-sidebar-width-md);
+	inline-size: var(--sidebar-width-md);
 }
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:lg summary {
-	inline-size: var(#{$prefix}-sidebar-width-lg);
+	inline-size: var(--sidebar-width-lg);
 }
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:xl summary {
-	inline-size: var(#{$prefix}-sidebar-width-xl);
+	inline-size: var(--sidebar-width-xl);
 }
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:xxl summary {
-	inline-size: var(#{$prefix}-sidebar-width-xxl);
+	inline-size: var(--sidebar-width-xxl);
 }

@@ -5,18 +5,15 @@
 	left: 0;
 	width: 100%;
 	background-color: inherit; // this cannot be transparent or scrolled content will show behind
-	z-index: var(#{$prefix}-z-index-sticky);
+	z-index: var(--z-index-sticky);
 }
 
 .fixed\:top {
-	padding-block-start: calc(var(#{$prefix}-header-height) + 3 * var(#{$prefix}-header-margin));
+	padding-block-start: calc(var(--header-height) + 3 * var(--header-margin));
 }
 
 .fixed\:top > main {
-	min-height: calc(
-		100vh - var(#{$prefix}-header-height) - 3 * var(#{$prefix}-header-margin) -
-			var(#{$prefix}-footer-height)
-	);
+	min-height: calc(100vh - var(--header-height) - 3 * var(--header-margin) - var(--footer-height));
 }
 
 .fixed\:start {

@@ -6,7 +6,7 @@
 	import {page} from '$app/stores'
 	import {selectedStore} from '../stores/api'
 
-	import mocks from '../../data/mocks' // TODO: load text from README.md
+	import mocks from '../data/mocks' // TODO: load text from README.md
 
 	export let title = ''
 	export let depth = 0
