@@ -3,7 +3,7 @@
 	import {createEventDispatcher} from 'svelte'
 	import format from '../../utils/format'
 	import Button from './Button.svelte'
-	import mocks from '../../../data/mocks'
+	import mocks from '../../data/mocks'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'

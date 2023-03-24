@@ -3,7 +3,7 @@
 	import type {StyleTree} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
-	import mocks from '../../data/mocks' // TODO: load text from README.md
+	import mocks from '../data/mocks' // TODO: load text from README.md
 
 	export let title = ''
 	export let isPage = false

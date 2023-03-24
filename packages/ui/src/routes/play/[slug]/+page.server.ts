@@ -1,4 +1,4 @@
-import {sketches} from '$data/sketches'
+import {sketches} from '$lib/data/sketches'
 
 import type {PageLoad} from './$types'
 

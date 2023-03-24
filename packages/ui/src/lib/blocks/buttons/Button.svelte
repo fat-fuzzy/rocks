@@ -2,7 +2,7 @@
 	// Inputs
 	import {browser} from '$app/environment'
 	import format from '../../utils/format'
-	import mocks from '../../../data/mocks'
+	import mocks from '../../data/mocks'
 
 	export let id = 'button'
 	export let name = 'button'

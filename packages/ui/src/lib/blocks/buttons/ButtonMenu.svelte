@@ -2,7 +2,7 @@
 	import {browser} from '$app/environment'
 	import {createEventDispatcher} from 'svelte'
 	import Button from '../buttons/Button.svelte'
-	import mocks from '../../../data/mocks'
+	import mocks from '../../data/mocks'
 
 	const dispatch = createEventDispatcher()
 	export let id = 'button-menu'
