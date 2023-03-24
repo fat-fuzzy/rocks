@@ -43,7 +43,7 @@ export class UiState {
 	}
 
 	/**
-	 * Serialize game state so it can be set as a cookie
+	 * Serialize UI state so it can be set as a cookie
 	 */
 	toString() {
 		const styleTree = this.api.getStyleTree()

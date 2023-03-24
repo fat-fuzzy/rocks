@@ -131,3 +131,12 @@ Temporary Items
 # turbo
 .turbo
 out/
+
+### CDK-specific ignores ###
+*.swp
+cdk.context.json
+package-lock.json
+.cdk.staging
+cdk.out
+
+iam-policy-default.json

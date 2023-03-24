@@ -29,3 +29,4 @@ TODO: CSS
 - _Use_ these new CSS tooling to experiment with design !
 - Improve this README
 - Create color contrast pairs, investigate color functions
+- Font loading strategy (for some interesting pointers see: https://www.zachleat.com/web/css-tricks-web-fonts/)
