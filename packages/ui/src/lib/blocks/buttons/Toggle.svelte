@@ -26,6 +26,7 @@
 	export let page = ''
 
 	let machineConfig = {
+		predictableActionArguments: true,
 		id,
 		initial: initial ? 'active' : 'inactive',
 		states: {

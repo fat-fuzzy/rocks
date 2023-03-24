@@ -1,5 +1,6 @@
 import {createMachine} from 'xstate'
 const machineConfig = {
+	predictableActionArguments: true,
 	// todo : fix type
 	id: 'toggle',
 	initial: 'inactive',
