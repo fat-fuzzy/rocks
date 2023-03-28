@@ -5,7 +5,7 @@
 	"description": "Fat Fuzzy Doc",
 	"main": "index.js",
 	"author": "Patricia Boh",
-	"license": "Apache-2.0",
+	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",

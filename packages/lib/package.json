@@ -18,7 +18,7 @@
 		"./src/gfx/sketches/*": "./src/gfx/sketches/*"
 	},
 	"author": "Patricia Boh",
-	"license": "Apache-2.0",
+	"license": "MIT",
 	"devDependencies": {
 		"@rollup/plugin-json": "4.1.0",
 		"@typescript-eslint/eslint-plugin": "^5.46.0",

@@ -5,7 +5,7 @@
 	"description": "Fat Fuzzy Rocks",
 	"main": "index.js",
 	"author": "Patricia Boh",
-	"license": "Apache-2.0",
+	"license": "MIT",
 	"scripts": {
 		"build": "turbo run build",
 		"clean": "turbo run clean",

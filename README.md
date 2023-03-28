@@ -82,7 +82,7 @@ This repository is organized into two package types following [Turborepo's works
 
 This repository uses the following license:
 
-Apache-2.0
+MIT
 
 The packages, folders and files it contains may have different licenses:
 

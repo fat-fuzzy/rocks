@@ -15,7 +15,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"author": "Patricia Boh",
-	"license": "Apache-2.0",
+	"license": "MIT",
 	"devDependencies": {
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "^1.28.1",
