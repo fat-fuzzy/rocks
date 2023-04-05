@@ -30,10 +30,10 @@ importers:
         version: 1.30.0
       '@sveltejs/adapter-cloudflare':
         specifier: ^2.2.0
-        version: 2.2.0(@sveltejs/kit@1.13.0)
+        version: 2.2.0(@sveltejs/kit@1.15.1)
       '@sveltejs/kit':
-        specifier: ^1.13.0
-        version: 1.13.0(svelte@3.57.0)(vite@4.0.0)
+        specifier: ^1.15.1
+        version: 1.15.1(svelte@3.57.0)(vite@4.0.0)
       '@types/cookie':
         specifier: ^0.5.1
         version: 0.5.1
@@ -72,10 +72,10 @@ importers:
         version: 1.30.0
       '@sveltejs/adapter-cloudflare':
         specifier: ^2.2.0
-        version: 2.2.0(@sveltejs/kit@1.13.0)
+        version: 2.2.0(@sveltejs/kit@1.15.1)
       '@sveltejs/kit':
-        specifier: ^1.13.0
-        version: 1.13.0(svelte@3.57.0)(vite@4.0.0)
+        specifier: ^1.15.1
+        version: 1.15.1(svelte@3.57.0)(vite@4.0.0)
       '@types/cookie':
         specifier: ^0.5.1
         version: 0.5.1
@@ -217,10 +217,10 @@ importers:
         version: link:../lib
       '@sveltejs/adapter-cloudflare':
         specifier: ^2.2.0
-        version: 2.2.0(@sveltejs/kit@1.13.0)
+        version: 2.2.0(@sveltejs/kit@1.15.1)
       '@sveltejs/kit':
-        specifier: ^1.13.0
-        version: 1.13.0(svelte@3.57.0)(vite@4.0.0)
+        specifier: ^1.15.1
+        version: 1.15.1(svelte@3.57.0)(vite@4.0.0)
       '@sveltejs/package':
         specifier: ^2.0.2
         version: 2.0.2(svelte@3.57.0)(typescript@4.9.4)
@@ -588,18 +588,18 @@ packages:
       rollup: 2.70.1
     dev: true
 
-  /@sveltejs/adapter-cloudflare@2.2.0(@sveltejs/kit@1.13.0):
+  /@sveltejs/adapter-cloudflare@2.2.0(@sveltejs/kit@1.15.1):
     resolution: {integrity: sha512-B3GQtdPBLHG1eTjOUCjTOqlkTEuYbeSFFw984sEclWxNnLgj3dO6DY8pRTVyrltwNtKRG/7W+ltPVzcbcn30Dg==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
       '@cloudflare/workers-types': 4.20221111.1
-      '@sveltejs/kit': 1.13.0(svelte@3.57.0)(vite@4.0.0)
+      '@sveltejs/kit': 1.15.1(svelte@3.57.0)(vite@4.0.0)
       esbuild: 0.16.4
       worktop: 0.8.0-next.14
 
-  /@sveltejs/kit@1.13.0(svelte@3.57.0)(vite@4.0.0):
-    resolution: {integrity: sha512-t44xqlSTn/k+BridiJFTD8dCRPNd9msCSSPLZT+/3P9deNp/al6ed396MSpsskK7r2kevYmmxywK16qtn6Rvjw==}
+  /@sveltejs/kit@1.15.1(svelte@3.57.0)(vite@4.0.0):
+    resolution: {integrity: sha512-Wexy3N+COoClTuRawVJRbLoH5HFxNrXG3uoHt/Yd5IGx8WAcJM9Nj/CcBLw/tjCR9uDDYMnx27HxuPy3YIYQUA==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -620,7 +620,7 @@ packages:
       sirv: 2.0.2
       svelte: 3.57.0
       tiny-glob: 0.2.9
-      undici: 5.21.0
+      undici: 5.20.0
       vite: 4.0.0(sass@1.60.0)
     transitivePeerDependencies:
       - supports-color
@@ -2883,8 +2883,8 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
 
-  /undici@5.21.0:
-    resolution: {integrity: sha512-HOjK8l6a57b2ZGXOcUsI5NLfoTrfmbOl90ixJDl0AEFG4wgHNDQxtZy15/ZQp7HhjkpaGlp/eneMgtsu1dIlUA==}
+  /undici@5.20.0:
+    resolution: {integrity: sha512-J3j60dYzuo6Eevbawwp1sdg16k5Tf768bxYK4TUJRH7cBM4kFCbf3mOnM/0E3vQYXvpxITbbWmBafaDbxLDz3g==}
     engines: {node: '>=12.18'}
     dependencies:
       busboy: 1.6.0
