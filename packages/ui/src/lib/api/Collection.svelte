@@ -38,6 +38,7 @@
 	}
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
+	$: categorySingular = `${category.slice(0,1).toUpperCase()}${category.slice(1,category.length-1)}`
 	$: classes = category !== 'app' ? `l:${layout} bp:${breakpoint} ${brightness} ${contrast}` : ''
 </script>
 
@@ -52,22 +53,23 @@
 			</section>
 		</div>
 		<aside slot="side">
+			<Api {title} {category} />
 			<div class="card:xl">
 				{@html mocks['doc'][category]}
 			</div>
-			<Api {title} {category} />
 		</aside>
 	</Sidebar>
 {:else}
-	<details class="l:stack:xl" open>
-		<summary class={`card:lg box bg:${color}`}>
-			<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
-				{category}
-			</svelte:element>
+	<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+		{category}
+	</svelte:element>
+
+	{@html mocks['doc'][category]}
+
+	<details class="l:stack:xl" closed>
+		<summary class={`card:md box bg:${color}`}>
+			{categorySingular} components
 		</summary>
-		<div class="card:xl">
-			{@html mocks['doc'][category]}
-		</div>
 		<div class="card:lg inset">
 			<section class={classes}>
 				{#each componentNames as name}
