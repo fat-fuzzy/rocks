@@ -50,15 +50,15 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
-	padding-inline-start: calc(2 * var(--current-size-plus));
+	padding-inline-start: calc(2 * var(--current-size));
 }
 
 ul.depth-3 {
-	padding-inline-start: calc(3 * var(--current-size-plus));
+	padding-inline-start: calc(3 * var(--current-size));
 }
 
 ul.depth-4 {
-	padding-inline-start: calc(4 * var(--current-size-plus));
+	padding-inline-start: calc(4 * var(--current-size));
 }
 
 ul[class*='depth-'] * + ul,
@@ -67,8 +67,8 @@ ul[class*='depth-'] li:has(ul) {
 }
 
 // Active Link
-nav li[aria-current='page'] a,
-nav li[aria-current='page'] a:visited {
+nav li[aria-current='page'] > a,
+nav li[aria-current='page'] > a:visited {
 	color: var(--current-primary);
 	font-weight: var(--font-weight-semibold);
 	text-decoration: none;
