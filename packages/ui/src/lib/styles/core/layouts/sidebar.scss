@@ -17,6 +17,10 @@
 	flex-wrap: wrap-reverse;
 }
 
+main > [class^='l:sidebar'] {
+	padding: var(--gap);
+}
+
 .l\:main {
 	flex-basis: 0;
 	flex-grow: 999;

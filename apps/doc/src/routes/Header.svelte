@@ -2,8 +2,8 @@
 	import {page} from '$app/stores'
 
 	// TODO: make svg css themeable / fix dark theme
-	import githubDay from '$lib/images/icon-dark-100-optim-github.svg'
-	import github from '$lib/images/icon-dark-100-optim-github.svg'
+	import githubDay from '$lib/images/night/icon-github.svg'
+	import github from '$lib/images/day/icon-github.svg'
 </script>
 
 <header class="header-app l:sidebar layer">

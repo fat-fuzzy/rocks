@@ -9,11 +9,13 @@
 }
 
 .fixed\:top {
-	padding-block-start: calc(var(--header-height) + 3 * var(--header-margin));
+	padding-block-start: var(--header-height);
 }
 
 .fixed\:top > main {
-	min-height: calc(100vh - var(--header-height) - 3 * var(--header-margin) - var(--footer-height));
+	min-height: calc(
+		100vh - calc(var(--header-height) - calc(2 * var(--header-margin) - var(--footer-height)))
+	);
 }
 
 .fixed\:start {

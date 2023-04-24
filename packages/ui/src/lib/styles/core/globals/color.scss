@@ -122,7 +122,7 @@ form,
 // - The styles below are global: for example they will apply to links in text
 // - Links in navs have specific styles (except for hover), see: `styles/core/blocks/nav.scss`
 a {
-	color: var(--current-primary);
+	color: var(--current-color);
 }
 a:visited {
 	color: var(--current-color);

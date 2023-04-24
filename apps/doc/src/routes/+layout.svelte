@@ -10,7 +10,7 @@
 </script>
 
 <Header />
-<main class="l:center:md {className}">
+<main class="{className}">
 	<slot />
 </main>
 
