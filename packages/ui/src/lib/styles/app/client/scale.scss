@@ -15,6 +15,18 @@ $base-size: 1rem;
 ///
 ///
 $size-scale: (
+	// --ratio: 1.5,
+	s-5: calc(var(--s-4) / var(--ratio)),
+	s-4: calc(var(--s-3) / var(--ratio)),
+	s-3: calc(var(--s-2) / var(--ratio)),
+	s-2: calc(var(--s-1) / var(--ratio)),
+	s-1: calc(var(--s0) / var(--ratio)),
+	s0: 1rem,
+	s1: calc(var(--s0) * var(--ratio)),
+	s2: calc(var(--s1) * var(--ratio)),
+	s3: calc(var(--s2) * var(--ratio)),
+	s4: calc(var(--s3) * var(--ratio)),
+	s5: calc(var(--s4) * var(--ratio)),
 	'100': $base-size * 0.6,
 	'200': $base-size * 0.7,
 	'300': $base-size * 0.8,
@@ -22,7 +34,7 @@ $size-scale: (
 	'500': $base-size * 1.25,
 	'600': $base-size * 1.6,
 	'700': $base-size * 2,
-	'900': $base-size * 3,
+	'900': $base-size * 3
 );
 
 //== FLUID SCALE
@@ -47,6 +59,8 @@ $modular-scale: (
 	fluid-screen: 100vw,
 );
 
+// See: https://piccalil.li/tutorial/improve-the-readability-of-the-content-on-your-website/
+
 //== TODO: fix // Spacing Scale N to N+1
 $scale-space: (
 	ratio: 1.5,
@@ -62,15 +76,15 @@ $scale-space: (
 //== TODO: fix // Spacing Scale N to N^X
 $scale-space-pairs: (
 	ratio: 1.5,
-	s-5: calc(var(--s-4) / var(--ratio)),
-	s-4: calc(var(--s-3) / var(--ratio)),
-	s-3: calc(var(--s-2) / var(--ratio)),
-	s-2: calc(var(--s-1) / var(--ratio)),
-	s-1: calc(var(--s0) / var(--ratio)),
-	s0: $base-size,
-	s1: calc(var(--s0) * var(--ratio)),
-	s2: calc(var(--s1) * var(--ratio)),
-	s3: calc(var(--s2) * var(--ratio)),
-	s4: calc(var(--s3) * var(--ratio)),
-	s5: calc(var(--s4) * var(--ratio)),
+	pair-s-5: calc(var(--s-4) / var(--ratio)),
+	pair-s-4: calc(var(--s-3) / var(--ratio)),
+	pair-s-3: calc(var(--s-2) / var(--ratio)),
+	pair-s-2: calc(var(--s-1) / var(--ratio)),
+	pair-s-1: calc(var(--s0) / var(--ratio)),
+	pair-s0: $base-size,
+	pair-s1: calc(var(--s0) * var(--ratio)),
+	pair-s2: calc(var(--s1) * var(--ratio)),
+	pair-s3: calc(var(--s2) * var(--ratio)),
+	pair-s4: calc(var(--s3) * var(--ratio)),
+	pair-s5: calc(var(--s4) * var(--ratio)),
 );
