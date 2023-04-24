@@ -6,3 +6,11 @@
 [class*='card:'] {
 	padding: var(--current-size);
 }
+
+a[class*='card'] {
+	text-decoration: none;
+}
+
+[class*='card:feature'] {
+	padding-block-start: var(--gap);
+}

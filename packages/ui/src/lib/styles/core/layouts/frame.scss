@@ -3,6 +3,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	max-width: 100%;
 }
 
 .l\:frame > img,
@@ -19,6 +20,20 @@
 
 .l\:frame\:video {
 	aspect-ratio: 16 / 9;
+}
+
+.l\:frame\:feature {
+	max-width: 100%;
+}
+
+.l\:frame\:feature > img,
+.l\:frame\:feature > video,
+.l\:frame\:feature > canvas {
+	max-height: calc(100vh - var(--header-height) - var(--gap));
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-block-end: var(--gap);
 }
 
 .l\:frame + * {
