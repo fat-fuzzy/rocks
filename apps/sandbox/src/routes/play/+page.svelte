@@ -8,9 +8,9 @@
 	const {Sketch, RevealNav} = blocks
 
 	let sketchId = '001'
-	let title
-	let emoji
-	let dimensions
+	let title = ''
+	let emoji = ''
+	let dimensions: string | undefined
 	let sketchData = sketches.find((a) => a.id === sketchId)
 	if (sketchData) {
 		title = sketchData.title
@@ -39,6 +39,6 @@
 	</div>
 	<div slot="main" class="l:stack">
 		🚧 WIP 🚧
-		<!-- <Sketch {sketch} {title} {dimensions} /> -->
+		<!-- <Sketch sketch={sketchId} {title} {dimensions} /> -->
 	</div>
 </Sidebar>

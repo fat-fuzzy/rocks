@@ -1,9 +1,9 @@
 {
-	"package": "@fat-fuzzy/client",
-	"name": "@fat-fuzzy/client",
+	"package": "@fat-fuzzy/sandbox",
+	"name": "@fat-fuzzy/sandbox",
 	"version": "0.0.1",
 	"private": true,
-	"description": "Fat Fuzzy Client (sandbox)",
+	"description": "Fat Fuzzy Sandbox",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
