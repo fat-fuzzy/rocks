@@ -66,10 +66,6 @@ importers:
         version: 4.3.1(sass@1.62.0)
 
   apps/sandbox:
-    dependencies:
-      '@fat-fuzzy/lib':
-        specifier: workspace:*
-        version: link:../../packages/lib
     devDependencies:
       '@fat-fuzzy/ui':
         specifier: workspace:*
