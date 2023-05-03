@@ -14,3 +14,8 @@ a[class*='card'] {
 [class*='card:feature'] {
 	padding-block-start: var(--gap);
 }
+
+.round {
+	padding: var(--current-size);
+	border-radius: 50%;
+}

@@ -10,6 +10,6 @@
 // Use Center class with a size to set a max-width with size-based padding
 [class^='l:center:'] {
 	max-width: calc(
-		100% - calc(2 * var(--current-size))
+		100% - calc(var(--s-1) * var(--current-size-plus))
 	); // TODO : generate (selector + style) by size
 }

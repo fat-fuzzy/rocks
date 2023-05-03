@@ -1,0 +1,116 @@
+@use '../config/mixins';
+
+details {
+	position: relative;
+}
+
+details.l\:stack:not([open]) {
+	block-size: unset;
+}
+
+details .end {
+	justify-self: flex-end;
+}
+// TODO: set [inline/block] size according to alignment
+
+@media screen and (min-width: 320px) {
+	details.bp\:xxs [class^='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+	details.bp\:xxs.l\:stack:only-child {
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+	}
+}
+
+@media screen and (min-width: 768px) {
+	details.bp\:xs [class^='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+	details.bp\:xs.l\:stack:only-child {
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+	}
+}
+
+@media screen and (min-width: 992px) {
+	details.bp\:sm [class^='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+	details.bp\:sm.l\:stack:only-child {
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+	}
+}
+
+@media screen and (min-width: 1240px) {
+	details.bp\:md [class^='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+	details.bp\:md.l\:stack:only-child {
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+	}
+}
+
+@media screen and (min-width: 1620px) {
+	details.bp\:lg [class^='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+	details.bp\:lg.l\:stack:only-child {
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+	}
+}
+
+@media screen and (min-width: 2048px) {
+	details.bp\:xl [class^='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: unset;
+		overflow: hidden;
+		padding: unset;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+	details.bp\:xl.l\:stack:only-child {
+		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+	}
+}

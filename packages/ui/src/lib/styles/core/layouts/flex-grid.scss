@@ -1,0 +1,98 @@
+.header {
+	grid-area: 'header';
+}
+.footer {
+	grid-area: 'footer';
+}
+.content {
+	grid-area: 'content';
+}
+.navs {
+	grid-area: 'navs';
+}
+.actions {
+	grid-area: 'actions';
+}
+
+[class^='l:flex:grid:'] {
+	display: grid;
+	grid-gap: var(--gap);
+}
+
+// Basic grid that will automatically create columns if space is available for given column dimensions: between var(--current-side-size) and 100% of available width
+@supports (width: min(var(--current-side-size), 100%)) {
+	[class^='l:flex:grid:'] {
+		grid-template-columns: repeat(auto-fit minmax(min(var(--current-side-size), 100%) 1fr));
+	}
+}
+
+[class^='l:flex:grid:areas:'] {
+	grid-template-areas:
+		'navs'
+		'header'
+		'actions'
+		'footer';
+}
+
+.l\:grid > * {
+	/* needed for the floated layout fallback */
+	margin-bottom: var(--gap);
+}
+
+@media screen and (min-width: 768px) {
+	.l\:flex\:grid\:areas\:base {
+		grid-template-areas:
+			'navs			.......	.......'
+			'.......	header	.......'
+			'.......	content	actions'
+			'.......	footer	.......';
+	}
+}
+
+@media screen and (min-width: 992px) {
+	/* no grid support? */
+	.sidebar {
+		float: left;
+		width: 19.1489%;
+	}
+
+	.content {
+		float: right;
+		width: 79.7872%;
+	}
+
+	.l\:grid {
+		margin: 0 auto;
+		grid-template-columns: 1fr 3fr;
+	}
+
+	.header,
+	.footer {
+		grid-column: 1 / -1;
+		/* needed for the floated layout fallback */
+		clear: both;
+	}
+
+	.l\:flex\:grid\:areas\:base {
+		grid-template-areas:
+			'navs	header	.......	actions'
+			'navs content	.......	actions'
+			'navs footer	.......	.......';
+	}
+}
+
+// TODO fix magic bp
+@media screen and (min-width: 935px) {
+	[class^='l:flex:grid'] .l\:side {
+		grid-area: 'navs';
+	}
+
+	[class^='l:flex:grid'] .l\:main {
+		grid-area: 'header';
+	}
+
+	[class^='l:flex:grid'] {
+		display: grid;
+		grid-template-areas: 'navs content';
+	}
+}
