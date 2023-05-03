@@ -14,7 +14,7 @@ function multiplyChars(characters) {
 		.fill(0)
 		.map((_, i) => {
 			return {
-				class: 'hidden',
+				class: 'hide:rm-block',
 				character: characters[i % characters.length],
 				x: Math.random() * 100,
 				y: -10 - Math.random() * 100,

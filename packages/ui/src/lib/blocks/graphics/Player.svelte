@@ -27,7 +27,7 @@
 	$: variant = $theme ? `accent` : `highlight`
 </script>
 
-<menu class="l:switcher bp:xs sm">
+<menu class="l:switcher bp:xxs sm">
 	<Button id="btn-play" {variant} onClick={play} {disabled}>▶︎ &nbsp;Play</Button>
 	<Button id="btn-pause" {variant} onClick={pause} {disabled}>⏸ &nbsp;Pause</Button>
 	<Button id="btn-stop" {variant} onClick={stop} {disabled}>◼ &nbsp;Stop</Button>

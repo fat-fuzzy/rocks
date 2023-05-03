@@ -1,6 +1,5 @@
 <script lang="ts">
 	import format from '../../utils/format'
-	import {clickOutside} from '../../utils/click-outside.js'
 	import LinkList from './LinkList.svelte'
 	import mocks from '../../data/mocks'
 
@@ -19,20 +18,15 @@
 
 	let expanded = true
 
-	function handleClickOutside(event) {
-		expanded = false
-	}
-
 	function toggleReveal(event) {
 		expanded = !expanded
 	}
 
-	$: show = expanded ? 'show right' : 'hide:viz-only'
-	$: setHeight = height ? ` h:${height}` : ''
+	$: show = expanded ? 'layer card:lg polar' : 'hide:viz-only'
 </script>
 
-<div class={`l:reveal ${setHeight}`} use:clickOutside on:clickOutside={handleClickOutside}>
-	<button
+<details aria-labelledby={id} class={`l:detail h:${height}`} open>
+	<summary
 		{id}
 		class={`card:${size} ${variant} bg:${color}`}
 		aria-expanded={expanded}
@@ -40,11 +34,8 @@
 		on:click={toggleReveal}
 	>
 		{format.formatLabel(title, icon)}
-	</button>
-	<nav
-		id={`nav-${id}`}
-		class={`l:${layout} bp:${breakpoint} layer card:lg polar ${size} ${show} ${setHeight}`}
-	>
+	</summary>
+	<nav id={`nav-${id}`} class={`l:${layout} bp:${breakpoint} ${size} ${show} h:${height}`}>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
-</div>
+</details>

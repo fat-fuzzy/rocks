@@ -11,6 +11,7 @@
 @use './layout.scss';
 @use './color.scss';
 @use '../../core/config/mixins'; // TODO: find a way to override in client
+
 @include mixins.theme-main(
 	layout.$breakpoints,
 	layout.$layout,

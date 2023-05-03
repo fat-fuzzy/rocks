@@ -16,5 +16,9 @@
 */
 [class^='l:switcher'] {
 	--gap: var(--current-size-plus);
-	--threshold: calc(var(--current-bp-size) * 1px); // adds px unit to unitless value
+	--threshold: var(--current-bp-size);
+}
+
+.l\:switcher\:shrink > * {
+	flex-grow: 0;
 }

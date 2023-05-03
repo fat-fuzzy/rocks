@@ -4,9 +4,12 @@
 @forward './sidebar'; // Use for sidebar layouts = layouts containing two children: "main" and "side"
 @forward './switcher'; // Use for items that switch between column and row layout when the container reaches a threshold width
 @forward './center'; // Use for main content centering (wide columns with max-width set using: percentage - margin (in em units))
+@forward './grid'; // Use for grid layouts
 @forward './align'; // Use for aligning items inside containers and setting widths
 @forward './burrito'; // Use for side content centering (narrow columns with max-width set using sidebar width variables (in ch units))
 @forward './frame'; // Use for displaying content with a given aspect ratio
 @forward './card'; // Use for displaying self-contained content items
 @forward './reveal'; // Use for displaying hidden content with a button action
-@forward './fixed'; // Use for composing layouts and targeting specific elements
+@forward './details'; // Use to style <details> and <summary> elements
+@forward './sticky'; // Use for composing layouts and targeting specific elements
+@forward './player'; // Use for a player page layout

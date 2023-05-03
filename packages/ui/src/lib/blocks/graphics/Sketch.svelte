@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {theme} from '../../stores/theme' // TODO: get theme from system
 	import {onMount, afterUpdate} from 'svelte'
-	import Button from '../buttons/Button.svelte'
 	import Geometry from '../graphics/Geometry.svelte'
 	import Player from './Player.svelte'
 
@@ -16,9 +15,9 @@
 	let geometry
 	let programInfo
 	// Canvas
-	let showDetails = true
 
 	$: variant = $theme === 1 ? 'outline accent' : 'outline highlight' // TODO:  fix this
+	$: showDetails = geometry !== undefined
 
 	function toggleDetails() {
 		showDetails = !showDetails
@@ -50,14 +49,12 @@
 		</div>
 		<Player {sketch} {canvas} />
 	</div>
-	<aside class="l:side:xxs">
+	<aside class={showDetails ? 'l:side:xxs' : 'hide:rm-node'}>
 		<details open>
-			<summary class="card:sm box" onClick={() => toggleDetails()}> Details </summary>
-			<div class={showDetails ? 'l:stack:md' : 'hidden:viz-only'}>
-				{#if geometry}
-					<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
-				{/if}
-			</div>
+			<summary class="card:sm box"> Details </summary>
+			{#if geometry}
+				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
+			{/if}
 		</details>
 	</aside>
 </article>

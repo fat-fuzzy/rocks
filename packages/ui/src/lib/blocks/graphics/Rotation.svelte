@@ -7,7 +7,8 @@
 	const dispatch = createEventDispatcher()
 
 	export let size = 'xxs'
-	const label = 'Rotation'
+	export let label = 'Angle'
+	const legend = 'Rotation'
 	export let angle = 0
 	export let max = 0
 
@@ -18,8 +19,8 @@
 	}
 </script>
 
-<Fieldset slug="rotation" legend={label} {size}>
+<Fieldset {legend} {size}>
 	<!--https://css-tricks.com/accessible-svgs/-->
 	<!-- <svg id="InteractiveSVG" role="group" /> -->
-	<InputRange bind:value={angle} label="angle" {max} on:input={update} layout="stack" {size} />
+	<InputRange bind:value={angle} {label} {max} on:input={update} layout="stack" {size} />
 </Fieldset>

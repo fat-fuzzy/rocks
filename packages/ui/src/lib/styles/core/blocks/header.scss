@@ -1,6 +1,5 @@
 header {
 	display: flex;
-	margin-block-end: var(--current-size);
 }
 
 .header-page {
@@ -8,12 +7,22 @@ header {
 	margin-block-end: unset;
 }
 
-.header-page + * {
-	margin-block-start: var(--current-size);
+.header-app > .l\:main {
+	min-inline-size: auto;
 }
 
-.header-app > .l\:main {
-	min-inline-size: 55%;
+.header-app > .l\:reveal > button {
+	margin: var(--current-size) var(--gap);
+	width: auto;
+}
+
+.header-app > .l\:reveal .show {
+	position: absolute;
+	top: var(--header-height);
+	z-index: var(--z-index-sticky);
+	width: 100vw;
+	height: 35vh;
+	overflow-y: auto;
 }
 
 .header-app > .l\:side {
@@ -23,4 +32,146 @@ header {
 	align-items: center;
 	padding-left: calc(var(--gap) / 2);
 	padding-right: calc(var(--gap) / 2);
+}
+
+//== Main navigation (in application Header)
+// - Change these styles to adapt to design
+
+.header-app > .l\:main > nav > ul {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	height: var(--header-height);
+	display: flex;
+	align-items: center;
+	list-style: none;
+	background-size: contain;
+	width: 100%;
+	gap: 0;
+	background-color: inherit;
+}
+
+.header-app > .l\:main > nav li {
+	position: relative;
+	min-width: 100%;
+	height: 100%;
+	padding-inline-end: unset; // override settings for ellipsis (search CSS comments for 'ellipsis' for reference)
+	overflow: initial; // override settings for ellipsis
+	background-color: inherit;
+}
+
+.header-app > .l\:main > nav li[aria-current='page'] a {
+	color: var(--current-primary);
+	text-decoration: none;
+}
+
+.header-app > .l\:main > nav li[aria-current='page']::before {
+	--size: 6px;
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: 0;
+	top: calc(50% - var(--size));
+	border: var(--size) solid transparent;
+	border-left: var(--size) solid var(--current-primary-light);
+}
+
+.header-app > .l\:main > nav a {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	padding: 0 1em;
+	color: inherit;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: color 0.2s linear;
+}
+
+.header-app ul li > a {
+	font-weight: var(--font-weight-400);
+}
+
+.header-app nav a:hover {
+	color: var(--current-primary-light);
+}
+
+//== Need to override global <a> hover styles in nav and header <a>
+.header-app a:hover {
+	background-color: initial;
+}
+
+// TODO fix magic breakpoint
+@media screen and (min-width: 620px) {
+	.header-app > .l\:main .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.header-app > .l\:reveal > button {
+		display: none;
+	}
+
+	.header-app > .l\:reveal .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.header-app > .l\:main .show,
+	.header-app > .l\:reveal [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.header-app > .l\:main > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.header-app > .l\:main > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.header-app > .l\:main > nav li[aria-current='page']::before {
+		--size: 6px;
+		content: '';
+		min-width: unset;
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: calc(50% - var(--size));
+		border: var(--size) solid transparent;
+		border-top: var(--size) solid var(--current-primary-light);
+	}
 }

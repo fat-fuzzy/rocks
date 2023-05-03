@@ -16,7 +16,7 @@
 	<meta name="description" content="Fat Fuzzy Rocks documentation home page" />
 </svelte:head>
 
-<div class="l:center col:center card:feature:xxl width:full polar">
+<div class="l:center col:center card:feature:xxl max:w:full polar">
 	<div class="l:frame:feature  l:text:xl">
 		<img src={pageImage.src} alt={pageImage.alt}  />
 	</div>

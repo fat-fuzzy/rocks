@@ -11,9 +11,9 @@
 		expanded = !expanded
 	}
 
-	$: show = expanded ? 'show' : 'hide:viz-only'
+	$: show = expanded ? 'show' : 'hide'
 
-	// TODO: CHANGE TO Button + Menu
+	// TODO: use detail + summary tags (?)
 </script>
 
 <details class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>

@@ -4,17 +4,31 @@
 	position: relative;
 }
 
-.l\:reveal .layer {
-	position: relative;
-	z-index: var(--z-index-reveal);
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
-	min-block-size: 100%;
+.l\:reveal > button {
+	width: 100%;
 }
 
-.l\:reveal.l\:stack:not([open]) {
-	block-size: unset;
+.l\:reveal .show {
+	position: relative;
+	top: calc(var(--gap) / 2);
+	z-index: var(--z-index-reveal);
+	width: 100%;
 }
+
+.l\:reveal [class^='hide:'] {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+// .l\:reveal.l\:stack:not([open]) {
+// 	block-size: unset;
+// }
 
 .l\:reveal .end {
 	justify-self: flex-end;
@@ -22,15 +36,16 @@
 // TODO: set [inline/block] size according to alignment
 
 @media screen and (min-width: 320px) {
-	.l\:reveal.bp\:xxs [class^='hidden:'] {
+	.l\:reveal.bp\:xxs [class^='hide:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
-		margin: unset;
+		margin: initial;
 		overflow: hidden;
-		padding: unset;
+		padding: var(--current-size);
 		position: unset;
-		width: auto;
+		top: 0;
+		width: 100%;
 		white-space: normal;
 	}
 	.l\:reveal.bp\:xxs.l\:stack:only-child {
@@ -39,32 +54,60 @@
 }
 
 @media screen and (min-width: 768px) {
-	.l\:reveal.bp\:xs [class^='hidden:'] {
+	.l\:reveal.bp\:xs [class^='hide:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
-		margin: unset;
+		margin: initial;
 		overflow: hidden;
-		padding: unset;
+		padding: var(--current-size);
 		position: unset;
-		width: auto;
+		top: 0;
+		width: 100%;
 		white-space: normal;
 	}
+
 	.l\:reveal.bp\:xs.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
-@media screen and (min-width: 992px) {
-	.l\:reveal.bp\:sm [class^='hidden:'] {
+// TODO fix magic bp
+@media screen and (min-width: 935px) {
+	.l\:reveal > button {
+		display: none;
+	}
+
+	.l\:reveal .show {
+		position: unset;
+		top: 0;
+	}
+
+	.l\:reveal [class*='hide:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
-		margin: unset;
+		margin: initial;
 		overflow: hidden;
-		padding: unset;
+		padding: var(--current-size);
 		position: unset;
-		width: auto;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.l\:reveal.bp\:sm [class^='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: var(--current-size);
+		position: unset;
+		top: 0;
+		width: 100%;
 		white-space: normal;
 	}
 	.l\:reveal.bp\:sm.l\:stack:only-child {
@@ -73,15 +116,16 @@
 }
 
 @media screen and (min-width: 1240px) {
-	.l\:reveal.bp\:md [class^='hidden:'] {
+	.l\:reveal.bp\:md [class^='hide:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
-		margin: unset;
+		margin: initial;
 		overflow: hidden;
-		padding: unset;
+		padding: var(--current-size);
 		position: unset;
-		width: auto;
+		top: 0;
+		width: 100%;
 		white-space: normal;
 	}
 	.l\:reveal.bp\:md.l\:stack:only-child {
@@ -90,15 +134,16 @@
 }
 
 @media screen and (min-width: 1620px) {
-	.l\:reveal.bp\:lg [class^='hidden:'] {
+	.l\:reveal.bp\:lg [class^='hide:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
-		margin: unset;
+		margin: initial;
 		overflow: hidden;
-		padding: unset;
+		padding: var(--current-size);
 		position: unset;
-		width: auto;
+		top: 0;
+		width: 100%;
 		white-space: normal;
 	}
 	.l\:reveal.bp\:lg.l\:stack:only-child {
@@ -107,15 +152,16 @@
 }
 
 @media screen and (min-width: 2048px) {
-	.l\:reveal.bp\:xl [class^='hidden:'] {
+	.l\:reveal.bp\:xl [class^='hide:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
-		margin: unset;
+		margin: initial;
 		overflow: hidden;
-		padding: unset;
+		padding: var(--current-size);
 		position: unset;
-		width: auto;
+		top: 0;
+		width: 100%;
 		white-space: normal;
 	}
 	.l\:reveal.bp\:xl.l\:stack:only-child {

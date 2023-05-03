@@ -43,6 +43,15 @@ main > [class^='l:sidebar'] {
 	flex-grow: 0;
 }
 
-[class^='l:side:'] > * {
-	min-block-size: 100%;
+[class^='l:side:'] nav {
+	height: auto;
+	max-height: 35vh;
+	overflow-y: auto;
+}
+
+@media screen and (min-width: 935px) {
+	[class^='l:side:'] nav {
+		height: auto;
+		max-height: unset;
+	}
 }

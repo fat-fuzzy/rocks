@@ -81,69 +81,7 @@ ul.depth-0 > li > a {
 	font-weight: var(--font-weight-semibold);
 }
 
-//== Main navigation (in application Header)
-// - Change these styles to adapt to design
-.header-app > nav > ul {
-	position: relative;
-	padding: 0;
-	margin: 0;
-	height: var(--header-height);
-	display: flex;
-	align-items: center;
-	list-style: none;
-	background-size: contain;
-	width: unset;
-}
-
-.header-app > nav {
-	padding: 0;
-}
-
-.header-app > nav li {
-	position: relative;
-	height: 100%;
-	padding-inline-end: unset; // override settings for ellipsis (search CSS comments for 'ellipsis' for reference)
-	overflow: initial; // override settings for ellipsis
-}
-
-.header-app > nav li[aria-current='page'] a {
-	color: var(--current-primary);
-	text-decoration: none;
-}
-
-.header-app > nav li[aria-current='page']::before {
-	--size: 6px;
-	content: '';
-	width: 0;
-	height: 0;
-	position: absolute;
-	top: 0;
-	left: calc(50% - var(--size));
-	border: var(--size) solid transparent;
-	border-top: var(--size) solid var(--current-primary-light);
-}
-
-.header-app > nav a {
-	display: flex;
-	height: 100%;
-	align-items: center;
-	padding: 0 1em;
-	color: inherit;
-	text-transform: uppercase;
-	text-decoration: none;
-	transition: color 0.2s linear;
-}
-
-.header-app ul li > a {
-	font-weight: var(--font-weight-400);
-}
-
-.header-app nav a:hover {
-	color: var(--current-primary-light);
-}
-
 //== Need to override global <a> hover styles in nav and header <a>
-nav a:hover,
-.header-app a:hover {
+nav a:hover {
 	background-color: initial;
 }

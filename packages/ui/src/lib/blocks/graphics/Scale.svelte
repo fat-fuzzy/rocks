@@ -11,9 +11,10 @@
 	export let maxX = 0
 	export let minY = 0
 	export let maxY = 0
+	export let label = ''
 
 	const dispatch = createEventDispatcher()
-	const label = 'Scale'
+	const legend = 'Scale'
 
 	function updateX() {
 		dispatch('input', {
@@ -28,7 +29,7 @@
 	}
 </script>
 
-<Fieldset slug="scale" legend={label} {size}>
+<Fieldset {legend} {size}>
 	<InputRange
 		bind:value={scaleX}
 		label="{label} x"

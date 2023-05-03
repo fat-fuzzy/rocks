@@ -4,6 +4,7 @@
 	import {page} from '$app/stores'
 	import {themes} from '$lib/types/constants'
 	import {theme} from '$lib/stores/theme'
+	import {links} from '$lib/data/nav'
 	import Header from '$blocks/global/Header.svelte'
 
 	let app: Element | null
@@ -36,7 +37,7 @@
 	})
 </script>
 
-<Header className="header-app" />
+<Header className="header-app" {links} />
 
 <main class={`l:center:md ${className}`}>
 	<slot />
