@@ -25,5 +25,5 @@
 	{#each sketches as sketch}
 		<pre>{sketch.title}</pre>
 	{/each}
-	<Feedback {feedback} show={showFeedback} />
+	<!-- <Feedback {feedback} show={showFeedback} /> -->
 </div>
