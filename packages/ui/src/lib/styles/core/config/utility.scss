@@ -2,7 +2,7 @@
 
 // Remove DOM node from document
 // - DOM node becomes inaccessible to everyone
-.hidden\:rm-node {
+.hide\:rm-node {
 	display: none;
 }
 
@@ -10,7 +10,7 @@
 // - DOM node becomes inaccessible to assistive tech
 // - layout remains unchanged (w/ exceptions: see tables)
 // - node is not removed from document
-.hidden\:sr-never {
+.hide\:sr-never {
 	visibility: hidden;
 }
 
@@ -18,8 +18,8 @@
 // - DOM node remains accessible to assistive tech
 // - style element to free the space taken up by its box in the document layout
 // - node is not removed from document
-.hidden\:sr-always,
-.hidden\:viz-only {
+.hide\:sr-always,
+.hide\:viz-only {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: auto;
@@ -29,6 +29,7 @@
 	position: absolute;
 	width: 1px;
 	white-space: nowrap;
+	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); // TODO : use Svelte animations
 }
 
 // == DOM content selection control

@@ -1,5 +1,4 @@
 @use 'sass:map';
-
 //== CSS VARS
 
 /**
@@ -85,7 +84,7 @@ $current_cssvars: ();
 		}
 	}
 
-	@media screen and (min-width: '#{$breakpoint}px') {
+	@media screen and (min-width: #{$breakpoint}) {
 		:root {
 			--fluid-screen: calc(var(--fluid-max-width) * 1px); // adds px unit to unitless value
 		}
@@ -195,4 +194,17 @@ $current_cssvars: ();
 	@include generateCssVars($layout);
 	@include generateCssVars($typography);
 	@include generateCssVars($colors);
+}
+
+//== MEDIA QUERIES
+@mixin min-width($breakpoint) {
+	@media screen and (min-width: #{$breakpoint}) {
+		@content;
+	}
+}
+
+@mixin max-width($breakpoint) {
+	@media screen and (max-width: #{$breakpoint}) {
+		@content;
+	}
 }
