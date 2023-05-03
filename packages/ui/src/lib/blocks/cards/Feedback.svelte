@@ -3,7 +3,7 @@
 	export let feedback = ''
 	export let show = false
 
-	$: feedbackClass = show ? 'feedback' : 'hidden'
+	$: feedbackClass = show ? 'feedback' : 'hide:rm-block'
 </script>
 
 <div class={feedbackClass} data-state="" data-test="feedback">
