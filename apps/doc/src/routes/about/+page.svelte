@@ -3,7 +3,7 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<header class="l:center col:center card:xxl width:full polar">
+<header class="l:center col:center card:xxl max:w:full polar">
 	<h1>About Fat Fuzzy</h1>
 </header>
 
