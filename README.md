@@ -21,16 +21,25 @@ This repository contains several packages, which can be used together or indepen
 
 🚧 WIP: doc/usage
 
-## Monorepo overview
+## Overview
 
-This repository is organized into two package types following [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces)
+This repository is organized into three workspaces:
+
+- **apps** for client facing code, organized by project
+- **packages** for backend logic, UI and web graphics libraries, as well as common config
+- **infra** for infrastructure code
+  - WIP
+
+The initial motivation for this setup was usage of [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces). It will evolve when necessary.
+
+### Apps
+
+- **doc** This app is a website that uses the **ui** library package and that documents this project.
+- **sandbox** A frontend application example that uses the **ui** library package
 
 ### Packages
 
-- **api** API code
-  - WIP
-- **ui** A frontend component library
-  - A reliable UI library that can be used as a common source of truth for web projects
+- **api** API packages
 - **design** A place to make design experiments and decisions
   - use this package to isolate design work from the UI library
   - test designs here: if the pattern can be re-used, _then_ consider migrating it as a component in the UI library
@@ -42,23 +51,12 @@ This repository is organized into two package types following [Turborepo's works
     These libraries are generally always WIP unless specifically stated
 - **resources** Backend resources (database, auth, storage, etc)
   - WIP
-
-### Apps
-
-- **doc** A place for doc-worthy information such as:
-
-  - User doc
-  - **ui** library doc
-  - new ideas and foundational decisions (architecture, tech, etc)
-  - setup capabilities (back, front, design, etc)
-
-  This app is a website that uses and documents the **ui** library package
-
-- **client** A frontend application example that uses the **ui** library package
-  - WIP
+- **ui** A frontend component library
+  - A UI library that can be used as a common source of truth for web projects
 
 ## 🚧 WIP - Testing
 
+- [Vitest](https://vitest.dev/)
 - [Testing library](https://github.com/testing-library)
 - [Playwright](https://playwright.dev/)
 
