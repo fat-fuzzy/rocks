@@ -12,6 +12,7 @@
 
 .inset {
 	box-shadow: var(--shadow-inset);
+	z-index: var(--z-index-inset);
 	// padding: var(--padding-inset);
 }
 
