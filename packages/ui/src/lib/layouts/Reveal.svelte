@@ -1,31 +1,46 @@
 <script lang="ts">
+	import format from '../utils/format'
+	import {clickOutside} from '../utils/click-outside.js'
+
 	export let layout = ''
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
 	export let align = 'start'
-	export let id = 'reveal'
-	let expanded = false
+	export let id = 'ui'
+	export let height = ''
+	export let title = 'Reveal'
+	export let icon = '🐣'
+
+	let expanded = true
+
+	function handleClickOutside(event) {
+		expanded = false
+	}
 
 	function toggleReveal(event) {
 		expanded = !expanded
 	}
 
 	$: show = expanded ? 'show' : 'hide:viz-only'
-
-	// TODO: CHANGE TO Button + Menu
+	$: setHeight = height ? ` h:${height}` : ''
 </script>
 
-<details class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>
-	<summary
-		class={`${variant}`}
+<div
+	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size}`}
+	use:clickOutside
+	on:clickOutside={handleClickOutside}
+>
+	<button
+		id={`${id}-reveal-button`}
+		class={`card:${size} ${variant}`}
 		aria-expanded={expanded}
-		aria-controls={`${id}-menu-list`}
+		aria-controls={`${id}-reveal`}
 		on:click={toggleReveal}
 	>
-		<slot name="summary">Click to Reveal</slot>
-	</summary>
-	<div class={`${align} ${show}`}>
+		{format.formatLabel(title, icon)}
+	</button>
+	<div id={`${id}-reveal`} class={`${align} ${show}`}>
 		<slot name="content">
 			<div class="card layer l:${layout} bp:${breakpoint} ${size}">
 				<h3>Revealed Content</h3>
@@ -33,4 +48,4 @@
 			</div>
 		</slot>
 	</div>
-</details>
+</div>

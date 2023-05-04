@@ -11,20 +11,6 @@ header {
 	min-inline-size: auto;
 }
 
-.header-app > .l\:reveal > button {
-	margin: var(--current-size) var(--gap);
-	width: auto;
-}
-
-.header-app > .l\:reveal .show {
-	position: absolute;
-	top: var(--header-height);
-	z-index: var(--z-index-sticky);
-	width: 100vw;
-	height: 35vh;
-	overflow-y: auto;
-}
-
 .header-app > .l\:side {
 	position: relative;
 	display: flex;
@@ -34,10 +20,24 @@ header {
 	padding-right: calc(var(--gap) / 2);
 }
 
+.l\:reveal\:nav > button {
+	margin: var(--current-size) var(--gap);
+	width: auto;
+}
+
+.l\:reveal\:nav .show {
+	position: absolute;
+	top: var(--header-height);
+	z-index: var(--z-index-sticky);
+	width: 100%;
+	height: 35vh;
+	overflow-y: auto;
+}
+
 //== Main navigation (in application Header)
 // - Change these styles to adapt to design
 
-.header-app > .l\:main > nav > ul {
+.l\:reveal\:nav > nav > ul {
 	position: relative;
 	padding: 0;
 	margin: 0;
@@ -51,7 +51,7 @@ header {
 	background-color: inherit;
 }
 
-.header-app > .l\:main > nav li {
+.l\:reveal\:nav > nav li {
 	position: relative;
 	min-width: 100%;
 	height: 100%;
@@ -103,16 +103,16 @@ header {
 
 // TODO fix magic breakpoint
 @media screen and (min-width: 620px) {
-	.header-app > .l\:main .show {
+	.l\:reveal\:nav .show {
 		position: initial;
 		min-inline-size: unset;
 	}
 
-	.header-app > .l\:reveal > button {
+	.l\:reveal\:nav > button {
 		display: none;
 	}
 
-	.header-app > .l\:reveal .show {
+	.l\:reveal\:nav .show {
 		top: 0;
 		width: auto;
 		max-height: unset;
@@ -120,8 +120,8 @@ header {
 		box-shadow: none;
 	}
 
-	.header-app > .l\:main .show,
-	.header-app > .l\:reveal [class*='hide:'] {
+	.l\:reveal\:nav .show,
+	.l\:reveal\:nav [class*='hide:'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -134,7 +134,7 @@ header {
 		white-space: normal;
 	}
 
-	.header-app > .l\:main > nav > ul {
+	.l\:reveal\:nav > nav > ul {
 		position: relative;
 		padding: 0;
 		margin: 0;
@@ -148,7 +148,7 @@ header {
 		gap: var(--gap);
 	}
 
-	.header-app > .l\:main > nav li {
+	.l\:reveal\:nav > nav li {
 		position: relative;
 		padding: 0;
 		margin: 0;

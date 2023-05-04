@@ -11,7 +11,7 @@
 
 	export let className = 'header-app'
 	export let breakpoint = 'md'
-	export let id = 'main-nav'
+	export let id = 'ui'
 	export let height = ''
 	export let links = [{slug: 'about', title: 'About'}]
 
@@ -30,7 +30,7 @@
 		actionsExpanded = !actionsExpanded
 	}
 
-	function toggleReveal(event) {
+	function toggleNav(event) {
 		navExpanded = !navExpanded
 	}
 
@@ -55,22 +55,22 @@
 
 <header class={headerClass}>
 	<div
-		class={`l:main l:reveal ${setHeight}`}
+		class={`l:main l:reveal:nav ${setHeight}`}
 		use:clickOutside
 		on:clickOutside={handleClickOutsideMainNav}
 	>
 		<button
-			{id}
+			id={`${id}-primary-nav-button`}
 			class={`font:sm`}
 			aria-expanded={navExpanded}
-			aria-controls={`nav-${id}`}
-			on:click={toggleReveal}
+			aria-controls={`${id}-primary-nav`}
+			on:click={toggleNav}
 		>
 			🐣 Menu
 		</button>
 
-		<nav id="primary-navigation" class={show}>
-			<ul class="l:switcher bp:xxs" id={`nav-${id}`}>
+		<nav id={`${id}-primary-nav`} class={show}>
+			<ul class="l:switcher bp:xxs">
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>
 				</li>

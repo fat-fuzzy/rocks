@@ -12,8 +12,6 @@
 	}
 
 	$: show = expanded ? 'show' : 'hide'
-
-	// TODO: use detail + summary tags (?)
 </script>
 
 <details class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>
