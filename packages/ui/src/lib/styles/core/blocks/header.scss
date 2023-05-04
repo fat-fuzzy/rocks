@@ -162,7 +162,7 @@ header {
 		gap: var(--gap);
 	}
 
-	.l\:reveal\:nav > nav li[aria-current='page']::before {
+	.header-app > .l\:main > nav li[aria-current='page']::before {
 		--size: 6px;
 		content: '';
 		min-width: unset;
