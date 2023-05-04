@@ -11,7 +11,7 @@
 	export let height = ''
 	export let color = ''
 	export let path = ''
-	export let id = 'reveal-nav'
+	export let id = 'ui'
 	export let title = 'RevealNav'
 	export let icon = ''
 	export let align = 'start'
@@ -20,7 +20,8 @@
 	let expanded = true
 
 	function handleClickOutside(event) {
-		expanded = false
+		// expanded = false
+		// TODO : fix this
 	}
 
 	function toggleReveal(event) {
@@ -33,16 +34,16 @@
 
 <div class={`l:reveal ${setHeight}`} use:clickOutside on:clickOutside={handleClickOutside}>
 	<button
-		{id}
+		id={`${id}-reveal-nav-button`}
 		class={`card:${size} ${variant} bg:${color}`}
 		aria-expanded={expanded}
-		aria-controls={`nav-${id}`}
+		aria-controls={`${id}-reveal-nav`}
 		on:click={toggleReveal}
 	>
 		{format.formatLabel(title, icon)}
 	</button>
 	<nav
-		id={`nav-${id}`}
+		id={`${id}-reveal-nav`}
 		class={`l:${layout} bp:${breakpoint} layer card:lg polar ${size} ${show} ${setHeight}`}
 	>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
