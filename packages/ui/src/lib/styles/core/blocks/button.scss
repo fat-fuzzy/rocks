@@ -11,15 +11,14 @@ button {
 	padding: var(--current-size) var(--current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 	border-radius: var(--radius-base);
 	color: var(--current-color);
-	border: var(--border-width) solid var(--current-gray);
+	border: var(--border-width) solid hsl(var(--color-shadow-light));
 	background-color: var(--current-polar);
 }
-
 button:hover {
 	cursor: pointer;
 	color: var(--current-color);
 	background-color: inherit;
-	box-shadow: var(--shadow);
+	box-shadow: var(--current-shadow);
 }
 button:active {
 	border: var(--border-width) solid var(--current-gray);
@@ -162,7 +161,7 @@ button.bare:hover {
 //== Toggle  default
 
 [aria-pressed='false']:hover {
-	box-shadow: var(--shadow);
+	box-shadow: var(--current-shadow);
 }
 [aria-pressed='true'] {
 	color: var(--current-color);

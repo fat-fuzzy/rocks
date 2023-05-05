@@ -6,8 +6,13 @@
 	import {emojis, themes} from '$types/constants.js'
 
 	// TODO: make svg css themeable / fix dark theme
-	import githubDay from '$lib/images/night/icon-github.svg'
-	import github from '$lib/images/day/icon-github.svg'
+	import githubDay from '$lib/images/day/icon-github.svg'
+	import githubNight from '$lib/images/night/icon-github.svg'
+	// TODO: make svg css themeable / fix dark theme
+	const githubIcons = {
+		day: githubDay,
+		night: githubNight,
+	}
 
 	export let className = 'header-app'
 	export let breakpoint = 'md'
@@ -49,6 +54,7 @@
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang
 	$: themeIcon = emojis[currentTheme]
+	$: github = githubIcons[currentTheme]
 	$: langIcon = emojis[currentLang]
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
@@ -91,14 +97,12 @@
 			use:clickOutside
 			on:clickOutside={handleClickOutsideActionsMenu}
 		>
-			<button on:click={toggleTheme} class="polar font:sm round">
+			<button on:click={toggleTheme} class="icon round">
 				{themeIcon}
 			</button>
-			<div class="corner font:sm">
-				<a href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
-					<img src={github} alt="GitHub" />
-				</a>
-			</div>
+			<a class="round" href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
+				<img src={github} alt="GitHub icon" class="icon" />
+			</a>
 			<!--button
 				type="button"
 				class="md toggle collapse primary"

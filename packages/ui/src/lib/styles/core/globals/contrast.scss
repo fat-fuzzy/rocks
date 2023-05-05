@@ -1,0 +1,33 @@
+// Contrast
+
+.polar {
+	background-color: var(--current-polar);
+}
+
+// Due to how the current night color scheme is setup I need this to override dar polar for now
+// TODO: figure out a better way to handle inverted colors
+.night .polar {
+	background-color: var(--current-contrast);
+}
+
+.day {
+	// TODO: Fix contrast combination
+	&.contrast {
+		background-color: var(--current-bg-contrast);
+	}
+
+	&.blend {
+		background-color: var(--current-bg-color);
+	}
+}
+
+.night {
+	// TODO: Fix contrast combination
+	&.contrast {
+		background-color: var(--current-bg-color);
+	}
+
+	&.blend {
+		background-color: var(--current-bg-contrast);
+	}
+}

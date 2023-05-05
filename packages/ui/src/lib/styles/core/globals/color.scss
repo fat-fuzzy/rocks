@@ -3,6 +3,7 @@ body {
 	--current-size-plus: var(--s1);
 	--current-size-side: var(--sidebar-width-sm);
 	--current-primary: var(--color-gray-5);
+	--current-shadow: var(--shadow);
 }
 
 .day {
@@ -24,7 +25,7 @@ body {
 	--current-highlight-light: var(--color-highlight-light); // TODO: Fix
 	--current-highlight-lighter: var(--color-highlight-lighter); // TODO: Fix
 	--current-danger: var(--color-danger);
-	--current-shadow: var(--color-shadow);
+	--current-shadow: var(--shadow);
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
@@ -47,7 +48,7 @@ body {
 	--current-highlight-light: var(--color-highlight-light); // TODO: Fix
 	--current-highlight-lighter: var(--color-highlight-lighter); // TODO: Fix
 	--current-danger: var(--color-danger-light);
-	--current-shadow: var(--color-shadow-light);
+	--current-shadow: var(--shadow-light);
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
@@ -103,10 +104,6 @@ body {
 }
 
 //== Layers & Media
-
-.layer {
-	box-shadow: var(--current-shadow);
-}
 
 .l\:frame {
 	background-color: var(--color-white);
