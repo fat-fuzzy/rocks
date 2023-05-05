@@ -27,5 +27,5 @@
 }
 
 .round.icon {
-	padding: calc(var(--current-size) * 2);
+	padding: var(--size-md); // TODO: do this in a scalable way
 }
