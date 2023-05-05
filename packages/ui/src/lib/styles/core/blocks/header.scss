@@ -36,10 +36,11 @@ header {
 
 //== Main navigation (in application Header)
 // - Change these styles to adapt to design
+// TODO: clean header styles
 
 .l\:reveal\:nav > nav > ul {
 	position: relative;
-	padding: 0;
+	padding: var(--current-size) 0;
 	margin: 0;
 	height: var(--header-height);
 	display: flex;
@@ -47,7 +48,7 @@ header {
 	list-style: none;
 	background-size: contain;
 	width: 100%;
-	gap: 0;
+	gap: var(--current-size);
 	background-color: inherit;
 }
 

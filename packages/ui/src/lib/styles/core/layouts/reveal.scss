@@ -1,16 +1,14 @@
 @use '../config/mixins';
 
-.l\:reveal {
-	position: relative;
-}
-
 .l\:reveal > button {
+	position: relative;
+	z-index: var(--z-index-layer);
 	width: 100%;
 }
 
 .l\:reveal .show {
 	position: relative;
-	top: calc(var(--gap) / 2);
+	top: 0;
 	z-index: var(--z-index-reveal);
 	width: 100%;
 }
