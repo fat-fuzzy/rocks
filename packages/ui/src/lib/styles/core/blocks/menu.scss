@@ -1,16 +1,15 @@
 menu {
 	display: flex;
-	justify-content: stretch;
+	align-items: center;
 	padding: 0;
-	border-radius: var(--radius-base);
 	list-style: none;
-}
-
-menu > li > * {
-	width: 100%;
 }
 
 .menu > p {
 	font-size: var(--font-size-small);
 	font-weight: var(--font-weight-ui);
+}
+
+menu > li > * {
+	width: 100%;
 }

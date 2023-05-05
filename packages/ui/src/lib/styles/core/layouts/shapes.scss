@@ -1,15 +1,15 @@
 .round,
 .square {
-	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	aspect-ratio: 1;
-	margin: calc(var(--gap) / 2);
+	margin-inline: calc(var(--gap) / 2);
 }
 
 .round,
 .round > * {
+	line-height: 1;
 	border-radius: 50%;
 }
 
@@ -21,11 +21,11 @@
 
 .round .icon,
 .square .icon {
-	width: 2.35rem;
-	height: auto;
+	height: var(--header-icon-height);
+	width: auto;
 	object-fit: contain;
 }
 
 .round.icon {
-	padding: var(--size-md); // TODO: do this in a scalable way
+	height: var(--header-icon-height);
 }
