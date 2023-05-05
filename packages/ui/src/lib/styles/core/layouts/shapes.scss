@@ -5,7 +5,7 @@
 	align-items: center;
 	justify-content: center;
 	aspect-ratio: 1;
-	margin-inline: calc(var(--gap) / 2);
+	margin: calc(var(--gap) / 2);
 }
 
 .round,
@@ -24,4 +24,8 @@
 	width: 2.35rem;
 	height: auto;
 	object-fit: contain;
+}
+
+.round.icon {
+	padding: calc(var(--current-size) * 2);
 }
