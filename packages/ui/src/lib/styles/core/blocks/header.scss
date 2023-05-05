@@ -106,6 +106,7 @@ header {
 .header-app {
 	container: header-nav / inline-size;
 }
+
 // TODO fix magic breakpoint // testing
 @container header-nav (min-width: 620px) {
 	.l\:reveal\:nav .show {
