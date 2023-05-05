@@ -29,10 +29,6 @@
 		height: 100%;
 	}
 
-	[class*='play'] article [class^='l:side'] summary {
-		margin-inline-end: var(--gap);
-	}
-
 	[class*='play'] article [class^='l:side'] details > [class^='l:stack'] {
 		height: calc(100% - var(--header-height));
 		overflow: auto;
