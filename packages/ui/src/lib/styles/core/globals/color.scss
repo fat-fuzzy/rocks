@@ -205,11 +205,13 @@ a:hover {
 //== Header, Navs, Menus
 
 .night .header-app {
-	color: var(--color-light);
+	--current-color: var(--color-light);
+	color: var(--current-color);
 	background-color: var(--current-gray);
 }
 .day .header-app {
-	color: var(--current-primary);
+	--current-color: var(--current-primary);
+	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
 
@@ -217,41 +219,55 @@ menu {
 	background-color: inherit;
 }
 
+// TODO: test using rule below to remove redundant css:
+// [class^='bg:'] { color: var(--current-color); }
+
 .bg\:primary {
-	color: var(--color-light);
+	--current-color: var(--color-light);
+	color: var(--current-color);
 	background-color: var(--current-primary);
 }
+
 .bg\:primary\:light {
-	color: var(--color-dark);
+	--current-color: var(--color-dark);
+	color: var(--current-color);
 	background-color: var(--current-primary-light);
 }
+
 .bg\:primary\:lighter {
-	color: var(--color-dark);
+	--current-color: var(--color-dark);
+	color: var(--current-color);
 	background-color: var(--current-primary-lighter);
 }
 
 .bg\:accent {
+	--current-color: var(--color-light);
 	color: var(--color-light);
 	background-color: var(--current-accent);
 }
 .bg\:accent\:light {
+	--current-color: var(--color-dark);
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 }
 .bg\:accent\:lighter {
+	--current-color: var(--color-dark);
 	color: var(--color-dark);
 	background-color: var(--current-accent-lighter);
 }
 
 .bg\:highlight {
-	color: var(--color-dark);
+	--current-color: var(--color-dark);
+	color: var(--current-color);
 	background-color: var(--current-highlight);
 }
 .bg\:highlight\:light {
-	color: var(--color-dark);
+	--current-color: var(--color-dark);
+	color: var(--current-color);
 	background-color: var(--current-highlight-light);
 }
 .bg\:highlight\:lighter {
-	color: var(--color-dark);
+	--current-color: var(--color-dark);
+	color: var(--current-color);
 	background-color: var(--current-highlight-lighter);
 }

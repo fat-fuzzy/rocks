@@ -57,3 +57,14 @@ article,
 .l\:text {
 	background-color: inherit;
 }
+
+.day {
+	h1 {
+		color: var(--current-primary);
+	}
+}
+.night {
+	h1 {
+		color: var(--current-primary-light);
+	}
+}
