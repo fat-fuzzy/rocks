@@ -33,6 +33,9 @@ $layout: (
 	sidebar-width-lg: $base-sidebar-size * 1.25,
 	sidebar-width-xl: $base-sidebar-size * 1.6,
 	sidebar-width-xxl: $base-sidebar-size * 2,
+	//
+	// Header button icon height
+	header-icon-height: 2.25rem,
 	header-height: var(--s3),
 	header-margin: calc(var(--gap) / 2),
 	// footer height = font-size * line-height + 2 * padding
