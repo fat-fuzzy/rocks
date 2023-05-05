@@ -302,7 +302,7 @@ const app: AppStyles = {
 				id: 'app.settings.brightness',
 				value: 'day',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				items: [
 					{id: 'app.settings.brightness.day', text: 'day', asset: '☀️', value: 'day'},
 					{id: 'app.settings.brightness.night', text: 'night', asset: '🌙', value: 'night'},
@@ -313,7 +313,7 @@ const app: AppStyles = {
 				id: 'app.settings.contrast',
 				value: 'blend',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				items: [
 					{id: 'app.settings.contrast.contrast', text: 'contrast', asset: '🌗', value: 'contrast'}, // TODO : fix color vars & classes
 					{id: 'app.settings.contrast.blend', text: 'blend', asset: '🌑', value: 'blend'}, // TODO: night / day asset option
@@ -352,7 +352,7 @@ const shared: SharedStyles = {
 				id: 'shared.context.size',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				exclude: [/* 'layouts', */ 'Switcher'],
 				items: [
 					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
@@ -367,7 +367,7 @@ const shared: SharedStyles = {
 				id: 'shared.context.container',
 				value: '',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				items: [
 					{id: 'shared.context.container.center', text: 'center', asset: '', value: 'center'},
 					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
@@ -378,7 +378,7 @@ const shared: SharedStyles = {
 				id: 'shared.context.layout',
 				value: 'switcher',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				exclude: [/* 'layouts', */ 'Switcher'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
@@ -392,7 +392,8 @@ const shared: SharedStyles = {
 						// 	{
 						// 		name: 'Breakpoint',
 						// 		input: 'toggle',
-						// 		layout: 'stack',
+						//
+						// layout: 'stack:full',
 						// 		exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 						// 		items: [
 						// 			{id: 'xs', text: 'xs', asset: '', value: ''},
@@ -411,7 +412,7 @@ const shared: SharedStyles = {
 				id: 'shared.context.breakpoint',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
@@ -435,7 +436,7 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.color',
 				value: '',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				items: [
 					{
 						id: 'blocks.element.color.primary',
@@ -465,7 +466,7 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.variant',
 				value: 'default',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
 					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
@@ -478,7 +479,7 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.size',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				items: [
 					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -492,7 +493,7 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.emoji',
 				value: '',
 				input: 'datalist',
-				layout: 'stack',
+				layout: 'stack:full',
 				exclude: [
 					'ButtonMenu',
 					'ToggleMenu',
@@ -522,7 +523,7 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.size',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				items: [
 					{id: 'layouts.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'layouts.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -536,7 +537,7 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.content',
 				value: 'card',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				exclude: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.content.card', text: 'card', asset: '', value: 'card'},
@@ -549,7 +550,7 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.side',
 				value: 'card',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.side.card', text: 'card', asset: '', value: 'card'},
@@ -562,7 +563,7 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.main',
 				value: 'text',
 				input: 'toggle',
-				layout: 'stack',
+				layout: 'stack:full',
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.main.card', text: 'card', asset: '', value: 'card'},
