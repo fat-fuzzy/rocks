@@ -16,49 +16,10 @@
 	// padding: var(--padding-inset);
 }
 
+.box {
+	border: var(--border-width) solid var(--current-gray);
+}
+
 .dotted {
 	border: var(--border-width-lg) dotted var(--current-primary);
-}
-
-// Contrast
-
-.day {
-	// TODO: Fix contrast combination
-	&.contrast {
-		background-color: var(--current-bg-contrast);
-	}
-
-	&.blend {
-		background-color: var(--current-bg-color);
-	}
-}
-
-.night {
-	// TODO: Fix contrast combination
-	&.contrast {
-		background-color: var(--current-bg-color);
-	}
-
-	&.blend {
-		background-color: var(--current-bg-contrast);
-	}
-}
-
-/* TODO: cleanup this css (sveltekit app styles) */
-.corner {
-	margin-inline: calc(var(--gap) / 2);
-}
-
-.corner a {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: var(--radius-base);
-}
-
-.corner img {
-	width: 2em;
-	height: 2em;
-	width: auto;
-	object-fit: contain;
 }
