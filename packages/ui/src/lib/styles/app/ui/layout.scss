@@ -19,6 +19,14 @@ $layout: (
 	size-lg: var(--s-1),
 	size-xl: var(--s0),
 	size-xxl: var(--s1),
+	// Inverse sizes: use when size must be inversely proportional to class name
+	size-inverse-xxs: var(--size-xxl),
+	size-inverse-xs: var(--size-xl),
+	size-inverse-sm: var(--size-lg),
+	size-inverse-md: var(--size-md),
+	size-inverse-lg: var(--size-sm),
+	size-inverse-xl: var(--size-xs),
+	size-inverse-xxl: var(--size-xxs),
 	/// Test SIZE SCALE for sidebar width
 	/// This is a Major Third scale that powers all the utilities that
 	/// it is relevant for (font-size, margin, padding). All items are
