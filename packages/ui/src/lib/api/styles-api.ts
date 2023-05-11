@@ -115,6 +115,8 @@ interface StyleFamilyOptions {
 	name: string
 	items: StyleInput[]
 	layout?: string
+	container?: string
+	size?: string
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components only
 }
@@ -128,10 +130,12 @@ class StyleFamily {
 	items: StyleInput[]
 	itemsMap: Map<string, StyleInput>
 	layout?: string
+	container?: string
+	size?: string
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components only
 
-	constructor({id, name, items, layout, exclude, include}: StyleFamilyOptions) {
+	constructor({id, name, items, layout, container, size, exclude, include}: StyleFamilyOptions) {
 		this.id = id
 		this.name = name
 		this.items = items
@@ -144,6 +148,12 @@ class StyleFamily {
 
 		if (layout) {
 			this.layout = layout
+		}
+		if (container) {
+			this.container = container
+		}
+		if (size) {
+			this.size = size
 		}
 		if (exclude) {
 			this.exclude = exclude
@@ -296,13 +306,15 @@ const app: AppStyles = {
 		name: 'Settings',
 		id: 'app.settings',
 		layout: 'switcher',
+		container: 'burrito',
+		size: 'sm',
 		items: [
 			new StyleInput({
 				name: 'Brightness',
 				id: 'app.settings.brightness',
 				value: 'day',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				items: [
 					{id: 'app.settings.brightness.day', text: 'day', asset: '☀️', value: 'day'},
 					{id: 'app.settings.brightness.night', text: 'night', asset: '🌙', value: 'night'},
@@ -313,7 +325,7 @@ const app: AppStyles = {
 				id: 'app.settings.contrast',
 				value: 'blend',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				items: [
 					{id: 'app.settings.contrast.contrast', text: 'contrast', asset: '🌗', value: 'contrast'}, // TODO : fix color vars & classes
 					{id: 'app.settings.contrast.blend', text: 'blend', asset: '🌑', value: 'blend'}, // TODO: night / day asset option
@@ -344,6 +356,8 @@ const shared: SharedStyles = {
 	context: new StyleFamily({
 		name: 'Context',
 		layout: 'switcher',
+		container: 'burrito',
+		size: 'md',
 		id: 'shared.context',
 		exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 		items: [
@@ -352,7 +366,7 @@ const shared: SharedStyles = {
 				id: 'shared.context.size',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				exclude: [/* 'layouts', */ 'Switcher'],
 				items: [
 					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
@@ -367,7 +381,7 @@ const shared: SharedStyles = {
 				id: 'shared.context.container',
 				value: '',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				items: [
 					{id: 'shared.context.container.center', text: 'center', asset: '', value: 'center'},
 					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
@@ -378,7 +392,7 @@ const shared: SharedStyles = {
 				id: 'shared.context.layout',
 				value: 'switcher',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				exclude: [/* 'layouts', */ 'Switcher'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
@@ -393,7 +407,7 @@ const shared: SharedStyles = {
 						// 		name: 'Breakpoint',
 						// 		input: 'toggle',
 						//
-						// layout: 'stack:full',
+						// layout: 'stack',
 						// 		exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
 						// 		items: [
 						// 			{id: 'xs', text: 'xs', asset: '', value: ''},
@@ -412,7 +426,7 @@ const shared: SharedStyles = {
 				id: 'shared.context.breakpoint',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
@@ -430,13 +444,15 @@ const blocks: BlockStyles = {
 		name: 'Element',
 		id: 'blocks.element',
 		layout: 'switcher',
+		container: 'burrito',
+		size: 'xs',
 		items: [
 			new StyleInput({
 				name: 'Color',
 				id: 'blocks.element.color',
 				value: '',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				items: [
 					{
 						id: 'blocks.element.color.primary',
@@ -466,7 +482,7 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.variant',
 				value: 'default',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
 					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
@@ -479,7 +495,7 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.size',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				items: [
 					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -493,7 +509,7 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.emoji',
 				value: '',
 				input: 'datalist',
-				layout: 'stack:full',
+				layout: 'stack',
 				exclude: [
 					'ButtonMenu',
 					'ToggleMenu',
@@ -516,6 +532,8 @@ const layouts: LayoutStyles = {
 	element: new StyleFamily({
 		name: 'Element',
 		id: 'layouts.element',
+		container: 'burrito',
+		size: 'sm',
 		layout: 'switcher',
 		items: [
 			new StyleInput({
@@ -523,7 +541,7 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.size',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				items: [
 					{id: 'layouts.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'layouts.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -537,7 +555,7 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.content',
 				value: 'card',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				exclude: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.content.card', text: 'card', asset: '', value: 'card'},
@@ -550,7 +568,7 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.side',
 				value: 'card',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.side.card', text: 'card', asset: '', value: 'card'},
@@ -563,7 +581,7 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.main',
 				value: 'text',
 				input: 'toggle',
-				layout: 'stack:full',
+				layout: 'stack',
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.main.card', text: 'card', asset: '', value: 'card'},

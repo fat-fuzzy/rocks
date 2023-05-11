@@ -16,7 +16,7 @@
 	export let method = 'POST'
 	export let enter = 'enter'
 	export let update = 'update'
-	export let reset = 'reset'
+	// export let reset = 'reset'
 
 	let selected: StyleTree
 	let apiLayout = 'switcher'
@@ -134,6 +134,8 @@
 						id={styleFamily.id}
 						type="input-group"
 						layout={styleFamily.layout}
+						container={styleFamily.container}
+						size={styleFamily.size}
 						breakpoint={apiBreakpoint}
 						name={familyName}
 					>

@@ -16,7 +16,7 @@
 	let programInfo
 	// Canvas
 
-	$: variant = $theme === 1 ? 'outline accent' : 'outline highlight' // TODO:  fix this
+	$: variant = $theme === 1 ? 'accent' : 'highlight' // TODO:  fix this
 	$: showDetails = geometry !== undefined
 
 	function toggleDetails() {
@@ -51,7 +51,7 @@
 	</div>
 	<aside class={showDetails ? 'l:side:xxs' : 'hide:rm-node'}>
 		<details open>
-			<summary class="card:sm box"> Details </summary>
+			<summary class={`card:sm box:${variant}`}> Details </summary>
 			{#if geometry}
 				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
 			{/if}

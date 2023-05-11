@@ -13,9 +13,8 @@ import Switcher from './layouts/Switcher.svelte'
  */
 
 import Button from './blocks/buttons/Button.svelte'
-import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
-import RevealMenu from './blocks/buttons/RevealMenu.svelte'
 import Toggle from './blocks/buttons/Toggle.svelte'
+import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
 import ToggleMenu from './blocks/buttons/ToggleMenu.svelte'
 import Feedback from './blocks/cards/Feedback.svelte'
 // import Canvas from './blocks/media/Canvas.svelte'
@@ -23,10 +22,15 @@ import InputCheck from './blocks/forms/InputCheck.svelte'
 import InputRadio from './blocks/forms/InputRadio.svelte'
 import InputRange from './blocks/forms/InputRange.svelte'
 import InputFile from './blocks/forms/InputFile.svelte'
-import Header from './blocks/global/Header.svelte'
 import Nav from './blocks/navs/Nav.svelte'
-import RevealNav from './blocks/navs/RevealNav.svelte'
 // import Sketch from './blocks/graphics/Sketch.svelte'
+
+/**
+ * Composition components
+ */
+import Header from './compositions/Header.svelte'
+import RevealMenu from './compositions/RevealMenu.svelte'
+import RevealNav from './compositions/RevealNav.svelte'
 
 /**
  * Api components
@@ -70,13 +74,10 @@ const blocks = {
 	Toggle,
 	ButtonMenu,
 	ToggleMenu,
-	Feedback,
+	// Feedback,
 	// Canvas, TODO: init canvas with example Sketch
 	Nav,
-	RevealNav, // TODO: use content option in UI lib API in docs
-	RevealMenu, // TODO: use content option in UI lib API in docs
 	// Sketch,
-	Header,
 	InputCheck,
 	InputRadio,
 	InputRange,
@@ -92,6 +93,7 @@ const layouts = {
 }
 
 const compositions = {
+	Header,
 	RevealNav, // TODO: use content option in UI lib API in docs
 	RevealMenu, // TODO: use content option in UI lib API in docs
 }

@@ -5,7 +5,7 @@
 	import {themes} from '$lib/types/constants'
 	import {theme} from '$lib/stores/theme'
 	import {links} from '$lib/data/nav'
-	import Header from '$blocks/global/Header.svelte'
+	import Header from '$lib/compositions/Header.svelte'
 
 	let app: Element | null
 	let currentTheme = themes[$theme]

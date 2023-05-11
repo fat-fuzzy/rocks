@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {blocks, layouts} from '@fat-fuzzy/ui'
+	import {compositions, layouts} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
-	const {RevealNav} = blocks
+	const {RevealNav} = compositions
 
 	let title = ' Fat Fuzzy Dev'
 	let description = 'Fat Fuzzy Dev: how to use the packages in this project to develop other apps'

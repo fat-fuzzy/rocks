@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import Sidebar from '$lib/layouts/Sidebar.svelte'
-	import RevealNav from '$blocks/navs/RevealNav.svelte'
+	import RevealNav from '$lib/compositions/RevealNav.svelte'
 
 	$: sketches = $page.data.sketches
 	$: path = ''

@@ -4,6 +4,7 @@
 	import Api from './Api.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
+	import Composition from './Composition.svelte'
 	import type {StyleTree} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
@@ -19,6 +20,7 @@
 	let ApiElement: {[category: string]: ComponentType} = {
 		layouts: Layout,
 		blocks: Block,
+		compositions: Composition,
 	}
 
 	let selected: StyleTree
@@ -39,20 +41,19 @@
 	}
 	$: appSettings = `${brightness} ${contrast}`
 	$: containerContext = category !== 'app' ? `l:${container}:${size}` : 'l:burrito:xs'
+	$: color = 'primary:lighter'
 </script>
 
 {#if !isPage}
-	<article class={`card:xl`}>
-		<header>
-			<a class="primary header" href={`${path}/${title}`}>
-				<svelte:element this={`h${String(depth)}`} class="font:sm">
+	<article class="l:stack lg">
+		<header class={`card:md text:center bg:${color}`}>
+			<a class="card:sm" href={`${path}/${title}`}>
+				<svelte:element this={`h${String(depth)}`} class="link font:sm">
 					<span class="font:xs">🔗</span>&nbsp;{title}
 				</svelte:element>
 			</a>
 		</header>
-		<div class="card l:freeze:burrito:xs">
-			<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
-		</div>
+		<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
 	</article>
 {:else}
 	<header class="header-page">
