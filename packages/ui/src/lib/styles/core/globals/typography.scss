@@ -2,6 +2,13 @@ h1,
 h2,
 h3 {
 	line-height: var(--line-height-heading);
+	margin-block-end: var(--gap);
+}
+
+h1.link,
+h2.link,
+h3.link {
+	margin: 0;
 }
 
 h1 {
