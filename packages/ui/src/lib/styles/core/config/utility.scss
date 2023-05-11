@@ -32,6 +32,19 @@
 	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); // TODO : use Svelte animations
 }
 
+// To undo hide:
+.unhide {
+	border: unset;
+	clip: unset;
+	height: auto;
+	margin: initial;
+	overflow: hidden;
+	padding: var(--current-size);
+	position: unset;
+	top: 0;
+	width: 100%;
+	white-space: normal;
+}
 // == DOM content selection control
 
 .unselectable {

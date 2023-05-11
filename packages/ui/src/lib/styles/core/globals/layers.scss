@@ -2,24 +2,13 @@
 	box-shadow: var(--current-shadow);
 }
 
-.box {
-	border: var(--border-width) solid var(--current-gray);
-}
-
-.polar {
-	background-color: var(--current-polar);
-}
-
 .inset {
 	box-shadow: var(--shadow-inset);
 	z-index: var(--z-index-inset);
 	// padding: var(--padding-inset);
 }
 
-.box {
-	border: var(--border-width) solid var(--current-gray);
-}
-
-.dotted {
-	border: var(--border-width-lg) dotted var(--current-primary);
+.drop {
+	position: relative;
+	z-index: var(--z-index-inset);
 }

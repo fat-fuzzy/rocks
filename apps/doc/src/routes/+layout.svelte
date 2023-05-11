@@ -3,9 +3,9 @@
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import {links} from '$data/nav'
-	import {blocks, stores, constants} from '@fat-fuzzy/ui'
+	import {compositions, stores, constants} from '@fat-fuzzy/ui'
 
-	const {Header} = blocks
+	const {Header} = compositions
 
 	let {themes} = constants
 	let {theme} = stores.theme

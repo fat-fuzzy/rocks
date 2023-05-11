@@ -81,7 +81,14 @@ ul.depth-0 > li > a {
 	font-weight: var(--font-weight-semibold);
 }
 
-//== Need to override global <a> hover styles in nav and header <a>
+//== Link Overrides
+
+//== Override global <a> hover styles in nav and header <a>
 nav a:hover {
 	background-color: initial;
+}
+
+//== Override heading styles for headings inside links
+a[class*='card'] {
+	text-decoration: none;
 }

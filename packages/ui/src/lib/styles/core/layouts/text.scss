@@ -4,10 +4,8 @@
  */
 
 [class^='l:text'] {
-	width: 80ch;
+	max-width: 80ch;
 	padding-block-end: var(--current-size-plus);
-	padding-inline: var(--current-size);
-	max-width: 100%;
 }
 
 [class^='l:text'] > * + h1,
@@ -31,31 +29,31 @@
 }
 
 .l\:text\:xxs {
-	width: 20ch;
+	max-width: 20ch;
 }
 
 .l\:text\:xs {
-	width: 35ch;
+	max-width: 35ch;
 }
 
 .l\:text\:sm {
-	width: 50ch;
+	max-width: 50ch;
 }
 
 .l\:text\:md {
-	width: 65ch;
+	max-width: 65ch;
 }
 
 .l\:text\:lg {
-	width: 80ch;
+	max-width: 80ch;
 }
 
 .l\:text\:xl {
-	width: 95ch;
+	max-width: 95ch;
 }
 
 .l\:text\:xxl {
-	width: 110ch;
+	max-width: 110ch;
 }
 
 .text\:center {

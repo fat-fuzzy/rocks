@@ -1,16 +1,29 @@
 <script lang="ts">
 	import type {PageData} from './$types'
 	import {page} from '$app/stores'
-	import {blocks, layouts, api} from '@fat-fuzzy/ui'
+	import {blocks, compositions, layouts, api} from '@fat-fuzzy/ui'
 	const {Collection} = api
 
 	export let data: PageData
 
 	let uiState = data.uiState
 
+	function getComponentType(cat: string) {
+		switch (cat) {
+			case 'blocks':
+				return blocks
+			case 'layouts':
+				return layouts
+			case 'compositions':
+				return compositions
+			default:
+				break
+		}
+	}
+
 	$: category = $page.params.category
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
-	$: components = category === 'blocks' ? blocks : layouts
+	$: components = getComponentType(category)
 	$: path = $page.url.pathname
 
 	$: {

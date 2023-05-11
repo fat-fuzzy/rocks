@@ -41,6 +41,7 @@ main > [class^='l:sidebar'] {
 // adjusts to width of sibling (main)
 [class^='l:side'].shrink {
 	flex-grow: 0;
+	flex-basis: fit-content;
 }
 
 [class^='l:side:'] nav {

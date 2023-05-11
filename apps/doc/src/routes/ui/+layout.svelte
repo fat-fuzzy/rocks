@@ -1,7 +1,7 @@
 <script lang="ts">
-	import {blocks, layouts} from '@fat-fuzzy/ui'
+	import {blocks, compositions, layouts} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
-	const {RevealNav} = blocks
+	const {RevealNav} = compositions
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -13,6 +13,7 @@
 
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
+	const compositionNames = Object.keys(compositions).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
 	$: path = ''
@@ -30,6 +31,11 @@
 					slug: 'layouts',
 					title: 'Layouts',
 					items: layoutNames.map((c) => ({slug: c, title: c})),
+				},
+				{
+					slug: 'compositions',
+					title: 'Compositions',
+					items: compositionNames.map((c) => ({slug: c, title: c})),
 				},
 			],
 		},

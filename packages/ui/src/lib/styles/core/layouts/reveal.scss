@@ -6,14 +6,26 @@
 	width: 100%;
 }
 
-.l\:reveal .show {
+.l\:reveal > button > .icon {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.l\:reveal.show .content {
 	position: relative;
 	top: 0;
 	z-index: var(--z-index-reveal);
 	width: 100%;
 }
 
-.l\:reveal [class^='hide:'] {
+.l\:reveal.minimize .content {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: auto;
@@ -31,37 +43,12 @@
 // TODO: set [inline/block] size according to alignment
 
 @media screen and (min-width: 320px) {
-	.l\:reveal.bp\:xxs [class^='hide:'] {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: var(--current-size);
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
-	}
 	.l\:reveal.bp\:xxs.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
 @media screen and (min-width: 768px) {
-	.l\:reveal.bp\:xs [class^='hide:'] {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: var(--current-size);
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
-	}
-
 	.l\:reveal.bp\:xs.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
@@ -69,97 +56,87 @@
 
 // TODO fix magic bp
 @media screen and (min-width: 935px) {
-	// TODO: fix disappearing reveal button
+	.l\:reveal.minimize .content {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: var(--current-size);
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
 	.l\:reveal > button {
 		display: none;
 	}
 
-	.l\:reveal .show {
-		position: unset;
-		top: 0;
-	}
+	// .l\:reveal.minimize > button {
+	// 	width: var(--header-height);
+	// }
 
-	.l\:reveal [class*='hide:'] {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: var(--current-size);
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
-	}
+	// .l\:reveal.minimize > button > .icon {
+	// 	border: unset;
+	// 	clip: unset;
+	// 	height: auto;
+	// 	margin: initial;
+	// 	overflow: hidden;
+	// 	padding: var(--current-size);
+	// 	position: unset;
+	// 	top: 0;
+	// 	width: 100%;
+	// 	white-space: normal;
+	// }
+
+	// .l\:reveal.minimize > button > .text {
+	// 	border: 0;
+	// 	clip: rect(0 0 0 0);
+	// 	height: auto;
+	// 	margin: 0;
+	// 	overflow: hidden;
+	// 	padding: 0;
+	// 	position: absolute;
+	// 	width: 1px;
+	// 	white-space: nowrap;
+	// }
+
+	// .l\:reveal.minimize > .content > * {
+	// 	width: var(--header-height);
+	// }
+	// .l\:reveal.minimize > .content > * > * {
+	// 	border: 0;
+	// 	clip: rect(0 0 0 0);
+	// 	height: auto;
+	// 	margin: 0;
+	// 	overflow: hidden;
+	// 	padding: 0;
+	// 	position: absolute;
+	// 	width: 1px;
+	// 	white-space: nowrap;
+	// }
 }
 
 @media screen and (min-width: 992px) {
-	.l\:reveal.bp\:sm [class^='hide:'] {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: var(--current-size);
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
-	}
 	.l\:reveal.bp\:sm.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
 @media screen and (min-width: 1240px) {
-	.l\:reveal.bp\:md [class^='hide:'] {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: var(--current-size);
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
-	}
 	.l\:reveal.bp\:md.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
 @media screen and (min-width: 1620px) {
-	.l\:reveal.bp\:lg [class^='hide:'] {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: var(--current-size);
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
-	}
 	.l\:reveal.bp\:lg.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
 @media screen and (min-width: 2048px) {
-	.l\:reveal.bp\:xl [class^='hide:'] {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: var(--current-size);
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
-	}
 	.l\:reveal.bp\:xl.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}

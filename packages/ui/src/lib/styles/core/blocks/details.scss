@@ -7,7 +7,7 @@ details > summary {
 	display: block;
 	color: var(--color-light);
 	font-weight: var(--font-weight-ui);
-	border: var(--border-width) solid var(--current-color);
+	border: var(--border-width) solid var(--current-border-color);
 	padding: var(--current-size-minus);
 	max-width: 100%;
 }
@@ -44,7 +44,7 @@ details > p {
 details[open] > summary {
 	color: var(--current-color);
 	background-color: var(--current-bg-contrast);
-	border: var(--border-width) solid var(--current-gray);
+	border: var(--border-width) solid var(--current-border-color);
 }
 
 .night details[open] > summary {

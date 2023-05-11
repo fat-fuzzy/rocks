@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {clickOutside} from '../../utils/click-outside.js'
+	import {clickOutside} from '../utils/click-outside.js'
 	import {lang} from '$stores/intl'
-	import {theme} from '../../stores/theme'
+	import {theme} from '../stores/theme.js'
 	import {emojis, themes} from '$types/constants.js'
 
 	// TODO: make svg css themeable / fix dark theme

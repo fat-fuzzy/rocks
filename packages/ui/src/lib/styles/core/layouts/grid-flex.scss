@@ -14,19 +14,7 @@
 	grid-area: 'actions';
 }
 
-[class^='l:flex:grid:'] {
-	display: grid;
-	grid-gap: var(--gap);
-}
-
-// Basic grid that will automatically create columns if space is available for given column dimensions: between var(--current-side-size) and 100% of available width
-@supports (width: min(var(--current-side-size), 100%)) {
-	[class^='l:flex:grid:'] {
-		grid-template-columns: repeat(auto-fit minmax(min(var(--current-side-size), 100%) 1fr));
-	}
-}
-
-[class^='l:flex:grid:areas:'] {
+.l\:grid\:flex\:areas\:base {
 	grid-template-areas:
 		'navs'
 		'header'
@@ -34,13 +22,8 @@
 		'footer';
 }
 
-.l\:grid > * {
-	/* needed for the floated layout fallback */
-	margin-bottom: var(--gap);
-}
-
 @media screen and (min-width: 768px) {
-	.l\:flex\:grid\:areas\:base {
+	.l\:grid\:flex\:areas\:base {
 		grid-template-areas:
 			'navs			.......	.......'
 			'.......	header	.......'
@@ -61,7 +44,7 @@
 		width: 79.7872%;
 	}
 
-	.l\:grid {
+	.l\:grid\:flex\:areas\:base {
 		margin: 0 auto;
 		grid-template-columns: 1fr 3fr;
 	}
@@ -73,7 +56,7 @@
 		clear: both;
 	}
 
-	.l\:flex\:grid\:areas\:base {
+	.l\:grid\:flex\:areas\:base {
 		grid-template-areas:
 			'navs	header	.......	actions'
 			'navs content	.......	actions'

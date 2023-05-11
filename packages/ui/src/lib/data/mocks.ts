@@ -77,6 +77,9 @@ const blocks = `
 <p>Blocks are components that render the contentful elements of the application. Contentful in this context means elements that provide information, actions, or navigation options to the user of the app.</p>
 <p>They are implemented using the <a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noreferrer">web platform</a>'s capabilities and with help from the examples provided in <a href="https://inclusive-components.design/" target="_blank" rel="noreferrer">Inclusive Components</a>.</p>
 <p>Blocks can be <a href="https://cube.fyi/composition.html" target="_blank" rel="noreferrer">composed</a> with Layouts and other Blocks to create simple or elaborate interfaces while respecting HTML semantics and document structure.</p>` // TODO: use README.md
+// TODO: use README.md
+const compositions = `
+<p>Compositions are components that provide solutions to common UI usage patterns, and are created using Blocks and Layouts.</p>` // TODO: use README.md
 
 const app = `
 <p>
@@ -111,6 +114,7 @@ const doc: {[category: string]: string} = {
 	textIntro,
 	layouts,
 	containers,
+	compositions,
 	blocks,
 	app: `${app} ${wip}`,
 }
