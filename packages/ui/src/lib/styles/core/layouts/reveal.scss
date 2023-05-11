@@ -59,11 +59,13 @@
 	.l\:reveal.minimize .content {
 		border: unset;
 		clip: unset;
-		height: 100%;
+		height: auto;
 		margin: initial;
 		overflow: hidden;
 		padding: var(--current-size);
-		width: var(--header-height);
+		position: unset;
+		top: 0;
+		width: 100%;
 		white-space: normal;
 	}
 

@@ -67,7 +67,7 @@
 	</button>
 	<menu
 		id={`menu-${id}`}
-		class={`content l:${layout} bp:${breakpoint} layer card:lg polar align:${align} ${size}`}
+		class={`content l:${layout} bp:${breakpoint} layer polar card:lg align:${align} ${size}`}
 	>
 		{#each items as buttonProps}
 			<li>
