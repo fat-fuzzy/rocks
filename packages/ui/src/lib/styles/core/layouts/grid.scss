@@ -1,106 +1,30 @@
-.header {
-	grid-area: 'header';
-}
-.footer {
-	grid-area: 'footer';
-}
-.content {
-	grid-area: 'content';
-}
-.navs {
-	grid-area: 'navs';
-}
-.actions {
-	grid-area: 'actions';
+// Flex layout fallback
+[class*='l:grid'] {
+	display: flex;
+	flex-wrap: wrap;
 }
 
-[class^='l:grid:'] {
+[class*='l:grid'] {
 	display: grid;
 	grid-gap: var(--gap);
 }
 
 // Basic grid that will automatically create columns if space is available for given column dimensions: between var(--current-side-size) and 100% of available width
 @supports (width: min(var(--current-side-size), 100%)) {
-	[class^='l:grid:'] {
-		grid-template-columns: repeat(auto-fit minmax(min(var(--current-side-size), 100%) 1fr));
+	[class*='l:grid'] {
+		grid-template-columns: repeat(auto-fill, minmax(min(var(--current-side-size), 100%), 1fr));
 	}
 }
 
-[class^='l:grid:areas:'] {
-	grid-template-areas:
-		'navs'
-		'header'
-		'actions'
-		'footer';
-}
-
-.l\:grid > * {
-	/* needed for the floated layout fallback */
+[class*='l:grid'] > * {
+	/* needed for the flex layout fallback */
 	margin-bottom: var(--gap);
 }
 
-@media screen and (min-width: 768px) {
-	.l\:grid\:areas\:base {
-		grid-template-areas:
-			'navs			.......	.......'
-			'.......	header	.......'
-			'.......	content	actions'
-			'.......	footer	.......';
-	}
-}
-
-@media screen and (min-width: 992px) {
-	/* no grid support? */
-	.sidebar {
-		float: left;
-		width: 19.1489%;
-	}
-
-	.content {
-		float: right;
-		width: 79.7872%;
-	}
-
-	.l\:grid {
-		margin: 0 auto;
-		grid-template-columns: 1fr 3fr;
-	}
-
-	.header,
-	.footer {
-		grid-column: 1 / -1;
-		/* needed for the floated layout fallback */
-		clear: both;
-	}
-
-	.l\:grid\:areas\:base {
-		grid-template-areas:
-			'navs	header	.......	actions'
-			'navs content	.......	actions'
-			'navs footer	.......	.......';
-	}
-}
-
-/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+/* We set the margins to 0 and use gap in grid */
 @supports (display: grid) {
-	[class*='grid:'] > * {
+	[class*='l:grid'] > * {
 		width: auto;
 		margin: 0;
 	}
 }
-
-// TODO fix magic bp
-// @media screen and (min-width: 935px) {
-// 	[class^='l:grid'] .l\:side {
-// 		grid-area: 'navs';
-// 	}
-
-// 	[class^='l:grid'] .l\:main {
-// 		grid-area: 'header';
-// 	}
-
-// 	[class^='l:grid'] {
-// 		display: grid;
-// 		grid-template-areas: 'navs content';
-// 	}
-// }
