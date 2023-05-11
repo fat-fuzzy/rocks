@@ -16,12 +16,14 @@
 	<meta name="description" content="Fat Fuzzy Rocks documentation home page" />
 </svelte:head>
 
-<div class="l:text:xxl l:center card:feature:xxl polar">
-	<div class="l:frame l:text:xl">
-		<img src={pageImage.src} alt={pageImage.alt} />
+<header class="polar">
+	<div class="l:text:xxl l:center card:feature:xxl">
+		<div class="l:frame l:text:xl">
+			<img src={pageImage.src} alt={pageImage.alt} />
+		</div>
+		<h1 class="text:center">Fat Fuzzy Rocks</h1>
 	</div>
-	<h1>Fat Fuzzy Rocks</h1>
-</div>
+</header>
 
 <section class="l:center l:text:xxl">
 	<h2>✨ Highlights</h2>
