@@ -1,15 +1,14 @@
 // Center main content
 
 // Use Center class without a size to set a full width with default padding
-[class^='l:center'] {
+[class*='l:center'] {
+	--max-width-center: calc(100% - calc(2 * var(--gap)));
 	margin-left: auto;
 	margin-right: auto;
-	max-width: calc(100% - calc(2 * var(--gap))); // width of parent minus base padding
 }
 
-// Use Center class with a size to set a max-width with size-based padding
-[class^='l:center:'] {
-	max-width: calc(
-		100% - calc(var(--s-1) * var(--current-size-plus))
-	); // TODO : generate (selector + style) by size
+// Use Center class without a size to set a full width with default padding
+[class*='l:center:'] {
+	--max-width-center: calc(100% - calc(2 * var(--current-size-inverse)));
+	max-width: var(--max-width-center); // width of parent minus base padding
 }
