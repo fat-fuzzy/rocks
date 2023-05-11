@@ -11,8 +11,8 @@
 	export let title = ''
 	export let depth = 0
 	export let path = ''
-	export let layout = 'switcher' // TODO: expose breakpoint too
-	export let breakpoint = 'xxl' // TODO: expose breakpoint too
+	export let layout = 'grid' // TODO: expose breakpoint too
+	export let size = 'md' // TODO: expose breakpoint too
 	export let color = 'highlight' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
@@ -22,8 +22,12 @@
 
 	let brightness = ''
 	let contrast = ''
-	let classes = ''
+	let contextClasses = ''
 
+	let sharedOptions = {
+		container: '',
+		size: '',
+	}
 	// TODO: color code sections
 	// TODO; tokens section
 	// TODO: composition section
@@ -31,32 +35,43 @@
 
 	$: {
 		selected = $selectedStore
-		// App settings (user controlled)
+		//== App settings (user controlled)
 		brightness = selected.app?.settings.brightness ?? brightness
 		contrast = selected.app?.settings.contrast ?? contrast
-		classes = `l:${layout} bp:${breakpoint} ${brightness} ${contrast}`
+		//== Shared settings (user controlled)
+		// Container options
+		// - [container + size] work together
+		sharedOptions.container = selected.shared?.context.container ?? sharedOptions.container
+		sharedOptions.size = selected.shared?.context.size ?? sharedOptions.size
 	}
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
-	$: categorySingular = `${category.slice(0,1).toUpperCase()}${category.slice(1,category.length-1)}`
-	$: classes = category !== 'app' ? `l:${layout} bp:${breakpoint} ${brightness} ${contrast}` : ''
+	$: categorySingular = `${category.slice(0, 1).toUpperCase()}${category.slice(
+		1,
+		category.length - 1,
+	)}`
+	$: mainContainerClasses =
+		category !== 'app'
+			? `drop card:${size} l:${layout} ${brightness} ${contrast} `
+			: `drop card:${size}`
+	$: contextClasses = `l:${sharedOptions.container}:${sharedOptions.size}`
 </script>
 
 {#if isPage}
 	<Sidebar size="xs" align="end">
-		<div slot="main" class="card:lg inset">
-			<section class={classes}>
-				{#each componentNames as name}
-					{@const component = components[name]}
-					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
-				{/each}
-			</section>
+		<div slot="main" class={mainContainerClasses}>
+			{#each componentNames as name}
+				{@const component = components[name]}
+				<div class={contextClasses}>
+					<Element title={name} depth={Number(depth) + 1} {path} {category} {component} />
+				</div>
+			{/each}
 		</div>
 		<aside slot="side">
-			<Api {title} {category} />
-			<div class="card:xl">
+			<div class="l:text:xl">
 				{@html mocks['doc'][category]}
 			</div>
+			<Api {title} {category} />
 		</aside>
 	</Sidebar>
 {:else}
@@ -64,19 +79,21 @@
 		{category}
 	</svelte:element>
 
-	{@html mocks['doc'][category]}
+	<div class="l:text:xl">
+		{@html mocks['doc'][category]}
+	</div>
 
-	<details class="l:stack:xl" closed>
-		<summary class={`card:md box bg:${color}`}>
+	<details class={`l:stack:xl ${size}`}>
+		<summary class={`card:md box:${color} bg:${color}`}>
 			{categorySingular} components
 		</summary>
-		<div class="card:lg inset">
-			<section class={classes}>
-				{#each componentNames as name}
-					{@const component = components[name]}
+		<div class={mainContainerClasses}>
+			{#each componentNames as name}
+				{@const component = components[name]}
+				<div class={contextClasses}>
 					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
-				{/each}
-			</section>
+				</div>
+			{/each}
 		</div>
 	</details>
 {/if}

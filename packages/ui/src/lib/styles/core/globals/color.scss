@@ -17,6 +17,7 @@ body {
 	--current-primary: var(--color-primary);
 	--current-primary-light: var(--color-primary-light);
 	--current-primary-lighter: var(--color-primary-lighter);
+	--current-primary-lightest: var(--color-primary-lightest);
 	--current-accent: var(--color-accent);
 	--current-accent-light: var(--color-accent-light); // TODO: Fix
 	--current-accent-lighter: var(--color-accent-lighter); // TODO: Fix
@@ -40,6 +41,7 @@ body {
 	--current-primary: var(--color-primary-light);
 	--current-primary-light: var(--color-primary-lighter);
 	--current-primary-lighter: var(--color-primary-lightest);
+	--current-primary-lightest: var(--color-primary-lightest);
 	--current-accent: var(--color-accent);
 	--current-accent-light: var(--color-accent-light); // TODO: Fix
 	--current-accent-lighter: var(--color-accent-lighter); // TODO: Fix
@@ -219,8 +221,12 @@ menu {
 	background-color: inherit;
 }
 
-// TODO: test using rule below to remove redundant css:
-// [class^='bg:'] { color: var(--current-color); }
+//== Background colors
+
+// TODO: harmonize class
+.polar {
+	background-color: var(--current-polar);
+}
 
 .bg\:primary {
 	--current-color: var(--color-light);
@@ -238,6 +244,12 @@ menu {
 	--current-color: var(--color-dark);
 	color: var(--current-color);
 	background-color: var(--current-primary-lighter);
+}
+
+.bg\:primary\:lightest {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-primary-lightest);
 }
 
 .bg\:accent {
@@ -270,4 +282,62 @@ menu {
 	--current-color: var(--color-dark);
 	color: var(--current-color);
 	background-color: var(--current-highlight-lighter);
+}
+
+//== Border colors
+
+[class*='box'],
+[class*='dotted'] {
+	--current-border-color: var(--current-gray-contrast);
+}
+[class*='box'] {
+	border: var(--border-width) solid var(--current-border-color);
+}
+[class*='dotted'] {
+	border: var(--border-width-lg) dotted var(--current-border-color);
+}
+
+.box\:primary,
+.dotted\:primary {
+	--current-border-color: var(--current-primary);
+}
+
+.box\:primary\:light,
+.dotted\:primary\:light {
+	--current-border-color: var(--current-primary-light);
+}
+
+.box\:primary\:lighter,
+.dotted\:primary\:lighter {
+	--current-border-color: var(--current-primary-lighter);
+}
+
+.box\:accent,
+.dotted\:accent {
+	--current-border-color: var(--current-accent);
+}
+
+.box\:accent\:light,
+.dotted\:accent\:light {
+	--current-border-color: var(--current-accent-light);
+}
+
+.box\:accent\:lighter,
+.dotted\:accent\:lighter {
+	--current-border-color: var(--current-accent-lighter);
+}
+
+.box\:highlight,
+.dotted\:highlight {
+	--current-border-color: var(--current-highlight-dark);
+}
+
+.box\:highlight\:light,
+.dotted\:highlight\:light {
+	--current-border-color: var(--current-highlight);
+}
+
+.box\:highlight\:lighter,
+.dotted\:highlight\:lighter {
+	--current-border-color: var(--current-highlight-light);
 }
