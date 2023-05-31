@@ -32,9 +32,9 @@ const nav = [
 	},
 ]
 
-const button = {id: 'idea', text: 'Idea', type: 'button', variant: '', emoji: '💡'}
+const button = {id: 'idea', text: 'Idea', type: 'button', variant: '', asset: '💡'}
 
-const toggle = {id: 'favorite', text: 'Favorite', type: 'button', variant: '', emoji: '❤️'}
+const toggle = {id: 'favorite', text: 'Favorite', type: 'button', variant: '', asset: '❤️'}
 
 const menu = [
 	{id: 'vader', text: 'Vader', asset: '👾'},
@@ -122,7 +122,7 @@ const sketch = {
 	id: '004',
 	slug: 'geometry-2d',
 	title: 'Geometry 2D ',
-	emoji: '📐',
+	asset: '📐',
 }
 
 export default {

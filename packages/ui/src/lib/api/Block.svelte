@@ -11,6 +11,7 @@
 	let layout = ''
 	let color = ''
 	let variant = ''
+	let asset = ''
 	let size = '' // element's own size
 
 	$: {
@@ -19,6 +20,7 @@
 		variant = selected.blocks?.element.variant ?? variant
 		color = selected.blocks?.element.color ?? color
 		size = selected.blocks?.element.size ?? size
+		asset = selected.blocks?.element.asset ?? asset
 		// Layout options
 		// - [layout + breakpoint] work together
 		layout = selected.shared?.context.layout ?? layout
@@ -32,6 +34,7 @@
 	{title}
 	{color}
 	{variant}
+	{asset}
 	{size}
 	{layout}
 	{breakpoint}

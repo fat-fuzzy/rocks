@@ -505,8 +505,8 @@ const blocks: BlockStyles = {
 				],
 			}),
 			new StyleInput({
-				name: 'Emoji',
-				id: 'blocks.element.emoji',
+				name: 'Asset', // TODO: Add hint: "Icon: emoji / SVG"
+				id: 'blocks.element.asset',
 				value: '',
 				input: 'datalist',
 				layout: 'stack',
@@ -519,9 +519,9 @@ const blocks: BlockStyles = {
 					'InputFile',
 				],
 				items: [
-					{id: 'blocks.element.emoji.cat', text: 'cat', asset: '🦁', value: 'cat'},
-					{id: 'blocks.element.emoji.love', text: 'love', asset: '❤️', value: 'love'},
-					{id: 'blocks.element.emoji.sparkles', text: 'sparkles', asset: '✨', value: 'sparkles'},
+					{id: 'blocks.element.asset.cat', text: 'cat', asset: '🦁', value: 'cat'},
+					{id: 'blocks.element.asset.love', text: 'love', asset: '❤️', value: 'love'},
+					{id: 'blocks.element.asset.sparkles', text: 'sparkles', asset: '✨', value: 'sparkles'},
 				],
 			}),
 		],
@@ -610,7 +610,7 @@ export const DEFAULT_STYLES: StyleTree = {
 			variant: 'default',
 			color: '',
 			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-			emoji: '✨',
+			asset: '✨',
 			size: 'md',
 		},
 	},

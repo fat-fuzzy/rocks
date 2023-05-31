@@ -5,9 +5,9 @@
 	export let size = ''
 	export let path = ''
 	export let align = 'start'
-	export let items: {slug: string; title: string; emoji?: string}[] = [
-		{slug: '', title: 'Home'},
-		{slug: 'about', title: 'About'},
+	export let items: {slug: string; title: string; asset?: string}[] = [
+		{slug: '', title: 'Home', asset: '🥚'},
+		{slug: 'about', title: 'About', asset: '🐥'},
 	]
 </script>
 
