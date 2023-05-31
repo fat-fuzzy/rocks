@@ -13,7 +13,7 @@
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
-	export let asset = mocks.button.emoji
+	export let asset = mocks.button.asset
 	export let text = mocks.button.text
 	export let formaction = 'enter'
 	export let page = ''

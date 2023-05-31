@@ -45,7 +45,7 @@
 		selectedStore.set(ApiOptions.getStyleTree()) // This updates on the client if JS is available
 	}
 
-	function handleInput(event, name) {
+	function handleInput(event, name: string) {
 		const payload = {
 			name,
 			items: [
@@ -59,13 +59,13 @@
 		updateSelected(payload)
 	}
 
-	function handleSelect(event, familyName, name) {
+	function handleSelect(event, familyName: string, name: string, id: string) {
 		// TODO: reject input if it's not in values list -> form validation /!\
 		const payload = {
 			name: familyName.toLowerCase(),
 			items: [
 				{
-					id: event.target.id,
+					id,
 					name: name.toLowerCase(),
 					value: event.target.value,
 				},
@@ -117,7 +117,6 @@
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
-			// this update function comes from +page.server.ts
 			update({reset: false})
 		}
 	}}
@@ -189,13 +188,14 @@
 									>
 										{`Select ${styleInput.name}`}
 										<input
-											list={`${styleInput.name}-${styleInput.name}`}
-											id={styleInput.id}
+											list={`datalist-${styleInput.name}`}
+											id={`choice-${styleInput.name}`}
 											name={styleInput.id}
 											class={apiSize}
-											on:input={(event) => handleSelect(event, familyName, styleInput.name)}
+											on:input={(event) =>
+												handleSelect(event, familyName, styleInput.name, styleInput.id)}
 										/>
-										<datalist id={`${styleInput.name}-${styleInput.name}`}>
+										<datalist id={`datalist-${styleInput.name}`}>
 											{#each items as { id, text, asset }}
 												<option {id} value={asset}>
 													{format.formatLabel(text || '', asset)}

@@ -14,7 +14,7 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<article class="l:text:md">
+<article class="l:text:lg">
 	<h1>{title}</h1>
 	<p>Published: {date}</p>
 	{@html html}

@@ -20,7 +20,7 @@
 
 .l\:reveal.show .content {
 	position: relative;
-	top: 0;
+	top: calc(var(--gap) / 2); // TODO : Fix magic denominator
 	z-index: var(--z-index-reveal);
 	width: 100%;
 }
@@ -56,66 +56,29 @@
 
 // TODO fix magic bp
 @media screen and (min-width: 935px) {
-	.l\:reveal.minimize .content {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: var(--current-size);
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
+	// The reveal layout inside a sidebar is currently only used for sidebar menus:
+	// - reveal mechanism serves to hide and show the menu on mobile
+	// - reveal is not necessary on desktop, so on desktop we unset the reveal layout
+	// Constraining this allows usage of reveal layout in desktop, outside a sidebar context
+	// TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts
+	[class^='l:side'] > .l\:reveal {
+		&.minimize .content {
+			border: unset;
+			clip: unset;
+			height: auto;
+			margin: initial;
+			overflow: hidden;
+			padding: var(--current-size);
+			position: unset;
+			top: 0;
+			width: 100%;
+			white-space: normal;
+		}
+
+		> button {
+			display: none;
+		}
 	}
-
-	.l\:reveal > button {
-		display: none;
-	}
-
-	// .l\:reveal.minimize > button {
-	// 	width: var(--header-height);
-	// }
-
-	// .l\:reveal.minimize > button > .icon {
-	// 	border: unset;
-	// 	clip: unset;
-	// 	height: auto;
-	// 	margin: initial;
-	// 	overflow: hidden;
-	// 	padding: var(--current-size);
-	// 	position: unset;
-	// 	top: 0;
-	// 	width: 100%;
-	// 	white-space: normal;
-	// }
-
-	// .l\:reveal.minimize > button > .text {
-	// 	border: 0;
-	// 	clip: rect(0 0 0 0);
-	// 	height: auto;
-	// 	margin: 0;
-	// 	overflow: hidden;
-	// 	padding: 0;
-	// 	position: absolute;
-	// 	width: 1px;
-	// 	white-space: nowrap;
-	// }
-
-	// .l\:reveal.minimize > .content > * {
-	// 	width: var(--header-height);
-	// }
-	// .l\:reveal.minimize > .content > * > * {
-	// 	border: 0;
-	// 	clip: rect(0 0 0 0);
-	// 	height: auto;
-	// 	margin: 0;
-	// 	overflow: hidden;
-	// 	padding: 0;
-	// 	position: absolute;
-	// 	width: 1px;
-	// 	white-space: nowrap;
-	// }
 }
 
 @media screen and (min-width: 992px) {

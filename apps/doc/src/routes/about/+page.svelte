@@ -4,10 +4,10 @@
 </svelte:head>
 
 <header class="l:center col:center card:xxl max:w:full polar">
-	<h1>About Fat Fuzzy</h1>
+	<h1 class="l:center">About Fat Fuzzy</h1>
 </header>
 
-<section class="l:center l:text:xl">
+<div class="l:center card:xs l:text:xl">
 	<p>
 		This is a <a href="https://kit.svelte.dev" class="font:md">SvelteKit</a> app. You can make your own
 		by typing the following into your command line and following the prompts:
@@ -20,4 +20,4 @@
 		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
 		the devtools network panel and reloading.
 	</p>
-</section>
+</div>
