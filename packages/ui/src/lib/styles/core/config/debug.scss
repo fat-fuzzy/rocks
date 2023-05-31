@@ -1,5 +1,4 @@
 .debug[class^='l:'] {
-	border: var(--border-width-lg) dotted var(--current-accent);
+	outline: var(--border-width-lg) dotted var(--current-accent);
 	background-color: var(--current-accent-lighter);
-	padding: var(--border-width);
 }

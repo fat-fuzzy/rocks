@@ -54,7 +54,7 @@
 		category !== 'app'
 			? `drop card:${size} l:${layout} ${brightness} ${contrast} `
 			: `drop card:${size}`
-	$: contextClasses = `l:${sharedOptions.container}:${sharedOptions.size}`
+	$: contextClasses = `${sharedOptions.size}`
 </script>
 
 {#if isPage}

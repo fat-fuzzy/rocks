@@ -117,7 +117,6 @@
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
-			// this update function comes from +page.server.ts
 			update({reset: false})
 		}
 	}}
