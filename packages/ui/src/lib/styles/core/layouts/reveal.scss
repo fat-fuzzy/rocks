@@ -18,6 +18,12 @@
 	white-space: nowrap;
 }
 
+// Fixes bug in Safari where .content overflows parent width
+.l\:reveal.show {
+	display: flex;
+	flex-direction: column;
+}
+
 .l\:reveal.show .content {
 	position: relative;
 	top: calc(var(--gap) / 2); // TODO : Fix magic denominator
