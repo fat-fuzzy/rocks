@@ -28,18 +28,22 @@ This repository is organized into three workspaces:
 - **apps** for client facing code, organized by project
 - **packages** for backend logic, UI and web graphics libraries, as well as common config
 - **infra** for infrastructure code
-  - WIP
+  - WIP: Resources (database, auth, storage, etc)
 
 The initial motivation for this setup was usage of [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces). It will evolve when necessary.
 
 ### Apps
 
-- **doc** This app is a website that uses the **ui** library package and that documents this project.
-- **sandbox** A frontend application example that uses the **ui** library package
+- **doc** This app is a the documentation website for this project
+  - It's accessible here: https://rocks.pages.dev/
+- **sandbox** A frontend sample app app that uses the **ui** library package
+  - Used fot testing and experimentation
 
 ### Packages
 
 - **api** API packages
+- **config** Common config (eslint, etc)
+  - THe monorepo needs some adjustments as .prettier config is currently duplicated in projects: I believe need to solve a problem specific to my workspace config in VSCode to fix this easily - WIP
 - **design** A place to make design experiments and decisions
   - use this package to isolate design work from the UI library
   - test designs here: if the pattern can be re-used, _then_ consider migrating it as a component in the UI library
@@ -49,34 +53,31 @@ The initial motivation for this setup was usage of [Turborepo's workspaces conve
   - 🤖 state machines
   - ➕ maths
     These libraries are generally always WIP unless specifically stated
-- **resources** Backend resources (database, auth, storage, etc)
-  - WIP
 - **ui** A frontend component library
   - A UI library that can be used as a common source of truth for web projects
 
-## 🚧 WIP - Testing
+## Testing
+
+🚧 WIP
 
 - [Vitest](https://vitest.dev/)
 - [Testing library](https://github.com/testing-library)
 - [Playwright](https://playwright.dev/)
 
-## 🚧 WIP - Maintenance
+## Maintenance
 
 - Monorepo
   - [pnpm](https://pnpm.io/)
   - [Turborepo](https://turbo.build/)
 - Code / Env
-  - WIP
-    - [docker](https://www.docker.com/)
-    - [verdaccio](https://verdaccio.org/)
+  - [docker](https://www.docker.com/) - 🚧 WIP
+  - [changesets](https://github.com/changesets/changesets) - 🚧 WIP
+  - [commitizen](https://github.com/commitizen/cz-cli) - 🚧 WIP
   - TODO
-    - [changesets](https://github.com/changesets/changesets)
-    - [commitizen](https://github.com/commitizen/cz-cli)
+    - [verdaccio](https://verdaccio.org/)
     - [stylelint](https://stylelint.io/)
 
-## 🚧 WIP - Licenses
-
-[TODO] Detail Licenses per package
+## Licenses
 
 This repository uses the following license:
 
@@ -87,56 +88,3 @@ The packages, folders and files it contains may have different licenses:
 - MIT
 - Apache-2.0
 - Custom licenses
-
-## Tools & Resources
-
-### Svelte libraries
-
-Resources for building a blog site using Svelte and SvelteKit
-
-- [mdsvex](https://mdsvex.pngwn.io/)
-- [bluwy/website](https://github.com/bluwy/website)
-- [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
-
-### Design System
-
-- Design System
-  - [CUBE CSS](https://cube.fyi)
-  - [Open UI](https://open-ui.org/)
-  - [Every Layout blog post on Algorithmic design](https://every-layout.dev/blog/algorithmic-design/)
-  - [Inclusive design principles](https://inclusivedesignprinciples.org/)
-  - [Inclusive componenets](https://inclusive-components.design/)
-  - [Accessible SVG](https://tink.uk/accessible-svg-line-graphs/)
-- [SASS](https://sass-lang.com/)
-  - [Creating utility classes with design tokens using SASS](https://www.alwaystwisted.com/articles/creating-utility-classes-with-design-tokens-using-sass)
-- [Style Dictionary](https://amzn.github.io/style-dictionary/)
-  - [Managing and Exporting design tokens with style dictionary](https://www.michaelmang.dev/blog/managing-and-exporting-design-tokens-with-style-dictionary)
-- [Open Props](https://open-props.style/)
-
-### Graphics
-
-- 👾 Everything related to working with webgl
-  - [MDN WebGL API Doc](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
-  - [WebGL Fundamentals](https://webglfundamentals.org/)
-  - [WebGL Fundamentals - 2](https://webgl2fundamentals.org/)
-  - [The Book of Shaders](https://thebookofshaders.com/)
-  - [Inigo Quilez](https://iquilezles.org/)
-  - [Learn WebGL](https://learnwebgl.brown37.net/index.html)
-  - [Introduction to computer graphics](https://math.hws.edu/graphicsbook/index.html)
-  - [Introduction to WebGL](https://dev.opera.com/articles/introduction-to-webgl-part-1/)
-
-### State Machines
-
-- [XState Doc](https://xstate.js.org/docs/)
-- [XState visual Editor](https://stately.ai/registry/new)
-- [xstate GitHub](https://github.com/statelyai/xstate)
-- [xstate-svelte](https://github.com/statelyai/xstate/tree/main/packages/xstate-svelte)
-- [svelte-fsm](https://github.com/kenkunz/svelte-fsm)
-- [Statecharts Doc](https://statecharts.dev/)
-
-### Maths
-
-WIP
-
-- ➕ maths
-  - [minimath](https://github.com/patiboh/minimath)
