@@ -6,8 +6,8 @@
 @forward './center'; // Use for main content centering (wide columns with max-width set using: percentage - margin (in em units))
 //== Grid layouts
 // relative order of grid styles is necessary for fallbacks
-@forward './grid-page'; // Use for base grid with page template areas
-@forward './grid-flex'; // Use for layout transitions: mobile flex -> desktop grid (uses page template areas)
+// @forward './grid-page'; // Use for base grid with page template areas
+// @forward './grid-flex'; // Use for layout transitions: mobile flex -> desktop grid (uses page template areas)
 @forward './grid'; // Use for grid layouts base + gallery grid layout (equal sized areas)
 //
 @forward './align'; // Use for aligning items inside containers and setting widths
