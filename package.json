@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/rocks",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"private": true,
 	"description": "Fat Fuzzy Rocks",
 	"main": "index.js",
@@ -14,8 +14,7 @@
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},
 	"devDependencies": {
-		"eslint": "^8.0.0",
-		"eslint-config-custom": "workspace:*",
+		"@fat-fuzzy/config": "workspace:*",
 		"prettier": "^2.7.1",
 		"prettier-plugin-svelte": "^2.7.0",
 		"turbo": " 1.8.5"

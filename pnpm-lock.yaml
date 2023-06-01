@@ -8,12 +8,9 @@ importers:
 
   .:
     devDependencies:
-      eslint:
-        specifier: ^8.0.0
-        version: 8.39.0
-      eslint-config-custom:
+      '@fat-fuzzy/config':
         specifier: workspace:*
-        version: link:packages/eslint-config-custom
+        version: link:packages/config
       prettier:
         specifier: ^2.7.1
         version: 2.8.8
@@ -26,6 +23,9 @@ importers:
 
   apps/doc:
     devDependencies:
+      '@fat-fuzzy/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@fat-fuzzy/markdown':
         specifier: workspace:*
         version: link:../../packages/markdown
@@ -44,9 +44,6 @@ importers:
       '@types/cookie':
         specifier: ^0.5.1
         version: 0.5.1
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../../packages/eslint-config-custom
       mdsvex:
         specifier: ^0.10.6
         version: 0.10.6(svelte@3.58.0)
@@ -71,6 +68,9 @@ importers:
 
   apps/sandbox:
     devDependencies:
+      '@fat-fuzzy/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@fat-fuzzy/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -86,9 +86,6 @@ importers:
       '@types/cookie':
         specifier: ^0.5.1
         version: 0.5.1
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../../packages/eslint-config-custom
       svelte:
         specifier: ^3.57.0
         version: 3.58.0
@@ -170,32 +167,11 @@ importers:
         specifier: latest
         version: 3.7.2
 
-  packages/eslint-config-custom:
-    dependencies:
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^5.46.0
-        version: 5.59.0(@typescript-eslint/parser@5.59.0)(eslint@8.39.0)(typescript@4.9.5)
-      '@typescript-eslint/parser':
-        specifier: ^5.46.0
-        version: 5.59.0(eslint@8.39.0)(typescript@4.9.5)
-      eslint-config-prettier:
-        specifier: ^8.3.0
-        version: 8.8.0(eslint@8.39.0)
-      eslint-config-turbo:
-        specifier: latest
-        version: 1.9.3(eslint@8.39.0)
-      eslint-plugin-svelte3:
-        specifier: ^4.0.0
-        version: 4.0.0(eslint@8.39.0)(svelte@3.58.0)
-      tslib:
-        specifier: ^2.4.1
-        version: 2.5.0
-      typescript:
-        specifier: ^4.9.4
-        version: 4.9.5
-
   packages/lib:
     devDependencies:
+      '@fat-fuzzy/config':
+        specifier: workspace:*
+        version: link:../config
       '@rollup/plugin-json':
         specifier: 4.1.0
         version: 4.1.0(rollup@2.70.1)
@@ -205,9 +181,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^5.46.0
         version: 5.59.0(eslint@8.39.0)(typescript@4.9.5)
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
       rollup:
         specifier: 2.70.1
         version: 2.70.1
@@ -292,12 +265,12 @@ importers:
         specifier: ^4.37.1
         version: 4.37.1
     devDependencies:
+      '@fat-fuzzy/config':
+        specifier: workspace:*
+        version: link:../config
       '@playwright/test':
         specifier: ^1.30.0
         version: 1.32.3
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
 
 packages:
 
@@ -321,7 +294,11 @@ packages:
       '@aws-cdk/cloud-assembly-schema': 1.195.0
       '@aws-cdk/cx-api': 1.195.0(@aws-cdk/cloud-assembly-schema@1.195.0)
       '@aws-cdk/region-info': 1.195.0
+      '@balena/dockerignore': 1.0.2
       constructs: 3.4.312
+      fs-extra: 9.1.0
+      ignore: 5.2.4
+      minimatch: 3.1.2
     dev: false
     bundledDependencies:
       - fs-extra
@@ -2040,6 +2017,10 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
+  /@balena/dockerignore@1.0.2:
+    resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
+    dev: false
+
   /@cloudflare/workers-types@4.20230404.0:
     resolution: {integrity: sha512-fG3oaJX1icfsGV74nhx1+AC6opvZsGqnpx6FvrcVqQaBmCNkjKNqDRFrpasXWFiOIvysBXHKQAzsAJkBZgnM+A==}
 
@@ -2886,6 +2867,11 @@ packages:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
     engines: {node: '>=8'}
 
+  /at-least-node@1.0.0:
+    resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
+    engines: {node: '>= 4.0.0'}
+    dev: false
+
   /bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
     dev: false
@@ -3427,6 +3413,16 @@ packages:
       universalify: 2.0.0
     dev: true
 
+  /fs-extra@9.1.0:
+    resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      at-least-node: 1.0.0
+      graceful-fs: 4.2.11
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: false
+
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
@@ -3708,7 +3704,6 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.11
-    dev: true
 
   /kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
@@ -5034,7 +5029,6 @@ packages:
   /universalify@2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
-    dev: true
 
   /upper-case-first@2.0.2:
     resolution: {integrity: sha512-514ppYHBaKwfJRK/pNC6c/OxfGa0obSnAl106u97Ed0I625Nin96KAjttZF6ZL3e1XLtphxnqrOi9iWgm+u+bg==}

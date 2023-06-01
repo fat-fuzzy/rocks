@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/doc",
 	"name": "@fat-fuzzy/doc",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "Fat Fuzzy Doc",
 	"main": "index.js",
 	"author": "Patricia Boh",
@@ -17,13 +17,13 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/markdown": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-cloudflare": "^2.2.0",
 		"@sveltejs/kit": "^1.15.7",
 		"@types/cookie": "^0.5.1",
-		"eslint-config-custom": "workspace:*",
 		"mdsvex": "^0.10.6",
 		"svelte": "^3.57.0",
 		"svelte-check": "^3.1.4",

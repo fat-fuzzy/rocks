@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/resources",
 	"name": "@fat-fuzzy/resources",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "Fat Fuzzy Resources",
 	"type": "module",
 	"main": "index.js",
