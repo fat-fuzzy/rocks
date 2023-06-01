@@ -1,6 +1,7 @@
 ---
 title: Initial packages and stack
 date: '2022'
+updated: '2023-06-02'
 slug: packages-and-stack
 id: '002'
 tags: ['architecture']
@@ -9,7 +10,7 @@ tags: ['architecture']
 ## Context and Problem
 
 Define initial package structure in Monorepo.
-Meet the following requirements (adapted from `[root]/README.md`)
+Meet the following requirements:
 
 - **Integrates an automated design workflow**
   design changes can be implemented easily and gracefully
@@ -20,6 +21,7 @@ Meet the following requirements (adapted from `[root]/README.md`)
 - **Is well tested and easily testable**
   I can make changes with confidence
 - **Has a low maintenance cost**
+  I want to minimize dependencies, try to keep the repo as focused as possible (this deserves more thought)
 
 ## Considered Options
 
