@@ -1,9 +1,42 @@
-# Notes on WebGL
+# GFX - Web graphics
 
-## Raw WebGL - Nick Desaulniers
+This package contains code from:
 
-Src: https://www.youtube.com/watch?v=H4c8t6myAWU
-Slides: https://nickdesaulniers.github.io/RawWebGL/#/
+- my learning of WebGL
+- subsequent experiments
+- efforts to rationalize and organize my thoughts on these subjects
+
+## Developing
+
+🚧 WIP
+
+### GLSL
+
+```
+import shader from '/some/shader.glsl?raw'
+```
+
+## Tools & Resources
+
+- 👾 Everything related to working with webgl
+  - [MDN WebGL API Doc](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
+  - [WebGL Fundamentals](https://webglfundamentals.org/)
+  - [WebGL Fundamentals - 2](https://webgl2fundamentals.org/)
+  - [The Book of Shaders](https://thebookofshaders.com/)
+  - [Inigo Quilez](https://iquilezles.org/)
+  - [Learn WebGL](https://learnwebgl.brown37.net/index.html)
+  - [Introduction to computer graphics](https://math.hws.edu/graphicsbook/index.html)
+  - [Introduction to WebGL](https://dev.opera.com/articles/introduction-to-webgl-part-1/)
+
+## Notes from WebGL courses
+
+<details>
+<summary><b>Raw WebGL - Nick Desaulniers</b></summary>
+<p>
+
+**Src:** https://www.youtube.com/watch?v=H4c8t6myAWU
+
+**Slides:** https://nickdesaulniers.github.io/RawWebGL/#/
 
 A webGL app consists of three types of assets
 
@@ -141,3 +174,5 @@ Uniforms and Attributes are shader inputs
 - `gl.TRIANGLES`
 - `gl.TRIANGLE_STRIP`
 - `gl.TRIANGLE_FAN`
+
+</p></details>

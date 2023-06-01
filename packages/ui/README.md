@@ -1,28 +1,45 @@
-# create-svelte
+# Fat Fuzzy UI
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Fat Fuzzy UI is a component library that aims to maximize use HTML and CSS's native
+capabilities to produce harmonious and robust designs.
 
-## Creating a project
+The components are built using [SASS](https://sass-lang.com/), [Svelte](https://svelte.dev) and [SvelteKit]("https://kit.svelte.dev/), and the structure of the library as well as the way the components are designed are based on the ideas put forth in [Algorithmic Design](https://every-layout.dev/blog/algorithmic-design/) and [CUBE CSS](https://cube.fyi/).
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Tools & Resources
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Svelte libraries
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+Resources for building a blog site using Svelte and SvelteKit
+
+- [mdsvex](https://mdsvex.pngwn.io/)
+- [bluwy/website](https://github.com/bluwy/website)
+- [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
+
+### Design System
+
+- [CUBE CSS](https://cube.fyi)
+- [Open UI](https://open-ui.org/)
+- [Every Layout blog post on Algorithmic design](https://every-layout.dev/blog/algorithmic-design/)
+- [Inclusive design principles](https://inclusivedesignprinciples.org/)
+- [Inclusive componenets](https://inclusive-components.design/)
+- [Accessible SVG](https://tink.uk/accessible-svg-line-graphs/)
+
+### Design Tokens
+
+- [Creating utility classes with design tokens using SASS](https://www.alwaystwisted.com/articles/creating-utility-classes-with-design-tokens-using-sass)
+- [Style Dictionary](https://amzn.github.io/style-dictionary/)
+  - [Managing and Exporting design tokens with style dictionary](https://www.michaelmang.dev/blog/managing-and-exporting-design-tokens-with-style-dictionary)
+- [Open Props](https://open-props.style/)
 
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
-npm run dev
+pnpm dev
 
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev -- --open
 ```
 
 ## Building
@@ -30,15 +47,9 @@ npm run dev -- --open
 To create a production version of your app:
 
 ```bash
-npm run build
+pnpm build
 ```
 
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
-## GLSL
-
-```
-import shader from '/some/shader.glsl?raw'
-```
