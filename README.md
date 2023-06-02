@@ -13,7 +13,7 @@ This repository is organized into three workspaces:
 <summary><b>apps</b> contains client facing code, organized by project</summary>
 <p>
 
-- **doc** This app is a the documentation website for this project
+- **doc** The documentation website for this project
   - It's accessible here: https://rocks.pages.dev/
 - **sandbox** A frontend sample app app that uses the **ui** library package
   - Used fot testing and experimentation
