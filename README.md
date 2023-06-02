@@ -13,8 +13,7 @@ This repository is organized into three workspaces:
 <summary><b>apps</b> contains client facing code, organized by project</summary>
 <p>
 
-- **doc** The documentation website for this project
-  - It's accessible here: https://rocks.pages.dev/
+- **doc** The documentation website for this project, accessible here: https://rocks.pages.dev/
 - **sandbox** A frontend sample app app that uses the **ui** library package
   - Used fot testing and experimentation
 
@@ -38,12 +37,13 @@ Resources per app
 </p></details>
 
 <details>
-<summary><b>packages</b> contains logic, UI and web graphics libraries, as well as common config</summary>
+<summary><b>packages</b> contains UI, web graphics, logic and experiments libraries, as well as common config</summary>
 <p>
 
-- **config** Common config: eslint, etc
+- **config** common config (eslint, etc)
 
-  The monorepo needs some adjustments as .prettier config is currently duplicated in projects: I believe need to solve a problem specific to my workspace config in VSCode to fix this easily - WIP
+TODO:
+The monorepo needs some cleanup: `.prettier` config is currently duplicated in projects. I think I need to solve a problem specific to my workspace config in VSCode to fix this easily
 
 - **design** a design sandbox
   - isolates design work from the UI library
@@ -57,7 +57,7 @@ Resources per app
 
 - **markdown** A utility package for loading markdown files
 
-  - based on [bluwy/website/packages](https://github.com/bluwy/website/tree/master/packagess)
+  - based on [bluwy website markdown package](https://github.com/bluwy/website/tree/master/packages/markdown)
 
 - **ui** A frontend component library
   - A UI library that can be used as a common source of truth for web projects
@@ -80,11 +80,10 @@ This repository contains several packages, which can be used together or indepen
 
 🚧 WIP
 
-- [Vitest](https://vitest.dev/)
-- [Testing library](https://github.com/testing-library)
-- [Playwright](https://playwright.dev/)
+- Test runner [Vitest](https://vitest.dev/)
+  - [Examples](https://github.com/vitest-dev/vitest/tree/main/examples)
 
-### Maintenance
+### Repository Tools
 
 - Monorepo
   - [pnpm](https://pnpm.io/)
