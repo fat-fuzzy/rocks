@@ -15,6 +15,16 @@ Resources for building a blog site using Svelte and SvelteKit
 - [bluwy/website](https://github.com/bluwy/website)
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
 
+### Front End Testing
+
+🚧 WIP
+
+- Test runner [Vitest](https://vitest.dev/)
+  - [Svelte example](https://github.com/vitest-dev/vitest/tree/main/examples/svelte)
+  - [Playwright example](https://github.com/vitest-dev/vitest/tree/main/examples/playwright)
+- [DOM Testing Library](https://github.com/testing-library/dom-testing-library)
+- E2E tests [Playwright](https://playwright.dev/)
+
 ### Design System
 
 - [CUBE CSS](https://cube.fyi)
