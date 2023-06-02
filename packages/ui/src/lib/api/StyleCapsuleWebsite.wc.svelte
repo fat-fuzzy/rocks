@@ -1,15 +1,14 @@
 <svelte:options tag="style-capsule-website" />
 
 <script>
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
+	import {onMount} from 'svelte'
+	import {browser} from '$app/environment'
 
 	let styles
 	let styleElement
 
-	onMount(
-	async()=>{
-		styles = await import('../styles/app/client/_main.scss?inline')
+	onMount(async () => {
+		styles = await import('../styles/app/sandbox/_index.scss?inline')
 		if (browser) {
 			styleElement = document.createElement('style')
 			styleElement.textContent = String(styles.default)
@@ -17,14 +16,13 @@
 	})
 </script>
 
-
 {#if styles && styleElement}
 	<div id="style-this-content">
-		<button class="primary">Test Inside Style Capsule UI</button>	
-		<slot/>
+		<button class="primary">Test Inside Style Capsule UI</button>
+		<slot />
 	</div>
 {/if}
 
 {#if styleElement}
-{@html styleElement}
+	{@html styleElement}
 {/if}

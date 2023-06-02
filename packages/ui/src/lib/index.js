@@ -40,9 +40,14 @@ import Api from './api/Api.svelte'
 import Element from './api/Element.svelte'
 import Collection from './api/Collection.svelte'
 import * as stylesApi from './api/styles-api'
-import StyleCapsule from './api/StyleCapsule.wc.svelte'
-import StyleCapsuleDoc from './api/StyleCapsuleDoc.wc.svelte'
-import StyleCapsuleWebsite from './api/StyleCapsuleWebsite.wc.svelte'
+
+/**
+ * Api webcomponents - WIP
+ * - Idea:  be able to test UI Library for different apps using web components to encapsulate styles - not working yet
+ */
+// import StyleCapsule from './api/StyleCapsule.wc.svelte'
+// import StyleCapsuleDoc from './api/StyleCapsuleDoc.wc.svelte'
+// import StyleCapsuleWebsite from './api/StyleCapsuleWebsite.wc.svelte'
 
 /**
  * Stores
@@ -111,9 +116,9 @@ const api = {
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder
 const sass = {
-	ui: './styles/app/ui/_main.scss',
-	doc: './styles/app/doc/_main.scss',
-	website: './styles/app/client/_main.scss',
+	ui: './styles/app/ui/_index.scss',
+	doc: './styles/app/doc/_index.scss',
+	website: './styles/app/sandbox/_index.scss',
 }
 
 // [TODO:] Not sure this is useful
