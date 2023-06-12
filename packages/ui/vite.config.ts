@@ -11,12 +11,6 @@ const config: UserConfig = {
 				customElement: true,
 			},
 		}),
-		svelte({
-			include: /\.svelte$/ as any,
-			compilerOptions: {
-				customElement: false,
-			},
-		}),
 	],
 }
 
