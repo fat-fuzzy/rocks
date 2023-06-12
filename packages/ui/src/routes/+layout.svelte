@@ -48,5 +48,5 @@
 </footer>
 
 <style lang="scss" global>
-	@forward '../lib/styles/app/ui';
+	@forward '../lib/styles/theme/ui';
 </style>

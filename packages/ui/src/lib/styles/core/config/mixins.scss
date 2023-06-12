@@ -31,21 +31,32 @@
 // $current_cssvars holds the CSS variables that have been generated so far. It is initially set to null
 $current_cssvars: ();
 
-@mixin generateCssVars($design_tokens) {
+@mixin generateCssVars($design_tokens, $prefix) {
 	$current_cssvars: map.merge($current_cssvars, $design_tokens);
 	:root {
 		@each $name, $value in $design_tokens {
-			--#{$name}: #{$value};
+			#{$prefix}-#{$name}: #{$value};
+		}
+	}
+}
+
+@mixin mapCssVars($design_tokens, $prefix) {
+	$current_cssvars: map.merge($current_cssvars, $design_tokens);
+	:root {
+		@each $name, $value in $design_tokens {
+			#{$prefix}-#{$name}: #{$value};
+			--#{$name}: var(#{$prefix}-#{$name});
 		}
 	}
 }
 
 @mixin generateModularScale(
-	$design_tokens,
+	// $design_tokens,
 	$steps: $modular-scale-steps,
-	$breakpoint: $max-breakpoint
+	$breakpoint: $max-breakpoint,
+	// $prefix
 ) {
-	@include generateCssVars($design_tokens);
+	// @include generateCssVars($design_tokens, $prefix); generate tokens before calling this function
 	:root {
 		--fluid-bp: calc(
 			calc(var(--fluid-screen) - calc((var(--fluid-min-width) / 16) * 1rem)) /
@@ -98,11 +109,9 @@ $current_cssvars: ();
 * It can probably be improved with better usage of sass syntax
 */
 @mixin generateTypographicScale(
-	$design_tokens,
 	$steps-plus: $modular-scale-steps-plus,
 	$steps-minus: $modular-scale-steps-minus
 ) {
-	@include generateCssVars($design_tokens);
 	$width-min: calc(var(--fluid-min-width) / 16);
 	$width-max: calc(var(--fluid-max-width) / 16);
 	$size-min: calc(var(--fluid-min-size) / 16); // Min font size
@@ -168,7 +177,7 @@ $current_cssvars: ();
 	}
 }
 
-@mixin theme-main(
+@mixin theme-custom(
 	$breakpoints,
 	$layout,
 	$scale-space-pairs,
@@ -177,23 +186,61 @@ $current_cssvars: ();
 	$modular-scale-steps-plus,
 	$modular-scale-steps-minus,
 	$typography,
-	$colors
+	$colors,
+	$prefix
 ) {
-	@include generateCssVars($breakpoints);
+	@include mapCssVars($breakpoints, $prefix);
 
 	// WIP - still experimenting with scale
-	@include generateCssVars($scale-space-pairs);
-	@include generateCssVars($size-scale);
+	@include mapCssVars($scale-space-pairs, $prefix);
+	@include mapCssVars($size-scale, $prefix);
+
+	// Generate Typographic variables
+	@include mapCssVars($modular-scale, $prefix);
 	@include generateTypographicScale(
-		$modular-scale,
+		// $modular-scale,
 		$modular-scale-steps-plus,
-		$modular-scale-steps-minus
+		$modular-scale-steps-minus,
+		// $prefix
 	);
 	// -----------
 
-	@include generateCssVars($layout);
-	@include generateCssVars($typography);
-	@include generateCssVars($colors);
+	@include mapCssVars($layout, $prefix);
+	@include mapCssVars($typography, $prefix);
+	@include mapCssVars($colors, $prefix);
+}
+
+@mixin theme-default(
+	$breakpoints,
+	$layout,
+	$scale-space-pairs,
+	$size-scale,
+	$modular-scale,
+	$modular-scale-steps-plus,
+	$modular-scale-steps-minus,
+	$typography,
+	$colors,
+	$prefix
+) {
+	@include generateCssVars($breakpoints, $prefix);
+
+	// WIP - still experimenting with scale
+	@include generateCssVars($scale-space-pairs, $prefix);
+	@include generateCssVars($size-scale, $prefix);
+
+	// Generate Typographic variables
+	@include generateCssVars($modular-scale, $prefix);
+	@include generateTypographicScale(
+		// $modular-scale,
+		$modular-scale-steps-plus,
+		$modular-scale-steps-minus,
+		// $prefix
+	);
+	// -----------
+
+	@include generateCssVars($layout, $prefix);
+	@include generateCssVars($typography, $prefix);
+	@include generateCssVars($colors, $prefix);
 }
 
 //== MEDIA QUERIES

@@ -1,6 +1,4 @@
 /* Global config */
-
-// TODO: find a way to override in client
 @forward '../../core/config';
 @forward '../../core';
 @forward './pages';
@@ -12,7 +10,13 @@
 @use './color.scss';
 @use '../../core/config/mixins'; // TODO: find a way to override in client
 
-@include mixins.theme-main(
+// Generate Tokens
+$theme-prefix: '--sandbox';
+
+// Generate Tokens
+// $theme-prefix: '-'; // creates CSS variables without a specific app prefix
+
+@include mixins.theme-custom(
 	layout.$breakpoints,
 	layout.$layout,
 	scale.$scale-space-pairs,
@@ -21,5 +25,6 @@
 	scale.$modular-scale-steps-plus,
 	scale.$modular-scale-steps-minus,
 	typography.$typography,
-	color.$colors
+	color.$colors,
+	$theme-prefix
 );
