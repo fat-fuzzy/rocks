@@ -46,8 +46,6 @@ import * as stylesApi from './api/styles-api'
  * - Idea:  be able to test UI Library for different apps using web components to encapsulate styles - not working yet
  */
 // import StyleCapsule from './api/StyleCapsule.wc.svelte'
-// import StyleCapsuleDoc from './api/StyleCapsuleDoc.wc.svelte'
-// import StyleCapsuleWebsite from './api/StyleCapsuleWebsite.wc.svelte'
 
 /**
  * Stores

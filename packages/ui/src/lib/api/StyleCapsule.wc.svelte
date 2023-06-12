@@ -1,24 +1,27 @@
-<svelte:options tag="style-capsule-ui" />
+<svelte:options tag="style-capsule" />
 
 <script>
 	import {onMount} from 'svelte'
 	import {browser} from '$app/environment'
 
+	export let theme
 	let styles
 	let styleElement
 
 	onMount(async () => {
-		styles = await import('../styles/app/ui/_index.scss?inline')
-		if (browser) {
-			styleElement = document.createElement('style')
-			styleElement.textContent = styles.default
+		if (theme) {
+			styles = await import(`../styles/theme/${theme}/_index.scss`)
+			if (browser) {
+				styleElement = document.createElement('style')
+				styleElement.textContent = styles.default
+			}
 		}
 	})
 </script>
 
 {#if styles && styleElement}
 	<div id="style-this-content">
-		<button class="primary">Test Inside Style Capsule UI</button>
+		<button class="primary">Test Inside Style Capsule: {theme}</button>
 		<slot />
 	</div>
 {/if}
