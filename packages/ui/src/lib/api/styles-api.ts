@@ -593,7 +593,7 @@ const layouts: LayoutStyles = {
 	}),
 }
 
-export const getDefaultOptions = () => new StylesApi({app, shared, blocks, layouts})
+export const getDefaultStyleOptions = () => new StylesApi({app, shared, blocks, layouts})
 
 export const DEFAULT_STYLES: StyleTree = {
 	app: {
