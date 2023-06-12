@@ -7,7 +7,7 @@
 	import Fieldset from '../blocks/forms/Fieldset.svelte'
 	import InputRadio from '../blocks/forms/InputRadio.svelte'
 	import InputCheck from '../blocks/forms/InputCheck.svelte'
-	import {getDefaultOptions} from './styles-api'
+	import {getDefaultStyleOptions} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
 	export let title = ''
@@ -24,9 +24,9 @@
 	let apiBreakpoint = 'xxl'
 	let apiVariant = ''
 
-	let ApiOptions = getDefaultOptions()
+	let styleOptions = getDefaultStyleOptions()
 	let styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
-	let formOptions = styleCategories.map((cat) => ApiOptions.getCategoryOptions(cat))
+	let formOptions = styleCategories.map((cat) => styleOptions.getCategoryOptions(cat))
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -41,8 +41,8 @@
 			const familyValue = {[family]: styleValue}
 			selected[category] = {...selected[category], ...familyValue}
 		})
-		ApiOptions.applyStyles(selected)
-		selectedStore.set(ApiOptions.getStyleTree()) // This updates on the client if JS is available
+		styleOptions.applyStyles(selected)
+		selectedStore.set(styleOptions.getStyleTree()) // This updates on the client if JS is available
 	}
 
 	function handleInput(event, name: string) {
@@ -76,8 +76,6 @@
 
 	function handleToggle(event: CustomEvent, familyName: string, id: string) {
 		const selected = event.detail.selected // TODO: no multiple values for now
-		console.log('selected')
-		console.log(selected)
 		if (selected.length) {
 			const payload = {
 				name: familyName,
@@ -94,9 +92,9 @@
 
 	$: {
 		selected = $selectedStore
-		selected && ApiOptions.applyStyles(selected)
+		selected && styleOptions.applyStyles(selected)
 		styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
-		formOptions = styleCategories.map((cat) => ApiOptions.getCategoryOptions(cat))
+		formOptions = styleCategories.map((cat) => styleOptions.getCategoryOptions(cat))
 	}
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -126,8 +124,8 @@
 >
 	{#each formOptions as styles}
 		{#if styles}
-			{@const styleFamilies = Object.keys(styles)}
-			{#each styleFamilies as familyName}
+			{@const styleFamilyNames = Object.keys(styles)}
+			{#each styleFamilyNames as familyName}
 				{@const styleFamily = styles[familyName]}
 				{#if styleFamily.includes(title) && !styleFamily.excludes(category) && !styleFamily.excludes(title)}
 					<Fieldset
