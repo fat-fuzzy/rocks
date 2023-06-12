@@ -8,7 +8,7 @@ export class UiState {
 	 */
 	constructor(styles: StyleTree | undefined = undefined) {
 		if (!this.api) {
-			this.api = api.stylesApi.getDefaultOptions()
+			this.api = api.stylesApi.getDefaultStyleOptions()
 		}
 		if (styles) {
 			this.api.applyStyles(styles)
