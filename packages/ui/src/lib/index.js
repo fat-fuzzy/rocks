@@ -16,7 +16,7 @@ import Button from './blocks/buttons/Button.svelte'
 import Toggle from './blocks/buttons/Toggle.svelte'
 import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
 import ToggleMenu from './blocks/buttons/ToggleMenu.svelte'
-import Feedback from './blocks/cards/Feedback.svelte'
+// import Feedback from './blocks/cards/Feedback.svelte'
 // import Canvas from './blocks/media/Canvas.svelte'
 import InputCheck from './blocks/forms/InputCheck.svelte'
 import InputRadio from './blocks/forms/InputRadio.svelte'
@@ -110,15 +110,16 @@ const api = {
 	Api,
 	Collection,
 	Element,
+	// StyleCapsule,
 	stylesApi,
 	stylesStore,
 }
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder
 const sass = {
-	ui: './styles/app/ui/_index.scss',
-	doc: './styles/app/doc/_index.scss',
-	website: './styles/app/sandbox/_index.scss',
+	ui: './styles/theme/ui/_index.scss',
+	doc: './styles/theme/doc/_index.scss',
+	website: './styles/theme/sandbox/_index.scss',
 }
 
 // [TODO:] Not sure this is useful
