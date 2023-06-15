@@ -13,10 +13,10 @@ Further guidance for AWS architecture can be found here:
 - [AWS Well Architected Labs](https://www.wellarchitectedlabs.com/)
 
 - [AWS documentation examples](https://github.com/awsdocs/aws-doc-sdk-examples)
-  S3 Examples:
 
-- [CloudFront with S3 Bucket Origin](https://www.wellarchitectedlabs.com/security/100_labs/100_cloudfront_with_s3_bucket_origin/)
-- [Amazon S3 JavaScript SDK v3 code examples](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/s3)
+- S3 Examples:
+  - [CloudFront with S3 Bucket Origin](https://www.wellarchitectedlabs.com/security/100_labs/100_cloudfront_with_s3_bucket_origin/)
+  - [Amazon S3 JavaScript SDK v3 code examples](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/s3)
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Further guidance for AWS architecture can be found here:
 
 [Example IAM identity-based policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html)
 
-Create policy:
+Create policy
 
 ```shell
 aws iam create-policy \
