@@ -35,5 +35,5 @@ COPY turbo.json turbo.json
 RUN pnpm turbo run build
 
 # Serve
-FROM nginx:1.23.4-alpine
+FROM nginx:1.25.1-alpine
 COPY --from=installer /app/apps/doc/build /usr/share/nginx/html
