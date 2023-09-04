@@ -8,10 +8,10 @@ const nav = [
 		slug: 'ui',
 		title: 'RevealNav Example',
 		items: [
-			{
-				slug: 'design-tokens',
-				title: 'Design Tokens',
-			},
+			// {
+			// 	slug: 'design-tokens',
+			// 	title: 'Design Tokens',
+			// },
 			{
 				slug: 'blocks',
 				title: 'Block',
