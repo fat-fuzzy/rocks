@@ -45,5 +45,8 @@
 		"@fat-fuzzy/config": "workspace:*",
 		"@playwright/test": "^1.30.0"
 	},
-	"type": "module"
+	"type": "module",
+	"publishConfig": {
+		"registry": "http://localhost:4873"
+	}
 }
