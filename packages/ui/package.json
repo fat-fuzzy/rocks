@@ -28,7 +28,7 @@
 		"@sveltejs/package": "^2.0.2",
 		"@sveltejs/vite-plugin-svelte": "2.4.1",
 		"@xstate/svelte": "^2.0.1",
-		"postcss": "8.4.23",
+		"postcss": "8.4.31",
 		"postcss-load-config": "4.0.1",
 		"sass": "^1.60.0",
 		"svelte": "^3.57.0",
