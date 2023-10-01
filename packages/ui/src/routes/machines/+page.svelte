@@ -1,6 +1,6 @@
 <script>
-	import Toggle from '$blocks/buttons/Toggle.svelte'
-	import Fieldset from '$blocks/forms/Fieldset.svelte'
+	import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
+	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 
 	export let size = 'md'
 	export let variant = 'primary'

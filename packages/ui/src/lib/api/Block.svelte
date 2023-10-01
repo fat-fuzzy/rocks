@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './styles-api'
-	import {selectedStore} from '../stores/api'
+	import {selectedStore} from '$lib/stores/api'
 
 	let selected: StyleTree
 	export let title = ''

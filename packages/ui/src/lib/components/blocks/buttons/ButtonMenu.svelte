@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {browser} from '$app/environment'
 	import {createEventDispatcher} from 'svelte'
-	import Button from '../buttons/Button.svelte'
-	import mocks from '../../data/mocks'
+	import Button from '$lib/components/blocks/buttons/Button.svelte'
+	import mocks from '$lib/data/mocks'
 
 	const dispatch = createEventDispatcher()
 	export let id = 'button-menu'

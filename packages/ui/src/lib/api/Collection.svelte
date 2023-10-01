@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import Sidebar from '../layouts/Sidebar.svelte'
+	import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 	import {page} from '$app/stores'
-	import {selectedStore} from '../stores/api'
+	import {selectedStore} from '$lib/stores/api'
 
-	import mocks from '../data/mocks' // TODO: load text from README.md
+	import mocks from '$lib/data/mocks' // TODO: load text from README.md
 
 	export let title = ''
 	export let depth = 0

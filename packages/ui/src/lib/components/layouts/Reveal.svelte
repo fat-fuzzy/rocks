@@ -1,6 +1,6 @@
 <script lang="ts">
-	import format from '../utils/format'
-	import {clickOutside} from '../utils/click-outside.js'
+	import format from '$lib/utils/format'
+	import {clickOutside} from '$lib/utils/click-outside.js'
 
 	export let layout = ''
 	export let size = ''

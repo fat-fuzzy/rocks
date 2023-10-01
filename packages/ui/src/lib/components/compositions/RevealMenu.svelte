@@ -1,10 +1,10 @@
 <script lang="ts">
 	import {browser} from '$app/environment'
-	import {clickOutside} from '../utils/click-outside.js'
+	import {clickOutside} from '$lib/utils/click-outside.js'
 	import {createEventDispatcher} from 'svelte'
-	import format from '../utils/format'
-	import Button from '../blocks/buttons/Button.svelte'
-	import mocks from '../data/mocks'
+	import format from '$lib/utils/format'
+	import Button from '$lib/components/blocks/buttons/Button.svelte'
+	import mocks from '$lib/data/mocks'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'

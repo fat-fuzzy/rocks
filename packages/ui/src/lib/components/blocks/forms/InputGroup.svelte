@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import Fieldset from './Fieldset.svelte'
-	import InputRadio from './InputRadio.svelte'
-	import InputCheck from './InputCheck.svelte'
+	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
+	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
+	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()

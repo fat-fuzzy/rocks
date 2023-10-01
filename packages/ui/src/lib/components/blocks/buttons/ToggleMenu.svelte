@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Toggle from '../buttons/Toggle.svelte'
+	import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 	import {createEventDispatcher} from 'svelte'
-	import mocks from '../../data/mocks'
+	import mocks from '$lib/data/mocks'
 
 	const dispatch = createEventDispatcher()
 

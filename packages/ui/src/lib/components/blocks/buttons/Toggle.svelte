@@ -4,8 +4,8 @@
 	import {onMount, createEventDispatcher} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
 	import {createMachine} from 'xstate'
-	import format from '../../utils/format'
-	import mocks from '../../data/mocks'
+	import format from '$lib/utils/format'
+	import mocks from '$lib/data/mocks'
 
 	const dispatch = createEventDispatcher()
 

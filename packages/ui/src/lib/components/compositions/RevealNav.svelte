@@ -1,8 +1,8 @@
 <script lang="ts">
-	import format from '../utils/format'
-	import {clickOutside} from '../utils/click-outside.js'
-	import LinkList from '../blocks/navs/LinkList.svelte'
-	import mocks from '../data/mocks'
+	import format from '$lib/utils/format'
+	import {clickOutside} from '$lib/utils/click-outside.js'
+	import LinkList from '$lib/components/blocks/navs/LinkList.svelte'
+	import mocks from '$lib/data/mocks'
 
 	export let layout = 'stack'
 	export let size = ''

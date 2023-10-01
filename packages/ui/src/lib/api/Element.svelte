@@ -6,7 +6,7 @@
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
 	import type {StyleTree} from './styles-api'
-	import {selectedStore} from '../stores/api'
+	import {selectedStore} from '$lib/stores/api'
 
 	export let title = ''
 	export let depth = 0

@@ -2,65 +2,64 @@
 /**
  * Layout components
  */
-import Burrito from './layouts/Burrito.svelte'
-import Reveal from './layouts/Reveal.svelte'
-import Sidebar from './layouts/Sidebar.svelte'
-import Stack from './layouts/Stack.svelte'
-import Switcher from './layouts/Switcher.svelte'
+import Burrito from '$lib/components/layouts/Burrito.svelte'
+import Reveal from '$lib/components/layouts/Reveal.svelte'
+import Sidebar from '$lib/components/layouts/Sidebar.svelte'
+import Stack from '$lib/components/layouts/Stack.svelte'
+import Switcher from '$lib/components/layouts/Switcher.svelte'
 
 /**
  * Block components
  */
 
-import Button from './blocks/buttons/Button.svelte'
-import Toggle from './blocks/buttons/Toggle.svelte'
-import ButtonMenu from './blocks/buttons/ButtonMenu.svelte'
-import ToggleMenu from './blocks/buttons/ToggleMenu.svelte'
-// import Feedback from './blocks/cards/Feedback.svelte'
-// import Canvas from './blocks/media/Canvas.svelte'
-import InputCheck from './blocks/forms/InputCheck.svelte'
-import InputRadio from './blocks/forms/InputRadio.svelte'
-import InputRange from './blocks/forms/InputRange.svelte'
-import InputFile from './blocks/forms/InputFile.svelte'
-import Nav from './blocks/navs/Nav.svelte'
-// import Sketch from './blocks/graphics/Sketch.svelte'
+import Button from '$lib/components/blocks/buttons/Button.svelte'
+import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
+import ButtonMenu from '$lib/components/blocks/buttons/ButtonMenu.svelte'
+import ToggleMenu from '$lib/components/blocks/buttons/ToggleMenu.svelte'
+// import Feedback from '$lib/components/blocks/cards/Feedback.svelte'
+// import Canvas from '$lib/components/blocks/media/Canvas.svelte'
+import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
+import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
+import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
+import InputFile from '$lib/components/blocks/forms/InputFile.svelte'
+import Nav from '$lib/components/blocks/navs/Nav.svelte'
+// import Sketch from '$lib/components/blocks/graphics/Sketch.svelte'
 
 /**
  * Composition components
  */
-import Header from './compositions/Header.svelte'
-import RevealMenu from './compositions/RevealMenu.svelte'
-import RevealNav from './compositions/RevealNav.svelte'
+import Header from '$lib/components/compositions/Header.svelte'
+import RevealMenu from '$lib/components/compositions/RevealMenu.svelte'
+import RevealNav from '$lib/components/compositions/RevealNav.svelte'
 
 /**
  * Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
-import Api from './api/Api.svelte'
-import Element from './api/Element.svelte'
-import Collection from './api/Collection.svelte'
-import * as stylesApi from './api/styles-api'
+import Api from '$lib/api/Api.svelte'
+import Element from '$lib/api/Element.svelte'
+import Collection from '$lib/api/Collection.svelte'
+import * as stylesApi from '$lib/api/styles-api'
 
 /**
  * Api webcomponents - WIP
  * - Idea:  be able to test UI Library for different apps using web components to encapsulate styles - not working yet
  */
-// import StyleCapsule from './api/StyleCapsule.wc.svelte'
+// import StyleCapsule from '$lib/api/StyleCapsule.wc.svelte'
 
 /**
  * Stores
  */
-import * as gfx from './stores/gfx'
-import * as theme from './stores/theme'
-import * as ui from './stores/ui'
-import * as intl from './stores/intl'
-import * as stylesStore from './stores/api'
+import * as theme from '$lib/stores/theme'
+import * as ui from '$lib/stores/ui'
+import * as intl from '$lib/stores/intl'
+import * as stylesStore from '$lib/stores/api'
 
 /**
  * Utilities
  */
-import * as constants from './types/constants'
-import * as clickOutside from './utils/click-outside'
+import * as constants from '$lib/types/constants'
+import * as clickOutside from '$lib/utils/click-outside'
 
 /***************************************************
  * Prepare Exports
@@ -69,7 +68,6 @@ const utils = {
 	clickOutside,
 }
 const stores = {
-	gfx,
 	theme,
 	ui,
 	intl,
@@ -115,9 +113,9 @@ const api = {
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder
 const sass = {
-	ui: './styles/theme/ui/_index.scss',
-	doc: './styles/theme/doc/_index.scss',
-	website: './styles/theme/sandbox/_index.scss',
+	ui: '$lib/styles/theme/ui/_index.scss',
+	doc: '$lib/styles/theme/doc/_index.scss',
+	website: '$lib/styles/theme/sandbox/_index.scss',
 }
 
 // [TODO:] Not sure this is useful

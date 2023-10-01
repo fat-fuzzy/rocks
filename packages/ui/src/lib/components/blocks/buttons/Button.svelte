@@ -1,8 +1,8 @@
 <script lang="ts">
 	// Inputs
 	import {browser} from '$app/environment'
-	import format from '../../utils/format'
-	import mocks from '../../data/mocks'
+	import format from '$lib/utils/format'
+	import mocks from '$lib/data/mocks'
 
 	export let id = 'button'
 	export let name = 'button'
