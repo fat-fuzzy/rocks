@@ -18,6 +18,7 @@ import ButtonMenu from '$lib/components/blocks/buttons/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/blocks/buttons/ToggleMenu.svelte'
 // import Feedback from '$lib/components/blocks/cards/Feedback.svelte'
 // import Canvas from '$lib/components/blocks/media/Canvas.svelte'
+import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
@@ -78,6 +79,7 @@ const blocks = {
 	Toggle,
 	ButtonMenu,
 	ToggleMenu,
+	Fieldset,
 	// Feedback,
 	// Canvas, TODO: init canvas with example Sketch
 	Nav,
@@ -115,7 +117,8 @@ const api = {
 const sass = {
 	ui: '$lib/styles/theme/ui/_index.scss',
 	doc: '$lib/styles/theme/doc/_index.scss',
-	website: '$lib/styles/theme/sandbox/_index.scss',
+	play: '$lib/styles/theme/play/_index.scss',
+	sandbox: '$lib/styles/theme/sandbox/_index.scss',
 }
 
 // [TODO:] Not sure this is useful
