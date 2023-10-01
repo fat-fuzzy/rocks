@@ -1,0 +1,36 @@
+{
+	"name": "@fat-fuzzy/play",
+	"version": "0.1.0",
+	"description": "Fat Fuzzy Play - code experiments",
+	"author": "Patricia Boh",
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "svelte-kit sync && svelte-package",
+		"prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
+		"test": "playwright test",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest"
+	},
+	"dependencies": {
+		"@fat-fuzzy/lib": "workspace:*",
+		"@fat-fuzzy/ui": "workspace:*",
+		"@sveltejs/kit": "^1.25.1",
+		"svelte": "^4.2.1"
+	},
+	"devDependencies": {
+		"@fat-fuzzy/config": "workspace:*",
+		"@playwright/test": "^1.38.1",
+		"@sveltejs/adapter-cloudflare": "^2.3.3",
+		"@sveltejs/package": "^2.2.2",
+		"svelte-check": "^3.5.2",
+		"svelte-preprocess": "^5.0.4",
+		"three": "0.157.0",
+		"tslib": "^2.6.2",
+		"typescript": "^5.2.2",
+		"vite": "^4.4.9",
+		"vitest": "^0.34.6"
+	},
+	"type": "module"
+}
