@@ -1,10 +1,10 @@
 <script lang="ts">
 	import {theme} from '$lib/stores/theme' // TODO: get theme from system
 	import {onMount, afterUpdate} from 'svelte'
-	import Geometry from '$lib/ui/graphics/Geometry.svelte'
-	import Player from '$lib/ui/graphics/Player.svelte'
+	import Geometry from '$lib/components/graphics/Geometry.svelte'
+	import Player from '$lib/components/graphics/Player.svelte'
 
-	export let sketch
+	export let scene
 	export let title: string
 	export let dimensions: string
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
@@ -23,14 +23,14 @@
 		showDetails = !showDetails
 	}
 	function update(event) {
-		sketch.update(event.detail.value)
+		scene.update(event.detail.value)
 	}
 	onMount(() => {
-		programInfo = sketch.main(canvas)
+		programInfo = scene.main(canvas)
 		geometry = programInfo.geometry
 	})
 	afterUpdate(() => {
-		programInfo = sketch.main(canvas)
+		programInfo = scene.main(canvas)
 		geometry = programInfo.geometry
 	})
 	// TODO clean gl data when switching animations
@@ -47,7 +47,7 @@
 				You need HTML5 canvas support to display this content
 			</canvas>
 		</div>
-		<Player {sketch} {canvas} />
+		<Player {scene} />
 	</div>
 	<aside class={showDetails ? 'l:side:xxs' : 'hide:rm-node'}>
 		<details open>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {blocks} from '@fat-fuzzy/ui'
-	const {Feedback} = blocks
+	// const {Feedback} = blocks
 
 	$: sketches = $page.data.sketches
 

@@ -15,9 +15,11 @@
 	},
 	"author": "Patricia Boh",
 	"license": "MIT",
+	"dependencies": {
+		"@fat-fuzzy/ui": "workspace:*"
+	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "^1.38.1",
 		"@sveltejs/adapter-cloudflare": "^2.3.3",
 		"@sveltejs/kit": "^1.25.1",

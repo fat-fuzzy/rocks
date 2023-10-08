@@ -1,15 +1,13 @@
 <script lang="ts">
 	import {theme} from '$lib/stores/theme'
 
-	import {blocks} from '@fat-fuzzy/ui'
-	const {Button} = blocks
+	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
-	export let canvas: HTMLCanvasElement
-	export let sketch
+	export let scene
 	let frame: number
 
 	const loop = () => {
-		sketch.draw()
+		scene.draw()
 		frame = requestAnimationFrame((t) => {
 			// call requestAnimationFrame again with parameters
 			loop()
@@ -20,7 +18,7 @@
 
 	const stop = () => {
 		cancelAnimationFrame(frame)
-		sketch.clear()
+		scene.clear()
 	}
 
 	const pause = () => cancelAnimationFrame(frame)

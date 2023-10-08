@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {createEventDispatcher, onMount} from 'svelte'
 
-	import Position from '$lib/ui/graphics/Position.svelte'
-	import Scale from '$lib/ui/graphics/Scale.svelte'
-	import Rotation from '$lib/ui/graphics/Rotation.svelte'
+	import Position from '$lib/components/graphics/Position.svelte'
+	import Scale from '$lib/components/graphics/Scale.svelte'
+	import Rotation from '$lib/components/graphics/Rotation.svelte'
 
 	export let canvasWidth: number
 	export let canvasHeight: number

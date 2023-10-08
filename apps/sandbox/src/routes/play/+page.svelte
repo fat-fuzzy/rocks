@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type {PageData} from './$types'
-	import {blocks, layouts} from '@fat-fuzzy/ui'
+	import {compositions, graphics, layouts} from '@fat-fuzzy/ui'
 
 	export let data: PageData
 	let {sketches} = data
 	const {Sidebar} = layouts
-	const {Sketch, RevealNav} = blocks
+	const {RevealNav} = compositions
+	const {Sketch} = graphics
 
 	let sketchId = '001'
 	let title = ''
@@ -30,7 +31,9 @@
 
 <header class="header-page">
 	<h1>👾 Play</h1>
-	{#if sketchData} <h2>&nbsp;❤︎&nbsp;{title}&nbsp;{emoji}</h2> {/if}
+	{#if sketchData}
+		<h2>&nbsp;❤︎&nbsp;{title}&nbsp;{emoji}</h2>
+	{/if}
 </header>
 
 <Sidebar>
