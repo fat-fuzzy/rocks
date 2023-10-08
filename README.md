@@ -91,9 +91,21 @@ This repository contains several packages, which can be used together or indepen
 - Code / Env
   - [docker](https://www.docker.com/) - 🚧 WIP
   - [changesets](https://github.com/changesets/changesets) - 🚧 WIP
+    - Generate a new changeset with the command: `pnpm changeset`
   - [commitizen](https://github.com/commitizen/cz-cli) - 🚧 WIP
+  - [verdaccio](https://verdaccio.org/) - 🚧 WIP
+    - Install verdaccio: https://verdaccio.org/docs/installation
+    - Using a verdaccio private registry:
+      - Launch the private registry with the command: `verdaccio`
+      - To publish a package to the private registry, run the following command in the package's root directory :
+        ```
+        pnpm publish --registry http://localhost:4873
+        ```
+      - Use the package in another repository that has access to the private registry:
+        ```
+        pnpm i --registry http://localhost:4873
+        ```
   - TODO
-    - [verdaccio](https://verdaccio.org/)
     - [stylelint](https://stylelint.io/)
 
 ## Licenses
