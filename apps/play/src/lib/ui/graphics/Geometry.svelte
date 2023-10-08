@@ -1,18 +1,19 @@
 <script lang="ts">
 	import {createEventDispatcher, onMount} from 'svelte'
 
-	import lib from '@fat-fuzzy/lib'
 	import Position from '$lib/ui/graphics/Position.svelte'
 	import Scale from '$lib/ui/graphics/Scale.svelte'
 	import Rotation from '$lib/ui/graphics/Rotation.svelte'
-
-	const mathUtils = lib.math.utils
 
 	export let canvasWidth: number
 	export let canvasHeight: number
 	export let geometry
 
 	const dispatch = createEventDispatcher()
+
+	function degToRad(degrees) {
+		return degrees * (Math.PI / 180)
+	}
 
 	let update = () =>
 		dispatch('update', {
@@ -35,8 +36,8 @@
 
 	$: maxX = canvasWidth
 	$: maxY = canvasHeight
-	$: radCoordX = Math.cos(mathUtils.degToRad(angle))
-	$: radCoordY = Math.sin(mathUtils.degToRad(angle))
+	$: radCoordX = Math.cos(degToRad(angle))
+	$: radCoordY = Math.sin(degToRad(angle))
 	$: translation = [coordX, coordY]
 	$: rotation = [radCoordX, radCoordY]
 	$: scale = [scaleX, scaleY]
