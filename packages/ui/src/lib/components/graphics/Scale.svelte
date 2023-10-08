@@ -1,44 +1,48 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import {blocks} from '@fat-fuzzy/ui'
-	const {InputRange, Fieldset} = blocks
-
-	const dispatch = createEventDispatcher()
+	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
+	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 
 	export let size = 'xxs'
-	export let coordX = 0
-	export let coordY = 0
+	export let scaleX = 0
+	export let scaleY = 0
+	export let minX = 0
 	export let maxX = 0
+	export let minY = 0
 	export let maxY = 0
 	export let label = ''
-	const legend = 'Position'
+
+	const dispatch = createEventDispatcher()
+	const legend = 'Scale'
 
 	function updateX() {
 		dispatch('input', {
-			value: coordX,
+			value: scaleX,
 		})
 	}
 
 	function updateY() {
 		dispatch('input', {
-			value: coordY,
+			value: scaleY,
 		})
 	}
 </script>
 
 <Fieldset {legend} {size}>
 	<InputRange
-		bind:value={coordX}
-		label="{`${label} `}x"
+		bind:value={scaleX}
+		label="{label} x"
+		min={minX}
 		max={maxX}
 		on:input={updateX}
 		layout="stack"
 		{size}
 	/>
 	<InputRange
-		bind:value={coordY}
-		label="{`${label} `}y"
+		bind:value={scaleY}
+		label="{label} y"
+		min={minY}
 		max={maxY}
 		on:input={updateY}
 		layout="stack"

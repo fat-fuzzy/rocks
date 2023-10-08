@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import {blocks} from '@fat-fuzzy/ui'
-	const {InputRange, Fieldset} = blocks
+	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
+	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 
 	const dispatch = createEventDispatcher()
 

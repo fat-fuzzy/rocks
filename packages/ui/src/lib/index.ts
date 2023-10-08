@@ -27,11 +27,21 @@ import Nav from '$lib/components/blocks/navs/Nav.svelte'
 // import Sketch from '$lib/components/blocks/graphics/Sketch.svelte'
 
 /**
- * Composition components
+ * Compositions - Base
  */
 import Header from '$lib/components/compositions/Header.svelte'
 import RevealMenu from '$lib/components/compositions/RevealMenu.svelte'
 import RevealNav from '$lib/components/compositions/RevealNav.svelte'
+
+/**
+ * Compositions - Graphics
+ */
+import Geometry from '$lib/components/graphics/Geometry.svelte'
+import Player from '$lib/components/graphics/Player.svelte'
+import Position from '$lib/components/graphics/Position.svelte'
+import Rotation from '$lib/components/graphics/Rotation.svelte'
+import Scale from '$lib/components/graphics/Scale.svelte'
+import Sketch from '$lib/components/graphics/Sketch.svelte'
 
 /**
  * Api components
@@ -104,6 +114,15 @@ const compositions = {
 	RevealMenu, // TODO: use content option in UI lib API in docs
 }
 
+const graphics = {
+	Geometry,
+	Player,
+	Position,
+	Rotation,
+	Scale,
+	Sketch,
+}
+
 const api = {
 	Api,
 	Collection,
@@ -127,4 +146,4 @@ async function getSass(theme) {
 	return themedStyles
 }
 
-export {blocks, layouts, compositions, api, utils, stores, constants, getSass}
+export {blocks, layouts, compositions, graphics, api, utils, stores, constants, getSass}

@@ -1,12 +1,13 @@
 <script lang="ts">
 	import lib from '@fat-fuzzy/lib'
+	import {graphics} from '@fat-fuzzy/ui'
 	import {page} from '$app/stores'
-	import Sketch from '$lib/ui/graphics/Sketch.svelte'
 
+	const {Sketch} = graphics
 	$: title = $page.data.title
 	$: dimensions = $page.data.dimensions
 	$: id = $page.data.id
-	$: sketch = lib.gfx.sketches[id]
+	$: scene = lib.gfx.sketches[id]
 </script>
 
 <svelte:head>
@@ -21,4 +22,4 @@
 	<h1>👾 Play</h1>
 	<h2>&nbsp;❤︎ {title}</h2>
 </header>
-<Sketch {sketch} {title} {dimensions} />
+<Sketch {scene} {title} {dimensions} />
