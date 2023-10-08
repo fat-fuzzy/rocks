@@ -1,7 +1,8 @@
 {
 	"package": "@fat-fuzzy/doc",
 	"name": "@fat-fuzzy/doc",
-	"version": "0.1.0",
+	"version": "0.1.1",
+	"private": true,
 	"description": "Fat Fuzzy Doc",
 	"main": "index.js",
 	"author": "Patricia Boh",

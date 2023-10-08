@@ -1,7 +1,8 @@
 {
 	"package": "@fat-fuzzy/markdown",
 	"name": "@fat-fuzzy/markdown",
-	"version": "0.1.0",
+	"version": "0.1.1",
+	"private": true,
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"type": "module",
