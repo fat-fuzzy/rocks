@@ -2,7 +2,6 @@
 	"package": "@fat-fuzzy/lib",
 	"name": "@fat-fuzzy/lib",
 	"version": "0.1.1",
-	"private": true,
 	"description": "Fat Fuzzy Libraries",
 	"main": "package/index.cjs.js",
 	"module": "package/index.esm.js",
