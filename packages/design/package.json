@@ -19,7 +19,7 @@
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"devDependencies": {
-		"open-props": "1.4.25",
-		"style-dictionary": "latest"
+		"open-props": "1.6.5",
+		"style-dictionary": "^3.8.0"
 	}
 }
