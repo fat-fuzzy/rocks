@@ -2,7 +2,6 @@
 	"package": "@fat-fuzzy/design",
 	"name": "@fat-fuzzy/design",
 	"version": "0.1.1",
-	"private": true,
 	"type": "module",
 	"description": "Fat Fuzzy Design",
 	"main": "build.js",

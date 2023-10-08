@@ -1,7 +1,6 @@
 {
 	"name": "@fat-fuzzy/rocks",
 	"version": "0.1.0",
-	"private": true,
 	"description": "Fat Fuzzy Rocks",
 	"main": "index.js",
 	"author": "Patricia Boh",
