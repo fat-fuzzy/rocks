@@ -1,11 +1,10 @@
 import type {
-	StyleTree,
 	AppStyles,
 	SharedStyles,
 	BlockStyles,
 	LayoutStyles,
-	StylesApiOptions,
-	StylesUserInput,
+	StyleOptions,
+	StyleTree,
 	StyleCategory,
 } from './types'
 import {StyleInput, StyleFamily} from './types'
@@ -16,7 +15,7 @@ export class StylesApi {
 	blocks: BlockStyles
 	layouts: LayoutStyles
 
-	constructor({app, shared, blocks, layouts}: StylesApiOptions) {
+	constructor({app, shared, blocks, layouts}: StyleOptions) {
 		this.app = app
 		this.shared = shared
 		this.blocks = blocks
@@ -33,6 +32,8 @@ export class StylesApi {
 				return this.blocks
 			case 'layouts':
 				return this.layouts
+			default:
+				return this.app
 		}
 	}
 
@@ -60,7 +61,7 @@ export class StylesApi {
 		}
 	}
 
-	applyStyles(updatedStyles: StylesUserInput) {
+	applyStyles(updatedStyles: StyleTree) {
 		Object.keys(updatedStyles).map((updatedCategory) => {
 			const category = updatedStyles[updatedCategory]
 			let families: string[] = []
@@ -384,7 +385,7 @@ const layouts: LayoutStyles = {
 	}),
 }
 
-export const getDefaultStyleOptions = () => new StylesApi({app, shared, blocks, layouts})
+export const initStyles = () => new StylesApi({app, shared, blocks, layouts})
 
 export const DEFAULT_STYLES: StyleTree = {
 	app: {

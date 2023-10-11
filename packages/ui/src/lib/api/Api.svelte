@@ -8,7 +8,7 @@
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
-	import {getDefaultStyleOptions} from './styles-api'
+	import {initStyles} from './styles-api'
 	import {selectedStore} from '../stores/api'
 
 	export let title = ''
@@ -25,9 +25,9 @@
 	let apiBreakpoint = 'xxl'
 	let apiVariant = ''
 
-	let styleOptions = getDefaultStyleOptions()
+	let stylesApi = initStyles()
 	let styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
-	let formOptions = styleCategories.map((cat) => styleOptions.getCategoryOptions(cat))
+	let formOptions = styleCategories.map((cat) => stylesApi.getCategoryOptions(cat))
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -42,8 +42,8 @@
 			const familyValue = {[family]: styleValue}
 			selected[category] = {...selected[category], ...familyValue}
 		})
-		styleOptions.applyStyles(selected)
-		selectedStore.set(styleOptions.getStyleTree()) // This updates on the client if JS is available
+		stylesApi.applyStyles(selected)
+		selectedStore.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
 	}
 
 	function handleInput(event, name: string) {
@@ -93,9 +93,9 @@
 
 	$: {
 		selected = $selectedStore
-		selected && styleOptions.applyStyles(selected)
+		selected && stylesApi.applyStyles(selected)
 		styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
-		formOptions = styleCategories.map((cat) => styleOptions.getCategoryOptions(cat))
+		formOptions = styleCategories.map((cat) => stylesApi.getCategoryOptions(cat))
 	}
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -124,93 +124,91 @@
 	class={`l:${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 >
 	{#each formOptions as styles}
-		{#if styles}
-			{@const styleFamilyNames = Object.keys(styles)}
-			{#each styleFamilyNames as familyName}
-				{@const styleFamily = styles[familyName]}
-				{#if styleFamily.includes(title) && !styleFamily.excludes(category) && !styleFamily.excludes(title)}
-					<Fieldset
-						legend={familyName}
-						id={styleFamily.id}
-						type="input-group"
-						layout={styleFamily.layout}
-						container={styleFamily.container}
-						size={styleFamily.size}
-						breakpoint={apiBreakpoint}
-						name={familyName}
-					>
-						{#each styleFamily.items as styleInput}
-							{@const {input, value, items} = styleInput}
-							{#if styleInput.includes(title) && !styleInput.excludes(category) && !styleInput.excludes(title)}
-								{#if input === 'radio' || input === 'checkbox'}
-									{@const InputComponent = COMPONENT_IMPORTS[input]}
-									{#each items as { id, ...inputProps }}
-										{@const checked = value && id === value}
-										<svelte:component
-											this={InputComponent}
-											id={styleInput.id}
-											{...inputProps}
-											name={styleInput.id}
-											{checked}
-											layout={styleInput.layout || ''}
-											variant={apiVariant || ''}
-											size={apiSize || ''}
-											on:input={(event) => handleInput(event, familyName)}
-										/>
-									{/each}
-								{/if}
-								{#if input === 'toggle'}
-									{@const updatedItems = items.map((i) => {
-										const pressed = value !== '' && i.value === value
-										const updatedItem = {
-											...i,
-											text: i.text || '',
-											asset: i.asset || '',
-											initial: pressed,
-											name: i.id,
-										}
-										return updatedItem
-									})}
-									<ToggleMenu
+		{#each Object.keys(styles) as familyName}
+			{@const styleFamily = styles[familyName]}
+
+			{#if styleFamily.includes(title) && !styleFamily.excludes(category) && !styleFamily.excludes(title)}
+				<Fieldset
+					legend={familyName}
+					id={styleFamily.id}
+					type="input-group"
+					layout={styleFamily.layout}
+					container={styleFamily.container}
+					size={styleFamily.size}
+					breakpoint={apiBreakpoint}
+					name={familyName}
+				>
+					{#each styleFamily.items as styleInput}
+						{@const {input, value, items} = styleInput}
+						{#if styleInput.includes(title) && !styleInput.excludes(category) && !styleInput.excludes(title)}
+							{#if input === 'radio' || input === 'checkbox'}
+								{@const InputComponent = COMPONENT_IMPORTS[input]}
+								{#each items as { id, ...inputProps }}
+									{@const checked = value && id === value}
+									<svelte:component
+										this={InputComponent}
 										id={styleInput.id}
-										title={styleInput.name !== familyName ? styleInput.name : ''}
-										items={updatedItems}
-										{page}
+										{...inputProps}
+										name={styleInput.id}
+										{checked}
 										layout={styleInput.layout || ''}
-										formaction={update}
+										variant={apiVariant || ''}
 										size={apiSize || ''}
-										on:click={(event) => handleToggle(event, familyName, styleInput.id)}
+										on:input={(event) => handleInput(event, familyName)}
 									/>
-								{/if}
-								{#if input === 'datalist'}
-									<label
-										for={`choice-${styleInput.name}`}
-										class={`l:stack ${apiSize} font:${apiSize}`}
-									>
-										{`Select ${styleInput.name}`}
-										<input
-											list={`datalist-${styleInput.name}`}
-											id={`choice-${styleInput.name}`}
-											name={styleInput.id}
-											class={apiSize}
-											on:input={(event) =>
-												handleSelect(event, familyName, styleInput.name, styleInput.id)}
-										/>
-										<datalist id={`datalist-${styleInput.name}`}>
-											{#each items as { id, text, asset }}
-												<option {id} value={asset}>
-													{format.formatLabel(text || '', asset)}
-												</option>
-											{/each}
-										</datalist>
-									</label>
-								{/if}
+								{/each}
 							{/if}
-						{/each}
-					</Fieldset>
-				{/if}
-			{/each}
-		{/if}
+							{#if input === 'toggle'}
+								{@const updatedItems = items.map((i) => {
+									const pressed = value !== '' && i.value === value
+									const updatedItem = {
+										...i,
+										text: i.text || '',
+										asset: i.asset || '',
+										initial: pressed,
+										name: i.id,
+									}
+									return updatedItem
+								})}
+								<ToggleMenu
+									id={styleInput.id}
+									title={styleInput.name !== familyName ? styleInput.name : ''}
+									items={updatedItems}
+									{page}
+									layout={styleInput.layout || ''}
+									formaction={update}
+									size={apiSize || ''}
+									on:click={(event) => handleToggle(event, familyName, styleInput.id)}
+								/>
+							{/if}
+							{#if input === 'datalist'}
+								<label
+									for={`choice-${styleInput.name}`}
+									class={`l:stack ${apiSize} font:${apiSize}`}
+								>
+									{`Select ${styleInput.name}`}
+									<input
+										list={`datalist-${styleInput.name}`}
+										id={`choice-${styleInput.name}`}
+										name={styleInput.id}
+										class={apiSize}
+										on:input={(event) =>
+											handleSelect(event, familyName, styleInput.name, styleInput.id)}
+									/>
+									<datalist id={`datalist-${styleInput.name}`}>
+										{#each items as { id, text, asset }}
+											<option {id} value={asset}>
+												{format.formatLabel(text || '', asset)}
+											</option>
+										{/each}
+									</datalist>
+								</label>
+							{/if}
+						{/if}
+					{/each}
+				</Fieldset>
+			{/if}
+		{/each}
 	{/each}
 	<!-- <button data-key="enter">Update UI</button> -->
 </form>
