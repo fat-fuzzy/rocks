@@ -31,16 +31,6 @@ a:hover {
 	text-decoration: underline;
 }
 
-table {
-	border-collapse: collapse;
-	font-family: var(--font-family-ui);
-	line-height: var(--line-height-ui);
-}
-
-th {
-	text-align: left;
-}
-
 :focus {
 	outline: var(--outline-width) dotted var(--current-color);
 	outline-offset: var(--outline-offset);
