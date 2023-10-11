@@ -21,16 +21,13 @@ export interface StyleInputProps {
 	// options?: StyleOption
 }
 
-export type StylesFormValue = {[style: string]: string}
-
-export type StylesUserInput = {
-	[category: string]: {[family: string]: StylesFormValue}
-}
-
-export type StyleNode = {
+/**
+ * Use a tree structure to store the styles of the app
+ */
+type StyleNode = {
 	[style: string]: string
 }
-export type StyleBranch = {
+type StyleBranch = {
 	[family: string]: StyleNode
 }
 export type StyleTree = {
@@ -42,26 +39,6 @@ type StyleTreeFlat = {
 	family: string
 	style: string
 	value: string | string[]
-}
-
-type StyleBuilderOptions = {
-	id: string
-	name: string
-	layout?: string
-	exclude?: string[] // Add component names here to apply styles to all but excluded components
-	include?: string[] // Add component names here to apply styles to included components
-}
-
-type StyleInputOptions = StyleBuilderOptions & {
-	input: string
-	items: Array<StyleInputProps>
-	value: string
-}
-
-type StyleFamilyOptions = StyleBuilderOptions & {
-	items: Array<StyleApiInput>
-	container?: string
-	size?: string
 }
 
 export interface StyleCategory {
@@ -82,16 +59,19 @@ export interface LayoutStyles extends StyleCategory {
 	element: StyleFamily
 }
 
-export interface StylesApiOptions {
+export interface StyleOptions {
 	app: AppStyles
 	shared: SharedStyles
 	blocks: BlockStyles
 	layouts: LayoutStyles
 }
-export interface StyleApiBuilder {
+
+/**
+ * StyleBlock is used to generate the UI to set a style value in the UI library doc
+ */
+export interface StyleBlock {
 	id: string
 	name: string
-	items: Array<StyleInputProps | StyleApiInput>
 
 	layout?: string
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
@@ -103,7 +83,7 @@ export interface StyleApiBuilder {
 	excludes: (item: string) => boolean
 }
 
-export interface StyleApiInput extends StyleApiBuilder {
+interface StyleApiInput extends StyleBlock {
 	slug: string
 	input: string
 	value: string
@@ -113,7 +93,7 @@ export interface StyleApiInput extends StyleApiBuilder {
 	setValue: (value: string) => void
 }
 
-export interface StyleApiFamily extends StyleApiBuilder {
+interface StyleApiFamily extends StyleBlock {
 	/**
 	 * A StyleFamily provides form inputs for related styles that apply to a single StyleCategory
 	 */
@@ -123,10 +103,29 @@ export interface StyleApiFamily extends StyleApiBuilder {
 	size?: string
 }
 
+type StyleBlockOptions = {
+	id: string
+	name: string
+	layout?: string
+	exclude?: string[] // Add component names here to apply styles to all but excluded components
+	include?: string[] // Add component names here to apply styles to included components
+}
+
+type StyleInputOptions = StyleBlockOptions & {
+	input: string
+	items: Array<StyleInputProps>
+	value: string
+}
+
+type StyleFamilyOptions = StyleBlockOptions & {
+	items: Array<StyleApiInput>
+	container?: string
+	size?: string
+}
+
 /**
  * Class Implementations to use
  */
-
 export class StyleInput implements StyleApiInput {
 	id: string
 	name: string
@@ -243,7 +242,7 @@ export class StyleFamily implements StyleApiFamily {
 		return this.exclude ? this.exclude.indexOf(item) !== -1 : false
 	}
 
-	applyStyles(styles: StylesFormValue) {
+	applyStyles(styles: StyleNode) {
 		Object.keys(styles).forEach((key) => {
 			const item = this.itemsMap.get(key)
 			if (item) {
