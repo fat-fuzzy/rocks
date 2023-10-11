@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
+	import type {StyleTree} from './types'
+
 	import {page} from '$app/stores'
 	import Api from './Api.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
-	import type {StyleTree} from './styles-api'
 	import {selectedStore} from '$lib/stores/api'
 
 	export let title = ''
