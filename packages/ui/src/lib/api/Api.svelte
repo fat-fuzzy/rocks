@@ -127,7 +127,7 @@
 		{#each Object.keys(styles) as familyName}
 			{@const styleFamily = styles[familyName]}
 
-			{#if styleFamily.canApplyStyles({title, category})}
+			{#if styleFamily.canApplyStyles({item: title, category})}
 				<Fieldset
 					legend={familyName}
 					id={styleFamily.id}
@@ -140,7 +140,7 @@
 				>
 					{#each styleFamily.items as styleInput}
 						{@const {input, value, items} = styleInput}
-						{#if styleInput.canApplyStyles({title, category})}
+						{#if styleInput.canApplyStyles({item: title, category})}
 							{#if input === 'radio' || input === 'checkbox'}
 								{@const InputComponent = COMPONENT_IMPORTS[input]}
 								{#each items as { id, ...inputProps }}

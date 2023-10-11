@@ -7,7 +7,7 @@ import type {
 	StyleTree,
 	StyleCategory,
 } from './types'
-import {StyleInput, StyleFamily} from './types'
+import {StyleInputGroup, StyleFamily} from './types'
 
 export class StylesApi {
 	app: AppStyles
@@ -105,7 +105,7 @@ const app: AppStyles = {
 		container: 'burrito',
 		size: 'sm',
 		items: [
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Brightness',
 				id: 'app.settings.brightness',
 				value: 'day',
@@ -116,7 +116,7 @@ const app: AppStyles = {
 					{id: 'app.settings.brightness.night', text: 'night', asset: '🌙', value: 'night'},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Contrast',
 				id: 'app.settings.contrast',
 				value: 'blend',
@@ -157,7 +157,7 @@ const shared: SharedStyles = {
 		id: 'shared.context',
 		exclude: ['Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 		items: [
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
 				id: 'shared.context.size',
 				value: 'md',
@@ -172,7 +172,7 @@ const shared: SharedStyles = {
 					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Container',
 				id: 'shared.context.container',
 				value: '',
@@ -183,7 +183,7 @@ const shared: SharedStyles = {
 					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Layout',
 				id: 'shared.context.layout',
 				value: 'switcher',
@@ -217,7 +217,7 @@ const shared: SharedStyles = {
 					},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Breakpoint',
 				id: 'shared.context.breakpoint',
 				value: 'md',
@@ -245,7 +245,7 @@ const blocks: BlockStyles = {
 		size: 'xs',
 		exclude: ['Nav'],
 		items: [
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Color',
 				id: 'blocks.element.color',
 				value: '',
@@ -275,7 +275,7 @@ const blocks: BlockStyles = {
 					},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Variant',
 				id: 'blocks.element.variant',
 				value: 'default',
@@ -288,7 +288,7 @@ const blocks: BlockStyles = {
 					{id: 'blocks.element.variant.bare', text: 'bare', asset: '', value: 'bare'},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Size',
 				id: 'blocks.element.size',
 				value: 'md',
@@ -302,7 +302,7 @@ const blocks: BlockStyles = {
 					{id: 'blocks.element.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Asset', // TODO: Add hint: "Icon: emoji / SVG"
 				id: 'blocks.element.asset',
 				value: '',
@@ -334,7 +334,7 @@ const layouts: LayoutStyles = {
 		size: 'sm',
 		layout: 'switcher',
 		items: [
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
 				id: 'layouts.element.size',
 				value: 'md',
@@ -348,7 +348,7 @@ const layouts: LayoutStyles = {
 					{id: 'layouts.element.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Content',
 				id: 'layouts.element.content',
 				value: 'card',
@@ -361,7 +361,7 @@ const layouts: LayoutStyles = {
 					{id: 'layouts.element.content.text', text: 'text', asset: '', value: 'text'},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Side',
 				id: 'layouts.element.side',
 				value: 'card',
@@ -374,7 +374,7 @@ const layouts: LayoutStyles = {
 					{id: 'layouts.element.side.text', text: 'text', asset: '', value: 'text'},
 				],
 			}),
-			new StyleInput({
+			new StyleInputGroup({
 				name: 'Main',
 				id: 'layouts.element.main',
 				value: 'text',
