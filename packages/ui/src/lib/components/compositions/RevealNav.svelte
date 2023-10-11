@@ -33,7 +33,11 @@
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
 
-<div class={`l:reveal ${show} ${setHeight}`} use:clickOutside on:clickOutside={handleClickOutside}>
+<div
+	class={`l:reveal ${show} ${setHeight} l:${layout} bp:${breakpoint} ${size}`}
+	use:clickOutside
+	on:clickOutside={handleClickOutside}
+>
 	<button
 		id={`${id}-reveal-nav-button`}
 		class={`card:${size} ${variant} ${color} font:sm`}
@@ -46,7 +50,7 @@
 	</button>
 	<nav
 		id={`${id}-reveal-nav`}
-		class={`content l:${layout} bp:${breakpoint} layer polar card:lg align:${align} ${size} ${setHeight}`}
+		class={`content l:${layout} bp:${breakpoint} layer polar card:${size} align:${align} ${size} ${setHeight}`}
 	>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>

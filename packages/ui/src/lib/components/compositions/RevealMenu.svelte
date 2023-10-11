@@ -54,7 +54,11 @@
 	$: innerVariant = VARIANT_MATCH[variant]
 </script>
 
-<div class={`l:reveal ${show} ${setHeight}`} use:clickOutside on:clickOutside={handleClickOutside}>
+<div
+	class={`l:reveal ${show} ${setHeight} l:${layout} ${size}`}
+	use:clickOutside
+	on:clickOutside={handleClickOutside}
+>
 	<button
 		id={`${id}-reveal-menu-button`}
 		class={`card:${size} ${variant} ${color} font:sm`}
@@ -65,10 +69,7 @@
 		<span class="icon">{icon}</span>
 		<span class="text">{format.formatLabel(title, icon)}</span>
 	</button>
-	<menu
-		id={`menu-${id}`}
-		class={`content l:${layout} bp:${breakpoint} layer polar card:lg align:${align} ${size}`}
-	>
+	<menu id={`menu-${id}`} class={`l:${layout} layer polar card:${size} align:${align} ${size}`}>
 		{#each items as buttonProps}
 			<li>
 				<Button {onClick} {...buttonProps} variant={innerVariant} {color} />

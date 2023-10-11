@@ -25,7 +25,7 @@
 	</summary>
 	<div class={`${align} ${show}`}>
 		<slot name="content">
-			<div class="card layer l:${layout} bp:${breakpoint} ${size}">
+			<div class={`card layer ${size}`}>
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>
