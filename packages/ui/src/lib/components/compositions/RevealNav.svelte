@@ -50,7 +50,7 @@
 	</button>
 	<nav
 		id={`${id}-reveal-nav`}
-		class={`content l:${layout} bp:${breakpoint} layer polar card:${size} align:${align} ${size} ${setHeight}`}
+		class={`bp:${breakpoint} layer polar card:${size} align:${align} ${size} ${setHeight}`}
 	>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
