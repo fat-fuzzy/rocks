@@ -13,3 +13,7 @@ menu {
 menu > li > * {
 	width: 100%;
 }
+
+menu > .round {
+	margin-inline: calc(var(--gap) / 2);
+}
