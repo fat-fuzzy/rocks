@@ -22,7 +22,11 @@ export class StylesApi {
 		this.layouts = layouts
 	}
 
-	getCategoryOptions(category: string) {
+	getFormOptions(categories: string[]): StyleCategory[] {
+		return categories.map((cat) => this.getCategoryOptions(cat))
+	}
+
+	getCategoryOptions(category: string): StyleCategory {
 		switch (category) {
 			case 'app':
 				return this.app
@@ -37,7 +41,7 @@ export class StylesApi {
 		}
 	}
 
-	geAllOptions() {
+	geAllOptions(): StyleOptions {
 		return {
 			app: this.app,
 			shared: this.shared,
