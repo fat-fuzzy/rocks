@@ -34,7 +34,7 @@
 </script>
 
 <div
-	class={`l:reveal ${show} ${setHeight} l:${layout} bp:${breakpoint} ${size}`}
+	class={`l:reveal ${show} ${setHeight} l:${layout}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -50,7 +50,7 @@
 	</button>
 	<nav
 		id={`${id}-reveal-nav`}
-		class={`bp:${breakpoint} layer polar card:${size} align:${align} ${size} ${setHeight}`}
+		class={`content l:${layout} bp:${breakpoint} layer polar card:${size} align:${align} ${size} ${setHeight}`}
 	>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
