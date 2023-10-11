@@ -40,7 +40,7 @@
 	>
 		{format.formatLabel(title, icon)}
 	</button>
-	<div id={`${id}-reveal`} class={`${align} ${show}`}>
+	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
 		<slot name="content">
 			<div class={`card layer ${size}`}>
 				<h3>Revealed Content</h3>

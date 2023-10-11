@@ -69,7 +69,10 @@
 		<span class="icon">{icon}</span>
 		<span class="text">{format.formatLabel(title, icon)}</span>
 	</button>
-	<menu id={`menu-${id}`} class={`l:${layout} layer polar card:${size} align:${align} ${size}`}>
+	<menu
+		id={`menu-${id}`}
+		class={`content l:${layout} bp:${breakpoint} layer polar card:${size} align:${align} ${size}`}
+	>
 		{#each items as buttonProps}
 			<li>
 				<Button {onClick} {...buttonProps} variant={innerVariant} {color} />
