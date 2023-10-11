@@ -25,9 +25,9 @@
 	let apiBreakpoint = 'xxl'
 	let apiVariant = ''
 
-	let stylesApi = initStyles()
 	let styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
-	let formOptions = styleCategories.map((cat) => stylesApi.getCategoryOptions(cat))
+	let stylesApi = initStyles()
+	let formOptions = stylesApi.getFormOptions(styleCategories)
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -95,7 +95,7 @@
 		selected = $selectedStore
 		selected && stylesApi.applyStyles(selected)
 		styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
-		formOptions = styleCategories.map((cat) => stylesApi.getCategoryOptions(cat))
+		formOptions = stylesApi.getFormOptions(styleCategories)
 	}
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -127,7 +127,7 @@
 		{#each Object.keys(styles) as familyName}
 			{@const styleFamily = styles[familyName]}
 
-			{#if styleFamily.includes(title) && !styleFamily.excludes(category) && !styleFamily.excludes(title)}
+			{#if styleFamily.canApplyStyles({title, category})}
 				<Fieldset
 					legend={familyName}
 					id={styleFamily.id}
@@ -140,7 +140,7 @@
 				>
 					{#each styleFamily.items as styleInput}
 						{@const {input, value, items} = styleInput}
-						{#if styleInput.includes(title) && !styleInput.excludes(category) && !styleInput.excludes(title)}
+						{#if styleInput.canApplyStyles({title, category})}
 							{#if input === 'radio' || input === 'checkbox'}
 								{@const InputComponent = COMPONENT_IMPORTS[input]}
 								{#each items as { id, ...inputProps }}

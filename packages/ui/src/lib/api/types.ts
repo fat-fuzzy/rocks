@@ -79,6 +79,8 @@ export interface StyleBlock {
 
 	getStyleTree: () => StyleNode | StyleBranch
 	getStyleTreeFlat: () => StyleTreeFlat
+
+	canApplyStyles: ({title, category}: {title: string; category: string}) => boolean
 	includes: (item: string) => boolean
 	excludes: (item: string) => boolean
 }
@@ -155,7 +157,7 @@ export class StyleInput implements StyleApiInput {
 		}
 	}
 
-	getValue(): string | undefined {
+	getValue() {
 		return this.value
 	}
 
@@ -163,21 +165,25 @@ export class StyleInput implements StyleApiInput {
 		this.value = value
 	}
 
-	getStyleTree(): StyleNode {
+	getStyleTree() {
 		const [category, family, style] = this.id.split('.')
 		return {[style]: this.value}
 	}
 
-	getStyleTreeFlat(): StyleTreeFlat {
+	getStyleTreeFlat() {
 		const [category, family, style] = this.id.split('.')
 		return {category, family, style, value: this.value}
 	}
 
-	includes(item: string): boolean {
+	canApplyStyles({title, category}: {title: string; category: string}) {
+		return this.includes(title) && !this.excludes(category) && !this.excludes(title)
+	}
+
+	includes(item: string) {
 		return this.include ? this.include.indexOf(item) !== -1 : true
 	}
 
-	excludes(item: string): boolean {
+	excludes(item: string) {
 		return this.exclude ? this.exclude.indexOf(item) !== -1 : false
 	}
 }
@@ -221,7 +227,7 @@ export class StyleFamily implements StyleApiFamily {
 		}
 	}
 
-	getStyleTree(): StyleBranch {
+	getStyleTree() {
 		const [category, family] = this.id.split('.')
 		const children = this.items.reduce((childrenTrees, style) => {
 			return {...childrenTrees, ...style.getStyleTree()}
@@ -229,16 +235,20 @@ export class StyleFamily implements StyleApiFamily {
 		return {[family]: {...children}}
 	}
 
-	getStyleTreeFlat(): StyleTreeFlat {
+	getStyleTreeFlat() {
 		const [category, family, style] = this.id.split('.')
 		return {category, family, style, value: this.items.map((item) => item.id)}
 	}
 
-	includes(item: string): boolean {
+	canApplyStyles({title, category}: {title: string; category: string}) {
+		return this.includes(title) && !this.excludes(category) && !this.excludes(title)
+	}
+
+	includes(item: string) {
 		return this.include ? this.include.indexOf(item) !== -1 : true
 	}
 
-	excludes(item: string): boolean {
+	excludes(item: string) {
 		return this.exclude ? this.exclude.indexOf(item) !== -1 : false
 	}
 
