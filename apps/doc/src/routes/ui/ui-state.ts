@@ -1,15 +1,12 @@
-import type {StyleTree} from '@fat-fuzzy/ui'
 import {api} from '@fat-fuzzy/ui'
 
 export class UiState {
-	api: api.StylesApi
+	api
 	/**
 	 * Create a UI state object from the user's cookie, or initialize a new UI state
 	 */
-	constructor(styles: StyleTree | undefined = undefined) {
-		if (!this.api) {
-			this.api = api.stylesApi.getDefaultStyleOptions()
-		}
+	constructor(styles = undefined) {
+		this.api = api.stylesApi.initStyles()
 		if (styles) {
 			this.api.applyStyles(styles)
 		}
@@ -33,7 +30,7 @@ export class UiState {
 			//    (i.e. once out of this loop, the only property of `this.styles` is the last one set in the loop)
 			styleValues.push({id: pair[0], value: {[category]: familyValue}})
 		}
-		const styles: StyleTree = this.api.getStyleTree()
+		const styles = this.api.getStyleTree()
 		styleValues.forEach(({id, value}) => {
 			const [category, family, style, _] = id.split('.')
 			styles[category][family][style] = value[category][family][style]
