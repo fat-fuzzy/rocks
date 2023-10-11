@@ -72,7 +72,7 @@
 			<div class="l:text:xl">
 				{@html mocks['doc'][category]}
 			</div>
-			<Api {title} {category} />
+			<Api {title} category="app" />
 		</aside>
 	</Sidebar>
 {:else}
