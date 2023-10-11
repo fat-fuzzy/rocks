@@ -37,7 +37,7 @@ export class StylesApi {
 			case 'layouts':
 				return this.layouts
 			default:
-				return this.app
+				return {}
 		}
 	}
 
@@ -155,7 +155,7 @@ const shared: SharedStyles = {
 		container: 'burrito',
 		size: 'md',
 		id: 'shared.context',
-		exclude: [/* 'layouts', */ 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
+		exclude: ['Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 		items: [
 			new StyleInput({
 				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
@@ -163,7 +163,7 @@ const shared: SharedStyles = {
 				value: 'md',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: [/* 'layouts', */ 'Switcher'],
+				exclude: ['Switcher', 'Nav'],
 				items: [
 					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -189,7 +189,7 @@ const shared: SharedStyles = {
 				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: [/* 'layouts', */ 'Switcher'],
+				exclude: ['compositions', 'layouts', 'Nav'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
@@ -223,6 +223,7 @@ const shared: SharedStyles = {
 				value: 'md',
 				input: 'toggle',
 				layout: 'stack',
+				exclude: ['Stack', 'Nav', 'compositions'],
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
@@ -242,6 +243,7 @@ const blocks: BlockStyles = {
 		layout: 'switcher',
 		container: 'burrito',
 		size: 'xs',
+		exclude: ['Nav'],
 		items: [
 			new StyleInput({
 				name: 'Color',
