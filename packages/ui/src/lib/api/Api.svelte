@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StyleTree} from './styles-api'
+	import type {StyleTree} from './types'
+
 	import {enhance} from '$app/forms'
 	import format from '$lib/utils/format'
 	import ToggleMenu from '$lib/components/blocks/buttons/ToggleMenu.svelte'

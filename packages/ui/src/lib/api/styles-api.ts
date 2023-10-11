@@ -65,6 +65,7 @@ export class StylesApi {
 			const category = updatedStyles[updatedCategory]
 			let families: string[] = []
 			let styles: StyleCategory
+
 			switch (updatedCategory) {
 				case 'app':
 					families = Object.keys(this.app)

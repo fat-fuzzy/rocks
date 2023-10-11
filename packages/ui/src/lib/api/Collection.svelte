@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
+
 	import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
