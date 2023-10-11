@@ -18,8 +18,8 @@ Design systems are made for this.
 
 ## Decision
 
-I think I can push for the stretch and try to implement a design system.
-I will build the gl lib and the indiewebsite ni parallel.
+I think I can push for the stretch and try to implement a (tiny) design system.
+I will build the gl lib and the indiewebsite in parallel.
 The design system will make my job easier in the long run: the project is small enough to get a solid start now.
 
 Given the scale of this project I'll borrow from this source to get me started:
