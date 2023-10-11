@@ -14,8 +14,7 @@ This repository is organized into three workspaces:
 <p>
 
 - **doc** The documentation website for this project, accessible here: https://rocks.pages.dev/
-- **sandbox** A frontend sample app app that uses the **ui** library package
-  - Used fot testing and experimentation
+- **play** A playground for web graphics experiments
 
 </p></details>
 
@@ -89,22 +88,29 @@ This repository contains several packages, which can be used together or indepen
   - [pnpm](https://pnpm.io/)
   - [Turborepo](https://turbo.build/)
 - Code / Env
+
   - [docker](https://www.docker.com/) - 🚧 WIP
   - [changesets](https://github.com/changesets/changesets) - 🚧 WIP
     - Generate a new changeset with the command: `pnpm changeset`
   - [commitizen](https://github.com/commitizen/cz-cli) - 🚧 WIP
   - [verdaccio](https://verdaccio.org/) - 🚧 WIP
+
     - Install verdaccio: https://verdaccio.org/docs/installation
     - Using a verdaccio private registry:
+
       - Launch the private registry with the command: `verdaccio`
       - To publish a package to the private registry, run the following command in the package's root directory :
-        ```
+
+        ```shell
         pnpm publish --registry http://localhost:4873
         ```
+
       - Use the package in another repository that has access to the private registry:
-        ```
+
+        ```shell
         pnpm i --registry http://localhost:4873
         ```
+
   - TODO
     - [stylelint](https://stylelint.io/)
 
