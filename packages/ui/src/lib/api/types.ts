@@ -2,7 +2,7 @@ import type {ComponentType} from 'svelte'
 export type ComponentChild = string | ComponentType | (string | ComponentType)[] // TODO: figure out if I really need this
 
 // TODO: figure out if I can extract this info from Svelte component
-export interface StyleInputProps {
+export interface IStyleInputGroupOptions {
 	id: string
 	asset?: string
 	size?: string
@@ -67,9 +67,9 @@ export interface StyleOptions {
 }
 
 /**
- * StyleBlock is used to generate the UI to set a style value in the UI library doc
+ * StylesSet is used to generate the UI to set a style value in the UI library doc
  */
-export interface StyleBlock {
+export interface IStylesSet {
 	id: string
 	name: string
 
@@ -80,32 +80,32 @@ export interface StyleBlock {
 	getStyleTree: () => StyleNode | StyleBranch
 	getStyleTreeFlat: () => StyleTreeFlat
 
-	canApplyStyles: ({title, category}: {title: string; category: string}) => boolean
+	canApplyStyles: ({item, category}: {item: string; category: string}) => boolean
 	includes: (item: string) => boolean
 	excludes: (item: string) => boolean
 }
 
-interface StyleApiInput extends StyleBlock {
+interface IStyleInputGroup extends IStylesSet {
 	slug: string
 	input: string
 	value: string
-	items: Array<StyleInputProps>
+	items: Array<IStyleInputGroupOptions>
 
 	getValue: () => string | undefined
 	setValue: (value: string) => void
 }
 
-interface StyleApiFamily extends StyleBlock {
+interface IStyleFamily extends IStylesSet {
 	/**
 	 * A StyleFamily provides form inputs for related styles that apply to a single StyleCategory
 	 */
-	items: Array<StyleApiInput>
-	itemsMap: Map<string, StyleApiInput>
+	items: Array<IStyleInputGroup>
+	itemsMap: Map<string, IStyleInputGroup>
 	container?: string
 	size?: string
 }
 
-type StyleBlockOptions = {
+type StylesSetOptions = {
 	id: string
 	name: string
 	layout?: string
@@ -113,14 +113,14 @@ type StyleBlockOptions = {
 	include?: string[] // Add component names here to apply styles to included components
 }
 
-type StyleInputOptions = StyleBlockOptions & {
+type StyleInputGroupOptions = StylesSetOptions & {
 	input: string
-	items: Array<StyleInputProps>
+	items: Array<StyleInputGroupOptions>
 	value: string
 }
 
-type StyleFamilyOptions = StyleBlockOptions & {
-	items: Array<StyleApiInput>
+type StyleFamilyOptions = StylesSetOptions & {
+	items: Array<StyleInputGroup>
 	container?: string
 	size?: string
 }
@@ -128,18 +128,18 @@ type StyleFamilyOptions = StyleBlockOptions & {
 /**
  * Class Implementations to use
  */
-export class StyleInput implements StyleApiInput {
+export class StyleInputGroup implements IStyleInputGroup {
 	id: string
 	name: string
 	slug: string
 	input: string
-	items: Array<StyleInputProps>
+	items: Array<IStyleInputGroupOptions>
 	value: string
 	layout?: string
 	exclude?: string[]
 	include?: string[]
 
-	constructor({id, name, input, items, value, layout, exclude, include}: StyleInputOptions) {
+	constructor({id, name, input, items, value, layout, exclude, include}: StyleInputGroupOptions) {
 		this.id = id
 		this.name = name
 		this.slug = name.toLowerCase()
@@ -175,8 +175,8 @@ export class StyleInput implements StyleApiInput {
 		return {category, family, style, value: this.value}
 	}
 
-	canApplyStyles({title, category}: {title: string; category: string}) {
-		return this.includes(title) && !this.excludes(category) && !this.excludes(title)
+	canApplyStyles({item, category}: {item: string; category: string}) {
+		return this.includes(item) && !this.excludes(category) && !this.excludes(item)
 	}
 
 	includes(item: string) {
@@ -188,11 +188,11 @@ export class StyleInput implements StyleApiInput {
 	}
 }
 
-export class StyleFamily implements StyleApiFamily {
+export class StyleFamily implements IStyleFamily {
 	id: string
 	name: string
-	items: StyleApiInput[]
-	itemsMap: Map<string, StyleApiInput>
+	items: Array<StyleInputGroup>
+	itemsMap: Map<string, StyleInputGroup>
 	layout?: string
 	container?: string
 	size?: string
@@ -240,8 +240,8 @@ export class StyleFamily implements StyleApiFamily {
 		return {category, family, style, value: this.items.map((item) => item.id)}
 	}
 
-	canApplyStyles({title, category}: {title: string; category: string}) {
-		return this.includes(title) && !this.excludes(category) && !this.excludes(title)
+	canApplyStyles({item, category}: {item: string; category: string}) {
+		return this.includes(item) && !this.excludes(category) && !this.excludes(item)
 	}
 
 	includes(item: string) {
