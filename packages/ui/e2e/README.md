@@ -38,4 +38,10 @@ Visit https://playwright.dev/docs/intro for more information. ✨
 Happy hacking! 🎭
 ```
 
+NOTE There is no script to run component tests in package.json: just run:
+
+```shell
+pnpm build && pnpm run test-ct
+```
+
 [TODO] Continue README

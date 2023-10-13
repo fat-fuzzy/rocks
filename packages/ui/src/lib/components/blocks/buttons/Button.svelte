@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Inputs
-	import {browser} from '$app/environment'
+	// import {browser} from '$app/environment'
 	import format from '$lib/utils/format'
 	import mocks from '$lib/data/mocks'
 
@@ -19,11 +19,9 @@
 	export let page = ''
 
 	export let onClick = (event: MouseEvent) => {
-		console.log(event)
-		if (browser) {
-			window.alert(`${text} Clicked`)
-		}
+		window.alert(`${text} Clicked`)
 	}
+
 	$: variantClass = variant === 'default' ? '' : variant
 	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variantClass} ${align}`
 </script>
