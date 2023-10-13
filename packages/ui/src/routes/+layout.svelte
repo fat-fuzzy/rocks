@@ -2,7 +2,7 @@
 	import {browser} from '$app/environment'
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
-	import {themes} from '$lib/types/constants'
+	import {themes} from '$types/constants'
 	import {theme} from '$lib/stores/theme'
 	import {links} from '$lib/data/nav'
 	import Header from '$lib/components/compositions/Header.svelte'
