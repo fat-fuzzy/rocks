@@ -9,6 +9,8 @@
 		"build": "svelte-kit sync && svelte-package",
 		"prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
 		"test": "playwright test",
+		"test:ui": "playwright test --ui",
+		"test:report": "playwright show:report",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest"
@@ -21,7 +23,7 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@playwright/test": "^1.38.1",
+		"@playwright/test": "^1.39.0",
 		"@sveltejs/adapter-cloudflare": "^2.3.3",
 		"@sveltejs/package": "^2.2.2",
 		"svelte-check": "^3.5.2",
