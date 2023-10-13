@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {browser} from '$app/environment'
+	// import {browser} from '$app/environment'
 	import {createEventDispatcher} from 'svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import mocks from '$lib/data/mocks'
@@ -20,9 +20,7 @@
 	let menuId = id
 
 	export let onClick = (event: CustomEvent) => {
-		if (browser) {
-			window.alert(`${event.target.textContent} Clicked`)
-		}
+		window.alert(`${event.target.textContent} Clicked`)
 		clicked = event.target.id
 		dispatch('click', {
 			clicked,
