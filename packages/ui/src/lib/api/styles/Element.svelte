@@ -7,7 +7,7 @@
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
-	import {selectedStore} from '$lib/stores/api'
+	import {currentStyles} from '$lib/stores/api'
 
 	export let title = ''
 	export let depth = 0
@@ -24,21 +24,21 @@
 		compositions: Composition,
 	}
 
-	let selected: StyleTree
+	let styles: StyleTree
 	let brightness = ''
 	let contrast = ''
 	let container = ''
 	let size = '' // Container size
 
 	$: {
-		selected = $selectedStore
+		styles = $currentStyles
 		// App settings (user controlled)
-		brightness = selected.app?.settings.brightness ?? brightness
-		contrast = selected.app?.settings.contrast ?? contrast
+		brightness = styles.app?.settings.brightness ?? brightness
+		contrast = styles.app?.settings.contrast ?? contrast
 		// Container options
 		// - [container + size] work together
-		container = selected.shared?.context.container ?? container
-		size = selected.shared?.context.size ?? size
+		container = styles.shared?.context.container ?? container
+		size = styles.shared?.context.size ?? size
 	}
 	$: appSettings = `${brightness} ${contrast}`
 	$: containerContext = category !== 'app' ? `l:${container}:${size}` : 'l:burrito:xs'

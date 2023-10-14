@@ -15,14 +15,14 @@ export const actions = {
 	 * is available, this will happen in the browser instead of here
 	 */
 	update: async ({request, cookies}) => {
-		const uiState = new UiState(stylesStore.$selectedStore)
+		const uiState = new UiState(stylesStore.$currentStyles)
 		const data = await request.formData()
 
 		if (!uiState.enter(data)) {
 			return fail(400, {uiStateError: true})
 		}
 
-		stylesStore.selectedStore.set(uiState.api.getStyleTree())
+		stylesStore.currentStyles.set(uiState.api.getStyleTree())
 		cookies.set('fat-fuzzy-ui', uiState.toString(), {path: '/'})
 
 		return {success: true}
@@ -32,14 +32,14 @@ export const actions = {
 	 * Modify uiState state in reaction to user input
 	 */
 	enter: async ({request, cookies}) => {
-		const uiState = new UiState(stylesStore.$selectedStore)
+		const uiState = new UiState(stylesStore.$currentStyles)
 
 		const data = await request.formData()
 
 		if (!uiState.enter(data)) {
 			return fail(400, {uiStateError: true})
 		}
-		stylesStore.selectedStore.set(uiState.api.getStyleTree())
+		stylesStore.currentStyles.set(uiState.api.getStyleTree())
 		cookies.set('fat-fuzzy-ui', uiState.toString(), {path: '/'})
 
 		return {success: true}
