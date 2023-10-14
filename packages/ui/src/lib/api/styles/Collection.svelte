@@ -5,7 +5,7 @@
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 	import {page} from '$app/stores'
-	import {selectedStore} from '$lib/stores/api'
+	import {currentStyles} from '$lib/stores/api'
 
 	import mocks from '$lib/data/mocks' // TODO: load text from README.md
 
@@ -19,7 +19,7 @@
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'app'
 
-	let selected = $selectedStore
+	let styles = $currentStyles
 
 	let brightness = ''
 	let contrast = ''
@@ -35,15 +35,15 @@
 	// TODO: feedback colors & component
 
 	$: {
-		selected = $selectedStore
+		styles = $currentStyles
 		//== App settings (user controlled)
-		brightness = selected.app?.settings.brightness ?? brightness
-		contrast = selected.app?.settings.contrast ?? contrast
+		brightness = styles.app?.settings.brightness ?? brightness
+		contrast = styles.app?.settings.contrast ?? contrast
 		//== Shared settings (user controlled)
 		// Container options
 		// - [container + size] work together
-		sharedOptions.container = selected.shared?.context.container ?? sharedOptions.container
-		sharedOptions.size = selected.shared?.context.size ?? sharedOptions.size
+		sharedOptions.container = styles.shared?.context.container ?? sharedOptions.container
+		sharedOptions.size = styles.shared?.context.size ?? sharedOptions.size
 	}
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1

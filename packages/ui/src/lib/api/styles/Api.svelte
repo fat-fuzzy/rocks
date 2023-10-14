@@ -9,7 +9,7 @@
 	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 	import {initStyles} from './styles-api'
-	import {selectedStore} from '../../stores/api'
+	import {currentStyles} from '$lib/stores/api'
 
 	export let title = ''
 	export let category = 'app'
@@ -18,7 +18,7 @@
 	export let formaction = 'enter'
 	// export let reset = 'reset'
 
-	let selected: StyleTree
+	let styles: StyleTree
 	let apiLayout = 'switcher'
 	let apiSize = 'xs'
 	let apiBreakpoint = 'xxl'
@@ -34,15 +34,15 @@
 		toggle: ToggleMenu,
 	}
 
-	const updateSelected = (payload: {name: string; items: {id: string; value: string}[]}) => {
+	const updateStyles = (payload: {name: string; items: {id: string; value: string}[]}) => {
 		payload.items.forEach(({id, value}) => {
 			const [category, family, style, name] = id.split('.')
 			const styleValue = {[style]: value}
 			const familyValue = {[family]: styleValue}
-			selected[category] = {...selected[category], ...familyValue}
+			styles[category] = {...styles[category], ...familyValue}
 		})
-		stylesApi.applyStyles(selected)
-		selectedStore.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
+		stylesApi.applyStyles(styles)
+		currentStyles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
 	}
 
 	function handleInput(event, name: string) {
@@ -56,7 +56,7 @@
 				},
 			],
 		}
-		updateSelected(payload)
+		updateStyles(payload)
 	}
 
 	function handleSelect(event, familyName: string, name: string, id: string) {
@@ -71,11 +71,11 @@
 				},
 			],
 		}
-		updateSelected(payload)
+		updateStyles(payload)
 	}
 
 	function handleToggle(event: CustomEvent, familyName: string, id: string) {
-		const selected = event.detail.selected // TODO: no multiple values for now
+		const selected = event.detail.selected // TODO: no multiple values for no
 		if (selected.length) {
 			const payload = {
 				name: familyName,
@@ -86,13 +86,13 @@
 					},
 				],
 			}
-			updateSelected(payload)
+			updateStyles(payload)
 		}
 	}
 
 	$: {
-		selected = $selectedStore
-		selected && stylesApi.applyStyles(selected)
+		styles = $currentStyles
+		styles && stylesApi.applyStyles(styles)
 		styleCategories = category === 'app' ? ['app'] : [category, 'shared', 'app']
 		formOptions = stylesApi.getFormOptions(styleCategories)
 	}
@@ -122,9 +122,9 @@
 	}}
 	class={`l:${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 >
-	{#each formOptions as styles}
-		{#each Object.keys(styles) as familyName}
-			{@const styleFamily = styles[familyName]}
+	{#each formOptions as options}
+		{#each Object.keys(options) as familyName}
+			{@const styleFamily = options[familyName]}
 
 			{#if styleFamily.canApplyStyles({item: title, category})}
 				<Fieldset

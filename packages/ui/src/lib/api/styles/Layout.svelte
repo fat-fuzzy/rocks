@@ -2,7 +2,7 @@
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
 
-	import {selectedStore} from '$lib/stores/api'
+	import {currentStyles} from '$lib/stores/api'
 
 	import mocks from '$lib/data/mocks' // TODO: load text from README.md
 
@@ -10,7 +10,7 @@
 	export let isPage = false
 	export let component: ComponentType
 
-	let selected: StyleTree
+	let styles: StyleTree
 	let size = '' // element's own size
 	let breakpoint = '' // element's own breakpoint
 	let content = ''
@@ -18,14 +18,14 @@
 	let mainContent = ''
 
 	$: {
-		selected = $selectedStore
+		styles = $currentStyles
 		// Element options
-		size = selected.layouts?.element?.size ?? ''
-		breakpoint = selected.shared?.context.breakpoint ?? breakpoint
+		size = styles.layouts?.element?.size ?? ''
+		breakpoint = styles.shared?.context.breakpoint ?? breakpoint
 		// Content options
-		content = selected.layouts?.element.content ?? 'card'
-		sideContent = selected.layouts?.element.side ?? 'card'
-		mainContent = selected.layouts?.element.main ?? 'text'
+		content = styles.layouts?.element.content ?? 'card'
+		sideContent = styles.layouts?.element.side ?? 'card'
+		mainContent = styles.layouts?.element.main ?? 'text'
 	}
 </script>
 
