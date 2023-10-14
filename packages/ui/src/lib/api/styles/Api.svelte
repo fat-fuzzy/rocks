@@ -15,8 +15,7 @@
 	export let category = 'app'
 	export let page = ''
 	export let method = 'POST'
-	export let enter = 'enter'
-	export let update = 'update'
+	export let formaction = 'enter'
 	// export let reset = 'reset'
 
 	let selected: StyleTree
@@ -114,7 +113,7 @@
 
 <form
 	{method}
-	action={page ? `/${page}?/${enter}` : `?/${enter}`}
+	action={page ? `/${page}?/${formaction}` : `?/${formaction}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
@@ -176,7 +175,6 @@
 									items={updatedItems}
 									{page}
 									layout={styleInput.layout || ''}
-									formaction={update}
 									size={apiSize || ''}
 									on:click={(event) => handleToggle(event, familyName, styleInput.id)}
 								/>
