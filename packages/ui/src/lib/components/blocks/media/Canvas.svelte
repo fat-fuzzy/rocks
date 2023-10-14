@@ -9,7 +9,7 @@
 
 	/**
 	 * Responsive canvas
-	 *  Thes default width and height of the canvas will change responsively,
+	 *  The default width and height of the canvas will change responsively,
 	 *  thanks to the combination of the following:
 	 *  - the `l:frame` class used on the canvas container does the following:
 	 *     - it sets a fixed ratio specified by the `dimensions` class
@@ -30,6 +30,6 @@
 			You need HTML5 canvas support to display this content
 		</canvas>
 	</div>
-
+	<!-- Optionally add controls to interact with the canvas -->
 	<slot name="player" {canvas} />
 </div>
