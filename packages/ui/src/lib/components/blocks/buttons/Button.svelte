@@ -3,6 +3,7 @@
 	// import {browser} from '$app/environment'
 	import format from '$lib/utils/format'
 	import mocks from '$lib/data/mocks'
+	type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 
 	export let id = 'button'
 	export let name = 'button'
@@ -17,6 +18,7 @@
 	export let text = mocks.button.text
 	export let formaction = 'enter'
 	export let page = ''
+	export let type: ButtonType = 'button'
 
 	export let onClick = (event: MouseEvent) => {
 		window.alert(`${text} Clicked`)
@@ -28,6 +30,7 @@
 
 <button
 	{id}
+	{type}
 	data-key={`${name}-${id}`}
 	on:click|preventDefault={onClick}
 	class={classes}
