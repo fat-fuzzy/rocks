@@ -9,7 +9,7 @@
 	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 	import {initStyles} from './styles-api'
-	import {selectedStore} from '../stores/api'
+	import {selectedStore} from '../../stores/api'
 
 	export let title = ''
 	export let category = 'app'
