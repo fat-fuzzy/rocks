@@ -53,6 +53,12 @@ import Collection from '$lib/api/styles/Collection.svelte'
 import * as stylesApi from '$lib/api/styles/styles-api'
 
 /**
+ * Tests Api components
+ * - Used to display documentation about UI library components and their options (=API) in documentation website
+ */
+import Test from '$lib/api/tests/TestComponent.svelte'
+
+/**
  * Api webcomponents - WIP
  * - Idea:  be able to test UI Library for different apps using web components to encapsulate styles - not working yet
  */
@@ -123,6 +129,7 @@ const graphics = {
 	Sketch,
 }
 
+// TODO: rename this export : stylesApi
 const api = {
 	Api,
 	Collection,
@@ -130,6 +137,10 @@ const api = {
 	// StyleCapsule,
 	stylesApi,
 	stylesStore,
+}
+
+const testsApi = {
+	Test,
 }
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder
@@ -146,4 +157,4 @@ async function getSass(theme) {
 	return themedStyles
 }
 
-export {blocks, layouts, compositions, graphics, api, utils, stores, constants, getSass}
+export {blocks, layouts, compositions, graphics, api, testsApi, utils, stores, constants, getSass}
