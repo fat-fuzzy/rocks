@@ -1,6 +1,7 @@
 ---
 title: Graphics
-date: 'YYYY-MM-DD'
+date_created: '2023-10-14'
+date_updated: 'YYYY-MM-DD'
 slug: graphics
 id: 'ui-graphics'
 tags: ['ui', 'graphics']
