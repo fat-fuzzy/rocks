@@ -47,10 +47,10 @@ import Sketch from '$lib/components/graphics/Sketch.svelte'
  * Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
-import Api from '$lib/api/Api.svelte'
-import Element from '$lib/api/Element.svelte'
-import Collection from '$lib/api/Collection.svelte'
-import * as stylesApi from '$lib/api/styles-api'
+import Api from '$lib/api/styles/Api.svelte'
+import Element from '$lib/api/styles/Element.svelte'
+import Collection from '$lib/api/styles/Collection.svelte'
+import * as stylesApi from '$lib/api/styles/styles-api'
 
 /**
  * Api webcomponents - WIP
