@@ -32,7 +32,7 @@
 	{id}
 	{type}
 	data-key={`${name}-${id}`}
-	on:click|preventDefault={onClick}
+	on:click={onClick}
 	class={classes}
 	{disabled}
 	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}

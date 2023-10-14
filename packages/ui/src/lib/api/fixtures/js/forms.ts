@@ -1,0 +1,12 @@
+export default {
+	radioGroup: [
+		{id: 'radio-1', label: 'Radio 1'},
+		{id: 'radio-2', label: 'Radio 2'},
+		{id: 'radio-3', label: 'Radio 3'},
+	],
+	checkboxGroup: [
+		{id: 'check-1', label: 'Checkbox 1'},
+		{id: 'check-2', label: 'Checkbox 2'},
+		{id: 'check-3', label: 'Checkbox 3'},
+	],
+}

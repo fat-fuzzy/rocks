@@ -16,10 +16,9 @@
 	export let page = ''
 	export let items = mocks.menu.map((button) => ({...button, id: `${id}.${button.id}`}))
 
-	let clicked = ''
 	let menuId = id
 
-	export let onClick = (event: CustomEvent) => {
+	export let onClick = (event: MouseEvent) => {
 		const payload = {
 			clicked: event.target?.id || undefined,
 			text: event.target?.textContent || undefined,
@@ -39,7 +38,7 @@
 				{@const itemSize = button.size ?? size}
 				<li>
 					<Button
-						on:click={onClick}
+						{onClick}
 						name={menuId}
 						{page}
 						{formaction}
