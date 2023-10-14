@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
-	import {selectedStore} from '$lib/stores/api'
+	import {currentStyles} from '$lib/stores/api'
 
-	let selected: StyleTree
+	let styles: StyleTree
 	export let title = ''
 	export let component: ComponentType
 
@@ -14,15 +14,15 @@
 	let size = '' // element's own size
 
 	$: {
-		selected = $selectedStore
+		styles = $currentStyles
 		// Block options
-		variant = selected.blocks?.element.variant ?? variant
-		color = selected.blocks?.element.color ?? color
-		size = selected.blocks?.element.size ?? size
+		variant = styles.blocks?.element.variant ?? variant
+		color = styles.blocks?.element.color ?? color
+		size = styles.blocks?.element.size ?? size
 		// Layout options
 		// - [layout + breakpoint] work together
-		layout = selected.shared?.context.layout ?? layout
-		breakpoint = selected.shared?.context.breakpoint ?? breakpoint
+		layout = styles.shared?.context.layout ?? layout
+		breakpoint = styles.shared?.context.breakpoint ?? breakpoint
 	}
 </script>
 
