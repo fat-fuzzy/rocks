@@ -20,11 +20,12 @@
 	let menuId = id
 
 	export let onClick = (event: CustomEvent) => {
-		window.alert(`${event.target.textContent} Clicked`)
-		clicked = event.target.id
-		dispatch('click', {
-			clicked,
-		})
+		const payload = {
+			clicked: event.target?.id || undefined,
+			text: event.target?.textContent || undefined,
+		}
+		window.alert(`${payload.text} Clicked`)
+		dispatch('click', payload)
 	}
 </script>
 
