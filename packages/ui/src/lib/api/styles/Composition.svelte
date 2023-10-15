@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
+
 	import {currentStyles} from '$lib/stores/api'
 
 	let styles: StyleTree
@@ -15,28 +16,17 @@
 	let size = '' // element's own size
 	let page = ''
 
-	$: {
-		styles = $currentStyles
-		// Block options
-		variant = styles.blocks?.element.variant ?? variant
-		color = styles.blocks?.element.color ?? color
-		size = styles.blocks?.element.size ?? size
-		// Layout options
-		// - [layout + breakpoint] work together
-		layout = styles.shared?.context.layout ?? layout
-		breakpoint = styles.shared?.context.breakpoint ?? breakpoint
-	}
+	$: styles = $currentStyles
+	// Block options
+	$: variant = styles.blocks?.element.variant ?? variant
+	$: color = styles.blocks?.element.color ?? color
+	$: size = styles.blocks?.element.size ?? size
+	// Layout options
+	// - [layout + breakpoint] work together
+	$: layout = styles.shared?.context.layout ?? layout
+	$: breakpoint = styles.shared?.context.breakpoint ?? breakpoint
+
+	$: props = {...props, page, title, color, variant, size, layout, breakpoint}
 </script>
 
-<svelte:component
-	this={component}
-	id={title}
-	{title}
-	{color}
-	{variant}
-	{size}
-	{page}
-	{layout}
-	{breakpoint}
-	{...props}
-/>
+<svelte:component this={component} id={title} {...props} />
