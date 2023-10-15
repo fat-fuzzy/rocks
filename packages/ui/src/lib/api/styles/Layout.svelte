@@ -61,7 +61,6 @@
 		</svelte:component>
 	{/if}
 {:else if isPage}
-	{@const fixtureProps = getProps({category, component: title})}
 	{#if title === 'Sidebar'}
 		<svelte:component this={component} id={title} {size} {breakpoint} {...props}>
 			<div slot="side">
@@ -74,6 +73,7 @@
 				{/if}
 			</div>
 			<div slot="main">
+				{@const fixtureProps = getProps({category, component: title})}
 				{#if mainContent === 'text'}
 					<p>{fixtureProps.text}</p>
 				{:else if mainContent === 'card' || mainContent === 'form'}
@@ -86,6 +86,7 @@
 	{:else if title === 'Reveal' || title === 'Burrito'}
 		<svelte:component this={component} id={title} {size} {breakpoint} } {...props}>
 			<div slot="content">
+				{@const fixtureProps = getProps({category, component: title})}
 				{#if content === 'text'}
 					<p>{fixtureProps.text}</p>
 				{:else if content === 'card' || content === 'form'}
@@ -97,6 +98,7 @@
 		</svelte:component>
 	{:else}
 		<svelte:component this={component} id={title} {size} {breakpoint} } {...props}>
+			{@const fixtureProps = getProps({category, component: title})}
 			{#if content === 'text'}
 				<p>{fixtureProps.text}</p>
 			{:else if content === 'card' || content === 'form'}
