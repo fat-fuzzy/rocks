@@ -2,7 +2,6 @@
 	import format from '$lib/utils/format'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
-	import mocks from '$lib/data/mocks'
 
 	export let layout = 'stack'
 	export let size = ''
@@ -17,7 +16,7 @@
 	export let asset = ''
 	export let align = 'start'
 	export let place = 'left'
-	export let items = mocks.nav
+	export let items: any[] = [] // TODO: fix type
 
 	let expanded = true
 

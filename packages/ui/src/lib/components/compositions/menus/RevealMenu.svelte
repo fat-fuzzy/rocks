@@ -1,10 +1,8 @@
 <script lang="ts">
-	import {browser} from '$app/environment'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import {createEventDispatcher} from 'svelte'
 	import format from '$lib/utils/format'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import mocks from '$lib/data/mocks'
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
@@ -18,7 +16,7 @@
 	export let icon = ''
 	export let align = 'start'
 	export let place = 'left'
-	export let items = mocks.menu.map((button) => ({...button, id: `${id}.${button.id}`}))
+	export let items = []
 
 	let expanded = false
 
@@ -36,9 +34,7 @@
 
 	// Override this function to override menu button actions
 	export let onClick = (event) => {
-		if (browser) {
-			window.alert(`${event.target.textContent} Clicked`)
-		}
+		window.alert(`${event.target.textContent} Clicked`)
 		clicked = event.target.id
 		dispatch('click', {
 			clicked,
