@@ -1,8 +1,5 @@
 <script lang="ts">
-	// Inputs
-	// import {browser} from '$app/environment'
 	import format from '$lib/utils/format'
-	import mocks from '$lib/data/mocks'
 	type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 
 	export let id = 'button'
@@ -14,14 +11,14 @@
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
-	export let asset = mocks.button.asset
-	export let text = mocks.button.text
+	export let asset = ''
+	export let text = ''
 	export let formaction = 'enter'
 	export let page = ''
 	export let type: ButtonType = 'button'
 
 	export let onClick = (event: MouseEvent) => {
-		window.alert(`${text} Clicked`)
+		window.alert(`${format.formatLabel(text, asset)} Clicked`)
 	}
 
 	$: variantClass = variant === 'default' ? '' : variant

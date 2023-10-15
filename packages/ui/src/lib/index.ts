@@ -51,6 +51,7 @@ import Api from '$lib/api/styles/Api.svelte'
 import Element from '$lib/api/styles/Element.svelte'
 import Collection from '$lib/api/styles/Collection.svelte'
 import * as stylesApi from '$lib/api/styles/styles-api'
+import * as fixturesApi from '$lib/api/fixtures/js/fixtures-api'
 
 /**
  * Tests Api components
@@ -135,6 +136,7 @@ const api = {
 	Collection,
 	Element,
 	// StyleCapsule,
+	fixturesApi,
 	stylesApi,
 	stylesStore,
 }

@@ -5,7 +5,6 @@
 	import {useMachine} from '@xstate/svelte'
 	import {createMachine} from 'xstate'
 	import format from '$lib/utils/format'
-	import mocks from '$lib/data/mocks'
 
 	const dispatch = createEventDispatcher()
 
@@ -20,8 +19,8 @@
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
-	export let asset = mocks.toggle.asset // TODO: emoji OR svg
-	export let text = mocks.toggle.text
+	export let asset = '' // TODO: emoji OR svg
+	export let text = ''
 	export let formaction = 'update'
 	export let page = ''
 
