@@ -7,14 +7,13 @@
 	let styles: StyleTree
 	export let title = ''
 	export let component: ComponentType
-	export let props: any
-
+	export let props: any = {}
 	let breakpoint = ''
 	let layout = ''
 	let color = ''
 	let variant = ''
-	let asset = ''
-	let text = ''
+	let asset = props.asset || ''
+	let text = props.text || ''
 	let size = '' // element's own size
 
 	$: styles = $currentStyles
@@ -32,13 +31,13 @@
 <svelte:component
 	this={component}
 	id={title}
+	{text}
+	{asset}
+	{...props}
 	{title}
 	{color}
 	{variant}
-	{asset}
-	{text}
 	{size}
 	{layout}
 	{breakpoint}
-	{...props}
 />
