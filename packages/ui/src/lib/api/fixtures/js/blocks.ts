@@ -7,6 +7,11 @@ export default {
 			{id: 'moby', text: 'Moby', asset: '🐳'},
 		],
 	},
+	Feedback: {
+		text: 'All tests passed',
+		context: 'code',
+		variant: 'success',
+	},
 	Toggle: {id: 'favorite', text: 'Favorite', asset: '❤️'},
 	ToggleMenu: {
 		items: [
