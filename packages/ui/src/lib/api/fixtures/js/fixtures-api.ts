@@ -9,13 +9,18 @@ export const COMPONENT_FIXTURES: any = {
 }
 
 export function getProps({category, component}: {category: string; component: string}) {
+	let props = []
 	switch (category) {
 		case 'blocks':
 		case 'graphics':
-			return COMPONENT_FIXTURES[category][component]
+			props = COMPONENT_FIXTURES[category][component]
+			break
 		case 'layouts':
-			return COMPONENT_FIXTURES[category]
+			props = COMPONENT_FIXTURES[category]
+			break
 		default:
-			return COMPONENT_FIXTURES['blocks'][component]
+			props = COMPONENT_FIXTURES['blocks'][component]
+			break
 	}
+	return props
 }

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 	import {createEventDispatcher} from 'svelte'
-	import mocks from '$lib/data/mocks'
 
 	const dispatch = createEventDispatcher()
 
@@ -15,11 +14,7 @@
 	export let multiple = false
 	export let formaction = 'update'
 	export let page = ''
-	export let items = mocks.toggleMenu.map((button) => ({
-		...button,
-		id: `${id}.${button.id}`,
-		value: button.text,
-	}))
+	export let items: any = [] // TODO fix types
 
 	let menuId = id
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []

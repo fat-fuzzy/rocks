@@ -1,8 +1,6 @@
 <script lang="ts">
-	// import {browser} from '$app/environment'
 	import {createEventDispatcher} from 'svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import mocks from '$lib/data/mocks'
 
 	const dispatch = createEventDispatcher()
 	export let id = 'button-menu'
@@ -14,7 +12,7 @@
 	export let variant = ''
 	export let formaction = 'enter'
 	export let page = ''
-	export let items = mocks.menu.map((button) => ({...button, id: `${id}.${button.id}`}))
+	export let items: any = [] // TODO Fix type
 
 	let menuId = id
 
@@ -59,7 +57,7 @@
 			{@const itemSize = button.size ?? size}
 			<li>
 				<Button
-					on:click={onClick}
+					{onClick}
 					name={menuId}
 					{page}
 					{formaction}

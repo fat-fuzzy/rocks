@@ -9,6 +9,7 @@
 	export let title = ''
 	export let isPage = false
 	export let component: ComponentType
+	export let props: any
 
 	let styles: StyleTree
 	let size = '' // element's own size
@@ -31,7 +32,7 @@
 
 {#if !isPage}
 	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {size}>
+		<svelte:component this={component} id={title} {size} {...props}>
 			<div slot="side">
 				{#each mocks['card'] as item}
 					<div class={`card:${size} box ${item} ${size}`}>{item}</div>
@@ -42,7 +43,7 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {breakpoint}>
+		<svelte:component this={component} id={title} {size} {breakpoint} {...props}>
 			<svelte:fragment slot="content">
 				{#each mocks['form'] as item}
 					<div class={`card:${size} box ${item} ${size}`}>{item}</div>
@@ -50,7 +51,7 @@
 			</svelte:fragment>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {size} {breakpoint}>
+		<svelte:component this={component} id={title} {size} {breakpoint} {...props}>
 			{#each mocks['card'] as item}
 				<div class={`card:${size} box ${item} ${size}`}>{item}</div>
 			{/each}
@@ -58,7 +59,7 @@
 	{/if}
 {:else if isPage}
 	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {size} {breakpoint}>
+		<svelte:component this={component} id={title} {size} {breakpoint} {...props}>
 			<div slot="side">
 				{#if sideContent === 'text'}
 					{@html mocks['doc'][sideContent]}
@@ -79,7 +80,7 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {breakpoint}>
+		<svelte:component this={component} id={title} {size} {breakpoint} } {...props}>
 			<div slot="content">
 				{#if content === 'text'}
 					{@html mocks['doc'][`${content}Intro`]}
@@ -91,7 +92,7 @@
 			</div>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {size} {breakpoint}>
+		<svelte:component this={component} id={title} {size} {breakpoint} } {...props}>
 			{#if content === 'text'}
 				{@html mocks['doc'][content]}
 			{:else if content === 'card' || content === 'form'}

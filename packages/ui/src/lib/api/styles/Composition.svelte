@@ -6,6 +6,7 @@
 	let styles: StyleTree
 	export let title = ''
 	export let component: ComponentType
+	export let props: any
 
 	let breakpoint = ''
 	let layout = ''
@@ -35,4 +36,5 @@
 	{size}
 	{layout}
 	{breakpoint}
+	{...props}
 />
