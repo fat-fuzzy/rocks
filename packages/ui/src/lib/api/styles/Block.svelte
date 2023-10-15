@@ -27,18 +27,7 @@
 	// - [layout + breakpoint] work together
 	$: layout = styles.shared?.context.layout ?? layout
 	$: breakpoint = styles.shared?.context.breakpoint ?? breakpoint
+	$: props = {...props, text, asset, title, color, variant, size, layout, breakpoint}
 </script>
 
-<svelte:component
-	this={component}
-	id={title}
-	{text}
-	{asset}
-	{title}
-	{color}
-	{variant}
-	{size}
-	{layout}
-	{breakpoint}
-	{...props}
-/>
+<svelte:component this={component} id={title} {...props} />
