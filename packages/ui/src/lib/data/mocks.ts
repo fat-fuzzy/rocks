@@ -1,65 +1,3 @@
-const links = [
-	{slug: '', title: 'Home'},
-	{slug: 'about', title: 'About'},
-]
-
-const nav = [
-	{
-		slug: 'ui',
-		title: 'RevealNav Example',
-		items: [
-			// {
-			// 	slug: 'design-tokens',
-			// 	title: 'Design Tokens',
-			// },
-			{
-				slug: 'blocks',
-				title: 'Block',
-				items: [
-					{slug: 'nav', title: 'Nav'},
-					{slug: 'reveal-nav', title: 'RevealNav'},
-				],
-			},
-			{
-				slug: 'layouts',
-				title: 'Layouts',
-				items: [
-					{slug: 'burrito', title: 'Burrito'},
-					{slug: 'stack', title: 'Stack'},
-				],
-			},
-		],
-	},
-]
-
-const button = {id: 'idea', text: 'Idea', type: 'button', variant: '', asset: '💡'}
-
-const toggle = {id: 'favorite', text: 'Favorite', type: 'button', variant: '', asset: '❤️'}
-
-const menu = [
-	{id: 'vader', text: 'Vader', asset: '👾'},
-	{id: 'ollie', text: 'Ollie', asset: '🐙'},
-	{id: 'moby', text: 'Moby', asset: '🐳'},
-]
-
-const toggleMenu = [
-	{id: 'idea', text: 'Idea', asset: '💡'},
-	{id: 'profile', text: 'Profile', asset: '🦁'},
-	{id: 'favorite', text: 'Favorite', asset: '❤️'},
-]
-
-const radio = [
-	{id: 'radio-1', label: 'Radio 1'},
-	{id: 'radio-2', label: 'Radio 2'},
-	{id: 'radio-3', label: 'Radio 3'},
-]
-
-const checkbox = [
-	{id: 'check-1', label: 'Checkbox 1'},
-	{id: 'check-2', label: 'Checkbox 2'},
-	{id: 'check-3', label: 'Checkbox 3'},
-]
-
 const card = ['Card 1', 'Card 2', 'Card 3']
 const form = ['Form input 1', 'Form input 2', 'Form input 3']
 
@@ -126,14 +64,6 @@ const sketch = {
 }
 
 export default {
-	links,
-	nav,
-	button,
-	menu,
-	toggle,
-	toggleMenu,
-	radio,
-	checkbox,
 	card,
 	form,
 	doc,
