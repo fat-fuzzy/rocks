@@ -17,8 +17,8 @@
 
 	export let category = 'app'
 	export let page = ''
-	export let props: any = {page} // TODO: fix props
-	// export let families = []
+	export let props: any = {}
+	props.page = page
 
 	let ApiElement: {[category: string]: ComponentType} = {
 		layouts: Layout,
@@ -48,6 +48,7 @@
 </script>
 
 {#if !isPage}
+	{@const props = getProps({category, component: title})}
 	<article class="l:stack lg">
 		<header class={`card:md text:center bg:${color}`}>
 			<a class="card:sm" href={`${path}/${title}`}>

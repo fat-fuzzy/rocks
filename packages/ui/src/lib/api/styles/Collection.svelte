@@ -35,17 +35,16 @@
 	// TODO: composition section
 	// TODO: feedback colors & component
 
-	$: {
-		styles = $currentStyles
-		//== App settings (user controlled)
-		brightness = styles.app?.settings.brightness ?? brightness
-		contrast = styles.app?.settings.contrast ?? contrast
-		//== Shared settings (user controlled)
-		// Container options
-		// - [container + size] work together
-		sharedOptions.container = styles.shared?.context.container ?? sharedOptions.container
-		sharedOptions.size = styles.shared?.context.size ?? sharedOptions.size
-	}
+	$: styles = $currentStyles
+	//== App settings (user controlled)
+	$: brightness = styles.app?.settings.brightness ?? brightness
+	$: contrast = styles.app?.settings.contrast ?? contrast
+	//== Shared settings (user controlled)
+	// Container options
+	// - [container + size] work together
+	$: sharedOptions.container = styles.shared?.context.container ?? sharedOptions.container
+	$: sharedOptions.size = styles.shared?.context.size ?? sharedOptions.size
+
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
 	$: categorySingular = `${category.slice(0, 1).toUpperCase()}${category.slice(
