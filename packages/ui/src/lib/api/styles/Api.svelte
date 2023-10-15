@@ -4,7 +4,7 @@
 
 	import {enhance} from '$app/forms'
 	import format from '$lib/utils/format'
-	import ToggleMenu from '$lib/components/blocks/buttons/ToggleMenu.svelte'
+	import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'

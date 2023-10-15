@@ -1,7 +1,6 @@
 <script lang="ts">
 	import format from '$lib/utils/format'
-	import LinkList from '$lib/components/blocks/navs/LinkList.svelte'
-	import mocks from '$lib/data/mocks'
+	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 
 	export let layout = 'stack'
 	export let size = ''
@@ -14,7 +13,7 @@
 	export let title = 'RevealNav'
 	export let icon = ''
 	export let align = 'start'
-	export let items = mocks.nav
+	export let items: any = [] // TODO: fix type
 
 	let expanded = true
 

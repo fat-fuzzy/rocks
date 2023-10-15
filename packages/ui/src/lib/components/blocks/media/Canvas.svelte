@@ -2,6 +2,7 @@
 	import {onMount} from 'svelte'
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
 	export let sketch
+
 	let {title, init, dimensions, clear} = sketch
 	let canvas: HTMLCanvasElement
 	let width
