@@ -2,7 +2,10 @@ import type {ComponentType} from 'svelte'
 export type ComponentChild = string | ComponentType | (string | ComponentType)[] // TODO: figure out if I really need this
 
 // TODO: figure out if I can extract this info from Svelte component
-export interface IStyleInputGroupOptions {
+interface IStyleInputOptions {
+	[key: string]: string
+}
+type StyleInputOptions = {
 	id: string
 	asset?: string
 	size?: string
@@ -89,7 +92,7 @@ interface IStyleInputGroup extends IStylesSet {
 	slug: string
 	input: string
 	value: string
-	items: Array<IStyleInputGroupOptions>
+	items: Array<IStyleInputOptions>
 
 	getValue: () => string | undefined
 	setValue: (value: string) => void
@@ -115,7 +118,7 @@ type StylesSetOptions = {
 
 type StyleInputGroupOptions = StylesSetOptions & {
 	input: string
-	items: Array<StyleInputGroupOptions>
+	items: Array<StyleInputOptions>
 	value: string
 }
 
@@ -133,7 +136,7 @@ export class StyleInputGroup implements IStyleInputGroup {
 	name: string
 	slug: string
 	input: string
-	items: Array<IStyleInputGroupOptions>
+	items: Array<StyleInputOptions>
 	value: string
 	layout?: string
 	exclude?: string[]
