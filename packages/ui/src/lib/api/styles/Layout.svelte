@@ -4,7 +4,6 @@
 
 	import {currentStyles} from '$lib/stores/api'
 
-	import mocks from '$lib/data/mocks' // TODO: load text from README.md
 	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
 	export let title = ''
@@ -20,16 +19,14 @@
 	let mainContent = ''
 	let category = 'layouts'
 
-	$: {
-		styles = $currentStyles
-		// Element options
-		size = styles.layouts?.element?.size ?? ''
-		breakpoint = styles.shared?.context.breakpoint ?? breakpoint
-		// Content options
-		content = styles.layouts?.element.content ?? 'card'
-		sideContent = styles.layouts?.element.side ?? 'card'
-		mainContent = styles.layouts?.element.main ?? 'text'
-	}
+	$: styles = $currentStyles
+	// Element options
+	$: size = styles.layouts?.element?.size ?? ''
+	$: breakpoint = styles.shared?.context.breakpoint ?? breakpoint
+	// Content options
+	$: content = styles.layouts?.element.content ?? 'card'
+	$: sideContent = styles.layouts?.element.side ?? 'card'
+	$: mainContent = styles.layouts?.element.main ?? 'text'
 </script>
 
 {#if !isPage}
@@ -37,7 +34,7 @@
 	{#if title === 'Sidebar'}
 		<svelte:component this={component} id={title} {size} {...props}>
 			<div slot="side">
-				{#each fixtureProps.cards as item}
+				{#each fixtureProps.card as item}
 					<div class={`card:${size} box ${item} ${size}`}>{item}</div>
 				{/each}
 			</div>
@@ -55,19 +52,20 @@
 		</svelte:component>
 	{:else}
 		<svelte:component this={component} id={title} {size} {breakpoint} {...props}>
-			{#each fixtureProps.cards as item}
+			{#each fixtureProps.card as item}
 				<div class={`card:${size} box ${item} ${size}`}>{item}</div>
 			{/each}
 		</svelte:component>
 	{/if}
 {:else if isPage}
 	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {size} {breakpoint} {...props}>
+		<svelte:component this={component} id={title} {size} {breakpoint} {props}>
 			<div slot="side">
+				{@const fixtureProps = getProps({category, component: title})}
 				{#if sideContent === 'text'}
-					{@html mocks['doc'][sideContent]}
+					<p>{fixtureProps.text}</p>
 				{:else if sideContent === 'card' || sideContent === 'form'}
-					{#each mocks[sideContent] as item}
+					{#each fixtureProps[sideContent] as item}
 						<div class={`card:${size} box ${item} ${size}`}>{item}</div>
 					{/each}
 				{/if}
@@ -84,7 +82,7 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {breakpoint} } {...props}>
+		<svelte:component this={component} id={title} {size} {breakpoint} } {props}>
 			<div slot="content">
 				{@const fixtureProps = getProps({category, component: title})}
 				{#if content === 'text'}
@@ -97,7 +95,7 @@
 			</div>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {size} {breakpoint} } {...props}>
+		<svelte:component this={component} id={title} {size} {breakpoint} } {props}>
 			{@const fixtureProps = getProps({category, component: title})}
 			{#if content === 'text'}
 				<p>{fixtureProps.text}</p>

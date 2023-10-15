@@ -14,6 +14,7 @@
 	let color = ''
 	let variant = ''
 	let asset = ''
+	let text = ''
 	let size = '' // element's own size
 
 	$: styles = $currentStyles
@@ -35,6 +36,7 @@
 	{color}
 	{variant}
 	{asset}
+	{text}
 	{size}
 	{layout}
 	{breakpoint}
