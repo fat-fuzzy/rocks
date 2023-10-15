@@ -6,3 +6,28 @@ find the full documentation for it [in our repository](https://github.com/change
 
 We have a quick list of common questions to get you started engaging with this project in
 [our documentation](https://github.com/changesets/changesets/blob/main/docs/common-questions.md)
+
+## Getting Started
+
+Adding changesets
+
+Generate a new changeset:
+
+```shell
+pnpm changeset
+```
+
+Generate a package version using current changesets:
+
+```shell
+pnpm changeset version
+```
+
+Publish a new version:
+
+1. Review changesets
+1. Publish
+
+```shell
+pnpm changeset version
+```

@@ -1,5 +1,14 @@
 # @fat-fuzzy/play
 
+## 0.1.3
+
+### Patch Changes
+
+- 56ce614: refactor: Decouple fixtures from ui library, add tests
+- Updated dependencies [56ce614]
+  - @fat-fuzzy/ui@0.1.3
+  - @fat-fuzzy/lib@0.1.2
+
 ## 0.1.2
 
 ### Patch Changes

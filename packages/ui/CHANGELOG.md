@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.3
+
+### Patch Changes
+
+- 56ce614: refactor: Decouple fixtures from ui library, add tests
+
 ## 0.1.2
 
 ### Patch Changes
