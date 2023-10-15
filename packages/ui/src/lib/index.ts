@@ -16,7 +16,7 @@ import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 import ButtonMenu from '$lib/components/blocks/buttons/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/blocks/buttons/ToggleMenu.svelte'
-// import Feedback from '$lib/components/blocks/cards/Feedback.svelte'
+import Feedback from '$lib/components/blocks/cards/Feedback.svelte'
 // import Canvas from '$lib/components/blocks/media/Canvas.svelte'
 import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
@@ -97,7 +97,7 @@ const blocks = {
 	ButtonMenu,
 	ToggleMenu,
 	Fieldset,
-	// Feedback,
+	Feedback,
 	// Canvas, TODO: init canvas with example Sketch
 	Nav,
 	// Sketch,
