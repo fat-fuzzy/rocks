@@ -11,9 +11,10 @@
 	export let height = ''
 	export let color = ''
 	export let path = ''
+	export let page = ''
 	export let id = 'ui'
 	export let title = 'RevealNav'
-	export let icon = '🐥'
+	export let asset = ''
 	export let align = 'start'
 	export let place = 'left'
 	export let items = mocks.nav
@@ -45,13 +46,12 @@
 		aria-controls={`${id}-reveal-nav`}
 		on:click={toggleReveal}
 	>
-		<span class="icon">{icon}</span>
-		<span class="text">{format.formatLabel(title, icon)}</span>
+		<span class="text">{format.formatLabel(title, asset)}</span>
 	</button>
 	<nav
 		id={`${id}-reveal-nav`}
 		class={`content l:${layout} bp:${breakpoint} layer polar card:${size} align:${align} ${size} ${setHeight}`}
 	>
-		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
+		<LinkList id={`${id}-${path}`} {page} {path} {items} {size} {align} depth={0} />
 	</nav>
 </div>

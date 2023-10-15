@@ -13,6 +13,7 @@
 	let color = ''
 	let variant = ''
 	let size = '' // element's own size
+	let page = ''
 
 	$: {
 		styles = $currentStyles
@@ -34,6 +35,7 @@
 	{color}
 	{variant}
 	{size}
+	{page}
 	{layout}
 	{breakpoint}
 	{...props}

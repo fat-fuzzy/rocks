@@ -2,7 +2,6 @@
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
 
-	import {page} from '$app/stores'
 	import Api from './Api.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
@@ -15,9 +14,10 @@
 	export let isPage = false
 	export let path = ''
 	export let component: ComponentType
-	export let props: any // TODO: fix props
 
-	export let category = $page.params.category || 'app'
+	export let category = 'app'
+	export let page = ''
+	export let props: any = {page} // TODO: fix props
 	// export let families = []
 
 	let ApiElement: {[category: string]: ComponentType} = {
