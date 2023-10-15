@@ -13,6 +13,15 @@ export default {
 			{id: 'favorite', text: 'Favorite', asset: '❤️'},
 		],
 	},
+	RevealMenu: {
+		slug: 'ui',
+		title: 'RevealMenu',
+		items: [
+			{id: 'idea', text: 'Idea', asset: '💡'},
+			{id: 'profile', text: 'Profile', asset: '🦁'},
+			{id: 'favorite', text: 'Favorite', asset: '❤️'},
+		],
+	},
 	RadioGroup: [
 		{id: 'radio-1', label: 'Radio 1'},
 		{id: 'radio-2', label: 'Radio 2'},
@@ -48,8 +57,8 @@ export default {
 		title: 'RevealNav',
 		items: [
 			{
-				slug: 'blocks',
-				title: 'Blocks',
+				slug: 'compositions',
+				title: 'Compositions',
 				items: [
 					{slug: 'nav', title: 'Nav'},
 					{slug: 'reveal-nav', title: 'RevealNav'},
