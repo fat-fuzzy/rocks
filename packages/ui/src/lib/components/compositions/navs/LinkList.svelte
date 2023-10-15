@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import format from '$lib/utils/format'
-	import mocks from '$lib/data/mocks'
 
 	export let path = ''
 	export let layout = ''
@@ -9,7 +8,8 @@
 	export let align = 'start'
 	export let id = ''
 	export let depth = 0
-	export let items = mocks.links
+	export let items: any = [] // TODO: fix type
+
 	let layoutClass = layout ? `l:${layout}:${size}` : ''
 	let depthClass = `depth-${depth}`
 

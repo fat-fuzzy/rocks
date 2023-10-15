@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LinkList from '$lib/components/blocks/navs/LinkList.svelte'
+	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 	export let id = ''
 	export let layout = ''
 	export let size = ''

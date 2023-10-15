@@ -10,7 +10,6 @@
 	export let name = ''
 	export let items: any = []
 	export let props: string[] = []
-	// TODO: figure out how I can deduct props from Svelte component
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -31,17 +30,15 @@
 
 		dispatch('changed', payload)
 	}
-
-	// TODO: clean, comment
 </script>
 
-<Fieldset legend={name} slug={`field-${name}`} type="input-group" {...props} }>
+<Fieldset legend={name} type="input-group" {...props}>
 	{#each items as inputOptions}
-		{@const {name, input, items, layout} = inputOptions}
+		{@const {name, input, value, items, layout} = inputOptions}
 		{#if input === 'radio' || input === 'checkbox'}
 			{@const InputComponent = COMPONENT_IMPORTS[input]}
 			{#each items as { id, ...inputProps }}
-				{@const checked = id === prop.value}
+				{@const checked = id === value}
 				<svelte:component
 					this={InputComponent}
 					id={`${input}-${id}`}
