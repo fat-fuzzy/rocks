@@ -8,6 +8,7 @@
 	import {currentStyles} from '$lib/stores/api'
 
 	import mocks from '$lib/data/mocks' // TODO: load text from README.md
+	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
 	export let title = ''
 	export let depth = 0
@@ -63,8 +64,9 @@
 		<div slot="main" class={mainContainerClasses}>
 			{#each componentNames as name}
 				{@const component = components[name]}
+				{@const props = getProps({category, component: name})}
 				<div class={contextClasses}>
-					<Element title={name} depth={Number(depth) + 1} {path} {category} {component} />
+					<Element title={name} depth={Number(depth) + 1} {path} {category} {component} {props} />
 				</div>
 			{/each}
 		</div>
@@ -91,8 +93,9 @@
 		<div class={mainContainerClasses}>
 			{#each componentNames as name}
 				{@const component = components[name]}
+				{@const props = getProps({category, component: name})}
 				<div class={contextClasses}>
-					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} />
+					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {props} />
 				</div>
 			{/each}
 		</div>

@@ -14,6 +14,7 @@
 	export let isPage = false
 	export let path = ''
 	export let component: ComponentType
+	export let props: any // TODO: fix props
 
 	export let category = $page.params.category || 'app'
 	// export let families = []
@@ -54,7 +55,7 @@
 				</svelte:element>
 			</a>
 		</header>
-		<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
+		<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
 	</article>
 {:else}
 	<header class="header-page">
@@ -63,7 +64,7 @@
 	<article class="l:sidebar xs align:end">
 		<main class={`l:main card:xl inset ${appSettings}`}>
 			<div class={containerContext}>
-				<svelte:component this={ApiElement[category]} {isPage} {title} {component} />
+				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
 			</div>
 		</main>
 		<aside class="l:side">
