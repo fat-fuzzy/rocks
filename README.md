@@ -91,7 +91,6 @@ This repository contains several packages, which can be used together or indepen
 
   - [docker](https://www.docker.com/) - 🚧 WIP
   - [changesets](https://github.com/changesets/changesets) - 🚧 WIP
-    - Generate a new changeset with the command: `pnpm changeset`
   - [commitizen](https://github.com/commitizen/cz-cli) - 🚧 WIP
   - [verdaccio](https://verdaccio.org/) - 🚧 WIP
 
