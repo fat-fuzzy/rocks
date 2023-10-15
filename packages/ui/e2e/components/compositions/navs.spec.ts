@@ -6,6 +6,8 @@ import LinkList from '../../../dist/components/compositions/navs/LinkList.svelte
 import DetailsNav from '../../../dist/components/compositions/navs/DetailsNav.svelte'
 import RevealNav from '../../../dist/components/compositions/navs/RevealNav.svelte'
 
+import {getLabelsRecursive} from '../../utils'
+
 test.use({viewport: {width: 500, height: 500}})
 
 const category = 'compositions'
@@ -62,27 +64,3 @@ test('RevealNav', async ({mount}) => {
 	// 3. Test behaviour
 	// TODO
 })
-
-function getLabels(link) {
-	if (!link.items) {
-		return
-	}
-	return link.items.map((l) => format.formatLabel(l.title, l.asset)).join(' ')
-}
-
-function getLabelsRecursive(link) {
-	const linkLabels = getLabels(link)
-	if (!linkLabels) {
-		return
-	}
-	return link.items.reduce(
-		(accLabels, l) => {
-			const subLinkLabels = getLabels(l)
-			if (subLinkLabels) {
-				accLabels.concat(subLinkLabels)
-			}
-			return accLabels
-		},
-		[`${link.title} ${linkLabels}`],
-	)
-}
