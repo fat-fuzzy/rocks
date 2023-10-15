@@ -2,21 +2,19 @@
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
 
-	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 	import {currentStyles} from '$lib/stores/api'
 
 	let styles: StyleTree
 	export let title = ''
 	export let component: ComponentType
-	let category = 'blocks'
-	export let props = getProps({category, component: title})
+	export let props: any
 
 	let breakpoint = ''
 	let layout = ''
 	let color = ''
 	let variant = ''
-	let asset = props.asset || ''
-	let text = props.text || ''
+	let asset = props?.asset || ''
+	let text = props?.text || ''
 	let size = '' // element's own size
 
 	$: styles = $currentStyles
@@ -36,11 +34,11 @@
 	id={title}
 	{text}
 	{asset}
-	{...props}
 	{title}
 	{color}
 	{variant}
 	{size}
 	{layout}
 	{breakpoint}
+	{...props}
 />
