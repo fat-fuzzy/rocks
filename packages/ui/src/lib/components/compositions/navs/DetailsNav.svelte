@@ -10,7 +10,7 @@
 	export let color = ''
 	export let path = ''
 	export let id = 'reveal-nav'
-	export let title = 'RevealNav'
+	export let title = 'DetailsNav'
 	export let icon = ''
 	export let align = 'start'
 	export let items: any = [] // TODO: fix type

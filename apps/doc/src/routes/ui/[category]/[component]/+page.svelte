@@ -31,4 +31,13 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<Element isPage={true} depth="1" {title} {path} {category} component={Component} {uiState} />
+<Element
+	isPage={true}
+	depth="1"
+	{title}
+	page={path}
+	{path}
+	{category}
+	component={Component}
+	{uiState}
+/>

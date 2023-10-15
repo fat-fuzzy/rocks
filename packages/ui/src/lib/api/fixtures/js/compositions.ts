@@ -23,6 +23,12 @@ export default {
 		{id: 'check-2', label: 'Checkbox 2'},
 		{id: 'check-3', label: 'Checkbox 3'},
 	],
+	LinkList: {
+		items: [
+			{slug: '', title: 'Home', asset: '🥚'},
+			{slug: 'about', title: 'About', asset: '🐥'},
+		],
+	},
 	Nav: {
 		items: [
 			{slug: '', title: 'Home', asset: '🥚'},
@@ -30,39 +36,33 @@ export default {
 		],
 	},
 	DetailsNav: {
+		slug: 'ui',
+		title: 'DetailsNav',
+		items: [
+			{slug: '', title: 'Home', asset: '🥚'},
+			{slug: 'about', title: 'About', asset: '🐥'},
+		],
+	},
+	RevealNav: {
+		slug: 'ui',
+		title: 'RevealNav',
 		items: [
 			{
-				slug: 'ui',
-				title: 'DetailsNav Example',
+				slug: 'blocks',
+				title: 'Blocks',
 				items: [
-					{slug: '', title: 'Home', asset: '🥚'},
-					{slug: 'about', title: 'About', asset: '🐥'},
+					{slug: 'nav', title: 'Nav'},
+					{slug: 'reveal-nav', title: 'RevealNav'},
+				],
+			},
+			{
+				slug: 'layouts',
+				title: 'Layouts',
+				items: [
+					{slug: 'burrito', title: 'Burrito'},
+					{slug: 'stack', title: 'Stack'},
 				],
 			},
 		],
 	},
-	RevealNav: [
-		{
-			slug: 'ui',
-			title: 'RevealNav Example',
-			items: [
-				{
-					slug: 'blocks',
-					title: 'Block',
-					items: [
-						{slug: 'nav', title: 'Nav'},
-						{slug: 'reveal-nav', title: 'RevealNav'},
-					],
-				},
-				{
-					slug: 'layouts',
-					title: 'Layouts',
-					items: [
-						{slug: 'burrito', title: 'Burrito'},
-						{slug: 'stack', title: 'Stack'},
-					],
-				},
-			],
-		},
-	],
 }
