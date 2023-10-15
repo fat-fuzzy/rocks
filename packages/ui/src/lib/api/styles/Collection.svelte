@@ -66,7 +66,15 @@
 				{@const component = components[name]}
 				{@const props = getProps({category, component: name})}
 				<div class={contextClasses}>
-					<Element title={name} depth={Number(depth) + 1} {path} {category} {component} {props} />
+					<Element
+						title={name}
+						depth={Number(depth) + 1}
+						page={$page.url.pathname}
+						{path}
+						{category}
+						{component}
+						{props}
+					/>
 				</div>
 			{/each}
 		</div>
