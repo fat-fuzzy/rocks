@@ -14,8 +14,6 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 
 import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
-import ButtonMenu from '$lib/components/blocks/buttons/ButtonMenu.svelte'
-import ToggleMenu from '$lib/components/blocks/buttons/ToggleMenu.svelte'
 import Feedback from '$lib/components/blocks/cards/Feedback.svelte'
 // import Canvas from '$lib/components/blocks/media/Canvas.svelte'
 import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
@@ -23,25 +21,30 @@ import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 import InputFile from '$lib/components/blocks/forms/InputFile.svelte'
-import Nav from '$lib/components/blocks/navs/Nav.svelte'
 // import Sketch from '$lib/components/blocks/graphics/Sketch.svelte'
 
 /**
  * Compositions - Base
  */
 import Header from '$lib/components/compositions/Header.svelte'
-import RevealMenu from '$lib/components/compositions/RevealMenu.svelte'
-import RevealNav from '$lib/components/compositions/RevealNav.svelte'
+
+import ButtonMenu from '$lib/components/compositions/menus/ButtonMenu.svelte'
+import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
+import RevealMenu from '$lib/components/compositions/menus/RevealMenu.svelte'
+
+import Nav from '$lib/components/compositions/navs/Nav.svelte'
+import RevealNav from '$lib/components/compositions/navs/RevealNav.svelte'
 
 /**
  * Compositions - Graphics
  */
-import Geometry from '$lib/components/graphics/Geometry.svelte'
+import Sketch from '$lib/components/graphics/Sketch.svelte'
 import Player from '$lib/components/graphics/Player.svelte'
+
+import Geometry from '$lib/components/graphics/Geometry.svelte'
 import Position from '$lib/components/graphics/Position.svelte'
 import Rotation from '$lib/components/graphics/Rotation.svelte'
 import Scale from '$lib/components/graphics/Scale.svelte'
-import Sketch from '$lib/components/graphics/Sketch.svelte'
 
 /**
  * Styles Api components
@@ -50,6 +53,7 @@ import Sketch from '$lib/components/graphics/Sketch.svelte'
 import Api from '$lib/api/styles/Api.svelte'
 import Element from '$lib/api/styles/Element.svelte'
 import Collection from '$lib/api/styles/Collection.svelte'
+
 import * as stylesApi from '$lib/api/styles/styles-api'
 import * as fixturesApi from '$lib/api/fixtures/js/fixtures-api'
 
@@ -94,13 +98,8 @@ const stores = {
 const blocks = {
 	Button,
 	Toggle,
-	ButtonMenu,
-	ToggleMenu,
 	Fieldset,
 	Feedback,
-	// Canvas, TODO: init canvas with example Sketch
-	Nav,
-	// Sketch,
 	InputCheck,
 	InputRadio,
 	InputRange,
@@ -117,11 +116,15 @@ const layouts = {
 
 const compositions = {
 	Header,
-	RevealNav, // TODO: use content option in UI lib API in docs
+	ButtonMenu,
+	ToggleMenu,
 	RevealMenu, // TODO: use content option in UI lib API in docs
+	Nav,
+	RevealNav, // TODO: use content option in UI lib API in docs
 }
 
 const graphics = {
+	// Canvas, TODO: init canvas with example Sketch
 	Geometry,
 	Player,
 	Position,
