@@ -3,6 +3,9 @@ import format from '../../../dist/utils/format'
 import {getProps} from '../../../dist/api/fixtures/js/fixtures-api'
 import ButtonMenu from '../../../dist/components/compositions/menus/ButtonMenu.svelte'
 import ToggleMenu from '../../../dist/components/compositions/menus/ToggleMenu.svelte'
+import RevealMenu from '../../../dist/components/compositions/menus/RevealMenu.svelte'
+
+import {getLabelsRecursive} from '../../utils'
 
 test.use({viewport: {width: 500, height: 500}})
 
@@ -30,6 +33,19 @@ test('ToggleMenu', async ({mount}) => {
 	// 2. Test display
 	const labels = props.items.map((button) => format.formatLabel(button.text, button.asset))
 	await expect(component).toHaveText(labels.join(' '))
+
+	// 3. Test behaviour
+	// TODO
+})
+
+test('RevealMenu', async ({mount}) => {
+	// 1. Init
+	const props = getProps({category, component: 'RevealMenu'})
+	const component = await mount(RevealMenu, {props})
+
+	// 2. Test display
+	const labels = props.items.map((button) => format.formatLabel(button.text, button.asset))
+	await expect(component).toHaveText(`${props.title} ${labels.join(' ')}`)
 
 	// 3. Test behaviour
 	// TODO
