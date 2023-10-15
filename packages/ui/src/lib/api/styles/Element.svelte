@@ -8,6 +8,7 @@
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
 	import {currentStyles} from '$lib/stores/api'
+	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
 	export let title = ''
 	export let depth = 0
@@ -58,6 +59,7 @@
 		<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
 	</article>
 {:else}
+	{@const props = getProps({category, component: title})}
 	<header class="header-page">
 		<h1>{title}</h1>
 	</header>
