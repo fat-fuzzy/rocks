@@ -18,7 +18,7 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"test-ct": "playwright test -c playwright-ct.config.ts"
 	},
-	"main": "./src/lib/index.js",
+	"main": "./dist/index.js",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
