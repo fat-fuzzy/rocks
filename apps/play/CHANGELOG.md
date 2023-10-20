@@ -1,5 +1,14 @@
 # @fat-fuzzy/play
 
+## 0.1.6
+
+### Patch Changes
+
+- fix : ui package exports / tests
+- Updated dependencies
+  - @fat-fuzzy/lib@0.1.4
+  - @fat-fuzzy/ui@0.1.6
+
 ## 0.1.5
 
 ### Patch Changes

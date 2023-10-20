@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.4
+
+### Patch Changes
+
+- fix : ui package exports / tests
+
 ## 0.1.3
 
 ### Patch Changes

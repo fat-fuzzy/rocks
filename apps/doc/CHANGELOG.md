@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.6
+
+### Patch Changes
+
+- fix : ui package exports / tests
+
 ## 0.1.5
 
 ### Patch Changes
