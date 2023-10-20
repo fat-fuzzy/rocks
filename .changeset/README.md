@@ -29,5 +29,5 @@ Publish a new version:
 1. Publish
 
 ```shell
-pnpm changeset version
+pnpm changeset publish
 ```
