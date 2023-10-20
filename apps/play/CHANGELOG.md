@@ -1,5 +1,13 @@
 # @fat-fuzzy/play
 
+## 0.1.7
+
+### Patch Changes
+
+- d812922: fix: test fix styles exports
+- Updated dependencies [d812922]
+  - @fat-fuzzy/ui@0.1.7
+
 ## 0.1.6
 
 ### Patch Changes
