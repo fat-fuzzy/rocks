@@ -3,7 +3,7 @@
 	"platforms": {
 		"scss": {
 			"transformGroup": "scss",
-			"buildPath": "build/style-dictionary/",
+			"buildPath": "dist/style-dictionary/",
 			"files": [
 				{
 					"destination": "tokens.scss",
@@ -11,9 +11,19 @@
 				}
 			]
 		},
+		"css": {
+			"transformGroup": "css",
+			"buildPath": "dist/style-dictionary/",
+			"files": [
+				{
+					"destination": "tokens.css",
+					"format": "css/variables"
+				}
+			]
+		},
 		"js": {
 			"transformGroup": "js",
-			"buildPath": "build/style-dictionary/",
+			"buildPath": "dist/style-dictionary/",
 			"files": [
 				{
 					"destination": "tokens.js",

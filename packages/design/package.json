@@ -2,25 +2,56 @@
 	"package": "@fat-fuzzy/design",
 	"name": "@fat-fuzzy/design",
 	"version": "0.1.4",
-	"type": "module",
 	"description": "Fat Fuzzy Design",
-	"main": "build.js",
-	"files": [
-		"build",
-		"properties"
-	],
-	"scripts": {
-		"build:sd": "node_modules/.bin/style-dictionary build",
-		"clean:sd": "rm -rf build/style-dictionary",
-		"prepublishOnly": "npm run build:sd",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
 	"author": "Patricia Boh",
 	"license": "MIT",
+	"scripts": {
+		"build:doc": "rollup --config rollup.config.doc.js",
+		"dev:doc": "rollup --config rollup.config.doc.js -w",
+		"build:play": "rollup --config rollup.config.play.js",
+		"dev:play": "rollup --config rollup.config.play.js -w",
+		"build:tokens": "rollup --config rollup.config.tokens.js",
+		"dev:tokens": "rollup --config rollup.config.tokens.js -w",
+		"build:ui": "rollup --config rollup.config.ui.js",
+		"dev:ui": "rollup --config rollup.config.ui.js -w",
+		"build": "pnpm build:doc && pnpm build:play && pnpm build:tokens && pnpm build:ui",
+		"dev": "dev:ui",
+		"pretest": "pnpm build:ui",
+		"build:sd": "node_modules/.bin/style-dictionary build",
+		"clean:sd": "rm -rf dist/style-dictionary",
+		"prepublishOnly": "pnpm build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"main": "dist/index.js",
+	"files": [
+		"dist/css"
+	],
+	"exports": {
+		"./doc": "./dist/doc/css/main.css",
+		"./play": "./dist/play/css/main.css",
+		"./tokens": "./dist/tokens/css/main.css",
+		"./ui": "./dist/ui/css/main.css"
+	},
 	"devDependencies": {
+		"@csstools/postcss-bundler": "^1.0.6",
+		"@csstools/postcss-global-data": "^2.1.0",
+		"@csstools/postcss-minify": "^1.0.2",
+		"@fat-fuzzy/config": "workspace:*",
+		"autoprefixer": "^10.4.16",
 		"open-props": "1.6.5",
+		"postcss": "8.4.31",
+		"postcss-cli": "^10.1.0",
+		"postcss-custom-media": "^10.0.2",
+		"postcss-jit-props": "^1.0.14",
+		"postcss-load-config": "4.0.1",
+		"postcss-preset-env": "^9.2.0",
+		"rollup": "4.0.2",
+		"rollup-plugin-scss": "^4.0.0",
+		"sass": "^1.69.0",
 		"style-dictionary": "^3.8.0"
 	},
+	"browserslist": "defaults",
+	"type": "module",
 	"publishConfig": {
 		"registry": "http://localhost:4873"
 	}
