@@ -1,5 +1,12 @@
 # @fat-fuzzy/ui
 
+## 0.1.4
+
+### Patch Changes
+
+- 9095ad9: chore: Update config package & dependencies
+  refactor: Export ui/styles
+
 ## 0.1.3
 
 ### Patch Changes
