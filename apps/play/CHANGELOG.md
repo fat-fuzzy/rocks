@@ -1,5 +1,13 @@
 # @fat-fuzzy/play
 
+## 0.1.5
+
+### Patch Changes
+
+- f19a12e: fix: ui package exports
+- Updated dependencies [f19a12e]
+  - @fat-fuzzy/ui@0.1.5
+
 ## 0.1.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.5
+
+### Patch Changes
+
+- f19a12e: fix: ui package exports
+
 ## 0.1.4
 
 ### Patch Changes
