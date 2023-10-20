@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.9
+
+### Patch Changes
+
+- 81f7294: refactor: package styles as standalone css libraries
+
 ## 0.1.8
 
 ### Patch Changes
