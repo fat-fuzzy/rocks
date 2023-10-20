@@ -8,12 +8,18 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
+	"main": "./index.js",
+	"exports": {
+		".": "./index.js"
+	},
 	"dependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.7.4",
 		"@typescript-eslint/parser": "^6.7.4",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-config-turbo": "^1.10.15",
-		"eslint-plugin-svelte3": "^4.0.0",
+		"eslint-plugin-svelte": "^2.34.0",
+		"prettier": "^2.8.0",
+		"prettier-plugin-svelte": "^2.10.1",
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2"
 	},
