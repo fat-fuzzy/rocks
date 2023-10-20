@@ -1,5 +1,13 @@
 # @fat-fuzzy/play
 
+## 0.1.8
+
+### Patch Changes
+
+- 50deec2: feature: UI standalone styles library (CSS)
+- Updated dependencies [50deec2]
+  - @fat-fuzzy/ui@0.1.8
+
 ## 0.1.7
 
 ### Patch Changes
