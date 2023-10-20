@@ -1,0 +1,102 @@
+form * {
+	font-family: var(--font-family-ui);
+}
+
+label,
+.feedback {
+	display: block;
+}
+
+label,
+legend,
+.form\:element {
+	font-weight: var(--font-weight-ui);
+	padding-inline-start: 0;
+	padding-inline-end: 0;
+	background-color: inherit;
+}
+
+.input-group {
+	width: auto;
+}
+
+.input-group label {
+	display: flex;
+	justify-content: space-between;
+}
+
+input,
+select,
+textarea {
+	border: 1px solid var(--color-gray-1);
+	border-radius: var(--radius-base);
+	color: var(--color-dark);
+	background: var(--color-white);
+}
+
+label > input {
+	max-width: 100%;
+}
+
+* + .feedback {
+	margin-block-start: calc(var(--outline-offset) + 2px);
+}
+
+[disabled] {
+	color: var(--color-gray-1);
+	cursor: not-allowed;
+}
+
+.primary {
+	input,
+	select,
+	textarea {
+		accent-color: var(--current-primary);
+	}
+}
+
+.accent {
+	input,
+	select,
+	textarea {
+		accent-color: var(--current-accent);
+	}
+}
+
+.highlight {
+	input,
+	select,
+	textarea {
+		accent-color: var(--current-highlight);
+	}
+}
+
+// TODO : cleanup - use "current" size values
+legend {
+	font-size: var(--current-font-size);
+	margin-block-end: var(--current-size);
+}
+
+input,
+select,
+textarea {
+	font-size: var(--current-font-size);
+	padding: var(--current-size) var(--current-size-plus);
+}
+
+label {
+	font-size: var(--current-font-size);
+}
+
+label > [type='file'] {
+	color: var(--color-dark); // TODO: move to color management - fixes iOS
+	font-size: var(--current-font-size-minus);
+	padding: var(--current-size) var(--current-size) var(--current-size-minus);
+	display: flex;
+	align-items: center;
+}
+
+.feedback {
+	font-size: var(--current-font-size-minus);
+	min-height: calc(var(--current-font-size-minus) * var(--ratio));
+}
