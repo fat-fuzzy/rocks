@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.7
+
+### Patch Changes
+
+- d812922: fix: test fix styles exports
+
 ## 0.1.6
 
 ### Patch Changes
