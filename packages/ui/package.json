@@ -26,6 +26,10 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
+		},
+		"./dist/*.scss": {
+			"import": "./dist/**/*.scss",
+			"require": "./dist/**/*.scss"
 		}
 	},
 	"dependencies": {
