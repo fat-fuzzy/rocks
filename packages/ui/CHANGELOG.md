@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.8
+
+### Patch Changes
+
+- 50deec2: feature: UI standalone styles library (CSS)
+
 ## 0.1.7
 
 ### Patch Changes
