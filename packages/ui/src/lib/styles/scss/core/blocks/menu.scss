@@ -1,0 +1,19 @@
+menu {
+	display: flex;
+	align-items: center;
+	padding: 0;
+	list-style: none;
+}
+
+.menu > p {
+	font-size: var(--font-size-small);
+	font-weight: var(--font-weight-ui);
+}
+
+menu > li > * {
+	width: 100%;
+}
+
+menu > .round {
+	margin-inline: calc(var(--gap) / 2);
+}

@@ -1,0 +1,30 @@
+.round,
+.square {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1;
+}
+
+.round,
+.round > * {
+	line-height: 1;
+	border-radius: 50%;
+}
+
+.square,
+.square > * {
+	border-radius: var(--radius-base);
+	aspect-ratio: 1;
+}
+
+.round .icon,
+.square .icon {
+	height: var(--header-icon-height);
+	width: auto;
+	object-fit: contain;
+}
+
+.round.icon {
+	height: var(--header-icon-height);
+}

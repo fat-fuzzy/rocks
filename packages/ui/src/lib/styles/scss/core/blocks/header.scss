@@ -1,0 +1,257 @@
+header {
+	display: flex;
+}
+
+.header-page {
+	align-items: baseline;
+	margin-block-end: unset;
+}
+
+.header-app > .l\:main {
+	min-inline-size: fit-content;
+}
+
+.header-app > .l\:side {
+	flex-basis: content; // property as content of flex container
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-left: calc(var(--gap) / 2);
+	padding-right: calc(var(--gap) / 2);
+}
+
+.l\:reveal\:nav > button {
+	margin: var(--current-size-plus);
+	width: auto;
+}
+
+.l\:reveal\:nav .show {
+	position: absolute;
+	top: var(--header-height);
+	z-index: var(--z-index-sticky);
+	width: 100%;
+	height: 35vh;
+	overflow-y: auto;
+}
+
+//== Main navigation (in application Header)
+// - Change these styles to adapt to design
+// TODO: clean header styles
+
+.l\:reveal\:nav > nav > ul {
+	position: relative;
+	padding: var(--current-size) 0;
+	margin: 0;
+	height: var(--header-height);
+	display: flex;
+	align-items: center;
+	list-style: none;
+	background-size: contain;
+	width: 100%;
+	gap: var(--current-size);
+	background-color: inherit;
+}
+
+.l\:reveal\:nav > nav li {
+	position: relative;
+	min-width: 100%;
+	height: 100%;
+	padding-inline-end: unset; // override settings for ellipsis (search CSS comments for 'ellipsis' for reference)
+	overflow: initial; // override settings for ellipsis
+	background-color: inherit;
+}
+
+.header-app > .l\:main > nav li[aria-current='page'] a {
+	color: var(--current-primary);
+	text-decoration: none;
+}
+
+.header-app > .l\:main > nav li[aria-current='page']::before {
+	--size: 6px;
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: 0;
+	top: calc(50% - var(--size));
+	border: var(--size) solid transparent;
+	border-left: var(--size) solid var(--current-primary-light);
+}
+
+.header-app > .l\:main > nav a {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	padding: 0 1em;
+	color: inherit;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: color 0.2s linear;
+}
+
+.header-app ul li > a {
+	font-weight: var(--font-weight-400);
+}
+
+.header-app nav a:hover {
+	color: var(--current-primary-light);
+}
+
+//== Need to override global <a> hover styles in nav and header <a>
+.header-app a:hover {
+	background-color: initial;
+}
+
+.header-app {
+	container: header-nav / inline-size;
+}
+
+// TODO fix magic breakpoint // testing
+@container header-nav (min-width: 620px) {
+	.l\:reveal\:nav .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:nav > button {
+		display: none;
+	}
+
+	.l\:reveal\:nav .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:nav .show,
+	.l\:reveal\:nav [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:nav > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:nav > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.header-app > .l\:main > nav li[aria-current='page']::before {
+		--size: 6px;
+		content: '';
+		min-width: unset;
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: calc(50% - var(--size));
+		border: var(--size) solid transparent;
+		border-top: var(--size) solid var(--current-primary-light);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.l\:reveal\:nav .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:nav > button {
+		display: none;
+	}
+
+	.l\:reveal\:nav .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:nav .show,
+	.l\:reveal\:nav [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:nav > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:nav > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.header-app > .l\:main > nav li[aria-current='page']::before {
+		--size: 6px;
+		content: '';
+		min-width: unset;
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: calc(50% - var(--size));
+		border: var(--size) solid transparent;
+		border-top: var(--size) solid var(--current-primary-light);
+	}
+}
