@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fat-fuzzy/design/play'
 	import {browser} from '$app/environment'
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
@@ -49,7 +50,3 @@
 <footer class="l:center:md">
 	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
-
-<style lang="scss" global>
-	@forward './styles.scss'; // TODO: get back to a css import
-</style>

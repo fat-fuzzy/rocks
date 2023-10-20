@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fat-fuzzy/design/ui'
 	import {browser} from '$app/environment'
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
@@ -46,7 +47,3 @@
 <footer class="l:center font:sm">
 	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
-
-<style lang="scss" global>
-	@forward '../lib/styles/theme/ui';
-</style>

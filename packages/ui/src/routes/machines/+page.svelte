@@ -17,6 +17,6 @@
 
 <form class={`l:burrito:${size}`}>
 	<Fieldset legend="Toggle">
-		<Toggle {size} {variant} />
+		<Toggle text="Toggle" asset="🌟" {size} {variant} />
 	</Fieldset>
 </form>

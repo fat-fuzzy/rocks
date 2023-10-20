@@ -1,4 +1,4 @@
-import { SvelteComponent } from "svelte";
+import { SvelteComponentTyped } from "svelte";
 declare const __propDef: {
     props: Record<string, never>;
     events: {
@@ -9,6 +9,6 @@ declare const __propDef: {
 export type WeatherForecatProps = typeof __propDef.props;
 export type WeatherForecatEvents = typeof __propDef.events;
 export type WeatherForecatSlots = typeof __propDef.slots;
-export default class WeatherForecat extends SvelteComponent<WeatherForecatProps, WeatherForecatEvents, WeatherForecatSlots> {
+export default class WeatherForecat extends SvelteComponentTyped<WeatherForecatProps, WeatherForecatEvents, WeatherForecatSlots> {
 }
 export {};
