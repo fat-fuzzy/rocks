@@ -19,13 +19,6 @@
 		"test-ct": "playwright test -c playwright-ct.config.ts"
 	},
 	"main": "./dist/index.js",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js",
-			"styles/*": "./dist/styles/*"
-		}
-	},
 	"dependencies": {
 		"@sveltejs/adapter-cloudflare": "^2.3.3",
 		"@sveltejs/kit": "^1.25.1",
