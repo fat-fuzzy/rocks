@@ -1,5 +1,15 @@
 # @fat-fuzzy/play
 
+## 0.1.4
+
+### Patch Changes
+
+- 9095ad9: chore: Update config package & dependencies
+  refactor: Export ui/styles
+- Updated dependencies [9095ad9]
+  - @fat-fuzzy/ui@0.1.4
+  - @fat-fuzzy/lib@0.1.3
+
 ## 0.1.3
 
 ### Patch Changes
