@@ -150,10 +150,10 @@ const testsApi = {
 
 // TODO: see if I can use this to configure styles from assets (design tokens) in app project folder
 const sass = {
-	ui: '$lib/styles/theme/ui/_index.scss',
-	doc: '$lib/styles/theme/doc/_index.scss',
-	play: '$lib/styles/theme/play/_index.scss',
-	sandbox: '$lib/styles/theme/sandbox/_index.scss',
+	ui: './styles/theme/ui/_index.scss',
+	doc: './styles/theme/doc/_index.scss',
+	play: './styles/theme/play/_index.scss',
+	sandbox: './styles/theme/sandbox/_index.scss',
 }
 
 // [TODO:] Not sure this is useful
