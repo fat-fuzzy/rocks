@@ -1,0 +1,526 @@
+/* App config */
+.home > * + * {
+  margin-block-start: 2em;
+}
+
+.home header {
+  flex-direction: column;
+  align-items: center;
+}
+
+.home h2 {
+  text-align: center;
+}
+
+/* SCSS design token definitions */
+/**
+ * Source: https://utopia.fyi/blog/css-modular-scales/
+ * Usage:
+ *  TODO: Doc + link to mixin generateModularScale
+ */
+/*
+* --ratio: 1.5;
+* --s-5: calc(var(--s-4) / var(--ratio));
+* --s-4: calc(var(--s-3) / var(--ratio));
+* --s-3: calc(var(--s-2) / var(--ratio));
+* --s-2: calc(var(--s-1) / var(--ratio));
+* --s-1: calc(var(--s0) / var(--ratio));
+* --s0: 1rem;
+* --s1: calc(var(--s0) * var(--ratio));
+* --s2: calc(var(--s1) * var(--ratio));
+* --s3: calc(var(--s2) * var(--ratio));
+* --s4: calc(var(--s3) * var(--ratio));
+* --s5: calc(var(--s4) * var(--ratio));
+*/
+/**
+ * Source: https://utopia.fyi/blog/css-modular-scales/
+ * Usage:
+ *  TODO: Doc + link to mixin generateModularScale
+ */
+/**
+ * src https://dev.to/felipperegazio/css-custom-properties-vars-with-sass-scss-a-practical-architecture-strategy-1m88
+ * Use this mixin to declare a set of CSS Custom Properties.
+ * You can use this mixin to output different global designs ("themes") while relying on
+ * common core CSS functionality to generate layout, typography, color, etc (using $design_tokens)
+ * 
+ *
+ * Usage:
+ * @include generateCssVars((
+ *  base-font-size: 65.5%,
+ *  font-family: HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif,
+ * 
+ *  primary-color: #33b5e5,
+ *  outline-color: #ff500a,
+ * ));
+ *
+ * Will result in
+ *
+ * :root {
+ *    --base-font-size: 65.5%,
+ *    --font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+ *    --primary-color:  #33b5e5;
+ *    --outline-color: #ff500a,
+ * }
+ *
+ */
+/**
+* Attempting this:
+* - https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+* - https://utopia.fyi/blog/clamp
+* It can probably be improved with better usage of sass syntax
+*/
+:root {
+  --ui-bp-xxs: 320px;
+  --bp-xxs: var(--ui-bp-xxs);
+  --ui-bp-xs: 768px;
+  --bp-xs: var(--ui-bp-xs);
+  --ui-bp-sm: 992px;
+  --bp-sm: var(--ui-bp-sm);
+  --ui-bp-md: 1240px;
+  --bp-md: var(--ui-bp-md);
+  --ui-bp-lg: 1620px;
+  --bp-lg: var(--ui-bp-lg);
+  --ui-bp-xl: 2048px;
+  --bp-xl: var(--ui-bp-xl);
+}
+
+:root {
+  --ui-ratio: 1.5;
+  --ratio: var(--ui-ratio);
+  --ui-s-5: calc(var(--s-4) / var(--ratio));
+  --s-5: var(--ui-s-5);
+  --ui-s-4: calc(var(--s-3) / var(--ratio));
+  --s-4: var(--ui-s-4);
+  --ui-s-3: calc(var(--s-2) / var(--ratio));
+  --s-3: var(--ui-s-3);
+  --ui-s-2: calc(var(--s-1) / var(--ratio));
+  --s-2: var(--ui-s-2);
+  --ui-s-1: calc(var(--s0) / var(--ratio));
+  --s-1: var(--ui-s-1);
+  --ui-s0: 1rem;
+  --s0: var(--ui-s0);
+  --ui-s1: calc(var(--s0) * var(--ratio));
+  --s1: var(--ui-s1);
+  --ui-s2: calc(var(--s1) * var(--ratio));
+  --s2: var(--ui-s2);
+  --ui-s3: calc(var(--s2) * var(--ratio));
+  --s3: var(--ui-s3);
+  --ui-s4: calc(var(--s3) * var(--ratio));
+  --s4: var(--ui-s4);
+  --ui-s5: calc(var(--s4) * var(--ratio));
+  --s5: var(--ui-s5);
+}
+
+:root {
+  --ui-s-5: calc(var(--s-4) / var(--ratio));
+  --s-5: var(--ui-s-5);
+  --ui-s-4: calc(var(--s-3) / var(--ratio));
+  --s-4: var(--ui-s-4);
+  --ui-s-3: calc(var(--s-2) / var(--ratio));
+  --s-3: var(--ui-s-3);
+  --ui-s-2: calc(var(--s-1) / var(--ratio));
+  --s-2: var(--ui-s-2);
+  --ui-s-1: calc(var(--s0) / var(--ratio));
+  --s-1: var(--ui-s-1);
+  --ui-s0: 1rem;
+  --s0: var(--ui-s0);
+  --ui-s1: calc(var(--s0) * var(--ratio));
+  --s1: var(--ui-s1);
+  --ui-s2: calc(var(--s1) * var(--ratio));
+  --s2: var(--ui-s2);
+  --ui-s3: calc(var(--s2) * var(--ratio));
+  --s3: var(--ui-s3);
+  --ui-s4: calc(var(--s3) * var(--ratio));
+  --s4: var(--ui-s4);
+  --ui-s5: calc(var(--s4) * var(--ratio));
+  --s5: var(--ui-s5);
+  --ui-100: 0.5rem;
+  --100: var(--ui-100);
+  --ui-200: 0.7rem;
+  --200: var(--ui-200);
+  --ui-300: 0.9rem;
+  --300: var(--ui-300);
+  --ui-400: 1rem;
+  --400: var(--ui-400);
+  --ui-500: 1.3rem;
+  --500: var(--ui-500);
+  --ui-600: 1.7rem;
+  --600: var(--ui-600);
+  --ui-700: 2.1rem;
+  --700: var(--ui-700);
+  --ui-900: 3.3rem;
+  --900: var(--ui-900);
+}
+
+:root {
+  --ui-fluid-min-width: 320;
+  --fluid-min-width: var(--ui-fluid-min-width);
+  --ui-fluid-max-width: 1240;
+  --fluid-max-width: var(--ui-fluid-max-width);
+  --ui-fluid-min-size: 16;
+  --fluid-min-size: var(--ui-fluid-min-size);
+  --ui-fluid-max-size: 20;
+  --fluid-max-size: var(--ui-fluid-max-size);
+  --ui-fluid-min-ratio: 1.2;
+  --fluid-min-ratio: var(--ui-fluid-min-ratio);
+  --ui-fluid-max-ratio: 1.25;
+  --fluid-max-ratio: var(--ui-fluid-max-ratio);
+  --ui-fluid-screen: 100vw;
+  --fluid-screen: var(--ui-fluid-screen);
+}
+
+:root {
+  --f-slope: $slope;
+  --f-size-min-0: $size-max;
+  --f-size-max-0: $size-min;
+  --fluid-0: clamp($size-min * 1rem, $y-axis * 1rem + $slope * 100vw, $size-max * 1rem);
+}
+
+:root {
+  --f-size-min-1: calc(var(--fluid-min-size) / 16 * var(--fluid-min-ratio));
+  --f-size-max-1: calc(var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-max-ratio));
+  --f-width-neg-1: calc(-1 * var(--fluid-min-size) / 16 * var(--fluid-min-ratio));
+  --y-axis-1: calc(-1 * var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * (var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16) + var(--fluid-min-size) / 16 * var(--fluid-min-ratio));
+  --fluid-1: clamp(
+  	var(--f-size-min-1) * 1rem,
+  	var(--y-axis-1) * 1rem + calc((var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16)) * 100vw,
+  	var(--f-size-max-1) * 1rem
+  );
+}
+
+:root {
+  --f-size-min-2: calc(var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --f-size-max-2: calc(var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-max-ratio));
+  --f-width-neg-2: calc(-1 * var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --y-axis-2: calc(-1 * var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * (var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16) + var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --fluid-2: clamp(
+  	var(--f-size-min-2) * 1rem,
+  	var(--y-axis-2) * 1rem + calc((var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16)) * 100vw,
+  	var(--f-size-max-2) * 1rem
+  );
+}
+
+:root {
+  --f-size-min-3: calc(var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --f-size-max-3: calc(var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-max-ratio));
+  --f-width-neg-3: calc(-1 * var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --y-axis-3: calc(-1 * var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * (var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16) + var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --fluid-3: clamp(
+  	var(--f-size-min-3) * 1rem,
+  	var(--y-axis-3) * 1rem + calc((var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16)) * 100vw,
+  	var(--f-size-max-3) * 1rem
+  );
+}
+
+:root {
+  --f-size-min-4: calc(var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --f-size-max-4: calc(var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-max-ratio));
+  --f-width-neg-4: calc(-1 * var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --y-axis-4: calc(-1 * var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * (var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16) + var(--fluid-min-size) / 16 * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio) * var(--fluid-min-ratio));
+  --fluid-4: clamp(
+  	var(--f-size-min-4) * 1rem,
+  	var(--y-axis-4) * 1rem + calc((var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16)) * 100vw,
+  	var(--f-size-max-4) * 1rem
+  );
+}
+
+:root {
+  --f-size-min--1: calc(var(--fluid-min-size) / 16 / var(--fluid-min-ratio));
+  --f-size-max--1: calc(var(--fluid-min-size) / 16 / var(--fluid-min-ratio) / var(--fluid-max-ratio));
+  --f-width-neg--1: calc(-1 * var(--fluid-min-size) / 16 / var(--fluid-min-ratio));
+  --y-axis--1: calc(-1 * var(--fluid-min-size) / 16 / var(--fluid-min-ratio) * (var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16) + var(--fluid-min-size) / 16 / var(--fluid-min-ratio));
+  --fluid--1: clamp(
+  	var(--f-size-min--1) * 1rem,
+  	var(--y-axis--1) * 1rem + calc((var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16)) * 100vw,
+  	var(--f-size-max--1) * 1rem
+  );
+}
+
+:root {
+  --f-size-min--2: calc(var(--fluid-min-size) / 16 / var(--fluid-min-ratio) / var(--fluid-min-ratio));
+  --f-size-max--2: calc(var(--fluid-min-size) / 16 / var(--fluid-min-ratio) / var(--fluid-min-ratio) / var(--fluid-max-ratio));
+  --f-width-neg--2: calc(-1 * var(--fluid-min-size) / 16 / var(--fluid-min-ratio) / var(--fluid-min-ratio));
+  --y-axis--2: calc(-1 * var(--fluid-min-size) / 16 / var(--fluid-min-ratio) / var(--fluid-min-ratio) * (var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16) + var(--fluid-min-size) / 16 / var(--fluid-min-ratio) / var(--fluid-min-ratio));
+  --fluid--2: clamp(
+  	var(--f-size-min--2) * 1rem,
+  	var(--y-axis--2) * 1rem + calc((var(--fluid-max-size) / 16 - var(--fluid-min-size) / 16) / (var(--fluid-max-width) / 16 - var(--fluid-min-width) / 16)) * 100vw,
+  	var(--f-size-max--2) * 1rem
+  );
+}
+
+:root {
+  --ui-gap: 1rem;
+  --gap: var(--ui-gap);
+  --ui-size-nul: 0;
+  --size-nul: var(--ui-size-nul);
+  --ui-size-xxs: var(--s-5);
+  --size-xxs: var(--ui-size-xxs);
+  --ui-size-xs: var(--s-4);
+  --size-xs: var(--ui-size-xs);
+  --ui-size-sm: var(--s-3);
+  --size-sm: var(--ui-size-sm);
+  --ui-size-md: var(--s-2);
+  --size-md: var(--ui-size-md);
+  --ui-size-lg: var(--s-1);
+  --size-lg: var(--ui-size-lg);
+  --ui-size-xl: var(--s0);
+  --size-xl: var(--ui-size-xl);
+  --ui-size-xxl: var(--s1);
+  --size-xxl: var(--ui-size-xxl);
+  --ui-size-inverse-xxs: var(--size-xxl);
+  --size-inverse-xxs: var(--ui-size-inverse-xxs);
+  --ui-size-inverse-xs: var(--size-xl);
+  --size-inverse-xs: var(--ui-size-inverse-xs);
+  --ui-size-inverse-sm: var(--size-lg);
+  --size-inverse-sm: var(--ui-size-inverse-sm);
+  --ui-size-inverse-md: var(--size-md);
+  --size-inverse-md: var(--ui-size-inverse-md);
+  --ui-size-inverse-lg: var(--size-sm);
+  --size-inverse-lg: var(--ui-size-inverse-lg);
+  --ui-size-inverse-xl: var(--size-xs);
+  --size-inverse-xl: var(--ui-size-inverse-xl);
+  --ui-size-inverse-xxl: var(--size-xxs);
+  --size-inverse-xxl: var(--ui-size-inverse-xxl);
+  --ui-sidebar-width-xxs: 13.65em;
+  --sidebar-width-xxs: var(--ui-sidebar-width-xxs);
+  --ui-sidebar-width-xs: 15.925em;
+  --sidebar-width-xs: var(--ui-sidebar-width-xs);
+  --ui-sidebar-width-sm: 18.2em;
+  --sidebar-width-sm: var(--ui-sidebar-width-sm);
+  --ui-sidebar-width-md: 22.75em;
+  --sidebar-width-md: var(--ui-sidebar-width-md);
+  --ui-sidebar-width-lg: 28.4375em;
+  --sidebar-width-lg: var(--ui-sidebar-width-lg);
+  --ui-sidebar-width-xl: 36.4em;
+  --sidebar-width-xl: var(--ui-sidebar-width-xl);
+  --ui-sidebar-width-xxl: 45.5em;
+  --sidebar-width-xxl: var(--ui-sidebar-width-xxl);
+  --ui-header-icon-height: 2.25rem;
+  --header-icon-height: var(--ui-header-icon-height);
+  --ui-header-height: var(--s3);
+  --header-height: var(--ui-header-height);
+  --ui-header-margin: calc(var(--gap) / 2);
+  --header-margin: var(--ui-header-margin);
+  --ui-footer-height: calc(var(--font-size-body) * var(--ratio) + 2 * var(--size-sm));
+  --footer-height: var(--ui-footer-height);
+  --ui-radius-nul: 0;
+  --radius-nul: var(--ui-radius-nul);
+  --ui-radius-base: 3px;
+  --radius-base: var(--ui-radius-base);
+  --ui-radius-lg: 5px;
+  --radius-lg: var(--ui-radius-lg);
+  --ui-border-width: 1px;
+  --border-width: var(--ui-border-width);
+  --ui-border-width-lg: 2px;
+  --border-width-lg: var(--ui-border-width-lg);
+  --ui-z-index-inset: 0;
+  --z-index-inset: var(--ui-z-index-inset);
+  --ui-z-index-reveal: 1;
+  --z-index-reveal: var(--ui-z-index-reveal);
+  --ui-z-index-layer: 2;
+  --z-index-layer: var(--ui-z-index-layer);
+  --ui-z-index-sticky: 3;
+  --z-index-sticky: var(--ui-z-index-sticky);
+  --ui-outline-offset: 0.25rem;
+  --outline-offset: var(--ui-outline-offset);
+  --ui-outline-offset-nav: 0.15rem;
+  --outline-offset-nav: var(--ui-outline-offset-nav);
+  --ui-outline-width: 2px;
+  --outline-width: var(--ui-outline-width);
+  --ui-prev-offset-limit: calc(var(--outline-offset) + var(--outline-width));
+  --prev-offset-limit: var(--ui-prev-offset-limit);
+  --ui-shadow: 0 -1px 3px 0 hsl(var(--color-shadow)/calc(var(--shadow-strength) + 2%)), 0 1px 2px -5px hsl(var(--color-shadow)/calc(var(--shadow-strength) + 2%)), 0 2px 5px -5px hsl(var(--color-shadow)/calc(var(--shadow-strength) + 4%)), 0 4px 12px -5px hsl(var(--color-shadow)/calc(var(--shadow-strength) + 5%)), 0 12px 15px -5px hsl(var(--color-shadow)/calc(var(--shadow-strength) + 7%));
+  --shadow: var(--ui-shadow);
+  --ui-shadow-light: 0 -1px 3px 0 hsl(var(--color-shadow-light)/calc(var(--shadow-strength) + 2%)), 0 1px 2px -5px hsl(var(--color-shadow-light)/calc(var(--shadow-strength) + 2%)), 0 2px 5px -5px hsl(var(--color-shadow-light)/calc(var(--shadow-strength) + 4%)), 0 4px 12px -5px hsl(var(--color-shadow-light)/calc(var(--shadow-strength) + 5%)), 0 12px 15px -5px hsl(var(--color-shadow-light)/calc(var(--shadow-strength) + 7%));
+  --shadow-light: var(--ui-shadow-light);
+  --ui-shadow-inset: inset 0 1px 4px 0 hsl(var(--color-shadow)/calc(var(--shadow-strength-inset) + 9%));
+  --shadow-inset: var(--ui-shadow-inset);
+  --ui-padding-inset: 4px;
+  --padding-inset: var(--ui-padding-inset);
+}
+
+:root {
+  --ui-font-family-serif: Trirong, serif;
+  --font-family-serif: var(--ui-font-family-serif);
+  --ui-font-family-heading: Cinzel, sans-serif;
+  --font-family-heading: var(--ui-font-family-heading);
+  --ui-font-family-subheading: Cinzel, sans-serif;
+  --font-family-subheading: var(--ui-font-family-subheading);
+  --ui-font-family-sans: Montserrat, sans-serif;
+  --font-family-sans: var(--ui-font-family-sans);
+  --ui-font-family-mono: Anonymous Pro, monospace;
+  --font-family-mono: var(--ui-font-family-mono);
+  --ui-font-family-base: var(--font-family-sans);
+  --font-family-base: var(--ui-font-family-base);
+  --ui-font-family-h1: var(--font-family-heading);
+  --font-family-h1: var(--ui-font-family-h1);
+  --ui-font-family-h2: var(--font-family-subheading);
+  --font-family-h2: var(--ui-font-family-h2);
+  --ui-font-family-h3: var(--font-family-subheading);
+  --font-family-h3: var(--ui-font-family-h3);
+  --ui-font-family-h4: var(--font-family-subheading);
+  --font-family-h4: var(--ui-font-family-h4);
+  --ui-font-family-h5: var(--font-family-subheading);
+  --font-family-h5: var(--ui-font-family-h5);
+  --ui-font-family-body: var(--font-family-base);
+  --font-family-body: var(--ui-font-family-body);
+  --ui-font-family-code: var(--font-family-mono);
+  --font-family-code: var(--ui-font-family-code);
+  --ui-font-family-ui: var(--font-family-sans);
+  --font-family-ui: var(--ui-font-family-ui);
+  --ui-font-weight-800: 800;
+  --font-weight-800: var(--ui-font-weight-800);
+  --ui-font-weight-700: 700;
+  --font-weight-700: var(--ui-font-weight-700);
+  --ui-font-weight-600: 600;
+  --font-weight-600: var(--ui-font-weight-600);
+  --ui-font-weight-500: 500;
+  --font-weight-500: var(--ui-font-weight-500);
+  --ui-font-weight-400: 400;
+  --font-weight-400: var(--ui-font-weight-400);
+  --ui-font-weight-300: 300;
+  --font-weight-300: var(--ui-font-weight-300);
+  --ui-font-weight-200: 200;
+  --font-weight-200: var(--ui-font-weight-200);
+  --ui-font-weight-100: 100;
+  --font-weight-100: var(--ui-font-weight-100);
+  --ui-font-weight-bold: 800;
+  --font-weight-bold: var(--ui-font-weight-bold);
+  --ui-font-weight-semibold: 600;
+  --font-weight-semibold: var(--ui-font-weight-semibold);
+  --ui-font-weight-medium: 500;
+  --font-weight-medium: var(--ui-font-weight-medium);
+  --ui-font-weight-base: 200;
+  --font-weight-base: var(--ui-font-weight-base);
+  --ui-font-weight-light: 200;
+  --font-weight-light: var(--ui-font-weight-light);
+  --ui-font-weight-h1: var(--font-weight-bold);
+  --font-weight-h1: var(--ui-font-weight-h1);
+  --ui-font-weight-h2: var(--font-weight-semibold);
+  --font-weight-h2: var(--ui-font-weight-h2);
+  --ui-font-weight-h3: var(--font-weight-semibold);
+  --font-weight-h3: var(--ui-font-weight-h3);
+  --ui-font-weight-h4: var(--font-weight-medium);
+  --font-weight-h4: var(--ui-font-weight-h4);
+  --ui-font-weight-h5: var(--font-weight-medium);
+  --font-weight-h5: var(--ui-font-weight-h5);
+  --ui-font-weight-body: var(--font-weight-medium);
+  --font-weight-body: var(--ui-font-weight-body);
+  --ui-font-weight-code: var(--font-weight-medium);
+  --font-weight-code: var(--ui-font-weight-code);
+  --ui-font-weight-ui: var(--font-weight-semibold);
+  --font-weight-ui: var(--ui-font-weight-ui);
+  --ui-font-size-h1: var(--fluid-4);
+  --font-size-h1: var(--ui-font-size-h1);
+  --ui-font-size-h2: var(--fluid-3);
+  --font-size-h2: var(--ui-font-size-h2);
+  --ui-font-size-h3: var(--fluid-2);
+  --font-size-h3: var(--ui-font-size-h3);
+  --ui-font-size-h4: var(--fluid-1);
+  --font-size-h4: var(--ui-font-size-h4);
+  --ui-font-size-h5: var(--fluid-0);
+  --font-size-h5: var(--ui-font-size-h5);
+  --ui-font-size-body: var(--fluid-0);
+  --font-size-body: var(--ui-font-size-body);
+  --ui-font-size-code: var(--fluid-0);
+  --font-size-code: var(--ui-font-size-code);
+  --ui-font-size-ui: var(--fluid-0);
+  --font-size-ui: var(--ui-font-size-ui);
+  --ui-font-size-small: var(--fluid--1);
+  --font-size-small: var(--ui-font-size-small);
+  --ui-font-size-xxl: var(--fluid-4);
+  --font-size-xxl: var(--ui-font-size-xxl);
+  --ui-font-size-xl: var(--fluid-3);
+  --font-size-xl: var(--ui-font-size-xl);
+  --ui-font-size-lg: var(--fluid-2);
+  --font-size-lg: var(--ui-font-size-lg);
+  --ui-font-size-md: var(--fluid-1);
+  --font-size-md: var(--ui-font-size-md);
+  --ui-font-size-sm: var(--fluid-0);
+  --font-size-sm: var(--ui-font-size-sm);
+  --ui-font-size-xs: var(--fluid--1);
+  --font-size-xs: var(--ui-font-size-xs);
+  --ui-font-size-xxs: var(--fluid--2);
+  --font-size-xxs: var(--ui-font-size-xxs);
+  --ui-font-color-base: var(--color-dark);
+  --font-color-base: var(--ui-font-color-base);
+  --ui-line-height-heading: 1.4;
+  --line-height-heading: var(--ui-line-height-heading);
+  --ui-line-height-ui: 1.4;
+  --line-height-ui: var(--ui-line-height-ui);
+  --ui-line-height-body: 2;
+  --line-height-body: var(--ui-line-height-body);
+}
+
+:root {
+  --ui-color-gray-1: #ccc;
+  --color-gray-1: var(--ui-color-gray-1);
+  --ui-color-gray-2: #ddd;
+  --color-gray-2: var(--ui-color-gray-2);
+  --ui-color-gray-3: #999;
+  --color-gray-3: var(--ui-color-gray-3);
+  --ui-color-gray-4: #666;
+  --color-gray-4: var(--ui-color-gray-4);
+  --ui-color-gray-5: rgb(92, 91, 94);
+  --color-gray-5: var(--ui-color-gray-5);
+  --ui-color-white: rgb(255, 255, 255);
+  --color-white: var(--ui-color-white);
+  --ui-color-black: rgb(0, 0, 0);
+  --color-black: var(--ui-color-black);
+  --ui-color-light: rgb(244, 244, 244);
+  --color-light: var(--ui-color-light);
+  --ui-color-dark: rgb(54, 49, 58);
+  --color-dark: var(--ui-color-dark);
+  --ui-color-danger: rgb(203, 4, 4);
+  --color-danger: var(--ui-color-danger);
+  --ui-color-danger-light: rgb(219, 96, 96);
+  --color-danger-light: var(--ui-color-danger-light);
+  --ui-color-danger-lighter: rgb(253, 141, 141);
+  --color-danger-lighter: var(--ui-color-danger-lighter);
+  --ui-color-primary: rgb(159, 71, 90);
+  --color-primary: var(--ui-color-primary);
+  --ui-color-primary-light: rgb(226, 140, 159);
+  --color-primary-light: var(--ui-color-primary-light);
+  --ui-color-primary-lighter: rgb(255, 179, 193);
+  --color-primary-lighter: var(--ui-color-primary-lighter);
+  --ui-color-primary-lightest: rgb(255, 208, 218);
+  --color-primary-lightest: var(--ui-color-primary-lightest);
+  --ui-color-accent: rgb(2, 111, 106);
+  --color-accent: var(--ui-color-accent);
+  --ui-color-accent-light: rgb(70, 165, 161);
+  --color-accent-light: var(--ui-color-accent-light);
+  --ui-color-accent-lighter: rgb(166, 229, 226);
+  --color-accent-lighter: var(--ui-color-accent-lighter);
+  --ui-color-highlight-dark: rgb(159, 194, 88);
+  --color-highlight-dark: var(--ui-color-highlight-dark);
+  --ui-color-highlight: rgb(195, 230, 109);
+  --color-highlight: var(--ui-color-highlight);
+  --ui-color-highlight-light: rgb(221, 245, 160);
+  --color-highlight-light: var(--ui-color-highlight-light);
+  --ui-color-highlight-lighter: rgb(232, 255, 205);
+  --color-highlight-lighter: var(--ui-color-highlight-lighter);
+  --ui-color-shadow-light: 10 90% 80%;
+  --color-shadow-light: var(--ui-color-shadow-light);
+  --ui-color-shadow: 220 3% 15%;
+  --color-shadow: var(--ui-color-shadow);
+  --ui-shadow-strength: 5%;
+  --shadow-strength: var(--ui-shadow-strength);
+  --ui-shadow-strength-inset: 20%;
+  --shadow-strength-inset: var(--ui-shadow-strength-inset);
+  --ui-color-ui: var(--color-dark);
+  --color-ui: var(--ui-color-ui);
+  --ui-color-ui-bg: var(--color-gray-1);
+  --color-ui-bg: var(--ui-color-ui-bg);
+  --ui-color-ui-bg-hover: var(--color-gray-1);
+  --color-ui-bg-hover: var(--ui-color-ui-bg-hover);
+  --ui-color-ui-bg-focus: var(--color-gray-2);
+  --color-ui-bg-focus: var(--ui-color-ui-bg-focus);
+  --ui-color-ui-active: var(--color-light);
+  --color-ui-active: var(--ui-color-ui-active);
+  --ui-color-ui-bg-active: var(--color-gray-3);
+  --color-ui-bg-active: var(--ui-color-ui-bg-active);
+  --ui-color-ui-disabled: var(--color-gray5);
+  --color-ui-disabled: var(--ui-color-ui-disabled);
+  --ui-color-ui-bg-disabled: var(--color-gray-1);
+  --color-ui-bg-disabled: var(--ui-color-ui-bg-disabled);
+}

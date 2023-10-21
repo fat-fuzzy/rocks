@@ -6,15 +6,17 @@
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"scripts": {
+		"dev:csscore": "rollup --config rollup.config.csscore.js -w",
+		"build:csscore": "rollup --config rollup.config.csscore.js",
+		"dev:csstokens": "rollup --config rollup.config.csstokens.js -w",
+		"build:csstokens": "rollup --config rollup.config.csstokens.js",
 		"build:doc": "rollup --config rollup.config.doc.js",
 		"dev:doc": "rollup --config rollup.config.doc.js -w",
 		"build:play": "rollup --config rollup.config.play.js",
 		"dev:play": "rollup --config rollup.config.play.js -w",
-		"build:tokens": "rollup --config rollup.config.tokens.js",
-		"dev:tokens": "rollup --config rollup.config.tokens.js -w",
 		"build:ui": "rollup --config rollup.config.ui.js",
 		"dev:ui": "rollup --config rollup.config.ui.js -w",
-		"build": "pnpm build:doc && pnpm build:play && pnpm build:tokens && pnpm build:ui",
+		"build": "pnpm build:csscore && pnpm build:csstokens && pnpm build:doc && pnpm build:play && pnpm build:ui",
 		"dev": "dev:ui",
 		"pretest": "pnpm build:ui",
 		"build:sd": "node_modules/.bin/style-dictionary build",
@@ -27,6 +29,9 @@
 		"dist/css"
 	],
 	"exports": {
+		".": {
+			"css": "./dist/styles/css/core/main.css"
+		},
 		"./doc": "./dist/doc/css/main.css",
 		"./play": "./dist/play/css/main.css",
 		"./tokens": "./dist/tokens/css/main.css",

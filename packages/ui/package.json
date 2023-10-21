@@ -6,11 +6,17 @@
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"scripts": {
+		"dev:csscore": "rollup --config rollup.config.csscore.js -w",
+		"build:csscore": "rollup --config rollup.config.csscore.js",
+		"dev:csstokens": "rollup --config rollup.config.csstokens.js -w",
+		"build:csstokens": "rollup --config rollup.config.csstokens.js",
+		"dev:css": "pnpm dev:csscore && pnpm dev:csstokens",
+		"build:css": "pnpm build:csscore && pnpm build:csstokens",
 		"dev": "vite dev",
-		"build": "svelte-kit sync && svelte-package",
+		"build": "pnpm build:css && svelte-kit sync && svelte-package",
 		"prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
-		"test": "playwright test",
-		"test:ui": "playwright test --ui",
+		"test": "pnpm build:css && playwright test",
+		"test:ui": "pnpm build:css && playwright test --ui",
 		"test:report": "playwright show-report",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -26,7 +32,9 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
-		}
+		},
+		"./csscore": "./dist/styles/css/core/main.css",
+		"./csstokens": "./dist/styles/css/tokens/main.css"
 	},
 	"dependencies": {
 		"@sveltejs/adapter-cloudflare": "^2.3.3",
@@ -44,11 +52,15 @@
 		"xstate": "^4.38.2"
 	},
 	"devDependencies": {
-		"@fat-fuzzy/design": "workspace:*",
 		"@fat-fuzzy/config": "workspace:*",
+		"@fat-fuzzy/design": "workspace:*",
 		"@playwright/experimental-ct-svelte": "^1.39.0",
 		"@playwright/test": "^1.39.0",
-		"@types/node": "^20.8.5"
+		"@types/node": "^20.8.5",
+		"autoprefixer": "^10.4.16",
+		"postcss": "8.4.31",
+		"rollup": "4.0.2",
+		"rollup-plugin-scss": "^4.0.0"
 	},
 	"type": "module",
 	"publishConfig": {
