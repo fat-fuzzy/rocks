@@ -1,5 +1,11 @@
 # @fat-fuzzy/play
 
+## 0.1.11
+
+### Patch Changes
+
+- cb919ff: refactor: make Header component configurable
+
 ## 0.1.10
 
 ### Patch Changes
