@@ -23,6 +23,22 @@ export const langEmojis: {[key: string]: string} = {
 	'es-es': '🇪🇸 ES',
 	'en-uk': '🇬🇧 EN',
 }
+
+export const langMenuIcon = emojis['lang']
+export const languages = [
+	{code: 'fr-fr', title: 'Français'},
+	{code: 'en-uk', title: 'English'},
+	{code: 'es-es', title: 'Español'},
+]
+
+// TODO: make svg css themeable / fix dark theme
+import githubDay from '$lib/images/day/icon-github.svg'
+import githubNight from '$lib/images/night/icon-github.svg'
+// TODO: make svg css themeable / fix dark theme
+export const assets: {[key: string]: string} = {
+	day: githubDay,
+	night: githubNight,
+}
 // export const emojis = {
 // 	splash: {
 // 		default: '🥁', // 🥁 drums

@@ -9,7 +9,7 @@ export const links = {
 		{
 			id: 'button-theme',
 			title: 'Theme',
-			action: 'toggle',
+			action: 'theme',
 			asset: 'day',
 			type: 'emoji',
 			variant: 'round',
