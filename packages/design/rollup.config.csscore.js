@@ -3,7 +3,7 @@ import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 
 /**
- * Preprocess scss in `src/styles/` to use css directly in svelte components
+ * Preprocess scss in `src/lib/` to export css library
  * Use this library to experiment with core css styles
  */
 export default {

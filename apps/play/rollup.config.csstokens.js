@@ -3,12 +3,12 @@ import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 
 /**
- * Preprocess scss in `src/lib/` to export css library
+ * Preprocess scss in `src/lib/styles/` to use css directly in svelte components
  * Use this library to experiment with design tokens styles
  */
 export default {
-	input: 'src/lib/scss/tokens/index.js',
-	output: {dir: 'src/lib/css/tokens/', format: 'esm'},
+	input: 'src/lib/styles/scss/tokens/index.js',
+	output: {dir: 'src/lib/styles/css/tokens/', format: 'esm'},
 	plugins: [
 		scss({
 			fileName: 'main.css',
