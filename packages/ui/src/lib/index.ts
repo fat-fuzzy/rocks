@@ -12,6 +12,7 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
  * Block components
  */
 
+import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 import Feedback from '$lib/components/blocks/cards/Feedback.svelte'
@@ -96,10 +97,11 @@ const stores = {
 }
 
 const blocks = {
+	ActionLabel,
 	Button,
 	Toggle,
-	Fieldset,
 	Feedback,
+	Fieldset,
 	InputCheck,
 	InputRadio,
 	InputRange,

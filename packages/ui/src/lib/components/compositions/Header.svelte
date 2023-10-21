@@ -1,36 +1,26 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {clickOutside} from '$lib/utils/click-outside.js'
-	import format from '$lib/utils/format.js'
 	import {lang} from '$stores/intl'
 	import {theme} from '$lib/stores/theme.js'
-	import {emojis, themes, langEmojis} from '$types/constants.js'
+	import {themes} from '$types/constants.js'
+	// import {emojis, themes, langEmojis} from '$types/constants.js'
+
+	import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 
 	// TODO: make svg css themeable / fix dark theme
-	import githubDay from '$lib/images/day/icon-github.svg'
-	import githubNight from '$lib/images/night/icon-github.svg'
+	// import githubDay from '$lib/images/day/icon-github.svg'
+	// import githubNight from '$lib/images/night/icon-github.svg'
 	// TODO: make svg css themeable / fix dark theme
-	const assetsPath = '../../images/'
-	const assets: {[key: string]: string} = {
-		day: githubDay,
-		night: githubNight,
-	}
-	async function fetchAsset(filename) {
-		const path = `${assets[currentTheme]}${filename}`
-		const src = await import(path)
-		return src
-	}
-	const langMenuIcon = emojis['lang']
-	const languages = [
-		{code: 'fr-fr', title: 'Français'},
-		{code: 'en-uk', title: 'English'},
-		{code: 'es-es', title: 'Español'},
-	]
-	let currentTheme = themes[$theme]
-	let currentLang = $lang
-	let themeIcon = emojis[currentTheme]
-	let langIcon = emojis[currentLang]
-	let github = assets[currentTheme]
+	// const assets: {[key: string]: string} = {
+	// 	day: githubDay,
+	// 	night: githubNight,
+	// }
+	// let currentTheme = themes[$theme]
+	// let currentLang = $lang
+	// let themeIcon = emojis[currentTheme]
+	// let langIcon = emojis[currentLang]
+	// let github = assets[currentTheme]
 
 	export let className = 'header-app'
 	export let breakpoint = 'md'
@@ -42,7 +32,7 @@
 			{
 				id: 'button-theme',
 				title: 'Theme',
-				action: 'toggle',
+				action: 'theme',
 				asset: 'day',
 				type: 'emoji',
 				variant: 'round',
@@ -100,14 +90,21 @@
 		lang.set(event.detail)
 	}
 
+	const actions: {[key: string]: (event) => void} = {
+		nav: toggleNav,
+		actions: toggleActionsMenu,
+		theme: toggleTheme,
+		language: setLanguage,
+	}
+
 	$: headerClass = `${className} l:sidebar md layer sticky:top`
 	$: show = navExpanded ? 'layer polar show' : 'hide:viz-only'
 	$: actionsClass = actionsExpanded ? 'layer polar show' : 'hide:viz-only'
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang
-	$: themeIcon = emojis[currentTheme]
-	$: github = assets[currentTheme]
-	$: langIcon = emojis[currentLang]
+	// $: themeIcon = emojis[currentTheme]
+	// $: github = assets[currentTheme]
+	// $: langIcon = emojis[currentLang]
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
 
@@ -152,29 +149,11 @@
 			{#each items.side as { title, action, url, asset, type, variant, subitems }}
 				{#if url}
 					<a class={variant} href={url} target="_blank" rel="noreferrer">
-						{#if type === 'icon'}
-							<img src={assets[asset]} alt={title} class={type} />
-							{#if variant !== 'round'}
-								{title}
-							{/if}
-						{:else if variant === 'round'}
-							{emojis[asset]}
-						{:else}
-							{format.formatLabel(title, asset)}
-						{/if}
+						<ActionLabel {title} {type} {asset} {variant} />
 					</a>
-				{:else}
-					<button on:click={action} class={variant}>
-						{#if type === 'icon'}
-							<img src={assets[asset]} alt={title} class={type} />
-							{#if variant !== 'round'}
-								{title}
-							{/if}
-						{:else if variant === 'round'}
-							{emojis[asset]}
-						{:else}
-							{format.formatLabel(title, asset)}
-						{/if}
+				{:else if action}
+					<button on:click={actions[action]} class={variant}>
+						<ActionLabel {title} {type} {asset} {variant} />
 					</button>
 					<!-- {#if subitems}
 						<div class={actionsClass}>
