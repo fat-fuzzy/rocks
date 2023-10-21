@@ -29,9 +29,6 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@fat-fuzzy/design':
-        specifier: workspace:*
-        version: link:../../packages/design
       '@fat-fuzzy/markdown':
         specifier: workspace:*
         version: link:../../packages/markdown
@@ -93,9 +90,6 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@fat-fuzzy/design':
-        specifier: workspace:*
-        version: link:../../packages/design
       '@fat-fuzzy/ui':
         specifier: workspace:*
         version: link:../../packages/ui
