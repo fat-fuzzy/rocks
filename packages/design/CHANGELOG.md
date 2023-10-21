@@ -1,5 +1,11 @@
 # @fat-fuzzy/design
 
+## 0.1.6
+
+### Patch Changes
+
+- 30cda37: refactor: export styles in css, make tokens configurable within apps
+
 ## 0.1.5
 
 ### Patch Changes
