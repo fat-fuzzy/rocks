@@ -28,3 +28,7 @@
 .round.icon {
 	height: var(--header-icon-height);
 }
+
+button.round {
+	padding: calc(var(--gap) / var(--ratio-lg));
+}

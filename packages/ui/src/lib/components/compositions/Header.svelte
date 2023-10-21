@@ -1,24 +1,76 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {clickOutside} from '$lib/utils/click-outside.js'
+	import format from '$lib/utils/format.js'
 	import {lang} from '$stores/intl'
 	import {theme} from '$lib/stores/theme.js'
-	import {emojis, themes} from '$types/constants.js'
+	import {emojis, themes, langEmojis} from '$types/constants.js'
 
 	// TODO: make svg css themeable / fix dark theme
 	import githubDay from '$lib/images/day/icon-github.svg'
 	import githubNight from '$lib/images/night/icon-github.svg'
 	// TODO: make svg css themeable / fix dark theme
-	const githubIcons = {
+	const assetsPath = '../../images/'
+	const assets: {[key: string]: string} = {
 		day: githubDay,
 		night: githubNight,
 	}
+	async function fetchAsset(filename) {
+		const path = `${assets[currentTheme]}${filename}`
+		const src = await import(path)
+		return src
+	}
+	const langMenuIcon = emojis['lang']
+	const languages = [
+		{code: 'fr-fr', title: 'Français'},
+		{code: 'en-uk', title: 'English'},
+		{code: 'es-es', title: 'Español'},
+	]
+	let currentTheme = themes[$theme]
+	let currentLang = $lang
+	let themeIcon = emojis[currentTheme]
+	let langIcon = emojis[currentLang]
+	let github = assets[currentTheme]
 
 	export let className = 'header-app'
 	export let breakpoint = 'md'
 	export let id = 'ui'
 	export let height = ''
-	export let links = [{slug: 'about', title: 'About'}]
+	export let items = {
+		main: [{slug: 'about', title: 'About'}],
+		side: [
+			{
+				id: 'button-theme',
+				title: 'Theme',
+				action: 'toggle',
+				asset: 'day',
+				type: 'emoji',
+				variant: 'round',
+			},
+			{
+				id: 'link-github',
+				title: 'GitHub icon',
+				url: 'https://github.com/fat-fuzzy/rocks',
+				asset: 'day',
+				type: 'icon',
+				variant: 'round',
+			},
+			// {
+			// 	id: 'menu-lang',
+			// 	title: 'Lang',
+			// 	asset: langMenuIcon,
+			// 	type: 'emoji',
+			// 	// TODO: figure out a better way to [name / deal with] submenu items - see LinkList component
+			// 	subitems: languages.map((l) => ({
+			// 		id: l.code,
+			// 		title: l.title,
+			// 		action: setLanguage,
+			// 		asset: langEmojis[l.code],
+			// 		type: 'emoji',
+			// 	})),
+			// },
+		],
+	}
 
 	let navExpanded = false
 	let actionsExpanded = false
@@ -54,7 +106,7 @@
 	$: currentTheme = themes[$theme]
 	$: currentLang = $lang
 	$: themeIcon = emojis[currentTheme]
-	$: github = githubIcons[currentTheme]
+	$: github = assets[currentTheme]
 	$: langIcon = emojis[currentLang]
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
@@ -80,7 +132,7 @@
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>
 				</li>
-				{#each links as { slug, title }}
+				{#each items.main as { slug, title }}
 					<li aria-current={$page.url.pathname.startsWith(`/${slug}`) ? 'page' : undefined}>
 						<a data-sveltekit-preload-data href={`/${slug}`} on:click={handleClickOutsideMainNav}>
 							{title}
@@ -97,35 +149,54 @@
 			use:clickOutside
 			on:clickOutside={handleClickOutsideActionsMenu}
 		>
-			<button on:click={toggleTheme} class="icon round">
-				{themeIcon}
-			</button>
-			<a class="round" href="https://github.com/fat-fuzzy/rocks" target="_blank" rel="noreferrer">
-				<img src={github} alt="GitHub icon" class="icon" />
-			</a>
-			<!--button
-				type="button"
-				class="md toggle collapse primary"
-				aria-navExpanded={actionsExpanded}
-				on:click={toggleActionsMenu}
-			>
-				🎛 &nbsp;Settings
-			</!--button>
-			<div class={actionsClass}>
-				<menu class="l:switcher bp:xxs">
-					<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
+			{#each items.side as { title, action, url, asset, type, variant, subitems }}
+				{#if url}
+					<a class={variant} href={url} target="_blank" rel="noreferrer">
+						{#if type === 'icon'}
+							<img src={assets[asset]} alt={title} class={type} />
+							{#if variant !== 'round'}
+								{title}
+							{/if}
+						{:else if variant === 'round'}
+							{emojis[asset]}
+						{:else}
+							{format.formatLabel(title, asset)}
+						{/if}
+					</a>
+				{:else}
+					<button on:click={action} class={variant}>
+						{#if type === 'icon'}
+							<img src={assets[asset]} alt={title} class={type} />
+							{#if variant !== 'round'}
+								{title}
+							{/if}
+						{:else if variant === 'round'}
+							{emojis[asset]}
+						{:else}
+							{format.formatLabel(title, asset)}
+						{/if}
+					</button>
+					<!-- {#if subitems}
+						<div class={actionsClass}>
+							<menu class="l:switcher bp:xxs">
+								<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
 
-					<button>Login</-button>
-					<div class="l:stack l:reveal sm">
-						<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
-						<!-- <menu class={actionsClass}>
-						<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
-						<button type="button" on:click={setLanguage}>{langIcon}</button>
-						<!--button>Login</-button -- >
-					</menu>
-					</div>
-				</menu>
-			</div> -->
+								<button>Login</button>
+								<div class="l:stack l:reveal sm">
+									<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
+									<menu class={actionsClass}>
+										<button type="button" on:click={toggleTheme}
+											>{themeIcon}&nbsp;&nbsp;Theme</button
+										>
+										<button type="button" on:click={setLanguage}>{langIcon}</button>
+										button>Login</-button
+									</menu>
+								</div>
+							</menu>
+						</div>
+					{/if} -->
+				{/if}
+			{/each}
 		</menu>
 	</div>
 </header>

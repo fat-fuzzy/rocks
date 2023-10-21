@@ -9,14 +9,20 @@ export const uiState = {
 
 export const themes = ['night', 'day']
 
-export const emojis = {
+export const emojis: {[key: string]: string} = {
+	lang: '🌐',
 	day: '☀️',
 	night: '🌙',
-	fr: '🇫🇷 FR',
-	es: '🇪🇸 ES',
-	en: '🇬🇧 EN',
+	'fr-fr': '🇫🇷 FR',
+	'es-es': '🇪🇸 ES',
+	'en-uk': '🇬🇧 EN',
 }
 
+export const langEmojis: {[key: string]: string} = {
+	'fr-fr': '🇫🇷 FR',
+	'es-es': '🇪🇸 ES',
+	'en-uk': '🇬🇧 EN',
+}
 // export const emojis = {
 // 	splash: {
 // 		default: '🥁', // 🥁 drums

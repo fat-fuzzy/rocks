@@ -42,7 +42,7 @@
 	})
 </script>
 
-<Header className="header-app" {links} id="doc" />
+<Header className="header-app" items={links} id="doc" />
 
 <main class={className}>
 	<slot />

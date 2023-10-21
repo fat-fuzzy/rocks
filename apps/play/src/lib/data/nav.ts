@@ -1,3 +1,1 @@
-export const links = [
-	{slug: 'play', title: 'Play'},
-]
+export const links = {main: [{slug: 'play', title: 'Play'}], side: []}
