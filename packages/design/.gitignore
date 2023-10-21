@@ -15,3 +15,6 @@ dist
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# CSS side effects
+/src/lib/styles/css/

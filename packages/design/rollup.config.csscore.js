@@ -7,14 +7,14 @@ import autoprefixer from 'autoprefixer'
  * Use this library to experiment with core css styles
  */
 export default {
-	input: 'src/lib/scss/core/index.js',
-	output: {dir: 'src/lib/css/core/', format: 'esm'},
+	input: 'src/lib/styles/scss/core/index.js',
+	output: {dir: 'src/lib/styles/css/core/', format: 'esm'},
 	plugins: [
 		scss({
 			fileName: 'main.css',
 			processor: () => postcss([autoprefixer()]),
 			// processor: () => postcss([autoprefixer({overrideBrowserslist: 'Edge 18'})]),
-			watch: 'src/scss/core/',
+			watch: 'src/styles/scss/core/',
 		}), // will output compiled styles to "assets/output-123hash.css"
 	],
 }
