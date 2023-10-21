@@ -1,5 +1,6 @@
 <script lang="ts">
-	import '@fat-fuzzy/design/ui'
+	import '$lib/styles/css/tokens/main.css'
+	import '$lib/styles/css/core/main.css'
 	import {browser} from '$app/environment'
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
