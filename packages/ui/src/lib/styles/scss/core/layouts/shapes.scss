@@ -29,6 +29,10 @@
 	height: var(--header-icon-height);
 }
 
+.round.emoji {
+	line-height: 1.15;
+}
+
 button.round {
 	padding: calc(var(--gap) / var(--ratio-lg));
 }
