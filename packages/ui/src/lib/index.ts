@@ -31,6 +31,8 @@ import ButtonMenu from '$lib/components/compositions/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
 import RevealMenu from '$lib/components/compositions/menus/RevealMenu.svelte'
 
+import LogIn from '$lib/components/compositions/forms/LogIn.svelte'
+
 import Nav from '$lib/components/compositions/navs/Nav.svelte'
 import RevealNav from '$lib/components/compositions/navs/RevealNav.svelte'
 
@@ -38,7 +40,7 @@ import Header from '$lib/components/compositions/headers/Header.svelte'
 import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
 
 import Page from '$lib/components/compositions/pages/Page.svelte'
-import LogIn from '$lib/components/compositions/pages/LogIn.svelte'
+import PageLogIn from '$lib/components/compositions/pages/PageLogIn.svelte'
 
 /**
  * Compositions - Graphics
@@ -124,12 +126,13 @@ const compositions = {
 	ButtonMenu,
 	ToggleMenu,
 	RevealMenu, // TODO: use content option in UI lib API in docs
+	LogIn,
 	Nav,
 	RevealNav, // TODO: use content option in UI lib API in docs
 	Header,
-	PageHeader,
-	Page,
-	LogIn,
+	// PageHeader,
+	// Page,
+	// PageLogIn,
 }
 
 const graphics = {

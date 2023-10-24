@@ -1,8 +1,13 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	let title = 'Log In'
-	let description = 'A log in page template'
-	import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
+	export let title = 'Log In'
+	export let description = 'A log in form'
+	export let asset = '🪵'
+	export let depth = 2 // <h*> elenent depth
+	export let size = 'md'
+	export let assetSize = 'xl'
+	export let align = 'center'
+
 	export let redirectTo: string = ''
 	// export let action: string = '/login'
 	export let action: string = ''
@@ -12,18 +17,16 @@
 	$: type = action ? 'submit' : 'button'
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={description} />
-</svelte:head>
-
-<PageHeader {title} size="xxl" />
-
 {#if session.user}
 	<slot name="authed" />
 {:else}
-	<section class="l:text:md l:center card:lg">
-		<form method="POST" class="l:stack:md font:md" {action}>
+	<section class={`l:text:${size} l:center card:lg`}>
+		<header class={`l:stack:${size} text:${align}`}>
+			<p class={`font:${assetSize}`}>{asset}</p>
+			<svelte:element this={`h${depth}`}>{title}</svelte:element>
+			<p class={`font:${size}`}>{description}</p>
+		</header>
+		<form method="POST" class={`l:stack:${size}`} {action}>
 			<label for="email">Email</label>
 			<input id="email" type="text" name="email" />
 			<label for="password">Password</label>
