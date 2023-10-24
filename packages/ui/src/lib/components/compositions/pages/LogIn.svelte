@@ -3,10 +3,13 @@
 	let title = 'Log In'
 	let description = 'A log in page template'
 	import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
-	export let redirectTo: string
+	export let redirectTo: string = ''
+	// export let action: string = '/login'
+	export let action: string = ''
 
 	$: session = {...$page.data.session}
-	$: action = redirectTo ? `/login?redirectTo=${redirectTo}` : '/login'
+	$: action = redirectTo ? `/${action}?redirectTo=${redirectTo}` : action
+	$: type = action ? 'submit' : 'button'
 </script>
 
 <svelte:head>
@@ -25,7 +28,7 @@
 			<input type="text" name="email" />
 			<label for="password">Password</label>
 			<input type="password" name="password" />
-			<button class="primary">Log In</button>
+			<button {type} class="primary">Log In</button>
 		</form>
 	</section>
 {/if}
