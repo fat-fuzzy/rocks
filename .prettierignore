@@ -13,3 +13,8 @@ pnpm-lock.yaml
 pnpm-workspace.yaml
 package-lock.json
 yarn.lock
+
+**/dist
+**/src/lib/styles
+**/playwright/.cache
+**/playwright_report
