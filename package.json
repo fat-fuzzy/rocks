@@ -10,14 +10,17 @@
 		"clean": "turbo run clean",
 		"dev": "turbo run dev --parallel",
 		"lint": "turbo run lint",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\""
+		"test": "turbo run test",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"prepare": "husky install"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.26.2",
 		"@fat-fuzzy/config": "workspace:*",
 		"prettier": "^3.0.3",
 		"prettier-plugin-svelte": "^3.0.3",
-		"turbo": "1.10.15"
+		"turbo": "1.10.15",
+		"husky": "^8.0.0"
 	},
 	"packageManager": "pnpm@8.8.0",
 	"engines": {
