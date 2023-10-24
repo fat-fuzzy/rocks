@@ -35,7 +35,7 @@
 			<input id="email" type="text" name="email" />
 			<label for="password">Password</label>
 			<input id="password" type="password" name="password" />
-			<Button {type} {variant} {color}>Log In</Button>
+			<Button {type} {variant} {color} onClick={() => {}}>Log In</Button>
 		</form>
 	</section>
 {/if}
