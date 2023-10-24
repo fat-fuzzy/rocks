@@ -15,7 +15,7 @@
 	export let text = ''
 	export let formaction = 'enter'
 	export let page = ''
-	export let type: ButtonType = 'button'
+	export let type = 'button'
 
 	export let onClick = (event: MouseEvent) => {
 		window.alert(`${format.formatLabel(text, asset)} Clicked`)
