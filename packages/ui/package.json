@@ -25,7 +25,9 @@
 		"lint:css": "stylelint ./dist/styles/css/**/*.css",
 		"lint:scss": "stylelint ./dist/styles/scss/**/*.scss",
 		"lint:prettier": "prettier --check --ignore-path=../../.prettierignore . && eslint \".\"",
-		"format": "prettier --write --ignore-path=../../.prettierignore ."
+		"lint": "pnpm lint:css; pnpm lint:scss; pnpm lint:prettier",
+		"format": "prettier --write --ignore-path=../../.prettierignore .",
+		"prepare": "husky install"
 	},
 	"main": "./dist/index.js",
 	"files": [
@@ -60,8 +62,7 @@
 		"@playwright/test": "^1.39.0",
 		"@types/node": "^20.8.5",
 		"autoprefixer": "^10.4.16",
-		"husky": "^8.0.3",
-		"lint-staged": "^15.0.2",
+		"husky": "^8.0.0",
 		"postcss": "8.4.31",
 		"prettier": "^3.0.3",
 		"rollup": "4.0.2",
