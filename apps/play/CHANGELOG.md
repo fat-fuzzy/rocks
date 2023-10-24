@@ -1,5 +1,12 @@
 # @fat-fuzzy/play
 
+## 0.1.12
+
+### Patch Changes
+
+- 6e9a0b6: [root+apps+ui] Add lint tooling
+  [ui] Add base Page components
+
 ## 0.1.11
 
 ### Patch Changes
