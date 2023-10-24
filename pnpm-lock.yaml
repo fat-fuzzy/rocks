@@ -68,6 +68,15 @@ importers:
       sass:
         specifier: ^1.69.0
         version: 1.69.4
+      stylelint:
+        specifier: ^15.11.0
+        version: 15.11.0(typescript@5.2.2)
+      stylelint-config-standard:
+        specifier: ^34.0.0
+        version: 34.0.0(stylelint@15.11.0)
+      stylelint-config-standard-scss:
+        specifier: ^11.0.0
+        version: 11.0.0(postcss@8.4.31)(stylelint@15.11.0)
       svelte:
         specifier: ^4.2.1
         version: 4.2.1
@@ -126,6 +135,15 @@ importers:
       sass:
         specifier: ^1.69.0
         version: 1.69.4
+      stylelint:
+        specifier: ^15.11.0
+        version: 15.11.0(typescript@5.2.2)
+      stylelint-config-standard:
+        specifier: ^34.0.0
+        version: 34.0.0(stylelint@15.11.0)
+      stylelint-config-standard-scss:
+        specifier: ^11.0.0
+        version: 11.0.0(postcss@8.4.31)(stylelint@15.11.0)
       svelte:
         specifier: ^4.2.1
         version: 4.2.1
