@@ -60,7 +60,8 @@
 		"autoprefixer": "^10.4.16",
 		"postcss": "8.4.31",
 		"rollup": "4.0.2",
-		"rollup-plugin-scss": "^4.0.0"
+		"rollup-plugin-scss": "^4.0.0",
+		"stylelint": "^15.11.0"
 	},
 	"type": "module",
 	"publishConfig": {
