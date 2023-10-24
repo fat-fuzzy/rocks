@@ -23,11 +23,11 @@
 	<slot name="authed" />
 {:else}
 	<section class="l:text:md l:center card:lg">
-		<form method="POST" class="l:stack:md" {action}>
+		<form method="POST" class="l:stack:md font:md" {action}>
 			<label for="email">Email</label>
-			<input type="text" name="email" />
+			<input id="email" type="text" name="email" />
 			<label for="password">Password</label>
-			<input type="password" name="password" />
+			<input id="password" type="password" name="password" />
 			<button {type} class="primary">Log In</button>
 		</form>
 	</section>
