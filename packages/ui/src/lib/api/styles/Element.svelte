@@ -28,7 +28,7 @@
 
 	let styles: StyleTree
 	let brightness = ''
-	let contrast = ''
+	let background = ''
 	let container = ''
 	let size = '' // Container size
 
@@ -36,21 +36,21 @@
 		styles = $currentStyles
 		// App settings (user controlled)
 		brightness = styles.app?.settings.brightness ?? brightness
-		contrast = styles.app?.settings.contrast ?? contrast
+		background = styles.app?.settings.contrast ?? background
 		// Container options
 		// - [container + size] work together
 		container = styles.shared?.context.container ?? container
 		size = styles.shared?.context.size ?? size
 	}
-	$: appSettings = `${brightness} ${contrast}`
+	$: appSettings = `${brightness} ${background}`
 	$: containerContext = category !== 'app' ? `l:${container}:${size}` : 'l:burrito:xs'
-	$: color = 'primary:lighter'
+	$: color = 'contrast'
 </script>
 
 {#if !isPage}
 	{@const props = getProps({category, component: title})}
-	<article class="l:stack lg">
-		<header class={`card:md text:center bg:${color}`}>
+	<article class={`card:lg box bg:${color} l:stack md`}>
+		<header class={`card:sm text:center`}>
 			<a class="card:sm" href={`${path}/${title}`}>
 				<svelte:element this={`h${String(depth)}`} class="link font:sm">
 					<span class="font:xs">🔗</span>&nbsp;{title}
@@ -65,7 +65,7 @@
 		<h1>{title}</h1>
 	</header>
 	<article class="l:sidebar xs align:end">
-		<main class={`l:main card:xl inset ${appSettings}`}>
+		<main class={`l:main card:xl inset ${appSettings} bg:${color}`}>
 			<div class={containerContext}>
 				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
 			</div>

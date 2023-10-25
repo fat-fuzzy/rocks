@@ -6,7 +6,7 @@
 	export let variant = 'card:feature'
 	export let background = 'polar'
 
-	$: className = `l:text:${size} l:${layout} ${variant}:${size} ${background}`
+	$: className = `l:text:${size} l:${layout} ${variant}:${size} bg:${background}`
 </script>
 
 <header class={className}>

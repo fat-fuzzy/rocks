@@ -32,9 +32,9 @@
 		</header>
 		<form method="POST" class={`l:stack:${size} card:${size}`} {action}>
 			<label for="email">Email</label>
-			<input id="email" type="text" name="email" />
+			<input id="email" type="text" name="email" required />
 			<label for="password">Password</label>
-			<input id="password" type="password" name="password" />
+			<input id="password" type="password" name="password" required />
 			<Button {type} {variant} {color} onClick={() => {}}>Log In</Button>
 		</form>
 	</section>

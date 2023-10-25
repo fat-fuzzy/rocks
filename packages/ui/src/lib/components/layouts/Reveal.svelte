@@ -3,6 +3,8 @@
 	import {clickOutside} from '$lib/utils/click-outside.js'
 
 	export let layout = ''
+	export let container = 'layer card'
+	export let direction = 'tb-lr'
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
@@ -27,7 +29,7 @@
 </script>
 
 <div
-	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size}`}
+	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size} ${direction}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -42,7 +44,7 @@
 	</button>
 	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
 		<slot name="content">
-			<div class={`card layer ${size}`}>
+			<div class={`${container}:${size}`}>
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>

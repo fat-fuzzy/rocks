@@ -228,6 +228,24 @@ menu {
 	background-color: var(--current-polar);
 }
 
+
+.bg\:polar {
+	--current-color: var(--color-light);
+	color: var(--current-color);
+	background-color: var(--current-polar);
+}
+
+.bg\:contrast {
+	--current-color: var(--color-light);
+	color: var(--current-color);
+	background-color: var(--current-bg-contrast);
+}
+
+.bg\:blend {
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+}
+
 .bg\:primary {
 	--current-color: var(--color-light);
 	color: var(--current-color);

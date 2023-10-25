@@ -3,29 +3,15 @@
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import {lang} from '$stores/intl'
 	import {theme} from '$lib/stores/theme.js'
-	import {themes} from '$types/constants.js'
-	// import {emojis, themes, langEmojis} from '$types/constants.js'
 
 	import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 
-	// TODO: make svg css themeable / fix dark theme
-	// import githubDay from '$lib/images/day/icon-github.svg'
-	// import githubNight from '$lib/images/night/icon-github.svg'
-	// TODO: make svg css themeable / fix dark theme
-	// const assets: {[key: string]: string} = {
-	// 	day: githubDay,
-	// 	night: githubNight,
-	// }
-	// let currentTheme = themes[$theme]
-	// let currentLang = $lang
-	// let themeIcon = emojis[currentTheme]
-	// let langIcon = emojis[currentLang]
-	// let github = assets[currentTheme]
-
 	export let className = 'header-app'
 	export let breakpoint = 'md'
+	export let background = 'polar'
 	export let id = 'ui'
 	export let height = ''
+
 	export let items = {
 		main: [{slug: 'about', title: 'About'}],
 		side: [
@@ -33,7 +19,7 @@
 				id: 'button-theme',
 				title: 'Theme',
 				action: 'theme',
-				asset: 'day',
+				asset: 'day', // Fix asset per theme
 				type: 'emoji',
 				variant: 'round',
 			},
@@ -41,7 +27,7 @@
 				id: 'link-github',
 				title: 'GitHub icon',
 				url: 'https://github.com/fat-fuzzy/rocks',
-				asset: 'day',
+				asset: 'day', // Fix asset per theme
 				type: 'icon',
 				variant: 'round',
 			},
@@ -97,14 +83,9 @@
 		language: setLanguage,
 	}
 
-	$: headerClass = `${className} l:sidebar md layer sticky:top`
-	$: show = navExpanded ? 'layer polar show' : 'hide:viz-only'
-	$: actionsClass = actionsExpanded ? 'layer polar show' : 'hide:viz-only'
-	$: currentTheme = themes[$theme]
-	$: currentLang = $lang
-	// $: themeIcon = emojis[currentTheme]
-	// $: github = assets[currentTheme]
-	// $: langIcon = emojis[currentLang]
+	$: headerClass = `${className} l:sidebar md layer sticky:top bg:${background}`
+	$: show = navExpanded ? `layer bg:${background} show` : 'hide:viz-only'
+	$: actionsClass = actionsExpanded ? `layer bg:${background} show` : 'hide:viz-only'
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
 

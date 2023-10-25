@@ -224,8 +224,14 @@ menu {
 //== Background colors
 
 // TODO: harmonize class
-.polar {
+.bg\:polar {
 	background-color: var(--current-polar);
+}
+.bg\:contrast {
+	background-color: var(--current-bg-contrast);
+}
+.bg\:blend {
+	background-color: var(--current-bg-color);
 }
 
 .bg\:primary {

@@ -12,6 +12,7 @@
 	let breakpoint = ''
 	let layout = ''
 	let color = ''
+	let background = ''
 	let variant = ''
 	let size = '' // element's own size
 	let page = ''
@@ -21,12 +22,13 @@
 	$: variant = styles.blocks?.element.variant ?? variant
 	$: color = styles.blocks?.element.color ?? color
 	$: size = styles.blocks?.element.size ?? size
+	$: background = styles.app?.settings.contrast ?? background
 	// Layout options
 	// - [layout + breakpoint] work together
 	$: layout = styles.shared?.context.layout ?? layout
 	$: breakpoint = styles.shared?.context.breakpoint ?? breakpoint
 
-	$: props = {...props, page, title, color, variant, size, layout, breakpoint}
+	$: props = {...props, page, title, color, variant, size, layout, breakpoint, background}
 </script>
 
 <svelte:component this={component} id={title} {...props} />

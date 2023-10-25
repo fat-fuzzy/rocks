@@ -9,6 +9,7 @@
 	export let size = ''
 	export let breakpoint = ''
 	export let layout = 'switcher'
+	export let container = 'card'
 	export let color = ''
 	export let variant = ''
 	export let multiple = false
@@ -45,7 +46,7 @@
 {#if title}
 	<div class={`menu l:stack ${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout} bp:${breakpoint} ${size}`}>
+		<menu id={menuId} class={`l:${layout} ${container}:${size} bp:${breakpoint} ${size}`}>
 			{#each items as toggle}
 				{@const itemColor = toggle.color ?? color}
 				{@const itemVariant = toggle.variant ?? variant}
