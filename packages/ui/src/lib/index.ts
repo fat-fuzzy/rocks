@@ -108,7 +108,7 @@ const blocks = {
 	Button,
 	Toggle,
 	Feedback,
-	Fieldset,
+	// Fieldset,
 	InputCheck,
 	InputRadio,
 	InputRange,
