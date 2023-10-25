@@ -85,10 +85,11 @@ This repository contains several packages, which can be used together or indepen
 ### Repository Tools
 
 - Monorepo
-  - [pnpm](https://pnpm.io/)
-  - [Turborepo](https://turbo.build/)
+- [pnpm](https://pnpm.io/)
+- [Turborepo](https://turbo.build/))
 - Code / Env
 
+  - [stylelint](https://stylelint.io/
   - [docker](https://www.docker.com/) - 🚧 WIP
   - [changesets](https://github.com/changesets/changesets) - 🚧 WIP
   - [commitizen](https://github.com/commitizen/cz-cli) - 🚧 WIP
@@ -109,9 +110,6 @@ This repository contains several packages, which can be used together or indepen
         ```shell
         pnpm i --registry http://localhost:4873
         ```
-
-  - TODO
-    - [stylelint](https://stylelint.io/)
 
 ## Licenses
 
