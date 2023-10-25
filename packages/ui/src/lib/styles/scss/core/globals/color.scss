@@ -31,8 +31,8 @@ body {
 	background-color: var(--current-bg-color);
 }
 .night {
-	--current-bg-color: var(--color-dark);
-	--current-bg-contrast: var(--current-gray);
+	--current-bg-color: var(--current-gray);
+	--current-bg-contrast:var(--color-dark);
 	--current-polar: var(--color-dark);
 	--current-gray: var(--color-gray-5);
 	--current-gray-contrast: var(--color-gray-4);

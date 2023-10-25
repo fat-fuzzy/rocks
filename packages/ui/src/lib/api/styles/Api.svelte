@@ -128,7 +128,7 @@
 
 			{#if styleFamily.canApplyStyles({item: title, category})}
 				<Fieldset
-					legend={familyName}
+					legend={styleFamily.title}
 					id={styleFamily.id}
 					type="input-group"
 					layout={styleFamily.layout}

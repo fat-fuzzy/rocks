@@ -123,6 +123,7 @@ type StyleInputGroupOptions = StylesSetOptions & {
 }
 
 type StyleFamilyOptions = StylesSetOptions & {
+	title: string
 	items: Array<StyleInputGroup>
 	container?: string
 	size?: string
@@ -194,6 +195,7 @@ export class StyleInputGroup implements IStyleInputGroup {
 export class StyleFamily implements IStyleFamily {
 	id: string
 	name: string
+	title: string
 	items: Array<StyleInputGroup>
 	itemsMap: Map<string, StyleInputGroup>
 	layout?: string
@@ -202,9 +204,20 @@ export class StyleFamily implements IStyleFamily {
 	exclude?: string[]
 	include?: string[]
 
-	constructor({id, name, items, layout, container, size, exclude, include}: StyleFamilyOptions) {
+	constructor({
+		id,
+		name,
+		title,
+		items,
+		layout,
+		container,
+		size,
+		exclude,
+		include,
+	}: StyleFamilyOptions) {
 		this.id = id
 		this.name = name
+		this.title = title
 		this.items = items
 
 		const itemsMap = new Map()

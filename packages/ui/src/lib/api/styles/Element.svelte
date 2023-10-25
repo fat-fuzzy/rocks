@@ -42,14 +42,12 @@
 		container = styles.shared?.context.container ?? container
 		size = styles.shared?.context.size ?? size
 	}
-	$: appSettings = `${brightness} ${background}`
 	$: containerContext = category !== 'app' ? `l:${container}:${size}` : 'l:burrito:xs'
-	$: color = 'contrast'
 </script>
 
 {#if !isPage}
 	{@const props = getProps({category, component: title})}
-	<article class={`card:lg box bg:${color} l:stack md`}>
+	<article class={`card:lg box ${brightness} bg:${background} l:stack md`}>
 		<header class={`card:sm`}>
 			<a class="card:sm w:full" href={`${path}/${title}`}>
 				<svelte:element this={`h${String(depth)}`} class="link font:sm">
@@ -62,7 +60,7 @@
 {:else}
 	{@const props = getProps({category, component: title})}
 	<article class="l:sidebar xs align:end">
-		<main class={`l:main card:xl inset ${appSettings} bg:${color}`}>
+		<main class={`l:main card:xl inset ${brightness} bg:${background}`}>
 			<div class={containerContext}>
 				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
 			</div>

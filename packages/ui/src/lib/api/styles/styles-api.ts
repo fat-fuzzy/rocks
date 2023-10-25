@@ -100,6 +100,7 @@ export class StylesApi {
 const app: AppStyles = {
 	settings: new StyleFamily({
 		name: 'Settings',
+		title: 'App Settings',
 		id: 'app.settings',
 		layout: 'switcher',
 		container: 'burrito',
@@ -151,6 +152,7 @@ const app: AppStyles = {
 const shared: SharedStyles = {
 	context: new StyleFamily({
 		name: 'Context',
+		title: 'Container Context',
 		layout: 'switcher',
 		container: 'burrito',
 		size: 'md',
@@ -239,6 +241,7 @@ const shared: SharedStyles = {
 const blocks: BlockStyles = {
 	element: new StyleFamily({
 		name: 'Element',
+		title: 'Own Context',
 		id: 'blocks.element',
 		layout: 'switcher',
 		container: 'burrito',
@@ -329,6 +332,7 @@ const blocks: BlockStyles = {
 const layouts: LayoutStyles = {
 	element: new StyleFamily({
 		name: 'Element',
+		title: 'Layout Context',
 		id: 'layouts.element',
 		container: 'burrito',
 		size: 'sm',

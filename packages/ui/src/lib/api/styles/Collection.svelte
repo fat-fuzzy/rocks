@@ -51,8 +51,7 @@
 		1,
 		category.length - 1,
 	)}`
-	$: mainContainerClasses =
-		category !== 'app' ? `drop l:${layout} ${brightness}` : `drop card:${size}`
+	$: mainContainerClasses = category !== 'app' ? `drop l:${layout}` : `drop card:${size}`
 	$: contextClasses = `${sharedOptions.size}`
 </script>
 
