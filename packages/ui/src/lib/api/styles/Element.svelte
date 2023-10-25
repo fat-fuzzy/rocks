@@ -50,8 +50,8 @@
 {#if !isPage}
 	{@const props = getProps({category, component: title})}
 	<article class={`card:lg box bg:${color} l:stack md`}>
-		<header class={`card:sm text:center`}>
-			<a class="card:sm" href={`${path}/${title}`}>
+		<header class={`card:sm`}>
+			<a class="card:sm w:full" href={`${path}/${title}`}>
 				<svelte:element this={`h${String(depth)}`} class="link font:sm">
 					<span class="font:xs">🔗</span>&nbsp;{title}
 				</svelte:element>
@@ -61,9 +61,6 @@
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
-	<header class="header-page">
-		<h1>{title}</h1>
-	</header>
 	<article class="l:sidebar xs align:end">
 		<main class={`l:main card:xl inset ${appSettings} bg:${color}`}>
 			<div class={containerContext}>

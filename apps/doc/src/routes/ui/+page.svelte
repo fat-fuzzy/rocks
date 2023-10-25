@@ -22,7 +22,7 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="header-page">
+<header class="card:xl bg:polar">
 	<h1>{title}</h1>
 </header>
 
@@ -62,7 +62,7 @@
 		{#each components as { category, items }}
 			<Collection
 				{title}
-				depth="1"
+				depth={1}
 				isPage={false}
 				path={`${path}/${category}`}
 				components={items}

@@ -11,7 +11,7 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="header-page">
+<header class="card:xl bg:polar">
 	<h1>{title}</h1>
 </header>
 
