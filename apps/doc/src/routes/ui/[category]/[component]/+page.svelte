@@ -25,4 +25,8 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
+<header class="card:xl">
+	<h1>{title}</h1>
+</header>
+
 <Element isPage={true} depth={1} {title} page={path} {path} {category} component={Component} />
