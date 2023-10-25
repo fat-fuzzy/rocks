@@ -18,7 +18,7 @@
 	export let color = 'primary:light' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
-	export let category = $page.params.category || 'app'
+	export let category = $page.params.category || 'shared'
 
 	let styles = $currentStyles
 
@@ -51,7 +51,7 @@
 		1,
 		category.length - 1,
 	)}`
-	$: mainContainerClasses = category !== 'app' ? `drop l:${layout}` : `drop card:${size}`
+	$: mainContainerClasses = category !== 'shared' ? `drop l:${layout}` : `drop card:${size}`
 	$: contextClasses = `${sharedOptions.size}`
 </script>
 
@@ -78,7 +78,7 @@
 			<div class="l:text:xl">
 				{@html mocks['doc'][category]}
 			</div>
-			<Api {title} category="app" />
+			<Api category="app" />
 		</aside>
 	</Sidebar>
 {:else}

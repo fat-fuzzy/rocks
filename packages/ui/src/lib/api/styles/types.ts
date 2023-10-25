@@ -257,7 +257,13 @@ export class StyleFamily implements IStyleFamily {
 	}
 
 	canApplyStyles({item, category}: {item: string; category: string}) {
-		return this.includes(item) && !this.excludes(category) && !this.excludes(item)
+		if (this.excludes(category)) {
+			return this.includes(item)
+		}
+		if (this.excludes(item)) {
+			return false
+		}
+		return true
 	}
 
 	includes(item: string) {

@@ -42,7 +42,7 @@
 		container = styles.shared?.context.container ?? container
 		size = styles.shared?.context.size ?? size
 	}
-	$: containerContext = category !== 'app' ? `l:${container}:${size}` : 'l:burrito:xs'
+	$: containerContext = category !== 'shared' ? `l:${container}:${size}` : 'l:burrito:xs'
 </script>
 
 {#if !isPage}
@@ -59,7 +59,7 @@
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
-	<article class="l:sidebar xs align:end">
+	<article class="l:sidebar:xs align:end">
 		<main class={`l:main card:xl inset ${brightness} bg:${background}`}>
 			<div class={containerContext}>
 				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />

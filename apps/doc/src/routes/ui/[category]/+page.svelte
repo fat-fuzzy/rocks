@@ -2,7 +2,7 @@
 	import type {PageData} from './$types'
 	import {page} from '$app/stores'
 	import {blocks, compositions, layouts, api} from '@fat-fuzzy/ui'
-	const {Collection} = api
+	const {Collection, StyleFamily} = api
 
 	export let data: PageData
 
@@ -17,7 +17,7 @@
 			case 'compositions':
 				return compositions
 			default:
-				break
+				return {}
 		}
 	}
 
@@ -36,8 +36,11 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="card:xl bg:polar">
-	<h1>{title}</h1>
+<header class="bg:polar l:sidebar:xs end">
+	<h1 class="l:main card:xl">{title}</h1>
+	<div class="l:side l:burrito">
+		<StyleFamily category="app" />
+	</div>
 </header>
 
-<Collection {title} depth="1" isPage={true} {components} {path} {category} {uiState} />
+<Collection {title} depth={1} isPage={true} {components} {path} {category} {uiState} />
