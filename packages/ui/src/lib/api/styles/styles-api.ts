@@ -100,11 +100,11 @@ export class StylesApi {
 const app: AppStyles = {
 	settings: new StyleFamily({
 		name: 'Settings',
-		title: 'App Settings',
+		title: '',
 		id: 'app.settings',
 		layout: 'switcher',
-		container: 'burrito',
-		size: 'sm',
+		container: '',
+		size: 'xxs',
 		items: [
 			new StyleInputGroup({
 				name: 'Brightness',
@@ -152,28 +152,13 @@ const app: AppStyles = {
 const shared: SharedStyles = {
 	context: new StyleFamily({
 		name: 'Context',
-		title: 'Container Context',
+		title: '',
 		layout: 'switcher',
-		container: 'burrito',
-		size: 'md',
+		container: '',
+		size: 'sm',
 		id: 'shared.context',
-		exclude: ['Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
+		exclude: ['ActionLabel', 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
 		items: [
-			new StyleInputGroup({
-				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
-				id: 'shared.context.size',
-				value: 'md',
-				input: 'toggle',
-				layout: 'stack',
-				exclude: ['Switcher', 'Nav'],
-				items: [
-					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
-					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
-					{id: 'shared.context.size.md', text: 'md', asset: '', value: 'md'},
-					{id: 'shared.context.size.lg', text: 'lg', asset: '', value: 'lg'},
-					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
-				],
-			}),
 			new StyleInputGroup({
 				name: 'Container',
 				id: 'shared.context.container',
@@ -191,7 +176,7 @@ const shared: SharedStyles = {
 				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['compositions', 'layouts', 'Nav'],
+				exclude: ['compositions', 'layouts'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
@@ -220,12 +205,27 @@ const shared: SharedStyles = {
 				],
 			}),
 			new StyleInputGroup({
+				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
+				id: 'shared.context.size',
+				value: 'md',
+				input: 'toggle',
+				layout: 'switcher',
+				exclude: ['Nav'],
+				items: [
+					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'shared.context.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'shared.context.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
+				],
+			}),
+			new StyleInputGroup({
 				name: 'Breakpoint',
 				id: 'shared.context.breakpoint',
 				value: 'md',
 				input: 'toggle',
-				layout: 'stack',
-				exclude: ['Stack', 'Nav', 'compositions'],
+				layout: 'switcher',
+				exclude: ['compositions', 'layouts', 'Switcher'],
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
@@ -241,12 +241,11 @@ const shared: SharedStyles = {
 const blocks: BlockStyles = {
 	element: new StyleFamily({
 		name: 'Element',
-		title: 'Own Context',
+		title: '',
 		id: 'blocks.element',
 		layout: 'switcher',
-		container: 'burrito',
-		size: 'xs',
-		exclude: ['Nav'],
+		container: '',
+		size: 'sm',
 		items: [
 			new StyleInputGroup({
 				name: 'Color',
@@ -332,26 +331,12 @@ const blocks: BlockStyles = {
 const layouts: LayoutStyles = {
 	element: new StyleFamily({
 		name: 'Element',
-		title: 'Layout Context',
+		title: '',
 		id: 'layouts.element',
-		container: 'burrito',
-		size: 'sm',
 		layout: 'switcher',
+		container: '',
+		size: 'sm',
 		items: [
-			new StyleInputGroup({
-				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
-				id: 'layouts.element.size',
-				value: 'md',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'layouts.element.size.xs', text: 'xs', asset: '', value: 'xs'},
-					{id: 'layouts.element.size.sm', text: 'sm', asset: '', value: 'sm'},
-					{id: 'layouts.element.size.md', text: 'md', asset: '', value: 'md'},
-					{id: 'layouts.element.size.lg', text: 'lg', asset: '', value: 'lg'},
-					{id: 'layouts.element.size.xl', text: 'xl', asset: '', value: 'xl'},
-				],
-			}),
 			new StyleInputGroup({
 				name: 'Content',
 				id: 'layouts.element.content',
@@ -389,6 +374,20 @@ const layouts: LayoutStyles = {
 					{id: 'layouts.element.main.card', text: 'card', asset: '', value: 'card'},
 					{id: 'layouts.element.main.form', text: 'form', asset: '', value: 'form'},
 					{id: 'layouts.element.main.text', text: 'text', asset: '', value: 'text'},
+				],
+			}),
+			new StyleInputGroup({
+				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
+				id: 'layouts.element.size',
+				value: 'md',
+				input: 'toggle',
+				layout: 'switcher',
+				items: [
+					{id: 'layouts.element.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'layouts.element.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'layouts.element.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'layouts.element.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'layouts.element.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 		],

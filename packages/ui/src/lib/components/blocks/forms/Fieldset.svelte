@@ -8,7 +8,8 @@
 	export let container = 'burrito'
 	export let breakpoint = ''
 
-	$: classes = `l:${layout} bp:${breakpoint} l:${container}:${size} ${size} ${type}`
+	$: containerClass = container ? `l:${container}:${size}` : ''
+	$: classes = `l:${layout} bp:${breakpoint} ${containerClass} ${size} ${type}`
 </script>
 
 <fieldset {id} {name} data-key={id} class={classes}>

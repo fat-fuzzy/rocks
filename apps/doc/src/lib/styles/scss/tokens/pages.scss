@@ -5,3 +5,13 @@
 .home h2 {
 	text-align: center;
 }
+
+[class^='ui\/tokens\/'],
+[class^='ui\/blocks\/'],
+[class^='ui\/layouts\/'],
+[class^='ui\/compositions\/'] {
+	.page-header {
+		--current-margin-size: var(--s0);
+		margin-block-end: var(--current-margin-size);
+	}
+}

@@ -1,9 +1,9 @@
 fieldset {
 	border-radius: var(--radius-base);
-	border: 1px solid var(--current-gray);
 	> legend {
 		font-size: var(--font-size-ui);
 		font-weight: var(--font-weight-ui);
+		line-height: var(--current-size);
 	}
 	> p {
 		font-size: var(--font-size-small);
@@ -11,9 +11,14 @@ fieldset {
 	}
 }
 
+fieldset.box {
+	border: 1px solid var(--current-gray);
+}
+
+fieldset.bare {
+	border: none;
+}
+
 fieldset {
 	padding: 0 var(--current-size-plus) var(--current-size-plus);
-	> * + * {
-		margin-block-start: var(--current-size);
-	}
 }

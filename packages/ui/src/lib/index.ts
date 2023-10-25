@@ -60,6 +60,7 @@ import Scale from '$lib/components/graphics/Scale.svelte'
 import Api from '$lib/api/styles/Api.svelte'
 import Element from '$lib/api/styles/Element.svelte'
 import Collection from '$lib/api/styles/Collection.svelte'
+import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
 
 import * as stylesApi from '$lib/api/styles/styles-api'
 import * as fixturesApi from '$lib/api/fixtures/js/fixtures-api'
@@ -150,6 +151,7 @@ const api = {
 	Api,
 	Collection,
 	Element,
+	StyleFamily,
 	// StyleCapsule,
 	fixturesApi,
 	stylesApi,
