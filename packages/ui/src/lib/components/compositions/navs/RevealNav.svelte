@@ -4,11 +4,14 @@
 	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 
 	export let layout = 'stack'
+	export let direction = 'tb-lr'
 	export let size = ''
 	export let breakpoint = ''
+	export let container = 'card'
 	export let variant = ''
 	export let height = ''
 	export let color = ''
+	export let background = 'polar'
 	export let path = ''
 	export let page = ''
 	export let id = 'ui'
@@ -34,7 +37,7 @@
 </script>
 
 <div
-	class={`l:reveal ${show} ${setHeight} l:${layout}`}
+	class={`l:reveal ${show} ${setHeight} ${direction}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -49,7 +52,7 @@
 	</button>
 	<nav
 		id={`${id}-reveal-nav`}
-		class={`content l:${layout} bp:${breakpoint} layer polar card:${size} align:${align} ${size} ${setHeight}`}
+		class={`content l:${layout} ${container}:${size} bp:${breakpoint} layer bg:${background} card:${size} align:${align} ${size} ${setHeight}`}
 	>
 		<LinkList id={`${id}-${path}`} {page} {path} {items} {size} {align} depth={0} />
 	</nav>

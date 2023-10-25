@@ -1,23 +1,25 @@
 <script lang="ts">
 	export let text = ''
 	export let variant = ''
+	export let color = ''
+	export let background = ''
+	export let size = ''
 	export let context = '' // code (stacktraces), form (results), dialog (alerts)
-	export let action = ''
-	// export let show = false
+	export let action = 'ok'
 
-	// $: feedbackClass = show ? 'feedback variant' : 'hide:rm-block'
+	$: feedbackClass = `card:${size} ${variant} ${context} ${color} bg:${background}`
 </script>
 
 {#if context === 'code'}
-	<div class={variant} data-test={`feedback-code-${variant}`}>
+	<div class={feedbackClass} data-test={`feedback-${context}-${variant}`}>
 		<pre>{text}</pre>
 	</div>
 {:else if context === 'form'}
-	<output class={variant} data-test={`feedback-form-${variant}`}>
+	<output class={feedbackClass} data-test={`feedback-${context}-${variant}`}>
 		{text}
 	</output>
 {:else if context === 'dialog'}
-	<dialog class={variant} data-test={`feedback-dialog-${variant}`}>
+	<dialog class={feedbackClass} data-test={`feedback-${context}-${variant}`}>
 		<p>{text}</p>
 		<form method="dialog">
 			<button>{action}</button>

@@ -8,6 +8,7 @@
 	export let size = ''
 	export let breakpoint = ''
 	export let layout = 'switcher'
+	export let container = 'card'
 	export let color = ''
 	export let variant = ''
 	export let formaction = 'enter'
@@ -29,7 +30,7 @@
 {#if title}
 	<div class={`menu l:stack:${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout} bp:${breakpoint} ${size}`}>
+		<menu id={menuId} class={`l:${layout} ${container}:${size} bp:${breakpoint} ${size}`}>
 			{#each items as button}
 				{@const itemColor = button.color ?? color}
 				{@const itemVariant = button.variant ?? variant}
@@ -50,7 +51,7 @@
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout} bp:${breakpoint} ${size}`}>
+	<menu id={menuId} class={`l:${layout} ${container}:${size} bp:${breakpoint} ${size}`}>
 		{#each items as button}
 			{@const itemColor = button.color ?? color}
 			{@const itemVariant = button.variant ?? variant}

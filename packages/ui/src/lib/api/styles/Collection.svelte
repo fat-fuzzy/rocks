@@ -15,7 +15,7 @@
 	export let path = ''
 	export let layout = 'grid' // TODO: expose breakpoint too
 	export let size = 'md' // TODO: expose breakpoint too
-	export let color = 'highlight' // TODO: expose breakpoint too
+	export let color = 'highlight:light' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'app'
@@ -52,9 +52,7 @@
 		category.length - 1,
 	)}`
 	$: mainContainerClasses =
-		category !== 'app'
-			? `drop card:${size} l:${layout} ${brightness} ${contrast} `
-			: `drop card:${size}`
+		category !== 'app' ? `drop card:${size} l:${layout} ${brightness}` : `drop card:${size}`
 	$: contextClasses = `${sharedOptions.size}`
 </script>
 
