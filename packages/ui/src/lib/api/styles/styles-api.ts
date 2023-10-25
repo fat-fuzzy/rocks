@@ -176,7 +176,7 @@ const shared: SharedStyles = {
 				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['compositions', 'layouts'],
+				exclude: ['compositions', 'layouts', 'Switcher', 'Reveal'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
@@ -225,7 +225,7 @@ const shared: SharedStyles = {
 				value: 'md',
 				input: 'toggle',
 				layout: 'switcher',
-				exclude: ['compositions', 'layouts', 'Switcher'],
+				exclude: ['compositions', 'layouts', 'Reveal'],
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
