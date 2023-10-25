@@ -1,5 +1,11 @@
 # @fat-fuzzy/design
 
+## 0.1.7
+
+### Patch Changes
+
+- 0393bad: [apps+ui] Design improvements: add props, adjust spacing, color, alignment
+
 ## 0.1.6
 
 ### Patch Changes
