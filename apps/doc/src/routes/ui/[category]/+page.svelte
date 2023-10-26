@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {PageData} from './$types'
 	import {page} from '$app/stores'
-	import {blocks, compositions, layouts, api} from '@fat-fuzzy/ui'
+	import {tokens, blocks, compositions, layouts, api} from '@fat-fuzzy/ui'
 	const {Collection, StyleFamily} = api
 
 	export let data: PageData
@@ -10,6 +10,8 @@
 
 	function getComponentType(cat: string) {
 		switch (cat) {
+			case 'tokens':
+				return tokens
 			case 'blocks':
 				return blocks
 			case 'layouts':
