@@ -1,5 +1,6 @@
 import type {
 	AppStyles,
+	TokenStyles,
 	SharedStyles,
 	BlockStyles,
 	LayoutStyles,
@@ -149,6 +150,105 @@ const app: AppStyles = {
 	// },
 }
 
+const tokens: TokenStyles = {
+	element: new StyleFamily({
+		name: 'Design',
+		title: '',
+		id: 'tokens.element',
+		layout: 'switcher',
+		container: '',
+		size: 'xxs',
+		items: [
+			new StyleInputGroup({
+				name: 'Color',
+				id: 'tokens.element.color',
+				value: 'day',
+				input: 'toggle',
+				layout: 'stack',
+				items: [
+					{id: 'tokens.element.color.primary', text: 'primary', asset: '', value: 'primary'},
+					{id: 'tokens.element.color.accent', text: 'accent', asset: '', value: 'accent'},
+					{
+						id: 'tokens.element.color.highlight',
+						text: 'highlight',
+						asset: '',
+						value: 'highlight',
+					},
+				],
+			}),
+			new StyleInputGroup({
+				name: 'Typography',
+				id: 'tokens.element.typography',
+				value: 'blend',
+				input: 'toggle',
+				layout: 'stack',
+				items: [
+					{id: 'tokens.element.typography.h1', text: 'h1', asset: '', value: 'h1'},
+					{id: 'tokens.element.typography.h2', text: 'h2', asset: '', value: 'h2'},
+					{id: 'tokens.element.typography.h3', text: 'h3', asset: '', value: 'h3'},
+					{id: 'tokens.element.typography.h4', text: 'h4', asset: '', value: 'h4'},
+					{id: 'tokens.element.typography.h5', text: 'h5', asset: '', value: 'h5'},
+					{id: 'tokens.element.typography.h6', text: 'h6', asset: '', value: 'h6'},
+					{id: 'tokens.element.typography.font=lg', text: 'font=lg', asset: '', value: 'font=lg'},
+					{id: 'tokens.element.typography.font-md', text: 'font-md', asset: '', value: 'font-md'},
+					{id: 'tokens.element.typography.font-sm', text: 'font-sm', asset: '', value: 'font-sm'},
+					{id: 'tokens.element.typography.font-xs', text: 'font-xs', asset: '', value: 'font-xs'},
+					{id: 'tokens.element.typography.pre', text: 'pre', asset: '', value: 'pre'},
+				],
+			}),
+		],
+	}),
+	settings: new StyleFamily({
+		name: 'Settings',
+		title: '',
+		id: 'app.settings',
+		layout: 'switcher',
+		container: '',
+		size: 'xxs',
+		items: [
+			new StyleInputGroup({
+				name: 'Brightness',
+				id: 'app.settings.brightness',
+				value: 'day',
+				input: 'toggle',
+				layout: 'stack',
+				items: [
+					{id: 'app.settings.brightness.day', text: 'day', asset: '☀️', value: 'day'},
+					{id: 'app.settings.brightness.night', text: 'night', asset: '🌙', value: 'night'},
+				],
+			}),
+			new StyleInputGroup({
+				name: 'Contrast',
+				id: 'app.settings.contrast',
+				value: 'blend',
+				input: 'toggle',
+				layout: 'stack',
+				items: [
+					{id: 'app.settings.contrast.contrast', text: 'contrast', asset: '🌗', value: 'contrast'}, // TODO : fix color vars & classes
+					{id: 'app.settings.contrast.blend', text: 'blend', asset: '🌑', value: 'blend'}, // TODO: night / day asset option
+					// {id: 'polar', label: 'polar', value: ''},
+				],
+			}),
+		],
+	}),
+	// TODO : figure out if it is possible to do a dynamic import of app theme
+	// theme: {
+	// 	name: 'Theme',
+	// 	items: [
+	// 		{
+	// 			name: 'Theme',
+	// 			input: 'toggle',
+	// 			layout: 'switcher',
+	// 			items: [
+	// 				{id: 'ui', label: 'ui'},
+	// 				{id: 'doc', label: 'doc'},
+	// 				{id: 'website', label: 'website'},
+	// 			],
+	// 		},
+	// 	],
+	// },
+}
+
 const shared: SharedStyles = {
 	context: new StyleFamily({
 		name: 'Context',
@@ -157,7 +257,16 @@ const shared: SharedStyles = {
 		container: '',
 		size: 'sm',
 		id: 'shared.context',
-		exclude: ['ActionLabel', 'Button', 'Toggle', 'Stack', 'Burrito', 'Sidebar'],
+		exclude: [
+			'Color',
+			'Typography',
+			'ActionLabel',
+			'Button',
+			'Toggle',
+			'Stack',
+			'Burrito',
+			'Sidebar',
+		],
 		items: [
 			new StyleInputGroup({
 				name: 'Container',
@@ -394,7 +503,7 @@ const layouts: LayoutStyles = {
 	}),
 }
 
-export const initStyles = () => new StylesApi({app, shared, blocks, layouts})
+export const initStyles = () => new StylesApi({app, tokens, shared, blocks, layouts})
 
 export const DEFAULT_STYLES: StyleTree = {
 	app: {

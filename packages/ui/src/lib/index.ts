@@ -64,6 +64,7 @@ import Scale from '$lib/components/graphics/Scale.svelte'
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
 import Api from '$lib/api/styles/Api.svelte'
+import Token from '$lib/api/styles/Token.svelte'
 import Element from '$lib/api/styles/Element.svelte'
 import Collection from '$lib/api/styles/Collection.svelte'
 import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
@@ -161,6 +162,7 @@ const graphics = {
 const api = {
 	Api,
 	Collection,
+	Token,
 	Element,
 	StyleFamily,
 	// StyleCapsule,

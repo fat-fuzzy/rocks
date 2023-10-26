@@ -48,6 +48,10 @@ export interface StyleCategory {
 	[key: string]: StyleFamily
 }
 
+export interface TokenStyles extends StyleCategory {
+	// theme: StyleFamily  // TODO : figure out if it is possible to do a dynamic import of tokens
+	element: StyleFamily
+}
 export interface AppStyles extends StyleCategory {
 	// theme: StyleFamily  // TODO : figure out if it is possible to do a dynamic import of app theme
 	settings: StyleFamily
@@ -64,6 +68,7 @@ export interface LayoutStyles extends StyleCategory {
 
 export interface StyleOptions {
 	app: AppStyles
+	tokens: TokenStyles
 	shared: SharedStyles
 	blocks: BlockStyles
 	layouts: LayoutStyles
