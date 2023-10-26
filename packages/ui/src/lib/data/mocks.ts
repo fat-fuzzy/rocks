@@ -12,10 +12,10 @@ const containers = `<p>Containers are a type of Layout that limit the amount of 
 <pIf the only direct child of a Container is another Container, it might be a good idea to review how that markup is constructed.</p>
 ` // TODO: use README.md
 const tokens = `
-<p>These are the design tokens of the UI library, which correspond to CSS variables and native HTML elements. They are the base upon which all the rest is built.</p>
-<p>There are many more tokens defined in the <code>dist/lib/styles/scss</code> folder which shall be documented here too: as you may have noticed, this project is hatching 🐣!</p>` // TODO: use README.md
+<p>These are the design tokens of the UI library, which correspond to design choices such as color and typography, and which are defined via CSS variables or styled using the native HTML tags. They are the base upon which all the rest is built.</p>
+<p>There are many more tokens defined in the <a href="https://github.com/fat-fuzzy/rocks/tree/main/packages/ui/src/lib/styles" target="_blank" rel="noreferrer">CSS library</a>.</p>` // TODO: use README.md
 const blocks = `
-<p>Blocks are components that render the contentful elements of the application. Contentful in this context means elements that provide information, actions, or navigation options to the user of the app.</p>
+<p>Blocks self contained, atomic components that provide a piece of information, action, or navigation option to the user of the app. They are generally mapped to a specific HTML tag, or related tags.</p>
 <p>They are implemented using the <a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noreferrer">web platform</a>'s capabilities and with help from the examples provided in <a href="https://inclusive-components.design/" target="_blank" rel="noreferrer">Inclusive Components</a>.</p>
 <p>Blocks can be <a href="https://cube.fyi/composition.html" target="_blank" rel="noreferrer">composed</a> with Layouts and other Blocks to create simple or elaborate interfaces while respecting HTML semantics and document structure.</p>` // TODO: use README.md
 // TODO: use README.md
