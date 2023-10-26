@@ -11,6 +11,9 @@ const layouts = `${textIntro}
 const containers = `<p>Containers are a type of Layout that limit the amount of horizontal space occupied by its contents. This means that containers can only affect: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties" target="_blank" rel="noreferrer">inline logical properties</a>, <code>width</code> and related properties, and spacing properties that affect horizontal dimensions (<code>padding-[left/right]</code>, etc).</p>
 <pIf the only direct child of a Container is another Container, it might be a good idea to review how that markup is constructed.</p>
 ` // TODO: use README.md
+const tokens = `
+<p>These are the design tokens of the UI library, which correspond to CSS variables and native HTML elements. They are the base upon which all the rest is built.</p>
+<p>There are many more tokens defined in the <code>dist/lib/styles/scss</code> folder which shall be documented here too: as you may have noticed, this project is hatching 🐣!</p>` // TODO: use README.md
 const blocks = `
 <p>Blocks are components that render the contentful elements of the application. Contentful in this context means elements that provide information, actions, or navigation options to the user of the app.</p>
 <p>They are implemented using the <a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noreferrer">web platform</a>'s capabilities and with help from the examples provided in <a href="https://inclusive-components.design/" target="_blank" rel="noreferrer">Inclusive Components</a>.</p>
@@ -54,6 +57,7 @@ const doc: {[category: string]: string} = {
 	containers,
 	compositions,
 	blocks,
+	tokens,
 	app: `${app} ${wip}`,
 }
 const sketch = {

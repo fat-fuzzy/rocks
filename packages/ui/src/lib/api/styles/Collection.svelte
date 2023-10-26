@@ -51,7 +51,8 @@
 		1,
 		category.length - 1,
 	)}`
-	$: mainContainerClasses = `drop l:${layout}:${size}`
+	$: mainContainerClasses =
+		category === 'tokens' ? `drop l:stack:${size}` : `drop l:${layout}:${size}`
 	$: contextClasses = `${sharedOptions.size}`
 </script>
 
