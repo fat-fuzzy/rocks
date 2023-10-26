@@ -1,12 +1,7 @@
 <script lang="ts">
-	import type {PageData} from './$types'
 	import {page} from '$app/stores'
 	import {tokens, blocks, compositions, layouts, api} from '@fat-fuzzy/ui'
 	const {Collection, StyleFamily} = api
-
-	export let data: PageData
-
-	let uiState = data.uiState
 
 	function getComponentType(cat: string) {
 		switch (cat) {
@@ -27,10 +22,6 @@
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
-
-	$: {
-		uiState = data.uiState
-	}
 </script>
 
 <svelte:head>
@@ -45,4 +36,4 @@
 	</div>
 </header>
 
-<Collection {title} depth={1} isPage={true} {components} {path} {category} {uiState} />
+<Collection {title} depth={1} isPage={true} {components} {path} {category} />
