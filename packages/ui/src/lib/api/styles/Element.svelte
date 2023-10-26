@@ -15,7 +15,7 @@
 	export let path = ''
 	export let component: ComponentType
 
-	export let category = 'app'
+	export let category = ''
 	export let page = ''
 	export let props: any = {}
 	props.page = page
@@ -32,17 +32,16 @@
 	let container = ''
 	let size = '' // Container size
 
-	$: {
-		styles = $currentStyles
-		// App settings (user controlled)
-		brightness = styles.app?.settings.brightness ?? brightness
-		background = styles.app?.settings.contrast ?? background
-		// Container options
-		// - [container + size] work together
-		container = styles.shared?.context.container ?? container
-		size = styles.shared?.context.size ?? size
-	}
-	$: containerContext = category !== 'shared' ? `l:${container}:${size}` : 'l:burrito:xs'
+	$: styles = $currentStyles
+	// App settings (user controlled)
+	$: brightness = styles.app?.settings.brightness ?? brightness
+	$: background = styles.app?.settings.contrast ?? background
+	// Container options
+	// - [container + size] work together
+	$: container = styles.shared?.context.container ?? container
+	$: size = styles.shared?.context.size ?? size
+
+	$: containerContext = `l:${container}:${size}`
 </script>
 
 {#if !isPage}
