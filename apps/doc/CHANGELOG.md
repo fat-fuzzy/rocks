@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.14
+
+### Patch Changes
+
+- 3ac8552: [ui+doc] Improve UI library documentation and styles API
+
 ## 0.1.13
 
 ### Patch Changes
