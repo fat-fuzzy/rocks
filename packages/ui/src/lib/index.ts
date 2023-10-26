@@ -1,17 +1,14 @@
 // Reexport your entry components here
+
 /**
  * Layout components
  */
-import Burrito from '$lib/components/layouts/Burrito.svelte'
-import Reveal from '$lib/components/layouts/Reveal.svelte'
-import Sidebar from '$lib/components/layouts/Sidebar.svelte'
-import Stack from '$lib/components/layouts/Stack.svelte'
-import Switcher from '$lib/components/layouts/Switcher.svelte'
+import Color from '$lib/components/tokens/Color.svelte'
+import Typography from '$lib/components/tokens/Typography.svelte'
 
 /**
  * Block components
  */
-
 import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
@@ -23,6 +20,15 @@ import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 import InputFile from '$lib/components/blocks/forms/InputFile.svelte'
 // import Sketch from '$lib/components/blocks/graphics/Sketch.svelte'
+
+/**
+ * Layout components
+ */
+import Burrito from '$lib/components/layouts/Burrito.svelte'
+import Reveal from '$lib/components/layouts/Reveal.svelte'
+import Sidebar from '$lib/components/layouts/Sidebar.svelte'
+import Stack from '$lib/components/layouts/Stack.svelte'
+import Switcher from '$lib/components/layouts/Switcher.svelte'
 
 /**
  * Compositions - Base
@@ -39,8 +45,8 @@ import RevealNav from '$lib/components/compositions/navs/RevealNav.svelte'
 import Header from '$lib/components/compositions/headers/Header.svelte'
 import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
 
-import Page from '$lib/components/compositions/pages/Page.svelte'
-import PageLogIn from '$lib/components/compositions/pages/PageLogIn.svelte'
+import Page from '$lib/components/compositions/content/Page.svelte'
+import PageLogIn from '$lib/components/compositions/content/PageLogIn.svelte'
 
 /**
  * Compositions - Graphics
@@ -103,6 +109,11 @@ const stores = {
 	intl,
 }
 
+const tokens = {
+	Color,
+	Typography,
+}
+
 const blocks = {
 	ActionLabel,
 	Button,
@@ -162,4 +173,4 @@ const testsApi = {
 	Test,
 }
 
-export {blocks, layouts, compositions, graphics, api, utils, stores, constants}
+export {tokens, blocks, layouts, compositions, graphics, api, utils, stores, constants}
