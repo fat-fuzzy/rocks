@@ -14,7 +14,7 @@
 	export let depth = 0
 	export let path = ''
 	export let layout = 'grid' // TODO: expose breakpoint too
-	export let size = 'md' // TODO: expose breakpoint too
+	export let size = 'sm' // TODO: expose breakpoint too
 	export let color = 'primary:light' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
@@ -51,7 +51,7 @@
 		1,
 		category.length - 1,
 	)}`
-	$: mainContainerClasses = category !== 'shared' ? `drop l:${layout}` : `drop card:${size}`
+	$: mainContainerClasses = `drop l:${layout}:${size}`
 	$: contextClasses = `${sharedOptions.size}`
 </script>
 

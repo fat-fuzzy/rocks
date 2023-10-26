@@ -162,18 +162,4 @@ const testsApi = {
 	Test,
 }
 
-// TODO: see if I can use this to configure styles from assets (design tokens) in app project folder
-const sass = {
-	ui: './styles/theme/ui/_index.scss',
-	doc: './styles/theme/doc/_index.scss',
-	play: './styles/theme/play/_index.scss',
-	sandbox: './styles/theme/sandbox/_index.scss',
-}
-
-// [TODO:] Not sure this is useful
-async function getSass(theme) {
-	const themedStyles = await import(sass[theme])
-	return themedStyles
-}
-
-export {blocks, layouts, compositions, graphics, api, testsApi, utils, stores, constants, getSass}
+export {blocks, layouts, compositions, graphics, api, utils, stores, constants}
