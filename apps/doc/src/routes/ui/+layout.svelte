@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {blocks, compositions, layouts} from '@fat-fuzzy/ui'
+	import {tokens, blocks, compositions, layouts} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
 	const {RevealNav} = compositions
 
@@ -11,6 +11,7 @@
 		return a > b ? -1 : b > a ? 1 : 0
 	}
 
+	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
 	const compositionNames = Object.keys(compositions).sort(sortAsc)
@@ -22,6 +23,11 @@
 			slug: 'ui',
 			title,
 			items: [
+				{
+					slug: 'tokens',
+					title: 'Tokens',
+					items: tokenNames.map((c) => ({slug: c, title: c})),
+				},
 				{
 					slug: 'blocks',
 					title: 'Blocks',

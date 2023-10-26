@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {blocks, layouts, compositions, api} from '@fat-fuzzy/ui'
+	import {tokens, blocks, layouts, compositions, api} from '@fat-fuzzy/ui'
 
 	const {Collection} = api
 	const {Sidebar} = layouts
@@ -8,6 +8,7 @@
 	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
 
 	const components = [
+		{category: 'tokens', items: tokens},
 		{category: 'blocks', items: blocks},
 		{category: 'layouts', items: layouts},
 		{category: 'compositions', items: compositions},
