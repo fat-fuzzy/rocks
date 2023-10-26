@@ -22,7 +22,7 @@ export class UiState {
 
 		for (const pair of data.entries()) {
 			const [category, family, style, _] = pair[0].split('.')
-			const styleValue = {[style]: pair[1]}
+			const styleValue = {[style]: pair[1].toString()}
 			const familyValue = {[family]: styleValue}
 			// TODO: Fix / understand:
 			// - for some reason, the only way to get values out of FormData is to push them into an array
