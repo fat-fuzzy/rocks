@@ -51,9 +51,9 @@ $modular-scale: (
 	fluid-min-width: 320,
 	fluid-max-width: 1240,
 	// min size of base font
-	fluid-min-size: 16,
+	fluid-min-size: 14,
 	// max size of base font
-	fluid-max-size: 20,
+	fluid-max-size: 18,
 	fluid-min-ratio: 1.2,
 	fluid-max-ratio: 1.25,
 	fluid-screen: 100vw,
@@ -74,7 +74,7 @@ $scale-space: (
 //== TODO: fix // Spacing Scale N to N^X
 $scale-space-pairs: (
 	ratio: 1.5,
-	ratio-lg: 1.75,
+	ratio-lg: calc(var(--ratio) * var(--ratio)),
 	s-5: calc(var(--s-4) / var(--ratio)),
 	s-4: calc(var(--s-3) / var(--ratio)),
 	s-3: calc(var(--s-2) / var(--ratio)),

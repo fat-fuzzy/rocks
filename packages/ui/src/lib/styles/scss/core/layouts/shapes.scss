@@ -34,5 +34,5 @@
 }
 
 button.round {
-	padding: calc(var(--gap) / calc(2 * var(--ratio)));
+	padding: calc(var(--gap) / var(--ratio-lg));
 }
