@@ -3,6 +3,7 @@
 	import type {StyleTree} from './types'
 
 	import Api from './Api.svelte'
+	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
@@ -21,9 +22,10 @@
 	props.page = page
 
 	let ApiElement: {[category: string]: ComponentType} = {
-		layouts: Layout,
+		tokens: Token,
 		blocks: Block,
 		compositions: Composition,
+		layouts: Layout,
 	}
 
 	let styles: StyleTree

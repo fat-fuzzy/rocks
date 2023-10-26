@@ -5,7 +5,7 @@
 
 	const formats = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre']
 
-	$: cardClasses = `card  l:${layout}:${size} ${color} box`
+	$: cardClasses = `card  l:${layout}:${size} ${color}`
 </script>
 
 <article class={cardClasses}>

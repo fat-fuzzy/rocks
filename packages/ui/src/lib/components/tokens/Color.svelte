@@ -7,7 +7,7 @@
 	const colors = ['primary', 'accent', 'highlight']
 	const variants = ['light', 'lighter']
 
-	$: cardClasses = `card  l:${layout}:${size} box`
+	$: cardClasses = `card  l:${layout}:${size}`
 	$: colorClasses = `card:xxl l:stack:sm`
 </script>
 

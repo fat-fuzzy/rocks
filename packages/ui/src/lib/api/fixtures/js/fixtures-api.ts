@@ -1,9 +1,11 @@
 import buttonFixtures from './blocks'
+import tokenFixtures from './tokens'
 import graphicsFixtures from './graphics'
 import layoutsFixtures from './layouts'
 import compositionFixtures from './compositions'
 
 export const COMPONENT_FIXTURES: any = {
+	tokens: tokenFixtures,
 	blocks: buttonFixtures,
 	layouts: layoutsFixtures,
 	graphics: graphicsFixtures,
