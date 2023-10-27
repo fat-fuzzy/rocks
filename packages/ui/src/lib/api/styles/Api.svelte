@@ -22,7 +22,8 @@
 
 	$: styles = $currentStyles
 	$: styles && stylesApi.applyStyles(styles)
-	$: styleCategories = category === 'app' || category === 'shared' ? 'shared' : [category, 'shared']
+	$: styleCategories =
+		category === 'app' || category === 'shared' ? [category] : [category, 'shared']
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {tokens, blocks, compositions, layouts, api} from '@fat-fuzzy/ui'
-	const {Collection, StyleFamily} = api
+	const {Collection, Api} = api
 
 	function getComponentType(cat: string) {
 		switch (cat) {
@@ -32,7 +32,7 @@
 <header class="bg:polar l:sidebar:xs end">
 	<h1 class="l:main card:xl">{title}</h1>
 	<div class="l:side l:burrito">
-		<StyleFamily category="app" />
+		<Api category="app" {title} />
 	</div>
 </header>
 

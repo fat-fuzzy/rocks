@@ -3,17 +3,15 @@
 	import type {ComponentType} from 'svelte'
 	import * as ui from '@fat-fuzzy/ui'
 
-	let {Element, StyleFamily} = ui.api
+	let {Element, Api} = ui.api
 	let category: string
 	let categoryItems: {[name: string]: ComponentType}
 
 	let title: string
 	let Component: ComponentType
 
-	$: {
-		category = $page.params.category
-		categoryItems = ui[category]
-	}
+	$: category = $page.params.category
+	$: categoryItems = ui[category]
 	$: title = $page.params.component
 	$: Component = categoryItems[title]
 	$: path = $page.url.pathname
@@ -26,7 +24,7 @@
 <header class="bg:polar l:sidebar:xs end page-header">
 	<h1 class="l:main card:xl">{title}</h1>
 	<div class="l:side">
-		<StyleFamily category="app" />
+		<Api category="app" {title} />
 	</div>
 </header>
 
