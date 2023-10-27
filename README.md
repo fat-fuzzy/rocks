@@ -86,10 +86,10 @@ This repository contains several packages, which can be used together or indepen
 
 - Monorepo
 - [pnpm](https://pnpm.io/)
-- [Turborepo](https://turbo.build/))
+- [Turborepo](https://turbo.build/)
 - Code / Env
 
-  - [stylelint](https://stylelint.io/
+  - [stylelint](https://stylelint.io/)
   - [docker](https://www.docker.com/) - 🚧 WIP
   - [changesets](https://github.com/changesets/changesets) - 🚧 WIP
   - [commitizen](https://github.com/commitizen/cz-cli) - 🚧 WIP
