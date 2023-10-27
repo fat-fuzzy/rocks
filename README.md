@@ -39,7 +39,7 @@ Resources per app
 <summary><b>packages</b> contains UI, web graphics, logic and experiments libraries, as well as common config</summary>
 <p>
 
-- **config** common config (eslint, etc)
+- **config** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
 
 TODO:
 The monorepo needs some cleanup: `.prettier` config is currently duplicated in projects. I think I need to solve a problem specific to my workspace config in VSCode to fix this easily
@@ -85,21 +85,26 @@ This repository contains several packages, which can be used together or indepen
 ### Repository Tools
 
 - Monorepo
-- [pnpm](https://pnpm.io/)
-- [Turborepo](https://turbo.build/)
+
+  - [pnpm](https://pnpm.io/)
+  - [Turborepo](https://turbo.build/)
+
 - Code / Env
 
   - [stylelint](https://stylelint.io/)
-  - [docker](https://www.docker.com/) - 🚧 WIP
-  - [changesets](https://github.com/changesets/changesets) - 🚧 WIP
-  - [commitizen](https://github.com/commitizen/cz-cli) - 🚧 WIP
-  - [verdaccio](https://verdaccio.org/) - 🚧 WIP
+  - [commitizen](https://github.com/commitizen/cz-cli)
+
+- 🚧 WIP
+
+  - [docker](https://www.docker.com/)
+  - [changesets](https://github.com/changesets/changesets)
+  - [verdaccio](https://verdaccio.org/)
 
     - Install verdaccio: https://verdaccio.org/docs/installation
     - Using a verdaccio private registry:
 
       - Launch the private registry with the command: `verdaccio`
-      - To publish a package to the private registry, run the following command in the package's root directory :
+      - To publish a package to the private registry, run the following command in the package's root directory:
 
         ```shell
         pnpm publish --registry http://localhost:4873
