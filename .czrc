@@ -1,0 +1,186 @@
+{
+	"path": "packages/config/src/cz-conventional-changelog",
+	"name": "cz-conventional-changelog-ffr",
+	"punctuation": {
+		"type": " ",
+		"scope": [
+			"[",
+			"]"
+		]
+	},
+	"disableSubjectLowerCase": true,
+	"types": {
+		"🚧": {
+			"description": "Work in progress",
+			"title": "WIP"
+		},
+		"🌱": {
+			"description": "Gardening / baby step / cleaning code",
+			"title": "Gardening"
+		},
+		"♻️ ": {
+			"description": "Refactor / rename / move",
+			"title": "Refactor"
+		},
+		"🗑️ ": {
+			"description": "Deprecate stuff",
+			"title": "Deprecate"
+		},
+		"🔥": {
+			"description": "Remove dependencies / code / files",
+			"title": "Remove"
+		},
+		"🐛": {
+			"description": "Fix bug / typo / missing file",
+			"title": "Bugfix"
+		},
+		"💥": {
+			"description": "Breaking change",
+			"title": "Breaking"
+		},
+		"➕": {
+			"description": "Add dependencies / new files",
+			"title": "Add"
+		},
+		"⬆️ ": {
+			"description": "Update dependencies",
+			"title": "Update"
+		},
+		"📐 ": {
+			"description": "Format files",
+			"title": "Format"
+		},
+		"🚨": {
+			"description": "Fix lint issues",
+			"title": "Lint"
+		},
+		"🧪": {
+			"description": "Add / Update tests",
+			"title": "Tests"
+		},
+		"🍱": {
+			"description": "Types / TypesScript related changes",
+			"title": "Types"
+		},
+		"❄️ ": {
+			"description": "Freeze something",
+			"title": "Freeze"
+		},
+		"🌟": {
+			"description": "New feature",
+			"title": "Feature"
+		},
+		"🦋": {
+			"description": "Add / Update changeset",
+			"title": "Changeset"
+		},
+		"🎬": {
+			"description": "Versioning / version tags",
+			"title": "Version"
+		},
+		"🚀": {
+			"description": "New release",
+			"title": "Release"
+		},
+		"📝": {
+			"description": "Add / Update README / doc",
+			"title": "Doc"
+		},
+		"✏️ ": {
+			"description": "Code comments",
+			"title": "Comments"
+		},
+		"💄": {
+			"description": "UI changes: styles / CSS",
+			"title": "UI Styles"
+		},
+		"🌈": {
+			"description": "UI changes: design",
+			"title": "UI Design"
+		},
+		"👾": {
+			"description": "Graphics stuff",
+			"title": "Graphics"
+		},
+		"🗄️ ": {
+			"description": "Database stuff",
+			"title": "Database"
+		},
+		"🐍": {
+			"description": "Backend stuff (python)",
+			"title": "Backend Python"
+		},
+		"🛼 ": {
+			"description": "Backend stuff (node)",
+			"title": "Backend Node"
+		},
+		"🥨": {
+			"description": "Backend stuff (wordpress)",
+			"title": "Backend Wordpress"
+		},
+		"☁️ ": {
+			"description": "Backend stuff (serverless)",
+			"title": "Backend Serverless"
+		},
+		"🐳": {
+			"description": "Backend stuff (docker)",
+			"title": "backend-python"
+		},
+		"👐": {
+			"description": "Accessibility related changes",
+			"title": "Accessibility"
+		},
+		"🔒": {
+			"description": "Security related changes",
+			"title": "Security"
+		},
+		"⚡️": {
+			"description": "Performance related changes",
+			"title": "Performance"
+		},
+		"🌐": {
+			"description": "i18n / L10n / Date & Time",
+			"title": "i18n / L10n"
+		},
+		"🎙️ ": {
+			"description": "Improve tone & voice: copy / text content / ui text",
+			"title": "Voice"
+		},
+		"🌶️ ": {
+			"description": "Hot take, spicy change, burrito",
+			"title": "Hot"
+		},
+		"⚗️  ": {
+			"description": "Experimental (appears useful, might be unstable)",
+			"title": "Experiment"
+		},
+		"💡 ": {
+			"description": "Idea (might be useless, might be unstable)",
+			"title": "Idea"
+		},
+		"🌽": {
+			"description": "Repo / workspaces related stuff",
+			"title": "Repo"
+		},
+		"🔧 ": {
+			"description": "Update config files",
+			"title": "Config"
+		},
+		"🧰 ": {
+			"description": "Add / Improve tooling",
+			"title": "Tooling"
+		},
+		"🙈": {
+			"description": "Ignore files",
+			"title": "Ignore"
+		},
+		"⚖️ ": {
+			"description": "Add / Update LICENSES",
+			"title": "Scales"
+		},
+		"🎉": {
+			"description": "Initial commit (root/package/lib/app...)",
+			"title": "Init"
+		}
+	}
+}
