@@ -18,7 +18,7 @@
 			"description": "Gardening / baby step / cleaning code",
 			"title": "Gardening"
 		},
-		"♻️ ": {
+		"♻️  ": {
 			"description": "Refactor / rename / move",
 			"title": "Refactor"
 		},
@@ -82,7 +82,7 @@
 			"description": "New release",
 			"title": "Release"
 		},
-		"📝": {
+		"📝 ": {
 			"description": "Add / Update README / doc",
 			"title": "Doc"
 		},
