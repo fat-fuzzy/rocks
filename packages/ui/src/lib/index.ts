@@ -14,7 +14,7 @@ import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 import Feedback from '$lib/components/blocks/cards/Feedback.svelte'
 // import Canvas from '$lib/components/blocks/media/Canvas.svelte'
-import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
+// import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
@@ -43,10 +43,10 @@ import Nav from '$lib/components/compositions/navs/Nav.svelte'
 import RevealNav from '$lib/components/compositions/navs/RevealNav.svelte'
 
 import Header from '$lib/components/compositions/headers/Header.svelte'
-import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
+// import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
 
-import Page from '$lib/components/compositions/content/Page.svelte'
-import PageLogIn from '$lib/components/compositions/content/PageLogIn.svelte'
+// import Page from '$lib/components/compositions/content/Page.svelte'
+// import PageLogIn from '$lib/components/compositions/content/PageLogIn.svelte'
 
 /**
  * Compositions - Graphics
@@ -67,7 +67,7 @@ import Api from '$lib/api/styles/Api.svelte'
 import Token from '$lib/api/styles/Token.svelte'
 import Element from '$lib/api/styles/Element.svelte'
 import Collection from '$lib/api/styles/Collection.svelte'
-import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
+// import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
 
 import * as stylesApi from '$lib/api/styles/styles-api'
 import * as fixturesApi from '$lib/api/fixtures/js/fixtures-api'
@@ -164,7 +164,7 @@ const api = {
 	Collection,
 	Token,
 	Element,
-	StyleFamily,
+	// StyleFamily,
 	// StyleCapsule,
 	fixturesApi,
 	stylesApi,
