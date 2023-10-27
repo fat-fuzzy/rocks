@@ -30,7 +30,7 @@
 			"description": "Remove dependencies / code / files",
 			"title": "Remove"
 		},
-		"🐛": {
+		"🐛 ": {
 			"description": "Fix bug / typo / missing file",
 			"title": "Bugfix"
 		},
