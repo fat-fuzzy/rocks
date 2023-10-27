@@ -1,9 +1,9 @@
 ---
 title: UI
+id: 'ui'
 date_created: '2023-10-14'
 date_updated: 'YYYY-MM-DD'
 slug: ui
-id: 'ui'
 tags: ['ui']
 ---
 

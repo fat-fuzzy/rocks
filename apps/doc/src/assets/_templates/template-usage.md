@@ -1,12 +1,12 @@
 ---
 title: Example title
 id: '000'
-slug: Same as name of file without '000+' prefix and '.md' suffix
-status: draft (draft/published/archived)
-tags: ['example', 'doc', 'monorepo']
 created: 'YYYY-MM-DD' or '' for draft
 updated: 'YYYY-MM-DD' or '' for draft
+slug: Same as name of file without '000+' prefix and '.md' suffix
+status: draft (draft/published/archived)
 author: 'Me'
+tags: ['example', 'doc', 'monorepo']
 ---
 
 ## About / Motivations
