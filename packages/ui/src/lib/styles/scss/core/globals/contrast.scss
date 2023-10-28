@@ -1,13 +1,22 @@
 // Contrast
 
-.bg\:polar {
+.bg\:polar,
+.bg\:contrast > .bg\:polar,
+.bg\:contrast *:not(.bg\:polar) .bg\:polar {
+	--current-border-color: var(--current-gray-contrast);
 	background-color: var(--current-polar);
 }
 
-.bg\:contrast {
+.bg\:contrast,
+.bg\:polar > .bg\:contrast,
+.bg\:polar *:not(.bg\:contrast) .bg\:contrast {
+	--current-border-color: var(--current-polar);
 	background-color: var(--current-bg-contrast);
 }
 
-.bg\:blend {
+.bg\:blend,
+.bg\:polar > .bg\:blend,
+.bg\:polar *:not(.bg\:blend) .bg\:blend {
+	--current-border-color: var(--current-polar);
 	background-color: var(--current-bg-color);
 }

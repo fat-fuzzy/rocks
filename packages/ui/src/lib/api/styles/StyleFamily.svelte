@@ -16,7 +16,8 @@
 
 	let styles: StyleTree
 	let apiSize = 'xs'
-	let apiVariant = ''
+	let apiColor = 'primary'
+	let apiVariant = 'outline'
 
 	let stylesApi = initStyles()
 	let options = stylesApi.getFormOptions(category)
@@ -110,12 +111,13 @@
 		<Fieldset
 			legend={styleFamily.title}
 			id={styleFamily.id}
-			type={`input-group box`}
+			type="input-group"
 			layout={styleFamily.layout}
 			container={styleFamily.container}
 			variant={styleFamily.variant}
 			size={styleFamily.size}
 			name={familyName}
+			background="polar"
 		>
 			{#each styleFamily.items as styleInput}
 				{@const {input, value, items} = styleInput}
@@ -131,8 +133,9 @@
 								name={styleInput.id}
 								{checked}
 								layout={styleInput.layout || ''}
-								variant={apiVariant || ''}
-								size={apiSize || ''}
+								size={apiSize}
+								color={apiColor}
+								variant={apiVariant}
 								on:input={(event) => handleInput(event, familyName)}
 							/>
 						{/each}
@@ -155,7 +158,9 @@
 							items={updatedItems}
 							{page}
 							layout={styleInput.layout || ''}
-							size={apiSize || ''}
+							size={apiSize}
+							color={apiColor}
+							variant={apiVariant}
 							on:click={(event) => handleToggle(event, familyName, styleInput.id)}
 						/>
 					{/if}

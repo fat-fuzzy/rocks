@@ -117,7 +117,7 @@ const tokens: TokenStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
-		variant: 'box card',
+		variant: 'layer card',
 		items: [
 			// new StyleInputGroup({
 			// 	name: 'Color',
@@ -168,7 +168,7 @@ const app: AppStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
-		variant: 'box card',
+		variant: 'layer card',
 		items: [
 			new StyleInputGroup({
 				name: 'Brightness',
@@ -224,7 +224,7 @@ const shared: SharedStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
-		variant: 'box card',
+		variant: 'layer card',
 		id: 'shared.context',
 		exclude: [
 			'Color',
@@ -275,7 +275,7 @@ const shared: SharedStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'card',
-				exclude: ['compositions', 'layouts', 'Switcher', 'Reveal'],
+				exclude: ['compositions', 'layouts', 'Switcher', 'Reveal', 'Feedback'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
@@ -311,7 +311,7 @@ const shared: SharedStyles = {
 				layout: 'switcher',
 				size: 'sm',
 				variant: 'card',
-				exclude: ['compositions', 'layouts', 'Reveal'],
+				exclude: ['compositions', 'layouts', 'Reveal', 'Feedback'],
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
@@ -331,8 +331,8 @@ const blocks: BlockStyles = {
 		id: 'blocks.element',
 		layout: 'switcher',
 		container: '',
-		size: 'sm',
-		variant: 'box card',
+		size: 'md',
+		variant: 'layer card',
 		items: [
 			new StyleInputGroup({
 				name: 'Color',
@@ -472,8 +472,8 @@ const layouts: LayoutStyles = {
 		id: 'layouts.element',
 		layout: 'switcher',
 		container: '',
-		size: 'xxs',
-		variant: 'box card',
+		size: 'md',
+		variant: 'layer card',
 		items: [
 			new StyleInputGroup({
 				name: 'Content',
