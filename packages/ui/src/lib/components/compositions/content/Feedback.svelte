@@ -5,8 +5,9 @@
 	export let background = ''
 	export let size = ''
 	export let action = 'ok'
+	export let variant = 'card'
 
-	$: feedbackClass = `card:${size} ${context} ${status} bg:${background}`
+	$: feedbackClass = `${variant}:${size} ${context} ${status} bg:${background}`
 </script>
 
 {#if context === 'code'}
