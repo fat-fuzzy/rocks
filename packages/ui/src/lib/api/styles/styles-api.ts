@@ -11,12 +11,14 @@ import type {
 import {StyleInputGroup, StyleFamily} from './types'
 
 export class StylesApi {
+	tokens: TokenStyles
 	app: AppStyles
 	shared: SharedStyles
 	blocks: BlockStyles
 	layouts: LayoutStyles
 
-	constructor({app, shared, blocks, layouts}: StyleOptions) {
+	constructor({tokens, app, shared, blocks, layouts}: StyleOptions) {
+		this.tokens = tokens
 		this.app = app
 		this.shared = shared
 		this.blocks = blocks
@@ -29,6 +31,8 @@ export class StylesApi {
 
 	getCategoryOptions(category: string): StyleCategory {
 		switch (category) {
+			case 'tokens':
+				return this.tokens
 			case 'app':
 				return this.app
 			case 'shared':
@@ -44,6 +48,7 @@ export class StylesApi {
 
 	geAllOptions(): StyleOptions {
 		return {
+			tokens: this.tokens,
 			app: this.app,
 			shared: this.shared,
 			blocks: this.blocks,
@@ -53,12 +58,14 @@ export class StylesApi {
 
 	getStyleTree(): StyleTree {
 		// TODO: loop for [X] style families
+		const tokensStylesTree = this.tokens?.element?.getStyleTree() || {}
 		const appStylesTree = this.app?.settings?.getStyleTree() || {}
 		const sharedStylesTree = this.shared?.context?.getStyleTree() || {}
 		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
 		const layoutsStylesTree = this.layouts?.element?.getStyleTree() || {}
 
 		return {
+			tokens: tokensStylesTree,
 			app: appStylesTree,
 			shared: sharedStylesTree,
 			blocks: blocksStylesTree,
@@ -73,6 +80,10 @@ export class StylesApi {
 			let styles: StyleCategory
 
 			switch (updatedCategory) {
+				case 'tokens':
+					families = Object.keys(this.tokens)
+					styles = this.tokens
+					break
 				case 'app':
 					families = Object.keys(this.app)
 					styles = this.app
@@ -98,58 +109,6 @@ export class StylesApi {
 	}
 }
 
-const app: AppStyles = {
-	settings: new StyleFamily({
-		name: 'Settings',
-		title: '',
-		id: 'app.settings',
-		layout: 'switcher',
-		container: '',
-		size: 'xxs',
-		items: [
-			new StyleInputGroup({
-				name: 'Brightness',
-				id: 'app.settings.brightness',
-				value: 'day',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'app.settings.brightness.day', text: 'day', asset: '☀️', value: 'day'},
-					{id: 'app.settings.brightness.night', text: 'night', asset: '🌙', value: 'night'},
-				],
-			}),
-			new StyleInputGroup({
-				name: 'Contrast',
-				id: 'app.settings.contrast',
-				value: 'blend',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'app.settings.contrast.contrast', text: 'contrast', asset: '🌗', value: 'contrast'}, // TODO : fix color vars & classes
-					{id: 'app.settings.contrast.blend', text: 'blend', asset: '🌑', value: 'blend'}, // TODO: night / day asset option
-					// {id: 'polar', label: 'polar', value: ''},
-				],
-			}),
-		],
-	}),
-	// TODO : figure out if it is possible to do a dynamic import of app theme
-	// theme: {
-	// 	name: 'Theme',
-	// 	items: [
-	// 		{
-	// 			name: 'Theme',
-	// 			input: 'toggle',
-	// 			layout: 'switcher',
-	// 			items: [
-	// 				{id: 'ui', label: 'ui'},
-	// 				{id: 'doc', label: 'doc'},
-	// 				{id: 'website', label: 'website'},
-	// 			],
-	// 		},
-	// 	],
-	// },
-}
-
 const tokens: TokenStyles = {
 	element: new StyleFamily({
 		name: 'Design',
@@ -158,53 +117,58 @@ const tokens: TokenStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'xxs',
+		variant: 'box card',
 		items: [
-			new StyleInputGroup({
-				name: 'Color',
-				id: 'tokens.element.color',
-				value: 'day',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'tokens.element.color.primary', text: 'primary', asset: '', value: 'primary'},
-					{id: 'tokens.element.color.accent', text: 'accent', asset: '', value: 'accent'},
-					{
-						id: 'tokens.element.color.highlight',
-						text: 'highlight',
-						asset: '',
-						value: 'highlight',
-					},
-				],
-			}),
-			new StyleInputGroup({
-				name: 'Typography',
-				id: 'tokens.element.typography',
-				value: 'blend',
-				input: 'toggle',
-				layout: 'stack',
-				items: [
-					{id: 'tokens.element.typography.h1', text: 'h1', asset: '', value: 'h1'},
-					{id: 'tokens.element.typography.h2', text: 'h2', asset: '', value: 'h2'},
-					{id: 'tokens.element.typography.h3', text: 'h3', asset: '', value: 'h3'},
-					{id: 'tokens.element.typography.h4', text: 'h4', asset: '', value: 'h4'},
-					{id: 'tokens.element.typography.h5', text: 'h5', asset: '', value: 'h5'},
-					{id: 'tokens.element.typography.h6', text: 'h6', asset: '', value: 'h6'},
-					{id: 'tokens.element.typography.font=lg', text: 'font=lg', asset: '', value: 'font=lg'},
-					{id: 'tokens.element.typography.font-md', text: 'font-md', asset: '', value: 'font-md'},
-					{id: 'tokens.element.typography.font-sm', text: 'font-sm', asset: '', value: 'font-sm'},
-					{id: 'tokens.element.typography.font-xs', text: 'font-xs', asset: '', value: 'font-xs'},
-					{id: 'tokens.element.typography.pre', text: 'pre', asset: '', value: 'pre'},
-				],
-			}),
+			// new StyleInputGroup({
+			// 	name: 'Color',
+			// 	id: 'tokens.element.color',
+			// 	value: 'day',
+			// 	input: 'toggle',
+			// 	layout: 'stack',
+			// 	items: [
+			// 		{id: 'tokens.element.color.primary', text: 'primary', asset: '', value: 'primary'},
+			// 		{id: 'tokens.element.color.accent', text: 'accent', asset: '', value: 'accent'},
+			// 		{
+			// 			id: 'tokens.element.color.highlight',
+			// 			text: 'highlight',
+			// 			asset: '',
+			// 			value: 'highlight',
+			// 		},
+			// 	],
+			// }),
+			// new StyleInputGroup({
+			// 	name: 'Typography',
+			// 	id: 'tokens.element.typography',
+			// 	value: 'blend',
+			// 	input: 'toggle',
+			// 	layout: 'stack',
+			// 	items: [
+			// 		{id: 'tokens.element.typography.h1', text: 'h1', asset: '', value: 'h1'},
+			// 		{id: 'tokens.element.typography.h2', text: 'h2', asset: '', value: 'h2'},
+			// 		{id: 'tokens.element.typography.h3', text: 'h3', asset: '', value: 'h3'},
+			// 		{id: 'tokens.element.typography.h4', text: 'h4', asset: '', value: 'h4'},
+			// 		{id: 'tokens.element.typography.h5', text: 'h5', asset: '', value: 'h5'},
+			// 		{id: 'tokens.element.typography.h6', text: 'h6', asset: '', value: 'h6'},
+			// 		{id: 'tokens.element.typography.font=lg', text: 'font=lg', asset: '', value: 'font=lg'},
+			// 		{id: 'tokens.element.typography.font-md', text: 'font-md', asset: '', value: 'font-md'},
+			// 		{id: 'tokens.element.typography.font-sm', text: 'font-sm', asset: '', value: 'font-sm'},
+			// 		{id: 'tokens.element.typography.font-xs', text: 'font-xs', asset: '', value: 'font-xs'},
+			// 		{id: 'tokens.element.typography.pre', text: 'pre', asset: '', value: 'pre'},
+			// 	],
+			// }),
 		],
 	}),
+}
+
+const app: AppStyles = {
 	settings: new StyleFamily({
 		name: 'Settings',
 		title: '',
 		id: 'app.settings',
 		layout: 'switcher',
-		container: '',
+		container: 'burrito',
 		size: 'xxs',
+		variant: 'box card',
 		items: [
 			new StyleInputGroup({
 				name: 'Brightness',
@@ -254,8 +218,9 @@ const shared: SharedStyles = {
 		name: 'Context',
 		title: '',
 		layout: 'switcher',
-		container: '',
+		container: 'burrito',
 		size: 'sm',
+		variant: 'box card',
 		id: 'shared.context',
 		exclude: [
 			'Color',
@@ -355,6 +320,7 @@ const blocks: BlockStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
+		variant: 'box card',
 		items: [
 			new StyleInputGroup({
 				name: 'Color',
@@ -362,6 +328,7 @@ const blocks: BlockStyles = {
 				value: '',
 				input: 'toggle',
 				layout: 'stack',
+				variant: '',
 				items: [
 					{
 						id: 'blocks.element.color.primary',
@@ -392,11 +359,59 @@ const blocks: BlockStyles = {
 				value: 'default',
 				input: 'toggle',
 				layout: 'stack',
-				exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
 					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
 					{id: 'blocks.element.variant.outline', text: 'outline', asset: '', value: 'outline'},
 					{id: 'blocks.element.variant.bare', text: 'bare', asset: '', value: 'bare'},
+				],
+			}),
+			new StyleInputGroup({
+				name: 'Status',
+				id: 'blocks.element.status',
+				value: 'default',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: [
+					'ActionLabel',
+					'InputCheck',
+					'InputRadio',
+					'InputRange',
+					'InputFile',
+					'Button',
+					'Toggle',
+					'Canvas',
+					'Picture',
+				],
+				items: [
+					{id: 'blocks.element.status.neutral', text: 'neutral', asset: '', value: 'neutral'},
+					{id: 'blocks.element.status.tip', text: 'tip', asset: '', value: 'tip'},
+					{id: 'blocks.element.status.success', text: 'success', asset: '', value: 'success'},
+					{id: 'blocks.element.status.warning', text: 'warning', asset: '', value: 'warning'},
+					{id: 'blocks.element.status.error', text: 'error', asset: '', value: 'error'},
+				],
+			}),
+			new StyleInputGroup({
+				name: 'Context',
+				id: 'blocks.element.context',
+				value: 'default',
+				input: 'toggle',
+				layout: 'stack',
+				exclude: [
+					'ActionLabel',
+					'InputCheck',
+					'InputRadio',
+					'InputRange',
+					'InputFile',
+					'Button',
+					'Toggle',
+					'Canvas',
+					'Picture',
+				],
+				items: [
+					{id: 'blocks.element.context.form', text: 'form', asset: '', value: 'form'},
+					{id: 'blocks.element.context.code', text: 'code', asset: '', value: 'code'},
+					{id: 'blocks.element.context.dialog', text: 'dialog', asset: '', value: 'dialog'},
 				],
 			}),
 			new StyleInputGroup({
@@ -445,6 +460,7 @@ const layouts: LayoutStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
+		variant: 'box card',
 		items: [
 			new StyleInputGroup({
 				name: 'Content',
@@ -503,9 +519,12 @@ const layouts: LayoutStyles = {
 	}),
 }
 
-export const initStyles = () => new StylesApi({app, tokens, shared, blocks, layouts})
+export const initStyles = () => new StylesApi({tokens, app, shared, blocks, layouts})
 
 export const DEFAULT_STYLES: StyleTree = {
+	tokens: {
+		element: {color: 'primary', typography: 'h1'},
+	},
 	app: {
 		settings: {
 			brightness: 'day',

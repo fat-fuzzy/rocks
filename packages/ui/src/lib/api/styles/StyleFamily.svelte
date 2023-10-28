@@ -112,7 +112,8 @@
 			id={styleFamily.id}
 			type={`input-group box`}
 			layout={styleFamily.layout}
-			container={`${styleFamily.container}`}
+			container={styleFamily.container}
+			variant={styleFamily.variant}
 			size={styleFamily.size}
 			name={familyName}
 		>

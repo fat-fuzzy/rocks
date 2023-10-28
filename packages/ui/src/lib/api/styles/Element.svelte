@@ -60,7 +60,7 @@
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
-	<article class="l:sidebar:xs align:end">
+	<article class="l:sidebar:xs">
 		<main class={`l:main card:xl inset ${brightness} bg:${background}`}>
 			<div class={containerContext}>
 				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />

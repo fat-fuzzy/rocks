@@ -1,10 +1,6 @@
 <script lang="ts">
-	import type {StyleTree} from './types'
-
 	import {enhance} from '$app/forms'
 	import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
-	import {initStyles} from './styles-api'
-	import {currentStyles} from '$lib/stores/api'
 
 	export let title = ''
 	export let category = ''
@@ -13,15 +9,10 @@
 	export let formaction = 'enter'
 	// export let reset = 'reset'
 
-	let styles: StyleTree
 	let apiLayout = 'switcher'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxl'
 
-	let stylesApi = initStyles()
-
-	$: styles = $currentStyles
-	$: styles && stylesApi.applyStyles(styles)
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard
