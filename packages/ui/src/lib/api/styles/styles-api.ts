@@ -116,7 +116,7 @@ const tokens: TokenStyles = {
 		id: 'tokens.element',
 		layout: 'switcher',
 		container: '',
-		size: 'xxs',
+		size: 'xs',
 		variant: 'box card',
 		items: [
 			// new StyleInputGroup({
@@ -166,8 +166,8 @@ const app: AppStyles = {
 		title: '',
 		id: 'app.settings',
 		layout: 'switcher',
-		container: 'burrito',
-		size: 'xxs',
+		container: '',
+		size: 'xs',
 		variant: 'box card',
 		items: [
 			new StyleInputGroup({
@@ -176,6 +176,8 @@ const app: AppStyles = {
 				value: 'day',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				items: [
 					{id: 'app.settings.brightness.day', text: 'day', asset: '☀️', value: 'day'},
 					{id: 'app.settings.brightness.night', text: 'night', asset: '🌙', value: 'night'},
@@ -187,6 +189,8 @@ const app: AppStyles = {
 				value: 'blend',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				items: [
 					{id: 'app.settings.contrast.contrast', text: 'contrast', asset: '🌗', value: 'contrast'}, // TODO : fix color vars & classes
 					{id: 'app.settings.contrast.blend', text: 'blend', asset: '🌑', value: 'blend'}, // TODO: night / day asset option
@@ -218,8 +222,8 @@ const shared: SharedStyles = {
 		name: 'Context',
 		title: '',
 		layout: 'switcher',
-		container: 'burrito',
-		size: 'sm',
+		container: '',
+		size: 'xs',
 		variant: 'box card',
 		id: 'shared.context',
 		exclude: [
@@ -239,6 +243,8 @@ const shared: SharedStyles = {
 				value: '',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				items: [
 					{id: 'shared.context.container.center', text: 'center', asset: '', value: 'center'},
 					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
@@ -250,6 +256,8 @@ const shared: SharedStyles = {
 				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				exclude: ['compositions', 'layouts', 'Switcher', 'Reveal'],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
@@ -284,6 +292,8 @@ const shared: SharedStyles = {
 				value: 'md',
 				input: 'toggle',
 				layout: 'switcher',
+				size: 'sm',
+				variant: 'card',
 				exclude: ['Nav'],
 				items: [
 					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
@@ -299,6 +309,8 @@ const shared: SharedStyles = {
 				value: 'md',
 				input: 'toggle',
 				layout: 'switcher',
+				size: 'sm',
+				variant: 'card',
 				exclude: ['compositions', 'layouts', 'Reveal'],
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
@@ -328,7 +340,8 @@ const blocks: BlockStyles = {
 				value: '',
 				input: 'toggle',
 				layout: 'stack',
-				variant: '',
+				size: 'sm',
+				variant: 'card',
 				items: [
 					{
 						id: 'blocks.element.color.primary',
@@ -359,6 +372,8 @@ const blocks: BlockStyles = {
 				value: 'default',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
 					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
@@ -372,6 +387,8 @@ const blocks: BlockStyles = {
 				value: 'default',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				exclude: [
 					'ActionLabel',
 					'InputCheck',
@@ -397,6 +414,8 @@ const blocks: BlockStyles = {
 				value: 'default',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				exclude: [
 					'ActionLabel',
 					'InputCheck',
@@ -420,6 +439,8 @@ const blocks: BlockStyles = {
 				value: 'md',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				items: [
 					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -434,6 +455,8 @@ const blocks: BlockStyles = {
 				value: '',
 				input: 'datalist',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				exclude: [
 					'ButtonMenu',
 					'ToggleMenu',
@@ -468,6 +491,8 @@ const layouts: LayoutStyles = {
 				value: 'card',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				exclude: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.content.card', text: 'card', asset: '', value: 'card'},
@@ -481,6 +506,8 @@ const layouts: LayoutStyles = {
 				value: 'card',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.side.card', text: 'card', asset: '', value: 'card'},
@@ -494,6 +521,8 @@ const layouts: LayoutStyles = {
 				value: 'text',
 				input: 'toggle',
 				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.main.card', text: 'card', asset: '', value: 'card'},
@@ -506,6 +535,8 @@ const layouts: LayoutStyles = {
 				id: 'layouts.element.size',
 				value: 'md',
 				input: 'toggle',
+				size: 'sm',
+				variant: 'card',
 				layout: 'switcher',
 				items: [
 					{id: 'layouts.element.size.xs', text: 'xs', asset: '', value: 'xs'},
