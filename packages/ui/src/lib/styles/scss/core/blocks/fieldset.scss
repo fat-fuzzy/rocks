@@ -1,4 +1,5 @@
 fieldset {
+	border: none;
 	border-radius: var(--radius-base);
 	> legend {
 		font-size: var(--font-size-ui);
@@ -13,10 +14,6 @@ fieldset {
 
 fieldset.box {
 	border: 1px solid var(--current-gray);
-}
-
-fieldset.bare {
-	border: none;
 }
 
 fieldset {
