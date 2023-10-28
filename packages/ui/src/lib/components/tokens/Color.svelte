@@ -16,7 +16,7 @@
 		<header>
 			<h2>{color}</h2>
 		</header>
-		<main class="l:grid:xs">
+		<main class="l:grid:xxs">
 			<figure class={`${colorClasses} bg:${color}`}>
 				<figcaption>{color}</figcaption>
 			</figure>
