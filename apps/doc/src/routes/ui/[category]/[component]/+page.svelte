@@ -23,7 +23,7 @@
 </svelte:head>
 
 <header class="bg:polar l:sidebar page-header">
-	<h1 class="l:main:50 card:xl">{title}</h1>
+	<h1 class="l:main:30 card:xl">{title}</h1>
 	<div class="l:side l:flex card:sm align:end">
 		<Api category="app" {title} />
 		<Api category="shared" {title} />
