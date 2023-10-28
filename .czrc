@@ -26,7 +26,7 @@
 			"description": "Deprecate stuff",
 			"title": "Deprecate"
 		},
-		"🔥": {
+		"🔥 ": {
 			"description": "Remove dependencies / code / files",
 			"title": "Remove"
 		},
