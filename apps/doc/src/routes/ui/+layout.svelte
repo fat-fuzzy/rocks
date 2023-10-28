@@ -1,7 +1,9 @@
 <script lang="ts">
+	import {page} from '$app/stores'
 	import {tokens, blocks, compositions, layouts} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
 	const {RevealNav} = compositions
+	let path = $page.url.pathname
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -54,7 +56,7 @@
 			title="Design Library"
 			id="nav-page"
 			{items}
-			{path}
+			page={path}
 			breakpoint="md"
 			size="md"
 			color="primary"
