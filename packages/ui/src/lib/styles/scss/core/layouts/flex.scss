@@ -1,0 +1,7 @@
+.l\:flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+.l\:flex.align\:end {
+	flex-direction: row-reverse;
+}

@@ -32,8 +32,20 @@ main > [class^='l:sidebar'] {
 	}
 }
 
-.l\:main\:half {
+.l\:main\:50 {
 	min-inline-size: 50%;
+}
+
+.l\:main\:60 {
+	min-inline-size: 60%;
+}
+
+.l\:main\:70 {
+	min-inline-size: 70%;
+}
+
+.l\:main\:80 {
+	min-inline-size: 80%;
 }
 
 // adjusts to width of contents
