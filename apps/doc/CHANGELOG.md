@@ -1,5 +1,12 @@
 # @fat-fuzzy/doc
 
+## 0.1.15
+
+### Patch Changes
+
+- 2b20627: [root+config] Add commitizen + custom cz-conventional-commit tooling
+  [ui+doc] UI library improvements and bugfixes, improve doc layouts
+
 ## 0.1.14
 
 ### Patch Changes
