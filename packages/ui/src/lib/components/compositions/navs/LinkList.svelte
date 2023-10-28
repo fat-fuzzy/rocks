@@ -1,19 +1,18 @@
 <script lang="ts">
 	import format from '$lib/utils/format'
+	import {page} from '$app/stores'
 
 	export let path = ''
-	export let page = ''
 	export let layout = ''
 	export let size = 'md'
 	export let align = 'start'
 	export let id = ''
 	export let depth = 0
 	export let items: any = [] // TODO: fix type
-
 	let layoutClass = layout ? `l:${layout}:${size}` : ''
 	let depthClass = `depth-${depth}`
 
-	$: current = (slug: string) => page === format.formatHref(path, slug)
+	$: current = (slug: string) => $page.url.pathname === format.formatHref(path, slug)
 </script>
 
 <ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${align} ${depthClass}`}>
