@@ -226,16 +226,7 @@ const shared: SharedStyles = {
 		size: 'sm',
 		variant: 'layer card',
 		id: 'shared.context',
-		exclude: [
-			'Color',
-			'Typography',
-			'ActionLabel',
-			'Button',
-			'Toggle',
-			'Stack',
-			'Burrito',
-			'Sidebar',
-		],
+		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle'],
 		items: [
 			new StyleInputGroup({
 				name: 'Container',
@@ -245,6 +236,7 @@ const shared: SharedStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'card',
+				exclude: ['Stack', 'Burrito'],
 				items: [
 					{id: 'shared.context.container.center', text: 'center', asset: '', value: 'center'},
 					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
@@ -258,7 +250,7 @@ const shared: SharedStyles = {
 				layout: 'switcher',
 				size: 'sm',
 				variant: 'card',
-				exclude: ['Nav'],
+				exclude: ['Nav', 'Stack', 'Burrito'],
 				items: [
 					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -275,7 +267,21 @@ const shared: SharedStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'card',
-				exclude: ['compositions', 'layouts', 'Switcher', 'Reveal', 'Feedback'],
+				exclude: [
+					'compositions',
+					'layouts',
+					'Switcher',
+					'Reveal',
+					'Feedback',
+					'Stack',
+					'Switcher',
+					'Burrito',
+					'Sidebar',
+					'Nav',
+					'RevealNav',
+					'Header',
+					'LogIn',
+				],
 				items: [
 					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
@@ -311,7 +317,19 @@ const shared: SharedStyles = {
 				layout: 'switcher',
 				size: 'sm',
 				variant: 'card',
-				exclude: ['compositions', 'layouts', 'Reveal', 'Feedback'],
+				exclude: [
+					'compositions',
+					'layouts',
+					'Reveal',
+					'Feedback',
+					'Stack',
+					'Burrito',
+					'Sidebar',
+					'Nav',
+					'RevealNav',
+					'Header',
+					'LogIn',
+				],
 				items: [
 					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
