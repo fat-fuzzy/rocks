@@ -22,8 +22,6 @@
 
 	$: styles = $currentStyles
 	$: styles && stylesApi.applyStyles(styles)
-	$: styleCategories =
-		category === 'app' || category === 'shared' ? [category] : [category, 'shared']
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard
@@ -50,8 +48,7 @@
 	}}
 	class={`l:${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 >
-	{#each styleCategories as family}
-		<StyleFamily category={family} {title} />
-	{/each}
+	<StyleFamily {category} {title} />
+
 	<!-- <button data-key="enter">Update UI</button> -->
 </form>

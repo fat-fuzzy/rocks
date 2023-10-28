@@ -18,11 +18,8 @@
 	let apiSize = 'xs'
 	let apiVariant = ''
 
-	let styleCategories = [category]
 	let stylesApi = initStyles()
-	let formOptions = stylesApi.getFormOptions(styleCategories)
-	export let options = formOptions[0]
-	let fieldsetClass = ''
+	let options = stylesApi.getFormOptions(category)
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -89,10 +86,7 @@
 	$: {
 		styles = $currentStyles
 		styles && stylesApi.applyStyles(styles)
-		styleCategories = category === 'app' ? ['app'] : [category, 'shared']
-		formOptions = stylesApi.getFormOptions(styleCategories)
-		options = formOptions[0]
-		fieldsetClass = category === 'app' ? 'bare' : 'box '
+		options = stylesApi.getFormOptions(category)
 	}
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -116,7 +110,7 @@
 		<Fieldset
 			legend={styleFamily.title}
 			id={styleFamily.id}
-			type={`input-group ${fieldsetClass}`}
+			type={`input-group box`}
 			layout={styleFamily.layout}
 			container={`${styleFamily.container}`}
 			size={styleFamily.size}

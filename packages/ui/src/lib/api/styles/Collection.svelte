@@ -51,14 +51,13 @@
 		1,
 		category.length - 1,
 	)}`
-	$: mainContainerClasses =
-		category === 'tokens' ? `drop l:stack:${size}` : `drop l:${layout}:${size}`
+	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
 	$: contextClasses = `${sharedOptions.size}`
 </script>
 
 {#if isPage}
 	<Sidebar size="xs" align="end">
-		<div slot="main" class={mainContainerClasses}>
+		<div slot="main" class={layoutClass}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				{@const props = getProps({category, component: name})}
@@ -79,7 +78,7 @@
 			<div class="l:text:xl">
 				{@html mocks['doc'][category]}
 			</div>
-			<Api category="app" {title} />
+			<Api {category} {title} />
 		</aside>
 	</Sidebar>
 {:else}
@@ -91,18 +90,18 @@
 		{@html mocks['doc'][category]}
 	</div>
 
-	<details class={`l:stack:xl ${size}`}>
+	<details class={`l:stack:xxl ${size}`}>
 		<summary class={`card:md box:${color} bg:${color}`}>
 			{categorySingular} components
 		</summary>
-		<div class={mainContainerClasses}>
-			{#each componentNames as name}
-				{@const component = components[name]}
-				{@const props = getProps({category, component: name})}
-				<div class={contextClasses}>
+		<div class="drop">
+			<div class={`${layoutClass} ${contextClasses}`}>
+				{#each componentNames as name}
+					{@const component = components[name]}
+					{@const props = getProps({category, component: name})}
 					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {props} />
-				</div>
-			{/each}
+				{/each}
+			</div>
 		</div>
 	</details>
 {/if}
