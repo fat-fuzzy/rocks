@@ -32,6 +32,10 @@ main > [class^='l:sidebar'] {
 	}
 }
 
+.l\:main\:half {
+	min-inline-size: 50%;
+}
+
 // adjusts to width of contents
 [class^='l:side'] {
 	flex-grow: 1;
