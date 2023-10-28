@@ -29,9 +29,9 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="bg:polar l:sidebar:xs end">
-	<h1 class="l:main card:xl">{title}</h1>
-	<div class="l:side l:burrito">
+<header class="bg:polar l:sidebar:xxl end page-header">
+	<h1 class="l:side card:xl">{title}</h1>
+	<div class="l:main:half l:switcher card:sm align:end">
 		<Api category="app" {title} />
 	</div>
 </header>
