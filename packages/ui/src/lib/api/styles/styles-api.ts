@@ -23,8 +23,8 @@ export class StylesApi {
 		this.layouts = layouts
 	}
 
-	getFormOptions(categories: string[]): StyleCategory[] {
-		return categories.map((cat) => this.getCategoryOptions(cat))
+	getFormOptions(category: string): StyleCategory {
+		return this.getCategoryOptions(category)
 	}
 
 	getCategoryOptions(category: string): StyleCategory {
