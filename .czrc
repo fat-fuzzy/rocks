@@ -10,11 +10,11 @@
 	},
 	"disableSubjectLowerCase": true,
 	"types": {
-		"🚧": {
+		"🚧 ": {
 			"description": "Work in progress",
 			"title": "WIP"
 		},
-		"🌱": {
+		"🌱 ": {
 			"description": "Gardening / baby step / cleaning code",
 			"title": "Gardening"
 		},
