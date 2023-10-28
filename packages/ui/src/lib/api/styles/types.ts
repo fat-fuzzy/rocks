@@ -82,6 +82,10 @@ export interface IStylesSet {
 	name: string
 
 	layout?: string
+	container?: string
+	size?: string
+	variant?: string
+
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components
 
@@ -109,14 +113,16 @@ interface IStyleFamily extends IStylesSet {
 	 */
 	items: Array<IStyleInputGroup>
 	itemsMap: Map<string, IStyleInputGroup>
-	container?: string
-	size?: string
 }
 
 type StylesSetOptions = {
 	id: string
 	name: string
 	layout?: string
+	container?: string
+	size?: string
+	variant?: string
+
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components
 }
@@ -145,10 +151,25 @@ export class StyleInputGroup implements IStyleInputGroup {
 	items: Array<StyleInputOptions>
 	value: string
 	layout?: string
+	container?: string
+	size?: string
+	variant?: string
 	exclude?: string[]
 	include?: string[]
 
-	constructor({id, name, input, items, value, layout, exclude, include}: StyleInputGroupOptions) {
+	constructor({
+		id,
+		name,
+		input,
+		items,
+		value,
+		layout,
+		container,
+		size,
+		variant,
+		exclude,
+		include,
+	}: StyleInputGroupOptions) {
 		this.id = id
 		this.name = name
 		this.slug = name.toLowerCase()
@@ -157,6 +178,15 @@ export class StyleInputGroup implements IStyleInputGroup {
 		this.value = value ?? ''
 		if (layout) {
 			this.layout = layout
+		}
+		if (container) {
+			this.container = container
+		}
+		if (size) {
+			this.size = size
+		}
+		if (variant) {
+			this.variant = variant
 		}
 		if (exclude) {
 			this.exclude = exclude
@@ -206,6 +236,7 @@ export class StyleFamily implements IStyleFamily {
 	layout?: string
 	container?: string
 	size?: string
+	variant?: string
 	exclude?: string[]
 	include?: string[]
 
@@ -217,6 +248,7 @@ export class StyleFamily implements IStyleFamily {
 		layout,
 		container,
 		size,
+		variant,
 		exclude,
 		include,
 	}: StyleFamilyOptions) {
@@ -239,6 +271,9 @@ export class StyleFamily implements IStyleFamily {
 		}
 		if (size) {
 			this.size = size
+		}
+		if (variant) {
+			this.variant = variant
 		}
 		if (exclude) {
 			this.exclude = exclude
