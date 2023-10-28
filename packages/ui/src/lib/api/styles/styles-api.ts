@@ -116,7 +116,7 @@ const tokens: TokenStyles = {
 		id: 'tokens.element',
 		layout: 'switcher',
 		container: '',
-		size: 'xs',
+		size: 'sm',
 		variant: 'box card',
 		items: [
 			// new StyleInputGroup({
@@ -167,7 +167,7 @@ const app: AppStyles = {
 		id: 'app.settings',
 		layout: 'switcher',
 		container: '',
-		size: 'xs',
+		size: 'sm',
 		variant: 'box card',
 		items: [
 			new StyleInputGroup({
@@ -223,7 +223,7 @@ const shared: SharedStyles = {
 		title: '',
 		layout: 'switcher',
 		container: '',
-		size: 'xs',
+		size: 'sm',
 		variant: 'box card',
 		id: 'shared.context',
 		exclude: [
@@ -248,6 +248,23 @@ const shared: SharedStyles = {
 				items: [
 					{id: 'shared.context.container.center', text: 'center', asset: '', value: 'center'},
 					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
+				],
+			}),
+			new StyleInputGroup({
+				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
+				id: 'shared.context.size',
+				value: 'md',
+				input: 'toggle',
+				layout: 'switcher',
+				size: 'sm',
+				variant: 'card',
+				exclude: ['Nav'],
+				items: [
+					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'shared.context.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'shared.context.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 			new StyleInputGroup({
@@ -284,23 +301,6 @@ const shared: SharedStyles = {
 						// 	},
 						// ],
 					},
-				],
-			}),
-			new StyleInputGroup({
-				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
-				id: 'shared.context.size',
-				value: 'md',
-				input: 'toggle',
-				layout: 'switcher',
-				size: 'sm',
-				variant: 'card',
-				exclude: ['Nav'],
-				items: [
-					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
-					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
-					{id: 'shared.context.size.md', text: 'md', asset: '', value: 'md'},
-					{id: 'shared.context.size.lg', text: 'lg', asset: '', value: 'lg'},
-					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 			new StyleInputGroup({
@@ -382,6 +382,22 @@ const blocks: BlockStyles = {
 				],
 			}),
 			new StyleInputGroup({
+				name: 'Size',
+				id: 'blocks.element.size',
+				value: 'md',
+				input: 'toggle',
+				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
+				items: [
+					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'blocks.element.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'blocks.element.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'blocks.element.size.xl', text: 'xl', asset: '', value: 'xl'},
+				],
+			}),
+			new StyleInputGroup({
 				name: 'Status',
 				id: 'blocks.element.status',
 				value: 'default',
@@ -416,37 +432,11 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'card',
-				exclude: [
-					'ActionLabel',
-					'InputCheck',
-					'InputRadio',
-					'InputRange',
-					'InputFile',
-					'Button',
-					'Toggle',
-					'Canvas',
-					'Picture',
-				],
+				include: ['Feedback'],
 				items: [
 					{id: 'blocks.element.context.form', text: 'form', asset: '', value: 'form'},
 					{id: 'blocks.element.context.code', text: 'code', asset: '', value: 'code'},
 					{id: 'blocks.element.context.dialog', text: 'dialog', asset: '', value: 'dialog'},
-				],
-			}),
-			new StyleInputGroup({
-				name: 'Size',
-				id: 'blocks.element.size',
-				value: 'md',
-				input: 'toggle',
-				layout: 'stack',
-				size: 'sm',
-				variant: 'card',
-				items: [
-					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
-					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
-					{id: 'blocks.element.size.md', text: 'md', asset: '', value: 'md'},
-					{id: 'blocks.element.size.lg', text: 'lg', asset: '', value: 'lg'},
-					{id: 'blocks.element.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 			new StyleInputGroup({
@@ -482,7 +472,7 @@ const layouts: LayoutStyles = {
 		id: 'layouts.element',
 		layout: 'switcher',
 		container: '',
-		size: 'sm',
+		size: 'xxs',
 		variant: 'box card',
 		items: [
 			new StyleInputGroup({
