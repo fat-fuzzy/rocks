@@ -29,5 +29,7 @@ node_modules
 ## Ignore these files in the original repository fir now
 ## src: https://github.com/commitizen/cz-conventional-changelog.git
 __git
-
+.github
+.editorconfig
+.prettierrc
 renovate.json
