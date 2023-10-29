@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let layout = 'stack'
 	export let size = 'md'
+	export let depth = '3'
 
 	// const colors = ['primary', 'accent', 'highlight', 'info', 'success', 'warning', 'error']
 	// const variants = ['darker', 'dark', 'light', 'lighter']
@@ -14,7 +15,7 @@
 {#each colors as color}
 	<article class={cardClasses}>
 		<header>
-			<h2>{color}</h2>
+			<svelte:element this={`h${depth}`} class="font:md">{color}</svelte:element>
 		</header>
 		<main class="l:grid:xxs">
 			<figure class={`${colorClasses} bg:${color}`}>
