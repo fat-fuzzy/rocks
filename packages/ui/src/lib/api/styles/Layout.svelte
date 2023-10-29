@@ -25,7 +25,7 @@
 	$: background = styles.app?.settings.contrast ?? background
 	// Element options
 	$: size = styles.layouts?.element?.size ?? ''
-	$: breakpoint = styles.shared?.context.breakpoint ?? breakpoint
+	$: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
 	// Content options
 	$: content = styles.layouts?.element.content ?? 'card'
 	$: sideContent = styles.layouts?.element.side ?? 'card'

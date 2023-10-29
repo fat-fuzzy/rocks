@@ -36,14 +36,17 @@
 	// TODO: feedback colors & component
 
 	$: styles = $currentStyles
+	console.log('styles')
+	console.log(styles)
+
 	//== App settings (user controlled)
 	$: brightness = styles.app?.settings.brightness ?? brightness
 	$: contrast = styles.app?.settings.contrast ?? contrast
 	//== Shared settings (user controlled)
 	// Container options
 	// - [container + size] work together
-	$: sharedOptions.container = styles.shared?.context.container ?? sharedOptions.container
-	$: sharedOptions.size = styles.shared?.context.size ?? sharedOptions.size
+	$: sharedOptions.container = styles.shared?.container.container ?? sharedOptions.container
+	$: sharedOptions.size = styles.shared?.container.size ?? sharedOptions.size
 
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1

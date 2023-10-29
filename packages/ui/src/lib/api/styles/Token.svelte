@@ -23,8 +23,8 @@
 	$: typography = styles.tokens?.element.typography ?? typography
 	// Layout options
 	// - [layout + breakpoint] work together
-	// $: layout = styles.shared?.context.layout ?? layout
-	// $: breakpoint = styles.shared?.context.breakpoint ?? breakpoint
+	// $: layout = styles.shared?.layout.layout ?? layout
+	// $: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
 	$: props = {...props, asset, title, color, variant, size, layout}
 </script>
 

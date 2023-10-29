@@ -57,7 +57,8 @@ export interface AppStyles extends StyleCategory {
 	settings: StyleFamily
 }
 export interface SharedStyles extends StyleCategory {
-	context: StyleFamily
+	container: StyleFamily
+	layout: StyleFamily
 }
 export interface BlockStyles extends StyleCategory {
 	element: StyleFamily

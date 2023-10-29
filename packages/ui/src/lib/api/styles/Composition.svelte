@@ -25,8 +25,8 @@
 	$: background = styles.app?.settings.contrast ?? background
 	// Layout options
 	// - [layout + breakpoint] work together
-	$: layout = styles.shared?.context.layout ?? layout
-	$: breakpoint = styles.shared?.context.breakpoint ?? breakpoint
+	$: layout = styles.shared?.layout.layout ?? layout
+	$: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
 
 	$: props = {...props, page, title, color, variant, size, layout, breakpoint, background}
 </script>

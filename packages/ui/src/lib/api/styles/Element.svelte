@@ -40,8 +40,8 @@
 	$: background = styles.app?.settings.contrast ?? background
 	// Container options
 	// - [container + size] work together
-	$: container = styles.shared?.context.container ?? container
-	$: size = styles.shared?.context.size ?? size
+	$: container = styles.shared?.container.container ?? container
+	$: size = styles.shared?.container.size ?? size
 
 	$: containerContext = `l:${container}:${size}`
 </script>
