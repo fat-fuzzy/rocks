@@ -74,7 +74,7 @@
 			"description": "Add / Update changeset",
 			"title": "Changeset"
 		},
-		"🎬": {
+		"🎬 ": {
 			"description": "Versioning / version tags",
 			"title": "Version"
 		},
@@ -90,7 +90,7 @@
 			"description": "Code comments",
 			"title": "Comments"
 		},
-		"💄": {
+		"💄 ": {
 			"description": "UI changes: styles / CSS",
 			"title": "UI Styles"
 		},
