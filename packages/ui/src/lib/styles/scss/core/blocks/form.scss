@@ -104,3 +104,18 @@ label > [type='file'] {
 	font-size: var(--current-font-size-minus);
 	min-height: calc(var(--current-font-size-minus) * var(--ratio));
 }
+
+// Display range input step labels
+
+label > input[type='range'][list='markers'] + datalist {
+	display: flex;
+	justify-content: space-between;
+}
+
+label > input[type='range'][list='markers'] + datalist > option {
+	padding: 0;
+}
+
+label > input[type='range']:not([list]) + datalist > option {
+	display: none;
+}
