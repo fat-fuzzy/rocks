@@ -1,7 +1,8 @@
-.l\:flex {
+[class*='l:flex'] {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: stretch;
 }
-.l\:flex.align\:end {
+.l\:flex.reverse {
 	flex-direction: row-reverse;
 }

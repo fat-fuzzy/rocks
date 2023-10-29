@@ -24,7 +24,7 @@
 
 <header class="bg:polar l:sidebar page-header">
 	<h1 class="l:main:30 card:xl">{title}</h1>
-	<div class="l:side l:flex card:sm align:end">
+	<div class="l:side card:sm l:flex reverse">
 		<Api category="app" {title} />
 		<Api category="shared" {title} />
 	</div>
