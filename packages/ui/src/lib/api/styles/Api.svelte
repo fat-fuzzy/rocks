@@ -40,6 +40,4 @@
 	class={`l:${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 >
 	<StyleFamily {category} {title} />
-
-	<!-- <button data-key="enter">Update UI</button> -->
 </form>

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 
+	import {page} from '$app/stores'
+	import {currentStyles} from '$lib/stores/api'
 	import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
-	import {page} from '$app/stores'
-	import {currentStyles} from '$lib/stores/api'
 
 	import mocks from '$lib/data/mocks' // TODO: load text from README.md
 	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
@@ -36,8 +36,6 @@
 	// TODO: feedback colors & component
 
 	$: styles = $currentStyles
-	console.log('styles')
-	console.log(styles)
 
 	//== App settings (user controlled)
 	$: brightness = styles.app?.settings.brightness ?? brightness

@@ -8,20 +8,20 @@
 	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
-	import {initStyles} from './styles-api'
 	import {currentStyles} from '$lib/stores/api'
+	import {initStyles} from './styles-api'
 
 	export let title = ''
 	export let category = 'app'
 	export let page = ''
 
+	let stylesApi = initStyles()
+	let options = stylesApi.getFormOptions(category)
+
 	let styles: StyleTree
 	let apiSize = 'xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
-
-	let stylesApi = initStyles()
-	let options = stylesApi.getFormOptions(category)
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
@@ -106,23 +106,22 @@
 </script>
 
 <svelte:window on:keydown={keydown} />
-
 {#each Object.keys(options) as familyName}
-	{@const styleFamily = options[familyName]}
+	{@const family = options[familyName]}
 
-	{#if styleFamily.canApplyStyles({item: title, category})}
+	{#if family.canApplyStyles({item: title, category})}
 		<Fieldset
-			legend={styleFamily.title}
-			id={styleFamily.id}
+			legend={family.title}
+			id={family.id}
 			type="input-group"
-			layout={styleFamily.layout}
-			container={styleFamily.container}
-			variant={styleFamily.variant}
-			size={styleFamily.size}
+			layout={family.layout}
+			container={family.container}
+			variant={family.variant}
+			size={family.size}
 			name={familyName}
 			background="polar"
 		>
-			{#each styleFamily.items as styleInput}
+			{#each family.items as styleInput}
 				{@const {input, value, items} = styleInput}
 				{#if styleInput.canApplyStyles({item: title, category})}
 					{#if input === 'radio' || input === 'checkbox'}
