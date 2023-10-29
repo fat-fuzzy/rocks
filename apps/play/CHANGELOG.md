@@ -1,5 +1,11 @@
 # @fat-fuzzy/play
 
+## 0.1.15
+
+### Patch Changes
+
+- 1f6a9b6: [ui+doc] Improve range input component and use in doc
+
 ## 0.1.14
 
 ### Patch Changes
