@@ -52,8 +52,8 @@
 	<article class={`card:lg box ${brightness} bg:${background} l:stack md`}>
 		<header class={`card:sm`}>
 			<a class="card:sm w:full" href={`${path}/${title}`}>
-				<svelte:element this={`h${String(depth)}`} class="link font:sm">
-					<span class="font:xs">🔗</span>&nbsp;{title}
+				<svelte:element this={`h${String(depth)}`} class="link font:xl">
+					<span class="font:sm">🔗</span>&nbsp;{title}
 				</svelte:element>
 			</a>
 		</header>
