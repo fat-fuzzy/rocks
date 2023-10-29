@@ -131,30 +131,30 @@ button.bare {
 button.bare:hover {
 	background-color: var(--current-gray);
 }
-.bare.primary:hover {
+button.bare.primary:hover {
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
 }
-.bare.primary,
-.bare.primary:active {
+button.bare.primary,
+button.bare.primary:active {
 	color: var(--current-primary);
 	background-color: unset;
 }
-.bare.accent:hover {
+button.bare.accent:hover {
 	color: var(--current-dark);
 	background-color: var(--current-accent-light);
 }
-.bare.accent,
-.bare.accent:active {
+button.bare.accent,
+button.bare.accent:active {
 	color: var(--current-accent);
 }
 
-.bare.highlight:hover {
+button.bare.highlight:hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
-.bare.highlight,
-.bare.highlight:active {
+button.bare.highlight,
+button.bare.highlight:active {
 	color: var(--current-highlight-dark);
 }
 
