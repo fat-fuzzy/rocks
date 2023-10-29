@@ -110,12 +110,19 @@ label > [type='file'] {
 label > input[type='range'][list='markers'] + datalist {
 	display: flex;
 	justify-content: space-between;
+	padding: 0 var(--current-size);
 }
 
 label > input[type='range'][list='markers'] + datalist > option {
+	font-size: var(--current-font-size-minus);
+	font-weight: var(--font-weight-body);
 	padding: 0;
 }
 
 label > input[type='range']:not([list]) + datalist > option {
 	display: none;
+}
+
+label[class*='l:stack'] > input[type='range'] {
+	margin-block-start: 0;
 }
