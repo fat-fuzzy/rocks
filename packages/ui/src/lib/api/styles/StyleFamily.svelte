@@ -7,6 +7,7 @@
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
+	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 	import {initStyles} from './styles-api'
 	import {currentStyles} from '$lib/stores/api'
 
@@ -24,6 +25,7 @@
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
 		radio: InputRadio,
+		range: InputRange,
 		checkbox: InputCheck,
 		toggle: ToggleMenu,
 	}
@@ -40,13 +42,14 @@
 	}
 
 	function handleInput(event, name: string) {
+		const target = event.target ?? event.detail
 		const payload = {
 			name,
 			items: [
 				{
-					id: event.target.id,
-					name: event.target.name.toLowerCase(),
-					value: event.target.value,
+					id: target.id,
+					name: target.name.toLowerCase(),
+					value: target.value,
 				},
 			],
 		}
@@ -139,6 +142,22 @@
 								on:input={(event) => handleInput(event, familyName)}
 							/>
 						{/each}
+					{/if}
+					{#if input == 'range'}
+						{@const InputComponent = COMPONENT_IMPORTS[input]}
+						<svelte:component
+							this={InputComponent}
+							id={styleInput.id}
+							label={styleInput.name}
+							{items}
+							{value}
+							name={styleInput.id}
+							layout={styleInput.layout || ''}
+							size="sm"
+							color={apiColor}
+							variant={styleInput.variant}
+							on:input={(event) => handleInput(event, familyName)}
+						/>
 					{/if}
 					{#if input === 'toggle'}
 						{@const updatedItems = items.map((i) => {
