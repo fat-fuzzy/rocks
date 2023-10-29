@@ -68,7 +68,6 @@
 			</div>
 		</main>
 		<aside class="l:side l:stack:md">
-			{category}
 			<section id={`${category}-${title}-api`}>
 				<details class={`l:stack:md`} open>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
