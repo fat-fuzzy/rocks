@@ -60,14 +60,18 @@ export class StylesApi {
 		// TODO: loop for [X] style families
 		const tokensStylesTree = this.tokens?.element?.getStyleTree() || {}
 		const appStylesTree = this.app?.settings?.getStyleTree() || {}
-		const sharedStylesTree = this.shared?.context?.getStyleTree() || {}
+		const sharedContainerStylesTree = this.shared?.container?.getStyleTree() || {}
+		const sharedLayoutStylesTree = this.shared?.layout?.getStyleTree() || {}
 		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
 		const layoutsStylesTree = this.layouts?.element?.getStyleTree() || {}
 
 		return {
 			tokens: tokensStylesTree,
 			app: appStylesTree,
-			shared: sharedStylesTree,
+			shared: {
+				...sharedContainerStylesTree,
+				...sharedLayoutStylesTree,
+			},
 			blocks: blocksStylesTree,
 			layouts: layoutsStylesTree,
 		}
@@ -218,19 +222,19 @@ const app: AppStyles = {
 }
 
 const shared: SharedStyles = {
-	context: new StyleFamily({
-		name: 'Context',
+	container: new StyleFamily({
+		name: 'Container',
 		title: '',
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
 		variant: 'layer card',
-		id: 'shared.context',
+		id: 'shared.container',
 		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle'],
 		items: [
 			new StyleInputGroup({
 				name: 'Container',
-				id: 'shared.context.container',
+				id: 'shared.container.container',
 				value: '',
 				input: 'toggle',
 				layout: 'stack',
@@ -238,13 +242,13 @@ const shared: SharedStyles = {
 				variant: 'card',
 				exclude: ['Stack', 'Burrito'],
 				items: [
-					{id: 'shared.context.container.center', text: 'center', asset: '', value: 'center'},
-					{id: 'shared.context.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
+					{id: 'shared.container.container.center', text: 'center', asset: '', value: 'center'},
+					{id: 'shared.container.container.burrito', text: 'burrito', asset: '', value: 'burrito'},
 				],
 			}),
 			new StyleInputGroup({
 				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
-				id: 'shared.context.size',
+				id: 'shared.container.size',
 				value: 'md',
 				input: 'range',
 				layout: 'stack',
@@ -252,16 +256,28 @@ const shared: SharedStyles = {
 				variant: '',
 				exclude: ['Nav', 'Stack', 'Burrito'],
 				items: [
-					{id: 'shared.context.size.xs', text: 'xs', asset: '', value: 'xs'},
-					{id: 'shared.context.size.sm', text: 'sm', asset: '', value: 'sm'},
-					{id: 'shared.context.size.md', text: 'md', asset: '', value: 'md'},
-					{id: 'shared.context.size.lg', text: 'lg', asset: '', value: 'lg'},
-					{id: 'shared.context.size.xl', text: 'xl', asset: '', value: 'xl'},
+					{id: 'shared.container.size.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'shared.container.size.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'shared.container.size.md', text: 'md', asset: '', value: 'md'},
+					{id: 'shared.container.size.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'shared.container.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
+		],
+	}),
+	layout: new StyleFamily({
+		name: 'Layout',
+		title: '',
+		layout: 'switcher',
+		container: '',
+		size: 'sm',
+		variant: 'layer card',
+		id: 'shared.layout',
+		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle'],
+		items: [
 			new StyleInputGroup({
 				name: 'Layout',
-				id: 'shared.context.layout',
+				id: 'shared.layout.layout',
 				value: 'switcher',
 				input: 'toggle',
 				layout: 'stack',
@@ -283,9 +299,9 @@ const shared: SharedStyles = {
 					'LogIn',
 				],
 				items: [
-					{id: 'shared.context.layout.stack', text: 'stack', asset: '', value: 'stack'},
+					{id: 'shared.layout.layout.stack', text: 'stack', asset: '', value: 'stack'},
 					{
-						id: 'shared.context.layout.switcher',
+						id: 'shared.layout.layout.switcher',
 						text: 'switcher',
 						asset: '',
 						value: 'switcher',
@@ -311,7 +327,7 @@ const shared: SharedStyles = {
 			}),
 			new StyleInputGroup({
 				name: 'Breakpoint',
-				id: 'shared.context.breakpoint',
+				id: 'shared.layout.breakpoint',
 				value: 'md',
 				input: 'range',
 				layout: 'stack',
@@ -331,11 +347,11 @@ const shared: SharedStyles = {
 					'LogIn',
 				],
 				items: [
-					{id: 'shared.context.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
-					{id: 'shared.context.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
-					{id: 'shared.context.breakpoint.md', text: 'md', asset: '', value: 'md'},
-					{id: 'shared.context.breakpoint.lg', text: 'lg', asset: '', value: 'lg'},
-					{id: 'shared.context.breakpoint.xl', text: 'xl', asset: '', value: 'xl'},
+					{id: 'shared.layout.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'shared.layout.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'shared.layout.breakpoint.md', text: 'md', asset: '', value: 'md'},
+					{id: 'shared.layout.breakpoint.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'shared.layout.breakpoint.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
 		],
@@ -571,7 +587,8 @@ export const DEFAULT_STYLES: StyleTree = {
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {
-		context: {layout: 'switcher', container: 'center', size: 'md', breakpoint: 'md'},
+		layout: {layout: 'switcher', breakpoint: 'md'},
+		container: {container: 'center', size: 'md'},
 	},
 	blocks: {
 		element: {
