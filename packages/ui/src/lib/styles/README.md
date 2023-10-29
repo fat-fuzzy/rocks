@@ -27,6 +27,9 @@ I particularly recommend reading this open access blog post on algorithmic desig
   - [Jit Props](https://github.com/GoogleChromeLabs/postcss-jit-props)
   - minification (or use rollup terser?)
 
+- CSS library:
+  - cleanup props / UI api inputs
+
 ## TODO: CSS
 
 - CSS library:
