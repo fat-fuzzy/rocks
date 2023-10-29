@@ -121,7 +121,7 @@ const tokens: TokenStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
-		variant: 'layer card',
+		variant: '',
 		items: [
 			// new StyleInputGroup({
 			// 	name: 'Color',
@@ -172,7 +172,7 @@ const app: AppStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
-		variant: 'layer card',
+		variant: '',
 		items: [
 			new StyleInputGroup({
 				name: 'Brightness',
@@ -228,7 +228,7 @@ const shared: SharedStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
-		variant: 'layer card',
+		variant: '',
 		id: 'shared.container',
 		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle'],
 		items: [
@@ -271,7 +271,7 @@ const shared: SharedStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'sm',
-		variant: 'layer card',
+		variant: '',
 		id: 'shared.layout',
 		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle'],
 		items: [
@@ -339,6 +339,8 @@ const shared: SharedStyles = {
 					'Reveal',
 					'Feedback',
 					'Stack',
+					'Switcher',
+					'Sidebar',
 					'Burrito',
 					'Sidebar',
 					'Nav',
@@ -366,7 +368,7 @@ const blocks: BlockStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'md',
-		variant: 'layer card',
+		variant: '',
 		items: [
 			new StyleInputGroup({
 				name: 'Color',
@@ -376,6 +378,7 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'card',
+				exclude: ['ActionLabel'],
 				items: [
 					{
 						id: 'blocks.element.color.primary',
@@ -423,6 +426,7 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: '',
+				exclude: ['ActionLabel'],
 				items: [
 					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -507,7 +511,7 @@ const layouts: LayoutStyles = {
 		layout: 'switcher',
 		container: '',
 		size: 'md',
-		variant: 'layer card',
+		variant: '',
 		items: [
 			new StyleInputGroup({
 				name: 'Content',
@@ -570,6 +574,23 @@ const layouts: LayoutStyles = {
 					{id: 'layouts.element.size.xl', text: 'xl', asset: '', value: 'xl'},
 				],
 			}),
+			new StyleInputGroup({
+				name: 'Breakpoint',
+				id: 'layouts.element.breakpoint',
+				value: 'md',
+				input: 'range',
+				layout: 'stack',
+				size: 'sm',
+				variant: '',
+				include: ['Switcher', 'Sidebar'],
+				items: [
+					{id: 'layouts.element.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
+					{id: 'layouts.element.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
+					{id: 'layouts.element.breakpoint.md', text: 'md', asset: '', value: 'md'},
+					{id: 'layouts.element.breakpoint.lg', text: 'lg', asset: '', value: 'lg'},
+					{id: 'layouts.element.breakpoint.xl', text: 'xl', asset: '', value: 'xl'},
+				],
+			}),
 		],
 	}),
 }
@@ -600,6 +621,6 @@ export const DEFAULT_STYLES: StyleTree = {
 		},
 	},
 	layouts: {
-		element: {size: 'md', content: 'card', side: 'card', main: 'text'},
+		element: {size: 'md', content: 'card', side: 'card', main: 'text', breakpoint: 'md'},
 	},
 }
