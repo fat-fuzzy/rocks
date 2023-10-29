@@ -3,6 +3,11 @@
 	flex-wrap: wrap;
 	align-items: stretch;
 }
+
 .l\:flex.reverse {
 	flex-direction: row-reverse;
+}
+
+.l\:flex.nowrap {
+	flex-wrap: nowrap;
 }
