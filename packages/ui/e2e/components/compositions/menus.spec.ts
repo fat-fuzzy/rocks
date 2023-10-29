@@ -5,8 +5,6 @@ import ButtonMenu from '../../../dist/components/compositions/menus/ButtonMenu.s
 import ToggleMenu from '../../../dist/components/compositions/menus/ToggleMenu.svelte'
 import RevealMenu from '../../../dist/components/compositions/menus/RevealMenu.svelte'
 
-import {getLabelsRecursive} from '../../utils'
-
 test.use({viewport: {width: 500, height: 500}})
 
 const category = 'compositions'
