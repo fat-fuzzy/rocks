@@ -75,6 +75,42 @@ label > input {
 	}
 }
 
+// Manage color on .bare labels adn inputs
+
+label.bare.primary {
+	color: var(--current-primary);
+}
+label.bare.accent {
+	color: var(--current-accent);
+}
+label.bare.highlight {
+	color: var(--current-highlight-dark);
+}
+label.bare.primary > input {
+	border-color: var(--current-primary);
+	background-color: unset;
+}
+label.bare.accent > input {
+	border-color: var(--current-accent);
+	background-color: unset;
+}
+label.bare.highlight > input {
+	border-color: var(--current-highlight-dark);
+	background-color: unset;
+}
+.bare.primary > input:hover {
+	color: var(--color-dark);
+	background-color: var(--current-primary-light);
+}
+.bare.accent > input:hover {
+	color: var(--current-dark);
+	background-color: var(--current-accent-light);
+}
+.bare.highlight > input:hover {
+	color: var(--color-dark);
+	background-color: var(--current-highlight-lighter);
+}
+
 // TODO : cleanup - use "current" size values
 legend {
 	font-size: var(--current-font-size);

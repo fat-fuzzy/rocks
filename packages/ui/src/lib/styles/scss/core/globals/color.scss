@@ -32,7 +32,7 @@ body {
 }
 .night {
 	--current-bg-color: var(--current-gray);
-	--current-bg-contrast:var(--color-dark);
+	--current-bg-contrast: var(--color-dark);
 	--current-polar: var(--color-dark);
 	--current-gray: var(--color-gray-5);
 	--current-gray-contrast: var(--color-gray-4);
@@ -217,13 +217,8 @@ a:hover {
 	background-color: var(--current-bg-color);
 }
 
-menu {
-	background-color: inherit;
-}
-
 //== Background colors
 
-// TODO: harmonize class
 .bg\:polar {
 	background-color: var(--current-polar);
 }
