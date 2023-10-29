@@ -34,7 +34,7 @@ details > summary > h4 {
 
 details > summary::before {
 	content: '👉';
-	margin-inline-end: var(--s-1);
+	margin-inline: var(--s-1);
 }
 
 details > p {
@@ -60,7 +60,7 @@ details[open] > summary {
 
 details[open] > summary::before {
 	content: '👇';
-	margin-inline-end: var(--s-1);
+	margin-inline: var(--s-1);
 }
 
 .night,

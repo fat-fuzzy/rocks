@@ -75,11 +75,33 @@
 				</div>
 			{/each}
 		</div>
-		<aside slot="side">
-			<div class="l:text:xl">
-				{@html mocks['doc'][category]}
-			</div>
-			<Api {category} {title} />
+		<aside slot="side" class="l:stack:md">
+			<section id={`${category}-api`}>
+				<details class={`l:stack:md`} open>
+					<summary class={`card:xs bg:${color}`}>Style Props</summary>
+					<div class="drop">
+						<Api {category} {title} />
+					</div>
+				</details>
+			</section>
+			<!-- <section id={`${category}-classes`}>
+				<details class={`l:stack:md`}>
+					<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
+					<div class="drop">
+						<Api {category} {title} />
+					</div>
+				</details>
+			</section> -->
+			<section id={`${category}-doc`}>
+				<details class={`l:stack:md`}>
+					<summary class={`card:xs bg:${color}`}>Description</summary>
+					<div class="drop">
+						<div class="l:text:xl">
+							{@html mocks['doc'][category]}
+						</div>
+					</div>
+				</details>
+			</section>
 		</aside>
 	</Sidebar>
 {:else}
@@ -87,22 +109,21 @@
 		{category}
 	</svelte:element>
 
-	<div class="l:text:xl">
+	<section class="l:text:xl">
 		{@html mocks['doc'][category]}
-	</div>
-
-	<details class={`l:stack:xxl ${size}`}>
-		<summary class={`card:md box:${color} bg:${color}`}>
-			{categorySingular} components
-		</summary>
-		<div class="drop">
-			<div class={`${layoutClass} ${contextClasses}`}>
-				{#each componentNames as name}
-					{@const component = components[name]}
-					{@const props = getProps({category, component: name})}
-					<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {props} />
-				{/each}
+		<details class={`l:stack:xxl ${size}`}>
+			<summary class={`card:md box:${color} bg:${color}`}>
+				{categorySingular} components
+			</summary>
+			<div class="drop">
+				<div class={`${layoutClass} ${contextClasses}`}>
+					{#each componentNames as name}
+						{@const component = components[name]}
+						{@const props = getProps({category, component: name})}
+						<Element title={name} depth={Number(depth) + 2} {path} {category} {component} {props} />
+					{/each}
+				</div>
 			</div>
-		</div>
-	</details>
+		</details>
+	</section>
 {/if}
