@@ -582,7 +582,7 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: '',
-				include: ['Switcher', 'Sidebar'],
+				include: ['Switcher'],
 				items: [
 					{id: 'layouts.element.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'layouts.element.breakpoint.sm', text: 'sm', asset: '', value: 'sm'},
