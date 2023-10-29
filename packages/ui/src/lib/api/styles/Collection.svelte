@@ -79,9 +79,16 @@
 			<section id={`${category}-api`}>
 				<details class={`l:stack:md`} open>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
-					<div class="drop">
-						<Api {category} {title} />
-					</div>
+					{#if category !== 'compositions' && category !== 'tokens'}
+						<div class="drop">
+							<Api {category} {title} />
+						</div>
+					{:else}
+						<div class="card:lg text:center">
+							<p class={`font:xl`}>🐰</p>
+							<p class={`font:md`}>Coming soon!</p>
+						</div>
+					{/if}
 				</details>
 			</section>
 			<!-- <section id={`${category}-classes`}>
@@ -93,7 +100,10 @@
 				</details>
 			</section> -->
 			<section id={`${category}-doc`}>
-				<details class={`l:stack:md`}>
+				<details
+					class={`l:stack:md`}
+					open={category === 'compositions' || category === 'tokens' ? true : undefined}
+				>
 					<summary class={`card:xs bg:${color}`}>Description</summary>
 					<div class="drop">
 						<div class="l:text:xl">

@@ -17,6 +17,7 @@
 	export let component: ComponentType
 
 	export let category = ''
+	export let color = 'primary:light' // TODO: expose breakpoint too
 	export let page = ''
 	export let props: any = {}
 	props.page = page
@@ -66,8 +67,43 @@
 				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
 			</div>
 		</main>
-		<aside class="l:side">
-			<Api {title} {category} />
+		<aside class="l:side l:stack:md">
+			{category}
+			<section id={`${category}-${title}-api`}>
+				<details class={`l:stack:md`} open>
+					<summary class={`card:xs bg:${color}`}>Style Props</summary>
+					{#if category !== 'compositions' && category !== 'tokens'}
+						<div class="drop">
+							<Api {title} {category} />
+						</div>
+					{:else}
+						<div class="card:lg text:center">
+							<p class={`font:xl`}>🐰</p>
+							<p class={`font:md`}>Coming soon!</p>
+						</div>
+					{/if}
+				</details>
+			</section>
+			<!-- <section id={`${category}-${title}-classes`}>
+				<details class={`l:stack:md`}>
+					<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
+					<div class="drop">
+						<Api {category} {title} />
+					</div>
+				</details>
+			</section> -->
+
+			<section id={`${category}-${title}-doc`}>
+				<details class={`l:stack:md`}>
+					<summary class={`card:xs bg:${color}`}>Description</summary>
+					<div class="drop">
+						<div class="card:lg text:center">
+							<p class={`font:xl`}>🐰</p>
+							<p class={`font:md`}>Coming soon!</p>
+						</div>
+					</div>
+				</details>
+			</section>
 		</aside>
 	</article>
 {/if}

@@ -133,7 +133,7 @@
 						<ActionLabel {title} {type} {asset} {variant} />
 					</a>
 				{:else if action}
-					<button on:click={actions[action]} class={variant}>
+					<button on:click={actions[action]} class={`${variant} font:xl`}>
 						<ActionLabel {title} {type} {asset} {variant} />
 					</button>
 					<!-- {#if subitems}
