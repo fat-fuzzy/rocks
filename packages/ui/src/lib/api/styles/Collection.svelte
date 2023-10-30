@@ -58,7 +58,7 @@
 
 {#if isPage}
 	<Sidebar size="xs" align="end">
-		<div slot="main" class={layoutClass}>
+		<section slot="main" class={layoutClass}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				{@const props = getProps({category, component: name})}
@@ -74,10 +74,10 @@
 					/>
 				</div>
 			{/each}
-		</div>
-		<aside slot="side" class="l:stack:md">
-			<section id={`${category}-api`}>
-				<details class={`l:stack:md`} open>
+		</section>
+		<section slot="side">
+			<div class="l:stack:lg">
+				<details id={`${category}-api`} class={`l:stack:md`} open>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop">
@@ -90,8 +90,7 @@
 						</div>
 					{/if}
 				</details>
-			</section>
-			<!-- <section id={`${category}-classes`}>
+				<!-- <section id={`${category}-classes`}>
 				<details class={`l:stack:md`}>
 					<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
 					<div class="drop">
@@ -99,8 +98,8 @@
 					</div>
 				</details>
 			</section> -->
-			<section id={`${category}-doc`}>
 				<details
+					id={`${category}-doc`}
 					class={`l:stack:md`}
 					open={category === 'compositions' || category === 'tokens' ? true : undefined}
 				>
@@ -111,8 +110,8 @@
 						</div>
 					</div>
 				</details>
-			</section>
-		</aside>
+			</div>
+		</section>
 	</Sidebar>
 {:else}
 	<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
