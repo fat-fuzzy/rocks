@@ -10,7 +10,6 @@
 		"dev": "vite dev",
 		"build": "pnpm build:csstokens && vite build",
 		"preview": "pnpm build:csstokens && vite preview",
-		"prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
 		"test": "pnpm test:integration && pnpm test:unit",
 		"test:integration": "pnpm build:csstokens && playwright test",
 		"test:ui": "playwright test --ui",
