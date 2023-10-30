@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {getStores} from '$app/stores'
 	let title = 'Log In'
 	let description = 'A log in page template'
 	import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
@@ -7,6 +7,8 @@
 	export let redirectTo: string = ''
 	// export let action: string = '/login'
 	export let action: string = ''
+
+	let page = getStores().page
 
 	$: session = {...$page.data.session}
 	$: action = redirectTo ? `/${action}?redirectTo=${redirectTo}` : action

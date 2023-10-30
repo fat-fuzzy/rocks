@@ -1,10 +1,12 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {getStores} from '$app/stores'
 	import Head from '$lib/components/blocks/global/Head.svelte'
 	import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
 
 	export let title = 'Page Title'
 	export let description = 'A page template with slots for authed vs unauthed content'
+
+	let page = getStores().page
 
 	$: session = {...$page.data.session}
 </script>

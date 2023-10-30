@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {getStores} from '$app/stores'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	export let title = 'Log In'
 	export let description = 'A log in form'
@@ -15,6 +15,8 @@
 	export let redirectTo: string = ''
 	// export let action: string = '/login'
 	export let action: string = ''
+
+	let page = getStores().page
 
 	$: session = {...$page.data.session}
 	$: action = redirectTo ? `/${action}?redirectTo=${redirectTo}` : action
