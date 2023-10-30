@@ -120,6 +120,81 @@ button.outline.highlight:not(:disabled):active {
 	background-color: var(--current-highlight-lighter);
 }
 
+//== Button success
+
+button.success {
+	border-color: var(--current-success);
+	background-color: var(--current-success);
+	color: var(--color-dark);
+	outline-color: var(--current-success);
+}
+button.outline.success {
+	color: var(--current-success-dark);
+	background-color: inherit;
+	border-color: var(--current-success-dark);
+}
+button.success:not(:disabled):hover,
+button.outline.success:not(:disabled):hover {
+	color: var(--color-dark);
+	background-color: var(--current-success-light);
+	border-color: var(--current-success);
+}
+button.success:not(:disabled):active,
+button.outline.success:not(:disabled):active {
+	color: var(--color-dark);
+	background-color: var(--current-success-lighter);
+}
+
+//== Button warning
+
+button.warning {
+	border-color: var(--current-warning);
+	background-color: var(--current-warning);
+	color: var(--color-dark);
+	outline-color: var(--current-warning);
+}
+button.outline.warning {
+	color: var(--current-warning-dark);
+	background-color: inherit;
+	border-color: var(--current-warning-dark);
+}
+button.warning:not(:disabled):hover,
+button.outline.warning:not(:disabled):hover {
+	color: var(--color-dark);
+	background-color: var(--current-warning-light);
+	border-color: var(--current-warning);
+}
+button.warning:not(:disabled):active,
+button.outline.warning:not(:disabled):active {
+	color: var(--color-dark);
+	background-color: var(--current-warning-lighter);
+}
+
+//== Button error
+
+button.error {
+	border-color: var(--current-error);
+	background-color: var(--current-error);
+	color: var(--color-dark);
+	outline-color: var(--current-error);
+}
+button.outline.error {
+	color: var(--current-error-dark);
+	background-color: inherit;
+	border-color: var(--current-error-dark);
+}
+button.error:not(:disabled):hover,
+button.outline.error:not(:disabled):hover {
+	color: var(--color-dark);
+	background-color: var(--current-error-light);
+	border-color: var(--current-error);
+}
+button.error:not(:disabled):active,
+button.outline.error:not(:disabled):active {
+	color: var(--color-dark);
+	background-color: var(--current-error-lighter);
+}
+
 //== Bare buttons (no background, no border)
 
 button.bare {
