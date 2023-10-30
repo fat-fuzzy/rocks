@@ -378,7 +378,7 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'card',
-				exclude: ['ActionLabel'],
+				exclude: ['ActionLabel', 'Feedback'],
 				items: [
 					{
 						id: 'blocks.element.color.primary',
@@ -411,7 +411,7 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'card',
-				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+				exclude: ['ActionLabel', 'Feedback', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
 					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
 					{id: 'blocks.element.variant.outline', text: 'outline', asset: '', value: 'outline'},
@@ -426,7 +426,7 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: '',
-				exclude: ['ActionLabel'],
+				exclude: ['ActionLabel', 'Feedback'],
 				items: [
 					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'blocks.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -486,21 +486,21 @@ const blocks: BlockStyles = {
 			// 		},
 			// 	],
 			// }),
-			new StyleInputGroup({
-				name: 'Context',
-				id: 'blocks.element.context',
-				value: 'default',
-				input: 'toggle',
-				layout: 'stack',
-				size: 'sm',
-				variant: 'card',
-				include: ['Feedback'],
-				items: [
-					{id: 'blocks.element.context.form', text: 'form', asset: '', value: 'form'},
-					{id: 'blocks.element.context.code', text: 'code', asset: '', value: 'code'},
-					{id: 'blocks.element.context.dialog', text: 'dialog', asset: '', value: 'dialog'},
-				],
-			}),
+			// new StyleInputGroup({
+			// 	name: 'Context',
+			// 	id: 'blocks.element.context',
+			// 	value: 'default',
+			// 	input: 'toggle',
+			// 	layout: 'stack',
+			// 	size: 'sm',
+			// 	variant: 'card',
+			// 	include: ['Feedback'],
+			// 	items: [
+			// 		{id: 'blocks.element.context.form', text: 'form', asset: '', value: 'form'},
+			// 		{id: 'blocks.element.context.code', text: 'code', asset: '', value: 'code'},
+			// 		{id: 'blocks.element.context.dialog', text: 'dialog', asset: '', value: 'dialog'},
+			// 	],
+			// }),
 			new StyleInputGroup({
 				name: 'Asset', // TODO: Add hint: "Icon: emoji / SVG"
 				id: 'blocks.element.asset',
@@ -516,6 +516,7 @@ const blocks: BlockStyles = {
 					'InputRadio',
 					'InputRange',
 					'InputFile',
+					'Feedback',
 				],
 				items: [
 					{id: 'blocks.element.asset.cat', text: 'cat', asset: '🦁', value: 'cat'},
