@@ -1,7 +1,8 @@
 <script lang="ts">
 	import format from '$lib/utils/format'
-	import {page} from '$app/stores'
+	import {getStores} from '$app/stores'
 
+	let page = getStores().page
 	export let path = ''
 	export let layout = ''
 	export let size = 'md'

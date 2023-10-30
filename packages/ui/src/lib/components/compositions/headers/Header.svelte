@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {getStores} from '$app/stores'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import {lang} from '$stores/intl'
 	import {theme} from '$lib/stores/theme.js'
@@ -12,6 +12,7 @@
 	export let id = 'ui'
 	export let height = ''
 
+	let page = getStores().page
 	export let items = {
 		main: [{slug: 'about', title: 'About'}],
 		side: [
