@@ -62,14 +62,14 @@
 {:else}
 	{@const props = getProps({category, component: title})}
 	<article class="l:sidebar:xs">
-		<main class={`l:main card:xl inset ${brightness} bg:${background}`}>
+		<section class={`l:main card:xl inset ${brightness} bg:${background}`}>
 			<div class={containerContext}>
 				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
 			</div>
-		</main>
-		<aside class="l:side l:stack:md">
-			<section id={`${category}-${title}-api`}>
-				<details class={`l:stack:md`} open>
+		</section>
+		<section class="l:side">
+			<div class="l:stack:lg">
+				<details id={`${category}-${title}-api`} class={`l:stack:md`} open>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop">
@@ -82,8 +82,7 @@
 						</div>
 					{/if}
 				</details>
-			</section>
-			<!-- <section id={`${category}-${title}-classes`}>
+				<!-- <section id={`${category}-${title}-classes`}>
 				<details class={`l:stack:md`}>
 					<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
 					<div class="drop">
@@ -92,8 +91,7 @@
 				</details>
 			</section> -->
 
-			<section id={`${category}-${title}-doc`}>
-				<details class={`l:stack:md`}>
+				<details id={`${category}-${title}-doc`} class={`l:stack:md`}>
 					<summary class={`card:xs bg:${color}`}>Description</summary>
 					<div class="drop">
 						<div class="card:lg text:center">
@@ -102,7 +100,7 @@
 						</div>
 					</div>
 				</details>
-			</section>
-		</aside>
+			</div>
+		</section>
 	</article>
 {/if}
