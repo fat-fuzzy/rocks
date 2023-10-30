@@ -1,5 +1,12 @@
 # @fat-fuzzy/ui
 
+## 0.1.17
+
+### Patch Changes
+
+- 2f18c2b: [ui] Fix page store import in ui lib components
+  [ui+play] Fix publish config
+
 ## 0.1.16
 
 ### Patch Changes
