@@ -50,8 +50,5 @@
 		"vite": "^4.4.11",
 		"vitest": "^0.34.6"
 	},
-	"type": "module",
-	"publishConfig": {
-		"registry": "http://localhost:4873"
-	}
+	"type": "module"
 }

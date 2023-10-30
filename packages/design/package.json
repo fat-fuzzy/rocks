@@ -56,8 +56,5 @@
 		"style-dictionary": "^3.8.0"
 	},
 	"browserslist": "defaults",
-	"type": "module",
-	"publishConfig": {
-		"registry": "http://localhost:4873"
-	}
+	"type": "module"
 }

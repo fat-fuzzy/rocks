@@ -47,8 +47,5 @@
 		"typescript": "^5.2.2",
 		"vite": "^4.4.11"
 	},
-	"type": "module",
-	"publishConfig": {
-		"registry": "http://localhost:4873"
-	}
+	"type": "module"
 }

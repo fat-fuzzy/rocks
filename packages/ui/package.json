@@ -26,8 +26,7 @@
 		"lint:scss": "stylelint ./src/lib/styles/scss/**/*.scss",
 		"lint:prettier": "prettier --check --ignore-path=../../.prettierignore . && eslint \".\"",
 		"lint": "pnpm lint:css; pnpm lint:scss; pnpm lint:prettier",
-		"format": "prettier --write --ignore-path=../../.prettierignore .",
-		"prepare": "husky install"
+		"format": "prettier --write --ignore-path=../../.prettierignore ."
 	},
 	"main": "./dist/index.js",
 	"files": [
@@ -71,8 +70,5 @@
 		"stylelint-config-standard": "^34.0.0",
 		"stylelint-config-standard-scss": "^11.0.0"
 	},
-	"type": "module",
-	"publishConfig": {
-		"registry": "http://localhost:4873"
-	}
+	"type": "module"
 }
