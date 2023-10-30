@@ -38,7 +38,6 @@ I particularly recommend reading this open access blog post on algorithmic desig
     - improve css vars
     - use color functions (palette generation, a11y testing)
     - create color contrast pairs
-  - cleanup props / UI api inputs
   - design tokens naming strategy
   - add layouts
   - design tokens doc
