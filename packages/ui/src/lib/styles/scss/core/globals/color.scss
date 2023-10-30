@@ -68,6 +68,9 @@ body {
 // Color in text
 
 .hint {
+	--current-hint: var(--color-primary);
+	--current-hint-light: var(--color-primary-light);
+	--current-hint-lighter: var(--color-primary-lighter);
 	color: var(--current-hint);
 }
 .hint:focus {
@@ -78,6 +81,9 @@ body {
 }
 
 .info {
+	--current-info: var(--color-primary);
+	--current-info-light: var(--color-primary-light);
+	--current-info-lighter: var(--color-primary-lighter);
 	color: var(--current-info);
 }
 .info:focus {
@@ -85,6 +91,9 @@ body {
 }
 
 .success {
+	--current-success: var(--color-success);
+	--current-success-light: var(--color-success-light);
+	--current-success-lighter: var(--color-success-lighter);
 	color: var(--current-success);
 }
 .success:focus {
@@ -92,6 +101,9 @@ body {
 }
 
 .warning {
+	--current-warning: var(--color-warning);
+	--current-warning-light: var(--color-warning-light);
+	--current-warning-lighter: var(--color-warning-lighter);
 	color: var(--current-warning);
 }
 .warning:focus {
@@ -99,7 +111,10 @@ body {
 }
 
 .error {
-	color: var(--current-danger);
+	--current-error: var(--color-danger);
+	--current-error-light: var(--color-error-light);
+	--current-error-lighter: var(--color-error-lighter);
+	color: var(--current-error);
 }
 .error:focus {
 	outline-color: var(--current-error);
