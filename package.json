@@ -29,8 +29,5 @@
 	"engines": {
 		"node": ">=18.0.0",
 		"npm": ">=9.2.0"
-	},
-	"publishConfig": {
-		"registry": "http://localhost:4873"
 	}
 }
