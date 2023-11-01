@@ -72,7 +72,7 @@
 				<details id={`${category}-${title}-api`} class={`l:stack:md`} open>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens' && title !== 'Feedback'}
-						<div class="drop">
+						<div class="drop w:full">
 							<Api {title} {category} />
 						</div>
 					{:else}
@@ -93,7 +93,7 @@
 
 				<details id={`${category}-${title}-doc`} class={`l:stack:md`}>
 					<summary class={`card:xs bg:${color}`}>Description</summary>
-					<div class="drop">
+					<div class="drop w:full">
 						<div class="card:lg text:center">
 							<p class={`font:xl`}>🐰</p>
 							<p class={`font:md`}>Coming soon!</p>
