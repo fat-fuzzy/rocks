@@ -104,6 +104,10 @@ button.outline.highlight {
 	background-color: inherit;
 	border-color: var(--current-highlight-dark);
 }
+.night button.outline.highlight {
+	color: var(--current-highlight);
+	border-color: var(--current-highlight);
+}
 button.highlight:not(:disabled):hover,
 button.outline.highlight:not(:disabled):hover {
 	color: var(--color-dark);
@@ -119,27 +123,29 @@ button.outline.highlight:not(:disabled):active {
 //== Bare buttons (no background, no border)
 
 button.bare {
+	--current-border-color: var(--current-bg-color);
 	font-size: var(--current-font-size);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
 	color: var(--current-color);
 	background-color: inherit;
-	border-color: transparent; // TODO: check this
-	padding: var(--current-size);
+	border: var(--border-width) solid var(--current-border-color);
 }
 button.bare:hover {
 	background-color: var(--current-gray);
 }
 button.bare.primary:hover {
+	--current-border-color: var(--current-primary-light);
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
 }
 button.bare.primary,
 button.bare.primary:active {
 	color: var(--current-primary);
-	background-color: unset;
+	// background-color: unset;
 }
 button.bare.accent:hover {
+	--current-border-color: var(--current-accent-light);
 	color: var(--current-dark);
 	background-color: var(--current-accent-light);
 }
@@ -147,14 +153,13 @@ button.bare.accent,
 button.bare.accent:active {
 	color: var(--current-accent);
 }
-
+.night button.bare.highlight {
+	color: var(--current-highlight);
+}
 button.bare.highlight:hover {
+	--current-border-color: var(--current-highlight-lighter);
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
-}
-button.bare.highlight,
-button.bare.highlight:active {
-	color: var(--current-highlight-dark);
 }
 
 //== Toggle  default
@@ -301,27 +306,31 @@ button.highlight.outline[aria-pressed='true']:hover {
 
 //== Toggle  bare default
 
+.bare[aria-pressed] {
+	--current-border-color: var(--current-bg-color);
+	border: var(--border-width) solid var(--current-border-color);
+}
 .bare[aria-pressed='false'] {
 	color: var(--current-color);
 	background-color: inherit;
-	border-color: transparent;
 }
 .bare[aria-pressed='false']:hover {
 	background-color: var(--current-gray);
 }
 .bare[aria-pressed='false']:active {
-	color: var(--current-color);
+	color: var(--color-dark);
 	background-color: var(--current-bg-contrast);
 }
 .bare[aria-pressed='true'] {
-	background-color: inherit;
+	color: var(--current-color);
+	background-color: var(--current-bg-polar);
 }
 .bare[aria-pressed='true']:hover {
 	background-color: var(--current-gray);
 }
 .bare[aria-pressed='true']:active {
 	color: var(--current-color);
-	background-color: inherit;
+	background-color: var(--current-bg-polar);
 }
 
 //== Toggle bare primary
@@ -380,22 +389,33 @@ button.highlight.outline[aria-pressed='true']:hover {
 //== Toggle  bare highlight
 
 .bare.highlight[aria-pressed='false'] {
-	color: var(--current-highlight-dark);
+	color: var(--current-dark);
 	background-color: inherit;
 }
+.night .bare.highlight[aria-pressed='false'] {
+	color: var(--current-highlight-light);
+}
+.night .bare.highlight[aria-pressed='false']:hover,
 .bare.highlight[aria-pressed='false']:hover {
+	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
+.night .bare.highlight[aria-pressed='false']:active,
 .bare.highlight[aria-pressed='false']:active {
+	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
+.night .bare.highlight[aria-pressed='true'],
 .bare.highlight[aria-pressed='true'] {
+	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
+.night .bare.highlight[aria-pressed='true']:hover,
 .bare.highlight[aria-pressed='true']:hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
 }
+.night .bare.highlight[aria-pressed='true']:active,
 .bare.highlight[aria-pressed='true']:active {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
