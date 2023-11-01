@@ -173,7 +173,7 @@ a:hover {
 .bg\:highlight a,
 .bg\:highlight\:light a,
 .bg\:highlight\:lighter a {
-	color: var(--current-highlight-dark); // TODO: check this
+	color: var(--current-color);
 }
 .bg\:highlight a:visited,
 .bg\:highlight\:light a:visited,

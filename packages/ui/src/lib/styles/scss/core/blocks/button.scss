@@ -101,7 +101,6 @@ button.highlight {
 	outline-color: var(--current-highlight);
 }
 button.outline.highlight {
-	color: var(--current-highlight-dark);
 	background-color: inherit;
 	border-color: var(--current-highlight-dark);
 }
@@ -274,7 +273,6 @@ button.accent.outline[aria-pressed='true']:hover {
 	background-color: var(--current-highlight);
 }
 .highlight.outline[aria-pressed='false'] {
-	color: var(--current-highlight-dark);
 	background-color: inherit;
 }
 button.highlight[aria-pressed='false']:hover,
