@@ -1,0 +1,607 @@
+@import './reveal';
+
+.l\:reveal\:auto {
+	display: flex;
+}
+
+.l\:reveal\:auto > button {
+	margin: var(--current-size-plus);
+	width: auto;
+}
+
+.l\:reveal\:auto .show {
+	position: absolute;
+	z-index: var(--z-index-reveal);
+	width: auto;
+	height: auto;
+	overflow-y: auto;
+}
+
+.l\:reveal\:auto.align-self\:end .show {
+	left: 0;
+}
+.l\:reveal\:auto.align-self\:start .show {
+	right: 0;
+}
+
+//== Main navigation (in application Header)
+// - Change these styles to adapt to design
+.l\:reveal\:auto > nav > ul {
+	position: relative;
+	padding: var(--current-size) 0;
+	margin: 0;
+	height: var(--header-height);
+	display: flex;
+	align-items: center;
+	list-style: none;
+	background-size: contain;
+	width: 100%;
+	gap: var(--current-size);
+	background-color: inherit;
+}
+
+.l\:reveal\:auto > nav li {
+	position: relative;
+	min-width: 100%;
+	height: 100%;
+	padding-inline-end: unset; // override settings for ellipsis (search CSS comments for 'ellipsis' for reference)
+	overflow: initial; // override settings for ellipsis
+	background-color: inherit;
+}
+
+// @include mixins.min-width(var(--bp-xxs)) {
+@media screen and (min-width: 320px) {
+	.l\:reveal\:auto.bp\:xxs .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:xxs > button {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:xxs .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:xxs .show,
+	.l\:reveal\:auto.bp\:xxs [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:auto.bp\:xxs > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:auto.bp\:xxs > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+}
+
+// @include mixins.min-width(var(--bp-xs)) {
+@media screen and (min-width: 620px) {
+	.l\:reveal\:auto.bp\:xs .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:xs > button {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:xs .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:xs .show,
+	.l\:reveal\:auto.bp\:xs [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:auto.bp\:xs > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:auto.bp\:xs > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+}
+
+// @include mixins.min-width(var(--bp-sm)) {
+@media screen and (min-width: 935px) {
+	.l\:reveal\:auto.bp\:sm .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:sm > button {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:sm .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:sm .show,
+	.l\:reveal\:auto.bp\:sm [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:auto.bp\:sm > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:auto.bp\:sm > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+}
+
+// @include mixins.min-width(var(--bp-md)) {
+@media screen and (min-width: 1360px) {
+	.l\:reveal\:auto.bp\:md .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:md > button {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:md .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:md .show,
+	.l\:reveal\:auto.bp\:md [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:auto.bp\:md > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:auto.bp\:md > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+}
+
+// @include mixins.min-width(var(--bp-lg)) {
+@media screen and (min-width: 1620px) {
+	.l\:reveal\:auto.bp\:lg .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:lg > button {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:lg .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:lg .show,
+	.l\:reveal\:auto.bp\:lg [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:auto.bp\:lg > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:auto.bp\:lg > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+}
+
+// @include mixins.min-width(var(--bp-lg)) {
+@media screen and (min-width: 1620px) {
+	.l\:reveal\:auto.bp\:lg .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:lg > button {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:lg .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:lg .show,
+	.l\:reveal\:auto.bp\:lg [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:auto.bp\:lg > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:auto.bp\:lg > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+}
+
+// @include mixins.min-width(var(--bp-xl)) {
+@media screen and (min-width: 1620px) {
+	.l\:reveal\:auto.bp\:xl .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:xl > button {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:xl .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:xl .show,
+	.l\:reveal\:auto.bp\:xl [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:auto.bp\:xl > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:auto.bp\:xl > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+}
+
+// @include mixins.min-width(var(--bp-xxl)) {
+@media screen and (min-width: 2048px) {
+	.l\:reveal\:auto.bp\:xxl .show {
+		position: initial;
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:xxl > button {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:xxl .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:xxl .show,
+	.l\:reveal\:auto.bp\:xxl [class*='hide:'] {
+		border: unset;
+		clip: unset;
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		top: 0;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.l\:reveal\:auto.bp\:xxl > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.l\:reveal\:auto.bp\:xxl > nav li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		min-width: unset;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+}
+
+// @container header-nav (min-width: 620px) {
+// 	.l\:reveal\:auto .show {
+// 		position: initial;
+// 		min-inline-size: unset;
+// 	}
+
+// 	.l\:reveal\:auto > button {
+// 		display: none;
+// 	}
+
+// 	.l\:reveal\:auto .show {
+// 		top: 0;
+// 		width: auto;
+// 		max-height: unset;
+// 		background-color: inherit;
+// 		box-shadow: none;
+// 	}
+
+// 	.l\:reveal\:auto .show,
+// 	.l\:reveal\:auto [class*='hide:'] {
+// 		border: unset;
+// 		clip: unset;
+// 		height: auto;
+// 		margin: initial;
+// 		overflow: hidden;
+// 		padding: 0;
+// 		position: unset;
+// 		top: 0;
+// 		width: 100%;
+// 		white-space: normal;
+// 	}
+
+// 	.l\:reveal\:auto > nav > ul {
+// 		position: relative;
+// 		padding: 0;
+// 		margin: 0;
+// 		width: unset;
+// 		height: var(--header-height);
+// 		display: flex;
+// 		align-items: center;
+// 		list-style: none;
+// 		background-size: contain;
+// 		flex-wrap: nowrap;
+// 		gap: var(--gap);
+// 	}
+
+// 	.l\:reveal\:auto > nav li {
+// 		position: relative;
+// 		padding: 0;
+// 		margin: 0;
+// 		min-width: unset;
+// 		height: var(--header-height);
+// 		display: flex;
+// 		align-items: center;
+// 		list-style: none;
+// 		background-size: contain;
+// 		flex-wrap: nowrap;
+// 		gap: var(--gap);
+// 	}
+// }

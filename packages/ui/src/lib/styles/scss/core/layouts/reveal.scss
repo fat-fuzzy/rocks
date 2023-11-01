@@ -52,7 +52,7 @@
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 620px) {
 	.l\:reveal.bp\:xs.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
@@ -92,13 +92,13 @@
 	}
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 935px) {
 	.l\:reveal.bp\:sm.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
-@media screen and (min-width: 1240px) {
+@media screen and (min-width: 1360px) {
 	.l\:reveal.bp\:md.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}

@@ -12,14 +12,35 @@
 	width: 100%;
 }
 
+.w\:auto {
+	width: auto;
+}
+
+.align-self\:start {
+	align-self: start;
+}
+.align-self\:end {
+	align-self: end;
+}
+.align-self\:center {
+	align-self: center;
+}
+
 .align\:start {
-	align-items: flex-start;
+	align-items: start;
 }
 .align\:end {
-	align-items: flex-end;
+	align-items: end;
 }
 .align\:center {
 	align-items: center;
+}
+
+.justify\:end {
+	justify-content: end;
+}
+.justify\:start {
+	justify-content: start;
 }
 
 .text\:start {

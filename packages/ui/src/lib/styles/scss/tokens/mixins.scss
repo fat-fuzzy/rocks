@@ -242,16 +242,3 @@ $current_cssvars: ();
 	@include generateCssVars($typography, $prefix);
 	@include generateCssVars($colors, $prefix);
 }
-
-//== MEDIA QUERIES
-@mixin min-width($breakpoint) {
-	@media screen and (min-width: #{$breakpoint}) {
-		@content;
-	}
-}
-
-@mixin max-width($breakpoint) {
-	@media screen and (max-width: #{$breakpoint}) {
-		@content;
-	}
-}

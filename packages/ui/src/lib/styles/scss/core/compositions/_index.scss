@@ -1,0 +1,9 @@
+/* Compositions */
+
+@forward './nav'; // Use for navigation (navigation = links = hrefs = <a>)
+@forward './menu'; // Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements
+
+@forward './header'; // Use for headers: main app header, page header
+@forward './footer'; // Use for main (only) footer
+
+@forward './player'; // Use for a player page layout

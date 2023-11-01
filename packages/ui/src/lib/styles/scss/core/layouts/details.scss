@@ -28,7 +28,7 @@ details .end {
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 620px) {
 	details.bp\:xs [class^='hide:'] {
 		border: unset;
 		clip: unset;
@@ -45,7 +45,7 @@ details .end {
 	}
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 935px) {
 	details.bp\:sm [class^='hide:'] {
 		border: unset;
 		clip: unset;
@@ -62,7 +62,7 @@ details .end {
 	}
 }
 
-@media screen and (min-width: 1240px) {
+@media screen and (min-width: 1360px) {
 	details.bp\:md [class^='hide:'] {
 		border: unset;
 		clip: unset;

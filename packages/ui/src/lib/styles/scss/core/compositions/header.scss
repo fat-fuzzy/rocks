@@ -1,0 +1,109 @@
+header {
+	display: flex;
+}
+
+.page-header {
+	align-items: baseline;
+	margin-block-end: unset;
+}
+
+.header-app > .l\:main {
+	min-inline-size: fit-content;
+}
+
+.header-app > .l\:side {
+	flex-basis: content; // property as content of flex container
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-left: calc(var(--gap) / 2);
+	padding-right: calc(var(--gap) / 2);
+}
+
+.header-app > .l\:main > nav li[aria-current='page'] a {
+	color: var(--current-primary);
+	text-decoration: none;
+}
+
+.header-app > .l\:main > nav li[aria-current='page']::before {
+	--size: 6px;
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: 0;
+	top: calc(50% - var(--size));
+	border: var(--size) solid transparent;
+	border-left: var(--size) solid var(--current-primary-light);
+}
+
+.header-app > .l\:main > nav a {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	padding: 0 1em;
+	color: inherit;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: color 0.2s linear;
+}
+
+.header-app ul li > a {
+	font-weight: var(--font-weight-400);
+}
+
+.header-app nav a:hover {
+	color: var(--current-primary-light);
+}
+
+//== Need to override global <a> hover styles in nav and header <a>
+.header-app a:hover {
+	background-color: initial;
+}
+
+.header-app {
+	container: header-nav / inline-size;
+}
+
+/* Configure reveal menu positioning and width */
+.header-app .l\:reveal\:auto .show {
+	top: var(--header-height);
+	height: 35vh;
+	width: 100%;
+}
+.page-header .l\:reveal\:auto .show {
+	// TODO fix magic multiplier
+	top: calc(9 * var(--current-size-plus));
+}
+
+// TODO fix magic breakpoint // testing
+@container header-nav (min-width: 620px) {
+	.header-app > .l\:main > nav li[aria-current='page']::before {
+		--size: 6px;
+		content: '';
+		min-width: unset;
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: calc(50% - var(--size));
+		border: var(--size) solid transparent;
+		border-top: var(--size) solid var(--current-primary-light);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.header-app > .l\:main > nav li[aria-current='page']::before {
+		--size: 6px;
+		content: '';
+		min-width: unset;
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: calc(50% - var(--size));
+		border: var(--size) solid transparent;
+		border-top: var(--size) solid var(--current-primary-light);
+	}
+}
