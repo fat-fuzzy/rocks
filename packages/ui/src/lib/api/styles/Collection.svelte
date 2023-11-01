@@ -84,7 +84,7 @@
 				>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
-						<div class="drop">
+						<div class="drop w:full">
 							<Api {category} {title} />
 						</div>
 					{:else}
@@ -108,7 +108,7 @@
 					open={category === 'compositions' || category === 'tokens' ? true : undefined}
 				>
 					<summary class={`card:xs bg:${color}`}>Description</summary>
-					<div class="drop">
+					<div class="drop w:full">
 						<div class="l:text:xl">
 							{@html mocks['doc'][category]}
 						</div>
