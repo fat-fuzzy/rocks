@@ -4,10 +4,6 @@
  * These stylesheets must use the tokens defined in `styles/app/my-app/*`
  * where  `my-app` is any folder inside `styles/app` that uses or overrides the design tokens declared in the `styles/app/ui` folder
  */
-@forward './header'; // Use for headers: main app header, page header
-@forward './footer'; // Use for main (only) footer
-@forward './nav'; // Use for navigation (navigation = links = hrefs = <a>) and derived elements
-@forward './menu'; // Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements
 @forward './media'; // Use for framed elements: video, img, picture, canvas
 @forward './button'; // Use for normal and toggle buttons
 @forward './fieldset'; // Use for fieldset element: TODO: maybe move to form

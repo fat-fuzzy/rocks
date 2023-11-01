@@ -16,7 +16,6 @@
 @forward './frame'; // Use for displaying content with a given aspect ratio
 @forward './card'; // Use for displaying self-contained content items
 @forward './reveal'; // Use for displaying hidden content with a button action
+@forward './reveal-auto'; // Use for displaying hidden content in response to a container breakpoint
 @forward './details'; // Use to style <details> and <summary> elements
-@forward './sticky'; // Use for elements with sticky positioning
-@forward './player'; // Use for a player page layout
 @forward './shapes'; // Use to style geometric shapes
