@@ -2,6 +2,7 @@
 	import {getStores} from '$app/stores'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import {lang} from '$stores/intl'
+	import format from '$lib/utils/format'
 	import {theme} from '$lib/stores/theme.js'
 
 	import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
@@ -92,7 +93,7 @@
 
 <header class={headerClass}>
 	<div
-		class={`l:main l:reveal:nav ${setHeight}`}
+		class={`l:main l:reveal:auto bp:${breakpoint} ${setHeight}`}
 		use:clickOutside
 		on:clickOutside={handleClickOutsideMainNav}
 	>
@@ -103,7 +104,7 @@
 			aria-controls={`${id}-primary-nav`}
 			on:click={toggleNav}
 		>
-			🐣 Menu
+			{format.formatLabel('Menu', '🐣')}
 		</button>
 
 		<nav id={`${id}-primary-nav`} class={show}>

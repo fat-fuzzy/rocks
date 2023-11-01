@@ -4,6 +4,7 @@
 	import * as ui from '@fat-fuzzy/ui'
 
 	let {Element, Api} = ui.api
+	let {RevealAuto} = ui.layouts
 	let category: string
 	let categoryItems: {[name: string]: ComponentType}
 
@@ -15,6 +16,7 @@
 	$: title = $page.params.component
 	$: Component = categoryItems[title]
 	$: path = $page.url.pathname
+	$: headerClass = 'page-header layer:reveal l:switcher bg:polar'
 </script>
 
 <svelte:head>
@@ -22,12 +24,23 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="bg:polar l:sidebar page-header">
-	<h1 class="l:main:30 card:xl">{title}</h1>
-	<div class="l:side card:sm l:flex reverse">
-		<Api category="app" {title} />
-		<Api category="shared" {title} />
-	</div>
+<header class={headerClass}>
+	<h1 class="card:xl">{title}</h1>
+	<RevealAuto
+		size="sm"
+		breakpoint="md"
+		color="primary:light"
+		background="polar"
+		align="start"
+		justify="end"
+		asset="&nbsp;☂️&nbsp;"
+		title="Context"
+	>
+		<div slot="content" class="l:side l:flex reverse">
+			<Api category="app" {title} />
+			<Api category="shared" {title} />
+		</div>
+	</RevealAuto>
 </header>
 
 <Element isPage={true} depth={1} {title} page={path} {path} {category} component={Component} />

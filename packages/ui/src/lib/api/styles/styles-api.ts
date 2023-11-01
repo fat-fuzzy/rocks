@@ -119,7 +119,7 @@ const tokens: TokenStyles = {
 		title: '',
 		id: 'tokens.element',
 		layout: 'switcher',
-		container: '',
+		container: 'card:lg',
 		size: 'sm',
 		variant: '',
 		items: [
@@ -170,7 +170,7 @@ const app: AppStyles = {
 		title: '',
 		id: 'app.settings',
 		layout: 'switcher',
-		container: '',
+		container: 'card:lg',
 		size: 'sm',
 		variant: '',
 		items: [
@@ -226,7 +226,7 @@ const shared: SharedStyles = {
 		name: 'Container',
 		title: '',
 		layout: 'switcher',
-		container: '',
+		container: 'card:lg',
 		size: 'sm',
 		variant: '',
 		id: 'shared.container',
@@ -269,7 +269,7 @@ const shared: SharedStyles = {
 		name: 'Layout',
 		title: '',
 		layout: 'switcher',
-		container: '',
+		container: 'card:lg',
 		size: 'sm',
 		variant: '',
 		id: 'shared.layout',
@@ -366,7 +366,7 @@ const blocks: BlockStyles = {
 		title: '',
 		id: 'blocks.element',
 		layout: 'switcher',
-		container: '',
+		container: 'card:lg',
 		size: 'md',
 		variant: '',
 		items: [
@@ -534,7 +534,7 @@ const layouts: LayoutStyles = {
 		title: '',
 		id: 'layouts.element',
 		layout: 'switcher',
-		container: '',
+		container: 'card:lg',
 		size: 'md',
 		variant: '',
 		items: [

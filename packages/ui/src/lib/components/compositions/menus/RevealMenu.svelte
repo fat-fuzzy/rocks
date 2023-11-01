@@ -19,7 +19,7 @@
 	export let icon = ''
 	export let align = 'start'
 	export let place = 'left'
-	export let items = []
+	export let items: any = []
 
 	let expanded = false
 
