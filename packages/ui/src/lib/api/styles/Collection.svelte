@@ -77,7 +77,11 @@
 		</section>
 		<section slot="side">
 			<div class="l:stack:lg">
-				<details id={`${category}-api`} class={`l:stack:md`} open>
+				<details
+					id={`${category}-api`}
+					class={`l:stack:md`}
+					open={category !== 'compositions' && category !== 'tokens' ? true : undefined}
+				>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop">

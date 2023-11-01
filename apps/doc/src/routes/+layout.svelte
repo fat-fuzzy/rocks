@@ -42,7 +42,7 @@
 	})
 </script>
 
-<Header className="header-app" items={links} id="doc" />
+<Header className="header-app" items={links} id="doc" breakpoint="xs" />
 
 <main class={className}>
 	<slot />

@@ -25,6 +25,7 @@ import InputFile from '$lib/components/blocks/forms/InputFile.svelte'
  */
 import Burrito from '$lib/components/layouts/Burrito.svelte'
 import Reveal from '$lib/components/layouts/Reveal.svelte'
+import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
 import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
@@ -130,6 +131,7 @@ const blocks = {
 const layouts = {
 	Burrito,
 	Reveal,
+	RevealAuto,
 	Stack,
 	Switcher,
 	Sidebar,

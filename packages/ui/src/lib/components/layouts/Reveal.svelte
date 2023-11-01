@@ -5,16 +5,18 @@
 	export let layout = ''
 	export let container = 'layer card'
 	export let direction = 'tb-lr'
+	export let color = ''
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
-	export let align = 'start'
+	export let align = ''
 	export let id = 'ui'
 	export let height = ''
+	export let background = ''
 	export let title = 'Reveal'
-	export let icon = '🐣'
+	export let asset = ''
 
-	let expanded = true
+	let expanded = false
 
 	function handleClickOutside(event) {
 		expanded = false
@@ -24,7 +26,7 @@
 		expanded = !expanded
 	}
 
-	$: show = expanded ? 'show' : 'hide:viz-only'
+	$: show = expanded ? `layer bg:${background} show` : 'hide:viz-only'
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
 
@@ -35,12 +37,12 @@
 >
 	<button
 		id={`${id}-reveal-button`}
-		class={`card:${size} ${variant}`}
+		class={`card:${size} ${variant} ${color}`}
 		aria-expanded={expanded}
 		aria-controls={`${id}-reveal`}
 		on:click={toggleReveal}
 	>
-		{format.formatLabel(title, icon)}
+		{format.formatLabel(title, asset)}
 	</button>
 	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
 		<slot name="content">

@@ -9,7 +9,7 @@
 	export let formaction = 'enter'
 	// export let reset = 'reset'
 
-	let apiLayout = 'switcher'
+	let apiLayout = 'flex'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxl'
 
