@@ -56,6 +56,7 @@ label > input {
 	select,
 	textarea {
 		accent-color: var(--current-primary);
+		border-color: var(--current-primary);
 	}
 }
 
@@ -64,6 +65,7 @@ label > input {
 	select,
 	textarea {
 		accent-color: var(--current-accent);
+		border-color: var(--current-accent);
 	}
 }
 
@@ -72,10 +74,11 @@ label > input {
 	select,
 	textarea {
 		accent-color: var(--current-highlight);
+		border-color: var(--current-highlight);
 	}
 }
 
-// Manage color on .bare labels adn inputs
+// Manage color on .bare and .outline labels adn inputs
 
 label.bare.primary {
 	color: var(--current-primary);
@@ -84,31 +87,149 @@ label.bare.accent {
 	color: var(--current-accent);
 }
 label.bare.highlight {
-	color: var(--current-highlight-dark);
+	color: var(--color-dark);
 }
-label.bare.primary > input {
+.night {
+	label.primary > [type='file'],
+	label.highlight > [type='file'] {
+		color: var(--color-dark);
+	}
+	label.bare.primary {
+		color: var(--current-primary-light);
+	}
+	label.bare.accent {
+		color: var(--current-accent-light);
+	}
+	label.bare.highlight {
+		color: var(--current-highlight);
+	}
+}
+label.bare > input,
+label.bare > [type='file'] {
+	color: var(--color-dark);
+	border-color: var(--current-bg-color);
+	background-color: unset;
+}
+label.outline > input,
+label.outline > [type='file'] {
+	color: var(--current-color);
+	background-color: unset;
+}
+.night {
+	label.bare > input,
+	label.bare > [type='file'] {
+		color: var(--color-light);
+	}
+	label.outline > input,
+	label.outline > [type='file'] {
+		color: var(--color-light);
+	}
+}
+label.bare.primary > input,
+label.bare.primary > [type='file'],
+label.bare.accent > input,
+label.bare.accent > [type='file'],
+label.bare.highlight > input,
+label.bare.highlight > [type='file'] {
+	color: var(--color-dark);
+}
+.night {
+	label.bare.primary > input,
+	label.bare.primary > [type='file'] {
+		color: var(--current-primary-light);
+	}
+	label.bare.accent > input,
+	label.bare.accent > [type='file'] {
+		color: var(--current-accent-light);
+	}
+	label.bare.highlight > input,
+	label.bare.highlight > [type='file'] {
+		color: var(--color-light);
+	}
+}
+label.outline.primary > input,
+label.outline.primary > [type='file'] {
+	color: var(--current-primary);
 	border-color: var(--current-primary);
-	background-color: unset;
 }
-label.bare.accent > input {
+label.outline.accent > input,
+label.outline.accent > [type='file'] {
+	color: var(--current-accent);
 	border-color: var(--current-accent);
-	background-color: unset;
 }
-label.bare.highlight > input {
+label.outline.highlight > input,
+label.outline.highlight > [type='file'] {
+	color: var(--color-dark);
 	border-color: var(--current-highlight-dark);
-	background-color: unset;
 }
-.bare.primary > input:hover {
+.night {
+	label.outline.primary > input,
+	label.outline.primary > [type='file'] {
+		color: var(--current-primary-light);
+	}
+	label.outline.accent > input,
+	label.outline.accent > [type='file'] {
+		color: var(--current-accent-light);
+	}
+	label.outline.highlight > input,
+	label.outline.accent > [type='file'] {
+		color: var(--color-light);
+	}
+}
+////
+label.primary > input:hover,
+label.primary > input:active,
+label.accent > input:hover,
+label.accent > input:active,
+label.highlight > input:hover,
+label.highlight > input:active {
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+}
+////
+label.primary > [type='file']:hover {
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
 }
-.bare.accent > input:hover {
-	color: var(--current-dark);
+label.accent > [type='file']:hover {
+	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 }
-.bare.highlight > input:hover {
+label.highlight > [type='file']:hover {
+	color: var(--color-dark);
+	background-color: var(--current-highlight-light);
+}
+label.primary > [type='file']:active {
+	color: var(--color-dark);
+	background-color: var(--current-primary-lighter);
+}
+label.accent > [type='file']:active {
+	color: var(--current-dark);
+	background-color: var(--current-accent-lighter);
+}
+label.highlight > [type='file']:active {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
+}
+.night {
+	.outline.primary > input:hover,
+	.outline.primary > [type='file']:hover,
+	.bare.primary > input:hover,
+	.bare.primary > [type='file']:hover {
+		color: var(--color-dark);
+	}
+	.outline.accent > input:hover,
+	.outline.accent > [type='file']:hover,
+	.bare.accent > input:hover,
+	.bare.accent > [type='file']:hover {
+		color: var(--color-dark);
+	}
+	.outline.highlight > input:hover,
+	.outline.highlight > [type='file']:hover,
+	.bare.highlight > input:hover,
+	.bare.highlight > [type='file']:hover {
+		color: var(--color-dark);
+	}
 }
 
 // TODO : cleanup - use "current" size values
@@ -129,11 +250,16 @@ label {
 }
 
 label > [type='file'] {
-	color: var(--color-dark); // TODO: move to color management - fixes iOS
 	font-size: var(--current-font-size-minus);
 	padding: var(--current-size) var(--current-size) var(--current-size-minus);
 	display: flex;
 	align-items: center;
+}
+label > [type='file']:hover {
+	background-color: var(--current-bg-color);
+}
+label > [type='file']:active {
+	background-color: var(--current-bg-polar);
 }
 
 .feedback {
@@ -143,22 +269,22 @@ label > [type='file'] {
 
 // Display range input step labels
 
-label > input[type='range'][list='markers'] + datalist {
+label > [type='range'][list='markers'] + datalist {
 	display: flex;
 	justify-content: space-between;
 	padding: 0 var(--current-size);
 }
 
-label > input[type='range'][list='markers'] + datalist > option {
+label > [type='range'][list='markers'] + datalist > option {
 	font-size: var(--current-font-size-minus);
 	font-weight: var(--font-weight-body);
 	padding: 0;
 }
 
-label > input[type='range']:not([list]) + datalist > option {
+label > [type='range']:not([list]) + datalist > option {
 	display: none;
 }
 
-label[class*='l:stack'] > input[type='range'] {
+label[class*='l:stack'] > [type='range'] {
 	margin-block-start: 0;
 }
