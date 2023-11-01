@@ -81,13 +81,13 @@ button.outline.accent {
 	background-color: inherit;
 }
 button.accent:not(:disabled):hover,
-.outline.accent:not(:disabled):hover {
+button.outline.accent:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 	border-color: var(--current-accent);
 }
 button.accent:not(:disabled):active,
-.outline.accent:not(:disabled):active {
+button.outline.accent:not(:disabled):active {
 	color: var(--color-dark);
 	background-color: var(--current-accent-lighter);
 }
