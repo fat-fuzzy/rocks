@@ -69,9 +69,9 @@
 		</section>
 		<section class="l:side">
 			<div class="l:stack:lg">
-				<details id={`${category}-${title}-api`} class={`l:stack:md`} open>
+				<details id={`${category}-${title}-api`} class={`l:stack:md`}>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
-					{#if category !== 'compositions' && category !== 'tokens' && title !== 'Feedback'}
+					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full">
 							<Api {title} {category} />
 						</div>
@@ -91,7 +91,7 @@
 				</details>
 			</section> -->
 
-				<details id={`${category}-${title}-doc`} class={`l:stack:md`}>
+				<details id={`${category}-${title}-doc`} class={`l:stack:md`} open>
 					<summary class={`card:xs bg:${color}`}>Description</summary>
 					<div class="drop w:full">
 						<div class="card:lg text:center">

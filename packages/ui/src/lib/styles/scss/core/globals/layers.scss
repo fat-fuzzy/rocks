@@ -1,4 +1,5 @@
-.layer {
+.layer,
+[class*=':layer'] {
 	box-shadow: var(--current-shadow);
 }
 
