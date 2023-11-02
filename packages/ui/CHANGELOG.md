@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.18
+
+### Patch Changes
+
+- 71b9087: [ui+doc] Add feedback status colors, styles, and doc
+
 ## 0.1.17
 
 ### Patch Changes
