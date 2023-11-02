@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let layout = 'stack'
 	export let size = 'md'
-	export let depth = '3'
+	export let depth = 3
 
 	const statuses = ['info', 'success', 'warning', 'error']
 	// const variants = ['darker', 'dark', 'light', 'lighter']
@@ -12,44 +12,46 @@
 	$: colorClasses = `card:xxl l:stack:sm`
 </script>
 
-{#each colors as color}
-	<article class={cardClasses}>
-		<header>
-			<svelte:element this={`h${depth}`} class="font:md">{color}</svelte:element>
-		</header>
-		<main class="l:grid:xxs">
-			<figure class={`${colorClasses} bg:${color}`}>
-				<figcaption>{color}</figcaption>
-			</figure>
-			{#each variants as variant}
-				<figure class={`${colorClasses} bg:${color}:${variant}`}>
-					<figcaption>{color}:{variant}</figcaption>
-				</figure>
+<div class="l:stack:xxl">
+	<section>
+		<div class="l:stack:md">
+			<svelte:element this={`h${depth}`} class="font:lg">Theme colors</svelte:element>
+			{#each colors as color}
+				<article class={cardClasses}>
+					<svelte:element this={`h${depth - 1}`} class="font:md">{color}</svelte:element>
+					<main class="l:grid:xxs">
+						<figure class={`${colorClasses} bg:${color}`}>
+							<figcaption>{color}</figcaption>
+						</figure>
+						{#each variants as variant}
+							<figure class={`${colorClasses} bg:${color}:${variant}`}>
+								<figcaption>{color}:{variant}</figcaption>
+							</figure>
+						{/each}
+					</main>
+				</article>
 			{/each}
-		</main>
-		<footer>
-			<slot name="footer" />
-		</footer>
-	</article>
-{/each}
+		</div>
+	</section>
 
-{#each statuses as color}
-	<article class={cardClasses}>
-		<header>
-			<svelte:element this={`h${depth}`} class="font:md">{color}</svelte:element>
-		</header>
-		<main class="l:grid:xxs">
-			<figure class={`${colorClasses} bg:${color}`}>
-				<figcaption>{color}</figcaption>
-			</figure>
-			{#each variants as variant}
-				<figure class={`${colorClasses} bg:${color}:${variant}`}>
-					<figcaption>{color}:{variant}</figcaption>
-				</figure>
+	<section>
+		<div class="l:stack:md">
+			<svelte:element this={`h${depth}`} class="font:lg">Feedback status colors</svelte:element>
+			{#each statuses as color}
+				<article class={cardClasses}>
+					<svelte:element this={`h${depth - 1}`} class="font:md">{color}</svelte:element>
+					<main class="l:grid:xxs">
+						<figure class={`${colorClasses} bg:${color}`}>
+							<figcaption>{color}</figcaption>
+						</figure>
+						{#each variants as variant}
+							<figure class={`${colorClasses} bg:${color}:${variant}`}>
+								<figcaption>{color}:{variant}</figcaption>
+							</figure>
+						{/each}
+					</main>
+				</article>
 			{/each}
-		</main>
-		<footer>
-			<slot name="footer" />
-		</footer>
-	</article>
-{/each}
+		</div>
+	</section>
+</div>
