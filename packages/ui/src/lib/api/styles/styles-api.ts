@@ -458,6 +458,21 @@ const blocks: BlockStyles = {
 				],
 			}),
 			new StyleInputGroup({
+				name: 'Variant',
+				id: 'blocks.element.variant',
+				value: 'default',
+				input: 'toggle',
+				layout: 'stack',
+				size: 'sm',
+				variant: 'card',
+				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+				items: [
+					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
+					{id: 'blocks.element.variant.outline', text: 'outline', asset: '', value: 'outline'},
+					{id: 'blocks.element.variant.bare', text: 'bare', asset: '', value: 'bare'},
+				],
+			}),
+			new StyleInputGroup({
 				name: 'Size',
 				id: 'blocks.element.size',
 				value: 'md',
@@ -472,21 +487,6 @@ const blocks: BlockStyles = {
 					{id: 'blocks.element.size.md', text: 'md', asset: '', value: 'md'},
 					{id: 'blocks.element.size.lg', text: 'lg', asset: '', value: 'lg'},
 					{id: 'blocks.element.size.xl', text: 'xl', asset: '', value: 'xl'},
-				],
-			}),
-			new StyleInputGroup({
-				name: 'Variant',
-				id: 'blocks.element.variant',
-				value: 'default',
-				input: 'toggle',
-				layout: 'stack',
-				size: 'sm',
-				variant: 'card',
-				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
-				items: [
-					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
-					{id: 'blocks.element.variant.outline', text: 'outline', asset: '', value: 'outline'},
-					{id: 'blocks.element.variant.bare', text: 'bare', asset: '', value: 'bare'},
 				],
 			}),
 			new StyleInputGroup({

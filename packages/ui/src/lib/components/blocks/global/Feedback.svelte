@@ -9,7 +9,7 @@
 	export let container = 'card'
 
 	$: background = context === 'code' ? '' : `bg:${status}:lighter`
-	$: feedbackClass = `feedback ${container}:${size} ${variant}:${status} ${background}`
+	$: feedbackClass = `feedback ${container}:${size} font:${size} ${variant}:${status} ${background}`
 </script>
 
 {#if context === 'code'}
