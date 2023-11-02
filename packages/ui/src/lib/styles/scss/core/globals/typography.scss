@@ -53,10 +53,9 @@ h5 {
 
 pre {
 	font-family: var(--font-family-code);
-	padding: var(--current-size-plus);
-	margin: var(--current-size-plus) 0;
 	border-radius: var(--radius-base);
-	background-color: var(--color-gray-5);
+	background-color: var(--current-bg-color);
+	border: var(--border-width-lg) solid var(--current-border-color);
 	overflow: auto;
 }
 

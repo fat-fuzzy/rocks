@@ -1,28 +1,52 @@
-// Playground legacy - TODO: review usage
-.output.active,
-.output.error,
-.output.success {
-	&::before {
-		display: none;
-	}
+[class*=':info'] {
+	--current-bg-color: var(--current-info-lighter);
+	--current-border-color: var(--current-info);
 }
 
-.output::before {
-	align-self: center;
-	content: '🥁';
-	font-size: 18em;
-	line-height: 1;
-	opacity: 0.15;
-	transition: opacity 0.3s ease-in;
+[class*=':success'] {
+	--current-bg-color: var(--current-success-lighter);
+	--current-border-color: var(--current-success);
 }
 
-.output.focus::before {
-	opacity: 1;
+[class*=':warning'] {
+	--current-bg-color: var(--current-warning-lighter);
+	--current-border-color: var(--current-warning);
 }
 
-.emoji {
-	font-size: 5vw;
-	opacity: 0.6;
-	position: absolute;
-	z-index: -1;
+[class*=':error'] {
+	--current-bg-color: var(--current-error-lighter);
+	--current-border-color: var(--current-error);
+}
+
+.feedback {
+	margin-block: var(--current-size);
+	margin-inline: 0;
+	border: var(--border-width-lg) solid var(--current-border-color);
+}
+
+.feedback[class*='default:'] {
+	box-shadow: var(--current-shadow);
+}
+.feedback[class*='default:info'],
+.feedback[class*='bare:info'] {
+	--current-border-color: var(--current-info-lighter);
+}
+.feedback[class*='default:success'],
+.feedback[class*='bare:success'] {
+	--current-border-color: var(--current-success-lighter);
+}
+.feedback[class*='default:warning'],
+.feedback[class*='bare:warning'] {
+	--current-border-color: var(--current-warning-lighter);
+}
+.feedback[class*='default:error'],
+.feedback[class*='bare:error'] {
+	--current-border-color: var(--current-error-lighter);
+}
+
+pre.feedback {
+	--current-bg-color: var(--color-gray-5);
+}
+pre.feedback[class*='bare:'] {
+	--current-border-color: var(--color-gray-5);
 }
