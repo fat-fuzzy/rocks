@@ -25,7 +25,7 @@
 </svelte:head>
 
 <header class={headerClass}>
-	<h1 class="card:xl">{title}</h1>
+	<h1 class=" l:main:30 card:xl">{title}</h1>
 	<RevealAuto
 		size="sm"
 		breakpoint="md"

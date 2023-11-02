@@ -9,7 +9,7 @@
 	export let formaction = 'enter'
 	// export let reset = 'reset'
 
-	let apiLayout = 'flex'
+	let apiLayout = category != 'app' ? 'flex nowrap grow' : 'flex nowrap shrink'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxl'
 
