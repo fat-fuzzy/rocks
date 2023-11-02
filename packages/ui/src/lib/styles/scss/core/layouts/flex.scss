@@ -12,6 +12,10 @@
 	flex-wrap: nowrap;
 }
 
+.l\:flex.grow {
+	flex-grow: 1;
+}
+
 .l\:flex.space-between {
 	justify-content: space-between;
 }
