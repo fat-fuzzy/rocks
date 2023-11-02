@@ -63,63 +63,6 @@ body {
 	color: var(--color-light);
 }
 
-//== Errors
-
-// Color in text
-
-.hint {
-	--current-hint: var(--color-primary);
-	--current-hint-light: var(--color-primary-light);
-	--current-hint-lighter: var(--color-primary-lighter);
-	color: var(--current-hint);
-}
-.hint:focus {
-	outline-color: var(--current-hint);
-}
-.hint:hover {
-	background-color: var(--current-hint);
-}
-
-.info {
-	--current-info: var(--color-primary);
-	--current-info-light: var(--color-primary-light);
-	--current-info-lighter: var(--color-primary-lighter);
-	color: var(--current-info);
-}
-.info:focus {
-	outline-color: var(--current-info);
-}
-
-.success {
-	--current-success: var(--color-success);
-	--current-success-light: var(--color-success-light);
-	--current-success-lighter: var(--color-success-lighter);
-	color: var(--current-success);
-}
-.success:focus {
-	outline-color: var(--current-success);
-}
-
-.warning {
-	--current-warning: var(--color-warning);
-	--current-warning-light: var(--color-warning-light);
-	--current-warning-lighter: var(--color-warning-lighter);
-	color: var(--current-warning);
-}
-.warning:focus {
-	outline-color: var(--current-warning);
-}
-
-.error {
-	--current-error: var(--color-danger);
-	--current-error-light: var(--color-error-light);
-	--current-error-lighter: var(--color-error-lighter);
-	color: var(--current-error);
-}
-.error:focus {
-	outline-color: var(--current-error);
-}
-
 //== Layers & Media
 
 .l\:frame {
@@ -300,6 +243,123 @@ a:hover {
 	background-color: var(--current-highlight-lighter);
 }
 
+//== Feedback colors
+
+// .hint {
+// 	--current-hint: var(--color-primary);
+// 	--current-hint-light: var(--color-primary-light);
+// 	--current-hint-lighter: var(--color-primary-lighter);
+// 	color: var(--current-hint);
+// }
+// .hint:focus {
+// 	outline-color: var(--current-hint);
+// }
+// .hint:hover {
+// 	background-color: var(--current-hint);
+// }
+
+[class*=':info'] {
+	--current-info: var(--color-info);
+	--current-info-light: var(--color-info-light);
+	--current-info-lighter: var(--color-info-lighter);
+	color: var(--current-info);
+}
+[class*=':info']:focus {
+	outline-color: var(--current-info);
+}
+
+[class*=':success'] {
+	--current-success: var(--color-success);
+	--current-success-light: var(--color-success-light);
+	--current-success-lighter: var(--color-success-lighter);
+	color: var(--current-success);
+}
+[class*=':success']:focus {
+	outline-color: var(--current-success);
+}
+
+[class*=':warning'] {
+	--current-warning: var(--color-warning);
+	--current-warning-light: var(--color-warning-light);
+	--current-warning-lighter: var(--color-warning-lighter);
+	color: var(--current-warning);
+}
+[class*=':warning']:focus {
+	outline-color: var(--current-warning);
+}
+
+[class*=':error'] {
+	--current-error: var(--color-danger);
+	--current-error-light: var(--color-danger-light);
+	--current-error-lighter: var(--color-danger-lighter);
+	color: var(--current-error);
+}
+[class*=':error']:focus {
+	outline-color: var(--current-error);
+}
+.bg\:info {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-info);
+}
+.bg\:info\:light {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-info-light);
+}
+.bg\:info\:lighter {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-info-lighter);
+}
+
+.bg\:success {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-success);
+}
+.bg\:success\:light {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-success-light);
+}
+.bg\:success\:lighter {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-success-lighter);
+}
+
+.bg\:warning {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-warning);
+}
+.bg\:warning\:light {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-warning-light);
+}
+.bg\:warning\:lighter {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-warning-lighter);
+}
+
+.bg\:error {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-error);
+}
+.bg\:error\:light {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-error-light);
+}
+.bg\:error\:lighter {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-error-lighter);
+}
 //== Border colors
 
 [class*='box'],
