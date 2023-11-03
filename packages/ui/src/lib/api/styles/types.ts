@@ -216,11 +216,11 @@ export class StyleInputGroup implements IStyleInputGroup {
 	}
 
 	canApplyStyles({item, category}: {item: string; category: string}) {
-		return this.includes(item) && !this.excludes(category) && !this.excludes(item)
+		return (!this.excludes(category) && !this.excludes(item)) || this.includes(item)
 	}
 
 	includes(item: string) {
-		return this.include ? this.include.indexOf(item) !== -1 : true
+		return this.include ? this.include.indexOf(item) !== -1 : false
 	}
 
 	excludes(item: string) {
@@ -298,17 +298,11 @@ export class StyleFamily implements IStyleFamily {
 	}
 
 	canApplyStyles({item, category}: {item: string; category: string}) {
-		if (this.excludes(category)) {
-			return this.includes(item)
-		}
-		if (this.excludes(item)) {
-			return false
-		}
-		return true
+		return (!this.excludes(category) && !this.excludes(item)) || this.includes(item)
 	}
 
 	includes(item: string) {
-		return this.include ? this.include.indexOf(item) !== -1 : true
+		return this.include ? this.include.indexOf(item) !== -1 : false
 	}
 
 	excludes(item: string) {

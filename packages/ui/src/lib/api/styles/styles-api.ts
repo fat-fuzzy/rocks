@@ -273,7 +273,7 @@ const shared: SharedStyles = {
 		size: 'sm',
 		variant: '',
 		id: 'shared.layout',
-		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle'],
+		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'Feedback'],
 		items: [
 			new StyleInputGroup({
 				name: 'Layout',
@@ -288,7 +288,6 @@ const shared: SharedStyles = {
 					'layouts',
 					'Switcher',
 					'Reveal',
-					'Feedback',
 					'Stack',
 					'Switcher',
 					'Burrito',
@@ -337,7 +336,6 @@ const shared: SharedStyles = {
 					'compositions',
 					'layouts',
 					'Reveal',
-					'Feedback',
 					'Stack',
 					'Switcher',
 					'Sidebar',
