@@ -23,6 +23,7 @@
 	margin-block: var(--current-size);
 	margin-inline: 0;
 	border: var(--border-width-xl) solid var(--current-border-color);
+	background-color: var(--current-bg-color);
 }
 
 .feedback[class*='default:'] {
@@ -50,4 +51,16 @@ pre.feedback {
 }
 pre.feedback[class*='bare:'] {
 	--current-border-color: var(--color-gray-5);
+}
+pre.feedback[class*=':info'] {
+	--current-color: var(--current-info-lightest);
+}
+pre.feedback[class*=':success'] {
+	--current-color: var(--current-success-lighter);
+}
+pre.feedback[class*=':warning'] {
+	--current-color: var(--current-warning-lighter);
+}
+pre.feedback[class*=':error'] {
+	--current-color: var(--current-error-lightest);
 }
