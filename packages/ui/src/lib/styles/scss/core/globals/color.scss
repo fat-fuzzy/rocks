@@ -239,19 +239,6 @@ a:hover {
 
 //== Feedback colors
 
-// .hint {
-// 	--current-hint: var(--color-primary);
-// 	--current-hint-light: var(--color-primary-light);
-// 	--current-hint-lighter: var(--color-primary-lighter);
-// 	color: var(--current-hint);
-// }
-// .hint:focus {
-// 	outline-color: var(--current-hint);
-// }
-// .hint:hover {
-// 	background-color: var(--current-hint);
-// }
-
 [class*=':info'] {
 	--current-info: var(--color-info);
 	--current-info-light: var(--color-info-light);
@@ -292,7 +279,7 @@ a:hover {
 	outline-color: var(--current-error);
 }
 .bg\:info {
-	--current-color: var(--color-dark);
+	--current-color: var(--color-light);
 	color: var(--current-color);
 	background-color: var(--current-info);
 }
@@ -340,7 +327,7 @@ a:hover {
 }
 
 .bg\:error {
-	--current-color: var(--color-dark);
+	--current-color: var(--color-light);
 	color: var(--current-color);
 	background-color: var(--current-error);
 }
