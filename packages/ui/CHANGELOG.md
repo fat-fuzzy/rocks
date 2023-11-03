@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.19
+
+### Patch Changes
+
+- 1dab0d2: [ui+doc] Fix layout and contrast issues
+
 ## 0.1.18
 
 ### Patch Changes
