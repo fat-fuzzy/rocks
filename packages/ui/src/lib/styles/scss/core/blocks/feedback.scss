@@ -63,4 +63,11 @@ pre.feedback[class*=':error'] {
 pre.feedback {
 	--current-bg-color: var(--color-gray-5);
 	color: var(--current-color);
+	background-color: var(--current-bg-color);
+}
+
+.night {
+	pre.feedback {
+		--current-bg-color: var(--current-polar);
+	}
 }
