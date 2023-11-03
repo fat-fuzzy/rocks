@@ -2,7 +2,6 @@
 	export let id = ''
 	export let name = ''
 	export let legend = ''
-	export let type = '' // input-group (radio group, checkbox group ...) Or other type TBD
 	export let size = 'sm'
 	export let background = ''
 	export let layout = 'stack'
@@ -13,10 +12,9 @@
 
 	$: containerClass = container ? `l:${container}:${size}` : ''
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:${layout} bp:${breakpoint} ${containerClass} ${size} ${type} ${variant} ${backgroundClass} align:${align}`
+	$: classes = `l:${layout} bp:${breakpoint} ${containerClass} ${size} ${variant} ${backgroundClass} align:${align}`
 </script>
 
 <fieldset {id} {name} data-key={id} class={classes}>
-	{#if legend}<legend>{legend}</legend>{/if}
-	<slot />
+	{#if legend}<legend>{legend}</legend>{/if}<slot />
 </fieldset>
