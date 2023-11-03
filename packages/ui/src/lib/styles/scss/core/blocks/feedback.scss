@@ -45,10 +45,6 @@
 .feedback[class*='bare:error'] {
 	--current-border-color: var(--current-error-lighter);
 }
-
-pre.feedback {
-	--current-bg-color: var(--color-gray-5);
-}
 pre.feedback[class*='bare:'] {
 	--current-border-color: var(--color-gray-5);
 }
@@ -63,4 +59,8 @@ pre.feedback[class*=':warning'] {
 }
 pre.feedback[class*=':error'] {
 	--current-color: var(--current-error-lightest);
+}
+pre.feedback {
+	--current-bg-color: var(--color-gray-5);
+	color: var(--current-color);
 }

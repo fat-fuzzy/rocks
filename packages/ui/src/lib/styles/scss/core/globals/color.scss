@@ -243,6 +243,7 @@ a:hover {
 	--current-info: var(--color-info);
 	--current-info-light: var(--color-info-light);
 	--current-info-lighter: var(--color-info-lighter);
+	--current-info-lightest: var(--color-info-lightest);
 	color: var(--current-info);
 }
 [class*=':info']:focus {
@@ -273,6 +274,7 @@ a:hover {
 	--current-error: var(--color-danger);
 	--current-error-light: var(--color-danger-light);
 	--current-error-lighter: var(--color-danger-lighter);
+	--current-error-lightest: var(--color-danger-lightest);
 	color: var(--current-error);
 }
 [class*=':error']:focus {
