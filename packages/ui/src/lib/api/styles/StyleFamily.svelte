@@ -113,9 +113,8 @@
 		<Fieldset
 			legend={family.title}
 			id={family.id}
-			type="input-group"
 			layout={family.layout}
-			container={family.container}
+			container={family.container || 'burrito'}
 			variant={family.variant}
 			size={family.size}
 			name={familyName}

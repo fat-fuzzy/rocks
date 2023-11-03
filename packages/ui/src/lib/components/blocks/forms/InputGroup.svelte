@@ -32,7 +32,7 @@
 	}
 </script>
 
-<Fieldset legend={name} type="input-group" {...props}>
+<Fieldset legend={name} {...props}>
 	{#each items as inputOptions}
 		{@const {name, input, value, items, layout} = inputOptions}
 		{#if input === 'radio' || input === 'checkbox'}
