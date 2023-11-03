@@ -4,6 +4,7 @@
 .bg\:contrast > .bg\:polar,
 .bg\:contrast *:not(.bg\:polar) .bg\:polar {
 	--current-border-color: var(--current-gray-contrast);
+	color: var(--current-color);
 	background-color: var(--current-polar);
 }
 
@@ -11,6 +12,7 @@
 .bg\:polar > .bg\:contrast,
 .bg\:polar *:not(.bg\:contrast) .bg\:contrast {
 	--current-border-color: var(--current-polar);
+	color: var(--current-color);
 	background-color: var(--current-bg-contrast);
 }
 
@@ -18,6 +20,7 @@
 .bg\:polar > .bg\:blend,
 .bg\:polar *:not(.bg\:blend) .bg\:blend {
 	--current-border-color: var(--current-gray);
+	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
 
@@ -25,6 +28,7 @@
 	.bg\:blend,
 	.bg\:polar > .bg\:blend,
 	.bg\:polar *:not(.bg\:blend) .bg\:blend {
+		color: var(--current-color);
 		--current-border-color: var(--current-polar);
 	}
 }

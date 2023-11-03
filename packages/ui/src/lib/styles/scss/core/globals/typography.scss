@@ -53,10 +53,12 @@ h5 {
 
 pre {
 	font-family: var(--font-family-code);
-	border-radius: var(--radius-base);
-	background-color: var(--current-bg-color);
-	border: var(--border-width-lg) solid var(--current-border-color);
 	overflow: auto;
+}
+
+// Allow space for scrollbar on macOS
+pre:not(.feedback) {
+	padding-block: var(--current-size);
 }
 
 article,
