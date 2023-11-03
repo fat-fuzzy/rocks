@@ -409,6 +409,15 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				container: 'card',
+				exclude: [
+					'ActionLabel',
+					'Button',
+					'Toggle',
+					'InputCheck',
+					'InputFile',
+					'InputRadio',
+					'InputRange',
+				],
 				include: ['Feedback'],
 				items: [
 					{
@@ -449,6 +458,15 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				container: 'card',
+				exclude: [
+					'ActionLabel',
+					'Button',
+					'Toggle',
+					'InputCheck',
+					'InputFile',
+					'InputRadio',
+					'InputRange',
+				],
 				include: ['Feedback'],
 				items: [
 					{id: 'blocks.element.context.form', text: 'form', asset: '', value: 'form'},
