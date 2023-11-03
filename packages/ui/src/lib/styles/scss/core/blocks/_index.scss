@@ -5,7 +5,8 @@
  * where  `my-app` is any folder inside `styles/app` that uses or overrides the design tokens declared in the `styles/app/ui` folder
  */
 @forward './media'; // Use for framed elements: video, img, picture, canvas
-@forward './button'; // Use for normal and toggle buttons
+@forward './button'; // Use for basic button styles and colors
+@forward './toggle'; // Use for toggle button styles and colors (uses aria-pressed attribute)
 @forward './fieldset'; // Use for fieldset element: TODO: maybe move to form
 @forward './form'; // Use for form and form inputs
 @forward './tables'; // Use for tables = tabular data: https://www.w3.org/TR/tabular-data-model/

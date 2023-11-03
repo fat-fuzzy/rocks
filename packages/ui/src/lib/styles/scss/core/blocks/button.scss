@@ -17,24 +17,23 @@ button {
 button:hover {
 	cursor: pointer;
 	color: var(--current-color);
-	background-color: inherit;
+	background-color: var(--current-bg-contrast);
 	box-shadow: var(--current-shadow);
 }
 button:active {
 	border: var(--border-width) solid var(--current-gray);
 }
 button.outline {
-	color: inherit;
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-color);
-}
-button.outline:hover {
-	background-color: var(--current-bg-contrast);
 }
 button.outline:active {
 	color: inherit;
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-color);
+}
+button.outline:hover {
+	background-color: var(--current-gray);
 }
 
 button:disabled {
@@ -120,10 +119,34 @@ button.outline.highlight:not(:disabled):active {
 	background-color: var(--current-highlight-lighter);
 }
 
+//== Button info
+
+button.info {
+	border: var(--border-width) solid var(--current-info);
+	background-color: var(--current-info);
+	color: var(--color-dark);
+	outline-color: var(--current-info);
+}
+button.outline.info {
+	color: var(--current-info-dark);
+	background-color: inherit;
+	border: var(--border-width) solid var(--current-info);
+}
+button.info:not(:disabled):hover,
+button.outline.info:not(:disabled):hover {
+	color: var(--color-dark);
+	background-color: var(--current-info-light);
+}
+button.info:not(:disabled):active,
+button.outline.info:not(:disabled):active {
+	color: var(--color-dark);
+	background-color: var(--current-info-lighter);
+}
+
 //== Button success
 
 button.success {
-	border-color: var(--current-success);
+	border: var(--border-width) solid var(--current-success);
 	background-color: var(--current-success);
 	color: var(--color-dark);
 	outline-color: var(--current-success);
@@ -131,13 +154,12 @@ button.success {
 button.outline.success {
 	color: var(--current-success-dark);
 	background-color: inherit;
-	border-color: var(--current-success-dark);
+	border: var(--border-width) solid var(--current-success);
 }
 button.success:not(:disabled):hover,
 button.outline.success:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-success-light);
-	border-color: var(--current-success);
 }
 button.success:not(:disabled):active,
 button.outline.success:not(:disabled):active {
@@ -148,7 +170,7 @@ button.outline.success:not(:disabled):active {
 //== Button warning
 
 button.warning {
-	border-color: var(--current-warning);
+	border: var(--border-width) solid var(--current-warning);
 	background-color: var(--current-warning);
 	color: var(--color-dark);
 	outline-color: var(--current-warning);
@@ -156,13 +178,12 @@ button.warning {
 button.outline.warning {
 	color: var(--current-warning-dark);
 	background-color: inherit;
-	border-color: var(--current-warning-dark);
+	border: var(--border-width) solid var(--current-warning);
 }
 button.warning:not(:disabled):hover,
 button.outline.warning:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-warning-light);
-	border-color: var(--current-warning);
 }
 button.warning:not(:disabled):active,
 button.outline.warning:not(:disabled):active {
@@ -173,7 +194,7 @@ button.outline.warning:not(:disabled):active {
 //== Button error
 
 button.error {
-	border-color: var(--current-error);
+	border: var(--border-width) solid var(--current-error);
 	background-color: var(--current-error);
 	color: var(--color-dark);
 	outline-color: var(--current-error);
@@ -181,13 +202,12 @@ button.error {
 button.outline.error {
 	color: var(--current-error-dark);
 	background-color: inherit;
-	border-color: var(--current-error-dark);
+	border: var(--border-width) solid var(--current-error);
 }
 button.error:not(:disabled):hover,
 button.outline.error:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-error-light);
-	border-color: var(--current-error);
 }
 button.error:not(:disabled):active,
 button.outline.error:not(:disabled):active {
@@ -233,265 +253,6 @@ button.bare.accent:active {
 }
 button.bare.highlight:hover {
 	--current-border-color: var(--current-highlight-lighter);
-	color: var(--color-dark);
-	background-color: var(--current-highlight-lighter);
-}
-
-//== Toggle  default
-
-[aria-pressed='false']:hover {
-	box-shadow: var(--current-shadow);
-}
-[aria-pressed='true'] {
-	color: var(--current-color);
-	background-color: var(--current-bg-contrast);
-	box-shadow: var(--shadow-inset);
-}
-[aria-pressed='false']:hover {
-	background-color: var(--current-bg-color);
-}
-[aria-pressed='false']:active {
-	background-color: var(--current-gray);
-}
-[aria-pressed='true'] {
-	border-color: var(--current-gray); // TODO: improve color / border / background comps
-	background-color: var(--current-gray); // TODO: improve color / border / background comps
-}
-[aria-pressed='true']:hover {
-	background-color: var(--current-gray);
-}
-[aria-pressed='true']:active {
-	background-color: var(--current-bg-contrast);
-}
-.outline[aria-pressed='false'] {
-	border-color: var(--current-color);
-}
-.outline[aria-pressed='true'] {
-	border-color: var(--current-color);
-	background-color: var(--current-bg-contrast);
-}
-
-//== Toggle  primary
-
-.primary[aria-pressed='false'] {
-	color: var(--current-color-contrast);
-	background-color: var(--current-primary);
-}
-.primary.outline[aria-pressed='false'] {
-	color: var(--current-primary);
-	background-color: inherit;
-}
-button.primary[aria-pressed='false']:hover,
-.primary.outline[aria-pressed='false']:hover {
-	color: var(--color-dark);
-	background-color: var(--current-primary-light);
-}
-.primary[aria-pressed='false']:active,
-.primary.outline[aria-pressed='false']:active {
-	color: var(--current-primary);
-	background-color: var(--current-primary-lighter);
-}
-button.primary[aria-pressed='true'],
-button.primary.outline[aria-pressed='true'] {
-	color: var(--color-dark);
-	background-color: var(--current-primary-light);
-	border-color: var(--current-primary-light);
-}
-button.primary.outline[aria-pressed='true'] {
-	border-color: var(--current-primary);
-}
-button.primary[aria-pressed='true']:hover,
-button.primary.outline[aria-pressed='true']:hover {
-	color: var(--current-primary);
-	background-color: var(--current-primary-lighter);
-}
-button.primary[aria-pressed='true']:active,
-button.primary.outline[aria-pressed='true']:active {
-	color: var(--color-dark);
-	background-color: var(--current-primary-light);
-}
-
-//== Toggle  accent
-
-.accent[aria-pressed='false'] {
-	color: var(--color-light);
-	background-color: var(--current-accent);
-}
-.accent.outline[aria-pressed='false'] {
-	background-color: inherit;
-}
-button.accent[aria-pressed='false']:hover,
-button.accent.outline[aria-pressed='false']:hover {
-	color: var(--color-dark);
-	background-color: var(--current-accent-light);
-}
-.accent[aria-pressed='false']:active,
-button.accent.outline[aria-pressed='false']:active {
-	color: var(--current-dark);
-	background-color: var(--current-accent-lighter);
-}
-.accent[aria-pressed='true'],
-.accent.outline[aria-pressed='true'] {
-	color: var(--color-dark);
-	background-color: var(--current-accent-light);
-}
-button.accent[aria-pressed='true']:hover,
-button.accent.outline[aria-pressed='true']:hover {
-	color: var(--current-accent);
-	background-color: var(--current-accent-lighter);
-}
-.accent[aria-pressed='true']:active,
-.accent.outline[aria-pressed='true']:active {
-	color: var(--color-dark);
-	background-color: var(--current-accent-light);
-}
-
-//== Toggle  highlight
-
-.highlight[aria-pressed='false'] {
-	color: var(--color-dark);
-	background-color: var(--current-highlight);
-}
-.highlight.outline[aria-pressed='false'] {
-	background-color: inherit;
-}
-button.highlight[aria-pressed='false']:hover,
-button.highlight.outline[aria-pressed='false']:hover {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-light);
-}
-.highlight[aria-pressed='false']:active,
-.highlight.outline[aria-pressed='false']:active {
-	background-color: var(--current-highlight-lighter);
-}
-.highlight[aria-pressed='true'],
-.outline.highlight[aria-pressed='true'] {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-light);
-}
-button.highlight[aria-pressed='true']:hover,
-button.highlight.outline[aria-pressed='true']:hover {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-lighter);
-}
-.highlight[aria-pressed='true']:active,
-.highlight.outline[aria-pressed='true']:active {
-	background-color: var(--current-highlight-light);
-}
-
-//== Toggle  bare default
-
-.bare[aria-pressed] {
-	--current-border-color: var(--current-bg-color);
-	border: var(--border-width) solid var(--current-border-color);
-}
-.bare[aria-pressed='false'] {
-	color: var(--current-color);
-	background-color: inherit;
-}
-.bare[aria-pressed='false']:hover {
-	background-color: var(--current-gray);
-}
-.bare[aria-pressed='false']:active {
-	color: var(--color-dark);
-	background-color: var(--current-bg-contrast);
-}
-.bare[aria-pressed='true'] {
-	color: var(--current-color);
-	background-color: var(--current-bg-polar);
-}
-.bare[aria-pressed='true']:hover {
-	background-color: var(--current-gray);
-}
-.bare[aria-pressed='true']:active {
-	color: var(--current-color);
-	background-color: var(--current-bg-polar);
-}
-
-//== Toggle bare primary
-
-.bare.primary[aria-pressed='false'] {
-	color: var(--current-primary);
-	background-color: inherit;
-}
-.bare.primary[aria-pressed='false']:hover {
-	color: var(--color-primary);
-	background-color: var(--current-primary-lighter);
-}
-.bare.primary[aria-pressed='false']:active {
-	color: var(--color-dark);
-	background-color: var(--color-primary-lighter);
-}
-.bare.primary[aria-pressed='true'] {
-	color: var(--color-primary);
-	background-color: var(--current-primary-lighter);
-}
-.bare.primary[aria-pressed='true']:hover {
-	color: var(--color-dark);
-	background-color: var(--color-primary-light);
-}
-.bare.primary[aria-pressed='true']:active {
-	color: var(--color-dark);
-	background-color: var(--color-primary-lighter);
-}
-
-//== Toggle  bare accent
-
-.bare.accent[aria-pressed='false'] {
-	color: var(--current-accent);
-	background-color: inherit;
-}
-.bare.accent[aria-pressed='false']:hover {
-	background-color: var(--current-accent-lighter);
-}
-.bare.accent[aria-pressed='false']:active {
-	color: var(--color-dark);
-	background-color: var(--current-accent-lighter);
-}
-.bare.accent[aria-pressed='true'] {
-	color: var(--color-accent);
-	background-color: var(--current-accent-lighter);
-}
-.bare.accent[aria-pressed='true']:hover {
-	color: var(--color-dark);
-	background-color: var(--current-accent-light);
-}
-.bare.accent[aria-pressed='true']:active {
-	color: var(--color-dark);
-	background-color: var(--current-accent-lighter);
-}
-
-//== Toggle  bare highlight
-
-.bare.highlight[aria-pressed='false'] {
-	color: var(--current-dark);
-	background-color: inherit;
-}
-.night .bare.highlight[aria-pressed='false'] {
-	color: var(--current-highlight-light);
-}
-.night .bare.highlight[aria-pressed='false']:hover,
-.bare.highlight[aria-pressed='false']:hover {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-lighter);
-}
-.night .bare.highlight[aria-pressed='false']:active,
-.bare.highlight[aria-pressed='false']:active {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-lighter);
-}
-.night .bare.highlight[aria-pressed='true'],
-.bare.highlight[aria-pressed='true'] {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-lighter);
-}
-.night .bare.highlight[aria-pressed='true']:hover,
-.bare.highlight[aria-pressed='true']:hover {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-light);
-}
-.night .bare.highlight[aria-pressed='true']:active,
-.bare.highlight[aria-pressed='true']:active {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
