@@ -239,45 +239,45 @@ a:hover {
 
 //== Feedback colors
 
-[class*=':info'] {
+[class*='info'] {
 	--current-info: var(--color-info);
 	--current-info-light: var(--color-info-light);
 	--current-info-lighter: var(--color-info-lighter);
 	--current-info-lightest: var(--color-info-lightest);
 	color: var(--current-info);
 }
-[class*=':info']:focus {
+[class*='info']:focus {
 	outline-color: var(--current-info);
 }
 
-[class*=':success'] {
+[class*='success'] {
 	--current-success: var(--color-success);
 	--current-success-light: var(--color-success-light);
 	--current-success-lighter: var(--color-success-lighter);
 	color: var(--current-success);
 }
-[class*=':success']:focus {
+[class*='success']:focus {
 	outline-color: var(--current-success);
 }
 
-[class*=':warning'] {
+[class*='warning'] {
 	--current-warning: var(--color-warning);
 	--current-warning-light: var(--color-warning-light);
 	--current-warning-lighter: var(--color-warning-lighter);
 	color: var(--current-warning);
 }
-[class*=':warning']:focus {
+[class*='warning']:focus {
 	outline-color: var(--current-warning);
 }
 
-[class*=':error'] {
+[class*='error'] {
 	--current-error: var(--color-danger);
 	--current-error-light: var(--color-danger-light);
 	--current-error-lighter: var(--color-danger-lighter);
 	--current-error-lightest: var(--color-danger-lightest);
 	color: var(--current-error);
 }
-[class*=':error']:focus {
+[class*='error']:focus {
 	outline-color: var(--current-error);
 }
 .bg\:info {
