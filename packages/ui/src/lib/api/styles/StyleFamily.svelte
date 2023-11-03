@@ -178,6 +178,7 @@
 							size={apiSize}
 							color={apiColor}
 							variant={apiVariant}
+							container={styleInput.container}
 							on:click={(event) => handleToggle(event, familyName, styleInput.id)}
 						/>
 					{/if}

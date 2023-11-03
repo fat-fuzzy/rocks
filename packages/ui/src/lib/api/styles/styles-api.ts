@@ -169,9 +169,9 @@ const app: AppStyles = {
 		name: 'Settings',
 		title: '',
 		id: 'app.settings',
-		layout: 'switcher',
-		container: 'card:lg',
-		size: 'sm',
+		layout: 'flex',
+		container: 'card',
+		size: 'lg',
 		variant: '',
 		items: [
 			new StyleInputGroup({
@@ -181,7 +181,7 @@ const app: AppStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				items: [
 					{id: 'app.settings.brightness.day', text: 'day', asset: '☀️', value: 'day'},
 					{id: 'app.settings.brightness.night', text: 'night', asset: '🌙', value: 'night'},
@@ -194,7 +194,7 @@ const app: AppStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				items: [
 					{id: 'app.settings.contrast.contrast', text: 'contrast', asset: '🌗', value: 'contrast'}, // TODO : fix color vars & classes
 					{id: 'app.settings.contrast.blend', text: 'blend', asset: '🌑', value: 'blend'}, // TODO: night / day asset option
@@ -225,9 +225,9 @@ const shared: SharedStyles = {
 	container: new StyleFamily({
 		name: 'Container',
 		title: '',
-		layout: 'switcher',
-		container: 'card:lg',
-		size: 'sm',
+		layout: 'flex grow',
+		container: 'card',
+		size: 'lg',
 		variant: '',
 		id: 'shared.container',
 		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle'],
@@ -239,7 +239,7 @@ const shared: SharedStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				exclude: ['Stack', 'Burrito'],
 				items: [
 					{id: 'shared.container.container.center', text: 'center', asset: '', value: 'center'},
@@ -253,7 +253,7 @@ const shared: SharedStyles = {
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
-				variant: '',
+				container: 'card',
 				exclude: ['Nav', 'Stack', 'Burrito'],
 				items: [
 					{id: 'shared.container.size.xs', text: 'xs', asset: '', value: 'xs'},
@@ -268,9 +268,9 @@ const shared: SharedStyles = {
 	layout: new StyleFamily({
 		name: 'Layout',
 		title: '',
-		layout: 'switcher',
-		container: 'card:lg',
-		size: 'sm',
+		layout: 'flex grow',
+		container: 'card',
+		size: 'lg',
 		variant: '',
 		id: 'shared.layout',
 		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'Feedback'],
@@ -282,7 +282,7 @@ const shared: SharedStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				exclude: [
 					'compositions',
 					'layouts',
@@ -331,7 +331,7 @@ const shared: SharedStyles = {
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
-				variant: '',
+				container: 'card',
 				exclude: [
 					'compositions',
 					'layouts',
@@ -363,9 +363,9 @@ const blocks: BlockStyles = {
 		name: 'Element',
 		title: '',
 		id: 'blocks.element',
-		layout: 'switcher',
-		container: 'card:lg',
-		size: 'md',
+		layout: 'flex grow',
+		container: 'card',
+		size: 'lg',
 		variant: '',
 		items: [
 			new StyleInputGroup({
@@ -375,7 +375,7 @@ const blocks: BlockStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				exclude: ['ActionLabel', 'Feedback'],
 				items: [
 					{
@@ -408,7 +408,7 @@ const blocks: BlockStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				include: ['Feedback'],
 				items: [
 					{
@@ -448,7 +448,7 @@ const blocks: BlockStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				include: ['Feedback'],
 				items: [
 					{id: 'blocks.element.context.form', text: 'form', asset: '', value: 'form'},
@@ -462,7 +462,7 @@ const blocks: BlockStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
 					{id: 'blocks.element.variant.default', text: 'default', asset: '', value: 'default'},
@@ -477,7 +477,7 @@ const blocks: BlockStyles = {
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
-				variant: '',
+				container: 'card',
 				exclude: ['ActionLabel'],
 				items: [
 					{id: 'blocks.element.size.xs', text: 'xs', asset: '', value: 'xs'},
@@ -494,7 +494,7 @@ const blocks: BlockStyles = {
 				input: 'datalist',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				exclude: [
 					'ButtonMenu',
 					'ToggleMenu',
@@ -518,9 +518,9 @@ const layouts: LayoutStyles = {
 		name: 'Element',
 		title: '',
 		id: 'layouts.element',
-		layout: 'switcher',
-		container: 'card:lg',
-		size: 'md',
+		layout: 'flex grow',
+		container: 'card',
+		size: 'lg',
 		variant: '',
 		items: [
 			new StyleInputGroup({
@@ -530,7 +530,7 @@ const layouts: LayoutStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				exclude: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.content.card', text: 'card', asset: '', value: 'card'},
@@ -545,7 +545,7 @@ const layouts: LayoutStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.side.card', text: 'card', asset: '', value: 'card'},
@@ -560,7 +560,7 @@ const layouts: LayoutStyles = {
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card',
+				container: 'card',
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.main.card', text: 'card', asset: '', value: 'card'},
@@ -575,7 +575,7 @@ const layouts: LayoutStyles = {
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
-				variant: '',
+				container: 'card',
 				items: [
 					{id: 'layouts.element.size.xs', text: 'xs', asset: '', value: 'xs'},
 					{id: 'layouts.element.size.sm', text: 'sm', asset: '', value: 'sm'},
@@ -591,7 +591,7 @@ const layouts: LayoutStyles = {
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
-				variant: '',
+				container: 'card',
 				include: ['Switcher'],
 				items: [
 					{id: 'layouts.element.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
