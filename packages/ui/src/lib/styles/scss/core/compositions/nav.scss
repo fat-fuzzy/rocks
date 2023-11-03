@@ -82,6 +82,9 @@ nav li[aria-current='page'] > a:visited {
 	padding-inline-start: var(--current-size);
 	padding-inline-end: var(--current-size);
 }
+.night [class^='l:sidebar'] nav li[aria-current='page'] > a {
+	color: var(--color-dark);
+}
 
 // override Active Link styles for top level link
 ul.depth-0 > li > a {
