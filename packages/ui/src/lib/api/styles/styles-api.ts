@@ -549,7 +549,8 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				size: 'sm',
 				container: 'card',
-				exclude: ['Sidebar'],
+				exclude: ['layouts', 'Sidebar'],
+				include: ['Burrito', 'Reveal', 'RevealAuto', 'Stack', 'Switcher'],
 				items: [
 					{id: 'layouts.element.content.card', text: 'card', asset: '', value: 'card'},
 					{id: 'layouts.element.content.form', text: 'form', asset: '', value: 'form'},
@@ -564,6 +565,7 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				size: 'sm',
 				container: 'card',
+				exclude: ['layouts'],
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.side.card', text: 'card', asset: '', value: 'card'},
@@ -579,6 +581,7 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				size: 'sm',
 				container: 'card',
+				exclude: ['layouts'],
 				include: ['Sidebar'],
 				items: [
 					{id: 'layouts.element.main.card', text: 'card', asset: '', value: 'card'},
@@ -610,6 +613,7 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				size: 'sm',
 				container: 'card',
+				exclude: ['layouts'],
 				include: ['Switcher'],
 				items: [
 					{id: 'layouts.element.breakpoint.xs', text: 'xs', asset: '', value: 'xs'},
