@@ -12,7 +12,7 @@
 	$: colorClasses = `card:xxl l:stack:sm`
 </script>
 
-<div class="l:stack:xxl">
+<div class="l:switcher bp:lg">
 	<section>
 		<div class="l:stack:md">
 			<svelte:element this={`h${depth}`} class="font:lg">Theme colors</svelte:element>
