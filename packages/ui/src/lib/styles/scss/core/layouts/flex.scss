@@ -1,7 +1,9 @@
 [class*='l:flex'] {
+	--gap: var(--current-size);
 	display: flex;
 	flex-wrap: wrap;
 	align-items: stretch;
+	gap: var(--gap);
 }
 
 .l\:flex.reverse {
@@ -12,7 +14,7 @@
 	flex-wrap: nowrap;
 }
 
-.l\:flex.grow {
+.l\:flex.grow > * {
 	flex-grow: 1;
 }
 
