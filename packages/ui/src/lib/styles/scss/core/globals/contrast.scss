@@ -17,6 +17,14 @@
 .bg\:blend,
 .bg\:polar > .bg\:blend,
 .bg\:polar *:not(.bg\:blend) .bg\:blend {
-	--current-border-color: var(--current-polar);
+	--current-border-color: var(--current-gray);
 	background-color: var(--current-bg-color);
+}
+
+.night {
+	.bg\:blend,
+	.bg\:polar > .bg\:blend,
+	.bg\:polar *:not(.bg\:blend) .bg\:blend {
+		--current-border-color: var(--current-polar);
+	}
 }
