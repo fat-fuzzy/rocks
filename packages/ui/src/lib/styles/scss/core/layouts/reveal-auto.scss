@@ -359,70 +359,8 @@
 	}
 }
 
-// @include mixins.min-width(var(--bp-lg)) {
-@media screen and (min-width: 1620px) {
-	.l\:reveal\:auto.bp\:lg .show {
-		position: initial;
-		min-inline-size: unset;
-	}
-
-	.l\:reveal\:auto.bp\:lg > button {
-		display: none;
-	}
-
-	.l\:reveal\:auto.bp\:lg .show {
-		top: 0;
-		width: auto;
-		max-height: unset;
-		background-color: inherit;
-		box-shadow: none;
-	}
-
-	.l\:reveal\:auto.bp\:lg .show,
-	.l\:reveal\:auto.bp\:lg [class*='hide:'] {
-		border: unset;
-		clip: unset;
-		height: auto;
-		margin: initial;
-		overflow: hidden;
-		padding: 0;
-		position: unset;
-		top: 0;
-		width: 100%;
-		white-space: normal;
-	}
-
-	.l\:reveal\:auto.bp\:lg > nav > ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		width: unset;
-		height: var(--header-height);
-		display: flex;
-		align-items: center;
-		list-style: none;
-		background-size: contain;
-		flex-wrap: nowrap;
-		gap: var(--gap);
-	}
-
-	.l\:reveal\:auto.bp\:lg > nav li {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		min-width: unset;
-		height: var(--header-height);
-		display: flex;
-		align-items: center;
-		list-style: none;
-		background-size: contain;
-		flex-wrap: nowrap;
-		gap: var(--gap);
-	}
-}
-
 // @include mixins.min-width(var(--bp-xl)) {
-@media screen and (min-width: 1620px) {
+@media screen and (min-width: 2048px) {
 	.l\:reveal\:auto.bp\:xl .show {
 		position: initial;
 		min-inline-size: unset;
@@ -484,7 +422,7 @@
 }
 
 // @include mixins.min-width(var(--bp-xxl)) {
-@media screen and (min-width: 2048px) {
+@media screen and (min-width: 3048px) {
 	.l\:reveal\:auto.bp\:xxl .show {
 		position: initial;
 		min-inline-size: unset;
