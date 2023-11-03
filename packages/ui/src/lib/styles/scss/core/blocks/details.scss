@@ -1,5 +1,5 @@
-details {
-	// TODO
+p + details {
+	margin-block-start: var(--current-size-plus);
 }
 
 details > summary {
