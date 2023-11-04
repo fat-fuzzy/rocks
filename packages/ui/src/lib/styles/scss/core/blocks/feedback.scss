@@ -69,5 +69,9 @@ pre.feedback {
 .night {
 	pre.feedback {
 		--current-bg-color: var(--current-polar);
+		--current-border-color: var(--color-gray-4);
+	}
+	pre.feedback[class*='bare:'] {
+		--current-border-color: var(--current-polar);
 	}
 }
