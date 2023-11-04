@@ -57,6 +57,11 @@ header {
 	color: var(--current-primary-light);
 }
 
+.header-app > .l\:side .svg {
+	fill: var(--current-color);
+	height: calc(var(--current-font-size-plus) * 1.85);
+	width: auto;
+}
 //== Need to override global <a> hover styles in nav and header <a>
 .header-app a:hover {
 	background-color: initial;

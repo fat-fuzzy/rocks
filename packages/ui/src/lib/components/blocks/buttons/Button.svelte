@@ -4,14 +4,15 @@
 
 	export let id = 'button'
 	export let name = 'button'
+	export let value = ''
 	export let disabled = false
 	export let color = ''
-	export let variant = ''
+	export let variant = 'default'
 	export let layout = 'switcher'
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
-	export let asset = ''
+	export let asset = '' // emoji:value or svg:value
 	export let text = ''
 	export let formaction = 'enter'
 	export let page = ''
@@ -21,8 +22,7 @@
 		window.alert(`${format.formatLabel(text, asset)} Clicked`)
 	}
 
-	$: variantClass = variant === 'default' ? '' : variant
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variantClass} ${align}`
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${asset} ${align}`
 </script>
 
 <button
@@ -36,5 +36,5 @@
 	value={id}
 	{name}
 >
-	<slot>{format.formatLabel(text, asset)}</slot>
+	<slot>{text}</slot>
 </button>

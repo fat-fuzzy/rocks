@@ -4,7 +4,6 @@
 	import {onMount, createEventDispatcher} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
 	import {createMachine} from 'xstate'
-	import format from '$lib/utils/format'
 
 	const dispatch = createEventDispatcher()
 
@@ -15,11 +14,11 @@
 	export let disabled = false
 	export let color = ''
 	export let variant = ''
-	export let layout = 'switcher'
+	export let layout = 'flex'
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
-	export let asset = '' // TODO: emoji OR svg
+	export let asset = '' // emoji:value or svg:value
 	export let text = ''
 	export let formaction = 'update'
 	export let page = ''
@@ -56,6 +55,7 @@
 			const payload = {
 				id,
 				value,
+				asset,
 				pressed: $state.value === 'active',
 				send,
 			}
@@ -63,8 +63,7 @@
 		}
 	})
 
-	$: variantClass = variant === 'default' ? '' : variant
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variantClass} ${align}`
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${asset} ${align}`
 	$: pressed = $state.value === 'active'
 </script>
 
@@ -79,5 +78,5 @@
 	{value}
 	{name}
 >
-	{format.formatLabel(text, asset)}
+	{text}
 </button>

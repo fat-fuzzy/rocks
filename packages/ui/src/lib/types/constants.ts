@@ -35,9 +35,12 @@ export const languages = [
 import githubDay from '$lib/images/day/icon-github.svg'
 import githubNight from '$lib/images/night/icon-github.svg'
 // TODO: make svg css themeable / fix dark theme
-export const assets: {[key: string]: string} = {
-	day: githubDay,
-	night: githubNight,
+export const assets: {[key: string]: {[key: string]: string}} = {
+	day: {
+		'link-github': githubDay,
+		'button-theme': '☀️',
+	},
+	night: {'link-github': githubNight, 'button-theme': emojis.night},
 }
 // export const emojis = {
 // 	splash: {

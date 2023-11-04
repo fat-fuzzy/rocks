@@ -1,25 +1,25 @@
 export default {
 	ButtonMenu: {
 		items: [
-			{id: 'vader', text: 'Vader', asset: '👾'},
-			{id: 'ollie', text: 'Ollie', asset: '🐙'},
-			{id: 'moby', text: 'Moby', asset: '🐳'},
+			{id: 'vader', text: 'Vader', asset: 'emoji:vader'},
+			{id: 'ollie', text: 'Ollie', asset: 'emoji:ollie'},
+			{id: 'moby', text: 'Moby', asset: 'emoji:moby'},
 		],
 	},
 	ToggleMenu: {
 		items: [
-			{id: 'idea', text: 'Idea', asset: '💡'},
-			{id: 'profile', text: 'Profile', asset: '🦁'},
-			{id: 'favorite', text: 'Favorite', asset: '❤️'},
+			{id: 'idea', text: 'Idea', asset: 'emoji:idea'},
+			{id: 'profile', text: 'Profile', asset: 'emoji:profile'},
+			{id: 'favorite', text: 'Favorite', asset: 'emoji:favorite'},
 		],
 	},
 	RevealMenu: {
 		slug: 'ui',
 		title: 'RevealMenu',
 		items: [
-			{id: 'idea', text: 'Idea', asset: '💡'},
-			{id: 'profile', text: 'Profile', asset: '🦁'},
-			{id: 'favorite', text: 'Favorite', asset: '❤️'},
+			{id: 'idea', text: 'Idea', asset: 'emoji:idea'},
+			{id: 'profile', text: 'Profile', asset: 'emoji:profile'},
+			{id: 'favorite', text: 'Favorite', asset: 'emoji:favorite'},
 		],
 	},
 	RadioGroup: [
@@ -34,22 +34,22 @@ export default {
 	],
 	LinkList: {
 		items: [
-			{slug: '', title: 'Home', asset: '🥚'},
-			{slug: 'about', title: 'About', asset: '🐥'},
+			{id: 'home', slug: '', title: 'Home'},
+			{id: 'about', slug: 'about', title: 'About'},
 		],
 	},
 	Nav: {
 		items: [
-			{slug: '', title: 'Home', asset: '🥚'},
-			{slug: 'about', title: 'About', asset: '🐥'},
+			{id: 'home', slug: '', title: 'Home', asset: 'emoji:home'},
+			{id: 'about', slug: 'about', title: 'About', asset: 'emoji:about'},
 		],
 	},
 	DetailsNav: {
 		slug: 'ui',
 		title: 'DetailsNav',
 		items: [
-			{slug: '', title: 'Home', asset: '🥚'},
-			{slug: 'about', title: 'About', asset: '🐥'},
+			{id: 'home', slug: '', title: 'Home'},
+			{id: 'about', slug: 'about', title: 'About'},
 		],
 	},
 	RevealNav: {

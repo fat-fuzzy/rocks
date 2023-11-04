@@ -12,6 +12,7 @@
 	export let container = ''
 	export let color = ''
 	export let variant = ''
+	export let asset = ''
 	export let multiple = false
 	export let formaction = 'update'
 	export let page = ''
@@ -51,6 +52,7 @@
 				{@const itemColor = toggle.color ?? color}
 				{@const itemVariant = toggle.variant ?? variant}
 				{@const itemSize = toggle.size ?? size}
+				{@const itemAsset = toggle.asset ?? asset}
 				<li>
 					<Toggle
 						on:click={onClick}
@@ -61,6 +63,7 @@
 						color={itemColor}
 						variant={itemVariant}
 						size={itemSize}
+						asset={itemAsset}
 					/>
 				</li>
 			{/each}
@@ -72,6 +75,7 @@
 			{@const itemColor = toggle.color ?? color}
 			{@const itemVariant = toggle.variant ?? variant}
 			{@const itemSize = toggle.size ?? size}
+			{@const itemAsset = toggle.asset ?? asset}
 			<li>
 				<Toggle
 					on:click={onClick}
@@ -82,6 +86,7 @@
 					color={itemColor}
 					variant={itemVariant}
 					size={itemSize}
+					asset={itemAsset}
 				/>
 			</li>
 		{/each}

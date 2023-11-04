@@ -9,14 +9,14 @@
 	export let component: ComponentType
 	export let props: any
 
-	let breakpoint = ''
-	let layout = ''
-	let color = ''
-	let status = ''
-	let context = ''
-	let variant = ''
+	let breakpoint = props?.breakpoint || ''
+	let layout = props?.layout || ''
+	let color = props?.color || ''
+	let status = props?.status || ''
+	let context = props?.context || ''
+	let variant = props?.variant || ''
 	let asset = props?.asset || ''
-	let size = '' // element's own size
+	let size = props?.size || '' // element's own size
 
 	$: styles = $currentStyles
 	// Block options

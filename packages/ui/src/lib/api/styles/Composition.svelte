@@ -9,12 +9,14 @@
 	export let component: ComponentType
 	export let props: any
 
-	let breakpoint = ''
-	let layout = ''
-	let color = ''
+	let breakpoint = props?.breakpoint || ''
+	let layout = props?.layout || ''
+	let color = props?.color || ''
+	let variant = props?.variant || ''
+	let asset = props?.asset || ''
+	let size = props?.size || '' // element's own size
+
 	let background = ''
-	let variant = ''
-	let size = '' // element's own size
 	let page = ''
 
 	$: styles = $currentStyles
@@ -28,7 +30,7 @@
 	$: layout = styles.shared?.layout.layout ?? layout
 	$: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
 
-	$: props = {...props, page, title, color, variant, size, layout, breakpoint, background}
+	$: props = {...props, page, title, color, variant, size, layout, breakpoint, asset, background}
 </script>
 
 <svelte:component this={component} id={title} {...props} />
