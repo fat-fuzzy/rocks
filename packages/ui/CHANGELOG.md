@@ -1,5 +1,13 @@
 # @fat-fuzzy/ui
 
+## 0.1.20
+
+### Patch Changes
+
+- 11fc93c: [ui] Manage icons (emoji/svg) using design tokens
+  [ui] Calibrate feedback colors / theme combinations
+  [doc+play] Update style tokens
+
 ## 0.1.19
 
 ### Patch Changes
