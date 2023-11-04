@@ -26,26 +26,14 @@
 	background-color: var(--current-bg-color);
 }
 
-.feedback[class*='default:'] {
+.feedback.default {
 	box-shadow: var(--current-shadow);
 }
-.feedback[class*='default:info']:not(pre),
-.feedback[class*='bare:info'] {
-	--current-border-color: var(--current-info-lighter);
+.feedback.bare {
+	--current-bg-color: var(--current-bg-contrast);
+	--current-border-color: var(--current-bg-color);
 }
-.feedback[class*='default:success']:not(pre),
-.feedback[class*='bare:success'] {
-	--current-border-color: var(--current-success-lighter);
-}
-.feedback[class*='default:warning']:not(pre),
-.feedback[class*='bare:warning'] {
-	--current-border-color: var(--current-warning-lighter);
-}
-.feedback[class*='default:error']:not(pre),
-.feedback[class*='bare:error'] {
-	--current-border-color: var(--current-error-lighter);
-}
-pre.feedback[class*='bare:'] {
+pre.feedback.bare {
 	--current-border-color: var(--color-gray-5);
 }
 pre.feedback[class*=':info'] {
@@ -71,7 +59,7 @@ pre.feedback {
 		--current-bg-color: var(--current-polar);
 		--current-border-color: var(--color-gray-4);
 	}
-	pre.feedback[class*='bare:'] {
+	pre.feedback.bare {
 		--current-border-color: var(--current-polar);
 	}
 }
