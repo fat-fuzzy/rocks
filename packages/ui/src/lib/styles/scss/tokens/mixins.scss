@@ -50,6 +50,16 @@ $current_cssvars: ();
 	}
 }
 
+@mixin generateEmojiAssets($design_tokens, $prefix) {
+	@each $name, $value in $design_tokens {
+		.emoji\:#{$name}::before,
+		.emoji.#{$name}::before,
+		.emoji[class*=':#{$name}']::before {
+			content: '#{$value}';
+		}
+	}
+}
+
 @mixin generateModularScale(
 	// $design_tokens,
 	$steps: $modular-scale-steps,
@@ -187,6 +197,7 @@ $current_cssvars: ();
 	$modular-scale-steps-minus,
 	$typography,
 	$colors,
+	$assets,
 	$prefix
 ) {
 	@include mapCssVars($breakpoints, $prefix);
@@ -208,6 +219,7 @@ $current_cssvars: ();
 	@include mapCssVars($layout, $prefix);
 	@include mapCssVars($typography, $prefix);
 	@include mapCssVars($colors, $prefix);
+	@include generateEmojiAssets($assets, $prefix);
 }
 
 @mixin theme-default(
@@ -220,6 +232,7 @@ $current_cssvars: ();
 	$modular-scale-steps-minus,
 	$typography,
 	$colors,
+	$assets,
 	$prefix
 ) {
 	@include generateCssVars($breakpoints, $prefix);
@@ -241,4 +254,5 @@ $current_cssvars: ();
 	@include generateCssVars($layout, $prefix);
 	@include generateCssVars($typography, $prefix);
 	@include generateCssVars($colors, $prefix);
+	@include generateEmojiAssets($assets, $prefix);
 }
