@@ -194,10 +194,8 @@
 									handleSelect(event, familyName, styleInput.name, styleInput.id)}
 							/>
 							<datalist id={`datalist-${styleInput.name}`}>
-								{#each items as { id, text, asset }}
-									<option {id} value={asset}>
-										{format.formatLabel(text || '', asset)}
-									</option>
+								{#each items as { id, text, asset, value }}
+									<option {id} label={text} value={`${asset}:${value}`} />
 								{/each}
 							</datalist>
 						</label>

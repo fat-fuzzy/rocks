@@ -11,6 +11,7 @@
 	export let container = 'card'
 	export let color = ''
 	export let variant = ''
+	export let asset = ''
 	export let formaction = 'enter'
 	export let page = ''
 	export let items: any = [] // TODO Fix type
@@ -35,6 +36,7 @@
 				{@const itemColor = button.color ?? color}
 				{@const itemVariant = button.variant ?? variant}
 				{@const itemSize = button.size ?? size}
+				{@const itemAsset = button.asset ?? asset}
 				<li>
 					<Button
 						{onClick}
@@ -45,6 +47,7 @@
 						color={itemColor}
 						variant={itemVariant}
 						size={itemSize}
+						asset={itemAsset}
 					/>
 				</li>
 			{/each}
@@ -56,6 +59,7 @@
 			{@const itemColor = button.color ?? color}
 			{@const itemVariant = button.variant ?? variant}
 			{@const itemSize = button.size ?? size}
+			{@const itemAsset = button.asset ?? asset}
 			<li>
 				<Button
 					{onClick}
@@ -66,6 +70,7 @@
 					color={itemColor}
 					variant={itemVariant}
 					size={itemSize}
+					asset={itemAsset}
 				/>
 			</li>
 		{/each}

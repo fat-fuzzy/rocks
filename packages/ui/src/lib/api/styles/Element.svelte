@@ -19,7 +19,7 @@
 	export let category = ''
 	export let color = 'primary:light' // TODO: expose breakpoint too
 	export let page = ''
-	export let props: any = {}
+	export let props: any = getProps({category, component: title}) || {}
 	props.page = page
 
 	let ApiElement: {[category: string]: ComponentType} = {
@@ -34,6 +34,7 @@
 	let background = ''
 	let container = ''
 	let size = '' // Container size
+	let useCase = '' // Container size
 
 	$: styles = $currentStyles
 	// App settings (user controlled)
@@ -43,6 +44,7 @@
 	// - [container + size] work together
 	$: container = styles.shared?.container.container ?? container
 	$: size = styles.shared?.container.size ?? size
+	$: useCase = styles.blocks?.element.status ?? useCase
 
 	$: containerContext = `l:${container}:${size}`
 </script>
@@ -57,14 +59,36 @@
 				</svelte:element>
 			</a>
 		</header>
-		<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
+		{#if props?.useCases}
+			{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
+			<svelte:component
+				this={ApiElement[category]}
+				{isPage}
+				{title}
+				{component}
+				props={currentProps}
+			/>
+		{:else}
+			<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
+		{/if}
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
 	<article class="l:sidebar:xs">
 		<section class={`l:main card:xl inset ${brightness} bg:${background}`}>
 			<div class={containerContext}>
-				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
+				{#if props?.useCases}
+					{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
+					<svelte:component
+						this={ApiElement[category]}
+						{isPage}
+						{title}
+						{component}
+						props={currentProps}
+					/>
+				{:else}
+					<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
+				{/if}
 			</div>
 		</section>
 		<section class="l:side">

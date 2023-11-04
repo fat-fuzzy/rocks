@@ -13,26 +13,29 @@
 	let currentTheme = themes[$theme]
 	// let currentLang = langs[$lang]
 	// let langIcon = emojis[currentLang]
-	export let type = '' // asset type: emoji or icon
+	export let id = ''
 	export let variant = '' // style: round, [...]
 	export let title = '' // text or alt if variant==round
-	export let asset = ''
+	export let asset = '' // asset type: emoji or icon
+	let assetValue = ''
+
 	$: {
-		if (type === 'emoji') {
-			asset = emojis[currentTheme]
-		} else if (type === 'svg') {
-			asset = assets[currentTheme]
+		if (asset === 'emoji') {
+			assetValue = emojis[currentTheme]
+		} else if (asset === 'svg') {
+			assetValue = assets[currentTheme][id]
 		}
 	}
 </script>
 
-{#if type === 'icon'}
-	<img src={assets[asset]} alt={title} class={type} />
+{#if asset === 'svg'}
+	<!-- TODO: import svg directly or bsse64 in css -->
+	<img src={assetValue} alt={title} class={`${id} ${asset}`} />
 	{#if variant !== 'round'}
 		{title}
 	{/if}
 {:else if variant === 'round'}
-	{asset}
+	{assetValue}
 {:else}
-	{format.formatLabel(title, asset)}
+	{format.formatLabel(title, assetValue)}
 {/if}

@@ -21,16 +21,14 @@
 				id: 'button-theme',
 				title: 'Theme',
 				action: 'theme',
-				asset: 'day', // Fix asset per theme
-				type: 'emoji',
+				asset: 'emoji', // Fix asset per theme
 				variant: 'round',
 			},
 			{
 				id: 'link-github',
 				title: 'GitHub icon',
 				url: 'https://github.com/fat-fuzzy/rocks',
-				asset: 'day', // Fix asset per theme
-				type: 'icon',
+				asset: 'svg', // Fix asset per theme
 				variant: 'round',
 			},
 			// {
@@ -129,14 +127,14 @@
 			use:clickOutside
 			on:clickOutside={handleClickOutsideActionsMenu}
 		>
-			{#each items.side as { title, action, url, asset, type, variant, subitems }}
+			{#each items.side as { id, title, action, url, asset, variant, subitems }}
 				{#if url}
 					<a class={variant} href={url} target="_blank" rel="noreferrer">
-						<ActionLabel {title} {type} {asset} {variant} />
+						<ActionLabel {title} {id} {asset} {variant} />
 					</a>
 				{:else if action}
 					<button on:click={actions[action]} class={`${variant} font:xl`}>
-						<ActionLabel {title} {type} {asset} {variant} />
+						<ActionLabel {title} {id} {asset} {variant} />
 					</button>
 					<!-- {#if subitems}
 						<div class={actionsClass}>

@@ -21,8 +21,8 @@
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
 		<li aria-current={current(slug) ? 'page' : undefined}>
-			<a data-sveltekit-preload-data href={format.formatHref(path, slug)}>
-				{format.formatLabel(title, asset)}
+			<a data-sveltekit-preload-data href={format.formatHref(path, slug)} class={asset}>
+				{title}
 			</a>
 			{#if subItems}
 				<svelte:self
