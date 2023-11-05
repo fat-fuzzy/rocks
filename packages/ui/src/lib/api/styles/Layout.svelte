@@ -30,6 +30,7 @@
 	$: content = styles.layouts?.element.content ?? 'card'
 	$: sideContent = styles.layouts?.element.side ?? 'card'
 	$: mainContent = styles.layouts?.element.main ?? 'text'
+	$: contentStyles = `card:${size} box ${size} bg:highlight:lighter`
 </script>
 
 {#if !isPage}
@@ -38,7 +39,7 @@
 		<svelte:component this={component} id={title} {size} {background} {...props}>
 			<div slot="side">
 				{#each fixtureProps.card as item}
-					<div class={`card:${size} box ${item} ${size}`}>{item}</div>
+					<div class={contentStyles}>{item}</div>
 				{/each}
 			</div>
 			<div slot="main">
@@ -49,14 +50,14 @@
 		<svelte:component this={component} id={title} {size} {background} {breakpoint} {...props}>
 			<svelte:fragment slot="content">
 				{#each fixtureProps.form as item}
-					<div class={`card:${size} box ${item} ${size}`}>{item}</div>
+					<div class={contentStyles}>{item}</div>
 				{/each}
 			</svelte:fragment>
 		</svelte:component>
 	{:else}
 		<svelte:component this={component} id={title} {size} {background} {breakpoint} {...props}>
 			{#each fixtureProps.card as item}
-				<div class={`card:${size} box ${item} ${size}`}>{item}</div>
+				<div class={contentStyles}>{item}</div>
 			{/each}
 		</svelte:component>
 	{/if}
@@ -69,7 +70,7 @@
 					<p>{fixtureProps.text}</p>
 				{:else if sideContent === 'card' || sideContent === 'form'}
 					{#each fixtureProps[sideContent] as item}
-						<div class={`card:${size} box ${item} ${size}`}>{item}</div>
+						<div class={contentStyles}>{item}</div>
 					{/each}
 				{/if}
 			</div>
@@ -79,7 +80,7 @@
 					<p>{fixtureProps.text}</p>
 				{:else if mainContent === 'card' || mainContent === 'form'}
 					{#each fixtureProps[mainContent] as item}
-						<div class={`card:${size} box ${item} ${size}`}>{item}</div>
+						<div class={contentStyles}>{item}</div>
 					{/each}
 				{/if}
 			</div>
@@ -92,7 +93,7 @@
 					<p>{fixtureProps.text}</p>
 				{:else if content === 'card' || content === 'form'}
 					{#each fixtureProps[content] as item}
-						<div class={`card:${size} box ${item} ${size}`}>{item}</div>
+						<div class={contentStyles}>{item}</div>
 					{/each}
 				{/if}
 			</div>
@@ -104,7 +105,7 @@
 				<p>{fixtureProps.text}</p>
 			{:else if content === 'card' || content === 'form'}
 				{#each fixtureProps[content] as item}
-					<div class={`card:${size} box ${item} ${size}`}>{item}</div>
+					<div class={contentStyles}>{item}</div>
 				{/each}
 			{/if}
 		</svelte:component>
