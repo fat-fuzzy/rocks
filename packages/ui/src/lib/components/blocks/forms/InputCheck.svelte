@@ -10,8 +10,8 @@
 	export let checked = false
 	export let color = ''
 	export let variant = ''
-	export let layout = ''
-	export let breakpoint = ''
+	// export let layout = ''
+	// export let breakpoint = ''
 	export let size = ''
 	export let align = ''
 	export let background = ''
@@ -27,11 +27,11 @@
 	}
 	$: inputId = `checkbox-${id}`
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${asset}`
+	$: classes = `l:flex check ${size} font:${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${asset}`
 </script>
 
 <label for={inputId} class={classes}>
-	<span class={`font:${size}`}>{label}</span>
+	<span>{label}</span>
 	<input
 		id={inputId}
 		data-test={inputId}

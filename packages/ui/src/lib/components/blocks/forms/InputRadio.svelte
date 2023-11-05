@@ -11,8 +11,8 @@
 	export let checked = false
 	export let color = ''
 	export let variant = ''
-	export let layout = ''
-	export let breakpoint = ''
+	// export let layout = 'flex'
+	// export let breakpoint = ''
 	export let size = ''
 	export let align = ''
 	export let background = ''
@@ -27,11 +27,11 @@
 	}
 	$: inputId = `radio-${id}`
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align} ${backgroundClass} ${asset}`
+	$: classes = `l:flex  radio ${size} font:${size}  ${color} ${variant} ${align} ${backgroundClass} ${asset}`
 </script>
 
 <label for={inputId} class={classes}>
-	<span class={`font:${size}`}>{label}</span>
+	<span>{label}</span>
 	<input
 		id={inputId}
 		data-test={inputId}
