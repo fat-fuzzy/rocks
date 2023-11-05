@@ -34,7 +34,7 @@
 	let background = ''
 	let container = ''
 	let size = '' // Container size
-	let useCase = '' // Container size
+	let useCase = ''
 
 	$: styles = $currentStyles
 	// App settings (user controlled)

@@ -4,7 +4,6 @@
 
 	export let id = 'button'
 	export let name = 'button'
-	export let value = ''
 	export let disabled = false
 	export let color = ''
 	export let variant = 'default'
