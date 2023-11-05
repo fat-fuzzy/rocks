@@ -168,6 +168,27 @@ label.outline.highlight > [type='file'] {
 	}
 }
 ////
+////
+///
+fieldset.radio,
+fieldset.check {
+	label:hover {
+		color: var(--current-color);
+		background-color: var(--current-gray);
+	}
+	label.primary:hover {
+		--current-color: var(--color-dark);
+		background-color: var(--current-primary-lighter);
+	}
+	label.accent:hover {
+		--current-color: var(--color-dark);
+		background-color: var(--current-accent-lighter);
+	}
+	label.highlight:hover {
+		--current-color: var(--color-dark);
+		background-color: var(--current-highlight-lighter);
+	}
+}
 label.primary > input:hover,
 label.primary > input:active,
 label.accent > input:hover,

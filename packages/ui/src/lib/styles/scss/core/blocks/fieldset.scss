@@ -12,3 +12,24 @@ fieldset {
 		font-weight: var(--font-weight-ui);
 	}
 }
+fieldset.radio,
+fieldset.check {
+	padding: var(--current-size);
+	> legend {
+		inline-size: auto;
+		margin-inline-start: var(--current-size);
+		padding: var(--current-size-minus) var(--current-size);
+	}
+	> label {
+		width: 100%;
+		display: flex;
+		flex-grow: 1;
+		justify-content: space-between;
+		padding: var(--current-size-minus) var(--current-size-plus);
+	}
+	> label [type='radio'] {
+		padding: 0;
+		height: auto;
+		outline-offset: 0;
+	}
+}

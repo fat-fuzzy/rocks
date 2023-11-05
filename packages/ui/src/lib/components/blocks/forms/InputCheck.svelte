@@ -14,6 +14,8 @@
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
+	export let background = ''
+	export let container = ''
 
 	function handleInput(event) {
 		const payload = {
@@ -23,7 +25,8 @@
 		dispatch('input', payload)
 	}
 	$: inputId = `checkbox-${id}`
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
+	$: backgroundClass = background ? `bg:${background}` : ''
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align} ${backgroundClass} ${container}`
 </script>
 
 <label for={inputId} class={classes}>

@@ -471,13 +471,29 @@ const blocks: BlockStyles = {
 				],
 			}),
 			new StyleInputGroup({
+				name: 'Variant',
+				id: 'blocks.element.variant',
+				value: 'default',
+				input: 'radio',
+				layout: 'stack',
+				size: 'sm',
+				variant: 'card box',
+				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+				items: [
+					{id: 'blocks.element.variant.default', text: 'default', value: 'default'},
+					{id: 'blocks.element.variant.outline', text: 'outline', value: 'outline'},
+					{id: 'blocks.element.variant.bare', text: 'bare', value: 'bare'},
+				],
+			}),
+			new StyleInputGroup({
 				name: 'Context',
 				id: 'blocks.element.context',
 				value: 'default',
-				input: 'toggle',
+				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card',
+				container: '',
+				variant: 'card box',
 				exclude: [
 					'ActionLabel',
 					'Button',
@@ -491,21 +507,6 @@ const blocks: BlockStyles = {
 				items: [
 					{id: 'blocks.element.context.form', text: 'form', value: 'form'},
 					{id: 'blocks.element.context.code', text: 'code', value: 'code'},
-				],
-			}),
-			new StyleInputGroup({
-				name: 'Variant',
-				id: 'blocks.element.variant',
-				value: 'default',
-				input: 'toggle',
-				layout: 'stack',
-				size: 'sm',
-				container: 'card',
-				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
-				items: [
-					{id: 'blocks.element.variant.default', text: 'default', value: 'default'},
-					{id: 'blocks.element.variant.outline', text: 'outline', value: 'outline'},
-					{id: 'blocks.element.variant.bare', text: 'bare', value: 'bare'},
 				],
 			}),
 			new StyleInputGroup({

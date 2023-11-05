@@ -10,3 +10,36 @@
 [class*='card:feature'] {
 	padding-block-start: var(--gap);
 }
+
+[class*='card'].box {
+	--current-border-color: var(--current-gray);
+	border: var(--border-width) solid var(--current-border-color);
+}
+
+[class*='card'].box.primary {
+	--current-border-color: var(--current-primary);
+}
+
+[class*='card'].box.accent {
+	--current-border-color: var(--current-accent);
+}
+
+[class*='card'].box.highlight {
+	--current-border-color: var(--current-primary);
+}
+
+[class*='card'].box.info {
+	--current-border-color: var(--current-info);
+}
+
+[class*='card'].box.success {
+	--current-border-color: var(--current-success);
+}
+
+[class*='card'].box.warning {
+	--current-border-color: var(--current-warning);
+}
+
+[class*='card'].box.error {
+	--current-border-color: var(--current-error);
+}

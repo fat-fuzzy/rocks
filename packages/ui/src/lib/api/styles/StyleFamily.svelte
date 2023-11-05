@@ -2,11 +2,9 @@
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
 
-	import format from '$lib/utils/format'
 	import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
-	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
-	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
+	import InputGroup from '$lib/components/compositions/forms/InputGroup.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 	import {currentStyles} from '$lib/stores/api'
 	import {initStyles} from './styles-api'
@@ -24,9 +22,9 @@
 	let apiVariant = 'outline'
 
 	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
-		radio: InputRadio,
+		radio: InputGroup,
 		range: InputRange,
-		checkbox: InputCheck,
+		checkbox: InputGroup,
 		toggle: ToggleMenu,
 	}
 
@@ -121,25 +119,25 @@
 			background="polar"
 		>
 			{#each family.items as styleInput}
-				{@const {input, value, items} = styleInput}
+				{@const {id, input, name, value, items} = styleInput}
 				{#if styleInput.canApplyStyles({item: title, category})}
 					{#if input === 'radio' || input === 'checkbox'}
 						{@const InputComponent = COMPONENT_IMPORTS[input]}
-						{#each items as { id, ...inputProps }}
-							{@const checked = value && id === value}
-							<svelte:component
-								this={InputComponent}
-								id={styleInput.id}
-								{...inputProps}
-								name={styleInput.id}
-								{checked}
-								layout={styleInput.layout || ''}
-								size={apiSize}
-								color={apiColor}
-								variant={apiVariant}
-								on:input={(event) => handleInput(event, familyName)}
-							/>
-						{/each}
+						<svelte:component
+							this={InputComponent}
+							{id}
+							{items}
+							{name}
+							type={input}
+							{value}
+							legend={name}
+							layout={styleInput.layout || ''}
+							container={styleInput.container || ''}
+							size={styleInput.size}
+							color={apiColor}
+							variant={styleInput.variant}
+							on:changed={(event) => handleInput(event, familyName)}
+						/>
 					{/if}
 					{#if input == 'range'}
 						{@const InputComponent = COMPONENT_IMPORTS[input]}
