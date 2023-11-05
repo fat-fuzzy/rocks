@@ -310,6 +310,8 @@ const shared: SharedStyles = {
 					'RevealNav',
 					'Header',
 					'LogIn',
+					'InputCheck',
+					'InputRadio',
 				],
 				items: [
 					{id: 'shared.layout.layout.stack', text: 'stack', value: 'stack'},
@@ -358,6 +360,8 @@ const shared: SharedStyles = {
 					'RevealNav',
 					'Header',
 					'LogIn',
+					'InputCheck',
+					'InputRadio',
 				],
 				items: [
 					{id: 'shared.layout.breakpoint.xs', text: 'xs', value: 'xs'},

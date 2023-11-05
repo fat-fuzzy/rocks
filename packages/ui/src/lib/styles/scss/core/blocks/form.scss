@@ -363,3 +363,17 @@ label > [type='range']:not([list]) + datalist > option {
 label[class*='l:stack'] > [type='range'] {
 	margin-block-start: 0;
 }
+
+label.radio,
+label.check {
+	margin: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: var(--current-size-minus) var(--current-size-plus);
+	gap: var(--current-size);
+}
+label.radio[class*='emoji'] span,
+label.check[class*='emoji'] span {
+	flex-grow: 1;
+}
