@@ -418,10 +418,10 @@ const blocks: BlockStyles = {
 				name: 'Status',
 				id: 'blocks.element.status',
 				value: 'default',
-				input: 'toggle',
+				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card',
+				container: 'card box',
 				exclude: [
 					'ActionLabel',
 					'Button',

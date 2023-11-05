@@ -172,9 +172,21 @@ label.outline.highlight > [type='file'] {
 ///
 fieldset.radio,
 fieldset.check {
-	label:hover {
+	.day & label {
+		--current-color: var(--color-dark);
 		color: var(--current-color);
+	}
+	.night & label {
+		--current-color: var(--color-light);
+		color: var(--current-color);
+	}
+	label:hover {
 		background-color: var(--current-gray);
+	}
+	&.primary {
+		label:hover {
+			background-color: var(--current-primary-lighter);
+		}
 	}
 	label.primary:hover {
 		--current-color: var(--color-dark);
@@ -185,6 +197,22 @@ fieldset.check {
 		background-color: var(--current-accent-lighter);
 	}
 	label.highlight:hover {
+		--current-color: var(--color-dark);
+		background-color: var(--current-highlight-lighter);
+	}
+	label.info:hover {
+		--current-color: var(--color-dark);
+		background-color: var(--current-info-lighter);
+	}
+	label.success:hover {
+		--current-color: var(--color-dark);
+		background-color: var(--current-success-lighter);
+	}
+	label.warning:hover {
+		--current-color: var(--color-dark);
+		background-color: var(--current-warning-lighter);
+	}
+	label.error:hover {
 		--current-color: var(--color-dark);
 		background-color: var(--current-highlight-lighter);
 	}

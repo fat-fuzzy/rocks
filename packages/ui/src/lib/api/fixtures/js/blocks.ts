@@ -1,5 +1,7 @@
 export default {
 	Button: {id: 'idea', text: 'Idea', asset: 'emoji:idea'},
+	InputCheck: {id: 'check', text: 'An optional choice choice'},
+	InputRadio: {id: 'radio', text: 'A mandatory choice'},
 	Feedback: {
 		useCases: [
 			{
