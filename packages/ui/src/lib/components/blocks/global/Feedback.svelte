@@ -14,7 +14,14 @@
 {#if context === 'code'}
 	<pre class={feedbackClass} data-test={`feedback-${context}`}>{text}</pre>
 {:else if context === 'form'}
-	<p class={feedbackClass} data-test={`feedback-${context}`}>
-		{text}
-	</p>
+	<div class={feedbackClass} data-test={`feedback-${context}`}>
+		<div class="l:stack:sm">
+			{#if status !== 'default'}
+				<p class="status font:lg">{status}</p>
+			{/if}
+			<p>
+				{text}
+			</p>
+		</div>
+	</div>
 {/if}
