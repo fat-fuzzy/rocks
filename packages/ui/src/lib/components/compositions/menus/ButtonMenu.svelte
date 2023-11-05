@@ -8,7 +8,7 @@
 	export let size = ''
 	export let breakpoint = ''
 	export let layout = 'switcher'
-	export let container = 'card'
+	export let container = ''
 	export let color = ''
 	export let variant = ''
 	export let asset = ''

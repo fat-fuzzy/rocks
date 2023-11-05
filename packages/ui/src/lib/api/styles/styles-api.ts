@@ -647,7 +647,7 @@ const layouts: LayoutStyles = {
 			new StyleInputGroup({
 				name: 'Breakpoint',
 				id: 'layouts.element.breakpoint',
-				value: 'md',
+				value: 'lg',
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
@@ -679,7 +679,7 @@ export const DEFAULT_STYLES: StyleTree = {
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {
-		layout: {layout: 'switcher', breakpoint: 'md'},
+		layout: {layout: 'switcher', breakpoint: 'lg'},
 		container: {container: 'center', size: 'md'},
 	},
 	blocks: {

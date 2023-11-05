@@ -8,7 +8,7 @@
 	import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 
 	export let className = 'header-app'
-	export let breakpoint = 'md'
+	export let breakpoint = 'lg'
 	export let background = 'polar'
 	export let id = 'ui'
 	export let height = ''
