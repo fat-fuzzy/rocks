@@ -23,10 +23,12 @@ legend,
 input,
 select,
 textarea {
+	--current-color: var(--color-dark);
 	border: 1px solid var(--color-gray-1);
 	border-radius: var(--radius-base);
 	color: var(--color-dark);
-	background: var(--color-white);
+	accent-color: var(--current-color);
+	border-color: var(--current-color);
 }
 
 label > input {
@@ -46,8 +48,7 @@ label > input {
 	input,
 	select,
 	textarea {
-		accent-color: var(--current-primary);
-		border-color: var(--current-primary);
+		--current-color: var(--current-primary);
 	}
 }
 
@@ -55,8 +56,7 @@ label > input {
 	input,
 	select,
 	textarea {
-		accent-color: var(--current-accent);
-		border-color: var(--current-accent);
+		--current-color: var(--current-accent);
 	}
 }
 
@@ -64,8 +64,39 @@ label > input {
 	input,
 	select,
 	textarea {
-		accent-color: var(--current-highlight);
-		border-color: var(--current-highlight);
+		--current-color: var(--current-highlight);
+	}
+}
+
+.info {
+	input,
+	select,
+	textarea {
+		--current-color: var(--current-info);
+	}
+}
+
+.success {
+	input,
+	select,
+	textarea {
+		--current-color: var(--current-success);
+	}
+}
+
+.warning {
+	input,
+	select,
+	textarea {
+		--current-color: var(--current-warning);
+	}
+}
+
+.error {
+	input,
+	select,
+	textarea {
+		--current-color: var(--current-error);
 	}
 }
 
@@ -183,6 +214,9 @@ fieldset.check {
 	label:hover {
 		background-color: var(--current-gray);
 	}
+	.night & label:hover {
+		--current-color: var(--color-dark);
+	}
 	&.primary {
 		label:hover {
 			background-color: var(--current-primary-lighter);
@@ -214,7 +248,7 @@ fieldset.check {
 	}
 	label.error:hover {
 		--current-color: var(--color-dark);
-		background-color: var(--current-highlight-lighter);
+		background-color: var(--current-error-lighter);
 	}
 }
 label.primary > input:hover,
@@ -224,6 +258,7 @@ label.accent > input:active,
 label.highlight > input:hover,
 label.highlight > input:active {
 	color: var(--current-color);
+	accent-color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
 ////

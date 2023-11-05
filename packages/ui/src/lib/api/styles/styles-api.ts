@@ -421,7 +421,7 @@ const blocks: BlockStyles = {
 				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card box',
+				variant: 'card box',
 				exclude: [
 					'ActionLabel',
 					'Button',
