@@ -3,6 +3,7 @@
 	font-size: var(--current-font-size);
 	margin-block: var(--current-size);
 	margin-inline: 0;
+	padding: var(--gap);
 	border: var(--border-width-xl) solid var(--current-border-color);
 	background-color: var(--current-bg-color);
 }
