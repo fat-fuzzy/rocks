@@ -538,14 +538,7 @@ const blocks: BlockStyles = {
 				layout: 'flex',
 				size: 'sm',
 				container: 'card',
-				exclude: [
-					'ButtonMenu',
-					'ToggleMenu',
-					'InputCheck',
-					'InputRadio',
-					'InputRange',
-					'InputFile',
-				],
+				exclude: ['ButtonMenu', 'ToggleMenu', 'InputRange', 'InputFile'],
 				items: [
 					{
 						id: 'blocks.element.asset.profile',
