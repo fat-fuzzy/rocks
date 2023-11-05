@@ -7,7 +7,11 @@
 	border: var(--border-width-xl) solid var(--current-border-color);
 	background-color: var(--current-bg-color);
 }
-
+.status {
+	font-family: var(--font-family-heading);
+	font-size: var(--current-font-size);
+	line-height: 1.35;
+}
 .feedback.default {
 	--current-color: var(--color-dark);
 	box-shadow: var(--current-shadow);
