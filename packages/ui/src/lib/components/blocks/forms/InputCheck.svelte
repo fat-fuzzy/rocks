@@ -16,6 +16,7 @@
 	export let align = ''
 	export let background = ''
 	export let container = ''
+	export let asset = ''
 
 	function handleInput(event) {
 		const payload = {
@@ -26,7 +27,7 @@
 	}
 	$: inputId = `checkbox-${id}`
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align} ${backgroundClass} ${container}`
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${asset}`
 </script>
 
 <label for={inputId} class={classes}>

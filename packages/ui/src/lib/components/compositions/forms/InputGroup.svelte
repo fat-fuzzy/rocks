@@ -51,7 +51,7 @@
 	}
 </script>
 
-<Fieldset {type} {legend} {layout} {size} {variant} {container} {color}>
+<Fieldset {type} {legend} {layout} {size} {variant} container={container ?? ''} {color}>
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
 	{#each items as input}
 		{@const checked = input.value === value}

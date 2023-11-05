@@ -16,6 +16,7 @@
 	export let size = ''
 	export let align = ''
 	export let background = ''
+	export let asset = ''
 
 	function handleInput(event) {
 		const payload = {
@@ -26,7 +27,7 @@
 	}
 	$: inputId = `radio-${id}`
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align} ${backgroundClass}`
+	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align} ${backgroundClass} ${asset}`
 </script>
 
 <label for={inputId} class={classes}>
