@@ -11,6 +11,10 @@
 	--current-color: var(--color-dark);
 	box-shadow: var(--current-shadow);
 }
+.feedback.outline,
+.feedback.bare {
+	box-shadow: unset;
+}
 .feedback.bare,
 .feedback[class*='bg:default:'].bare {
 	--current-bg-color: var(--current-gray);
@@ -96,24 +100,29 @@ pre.feedback.bare {
 		}
 	}
 }
-.day.bg\:contrast {
-	.feedback:not(pre),
-	.feedback.default:not(pre),
-	.feedback[class*='bg:default']:not(pre) {
-		--current-bg-color: var(--color-light);
-		--current-border-color: var(--color-gray-4);
-	}
-	.feedback.bare:not(pre),
-	.feedback[class*='bg:default'].bare:not(pre) {
-		--current-border-color: var(--current-bg-color);
-	}
+.day {
+	pre.feedback,
+	pre.feedback.default,
 	pre.feedback[class*='bg:default'].outline,
 	pre.feedback[class*='bg:default'].default {
+		--current-bg-color: var(--color-gray-5);
 		--current-border-color: var(--color-gray-4);
 	}
 	pre.feedback.bare,
 	pre.feedback[class*='bg:default'].bare {
 		--current-border-color: var(--current-bg-color);
+	}
+	.bg\:contrast {
+		.feedback:not(pre),
+		.feedback.default:not(pre),
+		.feedback[class*='bg:default']:not(pre) {
+			--current-bg-color: var(--color-light);
+			--current-border-color: var(--color-gray-4);
+		}
+		.feedback.bare:not(pre),
+		.feedback[class*='bg:default'].bare:not(pre) {
+			--current-border-color: var(--current-bg-color);
+		}
 	}
 }
 .day,
@@ -197,7 +206,6 @@ pre.feedback.bare {
 			--current-bg-color: var(--current-error-lighter);
 			--current-border-color: var(--current-error);
 		}
-
 		pre.feedback[class*='info'] {
 			--current-color: var(--current-info-lightest);
 			--current-border-color: var(--current-info);
