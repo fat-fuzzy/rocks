@@ -24,11 +24,21 @@ input,
 select,
 textarea {
 	--current-color: var(--color-dark);
-	border: 1px solid var(--color-gray-1);
+	--current-accent-color: var(--color-gray-3);
+	border: 1px solid var(--current-accent-color);
 	border-radius: var(--radius-base);
-	color: var(--color-dark);
-	accent-color: var(--current-color);
-	border-color: var(--current-color);
+	color: var(--current-color);
+	accent-color: var(--current-accent-color);
+	border-color: var(--current-accent-color);
+}
+
+.night {
+	input,
+	select,
+	textarea {
+		--current-color: var(--color-light);
+		--current-accent-color: var(--color-gray-2);
+	}
 }
 
 label > input {
@@ -49,6 +59,7 @@ label > input {
 	select,
 	textarea {
 		--current-color: var(--current-primary);
+		--current-accent-color: var(--current-primary);
 	}
 }
 
@@ -57,6 +68,7 @@ label > input {
 	select,
 	textarea {
 		--current-color: var(--current-accent);
+		--current-accent-color: var(--current-accent);
 	}
 }
 
@@ -65,6 +77,7 @@ label > input {
 	select,
 	textarea {
 		--current-color: var(--current-highlight);
+		--current-accent-color: var(--current-highlight);
 	}
 }
 
@@ -73,6 +86,7 @@ label > input {
 	select,
 	textarea {
 		--current-color: var(--current-info);
+		--current-accent-color: var(--current-info);
 	}
 }
 
@@ -81,6 +95,7 @@ label > input {
 	select,
 	textarea {
 		--current-color: var(--current-success);
+		--current-accent-color: var(--current-success);
 	}
 }
 
@@ -89,6 +104,7 @@ label > input {
 	select,
 	textarea {
 		--current-color: var(--current-warning);
+		--current-accent-color: var(--current-warning);
 	}
 }
 
@@ -97,6 +113,7 @@ label > input {
 	select,
 	textarea {
 		--current-color: var(--current-error);
+		--current-accent-color: var(--current-error);
 	}
 }
 
@@ -373,7 +390,10 @@ label.check {
 	padding: var(--current-size-minus) var(--current-size-plus);
 	gap: var(--current-size);
 }
+// label.radio input,
+// label.check input,
 label.radio[class*='emoji'] span,
 label.check[class*='emoji'] span {
 	flex-grow: 1;
+	font-size: var(--current-font-size);
 }
