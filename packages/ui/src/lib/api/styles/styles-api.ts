@@ -182,8 +182,13 @@ const app: AppStyles = {
 				size: 'sm',
 				container: 'card',
 				items: [
-					{id: 'app.settings.brightness.day', text: 'day', asset: 'emoji', value: 'day'},
-					{id: 'app.settings.brightness.night', text: 'night', asset: 'emoji', value: 'night'},
+					{id: 'app.settings.brightness.day', text: 'day', asset: 'emoji:day', value: 'day'},
+					{
+						id: 'app.settings.brightness.night',
+						text: 'night',
+						asset: 'emoji:night',
+						value: 'night',
+					},
 				],
 			}),
 			new StyleInputGroup({
@@ -198,10 +203,15 @@ const app: AppStyles = {
 					{
 						id: 'app.settings.contrast.contrast',
 						text: 'contrast',
-						asset: 'emoji',
+						asset: 'emoji:contrast',
 						value: 'contrast',
 					}, // TODO : fix color vars & classes
-					{id: 'app.settings.contrast.blend', text: 'blend', asset: 'emoji', value: 'blend'}, // TODO: night / day asset option
+					{
+						id: 'app.settings.contrast.blend',
+						text: 'blend',
+						asset: 'emoji:blend',
+						value: 'blend',
+					}, // TODO: night / day asset option
 					// {id: 'polar', label: 'polar', value: ''},
 				],
 			}),
@@ -427,30 +437,35 @@ const blocks: BlockStyles = {
 						id: 'blocks.element.status.default',
 						text: 'default',
 						color: 'default',
+						asset: 'emoji:default',
 						value: 'default',
 					},
 					{
 						id: 'blocks.element.status.info',
 						text: 'info',
 						color: 'info',
+						asset: 'emoji:info',
 						value: 'info',
 					},
 					{
 						id: 'blocks.element.status.success',
 						text: 'success',
 						color: 'success',
+						asset: 'emoji:success',
 						value: 'success',
 					},
 					{
 						id: 'blocks.element.status.warning',
 						text: 'warning',
 						color: 'warning',
+						asset: 'emoji:warning',
 						value: 'warning',
 					},
 					{
 						id: 'blocks.element.status.error',
 						text: 'error',
 						color: 'error',
+						asset: 'emoji:error',
 						value: 'error',
 					},
 				],

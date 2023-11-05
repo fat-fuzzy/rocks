@@ -7,10 +7,10 @@ a[class*='emoji:']::before {
 	margin-inline: var(--current-size) var(--current-size-plus);
 }
 
-.feedback[class*='emoji:'] {
+.feedback[class*='emoji'] {
 	display: flex;
 }
 
-.feedback[class*='emoji:']::before {
+.feedback[class*='emoji']::before {
 	margin-inline: var(--current-size) var(--current-size-plus);
 }
