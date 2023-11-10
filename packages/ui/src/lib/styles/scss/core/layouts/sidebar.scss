@@ -78,16 +78,16 @@ main > [class^='l:sidebar'] {
 .l\:side {
 	transition: flex-basis 250ms ease-in-out;
 }
-// TODO: Decouple sidebar layout from sidebar content
-.l\:side.minimize {
-	--current-gap: calc(var(--gap) * 2);
-	flex-basis: var(--current-gap);
-	transition: flex-basis 250ms ease-in-out;
-}
 
 @media screen and (min-width: 935px) {
 	[class^='l:side:'] nav {
 		height: auto;
 		max-height: unset;
+	}
+	// TODO: Decouple sidebar layout from sidebar content
+	.l\:side.minimize {
+		--current-gap: calc(var(--gap) * 2);
+		flex-basis: var(--current-gap);
+		transition: flex-basis 250ms ease-in-out;
 	}
 }
