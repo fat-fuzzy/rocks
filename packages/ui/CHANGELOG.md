@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.21
+
+### Patch Changes
+
+- 9a85f5e: [ui+apps] Fix reactivity of themed header icons, decouple ui lib header store
+
 ## 0.1.20
 
 ### Patch Changes
