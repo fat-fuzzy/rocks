@@ -79,7 +79,7 @@
 		<section slot="side">
 			<div class="l:stack:lg">
 				<details id={`${category}-api`} class="l:stack:md">
-					<summary class={`card:xs bg:${color}`}>Style Props</summary>
+					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full">
 							<Api {category} {title} />
@@ -100,7 +100,7 @@
 				</details>
 			</section> -->
 				<details id={`${category}-doc`} class="l:stack:md" open>
-					<summary class={`card:xs bg:${color}`}>Description</summary>
+					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
 					<div class="drop w:full">
 						<div class="l:text:xl">
 							{@html mocks['doc'][category]}

@@ -17,7 +17,7 @@ button {
 
 button:hover {
 	cursor: pointer;
-	color: var(--current-color);
+	color: var(--current-light);
 	background-color: var(--current-bg-contrast);
 	box-shadow: var(--current-shadow);
 }
