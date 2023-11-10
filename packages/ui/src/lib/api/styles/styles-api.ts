@@ -675,7 +675,7 @@ export const DEFAULT_STYLES: StyleTree = {
 	app: {
 		settings: {
 			brightness: 'day',
-			contrast: 'contrast',
+			contrast: 'blend',
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {

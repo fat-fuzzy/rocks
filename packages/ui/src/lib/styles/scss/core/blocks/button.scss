@@ -12,7 +12,7 @@ button {
 	border-radius: var(--radius-base);
 	color: var(--current-color);
 	border: var(--border-width) solid hsl(var(--color-shadow-light));
-	background-color: var(--current-polar);
+	background-color: var(--current-gray-contrast);
 }
 
 button:hover {
@@ -34,7 +34,7 @@ button.outline:active {
 	border: var(--border-width) solid var(--current-color);
 }
 button.outline:hover {
-	background-color: var(--current-gray);
+	background-color: var(--current-polar);
 }
 
 button:disabled {

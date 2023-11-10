@@ -29,6 +29,9 @@
 	.bg\:polar > .bg\:blend,
 	.bg\:polar *:not(.bg\:blend) .bg\:blend {
 		color: var(--current-color);
-		--current-border-color: var(--current-polar);
+		--current-border-color: var(--current-gray-contrast);
+	}
+	[class*='blend'] [class*='box'] {
+		--current-border-color: var(--current-gray-contrast);
 	}
 }
