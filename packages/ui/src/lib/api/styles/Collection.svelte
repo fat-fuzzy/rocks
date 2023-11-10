@@ -24,6 +24,7 @@
 	let styles = $currentStyles
 
 	let contrast = ''
+	let brightness = themes[$theme]
 	let contextClasses = ''
 
 	let sharedOptions = {
@@ -38,7 +39,7 @@
 	$: styles = $currentStyles
 
 	//== App settings (user controlled)
-	$: brightness = themes[$theme]
+	$: brightness = styles.app?.settings.brightness || brightness
 	$: contrast = styles.app?.settings.contrast ?? contrast
 	//== Shared settings (user controlled)
 	// Container options
@@ -77,7 +78,7 @@
 		</section>
 		<section slot="side">
 			<div class="l:stack:lg">
-				<details id={`${category}-api`} class={`l:stack:md`}>
+				<details id={`${category}-api`} class={`l:stack:md`} open>
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full">
@@ -116,7 +117,7 @@
 
 	<section class="l:text:xl">
 		{@html mocks['doc'][category]}
-		<details class={`l:stack:xxl ${size}`}>
+		<details class={`l:stack:xxl ${size}`} open>
 			<summary class={`card:md box:${color} bg:${color}`}>
 				{categorySingular} components
 			</summary>
