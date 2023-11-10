@@ -10,6 +10,8 @@ details > summary {
 	border: var(--border-width) solid var(--current-border-color);
 	padding: var(--current-size-minus);
 	max-width: 100%;
+	background-color: var(--current-color);
+	margin-block-end: var(--current-size-plus);
 }
 
 details > summary:hover {
@@ -21,10 +23,8 @@ details > summary:hover {
 .night summary {
 	color: var(--color-dark); // TODO: fix color contrast pairs
 }
-
-details > summary {
-	background-color: var(--current-color);
-	margin-block-end: var(--current-size-plus);
+.night summary:hover {
+	color: var(--color-light);
 }
 
 details > summary > h1, // TODO: not sure h1 inside detail is a good idea, check
