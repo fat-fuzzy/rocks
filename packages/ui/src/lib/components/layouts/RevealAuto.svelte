@@ -45,10 +45,10 @@
 	>
 		{format.formatLabel(title, asset)}
 	</button>
-	<div id={`${id}-reveal`} class={`l:flex ${show} ${direction}`}>
+	<div id={`${id}-reveal`} class={` l:${layout} ${show} ${direction}`}>
 		<slot name="content">
-			<div class={`${container}:${size}`}>
-				<h3>Revealed Content</h3>
+			<div class={`card:${size} ${container}:${size}`}>
+				<p class="font:lg">Revealed Content</p>
 				<p>This is a card with some content</p>
 			</div>
 		</slot>

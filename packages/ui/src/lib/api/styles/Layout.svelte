@@ -46,7 +46,7 @@
 				<p>{fixtureProps.text}</p>
 			</div>
 		</svelte:component>
-	{:else if title === 'Reveal' || title === 'Burrito'}
+	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
 		<svelte:component this={component} id={title} {size} {background} {breakpoint} {...props}>
 			<svelte:fragment slot="content">
 				{#each fixtureProps.form as item}
@@ -85,7 +85,7 @@
 				{/if}
 			</div>
 		</svelte:component>
-	{:else if title === 'Reveal' || title === 'Burrito'}
+	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
 		<svelte:component this={component} id={title} {size} {background} {breakpoint} } {props}>
 			<div slot="content">
 				{@const fixtureProps = getProps({category, component: title})}

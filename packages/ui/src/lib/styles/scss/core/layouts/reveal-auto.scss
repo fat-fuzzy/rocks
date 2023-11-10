@@ -1,6 +1,7 @@
 @import './reveal';
 
 .l\:reveal\:auto {
+	position: relative;
 	display: flex;
 }
 
@@ -11,6 +12,8 @@
 
 .l\:reveal\:auto .show {
 	position: absolute;
+	top: calc(var(--current-size-plus) * 4);
+	left: var(--current-size-plus);
 	z-index: var(--z-index-reveal);
 	width: auto;
 	height: auto;
