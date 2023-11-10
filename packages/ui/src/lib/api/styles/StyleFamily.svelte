@@ -35,12 +35,14 @@
 			const styleValue = {[style]: value}
 			const familyValue = {[family]: styleValue}
 			styles[category] = {...styles[category], ...familyValue}
+			if (style === 'brightness') {
+				const currentTheme = themes.indexOf(value) || 0
+				theme.set(currentTheme)
+			}
 		})
 		stylesApi.applyStyles(styles)
 
 		currentStyles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
-		const currentTheme = themes.indexOf($currentStyles.app?.settings.brightness || 'day')
-		theme.set(currentTheme)
 	}
 
 	function handleInput(event, name: string) {
