@@ -19,6 +19,12 @@
 	const compositionNames = Object.keys(compositions).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
+	let expanded = true
+
+	function toggleReveal(event) {
+		expanded = event.detail.expanded
+	}
+
 	$: path = ''
 	$: items = [
 		{
@@ -48,21 +54,24 @@
 			],
 		},
 	]
+	$: sidebarReveal = expanded ? '' : 'minimize'
 </script>
 
-<Sidebar size="xs">
-	<svelte:fragment slot="side">
+<div class="l:sidebar:xs">
+	<div class={`l:side ${sidebarReveal}`}>
 		<RevealNav
 			title="Design Library"
 			id="nav-page"
 			{items}
 			page={path}
 			breakpoint="md"
-			size="md fixed"
+			size="md"
 			color="primary"
+			position="fixed"
+			on:toggleReveal={toggleReveal}
 		/>
-	</svelte:fragment>
-	<div slot="main" class="l:center l:stack:xxl">
+	</div>
+	<div class="l:main l:center l:stack:xxl">
 		<slot />
 	</div>
-</Sidebar>
+</div>

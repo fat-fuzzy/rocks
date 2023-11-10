@@ -32,7 +32,7 @@
 	overflow: auto;
 }
 
-.l\:reveal.minimize .content {
+.l\:reveal.minimize:not([class*='fixed']) .content {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: auto;
@@ -69,53 +69,53 @@
 	// Constraining this allows usage of reveal layout in desktop, outside a sidebar context
 	// TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts
 	[class^='l:side'] > .l\:reveal {
-		&.minimize .content {
+		&.minimize:not([class*='fixed']) .content {
 			border: unset;
 			clip: unset;
 			padding: var(--current-size);
 			white-space: normal;
-		}
-
-		&.minimize .content:not([class*='fixed']) {
 			overflow: hidden;
 			position: unset;
 			top: 0;
 			width: 100%;
 			margin: initial;
 		}
-
-		> button {
+		&.minimize[class*='fixed'] {
+			left: calc(var(--current-side-size) * -1 + calc(var(--gap) * 3));
+			overflow: hidden;
+		}
+		&:not([class*='fixed']) > button {
 			display: none;
 		}
 
-		> button + * {
+		&:not([class*='fixed']) > button + * {
 			margin-top: 0;
 		}
 	}
 	.l\:reveal.show .content {
-		top: 0; // TODO : Fix magic denominator
+		top: 0;
 		max-height: unset;
 	}
 
 	// TODO: Clean this magic stuff
-	.l\:reveal .content[class*='fixed'],
-	.l\:reveal.show .content[class*='fixed'] {
+	.l\:reveal[class*='fixed'],
+	.l\:reveal.show[class*='fixed'] {
 		--current-side-size: var(--sidebar-width-xs);
-		--current-gap: calc(var(--gap) * 4.25);
+		--current-gap: calc(var(--gap) * 4.35);
 		position: fixed;
 		width: var(--current-side-size);
 		top: var(--current-gap);
-		max-height: calc(100vh - var(--current-gap) - var(--gap));
-		overflow: auto;
 	}
 
+	.l\:reveal[class*='fixed'].show .content {
+		top: var(--gap);
+		max-height: calc(100vh - 2 * var(--current-gap));
+		overflow: auto;
+	}
 	// TODO: Decouple sidebar layout from sidebar content
 	.l\:side.minimize {
-		flex-basis: calc(var(--current-size) * 5);
-	}
-	.l\:side.minimize .l\:reveal .content[class*='fixed'],
-	.l\:side.minimize .l\:reveal.show .content[class*='fixed'] {
-		left: calc(var(--current-side-size) * -1 + calc(var(--current-size) * 5));
+		--current-gap: calc(var(--gap) * 2);
+		flex-basis: var(--current-gap);
 	}
 }
 

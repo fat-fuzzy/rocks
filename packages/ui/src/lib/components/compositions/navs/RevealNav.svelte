@@ -1,8 +1,10 @@
 <script lang="ts">
+	import {createEventDispatcher} from 'svelte'
 	import format from '$lib/utils/format'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 
+	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
 	export let direction = 'tb-lr'
 	export let size = ''
@@ -19,6 +21,7 @@
 	export let asset = ''
 	export let align = 'start'
 	export let place = 'left'
+	export let position = ''
 	export let items: any[] = [] // TODO: fix type
 
 	let expanded = true
@@ -30,6 +33,9 @@
 
 	function toggleReveal(event) {
 		expanded = !expanded
+		dispatch('toggleReveal', {
+			expanded,
+		})
 	}
 
 	$: show = expanded ? `show ${place}` : `minimize ${place}`
@@ -37,7 +43,7 @@
 </script>
 
 <div
-	class={`l:reveal ${show} ${setHeight} ${direction}`}
+	class={`l:reveal ${show} ${setHeight} ${direction} ${position}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
