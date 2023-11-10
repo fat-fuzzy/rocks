@@ -15,7 +15,7 @@
 	export let depth = 0
 	export let path = ''
 	export let layout = 'grid' // TODO: expose breakpoint too
-	export let size = 'sm' // TODO: expose breakpoint too
+	export let size = 'xs' // TODO: expose breakpoint too
 	export let color = 'primary:light' // TODO: expose breakpoint too
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
@@ -78,7 +78,7 @@
 		</section>
 		<section slot="side">
 			<div class="l:stack:lg">
-				<details id={`${category}-api`} class={`l:stack:md`}>
+				<details id={`${category}-api`} class="l:stack:md">
 					<summary class={`card:xs bg:${color}`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full">
@@ -99,7 +99,7 @@
 					</div>
 				</details>
 			</section> -->
-				<details id={`${category}-doc`} class={`l:stack:md`} open>
+				<details id={`${category}-doc`} class="l:stack:md" open>
 					<summary class={`card:xs bg:${color}`}>Description</summary>
 					<div class="drop w:full">
 						<div class="l:text:xl">
