@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.21
+
+### Patch Changes
+
+- b9bbc60: [ui+doc] New reveal fixed layout
+
 ## 0.1.20
 
 ### Patch Changes
