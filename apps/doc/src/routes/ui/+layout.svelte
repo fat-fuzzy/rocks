@@ -58,7 +58,7 @@
 			{items}
 			page={path}
 			breakpoint="md"
-			size="md"
+			size="md fixed"
 			color="primary"
 		/>
 	</svelte:fragment>
