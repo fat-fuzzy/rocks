@@ -66,7 +66,7 @@
 			page={path}
 			breakpoint="md"
 			size="md"
-			color="primary"
+			color="bg:primary:light"
 			position="fixed"
 			on:toggleReveal={toggleReveal}
 		/>
