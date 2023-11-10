@@ -1,10 +1,11 @@
-.l\:switcher {
+[class*='l:switcher:'] {
+	--gap: var(--current-size);
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--gap);
 }
 
-.l\:switcher > * {
+[class*='l:switcher:'] > * {
 	flex-grow: 1;
 	flex-basis: calc((var(--threshold) - 100%) * 999);
 }
@@ -14,7 +15,7 @@
 * In this way, contents will wrap together as a switcher
 * (instead of normal wrap where items will wrap independently of one another)
 */
-[class^='l:switcher'] {
+[class*='l:switcher:'] {
 	--gap: var(--current-size);
 	--threshold: var(--current-bp-size);
 }

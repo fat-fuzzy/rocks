@@ -16,7 +16,7 @@
 	$: title = $page.params.component
 	$: Component = categoryItems[title]
 	$: path = $page.url.pathname
-	$: headerClass = 'page-header layer:reveal l:switcher bg:polar'
+	$: headerClass = 'page-header layer:reveal l:switcher:md bg:polar'
 </script>
 
 <svelte:head>

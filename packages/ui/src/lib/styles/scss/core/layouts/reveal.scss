@@ -6,7 +6,6 @@
 
 .l\:reveal > button > .icon {
 	border: 0;
-	clip: rect(0 0 0 0);
 	height: auto;
 	margin: 0;
 	overflow: hidden;
@@ -35,7 +34,7 @@
 
 .l\:reveal.minimize:not([class*='fixed']) .content {
 	border: 0;
-	height: auto;
+	height: 0;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
@@ -45,7 +44,7 @@
 }
 .l\:reveal.minimize[class*='fixed'] {
 	transform: translateX(0);
-	transition: transform 300ms ease-out;
+	transition: transform 250ms ease-in-out;
 }
 
 .l\:reveal.minimize[class*='fixed'] .content {
@@ -57,7 +56,7 @@
 	padding: 0;
 	width: 1px;
 	white-space: nowrap;
-	transition: width 300ms ease-out;
+	transition: width 250ms ease-in-out;
 }
 
 .l\:reveal .end {
@@ -87,11 +86,11 @@
 
 	// Fixes bug in Safari where .content overflows parent width
 	.l\:reveal[class*='fixed'].show {
-		transition: transform 300ms ease-out;
+		transition: transform 250ms ease-in-out;
 	}
 	// Fixes bug in Safari where .content overflows parent width
 	.l\:reveal[class*='fixed'].show .content {
-		transition: width 300ms ease-out;
+		transition: width 250ms ease-in-out;
 	}
 
 	[class^='l:side'] > .l\:reveal {
@@ -109,12 +108,12 @@
 		&.minimize[class*='fixed'] {
 			overflow: hidden;
 			transform: translateX(calc(var(--current-side-size) * -1 + calc(var(--gap) * 2)));
-			transition: transform 300ms ease-out;
+			transition: transform 250ms ease-in-out;
 		}
 		&.minimize[class*='fixed'] .content {
 			height: auto;
 			width: auto;
-			transition: width 300ms ease-out;
+			transition: width 250ms ease-in-out;
 		}
 		&:not([class*='fixed']) > button {
 			display: none;
@@ -143,17 +142,17 @@
 		top: var(--gap);
 		max-height: calc(100vh - 2 * var(--current-gap));
 		overflow: auto;
-		transition: width 300ms ease-out;
+		transition: width 250ms ease-in-out;
 	}
 	// TODO: Decouple sidebar layout from sidebar content
 	.l\:side {
-		transition: flex-basis 300ms ease-out;
+		transition: flex-basis 250ms ease-in-out;
 	}
 	// TODO: Decouple sidebar layout from sidebar content
 	.l\:side.minimize {
 		--current-gap: calc(var(--gap) * 2);
 		flex-basis: var(--current-gap);
-		transition: flex-basis 300ms ease-out;
+		transition: flex-basis 250ms ease-in-out;
 	}
 }
 
