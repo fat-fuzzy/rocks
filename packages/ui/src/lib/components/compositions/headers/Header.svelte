@@ -3,7 +3,8 @@
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import {lang} from '$stores/intl'
 	import format from '$lib/utils/format'
-	import {theme} from '$lib/stores/theme.js'
+	import {theme as apiTheme} from '$lib/stores/theme.js'
+	import {themes} from '$types/constants.js'
 
 	import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 
@@ -12,6 +13,7 @@
 	export let background = 'polar'
 	export let id = 'ui'
 	export let height = ''
+	export let theme: any // theme store
 
 	let page = getStores().page
 	export let items = {
@@ -68,8 +70,8 @@
 	}
 
 	function toggleTheme(event) {
-		const _theme = $theme ? 0 : 1
-		theme.set(_theme)
+		const _theme = $currentTheme ? 0 : 1
+		currentTheme.set(_theme)
 	}
 
 	function setLanguage(event) {
@@ -82,8 +84,9 @@
 		theme: toggleTheme,
 		language: setLanguage,
 	}
-
-	$: headerClass = `${className} l:sidebar md layer sticky:top bg:${background}`
+	$: currentTheme = theme ? theme : apiTheme
+	$: brightness = themes[$currentTheme]
+	$: headerClass = `${className} l:sidebar md layer sticky:top bg:${background} ${brightness}`
 	$: show = navExpanded ? `layer bg:${background} show` : 'hide:viz-only'
 	$: actionsClass = actionsExpanded ? `layer bg:${background} show` : 'hide:viz-only'
 	$: setHeight = height ? ` h:${height}` : ''
@@ -130,11 +133,11 @@
 			{#each items.side as { id, title, action, url, asset, variant, subitems }}
 				{#if url}
 					<a class={variant} href={url} target="_blank" rel="noreferrer">
-						<ActionLabel {title} {id} {asset} {variant} />
+						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
 					</a>
 				{:else if action}
 					<button on:click={actions[action]} class={`${variant} font:xl`}>
-						<ActionLabel {title} {id} {asset} {variant} />
+						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
 					</button>
 					<!-- {#if subitems}
 						<div class={actionsClass}>

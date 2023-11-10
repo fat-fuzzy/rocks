@@ -39,7 +39,7 @@
 	})
 </script>
 
-<Header className="header-app" {links} />
+<Header id="ui" className="header-app" {theme} items={links} />
 
 <main class={`l:center:md ${className}`}>
 	<slot />
