@@ -2,14 +2,12 @@
 
 [aria-pressed='false']:hover {
 	box-shadow: var(--current-shadow);
+	background-color: var(--current-bg-contrast);
 }
 [aria-pressed='true'] {
 	color: var(--current-color);
 	background-color: var(--current-bg-contrast);
 	box-shadow: var(--shadow-inset);
-}
-[aria-pressed='false']:hover {
-	background-color: var(--current-bg-color);
 }
 [aria-pressed='false']:active {
 	background-color: var(--current-gray);

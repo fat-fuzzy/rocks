@@ -136,7 +136,7 @@
 						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
 					</a>
 				{:else if action}
-					<button on:click={actions[action]} class={`${variant} font:xl`}>
+					<button on:click={actions[action]} class={`${variant} font:xl outline`}>
 						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
 					</button>
 					<!-- {#if subitems}
