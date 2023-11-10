@@ -17,8 +17,11 @@ $heart: '❤️';
 $egg: '🥚';
 $chick: '🐥';
 $ruler: '📐';
+$link: '🔗';
 
 $emojis: (
+	// Text emojis
+	link: #{$link},
 	// Feedback emojis
 	default: #{$bunny},
 	info: #{$bulb},
