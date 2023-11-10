@@ -20,3 +20,10 @@ a[class*='emoji:']::before {
 .feedback[class*='emoji']::before {
 	margin-inline: var(--current-size) var(--current-size-plus);
 }
+
+[class*='emoji'].align\:end {
+	padding-inline: var(--current-size) var(--current-size-plus);
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}

@@ -18,10 +18,18 @@ $egg: '🥚';
 $chick: '🐥';
 $ruler: '📐';
 $link: '🔗';
+$point-left: '👈';
+$point-right: '👉';
+$point-up: '👆';
+$point-down: '👇';
 
 $emojis: (
 	// Text emojis
 	link: #{$link},
+	point-left: #{$point-left},
+	point-right: #{$point-right},
+	point-up: #{$point-up},
+	point-down: #{$point-down},
 	// Feedback emojis
 	default: #{$bunny},
 	info: #{$bulb},

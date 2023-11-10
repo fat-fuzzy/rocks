@@ -25,6 +25,7 @@
 	export let items: any[] = [] // TODO: fix type
 
 	let expanded = true
+	let buttonAsset = ''
 
 	function handleClickOutside(event) {
 		// expanded = false
@@ -38,18 +39,24 @@
 		})
 	}
 
+	$: {
+		if (position) {
+			buttonAsset = expanded ? `emoji:point-left align:end` : `emoji:point-right align:end`
+		}
+	}
 	$: show = expanded ? `show ${place}` : `minimize ${place}`
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
 
 <div
+	in:fly={'all'}
 	class={`l:reveal ${show} ${setHeight} ${direction} ${position}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
 	<button
 		id={`${id}-reveal-nav-button`}
-		class={`card:${size} ${variant} ${color} font:sm`}
+		class={`card:${size} ${variant} ${color} font:sm ${buttonAsset}`}
 		aria-expanded={expanded}
 		aria-controls={`${id}-reveal-nav`}
 		on:click={toggleReveal}

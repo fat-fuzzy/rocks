@@ -43,6 +43,17 @@
 	width: 1px;
 	white-space: nowrap;
 }
+.l\:reveal.minimize[class*='fixed'] .content {
+	top: 0;
+	border: 0;
+	height: 0;
+	clip: rect(0 0 0 0);
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	width: 1px;
+	white-space: nowrap;
+}
 
 .l\:reveal .end {
 	justify-self: flex-end;
@@ -84,6 +95,10 @@
 			left: calc(var(--current-side-size) * -1 + calc(var(--gap) * 3));
 			overflow: hidden;
 		}
+		&.minimize[class*='fixed'] .content {
+			height: auto;
+			width: auto;
+		}
 		&:not([class*='fixed']) > button {
 			display: none;
 		}
@@ -116,6 +131,7 @@
 	.l\:side.minimize {
 		--current-gap: calc(var(--gap) * 2);
 		flex-basis: var(--current-gap);
+		transition: flex-basis 300ms ease-out;
 	}
 }
 
