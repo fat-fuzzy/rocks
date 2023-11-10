@@ -244,7 +244,7 @@ const shared: SharedStyles = {
 		size: 'lg',
 		variant: '',
 		id: 'shared.container',
-		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle'],
+		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'RevealAuto'],
 		items: [
 			new StyleInputGroup({
 				name: 'Container',
@@ -287,7 +287,7 @@ const shared: SharedStyles = {
 		size: 'lg',
 		variant: '',
 		id: 'shared.layout',
-		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'Feedback'],
+		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'Feedback', 'RevealAuto'],
 		items: [
 			new StyleInputGroup({
 				name: 'Layout',
@@ -653,7 +653,7 @@ const layouts: LayoutStyles = {
 				size: 'sm',
 				container: 'card',
 				exclude: ['layouts'],
-				include: ['Switcher'],
+				include: ['Switcher', 'RevealAuto'],
 				items: [
 					{id: 'layouts.element.breakpoint.xs', text: 'xs', value: 'xs'},
 					{id: 'layouts.element.breakpoint.sm', text: 'sm', value: 'sm'},
@@ -694,6 +694,6 @@ export const DEFAULT_STYLES: StyleTree = {
 		},
 	},
 	layouts: {
-		element: {size: 'md', content: 'card', side: 'card', main: 'text', breakpoint: 'md'},
+		element: {size: 'md', content: 'card', side: 'card', main: 'text', breakpoint: 'lg'},
 	},
 }
