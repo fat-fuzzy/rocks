@@ -36,7 +36,7 @@
 			const familyValue = {[family]: styleValue}
 			styles[category] = {...styles[category], ...familyValue}
 			if (style === 'brightness') {
-				const currentTheme = themes.indexOf(value) || 0
+				const currentTheme = themes.indexOf(value) || 1
 				theme.set(currentTheme)
 			}
 		})

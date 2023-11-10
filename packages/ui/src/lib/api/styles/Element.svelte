@@ -33,12 +33,14 @@
 	let styles: StyleTree
 	let background = ''
 	let container = ''
+	let brightness = themes[$theme]
 	let size = '' // Container size
 	let useCase = ''
 
 	$: styles = $currentStyles
 	// App settings (user controlled)
-	$: brightness = themes[$theme]
+	//== App settings (user controlled)
+	$: brightness = styles.app?.settings.brightness || brightness
 	$: background = styles.app?.settings.contrast ?? background
 	// Container options
 	// - [container + size] work together
