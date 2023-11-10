@@ -158,11 +158,13 @@ a:hover {
 
 //== Header, Navs, Menus
 
+.nigh.header-app,
 .night .header-app {
 	--current-color: var(--color-light);
 	color: var(--current-color);
 	background-color: var(--current-gray);
 }
+.day.header-app,
 .day .header-app {
 	--current-color: var(--current-primary);
 	color: var(--current-color);
