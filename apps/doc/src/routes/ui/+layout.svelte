@@ -64,7 +64,7 @@
 			id="nav-page"
 			{items}
 			page={path}
-			breakpoint="md"
+			breakpoint="sm"
 			size="md"
 			color="bg:primary:light"
 			position="fixed"
