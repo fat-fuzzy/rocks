@@ -100,7 +100,7 @@
 	>
 		<button
 			id={`${id}-primary-nav-button`}
-			class={`font:sm`}
+			class={`font:sm outline`}
 			aria-expanded={navExpanded}
 			aria-controls={`${id}-primary-nav`}
 			on:click={toggleNav}
