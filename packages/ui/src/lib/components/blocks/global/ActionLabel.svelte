@@ -1,29 +1,19 @@
 <script lang="ts">
 	import format from '$lib/utils/format.js'
-	import {theme} from '$lib/stores/theme.js'
-	import {themes, emojis, assets} from '$types/constants.js'
+	import {emojis, assets} from '$types/constants.js'
 
-	// TODO: make svg css themeable / fix dark theme
-	// import githubDay from '$lib/images/day/icon-github.svg'
-	// import githubNight from '$lib/images/night/icon-github.svg'
-	// const assets: {[key: string]: string} = {
-	// 	day: githubDay,
-	// 	night: githubNight,
-	// }
-	let currentTheme = themes[$theme]
-	// let currentLang = langs[$lang]
-	// let langIcon = emojis[currentLang]
 	export let id = ''
+	export let theme: any // theme store
 	export let variant = '' // style: round, [...]
-	export let title = '' // text or alt if variant==round
+	export let title = '' // text or alt if
 	export let asset = '' // asset type: emoji or icon
 	let assetValue = ''
 
 	$: {
 		if (asset === 'emoji') {
-			assetValue = emojis[currentTheme]
+			assetValue = emojis[theme]
 		} else if (asset === 'svg') {
-			assetValue = assets[currentTheme][id]
+			assetValue = assets[theme] ? assets[theme][id] : ''
 		}
 	}
 </script>

@@ -5,12 +5,12 @@
 	import {onMount} from 'svelte'
 	import {page} from '$app/stores'
 	import {links} from '$data/nav'
-	import {compositions, stores, constants} from '@fat-fuzzy/ui'
+	import {compositions, constants} from '@fat-fuzzy/ui'
+	import {theme} from '$lib/stores/theme.js'
 
 	const {Header} = compositions
 
 	let {themes} = constants
-	let {theme} = stores.theme
 
 	let app: Element | null
 	let currentTheme = themes[$theme]
@@ -42,7 +42,7 @@
 	})
 </script>
 
-<Header className="header-app" items={links} id="doc" breakpoint="xs" />
+<Header id="doc" className="header-app" {theme} items={links} breakpoint="xs" />
 
 <main class={className}>
 	<slot />

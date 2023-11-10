@@ -6,7 +6,8 @@
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputGroup from '$lib/components/compositions/forms/InputGroup.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
-	import {currentStyles} from '$lib/stores/api'
+	import {currentStyles, theme} from '$lib/stores/api'
+	import {themes} from '$types/constants.js'
 	import {initStyles} from './styles-api'
 
 	export let title = ''
@@ -36,7 +37,10 @@
 			styles[category] = {...styles[category], ...familyValue}
 		})
 		stylesApi.applyStyles(styles)
+
 		currentStyles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
+		const currentTheme = themes.indexOf($currentStyles.app?.settings.brightness || 'day')
+		theme.set(currentTheme)
 	}
 
 	function handleInput(event, name: string) {

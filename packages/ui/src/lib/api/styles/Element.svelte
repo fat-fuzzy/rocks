@@ -7,8 +7,9 @@
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
-	import {currentStyles} from '$lib/stores/api'
+	import {currentStyles, theme} from '$lib/stores/api'
 	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
+	import {themes} from '$types/constants.js'
 
 	export let title = ''
 	export let depth = 0
@@ -30,7 +31,6 @@
 	}
 
 	let styles: StyleTree
-	let brightness = ''
 	let background = ''
 	let container = ''
 	let size = '' // Container size
@@ -38,7 +38,7 @@
 
 	$: styles = $currentStyles
 	// App settings (user controlled)
-	$: brightness = styles.app?.settings.brightness ?? brightness
+	$: brightness = themes[$theme]
 	$: background = styles.app?.settings.contrast ?? background
 	// Container options
 	// - [container + size] work together
