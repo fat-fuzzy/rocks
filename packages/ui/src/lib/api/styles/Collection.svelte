@@ -2,7 +2,8 @@
 	import type {ComponentType} from 'svelte'
 
 	import {page} from '$app/stores'
-	import {currentStyles} from '$lib/stores/api'
+	import {currentStyles, theme} from '$lib/stores/api'
+	import {themes} from '$types/constants.js'
 	import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
@@ -22,7 +23,6 @@
 
 	let styles = $currentStyles
 
-	let brightness = ''
 	let contrast = ''
 	let contextClasses = ''
 
@@ -38,7 +38,7 @@
 	$: styles = $currentStyles
 
 	//== App settings (user controlled)
-	$: brightness = styles.app?.settings.brightness ?? brightness
+	$: brightness = themes[$theme]
 	$: contrast = styles.app?.settings.contrast ?? contrast
 	//== Shared settings (user controlled)
 	// Container options
@@ -53,7 +53,7 @@
 		category.length - 1,
 	)}`
 	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
-	$: contextClasses = `${sharedOptions.size}`
+	$: contextClasses = `${sharedOptions.size} ${brightness}`
 </script>
 
 {#if isPage}
