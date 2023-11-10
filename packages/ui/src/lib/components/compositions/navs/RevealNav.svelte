@@ -49,7 +49,6 @@
 </script>
 
 <div
-	in:fly={'all'}
 	class={`l:reveal ${show} ${setHeight} ${direction} ${position}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
