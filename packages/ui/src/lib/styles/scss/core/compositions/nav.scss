@@ -103,3 +103,8 @@ nav a:hover {
 a[class*='card'] {
 	text-decoration: none;
 }
+
+//== Override heading styles for headings inside links
+a[class*='card']:hover > *:not(.icon) {
+	text-decoration: underline;
+}

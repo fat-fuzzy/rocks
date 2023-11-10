@@ -6,6 +6,12 @@
 a[class*='emoji:']::before {
 	margin-inline: var(--current-size) var(--current-size-plus);
 }
+[class*='card:'][class*='emoji:'][class*=':md']::before,
+[class*='card:'][class*='emoji:'][class*=':lg']::before,
+[class*='card:'][class*='emoji:'][class*=':xl']::before,
+[class*='card:'][class*='emoji:'][class*=':xxl']::before {
+	margin-inline: 0;
+}
 
 .feedback[class*='emoji'] {
 	display: flex;

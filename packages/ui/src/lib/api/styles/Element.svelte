@@ -53,9 +53,9 @@
 	{@const props = getProps({category, component: title})}
 	<article class={`card:lg box ${brightness} bg:${background} l:stack md`}>
 		<header class={`card:sm`}>
-			<a class="card:sm w:full" href={`${path}/${title}`}>
+			<a class="card:sm w:full l:switcher font:lg emoji:link" href={`${path}/${title}`}>
 				<svelte:element this={`h${String(depth)}`} class="link font:xl">
-					<span class="font:sm">🔗</span>&nbsp;{title}
+					{title}
 				</svelte:element>
 			</a>
 		</header>
