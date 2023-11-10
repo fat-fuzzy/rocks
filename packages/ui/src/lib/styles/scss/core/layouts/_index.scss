@@ -17,5 +17,6 @@
 @forward './card'; // Use for displaying self-contained content items
 @forward './reveal'; // Use for displaying hidden content with a button action
 @forward './reveal-auto'; // Use for displaying hidden content in response to a container breakpoint
+@forward './reveal-fixed'; // Use for displaying hidden content in response to a button action
 @forward './details'; // Use to style <details> and <summary> elements
 @forward './shapes'; // Use to style geometric shapes
