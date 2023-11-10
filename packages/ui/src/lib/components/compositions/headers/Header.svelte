@@ -132,7 +132,7 @@
 		>
 			{#each items.side as { id, title, action, url, asset, variant, subitems }}
 				{#if url}
-					<a class={variant} href={url} target="_blank" rel="noreferrer">
+					<a class={`${variant} ${asset}`} href={url} target="_blank" rel="noreferrer">
 						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
 					</a>
 				{:else if action}

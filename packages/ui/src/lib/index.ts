@@ -117,7 +117,7 @@ const tokens = {
 }
 
 const blocks = {
-	ActionLabel,
+	// ActionLabel,
 	Button,
 	Toggle,
 	Feedback,
