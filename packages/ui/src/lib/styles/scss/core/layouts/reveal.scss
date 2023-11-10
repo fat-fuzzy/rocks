@@ -20,6 +20,7 @@
 .l\:reveal.show {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 }
 
 .l\:reveal.show .content {
@@ -71,14 +72,16 @@
 		&.minimize .content {
 			border: unset;
 			clip: unset;
-			height: auto;
-			margin: initial;
-			overflow: hidden;
 			padding: var(--current-size);
+			white-space: normal;
+		}
+
+		&.minimize .content:not([class*='fixed']) {
+			overflow: hidden;
 			position: unset;
 			top: 0;
 			width: 100%;
-			white-space: normal;
+			margin: initial;
 		}
 
 		> button {
@@ -92,6 +95,27 @@
 	.l\:reveal.show .content {
 		top: 0; // TODO : Fix magic denominator
 		max-height: unset;
+	}
+
+	// TODO: Clean this magic stuff
+	.l\:reveal .content[class*='fixed'],
+	.l\:reveal.show .content[class*='fixed'] {
+		--current-side-size: var(--sidebar-width-xs);
+		--current-gap: calc(var(--gap) * 4.25);
+		position: fixed;
+		width: var(--current-side-size);
+		top: var(--current-gap);
+		max-height: calc(100vh - var(--current-gap) - var(--gap));
+		overflow: auto;
+	}
+
+	// TODO: Decouple sidebar layout from sidebar content
+	.l\:side.minimize {
+		flex-basis: calc(var(--current-size) * 5);
+	}
+	.l\:side.minimize .l\:reveal .content[class*='fixed'],
+	.l\:side.minimize .l\:reveal.show .content[class*='fixed'] {
+		left: calc(var(--current-side-size) * -1 + calc(var(--current-size) * 5));
 	}
 }
 
