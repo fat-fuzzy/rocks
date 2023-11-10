@@ -70,7 +70,7 @@
 	</button>
 	<menu
 		id={`menu-${id}`}
-		class={`content l:${layout} ${container}:${size} bp:${breakpoint} layer bg:${background} card:${size} align:${align} ${size}`}
+		class={`content l:${layout}:${size} ${container}:${size} bp:${breakpoint} layer bg:${background} card:${size} align:${align} ${size}`}
 	>
 		{#each items as buttonProps}
 			<li>

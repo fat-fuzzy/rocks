@@ -47,7 +47,7 @@
 {#if title}
 	<div class={`menu l:stack ${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout} ${container}:${size} bp:${breakpoint} ${size}`}>
+		<menu id={menuId} class={`l:${layout}:${size} ${container}:${size} bp:${breakpoint} ${size}`}>
 			{#each items as toggle}
 				{@const itemColor = toggle.color ?? color}
 				{@const itemVariant = toggle.variant ?? variant}

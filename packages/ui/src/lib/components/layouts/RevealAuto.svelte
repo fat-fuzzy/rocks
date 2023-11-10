@@ -38,7 +38,7 @@
 >
 	<button
 		id={`${id}-reveal-button`}
-		class={`card:${size} font:${size} ${variant} ${color}`}
+		class={`card:${size} font:${size} ${variant} ${color} outline`}
 		aria-expanded={expanded}
 		aria-controls={`${id}-reveal`}
 		on:click={toggleReveal}
