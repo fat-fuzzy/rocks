@@ -5,13 +5,13 @@
 	export let hint = 'File types accepted: png, jpeg'
 	export let color = ''
 	export let variant = ''
-	export let layout = ''
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
 
 	export let fileType = 'image/png, image/jpeg'
 	export let multiple = true
+	let layout = 'stack'
 
 	$: classes = `l:${layout} bp:${breakpoint} font:${size} ${size} ${color} ${variant} ${align}`
 	$: hintClasses = `form:element font:minus:${size} ${color} ${variant} ${align}`

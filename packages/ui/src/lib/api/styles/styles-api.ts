@@ -312,6 +312,8 @@ const shared: SharedStyles = {
 					'LogIn',
 					'InputCheck',
 					'InputRadio',
+					'InputFile',
+					'InputRange',
 				],
 				items: [
 					{id: 'shared.layout.layout.stack', text: 'stack', value: 'stack'},
@@ -362,6 +364,8 @@ const shared: SharedStyles = {
 					'LogIn',
 					'InputCheck',
 					'InputRadio',
+					'InputFile',
+					'InputRange',
 				],
 				items: [
 					{id: 'shared.layout.breakpoint.xs', text: 'xs', value: 'xs'},

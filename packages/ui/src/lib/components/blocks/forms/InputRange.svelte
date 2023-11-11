@@ -12,11 +12,11 @@
 	export let step = 1
 	export let color = ''
 	export let variant = ''
-	export let layout = ''
 	export let breakpoint = ''
 	export let size = ''
 	export let align = ''
 	export let items: any[]
+	let layout = 'stack'
 
 	let markers: {id: string; label: string; value: number}[] = [{id: '', label: '', value: min}]
 	let valueLabel = value
