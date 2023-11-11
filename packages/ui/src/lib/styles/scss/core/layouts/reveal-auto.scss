@@ -1,7 +1,7 @@
 @import './reveal';
 
 .l\:reveal\:auto {
-	position: absolute;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: fit-content;
@@ -45,7 +45,8 @@
 
 // @include mixins.min-width(var(--bp-xxs)) {
 @media screen and (min-width: 320px) {
-	.l\:reveal\:auto.bp\:xxs {
+	.l\:reveal\:auto.bp\:xxs,
+	.page-header .l\:reveal\:auto.bp\:xxs {
 		position: unset;
 	}
 
@@ -110,7 +111,8 @@
 
 // @include mixins.min-width(var(--bp-xs)) {
 @media screen and (min-width: 620px) {
-	.l\:reveal\:auto.bp\:xs {
+	.l\:reveal\:auto.bp\:xs,
+	.page-header .l\:reveal\:auto.bp\:xs {
 		position: unset;
 	}
 
@@ -175,7 +177,8 @@
 
 // @include mixins.min-width(var(--bp-sm)) {
 @media screen and (min-width: 935px) {
-	.l\:reveal\:auto.bp\:sm {
+	.l\:reveal\:auto.bp\:sm,
+	.page-header .l\:reveal\:auto.bp\:sm {
 		position: unset;
 	}
 
@@ -240,7 +243,8 @@
 
 // @include mixins.min-width(var(--bp-md)) {
 @media screen and (min-width: 1360px) {
-	.l\:reveal\:auto.bp\:md {
+	.l\:reveal\:auto.bp\:md,
+	.page-header .l\:reveal\:auto.bp\:md {
 		position: unset;
 	}
 
@@ -305,7 +309,8 @@
 
 // @include mixins.min-width(var(--bp-lg)) {
 @media screen and (min-width: 1620px) {
-	.l\:reveal\:auto.bp\:lg {
+	.l\:reveal\:auto.bp\:lg,
+	.page-header .l\:reveal\:auto.bp\:lg {
 		position: unset;
 	}
 
@@ -370,7 +375,8 @@
 
 // @include mixins.min-width(var(--bp-xl)) {
 @media screen and (min-width: 2048px) {
-	.l\:reveal\:auto.bp\:xl {
+	.l\:reveal\:auto.bp\:xl,
+	.page-header .l\:reveal\:auto.bp\:xl {
 		position: unset;
 	}
 
@@ -435,7 +441,8 @@
 
 // @include mixins.min-width(var(--bp-xxl)) {
 @media screen and (min-width: 3048px) {
-	.l\:reveal\:auto.bp\:xxl {
+	.l\:reveal\:auto.bp\:xxl,
+	.page-header .l\:reveal\:auto.bp\:xxl {
 		position: unset;
 	}
 

@@ -6,7 +6,7 @@
 	export let id = 'button-menu'
 	export let title = ''
 	export let size = ''
-	export let breakpoint = ''
+	export let threshold = ''
 	export let layout = 'switcher'
 	export let container = ''
 	export let color = ''
@@ -31,7 +31,7 @@
 {#if title}
 	<div class={`menu l:stack:${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout}:${size} ${container}:${size} bp:${breakpoint} ${size}`}>
+		<menu id={menuId} class={`l:${layout}:${size} ${container}:${size} th:${threshold} ${size}`}>
 			{#each items as button}
 				{@const itemColor = button.color ?? color}
 				{@const itemVariant = button.variant ?? variant}
@@ -54,7 +54,7 @@
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout} ${container}:${size} bp:${breakpoint} ${size}`}>
+	<menu id={menuId} class={`l:${layout} ${container}:${size} th:${threshold} ${size}`}>
 		{#each items as button}
 			{@const itemColor = button.color ?? color}
 			{@const itemVariant = button.variant ?? variant}
