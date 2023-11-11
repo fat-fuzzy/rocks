@@ -74,8 +74,9 @@ header {
 /* Configure reveal menu positioning and width */
 .header-app .l\:reveal\:auto .show {
 	top: var(--header-height);
+	left: 0;
 	height: 35vh;
-	width: 100%;
+	width: 100vw;
 }
 .page-header .l\:reveal\:auto .show {
 	// TODO fix magic multiplier
@@ -110,5 +111,10 @@ header {
 		left: calc(50% - var(--size));
 		border: var(--size) solid transparent;
 		border-top: var(--size) solid var(--current-primary-light);
+	}
+	/* Configure reveal menu positioning and width */
+	.header-app .l\:reveal\:auto .show {
+		height: auto;
+		width: auto;
 	}
 }

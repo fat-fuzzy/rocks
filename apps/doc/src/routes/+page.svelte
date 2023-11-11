@@ -27,7 +27,7 @@
 
 <section class="l:center l:text:xxl">
 	<h2>✨ Highlights</h2>
-	<div class="l:switcher bp:xs card:xxl">
+	<div class="l:switcher:sm bp:xs card:xxl">
 		<article class={`card:lg text:center ${variant}`}>
 			<a data-sveltekit-preload-data href="/ui" class="card font:md">🌈 UI</a>
 		</article>

@@ -109,7 +109,7 @@
 		</button>
 
 		<nav id={`${id}-primary-nav`} class={show}>
-			<ul class="l:switcher bp:xxs">
+			<ul class="l:switcher:sm bp:xxs">
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>
 				</li>
