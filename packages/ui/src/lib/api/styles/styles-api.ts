@@ -123,9 +123,8 @@ const tokens: TokenStyles = {
 		title: '',
 		id: 'tokens.element',
 		layout: 'switcher',
-		container: 'card:lg',
-		size: 'sm',
-		variant: '',
+		size: 'lg',
+		variant: 'card',
 		items: [
 			// new StyleInputGroup({
 			// 	name: 'Color',
@@ -173,9 +172,8 @@ const app: AppStyles = {
 		title: '',
 		id: 'app.settings',
 		layout: 'flex',
-		container: 'card',
 		size: 'lg',
-		variant: '',
+		variant: 'card',
 		items: [
 			new StyleInputGroup({
 				name: 'Brightness',
@@ -244,26 +242,11 @@ const shared: SharedStyles = {
 		name: 'Container',
 		title: '',
 		layout: 'flex grow',
-		container: 'card',
 		size: 'lg',
-		variant: '',
+		variant: 'card',
 		id: 'shared.container',
 		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'RevealAuto'],
 		items: [
-			new StyleInputGroup({
-				name: 'Container',
-				id: 'shared.container.container',
-				value: '',
-				input: 'toggle',
-				layout: 'stack',
-				size: 'sm',
-				container: 'card',
-				exclude: ['Stack', 'Burrito'],
-				items: [
-					{id: 'shared.container.container.center', text: 'center', value: 'center'},
-					{id: 'shared.container.container.burrito', text: 'burrito', value: 'burrito'},
-				],
-			}),
 			new StyleInputGroup({
 				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
 				id: 'shared.container.size',
@@ -281,6 +264,20 @@ const shared: SharedStyles = {
 					{id: 'shared.container.size.xl', text: 'xl', value: 'xl'},
 				],
 			}),
+			new StyleInputGroup({
+				name: 'Container',
+				id: 'shared.container.container',
+				value: '',
+				input: 'toggle',
+				layout: 'stack',
+				size: 'sm',
+				container: 'card',
+				exclude: ['Stack', 'Burrito'],
+				items: [
+					{id: 'shared.container.container.center', text: 'center', value: 'center'},
+					{id: 'shared.container.container.burrito', text: 'burrito', value: 'burrito'},
+				],
+			}),
 		],
 	}),
 	layout: new StyleFamily({
@@ -293,6 +290,39 @@ const shared: SharedStyles = {
 		id: 'shared.layout',
 		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'Feedback', 'RevealAuto'],
 		items: [
+			new StyleInputGroup({
+				name: 'Breakpoint',
+				id: 'shared.layout.breakpoint',
+				value: 'xl',
+				input: 'range',
+				layout: 'stack',
+				size: 'sm',
+				container: 'card',
+				exclude: [
+					'compositions',
+					'layouts',
+					'Reveal',
+					'Stack',
+					'Switcher',
+					'Sidebar',
+					'Burrito',
+					'Sidebar',
+					'Nav',
+					'RevealNav',
+					'LogIn',
+					'InputCheck',
+					'InputRadio',
+					'InputFile',
+					'InputRange',
+				],
+				items: [
+					{id: 'shared.layout.breakpoint.xs', text: 'xs', value: 'xs'},
+					{id: 'shared.layout.breakpoint.sm', text: 'sm', value: 'sm'},
+					{id: 'shared.layout.breakpoint.md', text: 'md', value: 'md'},
+					{id: 'shared.layout.breakpoint.lg', text: 'lg', value: 'lg'},
+					{id: 'shared.layout.breakpoint.xl', text: 'xl', value: 'xl'},
+				],
+			}),
 			new StyleInputGroup({
 				name: 'Layout',
 				id: 'shared.layout.layout',
@@ -345,39 +375,6 @@ const shared: SharedStyles = {
 					},
 				],
 			}),
-			new StyleInputGroup({
-				name: 'Breakpoint',
-				id: 'shared.layout.breakpoint',
-				value: 'md',
-				input: 'range',
-				layout: 'stack',
-				size: 'sm',
-				container: 'card',
-				exclude: [
-					'compositions',
-					'layouts',
-					'Reveal',
-					'Stack',
-					'Switcher',
-					'Sidebar',
-					'Burrito',
-					'Sidebar',
-					'Nav',
-					'RevealNav',
-					'LogIn',
-					'InputCheck',
-					'InputRadio',
-					'InputFile',
-					'InputRange',
-				],
-				items: [
-					{id: 'shared.layout.breakpoint.xs', text: 'xs', value: 'xs'},
-					{id: 'shared.layout.breakpoint.sm', text: 'sm', value: 'sm'},
-					{id: 'shared.layout.breakpoint.md', text: 'md', value: 'md'},
-					{id: 'shared.layout.breakpoint.lg', text: 'lg', value: 'lg'},
-					{id: 'shared.layout.breakpoint.xl', text: 'xl', value: 'xl'},
-				],
-			}),
 		],
 	}),
 }
@@ -387,10 +384,9 @@ const blocks: BlockStyles = {
 		name: 'Element',
 		title: '',
 		id: 'blocks.element',
-		layout: 'grid',
-		container: 'card',
+		layout: 'switcher',
 		size: 'xs',
-		variant: '',
+		variant: 'card:xl',
 		items: [
 			new StyleInputGroup({
 				name: 'Color',
@@ -438,6 +434,23 @@ const blocks: BlockStyles = {
 					{id: 'blocks.element.variant.default', text: 'default', value: 'default'},
 					{id: 'blocks.element.variant.outline', text: 'outline', value: 'outline'},
 					{id: 'blocks.element.variant.bare', text: 'bare', value: 'bare'},
+				],
+			}),
+			new StyleInputGroup({
+				name: 'Size',
+				id: 'blocks.element.size',
+				value: 'md',
+				input: 'range',
+				layout: 'stack',
+				size: 'sm',
+				variant: 'grow card',
+				exclude: ['ActionLabel'],
+				items: [
+					{id: 'blocks.element.size.xs', text: 'xs', value: 'xs'},
+					{id: 'blocks.element.size.sm', text: 'sm', value: 'sm'},
+					{id: 'blocks.element.size.md', text: 'md', value: 'md'},
+					{id: 'blocks.element.size.lg', text: 'lg', value: 'lg'},
+					{id: 'blocks.element.size.xl', text: 'xl', value: 'xl'},
 				],
 			}),
 			new StyleInputGroup({
@@ -521,23 +534,6 @@ const blocks: BlockStyles = {
 				],
 			}),
 			new StyleInputGroup({
-				name: 'Size',
-				id: 'blocks.element.size',
-				value: 'md',
-				input: 'range',
-				layout: 'stack',
-				size: 'sm',
-				variant: 'grow card',
-				exclude: ['ActionLabel'],
-				items: [
-					{id: 'blocks.element.size.xs', text: 'xs', value: 'xs'},
-					{id: 'blocks.element.size.sm', text: 'sm', value: 'sm'},
-					{id: 'blocks.element.size.md', text: 'md', value: 'md'},
-					{id: 'blocks.element.size.lg', text: 'lg', value: 'lg'},
-					{id: 'blocks.element.size.xl', text: 'xl', value: 'xl'},
-				],
-			}),
-			new StyleInputGroup({
 				name: 'Asset', // TODO: Add hint: "Icon: emoji / SVG"
 				id: 'blocks.element.asset',
 				value: 'default',
@@ -583,9 +579,8 @@ const layouts: LayoutStyles = {
 		title: '',
 		id: 'layouts.content',
 		layout: 'switcher',
-		container: 'card',
 		size: 'md',
-		variant: '',
+		variant: 'card',
 		items: [
 			new StyleInputGroup({
 				name: 'Content',
@@ -642,7 +637,6 @@ const layouts: LayoutStyles = {
 		title: '',
 		id: 'layouts.element',
 		layout: 'switcher',
-		container: '',
 		size: 'lg',
 		variant: 'card',
 		items: [
@@ -697,7 +691,7 @@ export const DEFAULT_STYLES: StyleTree = {
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {
-		layout: {layout: 'switcher', breakpoint: 'md'},
+		layout: {layout: 'switcher', breakpoint: 'xl'}, // need large breakpoint for Header default demo
 		container: {container: 'center', size: 'md'},
 	},
 	blocks: {

@@ -9,7 +9,7 @@
 	export let formaction = 'enter'
 	// export let reset = 'reset'
 
-	let apiLayout = category != 'app' ? 'nowrap reverse grow' : 'reverse nowrap shrink'
+	let apiLayout = category != 'app' ? 'nowrap reverse grow' : 'nowrap shrink'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
@@ -37,7 +37,7 @@
 			update({reset: false})
 		}
 	}}
-	class={`l:switcher:${apiSize} ${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
+	class={`l:switcher:${apiSize} ${apiLayout} bp:${apiBreakpoint} bg:polar card:${apiSize} ${apiSize}`}
 >
 	<StyleFamily {category} {title} />
 </form>
