@@ -279,6 +279,12 @@ label.highlight > input:active {
 	background-color: var(--current-bg-color);
 }
 ////
+label.primary > [type='file'] {
+	color: var(--color-light);
+}
+label.highlight > [type='file'] {
+	color: var(--color-dark);
+}
 label.primary > [type='file']:hover {
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
