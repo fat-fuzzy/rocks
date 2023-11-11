@@ -9,9 +9,9 @@
 	export let formaction = 'enter'
 	// export let reset = 'reset'
 
-	let apiLayout = category != 'app' ? 'flex nowrap reverse grow' : 'flex reverse nowrap shrink'
+	let apiLayout = category != 'app' ? 'nowrap reverse grow' : 'reverse nowrap shrink'
 	let apiSize = 'lg'
-	let apiBreakpoint = 'xxl'
+	let apiBreakpoint = 'xxs'
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -37,7 +37,7 @@
 			update({reset: false})
 		}
 	}}
-	class={`l:${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
+	class={`l:switcher:${apiSize} ${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
 >
 	<StyleFamily {category} {title} />
 </form>

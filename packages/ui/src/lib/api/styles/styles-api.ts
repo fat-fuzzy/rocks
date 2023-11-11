@@ -63,7 +63,8 @@ export class StylesApi {
 		const sharedContainerStylesTree = this.shared?.container?.getStyleTree() || {}
 		const sharedLayoutStylesTree = this.shared?.layout?.getStyleTree() || {}
 		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
-		const layoutsStylesTree = this.layouts?.element?.getStyleTree() || {}
+		const layoutsContentStylesTree = this.layouts?.content?.getStyleTree() || {}
+		const layoutsLayoutStylesTree = this.layouts?.element?.getStyleTree() || {}
 
 		return {
 			tokens: tokensStylesTree,
@@ -73,7 +74,10 @@ export class StylesApi {
 				...sharedLayoutStylesTree,
 			},
 			blocks: blocksStylesTree,
-			layouts: layoutsStylesTree,
+			layouts: {
+				...layoutsContentStylesTree,
+				...layoutsLayoutStylesTree,
+			},
 		}
 	}
 
@@ -360,7 +364,6 @@ const shared: SharedStyles = {
 					'Sidebar',
 					'Nav',
 					'RevealNav',
-					'Header',
 					'LogIn',
 					'InputCheck',
 					'InputRadio',
@@ -384,9 +387,9 @@ const blocks: BlockStyles = {
 		name: 'Element',
 		title: '',
 		id: 'blocks.element',
-		layout: 'flex grow',
+		layout: 'grid',
 		container: 'card',
-		size: 'lg',
+		size: 'xs',
 		variant: '',
 		items: [
 			new StyleInputGroup({
@@ -394,8 +397,8 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.color',
 				value: '',
 				input: 'toggle',
-				layout: 'stack',
-				size: 'sm',
+				layout: 'switcher',
+				size: 'xxs',
 				container: 'card',
 				exclude: ['ActionLabel', 'Feedback'],
 				items: [
@@ -423,13 +426,28 @@ const blocks: BlockStyles = {
 				],
 			}),
 			new StyleInputGroup({
+				name: 'Variant',
+				id: 'blocks.element.variant',
+				value: 'default',
+				input: 'radio',
+				layout: 'stack',
+				size: 'sm',
+				variant: 'box card',
+				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+				items: [
+					{id: 'blocks.element.variant.default', text: 'default', value: 'default'},
+					{id: 'blocks.element.variant.outline', text: 'outline', value: 'outline'},
+					{id: 'blocks.element.variant.bare', text: 'bare', value: 'bare'},
+				],
+			}),
+			new StyleInputGroup({
 				name: 'Status',
 				id: 'blocks.element.status',
 				value: 'default',
 				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card box',
+				variant: 'box card',
 				exclude: [
 					'ActionLabel',
 					'Button',
@@ -479,21 +497,6 @@ const blocks: BlockStyles = {
 				],
 			}),
 			new StyleInputGroup({
-				name: 'Variant',
-				id: 'blocks.element.variant',
-				value: 'default',
-				input: 'radio',
-				layout: 'stack',
-				size: 'sm',
-				variant: 'card box',
-				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
-				items: [
-					{id: 'blocks.element.variant.default', text: 'default', value: 'default'},
-					{id: 'blocks.element.variant.outline', text: 'outline', value: 'outline'},
-					{id: 'blocks.element.variant.bare', text: 'bare', value: 'bare'},
-				],
-			}),
-			new StyleInputGroup({
 				name: 'Context',
 				id: 'blocks.element.context',
 				value: 'default',
@@ -501,7 +504,7 @@ const blocks: BlockStyles = {
 				layout: 'stack',
 				size: 'sm',
 				container: '',
-				variant: 'card box',
+				variant: 'box card',
 				exclude: [
 					'ActionLabel',
 					'Button',
@@ -524,7 +527,7 @@ const blocks: BlockStyles = {
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card',
+				variant: 'grow card',
 				exclude: ['ActionLabel'],
 				items: [
 					{id: 'blocks.element.size.xs', text: 'xs', value: 'xs'},
@@ -539,9 +542,9 @@ const blocks: BlockStyles = {
 				id: 'blocks.element.asset',
 				value: 'default',
 				input: 'toggle',
-				layout: 'flex',
-				size: 'sm',
-				container: 'card',
+				layout: 'switcher',
+				size: 'xxs',
+				variant: 'card',
 				exclude: ['ButtonMenu', 'ToggleMenu', 'InputRange', 'InputFile'],
 				items: [
 					{
@@ -575,63 +578,74 @@ const blocks: BlockStyles = {
 }
 
 const layouts: LayoutStyles = {
-	element: new StyleFamily({
-		name: 'Element',
+	content: new StyleFamily({
+		name: 'Content',
 		title: '',
-		id: 'layouts.element',
-		layout: 'flex grow',
+		id: 'layouts.content',
+		layout: 'switcher',
 		container: 'card',
-		size: 'lg',
+		size: 'md',
 		variant: '',
 		items: [
 			new StyleInputGroup({
 				name: 'Content',
-				id: 'layouts.element.content',
+				id: 'layouts.content.content',
 				value: 'card',
 				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card box',
+				variant: 'box card',
 				exclude: ['layouts', 'Sidebar'],
 				include: ['Burrito', 'Reveal', 'RevealAuto', 'Stack', 'Switcher'],
 				items: [
-					{id: 'layouts.element.content.card', text: 'card', value: 'card'},
-					{id: 'layouts.element.content.form', text: 'form', value: 'form'},
-					{id: 'layouts.element.content.text', text: 'text', value: 'text'},
+					{id: 'layouts.content.content.card', text: 'card', value: 'card'},
+					{id: 'layouts.content.content.form', text: 'form', value: 'form'},
+					{id: 'layouts.content.content.text', text: 'text', value: 'text'},
 				],
 			}),
 			new StyleInputGroup({
 				name: 'Side',
-				id: 'layouts.element.side',
+				id: 'layouts.content.side',
 				value: 'card',
 				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				variant: 'card box',
+				variant: 'box card',
 				exclude: ['layouts'],
 				include: ['Sidebar'],
 				items: [
-					{id: 'layouts.element.side.card', text: 'card', value: 'card'},
-					{id: 'layouts.element.side.form', text: 'form', value: 'form'},
-					{id: 'layouts.element.side.text', text: 'text', value: 'text'},
+					{id: 'layouts.content.side.card', text: 'card', value: 'card'},
+					{id: 'layouts.content.side.form', text: 'form', value: 'form'},
+					{id: 'layouts.content.side.text', text: 'text', value: 'text'},
 				],
 			}),
 			new StyleInputGroup({
 				name: 'Main',
-				id: 'layouts.element.main',
+				id: 'layouts.content.main',
 				value: 'text',
 				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card',
+				variant: 'box card',
 				exclude: ['layouts'],
 				include: ['Sidebar'],
 				items: [
-					{id: 'layouts.element.main.card', text: 'card', value: 'card'},
-					{id: 'layouts.element.main.form', text: 'form', value: 'form'},
-					{id: 'layouts.element.main.text', text: 'text', value: 'text'},
+					{id: 'layouts.content.main.card', text: 'card', value: 'card'},
+					{id: 'layouts.content.main.form', text: 'form', value: 'form'},
+					{id: 'layouts.content.main.text', text: 'text', value: 'text'},
 				],
 			}),
+		],
+	}),
+	element: new StyleFamily({
+		name: 'Element',
+		title: '',
+		id: 'layouts.element',
+		layout: 'switcher',
+		container: '',
+		size: 'lg',
+		variant: 'card',
+		items: [
 			new StyleInputGroup({
 				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
 				id: 'layouts.element.size',
@@ -639,7 +653,7 @@ const layouts: LayoutStyles = {
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card',
+				variant: 'card',
 				items: [
 					{id: 'layouts.element.size.xs', text: 'xs', value: 'xs'},
 					{id: 'layouts.element.size.sm', text: 'sm', value: 'sm'},
@@ -649,21 +663,21 @@ const layouts: LayoutStyles = {
 				],
 			}),
 			new StyleInputGroup({
-				name: 'Breakpoint',
-				id: 'layouts.element.breakpoint',
-				value: 'lg',
+				name: 'Threshold',
+				id: 'layouts.element.threshold',
+				value: 'md',
 				input: 'range',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card',
+				variant: 'card',
 				exclude: ['layouts'],
 				include: ['Switcher', 'RevealAuto'],
 				items: [
-					{id: 'layouts.element.breakpoint.xs', text: 'xs', value: 'xs'},
-					{id: 'layouts.element.breakpoint.sm', text: 'sm', value: 'sm'},
-					{id: 'layouts.element.breakpoint.md', text: 'md', value: 'md'},
-					{id: 'layouts.element.breakpoint.lg', text: 'lg', value: 'lg'},
-					{id: 'layouts.element.breakpoint.xl', text: 'xl', value: 'xl'},
+					{id: 'layouts.element.threshold.xs', text: 'xs', value: 'xs'},
+					{id: 'layouts.element.threshold.sm', text: 'sm', value: 'sm'},
+					{id: 'layouts.element.threshold.md', text: 'md', value: 'md'},
+					{id: 'layouts.element.threshold.lg', text: 'lg', value: 'lg'},
+					{id: 'layouts.element.threshold.xl', text: 'xl', value: 'xl'},
 				],
 			}),
 		],
@@ -683,7 +697,7 @@ export const DEFAULT_STYLES: StyleTree = {
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	shared: {
-		layout: {layout: 'switcher', breakpoint: 'lg'},
+		layout: {layout: 'switcher', breakpoint: 'md'},
 		container: {container: 'center', size: 'md'},
 	},
 	blocks: {
@@ -698,6 +712,7 @@ export const DEFAULT_STYLES: StyleTree = {
 		},
 	},
 	layouts: {
-		element: {size: 'md', content: 'card', side: 'card', main: 'text', breakpoint: 'lg'},
+		content: {content: 'card', side: 'card', main: 'text'},
+		element: {size: 'md', breakpoint: 'lg'},
 	},
 }

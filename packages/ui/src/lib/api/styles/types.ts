@@ -64,6 +64,7 @@ export interface BlockStyles extends StyleCategory {
 	element: StyleFamily
 }
 export interface LayoutStyles extends StyleCategory {
+	content: StyleFamily
 	element: StyleFamily
 }
 

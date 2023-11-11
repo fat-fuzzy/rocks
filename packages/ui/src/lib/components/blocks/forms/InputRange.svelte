@@ -49,7 +49,7 @@
 		}
 	}
 
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
+	$: classes = `l:${layout}:${size} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 	$: {
 		if (items) {
 			let selectedMarker = markers.find((m) => m.label === value)
@@ -69,27 +69,29 @@
 	})
 </script>
 
-<label for={id} class={classes}>
-	<span class={`font:${size}`}>
-		{label}:
-		{valueLabel}
-	</span>
-	<input
-		{id}
-		data-test={`input-range-${id}`}
-		type="range"
-		bind:value
-		{min}
-		{max}
-		{step}
-		on:input={handleInput}
-		list={items ? 'markers' : undefined}
-	/>
-	{#if items && valueLabel !== value}
-		<datalist id="markers">
-			{#each markers as { id, label, value }}
-				<option {id} {label} {value} />
-			{/each}
-		</datalist>
-	{/if}
-</label>
+<fieldset class={`l:stack:${size}`}>
+	<label for={id} class={classes}>
+		<span class={`font:${size}`}>
+			{label}:
+			{valueLabel}
+		</span>
+		<input
+			{id}
+			data-test={`input-range-${id}`}
+			type="range"
+			bind:value
+			{min}
+			{max}
+			{step}
+			on:input={handleInput}
+			list={items ? 'markers' : undefined}
+		/>
+		{#if items && valueLabel !== value}
+			<datalist id="markers">
+				{#each markers as { id, label, value }}
+					<option {id} {label} {value} />
+				{/each}
+			</datalist>
+		{/if}
+	</label>
+</fieldset>

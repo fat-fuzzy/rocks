@@ -8,13 +8,20 @@
 	export let layout = 'stack'
 	export let container = ''
 	export let align = 'start'
+	export let threshold = ''
 	export let breakpoint = ''
 	export let variant = '' // intrinsic variations in design: [box/bare/layer] [card]
 	export let type = '' // group /
 
 	$: containerClass = container ? `l:${container}:${size}` : ''
+	$: thresholdClass = threshold ? `th:${threshold}` : ''
+	$: breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
+	$: layoutClass = layout ? `l:${layout}:${size} ${thresholdClass} ${breakpointClass}` : ''
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:${layout} bp:${breakpoint} ${containerClass} ${size} ${variant} ${color} ${backgroundClass} align:${align} ${type}`
+	$: contentClass = `${size || ''} ${type || ''} ${variant || ''}:${size || ''} ${color || ''} ${
+		align ? `align:${align}` : ''
+	}`
+	$: classes = `${layoutClass} ${containerClass} ${contentClass} ${backgroundClass} `
 </script>
 
 <fieldset {id} {name} data-key={id} class={classes}>

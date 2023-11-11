@@ -17,9 +17,13 @@
 */
 [class*='l:switcher:'] {
 	--gap: var(--current-size);
-	--threshold: var(--current-bp-size);
+	--threshold: var(--current-bp-threshold);
 }
 
 .l\:switcher\:shrink > * {
 	flex-grow: 0;
+}
+
+[class*='l:switcher:'].reverse {
+	flex-direction: row-reverse;
 }

@@ -103,3 +103,32 @@
 .bp\:xxl {
 	--current-bp-size: var(--bp-xxl);
 }
+
+.th\:xxs {
+	--current-side-threshold: var(--sidebar-width-xxs);
+	--current-bp-threshold: var(--bp-xxs);
+}
+.th\:xs {
+	--current-side-threshold: var(--sidebar-width-xs);
+	--current-bp-threshold: var(--bp-xs);
+}
+.th\:sm {
+	--current-side-threshold: var(--sidebar-width-sm);
+	--current-bp-threshold: var(--bp-sm);
+}
+.th\:md {
+	--current-side-threshold: var(--sidebar-width-md);
+	--current-bp-threshold: var(--bp-md);
+}
+.th\:lg {
+	--current-side-threshold: var(--sidebar-width-lg);
+	--current-bp-threshold: var(--bp-lg);
+}
+.th\:xl {
+	--current-side-threshold: var(--sidebar-width-xl);
+	--current-bp-threshold: var(--bp-xl);
+}
+.th\:xxl {
+	--current-side-threshold: var(--sidebar-width-xxl);
+	--current-bp-threshold: var(--bp-xxl);
+}

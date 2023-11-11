@@ -28,15 +28,15 @@
 	<h1 class=" l:main:30 card:xl">{title}</h1>
 	<RevealAuto
 		size="sm"
-		breakpoint="md"
+		threshold="md"
 		color="primary:light"
 		background="polar"
 		align="start"
-		justify="end"
 		asset="&nbsp;☂️&nbsp;"
 		title="Context"
+		direction="reverse"
 	>
-		<div slot="content" class="l:side l:flex reverse">
+		<div slot="content" class="l:side l:switcher:xs reverse shrink">
 			<Api category="app" {title} />
 			<Api category="shared" {title} />
 		</div>
