@@ -78,9 +78,20 @@ header {
 	height: 35vh;
 	width: 100vw;
 }
+.header-app .l\:reveal\:auto {
+	position: relative;
+}
+
+.page-header {
+	position: relative;
+}
+.page-header .l\:reveal\:auto {
+	right: 0;
+}
 .page-header .l\:reveal\:auto .show {
 	// TODO fix magic multiplier
 	top: calc(9 * var(--current-size-plus));
+	right: 0;
 }
 
 // TODO fix magic breakpoint // testing

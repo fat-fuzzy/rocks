@@ -1,7 +1,7 @@
 @import './reveal';
 
 .l\:reveal\:auto {
-	position: relative;
+	position: absolute;
 	display: flex;
 	flex-direction: column;
 	width: fit-content;
@@ -45,8 +45,11 @@
 
 // @include mixins.min-width(var(--bp-xxs)) {
 @media screen and (min-width: 320px) {
+	.l\:reveal\:auto.bp\:xxs {
+		position: unset;
+	}
+
 	.l\:reveal\:auto.bp\:xxs .show {
-		position: initial;
 		min-inline-size: unset;
 	}
 
@@ -107,8 +110,11 @@
 
 // @include mixins.min-width(var(--bp-xs)) {
 @media screen and (min-width: 620px) {
+	.l\:reveal\:auto.bp\:xs {
+		position: unset;
+	}
+
 	.l\:reveal\:auto.bp\:xs .show {
-		position: initial;
 		min-inline-size: unset;
 	}
 
@@ -169,8 +175,11 @@
 
 // @include mixins.min-width(var(--bp-sm)) {
 @media screen and (min-width: 935px) {
+	.l\:reveal\:auto.bp\:sm {
+		position: unset;
+	}
+
 	.l\:reveal\:auto.bp\:sm .show {
-		position: initial;
 		min-inline-size: unset;
 	}
 
@@ -231,8 +240,11 @@
 
 // @include mixins.min-width(var(--bp-md)) {
 @media screen and (min-width: 1360px) {
+	.l\:reveal\:auto.bp\:md {
+		position: unset;
+	}
+
 	.l\:reveal\:auto.bp\:md .show {
-		position: initial;
 		min-inline-size: unset;
 	}
 
@@ -293,8 +305,11 @@
 
 // @include mixins.min-width(var(--bp-lg)) {
 @media screen and (min-width: 1620px) {
+	.l\:reveal\:auto.bp\:lg {
+		position: unset;
+	}
+
 	.l\:reveal\:auto.bp\:lg .show {
-		position: initial;
 		min-inline-size: unset;
 	}
 
@@ -355,8 +370,11 @@
 
 // @include mixins.min-width(var(--bp-xl)) {
 @media screen and (min-width: 2048px) {
+	.l\:reveal\:auto.bp\:xl {
+		position: unset;
+	}
+
 	.l\:reveal\:auto.bp\:xl .show {
-		position: initial;
 		min-inline-size: unset;
 	}
 
@@ -417,8 +435,11 @@
 
 // @include mixins.min-width(var(--bp-xxl)) {
 @media screen and (min-width: 3048px) {
+	.l\:reveal\:auto.bp\:xxl {
+		position: unset;
+	}
+
 	.l\:reveal\:auto.bp\:xxl .show {
-		position: initial;
 		min-inline-size: unset;
 	}
 
