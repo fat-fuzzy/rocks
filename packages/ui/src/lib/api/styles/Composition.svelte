@@ -10,6 +10,7 @@
 	export let props: any
 
 	let breakpoint = props?.breakpoint || ''
+	let threshold = props?.threshold || ''
 	let layout = props?.layout || ''
 	let color = props?.color || ''
 	let variant = props?.variant || ''
@@ -29,8 +30,21 @@
 	// - [layout + breakpoint] work together
 	$: layout = styles.shared?.layout.layout ?? layout
 	$: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
+	$: threshold = styles.layout?.element.threshold ?? threshold
 
-	$: props = {...props, page, title, color, variant, size, layout, breakpoint, asset, background}
+	$: props = {
+		...props,
+		page,
+		title,
+		color,
+		variant,
+		size,
+		layout,
+		breakpoint,
+		threshold,
+		asset,
+		background,
+	}
 </script>
 
 <svelte:component this={component} id={title} {...props} />

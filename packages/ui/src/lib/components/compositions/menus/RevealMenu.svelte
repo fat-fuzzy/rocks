@@ -9,7 +9,7 @@
 	export let container = 'card'
 	export let direction = 'tb-lr'
 	export let size = ''
-	export let breakpoint = ''
+	export let threshold = ''
 	export let variant = ''
 	export let height = ''
 	export let color = ''
@@ -70,7 +70,7 @@
 	</button>
 	<menu
 		id={`menu-${id}`}
-		class={`content l:${layout}:${size} ${container}:${size} bp:${breakpoint} layer bg:${background} card:${size} align:${align} ${size}`}
+		class={`content l:${layout}:${size} ${container}:${size} th:${threshold} layer bg:${background} card:${size} align:${align} ${size}`}
 	>
 		{#each items as buttonProps}
 			<li>
