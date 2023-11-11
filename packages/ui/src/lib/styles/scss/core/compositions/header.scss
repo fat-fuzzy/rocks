@@ -7,10 +7,6 @@ header {
 	margin-block-end: unset;
 }
 
-.header-app > .l\:main {
-	min-inline-size: fit-content;
-}
-
 .header-app > .l\:side {
 	flex-basis: content; // property as content of flex container
 	position: relative;
@@ -71,15 +67,17 @@ header {
 	container: header-nav / inline-size;
 }
 
+.header-app > .l\:side > * {
+	align-self: flex-start;
+	padding-block-start: var(--current-size);
+}
+
 /* Configure reveal menu positioning and width */
 .header-app .l\:reveal\:auto .show {
 	top: var(--header-height);
 	left: 0;
 	height: 35vh;
 	width: 100vw;
-}
-.header-app .l\:reveal\:auto {
-	position: relative;
 }
 
 .page-header {
