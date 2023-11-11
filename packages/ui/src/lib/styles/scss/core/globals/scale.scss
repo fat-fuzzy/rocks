@@ -4,7 +4,7 @@
 	--current-size: var(--size-xxs);
 	--current-size-plus: var(--size-sm);
 	--current-size-inverse: var(--size-inverse-xxs);
-	--current-font-size: var(--font-size-xxs);
+	--current-font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-sm);
 	--current-side-size: var(--sidebar-width-xxs);
@@ -17,7 +17,7 @@
 	--current-size-plus: var(--size-md);
 	--current-size-inverse: var(--size-inverse-xs);
 	--current-font-size: var(--font-size-xs);
-	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
+	--current-font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-md);
 	--current-side-size: var(--sidebar-width-xs);
 }
@@ -29,7 +29,7 @@
 	--current-size-plus: var(--size-lg);
 	--current-size-inverse: var(--size-inverse-sm);
 	--current-font-size: var(--font-size-sm);
-	--current-font-size-minus: var(--font-size-xxs);
+	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-lg);
 	--current-side-size: var(--sidebar-width-sm);
 }
