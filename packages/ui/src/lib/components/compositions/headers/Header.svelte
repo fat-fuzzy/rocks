@@ -9,7 +9,7 @@
 	import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 
 	export let className = 'header-app'
-	export let breakpoint = 'lg'
+	export let breakpoint = 'xxl'
 	export let background = 'polar'
 	export let id = 'ui'
 	export let height = ''
@@ -86,15 +86,14 @@
 	}
 	$: currentTheme = theme ? theme : apiTheme
 	$: brightness = themes[$currentTheme]
-	$: headerClass = `${className} l:sidebar md layer sticky:top bg:${background} ${brightness}`
+	$: headerClass = `${className} l:sidebar:md layer sticky:top bg:${background} ${brightness}`
 	$: show = navExpanded ? `layer bg:${background} show` : 'hide:viz-only'
-	$: actionsClass = actionsExpanded ? `layer bg:${background} show` : 'hide:viz-only'
-	$: setHeight = height ? ` h:${height}` : ''
+	// $: actionsClass = actionsExpanded ? `layer bg:${background} show` : 'hide:viz-only'
 </script>
 
 <header class={headerClass}>
 	<div
-		class={`l:main l:reveal:auto bp:${breakpoint} ${setHeight}`}
+		class={`l:main l:reveal:auto bp:${breakpoint}`}
 		use:clickOutside
 		on:clickOutside={handleClickOutsideMainNav}
 	>

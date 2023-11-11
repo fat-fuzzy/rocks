@@ -42,6 +42,26 @@
 .justify\:start {
 	justify-content: start;
 }
+.justify\:center {
+	justify-content: center;
+}
+.justify\:stretch {
+	justify-content: stretch;
+}
+.justify\:evenly {
+	justify-content: space-evenly;
+}
+.justify\:between {
+	justify-content: space-between;
+}
+
+// Grid children only
+.justify-self\:end {
+	justify-self: flex-end;
+}
+.justify-self\:start {
+	justify-self: flex-start;
+}
 
 .text\:start {
 	text-align: start;

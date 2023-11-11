@@ -13,7 +13,7 @@
 
 	let styles: StyleTree
 	let size = '' // element's own size
-	let breakpoint = '' // element's own breakpoint
+	let threshold = '' // element's own threshold
 	let background = ''
 	let content = ''
 	let sideContent = ''
@@ -24,19 +24,19 @@
 	// App options
 	$: background = styles.app?.settings.contrast ?? background
 	// Element options
-	$: size = styles.layouts?.element?.size ?? ''
-	$: breakpoint = styles.layouts?.element.breakpoint ?? breakpoint
+	$: size = styles.layouts?.element?.size ?? size
+	$: threshold = styles.layouts?.element.threshold ?? threshold
 	// Content options
-	$: content = styles.layouts?.element.content ?? 'card'
-	$: sideContent = styles.layouts?.element.side ?? 'card'
-	$: mainContent = styles.layouts?.element.main ?? 'text'
+	$: content = styles.layouts?.content.content ?? 'card'
+	$: sideContent = styles.layouts?.content.side ?? 'card'
+	$: mainContent = styles.layouts?.content.main ?? 'text'
 	$: contentStyles = `card:${size} box ${size} bg:highlight:lighter`
 </script>
 
 {#if !isPage}
 	{@const fixtureProps = getProps({category, component: title})}
 	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {size} {background} {...props}>
+		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
 			<div slot="side">
 				{#each fixtureProps.card as item}
 					<div class={contentStyles}>{item}</div>
@@ -47,7 +47,7 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {background} {breakpoint} {...props}>
+		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
 			<svelte:fragment slot="content">
 				{#each fixtureProps.form as item}
 					<div class={contentStyles}>{item}</div>
@@ -55,7 +55,7 @@
 			</svelte:fragment>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {size} {background} {breakpoint} {...props}>
+		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
 			{#each fixtureProps.card as item}
 				<div class={contentStyles}>{item}</div>
 			{/each}
@@ -63,7 +63,7 @@
 	{/if}
 {:else if isPage}
 	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {size} {background} {breakpoint} {props}>
+		<svelte:component this={component} id={title} {size} {background} {threshold} {props}>
 			<div slot="side">
 				{@const fixtureProps = getProps({category, component: title})}
 				{#if sideContent === 'text'}
@@ -86,7 +86,7 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {background} {breakpoint} } {props}>
+		<svelte:component this={component} id={title} {size} {background} {threshold} } {props}>
 			<div slot="content">
 				{@const fixtureProps = getProps({category, component: title})}
 				{#if content === 'text'}
@@ -99,7 +99,7 @@
 			</div>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {size} {background} {breakpoint} } {props}>
+		<svelte:component this={component} id={title} {size} {background} {threshold} } {props}>
 			{@const fixtureProps = getProps({category, component: title})}
 			{#if content === 'text'}
 				<p>{fixtureProps.text}</p>

@@ -4,7 +4,7 @@
 	export let theme = ''
 	export let threshold: string | undefined = undefined
 
-	$: mainClass = threshold ? `l:main:${threshold}` : 'l:main'
+	$: mainClass = threshold ? `l:main th:${threshold}` : 'l:main'
 </script>
 
 <div class={`l:sidebar:${size} ${align} ${theme}`}>
