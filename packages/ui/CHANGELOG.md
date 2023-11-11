@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.23
+
+### Patch Changes
+
+- 958125d: [ui+doc] Fix switcher layout + positionned menus
+
 ## 0.1.22
 
 ### Patch Changes
