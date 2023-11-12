@@ -2,8 +2,8 @@
 	import {page} from '$app/stores'
 	import {tokens, blocks, layouts, compositions, api} from '@fat-fuzzy/ui'
 
-	const {Collection} = api
-	const {Sidebar} = layouts
+	const {Collection, Api} = api
+	const {Sidebar, RevealAuto} = layouts
 
 	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
 
@@ -15,6 +15,7 @@
 	]
 	let path = $page.url.pathname
 
+	$: headerClass = 'page-header layer:reveal l:switcher:xs bp:xxs bg:polar'
 	// TODO: load text content to README.md
 </script>
 
@@ -23,8 +24,22 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="card:xl bg:polar">
-	<h1>{title}</h1>
+<header class={headerClass}>
+	<h1 class="l:main:40 card:xl">{title}</h1>
+	<RevealAuto
+		size="sm"
+		threshold="sm"
+		color="primary:light"
+		background="polar"
+		align="start"
+		asset="&nbsp;☂️&nbsp;"
+		title="Context"
+		direction="reverse"
+	>
+		<div slot="content" class="l:side l:switcher:sm reverse shrink ui:menu">
+			<Api category="app" {title} />
+		</div>
+	</RevealAuto>
 </header>
 
 <Sidebar size="xs" align="end">
