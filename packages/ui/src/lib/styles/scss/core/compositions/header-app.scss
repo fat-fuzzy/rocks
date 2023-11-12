@@ -1,0 +1,127 @@
+.header-app {
+	position: relative;
+	display: flex;
+	padding-inline: var(--gap);
+}
+
+.header-app .l\:reveal\:auto > button {
+	margin-inline: 0;
+}
+
+.header-app nav a:hover {
+	color: var(--current-primary-light);
+}
+
+//== Need to override global <a> hover styles in nav and header <a>
+.header-app a:hover {
+	background-color: initial;
+}
+
+/**
+ * App header - Main Nav
+ */
+.header-app > [class*='l:main'] > nav a {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	padding: 0 var(--current-size-plus);
+	color: inherit;
+	font-weight: var(--font-weight-400);
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: color 0.2s linear;
+}
+
+.header-app > [class*='l:main'] > nav li[aria-current='page'] a {
+	color: var(--current-primary);
+	text-decoration: none;
+}
+
+.header-app > [class*='l:main'] > nav li[aria-current='page']::before {
+	--size: 6px;
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: 0;
+	top: calc(50% - var(--size));
+	border: var(--size) solid transparent;
+	border-left: var(--size) solid var(--current-primary-light);
+}
+
+.header-app > [class*='l:side'] {
+	flex-basis: content; // property as content of flex container
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+}
+
+.header-app > [class*='l:side'] .svg {
+	fill: var(--current-color);
+	height: calc(var(--current-font-size-plus) * 1.65);
+	width: auto;
+}
+
+/* Configure reveal items default dimensions */
+.header-app .l\:reveal\:auto .show {
+	height: fit-content;
+	width: fit-content;
+}
+
+/* Configure reveal main nav dimensions */
+.app > .header-app .l\:reveal\:auto[class*='l:side'] .show {
+	padding: var(--current-size);
+}
+
+/* Configure reveal settings menu dimensions */
+.app > .header-app .l\:reveal\:auto[class*='l:main'] .show {
+	height: 35vh;
+	width: calc(100vw - 2 * var(--gap));
+}
+
+// TODO fix magic breakpoint // testing
+@container header-nav (min-width: 620px) {
+	.header-app > [class*='l:main'] > nav li[aria-current='page']::before {
+		--size: 6px;
+		content: '';
+		min-width: unset;
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: calc(50% - var(--size));
+		border: var(--size) solid transparent;
+		border-top: var(--size) solid var(--current-primary-light);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.header-app > [class*='l:main'] > nav li[aria-current='page']::before {
+		--size: 6px;
+		content: '';
+		min-width: unset;
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: calc(50% - var(--size));
+		border: var(--size) solid transparent;
+		border-top: var(--size) solid var(--current-primary-light);
+	}
+	/* Configure reveal settings menu dimensions */
+	.app > .header-app .l\:reveal\:auto[class*='l:main'] .show {
+		height: auto;
+	}
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'] {
+		justify-content: center;
+	}
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto > menu {
+		justify-content: flex-end;
+	}
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto > button {
+		align-self: end;
+	}
+}

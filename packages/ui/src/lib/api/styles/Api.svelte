@@ -37,7 +37,7 @@
 			update({reset: false})
 		}
 	}}
-	class={`l:switcher:${apiSize} ${apiLayout} bp:${apiBreakpoint} bg:polar card:${apiSize} ${apiSize}`}
+	class={`l:switcher:${apiSize} ${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
 >
 	<StyleFamily {category} {title} />
 </form>

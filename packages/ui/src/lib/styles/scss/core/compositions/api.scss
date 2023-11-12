@@ -1,0 +1,18 @@
+.ui\:element {
+	min-block-size: var(--sidebar-width-md);
+}
+
+.ui\:menu {
+	gap: var(--s0);
+	padding: var(--current-size) var(--current-size-plus) var(--current-size-plus);
+}
+
+.page-header .ui\:menu {
+	margin-block-start: var(--s0);
+}
+
+@media screen and (min-width: 620px) {
+	.page-header .ui\:menu {
+		margin-block-start: 0;
+	}
+}

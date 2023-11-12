@@ -26,7 +26,8 @@
 		expanded = !expanded
 	}
 
-	$: show = expanded ? `layer bg:${background} show` : 'hide:viz-only'
+	$: backgroundClass = background ? `layer bg:${background} ` : ''
+	$: show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
 

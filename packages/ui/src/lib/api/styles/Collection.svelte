@@ -81,7 +81,7 @@
 				<details id={`${category}-api`} class="l:stack:md">
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
-						<div class="drop w:full">
+						<div class="drop w:full bg:polar ui:menu">
 							<Api {category} {title} />
 						</div>
 					{:else}
