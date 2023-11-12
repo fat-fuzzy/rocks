@@ -40,10 +40,6 @@ Resources per app
 <p>
 
 - **config** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
-
-TODO:
-The monorepo needs some cleanup: `.prettier` config is currently duplicated in projects. I think I need to solve a problem specific to my workspace config in VSCode to fix this easily
-
 - **design** a design sandbox
   - isolates design work from the UI library
   - design assets and collections go here
