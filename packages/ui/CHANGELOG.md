@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.24
+
+### Patch Changes
+
+- 4ec15ce: [ui+doc] Main header settings menu & page header layout adjustments
+
 ## 0.1.23
 
 ### Patch Changes
