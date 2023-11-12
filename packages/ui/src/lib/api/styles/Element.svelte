@@ -51,35 +51,10 @@
 	$: containerContext = `l:${container}:${size}`
 </script>
 
-{#if !isPage}
-	{@const props = getProps({category, component: title})}
-	<article class={`card:lg box ${brightness} bg:${background} l:stack `}>
-		<header class="card:sm">
-			<a class="card:md w:full l:switcher:xs box emoji:link" href={`${path}/${title}`}>
-				<svelte:element this={`h${String(depth)}`} class="link font:lg">
-					{title}
-				</svelte:element>
-			</a>
-		</header>
-		<div class="card:sm">
-			{#if props?.useCases}
-				{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
-				<svelte:component
-					this={ApiElement[category]}
-					{isPage}
-					{title}
-					{component}
-					props={currentProps}
-				/>
-			{:else}
-				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
-			{/if}
-		</div>
-	</article>
-{:else}
+{#if isPage}
 	{@const props = getProps({category, component: title})}
 	<article class="l:sidebar:xs">
-		<section class={`l:main card:xl inset ${brightness} bg:${background}`}>
+		<section class={`l:main card:xl inset l:frame:twin ${brightness} bg:${background} `}>
 			<div class={containerContext}>
 				{#if props?.useCases}
 					{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
@@ -111,13 +86,13 @@
 					{/if}
 				</details>
 				<!-- <section id={`${category}-${title}-classes`}>
-				<details class={`l:stack:md`}>
-					<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
-					<div class="drop">
-						<Api {category} {title} />
-					</div>
-				</details>
-			</section> -->
+			<details class={`l:stack:md`}>
+				<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
+				<div class="drop">
+					<Api {category} {title} />
+				</div>
+			</details>
+		</section> -->
 
 				<details id={`${category}-${title}-doc`} class="l:stack:md" open>
 					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
@@ -130,5 +105,30 @@
 				</details>
 			</div>
 		</section>
+	</article>
+{:else}
+	{@const props = getProps({category, component: title})}
+	<article class={`card:lg box ${brightness} bg:${background} l:stack `}>
+		<header class="card:sm">
+			<a class="card:md w:full l:switcher:xs box emoji:link" href={`${path}/${title}`}>
+				<svelte:element this={`h${String(depth)}`} class="link font:lg">
+					{title}
+				</svelte:element>
+			</a>
+		</header>
+		<div class="card:sm">
+			{#if props?.useCases}
+				{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
+				<svelte:component
+					this={ApiElement[category]}
+					{isPage}
+					{title}
+					{component}
+					props={currentProps}
+				/>
+			{:else}
+				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
+			{/if}
+		</div>
 	</article>
 {/if}

@@ -33,35 +33,7 @@
 	$: contentStyles = `card:${size} box ${size} bg:highlight:lighter`
 </script>
 
-{#if !isPage}
-	{@const fixtureProps = getProps({category, component: title})}
-	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
-			<div slot="side">
-				{#each fixtureProps.card as item}
-					<div class={contentStyles}>{item}</div>
-				{/each}
-			</div>
-			<div slot="main">
-				<p>{fixtureProps.text}</p>
-			</div>
-		</svelte:component>
-	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
-			<svelte:fragment slot="content">
-				{#each fixtureProps.form as item}
-					<div class={contentStyles}>{item}</div>
-				{/each}
-			</svelte:fragment>
-		</svelte:component>
-	{:else}
-		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
-			{#each fixtureProps.card as item}
-				<div class={contentStyles}>{item}</div>
-			{/each}
-		</svelte:component>
-	{/if}
-{:else if isPage}
+{#if isPage}
 	{#if title === 'Sidebar'}
 		<svelte:component this={component} id={title} {size} {background} {threshold} {props}>
 			<div slot="side">
@@ -108,6 +80,34 @@
 					<div class={contentStyles}>{item}</div>
 				{/each}
 			{/if}
+		</svelte:component>
+	{/if}
+{:else}
+	{@const fixtureProps = getProps({category, component: title})}
+	{#if title === 'Sidebar'}
+		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
+			<div slot="side">
+				{#each fixtureProps.card as item}
+					<div class={contentStyles}>{item}</div>
+				{/each}
+			</div>
+			<div slot="main">
+				<p>{fixtureProps.text}</p>
+			</div>
+		</svelte:component>
+	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
+		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
+			<svelte:fragment slot="content">
+				{#each fixtureProps.form as item}
+					<div class={contentStyles}>{item}</div>
+				{/each}
+			</svelte:fragment>
+		</svelte:component>
+	{:else}
+		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
+			{#each fixtureProps.card as item}
+				<div class={contentStyles}>{item}</div>
+			{/each}
 		</svelte:component>
 	{/if}
 {/if}
