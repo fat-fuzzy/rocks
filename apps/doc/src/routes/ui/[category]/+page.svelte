@@ -33,18 +33,17 @@
 </svelte:head>
 
 <header class={headerClass}>
-	<h1 class="l:main:30 card:xl">{title}</h1>
+	<h1 class="l:main:40 card:xl">{title}</h1>
 	<RevealAuto
 		size="sm"
 		threshold="sm"
 		color="primary:light"
-		background="polar"
 		align="start"
 		asset="&nbsp;☂️&nbsp;"
 		title="Context"
 		direction="reverse"
 	>
-		<div slot="content" class="l:side l:switcher:xs reverse shrink">
+		<div slot="content" class="l:side ui:menu l:switcher:sm reverse">
 			<Api category="app" {title} />
 		</div>
 	</RevealAuto>
