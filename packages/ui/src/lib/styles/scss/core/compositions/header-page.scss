@@ -1,0 +1,11 @@
+.page-header {
+	display: grid;
+	grid-template-columns: 2fr;
+	grid-template-rows: 2fr;
+	align-items: baseline;
+	margin-block-end: 0;
+}
+
+.page-header .l\:reveal\:auto {
+	grid-column-start: 2;
+}

@@ -10,9 +10,8 @@
 
 	export let className = 'header-app'
 	export let breakpoint = 'xxl'
-	export let background = 'polar'
+	export let background = ''
 	export let id = 'ui'
-	export let height = ''
 	export let theme: any // theme store
 
 	let page = getStores().page
@@ -51,18 +50,18 @@
 	}
 
 	let navExpanded = false
-	let actionsExpanded = false
+	let settingsExpanded = false
 
 	function handleClickOutsideMainNav(event) {
 		navExpanded = false
 	}
 
-	function handleClickOutsideActionsMenu(event) {
-		actionsExpanded = false
+	function handleClickOutsideSettings(event) {
+		settingsExpanded = false
 	}
 
-	function toggleActionsMenu(event) {
-		actionsExpanded = !actionsExpanded
+	function toggleSettings(event) {
+		settingsExpanded = !settingsExpanded
 	}
 
 	function toggleNav(event) {
@@ -80,20 +79,21 @@
 
 	const actions: {[key: string]: (event) => void} = {
 		nav: toggleNav,
-		actions: toggleActionsMenu,
+		actions: toggleSettings,
 		theme: toggleTheme,
 		language: setLanguage,
 	}
 	$: currentTheme = theme ? theme : apiTheme
 	$: brightness = themes[$currentTheme]
 	$: headerClass = `${className} l:sidebar:md layer sticky:top bg:${background} ${brightness}`
-	$: show = navExpanded ? `layer bg:${background} show` : 'hide:viz-only'
-	// $: actionsClass = actionsExpanded ? `layer bg:${background} show` : 'hide:viz-only'
+	$: show = background ? `layer bg:${background} show` : 'show'
+	$: showNav = navExpanded ? show : 'hide:viz-only'
+	$: showSettings = settingsExpanded ? show : 'hide:viz-only'
 </script>
 
 <header class={headerClass}>
 	<div
-		class={`l:main l:reveal:auto bp:${breakpoint}`}
+		class={`l:main:50 l:reveal:auto bp:${breakpoint}`}
 		use:clickOutside
 		on:clickOutside={handleClickOutsideMainNav}
 	>
@@ -107,7 +107,7 @@
 			{format.formatLabel('Menu', '🐣')}
 		</button>
 
-		<nav id={`${id}-primary-nav`} class={show}>
+		<nav id={`${id}-primary-nav`} class={showNav}>
 			<ul class="l:switcher:sm bp:xxs">
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>
@@ -122,13 +122,21 @@
 			</ul>
 		</nav>
 	</div>
-
-	<div class="l:side">
-		<menu
-			class={`l:reveal:sm bp:${breakpoint}`}
-			use:clickOutside
-			on:clickOutside={handleClickOutsideActionsMenu}
+	<div
+		class={`l:side l:reveal:auto bp:${breakpoint} align:end`}
+		use:clickOutside
+		on:clickOutside={handleClickOutsideSettings}
+	>
+		<button
+			id={`${id}-primary-nav-button`}
+			class={`font:sm outline`}
+			aria-expanded={settingsExpanded}
+			aria-controls={`${id}-settings-menu`}
+			on:click={toggleSettings}
 		>
+			{format.formatLabel('Settings', '🎛️')}
+		</button>
+		<menu class={showSettings}>
 			{#each items.side as { id, title, action, url, asset, variant, subitems }}
 				{#if url}
 					<a class={`${variant} ${asset}`} href={url} target="_blank" rel="noreferrer">
