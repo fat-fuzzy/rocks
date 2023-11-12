@@ -3,10 +3,8 @@
 }
 
 @media screen and (min-width: 620px) {
-	.app > main {
-		min-height: calc(100vh - 4 * var(--header-height));
-	}
+	.app > main,
 	.app > main > *:only-child {
-		min-height: calc(100vh - 4 * var(--header-height));
+		min-height: calc(100vh - 3 * var(--header-height));
 	}
 }
