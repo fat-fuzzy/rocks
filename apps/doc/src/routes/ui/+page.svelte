@@ -30,7 +30,6 @@
 		size="sm"
 		threshold="sm"
 		color="primary:light"
-		background="polar"
 		align="start"
 		asset="&nbsp;☂️&nbsp;"
 		title="Context"
