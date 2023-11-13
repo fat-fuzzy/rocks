@@ -36,12 +36,27 @@ button.outline:active {
 button.outline:hover {
 	background-color: var(--current-polar);
 }
-
+.night {
+	[class*='blend']
+		button.outline:not(
+			:is(.primary, .accent, .highlight, .info, .success, .warning, .error)
+		):hover {
+		color: var(--current-light);
+		background-color: var(--current-polar);
+	}
+	[class*='polar']
+		button.outline:not(
+			:is(.primary, .accent, .highlight, .info, .success, .warning, .error)
+		):hover {
+		color: var(--current-light);
+		background-color: var(--current-gray);
+	}
+}
 button:disabled {
 	opacity: 0.65;
 }
 button:disabled:hover {
-	opacity: 0.85;
+	opacity: 0.65;
 }
 
 //== Button primary
