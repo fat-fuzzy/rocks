@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.25
+
+### Patch Changes
+
+- b47c36d: [ui] Cleaner category grid and CSS rule cleanup
+
 ## 0.1.24
 
 ### Patch Changes
