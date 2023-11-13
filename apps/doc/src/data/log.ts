@@ -6,7 +6,7 @@ const imports = import.meta.glob('/src/assets/log/*.md')
 
 async function fetchMarkdowns() {
 	const markdowns = await markdownUtils.fetchMarkdowns(pathPrefix, imports)
-	return markdowns
+	return markdowns.sort(markdownUtils.sortByIdDesc)
 }
 
 export default {fetchMarkdowns}

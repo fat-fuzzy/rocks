@@ -8,10 +8,10 @@
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 
-	import mocks from '$lib/data/mocks' // TODO: load text from README.md
 	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
 	export let title = ''
+	export let content: {html: string} | undefined = undefined
 	export let depth = 0
 	export let path = ''
 	export let layout = 'grid' // TODO: expose breakpoint too
@@ -103,7 +103,12 @@
 					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
 					<div class="drop w:full">
 						<div class="l:text:xl">
-							{@html mocks['doc'][category]}
+							{#if content}
+								{@html content.html}
+							{:else}
+								<p class={`font:xl`}>🐰</p>
+								<p class={`font:md`}>Coming soon!</p>
+							{/if}
 						</div>
 					</div>
 				</details>
@@ -116,7 +121,12 @@
 	</svelte:element>
 
 	<section class="l:text:xl">
-		{@html mocks['doc'][category]}
+		{#if content}
+			{@html content.html}
+		{:else}
+			<p class={`font:xl`}>🐰</p>
+			<p class={`font:md`}>Coming soon!</p>
+		{/if}
 		<details class={`l:stack:xxl ${size}`} open>
 			<summary class={`card:md box:${color} bg:${color}`}>
 				{categorySingular} components
