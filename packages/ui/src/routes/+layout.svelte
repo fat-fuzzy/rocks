@@ -6,7 +6,7 @@
 	import {page} from '$app/stores'
 	import {themes} from '$types/constants'
 	import {theme} from '$lib/stores/theme'
-	import {links} from '$lib/data/nav'
+	import {links} from '$lib/api/fixtures/js/nav'
 	import Header from '$lib/components/compositions/headers/Header.svelte'
 
 	let app: Element | null

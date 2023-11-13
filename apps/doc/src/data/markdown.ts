@@ -23,4 +23,16 @@ const fetchMarkdowns = async (pathPrefix: string, imports: any) => {
 	return logs
 }
 
-export default {fetchMarkdowns}
+function sortByTitleAsc(a, b) {
+	return a.meta.title < b.meta.title ? -1 : b.meta.title < a.meta.title ? 1 : 0
+}
+function sortByTitleDesc(a, b) {
+	return a.meta.title > b.meta.title ? -1 : b.meta.title > a.meta.title ? 1 : 0
+}
+function sortByIdAsc(a, b) {
+	return a.meta.id < b.meta.id ? -1 : b.meta.id < a.meta.id ? 1 : 0
+}
+function sortByIdDesc(a, b) {
+	return a.meta.id > b.meta.id ? -1 : b.meta.id > a.meta.id ? 1 : 0
+}
+export default {fetchMarkdowns, sortByTitleDesc, sortByIdDesc}

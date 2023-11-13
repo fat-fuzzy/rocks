@@ -2,8 +2,7 @@
 	import {page} from '$app/stores'
 	import {tokens, blocks, compositions, layouts, api} from '@fat-fuzzy/ui'
 	const {Collection, Api} = api
-
-	let {RevealAuto} = layouts
+	const {RevealAuto} = layouts
 
 	function getComponentType(cat: string) {
 		switch (cat) {
@@ -21,6 +20,8 @@
 	}
 
 	$: category = $page.params.category
+	$: markdowns = $page.data.markdowns
+	$: content = markdowns.categories.find(({meta}) => meta.slug === category)
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
@@ -49,4 +50,4 @@
 	</RevealAuto>
 </header>
 
-<Collection {title} depth={1} isPage={true} {components} {path} {category} />
+<Collection {title} depth={1} isPage={true} {components} {path} {category} {content} />

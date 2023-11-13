@@ -12,6 +12,7 @@
 	import {themes} from '$types/constants.js'
 
 	export let title = ''
+	export let content: {html: string} | undefined = undefined
 	export let depth = 0
 	export let isPage = false
 	export let path = ''
@@ -98,8 +99,12 @@
 					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
 					<div class="drop w:full">
 						<div class="card:lg text:center">
-							<p class={`font:xl`}>🐰</p>
-							<p class={`font:md`}>Coming soon!</p>
+							{#if content}
+								{@html content.html}
+							{:else}
+								<p class={`font:xl`}>🐰</p>
+								<p class={`font:md`}>Coming soon!</p>
+							{/if}
 						</div>
 					</div>
 				</details>

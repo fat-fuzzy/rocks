@@ -1,16 +1,12 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {tokens, blocks, compositions, layouts} from '@fat-fuzzy/ui'
-	const {Sidebar} = layouts
 	const {RevealNav} = compositions
 	let path = $page.url.pathname
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
 		return a < b ? -1 : b < a ? 1 : 0
-	}
-	function sortDesc(a, b) {
-		return a > b ? -1 : b > a ? 1 : 0
 	}
 
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
