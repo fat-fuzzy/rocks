@@ -41,7 +41,7 @@
 
 	$: {
 		if (position) {
-			buttonAsset = expanded ? `emoji:point-left align:end` : `emoji:point-right align:end`
+			buttonAsset = expanded ? `emoji:point-down align:end` : `emoji:point-left align:end`
 		}
 	}
 	$: show = expanded ? `show ${place}` : `minimize ${place}`
