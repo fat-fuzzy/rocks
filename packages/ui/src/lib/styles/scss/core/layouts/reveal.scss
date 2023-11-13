@@ -70,13 +70,10 @@
 	// Fixes bug in Safari where .content overflows parent width
 	[class^='l:side'] > .l\:reveal {
 		&.minimize:not([class*='fixed']) .content {
-			border: unset;
-			clip: unset;
 			padding: var(--current-size);
 			white-space: normal;
 			overflow: hidden;
 			position: unset;
-			top: 0;
 			width: 100%;
 			margin: initial;
 		}
