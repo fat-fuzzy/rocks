@@ -5,7 +5,8 @@
 
 @forward './header-app'; // Use for main app header
 @forward './header-page'; // Use for page header
-@forward './footer'; // Use for main (only) footer
+@forward './footer'; // Use for main app footer
+@forward './article'; // Use for articles (header + section(s) + optional footer)
 
 @forward './api'; // Use for API components (used in Doc website)
 @forward './app'; // Use for app layout specifics

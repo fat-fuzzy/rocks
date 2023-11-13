@@ -108,15 +108,15 @@
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
-	<article class={`card:lg box ${brightness} bg:${background} l:stack `}>
-		<header class="card:sm">
-			<a class="card:md w:full l:switcher:xs box emoji:link" href={`${path}/${title}`}>
+	<article class={`box ${brightness} bg:${background} l:stack `}>
+		<header>
+			<a class="card:md w:full l:switcher:xs emoji:link" href={`${path}/${title}`}>
 				<svelte:element this={`h${String(depth)}`} class="link font:lg">
 					{title}
 				</svelte:element>
 			</a>
 		</header>
-		<div class="card:sm">
+		<div class="card:lg sm">
 			{#if props?.useCases}
 				{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
 				<svelte:component
