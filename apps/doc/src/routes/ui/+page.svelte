@@ -17,7 +17,7 @@
 
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'page-header layer:reveal l:switcher:xs bp:xxs bg:polar'
+	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
 	// TODO: load text content to README.md
 </script>
 

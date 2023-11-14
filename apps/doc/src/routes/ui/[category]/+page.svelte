@@ -25,7 +25,7 @@
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
-	$: headerClass = 'page-header layer:reveal l:switcher:xs bp:xxs bg:polar'
+	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
 </script>
 
 <svelte:head>
