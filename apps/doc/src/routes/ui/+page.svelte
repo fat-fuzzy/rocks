@@ -35,9 +35,8 @@
 		align="start"
 		asset="&nbsp;☂️&nbsp;"
 		title="Context"
-		direction="reverse"
 	>
-		<div slot="content" class="l:side reverse shrink ui:menu">
+		<div slot="content" class="l:side shrink ui:menu">
 			<Api category="app" {title} />
 		</div>
 	</RevealAuto>
