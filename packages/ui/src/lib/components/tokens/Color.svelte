@@ -8,11 +8,11 @@
 	const colors = ['primary', 'accent', 'highlight']
 	const variants = ['light', 'lighter']
 
-	$: cardClasses = `card l:${layout}:${size}`
+	$: cardClasses = `card:${size}`
 	$: colorClasses = `card:xxl l:stack:sm`
 </script>
 
-<div class="l:switcher bp:lg">
+<div class="l:switcher:xxl th:md">
 	<section>
 		<div class="l:stack:md">
 			<svelte:element this={`h${depth}`} class="font:lg">Theme colors</svelte:element>

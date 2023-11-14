@@ -62,90 +62,11 @@ body {
 .l\:frame {
 	background-color: var(--color-white);
 }
-
 form,
 .l\:text {
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
-
-//== Links
-// - The styles below are global: for example they will apply to links in text
-// - Links in navs have specific styles (except for hover), see: `styles/core/blocks/nav.scss`
-a {
-	color: var(--current-color);
-}
-a:visited {
-	color: var(--current-color);
-	text-decoration-color: var(--current-color);
-}
-a:hover {
-	color: var(--color-light);
-	background-color: var(--current-primary);
-	text-decoration-color: var(--current-primary);
-}
-
-.bg\:accent a {
-	color: var(--color-light);
-}
-.bg\:accent\:light a {
-	color: var(--color-dark);
-}
-.bg\:accent\:lighter a {
-	color: var(--current-accent);
-}
-.bg\:accent a:visited {
-	color: var(--color-light);
-	text-decoration-color: var(--color-light);
-}
-.bg\:accent\:light a:visited {
-	color: var(--color-dark);
-	text-decoration-color: var(--color-dark);
-}
-.bg\:accent\:lighter a:visited {
-	color: var(--color-accent);
-	text-decoration-color: var(--current-accent);
-}
-.bg\:accent a:hover,
-.bg\:accent\:light a:hover,
-.bg\:accent\:lighter a:hover {
-	color: var(--current-accent);
-	background-color: var(--color-light);
-	text-decoration-color: var(--current-accent);
-}
-.bg\:accent a:focus,
-.bg\:accent\:light a:focus {
-	outline-color: var(--color-light);
-}
-
-.bg\:accent\:lighter a:focus {
-	outline-color: var(--current-accent);
-}
-
-.bg\:highlight a,
-.bg\:highlight\:light a,
-.bg\:highlight\:lighter a {
-	color: var(--current-color);
-}
-.bg\:highlight a:visited,
-.bg\:highlight\:light a:visited,
-.bg\:highlight\:lighter a:visited {
-	color: var(--current-color);
-	text-decoration-color: var(--current-highlight-dark);
-}
-.bg\:highlight a:hover,
-.bg\:highlight\:light a:hover,
-.bg\:highlight\:lighter a:hover {
-	color: var(--color-light);
-	background-color: inherit;
-	text-decoration-color: var(--current-dark);
-}
-.bg\:highlight a:focus,
-.bg\:highlight\:light a:focus,
-.bg\:highlighter\:light a:focus {
-	outline-color: var(--current-highlight-dark);
-}
-
 .primary:focus {
 	outline-color: var(--current-primary);
 }
