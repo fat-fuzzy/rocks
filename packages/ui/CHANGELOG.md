@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.26
+
+### Patch Changes
+
+- 9480af9: [ui+design+doc] Load doc from markdowns, fix header styles, adjust colors
+
 ## 0.1.25
 
 ### Patch Changes
