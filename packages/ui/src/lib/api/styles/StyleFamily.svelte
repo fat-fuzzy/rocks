@@ -120,7 +120,7 @@
 				{#if input === 'toggle'}
 					<Fieldset
 						legend={family.title}
-						id={family.id}
+						id={`fieldset-${id}`}
 						layout={family.layout}
 						size={family.size}
 						name={familyName}
@@ -138,7 +138,7 @@
 							return updatedItem
 						})}
 						<ToggleMenu
-							id={styleInput.id}
+							id={`toggle-${id}`}
 							title={styleInput.name !== familyName ? styleInput.name : ''}
 							items={updatedItems}
 							{page}
@@ -151,12 +151,12 @@
 						/>
 					</Fieldset>
 				{:else}
-					<div class={`l:${family.layout}:${family.size} bg:polar`} id={family.id}>
+					<div class={`l:${family.layout}:${family.size} bg:polar`}>
 						{#if input === 'radio' || input === 'checkbox'}
 							{@const InputComponent = COMPONENT_IMPORTS[input]}
 							<svelte:component
 								this={InputComponent}
-								{id}
+								id={`fieldset-${id}`}
 								{items}
 								{name}
 								type={input}
@@ -174,7 +174,7 @@
 							{@const InputComponent = COMPONENT_IMPORTS[input]}
 							<svelte:component
 								this={InputComponent}
-								id={styleInput.id}
+								id={`input-${id}`}
 								label={styleInput.name}
 								{items}
 								{value}

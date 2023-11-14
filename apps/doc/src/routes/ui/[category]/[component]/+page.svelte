@@ -33,7 +33,6 @@
 		align="start"
 		asset="&nbsp;☂️&nbsp;"
 		title="Context"
-		direction="reverse"
 	>
 		<div slot="content" class="l:side ui:menu l:switcher:sm reverse">
 			<Api category="app" {title} />
