@@ -86,7 +86,7 @@
 	$: currentTheme = theme ? theme : apiTheme
 	$: brightness = themes[$currentTheme]
 	$: headerClass = `${className} l:sidebar:md layer sticky:top bg:${background} ${brightness}`
-	$: show = background ? `layer bg:${background} show` : 'show'
+	$: show = background ? `bg:${background} show` : 'show'
 	$: showNav = navExpanded ? show : 'hide:viz-only'
 	$: showSettings = settingsExpanded ? show : 'hide:viz-only'
 </script>
