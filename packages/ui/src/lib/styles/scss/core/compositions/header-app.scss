@@ -102,9 +102,12 @@
 	overflow: initial; // override settings for ellipsis
 	background-color: inherit;
 }
+/* Configure reveal menu positioning and width */
+.header-app [class*='l:side'].l\:reveal\:auto > menu {
+	padding-block: var(--current-size);
+}
 
-// TODO fix magic breakpoint // testing
-@container header-nav (min-width: 620px) {
+@media screen and (min-width: 620px) {
 	.header-app > [class*='l:main'] > nav li[aria-current='page']::before {
 		--size: 6px;
 		content: '';
@@ -140,6 +143,22 @@
 		height: var(--header-height);
 		background-size: contain;
 	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xxs {
+		justify-content: center;
+	}
+
+	/* Configure reveal settings menu dimensions */
+	.header-app [class*='l:main'].l\:reveal\:auto\:xxs .show {
+		height: auto;
+	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xxs > menu {
+		justify-content: flex-end;
+		padding-block: 0;
+	}
 }
 
 @media screen and (min-width: 620px) {
@@ -162,36 +181,21 @@
 		height: var(--header-height);
 		background-size: contain;
 	}
-}
 
-@media screen and (min-width: 620px) {
-	.header-app > [class*='l:main'] > nav li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		min-width: unset;
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--current-primary-light);
-	}
-	/* Configure reveal settings menu dimensions */
-	.app > .header-app .l\:reveal\:auto[class*='l:main'] .show {
-		height: auto;
-	}
 	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'] {
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xs {
 		justify-content: center;
 	}
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto > menu {
-		justify-content: flex-end;
+
+	/* Configure reveal settings menu dimensions */
+	.header-app [class*='l:main'].l\:reveal\:auto\:xs .show {
+		height: auto;
 	}
+
 	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto > button {
-		align-self: end;
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xs > menu {
+		justify-content: flex-end;
+		padding-block: 0;
 	}
 }
 
@@ -214,6 +218,22 @@
 		min-width: unset;
 		height: var(--header-height);
 		background-size: contain;
+	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:sm {
+		justify-content: center;
+	}
+
+	/* Configure reveal settings menu dimensions */
+	.header-app [class*='l:main'].l\:reveal\:auto\:sm .show {
+		height: auto;
+	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:sm > menu {
+		justify-content: flex-end;
+		padding-block: 0;
 	}
 }
 
@@ -238,6 +258,22 @@
 		height: var(--header-height);
 		background-size: contain;
 	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:md {
+		justify-content: center;
+	}
+
+	/* Configure reveal settings menu dimensions */
+	.header-app [class*='l:main'].l\:reveal\:auto\:md .show {
+		height: auto;
+	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:md > menu {
+		justify-content: flex-end;
+		padding-block: 0;
+	}
 }
 
 // @include mixins.min-width(var(--bp-lg)) {
@@ -260,5 +296,60 @@
 		min-width: unset;
 		height: var(--header-height);
 		background-size: contain;
+	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:lg {
+		justify-content: center;
+	}
+
+	/* Configure reveal settings menu dimensions */
+	.header-app [class*='l:main'].l\:reveal\:auto\:lg .show {
+		height: auto;
+	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:lg > menu {
+		justify-content: flex-end;
+		padding-block: 0;
+	}
+}
+
+// @include mixins.min-width(var(--bp-xl)) {
+@media screen and (min-width: 2048px) {
+	.header-app .l\:reveal\:auto.bp\:xl > nav > ul {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: auto;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		background-size: contain;
+		flex-wrap: nowrap;
+		gap: var(--gap);
+	}
+
+	.header-app .l\:reveal\:auto.bp\:xl > nav li {
+		min-width: unset;
+		height: var(--header-height);
+		background-size: contain;
+	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xl {
+		justify-content: center;
+	}
+
+	/* Configure reveal settings menu dimensions */
+	.header-app [class*='l:main'].l\:reveal\:auto\:xl .show {
+		height: auto;
+	}
+
+	/* Configure reveal menu positioning and width */
+	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xl > menu {
+		justify-content: flex-end;
+		padding-block: 0;
 	}
 }
