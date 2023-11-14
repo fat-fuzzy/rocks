@@ -128,7 +128,7 @@
 		on:clickOutside={handleClickOutsideSettings}
 	>
 		<button
-			id={`${id}-primary-nav-button`}
+			id={`${id}-app-settings-button`}
 			class={`font:sm outline`}
 			aria-expanded={settingsExpanded}
 			aria-controls={`${id}-settings-menu`}
