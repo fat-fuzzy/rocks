@@ -2,8 +2,7 @@
 	import format from '$lib/utils/format'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 
-	export let layout = 'switcher'
-	export let container = 'layer card'
+	export let layout = ''
 	export let direction = ''
 	export let color = ''
 	export let size = ''
@@ -11,7 +10,6 @@
 	export let variant = ''
 	export let align = ''
 	export let id = 'ui'
-	export let height = ''
 	export let background = ''
 	export let title = 'Reveal'
 	export let asset = ''
@@ -26,28 +24,28 @@
 		expanded = !expanded
 	}
 
-	$: backgroundClass = background ? `layer bg:${background} ` : ''
+	$: layoutClass = layout ? `l:${layout}:${size}` : ''
+	$: backgroundClass = background ? `layer bg:${background}` : ''
 	$: show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
-	$: setHeight = height ? ` h:${height}` : ''
 </script>
 
 <div
-	class={`l:reveal:auto ${setHeight} l:${layout}:${size} bp:${threshold} ${size}  align-self:${align} align:end `}
+	class={`l:reveal:auto l:${layout}:${size} bp:${threshold} ${size}  align-self:${align} align:end `}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
 	<button
 		id={`${id}-reveal-button`}
-		class={`card:${size} font:${size} ${variant} ${color} outline align-self:end `}
+		class={`card:${size} font:${size} ${variant} ${color} outline`}
 		aria-expanded={expanded}
 		aria-controls={`${id}-reveal`}
 		on:click={toggleReveal}
 	>
 		{format.formatLabel(title, asset)}
 	</button>
-	<div id={`${id}-reveal`} class={`l:${layout}:${size} ${show} ${direction} shrink`}>
+	<div id={`${id}-reveal`} class={`${layoutClass} ${show} ${direction} shrink`}>
 		<slot name="content">
-			<div class={`${container}:${size}`}>
+			<div class={`layer card:${size}`}>
 				<p class="font:lg">Revealed Content</p>
 				<p>This is a card with some content</p>
 			</div>
