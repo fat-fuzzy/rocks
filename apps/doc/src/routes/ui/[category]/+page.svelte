@@ -44,7 +44,7 @@
 		title="Context"
 		direction="reverse"
 	>
-		<div slot="content" class="l:side ui:menu l:switcher:sm reverse">
+		<div slot="content" class="l:side ui:menu reverse">
 			<Api category="app" {title} />
 		</div>
 	</RevealAuto>
