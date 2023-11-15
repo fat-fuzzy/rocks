@@ -30,10 +30,15 @@ export class UiState {
 			//    (i.e. once out of this loop, the only property of `this.styles` is the last one set in the loop)
 			styleValues.push({id: pair[0], value: {[category]: familyValue}})
 		}
+		console.log('styleValues')
+		console.log(styleValues)
+
 		const styles = this.api.getStyleTree()
 		styleValues.forEach(({id, value}) => {
 			const [category, family, style, _] = id.split('.')
-			styles[category][family][style] = value[category][family][style]
+			if (category !== 'submit' && category !== 'button') {
+				styles[category][family][style] = value[category][family][style]
+			}
 		})
 		this.api.applyStyles(styles)
 		return true

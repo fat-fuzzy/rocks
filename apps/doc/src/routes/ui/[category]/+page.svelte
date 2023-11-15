@@ -44,7 +44,7 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side ui:menu reverse">
-			<Api category="app" {title} />
+			<Api {title} />
 		</div>
 	</RevealAuto>
 </header>

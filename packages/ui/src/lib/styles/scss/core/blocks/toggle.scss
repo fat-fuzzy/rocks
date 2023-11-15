@@ -53,7 +53,7 @@ button.primary[aria-pressed='false']:hover,
 button.primary[aria-pressed='true'],
 button.primary.outline[aria-pressed='true'] {
 	color: var(--color-dark);
-	background-color: var(--current-primary-light);
+	background-color: var(--current-primary-lighter);
 	border-color: var(--current-primary-light);
 }
 button.primary.outline[aria-pressed='true'] {
@@ -62,12 +62,12 @@ button.primary.outline[aria-pressed='true'] {
 button.primary[aria-pressed='true']:hover,
 button.primary.outline[aria-pressed='true']:hover {
 	color: var(--current-primary);
-	background-color: var(--current-primary-lighter);
+	background-color: var(--current-primary-light);
 }
 button.primary[aria-pressed='true']:active,
 button.primary.outline[aria-pressed='true']:active {
 	color: var(--color-dark);
-	background-color: var(--current-primary-light);
+	background-color: var(--current-primary-lighter);
 }
 
 //== Toggle  accent

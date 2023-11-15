@@ -1,15 +1,16 @@
 <script lang="ts">
 	import {enhance} from '$app/forms'
 	import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
+	import Button from '../../components/blocks/buttons/Button.svelte'
 
 	export let title = ''
-	export let category = ''
+	export let categories = ['app']
 	export let page = ''
 	export let method = 'POST'
 	export let formaction = 'enter'
 	// export let reset = 'reset'
 
-	let apiLayout = category != 'app' ? 'nowrap reverse grow' : 'nowrap shrink'
+	let apiLayout = categories[0] != 'app' ? 'nowrap reverse grow' : 'nowrap shrink'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
@@ -39,5 +40,20 @@
 	}}
 	class={`l:switcher:${apiSize} ${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
 >
-	<StyleFamily {category} {title} />
+	{#each categories as category}
+		<StyleFamily {category} {title} />
+	{/each}
+	<div class="card:xl l:flex justify:center">
+		<div class="l:frame:square">
+			<Button
+				id={`submit.${page}`}
+				title="Apply styles"
+				type="submit"
+				size="xl"
+				color="primary"
+				variant="round"
+				asset="emoji:sparkles"
+			/>
+		</div>
+	</div>
 </form>

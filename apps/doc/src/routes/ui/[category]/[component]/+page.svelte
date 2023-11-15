@@ -35,8 +35,7 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side ui:menu l:switcher:sm reverse">
-			<Api category="app" {title} />
-			<Api category="shared" {title} />
+			<Api categories={['app', 'shared']} {title} />
 		</div>
 	</RevealAuto>
 </header>
