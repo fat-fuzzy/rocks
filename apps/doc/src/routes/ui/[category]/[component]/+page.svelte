@@ -34,8 +34,8 @@
 		asset="&nbsp;☂️&nbsp;"
 		title="Context"
 	>
-		<div slot="content" class="l:side ui:menu l:switcher:sm reverse">
-			<Api categories={['app', 'shared']} {title} />
+		<div slot="content" class="l:side ui:menu l:switcher:sm">
+			<Api categories={['shared', 'app']} {title} />
 		</div>
 	</RevealAuto>
 </header>
