@@ -37,7 +37,7 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side shrink ui:menu">
-			<Api category="app" {title} />
+			<Api {title} />
 		</div>
 	</RevealAuto>
 </header>

@@ -82,7 +82,7 @@
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full bg:polar ui:menu">
-							<Api {category} {title} />
+							<Api categories={[category]} {title} />
 						</div>
 					{:else}
 						<div class="card:lg text:center">
@@ -95,7 +95,7 @@
 				<details class={`l:stack:md`}>
 					<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
 					<div class="drop">
-						<Api {category} {title} />
+							<Api categories={[category]} {title} />
 					</div>
 				</details>
 			</section> -->

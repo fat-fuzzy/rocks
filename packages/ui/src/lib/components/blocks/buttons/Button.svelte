@@ -3,7 +3,8 @@
 	type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 
 	export let id = 'button'
-	export let name = 'button'
+	export let title = ''
+	export let name = ''
 	export let disabled = false
 	export let color = ''
 	export let variant = 'default'
@@ -21,7 +22,9 @@
 		window.alert(`${format.formatLabel(text, asset)} Clicked`)
 	}
 
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${asset} ${align}`
+	$: layoutClass =
+		variant !== 'round' ? `l:${layout}:${size} bp:${breakpoint} ${variant} ` : `${variant} ${size}`
+	$: classes = `${layoutClass} ${color} ${asset} ${align}`
 </script>
 
 <button
@@ -33,7 +36,8 @@
 	{disabled}
 	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}
 	value={id}
-	{name}
+	name={id}
+	{title}
 >
 	<slot>{text}</slot>
 </button>

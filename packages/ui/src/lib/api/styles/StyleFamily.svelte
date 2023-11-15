@@ -120,7 +120,7 @@
 				{#if input === 'toggle'}
 					<Fieldset
 						legend={family.title}
-						id={`fieldset-${id}`}
+						{id}
 						layout={family.layout}
 						size={family.size}
 						name={familyName}
@@ -138,7 +138,7 @@
 							return updatedItem
 						})}
 						<ToggleMenu
-							id={`toggle-${id}`}
+							{id}
 							title={styleInput.name !== familyName ? styleInput.name : ''}
 							items={updatedItems}
 							{page}
@@ -156,7 +156,7 @@
 							{@const InputComponent = COMPONENT_IMPORTS[input]}
 							<svelte:component
 								this={InputComponent}
-								id={`fieldset-${id}`}
+								{id}
 								{items}
 								{name}
 								type={input}
@@ -174,7 +174,7 @@
 							{@const InputComponent = COMPONENT_IMPORTS[input]}
 							<svelte:component
 								this={InputComponent}
-								id={`input-${id}`}
+								{id}
 								label={styleInput.name}
 								{items}
 								{value}

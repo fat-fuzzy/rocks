@@ -11,8 +11,13 @@ a[class*='emoji:']::before {
 	display: flex;
 }
 
-[class*='emoji']::before {
+:not(:in(.round, .square))[class*='emoji']::before {
 	margin-inline: 0 var(--current-size);
+}
+
+.round[class*='emoji'] {
+	font-size: var(--current-font-size);
+	padding: var(--current-size);
 }
 
 .feedback[class*='emoji']::before {
