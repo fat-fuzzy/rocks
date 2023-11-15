@@ -22,7 +22,6 @@
 	let markers: {id: string; label: string; value: number}[] = [{id: '', label: '', value: min}]
 
 	function generateStepsFromItems(items: {id: string; text: string; value: string}[]) {
-		step = (max - min) / items.length
 		let currentValue = min
 		items.forEach((item, index) => {
 			if (markers[index - 1]) {
@@ -30,7 +29,6 @@
 			}
 			markers[index] = {id: item.id, label: item.text, value: currentValue}
 		})
-		max = markers[markers.length - 1].value
 	}
 
 	function handleInput(event) {
@@ -49,9 +47,20 @@
 		}
 	}
 
+	const classToNumber: {[key: string]: string} = {
+		// TODO: figure out a generic way to map range number values to string labels with no JS
+		'0': 'xs',
+		'25': 'sm',
+		'50': 'md',
+		'75': 'lg',
+		'100': 'xl',
+	}
 	if (items) {
+		step = (max - min) / (items.length - 1)
 		generateStepsFromItems(items)
-		step = max / (items.length - 1)
+		// Set default number value if nojs
+		let valueObject = classToNumber[value]
+		value = valueObject ? valueObject : value
 	}
 
 	$: classes = `l:${layout}:${size} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
@@ -76,6 +85,7 @@
 		</span>
 		<input
 			{id}
+			name={id}
 			data-test={`input-range-${id}`}
 			type="range"
 			bind:value
@@ -85,7 +95,7 @@
 			on:input={handleInput}
 			list={items ? 'markers' : undefined}
 		/>
-		{#if items && valueLabel !== value}
+		{#if items}
 			<datalist id="markers">
 				{#each markers as { id, label, value }}
 					<option {id} {label} {value} />
