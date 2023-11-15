@@ -178,7 +178,7 @@
 								label={styleInput.name}
 								{items}
 								{value}
-								name={styleInput.id}
+								{name}
 								layout={styleInput.layout || ''}
 								size="sm"
 								color={apiColor}
