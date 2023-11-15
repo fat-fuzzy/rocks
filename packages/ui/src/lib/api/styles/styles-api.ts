@@ -179,10 +179,10 @@ const app: AppStyles = {
 				name: 'Brightness',
 				id: 'app.settings.brightness',
 				value: 'day',
-				input: 'toggle',
+				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card',
+				variant: 'box card',
 				items: [
 					{id: 'app.settings.brightness.day', text: 'day', asset: 'emoji:day', value: 'day'},
 					{
@@ -197,10 +197,10 @@ const app: AppStyles = {
 				name: 'Contrast',
 				id: 'app.settings.contrast',
 				value: 'blend',
-				input: 'toggle',
+				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
-				container: 'card',
+				variant: 'box card',
 				items: [
 					{
 						id: 'app.settings.contrast.contrast',

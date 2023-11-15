@@ -129,12 +129,12 @@
 		{/if}
 	</section>
 	<section>
-		<details class={`l:stack:sm ${size}`} open>
+		<details class={`l:stack:md ${size}`} open>
 			<summary class={`card:md box:${color} bg:${color}`}>
-				{categorySingular} components
+				{category !== 'Compositions' ? category : `${categorySingular} components`}
 			</summary>
-			<div class="drop">
-				<div class={`${layoutClass} ${contextClasses} card:xl`}>
+			<div class="drop l:card:xs">
+				<div class={layoutClass}>
 					{#each componentNames as name}
 						{@const component = components[name]}
 						{@const props = getProps({category, component: name})}
