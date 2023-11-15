@@ -18,8 +18,8 @@
 	export let items: any[]
 	let layout = 'stack'
 
-	let markers: {id: string; label: string; value: number}[] = [{id: '', label: '', value: min}]
 	let valueLabel = value
+	let markers: {id: string; label: string; value: number}[] = [{id: '', label: '', value: min}]
 
 	function generateStepsFromItems(items: {id: string; text: string; value: string}[]) {
 		step = (max - min) / items.length
@@ -49,6 +49,11 @@
 		}
 	}
 
+	if (items) {
+		generateStepsFromItems(items)
+		step = max / (items.length - 1)
+	}
+
 	$: classes = `l:${layout}:${size} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
 	$: {
 		if (items) {
@@ -61,12 +66,6 @@
 			valueLabel = value
 		}
 	}
-
-	onMount(() => {
-		if (items) {
-			generateStepsFromItems(items)
-		}
-	})
 </script>
 
 <fieldset class={`l:stack:${size}`}>

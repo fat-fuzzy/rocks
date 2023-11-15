@@ -1,6 +1,6 @@
 <script lang="ts">
-	import format from '$lib/utils/format'
 	type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
+	import format from '$lib/utils/format'
 
 	export let id = 'button'
 	export let title = ''
@@ -25,16 +25,17 @@
 	$: layoutClass =
 		variant !== 'round' ? `l:${layout}:${size} bp:${breakpoint} ${variant} ` : `${variant} ${size}`
 	$: classes = `${layoutClass} ${color} ${asset} ${align}`
+	$: formaction = page ? `/${page}?/${formaction}` : `?/${formaction}`
 </script>
 
 <button
 	{id}
 	{type}
 	data-key={`${name}-${id}`}
-	on:click={onClick}
+	on:click={type !== 'submit' ? onClick : undefined}
 	class={classes}
 	{disabled}
-	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}
+	formaction={type === 'submit' ? formaction : undefined}
 	value={id}
 	name={id}
 	{title}
