@@ -15,7 +15,7 @@
 	<h1 class="card:xl">{title}</h1>
 </header>
 
-<div class="l:stack">
+<div class="l:stack card:xl">
 	{#each markdowns as { meta }}
 		<a class="font:xxl" href={`/log/${meta.slug}`}>{meta.title}</a>
 	{/each}
