@@ -13,6 +13,7 @@
 //
 @forward './align'; // Use for aligning items inside containers and setting widths
 @forward './burrito'; // Use for side content centering (narrow columns with max-width set using sidebar width variables (in ch units))
+@forward './maki'; // Use for side content centering without any max-width
 @forward './frame'; // Use for displaying content with a given aspect ratio
 @forward './card'; // Use for displaying self-contained content items
 @forward './reveal'; // Use for displaying hidden content with a button action

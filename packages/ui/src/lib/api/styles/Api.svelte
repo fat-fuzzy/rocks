@@ -10,7 +10,7 @@
 	export let formaction = 'enter'
 	// export let reset = 'reset'
 
-	let apiLayout = categories[0] != 'app' ? 'nowrap reverse grow' : 'nowrap shrink'
+	let apiLayout = categories.includes('app') ? 'nowrap grow' : 'nowrap shrink'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
@@ -44,7 +44,7 @@
 		<StyleFamily {category} {title} />
 	{/each}
 	{#await Promise.resolve()}
-		<div class="card:xl l:flex justify:center">
+		<div class="maki:xl l:flex justify:center align:center">
 			<div class="l:frame:square">
 				<Button
 					id={`submit.${page}`}
