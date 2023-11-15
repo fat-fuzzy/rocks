@@ -116,23 +116,25 @@
 		</section>
 	</Sidebar>
 {:else}
-	<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
-		{category}
-	</svelte:element>
+	<section class="l:text:xl card:xl">
+		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+			{category}
+		</svelte:element>
 
-	<section class="l:text:xl">
 		{#if content}
 			{@html content.html}
 		{:else}
 			<p class={`font:xl`}>🐰</p>
 			<p class={`font:md`}>Coming soon!</p>
 		{/if}
-		<details class={`l:stack:xxl ${size}`} open>
+	</section>
+	<section>
+		<details class={`l:stack:sm ${size}`} open>
 			<summary class={`card:md box:${color} bg:${color}`}>
 				{categorySingular} components
 			</summary>
 			<div class="drop">
-				<div class={`${layoutClass} ${contextClasses}`}>
+				<div class={`${layoutClass} ${contextClasses} card:xl`}>
 					{#each componentNames as name}
 						{@const component = components[name]}
 						{@const props = getProps({category, component: name})}

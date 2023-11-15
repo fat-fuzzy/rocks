@@ -51,23 +51,6 @@ h5 {
 	font-size: var(--current-font-size-plus);
 }
 
-pre {
-	--current-color: var(--current-bg-contrast);
-	font-family: var(--font-family-code);
-	overflow: auto;
-}
-
-.night {
-	pre {
-		--current-color: var(--current-color);
-		--current-bg-color: var(--current-polar);
-	}
-}
-// Allow space for scrollbar on macOS
-pre:not(.feedback) {
-	padding-block: var(--current-size);
-}
-
 article,
 .l\:text {
 	background-color: inherit;

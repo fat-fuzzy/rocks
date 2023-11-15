@@ -45,7 +45,7 @@
 <Sidebar size="xs" align="end">
 	<div slot="main" class="l:stack">
 		<div class="l:text:xl">
-			{@html content.html}
+			<div class="card:xl">{@html content.html}</div>
 		</div>
 		{#each components as { category, items }}
 			<Collection
