@@ -5,6 +5,15 @@ h3 {
 	margin-block-end: var(--current-size);
 }
 
+h3,
+h4,
+h5,
+h6 {
+	line-height: var(--line-height-heading);
+	margin-block-start: var(--current-size-plus);
+	margin-block-end: var(--current-size);
+}
+
 h1.link,
 h2.link,
 h3.link {
