@@ -132,28 +132,24 @@ pre.feedback.bare {
 }
 .day,
 .night {
-	[class*='info']:not(pre),
 	.feedback[class*='info']:not(pre) {
 		--current-color: var(--color-dark);
 		--current-bg-color: var(--current-info-lighter);
 		--current-border-color: var(--current-info);
 	}
 
-	[class*='success']:not(pre),
 	.feedback[class*='success']:not(pre) {
 		--current-color: var(--color-dark);
 		--current-bg-color: var(--current-success-lighter);
 		--current-border-color: var(--current-success);
 	}
 
-	[class*='warning']:not(pre),
 	.feedback[class*='warning']:not(pre) {
 		--current-color: var(--color-dark);
 		--current-bg-color: var(--current-warning-lighter);
 		--current-border-color: var(--current-warning);
 	}
 
-	[class*='error']:not(pre),
 	.feedback[class*='error']:not(pre) {
 		--current-color: var(--color-dark);
 		--current-bg-color: var(--current-error-lighter);
@@ -176,36 +172,32 @@ pre.feedback.bare {
 		--current-color: var(--current-error-lightest);
 		--current-border-color: var(--current-error);
 	}
-	[class*='info'].bare:not(pre),
-	[class*='success'].bare:not(pre),
-	[class*='warning'].bare:not(pre),
-	[class*='error'].bare:not(pre) {
+	.feedback[class*='info'].bare:not(pre),
+	.feedback[class*='success'].bare:not(pre),
+	.feedback[class*='warning'].bare:not(pre),
+	.feedback[class*='error'].bare:not(pre) {
 		--current-border-color: var(--current-bg-color);
 	}
 	&.bg\:contrast,
 	&.bg\:blend {
-		[class*='info']:not(pre),
 		.feedback[class*='info']:not(pre) {
 			--current-color: var(--color-dark);
 			--current-bg-color: var(--current-info-lighter);
 			--current-border-color: var(--current-info);
 		}
 
-		[class*='success']:not(pre),
 		.feedback[class*='success']:not(pre) {
 			--current-color: var(--color-dark);
 			--current-bg-color: var(--current-success-lighter);
 			--current-border-color: var(--current-success);
 		}
 
-		[class*='warning']:not(pre),
 		.feedback[class*='warning']:not(pre) {
 			--current-color: var(--color-dark);
 			--current-bg-color: var(--current-warning-lighter);
 			--current-border-color: var(--current-warning);
 		}
 
-		[class*='error']:not(pre),
 		.feedback[class*='error']:not(pre) {
 			--current-color: var(--color-dark);
 			--current-bg-color: var(--current-error-lighter);
@@ -227,10 +219,10 @@ pre.feedback.bare {
 			--current-color: var(--current-error-lightest);
 			--current-border-color: var(--current-error);
 		}
-		[class*='info'].bare:not(pre),
-		[class*='success'].bare:not(pre),
-		[class*='warning'].bare:not(pre),
-		[class*='error'].bare:not(pre) {
+		.feedback[class*='info'].bare:not(pre),
+		.feedback[class*='success'].bare:not(pre),
+		.feedback[class*='warning'].bare:not(pre),
+		.feedback[class*='error'].bare:not(pre) {
 			--current-border-color: var(--current-bg-color);
 		}
 	}

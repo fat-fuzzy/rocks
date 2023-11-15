@@ -1,5 +1,5 @@
 export default {
-	Button: {id: 'idea', text: 'Idea', asset: 'emoji:idea'},
+	Button: {id: 'button-idea', text: 'Idea', asset: 'emoji:idea'},
 	InputCheck: {id: 'check', text: 'An optional choice choice'},
 	InputRadio: {id: 'radio', text: 'A mandatory choice'},
 	Feedback: {
@@ -36,7 +36,7 @@ export default {
 			},
 		],
 	},
-	Toggle: {id: 'favorite', text: 'Favorite', asset: 'emoji:favorite'},
+	Toggle: {id: 'button-favorite', text: 'Favorite', asset: 'emoji:favorite'},
 	Fieldset: {
 		items: ['Form input 1', 'Form input 2', 'Form input 3'],
 	},

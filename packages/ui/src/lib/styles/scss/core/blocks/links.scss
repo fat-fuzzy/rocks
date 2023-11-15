@@ -88,12 +88,14 @@ a.outline.primary\:lighter:visited {
 	text-decoration-color: var(--current-primary);
 }
 a.outline.primary\:light:hover {
+	color: var(--color-dark);
 	background-color: var(--current-primary-light);
-	text-decoration-color: var(--current-dark);
+	text-decoration-color: var(--color-dark);
 }
 a.outline.primary\:lighter:hover {
+	color: var(--color-dark);
 	background-color: var(--current-primary-lighter);
-	text-decoration-color: var(--current-dark);
+	text-decoration-color: var(--color-dark);
 }
 a.outline.primary\:light:focus,
 a.outline.primary\:lighter:focus {
