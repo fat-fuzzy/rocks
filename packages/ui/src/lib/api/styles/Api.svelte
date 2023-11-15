@@ -43,17 +43,21 @@
 	{#each categories as category}
 		<StyleFamily {category} {title} />
 	{/each}
-	<div class="card:xl l:flex justify:center">
-		<div class="l:frame:square">
-			<Button
-				id={`submit.${page}`}
-				title="Apply styles"
-				type="submit"
-				size="xl"
-				color="primary"
-				variant="round"
-				asset="emoji:sparkles"
-			/>
+	{#await Promise.resolve()}
+		<div class="card:xl l:flex justify:center">
+			<div class="l:frame:square">
+				<Button
+					id={`submit.${page}`}
+					title="Apply styles"
+					type="submit"
+					size="xl"
+					color="primary"
+					variant="round"
+					asset="emoji:sparkles"
+				/>
+			</div>
 		</div>
-	</div>
+	{:then}
+		<slot />
+	{/await}
 </form>
