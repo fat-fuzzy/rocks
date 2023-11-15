@@ -1,0 +1,122 @@
+// Allow space for scrollbar on macOS
+pre,
+code {
+	padding-inline: var(--current-size) var(--current-size-plus);
+	padding-block: var(--current-size);
+	font-family: var(--font-family-code);
+	overflow: auto;
+}
+
+pre,
+pre.default {
+	--current-color: var(--color-light);
+	--current-bg-color: var(--color-gray-5);
+	--current-border-color: var(--current-gray);
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+	border-color: var(--current-border-color);
+}
+pre.bare {
+	--current-bg-color: var(--color-gray-5);
+	border-color: var(--current-bg-color);
+}
+
+.night {
+	pre,
+	pre.default {
+		--current-color: var(--color-light);
+		--current-bg-color: var(--current-bg-contrast);
+		--current-border-color: var(--color-gray-4);
+	}
+	pre[class*='bg:default:'].bare {
+		--current-color: var(--color-light);
+		--current-bg-color: var(--current-bg-contrast);
+		--current-border-color: var(--current-bg-color);
+	}
+	&.bg\:contrast {
+		pre,
+		pre.default,
+		pre[class*='bg:default'].outline,
+		pre[class*='bg:default'].default {
+			--current-color: var(--color-light);
+			--current-bg-color: var(--color-gray-5);
+			--current-border-color: var(--color-gray-4);
+		}
+		pre.bare,
+		pre[class*='bg:default:'].bare {
+			--current-bg-color: var(--color-gray-5);
+			--current-border-color: var(--current-bg-color);
+		}
+	}
+	&.bg\:blend {
+		pre,
+		pre.default,
+		pre[class*='bg:default'].outline,
+		pre[class*='bg:default'].default {
+			--current-color: var(--color-light);
+			--current-bg-color: var(--current-bg-contrast);
+			--current-border-color: var(--color-gray-4);
+		}
+		pre.bare,
+		pre[class*='bg:default:'].bare {
+			--current-border-color: var(--current-bg-color);
+		}
+	}
+}
+.day {
+	pre,
+	pre.default,
+	pre[class*='bg:default'].outline,
+	pre[class*='bg:default'].default {
+		--current-bg-color: var(--color-gray-5);
+		--current-border-color: var(--color-gray-4);
+	}
+	pre.bare,
+	pre[class*='bg:default'].bare {
+		--current-border-color: var(--current-bg-color);
+	}
+}
+.day,
+.night {
+	pre[class*='info'] {
+		--current-color: var(--current-info-lightest);
+		--current-border-color: var(--current-info);
+	}
+	pre[class*='success'] {
+		--current-color: var(--current-success-lighter);
+		--current-border-color: var(--current-success);
+	}
+	pre[class*='warning'] {
+		--current-color: var(--current-warning-lighter);
+		--current-border-color: var(--current-warning);
+	}
+	pre[class*='error'] {
+		--current-color: var(--current-error-lightest);
+		--current-border-color: var(--current-error);
+	}
+	&.bg\:contrast,
+	&.bg\:blend {
+		pre[class*='info'] {
+			--current-color: var(--current-info-lightest);
+			--current-border-color: var(--current-info);
+		}
+		pre[class*='success'] {
+			--current-color: var(--current-success-lighter);
+			--current-border-color: var(--current-success);
+		}
+		pre[class*='warning'] {
+			--current-color: var(--current-warning-lighter);
+			--current-border-color: var(--current-warning);
+		}
+		pre[class*='error'] {
+			--current-color: var(--current-error-lightest);
+			--current-border-color: var(--current-error);
+		}
+		.feedback[class*='info'].bare:not(pre),
+		.feedback[class*='success'].bare:not(pre),
+		.feedback[class*='warning'].bare:not(pre),
+		.feedback[class*='error'].bare:not(pre) {
+			--current-border-color: var(--current-bg-color);
+		}
+	}
+}
