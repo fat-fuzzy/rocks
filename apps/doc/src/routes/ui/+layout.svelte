@@ -64,6 +64,7 @@
 			size="md"
 			color="bg:primary:light"
 			position="fixed"
+			background="polar"
 			on:toggleReveal={toggleReveal}
 		/>
 	</div>

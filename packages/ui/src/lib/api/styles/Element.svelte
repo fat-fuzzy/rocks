@@ -73,7 +73,7 @@
 		</section>
 		<section class="l:side">
 			<div class="l:stack:lg">
-				<details id={`${category}-${title}-api`} class="l:stack:md">
+				<details id={`${category}-${title}-api`} class="l:stack:lg">
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full bg:polar ui:menu">
@@ -95,7 +95,7 @@
 			</details>
 		</section> -->
 
-				<details id={`${category}-${title}-doc`} class="l:stack:md" open>
+				<details id={`${category}-${title}-doc`} class="l:stack:lg" open>
 					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
 					<div class="drop w:full">
 						<div class="card:lg text:center">

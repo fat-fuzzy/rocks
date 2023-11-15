@@ -4,15 +4,22 @@
 
 .ui\:menu {
 	gap: var(--s0);
-	padding: var(--current-size) var(--current-size-plus) var(--current-size-plus);
+	padding: var(--current-size) var(--current-size) var(--current-size-plus);
 }
 
 .page-header .ui\:menu {
 	margin-block-start: var(--current-size-plus);
+	margin-inline: auto;
 }
 
 @media screen and (min-width: 620px) {
+	.ui\:menu {
+		gap: var(--s0);
+		margin-block: var(--s0) var(--current-size);
+	}
+
 	.page-header .ui\:menu {
-		margin-block-start: 0;
+		margin-inline: var(--current-size);
+		margin-block-start: var(--current-size-plus);
 	}
 }
