@@ -1,25 +1,25 @@
 export default {
 	ButtonMenu: {
 		items: [
-			{id: 'vader', text: 'Vader', asset: 'emoji:vader'},
-			{id: 'ollie', text: 'Ollie', asset: 'emoji:ollie'},
-			{id: 'moby', text: 'Moby', asset: 'emoji:moby'},
+			{id: 'menu.button.vader', text: 'Vader', asset: 'emoji:vader'},
+			{id: 'menu.button.ollie', text: 'Ollie', asset: 'emoji:ollie'},
+			{id: 'menu.button.moby', text: 'Moby', asset: 'emoji:moby'},
 		],
 	},
 	ToggleMenu: {
 		items: [
-			{id: 'idea', text: 'Idea', asset: 'emoji:idea'},
-			{id: 'profile', text: 'Profile', asset: 'emoji:profile'},
-			{id: 'favorite', text: 'Favorite', asset: 'emoji:favorite'},
+			{id: 'menu.toggle.idea', text: 'Idea', asset: 'emoji:idea'},
+			{id: 'menu.toggle.profile', text: 'Profile', asset: 'emoji:profile'},
+			{id: 'menu.toggle.favorite', text: 'Favorite', asset: 'emoji:favorite'},
 		],
 	},
 	RevealMenu: {
 		slug: 'ui',
 		title: 'RevealMenu',
 		items: [
-			{id: 'idea', text: 'Idea', asset: 'emoji:idea'},
-			{id: 'profile', text: 'Profile', asset: 'emoji:profile'},
-			{id: 'favorite', text: 'Favorite', asset: 'emoji:favorite'},
+			{id: 'reveal-menu.button.idea', text: 'Idea', asset: 'emoji:idea'},
+			{id: 'reveal-menu.button.profile', text: 'Profile', asset: 'emoji:profile'},
+			{id: 'reveal-menu.button.favorite', text: 'Favorite', asset: 'emoji:favorite'},
 		],
 	},
 	RadioGroup: [
@@ -34,22 +34,22 @@ export default {
 	],
 	LinkList: {
 		items: [
-			{id: 'home', slug: '', title: 'Home'},
-			{id: 'about', slug: 'about', title: 'About'},
+			{id: 'link-list.home', slug: '', title: 'Home'},
+			{id: 'link-list.about', slug: 'about', title: 'About'},
 		],
 	},
 	Nav: {
 		items: [
-			{id: 'home', slug: '', title: 'Home', asset: 'emoji:home'},
-			{id: 'about', slug: 'about', title: 'About', asset: 'emoji:about'},
+			{id: 'nav.home', slug: '', title: 'Home', asset: 'emoji:home'},
+			{id: 'nav.about', slug: 'about', title: 'About', asset: 'emoji:about'},
 		],
 	},
 	DetailsNav: {
 		slug: 'ui',
 		title: 'DetailsNav',
 		items: [
-			{id: 'home', slug: '', title: 'Home'},
-			{id: 'about', slug: 'about', title: 'About'},
+			{id: 'details-nav.home', slug: '', title: 'Home'},
+			{id: 'details-nav.about', slug: 'about', title: 'About'},
 		],
 	},
 	RevealNav: {

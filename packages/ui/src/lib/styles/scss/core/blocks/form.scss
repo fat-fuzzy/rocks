@@ -32,12 +32,23 @@ textarea {
 	border-color: var(--current-accent-color);
 }
 
+form {
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+}
+
 .night {
-	input,
-	select,
-	textarea {
-		--current-color: var(--color-light);
-		--current-accent-color: var(--color-gray-2);
+	textarea,
+	[type='text'],
+	[type='password'],
+	[type='number'],
+	[type='email'],
+	[type='phone'],
+	[type='dataset'] {
+		color: var(--color-dark);
+	}
+	[type='file'] {
+		color: var(--color-white);
 	}
 }
 

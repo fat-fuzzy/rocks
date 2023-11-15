@@ -85,7 +85,7 @@ button.primary.outline:not(.bare):not([aria-pressed]):not(:disabled):active {
 //== Button accent
 
 button.accent {
-	color: var(--color-light);
+	color: var(--color-white);
 	border-color: var(--current-accent);
 	background-color: var(--current-accent);
 	outline-color: var(--current-accent);
@@ -264,8 +264,10 @@ button.bare.accent,
 button.bare.accent:active {
 	color: var(--current-accent);
 }
-.night button.bare.highlight {
-	color: var(--current-highlight);
+.night {
+	button.outline.highlight {
+		color: var(--color-dark);
+	}
 }
 button.bare.highlight:hover {
 	--current-border-color: var(--current-highlight-lighter);

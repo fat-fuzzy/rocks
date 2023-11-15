@@ -73,7 +73,7 @@ button.primary.outline[aria-pressed='true']:active {
 //== Toggle  accent
 
 .accent[aria-pressed='false'] {
-	color: var(--color-light);
+	color: var(--color-white);
 	background-color: var(--current-accent);
 }
 .accent.outline[aria-pressed='false'] {
@@ -114,6 +114,9 @@ button.accent.outline[aria-pressed='true']:hover {
 .highlight.outline[aria-pressed='false'] {
 	background-color: inherit;
 }
+.night .highlight.outline[aria-pressed='false'] {
+	color: var(--current-highlight-light);
+}
 button.highlight[aria-pressed='false']:hover,
 button.highlight.outline[aria-pressed='false']:hover {
 	color: var(--color-dark);
@@ -124,7 +127,8 @@ button.highlight.outline[aria-pressed='false']:hover {
 	background-color: var(--current-highlight-lighter);
 }
 .highlight[aria-pressed='true'],
-.outline.highlight[aria-pressed='true'] {
+.outline.highlight[aria-pressed='true'],
+.night .highlight.outline[aria-pressed='true'] {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
 }

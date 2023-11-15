@@ -58,15 +58,11 @@ body {
 //== Primary / Accent / Highlight colors
 
 //== Layers & Media
-
-.l\:frame {
-	background-color: var(--color-white);
-}
-form,
 .l\:text {
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
+
 .primary:focus {
 	outline-color: var(--current-primary);
 }
@@ -109,7 +105,10 @@ form,
 	color: var(--current-color);
 	background-color: var(--current-primary);
 }
-
+.night .bg\:primary {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+}
 .bg\:primary\:light {
 	--current-color: var(--color-dark);
 	color: var(--current-color);
@@ -129,7 +128,7 @@ form,
 }
 
 .bg\:accent {
-	--current-color: var(--color-light);
+	--current-color: var(--color-white);
 	color: var(--color-light);
 	background-color: var(--current-accent);
 }
@@ -204,7 +203,7 @@ form,
 	outline-color: var(--current-error);
 }
 .bg\:info {
-	--current-color: var(--color-light);
+	--current-color: var(--color-white);
 	color: var(--current-color);
 	background-color: var(--current-info);
 }

@@ -1,5 +1,4 @@
 <script lang="ts">
-	export let layout = 'stack'
 	export let size = 'md'
 	export let depth = 3
 
