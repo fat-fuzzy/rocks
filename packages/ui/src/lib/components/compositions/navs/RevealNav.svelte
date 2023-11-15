@@ -11,11 +11,9 @@
 	export let breakpoint = ''
 	export let container = 'card'
 	export let variant = ''
-	export let height = ''
 	export let color = ''
 	export let background = 'polar'
 	export let path = ''
-	export let page = ''
 	export let id = 'ui'
 	export let title = 'RevealNav'
 	export let asset = ''
@@ -45,11 +43,10 @@
 		}
 	}
 	$: show = expanded ? `show ${place}` : `minimize ${place}`
-	$: setHeight = height ? ` h:${height}` : ''
 </script>
 
 <div
-	class={`l:reveal ${show} ${setHeight} ${direction} ${position}`}
+	class={`l:reveal ${show} ${direction} ${position}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -64,8 +61,8 @@
 	</button>
 	<nav
 		id={`${id}-reveal-nav`}
-		class={`content l:${layout} ${container}:${size} bp:${breakpoint} layer bg:${background} card:${size} align:${align} ${size} ${setHeight}`}
+		class={`content l:${layout} ${container}:${size} bp:${breakpoint} bg:${background} card:${size} align:${align} ${size} `}
 	>
-		<LinkList id={`${id}-${path}`} {page} {path} {items} {size} {align} depth={0} />
+		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
 </div>
