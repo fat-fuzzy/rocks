@@ -68,7 +68,7 @@
 			on:toggleReveal={toggleReveal}
 		/>
 	</div>
-	<div class="l:main l:center l:stack:xxl">
+	<div class="l:main l:center l:stack:xl">
 		<slot />
 	</div>
 </div>

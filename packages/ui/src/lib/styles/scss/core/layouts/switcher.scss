@@ -1,5 +1,11 @@
+/**
+*  Use a threshold to force wrap into switcher layout at the breakpoint value.
+* In this way, contents will wrap together as a switcher
+* (instead of normal wrap where items will wrap independently of one another)
+*/
 [class*='l:switcher:'] {
-	--gap: var(--current-size);
+	--gap: var(--current-gap-size);
+	--threshold: var(--current-bp-threshold);
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--gap);
@@ -8,16 +14,6 @@
 [class*='l:switcher:'] > * {
 	flex-grow: 1;
 	flex-basis: calc((var(--threshold) - 100%) * 999);
-}
-
-/**
-*  Use a breakpoint to force wrap into switcher layout at the breakpoint value.
-* In this way, contents will wrap together as a switcher
-* (instead of normal wrap where items will wrap independently of one another)
-*/
-[class*='l:switcher:'] {
-	--gap: var(--current-size);
-	--threshold: var(--current-bp-threshold);
 }
 
 .l\:switcher\:shrink > * {
