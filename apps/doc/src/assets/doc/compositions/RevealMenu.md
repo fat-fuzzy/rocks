@@ -1,16 +1,18 @@
 ---
-title: Toggle
-slug: Toggle
-family: ['blocks']
-group: ['buttons']
-props: ['color', 'variant', 'size', 'asset']
-context: ['app.settings']
+title: RevealMenu
+slug: RevealMenu
+family: ['compositions']
+group: ['menus']
+props: ['color', 'variant', 'size', 'background', 'layout', 'threshold']
+context: ['app.settings', 'shared.container']
 ---
 
 ## Usage
 
 When is this usage appropriate
 Examples
+
+[TODO]
 
 ## Requirements
 

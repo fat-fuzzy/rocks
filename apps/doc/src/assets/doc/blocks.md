@@ -2,6 +2,8 @@
 title: Blocks
 slug: blocks
 tags: ['blocks']
+inputs: ['blocks.element']
+context: ['app.settings']
 ---
 
 Blocks are self contained, atomic components that provide a piece of information, action, or navigation option to the user of the app. They are generally mapped to a specific HTML tag, or related tags.

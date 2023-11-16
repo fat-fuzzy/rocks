@@ -1,10 +1,13 @@
 ---
 title: Button
-slug: button
-tags: ['blocks', 'buttons']
+slug: Button
+family: ['blocks']
+group: ['buttons']
+props: ['color', 'variant', 'size', 'asset']
+context: ['app.settings']
 ---
 
-## Use Case
+## Usage
 
 When is this usage appropriate
 Examples
@@ -13,7 +16,11 @@ Examples
 
 ## Requirements
 
-[TODO]
+### No JS
+
+For a button action to have an effect without JavaScript enabled, it must be inside a `<form>` element that has at least one defined `action`. By default, a button without a `type` attribute will be considered a 'submit' button: on click, it will submit the form it belongs to.
+
+If a form contains more than one button with different actions expected on click, each button must have a distinct `formaction` attribute.
 
 ## Getting started
 
