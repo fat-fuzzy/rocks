@@ -101,7 +101,7 @@
 	>
 		<button
 			id={`${id}-primary-nav-button`}
-			class={`font:sm outline`}
+			class={`sm outline`}
 			aria-expanded={navExpanded}
 			aria-controls={`${id}-primary-nav`}
 			on:click={toggleNav}
@@ -131,7 +131,7 @@
 	>
 		<button
 			id={`${id}-app-settings-button`}
-			class={`font:sm outline`}
+			class={`sm outline`}
 			aria-expanded={settingsExpanded}
 			aria-controls={`${id}-settings-menu`}
 			on:click={toggleSettings}

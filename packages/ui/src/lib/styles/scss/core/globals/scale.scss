@@ -1,29 +1,73 @@
+.l\:switcher\:xxs,
 .l\:stack\:xxs {
-	--current-stack-size: var(--size-xxs);
+	--current-gap-size: var(--size-xxs);
 }
 
+.l\:switcher\:xs,
 .l\:stack\:xs {
-	--current-stack-size: var(--size-xs);
+	--current-gap-size: var(--size-xs);
 }
 
+.l\:switcher\:sm,
 .l\:stack\:sm {
-	--current-stack-size: var(--size-sm);
+	--current-gap-size: var(--size-sm);
 }
 
+.l\:switcher\:md,
 .l\:stack\:md {
-	--current-stack-size: var(--size-md);
+	--current-gap-size: var(--size-md);
 }
 
+.l\:switcher\:lg,
 .l\:stack\:lg {
-	--current-stack-size: var(--size-lg);
+	--current-gap-size: var(--size-lg);
 }
 
+.l\:switcher\:xl,
 .l\:stack\:xl {
-	--current-stack-size: var(--size-xl);
+	--current-gap-size: var(--size-xl);
 }
 
+.l\:switcher\:xxl,
 .l\:stack\:xxl {
-	--current-stack-size: var(--size-xxl);
+	--current-gap-size: var(--size-xxl);
+}
+
+.l\:grid\:xxs {
+	--current-item-size: var(--sidebar-width-xxs);
+	--current-gap-size: var(--size-xxs);
+}
+
+.l\:grid\:xs {
+	--current-item-size: var(--sidebar-width-xs);
+	--current-gap-size: var(--size-xs);
+}
+
+.l\:grid\:sm {
+	--current-item-size: var(--sidebar-width-sm);
+	--current-gap-size: var(--size-sm);
+}
+
+.l\:grid\:md {
+	--current-item-size: var(--sidebar-width-md);
+	--current-gap-size: var(--size-md);
+}
+
+.l\:grid\:lg {
+	--current-item-size: var(--sidebar-width-lg);
+	--current-gap-size: var(--size-lg);
+}
+
+.l\:grid\:x {
+	--current-item-size: var(--sidebar-width-xl);
+	--current-gap-size: var(--size-xl);
+}
+
+.l\:grid\:xxl,
+.l\:switcher\:xxl,
+.l\:stack\:xxl {
+	--current-gap-size: var(--size-xxl);
+	--current-gap-size: var(--size-xxl);
 }
 
 .l\:sidebar\:xxs {
