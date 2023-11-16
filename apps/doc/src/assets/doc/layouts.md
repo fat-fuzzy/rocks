@@ -2,6 +2,8 @@
 title: Layouts
 slug: layouts
 tags: ['layouts']
+inputs: ['layouts.container', 'layouts.element']
+context: ['app.settings']
 ---
 
 Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.
