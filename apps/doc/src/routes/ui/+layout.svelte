@@ -53,13 +53,13 @@
 	$: sidebarReveal = expanded ? '' : 'minimize'
 </script>
 
-<div class="l:sidebar:xs">
+<div class="l:sidebar:xs align-content:start">
 	<div class={`l:side ${sidebarReveal}`}>
 		<RevealNav
 			title="Design Library"
 			id="nav-page"
 			{items}
-			page={path}
+			{path}
 			breakpoint="sm"
 			size="md"
 			color="bg:primary:light"
