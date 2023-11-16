@@ -52,7 +52,7 @@
 >
 	<button
 		id={`${id}-reveal-nav-button`}
-		class={`card:${size} ${variant} ${color} font:sm ${buttonAsset}`}
+		class={`card:${size} ${variant} ${color} font:${size} ${buttonAsset}`}
 		aria-expanded={expanded}
 		aria-controls={`${id}-reveal-nav`}
 		on:click={toggleReveal}
