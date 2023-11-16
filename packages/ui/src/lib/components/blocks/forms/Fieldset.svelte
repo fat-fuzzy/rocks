@@ -18,12 +18,13 @@
 	$: breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
 	$: layoutClass = layout ? `l:${layout}:${size} ${thresholdClass} ${breakpointClass}` : ''
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: contentClass = `${size || ''} ${type || ''} ${variant || ''}:${size || ''} ${color || ''} ${
-		align ? `align:${align}` : ''
-	}`
-	$: classes = `${layoutClass} ${containerClass} ${contentClass} ${backgroundClass} `
+	$: sizeClass = size ? `font:${size}` : ''
+	$: alignClass = align ? `align:${align}` : ''
+	$: variantClass = variant ? `${variant}:${size}` : ''
+	$: contentClass = `${sizeClass} ${variantClass} ${alignClass} ${type || ''} ${color || ''}`
+	$: classes = `${layoutClass} ${containerClass} ${backgroundClass} ${sizeClass} ${alignClass} ${variantClass} ${contentClass}`
 </script>
 
 <fieldset {id} {name} data-key={id} class={classes}>
-	{#if legend}<legend class={`font:${size}`}>{legend}</legend>{/if}<slot />
+	{#if legend}<legend class={sizeClass}>{legend}</legend>{/if}<slot />
 </fieldset>

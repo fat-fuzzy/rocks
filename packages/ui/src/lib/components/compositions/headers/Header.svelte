@@ -24,6 +24,7 @@
 				action: 'theme',
 				asset: 'emoji', // Fix asset per theme
 				variant: 'round',
+				size: 'xl',
 			},
 			{
 				id: 'link-github',
@@ -31,6 +32,7 @@
 				url: 'https://github.com/fat-fuzzy/rocks',
 				asset: 'svg', // Fix asset per theme
 				variant: 'round',
+				size: 'md',
 			},
 			// {
 			// 	id: 'menu-lang',
@@ -137,13 +139,13 @@
 			{format.formatLabel('Settings', '🎛️')}
 		</button>
 		<menu class={showSettings}>
-			{#each items.side as { id, title, action, url, asset, variant, subitems }}
+			{#each items.side as { id, title, action, url, asset, variant, size }}
 				{#if url}
-					<a class={`${variant} ${asset}`} href={url} target="_blank" rel="noreferrer">
+					<a class={`${variant} ${asset} font:${size}`} href={url} target="_blank" rel="noreferrer">
 						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
 					</a>
 				{:else if action}
-					<button on:click={actions[action]} class={`${variant} font:xl outline`}>
+					<button on:click={actions[action]} class={`${variant} font:${size} outline`}>
 						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
 					</button>
 					<!-- {#if subitems}

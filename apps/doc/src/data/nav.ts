@@ -12,6 +12,7 @@ export const links = {
 			action: 'theme',
 			asset: 'emoji',
 			variant: 'round',
+			size: 'xl',
 		},
 		{
 			id: 'link-github',
@@ -19,6 +20,7 @@ export const links = {
 			url: 'https://github.com/fat-fuzzy/rocks',
 			asset: 'svg',
 			variant: 'round',
+			size: 'md',
 		},
 	],
 }

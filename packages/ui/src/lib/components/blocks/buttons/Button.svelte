@@ -23,8 +23,8 @@
 	}
 
 	$: layoutClass =
-		variant !== 'round' ? `l:${layout}:${size} bp:${breakpoint} ${variant} ` : `${variant} ${size}`
-	$: classes = `${layoutClass} ${color} ${asset} ${align}`
+		variant !== 'round' ? `l:${layout}:${size} bp:${breakpoint} ${variant}` : `${variant}`
+	$: classes = `${layoutClass} ${color} ${asset} ${align} ${size} font${size}`
 	$: formaction = page ? `/${page}?/${formaction}` : `?/${formaction}`
 </script>
 
