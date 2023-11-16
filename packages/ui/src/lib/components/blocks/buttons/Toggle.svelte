@@ -63,7 +63,9 @@
 		}
 	})
 
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${asset} ${align}`
+	$: layoutClass =
+		variant !== 'round' ? `l:${layout}:${size} bp:${breakpoint} ${variant}` : `${variant}`
+	$: classes = `${layoutClass} ${color} ${asset} ${align} ${size} font${size}`
 	$: pressed = $state.value === 'active'
 </script>
 
