@@ -1,5 +1,5 @@
 .xxs,
-[class*=':xxs']:not(.bp\:xxs) {
+[class*=':xxs']:not([class*='bp']):not([class*='th']) {
 	--current-size-minus: var(--size-xxs);
 	--current-size: var(--size-xxs);
 	--current-size-plus: var(--size-sm);
@@ -11,7 +11,7 @@
 }
 
 .xs,
-[class*=':xs']:not(.bp\:xs) {
+[class*=':xs']:not([class*='bp']):not([class*='th']) {
 	--current-size-minus: var(--size-xxs);
 	--current-size: var(--size-xs);
 	--current-size-plus: var(--size-md);
@@ -23,7 +23,7 @@
 }
 
 .sm,
-[class*=':sm']:not(.bp\:sm) {
+[class*=':sm']:not([class*='bp']):not([class*='th']) {
 	--current-size-minus: var(--size-xs);
 	--current-size: var(--size-sm);
 	--current-size-plus: var(--size-lg);
@@ -35,7 +35,7 @@
 }
 
 .md,
-[class*=':md']:not(.bp\:md) {
+[class*=':md']:not([class*='bp']):not([class*='th']) {
 	--current-size-minus: var(--size-sm);
 	--current-size: var(--size-md);
 	--current-size-plus: var(--size-xl);
@@ -47,7 +47,7 @@
 }
 
 .lg,
-[class*=':lg']:not(.bp\:lg) {
+[class*=':lg']:not([class*='bp']):not([class*='th']) {
 	--current-size-minus: var(--size-md);
 	--current-size: var(--size-lg);
 	--current-size-plus: var(--size-xxl);
@@ -59,7 +59,7 @@
 }
 
 .xl,
-[class*=':xl']:not(.bp\:xl) {
+[class*=':xl']:not([class*='bp']):not([class*='th']) {
 	--current-size-minus: var(--size-lg);
 	--current-size: var(--size-xl);
 	--current-size-plus: var(--size-xxl);
@@ -71,7 +71,7 @@
 }
 
 .xxl,
-[class*=':xxl']:not(.bp\:xxl) {
+[class*=':xxl']:not([class*='bp']):not([class*='th']) {
 	--current-size-minus: var(--size-xl);
 	--current-size: var(--size-xxl);
 	--current-size-plus: var(--size-xxl);
