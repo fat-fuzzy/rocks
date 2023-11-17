@@ -46,7 +46,7 @@ $current_cssvars: ();
 	:root {
 		@each $name, $value in $design_tokens {
 			#{$prefix}-#{$name}: #{$value};
-			
+
 			--#{$name}: var(#{$prefix}-#{$name});
 		}
 	}
@@ -63,7 +63,6 @@ $current_cssvars: ();
 }
 
 @mixin generate-modular-scale(
-
 	// $design_tokens,
 	$steps: $modular-scale-steps,
 	$breakpoint: $max-breakpoint,
@@ -73,14 +72,16 @@ $current_cssvars: ();
 	// @include generate-css-vars($design_tokens, $prefix); generate tokens before calling this function
 	:root {
 		--fluid-bp: calc(
-			calc(var(--fluid-screen) - calc((var(--fluid-min-width) / 16) * 1rem)) / calc(calc(var(--fluid-max-width) / 16) - calc(var(--fluid-min-width) / 16))
+			calc(var(--fluid-screen) - calc((var(--fluid-min-width) / 16) * 1rem)) /
+				calc(calc(var(--fluid-max-width) / 16) - calc(var(--fluid-min-width) / 16))
 		);
 		--fluid-min-scale-0: var(--fluid-min-ratio);
 		--fluid-max-scale-0: var(--fluid-max-ratio);
 		--fluid-min-size-0: calc(var(--fluid-min-size) / 16);
 		--fluid-max-size-0: calc(var(--fluid-max-size) / 16);
 		--fluid-0: calc(
-			calc(var(--fluid-min-size-0) * 1rem) + calc(var(--fluid-max-size-0) - var(--fluid-min-size-0)) * var(--fluid-bp)
+			calc(var(--fluid-min-size-0) * 1rem) + calc(var(--fluid-max-size-0) - var(--fluid-min-size-0)) *
+				var(--fluid-bp)
 		);
 	}
 
@@ -100,7 +101,9 @@ $current_cssvars: ();
 				calc(var(--fluid-max-size) * var(--fluid-max-scale-#{$previous-step})) / 16
 			);
 			--fluid-#{$step}: calc(
-				calc(var(--fluid-min-size-#{$step}) * 1rem) + calc(var(--fluid-max-size-#{$step}) - var(--fluid-min-size-#{$step})) * var(--fluid-bp)
+				calc(var(--fluid-min-size-#{$step}) * 1rem) +
+					calc(var(--fluid-max-size-#{$step}) - var(--fluid-min-size-#{$step})) *
+					var(--fluid-bp)
 			);
 		}
 	}
@@ -213,11 +216,9 @@ $current_cssvars: ();
 	// Generate Typographic variables
 	@include map-css-vars($modular-scale, $prefix);
 	@include generate-typographic-scale(
-
 		// $modular-scale,
 		$modular-scale-steps-plus,
 		$modular-scale-steps-minus,
-
 		// $prefix
 	);
 
@@ -250,11 +251,9 @@ $current_cssvars: ();
 	// Generate Typographic variables
 	@include generate-css-vars($modular-scale, $prefix);
 	@include generate-typographic-scale(
-
 		// $modular-scale,
 		$modular-scale-steps-plus,
 		$modular-scale-steps-minus,
-
 		// $prefix
 	);
 

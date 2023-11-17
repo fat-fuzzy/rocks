@@ -86,7 +86,7 @@ main > [class^='l:sidebar'] {
 		height: auto;
 		max-height: unset;
 	}
-	
+
 	// TODO: Decouple sidebar layout from sidebar content
 	.l\:side.minimize {
 		--current-gap: calc(var(--gap) * 2);

@@ -113,7 +113,7 @@ details .end {
 		width: auto;
 		white-space: normal;
 	}
-	
+
 	details.bp\:xl.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
