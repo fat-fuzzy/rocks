@@ -43,9 +43,9 @@ body {
 	--current-primary-light: var(--color-primary-lighter);
 	--current-primary-lighter: var(--color-primary-lightest);
 	--current-primary-lightest: var(--color-primary-lightest);
-	--current-accent: var(--color-accent);
-	--current-accent-light: var(--color-accent-light); // TODO: Fix
-	--current-accent-lighter: var(--color-accent-lighter); // TODO: Fix
+	--current-accent: var(--color-accent-light);
+	--current-accent-light: var(--color-accent-lighter); // TODO: Fix
+	--current-accent-lighter: var(--color-accent-lightest); // TODO: Fix
 	--current-highlight-dark: var(--color-highlight); // TODO: Fix
 	--current-highlight: var(--color-highlight); // TODO: Fix
 	--current-highlight-light: var(--color-highlight-light); // TODO: Fix

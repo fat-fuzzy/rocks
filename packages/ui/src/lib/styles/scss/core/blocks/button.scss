@@ -41,24 +41,6 @@ button.outline:hover {
 	background-color: var(--current-polar);
 }
 
-.night {
-	[class*='blend']
-		button.outline:not(
-			:is(.primary, .accent, .highlight, .info, .success, .warning, .error)
-		):hover {
-		color: var(--current-light);
-		background-color: var(--current-polar);
-	}
-
-	[class*='polar']
-		button.outline:not(
-			:is(.primary, .accent, .highlight, .info, .success, .warning, .error)
-		):hover {
-		color: var(--current-light);
-		background-color: var(--current-gray);
-	}
-}
-
 button:disabled {
 	opacity: 0.65;
 }
@@ -133,11 +115,6 @@ button.highlight {
 button.outline.highlight {
 	background-color: inherit;
 	border-color: var(--current-highlight-dark);
-}
-
-.night button.outline.highlight {
-	color: var(--current-highlight);
-	border-color: var(--current-highlight);
 }
 
 button.highlight:not(:disabled):hover,
@@ -300,12 +277,6 @@ button.bare.accent:active {
 	color: var(--current-accent);
 }
 
-.night {
-	button.outline.highlight {
-		color: var(--color-dark);
-	}
-}
-
 button.bare.highlight:hover {
 	--current-border-color: var(--current-highlight-lighter);
 	color: var(--color-dark);
@@ -320,4 +291,26 @@ button.bare.highlight:hover {
 
 .end > button {
 	text-align: end;
+}
+
+.night {
+	button.outline.highlight {
+		color: var(--current-highlight-light);
+		border-color: var(--current-highlight);
+	}
+	button.outline.highlight:hover {
+		color: var(--color-dark);
+	}
+
+	[class*='blend']
+		button.outline:not(.primary, .accent, .highlight, .info, .success, .warning, .error):hover {
+		color: var(--current-light);
+		background-color: var(--current-polar);
+	}
+
+	[class*='polar']
+		button.outline:not(.primary, .accent, .highlight, .info, .success, .warning, .error):hover {
+		color: var(--current-light);
+		background-color: var(--current-gray);
+	}
 }
