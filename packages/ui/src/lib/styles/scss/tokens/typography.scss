@@ -1,5 +1,6 @@
-//== TYPOGRAPHIC SCALE
+// == TYPOGRAPHIC SCALE
 // See: https://piccalil.li/tutorial/improve-the-readability-of-the-content-on-your-website/
+
 /*
 * --ratio: 1.5;
 * --s-5: calc(var(--s-4) / var(--ratio));
@@ -15,12 +16,12 @@
 * --s5: calc(var(--s4) * var(--ratio));
 */
 
-//== FLUID SCALE
+// == FLUID SCALE
 
 /**
  * Source: https://utopia.fyi/blog/css-modular-scales/
  * Usage:
- *  TODO: Doc + link to mixin generateModularScale
+ *  TODO: Doc + link to mixin generate-modular-scale
  */
 
 $typography: (
