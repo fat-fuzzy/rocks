@@ -37,6 +37,19 @@ form {
 	background-color: var(--current-bg-color);
 }
 
+label > input {
+	max-width: 100%;
+}
+
+* + .feedback {
+	margin-block-start: calc(var(--outline-offset) + 2px);
+}
+
+[disabled] {
+	color: var(--color-gray-1);
+	cursor: not-allowed;
+}
+
 .night {
 	textarea,
 	[type='text'],
@@ -50,19 +63,6 @@ form {
 	[type='file'] {
 		color: var(--color-white);
 	}
-}
-
-label > input {
-	max-width: 100%;
-}
-
-* + .feedback {
-	margin-block-start: calc(var(--outline-offset) + 2px);
-}
-
-[disabled] {
-	color: var(--color-gray-1);
-	cursor: not-allowed;
 }
 
 .primary {
@@ -142,22 +142,6 @@ label.bare.highlight {
 	color: var(--color-dark);
 }
 
-.night {
-	label.primary > [type='file'],
-	label.highlight > [type='file'] {
-		color: var(--color-dark);
-	}
-	label.bare.primary {
-		color: var(--current-primary-light);
-	}
-	label.bare.accent {
-		color: var(--current-accent-light);
-	}
-	label.bare.highlight {
-		color: var(--current-highlight);
-	}
-}
-
 label.bare > input,
 label.bare > [type='file'] {
 	color: var(--color-dark);
@@ -171,17 +155,6 @@ label.outline > [type='file'] {
 	background-color: unset;
 }
 
-.night {
-	label.bare > input,
-	label.bare > [type='file'] {
-		color: var(--color-light);
-	}
-	label.outline > input,
-	label.outline > [type='file'] {
-		color: var(--color-light);
-	}
-}
-
 label.bare.primary > input,
 label.bare.primary > [type='file'],
 label.bare.accent > input,
@@ -189,21 +162,6 @@ label.bare.accent > [type='file'],
 label.bare.highlight > input,
 label.bare.highlight > [type='file'] {
 	color: var(--color-dark);
-}
-
-.night {
-	label.bare.primary > input,
-	label.bare.primary > [type='file'] {
-		color: var(--current-primary-light);
-	}
-	label.bare.accent > input,
-	label.bare.accent > [type='file'] {
-		color: var(--current-accent-light);
-	}
-	label.bare.highlight > input,
-	label.bare.highlight > [type='file'] {
-		color: var(--color-light);
-	}
 }
 
 label.outline.primary > input,
@@ -222,23 +180,6 @@ label.outline.highlight > [type='file'] {
 	border-color: var(--current-highlight-dark);
 }
 
-.night {
-	label.outline.primary > input,
-	label.outline.primary > [type='file'] {
-		color: var(--current-primary-light);
-	}
-	label.outline.accent > input,
-	label.outline.accent > [type='file'] {
-		color: var(--current-accent-light);
-	}
-	label.outline.highlight > input,
-	label.outline.accent > [type='file'] {
-		color: var(--color-light);
-	}
-}
-////
-////
-///
 fieldset.radio,
 fieldset.check {
 	.day & label {
@@ -250,7 +191,7 @@ fieldset.check {
 		--current-color: var(--color-light);
 		color: var(--current-color);
 	}
-	
+
 	label:hover {
 		background-color: var(--current-gray);
 	}
@@ -350,29 +291,6 @@ label.highlight > [type='file']:active {
 	background-color: var(--current-highlight-lighter);
 }
 
-.night {
-	.outline.primary > input:hover,
-	.outline.primary > [type='file']:hover,
-	.bare.primary > input:hover,
-	.bare.primary > [type='file']:hover {
-		color: var(--color-dark);
-	}
-
-	.outline.accent > input:hover,
-	.outline.accent > [type='file']:hover,
-	.bare.accent > input:hover,
-	.bare.accent > [type='file']:hover {
-		color: var(--color-dark);
-	}
-
-	.outline.highlight > input:hover,
-	.outline.highlight > [type='file']:hover,
-	.bare.highlight > input:hover,
-	.bare.highlight > [type='file']:hover {
-		color: var(--color-dark);
-	}
-}
-
 // TODO : cleanup - use "current" size values
 legend {
 	font-size: var(--current-font-size);
@@ -390,19 +308,19 @@ label {
 	font-size: var(--current-font-size);
 }
 
-label > [type='file'] {
-	font-size: var(--current-font-size-minus);
-	padding: var(--current-size) var(--current-size) var(--current-size-minus);
-	display: flex;
-	align-items: center;
-}
-
 label > [type='file']:hover {
 	background-color: var(--current-bg-color);
 }
 
 label > [type='file']:active {
 	background-color: var(--current-bg-polar);
+}
+
+label > [type='file'] {
+	font-size: var(--current-font-size-minus);
+	padding: var(--current-size) var(--current-size) var(--current-size-minus);
+	display: flex;
+	align-items: center;
 }
 
 .feedback {
@@ -448,4 +366,84 @@ label.radio[class*='emoji'] span,
 label.check[class*='emoji'] span {
 	flex-grow: 1;
 	font-size: var(--current-font-size);
+}
+
+.night {
+	label.bare.primary {
+		color: var(--current-primary-light);
+	}
+
+	label.bare.accent {
+		color: var(--current-accent-light);
+	}
+
+	label.bare.highlight {
+		color: var(--current-highlight);
+	}
+
+	label.primary > [type='file'],
+	label.highlight > [type='file'] {
+		color: var(--color-dark);
+	}
+
+	label.outline > input,
+	label.outline > [type='file'] {
+		color: var(--color-light);
+	}
+
+	label.bare > input,
+	label.bare > [type='file'] {
+		color: var(--color-light);
+	}
+
+	label.outline.primary > input,
+	label.outline.primary > [type='file'] {
+		color: var(--current-primary-light);
+	}
+
+	label.outline.accent > input,
+	label.outline.accent > [type='file'] {
+		color: var(--current-accent-light);
+	}
+
+	label.outline.highlight > input,
+	label.outline.highlight > [type='file'] {
+		color: var(--current-highlight-light);
+	}
+
+	label.bare.primary > input,
+	label.bare.primary > [type='file'] {
+		color: var(--current-primary-light);
+	}
+
+	label.bare.accent > input,
+	label.bare.accent > [type='file'] {
+		color: var(--current-accent-light);
+	}
+
+	label.bare.highlight > input,
+	label.bare.highlight > [type='file'] {
+		color: var(--color-light);
+	}
+
+	.outline.primary > input:hover,
+	.outline.primary > [type='file']:hover,
+	.bare.primary > input:hover,
+	.bare.primary > [type='file']:hover {
+		color: var(--color-dark);
+	}
+
+	.outline.accent > input:hover,
+	.outline.accent > [type='file']:hover,
+	.bare.accent > input:hover,
+	.bare.accent > [type='file']:hover {
+		color: var(--color-dark);
+	}
+
+	.outline.highlight > input:hover,
+	.outline.highlight > [type='file']:hover,
+	.bare.highlight > input:hover,
+	.bare.highlight > [type='file']:hover {
+		color: var(--color-dark);
+	}
 }
