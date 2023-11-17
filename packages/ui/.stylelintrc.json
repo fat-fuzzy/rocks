@@ -5,6 +5,8 @@
 		"custom-property-pattern": "([a-z](-)?[0-9]?(-)?)+",
 		"scss/dollar-variable-pattern" : "([a-z](-)?[0-9]?(-)?)+",
 		"selector-attribute-quotes": "never",
-		"rule-empty-line-before": "never"
+		"rule-empty-line-before": "never",
+		"scss/load-no-partial-leading-underscore": null,
+		"function-name-case": null
 	}
 }
