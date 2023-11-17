@@ -24,7 +24,7 @@
 	$: path = ''
 	$: items = [
 		{
-			slug: 'ui',
+			slug: 'doc',
 			title,
 			items: [
 				{
