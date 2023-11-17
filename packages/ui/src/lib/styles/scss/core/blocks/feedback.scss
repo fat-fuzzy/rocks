@@ -67,7 +67,7 @@ pre.feedback.bare {
 		--current-bg-color: var(--current-bg-contrast);
 		--current-border-color: var(--color-gray-4);
 	}
-	
+
 	pre.feedback[class*='bg:default:'].bare {
 		--current-color: var(--color-light);
 		--current-bg-color: var(--current-bg-contrast);
@@ -83,7 +83,7 @@ pre.feedback.bare {
 			--current-bg-color: var(--color-gray-5);
 			--current-border-color: var(--color-gray-4);
 		}
-		
+
 		pre.feedback.bare,
 		pre.feedback[class*='bg:default:'].bare {
 			--current-bg-color: var(--color-gray-5);
@@ -242,7 +242,7 @@ pre.feedback.bare {
 			--current-color: var(--current-error-lightest);
 			--current-border-color: var(--current-error);
 		}
-		
+
 		.feedback[class*='info'].bare:not(pre),
 		.feedback[class*='success'].bare:not(pre),
 		.feedback[class*='warning'].bare:not(pre),

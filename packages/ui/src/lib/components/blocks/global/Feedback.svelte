@@ -17,7 +17,7 @@
 	<div class={feedbackClass} data-test={`feedback-${context}`}>
 		<div class="l:stack:sm">
 			{#if status !== 'default'}
-				<p class="status font:lg">{status}</p>
+				<p class="status">{status}</p>
 			{/if}
 			<p>
 				{text}
