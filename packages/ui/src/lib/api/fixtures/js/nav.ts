@@ -1,21 +1,24 @@
 export const links = {
-	main: [{slug: 'about', title: 'About'}],
+	main: [
+		{slug: 'about', title: 'About'},
+		{slug: 'doc', title: 'Doc'},
+	],
 	side: [
 		{
 			id: 'button-theme',
 			title: 'Theme',
 			action: 'theme',
-			asset: 'day',
-			type: 'emoji',
+			asset: 'emoji',
 			variant: 'round',
+			size: 'xl',
 		},
 		{
 			id: 'link-github',
 			title: 'GitHub icon',
 			url: 'https://github.com/fat-fuzzy/rocks',
-			asset: 'day',
-			type: 'icon',
+			asset: 'svg',
 			variant: 'round',
+			size: 'md',
 		},
 		// 	id: 'menu-lang',
 		// 	title: 'Lang',
