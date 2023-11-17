@@ -18,7 +18,7 @@
 	export let page = ''
 	export let items: any = [] // TODO fix types
 
-	let menuId = id
+	let menuId = `menu-${id}`
 	let selected: {id: string; pressed: boolean; send: (event: string) => unknown}[] = []
 
 	const onClick = (event: CustomEvent) => {
