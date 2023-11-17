@@ -1,5 +1,3 @@
-//== TODO: fix // Spacing Scale N to N+1
-
 $bunny: '🐰';
 $bulb: '💡';
 $confetti: '🎉';
@@ -23,37 +21,50 @@ $point-left: '👈';
 $point-right: '👉';
 $point-up: '👆';
 $point-down: '👇';
-
 $emojis: (
+
 	// Text emojis
+
 	link: #{$link},
 	point-left: #{$point-left},
 	point-right: #{$point-right},
 	point-up: #{$point-up},
 	point-down: #{$point-down},
+
 	// Feedback emojis
+
 	default: #{$bunny},
 	info: #{$bulb},
 	success: #{$confetti},
 	warning: #{$bell},
 	error: #{$poop},
+
 	// App Settings emojis
+
 	day: #{$sun},
 	night: #{$moon},
 	contrast: #{$half-moon},
 	blend: #{$new-moon},
+
 	// ButtonMenu fixture emojis
+
 	vader: #{$invader},
 	ollie: #{$octopus},
 	moby: #{$spouting-whale},
+
 	// ToggleMenu / RevealMenu fixture emojis
+
 	idea: #{$bulb},
 	profile: #{$lion},
 	favorite: #{$heart},
 	sparkles: #{$sparkles},
+
 	// LinkList / Nav / DetailsNav fixture emojis
+
 	home: #{$egg},
 	about: #{$chick},
+
 	// Playground fixture emojis
+
 	geometry-2d: #{$ruler}
 );

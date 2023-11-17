@@ -7,9 +7,7 @@ $breakpoints: (
 	bp-xl: 2048px,
 	bp-xxl: 3048px,
 );
-
 $base-sidebar-size: 22.75em;
-
 $layout: (
 	gap: 1rem,
 	size-nul: 0,
@@ -20,6 +18,7 @@ $layout: (
 	size-lg: var(--s-1),
 	size-xl: var(--s0),
 	size-xxl: var(--s1),
+
 	// Inverse sizes: use when size must be inversely proportional to class name
 	size-inverse-xxs: var(--size-xxl),
 	size-inverse-xs: var(--size-xl),
@@ -28,6 +27,7 @@ $layout: (
 	size-inverse-lg: var(--size-sm),
 	size-inverse-xl: var(--size-xs),
 	size-inverse-xxl: var(--size-xxs),
+
 	/// Test SIZE SCALE for sidebar width
 	/// This is a Major Third scale that powers all the utilities that
 	/// it is relevant for (font-size, margin, padding). All items are
@@ -42,30 +42,38 @@ $layout: (
 	sidebar-width-lg: $base-sidebar-size * 1.25,
 	sidebar-width-xl: $base-sidebar-size * 1.6,
 	sidebar-width-xxl: $base-sidebar-size * 2,
-	//
+
+	// == Header and Footer
+
 	// Header button icon height
 	header-icon-height: 2.25rem,
 	header-height: var(--s3),
 	header-margin: calc(var(--gap) / 2),
+
 	// footer height = font-size * line-height + 2 * padding
 	footer-height: calc(var(--font-size-body) * var(--ratio) + 2 * var(--size-sm)),
-	//
+
+	// == Radius
 	radius-nul: 0,
 	radius-base: 3px,
 	radius-lg: 5px,
-	//
+	
+	// == Outlines and Borders
 	border-width: 1px,
 	border-width-lg: 2px,
 	border-width-xl: 4px,
-	z-index-inset: 0,
-	z-index-reveal: 1,
-	z-index-layer: 2,
-	z-index-sticky: 3,
 	outline-offset: 0.25rem,
 	outline-offset-nav: 0.15rem,
 	outline-width: 2px,
 	prev-offset-limit: calc(calc(var(--outline-offset) + var(--outline-width))),
-	//
+
+	// == Layers
+
+	z-index-inset: 0,
+	z-index-reveal: 1,
+	z-index-layer: 2,
+	z-index-sticky: 3,
+	
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3
 	shadow: #{0 -1px 3px 0 hsl(var(--color-shadow) / calc(var(--shadow-strength) + 2%)),

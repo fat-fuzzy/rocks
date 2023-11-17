@@ -9,7 +9,7 @@
  * 
  *
  * Usage:
- * @include generateCssVars((
+ * @include generate-css-vars((
  *  base-font-size: 65.5%,
  *  font-family: #{"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif},
  * 
@@ -31,7 +31,7 @@
 // $current_cssvars holds the CSS variables that have been generated so far. It is initially set to null
 $current_cssvars: ();
 
-@mixin generateCssVars($design_tokens, $prefix) {
+@mixin generate-css-vars($design_tokens, $prefix) {
 	$current_cssvars: map.merge($current_cssvars, $design_tokens);
 	:root {
 		@each $name, $value in $design_tokens {
@@ -40,7 +40,7 @@ $current_cssvars: ();
 	}
 }
 
-@mixin mapCssVars($design_tokens, $prefix) {
+@mixin map-css-vars($design_tokens, $prefix) {
 	$current_cssvars: map.merge($current_cssvars, $design_tokens);
 	:root {
 		@each $name, $value in $design_tokens {
@@ -50,7 +50,7 @@ $current_cssvars: ();
 	}
 }
 
-@mixin generateEmojiAssets($design_tokens, $prefix) {
+@mixin generate-emoji-assets($design_tokens, $prefix) {
 	@each $name, $value in $design_tokens {
 		.emoji\:#{$name}::before,
 		.emoji.#{$name}::before,
@@ -60,13 +60,13 @@ $current_cssvars: ();
 	}
 }
 
-@mixin generateModularScale(
+@mixin generate-modular-scale(
 	// $design_tokens,
 	$steps: $modular-scale-steps,
 	$breakpoint: $max-breakpoint,
 	// $prefix
 ) {
-	// @include generateCssVars($design_tokens, $prefix); generate tokens before calling this function
+	// @include generate-css-vars($design_tokens, $prefix); generate tokens before calling this function
 	:root {
 		--fluid-bp: calc(
 			calc(var(--fluid-screen) - calc((var(--fluid-min-width) / 16) * 1rem)) /
@@ -118,7 +118,7 @@ $current_cssvars: ();
 * - https://utopia.fyi/blog/clamp
 * It can probably be improved with better usage of sass syntax
 */
-@mixin generateTypographicScale(
+@mixin generate-typographic-scale(
 	$steps-plus: $modular-scale-steps-plus,
 	$steps-minus: $modular-scale-steps-minus
 ) {
@@ -200,15 +200,15 @@ $current_cssvars: ();
 	$assets,
 	$prefix
 ) {
-	@include mapCssVars($breakpoints, $prefix);
+	@include map-css-vars($breakpoints, $prefix);
 
 	// WIP - still experimenting with scale
-	@include mapCssVars($scale-space-pairs, $prefix);
-	@include mapCssVars($size-scale, $prefix);
+	@include map-css-vars($scale-space-pairs, $prefix);
+	@include map-css-vars($size-scale, $prefix);
 
 	// Generate Typographic variables
-	@include mapCssVars($modular-scale, $prefix);
-	@include generateTypographicScale(
+	@include map-css-vars($modular-scale, $prefix);
+	@include generate-typographic-scale(
 		// $modular-scale,
 		$modular-scale-steps-plus,
 		$modular-scale-steps-minus,
@@ -216,10 +216,10 @@ $current_cssvars: ();
 	);
 	// -----------
 
-	@include mapCssVars($layout, $prefix);
-	@include mapCssVars($typography, $prefix);
-	@include mapCssVars($colors, $prefix);
-	@include generateEmojiAssets($assets, $prefix);
+	@include map-css-vars($layout, $prefix);
+	@include map-css-vars($typography, $prefix);
+	@include map-css-vars($colors, $prefix);
+	@include generate-emoji-assets($assets, $prefix);
 }
 
 @mixin theme-default(
@@ -235,15 +235,15 @@ $current_cssvars: ();
 	$assets,
 	$prefix
 ) {
-	@include generateCssVars($breakpoints, $prefix);
+	@include generate-css-vars($breakpoints, $prefix);
 
 	// WIP - still experimenting with scale
-	@include generateCssVars($scale-space-pairs, $prefix);
-	@include generateCssVars($size-scale, $prefix);
+	@include generate-css-vars($scale-space-pairs, $prefix);
+	@include generate-css-vars($size-scale, $prefix);
 
 	// Generate Typographic variables
-	@include generateCssVars($modular-scale, $prefix);
-	@include generateTypographicScale(
+	@include generate-css-vars($modular-scale, $prefix);
+	@include generate-typographic-scale(
 		// $modular-scale,
 		$modular-scale-steps-plus,
 		$modular-scale-steps-minus,
@@ -251,8 +251,8 @@ $current_cssvars: ();
 	);
 	// -----------
 
-	@include generateCssVars($layout, $prefix);
-	@include generateCssVars($typography, $prefix);
-	@include generateCssVars($colors, $prefix);
-	@include generateEmojiAssets($assets, $prefix);
+	@include generate-css-vars($layout, $prefix);
+	@include generate-css-vars($typography, $prefix);
+	@include generate-css-vars($colors, $prefix);
+	@include generate-emoji-assets($assets, $prefix);
 }

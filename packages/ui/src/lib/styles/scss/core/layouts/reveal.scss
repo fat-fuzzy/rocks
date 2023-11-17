@@ -23,15 +23,6 @@
 	width: 100%;
 }
 
-.l\:reveal.show .content {
-	position: relative;
-	top: calc(var(--gap) / 2); // TODO : Fix magic denominator
-	z-index: var(--z-index-reveal);
-	width: 100%;
-	max-height: 35vh;
-	overflow: auto;
-}
-
 .l\:reveal.minimize:not([class*='fixed']) .content {
 	border: 0;
 	height: 0;
@@ -87,7 +78,7 @@
 			margin-top: 0;
 		}
 	}
-	
+
 	.l\:reveal.show .content {
 		top: 0;
 		max-height: unset;

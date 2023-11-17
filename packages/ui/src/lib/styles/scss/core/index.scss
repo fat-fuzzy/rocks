@@ -1,20 +1,20 @@
 /* Global config */
-@forward './config/_index';
+@forward './config/index';
 
 /* Resets and global styles, set --current-* CSS var values used in layouts and blocks */
-@forward './globals/_index';
+@forward './globals/index';
 
 /* Layout (structural components used to organize content on a page or view) */
-@forward './layouts/_index';
+@forward './layouts/index';
 
 /* Blocks (self contained, atomic components used in compositions) */
-@forward './blocks/_index';
+@forward './blocks/index';
 
 /* Motion (animations, transitions, user-initiated movement) */
-@forward './motion/_index';
+@forward './motion/index';
 
 /* Compositions (components that implement common usage patterns using blocks and layouts) */
-@forward './compositions/_index';
+@forward './compositions/index';
 
 /* Exceptional overrides */
 @forward './config/exceptions';
