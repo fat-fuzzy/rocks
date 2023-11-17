@@ -16,6 +16,7 @@ pre.default {
 	background-color: var(--current-bg-color);
 	border-color: var(--current-border-color);
 }
+
 pre.bare {
 	--current-bg-color: var(--color-gray-5);
 	border-color: var(--current-bg-color);
@@ -28,11 +29,13 @@ pre.bare {
 		--current-bg-color: var(--current-bg-contrast);
 		--current-border-color: var(--color-gray-4);
 	}
+
 	pre[class*='bg:default:'].bare {
 		--current-color: var(--color-light);
 		--current-bg-color: var(--current-bg-contrast);
 		--current-border-color: var(--current-bg-color);
 	}
+
 	&.bg\:contrast {
 		pre,
 		pre.default,
@@ -48,6 +51,7 @@ pre.bare {
 			--current-border-color: var(--current-bg-color);
 		}
 	}
+
 	&.bg\:blend {
 		pre,
 		pre.default,
@@ -63,6 +67,7 @@ pre.bare {
 		}
 	}
 }
+
 .day {
 	pre,
 	pre.default,
@@ -71,47 +76,57 @@ pre.bare {
 		--current-bg-color: var(--color-gray-5);
 		--current-border-color: var(--color-gray-4);
 	}
+
 	pre.bare,
 	pre[class*='bg:default'].bare {
 		--current-border-color: var(--current-bg-color);
 	}
 }
+
 .day,
 .night {
 	pre[class*='info'] {
 		--current-color: var(--current-info-lightest);
 		--current-border-color: var(--current-info);
 	}
+
 	pre[class*='success'] {
 		--current-color: var(--current-success-lighter);
 		--current-border-color: var(--current-success);
 	}
+
 	pre[class*='warning'] {
 		--current-color: var(--current-warning-lighter);
 		--current-border-color: var(--current-warning);
 	}
+
 	pre[class*='error'] {
 		--current-color: var(--current-error-lightest);
 		--current-border-color: var(--current-error);
 	}
+	
 	&.bg\:contrast,
 	&.bg\:blend {
 		pre[class*='info'] {
 			--current-color: var(--current-info-lightest);
 			--current-border-color: var(--current-info);
 		}
+
 		pre[class*='success'] {
 			--current-color: var(--current-success-lighter);
 			--current-border-color: var(--current-success);
 		}
+
 		pre[class*='warning'] {
 			--current-color: var(--current-warning-lighter);
 			--current-border-color: var(--current-warning);
 		}
+
 		pre[class*='error'] {
 			--current-color: var(--current-error-lightest);
 			--current-border-color: var(--current-error);
 		}
+		
 		.feedback[class*='info'].bare:not(pre),
 		.feedback[class*='success'].bare:not(pre),
 		.feedback[class*='warning'].bare:not(pre),

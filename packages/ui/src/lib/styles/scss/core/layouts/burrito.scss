@@ -7,9 +7,9 @@
 }
 
 [class*='l:burrito:'] {
-	max-width: var(--current-side-size); // TODO : generate (selector + style) by size
+	max-width: var(--current-side-size);
 }
 
 [class*='l:freeze:burrito:'] {
-	width: var(--current-side-size); // TODO : generate (selector + style) by size
+	width: var(--current-side-size);
 }

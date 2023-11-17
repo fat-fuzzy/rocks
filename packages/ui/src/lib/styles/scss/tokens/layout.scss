@@ -1,8 +1,8 @@
 $breakpoints: (
 	bp-xxs: 320px,
-	bp-xs: 620px,
-	bp-sm: 935px,
-	bp-md: 1360px,
+	bp-xs: 768px,
+	bp-sm: 992px,
+	bp-md: 1240px,
 	bp-lg: 1620px,
 	bp-xl: 2048px,
 	bp-xxl: 3048px,
@@ -56,7 +56,7 @@ $layout: (
 	//
 	border-width: 1px,
 	border-width-lg: 2px,
-	border-width-xl: 5px,
+	border-width-xl: 4px,
 	z-index-inset: 0,
 	z-index-reveal: 1,
 	z-index-layer: 2,

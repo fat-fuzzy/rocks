@@ -8,10 +8,12 @@
 [class^='l:sidebar'].start {
 	flex-direction: row;
 }
+
 // TODO: not sure this rule is necessary
 [class^='l:sidebar'].end {
 	flex-direction: row-reverse;
 }
+
 // TODO: not sure this rule is necessary
 [class^='l:sidebar'].end\:reverse {
 	flex-wrap: wrap-reverse;
@@ -84,6 +86,7 @@ main > [class^='l:sidebar'] {
 		height: auto;
 		max-height: unset;
 	}
+	
 	// TODO: Decouple sidebar layout from sidebar content
 	.l\:side.minimize {
 		--current-gap: calc(var(--gap) * 2);

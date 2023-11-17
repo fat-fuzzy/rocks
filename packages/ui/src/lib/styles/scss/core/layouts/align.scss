@@ -19,9 +19,11 @@
 .align-self\:start {
 	align-self: start;
 }
+
 .align-self\:end {
 	align-self: end;
 }
+
 .align-self\:center {
 	align-self: center;
 }
@@ -29,9 +31,11 @@
 .align\:start {
 	align-items: start;
 }
+
 .align\:end {
 	align-items: end;
 }
+
 .align\:center {
 	align-items: center;
 }
@@ -39,9 +43,11 @@
 .align-content\:start {
 	align-content: flex-start;
 }
+
 .align-content\:end {
 	align-content: flex-end;
 }
+
 .align-content\:center {
 	align-content: center;
 }
@@ -49,18 +55,23 @@
 .justify\:end {
 	justify-content: end;
 }
+
 .justify\:start {
 	justify-content: start;
 }
+
 .justify\:center {
 	justify-content: center;
 }
+
 .justify\:stretch {
 	justify-content: stretch;
 }
+
 .justify\:evenly {
 	justify-content: space-evenly;
 }
+
 .justify\:between {
 	justify-content: space-between;
 }
@@ -69,6 +80,7 @@
 .justify-self\:start {
 	justify-self: flex-start;
 }
+
 .justify-self\:end {
 	justify-self: flex-end;
 }
@@ -76,9 +88,11 @@
 .text\:start {
 	text-align: start;
 }
+
 .text\:end {
 	text-align: end;
 }
+
 .text\:center {
 	text-align: center;
 }

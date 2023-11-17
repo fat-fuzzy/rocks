@@ -28,6 +28,7 @@
 	.l\:reveal[class*='fixed'].show {
 		transition: transform 250ms ease-in-out;
 	}
+	
 	// Fixes bug in Safari where .content overflows parent width
 	.l\:reveal[class*='fixed'].show .content {
 		transition: width 250ms ease-in-out;

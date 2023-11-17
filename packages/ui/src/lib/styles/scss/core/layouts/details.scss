@@ -23,6 +23,7 @@ details .end {
 		width: auto;
 		white-space: normal;
 	}
+
 	details.bp\:xxs.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
@@ -40,6 +41,7 @@ details .end {
 		width: auto;
 		white-space: normal;
 	}
+
 	details.bp\:xs.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
@@ -57,6 +59,7 @@ details .end {
 		width: auto;
 		white-space: normal;
 	}
+
 	details.bp\:sm.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
@@ -74,6 +77,7 @@ details .end {
 		width: auto;
 		white-space: normal;
 	}
+
 	details.bp\:md.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
@@ -91,6 +95,7 @@ details .end {
 		width: auto;
 		white-space: normal;
 	}
+
 	details.bp\:lg.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
@@ -108,6 +113,7 @@ details .end {
 		width: auto;
 		white-space: normal;
 	}
+	
 	details.bp\:xl.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
