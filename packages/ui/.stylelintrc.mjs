@@ -7,6 +7,9 @@ const cssRules = {
 	'at-rule-empty-line-before': null,
 	'custom-property-empty-line-before': null,
 	'value-no-vendor-prefix': null,
+	'media-feature-range-notation': 'prefix',
+	'scss/operator-no-unspaced': null,
+	'color-function-notation': null,
 }
 const scssRules = {
 	'selector-class-pattern': '([a-z](\\:)?)+((\\:)?[a-z])+',
