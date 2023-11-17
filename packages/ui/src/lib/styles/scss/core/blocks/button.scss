@@ -81,14 +81,14 @@ button.outline.primary {
 	border-color: var(--current-primary);
 }
 
-button.primary:not(.bare):not([aria-pressed]):not(:disabled):hover,
-button.primary.outline:not(.bare):not([aria-pressed]):not(:disabled):hover {
+button.primary:not(.bare, [aria-pressed], :disabled):hover,
+button.primary.outline:not(.bare, [aria-pressed], :disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
 }
 
-button.primary:not(.bare):not([aria-pressed]):not(:disabled):active,
-button.primary.outline:not(.bare):not([aria-pressed]):not(:disabled):active {
+button.primary:not(.bare, [aria-pressed], :disabled):active,
+button.primary.outline:not(.bare, [aria-pressed], :disabled):active {
 	color: var(--color-dark);
 	background-color: var(--current-primary-lighter);
 }

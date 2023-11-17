@@ -11,7 +11,7 @@ a[class*='emoji:']::before {
 	display: flex;
 }
 
-:not(:in(.round, .square))[class*='emoji']::before {
+:not(.round, .square)[class*='emoji']::before {
 	margin-inline: 0 var(--current-size);
 }
 
