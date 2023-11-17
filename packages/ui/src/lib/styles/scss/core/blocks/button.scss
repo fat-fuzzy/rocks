@@ -294,11 +294,35 @@ button.bare.highlight:hover {
 }
 
 .night {
-	button.outline.highlight {
+	button.highlight.bare {
+		color: var(--current-highlight);
+	}
+
+	button.highlight.outline {
 		color: var(--current-highlight-light);
 		border-color: var(--current-highlight);
 	}
-	button.outline.highlight:hover {
+
+	button.highlight.outline:hover,
+	button.highlight.bare:hover {
+		color: var(--color-dark);
+	}
+
+	button.accent {
+		color: var(--color-dark);
+	}
+
+	button.accent.bare {
+		color: var(--current-accent);
+	}
+
+	button.accent.outline {
+		color: var(--current-accent);
+		border-color: var(--current-accent);
+	}
+
+	button.bare.accent:hover,
+	button.accent.outline:hover {
 		color: var(--color-dark);
 	}
 

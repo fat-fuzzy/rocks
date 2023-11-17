@@ -7,17 +7,13 @@
 
 [aria-pressed='true'] {
 	color: var(--current-color);
-	background-color: var(--current-bg-contrast);
 	box-shadow: var(--shadow-inset);
+	border-color: var(--current-gray); // TODO: improve color / border / background comps
+	background-color: var(--current-gray); // TODO: improve color / border / background comps
 }
 
 [aria-pressed='false']:active {
 	background-color: var(--current-gray);
-}
-
-[aria-pressed='true'] {
-	border-color: var(--current-gray); // TODO: improve color / border / background comps
-	background-color: var(--current-gray); // TODO: improve color / border / background comps
 }
 
 [aria-pressed='true']:hover {
@@ -134,10 +130,6 @@ button.accent.outline[aria-pressed='true']:hover {
 
 .highlight.outline[aria-pressed='false'] {
 	background-color: inherit;
-}
-
-.night .highlight.outline[aria-pressed='false'] {
-	color: var(--current-highlight-light);
 }
 
 button.highlight[aria-pressed='false']:hover,
@@ -430,36 +422,54 @@ button.error.outline[aria-pressed='true']:hover {
 	background-color: inherit;
 }
 
-.night .bare.highlight[aria-pressed='false'] {
-	color: var(--current-highlight-light);
-}
-
-.night .bare.highlight[aria-pressed='false']:hover,
-.bare.highlight[aria-pressed='false']:hover {
+.bare.highlight[aria-pressed='false']:hover,
+.night .bare.highlight[aria-pressed='false']:hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
 
-.night .bare.highlight[aria-pressed='false']:active,
-.bare.highlight[aria-pressed='false']:active {
+.bare.highlight[aria-pressed='false']:active,
+.night .bare.highlight[aria-pressed='false']:active {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
 
-.night .bare.highlight[aria-pressed='true'],
-.bare.highlight[aria-pressed='true'] {
+.bare.highlight[aria-pressed='true'],
+.night .bare.highlight[aria-pressed='true'] {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
 
-.night .bare.highlight[aria-pressed='true']:hover,
-.bare.highlight[aria-pressed='true']:hover {
+.bare.highlight[aria-pressed='true']:hover,
+.night .bare.highlight[aria-pressed='true']:hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
 }
 
-.night .bare.highlight[aria-pressed='true']:active,
-.bare.highlight[aria-pressed='true']:active {
+.bare.highlight[aria-pressed='true']:active,
+.night .bare.highlight[aria-pressed='true']:active {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
+}
+
+.night {
+	button.highlight.outline[aria-pressed='false'],
+	button.highlight.bare[aria-pressed='false'] {
+		color: var(--current-highlight);
+	}
+
+	button.primary.bare[aria-pressed='true']:hover,
+	button.primary.outline[aria-pressed='true']:hover {
+		color: var(--color-dark);
+	}
+
+	button.accent.bare[aria-pressed='true']:hover,
+	button.accent.outline[aria-pressed='true']:hover {
+		color: var(--color-dark);
+	}
+
+	button.highlight.bare[aria-pressed='true']:hover,
+	button.highlight.outline[aria-pressed='true']:hover {
+		color: var(--color-dark);
+	}
 }
