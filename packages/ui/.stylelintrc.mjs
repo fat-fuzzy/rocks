@@ -10,15 +10,17 @@ const cssRules = {
 	'media-feature-range-notation': 'prefix',
 	'scss/operator-no-unspaced': null,
 	'color-function-notation': null,
+	'value-keyword-case': null,
 }
 const scssRules = {
 	'selector-class-pattern': '([a-z](\\:)?)+((\\:)?[a-z])+',
-	'custom-property-pattern': '([a-z](-)?[0-9]?(-)?)+',
+	'custom-property-pattern': '([0-9]|[a-z](-)?[0-9]?(-)?)+',
 	'scss/dollar-variable-pattern': '([a-z](-)?[0-9]?(-)?)+',
 	'selector-attribute-quotes': 'never',
 	'rule-empty-line-before': null,
 	'scss/load-no-partial-leading-underscore': null,
 	'function-name-case': null,
+	'scss/operator-no-newline-after': null,
 }
 export default {
 	extends: ['stylelint-config-standard', 'stylelint-config-standard-scss'],
