@@ -58,16 +58,70 @@
 	--current-gap-size: var(--size-lg);
 }
 
-.l\:grid\:x {
+.l\:grid\:xl {
 	--current-item-size: var(--sidebar-width-xl);
 	--current-gap-size: var(--size-xl);
 }
 
-.l\:grid\:xxl,
-.l\:switcher\:xxl,
-.l\:stack\:xxl {
+.l\:grid\:xxl {
+	--current-item-size: var(--sidebar-width-xxl);
 	--current-gap-size: var(--size-xxl);
-	--current-gap-size: var(--size-xxl);
+}
+
+.l\:burrito\:xxs {
+	--current-side-size: var(--sidebar-width-xxs);
+}
+
+.l\:burrito\:xs {
+	--current-side-size: var(--sidebar-width-xs);
+}
+
+.l\:burrito\:sm {
+	--current-side-size: var(--sidebar-width-sm);
+}
+
+.l\:burrito\:md {
+	--current-side-size: var(--sidebar-width-md);
+}
+
+.l\:burrito\:lg {
+	--current-side-size: var(--sidebar-width-lg);
+}
+
+.l\:burrito\:xl {
+	--current-side-size: var(--sidebar-width-xl);
+}
+
+.l\:burrito\:xxl {
+	--current-side-size: var(--sidebar-width-xxl);
+}
+
+.l\:center\:xxs {
+	--current-size-inverse: var(--size-inverse-xxs);
+}
+
+.l\:center\:xs {
+	--current-size-inverse: var(--size-inverse-xs);
+}
+
+.l\:center\:sm {
+	--current-size-inverse: var(--size-inverse-sm);
+}
+
+.l\:center\:md {
+	--current-size-inverse: var(--size-inverse-md);
+}
+
+.l\:center\:lg {
+	--current-size-inverse: var(--size-inverse-lg);
+}
+
+.l\:center\:xl {
+	--current-size-inverse: var(--size-inverse-xl);
+}
+
+.l\:center\:xxl {
+	--current-size-inverse: var(--size-inverse-xxl);
 }
 
 .l\:sidebar\:xxs {
@@ -154,7 +208,6 @@
 	--current-size-minus: var(--size-xxs);
 	--current-size: var(--size-xxs);
 	--current-size-plus: var(--size-sm);
-	--current-size-inverse: var(--size-inverse-xxs);
 	--current-font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-sm);
@@ -165,7 +218,6 @@
 	--current-size-minus: var(--size-xxs);
 	--current-size: var(--size-xs);
 	--current-size-plus: var(--size-md);
-	--current-size-inverse: var(--size-inverse-xs);
 	--current-font-size: var(--font-size-xs);
 	--current-font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-md);
@@ -176,7 +228,6 @@
 	--current-size-minus: var(--size-xs);
 	--current-size: var(--size-sm);
 	--current-size-plus: var(--size-lg);
-	--current-size-inverse: var(--size-inverse-sm);
 	--current-font-size: var(--font-size-sm);
 	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-lg);
@@ -187,7 +238,6 @@
 	--current-size-minus: var(--size-sm);
 	--current-size: var(--size-md);
 	--current-size-plus: var(--size-xl);
-	--current-size-inverse: var(--size-inverse-md);
 	--current-font-size: var(--font-size-md);
 	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-xl);
@@ -198,7 +248,6 @@
 	--current-size-minus: var(--size-md);
 	--current-size: var(--size-lg);
 	--current-size-plus: var(--size-xxl);
-	--current-size-inverse: var(--size-inverse-lg);
 	--current-font-size: var(--font-size-lg);
 	--current-font-size-minus: var(--font-size-sm);
 	--current-font-size-plus: var(--font-size-xxl);
@@ -209,7 +258,6 @@
 	--current-size-minus: var(--size-lg);
 	--current-size: var(--size-xl);
 	--current-size-plus: var(--size-xxl);
-	--current-size-inverse: var(--size-inverse-xl);
 	--current-font-size: var(--font-size-xl);
 	--current-font-size-minus: var(--font-size-md);
 	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
@@ -220,7 +268,6 @@
 	--current-size-minus: var(--size-xl);
 	--current-size: var(--size-xxl);
 	--current-size-plus: var(--size-xxl);
-	--current-size-inverse: var(--size-inverse-xxl);
 	--current-font-size: var(--font-size-xxl);
 	--current-font-size-minus: var(--font-size-xl);
 	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
