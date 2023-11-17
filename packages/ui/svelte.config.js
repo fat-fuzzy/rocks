@@ -36,15 +36,17 @@ const config = {
 
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: [preprocess({
-		postcss: stylelint({
-      // recommend to enable auto fix
-      include: ['src/**/*.{scss,svelte}'],
-    }),
-		// scss: {
-		// 	outFile: '/styles/app/ui.css',
-		// },
-	}),  mdsvex(mdsvexConfig)],
+	preprocess: [
+		preprocess({
+			postcss: stylelint({
+				include: ['src/styles/scss/**/*.{scss}'],
+			}),
+			// scss: {
+			// 	outFile: '/styles/app/ui.css',
+			// },
+		}),
+		mdsvex(mdsvexConfig),
+	],
 	build: {
 		target: 'esnext',
 	},

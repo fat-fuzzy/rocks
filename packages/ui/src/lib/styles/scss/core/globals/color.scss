@@ -76,22 +76,6 @@ body {
 	outline-color: var(--current-highlight);
 }
 
-//== Header, Navs, Menus
-
-.nigh.header-app,
-.night .header-app {
-	--current-color: var(--color-light);
-	color: var(--current-color);
-	background-color: var(--current-gray);
-}
-
-.day.header-app,
-.day .header-app {
-	--current-color: var(--current-primary);
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
-}
-
 //== Background colors
 
 .bg\:polar {
