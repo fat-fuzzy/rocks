@@ -8,8 +8,8 @@
 @forward './links'; // Use for link styles (<a> element)
 @forward './button'; // Use for basic button styles and colors (<button> element)
 @forward './toggle'; // Use for toggle button styles and colors (uses aria-pressed attribute, <button> element)
-@forward './fieldset'; // Use for fieldset element: TODO: maybe move to form
 @forward './form'; // Use for form and form inputs
+@forward './fieldset'; // Use for fieldset element: TODO: maybe move to form
 @forward './tables'; // Use for tables = tabular data: https://www.w3.org/TR/tabular-data-model/
 @forward './feedback'; // Use for feedback elements (success, warnings, errors, etc)
 @forward './details'; // Use for detail + summary element
