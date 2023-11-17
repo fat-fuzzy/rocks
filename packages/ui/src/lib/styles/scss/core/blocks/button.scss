@@ -21,21 +21,26 @@ button:hover {
 	background-color: var(--current-bg-contrast);
 	box-shadow: var(--current-shadow);
 }
+
 button:active {
 	border: var(--border-width) solid var(--current-gray);
 }
+
 button.outline {
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-color);
 }
+
 button.outline:active {
 	color: inherit;
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-color);
 }
+
 button.outline:hover {
 	background-color: var(--current-polar);
 }
+
 .night {
 	[class*='blend']
 		button.outline:not(
@@ -44,6 +49,7 @@ button.outline:hover {
 		color: var(--current-light);
 		background-color: var(--current-polar);
 	}
+
 	[class*='polar']
 		button.outline:not(
 			:is(.primary, .accent, .highlight, .info, .success, .warning, .error)
@@ -52,9 +58,11 @@ button.outline:hover {
 		background-color: var(--current-gray);
 	}
 }
+
 button:disabled {
 	opacity: 0.65;
 }
+
 button:disabled:hover {
 	opacity: 0.65;
 }
@@ -66,16 +74,19 @@ button.primary {
 	border-color: var(--current-primary);
 	background-color: var(--current-primary);
 }
+
 button.outline.primary {
 	color: var(--current-primary);
 	background-color: inherit;
 	border-color: var(--current-primary);
 }
+
 button.primary:not(.bare):not([aria-pressed]):not(:disabled):hover,
 button.primary.outline:not(.bare):not([aria-pressed]):not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
 }
+
 button.primary:not(.bare):not([aria-pressed]):not(:disabled):active,
 button.primary.outline:not(.bare):not([aria-pressed]):not(:disabled):active {
 	color: var(--color-dark);
@@ -90,17 +101,20 @@ button.accent {
 	background-color: var(--current-accent);
 	outline-color: var(--current-accent);
 }
+
 button.outline.accent {
 	color: var(--current-accent);
 	border-color: var(--current-accent);
 	background-color: inherit;
 }
+
 button.accent:not(:disabled):hover,
 button.outline.accent:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 	border-color: var(--current-accent);
 }
+
 button.accent:not(:disabled):active,
 button.outline.accent:not(:disabled):active {
 	color: var(--color-dark);
@@ -115,20 +129,24 @@ button.highlight {
 	color: var(--color-dark);
 	outline-color: var(--current-highlight);
 }
+
 button.outline.highlight {
 	background-color: inherit;
 	border-color: var(--current-highlight-dark);
 }
+
 .night button.outline.highlight {
 	color: var(--current-highlight);
 	border-color: var(--current-highlight);
 }
+
 button.highlight:not(:disabled):hover,
 button.outline.highlight:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
 	border-color: var(--current-highlight);
 }
+
 button.highlight:not(:disabled):active,
 button.outline.highlight:not(:disabled):active {
 	color: var(--color-dark);
@@ -143,16 +161,19 @@ button.info {
 	color: var(--color-dark);
 	outline-color: var(--current-info);
 }
+
 button.outline.info {
 	color: var(--current-info-dark);
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-info);
 }
+
 button.info:not(:disabled):hover,
 button.outline.info:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-info-light);
 }
+
 button.info:not(:disabled):active,
 button.outline.info:not(:disabled):active {
 	color: var(--color-dark);
@@ -167,16 +188,19 @@ button.success {
 	color: var(--color-dark);
 	outline-color: var(--current-success);
 }
+
 button.outline.success {
 	color: var(--current-success-dark);
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-success);
 }
+
 button.success:not(:disabled):hover,
 button.outline.success:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-success-light);
 }
+
 button.success:not(:disabled):active,
 button.outline.success:not(:disabled):active {
 	color: var(--color-dark);
@@ -191,16 +215,19 @@ button.warning {
 	color: var(--color-dark);
 	outline-color: var(--current-warning);
 }
+
 button.outline.warning {
 	color: var(--current-warning-dark);
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-warning);
 }
+
 button.warning:not(:disabled):hover,
 button.outline.warning:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-warning-light);
 }
+
 button.warning:not(:disabled):active,
 button.outline.warning:not(:disabled):active {
 	color: var(--color-dark);
@@ -215,16 +242,19 @@ button.error {
 	color: var(--color-dark);
 	outline-color: var(--current-error);
 }
+
 button.outline.error {
 	color: var(--current-error-dark);
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-error);
 }
+
 button.error:not(:disabled):hover,
 button.outline.error:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-error-light);
 }
+
 button.error:not(:disabled):active,
 button.outline.error:not(:disabled):active {
 	color: var(--color-dark);
@@ -242,33 +272,40 @@ button.bare {
 	background-color: inherit;
 	border: var(--border-width) solid var(--current-border-color);
 }
+
 button.bare:hover {
 	background-color: var(--current-gray);
 }
+
 button.bare.primary:hover {
 	--current-border-color: var(--current-primary-light);
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
 }
+
 button.bare.primary,
 button.bare.primary:active {
 	color: var(--current-primary);
 	// background-color: unset;
 }
+
 button.bare.accent:hover {
 	--current-border-color: var(--current-accent-light);
 	color: var(--current-dark);
 	background-color: var(--current-accent-light);
 }
+
 button.bare.accent,
 button.bare.accent:active {
 	color: var(--current-accent);
 }
+
 .night {
 	button.outline.highlight {
 		color: var(--color-dark);
 	}
 }
+
 button.bare.highlight:hover {
 	--current-border-color: var(--current-highlight-lighter);
 	color: var(--color-dark);
@@ -280,6 +317,7 @@ button.bare.highlight:hover {
 .start > button {
 	text-align: start;
 }
+
 .end > button {
 	text-align: end;
 }

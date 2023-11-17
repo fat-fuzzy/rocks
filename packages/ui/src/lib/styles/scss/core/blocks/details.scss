@@ -23,6 +23,7 @@ details > summary:hover {
 .night summary {
 	color: var(--color-dark); // TODO: fix color contrast pairs
 }
+
 .night summary:hover {
 	color: var(--color-light);
 }
@@ -52,10 +53,12 @@ details[open] > summary {
 .night details[open] > summary {
 	color: var(--color-light); // TODO: fix color contrast pairs
 }
+
 .night.blend details[open] > summary {
 	color: var(--color-light); // TODO: fix color contrast pairs
 	background-color: var(--current-polar); // TODO: fix color contrast pairs
 }
+
 .day.contrast details[open] > summary {
 	color: var(--color-dark); // TODO: fix color contrast pairs
 }
@@ -72,11 +75,13 @@ details[open] > summary::before {
 		color: var(--color-dark);
 		background-color: var(--current-primary-light);
 	}
+
 	// same as .bg\:accent\:light
 	details[open] > summary.bg\:accent {
 		color: var(--color-dark);
 		background-color: var(--current-accent-light);
 	}
+
 	// same as .bg\:highlight\:light
 	details[open] > summary.bg\:highlight {
 		color: var(--color-dark);
@@ -88,26 +93,32 @@ details[open] > summary::before {
 .l\:burrito\:xxs summary {
 	inline-size: var(--sidebar-width-xxs);
 }
+
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:xs summary {
 	inline-size: var(--sidebar-width-xs);
 }
+
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:sm summary {
 	inline-size: var(--sidebar-width-sm);
 }
+
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:md summary {
 	inline-size: var(--sidebar-width-md);
 }
+
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:lg summary {
 	inline-size: var(--sidebar-width-lg);
 }
+
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:xl summary {
 	inline-size: var(--sidebar-width-xl);
 }
+
 // Stops menu from changing width on open/close - TODO: investigate
 .l\:burrito\:xxl summary {
 	inline-size: var(--sidebar-width-xxl);

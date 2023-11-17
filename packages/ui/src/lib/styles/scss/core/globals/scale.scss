@@ -155,21 +155,27 @@
 .bp\:xxs {
 	--current-bp-size: var(--bp-xxs);
 }
+
 .bp\:xs {
 	--current-bp-size: var(--bp-xs);
 }
+
 .bp\:sm {
 	--current-bp-size: var(--bp-sm);
 }
+
 .bp\:md {
 	--current-bp-size: var(--bp-md);
 }
+
 .bp\:lg {
 	--current-bp-size: var(--bp-lg);
 }
+
 .bp\:xl {
 	--current-bp-size: var(--bp-xl);
 }
+
 .bp\:xxl {
 	--current-bp-size: var(--bp-xxl);
 }
@@ -178,26 +184,32 @@
 	--current-side-threshold: var(--sidebar-width-xxs);
 	--current-bp-threshold: var(--bp-xxs);
 }
+
 .th\:xs {
 	--current-side-threshold: var(--sidebar-width-xs);
 	--current-bp-threshold: var(--bp-xs);
 }
+
 .th\:sm {
 	--current-side-threshold: var(--sidebar-width-sm);
 	--current-bp-threshold: var(--bp-sm);
 }
+
 .th\:md {
 	--current-side-threshold: var(--sidebar-width-md);
 	--current-bp-threshold: var(--bp-md);
 }
+
 .th\:lg {
 	--current-side-threshold: var(--sidebar-width-lg);
 	--current-bp-threshold: var(--bp-lg);
 }
+
 .th\:xl {
 	--current-side-threshold: var(--sidebar-width-xl);
 	--current-bp-threshold: var(--bp-xl);
 }
+
 .th\:xxl {
 	--current-side-threshold: var(--sidebar-width-xxl);
 	--current-bp-threshold: var(--bp-xxl);
@@ -278,31 +290,37 @@
 	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-sm);
 }
+
 .font\:xs {
 	--current-font-size: var(--font-size-xs);
 	--current-font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-md);
 }
+
 .font\:sm {
 	--current-font-size: var(--font-size-sm);
 	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-lg);
 }
+
 .font\:md {
 	--current-font-size: var(--font-size-md);
 	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-xl);
 }
+
 .font\:lg {
 	--current-font-size: var(--font-size-lg);
 	--current-font-size-minus: var(--font-size-sm);
 	--current-font-size-plus: var(--font-size-xxl);
 }
+
 .font\:xl {
 	--current-font-size: var(--font-size-xl);
 	--current-font-size-minus: var(--font-size-md);
 	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
 }
+
 .font\:xxl {
 	--current-font-size: var(--font-size-xxl);
 	--current-font-size-minus: var(--font-size-xl);
