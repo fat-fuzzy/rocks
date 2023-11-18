@@ -14,6 +14,20 @@ Examples
 
 [TODO]
 
+### Class System
+
+The class system reflects the combination of the following factors:
+
+| Theme | Element | Color     | Variant | State    |
+| ----- | ------- | --------- | ------- | -------- |
+| day   | button  | - none -  | fill    | default  |
+| night |         | primary   | outline | disabled |
+|       |         | accent    | bare    | hover    |
+|       |         | highlight |         | focus    |
+|       |         |           |         | active   |
+
+For each Theme, the button Element has to have styling rules for each State, given every combination of [Color *x* Variant]
+
 ## Requirements
 
 ### No JS

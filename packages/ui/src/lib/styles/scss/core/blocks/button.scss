@@ -1,5 +1,57 @@
 //== Button default colors
+
+@mixin generate-button-styles($color) {
+	button.#{$color}.fill {
+		--current-color: var(--color-#{$color}-fill);
+		--current-bg-color: var(--bg-color-#{$color}-fill);
+		--current-border-color: var(--border-color-#{$color}-fill);
+	}
+	button.#{$color}.outline {
+		--current-color: var(--color-#{$color}-outline);
+		--current-bg-color: var(--bg-color-#{$color}-outline);
+		--current-border-color: var(--border-color-#{$color}-outline);
+	}
+	button.#{$color}.bare {
+		--current-color: var(--color-#{$color}-bare);
+		--current-bg-color: var(--bg-color-#{$color}-bare);
+		--current-border-color: var(--border-color-#{$color}-bare);
+	}
+	button.#{$color}.fill:hover {
+		--current-color: var(--color-#{$color}-fill-hover);
+		--current-bg-color: var(--bg-color-#{$color}-fill-hover);
+		--current-border-color: var(--border-color-#{$color}-fill-hover);
+	}
+	button.#{$color}.fill:active {
+		--current-color: var(--color-#{$color}-fill-active);
+		--current-bg-color: var(--bg-color-#{$color}-fill-active);
+		--current-border-color: var(--border-color-#{$color}-fill-active);
+	}
+	button.#{$color}.outline:hover {
+		--current-color: var(--color-#{$color}-outline-hover);
+		--current-bg-color: var(--bg-color-#{$color}-outline-hover);
+		--current-border-color: var(--border-color-#{$color}-outline-hover);
+	}
+	button.#{$color}.outline:active {
+		--current-color: var(--color-#{$color}-outline-active);
+		--current-bg-color: var(--bg-color-#{$color}-outline-active);
+		--current-border-color: var(--border-color-#{$color}-outline-active);
+	}
+	button.#{$color}.bare:hover {
+		--current-color: var(--color-#{$color}-bare-hover);
+		--current-bg-color: var(--bg-color-#{$color}-bare-hover);
+		--current-border-color: var(--border-color-#{$color}-bare-hover);
+	}
+	button.#{$color}.bare:active {
+		--current-color: var(--color-#{$color}-bare-active);
+		--current-bg-color: var(--bg-color-#{$color}-bare-active);
+		--current-border-color: var(--border-color-#{$color}-bare-active);
+	}
+}
+
 button {
+	--current-color: var(--current-dark);
+	--current-bg-color: var(--current-gray-contrast);
+	--current-border-color: var(--current-gray-contrast);
 	display: flex;
 	justify-content: center;
 	flex-wrap: nowrap;
@@ -11,37 +63,37 @@ button {
 	padding: var(--current-size) var(--current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 	border-radius: var(--radius-base);
 	color: var(--current-color);
-	border: var(--border-width) solid hsl(var(--color-shadow-light));
-	background-color: var(--current-gray-contrast);
+	border: var(--border-width) solid var(--current-border-color);
+	background-color: var(--current-bg-color);
 }
 
 button:hover {
+	--current-color: var(--current-light);
+	--current-bg-color: var(--current-bg-contrast);
 	cursor: pointer;
-	color: var(--current-light);
-	background-color: var(--current-bg-contrast);
 	box-shadow: var(--current-shadow);
 }
 
 button:active {
-	border: var(--border-width) solid var(--current-gray);
+	--current-border-color: var(--current-gray);
 }
 
 button.outline {
+	--current-border-color: var(--current-color);
 	background-color: inherit;
-	border: var(--border-width) solid var(--current-color);
+}
+
+button.outline:hover {
+	--current-bg-color: var(--current-polar);
 }
 
 button.outline:active {
 	color: inherit;
 	background-color: inherit;
-	border: var(--border-width) solid var(--current-color);
-}
-
-button.outline:hover {
-	background-color: var(--current-polar);
 }
 
 button:disabled {
+	cursor: not-allowed;
 	opacity: 0.65;
 }
 
@@ -52,21 +104,25 @@ button:disabled:hover {
 //== Button primary
 
 button.primary {
-	color: var(--current-color-contrast);
+	color: var(--color-white);
 	border-color: var(--current-primary);
 	background-color: var(--current-primary);
 }
 
-button.outline.primary {
+button.primary.outline {
 	color: var(--current-primary);
 	background-color: inherit;
 	border-color: var(--current-primary);
 }
 
-button.primary:not(.bare, [aria-pressed], :disabled):hover,
-button.primary.outline:not(.bare, [aria-pressed], :disabled):hover {
+button.primary:not(.bare, [aria-pressed], :disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
+}
+
+button.primary.outline:not(.bare, [aria-pressed], :disabled):hover {
+	color: var(--color-dark);
+	background-color: var(--current-primary-lighter);
 }
 
 button.primary:not(.bare, [aria-pressed], :disabled):active,
@@ -90,25 +146,29 @@ button.outline.accent {
 	background-color: inherit;
 }
 
-button.accent:not(:disabled):hover,
-button.outline.accent:not(:disabled):hover {
+button.accent:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
-	border-color: var(--current-accent);
+}
+
+button.outline.accent:not(:disabled):hover {
+	color: var(--color-dark);
+	background-color: var(--current-accent-lighter);
 }
 
 button.accent:not(:disabled):active,
 button.outline.accent:not(:disabled):active {
 	color: var(--color-dark);
 	background-color: var(--current-accent-lighter);
+	border-color: var(--current-accent-lighter);
 }
 
 //== Button highlight
 
 button.highlight {
+	color: var(--color-dark);
 	border-color: var(--current-highlight);
 	background-color: var(--current-highlight);
-	color: var(--color-dark);
 	outline-color: var(--current-highlight);
 }
 
@@ -117,17 +177,21 @@ button.outline.highlight {
 	border-color: var(--current-highlight-dark);
 }
 
-button.highlight:not(:disabled):hover,
-button.outline.highlight:not(:disabled):hover {
+button.highlight:not(:disabled):hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
-	border-color: var(--current-highlight);
+}
+
+button.outline.highlight:not(:disabled):hover {
+	color: var(--color-dark);
+	background-color: var(--current-highlight-lighter);
 }
 
 button.highlight:not(:disabled):active,
 button.outline.highlight:not(:disabled):active {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
+	border-color: var(--current-highlight-lighter);
 }
 
 //== Button info
@@ -294,35 +358,37 @@ button.bare.highlight:hover {
 }
 
 .night {
-	button.highlight.bare {
-		color: var(--current-highlight);
+	button.primary.bare,
+	button.primary.outline {
+		color: var(--current-primary-light);
 	}
 
+	button.highlight.bare,
 	button.highlight.outline {
 		color: var(--current-highlight-light);
-		border-color: var(--current-highlight);
-	}
-
-	button.highlight.outline:hover,
-	button.highlight.bare:hover {
-		color: var(--color-dark);
 	}
 
 	button.accent {
 		color: var(--color-dark);
 	}
 
-	button.accent.bare {
-		color: var(--current-accent);
-	}
-
+	button.accent.bare,
 	button.accent.outline {
-		color: var(--current-accent);
-		border-color: var(--current-accent);
+		color: var(--current-accent-light);
 	}
 
-	button.bare.accent:hover,
-	button.accent.outline:hover {
+	button.primary.bare:hover,
+	button.primary.bare:active,
+	button.primary.outline:hover,
+	button.primary.outline:active,
+	button.accent.bare:hover,
+	button.accent.bare:active,
+	button.accent.outline:hover,
+	button.accent.outline:active,
+	button.highlight.bare:hover,
+	button.highlight.bare:active,
+	button.highlight.outline:hover,
+	button.highlight.outline:active {
 		color: var(--color-dark);
 	}
 
@@ -336,5 +402,11 @@ button.bare.highlight:hover {
 		button.outline:not(.primary, .accent, .highlight, .info, .success, .warning, .error):hover {
 		color: var(--current-light);
 		background-color: var(--current-gray);
+	}
+}
+
+.night .day {
+	button.highlight.outline {
+		color: var(--color-dark);
 	}
 }
