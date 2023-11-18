@@ -24,452 +24,479 @@
 	background-color: var(--current-bg-contrast);
 }
 
-.outline[aria-pressed='false'] {
+[aria-pressed='false'].outline {
 	border-color: var(--current-color);
 }
 
-.outline[aria-pressed='true'] {
+[aria-pressed='true'].outline {
 	border-color: var(--current-color);
 	background-color: var(--current-bg-contrast);
 }
 
 //== Toggle  primary
 
-.primary[aria-pressed='false'] {
+[aria-pressed='false'].primary {
 	color: var(--current-color-contrast);
 	background-color: var(--current-primary);
 }
 
-.primary.outline[aria-pressed='false'] {
+[aria-pressed='false'].primary.outline {
 	color: var(--current-primary);
 	background-color: inherit;
 }
 
-button.primary[aria-pressed='false']:hover,
-.primary.outline[aria-pressed='false']:hover {
+button[aria-pressed='false'].primary:hover,
+[aria-pressed='false'].primary.outline:hover {
 	color: var(--color-dark);
-	background-color: var(--current-primary-light);
+	background-color: var(--current-primary-lighter);
 }
 
-.primary[aria-pressed='false']:active,
-.primary.outline[aria-pressed='false']:active {
+[aria-pressed='false'].primary:active,
+[aria-pressed='false'].primary.outline:active {
 	color: var(--current-primary);
 	background-color: var(--current-primary-lighter);
 }
 
-button.primary[aria-pressed='true'],
-button.primary.outline[aria-pressed='true'] {
+button[aria-pressed='true'].primary,
+button[aria-pressed='true'].primary.outline {
 	color: var(--color-dark);
 	background-color: var(--current-primary-lighter);
 	border-color: var(--current-primary-light);
 }
 
-button.primary.outline[aria-pressed='true'] {
+button[aria-pressed='true'].primary.outline {
 	border-color: var(--current-primary);
 }
 
-button.primary[aria-pressed='true']:hover,
-button.primary.outline[aria-pressed='true']:hover {
+button[aria-pressed='true'].primary:hover,
+button[aria-pressed='true'].primary.outline:hover {
 	color: var(--current-primary);
 	background-color: var(--current-primary-light);
 }
 
-button.primary[aria-pressed='true']:active,
-button.primary.outline[aria-pressed='true']:active {
+button[aria-pressed='true'].primary:active,
+button[aria-pressed='true'].primary.outline:active {
 	color: var(--color-dark);
 	background-color: var(--current-primary-lighter);
 }
 
 //== Toggle  accent
 
-.accent[aria-pressed='false'] {
+[aria-pressed='false'].accent {
 	color: var(--color-white);
 	background-color: var(--current-accent);
 }
 
-.accent.outline[aria-pressed='false'] {
+[aria-pressed='false'].accent.outline {
 	background-color: inherit;
 }
 
-button.accent[aria-pressed='false']:hover,
-button.accent.outline[aria-pressed='false']:hover {
+button[aria-pressed='false'].accent:hover,
+button[aria-pressed='false'].accent.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 }
 
-.accent[aria-pressed='false']:active,
-button.accent.outline[aria-pressed='false']:active {
+[aria-pressed='false'].accent:active,
+button[aria-pressed='false'].accent.outline:active {
 	color: var(--current-dark);
 	background-color: var(--current-accent-lighter);
 }
 
-.accent[aria-pressed='true'],
-.accent.outline[aria-pressed='true'] {
+[aria-pressed='true'].accent,
+[aria-pressed='true'].accent.outline {
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 }
 
-button.accent[aria-pressed='true']:hover,
-button.accent.outline[aria-pressed='true']:hover {
+button[aria-pressed='true'].accent:hover,
+button[aria-pressed='true'].accent.outline:hover {
 	color: var(--current-accent);
 	background-color: var(--current-accent-lighter);
 }
 
-.accent[aria-pressed='true']:active,
-.accent.outline[aria-pressed='true']:active {
+[aria-pressed='true'].accent:active,
+[aria-pressed='true'].accent.outline:active {
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 }
 
 //== Toggle  highlight
 
-.highlight[aria-pressed='false'] {
+[aria-pressed='false'].highlight {
 	color: var(--color-dark);
 	background-color: var(--current-highlight);
 }
 
-.highlight.outline[aria-pressed='false'] {
+[aria-pressed='false'].highlight.outline {
 	background-color: inherit;
 }
 
-button.highlight[aria-pressed='false']:hover,
-button.highlight.outline[aria-pressed='false']:hover {
+button[aria-pressed='false'].highlight:hover,
+button[aria-pressed='false'].highlight.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
 }
 
-.highlight[aria-pressed='false']:active,
-.highlight.outline[aria-pressed='false']:active {
+[aria-pressed='false'].highlight:active,
+[aria-pressed='false'].highlight.outline:active {
 	background-color: var(--current-highlight-lighter);
 }
 
-.highlight[aria-pressed='true'],
-.outline.highlight[aria-pressed='true'],
-.night .highlight.outline[aria-pressed='true'] {
+[aria-pressed='true'].highlight,
+[aria-pressed='true'].outline.highlight,
+[aria-pressed='true'].night .highlight.outline {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
 }
 
-button.highlight[aria-pressed='true']:hover,
-button.highlight.outline[aria-pressed='true']:hover {
+button[aria-pressed='true'].highlight:hover,
+button[aria-pressed='true'].highlight.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
 
-.highlight[aria-pressed='true']:active,
-.highlight.outline[aria-pressed='true']:active {
+[aria-pressed='true'].highlight:active,
+[aria-pressed='true'].highlight.outline:active {
 	background-color: var(--current-highlight-light);
 }
 
 //== Toggle  info
 
-.info[aria-pressed='false'] {
+[aria-pressed='false'].info {
 	color: var(--color-dark);
 	background-color: var(--current-info);
 }
 
-.info.outline[aria-pressed='false'] {
+[aria-pressed='false'].info.outline {
 	background-color: inherit;
 }
 
-button.info[aria-pressed='false']:hover,
+[aria-pressed='false']button.info:hover,
 button.info.outline[aria-pressed='false']:hover {
 	color: var(--color-dark);
 	background-color: var(--current-info-light);
 }
 
-.info[aria-pressed='false']:active,
-.info.outline[aria-pressed='false']:active {
+[aria-pressed='false'].info:active,
+[aria-pressed='false'].info.outline:active {
 	background-color: var(--current-info-lighter);
 }
 
-.info[aria-pressed='true'],
-.outline.info[aria-pressed='true'] {
+[aria-pressed='true'].info,
+[aria-pressed='true'].outline.info {
 	color: var(--color-dark);
 	background-color: var(--current-info-light);
 }
 
-button.info[aria-pressed='true']:hover,
-button.info.outline[aria-pressed='true']:hover {
+button[aria-pressed='true'].info:hover,
+button[aria-pressed='true'].info.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-info-lighter);
 }
 
-.info[aria-pressed='true']:active,
-.info.outline[aria-pressed='true']:active {
+[aria-pressed='true'].info:active,
+[aria-pressed='true'].info.outline:active {
 	background-color: var(--current-info-light);
 }
 
 //== Toggle  success
 
-.success[aria-pressed='false'] {
+[aria-pressed='false'].success {
 	color: var(--color-dark);
 	background-color: var(--current-success);
 }
 
-.success.outline[aria-pressed='false'] {
+[aria-pressed='false'].success.outline {
 	background-color: inherit;
 }
 
-button.success[aria-pressed='false']:hover,
-button.success.outline[aria-pressed='false']:hover {
+button[aria-pressed='false'].success:hover,
+button[aria-pressed='false'].success.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-success-light);
 }
 
-.success[aria-pressed='false']:active,
-.success.outline[aria-pressed='false']:active {
+[aria-pressed='false'].success:active,
+[aria-pressed='false'].success.outline:active {
 	background-color: var(--current-success-lighter);
 }
 
-.success[aria-pressed='true'],
-.outline.success[aria-pressed='true'] {
+[aria-pressed='true'].success,
+[aria-pressed='true'].outline.success {
 	color: var(--color-dark);
 	background-color: var(--current-success-light);
 }
 
-button.success[aria-pressed='true']:hover,
-button.success.outline[aria-pressed='true']:hover {
+button[aria-pressed='true'].success:hover,
+button[aria-pressed='true'].success.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-success-lighter);
 }
 
-.success[aria-pressed='true']:active,
-.success.outline[aria-pressed='true']:active {
+[aria-pressed='true'].success:active,
+[aria-pressed='true'].success.outline:active {
 	background-color: var(--current-success-light);
 }
 
 //== Toggle  warning
 
-.warning[aria-pressed='false'] {
+[aria-pressed='false'].warning {
 	color: var(--color-dark);
 	background-color: var(--current-warning);
 }
 
-.warning.outline[aria-pressed='false'] {
+[aria-pressed='false'].warning.outline {
 	background-color: inherit;
 }
 
-button.warning[aria-pressed='false']:hover,
-button.warning.outline[aria-pressed='false']:hover {
+button[aria-pressed='false'].warning:hover,
+button[aria-pressed='false'].warning.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-warning-light);
 }
 
-.warning[aria-pressed='false']:active,
-.warning.outline[aria-pressed='false']:active {
+[aria-pressed='false'].warning:active,
+[aria-pressed='false'].warning.outline:active {
 	background-color: var(--current-warning-lighter);
 }
 
-.warning[aria-pressed='true'],
-.outline.warning[aria-pressed='true'] {
+[aria-pressed='true'].warning,
+[aria-pressed='true'].outline.warning {
 	color: var(--color-dark);
 	background-color: var(--current-warning-light);
 }
 
-button.warning[aria-pressed='true']:hover,
-button.warning.outline[aria-pressed='true']:hover {
+button[aria-pressed='true'].warning:hover,
+button[aria-pressed='true'].warning.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-warning-lighter);
 }
 
-.warning[aria-pressed='true']:active,
-.warning.outline[aria-pressed='true']:active {
+[aria-pressed='true'].warning:active,
+[aria-pressed='true'].warning.outline:active {
 	background-color: var(--current-warning-light);
 }
 
 //== Toggle  error
 
-.error[aria-pressed='false'] {
+[aria-pressed='false'].error {
 	color: var(--color-dark);
 	background-color: var(--current-error);
 }
 
-.error.outline[aria-pressed='false'] {
+[aria-pressed='false'].error.outline {
 	background-color: inherit;
 }
 
-button.error[aria-pressed='false']:hover,
-button.error.outline[aria-pressed='false']:hover {
+button[aria-pressed='false'].error:hover,
+button[aria-pressed='false'].error.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-error-light);
 }
 
-.error[aria-pressed='false']:active,
-.error.outline[aria-pressed='false']:active {
+[aria-pressed='false'].error:active,
+[aria-pressed='false'].error.outline:active {
 	background-color: var(--current-error-lighter);
 }
 
-.error[aria-pressed='true'],
-.outline.error[aria-pressed='true'] {
+[aria-pressed='true'].error,
+[aria-pressed='true'].outline.error {
 	color: var(--color-dark);
 	background-color: var(--current-error-light);
 }
 
-button.error[aria-pressed='true']:hover,
-button.error.outline[aria-pressed='true']:hover {
+button[aria-pressed='true'].error:hover,
+button[aria-pressed='true'].error.outline:hover {
 	color: var(--color-dark);
 	background-color: var(--current-error-lighter);
 }
 
-.error[aria-pressed='true']:active,
-.error.outline[aria-pressed='true']:active {
+[aria-pressed='true'].error:active,
+[aria-pressed='true'].error.outline:active {
 	background-color: var(--current-error-light);
 }
 
 //== Toggle  bare default
 
-.bare[aria-pressed] {
+[aria-pressed].bare {
 	--current-border-color: var(--current-bg-color);
 	border: var(--border-width) solid var(--current-border-color);
 }
 
-.bare[aria-pressed='false'] {
+[aria-pressed='false'].bare {
 	color: var(--current-color);
 	background-color: inherit;
 }
 
-.bare[aria-pressed='false']:hover {
+[aria-pressed='false'].bare:hover {
 	background-color: var(--current-gray);
 }
 
-.bare[aria-pressed='false']:active {
+[aria-pressed='false'].bare:active {
 	color: var(--color-dark);
 	background-color: var(--current-bg-contrast);
 }
 
-.bare[aria-pressed='true'] {
+[aria-pressed='true'].bare {
 	color: var(--current-color);
 	background-color: var(--current-bg-polar);
 }
 
-.bare[aria-pressed='true']:hover {
+[aria-pressed='true'].bare:hover {
 	background-color: var(--current-gray);
 }
 
-.bare[aria-pressed='true']:active {
+[aria-pressed='true'].bare:active {
 	color: var(--current-color);
 	background-color: var(--current-bg-polar);
 }
 
 //== Toggle bare primary
 
-.bare.primary[aria-pressed='false'] {
+[aria-pressed='false'].bare.primary {
 	color: var(--current-primary);
 	background-color: inherit;
 }
 
-.bare.primary[aria-pressed='false']:hover {
+[aria-pressed='false'].bare.primary:hover {
 	color: var(--color-primary);
 	background-color: var(--current-primary-lighter);
 }
 
-.bare.primary[aria-pressed='false']:active {
+[aria-pressed='false'].bare.primary:active {
 	color: var(--color-dark);
 	background-color: var(--color-primary-lighter);
 }
 
-.bare.primary[aria-pressed='true'] {
+[aria-pressed='true'].bare.primary {
 	color: var(--color-primary);
 	background-color: var(--current-primary-lighter);
 }
 
-.bare.primary[aria-pressed='true']:hover {
+[aria-pressed='true'].bare.primary:hover {
 	color: var(--color-dark);
 	background-color: var(--color-primary-light);
 }
 
-.bare.primary[aria-pressed='true']:active {
+[aria-pressed='true'].bare.primary:active {
 	color: var(--color-dark);
 	background-color: var(--color-primary-lighter);
 }
 
 //== Toggle  bare accent
 
-.bare.accent[aria-pressed='false'] {
+[aria-pressed='false'].bare.accent {
 	color: var(--current-accent);
 	background-color: inherit;
 }
 
-.bare.accent[aria-pressed='false']:hover {
+[aria-pressed='false'].bare.accent:hover {
 	background-color: var(--current-accent-lighter);
 }
 
-.bare.accent[aria-pressed='false']:active {
+[aria-pressed='false'].bare.accent:active {
 	color: var(--color-dark);
 	background-color: var(--current-accent-lighter);
 }
 
-.bare.accent[aria-pressed='true'] {
+[aria-pressed='true'].bare.accent {
 	color: var(--color-accent);
 	background-color: var(--current-accent-lighter);
 }
 
-.bare.accent[aria-pressed='true']:hover {
+[aria-pressed='true'].bare.accent:hover {
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 }
 
-.bare.accent[aria-pressed='true']:active {
+[aria-pressed='true'].bare.accent:active {
 	color: var(--color-dark);
 	background-color: var(--current-accent-lighter);
 }
 
 //== Toggle  bare highlight
 
-.bare.highlight[aria-pressed='false'] {
+[aria-pressed='false'].bare.highlight {
 	color: var(--current-dark);
 	background-color: inherit;
 }
 
-.bare.highlight[aria-pressed='false']:hover,
-.night .bare.highlight[aria-pressed='false']:hover {
+[aria-pressed='false'].bare.highlight:hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
 
-.bare.highlight[aria-pressed='false']:active,
-.night .bare.highlight[aria-pressed='false']:active {
+[aria-pressed='false'].bare.highlight:active {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
 
-.bare.highlight[aria-pressed='true'],
-.night .bare.highlight[aria-pressed='true'] {
+[aria-pressed='true'].bare.highlight {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
 
-.bare.highlight[aria-pressed='true']:hover,
-.night .bare.highlight[aria-pressed='true']:hover {
+[aria-pressed='true'].bare.highlight:hover {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
 }
 
-.bare.highlight[aria-pressed='true']:active,
-.night .bare.highlight[aria-pressed='true']:active {
+[aria-pressed='true'].bare.highlight:active {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-lighter);
 }
 
 .night {
-	button.highlight.outline[aria-pressed='false'],
-	button.highlight.bare[aria-pressed='false'] {
-		color: var(--current-highlight);
+	[aria-pressed='false'].bare.highlight:hover {
+		color: var(--color-dark);
+		background-color: var(--current-highlight-lighter);
 	}
 
-	button.primary.bare[aria-pressed='true']:hover,
-	button.primary.outline[aria-pressed='true']:hover {
+	[aria-pressed='false'].bare.highlight:active {
+		color: var(--color-dark);
+		background-color: var(--current-highlight-lighter);
+	}
+
+	[aria-pressed='true'].bare.highlight,
+	[aria-pressed='true'].outline.highlight {
 		color: var(--color-dark);
 	}
 
-	button.accent.bare[aria-pressed='true']:hover,
-	button.accent.outline[aria-pressed='true']:hover {
+	[aria-pressed='true'].bare.highlight:hover {
 		color: var(--color-dark);
+		background-color: var(--current-highlight-light);
 	}
 
-	button.highlight.bare[aria-pressed='true']:hover,
-	button.highlight.outline[aria-pressed='true']:hover {
+	[aria-pressed='true'].bare.highlight:active {
+		color: var(--color-dark);
+		background-color: var(--current-highlight-lighter);
+	}
+
+	button[aria-pressed='false'].highlight.outline,
+	button[aria-pressed='false'].highlight.bare {
+		color: var(--current-highlight-light);
+	}
+
+	// button[aria-pressed].primary.bare:hover,
+	// button[aria-pressed].primary.bare:active,
+	// button[aria-pressed].primary.outline:hover,
+	// button[aria-pressed].primary.outline:active,
+	// button[aria-pressed].accent.bare:hover,
+	// button[aria-pressed].accent.bare:active,
+	// button[aria-pressed].accent.outline:hover,
+	// button[aria-pressed].accent.outline:active,
+	// button[aria-pressed].highlight.bare:hover,
+	// button[aria-pressed].highlight.bare:active,
+	// button[aria-pressed].highlight.outline:hover,
+	// button[aria-pressed].highlight.outline:active {
+	// 	color: var(--color-dark);
+	// }
+}
+
+.night .day {
+	button[aria-pressed='false'].highlight.outline,
+	button[aria-pressed='false'].highlight.bare {
 		color: var(--color-dark);
 	}
 }

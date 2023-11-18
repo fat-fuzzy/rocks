@@ -194,6 +194,66 @@ $current_cssvars: ();
 	}
 }
 
+@mixin generate-button-fill-color-sets($hue, $chroma, $lightness) {
+	--current-bg-color: var(--color-#{$hue}-#{$chroma}-#{$lightness});
+	--current-border-color: var(--current-bg-color);
+	@if $lightness == 1 {
+		--current-color: color-contrast(
+			var(--current-bg-color) vs var(--color-#{$hue}-#{$chroma}-4),
+			var(--color-dark-1)
+		);
+	}
+	@if $lightness == 4 {
+		--current-color: color-contrast(
+			var(--current-bg-color) vs var(--color-#{$hue}-#{$chroma}-1),
+			var(--color-light-1)
+		);
+	}
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+	border-color: var(--current-border-color);
+}
+
+@mixin generate-button-outline-color-sets($hue, $chroma, $lightness) {
+	--current-bg-color: inherit;
+	--current-border-color: var(--color-#{$hue}-#{$chroma}-#{$lightness});
+	@if $lightness == 1 {
+		--current-color: color-contrast(
+			var(--current-bg-color) vs var(--color-#{$hue}-#{$chroma}-4),
+			var(--color-dark-1)
+		);
+	}
+	@if $lightness == 4 {
+		--current-color: color-contrast(
+			var(--current-bg-color) vs var(--color-#{$hue}-#{$chroma}-1),
+			var(--color-light-1)
+		);
+	}
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+	border-color: var(--current-border-color);
+}
+
+@mixin generate-button-bare-color-sets($hue, $chroma, $lightness) {
+	--current-bg-color: inherit;
+	--current-border-color: var(--current-bg-color);
+	@if $lightness == 1 {
+		--current-color: color-contrast(
+			var(--current-bg-color) vs var(--color-#{$hue}-#{$chroma}-4),
+			var(--color-dark-1)
+		);
+	}
+	@if $lightness == 4 {
+		--current-color: color-contrast(
+			var(--current-bg-color) vs var(--color-#{$hue}-#{$chroma}-1),
+			var(--color-light-1)
+		);
+	}
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+	border-color: var(--current-border-color);
+}
+
 @mixin theme-custom(
 	$breakpoints,
 	$layout,

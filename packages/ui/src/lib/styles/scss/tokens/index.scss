@@ -24,6 +24,7 @@ $theme-prefix: '--ui'; // creates CSS variables with specific app prefix. Use '-
 	scale.$modular-scale-steps-minus,
 	typography.$typography,
 	color.$colors,
+	color.$button-colors,
 	assets.$emojis,
 	$theme-prefix
 );
