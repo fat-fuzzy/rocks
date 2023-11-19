@@ -15,6 +15,7 @@ button {
 }
 
 button:hover {
+	--current-button-bg: var(--current-polar);
 	cursor: pointer;
 	box-shadow: var(--current-shadow);
 }
@@ -32,13 +33,19 @@ button:disabled:hover {
 
 button.outline,
 button.bare {
-	--current-button-bg: --current-bg-color;
+	--current-button-bg: var(--current-bg-color);
+}
+
+button.outline {
+	--current-button-border: var(--current-gray-contrast);
+}
+
+button.outline:hover {
+	--current-button-bg: var(--current-gray-light);
 }
 
 button.bare {
-	--current-button-border: --current-button-bg;
-	font-family: var(--font-family-ui);
-	font-weight: var(--font-weight-ui);
+	--current-button-border: var(--current-gray-light);
 }
 
 //== Alignment
@@ -91,7 +98,7 @@ button.accent.fill:active {
 
 // [Color = highlight] x [Variant = default = fill]
 button.highlight.fill {
-	--current-button-text: var(--color-dark);
+	--current-button-text: var(--color-black);
 	--current-button-bg: var(--current-highlight);
 	--current-button-border: var(--current-highlight);
 }
@@ -157,7 +164,6 @@ button.highlight.outline:active {
 // [Color = primary] x [Variant = bare]
 button.primary.bare {
 	--current-button-text: var(--current-primary);
-	--current-button-border: var(--current-button-bg);
 }
 
 button.primary.bare:hover {
@@ -172,7 +178,6 @@ button.primary.bare:active {
 // [Color = primary] x [Variant = bare]
 button.accent.bare {
 	--current-button-text: var(--current-accent);
-	--current-button-border: var(--current-button-bg);
 }
 
 button.accent.bare:hover {
@@ -187,7 +192,6 @@ button.accent.bare:active {
 // [Color = highlight] x [Variant = bare]
 button.highlight.bare {
 	--current-button-text: var(--current-color);
-	--current-button-border: var(--current-button-bg);
 }
 
 button.highlight.bare:hover {
@@ -204,7 +208,73 @@ button.highlight.bare:active {
 // ================
 // == TODO: verify UI
 // ================
-// // == Theme overrides: night
+
+// == Theme overrides: night
+// [Variant = fill]
+.night {
+	button.fill:not(.primary, .accent, .highlight) {
+		--current-button-text: var(--color-black);
+		--current-button-bg: var(--color-gray-3);
+		--current-button-border: var(--color-gray-4);
+	}
+
+	button.outline:not(.primary, .accent, .highlight),
+	button.bare:not(.primary, .accent, .highlight) {
+		--current-button-text: var(--current-color);
+	}
+
+	button.primary.fill {
+		--current-button-text: var(--color-black);
+	}
+
+	button.accent.fill {
+		--current-button-text: var(--color-black);
+	}
+
+	button.primary.outline,
+	button.primary.bare {
+		--current-button-text: var(--current-primary-light);
+	}
+
+	button.accent.outline,
+	button.accent.bare {
+		--current-button-text: var(--current-accent-light);
+	}
+
+	button.highlight.outline,
+	button.highlight.bare {
+		--current-button-text: var(--current-highlight-light);
+	}
+
+	button.outline.primary:hover,
+	button.outline.accent:hover,
+	button.outline.highlight:hover,
+	button.bare.primary:hover,
+	button.bare.accent:hover,
+	button.bare.highlight:hover {
+		--current-button-text: var(--color-black);
+	}
+}
+.night .day {
+	button.fill:not(.primary, .accent, .highlight) {
+		--current-button-text: var(--color-black);
+		--current-button-bg: var(--current-gray);
+		--current-button-border: var(--current-gray);
+	}
+
+	button.outline,
+	button.bare {
+		--current-button-text: var(--current-color);
+	}
+
+	button.primary.fill {
+		--current-button-text: var(--color-black);
+	}
+
+	button.accent.fill {
+		--current-button-text: var(--color-black);
+	}
+}
 // //  [Variant = outline]
 // 'night-color-button-primary-outline-text': var(--current-primary),
 // 'night-color-button-accent-outline-text': var(--current-accent),

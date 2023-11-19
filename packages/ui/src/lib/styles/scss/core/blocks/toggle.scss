@@ -5,7 +5,12 @@
 }
 
 [aria-pressed='true'] {
-	box-shadow: var(--shadow-inset);
+	box-shadow: var(--current-shadow-inset-2);
+	--current-button-bg: var(--current-gray-light);
+}
+
+[aria-pressed='true']:hover {
+	box-shadow: var(--current-shadow-inset-1);
 }
 
 //== Toggle  primary
@@ -53,4 +58,10 @@
 [aria-pressed='true'].highlight.bare {
 	--current-button-text: var(--color-dark);
 	--current-button-bg: var(--current-highlight-lightest);
+}
+
+.night {
+	[aria-pressed='true'] {
+		--current-button-text: var(--color-dark);
+	}
 }

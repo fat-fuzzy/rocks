@@ -198,7 +198,7 @@ $current_cssvars: ();
 			--current-bg-contrast: var(#{$prefix}-#{$brightness-value}-contrast-color-bg);
 			--current-polar: var(#{$prefix}-#{$brightness-value}-polar-color-bg);
 			--current-gray: var(#{$prefix}-#{$brightness-value}-color-neutral);
-			--current-gray-contrast: var(#{$prefix}-#{$brightness-value}-contrast-color-neutral);
+			--current-gray-light: var(#{$prefix}-#{$brightness-value}-color-neutral-3);
 			--current-primary: var(#{$prefix}-#{$brightness-value}-color-primary-1);
 			--current-primary-light: var(#{$prefix}-#{$brightness-value}-color-primary-2);
 			--current-primary-lighter: var(#{$prefix}-#{$brightness-value}-color-primary-3);
@@ -214,10 +214,19 @@ $current_cssvars: ();
 			--current-button-text: var(#{$prefix}-#{$brightness-value}-color-button-default-text);
 			--current-button-bg: var(#{$prefix}-#{$brightness-value}-color-button-default-bg);
 			--current-button-border: var(#{$prefix}-#{$brightness-value}-color-button-default-border);
+			--current-color-shadow: var(#{$prefix}-#{$brightness-value}-color-shadow);
 			--current-shadow: var(#{$prefix}-#{$brightness-value}-shadow);
+			--current-shadow-inset-1: var(#{$prefix}-#{$brightness-value}-shadow-inset-1);
+			--current-shadow-inset-2: var(#{$prefix}-#{$brightness-value}-shadow-inset-2);
 			color: var(--current-color);
 			background-color: var(--current-bg-color);
 		}
+	}
+	.night {
+		--current-gray-contrast: var(#{$prefix}-day-color-neutral-3);
+	}
+	.day {
+		--current-gray-contrast: var(#{$prefix}-night-color-neutral-3);
 	}
 }
 
