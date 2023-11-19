@@ -1,5 +1,6 @@
 //== Layers & Media
-.l\:text {
+[class*='l:text'],
+[class*='bg:'] {
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
@@ -32,67 +33,66 @@
 
 .bg\:primary {
 	--current-color: var(--color-light);
-	color: var(--current-color);
-	background-color: var(--current-primary);
+	--current-bg-color: var(--current-primary);
 }
 
-.night .bg\:primary {
-	--current-color: var(--color-dark);
-	color: var(--current-color);
+.night {
+	.bg\:primary {
+		--current-color: var(--color-dark);
+		--current-bg-color: var(--current-primary);
+	}
 }
 
 .bg\:primary\:light {
-	--current-color: var(--color-dark);
-	color: var(--current-color);
-	background-color: var(--current-primary-light);
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-primary-light);
 }
 
 .bg\:primary\:lighter {
-	--current-color: var(--color-dark);
-	color: var(--current-color);
-	background-color: var(--current-primary-lighter);
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-primary-lighter);
 }
 
 .bg\:primary\:lightest {
-	--current-color: var(--color-dark);
-	color: var(--current-color);
-	background-color: var(--current-primary-lightest);
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-primary-lightest);
 }
 
 .bg\:accent {
 	--current-color: var(--color-white);
-	color: var(--color-light);
-	background-color: var(--current-accent);
+	--current-bg-color: var(--current-accent);
+}
+
+.night {
+	.bg\:accent {
+		--current-color: var(--color-dark);
+		--current-bg-color: var(--current-accent);
+	}
 }
 
 .bg\:accent\:light {
-	--current-color: var(--color-dark);
-	color: var(--color-dark);
-	background-color: var(--current-accent-light);
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-accent-light);
 }
 
 .bg\:accent\:lighter {
-	--current-color: var(--color-dark);
-	color: var(--color-dark);
-	background-color: var(--current-accent-lighter);
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-accent-lighter);
 }
 
 .bg\:highlight {
-	--current-color: var(--color-dark);
-	color: var(--current-color);
-	background-color: var(--current-highlight);
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-highlight);
 }
 
 .bg\:highlight\:light {
-	--current-color: var(--color-dark);
-	color: var(--current-color);
-	background-color: var(--current-highlight-light);
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-highlight-light);
 }
 
 .bg\:highlight\:lighter {
-	--current-color: var(--color-dark);
-	color: var(--current-color);
-	background-color: var(--current-highlight-lighter);
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-highlight-lighter);
 }
 
 //== Feedback colors

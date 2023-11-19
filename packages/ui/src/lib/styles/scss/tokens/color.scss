@@ -32,15 +32,15 @@ $color-info-vivid-3: rgb(153, 183, 252);
 $color-info-vivid-4: rgb(59, 107, 217);
 
 // [Hue = success] x [Chroma = vivid]
-$color-success-vivid-1: rgb(226, 255, 253);
-$color-success-vivid-2: rgb(170, 251, 244);
-$color-success-vivid-3: rgb(142, 255, 246);
+$color-success-vivid-1: rgb(231, 255, 254);
+$color-success-vivid-2: rgb(215, 255, 252);
+$color-success-vivid-3: rgb(175, 253, 247);
 $color-success-vivid-4: rgb(1, 240, 220);
 
 // [Hue = warning] x [Chroma = vivid]
-$color-warning-vivid-1: rgb(255, 250, 215);
-$color-warning-vivid-2: rgb(255, 240, 146);
-$color-warning-vivid-3: rgb(251, 224, 43);
+$color-warning-vivid-1: rgb(255, 252, 231);
+$color-warning-vivid-2: rgb(255, 248, 203);
+$color-warning-vivid-3: rgb(255, 234, 94);
 
 // $color-warning-vivid-4: rgb(255, 224, 23);
 $color-warning-vivid-4: rgb(232, 201, 0);
@@ -75,313 +75,314 @@ $color-accent-vivid-3: rgb(71, 185, 205);
 $color-accent-vivid-4: rgb(4, 126, 148);
 
 // [Hue = highlight] x [Chroma = vivid ???]
-$color-highlight-vivid-1: rgb(240, 225, 227);
-$color-highlight-vivid-2: rgb(233, 201, 205);
-$color-highlight-vivid-3: rgb(217 171 176);
+$color-highlight-vivid-1: rgb(251, 222, 226);
+$color-highlight-vivid-2: rgb(242, 202, 207);
+$color-highlight-vivid-3: rgb(234, 182, 188);
 $color-highlight-vivid-4: rgb(220, 157, 164);
 
 // Shadow colors
 $color-shadow-light: 250 90% 80%;
 $color-shadow-dark: 220 3% 15%;
 $shadow-strength: 5%;
-$shadow-strength-inset: 20%;
+$shadow-strength-inset-1: 10%;
+$shadow-strength-inset-2: 20%;
 
 // Generate css vars
 $colors: (
 	// ================
 	// == Neutral colors
 	// ================
-	'color-white': $color-white,
-	'color-black': $color-black,
-	'color-neutral-1': $color-neutral-1,
-	'color-neutral-2': $color-neutral-2,
-	'color-neutral-3': $color-neutral-3,
-	'color-neutral-4': $color-neutral-4,
-	'color-neutral-5': $color-neutral-5,
-	'color-neutral-6': $color-neutral-6,
-	'color-neutral-7': $color-neutral-7,
+	color-white: $color-white,
+	color-black: $color-black,
+	color-neutral-1: $color-neutral-1,
+	color-neutral-2: $color-neutral-2,
+	color-neutral-3: $color-neutral-3,
+	color-neutral-4: $color-neutral-4,
+	color-neutral-5: $color-neutral-5,
+	color-neutral-6: $color-neutral-6,
+	color-neutral-7: $color-neutral-7,
 
 	// From lightest to darkest
-	'color-light-0': $color-white,
-	'color-light-1': $color-neutral-1,
-	'color-light-2': $color-neutral-2,
-	'color-light-3': $color-neutral-3,
+	day-color-neutral-0: $color-white,
+	day-color-neutral-1: $color-neutral-1,
+	day-color-neutral-2: $color-neutral-2,
+	day-color-neutral-3: $color-neutral-3,
 
 	// From darkest to lightest
-	'color-dark-0': $color-black,
-	'color-dark-1': $color-neutral-7,
-	'color-dark-2': $color-neutral-6,
-	'color-dark-3': $color-neutral-5,
-
+	night-color-neutral-0: $color-black,
+	night-color-neutral-1: $color-neutral-7,
+	night-color-neutral-2: $color-neutral-6,
+	night-color-neutral-3: $color-neutral-5,
 	// color midway between absolute white and absolute black
-	'color-neutral': $color-neutral-4,
-	'day-color-shadow': $color-shadow-dark,
-	'night-color-shadow': $color-shadow-light,
+	color-neutral: $color-neutral-4,
+	day-color-shadow: $color-shadow-dark,
+	night-color-shadow: $color-shadow-light,
 
 	// ================
 	// == Text and background colors
 	// ================
 	// [Brightness = day]
-	'day-blend-color-text': $color-dark-1,
-	'day-contrast-color-text': $color-dark-0,
-	'day-blend-color-bg': $color-light-1,
-	'day-contrast-color-bg': $color-light-0,
-	'day-polar-color-bg': $color-light-0,
-	'day-color-neutral': $color-neutral-2,
-	'day-contrast-color-neutral': $color-neutral-3,
+	day-blend-color-text: $color-dark-1,
+	day-contrast-color-text: $color-dark-0,
+	day-blend-color-bg: $color-light-1,
+	day-contrast-color-bg: $color-light-0,
+	day-polar-color-bg: $color-light-0,
+	day-color-neutral: $color-neutral-2,
+	day-contrast-color-neutral: $color-neutral-3,
 
 	// layer over background
-	'day-blend-color-card-bg': $color-light-1,
-	'day-blend-color-card-border': $color-light-2,
-	'day-contrast-color-card-bg': $color-light-1,
-	'day-contrast-color-card-border': $color-dark-3,
+	day-blend-color-card-bg: $color-light-1,
+	day-blend-color-card-border: $color-light-2,
+	day-contrast-color-card-bg: $color-light-1,
+	day-contrast-color-card-border: $color-dark-3,
 
 	// [Brightness = night]
-	'night-blend-color-text': $color-light-1,
-	'night-contrast-color-text': $color-light-0,
-	'night-blend-color-bg': $color-dark-2,
-	'night-contrast-color-bg': $color-dark-1,
-	'night-polar-color-bg': $color-dark-1,
-	'night-color-neutral': $color-neutral-6,
-	'night-contrast-color-neutral': $color-neutral-5,
+	night-blend-color-text: $color-light-1,
+	night-contrast-color-text: $color-light-0,
+	night-blend-color-bg: $color-dark-2,
+	night-contrast-color-bg: $color-dark-1,
+	night-polar-color-bg: $color-dark-1,
+	night-color-neutral: $color-neutral-6,
+	night-contrast-color-neutral: $color-neutral-5,
 
 	// layer over background
-	'night-blend-color-card-bg': $color-dark-3,
-	'night-blend-color-card-border': $color-neutral,
-	'night-contrast-color-card-bg': $color-light-1,
-	'night-contrast-color-card-border': $color-neutral,
+	night-blend-color-card-bg: $color-dark-3,
+	night-blend-color-card-border: $color-neutral,
+	night-contrast-color-card-bg: $color-light-1,
+	night-contrast-color-card-border: $color-neutral,
 
 	// ================
 	// == Theme colors
 	// ================
 	// [Hue = primary] x [Chroma = vivid]
-	'color-primary-vivid-1': $color-primary-vivid-1,
-	'color-primary-vivid-2': $color-primary-vivid-2,
-	'color-primary-vivid-3': $color-primary-vivid-3,
-	'color-primary-vivid-4': $color-primary-vivid-4,
+	color-primary-vivid-1: $color-primary-vivid-1,
+	color-primary-vivid-2: $color-primary-vivid-2,
+	color-primary-vivid-3: $color-primary-vivid-3,
+	color-primary-vivid-4: $color-primary-vivid-4,
 
-	// 'color-primary-vivid-3': rgb(174, 159, 225),
+	// color-primary-vivid-3: rgb(174, 159, 225),
 	// [Hue = accent] x [Chroma = vivid]
-	'color-accent-vivid-1': $color-accent-vivid-1,
-	'color-accent-vivid-2': $color-accent-vivid-2,
-	'color-accent-vivid-3': $color-accent-vivid-3,
-	'color-accent-vivid-4': $color-accent-vivid-4,
+	color-accent-vivid-1: $color-accent-vivid-1,
+	color-accent-vivid-2: $color-accent-vivid-2,
+	color-accent-vivid-3: $color-accent-vivid-3,
+	color-accent-vivid-4: $color-accent-vivid-4,
 
-	// 'color-accent-vivid-3': rgb(114, 186, 199),
-	// 'color-accent-vivid-4': rgb(31, 155, 177),
+	// color-accent-vivid-3: rgb(114, 186, 199),
+	// color-accent-vivid-4: rgb(31, 155, 177),
 	// [Hue = highlight] x [Chroma = vivid ???]
-	'color-highlight-vivid-1': $color-highlight-vivid-1,
-	'color-highlight-vivid-2': $color-highlight-vivid-2,
-	'color-highlight-vivid-3': $color-highlight-vivid-3,
-	'color-highlight-vivid-4': $color-highlight-vivid-4,
+	color-highlight-vivid-1: $color-highlight-vivid-1,
+	color-highlight-vivid-2: $color-highlight-vivid-2,
+	color-highlight-vivid-3: $color-highlight-vivid-3,
+	color-highlight-vivid-4: $color-highlight-vivid-4,
 
 	// ================
 	// == Feedback status colors
 	// ================
 	// [Hue = info] x [Chroma = vivid]
-	// 'color-info': rgb(107, 144, 230),
-	// 'color-info-light': rgb(169, 193, 250),
-	'color-info-vivid-1': $color-info-vivid-1,
-	'color-info-vivid-2': $color-info-vivid-2,
-	'color-info-vivid-3': $color-info-vivid-3,
-	'color-info-vivid-4': $color-info-vivid-4,
+	// color-info: rgb(107, 144, 230),
+	// color-info-light: rgb(169, 193, 250),
+	color-info-vivid-1: $color-info-vivid-1,
+	color-info-vivid-2: $color-info-vivid-2,
+	color-info-vivid-3: $color-info-vivid-3,
+	color-info-vivid-4: $color-info-vivid-4,
 
 	// [Hue = success] x [Chroma = vivid]
-	'color-success-vivid-1': $color-success-vivid-1,
-	'color-success-vivid-2': $color-success-vivid-2,
-	'color-success-vivid-3': $color-success-vivid-3,
-	'color-success-vivid-4': $color-success-vivid-4,
+	color-success-vivid-1: $color-success-vivid-1,
+	color-success-vivid-2: $color-success-vivid-2,
+	color-success-vivid-3: $color-success-vivid-3,
+	color-success-vivid-4: $color-success-vivid-4,
 
 	// [Hue = warning] x [Chroma = vivid]
-	'color-warning-vivid-1': $color-warning-vivid-1,
-	'color-warning-vivid-2': $color-warning-vivid-2,
-	'color-warning-vivid-3': $color-warning-vivid-3,
-	'color-warning-vivid-4': $color-warning-vivid-4,
+	color-warning-vivid-1: $color-warning-vivid-1,
+	color-warning-vivid-2: $color-warning-vivid-2,
+	color-warning-vivid-3: $color-warning-vivid-3,
+	color-warning-vivid-4: $color-warning-vivid-4,
 
-	// 'color-warning-vivid-4': rgb(255, 224, 23),
+	// color-warning-vivid-4: rgb(255, 224, 23),
 	// [Hue = danger] x [Chroma = vivid]
-	'color-danger-vivid-1': $color-danger-vivid-1,
-	'color-danger-vivid-2': $color-danger-vivid-2,
-	'color-danger-vivid-3': $color-danger-vivid-3,
-	'color-danger-vivid-4': $color-danger-vivid-4,
+	color-danger-vivid-1: $color-danger-vivid-1,
+	color-danger-vivid-2: $color-danger-vivid-2,
+	color-danger-vivid-3: $color-danger-vivid-3,
+	color-danger-vivid-4: $color-danger-vivid-4,
 
-	// 'color-danger-vivid-3': rgb(249, 183, 199),
-	// 'color-danger-vivid-4': rgb(232, 92, 125),
+	// color-danger-vivid-3: rgb(249, 183, 199),
+	// color-danger-vivid-4: rgb(232, 92, 125),
 	// ================
 	// == Theme Hues
 	// ================
 	// [Brightness = day]
 	// UI colors
-	'day-color-primary-1': $color-primary-vivid-4,
-	'day-color-primary-2': $color-primary-vivid-3,
-	'day-color-primary-3': $color-primary-vivid-2,
-	'day-color-primary-4': $color-primary-vivid-1,
-	'day-color-accent-1': $color-accent-vivid-4,
-	'day-color-accent-2': $color-accent-vivid-3,
-	'day-color-accent-3': $color-accent-vivid-2,
-	'day-color-accent-4': $color-accent-vivid-1,
-	'day-color-highlight-1': $color-highlight-vivid-4,
-	'day-color-highlight-2': $color-highlight-vivid-3,
-	'day-color-highlight-3': $color-highlight-vivid-2,
-	'day-color-highlight-4': $color-highlight-vivid-1,
+	day-color-primary-1: $color-primary-vivid-4,
+	day-color-primary-2: $color-primary-vivid-3,
+	day-color-primary-3: $color-primary-vivid-2,
+	day-color-primary-4: $color-primary-vivid-1,
+	day-color-accent-1: $color-accent-vivid-4,
+	day-color-accent-2: $color-accent-vivid-3,
+	day-color-accent-3: $color-accent-vivid-2,
+	day-color-accent-4: $color-accent-vivid-1,
+	day-color-highlight-1: $color-highlight-vivid-4,
+	day-color-highlight-2: $color-highlight-vivid-3,
+	day-color-highlight-3: $color-highlight-vivid-2,
+	day-color-highlight-4: $color-highlight-vivid-1,
 
 	// Status colors
-	'day-color-info-1': $color-info-vivid-4,
-	'day-color-info-2': $color-info-vivid-3,
-	'day-color-info-3': $color-info-vivid-2,
-	'day-color-success-1': $color-success-vivid-4,
-	'day-color-success-2': $color-success-vivid-3,
-	'day-color-success-3': $color-success-vivid-2,
-	'day-color-warning-1': $color-warning-vivid-4,
-	'day-color-warning-2': $color-warning-vivid-3,
-	'day-color-warning-3': $color-warning-vivid-2,
-	'day-color-danger-1': $color-danger-vivid-4,
-	'day-color-danger-2': $color-danger-vivid-3,
-	'day-color-danger-3': $color-danger-vivid-2,
+	day-color-info-1: $color-info-vivid-4,
+	day-color-info-2: $color-info-vivid-3,
+	day-color-info-3: $color-info-vivid-2,
+	day-color-success-1: $color-success-vivid-4,
+	day-color-success-2: $color-success-vivid-3,
+	day-color-success-3: $color-success-vivid-2,
+	day-color-warning-1: $color-warning-vivid-4,
+	day-color-warning-2: $color-warning-vivid-3,
+	day-color-warning-3: $color-warning-vivid-2,
+	day-color-danger-1: $color-danger-vivid-4,
+	day-color-danger-2: $color-danger-vivid-3,
+	day-color-danger-3: $color-danger-vivid-2,
 
 	// [Brightness = night]
 	// [Brightness = day]
-	'night-color-primary-1': $color-primary-vivid-3,
-	'night-color-primary-2': $color-primary-vivid-2,
-	'night-color-primary-3': $color-primary-vivid-1,
-	'night-color-primary-4': color.adjust($color-primary-vivid-1, $lightness: 1%),
-	'night-color-accent-1': $color-accent-vivid-3,
-	'night-color-accent-2': $color-accent-vivid-2,
-	'night-color-accent-3': $color-accent-vivid-1,
-	'night-color-accent-4': color.adjust($color-accent-vivid-1, $lightness: 1%),
-	'night-color-highlight-1': $color-highlight-vivid-3,
-	'night-color-highlight-2': $color-highlight-vivid-2,
-	'night-color-highlight-3': $color-highlight-vivid-1,
-	'night-color-highlight-4': color.adjust($color-highlight-vivid-1, $lightness: 1%),
+	night-color-primary-1: $color-primary-vivid-3,
+	night-color-primary-2: $color-primary-vivid-2,
+	night-color-primary-3: $color-primary-vivid-1,
+	night-color-primary-4: color.adjust($color-primary-vivid-1, $lightness: 1%),
+	night-color-accent-1: $color-accent-vivid-3,
+	night-color-accent-2: $color-accent-vivid-2,
+	night-color-accent-3: $color-accent-vivid-1,
+	night-color-accent-4: color.adjust($color-accent-vivid-1, $lightness: 1%),
+	night-color-highlight-1: $color-highlight-vivid-3,
+	night-color-highlight-2: $color-highlight-vivid-2,
+	night-color-highlight-3: $color-highlight-vivid-1,
+	night-color-highlight-4: color.adjust($color-highlight-vivid-1, $lightness: 1%),
 	// Status colors
-	'night-color-info-1': $color-info-vivid-3,
-	'night-color-info-2': $color-info-vivid-2,
-	'night-color-info-3': $color-info-vivid-1,
-	'night-color-success-1': $color-success-vivid-3,
-	'night-color-success-2': $color-success-vivid-2,
-	'night-color-success-3': $color-success-vivid-1,
-	'night-color-warning-1': $color-warning-vivid-3,
-	'night-color-warning-2': $color-warning-vivid-2,
-	'night-color-warning-3': $color-warning-vivid-1,
-	'night-color-danger-1': $color-danger-vivid-3,
-	'night-color-danger-2': $color-danger-vivid-2,
-	'night-color-danger-3': $color-danger-vivid-1,
+	night-color-info-1: $color-info-vivid-3,
+	night-color-info-2: $color-info-vivid-2,
+	night-color-info-3: $color-info-vivid-1,
+	night-color-success-1: $color-success-vivid-3,
+	night-color-success-2: $color-success-vivid-2,
+	night-color-success-3: $color-success-vivid-1,
+	night-color-warning-1: $color-warning-vivid-3,
+	night-color-warning-2: $color-warning-vivid-2,
+	night-color-warning-3: $color-warning-vivid-1,
+	night-color-danger-1: $color-danger-vivid-3,
+	night-color-danger-2: $color-danger-vivid-2,
+	night-color-danger-3: $color-danger-vivid-1,
 
 	// ================
 	// == Shadow colors
 	// ================
-	'shadow-strength': $shadow-strength,
-	'shadow-strength-inset': $shadow-strength-inset,
+	shadow-strength: $shadow-strength,
+	shadow-strength-inset-1: $shadow-strength-inset-1,
+	shadow-strength-inset-2: $shadow-strength-inset-2,
 
 	// ================
 	// TODO: deprecate these color variables
 	// ================
-	'color-shadow-light': $color-shadow-light,
-	'color-shadow': $color-shadow-dark,
-	'color-light': $color-light-2,
-	'color-dark': $color-dark-3,
-	'color-gray-1': $color-neutral-1,
-	'color-gray-2': $color-neutral-2,
-	'color-gray-3': $color-neutral-3,
-	'color-gray-4': $color-neutral-4,
-	'color-gray-5': $color-neutral-5,
-	'color-info': $color-info-vivid-4,
-	'color-info-light': $color-info-vivid-3,
-	'color-info-lighter': $color-info-vivid-2,
-	'color-info-lightest': $color-info-vivid-1,
-	'color-success': $color-success-vivid-4,
-	'color-success-light': $color-success-vivid-3,
-	'color-success-lighter': $color-success-vivid-2,
-	'color-success-lightest': $color-success-vivid-1,
-	'color-warning': $color-warning-vivid-4,
-	'color-warning-light': $color-warning-vivid-3,
-	'color-warning-lighter': $color-warning-vivid-2,
-	'color-warning-lightest': $color-warning-vivid-1,
-	'color-danger': $color-danger-vivid-4,
-	'color-danger-light': $color-danger-vivid-3,
-	'color-danger-lighter': $color-danger-vivid-2,
-	'color-danger-lightest': $color-danger-vivid-1,
-	'color-primary': $color-primary-vivid-4,
-	'color-primary-light': $color-primary-vivid-3,
-	'color-primary-lighter': $color-primary-vivid-2,
-	'color-primary-lightest': $color-primary-vivid-1,
-	'color-accent': $color-accent-vivid-4,
-	'color-accent-light': $color-accent-vivid-3,
-	'color-accent-lighter': $color-accent-vivid-2,
-	'color-accent-lightest': $color-accent-vivid-1,
-	'color-highlight': $color-highlight-vivid-4,
-	'color-highlight-light': $color-highlight-vivid-3,
-	'color-highlight-lighter': $color-highlight-vivid-2,
-	'color-highlight-lightest': $color-highlight-vivid-1
+	color-shadow-light: $color-shadow-light,
+	color-shadow: $color-shadow-dark,
+	color-light: $color-light-1,
+	color-dark: $color-dark-2,
+	color-gray-1: $color-neutral-1,
+	color-gray-2: $color-neutral-2,
+	color-gray-3: $color-neutral-3,
+	color-gray-4: $color-neutral-4,
+	color-gray-5: $color-neutral-5,
+	color-info: $color-info-vivid-4,
+	color-info-light: $color-info-vivid-3,
+	color-info-lighter: $color-info-vivid-2,
+	color-info-lightest: $color-info-vivid-1,
+	color-success: $color-success-vivid-4,
+	color-success-light: $color-success-vivid-3,
+	color-success-lighter: $color-success-vivid-2,
+	color-success-lightest: $color-success-vivid-1,
+	color-warning: $color-warning-vivid-4,
+	color-warning-light: $color-warning-vivid-3,
+	color-warning-lighter: $color-warning-vivid-2,
+	color-warning-lightest: $color-warning-vivid-1,
+	color-danger: $color-danger-vivid-4,
+	color-danger-light: $color-danger-vivid-3,
+	color-danger-lighter: $color-danger-vivid-2,
+	color-danger-lightest: $color-danger-vivid-1,
+	color-primary: $color-primary-vivid-4,
+	color-primary-light: $color-primary-vivid-3,
+	color-primary-lighter: $color-primary-vivid-2,
+	color-primary-lightest: $color-primary-vivid-1,
+	color-accent: $color-accent-vivid-4,
+	color-accent-light: $color-accent-vivid-3,
+	color-accent-lighter: $color-accent-vivid-2,
+	color-accent-lightest: $color-accent-vivid-1,
+	color-highlight: $color-highlight-vivid-4,
+	color-highlight-light: $color-highlight-vivid-3,
+	color-highlight-lighter: $color-highlight-vivid-2,
+	color-highlight-lightest: $color-highlight-vivid-1
 );
 $feedback-status-colors: (
 	// == Brightness = day
 	// [Status = default]
-	'day-blend-color-status-default-text': var(--day-blend-color-card-text),
-	'day-blend-color-status-default-bg': var(--day-blend-color-card-bg),
-	'day-blend-color-status-default-border': var(--day-blend-color-card-border),
-	'day-contrast-color-status-default-text': var(--day-contrast-color-card-text),
-	'day-contrast-color-status-default-bg': var(--day-contrast-color-card-bg),
-	'day-contrast-color-status-default-border': var(--day-contrast-color-card-border),
-	'night-blend-color-status-default-text': var(--night-blend-color-card-text),
-	'night-blend-color-status-default-bg': var(--night-blend-color-card-bg),
-	'night-blend-color-status-default-border': var(--night-blend-color-card-border),
-	'night-contrast-color-status-default-text': var(--night-contrast-color-card-text),
-	'night-contrast-color-status-default-bg': var(--night-contrast-color-card-bg),
-	'night-contrast-color-status-default-border': var(--night-contrast-color-card-border),
+	day-blend-color-status-default-text: var(--day-blend-color-card-text),
+	day-blend-color-status-default-bg: var(--day-blend-color-card-bg),
+	day-blend-color-status-default-border: var(--day-blend-color-card-border),
+	day-contrast-color-status-default-text: var(--day-contrast-color-card-text),
+	day-contrast-color-status-default-bg: var(--day-contrast-color-card-bg),
+	day-contrast-color-status-default-border: var(--day-contrast-color-card-border),
+	night-blend-color-status-default-text: var(--night-blend-color-card-text),
+	night-blend-color-status-default-bg: var(--night-blend-color-card-bg),
+	night-blend-color-status-default-border: var(--night-blend-color-card-border),
+	night-contrast-color-status-default-text: var(--night-contrast-color-card-text),
+	night-contrast-color-status-default-bg: var(--night-contrast-color-card-bg),
+	night-contrast-color-status-default-border: var(--night-contrast-color-card-border),
 	// [Status = info/success/warning/error] [Brightness = day/night, Contrast = blend/contrast]
-	'color-status-info-text': $color-info-vivid-4,
-	'color-status-info-bg': $color-info-vivid-2,
-	'color-status-info-border': $color-info-vivid-4,
-	'color-status-success-text': $color-success-vivid-4,
-	'color-status-success-bg': $color-success-vivid-2,
-	'color-status-success-border': $color-success-vivid-4,
-	'color-status-warning-text': $color-warning-vivid-4,
-	'color-status-warning-bg': $color-warning-vivid-2,
-	'color-status-warning-border': $color-warning-vivid-4,
-	'color-status-error-text': $color-danger-vivid-4,
-	'color-status-error-bg': $color-danger-vivid-2,
-	'color-status-error-border': $color-danger-vivid-3
+	color-status-info-text: $color-info-vivid-4,
+	color-status-info-bg: $color-info-vivid-2,
+	color-status-info-border: $color-info-vivid-4,
+	color-status-success-text: $color-success-vivid-4,
+	color-status-success-bg: $color-success-vivid-2,
+	color-status-success-border: $color-success-vivid-4,
+	color-status-warning-text: $color-warning-vivid-4,
+	color-status-warning-bg: $color-warning-vivid-2,
+	color-status-warning-border: $color-warning-vivid-4,
+	color-status-error-text: $color-danger-vivid-4,
+	color-status-error-bg: $color-danger-vivid-2,
+	color-status-error-border: $color-danger-vivid-3
 );
 $button-colors: (
 	// ================
 	// == Default button : [Color = none]
 	// ================
 	// [Brightness = day] [State = default]
-	'day-color-button-default-text': $color-dark-1,
-	'day-color-button-default-bg': $color-light-3,
-	'day-color-button-default-border': $color-neutral,
-	'day-color-button-default-fill-text': $color-dark-1,
-	'day-color-button-default-fill-bg': $color-light-3,
-	'day-color-button-default-fill-border': $color-neutral,
-	'day-color-button-default-outline-text': $color-dark-1,
-	'day-color-button-default-outline-bg': inherit,
-	'day-color-button-default-outline-border': $color-neutral,
-	'day-color-button-default-bare-text': $color-dark-1,
-	'day-color-button-default-bare-bg': inherit,
-	'day-blend-color-button-default-bare-border': $color-light-0,
-	'day-contrast-color-button-default-bare-border': $color-light-1,
+	day-color-button-default-text: $color-dark-0,
+	day-color-button-default-bg: $color-light-3,
+	day-color-button-default-border: $color-neutral,
+	day-color-button-default-fill-text: $color-dark-0,
+	day-color-button-default-fill-bg: $color-light-3,
+	day-color-button-default-fill-border: $color-neutral,
+	day-color-button-default-outline-text: $color-dark-1,
+	day-color-button-default-outline-bg: inherit,
+	day-color-button-default-outline-border: $color-neutral,
+	day-color-button-default-bare-text: $color-dark-1,
+	day-color-button-default-bare-bg: inherit,
+	day-blend-color-button-default-bare-border: $color-light-0,
+	day-contrast-color-button-default-bare-border: $color-light-1,
 
 	// [Brightness = day] [State = hover]
-	'day-blend-color-button-default-hover-bg': $color-light-0,
-	'day-contrast-color-button-default-hover-bg': $color-light-1,
+	day-blend-color-button-default-hover-bg: $color-light-0,
+	day-contrast-color-button-default-hover-bg: $color-light-1,
 
 	// [Brightness = night]
-	'night-color-button-default-text': $color-light-1,
-	'night-color-button-default-bg': $color-dark-3,
-	'night-color-button-default-border': $color-neutral,
-	'night-color-button-default-fill-text': $color-light-1,
-	'night-color-button-default-fill-bg': $color-dark-3,
-	'night-color-button-default-fill-border': $color-neutral,
-	'night-color-button-default-outline-text': $color-light-1,
-	'night-color-button-default-outline-bg': inherit,
-	'night-color-button-default-outline-border': $color-light-2,
-	'night-color-button-default-bare-text': $color-light-1,
-	'night-color-button-default-bare-bg': inherit,
-	'night-blend-color-button-default-bare-border': $color-dark-0,
-	'night-contrast-color-button-default-bare-border': $color-dark-1,
+	night-color-button-default-text: $color-light-1,
+	night-color-button-default-bg: $color-neutral,
+	night-color-button-default-border: $color-dark-3,
+	night-color-button-default-fill-text: $color-light-1,
+	night-color-button-default-fill-bg: $color-neutral,
+	night-color-button-default-fill-border: $color-dark-3,
+	night-color-button-default-outline-text: $color-light-1,
+	night-color-button-default-outline-bg: inherit,
+	night-color-button-default-outline-border: $color-light-2,
+	night-color-button-default-bare-text: $color-light-1,
+	night-color-button-default-bare-bg: inherit,
+	night-blend-color-button-default-bare-border: $color-dark-0,
+	night-contrast-color-button-default-bare-border: $color-dark-1,
 
 	// [Brightness = night] [State = hover]
-	'night-blend-color-button-default-hover-bg': $color-dark-1,
-	'night-contrast-color-button-default-hover-bg': $color-dark-2
+	night-blend-color-button-default-hover-bg: $color-dark-1,
+	night-contrast-color-button-default-hover-bg: $color-dark-2
 );
