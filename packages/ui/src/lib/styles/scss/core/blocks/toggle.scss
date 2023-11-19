@@ -13,12 +13,6 @@
 	box-shadow: var(--current-shadow-inset-1);
 }
 
-button[aria-pressed='false'].outline,
-button[aria-pressed='false'].bare {
-	--current-button-text: var(--color-dark);
-	background-color: inherit;
-}
-
 //== Toggle  primary
 
 [aria-pressed='true'].primary.fill {
@@ -29,6 +23,7 @@ button[aria-pressed='false'].bare {
 [aria-pressed='true'].primary.outline {
 	--current-button-text: var(--color-dark);
 	--current-button-bg: var(--current-primary-lightest);
+	--current-button-border: var(--current-primary);
 }
 
 [aria-pressed='true'].primary.bare {
@@ -44,6 +39,7 @@ button[aria-pressed='false'].bare {
 [aria-pressed='true'].accent.outline {
 	--current-button-text: var(--color-dark);
 	--current-button-bg: var(--current-accent-lightest);
+	--current-button-border: var(--current-accent);
 }
 
 [aria-pressed='true'].accent.bare {
@@ -59,11 +55,39 @@ button[aria-pressed='false'].bare {
 [aria-pressed='true'].highlight.outline {
 	--current-button-text: var(--color-dark);
 	--current-button-bg: var(--current-highlight-lightest);
+	--current-button-border: var(--current-highlight);
 }
 
 [aria-pressed='true'].highlight.bare {
 	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-highlight-lighter);
+}
+
+[aria-pressed='true'].primary.fill:hover {
+	--current-button-bg: var(--current-primary-lightest);
+}
+
+[aria-pressed='true'].accent.fill:hover {
+	--current-button-bg: var(--current-accent-lightest);
+}
+
+[aria-pressed='true'].highlight.fill:hover {
 	--current-button-bg: var(--current-highlight-lightest);
+}
+
+[aria-pressed='true'].primary.outline:hover,
+[aria-pressed='true'].primary.bare:hover {
+	--current-button-bg: var(--current-primary-lighter);
+}
+
+[aria-pressed='true'].accent.outline:hover,
+[aria-pressed='true'].accent.bare:hover {
+	--current-button-bg: var(--current-accent-lighter);
+}
+
+[aria-pressed='true'].highlight.outline:hover,
+[aria-pressed='true'].highlight.bare:hover {
+	--current-button-bg: var(--current-highlight-lighter);
 }
 
 .night {
@@ -87,5 +111,68 @@ button[aria-pressed='false'].bare {
 	[aria-pressed='true'].highlight.outline,
 	[aria-pressed='true'].highlight.bare {
 		--current-button-text: var(--color-black);
+	}
+
+	[aria-pressed='true'].primary.outline,
+	[aria-pressed='true'].primary.bare {
+		--current-button-bg: var(--current-primary-lighter);
+	}
+
+	[aria-pressed='true'].accent.outline,
+	[aria-pressed='true'].accent.bare {
+		--current-button-bg: var(--current-accent-lighter);
+	}
+
+	[aria-pressed='true'].highlight.outline,
+	[aria-pressed='true'].highlight.bare {
+		--current-button-bg: var(--current-highlight-lighter);
+	}
+
+	[aria-pressed='false'].primary.outline:hover {
+		--current-button-bg: var(--current-primary);
+	}
+
+	[aria-pressed='false'].accent.outline:hover {
+		--current-button-bg: var(--current-accent);
+	}
+
+	[aria-pressed='false'].highlight.outline:hover {
+		--current-button-bg: var(--current-highlight);
+	}
+
+	[aria-pressed='true'].primary.fill:hover {
+		--current-button-bg: var(--current-primary-lighter);
+	}
+
+	[aria-pressed='true'].accent.fill:hover {
+		--current-button-bg: var(--current-accent-lighter);
+	}
+
+	[aria-pressed='true'].highlight.fill:hover {
+		--current-button-bg: var(--current-highlight-lighter);
+	}
+
+	[aria-pressed='true'].primary.outline:hover {
+		--current-button-bg: var(--current-primary-light);
+	}
+
+	[aria-pressed='true'].accent.outline:hover {
+		--current-button-bg: var(--current-accent-light);
+	}
+
+	[aria-pressed='true'].highlight.outline:hover {
+		--current-button-bg: var(--current-highlight-light);
+	}
+
+	[aria-pressed='true'].primary.bare:hover {
+		--current-button-bg: var(--current-primary-light);
+	}
+
+	[aria-pressed='true'].accent.bare:hover {
+		--current-button-bg: var(--current-accent-light);
+	}
+
+	[aria-pressed='true'].highlight.bare:hover {
+		--current-button-bg: var(--current-highlight-light);
 	}
 }
