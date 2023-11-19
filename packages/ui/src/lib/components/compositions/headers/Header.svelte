@@ -23,7 +23,7 @@
 				title: 'Theme',
 				action: 'theme',
 				asset: 'emoji', // Fix asset per theme
-				variant: 'round',
+				variant: 'round primary outline',
 				size: 'xl',
 			},
 			{

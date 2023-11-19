@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:color';
 
 // == CSS VARS
 
@@ -45,6 +46,7 @@ $current_cssvars: ();
 
 	@each $name, $value in $design_tokens {
 		#{$prefix}-#{$name}: #{$value};
+
 		// --#{$name}: var(#{$prefix}-#{$name});
 	}
 }
@@ -209,7 +211,10 @@ $current_cssvars: ();
 			--current-highlight-light: var(#{$prefix}-#{$brightness-value}-color-highlight-2);
 			--current-highlight-lighter: var(#{$prefix}-#{$brightness-value}-color-highlight-3);
 			--current-highlight-lightest: var(#{$prefix}-#{$brightness-value}-color-highlight-4);
-			--current-shadow: var(--shadow);
+			--current-button-text: var(#{$prefix}-#{$brightness-value}-color-button-default-text);
+			--current-button-bg: var(#{$prefix}-#{$brightness-value}-color-button-default-bg);
+			--current-button-border: var(#{$prefix}-#{$brightness-value}-color-button-default-border);
+			--current-shadow: var(#{$prefix}-#{$brightness-value}-shadow);
 			color: var(--current-color);
 			background-color: var(--current-bg-color);
 		}
@@ -247,6 +252,7 @@ $current_cssvars: ();
 			$modular-scale-steps-minus,
 			// $prefix
 		);
+
 		// -----------
 		@include map-css-vars($layout, $prefix);
 		@include map-css-vars($typography, $prefix);
@@ -261,7 +267,7 @@ $current_cssvars: ();
 @mixin theme-default(
 	$breakpoints,
 	$layout,
-	$scale-space-pairs,
+	// $scale-space-pairs,
 	$size-scale,
 	$modular-scale,
 	$modular-scale-steps-plus,
