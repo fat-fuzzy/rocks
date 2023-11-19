@@ -24,7 +24,7 @@ input,
 select,
 textarea {
 	--current-color: var(--color-dark);
-	--current-accent-color: var(--color-gray-3);
+	--current-accent-color: var(--current-gray);
 	border: 1px solid var(--current-accent-color);
 	border-radius: var(--radius-base);
 	color: var(--current-color);
@@ -129,18 +129,6 @@ label > input {
 }
 
 // Manage color on .bare and .outline labels adn inputs
-
-label.bare.primary {
-	color: var(--current-primary);
-}
-
-label.bare.accent {
-	color: var(--current-accent);
-}
-
-label.bare.highlight {
-	color: var(--color-dark);
-}
 
 label.bare > input,
 label.bare > [type='file'] {
@@ -369,18 +357,6 @@ label.check[class*='emoji'] span {
 }
 
 .night {
-	label.bare.primary {
-		color: var(--current-primary-light);
-	}
-
-	label.bare.accent {
-		color: var(--current-accent-light);
-	}
-
-	label.bare.highlight {
-		color: var(--current-highlight);
-	}
-
 	label.primary > [type='file'],
 	label.highlight > [type='file'] {
 		color: var(--color-dark);
@@ -413,17 +389,17 @@ label.check[class*='emoji'] span {
 
 	label.bare.primary > input,
 	label.bare.primary > [type='file'] {
-		color: var(--current-primary-light);
+		color: var(--current-primary-lighter);
 	}
 
 	label.bare.accent > input,
 	label.bare.accent > [type='file'] {
-		color: var(--current-accent-light);
+		color: var(--current-accent-lighter);
 	}
 
 	label.bare.highlight > input,
 	label.bare.highlight > [type='file'] {
-		color: var(--color-light);
+		color: var(--current-highlight-lighter);
 	}
 
 	.outline.primary > input:hover,
