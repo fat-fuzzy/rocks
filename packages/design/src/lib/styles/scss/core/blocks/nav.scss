@@ -66,10 +66,15 @@ ul[class*='depth-'] li:has(ul) {
 	margin-block-start: var(--current-size);
 }
 
+// Visited Link
+nav li > a:visited {
+	color: var(--color-primary);
+}
+
 // Active Link
 nav li[aria-current='page'] > a,
 nav li[aria-current='page'] > a:visited {
-	color: var(--current-primary);
+	color: var(--color-white);
 	font-weight: var(--font-weight-semibold);
 	text-decoration: none;
 	text-decoration-color: var(--current-gray);
@@ -91,4 +96,12 @@ nav a:hover {
 //== Override heading styles for headings inside links
 a[class*='card'] {
 	text-decoration: none;
+}
+
+.night {
+	// Active Link
+	nav li[aria-current='page'] > a,
+	nav li[aria-current='page'] > a:visited {
+		color: var(--color-black);
+	}
 }
