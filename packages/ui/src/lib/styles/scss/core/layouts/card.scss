@@ -13,7 +13,7 @@
 
 [class*='card'].box {
 	--current-border-color: var(--current-gray);
-	border: var(--border-width) solid var(--current-border-color);
+	border: var(--border-width) solid var(--current-gray-light);
 }
 
 [class*='card'].box.primary {

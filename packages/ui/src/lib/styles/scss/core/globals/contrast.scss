@@ -31,8 +31,9 @@
 		color: var(--current-color);
 		--current-border-color: var(--current-gray-contrast);
 	}
-	
-	[class*='box'] {
-		--current-border-color: var(--current-gray-contrast);
+
+	[class*='box'],
+	[class*='dotted'] {
+		--current-border-color: var(--current-gray-light);
 	}
 }
