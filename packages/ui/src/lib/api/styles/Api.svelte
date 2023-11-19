@@ -52,7 +52,7 @@
 					type="submit"
 					size="xl"
 					color="primary"
-					variant="round"
+					variant="round primary fill"
 					asset="emoji:sparkles"
 				/>
 			</div>

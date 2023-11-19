@@ -11,6 +11,7 @@ const cssRules = {
 	'scss/operator-no-unspaced': null,
 	'color-function-notation': null,
 	'value-keyword-case': null,
+	'hue-degree-notation': null,
 }
 const scssRules = {
 	'selector-class-pattern': '([a-z](\\:)?)+((\\:)?[a-z])+',
