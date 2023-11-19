@@ -307,8 +307,9 @@ menu {
 
 [class*='box'],
 [class*='dotted'] {
-	--current-border-color: var(--current-gray-contrast);
+	--current-border-color: var(--current-gray-light);
 }
+
 [class*='box'] {
 	border: var(--border-width) solid var(--current-border-color);
 }

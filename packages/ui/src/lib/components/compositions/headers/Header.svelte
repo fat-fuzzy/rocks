@@ -23,7 +23,9 @@
 				title: 'Theme',
 				action: 'theme',
 				asset: 'emoji', // Fix asset per theme
-				variant: 'round primary outline',
+				variant: 'outline',
+				shape: 'round',
+				color: 'primary',
 				size: 'xl',
 			},
 			{
@@ -31,7 +33,7 @@
 				title: 'GitHub icon',
 				url: 'https://github.com/fat-fuzzy/rocks',
 				asset: 'svg', // Fix asset per theme
-				variant: 'round',
+				shape: 'round',
 				size: 'md',
 			},
 			// {
@@ -139,14 +141,19 @@
 			{format.formatLabel('Settings', '🎛️')}
 		</button>
 		<menu class={showSettings}>
-			{#each items.side as { id, title, action, url, asset, variant, size }}
+			{#each items.side as { id, title, action, url, asset, variant, shape, size, color }}
 				{#if url}
-					<a class={`${variant} ${asset} font:${size}`} href={url} target="_blank" rel="noreferrer">
-						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
+					<a
+						class={`${variant} ${asset} font:${size} ${color}`}
+						href={url}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {shape} />
 					</a>
 				{:else if action}
-					<button on:click={actions[action]} class={`${variant} font:${size} outline`}>
-						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {variant} />
+					<button on:click={actions[action]} class={`${variant} font:${size} ${color} ${shape}`}>
+						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {shape} />
 					</button>
 					<!-- {#if subitems}
 						<div class={actionsClass}>
