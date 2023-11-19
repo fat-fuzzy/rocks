@@ -7,9 +7,7 @@ $breakpoints: (
 	bp-xl: 2048px,
 	bp-xxl: 3048px,
 );
-
 $base-sidebar-size: 22.75em;
-
 $layout: (
 	gap: 1rem,
 	size-nul: 0,
@@ -42,45 +40,54 @@ $layout: (
 	sidebar-width-lg: $base-sidebar-size * 1.25,
 	sidebar-width-xl: $base-sidebar-size * 1.6,
 	sidebar-width-xxl: $base-sidebar-size * 2,
-	//
+
+	// == Header and Footer
 	// Header button icon height
 	header-icon-height: 2.25rem,
 	header-height: var(--s3),
 	header-margin: calc(var(--gap) / 2),
 	// footer height = font-size * line-height + 2 * padding
 	footer-height: calc(var(--font-size-body) * var(--ratio) + 2 * var(--size-sm)),
-	//
+	// == Radius
 	radius-nul: 0,
 	radius-base: 3px,
 	radius-lg: 5px,
-	//
+
+	// == Outlines and Borders
 	border-width: 1px,
 	border-width-lg: 2px,
 	border-width-xl: 4px,
-	z-index-inset: 0,
-	z-index-reveal: 1,
-	z-index-layer: 2,
-	z-index-sticky: 3,
 	outline-offset: 0.25rem,
 	outline-offset-nav: 0.15rem,
 	outline-width: 2px,
 	prev-offset-limit: calc(calc(var(--outline-offset) + var(--outline-width))),
-	//
+	// == Layers
+	z-index-inset: 0,
+	z-index-reveal: 1,
+	z-index-layer: 2,
+	z-index-sticky: 3,
+
 	// src: https://github.com/argyleink/open-props/blob/main/src/props.shadows.css
 	// using shadow-3
-	shadow: #{0 -1px 3px 0 hsl(var(--color-shadow) / calc(var(--shadow-strength) + 2%)),
-	0 1px 2px -5px hsl(var(--color-shadow) / calc(var(--shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(--color-shadow) / calc(var(--shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(--color-shadow) / calc(var(--shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(--color-shadow) / calc(var(--shadow-strength) + 7%)),
+	day-shadow: #{0 -1px 3px 0 hsl(var(--day-color-shadow) / calc(var(--shadow-strength) + 2%)),
+	0 1px 2px -5px hsl(var(--day-color-shadow) / calc(var(--shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(--day-color-shadow) / calc(var(--shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(--day-color-shadow) / calc(var(--shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(--day-color-shadow) / calc(var(--shadow-strength) + 7%)),
 	},
-	shadow-light: #{0 -1px 3px 0 hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 2%)),
-	0 1px 2px -5px hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 2%)),
-	0 2px 5px -5px hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 4%)),
-	0 4px 12px -5px hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 5%)),
-	0 12px 15px -5px hsl(var(--color-shadow-light) / calc(var(--shadow-strength) + 7%)),
+	night-shadow: #{0 -1px 3px 0 hsl(var(--night-color-shadow) / calc(var(--shadow-strength) + 2%)),
+	0 1px 2px -5px hsl(var(--night-color-shadow) / calc(var(--shadow-strength) + 2%)),
+	0 2px 5px -5px hsl(var(--night-color-shadow) / calc(var(--shadow-strength) + 4%)),
+	0 4px 12px -5px hsl(var(--night-color-shadow) / calc(var(--shadow-strength) + 5%)),
+	0 12px 15px -5px hsl(var(--night-color-shadow) / calc(var(--shadow-strength) + 7%)),
 	},
-	shadow-inset: #{inset 0 1px 4px 0
-		hsl(var(--color-shadow) / calc(var(--shadow-strength-inset) + 9%))},
+	day-shadow-inset-1: #{inset 0 1px 4px 0
+		hsl(var(--day-color-shadow) / calc(var(--shadow-strength-inset-1) + 9%))},
+	day-shadow-inset-2: #{inset 0 1px 4px 0
+		hsl(var(--day-color-shadow) / calc(var(--shadow-strength-inset-2) + 9%))},
+	night-shadow-inset-1: #{inset 0 1px 4px 0
+		hsl(var(--night-color-shadow) / calc(var(--shadow-strength-inset-1) + 9%))},
+	night-shadow-inset-2: #{inset 0 1px 4px 0
+		hsl(var(--night-color-shadow) / calc(var(--shadow-strength-inset-2) + 9%))},
 	padding-inset: 4px,
 );
