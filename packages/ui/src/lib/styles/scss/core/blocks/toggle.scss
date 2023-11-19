@@ -13,6 +13,12 @@
 	box-shadow: var(--current-shadow-inset-1);
 }
 
+button[aria-pressed='false'].outline,
+button[aria-pressed='false'].bare {
+	--current-button-text: var(--color-dark);
+	background-color: inherit;
+}
+
 //== Toggle  primary
 
 [aria-pressed='true'].primary.fill {
@@ -62,6 +68,24 @@
 
 .night {
 	[aria-pressed='true'] {
-		--current-button-text: var(--color-dark);
+		--current-button-text: var(--color-black);
+	}
+
+	[aria-pressed='true'].primary.fill,
+	[aria-pressed='true'].primary.outline,
+	[aria-pressed='true'].primary.bare {
+		--current-button-text: var(--color-black);
+	}
+
+	[aria-pressed='true'].accent.fill,
+	[aria-pressed='true'].accent.outline,
+	[aria-pressed='true'].accent.bare {
+		--current-button-text: var(--color-black);
+	}
+
+	[aria-pressed='true'].highlight.fill,
+	[aria-pressed='true'].highlight.outline,
+	[aria-pressed='true'].highlight.bare {
+		--current-button-text: var(--color-black);
 	}
 }
