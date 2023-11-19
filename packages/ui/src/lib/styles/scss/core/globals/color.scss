@@ -1,5 +1,8 @@
-//== Layers & Media
-[class*='l:text'],
+[class*='l:text'] {
+	color: var(--current-color);
+	background-color: inherit;
+}
+
 [class*='bg:'] {
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
