@@ -30,7 +30,7 @@
 	$: content = styles.layouts?.content.content ?? 'card'
 	$: sideContent = styles.layouts?.content.side ?? 'card'
 	$: mainContent = styles.layouts?.content.main ?? 'text'
-	$: contentStyles = `card:${size} box ${size} bg:highlight:lighter`
+	$: contentStyles = `card:${size} box ${size} bg:highlight:lightest`
 </script>
 
 {#if isPage}

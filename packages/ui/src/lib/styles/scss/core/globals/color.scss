@@ -80,6 +80,11 @@
 	--current-bg-color: var(--current-accent-lighter);
 }
 
+.bg\:accent\:lightest {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-accent-lightest);
+}
+
 .bg\:highlight {
 	--current-color: var(--color-black);
 	--current-bg-color: var(--current-highlight);
@@ -93,6 +98,11 @@
 .bg\:highlight\:lighter {
 	--current-color: var(--color-black);
 	--current-bg-color: var(--current-highlight-lighter);
+}
+
+.bg\:highlight\:lightest {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-highlight-lightest);
 }
 
 //== Feedback colors
