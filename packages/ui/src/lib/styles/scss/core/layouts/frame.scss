@@ -1,4 +1,4 @@
-.l\:frame {
+[class*='l:frame'] {
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
@@ -6,9 +6,9 @@
 	max-width: 100%;
 }
 
-.l\:frame > img,
-.l\:frame > video,
-.l\:frame > canvas {
+[class*='l:frame'] > img,
+[class*='l:frame'] > video,
+[class*='l:frame'] > canvas {
 	inline-size: 100%;
 	block-size: 100%;
 	object-fit: cover;
@@ -40,6 +40,6 @@
 	margin-block-end: var(--gap);
 }
 
-.l\:frame + * {
+[class*='l:frame'] + * {
 	margin-block-start: var(--s0);
 }
