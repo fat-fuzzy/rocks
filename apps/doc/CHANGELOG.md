@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.26
+
+### Patch Changes
+
+- 2c88242: [apps] Update design tokens
+
 ## 0.1.25
 
 ### Patch Changes
