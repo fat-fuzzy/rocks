@@ -3,10 +3,14 @@
 	box-shadow: var(--current-shadow);
 }
 
+.inset-1 {
+	box-shadow: var(--current-shadow-inset-1);
+	z-index: var(--z-index-inset-1);
+}
+
 .inset {
-	box-shadow: var(--shadow-inset);
-	z-index: var(--z-index-inset);
-	// padding: var(--padding-inset);
+	box-shadow: var(--current-shadow-inset-2);
+	z-index: var(--z-index-inset-2);
 }
 
 .drop {
