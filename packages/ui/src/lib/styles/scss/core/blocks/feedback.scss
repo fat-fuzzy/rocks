@@ -14,7 +14,7 @@
 	line-height: 1.35;
 }
 
-.feedback.default {
+.feedback.fill {
 	--current-color: var(--color-dark);
 	box-shadow: var(--current-shadow);
 }
@@ -26,7 +26,7 @@
 
 .feedback.bare,
 .feedback[class*='bg:default:'].bare {
-	--current-bg-color: var(--current-gray);
+	--current-bg-color: var(--current-polar);
 	--current-border-color: var(--current-bg-color);
 }
 
@@ -79,9 +79,9 @@ pre.feedback.bare {
 		pre.feedback.default,
 		pre.feedback[class*='bg:default'].outline,
 		pre.feedback[class*='bg:default'].default {
-			--current-color: var(--color-light);
-			--current-bg-color: var(--color-gray-5);
-			--current-border-color: var(--color-gray-4);
+			--current-color: var(--color-white);
+			--current-bg-color: var(--night-blend-color-bg); // TODO: fix this: clean like buttons
+			--current-border-color: var(--color-gray-3);
 		}
 
 		pre.feedback.bare,
@@ -94,9 +94,9 @@ pre.feedback.bare {
 		.feedback:not(pre),
 		.feedback.default:not(pre),
 		.feedback[class*='bg:default'] {
-			--current-color: var(--color-light);
-			--current-bg-color: var(--color-gray-4);
-			--current-border-color: var(--color-gray-3);
+			--current-color: var(--color-black);
+			--current-bg-color: var(--color-gray-3);
+			--current-border-color: var(--color-gray-4);
 		}
 
 		.feedback.bare,
