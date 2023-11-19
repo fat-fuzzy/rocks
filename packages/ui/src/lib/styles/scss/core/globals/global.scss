@@ -7,7 +7,8 @@
 body {
 	--current-size: var(--s0);
 	--current-size-plus: var(--s1);
-	--current-size-side: var(--s0);
+	--current-size-side: var(--sidebar-width-sm);
+	--current-shadow: var(--shadow);
 	color: var(--current-color);
 	background: var(--current-bg-color);
 	font-size: var(--font-size-body);

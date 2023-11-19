@@ -51,6 +51,141 @@
 	}
 }
 
+//== BUTTONS
+// $prefix: '-';
+// @include generate-button-styles($prefix);
+@mixin generate-button-styles($prefix) {
+	$theme-brightness: (
+		'brightness-day': 'day',
+		'brightness-night': 'night',
+	);
+	$theme-contrast: (
+		'contrast-blend': 'blend',
+		'contrast-contrast': 'contrast',
+	);
+	$theme-colors: (
+		'color-primary': 'primary',
+		'color-accent': 'accent',
+		'color-highlight': 'highlight',
+	);
+	$button-variants: (
+		'variant-fill': 'fill',
+		'variant-outline': 'outline',
+		'variant-bare': 'bare',
+	);
+	button {
+		color: var(--current-button-text);
+		background-color: var(--current-button-bg);
+		border: var(--border-width) solid var(--current-button-border);
+	}
+	@each $brightness, $brightness-value in $theme-brightness {
+		// Generate buttons for [Brightness = day/night]
+		.#{$brightness-value} {
+			// Generate default buttons for [Brightness = day/night]
+			@each $variant, $variant-value in $button-variants {
+				button.#{$variant-value} {
+					--current-button-text: var(
+						#{$prefix}-#{$brightness-value}-color-button-default-#{$variant-value}-text
+					);
+					--current-button-bg: var(
+						#{$prefix}-#{$brightness-value}-color-button-default-#{$variant-value}-bg
+					);
+					--current-button-border: var(
+						#{$prefix}-#{$brightness-value}-color-button-default-#{$variant-value}-border
+					);
+				}
+				button.#{$variant-value}:hover {
+					--current-button-text: var(
+						#{$prefix}-#{$brightness-value}-color-button-default-#{$variant-value}-text-hover
+					);
+					--current-button-bg: var(
+						#{$prefix}-#{$brightness-value}-color-button-default-#{$variant-value}-bg-hover
+					);
+					--current-button-border: var(
+						#{$prefix}-#{$brightness-value}-color-button-default-#{$variant-value}-border-hover
+					);
+				}
+				button.#{$variant-value}:active {
+					--current-button-border: var(
+						#{$prefix}-#{$brightness-value}-color-button-default-#{$variant-value}-border-active
+					);
+				}
+			}
+			@each $contrast, $contrast-value in $theme-contrast {
+				// Generate buttons for [Contrast = contrast/blend]
+				.bg\:#{$contrast-value} {
+					// Generate styles for [Variant = bare]
+					button.bare {
+						--current-button-border: var(
+							#{$prefix}-#{$brightness-value}-#{$contrast-value}-color-button-bare-border
+						);
+					}
+					// Generate default buttons hover state
+					button:hover {
+						--current-button-bg: var(
+							#{$prefix}-#{$brightness-value}-#{$contrast-value}-color-button-default-hover-bg
+						);
+					}
+				}
+			}
+		}
+		// Generate colored buttons for [Variant = fill/outline/bare]
+		@each $color, $color-value in $theme-colors {
+			@each $variant, $variant-value in $button-variants {
+				button.#{$color-value}.#{$variant-value} {
+					--current-button-text: var(
+						#{$prefix}-color-button-#{$color-value}-#{$variant-value}-text
+					);
+					--current-button-bg: var(#{$prefix}-color-button-#{$color-value}-#{$variant-value}-bg);
+					--current-button-border: var(
+						#{$prefix}-color-button-#{$color-value}-#{$variant-value}-border
+					);
+				}
+				button.#{$color-value}.#{$variant-value}:hover {
+					--current-button-text: var(
+						#{$prefix}-color-button-#{$color-value}-#{$variant-value}-text-hover
+					);
+					--current-button-bg: var(
+						#{$prefix}-color-button-#{$color-value}-#{$variant-value}-bg-hover
+					);
+					--current-button-border: var(
+						#{$prefix}-color-button-#{$color-value}-#{$variant-value}-border-hover
+					);
+				}
+				button.#{$color-value}.#{$variant-value}:active {
+					--current-button-border: var(
+						#{$prefix}-color-button-#{$color-value}-#{$variant-value}-border-active
+					);
+				}
+			}
+		}
+
+		// == Overrides: [Brightness = night]
+		.night {
+			// Generate colored buttons for [Variant = fill/outline/bare]
+			@each $color, $color-value in $theme-colors {
+				button.outline.#{$color-value},
+				button.bare.#{$color-value} {
+					--current-button-text: var(#{$prefix}-night-color-button-outline-text);
+				}
+			}
+			button.outline:hover,
+			button.bare:hover {
+				--current-button-text: var(#{$prefix}-color-dark);
+			}
+		}
+		// == Overrides:  [Brightness = day]
+		.day {
+			button.highlight.outline {
+				--current-button-text: var(#{$prefix}-day-color-button-highlight-outline-text);
+			}
+			button.highlight.bare {
+				--current-button-text: var(#{$prefix}-day-color-button-highlight-bare-text);
+			}
+		}
+	}
+}
+
 //== FLEX
 
 @mixin wrap-space-between() {

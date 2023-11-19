@@ -13,7 +13,7 @@
 	export let value = ''
 	export let disabled = false
 	export let color = ''
-	export let variant = ''
+	export let variant = 'fill'
 	export let layout = 'flex'
 	export let breakpoint = ''
 	export let size = ''
