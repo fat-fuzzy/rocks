@@ -4,11 +4,11 @@
 /* Resets and global styles, set --current-* CSS var values used in layouts and blocks */
 @forward './globals/_index';
 
-/* Layout (structural components used to organize content on a page or view) */
-@forward './layouts/_index';
-
 /* Blocks (self contained, atomic components used in compositions) */
 @forward './blocks/_index';
+
+/* Layout (structural components used to organize content on a page or view) */
+@forward './layouts/_index';
 
 /* Motion (animations, transitions, user-initiated movement) */
 @forward './motion/_index';
