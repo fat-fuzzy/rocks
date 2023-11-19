@@ -1,5 +1,13 @@
 # @fat-fuzzy/play
 
+## 0.1.19
+
+### Patch Changes
+
+- 7dad4e8: [ui] Recreate doc page in ui routes for testing
+  [ui+design] Color management rework (wip)
+  [ui+apps] Load doc content from markdowns
+
 ## 0.1.18
 
 ### Patch Changes
