@@ -1,5 +1,11 @@
 # @fat-fuzzy/play
 
+## 0.1.20
+
+### Patch Changes
+
+- 2c88242: [apps] Update design tokens
+
 ## 0.1.19
 
 ### Patch Changes
