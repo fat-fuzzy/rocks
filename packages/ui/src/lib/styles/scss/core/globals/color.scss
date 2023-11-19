@@ -36,13 +36,6 @@
 	--current-bg-color: var(--current-primary);
 }
 
-.night {
-	.bg\:primary {
-		--current-color: var(--color-dark);
-		--current-bg-color: var(--current-primary);
-	}
-}
-
 .bg\:primary\:light {
 	--current-color: var(--color-black);
 	--current-bg-color: var(--current-primary-light);
@@ -61,13 +54,6 @@
 .bg\:accent {
 	--current-color: var(--color-white);
 	--current-bg-color: var(--current-accent);
-}
-
-.night {
-	.bg\:accent {
-		--current-color: var(--color-dark);
-		--current-bg-color: var(--current-accent);
-	}
 }
 
 .bg\:accent\:light {
@@ -281,4 +267,34 @@
 .box\:highlight\:lighter,
 .dotted\:highlight\:lighter {
 	--current-border-color: var(--current-highlight-light);
+}
+
+.night {
+	.bg\:primary {
+		--current-color: var(--color-black);
+	}
+	.bg\:accent {
+		--current-color: var(--color-black);
+	}
+	.bg\:info {
+		--current-color: var(--color-white);
+	}
+	.bg\:error {
+		--current-color: var(--color-white);
+	}
+}
+
+.night .day {
+	.bg\:primary {
+		--current-color: var(--color-white);
+	}
+	.bg\:accent {
+		--current-color: var(--color-white);
+	}
+	.bg\:info {
+		--current-color: var(--color-white);
+	}
+	.bg\:error {
+		--current-color: var(--color-white);
+	}
 }
