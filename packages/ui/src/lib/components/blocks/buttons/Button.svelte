@@ -7,7 +7,7 @@
 	export let name = ''
 	export let disabled = false
 	export let color = ''
-	export let variant = 'default'
+	export let variant = 'fill'
 	export let layout = 'switcher'
 	export let breakpoint = ''
 	export let size = ''

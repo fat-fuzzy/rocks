@@ -427,14 +427,14 @@ const blocks: BlockStyles = {
 			new StyleInputGroup({
 				name: 'Variant',
 				id: 'blocks.element.variant',
-				value: 'default',
+				value: 'fill',
 				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
 				variant: 'box card',
 				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 				items: [
-					{id: 'blocks.element.variant.default', text: 'default', value: 'default'},
+					{id: 'blocks.element.variant.fill', text: 'fill', value: 'fill'},
 					{id: 'blocks.element.variant.outline', text: 'outline', value: 'outline'},
 					{id: 'blocks.element.variant.bare', text: 'bare', value: 'bare'},
 				],
@@ -515,7 +515,7 @@ const blocks: BlockStyles = {
 			new StyleInputGroup({
 				name: 'Context',
 				id: 'blocks.element.context',
-				value: 'default',
+				value: 'form',
 				input: 'radio',
 				layout: 'stack',
 				size: 'sm',
@@ -699,7 +699,7 @@ export const DEFAULT_STYLES: StyleTree = {
 	},
 	blocks: {
 		element: {
-			variant: 'default',
+			variant: 'fill',
 			color: '',
 			status: 'default',
 			context: 'form',

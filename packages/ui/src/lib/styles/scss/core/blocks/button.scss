@@ -1,57 +1,4 @@
-//== Button default colors
-
-@mixin generate-button-styles($color) {
-	button.#{$color}.fill {
-		--current-color: var(--color-#{$color}-fill);
-		--current-bg-color: var(--bg-color-#{$color}-fill);
-		--current-border-color: var(--border-color-#{$color}-fill);
-	}
-	button.#{$color}.outline {
-		--current-color: var(--color-#{$color}-outline);
-		--current-bg-color: var(--bg-color-#{$color}-outline);
-		--current-border-color: var(--border-color-#{$color}-outline);
-	}
-	button.#{$color}.bare {
-		--current-color: var(--color-#{$color}-bare);
-		--current-bg-color: var(--bg-color-#{$color}-bare);
-		--current-border-color: var(--border-color-#{$color}-bare);
-	}
-	button.#{$color}.fill:hover {
-		--current-color: var(--color-#{$color}-fill-hover);
-		--current-bg-color: var(--bg-color-#{$color}-fill-hover);
-		--current-border-color: var(--border-color-#{$color}-fill-hover);
-	}
-	button.#{$color}.fill:active {
-		--current-color: var(--color-#{$color}-fill-active);
-		--current-bg-color: var(--bg-color-#{$color}-fill-active);
-		--current-border-color: var(--border-color-#{$color}-fill-active);
-	}
-	button.#{$color}.outline:hover {
-		--current-color: var(--color-#{$color}-outline-hover);
-		--current-bg-color: var(--bg-color-#{$color}-outline-hover);
-		--current-border-color: var(--border-color-#{$color}-outline-hover);
-	}
-	button.#{$color}.outline:active {
-		--current-color: var(--color-#{$color}-outline-active);
-		--current-bg-color: var(--bg-color-#{$color}-outline-active);
-		--current-border-color: var(--border-color-#{$color}-outline-active);
-	}
-	button.#{$color}.bare:hover {
-		--current-color: var(--color-#{$color}-bare-hover);
-		--current-bg-color: var(--bg-color-#{$color}-bare-hover);
-		--current-border-color: var(--border-color-#{$color}-bare-hover);
-	}
-	button.#{$color}.bare:active {
-		--current-color: var(--color-#{$color}-bare-active);
-		--current-bg-color: var(--bg-color-#{$color}-bare-active);
-		--current-border-color: var(--border-color-#{$color}-bare-active);
-	}
-}
-
 button {
-	--current-color: var(--current-dark);
-	--current-bg-color: var(--current-gray-contrast);
-	--current-border-color: var(--current-gray-contrast);
 	display: flex;
 	justify-content: center;
 	flex-wrap: nowrap;
@@ -62,34 +9,14 @@ button {
 	line-height: var(--line-height-ui);
 	padding: var(--current-size) var(--current-size-plus); // Fluid padding will adjust according to closest size class (on self or ancestor)
 	border-radius: var(--radius-base);
-	color: var(--current-color);
-	border: var(--border-width) solid var(--current-border-color);
-	background-color: var(--current-bg-color);
+	color: var(--current-button-text);
+	background-color: var(--current-button-bg);
+	border: var(--border-width) solid var(--current-button-border);
 }
 
 button:hover {
-	--current-color: var(--current-light);
-	--current-bg-color: var(--current-bg-contrast);
 	cursor: pointer;
 	box-shadow: var(--current-shadow);
-}
-
-button:active {
-	--current-border-color: var(--current-gray);
-}
-
-button.outline {
-	--current-border-color: var(--current-color);
-	background-color: inherit;
-}
-
-button.outline:hover {
-	--current-bg-color: var(--current-polar);
-}
-
-button.outline:active {
-	color: inherit;
-	background-color: inherit;
 }
 
 button:disabled {
@@ -101,250 +28,11 @@ button:disabled:hover {
 	opacity: 0.65;
 }
 
-//== Button primary
-
-button.primary {
-	color: var(--color-white);
-	border-color: var(--current-primary);
-	background-color: var(--current-primary);
-}
-
-button.primary.outline {
-	color: var(--current-primary);
-	background-color: inherit;
-	border-color: var(--current-primary);
-}
-
-button.primary:not(.bare, [aria-pressed], :disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-primary-light);
-}
-
-button.primary.outline:not(.bare, [aria-pressed], :disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-primary-lighter);
-}
-
-button.primary:not(.bare, [aria-pressed], :disabled):active,
-button.primary.outline:not(.bare, [aria-pressed], :disabled):active {
-	color: var(--color-dark);
-	background-color: var(--current-primary-lighter);
-}
-
-//== Button accent
-
-button.accent {
-	color: var(--color-white);
-	border-color: var(--current-accent);
-	background-color: var(--current-accent);
-	outline-color: var(--current-accent);
-}
-
-button.outline.accent {
-	color: var(--current-accent);
-	border-color: var(--current-accent);
-	background-color: inherit;
-}
-
-button.accent:not(:disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-accent-light);
-}
-
-button.outline.accent:not(:disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-accent-lighter);
-}
-
-button.accent:not(:disabled):active,
-button.outline.accent:not(:disabled):active {
-	color: var(--color-dark);
-	background-color: var(--current-accent-lighter);
-	border-color: var(--current-accent-lighter);
-}
-
-//== Button highlight
-
-button.highlight {
-	color: var(--color-dark);
-	border-color: var(--current-highlight);
-	background-color: var(--current-highlight);
-	outline-color: var(--current-highlight);
-}
-
-button.outline.highlight {
-	background-color: inherit;
-	border-color: var(--current-highlight-dark);
-}
-
-button.highlight:not(:disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-light);
-}
-
-button.outline.highlight:not(:disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-lighter);
-}
-
-button.highlight:not(:disabled):active,
-button.outline.highlight:not(:disabled):active {
-	color: var(--color-dark);
-	background-color: var(--current-highlight-lighter);
-	border-color: var(--current-highlight-lighter);
-}
-
-//== Button info
-
-button.info {
-	border: var(--border-width) solid var(--current-info);
-	background-color: var(--current-info);
-	color: var(--color-dark);
-	outline-color: var(--current-info);
-}
-
-button.outline.info {
-	color: var(--current-info-dark);
-	background-color: inherit;
-	border: var(--border-width) solid var(--current-info);
-}
-
-button.info:not(:disabled):hover,
-button.outline.info:not(:disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-info-light);
-}
-
-button.info:not(:disabled):active,
-button.outline.info:not(:disabled):active {
-	color: var(--color-dark);
-	background-color: var(--current-info-lighter);
-}
-
-//== Button success
-
-button.success {
-	border: var(--border-width) solid var(--current-success);
-	background-color: var(--current-success);
-	color: var(--color-dark);
-	outline-color: var(--current-success);
-}
-
-button.outline.success {
-	color: var(--current-success-dark);
-	background-color: inherit;
-	border: var(--border-width) solid var(--current-success);
-}
-
-button.success:not(:disabled):hover,
-button.outline.success:not(:disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-success-light);
-}
-
-button.success:not(:disabled):active,
-button.outline.success:not(:disabled):active {
-	color: var(--color-dark);
-	background-color: var(--current-success-lighter);
-}
-
-//== Button warning
-
-button.warning {
-	border: var(--border-width) solid var(--current-warning);
-	background-color: var(--current-warning);
-	color: var(--color-dark);
-	outline-color: var(--current-warning);
-}
-
-button.outline.warning {
-	color: var(--current-warning-dark);
-	background-color: inherit;
-	border: var(--border-width) solid var(--current-warning);
-}
-
-button.warning:not(:disabled):hover,
-button.outline.warning:not(:disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-warning-light);
-}
-
-button.warning:not(:disabled):active,
-button.outline.warning:not(:disabled):active {
-	color: var(--color-dark);
-	background-color: var(--current-warning-lighter);
-}
-
-//== Button error
-
-button.error {
-	border: var(--border-width) solid var(--current-error);
-	background-color: var(--current-error);
-	color: var(--color-dark);
-	outline-color: var(--current-error);
-}
-
-button.outline.error {
-	color: var(--current-error-dark);
-	background-color: inherit;
-	border: var(--border-width) solid var(--current-error);
-}
-
-button.error:not(:disabled):hover,
-button.outline.error:not(:disabled):hover {
-	color: var(--color-dark);
-	background-color: var(--current-error-light);
-}
-
-button.error:not(:disabled):active,
-button.outline.error:not(:disabled):active {
-	color: var(--color-dark);
-	background-color: var(--current-error-lighter);
-}
-
 //== Bare buttons (no background, no border)
 
 button.bare {
-	--current-border-color: var(--current-bg-color);
-	font-size: var(--current-font-size);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
-	color: var(--current-color);
-	background-color: inherit;
-	border: var(--border-width) solid var(--current-border-color);
-}
-
-button.bare:hover {
-	background-color: var(--current-gray);
-}
-
-button.bare.primary:hover {
-	--current-border-color: var(--current-primary-light);
-	color: var(--color-dark);
-	background-color: var(--current-primary-light);
-}
-
-button.bare.primary,
-button.bare.primary:active {
-	color: var(--current-primary);
-	// background-color: unset;
-}
-
-button.bare.accent:hover {
-	--current-border-color: var(--current-accent-light);
-	color: var(--current-dark);
-	background-color: var(--current-accent-light);
-}
-
-button.bare.accent,
-button.bare.accent:active {
-	color: var(--current-accent);
-}
-
-button.bare.highlight:hover {
-	--current-border-color: var(--current-highlight-lighter);
-	color: var(--color-dark);
-	background-color: var(--current-highlight-lighter);
 }
 
 //== Alignment
@@ -357,56 +45,191 @@ button.bare.highlight:hover {
 	text-align: end;
 }
 
-.night {
-	button.primary.bare,
-	button.primary.outline {
-		color: var(--current-primary-light);
-	}
+// ================
+// == Colored Button
+// ================
 
-	button.highlight.bare,
-	button.highlight.outline {
-		color: var(--current-highlight-light);
-	}
-
-	button.accent {
-		color: var(--color-dark);
-	}
-
-	button.accent.bare,
-	button.accent.outline {
-		color: var(--current-accent-light);
-	}
-
-	button.primary.bare:hover,
-	button.primary.bare:active,
-	button.primary.outline:hover,
-	button.primary.outline:active,
-	button.accent.bare:hover,
-	button.accent.bare:active,
-	button.accent.outline:hover,
-	button.accent.outline:active,
-	button.highlight.bare:hover,
-	button.highlight.bare:active,
-	button.highlight.outline:hover,
-	button.highlight.outline:active {
-		color: var(--color-dark);
-	}
-
-	[class*='blend']
-		button.outline:not(.primary, .accent, .highlight, .info, .success, .warning, .error):hover {
-		color: var(--current-light);
-		background-color: var(--current-polar);
-	}
-
-	[class*='polar']
-		button.outline:not(.primary, .accent, .highlight, .info, .success, .warning, .error):hover {
-		color: var(--current-light);
-		background-color: var(--current-gray);
-	}
+// [Color = primary] x [Variant = default = fill]
+button.primary.fill {
+	--current-button-text: var(--color-white);
+	--current-button-bg: var(--current-primary);
+	--current-button-border: var(--current-primary);
 }
 
-.night .day {
-	button.highlight.outline {
-		color: var(--color-dark);
-	}
+button.primary.fill:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-primary-light);
+	--current-button-border: var(--current-primary-light);
 }
+
+button.primary.fill:active {
+	--current-button-border: var(--current-primary);
+}
+
+// [Color = accent] x [Variant = default = fill]
+button.accent.fill {
+	--current-button-text: var(--color-white);
+	--current-button-bg: var(--current-accent);
+	--current-button-border: var(--current-accent);
+}
+
+button.accent.fill:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-accent-light);
+	--current-button-border: var(--current-accent-light);
+}
+
+button.accent.fill:active {
+	--current-button-border: var(--current-accent);
+}
+
+// [Color = highlight] x [Variant = default = fill]
+button.highlight.fill {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-highlight);
+	--current-button-border: var(--current-highlight);
+}
+
+button.highlight.fill:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-highlight-light);
+	--current-button-border: var(--current-highlight-light);
+}
+
+button.highlight.fill:active {
+	--current-button-border: var(--current-highlight);
+}
+
+// [Color = primary] x [Variant = outline]
+button.primary.outline {
+	--current-button-text: var(--current-primary);
+	--current-button-bg: inherit;
+	--current-button-border: var(--current-primary);
+}
+
+button.primary.outline:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-primary-light);
+	--current-button-border: var(--current-primary);
+}
+
+button.primary.outline:active {
+	--current-button-border: var(--current-primary);
+}
+
+// [Color = accent] x [Variant = outline]
+button.accent.outline {
+	--current-button-text: var(--current-accent);
+	--current-button-bg: inherit;
+	--current-button-border: var(--current-accent);
+}
+
+button.accent.outline:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-accent-light);
+	--current-button-border: var(--current-accent);
+}
+
+button.accent.outline:active {
+	--current-button-border: var(--current-accent);
+}
+
+// [Color = highlight] x [Variant = outline]
+button.highlight.outline {
+	--current-button-text: var(--current-color);
+	--current-button-bg: inherit;
+	--current-button-border: var(--current-highlight);
+}
+
+button.highlight.outline:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-highlight-light);
+	--current-button-border: var(--current-highlight);
+}
+
+button.highlight.outline:active {
+	--current-button-border: var(--current-highlight);
+}
+
+// [Color = primary] x [Variant = bare]
+button.primary.bare {
+	--current-button-text: var(--current-primary);
+	--current-button-bg: inherit;
+	--current-button-border: var(--current-button-bg);
+}
+
+button.primary.bare:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-primary-lighter);
+}
+
+button.primary.bare:active {
+	--current-button-border: var(--current-primary-light);
+}
+
+// [Color = primary] x [Variant = bare]
+button.accent.bare {
+	--current-button-text: var(--current-accent);
+	--current-button-bg: inherit;
+	--current-button-border: var(--current-button-bg);
+}
+
+button.accent.bare:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-accent-lighter);
+}
+
+button.accent.bare:active {
+	--current-button-border: var(--current-accent-light);
+}
+
+// [Color = accent] x [Variant = bare]
+button.accent.bare {
+	--current-button-text: var(--current-color);
+	--current-button-bg: inherit;
+	--current-button-border: var(--current-button-bg);
+}
+
+button.accent.bare:hover {
+	--current-button-text: var(--color-dark);
+	--current-button-bg: var(--current-highlight-lighter);
+}
+
+button.accent.bare:active {
+	--current-button-border: var(--current-highlight-light);
+}
+
+// [State = Active]
+// Use inset shadow
+// ================
+// == TODO
+// ================
+// // == Theme overrides: night
+// //  [Variant = outline]
+// 'night-color-button-primary-outline-text': var(--current-primary),
+// 'night-color-button-accent-outline-text': var(--current-accent),
+// 'night-color-button-highlight-outline-text': var(--current-highlight),
+// //  [Variant = bare]
+// 'night-color-button-primary-bare-text': var(--current-primary),
+// 'night-color-button-accent-bare-text': var(--current-accent),
+// 'night-color-button-highlight-bare-text': var(--current-highlight),
+// //  [State = hover] & [State = active]
+// 'night-color-button-outline-text-hover': var(--color-dark),
+// 'night-color-button-bare-text-hover': var(--color-dark),
+// // 'night-color-button-primary-outline-hover': var(--color-dark),
+// // 'night-color-button-accent-outline-hover': var(--color-dark),
+// // 'night-color-button-highlight-outline-hover': var(--color-dark),
+// // 'night-color-button-primary-bare-hover': var(--color-dark),
+// // 'night-color-button-accent-bare-hover': var(--color-dark),
+// // 'night-color-button-highlight-bare-hover': var(--color-dark),
+// // 'night-color-button-outline-active': var(--color-dark),
+// // 'night-color-button-bare-active': var(--color-dark),
+// // 'night-color-button-primary-outline-active': var(--color-dark),
+// // 'night-color-button-accent-outline-active': var(--color-dark),
+// // 'night-color-button-highlight-outline-active': var(--color-dark),
+// // 'night-color-button-primary-bare-active': var(--color-dark),
+// // 'night-color-button-accent-bare-active': var(--color-dark),
+// // 'night-color-button-highlight-bare-active': var(--color-dark),
+// // == Theme overrides: day
+// 'day-color-button-highlight-outline-text': var(--color-dark),
+// 'day-color-button-highlight-bare-text': var(--color-dark)
