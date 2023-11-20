@@ -5,10 +5,11 @@
 	export let status = 'default' // feedback color: info, success, warning, error
 	export let size = ''
 	export let variant = 'outline' // feedback variant: default, outline, bare
-	export let container = 'card'
+	export let container = ''
 
 	$: background = context === 'code' ? '' : `bg:${status}:lighter`
-	$: feedbackClass = `feedback ${container}:${size} ${asset} ${status} font:${size} ${variant} ${background}`
+	$: containerClass = container ? `${container}:${size}` : ''
+	$: feedbackClass = `feedback ${containerClass} ${asset} ${status} font:${size} ${variant} ${background}`
 </script>
 
 {#if context === 'code'}

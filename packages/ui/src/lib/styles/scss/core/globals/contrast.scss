@@ -11,7 +11,7 @@
 .bg\:contrast,
 .bg\:polar > .bg\:contrast,
 .bg\:polar *:not(.bg\:contrast) .bg\:contrast {
-	--current-border-color: var(--current-gray);
+	--current-border-color: var(--current-gray-light);
 	color: var(--current-color);
 	background-color: var(--current-bg-contrast);
 }
@@ -19,7 +19,7 @@
 .bg\:blend,
 .bg\:polar > .bg\:blend,
 .bg\:polar *:not(.bg\:blend) .bg\:blend {
-	--current-border-color: var(--current-gray);
+	--current-border-color: var(--current-gray-light);
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
