@@ -49,7 +49,7 @@
 	$: size = styles.shared?.container.size ?? size
 	$: useCase = styles.blocks?.element.status ?? useCase
 
-	$: containerContext = `l:${container}:${size}`
+	$: containerContext = `l:${container}:${size} content`
 </script>
 
 {#if isPage}
