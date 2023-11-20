@@ -50,8 +50,9 @@ $layout: (
 	footer-height: calc(var(--font-size-body) * var(--ratio) + 2 * var(--size-sm)),
 	// == Radius
 	radius-nul: 0,
-	radius-base: 3px,
-	radius-lg: 5px,
+	radius-base: 0.16rem,
+	radius-lg: 0.34rem,
+	radius-xl: 0.66rem,
 
 	// == Outlines and Borders
 	border-width: 1px,
