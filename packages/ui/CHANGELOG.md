@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.28
+
+### Patch Changes
+
+- 7aad73e: Fix switcher in frame
+
 ## 0.1.27
 
 ### Patch Changes
