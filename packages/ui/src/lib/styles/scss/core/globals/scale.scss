@@ -221,8 +221,6 @@
 	--current-size: var(--size-xxs);
 	--current-size-plus: var(--size-sm);
 	--current-font-size: var(--font-size-xs) / var(--fluid-min-ratio);
-	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
-	--current-font-size-plus: var(--font-size-sm);
 }
 
 .xs,
@@ -231,8 +229,6 @@
 	--current-size: var(--size-xs);
 	--current-size-plus: var(--size-md);
 	--current-font-size: var(--font-size-xs);
-	--current-font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
-	--current-font-size-plus: var(--font-size-md);
 }
 
 .sm,
@@ -241,8 +237,6 @@
 	--current-size: var(--size-sm);
 	--current-size-plus: var(--size-lg);
 	--current-font-size: var(--font-size-sm);
-	--current-font-size-minus: var(--font-size-xs);
-	--current-font-size-plus: var(--font-size-lg);
 }
 
 .md,
@@ -251,8 +245,6 @@
 	--current-size: var(--size-md);
 	--current-size-plus: var(--size-xl);
 	--current-font-size: var(--font-size-md);
-	--current-font-size-minus: var(--font-size-xs);
-	--current-font-size-plus: var(--font-size-xl);
 }
 
 .lg,
@@ -261,8 +253,6 @@
 	--current-size: var(--size-lg);
 	--current-size-plus: var(--size-xxl);
 	--current-font-size: var(--font-size-lg);
-	--current-font-size-minus: var(--font-size-sm);
-	--current-font-size-plus: var(--font-size-xxl);
 }
 
 .xl,
@@ -271,8 +261,6 @@
 	--current-size: var(--size-xl);
 	--current-size-plus: var(--size-xxl);
 	--current-font-size: var(--font-size-xl);
-	--current-font-size-minus: var(--font-size-md);
-	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
 }
 
 .xxl,
@@ -281,47 +269,45 @@
 	--current-size: var(--size-xxl);
 	--current-size-plus: var(--size-xxl);
 	--current-font-size: var(--font-size-xxl);
-	--current-font-size-minus: var(--font-size-xl);
-	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
 }
 
-.font\:xxs {
+[class*='font:xxs'] {
 	--current-font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-sm);
 }
 
-.font\:xs {
+[class*='font:xs'] {
 	--current-font-size: var(--font-size-xs);
 	--current-font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-md);
 }
 
-.font\:sm {
+[class*='font:sm'] {
 	--current-font-size: var(--font-size-sm);
 	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-lg);
 }
 
-.font\:md {
+[class*='font:md'] {
 	--current-font-size: var(--font-size-md);
 	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-xl);
 }
 
-.font\:lg {
+[class*='font:lg'] {
 	--current-font-size: var(--font-size-lg);
 	--current-font-size-minus: var(--font-size-sm);
 	--current-font-size-plus: var(--font-size-xxl);
 }
 
-.font\:xl {
+[class*='font:xl'] {
 	--current-font-size: var(--font-size-xl);
 	--current-font-size-minus: var(--font-size-md);
 	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
 }
 
-.font\:xxl {
+[class*='font:xxl'] {
 	--current-font-size: var(--font-size-xxl);
 	--current-font-size-minus: var(--font-size-xl);
 	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
