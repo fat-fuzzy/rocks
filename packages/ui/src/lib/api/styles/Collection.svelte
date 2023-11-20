@@ -25,12 +25,7 @@
 
 	let contrast = ''
 	let brightness = themes[$theme]
-	let contextClasses = ''
 
-	let sharedOptions = {
-		container: '',
-		size: '',
-	}
 	// TODO: color code sections
 	// TODO; tokens section
 	// TODO: composition section
@@ -41,11 +36,6 @@
 	//== App settings (user controlled)
 	$: brightness = styles.app?.settings.brightness || brightness
 	$: contrast = styles.app?.settings.contrast ?? contrast
-	//== Shared settings (user controlled)
-	// Container options
-	// - [container + size] work together
-	$: sharedOptions.container = styles.shared?.container.container ?? sharedOptions.container
-	$: sharedOptions.size = styles.shared?.container.size ?? sharedOptions.size
 
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
@@ -54,7 +44,6 @@
 		category.length - 1,
 	)}`
 	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
-	$: contextClasses = `${sharedOptions.size} ${brightness}`
 </script>
 
 {#if isPage}
@@ -63,17 +52,15 @@
 			{#each componentNames as name}
 				{@const component = components[name]}
 				{@const props = getProps({category, component: name})}
-				<div class={contextClasses}>
-					<Element
-						title={name}
-						depth={Number(depth) + 1}
-						page={$page.url.pathname}
-						{path}
-						{category}
-						{component}
-						{props}
-					/>
-				</div>
+				<Element
+					title={name}
+					depth={Number(depth) + 1}
+					page={$page.url.pathname}
+					{path}
+					{category}
+					{component}
+					{props}
+				/>
 			{/each}
 		</section>
 		<section slot="side">

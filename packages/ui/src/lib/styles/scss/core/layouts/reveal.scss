@@ -2,6 +2,8 @@
 	position: relative;
 	z-index: var(--z-index-layer);
 	width: 100%;
+	color: inherit;
+	background-color: var(--current-polar);
 }
 
 .l\:reveal > button > .icon {
@@ -31,6 +33,12 @@
 	padding: 0;
 	position: absolute;
 	white-space: nowrap;
+}
+
+.l\:reveal.minimize > button {
+	color: initial;
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
 }
 
 .l\:reveal .end {

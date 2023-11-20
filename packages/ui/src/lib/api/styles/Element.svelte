@@ -37,6 +37,18 @@
 	let brightness = themes[$theme]
 	let size = '' // Container size
 	let useCase = ''
+	let contextClasses = ''
+
+	let sharedOptions = {
+		container: '',
+		size: '',
+	}
+
+	//== Shared settings (user controlled)
+	// Container options
+	// - [container + size] work together
+	$: sharedOptions.container = styles.shared?.container.container ?? sharedOptions.container
+	$: sharedOptions.size = styles.shared?.container.size ?? sharedOptions.size
 
 	$: styles = $currentStyles
 	// App settings (user controlled)
@@ -49,14 +61,16 @@
 	$: size = styles.shared?.container.size ?? size
 	$: useCase = styles.blocks?.element.status ?? useCase
 
-	$: containerContext = `l:${container}:${size} content`
+	$: frameClasses = ` l:frame:video`
+	$: contextClasses = `${sharedOptions.size} ${brightness}`
+	$: containerClasses = `l:${container}:${size} content ${contextClasses}`
 </script>
 
 {#if isPage}
 	{@const props = getProps({category, component: title})}
 	<article class="l:sidebar:xs">
-		<section class={`l:main card:xl inset l:frame:twin ${brightness} bg:${background} `}>
-			<div class={containerContext}>
+		<section class={`l:main card:xl inset ${brightness} bg:${background} `}>
+			<div class={containerClasses}>
 				{#if props?.useCases}
 					{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
 					<svelte:component
@@ -116,7 +130,7 @@
 	<article class={`box ${brightness} bg:${background} l:stack `}>
 		<header>
 			<a
-				class="card:md w:full l:switcher:xs emoji:link outline primary:light"
+				class="title card:md w:full l:switcher:xs emoji:link outline primary:light"
 				href={`${path}/${title}`}
 			>
 				<svelte:element this={`h${String(depth)}`} class="link font:lg">
@@ -124,7 +138,7 @@
 				</svelte:element>
 			</a>
 		</header>
-		<div class="card:lg sm">
+		<div class="content">
 			{#if props?.useCases}
 				{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
 				<svelte:component

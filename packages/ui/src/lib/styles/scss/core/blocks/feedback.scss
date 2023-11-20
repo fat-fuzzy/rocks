@@ -1,9 +1,7 @@
 .feedback {
 	color: var(--current-color);
 	font-size: var(--current-font-size);
-	margin-block: var(--current-size);
-	margin-inline: 0;
-	padding: var(--gap);
+	padding: var(--current-size-plus);
 	border: var(--border-width-xl) solid var(--current-border-color);
 	background-color: var(--current-bg-color);
 }
