@@ -58,11 +58,11 @@ h5 {
 	font-size: var(--current-font-size);
 }
 
-[class*='font:minus:'] {
+[class*='font:'][class*=':minus'] {
 	font-size: var(--current-font-size-minus);
 }
 
-[class*='font:plus:'] {
+[class*='font:'][class*=':plus'] {
 	font-size: var(--current-font-size-plus);
 }
 

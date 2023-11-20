@@ -120,7 +120,7 @@
 			<summary class={`card:md box:${color} bg:${color}`}>
 				{category !== 'Compositions' ? category : `${categorySingular} components`}
 			</summary>
-			<div class="drop l:card:xs">
+			<div class="drop xxl">
 				<div class={layoutClass}>
 					{#each componentNames as name}
 						{@const component = components[name]}

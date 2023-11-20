@@ -14,7 +14,7 @@
 	let layout = 'stack'
 
 	$: classes = `l:${layout} bp:${breakpoint} font:${size} ${size} ${color} ${variant} ${align}`
-	$: hintClasses = `form:element font:minus:${size} ${color} ${variant} ${align}`
+	$: hintClasses = `form:element font:${size}:minus ${color} ${variant} ${align}`
 </script>
 
 <label for={id} class={classes}>
