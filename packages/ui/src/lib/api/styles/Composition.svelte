@@ -30,7 +30,7 @@
 	// - [layout + breakpoint] work together
 	$: layout = styles.shared?.layout.layout ?? layout
 	$: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
-	$: threshold = styles.layout?.element.threshold ?? threshold
+	$: threshold = styles.shared?.layout.threshold ?? threshold
 
 	$: props = {
 		...props,

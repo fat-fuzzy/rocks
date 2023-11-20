@@ -8,7 +8,8 @@
 
 [class*='l:frame'] > img,
 [class*='l:frame'] > video,
-[class*='l:frame'] > canvas {
+[class*='l:frame'] > canvas,
+[class*='l:frame'] > .content {
 	inline-size: 100%;
 	block-size: 100%;
 	object-fit: cover;
