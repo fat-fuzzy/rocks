@@ -41,8 +41,13 @@ label > input {
 	max-width: 100%;
 }
 
-* + .feedback {
-	margin-block-start: calc(var(--outline-offset) + 2px);
+// TODO: move this to compositions ?
+label > .feedback {
+	padding: var(--current-size-minus) var(--current-size);
+}
+
+label > .feedback + * {
+	margin-block-start: var(--current-size);
 }
 
 [disabled] {
@@ -133,14 +138,12 @@ label > input {
 label.bare > input,
 label.bare > [type='file'] {
 	color: var(--color-dark);
-	border-color: var(--current-bg-color);
-	background-color: unset;
 }
 
 label.outline > input,
 label.outline > [type='file'] {
 	color: var(--current-color);
-	background-color: unset;
+	border-color: var(--current-gray-contrast);
 }
 
 label.bare.primary > input,

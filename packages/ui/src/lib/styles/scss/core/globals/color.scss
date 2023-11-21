@@ -6,6 +6,7 @@
 [class*='bg:'] {
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
+	border-color: var(--current-gray-light);
 }
 
 .primary:focus {
