@@ -115,7 +115,7 @@ button.highlight.fill:active {
 
 // [Color = primary] x [Variant = outline]
 button.primary.outline {
-	--current-button-text: var(--current-primary);
+	--current-button-text: var(--current-color);
 	--current-button-border: var(--current-primary);
 }
 
@@ -131,7 +131,7 @@ button.primary.outline:active {
 
 // [Color = accent] x [Variant = outline]
 button.accent.outline {
-	--current-button-text: var(--current-accent);
+	--current-button-text: var(--current-color);
 	--current-button-border: var(--current-accent);
 }
 

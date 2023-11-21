@@ -74,7 +74,7 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		--current-color: var(--current-primary);
+		// --current-color: var(--current-primary);
 		--current-accent-color: var(--current-primary);
 	}
 }
@@ -83,7 +83,7 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		--current-color: var(--current-accent);
+		// --current-color: var(--current-accent);
 		--current-accent-color: var(--current-accent);
 	}
 }
@@ -92,7 +92,7 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		--current-color: var(--current-highlight);
+		// --current-color: var(--current-highlight);
 		--current-accent-color: var(--current-highlight);
 	}
 }
@@ -101,7 +101,7 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		--current-color: var(--current-info);
+		// --current-color: var(--current-info);
 		--current-accent-color: var(--current-info);
 	}
 }
@@ -110,7 +110,7 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		--current-color: var(--current-success);
+		// --current-color: var(--current-success);
 		--current-accent-color: var(--current-success);
 	}
 }
@@ -119,7 +119,7 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		--current-color: var(--current-warning);
+		// --current-color: var(--current-warning);
 		--current-accent-color: var(--current-warning);
 	}
 }
@@ -128,7 +128,7 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		--current-color: var(--current-error);
+		// --current-color: var(--current-error);
 		--current-accent-color: var(--current-error);
 	}
 }
@@ -137,12 +137,14 @@ label > .feedback + * {
 
 label.bare > input,
 label.bare > [type='file'] {
-	color: var(--color-dark);
+	color: var(--current-color);
+	background-color: inherit;
 }
 
 label.outline > input,
 label.outline > [type='file'] {
 	color: var(--current-color);
+	background-color: inherit;
 	border-color: var(--current-gray-contrast);
 }
 
@@ -169,6 +171,22 @@ label.outline.highlight > input,
 label.outline.highlight > [type='file'] {
 	color: var(--color-dark);
 	border-color: var(--current-highlight-dark);
+}
+
+label.bare.primary > input,
+label.bare.primary > [type='file'] {
+	color: var(--color-dark);
+	border-color: var(--current-primary-lightest);
+}
+label.bare.accent > input,
+label.bare.accent > [type='file'] {
+	color: var(--color-dark);
+	border-color: var(--current-accent-lightest);
+}
+label.bare.highlight > input,
+label.bare.highlight > [type='file'] {
+	color: var(--color-dark);
+	border-color: var(--current-highlight-lighter);
 }
 
 fieldset.radio,
@@ -361,6 +379,7 @@ label.check[class*='emoji'] span {
 
 .night {
 	label.primary > [type='file'],
+	label.accent > [type='file'],
 	label.highlight > [type='file'] {
 		color: var(--color-dark);
 	}
@@ -424,5 +443,12 @@ label.check[class*='emoji'] span {
 	.bare.highlight > input:hover,
 	.bare.highlight > [type='file']:hover {
 		color: var(--color-dark);
+	}
+}
+
+.night .day {
+	label.primary > [type='file'],
+	label.accent > [type='file'] {
+		color: var(--color-white);
 	}
 }
