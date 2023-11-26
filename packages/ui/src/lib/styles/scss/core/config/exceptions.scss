@@ -18,6 +18,7 @@
 // - DOM node remains accessible to assistive tech
 // - style element to free the space taken up by its box in the document layout
 // - node is not removed from document
+.sr-only,
 .hide\:sr-always,
 .hide\:viz-only {
 	border: 0;

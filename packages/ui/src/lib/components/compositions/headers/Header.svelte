@@ -1,18 +1,17 @@
 <script lang="ts">
+	import {onDestroy} from 'svelte'
 	import {getStores} from '$app/stores'
-	import {clickOutside} from '$lib/utils/click-outside.js'
+	import {clickOutside} from '$lib/utils/click-outside'
 	import {lang} from '$stores/intl'
-	import format from '$lib/utils/format'
-	import {theme as apiTheme} from '$lib/stores/theme.js'
-	import {themes} from '$types/constants.js'
+	import * as settings from '$lib/stores/settings'
 
-	import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
+	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import Settings from '$lib/components/compositions/forms/Settings.svelte'
 
 	export let className = 'header-app'
 	export let breakpoint = 'xxl'
 	export let background = ''
 	export let id = 'ui'
-	export let theme: any // theme store
 
 	let page = getStores().page
 	export let items = {
@@ -53,64 +52,64 @@
 		],
 	}
 
+	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
+
+	const stores = [
+		settings.app.subscribe((value) => {
+			if (value) {
+				appSettings = value
+			}
+		}),
+	]
+
 	let navExpanded = false
-	let settingsExpanded = false
 
 	function handleClickOutsideMainNav(event) {
 		navExpanded = false
-	}
-
-	function handleClickOutsideSettings(event) {
-		settingsExpanded = false
-	}
-
-	function toggleSettings(event) {
-		settingsExpanded = !settingsExpanded
 	}
 
 	function toggleNav(event) {
 		navExpanded = !navExpanded
 	}
 
-	function toggleTheme(event) {
-		const _theme = $currentTheme ? 0 : 1
-		currentTheme.set(_theme)
-	}
-
 	function setLanguage(event) {
-		lang.set(event.detail)
+		lang.set(event.detail.payload)
 	}
 
-	const actions: {[key: string]: (event) => void} = {
-		nav: toggleNav,
-		actions: toggleSettings,
-		theme: toggleTheme,
-		language: setLanguage,
-	}
-	$: currentTheme = theme ? theme : apiTheme
-	$: brightness = themes[$currentTheme]
-	$: headerClass = `${className} l:sidebar:md layer sticky:top bg:${background} ${brightness}`
+	$: brightness = appSettings.brightness
+	$: contrast = appSettings.contrast
+	$: headerClass = `${className} l:sidebar:md layer sticky:top bg:${background} ${brightness} ${contrast}`
 	$: show = background ? `bg:${background} show` : 'show'
 	$: showNav = navExpanded ? show : 'hide:viz-only'
-	$: showSettings = settingsExpanded ? show : 'hide:viz-only'
+	$: revealClasses = 'form:expand justify:center'
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <header class={headerClass}>
 	<div
-		class={`l:main:50 l:reveal:auto bp:${breakpoint}`}
+		class={`l:main:50 l:reveal:auto bp:${breakpoint} ${revealClasses}`}
 		use:clickOutside
 		on:clickOutside={handleClickOutsideMainNav}
 	>
-		<button
-			id={`${id}-primary-nav-button`}
-			class={`sm outline`}
-			aria-expanded={navExpanded}
-			aria-controls={`${id}-primary-nav`}
+		<Expand
+			id={`${id}-settings-settings-button`}
+			variant="outline card"
+			size="sm"
+			title="Menu"
+			name="reveal"
+			controls={`${id}-primary-nav`}
+			value={'menu'}
+			states={{
+				active: {text: 'menu', value: 'show', asset: 'emoji:menu'},
+				inactive: {text: 'menu', value: 'minimize', asset: 'emoji:menu'},
+			}}
 			on:click={toggleNav}
 		>
-			{format.formatLabel('Menu', '🐣')}
-		</button>
-
+			Menu
+		</Expand>
 		<nav id={`${id}-primary-nav`} class={showNav}>
 			<ul class="l:switcher:sm bp:xxs">
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
@@ -126,56 +125,12 @@
 			</ul>
 		</nav>
 	</div>
-	<div
-		class={`l:side l:reveal:auto bp:${breakpoint} align:end`}
-		use:clickOutside
-		on:clickOutside={handleClickOutsideSettings}
-	>
-		<button
-			id={`${id}-app-settings-button`}
-			class={`sm outline`}
-			aria-expanded={settingsExpanded}
-			aria-controls={`${id}-settings-menu`}
-			on:click={toggleSettings}
-		>
-			{format.formatLabel('Settings', '🎛️')}
-		</button>
-		<menu class={showSettings}>
-			{#each items.side as { id, title, action, url, asset, variant, shape, size, color }}
-				{#if url}
-					<a
-						class={`${variant} ${asset} font:${size} ${color}`}
-						href={url}
-						target="_blank"
-						rel="noreferrer"
-					>
-						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {shape} />
-					</a>
-				{:else if action}
-					<button on:click={actions[action]} class={`${variant} font:${size} ${color} ${shape}`}>
-						<ActionLabel {title} {id} theme={themes[$currentTheme]} {asset} {shape} />
-					</button>
-					<!-- {#if subitems}
-						<div class={actionsClass}>
-							<menu class="l:switcher bp:xxs">
-								<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
-
-								<button>Login</button>
-								<div class="l:stack l:reveal sm">
-									<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
-									<menu class={actionsClass}>
-										<button type="button" on:click={toggleTheme}
-											>{themeIcon}&nbsp;&nbsp;Theme</button
-										>
-										<button type="button" on:click={setLanguage}>{langIcon}</button>
-										button>Login</-button
-									</menu>
-								</div>
-							</menu>
-						</div>
-					{/if} -->
-				{/if}
-			{/each}
-		</menu>
-	</div>
+	<Settings
+		path={$page.url.pathname}
+		layout="side"
+		container="card"
+		{breakpoint}
+		align="end"
+		size="sm"
+	/>
 </header>

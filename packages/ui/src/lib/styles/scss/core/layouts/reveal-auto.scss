@@ -29,7 +29,7 @@
 		min-inline-size: unset;
 	}
 
-	.l\:reveal\:auto.bp\:xxs > button {
+	.l\:reveal\:auto.bp\:xxs [class*='expand'] {
 		display: none;
 	}
 
@@ -64,7 +64,7 @@
 		min-inline-size: unset;
 	}
 
-	.l\:reveal\:auto.bp\:xs > button {
+	.l\:reveal\:auto.bp\:xs [class*='expand'] {
 		display: none;
 	}
 
@@ -83,7 +83,7 @@
 		overflow: hidden;
 		padding: 0;
 		position: unset;
-		width: 100%;
+		width: auto;
 		white-space: normal;
 	}
 }
@@ -99,7 +99,7 @@
 		min-inline-size: unset;
 	}
 
-	.l\:reveal\:auto.bp\:sm > button {
+	.l\:reveal\:auto.bp\:sm [class*='expand'] {
 		display: none;
 	}
 
@@ -118,7 +118,7 @@
 		overflow: hidden;
 		padding: 0;
 		position: unset;
-		width: 100%;
+		width: auto;
 		white-space: normal;
 	}
 }
@@ -134,7 +134,7 @@
 		min-inline-size: unset;
 	}
 
-	.l\:reveal\:auto.bp\:md > button {
+	.l\:reveal\:auto.bp\:md [class*='expand'] {
 		display: none;
 	}
 
@@ -153,7 +153,7 @@
 		overflow: hidden;
 		padding: 0;
 		position: unset;
-		width: 100%;
+		width: auto;
 		white-space: normal;
 	}
 }
@@ -169,7 +169,7 @@
 		min-inline-size: unset;
 	}
 
-	.l\:reveal\:auto.bp\:lg > button {
+	.l\:reveal\:auto.bp\:lg [class*='expand'] {
 		display: none;
 	}
 
@@ -188,7 +188,7 @@
 		overflow: hidden;
 		padding: 0;
 		position: unset;
-		width: 100%;
+		width: auto;
 		white-space: normal;
 	}
 }
@@ -204,7 +204,7 @@
 		min-inline-size: unset;
 	}
 
-	.l\:reveal\:auto.bp\:xl > button {
+	.l\:reveal\:auto.bp\:xl [class*='expand'] {
 		display: none;
 	}
 
@@ -223,7 +223,7 @@
 		overflow: hidden;
 		padding: 0;
 		position: unset;
-		width: 100%;
+		width: auto;
 		white-space: normal;
 	}
 }
@@ -239,7 +239,7 @@
 		min-inline-size: unset;
 	}
 
-	.l\:reveal\:auto.bp\:xxl > button {
+	.l\:reveal\:auto.bp\:xxl [class*='expand'] {
 		display: none;
 	}
 
@@ -258,7 +258,7 @@
 		overflow: hidden;
 		padding: 0;
 		position: unset;
-		width: 100%;
+		width: auto;
 		white-space: normal;
 	}
 }

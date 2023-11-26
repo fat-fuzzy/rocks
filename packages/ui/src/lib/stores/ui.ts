@@ -1,4 +1,5 @@
 import {writable} from 'svelte/store'
+import {DEFAULT_STYLES} from '$lib/api/styles/styles-api'
 
-export const theme = writable(1)
-export const lang = writable('en')
+// Selected styles
+export const currentStyles = writable(DEFAULT_STYLES)
