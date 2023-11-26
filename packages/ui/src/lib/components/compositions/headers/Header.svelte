@@ -1,9 +1,7 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {getStores} from '$app/stores'
 	import {clickOutside} from '$lib/utils/click-outside'
 	import {lang} from '$stores/intl'
-	import * as settings from '$lib/stores/settings'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Settings from '$lib/components/compositions/forms/Settings.svelte'
@@ -52,16 +50,6 @@
 		],
 	}
 
-	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
-
-	const stores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-	]
-
 	let navExpanded = false
 
 	function handleClickOutsideMainNav(event) {
@@ -76,18 +64,10 @@
 		lang.set(event.detail.payload)
 	}
 
-	$: brightness = appSettings.brightness
-	$: contrast = appSettings.contrast
-	$: headerBackground = background ? `bg:${background}` : ''
-	$: headerContrast = contrast ? `bg:${contrast}` : 'bg:inherit'
-	$: headerClass = `${className} l:sidebar:md layer sticky:top ${headerBackground} ${brightness} ${headerContrast} justify:start`
+	$: headerClass = `${className} l:sidebar:md layer sticky:top justify:start`
 	$: show = background ? `bg:${background} show` : 'show'
 	$: showNav = navExpanded ? show : 'hide:viz-only'
 	$: revealClasses = 'form:expand'
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 <header class={headerClass}>
