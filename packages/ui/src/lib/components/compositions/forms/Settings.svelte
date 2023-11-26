@@ -98,9 +98,9 @@
 	$: contrast = appSettings.contrast
 	$: show = background ? `bg:${background} show` : 'show'
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
-	$: revealClasses = `form:expand`
+	$: revealClasses = `form:expand card:lg`
 	$: menuClasses = `l:switcher:lg`
-	$: layoutClasses = `l:${layout} l:reveal:auto bp:${breakpoint} align:${align} justify:center`
+	$: layoutClasses = `l:${layout} l:reveal:auto bp:${breakpoint} align:${align}`
 </script>
 
 <div class={layoutClasses}>

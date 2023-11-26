@@ -78,10 +78,10 @@
 
 	$: brightness = appSettings.brightness
 	$: contrast = appSettings.contrast
-	$: headerClass = `${className} l:sidebar:md layer sticky:top bg:${background} ${brightness} ${contrast}`
+	$: headerClass = `${className} l:sidebar:md layer sticky:top bg:${background} ${brightness} ${contrast} justify:start`
 	$: show = background ? `bg:${background} show` : 'show'
 	$: showNav = navExpanded ? show : 'hide:viz-only'
-	$: revealClasses = 'form:expand justify:center'
+	$: revealClasses = 'form:expand'
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -96,7 +96,7 @@
 	>
 		<Expand
 			id={`${id}-settings-settings-button`}
-			variant="outline card"
+			variant="outline"
 			size="sm"
 			title="Menu"
 			name="reveal"
@@ -125,12 +125,5 @@
 			</ul>
 		</nav>
 	</div>
-	<Settings
-		path={$page.url.pathname}
-		layout="side"
-		container="card"
-		{breakpoint}
-		align="end"
-		size="sm"
-	/>
+	<Settings path={$page.url.pathname} layout="side" {breakpoint} align="end" size="sm" />
 </header>
