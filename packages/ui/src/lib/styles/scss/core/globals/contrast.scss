@@ -3,6 +3,7 @@
 .bg\:polar,
 .bg\:contrast > .bg\:polar,
 .bg\:contrast *:not(.bg\:polar) .bg\:polar {
+	--current-bg-color: var(--current-polar);
 	--current-border-color: var(--current-gray-contrast);
 	color: var(--current-color);
 	background-color: var(--current-polar);
@@ -11,6 +12,7 @@
 .bg\:contrast,
 .bg\:polar > .bg\:contrast,
 .bg\:polar *:not(.bg\:contrast) .bg\:contrast {
+	--current-bg-color: var(--current-contrast);
 	--current-border-color: var(--current-gray-light);
 	color: var(--current-color);
 	background-color: var(--current-bg-contrast);
@@ -19,6 +21,7 @@
 .bg\:blend,
 .bg\:polar > .bg\:blend,
 .bg\:polar *:not(.bg\:blend) .bg\:blend {
+	--current-bg-color: var(--current-bg-color);
 	--current-border-color: var(--current-gray-light);
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
@@ -36,4 +39,8 @@
 	[class*='dotted'] {
 		--current-border-color: var(--current-gray-light);
 	}
+}
+
+.bg\:inherit {
+	background-color: inherit;
 }
