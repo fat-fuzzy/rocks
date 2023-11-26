@@ -31,6 +31,7 @@
 	.bg\:blend,
 	.bg\:polar > .bg\:blend,
 	.bg\:polar *:not(.bg\:blend) .bg\:blend {
+		--current-color: var(--night-blend-color-text);
 		color: var(--current-color);
 		--current-border-color: var(--current-gray-contrast);
 	}
