@@ -31,8 +31,8 @@
 	}
 
 	$: layoutClasses = shape
-		? `l:${layout}:${size} bp:${breakpoint} ${variant}`
-		: `${shape} ${variant}`
+		? `${shape} ${variant}`
+		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
 	$: buttonClasses = `${layoutClasses} ${color} ${asset} ${align} ${size} font:${size}`
 </script>
 

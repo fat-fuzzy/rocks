@@ -71,8 +71,8 @@
 	$: expanded = $state.value === 'active'
 	$: currentState = states[$state.value.toString()]
 	$: layoutClasses = shape
-		? `l:${layout}:${size} bp:${breakpoint} ${variant}`
-		: `${shape} ${variant}`
+		? `${shape} ${variant}`
+		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
 	$: buttonClasses = `expand:${$state.value} ${layoutClasses} ${color} ${currentState.asset} ${align} ${size} font:${size}`
 </script>
 
