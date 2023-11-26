@@ -3,7 +3,7 @@
 	import {emojis, assets} from '$types/constants.js'
 
 	export let id = ''
-	export let theme: any // theme store
+	export let brightness: any // theme store
 	export let shape = '' // style: round, [...]
 	export let title = '' // text or alt if
 	export let asset = '' // asset type: emoji or icon
@@ -11,9 +11,9 @@
 
 	$: {
 		if (asset === 'emoji') {
-			assetValue = emojis[theme]
+			assetValue = emojis[brightness]
 		} else if (asset === 'svg') {
-			assetValue = assets[theme] ? assets[theme][id] : ''
+			assetValue = assets[brightness] ? assets[brightness][id] : ''
 		}
 	}
 </script>

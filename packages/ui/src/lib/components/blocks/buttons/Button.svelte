@@ -1,6 +1,6 @@
 <script lang="ts">
-	type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
-	import format from '$lib/utils/format'
+	import type {ButtonType} from '$lib/types/constants'
+	import {createEventDispatcher} from 'svelte'
 
 	export let id = 'button'
 	export let title = ''
@@ -13,32 +13,40 @@
 	export let size = ''
 	export let align = ''
 	export let asset = '' // emoji:value or svg:value
+	export let shape = ''
 	export let text = ''
-	export let formaction = 'enter'
-	export let page = ''
-	export let type: ButtonType = 'button'
+	export let value = ''
+	export let formaction: string | undefined = undefined
+	// export let pathname: string | undefined = undefined
+	export let type: ButtonType = 'submit'
+
+	const dispatch = createEventDispatcher()
 
 	export let onClick = (event: MouseEvent) => {
-		window.alert(`${format.formatLabel(text, asset)} Clicked`)
+		const payload = {
+			id,
+			value,
+		}
+		dispatch('click', payload)
 	}
 
-	$: layoutClass =
-		variant !== 'round' ? `l:${layout}:${size} bp:${breakpoint} ${variant}` : `${variant}`
-	$: classes = `${layoutClass} ${color} ${asset} ${align} ${size} font${size}`
-	$: formaction = page ? `/${page}?/${formaction}` : `?/${formaction}`
+	$: layoutClasses = shape
+		? `l:${layout}:${size} bp:${breakpoint} ${variant}`
+		: `${shape} ${variant}`
+	$: buttonClasses = `${layoutClasses} ${color} ${asset} ${align} ${size} font:${size}`
 </script>
 
 <button
 	{id}
 	{type}
-	data-key={`${name}-${id}`}
-	on:click={type !== 'submit' ? onClick : undefined}
-	class={classes}
-	{disabled}
-	formaction={type === 'submit' ? formaction : undefined}
-	value={id}
-	name={id}
+	{name}
 	{title}
+	{disabled}
+	{formaction}
+	{value}
+	class={buttonClasses}
+	data-key={`${name}-${id}`}
+	on:click={onClick}
 >
 	<slot>{text}</slot>
 </button>
