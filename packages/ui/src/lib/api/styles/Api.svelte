@@ -1,13 +1,14 @@
 <script lang="ts">
 	import {enhance} from '$app/forms'
 	import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
-	import Button from '../../components/blocks/buttons/Button.svelte'
+	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
 	export let title = ''
 	export let categories = ['app']
-	export let page = ''
+	export let path = ''
 	export let method = 'POST'
-	export let formaction = 'enter'
+	export let formaction = 'updateStyles'
+	export let actionPath = 'doc'
 	// export let reset = 'reset'
 
 	let apiLayout = categories.includes('app') ? 'nowrap grow' : 'nowrap shrink'
@@ -30,8 +31,9 @@
 <svelte:window on:keydown={keydown} />
 
 <form
+	name="styles-update"
 	{method}
-	action={page ? `/${page}?/${formaction}` : `?/${formaction}`}
+	action={`/${actionPath}?/${formaction}&redirectTo=${path}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
@@ -41,13 +43,17 @@
 	class={`l:switcher:${apiSize} ${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
 >
 	{#each categories as category}
-		<StyleFamily {category} {title} />
+		<StyleFamily
+			{category}
+			{title}
+			formaction={`/${actionPath}?/${formaction}&redirectTo=${path}`}
+		/>
 	{/each}
 	{#await Promise.resolve()}
 		<div class="maki:xl l:flex justify:center align:center">
 			<div class="l:frame:square">
 				<Button
-					id={`submit.${page}`}
+					id={`submit.${path}`}
 					title="Apply styles"
 					type="submit"
 					size="xl"

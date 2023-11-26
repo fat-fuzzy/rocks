@@ -1,13 +1,17 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
+	import type {StylesApi} from '$lib/api/styles/styles-api'
 
-	import {currentStyles} from '$lib/stores/api'
+	import {onDestroy} from 'svelte'
 
-	let styles: StyleTree
+	import {initStyles} from './styles-api'
+	import * as ui from '$stores/ui'
+
 	export let title = ''
 	export let component: ComponentType
 	export let props: any
+	export let stylesApi: StylesApi = initStyles()
 
 	let layout = 'card'
 	let color = ''
@@ -16,7 +20,16 @@
 	let size = '' // element's own size
 	let typography = '' // element's own size
 
-	$: styles = $currentStyles
+	let styles: StyleTree = stylesApi.getStyleTree()
+
+	const stores = [
+		ui.styles.subscribe((value) => {
+			if (value) {
+				styles = value
+			}
+		}),
+	]
+
 	// Block options
 	// $: variant = styles.tokens?.element.variant ?? variant
 	$: color = styles.tokens?.element.color ?? color
@@ -26,6 +39,10 @@
 	// $: layout = styles.shared?.layout.layout ?? layout
 	// $: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
 	$: props = {...props, asset, title, color, variant, size, layout}
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <svelte:component this={component} id={title} {...props} />

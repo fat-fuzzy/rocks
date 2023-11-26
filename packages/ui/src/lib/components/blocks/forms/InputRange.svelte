@@ -5,6 +5,7 @@
 
 	// @ts-check
 	export let id = ''
+	export let name = ''
 	export let label = 'Range'
 	export let value: string | number = 0
 	export let min = 0
@@ -85,7 +86,7 @@
 		</span>
 		<input
 			{id}
-			name={id}
+			{name}
 			data-test={`input-range-${id}`}
 			type="range"
 			bind:value

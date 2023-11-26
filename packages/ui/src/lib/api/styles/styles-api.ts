@@ -250,7 +250,7 @@ const shared: SharedStyles = {
 			new StyleInputGroup({
 				name: 'Container',
 				id: 'shared.container.container',
-				value: '',
+				value: 'center',
 				input: 'toggle',
 				layout: 'stack',
 				size: 'sm',
@@ -716,8 +716,6 @@ const layouts: LayoutStyles = {
 	}),
 }
 
-export const initStyles = () => new StylesApi({tokens, app, shared, blocks, layouts})
-
 export const DEFAULT_STYLES: StyleTree = {
 	tokens: {
 		element: {color: 'primary', typography: 'h1'},
@@ -748,3 +746,5 @@ export const DEFAULT_STYLES: StyleTree = {
 		element: {size: 'md', breakpoint: 'lg'},
 	},
 }
+
+export const initStyles = () => new StylesApi({tokens, app, shared, blocks, layouts})

@@ -1,13 +1,14 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
+
 	import '$lib/styles/css/tokens/main.css'
 	import '$lib/styles/css/core/main.css'
+
 	import * as settings from '$lib/stores/settings'
 	import {links} from '$lib/api/fixtures/js/nav'
 	import Header from '$lib/components/compositions/headers/Header.svelte'
 
-	let app: Element | null
 	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
 
 	const stores = [

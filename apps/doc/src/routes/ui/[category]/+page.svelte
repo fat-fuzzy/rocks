@@ -44,7 +44,7 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side ui:menu reverse">
-			<Api {title} />
+			<Api {title} {path} actionPath={'ui'} />
 		</div>
 	</RevealAuto>
 </header>

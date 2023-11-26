@@ -1,9 +1,13 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, compositions, api} from '$lib'
+	import {onDestroy} from 'svelte'
+
+	import {tokens, blocks, layouts, compositions, api, stores} from '$lib'
 
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
+
+	let stylesApi = api.stylesApi.initStyles()
 
 	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
 
@@ -15,10 +19,22 @@
 	]
 	let path = $page.url.pathname
 
+	const localStores = [
+		stores.ui.styles.subscribe((value) => {
+			if (value) {
+				stylesApi.applyStyles(value)
+			}
+		}),
+	]
+
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
 	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
 	// TODO: load text content to README.md
+
+	onDestroy(() => {
+		localStores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <svelte:head>
@@ -37,7 +53,7 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side shrink ui:menu">
-			<Api {title} />
+			<Api {title} {path} />
 		</div>
 	</RevealAuto>
 </header>
@@ -55,6 +71,7 @@
 				path={`${path}/${category}`}
 				components={items}
 				{category}
+				{stylesApi}
 				content={markdowns.categories.find(({meta}) => meta.slug === category)}
 			/>
 		{/each}
