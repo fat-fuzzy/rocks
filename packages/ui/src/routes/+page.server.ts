@@ -18,11 +18,12 @@ export const actions = {
 			return fail(400, {settingsRevealError: true})
 		}
 		settings.reveal.set(settingsReveal.settings)
-		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {path: url.pathname})
+		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
 			throw redirect(303, redirectTo)
 		}
+		return {success: true}
 	},
 
 	updateSettings: async ({request, url, cookies}) => {
@@ -37,11 +38,12 @@ export const actions = {
 			return fail(400, {settingsError: true})
 		}
 		settings.app.set(settingsUpdate.app)
-		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {path: url.pathname})
+		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
 			throw redirect(303, redirectTo)
 		}
+		return {success: true}
 	},
 
 	reset: async ({url, cookies}) => {

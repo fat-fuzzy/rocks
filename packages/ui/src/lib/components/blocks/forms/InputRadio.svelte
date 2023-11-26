@@ -25,20 +25,11 @@
 		}
 		dispatch('input', payload)
 	}
-	$: inputId = `radio-${id}`
 	$: backgroundClass = background ? `bg:${background}` : ''
 	$: classes = `l:flex  radio ${size} font:${size}  ${color} ${variant} ${align} ${backgroundClass} ${asset}`
 </script>
 
-<label for={inputId} class={classes}>
+<label for={id} class={classes}>
 	<span>{label}</span>
-	<input
-		id={inputId}
-		data-test={inputId}
-		type="radio"
-		{value}
-		{name}
-		{checked}
-		on:input={handleInput}
-	/>
+	<input {id} type="radio" {value} {name} {checked} on:input={handleInput} data-test={id} />
 </label>

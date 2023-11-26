@@ -1,22 +1,37 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import type {ComponentType} from 'svelte'
-	import * as ui from '$lib'
+	import {onDestroy} from 'svelte'
 
-	let {Element, Api} = ui.api
-	let {RevealAuto} = ui.layouts
+	import type {ComponentType} from 'svelte'
+	import * as uiLib from '$lib'
+
+	let {Element, Api} = uiLib.api
+	let {RevealAuto} = uiLib.layouts
 	let category: string
 	let categoryItems: {[name: string]: ComponentType}
 
 	let title: string
 	let Component: ComponentType
+	let stylesApi = uiLib.api.stylesApi.initStyles()
+
+	const localStores = [
+		uiLib.stores.ui.styles.subscribe((value) => {
+			if (value) {
+				stylesApi.applyStyles(value)
+			}
+		}),
+	]
 
 	$: category = $page.params.category
-	$: categoryItems = ui[category]
+	$: categoryItems = uiLib[category]
 	$: title = $page.params.component
 	$: Component = categoryItems[title]
 	$: path = $page.url.pathname
 	$: headerClass = 'page-header l:switcher:md bg:polar'
+
+	onDestroy(() => {
+		localStores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <svelte:head>
@@ -35,9 +50,18 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side ui:menu l:switcher:sm">
-			<Api categories={['shared', 'app']} {title} />
+			<Api categories={['shared', 'app']} {title} {path} />
 		</div>
 	</RevealAuto>
 </header>
 
-<Element isPage={true} depth={1} {title} page={path} {path} {category} component={Component} />
+<Element
+	isPage={true}
+	depth={1}
+	{title}
+	page={path}
+	{path}
+	{category}
+	{stylesApi}
+	component={Component}
+/>

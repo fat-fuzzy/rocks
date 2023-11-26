@@ -3,8 +3,8 @@ import markdownData from '$data/doc'
 
 export const load = (async (event) => {
 	let styles = {}
-	if (event.locals.stylesData) {
-		styles = JSON.parse(event.locals.stylesData)
+	if (event.locals.styles) {
+		styles = JSON.parse(event.locals.styles)
 	}
 	const markdowns = await markdownData.fetchMarkdowns()
 

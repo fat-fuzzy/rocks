@@ -37,7 +37,7 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side shrink ui:menu">
-			<Api {title} />
+			<Api {title} {path} actionPath={'ui'} />
 		</div>
 	</RevealAuto>
 </header>

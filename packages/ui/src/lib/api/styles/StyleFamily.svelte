@@ -2,22 +2,22 @@
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
 
+	import {onDestroy} from 'svelte'
+
 	import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputGroup from '$lib/components/compositions/forms/InputGroup.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
-	import {currentStyles, theme} from '$lib/stores/api'
-	import {themes} from '$types/constants.js'
+	import * as ui from '$stores/ui'
 	import {initStyles} from './styles-api'
 
 	export let title = ''
 	export let category = 'app'
-	export let page = ''
+	export let formaction: string | undefined = undefined
 
 	let stylesApi = initStyles()
 	let options = stylesApi.getFormOptions(category)
 
-	let styles: StyleTree
 	let apiSize = 'xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
@@ -29,23 +29,38 @@
 		toggle: ToggleMenu,
 	}
 
+	let styles: StyleTree = stylesApi.getStyleTree()
+	let settings = styles.app
+
+	const stores = [
+		ui.app.subscribe((value) => {
+			if (value) {
+				settings = {app: value}
+			}
+		}),
+		ui.styles.subscribe((value) => {
+			if (value) {
+				styles = value
+			}
+		}),
+	]
+
 	const updateStyles = (payload: {name: string; items: {id: string; value: string}[]}) => {
 		payload.items.forEach(({id, value}) => {
 			const [category, family, style, name] = id.split('.')
 			const styleValue = {[style]: value}
 			const familyValue = {[family]: styleValue}
 			styles[category] = {...styles[category], ...familyValue}
-			if (style === 'brightness') {
-				const currentTheme = themes.indexOf(value) || 1
-				theme.set(currentTheme)
+			if (style === 'brightness' || style === 'contrast') {
+				ui.app.set({...settings.app, [style]: value})
 			}
 		})
 		stylesApi.applyStyles(styles)
 
-		currentStyles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
+		ui.styles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
 	}
 
-	function handleInput(event, name: string) {
+	function handleInput(event: CustomEvent, name: string) {
 		const target = event.target ?? event.detail
 		const payload = {
 			name,
@@ -60,7 +75,7 @@
 		updateStyles(payload)
 	}
 
-	function handleSelect(event, familyName: string, name: string, id: string) {
+	function handleSelect(event: CustomEvent, familyName: string, name: string, id: string) {
 		// TODO: reject input if it's not in values list -> form validation /!\
 		const payload = {
 			name: familyName.toLowerCase(),
@@ -91,11 +106,7 @@
 		}
 	}
 
-	$: {
-		styles = $currentStyles
-		styles && stylesApi.applyStyles(styles)
-		options = stylesApi.getFormOptions(category)
-	}
+	$: options = stylesApi.getFormOptions(category)
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard
@@ -107,6 +118,10 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -139,14 +154,14 @@
 						})}
 						<ToggleMenu
 							{id}
-							title={styleInput.name !== familyName ? styleInput.name : ''}
+							title={familyName}
 							items={updatedItems}
-							{page}
 							layout={styleInput.layout || ''}
 							size={apiSize}
 							color={apiColor}
 							variant={apiVariant}
 							container={styleInput.container}
+							{formaction}
 							on:click={(event) => handleToggle(event, familyName, styleInput.id)}
 						/>
 					</Fieldset>
@@ -158,7 +173,7 @@
 								this={InputComponent}
 								{id}
 								{items}
-								{name}
+								name={id}
 								type={input}
 								{value}
 								legend={name}
@@ -178,7 +193,7 @@
 								label={styleInput.name}
 								{items}
 								{value}
-								{name}
+								name={id}
 								layout={styleInput.layout || ''}
 								size="sm"
 								color={apiColor}
@@ -192,7 +207,7 @@
 								<input
 									list={`datalist-${styleInput.name}`}
 									id={`choice-${styleInput.name}`}
-									name={styleInput.id}
+									name={id}
 									class={apiSize}
 									on:input={(event) =>
 										handleSelect(event, familyName, styleInput.name, styleInput.id)}

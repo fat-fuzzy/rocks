@@ -25,20 +25,11 @@
 		}
 		dispatch('input', payload)
 	}
-	$: inputId = `checkbox-${id}`
 	$: backgroundClass = background ? `bg:${background}` : ''
 	$: classes = `l:flex check ${size} font:${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${asset}`
 </script>
 
-<label for={inputId} class={classes}>
+<label for={id} class={classes}>
 	<span>{label}</span>
-	<input
-		id={inputId}
-		data-test={inputId}
-		type="checkbox"
-		{value}
-		{name}
-		{checked}
-		on:input={handleInput}
-	/>
+	<input {id} data-test={id} type="checkbox" {value} {name} {checked} on:input={handleInput} />
 </label>

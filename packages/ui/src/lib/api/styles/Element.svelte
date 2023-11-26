@@ -1,15 +1,18 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
+	import type {StylesApi} from './styles-api'
+
+	import {onDestroy} from 'svelte'
+
+	import * as ui from '$stores/ui'
+	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
 	import Api from './Api.svelte'
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
-	import {currentStyles, theme} from '$lib/stores/api'
-	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
-	import {themes} from '$types/constants.js'
 
 	export let title = ''
 	export let content: {html: string} | undefined = undefined
@@ -17,7 +20,7 @@
 	export let isPage = false
 	export let path = ''
 	export let component: ComponentType
-
+	export let stylesApi: StylesApi
 	export let category = ''
 	export let color = 'primary:light' // TODO: expose breakpoint too
 	export let page = ''
@@ -31,10 +34,8 @@
 		layouts: Layout,
 	}
 
-	let styles: StyleTree
 	let background = ''
 	let container = ''
-	let brightness = themes[$theme]
 	let size = '' // Container size
 	let useCase = ''
 	let contextClasses = ''
@@ -44,17 +45,32 @@
 		size: '',
 	}
 
+	let styles: StyleTree = stylesApi.getStyleTree()
+	let settings = styles.app
+
+	const stores = [
+		ui.app.subscribe((value) => {
+			if (value) {
+				settings = {app: value}
+			}
+		}),
+		ui.styles.subscribe((value) => {
+			if (value) {
+				styles = value
+			}
+		}),
+	]
+
 	//== Shared settings (user controlled)
 	// Container options
 	// - [container + size] work together
 	$: sharedOptions.container = styles.shared?.container.container ?? sharedOptions.container
 	$: sharedOptions.size = styles.shared?.container.size ?? sharedOptions.size
 
-	$: styles = $currentStyles
 	// App settings (user controlled)
 	//== App settings (user controlled)
-	$: brightness = styles.app?.settings.brightness || brightness
-	$: background = styles.app?.settings.contrast ?? background
+	$: brightness = settings.app.brightness
+	$: background = settings.app.contrast
 	// Container options
 	// - [container + size] work together
 	$: container = styles.shared?.container.container ?? container
@@ -64,6 +80,10 @@
 	$: frameClasses = ` l:frame:video`
 	$: contextClasses = `${sharedOptions.size} ${brightness}`
 	$: containerClasses = `l:${container}:${size} content ${contextClasses}`
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 {#if isPage}
@@ -78,6 +98,7 @@
 						{isPage}
 						{title}
 						{component}
+						{stylesApi}
 						props={currentProps}
 					/>
 				{:else}
@@ -91,7 +112,7 @@
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full bg:polar ui:menu">
-							<Api categories={[category]} {title} />
+							<Api categories={[category]} {title} {path} />
 						</div>
 					{:else}
 						<div class="card:lg text:center">
@@ -104,7 +125,7 @@
 			<details class={`l:stack:md`}>
 				<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
 				<div class="drop">
-							<Api categories={[category]} {title} />
+							<Api categories={[category]} {title} {path} />
 				</div>
 			</details>
 		</section> -->
@@ -146,6 +167,7 @@
 					{isPage}
 					{title}
 					{component}
+					{stylesApi}
 					props={currentProps}
 				/>
 			{:else}

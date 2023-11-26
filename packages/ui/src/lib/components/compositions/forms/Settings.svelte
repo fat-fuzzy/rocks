@@ -104,7 +104,7 @@
 
 <div class={layoutClasses}>
 	<form
-		name="expand-app-settings"
+		name="settings-reveal"
 		{method}
 		action={`/?/toggleSettings&redirectTo=${path}`}
 		use:enhance={() => {
@@ -135,7 +135,7 @@
 	</form>
 	<div id={`reveal-${id}`} class={showSettings}>
 		<form
-			name="update-app-settings"
+			name="settings-update"
 			{method}
 			action={`/?/updateSettings&redirectTo=${path}`}
 			use:enhance={() => {

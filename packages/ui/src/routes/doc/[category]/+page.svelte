@@ -1,8 +1,12 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {tokens, blocks, compositions, layouts, api} from '$lib'
+	import {onDestroy} from 'svelte'
+
+	import {tokens, blocks, compositions, layouts, api, stores} from '$lib'
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
+
+	let stylesApi = api.stylesApi.initStyles()
 
 	function getComponentType(cat: string) {
 		switch (cat) {
@@ -19,6 +23,14 @@
 		}
 	}
 
+	const localStores = [
+		stores.ui.styles.subscribe((value) => {
+			if (value) {
+				stylesApi.applyStyles(value)
+			}
+		}),
+	]
+
 	$: category = $page.params.category
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns.categories.find(({meta}) => meta.slug === category)
@@ -26,6 +38,10 @@
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
 	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
+
+	onDestroy(() => {
+		localStores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <svelte:head>
@@ -44,9 +60,9 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side ui:menu reverse">
-			<Api {title} />
+			<Api {title} {path} />
 		</div>
 	</RevealAuto>
 </header>
 
-<Collection {title} depth={1} isPage={true} {components} {path} {category} {content} />
+<Collection {title} depth={1} isPage={true} {components} {path} {category} {content} {stylesApi} />

@@ -35,7 +35,7 @@
 		title="Context"
 	>
 		<div slot="content" class="l:side ui:menu l:switcher:sm">
-			<Api categories={['shared', 'app']} {title} />
+			<Api categories={['shared', 'app']} {title} {path} actionPath={'ui'} />
 		</div>
 	</RevealAuto>
 </header>
