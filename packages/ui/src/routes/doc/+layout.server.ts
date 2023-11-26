@@ -2,11 +2,11 @@ import type {LayoutServerLoad} from './$types'
 import markdownData from '$data/doc'
 
 export const load = (async (event) => {
-	let uiState = {}
-	if (event.locals.uiStateData) {
-		uiState = JSON.parse(event.locals.uiStateData)
+	let styles = {}
+	if (event.locals.stylesData) {
+		styles = JSON.parse(event.locals.stylesData)
 	}
 	const markdowns = await markdownData.fetchMarkdowns()
 
-	return {uiState, markdowns}
+	return {styles, markdowns}
 }) satisfies LayoutServerLoad

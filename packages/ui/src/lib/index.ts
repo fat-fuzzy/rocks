@@ -88,10 +88,9 @@ import Test from '$lib/api/tests/TestComponent.svelte'
 /**
  * Stores
  */
-import * as theme from '$lib/stores/theme'
+import * as settings from '$lib/stores/settings'
 import * as ui from '$lib/stores/ui'
 import * as intl from '$lib/stores/intl'
-import * as stylesStore from '$lib/stores/api'
 
 /**
  * Utilities
@@ -106,7 +105,7 @@ const utils = {
 	clickOutside,
 }
 const stores = {
-	theme,
+	settings,
 	ui,
 	intl,
 }
@@ -170,7 +169,6 @@ const api = {
 	// StyleCapsule,
 	fixturesApi,
 	stylesApi,
-	stylesStore,
 }
 
 const testsApi = {

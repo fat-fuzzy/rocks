@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {theme} from '$lib/stores/theme'
+	import * as settings from '$lib/stores/settings'
 
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
@@ -24,7 +24,7 @@
 	const pause = () => cancelAnimationFrame(frame)
 	let disabled = false
 
-	$: variant = $theme ? `accent` : `highlight`
+	$: variant = settings.$app.brightness === 'day' ? `accent` : `highlight`
 </script>
 
 <menu class="l:switcher bp:xxs sm">

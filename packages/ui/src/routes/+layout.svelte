@@ -1,50 +1,64 @@
 <script lang="ts">
+	import {browser} from '$app/environment'
+	import {onMount, onDestroy} from 'svelte'
+	import {page} from '$app/stores'
 	import '$lib/styles/css/tokens/main.css'
 	import '$lib/styles/css/core/main.css'
-	import {browser} from '$app/environment'
-	import {onMount} from 'svelte'
-	import {page} from '$app/stores'
-	import {themes} from '$types/constants'
-	import {theme} from '$lib/stores/theme'
+	import * as settings from '$lib/stores/settings'
 	import {links} from '$lib/api/fixtures/js/nav'
 	import Header from '$lib/components/compositions/headers/Header.svelte'
 
 	let app: Element | null
-	let currentTheme = themes[$theme]
+	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
+
+	const stores = [
+		settings.app.subscribe((value) => {
+			if (value) {
+				if (app) {
+					app.classList.remove(appSettings.brightness)
+					app.classList.remove(appSettings.contrast)
+				}
+				appSettings = value
+				if (app) {
+					app.classList.add(appSettings.brightness)
+					app.classList.add(appSettings.contrast)
+				}
+			}
+		}),
+	]
 
 	function getClassNameFromUrl(url: URL) {
 		return url.pathname === '/' ? 'home' : url.pathname.slice(1, url.pathname.length)
 	}
 
-	$: className = getClassNameFromUrl($page.url)
-
-	// [TODO:] check if this can be done using reactive variables ($:)
-	theme.subscribe((value) => {
-		if (app) {
-			app.classList.remove(currentTheme)
-		}
-		currentTheme = themes[value]
-		if (app) {
-			app.classList.add(currentTheme)
-		}
-	})
+	$: brightness = appSettings.brightness
+	$: contrast = appSettings.contrast
+	$: pageClass = getClassNameFromUrl($page.url)
+	$: mainClass = `${pageClass} ${brightness} ${contrast}`
+	$: headerClass = `header-app ${brightness} ${contrast}`
+	$: footerClass = `l:center font:sm ${brightness} ${contrast}`
 
 	onMount(() => {
 		if (browser) {
 			app = document.getElementById('app')
 			if (app) {
-				app.classList.add(currentTheme)
+				app.classList.add(appSettings.brightness)
+				app.classList.add(appSettings.contrast)
 			}
 		}
 	})
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
-<Header id="ui" className="header-app" {theme} items={links} breakpoint="xs" />
+<Header id="ui" className={headerClass} items={links} breakpoint="xs" />
 
-<main class={`l:center:md ${className}`}>
+<main class={mainClass}>
 	<slot />
 </main>
 
-<footer class="l:center font:sm">
+<footer class={footerClass}>
 	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>

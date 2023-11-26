@@ -1,3 +1,16 @@
+export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
+
+export type Settings = {
+	[key: string]: string
+}
+
+export type ButtonState = {
+	[key: string]: {text: string; value: string; asset: string}
+}
+
+export const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
+export const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
+
 export const uiState = {
 	DEFAULT: 'default',
 	FOCUS: 'focus',

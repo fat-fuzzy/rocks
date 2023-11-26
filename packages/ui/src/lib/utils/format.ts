@@ -29,7 +29,12 @@ function formatHref(path: string, slug: string) {
 	return `${path}/${slug}`
 }
 
+function getClassNameFromUrl(url: URL) {
+	return url.pathname === '/' ? 'home' : url.pathname.slice(1, url.pathname.length)
+}
+
 export default {
 	formatLabel,
 	formatHref,
+	getClassNameFromUrl,
 }

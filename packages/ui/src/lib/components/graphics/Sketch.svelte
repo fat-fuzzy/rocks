@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {theme} from '$lib/stores/theme' // TODO: get theme from system
+	import * as settings from '$lib/stores/settings' // TODO: get theme from system
 	import {onMount, afterUpdate} from 'svelte'
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
 	import Player from '$lib/components/graphics/Player.svelte'
@@ -16,7 +16,7 @@
 	let programInfo
 	// Canvas
 
-	$: variant = $theme === 1 ? 'accent' : 'highlight' // TODO:  fix this
+	$: variant = settings.$app.brightness === 'day' ? 'accent' : 'highlight' // TODO:  fix this
 	$: showDetails = geometry !== undefined
 
 	function toggleDetails() {

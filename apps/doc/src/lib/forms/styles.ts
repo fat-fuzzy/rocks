@@ -1,6 +1,6 @@
 import {api} from '@fat-fuzzy/ui'
 
-export class UiState {
+export class Styles {
 	api
 	numberToClass: {[key: string]: string} = {
 		// TODO: figure out a better way to map range number values to class strings
@@ -11,7 +11,7 @@ export class UiState {
 		'100': 'xl',
 	}
 	/**
-	 * Create a UI state object from the user's cookie, or initialize a new UI state
+	 * Initialize default Styles object, then update styles from the user's cookie, if any
 	 */
 	constructor(styles = undefined) {
 		this.api = api.stylesApi.initStyles()
@@ -21,28 +21,28 @@ export class UiState {
 	}
 
 	/**
-	 * Update UI library state based on inputs
+	 * Update UI library styles based on inputs
 	 */
 	enter(data: FormData) {
 		const styleValues = []
 
 		// TODO: see how I can improve this
 
-		for (const pair of data.entries()) {
-			let [category, family, style, _] = pair[0].split('.')
-			let styleValue = {[style]: pair[1].toString()}
+		for (const [key, value] of data) {
+			let [category, family, style, _] = key.split('.')
+			let styleValue = {[style]: value.toString()}
 
 			// FIXES: allows to enter range number values mapped to class names with no JS on client
 			// TODO: figure out generic way to map range number values to string labels
-			if (this.numberToClass[String(pair[1])]) {
-				styleValue = {[style]: this.numberToClass[String(pair[1])]}
+			if (this.numberToClass[String(value)]) {
+				styleValue = {[style]: this.numberToClass[String(value)]}
 			}
 			const familyValue = {[family]: styleValue}
 			// TODO: Fix / understand:
 			// - for some reason, the only way to get values out of FormData is to push them into an array
 			// - if I set {name, value} properties in `this.styles`, all other properties except the last one updated become unset
 			//    (i.e. once out of this loop, the only property of `this.styles` is the last one set in the loop)
-			styleValues.push({id: pair[0], value: {[category]: familyValue}})
+			styleValues.push({id: key, value: {[category]: familyValue}})
 		}
 
 		const styles = this.api.getStyleTree()
@@ -57,7 +57,7 @@ export class UiState {
 	}
 
 	/**
-	 * Serialize UI state so it can be set as a cookie
+	 * Serialize Styles so it can be set as a cookie
 	 */
 	toString() {
 		const styleTree = this.api.getStyleTree()
