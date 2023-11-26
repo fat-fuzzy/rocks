@@ -94,12 +94,11 @@
 	})
 
 	$: reveal = settingsReveal.reveal
-	$: brightness = appSettings.brightness
-	$: contrast = appSettings.contrast
-	$: show = background ? `bg:${background} show` : 'show'
+	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
+	$: show = `show ${showBackground}`
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	$: revealClasses = `form:expand card:lg`
-	$: menuClasses = `l:switcher:lg`
+	$: menuClasses = `l:switcher:lg ${showBackground}`
 	$: layoutClasses = `l:${layout} l:reveal:auto bp:${breakpoint} align:${align}`
 </script>
 

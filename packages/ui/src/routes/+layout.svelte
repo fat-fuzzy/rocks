@@ -1,6 +1,5 @@
 <script lang="ts">
-	import {browser} from '$app/environment'
-	import {onMount, onDestroy} from 'svelte'
+	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 	import '$lib/styles/css/tokens/main.css'
 	import '$lib/styles/css/core/main.css'
@@ -14,15 +13,7 @@
 	const stores = [
 		settings.app.subscribe((value) => {
 			if (value) {
-				if (app) {
-					app.classList.remove(appSettings.brightness)
-					app.classList.remove(appSettings.contrast)
-				}
 				appSettings = value
-				if (app) {
-					app.classList.add(appSettings.brightness)
-					app.classList.add(appSettings.contrast)
-				}
 			}
 		}),
 	]
@@ -37,16 +28,6 @@
 	$: mainClass = `${pageClass} ${brightness} ${contrast}`
 	$: headerClass = `header-app ${brightness} ${contrast}`
 	$: footerClass = `l:center font:sm ${brightness} ${contrast}`
-
-	onMount(() => {
-		if (browser) {
-			app = document.getElementById('app')
-			if (app) {
-				app.classList.add(appSettings.brightness)
-				app.classList.add(appSettings.contrast)
-			}
-		}
-	})
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())

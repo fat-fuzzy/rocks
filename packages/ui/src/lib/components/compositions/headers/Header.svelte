@@ -78,7 +78,9 @@
 
 	$: brightness = appSettings.brightness
 	$: contrast = appSettings.contrast
-	$: headerClass = `${className} l:sidebar:md layer sticky:top bg:${background} ${brightness} ${contrast} justify:start`
+	$: headerBackground = background ? `bg:${background}` : ''
+	$: headerContrast = contrast ? `bg:${contrast}` : 'bg:inherit'
+	$: headerClass = `${className} l:sidebar:md layer sticky:top ${headerBackground} ${brightness} ${headerContrast} justify:start`
 	$: show = background ? `bg:${background} show` : 'show'
 	$: showNav = navExpanded ? show : 'hide:viz-only'
 	$: revealClasses = 'form:expand'
