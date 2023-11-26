@@ -68,8 +68,8 @@
 		}
 	})
 
-	$: currentState = states[$state.value.toString()]
 	$: expanded = $state.value === 'active'
+	$: currentState = states[$state.value.toString()]
 	$: layoutClasses = shape
 		? `l:${layout}:${size} bp:${breakpoint} ${variant}`
 		: `${shape} ${variant}`

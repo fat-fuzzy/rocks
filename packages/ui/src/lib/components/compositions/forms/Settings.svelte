@@ -28,8 +28,8 @@
 				color: 'primary',
 				size: 'md',
 				states: {
-					active: {text: 'day', value: 'day', asset: 'emoji:day'},
-					inactive: {text: 'night', value: 'night', asset: 'emoji:night'},
+					active: {text: 'night', value: 'night', asset: 'emoji:night'},
+					inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
 				},
 			},
 			{
@@ -41,8 +41,8 @@
 				color: 'primary',
 				size: 'md',
 				states: {
-					active: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
-					inactive: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
+					active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
+					inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
 				},
 			},
 		],
@@ -78,11 +78,11 @@
 		switch (event.detail.id) {
 			case 'contrast':
 				updated = event.detail.pressed ? 'contrast' : 'blend'
-				settings.app.set({brightness, contrast: updated})
+				settings.app.set({brightness: appSettings.brightness, contrast: updated})
 				break
 			case 'brightness':
 				updated = event.detail.pressed ? 'night' : 'day'
-				settings.app.set({brightness: updated, contrast})
+				settings.app.set({brightness: updated, contrast: appSettings.contrast})
 				break
 			default:
 				break

@@ -67,8 +67,8 @@
 		}
 	})
 
-	$: currentState = states[$state.value.toString()]
 	$: pressed = $state.value === 'active'
+	$: currentState = states[$state.value.toString()]
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`

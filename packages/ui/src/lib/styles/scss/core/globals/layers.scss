@@ -24,7 +24,6 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: inherit; // this cannot be transparent or scrolled content will show behind
 	z-index: var(--z-index-sticky);
 }
 

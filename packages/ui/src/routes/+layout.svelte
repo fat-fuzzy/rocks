@@ -25,9 +25,9 @@
 	$: brightness = appSettings.brightness
 	$: contrast = appSettings.contrast
 	$: pageClass = getClassNameFromUrl($page.url)
-	$: mainClass = `${pageClass} ${brightness} ${contrast}`
-	$: headerClass = `header-app ${brightness} ${contrast}`
-	$: footerClass = `l:center font:sm ${brightness} ${contrast}`
+	$: mainClass = `${pageClass} ${brightness} bg:${contrast}`
+	$: headerClass = `header-app ${brightness} bg:${contrast}`
+	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
