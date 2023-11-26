@@ -70,8 +70,8 @@
 
 	$: pressed = $state.value === 'active'
 	$: layoutClasses = shape
-		? `l:${layout}:${size} bp:${breakpoint} ${variant}`
-		: `${shape} ${variant}`
+		? `${shape} ${variant}`
+		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
 	$: buttonClasses = `toggle:${$state.value} ${layoutClasses} ${color} ${asset} ${align} ${size} font:${size}`
 </script>
 
