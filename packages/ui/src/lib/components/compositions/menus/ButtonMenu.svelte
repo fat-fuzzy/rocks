@@ -12,38 +12,30 @@
 	export let color = ''
 	export let variant = ''
 	export let asset = ''
-	export let formaction = 'enter'
-	export let page = ''
+	export let formaction: string | undefined = undefined
 	export let items: any = [] // TODO Fix type
 
-	let menuId = id
-
-	export let onClick = (event: MouseEvent) => {
-		const payload = {
-			clicked: event.target?.id || undefined,
-			text: event.target?.textContent || undefined,
-		}
-		window.alert(`${payload.text} Clicked`)
-		dispatch('click', payload)
+	const onClick = (event: CustomEvent) => {
+		dispatch('click', event.detail)
 	}
+	$: type = formaction ? 'submit' : 'button'
 </script>
 
 {#if title}
 	<div class={`menu l:stack:${size}`}>
 		<p>{title}</p>
-		<menu id={menuId} class={`l:${layout}:${size} ${container}:${size} th:${threshold} ${size}`}>
-			{#each items as button}
-				{@const itemColor = button.color ?? color}
-				{@const itemVariant = button.variant ?? variant}
-				{@const itemSize = button.size ?? size}
-				{@const itemAsset = button.asset ?? asset}
+		<menu {id} class={`l:${layout}:${size} ${container}:${size} th:${threshold} ${size}`}>
+			{#each items as props, i}
+				{@const itemColor = props.color ?? color}
+				{@const itemVariant = props.variant ?? variant}
+				{@const itemSize = props.size ?? size}
+				{@const itemAsset = props.asset ?? asset}
 				<li>
 					<Button
-						{onClick}
-						name={menuId}
-						{page}
+						on:click={onClick}
+						{type}
 						{formaction}
-						{...button}
+						{...props}
 						color={itemColor}
 						variant={itemVariant}
 						size={itemSize}
@@ -54,19 +46,18 @@
 		</menu>
 	</div>
 {:else}
-	<menu id={menuId} class={`l:${layout} ${container}:${size} th:${threshold} ${size}`}>
-		{#each items as button}
-			{@const itemColor = button.color ?? color}
-			{@const itemVariant = button.variant ?? variant}
-			{@const itemSize = button.size ?? size}
-			{@const itemAsset = button.asset ?? asset}
+	<menu {id} class={`l:${layout} ${container}:${size} th:${threshold} ${size}`}>
+		{#each items as props, i}
+			{@const itemColor = props.color ?? color}
+			{@const itemVariant = props.variant ?? variant}
+			{@const itemSize = props.size ?? size}
+			{@const itemAsset = props.asset ?? asset}
 			<li>
 				<Button
-					{onClick}
-					name={menuId}
-					{page}
+					on:click={onClick}
+					{type}
 					{formaction}
-					{...button}
+					{...props}
 					color={itemColor}
 					variant={itemVariant}
 					size={itemSize}
