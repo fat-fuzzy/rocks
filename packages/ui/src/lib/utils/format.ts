@@ -33,8 +33,13 @@ function getClassNameFromUrl(url: URL) {
 	return url.pathname === '/' ? 'home' : url.pathname.slice(1, url.pathname.length)
 }
 
+function getCategorySingular(category: string) {
+	return `${category.slice(0, 1).toUpperCase()}${category.slice(1, category.length - 1)}`
+}
+
 export default {
 	formatLabel,
 	formatHref,
 	getClassNameFromUrl,
+	getCategorySingular,
 }

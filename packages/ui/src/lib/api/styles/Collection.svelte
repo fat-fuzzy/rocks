@@ -35,10 +35,6 @@
 
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
-	$: categorySingular = `${category.slice(0, 1).toUpperCase()}${category.slice(
-		1,
-		category.length - 1,
-	)}`
 	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
 
 	onDestroy(() => {
@@ -118,7 +114,7 @@
 	<section>
 		<details class={`l:stack:md ${size}`} open>
 			<summary class={`card:md box:${color} bg:${color}`}>
-				{category !== 'Compositions' ? category : `${categorySingular} components`}
+				{category}
 			</summary>
 			<div class="drop xxl">
 				<div class={layoutClass}>
