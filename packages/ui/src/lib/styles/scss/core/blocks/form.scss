@@ -74,7 +74,6 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		// --current-color: var(--current-primary);
 		--current-accent-color: var(--current-primary);
 	}
 }
@@ -83,7 +82,6 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		// --current-color: var(--current-accent);
 		--current-accent-color: var(--current-accent);
 	}
 }
@@ -92,7 +90,6 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		// --current-color: var(--current-highlight);
 		--current-accent-color: var(--current-highlight);
 	}
 }
@@ -101,7 +98,6 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		// --current-color: var(--current-info);
 		--current-accent-color: var(--current-info);
 	}
 }
@@ -110,7 +106,6 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		// --current-color: var(--current-success);
 		--current-accent-color: var(--current-success);
 	}
 }
@@ -119,7 +114,6 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		// --current-color: var(--current-warning);
 		--current-accent-color: var(--current-warning);
 	}
 }
@@ -128,7 +122,6 @@ label > .feedback + * {
 	input,
 	select,
 	textarea {
-		// --current-color: var(--current-error);
 		--current-accent-color: var(--current-error);
 	}
 }
