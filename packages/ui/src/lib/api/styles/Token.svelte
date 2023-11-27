@@ -5,7 +5,7 @@
 
 	import {onDestroy} from 'svelte'
 
-	import {initStyles} from './styles-api'
+	import {initStyles} from '$lib/api/styles/styles-api'
 	import * as ui from '$stores/ui'
 
 	export let title = ''

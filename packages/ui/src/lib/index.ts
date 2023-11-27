@@ -9,7 +9,7 @@ import Typography from '$lib/components/tokens/Typography.svelte'
 /**
  * Block components
  */
-import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
+// import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
@@ -167,8 +167,8 @@ const api = {
 	Element,
 	// StyleFamily,
 	// StyleCapsule,
-	fixturesApi,
 	stylesApi,
+	fixturesApi,
 }
 
 const testsApi = {

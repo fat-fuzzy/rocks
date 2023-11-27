@@ -1,7 +1,7 @@
 import type {Settings} from '$types/constants'
 import {DEFAULT_REVEAL_STATE, REVEAL_TRANSITION} from '$types/constants'
 
-export class SettingsReveal {
+export class StylesContextReveal {
 	settings: Settings
 
 	/**

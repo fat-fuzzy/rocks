@@ -99,10 +99,11 @@
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	$: revealClasses = `form:expand card:lg`
 	$: menuClasses = `l:switcher:lg ${showBackground}`
-	$: layoutClasses = `l:${layout} l:reveal:auto bp:${breakpoint} align:${align}`
+	$: layoutClass = layout ? `l:${layout}:${size}` : ''
+	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 </script>
 
-<div class={layoutClasses}>
+<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutsideSettings}>
 	<form
 		name="settings-reveal"
 		{method}
@@ -144,8 +145,6 @@
 					update({reset: false})
 				}
 			}}
-			use:clickOutside
-			on:clickOutside={handleClickOutsideSettings}
 			class={menuClasses}
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}

@@ -8,6 +8,7 @@
 	const {Sidebar, RevealAuto} = layouts
 
 	let stylesApi = api.stylesApi.initStyles()
+	let revealContext: {[key: string]: string} = {reveal: ''}
 
 	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
 
@@ -25,12 +26,21 @@
 				stylesApi.applyStyles(value)
 			}
 		}),
+		stores.ui.reveal.subscribe((value) => {
+			if (value) {
+				revealContext = value
+			}
+		}),
 	]
 
+	function handleToggle(event: CustomEvent) {
+		stores.ui.reveal.set(event.detail)
+	}
+
+	$: reveal = revealContext.reveal
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
 	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
-	// TODO: load text content to README.md
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -45,12 +55,18 @@
 <header class={headerClass}>
 	<h1 class="l:main:40 card:xl">{title}</h1>
 	<RevealAuto
+		id="ui-app-context"
 		size="sm"
-		threshold="sm"
-		color="primary:light"
+		breakpoint="sm"
+		color="primary"
 		align="start"
-		asset="&nbsp;☂️&nbsp;"
+		variant="outline"
 		title="Context"
+		formaction="toggleContext"
+		actionPath="doc"
+		{reveal}
+		{path}
+		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side shrink ui:menu">
 			<Api {title} {path} />

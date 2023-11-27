@@ -77,7 +77,7 @@
 		on:clickOutside={handleClickOutsideMainNav}
 	>
 		<Expand
-			id={`${id}-settings-settings-button`}
+			id={`${id}-settings-button`}
 			variant="outline"
 			size="sm"
 			title="Menu"

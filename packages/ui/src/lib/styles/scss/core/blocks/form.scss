@@ -34,7 +34,7 @@ textarea {
 
 form {
 	color: var(--current-color);
-	background-color: var(--current-bg-color);
+	background-color: inherit;
 }
 
 label > input {

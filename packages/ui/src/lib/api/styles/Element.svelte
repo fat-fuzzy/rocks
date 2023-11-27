@@ -5,6 +5,7 @@
 
 	import {onDestroy} from 'svelte'
 
+	import {initStyles} from './styles-api'
 	import * as ui from '$stores/ui'
 	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
@@ -20,12 +21,13 @@
 	export let isPage = false
 	export let path = ''
 	export let component: ComponentType
-	export let stylesApi: StylesApi
 	export let category = ''
 	export let color = 'primary:light' // TODO: expose breakpoint too
 	export let page = ''
 	export let props: any = getProps({category, component: title}) || {}
 	props.page = page
+
+	export let stylesApi: StylesApi = initStyles()
 
 	let ApiElement: {[category: string]: ComponentType} = {
 		tokens: Token,
@@ -77,8 +79,7 @@
 	$: size = styles.shared?.container.size ?? size
 	$: useCase = styles.blocks?.element.status ?? useCase
 
-	$: frameClasses = ` l:frame:video`
-	$: contextClasses = `${sharedOptions.size} ${brightness}`
+	$: contextClasses = `${sharedOptions.size}`
 	$: containerClasses = `l:${container}:${size} content ${contextClasses}`
 
 	onDestroy(() => {

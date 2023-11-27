@@ -5,7 +5,7 @@
 
 	import {onDestroy} from 'svelte'
 
-	import {initStyles} from './styles-api'
+	import {initStyles} from '$lib/api/styles/styles-api'
 	import * as ui from '$stores/ui'
 	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
@@ -17,6 +17,7 @@
 
 	let size = '' // element's own size
 	let threshold = '' // element's own threshold
+	let breakpoint = '' // element's own threshold
 	let background = ''
 	let content = ''
 	let sideContent = ''
@@ -43,7 +44,7 @@
 	$: background = settings.app.contrast ?? background
 	// Element options
 	$: size = styles.layouts?.element?.size ?? size
-	$: threshold = styles.layouts?.element.threshold ?? threshold
+	$: breakpoint = styles.layouts?.element.breakpoint ?? breakpoint
 	// Content options
 	$: content = styles.layouts?.content.content ?? 'card'
 	$: sideContent = styles.layouts?.content.side ?? 'card'
@@ -80,7 +81,7 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {background} {threshold} } {props}>
+		<svelte:component this={component} id={title} {size} {background} {breakpoint} } {props}>
 			<div slot="content">
 				{@const fixtureProps = getProps({category, component: title})}
 				{#if content === 'text'}
@@ -93,7 +94,7 @@
 			</div>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {size} {background} {threshold} } {props}>
+		<svelte:component this={component} id={title} {size} {background} {breakpoint} } {props}>
 			{@const fixtureProps = getProps({category, component: title})}
 			{#if content === 'text'}
 				<p>{fixtureProps.text}</p>
@@ -118,7 +119,7 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
+		<svelte:component this={component} id={title} {size} {background} {breakpoint} {...props}>
 			<svelte:fragment slot="content">
 				{#each fixtureProps.form as item}
 					<div class={contentStyles}>{item}</div>
@@ -126,7 +127,7 @@
 			</svelte:fragment>
 		</svelte:component>
 	{:else}
-		<svelte:component this={component} id={title} {size} {background} {threshold} {...props}>
+		<svelte:component this={component} id={title} {size} {background} {breakpoint} {...props}>
 			{#each fixtureProps.card as item}
 				<div class={contentStyles}>{item}</div>
 			{/each}

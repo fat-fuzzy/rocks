@@ -7,6 +7,7 @@
 	const {RevealAuto} = layouts
 
 	let stylesApi = api.stylesApi.initStyles()
+	let revealContext: {[key: string]: string} = {reveal: ''}
 
 	function getComponentType(cat: string) {
 		switch (cat) {
@@ -29,8 +30,18 @@
 				stylesApi.applyStyles(value)
 			}
 		}),
+		stores.ui.reveal.subscribe((value) => {
+			if (value) {
+				revealContext = value
+			}
+		}),
 	]
 
+	function handleToggle(event: CustomEvent) {
+		stores.ui.reveal.set(event.detail)
+	}
+
+	$: reveal = revealContext.reveal
 	$: category = $page.params.category
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns.categories.find(({meta}) => meta.slug === category)
@@ -52,12 +63,18 @@
 <header class={headerClass}>
 	<h1 class="l:main:40 card:xl">{title}</h1>
 	<RevealAuto
+		id="ui-category-app-context"
 		size="sm"
-		threshold="sm"
-		color="primary:light"
+		breakpoint="sm"
+		color="primary"
 		align="start"
-		asset="&nbsp;☂️&nbsp;"
+		variant="outline"
 		title="Context"
+		formaction="toggleContext"
+		actionPath="doc"
+		{reveal}
+		{path}
+		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side ui:menu reverse">
 			<Api {title} {path} />
