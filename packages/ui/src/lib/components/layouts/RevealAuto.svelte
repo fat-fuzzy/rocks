@@ -1,49 +1,81 @@
 <script lang="ts">
-	import format from '$lib/utils/format'
+	import {createEventDispatcher} from 'svelte'
+	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
+
+	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+
+	const dispatch = createEventDispatcher()
 
 	export let layout = ''
 	export let direction = ''
 	export let color = ''
 	export let size = ''
-	export let threshold = ''
+	export let breakpoint = ''
 	export let variant = ''
 	export let align = ''
 	export let id = 'ui'
 	export let background = ''
 	export let title = 'Reveal'
-	export let asset = ''
+	export let name = 'reveal'
+	export let reveal = 'minimize'
+	export let path = ''
+	export let method = 'POST'
+	export let formaction: string | undefined = undefined
+	export let actionPath: string | undefined = undefined
 
-	let expanded = false
-
-	function handleClickOutside(event) {
-		expanded = false
+	function handleClickOutside() {
+		dispatch('toggle', {reveal: 'minimize'})
 	}
 
-	function toggleReveal(event) {
-		expanded = !expanded
+	function handleToggle(event: CustomEvent) {
+		const updated = event.detail.expanded ? 'show' : 'minimize'
+		dispatch('toggle', {reveal: updated})
 	}
 
+	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
+	$: show = `show ${showBackground}`
+	$: showContent = reveal === 'show' ? show : 'hide:viz-only'
+	$: revealClasses = `form:expand card:lg align-self:end`
 	$: layoutClass = layout ? `l:${layout}:${size}` : ''
-	$: backgroundClass = background ? `layer bg:${background}` : ''
-	$: show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
+	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 </script>
 
-<div
-	class={`l:reveal:auto l:${layout}:${size} bp:${threshold} ${size}  align-self:${align} align:end `}
-	use:clickOutside
-	on:clickOutside={handleClickOutside}
->
-	<button
-		id={`${id}-reveal-button`}
-		class={`card:${size} font:${size} ${variant} ${color} outline`}
-		aria-expanded={expanded}
-		aria-controls={`${id}-reveal`}
-		on:click={toggleReveal}
+<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutside}>
+	<form
+		{name}
+		{method}
+		action={actionPath && formaction
+			? `/${actionPath}?/${formaction}&redirectTo=${path}`
+			: `?/${formaction}&redirectTo=${path}`}
+		use:enhance={() => {
+			// prevent default callback from resetting the form
+			return ({update}) => {
+				update({reset: false})
+			}
+		}}
+		class={revealClasses}
 	>
-		{format.formatLabel(title, asset)}
-	</button>
-	<div id={`${id}-reveal`} class={`${layoutClass} ${show} ${direction} shrink`}>
+		<Expand
+			id={`${id}-expand-button`}
+			{variant}
+			{size}
+			{color}
+			{title}
+			type={actionPath && formaction ? 'submit' : 'button'}
+			name="reveal"
+			controls={`reveal-${id}`}
+			value={'menu'}
+			states={{
+				active: {text: 'Context', value: 'show', asset: 'emoji:context'},
+				inactive: {text: 'Context', value: 'minimize', asset: 'emoji:context'},
+			}}
+			on:click={handleToggle}
+		>
+			{title}
+		</Expand>
+	</form>
+	<div id={`reveal-${id}`} class={`${layoutClass} ${showContent} ${direction} shrink`}>
 		<slot name="content">
 			<div class={`layer card:${size}`}>
 				<p class="font:lg">Revealed Content</p>

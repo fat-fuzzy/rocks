@@ -9,7 +9,7 @@
 	import InputGroup from '$lib/components/compositions/forms/InputGroup.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 	import * as ui from '$stores/ui'
-	import {initStyles} from './styles-api'
+	import {initStyles} from '$lib/api/styles/styles-api'
 
 	export let title = ''
 	export let category = 'app'

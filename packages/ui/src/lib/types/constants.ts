@@ -10,6 +10,10 @@ export type ButtonState = {
 
 export const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 export const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
+export const REVEAL_TRANSITION: {[key: string]: string} = {
+	show: 'minimize',
+	minimize: 'show',
+}
 
 export const uiState = {
 	DEFAULT: 'default',
