@@ -98,7 +98,7 @@
 	$: show = `show ${showBackground}`
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	$: revealClasses = `form:expand card:lg`
-	$: menuClasses = `l:switcher:lg ${showBackground}`
+	$: menuClasses = `l:switcher:lg ${showBackground} card:lg`
 	$: layoutClass = layout ? `l:${layout}:${size}` : ''
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 </script>
