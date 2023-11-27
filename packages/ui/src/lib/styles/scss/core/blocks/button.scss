@@ -218,8 +218,8 @@ button.highlight.bare:active {
 		--current-button-border: var(--color-gray-4);
 	}
 
-	button.outline:not(.primary, .accent, .highlight),
-	button.bare:not(.primary, .accent, .highlight) {
+	button.outline,
+	button.bare {
 		--current-button-text: var(--current-color);
 	}
 
@@ -233,17 +233,17 @@ button.highlight.bare:active {
 
 	button.primary.outline,
 	button.primary.bare {
-		--current-button-text: var(--current-primary-light);
+		--current-button-text: var(--current-primary-lightest);
 	}
 
 	button.accent.outline,
 	button.accent.bare {
-		--current-button-text: var(--current-accent-light);
+		--current-button-text: var(--current-accent-lightest);
 	}
 
 	button.highlight.outline,
 	button.highlight.bare {
-		--current-button-text: var(--current-highlight-light);
+		--current-button-text: var(--current-highlight-lightest);
 	}
 
 	button.outline.primary:hover,

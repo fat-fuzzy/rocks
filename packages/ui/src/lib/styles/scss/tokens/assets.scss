@@ -23,6 +23,7 @@ $point-up: '👆';
 $point-down: '👇';
 $log: '🪵';
 $control-knobs: '🎛️';
+$umbrella: '☂️';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -63,6 +64,7 @@ $emojis: (
 	menu: #{$chick},
 	settings: #{$control-knobs},
 	log: #{$log},
+	context: #{$umbrella},
 
 	// Playground fixture emojis
 	geometry-2d: #{$ruler}
