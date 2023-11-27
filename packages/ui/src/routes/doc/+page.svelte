@@ -53,7 +53,7 @@
 </svelte:head>
 
 <header class={headerClass}>
-	<h1 class="l:main:40 card:xl">{title}</h1>
+	<h1 class="l:main:40 card:xl nowrap">{title}</h1>
 	<RevealAuto
 		id="ui-app-context"
 		size="sm"
