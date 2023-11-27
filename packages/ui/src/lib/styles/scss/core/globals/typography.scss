@@ -14,6 +14,18 @@ h6 {
 	margin-block-end: var(--current-size);
 }
 
+h1,
+h2,
+h3,
+h3,
+h4,
+h5,
+h6 {
+	&.nowrap {
+		white-space: nowrap;
+	}
+}
+
 h1.link,
 h2.link,
 h3.link {
