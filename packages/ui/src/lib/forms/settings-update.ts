@@ -32,6 +32,7 @@ export class SettingsUpdate {
 			if (updated) {
 				this.app.brightness = BRIGHTNESS_TRANSITION[this.app.brightness]
 			}
+			updated = data.get('contrast')?.toString()
 			if (updated) {
 				this.app.contrast = CONTRAST_TRANSITION[this.app.contrast]
 			}

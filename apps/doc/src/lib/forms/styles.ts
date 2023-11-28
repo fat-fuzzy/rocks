@@ -1,7 +1,11 @@
-import {api} from '@fat-fuzzy/ui'
+import {api, constants} from '@fat-fuzzy/ui'
+
+const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = constants
 
 export class Styles {
 	api
+	settings
+	contextReveal
 	numberToClass: {[key: string]: string} = {
 		// TODO: figure out a better way to map range number values to class strings
 		'0': 'xs',
@@ -10,13 +14,17 @@ export class Styles {
 		'75': 'lg',
 		'100': 'xl',
 	}
+
 	/**
 	 * Initialize default Styles object, then update styles from the user's cookie, if any
 	 */
 	constructor(styles = undefined) {
 		this.api = api.stylesApi.initStyles()
+		this.settings = DEFAULT_APP_SETTINGS
+		this.contextReveal = DEFAULT_REVEAL_STATE
 		if (styles) {
 			this.api.applyStyles(styles)
+			this.settings = this.api.app
 		}
 	}
 
@@ -48,8 +56,9 @@ export class Styles {
 		const styles = this.api.getStyleTree()
 		styleValues.forEach(({id, value}) => {
 			const [category, family, style, _] = id.split('.')
-			if (category !== 'submit' && category !== 'button') {
-				styles[category][family][style] = value[category][family][style]
+			styles[category][family][style] = value[category][family][style]
+			if (style === 'brightness' || style === 'contrast') {
+				this.settings[style] = value[category][family][style]
 			}
 		})
 		this.api.applyStyles(styles)
