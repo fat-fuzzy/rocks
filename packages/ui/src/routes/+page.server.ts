@@ -1,11 +1,32 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
+import {NavReveal} from '$lib/forms/nav-reveal'
 import {SettingsReveal} from '$lib/forms/settings-reveal'
 import {SettingsUpdate} from '$lib/forms/settings-update'
 import {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} from '$types/constants'
 import * as settings from '$lib/stores/settings'
 
 export const actions = {
+	toggleNav: async ({request, url, cookies}) => {
+		const data = await request.formData()
+		const serialized = cookies.get('fat-fuzzy-nav-reveal')
+		let currentState = DEFAULT_REVEAL_STATE
+		if (serialized) {
+			currentState = JSON.parse(serialized)
+		}
+		let navReveal = new NavReveal(currentState)
+		if (!navReveal.reveal(data)) {
+			return fail(400, {navRevealError: true})
+		}
+		settings.navReveal.set(navReveal.nav)
+		cookies.set('fat-fuzzy-nav-reveal', navReveal.toString(), {path: '/'})
+		if (url.searchParams.has('redirectTo')) {
+			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
+			throw redirect(303, redirectTo)
+		}
+		return {success: true}
+	},
+
 	toggleSettings: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-settings-reveal')
@@ -17,7 +38,7 @@ export const actions = {
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
-		settings.reveal.set(settingsReveal.settings)
+		settings.settingsReveal.set(settingsReveal.settings)
 		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
@@ -47,6 +68,7 @@ export const actions = {
 	},
 
 	reset: async ({url, cookies}) => {
+		cookies.delete('fat-fuzzy-nav-reveal', {path: url.pathname})
 		cookies.delete('fat-fuzzy-settings-reveal', {path: url.pathname})
 		cookies.delete('fat-fuzzy-settings-app', {path: url.pathname})
 	},

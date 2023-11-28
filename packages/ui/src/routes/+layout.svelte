@@ -35,7 +35,7 @@
 	})
 </script>
 
-<Header id="ui" className={headerClass} items={links} breakpoint="xs" />
+<Header id="ui" className={headerClass} path={$page.url.pathname} {links} breakpoint="xs" />
 
 <main class={mainClass}>
 	<slot />

@@ -3,11 +3,11 @@
 	import {enhance} from '$app/forms'
 
 	import {clickOutside} from '$lib/utils/click-outside.js'
+	import * as settings from '$stores/settings'
+	import {assets} from '$types/constants.js'
+
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
-
-	import * as settings from '$lib/stores/settings'
-	import {assets} from '$types/constants.js'
 
 	const method = 'POST'
 	export let breakpoint = 'xs'
@@ -16,7 +16,7 @@
 	export let size = ''
 	export let color = ''
 	export let variant = 'outline'
-	export let layout = 'side'
+	export let layout: string | undefined = undefined
 	export let align = 'end'
 	export let path: string | undefined = undefined
 
@@ -70,7 +70,7 @@
 				appSettings = value
 			}
 		}),
-		settings.reveal.subscribe((value) => {
+		settings.settingsReveal.subscribe((value) => {
 			if (value) {
 				settingsReveal = value
 			}
@@ -78,12 +78,12 @@
 	]
 
 	function handleClickOutsideSettings() {
-		settings.reveal.set({reveal: 'minimize'})
+		settings.settingsReveal.set({reveal: 'minimize'})
 	}
 
 	function handleToggle(event: CustomEvent) {
 		const updated = event.detail.expanded ? 'show' : 'minimize'
-		settings.reveal.set({reveal: updated})
+		settings.settingsReveal.set({reveal: updated})
 	}
 
 	function handleUpdate(event: CustomEvent) {
@@ -112,8 +112,8 @@
 	$: show = `show ${showBackground}`
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	$: revealClasses = `form:expand card:lg`
-	$: formClasses = `l:switcher:lg ${showBackground} card:lg`
-	$: layoutClass = layout ? `l:${layout}:${size}` : ''
+	$: formClasses = `l:switcher:lg ${showBackground}`
+	$: layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 </script>
 
