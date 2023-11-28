@@ -57,7 +57,7 @@
 	$: showNav = reveal === 'show' ? show : 'hide:viz-only'
 	$: navClasses = `l:switcher:xxs ${showBackground}`
 	$: revealClasses = `form:expand card:lg`
-	$: layoutClasses = `l:main l:reveal:auto bp:${breakpoint}`
+	$: layoutClasses = `l:main:60 l:reveal:auto bp:${breakpoint}`
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())

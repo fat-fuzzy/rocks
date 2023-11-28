@@ -23,7 +23,7 @@ main > [class^='l:sidebar'] {
 	padding: var(--gap);
 }
 
-.l\:main {
+[class^='l:main'] {
 	flex-basis: 0;
 	flex-grow: 999;
 	// ~ min-width in horizontal\:tb writing mode: if (width < 70%) -> wrap
