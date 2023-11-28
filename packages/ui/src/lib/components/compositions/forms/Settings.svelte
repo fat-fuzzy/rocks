@@ -1,15 +1,18 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
+
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
+
 	import * as settings from '$lib/stores/settings'
+	import {assets} from '$types/constants.js'
 
 	const method = 'POST'
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined
-	export let id = 'menu-settings-settings'
+	export let id = 'menu-settings'
 	export let size = ''
 	export let color = ''
 	export let variant = 'outline'
@@ -44,6 +47,16 @@
 					active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
 					inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
 				},
+			},
+		],
+		links: [
+			{
+				id: 'link-github',
+				title: 'GitHub icon',
+				url: 'https://github.com/fat-fuzzy/rocks',
+				asset: 'svg:icon-github',
+				shape: 'round',
+				size: 'xs',
 			},
 		],
 	}
@@ -94,11 +107,12 @@
 	})
 
 	$: reveal = settingsReveal.reveal
+	$: brightness = appSettings.brightness
 	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
 	$: show = `show ${showBackground}`
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	$: revealClasses = `form:expand card:lg`
-	$: menuClasses = `l:switcher:lg ${showBackground} card:lg`
+	$: formClasses = `l:switcher:lg ${showBackground} card:lg`
 	$: layoutClass = layout ? `l:${layout}:${size}` : ''
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 </script>
@@ -117,7 +131,7 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`${id}-settings-settings-button`}
+			id={`${id}-settings-button`}
 			{variant}
 			{color}
 			{size}
@@ -134,7 +148,7 @@
 			Settings
 		</Expand>
 	</form>
-	<div id={`reveal-${id}`} class={showSettings}>
+	<div id={`reveal-${id}`} class={`${showSettings} l:flex`}>
 		<form
 			name="settings-update"
 			{method}
@@ -145,7 +159,7 @@
 					update({reset: false})
 				}
 			}}
-			class={menuClasses}
+			class={formClasses}
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
 				<Switch
@@ -156,11 +170,28 @@
 					{shape}
 					{color}
 					{size}
+					asset={`emoji:${appSettings[id]}`}
 					value={appSettings[id]}
 					{states}
 					on:click={handleUpdate}
 				/>
 			{/each}
 		</form>
+		<menu class={`maki:xl`}>
+			{#each items.links as { id, title, url, shape, size, asset }}
+				{@const assetValue = assets[brightness] ? assets[brightness][id] : ''}
+				<li>
+					<a
+						class={`${variant} font:${size} ${shape} ${color}`}
+						href={url}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<!---TODO: Manage svg assets as SVGs -->
+						<img src={assetValue} alt={title} class={`${id} ${asset}`} />
+					</a>
+				</li>
+			{/each}
+		</menu>
 	</div>
 </div>
