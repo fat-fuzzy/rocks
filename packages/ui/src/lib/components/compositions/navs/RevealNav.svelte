@@ -2,12 +2,14 @@
 	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
-	import {ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION, TRANSITION_CONTRAST} from '$types/constants'
+	import constants from '$lib/types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 
 	import * as settings from '$stores/settings'
+
+	const {ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION, TRANSITION_CONTRAST} = constants
 
 	const method = 'POST'
 	export let size = ''
@@ -19,6 +21,7 @@
 	export let color = ''
 	export let background = 'polar'
 	export let path = ''
+	export let redirect = ''
 	export let id = 'ui'
 	export let title = 'RevealNav'
 	export let name = 'reveal-nav'
@@ -78,8 +81,8 @@
 		{name}
 		{method}
 		action={actionPath && formaction
-			? `${actionPath}?/${formaction}&redirectTo=${path}`
-			: `?/${formaction}&redirectTo=${path}`}
+			? `${actionPath}?/${formaction}&redirectTo=${redirect}`
+			: `?/${formaction}&redirectTo=${redirect}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {

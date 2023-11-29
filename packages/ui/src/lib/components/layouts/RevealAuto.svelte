@@ -3,11 +3,12 @@
 	import {enhance} from '$app/forms'
 
 	import {clickOutside} from '$lib/utils/click-outside.js'
-	import {ALIGN_OPPOSITE} from '$types/constants'
+	import constants from '$lib/types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 
 	const dispatch = createEventDispatcher()
+	const {ALIGN_OPPOSITE} = constants
 
 	export let layout = ''
 	export let direction = ''

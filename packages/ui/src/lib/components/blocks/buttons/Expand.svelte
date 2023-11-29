@@ -1,7 +1,5 @@
-<svelte:options accessors={true} />
-
 <script lang="ts">
-	import type {ButtonType, ButtonState} from '$lib/types/constants'
+	import type {ButtonType, ButtonState} from '$types'
 	import {onMount, createEventDispatcher} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
 	import {createMachine} from 'xstate'

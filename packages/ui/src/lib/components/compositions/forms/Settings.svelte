@@ -4,11 +4,12 @@
 
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import * as settings from '$stores/settings'
-	import {assets} from '$types/constants.js'
+	import constants from '$lib/types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
 
+	const {SVG_ASSETS} = constants
 	const method = 'POST'
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined
@@ -179,7 +180,7 @@
 		</form>
 		<menu class={`maki:xl`}>
 			{#each items.links as { id, title, url, shape, size, asset }}
-				{@const assetValue = assets[brightness] ? assets[brightness][id] : ''}
+				{@const assetValue = SVG_ASSETS[brightness] ? SVG_ASSETS[brightness][id] : ''}
 				<li>
 					<a
 						class={`${variant} font:${size} ${shape} ${color}`}

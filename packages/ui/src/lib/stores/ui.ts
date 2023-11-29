@@ -1,7 +1,8 @@
 import {writable} from 'svelte/store'
 
-import {DEFAULT_STYLES} from '$lib/api/styles/styles-api'
-import {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} from '$types/constants'
+import constants from '$lib/types/constants'
+
+const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, DEFAULT_STYLES} = constants
 
 export const styles = writable(DEFAULT_STYLES)
 

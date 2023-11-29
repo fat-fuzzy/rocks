@@ -1,16 +1,16 @@
 <script lang="ts">
-	import {page} from '$app/stores'
 	import {onDestroy} from 'svelte'
-
+	import {page} from '$app/stores'
 	import {tokens, blocks, layouts, compositions, api, stores} from '$lib'
 
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
 
+	const actionPath = 'doc'
+	const title = 'Fat Fuzzy Test' // TODO : Fix title: add breadcrumb nav component ?
+
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = {reveal: ''}
-
-	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -63,13 +63,13 @@
 		variant="outline"
 		title="Context"
 		formaction="toggleContext"
-		actionPath="doc"
+		{actionPath}
 		{reveal}
 		{path}
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side shrink ui:menu">
-			<Api {title} {path} />
+			<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
 		</div>
 	</RevealAuto>
 </header>

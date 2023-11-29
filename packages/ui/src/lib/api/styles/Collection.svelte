@@ -13,10 +13,13 @@
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 
+	const actionPath = 'doc'
+
 	export let title = ''
 	export let content: {html: string} | undefined = undefined
 	export let depth = 0
 	export let path = $page.url.pathname
+	export let redirect = $page.url.pathname
 	export let layout = 'grid' // TODO: expose breakpoint too
 	export let size = 'xs' // TODO: expose breakpoint too
 	export let color = 'primary:light' // TODO: expose breakpoint too
@@ -56,6 +59,7 @@
 					{component}
 					{stylesApi}
 					{props}
+					redirect={$page.url.pathname}
 				/>
 			{/each}
 		</section>
@@ -65,7 +69,7 @@
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full bg:polar ui:menu">
-							<Api categories={[category]} {title} {path} />
+							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
 						</div>
 					{:else}
 						<div class="card:lg text:center">
@@ -78,7 +82,7 @@
 				<details class={`l:stack:md`}>
 					<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
 					<div class="drop">
-							<Api categories={[category]} {title} {path} />
+							<Api categories={[category]} {title} {path} redirect={$page.url.pathname}/>
 					</div>
 				</details>
 			</section> -->

@@ -1,9 +1,11 @@
 import type {StyleTree} from '$lib/api/styles/types'
 
-import {api, constants} from '$lib'
+import constants from '$lib/types/constants'
+import {initStyles} from '$lib/api/styles/styles-api'
+
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, TRANSITION_REVEAL, NUMBER_TO_SIZE} = constants
 
-export class Styles {
+export class StylesUpdate {
 	api
 	settings
 	contextReveal
@@ -11,7 +13,7 @@ export class Styles {
 	 * Initialize default Styles object, then update styles from the user's cookie, if any
 	 */
 	constructor(styles: StyleTree | null = null) {
-		this.api = api.stylesApi.initStyles()
+		this.api = initStyles()
 		this.settings = DEFAULT_APP_SETTINGS
 		this.contextReveal = DEFAULT_REVEAL_STATE
 		if (styles) {
