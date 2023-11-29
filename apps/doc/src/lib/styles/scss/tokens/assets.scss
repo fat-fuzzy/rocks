@@ -21,10 +21,11 @@ $point-left: '👈';
 $point-right: '👉';
 $point-up: '👆';
 $point-down: '👇';
+$log: '🪵';
+$control-knobs: '🎛️';
+$umbrella: '☂️';
 $emojis: (
-
 	// Text emojis
-
 	link: #{$link},
 	point-left: #{$point-left},
 	point-right: #{$point-right},
@@ -32,7 +33,6 @@ $emojis: (
 	point-down: #{$point-down},
 
 	// Feedback emojis
-
 	default: #{$bunny},
 	info: #{$bulb},
 	success: #{$confetti},
@@ -40,31 +40,32 @@ $emojis: (
 	error: #{$poop},
 
 	// App Settings emojis
-
 	day: #{$sun},
 	night: #{$moon},
 	contrast: #{$half-moon},
 	blend: #{$new-moon},
 
 	// ButtonMenu fixture emojis
-
 	vader: #{$invader},
 	ollie: #{$octopus},
 	moby: #{$spouting-whale},
 
 	// ToggleMenu / RevealMenu fixture emojis
-
 	idea: #{$bulb},
 	profile: #{$lion},
 	favorite: #{$heart},
 	sparkles: #{$sparkles},
 
 	// LinkList / Nav / DetailsNav fixture emojis
-
 	home: #{$egg},
 	about: #{$chick},
 
-	// Playground fixture emojis
+	// Composition Emojis
+	menu: #{$chick},
+	settings: #{$control-knobs},
+	log: #{$log},
+	context: #{$umbrella},
 
+	// Playground fixture emojis
 	geometry-2d: #{$ruler}
 );
