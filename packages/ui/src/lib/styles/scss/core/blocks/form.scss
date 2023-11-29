@@ -24,7 +24,7 @@ input,
 select,
 textarea {
 	--current-color: var(--color-dark);
-	--current-accent-color: var(--current-gray);
+	--current-accent-color: var(--current-gray-contrast);
 	border: 1px solid var(--current-accent-color);
 	border-radius: var(--radius-base);
 	color: var(--current-color);
@@ -32,6 +32,13 @@ textarea {
 	border-color: var(--current-accent-color);
 }
 
+.night {
+	input,
+	select,
+	textarea {
+		--current-accent-color: var(--current-gray-light);
+	}
+}
 form {
 	color: var(--current-color);
 	background-color: inherit;
