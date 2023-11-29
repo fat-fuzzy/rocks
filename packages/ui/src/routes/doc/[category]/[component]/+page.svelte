@@ -64,7 +64,7 @@
 	<RevealAuto
 		id="ui-component-app-context"
 		size="sm"
-		breakpoint="sm"
+		breakpoint="md"
 		color="primary"
 		align="start"
 		variant="outline"
