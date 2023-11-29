@@ -251,7 +251,6 @@ label.accent > input:active,
 label.highlight > input:hover,
 label.highlight > input:active {
 	color: var(--current-color);
-	accent-color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
 
