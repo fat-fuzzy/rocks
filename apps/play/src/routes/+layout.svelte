@@ -1,53 +1,51 @@
 <script lang="ts">
+	import {onDestroy} from 'svelte'
 	import '$lib/styles/css/tokens/main.css'
 	import '@fat-fuzzy/ui/csscore'
-	import {browser} from '$app/environment'
-	import {onMount} from 'svelte'
+
 	import {page} from '$app/stores'
 	import {links} from '$lib/data/nav'
-	import {compositions, constants} from '@fat-fuzzy/ui'
-	import {theme} from '$lib/stores/theme.js'
+	import {compositions, stores, utils} from '@fat-fuzzy/ui'
 
 	const {Header} = compositions
+	const {settings} = stores
 
-	let {themes} = constants
+	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
 
-	let app: Element | null
-	let currentTheme = themes[$theme]
-
-	// [TODO:] check if this can be done using reactive variables ($:)
-	theme.subscribe((value) => {
-		if (app) {
-			app.classList.remove(currentTheme)
-		}
-		currentTheme = themes[value]
-		if (app) {
-			app.classList.add(currentTheme)
-		}
-	})
-
-	function getClassNameFromUrl(url: URL) {
-		return url.pathname === '/' ? 'home' : url.pathname.slice(1, url.pathname.length)
-	}
-
-	$: className = getClassNameFromUrl($page.url)
-
-	onMount(() => {
-		if (browser) {
-			app = document.getElementById('app')
-			if (app) {
-				app.classList.add(currentTheme)
+	const localStores = [
+		settings.app.subscribe((value) => {
+			if (value) {
+				appSettings = value
 			}
-		}
+		}),
+	]
+
+	$: brightness = appSettings.brightness
+	$: contrast = appSettings.contrast
+	$: pageClass = utils.format.getClassNameFromUrl($page.url)
+	$: mainClass = `${pageClass} ${brightness} bg:${contrast}`
+	$: headerClass = `header-app ${brightness} bg:${contrast}`
+	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
+
+	onDestroy(() => {
+		localStores.forEach((unsubscribe) => unsubscribe())
 	})
 </script>
 
-<Header id="doc" className="header-app" items={links} {theme} />
+<Header
+	id="ui"
+	className={headerClass}
+	actionPath="/"
+	formaction="toggleNav"
+	redirect={$page.url.pathname}
+	{links}
+	breakpoint="xs"
+/>
 
-<main class={className}>
+<main class={mainClass}>
 	<slot />
 </main>
 
-<footer class="l:center:md">
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+<footer class={footerClass}>
+	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
