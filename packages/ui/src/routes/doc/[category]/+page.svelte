@@ -6,7 +6,7 @@
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
 
-	const actionPath = 'doc'
+	const actionPath = '/doc'
 
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = {reveal: ''}
@@ -75,7 +75,7 @@
 		formaction="toggleContext"
 		{actionPath}
 		{reveal}
-		{path}
+		redirect={$page.url.pathname}
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side ui:menu reverse">
@@ -84,4 +84,15 @@
 	</RevealAuto>
 </header>
 
-<Collection {title} depth={1} isPage={true} {components} {path} {category} {content} {stylesApi} />
+<Collection
+	{title}
+	depth={1}
+	isPage={true}
+	{components}
+	{path}
+	{category}
+	{content}
+	{stylesApi}
+	{actionPath}
+	redirect={$page.url.pathname}
+/>

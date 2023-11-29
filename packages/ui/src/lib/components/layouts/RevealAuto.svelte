@@ -22,10 +22,10 @@
 	export let title = 'Reveal'
 	export let name = 'reveal'
 	export let reveal = 'minimize'
-	export let path = ''
 	export let method = 'POST'
 	export let formaction: string | undefined = undefined
 	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	function handleClickOutside() {
 		dispatch('toggle', {reveal: 'minimize'})
@@ -43,15 +43,19 @@
 	$: revealClasses = `form:expand align-self:${buttonAlign}`
 	$: layoutClass = layout ? `l:${layout}:${size}` : ''
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
+
+	$: action = formaction
+		? redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+		: undefined
 </script>
 
 <div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutside}>
 	<form
 		{name}
 		{method}
-		action={actionPath && formaction
-			? `/${actionPath}?/${formaction}&redirectTo=${path}`
-			: `?/${formaction}&redirectTo=${path}`}
+		action={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {

@@ -16,7 +16,9 @@
 	export let background = ''
 	export let size = 'sm'
 	export let id = 'ui'
-	export let path: string | undefined = undefined
+	export let formaction: string | undefined = undefined
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	let page = getStores().page
 	export let links = [{slug: 'about', title: 'About'}]
@@ -60,6 +62,12 @@
 	$: revealClasses = `form:expand card:${size}`
 	$: layoutClasses = `l:main:60 l:reveal:auto bp:${breakpoint}`
 
+	$: action = formaction
+		? redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+		: 'toggleNav'
+
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
 	})
@@ -70,7 +78,7 @@
 		<form
 			name="nav-reveal"
 			{method}
-			action={`/?/toggleNav&redirectTo=${path}`}
+			action={action ? (actionPath ? `${actionPath}?/${action}` : `/?/${action}`) : undefined}
 			use:enhance={() => {
 				// prevent default callback from resetting the form
 				return ({update}) => {
@@ -85,6 +93,7 @@
 				size="sm"
 				title="Menu"
 				name="reveal"
+				type={actionPath && formaction ? 'submit' : 'button'}
 				controls={`${id}-primary-nav`}
 				value={'menu'}
 				states={{
@@ -111,5 +120,13 @@
 			</ul>
 		</nav>
 	</div>
-	<Settings path={$page.url.pathname} {breakpoint} align="end" size="sm" />
+	<Settings
+		path={$page.url.pathname}
+		{breakpoint}
+		align="end"
+		size="sm"
+		formaction="toggleSettings"
+		actionPath="/"
+		redirect={$page.url.pathname}
+	/>
 </header>

@@ -7,7 +7,7 @@
 
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
-	const actionPath = 'doc'
+	const actionPath = '/doc'
 
 	let categoryItems: {[name: string]: any} = {
 		tokens: tokens,
@@ -72,7 +72,7 @@
 		formaction="toggleContext"
 		{actionPath}
 		{reveal}
-		{path}
+		redirect={$page.url.pathname}
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side ui:menu l:switcher:sm">
@@ -80,8 +80,8 @@
 				categories={['shared', 'app']}
 				{title}
 				{path}
-				redirect={$page.url.pathname}
 				{actionPath}
+				redirect={$page.url.pathname}
 			/>
 		</div>
 	</RevealAuto>
@@ -96,5 +96,6 @@
 	{category}
 	{stylesApi}
 	component={Component}
+	{actionPath}
 	redirect={$page.url.pathname}
 />

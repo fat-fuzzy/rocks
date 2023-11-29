@@ -245,7 +245,16 @@ const shared: SharedStyles = {
 		size: 'lg',
 		variant: 'card',
 		id: 'shared.container',
-		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'RevealAuto'],
+		exclude: [
+			'Color',
+			'Typography',
+			'ActionLabel',
+			'Button',
+			'Expand',
+			'Switch',
+			'Toggle',
+			'RevealAuto',
+		],
 		items: [
 			new StyleInputGroup({
 				name: 'Container',
@@ -288,7 +297,17 @@ const shared: SharedStyles = {
 		size: 'lg',
 		variant: '',
 		id: 'shared.layout',
-		exclude: ['Color', 'Typography', 'ActionLabel', 'Button', 'Toggle', 'Feedback', 'RevealAuto'],
+		exclude: [
+			'Color',
+			'Typography',
+			'ActionLabel',
+			'Button',
+			'Expand',
+			'Switch',
+			'Toggle',
+			'Feedback',
+			'RevealAuto',
+		],
 		items: [
 			new StyleInputGroup({
 				name: 'Layout',
@@ -559,6 +578,8 @@ const blocks: BlockStyles = {
 				exclude: [
 					'ActionLabel',
 					'Button',
+					'Expand',
+					'Switch',
 					'Toggle',
 					'InputCheck',
 					'InputFile',
