@@ -10,9 +10,43 @@ export type ButtonState = {
 
 export const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 export const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
-export const REVEAL_TRANSITION: {[key: string]: string} = {
+
+export const TRANSITION_REVEAL: {[key: string]: string} = {
 	show: 'minimize',
 	minimize: 'show',
+}
+
+export const TRANSITION_BRIGHTNESS: {[key: string]: string} = {
+	day: 'night',
+	night: 'day',
+}
+
+export const TRANSITION_CONTRAST: {[key: string]: string} = {
+	contrast: 'blend',
+	blend: 'contrast',
+}
+
+export const ALIGN_OPPOSITE: {[key: string]: string} = {
+	end: 'start',
+	start: 'end',
+}
+
+export const NUMBER_TO_SIZE: {[key: string]: string} = {
+	// TODO: figure out a better way to map range number values to class strings
+	'0': 'xs',
+	'25': 'sm',
+	'50': 'md',
+	'75': 'lg',
+	'100': 'xl',
+}
+/**
+ * Indicates the direction that icons should point in when used to indicate direction of movement of the UI element under control
+ */
+export const ALIGN_ANIMATION_DIRECTION: {[inactivePosition: string]: {[state: string]: string}} = {
+	left: {show: 'down', minimize: 'left'},
+	right: {show: 'down', minimize: 'right'},
+	top: {show: 'down', minimize: 'up'},
+	bottom: {show: 'up', minimize: 'down'},
 }
 
 export const uiState = {

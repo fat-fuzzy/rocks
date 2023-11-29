@@ -1,5 +1,5 @@
 import type {Settings} from '$types/constants'
-import {DEFAULT_REVEAL_STATE, REVEAL_TRANSITION} from '$types/constants'
+import {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} from '$types/constants'
 
 export class StylesContextReveal {
 	settings: Settings
@@ -22,7 +22,7 @@ export class StylesContextReveal {
 		if (data.has('reveal')) {
 			const updated = data.get('reveal')?.toString()
 			if (updated) {
-				this.settings.reveal = REVEAL_TRANSITION[this.settings.reveal]
+				this.settings.reveal = TRANSITION_REVEAL[this.settings.reveal]
 				return true
 			}
 		}

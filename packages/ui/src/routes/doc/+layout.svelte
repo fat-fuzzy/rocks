@@ -1,5 +1,9 @@
 <script lang="ts">
+	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
+
+	import * as settings from '$stores/settings'
+
 	import {tokens, blocks, compositions, layouts} from '$lib'
 	const {RevealNav} = compositions
 	let path = $page.url.pathname
@@ -15,13 +19,17 @@
 	const compositionNames = Object.keys(compositions).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
-	let expanded = true
+	let sidebarReveal: {[key: string]: string} = {reveal: ''}
 
-	function toggleReveal(event) {
-		expanded = event.detail.expanded
-	}
+	const stores = [
+		settings.sidebarReveal.subscribe((value) => {
+			if (value) {
+				sidebarReveal = value
+			}
+		}),
+	]
 
-	$: path = ''
+	$: path = $page.url.pathname
 	$: items = [
 		{
 			slug: 'doc',
@@ -50,13 +58,17 @@
 			],
 		},
 	]
-	$: sidebarReveal = expanded ? '' : 'minimize'
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <div class="l:sidebar:xs align-content:start">
-	<div class={`l:side ${sidebarReveal}`}>
+	<div class={`l:side ${sidebarReveal.reveal}`}>
 		<RevealNav
 			title="Design Library"
+			name="reveal"
 			id="nav-page"
 			{items}
 			{path}
@@ -65,7 +77,9 @@
 			color="bg:primary:light"
 			position="fixed"
 			background="polar"
-			on:toggleReveal={toggleReveal}
+			container="card"
+			formaction="toggleSidebar"
+			actionPath="/"
 		/>
 	</div>
 	<div class="l:main l:center l:stack:xl">

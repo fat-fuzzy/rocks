@@ -1,6 +1,7 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 import {NavReveal} from '$lib/forms/nav-reveal'
+import {SidebarReveal} from '$lib/forms/sidebar-reveal'
 import {SettingsReveal} from '$lib/forms/settings-reveal'
 import {SettingsUpdate} from '$lib/forms/settings-update'
 import {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} from '$types/constants'
@@ -20,6 +21,26 @@ export const actions = {
 		}
 		settings.navReveal.set(navReveal.nav)
 		cookies.set('fat-fuzzy-nav-reveal', navReveal.toString(), {path: '/'})
+		if (url.searchParams.has('redirectTo')) {
+			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
+			throw redirect(303, redirectTo)
+		}
+		return {success: true}
+	},
+
+	toggleSidebar: async ({request, url, cookies}) => {
+		const data = await request.formData()
+		const serialized = cookies.get('fat-fuzzy-sidebar-reveal')
+		let currentState = DEFAULT_REVEAL_STATE
+		if (serialized) {
+			currentState = JSON.parse(serialized)
+		}
+		let sidebarReveal = new SidebarReveal(currentState)
+		if (!sidebarReveal.reveal(data)) {
+			return fail(400, {sidebarRevealError: true})
+		}
+		settings.sidebarReveal.set(sidebarReveal.sidebar)
+		cookies.set('fat-fuzzy-sidebar-reveal', sidebarReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
 			throw redirect(303, redirectTo)

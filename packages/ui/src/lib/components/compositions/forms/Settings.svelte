@@ -13,7 +13,7 @@
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined
 	export let id = 'menu-settings'
-	export let size = ''
+	export let size = 'md'
 	export let color = ''
 	export let variant = 'outline'
 	export let layout: string | undefined = undefined
@@ -35,19 +35,19 @@
 					inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
 				},
 			},
-			{
-				id: 'contrast',
-				name: 'contrast',
-				title: 'Contrast',
-				variant: 'outline',
-				shape: 'round',
-				color: 'primary',
-				size: 'md',
-				states: {
-					active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-					inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
-				},
-			},
+			// {
+			// 	id: 'contrast',
+			// 	name: 'contrast',
+			// 	title: 'Contrast',
+			// 	variant: 'outline',
+			// 	shape: 'round',
+			// 	color: 'primary',
+			// 	size: 'md',
+			// 	states: {
+			// 		active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
+			// 		inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
+			// 	},
+			// },
 		],
 		links: [
 			{
@@ -111,7 +111,7 @@
 	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
 	$: show = `show ${showBackground}`
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
-	$: revealClasses = `form:expand card:lg`
+	$: revealClasses = `form:expand card:${size}`
 	$: formClasses = `l:switcher:lg ${showBackground}`
 	$: layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`

@@ -1,20 +1,12 @@
 import type {StyleTree} from '$lib/api/styles/types'
 
 import {api, constants} from '$lib'
-const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, REVEAL_TRANSITION} = constants
+const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, TRANSITION_REVEAL, NUMBER_TO_SIZE} = constants
 
 export class Styles {
 	api
 	settings
 	contextReveal
-	numberToClass: {[key: string]: string} = {
-		// TODO: figure out a better way to map range number values to class strings
-		'0': 'xs',
-		'25': 'sm',
-		'50': 'md',
-		'75': 'lg',
-		'100': 'xl',
-	}
 	/**
 	 * Initialize default Styles object, then update styles from the user's cookie, if any
 	 */
@@ -35,15 +27,15 @@ export class Styles {
 
 		for (const [key, value] of data) {
 			if (key === 'reveal') {
-				this.settings.reveal = REVEAL_TRANSITION[this.settings.reveal]
+				this.settings.reveal = TRANSITION_REVEAL[this.settings.reveal]
 				return true
 			}
 			let [category, family, style, _] = key.split('.')
 			let styleValue = {[style]: value.toString()}
 			// FIXES: allows to enter range number values mapped to class names with no JS on client
 			// TODO: figure out generic way to map range number values to string labels
-			if (this.numberToClass[String(value)]) {
-				styleValue = {[style]: this.numberToClass[String(value)]}
+			if (NUMBER_TO_SIZE[String(value)]) {
+				styleValue = {[style]: NUMBER_TO_SIZE[String(value)]}
 			}
 			const familyValue = {[family]: styleValue}
 			// TODO: Fix / understand:

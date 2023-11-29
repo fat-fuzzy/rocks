@@ -14,14 +14,15 @@
 	export let className = 'header-app'
 	export let breakpoint = 'xxl'
 	export let background = ''
+	export let size = 'sm'
 	export let id = 'ui'
 	export let path: string | undefined = undefined
 
 	let page = getStores().page
 	export let links = [{slug: 'about', title: 'About'}]
 
-	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
 	let navReveal: {[key: string]: string} = {reveal: ''}
+	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
 
 	const stores = [
 		settings.app.subscribe((value) => {
@@ -36,16 +37,16 @@
 		}),
 	]
 
-	function handleClickOutsideMainNav(event) {
+	function handleClickOutsideMainNav() {
 		settings.navReveal.set({reveal: 'minimize'})
 	}
 
-	function toggleNav(event) {
+	function toggleNav(event: CustomEvent) {
 		const updated = event.detail.expanded ? 'show' : 'minimize'
 		settings.navReveal.set({reveal: updated})
 	}
 
-	function setLanguage(event) {
+	function setLanguage(event: CustomEvent) {
 		lang.set(event.detail.payload)
 	}
 
@@ -56,7 +57,7 @@
 	$: show = `show ${showBackground}`
 	$: showNav = reveal === 'show' ? show : 'hide:viz-only'
 	$: navClasses = `l:switcher:xxs ${showBackground}`
-	$: revealClasses = `form:expand card:lg`
+	$: revealClasses = `form:expand card:${size}`
 	$: layoutClasses = `l:main:60 l:reveal:auto bp:${breakpoint}`
 
 	onDestroy(() => {
