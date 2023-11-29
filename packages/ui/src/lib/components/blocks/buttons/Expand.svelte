@@ -73,7 +73,7 @@
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
-	$: buttonClasses = `expand:${$state.value} ${layoutClasses} ${color} ${currentState.asset} ${align} ${size} font:${size}`
+	$: buttonClasses = `expand:${$state.value} ${layoutClasses} ${color} ${currentState.asset} align:${align} ${size} font:${size}`
 </script>
 
 <button

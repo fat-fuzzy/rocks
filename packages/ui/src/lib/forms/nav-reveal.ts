@@ -1,5 +1,5 @@
 import type {Settings} from '$types/constants'
-import {DEFAULT_REVEAL_STATE, REVEAL_TRANSITION} from '$types/constants'
+import {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} from '$types/constants'
 
 export class NavReveal {
 	nav: Settings
@@ -21,10 +21,8 @@ export class NavReveal {
 	reveal(data: FormData) {
 		if (data.has('reveal')) {
 			const updated = data.get('reveal')?.toString()
-			console.log(updated)
-
 			if (updated) {
-				this.nav.reveal = REVEAL_TRANSITION[this.nav.reveal]
+				this.nav.reveal = TRANSITION_REVEAL[this.nav.reveal]
 				return true
 			}
 		}

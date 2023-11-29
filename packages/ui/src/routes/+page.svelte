@@ -16,7 +16,7 @@
 	<meta name="description" content={`${title} home page`} />
 </svelte:head>
 
-<header class="bg:polar">
+<header class="bg:polar card:xl">
 	<div class="l:text:xl l:center card:feature:xxl">
 		<div class="l:frame l:text:xl">
 			<img src={pageImage.src} alt={pageImage.alt} />

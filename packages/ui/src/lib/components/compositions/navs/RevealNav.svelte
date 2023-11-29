@@ -1,68 +1,113 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
-	import format from '$lib/utils/format'
+	import {onDestroy} from 'svelte'
+	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
+	import {ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION, TRANSITION_CONTRAST} from '$types/constants'
+
+	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 
-	const dispatch = createEventDispatcher()
-	export let layout = 'stack'
-	export let direction = 'tb-lr'
+	import * as settings from '$stores/settings'
+
+	const method = 'POST'
 	export let size = ''
-	export let breakpoint = ''
+	export let breakpoint: string | undefined = undefined
+	export let threshold: string | undefined = undefined
 	export let container = 'card'
 	export let variant = ''
+	export let layout = ''
 	export let color = ''
 	export let background = 'polar'
 	export let path = ''
 	export let id = 'ui'
 	export let title = 'RevealNav'
-	export let asset = ''
+	export let name = 'reveal-nav'
 	export let align = 'start'
 	export let place = 'left'
-	export let position = ''
+	export let position: string | undefined = undefined
+	export let formaction: string | undefined = undefined
+	export let actionPath: string | undefined = undefined
+
 	export let items: any[] = [] // TODO: fix type
 
-	let expanded = true
-	let buttonAsset = ''
+	let sidebarReveal: {[key: string]: string} = {reveal: ''}
+	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
 
-	function handleClickOutside(event) {
-		// expanded = false
-		// TODO : fix this
+	const stores = [
+		settings.app.subscribe((value) => {
+			if (value) {
+				appSettings = value
+			}
+		}),
+		settings.sidebarReveal.subscribe((value) => {
+			if (value) {
+				sidebarReveal = value
+			}
+		}),
+	]
+
+	function handleClickOutside() {
+		settings.sidebarReveal.set({reveal: 'minimize'})
 	}
 
-	function toggleReveal(event) {
-		expanded = !expanded
-		dispatch('toggleReveal', {
-			expanded,
-		})
+	function toggleSidebar(event: CustomEvent) {
+		const updated = event.detail.expanded ? 'show' : 'minimize'
+		settings.sidebarReveal.set({reveal: updated})
 	}
 
-	$: {
-		if (position) {
-			buttonAsset = expanded ? `emoji:point-down align:end` : `emoji:point-left align:end`
-		}
-	}
-	$: show = expanded ? `show ${place}` : `minimize ${place}`
+	$: reveal = sidebarReveal.reveal
+	$: contrast = appSettings.contrast
+	$: buttonAlign = place ? ALIGN_OPPOSITE[align] : ''
+	$: animationDirection = place ? ALIGN_ANIMATION_DIRECTION[place][reveal] : ''
+	$: showBackground = background ? `bg:${background}` : `bg:${TRANSITION_CONTRAST[contrast]}`
+	$: navContainer = container ? `${container}:${size}` : ''
+	$: navLayoutThreshold = breakpoint ? ` bp:${breakpoint}` : threshold ? ` th:${threshold}` : ''
+	$: navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
+	$: showSidebar = `${reveal} ${showBackground} ${place}`
+	$: navClasses = `content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `
+	$: layoutClasses = `l:reveal ${position} ${place} ${reveal}`
+	$: revealClasses = `form:expand`
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
-<div
-	class={`l:reveal ${show} ${direction} ${position}`}
-	use:clickOutside
-	on:clickOutside={handleClickOutside}
->
-	<button
-		id={`${id}-reveal-nav-button`}
-		class={`card:${size} ${variant} ${color} font:${size} ${buttonAsset}`}
-		aria-expanded={expanded}
-		aria-controls={`${id}-reveal-nav`}
-		on:click={toggleReveal}
+<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutside}>
+	<form
+		{name}
+		{method}
+		action={actionPath && formaction
+			? `${actionPath}?/${formaction}&redirectTo=${path}`
+			: `?/${formaction}&redirectTo=${path}`}
+		use:enhance={() => {
+			// prevent default callback from resetting the form
+			return ({update}) => {
+				update({reset: false})
+			}
+		}}
+		class={revealClasses}
 	>
-		<span class="text">{format.formatLabel(title, asset)}</span>
-	</button>
-	<nav
-		id={`${id}-reveal-nav`}
-		class={`content l:${layout} ${container}:${size} bp:${breakpoint} bg:${background} card:${size} align:${align} ${size} `}
-	>
+		<Expand
+			id={`${id}-reveal-sidebar-button`}
+			{variant}
+			{title}
+			{size}
+			{color}
+			{name}
+			align={buttonAlign}
+			controls={`${id}-reveal-sidebar`}
+			value={title}
+			states={{
+				active: {text: title, value: 'show', asset: `emoji:point-${animationDirection}`},
+				inactive: {text: title, value: 'minimize', asset: `emoji:point-${animationDirection}`},
+			}}
+			on:click={toggleSidebar}
+		>
+			{title}
+		</Expand>
+	</form>
+	<nav id={`${id}-reveal-sidebar`} class={navClasses}>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
 </div>

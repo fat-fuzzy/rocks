@@ -1,10 +1,12 @@
 import type {Handle} from '@sveltejs/kit'
 
 export const handle = (async ({event, resolve}) => {
-	const styles = await Promise.resolve(event.cookies.get('fat-fuzzy-ui'))
+	const appSettings = await Promise.resolve(event.cookies.get('fat-fuzzy-settings-app'))
 	const navReveal = await Promise.resolve(event.cookies.get('fat-fuzzy-nav-reveal'))
 	const settingsReveal = await Promise.resolve(event.cookies.get('fat-fuzzy-settings-reveal'))
-	const appSettings = await Promise.resolve(event.cookies.get('fat-fuzzy-settings-app'))
+	const sidebarReveal = await Promise.resolve(event.cookies.get('fat-fuzzy-sidebar-app'))
+	const styles = await Promise.resolve(event.cookies.get('fat-fuzzy-ui'))
+
 	if (styles) {
 		event.locals.styles = styles
 	}
@@ -16,6 +18,9 @@ export const handle = (async ({event, resolve}) => {
 	}
 	if (navReveal) {
 		event.locals.nav = navReveal
+	}
+	if (sidebarReveal) {
+		event.locals.nav = sidebarReveal
 	}
 
 	const response = await resolve(event)

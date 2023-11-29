@@ -1,7 +1,9 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 	import {enhance} from '$app/forms'
+
 	import {clickOutside} from '$lib/utils/click-outside.js'
+	import {ALIGN_OPPOSITE} from '$types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 
@@ -33,10 +35,11 @@
 		dispatch('toggle', {reveal: updated})
 	}
 
+	$: buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
 	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
 	$: show = `show ${showBackground}`
 	$: showContent = reveal === 'show' ? show : 'hide:viz-only'
-	$: revealClasses = `form:expand card:lg align-self:end`
+	$: revealClasses = `form:expand align-self:${buttonAlign}`
 	$: layoutClass = layout ? `l:${layout}:${size}` : ''
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 </script>

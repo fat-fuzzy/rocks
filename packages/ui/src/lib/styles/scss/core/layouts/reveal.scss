@@ -1,4 +1,4 @@
-.l\:reveal > button {
+[class^='l:reveal'] [class*='expand'] {
 	position: relative;
 	z-index: var(--z-index-layer);
 	width: 100%;
@@ -6,7 +6,7 @@
 	background-color: var(--current-polar);
 }
 
-.l\:reveal > button > .icon {
+[class^='l:reveal'] [class*='expand'] > .icon {
 	border: 0;
 	height: auto;
 	margin: 0;
@@ -35,13 +35,12 @@
 	white-space: nowrap;
 }
 
-.l\:reveal.minimize > button {
-	color: initial;
+.l\:reveal.minimize [class*='expand'] {
 	color: var(--current-color);
 	background-color: var(--current-bg-color);
 }
 
-.l\:reveal .end {
+[class^='l:reveal'] .end {
 	justify-self: flex-end;
 }
 
@@ -68,7 +67,7 @@
 	// TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts
 
 	// Fixes bug in Safari where .content overflows parent width
-	[class^='l:side'] > .l\:reveal {
+	[class^='l:side'] > [class^='l:reveal'] {
 		&.minimize:not([class*='fixed']) .content {
 			padding: var(--current-size);
 			white-space: normal;
@@ -78,11 +77,11 @@
 			margin: initial;
 		}
 
-		&:not([class*='fixed']) > button {
+		&:not([class*='fixed']) [class*='expand'] {
 			display: none;
 		}
 
-		&:not([class*='fixed']) > button + * {
+		&:not([class*='fixed']) [class*='expand'] + * {
 			margin-top: 0;
 		}
 	}

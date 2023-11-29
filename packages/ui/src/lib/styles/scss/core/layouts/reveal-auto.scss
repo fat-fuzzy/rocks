@@ -7,8 +7,7 @@
 	width: fit-content;
 }
 
-.l\:reveal\:auto > button {
-	margin: var(--current-size-plus);
+.l\:reveal\:auto [class*='expand'] {
 	width: fit-content;
 }
 
