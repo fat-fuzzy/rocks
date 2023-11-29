@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
-	import {clickOutside} from '$lib/utils/click-outside.js'
 	import constants from '$lib/types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
@@ -49,10 +48,6 @@
 		}),
 	]
 
-	function handleClickOutside() {
-		settings.sidebarReveal.set({reveal: 'minimize'})
-	}
-
 	function toggleSidebar(event: CustomEvent) {
 		const updated = event.detail.expanded ? 'show' : 'minimize'
 		settings.sidebarReveal.set({reveal: updated})
@@ -76,7 +71,7 @@
 	})
 </script>
 
-<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutside}>
+<div class={layoutClasses}>
 	<form
 		{name}
 		{method}
