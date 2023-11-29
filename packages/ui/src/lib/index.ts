@@ -11,6 +11,8 @@ import Typography from '$lib/components/tokens/Typography.svelte'
  */
 // import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 import Button from '$lib/components/blocks/buttons/Button.svelte'
+import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+import Switch from '$lib/components/blocks/buttons/Switch.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 // import Canvas from '$lib/components/blocks/media/Canvas.svelte'
@@ -86,6 +88,16 @@ import Test from '$lib/api/tests/TestComponent.svelte'
 // import StyleCapsule from '$lib/api/StyleCapsule.wc.svelte'
 
 /**
+ * Forms
+ */
+import {NavReveal} from '$lib/forms/nav-reveal'
+import {SettingsReveal} from '$lib/forms/settings-reveal'
+import {SettingsUpdate} from '$lib/forms/settings-update'
+import {SidebarReveal} from '$lib/forms/sidebar-reveal'
+import {StylesContextReveal} from '$lib/forms/styles-context-reveal'
+import {StylesUpdate} from '$lib/forms/styles-update'
+
+/**
  * Stores
  */
 import * as settings from '$lib/stores/settings'
@@ -95,15 +107,27 @@ import * as intl from '$lib/stores/intl'
 /**
  * Utilities
  */
-import * as constants from '$lib/types/constants'
+import constants from '$lib/types/constants'
 import * as clickOutside from '$lib/utils/click-outside'
+import format from '$lib/utils/format'
 
 /***************************************************
  * Prepare Exports
  **************************************************/
 const utils = {
+	format,
 	clickOutside,
 }
+
+const forms = {
+	NavReveal,
+	SidebarReveal,
+	SettingsReveal,
+	SettingsUpdate,
+	StylesContextReveal,
+	StylesUpdate,
+}
+
 const stores = {
 	settings,
 	ui,
@@ -118,6 +142,8 @@ const tokens = {
 const blocks = {
 	// ActionLabel,
 	Button,
+	Expand,
+	Switch,
 	Toggle,
 	Feedback,
 	// Fieldset,
@@ -175,4 +201,4 @@ const testsApi = {
 	Test,
 }
 
-export {tokens, blocks, layouts, compositions, graphics, api, utils, stores, constants}
+export {tokens, blocks, layouts, compositions, graphics, api, utils, forms, stores, constants}

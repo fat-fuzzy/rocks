@@ -15,11 +15,14 @@
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
 
+	const actionPath = 'doc'
+
 	export let title = ''
 	export let content: {html: string} | undefined = undefined
 	export let depth = 0
 	export let isPage = false
 	export let path = ''
+	export let redirect = ''
 	export let component: ComponentType
 	export let category = ''
 	export let color = 'primary:light' // TODO: expose breakpoint too
@@ -113,7 +116,7 @@
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'compositions' && category !== 'tokens'}
 						<div class="drop w:full bg:polar ui:menu">
-							<Api categories={[category]} {title} {path} />
+							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
 						</div>
 					{:else}
 						<div class="card:lg text:center">
@@ -126,7 +129,7 @@
 			<details class={`l:stack:md`}>
 				<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
 				<div class="drop">
-							<Api categories={[category]} {title} {path} />
+							<Api categories={[category]} {title} {path} {redirect} />
 				</div>
 			</details>
 		</section> -->

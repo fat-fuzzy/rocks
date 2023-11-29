@@ -1,5 +1,5 @@
 <script lang="ts">
-	type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
+	import type {ButtonType} from '$types'
 	import {getStores} from '$app/stores'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	export let title = 'Log In'

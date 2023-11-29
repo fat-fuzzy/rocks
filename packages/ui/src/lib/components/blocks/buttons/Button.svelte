@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ButtonType} from '$lib/types/constants'
+	import type {ButtonType} from '$types'
 	import {createEventDispatcher} from 'svelte'
 
 	export let id = 'button'

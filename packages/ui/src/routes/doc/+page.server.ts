@@ -1,10 +1,11 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
-import {Styles} from '$lib/forms/styles-update'
+import {StylesUpdate} from '$lib/forms/styles-update'
 import {StylesContextReveal} from '$lib/forms/styles-context-reveal'
-import {DEFAULT_STYLES} from '$lib/api/styles/styles-api'
-import {DEFAULT_REVEAL_STATE} from '$types/constants'
+import constants from '$lib/types/constants'
 import * as ui from '$stores/ui'
+
+const {DEFAULT_REVEAL_STATE, DEFAULT_STYLES} = constants
 
 export const actions = {
 	toggleContext: async ({request, url, cookies}) => {
@@ -34,7 +35,7 @@ export const actions = {
 		if (serialized) {
 			currentStyles = JSON.parse(serialized)
 		}
-		const styles = new Styles(currentStyles)
+		const styles = new StylesUpdate(currentStyles)
 		if (!styles.enter(data)) {
 			return fail(400, {stylesError: true})
 		}

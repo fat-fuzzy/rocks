@@ -4,8 +4,10 @@ import {NavReveal} from '$lib/forms/nav-reveal'
 import {SidebarReveal} from '$lib/forms/sidebar-reveal'
 import {SettingsReveal} from '$lib/forms/settings-reveal'
 import {SettingsUpdate} from '$lib/forms/settings-update'
-import {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} from '$types/constants'
+import constants from '$lib/types/constants'
 import * as settings from '$lib/stores/settings'
+
+const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = constants
 
 export const actions = {
 	toggleNav: async ({request, url, cookies}) => {

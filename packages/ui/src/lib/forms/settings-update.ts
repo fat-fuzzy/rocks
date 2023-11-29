@@ -1,14 +1,7 @@
-import type {Settings} from '$types/constants'
-import {DEFAULT_APP_SETTINGS} from '$types/constants'
+import type {Settings} from '$types'
+import constants from '$types/constants'
 
-const BRIGHTNESS_TRANSITION: {[key: string]: string} = {
-	day: 'night',
-	night: 'day',
-}
-const CONTRAST_TRANSITION: {[key: string]: string} = {
-	contrast: 'blend',
-	blend: 'contrast',
-}
+const {DEFAULT_APP_SETTINGS, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} = constants
 
 export class SettingsUpdate {
 	app: Settings
@@ -30,11 +23,11 @@ export class SettingsUpdate {
 		try {
 			let updated = data.get('brightness')?.toString()
 			if (updated) {
-				this.app.brightness = BRIGHTNESS_TRANSITION[this.app.brightness]
+				this.app.brightness = TRANSITION_BRIGHTNESS[this.app.brightness]
 			}
 			updated = data.get('contrast')?.toString()
 			if (updated) {
-				this.app.contrast = CONTRAST_TRANSITION[this.app.contrast]
+				this.app.contrast = TRANSITION_CONTRAST[this.app.contrast]
 			}
 			return true
 		} catch (e) {

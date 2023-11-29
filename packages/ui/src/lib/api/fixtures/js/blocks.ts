@@ -1,5 +1,17 @@
 export default {
-	Button: {id: 'button-idea', text: 'Idea', asset: 'emoji:idea'},
+	Button: {id: 'button', text: 'Button', asset: 'emoji:idea'},
+	Expand: {
+		states: {
+			active: {id: 'button-expand', text: 'Expand', asset: 'emoji:idea'},
+			inactive: {id: 'button-expand', text: 'Expand', asset: 'emoji:idea'},
+		},
+	},
+	Switch: {
+		states: {
+			active: {id: 'button-switch', text: 'Switch', asset: 'emoji:idea'},
+			inactive: {id: 'button-switch', text: 'Switch', asset: 'emoji:idea'},
+		},
+	},
 	InputCheck: {id: 'check', text: 'An optional choice choice'},
 	InputRadio: {id: 'radio', text: 'A mandatory choice'},
 	Feedback: {
@@ -36,7 +48,7 @@ export default {
 			},
 		],
 	},
-	Toggle: {id: 'button-favorite', text: 'Favorite', asset: 'emoji:favorite'},
+	Toggle: {id: 'button-toggle', text: 'Toggle', asset: 'emoji:favorite'},
 	Fieldset: {
 		items: ['Form input 1', 'Form input 2', 'Form input 3'],
 	},

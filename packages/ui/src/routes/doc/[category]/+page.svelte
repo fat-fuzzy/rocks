@@ -1,10 +1,12 @@
 <script lang="ts">
-	import {page} from '$app/stores'
 	import {onDestroy} from 'svelte'
+	import {page} from '$app/stores'
 
 	import {tokens, blocks, compositions, layouts, api, stores} from '$lib'
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
+
+	const actionPath = 'doc'
 
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = {reveal: ''}
@@ -71,13 +73,13 @@
 		variant="outline"
 		title="Context"
 		formaction="toggleContext"
-		actionPath="doc"
+		{actionPath}
 		{reveal}
 		{path}
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side ui:menu reverse">
-			<Api {title} {path} />
+			<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
 		</div>
 	</RevealAuto>
 </header>

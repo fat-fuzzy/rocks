@@ -60,7 +60,7 @@
 		ui.styles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
 	}
 
-	function handleInput(event: CustomEvent, name: string) {
+	function handleInput(event, name: string) {
 		const target = event.target ?? event.detail
 		const payload = {
 			name,

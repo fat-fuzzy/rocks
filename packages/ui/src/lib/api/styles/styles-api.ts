@@ -734,35 +734,4 @@ const layouts: LayoutStyles = {
 	}),
 }
 
-export const DEFAULT_STYLES: StyleTree = {
-	tokens: {
-		element: {color: 'primary', typography: 'h1'},
-	},
-	app: {
-		settings: {
-			brightness: 'day',
-			contrast: 'blend',
-		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
-	},
-	shared: {
-		layout: {layout: 'switcher', breakpoint: 'xl'}, // need large breakpoint for Header default demo
-		container: {container: 'center', size: 'md'},
-	},
-	blocks: {
-		element: {
-			variant: 'fill',
-			color: '',
-			status: 'default',
-			context: 'form',
-			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-			asset: 'emoji',
-			size: 'md',
-		},
-	},
-	layouts: {
-		content: {content: 'card', side: 'card', main: 'text'},
-		element: {size: 'md', breakpoint: 'lg'},
-	},
-}
-
 export const initStyles = () => new StylesApi({tokens, app, shared, blocks, layouts})

@@ -17,7 +17,7 @@
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
 	const compositionNames = Object.keys(compositions).sort(sortAsc)
-	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
+	let title = 'Fat Fuzzy Test' // TODO : Fix title in children components: add breadcrumb nav component ?
 
 	let sidebarReveal: {[key: string]: string} = {reveal: ''}
 
@@ -29,7 +29,7 @@
 		}),
 	]
 
-	$: path = $page.url.pathname
+	$: path = ''
 	$: items = [
 		{
 			slug: 'doc',
@@ -80,6 +80,7 @@
 			container="card"
 			formaction="toggleSidebar"
 			actionPath="/"
+			redirect={$page.url.pathname}
 		/>
 	</div>
 	<div class="l:main l:center l:stack:xl">

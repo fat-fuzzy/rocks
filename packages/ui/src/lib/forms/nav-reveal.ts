@@ -1,5 +1,7 @@
-import type {Settings} from '$types/constants'
-import {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} from '$types/constants'
+import type {Settings} from '$types'
+import constants from '$lib/types/constants'
+
+const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
 export class NavReveal {
 	nav: Settings

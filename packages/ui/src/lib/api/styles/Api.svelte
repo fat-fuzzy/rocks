@@ -8,7 +8,8 @@
 	export let path = ''
 	export let method = 'POST'
 	export let formaction = 'updateStyles'
-	export let actionPath = 'doc'
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 	// export let reset = 'reset'
 
 	let apiLayout = categories.includes('app') ? 'nowrap grow' : 'nowrap shrink'
@@ -26,6 +27,8 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
+
+	$: action = redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -33,7 +36,7 @@
 <form
 	name="styles-update"
 	{method}
-	action={`/${actionPath}?/${formaction}&redirectTo=${path}`}
+	action={actionPath ? `/${actionPath}?/${action}` : `?/${action}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
@@ -46,7 +49,7 @@
 		<StyleFamily
 			{category}
 			{title}
-			formaction={`/${actionPath}?/${formaction}&redirectTo=${path}`}
+			formaction={actionPath ? `/${actionPath}?/${action}` : `?/${action}`}
 		/>
 	{/each}
 	{#await Promise.resolve()}
