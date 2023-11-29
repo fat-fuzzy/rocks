@@ -6,7 +6,7 @@
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
 
-	const actionPath = 'doc'
+	const actionPath = '/doc'
 	const title = 'Fat Fuzzy Test' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
@@ -65,7 +65,7 @@
 		formaction="toggleContext"
 		{actionPath}
 		{reveal}
-		{path}
+		redirect={$page.url.pathname}
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side shrink ui:menu">
@@ -89,6 +89,8 @@
 				{category}
 				{stylesApi}
 				content={markdowns.categories.find(({meta}) => meta.slug === category)}
+				{actionPath}
+				redirect={$page.url.pathname}
 			/>
 		{/each}
 	</div>

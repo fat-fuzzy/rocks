@@ -20,6 +20,9 @@
 	export let layout: string | undefined = undefined
 	export let align = 'end'
 	export let path: string | undefined = undefined
+	export let formaction: string | undefined = undefined
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	export let items = {
 		switch: [
@@ -116,13 +119,19 @@
 	$: formClasses = `l:switcher:lg ${showBackground}`
 	$: layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
+
+	$: action = formaction
+		? redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+		: 'toggleNav'
 </script>
 
 <div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutsideSettings}>
 	<form
 		name="settings-reveal"
 		{method}
-		action={`/?/toggleSettings&redirectTo=${path}`}
+		action={action ? (actionPath ? `${actionPath}?/${action}` : `/?/${action}`) : undefined}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {
@@ -136,6 +145,7 @@
 			{variant}
 			{color}
 			{size}
+			type={actionPath && formaction ? 'submit' : 'button'}
 			title="Settings"
 			name="reveal"
 			controls={`reveal-${id}`}

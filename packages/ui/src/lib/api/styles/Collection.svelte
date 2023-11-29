@@ -13,13 +13,13 @@
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 
-	const actionPath = 'doc'
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	export let title = ''
 	export let content: {html: string} | undefined = undefined
 	export let depth = 0
 	export let path = $page.url.pathname
-	export let redirect = $page.url.pathname
 	export let layout = 'grid' // TODO: expose breakpoint too
 	export let size = 'xs' // TODO: expose breakpoint too
 	export let color = 'primary:light' // TODO: expose breakpoint too
@@ -59,6 +59,7 @@
 					{component}
 					{stylesApi}
 					{props}
+					{actionPath}
 					redirect={$page.url.pathname}
 				/>
 			{/each}
@@ -133,6 +134,8 @@
 							{component}
 							{stylesApi}
 							{props}
+							{actionPath}
+							redirect={$page.url.pathname}
 						/>
 					{/each}
 				</div>

@@ -32,7 +32,15 @@
 	})
 </script>
 
-<Header id="ui" className={headerClass} path={$page.url.pathname} {links} breakpoint="xs" />
+<Header
+	id="ui"
+	className={headerClass}
+	actionPath="/"
+	formaction="toggleNav"
+	redirect={$page.url.pathname}
+	{links}
+	breakpoint="xs"
+/>
 
 <main class={mainClass}>
 	<slot />

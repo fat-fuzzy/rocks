@@ -15,14 +15,14 @@
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
 
-	const actionPath = 'doc'
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	export let title = ''
 	export let content: {html: string} | undefined = undefined
 	export let depth = 0
 	export let isPage = false
 	export let path = ''
-	export let redirect = ''
 	export let component: ComponentType
 	export let category = ''
 	export let color = 'primary:light' // TODO: expose breakpoint too
