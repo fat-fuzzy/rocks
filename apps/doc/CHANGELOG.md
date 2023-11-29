@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.27
+
+### Patch Changes
+
+- 5d0e1b7b: [ui+apps] Use actions and forms, fix nojs, improve a11y
+
 ## 0.1.26
 
 ### Patch Changes
