@@ -22,7 +22,8 @@ pre.bare {
 	border-color: var(--current-bg-color);
 }
 
-.night {
+.night,
+.day .night {
 	pre,
 	pre.default {
 		--current-color: var(--color-light);
@@ -68,7 +69,8 @@ pre.bare {
 	}
 }
 
-.day {
+.day,
+.night .day {
 	pre,
 	pre.default,
 	pre[class*='bg:default'].outline,
@@ -104,7 +106,7 @@ pre.bare {
 		--current-color: var(--current-error-lightest);
 		--current-border-color: var(--current-error);
 	}
-	
+
 	&.bg\:contrast,
 	&.bg\:blend {
 		pre[class*='info'] {
@@ -126,7 +128,7 @@ pre.bare {
 			--current-color: var(--current-error-lightest);
 			--current-border-color: var(--current-error);
 		}
-		
+
 		.feedback[class*='info'].bare:not(pre),
 		.feedback[class*='success'].bare:not(pre),
 		.feedback[class*='warning'].bare:not(pre),
