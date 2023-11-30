@@ -186,47 +186,81 @@ $current_cssvars: ();
 
 @mixin generate-theme-colors($prefix) {
 	$theme-brightness: (
-		'brightness-day': 'day',
-		'brightness-night': 'night',
+		'night': 'day',
 	);
-	@each $brightness, $brightness-value in $theme-brightness {
+	@each $night, $day in $theme-brightness {
 		// Generate buttons for [Brightness = day/night]
-		.#{$brightness-value} {
-			--current-color: var(#{$prefix}-#{$brightness-value}-blend-color-text);
-			--current-color-contrast: var(#{$prefix}-#{$brightness-value}-contrast-color-text);
-			--current-bg-color: var(#{$prefix}-#{$brightness-value}-blend-color-bg);
-			--current-bg-contrast: var(#{$prefix}-#{$brightness-value}-contrast-color-bg);
-			--current-polar: var(#{$prefix}-#{$brightness-value}-polar-color-bg);
-			--current-gray: var(#{$prefix}-#{$brightness-value}-color-neutral);
-			--current-gray-light: var(#{$prefix}-#{$brightness-value}-color-neutral-3);
-			--current-primary: var(#{$prefix}-#{$brightness-value}-color-primary-1);
-			--current-primary-light: var(#{$prefix}-#{$brightness-value}-color-primary-2);
-			--current-primary-lighter: var(#{$prefix}-#{$brightness-value}-color-primary-3);
-			--current-primary-lightest: var(#{$prefix}-#{$brightness-value}-color-primary-4);
-			--current-accent: var(#{$prefix}-#{$brightness-value}-color-accent-1);
-			--current-accent-light: var(#{$prefix}-#{$brightness-value}-color-accent-2);
-			--current-accent-lighter: var(#{$prefix}-#{$brightness-value}-color-accent-3);
-			--current-accent-lightest: var(#{$prefix}-#{$brightness-value}-color-accent-4);
-			--current-highlight: var(#{$prefix}-#{$brightness-value}-color-highlight-1);
-			--current-highlight-light: var(#{$prefix}-#{$brightness-value}-color-highlight-2);
-			--current-highlight-lighter: var(#{$prefix}-#{$brightness-value}-color-highlight-3);
-			--current-highlight-lightest: var(#{$prefix}-#{$brightness-value}-color-highlight-4);
-			--current-button-text: var(#{$prefix}-#{$brightness-value}-color-button-default-text);
-			--current-button-bg: var(#{$prefix}-#{$brightness-value}-color-button-default-bg);
-			--current-button-border: var(#{$prefix}-#{$brightness-value}-color-button-default-border);
-			--current-color-shadow: var(#{$prefix}-#{$brightness-value}-color-shadow);
-			--current-shadow: var(#{$prefix}-#{$brightness-value}-shadow);
-			--current-shadow-inset-1: var(#{$prefix}-#{$brightness-value}-shadow-inset-1);
-			--current-shadow-inset-2: var(#{$prefix}-#{$brightness-value}-shadow-inset-2);
+		.#{$day},
+		.#{$night} .#{$day} {
+			--current-color: var(#{$prefix}-#{$day}-blend-color-text);
+			--current-color-contrast: var(#{$prefix}-#{$day}-contrast-color-text);
+			--current-bg-color: var(#{$prefix}-#{$day}-blend-color-bg);
+			--current-bg-contrast: var(#{$prefix}-#{$day}-contrast-color-bg);
+			--current-polar: var(#{$prefix}-#{$day}-polar-color-bg);
+			--current-gray: var(#{$prefix}-#{$day}-color-neutral);
+			--current-gray-light: var(#{$prefix}-#{$day}-color-neutral-3);
+			--current-primary: var(#{$prefix}-#{$day}-color-primary-1);
+			--current-primary-light: var(#{$prefix}-#{$day}-color-primary-2);
+			--current-primary-lighter: var(#{$prefix}-#{$day}-color-primary-3);
+			--current-primary-lightest: var(#{$prefix}-#{$day}-color-primary-4);
+			--current-accent: var(#{$prefix}-#{$day}-color-accent-1);
+			--current-accent-light: var(#{$prefix}-#{$day}-color-accent-2);
+			--current-accent-lighter: var(#{$prefix}-#{$day}-color-accent-3);
+			--current-accent-lightest: var(#{$prefix}-#{$day}-color-accent-4);
+			--current-highlight: var(#{$prefix}-#{$day}-color-highlight-1);
+			--current-highlight-light: var(#{$prefix}-#{$day}-color-highlight-2);
+			--current-highlight-lighter: var(#{$prefix}-#{$day}-color-highlight-3);
+			--current-highlight-lightest: var(#{$prefix}-#{$day}-color-highlight-4);
+			--current-button-text: var(#{$prefix}-#{$day}-color-button-default-text);
+			--current-button-bg: var(#{$prefix}-#{$day}-color-button-default-bg);
+			--current-button-border: var(#{$prefix}-#{$day}-color-button-default-border);
+			--current-color-shadow: var(#{$prefix}-#{$day}-color-shadow);
+			--current-shadow: var(#{$prefix}-#{$day}-shadow);
+			--current-shadow-inset-1: var(#{$prefix}-#{$day}-shadow-inset-1);
+			--current-shadow-inset-2: var(#{$prefix}-#{$day}-shadow-inset-2);
 			color: var(--current-color);
 			background-color: var(--current-bg-color);
 		}
-	}
-	.night {
-		--current-gray-contrast: var(#{$prefix}-day-color-neutral-3);
-	}
-	.day {
-		--current-gray-contrast: var(#{$prefix}-night-color-neutral-3);
+		// Generate buttons for [Brightness = day/night]
+		.#{$night},
+		.#{$day} .#{$night} {
+			--current-color: var(#{$prefix}-#{$night}-blend-color-text);
+			--current-color-contrast: var(#{$prefix}-#{$night}-contrast-color-text);
+			--current-bg-color: var(#{$prefix}-#{$night}-blend-color-bg);
+			--current-bg-contrast: var(#{$prefix}-#{$night}-contrast-color-bg);
+			--current-polar: var(#{$prefix}-#{$night}-polar-color-bg);
+			--current-gray: var(#{$prefix}-#{$night}-color-neutral);
+			--current-gray-light: var(#{$prefix}-#{$night}-color-neutral-3);
+			--current-primary: var(#{$prefix}-#{$night}-color-primary-1);
+			--current-primary-light: var(#{$prefix}-#{$night}-color-primary-2);
+			--current-primary-lighter: var(#{$prefix}-#{$night}-color-primary-3);
+			--current-primary-lightest: var(#{$prefix}-#{$night}-color-primary-4);
+			--current-accent: var(#{$prefix}-#{$night}-color-accent-1);
+			--current-accent-light: var(#{$prefix}-#{$night}-color-accent-2);
+			--current-accent-lighter: var(#{$prefix}-#{$night}-color-accent-3);
+			--current-accent-lightest: var(#{$prefix}-#{$night}-color-accent-4);
+			--current-highlight: var(#{$prefix}-#{$night}-color-highlight-1);
+			--current-highlight-light: var(#{$prefix}-#{$night}-color-highlight-2);
+			--current-highlight-lighter: var(#{$prefix}-#{$night}-color-highlight-3);
+			--current-highlight-lightest: var(#{$prefix}-#{$night}-color-highlight-4);
+			--current-button-text: var(#{$prefix}-#{$night}-color-button-default-text);
+			--current-button-bg: var(#{$prefix}-#{$night}-color-button-default-bg);
+			--current-button-border: var(#{$prefix}-#{$night}-color-button-default-border);
+			--current-color-shadow: var(#{$prefix}-#{$night}-color-shadow);
+			--current-shadow: var(#{$prefix}-#{$night}-shadow);
+			--current-shadow-inset-1: var(#{$prefix}-#{$night}-shadow-inset-1);
+			--current-shadow-inset-2: var(#{$prefix}-#{$night}-shadow-inset-2);
+			color: var(--current-color);
+			background-color: var(--current-bg-color);
+		}
+		.#{$night},
+		.#{$day} .#{$night} {
+			--current-gray-contrast: var(#{$prefix}-#{$day}-color-neutral-3);
+		}
+		.#{$day},
+		.#{$night} .#{$day} {
+			--current-gray-contrast: var(#{$prefix}-#{$night}-color-neutral-3);
+		}
 	}
 }
 
