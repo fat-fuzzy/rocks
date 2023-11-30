@@ -368,12 +368,12 @@ $button-colors: (
 	day-contrast-color-button-default-hover-bg: $color-light-1,
 
 	// [Brightness = night]
-	night-color-button-default-text: $color-light-1,
-	night-color-button-default-bg: $color-neutral,
-	night-color-button-default-border: $color-dark-3,
-	night-color-button-default-fill-text: $color-light-1,
-	night-color-button-default-fill-bg: $color-neutral,
-	night-color-button-default-fill-border: $color-dark-3,
+	night-color-button-default-text: $color-dark-0,
+	night-color-button-default-bg: $color-light-3,
+	night-color-button-default-border: $color-neutral,
+	night-color-button-default-fill-text: $color-dark-0,
+	night-color-button-default-fill-bg: $color-light-3,
+	night-color-button-default-fill-border: $color-neutral,
 	night-color-button-default-outline-text: $color-light-1,
 	night-color-button-default-outline-bg: inherit,
 	night-color-button-default-outline-border: $color-light-2,
