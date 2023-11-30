@@ -62,7 +62,15 @@ label > .feedback + * {
 	cursor: not-allowed;
 }
 
-.night {
+.day,
+.night .day {
+	[type='file'] {
+		color: var(--color-dark);
+	}
+}
+
+.night,
+.day .night {
 	textarea,
 	[type='text'],
 	[type='password'],
@@ -76,7 +84,6 @@ label > .feedback + * {
 		color: var(--color-white);
 	}
 }
-
 .primary {
 	input,
 	select,

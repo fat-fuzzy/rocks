@@ -43,7 +43,9 @@ pre.feedback.bare {
 	border-color: var(--current-bg-color);
 }
 
-.night {
+.night,
+.day .night {
+	// TODO: rewrite these rules using css variables
 	.feedback:not(pre),
 	.feedback.default:not(pre),
 	.feedback[class*='bg:default:'] {
@@ -117,7 +119,9 @@ pre.feedback.bare {
 		}
 	}
 }
-.day {
+
+.day,
+.night .day {
 	pre.feedback,
 	pre.feedback.default,
 	pre.feedback[class*='bg:default'].outline,
