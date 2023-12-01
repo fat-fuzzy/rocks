@@ -32,13 +32,6 @@ textarea {
 	border-color: var(--current-accent-color);
 }
 
-.night {
-	input,
-	select,
-	textarea {
-		--current-accent-color: var(--current-gray-light);
-	}
-}
 form {
 	color: var(--current-color);
 	background-color: inherit;
@@ -62,15 +55,13 @@ label > .feedback + * {
 	cursor: not-allowed;
 }
 
-.day,
-.night .day {
+.day {
 	[type='file'] {
 		color: var(--color-dark);
 	}
 }
 
-.night,
-.day .night {
+.night {
 	textarea,
 	[type='text'],
 	[type='password'],
@@ -84,6 +75,7 @@ label > .feedback + * {
 		color: var(--color-white);
 	}
 }
+
 .primary {
 	input,
 	select,
@@ -330,15 +322,15 @@ label {
 	font-size: var(--current-font-size);
 }
 
-label > [type='file']:hover {
-	background-color: var(--current-bg-color);
+[type='file']:hover {
+	background-color: var(--current-gray-light);
 }
 
-label > [type='file']:active {
+[type='file']:active {
 	background-color: var(--current-bg-polar);
 }
 
-label > [type='file'] {
+[type='file'] {
 	font-size: var(--current-font-size-minus);
 	padding: var(--current-size) var(--current-size) var(--current-size-minus);
 	display: flex;
@@ -352,19 +344,19 @@ label > [type='file'] {
 
 // Display range input step labels
 
-label > [type='range'][list='markers'] + datalist {
+[type='range'][list='markers'] + datalist {
 	display: flex;
 	justify-content: space-between;
 	padding: 0 var(--current-size);
 }
 
-label > [type='range'][list='markers'] + datalist > option {
+[type='range'][list='markers'] + datalist > option {
 	font-size: var(--current-font-size-minus);
 	font-weight: var(--font-weight-body);
 	padding: 0;
 }
 
-label > [type='range']:not([list]) + datalist > option {
+[type='range']:not([list]) + datalist > option {
 	display: none;
 }
 
@@ -456,12 +448,5 @@ label.check[class*='emoji'] span {
 	.bare.highlight > input:hover,
 	.bare.highlight > [type='file']:hover {
 		color: var(--color-dark);
-	}
-}
-
-.night .day {
-	label.primary > [type='file'],
-	label.accent > [type='file'] {
-		color: var(--color-white);
 	}
 }

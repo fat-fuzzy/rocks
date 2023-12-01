@@ -22,8 +22,7 @@ pre.bare {
 	border-color: var(--current-bg-color);
 }
 
-.night,
-.day .night {
+.night {
 	pre,
 	pre.default {
 		--current-color: var(--color-light);
@@ -37,7 +36,8 @@ pre.bare {
 		--current-border-color: var(--current-bg-color);
 	}
 
-	&.bg\:contrast {
+	&.bg\:contrast,
+	&.bg\:blend .bg\:contrast {
 		pre,
 		pre.default,
 		pre[class*='bg:default'].outline,
@@ -53,7 +53,8 @@ pre.bare {
 		}
 	}
 
-	&.bg\:blend {
+	&.bg\:blend,
+	&.bg\:contrast .bg\:blend {
 		pre,
 		pre.default,
 		pre[class*='bg:default'].outline,
@@ -69,8 +70,7 @@ pre.bare {
 	}
 }
 
-.day,
-.night .day {
+.day {
 	pre,
 	pre.default,
 	pre[class*='bg:default'].outline,
