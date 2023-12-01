@@ -13,6 +13,7 @@
 	export let variant = ''
 	// export let layout = 'flex'
 	// export let breakpoint = ''
+	export let threshold = ''
 	export let size = ''
 	export let align = ''
 	export let background = ''
@@ -26,7 +27,7 @@
 		dispatch('input', payload)
 	}
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:flex  radio ${size} font:${size}  ${color} ${variant} ${align} ${backgroundClass} ${asset}`
+	$: classes = `l:switcher:${size} th:${threshold} radio ${size} font:${size}  ${color} ${variant} ${align} ${backgroundClass} ${asset}`
 </script>
 
 <label for={id} class={classes}>

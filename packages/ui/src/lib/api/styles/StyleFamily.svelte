@@ -60,6 +60,22 @@
 		ui.styles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
 	}
 
+	function handleInputRange(event) {
+		// if (items) {
+		// 	let selectedMarker = markers.find((m) => m.value === value)
+		// 	if (selectedMarker) {
+		// 		valueLabel = selectedMarker.label
+		// 		dispatch('input', {
+		// 			id: selectedMarker.id,
+		// 			name: selectedMarker.label,
+		// 			value: valueLabel,
+		// 		})
+		// 	}
+		// } else {
+		// 	dispatch('input', {value})
+		// }
+	}
+
 	function handleInput(event, name: string) {
 		const target = event.target ?? event.detail
 		const payload = {
@@ -154,7 +170,7 @@
 						})}
 						<ToggleMenu
 							{id}
-							title={familyName}
+							title={styleInput.name}
 							items={updatedItems}
 							layout={styleInput.layout || ''}
 							size={apiSize}
@@ -179,7 +195,8 @@
 								legend={name}
 								layout={styleInput.layout || ''}
 								container={styleInput.container || ''}
-								size={styleInput.size}
+								threshold={apiSize}
+								size={apiSize}
 								color={apiColor}
 								variant={styleInput.variant}
 								on:changed={(event) => handleInput(event, familyName)}
@@ -195,7 +212,7 @@
 								{value}
 								name={id}
 								layout={styleInput.layout || ''}
-								size="sm"
+								size={apiSize}
 								color={apiColor}
 								variant={styleInput.variant}
 								on:input={(event) => handleInput(event, familyName)}
