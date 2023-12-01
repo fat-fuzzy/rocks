@@ -289,6 +289,11 @@ $current_cssvars: ();
 		background-color: var(--current-button-bg);
 		border: var(--border-width) solid var(--current-button-border);
 	}
+	[class^='toggle'][aria-pressed] {
+		color: var(--current-toggle-text);
+		background-color: var(--current-toggle-bg);
+		border: var(--border-width) solid var(--current-toggle-border);
+	}
 	@each $night, $day in $theme-brightness {
 		// Generate buttons for [Brightness = day]
 		.#{$day},
@@ -314,34 +319,134 @@ $current_cssvars: ();
 						#{$prefix}-#{$day}-color-button-default-#{$variant}-border-active
 					);
 				}
+
+				[class^='toggle'][aria-pressed].#{$variant} {
+					--current-toggle-text: var(#{$prefix}-#{$day}-color-toggle-default-#{$variant}-text);
+					--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-default-#{$variant}-bg);
+					--current-toggle-border: var(#{$prefix}-#{$day}-color-toggle-default-#{$variant}-border);
+				}
+				[class^='toggle'][aria-pressed].#{$variant}:hover {
+					--current-toggle-text: var(
+						#{$prefix}-#{$day}-color-toggle-default-#{$variant}-text-hover
+					);
+					--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-default-#{$variant}-bg-hover);
+					--current-toggle-border: var(
+						#{$prefix}-#{$day}-color-toggle-default-#{$variant}-border-hover
+					);
+				}
+				[class^='toggle'][aria-pressed].#{$variant}:active {
+					--current-toggle-border: var(
+						#{$prefix}-#{$day}-color-toggle-default-#{$variant}-border-active
+					);
+				}
+
+				[class^='toggle'][aria-pressed='true'].#{$variant} {
+					--current-toggle-text: var(
+						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-text
+					);
+					--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-bg);
+					--current-toggle-border: var(
+						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-border
+					);
+				}
+				[class^='toggle'][aria-pressed='true'].#{$variant}:hover {
+					--current-toggle-text: var(
+						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-text-hover
+					);
+					--current-toggle-bg: var(
+						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-bg-hover
+					);
+					--current-toggle-border: var(
+						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-border-hover
+					);
+				}
+				[class^='toggle'][aria-pressed='true'].#{$variant}:active {
+					--current-toggle-border: var(
+						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-border-active
+					);
+				}
 			}
 
 			@each $contrast, $blend in $theme-contrast {
-				// Generate buttons for [Contrast = contrast/blend]
+				// Generate Button styles for [Contrast = contrast/blend]
 				.bg\:#{$blend} {
-					// Generate styles for [Variant = bare]
+					// [Variant = bare]
 					button.bare {
 						--current-button-border: var(#{$prefix}-#{$day}-#{$blend}-color-button-bare-border);
 					}
-					// Generate default buttons hover state
+					// [State = hover]
 					button:hover {
 						--current-button-bg: var(#{$prefix}-#{$day}-#{$blend}-color-button-default-hover-bg);
 					}
 				}
-				// Generate buttons for [Contrast = contrast/blend]
+				// Generate Button styles for [Contrast = contrast/blend]
 				.bg\:#{$contrast} {
-					// Generate styles for [Variant = bare]
+					// [Variant = bare]
 					button.bare {
 						--current-button-border: var(#{$prefix}-#{$day}-#{$contrast}-color-button-bare-border);
 					}
-					// Generate default buttons hover state
+					// [State = hover]
 					button:hover {
 						--current-button-bg: var(#{$prefix}-#{$day}-#{$contrast}-color-button-default-hover-bg);
 					}
 				}
+
+				// Generate Button styles for [Contrast = contrast/blend]
+				.bg\:#{$blend} {
+					// [Variant = bare]
+					[class^='toggle'][aria-pressed].bare {
+						--current-toggle-border: var(#{$prefix}-#{$day}-#{$blend}-color-toggle-bare-border);
+					}
+					// [State = hover]
+					[class^='toggle'][aria-pressed]:hover {
+						--current-toggle-bg: var(#{$prefix}-#{$day}-#{$blend}-color-toggle-default-hover-bg);
+					}
+				}
+				// Generate Button styles for [Contrast = contrast/blend]
+				.bg\:#{$contrast} {
+					// [Variant = bare]
+					[class^='toggle'][aria-pressed].bare {
+						--current-toggle-border: var(#{$prefix}-#{$day}-#{$contrast}-color-toggle-bare-border);
+					}
+					// [State = hover]
+					[class^='toggle'][aria-pressed]:hover {
+						--current-toggle-bg: var(#{$prefix}-#{$day}-#{$contrast}-color-toggle-default-hover-bg);
+					}
+				}
+
+				// Generate Button styles for [Contrast = contrast/blend]
+				.bg\:#{$blend} {
+					// [Variant = bare]
+					[class^='toggle'][aria-pressed='true'].bare {
+						--current-toggle-border: var(
+							#{$prefix}-#{$day}-#{$blend}-color-toggle-pressed-bare-border
+						);
+					}
+					// [State = hover]
+					[class^='toggle'][aria-pressed='true']:hover {
+						--current-toggle-bg: var(
+							#{$prefix}-#{$day}-#{$blend}-color-toggle-pressed-default-hover-bg
+						);
+					}
+				}
+				// Generate Button styles for [Contrast = contrast/blend]
+				.bg\:#{$contrast} {
+					// [Variant = bare]
+					[class^='toggle'][aria-pressed='true'].bare {
+						--current-toggle-border: var(
+							#{$prefix}-#{$day}-#{$contrast}-color-toggle-pressed-bare-border
+						);
+					}
+					// [State = hover]
+					[class^='toggle'][aria-pressed='true']:hover {
+						--current-toggle-bg: var(
+							#{$prefix}-#{$day}-#{$contrast}-color-toggle-pressed-default-hover-bg
+						);
+					}
+				}
 			}
 
-			// Generate colored buttons for [Variant = fill/outline/bare]
+			// Generate colored Button styles for [Variant = fill/outline/bare]
 			@each $color-key, $color in $theme-colors {
 				@each $variant-key, $variant in $button-variants {
 					button.#{$color}.#{$variant} {
@@ -359,9 +464,45 @@ $current_cssvars: ();
 					button.#{$color}.#{$variant}:active {
 						--current-button-border: var(#{$prefix}-#{$day}-color-button-#{$color}-active-border);
 					}
+
+					[class^='toggle'][aria-pressed].#{$color}.#{$variant} {
+						--current-toggle-text: var(#{$prefix}-#{$day}-color-toggle-#{$color}-#{$variant}-text);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-#{$color}-#{$variant}-bg);
+						--current-toggle-border: var(
+							#{$prefix}-#{$day}-color-toggle-#{$color}-#{$variant}-border
+						);
+					}
+					[class^='toggle'][aria-pressed].#{$color}.#{$variant}:hover {
+						--current-toggle-text: var(#{$prefix}-#{$day}-color-toggle-#{$color}-hover-text);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-#{$color}-hover-bg);
+						--current-toggle-border: var(#{$prefix}-#{$day}-color-toggle-#{$color}-hover-border);
+					}
+
+					[class^='toggle'][aria-pressed='true'].#{$color}.#{$variant} {
+						--current-toggle-text: var(
+							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-#{$variant}-text
+						);
+						--current-toggle-bg: var(
+							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-#{$variant}-bg
+						);
+						--current-toggle-border: var(
+							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-#{$variant}-border
+						);
+					}
+					[class^='toggle'][aria-pressed='true'].#{$color}.#{$variant}:hover {
+						--current-toggle-text: var(
+							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-hover-text
+						);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-hover-bg);
+						--current-toggle-border: var(
+							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-hover-border
+						);
+					}
 				}
 			}
 		}
+
+		// Generate buttons for [Brightness = night]
 		.#{$night},
 		// Generate default buttons for [Brightness = day > night]
 		.#{$day} .#{$night} {
