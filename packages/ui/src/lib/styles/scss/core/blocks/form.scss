@@ -196,8 +196,15 @@ label.bare.highlight > [type='file'] {
 	border-color: var(--current-highlight-lighter);
 }
 
+fieldset.radio input,
+fieldset.check input {
+	flex-grow: 0;
+	flex-basis: var(--current-font-size);
+}
+
 fieldset.radio,
 fieldset.check {
+	justify-content: flex-start;
 	.day & label {
 		--current-color: var(--color-dark);
 		color: var(--current-color);
