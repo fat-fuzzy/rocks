@@ -313,9 +313,11 @@ $colors: (
 	color-highlight: $color-highlight-vivid-4,
 	color-highlight-light: $color-highlight-vivid-3,
 	color-highlight-lighter: $color-highlight-vivid-2,
-	color-highlight-lightest: $color-highlight-vivid-1
-);
-$feedback-status-colors: (
+	color-highlight-lightest: $color-highlight-vivid-1,
+
+	// ================ ================ ================
+	//== Feedback status colors
+	// ================ ================ ================
 	// == Brightness = day
 	// [Status = default]
 	day-blend-color-status-default-text: var(--day-blend-color-card-text),
@@ -342,9 +344,11 @@ $feedback-status-colors: (
 	color-status-warning-border: $color-warning-vivid-4,
 	color-status-error-text: $color-danger-vivid-4,
 	color-status-error-bg: $color-danger-vivid-2,
-	color-status-error-border: $color-danger-vivid-3
-);
-$button-colors: (
+	color-status-error-border: $color-danger-vivid-3,
+
+	// ================ ================ ================
+	//== Button status colors
+	// ================ ================ ================
 	// ================
 	// == Default button : [Color = none]
 	// ================
@@ -384,5 +388,126 @@ $button-colors: (
 
 	// [Brightness = night] [State = hover]
 	night-blend-color-button-default-hover-bg: $color-dark-1,
-	night-contrast-color-button-default-hover-bg: $color-dark-2
+	night-contrast-color-button-default-hover-bg: $color-dark-2,
+
+	// ================
+	// == Default button : [Color = primary]
+	// ================
+	// [Brightness = day] [State = default]
+	day-color-button-primary-text: $color-light-1,
+	day-color-button-primary-bg: var(--day-color-primary-1),
+	day-color-button-primary-border: var(--day-color-primary-1),
+	day-color-button-primary-fill-text: $color-light-1,
+	day-color-button-primary-fill-bg: var(--day-color-primary-1),
+	day-color-button-primary-fill-border: var(--day-color-primary-1),
+	day-color-button-primary-outline-text: var(--day-color-primary-1),
+	day-color-button-primary-outline-bg: inherit,
+	day-color-button-primary-outline-border: var(--day-color-primary-1),
+	day-color-button-primary-bare-text: $color-dark-1,
+	day-color-button-primary-bare-bg: inherit,
+	day-color-button-primary-bare-border: var(--day-color-primary-3),
+	// day-color-button-primary-bare-border: var(--day-color-primary-3),
+	// [Brightness = day] [State = hover]
+	day-color-button-primary-hover-bg: var(--day-color-primary-2),
+	// day-color-button-primary-hover-bg: var(--day-color-primary-2)
+	// ================
+	// == Default button : [Color = accent]
+	// ================
+	// [Brightness = day] [State = default]
+	day-color-button-accent-text: $color-light-1,
+	day-color-button-accent-bg: var(--day-color-accent-1),
+	day-color-button-accent-border: var(--day-color-accent-1),
+	day-color-button-accent-fill-text: $color-light-1,
+	day-color-button-accent-fill-bg: var(--day-color-accent-1),
+	day-color-button-accent-fill-border: var(--day-color-accent-1),
+	day-color-button-accent-outline-text: var(--day-color-accent-1),
+	day-color-button-accent-outline-bg: inherit,
+	day-color-button-accent-outline-border: var(--day-color-accent-1),
+	day-color-button-accent-bare-text: $color-dark-1,
+	day-color-button-accent-bare-bg: inherit,
+	day-color-button-accent-bare-border: var(--day-color-accent-3),
+	// day-color-button-accent-bare-border: var(--day-color-accent-3),
+	// [Brightness = day] [State = hover]
+	day-color-button-accent-hover-bg: var(--day-color-accent-2),
+	// day-color-button-accent-hover-bg: var(--day-color-accent-2)
+	// ================
+	// == Default button : [Color = accent]
+	// ================
+	// [Brightness = day] [State = default]
+	day-color-button-highlight-text: $color-light-1,
+	day-color-button-highlight-bg: var(--day-color-highlight-1),
+	day-color-button-highlight-border: var(--day-color-highlight-1),
+	day-color-button-highlight-fill-text: $color-light-1,
+	day-color-button-highlight-fill-bg: var(--day-color-highlight-1),
+	day-color-button-highlight-fill-border: var(--day-color-highlight-1),
+	day-color-button-highlight-outline-text: var(--day-color-highlight-1),
+	day-color-button-highlight-outline-bg: inherit,
+	day-color-button-highlight-outline-border: var(--day-color-highlight-1),
+	day-color-button-highlight-bare-text: $color-dark-1,
+	day-color-button-highlight-bare-bg: inherit,
+	day-color-button-highlight-bare-border: var(--day-color-highlight-3),
+	// day-color-button-highlight-bare-border: var(--day-color-highlight-3),
+	// [Brightness = day] [State = hover]
+	day-color-button-highlight-hover-bg: var(--day-color-highlight-2),
+	// day-color-button-highlight-hover-bg: var(--day-color-highlight-2)
+	// ================
+	// == Default button : [Color = primary]
+	// ================
+	// [Brightness = night] [State = default]
+	night-color-button-primary-text: $color-light-1,
+	night-color-button-primary-bg: var(--night-color-primary-1),
+	night-color-button-primary-border: var(--night-color-primary-1),
+	night-color-button-primary-fill-text: $color-light-1,
+	night-color-button-primary-fill-bg: var(--night-color-primary-1),
+	night-color-button-primary-fill-border: var(--night-color-primary-1),
+	night-color-button-primary-outline-text: var(--night-color-primary-1),
+	night-color-button-primary-outline-bg: inherit,
+	night-color-button-primary-outline-border: var(--night-color-primary-1),
+	night-color-button-primary-bare-text: $color-dark-1,
+	night-color-button-primary-bare-bg: inherit,
+	night-color-button-primary-bare-border: var(--night-color-primary-3),
+	// night-color-button-primary-bare-border: var(--night-color-primary-3),
+	// [Brightness = night] [State = hover]
+	night-color-button-primary-hover-bg: var(--night-color-primary-2),
+	// night-color-button-primary-hover-bg: var(--night-color-primary-2)
+	// ================
+	// == Default button : [Color = accent]
+	// ================
+	// [Brightness = night] [State = default]
+	night-color-button-accent-text: $color-light-1,
+	night-color-button-accent-bg: var(--night-color-accent-1),
+	night-color-button-accent-border: var(--night-color-accent-1),
+	night-color-button-accent-fill-text: $color-light-1,
+	night-color-button-accent-fill-bg: var(--night-color-accent-1),
+	night-color-button-accent-fill-border: var(--night-color-accent-1),
+	night-color-button-accent-outline-text: var(--night-color-accent-1),
+	night-color-button-accent-outline-bg: inherit,
+	night-color-button-accent-outline-border: var(--night-color-accent-1),
+	night-color-button-accent-bare-text: $color-dark-1,
+	night-color-button-accent-bare-bg: inherit,
+	night-color-button-accent-bare-border: var(--night-color-accent-3),
+	// night-color-button-accent-bare-border: var(--night-color-accent-3),
+	// [Brightness = night] [State = hover]
+	night-color-button-accent-hover-bg: var(--night-color-accent-2),
+	// night-color-button-accent-hover-bg: var(--night-color-accent-2)
+	// ================
+	// == Default button : [Color = accent]
+	// ================
+	// [Brightness = night] [State = default]
+	night-color-button-highlight-text: $color-light-1,
+	night-color-button-highlight-bg: var(--night-color-highlight-1),
+	night-color-button-highlight-border: var(--night-color-highlight-1),
+	night-color-button-highlight-fill-text: $color-light-1,
+	night-color-button-highlight-fill-bg: var(--night-color-highlight-1),
+	night-color-button-highlight-fill-border: var(--night-color-highlight-1),
+	night-color-button-highlight-outline-text: var(--night-color-highlight-1),
+	night-color-button-highlight-outline-bg: inherit,
+	night-color-button-highlight-outline-border: var(--night-color-highlight-1),
+	night-color-button-highlight-bare-text: $color-dark-1,
+	night-color-button-highlight-bare-bg: inherit,
+	night-color-button-highlight-bare-border: var(--night-color-highlight-3),
+	// night-color-button-highlight-bare-border: var(--night-color-highlight-3),
+	// [Brightness = night] [State = hover]
+	night-color-button-highlight-hover-bg: var(--night-color-highlight-2),
+	// night-color-button-highlight-hover-bg: var(--night-color-highlight-2)
 );

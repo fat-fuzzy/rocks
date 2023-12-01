@@ -264,6 +264,172 @@ $current_cssvars: ();
 	}
 }
 
+//== BUTTONS
+// $prefix: '-';
+// @include generate-button-styles($prefix);
+@mixin generate-button-styles($prefix) {
+	$theme-brightness: (
+		'night': 'day',
+	);
+	$theme-contrast: (
+		'contrast': 'blend',
+	);
+	$theme-colors: (
+		'primary': 'primary',
+		'accent': 'accent',
+		'highlight': 'highlight',
+	);
+	$button-variants: (
+		'variant-fill': 'fill',
+		'variant-outline': 'outline',
+		'variant-bare': 'bare',
+	);
+	button {
+		color: var(--current-button-text);
+		background-color: var(--current-button-bg);
+		border: var(--border-width) solid var(--current-button-border);
+	}
+	@each $night, $day in $theme-brightness {
+		// Generate buttons for [Brightness = day]
+		.#{$day},
+		// Generate default buttons for [Brightness = night > day]
+		.#{$night} .#{$day} {
+			@each $variant-key, $variant in $button-variants {
+				button.#{$variant} {
+					--current-button-text: var(#{$prefix}-#{$day}-color-button-default-#{$variant}-text);
+					--current-button-bg: var(#{$prefix}-#{$day}-color-button-default-#{$variant}-bg);
+					--current-button-border: var(#{$prefix}-#{$day}-color-button-default-#{$variant}-border);
+				}
+				button.#{$variant}:hover {
+					--current-button-text: var(
+						#{$prefix}-#{$day}-color-button-default-#{$variant}-text-hover
+					);
+					--current-button-bg: var(#{$prefix}-#{$day}-color-button-default-#{$variant}-bg-hover);
+					--current-button-border: var(
+						#{$prefix}-#{$day}-color-button-default-#{$variant}-border-hover
+					);
+				}
+				button.#{$variant}:active {
+					--current-button-border: var(
+						#{$prefix}-#{$day}-color-button-default-#{$variant}-border-active
+					);
+				}
+			}
+
+			@each $contrast, $blend in $theme-contrast {
+				// Generate buttons for [Contrast = contrast/blend]
+				.bg\:#{$blend} {
+					// Generate styles for [Variant = bare]
+					button.bare {
+						--current-button-border: var(#{$prefix}-#{$day}-#{$blend}-color-button-bare-border);
+					}
+					// Generate default buttons hover state
+					button:hover {
+						--current-button-bg: var(#{$prefix}-#{$day}-#{$blend}-color-button-default-hover-bg);
+					}
+				}
+			}
+
+			// Generate colored buttons for [Variant = fill/outline/bare]
+			@each $color-key, $color in $theme-colors {
+				@each $variant-key, $variant in $button-variants {
+					button.#{$color}.#{$variant} {
+						--current-button-text: var(#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-text);
+						--current-button-bg: var(#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-bg);
+						--current-button-border: var(
+							#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-border
+						);
+					}
+					button.#{$color}.#{$variant}:hover {
+						--current-button-text: var(
+							#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-text-hover
+						);
+						--current-button-bg: var(#{$prefix}-color-button-#{$color}-#{$variant}-bg-hover);
+						--current-button-border: var(
+							#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-border-hover
+						);
+					}
+					button.#{$color}.#{$variant}:active {
+						--current-button-border: var(
+							#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-border-active
+						);
+					}
+				}
+			}
+		}
+		.#{$night},
+		// Generate default buttons for [Brightness = day > night]
+		.#{$day} .#{$night} {
+			@each $variant-key, $variant in $button-variants {
+				button.#{$variant} {
+					--current-button-text: var(#{$prefix}-#{$night}-color-button-default-#{$variant}-text);
+					--current-button-bg: var(#{$prefix}-#{$night}-color-button-default-#{$variant}-bg);
+					--current-button-border: var(
+						#{$prefix}-#{$night}-color-button-default-#{$variant}-border
+					);
+				}
+				button.#{$variant}:hover {
+					--current-button-text: var(
+						#{$prefix}-#{$night}-color-button-default-#{$variant}-text-hover
+					);
+					--current-button-bg: var(#{$prefix}-#{$night}-color-button-default-#{$variant}-bg-hover);
+					--current-button-border: var(
+						#{$prefix}-#{$night}-color-button-default-#{$variant}-border-hover
+					);
+				}
+				button.#{$variant}:active {
+					--current-button-border: var(
+						#{$prefix}-#{$night}-color-button-default-#{$variant}-border-active
+					);
+				}
+			}
+
+			@each $contrast, $blend in $theme-contrast {
+				// Generate buttons for [Contrast = contrast/blend]
+				.bg\:#{$blend} {
+					// Generate styles for [Variant = bare]
+					button.bare {
+						--current-button-border: var(#{$prefix}-#{$night}-#{$blend}-color-button-bare-border);
+					}
+					// Generate default buttons hover state
+					button:hover {
+						--current-button-bg: var(#{$prefix}-#{$night}-#{$blend}-color-button-default-hover-bg);
+					}
+				}
+			}
+
+			// Generate colored buttons for [Variant = fill/outline/bare]
+			@each $color-key, $color in $theme-colors {
+				@each $variant-key, $variant in $button-variants {
+					button.#{$color}.#{$variant} {
+						--current-button-text: var(
+							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-text
+						);
+						--current-button-bg: var(#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-bg);
+						--current-button-border: var(
+							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-border
+						);
+					}
+					button.#{$color}.#{$variant}:hover {
+						--current-button-text: var(
+							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-text-hover
+						);
+						--current-button-bg: var(#{$prefix}-color-button-#{$color}-#{$variant}-bg-hover);
+						--current-button-border: var(
+							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-border-hover
+						);
+					}
+					button.#{$color}.#{$variant}:active {
+						--current-button-border: var(
+							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-border-active
+						);
+					}
+				}
+			}
+		}
+	}
+}
+
 @mixin theme-custom(
 	$breakpoints,
 	$layout,
@@ -274,8 +440,6 @@ $current_cssvars: ();
 	$modular-scale-steps-minus,
 	$typography,
 	$colors,
-	$feedback-status-colors,
-	$button-colors,
 	$assets,
 	$prefix
 ) {
@@ -300,10 +464,9 @@ $current_cssvars: ();
 		@include map-css-vars($layout, $prefix);
 		@include map-css-vars($typography, $prefix);
 		@include map-css-vars($colors, $prefix);
-		@include map-css-vars($feedback-status-colors, $prefix);
-		@include map-css-vars($button-colors, $prefix);
 	}
 	@include generate-theme-colors($prefix);
+	@include generate-button-styles($prefix);
 	@include generate-emoji-assets($assets, $prefix);
 }
 
@@ -317,8 +480,6 @@ $current_cssvars: ();
 	$modular-scale-steps-minus,
 	$typography,
 	$colors,
-	$feedback-status-colors,
-	$button-colors,
 	$assets,
 	$prefix
 ) {
@@ -341,11 +502,10 @@ $current_cssvars: ();
 		@include generate-css-vars($layout, $prefix);
 		@include generate-css-vars($typography, $prefix);
 		@include generate-css-vars($colors, $prefix);
-		@include generate-css-vars($feedback-status-colors, $prefix);
-		@include generate-css-vars($button-colors, $prefix);
 	}
 
 	// -----------
 	@include generate-theme-colors($prefix);
+	@include generate-button-styles($prefix);
 	@include generate-emoji-assets($assets, $prefix);
 }
