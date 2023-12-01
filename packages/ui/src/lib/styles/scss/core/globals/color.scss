@@ -23,18 +23,6 @@
 
 //== Background colors
 
-.bg\:polar {
-	background-color: var(--current-polar);
-}
-
-.bg\:contrast {
-	background-color: var(--current-bg-contrast);
-}
-
-.bg\:blend {
-	background-color: var(--current-bg-color);
-}
-
 .bg\:primary {
 	--current-color: var(--color-light);
 	--current-bg-color: var(--current-primary);
@@ -279,21 +267,6 @@
 	}
 	.bg\:accent {
 		--current-color: var(--color-black);
-	}
-	.bg\:info {
-		--current-color: var(--color-white);
-	}
-	.bg\:error {
-		--current-color: var(--color-white);
-	}
-}
-
-.night .day {
-	.bg\:primary {
-		--current-color: var(--color-white);
-	}
-	.bg\:accent {
-		--current-color: var(--color-white);
 	}
 	.bg\:info {
 		--current-color: var(--color-white);

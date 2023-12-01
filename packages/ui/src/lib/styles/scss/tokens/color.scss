@@ -40,10 +40,10 @@ $color-success-vivid-4: rgb(1, 240, 220);
 // [Hue = warning] x [Chroma = vivid]
 $color-warning-vivid-1: rgb(255, 252, 231);
 $color-warning-vivid-2: rgb(255, 248, 203);
-$color-warning-vivid-3: rgb(255, 234, 94);
+$color-warning-vivid-3: rgb(255, 242, 155);
 
 // $color-warning-vivid-4: rgb(255, 224, 23);
-$color-warning-vivid-4: rgb(232, 201, 0);
+$color-warning-vivid-4: rgb(255, 221, 1);
 
 // [Hue = danger] x [Chroma = vivid]
 $color-danger-vivid-1: rgb(254, 225, 232);
@@ -58,16 +58,16 @@ $color-danger-vivid-4: rgb(195, 43, 96);
 // == Theme colors
 // ================
 // [Hue = primary] x [Chroma = vivid]
-$color-primary-vivid-1: hsl(251, 92%, 90%);
-$color-primary-vivid-2: hsl(249, 91%, 86%);
+$color-primary-vivid-1: hsl(250, 89%, 93%);
+$color-primary-vivid-2: hsl(249, 88%, 87%);
 $color-primary-vivid-3: hsl(250deg, 90%, 80%);
 
 // $color-primary-vivid-3: rgb(174, 159, 225);
 $color-primary-vivid-4: hsl(250deg, 64%, 60%);
 
 // [Hue = accent] x [Chroma = vivid]
-$color-accent-vivid-1: rgb(179, 236, 246);
-$color-accent-vivid-2: rgb(114, 205, 221);
+$color-accent-vivid-1: rgb(191, 239, 248);
+$color-accent-vivid-2: rgb(144, 220, 234);
 $color-accent-vivid-3: rgb(71, 185, 205);
 
 // $color-accent-vivid-3: rgb(114, 186, 199);
@@ -75,9 +75,9 @@ $color-accent-vivid-3: rgb(71, 185, 205);
 $color-accent-vivid-4: rgb(4, 126, 148);
 
 // [Hue = highlight] x [Chroma = vivid ???]
-$color-highlight-vivid-1: rgb(251, 222, 226);
-$color-highlight-vivid-2: rgb(242, 202, 207);
-$color-highlight-vivid-3: rgb(234, 182, 188);
+$color-highlight-vivid-1: rgb(253, 232, 238);
+$color-highlight-vivid-2: rgb(250, 216, 219);
+$color-highlight-vivid-3: rgb(251, 197, 203);
 $color-highlight-vivid-4: rgb(220, 157, 164);
 
 // Shadow colors
