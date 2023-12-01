@@ -211,9 +211,9 @@ $current_cssvars: ();
 			--current-highlight-light: var(#{$prefix}-#{$day}-color-highlight-2);
 			--current-highlight-lighter: var(#{$prefix}-#{$day}-color-highlight-3);
 			--current-highlight-lightest: var(#{$prefix}-#{$day}-color-highlight-4);
-			--current-button-text: var(#{$prefix}-#{$day}-color-button-default-text);
-			--current-button-bg: var(#{$prefix}-#{$day}-color-button-default-bg);
-			--current-button-border: var(#{$prefix}-#{$day}-color-button-default-border);
+			--current-button-text: var(#{$prefix}-#{$day}-button-neutral-text);
+			--current-button-bg: var(#{$prefix}-#{$day}-button-neutral-bg);
+			--current-button-border: var(#{$prefix}-#{$day}-button-neutral-border);
 			--current-color-shadow: var(#{$prefix}-#{$day}-color-shadow);
 			--current-shadow: var(#{$prefix}-#{$day}-shadow);
 			--current-shadow-inset-1: var(#{$prefix}-#{$day}-shadow-inset-1);
@@ -243,9 +243,9 @@ $current_cssvars: ();
 			--current-highlight-light: var(#{$prefix}-#{$night}-color-highlight-2);
 			--current-highlight-lighter: var(#{$prefix}-#{$night}-color-highlight-3);
 			--current-highlight-lightest: var(#{$prefix}-#{$night}-color-highlight-4);
-			--current-button-text: var(#{$prefix}-#{$night}-color-button-default-text);
-			--current-button-bg: var(#{$prefix}-#{$night}-color-button-default-bg);
-			--current-button-border: var(#{$prefix}-#{$night}-color-button-default-border);
+			--current-button-text: var(#{$prefix}-#{$night}-button-neutral-text);
+			--current-button-bg: var(#{$prefix}-#{$night}-button-neutral-bg);
+			--current-button-border: var(#{$prefix}-#{$night}-button-neutral-border);
 			--current-color-shadow: var(#{$prefix}-#{$night}-color-shadow);
 			--current-shadow: var(#{$prefix}-#{$night}-shadow);
 			--current-shadow-inset-1: var(#{$prefix}-#{$night}-shadow-inset-1);
@@ -275,6 +275,7 @@ $current_cssvars: ();
 		'contrast': 'blend',
 	);
 	$theme-colors: (
+		'neutral': 'neutral',
 		'primary': 'primary',
 		'accent': 'accent',
 		'highlight': 'highlight',
@@ -301,68 +302,52 @@ $current_cssvars: ();
 		.#{$night} .#{$day} {
 			@each $variant-key, $variant in $button-variants {
 				button.#{$variant} {
-					--current-button-text: var(#{$prefix}-#{$day}-color-button-default-#{$variant}-text);
-					--current-button-bg: var(#{$prefix}-#{$day}-color-button-default-#{$variant}-bg);
-					--current-button-border: var(#{$prefix}-#{$day}-color-button-default-#{$variant}-border);
+					--current-button-text: var(#{$prefix}-#{$day}-button-neutral-#{$variant}-text);
+					--current-button-bg: var(#{$prefix}-#{$day}-button-neutral-#{$variant}-bg);
+					--current-button-border: var(#{$prefix}-#{$day}-button-neutral-#{$variant}-border);
 				}
 				button.#{$variant}:hover {
-					--current-button-text: var(
-						#{$prefix}-#{$day}-color-button-default-#{$variant}-text-hover
-					);
-					--current-button-bg: var(#{$prefix}-#{$day}-color-button-default-#{$variant}-bg-hover);
-					--current-button-border: var(
-						#{$prefix}-#{$day}-color-button-default-#{$variant}-border-hover
-					);
+					--current-button-text: var(#{$prefix}-#{$day}-button-neutral-#{$variant}-text-hover);
+					--current-button-bg: var(#{$prefix}-#{$day}-button-neutral-#{$variant}-bg-hover);
+					--current-button-border: var(#{$prefix}-#{$day}-button-neutral-#{$variant}-border-hover);
 				}
 				button.#{$variant}:active {
-					--current-button-border: var(
-						#{$prefix}-#{$day}-color-button-default-#{$variant}-border-active
-					);
+					--current-button-border: var(#{$prefix}-#{$day}-button-neutral-#{$variant}-border-active);
 				}
 
 				[class^='toggle'][aria-pressed].#{$variant} {
-					--current-toggle-text: var(#{$prefix}-#{$day}-color-toggle-default-#{$variant}-text);
-					--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-default-#{$variant}-bg);
-					--current-toggle-border: var(#{$prefix}-#{$day}-color-toggle-default-#{$variant}-border);
+					--current-toggle-text: var(#{$prefix}-#{$day}-toggle-neutral-#{$variant}-text);
+					--current-toggle-bg: var(#{$prefix}-#{$day}-toggle-neutral-#{$variant}-bg);
+					--current-toggle-border: var(#{$prefix}-#{$day}-toggle-neutral-#{$variant}-border);
 				}
 				[class^='toggle'][aria-pressed].#{$variant}:hover {
-					--current-toggle-text: var(
-						#{$prefix}-#{$day}-color-toggle-default-#{$variant}-text-hover
-					);
-					--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-default-#{$variant}-bg-hover);
-					--current-toggle-border: var(
-						#{$prefix}-#{$day}-color-toggle-default-#{$variant}-border-hover
-					);
+					--current-toggle-text: var(#{$prefix}-#{$day}-toggle-neutral-#{$variant}-text-hover);
+					--current-toggle-bg: var(#{$prefix}-#{$day}-toggle-neutral-#{$variant}-bg-hover);
+					--current-toggle-border: var(#{$prefix}-#{$day}-toggle-neutral-#{$variant}-border-hover);
 				}
 				[class^='toggle'][aria-pressed].#{$variant}:active {
-					--current-toggle-border: var(
-						#{$prefix}-#{$day}-color-toggle-default-#{$variant}-border-active
-					);
+					--current-toggle-border: var(#{$prefix}-#{$day}-toggle-neutral-#{$variant}-border-active);
 				}
 
 				[class^='toggle'][aria-pressed='true'].#{$variant} {
-					--current-toggle-text: var(
-						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-text
-					);
-					--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-bg);
+					--current-toggle-text: var(#{$prefix}-#{$day}-toggle-pressed-neutral-#{$variant}-text);
+					--current-toggle-bg: var(#{$prefix}-#{$day}-toggle-pressed-neutral-#{$variant}-bg);
 					--current-toggle-border: var(
-						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-border
+						#{$prefix}-#{$day}-toggle-pressed-neutral-#{$variant}-border
 					);
 				}
 				[class^='toggle'][aria-pressed='true'].#{$variant}:hover {
 					--current-toggle-text: var(
-						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-text-hover
+						#{$prefix}-#{$day}-toggle-pressed-neutral-#{$variant}-text-hover
 					);
-					--current-toggle-bg: var(
-						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-bg-hover
-					);
+					--current-toggle-bg: var(#{$prefix}-#{$day}-toggle-pressed-neutral-#{$variant}-bg-hover);
 					--current-toggle-border: var(
-						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-border-hover
+						#{$prefix}-#{$day}-toggle-pressed-neutral-#{$variant}-border-hover
 					);
 				}
 				[class^='toggle'][aria-pressed='true'].#{$variant}:active {
 					--current-toggle-border: var(
-						#{$prefix}-#{$day}-color-toggle-pressed-default-#{$variant}-border-active
+						#{$prefix}-#{$day}-toggle-pressed-neutral-#{$variant}-border-active
 					);
 				}
 			}
@@ -372,22 +357,22 @@ $current_cssvars: ();
 				.bg\:#{$blend} {
 					// [Variant = bare]
 					button.bare {
-						--current-button-border: var(#{$prefix}-#{$day}-#{$blend}-color-button-bare-border);
+						--current-button-border: var(#{$prefix}-#{$day}-#{$blend}-button-bare-border);
 					}
 					// [State = hover]
 					button:hover {
-						--current-button-bg: var(#{$prefix}-#{$day}-#{$blend}-color-button-default-hover-bg);
+						--current-button-bg: var(#{$prefix}-#{$day}-#{$blend}-button-neutral-hover-bg);
 					}
 				}
 				// Generate Button styles for [Contrast = contrast/blend]
 				.bg\:#{$contrast} {
 					// [Variant = bare]
 					button.bare {
-						--current-button-border: var(#{$prefix}-#{$day}-#{$contrast}-color-button-bare-border);
+						--current-button-border: var(#{$prefix}-#{$day}-#{$contrast}-button-bare-border);
 					}
 					// [State = hover]
 					button:hover {
-						--current-button-bg: var(#{$prefix}-#{$day}-#{$contrast}-color-button-default-hover-bg);
+						--current-button-bg: var(#{$prefix}-#{$day}-#{$contrast}-button-neutral-hover-bg);
 					}
 				}
 
@@ -395,22 +380,22 @@ $current_cssvars: ();
 				.bg\:#{$blend} {
 					// [Variant = bare]
 					[class^='toggle'][aria-pressed].bare {
-						--current-toggle-border: var(#{$prefix}-#{$day}-#{$blend}-color-toggle-bare-border);
+						--current-toggle-border: var(#{$prefix}-#{$day}-#{$blend}-toggle-bare-border);
 					}
 					// [State = hover]
 					[class^='toggle'][aria-pressed]:hover {
-						--current-toggle-bg: var(#{$prefix}-#{$day}-#{$blend}-color-toggle-default-hover-bg);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-#{$blend}-toggle-neutral-hover-bg);
 					}
 				}
 				// Generate Button styles for [Contrast = contrast/blend]
 				.bg\:#{$contrast} {
 					// [Variant = bare]
 					[class^='toggle'][aria-pressed].bare {
-						--current-toggle-border: var(#{$prefix}-#{$day}-#{$contrast}-color-toggle-bare-border);
+						--current-toggle-border: var(#{$prefix}-#{$day}-#{$contrast}-toggle-bare-border);
 					}
 					// [State = hover]
 					[class^='toggle'][aria-pressed]:hover {
-						--current-toggle-bg: var(#{$prefix}-#{$day}-#{$contrast}-color-toggle-default-hover-bg);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-#{$contrast}-toggle-neutral-hover-bg);
 					}
 				}
 
@@ -418,15 +403,11 @@ $current_cssvars: ();
 				.bg\:#{$blend} {
 					// [Variant = bare]
 					[class^='toggle'][aria-pressed='true'].bare {
-						--current-toggle-border: var(
-							#{$prefix}-#{$day}-#{$blend}-color-toggle-pressed-bare-border
-						);
+						--current-toggle-border: var(#{$prefix}-#{$day}-#{$blend}-toggle-pressed-bare-border);
 					}
 					// [State = hover]
 					[class^='toggle'][aria-pressed='true']:hover {
-						--current-toggle-bg: var(
-							#{$prefix}-#{$day}-#{$blend}-color-toggle-pressed-default-hover-bg
-						);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-#{$blend}-toggle-pressed-neutral-hover-bg);
 					}
 				}
 				// Generate Button styles for [Contrast = contrast/blend]
@@ -434,13 +415,13 @@ $current_cssvars: ();
 					// [Variant = bare]
 					[class^='toggle'][aria-pressed='true'].bare {
 						--current-toggle-border: var(
-							#{$prefix}-#{$day}-#{$contrast}-color-toggle-pressed-bare-border
+							#{$prefix}-#{$day}-#{$contrast}-toggle-pressed-bare-border
 						);
 					}
 					// [State = hover]
 					[class^='toggle'][aria-pressed='true']:hover {
 						--current-toggle-bg: var(
-							#{$prefix}-#{$day}-#{$contrast}-color-toggle-pressed-default-hover-bg
+							#{$prefix}-#{$day}-#{$contrast}-toggle-pressed-neutral-hover-bg
 						);
 					}
 				}
@@ -450,53 +431,43 @@ $current_cssvars: ();
 			@each $color-key, $color in $theme-colors {
 				@each $variant-key, $variant in $button-variants {
 					button.#{$color}.#{$variant} {
-						--current-button-text: var(#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-text);
-						--current-button-bg: var(#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-bg);
-						--current-button-border: var(
-							#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-border
-						);
+						--current-button-text: var(#{$prefix}-#{$day}-button-#{$color}-#{$variant}-text);
+						--current-button-bg: var(#{$prefix}-#{$day}-button-#{$color}-#{$variant}-bg);
+						--current-button-border: var(#{$prefix}-#{$day}-button-#{$color}-#{$variant}-border);
 					}
 					button.#{$color}.#{$variant}:hover {
-						--current-button-text: var(#{$prefix}-#{$day}-color-button-#{$color}-hover-text);
-						--current-button-bg: var(#{$prefix}-#{$day}-color-button-#{$color}-hover-bg);
-						--current-button-border: var(#{$prefix}-#{$day}-color-button-#{$color}-hover-border);
+						--current-button-text: var(#{$prefix}-#{$day}-button-#{$color}-hover-text);
+						--current-button-bg: var(#{$prefix}-#{$day}-button-#{$color}-hover-bg);
+						--current-button-border: var(#{$prefix}-#{$day}-button-#{$color}-hover-border);
 					}
 					button.#{$color}.#{$variant}:active {
-						--current-button-border: var(#{$prefix}-#{$day}-color-button-#{$color}-active-border);
+						--current-button-border: var(#{$prefix}-#{$day}-button-#{$color}-active-border);
 					}
 
 					[class^='toggle'][aria-pressed].#{$color}.#{$variant} {
-						--current-toggle-text: var(#{$prefix}-#{$day}-color-toggle-#{$color}-#{$variant}-text);
-						--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-#{$color}-#{$variant}-bg);
-						--current-toggle-border: var(
-							#{$prefix}-#{$day}-color-toggle-#{$color}-#{$variant}-border
-						);
+						--current-toggle-text: var(#{$prefix}-#{$day}-toggle-#{$color}-#{$variant}-text);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-toggle-#{$color}-#{$variant}-bg);
+						--current-toggle-border: var(#{$prefix}-#{$day}-toggle-#{$color}-#{$variant}-border);
 					}
 					[class^='toggle'][aria-pressed].#{$color}.#{$variant}:hover {
-						--current-toggle-text: var(#{$prefix}-#{$day}-color-toggle-#{$color}-hover-text);
-						--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-#{$color}-hover-bg);
-						--current-toggle-border: var(#{$prefix}-#{$day}-color-toggle-#{$color}-hover-border);
+						--current-toggle-text: var(#{$prefix}-#{$day}-toggle-#{$color}-hover-text);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-toggle-#{$color}-hover-bg);
+						--current-toggle-border: var(#{$prefix}-#{$day}-toggle-#{$color}-hover-border);
 					}
 
 					[class^='toggle'][aria-pressed='true'].#{$color}.#{$variant} {
 						--current-toggle-text: var(
-							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-#{$variant}-text
+							#{$prefix}-#{$day}-toggle-pressed-#{$color}-#{$variant}-text
 						);
-						--current-toggle-bg: var(
-							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-#{$variant}-bg
-						);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-toggle-pressed-#{$color}-#{$variant}-bg);
 						--current-toggle-border: var(
-							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-#{$variant}-border
+							#{$prefix}-#{$day}-toggle-pressed-#{$color}-#{$variant}-border
 						);
 					}
 					[class^='toggle'][aria-pressed='true'].#{$color}.#{$variant}:hover {
-						--current-toggle-text: var(
-							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-hover-text
-						);
-						--current-toggle-bg: var(#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-hover-bg);
-						--current-toggle-border: var(
-							#{$prefix}-#{$day}-color-toggle-pressed-#{$color}-hover-border
-						);
+						--current-toggle-text: var(#{$prefix}-#{$day}-toggle-pressed-#{$color}-hover-text);
+						--current-toggle-bg: var(#{$prefix}-#{$day}-toggle-pressed-#{$color}-hover-bg);
+						--current-toggle-border: var(#{$prefix}-#{$day}-toggle-pressed-#{$color}-hover-border);
 					}
 				}
 			}
@@ -508,74 +479,62 @@ $current_cssvars: ();
 		.#{$day} .#{$night} {
 			@each $variant-key, $variant in $button-variants {
 				button.#{$variant} {
-					--current-button-text: var(#{$prefix}-#{$night}-color-button-default-#{$variant}-text);
-					--current-button-bg: var(#{$prefix}-#{$night}-color-button-default-#{$variant}-bg);
-					--current-button-border: var(
-						#{$prefix}-#{$night}-color-button-default-#{$variant}-border
-					);
+					--current-button-text: var(#{$prefix}-#{$night}-button-neutral-#{$variant}-text);
+					--current-button-bg: var(#{$prefix}-#{$night}-button-neutral-#{$variant}-bg);
+					--current-button-border: var(#{$prefix}-#{$night}-button-neutral-#{$variant}-border);
 				}
 				button.#{$variant}:hover {
-					--current-button-text: var(
-						#{$prefix}-#{$night}-color-button-default-#{$variant}-text-hover
-					);
-					--current-button-bg: var(#{$prefix}-#{$night}-color-button-default-#{$variant}-bg-hover);
+					--current-button-text: var(#{$prefix}-#{$night}-button-neutral-#{$variant}-text-hover);
+					--current-button-bg: var(#{$prefix}-#{$night}-button-neutral-#{$variant}-bg-hover);
 					--current-button-border: var(
-						#{$prefix}-#{$night}-color-button-default-#{$variant}-border-hover
+						#{$prefix}-#{$night}-button-neutral-#{$variant}-border-hover
 					);
 				}
 				button.#{$variant}:active {
 					--current-button-border: var(
-						#{$prefix}-#{$night}-color-button-default-#{$variant}-border-active
+						#{$prefix}-#{$night}-button-neutral-#{$variant}-border-active
 					);
 				}
 
 				[class^='toggle'][aria-pressed].#{$variant} {
-					--current-toggle-text: var(#{$prefix}-#{$night}-color-toggle-default-#{$variant}-text);
-					--current-toggle-bg: var(#{$prefix}-#{$night}-color-toggle-default-#{$variant}-bg);
-					--current-toggle-border: var(
-						#{$prefix}-#{$night}-color-toggle-default-#{$variant}-border
-					);
+					--current-toggle-text: var(#{$prefix}-#{$night}-toggle-neutral-#{$variant}-text);
+					--current-toggle-bg: var(#{$prefix}-#{$night}-toggle-neutral-#{$variant}-bg);
+					--current-toggle-border: var(#{$prefix}-#{$night}-toggle-neutral-#{$variant}-border);
 				}
 				[class^='toggle'][aria-pressed].#{$variant}:hover {
-					--current-toggle-text: var(
-						#{$prefix}-#{$night}-color-toggle-default-#{$variant}-text-hover
-					);
-					--current-toggle-bg: var(#{$prefix}-#{$night}-color-toggle-default-#{$variant}-bg-hover);
+					--current-toggle-text: var(#{$prefix}-#{$night}-toggle-neutral-#{$variant}-text-hover);
+					--current-toggle-bg: var(#{$prefix}-#{$night}-toggle-neutral-#{$variant}-bg-hover);
 					--current-toggle-border: var(
-						#{$prefix}-#{$night}-color-toggle-default-#{$variant}-border-hover
+						#{$prefix}-#{$night}-toggle-neutral-#{$variant}-border-hover
 					);
 				}
 				[class^='toggle'][aria-pressed].#{$variant}:active {
 					--current-toggle-border: var(
-						#{$prefix}-#{$night}-color-toggle-default-#{$variant}-border-active
+						#{$prefix}-#{$night}-toggle-neutral-#{$variant}-border-active
 					);
 				}
 
 				[class^='toggle'][aria-pressed='true'].#{$variant} {
-					--current-toggle-text: var(
-						#{$prefix}-#{$night}-color-toggle-pressed-default-#{$variant}-text
-					);
-					--current-toggle-bg: var(
-						#{$prefix}-#{$night}-color-toggle-pressed-default-#{$variant}-bg
-					);
+					--current-toggle-text: var(#{$prefix}-#{$night}-toggle-pressed-neutral-#{$variant}-text);
+					--current-toggle-bg: var(#{$prefix}-#{$night}-toggle-pressed-neutral-#{$variant}-bg);
 					--current-toggle-border: var(
-						#{$prefix}-#{$night}-color-toggle-pressed-default-#{$variant}-border
+						#{$prefix}-#{$night}-toggle-pressed-neutral-#{$variant}-border
 					);
 				}
 				[class^='toggle'][aria-pressed='true'].#{$variant}:hover {
 					--current-toggle-text: var(
-						#{$prefix}-#{$night}-color-toggle-pressed-default-#{$variant}-text-hover
+						#{$prefix}-#{$night}-toggle-pressed-neutral-#{$variant}-text-hover
 					);
 					--current-toggle-bg: var(
-						#{$prefix}-#{$night}-color-toggle-pressed-default-#{$variant}-bg-hover
+						#{$prefix}-#{$night}-toggle-pressed-neutral-#{$variant}-bg-hover
 					);
 					--current-toggle-border: var(
-						#{$prefix}-#{$night}-color-toggle-pressed-default-#{$variant}-border-hover
+						#{$prefix}-#{$night}-toggle-pressed-neutral-#{$variant}-border-hover
 					);
 				}
 				[class^='toggle'][aria-pressed='true'].#{$variant}:active {
 					--current-toggle-border: var(
-						#{$prefix}-#{$night}-color-toggle-pressed-default-#{$variant}-border-active
+						#{$prefix}-#{$night}-toggle-pressed-neutral-#{$variant}-border-active
 					);
 				}
 			}
@@ -585,26 +544,22 @@ $current_cssvars: ();
 				.bg\:#{$blend} {
 					// Generate styles for [Variant = bare]
 					button.bare {
-						--current-button-border: var(#{$prefix}-#{$night}-#{$blend}-color-button-bare-border);
+						--current-button-border: var(#{$prefix}-#{$night}-#{$blend}-button-bare-border);
 					}
 					// Generate default buttons hover state
 					button:hover {
-						--current-button-bg: var(#{$prefix}-#{$night}-#{$blend}-color-button-default-hover-bg);
+						--current-button-bg: var(#{$prefix}-#{$night}-#{$blend}-button-neutral-hover-bg);
 					}
 				}
 				// Generate buttons for [Contrast = contrast/blend]
 				.bg\:#{$contrast} {
 					// Generate styles for [Variant = bare]
 					button.bare {
-						--current-button-border: var(
-							#{$prefix}-#{$night}-#{$contrast}-color-button-bare-border
-						);
+						--current-button-border: var(#{$prefix}-#{$night}-#{$contrast}-button-bare-border);
 					}
 					// Generate default buttons hover state
 					button:hover {
-						--current-button-bg: var(
-							#{$prefix}-#{$night}-#{$contrast}-color-button-default-hover-bg
-						);
+						--current-button-bg: var(#{$prefix}-#{$night}-#{$contrast}-button-neutral-hover-bg);
 					}
 				}
 
@@ -612,26 +567,22 @@ $current_cssvars: ();
 				.bg\:#{$blend} {
 					// [Variant = bare]
 					[class^='toggle'][aria-pressed].bare {
-						--current-toggle-border: var(#{$prefix}-#{$night}-#{$blend}-color-toggle-bare-border);
+						--current-toggle-border: var(#{$prefix}-#{$night}-#{$blend}-toggle-bare-border);
 					}
 					// [State = hover]
 					[class^='toggle'][aria-pressed]:hover {
-						--current-toggle-bg: var(#{$prefix}-#{$night}-#{$blend}-color-toggle-default-hover-bg);
+						--current-toggle-bg: var(#{$prefix}-#{$night}-#{$blend}-toggle-neutral-hover-bg);
 					}
 				}
 				// Generate Button styles for [Contrast = contrast/blend]
 				.bg\:#{$contrast} {
 					// [Variant = bare]
 					[class^='toggle'][aria-pressed].bare {
-						--current-toggle-border: var(
-							#{$prefix}-#{$night}-#{$contrast}-color-toggle-bare-border
-						);
+						--current-toggle-border: var(#{$prefix}-#{$night}-#{$contrast}-toggle-bare-border);
 					}
 					// [State = hover]
 					[class^='toggle'][aria-pressed]:hover {
-						--current-toggle-bg: var(
-							#{$prefix}-#{$night}-#{$contrast}-color-toggle-default-hover-bg
-						);
+						--current-toggle-bg: var(#{$prefix}-#{$night}-#{$contrast}-toggle-neutral-hover-bg);
 					}
 				}
 
@@ -639,14 +590,12 @@ $current_cssvars: ();
 				.bg\:#{$blend} {
 					// [Variant = bare]
 					[class^='toggle'][aria-pressed='true'].bare {
-						--current-toggle-border: var(
-							#{$prefix}-#{$night}-#{$blend}-color-toggle-pressed-bare-border
-						);
+						--current-toggle-border: var(#{$prefix}-#{$night}-#{$blend}-toggle-pressed-bare-border);
 					}
 					// [State = hover]
 					[class^='toggle'][aria-pressed='true']:hover {
 						--current-toggle-bg: var(
-							#{$prefix}-#{$night}-#{$blend}-color-toggle-pressed-default-hover-bg
+							#{$prefix}-#{$night}-#{$blend}-toggle-pressed-neutral-hover-bg
 						);
 					}
 				}
@@ -655,13 +604,13 @@ $current_cssvars: ();
 					// [Variant = bare]
 					[class^='toggle'][aria-pressed='true'].bare {
 						--current-toggle-border: var(
-							#{$prefix}-#{$night}-#{$contrast}-color-toggle-pressed-bare-border
+							#{$prefix}-#{$night}-#{$contrast}-toggle-pressed-bare-border
 						);
 					}
 					// [State = hover]
 					[class^='toggle'][aria-pressed='true']:hover {
 						--current-toggle-bg: var(
-							#{$prefix}-#{$night}-#{$contrast}-color-toggle-pressed-default-hover-bg
+							#{$prefix}-#{$night}-#{$contrast}-toggle-pressed-neutral-hover-bg
 						);
 					}
 				}
@@ -671,56 +620,44 @@ $current_cssvars: ();
 			@each $color-key, $color in $theme-colors {
 				@each $variant-key, $variant in $button-variants {
 					button.#{$color}.#{$variant} {
-						--current-button-text: var(
-							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-text
-						);
-						--current-button-bg: var(#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-bg);
-						--current-button-border: var(
-							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-border
-						);
+						--current-button-text: var(#{$prefix}-#{$night}-button-#{$color}-#{$variant}-text);
+						--current-button-bg: var(#{$prefix}-#{$night}-button-#{$color}-#{$variant}-bg);
+						--current-button-border: var(#{$prefix}-#{$night}-button-#{$color}-#{$variant}-border);
 					}
 					button.#{$color}.#{$variant}:hover {
-						--current-button-text: var(#{$prefix}-#{$night}-color-button-#{$color}-hover-text);
-						--current-button-bg: var(#{$prefix}-#{$night}-color-button-#{$color}-hover-bg);
-						--current-button-border: var(#{$prefix}-#{$night}-color-button-#{$color}-hover-border);
+						--current-button-text: var(#{$prefix}-#{$night}-button-#{$color}-hover-text);
+						--current-button-bg: var(#{$prefix}-#{$night}-button-#{$color}-hover-bg);
+						--current-button-border: var(#{$prefix}-#{$night}-button-#{$color}-hover-border);
 					}
 					button.#{$color}.#{$variant}:active {
-						--current-button-border: var(#{$prefix}-#{$night}-color-button-#{$color}-active-border);
+						--current-button-border: var(#{$prefix}-#{$night}-button-#{$color}-active-border);
 					}
 
 					[class^='toggle'][aria-pressed].#{$color}.#{$variant} {
-						--current-toggle-text: var(
-							#{$prefix}-#{$night}-color-toggle-#{$color}-#{$variant}-text
-						);
-						--current-toggle-bg: var(#{$prefix}-#{$night}-color-toggle-#{$color}-#{$variant}-bg);
-						--current-toggle-border: var(
-							#{$prefix}-#{$night}-color-toggle-#{$color}-#{$variant}-border
-						);
+						--current-toggle-text: var(#{$prefix}-#{$night}-toggle-#{$color}-#{$variant}-text);
+						--current-toggle-bg: var(#{$prefix}-#{$night}-toggle-#{$color}-#{$variant}-bg);
+						--current-toggle-border: var(#{$prefix}-#{$night}-toggle-#{$color}-#{$variant}-border);
 					}
 					[class^='toggle'][aria-pressed].#{$color}.#{$variant}:hover {
-						--current-toggle-text: var(#{$prefix}-#{$night}-color-toggle-#{$color}-hover-text);
-						--current-toggle-bg: var(#{$prefix}-#{$night}-color-toggle-#{$color}-hover-bg);
-						--current-toggle-border: var(#{$prefix}-#{$night}-color-toggle-#{$color}-hover-border);
+						--current-toggle-text: var(#{$prefix}-#{$night}-toggle-#{$color}-hover-text);
+						--current-toggle-bg: var(#{$prefix}-#{$night}-toggle-#{$color}-hover-bg);
+						--current-toggle-border: var(#{$prefix}-#{$night}-toggle-#{$color}-hover-border);
 					}
 
 					[class^='toggle'][aria-pressed='true'].#{$color}.#{$variant} {
 						--current-toggle-text: var(
-							#{$prefix}-#{$night}-color-toggle-pressed-#{$color}-#{$variant}-text
+							#{$prefix}-#{$night}-toggle-pressed-#{$color}-#{$variant}-text
 						);
-						--current-toggle-bg: var(
-							#{$prefix}-#{$night}-color-toggle-pressed-#{$color}-#{$variant}-bg
-						);
+						--current-toggle-bg: var(#{$prefix}-#{$night}-toggle-pressed-#{$color}-#{$variant}-bg);
 						--current-toggle-border: var(
-							#{$prefix}-#{$night}-color-toggle-pressed-#{$color}-#{$variant}-border
+							#{$prefix}-#{$night}-toggle-pressed-#{$color}-#{$variant}-border
 						);
 					}
 					[class^='toggle'][aria-pressed='true'].#{$color}.#{$variant}:hover {
-						--current-toggle-text: var(
-							#{$prefix}-#{$night}-color-toggle-pressed-#{$color}-hover-text
-						);
-						--current-toggle-bg: var(#{$prefix}-#{$night}-color-toggle-pressed-#{$color}-hover-bg);
+						--current-toggle-text: var(#{$prefix}-#{$night}-toggle-pressed-#{$color}-hover-text);
+						--current-toggle-bg: var(#{$prefix}-#{$night}-toggle-pressed-#{$color}-hover-bg);
 						--current-toggle-border: var(
-							#{$prefix}-#{$night}-color-toggle-pressed-#{$color}-hover-border
+							#{$prefix}-#{$night}-toggle-pressed-#{$color}-hover-border
 						);
 					}
 				}
