@@ -19,3 +19,43 @@
 		margin-block-start: var(--current-size);
 	}
 }
+
+// ================
+// == Override colors for embedded brightness classes
+// -> used only for documentation
+// ================
+
+// == UI Feedback colors
+
+.night .day {
+	// == UI Feedback colors
+	.bg\:primary {
+		--current-color: var(--color-white);
+	}
+	.bg\:accent {
+		--current-color: var(--color-white);
+	}
+
+	// == Code
+	pre,
+	pre.default,
+	pre[class*='bg:default'].outline,
+	pre[class*='bg:default'].default {
+		--current-bg-color: var(--color-gray-5);
+		--current-border-color: var(--color-gray-4);
+	}
+
+	pre.bare,
+	pre[class*='bg:default'].bare {
+		--current-border-color: var(--current-bg-color);
+	}
+
+	// == Feedback
+	pre.feedback,
+	pre.feedback.default,
+	pre.feedback[class*='bg:default'].outline,
+	pre.feedback[class*='bg:default'].default {
+		--current-bg-color: var(--color-gray-5);
+		--current-border-color: var(--color-gray-4);
+	}
+}

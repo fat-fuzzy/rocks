@@ -328,6 +328,17 @@ $current_cssvars: ();
 						--current-button-bg: var(#{$prefix}-#{$day}-#{$blend}-color-button-default-hover-bg);
 					}
 				}
+				// Generate buttons for [Contrast = contrast/blend]
+				.bg\:#{$contrast} {
+					// Generate styles for [Variant = bare]
+					button.bare {
+						--current-button-border: var(#{$prefix}-#{$day}-#{$contrast}-color-button-bare-border);
+					}
+					// Generate default buttons hover state
+					button:hover {
+						--current-button-bg: var(#{$prefix}-#{$day}-#{$contrast}-color-button-default-hover-bg);
+					}
+				}
 			}
 
 			// Generate colored buttons for [Variant = fill/outline/bare]
@@ -341,18 +352,12 @@ $current_cssvars: ();
 						);
 					}
 					button.#{$color}.#{$variant}:hover {
-						--current-button-text: var(
-							#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-text-hover
-						);
-						--current-button-bg: var(#{$prefix}-color-button-#{$color}-#{$variant}-bg-hover);
-						--current-button-border: var(
-							#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-border-hover
-						);
+						--current-button-text: var(#{$prefix}-#{$day}-color-button-#{$color}-hover-text);
+						--current-button-bg: var(#{$prefix}-#{$day}-color-button-#{$color}-hover-bg);
+						--current-button-border: var(#{$prefix}-#{$day}-color-button-#{$color}-hover-border);
 					}
 					button.#{$color}.#{$variant}:active {
-						--current-button-border: var(
-							#{$prefix}-#{$day}-color-button-#{$color}-#{$variant}-border-active
-						);
+						--current-button-border: var(#{$prefix}-#{$day}-color-button-#{$color}-active-border);
 					}
 				}
 			}
@@ -396,6 +401,21 @@ $current_cssvars: ();
 						--current-button-bg: var(#{$prefix}-#{$night}-#{$blend}-color-button-default-hover-bg);
 					}
 				}
+				// Generate buttons for [Contrast = contrast/blend]
+				.bg\:#{$contrast} {
+					// Generate styles for [Variant = bare]
+					button.bare {
+						--current-button-border: var(
+							#{$prefix}-#{$night}-#{$contrast}-color-button-bare-border
+						);
+					}
+					// Generate default buttons hover state
+					button:hover {
+						--current-button-bg: var(
+							#{$prefix}-#{$night}-#{$contrast}-color-button-default-hover-bg
+						);
+					}
+				}
 			}
 
 			// Generate colored buttons for [Variant = fill/outline/bare]
@@ -411,18 +431,12 @@ $current_cssvars: ();
 						);
 					}
 					button.#{$color}.#{$variant}:hover {
-						--current-button-text: var(
-							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-text-hover
-						);
-						--current-button-bg: var(#{$prefix}-color-button-#{$color}-#{$variant}-bg-hover);
-						--current-button-border: var(
-							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-border-hover
-						);
+						--current-button-text: var(#{$prefix}-#{$night}-color-button-#{$color}-hover-text);
+						--current-button-bg: var(#{$prefix}-#{$night}-color-button-#{$color}-hover-bg);
+						--current-button-border: var(#{$prefix}-#{$night}-color-button-#{$color}-hover-border);
 					}
 					button.#{$color}.#{$variant}:active {
-						--current-button-border: var(
-							#{$prefix}-#{$night}-color-button-#{$color}-#{$variant}-border-active
-						);
+						--current-button-border: var(#{$prefix}-#{$night}-color-button-#{$color}-active-border);
 					}
 				}
 			}
