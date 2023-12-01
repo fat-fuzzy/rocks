@@ -41,8 +41,6 @@ $color-success-vivid-4: rgb(1, 240, 220);
 $color-warning-vivid-1: rgb(255, 252, 231);
 $color-warning-vivid-2: rgb(255, 248, 203);
 $color-warning-vivid-3: rgb(255, 242, 155);
-
-// $color-warning-vivid-4: rgb(255, 224, 23);
 $color-warning-vivid-4: rgb(255, 221, 1);
 
 // [Hue = danger] x [Chroma = vivid]
@@ -51,9 +49,6 @@ $color-danger-vivid-2: rgb(255, 209, 220);
 $color-danger-vivid-3: rgb(246, 165, 185);
 $color-danger-vivid-4: rgb(195, 43, 96);
 
-// $color-danger-vivid-3: rgb(249, 183, 199);
-// $color-danger-vivid-4: rgb(232, 92, 125);
-
 // ================
 // == Theme colors
 // ================
@@ -61,17 +56,12 @@ $color-danger-vivid-4: rgb(195, 43, 96);
 $color-primary-vivid-1: hsl(250, 89%, 93%);
 $color-primary-vivid-2: hsl(249, 88%, 87%);
 $color-primary-vivid-3: hsl(250deg, 90%, 80%);
-
-// $color-primary-vivid-3: rgb(174, 159, 225);
 $color-primary-vivid-4: hsl(250deg, 64%, 60%);
 
 // [Hue = accent] x [Chroma = vivid]
 $color-accent-vivid-1: rgb(191, 239, 248);
 $color-accent-vivid-2: rgb(144, 220, 234);
 $color-accent-vivid-3: rgb(71, 185, 205);
-
-// $color-accent-vivid-3: rgb(114, 186, 199);
-// $color-accent-vivid-4: rgb(31, 155, 177);
 $color-accent-vivid-4: rgb(4, 126, 148);
 
 // [Hue = highlight] x [Chroma = vivid ???]
@@ -160,15 +150,12 @@ $colors: (
 	color-primary-vivid-3: $color-primary-vivid-3,
 	color-primary-vivid-4: $color-primary-vivid-4,
 
-	// color-primary-vivid-3: rgb(174, 159, 225),
 	// [Hue = accent] x [Chroma = vivid]
 	color-accent-vivid-1: $color-accent-vivid-1,
 	color-accent-vivid-2: $color-accent-vivid-2,
 	color-accent-vivid-3: $color-accent-vivid-3,
 	color-accent-vivid-4: $color-accent-vivid-4,
 
-	// color-accent-vivid-3: rgb(114, 186, 199),
-	// color-accent-vivid-4: rgb(31, 155, 177),
 	// [Hue = highlight] x [Chroma = vivid ???]
 	color-highlight-vivid-1: $color-highlight-vivid-1,
 	color-highlight-vivid-2: $color-highlight-vivid-2,
@@ -179,8 +166,6 @@ $colors: (
 	// == Feedback status colors
 	// ================
 	// [Hue = info] x [Chroma = vivid]
-	// color-info: rgb(107, 144, 230),
-	// color-info-light: rgb(169, 193, 250),
 	color-info-vivid-1: $color-info-vivid-1,
 	color-info-vivid-2: $color-info-vivid-2,
 	color-info-vivid-3: $color-info-vivid-3,
@@ -198,19 +183,15 @@ $colors: (
 	color-warning-vivid-3: $color-warning-vivid-3,
 	color-warning-vivid-4: $color-warning-vivid-4,
 
-	// color-warning-vivid-4: rgb(255, 224, 23),
 	// [Hue = danger] x [Chroma = vivid]
 	color-danger-vivid-1: $color-danger-vivid-1,
 	color-danger-vivid-2: $color-danger-vivid-2,
 	color-danger-vivid-3: $color-danger-vivid-3,
 	color-danger-vivid-4: $color-danger-vivid-4,
-
-	// color-danger-vivid-3: rgb(249, 183, 199),
-	// color-danger-vivid-4: rgb(232, 92, 125),
 	// ================
 	// == Theme Hues
 	// ================
-	// [Brightness = day]
+	// == [Brightness = day]
 	// UI colors
 	day-color-primary-1: $color-primary-vivid-4,
 	day-color-primary-2: $color-primary-vivid-3,
@@ -239,8 +220,8 @@ $colors: (
 	day-color-danger-2: $color-danger-vivid-3,
 	day-color-danger-3: $color-danger-vivid-2,
 
-	// [Brightness = night]
-	// [Brightness = day]
+	// == [Brightness = night]
+	// UI colors
 	night-color-primary-1: $color-primary-vivid-3,
 	night-color-primary-2: $color-primary-vivid-2,
 	night-color-primary-3: $color-primary-vivid-1,
@@ -347,7 +328,7 @@ $colors: (
 	color-status-error-border: $color-danger-vivid-3,
 
 	// ================ ================ ================
-	//== Button status colors
+	//== Button colors
 	// ================ ================ ================
 	// ================
 	// == Default button : [Color = none]
@@ -406,10 +387,9 @@ $colors: (
 	day-color-button-primary-bare-text: var(--day-color-primary-1),
 	day-color-button-primary-bare-bg: inherit,
 	day-color-button-primary-bare-border: var(--day-color-primary-3),
-	// day-color-button-primary-bare-border: var(--day-color-primary-3),
 	// [Brightness = day] [State = hover]
 	day-color-button-primary-hover-bg: var(--day-color-primary-2),
-	// day-color-button-primary-hover-bg: var(--day-color-primary-2)
+	//
 	// ================
 	// == Default button : [Color = accent]
 	// ================
@@ -426,10 +406,9 @@ $colors: (
 	day-color-button-accent-bare-text: var(--day-color-accent-1),
 	day-color-button-accent-bare-bg: inherit,
 	day-color-button-accent-bare-border: var(--day-color-accent-3),
-	// day-color-button-accent-bare-border: var(--day-color-accent-3),
 	// [Brightness = day] [State = hover]
 	day-color-button-accent-hover-bg: var(--day-color-accent-2),
-	// day-color-button-accent-hover-bg: var(--day-color-accent-2)
+	//
 	// ================
 	// == Default button : [Color = accent]
 	// ================
@@ -446,10 +425,9 @@ $colors: (
 	day-color-button-highlight-bare-text: $color-dark-1,
 	day-color-button-highlight-bare-bg: inherit,
 	day-color-button-highlight-bare-border: var(--day-color-highlight-3),
-	// day-color-button-highlight-bare-border: var(--day-color-highlight-3),
 	// [Brightness = day] [State = hover]
 	day-color-button-highlight-hover-bg: var(--day-color-highlight-2),
-	// day-color-button-highlight-hover-bg: var(--day-color-highlight-2)
+	//
 	// ================
 	// == Default button : [Color = primary]
 	// ================
@@ -466,11 +444,10 @@ $colors: (
 	night-color-button-primary-bare-text: var(--night-color-primary-2),
 	night-color-button-primary-bare-bg: inherit,
 	night-color-button-primary-bare-border: var(--day-color-primary-1),
-	// night-color-button-primary-bare-border: var(--night-color-primary-3),
 	// [Brightness = night] [State = hover]
 	night-color-button-primary-hover-text: $color-dark-1,
 	night-color-button-primary-hover-bg: var(--night-color-primary-2),
-	// night-color-button-primary-hover-bg: var(--night-color-primary-2)
+	//
 	// ================
 	// == Default button : [Color = accent]
 	// ================
@@ -490,7 +467,7 @@ $colors: (
 	// [Brightness = night] [State = hover]
 	night-color-button-accent-hover-text: $color-dark-1,
 	night-color-button-accent-hover-bg: var(--night-color-accent-2),
-	// night-color-button-accent-hover-bg: var(--night-color-accent-2)
+	//
 	// ================
 	// == Default button : [Color = accent]
 	// ================
@@ -507,9 +484,231 @@ $colors: (
 	night-color-button-highlight-bare-text: var(--night-color-highlight-2),
 	night-color-button-highlight-bare-bg: inherit,
 	night-color-button-highlight-bare-border: var(--day-color-highlight-1),
-	// night-color-button-highlight-bare-border: var(--night-color-highlight-3),
 	// [Brightness = night] [State = hover]
 	night-color-button-highlight-hover-text: $color-dark-1,
 	night-color-button-highlight-hover-bg: var(--night-color-highlight-2),
-	// night-color-button-highlight-hover-bg: var(--night-color-highlight-2)
+	//
+	// ================
+	// == Toggle button : [Color = none]
+	// ================
+	// [Brightness = day] [State = default]
+	day-color-toggle-default-text: $color-dark-0,
+	day-color-toggle-default-bg: $color-light-3,
+	day-color-toggle-default-border: $color-neutral,
+	day-color-toggle-default-fill-text: $color-dark-0,
+	day-color-toggle-default-fill-bg: $color-light-3,
+	day-color-toggle-default-fill-border: $color-neutral,
+	day-color-toggle-default-outline-text: $color-dark-1,
+	day-color-toggle-default-outline-bg: inherit,
+	day-color-toggle-default-outline-border: $color-neutral,
+	day-color-toggle-default-bare-text: $color-dark-1,
+	day-color-toggle-default-bare-bg: inherit,
+	day-blend-color-toggle-default-bare-border: $color-light-0,
+	day-contrast-color-toggle-default-bare-border: $color-light-1,
+
+	// [Brightness = day] [State = hover]
+	day-blend-color-toggle-default-hover-bg: $color-light-0,
+	day-contrast-color-toggle-default-hover-bg: $color-light-1,
+	// [Brightness = day] [State = pressed]
+	day-blend-color-toggle-pressed-default-bg: $color-light-0,
+	day-contrast-color-toggle-pressed-default-bg: $color-light-1,
+	// [Brightness = day] [State = pressed:hover]
+	day-blend-color-toggle-pressed-default-hover-bg: $color-light-0,
+	day-contrast-color-toggle-pressed-default-hover-bg: $color-light-1,
+
+	// [Brightness = night]
+	night-color-toggle-default-text: $color-dark-0,
+	night-color-toggle-default-bg: $color-light-3,
+	night-color-toggle-default-border: $color-neutral,
+	night-color-toggle-default-fill-text: $color-dark-0,
+	night-color-toggle-default-fill-bg: $color-light-3,
+	night-color-toggle-default-fill-border: $color-neutral,
+	night-color-toggle-default-outline-text: $color-light-1,
+	night-color-toggle-default-outline-bg: inherit,
+	night-color-toggle-default-outline-border: $color-light-2,
+	night-color-toggle-default-bare-text: $color-light-1,
+	night-color-toggle-default-bare-bg: inherit,
+	night-blend-color-toggle-default-bare-border: $color-dark-0,
+	night-contrast-color-toggle-default-bare-border: $color-dark-1,
+	// [Brightness = day] [State = hover]
+	night-blend-color-toggle-default-hover-bg: $color-light-0,
+	night-contrast-color-toggle-default-hover-bg: $color-light-1,
+	// [Brightness = night] [State = pressed]
+	night-blend-color-toggle-pressed-default-bg: $color-light-0,
+	night-contrast-color-toggle-pressed-default-bg: $color-light-1,
+	// [Brightness = night] [State = pressed:hover]
+	night-blend-color-toggle-pressed-default-hover-bg: $color-light-0,
+	night-contrast-color-toggle-pressed-default-hover-bg: $color-light-1,
+
+	// ================
+	// == Default toggle : [Color = primary]
+	// ================
+	// [Brightness = day] [State = default]
+	day-color-toggle-primary-text: $color-light-1,
+	day-color-toggle-primary-bg: var(--day-color-primary-1),
+	day-color-toggle-primary-border: var(--day-color-primary-1),
+	day-color-toggle-primary-fill-text: $color-light-1,
+	day-color-toggle-primary-fill-bg: var(--day-color-primary-1),
+	day-color-toggle-primary-fill-border: var(--day-color-primary-1),
+	day-color-toggle-primary-outline-text: var(--day-color-primary-1),
+	day-color-toggle-primary-outline-bg: inherit,
+	day-color-toggle-primary-outline-border: var(--day-color-primary-1),
+	day-color-toggle-primary-bare-text: var(--day-color-primary-1),
+	day-color-toggle-primary-bare-bg: inherit,
+	day-color-toggle-primary-bare-border: var(--day-color-primary-3),
+	// [Brightness = day] [State = hover]
+	day-color-toggle-primary-hover-bg: var(--day-color-primary-2),
+	// [Brightness = day] [State = pressed]
+	day-color-toggle-pressed-primary-text: $color-dark-0,
+	day-color-toggle-pressed-primary-bg: var(--day-color-primary-3),
+	day-color-toggle-pressed-primary-border: var(--day-color-primary-3),
+	day-color-toggle-pressed-primary-fill-text: $color-dark-0,
+	day-color-toggle-pressed-primary-fill-bg: var(--day-color-primary-3),
+	day-color-toggle-pressed-primary-fill-border: var(--day-color-primary-3),
+	day-color-toggle-pressed-primary-outline-text: var(--day-color-primary-1),
+	day-color-toggle-pressed-primary-outline-bg: var(--day-color-primary-3),
+	day-color-toggle-pressed-primary-outline-border: var(--day-color-primary-1),
+	day-color-toggle-pressed-primary-bare-text: var(--day-color-primary-1),
+	day-color-toggle-pressed-primary-bare-bg: var(--day-color-primary-4),
+	day-color-toggle-pressed-primary-bare-border: var(--day-color-primary-4),
+	// [Brightness = day] [State = pressed:hover]
+	day-color-toggle-pressed-primary-hover-bg: var(--day-color-primary-3),
+	//
+	// ================
+	// == Default toggle : [Color = accent]
+	// ================
+	// [Brightness = day] [State = default]
+	day-color-toggle-accent-text: $color-light-1,
+	day-color-toggle-accent-bg: var(--day-color-accent-1),
+	day-color-toggle-accent-border: var(--day-color-accent-1),
+	day-color-toggle-accent-fill-text: $color-light-1,
+	day-color-toggle-accent-fill-bg: var(--day-color-accent-1),
+	day-color-toggle-accent-fill-border: var(--day-color-accent-1),
+	day-color-toggle-accent-outline-text: var(--day-color-accent-1),
+	day-color-toggle-accent-outline-bg: inherit,
+	day-color-toggle-accent-outline-border: var(--day-color-accent-1),
+	day-color-toggle-accent-bare-text: var(--day-color-accent-1),
+	day-color-toggle-accent-bare-bg: inherit,
+	day-color-toggle-accent-bare-border: var(--day-color-accent-3),
+	// [Brightness = day] [State = hover]
+	day-color-toggle-accent-hover-bg: var(--day-color-accent-2),
+	// [Brightness = day] [State = pressed]
+	day-color-toggle-pressed-accent-text: $color-dark-0,
+	day-color-toggle-pressed-accent-bg: var(--day-color-accent-3),
+	day-color-toggle-pressed-accent-border: var(--day-color-accent-3),
+	day-color-toggle-pressed-accent-fill-text: $color-dark-0,
+	day-color-toggle-pressed-accent-fill-bg: var(--day-color-accent-3),
+	day-color-toggle-pressed-accent-fill-border: var(--day-color-accent-3),
+	day-color-toggle-pressed-accent-outline-text: var(--day-color-accent-1),
+	day-color-toggle-pressed-accent-outline-bg: var(--day-color-accent-3),
+	day-color-toggle-pressed-accent-outline-border: var(--day-color-accent-1),
+	day-color-toggle-pressed-accent-bare-text: var(--day-color-accent-1),
+	day-color-toggle-pressed-accent-bare-bg: var(--day-color-accent-4),
+	day-color-toggle-pressed-accent-bare-border: var(--day-color-accent-4),
+	// [Brightness = day] [State = pressed:hover]
+	day-color-toggle-pressed-accent-hover-bg: var(--day-color-accent-3),
+	//
+	// ================
+	// == Default toggle : [Color = accent]
+	// ================
+	// [Brightness = day] [State = default]
+	day-color-toggle-highlight-text: $color-light-1,
+	day-color-toggle-highlight-bg: var(--day-color-highlight-1),
+	day-color-toggle-highlight-border: var(--day-color-highlight-1),
+	day-color-toggle-highlight-fill-text: $color-dark-1,
+	day-color-toggle-highlight-fill-bg: var(--day-color-highlight-1),
+	day-color-toggle-highlight-fill-border: var(--day-color-highlight-1),
+	day-color-toggle-highlight-outline-text: $color-dark-1,
+	day-color-toggle-highlight-outline-bg: inherit,
+	day-color-toggle-highlight-outline-border: var(--day-color-highlight-1),
+	day-color-toggle-highlight-bare-text: $color-dark-1,
+	day-color-toggle-highlight-bare-bg: inherit,
+	day-color-toggle-highlight-bare-border: var(--day-color-highlight-3),
+	// [Brightness = day] [State = hover]
+	day-color-toggle-highlight-hover-bg: var(--day-color-highlight-2),
+	// [Brightness = day] [State = pressed]
+	day-color-toggle-pressed-highlight-text: $color-dark-0,
+	day-color-toggle-pressed-highlight-bg: var(--day-color-highlight-3),
+	day-color-toggle-pressed-highlight-border: var(--day-color-highlight-3),
+	day-color-toggle-pressed-highlight-fill-text: $color-dark-0,
+	day-color-toggle-pressed-highlight-fill-bg: var(--day-color-highlight-3),
+	day-color-toggle-pressed-highlight-fill-border: var(--day-color-highlight-3),
+	day-color-toggle-pressed-highlight-outline-text: var(--day-color-highlight-1),
+	day-color-toggle-pressed-highlight-outline-bg: var(--day-color-highlight-3),
+	day-color-toggle-pressed-highlight-outline-border: var(--day-color-highlight-1),
+	day-color-toggle-pressed-highlight-bare-text: var(--day-color-highlight-1),
+	day-color-toggle-pressed-highlight-bare-bg: var(--day-color-highlight-4),
+	day-color-toggle-pressed-highlight-bare-border: var(--day-color-highlight-4),
+	// [Brightness = day] [State = pressed:hover]
+	day-color-toggle-pressed-highlight-hover-bg: var(--day-color-highlight-3),
+	//
+	// ================
+	// == Default toggle : [Color = primary]
+	// ================
+	// [Brightness = night] [State = default]
+	night-color-toggle-primary-text: $color-light-1,
+	night-color-toggle-primary-bg: var(--night-color-primary-1),
+	night-color-toggle-primary-border: var(--night-color-primary-1),
+	night-color-toggle-primary-fill-text: $color-dark-1,
+	night-color-toggle-primary-fill-bg: var(--night-color-primary-1),
+	night-color-toggle-primary-fill-border: var(--night-color-primary-1),
+	night-color-toggle-primary-outline-text: var(--night-color-primary-2),
+	night-color-toggle-primary-outline-bg: inherit,
+	night-color-toggle-primary-outline-border: var(--night-color-primary-1),
+	night-color-toggle-primary-bare-text: var(--night-color-primary-2),
+	night-color-toggle-primary-bare-bg: inherit,
+	night-color-toggle-primary-bare-border: var(--day-color-primary-1),
+	// [Brightness = day] [State = hover]
+	night-color-toggle-primary-hover-bg: var(--night-color-primary-2),
+	// [Brightness = night] [State = pressed]
+	night-color-toggle-pressed-primary-bg: var(--night-color-primary-3),
+	// [Brightness = night] [State = pressed:hover]
+	night-color-toggle-pressed-primary-hover-bg: var(--night-color-primary-3),
+	//
+	// ================
+	// == Default toggle : [Color = accent]
+	// ================
+	// [Brightness = night] [State = default]
+	night-color-toggle-accent-text: $color-light-1,
+	night-color-toggle-accent-bg: var(--night-color-accent-1),
+	night-color-toggle-accent-border: var(--night-color-accent-1),
+	night-color-toggle-accent-fill-text: $color-dark-1,
+	night-color-toggle-accent-fill-bg: var(--night-color-accent-1),
+	night-color-toggle-accent-fill-border: var(--night-color-accent-1),
+	night-color-toggle-accent-outline-text: var(--night-color-accent-2),
+	night-color-toggle-accent-outline-bg: inherit,
+	night-color-toggle-accent-outline-border: var(--night-color-accent-1),
+	night-color-toggle-accent-bare-text: var(--night-color-accent-2),
+	night-color-toggle-accent-bare-bg: inherit,
+	night-color-toggle-accent-bare-border: var(--day-color-accent-1),
+	// [Brightness = day] [State = hover]
+	night-color-toggle-accent-hover-bg: var(--night-color-accent-2),
+	// [Brightness = night] [State = pressed]
+	night-color-toggle-pressed-accent-bg: var(--night-color-accent-3),
+	// [Brightness = night] [State = pressed:hover]
+	night-color-toggle-pressed-accent-hover-bg: var(--night-color-accent-3),
+	//
+	// ================
+	// == Default toggle : [Color = accent]
+	// ================
+	// [Brightness = night] [State = default]
+	night-color-toggle-highlight-text: $color-light-1,
+	night-color-toggle-highlight-bg: var(--night-color-highlight-1),
+	night-color-toggle-highlight-border: var(--night-color-highlight-1),
+	night-color-toggle-highlight-fill-text: $color-dark-1,
+	night-color-toggle-highlight-fill-bg: var(--night-color-highlight-1),
+	night-color-toggle-highlight-fill-border: var(--night-color-highlight-1),
+	night-color-toggle-highlight-outline-text: var(--night-color-highlight-2),
+	night-color-toggle-highlight-outline-bg: inherit,
+	night-color-toggle-highlight-outline-border: var(--night-color-highlight-1),
+	night-color-toggle-highlight-bare-text: var(--night-color-highlight-2),
+	night-color-toggle-highlight-bare-bg: inherit,
+	night-color-toggle-highlight-bare-border: var(--day-color-highlight-1),
+	// [Brightness = day] [State = hover]
+	night-color-toggle-highlight-hover-bg: var(--night-color-highlight-2),
+	// [Brightness = night] [State = pressed]
+	night-color-toggle-pressed-highlight-bg: var(--night-color-highlight-3),
+	// [Brightness = night] [State = pressed:hover]
+	night-color-toggle-pressed-highlight-hover-bg: var(--night-color-highlight-3),
+	//
 );
