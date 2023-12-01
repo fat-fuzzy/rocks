@@ -1,6 +1,6 @@
 //== Toggle  default
 
-[class^='toggle'][aria-pressed='false']:hover {
+[class^='toggle'][aria-pressed]:hover {
 	box-shadow: var(--current-shadow);
 }
 
