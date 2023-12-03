@@ -13,3 +13,7 @@ button {
 	background-color: var(--current-button-bg);
 	border: var(--border-width) solid var(--current-button-border);
 }
+
+button:hover {
+	box-shadow: var(--current-shadow);
+}
