@@ -58,4 +58,17 @@
 		--current-bg-color: var(--color-gray-5);
 		--current-border-color: var(--color-gray-4);
 	}
+
+	// == Form
+
+	label > input,
+	label > [type='file'] {
+		color: var(--color-dark);
+	}
+
+	label.primary > [type='file'],
+	label.accent > [type='file'],
+	label.highlight > [type='file'] {
+		color: var(--color-light);
+	}
 }
