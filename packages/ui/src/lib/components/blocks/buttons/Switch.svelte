@@ -19,7 +19,6 @@
 	export let size = ''
 	export let align = ''
 	export let shape = ''
-	export let asset = ''
 	export let formaction: string | undefined = undefined
 
 	export let type: ButtonType = 'submit'
@@ -71,7 +70,7 @@
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
-	$: buttonClasses = `switch:${$state.value} ${layoutClasses} ${color} ${align} ${size} font:${size} ${asset}`
+	$: buttonClasses = `switch:${$state.value} ${layoutClasses} ${color} ${align} ${size} font:${size} ${currentState.asset}`
 </script>
 
 <button
