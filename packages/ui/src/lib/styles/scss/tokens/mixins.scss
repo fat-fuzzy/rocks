@@ -484,6 +484,10 @@ $current_cssvars: ();
 
 		// Generate colored Button styles for [Variant = fill/outline/bare]
 		@each $color-key, $color in $theme-colors {
+			[class^='toggle'][aria-pressed].#{$color} {
+				--current-color-shadow: var(#{$prefix}-day-color-shadow);
+			}
+
 			@each $variant-key, $variant in $button-variants {
 				button.#{$color}.#{$variant} {
 					--current-button-text: var(#{$prefix}-night-button-#{$color}-#{$variant}-text);
