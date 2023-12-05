@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.28
+
+### Patch Changes
+
+- 53eaec2c: [ui+apps] Generate CSS vars for Button and Toggle components
+
 ## 0.1.27
 
 ### Patch Changes
