@@ -57,7 +57,7 @@
 		/>
 	{/each}
 	{#await Promise.resolve()}
-		<div class="maki:xxl l:flex justify:center align:center">
+		<div class="l:flex justify:center align:center">
 			<div class="l:frame:square">
 				<Button
 					id={`submit.${path}`}
