@@ -360,7 +360,6 @@ $colors: (
 	day-button-neutral-bare-hover-text: $color-dark-2,
 	day-button-neutral-bare-hover-border: $color-light-3,
 
-	// [State = hover]
 	day-blend-button-neutral-hover-bg: $color-light-0,
 	day-contrast-button-neutral-hover-bg: $color-light-1,
 
@@ -384,24 +383,26 @@ $colors: (
 	night-button-neutral-bare-bg: inherit,
 	night-button-neutral-bare-border: $color-dark-3,
 
+	// [State = hover]
 	night-button-neutral-hover-text: $color-light-1,
-	night-button-neutral-hover-bg: $color-dark-0,
-	night-button-neutral-hover-border: $color-dark-0,
+	night-button-neutral-hover-bg: $color-dark-3,
+	night-button-neutral-hover-border: $color-light-3,
 	night-button-neutral-fill-hover-text: $color-light-1,
-	night-button-neutral-fill-hover-bg: $color-dark-0,
-	night-button-neutral-fill-hover-border: $color-dark-0,
+	night-button-neutral-fill-hover-bg: $color-dark-3,
+	night-button-neutral-fill-hover-border: $color-light-3,
 	night-button-neutral-outline-hover-text: $color-light-1,
 	night-button-neutral-outline-hover-border: $color-neutral,
 	night-button-neutral-bare-hover-text: $color-light-2,
-	night-button-neutral-bare-hover-border: $color-dark-0,
+	night-button-neutral-bare-hover-border: $color-neutral,
 
-	// [Brightness = day] [State = hover]
 	night-blend-button-neutral-hover-bg: $color-dark-0,
 	night-contrast-button-neutral-hover-bg: $color-dark-1,
 
-	night-button-neutral-active-border: $color-dark-3,
-	night-button-neutral-fill-active-border: $color-dark-3,
-	night-button-neutral-outline-active-border: $color-dark-3,
+	// [State = active]
+	night-button-neutral-active-border: $color-neutral,
+	night-button-neutral-fill-active-border: $color-neutral,
+	night-button-neutral-outline-active-border: $color-neutral,
+	night-button-neutral-bare-active-border: $color-neutral,
 
 	// ================
 	// == Default button : [Color = primary]
@@ -556,7 +557,7 @@ $colors: (
 	day-toggle-neutral-hover-border: $color-light-2,
 	day-toggle-neutral-fill-hover-text: $color-dark-1,
 	day-toggle-neutral-fill-hover-bg: $color-light-2,
-	day-toggle-neutral-fill-hover-border: $color-light-0,
+	day-toggle-neutral-fill-hover-border: $color-light-2,
 	day-toggle-neutral-outline-hover-text: $color-dark-1,
 	day-toggle-neutral-outline-hover-border: $color-neutral,
 	day-toggle-neutral-bare-hover-text: $color-dark-2,
@@ -617,19 +618,19 @@ $colors: (
 
 	// [State = hover]
 	night-toggle-neutral-hover-text: $color-light-1,
-	night-toggle-neutral-hover-bg: $color-dark-1,
-	night-toggle-neutral-hover-border: $color-dark-1,
+	// night-toggle-neutral-hover-bg: $color-dark-2,
+	night-toggle-neutral-hover-border: $color-dark-0,
 	night-toggle-neutral-fill-hover-text: $color-light-1,
-	night-toggle-neutral-fill-hover-bg: $color-dark-1,
-	night-toggle-neutral-fill-hover-border: $color-dark-1,
+	// night-toggle-neutral-fill-hover-bg: $color-dark-2,
+	night-toggle-neutral-fill-hover-border: $color-dark-0,
 	night-toggle-neutral-outline-hover-text: $color-light-1,
-	night-toggle-neutral-outline-hover-border: $color-dark-3,
+	night-toggle-neutral-outline-hover-border: $color-dark-2,
 	night-toggle-neutral-bare-hover-text: $color-light-2,
-	night-toggle-neutral-bare-hover-bg: $color-dark-1,
-	night-toggle-neutral-bare-hover-border: $color-dark-3,
-	// [Brightness = day] [State = hover]
-	night-blend-toggle-neutral-hover-bg: $color-dark-1,
-	night-contrast-toggle-neutral-hover-bg: $color-dark-0,
+	// night-toggle-neutral-bare-hover-bg: $color-dark-1,
+	night-toggle-neutral-bare-hover-border: $color-dark-2,
+
+	// [State = hover]
+	night-toggle-button-neutral-hover-bg: $color-dark-0,
 
 	// [State = active]
 	night-toggle-neutral-active-border: $color-dark-3,
@@ -644,26 +645,32 @@ $colors: (
 	night-toggle-pressed-neutral-fill-text: $color-dark-1,
 	night-toggle-pressed-neutral-fill-bg: $color-neutral,
 	night-toggle-pressed-neutral-fill-border: $color-neutral,
-	night-toggle-pressed-neutral-outline-bg: $color-dark-3,
+	// night-toggle-pressed-neutral-outline-bg: $color-dark-3,
 	night-toggle-pressed-neutral-outline-border: $color-neutral,
-	night-toggle-pressed-neutral-bare-bg: $color-dark-3,
-	night-toggle-pressed-neutral-bare-border: $color-dark-3,
+	// night-toggle-pressed-neutral-bare-bg: $color-dark-3,
+	night-toggle-pressed-neutral-bare-border: $color-dark-0,
 	// [Pressed = true] [State = hover]
-	night-toggle-pressed-neutral-hover-text: $color-light-1,
+	// night-toggle-pressed-neutral-hover-text: $color-light-1,
 	night-toggle-pressed-neutral-hover-bg: $color-dark-0,
-	night-toggle-pressed-neutral-hover-border: $color-dark-0,
+	night-toggle-pressed-neutral-hover-border: $color-dark-2,
 	night-toggle-pressed-neutral-fill-hover-bg: $color-dark-0,
-	night-toggle-pressed-neutral-fill-hover-border: $color-dark-0,
-	night-toggle-pressed-neutral-outline-hover-bg: $color-dark-3,
+	night-toggle-pressed-neutral-fill-hover-border: $color-dark-2,
+	night-toggle-pressed-neutral-outline-hover-bg: $color-dark-0,
 	night-toggle-pressed-neutral-outline-hover-border: $color-neutral,
-	night-toggle-pressed-neutral-bare-hover-bg: $color-dark-3,
-	night-toggle-pressed-neutral-bare-hover-border: $color-dark-0,
+	night-toggle-pressed-neutral-bare-hover-bg: $color-dark-0,
+	night-toggle-pressed-neutral-bare-hover-border: $color-dark-2,
 
 	// [Pressed = true] [State = active]
 	night-toggle-pressed-neutral-active-border: $color-dark-3,
 	night-toggle-pressed-neutral-fill-active-border: $color-dark-3,
 	night-toggle-pressed-neutral-outline-active-border: $color-dark-3,
 	night-toggle-pressed-neutral-bare-active-border: $color-dark-3,
+
+	// [Brightness = day] [State = hover]
+	night-blend-toggle-neutral-hover-bg: $color-dark-1,
+	night-contrast-toggle-neutral-hover-bg: $color-dark-0,
+	night-blend-toggle-pressed-neutral-hover-bg: $color-dark-1,
+	night-contrast-toggle-pressed-neutral-hover-bg: $color-dark-0,
 
 	// ================
 	// == Default toggle : [Color = primary]
