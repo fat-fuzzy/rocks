@@ -48,7 +48,7 @@
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
-	$: headerClass = 'page-header card:xl l:switcher:xs bp:xxs bg:polar'
+	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -61,7 +61,7 @@
 </svelte:head>
 
 <header class={headerClass}>
-	<h1 class="l:main:40">{title}</h1>
+	<h1 class="l:main:40 maki lg">{title}</h1>
 	<RevealAuto
 		id="ui-category-app-context"
 		size="sm"
