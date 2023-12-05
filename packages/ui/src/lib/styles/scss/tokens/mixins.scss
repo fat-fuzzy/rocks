@@ -331,7 +331,7 @@ $current_cssvars: ();
 			}
 		}
 
-		.bg\:blend {
+		&.bg\:blend {
 			button:hover {
 				--current-button-bg: var(#{$prefix}-day-blend-button-neutral-hover-bg);
 			}
@@ -342,7 +342,7 @@ $current_cssvars: ();
 			}
 		}
 
-		.bg\:contrast {
+		&.bg\:contrast {
 			button:hover {
 				--current-button-bg: var(#{$prefix}-day-contrast-button-neutral-hover-bg);
 			}
@@ -460,27 +460,27 @@ $current_cssvars: ();
 			}
 		}
 
-		.bg\:blend {
-			button:hover {
-				--current-button-bg: var(#{$prefix}-night-blend-button-neutral-hover-bg);
-			}
+		// .bg\:blend {
+		// 	button:hover {
+		// 		--current-button-bg: var(#{$prefix}-night-blend-button-neutral-hover-bg);
+		// 	}
 
-			[class^='toggle'][aria-pressed]:hover,
-			[class^='toggle'][aria-pressed='true']:hover {
-				--current-toggle-bg: var(#{$prefix}-night-blend-toggle-neutral-hover-bg);
-			}
-		}
+		// 	[class^='toggle'][aria-pressed]:hover,
+		// 	[class^='toggle'][aria-pressed='true']:hover {
+		// 		--current-toggle-bg: var(#{$prefix}-night-blend-toggle-neutral-hover-bg);
+		// 	}
+		// }
 
-		.bg\:contrast {
-			button:hover {
-				--current-button-bg: var(#{$prefix}-night-contrast-button-neutral-hover-bg);
-			}
+		// .bg\:contrast {
+		// 	button:hover {
+		// 		--current-button-bg: var(#{$prefix}-night-contrast-button-neutral-hover-bg);
+		// 	}
 
-			[class^='toggle'][aria-pressed]:hover,
-			[class^='toggle'][aria-pressed='true']:hover {
-				--current-toggle-bg: var(#{$prefix}-night-contrast-toggle-neutral-hover-bg);
-			}
-		}
+		// 	[class^='toggle'][aria-pressed]:hover,
+		// 	[class^='toggle'][aria-pressed='true']:hover {
+		// 		--current-toggle-bg: var(#{$prefix}-night-contrast-toggle-neutral-hover-bg);
+		// 	}
+		// }
 
 		// Generate colored Button styles for [Variant = fill/outline/bare]
 		@each $color-key, $color in $theme-colors {
