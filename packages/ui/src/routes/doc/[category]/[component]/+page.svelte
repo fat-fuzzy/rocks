@@ -47,7 +47,7 @@
 	$: title = $page.params.component
 	$: Component = categoryItems[category][title]
 	$: path = $page.url.pathname
-	$: headerClass = 'page-header card:xl l:switcher:md bg:polar'
+	$: headerClass = 'page-header card:md l:switcher:md bg:polar'
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -60,7 +60,7 @@
 </svelte:head>
 
 <header class={headerClass}>
-	<h1 class="l:main:30">{title}</h1>
+	<h1 class="l:main:30 maki lg">{title}</h1>
 	<RevealAuto
 		id="ui-component-app-context"
 		size="sm"

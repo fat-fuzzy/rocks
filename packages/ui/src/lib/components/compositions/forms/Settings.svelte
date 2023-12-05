@@ -116,7 +116,7 @@
 	$: show = `show ${showBackground}`
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	$: revealClasses = `form:expand card:${size}`
-	$: formClasses = `l:switcher:lg card:lg ${showBackground}`
+	$: formClasses = `l:switcher:lg card:md ${showBackground}`
 	$: layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 

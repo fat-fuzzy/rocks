@@ -40,7 +40,7 @@
 	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
 	$: show = `show ${showBackground}`
 	$: showContent = reveal === 'show' ? show : 'hide:viz-only'
-	$: revealClasses = `form:expand align-self:${buttonAlign}`
+	$: revealClasses = `form:expand align-self:${buttonAlign} maki lg`
 	$: layoutClass = layout ? `l:${layout}:${size}` : ''
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 

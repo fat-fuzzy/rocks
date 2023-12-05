@@ -40,7 +40,7 @@
 	$: reveal = revealContext.reveal
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'page-header card:xl l:switcher:xs bp:xxs bg:polar'
+	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -53,7 +53,7 @@
 </svelte:head>
 
 <header class={headerClass}>
-	<h1 class="l:main:40 nowrap">{title}</h1>
+	<h1 class="l:main:40 nowrap maki lg">{title}</h1>
 	<RevealAuto
 		id="ui-app-context"
 		size="sm"
