@@ -1,0 +1,13 @@
+//== Toggle  default
+
+[class^='switch'][aria-pressed] {
+	box-shadow: var(--current-shadow-inset-1);
+}
+
+[class^='switch'][aria-pressed].outline {
+	background-color: inherit;
+}
+
+[class^='switch'][aria-pressed='true']:hover {
+	box-shadow: var(--current-shadow-inset-2);
+}

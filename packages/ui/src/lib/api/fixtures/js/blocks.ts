@@ -1,15 +1,18 @@
 export default {
 	Button: {id: 'button', text: 'Button', asset: 'emoji:idea'},
 	Expand: {
+		title: 'Expand',
 		states: {
-			active: {id: 'button-expand', text: 'Expand', asset: 'emoji:idea'},
-			inactive: {id: 'button-expand', text: 'Expand', asset: 'emoji:idea'},
+			active: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-down'},
+			inactive: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-right'},
 		},
 	},
 	Switch: {
+		title: 'Switch',
+		shape: 'round',
 		states: {
-			active: {id: 'button-switch', text: 'Switch', asset: 'emoji:idea'},
-			inactive: {id: 'button-switch', text: 'Switch', asset: 'emoji:idea'},
+			active: {id: 'button-switch', text: 'Rabbit', asset: 'emoji:switch-active'},
+			inactive: {id: 'button-switch', text: 'Hole', asset: 'emoji:switch-inactive'},
 		},
 	},
 	InputCheck: {id: 'check', text: 'An optional choice choice'},
