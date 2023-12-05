@@ -42,7 +42,7 @@
 			"description": "Add dependencies / new files",
 			"title": "Add"
 		},
-		"⬆️ ": {
+		"⬆️  ": {
 			"description": "Update dependencies",
 			"title": "Update"
 		},
