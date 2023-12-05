@@ -116,7 +116,7 @@
 	$: show = `show ${showBackground}`
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	$: revealClasses = `form:expand card:${size}`
-	$: formClasses = `l:switcher:lg ${showBackground}`
+	$: formClasses = `l:switcher:lg card:lg ${showBackground}`
 	$: layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
@@ -181,14 +181,13 @@
 					{shape}
 					{color}
 					{size}
-					asset={`emoji:${appSettings[id]}`}
 					value={appSettings[id]}
 					{states}
 					on:click={handleUpdate}
 				/>
 			{/each}
 		</form>
-		<menu class={`maki:xl`}>
+		<menu class="end">
 			{#each items.links as { id, title, url, shape, size, asset }}
 				{@const assetValue = SVG_ASSETS[brightness] ? SVG_ASSETS[brightness][id] : ''}
 				<li>

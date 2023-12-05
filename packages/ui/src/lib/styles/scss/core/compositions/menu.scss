@@ -15,6 +15,6 @@ menu > li > * {
 	width: 100%;
 }
 
-menu > .round {
-	margin-inline: calc(var(--gap) / 2);
+menu.end {
+	margin-inline-end: calc(2 * var(--gap));
 }
