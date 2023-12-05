@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.29
+
+### Patch Changes
+
+- 7525c8a2: [ui+apps] Switch and Expand button styles
+
 ## 0.1.28
 
 ### Patch Changes
