@@ -63,7 +63,7 @@ label > .feedback + * {
 	[type='email'],
 	[type='phone'],
 	[type='dataset'] {
-		color: var(--color-dark);
+		color: var(--color-black);
 	}
 	[type='file'] {
 		color: var(--color-white);
@@ -147,7 +147,7 @@ label.bare.accent > input,
 label.bare.accent > [type='file'],
 label.bare.highlight > input,
 label.bare.highlight > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 }
 
 label.outline.primary > input,
@@ -162,23 +162,23 @@ label.outline.accent > [type='file'] {
 }
 label.outline.highlight > input,
 label.outline.highlight > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 	border-color: var(--current-highlight-dark);
 }
 
 label.bare.primary > input,
 label.bare.primary > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 	border-color: var(--current-primary-lightest);
 }
 label.bare.accent > input,
 label.bare.accent > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 	border-color: var(--current-accent-lightest);
 }
 label.bare.highlight > input,
 label.bare.highlight > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 	border-color: var(--current-highlight-lighter);
 }
 
@@ -192,12 +192,12 @@ fieldset.radio,
 fieldset.check {
 	justify-content: flex-start;
 	.day & label {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 		color: var(--current-color);
 	}
 
 	.night & label {
-		--current-color: var(--color-light);
+		--current-color: var(--color-white);
 		color: var(--current-color);
 	}
 
@@ -206,7 +206,7 @@ fieldset.check {
 	}
 
 	.night & label:hover {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 	}
 
 	&.primary {
@@ -216,76 +216,80 @@ fieldset.check {
 	}
 
 	label.primary:hover {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 		background-color: var(--current-primary-lighter);
 	}
 
 	label.accent:hover {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 		background-color: var(--current-accent-lighter);
 	}
 
 	label.highlight:hover {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 		background-color: var(--current-highlight-lighter);
 	}
 
 	label.info:hover {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 		background-color: var(--current-info-lighter);
 	}
 
 	label.success:hover {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 		background-color: var(--current-success-lighter);
 	}
 
 	label.warning:hover {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 		background-color: var(--current-warning-lighter);
 	}
 
 	label.error:hover {
-		--current-color: var(--color-dark);
+		--current-color: var(--color-black);
 		background-color: var(--current-error-lighter);
 	}
 }
 
 label.primary > [type='file'] {
-	color: var(--color-light);
+	color: var(--color-white);
+}
+
+label.accent > [type='file'] {
+	color: var(--color-white);
 }
 
 label.highlight > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 }
 
 label.primary:hover > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 	background-color: var(--current-primary-light);
 }
 
 label.accent:hover > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 	background-color: var(--current-accent-light);
 }
 
 label.highlight:hover > [type='file'] {
-	color: var(--color-dark);
+	color: var(--color-black);
 	background-color: var(--current-highlight-light);
 }
 
 label.primary > [type='file']:active {
-	color: var(--color-dark);
+	color: var(--color-black);
 	background-color: var(--current-primary-lighter);
 }
 
 label.accent > [type='file']:active {
-	color: var(--current-dark);
+	color: var(--current-black);
 	background-color: var(--current-accent-lighter);
 }
 
 label.highlight > [type='file']:active {
-	color: var(--color-dark);
+	color: var(--color-black);
 	background-color: var(--current-highlight-lighter);
 }
 
@@ -369,23 +373,23 @@ label.check[class*='emoji'] span {
 .night {
 	label:hover > input,
 	label:hover > [type='file'] {
-		color: var(--color-light);
+		color: var(--color-white);
 	}
 
 	label.primary > [type='file'],
 	label.accent > [type='file'],
 	label.highlight > [type='file'] {
-		color: var(--color-dark);
+		color: var(--color-black);
 	}
 
 	label.outline > input,
 	label.outline > [type='file'] {
-		color: var(--color-light);
+		color: var(--color-white);
 	}
 
 	label.bare > input,
 	label.bare > [type='file'] {
-		color: var(--color-light);
+		color: var(--color-white);
 	}
 
 	label.outline.primary > input,
@@ -422,21 +426,21 @@ label.check[class*='emoji'] span {
 	.outline.primary:hover > [type='file'],
 	.bare.primary:hover > input,
 	.bare.primary:hover > [type='file'] {
-		color: var(--color-dark);
+		color: var(--color-black);
 	}
 
 	.outline.accent:hover > input,
 	.outline.accent:hover > [type='file'],
 	.bare.accent:hover > input,
 	.bare.accent:hover > [type='file'] {
-		color: var(--color-dark);
+		color: var(--color-black);
 	}
 
 	.outline.highlight:hover > input,
 	.outline.highlight:hover > [type='file'],
 	.bare.highlight:hover > input,
 	.bare.highlight:hover > [type='file'] {
-		color: var(--color-dark);
+		color: var(--color-black);
 	}
 }
 
