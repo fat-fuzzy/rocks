@@ -1,9 +1,9 @@
+import type {PageServerLoad} from './$types'
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 import {StylesUpdate} from '$lib/forms/styles-update'
 import {StylesContextReveal} from '$lib/forms/styles-context-reveal'
 import constants from '$lib/types/constants'
-import * as ui from '$stores/ui'
 
 const {DEFAULT_REVEAL_STATE, DEFAULT_STYLES} = constants
 
@@ -19,7 +19,6 @@ export const actions = {
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
-		ui.reveal.set(settingsReveal.settings)
 		cookies.set('fat-fuzzy-ui-context-reveal', settingsReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
@@ -39,7 +38,6 @@ export const actions = {
 		if (!styles.enter(data)) {
 			return fail(400, {stylesError: true})
 		}
-		ui.styles.set(styles.api.getStyleTree())
 		cookies.set('fat-fuzzy-ui', styles.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
@@ -51,5 +49,6 @@ export const actions = {
 
 	restart: async ({cookies, url}) => {
 		cookies.delete('fat-fuzzy-ui', {path: '/'})
+		cookies.delete('fat-fuzzy-ui-context-reveal', {path: '/'})
 	},
 } satisfies Actions

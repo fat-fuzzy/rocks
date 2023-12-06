@@ -5,7 +5,6 @@ import {SidebarReveal} from '$lib/forms/sidebar-reveal'
 import {SettingsReveal} from '$lib/forms/settings-reveal'
 import {SettingsUpdate} from '$lib/forms/settings-update'
 import constants from '$lib/types/constants'
-import * as settings from '$lib/stores/settings'
 
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = constants
 
@@ -21,7 +20,6 @@ export const actions = {
 		if (!navReveal.reveal(data)) {
 			return fail(400, {navRevealError: true})
 		}
-		settings.navReveal.set(navReveal.nav)
 		cookies.set('fat-fuzzy-nav-reveal', navReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
@@ -41,7 +39,6 @@ export const actions = {
 		if (!sidebarReveal.reveal(data)) {
 			return fail(400, {sidebarRevealError: true})
 		}
-		settings.sidebarReveal.set(sidebarReveal.sidebar)
 		cookies.set('fat-fuzzy-sidebar-reveal', sidebarReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
@@ -61,7 +58,6 @@ export const actions = {
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
-		settings.settingsReveal.set(settingsReveal.settings)
 		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
@@ -81,7 +77,6 @@ export const actions = {
 		if (!settingsUpdate.update(data)) {
 			return fail(400, {settingsError: true})
 		}
-		settings.app.set(settingsUpdate.app)
 		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
@@ -93,6 +88,7 @@ export const actions = {
 	reset: async ({url, cookies}) => {
 		cookies.delete('fat-fuzzy-nav-reveal', {path: url.pathname})
 		cookies.delete('fat-fuzzy-settings-reveal', {path: url.pathname})
+		cookies.delete('fat-fuzzy-sidebar-reveal', {path: url.pathname})
 		cookies.delete('fat-fuzzy-settings-app', {path: url.pathname})
 	},
 } satisfies Actions
