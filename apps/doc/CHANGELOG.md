@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.30
+
+### Patch Changes
+
+- df3dce29: [ui+doc] Fix accessibility issues & store in server issues
+
 ## 0.1.29
 
 ### Patch Changes
