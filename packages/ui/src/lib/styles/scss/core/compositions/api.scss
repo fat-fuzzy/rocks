@@ -20,6 +20,18 @@
 	}
 }
 
+.ui\:header {
+	grid-row: 1;
+	z-index: 0;
+}
+
+@media screen and (min-width: 620px) {
+	.ui\:header {
+		grid-column-end: 3;
+		grid-column-start: 1;
+	}
+}
+
 // ================
 // == Override colors for embedded brightness classes
 // -> used only for documentation

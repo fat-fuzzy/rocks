@@ -16,6 +16,10 @@ body {
 	line-height: var(--line-height-body);
 }
 
+main {
+	min-height: calc(100vh - var(--header-height));
+}
+
 a {
 	color: var(--current-primary);
 	font-size: var(--font-size-ui);
