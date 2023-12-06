@@ -55,12 +55,6 @@ label > .feedback + * {
 	cursor: not-allowed;
 }
 
-.day {
-	[type='file'] {
-		color: var(--color-dark);
-	}
-}
-
 .night {
 	textarea,
 	[type='text'],
@@ -257,16 +251,6 @@ fieldset.check {
 	}
 }
 
-label.primary > input:hover,
-label.primary > input:active,
-label.accent > input:hover,
-label.accent > input:active,
-label.highlight > input:hover,
-label.highlight > input:active {
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
-}
-
 label.primary > [type='file'] {
 	color: var(--color-light);
 }
@@ -275,17 +259,17 @@ label.highlight > [type='file'] {
 	color: var(--color-dark);
 }
 
-label.primary > [type='file']:hover {
+label.primary:hover > [type='file'] {
 	color: var(--color-dark);
 	background-color: var(--current-primary-light);
 }
 
-label.accent > [type='file']:hover {
+label.accent:hover > [type='file'] {
 	color: var(--color-dark);
 	background-color: var(--current-accent-light);
 }
 
-label.highlight > [type='file']:hover {
+label.highlight:hover > [type='file'] {
 	color: var(--color-dark);
 	background-color: var(--current-highlight-light);
 }
@@ -383,6 +367,11 @@ label.check[class*='emoji'] span {
 }
 
 .night {
+	label:hover > input,
+	label:hover > [type='file'] {
+		color: var(--color-light);
+	}
+
 	label.primary > [type='file'],
 	label.accent > [type='file'],
 	label.highlight > [type='file'] {
@@ -429,24 +418,40 @@ label.check[class*='emoji'] span {
 		color: var(--current-highlight-lighter);
 	}
 
-	.outline.primary > input:hover,
-	.outline.primary > [type='file']:hover,
-	.bare.primary > input:hover,
-	.bare.primary > [type='file']:hover {
+	.outline.primary:hover > input,
+	.outline.primary:hover > [type='file'],
+	.bare.primary:hover > input,
+	.bare.primary:hover > [type='file'] {
 		color: var(--color-dark);
 	}
 
-	.outline.accent > input:hover,
-	.outline.accent > [type='file']:hover,
-	.bare.accent > input:hover,
-	.bare.accent > [type='file']:hover {
+	.outline.accent:hover > input,
+	.outline.accent:hover > [type='file'],
+	.bare.accent:hover > input,
+	.bare.accent:hover > [type='file'] {
 		color: var(--color-dark);
 	}
 
-	.outline.highlight > input:hover,
-	.outline.highlight > [type='file']:hover,
-	.bare.highlight > input:hover,
-	.bare.highlight > [type='file']:hover {
+	.outline.highlight:hover > input,
+	.outline.highlight:hover > [type='file'],
+	.bare.highlight:hover > input,
+	.bare.highlight:hover > [type='file'] {
 		color: var(--color-dark);
 	}
+}
+
+label:hover > input,
+label:hover > [type='file'] {
+	color: var(--current-color);
+	background-color: var(--current-bg-contrast);
+}
+
+label.primary:hover > input,
+label.primary > input:active,
+label.accent:hover > input,
+label.accent > input:active,
+label.highlight:hover > input,
+label.highlight > input:active {
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
 }
