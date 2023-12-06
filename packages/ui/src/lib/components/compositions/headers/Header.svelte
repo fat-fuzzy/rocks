@@ -105,7 +105,7 @@
 				Menu
 			</Expand>
 		</form>
-		<nav id={`${id}-primary-nav`} class={showNav}>
+		<nav id={`${id}-primary-nav`} class={showNav} aria-label="Main navigation">
 			<ul class={navClasses}>
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>
