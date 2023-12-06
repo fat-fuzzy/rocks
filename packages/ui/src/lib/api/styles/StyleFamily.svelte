@@ -60,22 +60,6 @@
 		ui.styles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
 	}
 
-	function handleInputRange(event) {
-		// if (items) {
-		// 	let selectedMarker = markers.find((m) => m.value === value)
-		// 	if (selectedMarker) {
-		// 		valueLabel = selectedMarker.label
-		// 		dispatch('input', {
-		// 			id: selectedMarker.id,
-		// 			name: selectedMarker.label,
-		// 			value: valueLabel,
-		// 		})
-		// 	}
-		// } else {
-		// 	dispatch('input', {value})
-		// }
-	}
-
 	function handleInput(event, name: string) {
 		const target = event.target ?? event.detail
 		const payload = {
@@ -151,7 +135,6 @@
 				{#if input === 'toggle'}
 					<Fieldset
 						legend={family.title}
-						{id}
 						layout={family.layout}
 						size={family.size}
 						name={familyName}
