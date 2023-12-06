@@ -152,7 +152,7 @@
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
-	<article class={`box ${brightness} bg:${background} l:stack `}>
+	<article class={`box ${brightness} bg:${background} l:stack ui:${title.toLowerCase()}`}>
 		<header>
 			<a
 				class="title card:md w:full l:switcher:xs emoji:link outline primary:light"
