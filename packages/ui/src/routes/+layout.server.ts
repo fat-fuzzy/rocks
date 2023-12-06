@@ -1,11 +1,11 @@
 import type {LayoutServerLoad} from './$types'
 
 export const load = (async (event) => {
-	let styles = {}
-	let settings = {}
-	let app = {}
-	if (event.locals.styles) {
-		styles = JSON.parse(event.locals.styles)
+	let settings = null
+	let app = null
+	let nav = null
+	if (event.locals.nav) {
+		nav = JSON.parse(event.locals.nav)
 	}
 	if (event.locals.settings) {
 		settings = JSON.parse(event.locals.settings)
@@ -14,5 +14,5 @@ export const load = (async (event) => {
 		app = JSON.parse(event.locals.app)
 	}
 
-	return {styles, settings, app}
+	return {settings, app, nav}
 }) satisfies LayoutServerLoad
