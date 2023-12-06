@@ -23,12 +23,36 @@
 .ui\:header {
 	grid-row: 1;
 	z-index: 0;
+	grid-column-start: 1;
 }
 
 @media screen and (min-width: 620px) {
 	.ui\:header {
 		grid-column-end: 3;
-		grid-column-start: 1;
+	}
+}
+
+.ui\:sidebar {
+	grid-row: 1;
+	grid-column-start: 1;
+	z-index: 0;
+}
+
+@media screen and (min-width: 935px) {
+	.ui\:sidebar {
+		grid-column-end: 3;
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.ui\:sidebar {
+		grid-column-end: 4;
+	}
+}
+
+@media screen and (min-width: 1620px) {
+	.ui\:sidebar {
+		grid-column-end: 5;
 	}
 }
 
