@@ -1,5 +1,12 @@
 # @fat-fuzzy/doc
 
+## 0.1.31
+
+### Patch Changes
+
+- 938e99f5: [ui] Update documentation for input and buttons Block components
+  [ui+doc] Add default actions for Compositions doc
+
 ## 0.1.30
 
 ### Patch Changes
