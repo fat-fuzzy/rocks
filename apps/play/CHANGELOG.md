@@ -1,5 +1,11 @@
 # @fat-fuzzy/play
 
+## 0.1.24
+
+### Patch Changes
+
+- 3c44282d: [play] Update Header props
+
 ## 0.1.23
 
 ### Patch Changes
