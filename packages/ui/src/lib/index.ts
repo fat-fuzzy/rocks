@@ -96,6 +96,7 @@ import {SettingsUpdate} from '$lib/forms/settings-update'
 import {SidebarReveal} from '$lib/forms/sidebar-reveal'
 import {DsContextReveal} from '$lib/forms/ds-context-reveal'
 import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
+import {DsStateUpdate} from '$lib/forms/ds-state-update'
 
 /**
  * Stores
@@ -125,6 +126,7 @@ const forms = {
 	SettingsReveal,
 	SettingsUpdate,
 	DsContextReveal,
+	DsStateUpdate,
 	DsStylesUpdate,
 }
 

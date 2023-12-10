@@ -55,6 +55,8 @@ export default {
 	RevealNav: {
 		slug: 'ui',
 		title: 'RevealNav',
+		formaction: 'updateState',
+		place: 'left',
 		items: [
 			{
 				slug: 'compositions',
@@ -73,5 +75,10 @@ export default {
 				],
 			},
 		],
+	},
+	Header: {
+		slug: 'ui',
+		title: 'Header',
+		formaction: 'updateState',
 	},
 }

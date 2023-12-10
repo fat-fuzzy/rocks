@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
+	import {onMount, onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants'
 
@@ -8,7 +8,12 @@
 
 	import * as settings from '$stores/settings'
 
-	const {ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION, TRANSITION_CONTRAST} = constants
+	const {
+		DEFAULT_SIDEBAR_REVEAL_STATE,
+		ALIGN_OPPOSITE,
+		ALIGN_ANIMATION_DIRECTION,
+		TRANSITION_CONTRAST,
+	} = constants
 
 	const method = 'POST'
 	export let size = ''
@@ -65,19 +70,27 @@
 	$: navClasses = `content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `
 	$: layoutClasses = `l:reveal ${position} ${place} ${reveal}`
 	$: revealClasses = `form:expand`
+	$: action = formaction
+		? redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+		: undefined
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
+	})
+
+	onMount(() => {
+		settings.sidebarReveal.set(DEFAULT_SIDEBAR_REVEAL_STATE)
 	})
 </script>
 
 <div class={layoutClasses}>
 	<form
+		{id}
 		{name}
 		{method}
-		action={actionPath && formaction
-			? `${actionPath}?/${formaction}&redirectTo=${redirect}`
-			: `?/${formaction}&redirectTo=${redirect}`}
+		action={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {
@@ -87,14 +100,14 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`${id}-reveal-sidebar-button`}
+			id={`button-${id}`}
 			{variant}
 			{title}
 			{size}
 			{color}
-			{name}
+			name={`button-${name}`}
 			align={buttonAlign}
-			controls={`${id}-reveal-sidebar`}
+			controls={`nav-${id}`}
 			value={title}
 			states={{
 				active: {text: title, value: 'show', asset: `emoji:point-${animationDirection}`},
@@ -105,7 +118,7 @@
 			{title}
 		</Expand>
 	</form>
-	<nav id={`${id}-reveal-sidebar`} class={navClasses}>
+	<nav id={`nav-${id}`} class={navClasses}>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
 </div>

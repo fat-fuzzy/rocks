@@ -18,7 +18,7 @@ export default {
 	InputCheck: {id: 'check', text: 'An optional choice choice'},
 	InputRadio: {id: 'radio', text: 'A mandatory choice'},
 	Feedback: {
-		useCases: [
+		statuses: [
 			{
 				text: 'Too swift arrives as tardy as too slow.',
 				case: 'default',

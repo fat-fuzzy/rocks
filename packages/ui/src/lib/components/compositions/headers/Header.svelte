@@ -6,6 +6,7 @@
 	import {clickOutside} from '$lib/utils/click-outside'
 	import {lang} from '$stores/intl'
 	import * as settings from '$stores/settings'
+	import constants from '$lib/types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Settings from '$lib/components/compositions/forms/Settings.svelte'
@@ -19,9 +20,10 @@
 	export let formaction: string | undefined = undefined
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
+	const {DEFAULT_SETTINGS} = constants
+	export let items = {links: [{slug: 'about', title: 'About'}], settings: DEFAULT_SETTINGS}
 
 	let page = getStores().page
-	export let links = [{slug: 'about', title: 'About'}]
 
 	let navReveal: {[key: string]: string} = {reveal: ''}
 	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
@@ -88,11 +90,11 @@
 			class={revealClasses}
 		>
 			<Expand
-				id={`${id}-settings-button`}
+				id={`button-${id}-nav-reveal`}
 				variant="outline"
 				size="sm"
 				title="Menu"
-				name="reveal"
+				name={`button-${id}-nav-reveal`}
 				type={actionPath && formaction ? 'submit' : 'button'}
 				controls={`${id}-primary-nav`}
 				value={'menu'}
@@ -110,7 +112,7 @@
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>
 				</li>
-				{#each links as { slug, title }}
+				{#each items.links as { slug, title }}
 					<li aria-current={$page.url.pathname.startsWith(`/${slug}`) ? 'page' : undefined}>
 						<a data-sveltekit-preload-data href={`/${slug}`} on:click={handleClickOutsideMainNav}>
 							{title}
@@ -125,8 +127,10 @@
 		{breakpoint}
 		align="end"
 		size="sm"
-		formaction="toggleSettings"
-		actionPath="/"
+		id={`${id}-menu-settings`}
+		{formaction}
+		{actionPath}
 		redirect={$page.url.pathname}
+		items={items.settings}
 	/>
 </header>

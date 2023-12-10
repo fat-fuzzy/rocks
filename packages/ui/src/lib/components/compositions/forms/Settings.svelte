@@ -9,7 +9,7 @@
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
 
-	const {SVG_ASSETS} = constants
+	const {SVG_ASSETS, DEFAULT_SETTINGS} = constants
 	const method = 'POST'
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined
@@ -24,46 +24,7 @@
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
 
-	export let items = {
-		switch: [
-			{
-				id: 'brightness',
-				name: 'brightness',
-				title: 'Brightness',
-				variant: 'outline',
-				shape: 'round',
-				color: 'primary',
-				size: 'md',
-				states: {
-					active: {text: 'night', value: 'night', asset: 'emoji:night'},
-					inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
-				},
-			},
-			// {
-			// 	id: 'contrast',
-			// 	name: 'contrast',
-			// 	title: 'Contrast',
-			// 	variant: 'outline',
-			// 	shape: 'round',
-			// 	color: 'primary',
-			// 	size: 'md',
-			// 	states: {
-			// 		active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-			// 		inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
-			// 	},
-			// },
-		],
-		links: [
-			{
-				id: 'link-github',
-				title: 'GitHub icon',
-				url: 'https://github.com/fat-fuzzy/rocks',
-				asset: 'svg:icon-github',
-				shape: 'round',
-				size: 'xs',
-			},
-		],
-	}
+	export let items = DEFAULT_SETTINGS
 
 	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
 	let settingsReveal: {[key: string]: string} = {reveal: ''}
@@ -141,13 +102,13 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`${id}-settings-button`}
+			id={`button-${id}`}
 			{variant}
 			{color}
 			{size}
 			type={actionPath && formaction ? 'submit' : 'button'}
 			title="Settings"
-			name="reveal"
+			name={`button-${id}`}
 			controls={`reveal-${id}`}
 			value={settingsReveal[id]}
 			states={{
