@@ -3,7 +3,7 @@ import {fail, redirect} from '@sveltejs/kit'
 
 import {constants, forms, stores} from '@fat-fuzzy/ui'
 
-const {StylesUpdate, StylesContextReveal} = forms
+const {DsStylesUpdate, DsContextReveal} = forms
 const {DEFAULT_STYLES} = constants
 const {ui} = stores
 
@@ -17,7 +17,7 @@ export const actions = {
 		if (serialized) {
 			currentState = JSON.parse(serialized)
 		}
-		let settingsReveal = new StylesContextReveal(currentState)
+		let settingsReveal = new DsContextReveal(currentState)
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
@@ -37,7 +37,7 @@ export const actions = {
 		if (serialized) {
 			currentStyles = JSON.parse(serialized)
 		}
-		const styles = new StylesUpdate(currentStyles)
+		const styles = new DsStylesUpdate(currentStyles)
 		if (!styles.enter(data)) {
 			return fail(400, {stylesError: true})
 		}

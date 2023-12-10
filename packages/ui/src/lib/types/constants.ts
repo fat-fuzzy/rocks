@@ -3,6 +3,7 @@ import type {StyleTree} from '$lib/api/styles/types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
+const DEFAULT_DS_STATE: Settings = {brightness: 'day', contrast: 'blend'}
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
 	show: 'minimize',
@@ -82,8 +83,6 @@ export const DEFAULT_STYLES: StyleTree = {
 	},
 }
 
-const themes = ['night', 'day']
-
 const emojis: {[key: string]: string} = {
 	lang: '🌐',
 	day: '☀️',
@@ -109,7 +108,6 @@ const languages = [
 // TODO: make svg css themeable / fix dark theme
 import githubDay from '$lib/images/day/icon-github.svg'
 import githubNight from '$lib/images/night/icon-github.svg'
-// TODO: make svg css themeable / fix dark theme
 const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
 	day: {
 		'link-github': githubDay,
@@ -123,6 +121,7 @@ export default {
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
+	DEFAULT_DS_STATE,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,
 	TRANSITION_CONTRAST,

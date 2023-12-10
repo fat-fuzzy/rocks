@@ -1,8 +1,7 @@
-import type {PageServerLoad} from './$types'
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
-import {StylesUpdate} from '$lib/forms/styles-update'
-import {StylesContextReveal} from '$lib/forms/styles-context-reveal'
+import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
+import {DsContextReveal} from '$lib/forms/ds-context-reveal'
 import constants from '$lib/types/constants'
 
 const {DEFAULT_REVEAL_STATE, DEFAULT_STYLES} = constants
@@ -15,7 +14,7 @@ export const actions = {
 		if (serialized) {
 			currentState = JSON.parse(serialized)
 		}
-		let settingsReveal = new StylesContextReveal(currentState)
+		let settingsReveal = new DsContextReveal(currentState)
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
@@ -34,7 +33,7 @@ export const actions = {
 		if (serialized) {
 			currentStyles = JSON.parse(serialized)
 		}
-		const styles = new StylesUpdate(currentStyles)
+		const styles = new DsStylesUpdate(currentStyles)
 		if (!styles.enter(data)) {
 			return fail(400, {stylesError: true})
 		}

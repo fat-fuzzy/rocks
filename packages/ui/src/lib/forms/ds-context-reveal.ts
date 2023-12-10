@@ -3,7 +3,7 @@ import constants from '$lib/types/constants'
 
 const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
-export class StylesContextReveal {
+export class DsContextReveal {
 	settings: Settings
 
 	/**
