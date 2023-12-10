@@ -8,7 +8,7 @@
 
 	import * as settingsStore from '$lib/stores/settings'
 	import format from '$lib/utils/format'
-	import {links} from '$lib/api/fixtures/js/nav'
+	import {links, itemsSettings} from '$lib/api/fixtures/js/nav'
 	import Header from '$lib/components/compositions/headers/Header.svelte'
 
 	export let data: LayoutData
@@ -48,7 +48,7 @@
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
-	{links}
+	items={{links, settings: itemsSettings}}
 	breakpoint="xs"
 />
 
