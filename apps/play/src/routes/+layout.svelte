@@ -4,7 +4,7 @@
 	import '@fat-fuzzy/ui/csscore'
 
 	import {page} from '$app/stores'
-	import {links} from '$lib/data/nav'
+	import {links, itemsSettings} from '$lib/data/nav'
 	import {compositions, stores, utils} from '@fat-fuzzy/ui'
 
 	const {Header} = compositions
@@ -38,7 +38,7 @@
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
-	{links}
+	items={{links, settings: itemsSettings}}
 	breakpoint="xs"
 />
 
