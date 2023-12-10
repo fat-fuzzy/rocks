@@ -6,6 +6,9 @@
 
 	const dispatch = createEventDispatcher()
 
+	/**
+	 * State props
+	 */
 	export let id = 'expand'
 	export let controls = 'expand' // id of the DOM element that is controlled by this button
 	export let name = 'expand'
@@ -13,17 +16,20 @@
 	export let initial = false
 	export let value = ''
 	export let disabled = false
-	export let color = ''
-	export let variant = 'fill'
-	export let layout = 'flex'
-	export let breakpoint = ''
-	export let size = ''
-	export let align = ''
-	export let shape = ''
-	export let formaction: string | undefined = undefined
-
 	export let type: ButtonType = 'submit'
-	export let states: ButtonState // this component contains a button that will Expand the DOM element it controls when active, or minimize it when inactive.  Each state can have its own text and asset (if any) and possible style according to its active / inactive state
+	export let formaction: string | undefined = undefined
+	export let states: ButtonState // this component contains a button that will Expand the DOM element it controls when active, or minimize it when inactive. Each state can have its own text, style, and asset (if any) according to its active / inactive state
+
+	/**
+	 * Style props
+	 */
+	export let align = ''
+	export let breakpoint = ''
+	export let color = ''
+	export let layout = 'flex'
+	export let size = ''
+	export let shape = ''
+	export let variant = 'fill'
 
 	let machineConfig = {
 		predictableActionArguments: true,
