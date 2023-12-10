@@ -5,7 +5,7 @@ import {initStyles} from '$lib/api/styles/styles-api'
 
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, TRANSITION_REVEAL, NUMBER_TO_SIZE} = constants
 
-export class StylesUpdate {
+export class DsStylesUpdate {
 	api
 	settings
 	contextReveal
