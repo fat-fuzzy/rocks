@@ -21,8 +21,8 @@ export class SidebarReveal {
 	 * Update sidebar based on inputs
 	 */
 	reveal(data: FormData) {
-		if (data.has('reveal')) {
-			const updated = data.get('reveal')?.toString()
+		if (data.has('button-reveal')) {
+			const updated = data.get('button-reveal')?.toString()
 			if (updated) {
 				this.sidebar.reveal = TRANSITION_REVEAL[this.sidebar.reveal]
 				return true
