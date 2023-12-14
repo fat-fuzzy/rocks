@@ -3,16 +3,14 @@ title: Button
 slug: Button
 family: ['blocks']
 group: ['buttons']
-props: ['color', 'variant', 'size', 'asset']
+props_state: ['title', 'text', 'formaction', 'value']
+props_style: ['color', 'variant', 'size', 'asset', 'shape']
 context: ['app.settings']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
-
-[TODO]
+This component contains a basic button that can be used to submit a form, either via the default `action` set on the parent form element, or via a specific `formaction` provided as props to the Button component.
 
 ### Class System
 

@@ -1,24 +1,34 @@
 <script lang="ts">
+	import type {LayoutData} from './$types'
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
 	import '$lib/styles/css/tokens/main.css'
 	import '$lib/styles/css/core/main.css'
 
-	import * as settings from '$lib/stores/settings'
+	import * as settingsStore from '$lib/stores/settings'
 	import format from '$lib/utils/format'
-	import {links} from '$lib/api/fixtures/js/nav'
+	import {links, itemsSettings} from '$lib/api/fixtures/js/nav'
 	import Header from '$lib/components/compositions/headers/Header.svelte'
+
+	export let data: LayoutData
+
+	const {nav, sidebar, settings, app} = data
 
 	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
 
 	const stores = [
-		settings.app.subscribe((value) => {
+		settingsStore.app.subscribe((value) => {
 			if (value) {
 				appSettings = value
 			}
 		}),
 	]
+	settingsStore.app.set(app)
+	settingsStore.navReveal.set(nav)
+	settingsStore.sidebarReveal.set(sidebar)
+	settingsStore.settingsReveal.set(settings)
+	settingsStore.sidebarReveal.set(sidebar)
 
 	$: brightness = appSettings.brightness
 	$: contrast = appSettings.contrast
@@ -38,7 +48,7 @@
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
-	{links}
+	items={{links, settings: itemsSettings}}
 	breakpoint="xs"
 />
 

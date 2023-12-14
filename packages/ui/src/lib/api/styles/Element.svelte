@@ -42,7 +42,7 @@
 	let background = ''
 	let container = ''
 	let size = '' // Container size
-	let useCase = ''
+	let status = ''
 	let contextClasses = ''
 
 	let sharedOptions = {
@@ -80,7 +80,7 @@
 	// - [container + size] work together
 	$: container = styles.shared?.container.container ?? container
 	$: size = styles.shared?.container.size ?? size
-	$: useCase = styles.blocks?.element.status ?? useCase
+	$: status = styles.blocks?.element.status ?? status
 
 	$: contextClasses = `${sharedOptions.size}`
 	$: containerClasses = `l:${container}:${size} content ${contextClasses}`
@@ -95,8 +95,8 @@
 	<article class="l:sidebar:xs">
 		<section class={`l:main card:xl inset ${brightness} bg:${background} `}>
 			<div class={containerClasses}>
-				{#if props?.useCases}
-					{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
+				{#if props?.statuses}
+					{@const currentProps = props.statuses.find((p) => p.case === status) || {}}
 					<svelte:component
 						this={ApiElement[category]}
 						{isPage}
@@ -104,9 +104,19 @@
 						{component}
 						{stylesApi}
 						props={currentProps}
+						{actionPath}
+						{redirect}
 					/>
 				{:else}
-					<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
+					<svelte:component
+						this={ApiElement[category]}
+						{isPage}
+						{title}
+						{component}
+						{props}
+						{actionPath}
+						{redirect}
+					/>
 				{/if}
 			</div>
 		</section>
@@ -152,7 +162,7 @@
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
-	<article class={`box ${brightness} bg:${background} l:stack `}>
+	<article class={`box ${brightness} bg:${background} l:stack ui:${title.toLowerCase()}`}>
 		<header>
 			<a
 				class="title card:md w:full l:switcher:xs emoji:link outline primary:light"
@@ -164,8 +174,8 @@
 			</a>
 		</header>
 		<div class="content">
-			{#if props?.useCases}
-				{@const currentProps = props.useCases.find((p) => p.case === useCase) || {}}
+			{#if props?.statuses}
+				{@const currentProps = props.statuses.find((p) => p.case === status) || {}}
 				<svelte:component
 					this={ApiElement[category]}
 					{isPage}
@@ -173,9 +183,19 @@
 					{component}
 					{stylesApi}
 					props={currentProps}
+					{actionPath}
+					{redirect}
 				/>
 			{:else}
-				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
+				<svelte:component
+					this={ApiElement[category]}
+					{isPage}
+					{title}
+					{component}
+					{props}
+					{actionPath}
+					{redirect}
+				/>
 			{/if}
 		</div>
 	</article>

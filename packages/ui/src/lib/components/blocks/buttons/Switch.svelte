@@ -6,23 +6,29 @@
 
 	const dispatch = createEventDispatcher()
 
+	/**
+	 * State props
+	 */
 	export let id = 'switch'
 	export let name = 'switch'
 	export let title = ''
 	export let initial = false
 	export let value = ''
 	export let disabled = false
-	export let color = ''
-	export let variant = 'fill'
-	export let layout = 'flex'
-	export let breakpoint = ''
-	export let size = ''
-	export let align = ''
-	export let shape = ''
-	export let formaction: string | undefined = undefined
-
 	export let type: ButtonType = 'submit'
+	export let formaction: string | undefined = undefined
 	export let states: ButtonState // this component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
+
+	/**
+	 * Style props
+	 */
+	export let align = ''
+	export let breakpoint = ''
+	export let color = ''
+	export let layout = 'flex'
+	export let size = ''
+	export let shape = ''
+	export let variant = 'fill'
 
 	let machineConfig = {
 		predictableActionArguments: true,

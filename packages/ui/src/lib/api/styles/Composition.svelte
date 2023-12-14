@@ -14,6 +14,9 @@
 	export let component: ComponentType
 	export let props: any
 
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
+
 	let breakpoint = props?.breakpoint || ''
 	let threshold = props?.threshold || ''
 	let layout = props?.layout || ''
@@ -62,4 +65,4 @@
 	})
 </script>
 
-<svelte:component this={component} id={title} {...props} />
+<svelte:component this={component} id={title} {...props} {actionPath} {redirect} />

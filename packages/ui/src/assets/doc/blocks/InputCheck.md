@@ -3,7 +3,8 @@ title: InputCheck
 slug: InputCheck
 family: ['blocks']
 group: ['forms']
-props: ['color', 'size', 'asset']
+props_state: ['label', 'value', 'errors']
+props_style: ['color', 'size', 'asset']
 context: ['app.settings', 'shared.container']
 ---
 

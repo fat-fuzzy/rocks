@@ -6,22 +6,29 @@
 
 	const dispatch = createEventDispatcher()
 
+	/**
+	 * State props
+	 */
 	export let id = 'toggle'
 	export let name = 'toggle'
+	export let text = ''
 	export let title = ''
 	export let initial = false
 	export let value = ''
 	export let disabled = false
-	export let color = ''
-	export let variant = 'fill'
-	export let layout = 'flex'
-	export let breakpoint = ''
-	export let size = ''
+	export let formaction: string | undefined = undefined
+
+	/**
+	 * Style props
+	 */
 	export let align = ''
 	export let asset = '' // emoji:value or svg:value
+	export let breakpoint = ''
+	export let color = ''
+	export let layout = 'flex'
+	export let size = ''
 	export let shape = ''
-	export let text = ''
-	export let formaction: string | undefined = undefined
+	export let variant = 'fill'
 
 	export let type: ButtonType = 'submit'
 

@@ -94,8 +94,9 @@ import {NavReveal} from '$lib/forms/nav-reveal'
 import {SettingsReveal} from '$lib/forms/settings-reveal'
 import {SettingsUpdate} from '$lib/forms/settings-update'
 import {SidebarReveal} from '$lib/forms/sidebar-reveal'
-import {StylesContextReveal} from '$lib/forms/styles-context-reveal'
-import {StylesUpdate} from '$lib/forms/styles-update'
+import {DsContextReveal} from '$lib/forms/ds-context-reveal'
+import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
+import {DsStateUpdate} from '$lib/forms/ds-state-update'
 
 /**
  * Stores
@@ -124,8 +125,9 @@ const forms = {
 	SidebarReveal,
 	SettingsReveal,
 	SettingsUpdate,
-	StylesContextReveal,
-	StylesUpdate,
+	DsContextReveal,
+	DsStateUpdate,
+	DsStylesUpdate,
 }
 
 const stores = {
