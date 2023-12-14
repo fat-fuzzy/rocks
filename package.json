@@ -12,22 +12,22 @@
 		"lint": "turbo run lint",
 		"test": "turbo run test",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"cz": "cz --no-verify"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.26.2",
 		"@fat-fuzzy/config": "workspace:*",
+		"commitizen": "^4.3.0",
+		"cz-conventional-changelog": "^3.3.0",
+		"husky": "^8.0.0",
 		"prettier": "^3.0.3",
 		"prettier-plugin-svelte": "^3.0.3",
-		"turbo": "1.10.15",
-		"husky": "^8.0.0"
+		"turbo": "1.10.15"
 	},
 	"packageManager": "pnpm@8.8.0",
 	"engines": {
 		"node": ">=18.0.0",
 		"npm": ">=9.2.0"
-	},
-	"publishConfig": {
-		"registry": "http://localhost:4873"
 	}
 }

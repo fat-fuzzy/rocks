@@ -1,0 +1,23 @@
+[class*='l:flex'] {
+	--gap: var(--current-size);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: var(--gap);
+}
+
+.l\:flex.reverse {
+	flex-direction: row-reverse;
+}
+
+.l\:flex.nowrap {
+	flex-wrap: nowrap;
+}
+
+.l\:flex.grow > * {
+	flex-grow: 1;
+}
+
+.l\:flex.space-between {
+	justify-content: space-between;
+}

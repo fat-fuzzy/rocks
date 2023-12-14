@@ -1,15 +1,19 @@
 .header {
 	grid-area: 'header';
 }
+
 .footer {
 	grid-area: 'footer';
 }
+
 .content {
 	grid-area: 'content';
 }
+
 .navs {
 	grid-area: 'navs';
 }
+
 .actions {
 	grid-area: 'actions';
 }
@@ -22,7 +26,7 @@
 		'footer';
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 620px) {
 	.l\:grid\:areas\:base {
 		grid-template-areas:
 			'navs			.......	.......'
@@ -32,7 +36,7 @@
 	}
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 935px) {
 	/* no grid support? */
 	.sidebar {
 		float: left;

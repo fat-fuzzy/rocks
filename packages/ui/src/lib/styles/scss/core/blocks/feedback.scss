@@ -1,28 +1,254 @@
-// Playground legacy - TODO: review usage
-.output.active,
-.output.error,
-.output.success {
-	&::before {
-		display: none;
+.feedback {
+	color: var(--current-color);
+	font-size: var(--current-font-size);
+	padding: var(--current-size-plus);
+	border: var(--border-width-xl) solid var(--current-border-color);
+	background-color: var(--current-bg-color);
+}
+
+.status {
+	font-family: var(--font-family-heading);
+	font-size: var(--current-font-size);
+	line-height: 1.35;
+}
+
+.feedback.fill {
+	--current-color: var(--color-dark);
+	box-shadow: var(--current-shadow);
+}
+
+.feedback.outline,
+.feedback.bare {
+	box-shadow: unset;
+}
+
+.feedback.bare,
+.feedback[class*='bg:default:'].bare {
+	--current-bg-color: var(--current-polar);
+	--current-border-color: var(--current-bg-color);
+}
+
+pre.feedback,
+pre.feedback.default {
+	--current-color: var(--color-light);
+	--current-bg-color: var(--color-gray-5);
+	--current-border-color: var(--current-gray);
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+	border-color: var(--current-border-color);
+}
+
+pre.feedback.bare {
+	--current-bg-color: var(--color-gray-5);
+	border-color: var(--current-bg-color);
+}
+
+.night {
+	// TODO: rewrite these rules using css variables
+	.feedback:not(pre),
+	.feedback.default:not(pre),
+	.feedback[class*='bg:default:'] {
+		--current-color: var(--color-dark);
+		--current-bg-color: var(--color-light);
+		--current-border-color: var(--color-gray-3);
+	}
+
+	.feedback.bare:not(pre),
+	.feedback[class*='bg:default:'].bare {
+		--current-color: var(--color-dark);
+		--current-bg-color: var(--color-light);
+		--current-border-color: var(--current-bg-color);
+	}
+
+	pre.feedback,
+	pre.feedback.default {
+		--current-color: var(--color-light);
+		--current-bg-color: var(--current-bg-contrast);
+		--current-border-color: var(--color-gray-4);
+	}
+
+	pre.feedback[class*='bg:default:'].bare {
+		--current-color: var(--color-light);
+		--current-bg-color: var(--current-bg-contrast);
+		--current-border-color: var(--current-bg-color);
+	}
+
+	&.bg\:contrast {
+		pre.feedback,
+		pre.feedback.default,
+		pre.feedback[class*='bg:default'].outline,
+		pre.feedback[class*='bg:default'].default {
+			--current-color: var(--color-white);
+			--current-bg-color: var(--night-blend-color-bg); // TODO: fix this: clean like buttons
+			--current-border-color: var(--color-gray-3);
+		}
+
+		pre.feedback.bare,
+		pre.feedback[class*='bg:default:'].bare {
+			--current-bg-color: var(--color-gray-5);
+			--current-border-color: var(--current-bg-color);
+		}
+	}
+	&.bg\:blend {
+		.feedback:not(pre),
+		.feedback.default:not(pre),
+		.feedback[class*='bg:default'] {
+			--current-color: var(--color-black);
+			--current-bg-color: var(--color-gray-3);
+			--current-border-color: var(--color-gray-4);
+		}
+
+		.feedback.bare,
+		.feedback[class*='bg:default'].bare {
+			--current-border-color: var(--current-bg-color);
+		}
+
+		pre.feedback,
+		pre.feedback.default,
+		pre.feedback[class*='bg:default'].outline,
+		pre.feedback[class*='bg:default'].default {
+			--current-color: var(--color-light);
+			--current-bg-color: var(--current-bg-contrast);
+			--current-border-color: var(--color-gray-4);
+		}
+
+		pre.feedback.bare,
+		pre.feedback[class*='bg:default:'].bare {
+			--current-border-color: var(--current-bg-color);
+		}
 	}
 }
 
-.output::before {
-	align-self: center;
-	content: '🥁';
-	font-size: 18em;
-	line-height: 1;
-	opacity: 0.15;
-	transition: opacity 0.3s ease-in;
+.day {
+	pre.feedback,
+	pre.feedback.default,
+	pre.feedback[class*='bg:default'].outline,
+	pre.feedback[class*='bg:default'].default {
+		--current-bg-color: var(--color-gray-5);
+		--current-border-color: var(--color-gray-4);
+	}
+
+	pre.feedback.bare,
+	pre.feedback[class*='bg:default'].bare {
+		--current-border-color: var(--current-bg-color);
+	}
+
+	.bg\:contrast {
+		.feedback:not(pre),
+		.feedback.default:not(pre),
+		.feedback[class*='bg:default']:not(pre) {
+			--current-bg-color: var(--color-light);
+			--current-border-color: var(--color-gray-4);
+		}
+
+		.feedback.bare:not(pre),
+		.feedback[class*='bg:default'].bare:not(pre) {
+			--current-border-color: var(--current-bg-color);
+		}
+	}
 }
 
-.output.focus::before {
-	opacity: 1;
-}
+.day,
+.night {
+	.feedback[class*='info']:not(pre) {
+		--current-color: var(--color-dark);
+		--current-bg-color: var(--current-info-lighter);
+		--current-border-color: var(--current-info);
+	}
 
-.emoji {
-	font-size: 5vw;
-	opacity: 0.6;
-	position: absolute;
-	z-index: -1;
+	.feedback[class*='success']:not(pre) {
+		--current-color: var(--color-dark);
+		--current-bg-color: var(--current-success-lighter);
+		--current-border-color: var(--current-success);
+	}
+
+	.feedback[class*='warning']:not(pre) {
+		--current-color: var(--color-dark);
+		--current-bg-color: var(--current-warning-lighter);
+		--current-border-color: var(--current-warning);
+	}
+
+	.feedback[class*='error']:not(pre) {
+		--current-color: var(--color-dark);
+		--current-bg-color: var(--current-error-lighter);
+		--current-border-color: var(--current-error);
+	}
+
+	pre.feedback[class*='info'] {
+		--current-color: var(--current-info-lightest);
+		--current-border-color: var(--current-info);
+	}
+	pre.feedback[class*='success'] {
+		--current-color: var(--current-success-lighter);
+		--current-border-color: var(--current-success);
+	}
+	pre.feedback[class*='warning'] {
+		--current-color: var(--current-warning-lighter);
+		--current-border-color: var(--current-warning);
+	}
+	pre.feedback[class*='error'] {
+		--current-color: var(--current-error-lightest);
+		--current-border-color: var(--current-error);
+	}
+
+	.feedback[class*='info'].bare:not(pre),
+	.feedback[class*='success'].bare:not(pre),
+	.feedback[class*='warning'].bare:not(pre),
+	.feedback[class*='error'].bare:not(pre) {
+		--current-border-color: var(--current-bg-color);
+	}
+
+	&.bg\:contrast,
+	&.bg\:blend {
+		.feedback[class*='info']:not(pre) {
+			--current-color: var(--color-dark);
+			--current-bg-color: var(--current-info-lighter);
+			--current-border-color: var(--current-info);
+		}
+
+		.feedback[class*='success']:not(pre) {
+			--current-color: var(--color-dark);
+			--current-bg-color: var(--current-success-lighter);
+			--current-border-color: var(--current-success);
+		}
+
+		.feedback[class*='warning']:not(pre) {
+			--current-color: var(--color-dark);
+			--current-bg-color: var(--current-warning-lighter);
+			--current-border-color: var(--current-warning);
+		}
+
+		.feedback[class*='error']:not(pre) {
+			--current-color: var(--color-dark);
+			--current-bg-color: var(--current-error-lighter);
+			--current-border-color: var(--current-error);
+		}
+
+		pre.feedback[class*='info'] {
+			--current-color: var(--current-info-lightest);
+			--current-border-color: var(--current-info);
+		}
+
+		pre.feedback[class*='success'] {
+			--current-color: var(--current-success-lighter);
+			--current-border-color: var(--current-success);
+		}
+
+		pre.feedback[class*='warning'] {
+			--current-color: var(--current-warning-lighter);
+			--current-border-color: var(--current-warning);
+		}
+
+		pre.feedback[class*='error'] {
+			--current-color: var(--current-error-lightest);
+			--current-border-color: var(--current-error);
+		}
+
+		.feedback[class*='info'].bare:not(pre),
+		.feedback[class*='success'].bare:not(pre),
+		.feedback[class*='warning'].bare:not(pre),
+		.feedback[class*='error'].bare:not(pre) {
+			--current-border-color: var(--current-bg-color);
+		}
+	}
 }

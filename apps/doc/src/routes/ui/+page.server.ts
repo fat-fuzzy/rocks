@@ -1,51 +1,72 @@
-import type {PageServerLoad, Actions} from './$types'
-import {fail} from '@sveltejs/kit'
-import {UiState} from './ui-state'
-import {api} from '@fat-fuzzy/ui'
-const {stylesStore} = api
+import type {Actions} from './$types'
+import {fail, redirect} from '@sveltejs/kit'
 
-export const load = (async ({parent}) => {
-	const uiState = await parent()
-	return uiState
-}) satisfies PageServerLoad
+import {constants, forms} from '@fat-fuzzy/ui'
+
+const {DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
+const {DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = constants
 
 export const actions = {
-	/**
-	 * Modify uiState state in reaction to a keypress. If client-side JavaScript
-	 * is available, this will happen in the browser instead of here
-	 */
-	update: async ({request, cookies}) => {
-		const uiState = new UiState(stylesStore.$currentStyles)
+	toggleContext: async ({request, url, cookies}) => {
 		const data = await request.formData()
-
-		if (!uiState.enter(data)) {
-			return fail(400, {uiStateError: true})
+		const serialized = cookies.get('fat-fuzzy-ui-context-reveal')
+		let currentState = DEFAULT_REVEAL_STATE
+		if (serialized) {
+			currentState = JSON.parse(serialized)
 		}
+		let settingsReveal = new DsContextReveal(currentState)
+		if (!settingsReveal.reveal(data)) {
+			return fail(400, {settingsRevealError: true})
+		}
+		cookies.set('fat-fuzzy-ui-context-reveal', settingsReveal.toString(), {path: '/'})
+		if (url.searchParams.has('redirectTo')) {
+			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
+			throw redirect(303, redirectTo)
+		}
+		return {success: true}
+	},
 
-		stylesStore.currentStyles.set(uiState.api.getStyleTree())
-		cookies.set('fat-fuzzy-ui', uiState.toString(), {path: '/'})
+	updateStyles: async ({request, url, cookies}) => {
+		const data = await request.formData()
+		const serialized = cookies.get('fat-fuzzy-ui')
+		let currentStyles = DEFAULT_STYLES
+		if (serialized) {
+			currentStyles = JSON.parse(serialized)
+		}
+		const styles = new DsStylesUpdate(currentStyles)
+		if (!styles.enter(data)) {
+			return fail(400, {stylesError: true})
+		}
+		cookies.set('fat-fuzzy-ui', styles.toString(), {path: '/'})
+		if (url.searchParams.has('redirectTo')) {
+			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
+			throw redirect(303, redirectTo)
+		}
 
 		return {success: true}
 	},
 
-	/**
-	 * Modify uiState state in reaction to user input
-	 */
-	enter: async ({request, cookies}) => {
-		const uiState = new UiState(stylesStore.$currentStyles)
-
+	updateState: async ({request, url, cookies}) => {
 		const data = await request.formData()
-
-		if (!uiState.enter(data)) {
-			return fail(400, {uiStateError: true})
+		const serialized = cookies.get('fat-fuzzy-ui-state')
+		let currentState = DEFAULT_DS_STATE
+		if (serialized) {
+			currentState = JSON.parse(serialized)
 		}
-		stylesStore.currentStyles.set(uiState.api.getStyleTree())
-		cookies.set('fat-fuzzy-ui', uiState.toString(), {path: '/'})
+		const state = new DsStateUpdate(currentState)
+		if (!state.enter(data)) {
+			return fail(400, {stylesError: true})
+		}
+		cookies.set('fat-fuzzy-ui-state', state.toString(), {path: '/'})
+		if (url.searchParams.has('redirectTo')) {
+			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
+			throw redirect(303, redirectTo)
+		}
 
 		return {success: true}
 	},
 
-	restart: async ({cookies}) => {
+	restart: async ({cookies, url}) => {
 		cookies.delete('fat-fuzzy-ui', {path: '/'})
 	},
 } satisfies Actions

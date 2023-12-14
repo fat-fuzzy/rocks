@@ -1,77 +1,202 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
+	import type {StylesApi} from './styles-api'
+
+	import {onDestroy} from 'svelte'
+
+	import {initStyles} from './styles-api'
+	import * as ui from '$stores/ui'
+	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
 	import Api from './Api.svelte'
+	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
-	import {currentStyles} from '$lib/stores/api'
-	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
+
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	export let title = ''
+	export let content: {html: string} | undefined = undefined
 	export let depth = 0
 	export let isPage = false
 	export let path = ''
 	export let component: ComponentType
-
-	export let category = 'app'
+	export let category = ''
+	export let color = 'primary:light' // TODO: expose breakpoint too
 	export let page = ''
-	export let props: any = {}
+	export let props: any = getProps({category, component: title}) || {}
 	props.page = page
 
+	export let stylesApi: StylesApi = initStyles()
+
 	let ApiElement: {[category: string]: ComponentType} = {
-		layouts: Layout,
+		tokens: Token,
 		blocks: Block,
 		compositions: Composition,
+		layouts: Layout,
 	}
 
-	let styles: StyleTree
-	let brightness = ''
-	let contrast = ''
+	let background = ''
 	let container = ''
 	let size = '' // Container size
+	let status = ''
+	let contextClasses = ''
 
-	$: {
-		styles = $currentStyles
-		// App settings (user controlled)
-		brightness = styles.app?.settings.brightness ?? brightness
-		contrast = styles.app?.settings.contrast ?? contrast
-		// Container options
-		// - [container + size] work together
-		container = styles.shared?.context.container ?? container
-		size = styles.shared?.context.size ?? size
+	let sharedOptions = {
+		container: '',
+		size: '',
 	}
-	$: appSettings = `${brightness} ${contrast}`
-	$: containerContext = category !== 'app' ? `l:${container}:${size}` : 'l:burrito:xs'
-	$: color = 'primary:lighter'
+
+	let styles: StyleTree = stylesApi.getStyleTree()
+	let settings = styles.app
+
+	const stores = [
+		ui.app.subscribe((value) => {
+			if (value) {
+				settings = {app: value}
+			}
+		}),
+		ui.styles.subscribe((value) => {
+			if (value) {
+				styles = value
+			}
+		}),
+	]
+
+	//== Shared settings (user controlled)
+	// Container options
+	// - [container + size] work together
+	$: sharedOptions.container = styles.shared?.container.container ?? sharedOptions.container
+	$: sharedOptions.size = styles.shared?.container.size ?? sharedOptions.size
+
+	// App settings (user controlled)
+	//== App settings (user controlled)
+	$: brightness = settings.app.brightness
+	$: background = settings.app.contrast
+	// Container options
+	// - [container + size] work together
+	$: container = styles.shared?.container.container ?? container
+	$: size = styles.shared?.container.size ?? size
+	$: status = styles.blocks?.element.status ?? status
+
+	$: contextClasses = `${sharedOptions.size}`
+	$: containerClasses = `l:${container}:${size} content ${contextClasses}`
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
-{#if !isPage}
+{#if isPage}
 	{@const props = getProps({category, component: title})}
-	<article class="l:stack lg">
-		<header class={`card:md text:center bg:${color}`}>
-			<a class="card:sm" href={`${path}/${title}`}>
-				<svelte:element this={`h${String(depth)}`} class="link font:sm">
-					<span class="font:xs">🔗</span>&nbsp;{title}
-				</svelte:element>
-			</a>
-		</header>
-		<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
+	<article class="l:sidebar:xs">
+		<section class={`l:main card:xl inset ${brightness} bg:${background} `}>
+			<div class={containerClasses}>
+				{#if props?.statuses}
+					{@const currentProps = props.statuses.find((p) => p.case === status) || {}}
+					<svelte:component
+						this={ApiElement[category]}
+						{isPage}
+						{title}
+						{component}
+						{stylesApi}
+						props={currentProps}
+						{actionPath}
+						{redirect}
+					/>
+				{:else}
+					<svelte:component
+						this={ApiElement[category]}
+						{isPage}
+						{title}
+						{component}
+						{props}
+						{actionPath}
+						{redirect}
+					/>
+				{/if}
+			</div>
+		</section>
+		<section class="l:side">
+			<div class="l:stack:lg">
+				<details id={`${category}-${title}-api`} class="l:stack:lg" open>
+					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
+					{#if category !== 'compositions' && category !== 'tokens'}
+						<div class="drop w:full bg:polar ui:menu">
+							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
+						</div>
+					{:else}
+						<div class="card:lg text:center">
+							<p class={`font:xl`}>🐰</p>
+							<p class={`font:md`}>Coming soon!</p>
+						</div>
+					{/if}
+				</details>
+				<!-- <section id={`${category}-${title}-classes`}>
+			<details class={`l:stack:md`}>
+				<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
+				<div class="drop">
+							<Api categories={[category]} {title} {path} {redirect} />
+				</div>
+			</details>
+		</section> -->
+
+				<details id={`${category}-${title}-doc`} class="l:stack:lg" open>
+					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
+					<div class="drop w:full">
+						<div class="card:lg text:center">
+							{#if content}
+								{@html content.html}
+							{:else}
+								<p class={`font:xl`}>🐰</p>
+								<p class={`font:md`}>Coming soon!</p>
+							{/if}
+						</div>
+					</div>
+				</details>
+			</div>
+		</section>
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
-	<header class="header-page">
-		<h1>{title}</h1>
-	</header>
-	<article class="l:sidebar xs align:end">
-		<main class={`l:main card:xl inset ${appSettings}`}>
-			<div class={containerContext}>
-				<svelte:component this={ApiElement[category]} {isPage} {title} {component} {props} />
-			</div>
-		</main>
-		<aside class="l:side">
-			<Api {title} {category} />
-		</aside>
+	<article class={`box ${brightness} bg:${background} l:stack ui:${title.toLowerCase()}`}>
+		<header>
+			<a
+				class="title card:md w:full l:switcher:xs emoji:link outline primary:light"
+				href={`${path}/${title}`}
+			>
+				<svelte:element this={`h${String(depth)}`} class="link font:lg">
+					{title}
+				</svelte:element>
+			</a>
+		</header>
+		<div class="content">
+			{#if props?.statuses}
+				{@const currentProps = props.statuses.find((p) => p.case === status) || {}}
+				<svelte:component
+					this={ApiElement[category]}
+					{isPage}
+					{title}
+					{component}
+					{stylesApi}
+					props={currentProps}
+					{actionPath}
+					{redirect}
+				/>
+			{:else}
+				<svelte:component
+					this={ApiElement[category]}
+					{isPage}
+					{title}
+					{component}
+					{props}
+					{actionPath}
+					{redirect}
+				/>
+			{/if}
+		</div>
 	</article>
 {/if}

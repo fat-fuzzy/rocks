@@ -1,105 +1,314 @@
-.xxs,
-[class*=':xxs']:not(.bp\:xxs) {
-	--current-size-minus: var(--size-xxs);
-	--current-size: var(--size-xxs);
-	--current-size-plus: var(--size-sm);
-	--current-size-inverse: var(--size-inverse-xxs);
-	--current-font-size: var(--font-size-xxs);
-	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
-	--current-font-size-plus: var(--font-size-sm);
+.l\:switcher\:xxs,
+.l\:stack\:xxs {
+	--current-gap-size: var(--size-xxs);
+}
+
+.l\:switcher\:xs,
+.l\:stack\:xs {
+	--current-gap-size: var(--size-xs);
+}
+
+.l\:switcher\:sm,
+.l\:stack\:sm {
+	--current-gap-size: var(--size-sm);
+}
+
+.l\:switcher\:md,
+.l\:stack\:md {
+	--current-gap-size: var(--size-md);
+}
+
+.l\:switcher\:lg,
+.l\:stack\:lg {
+	--current-gap-size: var(--size-lg);
+}
+
+.l\:switcher\:xl,
+.l\:stack\:xl {
+	--current-gap-size: var(--size-xl);
+}
+
+.l\:switcher\:xxl,
+.l\:stack\:xxl {
+	--current-gap-size: var(--size-xxl);
+}
+
+.l\:grid\:xxs {
+	--current-item-size: var(--sidebar-width-xxs);
+	--current-gap-size: var(--size-xxs);
+}
+
+.l\:grid\:xs {
+	--current-item-size: var(--sidebar-width-xs);
+	--current-gap-size: var(--size-xs);
+}
+
+.l\:grid\:sm {
+	--current-item-size: var(--sidebar-width-sm);
+	--current-gap-size: var(--size-sm);
+}
+
+.l\:grid\:md {
+	--current-item-size: var(--sidebar-width-md);
+	--current-gap-size: var(--size-md);
+}
+
+.l\:grid\:lg {
+	--current-item-size: var(--sidebar-width-lg);
+	--current-gap-size: var(--size-lg);
+}
+
+.l\:grid\:xl {
+	--current-item-size: var(--sidebar-width-xl);
+	--current-gap-size: var(--size-xl);
+}
+
+.l\:grid\:xxl {
+	--current-item-size: var(--sidebar-width-xxl);
+	--current-gap-size: var(--size-xxl);
+}
+
+.l\:burrito\:xxs {
 	--current-side-size: var(--sidebar-width-xxs);
 }
 
-.xs,
-[class*=':xs']:not(.bp\:xs) {
-	--current-size-minus: var(--size-xxs);
-	--current-size: var(--size-xs);
-	--current-size-plus: var(--size-md);
-	--current-size-inverse: var(--size-inverse-xs);
-	--current-font-size: var(--font-size-xs);
-	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
-	--current-font-size-plus: var(--font-size-md);
+.l\:burrito\:xs {
 	--current-side-size: var(--sidebar-width-xs);
 }
 
-.sm,
-[class*=':sm']:not(.bp\:sm) {
-	--current-size-minus: var(--size-xs);
-	--current-size: var(--size-sm);
-	--current-size-plus: var(--size-lg);
-	--current-size-inverse: var(--size-inverse-sm);
-	--current-font-size: var(--font-size-sm);
-	--current-font-size-minus: var(--font-size-xxs);
-	--current-font-size-plus: var(--font-size-lg);
+.l\:burrito\:sm {
 	--current-side-size: var(--sidebar-width-sm);
 }
 
-.md,
-[class*=':md']:not(.bp\:md) {
-	--current-size-minus: var(--size-sm);
-	--current-size: var(--size-md);
-	--current-size-plus: var(--size-xl);
-	--current-size-inverse: var(--size-inverse-md);
-	--current-font-size: var(--font-size-md);
-	--current-font-size-minus: var(--font-size-xs);
-	--current-font-size-plus: var(--font-size-xl);
+.l\:burrito\:md {
 	--current-side-size: var(--sidebar-width-md);
 }
 
-.lg,
-[class*=':lg']:not(.bp\:lg) {
-	--current-size-minus: var(--size-md);
-	--current-size: var(--size-lg);
-	--current-size-plus: var(--size-xxl);
-	--current-size-inverse: var(--size-inverse-lg);
-	--current-font-size: var(--font-size-lg);
-	--current-font-size-minus: var(--font-size-sm);
-	--current-font-size-plus: var(--font-size-xxl);
+.l\:burrito\:lg {
 	--current-side-size: var(--sidebar-width-lg);
 }
 
-.xl,
-[class*=':xl']:not(.bp\:xl) {
-	--current-size-minus: var(--size-lg);
-	--current-size: var(--size-xl);
-	--current-size-plus: var(--size-xxl);
-	--current-size-inverse: var(--size-inverse-xl);
-	--current-font-size: var(--font-size-xl);
-	--current-font-size-minus: var(--font-size-md);
-	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
+.l\:burrito\:xl {
 	--current-side-size: var(--sidebar-width-xl);
 }
 
-.xxl,
-[class*=':xxl']:not(.bp\:xxl) {
-	--current-size-minus: var(--size-xl);
-	--current-size: var(--size-xxl);
-	--current-size-plus: var(--size-xxl);
+.l\:burrito\:xxl {
+	--current-side-size: var(--sidebar-width-xxl);
+}
+
+.l\:center\:xxs {
+	--current-size-inverse: var(--size-inverse-xxs);
+}
+
+.l\:center\:xs {
+	--current-size-inverse: var(--size-inverse-xs);
+}
+
+.l\:center\:sm {
+	--current-size-inverse: var(--size-inverse-sm);
+}
+
+.l\:center\:md {
+	--current-size-inverse: var(--size-inverse-md);
+}
+
+.l\:center\:lg {
+	--current-size-inverse: var(--size-inverse-lg);
+}
+
+.l\:center\:xl {
+	--current-size-inverse: var(--size-inverse-xl);
+}
+
+.l\:center\:xxl {
 	--current-size-inverse: var(--size-inverse-xxl);
-	--current-font-size: var(--font-size-xxl);
-	--current-font-size-minus: var(--font-size-xl);
-	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
+}
+
+.l\:sidebar\:xxs {
+	--current-side-size: var(--sidebar-width-xxs);
+}
+
+.l\:sidebar\:xs {
+	--current-side-size: var(--sidebar-width-xs);
+}
+
+.l\:sidebar\:sm {
+	--current-side-size: var(--sidebar-width-sm);
+}
+
+.l\:sidebar\:md {
+	--current-side-size: var(--sidebar-width-md);
+}
+
+.l\:sidebar\:lg {
+	--current-side-size: var(--sidebar-width-lg);
+}
+
+.l\:sidebar\:xl {
+	--current-side-size: var(--sidebar-width-xl);
+}
+
+.l\:sidebar\:xxl {
 	--current-side-size: var(--sidebar-width-xxl);
 }
 
 .bp\:xxs {
 	--current-bp-size: var(--bp-xxs);
 }
+
 .bp\:xs {
 	--current-bp-size: var(--bp-xs);
 }
+
 .bp\:sm {
 	--current-bp-size: var(--bp-sm);
 }
+
 .bp\:md {
 	--current-bp-size: var(--bp-md);
 }
+
 .bp\:lg {
 	--current-bp-size: var(--bp-lg);
 }
+
 .bp\:xl {
 	--current-bp-size: var(--bp-xl);
 }
+
 .bp\:xxl {
 	--current-bp-size: var(--bp-xxl);
+}
+
+.th\:xxs {
+	--current-side-threshold: var(--sidebar-width-xxs);
+	--current-bp-threshold: var(--bp-xxs);
+}
+
+.th\:xs {
+	--current-side-threshold: var(--sidebar-width-xs);
+	--current-bp-threshold: var(--bp-xs);
+}
+
+.th\:sm {
+	--current-side-threshold: var(--sidebar-width-sm);
+	--current-bp-threshold: var(--bp-sm);
+}
+
+.th\:md {
+	--current-side-threshold: var(--sidebar-width-md);
+	--current-bp-threshold: var(--bp-md);
+}
+
+.th\:lg {
+	--current-side-threshold: var(--sidebar-width-lg);
+	--current-bp-threshold: var(--bp-lg);
+}
+
+.th\:xl {
+	--current-side-threshold: var(--sidebar-width-xl);
+	--current-bp-threshold: var(--bp-xl);
+}
+
+.th\:xxl {
+	--current-side-threshold: var(--sidebar-width-xxl);
+	--current-bp-threshold: var(--bp-xxl);
+}
+
+.xxs,
+.card\:xxs {
+	--current-size-minus: var(--size-xxs);
+	--current-size: var(--size-xxs);
+	--current-size-plus: var(--size-sm);
+	--current-font-size: var(--font-size-xs) / var(--fluid-min-ratio);
+}
+
+.xs,
+.card\:xs {
+	--current-size-minus: var(--size-xxs);
+	--current-size: var(--size-xs);
+	--current-size-plus: var(--size-md);
+	--current-font-size: var(--font-size-xs);
+}
+
+.sm,
+.card\:sm {
+	--current-size-minus: var(--size-xs);
+	--current-size: var(--size-sm);
+	--current-size-plus: var(--size-lg);
+	--current-font-size: var(--font-size-sm);
+}
+
+.md,
+.card\:md {
+	--current-size-minus: var(--size-sm);
+	--current-size: var(--size-md);
+	--current-size-plus: var(--size-xl);
+	--current-font-size: var(--font-size-md);
+}
+
+.lg,
+.card\:lg {
+	--current-size-minus: var(--size-md);
+	--current-size: var(--size-lg);
+	--current-size-plus: var(--size-xxl);
+	--current-font-size: var(--font-size-lg);
+}
+
+.xl,
+.card\:xl {
+	--current-size-minus: var(--size-lg);
+	--current-size: var(--size-xl);
+	--current-size-plus: var(--size-xxl);
+	--current-font-size: var(--font-size-xl);
+}
+
+.xxl,
+.card\:xxl {
+	--current-size-minus: var(--size-xl);
+	--current-size: var(--size-xxl);
+	--current-size-plus: var(--size-xxl);
+	--current-font-size: var(--font-size-xxl);
+}
+
+[class*='font:xxs'] {
+	--current-font-size: var(--font-size-xs) / var(--fluid-min-ratio);
+	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
+	--current-font-size-plus: var(--font-size-sm);
+}
+
+[class*='font:xs'] {
+	--current-font-size: var(--font-size-xs);
+	--current-font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
+	--current-font-size-plus: var(--font-size-md);
+}
+
+[class*='font:sm'] {
+	--current-font-size: var(--font-size-sm);
+	--current-font-size-minus: var(--font-size-xs);
+	--current-font-size-plus: var(--font-size-lg);
+}
+
+[class*='font:md'] {
+	--current-font-size: var(--font-size-md);
+	--current-font-size-minus: var(--font-size-xs);
+	--current-font-size-plus: var(--font-size-xl);
+}
+
+[class*='font:lg'] {
+	--current-font-size: var(--font-size-lg);
+	--current-font-size-minus: var(--font-size-sm);
+	--current-font-size-plus: var(--font-size-xxl);
+}
+
+[class*='font:xl'] {
+	--current-font-size: var(--font-size-xl);
+	--current-font-size-minus: var(--font-size-md);
+	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
+}
+
+[class*='font:xxl'] {
+	--current-font-size: var(--font-size-xxl);
+	--current-font-size-minus: var(--font-size-xl);
+	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
 }

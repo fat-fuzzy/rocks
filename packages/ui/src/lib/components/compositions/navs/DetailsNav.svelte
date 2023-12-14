@@ -3,11 +3,13 @@
 	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 
 	export let layout = 'stack'
+	export let container = 'layer card'
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
 	export let height = ''
 	export let color = ''
+	export let background = 'polar'
 	export let path = ''
 	export let id = 'reveal-nav'
 	export let title = 'DetailsNav'
@@ -21,7 +23,7 @@
 		expanded = !expanded
 	}
 
-	$: show = expanded ? 'layer card:lg polar' : 'hide:viz-only'
+	$: show = expanded ? `${container}:${size} bg:${background}` : 'hide:viz-only'
 </script>
 
 <details aria-labelledby={id} class={`l:detail h:${height}`} open>

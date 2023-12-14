@@ -1,5 +1,6 @@
 <script lang="ts">
-	import {theme} from '$lib/stores/theme'
+	import {onDestroy} from 'svelte'
+	import * as settings from '$lib/stores/settings'
 
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
@@ -14,6 +15,16 @@
 		})
 	}
 
+	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
+
+	const stores = [
+		settings.app.subscribe((value) => {
+			if (value) {
+				appSettings = value
+			}
+		}),
+	]
+
 	const play = () => loop()
 
 	const stop = () => {
@@ -24,7 +35,11 @@
 	const pause = () => cancelAnimationFrame(frame)
 	let disabled = false
 
-	$: variant = $theme ? `accent` : `highlight`
+	$: variant = appSettings.brightness === 'day' ? `accent` : `highlight`
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <menu class="l:switcher bp:xxs sm">

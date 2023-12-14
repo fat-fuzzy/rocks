@@ -3,16 +3,19 @@
 	import {clickOutside} from '$lib/utils/click-outside.js'
 
 	export let layout = ''
+	export let direction = 'tb-lr'
+	export let color = ''
 	export let size = ''
 	export let breakpoint = ''
 	export let variant = ''
-	export let align = 'start'
+	export let align = ''
 	export let id = 'ui'
 	export let height = ''
+	export let background = ''
 	export let title = 'Reveal'
-	export let icon = '🐣'
+	export let asset = ''
 
-	let expanded = true
+	let expanded = false
 
 	function handleClickOutside(event) {
 		expanded = false
@@ -22,27 +25,28 @@
 		expanded = !expanded
 	}
 
-	$: show = expanded ? 'show' : 'hide:viz-only'
+	$: backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
+	$: show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
 	$: setHeight = height ? ` h:${height}` : ''
 </script>
 
 <div
-	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size}`}
+	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size} ${direction}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
 	<button
 		id={`${id}-reveal-button`}
-		class={`card:${size} ${variant}`}
+		class={`card:${size} ${variant} ${color}`}
 		aria-expanded={expanded}
 		aria-controls={`${id}-reveal`}
 		on:click={toggleReveal}
 	>
-		{format.formatLabel(title, icon)}
+		{format.formatLabel(title, asset)}
 	</button>
 	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
 		<slot name="content">
-			<div class={`card layer ${size}`}>
+			<div class={`card:lg`}>
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>

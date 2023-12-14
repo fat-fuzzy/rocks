@@ -5,8 +5,9 @@
 	export let size = ''
 	export let variant = 'card:feature'
 	export let background = 'polar'
+	export let justify = 'between'
 
-	$: className = `l:text:${size} l:${layout} ${variant}:${size} ${background}`
+	$: className = `l:text:${size} l:${layout} ${variant}:${size} bg:${background} justify:${justify}`
 </script>
 
 <header class={className}>

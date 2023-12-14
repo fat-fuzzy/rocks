@@ -1,135 +1,118 @@
 <script lang="ts">
-	import {page} from '$app/stores'
-	import {clickOutside} from '$lib/utils/click-outside.js'
+	import {onDestroy} from 'svelte'
+	import {enhance} from '$app/forms'
+	import {getStores} from '$app/stores'
+
+	import {clickOutside} from '$lib/utils/click-outside'
 	import {lang} from '$stores/intl'
-	import {theme} from '$lib/stores/theme.js'
-	import {themes} from '$types/constants.js'
-	// import {emojis, themes, langEmojis} from '$types/constants.js'
+	import * as settings from '$stores/settings'
+	import constants from '$lib/types/constants'
 
-	import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
+	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import Settings from '$lib/components/compositions/forms/Settings.svelte'
 
-	// TODO: make svg css themeable / fix dark theme
-	// import githubDay from '$lib/images/day/icon-github.svg'
-	// import githubNight from '$lib/images/night/icon-github.svg'
-	// TODO: make svg css themeable / fix dark theme
-	// const assets: {[key: string]: string} = {
-	// 	day: githubDay,
-	// 	night: githubNight,
-	// }
-	// let currentTheme = themes[$theme]
-	// let currentLang = $lang
-	// let themeIcon = emojis[currentTheme]
-	// let langIcon = emojis[currentLang]
-	// let github = assets[currentTheme]
-
+	const method = 'POST'
 	export let className = 'header-app'
-	export let breakpoint = 'md'
+	export let breakpoint = 'xxl'
+	export let background = ''
+	export let size = 'sm'
 	export let id = 'ui'
-	export let height = ''
-	export let items = {
-		main: [{slug: 'about', title: 'About'}],
-		side: [
-			{
-				id: 'button-theme',
-				title: 'Theme',
-				action: 'theme',
-				asset: 'day',
-				type: 'emoji',
-				variant: 'round',
-			},
-			{
-				id: 'link-github',
-				title: 'GitHub icon',
-				url: 'https://github.com/fat-fuzzy/rocks',
-				asset: 'day',
-				type: 'icon',
-				variant: 'round',
-			},
-			// {
-			// 	id: 'menu-lang',
-			// 	title: 'Lang',
-			// 	asset: langMenuIcon,
-			// 	type: 'emoji',
-			// 	// TODO: figure out a better way to [name / deal with] submenu items - see LinkList component
-			// 	subitems: languages.map((l) => ({
-			// 		id: l.code,
-			// 		title: l.title,
-			// 		action: setLanguage,
-			// 		asset: langEmojis[l.code],
-			// 		type: 'emoji',
-			// 	})),
-			// },
-		],
+	export let formaction: string | undefined = undefined
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
+	const {DEFAULT_SETTINGS} = constants
+	export let items = {links: [{slug: 'about', title: 'About'}], settings: DEFAULT_SETTINGS}
+
+	let page = getStores().page
+
+	let navReveal: {[key: string]: string} = {reveal: ''}
+	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
+
+	const stores = [
+		settings.app.subscribe((value) => {
+			if (value) {
+				appSettings = value
+			}
+		}),
+		settings.navReveal.subscribe((value) => {
+			if (value) {
+				navReveal = value
+			}
+		}),
+	]
+
+	function handleClickOutsideMainNav() {
+		settings.navReveal.set({reveal: 'minimize'})
 	}
 
-	let navExpanded = false
-	let actionsExpanded = false
-
-	function handleClickOutsideMainNav(event) {
-		navExpanded = false
+	function toggleNav(event: CustomEvent) {
+		const updated = event.detail.expanded ? 'show' : 'minimize'
+		settings.navReveal.set({reveal: updated})
 	}
 
-	function handleClickOutsideActionsMenu(event) {
-		actionsExpanded = false
+	function setLanguage(event: CustomEvent) {
+		lang.set(event.detail.payload)
 	}
 
-	function toggleActionsMenu(event) {
-		actionsExpanded = !actionsExpanded
-	}
+	$: reveal = navReveal.reveal
+	$: contrast = appSettings.contrast
+	$: headerClass = `${className} l:sidebar:xl layer sticky:top justify:start bg:${contrast}`
+	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
+	$: show = `show ${showBackground}`
+	$: showNav = reveal === 'show' ? show : 'hide:viz-only'
+	$: navClasses = `l:switcher:xxs ${showBackground}`
+	$: revealClasses = `form:expand card:${size}`
+	$: layoutClasses = `l:main:60 l:reveal:auto bp:${breakpoint}`
 
-	function toggleNav(event) {
-		navExpanded = !navExpanded
-	}
+	$: action = formaction
+		? redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+		: 'toggleNav'
 
-	function toggleTheme(event) {
-		const _theme = $theme ? 0 : 1
-		theme.set(_theme)
-	}
-
-	function setLanguage(event) {
-		lang.set(event.detail)
-	}
-
-	const actions: {[key: string]: (event) => void} = {
-		nav: toggleNav,
-		actions: toggleActionsMenu,
-		theme: toggleTheme,
-		language: setLanguage,
-	}
-
-	$: headerClass = `${className} l:sidebar md layer sticky:top`
-	$: show = navExpanded ? 'layer polar show' : 'hide:viz-only'
-	$: actionsClass = actionsExpanded ? 'layer polar show' : 'hide:viz-only'
-	$: currentTheme = themes[$theme]
-	$: currentLang = $lang
-	// $: themeIcon = emojis[currentTheme]
-	// $: github = assets[currentTheme]
-	// $: langIcon = emojis[currentLang]
-	$: setHeight = height ? ` h:${height}` : ''
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <header class={headerClass}>
-	<div
-		class={`l:main l:reveal:nav ${setHeight}`}
-		use:clickOutside
-		on:clickOutside={handleClickOutsideMainNav}
-	>
-		<button
-			id={`${id}-primary-nav-button`}
-			class={`font:sm`}
-			aria-expanded={navExpanded}
-			aria-controls={`${id}-primary-nav`}
-			on:click={toggleNav}
+	<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutsideMainNav}>
+		<form
+			name="nav-reveal"
+			{method}
+			action={action ? (actionPath ? `${actionPath}?/${action}` : `/?/${action}`) : undefined}
+			use:enhance={() => {
+				// prevent default callback from resetting the form
+				return ({update}) => {
+					update({reset: false})
+				}
+			}}
+			class={revealClasses}
 		>
-			🐣 Menu
-		</button>
-
-		<nav id={`${id}-primary-nav`} class={show}>
-			<ul class="l:switcher bp:xxs">
+			<Expand
+				id={`button-${id}-nav-reveal`}
+				variant="outline"
+				size="sm"
+				title="Menu"
+				name={`button-${id}-nav-reveal`}
+				type={actionPath && formaction ? 'submit' : 'button'}
+				controls={`${id}-primary-nav`}
+				value={'menu'}
+				states={{
+					active: {text: 'menu', value: 'show', asset: 'emoji:menu'},
+					inactive: {text: 'menu', value: 'minimize', asset: 'emoji:menu'},
+				}}
+				on:click={toggleNav}
+			>
+				Menu
+			</Expand>
+		</form>
+		<nav id={`${id}-primary-nav`} class={showNav} aria-label="Main navigation">
+			<ul class={navClasses}>
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>
 				</li>
-				{#each items.main as { slug, title }}
+				{#each items.links as { slug, title }}
 					<li aria-current={$page.url.pathname.startsWith(`/${slug}`) ? 'page' : undefined}>
 						<a data-sveltekit-preload-data href={`/${slug}`} on:click={handleClickOutsideMainNav}>
 							{title}
@@ -139,43 +122,15 @@
 			</ul>
 		</nav>
 	</div>
-
-	<div class="l:side">
-		<menu
-			class={`l:reveal:sm bp:${breakpoint}`}
-			use:clickOutside
-			on:clickOutside={handleClickOutsideActionsMenu}
-		>
-			{#each items.side as { title, action, url, asset, type, variant, subitems }}
-				{#if url}
-					<a class={variant} href={url} target="_blank" rel="noreferrer">
-						<ActionLabel {title} {type} {asset} {variant} />
-					</a>
-				{:else if action}
-					<button on:click={actions[action]} class={variant}>
-						<ActionLabel {title} {type} {asset} {variant} />
-					</button>
-					<!-- {#if subitems}
-						<div class={actionsClass}>
-							<menu class="l:switcher bp:xxs">
-								<button type="button" on:click={toggleTheme}>{themeIcon}&nbsp;&nbsp;Theme</button>
-
-								<button>Login</button>
-								<div class="l:stack l:reveal sm">
-									<button class="md" type="button" on:click={setLanguage}>{langIcon}</button>
-									<menu class={actionsClass}>
-										<button type="button" on:click={toggleTheme}
-											>{themeIcon}&nbsp;&nbsp;Theme</button
-										>
-										<button type="button" on:click={setLanguage}>{langIcon}</button>
-										button>Login</-button
-									</menu>
-								</div>
-							</menu>
-						</div>
-					{/if} -->
-				{/if}
-			{/each}
-		</menu>
-	</div>
+	<Settings
+		path={$page.url.pathname}
+		{breakpoint}
+		align="end"
+		size="sm"
+		id={`${id}-menu-settings`}
+		{formaction}
+		{actionPath}
+		redirect={$page.url.pathname}
+		items={items.settings}
+	/>
 </header>

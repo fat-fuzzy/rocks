@@ -1,0 +1,40 @@
+[class*='emoji:']::before {
+	display: inline;
+	font-size: var(--current-font-size);
+}
+
+a[class*='emoji:']::before {
+	margin-inline: var(--current-size) var(--current-size-plus);
+}
+
+.feedback[class*='emoji'] {
+	display: flex;
+}
+
+.round[class*='emoji'] {
+	font-size: var(--current-font-size);
+	padding: var(--current-size);
+}
+
+:not(.round, .square)[class*='emoji']::before {
+	margin-inline: 0 var(--current-size);
+}
+
+[class*='emoji'].align\:end {
+	padding-inline: var(--current-size) var(--current-size-plus);
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+[class*='card:'][class*='emoji:'][class*=':sm']:not(.feedback)::before,
+[class*='card:'][class*='emoji:'][class*=':md']:not(.feedback)::before,
+[class*='card:'][class*='emoji:'][class*=':lg']:not(.feedback)::before,
+[class*='card:'][class*='emoji:'][class*=':xl']:not(.feedback)::before,
+[class*='card:'][class*='emoji:'][class*=':xxl']:not(.feedback)::before {
+	margin-inline: 0;
+}
+
+[class*='svg:icon'] {
+	height: calc(3.5 * var(--current-size-plus)); // TODO : set icon size in scale.scss
+}

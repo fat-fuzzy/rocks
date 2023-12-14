@@ -1,5 +1,82 @@
 # @fat-fuzzy/play
 
+## 0.1.24
+
+### Patch Changes
+
+- 3c44282d: [play] Update Header props
+
+## 0.1.23
+
+### Patch Changes
+
+- 7525c8a2: [ui+apps] Switch and Expand button styles
+
+## 0.1.22
+
+### Patch Changes
+
+- 53eaec2c: [ui+apps] Generate CSS vars for Button and Toggle components
+
+## 0.1.21
+
+### Patch Changes
+
+- 5d0e1b7b: [ui+apps] Use actions and forms, fix nojs, improve a11y
+
+## 0.1.20
+
+### Patch Changes
+
+- 2c88242: [apps] Update design tokens
+
+## 0.1.19
+
+### Patch Changes
+
+- 7dad4e8: [ui] Recreate doc page in ui routes for testing
+  [ui+design] Color management rework (wip)
+  [ui+apps] Load doc content from markdowns
+
+## 0.1.18
+
+### Patch Changes
+
+- 9a85f5e: [ui+apps] Fix reactivity of themed header icons, decouple ui lib header store
+
+## 0.1.17
+
+### Patch Changes
+
+- 11fc93c: [ui] Manage icons (emoji/svg) using design tokens
+  [ui] Calibrate feedback colors / theme combinations
+  [doc+play] Update style tokens
+
+## 0.1.16
+
+### Patch Changes
+
+- 2f18c2b: [ui] Fix page store import in ui lib components
+  [ui+play] Fix publish config
+
+## 0.1.15
+
+### Patch Changes
+
+- 1f6a9b6: [ui+doc] Improve range input component and use in doc
+
+## 0.1.14
+
+### Patch Changes
+
+- 3ac8552: [ui+doc] Improve UI library documentation and styles API
+
+## 0.1.13
+
+### Patch Changes
+
+- 0393bad: [apps+ui] Design improvements: add props, adjust spacing, color, alignment
+
 ## 0.1.12
 
 ### Patch Changes

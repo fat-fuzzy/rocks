@@ -1,4 +1,4 @@
-.l\:frame {
+[class*='l:frame'] {
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
@@ -6,9 +6,10 @@
 	max-width: 100%;
 }
 
-.l\:frame > img,
-.l\:frame > video,
-.l\:frame > canvas {
+[class*='l:frame'] > img,
+[class*='l:frame'] > video,
+[class*='l:frame'] > canvas,
+[class*='l:frame'] > .content {
 	inline-size: 100%;
 	block-size: 100%;
 	object-fit: cover;
@@ -20,6 +21,10 @@
 
 .l\:frame\:video {
 	aspect-ratio: 16 / 9;
+}
+
+.l\:frame\:twin {
+	aspect-ratio: 2 / 1;
 }
 
 .l\:frame\:feature {
@@ -36,6 +41,6 @@
 	margin-block-end: var(--gap);
 }
 
-.l\:frame + * {
+[class*='l:frame'] + * {
 	margin-block-start: var(--s0);
 }

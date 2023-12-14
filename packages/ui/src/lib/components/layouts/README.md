@@ -1,9 +1,9 @@
 ---
 title: Layouts
+id: 'ui-layouts'
 date_created: '2023-10-14'
 date_updated: 'YYYY-MM-DD'
 slug: layouts
-id: 'ui-layouts'
 tags: ['ui']
 ---
 

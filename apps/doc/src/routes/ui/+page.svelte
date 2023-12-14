@@ -1,20 +1,51 @@
 <script lang="ts">
+	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {blocks, layouts, compositions, api} from '@fat-fuzzy/ui'
+	import {tokens, blocks, layouts, compositions, api, stores} from '@fat-fuzzy/ui'
 
-	const {Collection} = api
-	const {Sidebar} = layouts
+	const {Collection, Api} = api
+	const {Sidebar, RevealAuto} = layouts
+	const actionPath = '/ui'
 
-	let title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
+	const title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
+
+	let stylesApi = api.stylesApi.initStyles()
+	let revealContext: {[key: string]: string} = {reveal: ''}
 
 	const components = [
+		{category: 'tokens', items: tokens},
 		{category: 'blocks', items: blocks},
 		{category: 'layouts', items: layouts},
 		{category: 'compositions', items: compositions},
 	]
-	let path = $page.url.pathname
+	const path = $page.url.pathname
 
+	const localStores = [
+		stores.ui.styles.subscribe((value) => {
+			if (value) {
+				stylesApi.applyStyles(value)
+			}
+		}),
+		stores.ui.reveal.subscribe((value) => {
+			if (value) {
+				revealContext = value
+			}
+		}),
+	]
+
+	function handleToggle(event: CustomEvent) {
+		stores.ui.reveal.set(event.detail)
+	}
+
+	$: reveal = revealContext.reveal
+	$: markdowns = $page.data.markdowns
+	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
+	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
 	// TODO: load text content to README.md
+
+	onDestroy(() => {
+		localStores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <svelte:head>
@@ -22,51 +53,44 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="header-page">
-	<h1>{title}</h1>
+<header class={headerClass}>
+	<h1 class="l:main:40 nowrap maki lg">{title}</h1>
+	<RevealAuto
+		id="ui-app-context"
+		size="sm"
+		breakpoint="sm"
+		color="primary"
+		align="start"
+		variant="outline"
+		title="Context"
+		formaction="toggleContext"
+		{actionPath}
+		{reveal}
+		redirect={$page.url.pathname}
+		on:toggle={handleToggle}
+	>
+		<div slot="content" class="l:side shrink ui:menu">
+			<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+		</div>
+	</RevealAuto>
 </header>
 
 <Sidebar size="xs" align="end">
 	<div slot="main" class="l:stack">
 		<div class="l:text:xl">
-			<p>
-				Fat Fuzzy UI is a design guide and component library and that aims to maximize use HTML and
-				CSS's native capabilities to produce harmonious and robust designs.
-			</p>
-			<p>
-				The components are built using <a
-					href="https://svelte.dev"
-					target="_blank"
-					rel="noreferrer"
-				>
-					Svelte
-				</a>
-				and <a href="https://kit.svelte.dev/" target="_blank" rel="noreferrer"> SvelteKit </a>, and
-				the structure of the library as well as the way the components are designed are based on the
-				ideas put forth in
-				<a
-					href="https://every-layout.dev/blog/algorithmic-design/"
-					target="_blank"
-					rel="noreferrer"
-				>
-					Algorithmic Design
-				</a>
-				and <a href="https://cube.fyi/" target="_blank" rel="noreferrer">CUBE CSS</a>.
-			</p>
-			<p>
-				🚧 The library as well as its documentation are still a work in progress and under active
-				development.
-			</p>
-			<p>Thank you for your patience! ❤️</p>
+			<div class="card:xl">{@html content.html}</div>
 		</div>
 		{#each components as { category, items }}
 			<Collection
 				{title}
-				depth="1"
+				depth={1}
 				isPage={false}
-				path={`${path}/${category}`}
 				components={items}
 				{category}
+				content={markdowns.categories.find(({meta}) => meta.slug === category)}
+				path={`${path}/${category}`}
+				{actionPath}
+				redirect={$page.url.pathname}
 			/>
 		{/each}
 	</div>

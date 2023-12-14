@@ -57,12 +57,6 @@ body {
 
 //== Primary / Accent / Highlight colors
 
-//== Text
-
-.day pre {
-	color: var(--color-light);
-}
-
 //== Errors
 
 // Color in text
@@ -206,11 +200,13 @@ a:hover {
 
 //== Header, Navs, Menus
 
+.nigh.header-app,
 .night .header-app {
 	--current-color: var(--color-light);
 	color: var(--current-color);
 	background-color: var(--current-gray);
 }
+.day.header-app,
 .day .header-app {
 	--current-color: var(--current-primary);
 	color: var(--current-color);
@@ -226,6 +222,23 @@ menu {
 // TODO: harmonize class
 .polar {
 	background-color: var(--current-polar);
+}
+
+.bg\:polar {
+	--current-color: var(--color-light);
+	color: var(--current-color);
+	background-color: var(--current-polar);
+}
+
+.bg\:contrast {
+	--current-color: var(--color-light);
+	color: var(--current-color);
+	background-color: var(--current-bg-contrast);
+}
+
+.bg\:blend {
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
 }
 
 .bg\:primary {
@@ -288,8 +301,9 @@ menu {
 
 [class*='box'],
 [class*='dotted'] {
-	--current-border-color: var(--current-gray-contrast);
+	--current-border-color: var(--current-gray-light);
 }
+
 [class*='box'] {
 	border: var(--border-width) solid var(--current-border-color);
 }

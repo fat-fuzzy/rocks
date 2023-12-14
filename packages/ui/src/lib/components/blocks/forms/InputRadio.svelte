@@ -11,10 +11,13 @@
 	export let checked = false
 	export let color = ''
 	export let variant = ''
-	export let layout = ''
-	export let breakpoint = ''
+	// export let layout = 'flex'
+	// export let breakpoint = ''
+	export let threshold = ''
 	export let size = ''
 	export let align = ''
+	export let background = ''
+	export let asset = ''
 
 	function handleInput(event) {
 		const payload = {
@@ -23,19 +26,11 @@
 		}
 		dispatch('input', payload)
 	}
-	$: inputId = `radio-${id}`
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
+	$: backgroundClass = background ? `bg:${background}` : ''
+	$: classes = `l:switcher:${size} th:${threshold} radio ${size} font:${size}  ${color} ${variant} ${align} ${backgroundClass} ${asset}`
 </script>
 
-<label for={inputId} class={classes}>
-	<span class={`font:${size}`}>{label}</span>
-	<input
-		id={inputId}
-		data-test={inputId}
-		type="radio"
-		{value}
-		{name}
-		{checked}
-		on:input={handleInput}
-	/>
+<label for={id} class={classes}>
+	<span>{label}</span>
+	<input {id} type="radio" {value} {name} {checked} on:input={handleInput} data-test={id} />
 </label>

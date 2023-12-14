@@ -1,5 +1,6 @@
-//== TYPOGRAPHIC SCALE
+// == TYPOGRAPHIC SCALE
 // See: https://piccalil.li/tutorial/improve-the-readability-of-the-content-on-your-website/
+
 /*
 * --ratio: 1.5;
 * --s-5: calc(var(--s-4) / var(--ratio));
@@ -15,12 +16,12 @@
 * --s5: calc(var(--s4) * var(--ratio));
 */
 
-//== FLUID SCALE
+// == FLUID SCALE
 
 /**
  * Source: https://utopia.fyi/blog/css-modular-scales/
  * Usage:
- *  TODO: Doc + link to mixin generateModularScale
+ *  TODO: Doc + link to mixin generate-modular-scale
  */
 
 $typography: (
@@ -80,13 +81,13 @@ $typography: (
 	font-size-ui: var(--fluid-0),
 	font-size-small: var(--fluid--1),
 	//
-	font-size-xxl: var(--fluid-4),
-	font-size-xl: var(--fluid-3),
-	font-size-lg: var(--fluid-2),
-	font-size-md: var(--fluid-1),
-	font-size-sm: var(--fluid-0),
-	font-size-xs: var(--fluid--1),
-	font-size-xxs: var(--fluid--2),
+	font-size-xxl: var(--fluid-3),
+	font-size-xl: var(--fluid-2),
+	font-size-lg: var(--fluid-1),
+	font-size-md: var(--fluid-0),
+	font-size-sm: var(--fluid--1),
+	font-size-xs: var(--fluid--2),
+	font-size-xxs: var(--fluid--3),
 	// == Font color
 	font-color-base: var(--color-dark),
 	//

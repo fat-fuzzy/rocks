@@ -2,7 +2,7 @@
 	import {page} from '$app/stores'
 	import {layouts, compositions} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
-	const {RevealNav} = compositions
+	const {Nav} = compositions
 
 	$: sketches = $page.data.sketches
 	$: path = ''
@@ -25,7 +25,15 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<RevealNav {items} {path} id="nav-sketches" title="👾 Sketches" breakpoint="xs" size="md" />
+		<Nav
+			id="nav-page"
+			{items}
+			{path}
+			size="md"
+			color="bg:primary:light"
+			background="polar"
+			container="card"
+		/>
 	</svelte:fragment>
 	<svelte:fragment slot="main">
 		<slot />

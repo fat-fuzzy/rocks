@@ -3,14 +3,15 @@
 
 /* SCSS design token definitions */
 @use './scale';
-// @use './fonts';
+
 @use './typography';
 @use './layout';
 @use './color';
+@use './assets';
 @use './mixins';
 
 // Generate Tokens
-$theme-prefix: '--ui'; // creates CSS variables with specific app prefix. Use '--' for no prefix
+$theme-prefix: '-'; // creates CSS variables with specific app prefix. Use '--' for no prefix
 
 @include mixins.theme-custom(
 	layout.$breakpoints,
@@ -22,5 +23,6 @@ $theme-prefix: '--ui'; // creates CSS variables with specific app prefix. Use '-
 	scale.$modular-scale-steps-minus,
 	typography.$typography,
 	color.$colors,
+	assets.$emojis,
 	$theme-prefix
 );

@@ -48,22 +48,29 @@ export interface StyleCategory {
 	[key: string]: StyleFamily
 }
 
+export interface TokenStyles extends StyleCategory {
+	// theme: StyleFamily  // TODO : figure out if it is possible to do a dynamic import of tokens
+	element: StyleFamily
+}
 export interface AppStyles extends StyleCategory {
 	// theme: StyleFamily  // TODO : figure out if it is possible to do a dynamic import of app theme
 	settings: StyleFamily
 }
 export interface SharedStyles extends StyleCategory {
-	context: StyleFamily
+	container: StyleFamily
+	layout: StyleFamily
 }
 export interface BlockStyles extends StyleCategory {
 	element: StyleFamily
 }
 export interface LayoutStyles extends StyleCategory {
+	content: StyleFamily
 	element: StyleFamily
 }
 
 export interface StyleOptions {
 	app: AppStyles
+	tokens: TokenStyles
 	shared: SharedStyles
 	blocks: BlockStyles
 	layouts: LayoutStyles
@@ -77,6 +84,10 @@ export interface IStylesSet {
 	name: string
 
 	layout?: string
+	container?: string
+	size?: string
+	variant?: string
+
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components
 
@@ -104,14 +115,16 @@ interface IStyleFamily extends IStylesSet {
 	 */
 	items: Array<IStyleInputGroup>
 	itemsMap: Map<string, IStyleInputGroup>
-	container?: string
-	size?: string
 }
 
 type StylesSetOptions = {
 	id: string
 	name: string
 	layout?: string
+	container?: string
+	size?: string
+	variant?: string
+
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components
 }
@@ -123,6 +136,7 @@ type StyleInputGroupOptions = StylesSetOptions & {
 }
 
 type StyleFamilyOptions = StylesSetOptions & {
+	title: string
 	items: Array<StyleInputGroup>
 	container?: string
 	size?: string
@@ -139,10 +153,25 @@ export class StyleInputGroup implements IStyleInputGroup {
 	items: Array<StyleInputOptions>
 	value: string
 	layout?: string
+	container?: string
+	size?: string
+	variant?: string
 	exclude?: string[]
 	include?: string[]
 
-	constructor({id, name, input, items, value, layout, exclude, include}: StyleInputGroupOptions) {
+	constructor({
+		id,
+		name,
+		input,
+		items,
+		value,
+		layout,
+		container,
+		size,
+		variant,
+		exclude,
+		include,
+	}: StyleInputGroupOptions) {
 		this.id = id
 		this.name = name
 		this.slug = name.toLowerCase()
@@ -151,6 +180,15 @@ export class StyleInputGroup implements IStyleInputGroup {
 		this.value = value ?? ''
 		if (layout) {
 			this.layout = layout
+		}
+		if (container) {
+			this.container = container
+		}
+		if (size) {
+			this.size = size
+		}
+		if (variant) {
+			this.variant = variant
 		}
 		if (exclude) {
 			this.exclude = exclude
@@ -179,11 +217,11 @@ export class StyleInputGroup implements IStyleInputGroup {
 	}
 
 	canApplyStyles({item, category}: {item: string; category: string}) {
-		return this.includes(item) && !this.excludes(category) && !this.excludes(item)
+		return (!this.excludes(category) && !this.excludes(item)) || this.includes(item)
 	}
 
 	includes(item: string) {
-		return this.include ? this.include.indexOf(item) !== -1 : true
+		return this.include ? this.include.indexOf(item) !== -1 : false
 	}
 
 	excludes(item: string) {
@@ -194,17 +232,31 @@ export class StyleInputGroup implements IStyleInputGroup {
 export class StyleFamily implements IStyleFamily {
 	id: string
 	name: string
+	title: string
 	items: Array<StyleInputGroup>
 	itemsMap: Map<string, StyleInputGroup>
 	layout?: string
 	container?: string
 	size?: string
+	variant?: string
 	exclude?: string[]
 	include?: string[]
 
-	constructor({id, name, items, layout, container, size, exclude, include}: StyleFamilyOptions) {
+	constructor({
+		id,
+		name,
+		title,
+		items,
+		layout,
+		container,
+		size,
+		variant,
+		exclude,
+		include,
+	}: StyleFamilyOptions) {
 		this.id = id
 		this.name = name
+		this.title = title
 		this.items = items
 
 		const itemsMap = new Map()
@@ -221,6 +273,9 @@ export class StyleFamily implements IStyleFamily {
 		}
 		if (size) {
 			this.size = size
+		}
+		if (variant) {
+			this.variant = variant
 		}
 		if (exclude) {
 			this.exclude = exclude
@@ -244,11 +299,11 @@ export class StyleFamily implements IStyleFamily {
 	}
 
 	canApplyStyles({item, category}: {item: string; category: string}) {
-		return this.includes(item) && !this.excludes(category) && !this.excludes(item)
+		return (!this.excludes(category) && !this.excludes(item)) || this.includes(item)
 	}
 
 	includes(item: string) {
-		return this.include ? this.include.indexOf(item) !== -1 : true
+		return this.include ? this.include.indexOf(item) !== -1 : false
 	}
 
 	excludes(item: string) {

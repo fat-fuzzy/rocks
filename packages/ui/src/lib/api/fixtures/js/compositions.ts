@@ -1,25 +1,25 @@
 export default {
 	ButtonMenu: {
 		items: [
-			{id: 'vader', text: 'Vader', asset: '👾'},
-			{id: 'ollie', text: 'Ollie', asset: '🐙'},
-			{id: 'moby', text: 'Moby', asset: '🐳'},
+			{id: 'menu.button.vader', text: 'Vader', asset: 'emoji:vader'},
+			{id: 'menu.button.ollie', text: 'Ollie', asset: 'emoji:ollie'},
+			{id: 'menu.button.moby', text: 'Moby', asset: 'emoji:moby'},
 		],
 	},
 	ToggleMenu: {
 		items: [
-			{id: 'idea', text: 'Idea', asset: '💡'},
-			{id: 'profile', text: 'Profile', asset: '🦁'},
-			{id: 'favorite', text: 'Favorite', asset: '❤️'},
+			{id: 'menu.toggle.idea', text: 'Idea', asset: 'emoji:idea'},
+			{id: 'menu.toggle.profile', text: 'Profile', asset: 'emoji:profile'},
+			{id: 'menu.toggle.favorite', text: 'Favorite', asset: 'emoji:favorite'},
 		],
 	},
 	RevealMenu: {
 		slug: 'ui',
 		title: 'RevealMenu',
 		items: [
-			{id: 'idea', text: 'Idea', asset: '💡'},
-			{id: 'profile', text: 'Profile', asset: '🦁'},
-			{id: 'favorite', text: 'Favorite', asset: '❤️'},
+			{id: 'reveal-menu.button.idea', text: 'Idea', asset: 'emoji:idea'},
+			{id: 'reveal-menu.button.profile', text: 'Profile', asset: 'emoji:profile'},
+			{id: 'reveal-menu.button.favorite', text: 'Favorite', asset: 'emoji:favorite'},
 		],
 	},
 	RadioGroup: [
@@ -34,27 +34,29 @@ export default {
 	],
 	LinkList: {
 		items: [
-			{slug: '', title: 'Home', asset: '🥚'},
-			{slug: 'about', title: 'About', asset: '🐥'},
+			{id: 'link-list.home', slug: '', title: 'Home'},
+			{id: 'link-list.about', slug: 'about', title: 'About'},
 		],
 	},
 	Nav: {
 		items: [
-			{slug: '', title: 'Home', asset: '🥚'},
-			{slug: 'about', title: 'About', asset: '🐥'},
+			{id: 'nav.home', slug: '', title: 'Home', asset: 'emoji:home'},
+			{id: 'nav.about', slug: 'about', title: 'About', asset: 'emoji:about'},
 		],
 	},
 	DetailsNav: {
 		slug: 'ui',
 		title: 'DetailsNav',
 		items: [
-			{slug: '', title: 'Home', asset: '🥚'},
-			{slug: 'about', title: 'About', asset: '🐥'},
+			{id: 'details-nav.home', slug: '', title: 'Home'},
+			{id: 'details-nav.about', slug: 'about', title: 'About'},
 		],
 	},
 	RevealNav: {
 		slug: 'ui',
 		title: 'RevealNav',
+		formaction: 'updateState',
+		place: 'left',
 		items: [
 			{
 				slug: 'compositions',
@@ -73,5 +75,10 @@ export default {
 				],
 			},
 		],
+	},
+	Header: {
+		slug: 'ui',
+		title: 'Header',
+		formaction: 'updateState',
 	},
 }

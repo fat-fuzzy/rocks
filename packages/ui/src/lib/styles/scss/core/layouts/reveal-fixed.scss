@@ -1,0 +1,71 @@
+// @import './reveal';
+
+.l\:reveal.minimize[class*='fixed'] {
+	transform: translateX(0);
+	transition: transform 250ms ease-in-out;
+}
+
+.l\:reveal.minimize[class*='fixed'] .content {
+	border: 0;
+	height: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	white-space: nowrap;
+	max-height: calc(100vh - 2 * var(--current-gap));
+	transition: width 250ms ease-in-out;
+}
+
+// TODO fix magic bp
+@media screen and (min-width: 935px) {
+	// The reveal layout inside a sidebar is currently only used for sidebar menus:
+	// - reveal mechanism serves to hide and show the menu on mobile
+	// - reveal is not necessary on desktop, so on desktop we unset the reveal layout
+	// Constraining this allows usage of reveal layout in desktop, outside a sidebar context
+	// TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts
+
+	// Fixes bug in Safari where .content overflows parent width
+	.l\:reveal[class*='fixed'].show {
+		transition: transform 250ms ease-in-out;
+	}
+
+	// Fixes bug in Safari where .content overflows parent width
+	.l\:reveal[class*='fixed'].show .content {
+		transition: width 250ms ease-in-out;
+	}
+
+	.l\:reveal.minimize[class*='fixed'] .content {
+		margin-block-start: var(--gap);
+		height: auto;
+	}
+
+	[class^='l:side'] > .l\:reveal {
+		&.minimize[class*='fixed'] {
+			overflow: hidden;
+			transform: translateX(calc(var(--current-side-size) * -1 + calc(var(--gap) * 2)));
+			transition: transform 250ms ease-in-out;
+		}
+		&.minimize[class*='fixed'] .content {
+			height: auto;
+			width: auto;
+			transition: width 250ms ease-in-out;
+		}
+	}
+
+	// TODO: Clean this magic stuff
+	.l\:reveal[class*='fixed'],
+	.l\:reveal.show[class*='fixed'] {
+		--current-side-size: var(--sidebar-width-xs);
+		--current-gap: calc(var(--gap) * 4.35);
+		position: fixed;
+		width: var(--current-side-size);
+		top: var(--current-gap);
+	}
+
+	.l\:reveal[class*='fixed'].show .content {
+		margin-block-start: var(--gap);
+		max-height: calc(100vh - 2 * var(--current-gap));
+		overflow: auto;
+		transition: width 250ms ease-in-out;
+	}
+}

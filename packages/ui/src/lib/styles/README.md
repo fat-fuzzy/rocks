@@ -24,8 +24,16 @@ I particularly recommend reading this open access blog post on algorithmic desig
 
   - environments DEV/PROD
   - [stylelint](https://stylelint.io/)
+    - Style lint rules are defined in `ui/.stylelintrc.json`
+    - NOTE: the following rules have issues:
+      - `scss/operator-no-unspaced` : throws 10 false positives in `src/lib/styles/scss/tokens/layout.scss`
+      - `function-name-case` : this rule is set to `null` to allow use of `RGBA` function using modern color function notation
+      - `scss/load-no-partial-leading-underscore` : this rule is set to `null` to allow `@forward` of `[*]/_index.scss` files in `scss/core/index.scss`
   - [Jit Props](https://github.com/GoogleChromeLabs/postcss-jit-props)
   - minification (or use rollup terser?)
+
+- CSS library:
+  - cleanup props / UI api inputs
 
 ## TODO: CSS
 
@@ -35,7 +43,6 @@ I particularly recommend reading this open access blog post on algorithmic desig
     - improve css vars
     - use color functions (palette generation, a11y testing)
     - create color contrast pairs
-  - cleanup props / UI api inputs
   - design tokens naming strategy
   - add layouts
   - design tokens doc

@@ -2,16 +2,29 @@
 	export let id = ''
 	export let name = ''
 	export let legend = ''
-	export let type = ''
 	export let size = 'sm'
+	export let color = ''
+	export let background = ''
 	export let layout = 'stack'
-	export let container = 'burrito'
+	export let container = ''
+	export let align = 'start'
+	export let threshold = ''
 	export let breakpoint = ''
+	export let variant = '' // intrinsic variations in design: [box/bare/layer] [card]
+	export let type = '' // group /
 
-	$: classes = `l:${layout} bp:${breakpoint} l:${container}:${size} ${size} ${type}`
+	$: containerClass = container ? `l:${container}:${size}` : ''
+	$: thresholdClass = threshold ? `th:${threshold}` : ''
+	$: breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
+	$: layoutClass = layout ? `l:${layout}:${size} ${thresholdClass} ${breakpointClass}` : ''
+	$: backgroundClass = background ? `bg:${background}` : ''
+	$: sizeClass = size ? `font:${size}` : ''
+	$: alignClass = align ? `align:${align}` : ''
+	$: variantClass = variant ? `${variant}:${size}` : ''
+	$: contentClass = `${sizeClass} ${variantClass} ${alignClass} ${type || ''} ${color || ''}`
+	$: classes = `${layoutClass} ${containerClass} ${backgroundClass} ${sizeClass} ${alignClass} ${variantClass} ${contentClass}`
 </script>
 
 <fieldset {id} {name} data-key={id} class={classes}>
-	{#if legend}<legend>{legend}</legend>{/if}
-	<slot />
+	{#if legend}<legend class={sizeClass}>{legend}</legend>{/if}<slot />
 </fieldset>

@@ -2,7 +2,7 @@
 	import {page} from '$app/stores'
 	import {compositions, layouts} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
-	const {RevealNav} = compositions
+	const {Nav} = compositions
 
 	let title = ' FatFuzzy Log'
 	let description = 'Fat Fuzzy Log: thoughts and choices that provide context for this project'
@@ -27,9 +27,9 @@
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
-		<RevealNav {title} {items} {path} breakpoint="md" size="md" color="primary" />
+		<Nav {items} {path} background="polar" size="md" color="primary" />
 	</svelte:fragment>
-	<div slot="main" class="l:center">
+	<div slot="main" class="l:center l:stack:xxl">
 		<slot />
 	</div>
 </Sidebar>

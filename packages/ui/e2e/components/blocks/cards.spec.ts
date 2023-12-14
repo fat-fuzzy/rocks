@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/experimental-ct-svelte'
 import {getProps} from '../../../dist/api/fixtures/js/fixtures-api'
 
-import Feedback from '../../../dist/components/blocks/cards/Feedback.svelte'
+import Feedback from '../../../dist/components/blocks/global/Feedback.svelte'
 
 test.use({viewport: {width: 500, height: 500}})
 

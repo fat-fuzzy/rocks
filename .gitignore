@@ -140,3 +140,4 @@ package-lock.json
 cdk.out
 
 iam-policy-default.json
+.npmrc

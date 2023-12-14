@@ -1,19 +1,46 @@
 fieldset {
+	padding: 0;
+	border: none;
 	border-radius: var(--radius-base);
-	border: 1px solid var(--current-gray);
+
 	> legend {
 		font-size: var(--font-size-ui);
 		font-weight: var(--font-weight-ui);
+		line-height: var(--current-size);
 	}
+
 	> p {
 		font-size: var(--font-size-small);
 		font-weight: var(--font-weight-ui);
 	}
 }
 
-fieldset {
-	padding: 0 var(--current-size-plus) var(--current-size-plus);
-	> * + * {
-		margin-block-start: var(--current-size);
+fieldset.radio,
+fieldset.check {
+	padding: var(--current-size);
+
+	> legend {
+		inline-size: auto;
+		margin-inline-start: var(--current-size);
+		padding: var(--current-size-minus) var(--current-size);
+	}
+
+	> label {
+		margin: 0;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding: var(--current-size-minus) var(--current-size-plus);
+		gap: var(--current-size);
+	}
+
+	> label[class*='emoji'] span {
+		flex-grow: 1;
+	}
+	
+	> label [type='radio'] {
+		padding: 0;
+		height: auto;
+		outline-offset: 0;
 	}
 }

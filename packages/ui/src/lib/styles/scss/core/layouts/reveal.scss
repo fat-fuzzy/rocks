@@ -1,12 +1,13 @@
-.l\:reveal > button {
+[class^='l:reveal'] [class*='expand'] {
 	position: relative;
 	z-index: var(--z-index-layer);
 	width: 100%;
+	color: inherit;
+	background-color: var(--current-polar);
 }
 
-.l\:reveal > button > .icon {
+[class^='l:reveal'] [class*='expand'] > .icon {
 	border: 0;
-	clip: rect(0 0 0 0);
 	height: auto;
 	margin: 0;
 	overflow: hidden;
@@ -20,30 +21,29 @@
 .l\:reveal.show {
 	display: flex;
 	flex-direction: column;
-}
-
-.l\:reveal.show .content {
-	position: relative;
-	top: calc(var(--gap) / 2); // TODO : Fix magic denominator
-	z-index: var(--z-index-reveal);
+	height: 100%;
 	width: 100%;
 }
 
-.l\:reveal.minimize .content {
+.l\:reveal.minimize:not([class*='fixed']) .content {
 	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
+	height: 0;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
-	width: 1px;
 	white-space: nowrap;
 }
 
-.l\:reveal .end {
+.l\:reveal.minimize [class*='expand'] {
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+}
+
+[class^='l:reveal'] .end {
 	justify-self: flex-end;
 }
+
 // TODO: set [inline/block] size according to alignment
 
 @media screen and (min-width: 320px) {
@@ -52,7 +52,7 @@
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 620px) {
 	.l\:reveal.bp\:xs.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
@@ -65,37 +65,40 @@
 	// - reveal is not necessary on desktop, so on desktop we unset the reveal layout
 	// Constraining this allows usage of reveal layout in desktop, outside a sidebar context
 	// TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts
-	[class^='l:side'] > .l\:reveal {
-		&.minimize .content {
-			border: unset;
-			clip: unset;
-			height: auto;
-			margin: initial;
-			overflow: hidden;
+
+	// Fixes bug in Safari where .content overflows parent width
+	[class^='l:side'] > [class^='l:reveal'] {
+		&.minimize:not([class*='fixed']) .content {
 			padding: var(--current-size);
-			position: unset;
-			top: 0;
-			width: 100%;
 			white-space: normal;
+			overflow: hidden;
+			position: unset;
+			width: 100%;
+			margin: initial;
 		}
 
-		> button {
+		&:not([class*='fixed']) [class*='expand'] {
 			display: none;
 		}
 
-		> button + * {
+		&:not([class*='fixed']) [class*='expand'] + * {
 			margin-top: 0;
 		}
 	}
+
+	.l\:reveal.show .content {
+		top: 0;
+		max-height: unset;
+	}
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 935px) {
 	.l\:reveal.bp\:sm.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}
 }
 
-@media screen and (min-width: 1240px) {
+@media screen and (min-width: 1360px) {
 	.l\:reveal.bp\:md.l\:stack:only-child {
 		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
 	}

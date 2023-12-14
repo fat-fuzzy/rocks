@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/play",
-	"version": "0.1.12",
+	"version": "0.1.24",
 	"description": "Fat Fuzzy Play - code experiments",
 	"author": "Patricia Boh",
 	"license": "MIT",
@@ -10,7 +10,6 @@
 		"dev": "vite dev",
 		"build": "pnpm build:csstokens && vite build",
 		"preview": "pnpm build:csstokens && vite preview",
-		"prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
 		"test": "pnpm test:integration && pnpm test:unit",
 		"test:integration": "pnpm build:csstokens && playwright test",
 		"test:ui": "playwright test --ui",
@@ -29,29 +28,26 @@
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
-		"@sveltejs/kit": "^1.25.1",
-		"@playwright/test": "^1.39.0",
+		"@playwright/test": "^1.40.0",
 		"@sveltejs/adapter-cloudflare": "^2.3.3",
+		"@sveltejs/kit": "^1.27.6",
 		"@sveltejs/package": "^2.2.2",
 		"autoprefixer": "^10.4.16",
 		"postcss": "8.4.31",
-		"rollup": "4.0.2",
+		"rollup": "4.4.1",
 		"rollup-plugin-scss": "^4.0.0",
+		"sass": "^1.69.5",
 		"stylelint": "^15.11.0",
 		"stylelint-config-standard": "^34.0.0",
-		"stylelint-config-standard-scss": "^11.0.0",
-		"sass": "^1.69.0",
-		"svelte": "^4.2.1",
-		"svelte-check": "^3.5.2",
-		"svelte-preprocess": "^5.0.4",
-		"three": "0.157.0",
+		"stylelint-config-standard-scss": "^11.1.0",
+		"svelte": "^4.2.4",
+		"svelte-check": "^3.6.0",
+		"svelte-preprocess": "^5.1.0",
+		"three": "0.158.0",
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2",
-		"vite": "^4.4.11",
+		"vite": "^4.5.1",
 		"vitest": "^0.34.6"
 	},
-	"type": "module",
-	"publishConfig": {
-		"registry": "http://localhost:4873"
-	}
+	"type": "module"
 }

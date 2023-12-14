@@ -1,20 +1,30 @@
 <script lang="ts">
-	import {blocks, compositions, layouts} from '@fat-fuzzy/ui'
-	const {Sidebar} = layouts
+	import {onDestroy} from 'svelte'
+	import {page} from '$app/stores'
+	import {tokens, blocks, compositions, layouts, stores} from '@fat-fuzzy/ui'
 	const {RevealNav} = compositions
+	let path = $page.url.pathname
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
 		return a < b ? -1 : b < a ? 1 : 0
 	}
-	function sortDesc(a, b) {
-		return a > b ? -1 : b > a ? 1 : 0
-	}
 
+	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
 	const compositionNames = Object.keys(compositions).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
+
+	let sidebarReveal: {[key: string]: string} = {reveal: ''}
+
+	const localStores = [
+		stores.settings.sidebarReveal.subscribe((value) => {
+			if (value) {
+				sidebarReveal = value
+			}
+		}),
+	]
 
 	$: path = ''
 	$: items = [
@@ -22,6 +32,11 @@
 			slug: 'ui',
 			title,
 			items: [
+				{
+					slug: 'tokens',
+					title: 'Tokens',
+					items: tokenNames.map((c) => ({slug: c, title: c})),
+				},
 				{
 					slug: 'blocks',
 					title: 'Blocks',
@@ -40,21 +55,32 @@
 			],
 		},
 	]
+
+	onDestroy(() => {
+		localStores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
-<Sidebar size="xs">
-	<svelte:fragment slot="side">
+<div class="l:sidebar:xs align-content:start">
+	<div class={`l:side ${sidebarReveal.reveal}`}>
 		<RevealNav
 			title="Design Library"
+			name="reveal"
 			id="nav-page"
 			{items}
 			{path}
-			breakpoint="md"
+			breakpoint="sm"
 			size="md"
-			color="primary"
+			color="bg:primary:light"
+			position="fixed"
+			background="polar"
+			container="card"
+			formaction="toggleSidebar"
+			actionPath="/"
+			redirect={$page.url.pathname}
 		/>
-	</svelte:fragment>
-	<div slot="main" class="l:center">
+	</div>
+	<div class="l:main l:center l:stack:xl">
 		<slot />
 	</div>
-</Sidebar>
+</div>

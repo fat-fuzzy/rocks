@@ -1,28 +1,36 @@
-<svelte:options accessors={true} />
-
 <script lang="ts">
+	import type {ButtonType} from '$types'
 	import {onMount, createEventDispatcher} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
 	import {createMachine} from 'xstate'
-	import format from '$lib/utils/format'
 
 	const dispatch = createEventDispatcher()
 
+	/**
+	 * State props
+	 */
 	export let id = 'toggle'
 	export let name = 'toggle'
+	export let text = ''
+	export let title = ''
 	export let initial = false
 	export let value = ''
 	export let disabled = false
-	export let color = ''
-	export let variant = ''
-	export let layout = 'switcher'
-	export let breakpoint = ''
-	export let size = ''
+	export let formaction: string | undefined = undefined
+
+	/**
+	 * Style props
+	 */
 	export let align = ''
-	export let asset = '' // TODO: emoji OR svg
-	export let text = ''
-	export let formaction = 'update'
-	export let page = ''
+	export let asset = '' // emoji:value or svg:value
+	export let breakpoint = ''
+	export let color = ''
+	export let layout = 'flex'
+	export let size = ''
+	export let shape = ''
+	export let variant = 'fill'
+
+	export let type: ButtonType = 'submit'
 
 	let machineConfig = {
 		predictableActionArguments: true,
@@ -39,6 +47,8 @@
 	}
 	let machine = createMachine(machineConfig)
 	let {state, send} = useMachine(machine)
+
+	let pressed = $state.value === 'active'
 
 	export let onClick = (event: MouseEvent) => {
 		send('TOGGLE')
@@ -63,21 +73,29 @@
 		}
 	})
 
-	$: variantClass = variant === 'default' ? '' : variant
-	$: classes = `l:${layout} bp:${breakpoint} ${size} ${color} ${variantClass} ${align}`
 	$: pressed = $state.value === 'active'
+	$: layoutClasses = shape
+		? `${shape} ${variant}`
+		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
+	$: buttonClasses = `toggle:${$state.value} ${layoutClasses} ${color} ${asset} ${align} ${size} font:${size}`
 </script>
 
 <button
 	{id}
-	data-key={id}
-	on:click|preventDefault={onClick}
-	aria-pressed={pressed}
-	class={classes}
-	formaction={page ? `/${page}?/${formaction}` : `?/${formaction}`}
-	{disabled}
-	{value}
+	{type}
 	{name}
+	{title}
+	{disabled}
+	{formaction}
+	{value}
+	class={buttonClasses}
+	data-key={`${name}-${id}`}
+	on:click={onClick}
+	aria-pressed={pressed}
 >
-	{format.formatLabel(text, asset)}
+	{#if shape}
+		<span class="sr-only">{text}</span>
+	{:else}
+		{text}
+	{/if}
 </button>

@@ -11,11 +11,11 @@
 	<meta name="description" content={`${title} documentation`} />
 </svelte:head>
 
-<header class="header-page">
-	<h1>{title}</h1>
+<header class="page-header bg:polar">
+	<h1 class="card:xl">{title}</h1>
 </header>
 
-<div class="l:stack md">
+<div class="l:stack:xl card:xl">
 	{#each markdowns as { meta }}
 		<a class="font:xxl" href={`/dev/${meta.slug}`}>{meta.title}</a>
 	{/each}

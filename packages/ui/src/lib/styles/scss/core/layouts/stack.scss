@@ -22,9 +22,9 @@
 }
 
 [class*='l\:stack'].recursive * + * {
-	margin-block-start: var(--current-size-plus);
+	margin-block-start: var(--current-gap-size);
 }
 
 [class*='l\:stack'] > * + * {
-	margin-block-start: var(--current-size-plus);
+	margin-block-start: var(--current-gap-size);
 }

@@ -1,6 +1,9 @@
 import path from 'path'
 import adapter from '@sveltejs/adapter-cloudflare'
 import preprocess from 'svelte-preprocess'
+import {mdsvex} from 'mdsvex'
+import mdsvexConfig from './mdsvex.config.js'
+import stylelint from 'stylelint'
 
 function isWebComponentSvelte(code) {
 	const svelteOptionsIdx = code.indexOf('<svelte:options ')
@@ -29,14 +32,21 @@ const config = {
 			crawl: true,
 		},
 	},
+	extensions: ['.svelte', ...mdsvexConfig.extensions],
+
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: preprocess({
-		postcss: true,
-		// scss: {
-		// 	outFile: '/styles/app/ui.css',
-		// },
-	}),
+	preprocess: [
+		preprocess({
+			postcss: stylelint({
+				include: ['src/styles/scss/**/*.{scss}'],
+			}),
+			// scss: {
+			// 	outFile: '/styles/app/ui.css',
+			// },
+		}),
+		mdsvex(mdsvexConfig),
+	],
 	build: {
 		target: 'esnext',
 	},

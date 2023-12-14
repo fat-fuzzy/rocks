@@ -1,0 +1,270 @@
+// @import './reveal';
+
+.l\:reveal\:auto {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.l\:reveal\:auto [class*='expand'] {
+	width: fit-content;
+}
+
+.l\:reveal\:auto .show {
+	width: auto;
+	height: auto;
+	overflow-y: auto;
+}
+
+// @include mixins.min-width(var(--bp-xxs)) {
+@media screen and (min-width: 320px) {
+	.l\:reveal\:auto.bp\:xxs,
+	.page-header .l\:reveal\:auto.bp\:xxs {
+		position: unset;
+		width: fit-content;
+	}
+
+	.l\:reveal\:auto.bp\:xxs .show {
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:xxs [class*='expand'] {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:xxs .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:xxs .show,
+	.l\:reveal\:auto.bp\:xxs [class*='hide:'] {
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: initial;
+		position: unset;
+		width: 100%;
+		white-space: normal;
+	}
+}
+
+// @include mixins.min-width(var(--bp-xs)) {
+@media screen and (min-width: 620px) {
+	.l\:reveal\:auto.bp\:xs,
+	.page-header .l\:reveal\:auto.bp\:xs {
+		position: unset;
+		width: fit-content;
+	}
+
+	.l\:reveal\:auto.bp\:xs .show {
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:xs [class*='expand'] {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:xs .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:xs .show,
+	.l\:reveal\:auto.bp\:xs [class*='hide:'] {
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+}
+
+// @include mixins.min-width(var(--bp-sm)) {
+@media screen and (min-width: 935px) {
+	.l\:reveal\:auto.bp\:sm,
+	.page-header .l\:reveal\:auto.bp\:sm {
+		position: unset;
+		width: fit-content;
+	}
+
+	.l\:reveal\:auto.bp\:sm .show {
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:sm [class*='expand'] {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:sm .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:sm .show,
+	.l\:reveal\:auto.bp\:sm [class*='hide:'] {
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+}
+
+// @include mixins.min-width(var(--bp-md)) {
+@media screen and (min-width: 1360px) {
+	.l\:reveal\:auto.bp\:md,
+	.page-header .l\:reveal\:auto.bp\:md {
+		position: unset;
+		width: fit-content;
+	}
+
+	.l\:reveal\:auto.bp\:md .show {
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:md [class*='expand'] {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:md .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:md .show,
+	.l\:reveal\:auto.bp\:md [class*='hide:'] {
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+}
+
+// @include mixins.min-width(var(--bp-lg)) {
+@media screen and (min-width: 1620px) {
+	.l\:reveal\:auto.bp\:lg,
+	.page-header .l\:reveal\:auto.bp\:lg {
+		position: unset;
+		width: fit-content;
+	}
+
+	.l\:reveal\:auto.bp\:lg .show {
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:lg [class*='expand'] {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:lg .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:lg .show,
+	.l\:reveal\:auto.bp\:lg [class*='hide:'] {
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+}
+
+// @include mixins.min-width(var(--bp-xl)) {
+@media screen and (min-width: 2048px) {
+	.l\:reveal\:auto.bp\:xl,
+	.page-header .l\:reveal\:auto.bp\:xl {
+		position: unset;
+		width: fit-content;
+	}
+
+	.l\:reveal\:auto.bp\:xl .show {
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:xl [class*='expand'] {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:xl .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:xl .show,
+	.l\:reveal\:auto.bp\:xl [class*='hide:'] {
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+}
+
+// @include mixins.min-width(var(--bp-xxl)) {
+@media screen and (min-width: 3048px) {
+	.l\:reveal\:auto.bp\:xxl,
+	.page-header .l\:reveal\:auto.bp\:xxl {
+		position: unset;
+		width: fit-content;
+	}
+
+	.l\:reveal\:auto.bp\:xxl .show {
+		min-inline-size: unset;
+	}
+
+	.l\:reveal\:auto.bp\:xxl [class*='expand'] {
+		display: none;
+	}
+
+	.l\:reveal\:auto.bp\:xxl .show {
+		top: 0;
+		width: auto;
+		max-height: unset;
+		background-color: inherit;
+		box-shadow: none;
+	}
+
+	.l\:reveal\:auto.bp\:xxl .show,
+	.l\:reveal\:auto.bp\:xxl [class*='hide:'] {
+		height: auto;
+		margin: initial;
+		overflow: hidden;
+		padding: 0;
+		position: unset;
+		width: auto;
+		white-space: normal;
+	}
+}

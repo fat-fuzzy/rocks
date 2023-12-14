@@ -1,33 +1,80 @@
 // Contrast
 
-.polar {
+.bg\:polar {
 	background-color: var(--current-polar);
 }
 
-// Due to how the current night color scheme is setup I need this to override dar polar for now
-// TODO: figure out a better way to handle inverted colors
-.night .polar {
+.bg\:contrast {
 	background-color: var(--current-bg-contrast);
 }
 
+.bg\:blend {
+	background-color: var(--current-bg-color);
+}
+
 .day {
-	// TODO: Fix contrast combination
-	&.contrast {
+	&.bg\:polar,
+	&.bg\:contrast > .bg\:polar,
+	&.bg\:contrast *:not(.bg\:polar) .bg\:polar {
+		--current-bg-color: var(--day-polar-color-bg);
+		--current-border-color: var(--current-gray-contrast);
+		color: var(--current-color);
+		background-color: var(--current-polar);
+	}
+
+	&.bg\:contrast,
+	&.bg\:polar > .bg\:contrast,
+	&.bg\:polar *:not(.bg\:contrast) .bg\:contrast {
+		--current-bg-color: var(--day-contrast-color-bg);
+		--current-border-color: var(--current-gray-light);
+		color: var(--current-color);
 		background-color: var(--current-bg-contrast);
 	}
 
-	&.blend {
+	&.bg\:blend,
+	&.bg\:polar > .bg\:blend,
+	&.bg\:polar *:not(.bg\:blend) .bg\:blend {
+		--current-bg-color: var(--day-blend-color-bg);
+		--current-border-color: var(--current-gray-light);
+		color: var(--current-color);
 		background-color: var(--current-bg-color);
 	}
 }
 
 .night {
-	// TODO: Fix contrast combination
-	&.contrast {
-		background-color: var(--current-bg-color);
+	&.bg\:polar,
+	&.bg\:contrast > .bg\:polar,
+	&.bg\:contrast *:not(.bg\:polar) .bg\:polar {
+		--current-bg-color: var(--night-polar-color-bg);
+		--current-border-color: var(--current-gray-contrast);
+		color: var(--current-color);
+		background-color: var(--current-polar);
 	}
 
-	&.blend {
+	&.bg\:contrast,
+	&.bg\:polar > .bg\:contrast,
+	&.bg\:polar *:not(.bg\:contrast) .bg\:contrast {
+		--current-bg-color: var(--night-contrast-color-bg);
+		--current-border-color: var(--current-gray-contrast);
+		color: var(--current-color);
 		background-color: var(--current-bg-contrast);
 	}
+
+	&.bg\:blend,
+	&.bg\:polar > .bg\:blend,
+	&.bg\:polar *:not(.bg\:blend) .bg\:blend {
+		--current-color: var(--night-blend-color-text);
+		--current-bg-color: var(--night-blend-color-bg);
+		--current-border-color: var(--current-gray-contrast);
+		color: var(--current-color);
+	}
+
+	[class*='box'],
+	[class*='dotted'] {
+		--current-border-color: var(--current-gray-light);
+	}
+}
+
+.bg\:inherit {
+	background-color: inherit;
 }

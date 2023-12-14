@@ -16,7 +16,7 @@
 	<meta name="description" content="Fat Fuzzy Rocks documentation home page" />
 </svelte:head>
 
-<header class="polar">
+<header class="bg:polar">
 	<div class="l:text:xl l:center card:feature:xxl">
 		<div class="l:frame l:text:xl">
 			<img src={pageImage.src} alt={pageImage.alt} />
@@ -27,7 +27,7 @@
 
 <section class="l:center l:text:xxl">
 	<h2>✨ Highlights</h2>
-	<div class="l:switcher bp:xs card:xxl">
+	<div class="l:switcher:sm bp:xs card:xxl">
 		<article class={`card:lg text:center ${variant}`}>
 			<a data-sveltekit-preload-data href="/ui" class="card font:md">🌈 UI</a>
 		</article>

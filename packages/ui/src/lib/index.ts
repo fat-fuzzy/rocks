@@ -1,28 +1,37 @@
 // Reexport your entry components here
+
 /**
  * Layout components
  */
-import Burrito from '$lib/components/layouts/Burrito.svelte'
-import Reveal from '$lib/components/layouts/Reveal.svelte'
-import Sidebar from '$lib/components/layouts/Sidebar.svelte'
-import Stack from '$lib/components/layouts/Stack.svelte'
-import Switcher from '$lib/components/layouts/Switcher.svelte'
+import Color from '$lib/components/tokens/Color.svelte'
+import Typography from '$lib/components/tokens/Typography.svelte'
 
 /**
  * Block components
  */
-
-import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
+// import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 import Button from '$lib/components/blocks/buttons/Button.svelte'
+import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+import Switch from '$lib/components/blocks/buttons/Switch.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
-import Feedback from '$lib/components/blocks/cards/Feedback.svelte'
+import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 // import Canvas from '$lib/components/blocks/media/Canvas.svelte'
-import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
+// import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 import InputFile from '$lib/components/blocks/forms/InputFile.svelte'
 // import Sketch from '$lib/components/blocks/graphics/Sketch.svelte'
+
+/**
+ * Layout components
+ */
+import Burrito from '$lib/components/layouts/Burrito.svelte'
+import Reveal from '$lib/components/layouts/Reveal.svelte'
+import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
+import Sidebar from '$lib/components/layouts/Sidebar.svelte'
+import Stack from '$lib/components/layouts/Stack.svelte'
+import Switcher from '$lib/components/layouts/Switcher.svelte'
 
 /**
  * Compositions - Base
@@ -31,14 +40,16 @@ import ButtonMenu from '$lib/components/compositions/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
 import RevealMenu from '$lib/components/compositions/menus/RevealMenu.svelte'
 
+import LogIn from '$lib/components/compositions/forms/LogIn.svelte'
+
 import Nav from '$lib/components/compositions/navs/Nav.svelte'
 import RevealNav from '$lib/components/compositions/navs/RevealNav.svelte'
 
 import Header from '$lib/components/compositions/headers/Header.svelte'
-import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
+// import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
 
-import Page from '$lib/components/compositions/pages/Page.svelte'
-import LogIn from '$lib/components/compositions/pages/LogIn.svelte'
+// import Page from '$lib/components/compositions/content/Page.svelte'
+// import PageLogIn from '$lib/components/compositions/content/PageLogIn.svelte'
 
 /**
  * Compositions - Graphics
@@ -56,8 +67,10 @@ import Scale from '$lib/components/graphics/Scale.svelte'
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
 import Api from '$lib/api/styles/Api.svelte'
+import Token from '$lib/api/styles/Token.svelte'
 import Element from '$lib/api/styles/Element.svelte'
 import Collection from '$lib/api/styles/Collection.svelte'
+// import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
 
 import * as stylesApi from '$lib/api/styles/styles-api'
 import * as fixturesApi from '$lib/api/fixtures/js/fixtures-api'
@@ -75,37 +88,67 @@ import Test from '$lib/api/tests/TestComponent.svelte'
 // import StyleCapsule from '$lib/api/StyleCapsule.wc.svelte'
 
 /**
+ * Forms
+ */
+import {NavReveal} from '$lib/forms/nav-reveal'
+import {SettingsReveal} from '$lib/forms/settings-reveal'
+import {SettingsUpdate} from '$lib/forms/settings-update'
+import {SidebarReveal} from '$lib/forms/sidebar-reveal'
+import {DsContextReveal} from '$lib/forms/ds-context-reveal'
+import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
+import {DsStateUpdate} from '$lib/forms/ds-state-update'
+
+/**
  * Stores
  */
-import * as theme from '$lib/stores/theme'
+import * as settings from '$lib/stores/settings'
 import * as ui from '$lib/stores/ui'
 import * as intl from '$lib/stores/intl'
-import * as stylesStore from '$lib/stores/api'
 
 /**
  * Utilities
  */
-import * as constants from '$lib/types/constants'
+import constants from '$lib/types/constants'
 import * as clickOutside from '$lib/utils/click-outside'
+import format from '$lib/utils/format'
 
 /***************************************************
  * Prepare Exports
  **************************************************/
 const utils = {
+	format,
 	clickOutside,
 }
+
+const forms = {
+	NavReveal,
+	SidebarReveal,
+	SettingsReveal,
+	SettingsUpdate,
+	DsContextReveal,
+	DsStateUpdate,
+	DsStylesUpdate,
+}
+
 const stores = {
-	theme,
+	settings,
 	ui,
 	intl,
 }
 
+const tokens = {
+	Color,
+	Typography,
+}
+
 const blocks = {
-	ActionLabel,
+	// ActionLabel,
 	Button,
+	Expand,
+	Switch,
 	Toggle,
 	Feedback,
-	Fieldset,
+	// Fieldset,
 	InputCheck,
 	InputRadio,
 	InputRange,
@@ -115,6 +158,7 @@ const blocks = {
 const layouts = {
 	Burrito,
 	Reveal,
+	RevealAuto,
 	Stack,
 	Switcher,
 	Sidebar,
@@ -124,12 +168,13 @@ const compositions = {
 	ButtonMenu,
 	ToggleMenu,
 	RevealMenu, // TODO: use content option in UI lib API in docs
+	LogIn,
 	Nav,
 	RevealNav, // TODO: use content option in UI lib API in docs
 	Header,
-	PageHeader,
-	Page,
-	LogIn,
+	// PageHeader,
+	// Page,
+	// PageLogIn,
 }
 
 const graphics = {
@@ -146,29 +191,16 @@ const graphics = {
 const api = {
 	Api,
 	Collection,
+	Token,
 	Element,
+	// StyleFamily,
 	// StyleCapsule,
-	fixturesApi,
 	stylesApi,
-	stylesStore,
+	fixturesApi,
 }
 
 const testsApi = {
 	Test,
 }
 
-// TODO: see if I can use this to configure styles from assets (design tokens) in app project folder
-const sass = {
-	ui: './styles/theme/ui/_index.scss',
-	doc: './styles/theme/doc/_index.scss',
-	play: './styles/theme/play/_index.scss',
-	sandbox: './styles/theme/sandbox/_index.scss',
-}
-
-// [TODO:] Not sure this is useful
-async function getSass(theme) {
-	const themedStyles = await import(sass[theme])
-	return themedStyles
-}
-
-export {blocks, layouts, compositions, graphics, api, testsApi, utils, stores, constants, getSass}
+export {tokens, blocks, layouts, compositions, graphics, api, utils, forms, stores, constants}

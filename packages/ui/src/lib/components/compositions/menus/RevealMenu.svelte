@@ -6,17 +6,20 @@
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
+	export let container = 'card'
+	export let direction = 'tb-lr'
 	export let size = ''
-	export let breakpoint = ''
+	export let threshold = ''
 	export let variant = ''
 	export let height = ''
 	export let color = ''
+	export let background = ''
 	export let id = 'reveal-menu'
 	export let title = ''
 	export let icon = ''
 	export let align = 'start'
 	export let place = 'left'
-	export let items = []
+	export let items: any = []
 
 	let expanded = false
 
@@ -51,7 +54,7 @@
 </script>
 
 <div
-	class={`l:reveal ${show} ${setHeight} l:${layout} ${size}`}
+	class={`l:reveal ${show} ${setHeight} l:${layout} ${direction}`}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
@@ -67,7 +70,7 @@
 	</button>
 	<menu
 		id={`menu-${id}`}
-		class={`content l:${layout} bp:${breakpoint} layer polar card:${size} align:${align} ${size}`}
+		class={`content l:${layout}:${size} ${container}:${size} th:${threshold} layer bg:${background} card:${size} align:${align} ${size}`}
 	>
 		{#each items as buttonProps}
 			<li>
