@@ -31,6 +31,11 @@
 				stylesApi.applyStyles(value)
 			}
 		}),
+		stores.ui.reveal.subscribe((value) => {
+			if (value) {
+				revealContext = value
+			}
+		}),
 	]
 
 	function handleToggle(event: CustomEvent) {
