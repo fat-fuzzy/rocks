@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.32
+
+### Patch Changes
+
+- 969e5cb9: [ui+doc] Decouple RevealNav instances
+
 ## 0.1.31
 
 ### Patch Changes
