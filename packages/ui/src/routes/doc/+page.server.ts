@@ -19,7 +19,9 @@ export const actions = {
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
-		cookies.set('fat-fuzzy-ui-context-reveal', settingsReveal.toString(), {path: '/'})
+		cookies.set('fat-fuzzy-ui-context-reveal', settingsReveal.toString(), {
+			path: '/',
+		})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
 			throw redirect(303, redirectTo)

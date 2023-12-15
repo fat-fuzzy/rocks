@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onMount, onDestroy} from 'svelte'
+	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants'
 
@@ -8,12 +8,7 @@
 
 	import * as ui from '$stores/ui'
 
-	const {
-		DEFAULT_SIDEBAR_REVEAL_STATE,
-		ALIGN_OPPOSITE,
-		ALIGN_ANIMATION_DIRECTION,
-		TRANSITION_CONTRAST,
-	} = constants
+	const {ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION, TRANSITION_CONTRAST} = constants
 
 	const method = 'POST'
 	export let size = ''
@@ -32,13 +27,14 @@
 	export let name = 'reveal-nav'
 	export let align = 'start'
 	export let place = 'top'
+	export let value = 'show'
 	export let position: string | undefined = undefined
 	export let formaction: string | undefined = undefined
 	export let actionPath: string | undefined = undefined
 
 	export let items: any[] = [] // TODO: fix type
 
-	let sidebarReveal: {[key: string]: string} = {reveal: ''}
+	let sidebarReveal: {[key: string]: string} = {reveal: value}
 	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
 
 	const stores = [
@@ -67,19 +63,19 @@
 	$: navContainer = container ? `${container}:${size}` : ''
 	$: navLayoutThreshold = breakpoint ? ` bp:${breakpoint}` : threshold ? ` th:${threshold}` : ''
 	$: navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
-	$: showSidebar = `${reveal} ${showBackground} ${place}`
+	$: showSidebar = `${sidebarReveal.reveal} ${showBackground} ${place}`
 	$: navClasses = `content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `
 	$: layoutClasses = position
 		? `l:reveal ${position} ${place} ${reveal}`
 		: `l:reveal ${place} ${reveal}`
 	$: revealClasses = `form:expand`
 	$: action = formaction
+		? redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+		: undefined
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
-	})
-
-	onMount(() => {
-		settings.sidebarReveal.set(DEFAULT_SIDEBAR_REVEAL_STATE)
 	})
 </script>
 

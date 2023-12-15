@@ -88,9 +88,10 @@ export const actions = {
 		return {success: true}
 	},
 
-	reset: async ({url, cookies}) => {
-		cookies.delete('fat-fuzzy-nav-reveal', {path: url.pathname})
-		cookies.delete('fat-fuzzy-settings-reveal', {path: url.pathname})
-		cookies.delete('fat-fuzzy-settings-app', {path: url.pathname})
+	reset: async ({cookies}) => {
+		cookies.delete('fat-fuzzy-nav-reveal', {path: '/'})
+		cookies.delete('fat-fuzzy-sidebar-reveal', {path: '/'})
+		cookies.delete('fat-fuzzy-settings-reveal', {path: '/'})
+		cookies.delete('fat-fuzzy-settings-app', {path: '/'})
 	},
 } satisfies Actions

@@ -68,5 +68,7 @@ export const actions = {
 
 	restart: async ({cookies, url}) => {
 		cookies.delete('fat-fuzzy-ui', {path: '/'})
+		cookies.delete('fat-fuzzy-ui-state', {path: '/'})
+		cookies.delete('fat-fuzzy-ui-context-reveal', {path: '/'})
 	},
 } satisfies Actions
