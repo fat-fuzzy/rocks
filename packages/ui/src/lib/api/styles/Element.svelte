@@ -106,6 +106,7 @@
 						props={currentProps}
 						{actionPath}
 						{redirect}
+						settings={ui}
 					/>
 				{:else}
 					<svelte:component
@@ -116,6 +117,7 @@
 						{props}
 						{actionPath}
 						{redirect}
+						settings={ui}
 					/>
 				{/if}
 			</div>
@@ -162,7 +164,10 @@
 	</article>
 {:else}
 	{@const props = getProps({category, component: title})}
-	<article class={`box ${brightness} bg:${background} l:stack ui:${title.toLowerCase()}`}>
+	<article
+		id={title}
+		class={`box ${brightness} bg:${background} l:stack ui:${title.toLowerCase()}`}
+	>
 		<header>
 			<a
 				class="title card:md w:full l:switcher:xs emoji:link outline primary:light"
@@ -184,7 +189,8 @@
 					{stylesApi}
 					props={currentProps}
 					{actionPath}
-					{redirect}
+					redirect={`${redirect}#${title}`}
+					settings={ui}
 				/>
 			{:else}
 				<svelte:component
@@ -194,7 +200,8 @@
 					{component}
 					{props}
 					{actionPath}
-					{redirect}
+					redirect={`${redirect}#${title}`}
+					settings={ui}
 				/>
 			{/if}
 		</div>

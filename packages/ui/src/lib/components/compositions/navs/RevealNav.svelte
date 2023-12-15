@@ -6,7 +6,7 @@
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 
-	import * as settings from '$stores/settings'
+	import * as ui from '$stores/ui'
 
 	const {
 		DEFAULT_SIDEBAR_REVEAL_STATE,
@@ -17,6 +17,7 @@
 
 	const method = 'POST'
 	export let size = ''
+	export let settings: any = ui
 	export let breakpoint: string | undefined = undefined
 	export let threshold: string | undefined = undefined
 	export let container = 'card'
@@ -30,7 +31,7 @@
 	export let title = 'RevealNav'
 	export let name = 'reveal-nav'
 	export let align = 'start'
-	export let place = 'left'
+	export let place = 'top'
 	export let position: string | undefined = undefined
 	export let formaction: string | undefined = undefined
 	export let actionPath: string | undefined = undefined
@@ -68,14 +69,11 @@
 	$: navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
 	$: showSidebar = `${reveal} ${showBackground} ${place}`
 	$: navClasses = `content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `
-	$: layoutClasses = `l:reveal ${position} ${place} ${reveal}`
+	$: layoutClasses = position
+		? `l:reveal ${position} ${place} ${reveal}`
+		: `l:reveal ${place} ${reveal}`
 	$: revealClasses = `form:expand`
 	$: action = formaction
-		? redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-		: undefined
-
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
 	})
@@ -118,7 +116,7 @@
 			{title}
 		</Expand>
 	</form>
-	<nav id={`nav-${id}`} class={navClasses}>
+	<nav id={`nav-${id}`} class={navClasses} aria-label={title}>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
 </div>

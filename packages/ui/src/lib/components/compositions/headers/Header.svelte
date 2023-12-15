@@ -12,6 +12,7 @@
 	import Settings from '$lib/components/compositions/forms/Settings.svelte'
 
 	const method = 'POST'
+	export let title = 'Header navigation'
 	export let className = 'header-app'
 	export let breakpoint = 'xxl'
 	export let background = ''
@@ -107,7 +108,7 @@
 				Menu
 			</Expand>
 		</form>
-		<nav id={`${id}-primary-nav`} class={showNav} aria-label="Main navigation">
+		<nav id={`${id}-primary-nav`} class={showNav} aria-label={title}>
 			<ul class={navClasses}>
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>

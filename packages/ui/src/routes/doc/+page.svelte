@@ -1,16 +1,17 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
+	import {onMount, onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, compositions, api, stores} from '$lib'
+	import {tokens, blocks, layouts, compositions, api, stores, constants} from '$lib'
 
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
+	const {DEFAULT_REVEAL_STATE} = constants
 
 	const actionPath = '/doc'
 	const title = 'Fat Fuzzy Test' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = {reveal: ''}
+	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -44,6 +45,10 @@
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
+	})
+
+	onMount(() => {
+		stores.ui.reveal.set({reveal: 'show'})
 	})
 </script>
 

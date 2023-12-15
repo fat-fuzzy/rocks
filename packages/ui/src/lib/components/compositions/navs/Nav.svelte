@@ -2,6 +2,7 @@
 	import LinkList from '$lib/components/compositions/navs/LinkList.svelte'
 	export let id = ''
 	export let layout = ''
+	export let title = 'Nav'
 	export let size = ''
 	export let path = ''
 	export let color = ''
@@ -13,6 +14,6 @@
 	$: navClasses = `${color} ${container}:${size} bg:${background}`
 </script>
 
-<nav {id} aria-label={id} class={navClasses}>
+<nav {id} class={navClasses} aria-label={title}>
 	<LinkList id={`${id}-${path}`} {items} {path} depth={0} {layout} {size} {align} />
 </nav>

@@ -39,6 +39,7 @@ export default {
 		],
 	},
 	Nav: {
+		title: 'Nav',
 		items: [
 			{id: 'nav.home', slug: '', title: 'Home', asset: 'emoji:home'},
 			{id: 'nav.about', slug: 'about', title: 'About', asset: 'emoji:about'},
@@ -56,7 +57,8 @@ export default {
 		slug: 'ui',
 		title: 'RevealNav',
 		formaction: 'updateState',
-		place: 'left',
+		formPath: '/doc',
+		place: 'top',
 		items: [
 			{
 				slug: 'compositions',

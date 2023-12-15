@@ -9,7 +9,7 @@
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
 
-	const {SVG_ASSETS, DEFAULT_SETTINGS} = constants
+	const {SVG_ASSETS, DEFAULT_SETTINGS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 	const method = 'POST'
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined
@@ -26,8 +26,8 @@
 
 	export let items = DEFAULT_SETTINGS
 
-	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
-	let settingsReveal: {[key: string]: string} = {reveal: ''}
+	let appSettings: {[key: string]: string} = DEFAULT_APP_SETTINGS
+	let settingsReveal: {[key: string]: string} = DEFAULT_REVEAL_STATE
 
 	const stores = [
 		settings.app.subscribe((value) => {
@@ -67,10 +67,6 @@
 		}
 	}
 
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
-
 	$: reveal = settingsReveal.reveal
 	$: brightness = appSettings.brightness
 	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
@@ -86,6 +82,10 @@
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
 		: 'toggleNav'
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 <div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutsideSettings}>

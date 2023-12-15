@@ -5,13 +5,13 @@ const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 const DEFAULT_SIDEBAR_REVEAL_STATE: Settings = {reveal: 'show'}
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 const DEFAULT_DS_STATE: {
-	revealNav: Settings
-	revealHeaderNav: Settings
-	revealHeaderSettings: Settings
+	navReveal: Settings
+	sidebarReveal: Settings
+	settingsReveal: Settings
 } = {
-	revealNav: {reveal: 'minimize'},
-	revealHeaderNav: {reveal: 'minimize'},
-	revealHeaderSettings: {reveal: 'minimize'},
+	navReveal: {reveal: 'minimize'},
+	sidebarReveal: {reveal: 'minimize'},
+	settingsReveal: {reveal: 'minimize'},
 }
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
