@@ -189,7 +189,7 @@
 					{stylesApi}
 					props={currentProps}
 					{actionPath}
-					redirect={`${redirect}#${title}`}
+					redirect={path}
 					settings={ui}
 				/>
 			{:else}
@@ -200,7 +200,7 @@
 					{component}
 					{props}
 					{actionPath}
-					redirect={`${redirect}#${title}`}
+					redirect={path}
 					settings={ui}
 				/>
 			{/if}

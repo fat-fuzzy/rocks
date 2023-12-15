@@ -28,7 +28,6 @@
 	settingsStore.navReveal.set(nav)
 	settingsStore.sidebarReveal.set(sidebar)
 	settingsStore.settingsReveal.set(settings)
-	settingsStore.sidebarReveal.set(sidebar)
 
 	$: brightness = appSettings.brightness
 	$: contrast = appSettings.contrast

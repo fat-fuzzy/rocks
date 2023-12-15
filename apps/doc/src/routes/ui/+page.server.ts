@@ -28,7 +28,7 @@ export const actions = {
 
 	updateStyles: async ({request, url, cookies}) => {
 		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-ui')
+		const serialized = cookies.get('fat-fuzzy-ui-styles')
 		let currentStyles = DEFAULT_STYLES
 		if (serialized) {
 			currentStyles = JSON.parse(serialized)
@@ -37,7 +37,7 @@ export const actions = {
 		if (!styles.enter(data)) {
 			return fail(400, {stylesError: true})
 		}
-		cookies.set('fat-fuzzy-ui', styles.toString(), {path: '/'})
+		cookies.set('fat-fuzzy-ui-styles', styles.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
 			throw redirect(303, redirectTo)
@@ -67,7 +67,7 @@ export const actions = {
 	},
 
 	restart: async ({cookies, url}) => {
-		cookies.delete('fat-fuzzy-ui', {path: '/'})
+		cookies.delete('fat-fuzzy-ui-styles', {path: '/'})
 		cookies.delete('fat-fuzzy-ui-state', {path: '/'})
 		cookies.delete('fat-fuzzy-ui-context-reveal', {path: '/'})
 	},

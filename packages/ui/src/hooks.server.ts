@@ -7,7 +7,6 @@ export const handle = (async ({event, resolve}) => {
 	const sidebarReveal = event.cookies.get('fat-fuzzy-sidebar-reveal')
 	const dsStyles = event.cookies.get('fat-fuzzy-ui-styles')
 	const dsState = event.cookies.get('fat-fuzzy-ui-state')
-
 	if (navReveal) {
 		event.locals.nav = navReveal
 	}

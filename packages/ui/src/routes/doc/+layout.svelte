@@ -4,6 +4,7 @@
 	import {page} from '$app/stores'
 
 	import * as settingsStore from '$stores/settings'
+	import * as uiStore from '$stores/ui'
 
 	import {tokens, blocks, compositions, layouts, constants} from '$lib'
 
@@ -19,7 +20,7 @@
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	const {sidebar} = data
+	const {sidebar, styles, context, state, markdowns} = data
 
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
@@ -29,7 +30,12 @@
 
 	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_REVEAL_STATE
 
-	settingsStore.sidebarReveal.set(sidebar)
+	uiStore.styles.set(styles)
+	uiStore.reveal.set(context)
+	uiStore.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)
+	uiStore.settingsReveal.set(state?.settingsReveal || DEFAULT_REVEAL_STATE)
+	uiStore.sidebarReveal.set(state?.sidebarReveal || DEFAULT_REVEAL_STATE)
+
 	const stores = [
 		settingsStore.sidebarReveal.subscribe((value) => {
 			if (value) {

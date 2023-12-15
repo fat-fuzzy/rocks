@@ -21,7 +21,7 @@
 	export let color = ''
 	export let background = 'polar'
 	export let path = ''
-	export let redirect = ''
+	export let redirect: string | undefined = undefined
 	export let id = 'ui'
 	export let title = 'RevealNav'
 	export let name = 'reveal-nav'
@@ -69,11 +69,7 @@
 		? `l:reveal ${position} ${place} ${reveal}`
 		: `l:reveal ${place} ${reveal}`
 	$: revealClasses = `form:expand`
-	$: action = formaction
-		? redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-		: undefined
+	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
 	})
@@ -84,7 +80,7 @@
 		{id}
 		{name}
 		{method}
-		action={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
+		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {
