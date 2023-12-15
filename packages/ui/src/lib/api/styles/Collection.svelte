@@ -60,7 +60,6 @@
 					{stylesApi}
 					{props}
 					{actionPath}
-					redirect={$page.url.pathname}
 				/>
 			{/each}
 		</section>

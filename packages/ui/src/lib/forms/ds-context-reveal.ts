@@ -24,7 +24,7 @@ export class DsContextReveal {
 		if (data.has('reveal')) {
 			const updated = data.get('reveal')?.toString()
 			if (updated) {
-				this.settings.reveal = TRANSITION_REVEAL[this.settings.reveal]
+				this.settings.reveal = TRANSITION_REVEAL[updated]
 				return true
 			}
 		}

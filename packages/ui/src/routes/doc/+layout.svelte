@@ -1,10 +1,9 @@
 <script lang="ts">
 	import type {LayoutData} from './$types'
-	import {onMount, onDestroy} from 'svelte'
+	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
 	import * as settingsStore from '$stores/settings'
-	import * as uiStore from '$stores/ui'
 
 	import {tokens, blocks, compositions, layouts, constants} from '$lib'
 
@@ -20,7 +19,7 @@
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	const {sidebar, dsState, dsStyles, dsContext} = data
+	const {sidebar} = data
 
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
@@ -28,30 +27,13 @@
 	const compositionNames = Object.keys(compositions).sort(sortAsc)
 	let title = 'Fat Fuzzy Test' // TODO : Fix title in children components: add breadcrumb nav component ?
 
-	let sidebarReveal: {[key: string]: string} = sidebar || {reveal: ''}
-	let uiNavReveal: {[key: string]: string} = sidebar || {reveal: ''}
-	let uiSidebarReveal: {[key: string]: string} = sidebar || {reveal: ''}
-	let uiSettingsReveal: {[key: string]: string} = sidebar || {reveal: ''}
+	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_REVEAL_STATE
 
+	settingsStore.sidebarReveal.set(sidebar)
 	const stores = [
 		settingsStore.sidebarReveal.subscribe((value) => {
 			if (value) {
 				sidebarReveal = value
-			}
-		}),
-		uiStore.navReveal.subscribe((value) => {
-			if (value) {
-				uiNavReveal = value
-			}
-		}),
-		uiStore.sidebarReveal.subscribe((value) => {
-			if (value) {
-				uiSidebarReveal = value
-			}
-		}),
-		uiStore.settingsReveal.subscribe((value) => {
-			if (value) {
-				uiSettingsReveal = value
 			}
 		}),
 	]
@@ -88,15 +70,6 @@
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
-	})
-
-	onMount(() => {
-		settingsStore.sidebarReveal.set(sidebar)
-		uiStore.styles.set(dsStyles)
-		uiStore.reveal.set(dsContext)
-		uiStore.navReveal.set(dsState?.navReveal || DEFAULT_REVEAL_STATE)
-		uiStore.sidebarReveal.set(dsState?.sidebarReveal || DEFAULT_REVEAL_STATE)
-		uiStore.settingsReveal.set(dsState?.settingsReveal || DEFAULT_REVEAL_STATE)
 	})
 </script>
 
