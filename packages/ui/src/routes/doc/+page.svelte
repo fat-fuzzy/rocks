@@ -11,7 +11,7 @@
 	const title = 'Fat Fuzzy Test' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = $page.data.context || DEFAULT_REVEAL_STATE
+	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -19,7 +19,6 @@
 		{category: 'layouts', items: layouts},
 		{category: 'compositions', items: compositions},
 	]
-	let path = $page.url.pathname
 
 	const localStores = [
 		stores.ui.styles.subscribe((value) => {
@@ -40,6 +39,7 @@
 
 	$: reveal = revealContext.reveal
 	$: markdowns = $page.data.markdowns
+	$: path = $page.url.pathname
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
 	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
 
