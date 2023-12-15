@@ -65,11 +65,7 @@
 	$: revealClasses = `form:expand card:${size}`
 	$: layoutClasses = `l:main:60 l:reveal:auto bp:${breakpoint}`
 
-	$: action = formaction
-		? redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-		: 'toggleNav'
+	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -81,7 +77,7 @@
 		<form
 			name="nav-reveal"
 			{method}
-			action={action ? (actionPath ? `${actionPath}?/${action}` : `/?/${action}`) : undefined}
+			action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 			use:enhance={() => {
 				// prevent default callback from resetting the form
 				return ({update}) => {

@@ -5,7 +5,6 @@ export const handle = (async ({event, resolve}) => {
 	const navReveal = event.cookies.get('fat-fuzzy-nav-reveal')
 	const settingsReveal = event.cookies.get('fat-fuzzy-settings-reveal')
 	const sidebarReveal = event.cookies.get('fat-fuzzy-sidebar-reveal')
-	const dsContext = event.cookies.get('fat-fuzzy-ui-context-reveal')
 	const dsStyles = event.cookies.get('fat-fuzzy-ui-styles')
 	const dsState = event.cookies.get('fat-fuzzy-ui-state')
 
@@ -26,9 +25,6 @@ export const handle = (async ({event, resolve}) => {
 	}
 	if (dsStyles) {
 		event.locals.dsStyles = dsStyles
-	}
-	if (dsContext) {
-		event.locals.dsContext = dsContext
 	}
 	const response = await resolve(event)
 	return response

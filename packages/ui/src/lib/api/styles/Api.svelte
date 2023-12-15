@@ -28,11 +28,7 @@
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
 
-	$: action = formaction
-		? redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-		: undefined
+	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -40,7 +36,7 @@
 <form
 	name="styles-update"
 	{method}
-	action={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
+	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
