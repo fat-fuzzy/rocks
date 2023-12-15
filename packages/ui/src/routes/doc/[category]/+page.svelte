@@ -2,14 +2,15 @@
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {tokens, blocks, compositions, layouts, api, stores} from '$lib'
+	import {tokens, blocks, compositions, layouts, api, stores, constants} from '$lib'
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
 
 	const actionPath = '/doc'
+	const {DEFAULT_REVEAL_STATE} = constants
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = {reveal: ''}
+	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
 
 	function getComponentType(cat: string) {
 		switch (cat) {

@@ -5,22 +5,22 @@ const {DEFAULT_DS_STATE, TRANSITION_REVEAL} = constants
 
 export class DsStateUpdate {
 	state: {
-		revealNav: Settings
-		revealHeaderNav: Settings
-		revealHeaderSettings: Settings
+		navReveal: Settings
+		sidebarReveal: Settings
+		settingsReveal: Settings
 	}
 	/**
 	 * Initialize default State object or from the user's cookie values, if any
 	 */
 	constructor(
-		settings: {
-			revealNav: Settings
-			revealHeaderNav: Settings
-			revealHeaderSettings: Settings
+		state: {
+			navReveal: Settings
+			sidebarReveal: Settings
+			settingsReveal: Settings
 		} | null = null,
 	) {
-		if (settings) {
-			this.state = settings
+		if (state) {
+			this.state = state
 		} else {
 			this.state = DEFAULT_DS_STATE
 		}
@@ -30,24 +30,24 @@ export class DsStateUpdate {
 	 * Update Settings based on inputs
 	 */
 	enter(data: FormData) {
-		if (data.has('button-RevealNav')) {
-			return this.revealNav(data)
+		if (data.has('button-ui-RevealNav')) {
+			return this.toggleNavReveal(data)
 		}
-		if (data.has('button-Header-nav-reveal')) {
-			return this.revealHeaderNav(data)
+		if (data.has('button-ui-Header-nav-reveal')) {
+			return this.toggleSidebarReveal(data)
 		}
-		if (data.has('button-Header-menu-settings')) {
-			return this.revealHeaderSettings(data)
+		if (data.has('button-ui-Header-menu-settings')) {
+			return this.toggleSettingsReveal(data)
 		}
 	}
 
 	/**
 	 * Update State based on inputs
 	 */
-	revealNav(data: FormData) {
-		const updated = data.get('button-RevealNav')?.toString()
+	toggleNavReveal(data: FormData) {
+		const updated = data.get('button-ui-RevealNav')?.toString()
 		if (updated) {
-			this.state.revealNav.reveal = TRANSITION_REVEAL[this.state.revealNav.reveal]
+			this.state.navReveal.reveal = updated
 			return true
 		}
 		return false
@@ -56,10 +56,10 @@ export class DsStateUpdate {
 	/**
 	 * Update State based on inputs
 	 */
-	revealHeaderNav(data: FormData) {
-		const updated = data.get('button-Header-nav-reveal')?.toString()
+	toggleSidebarReveal(data: FormData) {
+		const updated = data.get('button-ui-Header-nav-reveal')?.toString()
 		if (updated) {
-			this.state.revealHeaderNav.reveal = TRANSITION_REVEAL[this.state.revealHeaderNav.reveal]
+			this.state.sidebarReveal.reveal = updated
 			return true
 		}
 		return false
@@ -68,11 +68,10 @@ export class DsStateUpdate {
 	/**
 	 * Update State based on inputs
 	 */
-	revealHeaderSettings(data: FormData) {
-		const updated = data.get('button-Header-menu-settings')?.toString()
+	toggleSettingsReveal(data: FormData) {
+		const updated = data.get('button-ui-Header-menu-settings')?.toString()
 		if (updated) {
-			this.state.revealHeaderSettings.reveal =
-				TRANSITION_REVEAL[this.state.revealHeaderSettings.reveal]
+			this.state.settingsReveal.reveal = updated
 			return true
 		}
 		return false

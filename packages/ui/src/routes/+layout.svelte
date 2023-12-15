@@ -44,6 +44,7 @@
 
 <Header
 	id="ui"
+	title="Main navigation"
 	className={headerClass}
 	actionPath="/"
 	formaction="toggleNav"

@@ -1,28 +1,26 @@
 <script lang="ts">
 	import type {LayoutData} from './$types'
-	import {onDestroy} from 'svelte'
+	import {onMount, onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
 	import * as settingsStore from '$stores/settings'
 	import * as uiStore from '$stores/ui'
 
-	import {tokens, blocks, compositions, layouts} from '$lib'
+	import {tokens, blocks, compositions, layouts, constants} from '$lib'
 
 	export let data: LayoutData
 
 	const {RevealNav} = compositions
 	let path = $page.url.pathname
 
+	const {DEFAULT_REVEAL_STATE} = constants
+
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	const {sidebar, styles, context} = data
-
-	settingsStore.sidebarReveal.set(sidebar)
-	uiStore.styles.set(styles)
-	uiStore.reveal.set(context)
+	const {sidebar, dsState, dsStyles, dsContext} = data
 
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
@@ -31,11 +29,29 @@
 	let title = 'Fat Fuzzy Test' // TODO : Fix title in children components: add breadcrumb nav component ?
 
 	let sidebarReveal: {[key: string]: string} = sidebar || {reveal: ''}
+	let uiNavReveal: {[key: string]: string} = sidebar || {reveal: ''}
+	let uiSidebarReveal: {[key: string]: string} = sidebar || {reveal: ''}
+	let uiSettingsReveal: {[key: string]: string} = sidebar || {reveal: ''}
 
 	const stores = [
 		settingsStore.sidebarReveal.subscribe((value) => {
 			if (value) {
 				sidebarReveal = value
+			}
+		}),
+		uiStore.navReveal.subscribe((value) => {
+			if (value) {
+				uiNavReveal = value
+			}
+		}),
+		uiStore.sidebarReveal.subscribe((value) => {
+			if (value) {
+				uiSidebarReveal = value
+			}
+		}),
+		uiStore.settingsReveal.subscribe((value) => {
+			if (value) {
+				uiSettingsReveal = value
 			}
 		}),
 	]
@@ -73,6 +89,15 @@
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
 	})
+
+	onMount(() => {
+		settingsStore.sidebarReveal.set(sidebar)
+		uiStore.styles.set(dsStyles)
+		uiStore.reveal.set(dsContext)
+		uiStore.navReveal.set(dsState?.navReveal || DEFAULT_REVEAL_STATE)
+		uiStore.sidebarReveal.set(dsState?.sidebarReveal || DEFAULT_REVEAL_STATE)
+		uiStore.settingsReveal.set(dsState?.settingsReveal || DEFAULT_REVEAL_STATE)
+	})
 </script>
 
 <div class="l:sidebar:xs align-content:start">
@@ -83,6 +108,7 @@
 			id="nav-page"
 			{items}
 			{path}
+			settings={settingsStore}
 			breakpoint="sm"
 			size="md"
 			color="bg:primary:light"

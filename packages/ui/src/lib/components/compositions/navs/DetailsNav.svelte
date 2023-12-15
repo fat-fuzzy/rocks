@@ -36,7 +36,11 @@
 	>
 		{format.formatLabel(title, icon)}
 	</summary>
-	<nav id={`nav-${id}`} class={`l:${layout} bp:${breakpoint} ${size} ${show} h:${height}`}>
+	<nav
+		id={`nav-${id}`}
+		class={`l:${layout} bp:${breakpoint} ${size} ${show} h:${height}`}
+		aria-label={title}
+	>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</nav>
 </details>

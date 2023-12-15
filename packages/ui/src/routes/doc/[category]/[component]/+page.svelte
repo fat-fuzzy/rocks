@@ -3,11 +3,12 @@
 	import {page} from '$app/stores'
 
 	import type {ComponentType} from 'svelte'
-	import {stores, api, tokens, blocks, layouts, compositions} from '$lib'
+	import {stores, api, tokens, blocks, layouts, compositions, constants} from '$lib'
 
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
 	const actionPath = '/doc'
+	const {DEFAULT_REVEAL_STATE} = constants
 
 	let categoryItems: {[name: string]: any} = {
 		tokens: tokens,
@@ -22,18 +23,12 @@
 	let Component: ComponentType
 
 	let stylesApi = api.stylesApi.initStyles()
-
-	let revealContext: {[key: string]: string} = {reveal: ''}
+	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
 
 	const localStores = [
 		stores.ui.styles.subscribe((value) => {
 			if (value) {
 				stylesApi.applyStyles(value)
-			}
-		}),
-		stores.ui.reveal.subscribe((value) => {
-			if (value) {
-				revealContext = value
 			}
 		}),
 	]

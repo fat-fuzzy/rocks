@@ -11,11 +11,13 @@
 	export let stylesApi: StylesApi = initStyles()
 
 	export let title = ''
+	export let name = title
 	export let component: ComponentType
 	export let props: any
 
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
+	export let settings: any = ui
 
 	let breakpoint = props?.breakpoint || ''
 	let threshold = props?.threshold || ''
@@ -30,7 +32,7 @@
 	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [
-		ui.styles.subscribe((value) => {
+		settings.styles.subscribe((value) => {
 			if (value) {
 				styles = value
 			}
@@ -58,6 +60,8 @@
 		breakpoint,
 		threshold,
 		asset,
+		name: `ui-${name}`,
+		settings,
 	}
 
 	onDestroy(() => {

@@ -1,16 +1,17 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
+	import {onMount, onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, compositions, api, stores} from '@fat-fuzzy/ui'
+	import {tokens, blocks, layouts, compositions, api, stores, constants} from '@fat-fuzzy/ui'
 
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
 	const actionPath = '/ui'
+	const {DEFAULT_REVEAL_STATE} = constants
 
 	const title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = {reveal: ''}
+	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -45,6 +46,10 @@
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
+	})
+
+	onMount(() => {
+		stores.ui.reveal.set({reveal: 'show'})
 	})
 </script>
 

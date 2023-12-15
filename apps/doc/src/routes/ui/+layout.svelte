@@ -69,6 +69,7 @@
 			id="nav-page"
 			{items}
 			{path}
+			settings={stores.settings}
 			breakpoint="sm"
 			size="md"
 			color="bg:primary:light"
