@@ -61,7 +61,7 @@
 				type="submit"
 				size="xl"
 				color="highlight"
-				variant="round fill"
+				variant="round outline"
 				asset="emoji:nojs"
 			/>
 		</div>

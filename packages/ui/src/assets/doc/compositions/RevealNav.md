@@ -3,6 +3,7 @@ title: RevealNav
 slug: RevealNav
 family: ['compositions']
 group: ['navs']
+props_content: ['Nav']
 props_state: ['title', 'formaction', 'items']
 props_style: ['color', 'variant', 'size', 'background']
 context: ['app.settings', 'shared.container']
