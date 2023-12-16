@@ -1,10 +1,26 @@
 // Allow space for scrollbar on macOS
 pre,
 code {
+	font-family: var(--font-family-code);
+}
+
+// Allow space for scrollbar on macOS
+pre {
+	overflow: auto;
 	padding-inline: var(--current-size) var(--current-size-plus);
 	padding-block: var(--current-size);
-	font-family: var(--font-family-code);
-	overflow: auto;
+}
+
+code {
+	padding: var(--current-size-minus) var(--current-size);
+	border-radius: var(--radius-base);
+}
+
+code {
+	--current-bg-color: var(--color-gray-light);
+	color: var(--current-color);
+	background-color: var(--current-bg-contrast);
+	border: none;
 }
 
 pre,
@@ -24,6 +40,7 @@ pre.bare {
 
 .night {
 	pre,
+	code,
 	pre.default {
 		--current-color: var(--color-light);
 		--current-bg-color: var(--current-bg-contrast);

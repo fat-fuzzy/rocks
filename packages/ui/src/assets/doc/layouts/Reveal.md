@@ -3,7 +3,7 @@ title: Reveal
 slug: Reveal
 family: ['layouts']
 # group: ['reveal']
-props_content: ['any']
+content_type: ['any']
 props_style: ['size']
 context: ['app.settings', 'shared.container']
 ---

@@ -3,7 +3,7 @@ title: RevealAuto
 slug: RevealAuto
 family: ['layouts']
 # group: ['reveal']
-props_content: ['any']
+content_type: ['any']
 props_style: ['size', 'threshold']
 context: ['app.settings']
 ---

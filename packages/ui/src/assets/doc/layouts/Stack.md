@@ -2,7 +2,7 @@
 title: Stack
 slug: Stack
 family: ['layouts']
-props_content: ['items']
+content_type: ['items']
 props_style: ['size']
 context: ['app.settings']
 ---

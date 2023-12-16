@@ -3,8 +3,8 @@ title: Header
 slug: Header
 family: ['compositions']
 group: ['headers']
+content_type: ['Nav', 'Settings']
 props_state: ['formaction']
-props_content: ['Nav', 'Settings']
 props_style: ['size', 'color', 'variant', 'breakpoint', 'container']
 context: ['app.settings', 'shared.container']
 ---

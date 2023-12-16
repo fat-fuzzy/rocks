@@ -2,7 +2,7 @@
 title: Sidebar
 slug: Sidebar
 family: ['layouts']
-props_content: ['main', 'side']
+content_type: ['main', 'side']
 props_style: ['size']
 context: ['app.settings', 'shared.container']
 ---
