@@ -85,7 +85,7 @@
 							<Api categories={[category]} {title} {path} redirect={$page.url.pathname}/>
 					</div>
 				</details>
-			</section> -->
+			</section> 
 				<details id={`${category}-doc`} class="l:stack:lg" open>
 					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
 					<div class="drop w:full">
@@ -98,7 +98,7 @@
 							{/if}
 						</div>
 					</div>
-				</details>
+				</details>-->
 			</div>
 		</section>
 	</Sidebar>
