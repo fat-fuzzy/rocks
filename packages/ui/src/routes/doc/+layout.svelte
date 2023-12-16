@@ -13,7 +13,7 @@
 	const {RevealNav} = compositions
 	let path = $page.url.pathname
 
-	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
+	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE, UI_DOC_TABS} = constants
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -28,14 +28,14 @@
 	const compositionNames = Object.keys(compositions).sort(sortAsc)
 	let title = 'Fat Fuzzy Test' // TODO : Fix title in children components: add breadcrumb nav component ?
 
-	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_REVEAL_STATE
+	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_NAV_REVEAL_STATE
 
 	stores.tab.set(currentTab || UI_DOC_TABS[0])
 	stores.styles.set(styles)
 	stores.reveal.set(context)
 	stores.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)
 	stores.settingsReveal.set(state?.settingsReveal || DEFAULT_REVEAL_STATE)
-	stores.sidebarReveal.set(state?.sidebarReveal || DEFAULT_REVEAL_STATE)
+	stores.sidebarReveal.set(state?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE)
 
 	const localStores = [
 		settingsStore.sidebarReveal.subscribe((value) => {

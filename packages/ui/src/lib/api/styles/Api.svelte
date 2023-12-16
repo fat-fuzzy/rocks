@@ -12,7 +12,7 @@
 	export let redirect: string | undefined = undefined
 	// export let reset = 'reset'
 
-	let apiLayout = categories.includes('app') ? 'nowrap grow' : 'nowrap shrink'
+	let apiLayout = 'nowrap grow'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 

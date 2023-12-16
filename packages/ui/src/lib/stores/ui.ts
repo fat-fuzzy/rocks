@@ -2,7 +2,13 @@ import {writable} from 'svelte/store'
 
 import constants from '$lib/types/constants'
 
-const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, DEFAULT_STYLES, UI_DOC_TABS} = constants
+const {
+	DEFAULT_REVEAL_STATE,
+	DEFAULT_NAV_REVEAL_STATE,
+	DEFAULT_APP_SETTINGS,
+	DEFAULT_STYLES,
+	UI_DOC_TABS,
+} = constants
 
 export const styles = writable(DEFAULT_STYLES)
 
@@ -14,7 +20,7 @@ export const menuReveal = writable(DEFAULT_REVEAL_STATE)
 
 export const navReveal = writable(DEFAULT_REVEAL_STATE)
 
-export const sidebarReveal = writable(DEFAULT_REVEAL_STATE)
+export const sidebarReveal = writable(DEFAULT_NAV_REVEAL_STATE)
 
 export const settingsReveal = writable(DEFAULT_REVEAL_STATE)
 

@@ -2,7 +2,7 @@
 	import {createEventDispatcher} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import {clickOutside} from '$lib/utils/click-outside.js'
+	// import {clickOutside} from '$lib/utils/click-outside.js'
 	import constants from '$lib/types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
@@ -27,9 +27,9 @@
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
 
-	function handleClickOutside() {
-		dispatch('toggle', {reveal: 'minimize'})
-	}
+	// function handleClickOutside() {
+	// 	dispatch('toggle', {reveal: 'minimize'})
+	// }
 
 	function handleToggle(event: CustomEvent) {
 		const updated = event.detail.expanded ? 'show' : 'minimize'
@@ -51,7 +51,7 @@
 		: undefined
 </script>
 
-<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutside}>
+<div class={layoutClasses}>
 	<form
 		{name}
 		{method}
