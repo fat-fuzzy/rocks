@@ -21,16 +21,16 @@
 	export let color = ''
 	export let background = 'polar'
 	export let path = ''
-	export let redirect: string | undefined = undefined
 	export let id = 'ui'
 	export let title = 'RevealNav'
 	export let name = 'reveal-nav'
 	export let align = 'start'
 	export let place = 'top'
-	export let value = 'show'
+	export let value = 'minimize' // TODO: get value from page data
 	export let position: string | undefined = undefined
 	export let formaction: string | undefined = undefined
 	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	export let items: any[] = [] // TODO: fix type
 
@@ -70,6 +70,7 @@
 		: `l:reveal ${place} ${reveal}`
 	$: revealClasses = `form:expand`
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
 	})

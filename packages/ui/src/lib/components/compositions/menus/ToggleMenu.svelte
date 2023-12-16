@@ -40,13 +40,15 @@
 			selected,
 		})
 	}
+
 	$: type = formaction ? 'submit' : 'button'
+	$: containerClass = container ? `${container}:${size}` : ''
 </script>
 
 {#if title}
 	<div class={`menu l:stack ${size}`}>
 		<p>{title}</p>
-		<menu {id} class={`l:${layout}:${size} ${container}:${size} th:${threshold} ${size}`}>
+		<menu {id} class={`l:${layout}:${size} ${containerClass} th:${threshold} ${size}`}>
 			{#each items as props}
 				{@const itemColor = props.color ?? color}
 				{@const itemVariant = props.variant ?? variant}
@@ -68,7 +70,7 @@
 		</menu>
 	</div>
 {:else}
-	<menu {id} class={`l:${layout} bp:${threshold} ${size}`}>
+	<menu {id} class={`l:${layout}:${size} ${containerClass} th:${threshold} ${size}`}>
 		{#each items as props}
 			{@const itemColor = props.color ?? color}
 			{@const itemVariant = props.variant ?? variant}

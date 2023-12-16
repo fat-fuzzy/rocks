@@ -1,14 +1,16 @@
-import type {Settings} from '$types'
+import type {Settings, Tab} from '$types'
 import type {StyleTree} from '$lib/api/styles/types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 const DEFAULT_SIDEBAR_REVEAL_STATE: Settings = {reveal: 'show'}
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 const DEFAULT_DS_STATE: {
+	menuReveal: Settings
 	navReveal: Settings
 	sidebarReveal: Settings
 	settingsReveal: Settings
 } = {
+	menuReveal: {reveal: 'minimize'},
 	navReveal: {reveal: 'minimize'},
 	sidebarReveal: {reveal: 'minimize'},
 	settingsReveal: {reveal: 'minimize'},
@@ -42,6 +44,12 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 	'75': 'lg',
 	'100': 'xl',
 }
+
+const UI_DOC_TABS: Tab[] = [
+	// TODO: figure out a better way to map range number values to class strings
+	{id: 'component.context.menu.toggle.doc', title: 'Doc', slug: 'doc', value: 'doc'},
+	{id: 'component.context.menu.toggle.demo', title: 'Demo', slug: 'demo', value: 'demo'},
+]
 /**
  * Indicates the direction that icons should point in when used to indicate direction of movement of the UI element under control
  */
@@ -168,6 +176,7 @@ const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
 
 export default {
 	UI_STATE,
+	UI_DOC_TABS,
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_SIDEBAR_REVEAL_STATE,

@@ -24,7 +24,13 @@ $point-up: '👆';
 $point-down: '👇';
 $log: '🪵';
 $control-knobs: '🎛️';
+$pencil: '✏️';
+$memo: '📝';
+$fountain-pen: '🖋️';
+$magic-wand: '🪄';
+$gear: '⚙️';
 $umbrella: '☂️';
+$lightning-bolt: '⚡️';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -68,6 +74,9 @@ $emojis: (
 	context: #{$umbrella},
 	switch-active: #{$bunny},
 	switch-inactive: #{$hat},
+	doc: #{$pencil},
+	demo: #{$magic-wand},
+	nojs: #{$bunny},
 
 	// Playground fixture emojis
 	geometry-2d: #{$ruler}

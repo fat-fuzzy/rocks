@@ -18,5 +18,6 @@ td {
 }
 
 tr:hover td {
+	color: var(--color-dark);
 	background-color: var(--current-primary-lightest);
 }

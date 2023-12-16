@@ -1,35 +1,56 @@
 <script lang="ts">
+	import {onDestroy, createEventDispatcher} from 'svelte'
+	import {enhance} from '$app/forms'
+	import constants from '$lib/types/constants'
 	import {clickOutside} from '$lib/utils/click-outside.js'
-	import {createEventDispatcher} from 'svelte'
-	import format from '$lib/utils/format'
+
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
+	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+
+	import * as ui from '$stores/ui'
+
+	const {ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION} = constants
 
 	const dispatch = createEventDispatcher()
 	export let layout = 'stack'
 	export let container = 'card'
-	export let direction = 'tb-lr'
 	export let size = ''
 	export let threshold = ''
 	export let variant = ''
 	export let height = ''
 	export let color = ''
 	export let background = ''
-	export let id = 'reveal-menu'
-	export let title = ''
-	export let icon = ''
+	export let id = 'ui'
+	export let title = 'RevealMenu'
+	export let name = 'reveal-menu'
 	export let align = 'start'
 	export let place = 'left'
+	export let value = 'minimize' // TODO: get value from page data
+	export let position: string | undefined = undefined
+	export let formaction: string | undefined = undefined
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
+
 	export let items: any = []
 
-	let expanded = false
+	let menuReveal: {[key: string]: string} = {reveal: value}
 
 	function handleClickOutside(event) {
 		// expanded = false
 		// TODO : fix this
 	}
 
-	function toggleReveal(event) {
-		expanded = !expanded
+	const stores = [
+		ui.menuReveal.subscribe((value) => {
+			if (value) {
+				menuReveal = value
+			}
+		}),
+	]
+
+	function toggleMenu(event: CustomEvent) {
+		const updated = event.detail.expanded ? 'show' : 'minimize'
+		ui.menuReveal.set({reveal: updated})
 	}
 
 	let clicked = ''
@@ -37,8 +58,6 @@
 
 	// Override this function to override menu button actions
 	export let onClick = (event) => {
-		window.alert(`${event.target.textContent} Clicked`)
-		clicked = event.target.id
 		dispatch('click', {
 			clicked,
 		})
@@ -48,26 +67,54 @@
 		bare: 'bare',
 		default: 'outline',
 	}
-	$: show = expanded ? `show ${place}` : `minimize ${place}`
+
+	$: reveal = menuReveal.reveal
+	$: buttonAlign = place ? ALIGN_OPPOSITE[align] : ''
+	$: animationDirection = place ? ALIGN_ANIMATION_DIRECTION[place][reveal] : ''
+	$: show = reveal ? `show ${place}` : `minimize ${place}`
 	$: setHeight = height ? ` h:${height}` : ''
 	$: innerVariant = VARIANT_MATCH[variant]
+	$: layoutClasses = position
+		? `l:reveal ${position} ${place} ${reveal}`
+		: `l:reveal ${place} ${reveal}`
+	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+
+	onDestroy(() => {
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
-<div
-	class={`l:reveal ${show} ${setHeight} l:${layout} ${direction}`}
+<form
+	method="post"
+	class={layoutClasses}
+	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+	use:enhance={() => {
+		// prevent default callback from resetting the form
+		return ({update}) => {
+			update({reset: false})
+		}
+	}}
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
-	<button
-		id={`${id}-reveal-menu-button`}
-		class={`card:${size} ${variant} ${color} font:sm`}
-		aria-expanded={expanded}
-		aria-controls={`${id}-reveal-menu`}
-		on:click={toggleReveal}
+	<Expand
+		id={`button-${id}`}
+		{variant}
+		{title}
+		{size}
+		{color}
+		name={`button-${name}`}
+		align={buttonAlign}
+		controls={`menu-${id}`}
+		value={title}
+		states={{
+			active: {text: title, value: 'show', asset: `emoji:point-${animationDirection}`},
+			inactive: {text: title, value: 'minimize', asset: `emoji:point-${animationDirection}`},
+		}}
+		on:click={toggleMenu}
 	>
-		<span class="icon">{icon}</span>
-		<span class="text">{format.formatLabel(title, icon)}</span>
-	</button>
+		{title}
+	</Expand>
 	<menu
 		id={`menu-${id}`}
 		class={`content l:${layout}:${size} ${container}:${size} th:${threshold} layer bg:${background} card:${size} align:${align} ${size}`}
@@ -78,4 +125,4 @@
 			</li>
 		{/each}
 	</menu>
-</div>
+</form>
