@@ -11,6 +11,8 @@
 	$: date = markdown.meta.date
 	$: html = $page.data.html
 	$: headerClass = 'page-header bg:polar'
+
+	// TODO: Fix context menu
 </script>
 
 <svelte:head>
@@ -23,13 +25,15 @@
 
 	<RevealAuto
 		size="sm"
-		threshold="sm"
+		breakpoint="sm"
 		color="primary:light"
 		align="start"
-		asset="&nbsp;💡&nbsp;"
 		title="Info"
+		formaction="toggleContext"
+		actionPath="/ui"
+		redirect={$page.url.pathname}
 	>
-		<div slot="content" class="l:side shrink ui:menu">
+		<div slot="content" class="l:side maki sm feedback bare emoji:info">
 			<p>Published: {date}</p>
 		</div>
 	</RevealAuto>

@@ -11,18 +11,6 @@ pre {
 	padding-block: var(--current-size);
 }
 
-code {
-	padding: var(--current-size-minus) var(--current-size);
-	border-radius: var(--radius-base);
-}
-
-code {
-	--current-bg-color: var(--color-gray-light);
-	color: var(--current-color);
-	background-color: var(--current-bg-contrast);
-	border: none;
-}
-
 pre,
 pre.default {
 	--current-color: var(--color-light);
@@ -33,12 +21,25 @@ pre.default {
 	border-color: var(--current-border-color);
 }
 
+code:not([class^='language-']) {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-bg-contrast);
+	border: none;
+	padding: var(--current-size-minus) var(--current-size);
+	border-radius: var(--radius-base);
+}
+
 pre.bare {
 	--current-bg-color: var(--color-gray-5);
 	border-color: var(--current-bg-color);
 }
 
 .night {
+	code:not([class^='language-']) {
+		--current-color: var(--color-light);
+	}
+
 	pre,
 	code,
 	pre.default {
