@@ -16,6 +16,8 @@ export default {
 	RevealMenu: {
 		slug: 'ui',
 		title: 'RevealMenu',
+		formaction: 'updateState',
+		actionPath: '/doc',
 		items: [
 			{id: 'reveal-menu.button.idea', text: 'Idea', asset: 'emoji:idea'},
 			{id: 'reveal-menu.button.profile', text: 'Profile', asset: 'emoji:profile'},
@@ -57,7 +59,7 @@ export default {
 		slug: 'ui',
 		title: 'RevealNav',
 		formaction: 'updateState',
-		formPath: '/doc',
+		actionPath: '/doc',
 		place: 'top',
 		items: [
 			{

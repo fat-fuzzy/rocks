@@ -69,4 +69,4 @@
 	})
 </script>
 
-<svelte:component this={component} id={title} {...props} {actionPath} {redirect} />
+<svelte:component this={component} id={title} {actionPath} {redirect} {...props} />

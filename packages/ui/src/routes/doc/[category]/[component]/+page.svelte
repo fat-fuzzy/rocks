@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
+	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
 	import type {ComponentType} from 'svelte'
@@ -7,8 +8,9 @@
 
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
+	const {ToggleMenu} = compositions
 	const actionPath = '/doc'
-	const {DEFAULT_REVEAL_STATE} = constants
+	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
 
 	let categoryItems: {[name: string]: any} = {
 		tokens: tokens,
@@ -16,6 +18,25 @@
 		layouts: layouts,
 		compositions: compositions,
 	}
+	const tabButtons = [
+		{
+			id: 'context.menu.toggle.demo',
+			title: 'Demo',
+			size: 'xl',
+			color: 'accent',
+			asset: 'emoji:demo',
+			value: 'demo',
+			initial: 'pressed',
+		},
+		{
+			id: 'context.menu.toggle.doc',
+			title: 'Doc',
+			size: 'xl',
+			color: 'primary',
+			asset: 'emoji:doc',
+			value: 'doc',
+		},
+	]
 
 	let category: string
 
@@ -24,6 +45,7 @@
 
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
+	let currentTab = $page.data.currentTab || UI_DOC_TABS[0]
 
 	const localStores = [
 		stores.ui.styles.subscribe((value) => {
@@ -36,17 +58,30 @@
 				revealContext = value
 			}
 		}),
+		stores.ui.tab.subscribe((value) => {
+			if (value) {
+				currentTab = value
+			}
+		}),
 	]
 
 	function handleToggle(event: CustomEvent) {
 		stores.ui.reveal.set(event.detail)
 	}
 
+	function handleTabChange(event: CustomEvent) {
+		stores.ui.tab.set(event.detail.selected[0])
+	}
+
 	$: reveal = revealContext.reveal
 	$: category = $page.params.category
+	$: markdowns = $page.data.markdowns
 	$: title = $page.params.component
 	$: Component = categoryItems[category][title]
 	$: path = $page.url.pathname
+	$: content = markdowns.blocks.find(({meta}) => meta.title === title) || {
+		html: `<p class="feedback emoji:default">Doc Coming Soon!</p>`,
+	}
 	$: headerClass = 'page-header card:md l:switcher:md bg:polar'
 
 	onDestroy(() => {
@@ -76,26 +111,81 @@
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side ui:menu l:switcher:sm">
-			<Api
-				categories={['shared', 'app']}
-				{title}
-				{path}
-				{actionPath}
-				redirect={$page.url.pathname}
-			/>
+			{#if currentTab.value === 'demo'}
+				<Api
+					categories={['shared', 'app']}
+					{title}
+					{path}
+					{actionPath}
+					redirect={$page.url.pathname}
+				/>
+			{/if}
+			<form
+				method="POST"
+				class="l:switcher:sm"
+				action={`/doc?/handleTabChange&redirectTo=${$page.url.pathname}`}
+				use:enhance={() => {
+					// prevent default callback from resetting the form
+					return ({update}) => {
+						update({reset: false})
+					}
+				}}
+			>
+				<ToggleMenu
+					id={`submit.${path}`}
+					items={tabButtons}
+					layout="switcher"
+					size="lg"
+					color="primary"
+					variant="round outline"
+					container="card:sm"
+					formaction={`/doc?/handleTabChange&redirectTo=${$page.url.pathname}`}
+					on:click={handleTabChange}
+				/>
+			</form>
 		</div>
 	</RevealAuto>
 </header>
 
-<Element
-	isPage={true}
-	depth={1}
-	{title}
-	page={path}
-	{path}
-	{category}
-	{stylesApi}
-	component={Component}
-	{actionPath}
-	redirect={$page.url.pathname}
-/>
+{#if content.html && currentTab.value === 'doc'}
+	<article class="l:sidebar:xs">
+		<div class="l:main">
+			<section class="l:text:lg">
+				{@html content.html}
+			</section>
+		</div>
+		{#if content.meta}
+			<aside class="l:side">
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>State Props</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.props_state as prop}
+							<li class="card:sm bg:accent:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.props_style as prop}
+							<li class="card:sm bg:primary:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			</aside>
+		{/if}
+	</article>
+{:else if currentTab.value === 'demo'}
+	<Element
+		isPage={true}
+		depth={1}
+		{title}
+		page={path}
+		{path}
+		{category}
+		{stylesApi}
+		component={Component}
+		{actionPath}
+		redirect={$page.url.pathname}
+	/>
+{/if}

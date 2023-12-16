@@ -7,3 +7,10 @@ export type Settings = {
 export type ButtonState = {
 	[key: string]: {text: string; value: string; asset: string}
 }
+
+export type Tab = {
+	id: string
+	title: string
+	slug: string
+	value?: string
+}

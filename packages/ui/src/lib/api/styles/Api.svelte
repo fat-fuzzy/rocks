@@ -29,6 +29,7 @@
 	}
 
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	$: frameClass = categories[0] === 'app' ? 'l:switcher:md' : 'l:frame:twin' // TODO: Fix this - does not work
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -53,18 +54,16 @@
 		/>
 	{/each}
 	{#await Promise.resolve()}
-		<div class="l:flex justify:center align:center">
-			<div class="l:frame:square">
-				<Button
-					id={`submit.${path}`}
-					title="Apply styles"
-					type="submit"
-					size="xl"
-					color="primary"
-					variant="round primary fill"
-					asset="emoji:sparkles"
-				/>
-			</div>
+		<div class={`${frameClass} card:lg`}>
+			<Button
+				id={`submit.${path}`}
+				title="Apply styles"
+				type="submit"
+				size="xl"
+				color="highlight"
+				variant="round fill"
+				asset="emoji:nojs"
+			/>
 		</div>
 	{:then}
 		<slot />

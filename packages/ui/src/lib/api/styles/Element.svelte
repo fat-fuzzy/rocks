@@ -19,7 +19,6 @@
 	export let redirect: string | undefined = undefined
 
 	export let title = ''
-	export let content: {html: string} | undefined = undefined
 	export let depth = 0
 	export let isPage = false
 	export let path = ''
@@ -144,7 +143,7 @@
 							<Api categories={[category]} {title} {path} {redirect} />
 				</div>
 			</details>
-		</section> -->
+		</section>
 
 				<details id={`${category}-${title}-doc`} class="l:stack:lg" open>
 					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
@@ -158,7 +157,7 @@
 							{/if}
 						</div>
 					</div>
-				</details>
+				</details> -->
 			</div>
 		</section>
 	</article>

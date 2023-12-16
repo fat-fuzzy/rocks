@@ -13,14 +13,14 @@
 	const {RevealNav} = compositions
 	let path = $page.url.pathname
 
-	const {DEFAULT_REVEAL_STATE} = constants
+	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	const {sidebar, styles, context, state, markdowns} = data
+	const {sidebar, styles, context, state, currentTab, markdowns} = data
 
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
@@ -30,6 +30,7 @@
 
 	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_REVEAL_STATE
 
+	uiStore.tab.set(currentTab || UI_DOC_TABS[0])
 	uiStore.styles.set(styles)
 	uiStore.reveal.set(context)
 	uiStore.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)
