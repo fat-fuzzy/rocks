@@ -33,7 +33,7 @@
 		actionPath="/ui"
 		redirect={$page.url.pathname}
 	>
-		<div slot="content" class="l:side maki sm feedback bare emoji:info">
+		<div slot="content" class="l:side maki sm feedback default bare emoji:idea">
 			<p>Published: {date}</p>
 		</div>
 	</RevealAuto>

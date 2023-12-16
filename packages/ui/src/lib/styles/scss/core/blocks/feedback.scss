@@ -73,6 +73,12 @@ pre.feedback.bare {
 		--current-border-color: var(--current-bg-color);
 	}
 
+	.feedback.bare,
+	.feedback[class*='bg:default'].bare {
+		--current-bg-color: var(--color-light);
+		--current-border-color: var(--current-bg-color);
+	}
+
 	&.bg\:contrast {
 		pre.feedback,
 		pre.feedback.default,
@@ -90,17 +96,12 @@ pre.feedback.bare {
 		}
 	}
 	&.bg\:blend {
-		.feedback:not(pre),
-		.feedback.default:not(pre),
+		.feedback:not(pre):not(.bare),
+		.feedback.default:not(pre):not(.bare),
 		.feedback[class*='bg:default'] {
 			--current-color: var(--color-black);
 			--current-bg-color: var(--color-gray-3);
 			--current-border-color: var(--color-gray-4);
-		}
-
-		.feedback.bare,
-		.feedback[class*='bg:default'].bare {
-			--current-border-color: var(--current-bg-color);
 		}
 
 		pre.feedback,
@@ -133,6 +134,7 @@ pre.feedback.bare {
 		--current-border-color: var(--current-bg-color);
 	}
 
+	.bg\:polar,
 	.bg\:contrast {
 		.feedback:not(pre),
 		.feedback.default:not(pre),
