@@ -125,14 +125,17 @@
 			<div class="l:stack:lg">
 				<details id={`${category}-${title}-api`} class="l:stack:lg" open>
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
-					{#if category !== 'compositions' && category !== 'tokens'}
+					{#if category === 'tokens'}
 						<div class="drop w:full bg:polar ui:menu">
 							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
 						</div>
+					{:else if category === 'compositions'}
+						<div class="drop w:full bg:polar ui:menu">
+							<Api categories={['shared']} {title} {path} {actionPath} {redirect} />
+						</div>
 					{:else}
-						<div class="card:lg text:center">
-							<p class={`font:xl`}>🐰</p>
-							<p class={`font:md`}>Coming soon!</p>
+						<div class="drop w:full bg:polar ui:menu">
+							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
 						</div>
 					{/if}
 				</details>

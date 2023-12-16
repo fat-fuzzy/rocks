@@ -106,20 +106,15 @@
 		variant="outline"
 		title="Context"
 		formaction="toggleContext"
+		container="side"
 		{actionPath}
 		{reveal}
 		redirect={$page.url.pathname}
 		on:toggle={handleToggle}
 	>
-		<div slot="content" class="l:side ui:menu l:switcher:sm">
+		<div slot="content" class="ui:menu l:switcher:sm">
 			{#if currentTab.value === 'demo'}
-				<Api
-					categories={['shared', 'app']}
-					{title}
-					{path}
-					{actionPath}
-					redirect={$page.url.pathname}
-				/>
+				<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
 			{/if}
 			<form
 				method="POST"
@@ -139,7 +134,6 @@
 					size="lg"
 					color="primary"
 					variant="round outline"
-					container="card:sm"
 					formaction={`/doc?/handleTabChange&redirectTo=${$page.url.pathname}`}
 					on:click={handleTabChange}
 				/>
