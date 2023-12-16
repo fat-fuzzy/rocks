@@ -166,7 +166,7 @@
 						<summary class={`card:xs bg:primary:light box:primary:light`}>Content Type</summary>
 						<ul class="tags l:switcher:md">
 							{#each content.meta.props_content as prop}
-								<li class="card:sm bg:accent:lightest">{prop}</li>
+								<li class="card:sm bg:highlight:lightest">{prop}</li>
 							{/each}
 						</ul>
 					</details>
