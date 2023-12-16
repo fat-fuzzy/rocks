@@ -9,6 +9,23 @@ import type {
 	StyleCategory,
 } from './types'
 import {StyleInputGroup, StyleFamily} from './types'
+import {
+	brightness,
+	contrast,
+	container,
+	size,
+	layout,
+	threshold,
+	breakpoint,
+	color,
+	variant,
+	status,
+	context,
+	asset,
+	content,
+	side,
+	main,
+} from './props/props_style'
 
 export class StylesApi {
 	tokens: TokenStyles
@@ -125,44 +142,7 @@ const tokens: TokenStyles = {
 		layout: 'switcher',
 		size: 'lg',
 		variant: 'card',
-		items: [
-			// new StyleInputGroup({
-			// 	name: 'Color',
-			// 	id: 'tokens.element.color',
-			// 	value: 'day',
-			// 	input: 'toggle',
-			// 	layout: 'stack',
-			// 	items: [
-			// 		{id: 'tokens.element.color.primary', text: 'primary', value: 'primary'},
-			// 		{id: 'tokens.element.color.accent', text: 'accent', value: 'accent'},
-			// 		{
-			// 			id: 'tokens.element.color.highlight',
-			// 			text: 'highlight',
-			// 			value: 'highlight',
-			// 		},
-			// 	],
-			// }),
-			// new StyleInputGroup({
-			// 	name: 'Typography',
-			// 	id: 'tokens.element.typography',
-			// 	value: 'blend',
-			// 	input: 'toggle',
-			// 	layout: 'stack',
-			// 	items: [
-			// 		{id: 'tokens.element.typography.h1', text: 'h1', value: 'h1'},
-			// 		{id: 'tokens.element.typography.h2', text: 'h2', value: 'h2'},
-			// 		{id: 'tokens.element.typography.h3', text: 'h3', value: 'h3'},
-			// 		{id: 'tokens.element.typography.h4', text: 'h4', value: 'h4'},
-			// 		{id: 'tokens.element.typography.h5', text: 'h5', value: 'h5'},
-			// 		{id: 'tokens.element.typography.h6', text: 'h6', value: 'h6'},
-			// 		{id: 'tokens.element.typography.font=lg', text: 'font=lg', value: 'font=lg'},
-			// 		{id: 'tokens.element.typography.font-md', text: 'font-md', value: 'font-md'},
-			// 		{id: 'tokens.element.typography.font-sm', text: 'font-sm', value: 'font-sm'},
-			// 		{id: 'tokens.element.typography.font-xs', text: 'font-xs', value: 'font-xs'},
-			// 		{id: 'tokens.element.typography.pre', text: 'pre', value: 'pre'},
-			// 	],
-			// }),
-		],
+		items: [],
 	}),
 }
 
@@ -183,15 +163,9 @@ const app: AppStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'box card',
-				items: [
-					{id: 'app.settings.brightness.day', text: 'day', asset: 'emoji:day', value: 'day'},
-					{
-						id: 'app.settings.brightness.night',
-						text: 'night',
-						asset: 'emoji:night',
-						value: 'night',
-					},
-				],
+				items: brightness.map((item) => {
+					return {...item, id: `app.settings.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Contrast',
@@ -201,40 +175,12 @@ const app: AppStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'box card',
-				items: [
-					{
-						id: 'app.settings.contrast.contrast',
-						text: 'contrast',
-						asset: 'emoji:contrast',
-						value: 'contrast',
-					}, // TODO : fix color vars & classes
-					{
-						id: 'app.settings.contrast.blend',
-						text: 'blend',
-						asset: 'emoji:blend',
-						value: 'blend',
-					}, // TODO: night / day asset option
-					// {id: 'polar', label: 'polar', value: ''},
-				],
+				items: contrast.map((item) => {
+					return {...item, id: `app.settings.${item.id}`}
+				}),
 			}),
 		],
 	}),
-	// TODO : figure out if it is possible to do a dynamic import of app theme
-	// theme: {
-	// 	name: 'Theme',
-	// 	items: [
-	// 		{
-	// 			name: 'Theme',
-	// 			input: 'toggle',
-	// 			layout: 'switcher',
-	// 			items: [
-	// 				{id: 'ui', label: 'ui'},
-	// 				{id: 'doc', label: 'doc'},
-	// 				{id: 'website', label: 'website'},
-	// 			],
-	// 		},
-	// 	],
-	// },
 }
 
 const shared: SharedStyles = {
@@ -265,10 +211,9 @@ const shared: SharedStyles = {
 				size: 'sm',
 				container: 'card',
 				exclude: ['Stack', 'Burrito'],
-				items: [
-					{id: 'shared.container.container.center', text: 'center', value: 'center'},
-					{id: 'shared.container.container.burrito', text: 'burrito', value: 'burrito'},
-				],
+				items: container.map((item) => {
+					return {...item, id: `shared.container.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Size', // TODO: use 'spacing' instead of 'size' in data
@@ -279,13 +224,9 @@ const shared: SharedStyles = {
 				size: 'sm',
 				container: 'card',
 				exclude: ['Nav', 'Stack', 'Burrito'],
-				items: [
-					{id: 'shared.container.size.xs', text: 'xs', value: 'xs'},
-					{id: 'shared.container.size.sm', text: 'sm', value: 'sm'},
-					{id: 'shared.container.size.md', text: 'md', value: 'md'},
-					{id: 'shared.container.size.lg', text: 'lg', value: 'lg'},
-					{id: 'shared.container.size.xl', text: 'xl', value: 'xl'},
-				],
+				items: size.map((item) => {
+					return {...item, id: `shared.container.${item.id}`}
+				}),
 			}),
 		],
 	}),
@@ -335,31 +276,9 @@ const shared: SharedStyles = {
 					'InputFile',
 					'InputRange',
 				],
-				items: [
-					{id: 'shared.layout.layout.stack', text: 'stack', value: 'stack'},
-					{
-						id: 'shared.layout.layout.switcher',
-						text: 'switcher',
-						value: 'switcher',
-						// options: [
-						// 	//TODO: display breakpoint options conditionally
-						// 	{
-						// 		name: 'Breakpoint',
-						// 		input: 'toggle',
-						//
-						// layout: 'stack',
-						// 		exclude: ['Button', 'Toggle', 'Nav', 'Stack', 'Burrito'],
-						// 		items: [
-						// 			{id: 'xs', text: 'xs', value: ''},
-						// 			{id: 'sm', text: 'sm', value: ''},
-						// 			{id: 'md', text: 'md', value: ''},
-						// 			{id: 'lg', text: 'lg', value: ''},
-						// 			{id: 'xl', text: 'xl', value: ''},
-						// 		],
-						// 	},
-						// ],
-					},
-				],
+				items: layout.map((item) => {
+					return {...item, id: `shared.layout.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Threshold',
@@ -388,13 +307,9 @@ const shared: SharedStyles = {
 					'InputRange',
 				],
 				include: ['RevealNav', 'ButtonMenu', 'ToggleMenu'],
-				items: [
-					{id: 'shared.layout.threshold.xs', text: 'xs', value: 'xs'},
-					{id: 'shared.layout.threshold.sm', text: 'sm', value: 'sm'},
-					{id: 'shared.layout.threshold.md', text: 'md', value: 'md'},
-					{id: 'shared.layout.threshold.lg', text: 'lg', value: 'lg'},
-					{id: 'shared.layout.threshold.xl', text: 'xl', value: 'xl'},
-				],
+				items: threshold.map((item) => {
+					return {...item, id: `shared.layout.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Breakpoint',
@@ -424,13 +339,9 @@ const shared: SharedStyles = {
 					'InputFile',
 					'InputRange',
 				],
-				items: [
-					{id: 'shared.layout.breakpoint.xs', text: 'xs', value: 'xs'},
-					{id: 'shared.layout.breakpoint.sm', text: 'sm', value: 'sm'},
-					{id: 'shared.layout.breakpoint.md', text: 'md', value: 'md'},
-					{id: 'shared.layout.breakpoint.lg', text: 'lg', value: 'lg'},
-					{id: 'shared.layout.breakpoint.xl', text: 'xl', value: 'xl'},
-				],
+				items: breakpoint.map((item) => {
+					return {...item, id: `shared.layout.${item.id}`}
+				}),
 			}),
 		],
 	}),
@@ -454,29 +365,9 @@ const blocks: BlockStyles = {
 				size: 'xxs',
 				container: 'card',
 				exclude: ['ActionLabel', 'Feedback'],
-				items: [
-					{
-						id: 'blocks.element.color.primary',
-						text: 'primary',
-						variant: 'outline',
-						color: 'primary',
-						value: 'primary',
-					},
-					{
-						id: 'blocks.element.color.accent',
-						text: 'accent',
-						variant: 'outline',
-						color: 'accent',
-						value: 'accent',
-					},
-					{
-						id: 'blocks.element.color.highlight',
-						text: 'highlight',
-						variant: 'outline',
-						color: 'highlight',
-						value: 'highlight',
-					},
-				],
+				items: color.map((item) => {
+					return {...item, id: `blocks.element.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Variant',
@@ -487,11 +378,9 @@ const blocks: BlockStyles = {
 				size: 'sm',
 				variant: 'box card',
 				exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
-				items: [
-					{id: 'blocks.element.variant.fill', text: 'fill', value: 'fill'},
-					{id: 'blocks.element.variant.outline', text: 'outline', value: 'outline'},
-					{id: 'blocks.element.variant.bare', text: 'bare', value: 'bare'},
-				],
+				items: variant.map((item) => {
+					return {...item, id: `blocks.element.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Size',
@@ -502,13 +391,9 @@ const blocks: BlockStyles = {
 				size: 'sm',
 				variant: 'grow card',
 				exclude: ['ActionLabel'],
-				items: [
-					{id: 'blocks.element.size.xs', text: 'xs', value: 'xs'},
-					{id: 'blocks.element.size.sm', text: 'sm', value: 'sm'},
-					{id: 'blocks.element.size.md', text: 'md', value: 'md'},
-					{id: 'blocks.element.size.lg', text: 'lg', value: 'lg'},
-					{id: 'blocks.element.size.xl', text: 'xl', value: 'xl'},
-				],
+				items: size.map((item) => {
+					return {...item, id: `blocks.element.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Status',
@@ -528,43 +413,9 @@ const blocks: BlockStyles = {
 					'InputRange',
 				],
 				include: ['Feedback'],
-				items: [
-					{
-						id: 'blocks.element.status.default',
-						text: 'default',
-						color: 'default',
-						asset: 'emoji:default',
-						value: 'default',
-					},
-					{
-						id: 'blocks.element.status.info',
-						text: 'info',
-						color: 'info',
-						asset: 'emoji:info',
-						value: 'info',
-					},
-					{
-						id: 'blocks.element.status.success',
-						text: 'success',
-						color: 'success',
-						asset: 'emoji:success',
-						value: 'success',
-					},
-					{
-						id: 'blocks.element.status.warning',
-						text: 'warning',
-						color: 'warning',
-						asset: 'emoji:warning',
-						value: 'warning',
-					},
-					{
-						id: 'blocks.element.status.error',
-						text: 'error',
-						color: 'error',
-						asset: 'emoji:error',
-						value: 'error',
-					},
-				],
+				items: status.map((item) => {
+					return {...item, id: `blocks.element.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Context',
@@ -587,10 +438,9 @@ const blocks: BlockStyles = {
 					'InputRange',
 				],
 				include: ['Feedback'],
-				items: [
-					{id: 'blocks.element.context.form', text: 'form', value: 'form'},
-					{id: 'blocks.element.context.code', text: 'code', value: 'code'},
-				],
+				items: context.map((item) => {
+					return {...item, id: `blocks.element.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Asset', // TODO: Add hint: "Icon: emoji / SVG"
@@ -601,32 +451,9 @@ const blocks: BlockStyles = {
 				size: 'xxs',
 				variant: 'card',
 				exclude: ['ButtonMenu', 'ToggleMenu', 'InputRange', 'InputFile'],
-				items: [
-					{
-						id: 'blocks.element.asset.profile',
-						text: 'profile',
-						value: 'emoji:profile',
-						asset: 'emoji:profile',
-					},
-					{
-						id: 'blocks.element.asset.favorite',
-						text: 'favorite',
-						value: 'emoji:favorite',
-						asset: 'emoji:favorite',
-					},
-					{
-						id: 'blocks.element.asset.idea',
-						text: 'idea',
-						value: 'emoji:idea',
-						asset: 'emoji:idea',
-					},
-					{
-						id: 'blocks.element.asset.default',
-						text: 'default',
-						value: 'emoji',
-						asset: 'emoji',
-					},
-				],
+				items: asset.emoji.map((item) => {
+					return {...item, id: `blocks.element.${item.id}`}
+				}),
 			}),
 		],
 	}),
@@ -651,11 +478,9 @@ const layouts: LayoutStyles = {
 				variant: 'box card',
 				exclude: ['layouts', 'Sidebar'],
 				include: ['Burrito', 'Reveal', 'RevealAuto', 'Stack', 'Switcher'],
-				items: [
-					{id: 'layouts.content.content.card', text: 'card', value: 'card'},
-					{id: 'layouts.content.content.form', text: 'form', value: 'form'},
-					{id: 'layouts.content.content.text', text: 'text', value: 'text'},
-				],
+				items: content.map((item) => {
+					return {...item, id: `layouts.content.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Side',
@@ -667,11 +492,9 @@ const layouts: LayoutStyles = {
 				variant: 'box card',
 				exclude: ['layouts'],
 				include: ['Sidebar'],
-				items: [
-					{id: 'layouts.content.side.card', text: 'card', value: 'card'},
-					{id: 'layouts.content.side.form', text: 'form', value: 'form'},
-					{id: 'layouts.content.side.text', text: 'text', value: 'text'},
-				],
+				items: side.map((item) => {
+					return {...item, id: `layouts.content.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Main',
@@ -683,11 +506,9 @@ const layouts: LayoutStyles = {
 				variant: 'box card',
 				exclude: ['layouts'],
 				include: ['Sidebar', 'Switcher'],
-				items: [
-					{id: 'layouts.content.main.card', text: 'card', value: 'card'},
-					{id: 'layouts.content.main.form', text: 'form', value: 'form'},
-					{id: 'layouts.content.main.text', text: 'text', value: 'text'},
-				],
+				items: main.map((item) => {
+					return {...item, id: `layouts.content.${item.id}`}
+				}),
 			}),
 		],
 	}),
@@ -707,13 +528,9 @@ const layouts: LayoutStyles = {
 				layout: 'stack',
 				size: 'sm',
 				variant: 'card',
-				items: [
-					{id: 'layouts.element.size.xs', text: 'xs', value: 'xs'},
-					{id: 'layouts.element.size.sm', text: 'sm', value: 'sm'},
-					{id: 'layouts.element.size.md', text: 'md', value: 'md'},
-					{id: 'layouts.element.size.lg', text: 'lg', value: 'lg'},
-					{id: 'layouts.element.size.xl', text: 'xl', value: 'xl'},
-				],
+				items: size.map((item) => {
+					return {...item, id: `layouts.element.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Threshold',
@@ -725,13 +542,9 @@ const layouts: LayoutStyles = {
 				variant: 'card',
 				exclude: ['layouts'],
 				include: ['Switcher'],
-				items: [
-					{id: 'layouts.element.threshold.xs', text: 'xs', value: 'xs'},
-					{id: 'layouts.element.threshold.sm', text: 'sm', value: 'sm'},
-					{id: 'layouts.element.threshold.md', text: 'md', value: 'md'},
-					{id: 'layouts.element.threshold.lg', text: 'lg', value: 'lg'},
-					{id: 'layouts.element.threshold.xl', text: 'xl', value: 'xl'},
-				],
+				items: threshold.map((item) => {
+					return {...item, id: `layouts.element.${item.id}`}
+				}),
 			}),
 			new StyleInputGroup({
 				name: 'Breakpoint',
@@ -743,13 +556,9 @@ const layouts: LayoutStyles = {
 				variant: 'card',
 				exclude: ['layouts'],
 				include: ['RevealAuto'],
-				items: [
-					{id: 'layouts.element.breakpoint.xs', text: 'xs', value: 'xs'},
-					{id: 'layouts.element.breakpoint.sm', text: 'sm', value: 'sm'},
-					{id: 'layouts.element.breakpoint.md', text: 'md', value: 'md'},
-					{id: 'layouts.element.breakpoint.lg', text: 'lg', value: 'lg'},
-					{id: 'layouts.element.breakpoint.xl', text: 'xl', value: 'xl'},
-				],
+				items: breakpoint.map((item) => {
+					return {...item, id: `layouts.element.${item.id}`}
+				}),
 			}),
 		],
 	}),
