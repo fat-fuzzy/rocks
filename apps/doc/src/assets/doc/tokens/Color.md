@@ -2,24 +2,23 @@
 title: Color
 slug: Color
 family: ['tokens']
+# props_state: []
+# props_style: []
 context: ['app.settings']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+There are two(\*) groups of color:
 
-[TODO]
+- **Theme colors:** these colors are the colors the brand colors of the application or website
+- **Feedback status colors:** these colors are used to style notifications, form feedback messages and code blocks
+- **Neutral colors:** (\* wip) coming soon
 
-## Requirements
+### Examples
 
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>

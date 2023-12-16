@@ -2,24 +2,21 @@
 title: Typography
 slug: Typography
 family: ['tokens']
+# props_state: []
+# props_style: []
 context: ['app.settings']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Typographic scales are generated using a mixin based on the work of James Gilyead & Trys Mudford: [Utopia.fyi](https://utopia.fyi/).
 
-[TODO]
+<p class="feedback emoji:default">Doc Coming Soon!</p>
 
-## Requirements
+### Examples
 
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [Utopia.fyi](https://utopia.fyi/)

@@ -1,6 +1,6 @@
 ---
-title: Toggle
-slug: Toggle
+title: Switch
+slug: Switch
 family: ['blocks']
 group: ['buttons']
 props_state: ['title', 'text', 'formaction', 'value']
@@ -10,7 +10,7 @@ context: ['app.settings']
 
 ## Usage
 
-This component contains a button that will toggle between two states without changing its text content.
+This component contains a button that will switch between two states. Each state can have its own text, style, and asset (if any) according to its active / inactive state.
 
 The state is reflected in the value of the attribute `aria-pressed`.
 

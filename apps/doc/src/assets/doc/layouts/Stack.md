@@ -2,25 +2,19 @@
 title: Stack
 slug: Stack
 family: ['layouts']
-props: ['content', 'size']
+content_type: ['items']
+props_style: ['size']
 context: ['app.settings']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use a `Stack` layout for stacked column content.
 
-[TODO]
+### Examples
 
-## Requirements
-
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [Every Layout - The Stack](https://every-layout.dev/layouts/stack/)

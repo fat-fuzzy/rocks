@@ -3,25 +3,19 @@ title: InputRange
 slug: InputRange
 family: ['blocks']
 group: ['forms']
-props: ['color', 'size', 'asset']
+props_state: ['label', 'value', 'errors']
+props_style: ['color', 'size', 'asset']
 context: ['app.settings', 'shared.container']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use this component within a `<form>`element to allow the user to select a value from an ordered set of values.
 
-[TODO]
+### Examples
 
-## Requirements
-
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [MDN - Input Range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
