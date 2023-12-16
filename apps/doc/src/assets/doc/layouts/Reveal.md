@@ -18,9 +18,7 @@ Use a `Reveal` layout to show or minimize content with a button action.
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
-
-## Requirements
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ### No JS
 

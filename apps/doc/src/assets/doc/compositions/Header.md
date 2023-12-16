@@ -21,9 +21,7 @@ Use a `Header` component to provide main app navigation and settings controls to
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
-
-## Requirements
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ### No JS
 

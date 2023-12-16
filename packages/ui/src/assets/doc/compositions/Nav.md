@@ -20,7 +20,7 @@ Use a `Nav` component to provide related navigation options to the user.
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

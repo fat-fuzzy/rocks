@@ -19,9 +19,11 @@ Use a `LogIn` component to display a login form to the user.
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Requirements
+
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

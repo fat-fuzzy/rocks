@@ -81,7 +81,7 @@
 	$: markdowns =
 		$page.data.markdowns && $page.data.markdowns[category] ? $page.data.markdowns[category] : []
 	$: content = markdowns.find(({meta}) => meta.title === title) || {
-		html: `<p class="feedback emoji:default">Doc Coming Soon!</p>`,
+		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
 	$: headerClass = 'page-header card:md l:switcher:md bg:polar'
 

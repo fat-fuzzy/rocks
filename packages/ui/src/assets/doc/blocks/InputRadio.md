@@ -14,7 +14,7 @@ Use this component within a `<form>`element to allow the user to choose a single
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

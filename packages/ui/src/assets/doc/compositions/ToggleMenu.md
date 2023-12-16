@@ -18,9 +18,7 @@ Use a `ToggleMenu` component to provide a menu of mutually exclusive related act
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
-
-## Requirements
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ### No JS
 

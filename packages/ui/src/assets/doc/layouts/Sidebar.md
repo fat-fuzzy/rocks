@@ -13,7 +13,7 @@ Use a `Sidebar` layout for layouts containing two children: `main` and `side`
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

@@ -28,7 +28,7 @@ This component uses aria attributes to reflect state, which can be interpreted b
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## No JS
 
