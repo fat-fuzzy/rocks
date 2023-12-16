@@ -18,6 +18,7 @@
 		layouts: layouts,
 		compositions: compositions,
 	}
+
 	const tabButtons = [
 		{
 			id: 'context.menu.toggle.demo',
