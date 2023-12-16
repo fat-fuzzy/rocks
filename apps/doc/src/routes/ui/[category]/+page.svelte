@@ -1,13 +1,56 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
+	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
-	import {tokens, blocks, compositions, layouts, api, stores} from '@fat-fuzzy/ui'
+	import {tokens, blocks, compositions, layouts, api, stores, constants} from '@fat-fuzzy/ui'
+
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
+	const {ToggleMenu} = compositions
 	const actionPath = '/ui'
+	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = {reveal: ''}
+	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
+	let currentTab = $page.data.currentTabs.element || UI_DOC_TABS[0]
+
+	const tabButtons = [
+		{
+			id: 'context.menu.toggle.demo',
+			title: 'Demo',
+			size: 'xl',
+			color: 'accent',
+			asset: 'emoji:demo',
+			value: 'demo',
+		},
+		{
+			id: 'context.menu.toggle.doc',
+			title: 'Doc',
+			size: 'xl',
+			color: 'primary',
+			asset: 'emoji:doc',
+			value: 'doc',
+			initial: 'pressed',
+		},
+	]
+
+	const localStores = [
+		stores.ui.styles.subscribe((value) => {
+			if (value) {
+				stylesApi.applyStyles(value)
+			}
+		}),
+		stores.ui.reveal.subscribe((value) => {
+			if (value) {
+				revealContext = value
+			}
+		}),
+		stores.ui.categoryTab.subscribe((value) => {
+			if (value) {
+				currentTab = value
+			}
+		}),
+	]
 
 	function getComponentType(cat: string) {
 		switch (cat) {
@@ -24,30 +67,21 @@
 		}
 	}
 
-	const localStores = [
-		stores.ui.styles.subscribe((value) => {
-			if (value) {
-				stylesApi.applyStyles(value)
-			}
-		}),
-		stores.ui.reveal.subscribe((value) => {
-			if (value) {
-				revealContext = value
-			}
-		}),
-	]
-
 	function handleToggle(event: CustomEvent) {
 		stores.ui.reveal.set(event.detail)
+	}
+
+	function handleTabChange(event: CustomEvent) {
+		stores.ui.categoryTab.set(event.detail.selected[0])
 	}
 
 	$: reveal = revealContext.reveal
 	$: category = $page.params.category
 	$: markdowns = $page.data.markdowns
-	$: content = markdowns.categories.find(({meta}) => meta.slug === category)
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
+	$: content = markdowns.categories.find(({meta}) => meta.slug === category)
 	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
 
 	onDestroy(() => {
@@ -61,7 +95,7 @@
 </svelte:head>
 
 <header class={headerClass}>
-	<h1 class="l:main:40 maki lg">{title}</h1>
+	<h1 class="l:main:30 maki lg">{title}</h1>
 	<RevealAuto
 		id="ui-category-app-context"
 		size="sm"
@@ -76,21 +110,68 @@
 		redirect={$page.url.pathname}
 		on:toggle={handleToggle}
 	>
-		<div slot="content" class="l:side ui:menu reverse">
-			<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+		<div slot="content" class="l:side ui:menu l:switcher:sm">
+			{#if currentTab.value === 'demo'}
+				<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+			{/if}
+
+			<form
+				method="POST"
+				class="l:switcher:sm shrink"
+				action={`/ui?/handleCategoryTabChange&redirectTo=${$page.url.pathname}`}
+				use:enhance={() => {
+					// prevent default callback from resetting the form
+					return ({update}) => {
+						update({reset: false})
+					}
+				}}
+			>
+				<ToggleMenu
+					id={`submit.${path}`}
+					items={tabButtons}
+					layout="switcher"
+					size="lg"
+					color="primary"
+					variant="round outline"
+					formaction={`/ui?/handleCategoryTabChange&redirectTo=${$page.url.pathname}`}
+					on:click={handleTabChange}
+				/>
+			</form>
 		</div>
 	</RevealAuto>
 </header>
 
-<Collection
-	{title}
-	depth={1}
-	isPage={true}
-	{components}
-	{category}
-	{content}
-	{stylesApi}
-	{path}
-	{actionPath}
-	redirect={$page.url.pathname}
-/>
+{#if content.html && currentTab.value === 'doc'}
+	<article class="l:sidebar:xs">
+		<div class="l:main">
+			<section class="l:text:lg md">
+				{@html content.html}
+			</section>
+		</div>
+		<aside class="l:side">
+			{#if content.meta.props_style}
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.props_style as prop}
+							<li class="card:sm bg:primary:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			{/if}
+		</aside>
+	</article>
+{:else if currentTab.value === 'demo'}
+	<Collection
+		{title}
+		depth={1}
+		isPage={true}
+		{components}
+		{path}
+		{category}
+		{content}
+		{stylesApi}
+		{actionPath}
+		redirect={$page.url.pathname}
+	/>
+{/if}
