@@ -1,6 +1,6 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
-import {DsTabUpdate} from '$lib/forms/ds-tab-update'
+import {DsTabsUpdate} from '$lib/forms/ds-tabs-update'
 import {DsStateUpdate} from '$lib/forms/ds-state-update'
 import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
 import {DsContextReveal} from '$lib/forms/ds-context-reveal'
@@ -77,7 +77,7 @@ export const actions = {
 		if (serialized) {
 			currentTab = JSON.parse(serialized)
 		}
-		const tabs = new DsTabUpdate(currentTab)
+		const tabs = new DsTabsUpdate(currentTab)
 		if (!tabs.update(data)) {
 			return fail(400, {tabsError: true})
 		}

@@ -4,7 +4,7 @@
 	import {page} from '$app/stores'
 
 	import * as settingsStore from '$stores/settings'
-	import * as uiStore from '$stores/ui'
+	import * as stores from '$stores/ui'
 
 	import {tokens, blocks, compositions, layouts, constants} from '$lib'
 
@@ -20,7 +20,7 @@
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	const {sidebar, styles, context, state, currentTab, markdowns} = data
+	const {sidebar, styles, context, state, currentTab} = data
 
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
@@ -30,14 +30,14 @@
 
 	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_REVEAL_STATE
 
-	uiStore.tab.set(currentTab || UI_DOC_TABS[0])
-	uiStore.styles.set(styles)
-	uiStore.reveal.set(context)
-	uiStore.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)
-	uiStore.settingsReveal.set(state?.settingsReveal || DEFAULT_REVEAL_STATE)
-	uiStore.sidebarReveal.set(state?.sidebarReveal || DEFAULT_REVEAL_STATE)
+	stores.tab.set(currentTab || UI_DOC_TABS[0])
+	stores.styles.set(styles)
+	stores.reveal.set(context)
+	stores.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)
+	stores.settingsReveal.set(state?.settingsReveal || DEFAULT_REVEAL_STATE)
+	stores.sidebarReveal.set(state?.sidebarReveal || DEFAULT_REVEAL_STATE)
 
-	const stores = [
+	const localStores = [
 		settingsStore.sidebarReveal.subscribe((value) => {
 			if (value) {
 				sidebarReveal = value
@@ -76,7 +76,7 @@
 	]
 
 	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
+		localStores.forEach((unsubscribe) => unsubscribe())
 	})
 </script>
 
