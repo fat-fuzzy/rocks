@@ -20,7 +20,7 @@
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	const {sidebar, styles, context, state, currentTab} = data
+	const {sidebar, styles, context, state, currentTabs} = data
 
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
@@ -30,7 +30,7 @@
 
 	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_NAV_REVEAL_STATE
 
-	stores.tab.set(currentTab || UI_DOC_TABS[0])
+	stores.elementTab.set(currentTabs.element || UI_DOC_TABS[0])
 	stores.styles.set(styles)
 	stores.reveal.set(context)
 	stores.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)

@@ -24,4 +24,6 @@ export const sidebarReveal = writable(DEFAULT_NAV_REVEAL_STATE)
 
 export const settingsReveal = writable(DEFAULT_REVEAL_STATE)
 
-export const tab = writable(UI_DOC_TABS[0])
+export const elementTab = writable(UI_DOC_TABS[0])
+
+export const categoryTab = writable(UI_DOC_TABS[0])
