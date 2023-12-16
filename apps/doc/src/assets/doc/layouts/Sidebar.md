@@ -2,25 +2,19 @@
 title: Sidebar
 slug: Sidebar
 family: ['layouts']
-props: ['content', 'size']
+content_type: ['main', 'side']
+props_style: ['size']
 context: ['app.settings', 'shared.container']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use a `Sidebar` layout for layouts containing two children: `main` and `side`
 
-[TODO]
+### Examples
 
-## Requirements
-
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [Every Layout - The Sidebar](https://every-layout.dev/layouts/sidebar/)

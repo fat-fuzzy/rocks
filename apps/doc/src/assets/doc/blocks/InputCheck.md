@@ -3,25 +3,19 @@ title: InputCheck
 slug: InputCheck
 family: ['blocks']
 group: ['forms']
-props: ['color', 'size', 'asset']
+props_state: ['label', 'value', 'errors']
+props_style: ['color', 'size', 'asset']
 context: ['app.settings', 'shared.container']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use this component within a `<form>`element to allow the user to check a single optional choice.
 
-[TODO]
+### Examples
 
-## Requirements
-
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [MDN - Input Checkbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)

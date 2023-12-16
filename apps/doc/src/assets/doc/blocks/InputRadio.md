@@ -3,25 +3,19 @@ title: InputRadio
 slug: InputRadio
 family: ['blocks']
 group: ['forms']
-props: ['color', 'size', 'asset']
+props_state: ['label', 'value', 'errors']
+props_style: ['color', 'size', 'asset']
 context: ['app.settings', 'shared.container']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use this component within a `<form>`element to allow the user to choose a single option in a group two or more values.
 
-[TODO]
+### Examples
 
-## Requirements
-
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [MDN - Input Radio](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)
