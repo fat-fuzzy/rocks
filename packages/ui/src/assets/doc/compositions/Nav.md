@@ -3,25 +3,27 @@ title: Nav
 slug: Nav
 family: ['compositions']
 group: ['navs']
-props: ['size']
+props_state: [items']
+props_style: ['size']
 context: ['app.settings', 'shared.container', 'shared.layout']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use a `Nav` component to provide related navigation options to the user.
 
-[TODO]
+### Related Components
 
-## Requirements
+- `LinkList` component in `compositions/navs`
+- `RevealNav` component in `compositions/navs`
+- `DetailsNav` component in `compositions/navs`
 
-[TODO]
+### Examples
 
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [MDN - The Anchor Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
+- [MDN - The Navigation Section Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
+- [Inclusive Components - Menus & Menu buttons](https://inclusive-components.design/menus-menu-buttons/)

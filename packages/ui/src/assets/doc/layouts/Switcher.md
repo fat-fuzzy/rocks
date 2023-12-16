@@ -2,25 +2,19 @@
 title: Switcher
 slug: Switcher
 family: ['layouts']
-props: ['content', 'size', 'threshold']
+props_content: ['items']
+props_style: ['size', 'threshold']
 context: ['app.settings', 'shared.container']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use a `Stack` layout for items that switch between column and row layouts when the container reaches a threshold width.
 
-[TODO]
+### Examples
 
-## Requirements
-
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [Every Layout - The Switcher](https://every-layout.dev/layouts/switcher/)

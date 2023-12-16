@@ -12,7 +12,17 @@ context: ['app.settings']
 
 This component contains a basic button that can be used to submit a form, either via the default `action` set on the parent form element, or via a specific `formaction` provided as props to the Button component.
 
-### Class System
+### Examples
+
+<p class="feedback emoji:default">Coming Soon!</p>
+
+## No JS
+
+For a button action to have an effect without JavaScript enabled, it must be inside a `<form>` element that has at least one defined `action`. By default, a button without a `type` attribute will be considered a 'submit' button: on click, it will submit the form it belongs to.
+
+If a form contains more than one button with different actions expected on click, each button must have a distinct `formaction` attribute.
+
+## Class System
 
 The class system reflects the combination of the following factors:
 
@@ -26,18 +36,8 @@ The class system reflects the combination of the following factors:
 
 For each Theme, the button Element has to have styling rules for each State, given every combination of [Color *x* Variant]
 
-## Requirements
-
-### No JS
-
-For a button action to have an effect without JavaScript enabled, it must be inside a `<form>` element that has at least one defined `action`. By default, a button without a `type` attribute will be considered a 'submit' button: on click, it will submit the form it belongs to.
-
-If a form contains more than one button with different actions expected on click, each button must have a distinct `formaction` attribute.
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">More Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [MDN - The Button Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)

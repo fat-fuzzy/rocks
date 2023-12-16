@@ -1,27 +1,28 @@
 ---
-title: Login
-slug: Login
+title: LogIn
+slug: LogIn
 family: ['compositions']
 group: ['forms']
-props: ['color', 'variant', 'threshold']
+props_state: ['action']
+props_style: ['color', 'variant']
 context: ['app.settings', 'shared.container']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use a `LogIn` component to display a login form to the user.
 
-[TODO]
+### Related Components
+
+- `Button` component in `blocks/buttons`
+- `Feedback` component in `blocks/global`
+
+### Examples
+
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Requirements
 
-[TODO]
-
-## Getting started
-
-[TODO]
-
 ## Resources
 
-[TODO]
+- [MDN - The Form Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
