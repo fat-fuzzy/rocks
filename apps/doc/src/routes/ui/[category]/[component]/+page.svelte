@@ -1,13 +1,16 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
+	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 	import type {ComponentType} from 'svelte'
-	import {stores, api, tokens, blocks, layouts, compositions} from '@fat-fuzzy/ui'
+	import {stores, api, tokens, blocks, layouts, compositions, constants} from '@fat-fuzzy/ui'
 
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
+	const {ToggleMenu} = compositions
+	const actionPath = '/ui'
+	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
 
-	let category: string
 	let categoryItems: {[name: string]: any} = {
 		tokens: tokens,
 		blocks: blocks,
@@ -15,13 +18,33 @@
 		compositions: compositions,
 	}
 
+	const tabButtons = [
+		{
+			id: 'context.menu.toggle.demo',
+			title: 'Demo',
+			size: 'xl',
+			color: 'accent',
+			asset: 'emoji:demo',
+			value: 'demo',
+			initial: 'pressed',
+		},
+		{
+			id: 'context.menu.toggle.doc',
+			title: 'Doc',
+			size: 'xl',
+			color: 'primary',
+			asset: 'emoji:doc',
+			value: 'doc',
+		},
+	]
+
+	let category: string
 	let title: string
 	let Component: ComponentType
-	const actionPath = '/ui'
 
 	let stylesApi = api.stylesApi.initStyles()
-
-	let revealContext: {[key: string]: string} = {reveal: ''}
+	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
+	let currentTab = $page.data.currentTab || UI_DOC_TABS[0]
 
 	const localStores = [
 		stores.ui.styles.subscribe((value) => {
@@ -34,10 +57,19 @@
 				revealContext = value
 			}
 		}),
+		stores.ui.tab.subscribe((value) => {
+			if (value) {
+				currentTab = value
+			}
+		}),
 	]
 
 	function handleToggle(event: CustomEvent) {
 		stores.ui.reveal.set(event.detail)
+	}
+
+	function handleTabChange(event: CustomEvent) {
+		stores.ui.tab.set(event.detail.selected[0])
 	}
 
 	$: reveal = revealContext.reveal
@@ -45,6 +77,11 @@
 	$: title = $page.params.component
 	$: Component = categoryItems[category][title]
 	$: path = $page.url.pathname
+	$: markdowns =
+		$page.data.markdowns && $page.data.markdowns[category] ? $page.data.markdowns[category] : []
+	$: content = markdowns.find(({meta}) => meta.title === title) || {
+		html: `<p class="feedback emoji:default">Doc Coming Soon!</p>`,
+	}
 	$: headerClass = 'page-header card:md l:switcher:md bg:polar'
 
 	onDestroy(() => {
@@ -74,26 +111,86 @@
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side ui:menu l:switcher:sm">
-			<Api
-				categories={['shared', 'app']}
-				{title}
-				{path}
-				{actionPath}
-				redirect={$page.url.pathname}
-			/>
+			{#if currentTab.value === 'demo'}
+				<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+			{/if}
+			<form
+				method="POST"
+				class="l:switcher:sm"
+				action={`/ui?/handleTabChange&redirectTo=${$page.url.pathname}`}
+				use:enhance={() => {
+					// prevent default callback from resetting the form
+					return ({update}) => {
+						update({reset: false})
+					}
+				}}
+			>
+				<ToggleMenu
+					id={`submit.${path}`}
+					items={tabButtons}
+					layout="switcher"
+					size="lg"
+					color="primary"
+					variant="round outline"
+					formaction={`/ui?/handleTabChange&redirectTo=${$page.url.pathname}`}
+					on:click={handleTabChange}
+				/>
+			</form>
 		</div>
 	</RevealAuto>
 </header>
 
-<Element
-	isPage={true}
-	depth={1}
-	{title}
-	page={path}
-	{path}
-	{category}
-	{stylesApi}
-	component={Component}
-	{actionPath}
-	redirect={$page.url.pathname}
-/>
+{#if content.html && currentTab.value === 'doc'}
+	<article class="l:sidebar:xs">
+		<div class="l:main">
+			<section class="l:center:md md">
+				{@html content.html}
+			</section>
+		</div>
+		<aside class="l:side">
+			{#if content.meta.props_style}
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.props_style as prop}
+							<li class="card:sm bg:primary:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			{/if}
+			{#if content.meta.content_type}
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>Content Type</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.content_type as prop}
+							<li class="card:sm bg:highlight:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			{/if}
+			{#if content.meta.props_state}
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>State Props</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.props_state as prop}
+							<li class="card:sm bg:accent:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			{/if}
+		</aside>
+	</article>
+{:else if currentTab.value === 'demo'}
+	<Element
+		isPage={true}
+		depth={1}
+		{title}
+		page={path}
+		{path}
+		{category}
+		{stylesApi}
+		component={Component}
+		{actionPath}
+		redirect={$page.url.pathname}
+	/>
+{/if}

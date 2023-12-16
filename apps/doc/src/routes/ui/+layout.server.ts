@@ -6,6 +6,7 @@ export const load = (async (event) => {
 	let context = null
 	let state = null
 	let sidebar = null
+	let currentTab = null
 
 	if (event.locals.dsStyles) {
 		styles = JSON.parse(event.locals.dsStyles)
@@ -19,7 +20,10 @@ export const load = (async (event) => {
 	if (event.locals.sidebar) {
 		sidebar = JSON.parse(event.locals.sidebar)
 	}
+	if (event.locals.currentTab) {
+		currentTab = JSON.parse(event.locals.currentTab)
+	}
 	const markdowns = await markdownData.fetchMarkdowns()
 
-	return {sidebar, styles, context, state, markdowns}
+	return {sidebar, styles, context, state, currentTab, markdowns}
 }) satisfies LayoutServerLoad
