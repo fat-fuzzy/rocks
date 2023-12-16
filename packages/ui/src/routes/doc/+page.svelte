@@ -11,7 +11,7 @@
 	const title = 'Fat Fuzzy Test' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
+	let revealContext: {[key: string]: string} = $page.data.context || DEFAULT_REVEAL_STATE
 
 	const components = [
 		{category: 'tokens', items: tokens},
