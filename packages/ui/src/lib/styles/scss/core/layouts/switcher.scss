@@ -16,7 +16,7 @@
 	flex-basis: calc((var(--threshold) - 100%) * 999);
 }
 
-.l\:switcher\:shrink > * {
+[class*='l:switcher:'].shrink > * {
 	flex-grow: 0;
 }
 

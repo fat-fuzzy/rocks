@@ -117,7 +117,7 @@
 			{/if}
 			<form
 				method="POST"
-				class="l:switcher:sm"
+				class="l:switcher:sm shrink"
 				action={`/doc?/handleTabChange&redirectTo=${$page.url.pathname}`}
 				use:enhance={() => {
 					// prevent default callback from resetting the form
