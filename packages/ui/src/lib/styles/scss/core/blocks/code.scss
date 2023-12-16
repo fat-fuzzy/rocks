@@ -5,13 +5,15 @@ code {
 }
 
 // Allow space for scrollbar on macOS
-pre {
+pre,
+code[class^='language-'] {
 	overflow: auto;
 	padding-inline: var(--current-size) var(--current-size-plus);
 	padding-block: var(--current-size);
 }
 
 pre,
+code[class^='language-'],
 pre.default {
 	--current-color: var(--color-light);
 	--current-bg-color: var(--color-gray-5);

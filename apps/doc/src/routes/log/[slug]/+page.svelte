@@ -39,6 +39,6 @@
 	</RevealAuto>
 </header>
 
-<article class="l:text:xl">
-	<div class="card:xl">{@html html}</div>
+<article class="l:text:lg md">
+	<div class="card:md">{@html html}</div>
 </article>

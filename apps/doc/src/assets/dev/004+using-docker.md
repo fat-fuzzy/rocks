@@ -108,7 +108,7 @@ Run **apps/doc** site in a docker container
 Build
 
 ```shell
- docker build -t rocks-image .
+docker build -t rocks-image .
 ```
 
 Run app on port 5173
@@ -137,7 +137,7 @@ docker run -t -p 5173:80 rocks-image
 
 ```shell
 docker-compose build rocks-image
-docker-compose up -d rocks-image
+ docker-compose up -d rocks-image
 ```
 
 ## Examples

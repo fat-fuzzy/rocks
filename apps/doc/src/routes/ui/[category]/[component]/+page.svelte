@@ -143,7 +143,7 @@
 {#if content.html && currentTab.value === 'doc'}
 	<article class="l:sidebar:xs">
 		<div class="l:main">
-			<section class="l:center:md md">
+			<section class="l:text:lg md">
 				{@html content.html}
 			</section>
 		</div>
