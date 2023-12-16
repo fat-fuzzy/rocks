@@ -13,7 +13,7 @@ Use a `Stack` layout for stacked column content.
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

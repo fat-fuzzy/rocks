@@ -14,7 +14,7 @@ This component contains a basic button that can be used to submit a form, either
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## No JS
 
@@ -36,7 +36,7 @@ The class system reflects the combination of the following factors:
 
 For each Theme, the button Element has to have styling rules for each State, given every combination of [Color *x* Variant]
 
-<p class="feedback emoji:default">More Coming Soon!</p>
+<p class="feedback bare emoji:default">More Coming Soon!</p>
 
 ## Resources
 

@@ -17,8 +17,8 @@ There are two(\*) groups of color:
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>

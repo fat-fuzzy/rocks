@@ -21,9 +21,7 @@ Use a `RevealNav` component to provide related navigation options that can be sh
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
-
-## Requirements
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ### No JS
 

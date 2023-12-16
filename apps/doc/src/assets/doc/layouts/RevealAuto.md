@@ -19,9 +19,7 @@ Use a `RevealAuto` layout to automatically collapse content at a specified break
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
-
-## Requirements
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ### No JS
 

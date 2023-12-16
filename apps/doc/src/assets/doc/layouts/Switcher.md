@@ -9,11 +9,11 @@ context: ['app.settings', 'shared.container']
 
 ## Usage
 
-Use a `Stack` layout for items that switch between column and row layouts when the container reaches a threshold width.
+Use a `Switcher` layout for items that switch between column and row layouts when the container reaches a threshold width.
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

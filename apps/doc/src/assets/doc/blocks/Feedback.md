@@ -16,7 +16,7 @@ The feedback component is styled according to its `status` and the `context` it 
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

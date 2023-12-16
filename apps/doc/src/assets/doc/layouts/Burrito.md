@@ -15,7 +15,7 @@ Column width is determined by the size prop, which sets a `max-width` using side
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

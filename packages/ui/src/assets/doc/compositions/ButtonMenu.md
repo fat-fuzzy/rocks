@@ -18,9 +18,7 @@ Use a `ButtonMenu` component to provide a menu of related actions to the user.
 
 ### Examples
 
-<p class="feedback emoji:default">Coming Soon!</p>
-
-## Requirements
+<p class="feedback bare emoji:default">Coming Soon!</p>
 
 ### No JS
 
