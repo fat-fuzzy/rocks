@@ -26,7 +26,6 @@
 			color: 'accent',
 			asset: 'emoji:demo',
 			value: 'demo',
-			initial: 'pressed',
 		},
 		{
 			id: 'context.menu.toggle.doc',
@@ -35,6 +34,7 @@
 			color: 'primary',
 			asset: 'emoji:doc',
 			value: 'doc',
+			initial: 'pressed',
 		},
 	]
 
@@ -99,13 +99,12 @@
 	<RevealAuto
 		id="ui-component-app-context"
 		size="sm"
-		breakpoint="md"
+		breakpoint="sm"
 		color="primary"
 		align="start"
 		variant="outline"
 		title="Context"
 		formaction="toggleContext"
-		container="side"
 		{actionPath}
 		{reveal}
 		redirect={$page.url.pathname}

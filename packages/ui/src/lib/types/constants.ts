@@ -2,6 +2,7 @@ import type {Settings, Tab} from '$types'
 import type {StyleTree} from '$lib/api/styles/types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
+const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'show'}
 const DEFAULT_SIDEBAR_REVEAL_STATE: Settings = {reveal: 'show'}
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 const DEFAULT_DS_STATE: {
@@ -179,6 +180,7 @@ export default {
 	UI_DOC_TABS,
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
+	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_SIDEBAR_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
