@@ -3,7 +3,7 @@ import constants from '$lib/types/constants'
 
 const {UI_DOC_TABS} = constants
 
-export class DsTabUpdate {
+export class DsTabsUpdate {
 	currentTab: Tab
 
 	/**

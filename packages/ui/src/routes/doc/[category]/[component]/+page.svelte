@@ -39,7 +39,6 @@
 	]
 
 	let category: string
-
 	let title: string
 	let Component: ComponentType
 
@@ -75,11 +74,11 @@
 
 	$: reveal = revealContext.reveal
 	$: category = $page.params.category
-	$: markdowns =
-		$page.data.markdowns && $page.data.markdowns[category] ? $page.data.markdowns[category] : []
 	$: title = $page.params.component
 	$: Component = categoryItems[category][title]
 	$: path = $page.url.pathname
+	$: markdowns =
+		$page.data.markdowns && $page.data.markdowns[category] ? $page.data.markdowns[category] : []
 	$: content = markdowns.find(({meta}) => meta.title === title) || {
 		html: `<p class="feedback emoji:default">Doc Coming Soon!</p>`,
 	}
