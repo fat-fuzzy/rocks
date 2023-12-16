@@ -3,7 +3,7 @@ title: RevealMenu
 slug: RevealMenu
 family: ['compositions']
 group: ['menus']
-props_content: ['compositions / menus']
+content_type: ['compositions / menus']
 props_state: ['title', 'formaction', 'value']
 props_style: ['color', 'variant', 'size', 'background', 'layout', 'threshold']
 context: ['app.settings', 'shared.container']

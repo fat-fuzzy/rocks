@@ -145,44 +145,42 @@
 {#if content.html && currentTab.value === 'doc'}
 	<article class="l:sidebar:xs">
 		<div class="l:main">
-			<section class="l:text:lg">
+			<section class="l:center:md md">
 				{@html content.html}
 			</section>
 		</div>
-		{#if content.meta}
-			<aside class="l:side">
-				{#if content.meta.props_style}
-					<details open>
-						<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
-						<ul class="tags l:switcher:md">
-							{#each content.meta.props_style as prop}
-								<li class="card:sm bg:primary:lightest">{prop}</li>
-							{/each}
-						</ul>
-					</details>
-				{/if}
-				{#if content.meta.props_content}
-					<details open>
-						<summary class={`card:xs bg:primary:light box:primary:light`}>Content Type</summary>
-						<ul class="tags l:switcher:md">
-							{#each content.meta.props_content as prop}
-								<li class="card:sm bg:highlight:lightest">{prop}</li>
-							{/each}
-						</ul>
-					</details>
-				{/if}
-				{#if content.meta.props_state}
-					<details open>
-						<summary class={`card:xs bg:primary:light box:primary:light`}>State Props</summary>
-						<ul class="tags l:switcher:md">
-							{#each content.meta.props_state as prop}
-								<li class="card:sm bg:accent:lightest">{prop}</li>
-							{/each}
-						</ul>
-					</details>
-				{/if}
-			</aside>
-		{/if}
+		<aside class="l:side">
+			{#if content.meta.props_style}
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.props_style as prop}
+							<li class="card:sm bg:primary:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			{/if}
+			{#if content.meta.content_type}
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>Content Type</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.content_type as prop}
+							<li class="card:sm bg:highlight:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			{/if}
+			{#if content.meta.props_state}
+				<details open>
+					<summary class={`card:xs bg:primary:light box:primary:light`}>State Props</summary>
+					<ul class="tags l:switcher:md">
+						{#each content.meta.props_state as prop}
+							<li class="card:sm bg:accent:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			{/if}
+		</aside>
 	</article>
 {:else if currentTab.value === 'demo'}
 	<Element
