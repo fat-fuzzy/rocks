@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.33
+
+### Patch Changes
+
+- 7b2f012f: [ui+doc] Add Doc and Demo tabs, update docs
+
 ## 0.1.32
 
 ### Patch Changes
