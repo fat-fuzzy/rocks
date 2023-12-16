@@ -66,15 +66,35 @@ export const actions = {
 		return {success: true}
 	},
 
-	handleTabChange: async ({request, url, cookies}) => {
+	handleElementTabChange: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-ui-tabs')
-		let currentTab = UI_DOC_TABS[0]
+		let currentTabs = {element: UI_DOC_TABS[0], category: UI_DOC_TABS[0]}
 		if (serialized) {
-			currentTab = JSON.parse(serialized)
+			currentTabs = JSON.parse(serialized)
 		}
-		const tabs = new DsTabsUpdate(currentTab)
-		if (!tabs.update(data)) {
+		const tabs = new DsTabsUpdate(currentTabs)
+		if (!tabs.updateElementTab(data)) {
+			return fail(400, {tabsError: true})
+		}
+		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})
+		if (url.searchParams.has('redirectTo')) {
+			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
+			throw redirect(303, redirectTo)
+		}
+
+		return {success: true}
+	},
+
+	handleCategoryTabChange: async ({request, url, cookies}) => {
+		const data = await request.formData()
+		const serialized = cookies.get('fat-fuzzy-ui-tabs')
+		let currentTabs = {element: UI_DOC_TABS[0], category: UI_DOC_TABS[0]}
+		if (serialized) {
+			currentTabs = JSON.parse(serialized)
+		}
+		const tabs = new DsTabsUpdate(currentTabs)
+		if (!tabs.updateElementTab(data)) {
 			return fail(400, {tabsError: true})
 		}
 		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})

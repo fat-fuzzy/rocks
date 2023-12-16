@@ -18,10 +18,10 @@
 
 	let sidebarReveal: {[key: string]: string} = {reveal: ''}
 
-	const {styles, context, state, currentTab} = $page.data
+	const {styles, context, state, currentTabs} = $page.data
 	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
 
-	stores.ui.tab.set(currentTab || UI_DOC_TABS[0])
+	stores.ui.elementTab.set(currentTabs.element || UI_DOC_TABS[0])
 	stores.ui.styles.set(styles)
 	stores.ui.reveal.set(context)
 	stores.ui.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)

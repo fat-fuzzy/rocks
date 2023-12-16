@@ -44,7 +44,7 @@
 
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
-	let currentTab = $page.data.currentTab || UI_DOC_TABS[0]
+	let currentTab = $page.data.currentTabs.element || UI_DOC_TABS[0]
 
 	const localStores = [
 		stores.ui.styles.subscribe((value) => {
@@ -57,7 +57,7 @@
 				revealContext = value
 			}
 		}),
-		stores.ui.tab.subscribe((value) => {
+		stores.ui.elementTab.subscribe((value) => {
 			if (value) {
 				currentTab = value
 			}
@@ -69,7 +69,7 @@
 	}
 
 	function handleTabChange(event: CustomEvent) {
-		stores.ui.tab.set(event.detail.selected[0])
+		stores.ui.elementTab.set(event.detail.selected[0])
 	}
 
 	$: reveal = revealContext.reveal
@@ -117,7 +117,7 @@
 			<form
 				method="POST"
 				class="l:switcher:sm shrink"
-				action={`/doc?/handleTabChange&redirectTo=${$page.url.pathname}`}
+				action={`/doc?/handleElementTabChange&redirectTo=${$page.url.pathname}`}
 				use:enhance={() => {
 					// prevent default callback from resetting the form
 					return ({update}) => {
@@ -132,7 +132,7 @@
 					size="lg"
 					color="primary"
 					variant="round outline"
-					formaction={`/doc?/handleTabChange&redirectTo=${$page.url.pathname}`}
+					formaction={`/doc?/handleElementTabChange&redirectTo=${$page.url.pathname}`}
 					on:click={handleTabChange}
 				/>
 			</form>
