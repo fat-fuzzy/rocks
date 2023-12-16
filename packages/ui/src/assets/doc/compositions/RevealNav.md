@@ -3,16 +3,24 @@ title: RevealNav
 slug: RevealNav
 family: ['compositions']
 group: ['navs']
-props: ['color', 'variant', 'size', 'background']
+props_state: ['title', 'formaction', 'items']
+props_style: ['color', 'variant', 'size', 'background']
 context: ['app.settings', 'shared.container']
 ---
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use a `RevealNav` component to provide related navigation options that can be shown or minimized using a button.
 
-[TODO]
+### Related Components
+
+- `Expand` component in `blocks`
+- `Reveal` component in `layouts`
+- `Nav` component in `composition/navs`
+
+### Examples
+
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Requirements
 
@@ -22,10 +30,8 @@ For a button action to have an effect without JavaScript enabled, it must be ins
 
 If a form contains more than one button with different actions expected on click, each button must have a distinct `formaction` attribute.
 
-## Getting started
-
-[TODO]
-
 ## Resources
 
-[TODO]
+- [MDN - The Anchor Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
+- [MDN - The Navigation Section Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
+- [Inclusive Components - Menus & Menu buttons](https://inclusive-components.design/menus-menu-buttons/)

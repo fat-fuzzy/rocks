@@ -10,19 +10,12 @@ context: ['app.settings', 'shared.container']
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use this component within a `<form>`element to allow the user to upload a file.
 
-[TODO]
+### Examples
 
-## Requirements
-
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+- [MDN - Input File](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file)

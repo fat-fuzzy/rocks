@@ -10,19 +10,14 @@ context: ['app.settings', 'shared.container']
 
 ## Usage
 
-When is this usage appropriate
-Examples
+Use this component to provide feedback to the user.
 
-[TODO]
+The feedback component is styled according to its `status` and the `context` it appears in.
 
-## Requirements
+### Examples
 
-[TODO]
-
-## Getting started
-
-[TODO]
+<p class="feedback emoji:default">Coming Soon!</p>
 
 ## Resources
 
-[TODO]
+[Inclusive Components - Notifications](https://inclusive-components.design/notifications/)
