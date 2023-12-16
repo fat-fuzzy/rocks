@@ -62,6 +62,8 @@
 		asset,
 		name: `ui-${name}`,
 		settings,
+		actionPath,
+		redirect,
 	}
 
 	onDestroy(() => {
@@ -69,4 +71,4 @@
 	})
 </script>
 
-<svelte:component this={component} id={title} {actionPath} {redirect} {...props} />
+<svelte:component this={component} id={title} {...props} />
