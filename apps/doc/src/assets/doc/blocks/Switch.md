@@ -16,10 +16,6 @@ The state is reflected in the value of the attribute `aria-pressed`.
 
 This component can be used to submit a form, either via the default `action` set on the parent form element, or via a specific `formaction` provided as props to the Button component.
 
-### ARIA Attributes
-
-This component uses aria attributes to reflect state, which can be interpreted by users of assistive technologies and are also used as a CSS selectors to target each state for styling.
-
 ### Examples
 
 <p class="feedback bare emoji:default">Coming Soon!</p>
