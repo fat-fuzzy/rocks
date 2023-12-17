@@ -94,7 +94,7 @@ export const actions = {
 			currentTabs = JSON.parse(serialized)
 		}
 		const tabs = new DsTabsUpdate(currentTabs)
-		if (!tabs.updateElementTab(data)) {
+		if (!tabs.updateCategoryTab(data)) {
 			return fail(400, {tabsError: true})
 		}
 		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})
