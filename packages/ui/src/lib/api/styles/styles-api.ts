@@ -137,7 +137,7 @@ const blocks: BlockStyles = {
 		'Size',
 		'Status',
 		'Context',
-		'Emoji',
+		'Asset',
 	]),
 }
 

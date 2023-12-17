@@ -300,7 +300,7 @@ const context = {
 	include: ['Feedback'],
 }
 
-const emoji = {
+const asset = {
 	initial: 'default',
 	input: 'toggle',
 	layout: 'switcher',
@@ -335,10 +335,11 @@ const emoji = {
 	exclude: ['Switch', 'ButtonMenu', 'ToggleMenu', 'InputRange', 'InputFile'],
 }
 
-const asset = {
-	emoji,
-	exclude: ['ButtonMenu', 'ToggleMenu', 'InputRange', 'InputFile'],
-}
+// TODO: Fix asset - SVG / emoji
+// const asset = {
+// 	emoji,
+// 	exclude: ['ButtonMenu', 'ToggleMenu', 'InputRange', 'InputFile'],
+// }
 
 const content = {
 	initial: 'card',
@@ -462,7 +463,6 @@ const PROPS: {[key: string]: any} = {
 	variant,
 	status,
 	context,
-	emoji,
 	asset,
 	content,
 	side,
