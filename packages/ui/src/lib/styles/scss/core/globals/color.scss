@@ -137,7 +137,7 @@
 }
 
 .bg\:info\:light {
-	--current-color: var(--color-dark);
+	--current-color: var(--color-black);
 	color: var(--current-color);
 	background-color: var(--current-info-light);
 }
@@ -191,7 +191,7 @@
 }
 
 .bg\:error\:light {
-	--current-color: var(--color-dark);
+	--current-color: var(--color-black);
 	color: var(--current-color);
 	background-color: var(--current-error-light);
 }

@@ -8,14 +8,17 @@
 
 	import * as settingsStore from '$lib/stores/settings'
 	import format from '$lib/utils/format'
+	import constants from '$lib/types/constants'
 	import {links, itemsSettings} from '$lib/api/fixtures/js/nav'
 	import Header from '$lib/components/compositions/headers/Header.svelte'
+
+	const {DEFAULT_APP_SETTINGS} = constants
 
 	export let data: LayoutData
 
 	const {nav, sidebar, settings, app} = data
 
-	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
+	let appSettings = app || DEFAULT_APP_SETTINGS
 
 	const stores = [
 		settingsStore.app.subscribe((value) => {

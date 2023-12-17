@@ -16,8 +16,7 @@
 	export let className = 'header-app'
 	export let breakpoint = 'xxl'
 	export let background = ''
-	export let size = 'sm'
-	export let id = 'ui'
+	export let id = 'header'
 	export let formaction: string | undefined = undefined
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
@@ -87,7 +86,7 @@
 			class={revealClasses}
 		>
 			<Expand
-				id={`button-${id}-nav-reveal`}
+				id={`header-button-expand-${id}`}
 				variant="outline"
 				size="sm"
 				title="Menu"

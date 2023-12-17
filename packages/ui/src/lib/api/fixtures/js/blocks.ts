@@ -12,7 +12,7 @@ export default {
 		shape: 'round',
 		states: {
 			active: {id: 'button-switch', text: 'Rabbit', asset: 'emoji:switch-active'},
-			inactive: {id: 'button-switch', text: 'Hole', asset: 'emoji:switch-inactive'},
+			inactive: {id: 'button-switch', text: 'Hat', asset: 'emoji:switch-inactive'},
 		},
 	},
 	InputCheck: {id: 'check', text: 'An optional choice choice'},

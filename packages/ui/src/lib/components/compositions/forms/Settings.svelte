@@ -13,7 +13,7 @@
 	const method = 'POST'
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined
-	export let id = 'menu-settings'
+	export let id = 'settings'
 	export let size = 'md'
 	export let color = ''
 	export let variant = 'outline'
@@ -26,6 +26,7 @@
 
 	export let items = DEFAULT_SETTINGS
 
+	let settingsId = id
 	let appSettings: {[key: string]: string} = DEFAULT_APP_SETTINGS
 	let settingsReveal: {[key: string]: string} = DEFAULT_REVEAL_STATE
 
@@ -102,14 +103,14 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`button-${id}`}
+			id={`button-expand-${id}`}
 			{variant}
 			{color}
 			{size}
 			type={actionPath && formaction ? 'submit' : 'button'}
 			title="Settings"
 			name={`button-${id}`}
-			controls={`reveal-${id}`}
+			controls={id}
 			value={settingsReveal[id]}
 			states={{
 				active: {text: 'settings', value: 'show', asset: 'emoji:settings'},
@@ -120,7 +121,7 @@
 			Settings
 		</Expand>
 	</form>
-	<div id={`reveal-${id}`} class={`${showSettings} l:flex`}>
+	<div {id} class={`${showSettings} l:flex`}>
 		<form
 			name="settings-update"
 			{method}
@@ -135,7 +136,7 @@
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
 				<Switch
-					{id}
+					id={`${settingsId}-${id}`}
 					{name}
 					{title}
 					{variant}

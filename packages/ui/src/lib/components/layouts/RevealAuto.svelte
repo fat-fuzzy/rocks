@@ -65,7 +65,7 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`${id}-expand-button`}
+			id={`button-expand-${id}`}
 			{variant}
 			{size}
 			{color}

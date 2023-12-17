@@ -41,7 +41,7 @@
 				Password
 				<input id="password" type="password" name="password" required />
 			</label>
-			<Button {type} {variant} {color} onClick={() => {}}>Submit</Button>
+			<Button id="button-submit-login" {type} {variant} {color} onClick={() => {}}>Submit</Button>
 		</form>
 	</div>
 {/if}

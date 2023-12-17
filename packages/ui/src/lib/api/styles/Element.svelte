@@ -106,6 +106,7 @@
 						{actionPath}
 						{redirect}
 						settings={ui}
+						id={`ui-${title}`}
 					/>
 				{:else}
 					<svelte:component
@@ -117,6 +118,7 @@
 						{actionPath}
 						{redirect}
 						settings={ui}
+						id={`ui-${title}`}
 					/>
 				{/if}
 			</div>
@@ -167,7 +169,7 @@
 {:else}
 	{@const props = getProps({category, component: title})}
 	<article
-		id={title}
+		id={`card-${title}`}
 		class={`box ${brightness} bg:${background} l:stack ui:${title.toLowerCase()}`}
 	>
 		<header>
@@ -193,6 +195,7 @@
 					{actionPath}
 					redirect={path}
 					settings={ui}
+					id={`ui-${title}`}
 				/>
 			{:else}
 				<svelte:component
@@ -204,6 +207,7 @@
 					{actionPath}
 					redirect={path}
 					settings={ui}
+					id={`ui-${title}`}
 				/>
 			{/if}
 		</div>

@@ -5,12 +5,13 @@
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$data/nav'
-	import {compositions, stores, utils} from '@fat-fuzzy/ui'
+	import {compositions, stores, utils, constants} from '@fat-fuzzy/ui'
 
 	const {Header} = compositions
 	const {settings} = stores
+	const {DEFAULT_APP_SETTINGS} = constants
 
-	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
+	let appSettings = $page.data.app || DEFAULT_APP_SETTINGS
 
 	const localStores = [
 		settings.app.subscribe((value) => {
@@ -33,7 +34,7 @@
 </script>
 
 <Header
-	id="ui"
+	id="doc"
 	className={headerClass}
 	actionPath="/"
 	formaction="toggleNav"

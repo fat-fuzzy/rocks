@@ -98,7 +98,7 @@
 	on:clickOutside={handleClickOutside}
 >
 	<Expand
-		id={`button-${id}`}
+		id={`button-expand-${id}`}
 		{variant}
 		{title}
 		{size}

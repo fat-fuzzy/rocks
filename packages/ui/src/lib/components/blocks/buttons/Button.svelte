@@ -51,7 +51,7 @@
 	{formaction}
 	{value}
 	class={buttonClasses}
-	data-key={`${name}-${id}`}
+	data-key={name}
 	on:click={onClick}
 >
 	<slot>{text}</slot>

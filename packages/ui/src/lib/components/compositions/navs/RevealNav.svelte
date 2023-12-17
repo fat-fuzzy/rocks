@@ -91,7 +91,7 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`button-${id}`}
+			id={`button-expand-${id}`}
 			{variant}
 			{title}
 			{size}

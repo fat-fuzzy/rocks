@@ -30,9 +30,11 @@
 	export let shape = ''
 	export let variant = 'fill'
 
+	let payloadId = name // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+
 	let machineConfig = {
 		predictableActionArguments: true,
-		id,
+		id: name,
 		initial: initial ? 'active' : 'inactive',
 		states: {
 			inactive: {
@@ -51,7 +53,7 @@
 	export let onClick = (event: MouseEvent) => {
 		send('SWITCH')
 		const payload = {
-			id,
+			id: payloadId,
 			value,
 			pressed: $state.value === 'active',
 			send,
@@ -62,7 +64,7 @@
 	onMount(() => {
 		if (initial) {
 			const payload = {
-				id,
+				id: payloadId,
 				value,
 				pressed: $state.value === 'active',
 				send,
@@ -88,7 +90,7 @@
 	{formaction}
 	value={currentState.value}
 	class={buttonClasses}
-	data-key={`${name}-${id}`}
+	data-key={name}
 	on:click={onClick}
 	aria-pressed={pressed}
 >
