@@ -12,7 +12,7 @@
 
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
-	let currentTab = $page.data.currentTabs.element || UI_DOC_TABS[0]
+	let currentTab = $page.data.currentTabs?.element || UI_DOC_TABS[0]
 
 	const tabButtons = [
 		{
