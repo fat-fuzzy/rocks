@@ -36,5 +36,5 @@ a[class*='emoji:']::before {
 }
 
 [class*='svg:icon'] {
-	height: calc(3.5 * var(--current-size-plus)); // TODO : set icon size in scale.scss
+	height: calc(3.15 * var(--current-size-plus)); // TODO : set icon size in scale.scss
 }

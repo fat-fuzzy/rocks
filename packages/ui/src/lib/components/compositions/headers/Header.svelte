@@ -62,8 +62,8 @@
 	$: show = `show ${showBackground}`
 	$: showNav = reveal === 'show' ? show : 'hide:viz-only'
 	$: navClasses = `l:switcher:xxs ${showBackground}`
-	$: revealClasses = `form:expand card:${size}`
-	$: layoutClasses = `l:main:60 l:reveal:auto bp:${breakpoint}`
+	$: revealClasses = `form:expand card:md`
+	$: layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
 
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 
