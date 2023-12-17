@@ -11,10 +11,10 @@
 
 <div class="l:switcher:xxl th:md">
 	<section class="card:xxl l:stack:md">
-		<svelte:element this={`h${depth}`} class="font:lg">Theme colors</svelte:element>
+		<svelte:element this={`h${depth + 1}`} class="font:lg">Theme colors</svelte:element>
 		{#each colors as color}
 			<article>
-				<svelte:element this={`h${depth - 1}`} class="font:md">{color}</svelte:element>
+				<svelte:element this={`h${depth + 2}`} class="font:md">{color}</svelte:element>
 				<div class="l:grid:xxs">
 					<figure class={`${colorClasses} bg:${color}`}>
 						<figcaption>{color}</figcaption>
@@ -30,10 +30,10 @@
 	</section>
 
 	<section class="card:xxl l:stack:md">
-		<svelte:element this={`h${depth}`} class="font:lg">Feedback status colors</svelte:element>
+		<svelte:element this={`h${depth + 1}`} class="font:lg">Feedback status colors</svelte:element>
 		{#each statuses as color}
 			<article>
-				<svelte:element this={`h${depth - 1}`} class="font:md">{color}</svelte:element>
+				<svelte:element this={`h${depth + 2}`} class="font:md">{color}</svelte:element>
 				<div class="l:grid:xxs">
 					<figure class={`${colorClasses} bg:${color}`}>
 						<figcaption>{color}</figcaption>

@@ -78,27 +78,6 @@
 						</div>
 					{/if}
 				</details>
-				<!-- <section id={`${category}-classes`}>
-				<details class={`l:stack:md`}>
-					<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
-					<div class="drop">
-							<Api categories={[category]} {title} {path} redirect={$page.url.pathname}/>
-					</div>
-				</details>
-			</section> 
-				<details id={`${category}-doc`} class="l:stack:lg" open>
-					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
-					<div class="drop w:full">
-						<div class="l:text:xl">
-							{#if content}
-								{@html content.html}
-							{:else}
-								<p class={`font:xl`}>🐰</p>
-								<p class={`font:md`}>Coming soon!</p>
-							{/if}
-						</div>
-					</div>
-				</details>-->
 			</div>
 		</section>
 	</Sidebar>
