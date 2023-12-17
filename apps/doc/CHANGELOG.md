@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.34
+
+### Patch Changes
+
+- ef8555b9: [ui+doc] Style Api refactor, clean Doc
+
 ## 0.1.33
 
 ### Patch Changes
