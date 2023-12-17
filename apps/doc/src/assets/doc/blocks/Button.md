@@ -16,27 +16,20 @@ This component contains a basic button that can be used to submit a form, either
 
 <p class="feedback bare emoji:default">Coming Soon!</p>
 
-## No JS
+## CSS Variables
 
-For a button action to have an effect without JavaScript enabled, it must be inside a `<form>` element that has at least one defined `action`. By default, a button without a `type` attribute will be considered a 'submit' button: on click, it will submit the form it belongs to.
+The CSS variables for button colors reflect the combination of the following factors:
 
-If a form contains more than one button with different actions expected on click, each button must have a distinct `formaction` attribute.
+- **Brightness:** day, night
+- **Contrast:** blend, contrast
+- **Element:** Button, Toggle, Switch, Expand
+- **State:** default, disabled, hover, focus, active
+- **Color:** none, primary, accent, highlight
+- **Variant:** fill, outline, bare
 
-## Class System
+For each [**Brightness** x **Contrast**], an **Element** has to have styling rules for each **State**, given every combination of [**Color** x **Variant**]
 
-The class system reflects the combination of the following factors:
-
-| Brightness | Contrast | Element | Theme Color | Variant | State    |
-| ---------- | -------- | ------- | ----------- | ------- | -------- |
-| day        | blend    | button  | - none -    | fill    | default  |
-| night      | contrast |         | primary     | outline | disabled |
-|            |          |         | accent      | bare    | hover    |
-|            |          |         | highlight   |         | focus    |
-|            |          |         |             |         | active   |
-
-For each Theme, the button Element has to have styling rules for each State, given every combination of [Color *x* Variant]
-
-<p class="feedback bare emoji:default">More documentation soon!</p>
+<p class="feedback bare emoji:default"> The generation of  CSS color variables and button mixins is still a work in progress. More to come soon!</p>
 
 ## Resources
 

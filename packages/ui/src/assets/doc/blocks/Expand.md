@@ -20,6 +20,7 @@ This component can be used to submit a form, either via the default `action` set
 
 ### Related Components
 
+- `Button` component in `blocks`
 - `Reveal` component in `layouts`
 
 ### Examples
