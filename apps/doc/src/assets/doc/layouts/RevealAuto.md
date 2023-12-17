@@ -14,7 +14,7 @@ Use a `RevealAuto` layout to automatically collapse content at a specified break
 
 ### Related Components
 
-- `Button` component in `blocks`
+- `Expand` component in `blocks`
 - `Reveal` component in `layouts`
 
 ### Examples

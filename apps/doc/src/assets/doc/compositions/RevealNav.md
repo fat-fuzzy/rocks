@@ -17,7 +17,7 @@ Use a `RevealNav` component to provide related navigation options that can be sh
 
 - `Expand` component in `blocks`
 - `Reveal` component in `layouts`
-- `Nav` component in `composition/navs`
+- `Nav` component in `compositions`
 
 ### Examples
 
