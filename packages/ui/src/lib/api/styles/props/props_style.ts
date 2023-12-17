@@ -25,13 +25,13 @@ const contrast = {
 	variant: 'box card',
 	items: [
 		{
-			id: 'app.settings.contrast.contrast',
+			id: 'contrast.contrast',
 			text: 'contrast',
 			asset: 'emoji:contrast',
 			value: 'contrast',
 		},
 		{
-			id: 'app.settings.contrast.blend',
+			id: 'contrast.blend',
 			text: 'blend',
 			asset: 'emoji:blend', // TODO: night / day asset option
 			value: 'blend',

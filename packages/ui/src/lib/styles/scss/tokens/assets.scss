@@ -31,6 +31,7 @@ $magic-wand: '🪄';
 $gear: '⚙️';
 $umbrella: '☂️';
 $lightning-bolt: '⚡️';
+$construction-sign: '🚧';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -77,6 +78,7 @@ $emojis: (
 	doc: #{$memo},
 	demo: #{$magic-wand},
 	nojs: #{$bunny},
+	wip: #{$construction-sign},
 
 	// Playground fixture emojis
 	geometry-2d: #{$ruler}

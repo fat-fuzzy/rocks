@@ -28,7 +28,8 @@ code:not([class^='language-']) {
 	color: var(--current-color);
 	background-color: var(--current-bg-contrast);
 	border: none;
-	padding: var(--current-size-minus) var(--current-size);
+	padding: calc(var(--current-size-minus) / 2.5) calc(var(--current-size) / 2)
+		calc(var(--current-size-minus) / 2);
 	border-radius: var(--radius-base);
 }
 
