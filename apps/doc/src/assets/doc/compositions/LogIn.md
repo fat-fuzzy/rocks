@@ -14,8 +14,8 @@ Use a `LogIn` component to display a login form to the user.
 
 ### Related Components
 
-- `Button` component in `blocks/buttons`
-- `Feedback` component in `blocks/global`
+- `Button` component in `buttons`
+- `Feedback` component in `blocks`
 
 ### Examples
 

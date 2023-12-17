@@ -20,12 +20,6 @@ This component can be used to submit a form, either via the default `action` set
 
 <p class="feedback bare emoji:default">Coming Soon!</p>
 
-### No JS
-
-For a button action to have an effect without JavaScript enabled, it must be inside a `<form>` element that has at least one defined `action`. By default, a button without a `type` attribute will be considered a 'submit' button: on click, it will submit the form it belongs to.
-
-If a form contains more than one button with different actions expected on click, each button must have a distinct `formaction` attribute.
-
 ## Resources
 
 - [MDN - The Button Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)

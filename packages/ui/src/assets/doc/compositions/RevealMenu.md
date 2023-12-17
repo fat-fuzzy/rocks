@@ -15,20 +15,14 @@ Use a `RevealMenu` component to provide a menu of related actions that can be sh
 
 ### Related Components
 
-- `Expand` component in `blocks/buttons`
-- `Button` component in `blocks/buttons`
+- `Expand` component in `blocks`
+- `Button` component in `blocks`
 - `Reveal` component in `layouts`
-- `ButtonMenu` component in `compositions/menus`
+- `ButtonMenu` component in `compositions`
 
 ### Examples
 
 <p class="feedback bare emoji:default">Coming Soon!</p>
-
-### No JS
-
-For a menu button action to have an effect without JavaScript enabled, it must be inside a `<form>` element that has at least one defined `action`. By default, a button without a `type` attribute will be considered a 'submit' button: on click, it will submit the form it belongs to.
-
-If a form contains more than one button with different actions expected on click, each button must have a distinct `formaction` attribute.
 
 ## Resources
 
