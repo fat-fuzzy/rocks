@@ -144,11 +144,9 @@
 
 {#if content.html && currentTab.value === 'doc'}
 	<article class="l:sidebar:xs">
-		<div class="l:main">
-			<section class="l:text:lg md">
-				{@html content.html}
-			</section>
-		</div>
+		<section class="l:main card:md">
+			<div class="l:text:lg">{@html content.html}</div>
+		</section>
 		<aside class="l:side">
 			{#if content.meta.props_style}
 				<details open>

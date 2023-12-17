@@ -78,9 +78,9 @@
 
 <Sidebar size="xs" align="end">
 	<div slot="main" class="l:stack">
-		<div class="l:text:xl">
-			<div class="card:xl">{@html content.html}</div>
-		</div>
+		<section class="card:md">
+			<div class="l:text:lg">{@html content.html}</div>
+		</section>
 		{#each components as { category, items }}
 			<Collection
 				{title}
