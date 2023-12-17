@@ -31,6 +31,11 @@
 	max-width: 100%;
 }
 
+.l\:frame\:table {
+	max-width: 100%;
+	overflow-y: auto;
+}
+
 .l\:frame\:feature > img,
 .l\:frame\:feature > video,
 .l\:frame\:feature > canvas {

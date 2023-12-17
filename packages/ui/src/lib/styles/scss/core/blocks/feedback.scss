@@ -6,6 +6,10 @@
 	background-color: var(--current-bg-color);
 }
 
+p + .feedback {
+	margin-block-start: var(--current-size-plus);
+}
+
 .status {
 	font-family: var(--font-family-heading);
 	font-size: var(--current-font-size);
