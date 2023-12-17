@@ -4,7 +4,7 @@ slug: RevealAuto
 family: ['layouts']
 # group: ['reveal']
 content_type: ['any']
-props_style: ['size', 'threshold']
+props_style: ['size', 'breakpoint']
 context: ['app.settings']
 ---
 

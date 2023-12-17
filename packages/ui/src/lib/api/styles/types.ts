@@ -5,7 +5,8 @@ export type ComponentChild = string | ComponentType | (string | ComponentType)[]
 interface IStyleInputOptions {
 	[key: string]: string
 }
-type StyleInputOptions = {
+
+export type StyleInputOptions = {
 	id: string
 	asset?: string
 	size?: string
