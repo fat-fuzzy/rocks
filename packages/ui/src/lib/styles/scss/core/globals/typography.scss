@@ -84,13 +84,15 @@ article,
 	background-color: inherit;
 }
 
-.day {
+.day,
+.night .day {
 	h1 {
 		color: var(--current-primary);
 	}
 }
 
-.night {
+.night,
+.day .night {
 	h1 {
 		color: var(--current-primary-light);
 	}
