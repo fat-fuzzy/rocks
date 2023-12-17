@@ -21,7 +21,7 @@
 	const {styles, context, state, currentTabs} = $page.data
 	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
 
-	stores.ui.elementTab.set(currentTabs.element || UI_DOC_TABS[0])
+	stores.ui.elementTab.set(currentTabs?.element || UI_DOC_TABS[0])
 	stores.ui.styles.set(styles)
 	stores.ui.reveal.set(context)
 	stores.ui.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)

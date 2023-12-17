@@ -30,7 +30,7 @@
 
 	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_NAV_REVEAL_STATE
 
-	stores.elementTab.set(currentTabs.element || UI_DOC_TABS[0])
+	stores.elementTab.set(currentTabs?.element || UI_DOC_TABS[0])
 	stores.styles.set(styles)
 	stores.reveal.set(context)
 	stores.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)
