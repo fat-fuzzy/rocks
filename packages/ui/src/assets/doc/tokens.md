@@ -5,6 +5,9 @@ tags: ['tokens']
 context: ['app.settings']
 ---
 
-These are the design tokens of the UI library, which correspond to design choices such as color and typography, and which are defined via CSS variables or styled using the native HTML tags. They are the base upon which all the rest is built.
+The `Tokens` family groups the Design Tokens of the UI library.
 
-There are more tokens defined in the [CSS library](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui/src/lib/styles)
+Design Tokens are `[key, value]` pairs that define design choices such as Color, Typography, or Scale.
+`Tokens` are defined using CSS variables, and are sometimes styled via native HTML tags (ex: Typography rules can target `h1` elements directly).
+
+`Tokens` provide the base values used to build `Blocks`, `Layouts`, and `Compositions`.
