@@ -13,12 +13,16 @@
 
 // TODO: rules per breakpoint size
 @media screen and (min-width: 920px) {
+	.page-header {
+		align-items: center;
+	}
+
 	.page-header .l\:reveal\:auto {
 		margin-block-start: 0;
 	}
 
 	.page-header .l\:reveal\:auto .feedback {
-		margin-block-start: var(--current-size-plus);
+		margin-block-start: 0;
 		margin-inline-end: var(--current-size-plus);
 	}
 }
