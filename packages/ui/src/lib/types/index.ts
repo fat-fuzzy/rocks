@@ -11,6 +11,9 @@ export type ButtonState = {
 export type Tab = {
 	id: string
 	title: string
-	slug: string
 	value?: string
+	initial?: string
+	size?: string
+	color?: string
+	asset?: string
 }

@@ -6,12 +6,13 @@
 	import {clickOutside} from '$lib/utils/click-outside'
 	import {lang} from '$stores/intl'
 	import * as settings from '$stores/settings'
-	import {APP_SETTINGS, APP_LINKS} from '$data/app-ui'
+	import constants from '$lib/types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Settings from '$lib/components/compositions/forms/Settings.svelte'
 
 	const method = 'POST'
+	const {APP_SETTINGS, APP_LINKS} = constants
 	export let title = 'Header navigation'
 	export let className = 'header-app'
 	export let breakpoint = 'xxl'

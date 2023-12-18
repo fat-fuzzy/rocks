@@ -9,32 +9,13 @@
 	const {ToggleMenu} = compositions
 
 	const actionPath = '/test'
-	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
+	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
+	let revealContext = $page.data.dsContext || DEFAULT_REVEAL_STATE
+	let currentTab = $page.data.currentTabs?.category || DEFAULT_TABS[0]
 
-	const tabButtons = [
-		{
-			id: 'context.menu.toggle.demo',
-			title: 'Demo',
-			size: 'xl',
-			color: 'accent',
-			asset: 'emoji:demo',
-			value: 'demo',
-		},
-		{
-			id: 'context.menu.toggle.doc',
-			title: 'Doc',
-			size: 'xl',
-			color: 'primary',
-			asset: 'emoji:doc',
-			value: 'doc',
-			initial: 'pressed',
-		},
-	]
-
-	let currentTab = $page.data.currentTabs?.category || UI_DOC_TABS[0]
+	const tabs = TABS
 
 	const localStores = [
 		stores.ui.styles.subscribe((value) => {
@@ -129,7 +110,12 @@
 			>
 				<ToggleMenu
 					id={`submit.${path}`}
-					items={tabButtons}
+					items={tabs.map((tab) => {
+						if (tab.value == currentTab.value) {
+							tab.initial = 'pressed'
+						}
+						return tab
+					})}
 					layout="switcher"
 					size="lg"
 					color="primary"

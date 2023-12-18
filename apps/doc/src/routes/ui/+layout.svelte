@@ -19,14 +19,14 @@
 	let sidebarReveal: {[key: string]: string} = {reveal: ''}
 
 	const {styles, context, state, currentTabs} = $page.data
-	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
+	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE, TABS} = constants
 
-	stores.ui.elementTab.set(currentTabs?.element || UI_DOC_TABS[0])
+	stores.ui.elementTab.set(currentTabs?.element || TABS[0])
 	stores.ui.styles.set(styles)
 	stores.ui.reveal.set(context)
-	stores.ui.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)
+	stores.ui.navReveal.set(state?.navReveal || DEFAULT_NAV_REVEAL_STATE)
 	stores.ui.settingsReveal.set(state?.settingsReveal || DEFAULT_REVEAL_STATE)
-	stores.ui.sidebarReveal.set(state?.sidebarReveal || DEFAULT_REVEAL_STATE)
+	stores.ui.sidebarReveal.set(state?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE)
 
 	const localStores = [
 		stores.settings.sidebarReveal.subscribe((value) => {

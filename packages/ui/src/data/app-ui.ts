@@ -44,4 +44,23 @@ const APP_SETTINGS = {
 	],
 }
 
-export {APP_LINKS, APP_SETTINGS}
+const TABS_CONTENT = [
+	{
+		id: 'context.menu.toggle.demo',
+		title: 'Demo',
+		size: 'xl',
+		color: 'accent',
+		asset: 'emoji:demo',
+		value: 'demo',
+	},
+	{
+		id: 'context.menu.toggle.doc',
+		title: 'Doc',
+		size: 'xl',
+		color: 'primary',
+		asset: 'emoji:doc',
+		value: 'doc',
+	},
+]
+
+export {APP_LINKS, APP_SETTINGS, TABS_CONTENT}

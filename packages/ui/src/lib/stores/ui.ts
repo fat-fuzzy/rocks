@@ -7,7 +7,7 @@ const {
 	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_STYLES,
-	UI_DOC_TABS,
+	DEFAULT_TABS,
 } = constants
 
 export const styles = writable(DEFAULT_STYLES)
@@ -24,6 +24,6 @@ export const sidebarReveal = writable(DEFAULT_NAV_REVEAL_STATE)
 
 export const settingsReveal = writable(DEFAULT_REVEAL_STATE)
 
-export const elementTab = writable(UI_DOC_TABS[0])
+export const elementTab = writable(DEFAULT_TABS[0])
 
-export const categoryTab = writable(UI_DOC_TABS[0])
+export const categoryTab = writable(DEFAULT_TABS[0])

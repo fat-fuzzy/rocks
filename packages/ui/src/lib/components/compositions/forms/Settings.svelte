@@ -5,12 +5,11 @@
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import * as settings from '$stores/settings'
 	import constants from '$lib/types/constants'
-	import {APP_SETTINGS} from '$data/app-ui'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
 
-	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
+	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE, APP_SETTINGS} = constants
 	const method = 'POST'
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined

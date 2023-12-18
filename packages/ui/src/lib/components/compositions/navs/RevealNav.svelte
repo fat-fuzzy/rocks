@@ -8,7 +8,13 @@
 
 	import * as ui from '$stores/ui'
 
-	const {ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION, TRANSITION_CONTRAST} = constants
+	const {
+		DEFAULT_APP_SETTINGS,
+		DEFAULT_NAV_REVEAL_STATE,
+		ALIGN_OPPOSITE,
+		ALIGN_ANIMATION_DIRECTION,
+		TRANSITION_CONTRAST,
+	} = constants
 
 	const method = 'POST'
 	export let size = ''
@@ -26,7 +32,7 @@
 	export let name = 'reveal-nav'
 	export let align = 'start'
 	export let place = 'top'
-	export let value = 'minimize' // TODO: get value from page data
+	export let value: string | undefined = undefined
 	export let position: string | undefined = undefined
 	export let formaction: string | undefined = undefined
 	export let actionPath: string | undefined = undefined
@@ -34,8 +40,8 @@
 
 	export let items: any[] = [] // TODO: fix type
 
-	let sidebarReveal: {[key: string]: string} = {reveal: value}
-	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
+	let sidebarReveal = value ? {reveal: value} : DEFAULT_NAV_REVEAL_STATE
+	let appSettings = DEFAULT_APP_SETTINGS
 
 	const stores = [
 		settings.app.subscribe((value) => {
