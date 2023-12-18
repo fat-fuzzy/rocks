@@ -101,47 +101,6 @@ const DEFAULT_STYLES: StyleTree = {
 	},
 }
 
-const DEFAULT_SETTINGS = {
-	switch: [
-		{
-			id: 'brightness',
-			name: 'brightness',
-			title: 'Brightness',
-			variant: 'outline',
-			shape: 'round',
-			color: 'primary',
-			size: 'md',
-			states: {
-				active: {text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
-			},
-		},
-		// {
-		// 	id: 'contrast',
-		// 	name: 'contrast',
-		// 	title: 'Contrast',
-		// 	variant: 'outline',
-		// 	shape: 'round',
-		// 	color: 'primary',
-		// 	size: 'md',
-		// 	states: {
-		// 		active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-		// 		inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
-		// 	},
-		// },
-	],
-	links: [
-		{
-			id: 'link-github',
-			title: 'GitHub icon',
-			url: 'https://github.com/fat-fuzzy/rocks',
-			asset: 'svg:icon-github',
-			shape: 'round',
-			size: 'xs',
-		},
-	],
-}
-
 const emojis: {[key: string]: string} = {
 	lang: '🌐',
 	day: '☀️',
@@ -184,7 +143,6 @@ export default {
 	DEFAULT_SIDEBAR_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
-	DEFAULT_SETTINGS,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,
 	TRANSITION_CONTRAST,

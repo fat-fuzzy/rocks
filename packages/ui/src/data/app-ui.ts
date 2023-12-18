@@ -1,9 +1,9 @@
-export const links = [
+const APP_LINKS = [
 	{slug: 'about', title: 'About'},
 	{slug: 'test', title: 'Test'},
 ]
 
-export const itemsSettings = {
+const APP_SETTINGS = {
 	switch: [
 		{
 			id: 'brightness',
@@ -43,3 +43,5 @@ export const itemsSettings = {
 		},
 	],
 }
+
+export {APP_LINKS, APP_SETTINGS}

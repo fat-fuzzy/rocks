@@ -9,7 +9,7 @@
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
 	const {ToggleMenu} = compositions
-	const actionPath = '/doc'
+	const actionPath = '/test'
 	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
 
 	let categoryItems: {[name: string]: any} = {
@@ -118,7 +118,7 @@
 			<form
 				method="POST"
 				class="l:switcher:sm shrink"
-				action={`/doc?/handleElementTabChange&redirectTo=${$page.url.pathname}`}
+				action={`/test?/handleElementTabChange&redirectTo=${$page.url.pathname}`}
 				use:enhance={() => {
 					// prevent default callback from resetting the form
 					return ({update}) => {
@@ -133,7 +133,7 @@
 					size="lg"
 					color="primary"
 					variant="round outline"
-					formaction={`/doc?/handleElementTabChange&redirectTo=${$page.url.pathname}`}
+					formaction={`/test?/handleElementTabChange&redirectTo=${$page.url.pathname}`}
 					on:click={handleTabChange}
 				/>
 			</form>

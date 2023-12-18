@@ -9,7 +9,7 @@
 	import * as settingsStore from '$lib/stores/settings'
 	import format from '$lib/utils/format'
 	import constants from '$lib/types/constants'
-	import {links, itemsSettings} from '$lib/api/fixtures/js/nav'
+	import {APP_SETTINGS, APP_LINKS} from '$data/app-ui'
 	import Header from '$lib/components/compositions/headers/Header.svelte'
 
 	const {DEFAULT_APP_SETTINGS} = constants
@@ -27,6 +27,7 @@
 			}
 		}),
 	]
+
 	settingsStore.app.set(app)
 	settingsStore.navReveal.set(nav)
 	settingsStore.sidebarReveal.set(sidebar)
@@ -51,7 +52,7 @@
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
-	items={{links, settings: itemsSettings}}
+	items={{links: APP_LINKS, settings: APP_SETTINGS}}
 	breakpoint="xs"
 />
 
