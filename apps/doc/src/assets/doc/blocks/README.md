@@ -24,7 +24,7 @@ The examples below are two ways of achieving the same end result: a button that 
    <button id="submit">Submit</button>
    ```
 
-1. A `Button` component, written in Svelte
+1. A Svelte `Button` component
 
    ```svelte
    <Button id="submit" />
@@ -36,7 +36,7 @@ Here are a few answers to that:
 
 - solving state management in one place
 - solving style management in one place
-- developing and improving accessibility standards
+- implementing and improving accessibility standards
 - maintaining design choices as the application grows
 - establishing conventions
 - documenting usage in one place
@@ -51,7 +51,7 @@ To keep this project manageable, the UI library grows in response to application
 
 ### Using Forms
 
-`Blocks` components include `<input>` and `<button>` components.
+`Blocks` include components that contain`<input>` and `<button>` elements.
 For these components to have an effect without JavaScript enabled, they must be inside a `<form>` element that has at least one defined `action`.
 By default, a `<button>` without a `type` attribute will be considered a `submit` button: on click, or if the user presses <kbd>Enter</kbd>, the button will submit the form it belongs to.
 
