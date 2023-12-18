@@ -9,10 +9,9 @@
 	import * as settingsStore from '$lib/stores/settings'
 	import format from '$lib/utils/format'
 	import constants from '$lib/types/constants'
-	import {APP_SETTINGS, APP_LINKS} from '$data/app-ui'
 	import Header from '$lib/components/compositions/headers/Header.svelte'
 
-	const {DEFAULT_APP_SETTINGS} = constants
+	const {DEFAULT_APP_SETTINGS, APP_SETTINGS, APP_LINKS} = constants
 
 	export let data: LayoutData
 
