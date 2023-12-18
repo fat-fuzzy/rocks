@@ -16,11 +16,11 @@
 
 	export let data: LayoutData
 
-	const {nav, sidebar, settings, app} = data
+	const {nav, settings, app} = data
 
 	let appSettings = app || DEFAULT_APP_SETTINGS
 
-	const stores = [
+	const localStores = [
 		settingsStore.app.subscribe((value) => {
 			if (value) {
 				appSettings = value
@@ -30,7 +30,6 @@
 
 	settingsStore.app.set(app)
 	settingsStore.navReveal.set(nav)
-	settingsStore.sidebarReveal.set(sidebar)
 	settingsStore.settingsReveal.set(settings)
 
 	$: brightness = appSettings.brightness
@@ -41,7 +40,7 @@
 	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
 
 	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
+		localStores.forEach((unsubscribe) => unsubscribe())
 	})
 </script>
 

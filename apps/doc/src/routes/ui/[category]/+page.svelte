@@ -2,37 +2,20 @@
 	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
+
 	import {tokens, blocks, compositions, layouts, api, stores, constants} from '@fat-fuzzy/ui'
 
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
 	const {ToggleMenu} = compositions
 	const actionPath = '/ui'
-	const {DEFAULT_REVEAL_STATE, UI_DOC_TABS} = constants
+	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
 
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
-	let currentTab = $page.data.currentTabs?.element || UI_DOC_TABS[0]
+	let currentTab = $page.data.currentTabs?.element || DEFAULT_TABS[0]
 
-	const tabButtons = [
-		{
-			id: 'context.menu.toggle.demo',
-			title: 'Demo',
-			size: 'xl',
-			color: 'accent',
-			asset: 'emoji:demo',
-			value: 'demo',
-		},
-		{
-			id: 'context.menu.toggle.doc',
-			title: 'Doc',
-			size: 'xl',
-			color: 'primary',
-			asset: 'emoji:doc',
-			value: 'doc',
-			initial: 'pressed',
-		},
-	]
+	const tabs = TABS
 
 	const localStores = [
 		stores.ui.styles.subscribe((value) => {
@@ -128,7 +111,12 @@
 			>
 				<ToggleMenu
 					id={`submit.${path}`}
-					items={tabButtons}
+					items={tabs.map((tab) => {
+						if (tab.value == currentTab.value) {
+							tab.initial = 'pressed'
+						}
+						return tab
+					})}
 					layout="switcher"
 					size="lg"
 					color="primary"

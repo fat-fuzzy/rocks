@@ -6,7 +6,7 @@ import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
 import {DsContextReveal} from '$lib/forms/ds-context-reveal'
 import constants from '$lib/types/constants'
 
-const {DEFAULT_REVEAL_STATE, DEFAULT_STYLES, DEFAULT_DS_STATE, UI_DOC_TABS} = constants
+const {DEFAULT_REVEAL_STATE, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_TABS} = constants
 
 export const actions = {
 	toggleContext: async ({request, url, cookies}) => {
@@ -73,7 +73,7 @@ export const actions = {
 	handleElementTabChange: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-ui-tabs')
-		let currentTabs = {element: UI_DOC_TABS[0], category: UI_DOC_TABS[0]}
+		let currentTabs = {element: DEFAULT_TABS[0], category: DEFAULT_TABS[0]}
 		if (serialized) {
 			currentTabs = JSON.parse(serialized)
 		}
@@ -93,7 +93,7 @@ export const actions = {
 	handleCategoryTabChange: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-ui-tabs')
-		let currentTabs = {element: UI_DOC_TABS[0], category: UI_DOC_TABS[0]}
+		let currentTabs = {element: DEFAULT_TABS[0], category: DEFAULT_TABS[0]}
 		if (serialized) {
 			currentTabs = JSON.parse(serialized)
 		}

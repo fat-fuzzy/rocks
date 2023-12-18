@@ -2,8 +2,9 @@ import type {Settings, Tab} from '$types'
 import type {StyleTree} from '$lib/api/styles/types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
+
 const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'show'}
-const DEFAULT_SIDEBAR_REVEAL_STATE: Settings = {reveal: 'show'}
+
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 const DEFAULT_DS_STATE: {
 	menuReveal: Settings
@@ -46,11 +47,12 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 	'100': 'xl',
 }
 
-const UI_DOC_TABS: Tab[] = [
+const DEFAULT_TABS: Tab[] = [
 	// TODO: figure out a better way to map range number values to class strings
 	{id: 'component.context.menu.toggle.doc', title: 'Doc', slug: 'doc', value: 'doc'},
 	{id: 'component.context.menu.toggle.demo', title: 'Demo', slug: 'demo', value: 'demo'},
 ]
+
 /**
  * Indicates the direction that icons should point in when used to indicate direction of movement of the UI element under control
  */
@@ -101,6 +103,71 @@ const DEFAULT_STYLES: StyleTree = {
 	},
 }
 
+const TABS: Tab[] = [
+	{
+		id: 'context.menu.toggle.demo',
+		title: 'Demo',
+		size: 'xl',
+		color: 'accent',
+		asset: 'emoji:demo',
+		value: 'demo',
+	},
+	{
+		id: 'context.menu.toggle.doc',
+		title: 'Doc',
+		size: 'xl',
+		color: 'primary',
+		asset: 'emoji:doc',
+		value: 'doc',
+	},
+]
+
+const APP_LINKS = [
+	{slug: 'about', title: 'About'},
+	{slug: 'test', title: 'Test'},
+]
+
+const APP_SETTINGS = {
+	switch: [
+		{
+			id: 'brightness',
+			name: 'brightness',
+			title: 'Brightness',
+			variant: 'outline',
+			shape: 'round',
+			color: 'primary',
+			size: 'md',
+			states: {
+				active: {text: 'night', value: 'night', asset: 'emoji:night'},
+				inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
+			},
+		},
+		{
+			id: 'contrast',
+			name: 'contrast',
+			title: 'Contrast',
+			variant: 'outline',
+			shape: 'round',
+			color: 'primary',
+			size: 'md',
+			states: {
+				active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
+				inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
+			},
+		},
+	],
+	links: [
+		{
+			id: 'link-github',
+			title: 'GitHub icon',
+			url: 'https://github.com/fat-fuzzy/rocks',
+			asset: 'svg:icon-github',
+			shape: 'round',
+			size: 'xs',
+		},
+	],
+}
+
 const emojis: {[key: string]: string} = {
 	lang: '🌐',
 	day: '☀️',
@@ -136,11 +203,10 @@ const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
 
 export default {
 	UI_STATE,
-	UI_DOC_TABS,
+	DEFAULT_TABS,
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,
-	DEFAULT_SIDEBAR_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
 	TRANSITION_REVEAL,
@@ -150,4 +216,7 @@ export default {
 	ALIGN_ANIMATION_DIRECTION,
 	NUMBER_TO_SIZE,
 	SVG_ASSETS,
+	TABS,
+	APP_LINKS,
+	APP_SETTINGS,
 }

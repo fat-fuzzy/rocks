@@ -1,7 +1,7 @@
 import type {Tab} from '$types'
 import constants from '$lib/types/constants'
 
-const {UI_DOC_TABS} = constants
+const {DEFAULT_TABS} = constants
 
 export class DsTabsUpdate {
 	currentTabs: {[key: string]: Tab}
@@ -13,7 +13,7 @@ export class DsTabsUpdate {
 		if (currentTabs) {
 			this.currentTabs = currentTabs
 		} else {
-			this.currentTabs = {element: UI_DOC_TABS[0], category: UI_DOC_TABS[0]}
+			this.currentTabs = {element: DEFAULT_TABS[0], category: DEFAULT_TABS[0]}
 		}
 	}
 
@@ -23,7 +23,7 @@ export class DsTabsUpdate {
 	updateElementTab(data: FormData) {
 		if (data.has('toggle')) {
 			const updated = data.get('toggle')?.toString()
-			const updatedValue = UI_DOC_TABS.find((tab) => tab.value === updated)
+			const updatedValue = DEFAULT_TABS.find((tab) => tab.value === updated)
 			if (updatedValue) {
 				this.currentTabs.element = updatedValue
 				return true
@@ -38,7 +38,7 @@ export class DsTabsUpdate {
 	updateCategoryTab(data: FormData) {
 		if (data.has('toggle')) {
 			const updated = data.get('toggle')?.toString()
-			const updatedValue = UI_DOC_TABS.find((tab) => tab.value === updated)
+			const updatedValue = DEFAULT_TABS.find((tab) => tab.value === updated)
 			if (updatedValue) {
 				this.currentTabs.category = updatedValue
 				return true
