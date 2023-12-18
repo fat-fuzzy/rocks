@@ -64,7 +64,7 @@
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
 	$: markdowns = $page.data.markdowns
-	$: content = markdowns.categories.find(({meta}) => meta.slug === category)
+	$: content = markdowns[category].find(({meta}) => meta.slug === category)
 	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
 
 	onDestroy(() => {
