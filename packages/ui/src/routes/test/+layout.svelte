@@ -28,7 +28,7 @@
 	const compositionNames = Object.keys(compositions).sort(sortAsc)
 	let title = 'Fat Fuzzy Test' // TODO : Fix title in children components: add breadcrumb nav component ?
 
-	let sidebarReveal: {[key: string]: string} = sidebar || DEFAULT_NAV_REVEAL_STATE
+	let sidebarReveal = sidebar || DEFAULT_NAV_REVEAL_STATE
 
 	stores.elementTab.set(currentTabs?.element || UI_DOC_TABS[0])
 	stores.styles.set(styles)
@@ -48,7 +48,7 @@
 	$: path = ''
 	$: items = [
 		{
-			slug: 'doc',
+			slug: 'test',
 			title,
 			items: [
 				{

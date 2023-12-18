@@ -7,11 +7,11 @@
 	const {Sidebar, RevealAuto} = layouts
 	const {DEFAULT_REVEAL_STATE} = constants
 
-	const actionPath = '/doc'
+	const actionPath = '/test'
 	const title = 'Fat Fuzzy Test' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = $page.data.context || DEFAULT_REVEAL_STATE
+	let revealContext = $page.data.context || DEFAULT_REVEAL_STATE
 
 	const components = [
 		{category: 'tokens', items: tokens},

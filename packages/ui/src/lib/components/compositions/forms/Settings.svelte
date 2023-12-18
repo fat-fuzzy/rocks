@@ -5,11 +5,12 @@
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import * as settings from '$stores/settings'
 	import constants from '$lib/types/constants'
+	import {APP_SETTINGS} from '$data/app-ui'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
 
-	const {SVG_ASSETS, DEFAULT_SETTINGS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
+	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 	const method = 'POST'
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined
@@ -24,11 +25,11 @@
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
 
-	export let items = DEFAULT_SETTINGS
+	export let items = APP_SETTINGS
 
 	let settingsId = id
-	let appSettings: {[key: string]: string} = DEFAULT_APP_SETTINGS
-	let settingsReveal: {[key: string]: string} = DEFAULT_REVEAL_STATE
+	let appSettings = DEFAULT_APP_SETTINGS
+	let settingsReveal = DEFAULT_REVEAL_STATE
 
 	const stores = [
 		settings.app.subscribe((value) => {

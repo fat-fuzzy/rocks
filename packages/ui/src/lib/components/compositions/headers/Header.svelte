@@ -6,7 +6,7 @@
 	import {clickOutside} from '$lib/utils/click-outside'
 	import {lang} from '$stores/intl'
 	import * as settings from '$stores/settings'
-	import constants from '$lib/types/constants'
+	import {APP_SETTINGS, APP_LINKS} from '$data/app-ui'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 	import Settings from '$lib/components/compositions/forms/Settings.svelte'
@@ -20,8 +20,7 @@
 	export let formaction: string | undefined = undefined
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
-	const {DEFAULT_SETTINGS} = constants
-	export let items = {links: [{slug: 'about', title: 'About'}], settings: DEFAULT_SETTINGS}
+	export let items = {links: APP_LINKS, settings: APP_SETTINGS}
 
 	let page = getStores().page
 
