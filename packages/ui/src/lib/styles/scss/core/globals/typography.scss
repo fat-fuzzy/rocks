@@ -101,3 +101,8 @@ article,
 figcaption {
 	color: var(--current-color);
 }
+
+ol,
+ul {
+	margin-block-end: calc(var(--gap) * var(--ratio-lg));
+}

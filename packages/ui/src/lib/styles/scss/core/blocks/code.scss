@@ -4,6 +4,14 @@ code {
 	font-family: var(--font-family-code);
 }
 
+kbd {
+	padding: calc(var(--current-size-minus) / 2.5) var(--current-size)
+		calc(var(--current-size-minus) / 2);
+	margin-inline: calc(var(--current-size) / 2);
+	border: var(--border-width) solid var(--current-gray);
+	border-radius: var(--radius-base);
+}
+
 // Allow space for scrollbar on macOS
 pre,
 code[class^='language-'] {
