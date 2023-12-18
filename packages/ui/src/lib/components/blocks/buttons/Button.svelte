@@ -30,7 +30,7 @@
 
 	export let onClick = (event: MouseEvent) => {
 		const payload = {
-			id,
+			id: name,
 			value,
 		}
 		dispatch('click', payload)

@@ -6,6 +6,7 @@ const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'show'}
 
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
+
 const DEFAULT_DS_STATE: {
 	menuReveal: Settings
 	navReveal: Settings
@@ -49,8 +50,8 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 
 const DEFAULT_TABS: Tab[] = [
 	// TODO: figure out a better way to map range number values to class strings
-	{id: 'component.context.menu.toggle.doc', title: 'Doc', slug: 'doc', value: 'doc'},
-	{id: 'component.context.menu.toggle.demo', title: 'Demo', slug: 'demo', value: 'demo'},
+	{id: 'component.context.menu.toggle.doc', title: 'Doc', value: 'doc'},
+	{id: 'component.context.menu.toggle.demo', title: 'Demo', value: 'demo'},
 ]
 
 /**

@@ -39,6 +39,6 @@ export class SettingsUpdate {
 	 * Serialize Settings so it can be set as a cookie
 	 */
 	toString() {
-		return JSON.stringify({brightness: this.app.brightness, contrast: this.app.contrast})
+		return JSON.stringify(this.app)
 	}
 }
