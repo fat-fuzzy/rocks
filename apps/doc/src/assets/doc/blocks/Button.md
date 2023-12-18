@@ -10,11 +10,9 @@ context: ['app.settings']
 
 ## Usage
 
-This component contains a basic button that can be used to submit a form, either via the default `action` set on the parent form element, or via a specific `formaction` provided as props to the Button component.
+This component contains a `<button>` that can be used to submit a `<form>`, either via the default `action` attribute of the form element, or via a specific `formaction` provided as props to the `Button` component.
 
-### Examples
-
-<p class="feedback bare emoji:default">Coming Soon!</p>
+If a `<form>` contains more than one `Button` with different actions expected on click, each `Button` must have a distinct `formaction` attribute.
 
 ## CSS Variables
 
