@@ -2,6 +2,8 @@
  * GL Library exports
  */
 
+// Tools
+import utils from './lib/utils'
 // Sketches
 import sketch_001 from './sketches/001/index'
 // import sketch_002 from './sketches/002/index'
@@ -21,4 +23,5 @@ const SKETCHES_FOLDER = './sketches'
 
 export default {
 	sketches,
+	utils,
 }
