@@ -2,7 +2,7 @@
 	import {onDestroy} from 'svelte'
 	import * as settings from '$lib/stores/settings'
 
-	import ButtonMenu from '$lib/components/compositions/menus/ButtonMenu.svelte'
+	import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
 
 	export let scene
 	export let color = ''
@@ -50,4 +50,4 @@
 	})
 </script>
 
-<ButtonMenu layout="switcher" {items} {variant} {color} {size} />
+<ToggleMenu layout="switcher" {items} {variant} {color} {size} />
