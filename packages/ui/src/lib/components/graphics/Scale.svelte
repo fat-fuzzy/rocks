@@ -4,6 +4,8 @@
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 
+	export let color = ''
+
 	export let size = 'xxs'
 	export let scaleX = 0
 	export let scaleY = 0
@@ -29,7 +31,7 @@
 	}
 </script>
 
-<Fieldset {legend} {size}>
+<Fieldset {legend} {size} container="box:card">
 	<InputRange
 		bind:value={scaleX}
 		label="{label} x"
@@ -37,6 +39,7 @@
 		max={maxX}
 		on:input={updateX}
 		{size}
+		{color}
 	/>
 	<InputRange
 		bind:value={scaleY}
@@ -45,5 +48,6 @@
 		max={maxY}
 		on:input={updateY}
 		{size}
+		{color}
 	/>
 </Fieldset>

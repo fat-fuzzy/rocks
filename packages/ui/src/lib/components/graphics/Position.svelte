@@ -6,6 +6,8 @@
 
 	const dispatch = createEventDispatcher()
 
+	export let color = ''
+
 	export let size = 'xxs'
 	export let coordX = 0
 	export let coordY = 0
@@ -27,7 +29,21 @@
 	}
 </script>
 
-<Fieldset {legend} {size}>
-	<InputRange bind:value={coordX} label="{`${label} `}x" max={maxX} on:input={updateX} {size} />
-	<InputRange bind:value={coordY} label="{`${label} `}y" max={maxY} on:input={updateY} {size} />
+<Fieldset {legend} {size} container="box:card">
+	<InputRange
+		bind:value={coordX}
+		label="{`${label} `}x"
+		max={maxX}
+		on:input={updateX}
+		{size}
+		{color}
+	/>
+	<InputRange
+		bind:value={coordY}
+		label="{`${label} `}y"
+		max={maxY}
+		on:input={updateY}
+		{size}
+		{color}
+	/>
 </Fieldset>

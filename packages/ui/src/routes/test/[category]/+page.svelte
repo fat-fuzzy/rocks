@@ -3,7 +3,7 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {tokens, blocks, compositions, layouts, api, stores, constants} from '$lib'
+	import {tokens, blocks, compositions, layouts, graphics, api, stores, constants} from '$lib'
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
 	const {ToggleMenu} = compositions
@@ -45,6 +45,8 @@
 				return layouts
 			case 'compositions':
 				return compositions
+			case 'graphics':
+				return graphics
 			default:
 				return {}
 		}
@@ -134,7 +136,9 @@
 			<div class="l:text:lg">{@html content.html}</div>
 		</section>
 		<aside class="l:side">
-			{#if content.meta.props_style}
+			{#if !content.meta}
+				<p class="feedback bare emoji:default">Coming Soon!</p>
+			{:else if content.meta.props_style}
 				<details open>
 					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
 					<ul class="tags l:switcher:md">

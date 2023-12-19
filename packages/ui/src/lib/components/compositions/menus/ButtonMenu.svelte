@@ -46,7 +46,7 @@
 		</menu>
 	</div>
 {:else}
-	<menu {id} class={`l:${layout} ${container}:${size} th:${threshold} ${size}`}>
+	<menu {id} class={`l:${layout}:${size} ${container}:${size} th:${threshold} ${size}`}>
 		{#each items as props, i}
 			{@const itemColor = props.color ?? color}
 			{@const itemVariant = props.variant ?? variant}

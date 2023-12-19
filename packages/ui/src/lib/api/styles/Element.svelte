@@ -14,6 +14,7 @@
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Composition from './Composition.svelte'
+	import Graphics from './Graphics.svelte'
 
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
@@ -34,8 +35,9 @@
 	let ApiElement: {[category: string]: ComponentType} = {
 		tokens: Token,
 		blocks: Block,
-		compositions: Composition,
 		layouts: Layout,
+		compositions: Composition,
+		graphics: Graphics,
 	}
 
 	let background = ''

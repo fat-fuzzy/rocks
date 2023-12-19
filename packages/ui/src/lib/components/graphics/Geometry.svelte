@@ -8,6 +8,7 @@
 	export let canvasWidth: number
 	export let canvasHeight: number
 	export let geometry
+	export let color = ''
 
 	const dispatch = createEventDispatcher()
 
@@ -20,7 +21,7 @@
 			value,
 		})
 
-	let {color, width, height, scale, translation, rotation} = geometry
+	let {width, height, scale, translation, rotation} = geometry
 
 	// input attributes
 	let angle = 0
@@ -42,7 +43,7 @@
 	$: rotation = [radCoordX, radCoordY]
 	$: scale = [scaleX, scaleY]
 	$: value = {
-		color,
+		color: geometry.color,
 		translation,
 		rotation,
 		scale,
@@ -54,8 +55,18 @@
 	})
 </script>
 
-<form class="l:switcher bp:xxs xs">
-	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} />
-	<Scale bind:scaleX bind:scaleY maxX={5} maxY={5} minX={-5} minY={-5} on:input={update} />
-	<Rotation bind:angle max={360} on:input={update} />
+<form class="l:switcher:xxs xs card:lg bg:polar">
+	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} {color} size="xs" />
+	<Scale
+		bind:scaleX
+		bind:scaleY
+		maxX={5}
+		maxY={5}
+		minX={-5}
+		minY={-5}
+		on:input={update}
+		{color}
+		size="xs"
+	/>
+	<Rotation bind:angle max={360} on:input={update} {color} size="xs" />
 </form>

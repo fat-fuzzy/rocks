@@ -33,78 +33,6 @@ importers:
         specifier: 1.10.15
         version: 1.10.15
 
-  apps/demo:
-    devDependencies:
-      '@fat-fuzzy/config':
-        specifier: workspace:*
-        version: link:../../packages/config
-      '@fat-fuzzy/markdown':
-        specifier: workspace:*
-        version: link:../../packages/markdown
-      '@fat-fuzzy/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      '@playwright/test':
-        specifier: ^1.40.0
-        version: 1.40.0
-      '@sveltejs/adapter-cloudflare':
-        specifier: ^2.3.3
-        version: 2.3.3(@sveltejs/kit@1.27.6)
-      '@sveltejs/kit':
-        specifier: ^1.27.6
-        version: 1.27.6(svelte@4.2.4)(vite@4.5.1)
-      '@types/cookie':
-        specifier: ^0.5.4
-        version: 0.5.4
-      autoprefixer:
-        specifier: ^10.4.16
-        version: 10.4.16(postcss@8.4.31)
-      mdsvex:
-        specifier: ^0.11.0
-        version: 0.11.0(svelte@4.2.4)
-      postcss:
-        specifier: 8.4.31
-        version: 8.4.31
-      rollup:
-        specifier: 4.4.1
-        version: 4.4.1
-      rollup-plugin-scss:
-        specifier: ^4.0.0
-        version: 4.0.0
-      sass:
-        specifier: ^1.69.5
-        version: 1.69.5
-      stylelint:
-        specifier: ^15.11.0
-        version: 15.11.0(typescript@5.2.2)
-      stylelint-config-standard:
-        specifier: ^34.0.0
-        version: 34.0.0(stylelint@15.11.0)
-      stylelint-config-standard-scss:
-        specifier: ^11.1.0
-        version: 11.1.0(postcss@8.4.31)(stylelint@15.11.0)
-      svelte:
-        specifier: ^4.2.4
-        version: 4.2.4
-      svelte-check:
-        specifier: ^3.6.0
-        version: 3.6.0(postcss@8.4.31)(sass@1.69.5)(svelte@4.2.4)
-      svelte-preprocess:
-        specifier: ^5.1.0
-        version: 5.1.0(postcss@8.4.31)(sass@1.69.5)(svelte@4.2.4)(typescript@5.2.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.6.2
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-      vite:
-        specifier: ^4.5.0
-        version: 4.5.1(@types/node@18.18.9)(sass@1.69.5)
-      vitest:
-        specifier: ^0.34.6
-        version: 0.34.6(sass@1.69.5)
-
   apps/doc:
     devDependencies:
       '@fat-fuzzy/config':
@@ -421,6 +349,9 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
+      '@fat-fuzzy/lib':
+        specifier: workspace:*
+        version: link:../lib
       '@fat-fuzzy/markdown':
         specifier: workspace:^
         version: link:../markdown

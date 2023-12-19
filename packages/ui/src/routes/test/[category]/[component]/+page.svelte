@@ -4,7 +4,7 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {stores, api, tokens, blocks, layouts, compositions, constants} from '$lib'
+	import {stores, api, tokens, blocks, layouts, graphics, compositions, constants} from '$lib'
 
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
@@ -17,6 +17,7 @@
 		blocks: blocks,
 		layouts: layouts,
 		compositions: compositions,
+		graphics: graphics,
 	}
 
 	const tabs = TABS
@@ -134,35 +135,39 @@
 			<div class="l:text:lg">{@html content.html}</div>
 		</section>
 		<aside class="l:side">
-			{#if content.meta.props_style}
-				<details open>
-					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
-					<ul class="tags l:switcher:md">
-						{#each content.meta.props_style as prop}
-							<li class="card:sm bg:primary:lightest">{prop}</li>
-						{/each}
-					</ul>
-				</details>
-			{/if}
-			{#if content.meta.content_type}
-				<details open>
-					<summary class={`card:xs bg:primary:light box:primary:light`}>Content Type</summary>
-					<ul class="tags l:switcher:md">
-						{#each content.meta.content_type as prop}
-							<li class="card:sm bg:highlight:lightest">{prop}</li>
-						{/each}
-					</ul>
-				</details>
-			{/if}
-			{#if content.meta.props_state}
-				<details open>
-					<summary class={`card:xs bg:primary:light box:primary:light`}>State Props</summary>
-					<ul class="tags l:switcher:md">
-						{#each content.meta.props_state as prop}
-							<li class="card:sm bg:accent:lightest">{prop}</li>
-						{/each}
-					</ul>
-				</details>
+			{#if !content.meta}
+				<p class="feedback bare emoji:default">Coming Soon!</p>
+			{:else}
+				{#if content.meta.props_style}
+					<details open>
+						<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
+						<ul class="tags l:switcher:md">
+							{#each content.meta.props_style as prop}
+								<li class="card:sm bg:primary:lightest">{prop}</li>
+							{/each}
+						</ul>
+					</details>
+				{/if}
+				{#if content.meta.content_type}
+					<details open>
+						<summary class={`card:xs bg:primary:light box:primary:light`}>Content Type</summary>
+						<ul class="tags l:switcher:md">
+							{#each content.meta.content_type as prop}
+								<li class="card:sm bg:highlight:lightest">{prop}</li>
+							{/each}
+						</ul>
+					</details>
+				{/if}
+				{#if content.meta.props_state}
+					<details open>
+						<summary class={`card:xs bg:primary:light box:primary:light`}>State Props</summary>
+						<ul class="tags l:switcher:md">
+							{#each content.meta.props_state as prop}
+								<li class="card:sm bg:accent:lightest">{prop}</li>
+							{/each}
+						</ul>
+					</details>
+				{/if}
 			{/if}
 		</aside>
 	</article>

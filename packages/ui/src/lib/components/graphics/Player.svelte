@@ -2,9 +2,13 @@
 	import {onDestroy} from 'svelte'
 	import * as settings from '$lib/stores/settings'
 
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
+	import ButtonMenu from '$lib/components/compositions/menus/ButtonMenu.svelte'
 
 	export let scene
+	export let color = ''
+	export let size = ''
+	export let variant = ''
+
 	let frame: number
 
 	const loop = () => {
@@ -35,15 +39,15 @@
 	const pause = () => cancelAnimationFrame(frame)
 	let disabled = false
 
-	$: variant = appSettings.brightness === 'day' ? `accent` : `highlight`
+	export let items = [
+		{id: 'menu.button.play', text: '▶︎ Play', asset: '', onClick: play},
+		{id: 'menu.button.pause', text: '⏸ Pause', asset: '', onClick: pause},
+		{id: 'menu.button.stop', text: '◼ Stop', asset: '', onClick: stop},
+	]
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
 	})
 </script>
 
-<menu class="l:switcher bp:xxs sm">
-	<Button id="btn-play" {variant} onClick={play} {disabled}>▶︎ &nbsp;Play</Button>
-	<Button id="btn-pause" {variant} onClick={pause} {disabled}>⏸ &nbsp;Pause</Button>
-	<Button id="btn-stop" {variant} onClick={stop} {disabled}>◼ &nbsp;Stop</Button>
-</menu>
+<ButtonMenu layout="switcher" {items} {variant} {color} {size} />
