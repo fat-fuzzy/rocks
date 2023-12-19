@@ -9,6 +9,9 @@
 	export let title: string
 	export let dimensions = 'twin'
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
+	export let color = ''
+	export let size = ''
+	export let variant = ''
 
 	let canvas: HTMLCanvasElement
 	let width
@@ -27,7 +30,6 @@
 		}),
 	]
 
-	$: variant = appSettings.brightness === 'day' ? 'accent' : 'highlight' // TODO:  fix this
 	$: showDetails = geometry !== undefined
 
 	function toggleDetails() {
@@ -65,13 +67,13 @@
 				You need HTML5 canvas support to display this content
 			</canvas>
 		</div>
-		<Player {scene} />
+		<Player {scene} {color} {variant} {size} />
 	</div>
 	<aside class={showDetails ? 'l:side' : 'hide:rm-node'}>
 		<details open>
-			<summary class={`card:sm box:${variant}`}> Details </summary>
+			<summary class={`card:xs box:${color}:light bg:${color}:light `}> Details </summary>
 			{#if geometry}
-				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} />
+				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} {color} />
 			{/if}
 		</details>
 	</aside>

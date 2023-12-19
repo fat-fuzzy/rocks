@@ -55,6 +55,7 @@
 		"xstate": "^4.38.3"
 	},
 	"devDependencies": {
+		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/markdown": "workspace:^",
 		"@playwright/experimental-ct-svelte": "^1.40.0",
