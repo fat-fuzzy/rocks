@@ -1,7 +1,4 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
-	import * as settings from '$lib/stores/settings'
-
 	import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
 
 	export let scene
@@ -19,35 +16,20 @@
 		})
 	}
 
-	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
-
-	const stores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-	]
-
 	const play = () => loop()
 
-	const stop = () => {
+	const clear = () => {
 		cancelAnimationFrame(frame)
 		scene.clear()
 	}
 
 	const pause = () => cancelAnimationFrame(frame)
-	let disabled = false
 
-	export let items = [
-		{id: 'menu.button.play', text: '▶︎ Play', asset: '', onClick: play},
-		{id: 'menu.button.pause', text: '⏸ Pause', asset: '', onClick: pause},
-		{id: 'menu.button.stop', text: '◼ Stop', asset: '', onClick: stop},
+	export let items: any = [
+		{id: 'play', value: 'play', text: 'Play', asset: 'emoji:play', onClick: play},
+		{id: 'play', value: 'pause', text: 'Pause', asset: 'emoji:pause', onClick: pause},
+		{id: 'play', value: 'clear', text: 'Clear', asset: 'emoji:clear', onClick: clear},
 	]
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 <ToggleMenu layout="switcher" {items} {variant} {color} {size} />

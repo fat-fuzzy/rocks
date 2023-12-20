@@ -1,7 +1,5 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
-	import * as settings from '$lib/stores/settings'
-	import {onMount, afterUpdate} from 'svelte'
+	import {onMount} from 'svelte'
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
 	import Player from '$lib/components/graphics/Player.svelte'
 
@@ -20,16 +18,6 @@
 	let programInfo
 	// Canvas
 
-	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
-
-	const stores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-	]
-
 	$: showDetails = geometry !== undefined
 
 	function update(event) {
@@ -39,10 +27,6 @@
 	onMount(() => {
 		programInfo = scene.main(canvas)
 		geometry = programInfo.geometry
-	})
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
 	})
 </script>
 

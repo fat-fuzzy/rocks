@@ -5,7 +5,7 @@ export type Settings = {
 }
 
 export type ButtonState = {
-	[key: string]: {text: string; value: string; asset: string}
+	[key: string]: {text: string; value: string; asset: string; onClick: () => void}
 }
 
 export type Tab = {

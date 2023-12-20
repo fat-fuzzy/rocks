@@ -7,9 +7,9 @@ export default {
 	},
 	Player: {
 		items: [
-			{id: 'menu.button.play', text: 'Play', asset: 'emoji:vader'},
-			{id: 'menu.button.pause', text: 'Pause', asset: 'emoji:ollie'},
-			{id: 'menu.button.stop', text: 'Stop', asset: 'emoji:moby'},
+			{id: 'menu.toggle.play', text: 'Play', asset: 'emoji:vader'},
+			{id: 'menu.toggle.pause', text: 'Pause', asset: 'emoji:ollie'},
+			{id: 'menu.toggle.clear', text: 'Clear', asset: 'emoji:moby'},
 		],
 	},
 }

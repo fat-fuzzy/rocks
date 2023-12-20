@@ -30,8 +30,10 @@ $fountain-pen: '🖋️';
 $magic-wand: '🪄';
 $gear: '⚙️';
 $umbrella: '☂️';
-$lightning-bolt: '⚡️';
+$lightning: '⚡️';
 $construction-sign: '🚧';
+$shower: '🚿';
+$lotus: '🪷';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -81,5 +83,8 @@ $emojis: (
 	wip: #{$construction-sign},
 
 	// Playground fixture emojis
-	geometry-2d: #{$ruler}
+	geometry-2d: #{$ruler},
+	play: #{$sparkles},
+	pause: #{$lotus},
+	clear: #{$spouting-whale}
 );
