@@ -27,8 +27,8 @@
 
 	export let items: any = [
 		{id: 'play', value: 'play', text: 'Play', asset: 'emoji:play', onClick: play},
-		{id: 'play', value: 'pause', text: 'Pause', asset: 'emoji:pause', onClick: pause},
-		{id: 'play', value: 'clear', text: 'Clear', asset: 'emoji:clear', onClick: clear},
+		{id: 'pause', value: 'pause', text: 'Pause', asset: 'emoji:pause', onClick: pause},
+		{id: 'clear', value: 'clear', text: 'Clear', asset: 'emoji:clear', onClick: clear},
 	]
 </script>
 
