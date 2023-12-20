@@ -4,7 +4,16 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {stores, api, tokens, blocks, layouts, compositions, constants} from '@fat-fuzzy/ui'
+	import {
+		stores,
+		api,
+		tokens,
+		blocks,
+		layouts,
+		compositions,
+		graphics,
+		constants,
+	} from '@fat-fuzzy/ui'
 
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
@@ -17,6 +26,7 @@
 		blocks: blocks,
 		layouts: layouts,
 		compositions: compositions,
+		graphics: graphics,
 	}
 
 	const tabs = TABS

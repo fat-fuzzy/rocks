@@ -4,7 +4,7 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {stores, api, tokens, blocks, layouts, graphics, compositions, constants} from '$lib'
+	import {stores, api, tokens, blocks, layouts, compositions, graphics, constants} from '$lib'
 
 	const {Element, Api} = api
 	const {RevealAuto} = layouts

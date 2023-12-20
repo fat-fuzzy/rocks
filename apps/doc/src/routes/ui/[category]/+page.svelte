@@ -3,7 +3,16 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {tokens, blocks, compositions, layouts, api, stores, constants} from '@fat-fuzzy/ui'
+	import {
+		tokens,
+		blocks,
+		layouts,
+		compositions,
+		graphics,
+		api,
+		stores,
+		constants,
+	} from '@fat-fuzzy/ui'
 
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
@@ -45,6 +54,8 @@
 				return layouts
 			case 'compositions':
 				return compositions
+			case 'graphics':
+				return graphics
 			default:
 				return {}
 		}
