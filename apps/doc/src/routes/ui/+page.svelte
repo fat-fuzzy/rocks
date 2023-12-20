@@ -1,7 +1,16 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, compositions, api, stores, constants} from '@fat-fuzzy/ui'
+	import {
+		tokens,
+		blocks,
+		layouts,
+		compositions,
+		graphics,
+		api,
+		stores,
+		constants,
+	} from '@fat-fuzzy/ui'
 
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
@@ -18,6 +27,7 @@
 		{category: 'blocks', items: blocks},
 		{category: 'layouts', items: layouts},
 		{category: 'compositions', items: compositions},
+		{category: 'graphics', items: graphics},
 	]
 	const path = $page.url.pathname
 
