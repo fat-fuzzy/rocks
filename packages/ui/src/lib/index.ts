@@ -183,9 +183,9 @@ const graphics = {
 	// Canvas, TODO: init canvas with example Sketch
 	Geometry,
 	Player,
-	Position,
-	Rotation,
-	Scale,
+	// Position,
+	// Rotation,
+	// Scale,
 	Sketch,
 }
 
