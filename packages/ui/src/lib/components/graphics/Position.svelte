@@ -32,7 +32,7 @@
 <Fieldset {legend} {size} container="box:card">
 	<InputRange
 		bind:value={coordX}
-		label="{`${label} `}x"
+		label={`${label} x`}
 		max={maxX}
 		on:input={updateX}
 		{size}
@@ -40,7 +40,7 @@
 	/>
 	<InputRange
 		bind:value={coordY}
-		label="{`${label} `}y"
+		label={`${label} y`}
 		max={maxY}
 		on:input={updateY}
 		{size}

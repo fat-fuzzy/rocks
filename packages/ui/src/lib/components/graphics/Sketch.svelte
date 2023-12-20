@@ -32,10 +32,6 @@
 
 	$: showDetails = geometry !== undefined
 
-	function toggleDetails() {
-		showDetails = !showDetails
-	}
-
 	function update(event) {
 		scene.update(event.detail.value)
 	}
@@ -44,12 +40,6 @@
 		programInfo = scene.main(canvas)
 		geometry = programInfo.geometry
 	})
-
-	afterUpdate(() => {
-		programInfo = scene.main(canvas)
-		geometry = programInfo.geometry
-	})
-	// TODO clean gl data when switching animations
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
