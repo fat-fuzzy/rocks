@@ -97,6 +97,22 @@
 	outline-color: var(--current-info);
 }
 
+[class*='info'] a:hover {
+	background-color: var(--color-info);
+}
+
+[class*='success'] a:hover {
+	background-color: var(--color-success);
+}
+
+[class*='warning'] a:hover {
+	background-color: var(--color-warning);
+}
+
+[class*='error'] a:hover {
+	background-color: var(--color-danger);
+}
+
 [class*='success'] {
 	--current-success: var(--color-success);
 	--current-success-light: var(--color-success-light);

@@ -106,3 +106,10 @@ ol,
 ul {
 	margin-block-end: calc(var(--gap) * var(--ratio-lg));
 }
+
+a {
+	height: fit-content;
+	padding-block: 0;
+	padding-inline: calc(var(--current-size-minus) / 2);
+	margin-inline-end: 0.25em;
+}
