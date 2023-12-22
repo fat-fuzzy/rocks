@@ -1,18 +1,26 @@
 <script lang="ts">
+	import type {GeometryProps} from '$types'
+
 	import {createEventDispatcher, onMount} from 'svelte'
+	import {enhance} from '$app/forms'
 
 	import Position from '$lib/components/graphics/Position.svelte'
 	import Scale from '$lib/components/graphics/Scale.svelte'
 	import Rotation from '$lib/components/graphics/Rotation.svelte'
+	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
+	export let method = 'POST'
 	export let canvasWidth: number
 	export let canvasHeight: number
-	export let geometry
+	export let geometry: GeometryProps
 	export let color = ''
+	export let formaction = 'updateGeometry'
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	const dispatch = createEventDispatcher()
 
-	function degToRad(degrees) {
+	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
 
@@ -50,12 +58,25 @@
 		width,
 		height,
 	}
+	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+
 	onMount(() => {
 		update()
 	})
 </script>
 
-<form class="l:switcher:xxs xs card:lg bg:polar">
+<form
+	class="l:switcher:xxs xs card:lg bg:polar"
+	name="geometry-update"
+	{method}
+	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+	use:enhance={() => {
+		// prevent default callback from resetting the form
+		return ({update}) => {
+			update({reset: false})
+		}
+	}}
+>
 	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} {color} size="xs" />
 	<Scale
 		bind:scaleX
@@ -69,4 +90,17 @@
 		size="xs"
 	/>
 	<Rotation bind:angle max={360} on:input={update} {color} size="xs" />
+	{#await Promise.resolve()}
+		<div class={`l:frame:twin card:lg`}>
+			<Button
+				title="Update geometry"
+				size="xl"
+				color="highlight"
+				variant="round outline"
+				asset="emoji:nojs"
+			/>
+		</div>
+	{:then}
+		<slot />
+	{/await}
 </form>

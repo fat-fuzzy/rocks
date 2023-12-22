@@ -6,15 +6,16 @@
 
 	const dispatch = createEventDispatcher()
 
-	export let color = ''
+	export let legend = 'Position'
+	export let label = ''
+	export let id = 'rotation'
 
+	export let color = ''
 	export let size = 'xxs'
 	export let coordX = 0
 	export let coordY = 0
 	export let maxX = 0
 	export let maxY = 0
-	export let label = ''
-	const legend = 'Position'
 
 	function updateX() {
 		dispatch('input', {
@@ -32,6 +33,8 @@
 <Fieldset {legend} {size} container="box:card">
 	<InputRange
 		bind:value={coordX}
+		id={`${id}-x`}
+		name={`${id}-x`}
 		label={`${label} x`}
 		max={maxX}
 		on:input={updateX}
@@ -40,6 +43,8 @@
 	/>
 	<InputRange
 		bind:value={coordY}
+		id={`${id}-x`}
+		name={`${id}-x`}
 		label={`${label} y`}
 		max={maxY}
 		on:input={updateY}

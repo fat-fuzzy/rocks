@@ -9,6 +9,7 @@
 	export let color = ''
 
 	export let size = 'xxs'
+	export let id = 'rotation'
 	export let label = 'Angle'
 	const legend = 'Rotation'
 	export let angle = 0
@@ -24,5 +25,5 @@
 <Fieldset {legend} {size} container="box:card">
 	<!--https://css-tricks.com/accessible-svgs/-->
 	<!-- <svg id="InteractiveSVG" role="group" /> -->
-	<InputRange bind:value={angle} {label} {max} on:input={update} {size} {color} />
+	<InputRange bind:value={angle} {id} name={id} {label} {max} on:input={update} {size} {color} />
 </Fieldset>

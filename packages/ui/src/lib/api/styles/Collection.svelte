@@ -67,7 +67,7 @@
 			<div class="l:stack:lg">
 				<details id={`${category}-api`} class="l:stack:lg" open>
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
-					{#if category !== 'compositions' && category !== 'tokens'}
+					{#if category !== 'graphics' && category !== 'tokens'}
 						<div class="drop w:full bg:polar ui:menu">
 							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
 						</div>

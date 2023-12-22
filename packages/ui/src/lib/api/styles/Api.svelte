@@ -16,6 +16,9 @@
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
+	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	$: frameClass = categories[0] === 'app' ? 'l:switcher:md' : 'l:frame:twin' // TODO: Fix this - does not work
+
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard
@@ -27,9 +30,6 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
-
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	$: frameClass = categories[0] === 'app' ? 'l:switcher:md' : 'l:frame:twin' // TODO: Fix this - does not work
 </script>
 
 <svelte:window on:keydown={keydown} />
