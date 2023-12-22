@@ -9,19 +9,15 @@ import Typography from '$lib/components/tokens/Typography.svelte'
 /**
  * Block components
  */
-// import ActionLabel from '$lib/components/blocks/global/ActionLabel.svelte'
 import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 import Switch from '$lib/components/blocks/buttons/Switch.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
-// import Canvas from '$lib/components/blocks/media/Canvas.svelte'
-// import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 import InputFile from '$lib/components/blocks/forms/InputFile.svelte'
-// import Sketch from '$lib/components/blocks/graphics/Sketch.svelte'
 
 /**
  * Layout components
@@ -46,19 +42,11 @@ import Nav from '$lib/components/compositions/navs/Nav.svelte'
 import RevealNav from '$lib/components/compositions/navs/RevealNav.svelte'
 
 import Header from '$lib/components/compositions/headers/Header.svelte'
-// import PageHeader from '$lib/components/compositions/headers/PageHeader.svelte'
-
-// import Page from '$lib/components/compositions/content/Page.svelte'
-// import PageLogIn from '$lib/components/compositions/content/PageLogIn.svelte'
 
 /**
  * Compositions - Graphics
  */
 import Sketch from '$lib/components/graphics/Sketch.svelte'
-import Geometry from '$lib/components/graphics/Geometry.svelte'
-// import Position from '$lib/components/graphics/Position.svelte'
-// import Rotation from '$lib/components/graphics/Rotation.svelte'
-// import Scale from '$lib/components/graphics/Scale.svelte'
 
 /**
  * Styles Api components
@@ -68,7 +56,6 @@ import Api from '$lib/api/styles/Api.svelte'
 import Token from '$lib/api/styles/Token.svelte'
 import Element from '$lib/api/styles/Element.svelte'
 import Collection from '$lib/api/styles/Collection.svelte'
-// import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
 
 import * as stylesApi from '$lib/api/styles/styles-api'
 import * as fixturesApi from '$lib/api/fixtures/js/fixtures-api'
@@ -167,22 +154,14 @@ const layouts = {
 const compositions = {
 	ButtonMenu,
 	ToggleMenu,
-	RevealMenu, // TODO: use content option in UI lib API in docs
+	RevealMenu,
 	LogIn,
 	Nav,
-	RevealNav, // TODO: use content option in UI lib API in docs
+	RevealNav,
 	Header,
-	// PageHeader,
-	// Page,
-	// PageLogIn,
 }
 
 const graphics = {
-	// Canvas, TODO: init canvas with example Sketch
-	// Geometry,
-	// Position,
-	// Rotation,
-	// Scale,
 	Sketch,
 }
 
@@ -192,8 +171,6 @@ const api = {
 	Collection,
 	Token,
 	Element,
-	// StyleFamily,
-	// StyleCapsule,
 	stylesApi,
 	fixturesApi,
 }

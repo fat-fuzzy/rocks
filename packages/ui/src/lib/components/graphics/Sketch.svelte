@@ -63,7 +63,6 @@
 	const loop = () => {
 		scene.draw()
 		frame = requestAnimationFrame((t) => {
-			// call requestAnimationFrame again with parameters
 			loop()
 		})
 	}
@@ -82,9 +81,6 @@
 	}
 
 	const handleToggle = (event: CustomEvent) => {
-		console.log('handleToggle - event')
-		console.log(event)
-
 		state = event.detail.selected[0].value
 		switch (state) {
 			case 'play':
