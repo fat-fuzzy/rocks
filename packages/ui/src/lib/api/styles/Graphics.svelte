@@ -15,7 +15,8 @@
 	export let name = title
 	export let component: ComponentType
 	export let props: any
-	export let sceneId = '004'
+	export let scene = lib.gfx.sketches['004']
+	export let path = ''
 
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
@@ -40,10 +41,9 @@
 			}
 		}),
 	]
-
 	// Graphics options
-	$: scene = lib.gfx.sketches[sceneId]
-	$: geometry = lib.gfx.utils.getGeometryDefaults()
+	$: geometry = scene.geometry || lib.gfx.utils.getGeometryDefaults()
+
 	// Block options
 	$: variant = styles.blocks?.element.variant ?? variant
 	$: color = styles.blocks?.element.color ?? color
@@ -78,4 +78,4 @@
 	})
 </script>
 
-<svelte:component this={component} id={title} {...props} />
+<svelte:component this={component} id={path.replaceAll('/', '.')} {...props} />

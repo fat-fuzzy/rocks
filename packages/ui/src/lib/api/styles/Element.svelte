@@ -5,8 +5,8 @@
 
 	import {onDestroy} from 'svelte'
 
-	import {initStyles} from './styles-api'
 	import * as ui from '$stores/ui'
+	import {initStyles} from './styles-api'
 	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
 
 	import Api from './Api.svelte'
@@ -102,6 +102,7 @@
 						this={ApiElement[category]}
 						{isPage}
 						{title}
+						{path}
 						{component}
 						{stylesApi}
 						props={currentProps}
@@ -115,6 +116,7 @@
 						this={ApiElement[category]}
 						{isPage}
 						{title}
+						{path}
 						{component}
 						{props}
 						{actionPath}
@@ -191,6 +193,7 @@
 				<svelte:component
 					this={ApiElement[category]}
 					{isPage}
+					{path}
 					{title}
 					{component}
 					{stylesApi}
@@ -204,6 +207,7 @@
 				<svelte:component
 					this={ApiElement[category]}
 					{isPage}
+					{path}
 					{title}
 					{component}
 					{props}
