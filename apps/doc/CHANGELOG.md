@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.35
+
+### Patch Changes
+
+- d208653c: [gfx] Add Graphics components to UI library
+
 ## 0.1.34
 
 ### Patch Changes
