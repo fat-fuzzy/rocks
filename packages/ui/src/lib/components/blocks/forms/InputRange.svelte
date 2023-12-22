@@ -78,30 +78,28 @@
 	}
 </script>
 
-<fieldset class={`l:stack:${size}`}>
-	<label for={id} class={classes}>
-		<span class={`font:${size}`}>
-			{label}:
-			{valueLabel}
-		</span>
-		<input
-			{id}
-			{name}
-			data-test={`input-range-${id}`}
-			type="range"
-			bind:value
-			{min}
-			{max}
-			{step}
-			on:input={handleInput}
-			list={items ? 'markers' : undefined}
-		/>
-		{#if items.length}
-			<datalist id="markers">
-				{#each markers as { id, label, value }}
-					<option {id} {label} {value} />
-				{/each}
-			</datalist>
-		{/if}
-	</label>
-</fieldset>
+<label for={id} class={classes}>
+	<span class={`font:${size}`}>
+		{label}:
+		{valueLabel}
+	</span>
+	<input
+		{id}
+		{name}
+		data-test={`input-range-${id}`}
+		type="range"
+		bind:value
+		{min}
+		{max}
+		{step}
+		on:input={handleInput}
+		list={items ? 'markers' : undefined}
+	/>
+	{#if items.length}
+		<datalist id="markers">
+			{#each markers as { id, label, value }}
+				<option {id} {label} {value} />
+			{/each}
+		</datalist>
+	{/if}
+</label>
