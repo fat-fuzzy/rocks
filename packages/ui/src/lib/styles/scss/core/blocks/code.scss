@@ -5,8 +5,8 @@ code {
 }
 
 kbd {
-	padding: calc(var(--current-size-minus) / 2.5) var(--current-size)
-		calc(var(--current-size-minus) / 2);
+	padding-block: calc(var(--current-size-minus) / 2.5) calc(var(--current-size-minus) / 2);
+	padding-inline: var(--current-size);
 	margin-inline: calc(var(--current-size) / 2);
 	border: var(--border-width) solid var(--current-gray);
 	border-radius: var(--radius-base);
@@ -36,8 +36,8 @@ code:not([class^='language-']) {
 	color: var(--current-color);
 	background-color: var(--current-bg-contrast);
 	border: none;
-	padding: calc(var(--current-size-minus) / 2.5) calc(var(--current-size) / 2)
-		calc(var(--current-size-minus) / 2);
+	padding-block: calc(var(--current-size-minus) / 2.5) calc(var(--current-size-minus) / 2);
+	padding-inline: calc(var(--current-size) / 2);
 	border-radius: var(--radius-base);
 }
 
