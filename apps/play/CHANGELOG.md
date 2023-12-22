@@ -1,5 +1,13 @@
 # @fat-fuzzy/play
 
+## 0.1.25
+
+### Patch Changes
+
+- d208653c: [gfx] Add Graphics components to UI library
+- Updated dependencies [d208653c]
+  - @fat-fuzzy/lib@0.1.5
+
 ## 0.1.24
 
 ### Patch Changes
