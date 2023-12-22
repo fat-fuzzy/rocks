@@ -1,11 +1,16 @@
-import type {Settings, Tab} from '$types'
+import type {Settings, Tab, GeometryProps} from '$types'
 import type {StyleTree} from '$lib/api/styles/types'
+import lib from '@fat-fuzzy/lib'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
 const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'show'}
 
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
+
+const DEFAULT_PLAYER_STATE: Settings = {value: ''}
+const DEFAULT_GEOMETRY_STATE: GeometryProps = lib.gfx.utils.getGeometryDefaults()
+const DEFAULT_SCENE_ID = '004'
 
 const DEFAULT_DS_STATE: {
 	menuReveal: Settings
@@ -210,6 +215,9 @@ export default {
 	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
+	DEFAULT_PLAYER_STATE,
+	DEFAULT_GEOMETRY_STATE,
+	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,
 	TRANSITION_CONTRAST,

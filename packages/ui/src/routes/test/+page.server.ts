@@ -6,7 +6,7 @@ import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
 import {DsContextReveal} from '$lib/forms/ds-context-reveal'
 import constants from '$lib/types/constants'
 
-const {DEFAULT_REVEAL_STATE, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_TABS} = constants
+const {TABS, DEFAULT_REVEAL_STATE, DEFAULT_STYLES, DEFAULT_DS_STATE} = constants
 
 export const actions = {
 	toggleContext: async ({request, url, cookies}) => {
@@ -70,35 +70,15 @@ export const actions = {
 		return {success: true}
 	},
 
-	handleElementTabChange: async ({request, url, cookies}) => {
+	updateTab: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-ui-tabs')
-		let currentTabs = {element: DEFAULT_TABS[0], category: DEFAULT_TABS[0]}
+		let currentTabs = {element: TABS[0], category: TABS[0]}
 		if (serialized) {
 			currentTabs = JSON.parse(serialized)
 		}
 		const tabs = new DsTabsUpdate(currentTabs)
-		if (!tabs.updateElementTab(data)) {
-			return fail(400, {tabsError: true})
-		}
-		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
-		}
-
-		return {success: true}
-	},
-
-	handleCategoryTabChange: async ({request, url, cookies}) => {
-		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-ui-tabs')
-		let currentTabs = {element: DEFAULT_TABS[0], category: DEFAULT_TABS[0]}
-		if (serialized) {
-			currentTabs = JSON.parse(serialized)
-		}
-		const tabs = new DsTabsUpdate(currentTabs)
-		if (!tabs.updateCategoryTab(data)) {
+		if (!tabs.update(data)) {
 			return fail(400, {tabsError: true})
 		}
 		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})

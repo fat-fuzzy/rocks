@@ -55,12 +55,10 @@ import Header from '$lib/components/compositions/headers/Header.svelte'
  * Compositions - Graphics
  */
 import Sketch from '$lib/components/graphics/Sketch.svelte'
-import Player from '$lib/components/graphics/Player.svelte'
-
 import Geometry from '$lib/components/graphics/Geometry.svelte'
-import Position from '$lib/components/graphics/Position.svelte'
-import Rotation from '$lib/components/graphics/Rotation.svelte'
-import Scale from '$lib/components/graphics/Scale.svelte'
+// import Position from '$lib/components/graphics/Position.svelte'
+// import Rotation from '$lib/components/graphics/Rotation.svelte'
+// import Scale from '$lib/components/graphics/Scale.svelte'
 
 /**
  * Styles Api components
@@ -181,8 +179,7 @@ const compositions = {
 
 const graphics = {
 	// Canvas, TODO: init canvas with example Sketch
-	Geometry,
-	Player,
+	// Geometry,
 	// Position,
 	// Rotation,
 	// Scale,

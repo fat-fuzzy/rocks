@@ -29,7 +29,7 @@ export class DsStateUpdate {
 	}
 
 	/**
-	 * Update Settings based on inputs
+	 * Update State based on inputs
 	 */
 	enter(data: FormData) {
 		if (data.has('button-ui-RevealMenu')) {
@@ -46,9 +46,6 @@ export class DsStateUpdate {
 		}
 	}
 
-	/**
-	 * Update State based on inputs
-	 */
 	toggleMenuReveal(data: FormData) {
 		const updated = data.get('button-ui-RevealMenu')?.toString()
 		if (updated) {
@@ -58,9 +55,6 @@ export class DsStateUpdate {
 		return false
 	}
 
-	/**
-	 * Update State based on inputs
-	 */
 	toggleNavReveal(data: FormData) {
 		const updated = data.get('button-ui-RevealNav')?.toString()
 		if (updated) {
@@ -70,9 +64,6 @@ export class DsStateUpdate {
 		return false
 	}
 
-	/**
-	 * Update State based on inputs
-	 */
 	toggleSidebarReveal(data: FormData) {
 		const updated = data.get('button-ui-Header-nav-reveal')?.toString()
 		if (updated) {
@@ -82,9 +73,6 @@ export class DsStateUpdate {
 		return false
 	}
 
-	/**
-	 * Update State based on inputs
-	 */
 	toggleSettingsReveal(data: FormData) {
 		const updated = data.get('button-ui-Header-menu-settings')?.toString()
 		if (updated) {
