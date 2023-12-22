@@ -25,7 +25,7 @@
 			if (event.detail.pressed) {
 				selected = [...selected, event.detail]
 			} else {
-				selected = selected.filter((c) => c.id !== event.detail.id)
+				selected = selected.filter((c) => c.name !== event.detail.name)
 			}
 		} else {
 			if (event.detail.pressed) {
@@ -57,6 +57,7 @@
 				{@const itemAsset = props.asset ?? asset}
 				<li>
 					<Toggle
+						id={`${id}-${props.id}`}
 						on:click={onClick}
 						{type}
 						{formaction}
@@ -79,6 +80,7 @@
 			{@const itemAsset = props.asset ?? asset}
 			<li>
 				<Toggle
+					id={`${id}-${props.id}`}
 					on:click={onClick}
 					{type}
 					{formaction}
