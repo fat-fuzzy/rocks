@@ -28,7 +28,7 @@
 				revealContext = value
 			}
 		}),
-		stores.ui.categoryTab.subscribe((value) => {
+		stores.ui.currentTab.subscribe((value) => {
 			if (value) {
 				currentTab = value
 			}
@@ -57,7 +57,7 @@
 	}
 
 	function handleTabChange(event: CustomEvent) {
-		stores.ui.categoryTab.set(event.detail.selected[0])
+		stores.ui.currentTab.set(event.detail.selected[0])
 	}
 
 	$: reveal = revealContext.reveal
@@ -102,7 +102,7 @@
 			<form
 				method="POST"
 				class="l:switcher:sm shrink"
-				action={`/test?/handleElementTabChange&redirectTo=${$page.url.pathname}`}
+				action={`/test?/updateTab&redirectTo=${$page.url.pathname}`}
 				use:enhance={() => {
 					// prevent default callback from resetting the form
 					return ({update}) => {
@@ -122,7 +122,7 @@
 					size="lg"
 					color="primary"
 					variant="round outline"
-					formaction={`/test?/handleElementTabChange&redirectTo=${$page.url.pathname}`}
+					formaction={`/test?/updateTab&redirectTo=${$page.url.pathname}`}
 					on:click={handleTabChange}
 				/>
 			</form>

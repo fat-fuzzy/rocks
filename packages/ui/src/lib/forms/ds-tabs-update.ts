@@ -17,29 +17,12 @@ export class DsTabsUpdate {
 		}
 	}
 
-	/**
-	 * Update Tab based on inputs
-	 */
-	updateElementTab(data: FormData) {
+	update(data: FormData) {
 		if (data.has('toggle')) {
 			const updated = data.get('toggle')?.toString()
 			const updatedValue = DEFAULT_TABS.find((tab) => tab.value === updated)
 			if (updatedValue) {
 				this.currentTabs.element = updatedValue
-				return true
-			}
-		}
-		return false
-	}
-
-	/**
-	 * Update Tab based on inputs
-	 */
-	updateCategoryTab(data: FormData) {
-		if (data.has('toggle')) {
-			const updated = data.get('toggle')?.toString()
-			const updatedValue = DEFAULT_TABS.find((tab) => tab.value === updated)
-			if (updatedValue) {
 				this.currentTabs.category = updatedValue
 				return true
 			}

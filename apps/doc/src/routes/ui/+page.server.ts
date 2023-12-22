@@ -4,7 +4,7 @@ import {fail, redirect} from '@sveltejs/kit'
 import {constants, forms} from '@fat-fuzzy/ui'
 
 const {DsTabsUpdate, DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
-const {DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE, TABS} = constants
+const {TABS, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = constants
 
 export const actions = {
 	toggleContext: async ({request, url, cookies}) => {
@@ -66,7 +66,7 @@ export const actions = {
 		return {success: true}
 	},
 
-	handleElementTabChange: async ({request, url, cookies}) => {
+	updateTab: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-ui-tabs')
 		let currentTabs = {element: TABS[0], category: TABS[0]}
@@ -74,27 +74,7 @@ export const actions = {
 			currentTabs = JSON.parse(serialized)
 		}
 		const tabs = new DsTabsUpdate(currentTabs)
-		if (!tabs.updateElementTab(data)) {
-			return fail(400, {tabsError: true})
-		}
-		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
-		}
-
-		return {success: true}
-	},
-
-	handleCategoryTabChange: async ({request, url, cookies}) => {
-		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-ui-tabs')
-		let currentTabs = {element: TABS[0], category: TABS[0]}
-		if (serialized) {
-			currentTabs = JSON.parse(serialized)
-		}
-		const tabs = new DsTabsUpdate(currentTabs)
-		if (!tabs.updateCategoryTab(data)) {
+		if (!tabs.update(data)) {
 			return fail(400, {tabsError: true})
 		}
 		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})

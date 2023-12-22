@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {Scene, GeometryProps} from '$lib/types'
 	import {afterUpdate} from 'svelte'
-	import {enhance} from '$app/forms'
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
 	import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
@@ -14,11 +13,6 @@
 	export let color = ''
 	export let size = ''
 	export let variant = ''
-
-	export let method = 'POST'
-	export let formaction = 'updateSketch'
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
 
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
@@ -37,7 +31,6 @@
 
 	$: state = 'clear'
 	$: showDetails = geometry !== undefined && state === 'play'
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	$: frameClasses = canvas
 		? `l:frame:${dimensions} ${layer} state:${state} emoji:${state}`
 		: `l:frame:${dimensions} ${layer} card:xl`

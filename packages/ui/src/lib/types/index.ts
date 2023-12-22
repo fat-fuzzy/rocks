@@ -17,3 +17,24 @@ export type Tab = {
 	color?: string
 	asset?: string
 }
+
+export type GeometryProps = {
+	color: number[]
+	translation: number[]
+	rotation: number[]
+	scale: number[]
+	width: number // of geometry
+	height: number // of geometry
+}
+
+export type ProgramInfo = {
+	geometry: GeometryProps
+}
+
+export type Scene = {
+	id: string
+	draw: () => void
+	clear: () => void
+	update: (value: GeometryProps) => void
+	main: (canvas: HTMLCanvasElement) => ProgramInfo
+}
