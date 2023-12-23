@@ -80,6 +80,14 @@ pre.bare {
 			--current-bg-color: var(--color-gray-5);
 			--current-border-color: var(--current-bg-color);
 		}
+
+		kbd {
+			border-color: var(--color-light-3);
+		}
+
+		code:not([class^='language-']) {
+			background-color: var(--color-gray-5);
+		}
 	}
 
 	&.bg\:blend,
@@ -164,5 +172,13 @@ pre.bare {
 		.feedback[class*='error'].bare:not(pre) {
 			--current-border-color: var(--current-bg-color);
 		}
+	}
+}
+
+.night,
+.day {
+	pre > code {
+		color: inherit;
+		background-color: inherit;
 	}
 }
