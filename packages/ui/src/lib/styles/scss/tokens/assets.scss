@@ -35,6 +35,7 @@ $lightning: '⚡️';
 $construction-sign: '🚧';
 $shower: '🚿';
 $lotus: '🪷';
+$hole: '🕳️';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -87,5 +88,6 @@ $emojis: (
 	geometry-2d: #{$ruler},
 	play: #{$sparkles},
 	pause: #{$lotus},
-	clear: #{$spouting-whale}
+	clear: #{$spouting-whale},
+	not-found: #{$hole}
 );
