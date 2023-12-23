@@ -1,18 +1,19 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
+	import {headless} from '@fat-fuzzy/ui'
+
 	$: markdowns = $page.data.markdowns
 
-	let title = 'Fat Fuzzy Dev'
+	const {Head} = headless
+
+	let title = 'Dev'
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={`${title} documentation`} />
-</svelte:head>
+<Head page={title} description="Developer Doc" />
 
 <header class="page-header bg:polar">
-	<h1 class="card:xl">{title}</h1>
+	<h1 class="card:xl">{`Fat Fuzzy  ${title}`}</h1>
 </header>
 
 <div class="l:stack:xl card:xl">

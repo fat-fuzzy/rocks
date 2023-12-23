@@ -1,8 +1,13 @@
 <script lang="ts">
+	import {headless} from '@fat-fuzzy/ui'
+
 	// TODO; conditional import
 	import introDay from '$lib/images/day/001-intro.png' // TODO : optimize images
 	import introNight from '$lib/images/night/001-intro.png' // TODO : optimize images
 
+	const {Head} = headless
+
+	let title = 'Rocks'
 	let theme = 1
 	const pageImage = {
 		src: theme === 1 ? introDay : introNight,
@@ -11,10 +16,10 @@
 	$: variant = 'bg:primary:light'
 </script>
 
-<svelte:head>
-	<title>Fat Fuzzy Doc | Home</title>
-	<meta name="description" content="Fat Fuzzy Rocks documentation home page" />
-</svelte:head>
+<Head
+	page={title}
+	description="This is the Fat Fuzzy Rocks website home page. The site contains a small Design System based on CUBE CSS, as well as developer documentation and decision logs. Welcome! 🐰"
+/>
 
 <header class="bg:polar">
 	<div class="l:text:xl l:center card:feature:xxl">

@@ -1,7 +1,12 @@
-<svelte:head>
-	<title>Fat Fuzzy Rocks | About</title>
-	<meta name="description" content="About this app" />
-</svelte:head>
+<script lang="ts">
+	import {headless} from '@fat-fuzzy/ui'
+
+	const {Head} = headless
+
+	let title = 'About'
+</script>
+
+<Head {title} page="Rocks" description="About this website" />
 
 <header class="page-header bg:polar col:center max:w:full">
 	<h1 class="l:center card:xl">About Fat Fuzzy</h1>
