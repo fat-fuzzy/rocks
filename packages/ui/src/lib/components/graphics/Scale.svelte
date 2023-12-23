@@ -16,6 +16,7 @@
 	export let maxX = 0
 	export let minY = 0
 	export let maxY = 0
+	export let disabled: boolean
 
 	const dispatch = createEventDispatcher()
 
@@ -32,7 +33,7 @@
 	}
 </script>
 
-<Fieldset {legend} {size} container="box:card">
+<Fieldset id="scale-fieldset" {legend} {size} container="box:card">
 	<InputRange
 		bind:value={scaleX}
 		id={`${id}-width`}
@@ -43,6 +44,7 @@
 		on:input={updateX}
 		{size}
 		{color}
+		{disabled}
 	/>
 	<InputRange
 		bind:value={scaleY}
@@ -54,5 +56,6 @@
 		on:input={updateY}
 		{size}
 		{color}
+		{disabled}
 	/>
 </Fieldset>

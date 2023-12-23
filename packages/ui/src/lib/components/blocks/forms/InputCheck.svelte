@@ -17,6 +17,7 @@
 	export let background = ''
 	export let container = ''
 	export let asset = ''
+	export let disabled: boolean
 
 	function handleInput(event) {
 		const payload = {
@@ -31,5 +32,14 @@
 
 <label for={id} class={classes}>
 	<span>{label}</span>
-	<input {id} data-test={id} type="checkbox" {value} {name} {checked} on:input={handleInput} />
+	<input
+		{id}
+		data-test={id}
+		type="checkbox"
+		{value}
+		{name}
+		{checked}
+		on:input={handleInput}
+		{disabled}
+	/>
 </label>

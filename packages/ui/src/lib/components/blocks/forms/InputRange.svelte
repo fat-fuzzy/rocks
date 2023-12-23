@@ -17,6 +17,7 @@
 	export let size = ''
 	export let align = ''
 	export let items: any[] = []
+	export let disabled: boolean
 	let layout = 'stack'
 
 	let valueLabel = value
@@ -94,6 +95,7 @@
 		{step}
 		on:input={handleInput}
 		list={items ? 'markers' : undefined}
+		{disabled}
 	/>
 	{#if items.length}
 		<datalist id="markers">

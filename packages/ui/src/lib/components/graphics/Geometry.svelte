@@ -17,6 +17,7 @@
 	export let formaction = 'updateGeometry'
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
+	export let disabled: boolean
 
 	const dispatch = createEventDispatcher()
 
@@ -77,7 +78,16 @@
 		}
 	}}
 >
-	<Position bind:coordX bind:coordY bind:maxX bind:maxY on:input={update} {color} size="xs" />
+	<Position
+		bind:coordX
+		bind:coordY
+		bind:maxX
+		bind:maxY
+		on:input={update}
+		{color}
+		size="xs"
+		{disabled}
+	/>
 	<Scale
 		bind:scaleX
 		bind:scaleY
@@ -88,8 +98,9 @@
 		on:input={update}
 		{color}
 		size="xs"
+		{disabled}
 	/>
-	<Rotation bind:angle max={360} on:input={update} {color} size="xs" />
+	<Rotation bind:angle max={360} on:input={update} {color} size="xs" {disabled} />
 	{#await Promise.resolve()}
 		<div class={`l:frame:twin card:lg`}>
 			<Button
@@ -98,6 +109,7 @@
 				color="highlight"
 				variant="round outline"
 				asset="emoji:nojs"
+				{disabled}
 			/>
 		</div>
 	{:then}

@@ -16,6 +16,7 @@
 	export let coordY = 0
 	export let maxX = 0
 	export let maxY = 0
+	export let disabled: boolean
 
 	function updateX() {
 		dispatch('input', {
@@ -30,7 +31,7 @@
 	}
 </script>
 
-<Fieldset {legend} {size} container="box:card">
+<Fieldset id="position-fieldset" {legend} {size} container="box:card">
 	<InputRange
 		bind:value={coordX}
 		id={`${id}-x`}
@@ -40,6 +41,7 @@
 		on:input={updateX}
 		{size}
 		{color}
+		{disabled}
 	/>
 	<InputRange
 		bind:value={coordY}
@@ -50,5 +52,6 @@
 		on:input={updateY}
 		{size}
 		{color}
+		{disabled}
 	/>
 </Fieldset>

@@ -14,6 +14,7 @@
 	const legend = 'Rotation'
 	export let angle = 0
 	export let max = 0
+	export let disabled: boolean
 
 	function update() {
 		dispatch('input', {
@@ -22,8 +23,18 @@
 	}
 </script>
 
-<Fieldset {legend} {size} container="box:card">
+<Fieldset id="rotation-fieldset" {legend} {size} container="box:card">
 	<!--https://css-tricks.com/accessible-svgs/-->
 	<!-- <svg id="InteractiveSVG" role="group" /> -->
-	<InputRange bind:value={angle} {id} name={id} {label} {max} on:input={update} {size} {color} />
+	<InputRange
+		bind:value={angle}
+		{id}
+		name={id}
+		{label}
+		{max}
+		on:input={update}
+		{size}
+		{color}
+		{disabled}
+	/>
 </Fieldset>
