@@ -1,13 +1,13 @@
 import {test, expect} from '@playwright/experimental-ct-svelte'
 import format from '../../../dist/utils/format'
 import {getProps} from '../../../dist/api/fixtures/js/fixtures-api'
-import ButtonMenu from '../../../dist/components/compositions/menus/ButtonMenu.svelte'
-import ToggleMenu from '../../../dist/components/compositions/menus/ToggleMenu.svelte'
-import RevealMenu from '../../../dist/components/compositions/menus/RevealMenu.svelte'
+import ButtonMenu from '../../../dist/components/recipes/menus/ButtonMenu.svelte'
+import ToggleMenu from '../../../dist/components/recipes/menus/ToggleMenu.svelte'
+import RevealMenu from '../../../dist/components/recipes/menus/RevealMenu.svelte'
 
 test.use({viewport: {width: 500, height: 500}})
 
-const category = 'compositions'
+const category = 'recipes'
 
 test('ButtonMenu', async ({mount}) => {
 	// 1. Init

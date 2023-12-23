@@ -1,16 +1,16 @@
 import {test, expect} from '@playwright/experimental-ct-svelte'
 import format from '../../../dist/utils/format'
 import {getProps} from '../../../dist/api/fixtures/js/fixtures-api'
-import Nav from '../../../dist/components/compositions/navs/Nav.svelte'
-import LinkList from '../../../dist/components/compositions/navs/LinkList.svelte'
-import DetailsNav from '../../../dist/components/compositions/navs/DetailsNav.svelte'
-import RevealNav from '../../../dist/components/compositions/navs/RevealNav.svelte'
+import Nav from '../../../dist/components/recipes/navs/Nav.svelte'
+import LinkList from '../../../dist/components/recipes/navs/LinkList.svelte'
+import DetailsNav from '../../../dist/components/recipes/navs/DetailsNav.svelte'
+import RevealNav from '../../../dist/components/recipes/navs/RevealNav.svelte'
 
 import {getLabelsRecursive} from '../../utils'
 
 test.use({viewport: {width: 500, height: 500}})
 
-const category = 'compositions'
+const category = 'recipes'
 
 test('Nav', async ({mount}) => {
 	// 1. Init

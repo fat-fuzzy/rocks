@@ -4,7 +4,7 @@
 /* Resets and global styles, set --current-* CSS var values used in layouts and blocks */
 @forward './globals/_index';
 
-/* Blocks (self contained, atomic components used in compositions) */
+/* Blocks (self contained, atomic components used in Recipes) */
 @forward './blocks/_index';
 
 /* Layout (structural components used to organize content on a page or view) */
@@ -14,7 +14,7 @@
 @forward './motion/_index';
 
 /* Compositions (components that implement common usage patterns using blocks and layouts) */
-@forward './compositions/_index';
+@forward './recipes/_index';
 
 /* Exceptional overrides */
 @forward './config/exceptions';

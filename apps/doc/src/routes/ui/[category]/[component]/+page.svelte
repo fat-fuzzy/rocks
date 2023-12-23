@@ -11,7 +11,7 @@
 		tokens,
 		blocks,
 		layouts,
-		compositions,
+		recipes,
 		graphics,
 		constants,
 	} from '@fat-fuzzy/ui'
@@ -19,7 +19,7 @@
 	const {Head} = headless
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
-	const {ToggleMenu} = compositions
+	const {ToggleMenu} = recipes
 	const actionPath = '/ui'
 	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
 
@@ -27,7 +27,7 @@
 		tokens: tokens,
 		blocks: blocks,
 		layouts: layouts,
-		compositions: compositions,
+		recipes: recipes,
 		graphics: graphics,
 	}
 

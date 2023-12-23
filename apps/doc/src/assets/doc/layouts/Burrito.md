@@ -2,7 +2,7 @@
 title: Burrito
 slug: Burrito
 family: ['layouts']
-# group: ['containers']
+group: ['containers']
 content_type: ['any']
 props_style: ['size']
 context: ['app.settings']

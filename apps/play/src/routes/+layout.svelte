@@ -5,9 +5,9 @@
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$lib/data/nav'
-	import {compositions, stores, utils} from '@fat-fuzzy/ui'
+	import {recipes, stores, utils} from '@fat-fuzzy/ui'
 
-	const {Header} = compositions
+	const {Header} = recipes
 	const {settings} = stores
 
 	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}

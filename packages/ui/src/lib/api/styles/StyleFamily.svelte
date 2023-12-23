@@ -4,9 +4,9 @@
 
 	import {onDestroy} from 'svelte'
 
-	import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
+	import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
-	import InputGroup from '$lib/components/compositions/forms/InputGroup.svelte'
+	import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 	import * as ui from '$stores/ui'
 	import {initStyles} from '$lib/api/styles/styles-api'

@@ -6,7 +6,7 @@
 		tokens,
 		blocks,
 		layouts,
-		compositions,
+		recipes,
 		graphics,
 		api,
 		stores,
@@ -28,7 +28,7 @@
 		{category: 'tokens', items: tokens},
 		{category: 'blocks', items: blocks},
 		{category: 'layouts', items: layouts},
-		{category: 'compositions', items: compositions},
+		{category: 'recipes', items: recipes},
 		{category: 'graphics', items: graphics},
 	]
 	const path = $page.url.pathname

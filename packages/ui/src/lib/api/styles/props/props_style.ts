@@ -83,7 +83,7 @@ const layout = {
 		},
 	],
 	exclude: [
-		'compositions',
+		'recipes',
 		'layouts',
 		'Switcher',
 		'Reveal',
@@ -117,7 +117,7 @@ const threshold = {
 	],
 	exclude: [
 		'blocks',
-		'compositions',
+		'recipes',
 		'layouts',
 		'Switcher',
 		'Reveal',
@@ -150,7 +150,7 @@ const breakpoint = {
 		{id: 'breakpoint.xl', text: 'xl', value: 'xl'},
 	],
 	exclude: [
-		'compositions',
+		'recipes',
 		'layouts',
 		'Reveal',
 		'Stack',

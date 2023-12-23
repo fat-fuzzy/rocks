@@ -79,3 +79,5 @@
 </script>
 
 <svelte:component this={component} id={path.replaceAll('/', '.')} {...props} />
+
+<slot name="controls" />

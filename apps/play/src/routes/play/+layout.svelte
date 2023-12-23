@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {layouts, compositions} from '@fat-fuzzy/ui'
+	import {layouts, recipes} from '@fat-fuzzy/ui'
 	const {Sidebar} = layouts
-	const {Nav} = compositions
+	const {Nav} = recipes
 
 	$: sketches = $page.data.sketches
 	$: path = ''

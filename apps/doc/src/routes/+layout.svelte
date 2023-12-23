@@ -5,9 +5,9 @@
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$data/nav'
-	import {compositions, stores, utils, constants} from '@fat-fuzzy/ui'
+	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui'
 
-	const {Header} = compositions
+	const {Header} = recipes
 	const {settings} = stores
 	const {DEFAULT_APP_SETTINGS} = constants
 

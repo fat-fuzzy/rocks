@@ -13,7 +13,7 @@
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
-	import Composition from './Composition.svelte'
+	import Recipe from './Recipe.svelte'
 	import Graphics from './Graphics.svelte'
 
 	export let actionPath: string | undefined = undefined
@@ -36,7 +36,7 @@
 		tokens: Token,
 		blocks: Block,
 		layouts: Layout,
-		compositions: Composition,
+		recipes: Recipe,
 		graphics: Graphics,
 	}
 
@@ -136,7 +136,7 @@
 							<p class={`font:xl`}>🐰</p>
 							<p class={`font:md`}>Coming soon!</p>
 						</div>
-					{:else if category === 'compositions'}
+					{:else if category === 'recipes'}
 						<div class="drop w:full bg:polar ui:menu">
 							<Api categories={['shared']} {title} {path} {actionPath} {redirect} />
 						</div>

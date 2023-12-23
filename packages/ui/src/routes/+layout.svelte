@@ -9,7 +9,7 @@
 	import * as settingsStore from '$lib/stores/settings'
 	import format from '$lib/utils/format'
 	import constants from '$lib/types/constants'
-	import Header from '$lib/components/compositions/headers/Header.svelte'
+	import Header from '$lib/components/recipes/headers/Header.svelte'
 
 	const {DEFAULT_APP_SETTINGS, APP_SETTINGS, APP_LINKS} = constants
 
