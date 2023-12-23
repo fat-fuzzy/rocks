@@ -18,6 +18,7 @@
 	export let align = ''
 	export let background = ''
 	export let asset = ''
+	export let disabled: boolean
 
 	function handleInput(event) {
 		const payload = {
@@ -32,5 +33,14 @@
 
 <label for={id} class={classes}>
 	<span>{label}</span>
-	<input {id} type="radio" {value} {name} {checked} on:input={handleInput} data-test={id} />
+	<input
+		{id}
+		type="radio"
+		{value}
+		{name}
+		{checked}
+		on:input={handleInput}
+		data-test={id}
+		{disabled}
+	/>
 </label>

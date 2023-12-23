@@ -10,6 +10,7 @@
 	export let align = ''
 	export let status = ''
 	export let asset = ''
+	export let disabled: boolean
 
 	export let fileType = 'image/png, image/jpeg'
 	export let multiple = true
@@ -31,5 +32,6 @@
 		aria-describedby={/* TODO: check is this correct? */ hint ? `${id}-hint` : ''}
 		{multiple}
 		class={`bg:${color}`}
+		{disabled}
 	/>
 </label>

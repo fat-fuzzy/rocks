@@ -22,9 +22,9 @@
 	$: alignClass = align ? `align:${align}` : ''
 	$: variantClass = variant ? `${variant}:${size}` : ''
 	$: contentClass = `${sizeClass} ${variantClass} ${alignClass} ${type || ''} ${color || ''}`
-	$: classes = `${layoutClass} ${containerClass} ${backgroundClass} ${sizeClass} ${alignClass} ${variantClass} ${contentClass}`
+	$: classes = `${layoutClass} ${containerClass} ${backgroundClass} ${variantClass} ${contentClass}`
 </script>
 
-<fieldset {id} {name} data-key={id} class={classes}>
+<fieldset {name} data-key={id} class={classes}>
 	{#if legend}<legend class={sizeClass}>{legend}</legend>{/if}<slot />
 </fieldset>

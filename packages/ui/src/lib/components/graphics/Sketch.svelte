@@ -8,7 +8,7 @@
 	export let id = 'sketch'
 	export let scene: Scene
 	export let title: string
-	export let dimensions = 'twin'
+	export let dimensions = 'video'
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
 	export let color = ''
 	export let size = ''
@@ -30,7 +30,7 @@
 	]
 
 	$: state = 'clear'
-	$: showDetails = geometry !== undefined && state === 'play'
+	$: showDetails = geometry !== undefined && (state === 'play' || state === 'pause')
 	$: frameClasses = canvas
 		? `l:frame:${dimensions} ${layer} state:${state} emoji:${state}`
 		: `l:frame:${dimensions} ${layer} card:xl`
@@ -120,6 +120,8 @@
 				</div>
 			</canvas>
 		</div>
+	</div>
+	<aside class="l:side">
 		{#if canvas}
 			<ToggleMenu
 				id="togggle"
@@ -131,13 +133,15 @@
 				on:click={handleToggle}
 			/>
 		{/if}
-	</div>
-	<aside class={showDetails ? 'l:side' : 'hide:rm-node'}>
-		<details open>
-			<summary class={`card:xs box:${color}:light bg:${color}:light `}> Details </summary>
-			{#if geometry}
-				<Geometry on:update={update} {geometry} canvasWidth={width} canvasHeight={height} {color} />
-			{/if}
-		</details>
+		{#if showDetails}
+			<Geometry
+				on:update={update}
+				{geometry}
+				canvasWidth={width}
+				canvasHeight={height}
+				{color}
+				disabled={state === 'pause'}
+			/>
+		{/if}
 	</aside>
 </article>
