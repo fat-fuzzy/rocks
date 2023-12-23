@@ -2,6 +2,7 @@
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 	import {
+		headless,
 		tokens,
 		blocks,
 		layouts,
@@ -12,12 +13,13 @@
 		constants,
 	} from '@fat-fuzzy/ui'
 
+	const {Head} = headless
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
 	const actionPath = '/ui'
 	const {DEFAULT_REVEAL_STATE} = constants
 
-	const title = 'Fat Fuzzy UI' // TODO : Fix title: add breadcrumb nav component ?
+	const title = 'UI' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = $page.data.context || DEFAULT_REVEAL_STATE
@@ -59,13 +61,10 @@
 	})
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={`${title} documentation`} />
-</svelte:head>
+<Head page={title} description={`${title} Doc`} />
 
 <header class={headerClass}>
-	<h1 class="l:main:40 nowrap maki lg">{title}</h1>
+	<h1 class="l:main:40 nowrap maki lg">Fat Fuzzy {title}</h1>
 	<RevealAuto
 		id="ui-app-context"
 		size="sm"

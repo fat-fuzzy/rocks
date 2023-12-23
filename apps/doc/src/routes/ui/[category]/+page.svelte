@@ -4,6 +4,7 @@
 	import {page} from '$app/stores'
 
 	import {
+		headless,
 		tokens,
 		blocks,
 		layouts,
@@ -14,6 +15,7 @@
 		constants,
 	} from '@fat-fuzzy/ui'
 
+	const {Head} = headless
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
 	const {ToggleMenu} = compositions
@@ -83,6 +85,7 @@
 	})
 </script>
 
+<Head {title} page="UI" description={`${title} Doc`} />
 <svelte:head>
 	<title>{title}</title>
 	<meta name="description" content={`${title} documentation`} />

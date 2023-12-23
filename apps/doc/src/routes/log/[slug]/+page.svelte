@@ -1,7 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {layouts} from '@fat-fuzzy/ui'
+	import {headless, layouts} from '@fat-fuzzy/ui'
 
+	const {Head} = headless
 	const {RevealAuto} = layouts
 
 	let title: string
@@ -15,10 +16,7 @@
 	// TODO: Fix context menu
 </script>
 
-<svelte:head>
-	<title>Fat Fuzzy Rocks | {title}</title>
-	<meta name="description" content={`${title} documentation`} />
-</svelte:head>
+<Head {title} page="Log" description={`Decision Log ${markdown.meta.id}: ${title}`} />
 
 <header class={headerClass}>
 	<h1 class="card:xl">{title}</h1>
