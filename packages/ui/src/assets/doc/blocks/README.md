@@ -27,7 +27,7 @@ The examples below are two ways of achieving the same end result: a button that 
 1. A Svelte `Button` component
 
    ```svelte
-   <Button id="submit" />
+   <Button id="submit" text="Submit" />
    ```
 
 What is the point of creating a `Button` component ? (regardless of the choice of framework)
