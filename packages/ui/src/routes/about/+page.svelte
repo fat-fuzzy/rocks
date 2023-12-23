@@ -5,7 +5,7 @@
 	let title = 'About'
 </script>
 
-<Head {title} page="About" description="About this website" />
+<Head page="About" description="About this website" />
 
 <header class="l:center col:center card:xxl max:w:full polar">
 	<h1>About Fat Fuzzy</h1>
