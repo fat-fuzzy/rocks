@@ -1,5 +1,11 @@
 # @fat-fuzzy/design
 
+## 0.1.11
+
+### Patch Changes
+
+- b3ff15d1: [ui+apps] Player component, Docs
+
 ## 0.1.10
 
 ### Patch Changes
