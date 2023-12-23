@@ -6,6 +6,6 @@ inputs: ['blocks.element', 'layouts.container', 'layouts.element']
 context: ['app.settings']
 ---
 
-## What are Compositions ?
+## What are Recipes ?
 
-`Compositions` are components that provide solutions to common UI usage patterns, and are created using `Blocks` and `Layouts`.
+`Recipes` are components that provide solutions to common UI usage patterns, and are created using `Blocks`, `Layouts`, and other `Recipes`.
