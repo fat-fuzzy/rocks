@@ -1,6 +1,11 @@
 // Reexport your entry components here
 
 /**
+ * Headless components
+ */
+import Head from '$lib/components/blocks/global/Head.svelte'
+
+/**
  * Layout components
  */
 import Color from '$lib/components/tokens/Color.svelte'
@@ -175,8 +180,25 @@ const api = {
 	fixturesApi,
 }
 
+// TODO: rename this export : stylesApi
+const headless = {
+	Head,
+}
+
 const testsApi = {
 	Test,
 }
 
-export {tokens, blocks, layouts, compositions, graphics, api, utils, forms, stores, constants}
+export {
+	headless,
+	tokens,
+	blocks,
+	layouts,
+	compositions,
+	graphics,
+	api,
+	utils,
+	forms,
+	stores,
+	constants,
+}

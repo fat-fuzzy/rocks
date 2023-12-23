@@ -25,7 +25,7 @@
 	export let path = ''
 	export let component: ComponentType
 	export let category = ''
-	export let color = 'primary:light' // TODO: expose breakpoint too
+	export let color = 'primary:light'
 	export let page = ''
 	export let props: any = getProps({category, component: title}) || {}
 	props.page = page

@@ -3,7 +3,19 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {tokens, blocks, layouts, compositions, graphics, api, stores, constants} from '$lib'
+	import {
+		tokens,
+		blocks,
+		layouts,
+		compositions,
+		graphics,
+		api,
+		stores,
+		constants,
+		headless,
+	} from '$lib'
+
+	const {Head} = headless
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
 	const {ToggleMenu} = compositions
@@ -74,10 +86,7 @@
 	})
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={`${title} documentation`} />
-</svelte:head>
+<Head {title} page="Test" description={`${title} Test Page`} />
 
 <header class={headerClass}>
 	<h1 class="l:main:30 maki lg">{title}</h1>

@@ -1,8 +1,11 @@
 <script lang="ts">
+	import {headless} from '$lib'
 	// TODO; conditional import
 	import introDay from '$lib/images/day/001-intro.png' // TODO : optimize images
 	import introNight from '$lib/images/night/001-intro.png' // TODO : optimize images
-	let title = 'Fat Fuzzy Sandbox'
+
+	const {Head} = headless
+	let title = 'Sandbox'
 	let theme = 1
 	const pageImage = {
 		src: theme === 1 ? introDay : introNight,
@@ -11,10 +14,7 @@
 	$: variant = 'bg:primary:light'
 </script>
 
-<svelte:head>
-	<title>{title} | Home</title>
-	<meta name="description" content={`${title} home page`} />
-</svelte:head>
+<Head {title} page="Home" description="🐰 Welcome!" />
 
 <header class="bg:polar card:xl">
 	<div class="l:text:xl l:center card:feature:xxl">
