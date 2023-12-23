@@ -1,15 +1,15 @@
 <script>
+	import {headless} from '$lib'
 	import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
+	const {Head} = headless
+	let title = '🤖 Machines'
 
 	export let size = 'md'
 	export let variant = 'primary'
 </script>
 
-<svelte:head>
-	<title>UI Sandbox | 🤖 Machines</title>
-	<meta name="description" content="A collection of state machines for learning purposes." />
-</svelte:head>
+<Head {title} page="Machines" description="A collection of state machines for learning purposes." />
 
 <header>
 	<h1>🤖 Machines</h1>

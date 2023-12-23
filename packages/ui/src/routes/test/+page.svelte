@@ -1,14 +1,25 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, compositions, graphics, api, stores, constants} from '$lib'
+	import {
+		tokens,
+		blocks,
+		layouts,
+		compositions,
+		graphics,
+		api,
+		stores,
+		constants,
+		headless,
+	} from '$lib'
 
+	const {Head} = headless
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
 	const {DEFAULT_REVEAL_STATE} = constants
 
 	const actionPath = '/test'
-	const title = 'Fat Fuzzy Test' // TODO : Fix title: add breadcrumb nav component ?
+	const title = 'Test' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
 	let revealContext = $page.data.context || DEFAULT_REVEAL_STATE
@@ -49,10 +60,7 @@
 	})
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={`${title} documentation`} />
-</svelte:head>
+<Head {title} page="Test" description="UI Library Test Page" />
 
 <header class={headerClass}>
 	<h1 class="l:main:40 nowrap maki lg">{title}</h1>
