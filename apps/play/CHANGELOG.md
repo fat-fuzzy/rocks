@@ -1,5 +1,11 @@
 # @fat-fuzzy/play
 
+## 0.1.26
+
+### Patch Changes
+
+- b3ff15d1: [ui+apps] Player component, Docs
+
 ## 0.1.25
 
 ### Patch Changes
