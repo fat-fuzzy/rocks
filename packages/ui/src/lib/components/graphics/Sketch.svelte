@@ -3,7 +3,7 @@
 	import {afterUpdate} from 'svelte'
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
-	import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
+	import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
 
 	export let id = 'sketch'
 	export let scene: Scene

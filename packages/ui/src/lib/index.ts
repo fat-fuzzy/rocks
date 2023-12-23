@@ -37,16 +37,16 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 /**
  * Compositions - Base
  */
-import ButtonMenu from '$lib/components/compositions/menus/ButtonMenu.svelte'
-import ToggleMenu from '$lib/components/compositions/menus/ToggleMenu.svelte'
-import RevealMenu from '$lib/components/compositions/menus/RevealMenu.svelte'
+import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
+import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
+import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 
-import LogIn from '$lib/components/compositions/forms/LogIn.svelte'
+import LogIn from '$lib/components/recipes/forms/LogIn.svelte'
 
-import Nav from '$lib/components/compositions/navs/Nav.svelte'
-import RevealNav from '$lib/components/compositions/navs/RevealNav.svelte'
+import Nav from '$lib/components/recipes/navs/Nav.svelte'
+import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
-import Header from '$lib/components/compositions/headers/Header.svelte'
+import Header from '$lib/components/recipes/headers/Header.svelte'
 
 /**
  * Compositions - Graphics
@@ -156,7 +156,7 @@ const layouts = {
 	Sidebar,
 }
 
-const compositions = {
+const recipes = {
 	ButtonMenu,
 	ToggleMenu,
 	RevealMenu,
@@ -189,16 +189,4 @@ const testsApi = {
 	Test,
 }
 
-export {
-	headless,
-	tokens,
-	blocks,
-	layouts,
-	compositions,
-	graphics,
-	api,
-	utils,
-	forms,
-	stores,
-	constants,
-}
+export {headless, tokens, blocks, layouts, recipes, graphics, api, utils, forms, stores, constants}

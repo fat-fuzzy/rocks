@@ -1,17 +1,7 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {
-		tokens,
-		blocks,
-		layouts,
-		compositions,
-		graphics,
-		api,
-		stores,
-		constants,
-		headless,
-	} from '$lib'
+	import {tokens, blocks, layouts, recipes, graphics, api, stores, constants, headless} from '$lib'
 
 	const {Head} = headless
 	const {Collection, Api} = api
@@ -28,7 +18,7 @@
 		{category: 'tokens', items: tokens},
 		{category: 'blocks', items: blocks},
 		{category: 'layouts', items: layouts},
-		{category: 'compositions', items: compositions},
+		{category: 'recipes', items: recipes},
 		{category: 'graphics', items: graphics},
 	]
 

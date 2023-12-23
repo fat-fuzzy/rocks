@@ -8,7 +8,7 @@
 		tokens,
 		blocks,
 		layouts,
-		compositions,
+		recipes,
 		graphics,
 		api,
 		stores,
@@ -18,7 +18,7 @@
 	const {Head} = headless
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
-	const {ToggleMenu} = compositions
+	const {ToggleMenu} = recipes
 	const actionPath = '/ui'
 	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
 
@@ -54,8 +54,8 @@
 				return blocks
 			case 'layouts':
 				return layouts
-			case 'compositions':
-				return compositions
+			case 'recipes':
+				return recipes
 			case 'graphics':
 				return graphics
 			default:

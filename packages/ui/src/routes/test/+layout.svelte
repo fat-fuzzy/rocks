@@ -6,11 +6,11 @@
 	import * as settingsStore from '$stores/settings'
 	import * as stores from '$stores/ui'
 
-	import {tokens, blocks, layouts, compositions, graphics, constants} from '$lib'
+	import {tokens, blocks, layouts, recipes, graphics, constants} from '$lib'
 
 	export let data: LayoutData
 
-	const {RevealNav} = compositions
+	const {RevealNav} = recipes
 	let path = $page.url.pathname
 
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE, DEFAULT_TABS} = constants
@@ -25,7 +25,7 @@
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
-	const compositionNames = Object.keys(compositions).sort(sortAsc)
+	const recipeNames = Object.keys(recipes).sort(sortAsc)
 	const graphicsNames = Object.keys(graphics).sort(sortAsc)
 	let title = 'Fat Fuzzy Test' // TODO : Fix title in children components: add breadcrumb nav component ?
 
@@ -68,9 +68,9 @@
 					items: layoutNames.map((c) => ({slug: c, title: c})),
 				},
 				{
-					slug: 'compositions',
-					title: 'Compositions',
-					items: compositionNames.map((c) => ({slug: c, title: c})),
+					slug: 'recipes',
+					title: 'Recipes',
+					items: recipeNames.map((c) => ({slug: c, title: c})),
 				},
 				{
 					slug: 'graphics',

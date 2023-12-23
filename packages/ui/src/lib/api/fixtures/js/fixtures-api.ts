@@ -2,14 +2,14 @@ import buttonFixtures from './blocks'
 import tokenFixtures from './tokens'
 import graphicsFixtures from './graphics'
 import layoutsFixtures from './layouts'
-import compositionFixtures from './compositions'
+import recipesFixtures from './recipes'
 
 export const COMPONENT_FIXTURES: any = {
 	tokens: tokenFixtures,
 	blocks: buttonFixtures,
 	layouts: layoutsFixtures,
 	graphics: graphicsFixtures,
-	compositions: compositionFixtures,
+	recipes: recipesFixtures,
 }
 
 export function getProps({category, component}: {category: string; component: string}) {

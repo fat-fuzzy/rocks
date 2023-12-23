@@ -4,22 +4,12 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {
-		stores,
-		api,
-		tokens,
-		blocks,
-		layouts,
-		compositions,
-		graphics,
-		constants,
-		headless,
-	} from '$lib'
+	import {stores, api, tokens, blocks, layouts, recipes, graphics, constants, headless} from '$lib'
 
 	const {Head} = headless
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
-	const {ToggleMenu} = compositions
+	const {ToggleMenu} = recipes
 	const actionPath = '/test'
 	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
 
@@ -27,7 +17,7 @@
 		tokens: tokens,
 		blocks: blocks,
 		layouts: layouts,
-		compositions: compositions,
+		recipes: recipes,
 		graphics: graphics,
 	}
 

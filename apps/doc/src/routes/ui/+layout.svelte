@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, compositions, graphics, stores, constants} from '@fat-fuzzy/ui'
-	const {RevealNav} = compositions
+	import {tokens, blocks, layouts, recipes, graphics, stores, constants} from '@fat-fuzzy/ui'
+	const {RevealNav} = recipes
 	let path = $page.url.pathname
 
 	// TODO: move to utils / clean
@@ -13,7 +13,7 @@
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
-	const compositionNames = Object.keys(compositions).sort(sortAsc)
+	const recipeNames = Object.keys(recipes).sort(sortAsc)
 	const graphicsNames = Object.keys(graphics).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
@@ -59,9 +59,9 @@
 					items: layoutNames.map((c) => ({slug: c, title: c})),
 				},
 				{
-					slug: 'compositions',
-					title: 'Compositions',
-					items: compositionNames.map((c) => ({slug: c, title: c})),
+					slug: 'recipes',
+					title: 'Recipes',
+					items: recipeNames.map((c) => ({slug: c, title: c})),
 				},
 				{
 					slug: 'graphics',
