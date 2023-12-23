@@ -106,18 +106,12 @@
 	<div class="l:main">
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
 			<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
-				<div class={`feedback emoji:info ${size} l:text`}>
-					<p>
-						This is a demo of an interactive canvas component built with Svelte, using the example
-						taken from the <a
-							href="https://webglfundamentals.org/"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							webglfundamentals
-						</a> tutorials.
+				<slot name="fallback">
+					<p class={`feedback emoji:info ${size} l:text`}>
+						This is a demo of an interactive canvas component used to display and interact with
+						WebGL animations
 					</p>
-				</div>
+				</slot>
 			</canvas>
 		</div>
 	</div>
@@ -130,6 +124,7 @@
 				{variant}
 				{color}
 				{size}
+				mode="radio"
 				on:click={handleToggle}
 			/>
 		{/if}
