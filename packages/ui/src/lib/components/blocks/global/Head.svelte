@@ -1,10 +1,11 @@
 <script lang="ts">
 	export let page = ''
 	export let prefix = 'Fat Fuzzy'
-	export let title = 'Page title'
+	export let title = ''
 	export let description = 'Page description'
 
-	$: fullTitle = page ? `${prefix} ${page} | ${title}` : `${prefix} | ${title}`
+	$: fullPrefix = page ? `${prefix} ${page}` : `${prefix}`
+	$: fullTitle = title ? `${fullPrefix} | ${title}` : `${fullPrefix}`
 </script>
 
 <svelte:head>
