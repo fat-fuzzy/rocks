@@ -144,8 +144,8 @@ const APP_SETTINGS = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
+				active: {id: 'night', text: 'night', value: 'night', asset: 'emoji:night'},
+				inactive: {id: 'day', text: 'day', value: 'day', asset: 'emoji:day'},
 			},
 		},
 		{
@@ -157,8 +157,8 @@ const APP_SETTINGS = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-				inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
+				active: {id: 'contrast', text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
+				inactive: {id: 'blend', text: 'blend', value: 'blend', asset: 'emoji:blend'},
 			},
 		},
 	],

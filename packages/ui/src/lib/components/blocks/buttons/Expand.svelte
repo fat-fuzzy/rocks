@@ -26,6 +26,7 @@
 	export let align = ''
 	export let breakpoint = ''
 	export let color = ''
+	export let container = ''
 	export let layout = 'flex'
 	export let size = ''
 	export let shape = ''
@@ -76,10 +77,12 @@
 
 	$: expanded = $state.value === 'active'
 	$: currentState = states[$state.value.toString()]
+	$: containerClasses =
+		container === 'side' || container === 'main' ? container : `l:${container}:${size}`
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
-	$: buttonClasses = `expand:${$state.value} ${layoutClasses} ${color} ${currentState.asset} align:${align} ${size} font:${size}`
+	$: buttonClasses = `expand:${$state.value} ${layoutClasses} ${containerClasses} ${color} ${currentState.asset} align:${align} ${size} font:${size}`
 </script>
 
 <button

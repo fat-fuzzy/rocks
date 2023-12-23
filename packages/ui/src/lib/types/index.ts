@@ -5,7 +5,20 @@ export type Settings = {
 }
 
 export type ButtonState = {
-	[key: string]: {text: string; value: string; asset: string; onClick: () => void}
+	[key: string]: {
+		text: string
+		value: string
+		asset: string
+		onClick?: (event: CustomEvent<any>) => void
+	}
+}
+
+export type SwitchState = {
+	id: string
+	value: string
+	pressed: boolean
+	name: string
+	send: (event: string) => unknown
 }
 
 export type Tab = {
