@@ -58,4 +58,5 @@ By default, a `<button>` without a `type` attribute will be considered a `submit
 ## Resources
 
 - [MDN - The Form Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
+- [Inclusive Components](https://inclusive-components.design/)
 - [Svelte Form Actions](https://kit.svelte.dev/docs/form-actions)

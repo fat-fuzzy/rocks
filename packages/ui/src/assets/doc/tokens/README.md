@@ -14,4 +14,12 @@ Design Tokens are `[key, value]` pairs that define design choices such as `Color
 
 `Tokens` provide the base values used to build `Blocks`, `Layouts`, and `Compositions`.
 
-There are more tokens defined in the [CSS library](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui/src/lib/styles)
+All the tokens that are currently defined can be found in the [SCSS library's tokens folder](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui/src/lib/styles/scss/tokens)
+
+<p class="feedback bare emoji:default">The generation of design tokens in this library is still a work in progress. More detailed documentation coming soon! </p>
+
+## Resources
+
+- [W3C Design Tokens Community Group](https://www.w3.org/groups/cg/design-tokens/)
+- [Open Props](https://open-props.style/) : A design tokens library
+- [Style Dictionary](https://amzn.github.io/style-dictionary) : A tool to generate design tokens from json files
