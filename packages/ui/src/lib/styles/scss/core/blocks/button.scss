@@ -14,6 +14,6 @@ button {
 	border: var(--border-width) solid var(--current-button-border);
 }
 
-button:hover {
+button:not([disabled]):hover {
 	box-shadow: var(--current-shadow);
 }

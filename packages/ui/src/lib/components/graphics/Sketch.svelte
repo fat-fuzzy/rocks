@@ -3,6 +3,7 @@
 	import {afterUpdate} from 'svelte'
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
+	import Player from '$lib/components/graphics/Player.svelte'
 	import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
 
 	export let id = 'sketch'
@@ -22,12 +23,6 @@
 	let programInfo
 
 	let frame: number
-
-	export let items: any = [
-		{id: 'play', value: 'play', text: 'Play', asset: 'emoji:play'},
-		{id: 'pause', value: 'pause', text: 'Pause', asset: 'emoji:pause'},
-		{id: 'clear', value: 'clear', text: 'Clear', asset: 'emoji:clear'},
-	]
 
 	$: state = 'clear'
 	$: showDetails = geometry !== undefined && (state === 'play' || state === 'pause')
@@ -117,16 +112,7 @@
 	</div>
 	<aside class="l:side">
 		{#if canvas}
-			<ToggleMenu
-				id="togggle"
-				layout="switcher"
-				{items}
-				{variant}
-				{color}
-				{size}
-				mode="radio"
-				on:click={handleToggle}
-			/>
+			<Player on:click={handleToggle} {color} {size} />
 		{/if}
 		{#if showDetails}
 			<Geometry

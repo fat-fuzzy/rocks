@@ -24,6 +24,7 @@
 	export let align = ''
 	export let asset = '' // emoji:value or svg:value
 	export let breakpoint = ''
+	export let container = ''
 	export let color = ''
 	export let layout = 'flex'
 	export let size = ''
@@ -76,10 +77,12 @@
 	})
 
 	$: pressed = $state.value === 'active'
+	$: containerClasses =
+		container === 'side' || container === 'main' ? `l:${container}` : `l:${container}:${size}`
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
-	$: buttonClasses = `toggle:${$state.value} ${layoutClasses} ${color} ${asset} ${align} ${size} font:${size}`
+	$: buttonClasses = `toggle:${$state.value} ${layoutClasses} ${containerClasses} ${color} ${asset} ${align} ${size} font:${size}`
 </script>
 
 <button

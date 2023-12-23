@@ -13,7 +13,6 @@
 	export let name = 'switch'
 	export let title = ''
 	export let initial = false
-	export let value = ''
 	export let disabled = false
 	export let type: ButtonType = 'submit'
 	export let formaction: string | undefined = undefined
@@ -24,6 +23,7 @@
 	 */
 	export let align = ''
 	export let breakpoint = ''
+	export let container = ''
 	export let color = ''
 	export let layout = 'flex'
 	export let size = ''
@@ -54,7 +54,7 @@
 		send('SWITCH')
 		const payload = {
 			id: payloadId,
-			value,
+			value: currentState.value,
 			pressed: $state.value === 'active',
 			send,
 		}
@@ -65,7 +65,7 @@
 		if (initial) {
 			const payload = {
 				id: payloadId,
-				value,
+				value: currentState.value,
 				pressed: $state.value === 'active',
 				send,
 			}
@@ -75,10 +75,12 @@
 
 	$: pressed = $state.value === 'active'
 	$: currentState = states[$state.value.toString()]
+	$: containerClasses =
+		container === 'side' || container === 'main' ? container : `l:${container}:${size}`
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
-	$: buttonClasses = `switch:${$state.value} ${layoutClasses} ${color} ${align} ${size} font:${size} ${currentState.asset}`
+	$: buttonClasses = `switch:${$state.value} ${layoutClasses} ${containerClasses} ${color} ${align} ${size} font:${size} ${currentState.asset}`
 </script>
 
 <button

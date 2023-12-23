@@ -332,23 +332,23 @@ $current_cssvars: ();
 		}
 
 		&.bg\:blend {
-			button:hover {
+			button:not([disabled]):not([disabled]):hover {
 				--current-button-bg: var(#{$prefix}-day-blend-button-neutral-hover-bg);
 			}
 
-			[class^='toggle'][aria-pressed]:hover,
-			[class^='toggle'][aria-pressed='true']:hover {
+			[class^='toggle'][aria-pressed]:not([disabled]):hover,
+			[class^='toggle'][aria-pressed='true']:not([disabled]):hover {
 				--current-toggle-bg: var(#{$prefix}-day-blend-toggle-neutral-hover-bg);
 			}
 		}
 
 		&.bg\:contrast {
-			button:hover {
+			button:not([disabled]):hover {
 				--current-button-bg: var(#{$prefix}-day-contrast-button-neutral-hover-bg);
 			}
 
-			[class^='toggle'][aria-pressed]:hover,
-			[class^='toggle'][aria-pressed='true']:hover {
+			[class^='toggle'][aria-pressed]:not([disabled]):hover,
+			[class^='toggle'][aria-pressed='true']:not([disabled]):hover {
 				--current-toggle-bg: var(#{$prefix}-day-contrast-toggle-neutral-hover-bg);
 			}
 		}

@@ -22,6 +22,7 @@
 	export let breakpoint = ''
 	export let color = ''
 	export let layout = 'switcher'
+	export let container = ''
 	export let size = ''
 	export let shape = ''
 	export let variant = 'fill'
@@ -36,10 +37,12 @@
 		dispatch('click', payload)
 	}
 
+	$: containerClasses =
+		container === 'side' || container === 'main' ? container : `l:${container}:${size}`
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
-	$: buttonClasses = `${layoutClasses} ${color} ${asset} ${align} ${size} font:${size}`
+	$: buttonClasses = `${layoutClasses} ${containerClasses} ${color} ${asset} ${align} ${size} font:${size}`
 </script>
 
 <button

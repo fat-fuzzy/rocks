@@ -5,7 +5,12 @@ export type Settings = {
 }
 
 export type ButtonState = {
-	[key: string]: {text: string; value: string; asset: string}
+	[key: string]: {
+		text: string
+		value: string
+		asset: string
+		onClick?: (event: CustomEvent<any>) => void
+	}
 }
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}

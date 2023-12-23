@@ -14,7 +14,7 @@ button {
 	border: var(--border-width) solid hsl(var(--color-shadow-light));
 	background-color: var(--current-polar);
 }
-button:hover {
+button:not([disabled]):hover {
 	cursor: pointer;
 	color: var(--current-color);
 	background-color: inherit;
