@@ -18,3 +18,11 @@ menu > li > * {
 menu.end {
 	margin-inline-end: calc(2 * var(--gap));
 }
+
+menu.mode\:radio [disabled] {
+	cursor: default;
+}
+
+.menu\:settings [class^='switch'][aria-pressed].outline {
+	background-color: inherit;
+}

@@ -132,7 +132,7 @@
 					update({reset: false})
 				}
 			}}
-			class={formClasses}
+			class={`menu:settings ${formClasses}`}
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
 				<Switch

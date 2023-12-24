@@ -78,8 +78,8 @@
 	$: containerClasses =
 		container === 'side' || container === 'main' ? container : `l:${container}:${size}`
 	$: layoutClasses = shape
-		? `${shape} ${variant}`
-		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
+		? `${shape} ${currentState.variant || variant}`
+		: `l:${layout}:${size} bp:${breakpoint}  ${currentState.variant || variant}`
 	$: buttonClasses = `switch:${$state.value} ${layoutClasses} ${containerClasses} ${color} ${align} ${size} font:${size} ${currentState.asset}`
 </script>
 

@@ -68,8 +68,9 @@
 				value: 'pause',
 				text: 'Pause',
 				asset: 'emoji:pause',
+				variant: 'outline',
 			},
-			inactive: {id: 'play', value: 'play', text: 'Play', asset: 'emoji:play'},
+			inactive: {id: 'play', value: 'play', text: 'Play', asset: 'emoji:play', variant: 'fill'},
 		},
 	}
 	let playerState: SwitchState = items.switch['inactive']
@@ -80,7 +81,6 @@
 	<Switch
 		id="switch-play-pause"
 		states={items.switch}
-		{variant}
 		{color}
 		{size}
 		container="main:50 flex-grow"
