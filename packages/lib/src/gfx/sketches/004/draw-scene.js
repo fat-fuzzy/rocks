@@ -2,8 +2,6 @@ function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
 	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
-	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
-	gl.clearColor(0.0, 0.0, 0.0, 0.65) // Clear to black, fully opaque
 	gl.clearDepth(1.0) // clear everything (?)
 	gl.enable(gl.DEPTH_TEST) // enable depth testing
 	gl.depthFunc(gl.LEQUAL) // near things obscure far things
