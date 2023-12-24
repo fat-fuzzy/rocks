@@ -132,15 +132,13 @@ type StylesSetOptions = {
 
 type StyleInputGroupOptions = StylesSetOptions & {
 	input: string
-	items: Array<StyleInputOptions>
 	value: string
+	items: Array<StyleInputOptions>
 }
 
 type StyleFamilyOptions = StylesSetOptions & {
 	title: string
 	items: Array<StyleInputGroup>
-	container?: string
-	size?: string
 }
 
 /**

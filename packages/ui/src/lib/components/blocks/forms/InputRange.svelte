@@ -82,7 +82,7 @@
 <label for={id} class={classes}>
 	<span class={`font:${size}`}>
 		{label}:
-		{valueLabel}
+		{!Number.isNaN(value) ? value : min + max / 2}
 	</span>
 	<input
 		{id}
