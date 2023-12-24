@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.39
+
+### Patch Changes
+
+- 39966947: [ui+gfx] Polish graphics UI
+
 ## 0.1.38
 
 ### Patch Changes
