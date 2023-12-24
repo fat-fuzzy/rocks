@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let depth = 3
 
-	const statuses = ['info', 'success', 'warning', 'error']
+	const status = ['info', 'success', 'warning', 'error']
 	// const variants = ['darker', 'dark', 'light', 'lighter']
 	const colors = ['primary', 'accent', 'highlight']
 	const variants = ['light', 'lighter']
@@ -31,7 +31,7 @@
 
 	<section class="card:xxl l:stack:md">
 		<svelte:element this={`h${depth + 1}`} class="font:lg">Feedback status colors</svelte:element>
-		{#each statuses as color}
+		{#each status as color}
 			<article>
 				<svelte:element this={`h${depth + 2}`} class="font:md">{color}</svelte:element>
 				<div class="l:grid:xxs">

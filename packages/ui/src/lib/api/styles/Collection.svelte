@@ -7,7 +7,7 @@
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {getProps} from '$lib/api/fixtures/js'
+	import {getFixtures} from '$lib/api/fixtures/js'
 	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
 
@@ -20,7 +20,8 @@
 	export let redirect: string | undefined
 
 	export let title = ''
-	export let content: {html: string; meta: Meta} | undefined
+
+	export let markdowns: {[key: string]: {html: string; meta: Meta}[]} | undefined
 	export let depth = 0
 	export let path = $page.url.pathname
 	export let layout = 'grid'
@@ -30,9 +31,9 @@
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'shared'
 	export let stylesApi: StylesApi = initStyles()
-	export let props: any
 
-	let background = props?.background || ''
+	let background = ''
+	let content = markdowns?.categories.find(({meta}) => meta.slug === category)
 	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [
@@ -58,7 +59,7 @@
 		<section slot="main" class={layoutClass}>
 			{#each componentNames as name}
 				{@const component = components[name]}
-				{@const props = getProps({category, component: name})}
+				{@const props = getFixtures({category, component: name})}
 				<Element
 					title={name}
 					depth={Number(depth) + 1}
@@ -112,7 +113,7 @@
 				<div class={layoutClass}>
 					{#each componentNames as name}
 						{@const component = components[name]}
-						{@const props = getProps({category, component: name})}
+						{@const props = getFixtures({category, component: name})}
 						<Element
 							title={name}
 							depth={Number(depth) + 2}

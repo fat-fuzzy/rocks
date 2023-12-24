@@ -1,13 +1,15 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
-	import type {StylesApi} from '.'
+	import type {StylesApi} from '$lib/api/styles'
+	import type {Meta} from '$lib/api/props/types'
 
 	import {onDestroy} from 'svelte'
 
 	import * as ui from '$stores/ui'
 	import {initStyles} from '$lib/api/styles'
-	import {getProps} from '$lib/api/fixtures/js'
+	import {getFixtures} from '$lib/api/fixtures/js'
+	// import {getElementProps} from '$lib/api/props/'
 
 	import Api from './Api.svelte'
 	import Token from './Token.svelte'
@@ -26,8 +28,9 @@
 	export let component: ComponentType
 	export let category = ''
 	export let color = 'primary:light'
+	// export let meta: Meta | undefined
 	export let page = ''
-	export let props: any = getProps({category, component: title}) || {}
+	export let props: any = getFixtures({category, component: title}) || {}
 	props.page = page
 
 	export let stylesApi: StylesApi = initStyles()
@@ -92,12 +95,11 @@
 </script>
 
 {#if isPage}
-	{@const props = getProps({category, component: title})}
 	<article class="l:sidebar:xs">
 		<section class={`l:main card:xl inset ${brightness} bg:${contrast} `}>
 			<div class={containerClasses}>
-				{#if props?.statuses}
-					{@const currentProps = props.statuses.find((p) => p.case === status) || {}}
+				{#if props?.status}
+					{@const currentProps = props.status.find((p) => p.case === status) || {}}
 					<svelte:component
 						this={ApiElement[category]}
 						{isPage}
@@ -172,7 +174,7 @@
 		</section>
 	</article>
 {:else}
-	{@const props = getProps({category, component: title})}
+	{@const props = getFixtures({category, component: title})}
 	<article
 		id={`card-${title}`}
 		class={`box ${brightness} bg:${contrast} l:stack ui:${title.toLowerCase()}`}
@@ -188,8 +190,8 @@
 			</a>
 		</header>
 		<div class="content">
-			{#if props?.statuses}
-				{@const currentProps = props.statuses.find((p) => p.case === status) || {}}
+			{#if props?.status}
+				{@const currentProps = props.status.find((p) => p.case === status) || {}}
 				<svelte:component
 					this={ApiElement[category]}
 					{isPage}

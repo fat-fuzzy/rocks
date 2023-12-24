@@ -157,7 +157,7 @@
 		{components}
 		{path}
 		{category}
-		{content}
+		{markdowns}
 		{stylesApi}
 		{actionPath}
 		redirect={$page.url.pathname}

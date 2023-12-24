@@ -88,7 +88,7 @@
 				components={items}
 				{category}
 				{stylesApi}
-				content={markdowns.categories.find(({meta}) => meta.slug === category)}
+				{markdowns}
 				{actionPath}
 				redirect={$page.url.pathname}
 			/>

@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/experimental-ct-svelte'
 import format from '../../../dist/utils/format'
-import {getProps} from '../../../dist/api/fixtures/js/fixtures-api'
+import {getFixtures} from '../../../dist/api/fixtures/js/'
 import ButtonMenu from '../../../dist/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '../../../dist/components/recipes/menus/ToggleMenu.svelte'
 import RevealMenu from '../../../dist/components/recipes/menus/RevealMenu.svelte'
@@ -11,7 +11,7 @@ const category = 'recipes'
 
 test('ButtonMenu', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'ButtonMenu'})
+	const props = getFixtures({category, component: 'ButtonMenu'})
 	const component = await mount(ButtonMenu, {props})
 
 	// 2. Test display
@@ -25,7 +25,7 @@ test('ButtonMenu', async ({mount}) => {
 
 test('ToggleMenu', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'ToggleMenu'})
+	const props = getFixtures({category, component: 'ToggleMenu'})
 	const component = await mount(ToggleMenu, {props})
 
 	// 2. Test display
@@ -38,7 +38,7 @@ test('ToggleMenu', async ({mount}) => {
 
 test('RevealMenu', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'RevealMenu'})
+	const props = getFixtures({category, component: 'RevealMenu'})
 	const component = await mount(RevealMenu, {props})
 
 	// 2. Test display

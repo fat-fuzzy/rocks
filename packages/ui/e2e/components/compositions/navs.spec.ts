@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/experimental-ct-svelte'
 import format from '../../../dist/utils/format'
-import {getProps} from '../../../dist/api/fixtures/js/fixtures-api'
+import {getFixtures} from '../../../dist/api/fixtures/js/'
 import Nav from '../../../dist/components/recipes/navs/Nav.svelte'
 import LinkList from '../../../dist/components/recipes/navs/LinkList.svelte'
 import DetailsNav from '../../../dist/components/recipes/navs/DetailsNav.svelte'
@@ -14,7 +14,7 @@ const category = 'recipes'
 
 test('Nav', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'Nav'})
+	const props = getFixtures({category, component: 'Nav'})
 	const component = await mount(Nav, {props})
 
 	// 2. Test display
@@ -28,7 +28,7 @@ test('Nav', async ({mount}) => {
 
 test('LinkList', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'LinkList'})
+	const props = getFixtures({category, component: 'LinkList'})
 	const component = await mount(LinkList, {props})
 
 	// 2. Test display
@@ -41,7 +41,7 @@ test('LinkList', async ({mount}) => {
 
 test('DetailsNav', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'DetailsNav'})
+	const props = getFixtures({category, component: 'DetailsNav'})
 	const component = await mount(DetailsNav, {props})
 
 	// 2. Test display
@@ -54,7 +54,7 @@ test('DetailsNav', async ({mount}) => {
 
 test('RevealNav', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'RevealNav'})
+	const props = getFixtures({category, component: 'RevealNav'})
 	const component = await mount(RevealNav, {props})
 
 	// 2. Test display

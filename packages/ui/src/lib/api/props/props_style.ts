@@ -491,5 +491,4 @@ function getFamily(name: string, category: string, props: string[]) {
 		exclude: FAMILIES[slug].exclude,
 	})
 }
-
-export {PROPS, getInputGroup, getFamily}
+export {PROPS, FAMILIES, getInputGroup, getFamily}
