@@ -7,8 +7,8 @@
 
 <Head page="About" description="About this website" />
 
-<header class="l:center col:center card:xxl max:w:full polar">
-	<h1>About Fat Fuzzy</h1>
+<header class="l:center col:center max:w:full bg:polar">
+	<h1 class="card:xl">About Fat Fuzzy</h1>
 </header>
 
 <div class="l:center:xxl col:center">
