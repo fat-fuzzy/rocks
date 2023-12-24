@@ -1,5 +1,11 @@
+[class*='state:'].canvas {
+	--current-border-color: var(--current-primary-light, var(--color-neutral));
+	border: var(--border-width) dotted var(--current-border-color);
+}
+
 .state\:play {
 	position: relative;
+	background-color: var(--current-polar);
 }
 
 .state\:pause {
@@ -12,6 +18,7 @@
 }
 
 .state\:clear {
+	--current-border-color: var(--current-primary, var(--color-neutral));
 	display: flex;
 	align-items: center;
 	justify-content: center;

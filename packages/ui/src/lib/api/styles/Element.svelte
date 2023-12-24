@@ -40,7 +40,7 @@
 		graphics: Graphics,
 	}
 
-	let background = ''
+	let contrast = ''
 	let container = ''
 	let size = '' // Container size
 	let status = ''
@@ -76,8 +76,7 @@
 	// App settings (user controlled)
 	//== App settings (user controlled)
 	$: brightness = settings.app.brightness
-	$: background = settings.app.contrast || background
-	$: props.background = background
+	$: contrast = settings.app.contrast || contrast
 	// Container options
 	// - [container + size] work together
 	$: container = styles.shared?.container.container ?? container
@@ -95,7 +94,7 @@
 {#if isPage}
 	{@const props = getProps({category, component: title})}
 	<article class="l:sidebar:xs">
-		<section class={`l:main card:xl inset ${brightness} bg:${background} `}>
+		<section class={`l:main card:xl inset ${brightness} bg:${contrast} `}>
 			<div class={containerClasses}>
 				{#if props?.statuses}
 					{@const currentProps = props.statuses.find((p) => p.case === status) || {}}
@@ -176,7 +175,7 @@
 	{@const props = getProps({category, component: title})}
 	<article
 		id={`card-${title}`}
-		class={`box ${brightness} bg:${background} l:stack ui:${title.toLowerCase()}`}
+		class={`box ${brightness} bg:${contrast} l:stack ui:${title.toLowerCase()}`}
 	>
 		<header>
 			<a
