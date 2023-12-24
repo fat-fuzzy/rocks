@@ -184,6 +184,7 @@
 		{path}
 		{category}
 		{stylesApi}
+		meta={content.meta}
 		component={Component}
 		{actionPath}
 		redirect={$page.url.pathname}

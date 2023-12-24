@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/experimental-ct-svelte'
-import {getProps} from '../../../dist/api/fixtures/js/fixtures-api'
+import {getFixtures} from '../../../dist/api/fixtures/js/'
 
 import Feedback from '../../../dist/components/blocks/global/Feedback.svelte'
 
@@ -9,7 +9,7 @@ const category = 'blocks'
 
 test('Feedback', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'Feedback'})
+	const props = getFixtures({category, component: 'Feedback'})
 	const component = await mount(Feedback, {props})
 
 	// 2. Test display
