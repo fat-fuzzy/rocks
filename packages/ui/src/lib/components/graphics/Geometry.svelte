@@ -14,6 +14,7 @@
 	export let canvasHeight: number
 	export let geometry: GeometryProps
 	export let color = ''
+	export let background = ''
 	export let formaction = 'updateGeometry'
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
@@ -60,14 +61,14 @@
 		height,
 	}
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-
+	$: backgroundClass = background ? `bg:${background}` : ''
 	onMount(() => {
 		update()
 	})
 </script>
 
 <form
-	class="l:switcher:xxs xs card:lg bg:polar"
+	class={`l:switcher:xxs xs card:lg ${backgroundClass}`}
 	name="geometry-update"
 	{method}
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}

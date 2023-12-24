@@ -13,11 +13,11 @@
 	export let color = ''
 	export let size = ''
 	export let variant = ''
+	export let background = ''
 
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
 	let height: number
-	let angle = 45
 	let geometry: GeometryProps
 	let programInfo
 
@@ -25,32 +25,20 @@
 
 	$: state = 'clear'
 	$: showDetails = geometry !== undefined && (state === 'play' || state === 'pause')
+	$: backgroundClass = background
+		? `l:frame:${dimensions} bg:${background}`
+		: `l:frame:${dimensions}`
 	$: frameClasses = canvas
-		? `l:frame:${dimensions} ${layer} state:${state} emoji:${state}`
-		: `l:frame:${dimensions} ${layer} card:xl`
-
-	function degToRad(degrees: number) {
-		return degrees * (Math.PI / 180)
-	}
+		? `${backgroundClass} ${layer} state:${state} emoji:${state}`
+		: `${backgroundClass} ${layer} card:xl `
 
 	function init() {
 		if (canvas) {
 			programInfo = scene.main(canvas)
 			if (state === 'clear') {
-				initGeometry()
+				geometry = programInfo.geometry
 			}
 			scene.update(geometry)
-		}
-	}
-
-	function initGeometry() {
-		if (canvas) {
-			programInfo = scene.main(canvas)
-			geometry = {
-				...programInfo.geometry,
-				translation: [width / 2, height / 2],
-				rotation: [Math.cos(degToRad(angle)), Math.sin(degToRad(angle))],
-			}
 		}
 	}
 
@@ -71,7 +59,8 @@
 	const pause = () => cancelAnimationFrame(frame)
 
 	function update(event: CustomEvent) {
-		scene.update(event.detail.value)
+		geometry = event.detail.value
+		scene.update(geometry)
 	}
 
 	const handleToggle = (event: CustomEvent) => {
@@ -117,6 +106,7 @@
 			<Geometry
 				on:update={update}
 				{geometry}
+				{background}
 				canvasWidth={width}
 				canvasHeight={height}
 				{color}

@@ -15,10 +15,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	// Hide the canvas without changing its dimensions
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 .state\:clear canvas {
-	width: 0;
+	margin-right: -100%; // Hide the canvas without changing its dimensions
 }
 
 .state\:play:before,

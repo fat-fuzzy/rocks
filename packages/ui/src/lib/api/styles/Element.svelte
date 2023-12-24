@@ -76,7 +76,8 @@
 	// App settings (user controlled)
 	//== App settings (user controlled)
 	$: brightness = settings.app.brightness
-	$: background = settings.app.contrast
+	$: background = settings.app.contrast || background
+	$: props.background = background
 	// Container options
 	// - [container + size] work together
 	$: container = styles.shared?.container.container ?? container
