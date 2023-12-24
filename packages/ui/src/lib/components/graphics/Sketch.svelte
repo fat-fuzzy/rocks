@@ -99,7 +99,7 @@
 			</canvas>
 		</div>
 		{#if canvas && !playerAside}
-			<Player on:click={handleToggle} {color} {size} {variant} />
+			<Player id="sketch.player" on:click={handleToggle} {color} {size} {variant} />
 		{/if}
 	</div>
 	<aside class="l:side">

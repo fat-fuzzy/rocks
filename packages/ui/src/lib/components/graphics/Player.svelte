@@ -79,7 +79,7 @@
 
 <menu {id} class={`l:switcher:sm`}>
 	<Switch
-		id="switch-play-pause"
+		id={`${id}-switch-play-pause`}
 		states={items.switch}
 		{color}
 		{size}
@@ -87,7 +87,7 @@
 		on:click={onClick}
 	/>
 	<Button
-		id="button-clear"
+		id={`${id}-button-clear`}
 		text="Clear"
 		asset="emoji:clear"
 		{variant}
