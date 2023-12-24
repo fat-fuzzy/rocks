@@ -1,7 +1,7 @@
 ---
 title: Typography
 slug: Typography
-family: ['tokens']
+category: ['tokens']
 # props_state: []
 # props_style: []
 context: ['app.settings']

@@ -1,4 +1,4 @@
-import {StyleInputGroup, StyleFamily} from '../types'
+import {StyleInputGroup, StyleFamily} from '../styles/types'
 
 const brightness = {
 	initial: 'day',
@@ -388,21 +388,21 @@ const settingsFamily = {
 	layout: 'flex',
 	size: 'lg',
 	variant: 'card',
-	styleProps: ['Brightness', 'Contrast'],
+	props: ['Brightness', 'Contrast'],
 }
 
 const elementFamily = {
 	layout: 'switcher',
 	size: 'xs',
 	variant: 'card:xl',
-	styleProps: ['Color', 'Variant', 'Size', 'Status', 'Context', 'Emoji'],
+	props: ['Color', 'Variant', 'Size', 'Status', 'Context', 'Emoji'],
 }
 
 const containerFamily = {
 	layout: 'flex grow',
 	size: 'lg',
 	variant: 'card',
-	styleProps: ['Container', 'Size'],
+	props: ['Container', 'Size'],
 	exclude: ['Color', 'Typography', 'Button', 'Expand', 'Switch', 'Toggle', 'RevealAuto'],
 }
 
@@ -411,7 +411,7 @@ const layoutFamily = {
 	container: 'card',
 	size: 'lg',
 	variant: '',
-	styleProps: ['Layout', 'Threshold', 'Breakpoint'],
+	props: ['Layout', 'Threshold', 'Breakpoint'],
 	exclude: [
 		'Color',
 		'Typography',
@@ -428,7 +428,7 @@ const contentFamily = {
 	layout: 'switcher',
 	size: 'md',
 	variant: 'card',
-	styleProps: ['Content', 'Side', 'Main'],
+	props: ['Content', 'Side', 'Main'],
 }
 
 const FAMILIES: {[key: string]: any} = {
@@ -475,7 +475,7 @@ function getInputGroup(name: string, category: string, family: string) {
 	})
 }
 
-function getFamily(name: string, category: string, styleProps: string[]) {
+function getFamily(name: string, category: string, props: string[]) {
 	const slug = name.toLowerCase()
 	return new StyleFamily({
 		name,
@@ -484,7 +484,7 @@ function getFamily(name: string, category: string, styleProps: string[]) {
 		layout: FAMILIES[slug].layout,
 		size: FAMILIES[slug].size,
 		variant: FAMILIES[slug].variant,
-		items: styleProps.map((prop) => {
+		items: props.map((prop) => {
 			return getInputGroup(prop, category, slug)
 		}),
 		include: FAMILIES[slug].include,

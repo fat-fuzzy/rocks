@@ -1,7 +1,7 @@
 ---
 title: Player
 slug: Player
-family: ['graphics']
+category: 'graphics'
 props_state: ['items']
 props_style: ['color', 'size', 'variant']
 context: ['app.settings']

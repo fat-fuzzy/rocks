@@ -1,8 +1,8 @@
 ---
 title: Feedback
 slug: Feedback
-family: ['blocks']
-group: ['global']
+category: 'blocks'
+group: 'global'
 props_state: ['title', 'text', 'status']
 props_style: ['variant', 'context', 'size', 'asset']
 context: ['app.settings', 'shared.container']

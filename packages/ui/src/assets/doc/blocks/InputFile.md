@@ -1,8 +1,8 @@
 ---
 title: InputFile
 slug: InputFile
-family: ['blocks']
-group: ['forms']
+category: 'blocks'
+group: 'forms'
 props_state: ['label', 'value', 'errors']
 props_style: ['color', 'size', 'asset']
 context: ['app.settings', 'shared.container']

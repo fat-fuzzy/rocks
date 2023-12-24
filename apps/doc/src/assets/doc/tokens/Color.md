@@ -1,7 +1,7 @@
 ---
 title: Color
 slug: Color
-family: ['tokens']
+category: ['tokens']
 # props_state: []
 # props_style: []
 context: ['app.settings']

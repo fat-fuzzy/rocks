@@ -1,8 +1,8 @@
 ---
 title: LogIn
 slug: LogIn
-family: ['recipes']
-group: ['forms']
+category: ['recipes']
+group: 'forms'
 props_state: ['action']
 props_style: ['color', 'variant']
 context: ['app.settings', 'shared.container']

@@ -1,7 +1,7 @@
 ---
 title: Layouts
 slug: layouts
-tags: ['layouts']
+category: 'layouts'
 inputs: ['layouts.container', 'layouts.element']
 context: ['app.settings']
 ---

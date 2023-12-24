@@ -1,9 +1,9 @@
 ---
 title: Reveal
 slug: Reveal
-family: ['layouts']
+category: 'layouts'
 # group: ['reveal']
-content_type: ['any']
+content_types: ['any']
 props_style: ['size']
 context: ['app.settings', 'shared.container']
 ---

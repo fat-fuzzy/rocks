@@ -1,8 +1,8 @@
 ---
 title: Switcher
 slug: Switcher
-family: ['layouts']
-content_type: ['items']
+category: 'layouts'
+content_types: ['items']
 props_style: ['size', 'threshold']
 context: ['app.settings', 'shared.container']
 ---

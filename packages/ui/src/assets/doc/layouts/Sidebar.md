@@ -1,8 +1,8 @@
 ---
 title: Sidebar
 slug: Sidebar
-family: ['layouts']
-content_type: ['main', 'side']
+category: 'layouts'
+content_types: ['main', 'side']
 props_style: ['size']
 context: ['app.settings', 'shared.container']
 ---

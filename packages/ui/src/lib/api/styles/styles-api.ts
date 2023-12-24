@@ -8,7 +8,7 @@ import type {
 	StyleTree,
 	StyleCategory,
 } from './types'
-import {getFamily} from './props/props_style'
+import {getFamily} from '$lib/api/props/props_style'
 
 export class StylesApi {
 	tokens: TokenStyles

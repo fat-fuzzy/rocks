@@ -1,7 +1,7 @@
 ---
 title: Fat Fuzzy UI
 slug: ui
-tags: ['ui']
+category: 'app'
 context: ['app.settings']
 ---
 

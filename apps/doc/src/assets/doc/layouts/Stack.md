@@ -1,8 +1,8 @@
 ---
 title: Stack
 slug: Stack
-family: ['layouts']
-content_type: ['items']
+category: 'layouts'
+content_types: ['items']
 props_style: ['size']
 context: ['app.settings']
 ---
