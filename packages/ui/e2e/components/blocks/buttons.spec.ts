@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/experimental-ct-svelte'
 import format from '../../../dist/utils/format'
-import {getProps} from '../../../dist/api/fixtures/js/fixtures-api'
+import {getFixtures} from '../../../dist/api/fixtures/js/'
 
 import Button from '../../../dist/components/blocks/buttons/Button.svelte'
 import Toggle from '../../../dist/components/blocks/buttons/Toggle.svelte'
@@ -12,7 +12,7 @@ const category = 'blocks'
 test('Button', async ({mount}) => {
 	// 1. Init
 	let clicked = false
-	const props = getProps({category, component: 'Button'})
+	const props = getFixtures({category, component: 'Button'})
 	const component = await mount(Button, {
 		props: {
 			...props,
@@ -33,7 +33,7 @@ test('Button', async ({mount}) => {
 
 test('Toggle', async ({mount}) => {
 	// 1. Init
-	const props = getProps({category, component: 'Toggle'})
+	const props = getFixtures({category, component: 'Toggle'})
 	const component = await mount(Toggle, {props})
 
 	// 2. Test display

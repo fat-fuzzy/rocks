@@ -7,7 +7,7 @@
 
 	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
-	import {getProps} from '$lib/api/fixtures/js'
+	import {getFixtures} from '$lib/api/fixtures/js'
 
 	export let title = ''
 	export let isPage = false
@@ -61,7 +61,7 @@
 	{#if title === 'Sidebar'}
 		<svelte:component this={component} id={title} {size} {background} {props}>
 			<div slot="side">
-				{@const fixtureProps = getProps({category, component: title})}
+				{@const fixtureProps = getFixtures({category, component: title})}
 				{#if sideContent === 'text'}
 					<p>{fixtureProps.text}</p>
 				{:else if sideContent === 'card' || sideContent === 'form'}
@@ -71,7 +71,7 @@
 				{/if}
 			</div>
 			<div slot="main">
-				{@const fixtureProps = getProps({category, component: title})}
+				{@const fixtureProps = getFixtures({category, component: title})}
 				{#if mainContent === 'text'}
 					<p>{fixtureProps.text}</p>
 				{:else if mainContent === 'card' || mainContent === 'form'}
@@ -84,7 +84,7 @@
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
 		<svelte:component this={component} id={title} {size} {background} {breakpoint} {props}>
 			<div slot="content">
-				{@const fixtureProps = getProps({category, component: title})}
+				{@const fixtureProps = getFixtures({category, component: title})}
 				{#if content === 'text'}
 					<p>{fixtureProps.text}</p>
 				{:else if content === 'card' || content === 'form'}
@@ -104,7 +104,7 @@
 			{threshold}
 			{props}
 		>
-			{@const fixtureProps = getProps({category, component: title})}
+			{@const fixtureProps = getFixtures({category, component: title})}
 			{#if content === 'text'}
 				<p>{fixtureProps.text}</p>
 			{:else if content === 'card' || content === 'form'}
@@ -115,7 +115,7 @@
 		</svelte:component>
 	{/if}
 {:else}
-	{@const fixtureProps = getProps({category, component: title})}
+	{@const fixtureProps = getFixtures({category, component: title})}
 	{#if title === 'Sidebar'}
 		<svelte:component this={component} id={title} {size} {background} {...props}>
 			<div slot="side">

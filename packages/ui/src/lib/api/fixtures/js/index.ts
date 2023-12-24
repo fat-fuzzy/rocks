@@ -12,7 +12,7 @@ export const COMPONENT_FIXTURES: any = {
 	recipes: recipesFixtures,
 }
 
-export function getProps({category, component}: {category: string; component: string}) {
+export function getFixtures({category, component}: {category: string; component: string}) {
 	if (COMPONENT_FIXTURES[category]) {
 		return COMPONENT_FIXTURES[category][component]
 	}

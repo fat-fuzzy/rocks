@@ -97,7 +97,7 @@
 				isPage={false}
 				components={items}
 				{category}
-				content={markdowns.categories.find(({meta}) => meta.slug === category)}
+				{markdowns}
 				path={`${path}/${category}`}
 				{actionPath}
 				redirect={$page.url.pathname}
