@@ -1,4 +1,4 @@
-import {StyleInputGroup, StyleFamily} from '../styles/types'
+import {StyleInputGroup, StyleFamily} from '$lib/api/styles/types'
 
 const brightness = {
 	initial: 'day',

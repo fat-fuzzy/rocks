@@ -1,7 +1,7 @@
 import type {StyleTree} from '$lib/api/styles/types'
 
 import constants from '$lib/types/constants'
-import {initStyles} from '$lib/api/styles/styles-api'
+import {initStyles} from '$lib/api/styles'
 
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, TRANSITION_REVEAL, NUMBER_TO_SIZE} = constants
 

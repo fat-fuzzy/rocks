@@ -1,14 +1,14 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from './styles-api'
+	import type {StylesApi} from '.'
 	import type {StyleTree} from './types'
 	import type {Meta} from '$lib/api/props/types'
 
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
-	import {initStyles} from './styles-api'
+	import {getProps} from '$lib/api/fixtures/js'
+	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
 
 	import Sidebar from '$lib/components/layouts/Sidebar.svelte'
