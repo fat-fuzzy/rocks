@@ -29,8 +29,8 @@
 		? `l:frame:${dimensions} bg:${background}`
 		: `l:frame:${dimensions}`
 	$: frameClasses = canvas
-		? `${backgroundClass} ${layer} state:${state} emoji:${state}`
-		: `${backgroundClass} ${layer} card:xl `
+		? `canvas ${backgroundClass} ${layer} state:${state} emoji:${state}`
+		: `canvas ${backgroundClass} ${layer} card:xl `
 
 	function init() {
 		if (canvas) {
@@ -106,7 +106,6 @@
 			<Geometry
 				on:update={update}
 				{geometry}
-				{background}
 				canvasWidth={width}
 				canvasHeight={height}
 				{color}

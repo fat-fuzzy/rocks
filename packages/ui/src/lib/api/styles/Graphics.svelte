@@ -28,6 +28,7 @@
 	let breakpoint = props?.breakpoint || ''
 	let threshold = props?.threshold || ''
 	let background = props?.background || ''
+	let contrast = props?.contrast || ''
 	let layout = props?.layout || ''
 	let color = props?.color || ''
 	let variant = props?.variant || ''
@@ -49,7 +50,8 @@
 	$: geometry = scene.geometry || lib.gfx.utils.getGeometryDefaults()
 
 	// App settings
-	$: background = background ? background : TRANSITION_CONTRAST[styles.app?.settings.contrast]
+	$: contrast = contrast ? contrast : settings.app.contrast
+	$: background = contrast === 'blend' ? background : TRANSITION_CONTRAST[background]
 	// Block options
 	$: variant = styles.blocks?.element.variant ?? variant
 	$: color = styles.blocks?.element.color ?? color

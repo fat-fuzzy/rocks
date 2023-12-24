@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StylesApi} from './styles-api'
+	import type {StyleTree} from './types'
 
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
@@ -13,6 +14,7 @@
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 
+	export let settings: any = ui
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
 
@@ -27,17 +29,22 @@
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'shared'
 	export let stylesApi: StylesApi = initStyles()
+	export let props: any
+
+	let background = props?.background || ''
+	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [
-		ui.styles.subscribe((value) => {
+		settings.styles.subscribe((value) => {
 			if (value) {
-				stylesApi.applyStyles(value)
+				styles = value
 			}
 		}),
 	]
 
 	$: componentNames = Object.keys(components)
 	$: titleDepth = Number(depth) + 1
+	$: background = background ? background : styles.app?.settings.contrast
 	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
 
 	onDestroy(() => {
@@ -60,6 +67,7 @@
 					{stylesApi}
 					{props}
 					{actionPath}
+					redirect={$page.url.pathname}
 				/>
 			{/each}
 		</section>
