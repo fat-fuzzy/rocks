@@ -8,6 +8,9 @@
 	import lib from '@fat-fuzzy/lib'
 	import {initStyles} from '$lib/api/styles/styles-api'
 	import * as ui from '$stores/ui'
+	import constants from '$lib/types/constants'
+
+	const {TRANSITION_CONTRAST} = constants
 
 	export let stylesApi: StylesApi = initStyles()
 
@@ -24,6 +27,7 @@
 
 	let breakpoint = props?.breakpoint || ''
 	let threshold = props?.threshold || ''
+	let background = props?.background || ''
 	let layout = props?.layout || ''
 	let color = props?.color || ''
 	let variant = props?.variant || ''
@@ -44,6 +48,10 @@
 	// Graphics options
 	$: geometry = scene.geometry || lib.gfx.utils.getGeometryDefaults()
 
+	// App settings
+	$: background = background
+		? TRANSITION_CONTRAST[background]
+		: TRANSITION_CONTRAST[styles.app?.settings.contrast]
 	// Block options
 	$: variant = styles.blocks?.element.variant ?? variant
 	$: color = styles.blocks?.element.color ?? color
@@ -71,6 +79,7 @@
 		settings,
 		actionPath,
 		redirect,
+		background,
 	}
 
 	onDestroy(() => {
