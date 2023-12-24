@@ -277,6 +277,14 @@ $current_cssvars: ();
 	.day,
 	// Generate default buttons for [Brightness = night > day]
 	.night .day {
+		button:not([disabled]):active {
+			--current-button-border: var(#{$prefix}-day-button-neutral-active-border);
+		}
+
+		[class^='toggle'][aria-pressed]:not([disabled]):active {
+			--current-button-border: var(#{$prefix}-day-toggle-neutral-active-border);
+		}
+
 		@each $variant-key, $variant in $button-variants {
 			button.#{$variant} {
 				--current-button-text: var(#{$prefix}-day-button-neutral-#{$variant}-text);
@@ -288,10 +296,6 @@ $current_cssvars: ();
 				--current-button-text: var(#{$prefix}-day-button-neutral-#{$variant}-hover-text);
 				--current-button-bg: var(#{$prefix}-day-button-neutral-#{$variant}-hover-bg);
 				--current-button-border: var(#{$prefix}-day-button-neutral-#{$variant}-hover-border);
-			}
-
-			button.#{$variant}:not([disabled]):active {
-				--current-button-border: var(#{$prefix}-day-button-neutral-#{$variant}-active-border);
 			}
 
 			[class^='toggle'][aria-pressed].#{$variant} {
@@ -306,10 +310,6 @@ $current_cssvars: ();
 				--current-toggle-border: var(#{$prefix}-day-toggle-neutral-#{$variant}-hover-border);
 			}
 
-			[class^='toggle'][aria-pressed].#{$variant}:not([disabled]):active {
-				--current-toggle-border: var(#{$prefix}-day-toggle-neutral-#{$variant}-active-border);
-			}
-
 			[class^='toggle'][aria-pressed='true'].#{$variant} {
 				--current-toggle-text: var(#{$prefix}-day-toggle-pressed-neutral-#{$variant}-text);
 				--current-toggle-bg: var(#{$prefix}-day-toggle-pressed-neutral-#{$variant}-bg);
@@ -321,12 +321,6 @@ $current_cssvars: ();
 				--current-toggle-bg: var(#{$prefix}-day-toggle-pressed-neutral-#{$variant}-hover-bg);
 				--current-toggle-border: var(
 					#{$prefix}-day-toggle-pressed-neutral-#{$variant}-hover-border
-				);
-			}
-
-			[class^='toggle'][aria-pressed='true'].#{$variant}:not([disabled]):active {
-				--current-toggle-border: var(
-					#{$prefix}-day-toggle-pressed-neutral-#{$variant}-active-border
 				);
 			}
 		}
@@ -368,10 +362,6 @@ $current_cssvars: ();
 					--current-button-border: var(#{$prefix}-day-button-#{$color}-hover-border);
 				}
 
-				button.#{$color}.#{$variant}:not([disabled]):active {
-					--current-button-border: var(#{$prefix}-day-button-#{$color}-active-border);
-				}
-
 				[class^='toggle'][aria-pressed].#{$color}.#{$variant} {
 					--current-toggle-text: var(#{$prefix}-day-toggle-#{$color}-#{$variant}-text);
 					--current-toggle-bg: var(#{$prefix}-day-toggle-#{$color}-#{$variant}-bg);
@@ -406,6 +396,13 @@ $current_cssvars: ();
 	.night,
 	// Generate default buttons for [Brightness = night > night]
 	.day .night {
+		button:not([disabled]):active {
+			--current-button-border: var(#{$prefix}-night-toggle-neutral-active-border);
+		}
+
+		[class^='toggle'][aria-pressed]:not([disabled]):active {
+			--current-button-border: var(#{$prefix}-night-toggle-neutral-active-border);
+		}
 		@each $variant-key, $variant in $button-variants {
 			button.#{$variant} {
 				--current-button-text: var(#{$prefix}-night-button-neutral-#{$variant}-text);
@@ -419,10 +416,6 @@ $current_cssvars: ();
 				--current-button-border: var(#{$prefix}-night-button-neutral-#{$variant}-hover-border);
 			}
 
-			button.#{$variant}:not([disabled]):active {
-				--current-button-border: var(#{$prefix}-night-button-neutral-#{$variant}-active-border);
-			}
-
 			[class^='toggle'][aria-pressed].#{$variant} {
 				--current-toggle-text: var(#{$prefix}-night-toggle-neutral-#{$variant}-text);
 				--current-toggle-bg: var(#{$prefix}-night-toggle-neutral-#{$variant}-bg);
@@ -433,10 +426,6 @@ $current_cssvars: ();
 				--current-toggle-text: var(#{$prefix}-night-toggle-neutral-#{$variant}-hover-text);
 				--current-toggle-bg: var(#{$prefix}-night-toggle-neutral-#{$variant}-hover-bg);
 				--current-toggle-border: var(#{$prefix}-night-toggle-neutral-#{$variant}-hover-border);
-			}
-
-			[class^='toggle'][aria-pressed].#{$variant}:not([disabled]):active {
-				--current-toggle-border: var(#{$prefix}-night-toggle-neutral-#{$variant}-active-border);
 			}
 
 			[class^='toggle'][aria-pressed='true'].#{$variant} {
@@ -452,35 +441,7 @@ $current_cssvars: ();
 					#{$prefix}-night-toggle-pressed-neutral-#{$variant}-hover-border
 				);
 			}
-
-			[class^='toggle'][aria-pressed='true'].#{$variant}:not([disabled]):active {
-				--current-toggle-border: var(
-					#{$prefix}-night-toggle-pressed-neutral-#{$variant}-active-border
-				);
-			}
 		}
-
-		// .bg\:blend {
-		// 	button:hover {
-		// 		--current-button-bg: var(#{$prefix}-night-blend-button-neutral-hover-bg);
-		// 	}
-
-		// 	[class^='toggle'][aria-pressed]:hover,
-		// 	[class^='toggle'][aria-pressed='true']:hover {
-		// 		--current-toggle-bg: var(#{$prefix}-night-blend-toggle-neutral-hover-bg);
-		// 	}
-		// }
-
-		// .bg\:contrast {
-		// 	button:hover {
-		// 		--current-button-bg: var(#{$prefix}-night-contrast-button-neutral-hover-bg);
-		// 	}
-
-		// 	[class^='toggle'][aria-pressed]:hover,
-		// 	[class^='toggle'][aria-pressed='true']:hover {
-		// 		--current-toggle-bg: var(#{$prefix}-night-contrast-toggle-neutral-hover-bg);
-		// 	}
-		// }
 
 		// Generate colored Button styles for [Variant = fill/outline/bare]
 		@each $color-key, $color in $theme-colors {
@@ -499,10 +460,6 @@ $current_cssvars: ();
 					--current-button-text: var(#{$prefix}-night-button-#{$color}-hover-text);
 					--current-button-bg: var(#{$prefix}-night-button-#{$color}-hover-bg);
 					--current-button-border: var(#{$prefix}-night-button-#{$color}-hover-border);
-				}
-
-				button.#{$color}.#{$variant}:not([disabled]):active {
-					--current-button-border: var(#{$prefix}-night-button-#{$color}-active-border);
 				}
 
 				[class^='toggle'][aria-pressed].#{$color}.#{$variant} {

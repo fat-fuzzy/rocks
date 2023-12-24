@@ -51,7 +51,7 @@ label > .feedback + * {
 }
 
 [disabled] {
-	color: var(--color-neutral);
+	filter: contrast(90%) opacity(80%);
 	cursor: not-allowed;
 }
 

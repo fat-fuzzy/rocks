@@ -82,7 +82,7 @@
 		states={items.switch}
 		{variant}
 		{color}
-		size="sm"
+		{size}
 		container="main:50 flex-grow"
 		on:click={onClick}
 	/>
@@ -92,7 +92,7 @@
 		asset="emoji:clear"
 		{variant}
 		{color}
-		size="sm"
+		{size}
 		container="flex-grow"
 		{...items.button}
 		on:click={onClick}
