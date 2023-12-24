@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
-	import type {StylesApi} from './styles-api'
+	import type {StylesApi} from '$lib/api/styles'
 
 	import {onDestroy} from 'svelte'
 
 	import lib from '@fat-fuzzy/lib'
-	import {initStyles} from '$lib/api/styles/styles-api'
+	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
 	import constants from '$lib/types/constants'
 

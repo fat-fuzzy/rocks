@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
-	import type {StylesApi} from './styles-api'
+	import type {StylesApi} from '$lib/api/styles'
 
 	import {onDestroy} from 'svelte'
 
-	import {initStyles} from '$lib/api/styles/styles-api'
+	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
-	import {getProps} from '$lib/api/fixtures/js/fixtures-api'
+	import {getProps} from '$lib/api/fixtures/js'
 
 	export let title = ''
 	export let isPage = false

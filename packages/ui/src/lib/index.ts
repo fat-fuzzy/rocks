@@ -64,8 +64,8 @@ import Token from '$lib/api/styles/Token.svelte'
 import Element from '$lib/api/styles/Element.svelte'
 import Collection from '$lib/api/styles/Collection.svelte'
 
-import * as stylesApi from '$lib/api/styles/styles-api'
-import * as fixturesApi from '$lib/api/fixtures/js/fixtures-api'
+import * as stylesApi from '$lib/api/styles'
+import * as fixturesApi from '$lib/api/fixtures/js/'
 
 /**
  * Tests Api components

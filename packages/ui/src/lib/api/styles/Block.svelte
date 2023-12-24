@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from './styles-api'
+	import type {StylesApi} from '.'
 
 	import {onDestroy} from 'svelte'
 
-	import {initStyles} from './styles-api'
+	import {initStyles} from '$lib/api/styles'
 	import type {StyleTree} from './types'
 
 	import * as ui from '$stores/ui'
