@@ -77,24 +77,28 @@ function round(n, decimals) {
 }
 
 function getGeometryDefaults(canvasWidth, canvasHeight) {
+	const width = round(canvasWidth / 5, 2)
+	const height = round(canvasHeight / 5, 2)
 	return {
 		color: [Math.random(), Math.random(), Math.random(), 1],
 		translation: [canvasWidth / 2, canvasHeight / 2],
-		rotation: [0, 0],
+		rotation: [Math.cos(degToRad(45)), Math.sin(degToRad(45))],
 		scale: [1, 1],
-		width: round(canvasWidth / 5, 2), // of geometry
-		height: round(canvasHeight / 5, 2), // of geometry
+		width,
+		height,
 	}
 }
 
 function getGeometryRandom(canvasWidth, canvasHeight) {
+	const width = randomInt(canvasWidth)
+	const height = randomInt(canvasHeight)
 	return {
 		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [randomInt(canvasWidth), randomInt(canvasHeight)],
-		rotation: [0, 0],
+		translation: [width, height],
+		rotation: [Math.cos(degToRad(randomInt(360))), Math.sin(randomInt(360))],
 		scale: [1, 1],
-		width: randomInt(canvasWidth), // of geometry
-		height: randomInt(canvasHeight), // of geometry
+		width,
+		height,
 	}
 }
 
