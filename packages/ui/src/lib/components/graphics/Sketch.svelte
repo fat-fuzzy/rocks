@@ -98,7 +98,7 @@
 </script>
 
 <article class="l:sidebar:xxs">
-	<div class="l:main">
+	<div class={`l:main ${size}`}>
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
 			<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
 				<slot name="fallback">
@@ -112,7 +112,7 @@
 	</div>
 	<aside class="l:side">
 		{#if canvas}
-			<Player on:click={handleToggle} {color} {size} />
+			<Player on:click={handleToggle} {color} {size} {variant} />
 		{/if}
 		{#if showDetails}
 			<Geometry
