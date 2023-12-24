@@ -9,12 +9,17 @@ context: ['app.settings']
 
 ## Usage
 
-<p class="feedback bare emoji:default">Coming Soon!</p>
+This component provides inputs to interact with a geometry in a `<canvas>` animation inside a `Sketch` component.
+The available inputs are _Position_, _Translation_, and _Scale_, implemented via the following components:
 
-### Examples
+- `Position` component in `graphics`
+- `Rotation` component in `graphics`
+- `Scale` component in `graphics`
 
-<p class="feedback bare emoji:default">Coming Soon!</p>
+These input components are displayed in the documentation as part of this `graphics` component, but are declared in distinct Svelte files.
 
-## Resources
+### Related Components
 
-<p class="feedback bare emoji:default">Coming Soon!</p>
+- `Fieldset` component in `blocks`
+- `InputRange` component in `blocks`
+- `Switcher` component in `layouts`

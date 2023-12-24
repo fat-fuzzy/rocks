@@ -26,8 +26,7 @@ The source code of the `Scene` used for this demo can be found here: [(GitHub) /
 ### Related Components
 
 - `Geometry` component in `graphics`
-- `InputRange` component in `blocks`
-- `ToggleMenu` component in `recipes`
+- `Player` component in `graphics`
 - `Switcher` component in `layouts`
 - `Sidebar` component in `layouts`
 
