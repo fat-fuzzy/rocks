@@ -18,6 +18,7 @@
 	&.bg\:contrast *:not(.bg\:polar) .bg\:polar {
 		--current-bg-color: var(--day-polar-color-bg);
 		--current-border-color: var(--current-gray-contrast);
+		--current-bg-contrast: var(--day-blend-color-bg);
 		color: var(--current-color);
 		background-color: var(--current-polar);
 	}
@@ -27,6 +28,7 @@
 	&.bg\:polar *:not(.bg\:contrast) .bg\:contrast {
 		--current-bg-color: var(--day-contrast-color-bg);
 		--current-border-color: var(--current-gray-light);
+		--current-bg-contrast: var(--day-blend-color-bg);
 		color: var(--current-color);
 		background-color: var(--current-bg-contrast);
 	}
@@ -36,6 +38,7 @@
 	&.bg\:polar *:not(.bg\:blend) .bg\:blend {
 		--current-bg-color: var(--day-blend-color-bg);
 		--current-border-color: var(--current-gray-light);
+		--current-bg-contrast: var(--day-polar-color-bg);
 		color: var(--current-color);
 		background-color: var(--current-bg-color);
 	}
@@ -47,6 +50,7 @@
 	&.bg\:contrast *:not(.bg\:polar) .bg\:polar {
 		--current-bg-color: var(--night-polar-color-bg);
 		--current-border-color: var(--current-gray-contrast);
+		--current-bg-contrast: var(--night-blend-color-bg);
 		color: var(--current-color);
 		background-color: var(--current-polar);
 	}
@@ -56,6 +60,7 @@
 	&.bg\:polar *:not(.bg\:contrast) .bg\:contrast {
 		--current-bg-color: var(--night-contrast-color-bg);
 		--current-border-color: var(--current-gray-contrast);
+		--current-bg-contrast: var(--night-blend-color-bg);
 		color: var(--current-color);
 		background-color: var(--current-bg-contrast);
 	}
@@ -66,6 +71,7 @@
 		--current-color: var(--night-blend-color-text);
 		--current-bg-color: var(--night-blend-color-bg);
 		--current-border-color: var(--current-gray-contrast);
+		--current-bg-contrast: var(--night-polar-color-bg);
 		color: var(--current-color);
 	}
 
