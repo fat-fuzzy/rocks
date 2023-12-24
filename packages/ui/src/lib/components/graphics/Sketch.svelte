@@ -23,6 +23,7 @@
 
 	let frame: number
 
+	$: playerAside = ['xs', 'sm'].includes(size)
 	$: state = 'clear'
 	$: showDetails = geometry !== undefined && (state === 'play' || state === 'pause')
 	$: backgroundClass = background
@@ -97,9 +98,12 @@
 				</slot>
 			</canvas>
 		</div>
+		{#if canvas && !playerAside}
+			<Player on:click={handleToggle} {color} {size} {variant} />
+		{/if}
 	</div>
 	<aside class="l:side">
-		{#if canvas}
+		{#if canvas && playerAside}
 			<Player on:click={handleToggle} {color} {size} {variant} />
 		{/if}
 		{#if showDetails}
