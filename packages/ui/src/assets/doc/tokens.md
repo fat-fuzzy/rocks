@@ -1,7 +1,7 @@
 ---
 title: Tokens
 slug: tokens
-tags: ['tokens']
+category: 'tokens'
 context: ['app.settings']
 ---
 

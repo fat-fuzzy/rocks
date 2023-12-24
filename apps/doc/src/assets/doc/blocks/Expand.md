@@ -1,8 +1,8 @@
 ---
 title: Expand
 slug: Expand
-family: ['blocks']
-group: ['buttons']
+category: 'blocks'
+group: 'buttons'
 props_state: ['title', 'text', 'formaction', 'value', 'controls']
 props_style: ['color', 'variant', 'size', 'asset', 'shape']
 context: ['app.settings']

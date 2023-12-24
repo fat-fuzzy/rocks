@@ -2,6 +2,7 @@
 	import type {ComponentType} from 'svelte'
 	import type {StylesApi} from './styles-api'
 	import type {StyleTree} from './types'
+	import type {Meta} from '$lib/api/props/types'
 
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
@@ -15,16 +16,16 @@
 	import Element from './Element.svelte'
 
 	export let settings: any = ui
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
+	export let actionPath: string | undefined
+	export let redirect: string | undefined
 
 	export let title = ''
-	export let content: {html: string} | undefined = undefined
+	export let content: {html: string; meta: Meta} | undefined
 	export let depth = 0
 	export let path = $page.url.pathname
-	export let layout = 'grid' // TODO: expose breakpoint too
-	export let size = 'xs' // TODO: expose breakpoint too
-	export let color = 'primary:light' // TODO: expose breakpoint too
+	export let layout = 'grid'
+	export let size = 'xs'
+	export let color = 'primary:light'
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category || 'shared'
@@ -35,7 +36,7 @@
 	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [
-		settings.styles.subscribe((value) => {
+		settings.styles.subscribe((value: StyleTree) => {
 			if (value) {
 				styles = value
 			}

@@ -1,8 +1,8 @@
 ---
 title: ButtonMenu
 slug: ButtonMenu
-family: ['recipes']
-group: ['menus']
+category: 'recipes'
+group: 'menus'
 props_state: ['title', 'formaction', 'value']
 props_style: ['color', 'variant', 'size']
 context: ['app.settings', 'shared.container', 'shared.layout']

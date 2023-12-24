@@ -1,9 +1,9 @@
 ---
 title: Header
 slug: Header
-family: ['recipes']
-group: ['headers']
-content_type: ['Nav', 'Settings']
+category: 'recipes'
+group: 'headers'
+content_types: ['Nav', 'Settings']
 props_state: ['formaction']
 props_style: ['size', 'color', 'variant', 'breakpoint', 'container']
 context: ['app.settings', 'shared.container']

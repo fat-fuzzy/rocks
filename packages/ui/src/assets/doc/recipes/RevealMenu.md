@@ -1,9 +1,9 @@
 ---
 title: RevealMenu
 slug: RevealMenu
-family: ['recipes']
-group: ['menus']
-content_type: ['recipes / menus']
+category: 'recipes'
+group: 'menus'
+content_types: ['menus']
 props_state: ['title', 'formaction', 'value']
 props_style: ['color', 'variant', 'size', 'background', 'layout', 'threshold']
 context: ['app.settings', 'shared.container']

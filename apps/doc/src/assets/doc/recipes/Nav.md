@@ -1,8 +1,8 @@
 ---
 title: Nav
 slug: Nav
-family: ['recipes']
-group: ['navs']
+category: 'recipes'
+group: 'navs'
 props_state: [items']
 props_style: ['size']
 context: ['app.settings', 'shared.container', 'shared.layout']

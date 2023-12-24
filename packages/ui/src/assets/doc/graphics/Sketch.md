@@ -1,7 +1,7 @@
 ---
 title: Sketch
 slug: Sketch
-family: ['graphics']
+category: 'graphics'
 props_state: ['scene', 'title']
 props_style: ['color', 'size', 'variant', 'dimensions']
 context: ['app.settings']

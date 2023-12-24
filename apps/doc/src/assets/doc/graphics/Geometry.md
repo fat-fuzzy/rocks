@@ -1,7 +1,7 @@
 ---
 title: Geometry
 slug: Geometry
-family: ['graphics']
+category: 'graphics'
 props_state: ['geometry']
 props_style: ['color', 'size']
 context: ['app.settings']

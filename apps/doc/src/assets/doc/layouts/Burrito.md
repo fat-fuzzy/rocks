@@ -1,9 +1,9 @@
 ---
 title: Burrito
 slug: Burrito
-family: ['layouts']
-group: ['containers']
-content_type: ['any']
+category: 'layouts'
+group: 'containers'
+content_types: ['any']
 props_style: ['size']
 context: ['app.settings']
 ---

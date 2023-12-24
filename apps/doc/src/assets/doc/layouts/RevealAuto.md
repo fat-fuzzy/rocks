@@ -1,9 +1,9 @@
 ---
 title: RevealAuto
 slug: RevealAuto
-family: ['layouts']
+category: 'layouts'
 # group: ['reveal']
-content_type: ['any']
+content_types: ['any']
 props_style: ['size', 'breakpoint']
 context: ['app.settings']
 ---

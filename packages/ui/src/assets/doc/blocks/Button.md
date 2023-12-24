@@ -1,8 +1,8 @@
 ---
 title: Button
 slug: Button
-family: ['blocks']
-group: ['buttons']
+category: 'blocks'
+group: 'buttons'
 props_state: ['title', 'text', 'formaction', 'value']
 props_style: ['color', 'variant', 'size', 'asset', 'shape']
 context: ['app.settings']

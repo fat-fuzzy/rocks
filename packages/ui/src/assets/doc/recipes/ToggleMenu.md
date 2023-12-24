@@ -1,8 +1,8 @@
 ---
 title: ToggleMenu
 slug: ToggleMenu
-family: ['recipes']
-group: ['menus']
+category: 'recipes'
+group: 'menus'
 props_state: ['title', 'formaction', 'value']
 props_style: ['color', 'variant', 'size', 'background', 'layout', 'threshold']
 context: ['app.settings', 'shared.container']
