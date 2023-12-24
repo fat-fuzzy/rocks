@@ -74,7 +74,7 @@
 				valueLabel = selectedMarker.label
 			}
 		} else {
-			valueLabel = value
+			valueLabel = !Number.isNaN(value) ? value : min + max / 2
 		}
 	}
 </script>
@@ -82,7 +82,7 @@
 <label for={id} class={classes}>
 	<span class={`font:${size}`}>
 		{label}:
-		{!Number.isNaN(value) ? value : min + max / 2}
+		{valueLabel}
 	</span>
 	<input
 		{id}
