@@ -18,6 +18,7 @@
 	export let align = ''
 	export let background = ''
 	export let asset = ''
+	export let container = ''
 	export let disabled: boolean
 
 	function handleInput(event) {
@@ -28,7 +29,8 @@
 		dispatch('input', payload)
 	}
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:switcher:${size} th:${threshold} radio ${size} font:${size}  ${color} ${variant} ${align} ${backgroundClass} ${asset}`
+	$: assetClass = asset.split(':').length > 1 ? asset : ''
+	$: classes = `l:switcher:${size} th:${threshold} check ${size} font:${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${assetClass}`
 </script>
 
 <label for={id} class={classes}>

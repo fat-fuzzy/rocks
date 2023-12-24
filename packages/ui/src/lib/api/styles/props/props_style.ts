@@ -65,7 +65,7 @@ const size = {
 		{id: 'size.lg', text: 'lg', value: 'lg'},
 		{id: 'size.xl', text: 'xl', value: 'xl'},
 	],
-	exclude: ['ActionLabel', 'Nav', 'Stack', 'Burrito'],
+	exclude: ['Nav', 'Stack', 'Burrito'],
 }
 
 const layout = {
@@ -201,7 +201,7 @@ const color = {
 			value: 'highlight',
 		},
 	],
-	exclude: ['ActionLabel', 'Feedback'],
+	exclude: ['Feedback'],
 }
 
 const variant = {
@@ -215,7 +215,7 @@ const variant = {
 		{id: 'variant.outline', text: 'outline', value: 'outline'},
 		{id: 'variant.bare', text: 'bare', value: 'bare'},
 	],
-	exclude: ['ActionLabel', 'InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 }
 
 const status = {
@@ -262,7 +262,6 @@ const status = {
 		},
 	],
 	exclude: [
-		'ActionLabel',
 		'Button',
 		'Expand',
 		'Switch',
@@ -287,7 +286,6 @@ const context = {
 		{id: 'context.code', text: 'code', value: 'code'},
 	],
 	exclude: [
-		'ActionLabel',
 		'Button',
 		'Expand',
 		'Switch',
@@ -405,16 +403,7 @@ const containerFamily = {
 	size: 'lg',
 	variant: 'card',
 	styleProps: ['Container', 'Size'],
-	exclude: [
-		'Color',
-		'Typography',
-		'ActionLabel',
-		'Button',
-		'Expand',
-		'Switch',
-		'Toggle',
-		'RevealAuto',
-	],
+	exclude: ['Color', 'Typography', 'Button', 'Expand', 'Switch', 'Toggle', 'RevealAuto'],
 }
 
 const layoutFamily = {
@@ -426,7 +415,6 @@ const layoutFamily = {
 	exclude: [
 		'Color',
 		'Typography',
-		'ActionLabel',
 		'Button',
 		'Expand',
 		'Switch',

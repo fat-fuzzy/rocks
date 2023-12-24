@@ -27,7 +27,8 @@
 		dispatch('input', payload)
 	}
 	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:switcher:${size} th:${threshold} check ${size} font:${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${asset}`
+	$: assetClass = asset.split(':').length > 1 ? asset : ''
+	$: classes = `l:switcher:${size} th:${threshold} check ${size} font:${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${assetClass}`
 </script>
 
 <label for={id} class={classes}>

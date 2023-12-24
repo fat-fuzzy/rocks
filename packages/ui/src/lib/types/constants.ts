@@ -99,7 +99,7 @@ const DEFAULT_STYLES: StyleTree = {
 			status: 'default',
 			context: 'form',
 			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-			asset: 'emoji',
+			asset: 'emoji:default',
 			size: 'md',
 		},
 	},
