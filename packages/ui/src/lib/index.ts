@@ -51,6 +51,8 @@ import Header from '$lib/components/recipes/headers/Header.svelte'
 /**
  * Compositions - Graphics
  */
+import Geometry from '$lib/components/graphics/Geometry.svelte'
+import Player from '$lib/components/graphics/Player.svelte'
 import Sketch from '$lib/components/graphics/Sketch.svelte'
 
 /**
@@ -167,6 +169,8 @@ const recipes = {
 }
 
 const graphics = {
+	Geometry,
+	Player,
 	Sketch,
 }
 
