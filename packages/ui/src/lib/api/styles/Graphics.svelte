@@ -49,9 +49,7 @@
 	$: geometry = scene.geometry || lib.gfx.utils.getGeometryDefaults()
 
 	// App settings
-	$: background = background
-		? TRANSITION_CONTRAST[background]
-		: TRANSITION_CONTRAST[styles.app?.settings.contrast]
+	$: background = background ? background : TRANSITION_CONTRAST[styles.app?.settings.contrast]
 	// Block options
 	$: variant = styles.blocks?.element.variant ?? variant
 	$: color = styles.blocks?.element.color ?? color
