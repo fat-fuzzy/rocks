@@ -16,8 +16,8 @@
 	import Recipe from './Recipe.svelte'
 	import Graphics from './Graphics.svelte'
 
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
+	export let actionPath: string | undefined
+	export let redirect: string | undefined
 
 	export let title = ''
 	export let depth = 0
