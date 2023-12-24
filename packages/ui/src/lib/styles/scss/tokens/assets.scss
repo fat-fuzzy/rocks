@@ -36,6 +36,8 @@ $construction-sign: '🚧';
 $shower: '🚿';
 $lotus: '🪷';
 $hole: '🕳️';
+$robot: '🤖';
+$star: '🌟';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -71,6 +73,8 @@ $emojis: (
 	// LinkList / Nav / DetailsNav fixture emojis
 	home: #{$egg},
 	about: #{$chick},
+	machines: #{$robot},
+	starr: #{$star},
 
 	// Composition Emojis
 	menu: #{$chick},
