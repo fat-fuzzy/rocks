@@ -9,6 +9,7 @@ export type ButtonState = {
 		text: string
 		value: string
 		asset: string
+		variant?: string
 		onClick?: (event: CustomEvent<any>) => void
 	}
 }

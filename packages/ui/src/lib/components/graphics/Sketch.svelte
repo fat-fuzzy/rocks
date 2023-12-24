@@ -4,7 +4,6 @@
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
 	import Player from '$lib/components/graphics/Player.svelte'
-	import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
 
 	export let id = 'sketch'
 	export let scene: Scene
