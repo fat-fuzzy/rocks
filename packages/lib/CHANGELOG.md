@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.6
+
+### Patch Changes
+
+- 39966947: [ui+gfx] Polish graphics UI
+
 ## 0.1.5
 
 ### Patch Changes
