@@ -1,5 +1,12 @@
 # @fat-fuzzy/play
 
+## 0.1.27
+
+### Patch Changes
+
+- Updated dependencies [39966947]
+  - @fat-fuzzy/lib@0.1.6
+
 ## 0.1.26
 
 ### Patch Changes
