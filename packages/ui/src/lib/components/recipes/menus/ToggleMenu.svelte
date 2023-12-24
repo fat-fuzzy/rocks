@@ -83,7 +83,9 @@
 						variant={itemVariant}
 						size={itemSize}
 						asset={itemAsset}
-						disabled={mode === 'radio' && selected[0]?.value === props.value ? true : false}
+						disabled={mode === 'radio' && selected[0] && selected[0].value === props.value
+							? true
+							: false}
 					/>
 				</li>
 			{/each}
@@ -107,7 +109,9 @@
 					variant={itemVariant}
 					size={itemSize}
 					asset={itemAsset}
-					disabled={mode === 'radio' && selected[0]?.value === props.value ? true : false}
+					disabled={mode === 'radio' && selected[0] && selected[0].value === props.value
+						? true
+						: false}
 				/>
 			</li>
 		{/each}
