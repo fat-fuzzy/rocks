@@ -19,8 +19,8 @@ menu.end {
 	margin-inline-end: calc(2 * var(--gap));
 }
 
-menu.mode\:radio [disabled] {
-	cursor: default;
+.menu\:settings [class^='switch'][aria-pressed] {
+	box-shadow: var(--current-shadow-inset-1);
 }
 
 .menu\:settings [class^='switch'][aria-pressed].outline {
