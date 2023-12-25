@@ -19,7 +19,7 @@
 <Head {title} page="Log" description={`Decision Log ${markdown.meta.id}: ${title}`} />
 
 <header class={headerClass}>
-	<h1 class="card:xl">{title}</h1>
+	<h1 class="card:lg">{title}</h1>
 
 	<RevealAuto
 		size="sm"

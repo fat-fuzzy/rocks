@@ -67,7 +67,7 @@
 	$: content = markdowns.find(({meta}) => meta.title === title) || {
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
-	$: headerClass = 'page-header card:md l:switcher:md bg:polar'
+	$: headerClass = 'page-header l:switcher:md bg:polar'
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -116,7 +116,8 @@
 						return tab
 					})}
 					layout="switcher"
-					size="lg"
+					size="md"
+					container="card:md"
 					color="primary"
 					variant="round outline"
 					formaction={`/test?/updateTab&redirectTo=${$page.url.pathname}`}
