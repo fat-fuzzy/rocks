@@ -43,7 +43,7 @@
 	$: markdowns = $page.data.markdowns
 	$: path = $page.url.pathname
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
+	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -53,7 +53,7 @@
 <Head {title} page="Test" description="UI Library Test Page" />
 
 <header class={headerClass}>
-	<h1 class="l:main:40 nowrap maki lg">{title}</h1>
+	<h1 class="l:main:40 nowrap maki lg">Fat Fuzzy {title}</h1>
 	<RevealAuto
 		id="ui-app-context"
 		size="sm"

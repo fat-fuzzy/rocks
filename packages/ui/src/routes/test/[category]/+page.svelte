@@ -69,7 +69,7 @@
 	$: path = $page.url.pathname
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns[category].find(({meta}) => meta.slug === category)
-	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
+	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -118,7 +118,8 @@
 						return tab
 					})}
 					layout="switcher"
-					size="lg"
+					size="md"
+					container="card:md"
 					color="primary"
 					variant="round outline"
 					formaction={`/test?/updateTab&redirectTo=${$page.url.pathname}`}

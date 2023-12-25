@@ -22,7 +22,7 @@
 />
 
 <header class="bg:polar">
-	<div class="l:text:xl l:center card:feature:xxl">
+	<div class="l:text:xl l:center card:feature:xl">
 		<div class="l:frame l:text:xl">
 			<img src={pageImage.src} alt={pageImage.alt} />
 		</div>

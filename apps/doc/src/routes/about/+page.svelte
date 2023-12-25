@@ -3,13 +3,13 @@
 
 	const {Head} = headless
 
-	let title = 'About'
+	let title = 'About Fat Fuzzy'
 </script>
 
 <Head {title} page="Rocks" description="About this website" />
 
 <header class="page-header bg:polar col:center max:w:full">
-	<h1 class="l:center card:xl">About Fat Fuzzy</h1>
+	<h1 class="l:center card:lg">{title}</h1>
 </header>
 
 <div class="l:center:xxl col:center">
