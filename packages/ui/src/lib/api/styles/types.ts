@@ -88,6 +88,7 @@ export interface IStylesSet {
 	container?: string
 	size?: string
 	variant?: string
+	mode?: string
 
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components
@@ -125,6 +126,7 @@ type StylesSetOptions = {
 	container?: string
 	size?: string
 	variant?: string
+	mode?: string
 
 	exclude?: string[] // Add component names here to apply styles to all but excluded components
 	include?: string[] // Add component names here to apply styles to included components
@@ -155,6 +157,7 @@ export class StyleInputGroup implements IStyleInputGroup {
 	container?: string
 	size?: string
 	variant?: string
+	mode?: string
 	exclude?: string[]
 	include?: string[]
 
@@ -168,6 +171,7 @@ export class StyleInputGroup implements IStyleInputGroup {
 		container,
 		size,
 		variant,
+		mode,
 		exclude,
 		include,
 	}: StyleInputGroupOptions) {
@@ -189,8 +193,11 @@ export class StyleInputGroup implements IStyleInputGroup {
 		if (variant) {
 			this.variant = variant
 		}
-		if (exclude) {
-			this.exclude = exclude
+		if (container) {
+			this.container = container
+		}
+		if (mode) {
+			this.mode = mode
 		}
 		if (include) {
 			this.include = include

@@ -178,6 +178,7 @@ const color = {
 	layout: 'switcher',
 	size: 'xxs',
 	container: 'card',
+	mode: 'checkbox',
 	items: [
 		{
 			id: 'color.primary',
@@ -466,6 +467,7 @@ function getInputGroup(name: string, category: string, family: string) {
 		input: PROPS[slug].input,
 		layout: PROPS[slug].layout,
 		size: PROPS[slug].size,
+		mode: PROPS[slug].mode,
 		variant: PROPS[slug].variant,
 		items: PROPS[slug].items.map((item) => {
 			return {...item, id: `${category}.${family}.${item.id}`}
