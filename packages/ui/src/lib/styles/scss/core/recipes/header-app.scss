@@ -4,37 +4,17 @@
 }
 
 //== Need to override global <a> hover styles in nav and header <a>
-.header-app a:hover {
-	background-color: initial;
-}
-
 .header-app nav a:hover {
 	color: var(--current-primary-light);
+	background-color: initial;
+	text-decoration: none;
 }
-
-// .header-app > [class*='l:main'] > nav li[aria-current='page']::before {
-// 	--size: 6px;
-// 	content: '';
-// 	width: 0;
-// 	height: 0;
-// 	position: absolute;
-// 	left: 0;
-// 	top: calc(50% - var(--size));
-// 	border: var(--size) solid transparent;
-// 	border-left: var(--size) solid var(--color-dark);
-// }
 
 .header-app > [class*='l:side'] {
 	flex-basis: content; // property as content of flex container
 	position: relative;
 	display: flex;
 	align-items: flex-end;
-}
-
-.header-app > [class*='l:side'] .svg {
-	fill: var(--current-color);
-	height: calc(var(--current-font-size-plus) * 1.65);
-	width: auto;
 }
 
 /* Configure reveal items default dimensions */
@@ -51,22 +31,30 @@
  * App header - Main Nav
  */
 .header-app > [class*='l:main'] > nav a {
-	display: flex;
-	height: 100%;
-	align-items: center;
-	padding: 0 var(--current-size-plus);
+	width: 100%;
 	font-weight: var(--font-weight-400);
 	text-transform: uppercase;
-	text-decoration: none;
-	transition: color 0.2s linear;
+	padding: var(--s-1) var(--s0);
 }
 
 .header-app > [class*='l:main'] > nav li {
+	background-color: inherit;
 	border-inline-start: var(--border-width-xl) solid var(--current-bg-color);
+	padding: var(--outline-offset) 0 var(--outline-offset) 0;
+}
+
+.header-app > [class*='l:main'] > nav li:hover {
+	--current-bg-color: var(--current-bg-contrast);
+	--current-border-color: var(--current-bg-contrast);
+	background-color: var(--current-bg-contrast);
+}
+
+.header-app > [class*='l:main'] > nav li:active {
+	--current-bg-color: var(--current-primary-light);
 }
 
 .header-app > [class*='l:main'] > nav li[aria-current='page'] {
-	border-inline-start: var(--border-width-xl) solid var(--current-primary);
+	--current-bg-color: var(--current-primary);
 }
 
 .header-app > [class*='l:main'] > nav li[aria-current='page'] a {
@@ -80,23 +68,15 @@
 	position: relative;
 	padding: var(--current-size) 0;
 	margin: 0;
-	height: var(--header-height);
-	display: flex;
-	align-items: center;
 	list-style: none;
-	background-size: contain;
 	width: 100%;
-	gap: var(--current-size);
 	background-color: inherit;
+	height: fit-content;
 }
 
 .header-app .l\:reveal\:auto > nav li {
-	position: relative;
-	min-width: 100%;
-	height: 100%;
-	padding-inline-end: unset; // override settings for ellipsis (search CSS comments for 'ellipsis' for reference)
-	overflow: initial; // override settings for ellipsis
-	background-color: inherit;
+	display: flex;
+	align-items: center;
 }
 
 /* Configure reveal menu positioning and width */
@@ -105,13 +85,13 @@
 }
 
 /* Configure reveal main nav dimensions */
-.app > .header-app .l\:reveal\:auto[class*='l:side'] .show {
+.header-app .l\:reveal\:auto[class*='l:side'] .show {
 	padding: var(--current-size);
 }
 
 /* Configure reveal settings menu dimensions */
-.app > .header-app .l\:reveal\:auto[class*='l:main'] .show {
-	height: 35vh;
+.header-app .l\:reveal\:auto[class*='l:main'] .show {
+	max-height: fit-content;
 	width: calc(100vw - 2 * var(--gap));
 }
 
@@ -131,313 +111,73 @@
 	background-color: var(--current-bg-color);
 }
 
-// @media screen and (min-width: 620px) {
-// 	.header-app > [class*='l:main'] > nav li[aria-current='page']::before {
-// 		--size: 6px;
-// 		content: '';
-// 		min-width: unset;
-// 		width: 0;
-// 		height: 0;
-// 		position: absolute;
-// 		top: 0;
-// 		left: calc(50% - var(--size));
-// 		border: var(--size) solid transparent;
-// 		border-top: var(--size) solid var(--current-primary-light);
-// 	}
-// }
+@mixin switchRowStyles($breakpoint, $bpSuffix) {
+	@media screen and (min-width: #{$breakpoint}) {
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav > ul {
+			padding: 0;
+			margin: 0;
+			width: auto;
+			flex-wrap: nowrap;
+			gap: var(--gap);
+		}
 
-// @include mixins.min-width(var(--bp-xxs)) {
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav a {
+			padding-block: var(--current-size);
+		}
+
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav li,
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav a {
+			width: fit-content;
+		}
+
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} > nav li {
+			border-inline-start: unset;
+			border-block-start: var(--border-width-xl) solid var(--current-bg-color);
+			padding: 0 0 var(--outline-offset) var(--outline-offset);
+		}
+
+		.header-app > .l\:reveal\:auto.bp\:#{$bpSuffix} > nav li[aria-current='page'] {
+			border-color: var(--current-primary);
+		}
+
+		/* Configure reveal menu positioning and width */
+		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$bpSuffix} {
+			justify-content: center;
+		}
+
+		/* Configure reveal settings menu dimensions */
+		.header-app [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} .show {
+			height: auto;
+		}
+
+		/* Configure reveal menu positioning and width */
+		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$bpSuffix} > menu {
+			justify-content: flex-end;
+			padding-block: 0;
+		}
+	}
+}
+
 @media screen and (min-width: 320px) {
-	.header-app .l\:reveal\:auto.bp\:xxs > nav > ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		width: auto;
-		height: var(--header-height);
-		display: flex;
-		align-items: center;
-		list-style: none;
-		background-size: contain;
-		flex-wrap: nowrap;
-		gap: var(--gap);
-	}
-
-	.header-app .l\:reveal\:auto.bp\:xxs > nav li {
-		min-width: unset;
-		height: var(--header-height);
-		background-size: contain;
-	}
-
-	.header-app > [class*='l:main'].l\:reveal\:auto.bp\:xxs > nav li {
-		border-inline-start: none;
-		border-block-start: var(--border-width-xl) solid var(--current-bg-color);
-	}
-
-	.header-app > .l\:reveal\:auto.bp\:xxs > nav li[aria-current='page'] {
-		border-color: var(--current-primary);
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xxs {
-		justify-content: center;
-	}
-
-	/* Configure reveal settings menu dimensions */
-	.header-app [class*='l:main'].l\:reveal\:auto.bp\:xxs .show,
-	.app > .header-app [class*='l:main'].l\:reveal\:auto.bp\:xxs .show {
-		height: auto;
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xxs > menu {
-		justify-content: flex-end;
-		padding-block: 0;
-	}
-
-	.header-app .l\:reveal\:auto > nav li > a {
-		padding-inline: var(--current-size-plus);
-	}
+	@include switchRowStyles(320px, 'xxs');
 }
 
 @media screen and (min-width: 620px) {
-	.header-app .l\:reveal\:auto.bp\:xs > nav > ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		width: auto;
-		height: var(--header-height);
-		display: flex;
-		align-items: center;
-		list-style: none;
-		background-size: contain;
-		flex-wrap: nowrap;
-		gap: var(--gap);
-	}
-
-	.header-app .l\:reveal\:auto.bp\:xs > nav li {
-		min-width: unset;
-		height: var(--header-height);
-		background-size: contain;
-	}
-
-	.header-app > [class*='l:main'].l\:reveal\:auto.bp\:xs > nav li {
-		border-inline-start: none;
-		border-block-start: var(--border-width-xl) solid var(--current-bg-color);
-	}
-
-	.header-app > .l\:reveal\:auto.bp\:xs > nav li[aria-current='page'] {
-		border-color: var(--current-primary);
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xs {
-		justify-content: center;
-	}
-
-	/* Configure reveal settings menu dimensions */
-	.header-app [class*='l:main'].l\:reveal\:auto.bp\:xs .show,
-	.app > .header-app [class*='l:main'].l\:reveal\:auto.bp\:xs .show {
-		height: auto;
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xs > menu {
-		justify-content: flex-end;
-		padding-block: 0;
-	}
+	@include switchRowStyles(620px, 'xs');
 }
 
 @media screen and (min-width: 935px) {
-	.header-app .l\:reveal\:auto.bp\:sm > nav > ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		width: auto;
-		height: var(--header-height);
-		display: flex;
-		align-items: center;
-		list-style: none;
-		background-size: contain;
-		flex-wrap: nowrap;
-		gap: var(--gap);
-	}
-
-	.header-app .l\:reveal\:auto.bp\:sm > nav li {
-		min-width: unset;
-		height: var(--header-height);
-		background-size: contain;
-	}
-
-	.header-app > [class*='l:main'].l\:reveal\:auto.bp\:sm > nav li {
-		border-inline-start: none;
-		border-block-start: var(--border-width-xl) solid var(--current-bg-color);
-	}
-
-	.header-app > .l\:reveal\:auto.bp\:sm > nav li[aria-current='page'] {
-		border-color: var(--current-primary);
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:sm {
-		justify-content: center;
-	}
-
-	/* Configure reveal settings menu dimensions */
-	.header-app [class*='l:main'].l\:reveal\:auto.bp\:sm .show,
-	.app > .header-app [class*='l:main'].l\:reveal\:auto.bp\:sm .show {
-		height: auto;
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:sm > menu {
-		justify-content: flex-end;
-		padding-block: 0;
-	}
+	@include switchRowStyles(935px, 'sm');
 }
 
-// @include mixins.min-width(var(--bp-md)) {
 @media screen and (min-width: 1360px) {
-	.header-app .l\:reveal\:auto.bp\:md > nav > ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		width: auto;
-		height: var(--header-height);
-		display: flex;
-		align-items: center;
-		list-style: none;
-		background-size: contain;
-		flex-wrap: nowrap;
-		gap: var(--gap);
-	}
-
-	.header-app .l\:reveal\:auto.bp\:md > nav li {
-		min-width: unset;
-		height: var(--header-height);
-		background-size: contain;
-	}
-
-	.header-app > [class*='l:main'].l\:reveal\:auto.bp\:md > nav li {
-		border-inline-start: none;
-		border-block-start: var(--border-width-xl) solid var(--current-bg-color);
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:md {
-		justify-content: center;
-	}
-
-	.header-app > .l\:reveal\:auto.bp\:md > nav li[aria-current='page'] {
-		border-color: var(--current-primary);
-	}
-
-	/* Configure reveal settings menu dimensions */
-	.header-app [class*='l:main'].l\:reveal\:auto.bp\:md .show,
-	.app > .header-app [class*='l:main'].l\:reveal\:auto.bp\:md .show {
-		height: auto;
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:md > menu {
-		justify-content: flex-end;
-		padding-block: 0;
-	}
+	@include switchRowStyles(1360px, 'md');
 }
 
-// @include mixins.min-width(var(--bp-lg)) {
 @media screen and (min-width: 1620px) {
-	.header-app .l\:reveal\:auto.bp\:lg > nav > ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		width: auto;
-		height: var(--header-height);
-		display: flex;
-		align-items: center;
-		list-style: none;
-		background-size: contain;
-		flex-wrap: nowrap;
-		gap: var(--gap);
-	}
-
-	.header-app .l\:reveal\:auto.bp\:lg > nav li {
-		min-width: unset;
-		height: var(--header-height);
-		background-size: contain;
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:lg {
-		justify-content: center;
-	}
-
-	.header-app > [class*='l:main'].l\:reveal\:auto.bp\:lg > nav li {
-		border-inline-start: none;
-		border-block-start: var(--border-width-xl) solid var(--current-bg-color);
-	}
-
-	.header-app > .l\:reveal\:auto.bp\:lg > nav li[aria-current='page'] {
-		border-color: var(--current-primary);
-	}
-
-	/* Configure reveal settings menu dimensions */
-	.header-app [class*='l:main'].l\:reveal\:auto.bp\:lg .show,
-	.app > .header-app [class*='l:main'].l\:reveal\:auto.bp\:lg .show {
-		height: auto;
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:lg > menu {
-		justify-content: flex-end;
-		padding-block: 0;
-	}
+	@include switchRowStyles(1620px, 'lg');
 }
 
-// @include mixins.min-width(var(--bp-xl)) {
 @media screen and (min-width: 2048px) {
-	.header-app .l\:reveal\:auto.bp\:xl > nav > ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		width: auto;
-		height: var(--header-height);
-		display: flex;
-		align-items: center;
-		list-style: none;
-		background-size: contain;
-		flex-wrap: nowrap;
-		gap: var(--gap);
-	}
-
-	.header-app .l\:reveal\:auto.bp\:xl > nav li {
-		min-width: unset;
-		height: var(--header-height);
-		background-size: contain;
-	}
-
-	.header-app > [class*='l:main'].l\:reveal\:auto.bp\:xl > nav li {
-		border-inline-start: none;
-		border-block-start: var(--border-width-xl) solid var(--current-bg-color);
-	}
-
-	.header-app > .l\:reveal\:auto.bp\:xl > nav li[aria-current='page'] {
-		border-color: var(--current-primary);
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xl {
-		justify-content: center;
-	}
-
-	/* Configure reveal settings menu dimensions */
-	.header-app [class*='l:main'].l\:reveal\:auto.bp\:xl .show,
-	.app > .header-app [class*='l:main'].l\:reveal\:auto.bp\:xl .show {
-		height: auto;
-	}
-
-	/* Configure reveal menu positioning and width */
-	.header-app [class*='l:side'].l\:reveal\:auto.bp\:xl > menu {
-		justify-content: flex-end;
-		padding-block: 0;
-	}
+	@include switchRowStyles(2048px, 'xl');
 }

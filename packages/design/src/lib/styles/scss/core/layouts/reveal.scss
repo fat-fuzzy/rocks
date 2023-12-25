@@ -27,7 +27,7 @@
 	top: calc(var(--gap) / 2); // TODO : Fix magic denominator
 	z-index: var(--z-index-reveal);
 	width: 100%;
-	max-height: 35vh;
+	max-height: fit-content;
 	overflow: auto;
 }
 
