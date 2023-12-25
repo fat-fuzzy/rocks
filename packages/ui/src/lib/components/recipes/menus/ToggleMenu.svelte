@@ -50,6 +50,19 @@
 				}
 				selected = [event.detail]
 				break
+			case 'checkbox':
+				if (event.detail.pressed) {
+					selected.map((c) => {
+						if (c.name === event.detail.id) {
+							c.send('TOGGLE')
+						}
+						if (c.name !== event.detail.id && c.pressed) {
+							c.send('TOGGLE')
+						}
+					})
+				}
+				selected = [event.detail]
+				break
 			default:
 				break
 		}
