@@ -72,7 +72,7 @@ main > [class^='l:sidebar'] {
 
 [class^='l:side:'] nav {
 	height: auto;
-	max-height: 35vh;
+	max-height: fit-content;
 	overflow-y: auto;
 }
 
