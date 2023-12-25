@@ -1,6 +1,7 @@
 //== Toggle  default
 
-[class^='switch'][aria-pressed] {
+[class^='switch'][aria-pressed='true'] {
+	flex-grow: 0;
 	box-shadow: var(--current-shadow-inset-1);
 }
 
