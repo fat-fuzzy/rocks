@@ -54,12 +54,12 @@
 		/>
 	{/each}
 	{#await Promise.resolve()}
-		<div class={`${frameClass} card:lg`}>
+		<div class={`${frameClass} card:md`}>
 			<Button
 				id={`submit.${path}`}
 				title="Apply styles"
 				type="submit"
-				size="xl"
+				size="lg"
 				color="highlight"
 				variant="round outline"
 				asset="emoji:nojs"

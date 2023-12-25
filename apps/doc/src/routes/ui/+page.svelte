@@ -53,7 +53,7 @@
 	$: reveal = revealContext.reveal
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'page-header card:md l:switcher:xs bp:xxs bg:polar'
+	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
 	// TODO: load text content to README.md
 
 	onDestroy(() => {

@@ -13,7 +13,7 @@
 <Head page={title} description="Log of Architectural decisions" />
 
 <header class="page-header bg:polar">
-	<h1 class="card:xl">{`Fat Fuzzy  ${title}`}</h1>
+	<h1 class="card:lg">{`Fat Fuzzy  ${title}`}</h1>
 </header>
 
 <div class="l:stack:xl card:xl">

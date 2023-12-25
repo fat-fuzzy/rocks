@@ -113,7 +113,7 @@ const TABS: Tab[] = [
 	{
 		id: 'context.menu.toggle.demo',
 		title: 'Demo',
-		size: 'xl',
+		size: 'lg',
 		color: 'accent',
 		asset: 'emoji:demo',
 		value: 'demo',
@@ -121,7 +121,7 @@ const TABS: Tab[] = [
 	{
 		id: 'context.menu.toggle.doc',
 		title: 'Doc',
-		size: 'xl',
+		size: 'lg',
 		color: 'primary',
 		asset: 'emoji:doc',
 		value: 'doc',
