@@ -125,6 +125,7 @@ const TABS: Tab[] = [
 		color: 'primary',
 		asset: 'emoji:doc',
 		value: 'doc',
+		initial: 'pressed',
 	},
 ]
 
@@ -145,7 +146,7 @@ const APP_SETTINGS = {
 			size: 'md',
 			states: {
 				active: {id: 'night', text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {id: 'day', text: 'day', value: 'day', asset: 'emoji:day'},
+				inactive: {id: 'day', text: 'day', value: 'day', asset: 'emoji:day', initial: 'pressed'},
 			},
 		},
 		{
@@ -158,7 +159,13 @@ const APP_SETTINGS = {
 			size: 'md',
 			states: {
 				active: {id: 'contrast', text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-				inactive: {id: 'blend', text: 'blend', value: 'blend', asset: 'emoji:blend'},
+				inactive: {
+					id: 'blend',
+					text: 'blend',
+					value: 'blend',
+					asset: 'emoji:blend',
+					initial: 'pressed',
+				},
 			},
 		},
 	],
