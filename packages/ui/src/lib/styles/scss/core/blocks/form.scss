@@ -363,12 +363,33 @@ label.check {
 	gap: var(--current-size);
 }
 
-// label.radio input,
-// label.check input,
 label.radio[class*='emoji'] span,
 label.check[class*='emoji'] span {
 	flex-grow: 1;
 	font-size: var(--current-font-size);
+}
+
+@mixin nightColoredInputStyles($color) {
+	label.#{$color} > [type='file'] {
+		color: var(--color-black);
+	}
+
+	label.outline.#{$color} > input,
+	label.outline.#{$color} > [type='file'] {
+		color: var(--current-#{$color}-light);
+	}
+
+	label.bare.#{$color} > input,
+	label.bare.#{$color} > [type='file'] {
+		color: var(--current-#{$color}-lighter);
+	}
+
+	.outline.#{$color}:hover > input,
+	.outline.#{$color}:hover > [type='file'],
+	.bare.#{$color}:hover > input,
+	.bare.#{$color}:hover > [type='file'] {
+		color: var(--color-black);
+	}
 }
 
 .night {
@@ -377,10 +398,9 @@ label.check[class*='emoji'] span {
 		color: var(--color-white);
 	}
 
-	label.primary > [type='file'],
-	label.accent > [type='file'],
-	label.highlight > [type='file'] {
-		color: var(--color-black);
+	label.fill > input,
+	label.fill > [type='file'] {
+		background-color: var(--current-bg-color);
 	}
 
 	label.outline > input,
@@ -393,56 +413,9 @@ label.check[class*='emoji'] span {
 		color: var(--color-white);
 	}
 
-	label.outline.primary > input,
-	label.outline.primary > [type='file'] {
-		color: var(--current-primary-light);
-	}
-
-	label.outline.accent > input,
-	label.outline.accent > [type='file'] {
-		color: var(--current-accent-light);
-	}
-
-	label.outline.highlight > input,
-	label.outline.highlight > [type='file'] {
-		color: var(--current-highlight-light);
-	}
-
-	label.bare.primary > input,
-	label.bare.primary > [type='file'] {
-		color: var(--current-primary-lighter);
-	}
-
-	label.bare.accent > input,
-	label.bare.accent > [type='file'] {
-		color: var(--current-accent-lighter);
-	}
-
-	label.bare.highlight > input,
-	label.bare.highlight > [type='file'] {
-		color: var(--current-highlight-lighter);
-	}
-
-	.outline.primary:hover > input,
-	.outline.primary:hover > [type='file'],
-	.bare.primary:hover > input,
-	.bare.primary:hover > [type='file'] {
-		color: var(--color-black);
-	}
-
-	.outline.accent:hover > input,
-	.outline.accent:hover > [type='file'],
-	.bare.accent:hover > input,
-	.bare.accent:hover > [type='file'] {
-		color: var(--color-black);
-	}
-
-	.outline.highlight:hover > input,
-	.outline.highlight:hover > [type='file'],
-	.bare.highlight:hover > input,
-	.bare.highlight:hover > [type='file'] {
-		color: var(--color-black);
-	}
+	@include nightColoredInputStyles('primary');
+	@include nightColoredInputStyles('accent');
+	@include nightColoredInputStyles('highlight');
 }
 
 label:hover > input,
