@@ -73,9 +73,6 @@ export class StylesApi {
 	}
 
 	applyStyles(updatedStyles: StyleTree) {
-		console.log('applyStyles - updatedStyles')
-		console.log(updatedStyles)
-
 		Object.keys(updatedStyles).map((updatedCategory) => {
 			const category = updatedStyles[updatedCategory]
 			let families: string[] = []

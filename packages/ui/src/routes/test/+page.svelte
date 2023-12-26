@@ -85,24 +85,20 @@
 	</RevealAuto>
 </header>
 
-<Sidebar size="xs" align="end">
-	<div slot="main" class="l:stack">
-		<section class="card:md">
-			<div class="l:text:lg">{@html content.html}</div>
-		</section>
-		{#each components as { category, items }}
-			<Collection
-				{title}
-				depth={1}
-				isPage={false}
-				path={`${path}/${category}`}
-				components={items}
-				{category}
-				{stylesApi}
-				content={markdowns.categories.find(({meta}) => meta.slug === category)}
-				{actionPath}
-				redirect={$page.url.pathname}
-			/>
-		{/each}
-	</div>
-</Sidebar>
+<section class="card:md">
+	<div class="l:text:lg">{@html content.html}</div>
+	{#each components as { category, items }}
+		<Collection
+			{title}
+			depth={1}
+			isPage={false}
+			path={`${path}/${category}`}
+			components={items}
+			{category}
+			{stylesApi}
+			content={markdowns.categories.find(({meta}) => meta.slug === category)}
+			{actionPath}
+			redirect={$page.url.pathname}
+		/>
+	{/each}
+</section>
