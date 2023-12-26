@@ -1,5 +1,5 @@
 import type {LayoutServerLoad} from './$types'
-import markdownData from '$data/doc'
+import assets from '$data/doc'
 
 export const load = (async (event) => {
 	let styles = null
@@ -23,7 +23,7 @@ export const load = (async (event) => {
 	if (event.locals.currentTabs) {
 		currentTabs = JSON.parse(event.locals.currentTabs)
 	}
-	const markdowns = await markdownData.fetchMarkdowns()
+	const markdowns = assets.markdowns
 
 	return {sidebar, styles, context, state, currentTabs, markdowns}
 }) satisfies LayoutServerLoad
