@@ -145,7 +145,7 @@
 		<section class="l:main card:md">
 			<div class="l:text:lg">{@html content.html}</div>
 		</section>
-		<aside class="l:side">
+		<aside class="l:side card:md">
 			{#if !content.meta}
 				<p class="feedback bare emoji:default">Coming Soon!</p>
 			{:else}
