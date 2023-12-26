@@ -56,7 +56,7 @@
 	.l\:reveal[class*='fixed'],
 	.l\:reveal.show[class*='fixed'] {
 		--current-side-size: var(--sidebar-width-xs);
-		--current-gap: calc(var(--gap) * 4.35);
+		--current-gap: calc(var(--gap) * 3.85);
 		position: fixed;
 		width: var(--current-side-size);
 		top: var(--current-gap);
