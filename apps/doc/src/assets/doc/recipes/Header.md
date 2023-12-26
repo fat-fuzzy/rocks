@@ -5,7 +5,7 @@ category: 'recipes'
 group: 'headers'
 content_types: ['Nav', 'Settings']
 props_state: ['formaction']
-props_style: ['size', 'color', 'variant', 'breakpoint', 'container']
+props_style: {'layouts': {'layout': ['breakpoint'], 'container': ['container']}}
 context: ['app.settings', 'shared.container']
 ---
 
@@ -16,7 +16,7 @@ Use a `Header` component to provide main app navigation and settings controls to
 ### Related Components
 
 - `RevealAuto` component in `layouts`
-- `Nav` component in `recipes/navs`
+- `Nav` component in `composition/navs`
 - `Settings` component in `recipes/forms`
 
 ### Examples

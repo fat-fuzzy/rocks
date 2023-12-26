@@ -1,7 +1,7 @@
 ---
 title: Recipes
 slug: recipes
-tags: ['recipes']
+category: 'recipes'
 inputs: ['blocks.element', 'layouts.container', 'layouts.element']
 context: ['app.settings']
 ---
