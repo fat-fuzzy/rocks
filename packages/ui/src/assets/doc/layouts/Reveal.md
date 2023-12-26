@@ -4,7 +4,7 @@ slug: Reveal
 category: 'layouts'
 # group: ['reveal']
 content_types: ['any']
-props_style: ['size']
+props_style: {'blocks': {'element': ['size', 'color', 'variant']}}
 context: ['app.settings', 'shared.container']
 ---
 
