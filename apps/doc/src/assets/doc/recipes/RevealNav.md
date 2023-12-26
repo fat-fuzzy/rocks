@@ -5,7 +5,7 @@ category: 'recipes'
 group: 'navs'
 content_types: ['Nav']
 props_state: ['title', 'formaction', 'items']
-props_style: ['color', 'variant', 'size', 'background']
+props_style: {'blocks': {'element': ['color', 'variant', 'size', 'background']}}
 context: ['app.settings', 'shared.container']
 ---
 
