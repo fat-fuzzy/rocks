@@ -169,7 +169,7 @@
 		{components}
 		{path}
 		{category}
-		markdowns={utils.props.getCategoryMarkdowns(category, markdowns)}
+		content={markdowns.categories.find(({meta}) => meta.slug === category)}
 		{stylesApi}
 		{actionPath}
 		redirect={$page.url.pathname}

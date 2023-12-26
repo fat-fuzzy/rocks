@@ -2,13 +2,11 @@
 	import type {ComponentType} from 'svelte'
 	import type {StylesApi} from '.'
 	import type {StyleTree} from './types'
-	import type {Markdown} from '$lib/api/props/types'
 
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
 	import {initStyles} from '$lib/api/styles'
-	import {getElementMeta} from '$lib/api/props'
 	import * as ui from '$stores/ui'
 
 	import Sidebar from '$lib/components/layouts/Sidebar.svelte'
@@ -20,10 +18,10 @@
 	export let redirect: string | undefined
 
 	export let title = ''
-
-	export let markdowns: Markdown[]
+	export let content = {html: ''}
 	export let depth = 0
 	export let path = $page.url.pathname
+
 	export let layout = 'grid'
 	export let size = 'xs'
 	export let color = 'primary:light'
@@ -33,7 +31,6 @@
 	export let stylesApi: StylesApi = initStyles()
 
 	let background = ''
-	let content = markdowns.find(({meta}) => meta.slug === category)
 	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [
