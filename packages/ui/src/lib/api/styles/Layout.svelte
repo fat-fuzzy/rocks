@@ -47,9 +47,12 @@
 	$: breakpoint = styles.layouts?.layout.breakpoint ?? breakpoint
 	$: threshold = styles.layouts?.layout.threshold ?? threshold
 	// Content options
-	$: content = styles.layouts?.content.content ?? 'card'
-	$: sideContent = styles.layouts?.content.side ?? 'card'
-	$: mainContent = styles.layouts?.content.main ?? 'text'
+	// $: content = styles.layouts?.content.content ?? 'card'
+	// $: sideContent = styles.layouts?.content.side ?? 'card'
+	// $: mainContent = styles.layouts?.content.main ?? 'text'
+	$: content = 'card'
+	$: sideContent = 'card'
+	$: mainContent = 'text'
 	$: contentStyles = `card:${size} box ${size} bg:highlight:lightest`
 
 	onDestroy(() => {
