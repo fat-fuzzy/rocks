@@ -472,7 +472,7 @@ const contentFamily = {
 	layout: 'switcher',
 	size: 'md',
 	variant: 'card',
-	props: ['content', 'side', 'mMain'],
+	props: ['content', 'side', 'main'],
 }
 
 const FAMILIES: {[key: string]: any} = {
