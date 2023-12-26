@@ -26,3 +26,12 @@ menu.end {
 .menu\:settings [class^='switch'][aria-pressed].outline {
 	background-color: inherit;
 }
+
+.menu\:settings li:hover {
+	background-color: inherit;
+}
+
+.menu\:settings [class^='switch'][aria-pressed]:hover {
+	background-color: var(--current-bg-contrast);
+	box-shadow: var(--current-shadow);
+}
