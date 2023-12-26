@@ -109,7 +109,7 @@
 	>
 		<div slot="content" class="l:side ui:menu l:switcher:sm">
 			{#if currentTab.value === 'demo'}
-				<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+				<Api {path} {actionPath} redirect={$page.url.pathname} />
 			{/if}
 
 			<form
@@ -164,13 +164,13 @@
 	</article>
 {:else if currentTab.value === 'demo'}
 	<Collection
-		{title}
 		depth={1}
 		isPage={true}
 		{components}
 		{path}
 		{category}
 		content={markdowns.categories.find(({meta}) => meta.slug === category)}
+		{markdowns}
 		{stylesApi}
 		{actionPath}
 		redirect={$page.url.pathname}

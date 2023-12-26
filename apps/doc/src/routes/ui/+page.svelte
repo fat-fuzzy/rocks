@@ -16,13 +16,13 @@
 	const {Head} = headless
 	const {Collection, Api} = api
 	const {Sidebar, RevealAuto} = layouts
-	const actionPath = '/ui'
 	const {DEFAULT_REVEAL_STATE} = constants
 
+	const actionPath = '/ui'
 	const title = 'UI' // TODO : Fix title: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
-	let revealContext: {[key: string]: string} = $page.data.context || DEFAULT_REVEAL_STATE
+	let revealContext = $page.data.context || DEFAULT_REVEAL_STATE
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -80,7 +80,7 @@
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side shrink ui:menu">
-			<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+			<Api {path} {actionPath} redirect={$page.url.pathname} />
 		</div>
 	</RevealAuto>
 </header>
@@ -92,13 +92,13 @@
 		</section>
 		{#each components as { category, items }}
 			<Collection
-				{title}
 				depth={1}
 				isPage={false}
 				components={items}
 				{category}
 				content={markdowns.categories.find(({meta}) => meta.slug === category)}
 				path={`${path}/${category}`}
+				{markdowns}
 				{actionPath}
 				redirect={$page.url.pathname}
 			/>
