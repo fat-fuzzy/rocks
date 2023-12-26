@@ -3,7 +3,6 @@
 	import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
-	export let title = ''
 	export let categories = ['app']
 	export let path = ''
 	export let method = 'POST'
@@ -17,7 +16,7 @@
 	let apiBreakpoint = 'xxs'
 
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	$: frameClass = categories[0] === 'app' ? 'l:switcher:md' : 'l:frame:twin' // TODO: Fix this - does not work
+	$: frameClass = categories[0] === 'app' ? 'l:frame:square' : 'l:frame:twin'
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -49,7 +48,6 @@
 	{#each categories as category}
 		<StyleFamily
 			{category}
-			{title}
 			formaction={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
 		/>
 	{/each}
