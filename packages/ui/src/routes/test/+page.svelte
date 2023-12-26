@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, recipes, graphics, api, stores, constants, headless} from '$lib'
+	import {headless, tokens, blocks, layouts, recipes, graphics, api, stores, constants} from '$lib'
 
 	const {Head} = headless
 	const {Collection, Api} = api
