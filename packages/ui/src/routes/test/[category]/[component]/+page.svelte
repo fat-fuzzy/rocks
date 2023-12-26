@@ -106,7 +106,7 @@
 	>
 		<div slot="content" class="ui:menu l:switcher:sm">
 			{#if currentTab.value === 'demo'}
-				<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+				<Api {path} {actionPath} redirect={$page.url.pathname} />
 			{/if}
 			<form
 				method="POST"
@@ -205,6 +205,7 @@
 		{category}
 		{stylesApi}
 		component={Component}
+		meta={content.meta}
 		{actionPath}
 		redirect={$page.url.pathname}
 	/>

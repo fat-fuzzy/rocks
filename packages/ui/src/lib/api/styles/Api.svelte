@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type {Meta} from '$lib/api/props/types'
+
 	import {enhance} from '$app/forms'
 	import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
@@ -7,8 +9,9 @@
 	export let path = ''
 	export let method = 'POST'
 	export let formaction = 'updateStyles'
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
+	export let actionPath: string | undefined
+	export let redirect: string | undefined
+	export let meta: Meta | undefined
 	// export let reset = 'reset'
 
 	let apiLayout = 'nowrap grow'
@@ -48,6 +51,7 @@
 	{#each categories as category}
 		<StyleFamily
 			{category}
+			{meta}
 			formaction={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
 		/>
 	{/each}

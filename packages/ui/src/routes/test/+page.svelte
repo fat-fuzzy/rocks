@@ -69,7 +69,7 @@
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side shrink ui:menu">
-			<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+			<Api {path} {actionPath} redirect={$page.url.pathname} />
 		</div>
 	</RevealAuto>
 </header>
@@ -78,7 +78,6 @@
 	<div class="l:text:lg">{@html content.html}</div>
 	{#each components as { category, items }}
 		<Collection
-			{title}
 			depth={1}
 			isPage={false}
 			path={`${path}/${category}`}
@@ -86,6 +85,7 @@
 			{category}
 			{stylesApi}
 			content={markdowns.categories.find(({meta}) => meta.slug === category)}
+			{markdowns}
 			{actionPath}
 			redirect={$page.url.pathname}
 		/>

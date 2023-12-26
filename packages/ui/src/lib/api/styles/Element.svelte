@@ -2,6 +2,7 @@
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
 	import type {StylesApi} from '$lib/api/styles'
+	import type {Meta} from '$lib/api/props/types'
 
 	import {onDestroy} from 'svelte'
 
@@ -27,6 +28,7 @@
 	export let category = ''
 	export let color = 'primary:light'
 	export let stylesApi: StylesApi = initStyles()
+	export let meta: Meta
 
 	let ApiElement: {[category: string]: ComponentType} = {
 		tokens: Token,
@@ -49,7 +51,6 @@
 
 	let styles: StyleTree = stylesApi.getStyleTree()
 	let settings = styles.app
-
 	const stores = [
 		ui.app.subscribe((value) => {
 			if (value) {
@@ -127,16 +128,9 @@
 			<div class="l:stack:lg">
 				<details id={`${category}-${title}-api`} class="l:stack:lg" open>
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
-					{#if category === 'tokens' || category === 'graphics'}
-						<div class="card:lg text:center">
-							<p class={`font:xl`}>🐰</p>
-							<p class={`font:md`}>Coming soon!</p>
-						</div>
-					{:else}
-						<div class="drop w:full bg:polar ui:menu">
-							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
-						</div>
-					{/if}
+					<div class="drop w:full bg:polar ui:menu">
+						<Api categories={[category]} {path} {actionPath} {redirect} {meta} />
+					</div>
 				</details>
 				<!-- <section id={`${category}-${title}-classes`}>
 			<details class={`l:stack:md`}>
