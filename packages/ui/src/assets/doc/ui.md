@@ -1,6 +1,6 @@
 ---
 title: Fat Fuzzy UI
-slug: test
+slug: ui
 category: 'app'
 context: ['app.settings']
 ---

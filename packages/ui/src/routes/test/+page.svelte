@@ -1,22 +1,11 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
-	import {
-		tokens,
-		blocks,
-		layouts,
-		recipes,
-		graphics,
-		api,
-		stores,
-		constants,
-		headless,
-		utils,
-	} from '$lib'
+	import {tokens, blocks, layouts, recipes, graphics, api, stores, constants, headless} from '$lib'
 
 	const {Head} = headless
 	const {Collection, Api} = api
-	const {Sidebar, RevealAuto} = layouts
+	const {RevealAuto} = layouts
 	const {DEFAULT_REVEAL_STATE} = constants
 
 	const actionPath = '/test'
@@ -53,7 +42,7 @@
 	$: reveal = revealContext.reveal
 	$: markdowns = $page.data.markdowns
 	$: path = $page.url.pathname
-	$: content = markdowns.categories.find(({meta}) => meta.slug === 'test')
+	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
 	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
 
 	onDestroy(() => {
