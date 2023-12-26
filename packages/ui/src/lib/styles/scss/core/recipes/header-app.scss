@@ -49,17 +49,15 @@
 	background-color: var(--current-bg-contrast);
 }
 
-.header-app > [class*='l:main'] > nav li:active {
-	--current-bg-color: var(--current-primary-light);
-}
-
-.header-app > [class*='l:main'] > nav li[aria-current='page'] {
-	--current-bg-color: var(--current-primary);
+.header-app [class*='l:side'] a:hover {
+	background-color: var(--current-bg-contrast);
+	box-shadow: var(--current-shadow);
 }
 
 .header-app > [class*='l:main'] > nav li[aria-current='page'] a {
 	color: var(--current-color);
 	text-decoration: none;
+	background-color: inherit;
 }
 
 //== Main navigation (in application Header)
@@ -113,16 +111,22 @@
 
 @mixin switchRowStyles($breakpoint, $bpSuffix) {
 	@media screen and (min-width: #{$breakpoint}) {
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} {
+			justify-content: center;
+		}
+
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} .show,
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} [class*='hide:'] {
+			height: 100%;
+		}
+
 		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav > ul {
 			padding: 0;
 			margin: 0;
 			width: auto;
 			flex-wrap: nowrap;
 			gap: var(--gap);
-		}
-
-		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav a {
-			padding-block: var(--current-size);
+			height: 100%;
 		}
 
 		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav li,
@@ -131,6 +135,9 @@
 		}
 
 		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} > nav li {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			border-inline-start: unset;
 			border-block-start: var(--border-width-xl) solid var(--current-bg-color);
 			padding: 0 0 var(--outline-offset) var(--outline-offset);
