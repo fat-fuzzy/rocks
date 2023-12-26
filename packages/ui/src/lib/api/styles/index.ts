@@ -1,13 +1,17 @@
-import type {
-	AppStyles,
-	TokenStyles,
-	BlockStyles,
-	LayoutStyles,
-	StyleOptions,
-	StyleTree,
-	StyleCategory,
+import type {Meta} from '$lib/api/props/types'
+import {
+	type AppStyles,
+	type TokenStyles,
+	type BlockStyles,
+	type LayoutStyles,
+	type StyleOptions,
+	type StyleTree,
+	type StyleCategory,
+	type StyleInputGroup,
+	StyleFamily,
 } from './types'
 import {getFamily} from '$lib/api/props/props-style'
+import format from '$lib/utils/format'
 
 export class StylesApi {
 	app: AppStyles
@@ -22,12 +26,82 @@ export class StylesApi {
 		this.layouts = layouts
 	}
 
-	getFormOptions(category: string): StyleCategory {
-		return this.getCategoryOptions(category)
+	getFormOptions(category: string, meta: Meta | undefined): StyleCategory[] {
+		if (meta && meta.props_style) {
+			return this.getElementFormOptions(meta.props_style)
+		}
+		return [this.getCategoryOptions(category)]
 	}
 
-	getElementFormOptions(category: string, styleProps): StyleCategory {
-		return this.getCategoryOptions(category)
+	getElementFormOptions(styleProps: {
+		[key: string]: {
+			[key: string]: string[]
+		}
+	}): StyleCategory[] {
+		const catNames = Object.keys(styleProps)
+		let families
+
+		const options = catNames.map((category) => {
+			families = styleProps[category]
+			return this.getElementCategoryOptions(category, families)
+		})
+
+		return options
+	}
+
+	getElementCategoryOptions(
+		category: string,
+		families: {
+			[key: string]: string[]
+		},
+	): StyleCategory {
+		const famNames = Object.keys(families)
+		const options: StyleCategory = {}
+
+		famNames.forEach((familyName) => {
+			const inputNames = families[familyName].map((inputName) => format.capitalize(inputName))
+			options[familyName] = getFamily(format.capitalize(familyName), category, inputNames)
+		})
+
+		return options
+	}
+
+	getElementFamilyOptions(familyOptions: StyleFamily, inputGroups: string[]): StyleFamily {
+		const options: StyleInputGroup[] = inputGroups.reduce((inputs: StyleInputGroup[], input) => {
+			const familyInput: StyleInputGroup | undefined = familyOptions.itemsMap.get(input)
+
+			if (familyInput !== undefined) {
+				return [...inputs, familyInput]
+			}
+
+			return inputs
+		}, [])
+
+		return new StyleFamily({
+			id: familyOptions.id,
+			name: familyOptions.name,
+			title: familyOptions.title,
+			items: options,
+			layout: familyOptions.layout,
+			container: familyOptions.container,
+			size: familyOptions.size,
+			variant: familyOptions.variant,
+		})
+	}
+
+	getFamilyOptions(family: string, category: StyleCategory): StyleFamily | undefined {
+		switch (family) {
+			case 'settings':
+				return category.settings
+			case 'element':
+				return category.element
+			case 'layout':
+				return category.layout
+			case 'container':
+				return category.container
+			default:
+				return undefined
+		}
 	}
 
 	getCategoryOptions(category: string): StyleCategory {

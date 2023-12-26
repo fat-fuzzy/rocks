@@ -3,18 +3,7 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {
-		tokens,
-		blocks,
-		layouts,
-		recipes,
-		graphics,
-		api,
-		stores,
-		constants,
-		headless,
-		utils,
-	} from '$lib'
+	import {tokens, blocks, layouts, recipes, graphics, api, stores, constants, headless} from '$lib'
 
 	const {Head} = headless
 	const {Collection, Api} = api
@@ -107,7 +96,7 @@
 	>
 		<div slot="content" class="ui:menu l:switcher:sm">
 			{#if currentTab.value === 'demo'}
-				<Api {title} {path} {actionPath} redirect={$page.url.pathname} />
+				<Api {path} {actionPath} redirect={$page.url.pathname} />
 			{/if}
 			<form
 				method="POST"
@@ -163,13 +152,13 @@
 	</article>
 {:else if currentTab.value === 'demo'}
 	<Collection
-		{title}
 		depth={1}
 		isPage={true}
 		{components}
 		{path}
 		{category}
 		content={markdowns.categories.find(({meta}) => meta.slug === category)}
+		{markdowns}
 		{stylesApi}
 		{actionPath}
 		redirect={$page.url.pathname}
