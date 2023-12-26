@@ -4,7 +4,11 @@ slug: ToggleMenu
 category: 'recipes'
 group: 'menus'
 props_state: ['title', 'formaction', 'value']
-props_style: ['color', 'variant', 'size', 'background', 'layout', 'threshold']
+props_style:
+  {
+    'blocks': {'element': ['color', 'variant', 'size']},
+    'layouts': {'layout': ['layout', 'threshold']},
+  }
 context: ['app.settings', 'shared.container']
 ---
 

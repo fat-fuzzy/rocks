@@ -4,7 +4,8 @@ slug: RevealAuto
 category: 'layouts'
 # group: ['reveal']
 content_types: ['any']
-props_style: ['size', 'breakpoint']
+props_style:
+  {'blocks': {'element': ['size', 'color', 'variant']}, 'layouts': {'layout': ['breakpoint']}}
 context: ['app.settings']
 ---
 

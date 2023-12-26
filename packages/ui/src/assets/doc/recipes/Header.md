@@ -5,7 +5,7 @@ category: 'recipes'
 group: 'headers'
 content_types: ['Nav', 'Settings']
 props_state: ['formaction']
-props_style: ['size', 'color', 'variant', 'breakpoint', 'container']
+props_style: {'layouts': {'layout': ['breakpoint'], 'container': ['container']}}
 context: ['app.settings', 'shared.container']
 ---
 
