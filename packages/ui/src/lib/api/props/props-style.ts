@@ -546,10 +546,6 @@ const INPUT_GROUP_NAME: {[key: string]: string} = {
 
 function getInputGroup(name: string, category: string, family: string) {
 	const slug = name.toLowerCase()
-	console.log('getInputGroup - slug')
-	console.log(slug)
-	console.log('getInputGroup - PROPS_STYLE[slug]')
-	console.log(PROPS_STYLE[slug])
 	return new StyleInputGroup({
 		name,
 		id: `${category}.${family}.${slug}`,
@@ -569,10 +565,6 @@ function getInputGroup(name: string, category: string, family: string) {
 
 function getFamily(name: string, category: string, props: string[]) {
 	const slug = name.toLowerCase()
-
-	console.log('getFamily - slug')
-	console.log(slug)
-
 	return new StyleFamily({
 		name,
 		title: '',
