@@ -88,10 +88,6 @@ const DEFAULT_STYLES: StyleTree = {
 			contrast: 'blend',
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
-	shared: {
-		layout: {layout: 'switcher', breakpoint: 'xl'}, // need large breakpoint for Header default demo
-		container: {container: 'center', size: 'md'},
-	},
 	blocks: {
 		element: {
 			variant: 'fill',
@@ -104,8 +100,8 @@ const DEFAULT_STYLES: StyleTree = {
 		},
 	},
 	layouts: {
-		content: {content: 'card', side: 'card', main: 'text'},
-		element: {size: 'md', breakpoint: 'lg'},
+		layout: {layout: 'switcher', threshold: 'md', breakpoint: 'lg'}, // need large breakpoint for Header default demo
+		container: {container: 'center', size: 'md'},
 	},
 }
 

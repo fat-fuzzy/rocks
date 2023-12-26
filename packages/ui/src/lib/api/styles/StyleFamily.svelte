@@ -11,7 +11,6 @@
 	import * as ui from '$stores/ui'
 	import {initStyles} from '$lib/api/styles'
 
-	export let title = ''
 	export let category = 'app'
 	export let formaction: string | undefined = undefined
 
@@ -91,7 +90,7 @@
 	}
 
 	function handleToggle(event: CustomEvent, familyName: string, id: string) {
-		const selected = event.detail.selected // TODO: no multiple values for no
+		const selected = event.detail.selected // TODO: test multiple values
 		if (selected.length) {
 			const payload = {
 				name: familyName,

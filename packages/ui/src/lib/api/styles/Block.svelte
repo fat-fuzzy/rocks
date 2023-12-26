@@ -42,8 +42,8 @@
 	$: asset = styles.blocks?.element.asset ?? asset
 	// Layout options
 	// - [layout + breakpoint] work together
-	$: layout = styles.shared?.layout.layout ?? layout
-	$: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
+	$: layout = styles.layouts?.layout.layout ?? layout
+	$: breakpoint = styles.layouts?.layout.breakpoint ?? breakpoint
 	$: props = {...props, asset, title, color, status, context, variant, size, layout, breakpoint}
 
 	onDestroy(() => {

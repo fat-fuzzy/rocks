@@ -13,7 +13,6 @@
 	export let props: any
 	export let stylesApi: StylesApi = initStyles()
 
-	let layout = 'card'
 	let color = ''
 	let variant = ''
 	let asset = props?.asset || ''
@@ -34,11 +33,7 @@
 	// $: variant = styles.tokens?.element.variant ?? variant
 	$: color = styles.tokens?.element.color ?? color
 	$: typography = styles.tokens?.element.typography ?? typography
-	// Layout options
-	// - [layout + breakpoint] work together
-	// $: layout = styles.shared?.layout.layout ?? layout
-	// $: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
-	$: props = {...props, asset, title, color, variant, size, layout}
+	$: props = {...props, asset, title, color, variant, size}
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())

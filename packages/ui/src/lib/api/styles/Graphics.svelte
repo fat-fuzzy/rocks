@@ -58,9 +58,9 @@
 	$: size = styles.blocks?.element.size ?? size
 	// Layout options
 	// - [layout + breakpoint] work together
-	$: layout = styles.shared?.layout.layout ?? layout
-	$: breakpoint = styles.shared?.layout.breakpoint ?? breakpoint
-	$: threshold = styles.shared?.layout.threshold ?? threshold
+	$: layout = styles.layouts?.layout.layout ?? layout
+	$: threshold = styles.layouts?.layout.threshold ?? threshold
+	$: breakpoint = styles.layouts?.layout.breakpoint ?? breakpoint
 
 	$: props = {
 		...props,

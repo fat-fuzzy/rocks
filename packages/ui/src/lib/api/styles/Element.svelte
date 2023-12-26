@@ -2,14 +2,12 @@
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
 	import type {StylesApi} from '$lib/api/styles'
-	import type {Meta} from '$lib/api/props/types'
 
 	import {onDestroy} from 'svelte'
 
 	import * as ui from '$stores/ui'
 	import {initStyles} from '$lib/api/styles'
 	import {getFixtures} from '$lib/api/fixtures/js'
-	// import {getElementProps} from '$lib/api/props/'
 
 	import Api from './Api.svelte'
 	import Token from './Token.svelte'
@@ -28,11 +26,6 @@
 	export let component: ComponentType
 	export let category = ''
 	export let color = 'primary:light'
-	// export let meta: Meta | undefined
-	export let page = ''
-	export let props: any = getFixtures({category, component: title}) || {}
-	props.page = page
-
 	export let stylesApi: StylesApi = initStyles()
 
 	let ApiElement: {[category: string]: ComponentType} = {
@@ -49,7 +42,7 @@
 	let status = ''
 	let contextClasses = ''
 
-	let sharedOptions = {
+	let containerOptions = {
 		container: '',
 		size: '',
 	}
@@ -73,8 +66,8 @@
 	//== Shared settings (user controlled)
 	// Container options
 	// - [container + size] work together
-	$: sharedOptions.container = styles.shared?.container.container ?? sharedOptions.container
-	$: sharedOptions.size = styles.shared?.container.size ?? sharedOptions.size
+	$: containerOptions.container = styles.layouts?.container.container ?? containerOptions.container
+	$: containerOptions.size = styles.layouts?.container.size ?? containerOptions.size
 
 	// App settings (user controlled)
 	//== App settings (user controlled)
@@ -82,11 +75,11 @@
 	$: contrast = settings.app.contrast || contrast
 	// Container options
 	// - [container + size] work together
-	$: container = styles.shared?.container.container ?? container
-	$: size = styles.shared?.container.size ?? size
+	$: container = styles.layouts?.container.container ?? container
+	$: size = styles.layouts?.container.size ?? size
 	$: status = styles.blocks?.element.status ?? status
 
-	$: contextClasses = `${sharedOptions.size}`
+	$: contextClasses = `${containerOptions.size}`
 	$: containerClasses = `l:${container}:${size} content ${contextClasses}`
 
 	onDestroy(() => {
@@ -95,11 +88,12 @@
 </script>
 
 {#if isPage}
+	{@const fixtures = getFixtures({category, component: title})}
 	<article class="l:sidebar:xs">
 		<section class={`l:main card:xl inset ${brightness} bg:${contrast} `}>
 			<div class={containerClasses}>
-				{#if props?.status}
-					{@const currentProps = props.status.find((p) => p.case === status) || {}}
+				{#if fixtures?.status}
+					{@const currentProps = fixtures.status.find((p) => p.case === status) || {}}
 					<svelte:component
 						this={ApiElement[category]}
 						{isPage}
@@ -120,7 +114,7 @@
 						{title}
 						{path}
 						{component}
-						{props}
+						props={fixtures}
 						{actionPath}
 						{redirect}
 						settings={ui}
@@ -138,10 +132,6 @@
 							<p class={`font:xl`}>🐰</p>
 							<p class={`font:md`}>Coming soon!</p>
 						</div>
-					{:else if category === 'recipes'}
-						<div class="drop w:full bg:polar ui:menu">
-							<Api categories={['shared']} {title} {path} {actionPath} {redirect} />
-						</div>
 					{:else}
 						<div class="drop w:full bg:polar ui:menu">
 							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
@@ -155,26 +145,12 @@
 							<Api categories={[category]} {title} {path} {redirect} />
 				</div>
 			</details>
-		</section>
-
-				<details id={`${category}-${title}-doc`} class="l:stack:lg" open>
-					<summary class={`card:xs bg:${color} box:primary:light`}>Description</summary>
-					<div class="drop w:full">
-						<div class="card:lg text:center">
-							{#if content}
-								{@html content.html}
-							{:else}
-								<p class={`font:xl`}>🐰</p>
-								<p class={`font:md`}>Coming soon!</p>
-							{/if}
-						</div>
-					</div>
-				</details> -->
+		</section>-->
 			</div>
 		</section>
 	</article>
 {:else}
-	{@const props = getFixtures({category, component: title})}
+	{@const fixtures = getFixtures({category, component: title})}
 	<article
 		id={`card-${title}`}
 		class={`box ${brightness} bg:${contrast} l:stack ui:${title.toLowerCase()}`}
@@ -190,8 +166,8 @@
 			</a>
 		</header>
 		<div class="content">
-			{#if props?.status}
-				{@const currentProps = props.status.find((p) => p.case === status) || {}}
+			{#if fixtures?.status}
+				{@const currentProps = fixtures.status.find((p) => p.case === status) || {}}
 				<svelte:component
 					this={ApiElement[category]}
 					{isPage}
@@ -212,7 +188,7 @@
 					{path}
 					{title}
 					{component}
-					{props}
+					props={fixtures}
 					{actionPath}
 					redirect={path}
 					settings={ui}

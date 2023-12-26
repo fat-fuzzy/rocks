@@ -103,6 +103,7 @@ import * as intl from '$lib/stores/intl'
  */
 import constants from '$lib/types/constants'
 import * as clickOutside from '$lib/utils/click-outside'
+import * as props from '$lib/api/props'
 import format from '$lib/utils/format'
 
 /***************************************************
@@ -111,6 +112,7 @@ import format from '$lib/utils/format'
 const utils = {
 	format,
 	clickOutside,
+	props,
 }
 
 const forms = {
