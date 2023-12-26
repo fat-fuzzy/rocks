@@ -2,9 +2,10 @@
 title: Burrito
 slug: Burrito
 category: 'layouts'
-group: 'containers'
+# group: ['containers']
 content_types: ['any']
-props_style: ['size']
+props_style: {'blocks': {'element': ['size']}, 'layouts': {'container': ['size']}}
+
 context: ['app.settings']
 ---
 

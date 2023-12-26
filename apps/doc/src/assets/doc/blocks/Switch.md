@@ -3,8 +3,8 @@ title: Switch
 slug: Switch
 category: 'blocks'
 group: 'buttons'
-props_state: ['title', 'text', 'formaction', 'value']
-props_style: ['color', 'variant', 'size', 'asset', 'shape']
+props_state: ['title', 'text', 'formaction', 'value', 'states']
+props_style: {'blocks': {'element': ['color', 'variant', 'size', 'asset', 'shape']}}
 context: ['app.settings']
 ---
 

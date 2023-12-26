@@ -4,7 +4,7 @@ slug: LogIn
 category: ['recipes']
 group: 'forms'
 props_state: ['action']
-props_style: ['color', 'variant']
+props_style: {'blocks': {'element': ['color', 'variant', 'size']}}
 context: ['app.settings', 'shared.container']
 ---
 
