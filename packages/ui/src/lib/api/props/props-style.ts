@@ -93,6 +93,7 @@ const layout = {
 		'Sidebar',
 		'Nav',
 		'RevealNav',
+		'RevealMenu',
 		'Header',
 		'LogIn',
 		'InputCheck',
@@ -215,6 +216,48 @@ const variant = {
 		{id: 'variant.fill', text: 'fill', value: 'fill'},
 		{id: 'variant.outline', text: 'outline', value: 'outline'},
 		{id: 'variant.bare', text: 'bare', value: 'bare'},
+	],
+	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+}
+
+const shape = {
+	initial: 'default',
+	input: 'radio',
+	layout: 'stack',
+	size: 'sm',
+	variant: 'box card',
+	items: [
+		{id: 'shape.round', text: 'round', value: 'round'},
+		{id: 'shape.square', text: 'square', value: 'square'},
+		{id: 'shape.default', text: 'default', value: 'default'},
+	],
+	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+}
+
+const dimensions = {
+	initial: 'video',
+	input: 'radio',
+	layout: 'stack',
+	size: 'sm',
+	variant: 'box card',
+	items: [
+		{id: 'dimensions.video', text: 'video', value: 'video'},
+		{id: 'dimensions.twin', text: 'twin', value: 'twin'},
+		{id: 'dimensions.square', text: 'square', value: 'square'},
+	],
+	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
+}
+
+const background = {
+	initial: 'video',
+	input: 'radio',
+	layout: 'stack',
+	size: 'sm',
+	variant: 'box card',
+	items: [
+		{id: 'background.layer', text: 'layer', value: 'layer'},
+		{id: 'background.box', text: 'box', value: 'box'},
+		{id: 'background.polar', text: 'polar', value: 'polar'},
 	],
 	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 }
@@ -389,21 +432,21 @@ const settingsFamily = {
 	layout: 'flex',
 	size: 'lg',
 	variant: 'card',
-	props: ['Brightness', 'Contrast'],
+	props: ['brightness', 'contrast'],
 }
 
 const elementFamily = {
 	layout: 'switcher',
 	size: 'xs',
 	variant: 'card:xl',
-	props: ['Color', 'Variant', 'Size', 'Status', 'Context', 'Emoji'],
+	props: ['color', 'variant', 'size', 'status', 'context', 'asset'],
 }
 
 const containerFamily = {
 	layout: 'flex grow',
 	size: 'lg',
 	variant: 'card',
-	props: ['Container', 'Size'],
+	props: ['container', 'size'],
 	exclude: ['Color', 'Typography', 'Button', 'Expand', 'Switch', 'Toggle', 'RevealAuto'],
 }
 
@@ -412,7 +455,7 @@ const layoutFamily = {
 	container: 'card',
 	size: 'lg',
 	variant: '',
-	props: ['Layout', 'Threshold', 'Breakpoint'],
+	props: ['layout', 'threshold', 'breakpoint'],
 	exclude: [
 		'Color',
 		'Typography',
@@ -429,7 +472,7 @@ const contentFamily = {
 	layout: 'switcher',
 	size: 'md',
 	variant: 'card',
-	props: ['Content', 'Side', 'Main'],
+	props: ['content', 'side', 'mMain'],
 }
 
 const FAMILIES: {[key: string]: any} = {
@@ -440,7 +483,29 @@ const FAMILIES: {[key: string]: any} = {
 	content: contentFamily,
 }
 
-const PROPS: {[key: string]: any} = {
+const CATEGORIES: {[key: string]: any} = {
+	app: {settings: FAMILIES['settings']},
+	tokens: {element: FAMILIES['element']},
+	blocks: {element: FAMILIES['element']},
+	layouts: {
+		element: FAMILIES['layout'],
+		container: FAMILIES['container'],
+	},
+	recipes: {
+		element: FAMILIES['element'],
+		layout: FAMILIES['layout'],
+		container: FAMILIES['element'],
+		content: FAMILIES['content'],
+	},
+	graphics: {
+		element: FAMILIES['element'],
+		layout: FAMILIES['layout'],
+		container: FAMILIES['container'],
+		content: FAMILIES['content'],
+	},
+}
+
+const PROPS_STYLE: {[key: string]: any} = {
 	brightness,
 	contrast,
 	container,
@@ -450,6 +515,9 @@ const PROPS: {[key: string]: any} = {
 	breakpoint,
 	color,
 	variant,
+	shape,
+	dimensions,
+	background,
 	status,
 	context,
 	asset,
@@ -458,27 +526,53 @@ const PROPS: {[key: string]: any} = {
 	main,
 }
 
+const INPUT_GROUP_NAME: {[key: string]: string} = {
+	id: 'id',
+	asset: 'asset',
+	size: 'size',
+	label: 'label',
+	text: 'text',
+	value: 'value',
+	brightness: 'brightness',
+	contrast: 'contrast',
+	app: 'app',
+	container: 'container',
+	content: 'content',
+	breakpoint: 'breakpoint',
+	variant: 'variant',
+	color: 'color',
+	layout: 'layout',
+}
+
 function getInputGroup(name: string, category: string, family: string) {
 	const slug = name.toLowerCase()
+	console.log('getInputGroup - slug')
+	console.log(slug)
+	console.log('getInputGroup - PROPS_STYLE[slug]')
+	console.log(PROPS_STYLE[slug])
 	return new StyleInputGroup({
 		name,
 		id: `${category}.${family}.${slug}`,
-		value: PROPS[slug].initial,
-		input: PROPS[slug].input,
-		layout: PROPS[slug].layout,
-		size: PROPS[slug].size,
-		mode: PROPS[slug].mode,
-		variant: PROPS[slug].variant,
-		items: PROPS[slug].items.map((item) => {
+		value: PROPS_STYLE[slug].initial,
+		input: PROPS_STYLE[slug].input,
+		layout: PROPS_STYLE[slug].layout,
+		size: PROPS_STYLE[slug].size,
+		mode: PROPS_STYLE[slug].mode,
+		variant: PROPS_STYLE[slug].variant,
+		items: PROPS_STYLE[slug].items.map((item) => {
 			return {...item, id: `${category}.${family}.${item.id}`}
 		}),
-		include: PROPS[slug].include,
-		exclude: PROPS[slug].exclude,
+		include: PROPS_STYLE[slug].include,
+		exclude: PROPS_STYLE[slug].exclude,
 	})
 }
 
 function getFamily(name: string, category: string, props: string[]) {
 	const slug = name.toLowerCase()
+
+	console.log('getFamily - slug')
+	console.log(slug)
+
 	return new StyleFamily({
 		name,
 		title: '',
@@ -493,4 +587,4 @@ function getFamily(name: string, category: string, props: string[]) {
 		exclude: FAMILIES[slug].exclude,
 	})
 }
-export {PROPS, FAMILIES, getInputGroup, getFamily}
+export {PROPS_STYLE, FAMILIES, CATEGORIES, getInputGroup, getFamily}

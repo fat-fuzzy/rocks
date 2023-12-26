@@ -49,30 +49,26 @@ export interface StyleCategory {
 	[key: string]: StyleFamily
 }
 
-export interface TokenStyles extends StyleCategory {
-	// theme: StyleFamily  // TODO : figure out if it is possible to do a dynamic import of tokens
-	element: StyleFamily
-}
 export interface AppStyles extends StyleCategory {
-	// theme: StyleFamily  // TODO : figure out if it is possible to do a dynamic import of app theme
 	settings: StyleFamily
 }
-export interface SharedStyles extends StyleCategory {
-	container: StyleFamily
-	layout: StyleFamily
+
+export interface TokenStyles extends StyleCategory {
+	element: StyleFamily
 }
+
 export interface BlockStyles extends StyleCategory {
 	element: StyleFamily
 }
+
 export interface LayoutStyles extends StyleCategory {
-	content: StyleFamily
-	element: StyleFamily
+	layout: StyleFamily
+	container: StyleFamily
 }
 
 export interface StyleOptions {
 	app: AppStyles
 	tokens: TokenStyles
-	shared: SharedStyles
 	blocks: BlockStyles
 	layouts: LayoutStyles
 }
@@ -132,13 +128,13 @@ type StylesSetOptions = {
 	include?: string[] // Add component names here to apply styles to included components
 }
 
-type StyleInputGroupOptions = StylesSetOptions & {
+export type StyleInputGroupOptions = StylesSetOptions & {
 	input: string
 	value: string
 	items: Array<StyleInputOptions>
 }
 
-type StyleFamilyOptions = StylesSetOptions & {
+export type StyleFamilyOptions = StylesSetOptions & {
 	title: string
 	items: Array<StyleInputGroup>
 }
@@ -201,6 +197,9 @@ export class StyleInputGroup implements IStyleInputGroup {
 		}
 		if (include) {
 			this.include = include
+		}
+		if (exclude) {
+			this.exclude = exclude
 		}
 	}
 
@@ -317,6 +316,9 @@ export class StyleFamily implements IStyleFamily {
 	}
 
 	applyStyles(styles: StyleNode) {
+		if (!styles) {
+			return
+		}
 		Object.keys(styles).forEach((key) => {
 			const item = this.itemsMap.get(key)
 			if (item) {
