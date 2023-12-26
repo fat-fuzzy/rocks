@@ -3,7 +3,7 @@ export type Meta = {
 	slug: string
 	category?: string
 	group?: string
-	props_style?: any
+	props_style?: {[key: string]: {[key: string]: string[]}}
 	props_state?: string[]
 	content_types?: string[]
 	context: string[]

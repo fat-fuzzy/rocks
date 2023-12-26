@@ -2,11 +2,13 @@
 	import type {ComponentType} from 'svelte'
 	import type {StylesApi} from '.'
 	import type {StyleTree} from './types'
+	import type {Markdowns} from '$lib/api/props/types'
 
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
 	import {initStyles} from '$lib/api/styles'
+	import {getCategoryMarkdowns, getElementMeta} from '$lib/api/props'
 	import * as ui from '$stores/ui'
 
 	import Sidebar from '$lib/components/layouts/Sidebar.svelte'
@@ -17,7 +19,6 @@
 	export let actionPath: string | undefined
 	export let redirect: string | undefined
 
-	export let title = ''
 	export let content = {html: ''}
 	export let depth = 0
 	export let path = $page.url.pathname
@@ -29,6 +30,7 @@
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category
 	export let stylesApi: StylesApi = initStyles()
+	export let markdowns: Markdowns
 
 	let background = ''
 	let styles: StyleTree = stylesApi.getStyleTree()
@@ -45,6 +47,7 @@
 	$: titleDepth = Number(depth) + 1
 	$: background = background ? background : styles.app?.settings.contrast
 	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
+	$: categoryMarkdowns = getCategoryMarkdowns(category, markdowns)
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -64,6 +67,7 @@
 					{component}
 					{stylesApi}
 					{actionPath}
+					meta={getElementMeta(categoryMarkdowns, name)}
 					redirect={$page.url.pathname}
 				/>
 			{/each}
@@ -72,9 +76,9 @@
 			<div class="l:stack:lg">
 				<details id={`${category}-api`} class="l:stack:lg" open>
 					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
-					{#if category !== 'graphics' && category !== 'tokens'}
+					{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
 						<div class="drop w:full bg:polar ui:menu">
-							<Api categories={[category]} {title} {path} {actionPath} {redirect} />
+							<Api categories={[category]} {path} {actionPath} {redirect} />
 						</div>
 					{:else}
 						<div class="card:lg text:center">
@@ -116,6 +120,7 @@
 							{component}
 							{stylesApi}
 							{actionPath}
+							meta={getElementMeta(categoryMarkdowns, name)}
 							redirect={$page.url.pathname}
 						/>
 					{/each}
