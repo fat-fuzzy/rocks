@@ -43,9 +43,9 @@
 	// App options
 	$: background = settings.app.contrast ?? background
 	// Element options
-	$: size = styles.layouts?.element?.size ?? size
-	$: breakpoint = styles.layouts?.element.breakpoint ?? breakpoint
-	$: threshold = styles.layouts?.element.threshold ?? threshold
+	$: size = styles.layouts?.layout?.size ?? size
+	$: breakpoint = styles.layouts?.layout.breakpoint ?? breakpoint
+	$: threshold = styles.layouts?.layout.threshold ?? threshold
 	// Content options
 	$: content = styles.layouts?.content.content ?? 'card'
 	$: sideContent = styles.layouts?.content.side ?? 'card'

@@ -3,7 +3,18 @@
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
-	import {tokens, blocks, layouts, recipes, graphics, api, stores, constants, headless} from '$lib'
+	import {
+		tokens,
+		blocks,
+		layouts,
+		recipes,
+		graphics,
+		api,
+		stores,
+		constants,
+		headless,
+		utils,
+	} from '$lib'
 
 	const {Head} = headless
 	const {Collection, Api} = api
@@ -158,7 +169,7 @@
 		{components}
 		{path}
 		{category}
-		{markdowns}
+		markdowns={utils.props.getCategoryMarkdowns(category, markdowns)}
 		{stylesApi}
 		{actionPath}
 		redirect={$page.url.pathname}

@@ -1,31 +1,32 @@
 import type {
 	AppStyles,
 	TokenStyles,
-	SharedStyles,
 	BlockStyles,
 	LayoutStyles,
 	StyleOptions,
 	StyleTree,
 	StyleCategory,
 } from './types'
-import {getFamily} from '$lib/api/props/props_style'
+import {getFamily} from '$lib/api/props/props-style'
 
 export class StylesApi {
-	tokens: TokenStyles
 	app: AppStyles
-	shared: SharedStyles
+	tokens: TokenStyles
 	blocks: BlockStyles
 	layouts: LayoutStyles
 
-	constructor({tokens, app, shared, blocks, layouts}: StyleOptions) {
+	constructor({tokens, app, blocks, layouts}: StyleOptions) {
 		this.tokens = tokens
 		this.app = app
-		this.shared = shared
 		this.blocks = blocks
 		this.layouts = layouts
 	}
 
 	getFormOptions(category: string): StyleCategory {
+		return this.getCategoryOptions(category)
+	}
+
+	getElementFormOptions(category: string, styleProps): StyleCategory {
 		return this.getCategoryOptions(category)
 	}
 
@@ -35,8 +36,6 @@ export class StylesApi {
 				return this.tokens
 			case 'app':
 				return this.app
-			case 'shared':
-				return this.shared
 			case 'blocks':
 				return this.blocks
 			case 'layouts':
@@ -50,38 +49,33 @@ export class StylesApi {
 		return {
 			tokens: this.tokens,
 			app: this.app,
-			shared: this.shared,
 			blocks: this.blocks,
 			layouts: this.layouts,
 		}
 	}
 
 	getStyleTree(): StyleTree {
-		// TODO: loop for [X] style families
-		const tokensStylesTree = this.tokens?.element?.getStyleTree() || {}
 		const appStylesTree = this.app?.settings?.getStyleTree() || {}
-		const sharedContainerStylesTree = this.shared?.container?.getStyleTree() || {}
-		const sharedLayoutStylesTree = this.shared?.layout?.getStyleTree() || {}
+		const tokensStylesTree = this.tokens?.element?.getStyleTree() || {}
 		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
-		const layoutsContentStylesTree = this.layouts?.content?.getStyleTree() || {}
-		const layoutsLayoutStylesTree = this.layouts?.element?.getStyleTree() || {}
+		const layoutsLayoutStylesTree = this.layouts?.layout?.getStyleTree() || {}
+		const layoutsContainerStylesTree = this.layouts?.container?.getStyleTree() || {}
 
 		return {
 			tokens: tokensStylesTree,
 			app: appStylesTree,
-			shared: {
-				...sharedContainerStylesTree,
-				...sharedLayoutStylesTree,
-			},
 			blocks: blocksStylesTree,
 			layouts: {
-				...layoutsContentStylesTree,
 				...layoutsLayoutStylesTree,
+				...layoutsContainerStylesTree,
 			},
 		}
 	}
 
 	applyStyles(updatedStyles: StyleTree) {
+		console.log('applyStyles - updatedStyles')
+		console.log(updatedStyles)
+
 		Object.keys(updatedStyles).map((updatedCategory) => {
 			const category = updatedStyles[updatedCategory]
 			let families: string[] = []
@@ -96,10 +90,6 @@ export class StylesApi {
 					families = Object.keys(this.app)
 					styles = this.app
 					break
-				case 'shared':
-					families = Object.keys(this.shared)
-					styles = this.shared
-					break
 				case 'blocks':
 					families = Object.keys(this.blocks)
 					styles = this.blocks
@@ -107,6 +97,8 @@ export class StylesApi {
 				case 'layouts':
 					families = Object.keys(this.layouts)
 					styles = this.layouts
+					break
+				default:
 					break
 			}
 			families.map((family) => {
@@ -125,11 +117,6 @@ const app: AppStyles = {
 	settings: getFamily('Settings', 'app', ['Brightness', 'Contrast']),
 }
 
-const shared: SharedStyles = {
-	container: getFamily('Container', 'shared', ['Container', 'Size']),
-	layout: getFamily('Layout', 'shared', ['Layout', 'Threshold', 'Breakpoint']),
-}
-
 const blocks: BlockStyles = {
 	element: getFamily('Element', 'blocks', [
 		'Color',
@@ -138,12 +125,13 @@ const blocks: BlockStyles = {
 		'Status',
 		'Context',
 		'Asset',
+		'Shape',
 	]),
 }
 
 const layouts: LayoutStyles = {
-	content: getFamily('Content', 'layouts', ['Content', 'Side', 'Main']),
-	element: getFamily('Element', 'layouts', ['Size', 'Threshold', 'Breakpoint']),
+	layout: getFamily('Layout', 'layouts', ['Layout', 'Threshold', 'Breakpoint']),
+	container: getFamily('Container', 'layouts', ['Container', 'Size']),
 }
 
-export const initStyles = () => new StylesApi({tokens, app, shared, blocks, layouts})
+export const initStyles = () => new StylesApi({app, tokens, blocks, layouts})

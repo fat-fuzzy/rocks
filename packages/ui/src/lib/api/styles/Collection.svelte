@@ -2,13 +2,13 @@
 	import type {ComponentType} from 'svelte'
 	import type {StylesApi} from '.'
 	import type {StyleTree} from './types'
-	import type {Meta} from '$lib/api/props/types'
+	import type {Markdown} from '$lib/api/props/types'
 
 	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {getFixtures} from '$lib/api/fixtures/js'
 	import {initStyles} from '$lib/api/styles'
+	import {getElementMeta} from '$lib/api/props'
 	import * as ui from '$stores/ui'
 
 	import Sidebar from '$lib/components/layouts/Sidebar.svelte'
@@ -21,7 +21,7 @@
 
 	export let title = ''
 
-	export let markdowns: {[key: string]: {html: string; meta: Meta}[]} | undefined
+	export let markdowns: Markdown[]
 	export let depth = 0
 	export let path = $page.url.pathname
 	export let layout = 'grid'
@@ -29,11 +29,11 @@
 	export let color = 'primary:light'
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
-	export let category = $page.params.category || 'shared'
+	export let category = $page.params.category
 	export let stylesApi: StylesApi = initStyles()
 
 	let background = ''
-	let content = markdowns?.categories.find(({meta}) => meta.slug === category)
+	let content = markdowns.find(({meta}) => meta.slug === category)
 	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [
@@ -59,7 +59,6 @@
 		<section slot="main" class={layoutClass}>
 			{#each componentNames as name}
 				{@const component = components[name]}
-				{@const props = getFixtures({category, component: name})}
 				<Element
 					title={name}
 					depth={Number(depth) + 1}
@@ -67,7 +66,6 @@
 					{category}
 					{component}
 					{stylesApi}
-					{props}
 					{actionPath}
 					redirect={$page.url.pathname}
 				/>
@@ -113,7 +111,6 @@
 				<div class={layoutClass}>
 					{#each componentNames as name}
 						{@const component = components[name]}
-						{@const props = getFixtures({category, component: name})}
 						<Element
 							title={name}
 							depth={Number(depth) + 2}
@@ -121,7 +118,6 @@
 							{category}
 							{component}
 							{stylesApi}
-							{props}
 							{actionPath}
 							redirect={$page.url.pathname}
 						/>
