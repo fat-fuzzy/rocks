@@ -1,4 +1,5 @@
 form {
+	color: var(--current-color);
 	background-color: inherit;
 	max-height: fit-content;
 }
@@ -26,16 +27,15 @@ select,
 textarea {
 	--current-color: var(--color-dark);
 	--current-accent-color: var(--current-gray-contrast);
+	--current-padding-block: calc(var(--current-size-minus) - 2 * var(--border-width));
+	--current-padding-inline: var(--current-size);
 	border: 1px solid var(--current-accent-color);
 	border-radius: var(--radius-base);
 	color: var(--current-color);
 	accent-color: var(--current-accent-color);
 	border-color: var(--current-accent-color);
-}
-
-form {
-	color: var(--current-color);
-	background-color: inherit;
+	font-size: var(--current-font-size);
+	padding: var(--current-padding-block) var(--current-padding-inline);
 }
 
 label > input {
@@ -300,13 +300,6 @@ legend {
 	margin-block-end: var(--current-size);
 }
 
-input,
-select,
-textarea {
-	font-size: var(--current-font-size);
-	padding: var(--current-size) var(--current-size-plus);
-}
-
 label {
 	font-size: var(--current-font-size);
 }
@@ -320,10 +313,10 @@ label {
 }
 
 [type='file'] {
-	font-size: var(--current-font-size-minus);
-	padding: var(--current-size) var(--current-size) var(--current-size-minus);
 	display: flex;
 	align-items: center;
+	font-size: var(--current-font-size-minus);
+	padding: var(--current-size) var(--current-size) var(--current-size-minus);
 }
 
 .feedback {
@@ -359,7 +352,6 @@ label.check {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	padding: var(--current-size-minus) var(--current-size-plus);
 	gap: var(--current-size);
 }
 
