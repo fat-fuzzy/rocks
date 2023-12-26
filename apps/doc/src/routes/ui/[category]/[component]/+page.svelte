@@ -14,6 +14,7 @@
 		recipes,
 		graphics,
 		constants,
+		utils,
 	} from '@fat-fuzzy/ui'
 
 	const {Head} = headless
@@ -78,6 +79,7 @@
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
 	$: headerClass = 'page-header l:switcher:md bg:polar'
+	$: props = utils.props.getElementProps(content.meta)
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -148,8 +150,22 @@
 				<details open>
 					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
 					<ul class="tags l:switcher:md">
-						{#each content.meta.props_style as prop}
-							<li class="card:sm bg:primary:lightest">{prop}</li>
+						{#each props.doc as docs}
+							{#if docs.tokens}
+								{#each docs.tokens as prop}
+									<li class="card:sm bg:primary:lightest">{prop}</li>
+								{/each}
+							{/if}
+							{#if docs.blocks}
+								{#each docs.blocks as prop}
+									<li class="card:sm bg:primary:lightest">{prop}</li>
+								{/each}
+							{/if}
+							{#if docs.layouts}
+								{#each docs.layouts as prop}
+									<li class="card:sm bg:primary:lightest">{prop}</li>
+								{/each}
+							{/if}
 						{/each}
 					</ul>
 				</details>
@@ -181,11 +197,9 @@
 		isPage={true}
 		depth={1}
 		{title}
-		page={path}
 		{path}
 		{category}
 		{stylesApi}
-		meta={content.meta}
 		component={Component}
 		{actionPath}
 		redirect={$page.url.pathname}

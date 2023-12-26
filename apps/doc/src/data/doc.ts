@@ -34,4 +34,6 @@ async function fetchMarkdowns() {
 	}
 }
 
-export default {fetchMarkdowns}
+const markdowns = fetchMarkdowns()
+
+export default {markdowns}
