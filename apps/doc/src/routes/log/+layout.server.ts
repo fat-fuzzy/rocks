@@ -1,8 +1,8 @@
 import type {LayoutServerLoad} from './$types'
-import markdownData from '$data/log'
+import logs from '$data/log'
 
 export const load: LayoutServerLoad = async () => {
-	const markdowns = await markdownData.fetchMarkdowns()
+	const markdowns = await logs.markdowns
 
 	return {markdowns}
 }
