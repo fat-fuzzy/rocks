@@ -53,7 +53,7 @@
 	$: reveal = revealContext.reveal
 	$: markdowns = $page.data.markdowns
 	$: path = $page.url.pathname
-	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
+	$: content = markdowns.categories.find(({meta}) => meta.slug === 'test')
 	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
 
 	onDestroy(() => {
@@ -99,7 +99,7 @@
 				components={items}
 				{category}
 				{stylesApi}
-				markdowns={utils.props.getCategoryMarkdowns(category, markdowns)}
+				content={markdowns.categories.find(({meta}) => meta.slug === category)}
 				{actionPath}
 				redirect={$page.url.pathname}
 			/>
