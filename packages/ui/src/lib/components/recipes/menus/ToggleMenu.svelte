@@ -51,7 +51,7 @@
 				}
 				selected = [event.detail]
 				break
-			case 'checkbox':
+			case 'check':
 				if (event.detail.pressed) {
 					selected.map((c) => {
 						if (c.name === event.detail.id) {
