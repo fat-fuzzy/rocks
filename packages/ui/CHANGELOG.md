@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.40
+
+### Patch Changes
+
+- 583a5df2: [ui+docc] Load props from doc Markdowns
+
 ## 0.1.39
 
 ### Patch Changes
