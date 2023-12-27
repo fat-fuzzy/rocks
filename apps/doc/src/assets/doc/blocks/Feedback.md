@@ -4,7 +4,11 @@ slug: Feedback
 category: 'blocks'
 group: 'global'
 props_state: ['title', 'text', 'status']
-props_style: {'blocks': {'element': ['variant', 'context', 'size', 'asset']}}
+props_style:
+  {
+    'blocks': {'element': ['variant', 'context', 'size', 'asset']},
+    'layouts': {'container': ['container', 'size']},
+  }
 context: ['app.settings', 'shared.container']
 ---
 
