@@ -260,7 +260,7 @@ const asset = {
 	layout: 'switcher',
 	size: 'xxs',
 	variant: 'card',
-	mode: 'check',
+	mode: 'radio',
 	items: [
 		{
 			id: 'asset.profile',
@@ -279,6 +279,12 @@ const asset = {
 			text: 'idea',
 			value: 'emoji:idea',
 			asset: 'emoji:idea',
+		},
+		{
+			id: 'asset.default',
+			text: 'default',
+			value: 'default',
+			asset: 'default',
 		},
 	],
 }

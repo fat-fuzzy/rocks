@@ -9,7 +9,8 @@
 
 	$: background = context === 'code' ? '' : `bg:${status}:lighter`
 	$: containerClass = container ? `${container}:${size}` : ''
-	$: feedbackClass = `feedback ${containerClass} ${asset} ${status} font:${size} ${variant} ${background}`
+	$: assetClass = asset.split(':').length > 1 ? asset : `emoji:${status}`
+	$: feedbackClass = `feedback ${containerClass} ${assetClass} ${status} font:${size} ${variant} ${background}`
 </script>
 
 {#if context === 'code'}
