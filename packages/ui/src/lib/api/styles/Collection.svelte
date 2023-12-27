@@ -30,6 +30,7 @@
 	export let category = $page.params.category
 	export let markdowns: Markdowns
 
+	const multipleCategories = ['graphics', 'recipes']
 	const stylesApi: StylesApi = getContext('stylesApi')
 	let background = ''
 	let styles: StyleTree = stylesApi.getStyleTree()
@@ -47,6 +48,9 @@
 	$: background = background ? background : styles.app?.settings.contrast
 	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
 	$: categoryMarkdowns = getCategoryMarkdowns(category, markdowns)
+	$: categories = multipleCategories.includes(category)
+		? ['blocks', 'layouts', 'shared']
+		: [category]
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -76,7 +80,7 @@
 					<summary class={`bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
 						<div class="drop w:full bg:polar ui:menu">
-							<Api categories={[category]} {path} {actionPath} {redirect} />
+							<Api {categories} {path} {actionPath} {redirect} />
 						</div>
 					{:else}
 						<div class="card:lg text:center">
