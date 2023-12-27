@@ -61,5 +61,5 @@
 	data-key={name}
 	on:click={onClick}
 >
-	{text}
+	<slot>{text}</slot>
 </button>
