@@ -121,7 +121,6 @@
 							{stylesApi}
 							{actionPath}
 							meta={getElementMeta(categoryMarkdowns, name)}
-							redirect={$page.url.pathname}
 						/>
 					{/each}
 				</div>
