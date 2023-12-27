@@ -14,7 +14,7 @@
 	export let meta: Meta | undefined = undefined
 	// export let reset = 'reset'
 
-	let apiLayout = 'nowrap grow'
+	let apiLayout = 'l:switcher:lg nowrap grow'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
@@ -46,7 +46,7 @@
 			update({reset: false})
 		}
 	}}
-	class={`l:switcher:${apiSize} ${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
+	class={`${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
 >
 	{#each categories as category}
 		<StyleFamily

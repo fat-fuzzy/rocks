@@ -1,6 +1,6 @@
 <script lang="ts">
-	import format from '$lib/utils/format'
 	import {clickOutside} from '$lib/utils/click-outside.js'
+	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 
 	export let layout = ''
 	export let direction = 'tb-lr'
@@ -14,6 +14,10 @@
 	export let background = ''
 	export let title = 'Reveal'
 	export let asset = ''
+	export let method = 'POST'
+	export let formaction: string | undefined = undefined
+	export let actionPath: string | undefined = undefined
+	export let redirect: string | undefined = undefined
 
 	let expanded = false
 
@@ -28,6 +32,13 @@
 	$: backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
 	$: show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
 	$: setHeight = height ? ` h:${height}` : ''
+
+	// TODO: use a form
+	$: action = formaction
+		? redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+		: undefined
 </script>
 
 <div
@@ -35,15 +46,24 @@
 	use:clickOutside
 	on:clickOutside={handleClickOutside}
 >
-	<button
-		id={`${id}-reveal-button`}
-		class={`card:${size} ${variant} ${color}`}
-		aria-expanded={expanded}
-		aria-controls={`${id}-reveal`}
+	<Expand
+		id={`button-reveal-${id}`}
+		{title}
+		{color}
+		{variant}
+		{size}
+		type={actionPath && formaction ? 'submit' : 'button'}
+		name="reveal"
+		controls={`${id}-reveal`}
+		value={'menu'}
+		states={{
+			active: {text: 'Reveal', value: 'show', asset},
+			inactive: {text: 'Reveal', value: 'minimize', asset},
+		}}
 		on:click={toggleReveal}
 	>
-		{format.formatLabel(title, asset)}
-	</button>
+		{title}
+	</Expand>
 	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
 		<slot name="content">
 			<div class={`card:lg`}>
