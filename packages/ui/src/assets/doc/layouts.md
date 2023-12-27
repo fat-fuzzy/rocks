@@ -7,7 +7,3 @@ context: ['app.settings']
 ---
 
 In [CUBE CSS](https://cube.fyi) `Layouts` are [compositions](https://cube.fyi/composition.html). This means that `Layouts` are components used to structure and organize the content and interface elements it contains.
-
-These Layouts are largely based on the teachings and examples given in [every-layout.dev](https://every-layout.dev/), and aim to use minimal HTML markup and carefully written CSS to work in harmony with the browsers' layout algorithms.
-
-`Layouts` are designed to be combined with `Blocks` and other `Layouts` to create new components while maintaining the characteristics defined in the design system's `Tokens`.
