@@ -30,6 +30,7 @@
 	export let layout = 'flex'
 	export let size = ''
 	export let shape = ''
+	export let dimensions = ''
 	export let variant = 'fill'
 
 	let payloadId = name // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
@@ -77,8 +78,9 @@
 
 	$: expanded = $state.value === 'active'
 	$: currentState = states[$state.value.toString()]
-	$: containerClasses =
-		container === 'side' || container === 'main' ? container : `l:${container}:${size}`
+	$: containerClasses = container.startsWith('main')
+		? `l:${container}:${dimensions}`
+		: `l:${container}:${size}`
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`

@@ -27,6 +27,7 @@
 	export let color = ''
 	export let layout = 'flex'
 	export let size = ''
+	export let dimensions = ''
 	export let shape = ''
 	export let variant = 'fill'
 
@@ -75,8 +76,9 @@
 
 	$: pressed = $state.value === 'active'
 	$: currentState = states[$state.value.toString()]
-	$: containerClasses =
-		container === 'side' || container === 'main' ? container : `l:${container}:${size}`
+	$: containerClasses = container.startsWith('main')
+		? `l:${container}:${dimensions}`
+		: `l:${container}:${size}`
 	$: layoutClasses = shape
 		? `${shape} ${currentState.variant || variant}`
 		: `l:${layout}:${size} bp:${breakpoint}  ${currentState.variant || variant}`
