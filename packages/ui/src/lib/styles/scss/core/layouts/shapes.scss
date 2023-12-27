@@ -36,3 +36,9 @@
 button.round {
 	padding: calc(var(--gap) / var(--ratio-lg));
 }
+
+.round[class*='l:stack']:only-child,
+.square[class*='l:stack']:only-child {
+	height: fit-content;
+	width: fit-content;
+}
