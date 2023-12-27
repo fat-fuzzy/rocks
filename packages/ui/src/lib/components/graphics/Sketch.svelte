@@ -88,7 +88,7 @@
 </script>
 
 <article class="l:sidebar:xxs">
-	<div class={`l:main ${size}`}>
+	<div class={`l:main ${size} l:stack:${size}`}>
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
 			<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
 				<slot name="fallback-canvas">
