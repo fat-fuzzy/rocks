@@ -70,6 +70,7 @@
 
 	$: containerClasses = `l:${container}:${size} content`
 	$: fixtures = getFixtures({category, component: title})
+	$: categories = meta.props_style ? Object.keys(meta.props_style) : undefined
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -116,17 +117,9 @@
 				<details id={`${category}-${title}-api`} class="l:stack:xs" open>
 					<summary class={`bg:${color} box:primary:light`}>Style Props</summary>
 					<div class="drop w:full bg:polar ui:menu">
-						<Api categories={[category]} {path} {actionPath} {redirect} {meta} />
+						<Api {categories} {path} {actionPath} {redirect} {meta} />
 					</div>
 				</details>
-				<!-- <section id={`${category}-${title}-classes`}>
-			<details class={`l:stack:md`}>
-				<summary class={`card:sm box:${color} bg:${color}`}>Classes</summary>
-				<div class="drop">
-							<Api categories={[category]} {title} {path} {redirect} />
-				</div>
-			</details>
-		</section>-->
 			</div>
 		</section>
 	</article>
