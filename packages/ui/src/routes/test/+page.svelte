@@ -65,7 +65,6 @@
 		formaction="toggleContext"
 		{actionPath}
 		{reveal}
-		redirect={$page.url.pathname}
 		on:toggle={handleToggle}
 	>
 		<div slot="content" class="l:side shrink ui:menu">
@@ -87,7 +86,6 @@
 			content={markdowns.categories.find(({meta}) => meta.slug === category)}
 			{markdowns}
 			{actionPath}
-			redirect={$page.url.pathname}
 		/>
 	{/each}
 </section>

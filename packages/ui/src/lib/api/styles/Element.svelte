@@ -18,7 +18,7 @@
 	import Graphics from './Graphics.svelte'
 
 	export let actionPath: string | undefined
-	export let redirect: string | undefined
+	export let redirect: string | undefined = undefined
 
 	export let title = ''
 	export let depth = 0
@@ -171,7 +171,7 @@
 					{stylesApi}
 					props={currentProps}
 					{actionPath}
-					redirect={path}
+					{redirect}
 					settings={ui}
 					id={`ui-${title}`}
 				/>
@@ -184,7 +184,7 @@
 					{component}
 					props={fixtures}
 					{actionPath}
-					redirect={path}
+					{redirect}
 					settings={ui}
 					id={`ui-${title}`}
 				/>
