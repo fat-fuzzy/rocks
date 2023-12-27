@@ -52,7 +52,7 @@
 		}),
 		ui.styles.subscribe((value) => {
 			if (value) {
-				styles = value
+				styles = stylesApi.getStyleTree()
 			}
 		}),
 	]
@@ -113,8 +113,8 @@
 		</section>
 		<section class="l:side">
 			<div class="l:stack:lg">
-				<details id={`${category}-${title}-api`} class="l:stack:lg" open>
-					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
+				<details id={`${category}-${title}-api`} class="l:stack:xs" open>
+					<summary class={`bg:${color} box:primary:light`}>Style Props</summary>
 					<div class="drop w:full bg:polar ui:menu">
 						<Api categories={[category]} {path} {actionPath} {redirect} {meta} />
 					</div>

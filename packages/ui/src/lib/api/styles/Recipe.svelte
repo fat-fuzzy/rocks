@@ -32,7 +32,7 @@
 	const stores = [
 		settings.styles.subscribe((value) => {
 			if (value) {
-				styles = value
+				styles = stylesApi.getStyleTree()
 			}
 		}),
 	]

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import {onDestroy} from 'svelte'
+	import type {StylesApi} from '$lib/api/styles'
+
+	import {onDestroy, getContext} from 'svelte'
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
@@ -17,37 +19,18 @@
 		utils,
 	} from '$lib'
 
+	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
 	const {Head} = headless
 	const {Element, Api} = api
 	const {RevealAuto} = layouts
 	const {ToggleMenu} = recipes
 	const actionPath = '/test'
-	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
-
-	let categoryItems: {[name: string]: any} = {
-		tokens: tokens,
-		blocks: blocks,
-		layouts: layouts,
-		recipes: recipes,
-		graphics: graphics,
-	}
-
 	const tabs = TABS
 
-	let category: string
-	let title: string
-	let Component: ComponentType
-
-	let stylesApi = api.stylesApi.initStyles()
 	let revealContext = $page.data.dsContext || DEFAULT_REVEAL_STATE
 	let currentTab = $page.data.currentTabs?.element || DEFAULT_TABS[0]
 
 	const localStores = [
-		stores.ui.styles.subscribe((value) => {
-			if (value) {
-				stylesApi.applyStyles(value)
-			}
-		}),
 		stores.ui.reveal.subscribe((value) => {
 			if (value) {
 				revealContext = value
@@ -59,6 +42,18 @@
 			}
 		}),
 	]
+
+	let categoryItems: {[name: string]: any} = {
+		tokens: tokens,
+		blocks: blocks,
+		layouts: layouts,
+		recipes: recipes,
+		graphics: graphics,
+	}
+
+	let category: string
+	let title: string
+	let Component: ComponentType
 
 	function handleToggle(event: CustomEvent) {
 		stores.ui.reveal.set(event.detail)
@@ -151,7 +146,7 @@
 			{:else}
 				{#if content.meta.props_style}
 					<details open>
-						<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
+						<summary class={`bg:primary:light box:primary:light`}>Style Props</summary>
 						<ul class="tags l:switcher:md">
 							{#each props.doc as docs}
 								{#if docs.tokens}

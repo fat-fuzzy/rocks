@@ -5,7 +5,6 @@
 
 	import {onDestroy, getContext} from 'svelte'
 
-	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
 
 	export let title = ''
@@ -24,7 +23,7 @@
 	const stores = [
 		ui.styles.subscribe((value) => {
 			if (value) {
-				styles = value
+				styles = stylesApi.getStyleTree()
 			}
 		}),
 	]

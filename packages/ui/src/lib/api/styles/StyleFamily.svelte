@@ -41,7 +41,7 @@
 		}),
 		ui.styles.subscribe((value) => {
 			if (value) {
-				styles = value
+				styles = stylesApi.getStyleTree()
 			}
 		}),
 	]

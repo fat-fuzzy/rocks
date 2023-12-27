@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 	import {page} from '$app/stores'
 	import {
 		headless,
@@ -21,7 +21,6 @@
 	const actionPath = '/ui'
 	const title = 'UI' // TODO : Fix title: add breadcrumb nav component ?
 
-	let stylesApi = api.stylesApi.initStyles()
 	let revealContext = $page.data.context || DEFAULT_REVEAL_STATE
 
 	const components = [
@@ -34,11 +33,6 @@
 	const path = $page.url.pathname
 
 	const localStores = [
-		stores.ui.styles.subscribe((value) => {
-			if (value) {
-				stylesApi.applyStyles(value)
-			}
-		}),
 		stores.ui.reveal.subscribe((value) => {
 			if (value) {
 				revealContext = value
