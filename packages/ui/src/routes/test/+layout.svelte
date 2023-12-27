@@ -1,8 +1,10 @@
 <script lang="ts">
 	import type {LayoutData} from './$types'
-	import {onDestroy} from 'svelte'
+	import type {StylesApi} from '$lib/api/styles'
+	import {onDestroy, setContext} from 'svelte'
 	import {page} from '$app/stores'
 
+	import {initStyles} from '$lib/api/styles'
 	import * as settingsStore from '$stores/settings'
 	import * as stores from '$stores/ui'
 
@@ -30,6 +32,8 @@
 	let title = 'Fat Fuzzy Test' // TODO : Fix title in children components: add breadcrumb nav component ?
 
 	let sidebarReveal = sidebar || DEFAULT_NAV_REVEAL_STATE
+	let stylesApi: StylesApi = initStyles()
+	setContext('stylesApi', stylesApi)
 
 	stores.currentTab.set(currentTabs?.element || DEFAULT_TABS[0])
 	stores.styles.set(styles)

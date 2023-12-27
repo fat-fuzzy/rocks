@@ -4,10 +4,9 @@
 	import type {StylesApi} from '$lib/api/styles'
 	import type {Meta} from '$lib/api/props/types'
 
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 
 	import * as ui from '$stores/ui'
-	import {initStyles} from '$lib/api/styles'
 	import {getFixtures} from '$lib/api/fixtures/js'
 
 	import Api from './Api.svelte'
@@ -27,7 +26,6 @@
 	export let component: ComponentType
 	export let category = ''
 	export let color = 'primary:light'
-	export let stylesApi: StylesApi = initStyles()
 	export let meta: Meta
 
 	let ApiElement: {[category: string]: ComponentType} = {
@@ -42,13 +40,8 @@
 	let container = ''
 	let size = '' // Container size
 	let status = ''
-	let contextClasses = ''
 
-	let containerOptions = {
-		container: '',
-		size: '',
-	}
-
+	const stylesApi: StylesApi = getContext('stylesApi')
 	let styles: StyleTree = stylesApi.getStyleTree()
 	let settings = styles.app
 	const stores = [
@@ -63,25 +56,19 @@
 			}
 		}),
 	]
-
-	//== Shared settings (user controlled)
-	// Container options
-	// - [container + size] work together
-	$: containerOptions.container = styles.layouts?.container.container ?? containerOptions.container
-	$: containerOptions.size = styles.layouts?.container.size ?? containerOptions.size
-
 	// App settings (user controlled)
 	//== App settings (user controlled)
 	$: brightness = settings.app.brightness
 	$: contrast = settings.app.contrast || contrast
+
+	//== Layout settings (user controlled)
 	// Container options
 	// - [container + size] work together
 	$: container = styles.layouts?.container.container ?? container
 	$: size = styles.layouts?.container.size ?? size
 	$: status = styles.blocks?.element.status ?? status
 
-	$: contextClasses = `${containerOptions.size}`
-	$: containerClasses = `l:${container}:${size} content ${contextClasses}`
+	$: containerClasses = `l:${container}:${size} content`
 	$: fixtures = getFixtures({category, component: title})
 
 	onDestroy(() => {

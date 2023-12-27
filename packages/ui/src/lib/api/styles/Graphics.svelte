@@ -3,16 +3,13 @@
 	import type {StyleTree} from './types'
 	import type {StylesApi} from '$lib/api/styles'
 
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 
 	import lib from '@fat-fuzzy/lib'
-	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
 	import constants from '$lib/types/constants'
 
 	const {TRANSITION_CONTRAST} = constants
-
-	export let stylesApi: StylesApi = initStyles()
 
 	export let title = ''
 	export let name = title
@@ -37,6 +34,7 @@
 
 	let page = ''
 
+	const stylesApi: StylesApi = getContext('stylesApi')
 	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [

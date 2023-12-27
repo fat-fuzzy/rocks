@@ -22,18 +22,12 @@
 	const actionPath = '/ui'
 	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
 
-	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
 	let currentTab = $page.data.currentTabs?.element || DEFAULT_TABS[0]
 
 	const tabs = TABS
 
 	const localStores = [
-		stores.ui.styles.subscribe((value) => {
-			if (value) {
-				stylesApi.applyStyles(value)
-			}
-		}),
 		stores.ui.reveal.subscribe((value) => {
 			if (value) {
 				revealContext = value
@@ -171,7 +165,6 @@
 		{category}
 		content={markdowns.categories.find(({meta}) => meta.slug === category)}
 		{markdowns}
-		{stylesApi}
 		{actionPath}
 		redirect={$page.url.pathname}
 	/>

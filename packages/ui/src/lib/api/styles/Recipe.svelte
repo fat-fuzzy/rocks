@@ -3,12 +3,9 @@
 	import type {StyleTree} from './types'
 	import type {StylesApi} from '.'
 
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 
-	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
-
-	export let stylesApi: StylesApi = initStyles()
 
 	export let title = ''
 	export let name = title
@@ -29,6 +26,7 @@
 
 	let page = ''
 
+	const stylesApi: StylesApi = getContext('stylesApi')
 	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [

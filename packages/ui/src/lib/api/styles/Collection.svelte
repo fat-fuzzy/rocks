@@ -1,13 +1,12 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '.'
-	import type {StyleTree} from './types'
+	import type {StylesApi} from '$lib/api/styles/'
+	import type {StyleTree} from '$lib/api/styles/types'
 	import type {Markdowns} from '$lib/api/props/types'
 
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {initStyles} from '$lib/api/styles'
 	import {getCategoryMarkdowns, getElementMeta} from '$lib/api/props'
 	import * as ui from '$stores/ui'
 
@@ -29,9 +28,9 @@
 	export let isPage = false
 	export let components: {[name: string]: ComponentType}
 	export let category = $page.params.category
-	export let stylesApi: StylesApi = initStyles()
 	export let markdowns: Markdowns
 
+	const stylesApi: StylesApi = getContext('stylesApi')
 	let background = ''
 	let styles: StyleTree = stylesApi.getStyleTree()
 
