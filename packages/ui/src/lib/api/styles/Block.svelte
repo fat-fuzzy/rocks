@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '.'
+	import type {StylesApi} from '$lib/api/styles'
 
 	import {onDestroy, getContext} from 'svelte'
 
@@ -12,6 +12,7 @@
 	export let component: ComponentType
 	export let props: any
 	const stylesApi: StylesApi = getContext('stylesApi')
+	let styles: StyleTree = stylesApi.getStyleTree()
 
 	let breakpoint = props?.breakpoint || ''
 	let layout = props?.layout || ''
@@ -22,12 +23,10 @@
 	let asset = props?.asset || ''
 	let size = props?.size || '' // element's own size
 
-	let styles: StyleTree = stylesApi.getStyleTree()
-
 	const stores = [
 		ui.styles.subscribe((value) => {
 			if (value) {
-				styles = value
+				styles = stylesApi.getStyleTree()
 			}
 		}),
 	]

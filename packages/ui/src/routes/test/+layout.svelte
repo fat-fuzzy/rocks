@@ -34,6 +34,7 @@
 	let sidebarReveal = sidebar || DEFAULT_NAV_REVEAL_STATE
 	let stylesApi: StylesApi = initStyles()
 	setContext('stylesApi', stylesApi)
+	setContext('styles', stylesApi.getStyleTree())
 
 	stores.currentTab.set(currentTabs?.element || DEFAULT_TABS[0])
 	stores.styles.set(styles)

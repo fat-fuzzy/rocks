@@ -38,16 +38,10 @@
 	let title: string
 	let Component: ComponentType
 
-	let stylesApi = api.stylesApi.initStyles()
 	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
 	let currentTab = $page.data.currentTabs?.element || DEFAULT_TABS[0]
 
 	const localStores = [
-		stores.ui.styles.subscribe((value) => {
-			if (value) {
-				stylesApi.applyStyles(value)
-			}
-		}),
 		stores.ui.reveal.subscribe((value) => {
 			if (value) {
 				revealContext = value
@@ -199,7 +193,6 @@
 		{title}
 		{path}
 		{category}
-		{stylesApi}
 		component={Component}
 		meta={content.meta}
 		{actionPath}

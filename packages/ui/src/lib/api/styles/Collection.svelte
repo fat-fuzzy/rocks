@@ -37,7 +37,7 @@
 	const stores = [
 		settings.styles.subscribe((value: StyleTree) => {
 			if (value) {
-				styles = value
+				styles = stylesApi.getStyleTree()
 			}
 		}),
 	]
@@ -64,7 +64,6 @@
 					{path}
 					{category}
 					{component}
-					{stylesApi}
 					{actionPath}
 					meta={getElementMeta(categoryMarkdowns, name)}
 					redirect={$page.url.pathname}
@@ -73,8 +72,8 @@
 		</section>
 		<section slot="side">
 			<div class="l:stack:lg">
-				<details id={`${category}-api`} class="l:stack:lg" open>
-					<summary class={`card:xs bg:${color} box:primary:light`}>Style Props</summary>
+				<details id={`${category}-api`} class="l:stack:xs" open>
+					<summary class={`bg:${color} box:primary:light`}>Style Props</summary>
 					{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
 						<div class="drop w:full bg:polar ui:menu">
 							<Api categories={[category]} {path} {actionPath} {redirect} />
@@ -117,7 +116,6 @@
 							{path}
 							{category}
 							{component}
-							{stylesApi}
 							{actionPath}
 							meta={getElementMeta(categoryMarkdowns, name)}
 						/>

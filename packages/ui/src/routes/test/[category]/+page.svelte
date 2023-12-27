@@ -1,22 +1,22 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
+	import type {StylesApi} from '$lib/api/styles'
+
+	import {onDestroy, getContext} from 'svelte'
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
 	import {tokens, blocks, layouts, recipes, graphics, api, stores, constants, headless} from '$lib'
 
+	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
 	const {Head} = headless
 	const {Collection, Api} = api
 	const {RevealAuto} = layouts
 	const {ToggleMenu} = recipes
-
 	const actionPath = '/test'
-	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
+	const tabs = TABS
 
 	let revealContext = $page.data.dsContext || DEFAULT_REVEAL_STATE
 	let currentTab = $page.data.currentTabs?.category || DEFAULT_TABS[0]
-
-	const tabs = TABS
 
 	const localStores = [
 		stores.ui.reveal.subscribe((value) => {
@@ -134,7 +134,7 @@
 				<p class="feedback bare emoji:default">Coming Soon!</p>
 			{:else if content.meta.props_style}
 				<details open>
-					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
+					<summary class={`bg:primary:light box:primary:light`}>Style Props</summary>
 					<ul class="tags l:switcher:md">
 						{#each content.meta.props_style as prop}
 							<li class="card:sm bg:primary:lightest">{prop}</li>
