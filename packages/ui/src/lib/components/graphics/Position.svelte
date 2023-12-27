@@ -45,8 +45,8 @@
 	/>
 	<InputRange
 		bind:value={coordY}
-		id={`${id}-x`}
-		name={`${id}-x`}
+		id={`${id}-y`}
+		name={`${id}-y`}
 		label={`${label} y`}
 		max={maxY}
 		on:input={updateY}
