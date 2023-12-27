@@ -94,11 +94,11 @@
 		{max}
 		{step}
 		on:input={handleInput}
-		list={items ? 'markers' : undefined}
+		list={items ? `${id}-markers` : undefined}
 		{disabled}
 	/>
 	{#if items.length}
-		<datalist id="markers">
+		<datalist id={`${id}-markers`} class="l:flex justify:between">
 			{#each markers as { id, label, value }}
 				<option {id} {label} {value} />
 			{/each}
