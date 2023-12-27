@@ -65,14 +65,14 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`button-expand-${id}`}
+			id={`button-reveal-auto-${id}`}
+			{title}
+			{color}
 			{variant}
 			{size}
-			{color}
-			{title}
 			type={actionPath && formaction ? 'submit' : 'button'}
-			name="reveal"
-			controls={`reveal-${id}`}
+			name="reveal-auto"
+			controls={`reveal-auto-${id}`}
 			value={'menu'}
 			states={{
 				active: {text: 'Context', value: 'show', asset: 'emoji:context'},
@@ -83,7 +83,7 @@
 			{title}
 		</Expand>
 	</form>
-	<div id={`reveal-${id}`} class={`${layoutClass} ${showContent} ${direction} shrink`}>
+	<div id={`reveal-auto-${id}`} class={`${layoutClass} ${showContent} ${direction} shrink`}>
 		<slot name="content">
 			<div class={`layer card:${size}`}>
 				<p class="font:lg">Revealed Content</p>

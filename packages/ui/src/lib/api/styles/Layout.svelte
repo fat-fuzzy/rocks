@@ -13,9 +13,11 @@
 	export let component: ComponentType
 	export let props: any
 
+	let color = ''
+	let variant = ''
 	let size = '' // element's own size
 	let threshold = '' // element's own threshold
-	let breakpoint = '' // element's own threshold
+	let breakpoint = '' // element's own breakpoint
 	let background = ''
 	let content = ''
 	let sideContent = ''
@@ -41,8 +43,11 @@
 
 	// App options
 	$: background = settings.app.contrast ?? background
-	// Element options
-	$: size = styles.layouts?.layout?.size ?? size
+	// Block options
+	$: size = styles.blocks?.element?.size ?? size
+	$: color = styles.blocks?.element?.color ?? color
+	$: variant = styles.blocks?.element?.variant ?? variant
+	// Layout options
 	$: breakpoint = styles.layouts?.layout.breakpoint ?? breakpoint
 	$: threshold = styles.layouts?.layout.threshold ?? threshold
 	// Content options
@@ -84,7 +89,16 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {background} {breakpoint} {props}>
+		<svelte:component
+			this={component}
+			id={title}
+			{color}
+			{variant}
+			{size}
+			{background}
+			{breakpoint}
+			{props}
+		>
 			<div slot="content">
 				{@const fixtureProps = getFixtures({category, component: title})}
 				{#if content === 'text'}
@@ -130,7 +144,16 @@
 			</div>
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component this={component} id={title} {size} {background} {breakpoint} {...props}>
+		<svelte:component
+			this={component}
+			id={title}
+			{color}
+			{variant}
+			{size}
+			{background}
+			{breakpoint}
+			{...props}
+		>
 			<svelte:fragment slot="content">
 				{#each fixtureProps.form as item}
 					<div class={contentStyles}>{item}</div>
