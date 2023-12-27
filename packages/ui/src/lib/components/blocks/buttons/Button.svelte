@@ -43,7 +43,7 @@
 		: `l:${container}:${size}`
 	$: layoutClasses = `l:${layout}:${size}`
 	$: contextClasses = `${layoutClasses} ${containerClasses}`
-	$: elementClasses = `${asset} ${color} ${size} ${shape} ${variant} align:${align} font:${size}`
+	$: elementClasses = `${asset} ${color} ${size} shape:${shape} ${variant} align:${align} font:${size}`
 
 	// Order is important
 	$: buttonClasses = `${contextClasses} ${elementClasses}`

@@ -45,7 +45,3 @@
 	margin-right: auto;
 	margin-block-end: var(--gap);
 }
-
-[class*='l:frame'] + * {
-	margin-block-start: var(--s0);
-}

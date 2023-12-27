@@ -1,6 +1,7 @@
 menu {
 	display: flex;
 	align-items: center;
+	height: fit-content;
 	padding: 0;
 	list-style: none;
 	background-color: inherit;
@@ -17,6 +18,10 @@ menu > li > * {
 
 menu.end {
 	margin-inline-end: calc(2 * var(--gap));
+}
+
+.menu\:settings > * + * {
+	margin-inline-start: var(--current-size);
 }
 
 .menu\:settings [class^='switch'][aria-pressed] {
