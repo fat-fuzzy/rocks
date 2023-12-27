@@ -18,6 +18,6 @@ article.box > header {
 	border-top-right-radius: var(--radius);
 }
 
-[class*='l:grid'] > .box header .title:before {
+[class*='l:grid'] > .box header .title::before {
 	margin-inline: var(--current-size-plus);
 }
