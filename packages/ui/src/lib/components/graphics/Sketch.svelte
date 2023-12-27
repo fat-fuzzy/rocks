@@ -90,13 +90,21 @@
 	<div class={`l:main ${size}`}>
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
 			<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
-				<slot name="fallback">
-					<p class={`feedback emoji:info ${size} l:text`}>
-						This is a demo of an interactive canvas component used to display and interact with
-						WebGL animations
+				<slot name="fallback-canvas">
+					<p class={`feedback emoji:default ${size} content`}>
+						With JavaScript enabled, this would display a demo of a canvas component used to display
+						and interact with WebGL animations
 					</p>
 				</slot>
 			</canvas>
+			{#await Promise.resolve()}
+				<p class={`feedback emoji:default ${size} content`}>
+					When JavaScript loads, this should display demo of a canvas component used to display and
+					interact with WebGL animations
+				</p>
+			{:then}
+				<slot name="fallback-nojs" />
+			{/await}
 		</div>
 		{#if canvas && !playerAside}
 			<Player id="sketch.player" on:click={handleToggle} {color} {size} {variant} />
