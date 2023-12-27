@@ -98,7 +98,7 @@
 		redirect={$page.url.pathname}
 		on:toggle={handleToggle}
 	>
-		<div slot="content" class="l:side ui:menu l:switcher:sm">
+		<div slot="content" class="ui:menu l:switcher:sm">
 			{#if currentTab.value === 'demo'}
 				<Api {path} {actionPath} redirect={$page.url.pathname} />
 			{/if}
@@ -142,7 +142,7 @@
 		<aside class="l:side">
 			{#if content.meta.props_style}
 				<details open>
-					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
+					<summary class={`bg:primary:light box:primary:light`}>Style Props</summary>
 					<ul class="tags l:switcher:md">
 						{#each props.doc as docs}
 							{#if docs.tokens}
@@ -166,7 +166,7 @@
 			{/if}
 			{#if content.meta.content_type}
 				<details open>
-					<summary class={`card:xs bg:primary:light box:primary:light`}>Content Type</summary>
+					<summary class={`bg:primary:light box:primary:light`}>Content Type</summary>
 					<ul class="tags l:switcher:md">
 						{#each content.meta.content_type as prop}
 							<li class="card:sm bg:highlight:lightest">{prop}</li>
@@ -176,7 +176,7 @@
 			{/if}
 			{#if content.meta.props_state}
 				<details open>
-					<summary class={`card:xs bg:primary:light box:primary:light`}>State Props</summary>
+					<summary class={`bg:primary:light box:primary:light`}>State Props</summary>
 					<ul class="tags l:switcher:md">
 						{#each content.meta.props_state as prop}
 							<li class="card:sm bg:accent:lightest">{prop}</li>

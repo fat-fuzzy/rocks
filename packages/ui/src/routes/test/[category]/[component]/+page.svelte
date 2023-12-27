@@ -139,7 +139,7 @@
 		<section class="l:main card:md">
 			<div class="l:text:lg">{@html content.html}</div>
 		</section>
-		<aside class="l:side card:md">
+		<aside class="l:side">
 			{#if !content.meta}
 				<p class="feedback bare emoji:default">Coming Soon!</p>
 			{:else}
@@ -169,7 +169,7 @@
 				{/if}
 				{#if content.meta.content_type}
 					<details open>
-						<summary class={`card:xs bg:primary:light box:primary:light`}>Content Type</summary>
+						<summary class={`bg:primary:light box:primary:light`}>Content Type</summary>
 						<ul class="tags l:switcher:md">
 							{#each content.meta.content_type as prop}
 								<li class="card:sm bg:highlight:lightest">{prop}</li>
@@ -179,7 +179,7 @@
 				{/if}
 				{#if content.meta.props_state}
 					<details open>
-						<summary class={`card:xs bg:primary:light box:primary:light`}>State Props</summary>
+						<summary class={`bg:primary:light box:primary:light`}>State Props</summary>
 						<ul class="tags l:switcher:md">
 							{#each content.meta.props_state as prop}
 								<li class="card:sm bg:accent:lightest">{prop}</li>
