@@ -106,7 +106,7 @@
 		{/if}
 	</section>
 	<section class="l:text:lg">
-		<details class={`l:stack:md ${size}`} open>
+		<details class={`l:stack:md ${size}`}>
 			<summary class={`card:md box:${color} bg:${color}`}>
 				{category}
 			</summary>
