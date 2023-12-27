@@ -49,7 +49,6 @@ const container = {
 		{id: 'container.center', text: 'center', value: 'center'},
 		{id: 'container.burrito', text: 'burrito', value: 'burrito'},
 	],
-	exclude: ['Stack', 'Burrito'],
 }
 
 const size = {
@@ -65,7 +64,6 @@ const size = {
 		{id: 'size.lg', text: 'lg', value: 'lg'},
 		{id: 'size.xl', text: 'xl', value: 'xl'},
 	],
-	exclude: ['Nav', 'Stack', 'Burrito'],
 }
 
 const layout = {
@@ -82,25 +80,6 @@ const layout = {
 			value: 'switcher',
 		},
 	],
-	exclude: [
-		'recipes',
-		'layouts',
-		'Switcher',
-		'Reveal',
-		'Stack',
-		'Switcher',
-		'Burrito',
-		'Sidebar',
-		'Nav',
-		'RevealNav',
-		'RevealMenu',
-		'Header',
-		'LogIn',
-		'InputCheck',
-		'InputRadio',
-		'InputFile',
-		'InputRange',
-	],
 }
 
 const threshold = {
@@ -116,25 +95,6 @@ const threshold = {
 		{id: 'threshold.lg', text: 'lg', value: 'lg'},
 		{id: 'threshold.xl', text: 'xl', value: 'xl'},
 	],
-	exclude: [
-		'blocks',
-		'recipes',
-		'layouts',
-		'Switcher',
-		'Reveal',
-		'Stack',
-		'Switcher',
-		'Burrito',
-		'Sidebar',
-		'Nav',
-		'Header',
-		'LogIn',
-		'InputCheck',
-		'InputRadio',
-		'InputFile',
-		'InputRange',
-	],
-	include: ['RevealNav', 'ButtonMenu', 'ToggleMenu', 'Switcher'],
 }
 
 const breakpoint = {
@@ -150,27 +110,6 @@ const breakpoint = {
 		{id: 'breakpoint.lg', text: 'lg', value: 'lg'},
 		{id: 'breakpoint.xl', text: 'xl', value: 'xl'},
 	],
-	exclude: [
-		'recipes',
-		'layouts',
-		'Reveal',
-		'Stack',
-		'Switcher',
-		'Sidebar',
-		'Burrito',
-		'Sidebar',
-		'Nav',
-		'RevealNav',
-		'LogIn',
-		'ButtonMenu',
-		'ToggleMenu',
-		'RevealMenu',
-		'InputCheck',
-		'InputRadio',
-		'InputFile',
-		'InputRange',
-	],
-	include: ['RevealAuto'],
 }
 
 const color = {
@@ -203,7 +142,6 @@ const color = {
 			value: 'highlight',
 		},
 	],
-	exclude: ['Feedback'],
 }
 
 const variant = {
@@ -217,7 +155,6 @@ const variant = {
 		{id: 'variant.outline', text: 'outline', value: 'outline'},
 		{id: 'variant.bare', text: 'bare', value: 'bare'},
 	],
-	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 }
 
 const shape = {
@@ -231,7 +168,6 @@ const shape = {
 		{id: 'shape.square', text: 'square', value: 'square'},
 		{id: 'shape.default', text: 'default', value: 'default'},
 	],
-	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 }
 
 const dimensions = {
@@ -245,7 +181,6 @@ const dimensions = {
 		{id: 'dimensions.twin', text: 'twin', value: 'twin'},
 		{id: 'dimensions.square', text: 'square', value: 'square'},
 	],
-	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 }
 
 const background = {
@@ -259,7 +194,6 @@ const background = {
 		{id: 'background.box', text: 'box', value: 'box'},
 		{id: 'background.polar', text: 'polar', value: 'polar'},
 	],
-	exclude: ['InputCheck', 'InputRadio', 'InputRange', 'InputFile'],
 }
 
 const status = {
@@ -305,17 +239,6 @@ const status = {
 			value: 'error',
 		},
 	],
-	exclude: [
-		'Button',
-		'Expand',
-		'Switch',
-		'Toggle',
-		'InputCheck',
-		'InputFile',
-		'InputRadio',
-		'InputRange',
-	],
-	include: ['Feedback'],
 }
 
 const context = {
@@ -329,17 +252,6 @@ const context = {
 		{id: 'context.form', text: 'form', value: 'form'},
 		{id: 'context.code', text: 'code', value: 'code'},
 	],
-	exclude: [
-		'Button',
-		'Expand',
-		'Switch',
-		'Toggle',
-		'InputCheck',
-		'InputFile',
-		'InputRadio',
-		'InputRange',
-	],
-	include: ['Feedback'],
 }
 
 const asset = {
@@ -374,7 +286,6 @@ const asset = {
 			asset: 'emoji',
 		},
 	],
-	exclude: ['Switch', 'ButtonMenu', 'ToggleMenu', 'InputRange', 'InputFile'],
 }
 
 // TODO: Fix asset - SVG / emoji
@@ -394,8 +305,6 @@ const content = {
 		{id: 'content.form', text: 'form', value: 'form'},
 		{id: 'content.text', text: 'text', value: 'text'},
 	],
-	exclude: ['layouts', 'Sidebar'],
-	include: ['Burrito', 'Reveal', 'RevealAuto', 'Stack', 'Switcher'],
 }
 
 const side = {
@@ -409,8 +318,6 @@ const side = {
 		{id: 'side.form', text: 'form', value: 'form'},
 		{id: 'side.text', text: 'text', value: 'text'},
 	],
-	exclude: ['layouts'],
-	include: ['Sidebar'],
 }
 
 const main = {
@@ -424,8 +331,6 @@ const main = {
 		{id: 'main.form', text: 'form', value: 'form'},
 		{id: 'main.text', text: 'text', value: 'text'},
 	],
-	exclude: ['layouts'],
-	include: ['Sidebar', 'Switcher'],
 }
 
 const settingsFamily = {
@@ -447,7 +352,6 @@ const containerFamily = {
 	size: 'lg',
 	variant: 'card',
 	props: ['container', 'size'],
-	exclude: ['Color', 'Typography', 'Button', 'Expand', 'Switch', 'Toggle', 'RevealAuto'],
 }
 
 const layoutFamily = {
@@ -456,16 +360,6 @@ const layoutFamily = {
 	size: 'lg',
 	variant: '',
 	props: ['layout', 'threshold', 'breakpoint'],
-	exclude: [
-		'Color',
-		'Typography',
-		'Button',
-		'Expand',
-		'Switch',
-		'Toggle',
-		'Feedback',
-		'RevealAuto',
-	],
 }
 
 const contentFamily = {
@@ -491,18 +385,6 @@ const CATEGORIES: {[key: string]: any} = {
 		element: FAMILIES['layout'],
 		container: FAMILIES['container'],
 	},
-	recipes: {
-		element: FAMILIES['element'],
-		layout: FAMILIES['layout'],
-		container: FAMILIES['element'],
-		content: FAMILIES['content'],
-	},
-	graphics: {
-		element: FAMILIES['element'],
-		layout: FAMILIES['layout'],
-		container: FAMILIES['container'],
-		content: FAMILIES['content'],
-	},
 }
 
 const PROPS_STYLE: {[key: string]: any} = {
@@ -524,24 +406,6 @@ const PROPS_STYLE: {[key: string]: any} = {
 	content,
 	side,
 	main,
-}
-
-const INPUT_GROUP_NAME: {[key: string]: string} = {
-	id: 'id',
-	asset: 'asset',
-	size: 'size',
-	label: 'label',
-	text: 'text',
-	value: 'value',
-	brightness: 'brightness',
-	contrast: 'contrast',
-	app: 'app',
-	container: 'container',
-	content: 'content',
-	breakpoint: 'breakpoint',
-	variant: 'variant',
-	color: 'color',
-	layout: 'layout',
 }
 
 function getInputGroup(name: string, category: string, family: string) {
