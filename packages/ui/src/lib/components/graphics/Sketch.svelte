@@ -22,15 +22,16 @@
 	let programInfo
 
 	let frame: number
+	let state = 'clear'
 
 	$: playerAside = ['xs', 'sm'].includes(size)
-	$: state = 'clear'
 	$: showDetails = geometry !== undefined && (state === 'play' || state === 'pause')
+	$: playerAsset = state === 'clear' ? 'sketch' : state
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
 		: `l:frame:${dimensions}`
 	$: frameClasses = canvas
-		? `canvas ${backgroundClass} ${layer} state:${state} emoji:${state}`
+		? `canvas ${backgroundClass} ${layer} state:${state} emoji:${playerAsset}`
 		: `canvas ${backgroundClass} ${layer} card:xl `
 
 	function init() {
