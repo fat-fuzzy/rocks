@@ -1,7 +1,7 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
+	import {onDestroy, setContext} from 'svelte'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, recipes, graphics, stores, constants} from '@fat-fuzzy/ui'
+	import {tokens, blocks, layouts, recipes, graphics, stores, constants, api} from '@fat-fuzzy/ui'
 	const {RevealNav} = recipes
 	let path = $page.url.pathname
 
@@ -18,6 +18,9 @@
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
 	let sidebarReveal: {[key: string]: string} = {reveal: ''}
+	let stylesApi = api.stylesApi.initStyles()
+	setContext('stylesApi', stylesApi)
+	setContext('styles', stylesApi.getStyleTree())
 
 	const {styles, context, state, currentTabs} = $page.data
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE, TABS} = constants
