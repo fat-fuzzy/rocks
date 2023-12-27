@@ -3,9 +3,8 @@
 	import type {StyleTree} from './types'
 	import type {StylesApi} from '$lib/api/styles'
 
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 
-	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
 	import {getFixtures} from '$lib/api/fixtures/js'
 
@@ -13,7 +12,6 @@
 	export let isPage = false
 	export let component: ComponentType
 	export let props: any
-	export let stylesApi: StylesApi = initStyles()
 
 	let size = '' // element's own size
 	let threshold = '' // element's own threshold
@@ -24,6 +22,7 @@
 	let mainContent = ''
 	let category = 'layouts'
 
+	const stylesApi: StylesApi = getContext('stylesApi')
 	let styles: StyleTree = stylesApi.getStyleTree()
 	let settings = styles.app
 

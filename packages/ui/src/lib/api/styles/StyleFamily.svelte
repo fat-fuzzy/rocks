@@ -2,21 +2,21 @@
 	import type {ComponentType} from 'svelte'
 	import type {StyleTree} from './types'
 	import type {Meta} from '$lib/api/props/types'
+	import type {StylesApi} from '$lib/api/styles'
 
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 
 	import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 	import * as ui from '$stores/ui'
-	import {initStyles} from '$lib/api/styles'
 
 	export let category = 'app'
 	export let formaction: string | undefined = undefined
 	export let meta: Meta | undefined
 
-	let stylesApi = initStyles()
+	const stylesApi: StylesApi = getContext('stylesApi')
 	let optionsPerCategory = stylesApi.getFormOptions(category, meta)
 
 	let apiSize = 'xs'
