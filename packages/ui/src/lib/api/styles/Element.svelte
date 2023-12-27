@@ -82,6 +82,7 @@
 
 	$: contextClasses = `${containerOptions.size}`
 	$: containerClasses = `l:${container}:${size} content ${contextClasses}`
+	$: fixtures = getFixtures({category, component: title})
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -89,7 +90,6 @@
 </script>
 
 {#if isPage}
-	{@const fixtures = getFixtures({category, component: title})}
 	<article class="l:sidebar:xs">
 		<section class={`l:main card:xl inset ${brightness} bg:${contrast} `}>
 			<div class={containerClasses}>
@@ -144,7 +144,6 @@
 		</section>
 	</article>
 {:else}
-	{@const fixtures = getFixtures({category, component: title})}
 	<article
 		id={`card-${title}`}
 		class={`box ${brightness} bg:${contrast} l:stack ui:${title.toLowerCase()}`}
