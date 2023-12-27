@@ -108,7 +108,8 @@
 				title="Update geometry"
 				size="xl"
 				color="highlight"
-				variant="round outline"
+				variant="outline"
+				shape="round"
 				asset="emoji:nojs"
 				{disabled}
 			/>

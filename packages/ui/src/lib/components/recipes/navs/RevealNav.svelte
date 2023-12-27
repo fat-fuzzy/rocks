@@ -106,7 +106,6 @@
 			align={buttonAlign}
 			controls={`nav-${id}`}
 			value={title}
-			shape="default"
 			states={{
 				active: {text: title, value: 'show', asset: `emoji:point-${animationDirection}`},
 				inactive: {text: title, value: 'minimize', asset: `emoji:point-${animationDirection}`},

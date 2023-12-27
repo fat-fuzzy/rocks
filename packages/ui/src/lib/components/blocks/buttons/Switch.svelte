@@ -81,7 +81,7 @@
 		: `l:${container}:${size}`
 	$: layoutClasses = `l:${layout}:${size}`
 	$: contextClasses = `${layoutClasses} ${containerClasses}`
-	$: elementClasses = `${color} ${size} ${shape} ${variant} align:${align} font:${size}`
+	$: elementClasses = `${color} ${size} shape:${shape} ${variant} align:${align} font:${size}`
 	$: stateClasses = `switch:${$state.value} ${currentState.asset} ${
 		currentState.variant || variant
 	}`
@@ -103,7 +103,7 @@
 	on:click={onClick}
 	aria-pressed={pressed}
 >
-	{#if shape !== 'default'}
+	{#if shape}
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>

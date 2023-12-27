@@ -158,15 +158,15 @@ const variant = {
 }
 
 const shape = {
-	initial: 'default',
-	input: 'radio',
+	initial: '',
+	input: 'toggle',
 	layout: 'stack',
 	size: 'sm',
-	variant: 'box card',
+	variant: 'card',
+	mode: 'checkbox',
 	items: [
 		{id: 'shape.round', text: 'round', value: 'round'},
 		{id: 'shape.square', text: 'square', value: 'square'},
-		{id: 'shape.default', text: 'default', value: 'default'},
 	],
 }
 

@@ -63,7 +63,8 @@
 				type="submit"
 				size="lg"
 				color="highlight"
-				variant="round outline"
+				variant="outline"
+				shape="round"
 				asset="emoji:nojs"
 			/>
 		</div>

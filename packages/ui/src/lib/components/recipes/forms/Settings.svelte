@@ -74,7 +74,7 @@
 	$: show = `show ${showBackground}`
 	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	$: revealClasses = `form:expand card:md nowrap`
-	$: formClasses = `l:switcher:lg card:md ${showBackground}`
+	$: formClasses = `l:switcher:xs ${showBackground}`
 	$: layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
@@ -121,7 +121,7 @@
 			Settings
 		</Expand>
 	</form>
-	<div {id} class={`${showSettings} l:flex`}>
+	<div {id} class={`${showSettings} l:flex align:center`}>
 		<form
 			name="settings-update"
 			{method}
@@ -135,23 +135,25 @@
 			class={`menu:settings ${formClasses}`}
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
-				<Switch
-					id={`${settingsId}-${id}`}
-					{name}
-					{title}
-					{variant}
-					{shape}
-					{color}
-					{size}
-					{states}
-					on:click={handleUpdate}
-				/>
+				<div class="l:frame:square">
+					<Switch
+						id={`${settingsId}-${id}`}
+						{name}
+						{title}
+						{variant}
+						{shape}
+						{color}
+						{size}
+						{states}
+						on:click={handleUpdate}
+					/>
+				</div>
 			{/each}
 		</form>
-		<menu class="end">
+		<menu class="menu:settings end">
 			{#each items.links as { id, title, url, shape, size, asset }}
 				{@const assetValue = SVG_ASSETS[brightness] ? SVG_ASSETS[brightness][id] : ''}
-				<li>
+				<li class="l:frame:square">
 					<a
 						class={`${variant} font:${size} ${shape} ${color}`}
 						href={url}

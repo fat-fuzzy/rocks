@@ -113,7 +113,8 @@
 					size="md"
 					container="card:md"
 					color="primary"
-					variant="round outline"
+					variant="outline"
+					shape="round"
 					formaction={`/test?/updateTab&redirectTo=${$page.url.pathname}`}
 					on:click={handleTabChange}
 				/>

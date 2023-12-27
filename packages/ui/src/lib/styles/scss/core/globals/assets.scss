@@ -11,12 +11,12 @@ a[class*='emoji:']::before {
 	display: flex;
 }
 
-.round[class*='emoji'] {
+[class*='shape:'][class*='emoji'] {
 	font-size: var(--current-font-size);
 	padding: var(--current-size);
 }
 
-:not(.round, .square)[class*='emoji']::before {
+:not([class*='shape:'])[class*='emoji']::before {
 	margin-inline: 0 var(--current-size);
 }
 
@@ -36,5 +36,5 @@ a[class*='emoji:']::before {
 }
 
 [class*='svg:icon'] {
-	height: calc(3.15 * var(--current-size-plus)); // TODO : set icon size in scale.scss
+	height: calc(2.95 * var(--current-size-plus)); // TODO : set icon size in scale.scss
 }
