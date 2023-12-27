@@ -5,10 +5,7 @@ category: 'blocks'
 group: 'buttons'
 props_state: ['title', 'text', 'formaction', 'value', 'states']
 props_style:
-  {
-    'blocks': {'element': ['color', 'variant', 'size', 'asset', 'shape']},
-    'layouts': {'layout': ['layout']},
-  }
+  {'blocks': {'element': ['color', 'variant', 'size', 'shape']}, 'layouts': {'layout': ['layout']}}
 context: ['app.settings']
 ---
 

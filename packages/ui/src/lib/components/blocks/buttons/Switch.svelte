@@ -22,14 +22,14 @@
 	 * Style props
 	 */
 	export let align = ''
-	export let breakpoint = ''
-	export let container = ''
 	export let color = ''
-	export let layout = 'flex'
 	export let size = ''
-	export let dimensions = ''
 	export let shape = ''
 	export let variant = 'fill'
+
+	export let container = ''
+	export let dimensions = ''
+	export let layout = 'flex'
 
 	let payloadId = name // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 
@@ -79,10 +79,15 @@
 	$: containerClasses = container.startsWith('main')
 		? `l:${container}:${dimensions}`
 		: `l:${container}:${size}`
-	$: layoutClasses = shape
-		? `${shape} ${currentState.variant || variant}`
-		: `l:${layout}:${size} bp:${breakpoint}  ${currentState.variant || variant}`
-	$: buttonClasses = `switch:${$state.value} ${layoutClasses} ${containerClasses} ${color} ${align} ${size} font:${size} ${currentState.asset}`
+	$: layoutClasses = `l:${layout}:${size}`
+	$: contextClasses = `${layoutClasses} ${containerClasses}`
+	$: elementClasses = `${color} ${size} ${shape} ${variant} align:${align} font:${size}`
+	$: stateClasses = `switch:${$state.value} ${currentState.asset} ${
+		currentState.variant || variant
+	}`
+
+	// Order is important
+	$: buttonClasses = `${stateClasses} ${contextClasses} ${elementClasses}`
 </script>
 
 <button
@@ -98,7 +103,7 @@
 	on:click={onClick}
 	aria-pressed={pressed}
 >
-	{#if shape}
+	{#if shape !== 'default'}
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>

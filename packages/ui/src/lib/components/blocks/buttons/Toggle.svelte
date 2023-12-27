@@ -23,14 +23,14 @@
 	 */
 	export let align = ''
 	export let asset = '' // emoji:value or svg:value
-	export let breakpoint = ''
-	export let container = ''
 	export let color = ''
-	export let layout = 'flex'
 	export let size = ''
 	export let shape = ''
-	export let dimensions = ''
 	export let variant = 'fill'
+
+	export let container = ''
+	export let dimensions = ''
+	export let layout = 'flex'
 
 	export let type: ButtonType = 'submit'
 
@@ -81,10 +81,13 @@
 	$: containerClasses = container.startsWith('main')
 		? `l:${container}:${dimensions}`
 		: `l:${container}:${size}`
-	$: layoutClasses = shape
-		? `${shape} ${variant}`
-		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
-	$: buttonClasses = `toggle:${$state.value} ${layoutClasses} ${containerClasses} ${color} ${asset} ${align} ${size} font:${size}`
+	$: layoutClasses = `l:${layout}:${size}`
+	$: contextClasses = `${layoutClasses} ${containerClasses}`
+	$: elementClasses = `${asset} ${color} ${size} ${shape} ${variant} align:${align} font:${size}`
+	$: stateClasses = `toggle:${$state.value}`
+
+	// Order is important
+	$: buttonClasses = `${stateClasses} ${contextClasses} ${elementClasses}`
 </script>
 
 <button
@@ -100,9 +103,5 @@
 	on:click={onClick}
 	aria-pressed={pressed}
 >
-	{#if shape}
-		<span class="sr-only">{text}</span>
-	{:else}
-		{text}
-	{/if}
+	{text}
 </button>
