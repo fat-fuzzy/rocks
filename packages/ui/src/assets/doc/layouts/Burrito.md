@@ -4,7 +4,7 @@ slug: Burrito
 category: 'layouts'
 # group: ['containers']
 content_types: ['any']
-props_style: {'blocks': {'element': ['size']}, 'layouts': {'container': ['size']}}
+props_style: {'layouts': {'container': ['size']}}
 
 context: ['app.settings']
 ---

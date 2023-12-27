@@ -337,23 +337,23 @@ const settingsFamily = {
 
 const elementFamily = {
 	layout: 'switcher',
-	size: 'xs',
+	size: 'md',
 	variant: 'card:xl',
 	props: ['color', 'variant', 'size', 'status', 'context', 'asset', 'shape'],
 }
 
 const containerFamily = {
-	layout: 'flex grow',
-	size: 'lg',
+	layout: 'switcher',
+	size: 'md',
 	variant: 'card',
 	props: ['container', 'size'],
 }
 
 const layoutFamily = {
-	layout: 'flex grow',
+	layout: 'switcher',
 	container: 'card',
-	size: 'lg',
-	variant: '',
+	size: 'md',
+	variant: 'card',
 	props: ['layout', 'threshold', 'breakpoint'],
 }
 
