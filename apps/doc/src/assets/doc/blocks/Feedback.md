@@ -3,10 +3,10 @@ title: Feedback
 slug: Feedback
 category: 'blocks'
 group: 'global'
-props_state: ['title', 'text', 'status']
+props_state: ['title', 'text']
 props_style:
   {
-    'blocks': {'element': ['variant', 'context', 'size', 'asset']},
+    'blocks': {'element': ['variant', 'context', 'size', 'asset', 'status']},
     'layouts': {'container': ['container', 'size']},
   }
 context: ['app.settings', 'shared.container']
