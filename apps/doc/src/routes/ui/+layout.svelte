@@ -93,6 +93,7 @@
 			size="md"
 			color="bg:primary:light"
 			position="fixed"
+			place="left"
 			background="polar"
 			container="card"
 			formaction="toggleSidebar"
