@@ -1,6 +1,5 @@
 import type {Meta, Markdown, Markdowns} from './types'
 import {getFamily} from '$lib/api/props/props-style'
-import format from '$lib/utils/format'
 
 const DEFAULT_META: Meta = {
 	title: '',
@@ -47,8 +46,7 @@ function getElementStyleProps(props_style: {[key: string]: {[key: string]: strin
 			const familyNames = Object.keys(families)
 			props.style[cat] = {}
 			familyNames.forEach((name) => {
-				const familyProps = families[name]
-				props.style[cat][name] = getFamily(format.capitalize(name), cat, familyProps)
+				props.style[cat][name] = getFamily(`${cat}.${name}`)
 			})
 		})
 	}

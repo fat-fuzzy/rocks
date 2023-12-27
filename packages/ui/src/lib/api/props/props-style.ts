@@ -425,16 +425,17 @@ function getInputGroup(name: string, category: string, family: string) {
 	})
 }
 
-function getFamily(name: string, category: string, props: string[]) {
-	const slug = name.toLowerCase()
+function getFamily(familyId: string) {
+	const [category, family] = familyId.split('.')
+	const slug = family
 	return new StyleFamily({
-		name,
+		name: slug,
 		title: '',
 		id: `${category}.${slug}`,
 		layout: FAMILIES[slug].layout,
 		size: FAMILIES[slug].size,
 		variant: FAMILIES[slug].variant,
-		items: props.map((prop) => {
+		items: FAMILIES[slug].props.map((prop) => {
 			return getInputGroup(prop, category, slug)
 		}),
 	})
