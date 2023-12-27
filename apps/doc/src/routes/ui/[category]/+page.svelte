@@ -144,16 +144,20 @@
 			<div class="l:text:lg">{@html content.html}</div>
 		</section>
 		<aside class="l:side">
-			{#if content.meta.props_style}
-				<details open>
-					<summary class={`card:xs bg:primary:light box:primary:light`}>Style Props</summary>
-					<ul class="tags l:switcher:md">
-						{#each content.meta.props_style as prop}
-							<li class="card:sm bg:primary:lightest">{prop}</li>
-						{/each}
-					</ul>
-				</details>
-			{/if}
+			<aside class="l:side">
+				{#if !content.meta}
+					<p class="feedback bare emoji:default">Coming Soon!</p>
+				{:else if content.meta.props_style}
+					<details open>
+						<summary class={`bg:primary:light box:primary:light`}>Style Props</summary>
+						<ul class="tags l:switcher:md">
+							{#each content.meta.props_style as prop}
+								<li class="card:sm bg:primary:lightest">{prop}</li>
+							{/each}
+						</ul>
+					</details>
+				{/if}
+			</aside>
 		</aside>
 	</article>
 {:else if currentTab.value === 'demo'}
