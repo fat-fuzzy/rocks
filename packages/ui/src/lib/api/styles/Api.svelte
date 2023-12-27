@@ -11,7 +11,7 @@
 	export let formaction = 'updateStyles'
 	export let actionPath: string | undefined
 	export let redirect: string | undefined
-	export let meta: Meta | undefined
+	export let meta: Meta | undefined = undefined
 	// export let reset = 'reset'
 
 	let apiLayout = 'nowrap grow'

@@ -17,7 +17,7 @@
 
 	export let settings: any = ui
 	export let actionPath: string | undefined
-	export let redirect: string | undefined
+	export let redirect: string | undefined = undefined
 
 	export let content = {html: ''}
 	export let depth = 0
