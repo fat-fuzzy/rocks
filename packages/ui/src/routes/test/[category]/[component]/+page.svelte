@@ -1,8 +1,7 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '$lib/api/styles'
 
-	import {onDestroy, getContext} from 'svelte'
+	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 
