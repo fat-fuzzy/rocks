@@ -19,14 +19,14 @@
 	 */
 	export let align = ''
 	export let asset = '' // emoji:value or svg:value
-	export let breakpoint = ''
 	export let color = ''
-	export let layout = 'switcher'
-	export let container = ''
 	export let size = ''
 	export let shape = ''
-	export let dimensions = ''
 	export let variant = 'fill'
+
+	export let container = ''
+	export let dimensions = ''
+	export let layout = 'switcher'
 
 	const dispatch = createEventDispatcher()
 
@@ -41,10 +41,12 @@
 	$: containerClasses = container.startsWith('main')
 		? `l:${container}:${dimensions}`
 		: `l:${container}:${size}`
-	$: layoutClasses = shape
-		? `${shape} ${variant}`
-		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
-	$: buttonClasses = `${layoutClasses} ${containerClasses} ${color} ${asset} ${align} ${size} font:${size}`
+	$: layoutClasses = `l:${layout}:${size}`
+	$: contextClasses = `${layoutClasses} ${containerClasses}`
+	$: elementClasses = `${asset} ${color} ${size} ${shape} ${variant} align:${align} font:${size}`
+
+	// Order is important
+	$: buttonClasses = `${contextClasses} ${elementClasses}`
 </script>
 
 <button
@@ -59,5 +61,5 @@
 	data-key={name}
 	on:click={onClick}
 >
-	<slot>{text}</slot>
+	{text}
 </button>
