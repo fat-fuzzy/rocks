@@ -344,7 +344,7 @@ const elementFamily = {
 	layout: 'switcher',
 	size: 'xs',
 	variant: 'card:xl',
-	props: ['color', 'variant', 'size', 'status', 'context', 'asset'],
+	props: ['color', 'variant', 'size', 'status', 'context', 'asset', 'shape'],
 }
 
 const containerFamily = {

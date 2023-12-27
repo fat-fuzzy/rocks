@@ -17,3 +17,8 @@ button {
 button:not([disabled]):hover {
 	box-shadow: var(--current-shadow);
 }
+
+button[class*='l:stack']:only-child {
+	height: fit-content;
+	width: fit-content;
+}
