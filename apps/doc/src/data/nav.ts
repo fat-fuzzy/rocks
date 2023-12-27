@@ -20,19 +20,19 @@ export const itemsSettings = {
 				inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
 			},
 		},
-		// {
-		// 	id: 'contrast',
-		// 	name: 'contrast',
-		// 	title: 'Contrast',
-		// 	variant: 'outline',
-		// 	shape: 'round',
-		// 	color: 'primary',
-		// 	size: 'md',
-		// 	states: {
-		// 		active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-		// 		inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
-		// 	},
-		// },
+		{
+			id: 'contrast',
+			name: 'contrast',
+			title: 'Contrast',
+			variant: 'outline',
+			shape: 'round',
+			color: 'primary',
+			size: 'md',
+			states: {
+				active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
+				inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
+			},
+		},
 	],
 	links: [
 		{
