@@ -70,7 +70,13 @@
 				asset: 'emoji:pause',
 				variant: 'outline',
 			},
-			inactive: {id: 'play', value: 'play', text: 'Play', asset: 'emoji:play', variant: 'fill'},
+			inactive: {
+				id: 'play',
+				value: 'play',
+				text: 'Play',
+				asset: 'emoji:play',
+				variant: 'fill',
+			},
 		},
 	}
 	let playerState: SwitchState = items.switch['inactive']
@@ -83,7 +89,8 @@
 		states={items.switch}
 		{color}
 		{size}
-		container="main:50 flex-grow"
+		container="main"
+		dimensions="50 grow:1"
 		on:click={onClick}
 	/>
 	<Button
@@ -93,7 +100,6 @@
 		{variant}
 		{color}
 		{size}
-		container="flex-grow"
 		{...items.button}
 		on:click={onClick}
 		disabled={state === 'clear'}

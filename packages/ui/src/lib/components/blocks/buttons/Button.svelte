@@ -25,6 +25,7 @@
 	export let container = ''
 	export let size = ''
 	export let shape = ''
+	export let dimensions = ''
 	export let variant = 'fill'
 
 	const dispatch = createEventDispatcher()
@@ -37,8 +38,9 @@
 		dispatch('click', payload)
 	}
 
-	$: containerClasses =
-		container === 'side' || container === 'main' ? container : `l:${container}:${size}`
+	$: containerClasses = container.startsWith('main')
+		? `l:${container}:${dimensions}`
+		: `l:${container}:${size}`
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`

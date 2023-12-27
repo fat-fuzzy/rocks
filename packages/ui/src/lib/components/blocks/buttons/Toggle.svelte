@@ -29,6 +29,7 @@
 	export let layout = 'flex'
 	export let size = ''
 	export let shape = ''
+	export let dimensions = ''
 	export let variant = 'fill'
 
 	export let type: ButtonType = 'submit'
@@ -77,8 +78,9 @@
 	})
 
 	$: pressed = $state.value === 'active'
-	$: containerClasses =
-		container === 'side' || container === 'main' ? `l:${container}` : `l:${container}:${size}`
+	$: containerClasses = container.startsWith('main')
+		? `l:${container}:${dimensions}`
+		: `l:${container}:${size}`
 	$: layoutClasses = shape
 		? `${shape} ${variant}`
 		: `l:${layout}:${size} bp:${breakpoint} ${variant}`
