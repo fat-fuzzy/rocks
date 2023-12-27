@@ -1,7 +1,4 @@
-export const links = [
-	{slug: 'about', title: 'About'},
-	{slug: 'test', title: 'Test'},
-]
+export const links = [{slug: 'about', title: 'About'}]
 
 export const itemsSettings = {
 	switch: [
