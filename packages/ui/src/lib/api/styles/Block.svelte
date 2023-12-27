@@ -14,14 +14,16 @@
 	const stylesApi: StylesApi = getContext('stylesApi')
 	let styles: StyleTree = stylesApi.getStyleTree()
 
-	let breakpoint = props?.breakpoint || ''
-	let layout = props?.layout || ''
 	let color = props?.color || ''
 	let status = props?.status || ''
 	let context = props?.context || ''
 	let variant = props?.variant || ''
 	let asset = props?.asset || ''
 	let size = props?.size || '' // element's own size
+	let shape = props?.shape || ''
+	let layout = props?.layout || ''
+	let breakpoint = props?.breakpoint || ''
+	let threshold = props?.threshold || ''
 
 	const stores = [
 		ui.styles.subscribe((value) => {
@@ -38,11 +40,27 @@
 	$: context = styles.blocks?.element.context ?? context
 	$: size = styles.blocks?.element.size ?? size
 	$: asset = styles.blocks?.element.asset ?? asset
+	$: shape = styles.blocks?.element.shape ?? shape
 	// Layout options
 	// - [layout + breakpoint] work together
 	$: layout = styles.layouts?.layout.layout ?? layout
 	$: breakpoint = styles.layouts?.layout.breakpoint ?? breakpoint
-	$: props = {...props, asset, title, color, status, context, variant, size, layout, breakpoint}
+	$: threshold = styles.layouts?.layout.threshold ?? threshold
+
+	$: props = {
+		...props,
+		asset,
+		title,
+		color,
+		status,
+		context,
+		variant,
+		size,
+		shape,
+		layout,
+		threshold,
+		breakpoint,
+	}
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
