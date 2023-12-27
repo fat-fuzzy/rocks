@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type {StylesApi} from '$lib/api/styles'
-
-	import {onDestroy, getContext} from 'svelte'
+	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 	import {headless, tokens, blocks, layouts, recipes, graphics, api, stores, constants} from '$lib'
 

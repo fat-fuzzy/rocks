@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onDestroy, getContext} from 'svelte'
+	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 	import {
 		headless,
