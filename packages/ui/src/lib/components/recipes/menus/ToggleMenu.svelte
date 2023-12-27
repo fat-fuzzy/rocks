@@ -13,6 +13,7 @@
 	export let color = ''
 	export let variant = ''
 	export let asset = ''
+	export let shape = ''
 	export let mode = 'radio'
 	export let formaction: string | undefined = undefined
 	export let items: any = [] // TODO fix types
@@ -81,10 +82,6 @@
 		<p>{title}</p>
 		<menu {id} class={`l:${layout}:${size} th:${threshold} ${size} mode:${mode}`}>
 			{#each items as props}
-				{@const itemColor = props.color ?? color}
-				{@const itemVariant = props.variant ?? variant}
-				{@const itemSize = props.size ?? size}
-				{@const itemAsset = props.asset ?? asset}
 				<li>
 					<Toggle
 						id={`${id}-${props.id}`}
@@ -92,10 +89,11 @@
 						{type}
 						{formaction}
 						{...props}
-						color={itemColor}
-						variant={itemVariant}
-						size={itemSize}
-						asset={itemAsset}
+						color={props.color ?? color}
+						variant={props.variant ?? variant}
+						size={props.size ?? size}
+						shape={props.shape ?? shape}
+						asset={props.asset ?? asset}
 						disabled={mode === 'radio' && selected[0] && selected[0].value === props.value
 							? true
 							: false}
@@ -107,10 +105,6 @@
 {:else}
 	<menu {id} class={`l:${layout}:${size} ${containerClass} th:${threshold} ${size} mode:${mode}`}>
 		{#each items as props}
-			{@const itemColor = props.color ?? color}
-			{@const itemVariant = props.variant ?? variant}
-			{@const itemSize = props.size ?? size}
-			{@const itemAsset = props.asset ?? asset}
 			<li>
 				<Toggle
 					id={`${id}-${props.id}`}
@@ -118,10 +112,11 @@
 					{type}
 					{formaction}
 					{...props}
-					color={itemColor}
-					variant={itemVariant}
-					size={itemSize}
-					asset={itemAsset}
+					color={props.color ?? color}
+					variant={props.variant ?? variant}
+					size={props.size ?? size}
+					shape={props.shape ?? shape}
+					asset={props.asset ?? asset}
 					disabled={mode === 'radio' && selected[0] && selected[0].value === props.value
 						? true
 						: false}

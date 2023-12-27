@@ -83,7 +83,7 @@
 		: `l:${container}:${size}`
 	$: layoutClasses = `l:${layout}:${size}`
 	$: contextClasses = `${layoutClasses} ${containerClasses}`
-	$: elementClasses = `${color} ${size} ${shape} ${variant} align:${align} font:${size}`
+	$: elementClasses = `${color} ${size} shape:${shape} ${variant} align:${align} font:${size}`
 	$: stateClasses = `expand:${$state.value} ${currentState.asset}`
 
 	// Order is important
@@ -104,7 +104,7 @@
 	aria-expanded={expanded}
 	aria-controls={controls}
 >
-	{#if shape !== 'default'}
+	{#if shape}
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>

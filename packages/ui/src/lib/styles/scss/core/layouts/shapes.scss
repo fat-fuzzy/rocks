@@ -1,44 +1,49 @@
-.round,
-.square {
+.shape\:round,
+.shape\:square {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	aspect-ratio: 1;
+	aspect-ratio: 1/1;
 }
 
-.round,
-.round > * {
+.shape\:round,
+.shape\:round > * {
 	line-height: 1;
 	border-radius: 50%;
 }
 
-.square,
-.square > * {
+.shape\:square,
+.shape\:square > * {
 	border-radius: var(--radius-base);
-	aspect-ratio: 1;
+	aspect-ratio: 1/1;
 }
 
-.round .icon,
-.square .icon {
+.shape\:round.icon,
+.shape\:square.icon {
 	height: var(--header-icon-height);
 	width: auto;
 	object-fit: contain;
 }
 
-.round.icon {
+.shape\:round.icon {
 	height: var(--header-icon-height);
 }
 
-.round.emoji {
+.shape\:round.emoji {
 	line-height: 1.15;
 }
 
-button.round {
+button.shape\:round {
 	padding: calc(var(--gap) / var(--ratio-lg));
 }
 
-.round[class*='l:stack']:only-child,
-.square[class*='l:stack']:only-child {
+.shape\:round[class*='l:stack']:only-child,
+.shape\:square[class*='l:stack']:only-child {
 	height: fit-content;
 	width: fit-content;
+}
+
+.shape\:round[class*='l:stack']:only-child::before,
+.shape\:square[class*='l:stack']:only-child::before {
+	margin-inline: 0;
 }

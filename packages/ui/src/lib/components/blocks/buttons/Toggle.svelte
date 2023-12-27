@@ -83,7 +83,7 @@
 		: `l:${container}:${size}`
 	$: layoutClasses = `l:${layout}:${size}`
 	$: contextClasses = `${layoutClasses} ${containerClasses}`
-	$: elementClasses = `${asset} ${color} ${size} ${shape} ${variant} align:${align} font:${size}`
+	$: elementClasses = `${asset} ${color} ${size} shape:${shape} ${variant} align:${align} font:${size}`
 	$: stateClasses = `toggle:${$state.value}`
 
 	// Order is important
