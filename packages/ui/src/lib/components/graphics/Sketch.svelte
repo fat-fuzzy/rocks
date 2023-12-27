@@ -93,14 +93,14 @@
 			<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
 				<slot name="fallback-canvas">
 					<p class={`feedback emoji:default ${size} content`}>
-						With JavaScript enabled, this would display a demo of a canvas component used to display
-						and interact with WebGL animations
+						With JavaScript enabled, you would see a demo of a canvas component used to display and
+						interact with WebGL animations
 					</p>
 				</slot>
 			</canvas>
 			{#await Promise.resolve()}
 				<p class={`feedback emoji:default ${size} content`}>
-					When JavaScript loads, this should display demo of a canvas component used to display and
+					When JavaScript loads, you should see a demo of a canvas component used to display and
 					interact with WebGL animations
 				</p>
 			{:then}
