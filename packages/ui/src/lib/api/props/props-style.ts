@@ -422,8 +422,6 @@ function getInputGroup(name: string, category: string, family: string) {
 		items: PROPS_STYLE[slug].items.map((item) => {
 			return {...item, id: `${category}.${family}.${item.id}`}
 		}),
-		include: PROPS_STYLE[slug].include,
-		exclude: PROPS_STYLE[slug].exclude,
 	})
 }
 
@@ -439,8 +437,6 @@ function getFamily(name: string, category: string, props: string[]) {
 		items: props.map((prop) => {
 			return getInputGroup(prop, category, slug)
 		}),
-		include: FAMILIES[slug].include,
-		exclude: FAMILIES[slug].exclude,
 	})
 }
 export {PROPS_STYLE, FAMILIES, CATEGORIES, getInputGroup, getFamily}

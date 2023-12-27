@@ -2,9 +2,8 @@
 	import type {ComponentType} from 'svelte'
 	import type {StylesApi} from '.'
 
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 
-	import {initStyles} from '$lib/api/styles'
 	import type {StyleTree} from './types'
 
 	import * as ui from '$stores/ui'
@@ -12,7 +11,7 @@
 	export let title = ''
 	export let component: ComponentType
 	export let props: any
-	export let stylesApi: StylesApi = initStyles()
+	const stylesApi: StylesApi = getContext('stylesApi')
 
 	let breakpoint = props?.breakpoint || ''
 	let layout = props?.layout || ''

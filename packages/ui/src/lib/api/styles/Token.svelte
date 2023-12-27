@@ -3,7 +3,7 @@
 	import type {StyleTree} from './types'
 	import type {StylesApi} from '$lib/api/styles'
 
-	import {onDestroy} from 'svelte'
+	import {onDestroy, getContext} from 'svelte'
 
 	import {initStyles} from '$lib/api/styles'
 	import * as ui from '$stores/ui'
@@ -11,7 +11,7 @@
 	export let title = ''
 	export let component: ComponentType
 	export let props: any
-	export let stylesApi: StylesApi = initStyles()
+	const stylesApi: StylesApi = getContext('stylesApi')
 
 	let color = ''
 	let variant = ''

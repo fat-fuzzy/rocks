@@ -203,7 +203,6 @@
 		{title}
 		{path}
 		{category}
-		{stylesApi}
 		component={Component}
 		meta={content.meta}
 		{actionPath}
