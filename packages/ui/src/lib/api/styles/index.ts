@@ -1,17 +1,17 @@
 import type {Meta} from '$lib/api/props/types'
-import {
-	type AppStyles,
-	type TokenStyles,
-	type BlockStyles,
-	type LayoutStyles,
-	type StyleOptions,
-	type StyleTree,
-	type StyleCategory,
-	type StyleInputGroup,
+import type {
+	AppStyles,
+	TokenStyles,
+	BlockStyles,
+	LayoutStyles,
+	StyleOptions,
+	StyleTree,
+	StyleCategory,
+	StyleInputGroup,
 	StyleFamily,
 } from './types'
+
 import {getFamily} from '$lib/api/props/props-style'
-import format from '$lib/utils/format'
 
 export class StylesApi {
 	app: AppStyles
@@ -28,12 +28,12 @@ export class StylesApi {
 
 	getFormOptions(category: string, meta: Meta | undefined): StyleCategory[] {
 		if (meta && meta.props_style) {
-			return this.getElementFormOptions(meta.props_style)
+			return this.filterFormOptions(meta.props_style)
 		}
 		return [this.getCategoryOptions(category)]
 	}
 
-	getElementFormOptions(styleProps: {
+	filterFormOptions(styleProps: {
 		[key: string]: {
 			[key: string]: string[]
 		}
@@ -43,13 +43,12 @@ export class StylesApi {
 
 		const options = catNames.map((category) => {
 			families = styleProps[category]
-			return this.getElementCategoryOptions(category, families)
+			return this.filterCategoryOptions(category, families)
 		})
-
 		return options
 	}
 
-	getElementCategoryOptions(
+	filterCategoryOptions(
 		category: string,
 		families: {
 			[key: string]: string[]
@@ -58,35 +57,29 @@ export class StylesApi {
 		const famNames = Object.keys(families)
 		const options: StyleCategory = {}
 
+		let styleFamily: StyleFamily
+		let filterItems: string[]
 		famNames.forEach((familyName) => {
-			const inputNames = families[familyName].map((inputName) => format.capitalize(inputName))
-			options[familyName] = getFamily(format.capitalize(familyName), category, inputNames)
+			filterItems = families[familyName]
+			styleFamily = getFamily(`${category}.${familyName}`)
+			styleFamily.items = this.filterInputGroups(styleFamily, filterItems)
+
+			options[familyName] = styleFamily
 		})
 
 		return options
 	}
 
-	getElementFamilyOptions(familyOptions: StyleFamily, inputGroups: string[]): StyleFamily {
-		const options: StyleInputGroup[] = inputGroups.reduce((inputs: StyleInputGroup[], input) => {
+	filterInputGroups(familyOptions: StyleFamily, filterItems: string[]): StyleInputGroup[] {
+		const options: StyleInputGroup[] = filterItems.reduce((inputs: StyleInputGroup[], input) => {
 			const familyInput: StyleInputGroup | undefined = familyOptions.itemsMap.get(input)
-
 			if (familyInput !== undefined) {
 				return [...inputs, familyInput]
 			}
-
 			return inputs
 		}, [])
 
-		return new StyleFamily({
-			id: familyOptions.id,
-			name: familyOptions.name,
-			title: familyOptions.title,
-			items: options,
-			layout: familyOptions.layout,
-			container: familyOptions.container,
-			size: familyOptions.size,
-			variant: familyOptions.variant,
-		})
+		return options
 	}
 
 	getFamilyOptions(family: string, category: StyleCategory): StyleFamily | undefined {
@@ -181,28 +174,20 @@ export class StylesApi {
 }
 
 const tokens: TokenStyles = {
-	element: getFamily('Element', 'tokens', []),
+	element: getFamily('tokens.element'),
 }
 
 const app: AppStyles = {
-	settings: getFamily('Settings', 'app', ['Brightness', 'Contrast']),
+	settings: getFamily('app.settings'),
 }
 
 const blocks: BlockStyles = {
-	element: getFamily('Element', 'blocks', [
-		'Color',
-		'Variant',
-		'Size',
-		'Status',
-		'Context',
-		'Asset',
-		'Shape',
-	]),
+	element: getFamily('blocks.element'),
 }
 
 const layouts: LayoutStyles = {
-	layout: getFamily('Layout', 'layouts', ['Layout', 'Threshold', 'Breakpoint']),
-	container: getFamily('Container', 'layouts', ['Container', 'Size']),
+	layout: getFamily('layouts.layout'),
+	container: getFamily('layouts.container'),
 }
 
 export const initStyles = () => new StylesApi({app, tokens, blocks, layouts})
