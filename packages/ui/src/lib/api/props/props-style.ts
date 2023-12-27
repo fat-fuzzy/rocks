@@ -118,7 +118,7 @@ const color = {
 	layout: 'switcher',
 	size: 'xxs',
 	container: 'card',
-	mode: 'checkbox',
+	mode: 'check',
 	items: [
 		{
 			id: 'color.primary',
@@ -163,7 +163,7 @@ const shape = {
 	layout: 'stack',
 	size: 'sm',
 	variant: 'card',
-	mode: 'checkbox',
+	mode: 'check',
 	items: [
 		{id: 'shape.round', text: 'round', value: 'round'},
 		{id: 'shape.square', text: 'square', value: 'square'},
@@ -260,6 +260,7 @@ const asset = {
 	layout: 'switcher',
 	size: 'xxs',
 	variant: 'card',
+	mode: 'check',
 	items: [
 		{
 			id: 'asset.profile',
@@ -278,12 +279,6 @@ const asset = {
 			text: 'idea',
 			value: 'emoji:idea',
 			asset: 'emoji:idea',
-		},
-		{
-			id: 'asset.default',
-			text: 'default',
-			value: 'emoji',
-			asset: 'emoji',
 		},
 	],
 }
