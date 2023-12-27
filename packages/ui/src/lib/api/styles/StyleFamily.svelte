@@ -160,7 +160,7 @@
 						color={apiColor}
 						variant={apiVariant}
 						container={styleInput.container}
-						mode={styleInput.mode}
+						mode={styleInput.mode || 'radio'}
 						{formaction}
 						on:click={(event) => handleToggle(event, familyName, styleInput.id)}
 					/>
