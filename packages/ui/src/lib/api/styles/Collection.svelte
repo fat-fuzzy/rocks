@@ -69,7 +69,7 @@
 					{category}
 					{component}
 					{actionPath}
-					meta={getElementMeta(categoryMarkdowns, name)}
+					meta={getElementMeta(name, categoryMarkdowns)}
 					redirect={$page.url.pathname}
 				/>
 			{/each}
@@ -121,7 +121,7 @@
 							{category}
 							{component}
 							{actionPath}
-							meta={getElementMeta(categoryMarkdowns, name)}
+							meta={getElementMeta(name, categoryMarkdowns)}
 						/>
 					{/each}
 				</div>
