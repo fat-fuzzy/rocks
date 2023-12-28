@@ -12,12 +12,12 @@
 	export let color = ''
 	export let variant = ''
 	export let size = ''
-	export let align = ''
 	export let background = ''
 	export let asset = ''
 	export let container = ''
 	export let disabled: boolean
-	let layout = 'switcher'
+	let layout = 'flex'
+	let align = 'align:center'
 
 	function handleInput(event) {
 		const payload = {
