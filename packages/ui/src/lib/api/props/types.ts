@@ -1,4 +1,9 @@
-export type StyleProps = {[key: string]: {[key: string]: string[]}}
+export type StyleProps = {
+	doc?: {[key: string]: string[]}[]
+	style?: {[key: string]: string[]}
+	state?: string[]
+}
+
 export type Meta = {
 	title: string
 	slug: string

@@ -145,23 +145,25 @@
 				<details open>
 					<summary class={`bg:primary:light box:primary:light`}>Style Props</summary>
 					<ul class="tags l:switcher:md">
-						{#each props.doc as docs}
-							{#if docs.tokens}
-								{#each docs.tokens as prop}
-									<li class="card:sm bg:primary:lightest">{prop}</li>
-								{/each}
-							{/if}
-							{#if docs.blocks}
-								{#each docs.blocks as prop}
-									<li class="card:sm bg:primary:lightest">{prop}</li>
-								{/each}
-							{/if}
-							{#if docs.layouts}
-								{#each docs.layouts as prop}
-									<li class="card:sm bg:primary:lightest">{prop}</li>
-								{/each}
-							{/if}
-						{/each}
+						{#if props.doc}
+							{#each props.doc as docs}
+								{#if docs.tokens}
+									{#each docs.tokens as prop}
+										<li class="card:sm bg:primary:lightest">{prop}</li>
+									{/each}
+								{/if}
+								{#if docs.blocks}
+									{#each docs.blocks as prop}
+										<li class="card:sm bg:primary:lightest">{prop}</li>
+									{/each}
+								{/if}
+								{#if docs.layouts}
+									{#each docs.layouts as prop}
+										<li class="card:sm bg:primary:lightest">{prop}</li>
+									{/each}
+								{/if}
+							{/each}
+						{/if}
 					</ul>
 				</details>
 			{/if}
