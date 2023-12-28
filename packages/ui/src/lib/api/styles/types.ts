@@ -86,15 +86,8 @@ export interface IStylesSet {
 	variant?: string
 	mode?: string
 
-	exclude?: string[] // Add component names here to apply styles to all but excluded components
-	include?: string[] // Add component names here to apply styles to included components
-
 	getStyleTree: () => StyleNode | StyleBranch
 	getStyleTreeFlat: () => StyleTreeFlat
-
-	canApplyStyles: ({item, category}: {item: string; category: string}) => boolean
-	includes: (item: string) => boolean
-	excludes: (item: string) => boolean
 }
 
 interface IStyleInputGroup extends IStylesSet {
@@ -123,9 +116,6 @@ type StylesSetOptions = {
 	size?: string
 	variant?: string
 	mode?: string
-
-	exclude?: string[] // Add component names here to apply styles to all but excluded components
-	include?: string[] // Add component names here to apply styles to included components
 }
 
 export type StyleInputGroupOptions = StylesSetOptions & {
@@ -154,8 +144,6 @@ export class StyleInputGroup implements IStyleInputGroup {
 	size?: string
 	variant?: string
 	mode?: string
-	exclude?: string[]
-	include?: string[]
 
 	constructor({
 		id,
@@ -168,8 +156,6 @@ export class StyleInputGroup implements IStyleInputGroup {
 		size,
 		variant,
 		mode,
-		exclude,
-		include,
 	}: StyleInputGroupOptions) {
 		this.id = id
 		this.name = name
@@ -195,12 +181,6 @@ export class StyleInputGroup implements IStyleInputGroup {
 		if (mode) {
 			this.mode = mode
 		}
-		if (include) {
-			this.include = include
-		}
-		if (exclude) {
-			this.exclude = exclude
-		}
 	}
 
 	getValue() {
@@ -220,18 +200,6 @@ export class StyleInputGroup implements IStyleInputGroup {
 		const [category, family, style] = this.id.split('.')
 		return {category, family, style, value: this.value}
 	}
-
-	canApplyStyles({item, category}: {item: string; category: string}) {
-		return (!this.excludes(category) && !this.excludes(item)) || this.includes(item)
-	}
-
-	includes(item: string) {
-		return this.include ? this.include.indexOf(item) !== -1 : false
-	}
-
-	excludes(item: string) {
-		return this.exclude ? this.exclude.indexOf(item) !== -1 : false
-	}
 }
 
 export class StyleFamily implements IStyleFamily {
@@ -243,22 +211,10 @@ export class StyleFamily implements IStyleFamily {
 	layout?: string
 	container?: string
 	size?: string
+	justify?: string
 	variant?: string
-	exclude?: string[]
-	include?: string[]
 
-	constructor({
-		id,
-		name,
-		title,
-		items,
-		layout,
-		container,
-		size,
-		variant,
-		exclude,
-		include,
-	}: StyleFamilyOptions) {
+	constructor({id, name, title, items, layout, container, size, variant}: StyleFamilyOptions) {
 		this.id = id
 		this.name = name
 		this.title = title
@@ -282,12 +238,6 @@ export class StyleFamily implements IStyleFamily {
 		if (variant) {
 			this.variant = variant
 		}
-		if (exclude) {
-			this.exclude = exclude
-		}
-		if (include) {
-			this.include = include
-		}
 	}
 
 	getStyleTree() {
@@ -301,18 +251,6 @@ export class StyleFamily implements IStyleFamily {
 	getStyleTreeFlat() {
 		const [category, family, style] = this.id.split('.')
 		return {category, family, style, value: this.items.map((item) => item.id)}
-	}
-
-	canApplyStyles({item, category}: {item: string; category: string}) {
-		return (!this.excludes(category) && !this.excludes(item)) || this.includes(item)
-	}
-
-	includes(item: string) {
-		return this.include ? this.include.indexOf(item) !== -1 : false
-	}
-
-	excludes(item: string) {
-		return this.exclude ? this.exclude.indexOf(item) !== -1 : false
 	}
 
 	applyStyles(styles: StyleNode) {
