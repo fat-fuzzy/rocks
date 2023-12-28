@@ -51,7 +51,7 @@
 	$: path = $page.url.pathname
 	$: markdowns = $page.data.markdowns
 	$: content = markdowns[category].find(({meta}) => meta.slug === category)
-	$: headerClass = 'page-header card:md bg:polar'
+	$: headerClass = 'page-header l:switcher:sm card:md bg:polar'
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
