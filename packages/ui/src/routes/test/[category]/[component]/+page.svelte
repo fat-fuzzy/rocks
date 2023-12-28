@@ -29,17 +29,13 @@
 	let props: StyleProps
 
 	let revealContext = $page.data.dsContext || DEFAULT_REVEAL_STATE
-	let currentTab = $page.data.currentTabs?.element || DEFAULT_TABS[0]
+	let currentTabs = stores.ui.currentTabs
+	let currentTab = $currentTabs.ui || DEFAULT_TABS[0]
 
 	const localStores = [
 		stores.ui.reveal.subscribe((value) => {
 			if (value) {
 				revealContext = value
-			}
-		}),
-		stores.ui.currentTab.subscribe((value) => {
-			if (value) {
-				currentTab = value
 			}
 		}),
 	]
@@ -61,7 +57,7 @@
 	}
 
 	function handleTabChange(event: CustomEvent) {
-		stores.ui.currentTab.set(event.detail.selected[0])
+		stores.ui.currentTabs.set({ui: event.detail.selected[0]})
 	}
 
 	$: reveal = revealContext.reveal
@@ -69,6 +65,7 @@
 	$: title = $page.params.component
 	$: Component = categoryItems[category][title]
 	$: path = $page.url.pathname
+	$: currentTab = $currentTabs.ui
 	$: markdowns =
 		$page.data.markdowns && $page.data.markdowns[category] ? $page.data.markdowns[category] : []
 	$: content = markdowns.find(({meta}) => meta.title === title) || {
