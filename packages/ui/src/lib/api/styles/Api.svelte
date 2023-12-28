@@ -14,12 +14,12 @@
 	export let meta: Meta | undefined = undefined
 	// export let reset = 'reset'
 
-	let apiLayout = 'l:switcher:lg nowrap grow'
+	let apiLayout = 'l:switcher:lg nowrap grow align:center'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	$: frameClass = categories[0] === 'app' ? 'l:frame:square' : 'l:frame:twin'
+	$: frameClass = categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin'
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -56,7 +56,7 @@
 		/>
 	{/each}
 	{#await Promise.resolve()}
-		<div class={`${frameClass} card:md`}>
+		<div class={frameClass}>
 			<Button
 				id={`submit.${path}`}
 				title="Apply styles"

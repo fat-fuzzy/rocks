@@ -43,6 +43,7 @@ menu > li > * {
 
 .menu\:settings {
 	--current-svg-height: calc(var(--s2) - var(--ratio) * var(--outline-offset-settings));
+	gap: calc(var(--gap) / var(--ratio));
 	height: fit-content;
 }
 
