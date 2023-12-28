@@ -81,9 +81,11 @@
 	$: containerClasses = container.startsWith('main')
 		? `l:${container}:${dimensions}`
 		: `l:${container}:${size}`
-	$: layoutClasses = shape ? `l:stack:${size}` : `l:switcher:${size}`
+	$: shapeClass = shape ? ` shape:${shape}` : ''
+	$: alignClass = align ? `align:${align}` : ''
+	$: layoutClasses = shapeClass ? `l:stack:${size}` : `l:flex`
 	$: contextClasses = `${layoutClasses} ${containerClasses}`
-	$: elementClasses = `${asset} ${color} ${size} shape:${shape} ${variant} align:${align} font:${size}`
+	$: elementClasses = `${asset} ${color} ${size} ${shapeClass} ${variant} align:${alignClass} font:${size}`
 	$: stateClasses = `toggle:${$state.value}`
 
 	// Order is important
