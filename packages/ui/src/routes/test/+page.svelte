@@ -19,7 +19,7 @@
 	$: markdowns = $page.data.markdowns
 	$: path = $page.url.pathname
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'page-header l:switcher:xs bp:xxs bg:polar'
+	$: headerClass = 'page-header card:xs bg:polar'
 </script>
 
 <Head {title} page="Test" description="UI Library Test Page" />
