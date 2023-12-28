@@ -8,7 +8,7 @@
 
 	export let legend = 'Position'
 	export let label = ''
-	export let id = 'rotation'
+	export let id = 'position'
 
 	export let color = ''
 	export let size = 'xxs'
