@@ -16,12 +16,8 @@ menu > li > * {
 	width: 100%;
 }
 
-menu.end {
-	margin-inline-end: calc(2 * var(--gap));
-}
-
-.menu\:settings > * + * {
-	margin-inline-start: var(--current-size);
+.menu\:settings *:focus {
+	outline-offset: var(--outline-offset-settings);
 }
 
 .menu\:settings [class^='switch'][aria-pressed] {
@@ -39,4 +35,18 @@ menu.end {
 .menu\:settings [class^='switch'][aria-pressed]:hover {
 	background-color: var(--current-bg-contrast);
 	box-shadow: var(--current-shadow);
+}
+
+.menu\:settings [class*='svg'] {
+	--current-svg-height: calc(var(--s2) - var(--ratio) * var(--outline-offset-settings));
+}
+
+.menu\:settings {
+	--current-svg-height: calc(var(--s2) - var(--ratio) * var(--outline-offset-settings));
+	height: fit-content;
+}
+
+.menu\:settings a {
+	margin: 0;
+	padding: 0;
 }
