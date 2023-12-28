@@ -50,7 +50,7 @@
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
-	items={{links: APP_LINKS, settings: APP_SETTINGS}}
+	items={{links: [...APP_LINKS, {slug: 'test', title: 'Test'}], settings: APP_SETTINGS}}
 	breakpoint="xs"
 />
 
