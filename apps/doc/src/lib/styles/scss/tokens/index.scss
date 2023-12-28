@@ -23,6 +23,7 @@ $theme-prefix: '-'; // creates CSS variables with specific app prefix. Use '--' 
 	scale.$modular-scale-steps-minus,
 	typography.$typography,
 	color.$colors,
+	assets.$assets,
 	assets.$emojis,
 	$theme-prefix
 );

@@ -507,6 +507,7 @@ $current_cssvars: ();
 	$typography,
 	$colors,
 	$assets,
+	$emojis,
 	$prefix
 ) {
 	:root {
@@ -530,10 +531,11 @@ $current_cssvars: ();
 		@include generate-css-vars($layout, $prefix);
 		@include generate-css-vars($typography, $prefix);
 		@include generate-css-vars($colors, $prefix);
+		@include generate-css-vars($assets, $prefix);
 	}
 	@include generate-theme-colors($prefix);
 	@include generate-button-styles($prefix);
-	@include generate-emoji-assets($assets, $prefix);
+	@include generate-emoji-assets($emojis, $prefix);
 }
 
 @mixin theme-default(
@@ -547,6 +549,7 @@ $current_cssvars: ();
 	$typography,
 	$colors,
 	$assets,
+	$emojis,
 	$prefix
 ) {
 	:root {
@@ -568,10 +571,11 @@ $current_cssvars: ();
 		@include generate-css-vars($layout, $prefix);
 		@include generate-css-vars($typography, $prefix);
 		@include generate-css-vars($colors, $prefix);
+		@include generate-css-vars($assets, $prefix);
 	}
 
 	// -----------
 	@include generate-theme-colors($prefix);
 	@include generate-button-styles($prefix);
-	@include generate-emoji-assets($assets, $prefix);
+	@include generate-emoji-assets($emojis, $prefix);
 }
