@@ -11,7 +11,7 @@
 	$: title = markdown.meta.title
 	$: date = markdown.meta.date
 	$: html = $page.data.html
-	$: headerClass = 'page-header bg:polar'
+	$: headerClass = 'page-header card:xs bg:polar'
 
 	// TODO: Fix context menu
 </script>

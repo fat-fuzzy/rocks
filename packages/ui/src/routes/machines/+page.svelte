@@ -8,7 +8,7 @@
 	export let size = 'md'
 	export let variant = 'primary'
 
-	$: headerClass = 'page-header bg:polar'
+	$: headerClass = 'page-header card:xs bg:polar'
 </script>
 
 <Head {title} page="Machines" description="A collection of state machines for learning purposes." />
