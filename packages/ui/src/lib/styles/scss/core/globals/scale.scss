@@ -275,40 +275,47 @@
 	--current-font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 	--current-font-size-minus: calc(var(--font-size-xxs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-sm);
+	--current-asset-height: var(--asset-height-xxs);
 }
 
 [class*='font:xs'] {
 	--current-font-size: var(--font-size-xs);
 	--current-font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
 	--current-font-size-plus: var(--font-size-md);
+	--current-asset-height: var(--asset-height-xs);
 }
 
 [class*='font:sm'] {
 	--current-font-size: var(--font-size-sm);
 	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-lg);
+	--current-asset-height: var(--asset-height-sm);
 }
 
 [class*='font:md'] {
 	--current-font-size: var(--font-size-md);
 	--current-font-size-minus: var(--font-size-xs);
 	--current-font-size-plus: var(--font-size-xl);
+	--current-asset-height: var(--asset-height-md);
 }
 
 [class*='font:lg'] {
 	--current-font-size: var(--font-size-lg);
 	--current-font-size-minus: var(--font-size-sm);
 	--current-font-size-plus: var(--font-size-xxl);
+	--current-asset-height: var(--asset-height-lg);
 }
 
 [class*='font:xl'] {
 	--current-font-size: var(--font-size-xl);
 	--current-font-size-minus: var(--font-size-md);
 	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
+	--current-asset-height: var(--asset-height-xl);
 }
 
 [class*='font:xxl'] {
 	--current-font-size: var(--font-size-xxl);
 	--current-font-size-minus: var(--font-size-xl);
 	--current-font-size-plus: calc(var(--font-size-xxl) * var(--fluid-min-ratio));
+	--current-asset-height: var(--asset-height-xxl);
 }

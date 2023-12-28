@@ -135,7 +135,7 @@
 			class={`menu:settings ${formClasses}`}
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
-				<div class="l:frame:square">
+				<div class="l:frame:round card:sm">
 					<Switch
 						id={`${settingsId}-${id}`}
 						{name}
@@ -153,9 +153,9 @@
 		<menu class="menu:settings end">
 			{#each items.links as { id, title, url, shape, size, asset }}
 				{@const assetValue = SVG_ASSETS[brightness] ? SVG_ASSETS[brightness][id] : ''}
-				<li class="l:frame:square">
+				<li class="l:frame:round card:sm">
 					<a
-						class={`${variant} font:${size} ${shape} ${color}`}
+						class={`${variant} font:${size} shape:${shape} ${color}`}
 						href={url}
 						target="_blank"
 						rel="noreferrer"

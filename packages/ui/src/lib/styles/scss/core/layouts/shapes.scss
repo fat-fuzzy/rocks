@@ -12,25 +12,15 @@
 	border-radius: 50%;
 }
 
-.shape\:square,
+.shape\:round > *,
 .shape\:square > * {
 	border-radius: var(--radius-base);
-	aspect-ratio: 1/1;
 }
 
-.shape\:round.icon,
-.shape\:square.icon {
-	height: var(--header-icon-height);
+.shape\:round,
+.shape\:square {
 	width: auto;
 	object-fit: contain;
-}
-
-.shape\:round.icon {
-	height: var(--header-icon-height);
-}
-
-.shape\:round.emoji {
-	line-height: 1.15;
 }
 
 button.shape\:round {

@@ -168,11 +168,11 @@ const APP_SETTINGS = {
 	links: [
 		{
 			id: 'link-github',
-			title: 'GitHub icon',
+			title: 'GitHub',
 			url: 'https://github.com/fat-fuzzy/rocks',
 			asset: 'svg:icon-github',
 			shape: 'round',
-			size: 'xs',
+			size: 'md',
 		},
 	],
 }
