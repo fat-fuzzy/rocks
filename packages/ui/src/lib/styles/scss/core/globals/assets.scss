@@ -32,3 +32,13 @@ a[class*='emoji:']::before {
 [class*='card:'][class*='emoji:'][class*=':xxl']:not(.feedback)::before {
 	margin-inline: 0;
 }
+
+button[class*='emoji'].align\:end,
+summary[class*='emoji'].align\:end {
+	text-align: start;
+}
+
+button[class*='emoji'].align\:start,
+summary[class*='emoji'].align\:start {
+	text-align: end;
+}
