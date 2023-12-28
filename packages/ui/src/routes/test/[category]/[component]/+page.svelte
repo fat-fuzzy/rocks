@@ -62,7 +62,7 @@
 <Head {title} page="Test" description={`${title} Test Page`} />
 
 <header class={headerClass}>
-	<h1 class="card:lg">{title}</h1>
+	<h1 class="card:sm">{title}</h1>
 
 	<div class="l:switcher:xs wrap:reverse">
 		{#if currentTab.value === 'demo'}
