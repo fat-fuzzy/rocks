@@ -14,7 +14,8 @@
 	const tabs = TABS
 
 	let revealContext = $page.data.dsContext || DEFAULT_REVEAL_STATE
-	let currentTab = $page.data.currentTabs?.category || DEFAULT_TABS[0]
+	let currentTabs = stores.ui.currentTabs
+	let currentTab = $currentTabs.ui || DEFAULT_TABS[0]
 
 	const localStores = [
 		stores.ui.reveal.subscribe((value) => {
@@ -22,9 +23,9 @@
 				revealContext = value
 			}
 		}),
-		stores.ui.currentTab.subscribe((value) => {
+		stores.ui.currentTabs.subscribe((value) => {
 			if (value) {
-				currentTab = value
+				currentTab = value.ui
 			}
 		}),
 	]
@@ -51,11 +52,12 @@
 	}
 
 	function handleTabChange(event: CustomEvent) {
-		stores.ui.currentTab.set(event.detail.selected[0])
+		stores.ui.currentTabs.set({ui: event.detail.selected[0]})
 	}
 
 	$: reveal = revealContext.reveal
 	$: category = $page.params.category
+	$: currentTab = $currentTabs.ui
 	$: title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
