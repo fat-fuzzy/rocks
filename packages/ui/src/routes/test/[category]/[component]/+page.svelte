@@ -55,7 +55,7 @@
 	$: content = markdowns.find(({meta}) => meta.title === title) || {
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
-	$: headerClass = 'page-header card:md bg:polar'
+	$: headerClass = 'page-header l:switcher:sm card:md bg:polar'
 	$: props = utils.props.getElementProps(content.meta)
 </script>
 
@@ -64,7 +64,7 @@
 <header class={headerClass}>
 	<h1 class="card:sm md">{title}</h1>
 
-	<div class="l:switcher:xs wrap:reverse">
+	<div class="l:switcher:xs justify:end grow:0">
 		{#if currentTab.value === 'demo'}
 			<Api categories={['app']} {path} {actionPath} redirect={$page.url.pathname} />
 		{/if}
