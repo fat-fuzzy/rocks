@@ -69,7 +69,7 @@ const size = {
 const layout = {
 	initial: 'switcher',
 	input: 'toggle',
-	layout: 'stack',
+	layout: 'switcher',
 	size: 'sm',
 	container: 'card',
 	items: [
@@ -160,7 +160,7 @@ const variant = {
 const shape = {
 	initial: '',
 	input: 'toggle',
-	layout: 'stack',
+	layout: 'switcher',
 	size: 'sm',
 	variant: 'card',
 	mode: 'check',
