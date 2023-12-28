@@ -15,7 +15,7 @@
 	const {RevealNav} = recipes
 	let path = $page.url.pathname
 
-	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE, DEFAULT_TABS} = constants
+	const {DEFAULT_NAV_REVEAL_STATE} = constants
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -29,19 +29,17 @@
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
 	const recipeNames = Object.keys(recipes).sort(sortAsc)
 	const graphicsNames = Object.keys(graphics).sort(sortAsc)
-	let title = 'Fat Fuzzy Test' // TODO : Fix title in children components: add breadcrumb nav component ?
+
+	let title = 'Fat Fuzzy Test'
 
 	let sidebarReveal = sidebar || DEFAULT_NAV_REVEAL_STATE
 	let stylesApi: StylesApi = initStyles()
-	setContext('stylesApi', stylesApi)
-	setContext('styles', stylesApi.getStyleTree())
 
-	stores.currentTab.set(currentTabs?.element || DEFAULT_TABS[0])
 	stores.styles.set(styles)
 	stores.reveal.set(context)
-	stores.navReveal.set(state?.navReveal || DEFAULT_REVEAL_STATE)
-	stores.settingsReveal.set(state?.settingsReveal || DEFAULT_REVEAL_STATE)
-	stores.sidebarReveal.set(state?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE)
+
+	setContext('stylesApi', stylesApi)
+	setContext('styles', stylesApi.getStyleTree())
 
 	const localStores = [
 		settingsStore.sidebarReveal.subscribe((value) => {
