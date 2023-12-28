@@ -19,10 +19,9 @@
 
 	const {Head} = headless
 	const {Element, Api} = api
-	const {RevealAuto} = layouts
 	const {ToggleMenu} = recipes
 	const actionPath = '/ui'
-	const {DEFAULT_REVEAL_STATE, DEFAULT_TABS, TABS} = constants
+	const {DEFAULT_TABS, TABS} = constants
 
 	let categoryItems: {[name: string]: any} = {
 		tokens: tokens,
@@ -38,31 +37,21 @@
 	let title: string
 	let Component: ComponentType
 
-	let revealContext: {[key: string]: string} = DEFAULT_REVEAL_STATE
-	let currentTab = $page.data.currentTabs?.element || DEFAULT_TABS[0]
+	let currentTabs = stores.ui.currentTabs
+	let currentTab = $currentTabs.ui || DEFAULT_TABS[0]
 
 	const localStores = [
-		stores.ui.reveal.subscribe((value) => {
+		stores.ui.currentTabs.subscribe((value) => {
 			if (value) {
-				revealContext = value
-			}
-		}),
-		stores.ui.currentTab.subscribe((value) => {
-			if (value) {
-				currentTab = value
+				currentTab = value.ui
 			}
 		}),
 	]
 
-	function handleToggle(event: CustomEvent) {
-		stores.ui.reveal.set(event.detail)
-	}
-
 	function handleTabChange(event: CustomEvent) {
-		stores.ui.currentTab.set(event.detail.selected[0])
+		stores.ui.currentTabs.set({ui: event.detail.selected[0]})
 	}
 
-	$: reveal = revealContext.reveal
 	$: category = $page.params.category
 	$: title = $page.params.component
 	$: Component = categoryItems[category][title]
@@ -72,7 +61,7 @@
 	$: content = markdowns.find(({meta}) => meta.title === title) || {
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
-	$: headerClass = 'page-header l:switcher:md bg:polar'
+	$: headerClass = 'page-header card:md bp:xxs bg:polar'
 	$: props = utils.props.getElementProps(content.meta)
 
 	onDestroy(() => {
@@ -83,56 +72,42 @@
 <Head {title} page="UI" description={`${title} Doc`} />
 
 <header class={headerClass}>
-	<h1 class="l:main:30 maki lg">{title}</h1>
-	<RevealAuto
-		id="ui-component-app-context"
-		size="sm"
-		breakpoint="sm"
-		color="primary"
-		align="start"
-		variant="outline"
-		title="Context"
-		formaction="toggleContext"
-		{actionPath}
-		{reveal}
-		redirect={$page.url.pathname}
-		on:toggle={handleToggle}
-	>
-		<div slot="content" class="ui:menu l:switcher:sm">
-			{#if currentTab.value === 'demo'}
-				<Api {path} {actionPath} redirect={$page.url.pathname} />
-			{/if}
-			<form
-				method="POST"
-				class="l:switcher:sm shrink"
-				action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
-				use:enhance={() => {
-					// prevent default callback from resetting the form
-					return ({update}) => {
-						update({reset: false})
+	<h1 class="card:lg">{title}</h1>
+
+	<div class="l:switcher:xs wrap:reverse">
+		{#if currentTab.value === 'demo'}
+			<Api categories={['app']} {path} {actionPath} redirect={$page.url.pathname} />
+		{/if}
+		<form
+			method="POST"
+			class="l:switcher:sm align:center"
+			action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
+			use:enhance={() => {
+				// prevent default callback from resetting the form
+				return ({update}) => {
+					update({reset: false})
+				}
+			}}
+		>
+			<ToggleMenu
+				id={`submit.${path}`}
+				items={tabs.map((tab) => {
+					if (tab.value == currentTab.value) {
+						tab.initial = 'pressed'
 					}
-				}}
-			>
-				<ToggleMenu
-					id={`submit.${path}`}
-					items={tabs.map((tab) => {
-						if (tab.value == currentTab.value) {
-							tab.initial = 'pressed'
-						}
-						return tab
-					})}
-					layout="switcher"
-					size="md"
-					container="card:md"
-					color="primary"
-					shape="round"
-					variant="outline"
-					formaction={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
-					on:click={handleTabChange}
-				/>
-			</form>
-		</div>
-	</RevealAuto>
+					return tab
+				})}
+				layout="flex justify:end "
+				size="md"
+				container="card:md"
+				color="primary"
+				shape="round"
+				variant="outline"
+				formaction={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
+				on:click={handleTabChange}
+			/>
+		</form>
+	</div>
 </header>
 
 {#if content.html && currentTab.value === 'doc'}

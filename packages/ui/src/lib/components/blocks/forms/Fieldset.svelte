@@ -7,7 +7,8 @@
 	export let background = ''
 	export let layout = 'stack'
 	export let container = ''
-	export let align = 'start'
+	export let align = ''
+	export let justify = ''
 	export let threshold = ''
 	export let breakpoint = ''
 	export let variant = '' // intrinsic variations in design: [box/bare/layer] [card]
@@ -20,8 +21,11 @@
 	$: backgroundClass = background ? `bg:${background}` : ''
 	$: sizeClass = size ? `font:${size}` : ''
 	$: alignClass = align ? `align:${align}` : ''
+	$: justifyClass = justify ? `justify:${justify}` : ''
 	$: variantClass = variant ? `${variant}:${size}` : ''
-	$: contentClass = `${sizeClass} ${variantClass} ${alignClass} ${type || ''} ${color || ''}`
+	$: contentClass = `${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${type || ''} ${
+		color || ''
+	}`
 	$: classes = `${layoutClass} ${containerClass} ${backgroundClass} ${variantClass} ${contentClass}`
 </script>
 
