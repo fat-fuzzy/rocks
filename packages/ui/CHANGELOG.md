@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.41
+
+### Patch Changes
+
+- 9c845711: [ui+doc] Simplify UI, general cleanup
+
 ## 0.1.40
 
 ### Patch Changes
