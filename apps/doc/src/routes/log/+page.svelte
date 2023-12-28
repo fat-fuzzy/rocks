@@ -12,7 +12,7 @@
 
 <Head page={title} description="Log of Architectural decisions" />
 
-<header class="page-header bg:polar">
+<header class="page-header card:xs bg:polar">
 	<h1 class="card:lg">{`Fat Fuzzy  ${title}`}</h1>
 </header>
 

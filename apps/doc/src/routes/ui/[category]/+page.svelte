@@ -61,7 +61,7 @@
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
 	$: content = markdowns[category].find(({meta}) => meta.slug === category)
-	$: headerClass = 'page-header card:md bp:xxs bg:polar'
+	$: headerClass = 'page-header card:md bg:polar'
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -71,7 +71,7 @@
 <Head {title} page="UI" description={`${title} Doc`} />
 
 <header class={headerClass}>
-	<h1 class="card:sm">{title}</h1>
+	<h1 class="card:sm md">{title}</h1>
 	<div class="l:switcher:xs wrap:reverse">
 		{#if currentTab.value === 'demo'}
 			<Api categories={['app']} {path} {actionPath} redirect={$page.url.pathname} />

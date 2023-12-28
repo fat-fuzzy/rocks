@@ -55,14 +55,14 @@
 	$: content = markdowns.find(({meta}) => meta.title === title) || {
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
-	$: headerClass = 'page-header bp:xxs bg:polar'
+	$: headerClass = 'page-header card:md bg:polar'
 	$: props = utils.props.getElementProps(content.meta)
 </script>
 
 <Head {title} page="Test" description={`${title} Test Page`} />
 
 <header class={headerClass}>
-	<h1 class="card:sm">{title}</h1>
+	<h1 class="card:sm md">{title}</h1>
 
 	<div class="l:switcher:xs wrap:reverse">
 		{#if currentTab.value === 'demo'}

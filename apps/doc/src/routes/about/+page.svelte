@@ -8,7 +8,7 @@
 
 <Head {title} page="Rocks" description="About this website" />
 
-<header class="page-header bg:polar col:center max:w:full">
+<header class="page-header bg:polar col:center card:xs max:w:full">
 	<h1 class="l:center card:lg">{title}</h1>
 </header>
 
