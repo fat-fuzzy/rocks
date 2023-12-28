@@ -92,7 +92,7 @@
 			{/if}
 			<form
 				method="POST"
-				class="l:switcher:sm shrink"
+				class="l:switcher:sm shrink align:center"
 				action={`/test?/updateTab&redirectTo=${$page.url.pathname}`}
 				use:enhance={() => {
 					// prevent default callback from resetting the form

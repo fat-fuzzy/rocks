@@ -1,5 +1,5 @@
 .ui\:menu {
-	gap: var(--s0);
+	gap: calc(var(--gap) / var(--ratio));
 	padding: var(--current-size) var(--current-size) var(--current-size-plus);
 }
 
@@ -9,10 +9,6 @@
 }
 
 @media screen and (min-width: 620px) {
-	.ui\:menu {
-		gap: var(--s0);
-	}
-
 	.page-header .ui\:menu {
 		margin-inline: var(--current-size);
 		margin-block-start: var(--current-size);
