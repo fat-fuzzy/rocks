@@ -36,6 +36,10 @@
 	overflow-y: auto;
 }
 
+.l\:frame\:round {
+	border-radius: 50%;
+}
+
 .l\:frame\:feature > img,
 .l\:frame\:feature > video,
 .l\:frame\:feature > canvas {

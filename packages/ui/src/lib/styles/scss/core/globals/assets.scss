@@ -4,7 +4,7 @@
 }
 
 a[class*='emoji:']::before {
-	margin-inline: var(--current-size) var(--current-size-plus);
+	margin-inline: var(--current-size);
 }
 
 .feedback[class*='emoji'] {
@@ -12,8 +12,7 @@ a[class*='emoji:']::before {
 }
 
 [class*='shape:'][class*='emoji'] {
-	font-size: var(--current-font-size);
-	padding: var(--current-size);
+	padding: var(--asset-padding);
 }
 
 :not([class*='shape:'])[class*='emoji']::before {
@@ -21,7 +20,6 @@ a[class*='emoji:']::before {
 }
 
 [class*='emoji'].align\:end {
-	padding-inline: var(--current-size) var(--current-size-plus);
 	display: flex;
 	flex-direction: row-reverse;
 	justify-content: space-between;
@@ -33,8 +31,4 @@ a[class*='emoji:']::before {
 [class*='card:'][class*='emoji:'][class*=':xl']:not(.feedback)::before,
 [class*='card:'][class*='emoji:'][class*=':xxl']:not(.feedback)::before {
 	margin-inline: 0;
-}
-
-[class*='svg:icon'] {
-	height: calc(2.95 * var(--current-size-plus)); // TODO : set icon size in scale.scss
 }

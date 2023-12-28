@@ -96,3 +96,15 @@ $emojis: (
 	clear: #{$spouting-whale},
 	not-found: #{$hole}
 );
+
+$assets: (
+	asset-height-xxs: var(--s-3),
+	asset-height-xs: var(--s-2),
+	asset-height-sm: var(--s-1),
+	asset-height-md: var(--s-0),
+	asset-height-lg: var(--s1),
+	asset-height-xl: var(--s2),
+	asset-height-xxl: var(--s3),
+	asset-padding: 0.35em,
+	// asset-width: auto,
+);
