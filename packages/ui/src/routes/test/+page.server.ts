@@ -73,7 +73,7 @@ export const actions = {
 	updateTab: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-ui-tabs')
-		let currentTabs = {element: TABS[0], category: TABS[0]}
+		let currentTabs = {ui: TABS[0]}
 		if (serialized) {
 			currentTabs = JSON.parse(serialized)
 		}

@@ -13,7 +13,7 @@ export class DsTabsUpdate {
 		if (currentTabs) {
 			this.currentTabs = currentTabs
 		} else {
-			this.currentTabs = {element: DEFAULT_TABS[0], category: DEFAULT_TABS[0]}
+			this.currentTabs = {ui: DEFAULT_TABS[0]}
 		}
 	}
 
@@ -22,8 +22,7 @@ export class DsTabsUpdate {
 			const updated = data.get('toggle')?.toString()
 			const updatedValue = DEFAULT_TABS.find((tab) => tab.value === updated)
 			if (updatedValue) {
-				this.currentTabs.element = updatedValue
-				this.currentTabs.category = updatedValue
+				this.currentTabs.ui = updatedValue
 				return true
 			}
 		}
