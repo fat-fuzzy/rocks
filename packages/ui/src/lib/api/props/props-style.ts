@@ -338,6 +338,7 @@ const settingsFamily = {
 	layout: 'flex',
 	size: 'lg',
 	variant: 'card',
+	justify: 'end',
 	props: ['brightness', 'contrast'],
 }
 
