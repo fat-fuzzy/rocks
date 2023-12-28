@@ -1,4 +1,4 @@
-import type {Meta, Markdown, Markdowns} from './types'
+import type {Meta, Markdown, Markdowns, StyleProps} from './types'
 import {getFamily} from '$lib/api/props/props-style'
 
 const DEFAULT_META: Meta = {
@@ -26,7 +26,7 @@ function getCategoryMarkdowns(category: string, markdowns: Markdowns) {
 	}
 }
 
-function getElementMeta(markdowns: Markdown[], name: string) {
+function getElementMeta(name: string, markdowns: Markdown[]) {
 	let markdown = markdowns.find(({meta}) => {
 		meta.title === name
 	})
@@ -34,7 +34,7 @@ function getElementMeta(markdowns: Markdown[], name: string) {
 	return meta
 }
 
-function getElementStyleProps(props_style: {[key: string]: {[key: string]: string[]}}) {
+function getElementStyleProps(props_style: StyleProps | undefined) {
 	let props: any = {
 		style: {},
 	}
@@ -53,7 +53,7 @@ function getElementStyleProps(props_style: {[key: string]: {[key: string]: strin
 	return props
 }
 
-function getElementDoc(props_style: {[key: string]: {[key: string]: string[]}}) {
+function getElementDoc(props_style: StyleProps | undefined) {
 	let props: any = []
 	let currentCategory: string[] = []
 
@@ -77,10 +77,13 @@ function getElementDoc(props_style: {[key: string]: {[key: string]: string[]}}) 
 function getElementProps(meta: Meta) {
 	const {props_style, props_state} = meta
 
-	let style = getElementStyleProps(props_style)
-	let state = props_state
-	let doc = getElementDoc(props_style)
+	const props: {[key: string]: string[]} = {}
+	props.style = getElementStyleProps(props_style)
+	props.doc = getElementDoc(props_style)
+	if (props_state) {
+		props.state = props_state
+	}
 
-	return {style, state, doc}
+	return {props}
 }
 export {getCategoryMarkdowns, getElementMeta, getElementProps}
