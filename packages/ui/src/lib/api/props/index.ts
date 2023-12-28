@@ -41,7 +41,7 @@ function getElementStyleProps(props_style: StyleProps | undefined) {
 
 	if (props_style) {
 		const categoryNames = Object.keys(props_style)
-		categoryNames.forEach((cat) => {
+		categoryNames.forEach((cat: string) => {
 			const families = props_style[cat]
 			const familyNames = Object.keys(families)
 			props.style[cat] = {}
@@ -74,16 +74,16 @@ function getElementDoc(props_style: StyleProps | undefined) {
 	return props
 }
 
-function getElementProps(meta: Meta) {
+function getElementProps(meta: Meta): StyleProps {
 	const {props_style, props_state} = meta
 
-	const props: {[key: string]: string[]} = {}
+	const props: StyleProps = {}
 	props.style = getElementStyleProps(props_style)
 	props.doc = getElementDoc(props_style)
 	if (props_state) {
 		props.state = props_state
 	}
 
-	return {props}
+	return props
 }
 export {getCategoryMarkdowns, getElementMeta, getElementProps}
