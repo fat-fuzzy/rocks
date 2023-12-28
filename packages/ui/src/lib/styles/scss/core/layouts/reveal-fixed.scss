@@ -64,7 +64,7 @@
 
 	.l\:reveal[class*='fixed'].show .content {
 		margin-block-start: var(--gap);
-		max-height: calc(100vh - 2 * var(--current-gap));
+		max-height: calc(100vh - 2.45 * var(--current-gap) + var(--gap));
 		overflow: auto;
 		transition: width 250ms ease-in-out;
 	}
