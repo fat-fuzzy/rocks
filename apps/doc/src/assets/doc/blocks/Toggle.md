@@ -4,11 +4,7 @@ slug: Toggle
 category: 'blocks'
 group: 'buttons'
 props_state: ['title', 'text', 'formaction', 'value']
-props_style:
-  {
-    'blocks': {'element': ['color', 'variant', 'size', 'asset', 'shape']},
-    'layouts': {'layout': ['layout']},
-  }
+props_style: {'blocks': {'element': ['color', 'variant', 'size', 'asset', 'shape']}}
 context: ['app.settings']
 ---
 
