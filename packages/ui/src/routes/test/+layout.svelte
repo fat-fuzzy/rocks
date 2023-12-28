@@ -22,7 +22,7 @@
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	const {sidebar, styles, context, state, currentTabs} = data
+	const {sidebar, styles, context} = data
 
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)

@@ -134,6 +134,7 @@
 			layout={family.layout}
 			size={family.size}
 			name={familyName}
+			justify={family.justify}
 			background="polar"
 		>
 			{#each family.items as styleInput}

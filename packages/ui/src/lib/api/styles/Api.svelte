@@ -5,7 +5,7 @@
 	import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
-	export let categories = ['app']
+	export let categories: string[]
 	export let path = ''
 	export let method = 'POST'
 	export let formaction = 'updateStyles'
@@ -19,7 +19,7 @@
 	let apiBreakpoint = 'xxs'
 
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	$: frameClass = categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin'
+	$: frameClass = categories && categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin'
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -35,40 +35,41 @@
 </script>
 
 <svelte:window on:keydown={keydown} />
-
-<form
-	name="styles-update"
-	{method}
-	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-	use:enhance={() => {
-		// prevent default callback from resetting the form
-		return ({update}) => {
-			update({reset: false})
-		}
-	}}
-	class={`${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
->
-	{#each categories as category}
-		<StyleFamily
-			{category}
-			{meta}
-			formaction={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
-		/>
-	{/each}
-	{#await Promise.resolve()}
-		<div class={frameClass}>
-			<Button
-				id={`submit.${path}`}
-				title="Apply styles"
-				type="submit"
-				size="lg"
-				color="highlight"
-				variant="outline"
-				shape="round"
-				asset="emoji:nojs"
+{#if categories?.length}
+	<form
+		name="styles-update"
+		{method}
+		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+		use:enhance={() => {
+			// prevent default callback from resetting the form
+			return ({update}) => {
+				update({reset: false})
+			}
+		}}
+		class={`${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
+	>
+		{#each categories as category}
+			<StyleFamily
+				{category}
+				{meta}
+				formaction={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
 			/>
-		</div>
-	{:then}
-		<slot />
-	{/await}
-</form>
+		{/each}
+		{#await Promise.resolve()}
+			<div class={frameClass}>
+				<Button
+					id={`submit.${path}`}
+					title="Apply styles"
+					type="submit"
+					size="lg"
+					color="highlight"
+					variant="outline"
+					shape="round"
+					asset="emoji:nojs"
+				/>
+			</div>
+		{:then}
+			<slot />
+		{/await}
+	</form>
+{/if}

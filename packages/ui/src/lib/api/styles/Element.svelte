@@ -116,9 +116,16 @@
 			<div class="l:stack:lg">
 				<details id={`${category}-${title}-api`} class="l:stack:xs" open>
 					<summary class={`bg:${color} box:primary:light`}>Style Props</summary>
-					<div class="drop w:full bg:polar ui:menu">
-						<Api {categories} {path} {actionPath} {redirect} {meta} />
-					</div>
+					{#if categories}
+						<div class="drop w:full bg:polar ui:menu">
+							<Api {categories} {path} {actionPath} {redirect} {meta} />
+						</div>
+					{:else}
+						<div class="card:lg text:center">
+							<p class={`font:xl`}>🐰</p>
+							<p class={`font:md`}>Coming soon!</p>
+						</div>
+					{/if}
 				</details>
 			</div>
 		</section>

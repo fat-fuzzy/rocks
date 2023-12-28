@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 	import {headless, tokens, blocks, layouts, recipes, graphics, api} from '$lib'
 
