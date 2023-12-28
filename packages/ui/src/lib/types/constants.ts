@@ -125,10 +125,7 @@ const TABS: Tab[] = [
 	},
 ]
 
-const APP_LINKS = [
-	{slug: 'about', title: 'About'},
-	{slug: 'test', title: 'Test'},
-]
+const APP_LINKS = [{slug: 'about', title: 'About'}]
 
 const APP_SETTINGS = {
 	switch: [

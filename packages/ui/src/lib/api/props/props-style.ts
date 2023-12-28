@@ -69,7 +69,7 @@ const size = {
 const layout = {
 	initial: 'switcher',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'stack',
 	size: 'sm',
 	container: 'card',
 	items: [
