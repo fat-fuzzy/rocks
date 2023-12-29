@@ -8,13 +8,13 @@
 	export let size = 'md'
 	export let variant = 'primary'
 
-	$: headerClass = 'page-header card:xs bg:polar'
+	$: headerClass = `l:grid:header:${currentTab.value} bp:xs bg:polar`
 </script>
 
 <Head {title} page="Machines" description="A collection of state machines for learning purposes." />
 
 <header class={headerClass}>
-	<h1 class="card:lg emoji:machines">{title}</h1>
+	<h1 class="main emoji:machines">{title}</h1>
 </header>
 
 <form class={`l:burrito:${size}`}>
