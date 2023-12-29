@@ -4,7 +4,6 @@
 @forward './menu'; // Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements
 
 @forward './header-app'; // Use for main app header
-@forward './header-page'; // Use for main app header
 @forward './footer'; // Use for main app footer
 @forward './article'; // Use for articles (header + section(s) + optional footer)
 @forward './grid-header'; // Use for a page header layout
