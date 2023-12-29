@@ -115,12 +115,13 @@
 		{#if canvas && playerAside}
 			<Player on:click={handleToggle} {color} {size} {variant} />
 		{/if}
-		{#if showDetails}
+		{#if canvas && showDetails}
 			<Geometry
+				id={`${id}-geometry`}
 				on:update={update}
 				{geometry}
-				canvasWidth={width}
-				canvasHeight={height}
+				canvasWidth={canvas.getBoundingClientRect().width}
+				canvasHeight={canvas.getBoundingClientRect().height}
 				{color}
 				disabled={state === 'pause'}
 			/>
