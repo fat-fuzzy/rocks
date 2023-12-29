@@ -4,7 +4,7 @@
 //==
 
 [class^='l:grid:header'] {
-	padding: var(--current-size);
+	padding: calc(var(--gap) / var(--ratio));
 	grid-template-columns: 1fr auto;
 	gap: var(--gap);
 	height: auto;

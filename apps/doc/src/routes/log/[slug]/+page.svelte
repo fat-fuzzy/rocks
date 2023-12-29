@@ -1,9 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {headless, layouts} from '@fat-fuzzy/ui'
+	import {headless} from '@fat-fuzzy/ui'
 
 	const {Head} = headless
-	const {RevealAuto} = layouts
 
 	let title: string
 	let date: string
@@ -11,7 +10,7 @@
 	$: title = markdown.meta.title
 	$: date = markdown.meta.date
 	$: html = $page.data.html
-	$: headerClass = 'page-header card:xs bg:polar'
+	$: headerClass = 'l:grid:header bp:xs bg:polar'
 
 	// TODO: Fix context menu
 </script>
@@ -19,22 +18,11 @@
 <Head {title} page="Log" description={`Decision Log ${markdown.meta.id}: ${title}`} />
 
 <header class={headerClass}>
-	<h1 class="card:lg">{title}</h1>
+	<h1 class="main card:sm">{title}</h1>
 
-	<RevealAuto
-		size="sm"
-		breakpoint="sm"
-		color="primary:light"
-		align="start"
-		title="Info"
-		formaction="toggleContext"
-		actionPath="/ui"
-		redirect={$page.url.pathname}
-	>
-		<div slot="content" class="l:side maki sm feedback default bare emoji:idea">
-			<p>Published: {date}</p>
-		</div>
-	</RevealAuto>
+	<div class="tabs card:md">
+		<p class="feedback bare sm">Published: {date}</p>
+	</div>
 </header>
 
 <article class="card:md">
