@@ -109,7 +109,7 @@
 	background-color: var(--current-bg-color);
 }
 
-@mixin switchRowStyles($breakpoint, $bpSuffix) {
+@mixin switchToRowStyles_Header($breakpoint, $bpSuffix) {
 	@media screen and (min-width: #{$breakpoint}) {
 		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} {
 			justify-content: center;
@@ -166,25 +166,29 @@
 }
 
 @media screen and (min-width: 320px) {
-	@include switchRowStyles(320px, 'xxs');
+	@include switchToRowStyles_Header(320px, 'xxs');
 }
 
 @media screen and (min-width: 620px) {
-	@include switchRowStyles(620px, 'xs');
+	@include switchToRowStyles_Header(620px, 'xs');
 }
 
 @media screen and (min-width: 935px) {
-	@include switchRowStyles(935px, 'sm');
+	@include switchToRowStyles_Header(935px, 'sm');
 }
 
 @media screen and (min-width: 1360px) {
-	@include switchRowStyles(1360px, 'md');
+	@include switchToRowStyles_Header(1360px, 'md');
 }
 
 @media screen and (min-width: 1620px) {
-	@include switchRowStyles(1620px, 'lg');
+	@include switchToRowStyles_Header(1620px, 'lg');
 }
 
 @media screen and (min-width: 2048px) {
-	@include switchRowStyles(2048px, 'xl');
+	@include switchToRowStyles_Header(2048px, 'xl');
+}
+
+@media screen and (min-width: 3048px) {
+	@include switchToRowStyles_Header(3048px, 'xxl');
 }
