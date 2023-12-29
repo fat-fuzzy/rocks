@@ -38,7 +38,7 @@
 	let angle = 0
 
 	// Position
-	let [coordX, coordY] = translation
+	let [coordX, coordY] = [canvasWidth / 2, canvasHeight / 2]
 
 	// Rotation
 	let [radCoordX, radCoordY] = rotation
