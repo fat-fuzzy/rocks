@@ -61,7 +61,7 @@
 	$: components = getComponentType(category)
 	$: path = $page.url.pathname
 	$: content = markdowns[category].find(({meta}) => meta.slug === category)
-	$: headerClass = 'page-header card:md bg:polar'
+	$: headerClass = `l:grid:header:${currentTab.value} bp:xs bg:polar`
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -71,42 +71,41 @@
 <Head {title} page="UI" description={`${title} Doc`} />
 
 <header class={headerClass}>
-	<h1 class="card:sm md">{title}</h1>
-	<div class="l:switcher:xs wrap:reverse">
-		{#if currentTab.value === 'demo'}
+	<h1 class="main">{title}</h1>
+	{#if currentTab.value === 'demo'}
+		<div class="context">
 			<Api categories={['app']} {path} {actionPath} redirect={$page.url.pathname} />
-		{/if}
+		</div>
+	{/if}
 
-		<form
-			method="POST"
-			class="l:switcher:sm align:center"
-			action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
-			use:enhance={() => {
-				// prevent default callback from resetting the form
-				return ({update}) => {
-					update({reset: false})
+	<form
+		method="POST"
+		class="tabs card:md"
+		action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
+		use:enhance={() => {
+			// prevent default callback from resetting the form
+			return ({update}) => {
+				update({reset: false})
+			}
+		}}
+	>
+		<ToggleMenu
+			id={`submit.${path}`}
+			items={tabs.map((tab) => {
+				if (tab.value == currentTab.value) {
+					tab.initial = 'pressed'
 				}
-			}}
-		>
-			<ToggleMenu
-				id={`submit.${path}`}
-				items={tabs.map((tab) => {
-					if (tab.value == currentTab.value) {
-						tab.initial = 'pressed'
-					}
-					return tab
-				})}
-				layout="flex justify:end "
-				size="md"
-				container="card"
-				color="primary"
-				shape="round"
-				variant="outline"
-				formaction={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
-				on:click={handleTabChange}
-			/>
-		</form>
-	</div>
+				return tab
+			})}
+			size="md"
+			container="card"
+			color="primary"
+			shape="round"
+			variant="outline"
+			formaction={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
+			on:click={handleTabChange}
+		/>
+	</form>
 </header>
 
 {#if content.html && currentTab.value === 'doc'}

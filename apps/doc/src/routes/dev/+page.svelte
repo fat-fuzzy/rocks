@@ -8,12 +8,13 @@
 	const {Head} = headless
 
 	let title = 'Dev'
+	$: headerClass = 'card:sm bg:polar'
 </script>
 
 <Head page={title} description="Developer Doc" />
 
-<header class="page-header card:xs bg:polar">
-	<h1 class="card:lg">{`Fat Fuzzy  ${title}`}</h1>
+<header class={headerClass}>
+	<h1 class="card:lg">Fat Fuzzy {title}</h1>
 </header>
 
 <div class="l:stack:xl card:xl">
