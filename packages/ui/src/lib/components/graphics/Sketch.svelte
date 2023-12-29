@@ -120,8 +120,8 @@
 				id={`${id}-geometry`}
 				on:update={update}
 				{geometry}
-				canvasWidth={canvas.getBoundingClientRect().width}
-				canvasHeight={canvas.getBoundingClientRect().height}
+				canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
+				canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
 				{color}
 				disabled={state === 'pause'}
 			/>
