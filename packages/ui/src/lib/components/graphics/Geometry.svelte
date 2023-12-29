@@ -9,6 +9,7 @@
 	import Rotation from '$lib/components/graphics/Rotation.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
+	export let id = 'geometry'
 	export let method = 'POST'
 	export let canvasWidth: number
 	export let canvasHeight: number
@@ -80,6 +81,7 @@
 	}}
 >
 	<Position
+		id={`${id}-position`}
 		bind:coordX
 		bind:coordY
 		bind:maxX
@@ -90,6 +92,7 @@
 		{disabled}
 	/>
 	<Scale
+		id={`${id}-scale`}
 		bind:scaleX
 		bind:scaleY
 		maxX={5}
@@ -101,7 +104,15 @@
 		size="xs"
 		{disabled}
 	/>
-	<Rotation bind:angle max={360} on:input={update} {color} size="xs" {disabled} />
+	<Rotation
+		id={`${id}-rotation`}
+		bind:angle
+		max={360}
+		on:input={update}
+		{color}
+		size="xs"
+		{disabled}
+	/>
 	{#await Promise.resolve()}
 		<div class={`l:frame:twin card:lg`}>
 			<Button
