@@ -1,5 +1,5 @@
 ---
-title: Initial packages and stack
+title: Packages and stack
 date: '2022'
 updated: '2023-06-02'
 slug: packages-and-stack
