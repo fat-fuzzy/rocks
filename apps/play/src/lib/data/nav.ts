@@ -1,4 +1,4 @@
-export const links = [{slug: 'play', title: 'Play'}]
+export const links = [{slug: 'play', title: 'Play', layout: 'sidebar'}]
 
 export const itemsSettings = {
 	switch: [
@@ -11,23 +11,45 @@ export const itemsSettings = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
+				active: {
+					id: 'app.brightness.night',
+					text: 'night',
+					value: 'night',
+					asset: 'emoji:night',
+				},
+				inactive: {
+					id: 'app.brightness.day',
+					text: 'day',
+					value: 'day',
+					asset: 'emoji:day',
+					initial: 'pressed',
+				},
 			},
 		},
-		// {
-		// 	id: 'contrast',
-		// 	name: 'contrast',
-		// 	title: 'Contrast',
-		// 	variant: 'outline',
-		// 	shape: 'round',
-		// 	color: 'primary',
-		// 	size: 'md',
-		// 	states: {
-		// 		active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-		// 		inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
-		// 	},
-		// },
+		{
+			id: 'contrast',
+			name: 'contrast',
+			title: 'Contrast',
+			variant: 'outline',
+			shape: 'round',
+			color: 'primary',
+			size: 'md',
+			states: {
+				active: {
+					id: 'app.contrast.contrast',
+					text: 'contrast',
+					value: 'contrast',
+					asset: 'emoji:contrast',
+				},
+				inactive: {
+					id: 'app.contrast.blend',
+					text: 'blend',
+					value: 'blend',
+					asset: 'emoji:blend',
+					initial: 'pressed',
+				},
+			},
+		},
 	],
 	links: [
 		{

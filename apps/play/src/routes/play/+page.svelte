@@ -1,30 +1,23 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {blocks} from '@fat-fuzzy/ui'
-	// const {Feedback} = blocks
+	import {headless} from '@fat-fuzzy/ui'
+
+	const {Head} = headless
+	const title = 'Play'
+	const description = 'A sandbox environment to experiment and learn web-based computer graphics.'
 
 	$: sketches = $page.data.sketches
-
-	let showcanvas = true
-	let showFeedback = !showcanvas
-	let feedback = ''
+	$: headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 
-<svelte:head>
-	<title>UI Sandbox | 👾 Play</title>
-	<meta
-		name="description"
-		content="Playground: a sandbox environment to experiment and learn web-based computer graphics."
-	/>
-</svelte:head>
+<Head page={title} {description} />
 
-<header class="header-page">
-	<h1>👾 Play</h1>
+<header class={headerClass}>
+	<h1 class="card:md emoji:vader">Fat Fuzzy {title}</h1>
 </header>
 
-<div class="l:text">
+<div class="l:stack:xl card:xl">
 	{#each sketches as sketch}
-		<pre>{sketch.title}</pre>
+		<a class="font:xxl" href={`/play/${sketch.slug}`}>{sketch.title}</a>
 	{/each}
-	<!-- <Feedback {feedback} show={showFeedback} /> -->
 </div>

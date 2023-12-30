@@ -5,12 +5,13 @@
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$lib/data/nav'
-	import {recipes, stores, utils} from '@fat-fuzzy/ui'
+	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui'
 
 	const {Header} = recipes
 	const {settings} = stores
+	const {DEFAULT_APP_SETTINGS, APP_LINKS} = constants
 
-	let appSettings: {[key: string]: string} = {brightness: 'day', contrast: 'night'}
+	let appSettings = $page.data.app || DEFAULT_APP_SETTINGS
 
 	const localStores = [
 		settings.app.subscribe((value) => {
@@ -23,7 +24,8 @@
 	$: brightness = appSettings.brightness
 	$: contrast = appSettings.contrast
 	$: pageClass = utils.format.getClassNameFromUrl($page.url)
-	$: mainClass = `${pageClass} ${brightness} bg:${contrast}`
+	$: layoutClass = APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
+	$: mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
 	$: headerClass = `header-app ${brightness} bg:${contrast}`
 	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
 
