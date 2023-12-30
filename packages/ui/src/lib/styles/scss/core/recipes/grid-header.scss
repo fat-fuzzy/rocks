@@ -22,12 +22,14 @@
 
 [class^='l:grid:header'] > .main {
 	grid-area: main;
+	display: flex;
+	align-items: center;
+	margin-inline-start: var(--s-2);
+	margin-block-end: var(--s-1);
 }
 
 [class^='l:grid:header'] > .tabs {
 	grid-area: tabs;
-	display: flex;
-	align-items: center;
 }
 
 [class^='l:grid:header'] > .context {

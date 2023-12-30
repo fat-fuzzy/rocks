@@ -34,7 +34,8 @@
 	$: brightness = appSettings.brightness
 	$: contrast = appSettings.contrast
 	$: pageClass = format.getClassNameFromUrl($page.url)
-	$: mainClass = `${pageClass} ${brightness} bg:${contrast}`
+	$: layoutClass = APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
+	$: mainClass = `${pageClass} ${brightness} bg:${contrast}  l:page:${layoutClass}`
 	$: headerClass = `header-app ${brightness} bg:${contrast}`
 	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
 
@@ -50,7 +51,10 @@
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
-	items={{links: [...APP_LINKS, {slug: 'test', title: 'Test'}], settings: APP_SETTINGS}}
+	items={{
+		links: [...APP_LINKS, {slug: 'test', title: 'Test'}],
+		settings: APP_SETTINGS,
+	}}
 	breakpoint="xs"
 />
 

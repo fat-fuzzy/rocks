@@ -19,13 +19,13 @@
 	$: markdowns = $page.data.markdowns
 	$: path = $page.url.pathname
 	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'card:sm bg:polar'
+	$: headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 
 <Head {title} page="Test" description="UI Library Test Page" />
 
 <header class={headerClass}>
-	<h1 class="card:lg">Fat Fuzzy {title}</h1>
+	<h1 class="card:md">Fat Fuzzy {title}</h1>
 </header>
 
 <section class="card:md">
