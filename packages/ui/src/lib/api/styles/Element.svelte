@@ -114,8 +114,8 @@
 		</section>
 		<section class="l:side">
 			<div class="l:stack:lg">
-				<details id={`${category}-${title}-api`} class="l:stack:xs" open>
-					<summary class={`bg:${color} box:primary:light`}>Style Props</summary>
+				<details id={`${category}-${title}-api`} class="l:stack:md" open>
+					<summary class={`box:${color} bg:${color}`}>Props</summary>
 					{#if categories}
 						<div class="drop w:full bg:polar ui:menu">
 							<Api {categories} {path} {actionPath} {redirect} {meta} />
@@ -137,7 +137,7 @@
 	>
 		<header>
 			<a
-				class="title card:md w:full l:switcher:xs emoji:link outline primary:light"
+				class="title card:sm w:full l:switcher:xs emoji:link outline primary align:center"
 				href={`${path}/${title}`}
 			>
 				<svelte:element this={`h${String(depth)}`} class="link font:lg">

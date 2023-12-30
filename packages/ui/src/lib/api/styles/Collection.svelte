@@ -76,8 +76,8 @@
 		</section>
 		<section slot="side">
 			<div class="l:stack:lg">
-				<details id={`${category}-api`} class="l:stack:xs" open>
-					<summary class={`bg:${color} box:primary:light`}>Style Props</summary>
+				<details id={`${category}-api`} class="l:stackmd" open>
+					<summary class={`box:${color} bg:${color}`}>Props</summary>
 					{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
 						<div class="drop w:full bg:polar ui:menu">
 							<Api {categories} {path} {actionPath} {redirect} />
@@ -107,7 +107,7 @@
 	</section>
 	<section class="l:text:lg">
 		<details class={`l:stack:md ${size}`}>
-			<summary class={`card:md box:${color} bg:${color}`}>
+			<summary class={`box:${color} bg:${color}`}>
 				{category}
 			</summary>
 			<div class="drop xxl">
