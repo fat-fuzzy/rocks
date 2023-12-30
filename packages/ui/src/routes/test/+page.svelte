@@ -28,8 +28,8 @@
 	<h1 class="card:md">Fat Fuzzy {title}</h1>
 </header>
 
-<section class="card:md">
-	<div class="l:text:lg">{@html content.html}</div>
+<section class="card:md scroll:y">
+	<div class="l:text:lg snap:start">{@html content.html}</div>
 	{#each components as { category, items }}
 		<Collection
 			depth={1}
