@@ -1,25 +1,27 @@
 <script lang="ts">
-	import lib from '@fat-fuzzy/lib'
-	import {graphics} from '@fat-fuzzy/ui'
 	import {page} from '$app/stores'
 
+	import lib from '@fat-fuzzy/lib'
+	import {graphics, headless} from '@fat-fuzzy/ui'
+
+	const {Head} = headless
 	const {Sketch} = graphics
 	$: title = $page.data.title
 	$: dimensions = $page.data.dimensions
 	$: id = $page.data.id
 	$: scene = lib.gfx.sketches[id]
+	$: headerClass = 'l:flex card:sm align:center bg:polar'
 </script>
 
-<svelte:head>
-	<title>UI Sandbox | 👾 Play</title>
-	<meta
-		name="description"
-		content="Playground: a sandbox environment to experiment and learn web-based computer graphics."
+<div class="l:center l:stack:xxl">
+	<Head
+		{title}
+		page="Play"
+		description={`${title} - A sandbox environment to experiment and learn web-based computer graphics`}
 	/>
-</svelte:head>
-
-<header class="header-page">
-	<h1>👾 Play</h1>
-	<h2>&nbsp;❤︎ {title}</h2>
-</header>
-<Sketch {scene} {title} {dimensions} />
+	<header class={headerClass}>
+		<h1 class="card:md">Play</h1>
+		<h2>&nbsp;❤︎ {title}</h2>
+	</header>
+	<Sketch {scene} {title} {dimensions} size="xs" />
+</div>

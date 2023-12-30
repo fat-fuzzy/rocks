@@ -15,14 +15,6 @@
 	]
 </script>
 
-<svelte:head>
-	<title>FatFuzzy Sketches</title>
-	<meta
-		name="description"
-		content="Fat Fuzzy Sketches - canvas & web graphics experiments & tutorial notes"
-	/>
-</svelte:head>
-
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
 		<Nav
