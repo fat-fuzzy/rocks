@@ -1,6 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {recipes, layouts} from '@fat-fuzzy/ui'
+	import {recipes, layouts, headless} from '@fat-fuzzy/ui'
+
+	const {Head} = headless
 	const {Sidebar} = layouts
 	const {Nav} = recipes
 
@@ -20,10 +22,7 @@
 	]
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={description} />
-</svelte:head>
+<Head page={title} {description} />
 
 <Sidebar size="xs">
 	<svelte:fragment slot="side">
