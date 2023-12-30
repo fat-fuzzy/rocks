@@ -45,6 +45,7 @@ $layout: (
 	// Header button icon height
 	header-icon-height: 2.25rem,
 	header-height: var(--s3),
+	max-header-height: 30vh,
 	header-margin: calc(var(--gap) / 2),
 	// footer height = font-size * line-height + 2 * padding
 	footer-height: calc(var(--font-size-body) * var(--ratio) + 2 * var(--size-sm)),
@@ -60,6 +61,7 @@ $layout: (
 	border-width-xl: 4px,
 	outline-offset: 0.25rem,
 	outline-offset-nav: 0.15rem,
+	outline-offset-settings: 2px,
 	outline-width: 2px,
 	prev-offset-limit: calc(calc(var(--outline-offset) + var(--outline-width))),
 	// == Layers

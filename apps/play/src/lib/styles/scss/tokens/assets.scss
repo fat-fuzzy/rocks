@@ -11,6 +11,7 @@ $half-moon: '🌗';
 $invader: '👾';
 $octopus: '🐙';
 $spouting-whale: '🐳';
+$wave: '🌊';
 $lion: '🦁';
 $heart: '❤️';
 $sparkles: '✨';
@@ -24,7 +25,19 @@ $point-up: '👆';
 $point-down: '👇';
 $log: '🪵';
 $control-knobs: '🎛️';
+$pencil: '✏️';
+$memo: '📝';
+$fountain-pen: '🖋️';
+$magic-wand: '🪄';
+$gear: '⚙️';
 $umbrella: '☂️';
+$lightning: '⚡️';
+$construction-sign: '🚧';
+$shower: '🚿';
+$lotus: '🪷';
+$hole: '🕳️';
+$robot: '🤖';
+$star: '🌟';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -60,15 +73,38 @@ $emojis: (
 	// LinkList / Nav / DetailsNav fixture emojis
 	home: #{$egg},
 	about: #{$chick},
+	machines: #{$robot},
+	star: #{$star},
 
 	// Composition Emojis
-	menu: #{$chick},
+	menu: #{$bunny},
 	settings: #{$control-knobs},
 	log: #{$log},
 	context: #{$umbrella},
 	switch-active: #{$bunny},
 	switch-inactive: #{$hat},
+	doc: #{$memo},
+	demo: #{$magic-wand},
+	nojs: #{$bunny},
+	wip: #{$construction-sign},
 
 	// Playground fixture emojis
-	geometry-2d: #{$ruler}
+	sketch: #{$spouting-whale},
+	geometry-2d: #{$ruler},
+	play: #{$sparkles},
+	pause: #{$lotus},
+	clear: #{$spouting-whale},
+	not-found: #{$hole}
+);
+
+$assets: (
+	asset-height-xxs: var(--s-3),
+	asset-height-xs: var(--s-2),
+	asset-height-sm: var(--s-1),
+	asset-height-md: var(--s-0),
+	asset-height-lg: var(--s1),
+	asset-height-xl: var(--s2),
+	asset-height-xxl: var(--s3),
+	asset-padding: 0.35em,
+	// asset-width: auto,
 );
