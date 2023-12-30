@@ -6,7 +6,8 @@
 	const {Collection} = api
 
 	const actionPath = '/ui'
-	const title = 'UI' // TODO : Fix title: add breadcrumb nav component ?
+	const title = 'UI'
+	const description = `${title} Doc`
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -22,14 +23,14 @@
 	$: headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 
-<Head page={title} description={`${title} Doc`} />
+<Head page={title} {description} />
 
 <header class={headerClass}>
 	<h1 class="card:md">Fat Fuzzy {title}</h1>
 </header>
 
-<section class="card:md">
-	<div class="l:text:lg">{@html content.html}</div>
+<section class="card:md scroll:y">
+	<div class="l:text:lg snap:start">{@html content.html}</div>
 	{#each components as { category, items }}
 		<Collection
 			depth={1}
