@@ -45,6 +45,7 @@ $layout: (
 	// Header button icon height
 	header-icon-height: 2.25rem,
 	header-height: var(--s3),
+	max-header-height: 30vh,
 	header-margin: calc(var(--gap) / 2),
 	// footer height = font-size * line-height + 2 * padding
 	footer-height: calc(var(--font-size-body) * var(--ratio) + 2 * var(--size-sm)),
