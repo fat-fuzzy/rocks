@@ -8,13 +8,13 @@
 	$: markdowns = $page.data.markdowns
 
 	let title = 'Log'
-	$: headerClass = 'card:sm bg:polar'
+	$: headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 
 <Head page={title} description="Log of Architectural decisions" />
 
 <header class={headerClass}>
-	<h1 class="card:lg">Fat Fuzzy {title}</h1>
+	<h1 class="card:md">Fat Fuzzy {title}</h1>
 </header>
 
 <div class="l:stack:xl card:xl">
