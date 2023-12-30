@@ -24,7 +24,6 @@
 	let frame: number
 	let state = 'clear'
 
-	$: playerAside = ['xs', 'sm'].includes(size)
 	$: showDetails = geometry !== undefined && (state === 'play' || state === 'pause')
 	$: playerAsset = state === 'clear' ? 'sketch' : state
 	$: backgroundClass = background
@@ -87,8 +86,8 @@
 	})
 </script>
 
-<article class="l:sidebar:xxs">
-	<div class={`l:main ${size} l:stack:${size}`}>
+<article class={`l:sidebar:${size}`}>
+	<div class={`l:main ${size}`}>
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
 			<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
 				<slot name="fallback-canvas">
@@ -99,32 +98,30 @@
 				</slot>
 			</canvas>
 			{#await Promise.resolve()}
-				<p class={`feedback emoji:default ${size} content`}>
-					When JavaScript loads, you should see a demo of a canvas component used to display and
-					interact with WebGL animations
-				</p>
-			{:then}
-				<slot name="fallback-nojs" />
+				<slot name="fallback-nojs">
+					<p class={`feedback emoji:default ${size} content`}>
+						When JavaScript loads, you should see a demo of a canvas component used to display and
+						interact with WebGL animations
+					</p>
+				</slot>
 			{/await}
 		</div>
-		{#if canvas && !playerAside}
-			<Player id="sketch.player" on:click={handleToggle} {color} {size} {variant} />
-		{/if}
 	</div>
 	<aside class="l:side">
-		{#if canvas && playerAside}
+		{#if canvas}
 			<Player on:click={handleToggle} {color} {size} {variant} />
-		{/if}
-		{#if canvas && showDetails}
-			<Geometry
-				id={`${id}-geometry`}
-				on:update={update}
-				{geometry}
-				canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
-				canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
-				{color}
-				disabled={state === 'pause'}
-			/>
+
+			{#if showDetails}
+				<Geometry
+					id={`${id}-geometry`}
+					on:update={update}
+					{geometry}
+					canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
+					canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
+					{color}
+					disabled={state === 'pause'}
+				/>
+			{/if}
 		{/if}
 	</aside>
 </article>
