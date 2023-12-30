@@ -4,12 +4,13 @@
 	const {Head} = headless
 
 	let title = 'About Fat Fuzzy'
+	$: headerClass = 'l:flex card:sm col:center bg:polar align:center w:full'
 </script>
 
 <Head {title} page="Rocks" description="About this website" />
 
-<header class="page-header bg:polar col:center card:xs max:w:full">
-	<h1 class="l:center card:lg">{title}</h1>
+<header class={headerClass}>
+	<h1 class="card:md">{title}</h1>
 </header>
 
 <div class="l:center:xxl col:center">

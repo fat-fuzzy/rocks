@@ -10,7 +10,7 @@
 	$: title = markdown.meta.title
 	$: date = markdown.meta.date
 	$: html = $page.data.html
-	$: headerClass = 'l:grid:header bp:xs bg:polar'
+	$: headerClass = 'l:switcher:xs card:sm align:center bg:polar'
 
 	// TODO: Fix context menu
 </script>
@@ -18,9 +18,9 @@
 <Head {title} page="Log" description={`Decision Log ${markdown.meta.id}: ${title}`} />
 
 <header class={headerClass}>
-	<h1 class="main card:sm">{title}</h1>
+	<h1 class="l:main:80 card:md">{title}</h1>
 
-	<div class="tabs card:md">
+	<div class="context end card:md">
 		<p class="feedback bare sm">Published: {date}</p>
 	</div>
 </header>

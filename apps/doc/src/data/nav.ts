@@ -1,8 +1,8 @@
 export const links = [
-	{slug: 'about', title: 'About'},
-	{slug: 'dev', title: 'Dev'},
-	{slug: 'ui', title: 'UI'},
-	{slug: 'log', title: 'Log'},
+	{slug: 'about', title: 'About', layout: 'center'},
+	{slug: 'dev', title: 'Dev', layout: 'sidebar'},
+	{slug: 'ui', title: 'UI', layout: 'sidebar'},
+	{slug: 'log', title: 'Log', layout: 'sidebar'},
 ]
 
 export const itemsSettings = {
@@ -16,8 +16,19 @@ export const itemsSettings = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
+				active: {
+					id: 'app.brightness.night',
+					text: 'night',
+					value: 'night',
+					asset: 'emoji:night',
+				},
+				inactive: {
+					id: 'app.brightness.day',
+					text: 'day',
+					value: 'day',
+					asset: 'emoji:day',
+					initial: 'pressed',
+				},
 			},
 		},
 		{
@@ -29,8 +40,19 @@ export const itemsSettings = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-				inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
+				active: {
+					id: 'app.contrast.contrast',
+					text: 'contrast',
+					value: 'contrast',
+					asset: 'emoji:contrast',
+				},
+				inactive: {
+					id: 'app.contrast.blend',
+					text: 'blend',
+					value: 'blend',
+					asset: 'emoji:blend',
+					initial: 'pressed',
+				},
 			},
 		},
 	],

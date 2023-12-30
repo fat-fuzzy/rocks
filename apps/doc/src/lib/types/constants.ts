@@ -63,10 +63,7 @@ const UI_STATE = {
 	ERROR: 'error',
 }
 
-const APP_LINKS = [
-	{slug: 'about', title: 'About'},
-	{slug: 'test', title: 'Test'},
-]
+const APP_LINKS: {[key: string]: string}[] = [{slug: 'about', title: 'About', layout: 'center'}]
 
 const APP_SETTINGS = {
 	switch: [

@@ -80,7 +80,7 @@
 
 	<form
 		method="POST"
-		class="tabs card:md"
+		class="tabs"
 		action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
@@ -98,7 +98,7 @@
 				return tab
 			})}
 			size="md"
-			container="card"
+			container="card:md"
 			color="primary"
 			shape="round"
 			variant="outline"
