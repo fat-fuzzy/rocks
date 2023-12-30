@@ -1,7 +1,7 @@
 ---
-title: Improve doc and simplify
+title: Simplify doc
 date: '2022'
-slug: improve-doc-and-simplify
+slug: simplify-doc
 id: '003'
 tags: ['doc', 'dependencies', 'markdown']
 ---
@@ -45,13 +45,7 @@ Considered:
 
 ### ➖ Removed
 
-To simplify maintenance, I will stop using the ADR system, as it is also a bit overkill
-
-- https://adr.github.io/madr/
-- https://arc42.org/overview
-- https://hsc.aim42.org/documentation/hsc_arc42.html
-- https://biking.michael-simons.eu/docs/index.html#section-introduction-and-goals
-- https://github.com/joelparkerhenderson/architecture-decision-record
+To simplify maintenance, I will stop using the ADR system, as it is also a bit overkill.
 
 Removed dependencies in root package.json:
 
@@ -80,6 +74,14 @@ I departed from a fresh SvelteKit lib project for the **ui** package, and it did
 ### ➕ Kept or added
 
 ADR templates are useful, I'm keeping them for reference and for decision docs.
+
+These are the resources used for ADR:
+
+- [Markdown Any Decision Records](https://adr.github.io/madr/)
+- [arc42 template](https://arc42.org/overview)
+- [HTML Sanity Checker Architecture](https://hsc.aim42.org/documentation/hsc_arc42.html)html#section-introduction-and-goals)
+- [biking2, Architecture and API](https://biking.michael-simons.eu/docs/index.html#section-introduction-and-goals)
+- [Architecture decision record](https://github.com/joelparkerhenderson/architecture-decision-record)
 
 🚧 Chosen option for doc: [mdsvex](https://mdsvex.pngwn.io/)
 
