@@ -93,7 +93,7 @@
 		</section>
 	</Sidebar>
 {:else}
-	<section class="l:text:lg">
+	<section class="l:text:lg snap:start">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 			{category}
 		</svelte:element>
@@ -104,8 +104,6 @@
 			<p class={`font:xl`}>🐰</p>
 			<p class={`font:md`}>Coming soon!</p>
 		{/if}
-	</section>
-	<section class="l:text:lg">
 		<details class={`l:stack:md ${size}`}>
 			<summary class={`box:${color} bg:${color}`}>
 				{category}
