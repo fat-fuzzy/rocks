@@ -34,7 +34,7 @@
 	width: 100%;
 	font-weight: var(--font-weight-400);
 	text-transform: uppercase;
-	padding: var(--s-1) var(--s0);
+	padding: calc(var(--s-1) + var(--border-width-lg)) var(--s0);
 }
 
 .header-app > [class*='l:main'] > nav li {
