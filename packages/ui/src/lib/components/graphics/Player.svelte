@@ -83,7 +83,7 @@
 	let state = 'clear'
 </script>
 
-<menu {id} class={`l:switcher:sm`}>
+<menu {id} class={`l:switcher:${size} w:full nowrap`}>
 	<Switch
 		id={`${id}-switch-play-pause`}
 		states={items.switch}

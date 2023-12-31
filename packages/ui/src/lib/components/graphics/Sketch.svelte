@@ -14,6 +14,7 @@
 	export let size = ''
 	export let variant = ''
 	export let background = ''
+	export let breakpoint = ''
 
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
@@ -86,8 +87,8 @@
 	})
 </script>
 
-<article class={`l:sidebar:${size}`}>
-	<div class={`l:main ${size}`}>
+<article class={`l:grid:sketch bp:xs`}>
+	<div class="scene">
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
 			<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
 				<slot name="fallback-canvas">
@@ -98,23 +99,22 @@
 				</slot>
 			</canvas>
 			{#await Promise.resolve()}
-				<slot name="fallback-nojs">
-					<p class={`feedback emoji:default ${size} content`}>
-						When JavaScript loads, you should see a demo of a canvas component used to display and
-						interact with WebGL animations
-					</p>
-				</slot>
+				<p class={`feedback emoji:default ${size} content`}>
+					When JavaScript loads, you should see a demo of a canvas component used to display and
+					interact with WebGL animations
+				</p>
 			{/await}
 		</div>
 	</div>
-	<aside class="l:side">
+	<aside class="context">
 		{#if canvas}
-			<Player on:click={handleToggle} {color} {size} {variant} />
+			<Player on:click={handleToggle} {color} size="xs" {variant} />
 
 			{#if showDetails}
 				<Geometry
 					id={`${id}-geometry`}
 					on:update={update}
+					threshold={breakpoint}
 					{geometry}
 					canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
 					canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}

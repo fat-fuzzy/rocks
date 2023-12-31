@@ -1,14 +1,11 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 
 	export let color = ''
 
 	export let id = 'scale'
-	export let legend = 'Scale'
-	export let label = ''
 	export let size = 'xxs'
 	export let scaleX = 0
 	export let scaleY = 0
@@ -33,29 +30,27 @@
 	}
 </script>
 
-<Fieldset id="scale-fieldset" {legend} {size} container="box:card">
-	<InputRange
-		bind:value={scaleX}
-		id={`${id}-width`}
-		name={`${id}-width`}
-		label={`${label} width`}
-		min={minX}
-		max={maxX}
-		on:input={updateX}
-		{size}
-		{color}
-		{disabled}
-	/>
-	<InputRange
-		bind:value={scaleY}
-		id={`${id}-height`}
-		name={`${id}-height`}
-		label={`${label} height`}
-		min={minY}
-		max={maxY}
-		on:input={updateY}
-		{size}
-		{color}
-		{disabled}
-	/>
-</Fieldset>
+<InputRange
+	bind:value={scaleX}
+	id={`${id}-width`}
+	name={`${id}-width`}
+	label="Width"
+	min={minX}
+	max={maxX}
+	on:input={updateX}
+	{size}
+	{color}
+	{disabled}
+/>
+<InputRange
+	bind:value={scaleY}
+	id={`${id}-height`}
+	name={`${id}-height`}
+	label="Height"
+	min={minY}
+	max={maxY}
+	on:input={updateY}
+	{size}
+	{color}
+	{disabled}
+/>
