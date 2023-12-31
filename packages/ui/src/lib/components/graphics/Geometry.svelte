@@ -81,6 +81,15 @@
 		}
 	}}
 >
+	<Rotation
+		id={`${id}-rotation`}
+		bind:angle
+		max={360}
+		on:input={update}
+		{color}
+		size="xs"
+		{disabled}
+	/>
 	<Position
 		id={`${id}-position`}
 		bind:coordX
@@ -100,15 +109,6 @@
 		maxY={5}
 		minX={-5}
 		minY={-5}
-		on:input={update}
-		{color}
-		size="xs"
-		{disabled}
-	/>
-	<Rotation
-		id={`${id}-rotation`}
-		bind:angle
-		max={360}
 		on:input={update}
 		{color}
 		size="xs"
