@@ -10,7 +10,6 @@
 	grid-template-areas:
 		'scene'
 		'context';
-	container-type: inline-size;
 }
 
 .l\:grid\:sketch > .scene {
@@ -25,11 +24,6 @@
 }
 
 @mixin switchToRowStyles_GridSketch($breakpoint, $bpSuffix) {
-	@media screen and (orientation: 'landscape') {
-		.l\:grid\:sketch > .scene {
-			block-size: 90vh;
-		}
-	}
 	@media screen and (min-width: #{$breakpoint}) {
 		.l\:grid\:sketch.bp\:#{$bpSuffix} {
 			grid-template-areas:
