@@ -3,7 +3,11 @@ title: Sketch
 slug: Sketch
 category: 'graphics'
 props_state: ['scene', 'title']
-props_style: {'blocks': {'element': ['color', 'size', 'variant', 'dimensions']}}
+props_style:
+  {
+    'blocks': {'element': ['color', 'variant', 'dimensions']},
+    'layouts': {'container': ['container', 'size']},
+  }
 context: ['app.settings']
 ---
 
