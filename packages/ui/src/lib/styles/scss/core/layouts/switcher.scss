@@ -5,7 +5,7 @@
 */
 [class*='l:switcher:'] {
 	--gap: var(--current-gap-size);
-	--threshold: var(--current-bp-threshold);
+	--threshold: var(--current-threshold);
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--gap);

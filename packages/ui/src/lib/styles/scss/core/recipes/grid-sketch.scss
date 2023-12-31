@@ -1,0 +1,102 @@
+.scene {
+	grid-area: 'scene';
+}
+
+.context {
+	grid-area: 'context';
+}
+
+.l\:grid\:sketch {
+	grid-template-areas:
+		'scene'
+		'context';
+	container-type: inline-size;
+}
+
+.l\:grid\:sketch > .scene {
+	grid-area: scene;
+}
+
+.l\:grid\:sketch > .context {
+	grid-area: context;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+@mixin switchToRowStyles_GridSketch($breakpoint, $bpSuffix) {
+	@media screen and (orientation: 'landscape') {
+		.l\:grid\:sketch > .scene {
+			block-size: 90vh;
+		}
+	}
+	@media screen and (min-width: #{$breakpoint}) {
+		.l\:grid\:sketch.bp\:#{$bpSuffix} {
+			grid-template-areas:
+				'scene context'
+				'scene context';
+		}
+
+		.l\:grid\:sketch.bp\:#{$bpSuffix} {
+			margin: 0 auto;
+			grid-template-columns: 1fr auto;
+		}
+
+		.l\:grid\:sketch.bp\:#{$bpSuffix} > .context {
+			inline-size: calc(var(--current-side-size) / var(--ratio));
+		}
+	}
+
+	@container (min-width: #{$breakpoint}) {
+		.l\:grid\:sketch.bp\:#{$bpSuffix} {
+			grid-template-areas:
+				'scene context'
+				'scene context';
+		}
+
+		.l\:grid\:sketch.bp\:#{$bpSuffix} {
+			margin: 0 auto;
+			grid-template-columns: 1fr auto;
+		}
+
+		.l\:grid\:sketch.bp\:#{$bpSuffix} > .context {
+			inline-size: calc(var(--current-side-size) / var(--ratio));
+		}
+	}
+
+	.l\:grid\:sketch.bp\:#{$bpSuffix} > .scene {
+		grid-area: scene;
+	}
+
+	.l\:grid\:sketch.bp\:#{$bpSuffix} > .context {
+		grid-area: context;
+	}
+}
+
+@media screen and (min-width: 320px) {
+	@include switchToRowStyles_GridSketch(320px, 'xxs');
+}
+
+@media screen and (min-width: 620px) {
+	@include switchToRowStyles_GridSketch(620px, 'xs');
+}
+
+@media screen and (min-width: 935px) {
+	@include switchToRowStyles_GridSketch(935px, 'sm');
+}
+
+@media screen and (min-width: 1360px) {
+	@include switchToRowStyles_GridSketch(1360px, 'md');
+}
+
+@media screen and (min-width: 1620px) {
+	@include switchToRowStyles_GridSketch(1620px, 'lg');
+}
+
+@media screen and (min-width: 2048px) {
+	@include switchToRowStyles_GridSketch(2048px, 'xl');
+}
+
+@media screen and (min-width: 3048px) {
+	@include switchToRowStyles_GridSketch(3048px, 'xxl');
+}

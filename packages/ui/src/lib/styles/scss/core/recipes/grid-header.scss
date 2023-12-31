@@ -41,15 +41,6 @@
 
 @mixin switchToRowStyles_GridHeader($breakpoint, $bpSuffix) {
 	@media screen and (min-width: #{$breakpoint}) {
-		/* no grid support? */
-		[class^='l:grid:header'].bp\:#{$bpSuffix} > .main {
-			float: left;
-		}
-
-		[class^='l:grid:header'].bp\:#{$bpSuffix} > .context {
-			float: right;
-		}
-
 		[class^='l:grid:header'].bp\:#{$bpSuffix} {
 			margin: 0 auto;
 			grid-template-columns: auto 1fr auto;
@@ -58,8 +49,6 @@
 		[class^='l:grid:header'].bp\:#{$bpSuffix} > .main,
 		[class^='l:grid:header'].bp\:#{$bpSuffix} > .context {
 			grid-column: 1 / -1;
-			/* needed for the floated layout fallback */
-			clear: both;
 		}
 
 		[class^='l:grid:header'].bp\:#{$bpSuffix} {
