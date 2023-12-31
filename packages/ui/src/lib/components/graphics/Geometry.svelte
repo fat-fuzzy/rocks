@@ -70,7 +70,7 @@
 </script>
 
 <form
-	class={`l:switcher:${threshold} maki:block lg w:full ${backgroundClass}`}
+	class={`l:switcher:${threshold} maki:block lg geometry ${backgroundClass}`}
 	name="geometry-update"
 	{method}
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
