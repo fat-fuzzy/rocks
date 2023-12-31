@@ -87,7 +87,7 @@
 		max={360}
 		on:input={update}
 		{color}
-		size="xs"
+		size={`xs l:burrito:${threshold} maki:inline`}
 		{disabled}
 	/>
 	<Position
@@ -98,7 +98,7 @@
 		bind:maxY
 		on:input={update}
 		{color}
-		size="xs"
+		size={`xs l:burrito:${threshold} maki:inline`}
 		{disabled}
 	/>
 	<Scale
@@ -111,7 +111,7 @@
 		minY={-5}
 		on:input={update}
 		{color}
-		size="xs"
+		size={`xs l:burrito:${threshold} maki:inline`}
 		{disabled}
 	/>
 	{#await Promise.resolve()}

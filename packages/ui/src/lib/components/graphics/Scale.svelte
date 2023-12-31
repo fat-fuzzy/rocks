@@ -30,27 +30,29 @@
 	}
 </script>
 
-<InputRange
-	bind:value={scaleX}
-	id={`${id}-width`}
-	name={`${id}-width`}
-	label="Width"
-	min={minX}
-	max={maxX}
-	on:input={updateX}
-	{size}
-	{color}
-	{disabled}
-/>
-<InputRange
-	bind:value={scaleY}
-	id={`${id}-height`}
-	name={`${id}-height`}
-	label="Height"
-	min={minY}
-	max={maxY}
-	on:input={updateY}
-	{size}
-	{color}
-	{disabled}
-/>
+<div class="l:switcher:xs">
+	<InputRange
+		bind:value={scaleX}
+		id={`${id}-width`}
+		name={`${id}-width`}
+		label="Width"
+		min={minX}
+		max={maxX}
+		on:input={updateX}
+		{size}
+		{color}
+		{disabled}
+	/>
+	<InputRange
+		bind:value={scaleY}
+		id={`${id}-height`}
+		name={`${id}-height`}
+		label="Height"
+		min={minY}
+		max={maxY}
+		on:input={updateY}
+		{size}
+		{color}
+		{disabled}
+	/>
+</div>

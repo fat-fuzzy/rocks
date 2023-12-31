@@ -29,25 +29,27 @@
 	}
 </script>
 
-<InputRange
-	bind:value={coordX}
-	id={`${id}-x`}
-	name={`${id}-x`}
-	label="x"
-	max={maxX}
-	on:input={updateX}
-	{size}
-	{color}
-	{disabled}
-/>
-<InputRange
-	bind:value={coordY}
-	id={`${id}-y`}
-	name={`${id}-y`}
-	label="y"
-	max={maxY}
-	on:input={updateY}
-	{size}
-	{color}
-	{disabled}
-/>
+<div class="l:switcher:xs">
+	<InputRange
+		bind:value={coordX}
+		id={`${id}-x`}
+		name={`${id}-x`}
+		label="x"
+		max={maxX}
+		on:input={updateX}
+		{size}
+		{color}
+		{disabled}
+	/>
+	<InputRange
+		bind:value={coordY}
+		id={`${id}-y`}
+		name={`${id}-y`}
+		label="y"
+		max={maxY}
+		on:input={updateY}
+		{size}
+		{color}
+		{disabled}
+	/>
+</div>
