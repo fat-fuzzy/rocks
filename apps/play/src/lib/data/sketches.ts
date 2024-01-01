@@ -14,14 +14,14 @@ export const sketches = [
 	// },
 	{
 		id: '003',
-		slug: 'rectangle-2d',
-		title: 'Rectangle 2D ',
+		slug: 'geometry-2d',
+		title: 'Geometry 2D ',
 		emoji: '📐',
 	},
 	{
 		id: '004',
-		slug: 'geometry-2d',
-		title: 'Geometry 2D ',
+		slug: 'click-events',
+		title: 'Click Events',
 		emoji: '📐',
 	},
 	// {
