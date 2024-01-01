@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {Scene, GeometryProps} from '$lib/types'
+
 	import {afterUpdate} from 'svelte'
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
@@ -37,7 +38,7 @@
 	function init() {
 		if (canvas) {
 			programInfo = scene.main(canvas)
-			if (state === 'clear') {
+			if (state === 'clear' || !geometry) {
 				geometry = programInfo.geometry
 			}
 			scene.update(geometry)
