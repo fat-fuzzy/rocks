@@ -1,36 +1,28 @@
+import constants from '../../lib/constants'
+
+const {DEFAULT_GEOMETRY_COORDS} = constants
+
 function initBuffers(gl, programInfo) {
-	const {translation, width, height, color} = programInfo.geometry
-	const [x, y] = translation
-	const positionBuffer = initPositionBuffer(gl, {x, y, width, height})
-	// const colorBuffer = initColorBuffer(gl, [color, color, color, color])
+	const {translation, rotation, width, height, color} = programInfo.geometry
+	const colorBuffer = initColorBuffer(gl, [color, color, color, color])
+	const positionBuffer = initPositionBuffer(gl, {translation, rotation, width, height})
 
 	return {
+		color: colorBuffer,
 		position: positionBuffer,
-		// color: colorBuffer,
 	}
 }
 
-function initPositionBuffer(gl, {x, y, width, height}) {
+function initPositionBuffer(gl, {translation, rotation, width, height}) {
 	// Create a buffer for the geometry's positions.
 	const positionBuffer = gl.createBuffer()
 
 	// Select positionBuffer as current buffer to use for buffer ops
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
 
-	// Create an array of positions for the geometry.
-	const x1 = x
-	const x2 = x + width
-	const y1 = y
-	const y2 = y + height
-	// prettier-ignore
-	const coords = [
-			x1, y1,
-			x2, y1,
-			x1, y2,
-			x1, y2,
-			x2, y1,
-			x2, y2,
-		]
+	// TODO here: extract values from coordinates (width + height)
+	/* prettier-ignore */
+	const coords = DEFAULT_GEOMETRY_COORDS
 	// Pass the list of positions into WebGL to build the shape.
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)
 

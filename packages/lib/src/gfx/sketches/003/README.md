@@ -1,8 +1,8 @@
 ---
-title: Rectangle 2D
+title: Geometry 2D
 date: '2022'
-slug: rectangle-2d
-id: '003'
+slug: geometry-2d
+id: '004'
 emoji: '📐'
 ---
 

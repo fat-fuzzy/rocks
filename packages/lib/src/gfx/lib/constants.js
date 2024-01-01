@@ -25,6 +25,18 @@ const DEFAULT_GEOMETRY_COORDS = [
 	67, 90,
 ]
 
+/* prettier-ignore */
+const DEFAULT_RECT_COORDS = [
+	// left column
+	0, 0,
+	30, 0,
+	0, 150,
+	0, 150,
+	30, 0,
+	30, 150,
+]
+
 export default {
 	DEFAULT_GEOMETRY_COORDS,
+	DEFAULT_RECT_COORDS,
 }

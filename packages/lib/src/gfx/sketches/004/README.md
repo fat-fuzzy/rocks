@@ -1,7 +1,7 @@
 ---
-title: Geometry 2D
-date: '2022'
-slug: geometry-2d
+title: Click Events
+date: '2024'
+slug: click-events
 id: '004'
 emoji: '📐'
 ---
