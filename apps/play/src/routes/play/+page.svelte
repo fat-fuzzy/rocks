@@ -16,7 +16,7 @@
 	<h1 class="card:md emoji:vader">Fat Fuzzy {title}</h1>
 </header>
 
-<div class="l:stack:xl card:xl">
+<div class="l:stack:xl card:lg">
 	{#each sketches as sketch}
 		<a class="font:xxl" href={`/play/${sketch.slug}`}>{sketch.title}</a>
 	{/each}

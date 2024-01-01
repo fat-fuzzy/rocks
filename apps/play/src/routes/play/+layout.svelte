@@ -15,13 +15,13 @@
 	]
 </script>
 
-<Sidebar size="xs">
+<Sidebar size="xxs">
 	<svelte:fragment slot="side">
 		<Nav
 			id="nav-page"
 			{items}
 			{path}
-			size="md"
+			size="sm"
 			color="bg:primary:light"
 			background="polar"
 			container="card"
