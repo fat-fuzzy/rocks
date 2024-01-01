@@ -29,10 +29,8 @@
 			grid-template-areas:
 				'scene context'
 				'scene context';
-		}
-
-		.l\:grid\:sketch.bp\:#{$bpSuffix} {
 			grid-template-columns: 1fr auto;
+			padding-block-end: var(--current-size-plus);
 		}
 
 		.l\:grid\:sketch.bp\:#{$bpSuffix} > .context {
@@ -45,10 +43,8 @@
 			grid-template-areas:
 				'scene context'
 				'scene context';
-		}
-
-		.l\:grid\:sketch.bp\:#{$bpSuffix} {
 			grid-template-columns: 1fr auto;
+			padding-block-end: var(--current-size-plus);
 		}
 
 		.l\:grid\:sketch.bp\:#{$bpSuffix} > .context {
