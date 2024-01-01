@@ -10,7 +10,7 @@ import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from './init-buffers'
 
-import {frag} from '../templates/shaders/fragment-shader'
+import {frag} from './shaders/fragment-shader'
 import {vert} from '../templates/shaders/vertex-shader-scale-2d'
 
 let gl
@@ -59,16 +59,16 @@ function main(canvas) {
 		uniformLocations: {
 			// bind u_color
 			u_color: gl.getUniformLocation(program, 'u_color'),
-			// bind u_translation
-			u_translation: gl.getUniformLocation(program, 'u_translation'),
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
+			// bind u_translation
+			u_translation: gl.getUniformLocation(program, 'u_translation'),
 			// bind u_rotation
 			u_rotation: gl.getUniformLocation(program, 'u_rotation'),
 			// bind u_scale
 			u_scale: gl.getUniformLocation(program, 'u_scale'),
 		},
-		geometry: utils.getGeometryDefaults(canvas.clientWidth, canvas.clientHeight),
+		geometry: utils.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
 	}
 	buffers = initBuffers(gl, programInfo)
 	return programInfo
