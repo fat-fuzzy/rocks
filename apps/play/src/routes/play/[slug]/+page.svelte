@@ -13,15 +13,16 @@
 	$: headerClass = 'l:flex card:sm align:center bg:polar'
 </script>
 
-<div class="l:center l:stack:xxl">
-	<Head
-		{title}
-		page="Play"
-		description={`${title} - A sandbox environment to experiment and learn web-based computer graphics`}
-	/>
+<Head
+	{title}
+	page="Play"
+	description={`${title} - A sandbox environment to experiment and learn web-based computer graphics`}
+/>
+
+<div class="l:stack:xl md">
 	<header class={headerClass}>
 		<h1 class="card:md">Play</h1>
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
-	<Sketch {scene} {title} {dimensions} size="xs" />
+	<Sketch {scene} {title} {dimensions} size="sm" />
 </div>
