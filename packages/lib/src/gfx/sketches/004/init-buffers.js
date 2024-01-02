@@ -4,13 +4,12 @@ const {DEFAULT_GEOMETRY_COORDS} = constants
 
 function initBuffers(gl, programInfo) {
 	const {translation, rotation, width, height, color} = programInfo.geometry
-	const [x, y] = translation
-	const positionBuffer = initPositionBuffer(gl, {x, y, width, height})
 	const colorBuffer = initColorBuffer(gl, [color, color, color, color])
+	const positionBuffer = initPositionBuffer(gl, {translation, rotation, width, height})
 
 	return {
-		position: positionBuffer,
 		color: colorBuffer,
+		position: positionBuffer,
 	}
 }
 
@@ -21,6 +20,8 @@ function initPositionBuffer(gl, {translation, rotation, width, height}) {
 	// Select positionBuffer as current buffer to use for buffer ops
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
 
+	// TODO here: extract values from coordinates (width + height)
+	/* prettier-ignore */
 	const coords = DEFAULT_GEOMETRY_COORDS
 	// Pass the list of positions into WebGL to build the shape.
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)

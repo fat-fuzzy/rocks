@@ -10,7 +10,7 @@ import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from './init-buffers'
 
-import {frag} from '../templates/shaders/fragment-shader'
+import {frag} from './shaders/fragment-shader'
 import {vert} from '../templates/shaders/vertex-shader-scale-2d'
 
 let gl
@@ -68,7 +68,7 @@ function main(canvas) {
 			// bind u_scale
 			u_scale: gl.getUniformLocation(program, 'u_scale'),
 		},
-		geometry: utils.getGeometryDefaults(canvas.clientWidth, canvas.clientHeight),
+		geometry: utils.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
 	}
 	buffers = initBuffers(gl, programInfo)
 	return programInfo
