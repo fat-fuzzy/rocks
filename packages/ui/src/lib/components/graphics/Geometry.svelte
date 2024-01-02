@@ -43,17 +43,14 @@
 	let [coordX, coordY] = [canvasWidth / 2, canvasHeight / 2]
 
 	// Rotation
-	let [radCoordX, radCoordY] = meta?.type === 'vector' ? rotation : []
 
 	// Scale
 	let [scaleX, scaleY] = scale
 
 	$: maxX = canvasWidth
 	$: maxY = canvasHeight
-	$: radCoordX = Math.cos(degToRad(angle))
-	$: radCoordY = Math.sin(degToRad(angle))
 	$: translation = [coordX, coordY]
-	$: rotatedAngle = meta?.type === 'vector' ? [radCoordX, radCoordY] : degToRad(angle)
+	$: rotatedAngle = degToRad(angle)
 	$: scale = [scaleX, scaleY]
 	$: value = {
 		color: geometry.color,

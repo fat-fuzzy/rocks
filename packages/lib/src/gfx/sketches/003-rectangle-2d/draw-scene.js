@@ -1,6 +1,6 @@
-import constants from '../../lib/utils'
+import utils from '../../lib/utils'
 
-const {MATRICES_2D} = constants
+const {degToRad} = utils
 
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
@@ -22,47 +22,39 @@ function drawScene(gl, programInfo, buffers) {
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 	// Set a random color.
 	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.geometry.color)
-
-	// Compute Matrices
-	const translationMatrix = MATRICES_2D.translation(...programInfo.geometry.translation)
-	const rotationMatrix = MATRICES_2D.rotation(programInfo.geometry.rotation)
-	const scaleMatrix = MATRICES_2D.scale(...programInfo.geometry.scale)
-
-	// Initialize the matrix
-	let matrix = MATRICES_2D.identity()
+	// Set the translation.
+	gl.uniform2fv(programInfo.uniformLocations.u_translation, programInfo.geometry.translation)
+	// Set the rotation.
+	const radCoords = [
+		Math.cos(programInfo.geometry.rotation),
+		Math.sin(programInfo.geometry.rotation),
+	]
+	gl.uniform2fv(programInfo.uniformLocations.u_rotation, radCoords)
+	// Set the scale.
+	gl.uniform2fv(programInfo.uniformLocations.u_scale, programInfo.geometry.scale)
 
 	setPositionAttribute(gl, buffers, programInfo)
-
 	// setColorAttribute(gl, buffers, programInfo)
 	// Set a random color.
 	// gl.uniform4f(programInfo.uniformLocations.u_color, Math.random(), Math.random(), Math.random(), 1)
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
+	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
 
-	for (let i = 0; i < 5; i++) {
-		// Multiply the Matrices in order for Hierarchical animation
-		matrix = MATRICES_2D.multiply(matrix, translationMatrix)
-		matrix = MATRICES_2D.multiply(matrix, rotationMatrix)
-		matrix = MATRICES_2D.multiply(matrix, scaleMatrix)
-
-		// Set the matrix
-		gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
-
-		const primitiveType = gl.TRIANGLES
-		const offset = 0
-		const count = 18
-		gl.drawArrays(primitiveType, offset, count)
-	}
+	const primitiveType = gl.TRIANGLES
+	const offset = 0
+	const count = 6
+	gl.drawArrays(primitiveType, offset, count)
+	//
 }
 
 function setPositionAttribute(gl, buffers, programInfo) {
 	const count = 2 // pull out 2 values from buffer per iteration
-	const type = gl.FLOAT // the data in the buffer is 32bit floats
+	const type = gl.FLOAT // the data in th buffer is 32bit floats
 	const normalize = false
 	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
-	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
+	const offset = 0 // byte index to start reading data in the buffer
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position)
 	gl.vertexAttribPointer(

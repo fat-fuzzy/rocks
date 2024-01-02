@@ -82,7 +82,7 @@ function getGeometryDefaults(canvasWidth, canvasHeight) {
 	return {
 		color: [Math.random(), Math.random(), Math.random(), 1],
 		translation: [canvasWidth / 2, canvasHeight / 2],
-		rotation: [Math.cos(degToRad(45)), Math.sin(degToRad(45))],
+		rotation: degToRad(randomInt(360)),
 		scale: [1, 1],
 		width,
 		height,
@@ -95,7 +95,7 @@ function getGeometryRandom(canvasWidth, canvasHeight) {
 	return {
 		color: [Math.random(), Math.random(), Math.random(), 1],
 		translation: [width, height],
-		rotation: [Math.cos(degToRad(randomInt(360))), Math.sin(randomInt(360))],
+		rotation: degToRad(randomInt(360)),
 		scale: [1, 1],
 		width,
 		height,

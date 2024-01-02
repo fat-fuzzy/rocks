@@ -1,6 +1,6 @@
-import constants from '../../lib/utils'
+import utils from '../../lib/utils'
 
-const {MATRICES_2D} = constants
+const {MATRICES_2D} = utils
 
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
@@ -28,27 +28,33 @@ function drawScene(gl, programInfo, buffers) {
 	const rotationMatrix = MATRICES_2D.rotation(programInfo.geometry.rotation)
 	const scaleMatrix = MATRICES_2D.scale(...programInfo.geometry.scale)
 
-	// Multiply the Matrices
-	let matrix = MATRICES_2D.multiply(translationMatrix, rotationMatrix)
-	matrix = MATRICES_2D.multiply(matrix, scaleMatrix)
-
-	// Set the matrix
-	gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
+	// Initialize the matrix
+	let matrix = MATRICES_2D.identity()
 
 	setPositionAttribute(gl, buffers, programInfo)
+
 	// setColorAttribute(gl, buffers, programInfo)
 	// Set a random color.
 	// gl.uniform4f(programInfo.uniformLocations.u_color, Math.random(), Math.random(), Math.random(), 1)
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
+	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
 
-	const primitiveType = gl.TRIANGLES
-	const offset = 0
-	const count = 6
-	gl.drawArrays(primitiveType, offset, count)
-	//
+	for (let i = 0; i < 5; i++) {
+		// Multiply the Matrices in order for Hierarchical animation
+		matrix = MATRICES_2D.multiply(matrix, translationMatrix)
+		matrix = MATRICES_2D.multiply(matrix, rotationMatrix)
+		matrix = MATRICES_2D.multiply(matrix, scaleMatrix)
+
+		// Set the matrix
+		gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
+
+		const primitiveType = gl.TRIANGLES
+		const offset = 0
+		const count = 18
+		gl.drawArrays(primitiveType, offset, count)
+	}
 }
 
 function setPositionAttribute(gl, buffers, programInfo) {
