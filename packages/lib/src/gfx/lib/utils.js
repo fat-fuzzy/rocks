@@ -44,7 +44,12 @@ function resizeHD(canvas) {
 	}
 }
 
-// Returns a random integer from 0 to range - 1.
+/**
+ * Canvas, like Images, has 2 sizes
+ * - Size the canvas is displayed: set with CSS
+ * - Number of pixels displayed inside the canvas
+ * @param {number} range
+ */
 function randomInt(range) {
 	return Math.floor(Math.random() * range)
 }
@@ -68,14 +73,28 @@ function multiply(characters) {
 		.sort((a, b) => a.ratio - b.ratio)
 }
 
+/**
+ * @param {number} degrees
+ * @returns number
+ */
 function degToRad(degrees) {
 	return degrees * (Math.PI / 180)
 }
 
+/**
+ * @param {number} n
+ * @param {number} decimals
+ * @returns number
+ */
 function round(n, decimals) {
-	return Number(Math.round(n + 'e' + decimals) + 'e-' + decimals)
+	return Number(Math.round(Number(n + 'e' + decimals)) + 'e-' + decimals)
 }
 
+/**
+ * @param {number} canvasWidth
+ * @param {number} canvasHeight
+ * @returns geometry
+ */
 function getGeometryDefaults(canvasWidth, canvasHeight) {
 	const width = round(canvasWidth / 5, 2)
 	const height = round(canvasHeight / 5, 2)
@@ -89,6 +108,11 @@ function getGeometryDefaults(canvasWidth, canvasHeight) {
 	}
 }
 
+/**
+ * @param {number} canvasWidth
+ * @param {number} canvasHeight
+ * @returns geometry
+ */
 function getGeometryRandom(canvasWidth, canvasHeight) {
 	const width = randomInt(canvasWidth)
 	const height = randomInt(canvasHeight)
@@ -102,30 +126,23 @@ function getGeometryRandom(canvasWidth, canvasHeight) {
 	}
 }
 
+/**
+ * @param {number} canvasWidth
+ * @param {number} canvasHeight
+ * @returns geometry
+ */
+
 function getGeometryMatrix2D(canvasWidth, canvasHeight) {
-	const width = randomInt(canvasWidth)
-	const height = randomInt(canvasHeight)
-	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [width, height],
-		rotation: degToRad(randomInt(360)),
-		scale: [1, 1],
-		width,
-		height,
-	}
+	return getGeometryDefaults(canvasWidth, canvasHeight)
 }
 
+/**
+ * @param {number} canvasWidth
+ * @param {number} canvasHeight
+ * @returns geometry
+ */
 function getGeometryHierarchical(canvasWidth, canvasHeight) {
-	const width = round(canvasWidth / 5, 2)
-	const height = round(canvasHeight / 5, 2)
-	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [canvasWidth / 2, canvasHeight / 2],
-		rotation: degToRad(randomInt(360)),
-		scale: [1, 1],
-		width,
-		height,
-	}
+	return getGeometryDefaults(canvasWidth, canvasHeight)
 }
 
 const MATRICES_2D = {
@@ -137,6 +154,12 @@ const MATRICES_2D = {
 			0, 0, 1,
 		]
 	},
+
+	/**
+	 * @param {*} a matrix A
+	 * @param {*} b matrix B
+	 * @returns matrix
+	 */
 	multiply: function (a, b) {
 		var a00 = a[0 * 3 + 0]
 		var a01 = a[0 * 3 + 1]
@@ -170,6 +193,11 @@ const MATRICES_2D = {
 		]
 	},
 
+	/**
+	 * @param {number} tx translation X
+	 * @param {number} ty translation Y
+	 * @returns matrix
+	 */
 	translation: function (tx, ty) {
 		/* prettier-ignore */
 		return [
@@ -179,6 +207,10 @@ const MATRICES_2D = {
 		]
 	},
 
+	/**
+	 * @param {number} angleInRadians
+	 * @returns matrix
+	 */
 	rotation: function (angleInRadians) {
 		const c = Math.cos(angleInRadians)
 		const s = Math.sin(angleInRadians)
@@ -191,6 +223,11 @@ const MATRICES_2D = {
 		]
 	},
 
+	/**
+	 * @param {number} sx scale X
+	 * @param {number} sy scale Y
+	 * @returns matrix
+	 */
 	scale: function (sx, sy) {
 		/* prettier-ignore */
 		return [
