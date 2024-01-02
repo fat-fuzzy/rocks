@@ -6,13 +6,13 @@
 import utils from './lib/utils'
 import constants from './lib/constants'
 // Sketches
-import sketch_001 from './sketches/001/index'
+import sketch_001 from './sketches/001-random/index'
 // import sketch_002 from './sketches/002/index'
-import sketch_003 from './sketches/003/index'
-import sketch_004 from './sketches/004/index'
-import sketch_005 from './sketches/005/index'
-import sketch_006 from './sketches/006/index'
-import sketch_007 from './sketches/007/index'
+import sketch_003 from './sketches/003-rectangle-2d/index'
+import sketch_004 from './sketches/004-geometry-2d/index'
+import sketch_005 from './sketches/005-matrix-2d/index'
+import sketch_006 from './sketches/006-hierarchical/index'
+import sketch_007 from './sketches/007-center-origin/index'
 
 // Utilities
 const sketches = {

@@ -35,7 +35,7 @@ export type Tab = {
 export type GeometryProps = {
 	color: number[]
 	translation: number[]
-	rotation: number[]
+	rotation: number
 	scale: number[]
 	width: number // of geometry
 	height: number // of geometry
