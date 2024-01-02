@@ -6,6 +6,7 @@
 
 	const {Head} = headless
 	const {Sketch} = graphics
+
 	$: title = $page.data.title
 	$: dimensions = $page.data.dimensions
 	$: id = $page.data.id
@@ -24,5 +25,7 @@
 		<h1 class="card:md">Play</h1>
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
-	<Sketch {scene} {title} {dimensions} size="sm" />
+	{#key id}
+		<Sketch {scene} {title} {dimensions} size="sm" />
+	{/key}
 </div>
