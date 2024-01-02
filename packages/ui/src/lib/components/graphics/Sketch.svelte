@@ -26,7 +26,8 @@
 	let frame: number
 	let state = 'clear'
 
-	$: showDetails = geometry !== undefined && (state === 'play' || state === 'pause')
+	$: showGeometry =
+		scene.inputType === 'form' && geometry !== undefined && (state === 'play' || state === 'pause')
 	$: playerAsset = state === 'clear' ? 'sketch' : state
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
@@ -81,6 +82,10 @@
 		}
 	}
 
+	const handleMouseEvent = (event: MouseEvent) => {
+		scene.update(geometry, event)
+	}
+
 	afterUpdate(() => {
 		if (state !== 'pause') {
 			init()
@@ -91,14 +96,33 @@
 <article class={`l:grid:sketch bp:xs`}>
 	<div class="scene">
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
-			<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
-				<slot name="fallback-canvas">
-					<p class={`feedback emoji:default ${size} content`}>
-						With JavaScript enabled, you would see a demo of a canvas component used to display and
-						interact with WebGL animations
-					</p>
-				</slot>
-			</canvas>
+			{#if scene.inputType === 'mouse'}
+				<canvas
+					id={`${id}.canvas`}
+					aria-label={title}
+					data-test="canvas"
+					bind:this={canvas}
+					on:mousedown={handleMouseEvent}
+					on:mousemove={handleMouseEvent}
+					on:mouseup={handleMouseEvent}
+				>
+					<slot name="fallback-canvas">
+						<p class={`feedback emoji:default ${size} content`}>
+							With JavaScript enabled, you would see a demo of a canvas component used to display
+							and interact with WebGL animations
+						</p>
+					</slot>
+				</canvas>
+			{:else}
+				<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
+					<slot name="fallback-canvas">
+						<p class={`feedback emoji:default ${size} content`}>
+							With JavaScript enabled, you would see a demo of a canvas component used to display
+							and interact with WebGL animations
+						</p>
+					</slot>
+				</canvas>
+			{/if}
 			{#await Promise.resolve()}
 				<p class={`feedback emoji:default ${size} content`}>
 					When JavaScript loads, you should see a demo of a canvas component used to display and
@@ -111,7 +135,7 @@
 		{#if canvas}
 			<Player on:click={handleToggle} {color} size="xs" {variant} />
 
-			{#if showDetails}
+			{#if showGeometry}
 				<Geometry
 					id={`${id}-geometry`}
 					on:update={update}

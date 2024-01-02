@@ -15,14 +15,16 @@ export const sketches = [
 	{
 		id: '003',
 		slug: 'rectangle-2d',
-		title: 'Rectangle 2D ',
+		title: 'Rectangle 2D',
 		emoji: '📐',
+		inputType: 'form',
 	},
 	{
 		id: '004',
 		slug: 'geometry-2d',
 		title: 'Geometry 2D ',
 		emoji: '📐',
+		inputType: 'form',
 	},
 	// {
 	// 	id: '005',
