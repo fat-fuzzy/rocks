@@ -132,7 +132,7 @@
 				<p class={`feedback ${size} emoji:default content`}>Scene is loading...</p>
 			{:then}
 				{#if feedback}
-					<p class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</p>
+					<pre class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
 				{/if}
 			{/await}
 		</div>
