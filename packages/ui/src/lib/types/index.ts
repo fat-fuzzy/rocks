@@ -49,6 +49,7 @@ export type Scene = {
 	id: string
 	draw: () => void
 	clear: () => void
-	update: (value: GeometryProps) => void
+	update: (value: GeometryProps, event?: MouseEvent | TouchEvent) => void
 	main: (canvas: HTMLCanvasElement) => ProgramInfo
+	inputType?: string
 }
