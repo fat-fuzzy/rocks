@@ -12,6 +12,7 @@
 	export let variant = 'outline'
 	export let color = ''
 	export let mode = 'radio'
+	export let disabled: boolean | undefined = undefined
 
 	let selected: {
 		id: string
@@ -91,6 +92,7 @@
 		{size}
 		container="main"
 		dimensions="50 grow:1"
+		{disabled}
 		on:click={onClick}
 	/>
 	<Button
@@ -102,6 +104,6 @@
 		{size}
 		{...items.button}
 		on:click={onClick}
-		disabled={state === 'clear'}
+		disabled={disabled || state === 'clear'}
 	/>
 </menu>
