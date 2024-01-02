@@ -10,8 +10,8 @@ import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from './init-buffers'
 
-import {frag} from '../templates/shaders/fragment-shader'
-import {vert} from '../templates/shaders/vertex-shader-scale-2d'
+import {frag} from './shaders/fragment-shader'
+import {vert} from './shaders/vertex-shader-scale-2d'
 
 let gl
 let programInfo
