@@ -12,7 +12,7 @@ TODO
 
 ## 🚧 How
 
-TODO
+Uses WebGL2
 
 ## 🚧 Resources
 

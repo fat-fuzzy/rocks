@@ -43,10 +43,10 @@ function drawScene(gl, programInfo, buffers) {
 
 function setPositionAttribute(gl, buffers, programInfo) {
 	const count = 2 // pull out 2 values from buffer per iteration
-	const type = gl.FLOAT // the data in th buffer is 32bit floats
+	const type = gl.FLOAT // the data in the buffer is 32bit floats
 	const normalize = false
 	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
-	const offset = 0 // byte index to start reading data in the buffer
+	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position)
 	gl.vertexAttribPointer(
