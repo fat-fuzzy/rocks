@@ -1,5 +1,4 @@
 import constants from '../../lib/utils'
-import mathUtils from '../../../math/index'
 
 const {MATRICES_2D} = constants
 

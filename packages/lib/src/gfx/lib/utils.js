@@ -115,6 +115,19 @@ function getGeometryMatrix2D(canvasWidth, canvasHeight) {
 	}
 }
 
+function getGeometryHierarchical(canvasWidth, canvasHeight) {
+	const width = round(canvasWidth / 5, 2)
+	const height = round(canvasHeight / 5, 2)
+	return {
+		color: [Math.random(), Math.random(), Math.random(), 1],
+		translation: [canvasWidth / 2, canvasHeight / 2],
+		rotation: degToRad(randomInt(360)),
+		scale: [1, 1],
+		width,
+		height,
+	}
+}
+
 const MATRICES_2D = {
 	multiply: function (a, b) {
 		var a00 = a[0 * 3 + 0]
@@ -190,5 +203,6 @@ export default {
 	getGeometryDefaults,
 	getGeometryRandom,
 	getGeometryMatrix2D,
+	getGeometryHierarchical,
 	MATRICES_2D,
 }
