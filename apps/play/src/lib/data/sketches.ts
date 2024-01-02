@@ -26,12 +26,18 @@ export const sketches = [
 		emoji: '📐',
 		inputType: 'form',
 	},
-	// {
-	// 	id: '005',
-	// 	slug: 'matrix-2d',
-	// 	title: 'Matrix 2D',
-	// 	emoji: '📐',
-	// },
+	{
+		id: '005',
+		slug: 'matrix-2d',
+		title: 'Matrix 2D',
+		emoji: '📐',
+	},
+	{
+		id: '006',
+		slug: 'matrix-3d',
+		title: 'Matrix 3D',
+		emoji: '📐',
+	},
 	// {
 	// 	id: '000',
 	// 	slug: 'poop',
