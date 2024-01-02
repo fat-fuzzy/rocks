@@ -17,7 +17,8 @@ function compile(gl, type, source) {
 		gl.shaderSource(shader, source)
 		gl.compileShader(shader)
 		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-			throw new Error(gl.getShaderInfoLog(shader))
+			const log = gl.getShaderInfoLog(shader)
+			throw new Error(log ?? 'Error compiling shader')
 		}
 	}
 	return shader
@@ -34,14 +35,16 @@ function compile(gl, type, source) {
  */
 function link(gl, vertexShader, fragmentShader) {
 	const program = gl.createProgram()
-	gl.attachShader(program, vertexShader)
-	gl.attachShader(program, fragmentShader)
-	gl.linkProgram(program)
-	if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-		gl.deleteProgram(program)
-		throw new Error(gl.getProgramInfoLog(program))
+	if (program) {
+		gl.attachShader(program, vertexShader)
+		gl.attachShader(program, fragmentShader)
+		gl.linkProgram(program)
+		if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+			const log = gl.getProgramInfoLog(program)
+			gl.deleteProgram(program)
+			throw new Error(log ?? 'Error linking program')
+		}
 	}
-
 	return program
 }
 
