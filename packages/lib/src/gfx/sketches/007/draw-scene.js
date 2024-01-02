@@ -28,9 +28,6 @@ function drawScene(gl, programInfo, buffers) {
 	const rotationMatrix = MATRICES_2D.rotation(programInfo.geometry.rotation)
 	const scaleMatrix = MATRICES_2D.scale(...programInfo.geometry.scale)
 
-	// Initialize the matrix
-	let matrix = MATRICES_2D.identity()
-
 	setPositionAttribute(gl, buffers, programInfo)
 
 	// setColorAttribute(gl, buffers, programInfo)
@@ -41,20 +38,19 @@ function drawScene(gl, programInfo, buffers) {
 	// Set the shader uniforms
 	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
 
-	for (let i = 0; i < 5; i++) {
-		// Multiply the Matrices in order for Hierarchical animation
-		matrix = MATRICES_2D.multiply(matrix, translationMatrix)
-		matrix = MATRICES_2D.multiply(matrix, rotationMatrix)
-		matrix = MATRICES_2D.multiply(matrix, scaleMatrix)
+	// Initialize the matrices
+	const centerOriginMatrix = MATRICES_2D.translation(-50, -75)
+	let matrix = MATRICES_2D.multiply(translationMatrix, rotationMatrix)
+	matrix = MATRICES_2D.multiply(matrix, scaleMatrix)
+	matrix = MATRICES_2D.multiply(matrix, centerOriginMatrix)
 
-		// Set the matrix
-		gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
+	// Set the matrix
+	gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
 
-		const primitiveType = gl.TRIANGLES
-		const offset = 0
-		const count = 18
-		gl.drawArrays(primitiveType, offset, count)
-	}
+	const primitiveType = gl.TRIANGLES
+	const offset = 0
+	const count = 18
+	gl.drawArrays(primitiveType, offset, count)
 }
 
 function setPositionAttribute(gl, buffers, programInfo) {

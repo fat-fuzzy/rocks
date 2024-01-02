@@ -129,6 +129,14 @@ function getGeometryHierarchical(canvasWidth, canvasHeight) {
 }
 
 const MATRICES_2D = {
+	identity: function () {
+		/* prettier-ignore */
+		return [
+			1, 0, 0,
+			0, 1, 0,
+			0, 0, 1,
+		]
+	},
 	multiply: function (a, b) {
 		var a00 = a[0 * 3 + 0]
 		var a01 = a[0 * 3 + 1]
