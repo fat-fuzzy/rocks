@@ -108,8 +108,8 @@
 		bind:scaleY
 		maxX={5}
 		maxY={5}
-		minX={-5}
-		minY={-5}
+		minX={meta?.minScaleX ?? -5}
+		minY={meta?.minScaleY ?? -5}
 		on:input={update}
 		{color}
 		size={`xs l:burrito:${threshold} maki:inline`}

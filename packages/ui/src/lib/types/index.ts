@@ -48,6 +48,8 @@ export type ProgramInfo = {
 export type SceneMeta = {
 	input: string
 	type: string
+	minScaleX: number
+	minScaleY: number
 }
 
 export type Scene = {

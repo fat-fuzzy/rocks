@@ -38,6 +38,7 @@
 		label="Width"
 		min={minX}
 		max={maxX}
+		step={0.01}
 		on:input={updateX}
 		{size}
 		{color}
@@ -50,6 +51,7 @@
 		label="Height"
 		min={minY}
 		max={maxY}
+		step={0.01}
 		on:input={updateY}
 		{size}
 		{color}
