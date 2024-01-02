@@ -1,6 +1,6 @@
 ---
 title: Matrix 2D
-date: '2022'
+date: '2024-01-02'
 slug: matrix-2d
 id: '005'
 emoji: '📐'

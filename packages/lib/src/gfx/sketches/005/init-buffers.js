@@ -1,6 +1,6 @@
 import constants from '../../lib/constants'
 
-const {DEFAULT_GEOMETRY_COORDS} = constants
+const {DEFAULT_RECT_COORDS} = constants
 
 function initBuffers(gl, programInfo) {
 	const {translation, rotation, width, height, color} = programInfo.geometry
@@ -21,7 +21,7 @@ function initPositionBuffer(gl, {translation, rotation, width, height}) {
 	// Select positionBuffer as current buffer to use for buffer ops
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
 
-	const coords = DEFAULT_GEOMETRY_COORDS
+	const coords = DEFAULT_RECT_COORDS
 	// Pass the list of positions into WebGL to build the shape.
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)
 
