@@ -17,6 +17,7 @@
 	export let background = ''
 	export let breakpoint = ''
 
+	let feedback: {message: string; status: string} | undefined = undefined
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
 	let height: number
@@ -26,23 +27,27 @@
 	let frame: number
 	let state = 'clear'
 
-	$: showGeometry =
-		scene.inputType === 'form' && geometry !== undefined && (state === 'play' || state === 'pause')
-	$: playerAsset = state === 'clear' ? 'sketch' : state
+	$: state = feedback ? `${feedback.status}` : state
+	$: showGeometry = geometry !== undefined && (state === 'play' || state === 'pause')
+	$: asset = state === 'clear' ? 'sketch' : state
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
 		: `l:frame:${dimensions}`
 	$: frameClasses = canvas
-		? `canvas ${backgroundClass} ${layer} state:${state} emoji:${playerAsset}`
+		? `canvas ${backgroundClass} ${layer} state:${state} emoji:${asset}`
 		: `canvas ${backgroundClass} ${layer} card:xl `
 
 	function init() {
 		if (canvas) {
-			programInfo = scene.main(canvas)
-			if (state === 'clear' || !geometry) {
-				geometry = programInfo.geometry
+			try {
+				programInfo = scene.main(canvas)
+				if (state === 'clear' || !geometry) {
+					geometry = programInfo.geometry
+				}
+				scene.update(geometry)
+			} catch (e: any) {
+				feedback = {status: 'error', message: e}
 			}
-			scene.update(geometry)
 		}
 	}
 
@@ -124,10 +129,11 @@
 				</canvas>
 			{/if}
 			{#await Promise.resolve()}
-				<p class={`feedback emoji:default ${size} content`}>
-					When JavaScript loads, you should see a demo of a canvas component used to display and
-					interact with WebGL animations
-				</p>
+				<p class={`feedback ${size} emoji:default content`}>Scene is loading...</p>
+			{:then}
+				{#if feedback}
+					<p class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</p>
+				{/if}
 			{/await}
 		</div>
 	</div>
