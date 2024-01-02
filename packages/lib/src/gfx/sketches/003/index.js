@@ -11,7 +11,7 @@ import {drawScene} from './draw-scene'
 import {initBuffers} from './init-buffers'
 
 import {frag} from './shaders/fragment-shader'
-import {vert} from '../templates/shaders/vertex-shader-scale-2d'
+import {vert} from './shaders/vertex-shader-2d'
 
 let gl
 let programInfo
