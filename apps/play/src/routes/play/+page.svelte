@@ -13,7 +13,7 @@
 <Head page={title} {description} />
 
 <header class={headerClass}>
-	<h1 class="card:md emoji:vader">Fat Fuzzy {title}</h1>
+	<h1 class="card:md">Fat Fuzzy {title}</h1>
 </header>
 
 <div class="l:stack:xl card:lg">

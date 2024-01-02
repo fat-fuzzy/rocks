@@ -8,7 +8,7 @@
 	$: variant = 'bg:primary:light'
 </script>
 
-<Head {title} page="Home" description="Fat Fuzzy Playground home page" />
+<Head {title} description="Fat Fuzzy Playground home page" />
 
 <header class={headerClass}>
 	<h1 class="card:md">{title}</h1>

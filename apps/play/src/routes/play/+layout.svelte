@@ -9,7 +9,7 @@
 	$: items = [
 		{
 			slug: 'play',
-			title: '👾 Sketches',
+			title: 'Sketches',
 			items: sketches,
 		},
 	]
