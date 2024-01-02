@@ -14,7 +14,7 @@
 	$: variant = 'bg:primary:light'
 </script>
 
-<Head {title} page="Home" description="🐰 Welcome!" />
+<Head {title} description="🐰 Welcome!" />
 
 <header class="bg:polar card:xl">
 	<div class="l:text:xl l:center card:feature:xxl">
