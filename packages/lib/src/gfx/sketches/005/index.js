@@ -32,7 +32,7 @@ function clear() {
 
 function main(canvas) {
 	// Initialize the GL context
-	gl = canvas.getContext('webgl')
+	gl = canvas.getContext('webgl2')
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {

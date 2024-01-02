@@ -1,9 +1,10 @@
-const vert = `
+const vert = `#version 300 es
 //VERTEX SHADER
 
-// an attribute will receive data from a buffer
-// attribute vec4 a_position; vec4 not necessary for 2D
-attribute vec2 a_position;
+// in = an attribute that will receive data from a buffer
+// in vec4 a_position; vec4 not necessary for 2D
+
+in vec2 a_position;
 uniform vec2 u_resolution;
 uniform vec2 u_translation;
 uniform vec2 u_rotation;
@@ -13,7 +14,7 @@ uniform vec2 u_scale;
 void main() {
   // Scale the position
   vec2 scaledPosition = a_position * u_scale;
-
+  
   // Rotate the position
   vec2 rotatedPosition = vec2(
     scaledPosition.x * u_rotation.y + scaledPosition.y * u_rotation.x,
