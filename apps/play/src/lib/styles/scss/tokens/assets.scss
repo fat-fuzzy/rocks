@@ -38,7 +38,7 @@ $hole: '🕳️';
 $robot: '🤖';
 $star: '🌟';
 $slot-machine: '🎰';
-$black-square-button: '🔲';
+$yellow-square: '🟨';
 $straight-ruler: '📏';
 $triangular-ruler: '📐';
 $russian-dolls: '🪆';
@@ -102,7 +102,7 @@ $emojis: (
 
 	// Sketches
 	random: #{$slot-machine},
-	rect: #{$black-square-button},
+	rect: #{$yellow-square},
 	geometry-2d: #{$straight-ruler},
 	geometry-3d: #{$triangular-ruler},
 	russian-dolls: #{$russian-dolls},
