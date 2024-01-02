@@ -3,16 +3,15 @@
 	border: var(--border-width) dotted var(--current-border-color);
 }
 
-.state\:play {
+.scene {
 	position: relative;
+}
+.state\:play {
 	background-color: var(--current-polar);
 }
 
-.state\:pause {
-	position: relative;
-	background-color: var(--current-bg-color);
-}
-
+.state\:pause,
+.state\:feedback,
 .state\:clear {
 	background-color: var(--current-bg-color);
 }
@@ -32,7 +31,8 @@
 }
 
 .state\:play::before,
-.state\:pause::before {
+.state\:pause::before,
+.state\:feedback::before {
 	height: fit-content;
 	position: absolute;
 	top: 0;
@@ -47,4 +47,12 @@
 	width: 100%;
 	height: 100%;
 	font-size: calc(var(--fluid-4) * 5);
+}
+
+.scene .feedback {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: var(--current-size-plus);
+	height: fit-content;
 }
