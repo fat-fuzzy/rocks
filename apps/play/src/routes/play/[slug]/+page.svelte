@@ -7,10 +7,13 @@
 	const {Head} = headless
 	const {Sketch} = graphics
 
+	let sketch = $page.data.sketches.find((s) => s.slug === $page.data.slug)
+
 	$: title = $page.data.title
 	$: dimensions = $page.data.dimensions
 	$: id = $page.data.id
 	$: scene = lib.gfx.sketches[id]
+	$: meta = sketch?.meta ?? undefined
 	$: headerClass = 'l:flex card:sm align:center bg:polar'
 </script>
 
@@ -26,6 +29,6 @@
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
 	{#key id}
-		<Sketch {scene} {title} {dimensions} size="sm" />
+		<Sketch {scene} {title} {dimensions} {meta} size="sm" />
 	{/key}
 </div>

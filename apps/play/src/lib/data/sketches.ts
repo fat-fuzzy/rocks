@@ -27,10 +27,6 @@ export const sketches = [
 		slug: 'geometry-2d',
 		title: 'Geometry 2D ',
 		emoji: '📐',
-		meta: {
-			input: 'form',
-			type: 'vector',
-		},
 	},
 	{
 		id: '005',
@@ -44,12 +40,14 @@ export const sketches = [
 	},
 	{
 		id: '006',
-		slug: 'matrix-3d',
-		title: 'Matrix 3D',
+		slug: 'hierarchical',
+		title: 'Hierarchical',
 		emoji: '📐',
 		meta: {
 			input: 'form',
 			type: 'matrix',
+			minScaleX: 1,
+			minScaleY: 1,
 		},
 	},
 	// {
