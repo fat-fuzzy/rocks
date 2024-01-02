@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Scene, GeometryProps} from '$lib/types'
+	import type {Scene, GeometryProps, SceneMeta} from '$lib/types'
 
 	import {afterUpdate} from 'svelte'
 
@@ -16,6 +16,7 @@
 	export let variant = ''
 	export let background = ''
 	export let breakpoint = ''
+	export let meta: SceneMeta | undefined = undefined
 
 	let feedback: {message: string; status: string} | undefined = undefined
 	let canvas: HTMLCanvasElement | null = null
@@ -147,6 +148,7 @@
 					on:update={update}
 					threshold={breakpoint}
 					{geometry}
+					{meta}
 					canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
 					canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
 					{color}
