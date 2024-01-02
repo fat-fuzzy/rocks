@@ -1,3 +1,8 @@
+import constants from '../../lib/utils'
+import mathUtils from '../../../math/index'
+
+const {MATRICES_2D} = constants
+
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
@@ -18,12 +23,18 @@ function drawScene(gl, programInfo, buffers) {
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 	// Set a random color.
 	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.geometry.color)
-	// Set the translation.
-	gl.uniform2fv(programInfo.uniformLocations.u_translation, programInfo.geometry.translation)
-	// Set the rotation.
-	gl.uniform2fv(programInfo.uniformLocations.u_rotation, programInfo.geometry.rotation)
-	// Set the scale.
-	gl.uniform2fv(programInfo.uniformLocations.u_scale, programInfo.geometry.scale)
+
+	// Compute Matrices
+	const translationMatrix = MATRICES_2D.translation(...programInfo.geometry.translation)
+	const rotationMatrix = MATRICES_2D.rotation(programInfo.geometry.rotation)
+	const scaleMatrix = MATRICES_2D.scale(...programInfo.geometry.scale)
+
+	// Multiply the Matrices
+	let matrix = MATRICES_2D.multiply(translationMatrix, rotationMatrix)
+	matrix = MATRICES_2D.multiply(matrix, scaleMatrix)
+
+	// Set the matrix
+	gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
 
 	setPositionAttribute(gl, buffers, programInfo)
 	// setColorAttribute(gl, buffers, programInfo)
