@@ -12,6 +12,7 @@ import sketch_003 from './sketches/003/index'
 import sketch_004 from './sketches/004/index'
 import sketch_005 from './sketches/005/index'
 import sketch_006 from './sketches/006/index'
+import sketch_007 from './sketches/007/index'
 
 // Utilities
 const sketches = {
@@ -21,6 +22,7 @@ const sketches = {
 	'004': sketch_004,
 	'005': sketch_005,
 	'006': sketch_006,
+	'007': sketch_007,
 }
 // const sketches = [sketch_001, sketch_002, sketch_003, sketch_004]
 
