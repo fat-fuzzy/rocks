@@ -139,7 +139,7 @@
 	</div>
 	<aside class="context">
 		{#if canvas}
-			<Player on:click={handleToggle} {color} size="xs" {variant} />
+			<Player on:click={handleToggle} {color} size="xs" {variant} disabled={Boolean(feedback)} />
 
 			{#if showGeometry}
 				<Geometry
