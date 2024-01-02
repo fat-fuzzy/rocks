@@ -45,11 +45,16 @@ export type ProgramInfo = {
 	geometry: GeometryProps
 }
 
+export type SceneMeta = {
+	input: string
+	type: string
+}
+
 export type Scene = {
 	id: string
 	draw: () => void
 	clear: () => void
 	update: (value: GeometryProps, event?: MouseEvent | TouchEvent) => void
 	main: (canvas: HTMLCanvasElement) => ProgramInfo
-	inputType?: string
+	meta?: SceneMeta
 }

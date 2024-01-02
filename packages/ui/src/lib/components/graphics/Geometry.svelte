@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {GeometryProps} from '$types'
+	import type {GeometryProps, SceneMeta} from '$types'
 
 	import {createEventDispatcher, onMount} from 'svelte'
 	import {enhance} from '$app/forms'
@@ -21,6 +21,7 @@
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
 	export let disabled: boolean
+	export let meta: SceneMeta | undefined
 
 	const dispatch = createEventDispatcher()
 
@@ -42,7 +43,7 @@
 	let [coordX, coordY] = [canvasWidth / 2, canvasHeight / 2]
 
 	// Rotation
-	let [radCoordX, radCoordY] = rotation
+	let [radCoordX, radCoordY] = meta?.type === 'vector' ? rotation : []
 
 	// Scale
 	let [scaleX, scaleY] = scale
@@ -52,12 +53,12 @@
 	$: radCoordX = Math.cos(degToRad(angle))
 	$: radCoordY = Math.sin(degToRad(angle))
 	$: translation = [coordX, coordY]
-	$: rotation = [radCoordX, radCoordY]
+	$: rotatedAngle = meta?.type === 'vector' ? [radCoordX, radCoordY] : degToRad(angle)
 	$: scale = [scaleX, scaleY]
 	$: value = {
 		color: geometry.color,
 		translation,
-		rotation,
+		rotation: rotatedAngle,
 		scale,
 		width,
 		height,

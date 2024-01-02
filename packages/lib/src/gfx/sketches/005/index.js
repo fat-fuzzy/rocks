@@ -44,9 +44,13 @@ function main(canvas) {
 
 	const vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	const fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
-	const program = setup.link(gl, vertexShader, fragmentShader)
 
-	gl.useProgram(program)
+	let program
+	if (vertexShader && fragmentShader) {
+		program = setup.link(gl, vertexShader, fragmentShader)
+		gl.useProgram(program)
+	}
+
 	utils.resize(canvas)
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -62,13 +66,9 @@ function main(canvas) {
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
 			// bind u_translation
-			u_translation: gl.getUniformLocation(program, 'u_translation'),
-			// bind u_rotation
-			u_rotation: gl.getUniformLocation(program, 'u_rotation'),
-			// bind u_scale
-			u_scale: gl.getUniformLocation(program, 'u_scale'),
+			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		geometry: utils.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
+		geometry: utils.getGeometryMatrix2D(canvas.clientWidth, canvas.clientHeight),
 	}
 	buffers = initBuffers(gl, programInfo)
 	return programInfo

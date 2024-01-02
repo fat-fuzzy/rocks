@@ -101,7 +101,7 @@
 <article class={`l:grid:sketch bp:xs`}>
 	<div class="scene">
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
-			{#if scene.inputType === 'mouse'}
+			{#if scene.meta?.input === 'mouse'}
 				<canvas
 					id={`${id}.canvas`}
 					aria-label={title}
