@@ -27,15 +27,16 @@ function drawScene(gl, programInfo, buffers) {
 
 	setPositionAttribute(gl, buffers, programInfo)
 	// setColorAttribute(gl, buffers, programInfo)
-
+	// Set a random color.
+	// gl.uniform4f(programInfo.uniformLocations.u_color, Math.random(), Math.random(), Math.random(), 1)
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
+	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
 
 	const primitiveType = gl.TRIANGLES
 	const offset = 0
-	const count = 18
+	const count = 6
 	gl.drawArrays(primitiveType, offset, count)
 	//
 }
