@@ -16,6 +16,8 @@
 	export let geometry: GeometryProps
 	export let background = ''
 	export let threshold = ''
+	export let size = ''
+	export let layout = ''
 	export let formaction = 'updateGeometry'
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
@@ -67,7 +69,7 @@
 </script>
 
 <form
-	class={`l:switcher:${threshold} maki:block lg geometry ${backgroundClass}`}
+	class={`l:${layout}:${size} th:${threshold} maki:block lg geometry ${backgroundClass}`}
 	name="geometry-update"
 	{method}
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
