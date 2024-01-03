@@ -15,7 +15,7 @@
 	]
 </script>
 
-<Sidebar size="xs">
+<Sidebar size="xxs">
 	<svelte:fragment slot="side">
 		<Nav
 			id="nav-page"
