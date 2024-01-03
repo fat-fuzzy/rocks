@@ -1,4 +1,16 @@
 const MATRICES_2D = {
+	translate: function (m, tx, ty) {
+		const m3 = this
+		return m3.multiply(m, m3.translation(tx, ty))
+	},
+	rotate: function (m, angleInRadians) {
+		const m3 = this
+		return m3.multiply(m, m3.rotation(angleInRadians))
+	},
+	scale: function (m, sx, sy) {
+		const m3 = this
+		return m3.multiply(m, m3.scaling(sx, sy))
+	},
 	identity: function () {
 		/* prettier-ignore */
 		return [
@@ -81,7 +93,7 @@ const MATRICES_2D = {
 	 * @param {number} sy scale Y
 	 * @returns matrix
 	 */
-	scale: function (sx, sy) {
+	scaling: function (sx, sy) {
 		/* prettier-ignore */
 		return [
 			sx, 0, 0,
