@@ -44,6 +44,7 @@ $triangular-ruler: '📐';
 $russian-dolls: '🪆';
 $bullseye: '🎯';
 $world-map: '🗺️';
+$game-dice: '🎲';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -108,7 +109,8 @@ $emojis: (
 	geometry-3d: #{$triangular-ruler},
 	russian-dolls: #{$russian-dolls},
 	bullseye: #{$bullseye},
-	projection: #{$world-map}
+	projection: #{$world-map},
+	matrix-3d: #{$game-dice}
 );
 
 $assets: (
