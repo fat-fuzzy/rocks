@@ -4,7 +4,7 @@
 
 // Tools
 import utils from './lib/utils'
-import constants from './lib/constants'
+import constants from './lib/geometries'
 // Sketches
 import sketch_001 from './sketches/001-random/index'
 // import sketch_002 from './sketches/002/index'
@@ -13,6 +13,7 @@ import sketch_004 from './sketches/004-geometry-2d/index'
 import sketch_005 from './sketches/005-matrix-2d/index'
 import sketch_006 from './sketches/006-hierarchical/index'
 import sketch_007 from './sketches/007-center-origin/index'
+import sketch_008 from './sketches/008-projection/index'
 
 // Utilities
 const sketches = {
@@ -23,6 +24,7 @@ const sketches = {
 	'005': sketch_005,
 	'006': sketch_006,
 	'007': sketch_007,
+	'008': sketch_008,
 }
 // const sketches = [sketch_001, sketch_002, sketch_003, sketch_004]
 

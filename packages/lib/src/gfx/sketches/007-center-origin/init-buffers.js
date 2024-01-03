@@ -1,6 +1,6 @@
-import constants from '../../lib/constants'
+import geometries from '../../lib/geometries'
 
-const {DEFAULT_GEOMETRY_COORDS} = constants
+const {DEFAULT_GEOMETRY_COORDS} = geometries
 
 function initBuffers(gl, programInfo) {
 	const {translation, rotation, width, height, color} = programInfo.geometry

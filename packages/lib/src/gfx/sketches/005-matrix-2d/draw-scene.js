@@ -1,6 +1,6 @@
-import utils from '../../lib/utils'
+import matrices from '../../lib/matrices'
 
-const {MATRICES_2D} = utils
+const {MATRICES_2D} = matrices
 
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
