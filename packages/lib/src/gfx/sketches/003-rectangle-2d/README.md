@@ -3,7 +3,6 @@ title: Rectangle 2D
 date: '2022'
 slug: rectangle-2d
 id: '004'
-emoji: '📐'
 ---
 
 ## 🚧 WHat / Why

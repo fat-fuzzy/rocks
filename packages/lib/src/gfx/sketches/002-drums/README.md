@@ -3,7 +3,6 @@ title: Audio
 date: '2022'
 slug: random-rect-audio
 id: '002'
-emoji: '🥁'
 ---
 
 ## 🚧 WHat / Why
