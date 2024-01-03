@@ -79,15 +79,6 @@
 		}
 	}}
 >
-	<Rotation
-		id={`${id}-rotation`}
-		bind:angle
-		max={360}
-		on:input={update}
-		{color}
-		size={`xs l:burrito:${threshold} maki:inline`}
-		{disabled}
-	/>
 	<Position
 		id={`${id}-position`}
 		bind:coordX
@@ -95,7 +86,16 @@
 		bind:maxX
 		bind:maxY
 		on:input={update}
-		{color}
+		color={'primary'}
+		size={`xs l:burrito:${threshold} maki:inline`}
+		{disabled}
+	/>
+	<Rotation
+		id={`${id}-rotation`}
+		bind:angle
+		max={360}
+		on:input={update}
+		color={'accent'}
 		size={`xs l:burrito:${threshold} maki:inline`}
 		{disabled}
 	/>
@@ -108,7 +108,7 @@
 		minX={meta?.minScaleX ?? -5}
 		minY={meta?.minScaleY ?? -5}
 		on:input={update}
-		{color}
+		color={'highlight'}
 		size={`xs l:burrito:${threshold} maki:inline`}
 		{disabled}
 	/>

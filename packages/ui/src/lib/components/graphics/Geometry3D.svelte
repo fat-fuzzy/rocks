@@ -89,8 +89,8 @@
 		bind:maxY
 		bind:maxZ
 		on:input={update}
-		{color}
-		size={`xs l:burrito:${threshold} maki:inline`}
+		color={'primary'}
+		size={`xs l:burrito:${threshold}`}
 		{disabled}
 	/>
 	<Rotation
@@ -99,8 +99,8 @@
 		bind:angle={angleX}
 		max={360}
 		on:input={update}
-		{color}
-		size={`xs l:burrito:${threshold} maki:inline`}
+		color={'accent'}
+		size={`xs l:burrito:${threshold}`}
 		{disabled}
 	/>
 	<Rotation
@@ -109,8 +109,8 @@
 		bind:angle={angleY}
 		max={360}
 		on:input={update}
-		{color}
-		size={`xs l:burrito:${threshold} maki:inline`}
+		color={'accent'}
+		size={`xs l:burrito:${threshold}`}
 		{disabled}
 	/>
 	<Rotation
@@ -119,8 +119,8 @@
 		bind:angle={angleZ}
 		max={360}
 		on:input={update}
-		{color}
-		size={`xs l:burrito:${threshold} maki:inline`}
+		color={'accent'}
+		size={`xs l:burrito:${threshold}`}
 		{disabled}
 	/>
 	<Scale
@@ -135,8 +135,8 @@
 		minY={meta?.minScaleY ?? -5}
 		minZ={meta?.depth ? meta?.minScaleZ ?? -5 : undefined}
 		on:input={update}
-		{color}
-		size={`xs l:burrito:${threshold} maki:inline`}
+		color={'highlight'}
+		size={`xs l:burrito:${threshold}`}
 		{disabled}
 	/>
 	{#await Promise.resolve()}
