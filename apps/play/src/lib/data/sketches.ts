@@ -35,7 +35,7 @@ export const sketches = [
 		asset: 'emoji:geometry-3d',
 		meta: {
 			input: 'form',
-			type: 'matrix',
+			type: 'matrix-2d',
 		},
 	},
 	{
@@ -45,7 +45,7 @@ export const sketches = [
 		asset: 'emoji:russian-dolls',
 		meta: {
 			input: 'form',
-			type: 'matrix',
+			type: 'matrix-2d',
 		},
 	},
 	{
@@ -55,7 +55,7 @@ export const sketches = [
 		asset: 'emoji:bullseye',
 		meta: {
 			input: 'form',
-			type: 'matrix',
+			type: 'matrix-2d',
 		},
 	},
 	{
@@ -65,7 +65,18 @@ export const sketches = [
 		asset: 'emoji:projection',
 		meta: {
 			input: 'form',
-			type: 'matrix',
+			type: 'matrix-2d',
+		},
+	},
+	{
+		id: '009',
+		slug: 'matrix-3d',
+		title: 'Matrix 3D',
+		asset: 'emoji:matrix-3d',
+		meta: {
+			input: 'form',
+			type: 'matrix-3d',
+			depth: 400,
 		},
 	},
 	// {
