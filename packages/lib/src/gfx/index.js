@@ -14,6 +14,7 @@ import sketch_005 from './sketches/005-matrix-2d/index'
 import sketch_006 from './sketches/006-hierarchical/index'
 import sketch_007 from './sketches/007-center-origin/index'
 import sketch_008 from './sketches/008-projection/index'
+import sketch_009 from './sketches/009-matrix-3d/index'
 
 // Utilities
 const sketches = {
@@ -25,6 +26,7 @@ const sketches = {
 	'006': sketch_006,
 	'007': sketch_007,
 	'008': sketch_008,
+	'009': sketch_009,
 }
 // const sketches = [sketch_001, sketch_002, sketch_003, sketch_004]
 
