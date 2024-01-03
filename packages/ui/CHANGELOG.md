@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.43
+
+### Patch Changes
+
+- 993bd765: [ui] Fx Graohnics component demo
+
 ## 0.1.42
 
 ### Patch Changes
