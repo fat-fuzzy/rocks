@@ -26,7 +26,7 @@ function drawScene(gl, programInfo, buffers) {
 	// Compute Matrices
 	const translationMatrix = MATRICES_2D.translation(...programInfo.geometry.translation)
 	const rotationMatrix = MATRICES_2D.rotation(programInfo.geometry.rotation)
-	const scaleMatrix = MATRICES_2D.scale(...programInfo.geometry.scale)
+	const scaleMatrix = MATRICES_2D.scaling(...programInfo.geometry.scale)
 
 	// Multiply the Matrices
 	let matrix = MATRICES_2D.multiply(translationMatrix, rotationMatrix)
