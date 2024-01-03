@@ -14,7 +14,6 @@
 	export let canvasWidth: number
 	export let canvasHeight: number
 	export let geometry: GeometryProps
-	export let color = ''
 	export let background = ''
 	export let threshold = ''
 	export let formaction = 'updateGeometry'
