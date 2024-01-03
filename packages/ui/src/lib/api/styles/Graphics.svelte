@@ -6,6 +6,7 @@
 	import {onDestroy, getContext} from 'svelte'
 
 	import lib from '@fat-fuzzy/lib'
+	import {sketches} from '$lib/api/fixtures/js/sketches'
 	import * as ui from '$stores/ui'
 	import constants from '$lib/types/constants'
 
@@ -44,8 +45,12 @@
 			}
 		}),
 	]
+	let sketchData = sketches.find((s) => {
+		return s.id === '009'
+	})
+
 	// Graphics options
-	$: geometry = scene.geometry || lib.gfx.utils.getGeometryDefaults()
+	$: geometry = scene.geometry
 
 	// App settings
 	$: contrast = contrast ? contrast : settings.app.contrast
@@ -64,6 +69,7 @@
 		...props,
 		scene,
 		geometry,
+		meta: sketchData?.meta,
 		page,
 		title,
 		color,
@@ -86,5 +92,3 @@
 </script>
 
 <svelte:component this={component} id={path.replaceAll('/', '.')} {...props} />
-
-<slot name="controls" />
