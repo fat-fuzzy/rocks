@@ -75,8 +75,8 @@ function setPositionAttribute(gl, buffers, programInfo) {
 
 function setColorAttribute(gl, buffers, programInfo) {
 	const count = 3
-	const type = gl.UNSIGNED_BYTE
-	const normalize = true
+	const type = gl.UNSIGNED_BYTE // the data is 8bit unsigned bytes
+	const normalize = true // convert from 0-255 to 0.0-1.0
 	const stride = 0
 	const offset = 0
 
