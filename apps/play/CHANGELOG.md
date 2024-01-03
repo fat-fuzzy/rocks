@@ -1,5 +1,13 @@
 # @fat-fuzzy/play
 
+## 0.1.28
+
+### Patch Changes
+
+- 68f18490: [design+gfx+ui+apps] Update playground and sketches
+- Updated dependencies [68f18490]
+  - @fat-fuzzy/lib@0.1.7
+
 ## 0.1.27
 
 ### Patch Changes
