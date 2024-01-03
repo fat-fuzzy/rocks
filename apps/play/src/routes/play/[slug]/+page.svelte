@@ -7,8 +7,7 @@
 	const {Head} = headless
 	const {Sketch} = graphics
 
-	let sketch = $page.data.sketches.find((s) => s.slug === $page.data.slug)
-
+	$: sketch = $page.data.sketches.find((s) => s.slug === $page.data.slug)
 	$: title = $page.data.title
 	$: dimensions = $page.data.dimensions
 	$: id = $page.data.id
@@ -28,7 +27,7 @@
 		<h1 class="card:md">Play</h1>
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
-	{#key id}
+	{#key $page.data.slug}
 		<Sketch {scene} {title} {dimensions} {meta} size="sm" />
 	{/key}
 </div>
