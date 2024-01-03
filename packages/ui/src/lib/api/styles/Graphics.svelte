@@ -14,6 +14,7 @@
 
 	export let title = ''
 	export let name = title
+	$: currentSketch = title === 'Sketch' ? '009' : '004'
 	export let component: ComponentType
 	export let props: any
 	export let scene = lib.gfx.sketches['009']
@@ -45,12 +46,15 @@
 			}
 		}),
 	]
-	let sketchData = sketches.find((s) => {
-		return s.id === '009'
-	})
+
+	$: sketchData =
+		currentSketch &&
+		sketches.find((s) => {
+			return s.id === currentSketch
+		})
 
 	// Graphics options
-	$: geometry = scene.geometry
+	$: geometry = scene?.geometry ?? lib.gfx.utils.getGeometryDefaults()
 
 	// App settings
 	$: contrast = contrast ? contrast : settings.app.contrast
