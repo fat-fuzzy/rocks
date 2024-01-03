@@ -28,28 +28,28 @@ const DEFAULT_GEOMETRY_COORDS = [
 /* prettier-ignore */
 const DEFAULT_3D_GEOMETRY_COORDS = [
 	// left column front
-		0,   0,  0,
-	 30,   0,  0,
-		0, 150,  0,
-		0, 150,  0,
-	 30,   0,  0,
-	 30, 150,  0,
+	0,   0,  0,
+	0, 150,  0,
+	30,   0,  0,
+	0, 150,  0,
+	30, 150,  0,
+	30,   0,  0,
 
 	// top rung front
-	 30,   0,  0,
+	30,   0,  0,
+	30,  30,  0,
 	100,   0,  0,
-	 30,  30,  0,
-	 30,  30,  0,
-	100,   0,  0,
+	30,  30,  0,
 	100,  30,  0,
+	100,   0,  0,
 
 	// middle rung front
-	 30,  60,  0,
-	 67,  60,  0,
-	 30,  90,  0,
-	 30,  90,  0,
-	 67,  60,  0,
-	 67,  90,  0,
+	30,  60,  0,
+	30,  90,  0,
+	67,  60,  0,
+	30,  90,  0,
+	67,  90,  0,
+	67,  60,  0,
 
 	// left column back
 		0,   0,  30,
@@ -101,27 +101,27 @@ const DEFAULT_3D_GEOMETRY_COORDS = [
 
 	// between top rung and middle
 	30,   30,   0,
+	30,   60,  30,
 	30,   30,  30,
-	30,   60,  30,
 	30,   30,   0,
-	30,   60,  30,
 	30,   60,   0,
+	30,   60,  30,
 
 	// top of middle rung
 	30,   60,   0,
+	67,   60,  30,
 	30,   60,  30,
-	67,   60,  30,
 	30,   60,   0,
-	67,   60,  30,
 	67,   60,   0,
+	67,   60,  30,
 
 	// right of middle rung
 	67,   60,   0,
+	67,   90,  30,
 	67,   60,  30,
-	67,   90,  30,
 	67,   60,   0,
-	67,   90,  30,
 	67,   90,   0,
+	67,   90,  30,
 
 	// bottom of middle rung.
 	30,   90,   0,
@@ -133,11 +133,11 @@ const DEFAULT_3D_GEOMETRY_COORDS = [
 
 	// right of bottom
 	30,   90,   0,
+	30,  150,  30,
 	30,   90,  30,
-	30,  150,  30,
 	30,   90,   0,
-	30,  150,  30,
 	30,  150,   0,
+	30,  150,  30,
 
 	// bottom
 	0,   150,   0,
@@ -157,7 +157,7 @@ const DEFAULT_3D_GEOMETRY_COORDS = [
 ]
 
 /* prettier-ignore */
-const DEFAULT_3D_GEOMETRY_COLORS =[
+const DEFAULT_3D_GEOMETRY_COLORS = [
 	// left column front
 	200,  70, 120,
 	200,  70, 120,

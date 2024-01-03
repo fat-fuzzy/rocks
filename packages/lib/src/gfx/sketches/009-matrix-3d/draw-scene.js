@@ -19,6 +19,9 @@ function drawScene(gl, programInfo, buffers, vao) {
 	// Clear the canvas before drawing on it
 	gl.clear(gl.COLOR_BUFFER_BIT, gl.DEPTH_BUFFER_BIT)
 
+	// tell webgl to cull faces
+	gl.enable(gl.CULL_FACE)
+
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	gl.bindVertexArray(vao)
