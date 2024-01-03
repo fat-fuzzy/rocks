@@ -15,7 +15,7 @@
 	export let name = title
 	export let component: ComponentType
 	export let props: any
-	export let scene = lib.gfx.sketches['004']
+	export let scene = lib.gfx.sketches['009']
 	export let path = ''
 
 	export let actionPath: string | undefined = undefined
