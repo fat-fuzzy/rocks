@@ -1,6 +1,6 @@
 import matrices from '../../lib/matrices'
 
-const {MATRICES_2D} = matrices
+const {MATRIX_2D} = matrices
 
 /**
  *
@@ -28,13 +28,6 @@ function drawScene(gl, programInfo, buffers) {
 	// Set a random color.
 	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.geometry.color)
 
-	// // Compute tool Matrices
-	// const projectionMatrix = MATRICES_2D.projection(gl.canvas.width, gl.canvas.height)
-	// const translationMatrix = MATRICES_2D.translation(...programInfo.geometry.translation)
-	// const rotationMatrix = MATRICES_2D.rotation(programInfo.geometry.rotation)
-	// const scaleMatrix = MATRICES_2D.scale(...programInfo.geometry.scale)
-	// const centerOriginMatrix = MATRICES_2D.translation(-50, -75)
-
 	setPositionAttribute(gl, buffers, programInfo)
 
 	// setColorAttribute(gl, buffers, programInfo)
@@ -47,11 +40,11 @@ function drawScene(gl, programInfo, buffers) {
 
 	// Initialize the matrices
 	// Compute tool Matrices
-	let matrix = MATRICES_2D.projection(gl.canvas.width, gl.canvas.height)
-	matrix = MATRICES_2D.translate(matrix, ...programInfo.geometry.translation)
-	matrix = MATRICES_2D.rotate(matrix, programInfo.geometry.rotation)
-	matrix = MATRICES_2D.scale(matrix, ...programInfo.geometry.scale)
-	matrix = MATRICES_2D.translate(matrix, -50, -75) // centerOriginMatrix
+	let matrix = MATRIX_2D.projection(gl.canvas.width, gl.canvas.height)
+	matrix = MATRIX_2D.translate(matrix, ...programInfo.geometry.translation)
+	matrix = MATRIX_2D.rotate(matrix, programInfo.geometry.rotation)
+	matrix = MATRIX_2D.scale(matrix, ...programInfo.geometry.scale)
+	matrix = MATRIX_2D.translate(matrix, -50, -75) // centerOriginMatrix
 
 	// Set the matrix
 	gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
