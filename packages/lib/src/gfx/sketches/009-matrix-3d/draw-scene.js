@@ -13,14 +13,14 @@ function drawScene(gl, programInfo, buffers, vao) {
 	// -> use gl.viewport
 	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
 	gl.clearDepth(1.0) // clear everything (?)
+
+	// tell webgl to cull faces
+	gl.enable(gl.CULL_FACE)
 	gl.enable(gl.DEPTH_TEST) // enable depth testing
 	gl.depthFunc(gl.LEQUAL) // near things obscure far things
 
 	// Clear the canvas before drawing on it
-	gl.clear(gl.COLOR_BUFFER_BIT, gl.DEPTH_BUFFER_BIT)
-
-	// tell webgl to cull faces
-	gl.enable(gl.CULL_FACE)
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
@@ -28,6 +28,13 @@ function drawScene(gl, programInfo, buffers, vao) {
 
 	// Initialize the matrices
 	// Compute tool Matrices
+	// var left = 0
+	// var right = gl.canvas.clientWidth
+	// var bottom = gl.canvas.clientHeight
+	// var top = 0
+	// var near = 400
+	// var far = -400
+	// let matrix = MATRIX_3D.orthographic(left, right, bottom, top, near, far)
 	let matrix = MATRIX_3D.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400)
 	matrix = MATRIX_3D.translate(matrix, ...programInfo.geometry.translation)
 	matrix = MATRIX_3D.xRotate(matrix, programInfo.geometry.rotation[0])
