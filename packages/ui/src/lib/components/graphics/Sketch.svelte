@@ -1,9 +1,10 @@
 <script lang="ts">
-	import type {Scene, GeometryProps, SceneMeta} from '$lib/types'
+	import type {Scene, GeometryProps, Geometry3dProps, SceneMeta} from '$lib/types'
 
 	import {afterUpdate} from 'svelte'
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
+	import Geometry3D from '$lib/components/graphics/Geometry3D.svelte'
 	import Player from '$lib/components/graphics/Player.svelte'
 
 	export let id = 'sketch'
@@ -22,7 +23,7 @@
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
 	let height: number
-	let geometry: GeometryProps
+	let geometry: GeometryProps | Geometry3dProps
 	let programInfo
 
 	let frame: number
@@ -143,17 +144,38 @@
 			<Player on:click={handleToggle} {color} size="xs" {variant} disabled={Boolean(feedback)} />
 
 			{#if showGeometry}
-				<Geometry
-					id={`${id}-geometry`}
-					on:update={update}
-					threshold={breakpoint}
-					{geometry}
-					{meta}
-					canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
-					canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
-					{color}
-					disabled={state === 'pause'}
-				/>
+				{#if meta?.type === 'matrix-2d'}
+					<Geometry
+						id={`${id}-geometry`}
+						on:update={update}
+						threshold={breakpoint}
+						{geometry}
+						{meta}
+						canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
+						canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
+						{color}
+						disabled={state === 'pause'}
+					/>
+				{/if}
+				{#if meta?.type === 'matrix-3d'}
+					<Geometry3D
+						id={`${id}-geometry`}
+						on:update={update}
+						threshold={breakpoint}
+						geometry={{
+							...geometry,
+							rotation:
+								typeof geometry.rotation === 'number'
+									? [geometry.rotation, geometry.rotation, geometry.rotation]
+									: geometry.rotation,
+						}}
+						{meta}
+						canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
+						canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
+						{color}
+						disabled={state === 'pause'}
+					/>
+				{/if}
 			{/if}
 		{/if}
 	</aside>
