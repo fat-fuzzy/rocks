@@ -146,7 +146,7 @@
 			{#if showGeometry}
 				{#if meta?.type === 'matrix-2d'}
 					<Geometry
-						id={`${id}-geometry`}
+						id={`${id}-geometry-2d`}
 						on:update={update}
 						threshold={breakpoint}
 						{geometry}
@@ -159,7 +159,7 @@
 				{/if}
 				{#if meta?.type === 'matrix-3d'}
 					<Geometry3D
-						id={`${id}-geometry`}
+						id={`${id}-geometry-3d`}
 						on:update={update}
 						threshold={breakpoint}
 						geometry={{
