@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.39
+
+### Patch Changes
+
+- 68f18490: [design+gfx+ui+apps] Update playground and sketches
+
 ## 0.1.38
 
 ### Patch Changes
