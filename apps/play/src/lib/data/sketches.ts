@@ -58,6 +58,16 @@ export const sketches = [
 			type: 'matrix',
 		},
 	},
+	{
+		id: '008',
+		slug: 'projection',
+		title: 'Projection',
+		asset: 'emoji:projection',
+		meta: {
+			input: 'form',
+			type: 'matrix',
+		},
+	},
 	// {
 	// 	id: '000',
 	// 	slug: 'poop',

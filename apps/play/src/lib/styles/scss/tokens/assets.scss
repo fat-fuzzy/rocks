@@ -43,6 +43,7 @@ $straight-ruler: '📏';
 $triangular-ruler: '📐';
 $russian-dolls: '🪆';
 $bullseye: '🎯';
+$world-map: '🗺️';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -106,7 +107,8 @@ $emojis: (
 	geometry-2d: #{$straight-ruler},
 	geometry-3d: #{$triangular-ruler},
 	russian-dolls: #{$russian-dolls},
-	bullseye: #{$bullseye}
+	bullseye: #{$bullseye},
+	projection: #{$world-map}
 );
 
 $assets: (
