@@ -1,10 +1,11 @@
 import geometries from '../../lib/geometries'
 
-const {DEFAULT_3D_GEOMETRY_COORDS} = geometries
+const {DEFAULT_3D_GEOMETRY_COORDS, DEFAULT_3D_GEOMETRY_COLORS} = geometries
 
 function initBuffers(gl, programInfo) {
-	const {color} = programInfo.geometry
-	const positionBuffer = initPositionBuffer(gl)
+	const {translation, rotation, width, height, color} = programInfo.geometry
+	const [x, y] = translation
+	const positionBuffer = initPositionBuffer(gl, {x, y, width, height})
 	const colorBuffer = initColorBuffer(gl, [color, color, color, color])
 
 	return {
@@ -13,7 +14,7 @@ function initBuffers(gl, programInfo) {
 	}
 }
 
-function initPositionBuffer(gl) {
+function initPositionBuffer(gl, {translation, rotation, width, height}) {
 	// Create a buffer for the geometry's positions.
 	const positionBuffer = gl.createBuffer()
 
@@ -30,7 +31,7 @@ function initPositionBuffer(gl) {
 function initColorBuffer(gl, colors) {
 	const colorBuffer = gl.createBuffer()
 	gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer)
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW)
+	gl.bufferData(gl.ARRAY_BUFFER, new Uint8Array(DEFAULT_3D_GEOMETRY_COLORS), gl.STATIC_DRAW)
 
 	return colorBuffer
 }

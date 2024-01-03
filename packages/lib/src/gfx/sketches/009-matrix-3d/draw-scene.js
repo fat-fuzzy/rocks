@@ -19,30 +19,9 @@ function drawScene(gl, programInfo, buffers, vao) {
 	// Clear the canvas before drawing on it
 	gl.clear(gl.COLOR_BUFFER_BIT, gl.DEPTH_BUFFER_BIT)
 
-	// Create a perspective matrix:
-	// - simulates the distortion of perspective in the camera
-	// Set the Field Of View to 45 degrees in radians
-	// Set the aspect ratio to the display dimensions of the canvas
-
-	// set the resolution
-	// Set a random color.
-	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.geometry.color)
-
-	// // Compute tool Matrices
-	// const projectionMatrix = MATRIX_3D.projection(gl.canvas.width, gl.canvas.height)
-	// const translationMatrix = MATRIX_3D.translation(...programInfo.geometry.translation)
-	// const rotationMatrix = MATRIX_3D.rotation(programInfo.geometry.rotation)
-	// const scaleMatrix = MATRIX_3D.scale(...programInfo.geometry.scale)
-	// const centerOriginMatrix = MATRIX_3D.translation(-50, -75)
-
-	// setColorAttribute(gl, buffers, programInfo)
-	// Set a random color.
-	// gl.uniform4f(programInfo.uniformLocations.u_color, Math.random(), Math.random(), Math.random(), 1)
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	gl.bindVertexArray(vao)
-	// Set the shader uniforms
-	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
 
 	// Initialize the matrices
 	// Compute tool Matrices
@@ -57,10 +36,11 @@ function drawScene(gl, programInfo, buffers, vao) {
 	gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
 
 	setPositionAttribute(gl, buffers, programInfo)
+	setColorAttribute(gl, buffers, programInfo)
 
 	const primitiveType = gl.TRIANGLES
 	const offset = 0
-	const count = 18
+	const count = 16 * 6
 	gl.drawArrays(primitiveType, offset, count)
 }
 
@@ -84,22 +64,22 @@ function setPositionAttribute(gl, buffers, programInfo) {
 }
 
 function setColorAttribute(gl, buffers, programInfo) {
-	const count = 2
-	const type = gl.FLOAT
-	const normalize = false
+	const count = 3
+	const type = gl.UNSIGNED_BYTE
+	const normalize = true
 	const stride = 0
 	const offset = 0
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color)
 	gl.vertexAttribPointer(
-		programInfo.attribLocations.u_color,
+		programInfo.attribLocations.a_color,
 		count,
 		type,
 		normalize,
 		stride,
 		offset,
 	)
-	gl.enableVertexAttribArray(programInfo.attribLocations.u_color)
+	gl.enableVertexAttribArray(programInfo.attribLocations.a_color)
 }
 
 export {drawScene}
