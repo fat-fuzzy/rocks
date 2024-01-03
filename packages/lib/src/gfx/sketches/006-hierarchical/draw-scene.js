@@ -1,6 +1,6 @@
 import matrices from '../../lib/matrices'
 
-const {MATRICES_2D} = matrices
+const {MATRIX_2D} = matrices
 
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
@@ -24,12 +24,12 @@ function drawScene(gl, programInfo, buffers) {
 	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.geometry.color)
 
 	// Compute Matrices
-	const translationMatrix = MATRICES_2D.translation(...programInfo.geometry.translation)
-	const rotationMatrix = MATRICES_2D.rotation(programInfo.geometry.rotation)
-	const scaleMatrix = MATRICES_2D.scaling(...programInfo.geometry.scale)
+	const translationMatrix = MATRIX_2D.translation(...programInfo.geometry.translation)
+	const rotationMatrix = MATRIX_2D.rotation(programInfo.geometry.rotation)
+	const scaleMatrix = MATRIX_2D.scaling(...programInfo.geometry.scale)
 
 	// Initialize the matrix
-	let matrix = MATRICES_2D.identity()
+	let matrix = MATRIX_2D.identity()
 
 	setPositionAttribute(gl, buffers, programInfo)
 
@@ -43,9 +43,9 @@ function drawScene(gl, programInfo, buffers) {
 
 	for (let i = 0; i < 5; i++) {
 		// Multiply the Matrices in order for Hierarchical animation
-		matrix = MATRICES_2D.multiply(matrix, translationMatrix)
-		matrix = MATRICES_2D.multiply(matrix, rotationMatrix)
-		matrix = MATRICES_2D.multiply(matrix, scaleMatrix)
+		matrix = MATRIX_2D.multiply(matrix, translationMatrix)
+		matrix = MATRIX_2D.multiply(matrix, rotationMatrix)
+		matrix = MATRIX_2D.multiply(matrix, scaleMatrix)
 
 		// Set the matrix
 		gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)

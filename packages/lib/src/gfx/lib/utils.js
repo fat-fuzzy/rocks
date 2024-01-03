@@ -145,6 +145,33 @@ function getGeometryHierarchical(canvasWidth, canvasHeight) {
 	return getGeometryDefaults(canvasWidth, canvasHeight)
 }
 
+/**
+ * @param {number} canvasWidth
+ * @param {number} canvasHeight
+ * @param {number} depth
+ * @returns geometry
+ */
+function getGeometryMatrix3D(canvasWidth, canvasHeight, depth) {
+	const width = randomInt(canvasWidth)
+	const height = randomInt(canvasHeight)
+	if (!depth) {
+		depth = 400
+	}
+	return {
+		color: [Math.random(), Math.random(), Math.random(), 1],
+		translation: [width, height, randomInt(depth)],
+		rotation: [
+			Number(degToRad(randomInt(360)).toFixed()),
+			Number(degToRad(randomInt(360)).toFixed()),
+			Number(degToRad(randomInt(360)).toFixed()),
+		],
+		scale: [1, 1, 1],
+		width,
+		height,
+		depth,
+	}
+}
+
 export default {
 	resize,
 	resizeHD,
@@ -156,4 +183,5 @@ export default {
 	getGeometryRandom,
 	getGeometryMatrix2D,
 	getGeometryHierarchical,
+	getGeometryMatrix3D,
 }

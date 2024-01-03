@@ -1,6 +1,6 @@
 import matrices from '../../lib/matrices'
 
-const {MATRICES_2D} = matrices
+const {MATRIX_2D} = matrices
 
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
@@ -24,13 +24,13 @@ function drawScene(gl, programInfo, buffers) {
 	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.geometry.color)
 
 	// Compute Matrices
-	const translationMatrix = MATRICES_2D.translation(...programInfo.geometry.translation)
-	const rotationMatrix = MATRICES_2D.rotation(programInfo.geometry.rotation)
-	const scaleMatrix = MATRICES_2D.scaling(...programInfo.geometry.scale)
+	const translationMatrix = MATRIX_2D.translation(...programInfo.geometry.translation)
+	const rotationMatrix = MATRIX_2D.rotation(programInfo.geometry.rotation)
+	const scaleMatrix = MATRIX_2D.scaling(...programInfo.geometry.scale)
 
 	// Multiply the Matrices
-	let matrix = MATRICES_2D.multiply(translationMatrix, rotationMatrix)
-	matrix = MATRICES_2D.multiply(matrix, scaleMatrix)
+	let matrix = MATRIX_2D.multiply(translationMatrix, rotationMatrix)
+	matrix = MATRIX_2D.multiply(matrix, scaleMatrix)
 
 	// Set the matrix
 	gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
