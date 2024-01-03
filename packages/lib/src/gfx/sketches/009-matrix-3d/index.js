@@ -59,12 +59,9 @@ function main(canvas) {
 		program,
 		attribLocations: {
 			a_position: gl.getAttribLocation(program, 'a_position'),
+			a_color: gl.getAttribLocation(program, 'a_color'),
 		},
 		uniformLocations: {
-			// bind u_color
-			u_color: gl.getUniformLocation(program, 'u_color'),
-			// bind u_resolution
-			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
 			// bind u_translation
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},

@@ -1,3 +1,5 @@
+import geometries from './geometries'
+
 /**
  ***********************
  * HELPER FUNCTIONS
@@ -148,18 +150,16 @@ function getGeometryHierarchical(canvasWidth, canvasHeight) {
 /**
  * @param {number} canvasWidth
  * @param {number} canvasHeight
- * @param {number} depth
+ * @param {number} maxDepth
  * @returns geometry
  */
-function getGeometryMatrix3D(canvasWidth, canvasHeight, depth) {
+function getGeometryMatrix3D(canvasWidth, canvasHeight, maxDepth) {
 	const width = randomInt(canvasWidth)
 	const height = randomInt(canvasHeight)
-	if (!depth) {
-		depth = 400
-	}
+	const depth = maxDepth ? randomInt(maxDepth / 2) : height
 	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [width, height, randomInt(depth)],
+		color: geometries.DEFAULT_3D_GEOMETRY_COLORS,
+		translation: [width, height, depth],
 		rotation: [
 			Number(degToRad(randomInt(360)).toFixed()),
 			Number(degToRad(randomInt(360)).toFixed()),
