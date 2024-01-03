@@ -34,11 +34,22 @@ export type Tab = {
 
 export type GeometryProps = {
 	color: number[]
-	translation: number[]
-	rotation: number
-	scale: number[]
+	translation: (number | undefined)[]
+	rotation: number | number[]
+	scale: (number | undefined)[]
 	width: number // of geometry
 	height: number // of geometry
+	depth?: number
+}
+
+export type Geometry3dProps = {
+	color: number[]
+	translation: (number | undefined)[]
+	rotation: number[]
+	scale: (number | undefined)[]
+	width: number // of geometry
+	height: number // of geometry
+	depth?: number
 }
 
 export type ProgramInfo = {
@@ -50,6 +61,8 @@ export type SceneMeta = {
 	type: string
 	minScaleX: number
 	minScaleY: number
+	minScaleZ?: number
+	depth: number
 }
 
 export type Scene = {
