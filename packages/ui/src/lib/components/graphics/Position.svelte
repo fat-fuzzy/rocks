@@ -5,7 +5,6 @@
 
 	const dispatch = createEventDispatcher()
 
-	export let legend = 'Coord'
 	export let id = 'position'
 
 	export let color = ''
