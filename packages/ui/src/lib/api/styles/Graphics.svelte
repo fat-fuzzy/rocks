@@ -47,11 +47,9 @@
 		}),
 	]
 
-	$: sketchData =
-		currentSketch &&
-		sketches.find((s) => {
-			return s.id === currentSketch
-		})
+	$: sketchData = sketches.find((s) => {
+		return s.id === currentSketch
+	})
 
 	// Graphics options
 	$: geometry = scene?.geometry ?? lib.gfx.utils.getGeometryDefaults()
@@ -73,7 +71,7 @@
 		...props,
 		scene,
 		geometry,
-		meta: sketchData?.meta,
+		meta: sketchData?.meta ?? undefined,
 		page,
 		title,
 		color,
