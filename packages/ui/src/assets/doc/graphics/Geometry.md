@@ -27,3 +27,8 @@ These input components are displayed in the documentation as part of this `graph
 - `Fieldset` component in `blocks`
 - `InputRange` component in `blocks`
 - `Switcher` component in `layouts`
+
+## Resources
+
+The geometry interactions are based on the sections
+on [translation](https://webglfundamentals.org/webgl/lessons/webgl-2d-translation.html), [rotation](https://webglfundamentals.org/webgl/lessons/webgl-2d-rotation.html) and [scale](https://webglfundamentals.org/webgl/lessons/webgl-2d-scale.html) of the [webglfundamentals.org](https://webglfundamentals.org/) tutorial.
