@@ -35,7 +35,11 @@ function drawScene(gl, programInfo, buffers, vao) {
 	// var near = 400
 	// var far = -400
 	// let matrix = MATRIX_3D.orthographic(left, right, bottom, top, near, far)
-	let matrix = MATRIX_3D.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400)
+	let matrix = MATRIX_3D.makeZToWMatrix(programInfo.geometry.fudge)
+	matrix = MATRIX_3D.multiply(
+		matrix,
+		MATRIX_3D.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400),
+	)
 	matrix = MATRIX_3D.translate(matrix, ...programInfo.geometry.translation)
 	matrix = MATRIX_3D.xRotate(matrix, programInfo.geometry.rotation[0])
 	matrix = MATRIX_3D.yRotate(matrix, programInfo.geometry.rotation[1])
@@ -44,8 +48,6 @@ function drawScene(gl, programInfo, buffers, vao) {
 	// matrix = MATRIX_3D.translate(matrix, -50, -75) // centerOriginMatrix
 	// Set the matrix
 	gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
-	// Set the fudgeFactor
-	gl.uniform1f(programInfo.uniformLocations.u_fudgeFactor, programInfo.geometry.fudge)
 
 	setPositionAttribute(gl, buffers, programInfo)
 	setColorAttribute(gl, buffers, programInfo)

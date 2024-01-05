@@ -13,13 +13,7 @@ out vec4 v_color;
 
 void main() {
   // Multiply the position by the matrix.
-  vec4 position = u_matrix * a_position;
-
-  // Adjust z to obtain perspective by division
-  float zFactor = 1.0 + position.z * u_fudgeFactor;
-
-  // Divide x and y by z to obtain perspective
-  gl_Position = vec4(position.xyz, zFactor);
+  gl_Position =  u_matrix * a_position;
 
   // pass the color to the fragment shader
   v_color = a_color;
