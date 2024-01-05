@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Scene, GeometryProps, Geometry3dProps, SceneMeta} from '$lib/types'
+	import type {Scene, Geometry3dProps, SceneMeta} from '$lib/types'
 
 	import {afterUpdate} from 'svelte'
 
@@ -23,7 +23,7 @@
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
 	let height: number
-	let geometry: GeometryProps | Geometry3dProps
+	let geometry: Geometry3dProps
 	let programInfo
 
 	let frame: number
@@ -150,10 +150,8 @@
 						on:update={update}
 						threshold={breakpoint}
 						{geometry}
-						{meta}
 						canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
 						canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
-						{color}
 						disabled={state === 'pause'}
 					/>
 				{/if}
@@ -162,13 +160,7 @@
 						id={`${id}-geometry-3d`}
 						on:update={update}
 						threshold={breakpoint}
-						geometry={{
-							...geometry,
-							rotation:
-								typeof geometry.rotation === 'number'
-									? [geometry.rotation, geometry.rotation, geometry.rotation]
-									: geometry.rotation,
-						}}
+						{geometry}
 						{meta}
 						canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
 						canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}

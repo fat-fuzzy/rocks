@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {GeometryProps, SceneMeta} from '$types'
+	import type {Geometry3dProps} from '$types'
 
 	import {createEventDispatcher, onMount} from 'svelte'
 	import {enhance} from '$app/forms'
@@ -13,7 +13,7 @@
 	export let method = 'POST'
 	export let canvasWidth: number
 	export let canvasHeight: number
-	export let geometry: GeometryProps
+	export let geometry: Geometry3dProps
 	export let background = ''
 	export let layout = ''
 	export let threshold = ''
@@ -22,7 +22,6 @@
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
 	export let disabled: boolean
-	export let meta: SceneMeta | undefined
 
 	const dispatch = createEventDispatcher()
 
@@ -35,15 +34,13 @@
 			value,
 		})
 
-	let {width, height, scale, translation, rotation} = geometry
+	let {scale, translation, rotation} = geometry
 
 	// input attributes
-	let angle = 0
+	let [angle] = rotation
 
 	// Position
-	let [coordX, coordY] = [canvasWidth / 2, canvasHeight / 2]
-
-	// Rotation
+	let [coordX, coordY] = translation
 
 	// Scale
 	let [scaleX, scaleY] = scale
@@ -56,10 +53,8 @@
 	$: value = {
 		color: geometry.color,
 		translation,
-		rotation: rotatedAngle,
+		rotation: [rotatedAngle],
 		scale,
-		width,
-		height,
 	}
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	$: backgroundClass = background ? `bg:${background}` : ''
@@ -106,8 +101,8 @@
 		bind:scaleY
 		maxX={5}
 		maxY={5}
-		minX={meta?.minScaleX ?? -5}
-		minY={meta?.minScaleY ?? -5}
+		minX={-5}
+		minY={-5}
 		on:input={update}
 		color={'highlight'}
 		size={`xs l:burrito:${threshold} maki:inline`}
