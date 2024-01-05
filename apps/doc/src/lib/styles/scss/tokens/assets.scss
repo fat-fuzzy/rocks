@@ -46,6 +46,7 @@ $bullseye: '🎯';
 $world-map: '🗺️';
 $game-dice: '🎲';
 $film-camera: '🎥';
+$film-frames: '🎞️';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -112,7 +113,8 @@ $emojis: (
 	bullseye: #{$bullseye},
 	projection: #{$world-map},
 	matrix-3d: #{$game-dice},
-	camera-3d: #{$film-camera}
+	camera-3d: #{$film-camera},
+	animation-3d: #{$film-frames}
 );
 
 $assets: (
