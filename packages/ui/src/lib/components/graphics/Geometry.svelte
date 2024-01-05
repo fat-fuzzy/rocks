@@ -15,9 +15,9 @@
 	export let canvasHeight: number
 	export let geometry: GeometryProps
 	export let background = ''
+	export let layout = ''
 	export let threshold = ''
 	export let size = ''
-	export let layout = ''
 	export let formaction = 'updateGeometry'
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
