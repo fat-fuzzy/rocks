@@ -154,22 +154,15 @@ function getGeometryHierarchical(canvasWidth, canvasHeight) {
  * @returns geometry
  */
 function getGeometryMatrix3D(canvasWidth, canvasHeight, maxDepth) {
-	const width = randomInt(canvasWidth)
-	const height = randomInt(canvasHeight)
-	const depth = maxDepth ? randomInt(maxDepth / 2) : height
+	const tx = -150
+	const ty = 0
+	const tz = -360
 	return {
 		color: geometries.DEFAULT_3D_GEOMETRY_COLORS,
-		translation: [width, height, depth],
-		rotation: [
-			Number(degToRad(randomInt(360)).toFixed()),
-			Number(degToRad(randomInt(360)).toFixed()),
-			Number(degToRad(randomInt(360)).toFixed()),
-		],
+		translation: [tx, ty, tz],
+		rotation: [190, 40, 30],
 		scale: [1, 1, 1],
-		width,
-		height,
-		depth,
-		fieldOfView: degToRad(60),
+		fieldOfView: 60,
 	}
 }
 
