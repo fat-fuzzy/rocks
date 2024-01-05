@@ -45,6 +45,7 @@ $russian-dolls: '🪆';
 $bullseye: '🎯';
 $world-map: '🗺️';
 $game-dice: '🎲';
+$film-camera: '🎥';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -110,7 +111,8 @@ $emojis: (
 	russian-dolls: #{$russian-dolls},
 	bullseye: #{$bullseye},
 	projection: #{$world-map},
-	matrix-3d: #{$game-dice}
+	matrix-3d: #{$game-dice},
+	camera-3d: #{$film-camera}
 );
 
 $assets: (

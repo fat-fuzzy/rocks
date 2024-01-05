@@ -8,6 +8,7 @@
 	import Scale from '$lib/components/graphics/Scale.svelte'
 	import Rotation from '$lib/components/graphics/Rotation.svelte'
 	import FieldOfView from '$lib/components/graphics/FieldOfView.svelte'
+	import Camera from '$lib/components/graphics/Camera.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
 	export let id = 'geometry'
@@ -37,7 +38,7 @@
 			value,
 		})
 
-	let {scale, translation, rotation, fieldOfView} = geometry
+	let {scale, translation, rotation, fieldOfView, cameraAngle} = geometry
 
 	// input attributes
 	let maxZ = 1
@@ -62,6 +63,7 @@
 		rotation,
 		scale,
 		fieldOfView: degToRad(fieldOfView),
+		cameraAngle: degToRad(cameraAngle),
 	}
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	$: backgroundClass = background ? `bg:${background}` : ''
@@ -82,6 +84,16 @@
 		}
 	}}
 >
+	{#if meta?.camera}
+		<Camera
+			id={`${id}-camera-3d`}
+			bind:angle={cameraAngle}
+			on:input={update}
+			{color}
+			size={`xs l:burrito:${threshold}`}
+			{disabled}
+		/>
+	{/if}
 	<FieldOfView
 		id={`${id}-fieldOfView`}
 		bind:fieldOfView
@@ -91,66 +103,68 @@
 		size={`xs l:burrito:${threshold}`}
 		{disabled}
 	/>
-	<Position
-		id={`${id}-position`}
-		bind:coordX
-		bind:coordY
-		bind:coordZ
-		bind:maxX
-		bind:maxY
-		bind:maxZ
-		bind:minZ
-		on:input={update}
-		color={'primary'}
-		size={`xs l:burrito:${threshold}`}
-		{disabled}
-	/>
-	<Rotation
-		id={`${id}-rotation-x`}
-		label="Angle x"
-		bind:angle={angleX}
-		max={360}
-		on:input={update}
-		color={'accent'}
-		size={`xs l:burrito:${threshold}`}
-		{disabled}
-	/>
-	<Rotation
-		id={`${id}-rotation-y`}
-		label="Angle y"
-		bind:angle={angleY}
-		max={360}
-		on:input={update}
-		color={'accent'}
-		size={`xs l:burrito:${threshold}`}
-		{disabled}
-	/>
-	<Rotation
-		id={`${id}-rotation-z`}
-		label="Angle z"
-		bind:angle={angleZ}
-		max={360}
-		on:input={update}
-		color={'accent'}
-		size={`xs l:burrito:${threshold}`}
-		{disabled}
-	/>
-	<Scale
-		id={`${id}-scale`}
-		bind:scaleX
-		bind:scaleY
-		bind:scaleZ
-		maxX={5}
-		maxY={5}
-		maxZ={meta?.depth ? 5 : undefined}
-		minX={meta?.minScaleX ?? -5}
-		minY={meta?.minScaleY ?? -5}
-		minZ={meta?.depth ? meta?.minScaleZ ?? -5 : undefined}
-		on:input={update}
-		color={'highlight'}
-		size={`xs l:burrito:${threshold}`}
-		{disabled}
-	/>
+	{#if !meta?.camera}
+		<Position
+			id={`${id}-position`}
+			bind:coordX
+			bind:coordY
+			bind:coordZ
+			bind:maxX
+			bind:maxY
+			bind:maxZ
+			bind:minZ
+			on:input={update}
+			color={'primary'}
+			size={`xs l:burrito:${threshold}`}
+			{disabled}
+		/>
+		<Rotation
+			id={`${id}-rotation-x`}
+			label="Angle x"
+			bind:angle={angleX}
+			max={360}
+			on:input={update}
+			color={'accent'}
+			size={`xs l:burrito:${threshold}`}
+			{disabled}
+		/>
+		<Rotation
+			id={`${id}-rotation-y`}
+			label="Angle y"
+			bind:angle={angleY}
+			max={360}
+			on:input={update}
+			color={'accent'}
+			size={`xs l:burrito:${threshold}`}
+			{disabled}
+		/>
+		<Rotation
+			id={`${id}-rotation-z`}
+			label="Angle z"
+			bind:angle={angleZ}
+			max={360}
+			on:input={update}
+			color={'accent'}
+			size={`xs l:burrito:${threshold}`}
+			{disabled}
+		/>
+		<Scale
+			id={`${id}-scale`}
+			bind:scaleX
+			bind:scaleY
+			bind:scaleZ
+			maxX={5}
+			maxY={5}
+			maxZ={meta?.depth ? 5 : undefined}
+			minX={meta?.minScaleX ?? -5}
+			minY={meta?.minScaleY ?? -5}
+			minZ={meta?.depth ? meta?.minScaleZ ?? -5 : undefined}
+			on:input={update}
+			color={'highlight'}
+			size={`xs l:burrito:${threshold}`}
+			{disabled}
+		/>
+	{/if}
 	{#await Promise.resolve()}
 		<div class={`l:frame:twin card:lg`}>
 			<Button

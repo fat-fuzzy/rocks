@@ -19,7 +19,7 @@ export const sketches = [
 		asset: 'emoji:rect',
 		meta: {
 			input: 'form',
-			type: 'vector',
+			type: 'matrix-2d',
 		},
 	},
 	{
@@ -27,6 +27,10 @@ export const sketches = [
 		slug: 'geometry-2d',
 		title: 'Geometry 2D ',
 		asset: 'emoji:geometry-2d',
+		meta: {
+			input: 'form',
+			type: 'matrix-2d',
+		},
 	},
 	{
 		id: '005',
@@ -76,6 +80,18 @@ export const sketches = [
 		meta: {
 			input: 'form',
 			type: 'matrix-3d',
+			depth: 400,
+		},
+	},
+	{
+		id: '010',
+		slug: 'camera-3d',
+		title: 'Camera 3D',
+		asset: 'emoji:camera-3d',
+		meta: {
+			input: 'form',
+			type: 'matrix-3d',
+			camera: true,
 			depth: 400,
 		},
 	},

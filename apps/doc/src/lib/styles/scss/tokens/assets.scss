@@ -17,7 +17,6 @@ $heart: '❤️';
 $sparkles: '✨';
 $egg: '🥚';
 $chick: '🐥';
-$ruler: '📐';
 $link: '🔗';
 $point-left: '👈';
 $point-right: '👉';
@@ -38,6 +37,15 @@ $lotus: '🪷';
 $hole: '🕳️';
 $robot: '🤖';
 $star: '🌟';
+$slot-machine: '🎰';
+$yellow-square: '🟨';
+$straight-ruler: '📏';
+$triangular-ruler: '📐';
+$russian-dolls: '🪆';
+$bullseye: '🎯';
+$world-map: '🗺️';
+$game-dice: '🎲';
+$film-camera: '🎥';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -90,11 +98,21 @@ $emojis: (
 
 	// Playground fixture emojis
 	sketch: #{$spouting-whale},
-	geometry-2d: #{$ruler},
 	play: #{$sparkles},
 	pause: #{$lotus},
 	clear: #{$spouting-whale},
-	not-found: #{$hole}
+	not-found: #{$hole},
+
+	// Sketches
+	random: #{$slot-machine},
+	rect: #{$yellow-square},
+	geometry-2d: #{$straight-ruler},
+	geometry-3d: #{$triangular-ruler},
+	russian-dolls: #{$russian-dolls},
+	bullseye: #{$bullseye},
+	projection: #{$world-map},
+	matrix-3d: #{$game-dice},
+	camera-3d: #{$film-camera}
 );
 
 $assets: (
