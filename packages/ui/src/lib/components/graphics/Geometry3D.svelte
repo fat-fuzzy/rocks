@@ -155,10 +155,10 @@
 			bind:scaleZ
 			maxX={5}
 			maxY={5}
-			maxZ={meta?.depth ? 5 : undefined}
-			minX={meta?.minScaleX ?? -5}
-			minY={meta?.minScaleY ?? -5}
-			minZ={meta?.depth ? meta?.minScaleZ ?? -5 : undefined}
+			maxZ={5}
+			minX={-5}
+			minY={-5}
+			minZ={-5}
 			on:input={update}
 			color={'highlight'}
 			size={`xs l:burrito:${threshold}`}
