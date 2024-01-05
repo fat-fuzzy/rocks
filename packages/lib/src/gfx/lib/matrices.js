@@ -330,6 +330,26 @@ const MATRIX_3D = {
 			0, 0, 0, 1,
 		]
 	},
+	/**
+	 *  Assumes there is a camera at the origin (0,0,0)
+	 * @param {*} fieldOfViewInRadians
+	 * @param {*} aspect
+	 * @param {*} near
+	 * @param {*} far
+	 * @returns geometry projection in clip space
+	 */
+	perspective: function (fieldOfViewInRadians, aspect, near, far) {
+		let f = Math.tan(Math.PI * 0.5 - 0.5 * fieldOfViewInRadians)
+		let rangeInv = 1.0 / (near - far)
+
+		/* prettier-ignore */
+		return [
+			f/aspect, 0, 0, 0,
+			0, f, 0, 0,
+			0, 0, (near + far) * rangeInv, -1,
+			0, 0, near * far * rangeInv * 2, 0,
+		]
+	},
 }
 
 export default {

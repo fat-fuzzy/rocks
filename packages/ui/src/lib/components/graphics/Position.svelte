@@ -15,6 +15,7 @@
 	export let maxX = 0
 	export let maxY = 0
 	export let maxZ: number | undefined = undefined
+	export let minZ: number | undefined = undefined
 	export let disabled: boolean
 
 	function updateX() {
@@ -70,6 +71,7 @@
 			name={`${id}-z`}
 			label="z"
 			max={maxZ}
+			min={minZ}
 			step={0.01}
 			on:input={updateZ}
 			{size}

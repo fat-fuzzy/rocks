@@ -35,11 +35,10 @@ function drawScene(gl, programInfo, buffers, vao) {
 	// var near = 400
 	// var far = -400
 	// let matrix = MATRIX_3D.orthographic(left, right, bottom, top, near, far)
-	let matrix = MATRIX_3D.makeZToWMatrix(programInfo.geometry.fudge)
-	matrix = MATRIX_3D.multiply(
-		matrix,
-		MATRIX_3D.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400),
-	)
+	let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
+	let zNear = 1
+	let zFar = 2000
+	let matrix = MATRIX_3D.perspective(programInfo.geometry.fieldOfView, aspect, zNear, zFar)
 	matrix = MATRIX_3D.translate(matrix, ...programInfo.geometry.translation)
 	matrix = MATRIX_3D.xRotate(matrix, programInfo.geometry.rotation[0])
 	matrix = MATRIX_3D.yRotate(matrix, programInfo.geometry.rotation[1])
