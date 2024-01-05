@@ -61,6 +61,7 @@
 	$: variant = styles.blocks?.element.variant ?? variant
 	$: color = styles.blocks?.element.color ?? color
 	$: size = styles.blocks?.element.size ?? size
+	$: asset = sketchData?.asset ?? asset
 	// Layout options
 	// - [layout + breakpoint] work together
 	$: layout = styles.layouts?.layout.layout ?? layout

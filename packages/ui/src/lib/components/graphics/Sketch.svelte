@@ -32,13 +32,13 @@
 
 	$: state = feedback ? `${feedback.status}` : state
 	$: showGeometry = geometry !== undefined && (state === 'play' || state === 'pause')
-	$: currentAsset = state === 'clear' ? asset : `emoji:${state}`
+	$: currentAsset = state === 'clear' && asset ? asset : `emoji:${state}`
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
 		: `l:frame:${dimensions}`
 	$: frameClasses = canvas
 		? `canvas ${backgroundClass} ${layer} state:${state} ${currentAsset}`
-		: `canvas ${backgroundClass} ${layer} card:xl `
+		: `canvas ${backgroundClass} ${layer} card:xl`
 
 	function init() {
 		if (canvas) {
