@@ -174,6 +174,24 @@ function getGeometryCamera3D() {
 	}
 }
 
+/**
+ * @returns geometry
+ */
+function getGeometryAnimation3D() {
+	const tx = -150
+	const ty = 0
+	const tz = -360
+	return {
+		color: geometries.DEFAULT_3D_GEOMETRY_COLORS,
+		translation: [tx, ty, tz],
+		rotation: [190, 40, 30],
+		scale: [1, 1, 1],
+		fieldOfView: 60,
+		cameraAngle: 0,
+		animationSpeed: 1.2,
+	}
+}
+
 export default {
 	resize,
 	resizeHD,
@@ -187,4 +205,5 @@ export default {
 	getGeometryHierarchical,
 	getGeometryMatrix3D,
 	getGeometryCamera3D,
+	getGeometryAnimation3D,
 }

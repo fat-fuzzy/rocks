@@ -92,7 +92,16 @@ export const sketches = [
 			input: 'form',
 			type: 'matrix-3d',
 			camera: true,
-			depth: 400,
+		},
+	},
+	{
+		id: '011',
+		slug: 'animation-3d',
+		title: 'Animation 3D',
+		asset: 'emoji:animation-3d',
+		meta: {
+			input: 'form',
+			type: 'matrix-3d',
 		},
 	},
 	// {

@@ -16,6 +16,7 @@ import sketch_007 from './sketches/007-center-origin/index'
 import sketch_008 from './sketches/008-projection/index'
 import sketch_009 from './sketches/009-matrix-3d/index'
 import sketch_010 from './sketches/010-camera-3d/index'
+import sketch_011 from './sketches/011-animation-3d/index'
 
 // Utilities
 const sketches = {
@@ -29,6 +30,7 @@ const sketches = {
 	'008': sketch_008,
 	'009': sketch_009,
 	'010': sketch_010,
+	'011': sketch_011,
 }
 // const sketches = [sketch_001, sketch_002, sketch_003, sketch_004]
 

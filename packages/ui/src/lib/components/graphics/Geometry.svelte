@@ -37,13 +37,13 @@
 	let {scale, translation, rotation} = geometry
 
 	// input attributes
-	let [angle] = rotation
+	let [angle] = rotation ?? []
 
 	// Position
-	let [coordX, coordY] = translation
+	let [coordX, coordY] = translation ?? []
 
 	// Scale
-	let [scaleX, scaleY] = scale
+	let [scaleX, scaleY] = scale ?? []
 
 	$: maxX = canvasWidth
 	$: maxY = canvasHeight

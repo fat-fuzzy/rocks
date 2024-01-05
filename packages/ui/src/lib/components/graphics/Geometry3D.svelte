@@ -38,7 +38,7 @@
 			value,
 		})
 
-	let {scale, translation, rotation, fieldOfView, cameraAngle} = geometry
+	let {scale, translation, rotation, fieldOfView, cameraAngle, animationSpeed} = geometry
 
 	// input attributes
 	let maxZ = 1
@@ -64,6 +64,7 @@
 		scale,
 		fieldOfView: fieldOfView ? degToRad(fieldOfView) : undefined,
 		cameraAngle: cameraAngle ? degToRad(cameraAngle) : undefined,
+		animationSpeed,
 	}
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	$: backgroundClass = background ? `bg:${background}` : ''
