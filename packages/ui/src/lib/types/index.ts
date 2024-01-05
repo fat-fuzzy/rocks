@@ -39,6 +39,7 @@ export type Geometry3dProps = {
 	scale?: (number | undefined)[]
 	fieldOfView?: number
 	cameraAngle?: number
+	animationSpeed?: number
 }
 
 export type ProgramInfo = {
