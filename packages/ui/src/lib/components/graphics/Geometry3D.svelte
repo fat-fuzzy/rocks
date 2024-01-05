@@ -94,8 +94,7 @@
 			size={`xs l:burrito:${threshold}`}
 			{disabled}
 		/>
-	{/if}
-	{#if !meta?.camera}
+	{:else}
 		<FieldOfView
 			id={`${id}-fieldOfView`}
 			bind:fieldOfView

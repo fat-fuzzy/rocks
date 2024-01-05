@@ -16,6 +16,7 @@ import {vert} from './shaders/vertex-shader-3d'
 let gl
 let programInfo
 let buffers
+let then = 0 // used to measure time since last frame
 
 function clear() {
 	if (!gl) {
@@ -71,11 +72,19 @@ function main(canvas) {
 	return programInfo
 }
 
-function draw() {
+function draw(now) {
+	// Calculate frame rate
+	// Convert time to seconds
+	now *= 0.001
+	let deltaTime = now - then
+	// Save time for next draw
+	then = now
+
 	const vao = gl.createVertexArray()
 	drawScene(gl, programInfo, buffers, vao)
+
 	// Rotate the angle
-	programInfo.geometry.rotation[1] += programInfo.geometry.animationSpeed / 60.0
+	programInfo.geometry.rotation[1] += programInfo.geometry.animationSpeed * deltaTime
 	update(programInfo.geometry)
 }
 
