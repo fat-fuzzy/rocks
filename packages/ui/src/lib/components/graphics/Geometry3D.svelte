@@ -37,13 +37,13 @@
 			value,
 		})
 
-	let {width, height, depth, scale, translation, rotation, fieldOfView} = geometry
+	let {scale, translation, rotation, fieldOfView} = geometry
 
 	// input attributes
 	let maxZ = 1
 	let minZ = -1000
 	// Position
-	let [coordX, coordY, coordZ] = [canvasWidth / 2, canvasHeight / 2, meta?.depth ?? undefined]
+	let [coordX, coordY, coordZ] = translation
 
 	// Scale
 	let [scaleX, scaleY, scaleZ] = scale
@@ -61,10 +61,7 @@
 		translation,
 		rotation,
 		scale,
-		width,
-		height,
-		depth,
-		fieldOfView,
+		fieldOfView: degToRad(fieldOfView),
 	}
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	$: backgroundClass = background ? `bg:${background}` : ''
