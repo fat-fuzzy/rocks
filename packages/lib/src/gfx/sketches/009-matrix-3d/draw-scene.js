@@ -44,6 +44,8 @@ function drawScene(gl, programInfo, buffers, vao) {
 	// matrix = MATRIX_3D.translate(matrix, -50, -75) // centerOriginMatrix
 	// Set the matrix
 	gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
+	// Set the fudgeFactor
+	gl.uniform1f(programInfo.uniformLocations.u_fudgeFactor, programInfo.geometry.fudge)
 
 	setPositionAttribute(gl, buffers, programInfo)
 	setColorAttribute(gl, buffers, programInfo)

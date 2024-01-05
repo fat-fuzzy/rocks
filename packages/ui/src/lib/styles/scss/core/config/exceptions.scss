@@ -2,6 +2,7 @@
 
 // Remove DOM node from document
 // - DOM node becomes inaccessible to everyone
+[hidden],
 .hide\:rm-node {
 	display: none;
 }
