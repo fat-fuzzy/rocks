@@ -34,9 +34,9 @@ export type Tab = {
 
 export type Geometry3dProps = {
 	color: number[]
-	translation: (number | undefined)[]
-	rotation: number[]
-	scale: (number | undefined)[]
+	translation?: (number | undefined)[]
+	rotation?: number[]
+	scale?: (number | undefined)[]
 	fieldOfView?: number
 	cameraAngle?: number
 }

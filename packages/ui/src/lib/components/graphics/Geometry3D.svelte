@@ -44,26 +44,26 @@
 	let maxZ = 1
 	let minZ = -1000
 	// Position
-	let [coordX, coordY, coordZ] = translation
+	let [coordX, coordY, coordZ] = translation ?? []
 
 	// Scale
-	let [scaleX, scaleY, scaleZ] = scale
+	let [scaleX, scaleY, scaleZ] = scale ?? []
 
 	// Rotation
-	let [angleX, angleY, angleZ] = rotation
+	let [angleX, angleY, angleZ] = rotation ?? []
 
 	$: maxX = canvasWidth
 	$: maxY = canvasHeight
-	$: translation = [coordX, coordY, coordZ]
-	$: scale = [scaleX, scaleY, scaleZ]
-	$: rotation = [degToRad(angleX), degToRad(angleY), degToRad(angleZ)]
+	$: translation = translation ? [coordX, coordY, coordZ] : undefined
+	$: scale = scale ? [scaleX, scaleY, scaleZ] : undefined
+	$: rotation = rotation ? [degToRad(angleX), degToRad(angleY), degToRad(angleZ)] : undefined
 	$: value = {
 		color: geometry.color,
 		translation,
 		rotation,
 		scale,
-		fieldOfView: degToRad(fieldOfView),
-		cameraAngle: degToRad(cameraAngle),
+		fieldOfView: fieldOfView ? degToRad(fieldOfView) : undefined,
+		cameraAngle: cameraAngle ? degToRad(cameraAngle) : undefined,
 	}
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	$: backgroundClass = background ? `bg:${background}` : ''
@@ -94,16 +94,16 @@
 			{disabled}
 		/>
 	{/if}
-	<FieldOfView
-		id={`${id}-fieldOfView`}
-		bind:fieldOfView
-		max={180}
-		on:input={update}
-		{color}
-		size={`xs l:burrito:${threshold}`}
-		{disabled}
-	/>
 	{#if !meta?.camera}
+		<FieldOfView
+			id={`${id}-fieldOfView`}
+			bind:fieldOfView
+			max={180}
+			on:input={update}
+			{color}
+			size={`xs l:burrito:${threshold}`}
+			{disabled}
+		/>
 		<Position
 			id={`${id}-position`}
 			bind:coordX
