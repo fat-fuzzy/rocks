@@ -1,5 +1,8 @@
 import matrices from './matrices'
 import utils from './utils'
+import vectors from './vectors'
+
+const {VECTOR} = vectors
 
 const {MATRIX_3D} = matrices
 
@@ -335,17 +338,18 @@ function flipAndCenter(geometry) {
 	var matrix = MATRIX_3D.xRotation(Math.PI)
 	matrix = MATRIX_3D.translate(matrix, -50, -75, -15) // This is specific to DEFAULT_3D_GEOMETRY_COORDS
 
-	for (var ii = 0; ii < geometry.length; ii += 3) {
+	for (var i = 0; i < geometry.length; i += 3) {
 		var vector = MATRIX_3D.transformVector(matrix, [
-			geometry[ii + 0],
-			geometry[ii + 1],
-			geometry[ii + 2],
+			geometry[i + 0],
+			geometry[i + 1],
+			geometry[i + 2],
 			1,
 		])
-		coords[ii + 0] = vector[0]
-		coords[ii + 1] = vector[1]
-		coords[ii + 2] = vector[2]
+		coords[i + 0] = vector[0]
+		coords[i + 1] = vector[1]
+		coords[i + 2] = vector[2]
 	}
+
 	return coords
 }
 
@@ -353,9 +357,9 @@ function flipAndCenter(geometry) {
  *
  * @param {number} radius
  * @param {number} points
- * @param {number} inset
+ * @param {number} outset
  */
-function generatePolygon(points, radius, inset) {
+function generatePolygon(points, radius, outset) {
 	let angleInRadians
 	let x
 	let y
@@ -368,10 +372,12 @@ function generatePolygon(points, radius, inset) {
 		if (i === 0) {
 			angleInRadians = 0
 		} else {
-			angleInRadians = utils.degToRad(360 / (points * i))
+			angleInRadians = (i * Math.PI * 3) / points
 		}
-		x = Math.cos(angleInRadians)
-		y = Math.sin(angleInRadians)
+		x = Math.cos(angleInRadians) * radius
+		y = Math.sin(angleInRadians) * radius
+
+		// TODO: Continue here....
 		coords.push(x, y)
 		coords.push(x / 2, y / 2)
 		coords.push(x, 0)

@@ -21,9 +21,8 @@ function initPositionBuffer(gl, {translation, rotation, width, height}) {
 	// Select positionBuffer as current buffer to use for buffer ops
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
 
-	const coords = generatePolygon(5, 3, 3)
-	console.log('initPositionBuffer coords')
-	console.log(coords)
+	const coords = DEFAULT_3D_GEOMETRY_COORDS
+
 	// Pass the list of positions into WebGL to build the shape.
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)
 
