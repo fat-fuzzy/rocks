@@ -1,8 +1,7 @@
 import geometries from '../../lib/geometries'
 import matrices from '../../lib/matrices'
 
-const {DEFAULT_3D_GEOMETRY_COORDS, DEFAULT_3D_GEOMETRY_COLORS} = geometries
-const {MATRIX_3D} = matrices
+const {DEFAULT_3D_GEOMETRY_COORDS, DEFAULT_3D_GEOMETRY_COLORS, flipAndCenter} = geometries
 
 function initBuffers(gl) {
 	const positionBuffer = initPositionBuffer(gl)
@@ -21,7 +20,7 @@ function initPositionBuffer(gl) {
 	// Select positionBuffer as current buffer to use for buffer ops
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
 
-	const coords = DEFAULT_3D_GEOMETRY_COORDS
+	const coords = flipAndCenter(DEFAULT_3D_GEOMETRY_COORDS)
 
 	// // Center the geometry around the origin and flip it around
 

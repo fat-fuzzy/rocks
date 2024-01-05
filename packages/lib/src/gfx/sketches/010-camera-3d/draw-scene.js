@@ -51,13 +51,7 @@ function drawScene(gl, programInfo, buffers, vao) {
 	// Make the Projection matrix: move the projection space to vue space (=space in front of camera)
 	let viewProjectionMatrix = MATRIX_3D.multiply(projectionMatrix, viewMatrix)
 
-	// matrix = MATRIX_3D.translate(matrix, ...programInfo.geometry.translation)
-	// matrix = MATRIX_3D.xRotate(matrix, programInfo.geometry.rotation[0])
-	// matrix = MATRIX_3D.yRotate(matrix, programInfo.geometry.rotation[1])
-	// matrix = MATRIX_3D.zRotate(matrix, programInfo.geometry.rotation[2])
-	// matrix = MATRIX_3D.scale(matrix, ...programInfo.geometry.scale)
-	// Set the matrix
-
+	// Draw the geometries
 	for (let i = 0; i < geometryCount; i++) {
 		let angle = (i * Math.PI * 3) / geometryCount
 		let x = Math.cos(angle) * geometriesRadius

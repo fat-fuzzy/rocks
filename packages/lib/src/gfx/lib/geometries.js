@@ -1,3 +1,7 @@
+import matrices from './matrices'
+
+const {MATRIX_3D} = matrices
+
 /* prettier-ignore */
 const DEFAULT_GEOMETRY_COORDS = [
 	// left column
@@ -325,9 +329,29 @@ const DEFAULT_RECT_COORDS = [
 	30, 150,
 ]
 
+function flipAndCenter(geometry) {
+	let coords = []
+	var matrix = MATRIX_3D.xRotation(Math.PI)
+	matrix = MATRIX_3D.translate(matrix, -50, -75, -15)
+
+	for (var ii = 0; ii < geometry.length; ii += 3) {
+		var vector = MATRIX_3D.transformVector(matrix, [
+			geometry[ii + 0],
+			geometry[ii + 1],
+			geometry[ii + 2],
+			1,
+		])
+		coords[ii + 0] = vector[0]
+		coords[ii + 1] = vector[1]
+		coords[ii + 2] = vector[2]
+	}
+	return coords
+}
+
 export default {
 	DEFAULT_RECT_COORDS,
 	DEFAULT_GEOMETRY_COORDS,
 	DEFAULT_3D_GEOMETRY_COORDS,
 	DEFAULT_3D_GEOMETRY_COLORS,
+	flipAndCenter,
 }
