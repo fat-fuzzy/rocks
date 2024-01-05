@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.44
+
+### Patch Changes
+
+- a2eb7065: [gfx+ui+apps] Learn WebGL!
+
 ## 0.1.43
 
 ### Patch Changes
