@@ -11,7 +11,7 @@
 	export let id = 'camera'
 	export let label = 'Camera'
 	export let angle = 60
-	export let min = 0
+	export let min = -360
 	export let max = 360
 	export let step = 0.01
 	export let disabled: boolean
