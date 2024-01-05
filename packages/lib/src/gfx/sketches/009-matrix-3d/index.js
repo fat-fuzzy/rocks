@@ -62,8 +62,10 @@ function main(canvas) {
 			a_color: gl.getAttribLocation(program, 'a_color'),
 		},
 		uniformLocations: {
-			// bind u_translation
+			// bind u_matrix
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
+			// bind u_fudgeFactor
+			u_fudgeFactor: gl.getUniformLocation(program, 'u_fudgeFactor'),
 		},
 		geometry: utils.getGeometryMatrix3D(canvas.clientWidth, canvas.clientHeight, 400),
 	}

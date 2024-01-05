@@ -50,6 +50,7 @@ export type Geometry3dProps = {
 	width: number // of geometry
 	height: number // of geometry
 	depth?: number
+	fudge: number
 }
 
 export type ProgramInfo = {

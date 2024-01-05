@@ -7,6 +7,7 @@
 	import Position from '$lib/components/graphics/Position.svelte'
 	import Scale from '$lib/components/graphics/Scale.svelte'
 	import Rotation from '$lib/components/graphics/Rotation.svelte'
+	import Fudge from '$lib/components/graphics/Fudge.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
 	export let id = 'geometry'
@@ -34,7 +35,7 @@
 			value,
 		})
 
-	let {width, height, depth, scale, translation, rotation} = geometry
+	let {width, height, depth, scale, translation, rotation, fudge} = geometry
 
 	// input attributes
 	let maxZ = 400
@@ -60,6 +61,7 @@
 		width,
 		height,
 		depth,
+		fudge,
 	}
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	$: backgroundClass = background ? `bg:${background}` : ''
@@ -80,6 +82,15 @@
 		}
 	}}
 >
+	<Fudge
+		id={`${id}-fudge`}
+		bind:fudge
+		max={2}
+		on:input={update}
+		{color}
+		size={`xs l:burrito:${threshold}`}
+		{disabled}
+	/>
 	<Position
 		id={`${id}-position`}
 		bind:coordX

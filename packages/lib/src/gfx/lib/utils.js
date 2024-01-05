@@ -169,6 +169,7 @@ function getGeometryMatrix3D(canvasWidth, canvasHeight, maxDepth) {
 		width,
 		height,
 		depth,
+		fudge: 1.0,
 	}
 }
 
