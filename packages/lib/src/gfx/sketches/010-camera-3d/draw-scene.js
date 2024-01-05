@@ -46,7 +46,7 @@ function drawScene(gl, programInfo, buffers, vao) {
 
 	// Initialize the Camera matrix
 	let cameraMatrix = MATRIX_3D.yRotation(programInfo.geometry.cameraAngle)
-	cameraMatrix = MATRIX_3D.translate(cameraMatrix, 0, 0, geometriesRadius * 1.5)
+	cameraMatrix = MATRIX_3D.translate(cameraMatrix, 0, 65, geometriesRadius * 1.5)
 
 	/* prettier-ignore */
 	let cameraPosition = [
