@@ -1,5 +1,13 @@
 # @fat-fuzzy/play
 
+## 0.1.29
+
+### Patch Changes
+
+- a2eb7065: [gfx+ui+apps] Learn WebGL!
+- Updated dependencies [a2eb7065]
+  - @fat-fuzzy/lib@0.1.8
+
 ## 0.1.28
 
 ### Patch Changes
