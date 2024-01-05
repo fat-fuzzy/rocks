@@ -27,14 +27,6 @@ function drawScene(gl, programInfo, buffers, vao) {
 	gl.bindVertexArray(vao)
 
 	// Initialize the matrices
-	// Compute tool Matrices
-	// var left = 0
-	// var right = gl.canvas.clientWidth
-	// var bottom = gl.canvas.clientHeight
-	// var top = 0
-	// var near = 400
-	// var far = -400
-	// let matrix = MATRIX_3D.orthographic(left, right, bottom, top, near, far)
 	let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
 	let zNear = 1
 	let zFar = 2000
@@ -44,7 +36,6 @@ function drawScene(gl, programInfo, buffers, vao) {
 	matrix = MATRIX_3D.yRotate(matrix, programInfo.geometry.rotation[1])
 	matrix = MATRIX_3D.zRotate(matrix, programInfo.geometry.rotation[2])
 	matrix = MATRIX_3D.scale(matrix, ...programInfo.geometry.scale)
-	// matrix = MATRIX_3D.translate(matrix, -50, -75) // centerOriginMatrix
 	// Set the matrix
 	gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
 
