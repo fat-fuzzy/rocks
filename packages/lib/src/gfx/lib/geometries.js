@@ -1,4 +1,5 @@
 import matrices from './matrices'
+import utils from './utils'
 
 const {MATRIX_3D} = matrices
 
@@ -348,10 +349,43 @@ function flipAndCenter(geometry) {
 	return coords
 }
 
+/**
+ *
+ * @param {number} radius
+ * @param {number} points
+ * @param {number} inset
+ */
+function generatePolygon(points, radius, inset) {
+	let angleInRadians
+	let x
+	let y
+
+	let outerCoords = []
+	let innerCoords = []
+	let coords = []
+
+	for (let i = 0; i < points; i++) {
+		if (i === 0) {
+			angleInRadians = 0
+		} else {
+			angleInRadians = utils.degToRad(360 / (points * i))
+		}
+		x = Math.cos(angleInRadians)
+		y = Math.sin(angleInRadians)
+		coords.push(x, y)
+		coords.push(x / 2, y / 2)
+		coords.push(x, 0)
+		coords.push(0, 0)
+	}
+
+	return coords
+}
+
 export default {
 	DEFAULT_RECT_COORDS,
 	DEFAULT_GEOMETRY_COORDS,
 	DEFAULT_3D_GEOMETRY_COORDS,
 	DEFAULT_3D_GEOMETRY_COLORS,
 	flipAndCenter,
+	generatePolygon,
 }
