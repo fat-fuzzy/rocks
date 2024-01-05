@@ -7,7 +7,7 @@
 	import Position from '$lib/components/graphics/Position.svelte'
 	import Scale from '$lib/components/graphics/Scale.svelte'
 	import Rotation from '$lib/components/graphics/Rotation.svelte'
-	import Fudge from '$lib/components/graphics/Fudge.svelte'
+	import FieldOfView from '$lib/components/graphics/FieldOfView.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
 	export let id = 'geometry'
@@ -37,10 +37,11 @@
 			value,
 		})
 
-	let {width, height, depth, scale, translation, rotation, fudge} = geometry
+	let {width, height, depth, scale, translation, rotation, fieldOfView} = geometry
 
 	// input attributes
-	let maxZ = 400
+	let maxZ = 1
+	let minZ = -1000
 	// Position
 	let [coordX, coordY, coordZ] = [canvasWidth / 2, canvasHeight / 2, meta?.depth ?? undefined]
 
@@ -63,7 +64,7 @@
 		width,
 		height,
 		depth,
-		fudge,
+		fieldOfView,
 	}
 	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	$: backgroundClass = background ? `bg:${background}` : ''
@@ -84,10 +85,10 @@
 		}
 	}}
 >
-	<Fudge
-		id={`${id}-fudge`}
-		bind:fudge
-		max={2}
+	<FieldOfView
+		id={`${id}-fieldOfView`}
+		bind:fieldOfView
+		max={180}
 		on:input={update}
 		{color}
 		size={`xs l:burrito:${threshold}`}
@@ -101,6 +102,7 @@
 		bind:maxX
 		bind:maxY
 		bind:maxZ
+		bind:minZ
 		on:input={update}
 		color={'primary'}
 		size={`xs l:burrito:${threshold}`}
