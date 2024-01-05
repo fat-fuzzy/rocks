@@ -148,12 +148,9 @@ function getGeometryHierarchical(canvasWidth, canvasHeight) {
 }
 
 /**
- * @param {number} canvasWidth
- * @param {number} canvasHeight
- * @param {number} maxDepth
  * @returns geometry
  */
-function getGeometryMatrix3D(canvasWidth, canvasHeight, maxDepth) {
+function getGeometryMatrix3D() {
 	const tx = -150
 	const ty = 0
 	const tz = -360
@@ -163,6 +160,17 @@ function getGeometryMatrix3D(canvasWidth, canvasHeight, maxDepth) {
 		rotation: [190, 40, 30],
 		scale: [1, 1, 1],
 		fieldOfView: 60,
+	}
+}
+
+/**
+ * @returns geometry
+ */
+function getGeometryCamera3D() {
+	return {
+		color: geometries.DEFAULT_3D_GEOMETRY_COLORS,
+		fieldOfView: 60,
+		cameraAngle: 0,
 	}
 }
 
@@ -178,4 +186,5 @@ export default {
 	getGeometryMatrix2D,
 	getGeometryHierarchical,
 	getGeometryMatrix3D,
+	getGeometryCamera3D,
 }

@@ -65,9 +65,9 @@ function main(canvas) {
 			// bind u_matrix
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		geometry: utils.getGeometryMatrix3D(canvas.clientWidth, canvas.clientHeight, -360),
+		geometry: utils.getGeometryCamera3D(),
 	}
-	buffers = initBuffers(gl, programInfo)
+	buffers = initBuffers(gl)
 	return programInfo
 }
 
