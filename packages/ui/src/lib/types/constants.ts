@@ -1,4 +1,4 @@
-import type {Settings, Tab, GeometryProps} from '$types'
+import type {Settings, Tab, Geometry3dProps} from '$types'
 import type {StyleTree} from '$lib/api/styles/types'
 import lib from '@fat-fuzzy/lib'
 
@@ -9,7 +9,7 @@ const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'show'}
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 
 const DEFAULT_PLAYER_STATE: Settings = {value: ''}
-const DEFAULT_GEOMETRY_STATE: GeometryProps = lib.gfx.utils.getGeometryDefaults()
+const DEFAULT_GEOMETRY_STATE: Geometry3dProps = lib.gfx.utils.getGeometryDefaults()
 const DEFAULT_SCENE_ID = '004'
 
 const DEFAULT_DS_STATE: {

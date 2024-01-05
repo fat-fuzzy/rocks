@@ -32,45 +32,30 @@ export type Tab = {
 	asset?: string
 }
 
-export type GeometryProps = {
-	color: number[]
-	translation: (number | undefined)[]
-	rotation: number | number[]
-	scale: (number | undefined)[]
-	width: number // of geometry
-	height: number // of geometry
-	depth?: number
-}
-
 export type Geometry3dProps = {
 	color: number[]
 	translation: (number | undefined)[]
 	rotation: number[]
 	scale: (number | undefined)[]
-	width: number // of geometry
-	height: number // of geometry
-	depth?: number
-	fieldOfView: number
+	fieldOfView?: number
+	cameraAngle?: number
 }
 
 export type ProgramInfo = {
-	geometry: GeometryProps
+	geometry: Geometry3dProps
 }
 
 export type SceneMeta = {
 	input: string
 	type: string
-	minScaleX: number
-	minScaleY: number
-	minScaleZ?: number
-	depth: number
+	camera: number
 }
 
 export type Scene = {
 	id: string
 	draw: () => void
 	clear: () => void
-	update: (value: GeometryProps, event?: MouseEvent | TouchEvent) => void
+	update: (value: Geometry3dProps, event?: MouseEvent | TouchEvent) => void
 	main: (canvas: HTMLCanvasElement) => ProgramInfo
 	meta?: SceneMeta
 }
