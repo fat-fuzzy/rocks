@@ -25,11 +25,14 @@ The `Sketch` takes as props a `Scene` object that must provide the following fun
 - `update` : a function that updates the scene's `programInfo` and WebGL buffers. This function is called when the user interacts with the geometry controls
 - `clear` : a function that resets the `Scene`
 
-The source code of the `Scene` used for this demo can be found here: [(GitHub) /packages/lib/gfx/ sketches/004](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib/src/gfx/sketches/004)
+The source code of the `Scene` used for this demo can be found here: [(GitHub) /packages/lib/gfx/ sketches/004](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib/src/gfx/sketches/009)
 
 ### Related Components
 
 - `Geometry` component in `graphics`
+- `Geometry3D` component in `graphics`
+- `FieldOfView` component in `graphics`
+- `Camera` component in `graphics`
 - `Player` component in `graphics`
 - `Switcher` component in `layouts`
 - `Sidebar` component in `layouts`
@@ -40,8 +43,7 @@ This component uses libraries and animations defined in the package [(GitHub) /p
 
 ## Resources
 
-The `Scene` objects used in these demos are based on the examples provided in the [webglfundamentals.org](https://webglfundamentals.org/)tutorials. The geometry interactions are based on the sections
-on [translation](https://webglfundamentals.org/webgl/lessons/webgl-2d-translation.html), [rotation](https://webglfundamentals.org/webgl/lessons/webgl-2d-rotation.html) and [scale](https://webglfundamentals.org/webgl/lessons/webgl-2d-scale.html)
+The `Scene` objects used in these demos are based on the examples provided in the [webglfundamentals.org](https://webglfundamentals.org/)and [webgl2fundamentals.org](https://webgl2fundamentals.org/) tutorials.
 
 - [MDN - The Canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)
 - [MDN - Getting started with WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL)
