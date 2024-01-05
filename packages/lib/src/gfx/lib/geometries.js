@@ -332,7 +332,7 @@ const DEFAULT_RECT_COORDS = [
 function flipAndCenter(geometry) {
 	let coords = []
 	var matrix = MATRIX_3D.xRotation(Math.PI)
-	matrix = MATRIX_3D.translate(matrix, -50, -75, -15)
+	matrix = MATRIX_3D.translate(matrix, -50, -75, -15) // This is specific to DEFAULT_3D_GEOMETRY_COORDS
 
 	for (var ii = 0; ii < geometry.length; ii += 3) {
 		var vector = MATRIX_3D.transformVector(matrix, [
