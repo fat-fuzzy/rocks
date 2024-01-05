@@ -10,6 +10,7 @@
 	export let id = 'sketch'
 	export let scene: Scene
 	export let title: string
+	export let asset: string
 	export let dimensions = 'video'
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
 	export let color = ''
@@ -31,12 +32,12 @@
 
 	$: state = feedback ? `${feedback.status}` : state
 	$: showGeometry = geometry !== undefined && (state === 'play' || state === 'pause')
-	$: asset = state === 'clear' ? 'sketch' : state
+	$: currentAsset = state === 'clear' ? asset : `emoji:${state}`
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
 		: `l:frame:${dimensions}`
 	$: frameClasses = canvas
-		? `canvas ${backgroundClass} ${layer} state:${state} emoji:${asset}`
+		? `canvas ${backgroundClass} ${layer} state:${state} ${currentAsset}`
 		: `canvas ${backgroundClass} ${layer} card:xl `
 
 	function init() {

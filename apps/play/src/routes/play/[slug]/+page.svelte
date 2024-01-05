@@ -28,6 +28,6 @@
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
 	{#key $page.data.slug}
-		<Sketch {scene} {title} {dimensions} {meta} size="sm" />
+		<Sketch {scene} {title} {dimensions} {meta} asset={sketch.asset} size="sm" />
 	{/key}
 </div>
