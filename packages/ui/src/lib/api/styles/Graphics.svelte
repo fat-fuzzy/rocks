@@ -14,10 +14,10 @@
 
 	export let title = ''
 	export let name = title
-	$: currentSketch = title === 'Sketch' ? '009' : '004'
+	let currentSketch = title === 'Sketch' ? '011' : '004'
 	export let component: ComponentType
 	export let props: any
-	export let scene = lib.gfx.sketches['009']
+	export let scene = lib.gfx.sketches[currentSketch]
 	export let path = ''
 
 	export let actionPath: string | undefined = undefined

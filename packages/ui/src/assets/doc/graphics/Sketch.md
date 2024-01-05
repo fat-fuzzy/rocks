@@ -25,8 +25,6 @@ The `Sketch` takes as props a `Scene` object that must provide the following fun
 - `update` : a function that updates the scene's `programInfo` and WebGL buffers. This function is called when the user interacts with the geometry controls
 - `clear` : a function that resets the `Scene`
 
-The source code of the `Scene` used for this demo can be found here: [(GitHub) /packages/lib/gfx/ sketches/009](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib/src/gfx/sketches/009)
-
 ### Related Components
 
 - `Geometry` component in `graphics`
@@ -44,6 +42,8 @@ This component uses libraries and animations defined in the package [(GitHub) /p
 ## Resources
 
 The `Scene` objects used in these demos are based on the examples provided in the [webgl2fundamentals.org](https://webgl2fundamentals.org/) tutorials.
+
+The source code of the `Scene` used for this demo can be found here: [(GitHub) /packages/lib/gfx/ sketches/011](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib/src/gfx/sketches/011).
 
 - [MDN - The Canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)
 - [MDN - Getting started with WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL)
