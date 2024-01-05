@@ -41,9 +41,24 @@ function drawScene(gl, programInfo, buffers, vao) {
 		zFar,
 	)
 
+	// Compute the position of the first F
+	let target = [geometriesRadius, 0, 0]
+
 	// Initialize the Camera matrix
 	let cameraMatrix = MATRIX_3D.yRotation(programInfo.geometry.cameraAngle)
 	cameraMatrix = MATRIX_3D.translate(cameraMatrix, 0, 0, geometriesRadius * 1.5)
+
+	/* prettier-ignore */
+	let cameraPosition = [
+		cameraMatrix[12],
+		cameraMatrix[13],
+		cameraMatrix[14],
+	]
+
+	var up = [0, 1, 0]
+
+	// Compute the Camera matrix's position in relation to its target
+	cameraMatrix = MATRIX_3D.lookAt(cameraPosition, target, up)
 
 	// Make a View matrix from the camera matrix
 	let viewMatrix = MATRIX_3D.inverse(cameraMatrix)
