@@ -64,8 +64,6 @@ function main(canvas) {
 		uniformLocations: {
 			// bind u_matrix
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
-			// bind u_fudgeFactor
-			u_fudgeFactor: gl.getUniformLocation(program, 'u_fudgeFactor'),
 		},
 		geometry: utils.getGeometryMatrix3D(canvas.clientWidth, canvas.clientHeight, 400),
 	}

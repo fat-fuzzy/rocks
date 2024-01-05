@@ -117,6 +117,7 @@ const MATRIX_2D = {
 		]
 	},
 }
+
 const MATRIX_3D = {
 	translate: function (m, tx, ty, tz) {
 		const m4 = this
@@ -318,6 +319,15 @@ const MATRIX_3D = {
 			(bottom + top) / (bottom - top),
 			(near + far) / (near - far),
 			1,
+		]
+	},
+	makeZToWMatrix: function (fudgeFactor) {
+		/* prettier-ignore */
+		return [
+			1, 0, 0, 0,
+			0, 1, 0, 0,
+			0, 0, 1, fudgeFactor,
+			0, 0, 0, 1,
 		]
 	},
 }
