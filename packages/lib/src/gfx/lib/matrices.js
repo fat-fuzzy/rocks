@@ -2,6 +2,12 @@ import vectors from './vectors'
 
 const {VECTOR} = vectors
 
+/**
+ * Based on exercises in https://webgl2fundamentals.org
+ *
+ * On naming, see:
+ * https://webgl2fundamentals.org/webgl/lessons/webgl-matrix-naming.html
+ */
 const MATRIX_2D = {
 	translate: function (m, tx, ty) {
 		const m3 = this
@@ -358,6 +364,11 @@ const MATRIX_3D = {
 		]
 	},
 
+	/**
+	 * Apply the inverse matrix * cameraMatrix to obtain a viewMatrix
+	 * @param {*} m
+	 * @returns
+	 */
 	inverse: function (m) {
 		var m00 = m[0 * 4 + 0]
 		var m01 = m[0 * 4 + 1]
