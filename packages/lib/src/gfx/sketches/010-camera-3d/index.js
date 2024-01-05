@@ -78,7 +78,7 @@ function draw() {
 
 function update(geometry) {
 	programInfo.geometry = geometry
-	buffers = initBuffers(gl, programInfo)
+	buffers = initBuffers(gl)
 }
 
 export default {main, draw, clear, update}
