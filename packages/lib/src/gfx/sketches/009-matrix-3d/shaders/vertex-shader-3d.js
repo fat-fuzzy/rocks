@@ -19,7 +19,7 @@ void main() {
   float zFactor = 1.0 + position.z * u_fudgeFactor;
 
   // Divide x and y by z to obtain perspective
-  gl_Position =vec4(position.xy / zFactor, position.zw);
+  gl_Position = vec4(position.xyz, zFactor);
 
   // pass the color to the fragment shader
   v_color = a_color;
