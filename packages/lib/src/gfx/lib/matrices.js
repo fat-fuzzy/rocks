@@ -1,3 +1,7 @@
+import vectors from './vectors'
+
+const {VECTOR} = vectors
+
 const MATRIX_2D = {
 	translate: function (m, tx, ty) {
 		const m3 = this
@@ -308,6 +312,7 @@ const MATRIX_3D = {
 			-1, 1, 0, 1,
 		]
 	},
+
 	orthographic: function (left, right, bottom, top, near, far) {
 		/* prettier-ignore */
 		return [
@@ -321,6 +326,7 @@ const MATRIX_3D = {
 			1,
 		]
 	},
+
 	makeZToWMatrix: function (fudgeFactor) {
 		/* prettier-ignore */
 		return [
@@ -330,6 +336,7 @@ const MATRIX_3D = {
 			0, 0, 0, 1,
 		]
 	},
+
 	/**
 	 *  Assumes there is a camera at the origin (0,0,0)
 	 * @param {*} fieldOfViewInRadians
@@ -350,6 +357,7 @@ const MATRIX_3D = {
 			0, 0, near * far * rangeInv * 2, 0,
 		]
 	},
+
 	inverse: function (m) {
 		var m00 = m[0 * 4 + 0]
 		var m01 = m[0 * 4 + 1]
@@ -439,6 +447,7 @@ const MATRIX_3D = {
            (tmp_20 * m12 + tmp_23 * m22 + tmp_17 * m02)),
     ];
 	},
+
 	transformVector: function (m, v) {
 		var dst = []
 		for (var i = 0; i < 4; ++i) {
@@ -448,6 +457,23 @@ const MATRIX_3D = {
 			}
 		}
 		return dst
+	},
+
+	lookAt: function (cameraPosition, target, up) {
+		let zAxis = VECTOR.normalize(VECTOR.subtract(cameraPosition, target))
+		let xAxis = VECTOR.normalize(VECTOR.cross(up, zAxis))
+		let yAxis = VECTOR.normalize(VECTOR.cross(zAxis, xAxis))
+
+		/* prettier-ignore */
+		return [
+			xAxis[0], xAxis[1], xAxis[2], 0,
+			yAxis[0], yAxis[1], yAxis[2], 0,
+			zAxis[0], zAxis[1], zAxis[2], 0,
+			cameraPosition[0],
+			cameraPosition[1],
+			cameraPosition[2],
+			1
+		]
 	},
 }
 
