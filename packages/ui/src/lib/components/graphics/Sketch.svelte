@@ -54,14 +54,14 @@
 		}
 	}
 
-	const loop = () => {
-		scene.draw()
+	const loop = (t) => {
+		scene.draw(t)
 		frame = requestAnimationFrame((t) => {
-			loop()
+			loop(t)
 		})
 	}
 
-	const play = () => loop()
+	const play = () => loop(Date.now())
 
 	const clear = () => {
 		cancelAnimationFrame(frame)
