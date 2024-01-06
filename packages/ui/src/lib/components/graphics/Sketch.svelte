@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Scene, Geometry3dProps, SceneMeta} from '$lib/types'
+	import type {Scene, SketchProps, SceneMeta} from '$lib/types'
 
 	import {afterUpdate} from 'svelte'
 	import {enhance} from '$app/forms'
@@ -34,7 +34,7 @@
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
 	let height: number
-	let geometry: Geometry3dProps
+	let geometry: SketchProps
 	let programInfo
 	let fieldOfView = 60
 	let cameraAngle = 60

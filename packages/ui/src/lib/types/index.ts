@@ -32,18 +32,21 @@ export type Tab = {
 	asset?: string
 }
 
-export type Geometry3dProps = {
+export type GeometryProps = {
 	color: number[]
-	translation?: (number | undefined)[]
-	rotation?: number[]
-	scale?: (number | undefined)[]
+	translation: (number | undefined)[]
+	rotation: number[]
+	scale: (number | undefined)[]
+}
+
+export type SketchProps = GeometryProps & {
 	fieldOfView?: number
 	cameraAngle?: number
 	animationSpeed?: number
 }
 
 export type ProgramInfo = {
-	geometry: Geometry3dProps
+	geometry: SketchProps
 }
 
 export type SceneMeta = {

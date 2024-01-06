@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Geometry3dProps} from '$types'
+	import type {GeometryProps} from '$types'
 
 	import {createEventDispatcher, onMount} from 'svelte'
 
@@ -11,7 +11,7 @@
 	export let id = 'geometry'
 	export let canvasWidth: number
 	export let canvasHeight: number
-	export let geometry: Geometry3dProps
+	export let geometry: GeometryProps
 	export let threshold = ''
 	export let disabled: boolean
 
@@ -36,13 +36,13 @@
 	let maxZ = 1
 	let minZ = -1000
 	// Position
-	let [coordX, coordY, coordZ] = translation ?? []
+	let [coordX, coordY, coordZ] = translation
 
 	// Scale
-	let [scaleX, scaleY, scaleZ] = scale ?? []
+	let [scaleX, scaleY, scaleZ] = scale
 
 	// Rotation
-	let [angleX, angleY, angleZ] = (rotation ?? []).map((a) => radToDeg(a))
+	let [angleX, angleY, angleZ] = rotation.map((a) => radToDeg(a))
 
 	onMount(() => {
 		update()
@@ -52,9 +52,9 @@
 	$: maxY = canvasHeight
 	$: value = {
 		...geometry,
-		translation: translation ? [coordX, coordY, coordZ] : undefined,
-		rotation: rotation ? [degToRad(angleX), degToRad(angleY), degToRad(angleZ)] : undefined,
-		scale: scale ? [scaleX, scaleY, scaleZ] : undefined,
+		translation: [coordX, coordY, coordZ],
+		rotation: [degToRad(angleX), degToRad(angleY), degToRad(angleZ)],
+		scale: [scaleX, scaleY, scaleZ],
 	}
 </script>
 
