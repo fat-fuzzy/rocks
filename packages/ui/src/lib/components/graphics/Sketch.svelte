@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Scene, SketchProps, SceneMeta} from '$lib/types'
 
-	import {afterUpdate} from 'svelte'
+	import {afterUpdate, onDestroy} from 'svelte'
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
 	import Geometry3D from '$lib/components/graphics/Geometry3D.svelte'
@@ -114,6 +114,11 @@
 	afterUpdate(() => {
 		if (state !== 'pause') {
 			init()
+		}
+	})
+	onDestroy(() => {
+		if (frame) {
+			clear()
 		}
 	})
 </script>
