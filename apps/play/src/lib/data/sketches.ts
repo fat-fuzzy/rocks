@@ -90,7 +90,6 @@ export const sketches = [
 		asset: 'emoji:camera-3d',
 		meta: {
 			input: 'form',
-			type: 'matrix-3d',
 			camera: true,
 		},
 	},
