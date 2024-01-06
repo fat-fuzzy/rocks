@@ -39,7 +39,7 @@
 	let [scaleX, scaleY, scaleZ] = scale
 
 	// Rotation
-	let [angleX, angleY, angleZ] = rotation
+	let [angleX, angleY, angleZ] = [190, 40, 30] // TODO: fix this
 
 	$: maxX = canvasWidth
 	$: maxY = canvasHeight
