@@ -82,6 +82,14 @@ function degToRad(degrees) {
 }
 
 /**
+ * @param {number} rads
+ * @returns number
+ */
+function radToDeg(rads) {
+	return (rads * Math.PI) / 180
+}
+
+/**
  * @param {number} n
  * @param {number} decimals
  * @returns number
@@ -96,5 +104,6 @@ export default {
 	randomInt,
 	multiply,
 	degToRad,
+	radToDeg,
 	round,
 }
