@@ -1,7 +1,3 @@
-import utils from '../../lib/utils'
-
-const {degToRad} = utils
-
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
