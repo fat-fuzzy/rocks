@@ -6,6 +6,7 @@
  */
 
 import utils from '../../lib/utils'
+import geometries from '../../lib/geometries'
 import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from './init-buffers'
@@ -62,7 +63,7 @@ function main(canvas) {
 			// u_translation: gl.getUniformLocation(program, 'u_translation'),
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
-			geometry: utils.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
+			geometry: geometries.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
 		},
 	}
 	buffers = initBuffers(gl, programInfo)

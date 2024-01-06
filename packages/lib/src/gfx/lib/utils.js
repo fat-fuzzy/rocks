@@ -1,5 +1,3 @@
-import geometries from './geometries'
-
 /**
  ***********************
  * HELPER FUNCTIONS
@@ -92,106 +90,6 @@ function round(n, decimals) {
 	return Number(Math.round(Number(n + 'e' + decimals)) + 'e-' + decimals)
 }
 
-/**
- * @param {number} canvasWidth
- * @param {number} canvasHeight
- * @returns geometry
- */
-function getGeometryDefaults(canvasWidth, canvasHeight) {
-	const width = round(canvasWidth / 5, 2)
-	const height = round(canvasHeight / 5, 2)
-	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [canvasWidth / 2, canvasHeight / 2],
-		rotation: [degToRad(randomInt(360))],
-		scale: [1, 1],
-		width,
-		height,
-	}
-}
-
-/**
- * @param {number} canvasWidth
- * @param {number} canvasHeight
- * @returns geometry
- */
-function getGeometryRandom(canvasWidth, canvasHeight) {
-	const width = randomInt(canvasWidth)
-	const height = randomInt(canvasHeight)
-	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [width, height],
-		rotation: [degToRad(randomInt(360))],
-		scale: [1, 1],
-		width,
-		height,
-	}
-}
-
-/**
- * @param {number} canvasWidth
- * @param {number} canvasHeight
- * @returns geometry
- */
-
-function getGeometryMatrix2D(canvasWidth, canvasHeight) {
-	return getGeometryDefaults(canvasWidth, canvasHeight)
-}
-
-/**
- * @param {number} canvasWidth
- * @param {number} canvasHeight
- * @returns geometry
- */
-function getGeometryHierarchical(canvasWidth, canvasHeight) {
-	return getGeometryDefaults(canvasWidth, canvasHeight)
-}
-
-/**
- * @returns geometry
- */
-function getGeometryMatrix3D() {
-	const tx = -150
-	const ty = 0
-	const tz = -360
-	return {
-		color: geometries.DEFAULT_3D_GEOMETRY_COLORS,
-		translation: [tx, ty, tz],
-		rotation: [190, 40, 30],
-		scale: [1, 1, 1],
-		fieldOfView: 60,
-	}
-}
-
-/**
- * @returns geometry
- */
-function getGeometryCamera3D() {
-	return {
-		color: geometries.DEFAULT_3D_GEOMETRY_COLORS,
-		fieldOfView: 60,
-		cameraAngle: 0,
-	}
-}
-
-/**
- * @returns geometry
- */
-function getGeometryAnimation3D() {
-	const tx = -150
-	const ty = 0
-	const tz = -360
-	return {
-		color: geometries.DEFAULT_3D_GEOMETRY_COLORS,
-		translation: [tx, ty, tz],
-		rotation: [190, 40, 30],
-		scale: [1, 1, 1],
-		fieldOfView: 60,
-		cameraAngle: 0,
-		animationSpeed: 1.2,
-	}
-}
-
 export default {
 	resize,
 	resizeHD,
@@ -199,11 +97,4 @@ export default {
 	multiply,
 	degToRad,
 	round,
-	getGeometryDefaults,
-	getGeometryRandom,
-	getGeometryMatrix2D,
-	getGeometryHierarchical,
-	getGeometryMatrix3D,
-	getGeometryCamera3D,
-	getGeometryAnimation3D,
 }
