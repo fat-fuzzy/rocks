@@ -6,6 +6,7 @@
  */
 
 import utils from '../../lib/utils'
+import geometries from '../../lib/geometries'
 import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from './init-buffers'
@@ -65,7 +66,7 @@ function main(canvas) {
 			// bind u_matrix
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		geometry: utils.getGeometryMatrix3D(),
+		geometry: geometries.getGeometryMatrix3D(),
 	}
 	buffers = initBuffers(gl, programInfo)
 	return programInfo

@@ -6,6 +6,7 @@
  */
 
 import utils from '../../lib/utils'
+import geometries from '../../lib/geometries'
 import setup from '../../lib/webgl/setup'
 
 import {frag} from './shaders/fragment-shader'
@@ -17,7 +18,7 @@ class Sketch {
 
 	constructor(canvas) {
 		this.#init(canvas)
-		this.geometry = utils.getGeometryDefaults(this.maxWidth, this.maxHeight)
+		this.geometry = geometries.getGeometryDefaults(this.maxWidth, this.maxHeight)
 	}
 
 	/**
