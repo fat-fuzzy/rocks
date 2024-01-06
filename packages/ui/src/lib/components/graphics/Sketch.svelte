@@ -2,12 +2,18 @@
 	import type {Scene, Geometry3dProps, SceneMeta} from '$lib/types'
 
 	import {afterUpdate} from 'svelte'
+	import {enhance} from '$app/forms'
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
 	import Geometry3D from '$lib/components/graphics/Geometry3D.svelte'
 	import FieldOfView from '$lib/components/graphics/FieldOfView.svelte'
 	import Camera from '$lib/components/graphics/Camera.svelte'
 	import Player from '$lib/components/graphics/Player.svelte'
+
+	export let method = 'POST'
+	export let formaction = 'updateGeometry'
+	export let redirect: string | undefined = undefined
+	export let actionPath: string | undefined = undefined
 
 	export let id = 'sketch'
 	export let scene: Scene
@@ -19,6 +25,7 @@
 	export let size = ''
 	export let variant = ''
 	export let background = ''
+	export let layout = 'switcher'
 	export let breakpoint = ''
 	export let threshold = ''
 	export let meta: SceneMeta | undefined = undefined
@@ -29,8 +36,8 @@
 	let height: number
 	let geometry: Geometry3dProps
 	let programInfo
-	let fieldOfView: number | undefined = undefined
-	let cameraAngle: number | undefined = undefined
+	let fieldOfView = 60
+	let cameraAngle = 60
 
 	let frame: number
 	let state = 'clear'
@@ -38,6 +45,7 @@
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
+
 	$: state = feedback ? `${feedback.status}` : state
 	$: showGeometry = geometry !== undefined && (state === 'play' || state === 'pause')
 	$: currentAsset = state === 'clear' && asset ? asset : `emoji:${state}`
@@ -47,6 +55,7 @@
 	$: frameClasses = canvas
 		? `canvas ${backgroundClass} ${layer} state:${state} ${currentAsset}`
 		: `canvas ${backgroundClass} ${layer} card:xl`
+	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 
 	function init() {
 		if (canvas) {
@@ -80,17 +89,14 @@
 
 	function update(event: CustomEvent) {
 		geometry = event.detail.value
-		scene.update(geometry)
 	}
 
 	function updateFieldOfView(event: CustomEvent) {
 		geometry.fieldOfView = degToRad(event.detail.value)
-		scene.update(geometry)
 	}
 
 	function updateCamera(event: CustomEvent) {
 		geometry.cameraAngle = degToRad(event.detail.value)
-		scene.update(geometry)
 	}
 
 	const handleToggle = (event: CustomEvent) => {
@@ -162,58 +168,68 @@
 		{#if canvas}
 			<Player on:click={handleToggle} {color} size="xs" {variant} disabled={Boolean(feedback)} />
 			{#if showGeometry}
-				{#if meta?.camera}
-					<Camera
-						id={`${id}-camera-3d`}
-						bind:angle={cameraAngle}
-						on:input={updateCamera}
-						{color}
-						size={`xs l:burrito:${threshold}`}
-						disabled={state === 'pause'}
-					/>
-					<FieldOfView
-						id={`${id}-fieldOfView`}
-						bind:fieldOfView
-						max={180}
-						on:input={updateFieldOfView}
-						{color}
-						size={`xs l:burrito:${threshold}`}
+				{#if meta?.type === 'matrix-2d'}
+					<Geometry
+						id={`${id}-geometry-2d`}
+						on:update={update}
+						threshold={breakpoint}
+						{geometry}
+						canvasWidth={canvas.getBoundingClientRect().width}
+						canvasHeight={canvas.getBoundingClientRect().height}
 						disabled={state === 'pause'}
 					/>
 				{:else}
-					{#if meta?.type === 'matrix-2d'}
-						<Geometry
-							id={`${id}-geometry-2d`}
-							on:update={update}
-							threshold={breakpoint}
-							{geometry}
-							canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
-							canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
-							disabled={state === 'pause'}
-						/>
-					{/if}
-					{#if meta?.type === 'matrix-3d'}
-						<FieldOfView
-							id={`${id}-fieldOfView`}
-							bind:fieldOfView
-							max={180}
-							on:input={updateFieldOfView}
-							{color}
-							size={`xs l:burrito:${threshold}`}
-							disabled={state === 'pause'}
-						/>
-						<Geometry3D
-							id={`${id}-geometry-3d`}
-							on:update={update}
-							threshold={breakpoint}
-							{geometry}
-							{meta}
-							canvasWidth={Number(canvas.getBoundingClientRect().width.toFixed())}
-							canvasHeight={Number(canvas.getBoundingClientRect().height.toFixed())}
-							{color}
-							disabled={state === 'pause'}
-						/>
-					{/if}
+					<form
+						class={`l:${layout}:${size} th:${threshold} maki:block lg geometry bg:${background}`}
+						name="geometry-update"
+						{method}
+						action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+						use:enhance={() => {
+							// prevent default callback from resetting the form
+							return ({update}) => {
+								update({reset: false})
+							}
+						}}
+					>
+						{#if meta?.camera}
+							<Camera
+								id={`${id}-camera-3d`}
+								bind:angle={cameraAngle}
+								on:input={updateCamera}
+								{color}
+								size={`xs l:burrito:${threshold}`}
+								disabled={state === 'pause'}
+							/>
+							<FieldOfView
+								id={`${id}-fieldOfView`}
+								bind:fieldOfView
+								max={180}
+								on:input={updateFieldOfView}
+								{color}
+								size={`xs l:burrito:${threshold}`}
+								disabled={state === 'pause'}
+							/>
+						{:else if meta?.type === 'matrix-3d'}
+							<FieldOfView
+								id={`${id}-fieldOfView`}
+								bind:fieldOfView
+								max={180}
+								on:input={updateFieldOfView}
+								{color}
+								size={`xs l:burrito:${threshold}`}
+								disabled={state === 'pause'}
+							/>
+							<Geometry3D
+								id={`${id}-geometry-3d`}
+								on:update={update}
+								threshold={breakpoint}
+								{geometry}
+								canvasWidth={canvas.getBoundingClientRect().width}
+								canvasHeight={canvas.getBoundingClientRect().height}
+								disabled={state === 'pause'}
+							/>
+						{/if}
+					</form>
 				{/if}
 			{/if}
 		{/if}
