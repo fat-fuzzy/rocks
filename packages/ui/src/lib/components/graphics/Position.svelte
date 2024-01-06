@@ -44,6 +44,7 @@
 		name={`${id}-x`}
 		label="x"
 		max={maxX}
+		min={-maxX}
 		step={0.01}
 		on:input={updateX}
 		{size}
@@ -57,6 +58,7 @@
 		name={`${id}-y`}
 		label="y"
 		max={maxY}
+		min={-maxY}
 		step={0.01}
 		on:input={updateY}
 		{size}
