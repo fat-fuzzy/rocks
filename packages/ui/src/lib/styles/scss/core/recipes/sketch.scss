@@ -36,7 +36,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding: var(--current-size-minus) var(--current-size);
+	padding: var(--current-size);
+	line-height: 1;
 }
 
 .state\:warning::before,
