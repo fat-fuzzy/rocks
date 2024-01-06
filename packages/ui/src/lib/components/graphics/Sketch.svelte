@@ -2,18 +2,12 @@
 	import type {Scene, SketchProps, SceneMeta} from '$lib/types'
 
 	import {afterUpdate} from 'svelte'
-	import {enhance} from '$app/forms'
 
 	import Geometry from '$lib/components/graphics/Geometry.svelte'
 	import Geometry3D from '$lib/components/graphics/Geometry3D.svelte'
 	import FieldOfView from '$lib/components/graphics/FieldOfView.svelte'
 	import Camera from '$lib/components/graphics/Camera.svelte'
 	import Player from '$lib/components/graphics/Player.svelte'
-
-	export let method = 'POST'
-	export let formaction = 'updateGeometry'
-	export let redirect: string | undefined = undefined
-	export let actionPath: string | undefined = undefined
 
 	export let id = 'sketch'
 	export let scene: Scene
@@ -55,7 +49,6 @@
 	$: frameClasses = canvas
 		? `canvas ${backgroundClass} ${layer} state:${state} ${currentAsset}`
 		: `canvas ${backgroundClass} ${layer} card:xl`
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 
 	function init() {
 		if (canvas) {
@@ -179,17 +172,8 @@
 						disabled={state === 'pause'}
 					/>
 				{:else}
-					<form
+					<div
 						class={`l:${layout}:${size} th:${threshold} maki:block lg geometry bg:${background}`}
-						name="geometry-update"
-						{method}
-						action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-						use:enhance={() => {
-							// prevent default callback from resetting the form
-							return ({update}) => {
-								update({reset: false})
-							}
-						}}
 					>
 						{#if meta?.camera}
 							<Camera
@@ -229,7 +213,7 @@
 								disabled={state === 'pause'}
 							/>
 						{/if}
-					</form>
+					</div>
 				{/if}
 			{/if}
 		{/if}

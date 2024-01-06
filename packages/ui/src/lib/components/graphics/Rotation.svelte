@@ -11,7 +11,8 @@
 	export let id = 'rotation'
 	export let label = 'Angle'
 	export let angle = 0
-	export let max = 0
+	export let min = 0
+	export let max = 360
 	export let disabled: boolean
 
 	function update() {
@@ -26,6 +27,7 @@
 	{id}
 	name={id}
 	{label}
+	{min}
 	{max}
 	on:input={update}
 	{size}
