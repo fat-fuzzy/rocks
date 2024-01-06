@@ -9,7 +9,7 @@ const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'show'}
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 
 const DEFAULT_PLAYER_STATE: Settings = {value: ''}
-const DEFAULT_GEOMETRY_STATE: Geometry3dProps = lib.gfx.utils.getGeometryDefaults()
+const DEFAULT_GEOMETRY_STATE: Geometry3dProps = lib.gfx.geometries.getGeometryDefaults()
 const DEFAULT_SCENE_ID = '004'
 
 const DEFAULT_DS_STATE: {

@@ -4,7 +4,7 @@
 
 // Tools
 import utils from './lib/utils'
-import constants from './lib/geometries'
+import geometries from './lib/geometries'
 // Sketches
 import sketch_001 from './sketches/001-random/index'
 // import sketch_002 from './sketches/002/index'
@@ -39,5 +39,5 @@ const SKETCHES_FOLDER = './sketches'
 export default {
 	sketches,
 	utils,
-	constants,
+	geometries,
 }

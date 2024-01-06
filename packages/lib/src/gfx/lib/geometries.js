@@ -455,7 +455,7 @@ function getGeometryMatrix3D() {
 		translation: [tx, ty, tz],
 		rotation: [190, 40, 30],
 		scale: [1, 1, 1],
-		fieldOfView: 60,
+		fieldOfView: degToRad(60),
 	}
 }
 
@@ -465,8 +465,8 @@ function getGeometryMatrix3D() {
 function getGeometryCamera3D() {
 	return {
 		color: DEFAULT_3D_GEOMETRY_COLORS,
-		fieldOfView: 60,
-		cameraAngle: 0,
+		fieldOfView: degToRad(60),
+		cameraAngle: degToRad(60),
 	}
 }
 
@@ -474,16 +474,9 @@ function getGeometryCamera3D() {
  * @returns geometry
  */
 function getGeometryAnimation3D() {
-	const tx = -150
-	const ty = 0
-	const tz = -360
 	return {
-		color: DEFAULT_3D_GEOMETRY_COLORS,
-		translation: [tx, ty, tz],
-		rotation: [190, 40, 30],
-		scale: [1, 1, 1],
-		fieldOfView: 60,
-		cameraAngle: 0,
+		...getGeometryMatrix3D(),
+		fieldOfView: degToRad(60),
 		animationSpeed: 1.2,
 	}
 }
