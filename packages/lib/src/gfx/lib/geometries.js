@@ -453,8 +453,7 @@ function getGeometryMatrix3D() {
 	return {
 		color: DEFAULT_3D_GEOMETRY_COLORS,
 		translation: [tx, ty, tz],
-		rotation: [190, 40, 30],
-		// rotation: [degToRad(190), degToRad(40), degToRad(30)],
+		rotation: [degToRad(190), degToRad(40), degToRad(30)],
 		scale: [1, 1, 1],
 		fieldOfView: degToRad(60),
 	}
