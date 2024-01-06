@@ -21,10 +21,6 @@
 		return degrees * (Math.PI / 180)
 	}
 
-	function radToDeg(rads: number) {
-		return (rads * Math.PI) / 180
-	}
-
 	let update = () =>
 		dispatch('update', {
 			value,
@@ -35,6 +31,7 @@
 	// input attributes
 	let maxZ = 1
 	let minZ = -1000
+
 	// Position
 	let [coordX, coordY, coordZ] = translation
 
@@ -42,20 +39,21 @@
 	let [scaleX, scaleY, scaleZ] = scale
 
 	// Rotation
-	let [angleX, angleY, angleZ] = rotation.map((a) => radToDeg(a))
-
-	onMount(() => {
-		update()
-	})
+	let [angleX, angleY, angleZ] = rotation
 
 	$: maxX = canvasWidth
 	$: maxY = canvasHeight
 	$: value = {
 		...geometry,
-		translation: [coordX, coordY, coordZ],
 		rotation: [degToRad(angleX), degToRad(angleY), degToRad(angleZ)],
+		translation: [coordX, coordY, coordZ],
 		scale: [scaleX, scaleY, scaleZ],
 	}
+
+	onMount(() => {
+		value = geometry
+		update()
+	})
 </script>
 
 <Position

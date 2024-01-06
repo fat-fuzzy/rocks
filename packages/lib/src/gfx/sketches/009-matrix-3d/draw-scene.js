@@ -31,6 +31,7 @@ function drawScene(gl, programInfo, buffers, vao) {
 	let zNear = 1
 	let zFar = 2000
 	let matrix = MATRIX_3D.perspective(programInfo.geometry.fieldOfView, aspect, zNear, zFar)
+
 	matrix = MATRIX_3D.translate(matrix, ...programInfo.geometry.translation)
 	matrix = MATRIX_3D.xRotate(matrix, programInfo.geometry.rotation[0])
 	matrix = MATRIX_3D.yRotate(matrix, programInfo.geometry.rotation[1])
