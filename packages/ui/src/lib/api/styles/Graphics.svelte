@@ -52,7 +52,7 @@
 	})
 
 	// Graphics options
-	$: geometry = scene?.geometry ?? lib.gfx.utils.getGeometryDefaults()
+	$: geometry = scene?.geometry ?? lib.gfx.geometries.getGeometryDefaults()
 
 	// App settings
 	$: contrast = contrast ? contrast : settings.app.contrast
