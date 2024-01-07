@@ -43,6 +43,7 @@ export type SketchProps = GeometryProps & {
 	fieldOfView?: number
 	cameraAngle?: number
 	animationSpeed?: number
+	pause?: boolean
 }
 
 export type ProgramInfo = {

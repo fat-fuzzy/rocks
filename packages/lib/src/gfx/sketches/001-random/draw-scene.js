@@ -16,6 +16,7 @@ function drawRectangle(gl, x, y, width, height) {
 		]
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)
 }
+
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport

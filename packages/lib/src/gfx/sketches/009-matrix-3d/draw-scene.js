@@ -1,6 +1,6 @@
 import matrices from '../../lib/matrices'
 
-const {MATRIX_3D} = matrices
+const {M4} = matrices
 
 /**
  *
@@ -30,13 +30,13 @@ function drawScene(gl, programInfo, buffers, vao) {
 	let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
 	let zNear = 1
 	let zFar = 2000
-	let matrix = MATRIX_3D.perspective(programInfo.context.fieldOfView, aspect, zNear, zFar)
+	let matrix = M4.perspective(programInfo.context.fieldOfView, aspect, zNear, zFar)
 
-	matrix = MATRIX_3D.translate(matrix, ...programInfo.context.translation)
-	matrix = MATRIX_3D.xRotate(matrix, programInfo.context.rotation[0])
-	matrix = MATRIX_3D.yRotate(matrix, programInfo.context.rotation[1])
-	matrix = MATRIX_3D.zRotate(matrix, programInfo.context.rotation[2])
-	matrix = MATRIX_3D.scale(matrix, ...programInfo.context.scale)
+	matrix = M4.translate(matrix, ...programInfo.context.translation)
+	matrix = M4.xRotate(matrix, programInfo.context.rotation[0])
+	matrix = M4.yRotate(matrix, programInfo.context.rotation[1])
+	matrix = M4.zRotate(matrix, programInfo.context.rotation[2])
+	matrix = M4.scale(matrix, ...programInfo.context.scale)
 	// Set the matrix
 	gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
 

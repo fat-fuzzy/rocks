@@ -1,6 +1,6 @@
 import matrices from '../../lib/matrices'
 
-const {MATRIX_2D} = matrices
+const {M3} = matrices
 
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
@@ -24,9 +24,9 @@ function drawScene(gl, programInfo, buffers) {
 	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.context.color)
 
 	// Compute Matrices
-	const translationMatrix = MATRIX_2D.translation(...programInfo.context.translation)
-	const rotationMatrix = MATRIX_2D.rotation(programInfo.context.rotation)
-	const scaleMatrix = MATRIX_2D.scaling(...programInfo.context.scale)
+	const translationMatrix = M3.translation(...programInfo.context.translation)
+	const rotationMatrix = M3.rotation(programInfo.context.rotation)
+	const scaleMatrix = M3.scaling(...programInfo.context.scale)
 
 	setPositionAttribute(gl, buffers, programInfo)
 
@@ -39,10 +39,10 @@ function drawScene(gl, programInfo, buffers) {
 	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
 
 	// Initialize the matrices
-	const centerOriginMatrix = MATRIX_2D.translation(-50, -75)
-	let matrix = MATRIX_2D.multiply(translationMatrix, rotationMatrix)
-	matrix = MATRIX_2D.multiply(matrix, scaleMatrix)
-	matrix = MATRIX_2D.multiply(matrix, centerOriginMatrix)
+	const centerOriginMatrix = M3.translation(-50, -75)
+	let matrix = M3.multiply(translationMatrix, rotationMatrix)
+	matrix = M3.multiply(matrix, scaleMatrix)
+	matrix = M3.multiply(matrix, centerOriginMatrix)
 
 	// Set the matrix
 	gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
