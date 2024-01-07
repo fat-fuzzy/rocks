@@ -1,6 +1,6 @@
 import matrices from '../../lib/matrices'
 
-const {MATRIX_2D} = matrices
+const {M3} = matrices
 
 /**
  *
@@ -40,11 +40,11 @@ function drawScene(gl, programInfo, buffers) {
 
 	// Initialize the matrices
 	// Compute tool Matrices
-	let matrix = MATRIX_2D.projection(gl.canvas.width, gl.canvas.height)
-	matrix = MATRIX_2D.translate(matrix, ...programInfo.context.translation)
-	matrix = MATRIX_2D.rotate(matrix, programInfo.context.rotation)
-	matrix = MATRIX_2D.scale(matrix, ...programInfo.context.scale)
-	matrix = MATRIX_2D.translate(matrix, -50, -75) // centerOriginMatrix
+	let matrix = M3.projection(gl.canvas.width, gl.canvas.height)
+	matrix = M3.translate(matrix, ...programInfo.context.translation)
+	matrix = M3.rotate(matrix, programInfo.context.rotation)
+	matrix = M3.scale(matrix, ...programInfo.context.scale)
+	matrix = M3.translate(matrix, -50, -75) // centerOriginMatrix
 
 	// Set the matrix
 	gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)

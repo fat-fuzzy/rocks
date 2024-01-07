@@ -8,7 +8,7 @@ const {VECTOR} = vectors
  * On naming, see:
  * https://webgl2fundamentals.org/webgl/lessons/webgl-matrix-naming.html
  */
-const MATRIX_2D = {
+const M3 = {
 	translate: function (m, tx, ty) {
 		const m3 = this
 		return m3.multiply(m, m3.translation(tx, ty))
@@ -29,7 +29,14 @@ const MATRIX_2D = {
 			0, 0, 1,
 		]
 	},
-
+	shear: function () {
+		/* prettier-ignore */
+		return [
+			1, 1, 0,
+			0, 1, 0,
+			0, 0, 1,
+		]
+	},
 	/**
 	 * @param {*} a matrix A
 	 * @param {*} b matrix B
@@ -128,7 +135,7 @@ const MATRIX_2D = {
 	},
 }
 
-const MATRIX_3D = {
+const M4 = {
 	translate: function (m, tx, ty, tz) {
 		const m4 = this
 		return m4.multiply(m, m4.translation(tx, ty, tz))
@@ -299,6 +306,16 @@ const MATRIX_3D = {
 			0,  0, sz, 0,
 			0,  0,  0, 1,
 
+		]
+	},
+
+	shear: function () {
+		/* prettier-ignore */
+		return [
+			1, 1, 1, 0,
+			0, 1, 1, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1,
 		]
 	},
 
@@ -489,6 +506,6 @@ const MATRIX_3D = {
 }
 
 export default {
-	MATRIX_2D,
-	MATRIX_3D,
+	M3,
+	M4,
 }

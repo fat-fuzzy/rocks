@@ -5,7 +5,7 @@ import vectors from './vectors'
 const {round, degToRad, randomInt} = utils
 const {VECTOR} = vectors
 
-const {MATRIX_3D} = matrices
+const {M4} = matrices
 
 /* prettier-ignore */
 const DEFAULT_GEOMETRY_COORDS = [
@@ -336,16 +336,11 @@ const DEFAULT_RECT_COORDS = [
 
 function flipAndCenter(geometry) {
 	let coords = []
-	var matrix = MATRIX_3D.xRotation(Math.PI)
-	matrix = MATRIX_3D.translate(matrix, -50, -75, -15) // This is specific to DEFAULT_3D_GEOMETRY_COORDS
+	var matrix = M4.xRotation(Math.PI)
+	matrix = M4.translate(matrix, -50, -75, -15) // This is specific to DEFAULT_3D_GEOMETRY_COORDS
 
 	for (var i = 0; i < geometry.length; i += 3) {
-		var vector = MATRIX_3D.transformVector(matrix, [
-			geometry[i + 0],
-			geometry[i + 1],
-			geometry[i + 2],
-			1,
-		])
+		var vector = M4.transformVector(matrix, [geometry[i + 0], geometry[i + 1], geometry[i + 2], 1])
 		coords[i + 0] = vector[0]
 		coords[i + 1] = vector[1]
 		coords[i + 2] = vector[2]

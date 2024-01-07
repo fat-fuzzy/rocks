@@ -24,11 +24,11 @@ function initPositionBuffer(gl) {
 
 	// // Center the geometry around the origin and flip it around
 
-	// let matrix = MATRIX_3D.xRotation(Math.PI)
-	// matrix = MATRIX_3D.translate(matrix, -50, -75, -15) // these values are dependent on the geometry
+	// let matrix = M4.xRotation(Math.PI)
+	// matrix = M4.translate(matrix, -50, -75, -15) // these values are dependent on the geometry
 
 	// for (let i = 0; i < coords.length; i += 3) {
-	// 	let vector = MATRIX_3D.transformVector(matrix, [coords[i + 0], coords[i + 1], coords[i + 2], 1])
+	// 	let vector = M4.transformVector(matrix, [coords[i + 0], coords[i + 1], coords[i + 2], 1])
 	// 	coords[i + 0] = vector[0]
 	// 	coords[i + 1] = vector[1]
 	// 	coords[i + 2] = vector[2]

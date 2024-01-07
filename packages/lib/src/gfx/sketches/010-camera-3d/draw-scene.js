@@ -1,6 +1,6 @@
 import matrices from '../../lib/matrices'
 
-const {MATRIX_3D} = matrices
+const {M4} = matrices
 
 /**
  *
@@ -34,14 +34,14 @@ function drawScene(gl, programInfo, buffers, vao) {
 	let zFar = 2000
 
 	// Initialize the Geometry projection matrix
-	let projectionMatrix = MATRIX_3D.perspective(programInfo.context.fieldOfView, aspect, zNear, zFar)
+	let projectionMatrix = M4.perspective(programInfo.context.fieldOfView, aspect, zNear, zFar)
 
 	// Compute the position of the first F
 	let target = [geometriesRadius, 0, 0]
 
 	// Initialize the Camera matrix
-	let cameraMatrix = MATRIX_3D.yRotation(programInfo.context.cameraAngle)
-	cameraMatrix = MATRIX_3D.translate(cameraMatrix, 0, 65, geometriesRadius * 1.5)
+	let cameraMatrix = M4.yRotation(programInfo.context.cameraAngle)
+	cameraMatrix = M4.translate(cameraMatrix, 0, 65, geometriesRadius * 1.5)
 
 	/* prettier-ignore */
 	let cameraPosition = [
@@ -53,13 +53,13 @@ function drawScene(gl, programInfo, buffers, vao) {
 	var up = [0, 1, 0]
 
 	// Compute the Camera matrix's position in relation to its target
-	cameraMatrix = MATRIX_3D.lookAt(cameraPosition, target, up)
+	cameraMatrix = M4.lookAt(cameraPosition, target, up)
 
 	// Make a View matrix from the camera matrix
-	let viewMatrix = MATRIX_3D.inverse(cameraMatrix)
+	let viewMatrix = M4.inverse(cameraMatrix)
 
 	// Make the Projection matrix: move the projection space to vue space (=space in front of camera)
-	let viewProjectionMatrix = MATRIX_3D.multiply(projectionMatrix, viewMatrix)
+	let viewProjectionMatrix = M4.multiply(projectionMatrix, viewMatrix)
 
 	// Draw the geometries
 	for (let i = 0; i < geometryCount; i++) {
@@ -67,7 +67,7 @@ function drawScene(gl, programInfo, buffers, vao) {
 		let x = Math.cos(angle) * geometriesRadius
 		let z = Math.sin(angle) * geometriesRadius
 
-		let matrix = MATRIX_3D.translate(viewProjectionMatrix, x, 0, z)
+		let matrix = M4.translate(viewProjectionMatrix, x, 0, z)
 
 		gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
 
