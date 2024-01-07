@@ -69,7 +69,7 @@ function main(canvas) {
 			// bind u_translation
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		geometry: geometries.getGeometryHierarchical(canvas.clientWidth, canvas.clientHeight),
+		context: geometries.getGeometryHierarchical(canvas.clientWidth, canvas.clientHeight),
 	}
 	buffers = initBuffers(gl, programInfo)
 	return programInfo
@@ -79,8 +79,8 @@ function draw() {
 	drawScene(gl, programInfo, buffers)
 }
 
-function update(geometry) {
-	programInfo.geometry = geometry
+function update(context) {
+	programInfo.context = context
 	buffers = initBuffers(gl, programInfo)
 }
 

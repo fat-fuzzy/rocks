@@ -3,7 +3,7 @@ import geometries from '../../lib/geometries'
 const {DEFAULT_GEOMETRY_COORDS} = geometries
 
 function initBuffers(gl, programInfo) {
-	const {translation, rotation, width, height, color} = programInfo.geometry
+	const {translation, rotation, width, height, color} = programInfo.context
 	const colorBuffer = initColorBuffer(gl, [color, color, color, color])
 	const positionBuffer = initPositionBuffer(gl, {translation, rotation, width, height})
 

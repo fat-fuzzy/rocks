@@ -34,18 +34,13 @@ function drawScene(gl, programInfo, buffers, vao) {
 	let zFar = 2000
 
 	// Initialize the Geometry projection matrix
-	let projectionMatrix = MATRIX_3D.perspective(
-		programInfo.geometry.fieldOfView,
-		aspect,
-		zNear,
-		zFar,
-	)
+	let projectionMatrix = MATRIX_3D.perspective(programInfo.context.fieldOfView, aspect, zNear, zFar)
 
 	// Compute the position of the first F
 	let target = [geometriesRadius, 0, 0]
 
 	// Initialize the Camera matrix
-	let cameraMatrix = MATRIX_3D.yRotation(programInfo.geometry.cameraAngle)
+	let cameraMatrix = MATRIX_3D.yRotation(programInfo.context.cameraAngle)
 	cameraMatrix = MATRIX_3D.translate(cameraMatrix, 0, 65, geometriesRadius * 1.5)
 
 	/* prettier-ignore */

@@ -14,11 +14,11 @@ import {vert} from './shaders/vertex-shader-2d'
 class Sketch {
 	#frag = frag
 	#vert = vert
-	geometry
+	context
 
 	constructor(canvas) {
 		this.#init(canvas)
-		this.geometry = geometries.getGeometryDefaults(this.maxWidth, this.maxHeight)
+		this.context = geometries.getGeometryDefaults(this.maxWidth, this.maxHeight)
 	}
 
 	/**
@@ -111,9 +111,9 @@ class Sketch {
 			return
 		}
 		console.log('---- Sketch - #drawGeometry() ------')
-		console.log('this.geometry')
-		console.log(this.geometry)
-		const {translation, color, width, height} = this.geometry
+		console.log('this.context')
+		console.log(this.context)
+		const {translation, color, width, height} = this.context
 		this.#setRectangle(translation[0], translation[1], width, height)
 		this.gl.uniform4fv(this.u_color, color)
 
@@ -179,9 +179,9 @@ class Sketch {
 		this.#drawGeometry()
 	}
 
-	update(geometry) {
-		this.geometry = geometry
-		console.log('---- Sketch - update(geometry) ------')
+	update(context) {
+		this.context = context
+		console.log('---- Sketch - update(context) ------')
 		// this.#renderTranslation()
 	}
 

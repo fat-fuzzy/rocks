@@ -28,7 +28,7 @@
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
 	let height: number
-	let geometry: SketchProps
+	let context: SketchProps
 	let programInfo
 	let fieldOfView = 60
 	let cameraAngle = 60
@@ -41,7 +41,7 @@
 	}
 
 	$: state = feedback ? `${feedback.status}` : state
-	$: showGeometry = geometry !== undefined && (state === 'play' || state === 'pause')
+	$: showGeometry = context !== undefined && (state === 'play' || state === 'pause')
 	$: currentAsset = state === 'clear' && asset ? asset : `emoji:${state}`
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
@@ -54,10 +54,10 @@
 		if (canvas) {
 			try {
 				programInfo = scene.main(canvas)
-				if (state === 'clear' || !geometry) {
-					geometry = programInfo.geometry
+				if (state === 'clear' || !context) {
+					context = programInfo.context
 				}
-				scene.update(geometry)
+				scene.update(context)
 			} catch (e: any) {
 				feedback = {status: 'error', message: e}
 			}
@@ -71,25 +71,30 @@
 		})
 	}
 
-	const play = () => loop(Date.now())
+	const play = () => {
+		loop(Date.now())
+	}
 
 	const clear = () => {
 		cancelAnimationFrame(frame)
 		scene.clear()
 	}
 
-	const pause = () => cancelAnimationFrame(frame)
+	const pause = () => {
+		cancelAnimationFrame(frame)
+		scene.update(context)
+	}
 
-	function update(event: CustomEvent) {
-		geometry = event.detail.value
+	function updateGeometry(event: CustomEvent) {
+		context = event.detail.value
 	}
 
 	function updateFieldOfView(event: CustomEvent) {
-		geometry.fieldOfView = degToRad(event.detail.value)
+		context.fieldOfView = degToRad(event.detail.value)
 	}
 
 	function updateCamera(event: CustomEvent) {
-		geometry.cameraAngle = degToRad(event.detail.value)
+		context.cameraAngle = degToRad(event.detail.value)
 	}
 
 	const handleToggle = (event: CustomEvent) => {
@@ -108,7 +113,7 @@
 	}
 
 	const handleMouseEvent = (event: MouseEvent) => {
-		scene.update(geometry, event)
+		scene.update(context, event)
 	}
 
 	afterUpdate(() => {
@@ -168,18 +173,16 @@
 			{#if showGeometry}
 				{#if meta?.type === 'matrix-2d'}
 					<Geometry
-						id={`${id}-geometry-2d`}
-						on:update={update}
+						id={`${id}-context-2d`}
+						on:update={updateGeometry}
 						threshold={breakpoint}
-						{geometry}
+						geometry={context}
 						canvasWidth={canvas.getBoundingClientRect().width}
 						canvasHeight={canvas.getBoundingClientRect().height}
 						disabled={state === 'pause'}
 					/>
 				{:else}
-					<div
-						class={`l:${layout}:${size} th:${threshold} maki:block lg geometry bg:${background}`}
-					>
+					<div class={`l:${layout}:${size} th:${threshold} maki:block lg context bg:${background}`}>
 						{#if meta?.camera}
 							<Camera
 								id={`${id}-camera-3d`}
@@ -209,10 +212,10 @@
 								disabled={state === 'pause'}
 							/>
 							<Geometry3D
-								id={`${id}-geometry-3d`}
-								on:update={update}
+								id={`${id}-context-3d`}
+								on:update={updateGeometry}
 								threshold={breakpoint}
-								{geometry}
+								geometry={context}
 								canvasWidth={canvas.getBoundingClientRect().width}
 								canvasHeight={canvas.getBoundingClientRect().height}
 								disabled={state === 'pause'}

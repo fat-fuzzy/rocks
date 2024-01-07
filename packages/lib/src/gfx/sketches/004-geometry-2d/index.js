@@ -69,7 +69,7 @@ function main(canvas) {
 			// bind u_scale
 			u_scale: gl.getUniformLocation(program, 'u_scale'),
 		},
-		geometry: geometries.getGeometryDefaults(canvas.clientWidth, canvas.clientHeight),
+		context: geometries.getGeometryDefaults(canvas.clientWidth, canvas.clientHeight),
 	}
 	buffers = initBuffers(gl, programInfo)
 	return programInfo
@@ -79,8 +79,8 @@ function draw() {
 	drawScene(gl, programInfo, buffers)
 }
 
-function update(geometry) {
-	programInfo.geometry = geometry
+function update(context) {
+	programInfo.context = context
 	buffers = initBuffers(gl, programInfo)
 }
 

@@ -63,19 +63,19 @@ function main(canvas) {
 			// u_translation: gl.getUniformLocation(program, 'u_translation'),
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
-			geometry: geometries.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
+			context: geometries.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
 		},
 	}
 	buffers = initBuffers(gl, programInfo)
-	return {...programInfo, geometry: undefined} // TODO figure this out
+	return {...programInfo, context: undefined} // TODO figure this out
 }
 
 function draw() {
 	drawScene(gl, programInfo, buffers)
 }
 
-function update(geometry) {
-	programInfo.geometry = geometry
+function update(context) {
+	programInfo.context = context
 	buffers = initBuffers(gl, programInfo)
 }
 

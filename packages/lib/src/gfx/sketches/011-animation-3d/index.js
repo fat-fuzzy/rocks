@@ -67,7 +67,7 @@ function main(canvas) {
 			// bind u_matrix
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		geometry: geometries.getGeometryAnimation3D(),
+		context: geometries.getGeometryAnimation3D(),
 	}
 	buffers = initBuffers(gl, programInfo)
 	return programInfo
@@ -85,12 +85,12 @@ function draw(now) {
 	drawScene(gl, programInfo, buffers, vao)
 
 	// Rotate the angle
-	programInfo.geometry.rotation[1] += programInfo.geometry.animationSpeed * deltaTime
-	update(programInfo.geometry)
+	programInfo.context.rotation[1] += programInfo.context.animationSpeed * deltaTime
+	update(programInfo.context)
 }
 
-function update(geometry) {
-	programInfo.geometry = geometry
+function update(context) {
+	programInfo.context = context
 	buffers = initBuffers(gl, programInfo)
 }
 

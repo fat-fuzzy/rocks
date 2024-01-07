@@ -26,7 +26,7 @@ function drawScene(gl, programInfo, buffers) {
 
 	// set the resolution
 	// Set a random color.
-	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.geometry.color)
+	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.context.color)
 
 	setPositionAttribute(gl, buffers, programInfo)
 
@@ -36,14 +36,14 @@ function drawScene(gl, programInfo, buffers) {
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
+	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
 
 	// Initialize the matrices
 	// Compute tool Matrices
 	let matrix = MATRIX_2D.projection(gl.canvas.width, gl.canvas.height)
-	matrix = MATRIX_2D.translate(matrix, ...programInfo.geometry.translation)
-	matrix = MATRIX_2D.rotate(matrix, programInfo.geometry.rotation)
-	matrix = MATRIX_2D.scale(matrix, ...programInfo.geometry.scale)
+	matrix = MATRIX_2D.translate(matrix, ...programInfo.context.translation)
+	matrix = MATRIX_2D.rotate(matrix, programInfo.context.rotation)
+	matrix = MATRIX_2D.scale(matrix, ...programInfo.context.scale)
 	matrix = MATRIX_2D.translate(matrix, -50, -75) // centerOriginMatrix
 
 	// Set the matrix

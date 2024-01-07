@@ -22,7 +22,7 @@ function drawScene(gl, programInfo, buffers) {
 	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
 	// set the resolution
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
-	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.geometry.color)
+	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
 	gl.clearColor(0.0, 0.0, 0.0, 0.65) // Clear to black, fully opaque
 	gl.clearDepth(1.0) // clear everything (?)
 	gl.enable(gl.DEPTH_TEST) // enable depth testing

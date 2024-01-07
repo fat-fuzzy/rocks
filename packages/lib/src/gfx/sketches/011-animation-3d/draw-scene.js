@@ -30,12 +30,12 @@ function drawScene(gl, programInfo, buffers, vao) {
 	let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
 	let zNear = 1
 	let zFar = 2000
-	let matrix = MATRIX_3D.perspective(programInfo.geometry.fieldOfView, aspect, zNear, zFar)
-	matrix = MATRIX_3D.translate(matrix, ...programInfo.geometry.translation)
-	matrix = MATRIX_3D.xRotate(matrix, programInfo.geometry.rotation[0])
-	matrix = MATRIX_3D.yRotate(matrix, programInfo.geometry.rotation[1])
-	matrix = MATRIX_3D.zRotate(matrix, programInfo.geometry.rotation[2])
-	matrix = MATRIX_3D.scale(matrix, ...programInfo.geometry.scale)
+	let matrix = MATRIX_3D.perspective(programInfo.context.fieldOfView, aspect, zNear, zFar)
+	matrix = MATRIX_3D.translate(matrix, ...programInfo.context.translation)
+	matrix = MATRIX_3D.xRotate(matrix, programInfo.context.rotation[0])
+	matrix = MATRIX_3D.yRotate(matrix, programInfo.context.rotation[1])
+	matrix = MATRIX_3D.zRotate(matrix, programInfo.context.rotation[2])
+	matrix = MATRIX_3D.scale(matrix, ...programInfo.context.scale)
 	// Set the matrix
 	gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
 

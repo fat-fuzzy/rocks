@@ -65,7 +65,7 @@ function main(canvas) {
 			// bind u_matrix
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		geometry: geometries.getGeometryCamera3D(),
+		context: geometries.getGeometryCamera3D(),
 	}
 	buffers = initBuffers(gl)
 	return programInfo
@@ -76,8 +76,8 @@ function draw() {
 	drawScene(gl, programInfo, buffers, vao)
 }
 
-function update(geometry) {
-	programInfo.geometry = geometry
+function update(context) {
+	programInfo.context = context
 	buffers = initBuffers(gl)
 }
 
