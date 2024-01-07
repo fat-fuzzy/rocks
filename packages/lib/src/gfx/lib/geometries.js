@@ -476,7 +476,6 @@ function getGeometryCamera3D() {
 function getGeometryAnimation3D() {
 	return {
 		...getGeometryMatrix3D(),
-		fieldOfView: degToRad(60),
 		animationSpeed: 1.2,
 	}
 }

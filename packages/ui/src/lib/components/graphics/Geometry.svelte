@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Geometry3dProps} from '$types'
+	import type {GeometryProps} from '$types'
 
 	import {createEventDispatcher, onMount} from 'svelte'
 	import {enhance} from '$app/forms'
@@ -13,7 +13,7 @@
 	export let method = 'POST'
 	export let canvasWidth: number
 	export let canvasHeight: number
-	export let geometry: Geometry3dProps
+	export let geometry: GeometryProps
 	export let background = ''
 	export let layout = ''
 	export let threshold = ''

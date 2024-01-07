@@ -46,7 +46,7 @@ export type SketchProps = GeometryProps & {
 }
 
 export type ProgramInfo = {
-	geometry: SketchProps
+	context: SketchProps
 }
 
 export type SceneMeta = {
@@ -59,7 +59,7 @@ export type Scene = {
 	id: string
 	draw: () => void
 	clear: () => void
-	update: (value: Geometry3dProps, event?: MouseEvent | TouchEvent) => void
+	update: (value: SketchProps, event?: MouseEvent | TouchEvent) => void
 	main: (canvas: HTMLCanvasElement) => ProgramInfo
 	meta?: SceneMeta
 }
