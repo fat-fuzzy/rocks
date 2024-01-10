@@ -51,7 +51,7 @@ import Header from '$lib/components/recipes/headers/Header.svelte'
 /**
  * Compositions - Graphics
  */
-import Geometry from '$lib/components/graphics/Geometry.svelte'
+import Geometry2D from '$lib/components/graphics/Geometry2D.svelte'
 import Geometry3D from '$lib/components/graphics/Geometry3D.svelte'
 import Player from '$lib/components/graphics/Player.svelte'
 import Sketch from '$lib/components/graphics/Sketch.svelte'
@@ -171,8 +171,8 @@ const recipes = {
 }
 
 const graphics = {
-	Geometry,
-	// Geometry3D,
+	Geometry2D,
+	Geometry3D,
 	Player,
 	Sketch,
 }
