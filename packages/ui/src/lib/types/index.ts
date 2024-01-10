@@ -44,6 +44,7 @@ export type SketchProps = GeometryProps & {
 	cameraAngle?: number
 	animationSpeed?: number
 	pause?: boolean
+	image?: HTMLImageElement
 }
 
 export type ProgramInfo = {
@@ -54,6 +55,7 @@ export type SceneMeta = {
 	input: string
 	type: string
 	camera: number
+	filename?: string
 }
 
 export type Scene = {
@@ -61,6 +63,6 @@ export type Scene = {
 	draw: () => void
 	clear: () => void
 	update: (value: SketchProps, event?: MouseEvent | TouchEvent) => void
-	main: (canvas: HTMLCanvasElement) => ProgramInfo
+	main: (canvas: HTMLCanvasElement, image?: any) => ProgramInfo
 	meta?: SceneMeta
 }

@@ -1,3 +1,6 @@
+let host = 'http://localhost:5173'
+let imageAssetsPath = '$lib/images'
+
 export const sketches = [
 	{
 		id: '001',
@@ -103,10 +106,15 @@ export const sketches = [
 			type: 'matrix-3d',
 		},
 	},
-	// {
-	// 	id: '000',
-	// 	slug: 'poop',
-	// 	title: 'A Feature',
-	// 	asset: '💩',
-	// },
+	{
+		id: '012',
+		slug: 'texture',
+		title: 'Texture',
+		asset: 'emoji:texture',
+		meta: {
+			input: 'form',
+			type: 'texture',
+			filename: 'plants.png',
+		},
+	},
 ]
