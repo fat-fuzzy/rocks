@@ -6,10 +6,10 @@ const frag = `#version 300 es
 precision mediump float;
 
 in vec4 v_color;
-out vec4 out_color;
+out vec4 outColor;
 
 void main() {
-  out_color = v_color;
+  outColor = v_color;
 }
 `
 
