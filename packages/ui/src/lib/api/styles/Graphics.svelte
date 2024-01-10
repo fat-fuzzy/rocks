@@ -101,4 +101,6 @@
 	})
 </script>
 
-<svelte:component this={component} id={path.replaceAll('/', '.')} {...props} />
+{#key title}
+	<svelte:component this={component} id={path.replaceAll('/', '.')} {...props} />
+{/key}
