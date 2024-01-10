@@ -1,6 +1,6 @@
 ---
-title: Geometry
-slug: Geometry
+title: Geometry2D
+slug: geometry-2d
 category: 'graphics'
 props_state: ['geometry']
 props_style:
@@ -13,7 +13,7 @@ context: ['app.settings']
 
 ## Usage
 
-This component provides inputs to interact with a geometry in a `<canvas>` animation inside a `Sketch` component.
+This component provides inputs to interact with a 2D geometry in a `<canvas>` inside a `Sketch` component.
 The available inputs are _Position_, _Translation_, and _Scale_, implemented via the following components:
 
 - `Position` component in `graphics`

@@ -12,8 +12,8 @@
 	export let coordX = 0
 	export let coordY = 0
 	export let coordZ: number | undefined = undefined
-	export let maxX = 0
-	export let maxY = 0
+	export let maxX = 100
+	export let maxY = 100
 	export let maxZ: number | undefined = undefined
 	export let minZ: number | undefined = undefined
 	export let disabled: boolean

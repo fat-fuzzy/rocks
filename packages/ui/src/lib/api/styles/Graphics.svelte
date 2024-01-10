@@ -12,9 +12,14 @@
 
 	const {TRANSITION_CONTRAST} = constants
 
+	const scenes: {[key: string]: string} = {
+		Sketch: '011',
+		Geometry2D: '004',
+		Geometry3D: '011',
+	}
 	export let title = ''
 	export let name = title
-	let currentSketch = title === 'Sketch' ? '011' : '004'
+	let currentSketch = scenes[title] ? scenes[title] : '004'
 	export let component: ComponentType
 	export let props: any
 	export let scene = lib.gfx.sketches[currentSketch]
@@ -51,6 +56,8 @@
 		return s.id === currentSketch
 	})
 
+	$: meta = sketchData?.meta
+
 	// Graphics options
 	$: geometry = scene?.geometry ?? lib.gfx.geometries.getGeometryDefaults()
 
@@ -72,7 +79,7 @@
 		...props,
 		scene,
 		geometry,
-		meta: sketchData?.meta ?? undefined,
+		meta,
 		page,
 		title,
 		color,
