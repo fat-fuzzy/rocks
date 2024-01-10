@@ -41,7 +41,10 @@
 	}
 
 	$: state = feedback ? `${feedback.status}` : state
-	$: showGeometry = context !== undefined && (state === 'play' || state === 'pause')
+	$: showGeometry =
+		context !== undefined &&
+		scene.meta?.type !== 'texture' &&
+		(state === 'play' || state === 'pause')
 	$: currentAsset = state === 'clear' && asset ? asset : `emoji:${state}`
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`

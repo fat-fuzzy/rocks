@@ -3,7 +3,6 @@ import utils from './utils'
 import vectors from './vectors'
 
 const {round, degToRad, randomInt} = utils
-const {VECTOR} = vectors
 
 const {M4} = matrices
 
@@ -325,13 +324,22 @@ const STAR_GEOMETRY_COORDS = [
 
 /* prettier-ignore */
 const DEFAULT_RECT_COORDS = [
-	// left column
 	0, 0,
 	30, 0,
 	0, 150,
 	0, 150,
 	30, 0,
 	30, 150,
+]
+
+/* prettier-ignore */
+const DEFAULT_TEXTURE_COORDS = [
+	0.0, 0.0,
+	1.0, 0.0,
+	0.0, 1.0,
+	0.0, 1.0,
+	1.0, 0.0,
+	1.0, 1.0,
 ]
 
 function flipAndCenter(geometry) {
@@ -480,6 +488,7 @@ export default {
 	DEFAULT_GEOMETRY_COORDS,
 	DEFAULT_3D_GEOMETRY_COORDS,
 	DEFAULT_3D_GEOMETRY_COLORS,
+	DEFAULT_TEXTURE_COORDS,
 	flipAndCenter,
 	generatePolygon,
 	getGeometryDefaults,
