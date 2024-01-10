@@ -8,7 +8,7 @@
 	import Rotation from '$lib/components/graphics/Rotation.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
-	export let id = 'geometry'
+	export let id = 'geometry-3d'
 	export let canvasWidth: number
 	export let canvasHeight: number
 	export let geometry: GeometryProps
@@ -26,7 +26,7 @@
 			value,
 		})
 
-	let {scale, translation, rotation} = geometry
+	let {scale, translation} = geometry
 
 	// input attributes
 	let maxZ = 1

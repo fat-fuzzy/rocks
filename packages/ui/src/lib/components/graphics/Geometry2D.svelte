@@ -9,7 +9,7 @@
 	import Rotation from '$lib/components/graphics/Rotation.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
-	export let id = 'geometry'
+	export let id = 'geometry-2d'
 	export let method = 'POST'
 	export let canvasWidth: number
 	export let canvasHeight: number
