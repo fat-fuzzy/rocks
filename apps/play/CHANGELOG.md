@@ -1,5 +1,13 @@
 # @fat-fuzzy/play
 
+## 0.1.30
+
+### Patch Changes
+
+- ac7816a8: [gfx+ui+apps] New scene: Texture, update docs
+- Updated dependencies [ac7816a8]
+  - @fat-fuzzy/lib@0.1.9
+
 ## 0.1.29
 
 ### Patch Changes
