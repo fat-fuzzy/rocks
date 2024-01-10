@@ -47,11 +47,8 @@ function drawScene(gl, programInfo, buffers) {
 	)
 
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader
-	gl.uniform2f(
-		programInfo.uniformLocations.u_resolution,
-		programInfo.context.image.width,
-		programInfo.context.image.height,
-	)
+	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
+	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
 
 	// Tell the shader to get the texture from texture unit 0
 	gl.uniform1i(programInfo.uniformLocations.u_image, 0)
