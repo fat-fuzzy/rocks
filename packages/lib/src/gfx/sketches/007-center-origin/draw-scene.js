@@ -11,7 +11,7 @@ function drawScene(gl, programInfo, buffers) {
 	gl.depthFunc(gl.LEQUAL) // near things obscure far things
 
 	// Clear the canvas before drawing on it
-	gl.clear(gl.COLOR_BUFFER_BIT, gl.DEPTH_BUFFER_BIT)
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
 	// Create a perspective matrix:
 	// - simulates the distortion of perspective in the camera
