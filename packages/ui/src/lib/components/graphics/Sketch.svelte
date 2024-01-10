@@ -3,7 +3,7 @@
 
 	import {afterUpdate, onDestroy} from 'svelte'
 
-	import Geometry from '$lib/components/graphics/Geometry.svelte'
+	import Geometry2D from '$lib/components/graphics/Geometry2D.svelte'
 	import Geometry3D from '$lib/components/graphics/Geometry3D.svelte'
 	import FieldOfView from '$lib/components/graphics/FieldOfView.svelte'
 	import Camera from '$lib/components/graphics/Camera.svelte'
@@ -69,9 +69,15 @@
 
 	const loop = (t) => {
 		scene.draw(t)
-		frame = requestAnimationFrame((t) => {
-			loop(t)
-		})
+		if (scene.meta?.type !== 'texture') {
+			frame = requestAnimationFrame((t) => {
+				loop(t)
+			})
+		} else {
+			frame = requestAnimationFrame((t) => {
+				scene.draw(t)
+			})
+		}
 	}
 
 	const play = () => {
@@ -175,7 +181,7 @@
 			<Player on:click={handleToggle} {color} size="xs" {variant} disabled={Boolean(feedback)} />
 			{#if showGeometry}
 				{#if meta?.type === 'matrix-2d'}
-					<Geometry
+					<Geometry2D
 						id={`${id}-context-2d`}
 						on:update={updateGeometry}
 						threshold={breakpoint}
