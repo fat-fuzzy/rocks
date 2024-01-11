@@ -47,6 +47,8 @@ $world-map: '🗺️';
 $game-dice: '🎲';
 $film-camera: '🎥';
 $film-frames: '🎞️';
+$framed-picture: '🖼️';
+$cyclone: '🌀';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -114,7 +116,9 @@ $emojis: (
 	projection: #{$world-map},
 	matrix-3d: #{$game-dice},
 	camera-3d: #{$film-camera},
-	animation-3d: #{$film-frames}
+	animation-3d: #{$film-frames},
+	texture: #{$framed-picture},
+	convolution: #{$cyclone}
 );
 
 $assets: (
