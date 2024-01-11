@@ -58,11 +58,13 @@ export type SceneMeta = {
 	filename?: string
 	channels?: string[]
 	blur?: string[]
+	convolutions?: string[]
 }
 
 export type Filters = {
 	channels?: string
 	blur?: string
+	convolution?: string
 }
 
 export type SceneInput = {

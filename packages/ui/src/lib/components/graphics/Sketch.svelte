@@ -39,6 +39,7 @@
 	let filters: Filters = {
 		channels: 'rgba',
 		blur: undefined,
+		convolution: 'normal',
 	}
 
 	function degToRad(degrees: number) {
@@ -150,6 +151,18 @@
 			filters.blur = undefined
 		} else {
 			filters.blur = value
+		}
+
+		if (canvas) {
+			programInfo = scene.main(canvas, {filters})
+		}
+	}
+
+	const handleToggleConvolution = (event: CustomEvent) => {
+		const value = event.detail.selected[0].value
+
+		filters = {
+			convolution: value,
 		}
 
 		if (canvas) {
@@ -296,6 +309,23 @@
 										initial: b === filters.blur ? 'pressed' : undefined,
 									}))}
 									on:click={handleToggleBlur}
+									disabled={state === 'pause'}
+								/>
+							{/if}
+							{#if meta?.convolutions}
+								<ToggleMenu
+									size="xs"
+									mode="check"
+									layout="switcher"
+									color="accent"
+									variant="bare"
+									items={meta.convolutions.map((b) => ({
+										id: b,
+										text: b,
+										value: b,
+										initial: b === filters.convolution ? 'pressed' : undefined,
+									}))}
+									on:click={handleToggleConvolution}
 									disabled={state === 'pause'}
 								/>
 							{/if}
