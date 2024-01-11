@@ -1,6 +1,5 @@
 import matrices from './matrices'
 import utils from './utils'
-import vectors from './vectors'
 
 const {round, degToRad, randomInt} = utils
 
