@@ -64,10 +64,10 @@ export type SceneMeta = {
 export type Filters = {
 	channels?: string
 	blur?: string
-	convolution?: string
+	effects?: string[]
 }
 
-export type SceneInput = {
+export type SceneOptions = {
 	url?: string
 	filters: Filters
 }
@@ -77,6 +77,6 @@ export type Scene = {
 	draw: () => void
 	clear: () => void
 	update: (value: SketchProps, event?: MouseEvent | TouchEvent) => void
-	main: (canvas: HTMLCanvasElement, input?: SceneInput) => ProgramInfo
+	main: (canvas: HTMLCanvasElement, options?: SceneOptions) => ProgramInfo
 	meta?: SceneMeta
 }
