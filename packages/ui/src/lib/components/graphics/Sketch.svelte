@@ -322,7 +322,7 @@
 										id: b,
 										text: b,
 										value: b,
-										initial: filters.convolutions?.includes(b) ? 'pressed' : undefined,
+										initial: filters.effects?.includes(b) ? 'pressed' : undefined,
 									}))}
 									on:click={handleUpdateEffects}
 									disabled={state === 'pause'}
