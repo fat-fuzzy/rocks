@@ -199,13 +199,11 @@ function drawEffects(gl, programInfo, textures, framebuffers, originalTexture) {
  * @param {*} programInfo
  */
 function setFrameBuffer(gl, fbo, programInfo) {
-	let {width, height} = programInfo.context.image
-
 	// make this the framebuffer we are rendering to
 	gl.bindFramebuffer(gl.FRAMEBUFFER, fbo)
 
 	// Tell the shader the resolution of the framebuffer
-	gl.uniform2f(programInfo.uniformLocations.u_resolution, width, height)
+	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 
 	// Tell WebGL how to convert from clip space to pixels
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
