@@ -42,7 +42,7 @@ function clear() {
 	gl.clearDepth(1.0) // clear everything (?)
 
 	// tell webgl to cull faces
-	gl.depthFunc(gl.LEQUAL) // near things obscure far things
+	// gl.depthFunc(gl.LEQUAL) // near things obscure far things
 }
 
 function main(canvas, options) {
@@ -67,7 +67,7 @@ function main(canvas, options) {
 			translation: [0, 0],
 			width: 1,
 			height: 1,
-			kernel: options.filters.convolution,
+			effects: options.filters?.effects ?? ['normal'],
 		},
 	}
 }
@@ -137,13 +137,14 @@ function loadTexture(gl, image, options) {
 			u_image: gl.getUniformLocation(program, 'u_image'),
 			u_kernel: gl.getUniformLocation(program, 'u_kernel[0]'),
 			u_kernelWeight: gl.getUniformLocation(program, 'u_kernelWeight'),
+			u_flipY: gl.getUniformLocation(program, 'u_flipY'),
 		},
 		context: {
 			image,
 			translation: [0, 0],
 			width: imgWidth,
 			height: imgHeight,
-			kernel: options.filters.convolution,
+			effects: options.filters?.effects ?? ['normal'],
 		},
 	}
 
