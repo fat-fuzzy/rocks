@@ -36,7 +36,7 @@
 				if (event.detail.pressed) {
 					selected = [...selected, event.detail]
 				} else {
-					selected = selected.filter((c) => c.name !== event.detail.id)
+					selected = selected.filter((c) => c.value !== event.detail.value)
 				}
 				break
 			case 'radio':

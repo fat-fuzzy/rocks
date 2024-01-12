@@ -158,13 +158,12 @@
 		}
 	}
 
-	const handleToggleConvolution = (event: CustomEvent) => {
+	const handleUpdateEffects = (event: CustomEvent) => {
 		const value = event.detail.selected
 
 		filters = {
 			effects: value.map((v) => v.value),
 		}
-
 		if (canvas) {
 			programInfo = scene.main(canvas, {filters})
 		}
@@ -325,7 +324,7 @@
 										value: b,
 										initial: filters.convolutions?.includes(b) ? 'pressed' : undefined,
 									}))}
-									on:click={handleToggleConvolution}
+									on:click={handleUpdateEffects}
 									disabled={state === 'pause'}
 								/>
 							{/if}
