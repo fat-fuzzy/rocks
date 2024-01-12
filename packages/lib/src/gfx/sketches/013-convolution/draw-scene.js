@@ -197,7 +197,12 @@ function drawEffects(gl, programInfo, textures, framebuffers, originalTexture) {
 }
 
 /**
- *
+ * Setup framebuffers to apply multiple effects to a texture
+ * > There's a list of which types and combinations of attachments are supposed to always work.
+ * > The one used here, one RGBA/UNSIGNED_BYTE texture assigned to the COLOR_ATTACHMENT0 attachment point, is always supposed to work.
+ * > More exotic texture formats and or combinations of attachments might not work.b
+ * > In that case you're supposed to bind the framebuffer and then call gl.checkFramebufferStatus and see if it returns gl.FRAMEBUFFER_COMPLETE
+ * Source: https://webgl2fundamentals.org/webgl/lessons/webgl-image-processing-continued.htmls
  * @param {WebGL2RenderingContext} gl
  * @param {*} fbo
  * @param {*} programInfo
