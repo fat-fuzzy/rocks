@@ -7,31 +7,9 @@ id: '013'
 
 ## What / Why
 
-Section on Convolution from the [Tutorial on Textures from webgl3fundamentals.org](https://webgl2fundamentals.org/webgl/lessons/webgl-image-processing.html)
+Implements the following lessons of the [webgl3fundamentals.org](https://webgl2fundamentals.org/webgl/lessons/:
 
-## Color Experiments
+- convolution section from the [Tutorial on Textures](https://webgl2fundamentals.org/webgl/lessons/webgl-image-processing.html)
+- applying multiple effects from [Tutorial on Textures Continued](https://webgl2fundamentals.org/webgl/lessons/webgl-image-processing-continued.html)
 
-- ragb
-- rabg
-- rbag
-- rbga
-- rgba
-- rgab
-- abgr
-- abrg
-- agrb
-- agbr
-- arbg
-- argb
-- bagr
-- barg
-- bgar
-- bgra
-- brag
-- brga
-- gabr
-- garb
-- gbar
-- gbra
-- grab
-- grba
+> If you wanted to do full on image processing you'd probably need many GLSL programs. A program for hue, saturation and luminance adjustment. Another for brightness and contrast. One for inverting, another for adjusting levels, etc.
