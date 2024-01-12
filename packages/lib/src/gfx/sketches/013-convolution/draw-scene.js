@@ -2,6 +2,7 @@ import geometries from '../../lib/geometries'
 import filters from '../../lib/filters'
 
 const {DEFAULT_TEXTURE_COORDS} = geometries
+let originalTexture
 
 /**
  *
@@ -17,7 +18,7 @@ function drawScene(gl, programInfo, buffers) {
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 
 	// Create a texture
-	let originalTexture = createAndSetupTexture(gl)
+	originalTexture = createAndSetupTexture(gl)
 
 	// Upload the image into the texture
 	let mipLevel = 0 // the largest mip
@@ -41,17 +42,6 @@ function drawScene(gl, programInfo, buffers) {
 	let {textures, framebuffers} = setupFramebuffers(gl, programInfo, framebufferOptions)
 
 	drawEffects(gl, programInfo, textures, framebuffers, originalTexture)
-
-	// NOW: y-flip the image to display on canvas
-	gl.uniform1f(programInfo.uniformLocations.u_flipY, -1)
-
-	setFrameBuffer(gl, null, programInfo)
-
-	// Clear the canvas
-	gl.clearColor(0, 0, 0, 0)
-	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-
-	draWithKernel(gl, programInfo, filters.getKernel('normal'))
 }
 
 function setPositionAttribute(gl, buffers, programInfo) {
@@ -122,7 +112,7 @@ function setupFramebuffers(gl, programInfo, framebufferOptions) {
 	let framebuffers = []
 	let {mipLevel, border, internalFormat, srcFormat, srcType, data} = framebufferOptions
 
-	for (let i = 0; i < 2; i++) {
+	for (let i = 0; i < filters.kernelKeys.length; i++) {
 		// Create a texture
 		let texture = createAndSetupTexture(gl)
 		textures[i] = texture
@@ -178,18 +168,32 @@ function drawEffects(gl, programInfo, textures, framebuffers, originalTexture) {
 	let kernel
 	for (let i = 0; i < contextFilters.length; i++) {
 		// Set the kernel and its weight
-		kernel = contextFilters[i] ? filters.getKernel(contextFilters[i]) : filters.getKernel('normal')
-		// Set up to draw in one of the framebuffers
-		setFrameBuffer(gl, framebuffers[count % 2], programInfo)
+		kernel = contextFilters[i] ? filters.getKernel(contextFilters[i]) : null
 
-		draWithKernel(gl, programInfo, kernel)
+		if (kernel) {
+			// Set up to draw in one of the framebuffers
+			setFrameBuffer(gl, framebuffers[count % 2], programInfo)
 
-		// for the next draw, use the texture we just rendered to
-		gl.bindTexture(gl.TEXTURE_2D, textures[count % 2])
+			draWithKernel(gl, programInfo, kernel)
 
-		// increment count so we use the other texture next time
-		++count
+			// for the next draw, use the texture we just rendered to
+			gl.bindTexture(gl.TEXTURE_2D, textures[count % 2])
+
+			// increment count so we use the other texture next time
+			count++
+		}
 	}
+
+	// NOW: y-flip the image to display on canvas
+	gl.uniform1f(programInfo.uniformLocations.u_flipY, -1)
+
+	setFrameBuffer(gl, null, programInfo)
+
+	// Clear the canvas
+	gl.clearColor(0, 0, 0, 0)
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+
+	draWithKernel(gl, programInfo, filters.getKernel('normal'))
 }
 
 /**

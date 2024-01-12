@@ -90,10 +90,9 @@ function loadTexture(gl, image, options) {
 	let program
 
 	let frag
-	if (options.filters.convolution) {
+	if (options.filters.effects) {
 		frag = convolution['convolution.1']
 	}
-
 	// if (filters.channels) {
 	// 	frag = channels[filters.channels]
 	// }

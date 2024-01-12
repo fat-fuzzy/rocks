@@ -142,6 +142,7 @@ function getKernel(filter) {
 }
 
 export default {
+	kernelKeys,
 	getKernel,
 	computeKernelWeight,
 }
