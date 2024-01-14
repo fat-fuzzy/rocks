@@ -23,7 +23,7 @@
 			"title": "Refactor"
 		},
 		"🗑️ ": {
-			"description": "Deprecate stuff",
+			"description": "Deprecate related changes",
 			"title": "Deprecate"
 		},
 		"🔥 ": {
@@ -99,31 +99,35 @@
 			"title": "UI Design"
 		},
 		"👾 ": {
-			"description": "Graphics stuff",
+			"description": "Graphics related changes",
 			"title": "Graphics"
 		},
+		"🔭 ": {
+			"description": "Data analysis and data viz related changes",
+			"title": "Data"
+		},
 		"🗄️ ": {
-			"description": "Database stuff",
+			"description": "Database related changes",
 			"title": "Database"
 		},
 		"🐍 ": {
-			"description": "Backend stuff (python)",
+			"description": "Backend related changes (python)",
 			"title": "Backend Python"
 		},
 		"🛼 ": {
-			"description": "Backend stuff (node)",
+			"description": "Backend related changes (node)",
 			"title": "Backend Node"
 		},
 		"🥨 ": {
-			"description": "Backend stuff (wordpress)",
+			"description": "Backend related changes (wordpress)",
 			"title": "Backend Wordpress"
 		},
 		"☁️ ": {
-			"description": "Backend stuff (serverless)",
+			"description": "Backend related changes (serverless)",
 			"title": "Backend Serverless"
 		},
 		"🐳 ": {
-			"description": "Backend stuff (docker)",
+			"description": "Backend related changes (docker)",
 			"title": "backend-python"
 		},
 		"👐 ": {
@@ -159,7 +163,7 @@
 			"title": "Idea"
 		},
 		"🌽 ": {
-			"description": "Repo / workspaces related stuff",
+			"description": "Repo / workspaces related related changes",
 			"title": "Repo"
 		},
 		"🔧 ": {
