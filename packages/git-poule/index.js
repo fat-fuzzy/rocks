@@ -49,8 +49,36 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 	const timestampRegex = /([\d]{10})/g
 	const scopeRegex = /\[(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}?\]/g
 
+	const scopes = [
+		'all',
+		'root',
+		'apps',
+		'sandbox',
+		'client',
+		'play',
+		'doc',
+		'packages',
+		'config',
+		'design',
+		'git-poule',
+		'lib',
+		'gfx',
+		'markdown',
+		'ui',
+		'infra',
+		'resources',
+	]
 	const commitData = [
-		['"PR"', '"HASH"', '"TIMESTAMP"', '"COMMIT_TYPE"', '"SCOPE"', '"DESCRIPTION"', '"AUTHOR"'],
+		[
+			'"PR"',
+			'"HASH"',
+			'"TIMESTAMP"',
+			'"COMMIT_TYPE"',
+			'"SCOPE"',
+			...scopes.map((s) => `"SCOPE.${s}"`),
+			'"DESCRIPTION"',
+			'"AUTHOR"',
+		],
 	]
 	commits.forEach((commit) => {
 		// console.log(commit)
@@ -140,8 +168,58 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 			if (scopeLeftover) {
 				descString = descString.substring(scopeLeftover[0].length).trim()
 			}
-			// If there is a SCOPE match: remove the surrounding '[' and ']' characters, otherwise set SCOPE to '-'
-			scope = scope ? `"${String(scope).substring(1, scope.length - 1)}"` : '-'
+
+			let scopeValues
+			if (scope) {
+				// If there is a SCOPE match: remove the surrounding '[' and ']' characters, otherwise set SCOPE to '-'
+				scope = String(scope).substring(1, scope.length - 1)
+
+				let scopeDetails = scope.split('+')
+				// Parse scope string to extract multiple values
+				if (scopeDetails.length > 1) {
+					scopeValues = scopes.map((sv) => {
+						let scopeTrimmed = sv.trim()
+						if (scopeDetails.includes(scopeTrimmed)) {
+							return `"${scopeTrimmed}"`
+						} else {
+							let scopeValueDetails = scopeTrimmed.split('/')
+							if (scopeValueDetails.length > 1) {
+								if (scopeValueDetails.includes(scopeTrimmed)) {
+									return `"${scopeTrimmed}"`
+								}
+							}
+						}
+						return '-'
+					})
+				} else {
+					scopeDetails = scope.split('/')
+					if (scopeDetails.length > 1) {
+						scopeValues = scopes.map((sc) => {
+							if (scopeDetails.includes(sc.trim())) {
+								return `"${sc.trim()}"`
+							} else {
+								return '-'
+							}
+						})
+					} else {
+						scopeValues = scopes.map((sc) => {
+							if (scope === sc.trim()) {
+								return `"${scope}"`
+							} else {
+								return '-'
+							}
+						})
+					}
+				}
+			}
+			scope = scope ? `"${scope}"` : '-'
+			if (!scopeValues) {
+				scopeValues = []
+				for (let i = 0; i < scopes.length; i++) {
+					scopeValues[i] = '-'
+				}
+			}
+
 			pr = pr ? pr : '-'
 
 			commitData.push([
@@ -150,6 +228,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 				timestamp,
 				`"${commitType}"`,
 				scope,
+				...scopeValues,
 				`"${descString.trim()}"`,
 				`"${author}"`,
 			])
