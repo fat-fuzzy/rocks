@@ -141,3 +141,8 @@ cdk.out
 
 iam-policy-default.json
 .npmrc
+
+### R Studio ignores & data sets ignores ###
+.RData
+.Rhistory
+packages/lib/src/data
