@@ -180,7 +180,7 @@
 		},
 		"⚖️  ": {
 			"description": "Add / Update LICENSES",
-			"title": "Scales"
+			"title": "Legal"
 		},
 		"🎉 ": {
 			"description": "Initial commit (root/package/lib/app...)",
