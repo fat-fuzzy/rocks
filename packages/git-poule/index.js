@@ -73,6 +73,11 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 			'"PR"',
 			'"HASH"',
 			'"TIMESTAMP"',
+			'"DATE"',
+			'"YEAR"',
+			'"MONTH"',
+			'"DAY"',
+			'"TIME"',
 			'"COMMIT_TYPE"',
 			'"SCOPE"',
 			...scopes.map((s) => `"SCOPE.${s}"`),
@@ -180,33 +185,33 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 					scopeValues = scopes.map((sv) => {
 						let scopeTrimmed = sv.trim()
 						if (scopeDetails.includes(scopeTrimmed)) {
-							return `"${scopeTrimmed}"`
+							return 1
 						} else {
 							let scopeValueDetails = scopeTrimmed.split('/')
 							if (scopeValueDetails.length > 1) {
 								if (scopeValueDetails.includes(scopeTrimmed)) {
-									return `"${scopeTrimmed}"`
+									return1
 								}
 							}
 						}
-						return '-'
+						return 0
 					})
 				} else {
 					scopeDetails = scope.split('/')
 					if (scopeDetails.length > 1) {
 						scopeValues = scopes.map((sc) => {
 							if (scopeDetails.includes(sc.trim())) {
-								return `"${sc.trim()}"`
+								return 1
 							} else {
-								return '-'
+								return 0
 							}
 						})
 					} else {
 						scopeValues = scopes.map((sc) => {
 							if (scope === sc.trim()) {
-								return `"${scope}"`
+								return 1
 							} else {
-								return '-'
+								return 0
 							}
 						})
 					}
@@ -216,16 +221,46 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 			if (!scopeValues) {
 				scopeValues = []
 				for (let i = 0; i < scopes.length; i++) {
-					scopeValues[i] = '-'
+					scopeValues[i] = 0
 				}
 			}
+
+			let unixTimestamp = parseInt(timestamp, 10)
+			let fullDate = new Date(unixTimestamp * 1000)
+			let locale = 'fr-FR'
+
+			const shortDate = new Intl.DateTimeFormat(locale, {
+				dateStyle: 'short',
+			})
+			const shortTime = new Intl.DateTimeFormat(locale, {
+				timeStyle: 'short',
+			})
+			const yearFormatter = new Intl.DateTimeFormat(locale, {
+				year: 'numeric',
+			})
+			const monthFormatter = new Intl.DateTimeFormat(locale, {
+				month: 'short',
+			})
+			const dayFormatter = new Intl.DateTimeFormat(locale, {
+				day: 'numeric',
+			})
+			let date = shortDate.format(fullDate)
+			let time = shortTime.format(fullDate)
+			let year = yearFormatter.format(fullDate)
+			let month = monthFormatter.format(fullDate)
+			let day = dayFormatter.format(fullDate)
 
 			pr = pr ? pr : '-'
 
 			commitData.push([
 				pr,
 				`"${hash}"`,
-				timestamp,
+				unixTimestamp,
+				date,
+				year,
+				month,
+				day,
+				time,
 				`"${commitType}"`,
 				scope,
 				...scopeValues,
