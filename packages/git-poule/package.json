@@ -1,0 +1,15 @@
+{
+	"name": "@fat-fuzzy/git-poule",
+	"version": "0.1.0",
+	"description": "Script to extract comit data from local git history",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Patricia Boh",
+	"license": "BSD-3-Clause",
+	"dependencies": {
+		"prettier": "^1.19.1",
+		"shelljs": "^0.8.5"
+	}
+}
