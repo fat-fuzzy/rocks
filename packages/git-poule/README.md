@@ -26,22 +26,24 @@ NOTES:
   - bot commits
   - Merge commits
 
-The output will be a CSV file containing the messages are split into its constituent parts as decribed above. It also includes metadata about the commit: PR number if any, commit hash, timestamp, and author.
+The output will be a CSV file containing the messages are split into its constituent parts as described above. It also includes metadata about the commit: PR number if any, commit hash, timestamp, and author. The scope is further split into details if possible.
+
+[TODO: more on scope]
 
 **Example:**
 
 ```txt
-"PR", "HASH", "TIMESTAMP", "EMOJI", "SCOPE", "DESCRIPTION", "AUTHOR"
-1, "6063421", "1616438007", "Merge", null, "from branch-x","author-name"
-null, "fd376f5", "1702558783", "fix:", null, "Update dependency X", "bot-name"
-null, "686ae3b", "1705074852", "🚧", "root", "Deprecate some feature", "author-name"
-null, "c7d83d9", "1573663878", "💄", "ui", "New Layout class definitions", "author-name"
-null, "5ec9b8a", "1573663745", "🎉", null, "Initial commit - README", "author-name"
+"PR", "HASH", "DATE", "YEAR",  "MONTH", "DAY", "TIME", "COMMIT_TYPE", "SCOPE", "SCOPE.x" ... "SCOPE.z", "DESCRIPTION", "AUTHOR"
+1, "6063421", "19/11/2023", "2023", "nov.", "19", "20:42","Merge", null, "SCOPE.x" ... "SCOPE.z", "from branch-x","author-name"
+null, "fd376f5", "19/11/2023", "2023", "nov.", "19", "18:10", "fix:", null, "SCOPE.x" ... "SCOPE.z", "Update dependency X", "bot-name"
+null, "686ae3b", "12/10/2023", "2023", "oct.", "12", "10:20", "🚧", "root", "SCOPE.x" ... "SCOPE.z", "Deprecate some feature", "author-name"
+null, "c7d83d9", "11/10/2023", "2023", ""oct.", "11", "17:33", "💄", "ui", "SCOPE.x" ... "SCOPE.z", "New Layout class definitions", "author-name"
+null, "5ec9b8a", "02/09/2023", "2023", "sept.", "02", "21:12", "🎉", null, "SCOPE.x" ... "SCOPE.z", "Initial commit - README", "author-name"
 ```
 
 ## Requirements
 
-This script presuposes that you have a repo with a commit convention configuration as described above. If the commit conventions vary, the script has to be adpated to fit those conventions.
+This script assumes that you have a repo with a commit convention configuration as described above. If the commit conventions vary, the script has to be adapted to fit those conventions.
 
 ## Usage
 
@@ -67,7 +69,7 @@ This will output a `commit_types.csv` in the current directory.
 
 ## JSON
 
-An earlier version of the script output a JSON file under the follwing format:
+An earlier version of the script output a JSON file under the following format:
 
 ```json
 {
@@ -88,7 +90,7 @@ The code corresponding to that version is commented out on the script
 Make sure that you
 
 - understand what the script is doing
-- know the contents and history of the repo you want to analyse
+- know the contents and history of the repo you want to analyze
 - have the necessary rights over the repository you will be manipulating
 - have a backup of your repo in case anything goes wrong
 
