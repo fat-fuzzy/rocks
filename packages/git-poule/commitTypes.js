@@ -25,10 +25,6 @@ fs.readFile(CZ_CONFIG_FILE, 'utf8', (err, data) => {
 
 	// COMIT_TYPES_CSV
 	for (let i = 0; i < commitTypesData.length; i++) {
-		let record = []
-		for (let j = 0; j < commitTypesData[i].length; j++) {
-			record[j] = commitTypesData[i][j]
-		}
-		console.log(record.join(';'))
+		console.log(commitTypesData[i].join(';'))
 	}
 })

@@ -182,10 +182,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 	// COMMITS_CSV
 	for (let i = 0; i < commitData.length; i++) {
 		let record = []
-		for (let j = 0; j < commitData[i].length; j++) {
-			record[j] = commitData[i][j]
-		}
-		console.log(record.join(';'))
+		console.log(commitData[i].join(';'))
 	}
 })
 
