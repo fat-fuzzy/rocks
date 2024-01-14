@@ -13,6 +13,6 @@ TODO
 
 Uses WebGL2
 
-## 🚧 Resources
+## Resources
 
-TODO
+- [WebGL Matrix Naming - webgl2fundamentals.org](https://webgl2fundamentals.org/webgl/lessons/webgl-matrix-naming.html)
