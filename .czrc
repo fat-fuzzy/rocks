@@ -128,7 +128,7 @@
 		},
 		"🐳 ": {
 			"description": "Backend related changes (docker)",
-			"title": "backend-python"
+			"title": "Backend Docker"
 		},
 		"👐 ": {
 			"description": "Accessibility related changes",
