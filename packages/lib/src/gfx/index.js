@@ -19,6 +19,7 @@ import sketch_010 from './sketches/010-camera-3d/index'
 import sketch_011 from './sketches/011-animation-3d/index'
 import sketch_012 from './sketches/012-texture/index'
 import sketch_013 from './sketches/013-convolution/index'
+import sketch_014 from './sketches/014-multiple-tex/index'
 
 // Utilities
 const sketches = {
@@ -35,6 +36,7 @@ const sketches = {
 	'011': sketch_011,
 	'012': sketch_012,
 	'013': sketch_013,
+	'014': sketch_014,
 }
 // const sketches = [sketch_001, sketch_002, sketch_003, sketch_004]
 
