@@ -2,11 +2,11 @@
 
 Quick n dirty script to extract commit data and output it into a csv format.
 It parses all commits accessible via `git log` provided that the commit messages follow the format defined in a `cz-conventional-commit` format used in the repo.
-In this repo, the format is modifed from the original as described below.
+In this repo, the format is modified from the original as described below.
 
 ## Commit Message Conventions
 
-Messages should follow the folllowing convention:
+Messages should follow the following convention:
 
 **Format:** EMOJI [SCOPE] DESCRIPTION
 
