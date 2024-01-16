@@ -171,9 +171,9 @@ const recipes = {
 }
 
 const graphics = {
-	Geometry2D,
-	Geometry3D,
-	Player,
+	// Geometry2D,
+	// Geometry3D,
+	// Player,
 	Sketch,
 }
 
