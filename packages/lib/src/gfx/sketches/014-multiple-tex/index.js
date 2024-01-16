@@ -10,17 +10,26 @@ import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from './init-buffers'
 
-import {convolution, defaultFrag} from './shaders/fragment-shader'
+import {channels, blur, defaultFrag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
 let host = 'http://localhost:5173'
 let imageAssetsPath = 'src/lib/images'
-let filename = 'plants.png'
-let imgWidth = 620
-let imgHeight = 518
-// let imgHeight = 620
-// let imgWidth = 518
-let imagePath = `${host}/${imageAssetsPath}/${filename}`
+
+let images = [
+	{
+		filename: 'plants.png',
+		width: 620,
+		height: 518,
+	},
+	{
+		filename: 'mineral.png',
+		width: 605,
+		height: 826,
+	},
+]
+
+let imagesPath = `${host}/${imageAssetsPath}/`
 let gl
 let programInfo = {}
 let buffers
@@ -45,6 +54,33 @@ function clear() {
 	// gl.depthFunc(gl.LEQUAL) // near things obscure far things
 }
 
+function loadImage(url, callback) {
+	let image = new Image()
+	image.src = url
+
+	image.onload = callback
+
+	return image
+}
+
+function loadImages(urls, callback) {
+	let images = []
+	let imagesToLoad = urls.length
+
+	let onImageLoad = function () {
+		--imagesToLoad
+
+		if (imagesToLoad === 0) {
+			callback(images)
+		}
+	}
+
+	for (let i = 0; i < imagesToLoad; i++) {
+		let image = loadImage(urls[i], onImageLoad)
+		images.push(image)
+	}
+}
+
 function main(canvas, options) {
 	// Initialize the GL context
 	gl = canvas.getContext('webgl2')
@@ -54,16 +90,13 @@ function main(canvas, options) {
 		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
 	}
 
-	let image = new Image()
-	image.src = imagePath
-
-	image.onload = () => {
-		loadTexture(gl, image, options)
-	}
+	loadImages(images, (loadedImages) => {
+		loadTextures(gl, loadedImages, options)
+	})
 
 	return {
 		context: {
-			image,
+			images,
 			translation: [0, 0],
 			width: 1,
 			height: 1,
@@ -80,7 +113,7 @@ function draw(t) {
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadTexture(gl, image, options) {
+function loadTextures(gl, images, options) {
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
@@ -88,22 +121,20 @@ function loadTexture(gl, image, options) {
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
 	let program
-
 	let frag
-	if (options.filters.effects) {
-		frag = convolution['convolution.1']
-	}
-	// if (filters.channels) {
-	// 	frag = channels[filters.channels]
-	// }
 
-	// if (filters.blur) {
-	// 	frag = blur[filters.blur]
-	// }
+	if (options.filters.channels) {
+		frag = channels[options.filters.channels]
+	}
+
+	if (options.filters.blur) {
+		frag = blur[options.filters.blur]
+	}
 
 	if (!frag) {
 		frag = defaultFrag
 	}
+
 	const vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	const fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
 
@@ -133,81 +164,91 @@ function loadTexture(gl, image, options) {
 		uniformLocations: {
 			// bind u_matrix
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
-			u_image: gl.getUniformLocation(program, 'u_image'),
+			u_image0: gl.getUniformLocation(program, 'u_image0'),
+			u_image1: gl.getUniformLocation(program, 'u_image1'),
 			u_kernel: gl.getUniformLocation(program, 'u_kernel[0]'),
 			u_kernelWeight: gl.getUniformLocation(program, 'u_kernelWeight'),
 			u_flipY: gl.getUniformLocation(program, 'u_flipY'),
 		},
 		context: {
-			image,
+			images,
 			translation: [0, 0],
-			width: imgWidth,
-			height: imgHeight,
 			effects: options.filters?.effects ?? ['normal'],
 		},
 	}
 
 	buffers = initBuffers(gl, programInfo)
 
-	const texture = gl.createTexture()
+	let textures = []
+
+	for (let i = 0; i < images.length; i++) {
+		let image = images[i]
+
+		const texture = gl.createTexture()
+
+		gl.bindTexture(gl.TEXTURE_2D, texture)
+
+		// Because images have to be downloaded over the internet
+		// they might take a moment until they are ready.
+		// Until then put a single pixel in the texture so we can
+		// use it immediately. When the image has finished downloading
+		// we'll update the texture with the contents of the image.
+
+		let textureInfo = {
+			width: 1, // we don't know the size until it loads
+			height: 1,
+			texture,
+		}
+		const level = 0
+		const internalFormat = gl.RGBA
+		const border = 0
+		const srcFormat = gl.RGBA
+		const srcType = gl.UNSIGNED_BYTE
+		const pixel = new Uint8Array([0, 0, 255, 255]) // opaque blue
+
+		gl.texImage2D(
+			gl.TEXTURE_2D,
+			level,
+			internalFormat,
+			textureInfo.width,
+			textureInfo.height,
+			border,
+			srcFormat,
+			srcType,
+			pixel,
+		)
+
+		textureInfo.width = image.width
+		textureInfo.height = image.height
+
+		gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture)
+		gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
+
+		// WebGL1 has different requirements for power of 2 images
+		// vs. non power of 2 images so check if the image is a
+		// power of 2 in both dimensions.
+		if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
+			// Yes, it's a power of 2. Generate mips.
+			gl.generateMipmap(gl.TEXTURE_2D)
+		} else {
+			// No, it's not a power of 2. Turn off mips and set
+			// wrapping to clamp to edge
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+		}
+
+		textures.push(texture)
+	}
 	// make unit 0 the active texture uint
 	// (ie, the unit all other texture commands will affect
 	gl.activeTexture(gl.TEXTURE0)
+	gl.bindTexture(gl.TEXTURE_2D, textures[0])
+	gl.activeTexture(gl.TEXTURE1)
+	gl.bindTexture(gl.TEXTURE_2D, textures[1])
 
-	gl.bindTexture(gl.TEXTURE_2D, texture)
-
-	// Because images have to be downloaded over the internet
-	// they might take a moment until they are ready.
-	// Until then put a single pixel in the texture so we can
-	// use it immediately. When the image has finished downloading
-	// we'll update the texture with the contents of the image.
-
-	let textureInfo = {
-		width: 1, // we don't know the size until it loads
-		height: 1,
-		texture,
-	}
-	const level = 0
-	const internalFormat = gl.RGBA
-	const border = 0
-	const srcFormat = gl.RGBA
-	const srcType = gl.UNSIGNED_BYTE
-	const pixel = new Uint8Array([0, 0, 255, 255]) // opaque blue
-
-	gl.texImage2D(
-		gl.TEXTURE_2D,
-		level,
-		internalFormat,
-		textureInfo.width,
-		textureInfo.height,
-		border,
-		srcFormat,
-		srcType,
-		pixel,
-	)
-
-	textureInfo.width = image.width
-	textureInfo.height = image.height
-
-	gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture)
-	gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
-
-	// WebGL1 has different requirements for power of 2 images
-	// vs. non power of 2 images so check if the image is a
-	// power of 2 in both dimensions.
-	if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
-		// Yes, it's a power of 2. Generate mips.
-		gl.generateMipmap(gl.TEXTURE_2D)
-	} else {
-		// No, it's not a power of 2. Turn off mips and set
-		// wrapping to clamp to edge
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
-	}
-
-	return image
+	return images
 }
 
 function isPowerOf2(value) {
