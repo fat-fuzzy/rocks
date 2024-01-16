@@ -24,7 +24,7 @@
 
 <InputRange
 	bind:value={angle}
-	{id}
+	id={`${id}-angle`}
 	name={id}
 	{label}
 	{min}

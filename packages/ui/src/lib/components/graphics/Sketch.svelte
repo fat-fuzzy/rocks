@@ -75,19 +75,19 @@
 
 	const loop = (t) => {
 		scene.draw(t)
+		frame = requestAnimationFrame((t) => {
+			loop(t)
+		})
+	}
+
+	const play = () => {
 		if (scene.meta?.type !== 'texture') {
-			frame = requestAnimationFrame((t) => {
-				loop(t)
-			})
+			loop(Date.now())
 		} else {
 			frame = requestAnimationFrame((t) => {
 				scene.draw(t)
 			})
 		}
-	}
-
-	const play = () => {
-		loop(Date.now())
 	}
 
 	const clear = () => {
