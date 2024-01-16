@@ -43,20 +43,3 @@ export type BlocksProps = {
 	Nav: LinkProps[]
 	RevealNav: LinkListProps[]
 }
-
-export type SketchProps = {
-	id: string
-	slug: string
-	title: string
-	asset: string
-}
-
-export type GraphicsProps = {
-	Sketch: SketchProps
-}
-
-export type LayoutProps = {
-	cards: string[]
-	form: string[]
-	text: string
-}
