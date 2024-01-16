@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Scene, SketchProps, SceneMeta, Filters} from '$lib/types'
+	import type {Scene, SceneContext, SceneMeta, Filters} from '$lib/types'
 
 	import {afterUpdate, onDestroy} from 'svelte'
 
@@ -29,7 +29,7 @@
 	let canvas: HTMLCanvasElement | null = null
 	let width: number
 	let height: number
-	let context: SketchProps
+	let context: SceneContext
 	let programInfo
 	let fieldOfView = 60
 	let cameraAngle = 60
@@ -49,7 +49,7 @@
 	$: state = feedback ? `${feedback.status}` : state
 	$: showGeometry =
 		context !== undefined &&
-		scene.meta?.type !== 'texture' &&
+		scene?.meta?.type !== 'texture' &&
 		(state === 'play' || state === 'pause')
 	$: currentAsset = state === 'clear' && asset ? asset : `emoji:${state}`
 	$: backgroundClass = background
@@ -188,7 +188,7 @@
 <article class={`l:grid:sketch bp:xs`}>
 	<div class="scene">
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
-			{#if scene.meta?.input === 'mouse'}
+			{#if scene?.meta?.input === 'mouse'}
 				<canvas
 					id={`${id}.canvas`}
 					aria-label={title}

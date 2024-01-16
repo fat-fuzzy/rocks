@@ -39,7 +39,7 @@ export type GeometryProps = {
 	scale: (number | undefined)[]
 }
 
-export type SketchProps = GeometryProps & {
+export type SceneContext = GeometryProps & {
 	fieldOfView?: number
 	cameraAngle?: number
 	animationSpeed?: number
@@ -48,7 +48,7 @@ export type SketchProps = GeometryProps & {
 }
 
 export type ProgramInfo = {
-	context: SketchProps
+	context: SceneContext
 }
 
 export type SceneMeta = {
@@ -76,7 +76,7 @@ export type Scene = {
 	id: string
 	draw: () => void
 	clear: () => void
-	update: (value: SketchProps, event?: MouseEvent | TouchEvent) => void
+	update: (value: SceneContext, event?: MouseEvent | TouchEvent) => void
 	main: (canvas: HTMLCanvasElement, options?: SceneOptions) => ProgramInfo
 	meta?: SceneMeta
 }
