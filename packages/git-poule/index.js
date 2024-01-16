@@ -72,6 +72,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 		[
 			'"PR"',
 			'"HASH"',
+			'"TIMESTAMP"',
 			'"DATE"',
 			'"YEAR"',
 			'"MONTH"',
@@ -254,6 +255,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 			commitData.push([
 				pr,
 				`"${hash}"`,
+				timestamp,
 				date,
 				year,
 				month,
