@@ -176,7 +176,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 
 			let scopeValues
 			if (scope) {
-				// If there is a SCOPE match: remove the surrounding '[' and ']' characters, otherwise set SCOPE to '-'
+				// If there is a SCOPE match: remove the surrounding '[' and ']' characters
 				scope = String(scope).substring(1, scope.length - 1)
 
 				let scopeDetails = scope.split('+')
@@ -239,7 +239,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 				year: 'numeric',
 			})
 			const monthFormatter = new Intl.DateTimeFormat(locale, {
-				month: 'short',
+				month: '2-digit',
 			})
 			const dayFormatter = new Intl.DateTimeFormat(locale, {
 				day: 'numeric',
