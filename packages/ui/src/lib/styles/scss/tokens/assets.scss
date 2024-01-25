@@ -11,6 +11,9 @@ $half-moon: '🌗';
 $invader: '👾';
 $octopus: '🐙';
 $spouting-whale: '🐳';
+$otter: '🦦';
+$turtle: '🐢';
+$tiger: '🐯';
 $wave: '🌊';
 $lion: '🦁';
 $heart: '❤️';
@@ -74,6 +77,12 @@ $emojis: (
 	vader: #{$invader},
 	ollie: #{$octopus},
 	moby: #{$spouting-whale},
+
+	// Gallery emojis
+	octopus: #{$octopus},
+	otter: #{$otter},
+	turtle: #{$turtle},
+	tiger: #{$tiger},
 
 	// ToggleMenu / RevealMenu fixture emojis
 	idea: #{$bulb},
