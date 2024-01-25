@@ -39,7 +39,7 @@ const config = {
 	preprocess: [
 		preprocess({
 			postcss: stylelint({
-				include: ['src/styles/scss/**/*.{scss}'],
+				include: ['src/lib/styles/scss/**/*.{scss}'],
 			}),
 			// scss: {
 			// 	outFile: '/styles/app/ui.css',
