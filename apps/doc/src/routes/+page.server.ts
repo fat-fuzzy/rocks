@@ -23,7 +23,7 @@ export const actions = {
 		cookies.set('fat-fuzzy-nav-reveal', navReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
+			redirect(303, redirectTo);
 		}
 		return {success: true}
 	},
@@ -43,7 +43,7 @@ export const actions = {
 		cookies.set('fat-fuzzy-sidebar-reveal', sidebarReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
+			redirect(303, redirectTo);
 		}
 		return {success: true}
 	},
@@ -63,7 +63,7 @@ export const actions = {
 		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
+			redirect(303, redirectTo);
 		}
 		return {success: true}
 	},
@@ -83,7 +83,7 @@ export const actions = {
 		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
+			redirect(303, redirectTo);
 		}
 		return {success: true}
 	},
