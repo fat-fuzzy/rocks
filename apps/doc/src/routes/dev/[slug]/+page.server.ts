@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({params}) => {
 	const html = markdowns?.find((v) => v.meta.slug === slug)
 
 	if (!html) {
-		throw error(404, 'Not found')
+		error(404, 'Not found');
 	}
 
 	return html

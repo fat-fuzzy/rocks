@@ -9,6 +9,6 @@ async function fetchMarkdowns() {
 	return markdowns.sort(markdownUtils.sortByIdDesc)
 }
 
-const markdowns = fetchMarkdowns()
+const markdowns = await fetchMarkdowns()
 
 export default {markdowns}

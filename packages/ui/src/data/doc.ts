@@ -34,5 +34,5 @@ async function fetchMarkdowns() {
 	}
 }
 
-const markdowns = fetchMarkdowns()
+const markdowns = await fetchMarkdowns()
 export default {markdowns}

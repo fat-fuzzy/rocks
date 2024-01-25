@@ -28,8 +28,9 @@
 		"@fat-fuzzy/markdown": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "^1.40.0",
-		"@sveltejs/adapter-cloudflare": "^2.3.3",
-		"@sveltejs/kit": "^1.27.6",
+		"@sveltejs/adapter-cloudflare": "^3.0.0",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/cookie": "^0.5.4",
 		"autoprefixer": "^10.4.16",
 		"mdsvex": "^0.11.0",
@@ -45,8 +46,8 @@
 		"svelte-preprocess": "^5.1.0",
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2",
-		"vite": "^4.5.1",
-		"vitest": "^0.34.6"
+		"vite": "^5.0.0",
+		"vitest": "^1.0.0"
 	},
 	"type": "module"
 }

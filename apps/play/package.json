@@ -29,9 +29,10 @@
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "^1.40.0",
-		"@sveltejs/adapter-cloudflare": "^2.3.3",
-		"@sveltejs/kit": "^1.27.6",
+		"@sveltejs/adapter-cloudflare": "^3.0.0",
+		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/package": "^2.2.2",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"autoprefixer": "^10.4.16",
 		"postcss": "8.4.31",
 		"rollup": "4.4.1",
@@ -46,8 +47,8 @@
 		"three": "0.158.0",
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2",
-		"vite": "^4.5.1",
-		"vitest": "^0.34.6"
+		"vite": "^5.0.0",
+		"vitest": "^1.0.0"
 	},
 	"type": "module"
 }
