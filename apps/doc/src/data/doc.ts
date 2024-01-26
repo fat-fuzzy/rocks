@@ -33,6 +33,7 @@ async function fetchMarkdowns() {
 		graphics: graphics.sort(markdownUtils.sortByTitleDesc),
 	}
 }
+
 const markdowns = await fetchMarkdowns()
 
 export default {markdowns}
