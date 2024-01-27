@@ -22,8 +22,8 @@
 />
 
 <header class="bg:polar">
-	<div class="l:text:xl l:center card:feature:xl">
-		<div class="l:frame l:text:xl">
+	<div class="l:text:md l:center card:xl">
+		<div class="l:frame">
 			<img src={pageImage.src} alt={pageImage.alt} />
 		</div>
 		<h1 class="text:center">Fat Fuzzy Rocks</h1>

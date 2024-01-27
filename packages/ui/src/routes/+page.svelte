@@ -17,8 +17,8 @@
 <Head {title} description="🐰 Welcome!" />
 
 <header class="bg:polar card:xl">
-	<div class="l:text:xl l:center card:feature:xxl">
-		<div class="l:frame l:text:xl">
+	<div class="l:text:md l:center card:xl">
+		<div class="l:frame">
 			<img src={pageImage.src} alt={pageImage.alt} />
 		</div>
 		<h1 class="text:center">{title}</h1>
