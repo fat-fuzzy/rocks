@@ -49,7 +49,7 @@ For example, I use the package `packages/ui` to build frontends in other context
 - on a Django app and in a Jupyter Notebook (currently on a private repo)
 - in the `apps/doc` and `apps/play` packages in this repo
 
-The lib package feeds the `apps/play` package as well as a component demo in `apps/doc`.
+The 'package/lib/gfx' package feeds the `apps/play` package as well as a component demo in `apps/doc`.
 
 I'm experimenting with data analysis and learning R: I built the `packages/git-poule` script because I wanted to analyze the work done in this repo (the idea came as I was trying to estimate some work). I figured I could use that data as material for my learning, and maybe gain insights to guide future work while at it.
 
