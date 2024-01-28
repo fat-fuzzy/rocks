@@ -7,17 +7,9 @@ Much of the work is based on examples and projects made by others: I try to make
 
 Below is a rough attempt at categorizing the contents of this repo.
 
-### Tools
-
-Tools aim to provide solutions to quickly bootstrap new (web) applications.
-
-### Playgrounds
-
-Playgrounds are projects I use to learn, play, and experiment.
-
-### Doc
-
-Self explanatory, these are projects where I document what I learn and the tools I make so I can understand what I was doing back then, how it may be useful now and things that need improvement.
+- **Tools** Tools aim to provide solutions to quickly bootstrap new (web) applications.
+- **Playgrounds** Playgrounds are projects I use to learn, play, and experiment.
+- **Doc** Self explanatory, these are projects where I document what I learn and the tools I make so I can understand what I was doing back then, how it may be useful now, and things that need improvement.
 
 ## Packages Overview
 
@@ -59,7 +51,9 @@ For example, I use the package `packages/ui` to build frontends in other context
 
 The lib package feeds the `apps/play` package as well as a component demo in `apps/doc`.
 
-I'm experimenting with data analysis and learning R: I built the `packages/git-poule` script because I wanted to understand what I have worked on in this repo (initially I needed to estimate some work). I figured I could use that data as material for learning R and statistics , and maybe gain insights to guide my work while at it.
+I'm experimenting with data analysis and learning R: I built the `packages/git-poule` script because I wanted to analyze the work done in this repo (the idea came as I was trying to estimate some work). I figured I could use that data as material for my learning, and maybe gain insights to guide future work while at it.
+
+I chose to put all these things in one repository for convenience, to centralize notes and shared libraries.
 
 ## 🚧 WIP
 
