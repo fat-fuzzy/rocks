@@ -1,116 +1,96 @@
-# 🪨 👾 ✨ Fat Fuzzy Rocks 🫧 🐙 🪨
+# 👾 ✨ Fat Fuzzy Lab 🫧 🐙
 
-This project aims to:
+This repository contains learning notes, tools, and experiments.
+Much of the work is based on examples and projects made by others: I try to make attributions clear in the code and docs, and while I am at it, thank you !
 
-- provide a way to quickly bootstrap new web applications (websites or other types)
-- be a learning resource
+## Contents
 
-## Overview
+Below is a rough attempt at categorizing the contents of this repo.
 
-This repository is organized into three workspaces:
+### Tools
 
-<details>
-<summary><b>apps</b> contains client facing code, organized by project</summary>
-<p>
+Tools aim to provide solutions to quickly bootstrap new (web) applications.
 
-- **doc** The documentation website for this project, accessible here: https://rocks.pages.dev/
-- **play** A playground for web graphics experiments
+### Playgrounds
 
-</p></details>
+Playgrounds are projects I use to learn, play, and experiment.
 
-<details>
-<summary><b>infra</b> contains infrastructure code</summary>
-<p>
+### Doc
 
-Common resources
+Self explanatory, these are projects where I document what I learn and the tools I make so I can understand what I was doing back then, how it may be useful now and things that need improvement.
 
-- **scripts**
-  - WIP
+## Packages Overview
 
-Resources per app
+The repository is organized into three workspaces:
 
-- **doc**
+- **apps** contains client facing code, organized by project
+  - **doc** The doc website for this project, accessible here: https://rocks.pages.dev/
+  - **play** A playground for web graphics experiments
+- **infra** contains infrastructure code
+  - This is WIP and in private repos for the moment
+- **packages** contains UI, web graphics, logic and experiments libraries, as well as common config
 
-  - WIP
-
-</p></details>
-
-<details>
-<summary><b>packages</b> contains UI, web graphics, logic and experiments libraries, as well as common config</summary>
-<p>
-
-- **config** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
-- **design** a design sandbox
-  - isolates design work from the UI library
-  - design assets and collections go here
-  - design tests and experiments go here
-- **lib** Libraries unrelated to building an interface or utility functions: logic and experiments
-
-  - 👾 gfx - everything related to working with webgl
-  - 🤖 state machines
-  - ➕ maths
-
-- **markdown** A utility package for loading markdown files
-
-  - based on [bluwy website markdown package](https://github.com/bluwy/website/tree/master/packages/markdown)
-
-- **ui** A frontend component library
-  - A UI library that can be used as a common source of truth for web projects
-
-</p></details>
+  - **config** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
+  - **design** a design sandbox
+    - isolates design work from the UI library
+    - design assets and collections go here
+    - design tests and experiments go here
+  - **git-poule** a tool to extract commit data
+  - **lib** Libraries unrelated to building an interface or utility functions: logic and experiments
+    - 👾 gfx - everything related to working with webgl
+    - 🤖 state machines
+    - ➕ maths
+  - **markdown** A utility package for loading markdown files
+    - based on [bluwy website markdown package](https://github.com/bluwy/website/tree/master/packages/markdown)
+  - **ui** A frontend component library
+    - A UI library that can be used as a common source of truth for web projects
 
 ---
 
 The initial motivation for this setup was usage of [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces). It evolves when necessary.
 
-## Use cases
+## Usage
 
-🚧 WIP: doc/usage
+The packages in this repo can be used together or independently, depending on the use case.
+For example, I use the package `packages/ui` to build frontends in other contexts:
 
-## Getting started
+- on a Django app and in a Jupyter Notebook (currently on a private repo)
+- in the `apps/doc` and `apps/play` packages in this repo
 
-This repository contains several packages, which can be used together or independently, depending on the use case.
+The lib package feeds the `apps/play` package as well as a component demo in `apps/doc`.
 
-### Testing
+I'm experimenting with data analysis and learning R: I built the `packages/git-poule` script because I wanted to understand what I have worked on in this repo (initially I needed to estimate some work). I figured I could use that data as material for learning R and statistics , and maybe gain insights to guide my work while at it.
 
-🚧 WIP
+## 🚧 WIP
 
 - Test runner [Vitest](https://vitest.dev/)
+
   - [Examples](https://github.com/vitest-dev/vitest/tree/main/examples)
 
-### Repository Tools
-
-- Monorepo
-
-  - [pnpm](https://pnpm.io/)
-  - [Turborepo](https://turbo.build/)
-
 - Code / Env
-
-  - [stylelint](https://stylelint.io/)
-  - [commitizen](https://github.com/commitizen/cz-cli)
-
-- 🚧 WIP
 
   - [docker](https://www.docker.com/)
   - [changesets](https://github.com/changesets/changesets)
   - [verdaccio](https://verdaccio.org/)
 
-    - Install verdaccio: https://verdaccio.org/docs/installation
-    - Using a verdaccio private registry:
+## Resources
 
-      - Launch the private registry with the command: `verdaccio`
-      - To publish a package to the private registry, run the following command in the package's root directory:
+Using a private NPM Registry: Verdaccio
 
-        ```shell
-        pnpm publish --registry http://localhost:4873
-        ```
+- Install verdaccio: https://verdaccio.org/docs/installation
 
-      - Use the package in another repository that has access to the private registry:
+- Launch the private registry with the command: `verdaccio`
+- To publish a package to the private registry, run the following command in the package's root directory:
 
-        ```shell
-        pnpm i --registry http://localhost:4873
-        ```
+  ```shell
+  pnpm publish --registry http://localhost:4873
+  ```
+
+- Use the package in another repository that has access to the private registry:
+
+  ```shell
+  pnpm i --registry http://localhost:4873
+  ```
 
 ## Licenses
 
@@ -122,4 +102,5 @@ The packages, folders and files it contains may have different licenses:
 
 - MIT
 - Apache-2.0
+- BSD-3-Clause
 - Custom licenses
