@@ -102,6 +102,10 @@
 			"description": "Graphics related changes",
 			"title": "Graphics"
 		},
+		"🦄 ": {
+			"description": "Backend related changes (Django)",
+			"title": "Django"
+		},
 		"🔭 ": {
 			"description": "Data analysis and data viz related changes",
 			"title": "Data"
