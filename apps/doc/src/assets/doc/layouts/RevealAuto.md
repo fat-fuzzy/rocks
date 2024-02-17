@@ -5,7 +5,7 @@ category: 'layouts'
 # group: ['reveal']
 content_types: ['any']
 props_style:
-  {'blocks': {'element': ['size', 'color', 'variant']}, 'layouts': {'layout': ['breakpoint']}}
+  {'blocks': {'element': ['size', 'color', 'variant']}, 'layouts': {'layout': ['breakpoint'], 'container': ['container', 'size']}}
 context: ['app.settings']
 ---
 
