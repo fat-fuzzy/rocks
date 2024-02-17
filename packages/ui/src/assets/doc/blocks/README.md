@@ -17,7 +17,7 @@ They are implemented using the [web platform](https://developer.mozilla.org/en-U
 
 ### Example
 
-The examples below are two ways of achieving the same end result: a button that will submit the `<form>` that contains it, provided that the `<form>` element has a defined `action` attribute.
+The examples below are two ways of achieving the same end result: a button that will submit the `<form>` that contains it.
 
 1. HTML markup
 
