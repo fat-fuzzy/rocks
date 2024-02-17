@@ -17,7 +17,7 @@ The repository is organized into three workspaces:
 
 - **apps** contains client facing code, organized by project
   - **doc** The doc website for this project, accessible here: https://rocks.pages.dev/
-  - **play** A playground for web graphics experiments
+  - **play** A playground for learning and experimenting with web graphics
 - **infra** contains infrastructure code
   - This is WIP and in private repos for the moment
 - **packages** contains UI, web graphics, logic and experiments libraries, as well as common config
@@ -72,7 +72,6 @@ I chose to put all these things in one repository for convenience, to centralize
 Using a private NPM Registry: Verdaccio
 
 - Install verdaccio: https://verdaccio.org/docs/installation
-
 - Launch the private registry with the command: `verdaccio`
 - To publish a package to the private registry, run the following command in the package's root directory:
 
