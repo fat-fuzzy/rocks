@@ -2,7 +2,8 @@
 	import type {ButtonType, ButtonState} from '$types'
 	import {onMount, createEventDispatcher} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
-	import {createMachine} from 'xstate'
+	import {createActor} from 'xstate'
+	import machines from '$lib/machines/button.machines'
 
 	const dispatch = createEventDispatcher()
 
@@ -35,49 +36,31 @@
 
 	let payloadId = name // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 
-	let machineConfig = {
-		predictableActionArguments: true,
-		id: payloadId,
-		initial: initial ? 'active' : 'inactive',
-		states: {
-			inactive: {
-				on: {EXPAND: 'active'},
-			},
-			active: {
-				on: {EXPAND: 'inactive'},
-			},
-		},
-	}
-	let machine = createMachine(machineConfig)
-	let {state, send} = useMachine(machine)
+	let machine = machines.createExpand(payloadId, initial ? 'active' : 'inactive')
+	// Actor (instance of the machine logic, like a store)
+	let actor = createActor(machine)
+	let {snapshot} = useMachine(machine)
+	let expanded = $snapshot.value === 'active'
+	let currentState = states[$snapshot.value as string]
 
-	let expanded = $state.value === 'active'
-
-	export let onClick = (event: MouseEvent) => {
-		send('EXPAND')
+	actor.subscribe((snapshot) => {
+		// snapshot is the machine's state
+		expanded = snapshot.value === 'active'
+		currentState = states[snapshot.value as string]
 		const payload = {
 			id: payloadId,
 			value,
-			expanded: $state.value === 'active',
-			send,
+			expanded,
+			actor,
 		}
 		dispatch('click', payload)
+	})
+	actor.start()
+
+	export let onClick = (event: MouseEvent) => {
+		actor.send({type: 'EXPAND'})
 	}
 
-	onMount(() => {
-		if (initial) {
-			const payload = {
-				id: payloadId,
-				value,
-				expanded: $state.value === 'active',
-				send,
-			}
-			dispatch('click', payload)
-		}
-	})
-
-	$: expanded = $state.value === 'active'
-	$: currentState = states[$state.value.toString()]
 	$: containerClasses = container.startsWith('main')
 		? `l:${container}:${dimensions}`
 		: `l:${container}:${size}`
@@ -86,10 +69,15 @@
 	$: layoutClasses = shapeClass ? `l:stack:${size}` : `l:flex`
 	$: contextClasses = `${layoutClasses} ${containerClasses}`
 	$: elementClasses = `${color} ${size} ${shapeClass} ${variant} ${alignClass} font:${size}`
-	$: stateClasses = `expand:${$state.value} ${currentState.asset}`
+	$: stateClasses = `expand:${$snapshot.value} ${currentState.asset}`
 
 	// Order is important
 	$: buttonClasses = `${stateClasses} ${contextClasses} ${elementClasses}`
+
+	onMount(() => {
+		// Set the initial state
+		if (initial) actor.send({type: 'EXPAND'})
+	})
 </script>
 
 <button

@@ -24,7 +24,7 @@
 		value: string
 		pressed: boolean
 		name: string
-		send: (event: string) => unknown
+		actor: {send: (event: {type: string}) => unknown}
 	}[] = []
 
 	const onClick = (event: CustomEvent) => {
@@ -46,7 +46,7 @@
 					}
 					selected.map((c) => {
 						if (c.name !== event.detail.id && c.pressed) {
-							c.send('TOGGLE')
+							c.actor.send({type: 'TOGGLE'})
 						}
 					})
 				}
@@ -56,10 +56,10 @@
 				if (event.detail.pressed) {
 					selected.map((c) => {
 						if (c.name === event.detail.id) {
-							c.send('TOGGLE')
+							c.actor.send({type: 'TOGGLE'})
 						}
 						if (c.name !== event.detail.id && c.pressed) {
-							c.send('TOGGLE')
+							c.actor.send({type: 'TOGGLE'})
 						}
 					})
 				}
