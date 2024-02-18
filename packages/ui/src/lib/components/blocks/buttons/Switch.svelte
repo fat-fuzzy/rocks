@@ -26,6 +26,7 @@
 	export let color = ''
 	export let size = ''
 	export let shape = ''
+	export let value = ''
 	export let variant = 'fill'
 
 	export let container = ''
@@ -47,12 +48,13 @@
 		currentState = states[snapshot.value as string]
 		const payload = {
 			id: payloadId,
-			value: snapshot.value,
+			value,
 			pressed,
 			actor,
 		}
 		dispatch('click', payload)
 	})
+	actor.start()
 
 	export let onClick = (event: MouseEvent) => {
 		actor.send({type: 'SWITCH'})
