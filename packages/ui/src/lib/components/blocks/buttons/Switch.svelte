@@ -48,7 +48,7 @@
 		currentState = states[snapshot.value as string]
 		const payload = {
 			id: payloadId,
-			value,
+			value: currentState.value,
 			pressed,
 			actor,
 		}
