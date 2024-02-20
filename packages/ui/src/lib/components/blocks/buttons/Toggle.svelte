@@ -48,6 +48,7 @@
 		pressed = snapshot.value === 'active'
 		const payload = {
 			id: payloadId,
+			name,
 			value,
 			pressed,
 			actor,
