@@ -1,15 +1,16 @@
 <script lang="ts">
 	import type {ButtonType, ButtonState} from '$types'
-	import {onMount, createEventDispatcher} from 'svelte'
+	import {createEventDispatcher, onMount} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
-	import {createMachine} from 'xstate'
+	import {createActor} from 'xstate'
+	import machines from '$lib/machines/button.machines'
 
 	const dispatch = createEventDispatcher()
 
 	/**
 	 * State props
 	 */
-	export let id = 'switch'
+	export let id = 'switch' // TODO: use for machine id
 	export let name = 'switch'
 	export let title = ''
 	export let initial = false
@@ -25,6 +26,7 @@
 	export let color = ''
 	export let size = ''
 	export let shape = ''
+	export let value = ''
 	export let variant = 'fill'
 
 	export let container = ''
@@ -33,49 +35,31 @@
 
 	let payloadId = name // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 
-	let machineConfig = {
-		predictableActionArguments: true,
-		id: name,
-		initial: initial ? 'active' : 'inactive',
-		states: {
-			inactive: {
-				on: {SWITCH: 'active'},
-			},
-			active: {
-				on: {SWITCH: 'inactive'},
-			},
-		},
-	}
-	let machine = createMachine(machineConfig)
-	let {state, send} = useMachine(machine)
+	// Actor (instance of the machine logic, like a store)
+	let machine = machines.createSwitch(payloadId, initial ? 'active' : 'inactive')
+	let actor = createActor(machine)
+	let {snapshot} = useMachine(machine)
+	let pressed = $snapshot.value === 'active'
+	let currentState = states[$snapshot.value as string]
 
-	let pressed = $state.value === 'active'
-
-	export let onClick = (event: MouseEvent) => {
-		send('SWITCH')
+	actor.subscribe((snapshot) => {
+		// snapshot is the machine's state
+		pressed = snapshot.value === 'active'
+		currentState = states[snapshot.value as string]
 		const payload = {
 			id: payloadId,
-			value: currentState.value,
-			pressed: $state.value === 'active',
-			send,
+			value,
+			pressed,
+			actor,
 		}
 		dispatch('click', payload)
+	})
+	actor.start()
+
+	export let onClick = (event: MouseEvent) => {
+		actor.send({type: 'SWITCH'})
 	}
 
-	onMount(() => {
-		if (initial) {
-			const payload = {
-				id: payloadId,
-				value: currentState.value,
-				pressed: $state.value === 'active',
-				send,
-			}
-			dispatch('click', payload)
-		}
-	})
-
-	$: pressed = $state.value === 'active'
-	$: currentState = states[$state.value.toString()]
 	$: containerClasses = container.startsWith('main')
 		? `l:${container}:${dimensions}`
 		: `l:${container}:${size}`
@@ -84,12 +68,16 @@
 	$: layoutClasses = shapeClass ? `l:stack:${size}` : `l:flex`
 	$: contextClasses = `${layoutClasses} ${containerClasses}`
 	$: elementClasses = `${color} ${size} ${shapeClass} ${variant} ${alignClass} font:${size}`
-	$: stateClasses = `switch:${$state.value} ${currentState.asset} ${
+	$: stateClasses = `switch:${$snapshot.value} ${currentState.asset} ${
 		currentState.variant || variant
 	}`
-
 	// Order is important
 	$: buttonClasses = `${stateClasses} ${contextClasses} ${elementClasses}`
+
+	onMount(() => {
+		// Set the initial state
+		if (initial) actor.send({type: 'SWITCH'})
+	})
 </script>
 
 <button

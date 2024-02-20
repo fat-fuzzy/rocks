@@ -4,6 +4,7 @@ The work in this library is based on the ideas put forth in the following resour
 
 - [CUBE CSS](https://cube.fyi)
 - [Every Layout](https://every-layout.dev)
+- [Grid by Example](https://gridbyexample.com/)
 - [UTOPIA](https://utopia.fyi/)
 - [Inclusive design principles](https://inclusivedesignprinciples.org/)
 - [Inclusive components](https://inclusive-components.design/)

@@ -22,7 +22,7 @@
 			"description": "Refactor / rename / move",
 			"title": "Refactor"
 		},
-		"🗑️ ": {
+		"🗑️  ": {
 			"description": "Deprecate related changes",
 			"title": "Deprecate"
 		},
@@ -62,7 +62,7 @@
 			"description": "Types / TypesScript related changes",
 			"title": "Types"
 		},
-		"❄️ ": {
+		"❄️  ": {
 			"description": "Freeze something",
 			"title": "Freeze"
 		},
@@ -78,7 +78,7 @@
 			"description": "Versioning / version tags",
 			"title": "Version"
 		},
-		"🚀": {
+		"🚀 ": {
 			"description": "New release",
 			"title": "Release"
 		},
@@ -110,7 +110,7 @@
 			"description": "Data analysis and data viz related changes",
 			"title": "Data"
 		},
-		"🗄️ ": {
+		"🗄️  ": {
 			"description": "Database related changes",
 			"title": "Database"
 		},
@@ -118,7 +118,7 @@
 			"description": "Backend related changes (python)",
 			"title": "Backend Python"
 		},
-		"🛼 ": {
+		"🛼  ": {
 			"description": "Backend related changes (node)",
 			"title": "Backend Node"
 		},
@@ -126,7 +126,7 @@
 			"description": "Backend related changes (wordpress)",
 			"title": "Backend Wordpress"
 		},
-		"☁️ ": {
+		"☁️  ": {
 			"description": "Backend related changes (serverless)",
 			"title": "Backend Serverless"
 		},
