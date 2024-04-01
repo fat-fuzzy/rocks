@@ -1,0 +1,16 @@
+.l\:reveal\:auto {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.l\:reveal\:auto [class*='expand'] {
+	width: fit-content;
+}
+
+.l\:reveal\:auto .show {
+	width: auto;
+	height: auto;
+	overflow-y: auto;
+}

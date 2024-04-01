@@ -1,0 +1,9 @@
+/* Theme */
+@import './global';
+@import './scale';
+@import './color';
+@import './assets'; /* Use to display emojis or svg icons */
+@import './svg'; /* Use to display emojis or svg icons */
+@import './typography';
+@import './layers';
+@import './contrast';

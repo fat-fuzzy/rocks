@@ -1,0 +1,22 @@
+/* == Layout == */
+@import './text'; /* Use for text content width */
+@import './stack'; /* Use for stacked column content */
+@import './sidebar'; /* Use for sidebar layouts = layouts containing two children: "main" and "side" */
+@import './switcher'; /* Use for items that switch between column and row layout when the container reaches a threshold width  */
+@import './center'; /* Use for main content centering (wide columns with max-width set using: percentage - margin (in  em units))*/
+/* == Grid layouts ==
+    - relative order of grid styles is necessary for fallbacks */
+/* @import './grid-page'; /* Use for base grid with page template areas */
+/* @import './grid-flex'; /* Use for layout transitions: mobile flex -> desktop grid (uses page template areas) */
+@import './flex'; /* Use for flex layouts */
+@import './grid'; /* Use for grid layouts base + gallery grid layout (equal sized areas) */
+@import './align'; /* Use for aligning items inside containers and setting widths */
+@import './burrito'; /* Use for side content centering (narrow columns with max-width set using sidebar width variables  (in ch units))*/
+@import './maki'; /* Use for side content centering without any max-width */
+@import './frame'; /* Use for displaying content with a given aspect ratio */
+@import './card'; /* Use for displaying self-contained content items */
+@import './reveal'; /* Use for displaying hidden content with a button action */
+@import './reveal-auto'; /* Use for displaying hidden content in response to a container breakpoint */
+@import './reveal-fixed'; /* Use for displaying hidden content in response to a button action */
+@import './details'; /* Use to style <details> and <summary> elements */
+@import './shapes'; /* Use to style geometric shapes */

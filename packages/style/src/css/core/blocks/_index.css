@@ -1,0 +1,19 @@
+/**
+ * CSS blocks
+ * (= "actual content", not layout)
+ * These stylesheets must use the tokens defined in `styles/app/my-app/*`
+ * where  `my-app` is any folder inside `styles/app` that uses or overrides the design tokens declared in the `styles/app/ui` folder
+ */
+@import './media'; /* Use for framed elements: video, img, picture, canvas */
+@import './links'; /* Use for link styles (<a> element) */
+@import './button'; /* Use for basic Button styles and colors (<button> element) */
+@import './toggle'; /* Use for Toggle button styles and colors (uses aria-pressed */
+@import './switch'; /* Use for Switch button styles and colors (uses aria-pressed */
+@import './expand'; /* Use for Expand button styles and colors (uses aria-pressed attribute, <button> element) */
+@import './form'; /* Use for form and form inputs */
+@import './fieldset'; /* Use for fieldset element: TODO: maybe move to form */
+@import './tables'; /* Use for tables = tabular data: https://www.w3.org/TR/tabular-data-model/ */
+@import './tags'; /* Use for tables = tabular data: https://www.w3.org/TR/tabular-data-model/ */
+@import './feedback'; /* Use for feedback elements (success, warnings, errors, etc) */
+@import './details'; /* Use for detail + summary element */
+@import './code'; /* Use for code blocks and inline code text */

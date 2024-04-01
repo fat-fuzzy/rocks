@@ -1,0 +1,293 @@
+[class*='l:text'] {
+	color: var(--current-color);
+	background-color: inherit;
+}
+
+[class*='bg:'] {
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+	border-color: var(--current-gray-light);
+}
+
+.primary:focus {
+	outline-color: var(--current-primary);
+}
+
+.accent:focus {
+	outline-color: var(--current-accent);
+}
+
+.highlight:focus {
+	outline-color: var(--current-highlight);
+}
+
+/* == Background colors == */
+
+.bg\:primary {
+	--current-color: var(--color-light);
+	--current-bg-color: var(--current-primary);
+}
+
+.bg\:primary\:light {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-primary-light);
+}
+
+.bg\:primary\:lighter {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-primary-lighter);
+}
+
+.bg\:primary\:lightest {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-primary-lightest);
+}
+
+.bg\:accent {
+	--current-color: var(--color-white);
+	--current-bg-color: var(--current-accent);
+}
+
+.bg\:accent\:light {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-accent-light);
+}
+
+.bg\:accent\:lighter {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-accent-lighter);
+}
+
+.bg\:accent\:lightest {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-accent-lightest);
+}
+
+.bg\:highlight {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-highlight);
+}
+
+.bg\:highlight\:light {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-highlight-light);
+}
+
+.bg\:highlight\:lighter {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-highlight-lighter);
+}
+
+.bg\:highlight\:lightest {
+	--current-color: var(--color-black);
+	--current-bg-color: var(--current-highlight-lightest);
+}
+
+/* == Feedback colors == */
+
+[class*='info'] {
+	--current-info: var(--color-info);
+	--current-info-light: var(--color-info-light);
+	--current-info-lighter: var(--color-info-lighter);
+	--current-info-lightest: var(--color-info-lightest);
+	color: var(--current-info);
+}
+
+[class*='info']:focus {
+	outline-color: var(--current-info);
+}
+
+[class*='info'] a:hover {
+	background-color: var(--color-info);
+}
+
+[class*='success'] a:hover {
+	background-color: var(--color-success);
+}
+
+[class*='warning'] a:hover {
+	background-color: var(--color-warning);
+}
+
+[class*='error'] a:hover {
+	background-color: var(--color-danger);
+}
+
+[class*='success'] {
+	--current-success: var(--color-success);
+	--current-success-light: var(--color-success-light);
+	--current-success-lighter: var(--color-success-lighter);
+	color: var(--current-success);
+}
+[class*='success']:focus {
+	outline-color: var(--current-success);
+}
+
+[class*='warning'] {
+	--current-warning: var(--color-warning);
+	--current-warning-light: var(--color-warning-light);
+	--current-warning-lighter: var(--color-warning-lighter);
+	color: var(--current-warning);
+}
+
+[class*='warning']:focus {
+	outline-color: var(--current-warning);
+}
+
+[class*='error'] {
+	--current-error: var(--color-danger);
+	--current-error-light: var(--color-danger-light);
+	--current-error-lighter: var(--color-danger-lighter);
+	--current-error-lightest: var(--color-danger-lightest);
+	color: var(--current-error);
+}
+
+[class*='error']:focus {
+	outline-color: var(--current-error);
+}
+
+.bg\:info {
+	--current-color: var(--color-white);
+	color: var(--current-color);
+	background-color: var(--current-info);
+}
+
+.bg\:info\:light {
+	--current-color: var(--color-black);
+	color: var(--current-color);
+	background-color: var(--current-info-light);
+}
+
+.bg\:info\:lighter {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-info-lighter);
+}
+
+.bg\:success {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-success);
+}
+
+.bg\:success\:light {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-success-light);
+}
+
+.bg\:success\:lighter {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-success-lighter);
+}
+
+.bg\:warning {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-warning);
+}
+
+.bg\:warning\:light {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-warning-light);
+}
+
+.bg\:warning\:lighter {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-warning-lighter);
+}
+
+.bg\:error {
+	--current-color: var(--color-light);
+	color: var(--current-color);
+	background-color: var(--current-error);
+}
+
+.bg\:error\:light {
+	--current-color: var(--color-black);
+	color: var(--current-color);
+	background-color: var(--current-error-light);
+}
+
+.bg\:error\:lighter {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-error-lighter);
+}
+/* == Border colors == */
+
+[class*='box'],
+[class*='dotted'] {
+	--current-border-color: var(--current-gray-light);
+}
+
+[class*='box'] {
+	border: var(--border-width) solid var(--current-border-color);
+}
+
+[class*='dotted'] {
+	border: var(--border-width-lg) dotted var(--current-border-color);
+}
+
+.box\:primary,
+.dotted\:primary {
+	--current-border-color: var(--current-primary);
+}
+
+.box\:primary\:light,
+.dotted\:primary\:light {
+	--current-border-color: var(--current-primary-light);
+}
+
+.box\:primary\:lighter,
+.dotted\:primary\:lighter {
+	--current-border-color: var(--current-primary-lighter);
+}
+
+.box\:accent,
+.dotted\:accent {
+	--current-border-color: var(--current-accent);
+}
+
+.box\:accent\:light,
+.dotted\:accent\:light {
+	--current-border-color: var(--current-accent-light);
+}
+
+.box\:accent\:lighter,
+.dotted\:accent\:lighter {
+	--current-border-color: var(--current-accent-lighter);
+}
+
+.box\:highlight,
+.dotted\:highlight {
+	--current-border-color: var(--current-highlight-dark);
+}
+
+.box\:highlight\:light,
+.dotted\:highlight\:light {
+	--current-border-color: var(--current-highlight);
+}
+
+.box\:highlight\:lighter,
+.dotted\:highlight\:lighter {
+	--current-border-color: var(--current-highlight-light);
+}
+
+.night {
+	.bg\:primary {
+		--current-color: var(--color-black);
+	}
+	.bg\:accent {
+		--current-color: var(--color-black);
+	}
+	.bg\:info {
+		--current-color: var(--color-white);
+	}
+	.bg\:error {
+		--current-color: var(--color-white);
+	}
+}

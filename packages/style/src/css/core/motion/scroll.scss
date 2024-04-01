@@ -1,0 +1,11 @@
+.scroll\:y {
+	scroll-snap-type: y proximity;
+	height: 100%;
+	overflow-y: auto;
+}
+
+.snap\:start {
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+	scroll-padding-top: var(--current-size);
+}

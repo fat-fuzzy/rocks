@@ -1,0 +1,3 @@
+.geometry {
+	gap: var(--current-size-minus);
+}

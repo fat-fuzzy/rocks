@@ -1,0 +1,51 @@
+[class*='l:frame'] {
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 100%;
+}
+
+[class*='l:frame'] > img,
+[class*='l:frame'] > video,
+[class*='l:frame'] > canvas,
+[class*='l:frame'] > .content {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+}
+
+.l\:frame\:square {
+	aspect-ratio: 1 / 1;
+}
+
+.l\:frame\:video {
+	aspect-ratio: 16 / 9;
+}
+
+.l\:frame\:twin {
+	aspect-ratio: 2 / 1;
+}
+
+.l\:frame\:feature {
+	max-width: 100%;
+}
+
+.l\:frame\:table {
+	max-width: 100%;
+	overflow-y: auto;
+}
+
+.l\:frame\:round {
+	border-radius: 50%;
+}
+
+.l\:frame\:feature > img,
+.l\:frame\:feature > video,
+.l\:frame\:feature > canvas {
+	max-height: calc(100vh - var(--header-height) - var(--gap));
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-block-end: var(--gap);
+}
