@@ -82,6 +82,6 @@
 .shade\:600 {
 	--chroma: var(--color-chroma-600);
 	--lightness: var(--color-lightness-600);
-	--chroma-contrast: var(--color-chroma-300);
-	--lightness-contrast: var(--color-lightness-300);
+	--chroma-contrast: var(--color-chroma-200);
+	--lightness-contrast: var(--color-lightness-200);
 }
