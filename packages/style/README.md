@@ -10,6 +10,7 @@ The work in this library is based on the ideas put forth in the following resour
 - [Inclusive design principles](https://inclusivedesignprinciples.org/)
 - [Inclusive components](https://inclusive-components.design/)
 - [Open Props](https://open-props.style/)
+- [Gui Challenges](https://github.com/argyleink/gui-challenges/)
 
 ## DONE
 
