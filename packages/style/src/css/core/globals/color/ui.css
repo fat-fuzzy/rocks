@@ -3,83 +3,78 @@
  - chroma
  - hue
 */
-[class^='color:'] {
+[class*='bg:'] {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	/* --shade: color-mix(in oklab, var(--hue), 25% transparent); */
 }
 
 /* Set current color HUE */
-.color\:primary {
+[class*=':primary'] {
 	--hue: var(--color-theme-primary);
 }
-.color\:accent {
+[class*=':accent'] {
 	--hue: var(--color-theme-accent);
 }
-.color\:highlight {
+[class*=':highlight'] {
 	--hue: var(--color-theme-highlight);
 }
-.color\:neutral {
+[class*=':neutral'] {
 	--hue: var(--color-theme-surface);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-contrast: var(--color-chroma-neutral);
 }
-.color\:dark {
-	--hue: var(--color-theme-dark);
-}
-.color\:light {
-	--hue: var(--color-theme-light);
-}
 
 /* Set current color LIGHTNESS and CHROMA according to a 7 point scale */
-.shade\:light,
-.shade\:dark .shade\:light {
+[class*='bg:'][class*=':light'],
+[class*='bg:'][class*=':dark'] [class*='bg:'][class*=':light'] {
 	--lightness: var(--color-lightness-light);
 	--lightness-contrast: var(--color-lightness-dark);
 }
 
-.shade\:dark,
-.shade\:light .shade\:dark {
+[class*='bg:'][class*=':dark'],
+[class*='bg:'][class*=':light'] [class*='bg:'][class*=':dark'] {
 	--lightness: var(--color-lightness-dark);
 	--lightness-contrast: var(--color-lightness-light);
 }
-.shade\:000 {
+
+[class*='bg:'][class*=':000'] {
 	--chroma: var(--color-chroma-000);
 	--lightness: var(--color-lightness-000);
 	--chroma-contrast: var(--color-chroma-400);
 	--lightness-contrast: var(--color-lightness-400);
 }
-.shade\:100 {
+[class*='bg:'][class*=':100'] {
 	--chroma: var(--color-chroma-100);
 	--lightness: var(--color-lightness-100);
 	--chroma-contrast: var(--color-chroma-500);
 	--lightness-contrast: var(--color-lightness-500);
 }
-.shade\:200 {
+[class*='bg:'][class*=':200'] {
 	--chroma: var(--color-chroma-200);
 	--lightness: var(--color-lightness-200);
 	--chroma-contrast: var(--color-chroma-600);
 	--lightness-contrast: var(--color-lightness-600);
 }
-.shade\:300 {
+[class*='bg:'][class*=':300'] {
 	--chroma: var(--color-chroma-300);
 	--lightness: var(--color-lightness-300);
 	--chroma-contrast: var(--color-chroma-000);
 	--lightness-contrast: var(--color-lightness-000);
 }
-.shade\:400 {
+[class*='bg:'][class*=':400'] {
 	--chroma: var(--color-chroma-400);
 	--lightness: var(--color-lightness-400);
 	--chroma-contrast: var(--color-chroma-000);
 	--lightness-contrast: var(--color-lightness-000);
 }
-.shade\:500 {
+[class*='bg:'][class*=':500'] {
 	--chroma: var(--color-chroma-500);
 	--lightness: var(--color-lightness-500);
 	--chroma-contrast: var(--color-chroma-100);
 	--lightness-contrast: var(--color-lightness-100);
 }
-.shade\:600 {
+[class*='bg:'][class*=':600'] {
 	--chroma: var(--color-chroma-600);
 	--lightness: var(--color-lightness-600);
 	--chroma-contrast: var(--color-chroma-200);
