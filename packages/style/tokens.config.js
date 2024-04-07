@@ -17,5 +17,18 @@ const files = [
 export default {
 	tokens: files.map((file) => `${paths['in']}${file}`),
 	outDir: paths['out'],
-	plugins: [pluginCSS(/* options */), pluginJS(/* options */)],
+	plugins: [
+		pluginCSS({
+			transform(token, mode) {
+				switch (token.$type) {
+					case 'percentage': {
+						return `${String(token.$value)}%`
+					}
+					default:
+						break
+				}
+			},
+		}),
+		pluginJS(/* options */),
+	],
 }
