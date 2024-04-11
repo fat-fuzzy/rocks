@@ -1,5 +1,5 @@
 p + details {
-	margin-block-start: var(--current-size-plus);
+	margin-block-start: var(--ui-size-lg);
 }
 
 details > summary {
@@ -8,10 +8,10 @@ details > summary {
 	color: var(--color-light);
 	font-weight: var(--font-weight-ui);
 	border: var(--border-width) solid var(--current-border-color);
-	padding: var(--current-size-minus);
+	padding: var(--ui-size-sm);
 	max-width: 100%;
 	background-color: var(--current-color);
-	margin-block-end: var(--current-size-plus);
+	margin-block-end: var(--ui-size-lg);
 }
 
 details > summary:hover {

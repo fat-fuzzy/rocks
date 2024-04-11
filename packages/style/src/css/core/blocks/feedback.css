@@ -1,13 +1,13 @@
 .feedback {
 	color: var(--current-color);
 	font-size: var(--current-font-size);
-	padding: var(--current-size-plus);
+	padding: var(--ui-size-lg);
 	border: var(--border-width-xl) solid var(--current-border-color);
 	background-color: var(--current-bg-color);
 }
 
 p + .feedback {
-	margin-block-start: var(--current-size-plus);
+	margin-block-start: var(--ui-size-lg);
 }
 
 .status {

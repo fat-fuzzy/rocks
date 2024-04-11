@@ -4,7 +4,7 @@
 }
 
 a[class*='emoji:']::before {
-	margin-inline: var(--current-size);
+	margin-inline: var(--ui-size);
 }
 
 .feedback[class*='emoji'] {
@@ -16,7 +16,7 @@ a[class*='emoji:']::before {
 }
 
 :not([class*='shape:'])[class*='emoji']::before {
-	margin-inline: 0 var(--current-size);
+	margin-inline: 0 var(--ui-size);
 }
 
 [class*='emoji'].align\:end {

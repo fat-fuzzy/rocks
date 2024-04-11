@@ -7,11 +7,11 @@ button {
 	font-family: var(--current-font-family);
 	font-weight: var(--font-weight-ui);
 	line-height: var(--line-height-ui);
-	padding: var(--current-size) var(--current-size-plus); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
+	padding: var(--ui-size) var(--ui-size-lg); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
 	border-radius: var(--radius-base);
 	color: var(--ink);
 	background-color: var(--shade);
-	border: var(--border-width) solid var(--current-button-border);
+	border: var(--border-width) solid var(--ink);
 }
 
 button:not([disabled]):hover {

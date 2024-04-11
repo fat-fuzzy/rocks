@@ -44,7 +44,7 @@
 	height: auto;
 	margin: initial;
 	overflow: hidden;
-	padding: var(--current-size);
+	padding: var(--ui-size);
 	position: unset;
 	top: 0;
 	width: 100%;

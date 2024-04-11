@@ -6,13 +6,13 @@ table {
 }
 
 th {
-	padding: var(--current-size) var(--current-size-plus);
+	padding: var(--ui-size) var(--ui-size-lg);
 	background-color: var(--current-bg-contrast);
 	text-align: center;
 }
 
 td {
-	padding: calc(var(--current-size) / var(--ratio)) calc(var(--current-size-plus) / var(--ratio));
+	padding: calc(var(--ui-size) / var(--ratio)) calc(var(--ui-size-lg) / var(--ratio));
 	border: 1px solid var(--current-bg-contrast);
 }
 

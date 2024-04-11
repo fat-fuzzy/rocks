@@ -5,8 +5,9 @@
 }
 
 body {
-	--current-size: var(--s0);
-	--current-size-plus: var(--s1);
+	--ui-size: var(--scale-base-00);
+	--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
+	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
 	--current-size-side: var(--sidebar-width-sm);
 	--current-shadow: var(--shadow);
 	color: var(--current-color);

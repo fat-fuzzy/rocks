@@ -4,9 +4,9 @@ code {
 }
 
 kbd {
-	padding-block: calc(var(--current-size-minus) / 2.5) calc(var(--current-size-minus) / 2);
-	padding-inline: var(--current-size);
-	margin-inline: calc(var(--current-size) / 2);
+	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
+	padding-inline: var(--ui-size);
+	margin-inline: calc(var(--ui-size) / 2);
 	border: var(--border-width) solid var(--current-gray);
 	border-radius: var(--radius-base);
 }
@@ -15,8 +15,8 @@ kbd {
 pre,
 code[class^='language-'] {
 	overflow: auto;
-	padding-inline: var(--current-size) var(--current-size-plus);
-	padding-block: var(--current-size);
+	padding-inline: var(--ui-size) var(--ui-size-lg);
+	padding-block: var(--ui-size);
 }
 
 pre,
@@ -35,8 +35,8 @@ code:not([class^='language-']) {
 	color: var(--current-color);
 	background-color: var(--current-bg-contrast);
 	border: none;
-	padding-block: calc(var(--current-size-minus) / 2.5) calc(var(--current-size-minus) / 2);
-	padding-inline: calc(var(--current-size) / 2);
+	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
+	padding-inline: calc(var(--ui-size) / 2);
 	border-radius: var(--radius-base);
 }
 

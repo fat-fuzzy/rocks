@@ -6,7 +6,7 @@ fieldset {
 	> legend {
 		font-size: var(--font-size-ui);
 		font-weight: var(--font-weight-ui);
-		line-height: var(--current-size);
+		line-height: var(--ui-size);
 	}
 
 	> p {
@@ -17,12 +17,12 @@ fieldset {
 
 fieldset.radio,
 fieldset.check {
-	padding: var(--current-size);
+	padding: var(--ui-size);
 
 	> legend {
 		inline-size: auto;
-		margin-inline-start: var(--current-size);
-		padding: var(--current-size-minus) var(--current-size);
+		margin-inline-start: var(--ui-size);
+		padding: var(--ui-size-sm) var(--ui-size);
 	}
 
 	> label {
@@ -30,14 +30,14 @@ fieldset.check {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		padding: var(--current-size-minus) var(--current-size-plus);
-		gap: var(--current-size);
+		padding: var(--ui-size-sm) var(--ui-size-lg);
+		gap: var(--ui-size);
 	}
 
 	> label[class*='emoji'] span {
 		flex-grow: 1;
 	}
-	
+
 	> label [type='radio'] {
 		padding: 0;
 		height: auto;

@@ -27,8 +27,8 @@ select,
 textarea {
 	--current-color: var(--color-dark);
 	--current-accent-color: var(--current-gray-contrast);
-	--current-padding-block: calc(var(--current-size-minus) - 2 * var(--border-width));
-	--current-padding-inline: var(--current-size);
+	--current-padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
+	--current-padding-inline: var(--ui-size);
 	border: 1px solid var(--current-accent-color);
 	border-radius: var(--radius-base);
 	color: var(--current-color);
@@ -44,11 +44,11 @@ label > input {
 
 /* TODO: move this to recipes ? */
 label > .feedback {
-	padding: var(--current-size-minus) var(--current-size);
+	padding: var(--ui-size-sm) var(--ui-size);
 }
 
 label > .feedback + * {
-	margin-block-start: var(--current-size);
+	margin-block-start: var(--ui-size);
 }
 
 [disabled] {
@@ -301,7 +301,7 @@ label.highlight > [type='file']:active {
 /* TODO : cleanup - use "current" size values */
 legend {
 	font-size: var(--current-font-size);
-	margin-block-end: var(--current-size);
+	margin-block-end: var(--ui-size);
 }
 
 label {
@@ -319,13 +319,13 @@ label {
 [type='file'] {
 	display: flex;
 	align-items: center;
-	font-size: var(--current-font-size-minus);
-	padding: var(--current-size) var(--current-size) var(--current-size-minus);
+	font-size: var(--current-font-size-sm);
+	padding: var(--ui-size) var(--ui-size) var(--ui-size-sm);
 }
 
 .feedback {
-	font-size: var(--current-font-size-minus);
-	min-height: calc(var(--current-font-size-minus) * var(--ratio));
+	font-size: var(--current-font-size-sm);
+	min-height: calc(var(--current-font-size-sm) * var(--ratio));
 }
 
 /* Display range input step labels */
@@ -333,11 +333,11 @@ label {
 [type='range'][list='markers'] + datalist {
 	display: flex;
 	justify-content: space-between;
-	padding: 0 var(--current-size);
+	padding: 0 var(--ui-size);
 }
 
 [type='range'][list='markers'] + datalist > option {
-	font-size: var(--current-font-size-minus);
+	font-size: var(--current-font-size-sm);
 	font-weight: var(--font-weight-body);
 	padding: 0;
 }
@@ -356,7 +356,7 @@ label.check {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	gap: var(--current-size);
+	gap: var(--ui-size);
 }
 
 label.radio[class*='emoji'] span,
