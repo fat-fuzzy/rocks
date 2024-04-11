@@ -17,3 +17,7 @@ button {
 button:not([disabled]):hover {
 	box-shadow: var(--current-shadow);
 }
+
+button + button {
+	margin-block-start: calc(2 * var(--outline-offset-base));
+}

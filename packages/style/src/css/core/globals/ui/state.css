@@ -16,10 +16,8 @@
 	--lightness-contrast: var(--color-lightness-100);
 }
 :where(button, input, textarea, select):not([disabled]):focus {
-	--chroma: var(--color-chroma-300);
-	--lightness: var(--color-lightness-300);
-	--chroma-contrast: var(--color-chroma-000);
-	--lightness-contrast: var(--color-lightness-000);
+	outline: var(--outline-width) dotted var(--shade);
+	outline-offset: var(--outline-offset-base);
 }
 [disabled] {
 	--chroma: var(--color-chroma-100);
