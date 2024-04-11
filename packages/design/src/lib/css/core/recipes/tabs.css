@@ -1,0 +1,13 @@
+.tabs {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.tabs.end {
+	justify-content: flex-end;
+}
+
+.tabs.start {
+	justify-content: flex-start;
+}

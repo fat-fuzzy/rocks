@@ -8,10 +8,12 @@
 [class^='l:sidebar'].start {
 	flex-direction: row;
 }
+
 // TODO: not sure this rule is necessary
 [class^='l:sidebar'].end {
 	flex-direction: row-reverse;
 }
+
 // TODO: not sure this rule is necessary
 [class^='l:sidebar'].end\:reverse {
 	flex-wrap: wrap-reverse;
@@ -21,7 +23,7 @@ main > [class^='l:sidebar'] {
 	padding: var(--gap);
 }
 
-.l\:main {
+[class^='l:main'] {
 	flex-basis: 0;
 	flex-grow: 999;
 	// ~ min-width in horizontal\:tb writing mode: if (width < 70%) -> wrap
@@ -30,6 +32,30 @@ main > [class^='l:sidebar'] {
 	> main {
 		block-size: 100%;
 	}
+}
+
+.l\:main\:30 {
+	min-inline-size: 30%;
+}
+
+.l\:main\:40 {
+	min-inline-size: 40%;
+}
+
+.l\:main\:50 {
+	min-inline-size: 50%;
+}
+
+.l\:main\:60 {
+	min-inline-size: 60%;
+}
+
+.l\:main\:70 {
+	min-inline-size: 70%;
+}
+
+.l\:main\:80 {
+	min-inline-size: 80%;
 }
 
 // adjusts to width of contents
@@ -50,9 +76,21 @@ main > [class^='l:sidebar'] {
 	overflow-y: auto;
 }
 
+// TODO: Decouple sidebar layout from sidebar content
+.l\:side {
+	transition: flex-basis 250ms ease-in-out;
+}
+
 @media screen and (min-width: 935px) {
 	[class^='l:side:'] nav {
 		height: auto;
 		max-height: unset;
+	}
+
+	// TODO: Decouple sidebar layout from sidebar content
+	.l\:side.minimize {
+		--current-gap: calc(var(--gap) * 2);
+		flex-basis: var(--current-gap);
+		transition: flex-basis 250ms ease-in-out;
 	}
 }

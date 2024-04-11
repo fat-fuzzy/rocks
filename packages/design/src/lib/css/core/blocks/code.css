@@ -1,0 +1,183 @@
+pre,
+code {
+	font-family: var(--font-family-code);
+}
+
+kbd {
+	padding-block: calc(var(--current-size-minus) / 2.5) calc(var(--current-size-minus) / 2);
+	padding-inline: var(--current-size);
+	margin-inline: calc(var(--current-size) / 2);
+	border: var(--border-width) solid var(--current-gray);
+	border-radius: var(--radius-base);
+}
+
+/* Allow space for scrollbar on macOS */
+pre,
+code[class^='language-'] {
+	overflow: auto;
+	padding-inline: var(--current-size) var(--current-size-plus);
+	padding-block: var(--current-size);
+}
+
+pre,
+code[class^='language-'],
+pre.default {
+	--current-color: var(--color-light);
+	--current-bg-color: var(--color-gray-5);
+	--current-border-color: var(--current-gray);
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+	border-color: var(--current-border-color);
+}
+
+code:not([class^='language-']) {
+	--current-color: var(--color-dark);
+	color: var(--current-color);
+	background-color: var(--current-bg-contrast);
+	border: none;
+	padding-block: calc(var(--current-size-minus) / 2.5) calc(var(--current-size-minus) / 2);
+	padding-inline: calc(var(--current-size) / 2);
+	border-radius: var(--radius-base);
+}
+
+pre.bare {
+	--current-bg-color: var(--color-gray-5);
+	border-color: var(--current-bg-color);
+}
+
+.night {
+	code:not([class^='language-']) {
+		--current-color: var(--color-light);
+	}
+
+	pre,
+	code,
+	pre.default {
+		--current-color: var(--color-light);
+		--current-bg-color: var(--current-bg-contrast);
+		--current-border-color: var(--color-gray-4);
+	}
+
+	pre[class*='bg:default:'].bare {
+		--current-color: var(--color-light);
+		--current-bg-color: var(--current-bg-contrast);
+		--current-border-color: var(--current-bg-color);
+	}
+
+	&.bg\:contrast,
+	&.bg\:blend .bg\:contrast {
+		pre,
+		pre.default,
+		pre[class*='bg:default'].outline,
+		pre[class*='bg:default'].default {
+			--current-color: var(--color-light);
+			--current-bg-color: var(--color-gray-5);
+			--current-border-color: var(--color-gray-4);
+		}
+		pre.bare,
+		pre[class*='bg:default:'].bare {
+			--current-bg-color: var(--color-gray-5);
+			--current-border-color: var(--current-bg-color);
+		}
+
+		kbd {
+			border-color: var(--color-light-3);
+		}
+
+		code:not([class^='language-']) {
+			background-color: var(--color-gray-5);
+		}
+	}
+
+	&.bg\:blend,
+	&.bg\:contrast .bg\:blend {
+		pre,
+		pre.default,
+		pre[class*='bg:default'].outline,
+		pre[class*='bg:default'].default {
+			--current-color: var(--color-light);
+			--current-bg-color: var(--current-bg-contrast);
+			--current-border-color: var(--color-gray-4);
+		}
+		pre.bare,
+		pre[class*='bg:default:'].bare {
+			--current-border-color: var(--current-bg-color);
+		}
+	}
+}
+
+.day {
+	pre,
+	pre.default,
+	pre[class*='bg:default'].outline,
+	pre[class*='bg:default'].default {
+		--current-bg-color: var(--color-gray-5);
+		--current-border-color: var(--color-gray-4);
+	}
+
+	pre.bare,
+	pre[class*='bg:default'].bare {
+		--current-border-color: var(--current-bg-color);
+	}
+}
+
+.day,
+.night {
+	pre[class*='info'] {
+		--current-color: var(--current-info-lightest);
+		--current-border-color: var(--current-info);
+	}
+
+	pre[class*='success'] {
+		--current-color: var(--current-success-lighter);
+		--current-border-color: var(--current-success);
+	}
+
+	pre[class*='warning'] {
+		--current-color: var(--current-warning-lighter);
+		--current-border-color: var(--current-warning);
+	}
+
+	pre[class*='error'] {
+		--current-color: var(--current-error-lightest);
+		--current-border-color: var(--current-error);
+	}
+
+	&.bg\:contrast,
+	&.bg\:blend {
+		pre[class*='info'] {
+			--current-color: var(--current-info-lightest);
+			--current-border-color: var(--current-info);
+		}
+
+		pre[class*='success'] {
+			--current-color: var(--current-success-lighter);
+			--current-border-color: var(--current-success);
+		}
+
+		pre[class*='warning'] {
+			--current-color: var(--current-warning-lighter);
+			--current-border-color: var(--current-warning);
+		}
+
+		pre[class*='error'] {
+			--current-color: var(--current-error-lightest);
+			--current-border-color: var(--current-error);
+		}
+
+		.feedback[class*='info'].bare:not(pre),
+		.feedback[class*='success'].bare:not(pre),
+		.feedback[class*='warning'].bare:not(pre),
+		.feedback[class*='error'].bare:not(pre) {
+			--current-border-color: var(--current-bg-color);
+		}
+	}
+}
+
+.night,
+.day {
+	pre > code {
+		color: inherit;
+		background-color: inherit;
+	}
+}

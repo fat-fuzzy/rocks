@@ -1,0 +1,7 @@
+.maki\:inline {
+	margin-inline: var(--current-size);
+}
+
+.maki\:block {
+	margin-block: var(--current-size);
+}

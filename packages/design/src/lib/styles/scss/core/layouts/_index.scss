@@ -8,14 +8,16 @@
 // relative order of grid styles is necessary for fallbacks
 // @forward './grid-page'; // Use for base grid with page template areas
 // @forward './grid-flex'; // Use for layout transitions: mobile flex -> desktop grid (uses page template areas)
+@forward './flex'; // Use for flex layouts
 @forward './grid'; // Use for grid layouts base + gallery grid layout (equal sized areas)
 //
 @forward './align'; // Use for aligning items inside containers and setting widths
 @forward './burrito'; // Use for side content centering (narrow columns with max-width set using sidebar width variables (in ch units))
+@forward './maki'; // Use for side content centering without any max-width
 @forward './frame'; // Use for displaying content with a given aspect ratio
 @forward './card'; // Use for displaying self-contained content items
 @forward './reveal'; // Use for displaying hidden content with a button action
+@forward './reveal-auto'; // Use for displaying hidden content in response to a container breakpoint
+@forward './reveal-fixed'; // Use for displaying hidden content in response to a button action
 @forward './details'; // Use to style <details> and <summary> elements
-@forward './sticky'; // Use for elements with sticky positioning
-@forward './player'; // Use for a player page layout
 @forward './shapes'; // Use to style geometric shapes

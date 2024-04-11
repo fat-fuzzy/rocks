@@ -1,17 +1,19 @@
 /* App config */
-// @forward './pages';
+@forward './pages';
 
 /* SCSS design token definitions */
 @use './scale';
-// @use './fonts';
+
 @use './typography';
 @use './layout';
 @use './color';
+@use './assets';
 @use './mixins';
-// Generate Tokens
-$theme-prefix: '-'; // creates CSS variables without a specific app prefix
 
-@include mixins.theme-default(
+// Generate Tokens
+$theme-prefix: '-'; // creates CSS variables with specific app prefix. Use '--' for no prefix
+
+@include mixins.theme-custom(
 	layout.$breakpoints,
 	layout.$layout,
 	scale.$scale-space-pairs,
@@ -21,5 +23,7 @@ $theme-prefix: '-'; // creates CSS variables without a specific app prefix
 	scale.$modular-scale-steps-minus,
 	typography.$typography,
 	color.$colors,
+	assets.$assets,
+	assets.$emojis,
 	$theme-prefix
 );

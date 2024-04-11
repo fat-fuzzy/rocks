@@ -1,0 +1,40 @@
+.layer,
+[class*=':layer'] {
+	box-shadow: var(--current-shadow);
+}
+
+.inset-1 {
+	box-shadow: var(--current-shadow-inset-1);
+	z-index: var(--z-index-inset-1);
+}
+
+.inset {
+	box-shadow: var(--current-shadow-inset-2);
+	z-index: var(--z-index-inset-2);
+}
+
+.drop {
+	position: relative;
+	z-index: var(--z-index-inset);
+}
+
+/* == Sticky layer: App header == */
+.sticky\:top {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: var(--z-index-sticky);
+}
+
+.sticky\:top > main {
+	min-height: calc(
+		100vh - calc(var(--header-height) - var(--header-margin) - var(--footer-height))
+	);
+}
+
+/* == Sticky layer: Page header == */
+.sticky\:reveal {
+	position: relative;
+	z-index: var(--z-index-sticky);
+}

@@ -1,0 +1,98 @@
+//===
+// A Page Header Layout that uses a grid to achieve
+// a responsive layout with changing order of contents
+//==
+
+[class^='l:grid:header'] {
+	padding: calc(var(--gap) / var(--ratio));
+	grid-template-columns: 1fr auto;
+	gap: var(--gap);
+	height: auto;
+}
+
+.l\:grid\:header\:doc {
+	grid-template-areas: 'main tabs';
+}
+
+.l\:grid\:header\:demo {
+	grid-template-areas:
+		'main			tabs'
+		'context	context';
+}
+
+[class^='l:grid:header'] > .main {
+	grid-area: main;
+	display: flex;
+	align-items: center;
+	margin-inline-start: var(--s-2);
+	margin-block-end: var(--s-1);
+}
+
+[class^='l:grid:header'] > .tabs {
+	grid-area: tabs;
+}
+
+[class^='l:grid:header'] > .context {
+	grid-area: context;
+	order: 3;
+	display: flex;
+	justify-content: flex-end;
+}
+
+@mixin switchToRowStyles_GridHeader($breakpoint, $bpSuffix) {
+	@media screen and (min-width: #{$breakpoint}) {
+		[class^='l:grid:header'].bp\:#{$bpSuffix} {
+			margin: 0 auto;
+			grid-template-columns: auto 1fr auto;
+		}
+
+		[class^='l:grid:header'].bp\:#{$bpSuffix} > .main,
+		[class^='l:grid:header'].bp\:#{$bpSuffix} > .context {
+			grid-column: 1 / -1;
+		}
+
+		[class^='l:grid:header'].bp\:#{$bpSuffix} {
+			grid-template-areas: 'main context tabs';
+		}
+
+		[class^='l:grid:header'].bp\:#{$bpSuffix} > .main {
+			grid-area: main;
+		}
+
+		[class^='l:grid:header'].bp\:#{$bpSuffix} > .context {
+			grid-area: context;
+		}
+
+		[class^='l:grid:header'].bp\:#{$bpSuffix} > .tabs {
+			grid-area: tabs;
+		}
+	}
+}
+
+@media screen and (min-width: 320px) {
+	@include switchToRowStyles_GridHeader(320px, 'xxs');
+}
+
+@media screen and (min-width: 620px) {
+	@include switchToRowStyles_GridHeader(620px, 'xs');
+}
+
+@media screen and (min-width: 935px) {
+	@include switchToRowStyles_GridHeader(935px, 'sm');
+}
+
+@media screen and (min-width: 1360px) {
+	@include switchToRowStyles_GridHeader(1360px, 'md');
+}
+
+@media screen and (min-width: 1620px) {
+	@include switchToRowStyles_GridHeader(1620px, 'lg');
+}
+
+@media screen and (min-width: 2048px) {
+	@include switchToRowStyles_GridHeader(2048px, 'xl');
+}
+
+@media screen and (min-width: 3048px) {
+	@include switchToRowStyles_GridHeader(3048px, 'xxl');
+}

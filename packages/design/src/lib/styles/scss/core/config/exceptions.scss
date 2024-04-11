@@ -1,0 +1,62 @@
+// == Visibility and DOM node accessibility control
+
+// Remove DOM node from document
+// - DOM node becomes inaccessible to everyone
+[hidden],
+.hide\:rm-node {
+	display: none;
+}
+
+// Render DOM node invisible (1):
+// - DOM node becomes inaccessible to assistive tech
+// - layout remains unchanged (w/ exceptions: see tables)
+// - node is not removed from document
+.hide\:sr-never {
+	visibility: hidden;
+}
+
+// Render DOM node invisible (2):
+// - DOM node remains accessible to assistive tech
+// - style element to free the space taken up by its box in the document layout
+// - node is not removed from document
+.sr-only,
+.hide\:sr-always,
+.hide\:viz-only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); // TODO : use Svelte animations
+}
+
+// To undo hide:
+.unhide {
+	border: unset;
+	clip: unset;
+	height: auto;
+	margin: initial;
+	overflow: hidden;
+	padding: var(--current-size);
+	position: unset;
+	top: 0;
+	width: 100%;
+	white-space: normal;
+}
+// == DOM content selection control
+
+.unselectable {
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none;
+}
+
+.copy-text {
+	-webkit-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}

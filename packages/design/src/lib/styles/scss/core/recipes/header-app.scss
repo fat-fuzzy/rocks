@@ -1,0 +1,194 @@
+.header-app {
+	display: flex;
+	padding-inline: var(--gap);
+}
+
+//== Need to override global <a> hover styles in nav and header <a>
+.header-app nav a:hover {
+	color: var(--current-primary-light);
+	background-color: initial;
+	text-decoration: none;
+}
+
+.header-app > [class*='l:side'] {
+	flex-basis: content; // property as content of flex container
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+}
+
+/* Configure reveal items default dimensions */
+.header-app .l\:reveal\:auto .show {
+	height: fit-content;
+	width: fit-content;
+}
+
+.header-app .l\:reveal\:auto > button {
+	margin-inline: 0;
+}
+
+/**
+ * App header - Main Nav
+ */
+.header-app > [class*='l:main'] > nav a {
+	width: 100%;
+	font-weight: var(--font-weight-400);
+	text-transform: uppercase;
+	padding: calc(var(--s-1) + var(--border-width-lg)) var(--s0);
+}
+
+.header-app > [class*='l:main'] > nav li {
+	background-color: inherit;
+	border-inline-start: var(--border-width-xl) solid var(--current-bg-color);
+	padding: var(--outline-offset) 0 var(--outline-offset) 0;
+}
+
+.header-app > [class*='l:main'] > nav li:hover {
+	--current-bg-color: var(--current-bg-contrast);
+	--current-border-color: var(--current-bg-contrast);
+	background-color: var(--current-bg-contrast);
+}
+
+.header-app [class*='l:side'] a:hover {
+	background-color: var(--current-bg-contrast);
+	box-shadow: var(--current-shadow);
+}
+
+.header-app > [class*='l:main'] > nav li[aria-current='page'] a {
+	color: var(--current-color);
+	text-decoration: none;
+	background-color: inherit;
+}
+
+//== Main navigation (in application Header)
+// - Change these styles to adapt to design
+.header-app .l\:reveal\:auto > nav > ul {
+	position: relative;
+	padding: var(--current-size) 0;
+	margin: 0;
+	list-style: none;
+	width: 100%;
+	background-color: inherit;
+	height: fit-content;
+}
+
+.header-app .l\:reveal\:auto > nav li {
+	display: flex;
+	align-items: center;
+}
+
+/* Configure reveal menu positioning and width */
+.header-app [class*='l:side'].l\:reveal\:auto > menu {
+	padding-block: var(--current-size);
+}
+
+/* Configure reveal main nav dimensions */
+.header-app .l\:reveal\:auto[class*='l:side'] .show {
+	padding: var(--current-size);
+}
+
+/* Configure reveal settings menu dimensions */
+.header-app .l\:reveal\:auto[class*='l:main'] .show {
+	max-height: fit-content;
+	width: calc(100vw - 2 * var(--gap));
+}
+
+//== Color
+
+.nigh.header-app,
+.night .header-app {
+	--current-color: var(--color-light);
+	color: var(--current-color);
+	background-color: var(--current-gray);
+}
+
+.day.header-app,
+.day .header-app {
+	--current-color: var(--current-primary);
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+}
+
+@mixin switchToRowStyles_Header($breakpoint, $bpSuffix) {
+	@media screen and (min-width: #{$breakpoint}) {
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} {
+			justify-content: center;
+		}
+
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} .show,
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} [class*='hide:'] {
+			height: 100%;
+		}
+
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav > ul {
+			padding: 0;
+			margin: 0;
+			width: auto;
+			flex-wrap: nowrap;
+			gap: var(--gap);
+			height: 100%;
+		}
+
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav li,
+		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav a {
+			width: fit-content;
+		}
+
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} > nav li {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-inline-start: unset;
+			border-block-start: var(--border-width-xl) solid var(--current-bg-color);
+			padding: 0 0 var(--outline-offset) var(--outline-offset);
+		}
+
+		.header-app > .l\:reveal\:auto.bp\:#{$bpSuffix} > nav li[aria-current='page'] {
+			border-color: var(--current-primary);
+		}
+
+		/* Configure reveal menu positioning and width */
+		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$bpSuffix} {
+			justify-content: center;
+		}
+
+		/* Configure reveal settings menu dimensions */
+		.header-app [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} .show {
+			height: auto;
+		}
+
+		/* Configure reveal menu positioning and width */
+		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$bpSuffix} > menu {
+			justify-content: flex-end;
+			padding-block: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 320px) {
+	@include switchToRowStyles_Header(320px, 'xxs');
+}
+
+@media screen and (min-width: 620px) {
+	@include switchToRowStyles_Header(620px, 'xs');
+}
+
+@media screen and (min-width: 935px) {
+	@include switchToRowStyles_Header(935px, 'sm');
+}
+
+@media screen and (min-width: 1360px) {
+	@include switchToRowStyles_Header(1360px, 'md');
+}
+
+@media screen and (min-width: 1620px) {
+	@include switchToRowStyles_Header(1620px, 'lg');
+}
+
+@media screen and (min-width: 2048px) {
+	@include switchToRowStyles_Header(2048px, 'xl');
+}
+
+@media screen and (min-width: 3048px) {
+	@include switchToRowStyles_Header(3048px, 'xxl');
+}

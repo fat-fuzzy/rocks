@@ -1,0 +1,431 @@
+form {
+	color: var(--current-color);
+	background-color: inherit;
+	max-height: fit-content;
+}
+
+form * {
+	font-family: var(--font-family-ui);
+}
+
+label,
+.feedback {
+	display: block;
+}
+
+label,
+legend,
+.form\:element {
+	font-weight: var(--font-weight-ui);
+	padding-inline-start: 0;
+	padding-inline-end: 0;
+	background-color: inherit;
+}
+
+input,
+select,
+textarea {
+	--current-color: var(--color-dark);
+	--current-accent-color: var(--current-gray-contrast);
+	--current-padding-block: calc(var(--current-size-minus) - 2 * var(--border-width));
+	--current-padding-inline: var(--current-size);
+	border: 1px solid var(--current-accent-color);
+	border-radius: var(--radius-base);
+	color: var(--current-color);
+	accent-color: var(--current-accent-color);
+	border-color: var(--current-accent-color);
+	font-size: var(--current-font-size);
+	padding: var(--current-padding-block) var(--current-padding-inline);
+}
+
+label > input {
+	max-width: 100%;
+}
+
+/* TODO: move this to recipes ? */
+label > .feedback {
+	padding: var(--current-size-minus) var(--current-size);
+}
+
+label > .feedback + * {
+	margin-block-start: var(--current-size);
+}
+
+[disabled] {
+	filter: contrast(90%) opacity(80%);
+	cursor: not-allowed;
+}
+
+button[disabled] {
+	filter: grayscale(90%) opacity(65%);
+}
+
+.night {
+	textarea,
+	[type='text'],
+	[type='password'],
+	[type='number'],
+	[type='email'],
+	[type='phone'],
+	[type='dataset'] {
+		color: var(--color-black);
+	}
+	[type='file'] {
+		color: var(--color-white);
+	}
+}
+
+.primary {
+	input,
+	select,
+	textarea {
+		--current-accent-color: var(--current-primary);
+	}
+}
+
+.accent {
+	input,
+	select,
+	textarea {
+		--current-accent-color: var(--current-accent);
+	}
+}
+
+.highlight {
+	input,
+	select,
+	textarea {
+		--current-accent-color: var(--current-highlight);
+	}
+}
+
+.info {
+	input,
+	select,
+	textarea {
+		--current-accent-color: var(--current-info);
+	}
+}
+
+.success {
+	input,
+	select,
+	textarea {
+		--current-accent-color: var(--current-success);
+	}
+}
+
+.warning {
+	input,
+	select,
+	textarea {
+		--current-accent-color: var(--current-warning);
+	}
+}
+
+.error {
+	input,
+	select,
+	textarea {
+		--current-accent-color: var(--current-error);
+	}
+}
+
+/* Manage color on .bare and .outline labels adn inputs */
+
+label.bare > input,
+label.bare > [type='file'] {
+	color: var(--current-color);
+	background-color: inherit;
+}
+
+label.outline > input,
+label.outline > [type='file'] {
+	color: var(--current-color);
+	background-color: inherit;
+	border-color: var(--current-gray-contrast);
+}
+
+label.bare.primary > input,
+label.bare.primary > [type='file'],
+label.bare.accent > input,
+label.bare.accent > [type='file'],
+label.bare.highlight > input,
+label.bare.highlight > [type='file'] {
+	color: var(--color-black);
+}
+
+label.outline.primary > input,
+label.outline.primary > [type='file'] {
+	color: var(--current-primary);
+	border-color: var(--current-primary);
+}
+label.outline.accent > input,
+label.outline.accent > [type='file'] {
+	color: var(--current-accent);
+	border-color: var(--current-accent);
+}
+label.outline.highlight > input,
+label.outline.highlight > [type='file'] {
+	color: var(--color-black);
+	border-color: var(--current-highlight-dark);
+}
+
+label.bare.primary > input,
+label.bare.primary > [type='file'] {
+	color: var(--color-black);
+	border-color: var(--current-primary-lightest);
+}
+label.bare.accent > input,
+label.bare.accent > [type='file'] {
+	color: var(--color-black);
+	border-color: var(--current-accent-lightest);
+}
+label.bare.highlight > input,
+label.bare.highlight > [type='file'] {
+	color: var(--color-black);
+	border-color: var(--current-highlight-lighter);
+}
+
+fieldset.radio input,
+fieldset.check input {
+	flex-grow: 0;
+	flex-basis: var(--current-font-size);
+}
+
+fieldset.radio,
+fieldset.check {
+	justify-content: flex-start;
+	.day & label {
+		--current-color: var(--color-black);
+		color: var(--current-color);
+	}
+
+	.night & label {
+		--current-color: var(--color-white);
+		color: var(--current-color);
+	}
+
+	label:hover {
+		background-color: var(--current-gray);
+	}
+
+	.night & label:hover {
+		--current-color: var(--color-black);
+	}
+
+	&.primary {
+		label:hover {
+			background-color: var(--current-primary-lighter);
+		}
+	}
+
+	label.primary:hover {
+		--current-color: var(--color-black);
+		background-color: var(--current-primary-lighter);
+	}
+
+	label.accent:hover {
+		--current-color: var(--color-black);
+		background-color: var(--current-accent-lighter);
+	}
+
+	label.highlight:hover {
+		--current-color: var(--color-black);
+		background-color: var(--current-highlight-lighter);
+	}
+
+	label.info:hover {
+		--current-color: var(--color-black);
+		background-color: var(--current-info-lighter);
+	}
+
+	label.success:hover {
+		--current-color: var(--color-black);
+		background-color: var(--current-success-lighter);
+	}
+
+	label.warning:hover {
+		--current-color: var(--color-black);
+		background-color: var(--current-warning-lighter);
+	}
+
+	label.error:hover {
+		--current-color: var(--color-black);
+		background-color: var(--current-error-lighter);
+	}
+}
+
+label.primary > [type='file'] {
+	color: var(--color-white);
+}
+
+label.accent > [type='file'] {
+	color: var(--color-white);
+}
+
+label.highlight > [type='file'] {
+	color: var(--color-black);
+}
+
+label.primary:hover > [type='file'] {
+	color: var(--color-black);
+	background-color: var(--current-primary-light);
+}
+
+label.accent:hover > [type='file'] {
+	color: var(--color-black);
+	background-color: var(--current-accent-light);
+}
+
+label.highlight:hover > [type='file'] {
+	color: var(--color-black);
+	background-color: var(--current-highlight-light);
+}
+
+label.primary > [type='file']:active {
+	color: var(--color-black);
+	background-color: var(--current-primary-lighter);
+}
+
+label.accent > [type='file']:active {
+	color: var(--current-black);
+	background-color: var(--current-accent-lighter);
+}
+
+label.highlight > [type='file']:active {
+	color: var(--color-black);
+	background-color: var(--current-highlight-lighter);
+}
+
+/* TODO : cleanup - use "current" size values */
+legend {
+	font-size: var(--current-font-size);
+	margin-block-end: var(--current-size);
+}
+
+label {
+	font-size: var(--current-font-size);
+}
+
+[type='file']:hover {
+	background-color: var(--current-gray-light);
+}
+
+[type='file']:active {
+	background-color: var(--current-bg-polar);
+}
+
+[type='file'] {
+	display: flex;
+	align-items: center;
+	font-size: var(--current-font-size-minus);
+	padding: var(--current-size) var(--current-size) var(--current-size-minus);
+}
+
+.feedback {
+	font-size: var(--current-font-size-minus);
+	min-height: calc(var(--current-font-size-minus) * var(--ratio));
+}
+
+/* Display range input step labels */
+
+[type='range'][list='markers'] + datalist {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 var(--current-size);
+}
+
+[type='range'][list='markers'] + datalist > option {
+	font-size: var(--current-font-size-minus);
+	font-weight: var(--font-weight-body);
+	padding: 0;
+}
+
+[type='range']:not([list]) + datalist > option {
+	display: none;
+}
+
+label[class*='l:stack'] > [type='range'] {
+	margin-block-start: 0;
+}
+
+label.radio,
+label.check {
+	margin: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: var(--current-size);
+}
+
+label.radio[class*='emoji'] span,
+label.check[class*='emoji'] span {
+	flex-grow: 1;
+	font-size: var(--current-font-size);
+}
+
+@mixin nightColoredInputStyles($color) {
+	label.#{$color} > [type='file'] {
+		color: var(--color-black);
+	}
+
+	label.outline.#{$color} > input,
+	label.outline.#{$color} > [type='file'] {
+		color: var(--current-#{$color}-light);
+	}
+
+	label.bare.#{$color} > input,
+	label.bare.#{$color} > [type='file'] {
+		color: var(--current-#{$color}-lighter);
+	}
+
+	.outline.#{$color}:hover > input,
+	.outline.#{$color}:hover > [type='file'],
+	.bare.#{$color}:hover > input,
+	.bare.#{$color}:hover > [type='file'] {
+		color: var(--color-black);
+	}
+}
+
+.night {
+	label:hover > input,
+	label:hover > [type='file'] {
+		color: var(--color-white);
+	}
+
+	label.fill > input,
+	label.fill > [type='file'] {
+		background-color: var(--current-bg-color);
+	}
+
+	label.outline > input,
+	label.outline > [type='file'] {
+		color: var(--color-white);
+	}
+
+	label.bare > input,
+	label.bare > [type='file'] {
+		color: var(--color-white);
+	}
+
+	@include nightColoredInputStyles('primary');
+	@include nightColoredInputStyles('accent');
+	@include nightColoredInputStyles('highlight');
+}
+
+label:hover > input,
+label:hover > [type='file'] {
+	color: var(--current-color);
+	background-color: var(--current-bg-contrast);
+}
+
+label.primary:hover > input,
+label.primary > input:active,
+label.accent:hover > input,
+label.accent > input:active,
+label.highlight:hover > input,
+label.highlight > input:active {
+	color: var(--current-color);
+	background-color: var(--current-bg-color);
+}

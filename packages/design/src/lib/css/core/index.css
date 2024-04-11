@@ -1,0 +1,20 @@
+/* Global config */
+@import './config/_index.css';
+
+/* Resets and global styles, set --current-* CSS var values used in layouts and blocks */
+@import './globals/_index.css';
+
+/* Blocks (self contained, atomic components used in Recipes) */
+@import './blocks/_index.css';
+
+/* Layout (structural components used to organize content on a page or view) */
+@import './layouts/_index.css';
+
+/* Motion (animations, transitions, user-initiated movement) */
+@import './motion/_index.css';
+
+/* Compositions (components that implement common usage patterns using blocks and layouts) */
+@import './recipes/_index.css';
+
+/* Overrides */
+@import './config/visibility.css';
