@@ -1,9 +1,4 @@
 /* == Contrast == */
-[class^='bg:'] {
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
-}
-
 .bg\:polar,
 .bg\:contrast > .bg\:polar {
 	--current-bg-color: var(--current-polar);

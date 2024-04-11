@@ -3,8 +3,8 @@
 		"$type": "number",
 		"lightness": {
 			"$type": "percentage",
-			"light": {"$value": 100},
-			"dark": {"$value": 23.5},
+			"light": {"$value": 99},
+			"dark": {"$value": 25},
 			"000": {"$value": 98},
 			"100": {"$value": 88},
 			"200": {"$value": 76},
@@ -14,7 +14,7 @@
 			"600": {"$value": 32}
 		},
 		"chroma": {
-			"neutral": {"$value": 0},
+			"neutral": {"$value": 0.01},
 			"000": {"$value": 0.05},
 			"100": {"$value": 0.1},
 			"200": {"$value": 0.2},
@@ -40,6 +40,38 @@
 			"highlight": {"$value": "{color.hue.vintagerose}"},
 			"surface": {"$value": "{color.hue.gray-violet}"},
 			"neutral": {"$value": "{color.hue.gray}"}
+		},
+		"semantic": {
+			"info": {"$value": "{color.hue.neonblue}"},
+			"success": {"$value": "{color.hue.teal}"},
+			"warning": {"$value": "{color.hue.yellow}"},
+			"danger": {"$value": "{color.hue.framboise}"}
+		},
+		"state": {
+			"default": {
+				"lightness": {"$value": "{color.lightness.300}"},
+				"chroma": {"$value": "{color.lightness.300}"}
+			},
+			"active": {
+				"lightness": {"$value": "{color.lightness.500}"},
+				"chroma": {"$value": "{color.lightness.500}"}
+			},
+			"hover": {
+				"lightness": {"$value": "{color.lightness.400}"},
+				"chroma": {"$value": "{color.lightness.400}"}
+			},
+			"focus": {
+				"lightness": {"$value": "{color.lightness.500}"},
+				"chroma": {"$value": "{color.lightness.500}"}
+			},
+			"disabled": {
+				"lightness": {"$value": "{color.lightness.100}"},
+				"chroma": {"$value": "{color.lightness.100}"}
+			},
+			"visited": {
+				"lightness": {"$value": "{color.lightness.200}"},
+				"chroma": {"$value": "{color.lightness.200}"}
+			}
 		}
 	}
 }

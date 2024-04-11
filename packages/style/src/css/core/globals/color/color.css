@@ -1,12 +1,7 @@
 [class*='l:text'] {
-	color: var(--current-color);
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	color: var(--ink);
 	background-color: inherit;
-}
-
-[class*='bg:'] {
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
-	border-color: var(--current-gray-light);
 }
 
 .primary:focus {

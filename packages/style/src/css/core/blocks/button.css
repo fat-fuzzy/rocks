@@ -9,8 +9,8 @@ button {
 	line-height: var(--line-height-ui);
 	padding: var(--current-size) var(--current-size-plus); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
 	border-radius: var(--radius-base);
-	color: var(--current-button-text);
-	background-color: var(--current-button-bg);
+	color: var(--ink);
+	background-color: var(--shade);
 	border: var(--border-width) solid var(--current-button-border);
 }
 

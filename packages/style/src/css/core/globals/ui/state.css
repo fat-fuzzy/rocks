@@ -1,0 +1,25 @@
+/* Set current color SHADE according to current combination of:
+ - lightness
+ - chroma
+ - hue
+*/
+:where(button, input, textarea, select):not([disabled]):hover {
+	--lightness: var(--color-state-hover-lightness);
+	--chroma: var(--color-state-hover-chroma);
+}
+:where(button, input, textarea, select):not([disabled]):active {
+	--lightness: var(--color-state-active-lightness);
+	--chroma: var(--color-state-active-chroma);
+}
+:where(button, input, textarea, select):not([disabled]):focus {
+	--lightness: var(--color-state-focus-lightness);
+	--chroma: var(--color-state-focus-chroma);
+}
+[disabled] {
+	--lightness: var(--color-state-disabled-lightness);
+	--chroma: var(--color-state-disabled-chroma);
+}
+:visited {
+	--lightness: var(--color-state-visited-lightness);
+	--chroma: var(--color-state-visited-chroma);
+}

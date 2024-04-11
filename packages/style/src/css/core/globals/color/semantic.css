@@ -1,0 +1,17 @@
+/* Set current color SHADE according to current combination of:
+ - lightness
+ - chroma
+ - hue
+*/
+[class*=':info'] {
+	--hue: var(--color-semantic-info);
+}
+[class*=':success'] {
+	--hue: var(--color-semantic-success);
+}
+[class*=':warning'] {
+	--hue: var(--color-semantic-warning);
+}
+[class*=':danger'] {
+	--hue: var(--color-semantic-danger);
+}
