@@ -12,10 +12,10 @@
 /* State */
 @import './ui/state.css';
 @import './ui/scale.css';
+@import './ui/variant.css';
 
 @import './assets.css'; /* Use to display emojis or svg icons */
 @import './svg.css'; /* Use to display emojis or svg icons */
 @import './typography.css';
 @import './layers.css';
 @import './contrast.css';
-@import './variant.css';

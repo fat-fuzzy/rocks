@@ -1,4 +1,5 @@
 [class^='l:sidebar'] {
+	--gap: var(--layout-gap-md);
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--gap);
@@ -89,8 +90,8 @@ main > [class^='l:sidebar'] {
 
 	/* TODO: Decouple sidebar layout from sidebar content */
 	.l\:side.minimize {
-		--current-gap: calc(var(--gap) * 2);
-		flex-basis: var(--current-gap);
+		--basis: calc(var(--gap) * 2);
+		flex-basis: var(--basis);
 		transition: flex-basis 250ms ease-in-out;
 	}
 }

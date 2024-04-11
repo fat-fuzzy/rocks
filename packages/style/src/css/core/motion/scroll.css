@@ -7,5 +7,5 @@
 .snap\:start {
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
-	scroll-padding-top: var(--current-size);
+	scroll-padding-top: var(--ui-size);
 }

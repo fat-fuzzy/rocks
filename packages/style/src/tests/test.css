@@ -22,6 +22,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 	.palette {
 		display: grid;
 		grid-template-columns: auto auto auto;
+		max-inline-size: fit-content;
 	}
 	.hue {
 		display: grid;
@@ -61,7 +62,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 
 		display: grid;
 		place-content: center;
-		gap: 5vmin;
+		gap: 2vmin;
 		grid-auto-flow: column;
 	}
 

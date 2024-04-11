@@ -4,22 +4,32 @@
  - hue
 */
 :where(button, input, textarea, select):not([disabled]):hover {
-	--lightness: var(--color-state-hover-lightness);
-	--chroma: var(--color-state-hover-chroma);
+	--chroma: var(--color-chroma-400);
+	--lightness: var(--color-lightness-400);
+	--chroma-contrast: var(--color-chroma-000);
+	--lightness-contrast: var(--color-lightness-000);
 }
 :where(button, input, textarea, select):not([disabled]):active {
-	--lightness: var(--color-state-active-lightness);
-	--chroma: var(--color-state-active-chroma);
+	--chroma: var(--color-chroma-500);
+	--lightness: var(--color-lightness-500);
+	--chroma-contrast: var(--color-chroma-100);
+	--lightness-contrast: var(--color-lightness-100);
 }
 :where(button, input, textarea, select):not([disabled]):focus {
-	--lightness: var(--color-state-focus-lightness);
-	--chroma: var(--color-state-focus-chroma);
+	--chroma: var(--color-chroma-300);
+	--lightness: var(--color-lightness-300);
+	--chroma-contrast: var(--color-chroma-000);
+	--lightness-contrast: var(--color-lightness-000);
 }
 [disabled] {
-	--lightness: var(--color-state-disabled-lightness);
-	--chroma: var(--color-state-disabled-chroma);
+	--chroma: var(--color-chroma-100);
+	--lightness: var(--color-lightness-100);
+	--chroma-contrast: var(--color-chroma-300);
+	--lightness-contrast: var(--color-lightness-300);
 }
 :visited {
-	--lightness: var(--color-state-visited-lightness);
-	--chroma: var(--color-state-visited-chroma);
+	--chroma: var(--color-chroma-200);
+	--lightness: var(--color-lightness-200);
+	--chroma-contrast: var(--color-chroma-600);
+	--lightness-contrast: var(--color-lightness-600);
 }

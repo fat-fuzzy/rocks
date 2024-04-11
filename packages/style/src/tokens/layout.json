@@ -1,1 +1,11 @@
-{}
+{
+	"layout": {
+		"$type": "dimension",
+		"base": {"$value": "1rem"},
+		"gap": {
+			"sm": {"$value": "{scale.base.01}"},
+			"md": {"$value": "{scale.base.00}"},
+			"lg": {"$value": "{scale.base.10}"}
+		}
+	}
+}

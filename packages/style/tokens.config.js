@@ -6,6 +6,7 @@ const paths = {
 	out: './src/css/tokens/',
 }
 const files = [
+	'border.json',
 	'color.json',
 	'icons.json',
 	'layout.json',

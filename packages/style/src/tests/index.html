@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="/src/tests/test.css">
     <script type="module" src="/index.js"></script>
 </head>
-<body class="bg:neutral:light l:sidebar">
-  <div class="l:main">
+<body class="bg:neutral:light">
+  <main  class="l:sidebar card">
+  <div class="l:main:50">
     <div class="palette">
       <div class="hue">
         <figure class="bg:primary:000">
@@ -71,29 +72,43 @@
       </div>
     </div>
     <div class="buttons">
-      <button class="bg:primary:400 size:sm scale:minor">bg:accent:400</button>
-      <button class="bg:primary:300 size:sm">bg:primary:400</button>
-      <button class="bg:primary:200 size:sm scale:major">bg:highlight:400</button>
-      <button class="bg:accent:400 size:md scale:minor">bg:accent:300</button>
-      <button class="bg:accent:300 size:md">bg:primary:300</button>
-      <button class="bg:accent:200 size:md scale:major">bg:highlight:300</button>
-      <button class="bg:highlight:400 size:lg scale:minor">bg:accent:200</button>
-      <button class="bg:highlight:300 size:lg">bg:primary:200</button>
-      <button class="bg:highlight:200 size:lg scale:major">bg:highlight:200</button>
+      <button class="bg:primary:100 size:sm scale:minor">bg:accent:100</button>
+      <button class="bg:primary:200 size:sm">bg:primary:200</button>
+      <button class="bg:primary:300 size:sm scale:major">bg:highlight:300</button>
+      <button class="bg:accent:100 size:md scale:minor">bg:accent:100</button>
+      <button class="bg:accent:200 size:md">bg:primary:200</button>
+      <button class="bg:accent:300 size:md scale:major">bg:highlight:300</button>
+      <button class="bg:highlight:100 size:lg scale:minor">bg:accent:100</button>
+      <button class="bg:highlight:200 size:lg">bg:primary:200</button>
+      <button class="bg:highlight:300 size:lg scale:major">bg:highlight:300</button>
     </div>
   </div>
     
-    <article class="l:side">
+    <article class="l:side l:stack">
       <header>
         <h1>This is a Title</h1>
         <small>Lorem ipsum dolor</small>
       </header>
-      <div class="bg:neutral:dark card">
+      <div class="bg:accent:000 card:fill">
+        <h2>This is a Subtitle</h2>
+        <small>Lorem ipsum dolor</small>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam aspernatur voluptatum
+          labore dolores perspiciatis.</p>
+      </div>
+      <div class="bg:accent:000 card:outline">
+        <h2>This is a Subtitle</h2>
+        <small>Lorem ipsum dolor</small>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam aspernatur voluptatum
+          labore dolores perspiciatis.</p>
+      </div>
+      <div class="bg:accent:000 card:bare">
         <h2>This is a Subtitle</h2>
         <small>Lorem ipsum dolor</small>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam aspernatur voluptatum
           labore dolores perspiciatis.</p>
       </div>
     </article>
+
+  </main>
   </body>
 </html>

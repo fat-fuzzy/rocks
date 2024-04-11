@@ -1,17 +1,17 @@
 .ui\:menu {
 	gap: calc(var(--gap) / var(--ratio));
-	padding: var(--current-size) var(--current-size) var(--current-size-plus);
+	padding: var(--ui-size) var(--ui-size) var(--ui-size-lg);
 }
 
 .page-header .ui\:menu {
-	margin-block-start: var(--current-size);
+	margin-block-start: var(--ui-size);
 	margin-inline: auto;
 }
 
 @media screen and (min-width: 620px) {
 	.page-header .ui\:menu {
-		margin-inline: var(--current-size);
-		margin-block-start: var(--current-size);
+		margin-inline: var(--ui-size);
+		margin-block-start: var(--ui-size);
 	}
 }
 

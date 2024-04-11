@@ -1,5 +1,5 @@
 [class*='l:flex'] {
-	--gap: var(--current-size);
+	--gap: var(--ui-size);
 	display: flex;
 	flex-wrap: wrap;
 	align-items: stretch;

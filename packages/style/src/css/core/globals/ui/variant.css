@@ -1,0 +1,15 @@
+/* Set current color SHADE according to current combination of:
+ - lightness
+ - chroma
+ - hue
+*/
+[class*=':fill'] {
+	border: var(--border-width-md) solid var(--ink);
+}
+[class*=':outline'] {
+	border: var(--border-width-md) solid var(--ink);
+	background-color: inherit;
+}
+[class*=':bare'] {
+	border: var(--border-width-md) solid var(--bg-color);
+}

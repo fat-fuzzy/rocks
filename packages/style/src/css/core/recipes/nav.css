@@ -50,15 +50,15 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
-	padding-inline-start: calc(2 * var(--current-size));
+	padding-inline-start: calc(2 * var(--ui-size));
 }
 
 ul.depth-3 {
-	padding-inline-start: calc(3 * var(--current-size));
+	padding-inline-start: calc(3 * var(--ui-size));
 }
 
 ul.depth-4 {
-	padding-inline-start: calc(4 * var(--current-size));
+	padding-inline-start: calc(4 * var(--ui-size));
 }
 
 /* Active Link */
@@ -74,8 +74,8 @@ nav li[aria-current='page'] > a:visited {
 [class^='l:sidebar'] nav li[aria-current='page'] > a {
 	color: var(--color-light);
 	background-color: var(--current-primary);
-	padding-inline-start: var(--current-size);
-	padding-inline-end: var(--current-size);
+	padding-inline-start: var(--ui-size);
+	padding-inline-end: var(--ui-size);
 }
 
 .night [class^='l:sidebar'] nav li[aria-current='page'] > a {
