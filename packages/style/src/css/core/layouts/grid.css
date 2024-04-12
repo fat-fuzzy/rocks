@@ -12,7 +12,7 @@
 /* TODO: generate mq mixin */
 
 /* Basic grid that will automatically create columns if space is available for given column dimensions:
-	- between var(--current-side-size) and 100% of available width
+	- between var(--sidebar-width) and 100% of available width
 	*/
 @supports (width: min(var(--current-item-size), 100%)) {
 	[class*='l:grid'] {

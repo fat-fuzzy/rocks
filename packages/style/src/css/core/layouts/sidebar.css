@@ -60,30 +60,26 @@ main > [class^='l:sidebar'] {
 }
 
 /* adjusts to width of contents */
-[class^='l:side'] {
+.l\:side {
 	flex-grow: 1;
-	flex-basis: var(--current-side-size);
+	flex-basis: var(--sidebar-width);
+	transition: flex-basis 250ms ease-in-out;
 }
 
 /* adjusts to width of sibling (main) */
-[class^='l:side'].shrink {
+.l\:side.shrink {
 	flex-grow: 0;
 	flex-basis: fit-content;
 }
 
-[class^='l:side:'] nav {
+.l\:side nav {
 	height: auto;
 	max-height: fit-content;
 	overflow-y: auto;
 }
 
-/* TODO: Decouple sidebar layout from sidebar content */
-.l\:side {
-	transition: flex-basis 250ms ease-in-out;
-}
-
 @media screen and (min-width: 935px) {
-	[class^='l:side:'] nav {
+	.l\:side nav {
 		height: auto;
 		max-height: unset;
 	}

@@ -1,5 +1,5 @@
 [class*='card'] {
-	border-radius: var(--layout-radius-base);
+	border-radius: var(--border-radius-base);
 	padding: var(--ui-size);
 }
 

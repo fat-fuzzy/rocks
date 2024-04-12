@@ -27,7 +27,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 	.hue {
 		display: grid;
 		grid-auto-rows: 8vh;
-		grid-template-columns: 10vw;
+		grid-template-columns: 8vw;
 	}
 	figure {
 		display: flex;
@@ -39,9 +39,9 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 @layer demo.card {
 	.card {
 		display: grid;
-		gap: 1ch;
+		/* gap: 1ch;
 		border-radius: 10px;
-		padding: 1rem;
+		padding: 1rem; */
 	}
 }
 

@@ -6,7 +6,7 @@ article.box > header {
 }
 
 [class*='l:grid'] > .box .content {
-	padding: var(--current-size-plus);
+	padding: var(--ui-size-lg);
 }
 
 [class*='l:grid'] > .box:hover header {
@@ -19,5 +19,5 @@ article.box > header {
 }
 
 [class*='l:grid'] > .box header .title::before {
-	margin-inline: var(--current-size-plus);
+	margin-inline: var(--ui-size-lg);
 }

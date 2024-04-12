@@ -3,7 +3,7 @@ button {
 	justify-content: center;
 	flex-wrap: nowrap;
 	min-width: max-content;
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 	font-family: var(--current-font-family);
 	font-weight: var(--font-weight-ui);
 	line-height: var(--line-height-ui);

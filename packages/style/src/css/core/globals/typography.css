@@ -30,7 +30,7 @@ h1.link,
 h2.link,
 h3.link {
 	margin: 0;
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 }
 
 h1 {
@@ -68,15 +68,15 @@ h5 {
 }
 
 [class*='font:']:not(h1, h2, h3, h4, h5, h6) {
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 }
 
 [class*='font:'][class*=':minus']:not(h1, h2, h3, h4, h5, h6) {
-	font-size: var(--current-font-size-minus);
+	font-size: var(--font-size-minus);
 }
 
 [class*='font:'][class*=':plus']:not(h1, h2, h3, h4, h5, h6) {
-	font-size: var(--current-font-size-plus);
+	font-size: var(--font-size-plus);
 }
 
 article,
@@ -110,6 +110,6 @@ ul {
 a {
 	height: fit-content;
 	padding-block: 0;
-	padding-inline: calc(var(--current-size-minus) / 2);
+	padding-inline: calc(var(--ui-size-sm) / 2);
 	margin-inline-end: 0.25em;
 }

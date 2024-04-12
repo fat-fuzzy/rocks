@@ -59,9 +59,9 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	margin: var(--current-size-plus);
+	margin: var(--ui-size-lg);
 	height: fit-content;
-	width: calc(100% - 2 * var(--current-size-plus));
-	max-height: calc(100% - 2 * var(--current-size-plus));
+	width: calc(100% - 2 * var(--ui-size-lg));
+	max-height: calc(100% - 2 * var(--ui-size-lg));
 	overflow: scroll;
 }

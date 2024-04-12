@@ -34,7 +34,7 @@ textarea {
 	color: var(--current-color);
 	accent-color: var(--current-accent-color);
 	border-color: var(--current-accent-color);
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 	padding: var(--current-padding-block) var(--current-padding-inline);
 }
 
@@ -190,7 +190,7 @@ label.bare.highlight > [type='file'] {
 fieldset.radio input,
 fieldset.check input {
 	flex-grow: 0;
-	flex-basis: var(--current-font-size);
+	flex-basis: var(--font-size);
 }
 
 fieldset.radio,
@@ -300,12 +300,12 @@ label.highlight > [type='file']:active {
 
 /* TODO : cleanup - use "current" size values */
 legend {
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 	margin-block-end: var(--ui-size);
 }
 
 label {
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 }
 
 [type='file']:hover {
@@ -319,13 +319,13 @@ label {
 [type='file'] {
 	display: flex;
 	align-items: center;
-	font-size: var(--current-font-size-sm);
+	font-size: var(--font-size-sm);
 	padding: var(--ui-size) var(--ui-size) var(--ui-size-sm);
 }
 
 .feedback {
-	font-size: var(--current-font-size-sm);
-	min-height: calc(var(--current-font-size-sm) * var(--ratio));
+	font-size: var(--font-size-sm);
+	min-height: calc(var(--font-size-sm) * var(--ratio));
 }
 
 /* Display range input step labels */
@@ -337,7 +337,7 @@ label {
 }
 
 [type='range'][list='markers'] + datalist > option {
-	font-size: var(--current-font-size-sm);
+	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-body);
 	padding: 0;
 }
@@ -362,7 +362,7 @@ label.check {
 label.radio[class*='emoji'] span,
 label.check[class*='emoji'] span {
 	flex-grow: 1;
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 }
 
 @mixin nightColoredInputStyles($color) {

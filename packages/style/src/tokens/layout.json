@@ -6,6 +6,16 @@
 			"sm": {"$value": "{scale.base.01}"},
 			"md": {"$value": "{scale.base.00}"},
 			"lg": {"$value": "{scale.base.10}"}
+		},
+		"sidebar": {
+			"base": {"$value": "22.75em"},
+			"2xs": {"$value": "calc(var(--layout-sidebar-xs) * var(--scale-major-third-03))"},
+			"xs": {"$value": "calc(var(--layout-sidebar-sm) * var(--scale-major-third-02))"},
+			"sm": {"$value": "calc(var(--layout-sidebar-md) * var(--scale-major-third-01))"},
+			"md": {"$value": "{layout.sidebar.base}"},
+			"lg": {"$value": "calc(var(--layout-sidebar-md) * var(--scale-major-third-10))"},
+			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--scale-major-third-20))"},
+			"2xl": {"$value": "calc(var(--layout-sidebar-xl) * var(--scale-major-third-30))"}
 		}
 	}
 }

@@ -8,7 +8,9 @@ body {
 	--ui-size: var(--scale-base-00);
 	--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
 	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
-	--current-size-side: var(--sidebar-width-sm);
+	/* TODO: scale font */
+	--font-size: var(--font-size-md);
+	--sidebar-width: var(--layout-sidebar-md);
 	--current-shadow: var(--shadow);
 	color: var(--current-color);
 	background: var(--current-bg-color);
@@ -29,7 +31,7 @@ a {
 }
 
 a[class^='font:'] {
-	color: var(--current-font-size);
+	color: var(--font-size);
 }
 
 a:hover {

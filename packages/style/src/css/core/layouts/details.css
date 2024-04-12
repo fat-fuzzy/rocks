@@ -27,7 +27,7 @@ details .end {
 	}
 
 	details.bp\:xxs.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
@@ -45,7 +45,7 @@ details .end {
 	}
 
 	details.bp\:xs.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
@@ -63,7 +63,7 @@ details .end {
 	}
 
 	details.bp\:sm.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
@@ -81,7 +81,7 @@ details .end {
 	}
 
 	details.bp\:md.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
@@ -99,7 +99,7 @@ details .end {
 	}
 
 	details.bp\:lg.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
@@ -117,6 +117,6 @@ details .end {
 	}
 
 	details.bp\:xl.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }

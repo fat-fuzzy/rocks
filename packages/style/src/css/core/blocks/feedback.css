@@ -1,6 +1,6 @@
 .feedback {
 	color: var(--current-color);
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 	padding: var(--ui-size-lg);
 	border: var(--border-width-xl) solid var(--current-border-color);
 	background-color: var(--current-bg-color);
@@ -12,7 +12,7 @@ p + .feedback {
 
 .status {
 	font-family: var(--font-family-heading);
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 	line-height: 1.35;
 }
 

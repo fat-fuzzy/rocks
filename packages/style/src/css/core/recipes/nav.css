@@ -12,7 +12,7 @@ nav ul {
 /* == Keep nav links to one line with ellipsis == */
 nav li {
 	width: 100%;
-	max-width: calc(var(--current-side-size) - var(--outline-offset));
+	max-width: calc(var(--sidebar-width) - var(--outline-offset));
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -46,7 +46,7 @@ nav a:focus {
 
 /* == RevealNav (tree-like navigation menus) == */
 ul.depth-1 {
-	padding-inline-start: var(--current-size-plus);
+	padding-inline-start: var(---ui-size-lg);
 }
 
 ul.depth-2 {

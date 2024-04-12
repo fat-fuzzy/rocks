@@ -1,48 +1,60 @@
-[class*='size:'] {
+[class*='size:'],
+[class*='card:'] {
 	--ratio: var(--size-ratio-md);
 	/* Default range */
 	--ui-size-sm: calc(var(--ui-size) / var(--ratio));
 	--ui-size-lg: calc(var(--ui-size) * var(--ratio));
+	/* TODO: scale font */
+	--font-size: var(--font-size-md);
 }
 /* Minor range */
-[class*='size:'].scale\:minor {
+[class*='size:'].scale\:minor,
+[class*='card:'].scale\:minor {
 	--ratio: var(--size-ratio-sm);
 }
 /* Major range */
-[class*='size:'].scale\:major {
+[class*='size:'].scale\:major,
+[class*='card:'].scale\:major {
 	--ratio: var(--size-ratio-lg);
 }
-.size\:2xs {
+.size\:2xs,
+.card\:2xs {
 	/* Base size */
 	--ui-size: var(--scale-base-03);
 	--font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 }
-.size\:xs {
+.size\:xs,
+.card\:xs {
 	/* Base size */
 	--ui-size: var(--scale-base-02);
 	--font-size: var(--font-size-xs);
 }
-.size\:sm {
+.size\:sm,
+.card\:sm {
 	/* Base size */
 	--ui-size: var(--scale-base-01);
 	--font-size: var(--font-size-sm);
 }
-.size\:md {
+.size\:md,
+.card\:md {
 	/* Base size */
 	--ui-size: var(--scale-base-00);
 	--font-size: var(--font-size-md);
 }
-.size\:lg {
+.size\:lg,
+.card\:lg {
 	/* Base size */
 	--ui-size: var(--scale-base-10);
 	--font-size: var(--font-size-lg);
 }
-.size\:xl {
+.size\:xl,
+.card\:xl {
 	/* Base size */
 	--ui-size: var(--scale-base-20);
 	--font-size: var(--font-size-xl);
 }
-.size\:2xl {
+.size\:2xl,
+.card\:2xl {
 	/* Base size */
 	--ui-size: var(--scale-base-30);
 	--font-size: var(--font-size-2xl);

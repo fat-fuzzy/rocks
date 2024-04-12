@@ -49,13 +49,13 @@
 
 @media screen and (min-width: 320px) {
 	.l\:reveal.bp\:xxs.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
 @media screen and (min-width: 620px) {
 	.l\:reveal.bp\:xs.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
@@ -96,24 +96,24 @@
 
 @media screen and (min-width: 935px) {
 	.l\:reveal.bp\:sm.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
 @media screen and (min-width: 1360px) {
 	.l\:reveal.bp\:md.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
 @media screen and (min-width: 1620px) {
 	.l\:reveal.bp\:lg.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }
 
 @media screen and (min-width: 2048px) {
 	.l\:reveal.bp\:xl.l\:stack:only-child {
-		inline-size: calc(var(--current-side-size) - 2 * var(--gap));
+		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 	}
 }

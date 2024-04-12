@@ -7,9 +7,9 @@
 }
 
 [class*='l:burrito:'] {
-	max-inline-size: var(--current-side-size); /* TODO : generate (selector + style) by size */
+	max-inline-size: var(--sidebar-width); /* TODO : generate (selector + style) by size */
 }
 
 [class*='l:burrito:'].freeze {
-	inline-size: var(--current-side-size); /* TODO : generate (selector + style) by size */
+	inline-size: var(--sidebar-width); /* TODO : generate (selector + style) by size */
 }

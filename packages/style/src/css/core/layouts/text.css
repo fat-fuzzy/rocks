@@ -5,7 +5,7 @@
 
 [class^='l:text'] {
 	max-width: 80ch;
-	padding-block-end: var(--current-size-plus);
+	padding-block-end: var(--ui-size-lg);
 }
 
 [class^='l:text'] > * + h1,

@@ -1,6 +1,6 @@
 [class*='emoji:']::before {
 	display: inline;
-	font-size: var(--current-font-size);
+	font-size: var(--font-size);
 }
 
 a[class*='emoji:']::before {
