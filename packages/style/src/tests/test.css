@@ -62,7 +62,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 
 		display: grid;
 		place-content: center;
-		gap: 2vmin;
+		gap: var(--gap);
 		grid-auto-flow: column;
 	}
 

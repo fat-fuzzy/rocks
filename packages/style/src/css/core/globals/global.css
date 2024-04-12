@@ -2,9 +2,6 @@
 
 :root {
 	font-family: var(--font-family-body);
-}
-
-body {
 	--ui-size: var(--scale-base-00);
 	--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
 	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
@@ -12,6 +9,10 @@ body {
 	--font-size: var(--font-size-md);
 	--sidebar-width: var(--layout-sidebar-md);
 	--current-shadow: var(--shadow);
+	--gap: var(--layout-gap-md);
+}
+
+body {
 	color: var(--current-color);
 	background: var(--current-bg-color);
 	font-size: var(--font-size-body);
@@ -20,7 +21,8 @@ body {
 }
 
 main {
-	min-height: calc(100vh - var(--header-height));
+	padding: var(--gap);
+	/* min-height: calc(100vh - var(--header-height)); */
 }
 
 a {

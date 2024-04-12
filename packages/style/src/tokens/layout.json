@@ -3,9 +3,11 @@
 		"$type": "dimension",
 		"base": {"$value": "1rem"},
 		"gap": {
+			"xs": {"$value": "{scale.base.02}"},
 			"sm": {"$value": "{scale.base.01}"},
 			"md": {"$value": "{scale.base.00}"},
-			"lg": {"$value": "{scale.base.10}"}
+			"lg": {"$value": "{scale.base.10}"},
+			"xl": {"$value": "{scale.base.20}"}
 		},
 		"sidebar": {
 			"base": {"$value": "22.75em"},

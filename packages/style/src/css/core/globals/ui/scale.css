@@ -20,42 +20,78 @@
 .size\:2xs,
 .card\:2xs {
 	/* Base size */
-	--ui-size: var(--scale-base-03);
+	--ui-size: var(--size-base-2xs);
 	--font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 }
 .size\:xs,
 .card\:xs {
 	/* Base size */
-	--ui-size: var(--scale-base-02);
+	--ui-size: var(--size-base-xs);
 	--font-size: var(--font-size-xs);
 }
 .size\:sm,
 .card\:sm {
 	/* Base size */
-	--ui-size: var(--scale-base-01);
+	--ui-size: var(--size-base-sm);
 	--font-size: var(--font-size-sm);
 }
 .size\:md,
 .card\:md {
 	/* Base size */
-	--ui-size: var(--scale-base-00);
+	--ui-size: var(--size-base-md);
 	--font-size: var(--font-size-md);
 }
 .size\:lg,
 .card\:lg {
 	/* Base size */
-	--ui-size: var(--scale-base-10);
+	--ui-size: var(--size-base-lg);
 	--font-size: var(--font-size-lg);
 }
 .size\:xl,
 .card\:xl {
 	/* Base size */
-	--ui-size: var(--scale-base-20);
+	--ui-size: var(--size-base-xl);
 	--font-size: var(--font-size-xl);
 }
 .size\:2xl,
 .card\:2xl {
 	/* Base size */
-	--ui-size: var(--scale-base-30);
+	--ui-size: var(--size-base-2xl);
 	--font-size: var(--font-size-2xl);
+}
+
+/* Scale */
+.l\:switcher\:2xs,
+.l\:stack\:2xs {
+	--gap: var(--size-base-2xs);
+}
+
+.l\:switcher\:xs,
+.l\:stack\:xs {
+	--gap: var(--size-base-xs);
+}
+
+.l\:switcher\:sm,
+.l\:stack\:sm {
+	--gap: var(--size-base-sm);
+}
+
+.l\:switcher\:md,
+.l\:stack\:md {
+	--gap: var(--size-base-md);
+}
+
+.l\:switcher\:lg,
+.l\:stack\:lg {
+	--gap: var(--size-base-lg);
+}
+
+.l\:switcher\:xl,
+.l\:stack\:xl {
+	--gap: var(--size-base-xl);
+}
+
+.l\:switcher\:2xl,
+.l\:stack\:2xl {
+	--gap: var(--size-base-2xl);
 }
