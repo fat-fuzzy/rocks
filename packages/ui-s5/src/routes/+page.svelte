@@ -156,21 +156,19 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 		.hue {
 			display: grid;
 			grid-auto-rows: 8vh;
-			grid-template-columns: 8vw;
+			grid-template-columns: 1fr;
 		}
 		figure {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			padding-inline: var(--ui-size-lg);
 		}
 	}
 
 	@layer demo.card {
 		.card {
 			display: grid;
-			/* gap: 1ch;
-		border-radius: 10px;
-		padding: 1rem; */
 		}
 	}
 
