@@ -146,3 +146,7 @@ iam-policy-default.json
 .RData
 .Rhistory
 packages/lib/src/data
+
+### Styles ###
+packages/style/src/css/tokens/*
+packages/style/src/tests/tmp/*

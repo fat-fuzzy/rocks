@@ -1,0 +1,67 @@
+[class*='bg:'] {
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--bg-color: var(--shade);
+	color: var(--ink);
+	background-color: var(--bg-color);
+}
+
+/* Set current color LIGHTNESS and CHROMA according to a 7 point scale */
+[class*='bg:'][class*=':light'],
+[class*='bg:'][class*=':dark'] [class*='bg:'][class*=':light'] {
+	--lightness: var(--color-lightness-light);
+	--lightness-contrast: var(--color-lightness-dark);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-contrast: var(--color-chroma-neutral);
+}
+
+[class*='bg:'][class*=':dark'],
+[class*='bg:'][class*=':light'] [class*='bg:'][class*=':dark'] {
+	--lightness: var(--color-lightness-dark);
+	--lightness-contrast: var(--color-lightness-light);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-contrast: var(--color-chroma-neutral);
+}
+
+[class*='bg:'][class*=':000'] {
+	--chroma: var(--color-chroma-000);
+	--lightness: var(--color-lightness-000);
+	--chroma-contrast: var(--color-chroma-400);
+	--lightness-contrast: var(--color-lightness-400);
+}
+[class*='bg:'][class*=':100'] {
+	--chroma: var(--color-chroma-100);
+	--lightness: var(--color-lightness-100);
+	--chroma-contrast: var(--color-chroma-500);
+	--lightness-contrast: var(--color-lightness-500);
+}
+[class*='bg:'][class*=':200'] {
+	--chroma: var(--color-chroma-200);
+	--lightness: var(--color-lightness-200);
+	--chroma-contrast: var(--color-chroma-600);
+	--lightness-contrast: var(--color-lightness-600);
+}
+[class*='bg:'][class*=':300'] {
+	--chroma: var(--color-chroma-300);
+	--lightness: var(--color-lightness-300);
+	--chroma-contrast: var(--color-chroma-000);
+	--lightness-contrast: var(--color-lightness-000);
+}
+[class*='bg:'][class*=':400'] {
+	--chroma: var(--color-chroma-400);
+	--lightness: var(--color-lightness-400);
+	--chroma-contrast: var(--color-chroma-000);
+	--lightness-contrast: var(--color-lightness-000);
+}
+[class*='bg:'][class*=':500'] {
+	--chroma: var(--color-chroma-500);
+	--lightness: var(--color-lightness-500);
+	--chroma-contrast: var(--color-chroma-100);
+	--lightness-contrast: var(--color-lightness-100);
+}
+[class*='bg:'][class*=':600'] {
+	--chroma: var(--color-chroma-600);
+	--lightness: var(--color-lightness-600);
+	--chroma-contrast: var(--color-chroma-200);
+	--lightness-contrast: var(--color-lightness-200);
+}

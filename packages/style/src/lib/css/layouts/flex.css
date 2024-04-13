@@ -1,0 +1,31 @@
+[class*='l:flex'] {
+	--gap: var(--ui-size);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: var(--gap);
+}
+
+.l\:flex.reverse {
+	flex-direction: row-reverse;
+}
+
+.l\:flex.nowrap {
+	flex-wrap: nowrap;
+}
+
+.l\:flex.grow > * {
+	flex-grow: 1;
+}
+
+.grow\:0 {
+	flex-grow: 0;
+}
+
+.grow\:1 {
+	flex-grow: 1;
+}
+
+.wrap\:reverse {
+	flex-wrap: wrap-reverse;
+}

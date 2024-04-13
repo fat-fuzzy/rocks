@@ -1,0 +1,314 @@
+.l\:switcher\:2xs,
+.l\:stack\:2xs {
+	--gap: var(--size-base-2xs);
+}
+
+.l\:switcher\:xs,
+.l\:stack\:xs {
+	--gap: var(--size-base-xs);
+}
+
+.l\:switcher\:sm,
+.l\:stack\:sm {
+	--gap: var(--size-base-sm);
+}
+
+.l\:switcher\:md,
+.l\:stack\:md {
+	--gap: var(--size-base-md);
+}
+
+.l\:switcher\:lg,
+.l\:stack\:lg {
+	--gap: var(--size-base-lg);
+}
+
+.l\:switcher\:xl,
+.l\:stack\:xl {
+	--gap: var(--size-base-xl);
+}
+
+.l\:switcher\:2xl,
+.l\:stack\:2xl {
+	--gap: var(--size-base-2xl);
+}
+
+.l\:grid\:2xs {
+	--current-item-size: var(--layout-sidebar-2xs);
+	--gap: var(--size-base-2xs);
+}
+
+.l\:grid\:xs {
+	--current-item-size: var(--layout-sidebar-xs);
+	--gap: var(--size-base-xs);
+}
+
+.l\:grid\:sm {
+	--current-item-size: var(--layout-sidebar-sm);
+	--gap: var(--size-base-sm);
+}
+
+.l\:grid\:md {
+	--current-item-size: var(--layout-sidebar-md);
+	--gap: var(--size-base-md);
+}
+
+.l\:grid\:lg {
+	--current-item-size: var(--layout-sidebar-lg);
+	--gap: var(--size-base-lg);
+}
+
+.l\:grid\:xl {
+	--current-item-size: var(--layout-sidebar-xl);
+	--gap: var(--size-base-xl);
+}
+
+.l\:grid\:2xl {
+	--current-item-size: var(--layout-sidebar-2xl);
+	--gap: var(--size-base-2xl);
+}
+
+.l\:burrito\:2xs {
+	--sidebar-width: var(--layout-sidebar-2xs);
+}
+
+.l\:burrito\:xs {
+	--sidebar-width: var(--layout-sidebar-xs);
+}
+
+.l\:burrito\:sm {
+	--sidebar-width: var(--layout-sidebar-sm);
+}
+
+.l\:burrito\:md {
+	--sidebar-width: var(--layout-sidebar-md);
+}
+
+.l\:burrito\:lg {
+	--sidebar-width: var(--layout-sidebar-lg);
+}
+
+.l\:burrito\:xl {
+	--sidebar-width: var(--layout-sidebar-xl);
+}
+
+.l\:burrito\:2xl {
+	--sidebar-width: var(--layout-sidebar-2xl);
+}
+
+.l\:center\:2xs {
+	--size-base-inverse: var(--size-base-inverse-2xs);
+}
+
+.l\:center\:xs {
+	--size-base-inverse: var(--size-base-inverse-xs);
+}
+
+.l\:center\:sm {
+	--size-base-inverse: var(--size-base-inverse-sm);
+}
+
+.l\:center\:md {
+	--size-base-inverse: var(--size-base-inverse-md);
+}
+
+.l\:center\:lg {
+	--size-base-inverse: var(--size-base-inverse-lg);
+}
+
+.l\:center\:xl {
+	--size-base-inverse: var(--size-base-inverse-xl);
+}
+
+.l\:center\:2xl {
+	--size-base-inverse: var(--size-base-inverse-2xl);
+}
+
+.l\:sidebar\:2xs {
+	--sidebar-width: var(--layout-sidebar-2xs);
+}
+
+.l\:sidebar\:xs {
+	--sidebar-width: var(--layout-sidebar-xs);
+}
+
+.l\:sidebar\:sm {
+	--sidebar-width: var(--layout-sidebar-sm);
+}
+
+.l\:sidebar\:md {
+	--sidebar-width: var(--layout-sidebar-md);
+}
+
+.l\:sidebar\:lg {
+	--sidebar-width: var(--layout-sidebar-lg);
+}
+
+.l\:sidebar\:xl {
+	--sidebar-width: var(--layout-sidebar-xl);
+}
+
+.l\:sidebar\:2xl {
+	--sidebar-width: var(--layout-sidebar-2xl);
+}
+
+.bp\:2xs {
+	--bp-size: var(--bp-2xs);
+}
+
+.bp\:xs {
+	--bp-size: var(--bp-xs);
+}
+
+.bp\:sm {
+	--bp-size: var(--bp-sm);
+}
+
+.bp\:md {
+	--bp-size: var(--bp-md);
+}
+
+.bp\:lg {
+	--bp-size: var(--bp-lg);
+}
+
+.bp\:xl {
+	--bp-size: var(--bp-xl);
+}
+
+.bp\:2xl {
+	--bp-size: var(--bp-2xl);
+}
+
+.th\:2xs {
+	--threshold: var(--bp-2xs);
+}
+
+.th\:xs {
+	--threshold: var(--bp-xs);
+}
+
+.th\:sm {
+	--threshold: var(--bp-sm);
+}
+
+.th\:md {
+	--threshold: var(--bp-md);
+}
+
+.th\:lg {
+	--threshold: var(--bp-lg);
+}
+
+.th\:xl {
+	--threshold: var(--bp-xl);
+}
+
+.th\:2xl {
+	--threshold: var(--bp-2xl);
+}
+/* 
+.size\:2xs,
+.card\:2xs {
+	--current-size-minus: var(--size-base-2xs);
+	--current-size: var(--size-base-2xs);
+	--current-size-plus: var(--size-base-sm);
+	--font-size: var(--font-size-xs) / var(--fluid-min-ratio);
+}
+
+.size\:xs,
+.card\:xs {
+	--current-size-minus: var(--size-base-2xs);
+	--current-size: var(--size-base-xs);
+	--current-size-plus: var(--size-base-md);
+	--font-size: var(--font-size-xs);
+}
+
+.size\:sm,
+.card\:sm {
+	--current-size-minus: var(--size-base-xs);
+	--current-size: var(--size-base-sm);
+	--current-size-plus: var(--size-base-lg);
+	--font-size: var(--font-size-sm);
+}
+
+.size\:md,
+.card\:md {
+	--current-size-minus: var(--size-base-sm);
+	--current-size: var(--size-base-md);
+	--current-size-plus: var(--size-base-xl);
+	--font-size: var(--font-size-md);
+}
+
+.size\:lg,
+.card\:lg {
+	--current-size-minus: var(--size-base-md);
+	--current-size: var(--size-base-lg);
+	--current-size-plus: var(--size-base-2xl);
+	--font-size: var(--font-size-lg);
+}
+
+.size\:xl,
+.card\:xl {
+	--current-size-minus: var(--size-base-lg);
+	--current-size: var(--size-base-xl);
+	--current-size-plus: var(--size-base-2xl);
+	--font-size: var(--font-size-xl);
+}
+
+.size\:2xl,
+.card\:2xl {
+	--current-size-minus: var(--size-base-xl);
+	--current-size: var(--size-base-2xl);
+	--current-size-plus: var(--size-base-2xl);
+	--font-size: var(--font-size-2xl);
+} */
+
+.font\:2xs {
+	--font-size: var(--font-size-xs) / var(--fluid-min-ratio);
+	--font-size-minus: calc(var(--font-size-2xs) / var(--fluid-min-ratio));
+	--font-size-plus: var(--font-size-sm);
+	--current-asset-height: var(--asset-height-2xs);
+}
+
+.font\:xs {
+	--font-size: var(--font-size-xs);
+	--font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
+	--font-size-plus: var(--font-size-md);
+	--current-asset-height: var(--asset-height-xs);
+}
+
+.font\:sm {
+	--font-size: var(--font-size-sm);
+	--font-size-minus: var(--font-size-xs);
+	--font-size-plus: var(--font-size-lg);
+	--current-asset-height: var(--asset-height-sm);
+}
+
+.font\:md {
+	--font-size: var(--font-size-md);
+	--font-size-minus: var(--font-size-xs);
+	--font-size-plus: var(--font-size-xl);
+	--current-asset-height: var(--asset-height-md);
+}
+
+.font\:lg {
+	--font-size: var(--font-size-lg);
+	--font-size-minus: var(--font-size-sm);
+	--font-size-plus: var(--font-size-2xl);
+	--current-asset-height: var(--asset-height-lg);
+}
+
+.font\:xl {
+	--font-size: var(--font-size-xl);
+	--font-size-minus: var(--font-size-md);
+	--font-size-plus: calc(var(--font-size-2xl) * var(--fluid-min-ratio));
+	--current-asset-height: var(--asset-height-xl);
+}
+
+.font\:2xl {
+	--font-size: var(--font-size-2xl);
+	--font-size-minus: var(--font-size-xl);
+	--font-size-plus: calc(var(--font-size-2xl) * var(--fluid-min-ratio));
+	--current-asset-height: var(--asset-height-2xl);
+}

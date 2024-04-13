@@ -1,0 +1,22 @@
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-family: var(--font-family-ui);
+	line-height: var(--line-height-ui);
+}
+
+th {
+	padding: var(--ui-size) var(--ui-size-lg);
+	background-color: var(--current-bg-contrast);
+	text-align: center;
+}
+
+td {
+	padding: calc(var(--ui-size) / var(--ratio)) calc(var(--ui-size-lg) / var(--ratio));
+	border: 1px solid var(--current-bg-contrast);
+}
+
+tr:hover td {
+	color: var(--color-dark);
+	background-color: var(--current-primary-lightest);
+}

@@ -1,0 +1,6 @@
+.surface\:color {
+	--surface-bg: var(--shade);
+	--surface-ink: var(--ink);
+	color: var(--surface-bg);
+	background-color: var(--surface-ink);
+}

@@ -1,0 +1,44 @@
+[class*='emoji:']::before {
+	display: inline;
+	font-size: var(--font-size);
+}
+
+a[class*='emoji:']::before {
+	margin-inline: var(--ui-size);
+}
+
+.feedback[class*='emoji'] {
+	display: flex;
+}
+
+[class*='shape:'][class*='emoji'] {
+	padding: var(--asset-padding);
+}
+
+:not([class*='shape:'])[class*='emoji']::before {
+	margin-inline: 0 var(--ui-size);
+}
+
+[class*='emoji'].align\:end {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+[class*='card:'][class*='emoji:'][class*=':sm']:not(.feedback)::before,
+[class*='card:'][class*='emoji:'][class*=':md']:not(.feedback)::before,
+[class*='card:'][class*='emoji:'][class*=':lg']:not(.feedback)::before,
+[class*='card:'][class*='emoji:'][class*=':xl']:not(.feedback)::before,
+[class*='card:'][class*='emoji:'][class*=':xxl']:not(.feedback)::before {
+	margin-inline: 0;
+}
+
+button[class*='emoji'].align\:end,
+summary[class*='emoji'].align\:end {
+	text-align: start;
+}
+
+button[class*='emoji'].align\:start,
+summary[class*='emoji'].align\:start {
+	text-align: end;
+}

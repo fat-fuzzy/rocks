@@ -1,0 +1,39 @@
+.shape\:round,
+.shape\:square {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1/1;
+}
+
+.shape\:round,
+.shape\:round > * {
+	line-height: 1;
+	border-radius: 100vmax;
+}
+
+.shape\:round > *,
+.shape\:square > * {
+	border-radius: var(--radius-base);
+}
+
+.shape\:round,
+.shape\:square {
+	width: auto;
+	object-fit: contain;
+}
+
+button.shape\:round {
+	padding: calc(var(--gap) / var(--ratio-lg));
+}
+
+.shape\:round[class*='l:stack']:only-child,
+.shape\:square[class*='l:stack']:only-child {
+	height: fit-content;
+	width: fit-content;
+}
+
+.shape\:round[class*='l:stack']:only-child::before,
+.shape\:square[class*='l:stack']:only-child::before {
+	margin-inline: 0;
+}

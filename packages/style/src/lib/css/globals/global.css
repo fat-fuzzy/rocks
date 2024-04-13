@@ -1,0 +1,47 @@
+/* == Global CSS starts == */
+
+:root {
+	font-family: var(--font-family-body);
+	--ui-size: var(--scale-base-00);
+	--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
+	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
+	/* TODO: scale font */
+	--font-size: var(--font-size-md);
+	--sidebar-width: var(--layout-sidebar-md);
+	--current-shadow: var(--shadow);
+	--gap: var(--layout-gap-md);
+}
+
+body {
+	color: var(--current-color);
+	background: var(--current-bg-color);
+	font-size: var(--font-size-body);
+	font-weight: var(--font-weight-body);
+	line-height: var(--line-height-body);
+}
+
+main {
+	padding: var(--gap);
+	/* min-height: calc(100vh - var(--header-height)); */
+}
+
+a {
+	color: var(--current-primary);
+	font-size: var(--font-size-ui);
+	font-family: var(--font-family-ui);
+	font-weight: var(--font-weight-ui);
+}
+
+a[class^='font:'] {
+	color: var(--font-size);
+}
+
+a:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+:focus {
+	outline: var(--outline-width) dotted var(--current-color);
+	outline-offset: var(--outline-offset);
+}

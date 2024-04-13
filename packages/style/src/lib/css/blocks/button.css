@@ -1,0 +1,23 @@
+button {
+	display: flex;
+	justify-content: center;
+	flex-wrap: nowrap;
+	min-width: max-content;
+	font-size: var(--font-size);
+	font-family: var(--current-font-family);
+	font-weight: var(--font-weight-ui);
+	line-height: var(--line-height-ui);
+	padding: var(--ui-size) var(--ui-size-lg); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
+	border-radius: var(--radius-base);
+	border: var(--border-width-md) solid var(--border-color, var(--shade));
+	color: var(--ink);
+	background-color: var(--shade);
+}
+
+button:not([disabled]):hover {
+	box-shadow: var(--shadow);
+}
+
+button + button {
+	margin-block-start: calc(2 * var(--outline-offset-base));
+}
