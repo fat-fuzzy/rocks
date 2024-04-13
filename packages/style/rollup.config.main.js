@@ -18,7 +18,7 @@ export default {
 			fileName: 'main.css',
 			sass: sass,
 			watch: 'src/lib',
-		}), // will output compiled styles to "dist/index.css",
+		}), // will output compiled styles to "dist/main.css",
 		postcss({
 			extract: true,
 			plugins: [

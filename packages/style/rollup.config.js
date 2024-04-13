@@ -31,8 +31,7 @@ export default {
 					fs.mkdirSync(path.dirname(outputPath), {recursive: true})
 					fs.writeFileSync(outputPath, content)
 				})
-			},
-			// ...
+			}, // will output compiled styles to "src/lib/**/*.css" as separate files including the folder structure
 		}),
 		postcss({
 			extract: true,

@@ -15,6 +15,6 @@ export default {
 			processor: () => postcss([autoprefixer()]),
 			// processor: () => postcss([autoprefixer({overrideBrowserslist: 'Edge 18'})]),
 			watch: 'src/lib/scss',
-		}), // will output compiled styles to "assets/output-123hash.css"
+		}), // will output compiled styles to "src/lib/css/mixins/main.css",
 	],
 }
