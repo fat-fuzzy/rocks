@@ -1,4 +1,3 @@
-import {nodeResolve} from '@rollup/plugin-node-resolve'
 import scss from 'rollup-plugin-scss'
 import * as sass from 'sass'
 import postcss from 'postcss'
@@ -15,7 +14,6 @@ export default {
 	input: 'src/lib/index.js',
 	output: {dir: 'dist/', format: 'esm'},
 	plugins: [
-		nodeResolve(),
 		scss({
 			fileName: 'main.css',
 			sass: sass,

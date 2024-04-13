@@ -40,10 +40,6 @@
 		"@csstools/postcss-global-data": "^2.1.0",
 		"@csstools/postcss-minify": "^1.0.2",
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/lib": "workspace:*",
-		"@fat-fuzzy/markdown": "workspace:^",
-		"@rollup/plugin-node-resolve": "^15.2.3",
-		"@rollup/plugin-terser": "^0.4.4",
 		"@types/node": "^20.11.19",
 		"autoprefixer": "^10.4.17",
 		"glob": "^10.3.12",
@@ -60,5 +56,6 @@
 		"stylelint-config-standard": "^36.0.0",
 		"stylelint-config-standard-scss": "^13.0.0"
 	},
+	"browserslist": "defaults",
 	"type": "module"
 }
