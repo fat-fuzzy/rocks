@@ -1,6 +1,0 @@
-[class*='svg'] {
-	--current-svg-height: var(--current-asset-height, --s2);
-	height: var(--current-svg-height);
-	padding: 0;
-	width: auto;
-}

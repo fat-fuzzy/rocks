@@ -1,6 +1,0 @@
-/* == Toggle  default == */
-
-[class^='expand'][aria-expanded='true'] {
-	color: var(--current-toggle-color);
-	background-color: inherit;
-}
