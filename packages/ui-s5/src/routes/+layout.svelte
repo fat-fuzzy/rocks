@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '@fat-fuzzy/style/css';
+	import '@fat-fuzzy/style';
 	let layout = 'l:stack';
 	let brightness = 'day';
 	let contrast = 'contrast';
