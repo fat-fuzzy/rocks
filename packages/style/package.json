@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "pnpm build:tokens && pnpm dev:scss",
-		"build": "pnpm build:tokens && pnpm build:scss && pnpm build:css:dev && pnpm build:css:main",
+		"build": "pnpm build:scss && pnpm build:css:dev && pnpm build:css:main",
 		"dev:scss": "rollup --config rollup.config.scss.js -w",
 		"build:dev": "pnpm build:tokens && pnpm build:scss && pnpm build:css:dev",
 		"build:main": "pnpm build:tokens && pnpm build:scss && pnpm build:css:main",
