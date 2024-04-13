@@ -1,21 +1,15 @@
 import {nodeResolve} from '@rollup/plugin-node-resolve'
 import scss from 'rollup-plugin-scss'
-import sass from 'sass';
+import * as sass from 'sass'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-import fs from 'fs'
 import postcssBundler from '@csstools/postcss-bundler'
 import postcssGlobalData from '@csstools/postcss-global-data'
 import postcssJitProps from 'postcss-jit-props'
 import postcssMinify from '@csstools/postcss-minify'
 import postcssPresetEnv from 'postcss-preset-env'
 
-
-const production = process.env.NODE_ENV === 'production';
-
-// Always clean the dist folder before building.
-fs.rmSync('dist/', {recursive: true, force: true})
-fs.mkdirSync('dist/')
+const production = process.env.NODE_ENV === 'production'
 
 export default {
 	input: 'src/lib/index.js',
@@ -23,15 +17,12 @@ export default {
 	plugins: [
 		nodeResolve(),
 		scss({
-			output: function(styles, styleNodes) {
-				console.log(styles);
-			},
-			fileName: 'index.css',
+			fileName: 'main.css',
 			sass: sass,
 			watch: 'src/lib',
 		}), // will output compiled styles to "dist/index.css",
 		postcss({
-			extract: 'dist/main.css',
+			extract: true,
 			plugins: [
 				postcssBundler(),
 				postcssGlobalData({
@@ -42,9 +33,10 @@ export default {
 				}),
 				postcssPresetEnv(),
 				postcssMinify(),
-				// Add more PostCSS plugins here as needed,
-				autoprefixer()],
+				autoprefixer(),
+			],
 			minimize: production,
+			sourceMap: !production,
 		}),
 	],
 }

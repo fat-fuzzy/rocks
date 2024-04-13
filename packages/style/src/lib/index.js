@@ -1,34 +1,25 @@
-// import * as sass from 'sass'
 
-// const scssFilename = './scss/theme/tokens/index.scss'
-// const result = sass.compile(scssFilename, {sourceMap: true})
-// console.log('CSS result')
-// console.log(result)
-// const compressed = sass.compile(scssFilename, {style: 'compressed'})
-// console.log('CSS compressed')
-// console.log(compressed)
-
-import './css/index.css';
+// import './css/index.css';
 /* Generated CSS variables */
 import './css/tokens/tokens.css';
 
 /* Global config */
-import './css/config/index.css';
+// import './css/config/index.css';
 
 /* Resets and global styles, set --current-* CSS var values used in layouts and blocks */
-import './css/globals/index.css';
+// import './css/globals/index.css';
 
 /* Blocks (self contained, atomic components used in Recipes) */
-import './css/blocks/index.css';
+// import './css/blocks/index.css';
 
 /* Layout (structural components used to organize content on a page or view) */
-import './css/layouts/index.css';
+// import './css/layouts/index.css';
 
 /* Motion (animations, transitions, user-initiated movement) */
-import './css/motion/index.css';
+// import './css/motion/index.css';
 
 /* Compositions (components that implement common usage patterns using blocks and layouts) */
-import './css/recipes/index.css';
+// import './css/recipes/index.css';
 
 /* Overrides */
 import './css/config/visibility.css';

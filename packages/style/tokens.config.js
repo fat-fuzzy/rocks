@@ -1,5 +1,4 @@
 import pluginCSS from '@cobalt-ui/plugin-css'
-import pluginJS from '@cobalt-ui/plugin-js'
 
 const paths = {
 	in: './src/lib/tokens/',
@@ -30,6 +29,5 @@ export default {
 				}
 			},
 		}),
-		pluginJS(/* options */),
 	],
 }

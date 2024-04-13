@@ -2,6 +2,7 @@ import scss from 'rollup-plugin-scss'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 
+const production = process.env.NODE_ENV === 'production'
 /**
  * Preprocess scss in `src/styles/` to use css directly in svelte components
  */

@@ -7,12 +7,13 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "pnpm build:tokens && pnpm dev:scss",
+		"build": "pnpm build:tokens && pnpm build:scss && pnpm build:css:dev && pnpm build:css:main",
 		"dev:scss": "rollup --config rollup.config.scss.js -w",
-		"build": "pnpm build:scss && pnpm build:css && pnpm source:css",
-		"build:dev": "NODE_ENV=development rollup --config rollup.config.js",
-		"build:prod": "NODE_ENV=production rollup --config rollup.config.js",
+		"build:dev": "pnpm build:tokens && pnpm build:scss && pnpm build:css:dev",
+		"build:main": "pnpm build:tokens && pnpm build:scss && pnpm build:css:main",
+		"build:css:dev": "NODE_ENV=development rollup --config rollup.config.js",
+		"build:css:main": "NODE_ENV=production rollup --config rollup.config.main.js",
 		"source:css": "postcss src -o dist/css/index.css",
-		"build:css": "rollup --config rollup.config.js",
 		"build:scss": "rollup --config rollup.config.scss.js",
 		"build:tokens": "./node_modules/.bin/co build",
 		"lint:css": "stylelint ./src/lib/css/**/*.css > ./logs/stylelint-css.log",
@@ -22,16 +23,15 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"main": "dist/css/index.css",
+	"main": "dist/main.css",
 	"files": [
 		"dist/css"
 	],
 	"exports": {
-		".": {
-			"css": "dist/css/core/index.js"
-		},
-		"./css": "dist/css/core/index.css",
-		"./tokens": "dist/css/tokens/tokens.css"
+		".": "./dist/main.css",
+		"./css": "./dist/main.css",
+		"./css/**/*": "./dist/lib/**/*",
+		"./tokens": "./dist/lib/tokens/tokens.css"
 	},
 	"devDependencies": {
 		"@cobalt-ui/cli": "^1.11.0",
