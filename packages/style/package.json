@@ -34,8 +34,8 @@
 		"./tokens": "./dist/lib/tokens/tokens.css"
 	},
 	"devDependencies": {
-		"@cobalt-ui/cli": "^1.11.0",
-		"@cobalt-ui/plugin-css": "^1.7.3",
+		"@cobalt-ui/cli": "1.11.0",
+		"@cobalt-ui/plugin-css": "1.7.3",
 		"@csstools/postcss-bundler": "^1.0.6",
 		"@csstools/postcss-global-data": "^2.1.0",
 		"@csstools/postcss-minify": "^1.0.2",
