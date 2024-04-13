@@ -9,18 +9,22 @@
 // console.log(compressed)
 
 export default async (app) => {
-	switch (app) {
-		case 'doc':
-			await import('./styles/doc')
-			break
-		case 'play':
-			await import('./styles/play')
-			break
-		case 'tokens':
-			await import('./styles/tokens')
-			break
-		case 'ui':
-			await import('./styles/ui')
-			break
+	try {
+		switch (app) {
+			case 'doc':
+				await import('./styles/doc')
+				break
+			case 'play':
+				await import('./styles/play')
+				break
+			case 'tokens':
+				await import('./styles/tokens')
+				break
+			case 'ui':
+				await import('./styles/ui')
+				break
+		}
+	} catch (error) {
+		console.error(error)
 	}
 }
