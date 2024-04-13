@@ -9,13 +9,13 @@ button {
 	line-height: var(--line-height-ui);
 	padding: var(--ui-size) var(--ui-size-lg); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
 	border-radius: var(--radius-base);
+	border: var(--border-width-md) solid var(--border-color, var(--shade));
 	color: var(--ink);
 	background-color: var(--shade);
-	border: var(--border-width) solid var(--ink);
 }
 
 button:not([disabled]):hover {
-	box-shadow: var(--current-shadow);
+	box-shadow: var(--shadow);
 }
 
 button + button {

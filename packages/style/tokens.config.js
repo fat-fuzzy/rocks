@@ -2,8 +2,8 @@ import pluginCSS from '@cobalt-ui/plugin-css'
 import pluginJS from '@cobalt-ui/plugin-js'
 
 const paths = {
-	in: './src/tokens/',
-	out: './src/css/tokens/',
+	in: './src/lib/tokens/',
+	out: './src/lib/css/tokens/',
 }
 const files = [
 	'border.json',

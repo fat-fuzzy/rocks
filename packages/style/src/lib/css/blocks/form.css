@@ -365,29 +365,6 @@ label.check[class*='emoji'] span {
 	font-size: var(--font-size);
 }
 
-@mixin nightColoredInputStyles($color) {
-	label.#{$color} > [type='file'] {
-		color: var(--color-black);
-	}
-
-	label.outline.#{$color} > input,
-	label.outline.#{$color} > [type='file'] {
-		color: var(--current-#{$color}-light);
-	}
-
-	label.bare.#{$color} > input,
-	label.bare.#{$color} > [type='file'] {
-		color: var(--current-#{$color}-lighter);
-	}
-
-	.outline.#{$color}:hover > input,
-	.outline.#{$color}:hover > [type='file'],
-	.bare.#{$color}:hover > input,
-	.bare.#{$color}:hover > [type='file'] {
-		color: var(--color-black);
-	}
-}
-
 .night {
 	label:hover > input,
 	label:hover > [type='file'] {
@@ -408,10 +385,6 @@ label.check[class*='emoji'] span {
 	label.bare > [type='file'] {
 		color: var(--color-white);
 	}
-
-	@include nightColoredInputStyles('primary');
-	@include nightColoredInputStyles('accent');
-	@include nightColoredInputStyles('highlight');
 }
 
 label:hover > input,

@@ -1,0 +1,25 @@
+{
+	"border": {
+		"$type": "dimension",
+		"radius": {
+			"nul": {"$value": "0"},
+			"base": {"$value": "0.16rem"},
+			"lg": {"$value": " 0.34rem"},
+			"xl": {"$value": "0.66rem"}
+		},
+		"width": {
+			"md": {"$value": "1px"},
+			"lg": {"$value": "2px"},
+			"xl": {"$value": "4px"}
+		}
+	},
+	"outline": {
+		"$type": "dimension",
+		"offset": {
+			"base": {"$value": "0.25rem"},
+			"nav": {"$value": "0.15rem"},
+			"settings": {"$value": "2px"}
+		},
+		"width": {"$value": "2px"}
+	}
+}
