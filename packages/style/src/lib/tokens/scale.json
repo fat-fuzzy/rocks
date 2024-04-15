@@ -25,6 +25,26 @@
 			"sm": {"$value": "1.15"},
 			"md": {"$value": "1.5"},
 			"lg": {"$value": "2.75"}
+		},
+		"icon": {
+			"emoji": {
+				"2xs": {"$value": "{scale.base.03}"},
+				"xs": {"$value": "{scale.base.02}"},
+				"sm": {"$value": "{scale.base.01}"},
+				"md": {"$value": "{scale.base.00}"},
+				"lg": {"$value": "{scale.base.10}"},
+				"xl": {"$value": "{scale.base.20}"},
+				"2xl": {"$value": "{scale.base.30}"}
+			},
+			"svg": {
+				"2xs": {"$value": "{scale.base.03}"},
+				"xs": {"$value": "{scale.base.02}"},
+				"sm": {"$value": "{scale.base.01}"},
+				"md": {"$value": "{scale.base.00}"},
+				"lg": {"$value": "{scale.base.10}"},
+				"xl": {"$value": "{scale.base.20}"},
+				"2xl": {"$value": "{scale.base.30}"}
+			}
 		}
 	},
 	"scale": {

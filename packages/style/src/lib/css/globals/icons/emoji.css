@@ -1,0 +1,31 @@
+[class*='emoji:']::before {
+	font-size: var(--icon-size);
+}
+
+[class*='emoji:2xs']::before {
+	--icon-size: var(--size-icon-emoji-2xs);
+}
+
+[class*='emoji:xs']::before {
+	--icon-size: var(--size-icon-emoji-xs);
+}
+
+[class*='emoji:sm']::before {
+	--icon-size: var(--size-icon-emoji-sm);
+}
+
+[class*='emoji:md']::before {
+	--icon-size: var(--size-icon-emoji-md);
+}
+
+[class*='emoji:lg']::before {
+	--icon-size: var(--size-icon-emoji-lg);
+}
+
+[class*='emoji:xl']::before {
+	--icon-size: var(--size-icon-emoji-xl);
+}
+
+[class*='emoji:2xl']::before {
+	--icon-size: var(--size-icon-emoji-2xl);
+}

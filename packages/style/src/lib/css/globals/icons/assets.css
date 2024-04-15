@@ -3,6 +3,6 @@
 .icon\:svg\:egg::before {
 	content: '';
 	background-image: url('/icons/egg.svg');
-	width: 1em;
-	height: 1em;
+	background-position: center;
+	background-repeat: no-repeat;
 }

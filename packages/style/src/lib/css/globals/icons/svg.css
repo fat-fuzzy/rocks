@@ -1,7 +1,34 @@
 [class*='svg']::before {
-	--svg-height: var(--icon-size, --s2);
 	content: '';
 	padding: 0;
-	height: var(--svg-height);
-	width: var(--svg-height);
+	height: var(--icon-size);
+	width: var(--icon-size);
+}
+
+[class*='svg'].size\:2xs::before {
+	--icon-size: var(--size-icon-svg-2xs);
+}
+
+[class*='svg'].size\:xs::before {
+	--icon-size: var(--size-icon-svg-xs);
+}
+
+[class*='svg'].size\:sm::before {
+	--icon-size: var(--size-icon-svg-sm);
+}
+
+[class*='svg'].size\:md::before {
+	--icon-size: var(--size-icon-svg-md);
+}
+
+[class*='svg'].size\:lg::before {
+	--icon-size: var(--size-icon-svg-lg);
+}
+
+[class*='svg'].size\:xl::before {
+	--icon-size: var(--size-icon-svg-xl);
+}
+
+[class*='svg'].size\:2x2xls::before {
+	--icon-size: var(--size-icon-svg-2xl);
 }

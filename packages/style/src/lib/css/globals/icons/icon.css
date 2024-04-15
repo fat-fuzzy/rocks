@@ -1,6 +1,6 @@
 [class*='icon:']::before {
 	display: inline;
-	font-size: var(--font-size);
+	--icon-size: var(--ui-size);
 }
 
 a[class*='icon:']::before {
