@@ -4,7 +4,7 @@
 	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 </div>
 
-<div class="bg:neutral:light">
+<div class="l:center:xs">
 	<main class="l:sidebar">
 		<div class="l:main:50 l:stack:md">
 			<div class="palette">
