@@ -9,7 +9,7 @@
 </script>
 
 <header class={headerClass}>
-	<h1 class="l:flex card:lg icon:svg:egg align:start">Page Title</h1>
+	<h1 class="l:flex card:lg icon:svg:egg size:xl align:start">Page Title</h1>
 </header>
 <main class={mainClass}>
 	<slot />
