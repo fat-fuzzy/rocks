@@ -1,0 +1,44 @@
+[class*='icon:']::before {
+	display: inline;
+	font-size: var(--font-size);
+}
+
+a[class*='icon:']::before {
+	margin-inline: var(--ui-size);
+}
+
+.feedback[class*='icon'] {
+	display: flex;
+}
+
+[class*='shape:'][class*='icon'] {
+	padding: var(--asset-padding);
+}
+
+:not([class*='shape:'])[class*='icon']::before {
+	margin-inline: 0 var(--ui-size);
+}
+
+[class*='icon'].align\:end {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+[class*='card:'][class*='icon:'][class*=':sm']:not(.feedback)::before,
+[class*='card:'][class*='icon:'][class*=':md']:not(.feedback)::before,
+[class*='card:'][class*='icon:'][class*=':lg']:not(.feedback)::before,
+[class*='card:'][class*='icon:'][class*=':xl']:not(.feedback)::before,
+[class*='card:'][class*='icon:'][class*=':xxl']:not(.feedback)::before {
+	margin-inline: 0;
+}
+
+button[class*='icon'].align\:end,
+summary[class*='icon'].align\:end {
+	text-align: start;
+}
+
+button[class*='icon'].align\:start,
+summary[class*='icon'].align\:start {
+	text-align: end;
+}

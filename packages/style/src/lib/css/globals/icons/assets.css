@@ -1,0 +1,8 @@
+/* SVG Icons */
+
+.icon\:svg\:egg::before {
+	content: '';
+	background-image: url('/icons/egg.svg');
+	width: 1em;
+	height: 1em;
+}

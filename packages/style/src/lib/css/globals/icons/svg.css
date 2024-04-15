@@ -1,0 +1,7 @@
+[class*='svg']::before {
+	--svg-height: var(--icon-size, --s2);
+	content: '';
+	padding: 0;
+	height: var(--svg-height);
+	width: var(--svg-height);
+}
