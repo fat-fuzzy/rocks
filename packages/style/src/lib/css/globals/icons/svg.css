@@ -1,8 +1,20 @@
 [class*='svg']::before {
 	content: '';
+	background-image: var(--icon-url);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
 	padding: 0;
 	height: var(--icon-size);
 	width: var(--icon-size);
+}
+
+@supports (mask: var(--icon-url)) {
+	[class*='svg']::before {
+		background-image: unset;
+		background: currentColor;
+		mask: var(--icon-url) center center / 100% auto no-repeat;
+	}
 }
 
 [class*='svg'].size\:2xs::before {

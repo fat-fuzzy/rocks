@@ -1,9 +1,5 @@
 /* SVG Icons */
 
 .icon\:svg\:egg::before {
-	content: '';
-	background-image: url('/icons/egg.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+	--icon-url: url('/icons/egg.svg');
 }
