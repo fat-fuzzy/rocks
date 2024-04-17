@@ -1,30 +1,30 @@
 /*  grid-header media queries */
 
-@mixin switchToRowStyles_GridHeader($breakpoint, $bpSuffix) {
+@mixin switchToRowStyles_GridHeader($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
-		[class^='l:grid:header'].bp\:#{$bpSuffix} {
+		[class^='l:grid:header'].bp\:#{$size} {
 			margin: 0 auto;
 			grid-template-columns: auto 1fr auto;
 		}
 
-		[class^='l:grid:header'].bp\:#{$bpSuffix} > .main,
-		[class^='l:grid:header'].bp\:#{$bpSuffix} > .context {
+		[class^='l:grid:header'].bp\:#{$size} > .main,
+		[class^='l:grid:header'].bp\:#{$size} > .context {
 			grid-column: 1 / -1;
 		}
 
-		[class^='l:grid:header'].bp\:#{$bpSuffix} {
+		[class^='l:grid:header'].bp\:#{$size} {
 			grid-template-areas: 'main context tabs';
 		}
 
-		[class^='l:grid:header'].bp\:#{$bpSuffix} > .main {
+		[class^='l:grid:header'].bp\:#{$size} > .main {
 			grid-area: main;
 		}
 
-		[class^='l:grid:header'].bp\:#{$bpSuffix} > .context {
+		[class^='l:grid:header'].bp\:#{$size} > .context {
 			grid-area: context;
 		}
 
-		[class^='l:grid:header'].bp\:#{$bpSuffix} > .tabs {
+		[class^='l:grid:header'].bp\:#{$size} > .tabs {
 			grid-area: tabs;
 		}
 	}

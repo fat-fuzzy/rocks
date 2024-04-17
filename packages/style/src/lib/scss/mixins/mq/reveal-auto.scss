@@ -1,22 +1,22 @@
 /*  reveal-auto media queries */
 
-@mixin switchToRowStyles_RevealAuto($breakpoint, $bpSuffix) {
+@mixin switchToRowStyles_RevealAuto($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
-		.l\:reveal\:auto.bp\:#{$bpSuffix},
-		.page-header .l\:reveal\:auto.bp\:#{$bpSuffix} {
+		.l\:reveal\:auto.bp\:#{$size},
+		.page-header .l\:reveal\:auto.bp\:#{$size} {
 			position: unset;
 			width: fit-content;
 		}
 
-		.l\:reveal\:auto.bp\:#{$bpSuffix} .show {
+		.l\:reveal\:auto.bp\:#{$size} .show {
 			min-inline-size: unset;
 		}
 
-		.l\:reveal\:auto.bp\:#{$bpSuffix} [class*='expand'] {
+		.l\:reveal\:auto.bp\:#{$size} [class*='expand'] {
 			display: none;
 		}
 
-		.l\:reveal\:auto.bp\:#{$bpSuffix} .show {
+		.l\:reveal\:auto.bp\:#{$size} .show {
 			top: 0;
 			width: auto;
 			max-height: unset;
@@ -24,8 +24,8 @@
 			box-shadow: none;
 		}
 
-		.l\:reveal\:auto.bp\:#{$bpSuffix} .show,
-		.l\:reveal\:auto.bp\:#{$bpSuffix} [class*='hide:'] {
+		.l\:reveal\:auto.bp\:#{$size} .show,
+		.l\:reveal\:auto.bp\:#{$size} [class*='hide:'] {
 			height: auto;
 			margin: initial;
 			overflow: hidden;

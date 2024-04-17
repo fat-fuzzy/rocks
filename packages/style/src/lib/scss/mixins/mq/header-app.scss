@@ -1,18 +1,18 @@
 /* header-app media queries */
 
-@mixin switchToRowStyles_Header($breakpoint, $bpSuffix) {
+@mixin switchToRowStyles_Header($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
-		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} {
+		.header-app .l\:reveal\:auto.bp\:#{$size} {
 			justify-content: center;
 		}
 
-		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} .show,
-		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} [class*='hide:'] {
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .show,
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} [class*='hide:'] {
 			height: 100%;
 			overflow: auto;
 		}
 
-		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav > ul {
+		.header-app .l\:reveal\:auto.bp\:#{$size} > nav > ul {
 			padding: 0;
 			margin: 0;
 			width: auto;
@@ -21,12 +21,12 @@
 			height: 100%;
 		}
 
-		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav li,
-		.header-app .l\:reveal\:auto.bp\:#{$bpSuffix} > nav a {
+		.header-app .l\:reveal\:auto.bp\:#{$size} > nav li,
+		.header-app .l\:reveal\:auto.bp\:#{$size} > nav a {
 			width: fit-content;
 		}
 
-		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} > nav li {
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} > nav li {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -35,22 +35,22 @@
 			padding: 0 0 var(--outline-offset) var(--outline-offset);
 		}
 
-		.header-app > .l\:reveal\:auto.bp\:#{$bpSuffix} > nav li[aria-current='page'] {
+		.header-app > .l\:reveal\:auto.bp\:#{$size} > nav li[aria-current='page'] {
 			border-color: var(--current-primary);
 		}
 
 		/* Configure reveal menu positioning and width */
-		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$bpSuffix} {
+		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} {
 			justify-content: center;
 		}
 
 		/* Configure reveal settings menu dimensions */
-		.header-app [class*='l:main'].l\:reveal\:auto.bp\:#{$bpSuffix} .show {
+		.header-app [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .show {
 			height: auto;
 		}
 
 		/* Configure reveal menu positioning and width */
-		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$bpSuffix} > menu {
+		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} > menu {
 			justify-content: flex-end;
 			padding-block: 0;
 		}

@@ -4,6 +4,7 @@ const paths = {
 	in: './src/lib/tokens/',
 	out: './src/lib/css/tokens/',
 }
+
 const files = [
 	'border.json',
 	'color.json',
@@ -13,6 +14,7 @@ const files = [
 	'scale.json',
 	'typography.json',
 ]
+
 /** @type {import("@cobalt-ui/core").Config} */
 export default {
 	tokens: files.map((file) => `${paths['in']}${file}`),

@@ -1,98 +1,105 @@
 .l\:switcher\:2xs,
-.l\:stack\:2xs {
+.l\:stack\:2xs,
+.l\:grid\:2xs {
 	--gap: var(--size-base-2xs);
 }
 
 .l\:switcher\:xs,
-.l\:stack\:xs {
+.l\:stack\:xs,
+.l\:grid\:xs {
 	--gap: var(--size-base-xs);
 }
 
 .l\:switcher\:sm,
-.l\:stack\:sm {
+.l\:stack\:sm,
+.l\:grid\:sm {
 	--gap: var(--size-base-sm);
 }
 
 .l\:switcher\:md,
-.l\:stack\:md {
+.l\:stack\:md,
+.l\:grid\:md {
 	--gap: var(--size-base-md);
 }
 
 .l\:switcher\:lg,
-.l\:stack\:lg {
+.l\:stack\:lg,
+.l\:grid\:lg {
 	--gap: var(--size-base-lg);
 }
 
 .l\:switcher\:xl,
-.l\:stack\:xl {
+.l\:stack\:xl,
+.l\:grid\:xl {
 	--gap: var(--size-base-xl);
 }
 
 .l\:switcher\:2xl,
-.l\:stack\:2xl {
+.l\:stack\:2xl,
+.l\:grid\:2xl {
 	--gap: var(--size-base-2xl);
 }
 
 .l\:grid\:2xs {
 	--grid-item-size: var(--layout-sidebar-2xs);
-	--gap: var(--size-base-2xs);
 }
 
 .l\:grid\:xs {
 	--grid-item-size: var(--layout-sidebar-xs);
-	--gap: var(--size-base-xs);
 }
 
 .l\:grid\:sm {
 	--grid-item-size: var(--layout-sidebar-sm);
-	--gap: var(--size-base-sm);
 }
 
 .l\:grid\:md {
 	--grid-item-size: var(--layout-sidebar-md);
-	--gap: var(--size-base-md);
 }
 
 .l\:grid\:lg {
 	--grid-item-size: var(--layout-sidebar-lg);
-	--gap: var(--size-base-lg);
 }
 
 .l\:grid\:xl {
 	--grid-item-size: var(--layout-sidebar-xl);
-	--gap: var(--size-base-xl);
 }
 
 .l\:grid\:2xl {
 	--grid-item-size: var(--layout-sidebar-2xl);
-	--gap: var(--size-base-2xl);
 }
 
-.l\:burrito\:2xs {
+.l\:burrito\:2xs,
+.l\:sidebar\:2xs {
 	--sidebar-width: var(--layout-sidebar-2xs);
 }
 
-.l\:burrito\:xs {
+.l\:burrito\:xs,
+.l\:sidebar\:xs {
 	--sidebar-width: var(--layout-sidebar-xs);
 }
 
-.l\:burrito\:sm {
+.l\:burrito\:sm,
+.l\:sidebar\:sm {
 	--sidebar-width: var(--layout-sidebar-sm);
 }
 
-.l\:burrito\:md {
+.l\:burrito\:md,
+.l\:sidebar\:md {
 	--sidebar-width: var(--layout-sidebar-md);
 }
 
-.l\:burrito\:lg {
+.l\:burrito\:lg,
+.l\:sidebar\:lg {
 	--sidebar-width: var(--layout-sidebar-lg);
 }
 
-.l\:burrito\:xl {
+.l\:burrito\:xl,
+.l\:sidebar\:xl {
 	--sidebar-width: var(--layout-sidebar-xl);
 }
 
-.l\:burrito\:2xl {
+.l\:burrito\:2xl,
+.l\:sidebar\:2xl {
 	--sidebar-width: var(--layout-sidebar-2xl);
 }
 
@@ -124,60 +131,32 @@
 	--size-inverse: var(--size-inverse-2xl);
 }
 
-.l\:sidebar\:2xs {
-	--sidebar-width: var(--layout-sidebar-2xs);
-}
-
-.l\:sidebar\:xs {
-	--sidebar-width: var(--layout-sidebar-xs);
-}
-
-.l\:sidebar\:sm {
-	--sidebar-width: var(--layout-sidebar-sm);
-}
-
-.l\:sidebar\:md {
-	--sidebar-width: var(--layout-sidebar-md);
-}
-
-.l\:sidebar\:lg {
-	--sidebar-width: var(--layout-sidebar-lg);
-}
-
-.l\:sidebar\:xl {
-	--sidebar-width: var(--layout-sidebar-xl);
-}
-
-.l\:sidebar\:2xl {
-	--sidebar-width: var(--layout-sidebar-2xl);
-}
-
 .bp\:2xs {
-	--bp-size: var(--bp-2xs);
+	--breakpoint: var(--bp-2xs);
 }
 
 .bp\:xs {
-	--bp-size: var(--bp-xs);
+	--breakpoint: var(--bp-xs);
 }
 
 .bp\:sm {
-	--bp-size: var(--bp-sm);
+	--breakpoint: var(--bp-sm);
 }
 
 .bp\:md {
-	--bp-size: var(--bp-md);
+	--breakpoint: var(--bp-md);
 }
 
 .bp\:lg {
-	--bp-size: var(--bp-lg);
+	--breakpoint: var(--bp-lg);
 }
 
 .bp\:xl {
-	--bp-size: var(--bp-xl);
+	--breakpoint: var(--bp-xl);
 }
 
 .bp\:2xl {
-	--bp-size: var(--bp-2xl);
+	--breakpoint: var(--bp-2xl);
 }
 
 .th\:2xs {
