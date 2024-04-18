@@ -34,36 +34,42 @@ h3.link {
 }
 
 h1 {
+	--font-family-h1: var(--font-family-heading);
 	font-size: var(--font-size-h1);
-	font-family: var(--font-family-h1);
+	font-family: var(--font-family-heading-base);
 	font-weight: var(--font-weight-h1);
 }
 
 h2 {
+	--font-family-h2: var(--font-family-subheading);
 	font-size: var(--font-size-h2);
 	font-family: var(--font-family-h2);
 	font-weight: var(--font-weight-h2);
 }
 
 h3 {
+	--font-family-h3: var(--font-family-subheading);
 	font-size: var(--font-size-h3);
 	font-family: var(--font-family-h3);
 	font-weight: var(--font-weight-h3);
 }
 
 h4 {
+	--font-family-h4: var(--font-family-subheading);
 	font-size: var(--font-size-h4);
 	font-family: var(--font-family-h4);
 	font-weight: var(--font-weight-h4);
 }
 
 h5 {
+	--font-family-h5: var(--font-family-subheading);
 	font-size: var(--font-size-h5);
 	font-family: var(--font-family-h5);
 	font-weight: var(--font-weight-h5);
 }
 
 .font\:base {
+	--font-family-base: var(--font-family-body);
 	font-size: var(--font-size-base);
 }
 

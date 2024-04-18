@@ -1,0 +1,25 @@
+// == FLUID SCALE
+
+/**
+ * Source: https://utopia.fyi/blog/css-modular-scales/
+ * Usage:
+ *  TODO: Doc + link to mixin generate-modular-scale
+ */
+
+$modular-scale-steps-plus: 1, 2, 3, 4;
+
+// prettier-ignore
+$modular-scale-steps-minus: -1, -2;
+$modular-scale: (
+	fluid-min-width: 320,
+	fluid-max-width: 1240,
+
+	// min size of base font
+	fluid-min-size: 14,
+
+	// max size of base font
+	fluid-max-size: 18,
+	fluid-min-ratio: 1.2,
+	fluid-max-ratio: 1.25,
+	fluid-screen: 100vw,
+);

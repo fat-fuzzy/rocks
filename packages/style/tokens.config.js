@@ -12,7 +12,7 @@ const files = [
 	'layout.json',
 	'pages.json',
 	'scale.json',
-	'typography.json',
+	'font.json',
 ]
 
 /**
@@ -26,6 +26,9 @@ export default {
 		pluginCSS({
 			transform(token, mode) {
 				switch (token.$type) {
+					case 'reference': {
+						return String(token.$value)
+					}
 					case 'percentage': {
 						return `${String(token.$value)}%`
 					}

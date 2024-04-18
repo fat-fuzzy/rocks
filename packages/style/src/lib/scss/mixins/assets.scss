@@ -1,0 +1,131 @@
+$bunny: '🐰';
+$hat: '🎩';
+$bulb: '💡';
+$confetti: '🎉';
+$bell: '🔔';
+$poop: '💩';
+$sun: '☀️';
+$moon: '🌙';
+$new-moon: '🌑';
+$half-moon: '🌗';
+$invader: '👾';
+$octopus: '🐙';
+$spouting-whale: '🐳';
+$otter: '🦦';
+$turtle: '🐢';
+$tiger: '🐯';
+$wave: '🌊';
+$lion: '🦁';
+$heart: '❤️';
+$sparkles: '✨';
+$egg: '🥚';
+$chick: '🐥';
+$link: '🔗';
+$point-left: '👈';
+$point-right: '👉';
+$point-up: '👆';
+$point-down: '👇';
+$log: '🪵';
+$control-knobs: '🎛️';
+$pencil: '✏️';
+$memo: '📝';
+$fountain-pen: '🖋️';
+$magic-wand: '🪄';
+$gear: '⚙️';
+$umbrella: '☂️';
+$lightning: '⚡️';
+$construction-sign: '🚧';
+$shower: '🚿';
+$lotus: '🪷';
+$hole: '🕳️';
+$robot: '🤖';
+$star: '🌟';
+$slot-machine: '🎰';
+$yellow-square: '🟨';
+$straight-ruler: '📏';
+$triangular-ruler: '📐';
+$russian-dolls: '🪆';
+$bullseye: '🎯';
+$world-map: '🗺️';
+$game-dice: '🎲';
+$film-camera: '🎥';
+$film-frames: '🎞️';
+$framed-picture: '🖼️';
+$cyclone: '🌀';
+$emojis: (
+	// Text emojis
+	link: #{$link},
+	point-left: #{$point-left},
+	point-right: #{$point-right},
+	point-up: #{$point-up},
+	point-down: #{$point-down},
+
+	// Feedback emojis
+	default: #{$bunny},
+	info: #{$bulb},
+	success: #{$confetti},
+	warning: #{$bell},
+	error: #{$poop},
+
+	// App Settings emojis
+	day: #{$sun},
+	night: #{$moon},
+	contrast: #{$half-moon},
+	blend: #{$new-moon},
+
+	// ButtonMenu fixture emojis
+	vader: #{$invader},
+	ollie: #{$octopus},
+	moby: #{$spouting-whale},
+
+	// Gallery emojis
+	octopus: #{$octopus},
+	otter: #{$otter},
+	turtle: #{$turtle},
+	tiger: #{$tiger},
+
+	// ToggleMenu / RevealMenu fixture emojis
+	idea: #{$bulb},
+	profile: #{$lion},
+	favorite: #{$heart},
+	sparkles: #{$sparkles},
+
+	// LinkList / Nav / DetailsNav fixture emojis
+	home: #{$egg},
+	about: #{$chick},
+	machines: #{$robot},
+	star: #{$star},
+
+	// Composition Emojis
+	menu: #{$bunny},
+	settings: #{$control-knobs},
+	log: #{$log},
+	context: #{$umbrella},
+	switch-active: #{$bunny},
+	switch-inactive: #{$hat},
+	doc: #{$memo},
+	demo: #{$magic-wand},
+	nojs: #{$bunny},
+	wip: #{$construction-sign},
+
+	// Playground fixture emojis
+	sketch: #{$spouting-whale},
+	play: #{$sparkles},
+	pause: #{$lotus},
+	clear: #{$spouting-whale},
+	not-found: #{$hole},
+
+	// Sketches
+	random: #{$slot-machine},
+	rect: #{$yellow-square},
+	geometry-2d: #{$straight-ruler},
+	geometry-3d: #{$triangular-ruler},
+	russian-dolls: #{$russian-dolls},
+	bullseye: #{$bullseye},
+	projection: #{$world-map},
+	matrix-3d: #{$game-dice},
+	camera-3d: #{$film-camera},
+	animation-3d: #{$film-frames},
+	texture: #{$framed-picture},
+	convolution: #{$cyclone}
+);
