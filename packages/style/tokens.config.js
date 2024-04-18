@@ -15,6 +15,9 @@ const files = [
 	'typography.json',
 ]
 
+/**
+ * This config will process JSON files in `src/lib/tokens/` and output a CSS file to "src/lib/css/tokens/"
+ */
 /** @type {import("@cobalt-ui/core").Config} */
 export default {
 	tokens: files.map((file) => `${paths['in']}${file}`),

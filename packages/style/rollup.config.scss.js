@@ -3,8 +3,9 @@ import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 
 const production = process.env.NODE_ENV === 'production'
+
 /**
- * Preprocess scss in `src/styles/` to use css directly in svelte components
+ * This config will preprocess scss in `src/lib/scss/` and output a bundled CSS file to "src/mixins/index.css"
  */
 export default {
 	input: 'src/lib/scss/index.js',

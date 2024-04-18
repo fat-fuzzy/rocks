@@ -10,6 +10,9 @@ import postcssPresetEnv from 'postcss-preset-env'
 
 const production = process.env.NODE_ENV === 'production'
 
+/**
+ * This config will output 1 bundled CSS file to "dist/main.css"
+ */
 export default {
 	input: 'src/lib/index.js',
 	output: {dir: 'dist/', format: 'esm'},
