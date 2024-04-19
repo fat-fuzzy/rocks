@@ -1,26 +1,11 @@
 h1,
 h2,
-h3 {
-	line-height: var(--line-height-heading);
-	margin-block-end: var(--ui-size);
-}
-
 h3,
 h4,
 h5,
 h6 {
-	line-height: var(--line-height-heading);
-	margin-block-start: var(--ui-size-lg);
+	line-height: var(--font-leading-heading);
 	margin-block-end: var(--ui-size);
-}
-
-h1,
-h2,
-h3,
-h3,
-h4,
-h5,
-h6 {
 	&.nowrap {
 		white-space: nowrap;
 	}

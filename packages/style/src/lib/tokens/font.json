@@ -93,9 +93,9 @@
 		},
 		"leading": {
 			"$type": "dimension",
-			"heading": {"$value": "1.4"},
+			"heading": {"$value": "1.25"},
 			"ui": {"$value": "1.4"},
-			"body": {"$value": "2"}
+			"body": {"$value": "1.75"}
 		}
 	}
 }
