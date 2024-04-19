@@ -27,8 +27,8 @@
 			"gray": {"$value": 0},
 			"gray-violet": {"$value": 308.5},
 			"violet": {"$value": 285.94},
-			"seagreen": {"$value": 215.77},
-			"vintagerose": {"$value": 11.66},
+			"seagreen": {"$value": -151.23},
+			"fuschia": {"$value": -20.34},
 			"neonblue": {"$value": 273.95},
 			"teal": {"$value": 184.22},
 			"yellow": {"$value": 263.84},
@@ -37,7 +37,7 @@
 		"theme": {
 			"primary": {"$value": "{color.hue.violet}"},
 			"accent": {"$value": "{color.hue.seagreen}"},
-			"highlight": {"$value": "{color.hue.vintagerose}"},
+			"highlight": {"$value": "{color.hue.fuschia}"},
 			"surface": {"$value": "{color.hue.gray-violet}"},
 			"neutral": {"$value": "{color.hue.gray}"}
 		},

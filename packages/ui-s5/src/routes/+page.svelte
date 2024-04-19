@@ -1,142 +1,85 @@
+<script>
+	const hues = ['primary', 'accent', 'highlight', 'neutral', 'info', 'success', 'warning', 'error'];
+	const shades = ['000', '100', '200', '300', '400', '500', '600'];
+</script>
+
 <div class="l:burrito:2xl">
 	<h2>Welcome to your library project</h2>
 	<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
 	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 </div>
 
-<div class="l:center">
-	<main class="l:sidebar">
-		<div class="l:main:50 l:stack:md">
-			<div class="palette">
-				<div class="hue">
-					<figure class="bg:primary:000">
-						<p>primary 000</p>
+<div>
+	<div class="palette l:center:2xs card:md">
+		{#each hues as hue}
+			<div class="hue">
+				{#each shades as shade}
+					<figure class={`bg:${hue}:${shade}`}>
+						<p>{`bg:${hue}:${shade}`}</p>
 					</figure>
-					<figure class="bg:primary:100">
-						<p>primary 100</p>
-					</figure>
-					<figure class="bg:primary:200">
-						<p>primary 200</p>
-					</figure>
-					<figure class="bg:primary:300">
-						<p>primary 300</p>
-					</figure>
-					<figure class="bg:primary:400">
-						<p>primary 400</p>
-					</figure>
-					<figure class="bg:primary:500">
-						<p>primary 500</p>
-					</figure>
-					<figure class="bg:primary:600">
-						<p>primary 600</p>
-					</figure>
-				</div>
-
-				<div class="hue">
-					<figure class="bg:accent:000">
-						<p>accent 000</p>
-					</figure>
-					<figure class="bg:accent:100">
-						<p>accent 100</p>
-					</figure>
-					<figure class="bg:accent:200">
-						<p>accent 200</p>
-					</figure>
-					<figure class="bg:accent:300">
-						<p>accent 300</p>
-					</figure>
-					<figure class="bg:accent:400">
-						<p>accent 400</p>
-					</figure>
-					<figure class="bg:accent:500">
-						<p>accent 500</p>
-					</figure>
-					<figure class="bg:accent:600">
-						<p>accent 600</p>
-					</figure>
-				</div>
-
-				<div class="hue">
-					<figure class="bg:highlight:000">
-						<p>highlight 000</p>
-					</figure>
-					<figure class="bg:highlight:100">
-						<p>highlight 100</p>
-					</figure>
-					<figure class="bg:highlight:200">
-						<p>highlight 200</p>
-					</figure>
-					<figure class="bg:highlight:300">
-						<p>highlight 300</p>
-					</figure>
-					<figure class="bg:highlight:400">
-						<p>highlight 400</p>
-					</figure>
-					<figure class="bg:highlight:500">
-						<p>highlight 500</p>
-					</figure>
-					<figure class="bg:highlight:600">
-						<p>highlight 600</p>
-					</figure>
-				</div>
+				{/each}
 			</div>
-			<div class="buttons">
-				<div class="l:flex card:sm align:end">
+		{/each}
+	</div>
+	<main class="l:sidebar l:center:2xs">
+		<div class="l:main:50 l:stack:md">
+			<div class="buttons l:stack:md">
+				<div class="l:flex align:end">
 					<button class="bg:primary:300 size:lg scale:minor">primary:300 minor lg</button>
 					<button class="bg:primary:200 size:md scale:minor">primary:200 minor md</button>
 					<button class="bg:primary:100 size:sm scale:minor">primary:100 minor sm</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:accent:300 size:lg">accent:300 default lg</button>
 					<button class="bg:accent:200 size:md">accent:200 default md</button>
 					<button class="bg:accent:100 size:sm">accent:100 default sm</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:highlight:300 size:lg scale:major">highlight:300 major lg</button>
 					<button class="bg:highlight:200 size:md scale:major">highlight:200 major md</button>
 					<button class="bg:highlight:100 size:sm scale:major">highlight:100 major sm</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:primary variant:fill size:md">primary fill</button>
 					<button class="bg:primary variant:outline size:md">primary outline</button>
 					<button class="bg:primary variant:bare size:md">primary bare</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:accent variant:fill size:md">accent fill</button>
 					<button class="bg:accent variant:outline size:md">accent outline</button>
 					<button class="bg:accent variant:bare size:md">accent bare</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:highlight variant:fill size:md">highlight fill</button>
 					<button class="bg:highlight variant:outline size:md">highlight outline</button>
 					<button class="bg:highlight variant:bare size:md">highlight bare</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:neutral variant:fill size:md">default fill</button>
 					<button class="bg:neutral variant:outline size:md">default outline</button>
 					<button class="bg:neutral variant:bare size:md">default bare</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:info variant:fill size:md">info fill</button>
 					<button class="bg:info variant:outline size:md">info outline</button>
 					<button class="bg:info variant:bare size:md">info bare</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:success variant:fill size:md">success fill</button>
 					<button class="bg:success variant:outline size:md">success outline</button>
 					<button class="bg:success variant:bare size:md">success bare</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:warning variant:fill size:md">warning fill</button>
 					<button class="bg:warning variant:outline size:md">warning outline</button>
 					<button class="bg:warning variant:bare size:md">warning bare</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:error variant:fill size:md">error fill</button>
 					<button class="bg:error variant:outline size:md">error outline</button>
 					<button class="bg:error variant:bare size:md">error bare</button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:info variant:bare size:md shape:round emoji:info" title="info"></button>
 					<button class="bg:neutral variant:bare size:md shape:round emoji:default" title="bunny"
 					></button>
@@ -147,7 +90,7 @@
 					<button class="bg:error variant:bare size:md shape:round emoji:error" title="error"
 					></button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:info variant:outline size:md shape:round emoji:info" title="info"
 					></button>
 					<button class="bg:neutral variant:outline size:md shape:round emoji:default" title="bunny"
@@ -163,7 +106,7 @@
 					<button class="bg:error variant:outline size:md shape:round emoji:error" title="error"
 					></button>
 				</div>
-				<div class="l:flex card:sm align:end">
+				<div class="l:flex align:end">
 					<button class="bg:info variant:fill size:md shape:round emoji:info" title="info"></button>
 					<button class="bg:neutral variant:fill size:md shape:round emoji:default" title="bunny"
 					></button>
@@ -223,7 +166,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 	@layer demo.palette {
 		.palette {
 			display: grid;
-			grid-template-columns: auto auto auto;
+			grid-template-columns: auto auto auto auto auto auto auto auto;
 			max-inline-size: fit-content;
 		}
 		.hue {

@@ -21,12 +21,12 @@
   --color-chroma-600: 0.1;
   --color-chroma-neutral: 0.01;
   --color-hue-framboise: 263.8;
+  --color-hue-fuschia: -20.34;
   --color-hue-gray: 0;
   --color-hue-gray-violet: 308.5;
   --color-hue-neonblue: 273.95;
-  --color-hue-seagreen: 215.77;
+  --color-hue-seagreen: -151.23;
   --color-hue-teal: 184.22;
-  --color-hue-vintagerose: 11.66;
   --color-hue-violet: 285.94;
   --color-hue-yellow: 263.84;
   --color-lightness-000: 98%;
@@ -55,7 +55,7 @@
   --color-state-visited-chroma: var(--color-lightness-200);
   --color-state-visited-lightness: var(--color-lightness-200);
   --color-theme-accent: var(--color-hue-seagreen);
-  --color-theme-highlight: var(--color-hue-vintagerose);
+  --color-theme-highlight: var(--color-hue-fuschia);
   --color-theme-neutral: var(--color-hue-gray);
   --color-theme-primary: var(--color-hue-violet);
   --color-theme-surface: var(--color-hue-gray-violet);
