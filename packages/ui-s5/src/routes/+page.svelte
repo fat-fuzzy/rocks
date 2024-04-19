@@ -97,9 +97,9 @@
 					<button class="bg:highlight:100 size:sm scale:major">highlight:100 major sm</button>
 				</div>
 				<div class="l:flex card:sm align:end">
-					<button class="bg:primary:100:bare size:md scale:minor">primary:100 minor md</button>
-					<button class="bg:primary:200:outline size:md scale:minor">primary:200 minor md</button>
-					<button class="bg:primary:200:fill size:md scale:minor">primary:200 minor md</button>
+					<button class="bg:primary variant:bare size:md">primary:200 bare</button>
+					<button class="bg:primary variant:outline size:md">primary:200 outline</button>
+					<button class="bg:primary variant:fill size:md">primary:200 fill</button>
 				</div>
 			</div>
 		</div>
