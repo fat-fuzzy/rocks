@@ -1,8 +1,9 @@
 [class*='l:flex'] {
 	--gap: var(--ui-size);
+	--align: auto;
 	display: flex;
 	flex-wrap: wrap;
-	align-items: stretch;
+	align-items: var(--align);
 	gap: var(--gap);
 }
 

@@ -10,7 +10,6 @@
 	--ui-size: var(--scale-base-00);
 	--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
 	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
-	/* TODO: scale font */
 	--font-size: var(--font-size-md);
 	--sidebar-width: var(--layout-sidebar-md);
 	--current-shadow: var(--shadow);
@@ -18,8 +17,8 @@
 }
 
 body {
-	background: var(--current-bg-color);
-	color: var(--current-color);
+	background: var(--ink);
+	color: var(--bg-color);
 	font-family: var(--font-family-body);
 	font-size: var(--font-size-body);
 	font-weight: var(--font-weight-body);

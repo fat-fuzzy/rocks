@@ -81,18 +81,26 @@
 				</div>
 			</div>
 			<div class="buttons">
-				<button class="bg:primary:100 size:sm scale:minor">primary:100 minor sm</button>
-				<button class="bg:primary:100 size:md scale:minor">primary:200 minor md</button>
-				<button class="bg:primary:200:fill size:md scale:minor">primary:200 minor md</button>
-				<button class="bg:primary:200:outline size:md scale:minor">primary:200 minor md</button>
-				<button class="bg:primary:100:bare size:md scale:minor">primary:100 minor md</button>
-				<button class="bg:primary:300 size:lg scale:minor">primary:300 minor lg</button>
-				<button class="bg:accent:100 size:sm">accent:100 default sm</button>
-				<button class="bg:accent:200 size:md">accent:200 default md</button>
-				<button class="bg:accent:300 size:lg">accent:300 default lg</button>
-				<button class="bg:highlight:100 size:sm scale:major">highlight:100 major sm</button>
-				<button class="bg:highlight:200 size:md scale:major">highlight:200 major md</button>
-				<button class="bg:highlight:300 size:lg scale:major">highlight:300 major lg</button>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:primary:300 size:lg scale:minor">primary:300 minor lg</button>
+					<button class="bg:primary:200 size:md scale:minor">primary:200 minor md</button>
+					<button class="bg:primary:100 size:sm scale:minor">primary:100 minor sm</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:accent:300 size:lg">accent:300 default lg</button>
+					<button class="bg:accent:200 size:md">accent:200 default md</button>
+					<button class="bg:accent:100 size:sm">accent:100 default sm</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:highlight:300 size:lg scale:major">highlight:300 major lg</button>
+					<button class="bg:highlight:200 size:md scale:major">highlight:200 major md</button>
+					<button class="bg:highlight:100 size:sm scale:major">highlight:100 major sm</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:primary:100:bare size:md scale:minor">primary:100 minor md</button>
+					<button class="bg:primary:200:outline size:md scale:minor">primary:200 minor md</button>
+					<button class="bg:primary:200:fill size:md scale:minor">primary:200 minor md</button>
+				</div>
 			</div>
 		</div>
 
