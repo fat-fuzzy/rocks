@@ -11,8 +11,12 @@
 
 @supports (mask: var(--icon-url)) {
 	[class*='svg']::before {
-		background-image: unset;
-		background: currentColor;
+		background: linear-gradient(
+			148deg,
+			var(--color-gradient-000-start) 31% 31%,
+			var(--color-gradient-000-middle) 49% 49%,
+			var(--color-gradient-000-end) 88% 88%
+		);
 		mask: var(--icon-url) center center / 100% auto no-repeat;
 	}
 }

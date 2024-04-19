@@ -72,6 +72,14 @@
 				"lightness": {"$value": "{color.lightness.200}"},
 				"chroma": {"$value": "{color.lightness.200}"}
 			}
+		},
+		"gradient": {
+			"$type": "color",
+			"000": {
+				"start": {"$value": "hsl(311.39 100% 48%)"},
+				"middle": {"$value": "hsl(286.92 100% 74%)"},
+				"end": {"$value": "hsl(185.97 100% 43%)"}
+			}
 		}
 	}
 }

@@ -20,6 +20,9 @@
   --color-chroma-500: 0.15;
   --color-chroma-600: 0.1;
   --color-chroma-neutral: 0.01;
+  --color-gradient-000-end: #00c5db;
+  --color-gradient-000-middle: #e27aff;
+  --color-gradient-000-start: #f500c6;
   --color-hue-framboise: 263.8;
   --color-hue-fuschia: -20.34;
   --color-hue-gray: 0;
@@ -185,5 +188,13 @@
   --size-ratio-lg: 2.75;
   --size-ratio-md: 1.5;
   --size-ratio-sm: 1.15;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --color-gradient-000-end: color(display-p3 0 0.7725490196078432 0.8588235294117647);
+    --color-gradient-000-middle: color(display-p3 0.8862745098039215 0.47843137254901963 1);
+    --color-gradient-000-start: color(display-p3 0.9607843137254902 0 0.7764705882352941);
+  }
 }
 
