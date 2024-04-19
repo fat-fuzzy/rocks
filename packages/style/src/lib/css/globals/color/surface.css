@@ -4,3 +4,8 @@
 	color: var(--surface-bg);
 	background-color: var(--surface-ink);
 }
+
+[class*='dotted'] {
+	--border-color: var(--ink);
+	border: var(--border-width-lg) dotted var(--border-color);
+}

@@ -6,14 +6,16 @@
 [class*=':primary'] {
 	--hue: var(--color-theme-primary);
 }
+
 [class*=':accent'] {
 	--hue: var(--color-theme-accent);
 }
+
 [class*=':highlight'] {
 	--hue: var(--color-theme-highlight);
 }
+
 [class*=':neutral'] {
-	--hue: var(--color-theme-surface);
+	--hue: var(--color-theme-neutral);
 	--chroma: var(--color-chroma-neutral);
-	--chroma-contrast: var(--color-chroma-neutral);
 }

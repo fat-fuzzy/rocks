@@ -14,7 +14,7 @@
 			"600": {"$value": 32}
 		},
 		"chroma": {
-			"neutral": {"$value": 0.01},
+			"neutral": {"$value": 0.001},
 			"000": {"$value": 0.05},
 			"100": {"$value": 0.1},
 			"200": {"$value": 0.2},
@@ -28,11 +28,11 @@
 			"gray-violet": {"$value": 308.5},
 			"violet": {"$value": 285.94},
 			"seagreen": {"$value": -151.23},
-			"fuschia": {"$value": -20.34},
-			"neonblue": {"$value": 273.95},
-			"teal": {"$value": 184.22},
-			"yellow": {"$value": 263.84},
-			"framboise": {"$value": 263.8}
+			"fuschia": {"$value": 0},
+			"blue": {"$value": 269.95},
+			"green": {"$value": 180.22},
+			"olive": {"$value": 109.84},
+			"red": {"$value": 11.8}
 		},
 		"theme": {
 			"primary": {"$value": "{color.hue.violet}"},
@@ -42,10 +42,10 @@
 			"neutral": {"$value": "{color.hue.gray}"}
 		},
 		"semantic": {
-			"info": {"$value": "{color.hue.neonblue}"},
-			"success": {"$value": "{color.hue.teal}"},
-			"warning": {"$value": "{color.hue.yellow}"},
-			"danger": {"$value": "{color.hue.framboise}"}
+			"info": {"$value": "{color.hue.blue}"},
+			"success": {"$value": "{color.hue.green}"},
+			"warning": {"$value": "{color.hue.olive}"},
+			"danger": {"$value": "{color.hue.red}"}
 		},
 		"state": {
 			"default": {

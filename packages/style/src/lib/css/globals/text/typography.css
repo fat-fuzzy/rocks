@@ -104,3 +104,9 @@ a {
 	padding-inline: calc(var(--ui-size-sm) / 2);
 	margin-inline-end: 0.25em;
 }
+
+[class*='l:text'] {
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	color: var(--ink);
+	background-color: inherit;
+}

@@ -1,5 +1,14 @@
 <script>
-	const hues = ['primary', 'accent', 'highlight', 'neutral', 'info', 'success', 'warning', 'error'];
+	const hues = [
+		'primary',
+		'accent',
+		'highlight',
+		'neutral',
+		'info',
+		'success',
+		'warning',
+		'danger'
+	];
 	const shades = ['000', '100', '200', '300', '400', '500', '600'];
 </script>
 
@@ -137,7 +146,15 @@
 					aspernatur voluptatum labore dolores perspiciatis.
 				</p>
 			</div>
-			<div class="bg:accent:000 card:bare">
+			<div class="bg:accent:000 card box:dotted">
+				<h3>This is a Subtitle</h3>
+				<small>Lorem ipsum dolor</small>
+				<p>
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
+					aspernatur voluptatum labore dolores perspiciatis.
+				</p>
+			</div>
+			<div class="bg:higlight:000 card dotted">
 				<h3>This is a Subtitle</h3>
 				<small>Lorem ipsum dolor</small>
 				<p>
