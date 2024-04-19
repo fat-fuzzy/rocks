@@ -1,10 +1,10 @@
-<div class="l:burrito:sm">
-	<h1>Welcome to your library project</h1>
+<div class="l:burrito:2xl">
+	<h2>Welcome to your library project</h2>
 	<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
 	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 </div>
 
-<div class="l:center:xs">
+<div class="l:center">
 	<main class="l:sidebar">
 		<div class="l:main:50 l:stack:md">
 			<div class="palette">
@@ -97,12 +97,8 @@
 		</div>
 
 		<article class="l:side l:stack:md">
-			<header>
-				<h1>This is a Title</h1>
-				<small>Lorem ipsum dolor</small>
-			</header>
 			<div class="bg:accent:000 card:fill">
-				<h2>This is a Subtitle</h2>
+				<h3>This is a Subtitle</h3>
 				<small>Lorem ipsum dolor</small>
 				<p>
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
@@ -110,7 +106,7 @@
 				</p>
 			</div>
 			<div class="bg:accent:000 card:outline">
-				<h2>This is a Subtitle</h2>
+				<h3>This is a Subtitle</h3>
 				<small>Lorem ipsum dolor</small>
 				<p>
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
@@ -118,7 +114,7 @@
 				</p>
 			</div>
 			<div class="bg:accent:000 card:bare">
-				<h2>This is a Subtitle</h2>
+				<h3>This is a Subtitle</h3>
 				<small>Lorem ipsum dolor</small>
 				<p>
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
@@ -140,10 +136,6 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 		}
 		small {
 			color: var(--ink);
-		}
-
-		.shade {
-			box-shadow: inset 0 0 0 1px oklch(50% 0 0 / 20%);
 		}
 	}
 

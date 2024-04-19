@@ -1,15 +1,15 @@
 <script lang="ts">
 	import '@fat-fuzzy/style';
-	let layout = 'stack';
+	let layout = 'center';
 	let brightness = 'day';
 	let contrast = 'contrast';
-	let mainClass = `${brightness} l:${layout}`;
-	let headerClass = `header-app l:center:lg`;
+	let mainClass = `${brightness} l:${layout} bg:${contrast}`;
+	let headerClass = `header-app l:center`;
 	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`;
 </script>
 
 <header class={headerClass}>
-	<h1 class="l:flex card:lg icon:svg:egg size:xl align:start">Page Title</h1>
+	<h1 class="l:flex card:lg icon:svg:egg size:xl">Page Title</h1>
 </header>
 <main class={mainClass}>
 	<slot />
