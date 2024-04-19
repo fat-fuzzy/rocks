@@ -6,6 +6,7 @@
 @import './color/surface.css';
 @import './color/semantic.css';
 @import './color/ui.css';
+@import './color/settings.css';
 
 /* State */
 @import './ui/state.css';
