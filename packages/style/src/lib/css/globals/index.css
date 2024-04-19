@@ -15,11 +15,12 @@
 /* Text */
 @import './text/fonts.css';
 @import './text/typography.css';
+@import './text/scale.css';
 
 /* Icons */
 @import './assets.css'; /* Use to display emojis or svg icons */
 @import './svg.css'; /* Use to display emojis or svg icons */
 
-/* Surfaces */
+/* Content */
 @import './layers.css';
 @import './contrast.css';

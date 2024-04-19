@@ -9,8 +9,6 @@
 	grid-gap: var(--gap);
 }
 
-/* TODO: generate mq mixin */
-
 /* Basic grid that will automatically create columns if space is available for given column dimensions:
 	- between var(--sidebar-width) and 100% of available width
 	*/

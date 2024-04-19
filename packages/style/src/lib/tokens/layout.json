@@ -10,14 +10,14 @@
 			"xl": {"$value": "{scale.base.20}"}
 		},
 		"sidebar": {
-			"base": {"$value": "22.75em"},
-			"2xs": {"$value": "calc(var(--layout-sidebar-xs) * var(--scale-major-third-03))"},
-			"xs": {"$value": "calc(var(--layout-sidebar-sm) * var(--scale-major-third-02))"},
-			"sm": {"$value": "calc(var(--layout-sidebar-md) * var(--scale-major-third-01))"},
+			"base": {"$value": "30ch"},
+			"2xs": {"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"},
+			"xs": {"$value": "calc(var(--layout-sidebar-sm) / var(--size-ratio-sm))"},
+			"sm": {"$value": "calc(var(--layout-sidebar-md) / var(--size-ratio-sm))"},
 			"md": {"$value": "{layout.sidebar.base}"},
-			"lg": {"$value": "calc(var(--layout-sidebar-md) * var(--scale-major-third-10))"},
-			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--scale-major-third-20))"},
-			"2xl": {"$value": "calc(var(--layout-sidebar-xl) * var(--scale-major-third-30))"}
+			"lg": {"$value": "calc(var(--layout-sidebar-md) * var(--size-ratio-sm))"},
+			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--size-ratio-sm))"},
+			"2xl": {"$value": "calc(var(--layout-sidebar-xl) * var(--size-ratio-sm))"}
 		}
 	}
 }

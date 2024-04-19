@@ -1,15 +1,43 @@
 /* == Center side content == */
 
 [class*='l:burrito'] {
-	margin-inline-start: auto;
-	margin-inline-end: auto;
+	margin: 0 auto;
 	max-inline-size: calc(100% - calc(2 * var(--gap))); /* width of parent minus base padding */
 }
 
 [class*='l:burrito:'] {
-	max-inline-size: var(--sidebar-width); /* TODO : generate (selector + style) by size */
+	max-inline-size: var(--sidebar-width);
 }
 
 [class*='l:burrito:'].freeze {
-	inline-size: var(--sidebar-width); /* TODO : generate (selector + style) by size */
+	inline-size: var(--sidebar-width);
+}
+
+/* Scale Burrito */
+.l\:burrito\:2xs {
+	--sidebar-width: var(--layout-sidebar-2xs);
+}
+
+.l\:burrito\:xs {
+	--sidebar-width: var(--layout-sidebar-xs);
+}
+
+.l\:burrito\:sm {
+	--sidebar-width: var(--layout-sidebar-sm);
+}
+
+.l\:burrito\:md {
+	--sidebar-width: var(--layout-sidebar-md);
+}
+
+.l\:burrito\:lg {
+	--sidebar-width: var(--layout-sidebar-lg);
+}
+
+.l\:burrito\:xl {
+	--sidebar-width: var(--layout-sidebar-xl);
+}
+
+.l\:burrito\:2xl {
+	--sidebar-width: var(--layout-sidebar-2xl);
 }

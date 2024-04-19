@@ -20,3 +20,6 @@
 @import './reveal-fixed.css'; /* Use for displaying hidden content in response to a button action */
 @import './details.css'; /* Use to style <details> and <summary> elements */
 @import './shapes.css'; /* Use to style geometric shapes */
+
+/* Shared Scale styles */
+@import './scale.css';

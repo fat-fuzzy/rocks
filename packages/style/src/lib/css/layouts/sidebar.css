@@ -35,30 +35,6 @@ main > [class^='l:sidebar'] {
 	}
 }
 
-.l\:main\:30 {
-	min-inline-size: 30%;
-}
-
-.l\:main\:40 {
-	min-inline-size: 40%;
-}
-
-.l\:main\:50 {
-	min-inline-size: 50%;
-}
-
-.l\:main\:60 {
-	min-inline-size: 60%;
-}
-
-.l\:main\:70 {
-	min-inline-size: 70%;
-}
-
-.l\:main\:80 {
-	min-inline-size: 80%;
-}
-
 /* adjusts to width of contents */
 .l\:side {
 	flex-grow: 1;
@@ -90,4 +66,59 @@ main > [class^='l:sidebar'] {
 		flex-basis: var(--basis);
 		transition: flex-basis 250ms ease-in-out;
 	}
+}
+
+/* Scale Sidebar */
+.l\:sidebar\:2xs {
+	--sidebar-width: var(--layout-sidebar-2xs);
+}
+
+.l\:sidebar\:xs {
+	--sidebar-width: var(--layout-sidebar-xs);
+}
+
+.l\:sidebar\:sm {
+	--sidebar-width: var(--layout-sidebar-sm);
+}
+
+.l\:sidebar\:md {
+	--sidebar-width: var(--layout-sidebar-md);
+}
+
+.l\:sidebar\:lg {
+	--sidebar-width: var(--layout-sidebar-lg);
+}
+
+.l\:sidebar\:xl {
+	--sidebar-width: var(--layout-sidebar-xl);
+}
+
+.l\:sidebar\:2xl {
+	--sidebar-width: var(--layout-sidebar-2xl);
+}
+
+/* Scale Sidebar > Main */
+
+.l\:main\:30 {
+	min-inline-size: 30%;
+}
+
+.l\:main\:40 {
+	min-inline-size: 40%;
+}
+
+.l\:main\:50 {
+	min-inline-size: 50%;
+}
+
+.l\:main\:60 {
+	min-inline-size: 60%;
+}
+
+.l\:main\:70 {
+	min-inline-size: 70%;
+}
+
+.l\:main\:80 {
+	min-inline-size: 80%;
 }
