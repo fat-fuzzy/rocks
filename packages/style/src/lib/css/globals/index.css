@@ -1,9 +1,7 @@
-/* Theme */
-@import './global.css';
-/* @import './scale.css'; */
+/* Global */
+@import './initial.css';
 
 /* Color */
-/* @import './color/color.css.css'; */
 @import './color/background.css';
 @import './color/surface.css';
 @import './color/ui.css';
@@ -14,8 +12,14 @@
 @import './ui/scale.css';
 @import './ui/variant.css';
 
+/* Text */
+@import './text/fonts.css';
+@import './text/typography.css';
+
+/* Icons */
 @import './assets.css'; /* Use to display emojis or svg icons */
 @import './svg.css'; /* Use to display emojis or svg icons */
-@import './typography.css';
+
+/* Surfaces */
 @import './layers.css';
 @import './contrast.css';

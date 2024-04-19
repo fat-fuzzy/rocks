@@ -31,11 +31,9 @@ import './css/config/reset.css'
 import './css/config/debug.css'
 
 /* Theme */
-import './css/globals/global.css'
-/* import './css/globals/scale.css'; */
+import './css/globals/initial.css'
 
 /* Color */
-/* import './css/globals/color/color.css.css'; */
 import './css/globals/color/background.css'
 import './css/globals/color/surface.css'
 import './css/globals/color/ui.css'
@@ -53,7 +51,8 @@ import './css/globals/icons/icon.css' /* Use to display emojis and svg icons */
 import './css/globals/icons/svg.css' /* Use to display svg icons */
 import './css/globals/icons/assets.css' /* Use to display svg icons */
 import './css/globals/icons/emoji.css' /* Use to display emoji icons */
-import './css/globals/typography.css'
+import './css/globals/text/fonts.css'
+import './css/globals/text/typography.css'
 
 /**
  * CSS blocks
