@@ -97,9 +97,82 @@
 					<button class="bg:highlight:100 size:sm scale:major">highlight:100 major sm</button>
 				</div>
 				<div class="l:flex card:sm align:end">
-					<button class="bg:primary variant:bare size:md">primary:200 bare</button>
-					<button class="bg:primary variant:outline size:md">primary:200 outline</button>
-					<button class="bg:primary variant:fill size:md">primary:200 fill</button>
+					<button class="bg:primary variant:fill size:md">primary fill</button>
+					<button class="bg:primary variant:outline size:md">primary outline</button>
+					<button class="bg:primary variant:bare size:md">primary bare</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:accent variant:fill size:md">accent fill</button>
+					<button class="bg:accent variant:outline size:md">accent outline</button>
+					<button class="bg:accent variant:bare size:md">accent bare</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:highlight variant:fill size:md">highlight fill</button>
+					<button class="bg:highlight variant:outline size:md">highlight outline</button>
+					<button class="bg:highlight variant:bare size:md">highlight bare</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:neutral variant:fill size:md">default fill</button>
+					<button class="bg:neutral variant:outline size:md">default outline</button>
+					<button class="bg:neutral variant:bare size:md">default bare</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:info variant:fill size:md">info fill</button>
+					<button class="bg:info variant:outline size:md">info outline</button>
+					<button class="bg:info variant:bare size:md">info bare</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:success variant:fill size:md">success fill</button>
+					<button class="bg:success variant:outline size:md">success outline</button>
+					<button class="bg:success variant:bare size:md">success bare</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:warning variant:fill size:md">warning fill</button>
+					<button class="bg:warning variant:outline size:md">warning outline</button>
+					<button class="bg:warning variant:bare size:md">warning bare</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:error variant:fill size:md">error fill</button>
+					<button class="bg:error variant:outline size:md">error outline</button>
+					<button class="bg:error variant:bare size:md">error bare</button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:info variant:bare size:md shape:round emoji:info" title="info"></button>
+					<button class="bg:neutral variant:bare size:md shape:round emoji:default" title="bunny"
+					></button>
+					<button class="bg:warning variant:bare size:md shape:round emoji:warning" title="warning"
+					></button>
+					<button class="bg:success variant:bare size:md shape:round emoji:success" title="success"
+					></button>
+					<button class="bg:error variant:bare size:md shape:round emoji:error" title="error"
+					></button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:info variant:outline size:md shape:round emoji:info" title="info"
+					></button>
+					<button class="bg:neutral variant:outline size:md shape:round emoji:default" title="bunny"
+					></button>
+					<button
+						class="bg:warning variant:outline size:md shape:round emoji:warning"
+						title="warning"
+					></button>
+					<button
+						class="bg:success variant:outline size:md shape:round emoji:success"
+						title="success"
+					></button>
+					<button class="bg:error variant:outline size:md shape:round emoji:error" title="error"
+					></button>
+				</div>
+				<div class="l:flex card:sm align:end">
+					<button class="bg:info variant:fill size:md shape:round emoji:info" title="info"></button>
+					<button class="bg:neutral variant:fill size:md shape:round emoji:default" title="bunny"
+					></button>
+					<button class="bg:warning variant:fill size:md shape:round emoji:warning" title="warning"
+					></button>
+					<button class="bg:success variant:fill size:md shape:round emoji:success" title="success"
+					></button>
+					<button class="bg:error variant:fill size:md shape:round emoji:error" title="error"
+					></button>
 				</div>
 			</div>
 		</div>
