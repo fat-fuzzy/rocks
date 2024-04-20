@@ -1,54 +1,79 @@
 <script lang="ts">
-	import type {ButtonType} from '$types'
-	import {createEventDispatcher} from 'svelte'
+	import type { Snippet } from 'svelte';
+	import type { ButtonType } from '$types';
 
-	/**
-	 * State props
-	 */
-	export let id = 'button'
-	export let title = ''
-	export let name = ''
-	export let text = ''
-	export let value = ''
-	export let disabled = false
-	export let type: ButtonType = 'submit'
-	export let formaction: string | undefined = undefined
+	type Props = {
+		/**
+		 * State props
+		 */
+		id: string; // TODO: use for machine id
+		name: string;
+		text?: string;
+		title?: string;
+		value?: string;
+		disabled?: boolean;
+		formaction?: string;
 
-	/**
-	 * Style props
-	 */
-	export let align = ''
-	export let asset = '' // emoji:value or svg:value
-	export let color = ''
-	export let size = ''
-	export let shape = ''
-	export let variant = 'fill'
+		/**
+		 * Style props
+		 */
+		align?: string;
+		asset?: string; // emoji:value or svg:value
+		color?: string;
+		size?: string;
+		shape?: string;
+		variant?: string;
 
-	export let container = ''
-	export let dimensions = ''
-	export let layout = 'switcher'
-
-	const dispatch = createEventDispatcher()
-
-	export let onClick = (event: MouseEvent) => {
-		const payload = {
-			id: name,
-			value,
+		container?: string;
+		dimensions?: string;
+		layout?: string;
+		type?: ButtonType;
+		children?: Snippet;
+		onclick: (event: MouseEvent) => any;
+	};
+	let {
+		id = 'button', // TODO: use for machine id
+		name = 'button',
+		text,
+		title,
+		value,
+		disabled,
+		formaction,
+		align,
+		asset, // emoji:value or svg:value
+		color,
+		size,
+		shape,
+		variant = 'fill',
+		container,
+		dimensions,
+		layout = 'flex',
+		type = 'submit',
+		children,
+		onclick = (event: MouseEvent) => {
+			console.log('click', event);
+			console.log('payload', payload);
+			return payload;
 		}
-		dispatch('click', payload)
-	}
+	}: Props = $props();
 
-	$: containerClasses = container.startsWith('main')
+	let containerClasses = container?.startsWith('main')
 		? `l:${container}:${dimensions}`
-		: `l:${container}:${size}`
-	$: shapeClass = shape ? ` shape:${shape}` : ''
-	$: alignClass = align ? `align:${align}` : ''
-	$: layoutClasses = shapeClass ? `l:stack:${size}` : `l:flex`
-	$: contextClasses = `${layoutClasses} ${containerClasses}`
-	$: elementClasses = `${asset} ${color} ${size} ${shapeClass} ${variant} ${alignClass} font:${size}`
+		: `l:${container}:${size}`;
+	let shapeClass = shape ? ` shape:${shape}` : '';
+	let alignClass = align ? `align:${align}` : '';
+	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`;
+	let contextClasses = `${layoutClasses} ${containerClasses}`;
+	let elementClasses = `${asset} ${color} ${size} ${shapeClass} ${variant} align:${alignClass} font:${size}`;
 
 	// Order is important
-	$: buttonClasses = `${contextClasses} ${elementClasses}`
+	let buttonClasses = $derived(`${contextClasses} ${elementClasses}`);
+
+	let payload = $derived({
+		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		name,
+		value
+	});
 </script>
 
 <button
@@ -61,7 +86,9 @@
 	{value}
 	class={buttonClasses}
 	data-key={name}
-	on:click={onClick}
+	{onclick}
 >
-	<slot>{text}</slot>
+	{#if children}
+		{@render children()}
+	{/if}
 </button>

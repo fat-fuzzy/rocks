@@ -56,7 +56,6 @@ import {SettingsReveal} from '$lib/forms/settings-reveal'
 import {SettingsUpdate} from '$lib/forms/settings-update'
 import {SidebarReveal} from '$lib/forms/sidebar-reveal'
 import {DsContextReveal} from '$lib/forms/ds-context-reveal'
-import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
 import {DsStateUpdate} from '$lib/forms/ds-state-update'
 import {DsTabsUpdate} from '$lib/forms/ds-tabs-update'
 
@@ -89,7 +88,6 @@ const forms = {
 	SettingsUpdate,
 	DsContextReveal,
 	DsStateUpdate,
-	DsStylesUpdate,
 	DsTabsUpdate,
 }
 

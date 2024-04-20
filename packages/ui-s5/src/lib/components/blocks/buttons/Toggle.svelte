@@ -67,15 +67,15 @@
 	let elementClasses = `${asset} ${color} ${size} ${shapeClass} ${variant} align:${alignClass} font:${size}`;
 	let stateClasses = $derived(`toggle:${pressed}`);
 
+	// Order is important
+	let buttonClasses = $derived(`${stateClasses} ${contextClasses} ${elementClasses}`);
+
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value,
 		pressed
 	});
-
-	// Order is important
-	let buttonClasses = $derived(`${stateClasses} ${contextClasses} ${elementClasses}`);
 </script>
 
 <button

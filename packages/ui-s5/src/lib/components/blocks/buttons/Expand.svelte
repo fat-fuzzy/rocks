@@ -1,83 +1,90 @@
 <script lang="ts">
-	import type {ButtonType, ButtonState} from '$types'
-	import {onMount, createEventDispatcher} from 'svelte'
-	import {useMachine} from '@xstate/svelte'
-	import {createActor} from 'xstate'
-	import machines from '$lib/machines/button.machines'
+	import type { Snippet } from 'svelte';
+	import { type ButtonType, type UiState } from '$types';
+	import type { ButtonStates } from '$types';
 
-	const dispatch = createEventDispatcher()
+	type Props = {
+		/**
+		 * State props
+		 */
+		id: string;
+		name: string;
+		controls: string; // id of the DOM element that is controlled by this button
+		text?: string;
+		title?: string;
+		initial?: UiState;
+		value?: string;
+		disabled?: boolean;
+		formaction?: string;
+		states: ButtonStates; // this component contains a button that will Expand the DOM element it controls when active, or minimize it when inactive. Each state can have its own text, style, and asset (if any) according to its active / inactive state
 
-	/**
-	 * State props
-	 */
-	export let id = 'expand'
-	export let controls = 'expand' // id of the DOM element that is controlled by this button
-	export let name = 'expand'
-	export let title = ''
-	export let initial = false
-	export let value = ''
-	export let disabled = false
-	export let type: ButtonType = 'submit'
-	export let formaction: string | undefined = undefined
-	export let states: ButtonState // this component contains a button that will Expand the DOM element it controls when active, or minimize it when inactive. Each state can have its own text, style, and asset (if any) according to its active / inactive state
+		/**
+		 * Style props
+		 */
+		align?: string;
+		asset?: string; // emoji:value or svg:value
+		color?: string;
+		size?: string;
+		shape?: string;
+		variant?: string;
 
-	/**
-	 * Style props
-	 */
-	export let align = ''
-	export let color = ''
-	export let size = ''
-	export let shape = ''
-	export let variant = 'fill'
-
-	export let container = ''
-	export let dimensions = ''
-	export let layout = 'flex'
-
-	let payloadId = name // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
-
-	let machine = machines.createExpand(payloadId, initial ? 'active' : 'inactive')
-	// Actor (instance of the machine logic, like a store)
-	let actor = createActor(machine)
-	let {snapshot} = useMachine(machine)
-	let expanded = $snapshot.value === 'active'
-	let currentState = states[$snapshot.value as string]
-
-	actor.subscribe((snapshot) => {
-		// snapshot is the machine's state
-		expanded = snapshot.value === 'active'
-		currentState = states[snapshot.value as string]
-		const payload = {
-			id: payloadId,
-			value: currentState.value,
-			expanded,
-			actor,
+		container?: string;
+		dimensions?: string;
+		layout?: string;
+		type?: ButtonType;
+		children?: Snippet;
+		onclick: (event: MouseEvent) => any;
+	};
+	let {
+		id = 'expand', // TODO: use for machine id
+		name = 'expand',
+		controls,
+		title,
+		initial = 'inactive',
+		value,
+		disabled,
+		formaction,
+		states,
+		align,
+		asset, // emoji:value or svg:value
+		color,
+		size,
+		shape,
+		variant = 'fill',
+		container,
+		dimensions,
+		layout = 'flex',
+		type = 'submit',
+		children,
+		onclick = (event: MouseEvent) => {
+			console.log('click', event);
+			console.log('payload', payload);
+			return payload;
 		}
-		dispatch('click', payload)
-	})
-	actor.start()
+	}: Props = $props();
 
-	export let onClick = (event: MouseEvent) => {
-		actor.send({type: 'EXPAND'})
-	}
-
-	$: containerClasses = container.startsWith('main')
+	let expanded = $derived(initial === 'active');
+	let currentState = $derived(states[initial]);
+	let containerClasses = container?.startsWith('main')
 		? `l:${container}:${dimensions}`
-		: `l:${container}:${size}`
-	$: shapeClass = shape ? ` shape:${shape}` : ''
-	$: alignClass = align ? `align:${align}` : ''
-	$: layoutClasses = shapeClass ? `l:stack:${size}` : `l:flex`
-	$: contextClasses = `${layoutClasses} ${containerClasses}`
-	$: elementClasses = `${color} ${size} ${shapeClass} ${variant} ${alignClass} font:${size}`
-	$: stateClasses = `expand:${$snapshot.value} ${currentState.asset}`
+		: `l:${container}:${size}`;
+	let shapeClass = shape ? ` shape:${shape}` : '';
+	let alignClass = align ? `align:${align}` : '';
+	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`;
+	let contextClasses = `${layoutClasses} ${containerClasses}`;
+	let elementClasses = `${asset} ${color} ${size} ${shapeClass} ${variant} align:${alignClass} font:${size}`;
+	let stateClasses = $derived(
+		`expand:${expanded} ${currentState.asset} ${currentState.variant || variant}`
+	);
+	let payload = $derived({
+		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		name,
+		value,
+		expanded
+	});
 
 	// Order is important
-	$: buttonClasses = `${stateClasses} ${contextClasses} ${elementClasses}`
-
-	onMount(() => {
-		// Set the initial state
-		if (initial) actor.send({type: 'EXPAND'})
-	})
+	let buttonClasses = $derived(`${stateClasses} ${contextClasses} ${elementClasses}`);
 </script>
 
 <button
@@ -90,7 +97,7 @@
 	value={currentState.value}
 	class={buttonClasses}
 	data-key={name}
-	on:click={onClick}
+	{onclick}
 	aria-expanded={expanded}
 	aria-controls={controls}
 >
