@@ -63,7 +63,6 @@ import {DsTabsUpdate} from '$lib/forms/ds-tabs-update'
  * Stores
  */
 import * as settings from '$lib/stores/settings'
-import * as ui from '$lib/stores/ui'
 import * as intl from '$lib/stores/intl'
 
 /**
@@ -93,7 +92,6 @@ const forms = {
 
 const stores = {
 	settings,
-	ui,
 	intl,
 }
 
