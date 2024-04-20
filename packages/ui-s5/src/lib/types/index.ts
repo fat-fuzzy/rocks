@@ -1,17 +1,21 @@
 export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
+export enum UiState { active ='active', inactive= 'inactive'}
 
 export type Settings = {
 	[key: string]: string
 }
 
-export type ButtonState = {
-	[key: string]: {
-		text: string
-		value: string
-		asset: string
-		variant?: string
-		onClick?: (event: CustomEvent<any>) => void
-	}
+export type ButtonState =  {
+	text: string
+	value: string
+	asset: string
+	variant?: string
+	onclick?: (event: MouseEvent) => void;
+}
+
+export type ButtonStates = {
+	[UiState.active]: ButtonState,
+	[UiState.inactive]: ButtonState
 }
 
 export type SwitchState = {
