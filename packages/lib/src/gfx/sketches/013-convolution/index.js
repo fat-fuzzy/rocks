@@ -151,7 +151,7 @@ function loadTexture(gl, image, options) {
 
 	const texture = gl.createTexture()
 	// make unit 0 the active texture uint
-	// (ie, the unit all other texture commands will affect
+	// (ie, the unit all other texture commands will affect)
 	gl.activeTexture(gl.TEXTURE0)
 
 	gl.bindTexture(gl.TEXTURE_2D, texture)
