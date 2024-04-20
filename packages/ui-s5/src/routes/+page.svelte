@@ -1,12 +1,12 @@
 <script>
 	const hues = [
-		'primary',
-		'accent',
-		'highlight',
 		'neutral',
-		'info',
-		'success',
 		'warning',
+		'primary',
+		'info',
+		'accent',
+		'success',
+		'highlight',
 		'danger'
 	];
 	const shades = ['000', '100', '200', '300', '400', '500', '600'];
@@ -173,14 +173,14 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 		}
 		.hue {
 			display: grid;
-			grid-auto-rows: 8vh;
+			grid-auto-rows: auto;
 			grid-template-columns: 1fr;
 		}
 		figure {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			padding-inline: var(--ui-size-lg);
+			padding: var(--ui-size);
 		}
 	}
 
