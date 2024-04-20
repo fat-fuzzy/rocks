@@ -5,11 +5,10 @@
 	import type {StylesApi} from '$lib/api/styles'
 
 	import {onDestroy, getContext} from 'svelte'
+	import {blocks, recipes} from '@fat-fuzzy/ui'
+	const {Fieldset, InputRange} = blocks
+	const {ToggleMenu, InputGroup} = recipes
 
-	import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
-	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
-	import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
-	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
 	import * as ui from '$stores/ui'
 
 	export let category = 'app'

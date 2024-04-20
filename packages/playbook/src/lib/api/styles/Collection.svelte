@@ -1,59 +1,59 @@
 <script lang="ts">
-	import type { ComponentType } from 'svelte';
-	import type { StylesApi } from '$lib/api/styles/';
-	import type { StyleTree } from '$lib/api/styles/types';
-	import type { Markdowns } from '$lib/api/props/types';
+	import type {ComponentType} from 'svelte'
+	import type {StylesApi} from '$lib/api/styles/'
+	import type {StyleTree} from '$lib/api/styles/types'
+	import type {Markdowns} from '$lib/api/props/types'
 
-	import { onDestroy, getContext } from 'svelte';
-	import { page } from '$app/stores';
+	import {onDestroy, getContext} from 'svelte'
+	import {page} from '$app/stores'
 
-	import { getCategoryMarkdowns, getElementMeta } from '$lib/api/props';
-	import * as ui from '$stores/ui';
+	import {getCategoryMarkdowns, getElementMeta} from '$lib/api/props'
+	import * as ui from '$stores/ui'
 
-	import Api from './Api.svelte';
-	import Element from './Element.svelte';
+	import Api from './Api.svelte'
+	import Element from './Element.svelte'
 
-	export let settings: any = ui;
-	export let actionPath: string | undefined;
-	export let redirect: string | undefined = undefined;
+	export let settings: any = ui
+	export let actionPath: string | undefined
+	export let redirect: string | undefined = undefined
 
-	export let content = { html: '' };
-	export let depth = 0;
-	export let path = $page.url.pathname;
+	export let content = {html: ''}
+	export let depth = 0
+	export let path = $page.url.pathname
 
-	export let layout = 'grid';
-	export let size = 'xs';
-	export let color = 'primary:light';
-	export let isPage = false;
-	export let components: { [name: string]: ComponentType };
-	export let category = $page.params.category;
-	export let markdowns: Markdowns;
+	export let layout = 'grid'
+	export let size = 'xs'
+	export let color = 'primary:light'
+	export let isPage = false
+	export let components: {[name: string]: ComponentType}
+	export let category = $page.params.category
+	export let markdowns: Markdowns
 
-	const multipleCategories = ['graphics', 'recipes'];
-	const stylesApi: StylesApi = getContext('stylesApi');
-	let background = '';
-	let styles: StyleTree = stylesApi.getStyleTree();
+	const multipleCategories = ['graphics', 'recipes']
+	const stylesApi: StylesApi = getContext('stylesApi')
+	let background = ''
+	let styles: StyleTree = stylesApi.getStyleTree()
 
 	const stores = [
 		settings.styles.subscribe((value: StyleTree) => {
 			if (value) {
-				styles = stylesApi.getStyleTree();
+				styles = stylesApi.getStyleTree()
 			}
-		})
-	];
+		}),
+	]
 
-	$: componentNames = Object.keys(components);
-	$: titleDepth = Number(depth) + 1;
-	$: background = background ? background : styles.app?.settings.contrast;
-	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`;
-	$: categoryMarkdowns = getCategoryMarkdowns(category, markdowns);
+	$: componentNames = Object.keys(components)
+	$: titleDepth = Number(depth) + 1
+	$: background = background ? background : styles.app?.settings.contrast
+	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
+	$: categoryMarkdowns = getCategoryMarkdowns(category, markdowns)
 	$: categories = multipleCategories.includes(category)
 		? ['blocks', 'layouts', 'shared']
-		: [category];
+		: [category]
 
 	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe());
-	});
+		stores.forEach((unsubscribe) => unsubscribe())
+	})
 </script>
 
 {#if isPage}
