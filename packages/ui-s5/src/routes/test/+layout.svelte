@@ -5,7 +5,7 @@
 
 	import * as settingsStore from '$stores/settings';
 
-	import { tokens, blocks, layouts, recipes, graphics, constants } from '$lib';
+	import { tokens, blocks, layouts, recipes, /* graphics, */ constants } from '$lib';
 
 	export let data;
 
@@ -25,7 +25,7 @@
 	const blockNames = Object.keys(blocks).sort(sortAsc);
 	const layoutNames = Object.keys(layouts).sort(sortAsc);
 	const recipeNames = Object.keys(recipes).sort(sortAsc);
-	const graphicsNames = Object.keys(graphics).sort(sortAsc);
+	// const graphicsNames = Object.keys(graphics).sort(sortAsc);
 
 	let title = 'Fat Fuzzy Test';
 
@@ -71,12 +71,12 @@
 					slug: 'recipes',
 					title: 'Recipes',
 					items: recipeNames.map((c) => ({ slug: c, title: c }))
-				},
-				{
-					slug: 'graphics',
-					title: 'Graphics',
-					items: graphicsNames.map((c) => ({ slug: c, title: c }))
 				}
+				// {
+				// 	slug: 'graphics',
+				// 	title: 'Graphics',
+				// 	items: graphicsNames.map((c) => ({ slug: c, title: c }))
+				// }
 			]
 		}
 	];

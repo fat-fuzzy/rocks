@@ -1,4 +1,3 @@
-import type {LayoutServerLoad} from './$types'
 import assets from '$data/doc'
 
 export const load = (async (event) => {
@@ -26,4 +25,4 @@ export const load = (async (event) => {
 	const markdowns = assets.markdowns
 
 	return {sidebar, styles, context, state, currentTabs, markdowns}
-}) satisfies LayoutServerLoad
+}) 

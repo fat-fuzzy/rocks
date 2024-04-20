@@ -1,25 +1,26 @@
 <script lang="ts">
-	import {page} from '$app/stores'
-	import {headless, tokens, blocks, layouts, recipes, graphics, api} from '$lib'
+	import { page } from '$app/stores';
+	import { headless, tokens, blocks, layouts, recipes /*, graphics */ } from '$lib';
+	import { api } from '@fat-fuzzy/playbook';
 
-	const {Head} = headless
-	const {Collection} = api
+	const { Head } = headless;
+	const { Collection } = api;
 
-	const actionPath = '/test'
-	const title = 'Test' // TODO : Fix title: add breadcrumb nav component ?
+	const actionPath = '/test';
+	const title = 'Test'; // TODO : Fix title: add breadcrumb nav component ?
 
 	const components = [
-		{category: 'tokens', items: tokens},
-		{category: 'blocks', items: blocks},
-		{category: 'layouts', items: layouts},
-		{category: 'recipes', items: recipes},
-		{category: 'graphics', items: graphics},
-	]
+		{ category: 'tokens', items: tokens },
+		{ category: 'blocks', items: blocks },
+		{ category: 'layouts', items: layouts },
+		{ category: 'recipes', items: recipes }
+		// { category: 'graphics', items: graphics }
+	];
 
-	$: markdowns = $page.data.markdowns
-	$: path = $page.url.pathname
-	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'l:flex card:sm bg:polar align:center'
+	$: markdowns = $page.data.markdowns;
+	$: path = $page.url.pathname;
+	$: content = markdowns.categories.find(({ meta }) => meta.slug === 'ui');
+	$: headerClass = 'l:flex card:sm bg:polar align:center';
 </script>
 
 <Head {title} page="Test" description="UI Library Test Page" />
@@ -37,7 +38,7 @@
 			path={`${path}/${category}`}
 			components={items}
 			{category}
-			content={markdowns.categories.find(({meta}) => meta.slug === category)}
+			content={markdowns.categories.find(({ meta }) => meta.slug === category)}
 			{markdowns}
 			{actionPath}
 		/>

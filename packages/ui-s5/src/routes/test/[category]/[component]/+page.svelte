@@ -1,62 +1,62 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
-	import type {StyleProps} from '$lib/api/props/types'
+	import type { ComponentType } from 'svelte';
+	import type { StyleProps } from '$lib/api/props/types';
+	import { api } from '@fat-fuzzy/playbook';
 
-	import {enhance} from '$app/forms'
-	import {page} from '$app/stores'
+	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 
 	import {
 		stores,
-		api,
 		tokens,
 		blocks,
 		layouts,
 		recipes,
-		graphics,
+		/* graphics,*/
 		constants,
 		headless,
-		utils,
-	} from '$lib'
+		utils
+	} from '$lib';
 
-	const {DEFAULT_TABS, TABS} = constants
-	const {Head} = headless
-	const {Element, Api} = api
-	const {ToggleMenu} = recipes
-	const actionPath = '/test'
-	const tabs = TABS
-	let props: StyleProps
+	const { DEFAULT_TABS, TABS } = constants;
+	const { Head } = headless;
+	const { Element, Api } = api;
+	const { ToggleMenu } = recipes;
+	const actionPath = '/test';
+	const tabs = TABS;
+	let props: StyleProps;
 
-	let currentTabs = stores.ui.currentTabs
-	let currentTab = $currentTabs.ui || DEFAULT_TABS[0]
+	let currentTabs = stores.ui.currentTabs;
+	let currentTab = $currentTabs.ui || DEFAULT_TABS[0];
 
-	let categoryItems: {[name: string]: any} = {
+	let categoryItems: { [name: string]: any } = {
 		tokens: tokens,
 		blocks: blocks,
 		layouts: layouts,
-		recipes: recipes,
-		graphics: graphics,
-	}
+		recipes: recipes
+		// graphics: graphics
+	};
 
-	let category: string
-	let title: string
-	let Component: ComponentType
+	let category: string;
+	let title: string;
+	let Component: ComponentType;
 
 	function handleTabChange(event: CustomEvent) {
-		stores.ui.currentTabs.set({ui: event.detail.selected[0]})
+		stores.ui.currentTabs.set({ ui: event.detail.selected[0] });
 	}
 
-	$: category = $page.params.category
-	$: title = $page.params.component
-	$: Component = categoryItems[category][title]
-	$: path = $page.url.pathname
-	$: currentTab = $currentTabs.ui
+	$: category = $page.params.category;
+	$: title = $page.params.component;
+	$: Component = categoryItems[category][title];
+	$: path = $page.url.pathname;
+	$: currentTab = $currentTabs.ui;
 	$: markdowns =
-		$page.data.markdowns && $page.data.markdowns[category] ? $page.data.markdowns[category] : []
-	$: content = markdowns.find(({meta}) => meta.title === title) || {
-		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
-	}
-	$: headerClass = `l:grid:header:${currentTab.value} bp:xs bg:polar`
-	$: props = utils.props.getElementProps(content.meta)
+		$page.data.markdowns && $page.data.markdowns[category] ? $page.data.markdowns[category] : [];
+	$: content = markdowns.find(({ meta }) => meta.title === title) || {
+		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`
+	};
+	$: headerClass = `l:grid:header:${currentTab.value} bp:xs bg:polar`;
+	$: props = utils.props.getElementProps(content.meta);
 </script>
 
 <Head {title} page="Test" description={`${title} Test Page`} />
@@ -76,18 +76,18 @@
 		action={`/test?/updateTab&redirectTo=${$page.url.pathname}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
-			return ({update}) => {
-				update({reset: false})
-			}
+			return ({ update }) => {
+				update({ reset: false });
+			};
 		}}
 	>
 		<ToggleMenu
 			id={`submit.${path}`}
 			items={tabs.map((tab) => {
 				if (tab.value == currentTab.value) {
-					tab.initial = 'pressed'
+					tab.initial = 'pressed';
 				}
-				return tab
+				return tab;
 			})}
 			size="md"
 			container="card:md"
