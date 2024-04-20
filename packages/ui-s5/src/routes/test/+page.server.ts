@@ -2,11 +2,13 @@ import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 import {DsTabsUpdate} from '$lib/forms/ds-tabs-update'
 import {DsStateUpdate} from '$lib/forms/ds-state-update'
-import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
+import {api} from '@fat-fuzzy/playbook'
 import {DsContextReveal} from '$lib/forms/ds-context-reveal'
 import constants from '$lib/types/constants'
 
 const {TABS, DEFAULT_REVEAL_STATE, DEFAULT_STYLES, DEFAULT_DS_STATE} = constants
+
+const DsStylesUpdate= api.form
 
 export const actions = {
 	toggleContext: async ({request, url, cookies}) => {

@@ -1,17 +1,13 @@
 <script lang="ts">
 	import { api } from '@fat-fuzzy/playbook';
-	import type { LayoutData } from './$types';
-	import type { StylesApi } from '$lib/api/styles';
 	import { onDestroy, setContext } from 'svelte';
 	import { page } from '$app/stores';
 
-	import { initStyles } from '$lib/api/styles';
 	import * as settingsStore from '$stores/settings';
-	import * as stores from '$stores/ui';
 
 	import { tokens, blocks, layouts, recipes, graphics, constants } from '$lib';
 
-	export let data: LayoutData;
+	export let data;
 
 	const { RevealNav } = recipes;
 	let path = $page.url.pathname;
@@ -34,10 +30,10 @@
 	let title = 'Fat Fuzzy Test';
 
 	let sidebarReveal = sidebar || DEFAULT_NAV_REVEAL_STATE;
-	let stylesApi: StylesApi = initStyles();
+	let stylesApi = api.stylesApi.initStyles();
 
-	stores.styles.set(styles);
-	stores.reveal.set(context);
+	api.stylesApi.stores.styles.set(styles);
+	api.stylesApi.stores.reveal.set(context);
 
 	setContext('stylesApi', stylesApi);
 	setContext('styles', stylesApi.getStyleTree());
