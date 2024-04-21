@@ -50,3 +50,7 @@ a:hover {
 	outline: var(--outline-width) dotted var(--current-color);
 	outline-offset: var(--outline-offset);
 }
+
+[disabled] {
+	pointer-events: none;
+}
