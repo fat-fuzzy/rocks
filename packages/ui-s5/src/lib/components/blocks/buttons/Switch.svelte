@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import {type ButtonType, type UiState} from '$types'
-	import type {ButtonStates} from '$types'
+	import type {ButtonStates, ButtonPayload, ButtonType, UiState} from '$types'
+	import constants from '$lib/types/constants'
+
+	const {STATE_SWITCHER} = constants
 
 	type Props = {
 		/**
@@ -56,6 +58,7 @@
 	}: Props = $props()
 
 	function handleClick(event: MouseEvent) {
+		initial = STATE_SWITCHER[initial]
 		if (currentState.onclick) currentState.onclick(event, payload)
 		else if (onclick) onclick(event, payload)
 	}

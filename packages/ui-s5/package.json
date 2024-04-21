@@ -28,7 +28,8 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"svelte": "^4.0.0"
+		"svelte": "^4.0.0",
+		"@sveltejs/kit": "^2.5.6"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
@@ -38,7 +39,6 @@
 		"@fat-fuzzy/style": "workspace:*",
 		"@playwright/test": "^1.43.1",
 		"@sveltejs/adapter-auto": "^3.2.0",
-		"@sveltejs/kit": "^2.5.6",
 		"@sveltejs/package": "^2.3.1",
 		"@sveltejs/vite-plugin-svelte": "^3.1.0",
 		"mdsvex": "^0.11.0",

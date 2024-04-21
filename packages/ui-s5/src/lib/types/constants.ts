@@ -22,6 +22,12 @@ const DEFAULT_DS_STATE: {
 	settingsReveal: {reveal: 'minimize'},
 }
 
+
+const STATE_SWITCHER: {[key: string]: string} = {
+	active: 'inactive',
+	inactive: 'active',
+}
+
 const TRANSITION_REVEAL: {[key: string]: string} = {
 	show: 'minimize',
 	minimize: 'show',
@@ -207,6 +213,7 @@ const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
 
 export default {
 	UI_STATE,
+	STATE_SWITCHER,
 	DEFAULT_TABS,
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
