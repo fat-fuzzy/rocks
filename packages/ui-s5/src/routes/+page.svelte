@@ -1,15 +1,6 @@
 <script>
-	const hues = [
-		'neutral',
-		'warning',
-		'primary',
-		'info',
-		'accent',
-		'success',
-		'highlight',
-		'danger'
-	];
-	const shades = ['000', '100', '200', '300', '400', '500', '600'];
+	const hues = ['neutral', 'warning', 'primary', 'info', 'accent', 'success', 'highlight', 'danger']
+	const shades = ['000', '100', '200', '300', '400', '500', '600']
 </script>
 
 <div class="l:center:xs">
@@ -35,19 +26,19 @@
 	<div class="l:main:50 l:stack:md">
 		<div class="buttons l:stack:md">
 			<div class="l:flex align:end">
-				<button class="bg:primary:300 size:lg scale:minor">primary:300 minor lg</button>
-				<button class="bg:primary:200 size:md scale:minor">primary:200 minor md</button>
-				<button class="bg:primary:100 size:sm scale:minor">primary:100 minor sm</button>
+				<button class="bg:primary size:lg scale:minor">primary minor lg</button>
+				<button class="bg:primary size:md scale:minor">primary minor md</button>
+				<button class="bg:primary size:sm scale:minor">primary minor sm</button>
 			</div>
 			<div class="l:flex align:end">
-				<button class="bg:accent:300 size:lg">accent:300 default lg</button>
-				<button class="bg:accent:200 size:md">accent:200 default md</button>
-				<button class="bg:accent:100 size:sm">accent:100 default sm</button>
+				<button class="bg:primary size:lg">primary default lg</button>
+				<button class="bg:primary size:md">primary default md</button>
+				<button class="bg:primary size:sm">primary default sm</button>
 			</div>
 			<div class="l:flex align:end">
-				<button class="bg:highlight:300 size:lg scale:major">highlight:300 major lg</button>
-				<button class="bg:highlight:200 size:md scale:major">highlight:200 major md</button>
-				<button class="bg:highlight:100 size:sm scale:major">highlight:100 major sm</button>
+				<button class="bg:primary size:lg scale:major">primary major lg</button>
+				<button class="bg:primary size:md scale:major">primary major md</button>
+				<button class="bg:primary size:sm scale:major">primary major sm</button>
 			</div>
 			<div class="l:flex align:end">
 				<button class="bg:primary variant:fill">primary fill</button>
@@ -116,17 +107,17 @@
 	</div>
 
 	<article class="l:side l:stack:md">
-		<div class="bg:accent:000 card:fill">
+		<div class="bg:primary:000 card:fill layer">
 			<h3>This is a Subtitle</h3>
-			<small>Lorem ipsum dolor</small>
+			<h4>Lorem ipsum dolor</h4>
 			<p>
 				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
 				aspernatur voluptatum labore dolores perspiciatis.
 			</p>
 		</div>
-		<div class="bg:accent:000 card:outline">
+		<div class="bg:primary:000 card:outline">
 			<h3>This is a Subtitle</h3>
-			<small>Lorem ipsum dolor</small>
+			<h4>Lorem ipsum dolor</h4>
 			<p>
 				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
 				aspernatur voluptatum labore dolores perspiciatis.
@@ -134,7 +125,7 @@
 		</div>
 		<div class="bg:accent:000 card box:dotted">
 			<h3>This is a Subtitle</h3>
-			<small>Lorem ipsum dolor</small>
+			<h4>Lorem ipsum dolor</h4>
 			<p>
 				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
 				aspernatur voluptatum labore dolores perspiciatis.
@@ -142,7 +133,7 @@
 		</div>
 		<div class="bg:higlight:000 card dotted">
 			<h3>This is a Subtitle</h3>
-			<small>Lorem ipsum dolor</small>
+			<h4>Lorem ipsum dolor</h4>
 			<p>
 				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
 				aspernatur voluptatum labore dolores perspiciatis.
@@ -155,16 +146,6 @@
 	/**
 Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palettes
 */
-	@layer demo.usage {
-		h1 {
-			font-size: 2rem;
-			color: var(--ink);
-		}
-		small {
-			color: var(--ink);
-		}
-	}
-
 	@layer demo.palette {
 		.palette {
 			display: flex;
@@ -194,21 +175,6 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 		* {
 			box-sizing: border-box;
 			margin: 0;
-		}
-
-		html {
-			block-size: 100%;
-			color-scheme: dark light;
-		}
-
-		body {
-			min-block-size: 100%;
-			font-family: system-ui, sans-serif;
-
-			display: grid;
-			place-content: center;
-			gap: var(--gap);
-			grid-auto-flow: column;
 		}
 
 		p {
