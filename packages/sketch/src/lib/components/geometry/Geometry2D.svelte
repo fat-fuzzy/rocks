@@ -4,9 +4,9 @@
 	import {createEventDispatcher, onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import Position from '$lib/components/Position.svelte'
-	import Scale from '$lib/components/Scale.svelte'
-	import Rotation from '$lib/components/Rotation.svelte'
+	import Position from '$lib/components/geometry/Position.svelte'
+	import Scale from '$lib/components/geometry/Scale.svelte'
+	import Rotation from '$lib/components/geometry/Rotation.svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {Button} = blocks
 

@@ -3,11 +3,11 @@
 
 	import {afterUpdate, onDestroy} from 'svelte'
 
-	import Geometry2D from '$lib/components/Geometry2D.svelte'
-	import Geometry3D from '$lib/components/Geometry3D.svelte'
-	import FieldOfView from '$lib/components/FieldOfView.svelte'
-	import Camera from '$lib/components/Camera.svelte'
-	import Player from '$lib/components/Player.svelte'
+	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
+	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
+	import FieldOfView from '$lib/components/scene/FieldOfView.svelte'
+	import Camera from '$lib/components/scene/Camera.svelte'
+	import Player from '$lib/components/player/Player.svelte'
 	import {recipes} from '@fat-fuzzy/ui-s5'
 	const {ToggleMenu} = recipes
 

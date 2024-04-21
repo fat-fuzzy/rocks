@@ -15,17 +15,17 @@
 
 	let state = $state('idle')
 
-	function clear(event: MouseEvent) {
+	function clear(event: MouseEvent, payload) {
 		console.log('clear', event)
-		console.log('payload', event.detail)
+		console.log('payload', payload)
 	}
-	function play(event: MouseEvent) {
+	function play(event: MouseEvent, payload) {
 		console.log('play', event)
-		console.log('payload', event.detail)
+		console.log('payload', payload)
 	}
-	function pause(event: MouseEvent) {
+	function pause(event: MouseEvent, payload) {
 		console.log('pause', event)
-		console.log('payload', event.detail)
+		console.log('payload', payload)
 	}
 	const playSwitch: SwitchState = {
 		active: {
@@ -33,22 +33,22 @@
 			text: 'Pause',
 			asset: 'emoji:pause',
 			variant: 'outline',
-			onclick: (e) => pause(e),
+			onclick: pause,
 		},
 		inactive: {
 			value: 'play',
 			text: 'Play',
 			asset: 'emoji:play',
 			variant: 'fill',
-			onclick: (e) => play(e),
+			onclick: play,
 		},
 	}
 </script>
 
 <menu {id} class={`l:switcher:${size} w:full nowrap`}>
 	<Switch
-		id={`${id}-button`}
-		name="player-button"
+		id={`${id}-player-button`}
+		name="play"
 		states={playSwitch}
 		{color}
 		{size}
@@ -58,14 +58,14 @@
 		{disabled}
 	/>
 	<Button
-		id="clear"
+		id={`${id}-clear-button`}
 		name="clear"
 		value="clear"
 		{color}
 		{variant}
 		{size}
 		asset="emoji:clear"
-		onclick={(e) => clear(e)}
+		onclick={clear}
 		disabled={disabled || state === 'clear'}>Clear</Button
 	>
 </menu>
