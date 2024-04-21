@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
 
-	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
-
+	import {blocks} from '@fat-fuzzy/ui-s5'
+	const {InputRange} = blocks
 	const dispatch = createEventDispatcher()
 
 	export let id = 'position'

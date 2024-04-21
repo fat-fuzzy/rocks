@@ -4,10 +4,11 @@
 	import {createEventDispatcher, onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import Position from '$lib/components/graphics/Position.svelte'
-	import Scale from '$lib/components/graphics/Scale.svelte'
-	import Rotation from '$lib/components/graphics/Rotation.svelte'
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
+	import Position from '$lib/components/Position.svelte'
+	import Scale from '$lib/components/Scale.svelte'
+	import Rotation from '$lib/components/Rotation.svelte'
+	import {blocks} from '@fat-fuzzy/ui-s5'
+	const {Button} = blocks
 
 	export let id = 'geometry-2d'
 	export let method = 'POST'

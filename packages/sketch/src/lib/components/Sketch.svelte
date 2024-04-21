@@ -1,188 +1,189 @@
 <script lang="ts">
-	import type { Scene, SceneContext, SceneMeta, Filters } from '$lib/types';
+	import type {Scene, SceneContext, SceneMeta, Filters} from '$lib/types'
 
-	import { afterUpdate, onDestroy } from 'svelte';
+	import {afterUpdate, onDestroy} from 'svelte'
 
-	import Geometry2D from '$lib/components/graphics/Geometry2D.svelte';
-	import Geometry3D from '$lib/components/graphics/Geometry3D.svelte';
-	import FieldOfView from '$lib/components/graphics/FieldOfView.svelte';
-	import Camera from '$lib/components/graphics/Camera.svelte';
-	import Player from '$lib/components/graphics/Player.svelte';
-	import ToggleMenu from '../recipes/menus/ToggleMenu.svelte';
+	import Geometry2D from '$lib/components/Geometry2D.svelte'
+	import Geometry3D from '$lib/components/Geometry3D.svelte'
+	import FieldOfView from '$lib/components/FieldOfView.svelte'
+	import Camera from '$lib/components/Camera.svelte'
+	import Player from '$lib/components/Player.svelte'
+	import {recipes} from '@fat-fuzzy/ui-s5'
+	const {ToggleMenu} = recipes
 
-	export let id = 'sketch';
-	export let scene: Scene;
-	export let title: string;
-	export let asset: string;
-	export let dimensions = 'video';
-	export let layer = 'layer'; // if 'layer' the canvas will appear on a layer (with drop shadow)
-	export let color = '';
-	export let size = '';
-	export let variant = '';
-	export let background = '';
-	export let layout = 'switcher';
-	export let breakpoint = '';
-	export let threshold = '';
-	export let meta: SceneMeta | undefined = undefined;
+	export let id = 'sketch'
+	export let scene: Scene
+	export let title: string
+	export let asset: string
+	export let dimensions = 'video'
+	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
+	export let color = ''
+	export let size = ''
+	export let variant = ''
+	export let background = ''
+	export let layout = 'switcher'
+	export let breakpoint = ''
+	export let threshold = ''
+	export let meta: SceneMeta | undefined = undefined
 
-	let feedback: { message: string; status: string } | undefined = undefined;
-	let canvas: HTMLCanvasElement | null = null;
-	let width: number;
-	let height: number;
-	let context: SceneContext;
-	let programInfo;
-	let fieldOfView = 60;
-	let cameraAngle = 60;
+	let feedback: {message: string; status: string} | undefined = undefined
+	let canvas: HTMLCanvasElement | null = null
+	let width: number
+	let height: number
+	let context: SceneContext
+	let programInfo
+	let fieldOfView = 60
+	let cameraAngle = 60
 
-	let frame: number;
-	let state = 'clear';
+	let frame: number
+	let state = 'clear'
 	let filters: Filters = {
 		channels: 'rgba',
 		blur: undefined,
-		effects: ['normal']
-	};
-
-	function degToRad(degrees: number) {
-		return degrees * (Math.PI / 180);
+		effects: ['normal'],
 	}
 
-	$: state = feedback ? `${feedback.status}` : state;
+	function degToRad(degrees: number) {
+		return degrees * (Math.PI / 180)
+	}
+
+	$: state = feedback ? `${feedback.status}` : state
 	$: showGeometry =
 		context !== undefined &&
 		scene?.meta?.type !== 'texture' &&
-		(state === 'play' || state === 'pause');
-	$: currentAsset = state === 'clear' && asset ? asset : `emoji:${state}`;
+		(state === 'play' || state === 'pause')
+	$: currentAsset = state === 'clear' && asset ? asset : `emoji:${state}`
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
-		: `l:frame:${dimensions}`;
+		: `l:frame:${dimensions}`
 	$: frameClasses = canvas
 		? `canvas ${backgroundClass} ${layer} state:${state} ${currentAsset}`
-		: `canvas ${backgroundClass} ${layer} card:xl`;
+		: `canvas ${backgroundClass} ${layer} card:xl`
 
 	function init() {
 		if (canvas) {
 			try {
-				programInfo = scene.main(canvas, { filters });
+				programInfo = scene.main(canvas, {filters})
 				if (state === 'clear' || !context) {
-					context = programInfo.context;
+					context = programInfo.context
 				}
-				scene.update(context);
+				scene.update(context)
 			} catch (e: any) {
-				feedback = { status: 'error', message: e };
+				feedback = {status: 'error', message: e}
 			}
 		}
 	}
 
 	const loop = (t) => {
-		scene.draw(t);
+		scene.draw(t)
 		frame = requestAnimationFrame((t) => {
-			loop(t);
-		});
-	};
+			loop(t)
+		})
+	}
 
 	const play = () => {
 		if (scene.meta?.type !== 'texture') {
-			loop(Date.now());
+			loop(Date.now())
 		} else {
 			frame = requestAnimationFrame((t) => {
-				scene.draw(t);
-			});
+				scene.draw(t)
+			})
 		}
-	};
+	}
 
 	const clear = () => {
-		cancelAnimationFrame(frame);
-		scene.clear();
+		cancelAnimationFrame(frame)
+		scene.clear()
 		filters = {
 			channels: 'rgba',
-			blur: undefined
-		};
-	};
+			blur: undefined,
+		}
+	}
 
 	const pause = () => {
-		cancelAnimationFrame(frame);
-		scene.update(context);
-	};
+		cancelAnimationFrame(frame)
+		scene.update(context)
+	}
 
 	function updateGeometry(event: CustomEvent) {
-		context = event.detail.value;
+		context = event.detail.value
 	}
 
 	function updateFieldOfView(event: CustomEvent) {
-		context.fieldOfView = degToRad(event.detail.value);
+		context.fieldOfView = degToRad(event.detail.value)
 	}
 
 	function updateCamera(event: CustomEvent) {
-		context.cameraAngle = degToRad(event.detail.value);
+		context.cameraAngle = degToRad(event.detail.value)
 	}
 
 	const handleToggle = (event: CustomEvent) => {
-		state = event.detail.selected[0].value;
+		state = event.detail.selected[0].value
 		switch (state) {
 			case 'play':
-				play();
-				break;
+				play()
+				break
 			case 'pause':
-				pause();
-				break;
+				pause()
+				break
 			case 'clear':
-				clear();
-				break;
+				clear()
+				break
 		}
-	};
+	}
 
 	const handleToggleChannel = (event: CustomEvent) => {
-		const value = event.detail.selected[0].value;
+		const value = event.detail.selected[0].value
 
 		filters = {
 			channels: value,
-			blur: undefined
-		};
+			blur: undefined,
+		}
 
 		if (canvas) {
-			programInfo = scene.main(canvas, { filters });
+			programInfo = scene.main(canvas, {filters})
 		}
-	};
+	}
 
 	const handleToggleBlur = (event: CustomEvent) => {
-		const value = event.detail.selected[0].value;
+		const value = event.detail.selected[0].value
 
 		if (value === filters.blur) {
-			filters.blur = undefined;
+			filters.blur = undefined
 		} else {
-			filters.blur = value;
+			filters.blur = value
 		}
 
 		if (canvas) {
-			programInfo = scene.main(canvas, { filters });
+			programInfo = scene.main(canvas, {filters})
 		}
-	};
+	}
 
 	const handleUpdateEffects = (event: CustomEvent) => {
-		const value = event.detail.selected;
+		const value = event.detail.selected
 
 		filters = {
-			effects: value.map((v) => v.value)
-		};
-		if (canvas) {
-			programInfo = scene.main(canvas, { filters });
+			effects: value.map((v) => v.value),
 		}
-	};
+		if (canvas) {
+			programInfo = scene.main(canvas, {filters})
+		}
+	}
 
 	const handleMouseEvent = (event: MouseEvent) => {
-		scene.update(context, event);
-	};
+		scene.update(context, event)
+	}
 
 	afterUpdate(() => {
 		if (state !== 'pause') {
-			init();
+			init()
 		}
-	});
+	})
 	onDestroy(() => {
 		if (frame) {
-			clear();
+			clear()
 		}
-	});
+	})
 </script>
 
 <article class={`l:grid:sketch bp:xs`}>
@@ -288,7 +289,7 @@
 										id: c,
 										text: c,
 										value: c,
-										initial: c === filters.channels ? 'pressed' : undefined
+										initial: c === filters.channels ? 'pressed' : undefined,
 									}))}
 									on:click={handleToggleChannel}
 									disabled={state === 'pause'}
@@ -305,7 +306,7 @@
 										id: b,
 										text: b,
 										value: b,
-										initial: b === filters.blur ? 'pressed' : undefined
+										initial: b === filters.blur ? 'pressed' : undefined,
 									}))}
 									on:click={handleToggleBlur}
 									disabled={state === 'pause'}
@@ -322,7 +323,7 @@
 										id: b,
 										text: b,
 										value: b,
-										initial: filters.effects?.includes(b) ? 'pressed' : undefined
+										initial: filters.effects?.includes(b) ? 'pressed' : undefined,
 									}))}
 									on:click={handleUpdateEffects}
 									disabled={state === 'pause'}

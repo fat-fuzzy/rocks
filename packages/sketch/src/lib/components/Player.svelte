@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {SwitchState} from '$types'
-	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
+	import {blocks} from '@fat-fuzzy/ui-s5'
+	const {Button, Switch} = blocks
 
 	import {createEventDispatcher} from 'svelte'
 

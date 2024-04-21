@@ -1,8 +1,7 @@
 <script lang="ts">
 	import {createEventDispatcher} from 'svelte'
-
-	import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
-
+	import {blocks} from '@fat-fuzzy/ui-s5'
+	const {InputRange} = blocks
 	export let color = ''
 
 	export let id = 'scale'
