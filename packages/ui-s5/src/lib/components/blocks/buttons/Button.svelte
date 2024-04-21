@@ -44,7 +44,7 @@
 		color,
 		size,
 		shape,
-		variant = 'fill',
+		variant,
 		container,
 		dimensions,
 		layout = 'flex',
@@ -57,19 +57,27 @@
 		}
 	}: Props = $props();
 
-	let containerClasses = container?.startsWith('main')
-		? `l:${container}:${dimensions}`
-		: `l:${container}:${size}`;
+
+	/* Element styles */
+	let colorClass = color ? `bg:${color}` : '';
+	let sizeClass = size ? `size:${size}` : '';
+	let fontClass = size ? `font:${size}` : '';
+	let variantClass = variant ? `variant:${variant}` : '';
 	let shapeClass = shape ? ` shape:${shape}` : '';
 	let alignClass = align ? `align:${align}` : '';
+
+	/* Context styles */
+	let containerClasses = container && dimensions
+		? `l:${container}:${dimensions}`
+		:  container && size ? `l:${container}:${size}` : '';
 	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`;
-	let contextClasses = `${layoutClasses} ${containerClasses}`;
-	let elementClasses = `${asset} ${color} ${size} ${shapeClass} ${variant} align:${alignClass} font:${size}`;
+	let contextClasses =`${containerClasses} ${layoutClasses}`;
 
-	// Order is important
-	let buttonClasses = $derived(`${contextClasses} ${elementClasses}`);
+	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${fontClass}`;
 
-	let payload = $derived({
+	let buttonClasses = `${contextClasses} ${elementClasses}`
+
+	let payload = $state({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value
