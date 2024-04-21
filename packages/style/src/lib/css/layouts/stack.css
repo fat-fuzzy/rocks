@@ -28,3 +28,31 @@
 [class*='l\:stack'] > * + * {
 	margin-block-start: var(--gap);
 }
+
+.l\:stack\:2xs {
+	--gap: var(--size-base-2xs);
+}
+
+.l\:stack\:xs {
+	--gap: var(--size-base-xs);
+}
+
+.l\:stack\:sm {
+	--gap: var(--size-base-sm);
+}
+
+.l\:stack\:md {
+	--gap: var(--size-base-md);
+}
+
+.l\:stack\:lg {
+	--gap: var(--size-base-lg);
+}
+
+.l\:stack\:xl {
+	--gap: var(--size-base-xl);
+}
+
+.l\:stack\:2xl {
+	--gap: var(--size-base-2xl);
+}

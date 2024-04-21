@@ -4,7 +4,6 @@
 * (instead of normal wrap where items will wrap independently of one another)
 */
 [class*='l:switcher:'] {
-	--gap: var(--gap-md);
 	--threshold: var(--bp-md);
 	display: flex;
 	flex-wrap: wrap;
@@ -22,4 +21,32 @@
 
 [class*='l:switcher:'].reverse {
 	flex-direction: row-reverse;
+}
+
+.l\:switcher\:2xs {
+	--gap: var(--size-base-2xs);
+}
+
+.l\:switcher\:xs {
+	--gap: var(--size-base-xs);
+}
+
+.l\:switcher\:sm {
+	--gap: var(--size-base-sm);
+}
+
+.l\:switcher\:md {
+	--gap: var(--size-base-md);
+}
+
+.l\:switcher\:lg {
+	--gap: var(--size-base-lg);
+}
+
+.l\:switcher\:xl {
+	--gap: var(--size-base-xl);
+}
+
+.l\:switcher\:2xl {
+	--gap: var(--size-base-2xl);
 }
