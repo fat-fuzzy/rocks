@@ -16,16 +16,16 @@
 	let state = $state('idle')
 
 	function clear(event: MouseEvent, payload) {
-		console.log('clear', event)
-		console.log('payload', payload)
+		// console.log('clear payload', payload)
+		state = 'clear'
 	}
 	function play(event: MouseEvent, payload) {
-		console.log('play', event)
-		console.log('payload', payload)
+		// console.log('play payload', payload)
+		state = 'play'
 	}
 	function pause(event: MouseEvent, payload) {
-		console.log('pause', event)
-		console.log('payload', payload)
+		// console.log('pause payload', payload)
+		state = 'pause'
 	}
 	const playSwitch: SwitchState = {
 		active: {
