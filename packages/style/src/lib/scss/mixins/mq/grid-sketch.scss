@@ -7,11 +7,11 @@
 				'scene context'
 				'scene context';
 			grid-template-columns: 1fr auto;
-			padding-block-end: var(--current-size-plus);
+			padding-block-end: var(--ui-size);
 		}
 
 		.l\:grid\:sketch.bp\:#{$size} > .context {
-			inline-size: calc(var(--current-side-size) / var(--ratio));
+			inline-size: calc(var(--layout-sidebar-#{$size}) / var(--ratio));
 		}
 	}
 
@@ -21,11 +21,11 @@
 				'scene context'
 				'scene context';
 			grid-template-columns: 1fr auto;
-			padding-block-end: var(--current-size-plus);
+			padding-block-end: var(--ui-size);
 		}
 
 		.l\:grid\:sketch.bp\:#{$size} > .context {
-			inline-size: calc(var(--current-side-size) / var(--ratio));
+			inline-size: calc(var(--layout-sidebar-#{$size}) / var(--ratio));
 		}
 	}
 
