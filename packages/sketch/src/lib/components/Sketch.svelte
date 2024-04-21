@@ -117,8 +117,8 @@
 		context.cameraAngle = degToRad(event.detail.value)
 	}
 
-	const handleToggle = (event: CustomEvent) => {
-		state = event.detail.selected[0].value
+	const handleToggle = (event: MouseEvent, payload) => {
+		state = payload.state
 		switch (state) {
 			case 'play':
 				play()
@@ -227,7 +227,7 @@
 	</div>
 	<aside class="context">
 		{#if canvas}
-			<Player on:click={handleToggle} {color} size="xs" {variant} disabled={Boolean(feedback)} />
+			<Player onclick={handleToggle} {color} size="xs" {variant} disabled={Boolean(feedback)} />
 			{#if showGeometry}
 				{#if meta?.type === 'matrix-2d'}
 					<Geometry2D

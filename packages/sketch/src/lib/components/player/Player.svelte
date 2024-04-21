@@ -4,28 +4,35 @@
 	const {Button, Switch} = blocks
 
 	type Props = {
-		id: string
+		id?: string
 		size: string
 		variant?: string
 		color: string
-		mode: 'radio' | 'multiple'
 		disabled?: boolean
+		onclick?: (event: MouseEvent, payload: any /* ButtonPayload */) => void
 	}
-	let {id = 'player', size, variant = 'outline', color = 'primary', disabled}: Props = $props()
+	let {
+		id = 'player',
+		size,
+		variant = 'outline',
+		color = 'primary',
+		disabled,
+		onclick,
+	}: Props = $props()
 
 	let state = $state('idle')
 
-	function clear(event: MouseEvent, payload) {
-		// console.log('clear payload', payload)
+	function clear(event: MouseEvent) {
 		state = 'clear'
+		if (onclick) onclick(event, payload)
 	}
-	function play(event: MouseEvent, payload) {
-		// console.log('play payload', payload)
+	function play(event: MouseEvent) {
 		state = 'play'
+		if (onclick) onclick(event, payload)
 	}
-	function pause(event: MouseEvent, payload) {
-		// console.log('pause payload', payload)
+	function pause(event: MouseEvent) {
 		state = 'pause'
+		if (onclick) onclick(event, payload)
 	}
 	const playSwitch: SwitchState = {
 		active: {
@@ -43,24 +50,26 @@
 			onclick: play,
 		},
 	}
+
+	let payload = $derived({
+		state,
+	})
 </script>
 
 <menu {id} class={`l:switcher:${size} w:full nowrap`}>
 	<Switch
-		id={`${id}-player-button`}
+		id={id ? `${id}-player-button` : 'player-button'}
 		name="play"
 		states={playSwitch}
 		{color}
 		{size}
 		initial="inactive"
 		container="main"
-		dimensions="50 grow:1"
 		{disabled}
 	/>
 	<Button
-		id={`${id}-clear-button`}
+		id={id ? `${id}-clear-button` : 'clear-button'}
 		name="clear"
-		value="clear"
 		{color}
 		{variant}
 		{size}
