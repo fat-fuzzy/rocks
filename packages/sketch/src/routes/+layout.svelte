@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
 	import {layouts, recipes} from '@fat-fuzzy/ui-s5'
 	const {Sidebar} = layouts
@@ -9,7 +10,7 @@
 	$: items = sketches
 </script>
 
-<Sidebar size="xxs">
+<Sidebar size="sm">
 	<svelte:fragment slot="side">
 		<Nav
 			id="nav-page"

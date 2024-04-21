@@ -1,0 +1,1 @@
+export type UiDimensions = 'xs' | 'sm' | 'md' | 'lg' | 'xl';

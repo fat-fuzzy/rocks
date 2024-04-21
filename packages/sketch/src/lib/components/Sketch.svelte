@@ -19,7 +19,7 @@
 	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
 	export let color = ''
 	export let size = ''
-	export let variant = ''
+	export let variant = 'outline'
 	export let background = ''
 	export let layout = 'switcher'
 	export let breakpoint = ''

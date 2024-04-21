@@ -1,0 +1,1 @@
+export type PlayerStates = 'idle' | 'playing' | 'paused' | 'ended' | 'cleared';

@@ -3,107 +3,69 @@
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {Button, Switch} = blocks
 
-	import {createEventDispatcher} from 'svelte'
-
-	const dispatch = createEventDispatcher()
-
-	export let id = 'player-controls'
-	export let size = ''
-	export let variant = 'outline'
-	export let color = ''
-	export let mode = 'radio'
-	export let disabled: boolean | undefined = undefined
-
-	let selected: {
+	type Props = {
 		id: string
-		value: string
-		pressed: boolean
-		name: string
-		send: (event: string) => unknown
-	}[] = []
-
-	const onClick = (event: CustomEvent) => {
-		switch (mode) {
-			case 'multiple':
-				if (event.detail.pressed) {
-					selected = [...selected, event.detail]
-				} else {
-					selected = selected.filter((c) => c.value !== event.detail.value)
-				}
-				break
-			case 'radio':
-				if (event.detail.pressed) {
-					if (!playerState.send) {
-						playerState = event.detail
-					}
-					if (playerState.value !== event.detail.value) {
-						selected.forEach((c) => {
-							if (c.value !== playerState.value && c.pressed) {
-								c.send('SWITCH')
-							}
-						})
-					}
-				}
-				if (event.detail.pressed === undefined) {
-					if (state === 'play' && playerState.send) {
-						playerState.send('SWITCH')
-					}
-				}
-				state = event.detail.value
-				selected = [event.detail]
-				break
-			default:
-				break
-		}
-
-		dispatch('click', {
-			selected,
-		})
+		size: string
+		variant?: string
+		color: string
+		mode: 'radio' | 'multiple'
+		disabled?: boolean
 	}
+	let {id = 'player', size, variant = 'outline', color = 'primary', disabled}: Props = $props()
 
-	export let items: any = {
-		button: {id: 'clear', value: 'clear', text: 'Clear', asset: 'emoji:clear'},
-		switch: {
-			active: {
-				id: 'pause',
-				value: 'pause',
-				text: 'Pause',
-				asset: 'emoji:pause',
-				variant: 'outline',
-			},
-			inactive: {
-				id: 'play',
-				value: 'play',
-				text: 'Play',
-				asset: 'emoji:play',
-				variant: 'fill',
-			},
+	let state = $state('idle')
+
+	function clear(event: MouseEvent) {
+		console.log('clear', event)
+		console.log('payload', event.detail)
+	}
+	function play(event: MouseEvent) {
+		console.log('play', event)
+		console.log('payload', event.detail)
+	}
+	function pause(event: MouseEvent) {
+		console.log('pause', event)
+		console.log('payload', event.detail)
+	}
+	const playSwitch: SwitchState = {
+		active: {
+			value: 'pause',
+			text: 'Pause',
+			asset: 'emoji:pause',
+			variant: 'outline',
+			onclick: (e) => pause(e),
+		},
+		inactive: {
+			value: 'play',
+			text: 'Play',
+			asset: 'emoji:play',
+			variant: 'fill',
+			onclick: (e) => play(e),
 		},
 	}
-	let playerState: SwitchState = items.switch['inactive']
-	let state = 'clear'
 </script>
 
 <menu {id} class={`l:switcher:${size} w:full nowrap`}>
 	<Switch
-		id={`${id}-switch-play-pause`}
-		states={items.switch}
+		id={`${id}-button`}
+		name="player-button"
+		states={playSwitch}
 		{color}
 		{size}
+		initial="inactive"
 		container="main"
 		dimensions="50 grow:1"
 		{disabled}
-		on:click={onClick}
 	/>
 	<Button
-		id={`${id}-button-clear`}
-		text="Clear"
-		asset="emoji:clear"
-		{variant}
+		id="clear"
+		name="clear"
+		value="clear"
 		{color}
+		{variant}
 		{size}
-		{...items.button}
-		on:click={onClick}
-		disabled={disabled || state === 'clear'}
-	/>
+		asset="emoji:clear"
+		onclick={(e) => clear(e)}
+		disabled={disabled || state === 'clear'}>Clear</Button
+	>
 </menu>
