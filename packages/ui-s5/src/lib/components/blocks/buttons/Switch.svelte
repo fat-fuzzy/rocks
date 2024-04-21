@@ -11,7 +11,6 @@
 		name: string
 		title?: string
 		initial?: UiState
-		value?: string
 		disabled?: boolean
 		formaction?: string
 		states: ButtonStates // this component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
@@ -31,14 +30,14 @@
 		layout?: string
 		type?: ButtonType
 		children?: Snippet
-		onclick?: (event: MouseEvent) => any
+		onclick?: (event: MouseEvent, payload: ButtonPayload) => void
 	}
+
 	let {
 		id = 'switch', // TODO: use for machine id
 		name = 'switch',
 		title,
 		initial = 'inactive',
-		value,
 		disabled,
 		formaction,
 		states,
@@ -53,16 +52,17 @@
 		layout = 'flex',
 		type = 'submit',
 		children,
-		onclick = (event: MouseEvent) => {
-			console.log('click', event)
-			console.log('payload', payload)
-			return {payload}
-		},
+		onclick,
 	}: Props = $props()
 
+	function handleClick(event: MouseEvent) {
+		if (currentState.onclick) currentState.onclick(event, payload)
+		else if (onclick) onclick(event, payload)
+	}
 	/* Element state */
 	let pressed = $derived(initial === 'active')
 	let currentState = $derived(states[initial])
+	let value = $derived(currentState.value)
 
 	/* Element styles */
 	let colorClass = color ? `bg:${color}` : ''
@@ -103,7 +103,7 @@
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value: currentState.value || value,
+		value,
 		pressed,
 	})
 </script>
@@ -118,13 +118,17 @@
 	value={currentState.value}
 	class={buttonClasses}
 	data-key={name}
-	onclick={currentState.onclick ?? onclick}
+	onclick={handleClick}
 	aria-pressed={pressed}
 >
-	{#if shape}
-		<span class="sr-only">{title}</span>
+	{#if children}
+		{@render children()}
 	{:else}
-		<span class="sr-only">{title}</span>
-		<span class="viz-only">{currentState.text}</span>
+		{#if shape}
+			<span class="sr-only">{title}</span>
+		{:else}
+			<span class="sr-only">{title}</span>
+			<span class="viz-only">{currentState.text}</span>
+		{/if}
 	{/if}
 </button>

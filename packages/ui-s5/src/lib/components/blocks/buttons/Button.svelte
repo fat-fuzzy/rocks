@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { ButtonType } from '$types';
+	import type { ButtonType, ButtonPayload } from '$types';
 
 	type Props = {
 		/**
@@ -8,7 +8,6 @@
 		 */
 		id: string; // TODO: use for machine id
 		name: string;
-		text?: string;
 		title?: string;
 		value?: string;
 		disabled?: boolean;
@@ -29,12 +28,11 @@
 		layout?: string;
 		type?: ButtonType;
 		children?: Snippet;
-		onclick: (event: MouseEvent) => any;
+		onclick: (event: MouseEvent, payload:ButtonPayload) => void;
 	};
 	let {
 		id = 'button', // TODO: use for machine id
 		name = 'button',
-		text,
 		title,
 		value,
 		disabled,
@@ -50,13 +48,14 @@
 		layout = 'flex',
 		type = 'submit',
 		children,
-		onclick = (event: MouseEvent) => {
-			console.log('click', event);
-			console.log('payload', payload);
-			return payload;
-		}
+		onclick
 	}: Props = $props();
 
+
+
+	function handleClick(event: MouseEvent) {
+		if (onclick) onclick(event, payload)
+	}
 
 	/* Element styles */
 	let colorClass = color ? `bg:${color}` : '';
@@ -77,7 +76,7 @@
 
 	let buttonClasses = `${contextClasses} ${elementClasses}`
 
-	let payload = $state({
+	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value
@@ -94,7 +93,7 @@
 	{value}
 	class={buttonClasses}
 	data-key={name}
-	{onclick}
+	onclick={handleClick}
 >
 	{#if children}
 		{@render children()}

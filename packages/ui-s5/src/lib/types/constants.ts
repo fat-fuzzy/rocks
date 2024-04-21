@@ -1,5 +1,5 @@
 import type {Settings, Tab} from '$types'
-import type {StyleTree} from '$lib/api/styles/types'
+// import type {StyleTree} from '$lib/api/styles/types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
@@ -76,7 +76,7 @@ const UI_STATE = {
 	ERROR: 'error',
 }
 
-const DEFAULT_STYLES: StyleTree = {
+const DEFAULT_STYLES /*: StyleTree */ = {
 	tokens: {
 		element: {color: 'primary', typography: 'h1'},
 	},
