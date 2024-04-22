@@ -1,9 +1,8 @@
 <script lang="ts">
-	import {createEventDispatcher, onMount} from 'svelte'
+	import {createEventDispatcher} from 'svelte'
 
 	const dispatch = createEventDispatcher()
 
-	// @ts-check
 	export let id = ''
 	export let name = ''
 	export let label = 'Range'
@@ -17,7 +16,7 @@
 	export let size = ''
 	export let align = ''
 	export let items: any[] = []
-	export let disabled: boolean
+	export let disabled: boolean | undefined = undefined
 	let layout = 'stack'
 
 	let valueLabel = value
@@ -65,7 +64,19 @@
 		value = valueObject ? valueObject : value
 	}
 
-	$: classes = `l:${layout}:${size} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
+	/* Element styles */
+	let colorClass = color ? `color:${color}` : ''
+	let sizeClass = size ? `size:${size}` : ''
+	let variantClass = variant ? `variant:${variant}` : ''
+	let alignClass = align ? `align:${align}` : ''
+
+	let elementClasses = `${colorClass} ${sizeClass} ${variantClass} ${alignClass}`
+
+	/* Context styles */
+	let layoutClasses = breakpoint ? `l:${layout} bp:${breakpoint}` : `l:${layout}`
+
+	let inputClasses = `${layoutClasses} ${elementClasses}`
+
 	$: {
 		if (items.length) {
 			let selectedMarker = markers.find((m) => m.label === value)
@@ -79,7 +90,7 @@
 	}
 </script>
 
-<label for={id} class={classes}>
+<label for={id} class={inputClasses}>
 	<span class={`font:${size}`}>
 		{label}:
 		{valueLabel}

@@ -16,11 +16,24 @@
 	export let multiple = true
 	let layout = 'stack'
 
-	$: classes = `l:${layout} bp:${breakpoint} font:${size} ${size} ${color} ${variant} ${align}`
-	$: hintClasses = `feedback card:${size} ${asset} ${status} outline font:${size}:minus ${color} ${variant} ${align}`
+	/* Element styles */
+	let colorClass = color ? `color:${color}` : ''
+	let sizeClass = size ? `size:${size}` : ''
+	let fontClass = size ? `font:${size}` : ''
+	let variantClass = variant ? `variant:${variant}` : ''
+	let alignClass = align ? `align:${align}` : ''
+
+	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${fontClass}`
+
+	/* Context styles */
+	let layoutClasses = breakpoint ? `l:${layout} bp:${breakpoint}` : `l:${layout}`
+	let hintClasses = `feedback card:${size} ${asset} ${status} ${colorClass} ${variantClass} ${alignClass}`
+	hintClasses = fontClass ? `${hintClasses} ${fontClass}:minus` : `${hintClasses}`
+
+	let inputClasses = `${layoutClasses} ${elementClasses}`
 </script>
 
-<label for={id} class={classes}>
+<label for={id} class={inputClasses}>
 	<span class={`font:${size} ${color}`}>{label}</span>
 	{#if hint}<p id={`${id}-hint`} class={hintClasses}>{hint}</p>
 	{/if}
