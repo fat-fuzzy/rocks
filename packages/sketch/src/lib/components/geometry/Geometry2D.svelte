@@ -16,13 +16,13 @@
 	export let canvasHeight: number
 	export let geometry: GeometryProps
 	export let background = ''
-	export let layout = ''
+	export let layout = 'stack'
 	export let threshold = ''
-	export let size = ''
+	export let size = 'xs'
 	export let formaction = 'updateGeometry'
 	export let actionPath: string | undefined = undefined
 	export let redirect: string | undefined = undefined
-	export let disabled: boolean
+	export let disabled: boolean | undefined = undefined
 
 	const dispatch = createEventDispatcher()
 
@@ -65,7 +65,7 @@
 </script>
 
 <form
-	class={`l:${layout}:${size} th:${threshold} maki:block lg geometry ${backgroundClass}`}
+	class={`l:${layout}:${size} th:${threshold} maki:block geometry ${backgroundClass}`}
 	name="geometry-update"
 	{method}
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
@@ -83,8 +83,8 @@
 		bind:maxX
 		bind:maxY
 		on:input={update}
-		color={'primary'}
-		size={`xs l:burrito:${threshold} maki:inline`}
+		color="primary"
+		size="xs"
 		{disabled}
 	/>
 	<Rotation
@@ -92,8 +92,8 @@
 		bind:angle
 		max={360}
 		on:input={update}
-		color={'accent'}
-		size={`xs l:burrito:${threshold} maki:inline`}
+		color="accent"
+		size="xs"
 		{disabled}
 	/>
 	<Scale
@@ -105,8 +105,8 @@
 		minX={-5}
 		minY={-5}
 		on:input={update}
-		color={'highlight'}
-		size={`xs l:burrito:${threshold} maki:inline`}
+		color="highlight"
+		size="xs"
 		{disabled}
 	/>
 	{#await Promise.resolve()}

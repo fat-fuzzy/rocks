@@ -15,7 +15,7 @@
 	export let maxY = 0
 	export let minZ: number | undefined = undefined
 	export let maxZ: number | undefined = undefined
-	export let disabled: boolean
+	export let disabled: boolean | undefined = undefined
 
 	const dispatch = createEventDispatcher()
 

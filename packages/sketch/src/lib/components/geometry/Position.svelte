@@ -16,7 +16,7 @@
 	export let maxY = 100
 	export let maxZ: number | undefined = undefined
 	export let minZ: number | undefined = undefined
-	export let disabled: boolean
+	export let disabled: boolean | undefined = undefined
 
 	function updateX() {
 		dispatch('input', {

@@ -73,6 +73,7 @@
 		{color}
 		{variant}
 		{size}
+		value="clear"
 		asset="emoji:clear"
 		onclick={clear}
 		disabled={disabled || state === 'clear'}>Clear</Button
