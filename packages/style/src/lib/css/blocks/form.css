@@ -17,23 +17,21 @@ label,
 legend,
 .form\:element {
 	font-weight: var(--font-weight-ui);
-	padding-inline-start: 0;
-	padding-inline-end: 0;
+	padding-inline: 0;
 	background-color: inherit;
 }
 
 input,
 select,
 textarea {
-	--current-color: var(--color-dark);
-	--current-accent-color: var(--current-gray-contrast);
-	--current-padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
-	--current-padding-inline: var(--ui-size);
-	border: 1px solid var(--current-accent-color);
+	--accent-color: var(--shade);
+	--border-color: var(--shade);
+	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
+	--padding-inline: var(--ui-size);
+	border: 1px solid var(--border-color);
 	border-radius: var(--radius-base);
-	color: var(--current-color);
-	accent-color: var(--current-accent-color);
-	border-color: var(--current-accent-color);
+	color: var(--ink);
+	accent-color: var(--accent-color);
 	font-size: var(--font-size);
 	padding: var(--current-padding-block) var(--current-padding-inline);
 }
