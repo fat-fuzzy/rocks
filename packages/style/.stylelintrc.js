@@ -11,6 +11,7 @@ const cssRules = {
 	'color-function-notation': null,
 	'value-keyword-case': null,
 	'hue-degree-notation': null,
+	'selector-attribute-quotes': 'always',
 }
 const scssRules = {
 	'selector-class-pattern': '([a-z](\\:)?)+((\\:)?[a-z])+',
