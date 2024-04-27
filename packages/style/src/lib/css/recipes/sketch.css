@@ -1,5 +1,6 @@
 [class*='state:'].canvas {
 	--current-border-color: var(--current-primary-light, var(--color-neutral));
+	position: relative;
 	border: var(--border-width) dotted var(--current-border-color);
 }
 
@@ -63,5 +64,5 @@
 	height: fit-content;
 	width: calc(100% - 2 * var(--ui-size-lg));
 	max-height: calc(100% - 2 * var(--ui-size-lg));
-	overflow: scroll;
+	overflow: auto;
 }
