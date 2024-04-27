@@ -1,9 +1,7 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
-	import type {ButtonStates, ButtonPayload, ButtonType, UiState} from '$types'
-	import constants from '$lib/types/constants'
-
-	const {STATE_SWITCHER} = constants
+	import {onMount, type Snippet} from 'svelte'
+	import type {ButtonStates,  ButtonType, UiState} from '$types'
+	import {switchActor} from '$lib/actors/button-actors'
 
 	type Props = {
 		/**
@@ -32,7 +30,7 @@
 		layout?: string
 		type?: ButtonType
 		children?: Snippet
-		onclick?: (event: MouseEvent, payload: ButtonPayload) => void
+		onclick?: (payload) => void
 	}
 
 	let {
@@ -58,14 +56,26 @@
 	}: Props = $props()
 
 	function handleClick(event: MouseEvent) {
-		initial = STATE_SWITCHER[initial]
-		if (currentState.onclick) currentState.onclick(event, payload)
-		else if (onclick) onclick(event, payload)
+		// The payload corresponds the value that is displayed to the user before the click
+		// -> we pass that value to the parent component
+		if (currentState.onclick) currentState.onclick(payload)
+		if (onclick) onclick(payload)
+		// Once the parent has been updated, we switch the current state of the button
+		actor.send({type: 'SWITCH'})
 	}
+
+	let actor = switchActor({id, initial})
+	actor.subscribe((snapshot: any) => {
+		switchState = snapshot.value
+	})
+
+
 	/* Element state */
-	let pressed = $derived(initial === 'active')
-	let currentState = $derived(states[initial])
+	let switchState = $state(initial)
+	let pressed = $derived(switchState === 'active')
+	let currentState = $derived(states[switchState])
 	let value = $derived(currentState.value)
+
 
 	/* Element styles */
 	let colorClass = color ? `bg:${color}` : ''
@@ -87,18 +97,10 @@
 
 	let buttonClasses = $derived.by(() => {
 		/* State dependent styles */
-		let variantClass = ''
-		if (currentState.variant) {
-			variantClass = `variant:${currentState.variant}`
-		} else if (variant) {
-			variantClass = `variant:${variant}`
-		}
-		let assetClass = ''
-		if (currentState.asset) {
-			assetClass = currentState.asset
-		} else if (asset) {
-			assetClass = asset
-		}
+		let variantClass = currentState.variant ?? variant
+		variantClass =  variantClass ? `variant:${variantClass}`: ''
+		let assetClass = currentState.asset ?? asset
+		assetClass =  assetClass ? `asset:${assetClass}`: ''
 		let stateClasses = `${assetClass} ${variantClass}`
 		return `${contextClasses} ${elementClasses} ${stateClasses}`
 	})
@@ -108,6 +110,10 @@
 		name,
 		value,
 		pressed,
+	})
+
+	onMount(() => {
+		actor.start()
 	})
 </script>
 

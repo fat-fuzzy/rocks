@@ -28,7 +28,7 @@
 		layout?: string;
 		type?: ButtonType;
 		children?: Snippet;
-		onclick: (event: MouseEvent, payload:ButtonPayload) => void;
+		onclick?: (payload:ButtonPayload) => void;
 	};
 	let {
 		id = 'button', // TODO: use for machine id
@@ -54,7 +54,7 @@
 
 
 	function handleClick(event: MouseEvent) {
-		if (onclick) onclick(event, payload)
+		if (onclick) onclick(payload)
 	}
 
 	/* Element styles */
@@ -76,7 +76,7 @@
 
 	let buttonClasses = `${contextClasses} ${elementClasses}`
 
-	let payload = $derived({
+	let payload = $state({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value

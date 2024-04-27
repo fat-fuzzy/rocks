@@ -1,26 +1,29 @@
 export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
-export enum UiState { active ='active', inactive= 'inactive'}
+export enum UiState {
+	active = 'active',
+	inactive = 'inactive',
+}
 
 export type Settings = {
 	[key: string]: string
 }
 
-export type ButtonPayload =  {
-	id: string, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
-	name: string,
+export type ButtonPayload = {
+	id: string // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+	name: string
 	value: string
 }
 
-export type ButtonState =  {
+export type ButtonState = {
 	text: string
 	value: string
 	asset: string
 	variant?: string
-	onclick: (event: MouseEvent, payload:any) => void;
+	onclick: (event: MouseEvent, payload: any) => void
 }
 
 export type ButtonStates = {
-	[UiState.active]: ButtonState,
+	[UiState.active]: ButtonState
 	[UiState.inactive]: ButtonState
 }
 
