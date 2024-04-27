@@ -111,7 +111,7 @@
 	{#if items.length}
 		<datalist id={`${id}-markers`} class="l:flex justify:between">
 			{#each markers as { id, label, value }}
-				<option {id} {label} {value} />
+				<option {id} {label} {value}></option>
 			{/each}
 		</datalist>
 	{/if}

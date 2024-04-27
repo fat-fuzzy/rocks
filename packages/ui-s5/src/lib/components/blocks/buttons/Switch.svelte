@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount, type Snippet} from 'svelte'
-	import type {ButtonStates,  ButtonType, UiState} from '$types'
+	import type {ButtonStates, ButtonPayload, ButtonType, UiState} from '$types'
 	import {switchActor} from '$lib/actors/button-actors'
 
 	type Props = {
@@ -30,11 +30,11 @@
 		layout?: string
 		type?: ButtonType
 		children?: Snippet
-		onclick?: (payload) => void
+		onclick?: (payload: ButtonPayload) => void
 	}
 
 	let {
-		id = 'switch', // TODO: use for machine id
+		id = 'switch',
 		name = 'switch',
 		title,
 		initial = 'inactive',
@@ -69,7 +69,6 @@
 		switchState = snapshot.value
 	})
 
-
 	/* Element state */
 	let switchState = $state(initial)
 	let pressed = $derived(switchState === 'active')
@@ -84,25 +83,24 @@
 	let shapeClass = shape ? ` shape:${shape}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${fontClass}`
+	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
 
 	/* Context styles */
-	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
-	let containerClasses =
-		container && dimensions
-			? `l:${container}:${dimensions}`
-			: container && size
-				? `l:${container}:${size}`
-				: ''
-	let contextClasses = `${containerClasses} ${layoutClasses}`
+	let containerClasses =''
+	if (container) {
+		containerClasses =  dimensions
+				? `l:${container}:${dimensions}`
+				: `l:${container}:${size}`
+	}
 
 	let buttonClasses = $derived.by(() => {
 		/* State dependent styles */
 		let variantClass = currentState.variant ?? variant
 		variantClass =  variantClass ? `variant:${variantClass}`: ''
-		let assetClass = currentState.asset ?? asset
-		assetClass =  assetClass ? `asset:${assetClass}`: ''
+		let assetClass = (currentState.asset ?? asset) ?? ''
 		let stateClasses = `${assetClass} ${variantClass}`
-		return `${contextClasses} ${elementClasses} ${stateClasses}`
+
+		return `${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
 	})
 
 	let payload = $derived({

@@ -1,47 +1,47 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
-	import { type ButtonType, type UiState } from '$types';
-	import type { ButtonStates } from '$types';
+	import {onMount, type Snippet} from 'svelte'
+	import type {ButtonPayload, ButtonType, UiState} from '$types'
+	import type {StateSwitch} from '$types'
+	import {expandActor} from '$lib/actors/button-actors'
 
 	type Props = {
 		/**
 		 * State props
 		 */
-		id: string;
-		name: string;
-		controls: string; // id of the DOM element that is controlled by this button
-		text?: string;
-		title?: string;
-		initial?: UiState;
-		value?: string;
-		disabled?: boolean;
-		formaction?: string;
-		states: ButtonStates; // this component contains a button that will Expand the DOM element it controls when active, or minimize it when inactive. Each state can have its own text, style, and asset (if any) according to its active / inactive state
+		id: string
+		name: string
+		controls: string // id of the DOM element that is controlled by this button
+		text?: string
+		title?: string
+		initial?: UiState
+		disabled?: boolean
+		formaction?: string
+		states: StateSwitch // this component contains a button that will Expand the DOM element it controls when active, or minimize it when inactive. Each state can have its own text, style, and asset (if any) according to its active / inactive state
 
 		/**
 		 * Style props
 		 */
-		align?: string;
-		asset?: string; // emoji:value or svg:value
-		color?: string;
-		size?: string;
-		shape?: string;
-		variant?: string;
+		align?: string
+		asset?: string // emoji:value or svg:value
+		color?: string
+		size?: string
+		shape?: string
+		variant?: string
 
-		container?: string;
-		dimensions?: string;
-		layout?: string;
-		type?: ButtonType;
-		children?: Snippet;
-		onclick: (event: MouseEvent) => any;
-	};
+		container?: string
+		dimensions?: string
+		layout?: string
+		type?: ButtonType
+		children?: Snippet
+		onclick?: (payload: ButtonPayload) => void
+	}
+
 	let {
 		id = 'expand', // TODO: use for machine id
 		name = 'expand',
 		controls,
 		title,
 		initial = 'inactive',
-		value,
 		disabled,
 		formaction,
 		states,
@@ -56,35 +56,64 @@
 		layout = 'flex',
 		type = 'submit',
 		children,
-		onclick = (event: MouseEvent) => {
-			console.log('click', event);
-			console.log('payload', payload);
-			return payload;
-		}
-	}: Props = $props();
+		onclick,
+	}: Props = $props()
 
-	let expanded = $derived(initial === 'active');
-	let currentState = $derived(states[initial]);
-	let containerClasses = container?.startsWith('main')
-		? `l:${container}:${dimensions}`
-		: `l:${container}:${size}`;
-	let shapeClass = shape ? ` shape:${shape}` : '';
-	let alignClass = align ? `align:${align}` : '';
-	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`;
-	let contextClasses = `${layoutClasses} ${containerClasses}`;
-	let elementClasses = `${asset} ${color} ${size} ${shapeClass} ${variant} align:${alignClass} font:${size}`;
-	let stateClasses = $derived(
-		`expand:${expanded} ${currentState.asset} ${currentState.variant || variant}`
-	);
+	function handleClick(event: MouseEvent) {
+		// The payload corresponds the value that is displayed to the user before the click
+		// -> we pass that value to the parent component
+		if (currentState.onclick) currentState.onclick(payload)
+		if (onclick) onclick(payload)
+		// Once the parent has been updated, we switch the current state of the button
+		actor.send({type: 'EXPAND'})
+	}
+
+	let actor = expandActor({id, initial})
+	actor.subscribe((snapshot: any) => {
+		expandState = snapshot.value
+	})
+
+	/* Element state */
+	let expandState = $state(initial)
+	let expanded = $derived(expandState === 'active')
+	let currentState = $derived(states[expandState])
+	let value = $derived(currentState.value)
+
+	/* Element styles */
+	let colorClass = color ? `bg:${color}` : ''
+	let sizeClass = size ? `size:${size}` : ''
+	let fontClass = size ? `font:${size}` : ''
+	let shapeClass = shape ? ` shape:${shape}` : ''
+	let alignClass = align ? `align:${align}` : ''
+	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${fontClass}`
+	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
+
+	/* Context styles */
+	let containerClasses = ''
+	if (container) {
+		containerClasses = dimensions ? `l:${container}:${dimensions}` : `l:${container}:${size}`
+	}
+
+	let buttonClasses = $derived.by(() => {
+		/* State dependent styles */
+		let variantClass = currentState.variant ?? variant
+		variantClass = variantClass ? `variant:${variantClass}` : ''
+		let assetClass = currentState.asset ?? asset ?? ''
+		let stateClasses = `${assetClass} ${variantClass}`
+
+		return `${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
+	})
+
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value,
-		expanded
-	});
+		expanded,
+	})
 
-	// Order is important
-	let buttonClasses = $derived(`${stateClasses} ${contextClasses} ${elementClasses}`);
+	onMount(() => {
+		actor.start()
+	})
 </script>
 
 <button
@@ -97,14 +126,18 @@
 	value={currentState.value}
 	class={buttonClasses}
 	data-key={name}
-	{onclick}
+	onclick={handleClick}
 	aria-expanded={expanded}
 	aria-controls={controls}
 >
+{#if children}
+	{@render children()}
+{:else}
 	{#if shape}
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>
-		<span class="viz-only">{currentState.text ?? title}</span>
+		<span class="viz-only">{currentState.text}</span>
 	{/if}
+{/if}
 </button>
