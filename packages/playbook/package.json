@@ -28,6 +28,9 @@
 		},
 		"./api": "./dist/index.js"
 	},
+	"peerDependencies": {
+		"svelte": "^4.0.0"
+	},
 	"dependencies": {
 		"@sveltejs/adapter-cloudflare": "^4.1.0",
 		"@sveltejs/kit": "^2.5.0",

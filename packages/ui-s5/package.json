@@ -27,9 +27,18 @@
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
+	"dependencies": {
+		"@sveltejs/adapter-auto": "^3.2.0",
+		"@sveltejs/kit": "^2.5.6",
+		"@sveltejs/package": "^2.3.1",
+		"@sveltejs/vite-plugin-svelte": "^3.1.0",
+		"@xstate/svelte": "^3.0.3",
+		"svelte": "5.0.0-next.110",
+		"svelte-check": "^3.6.9",
+		"xstate": "^5.7.1"
+	},
 	"peerDependencies": {
-		"svelte": "^4.0.0",
-		"@sveltejs/kit": "^2.5.6"
+		"svelte": "^4.0.0"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
@@ -38,15 +47,10 @@
 		"@fat-fuzzy/playbook": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@playwright/test": "^1.43.1",
-		"@sveltejs/adapter-auto": "^3.2.0",
-		"@sveltejs/package": "^2.3.1",
-		"@sveltejs/vite-plugin-svelte": "^3.1.0",
 		"mdsvex": "^0.11.0",
 		"postcss": "^8.4.38",
 		"prettier": "^3.2.5",
 		"publint": "^0.1.16",
-		"svelte": "5.0.0-next.110",
-		"svelte-check": "^3.6.9",
 		"tslib": "^2.6.2",
 		"typescript": "^5.4.5",
 		"vite": "^5.2.9",
