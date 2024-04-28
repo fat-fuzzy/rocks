@@ -68,7 +68,7 @@
 	}
 </script>
 
-<menu {id} class={`l:switcher:${size} w:full nowrap`}>
+<menu {id} class={`l:switcher:${size}`}>
 	<Switch
 		id="play"
 		name="play"
