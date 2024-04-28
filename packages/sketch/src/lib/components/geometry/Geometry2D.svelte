@@ -110,16 +110,20 @@
 		{disabled}
 	/>
 	{#await Promise.resolve()}
+		<!-- This will display if no JS is present -->>
 		<div class={`l:frame:twin card:lg`}>
 			<Button
-				title="Update geometry"
+				id="update-geometry"
+				name="update-geometry"
 				size="xl"
 				color="highlight"
 				variant="outline"
 				shape="round"
 				asset="emoji:nojs"
 				{disabled}
-			/>
+			>
+				Update geometry
+			</Button>
 		</div>
 	{:then}
 		<slot />

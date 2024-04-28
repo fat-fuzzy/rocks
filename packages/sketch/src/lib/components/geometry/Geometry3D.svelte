@@ -14,7 +14,7 @@
 	export let canvasHeight: number
 	export let geometry: GeometryProps
 	export let threshold = ''
-	export let disabled: boolean
+	export let disabled: boolean | undefined = undefined
 
 	const dispatch = createEventDispatcher()
 

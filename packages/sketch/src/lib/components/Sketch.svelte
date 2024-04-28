@@ -36,7 +36,7 @@
 	let cameraAngle = 60
 
 	let frame: number
-	let state = 'clear'
+	let state = 'stop'
 	let filters: Filters = {
 		channels: 'rgba',
 		blur: undefined,
@@ -48,11 +48,12 @@
 	}
 
 	$: state = feedback ? `${feedback.status}` : state
+	$: disabled = state === 'pause' ? true : undefined
 	$: showGeometry =
 		context !== undefined &&
 		scene?.meta?.type !== 'texture' &&
-		(state === 'play' || state === 'pause')
-	$: currentAsset = state === 'clear' && asset ? asset : `emoji:${state}`
+		(state === 'play' || state === 'pause' || state === 'clear')
+	$: currentAsset = state === 'stop' && asset ? asset : `emoji:${state}`
 	$: backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
 		: `l:frame:${dimensions}`
@@ -64,7 +65,7 @@
 		if (canvas) {
 			try {
 				programInfo = scene.main(canvas, {filters})
-				if (state === 'clear' || !context) {
+				if (state === 'stop' || !context) {
 					context = programInfo.context
 				}
 				scene.update(context)
@@ -81,7 +82,7 @@
 		})
 	}
 
-	const play = () => {
+	function play() {
 		if (scene.meta?.type !== 'texture') {
 			loop(Date.now())
 		} else {
@@ -91,7 +92,7 @@
 		}
 	}
 
-	const clear = () => {
+	function clear() {
 		cancelAnimationFrame(frame)
 		scene.clear()
 		filters = {
@@ -100,7 +101,16 @@
 		}
 	}
 
-	const pause = () => {
+	function stop() {
+		cancelAnimationFrame(frame)
+		scene.clear()
+		filters = {
+			channels: 'rgba',
+			blur: undefined,
+		}
+	}
+
+	function pause() {
 		cancelAnimationFrame(frame)
 		scene.update(context)
 	}
@@ -117,8 +127,8 @@
 		context.cameraAngle = degToRad(event.detail.value)
 	}
 
-	const handleToggle = (event: MouseEvent, payload) => {
-		state = payload.state
+	function togglePlayer(payload: string) {
+		state = payload
 		switch (state) {
 			case 'play':
 				play()
@@ -129,10 +139,13 @@
 			case 'clear':
 				clear()
 				break
+			case 'stop':
+				stop()
+				break
 		}
 	}
 
-	const handleToggleChannel = (event: CustomEvent) => {
+	function handleToggleChannel(event: CustomEvent) {
 		const value = event.detail.selected[0].value
 
 		filters = {
@@ -145,7 +158,7 @@
 		}
 	}
 
-	const handleToggleBlur = (event: CustomEvent) => {
+	function handleToggleBlur(event: CustomEvent) {
 		const value = event.detail.selected[0].value
 
 		if (value === filters.blur) {
@@ -159,7 +172,7 @@
 		}
 	}
 
-	const handleUpdateEffects = (event: CustomEvent) => {
+	function handleUpdateEffects(event: CustomEvent) {
 		const value = event.detail.selected
 
 		filters = {
@@ -170,7 +183,7 @@
 		}
 	}
 
-	const handleMouseEvent = (event: MouseEvent) => {
+	function handleMouseEvent(event: MouseEvent) {
 		scene.update(context, event)
 	}
 
@@ -181,12 +194,12 @@
 	})
 	onDestroy(() => {
 		if (frame) {
-			clear()
+			stop()
 		}
 	})
 </script>
 
-<article class={`l:grid:sketch bp:xs`}>
+<div class={`l:grid:sketch bp:xs`}>
 	<div class="scene">
 		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
 			{#if scene?.meta?.input === 'mouse'}
@@ -201,8 +214,7 @@
 				>
 					<slot name="fallback-canvas">
 						<p class={`feedback emoji:default ${size} content`}>
-							With JavaScript enabled, you would see a demo of a canvas component used to display
-							and interact with WebGL animations
+							The canvas element needs JavaScript enabled to display and interact with animations
 						</p>
 					</slot>
 				</canvas>
@@ -210,24 +222,29 @@
 				<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
 					<slot name="fallback-canvas">
 						<p class={`feedback emoji:default ${size} content`}>
-							With JavaScript enabled, you would see a demo of a canvas component used to display
-							and interact with WebGL animations
+							The canvas element needs JavaScript enabled to display and interact with animations
 						</p>
 					</slot>
 				</canvas>
 			{/if}
-			{#await Promise.resolve()}
-				<p class={`feedback ${size} emoji:default content`}>Scene is loading...</p>
-			{:then}
-				{#if feedback}
-					<pre class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
-				{/if}
-			{/await}
+
+			{#if feedback}
+				<pre class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
+			{/if}
 		</div>
 	</div>
 	<aside class="context">
 		{#if canvas}
-			<Player onclick={handleToggle} {color} size="xs" {variant} disabled={Boolean(feedback)} />
+			<Player
+				play={() => togglePlayer('play')}
+				pause={() => togglePlayer('pause')}
+				clear={() => togglePlayer('clear')}
+				stop={() => togglePlayer('stop')}
+				{color}
+				size="xs"
+				{variant}
+				disabled={Boolean(feedback)}
+			/>
 			{#if showGeometry}
 				{#if meta?.type === 'matrix-2d'}
 					<Geometry2D
@@ -237,7 +254,7 @@
 						geometry={context}
 						canvasWidth={canvas.getBoundingClientRect().width}
 						canvasHeight={canvas.getBoundingClientRect().height}
-						disabled={state === 'pause'}
+						{disabled}
 					/>
 				{:else}
 					<div class={`l:${layout}:${size} th:${threshold} maki:block lg context bg:${background}`}>
@@ -248,7 +265,7 @@
 								on:input={updateCamera}
 								{color}
 								size={`xs l:burrito:${threshold}`}
-								disabled={state === 'pause'}
+								{disabled}
 							/>
 							<FieldOfView
 								id={`${id}-fieldOfView`}
@@ -257,7 +274,7 @@
 								on:input={updateFieldOfView}
 								{color}
 								size={`xs l:burrito:${threshold}`}
-								disabled={state === 'pause'}
+								{disabled}
 							/>
 						{:else if meta?.type === 'matrix-3d'}
 							<FieldOfView
@@ -267,7 +284,7 @@
 								on:input={updateFieldOfView}
 								{color}
 								size={`xs l:burrito:${threshold}`}
-								disabled={state === 'pause'}
+								{disabled}
 							/>
 							<Geometry3D
 								id={`${id}-context-3d`}
@@ -276,7 +293,7 @@
 								geometry={context}
 								canvasWidth={canvas.getBoundingClientRect().width}
 								canvasHeight={canvas.getBoundingClientRect().height}
-								disabled={state === 'pause'}
+								{disabled}
 							/>
 						{:else if meta?.type === 'texture'}
 							{#if meta?.channels}
@@ -292,7 +309,7 @@
 										initial: c === filters.channels ? 'pressed' : undefined,
 									}))}
 									on:click={handleToggleChannel}
-									disabled={state === 'pause'}
+									{disabled}
 								/>
 							{/if}
 							{#if meta?.blur}
@@ -309,7 +326,7 @@
 										initial: b === filters.blur ? 'pressed' : undefined,
 									}))}
 									on:click={handleToggleBlur}
-									disabled={state === 'pause'}
+									{disabled}
 								/>
 							{/if}
 							{#if meta?.convolutions}
@@ -326,7 +343,7 @@
 										initial: filters.effects?.includes(b) ? 'pressed' : undefined,
 									}))}
 									on:click={handleUpdateEffects}
-									disabled={state === 'pause'}
+									{disabled}
 								/>
 							{/if}
 						{/if}
@@ -335,4 +352,4 @@
 			{/if}
 		{/if}
 	</aside>
-</article>
+</div>

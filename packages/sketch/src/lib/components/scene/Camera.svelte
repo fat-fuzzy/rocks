@@ -15,7 +15,7 @@
 	export let min = -360
 	export let max = 360
 	export let step = 0.01
-	export let disabled: boolean
+	export let disabled: boolean | undefined = undefined
 
 	function update() {
 		dispatch('input', {

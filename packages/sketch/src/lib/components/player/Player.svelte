@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {SwitchState} from '$types'
+	import type {SwitchState, ButtonPayload} from '$types'
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {Button, Switch} = blocks
 
@@ -9,56 +9,66 @@
 		variant?: string
 		color: string
 		disabled?: boolean
-		onclick?: (event: MouseEvent, payload: any /* ButtonPayload */) => void
+		initial?: string
+		play: () => void
+		pause: () => void
+		clear: () => void
+		stop: () => void
 	}
+
 	let {
 		id = 'player',
 		size,
 		variant = 'outline',
 		color = 'primary',
+		initial = 'stop',
 		disabled,
-		onclick,
+		play,
+		pause,
+		clear,
+		stop,
 	}: Props = $props()
 
-	let state = $state('idle')
+	function updateState(payload: ButtonPayload) {
+		state = payload.value
+		switch (state) {
+			case 'play':
+				play()
+				break
+			case 'pause':
+				pause()
+				break
+			case 'clear':
+				clear()
+				break
+			case 'stop':
+				stop()
+				break
+		}
+	}
 
-	function clear(event: MouseEvent) {
-		state = 'clear'
-		if (onclick) onclick(event, payload)
-	}
-	function play(event: MouseEvent) {
-		state = 'play'
-		if (onclick) onclick(event, payload)
-	}
-	function pause(event: MouseEvent) {
-		state = 'pause'
-		if (onclick) onclick(event, payload)
-	}
+	let state = $state(initial)
 	const playSwitch: SwitchState = {
 		active: {
 			value: 'pause',
 			text: 'Pause',
 			asset: 'emoji:pause',
 			variant: 'outline',
-			onclick: pause,
+			onclick: updateState,
 		},
 		inactive: {
 			value: 'play',
 			text: 'Play',
 			asset: 'emoji:play',
 			variant: 'fill',
-			onclick: play,
+			onclick: updateState,
 		},
 	}
-
-	let payload = $derived({
-		state,
-	})
 </script>
 
 <menu {id} class={`l:switcher:${size} w:full nowrap`}>
 	<Switch
-		id={id ? `${id}-player-button` : 'player-button'}
+		id="play"
 		name="play"
 		states={playSwitch}
 		{color}
@@ -68,14 +78,29 @@
 		{disabled}
 	/>
 	<Button
-		id={id ? `${id}-clear-button` : 'clear-button'}
+		id="clear"
 		name="clear"
 		{color}
 		{variant}
 		{size}
 		value="clear"
 		asset="emoji:clear"
-		onclick={clear}
-		disabled={disabled || state === 'clear'}>Clear</Button
+		onclick={updateState}
+		disabled={state === 'clear' || state === 'stop' ? true : undefined}
 	>
+		Clear
+	</Button>
+	<Button
+		id="stop"
+		name="stop"
+		{color}
+		{variant}
+		{size}
+		value="stop"
+		asset="emoji:rect"
+		onclick={updateState}
+		disabled={state === 'stop' ? true : undefined}
+	>
+		Stop
+	</Button>
 </menu>
