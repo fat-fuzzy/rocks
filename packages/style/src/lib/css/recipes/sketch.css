@@ -14,11 +14,12 @@
 
 .state\:pause,
 .state\:feedback,
-.state\:clear {
+.state\:clear,
+.state\:stop {
 	background-color: var(--current-bg-color);
 }
 
-.state\:clear {
+.state\:stop {
 	--current-border-color: var(--current-primary, var(--color-neutral));
 	display: flex;
 	align-items: center;
@@ -28,12 +29,13 @@
 	overflow-x: hidden;
 }
 
-.state\:clear canvas {
+.state\:stop canvas {
 	margin-right: -100%; /* Hide the canvas without changing its dimensions */
 }
 
 .state\:play::before,
-.state\:pause::before {
+.state\:pause::before,
+.state\:clear::before {
 	height: fit-content;
 	position: absolute;
 	top: 0;
@@ -47,7 +49,7 @@
 	display: none;
 }
 
-.state\:clear::before {
+.state\:stop::before {
 	display: flex;
 	align-items: center;
 	justify-content: center;
