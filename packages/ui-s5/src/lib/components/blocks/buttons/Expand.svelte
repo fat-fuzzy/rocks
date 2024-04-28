@@ -1,8 +1,8 @@
 <script lang="ts">
-	import {onMount, type Snippet} from 'svelte'
+	import {type Snippet} from 'svelte'
 	import type {ButtonPayload, ButtonType, UiState} from '$types'
 	import type {StateSwitch} from '$types'
-	import {expandActor} from '$lib/actors/button-actors'
+	import {expandActor as actor} from '$lib/actors/button-actors'
 
 	type Props = {
 		/**
@@ -65,11 +65,11 @@
 		if (currentState.onclick) currentState.onclick(payload)
 		if (onclick) onclick(payload)
 		// Once the parent has been updated, we switch the current state of the button
-		actor.send({type: 'EXPAND'})
+		manager.send({type: 'EXPAND'})
 	}
 
-	let actor = expandActor({id, initial})
-	actor.subscribe((snapshot: any) => {
+	let manager = actor(id, initial, name)
+	manager.subscribe((snapshot: any) => {
 		expandState = snapshot.value
 	})
 
@@ -78,6 +78,13 @@
 	let expanded = $derived(expandState === 'active')
 	let currentState = $derived(states[expandState])
 	let value = $derived(currentState.value)
+
+	let payload = $derived({
+		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		name,
+		value,
+		expanded,
+	})
 
 	/* Element styles */
 	let colorClass = color ? `bg:${color}` : ''
@@ -104,15 +111,8 @@
 		return `${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
 	})
 
-	let payload = $derived({
-		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
-		name,
-		value,
-		expanded,
-	})
-
-	onMount(() => {
-		actor.start()
+	$effect(() => {
+		manager.start()
 	})
 </script>
 

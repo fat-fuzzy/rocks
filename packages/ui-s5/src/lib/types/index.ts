@@ -1,4 +1,10 @@
 export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
+
+export type ButtonContext = {
+	id: string // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
+	name: string
+}
+
 export enum UiState {
 	active = 'active',
 	inactive = 'inactive',
@@ -45,51 +51,51 @@ export type Tab = {
 	asset?: string
 }
 
-export type GeometryProps = {
-	color: number[]
-	translation: (number | undefined)[]
-	rotation: number[]
-	scale: (number | undefined)[]
-}
+// export type GeometryProps = {
+// 	color: number[]
+// 	translation: (number | undefined)[]
+// 	rotation: number[]
+// 	scale: (number | undefined)[]
+// }
 
-export type SceneContext = GeometryProps & {
-	fieldOfView?: number
-	cameraAngle?: number
-	animationSpeed?: number
-	pause?: boolean
-	image?: HTMLImageElement
-}
+// export type SceneContext = GeometryProps & {
+// 	fieldOfView?: number
+// 	cameraAngle?: number
+// 	animationSpeed?: number
+// 	pause?: boolean
+// 	image?: HTMLImageElement
+// }
 
-export type ProgramInfo = {
-	context: SceneContext
-}
+// export type ProgramInfo = {
+// 	context: SceneContext
+// }
 
-export type SceneMeta = {
-	input: string
-	type: string
-	camera: number
-	filename?: string
-	channels?: string[]
-	blur?: string[]
-	convolutions?: string[]
-}
+// export type SceneMeta = {
+// 	input: string
+// 	type: string
+// 	camera: number
+// 	filename?: string
+// 	channels?: string[]
+// 	blur?: string[]
+// 	convolutions?: string[]
+// }
 
-export type Filters = {
-	channels?: string
-	blur?: string
-	effects?: string[]
-}
+// export type Filters = {
+// 	channels?: string
+// 	blur?: string
+// 	effects?: string[]
+// }
 
-export type SceneOptions = {
-	url?: string
-	filters: Filters
-}
+// export type SceneOptions = {
+// 	url?: string
+// 	filters: Filters
+// }
 
-export type Scene = {
-	id: string
-	draw: () => void
-	clear: () => void
-	update: (value: SceneContext, event?: MouseEvent | TouchEvent) => void
-	main: (canvas: HTMLCanvasElement, options?: SceneOptions) => ProgramInfo
-	meta?: SceneMeta
-}
+// export type Scene = {
+// 	id: string
+// 	draw: () => void
+// 	clear: () => void
+// 	update: (value: SceneContext, event?: MouseEvent | TouchEvent) => void
+// 	main: (canvas: HTMLCanvasElement, options?: SceneOptions) => ProgramInfo
+// 	meta?: SceneMeta
+// }

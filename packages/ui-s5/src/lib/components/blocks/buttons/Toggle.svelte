@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {ButtonType, ButtonPayload, UiState} from '$types'
-	import {toggleActor} from '$lib/actors/button-actors'
+	import {toggleActor as actor} from '$lib/actors/button-actors'
 
 	type Props = {
 		/**
@@ -58,17 +58,24 @@
 		// -> we pass that value to the parent component
 		if (onclick) onclick(payload)
 		// Once the parent has been updated, we switch the current state of the button
-		actor.send({type: 'TOGGLE'})
+		manager.send({type: 'TOGGLE'})
 	}
-
-	let actor = toggleActor({id, initial})
-	actor.subscribe((snapshot: any) => {
-		toggleState = snapshot.value
-	})
 
 	/* Element state */
 	let toggleState = $state(initial)
 	let pressed = $derived(toggleState === 'active')
+
+	let payload = $derived({
+		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		name,
+		value,
+		pressed,
+	})
+
+	let manager = actor(id, initial, name)
+	manager.subscribe((snapshot: any) => {
+		toggleState = snapshot.value
+	})
 
 	/* Element styles */
 	let colorClass = color ? `bg:${color}` : ''
@@ -90,11 +97,8 @@
 	/* State dependent styles */
 	let buttonClasses = `${containerClass} ${layoutClasses} ${elementClasses}`
 
-	let payload = $derived({
-		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
-		name,
-		value,
-		pressed,
+	$effect(() => {
+		manager.start()
 	})
 </script>
 

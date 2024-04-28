@@ -1,5 +1,7 @@
-import type {Settings, Tab} from '$types'
+import type {Settings, Tab, ButtonContext} from '$types'
 // import type {StyleTree} from '$lib/api/styles/types'
+
+const DEFAULT_BUTTON_CONTEXT: ButtonContext = {id: '', name: '', value: '', pressed: false}
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
@@ -21,7 +23,6 @@ const DEFAULT_DS_STATE: {
 	sidebarReveal: {reveal: 'minimize'},
 	settingsReveal: {reveal: 'minimize'},
 }
-
 
 const STATE_SWITCHER: {[key: string]: string} = {
 	active: 'inactive',
@@ -214,6 +215,7 @@ const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
 export default {
 	UI_STATE,
 	STATE_SWITCHER,
+	DEFAULT_BUTTON_CONTEXT,
 	DEFAULT_TABS,
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
