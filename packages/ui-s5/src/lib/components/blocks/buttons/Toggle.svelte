@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {ButtonType, ButtonPayload, UiState} from '$types'
-	import {toggleActor as actor} from '$lib/actors/button-actors'
+	import {toggleActor as actor} from '$lib/actors/button-actors.js'
 
 	type Props = {
 		/**

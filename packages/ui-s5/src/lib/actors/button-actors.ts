@@ -3,7 +3,7 @@ import {
 	createExpandMachine,
 	createSwitchMachine,
 	createToggleMachine,
-} from '$lib/actors/button-machines'
+} from '$lib/actors/button-machines.js'
 
 type ActorOptions = {id: string; initial: string}
 
