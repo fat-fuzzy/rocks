@@ -30,6 +30,7 @@
 	}: Props = $props()
 
 	function updateState(payload: ButtonPayload) {
+		const tmp = state
 		state = payload.value
 		switch (state) {
 			case 'play':
@@ -40,6 +41,7 @@
 				break
 			case 'clear':
 				clear()
+				state = tmp
 				break
 			case 'stop':
 				stop()

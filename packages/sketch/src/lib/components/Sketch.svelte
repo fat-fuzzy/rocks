@@ -93,12 +93,11 @@
 	}
 
 	function clear() {
-		cancelAnimationFrame(frame)
-		scene.clear()
-		filters = {
-			channels: 'rgba',
-			blur: undefined,
-		}
+		state = 'stop'
+		stop()
+		init()
+		play()
+		state = 'play'
 	}
 
 	function stop() {
