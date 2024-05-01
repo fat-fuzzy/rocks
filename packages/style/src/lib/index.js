@@ -113,10 +113,7 @@ import './css/recipes/footer.css' /* Use for main app footer */
 import './css/recipes/article.css' /* Use for articles (header + section(s) + optional footer) */
 
 import './css/recipes/grid-header.css' /* Use for a page header layout */
-import './css/recipes/grid-sketch.css' /* Use for a Sketch layout */
 import './css/recipes/grid-props.css' /* Use for a props inputs layouts */
 
 import './css/recipes/api.css' /* Use for API components (used in Doc website) */
 import './css/recipes/app.css' /* Use for app layout specifics */
-import './css/recipes/sketch.css' /* Use for player inputs layout */
-import './css/recipes/geometry.css' /* Use for geometry inputs layout */

@@ -1,9 +1,9 @@
 .scene {
-	grid-area: 'scene';
+	grid-area: scene;
 }
 
 .context {
-	grid-area: 'context';
+	grid-area: context;
 }
 
 .l\:grid\:sketch {
@@ -22,3 +22,5 @@
 	flex-direction: column;
 	justify-content: flex-start;
 }
+
+

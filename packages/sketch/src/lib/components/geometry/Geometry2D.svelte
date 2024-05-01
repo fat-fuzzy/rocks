@@ -129,3 +129,7 @@
 		<slot />
 	{/await}
 </form>
+
+<style>
+	@import '../../styles/css/geometry.css';
+</style>

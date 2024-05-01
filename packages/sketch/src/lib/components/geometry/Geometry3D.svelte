@@ -132,3 +132,7 @@
 {:then}
 	<slot />
 {/await}
+
+<style>
+	@import '../../styles/css/geometry.css';
+</style>

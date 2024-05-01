@@ -1,0 +1,67 @@
+/* grid-sketch media queries */
+
+@mixin switchToRowStyles_GridSketch($breakpoint, $size) {
+	@media screen and (min-width: #{$breakpoint}) {
+		.l\:grid\:sketch.bp\:#{$size} {
+			grid-template-areas:
+				'scene context'
+				'scene context';
+			grid-template-columns: 1fr auto;
+			padding-block-end: var(--ui-size);
+		}
+
+		.l\:grid\:sketch.bp\:#{$size} > .context {
+			inline-size: calc(var(--layout-sidebar-#{$size}) / var(--ratio));
+		}
+	}
+
+	@container (min-width: #{$breakpoint}) {
+		.l\:grid\:sketch.bp\:#{$size} {
+			grid-template-areas:
+				'scene context'
+				'scene context';
+			grid-template-columns: 1fr auto;
+			padding-block-end: var(--ui-size);
+		}
+
+		.l\:grid\:sketch.bp\:#{$size} > .context {
+			inline-size: calc(var(--layout-sidebar-#{$size}) / var(--ratio));
+		}
+	}
+
+	.l\:grid\:sketch.bp\:#{$size} > .scene {
+		grid-area: scene;
+	}
+
+	.l\:grid\:sketch.bp\:#{$size} > .context {
+		grid-area: context;
+	}
+}
+
+@media screen and (min-width: 320px) {
+	@include switchToRowStyles_GridSketch(320px, 'xxs');
+}
+
+@media screen and (min-width: 620px) {
+	@include switchToRowStyles_GridSketch(620px, 'xs');
+}
+
+@media screen and (min-width: 935px) {
+	@include switchToRowStyles_GridSketch(935px, 'sm');
+}
+
+@media screen and (min-width: 1360px) {
+	@include switchToRowStyles_GridSketch(1360px, 'md');
+}
+
+@media screen and (min-width: 1620px) {
+	@include switchToRowStyles_GridSketch(1620px, 'lg');
+}
+
+@media screen and (min-width: 2048px) {
+	@include switchToRowStyles_GridSketch(2048px, 'xl');
+}
+
+@media screen and (min-width: 3048px) {
+	@include switchToRowStyles_GridSketch(3048px, 'xxl');
+}

@@ -8,18 +8,18 @@
 	position: relative;
 }
 
-.state\:play {
+.state\:playing {
 	background-color: var(--current-polar);
 }
 
-.state\:pause,
+.state\:paused,
 .state\:feedback,
-.state\:clear,
-.state\:stop {
+.state\:idle,
+.state\:stopped {
 	background-color: var(--current-bg-color);
 }
 
-.state\:stop {
+.state\:stopped {
 	--current-border-color: var(--current-primary, var(--color-neutral));
 	display: flex;
 	align-items: center;
@@ -29,13 +29,17 @@
 	overflow-x: hidden;
 }
 
-.state\:stop canvas {
+.state\:stopped canvas {
 	margin-right: -100%; /* Hide the canvas without changing its dimensions */
 }
 
+.state\:paused canvas {
+	filter: grayscale(65%) opacity(35%) blur(1px);
+}
+
 .state\:play::before,
-.state\:pause::before,
-.state\:clear::before {
+.state\:paused::before,
+.state\:idle::before {
 	height: fit-content;
 	position: absolute;
 	top: 0;
@@ -44,12 +48,14 @@
 	line-height: 1;
 }
 
+.state\:freeze canvas::before,
+.state\:snapshot canvas::before,
 .state\:warning::before,
 .state\:error::before {
 	display: none;
 }
 
-.state\:stop::before {
+.state\:stopped::before {
 	display: flex;
 	align-items: center;
 	justify-content: center;

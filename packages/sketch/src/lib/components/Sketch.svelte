@@ -352,3 +352,9 @@
 		{/if}
 	</aside>
 </div>
+
+<style lang="scss">
+	@import '../styles/scss/grid-sketch.scss';
+	@import '../styles/css/grid-sketch.css';
+	@import '../styles/css/sketch.css';
+</style>

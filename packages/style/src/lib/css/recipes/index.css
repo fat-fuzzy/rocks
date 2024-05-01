@@ -11,10 +11,7 @@
 @import './article.css'; /* Use for articles (header + section(s) + optional footer) */
 
 @import './grid-header.css'; /* Use for a page header layout */
-@import './grid-sketch.css'; /* Use for a Sketch layout */
 @import './grid-props.css'; /* Use for a props inputs layouts */
 
 @import './api.css'; /* Use for API components (used in Doc website) */
 @import './app.css'; /* Use for app layout specifics */
-@import './sketch.css'; /* Use for player inputs layout */
-@import './geometry.css'; /* Use for geometry inputs layout */
