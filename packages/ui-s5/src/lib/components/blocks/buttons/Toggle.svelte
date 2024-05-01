@@ -26,11 +26,11 @@
 	}: ToggleProps = $props()
 
 	function handleClick(event: MouseEvent) {
+		// Once the parent has been updated, we switch the current state of the button
+		manager.send({type: 'TOGGLE'})
 		// The payload corresponds the value that is displayed to the user before the click
 		// -> we pass that value to the parent component
 		if (onclick) onclick(payload)
-		// Once the parent has been updated, we switch the current state of the button
-		manager.send({type: 'TOGGLE'})
 	}
 
 	let manager = actor(id, initial, name)

@@ -39,53 +39,24 @@
 		name: string
 		value: string
 		pressed: boolean
-		actor: {send: (event: {type: string}) => unknown}
-	}[] = $state([])
+		actor?: {send: (event: {type: string}) => unknown}
+	}[] = $state(items)
 
 	function onclick(payload: InputPayload) {
-		let isSelected = selected.find((c) => {
-			c.name === payload.name
-		})
-		if (payload.pressed) {
-			switch (mode) {
-				case 'multiple':
-					selected.push(payload)
-					break
-				case 'radio':
-					if (!isSelected) {
-            selected.push(payload)
-					}
-					selected.forEach((c) => {
-						if (c.name !== payload.name && c.pressed) {
-							c.actor.send({type: 'TOGGLE'})
-						}
-					})
-					break
-				case 'check':
-          // TODO: implement check mode
-					selected.forEach((c) => {
-						if (c.name === payload.name) {
-							c.actor.send({type: 'TOGGLE'})
-						}
-						if (c.name !== payload.name && c.pressed) {
-							c.actor.send({type: 'TOGGLE'})
-						}
-					})
-					break
-				default:
-					break
-			}
-		} else {
-			selected = selected.filter((c) => c.value !== payload.value)
+    if (!payload.pressed) {
+			selected = selected.filter((filter) => filter.name !== payload.name)
+		} else if (!selected.find((item) => item.name === payload.name)) {
+			selected.push(payload)
 		}
 
-		onupdate(selected)
+		onupdate(payload)
 	}
 
 	let type = formaction ? 'submit' : 'button'
 	let containerClass = container ? `${container}:${size}` : ''
 	let elementClasses =` l:${layout}:${size} th:${threshold} size:${size} mode:${mode}`
   let menuClasses = title ? elementClasses :`${elementClasses} ${containerClass}`
+
 </script>
 
 {#snippet menuContent()}

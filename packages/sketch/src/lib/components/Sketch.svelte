@@ -47,13 +47,25 @@
 	}: Props = $props()
 
 	let feedback: {message: string; status: string} | undefined = $state(undefined)
+	let sketchState = $state({
+		sketch: SketchState.idle,
+		canvas: CanvasState.idle,
+		geometry: GeometryState.untouched,
+		player: feedback?.status ?? PlayerState.stopped,
+	})
+
+	let filters: Filters = $state({
+		channels: 'rgba',
+		blur: undefined,
+		effects: ['normal'],
+	})
 	let canvas: HTMLCanvasElement | null = $state(null)
-	let width: number
-	let height: number
-	let context: SceneContext
-	let programInfo
-	let fieldOfView = 60
-	let cameraAngle = 60
+	let programInfo = $state(canvas ? scene.main(canvas, {filters}) : undefined)
+	let context: SceneContext = $state(programInfo?.context)
+	let width: number | undefined = $state(undefined)
+	let height: number | undefined = $state(undefined)
+	let fieldOfView = $state(60)
+	let cameraAngle = $state(60)
 
 	let frame: number
 	let events: {
@@ -63,18 +75,6 @@
 		previous: undefined,
 		current: 'init',
 	}
-
-	let sketchState = $state({
-		sketch: SketchState.idle,
-		canvas: CanvasState.idle,
-		geometry: GeometryState.untouched,
-		player: feedback?.status ?? PlayerState.stopped,
-	})
-	let filters: Filters = $state({
-		channels: 'rgba',
-		blur: undefined,
-		effects: ['normal'],
-	})
 
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
@@ -114,7 +114,7 @@
 		}
 	}
 
-	const loop = (t) => {
+	function loop(t) {
 		scene.draw(t)
 		frame = requestAnimationFrame((t) => {
 			loop(t)
@@ -153,6 +153,7 @@
 		filters = {
 			channels: 'rgba',
 			blur: undefined,
+			effects: ['normal'],
 		}
 		sketchState.canvas = CanvasState.idle
 		sketchState.sketch = PlayerState.idle
@@ -198,22 +199,16 @@
 		events.current = payload.event
 	}
 
-	function handleToggleChannel(event: CustomEvent) {
-		const value = event.detail.selected[0].value
-
-		filters = {
-			channels: value,
-			blur: undefined,
-		}
-
+	function updateChannel(selected: {name: string}) {
+		filters.channels = selected.name
+		filters.blur = undefined
 		if (canvas) {
 			programInfo = scene.main(canvas, {filters})
 		}
 	}
 
-	function handleToggleBlur(event: CustomEvent) {
-		const value = event.detail.selected[0].value
-
+	function updateBlur(selected: {name: string}) {
+		const value = selected.name
 		if (value === filters.blur) {
 			filters.blur = undefined
 		} else {
@@ -225,12 +220,13 @@
 		}
 	}
 
-	function handleUpdateEffects(event: CustomEvent) {
-		const value = event.detail.selected
-
-		filters = {
-			effects: value.map((v) => v.value),
+	function updateEffects(selected: {name: string; pressed: boolean}) {
+		if (!selected.pressed) {
+			filters.effects = filters.effects.filter((filter: string) => filter !== selected.name)
+		} else if (!filters.effects.includes(selected.name)) {
+			filters.effects.push(selected.name)
 		}
+
 		if (canvas) {
 			programInfo = scene.main(canvas, {filters})
 		}
@@ -348,16 +344,18 @@
 							{#if meta?.channels}
 								<ToggleMenu
 									size="xs"
+									mode="radio"
 									layout="switcher"
 									color="primary"
 									variant="bare"
 									items={meta.channels.map((c) => ({
 										id: c,
+										name: c,
 										text: c,
 										value: c,
-										initial: c === filters.channels ? 'pressed' : undefined,
+										initial: c === filters.channels ? 'active' : 'inactive',
 									}))}
-									on:click={handleToggleChannel}
+									onupdate={updateChannel}
 									{disabled}
 								/>
 							{/if}
@@ -370,11 +368,12 @@
 									variant="bare"
 									items={meta.blur.map((b) => ({
 										id: b,
+										name: b,
 										text: b,
 										value: b,
-										initial: b === filters.blur ? 'pressed' : undefined,
+										initial: b === filters.blur ? 'active' : 'inactive',
 									}))}
-									on:click={handleToggleBlur}
+									onupdate={updateBlur}
 									{disabled}
 								/>
 							{/if}
@@ -387,11 +386,12 @@
 									variant="bare"
 									items={meta.convolutions.map((b) => ({
 										id: b,
+										name: b,
 										text: b,
 										value: b,
-										initial: filters.effects?.includes(b) ? 'pressed' : undefined,
+										initial: filters.effects.includes(b) ? 'active' : 'inactive',
 									}))}
-									on:click={handleUpdateEffects}
+									onupdate={updateEffects}
 									{disabled}
 								/>
 							{/if}

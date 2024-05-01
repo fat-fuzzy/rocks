@@ -14,7 +14,7 @@
 		canvasHeight: number
 		geometry: GeometryProps
 		disabled?: boolean
-		threshold: string | undefined
+		threshold?: string
 		onupdate: (payload: {value: GeometryProps}) => void
 	}
 
