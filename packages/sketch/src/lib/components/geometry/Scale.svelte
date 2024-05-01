@@ -47,7 +47,7 @@
 		min={minX}
 		max={maxX}
 		step={0.01}
-		on:input={updateX}
+		oninput={updateX}
 		{size}
 		{color}
 		{disabled}
@@ -61,7 +61,7 @@
 		min={minY}
 		max={maxY}
 		step={0.01}
-		on:input={updateY}
+		oninput={updateY}
 		{size}
 		{color}
 		{disabled}
@@ -76,7 +76,7 @@
 			min={minZ}
 			max={maxZ}
 			step={0.01}
-			on:input={updateZ}
+			oninput={updateZ}
 			{size}
 			{color}
 			{disabled}

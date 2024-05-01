@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type {Scene, SceneContext, SceneMeta, Filters} from '$lib/types'
+	import type {Scene, SceneContext, SceneMeta, Filters, PlayerPayload} from '$types'
+	import {PlayerState, GeometryState, CanvasState, SketchState} from '$types'
 
-	import {afterUpdate, onDestroy} from 'svelte'
+	import {onDestroy, onMount} from 'svelte'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
@@ -11,23 +12,42 @@
 	import {recipes} from '@fat-fuzzy/ui-s5'
 	const {ToggleMenu} = recipes
 
-	export let id = 'sketch'
-	export let scene: Scene
-	export let title: string
-	export let asset: string
-	export let dimensions = 'video'
-	export let layer = 'layer' // if 'layer' the canvas will appear on a layer (with drop shadow)
-	export let color = ''
-	export let size = ''
-	export let variant = 'outline'
-	export let background = ''
-	export let layout = 'switcher'
-	export let breakpoint = ''
-	export let threshold = ''
-	export let meta: SceneMeta | undefined = undefined
+	type Props = {
+		id: string
+		scene: Scene
+		title: string
+		asset: string
+		dimensions: string
+		layer: string // if 'layer' the canvas will appear on a layer (with drop shadow)
+		color: string
+		size: string
+		variant: string
+		background: string
+		layout: string
+		breakpoint: string
+		threshold: string
+		meta: SceneMeta | undefined
+	}
 
-	let feedback: {message: string; status: string} | undefined = undefined
-	let canvas: HTMLCanvasElement | null = null
+	let {
+		id = 'sketch',
+		scene,
+		title,
+		asset,
+		dimensions = 'video',
+		layer = 'layer', // if 'layer' the canvas will appear on a layer (with drop shadow)
+		color,
+		size,
+		variant = 'outline',
+		background,
+		layout = 'switcher',
+		breakpoint,
+		threshold,
+		meta,
+	}: Props = $props()
+
+	let feedback: {message: string; status: string} | undefined = $state(undefined)
+	let canvas: HTMLCanvasElement | null = $state(null)
 	let width: number
 	let height: number
 	let context: SceneContext
@@ -36,36 +56,55 @@
 	let cameraAngle = 60
 
 	let frame: number
-	let state = 'stop'
-	let filters: Filters = {
+	let events: {
+		previous?: string
+		current: string
+	} = {
+		previous: undefined,
+		current: 'init',
+	}
+
+	let sketchState = $state({
+		sketch: SketchState.idle,
+		canvas: CanvasState.idle,
+		geometry: GeometryState.untouched,
+		player: feedback?.status ?? PlayerState.stopped,
+	})
+	let filters: Filters = $state({
 		channels: 'rgba',
 		blur: undefined,
 		effects: ['normal'],
-	}
+	})
 
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
 
-	$: state = feedback ? `${feedback.status}` : state
-	$: disabled = state === 'pause' ? true : undefined
-	$: showGeometry =
+	let disabled = $derived(sketchState.canvas === CanvasState.paused ? true : undefined)
+	let showGeometry = $derived(
 		context !== undefined &&
-		scene?.meta?.type !== 'texture' &&
-		(state === 'play' || state === 'pause' || state === 'clear')
-	$: currentAsset = state === 'stop' && asset ? asset : `emoji:${state}`
-	$: backgroundClass = background
+			scene?.meta?.type !== 'texture' &&
+			(sketchState.canvas === CanvasState.playing ||
+				sketchState.canvas === CanvasState.paused ||
+				sketchState.canvas === CanvasState.ended),
+	)
+	let currentAsset = $derived(
+		sketchState.canvas === CanvasState.idle && asset ? asset : `emoji:${sketchState.canvas}`,
+	)
+	let backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
 		: `l:frame:${dimensions}`
-	$: frameClasses = canvas
-		? `canvas ${backgroundClass} ${layer} state:${state} ${currentAsset}`
-		: `canvas ${backgroundClass} ${layer} card:xl`
+	let frameClasses = $derived(
+		canvas
+			? `canvas ${backgroundClass} ${layer} state:${sketchState.canvas} ${currentAsset}`
+			: `canvas ${backgroundClass} ${layer} card:xl`,
+	)
 
 	function init() {
 		if (canvas) {
 			try {
 				programInfo = scene.main(canvas, {filters})
-				if (state === 'stop' || !context) {
+				if (sketchState.player === PlayerState.stopped || !context) {
 					context = programInfo.context
 				}
 				scene.update(context)
@@ -83,6 +122,7 @@
 	}
 
 	function play() {
+		sketchState.canvas = CanvasState.playing
 		if (scene.meta?.type !== 'texture') {
 			loop(Date.now())
 		} else {
@@ -93,11 +133,18 @@
 	}
 
 	function clear() {
-		state = 'stop'
+		const playerTmp = sketchState.player
+		const canvasTmp = sketchState.canvas
+		sketchState.player = PlayerState.stopped
 		stop()
 		init()
 		play()
-		state = 'play'
+		if (canvasTmp === CanvasState.paused) {
+			pause()
+		}
+		sketchState.player = playerTmp
+		sketchState.canvas = canvasTmp
+		sketchState.geometry = GeometryState.untouched
 	}
 
 	function stop() {
@@ -107,15 +154,19 @@
 			channels: 'rgba',
 			blur: undefined,
 		}
+		sketchState.canvas = CanvasState.idle
+		sketchState.sketch = PlayerState.idle
 	}
 
 	function pause() {
+		sketchState.canvas = CanvasState.paused
 		cancelAnimationFrame(frame)
 		scene.update(context)
 	}
 
 	function updateGeometry(event: CustomEvent) {
 		context = event.detail.value
+		sketchState.geometry = GeometryState.updated
 	}
 
 	function updateFieldOfView(event: CustomEvent) {
@@ -126,9 +177,8 @@
 		context.cameraAngle = degToRad(event.detail.value)
 	}
 
-	function togglePlayer(payload: string) {
-		state = payload
-		switch (state) {
+	function updateCanvas(payload: PlayerPayload) {
+		switch (payload.event) {
 			case 'play':
 				play()
 				break
@@ -142,6 +192,9 @@
 				stop()
 				break
 		}
+		sketchState.player = payload.state
+		events.previous = events.current
+		events.current = payload.event
 	}
 
 	function handleToggleChannel(event: CustomEvent) {
@@ -186,8 +239,8 @@
 		scene.update(context, event)
 	}
 
-	afterUpdate(() => {
-		if (state !== 'pause') {
+	onMount(() => {
+		if (sketchState.canvas === CanvasState.idle) {
 			init()
 		}
 	})
@@ -207,23 +260,19 @@
 					aria-label={title}
 					data-test="canvas"
 					bind:this={canvas}
-					on:mousedown={handleMouseEvent}
-					on:mousemove={handleMouseEvent}
-					on:mouseup={handleMouseEvent}
+					onmousedown={handleMouseEvent}
+					onmousemove={handleMouseEvent}
+					onmouseup={handleMouseEvent}
 				>
-					<slot name="fallback-canvas">
-						<p class={`feedback emoji:default ${size} content`}>
-							The canvas element needs JavaScript enabled to display and interact with animations
-						</p>
-					</slot>
+					<p class={`feedback emoji:default ${size} content`}>
+						The canvas element needs JavaScript enabled to display and interact with animations
+					</p>
 				</canvas>
 			{:else}
 				<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
-					<slot name="fallback-canvas">
-						<p class={`feedback emoji:default ${size} content`}>
-							The canvas element needs JavaScript enabled to display and interact with animations
-						</p>
-					</slot>
+					<p class={`feedback emoji:default ${size} content`}>
+						The canvas element needs JavaScript enabled to display and interact with animations
+					</p>
 				</canvas>
 			{/if}
 
@@ -235,10 +284,10 @@
 	<aside class="context">
 		{#if canvas}
 			<Player
-				play={() => togglePlayer('play')}
-				pause={() => togglePlayer('pause')}
-				clear={() => togglePlayer('clear')}
-				stop={() => togglePlayer('stop')}
+				play={updateCanvas}
+				pause={updateCanvas}
+				clear={updateCanvas}
+				stop={updateCanvas}
 				{color}
 				size="xs"
 				{variant}

@@ -1,4 +1,52 @@
-export type PlayerStates = 'idle' | 'playing' | 'paused' | 'ended' | 'cleared';
+export enum PlayerState {
+	idle = 'idle',
+	playing = 'playing',
+	paused = 'paused',
+	ended = 'ended',
+	stopped = 'stopped',
+}
+
+export enum PlayerEvent {
+	start = 'start',
+	pause = 'pause',
+	play = 'play',
+	clear = 'clear',
+	stop = 'stop',
+}
+export enum GeometryState {
+	untouched = 'untouched',
+	updated = 'updated',
+}
+
+export type PlayerPayload = {event: PlayerEvent; state: PlayerState}
+
+export enum CanvasState {
+	idle = 'idle',
+	playing = 'playing',
+	paused = 'paused',
+	ended = 'ended',
+}
+
+export enum CanvasEvent {
+	start = 'start',
+	pause = 'pause',
+	play = 'play',
+	clear = 'clear',
+	stop = 'stop',
+}
+
+export enum SketchState {
+	idle = 'idle',
+	active = 'active',
+	loading = 'loading',
+	error = 'error',
+}
+
+export enum SketchEvent {
+	load = 'load',
+	cancel = 'cancel',
+	exit = 'exit',
+}
 
 export type GeometryProps = {
 	color: number[]

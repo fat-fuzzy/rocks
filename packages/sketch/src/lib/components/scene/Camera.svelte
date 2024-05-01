@@ -31,7 +31,7 @@
 	{label}
 	{max}
 	{min}
-	on:input={update}
+	oninput={update}
 	{size}
 	{step}
 	{color}

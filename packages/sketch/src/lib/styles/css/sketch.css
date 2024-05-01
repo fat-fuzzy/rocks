@@ -19,7 +19,7 @@
 	background-color: var(--current-bg-color);
 }
 
-.state\:stopped {
+.state\:idle {
 	--current-border-color: var(--current-primary, var(--color-neutral));
 	display: flex;
 	align-items: center;
@@ -29,7 +29,7 @@
 	overflow-x: hidden;
 }
 
-.state\:stopped canvas {
+.state\:idle canvas {
 	margin-right: -100%; /* Hide the canvas without changing its dimensions */
 }
 
@@ -37,7 +37,7 @@
 	filter: grayscale(65%) opacity(35%) blur(1px);
 }
 
-.state\:play::before,
+.state\:playing::before,
 .state\:paused::before,
 .state\:idle::before {
 	height: fit-content;
@@ -55,7 +55,7 @@
 	display: none;
 }
 
-.state\:stopped::before {
+.state\:idle::before {
 	display: flex;
 	align-items: center;
 	justify-content: center;

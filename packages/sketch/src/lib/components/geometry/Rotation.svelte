@@ -29,7 +29,7 @@
 	{label}
 	{min}
 	{max}
-	on:input={update}
+	oninput={update}
 	{size}
 	{color}
 	{disabled}
