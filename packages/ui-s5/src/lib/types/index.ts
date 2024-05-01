@@ -1,4 +1,5 @@
 export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
+export type UiDimensions = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 export type ButtonContext = {
 	id: string // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
@@ -10,6 +11,12 @@ export enum UiState {
 	inactive = 'inactive',
 }
 
+export enum ButtonEventType {
+	EXPAND = 'EXPAND',
+	TOGGLE = 'TOGGLE',
+	SWITCH = 'SWITCH',
+}
+
 export type Settings = {
 	[key: string]: string
 }
@@ -19,6 +26,21 @@ export type ButtonPayload = {
 	name: string
 	value: string
 }
+export type UiStyleProps = {
+	/**
+	 * Style props
+	 */
+	align?: string
+	asset?: string // emoji:value or svg:value
+	color?: string
+	size?: string
+	shape?: string
+	variant?: string
+
+	container?: string
+	dimensions?: string
+	layout?: string
+}
 
 export type ButtonState = {
 	text: string
@@ -26,11 +48,6 @@ export type ButtonState = {
 	asset: string
 	variant?: string
 	onclick: (event: MouseEvent, payload: any) => void
-}
-
-export type ButtonStates = {
-	[UiState.active]: ButtonState
-	[UiState.inactive]: ButtonState
 }
 
 export type SwitchState = {

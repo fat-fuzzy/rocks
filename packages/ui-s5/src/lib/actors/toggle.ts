@@ -1,23 +1,13 @@
 import {setup, createActor, type MachineContext} from 'xstate'
+import {UiState, ButtonEventType} from '$types'
 
-export enum ButtonState {
-	active = 'active',
-	inactive = 'inactive',
-}
-
-export enum ButtonEvent {
-	TOGGLE = 'TOGGLE',
-	SWITCH = 'SWITCH',
-	EXPAND = 'EXPAND',
-}
-
-function setupOptions(event: ButtonEvent) {
+function setupOptions(event: ButtonEventType) {
 	const states: MachineContext = {
 		inactive: {
-			on: {[event]: {target: ButtonState.active}},
+			on: {[event]: {target: UiState.active}},
 		},
 		active: {
-			on: {[event]: {target: ButtonState.inactive}},
+			on: {[event]: {target: UiState.inactive}},
 		},
 	}
 
@@ -81,7 +71,7 @@ function newActor(
  * @returns
  */
 function actor(toggleId: string, initial: string, name: string) {
-	const {states, options} = setupOptions(ButtonEvent.TOGGLE)
+	const {states, options} = setupOptions(ButtonEventType.TOGGLE)
 	return newActor(toggleId, initial, name, states, options)
 }
 

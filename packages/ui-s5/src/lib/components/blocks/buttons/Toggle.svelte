@@ -1,36 +1,7 @@
 <script lang="ts">
-	import type {ButtonType, ButtonPayload, UiState} from '$types'
+	import type {ToggleProps} from './buttons'
 	import {actor} from '$lib/actors/toggle'
 
-	type Props = {
-		/**
-		 * State props
-		 */
-		id: string
-		name: string
-		text?: string
-		title?: string
-		initial?: UiState
-		value?: string
-		disabled?: boolean
-		formaction?: string
-
-		/**
-		 * Style props
-		 */
-		align?: string
-		asset?: string // emoji:value or svg:value
-		color?: string
-		size?: string
-		shape?: string
-		variant?: string
-
-		container?: string
-		dimensions?: string
-		layout?: string
-		type?: ButtonType
-		onclick?: (payload: ButtonPayload) => void
-	}
 	let {
 		id = 'toggle',
 		name = 'toggle',
@@ -51,7 +22,8 @@
 		layout = 'flex',
 		type = 'submit',
 		onclick,
-	}: Props = $props()
+    children
+	}: ToggleProps = $props()
 
 	function handleClick(event: MouseEvent) {
 		// The payload corresponds the value that is displayed to the user before the click
@@ -115,5 +87,9 @@
 	onclick={handleClick}
 	aria-pressed={pressed}
 >
-	{text}
+  {#if children}
+    {@render children()}
+  {:else if text}
+    {text}
+  {/if}
 </button>

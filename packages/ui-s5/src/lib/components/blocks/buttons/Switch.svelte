@@ -1,37 +1,6 @@
 <script lang="ts">
-	import {type Snippet} from 'svelte'
-	import type {ButtonStates, ButtonPayload, ButtonType, UiState} from '$types'
+	import type {SwitchProps} from './buttons'
 	import {actor} from '$lib/actors/switch'
-
-	type Props = {
-		/**
-		 * State props
-		 */
-		id: string
-		name: string
-		title?: string
-		initial?: UiState
-		disabled?: boolean
-		formaction?: string
-		states: ButtonStates // this component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
-
-		/**
-		 * Style props
-		 */
-		align?: string
-		asset?: string // emoji:value or svg:value
-		color?: string
-		size?: string
-		shape?: string
-		variant?: string
-
-		container?: string
-		dimensions?: string
-		layout?: string
-		type?: ButtonType
-		children?: Snippet
-		onclick?: (payload: ButtonPayload) => void
-	}
 
 	let {
 		id = 'switch',
@@ -53,7 +22,7 @@
 		type = 'submit',
 		children,
 		onclick,
-	}: Props = $props()
+	}: SwitchProps = $props()
 
 	function handleClick(event: MouseEvent) {
 		// The payload corresponds the value that is displayed to the user before the click

@@ -1,39 +1,6 @@
 <script lang="ts">
-	import {type Snippet} from 'svelte'
-	import type {StateSwitch, ButtonPayload, ButtonType, UiState} from '$types'
+	import type {ExpandProps} from './buttons'
 	import {actor} from '$lib/actors/expand'
-
-	type Props = {
-		/**
-		 * State props
-		 */
-		id: string
-		name: string
-		controls: string // id of the DOM element that is controlled by this button
-		text?: string
-		title?: string
-		initial?: UiState
-		disabled?: boolean
-		formaction?: string
-		states: StateSwitch // this component contains a button that will Expand the DOM element it controls when active, or minimize it when inactive. Each state can have its own text, style, and asset (if any) according to its active / inactive state
-
-		/**
-		 * Style props
-		 */
-		align?: string
-		asset?: string // emoji:value or svg:value
-		color?: string
-		size?: string
-		shape?: string
-		variant?: string
-
-		container?: string
-		dimensions?: string
-		layout?: string
-		type?: ButtonType
-		children?: Snippet
-		onclick?: (payload: ButtonPayload) => void
-	}
 
 	let {
 		id = 'expand',
@@ -56,7 +23,7 @@
 		type = 'submit',
 		children,
 		onclick,
-	}: Props = $props()
+	}: ExpandProps = $props()
 
 	function handleClick(event: MouseEvent) {
 		// The payload corresponds the value that is displayed to the user before the click

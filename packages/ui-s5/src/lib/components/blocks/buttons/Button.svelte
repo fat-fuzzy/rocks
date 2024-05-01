@@ -1,35 +1,6 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
-	import type { ButtonType, ButtonPayload } from '$types';
+	import type { ButtonProps } from './buttons';
 
-	type Props = {
-		/**
-		 * State props
-		 */
-		id: string; // TODO: use for machine id
-		name: string;
-		title?: string;
-		value?: string;
-		disabled?: boolean;
-		formaction?: string;
-
-		/**
-		 * Style props
-		 */
-		align?: string;
-		asset?: string; // emoji:value or svg:value
-		color?: string;
-		size?: string;
-		shape?: string;
-		variant?: string;
-
-		container?: string;
-		dimensions?: string;
-		layout?: string;
-		type?: ButtonType;
-		children?: Snippet;
-		onclick?: (payload:ButtonPayload) => void;
-	};
 	let {
 		id = 'button', // TODO: use for machine id
 		name = 'button',
@@ -49,7 +20,7 @@
 		type = 'submit',
 		children,
 		onclick
-	}: Props = $props();
+	}: ButtonProps  = $props();
 
 
 
