@@ -1,58 +1,68 @@
 <script lang="ts">
 	import type {GeometryProps} from '$types'
 
-	import {createEventDispatcher, onMount} from 'svelte'
-
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
 	import Rotation from '$lib/components/geometry/Rotation.svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
+	import {onMount} from 'svelte'
 	const {Button} = blocks
 
-	export let id = 'geometry-3d'
-	export let canvasWidth: number
-	export let canvasHeight: number
-	export let geometry: GeometryProps
-	export let threshold = ''
-	export let disabled: boolean | undefined = undefined
+	type Props = {
+		id?: string
+		canvasWidth: number
+		canvasHeight: number
+		geometry: GeometryProps
+		disabled?: boolean
+		threshold: string | undefined
+		onupdate: (payload: {value: GeometryProps}) => void
+	}
 
-	const dispatch = createEventDispatcher()
+	let {
+		id = 'geometry-3d',
+		canvasWidth,
+		canvasHeight,
+		geometry = $bindable({}),
+		threshold,
+		disabled,
+		onupdate,
+	}: Props = $props()
 
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
 
-	let update = () =>
-		dispatch('update', {
+	let update = () => {
+		onupdate({
 			value,
 		})
+	}
 
-	let {scale, translation} = geometry
+	let {scale, translation} = $state(geometry)
 
 	// input attributes
 	let maxZ = 1
 	let minZ = -1000
 
 	// Position
-	let [coordX, coordY, coordZ] = translation
+	let [coordX, coordY, coordZ] = $state(translation)
 
 	// Scale
-	let [scaleX, scaleY, scaleZ] = scale
+	let [scaleX, scaleY, scaleZ] = $state(scale)
 
 	// Rotation
-	let [angleX, angleY, angleZ] = [190, 40, 30] // TODO: fix this
+	let [angleX, angleY, angleZ] = $state([190, 40, 30]) // TODO: fix this
 
-	$: maxX = canvasWidth
-	$: maxY = canvasHeight
-	$: value = {
+	let maxX = $state(canvasWidth)
+	let maxY = $state(canvasHeight)
+	let value = $derived({
 		...geometry,
 		rotation: [degToRad(angleX), degToRad(angleY), degToRad(angleZ)],
 		translation: [coordX, coordY, coordZ],
 		scale: [scaleX, scaleY, scaleZ],
-	}
+	})
 
 	onMount(() => {
-		value = geometry
 		update()
 	})
 </script>
@@ -66,7 +76,7 @@
 	bind:maxY
 	bind:maxZ
 	bind:minZ
-	on:input={update}
+	onupdate={update}
 	color={'primary'}
 	size={`xs l:burrito:${threshold}`}
 	{disabled}
@@ -76,7 +86,7 @@
 	label="Angle x"
 	bind:angle={angleX}
 	max={360}
-	on:input={update}
+	onupdate={update}
 	color={'accent'}
 	size={`xs l:burrito:${threshold}`}
 	{disabled}
@@ -86,7 +96,7 @@
 	label="Angle y"
 	bind:angle={angleY}
 	max={360}
-	on:input={update}
+	onupdate={update}
 	color={'accent'}
 	size={`xs l:burrito:${threshold}`}
 	{disabled}
@@ -96,7 +106,7 @@
 	label="Angle z"
 	bind:angle={angleZ}
 	max={360}
-	on:input={update}
+	onupdate={update}
 	color={'accent'}
 	size={`xs l:burrito:${threshold}`}
 	{disabled}
@@ -112,7 +122,7 @@
 	minX={-5}
 	minY={-5}
 	minZ={-5}
-	on:input={update}
+	onupdate={update}
 	color={'highlight'}
 	size={`xs l:burrito:${threshold}`}
 	{disabled}

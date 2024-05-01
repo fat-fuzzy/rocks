@@ -1,38 +1,55 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {InputRange} = blocks
-	export let color = ''
 
-	export let id = 'scale'
-	export let size = 'xxs'
-	export let scaleX = 0
-	export let scaleY = 0
-	export let scaleZ: number | undefined = undefined
-	export let minX = 0
-	export let maxX = 0
-	export let minY = 0
-	export let maxY = 0
-	export let minZ: number | undefined = undefined
-	export let maxZ: number | undefined = undefined
-	export let disabled: boolean | undefined = undefined
+	type Props = {
+		color: string
+		id: string
+		size: string
+		scaleX: number
+		scaleY: number
+		scaleZ?: number
+		minX: number
+		maxX: number
+		minY: number
+		maxY: number
+		minZ?: number
+		maxZ?: number
+		disabled?: boolean
+		onupdate: (payload: {value: number | undefined}) => void
+	}
 
-	const dispatch = createEventDispatcher()
+	let {
+		color = '',
+		id = 'scale',
+		size = 'xxs',
+		scaleX = $bindable(0),
+		scaleY = $bindable(0),
+		scaleZ = $bindable(undefined),
+		minX = 0,
+		maxX = 0,
+		minY = 0,
+		maxY = 0,
+		minZ,
+		maxZ,
+		disabled,
+		onupdate,
+	}: Props = $props()
 
 	function updateX() {
-		dispatch('input', {
+		onupdate({
 			value: scaleX,
 		})
 	}
 
 	function updateY() {
-		dispatch('input', {
+		onupdate({
 			value: scaleY,
 		})
 	}
 
 	function updateZ() {
-		dispatch('input', {
+		onupdate({
 			value: scaleZ,
 		})
 	}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Scene, SceneContext, SceneMeta, Filters, PlayerPayload} from '$types'
+	import type {Scene, SceneContext, SceneMeta, Filters, PlayerPayload, GeometryProps} from '$types'
 	import {PlayerState, GeometryState, CanvasState, SketchState} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
@@ -164,8 +164,9 @@
 		scene.update(context)
 	}
 
-	function updateGeometry(event: CustomEvent) {
-		context = event.detail.value
+	function updateGeometry(payload: {value: GeometryProps}) {
+		context = payload.value
+		scene.update(context)
 		sketchState.geometry = GeometryState.updated
 	}
 
@@ -297,7 +298,7 @@
 				{#if meta?.type === 'matrix-2d'}
 					<Geometry2D
 						id={`${id}-context-2d`}
-						on:update={updateGeometry}
+						onupdate={updateGeometry}
 						threshold={breakpoint}
 						geometry={context}
 						canvasWidth={canvas.getBoundingClientRect().width}
@@ -336,7 +337,7 @@
 							/>
 							<Geometry3D
 								id={`${id}-context-3d`}
-								on:update={updateGeometry}
+								onupdate={updateGeometry}
 								threshold={breakpoint}
 								geometry={context}
 								canvasWidth={canvas.getBoundingClientRect().width}

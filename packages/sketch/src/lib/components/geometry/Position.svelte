@@ -1,37 +1,52 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
-
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {InputRange} = blocks
-	const dispatch = createEventDispatcher()
 
-	export let id = 'position'
+	type Props = {
+		color: string
+		id?: string
+		size: string
+		label?: string
+		coordX: number
+		coordY: number
+		coordZ?: number
+		maxX: number
+		maxY: number
+		maxZ?: number
+		minZ?: number
+		disabled?: boolean
+		onupdate: (payload: {value: number | undefined}) => void
+	}
 
-	export let color = ''
-	export let size = 'xxs'
-	export let coordX = 0
-	export let coordY = 0
-	export let coordZ: number | undefined = undefined
-	export let maxX = 100
-	export let maxY = 100
-	export let maxZ: number | undefined = undefined
-	export let minZ: number | undefined = undefined
-	export let disabled: boolean | undefined = undefined
+	let {
+		color,
+		id = 'position',
+		size = 'xxs',
+		coordX = $bindable(0),
+		coordY = $bindable(0),
+		coordZ = $bindable(undefined),
+		maxX = $bindable(0),
+		maxY = $bindable(0),
+		maxZ = $bindable(0),
+		minZ = $bindable(undefined),
+		disabled,
+		onupdate,
+	}: Props = $props()
 
 	function updateX() {
-		dispatch('input', {
+		onupdate({
 			value: coordX,
 		})
 	}
 
 	function updateY() {
-		dispatch('input', {
+		onupdate({
 			value: coordY,
 		})
 	}
 
 	function updateZ() {
-		dispatch('input', {
+		onupdate({
 			value: coordZ,
 		})
 	}

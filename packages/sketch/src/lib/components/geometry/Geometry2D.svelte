@@ -1,8 +1,7 @@
 <script lang="ts">
-	import type {GeometryProps} from '$types'
-
-	import {createEventDispatcher, onMount} from 'svelte'
+	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
+	import type {GeometryProps} from '$types'
 
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
@@ -10,55 +9,73 @@
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {Button} = blocks
 
-	export let id = 'geometry-2d'
-	export let method = 'POST'
-	export let canvasWidth: number
-	export let canvasHeight: number
-	export let geometry: GeometryProps
-	export let background = ''
-	export let layout = 'stack'
-	export let threshold = ''
-	export let size = 'xs'
-	export let formaction = 'updateGeometry'
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
-	export let disabled: boolean | undefined = undefined
+	type Props = {
+		id?: string
+		canvasWidth: number
+		canvasHeight: number
+		geometry: GeometryProps
+		background?: string
+		method?: string
+		formaction?: string
+		actionPath?: string
+		redirect?: string
+		size?: string
+		layout?: string
+		threshold?: string
+		disabled?: boolean
+		onupdate: (payload: {value: GeometryProps}) => void
+	}
 
-	const dispatch = createEventDispatcher()
+	let {
+		id = 'geometry-2d',
+		canvasWidth,
+		canvasHeight,
+		geometry,
+		background,
+		method = 'POST',
+		formaction = 'updateGeometry',
+		actionPath,
+		redirect,
+		size = 'xs',
+		layout = 'stack',
+		threshold,
+		disabled,
+		onupdate,
+	}: Props = $props()
 
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
 
 	let update = () =>
-		dispatch('update', {
+		onupdate({
 			value,
 		})
 
-	let {scale, translation, rotation} = geometry
+	let {scale, translation, rotation} = $state(geometry)
 
 	// input attributes
-	let [angle] = rotation ?? []
+	let [angle] = $state(rotation ?? [])
 
 	// Position
-	let [coordX, coordY] = translation ?? []
+	let [coordX, coordY] = $state(translation ?? [])
 
 	// Scale
-	let [scaleX, scaleY] = scale ?? []
+	let [scaleX, scaleY] = $state(scale ?? [])
 
-	$: maxX = canvasWidth
-	$: maxY = canvasHeight
-	$: translation = [coordX, coordY]
-	$: rotatedAngle = degToRad(angle)
-	$: scale = [scaleX, scaleY]
-	$: value = {
+	let maxX = $state(canvasWidth)
+	let maxY = $state(canvasHeight)
+	let rotatedAngle = $derived(degToRad(angle))
+	let value = $derived({
 		color: geometry.color,
-		translation,
+		translation: [coordX, coordY],
 		rotation: [rotatedAngle],
-		scale,
-	}
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	$: backgroundClass = background ? `bg:${background}` : ''
+		scale: [scaleX, scaleY],
+	})
+
+	let action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	let backgroundClass = background ? `bg:${background}` : ''
+
 	onMount(() => {
 		update()
 	})
@@ -82,7 +99,7 @@
 		bind:coordY
 		bind:maxX
 		bind:maxY
-		on:input={update}
+		onupdate={update}
 		color="primary"
 		size="xs"
 		{disabled}
@@ -91,7 +108,7 @@
 		id={`${id}-rotation`}
 		bind:angle
 		max={360}
-		on:input={update}
+		onupdate={update}
 		color="accent"
 		size="xs"
 		{disabled}
@@ -104,7 +121,7 @@
 		maxY={5}
 		minX={-5}
 		minY={-5}
-		on:input={update}
+		onupdate={update}
 		color="highlight"
 		size="xs"
 		{disabled}

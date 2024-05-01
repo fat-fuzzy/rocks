@@ -1,22 +1,33 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {InputRange} = blocks
 
-	const dispatch = createEventDispatcher()
+	type Props = {
+		color: string
+		id?: string
+		size: string
+		label?: string
+		angle: number
+		min?: number
+		max?: number
+		disabled?: boolean
+		onupdate: (payload: {value: number | undefined}) => void
+	}
 
-	export let color = ''
-
-	export let size = 'xxs'
-	export let id = 'rotation'
-	export let label = 'Angle'
-	export let angle = 0
-	export let min = 0
-	export let max = 360
-	export let disabled: boolean | undefined = undefined
+	let {
+		color = '',
+		id = 'rotation',
+		label = 'Angle',
+		size = 'xxs',
+		angle = $bindable(0),
+		min = 0,
+		max = 360,
+		disabled,
+		onupdate,
+	}: Props = $props()
 
 	function update() {
-		dispatch('input', {
+		onupdate({
 			value: angle,
 		})
 	}
