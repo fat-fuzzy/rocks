@@ -1,7 +1,7 @@
 import type {Snippet} from 'svelte'
 import type {
 	ButtonType,
-	ButtonPayload,
+	InputPayload,
 	ButtonStates,
 	StateSwitch,
 	UiState,
@@ -21,7 +21,7 @@ export type ButtonProps = UiStyleProps & {
 
 	type?: ButtonType
 	children?: Snippet
-	onclick?: (payload: ButtonPayload) => void
+	onclick?: (payload: InputPayload) => void
 }
 
 export type ToggleProps = ButtonProps & {

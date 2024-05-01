@@ -1,25 +1,27 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
+	import type {InputProps} from './input.js'
 
-	const dispatch = createEventDispatcher()
+	let {
+		id, // TODO: use for machine id
+		name,
+		label = 'Range',
+		value = $bindable(0),
+		min = 0,
+		max = 100,
+		step = 1,
+		layout = 'stack',
+		items = [],
 
-	export let id = ''
-	export let name = ''
-	export let label = 'Range'
-	export let value: string | number = 0
-	export let min = 0
-	export let max = 100
-	export let step = 1
-	export let color = ''
-	export let variant = ''
-	export let breakpoint = ''
-	export let size = ''
-	export let align = ''
-	export let items: any[] = []
-	export let disabled: boolean | undefined = undefined
-	let layout = 'stack'
+		disabled,
+		align,
+		color,
+		size,
+		variant,
+		breakpoint,
+		oninput,
+	}: InputProps = $props()
 
-	let valueLabel = value
+	let valueLabel = $state(value)
 	let markers: {id: string; label: string; value: number}[] = [{id: '', label: '', value: min}]
 
 	function generateStepsFromItems(items: {id: string; text: string; value: string}[]) {
@@ -37,14 +39,14 @@
 			let selectedMarker = markers.find((m) => m.value === value)
 			if (selectedMarker) {
 				valueLabel = selectedMarker.label
-				dispatch('input', {
+				oninput({
 					id: selectedMarker.id,
 					name: selectedMarker.label,
 					value: valueLabel,
 				})
 			}
 		} else {
-			dispatch('input', {value})
+			oninput({value})
 		}
 	}
 
@@ -77,7 +79,7 @@
 
 	let inputClasses = `${layoutClasses} ${elementClasses}`
 
-	$: {
+	$effect(() => {
 		if (items.length) {
 			let selectedMarker = markers.find((m) => m.label === value)
 			if (selectedMarker) {
@@ -87,7 +89,7 @@
 		} else {
 			valueLabel = !Number.isNaN(value) ? value : min + max / 2
 		}
-	}
+	})
 </script>
 
 <label for={id} class={inputClasses}>
@@ -104,7 +106,7 @@
 		{min}
 		{max}
 		{step}
-		on:input={handleInput}
+		oninput={handleInput}
 		list={items ? `${id}-markers` : undefined}
 		{disabled}
 	/>
