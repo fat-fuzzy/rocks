@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type {ButtonType, ButtonPayload, UiState} from '$types'
-	import {toggleActor as actor} from '$lib/actors/button-actors.js'
+	import {actor} from '$lib/actors/toggle'
 
 	type Props = {
 		/**
 		 * State props
 		 */
-		id: string // TODO: use for machine id
+		id: string
 		name: string
 		text?: string
 		title?: string
@@ -41,7 +41,7 @@
 		disabled,
 		formaction,
 		align,
-		asset, // emoji:value or svg:value
+		asset,
 		color,
 		size,
 		shape,
@@ -61,6 +61,11 @@
 		manager.send({type: 'TOGGLE'})
 	}
 
+	let manager = actor(id, initial, name)
+	manager.subscribe((snapshot: any) => {
+		toggleState = snapshot.value
+	})
+
 	/* Element state */
 	let toggleState = $state(initial)
 	let pressed = $derived(toggleState === 'active')
@@ -70,11 +75,6 @@
 		name,
 		value,
 		pressed,
-	})
-
-	let manager = actor(id, initial, name)
-	manager.subscribe((snapshot: any) => {
-		toggleState = snapshot.value
 	})
 
 	/* Element styles */

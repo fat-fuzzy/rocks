@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {type Snippet} from 'svelte'
 	import type {ButtonStates, ButtonPayload, ButtonType, UiState} from '$types'
-	import {switchActor as actor} from '$lib/actors/button-actors'
+	import {actor} from '$lib/actors/switch'
 
 	type Props = {
 		/**
@@ -64,7 +64,7 @@
 		manager.send({type: 'SWITCH'})
 	}
 
-	let manager = actor({id, initial})
+	let manager = actor(id, initial, name)
 	manager.subscribe((snapshot: any) => {
 		switchState = snapshot.value
 	})

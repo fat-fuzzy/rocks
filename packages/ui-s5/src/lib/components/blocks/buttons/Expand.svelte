@@ -1,8 +1,7 @@
 <script lang="ts">
 	import {type Snippet} from 'svelte'
-	import type {ButtonPayload, ButtonType, UiState} from '$types'
-	import type {StateSwitch} from '$types'
-	import {expandActor as actor} from '$lib/actors/button-actors'
+	import type {StateSwitch, ButtonPayload, ButtonType, UiState} from '$types'
+	import {actor} from '$lib/actors/expand'
 
 	type Props = {
 		/**
@@ -37,7 +36,7 @@
 	}
 
 	let {
-		id = 'expand', // TODO: use for machine id
+		id = 'expand',
 		name = 'expand',
 		controls,
 		title,
@@ -46,7 +45,7 @@
 		formaction,
 		states,
 		align,
-		asset, // emoji:value or svg:value
+		asset,
 		color,
 		size,
 		shape,
