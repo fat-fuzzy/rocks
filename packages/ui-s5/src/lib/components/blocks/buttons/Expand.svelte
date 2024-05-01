@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ExpandProps} from './buttons'
+	import type {ExpandProps} from './buttons.types.js';
 	import {actor} from '$lib/actors/expand'
 
 	let {

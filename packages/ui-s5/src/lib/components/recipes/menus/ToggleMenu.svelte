@@ -1,130 +1,123 @@
 <script lang="ts">
 	import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
-	import {createEventDispatcher} from 'svelte'
+	import type {InputPayload, UiStyleProps} from '$types'
 
-	const dispatch = createEventDispatcher()
+	type Props = UiStyleProps & {
+		/**
+		 * State props
+		 */
+		id: string
+		title?: string
+		disabled?: boolean
+		formaction?: string
+		items: any[] // TODO fix types
+		onupdate?: (payload: InputPayload) => void
+	}
 
-	export let id = 'toggle-menu'
-	export let title = ''
-	export let size = ''
-	export let threshold = ''
-	export let layout = 'switcher'
-	export let container = ''
-	export let color = ''
-	export let variant = ''
-	export let asset = ''
-	export let shape = ''
-	export let mode = 'radio'
-	export let formaction: string | undefined = undefined
-	export let items: any = [] // TODO fix types
-	export let disabled = false
+	let {
+		id = 'toggle-menu',
+		title,
+
+		asset,
+		color,
+		size,
+		shape,
+		variant,
+
+		container,
+		layout = 'switcher',
+		threshold,
+		mode = 'radio',
+		formaction,
+		items = [],
+		disabled,
+		onupdate,
+	}: Props = $props()
 
 	let selected: {
 		id: string
+		name: string
 		value: string
 		pressed: boolean
-		name: string
 		actor: {send: (event: {type: string}) => unknown}
-	}[] = []
+	}[] = $state([])
 
-	const onClick = (event: CustomEvent) => {
-		let toggleValue = selected.find((c) => {
-			c.name === event.detail.id
+	function onclick(payload: InputPayload) {
+		let isSelected = selected.find((c) => {
+			c.name === payload.name
 		})
-		switch (mode) {
-			case 'multiple':
-				if (event.detail.pressed) {
-					selected = [...selected, event.detail]
-				} else {
-					selected = selected.filter((c) => c.value !== event.detail.value)
-				}
-				break
-			case 'radio':
-				if (event.detail.pressed) {
-					if (toggleValue) {
-						selected = [toggleValue]
+		if (payload.pressed) {
+			switch (mode) {
+				case 'multiple':
+					selected.push(payload)
+					break
+				case 'radio':
+					if (!isSelected) {
+            selected.push(payload)
 					}
-					selected.map((c) => {
-						if (c.name !== event.detail.id && c.pressed) {
+					selected.forEach((c) => {
+						if (c.name !== payload.name && c.pressed) {
 							c.actor.send({type: 'TOGGLE'})
 						}
 					})
-				}
-				selected = [event.detail]
-				break
-			case 'check':
-				if (event.detail.pressed) {
-					selected.map((c) => {
-						if (c.name === event.detail.id) {
+					break
+				case 'check':
+          // TODO: implement check mode
+					selected.forEach((c) => {
+						if (c.name === payload.name) {
 							c.actor.send({type: 'TOGGLE'})
 						}
-						if (c.name !== event.detail.id && c.pressed) {
+						if (c.name !== payload.name && c.pressed) {
 							c.actor.send({type: 'TOGGLE'})
 						}
 					})
-				}
-				selected = [event.detail]
-				break
-			default:
-				break
+					break
+				default:
+					break
+			}
+		} else {
+			selected = selected.filter((c) => c.value !== payload.value)
 		}
 
-		dispatch('click', {
-			selected,
-		})
+		onupdate(selected)
 	}
 
-	$: type = formaction ? 'submit' : 'button'
-	$: containerClass = container ? `${container}:${size}` : ''
+	let type = formaction ? 'submit' : 'button'
+	let containerClass = container ? `${container}:${size}` : ''
+	let elementClasses =` l:${layout}:${size} th:${threshold} size:${size} mode:${mode}`
+  let menuClasses = title ? elementClasses :`${elementClasses} ${containerClass}`
 </script>
+
+{#snippet menuContent()}
+  <menu {id} class={menuClasses}>
+    {#each items as props}
+      <li>
+        <Toggle
+          id={`${id}-${props.id}`}
+          {onclick}
+          {type}
+          {formaction}
+          {...props}
+          color={props.color ?? color}
+          variant={props.variant ?? variant}
+          size={props.size ?? size}
+          shape={props.shape ?? shape}
+          asset={props.asset ?? asset}
+          disabled={disabled ||
+          (mode === 'radio' && selected[0] && selected[0].value === props.value)
+            ? true
+            : false}
+        />
+      </li>
+    {/each}
+  </menu>
+{/snippet}
 
 {#if title}
 	<div class={`menu l:stack ${size} ${containerClass}`}>
 		<p>{title}</p>
-		<menu {id} class={`l:${layout}:${size} th:${threshold} ${size} mode:${mode}`}>
-			{#each items as props}
-				<li>
-					<Toggle
-						id={`${id}-${props.id}`}
-						on:click={onClick}
-						{type}
-						{formaction}
-						{...props}
-						color={props.color ?? color}
-						variant={props.variant ?? variant}
-						size={props.size ?? size}
-						shape={props.shape ?? shape}
-						asset={props.asset ?? asset}
-						disabled={disabled ||
-						(mode === 'radio' && selected[0] && selected[0].value === props.value)
-							? true
-							: false}
-					/>
-				</li>
-			{/each}
-		</menu>
+    {@render menuContent()}
 	</div>
 {:else}
-	<menu {id} class={`l:${layout}:${size} ${containerClass} th:${threshold} ${size} mode:${mode}`}>
-		{#each items as props}
-			<li>
-				<Toggle
-					id={`${id}-${props.id}`}
-					on:click={onClick}
-					{type}
-					{formaction}
-					{...props}
-					color={props.color ?? color}
-					variant={props.variant ?? variant}
-					size={props.size ?? size}
-					shape={props.shape ?? shape}
-					asset={props.asset ?? asset}
-					disabled={disabled ||
-					(mode === 'radio' && selected[0] && selected[0].value === props.value)
-						? true
-						: false}
-				/>
-			</li>
-		{/each}
-	</menu>
+  {@render menuContent()}
 {/if}

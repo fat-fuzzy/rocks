@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ToggleProps} from './buttons'
+	import type {ToggleProps} from './buttons.types.js';
 	import {actor} from '$lib/actors/toggle'
 
 	let {
@@ -22,7 +22,7 @@
 		layout = 'flex',
 		type = 'submit',
 		onclick,
-    children
+		children
 	}: ToggleProps = $props()
 
 	function handleClick(event: MouseEvent) {
@@ -47,6 +47,7 @@
 		name,
 		value,
 		pressed,
+		actor: manager,
 	})
 
 	/* Element styles */
@@ -87,9 +88,9 @@
 	onclick={handleClick}
 	aria-pressed={pressed}
 >
-  {#if children}
-    {@render children()}
-  {:else if text}
-    {text}
-  {/if}
+	{#if children}
+		{@render children()}
+	{:else if text}
+		{text}
+	{/if}
 </button>

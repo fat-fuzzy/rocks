@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ButtonProps } from './buttons';
+	import type { ButtonProps } from './buttons.types.js';
 
 	let {
 		id = 'button', // TODO: use for machine id

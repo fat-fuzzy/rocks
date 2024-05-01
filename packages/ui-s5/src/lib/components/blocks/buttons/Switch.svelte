@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {SwitchProps} from './buttons'
+	import type {SwitchProps} from './buttons.types.js';
 	import {actor} from '$lib/actors/switch'
 
 	let {
