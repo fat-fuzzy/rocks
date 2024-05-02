@@ -24,7 +24,7 @@ button {
 }
 
 button:not([disabled]):hover {
-	box-shadow: var(--shadow);
+	box-shadow: var(--shadow-md);
 }
 
 button.variant\:outline {

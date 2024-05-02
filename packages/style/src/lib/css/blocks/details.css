@@ -15,7 +15,7 @@ details > summary {
 }
 
 details > summary:hover {
-	box-shadow: var(--current-shadow);
+	box-shadow: var(--shadow-md);
 	background-color: var(--current-polar);
 	border: var(--border-width) solid var(--current-border-color);
 }

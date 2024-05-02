@@ -45,17 +45,18 @@
   --color-semantic-info: var(--color-hue-blue);
   --color-semantic-success: var(--color-hue-green);
   --color-semantic-warning: var(--color-hue-olive);
-  --color-state-active-chroma: var(--color-lightness-500);
+  --color-shadow-000: #f500c6;
+  --color-state-active-chroma: var(--color-chroma-500);
   --color-state-active-lightness: var(--color-lightness-500);
-  --color-state-default-chroma: var(--color-lightness-300);
+  --color-state-default-chroma: var(--color-chroma-300);
   --color-state-default-lightness: var(--color-lightness-300);
-  --color-state-disabled-chroma: var(--color-lightness-100);
+  --color-state-disabled-chroma: var(--color-chroma-100);
   --color-state-disabled-lightness: var(--color-lightness-100);
-  --color-state-focus-chroma: var(--color-lightness-500);
+  --color-state-focus-chroma: var(--color-chroma-500);
   --color-state-focus-lightness: var(--color-lightness-500);
-  --color-state-hover-chroma: var(--color-lightness-400);
+  --color-state-hover-chroma: var(--color-chroma-400);
   --color-state-hover-lightness: var(--color-lightness-400);
-  --color-state-visited-chroma: var(--color-lightness-200);
+  --color-state-visited-chroma: var(--color-chroma-200);
   --color-state-visited-lightness: var(--color-lightness-200);
   --color-theme-accent: var(--color-hue-seagreen);
   --color-theme-highlight: var(--color-hue-fuschia);
@@ -155,6 +156,17 @@
   --scale-major-third-10: 1.25;
   --scale-major-third-20: 1.6;
   --scale-major-third-30: 2;
+  --shadow-base-md-blur: 8px;
+  --shadow-base-md-offsetX: 0;
+  --shadow-base-md-offsetY: 4px;
+  --shadow-base-md-spread: 0;
+  --shadow-base-sm-blur: 6px;
+  --shadow-base-sm-offsetX: 0;
+  --shadow-base-sm-offsetY: 2px;
+  --shadow-base-sm-spread: 0;
+  --shadow-inset-1: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY) var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--color-shadow-000);
+  --shadow-inset-2: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY) var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--color-shadow-000);
+  --shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY) var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--color-shadow-000);
   --size-base-2xl: var(--scale-base-30);
   --size-base-2xs: var(--scale-base-03);
   --size-base-initial: 1rem;
@@ -195,6 +207,7 @@
     --color-gradient-000-end: color(display-p3 0 0.7725490196078432 0.8588235294117647);
     --color-gradient-000-middle: color(display-p3 0.8862745098039215 0.47843137254901963 1);
     --color-gradient-000-start: color(display-p3 0.9607843137254902 0 0.7764705882352941);
+    --color-shadow-000: color(display-p3 0.9607843137254902 0 0.7764705882352941);
   }
 }
 

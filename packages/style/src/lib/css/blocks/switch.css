@@ -1,9 +1,9 @@
 /* == Toggle  default == */
 
-[class^='switch'][aria-pressed] {
+.switch[aria-pressed] {
 	box-shadow: unset;
 }
 
-[class^='switch'][aria-pressed]:hover {
-	box-shadow: var(--current-shadow);
+.switch[aria-pressed]:hover {
+	box-shadow: var(--shadow-md);
 }

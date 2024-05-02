@@ -12,7 +12,7 @@
 	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
 	--font-size: var(--font-size-md);
 	--sidebar-width: var(--layout-sidebar-md);
-	--current-shadow: var(--shadow);
+	--current-shadow: var(--shadow-md);
 	--gap: var(--layout-gap-md);
 }
 

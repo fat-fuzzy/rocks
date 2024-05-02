@@ -18,7 +18,7 @@ p + .feedback {
 
 .feedback.fill {
 	--current-color: var(--color-dark);
-	box-shadow: var(--current-shadow);
+	box-shadow: var(--shadow-md);
 }
 
 .feedback.outline,

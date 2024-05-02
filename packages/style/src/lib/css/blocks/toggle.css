@@ -1,9 +1,9 @@
 /* == Toggle  default == */
 
-[class^='toggle'][aria-pressed='true'] {
-	box-shadow: var(--current-shadow-inset-2);
+.toggle[aria-pressed='true'] {
+	box-shadow: inset var(--shadow-inset-2);
 }
 
-[class^='toggle'][aria-pressed='true']:hover {
-	box-shadow: var(--current-shadow-inset-1);
+.toggle[aria-pressed='true']:hover {
+	box-shadow: inset var(--shadow-inset-1);
 }

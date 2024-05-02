@@ -51,7 +51,7 @@
 
 .header-app [class*='l:side'] a:hover {
 	background-color: var(--current-bg-contrast);
-	box-shadow: var(--current-shadow);
+	box-shadow: var(--shadow-md);
 }
 
 .header-app > [class*='l:main'] > nav li[aria-current='page'] a {

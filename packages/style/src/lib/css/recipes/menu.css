@@ -21,7 +21,7 @@ menu > li > * {
 }
 
 .menu\:settings [class^='switch'][aria-pressed] {
-	box-shadow: var(--current-shadow-inset-1);
+	box-shadow: inset var(--shadow-inset-1);
 }
 
 .menu\:settings [class^='switch'][aria-pressed].outline {
@@ -34,7 +34,7 @@ menu > li > * {
 
 .menu\:settings [class^='switch'][aria-pressed]:hover {
 	background-color: var(--current-bg-contrast);
-	box-shadow: var(--current-shadow);
+	box-shadow: var(--shadow-md);
 }
 
 .menu\:settings [class*='svg'] {

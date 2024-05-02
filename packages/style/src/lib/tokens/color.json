@@ -50,27 +50,39 @@
 		"state": {
 			"default": {
 				"lightness": {"$value": "{color.lightness.300}"},
-				"chroma": {"$value": "{color.lightness.300}"}
+				"chroma": {"$value": "{color.chroma.300}"}
 			},
 			"active": {
 				"lightness": {"$value": "{color.lightness.500}"},
-				"chroma": {"$value": "{color.lightness.500}"}
+				"chroma": {"$value": "{color.chroma.500}"}
 			},
 			"hover": {
 				"lightness": {"$value": "{color.lightness.400}"},
-				"chroma": {"$value": "{color.lightness.400}"}
+				"chroma": {"$value": "{color.chroma.400}"}
 			},
 			"focus": {
 				"lightness": {"$value": "{color.lightness.500}"},
-				"chroma": {"$value": "{color.lightness.500}"}
+				"chroma": {"$value": "{color.chroma.500}"}
 			},
 			"disabled": {
 				"lightness": {"$value": "{color.lightness.100}"},
-				"chroma": {"$value": "{color.lightness.100}"}
+				"chroma": {"$value": "{color.chroma.100}"}
 			},
 			"visited": {
 				"lightness": {"$value": "{color.lightness.200}"},
-				"chroma": {"$value": "{color.lightness.200}"}
+				"chroma": {"$value": "{color.chroma.200}"}
+			}
+		},
+		"shadow": {
+			"$type": "color",
+			"000": {
+				"$value": "hsl(311.39 100% 48%)",
+				"$extensions": {
+					"mode": {
+						"day": "hsl(311.39 100% 48%)",
+						"night": "hsl(185.97 100% 43%)"
+					}
+				}
 			}
 		},
 		"gradient": {
@@ -79,6 +91,54 @@
 				"start": {"$value": "hsl(311.39 100% 48%)"},
 				"middle": {"$value": "hsl(286.92 100% 74%)"},
 				"end": {"$value": "hsl(185.97 100% 43%)"}
+			}
+		}
+	},
+	"shadow": {
+		"base": {
+			"$type": "dimension",
+			"sm": {
+				"offsetX": {"$value": "0px"},
+				"offsetY": {"$value": "2px"},
+				"blur": {"$value": "6px"},
+				"spread": {"$value": 0}
+			},
+			"md": {
+				"offsetX": {"$value": "0px"},
+				"offsetY": {"$value": "4px"},
+				"blur": {"$value": "8px"},
+				"spread": {"$value": 0}
+			}
+		},
+		"md": {
+			"$type": "shadow",
+			"$value": {
+				"offsetX": "{shadow.base.md.offsetX}",
+				"offsetY": "{shadow.base.md.offsetY}",
+				"blur": "{shadow.base.md.blur}",
+				"spread": "{shadow.base.md.spread}",
+				"color": "{color.shadow.000}"
+			}
+		},
+		"inset": {
+			"$type": "shadow",
+			"1": {
+				"$value": {
+					"offsetX": "{shadow.base.sm.offsetX}",
+					"offsetY": "{shadow.base.sm.offsetY}",
+					"blur": "{shadow.base.sm.blur}",
+					"spread": "{shadow.base.sm.spread}",
+					"color": "{color.shadow.000}"
+				}
+			},
+			"2": {
+				"$value": {
+					"offsetX": "{shadow.base.md.offsetX}",
+					"offsetY": "{shadow.base.md.offsetY}",
+					"blur": "{shadow.base.md.blur}",
+					"spread": "{shadow.base.md.spread}",
+					"color": "{color.shadow.000}"
+				}
 			}
 		}
 	}

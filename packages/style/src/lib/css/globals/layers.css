@@ -1,15 +1,15 @@
 .layer,
 [class*=':layer'] {
-	box-shadow: var(--current-shadow);
+	box-shadow: var(--shadow-md);
 }
 
 .inset-1 {
-	box-shadow: var(--current-shadow-inset-1);
+	box-shadow: inset var(--shadow-inset-1);
 	z-index: var(--z-index-inset-1);
 }
 
 .inset {
-	box-shadow: var(--current-shadow-inset-2);
+	box-shadow: inset var(--shadow-inset-2);
 	z-index: var(--z-index-inset-2);
 }
 
