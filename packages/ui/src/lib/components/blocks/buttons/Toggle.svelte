@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {ButtonType} from '$types'
 	import {createEventDispatcher, onMount} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
 	import {createActor} from 'xstate'
@@ -33,7 +32,7 @@
 	export let dimensions = ''
 	export let layout = 'flex'
 
-	export let type: ButtonType = 'submit'
+	export let type = 'submit'
 
 	let payloadId = name // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 

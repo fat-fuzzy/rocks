@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ButtonType, ButtonState} from '$types'
+	import type {ButtonState} from '$types'
 	import {onMount, createEventDispatcher} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
 	import {createActor} from 'xstate'
@@ -17,7 +17,7 @@
 	export let initial = false
 	export let value = ''
 	export let disabled = false
-	export let type: ButtonType = 'submit'
+	export let type = 'submit'
 	export let formaction: string | undefined = undefined
 	export let states: ButtonState // this component contains a button that will Expand the DOM element it controls when active, or minimize it when inactive. Each state can have its own text, style, and asset (if any) according to its active / inactive state
 

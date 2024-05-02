@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {ButtonType} from '$types'
 	import {getStores} from '$app/stores'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
@@ -17,7 +16,7 @@
 	export let color = 'primary'
 
 	let page = getStores().page
-	let type: ButtonType = 'button'
+	let type = 'button'
 
 	$: session = {...$page.data.session}
 	$: action = redirectTo ? `/${action}?redirectTo=${redirectTo}` : action
