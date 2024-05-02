@@ -51,26 +51,27 @@ import Header from '$lib/components/recipes/headers/Header.svelte'
 /**
  * Forms
  */
-import {NavReveal} from '$lib/forms/nav-reveal'
-import {SettingsReveal} from '$lib/forms/settings-reveal'
-import {SettingsUpdate} from '$lib/forms/settings-update'
-import {SidebarReveal} from '$lib/forms/sidebar-reveal'
-import {DsContextReveal} from '$lib/forms/ds-context-reveal'
-import {DsStateUpdate} from '$lib/forms/ds-state-update'
-import {DsTabsUpdate} from '$lib/forms/ds-tabs-update'
+import {NavReveal} from '$lib/forms/nav-reveal.js'
+import {SettingsReveal} from '$lib/forms/settings-reveal.js'
+import {SettingsUpdate} from '$lib/forms/settings-update.js'
+import {SidebarReveal} from '$lib/forms/sidebar-reveal.js'
+import {DsContextReveal} from '$lib/forms/ds-context-reveal.js'
+import {DsStateUpdate} from '$lib/forms/ds-state-update.js'
+import {DsTabsUpdate} from '$lib/forms/ds-tabs-update.js'
 
 /**
  * Stores
  */
-import * as settings from '$lib/stores/settings'
-import * as intl from '$lib/stores/intl'
+import * as settings from '$lib/stores/settings.js'
+import * as intl from '$lib/stores/intl.js'
 
 /**
  * Utilities
  */
-import constants from '$lib/types/constants'
-import * as clickOutside from '$lib/utils/click-outside'
-import format from '$lib/utils/format'
+import * as types from '$lib/types/index.js'
+import constants from '$lib/types/constants.js'
+import * as clickOutside from '$lib/utils/click-outside.js'
+import format from '$lib/utils/format.js'
 
 /***************************************************
  * Prepare Exports
@@ -132,10 +133,8 @@ const recipes = {
 	Header,
 }
 
-// TODO: rename this export : stylesApi
 const headless = {
 	Head,
 }
 
-
-export {headless, tokens, blocks, layouts, recipes, utils, forms, stores, constants}
+export {headless, tokens, blocks, layouts, recipes, utils, forms, stores, constants, types}

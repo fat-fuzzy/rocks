@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ExpandProps} from './buttons.types.js';
+	import type {ExpandProps} from './button.types.js'
 	import {actor} from '$lib/actors/expand'
 
 	let {
@@ -74,7 +74,7 @@
 		let assetClass = currentState.asset ?? asset ?? ''
 		let stateClasses = `${assetClass} ${variantClass}`
 
-		return `${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
+		return `expand ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
 	})
 
 	$effect(() => {

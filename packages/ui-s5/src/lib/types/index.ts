@@ -1,4 +1,3 @@
-export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 export type InputType =
 	| 'text'
 	| 'number'
@@ -12,7 +11,7 @@ export type InputType =
 export type UiDimensions = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 export type ButtonContext = {
-	id: string // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
+	id: string
 	name: string
 }
 
@@ -32,7 +31,7 @@ export type Settings = {
 }
 
 export type InputPayload = {
-	id: string // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+	id: string
 	name: string
 	value: string
 }

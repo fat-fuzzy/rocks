@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ToggleProps} from './buttons.types.js';
+	import type {ToggleProps} from './button.types.js'
 	import {actor} from '$lib/actors/toggle'
 
 	let {
@@ -35,12 +35,11 @@
 
 	let manager = actor(id, initial, name)
 	manager.subscribe((snapshot: any) => {
-		toggleState = snapshot.value
+		initial = snapshot.value
 	})
 
 	/* Element state */
-	let toggleState = $state(initial)
-	let pressed = $derived(toggleState === 'active')
+	let pressed = $derived(initial === 'active')
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
@@ -68,7 +67,7 @@
 	}
 
 	/* State dependent styles */
-	let buttonClasses = `${containerClass} ${layoutClasses} ${elementClasses}`
+	let buttonClasses = `toggle ${containerClass} ${layoutClasses} ${elementClasses}`
 
 	$effect(() => {
 		manager.start()

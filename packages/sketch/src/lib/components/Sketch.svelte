@@ -343,6 +343,7 @@
 						{:else if meta?.type === 'texture'}
 							{#if meta?.channels}
 								<ToggleMenu
+									id="channels"
 									size="xs"
 									mode="radio"
 									layout="switcher"
@@ -361,6 +362,7 @@
 							{/if}
 							{#if meta?.blur}
 								<ToggleMenu
+									id="blur"
 									size="xs"
 									mode="check"
 									layout="switcher"
@@ -379,6 +381,7 @@
 							{/if}
 							{#if meta?.convolutions}
 								<ToggleMenu
+									id="convolutions"
 									size="xs"
 									mode="multiple"
 									layout="switcher"

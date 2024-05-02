@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {ButtonType} from '$types'
 	import {getStores} from '$app/stores'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
+
 	export let title = 'Log In'
 	export let description = 'A log in form'
 	export let asset = 'emoji:log'
@@ -15,7 +15,7 @@
 	export let redirectTo: string = ''
 	// export let action: string = '/login'
 	export let action: string = ''
-	let type: ButtonType = 'button'
+	let type = 'button'
 
 	let page = getStores().page
 

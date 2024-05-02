@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {SwitchProps} from './buttons.types.js';
+	import type {SwitchProps} from './button.types.js'
 	import {actor} from '$lib/actors/switch'
 
 	let {
@@ -75,7 +75,7 @@
 		let assetClass = (currentState.asset ?? asset) ?? ''
 		let stateClasses = `${assetClass} ${variantClass}`
 
-		return `${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
+		return `switch ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
 	})
 
 	$effect(() => {
