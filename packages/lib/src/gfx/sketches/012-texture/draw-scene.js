@@ -8,7 +8,7 @@ const {DEFAULT_TEXTURE_COORDS} = geometries
  * @param {*} programInfo
  * @param {*} buffers
  */
-function drawScene(gl, programInfo, channels) {
+function drawScene(gl, programInfo, {channels, blurLevel}) {
 	// Set the parameters so we don't need mips (?):
 	// - we're not filtering
 	// - we don't repeat
@@ -29,6 +29,7 @@ function drawScene(gl, programInfo, channels) {
 	gl.texImage2D(gl.TEXTURE_2D, mipLevel, internalFormat, srcFormat, srcType, image)
 
 	gl.uniform4iv(programInfo.uniformLocations.u_channelSwap, channels)
+	gl.uniform1i(programInfo.uniformLocations.u_blurLevel, blurLevel)
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)

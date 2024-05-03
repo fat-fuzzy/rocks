@@ -10,7 +10,7 @@ import setup from '../../lib/webgl/setup'
 import {drawScene, setPositionAttribute, setTextureAttribute} from './draw-scene'
 import {initBuffers, updateBuffers} from './init-buffers'
 
-import {blur, frag} from './shaders/fragment-shader'
+import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
 let host = 'http://localhost:5173'
@@ -28,6 +28,7 @@ let fragmentShader
 let texture
 let image
 let channelOrder
+let blurLevel = 0
 
 function convertToChannelOrder(str) {
 	return new Int32Array(
@@ -132,7 +133,7 @@ function draw(t) {
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
 	// ... rest of your drawing code ...
-	drawScene(gl, programInfo, channels[channelOrder])
+	drawScene(gl, programInfo, {channels: channels[channelOrder], blurLevel})
 }
 
 //
@@ -238,6 +239,7 @@ function loadProgram() {
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
 			u_image: gl.getUniformLocation(program, 'u_image'),
 			u_channelSwap: gl.getUniformLocation(program, 'u_channelSwap'),
+			u_blurLevel: gl.getUniformLocation(program, 'u_blurLevel'),
 		},
 	}
 
@@ -252,10 +254,19 @@ function isPowerOf2(value) {
 	return (value & (value - 1)) === 0
 }
 
-function update(context, {filters}) {
+function update(canvas, context) {
 	programInfo.context = context
+	const {filters} = context
+	let filtersChanged = false
 	if (filters.channels && filters.channels !== channelOrder) {
 		channelOrder = filters.channels
+		filtersChanged = true
+	}
+	if (filters.blur && filters.blur !== blurLevel) {
+		blurLevel = filters.blur
+		filtersChanged = true
+	}
+	if (filtersChanged === true) {
 		programInfo.context = loadTexture(image)
 	}
 }

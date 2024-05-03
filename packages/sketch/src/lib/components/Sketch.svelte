@@ -198,25 +198,22 @@
 		events.current = payload.event
 	}
 
-	function updateChannel(selected: {name: string}) {
-		filters.channels = selected.name
-		filters.blur = undefined
-		if (canvas) {
-			scene.update(canvas, {filters})
-			play()
+	function updateChannel(selected: {name: string; pressed: boolean}) {
+		if (selected.pressed) {
+			filters.channels = selected.name
+			if (canvas) {
+				scene.update(canvas, {...context, filters})
+				play()
+			}
 		}
 	}
 
-	function updateBlur(selected: {name: string}) {
-		const value = selected.name
-		if (value === filters.blur) {
-			filters.blur = undefined
-		} else {
-			filters.blur = value
+	function updateBlur(selected: {value: number; name: string; pressed: boolean}) {
+		if (selected.pressed) {
+			filters.blur = selected.value
 		}
-
 		if (canvas) {
-			scene.update(canvas, {filters})
+			scene.update(canvas, {...context, filters})
 			play()
 		}
 	}
@@ -229,13 +226,13 @@
 		}
 
 		if (canvas) {
-			scene.update(canvas, {filters})
+			scene.update(canvas, {...context, filters})
 			play()
 		}
 	}
 
 	function handleMouseEvent(event: MouseEvent) {
-		scene.update(context, {filters}, event)
+		scene.update(context, {...context, filters}, event)
 	}
 
 	onMount(() => {
@@ -378,7 +375,7 @@
 									items={meta.blur.map((b) => ({
 										id: b,
 										name: b,
-										text: b,
+										text: `blur ${b}`,
 										value: b,
 										initial: b === filters.blur ? 'active' : 'inactive',
 									}))}
