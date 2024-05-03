@@ -2,11 +2,11 @@ import geometries from '../../lib/geometries'
 
 const {DEFAULT_TEXTURE_COORDS} = geometries
 
-function initBuffers(gl, programInfo) {
+//  {width, height} = programInfo.context
+export function initBuffers(gl, programInfo) {
 	const {width, height} = programInfo.context
-
 	const texCoordBuffer = initTextureBuffer(gl)
-	const positionBuffer = initPositionBuffer(gl, {width, height})
+	const positionBuffer = initPositionBuffer(gl, width, height)
 
 	return {
 		texture: texCoordBuffer,
@@ -14,7 +14,7 @@ function initBuffers(gl, programInfo) {
 	}
 }
 
-function initPositionBuffer(gl, {width, height}) {
+function initPositionBuffer(gl, width, height) {
 	// Create a buffer for the geometry's positions.
 	const positionBuffer = gl.createBuffer()
 
@@ -23,9 +23,9 @@ function initPositionBuffer(gl, {width, height}) {
 
 	// Create an array of positions for the geometry.
 	const x1 = 0
-	const x2 = 0 + width
+	const x2 = width
 	const y1 = 0
-	const y2 = 0 + height
+	const y2 = height
 	// prettier-ignore
 	const coords = [
 			x1, y1,
@@ -48,5 +48,3 @@ function initTextureBuffer(gl) {
 
 	return texCoordBuffer
 }
-
-export {initBuffers}

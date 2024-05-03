@@ -18,11 +18,11 @@ in vec2 v_texCoord;
 out vec4 outColor;
 
 void main() {
-  // Look up a color from the texture
-  vec4 color = texture(u_image, v_texCoord);
-
-  // Apply the channel order
-  outColor = vec4(color[u_channelSwap.x], color[u_channelSwap.y], color[u_channelSwap.z], color[u_channelSwap.w]);
+	// Look up a color from the texture
+	outColor = texture(u_image, v_texCoord);
+  
+	// Look up a color from the texture
+	// outColor = texture(u_image, v_texCoord);
 }
 `
 

@@ -68,7 +68,7 @@
 					{formaction}
 					{...props}
 					color={color}
-					variant={ variant}
+					variant={variant}
 					size={ size}
 					shape={shape}
 					asset={asset}

@@ -1,5 +1,5 @@
 {
-	"name": "sketch",
+	"name": "@fat-fuzzy/sketch",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
