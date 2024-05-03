@@ -11,9 +11,6 @@ let originalTexture
  * @param {*} buffers
  */
 function drawScene(gl, programInfo, buffers) {
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
-
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 
@@ -236,4 +233,4 @@ function draWithKernel(gl, programInfo, kernel) {
 	gl.drawArrays(primitiveType, offset, count)
 }
 
-export {drawScene}
+export {drawScene, setPositionAttribute, setTextureAttribute}

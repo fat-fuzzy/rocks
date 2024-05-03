@@ -9,9 +9,6 @@ const {DEFAULT_TEXTURE_COORDS} = geometries
  * @param {*} buffers
  */
 function drawScene(gl, programInfo, buffers) {
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
-
 	// Create a texture
 	let texture = gl.createTexture()
 
@@ -99,4 +96,4 @@ function setTextureAttribute(gl, buffers, programInfo) {
 	gl.enableVertexAttribArray(programInfo.attribLocations.a_texCoord)
 }
 
-export {drawScene}
+export {drawScene, setPositionAttribute, setTextureAttribute}

@@ -7,7 +7,7 @@
 
 import utils from '../../lib/utils'
 import setup from '../../lib/webgl/setup'
-import {drawScene} from './draw-scene'
+import {drawScene, setPositionAttribute, setTextureAttribute} from './draw-scene'
 import {initBuffers} from './init-buffers'
 
 import {channels, blur, defaultFrag} from './shaders/fragment-shader'
@@ -22,6 +22,10 @@ let imagePath = `${host}/${imageAssetsPath}/${filename}`
 let gl
 let programInfo = {}
 let buffers
+let vertexShader
+let fragmentShader
+let texture
+let image
 
 function clear() {
 	if (!gl) {
@@ -29,7 +33,7 @@ function clear() {
 		return
 	}
 	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientWidth)
-	// Set the clear color to darkish green.
+	// Set the clear color to black, fully transparent
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
 	// the function call that actually does the drawing.
@@ -41,6 +45,14 @@ function clear() {
 
 	// tell webgl to cull faces
 	gl.depthFunc(gl.LEQUAL) // near things obscure far things
+
+	if (buffers) {
+		if (buffers.position) gl.deleteBuffer(buffers.position)
+		if (buffers.texture) gl.deleteBuffer(buffers.texture)
+	}
+	if (vertexShader) gl.deleteShader(vertexShader)
+	if (fragmentShader) gl.deleteShader(fragmentShader)
+	if (programInfo.program) gl.deleteProgram(programInfo.program)
 }
 
 function main(canvas, {filters}) {
@@ -52,13 +64,11 @@ function main(canvas, {filters}) {
 		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
 	}
 
-	let image = new Image()
+	image = new Image()
 	image.src = imagePath
-
 	image.onload = () => {
 		loadTexture(gl, image, {filters})
 	}
-
 	return {
 		context: {
 			image,
@@ -99,15 +109,13 @@ function loadTexture(gl, image, {filters}) {
 		frag = defaultFrag
 	}
 
-	const vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
-	const fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
+	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
+	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
 
 	if (vertexShader && fragmentShader) {
 		program = setup.link(gl, vertexShader, fragmentShader)
 		gl.useProgram(program)
 	}
-
-	clear()
 
 	utils.resize(gl.canvas)
 
@@ -136,64 +144,68 @@ function loadTexture(gl, image, {filters}) {
 
 	buffers = initBuffers(gl, programInfo)
 
-	const texture = gl.createTexture()
-	// make unit 0 the active texture uint
-	// (ie, the unit all other texture commands will affect
-	gl.activeTexture(gl.TEXTURE0 + 0)
+	if (!texture) {
+		texture = gl.createTexture()
+		// make unit 0 the active texture uint
+		// (ie, the unit all other texture commands will affect
+		gl.activeTexture(gl.TEXTURE0 + 0)
 
-	gl.bindTexture(gl.TEXTURE_2D, texture)
+		gl.bindTexture(gl.TEXTURE_2D, texture)
 
-	// Because images have to be downloaded over the internet
-	// they might take a moment until they are ready.
-	// Until then put a single pixel in the texture so we can
-	// use it immediately. When the image has finished downloading
-	// we'll update the texture with the contents of the image.
+		// Because images have to be downloaded over the internet
+		// they might take a moment until they are ready.
+		// Until then put a single pixel in the texture so we can
+		// use it immediately. When the image has finished downloading
+		// we'll update the texture with the contents of the image.
 
-	let textureInfo = {
-		width: 1, // we don't know the size until it loads
-		height: 1,
-		texture,
+		let textureInfo = {
+			width: 1, // we don't know the size until it loads
+			height: 1,
+			texture,
+		}
+		const level = 0
+		const internalFormat = gl.RGBA
+		const border = 0
+		const srcFormat = gl.RGBA
+		const srcType = gl.UNSIGNED_BYTE
+		const pixel = new Uint8Array([0, 0, 255, 255]) // opaque blue
+
+		gl.texImage2D(
+			gl.TEXTURE_2D,
+			level,
+			internalFormat,
+			textureInfo.width,
+			textureInfo.height,
+			border,
+			srcFormat,
+			srcType,
+			pixel,
+		)
+
+		textureInfo.width = image.width
+		textureInfo.height = image.height
+
+		gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture)
+		gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
+
+		// WebGL1 has different requirements for power of 2 images
+		// vs. non power of 2 images so check if the image is a
+		// power of 2 in both dimensions.
+		if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
+			// Yes, it's a power of 2. Generate mips.
+			gl.generateMipmap(gl.TEXTURE_2D)
+		} else {
+			// No, it's not a power of 2. Turn off mips and set
+			// wrapping to clamp to edge
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+		}
 	}
-	const level = 0
-	const internalFormat = gl.RGBA
-	const border = 0
-	const srcFormat = gl.RGBA
-	const srcType = gl.UNSIGNED_BYTE
-	const pixel = new Uint8Array([0, 0, 255, 255]) // opaque blue
 
-	gl.texImage2D(
-		gl.TEXTURE_2D,
-		level,
-		internalFormat,
-		textureInfo.width,
-		textureInfo.height,
-		border,
-		srcFormat,
-		srcType,
-		pixel,
-	)
-
-	textureInfo.width = image.width
-	textureInfo.height = image.height
-
-	gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture)
-	gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
-
-	// WebGL1 has different requirements for power of 2 images
-	// vs. non power of 2 images so check if the image is a
-	// power of 2 in both dimensions.
-	if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
-		// Yes, it's a power of 2. Generate mips.
-		gl.generateMipmap(gl.TEXTURE_2D)
-	} else {
-		// No, it's not a power of 2. Turn off mips and set
-		// wrapping to clamp to edge
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
-	}
-
+	setPositionAttribute(gl, buffers, programInfo)
+	setTextureAttribute(gl, buffers, programInfo)
 	return image
 }
 
