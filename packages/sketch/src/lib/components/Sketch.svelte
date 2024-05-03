@@ -56,7 +56,7 @@
 
 	let filters: Filters = $state({
 		channels: 'rgba',
-		blur: undefined,
+		blur: 0,
 		effects: ['normal'],
 	})
 	let canvas: HTMLCanvasElement | null = $state(null)
@@ -151,7 +151,7 @@
 		scene.clear()
 		filters = {
 			channels: 'rgba',
-			blur: undefined,
+			blur: 0,
 			effects: ['normal'],
 		}
 		sketchState.canvas = CanvasState.idle
@@ -201,16 +201,18 @@
 	function updateChannel(selected: {name: string; pressed: boolean}) {
 		if (selected.pressed) {
 			filters.channels = selected.name
-			if (canvas) {
-				scene.update(canvas, {...context, filters})
-				play()
-			}
+		}
+		if (canvas) {
+			scene.update(canvas, {...context, filters})
+			play()
 		}
 	}
 
 	function updateBlur(selected: {value: number; name: string; pressed: boolean}) {
 		if (selected.pressed) {
 			filters.blur = selected.value
+		} else {
+			filters.blur = 0
 		}
 		if (canvas) {
 			scene.update(canvas, {...context, filters})

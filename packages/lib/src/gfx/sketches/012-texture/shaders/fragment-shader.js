@@ -9,10 +9,10 @@ precision highp float;
 uniform sampler2D u_image;
 
 // the channel order swapped
-uniform ivec4 u_channelSwap;
+uniform ivec4 u_channels;
 
 // the blur level
-uniform int u_blurLevel;
+uniform int u_blur;
 
 // the texCoords passed in from the vertex shader
 in vec2 v_texCoord;
@@ -25,18 +25,22 @@ void main() {
   vec4 color = texture(u_image, v_texCoord);
 
   // Apply the channel order
-  // outColor = vec4(color[u_channelSwap.x], color[u_channelSwap.y], color[u_channelSwap.z], color[u_channelSwap.w]);
+  // outColor = vec4(color[u_channels.x], color[u_channels.y], color[u_channels.z], color[u_channels.w]);
 
-  vec2 pixels = vec2(float(u_blurLevel)) / vec2(textureSize(u_image, 0));
+  if(u_blur != 0) {
+    vec2 pixels = vec2(float(u_blur)) / vec2(textureSize(u_image, 0));
 
-  // Average the left, middle, and right pixels
-  vec4 blurred  = (
-    texture(u_image, v_texCoord) +
-    texture(u_image, v_texCoord + vec2( pixels.x / 2.0,  pixels.y / 2.0)) +
-    texture(u_image, v_texCoord + vec2(-pixels.x / 2.0, -pixels.y / 2.0))) / 3.0;
+    // Average the left, middle, and right pixels
+    vec4 blurred  = (
+      texture(u_image, v_texCoord) +
+      texture(u_image, v_texCoord + vec2( pixels.x / 2.0,  pixels.y / 2.0)) +
+      texture(u_image, v_texCoord + vec2(-pixels.x / 2.0, -pixels.y / 2.0))) / 3.0;
 
-  // Apply the channel order
-  outColor = vec4(blurred[u_channelSwap.x], blurred[u_channelSwap.y], blurred[u_channelSwap.z], blurred[u_channelSwap.w]);
+    // Apply the channel order
+    outColor = vec4(blurred[u_channels.x], blurred[u_channels.y], blurred[u_channels.z], blurred[u_channels.w]);
+  } else {
+    outColor = vec4(color[u_channels.x], color[u_channels.y], color[u_channels.z], color[u_channels.w]);
+  }
 }
 `
 

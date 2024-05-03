@@ -28,7 +28,7 @@ let fragmentShader
 let texture
 let image
 let channelOrder
-let blurLevel = 0
+let blur = 0
 
 function convertToChannelOrder(str) {
 	return new Int32Array(
@@ -77,9 +77,6 @@ function clear() {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
 	gl.clearDepth(1.0) // clear everything (?)
-
-	// tell webgl to cull faces
-	gl.depthFunc(gl.LEQUAL) // near things obscure far things
 }
 
 function stop() {
@@ -123,17 +120,14 @@ function main() {
 
 function draw(t) {
 	utils.resize(gl.canvas)
-	// Set the clear color to black and fully opaque
-	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 
-	// Clear the color buffer and the depth buffer
-	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+	clear()
 
 	updateBuffers(gl, programInfo, buffers)
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
 	// ... rest of your drawing code ...
-	drawScene(gl, programInfo, {channels: channels[channelOrder], blurLevel})
+	drawScene(gl, programInfo, {channels: channels[channelOrder], blur})
 }
 
 //
@@ -238,8 +232,8 @@ function loadProgram() {
 			// bind u_matrix
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
 			u_image: gl.getUniformLocation(program, 'u_image'),
-			u_channelSwap: gl.getUniformLocation(program, 'u_channelSwap'),
-			u_blurLevel: gl.getUniformLocation(program, 'u_blurLevel'),
+			u_channels: gl.getUniformLocation(program, 'u_channels'),
+			u_blur: gl.getUniformLocation(program, 'u_blur'),
 		},
 	}
 
@@ -255,19 +249,18 @@ function isPowerOf2(value) {
 }
 
 function update(canvas, context) {
-	programInfo.context = context
 	const {filters} = context
-	let filtersChanged = false
-	if (filters.channels && filters.channels !== channelOrder) {
+	if (filters.channels !== channelOrder) {
 		channelOrder = filters.channels
-		filtersChanged = true
 	}
-	if (filters.blur && filters.blur !== blurLevel) {
-		blurLevel = filters.blur
-		filtersChanged = true
+	if (filters.blur !== blur) {
+		blur = filters.blur
 	}
-	if (filtersChanged === true) {
-		programInfo.context = loadTexture(image)
+	programInfo.context = {
+		image,
+		translation: [0, 0],
+		width: imgWidth,
+		height: imgHeight,
 	}
 }
 
