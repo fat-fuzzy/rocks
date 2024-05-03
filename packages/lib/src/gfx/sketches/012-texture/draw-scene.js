@@ -9,16 +9,6 @@ const {DEFAULT_TEXTURE_COORDS} = geometries
  * @param {*} buffers
  */
 function drawScene(gl, programInfo, channels) {
-	// Create a texture
-	let texture = gl.createTexture()
-
-	// make unit 0 the active texture unit
-	// i.e the unit all other texture commands will affect
-	gl.activeTexture(gl.TEXTURE0 + 0)
-
-	// Bind texture to 'texture unit 0' 2D bind point
-	gl.bindTexture(gl.TEXTURE_2D, texture)
-
 	// Set the parameters so we don't need mips (?):
 	// - we're not filtering
 	// - we don't repeat
@@ -34,14 +24,9 @@ function drawScene(gl, programInfo, channels) {
 	let srcType = gl.UNSIGNED_BYTE // type of data we are supplying
 
 	// texImage2D(target, level, internalformat, format, type, source)
-	gl.texImage2D(
-		gl.TEXTURE_2D,
-		mipLevel,
-		internalFormat,
-		srcFormat,
-		srcType,
-		programInfo.context.image,
-	)
+	const image = programInfo.context.image
+
+	gl.texImage2D(gl.TEXTURE_2D, mipLevel, internalFormat, srcFormat, srcType, image)
 
 	gl.uniform4iv(programInfo.uniformLocations.u_channelSwap, channels)
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader

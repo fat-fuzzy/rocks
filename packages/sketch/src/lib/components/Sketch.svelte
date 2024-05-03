@@ -60,7 +60,7 @@
 		effects: ['normal'],
 	})
 	let canvas: HTMLCanvasElement | null = $state(null)
-	let programInfo = $state(canvas ? scene.main(canvas, {filters}) : undefined)
+	let programInfo = $state({})
 	let context: SceneContext = $state(programInfo?.context)
 	let width: number | undefined = $state(undefined)
 	let height: number | undefined = $state(undefined)
@@ -83,7 +83,6 @@
 	let disabled = $derived(sketchState.canvas === CanvasState.paused ? true : undefined)
 	let showGeometry = $derived(
 		context !== undefined &&
-			scene?.meta?.type !== 'texture' &&
 			(sketchState.canvas === CanvasState.playing ||
 				sketchState.canvas === CanvasState.paused ||
 				sketchState.canvas === CanvasState.ended),
@@ -103,7 +102,7 @@
 	function init() {
 		if (canvas) {
 			try {
-				programInfo = scene.main(canvas, {filters})
+				scene.main(canvas, {filters})
 				if (sketchState.player === PlayerState.stopped || !context) {
 					context = programInfo.context
 				}
@@ -123,7 +122,7 @@
 
 	function play() {
 		sketchState.canvas = CanvasState.playing
-		if (scene.meta?.type !== 'texture') {
+		if (meta?.type !== 'texture') {
 			loop(Date.now())
 		} else {
 			frame = requestAnimationFrame((t) => {
@@ -204,6 +203,7 @@
 		filters.blur = undefined
 		if (canvas) {
 			scene.update(canvas, {filters})
+			play()
 		}
 	}
 
@@ -217,6 +217,7 @@
 
 		if (canvas) {
 			scene.update(canvas, {filters})
+			play()
 		}
 	}
 
@@ -229,6 +230,7 @@
 
 		if (canvas) {
 			scene.update(canvas, {filters})
+			play()
 		}
 	}
 
@@ -238,7 +240,9 @@
 
 	onMount(() => {
 		if (scene.init && canvas) {
-			scene.init(canvas)
+			programInfo.context = scene.init(canvas)
+		} else if (canvas) {
+			programInfo = scene.main(canvas, context)
 		}
 		if (sketchState.canvas === CanvasState.idle) {
 			init()
