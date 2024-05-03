@@ -10,7 +10,7 @@ import setup from '../../lib/webgl/setup'
 import {drawScene, setPositionAttribute, setTextureAttribute} from './draw-scene'
 import {initBuffers, updateBuffers} from './init-buffers'
 
-import {blur, defaultFrag as frag} from './shaders/fragment-shader'
+import {blur, frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
 let host = 'http://localhost:5173'

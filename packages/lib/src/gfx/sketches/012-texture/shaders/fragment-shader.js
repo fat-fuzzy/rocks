@@ -1,4 +1,4 @@
-const defaultFrag = `#version 300 es
+const frag = `#version 300 es
 //FRAGMENT SHADER
 
 // fragment shaders don't have a default precision so we need
@@ -112,4 +112,4 @@ const blur = {
 	'blur.3': applyBlur('3'),
 }
 
-export {channels, blur, defaultFrag}
+export {channels, blur, frag}
