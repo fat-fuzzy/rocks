@@ -8,7 +8,7 @@ const {DEFAULT_TEXTURE_COORDS} = geometries
  * @param {*} programInfo
  * @param {*} buffers
  */
-function drawScene(gl, programInfo, buffers) {
+function drawScene(gl, programInfo, channels) {
 	// Create a texture
 	let texture = gl.createTexture()
 
@@ -43,6 +43,7 @@ function drawScene(gl, programInfo, buffers) {
 		programInfo.context.image,
 	)
 
+	gl.uniform4iv(programInfo.uniformLocations.u_channelSwap, channels)
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
@@ -64,7 +65,7 @@ function setPositionAttribute(gl, buffers, programInfo) {
 	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
 	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
 
-	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position)
+	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.positionBuffer)
 	gl.vertexAttribPointer(
 		programInfo.attribLocations.a_position,
 		count,
@@ -83,7 +84,7 @@ function setTextureAttribute(gl, buffers, programInfo) {
 	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
 	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
 
-	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.texture)
+	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.texCoordBuffer)
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(DEFAULT_TEXTURE_COORDS), gl.STATIC_DRAW)
 	gl.vertexAttribPointer(
 		programInfo.attribLocations.a_texCoord,

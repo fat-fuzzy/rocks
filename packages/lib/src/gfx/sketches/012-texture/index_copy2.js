@@ -262,10 +262,6 @@ function update(context, {filters}) {
 			channels[channelOrder],
 		)
 	}
-	buffers = initBuffers(gl, programInfo)
-
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
 }
 
 export default {init, main, draw, clear, update}

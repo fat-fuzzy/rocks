@@ -9,7 +9,7 @@ precision highp float;
 uniform sampler2D u_image;
 
 // the channel order swapped
-uniform vec4 u_channelSwap;
+uniform ivec4 u_channelSwap;
 
 // the texCoords passed in from the vertex shader
 in vec2 v_texCoord;

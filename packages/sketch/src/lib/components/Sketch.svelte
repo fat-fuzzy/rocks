@@ -107,7 +107,7 @@
 				if (sketchState.player === PlayerState.stopped || !context) {
 					context = programInfo.context
 				}
-				scene.update(context)
+				scene.update(context, {filters})
 			} catch (e: any) {
 				feedback = {status: 'error', message: e}
 			}
@@ -162,12 +162,12 @@
 	function pause() {
 		sketchState.canvas = CanvasState.paused
 		cancelAnimationFrame(frame)
-		scene.update(context)
+		scene.update(context, {filters})
 	}
 
 	function updateGeometry(payload: {value: GeometryProps}) {
 		context = payload.value
-		scene.update(context)
+		scene.update(context, {filters})
 		sketchState.geometry = GeometryState.updated
 	}
 
@@ -203,7 +203,7 @@
 		filters.channels = selected.name
 		filters.blur = undefined
 		if (canvas) {
-			programInfo = scene.main(canvas, {filters})
+			scene.update(canvas, {filters})
 		}
 	}
 
@@ -216,7 +216,7 @@
 		}
 
 		if (canvas) {
-			programInfo = scene.main(canvas, {filters})
+			scene.update(canvas, {filters})
 		}
 	}
 
@@ -228,15 +228,18 @@
 		}
 
 		if (canvas) {
-			programInfo = scene.main(canvas, {filters})
+			scene.update(canvas, {filters})
 		}
 	}
 
 	function handleMouseEvent(event: MouseEvent) {
-		scene.update(context, event)
+		scene.update(context, {filters}, event)
 	}
 
 	onMount(() => {
+		if (scene.init && canvas) {
+			scene.init(canvas)
+		}
 		if (sketchState.canvas === CanvasState.idle) {
 			init()
 		}

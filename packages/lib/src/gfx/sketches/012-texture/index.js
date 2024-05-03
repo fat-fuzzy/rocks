@@ -8,9 +8,9 @@
 import utils from '../../lib/utils'
 import setup from '../../lib/webgl/setup'
 import {drawScene, setPositionAttribute, setTextureAttribute} from './draw-scene'
-import {initBuffers} from './init-buffers'
+import {initBuffers, updateBuffers} from './init-buffers'
 
-import {channels, blur, defaultFrag} from './shaders/fragment-shader'
+import {blur, defaultFrag as frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
 let host = 'http://localhost:5173'
@@ -20,12 +20,46 @@ let imgWidth = 620
 let imgHeight = 518
 let imagePath = `${host}/${imageAssetsPath}/${filename}`
 let gl
+let program
 let programInfo = {}
 let buffers
 let vertexShader
 let fragmentShader
 let texture
 let image
+let channelOrder
+
+function convertToChannelOrder(str) {
+	return new Int32Array(
+		str.split('').map((c) => (c === 'r' ? 0 : c === 'a' ? 3 : c === 'g' ? 1 : 2)),
+	)
+}
+const channels = {
+	ragb: convertToChannelOrder('ragb'),
+	rabg: convertToChannelOrder('rabg'),
+	rbag: convertToChannelOrder('rbag'),
+	rbga: convertToChannelOrder('rbga'),
+	rgba: convertToChannelOrder('rgba'),
+	rgab: convertToChannelOrder('rgab'),
+	abgr: convertToChannelOrder('abgr'),
+	abrg: convertToChannelOrder('abrg'),
+	agrb: convertToChannelOrder('agrb'),
+	agbr: convertToChannelOrder('agbr'),
+	arbg: convertToChannelOrder('arbg'),
+	argb: convertToChannelOrder('argb'),
+	bagr: convertToChannelOrder('bagr'),
+	barg: convertToChannelOrder('barg'),
+	bgar: convertToChannelOrder('bgar'),
+	bgra: convertToChannelOrder('bgra'),
+	brga: convertToChannelOrder('brga'),
+	brag: convertToChannelOrder('brag'),
+	gabr: convertToChannelOrder('gabr'),
+	garb: convertToChannelOrder('garb'),
+	gbar: convertToChannelOrder('gbar'),
+	gbra: convertToChannelOrder('gbra'),
+	grab: convertToChannelOrder('grab'),
+	grba: convertToChannelOrder('grba'),
+}
 
 function clear() {
 	if (!gl) {
@@ -45,6 +79,10 @@ function clear() {
 
 	// tell webgl to cull faces
 	gl.depthFunc(gl.LEQUAL) // near things obscure far things
+}
+
+function stop() {
+	clear()
 
 	if (buffers) {
 		if (buffers.position) gl.deleteBuffer(buffers.position)
@@ -55,7 +93,7 @@ function clear() {
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 }
 
-function main(canvas, {filters}) {
+function init(canvas) {
 	// Initialize the GL context
 	gl = canvas.getContext('webgl2')
 
@@ -66,9 +104,14 @@ function main(canvas, {filters}) {
 
 	image = new Image()
 	image.src = imagePath
+}
+
+function main() {
 	image.onload = () => {
-		loadTexture(gl, image, {filters})
+		programInfo = loadProgram()
+		loadTexture()
 	}
+
 	return {
 		context: {
 			image,
@@ -80,70 +123,25 @@ function main(canvas, {filters}) {
 }
 
 function draw(t) {
-	drawScene(gl, programInfo, buffers)
+	utils.resize(gl.canvas)
+	// Set the clear color to black and fully opaque
+	gl.clearColor(0.0, 0.0, 0.0, 0.0)
+
+	// Clear the color buffer and the depth buffer
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+
+	updateBuffers(gl, programInfo, buffers)
+	setPositionAttribute(gl, buffers, programInfo)
+	setTextureAttribute(gl, buffers, programInfo)
+	// ... rest of your drawing code ...
+	drawScene(gl, programInfo, channels[channelOrder])
 }
 
 //
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadTexture(gl, image, {filters}) {
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-	let program
-	let frag
-
-	if (filters.channels) {
-		frag = channels[filters.channels]
-	}
-
-	if (filters.blur) {
-		frag = blur[filters.blur]
-	}
-
-	if (!frag) {
-		frag = defaultFrag
-	}
-
-	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
-	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
-
-	if (vertexShader && fragmentShader) {
-		program = setup.link(gl, vertexShader, fragmentShader)
-		gl.useProgram(program)
-	}
-
-	utils.resize(gl.canvas)
-
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-
-	programInfo = {
-		program,
-		attribLocations: {
-			a_position: gl.getAttribLocation(program, 'a_position'),
-			a_texCoord: gl.getAttribLocation(program, 'a_texCoord'),
-		},
-		uniformLocations: {
-			// bind u_matrix
-			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
-			u_image: gl.getUniformLocation(program, 'u_image'),
-		},
-		context: {
-			image,
-			translation: [0, 0],
-			width: imgWidth,
-			height: imgHeight,
-		},
-	}
-
-	buffers = initBuffers(gl, programInfo)
-
+function loadTexture() {
 	if (!texture) {
 		texture = gl.createTexture()
 		// make unit 0 the active texture uint
@@ -203,19 +201,66 @@ function loadTexture(gl, image, {filters}) {
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 		}
 	}
+}
+//
+function loadProgram() {
+	// Collect all the info needed to use the shader program.
+	// Look up which attribute our shader program is using
+	// for aVertexPosition and look up uniform locations.
+	// Collect all the info needed to use the shader program.
+	// Look up which attribute our shader program is using
+	// for aVertexPosition and look up uniform locations.
 
+	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
+	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
+
+	if (vertexShader && fragmentShader) {
+		program = setup.link(gl, vertexShader, fragmentShader)
+		if (program) {
+			gl.useProgram(program)
+		}
+	}
+
+	// Collect all the info needed to use the shader program.
+	// Look up which attribute our shader program is using
+	// for aVertexPosition and look up uniform locations.
+
+	programInfo = {
+		program,
+		attribLocations: {
+			a_position: gl.getAttribLocation(program, 'a_position'),
+			a_texCoord: gl.getAttribLocation(program, 'a_texCoord'),
+		},
+		uniformLocations: {
+			// bind u_matrix
+			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
+			u_image: gl.getUniformLocation(program, 'u_image'),
+			u_channelSwap: gl.getUniformLocation(program, 'u_channelSwap'),
+		},
+		context: {
+			image,
+			translation: [0, 0],
+			width: imgWidth,
+			height: imgHeight,
+		},
+	}
+
+	buffers = initBuffers(gl)
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
-	return image
+
+	return programInfo
 }
 
 function isPowerOf2(value) {
 	return (value & (value - 1)) === 0
 }
 
-function update(context) {
+function update(context, {filters}) {
 	programInfo.context = context
-	buffers = initBuffers(gl, programInfo)
+	if (filters.channels && filters.channels !== channelOrder) {
+		channelOrder = filters.channels
+	}
 }
 
-export default {main, draw, clear, update}
+export default {init, main, draw, clear, update, stop}
