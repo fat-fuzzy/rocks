@@ -72,10 +72,7 @@
 					size={ size}
 					shape={shape}
 					asset={asset}
-					disabled={disabled ||
-					(mode === 'radio' && menuItems.get(props.id)?.value === props.value)
-						? true
-						: false}
+					disabled={disabled}
 				/>
 			</li>
 		{/each}
