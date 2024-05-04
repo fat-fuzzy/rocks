@@ -168,8 +168,12 @@ function setFrameBuffer(gl, fbo, programInfo) {
 	// Tell the shader the resolution of the framebuffer
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 
+	let {x, y, viewportWidth, viewportHeight} = utils.centerImage(
+		{width: gl.drawingBufferWidth, height: gl.drawingBufferHeight},
+		gl.canvas,
+	)
 	// Tell WebGL how to convert from clip space to pixels
-	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
+	gl.viewport(x, y, viewportWidth, viewportHeight)
 }
 
 /**

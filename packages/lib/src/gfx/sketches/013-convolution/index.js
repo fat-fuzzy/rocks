@@ -42,6 +42,8 @@ function clear() {
 		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
 	}
 
+	// console.log('clear canvas.clientWidth', gl.canvas.clientWidth)
+	// console.log('clear canvas.clientHeight', gl.canvas.clientHeight)
 	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
 	// Set the clear color to darkish green.
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
@@ -77,7 +79,10 @@ function init(canvas) {
 	if (gl === null) {
 		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
 	}
+	// console.log('init canvas.clientWidth', gl.canvas.clientWidth)
+	// console.log('init canvas.clientHeight', gl.canvas.clientHeight)
 
+	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
 	image = new Image()
 	image.src = imagePath
 
@@ -92,6 +97,8 @@ function init(canvas) {
 }
 
 function main(canvas, context) {
+	// console.log('main canvas.clientWidth', gl.canvas.clientWidth)
+	// console.log('main canvas.clientHeight', gl.canvas.clientHeight)
 	image.onload = () => {
 		programInfo = loadProgram()
 		programInfo.context = loadTexture(image, context)
@@ -111,9 +118,10 @@ function main(canvas, context) {
 }
 
 function draw(time) {
-	utils.resize(gl.canvas)
-
+	// console.log('draw canvas.clientWidth', gl.canvas.clientWidth)
+	// console.log('draw canvas.clientHeight', gl.canvas.clientHeight)
 	clear()
+	utils.resize(gl.canvas)
 
 	// Bind the VAO
 	gl.bindVertexArray(vao)

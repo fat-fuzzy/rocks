@@ -16,18 +16,33 @@ function centerImage(image, canvas) {
 	// If the image aspect ratio is less than the canvas aspect ratio,
 	// the image fits within the canvas width, and the height should be adjusted.
 	if (imageAspectRatio < canvasAspectRatio) {
+		// console.log('imageAspectRatio < canvasAspectRatio')
 		viewportWidth = canvas.clientWidth
 		viewportHeight = viewportWidth / imageAspectRatio
-	} else {
+	} else if (imageAspectRatio > canvasAspectRatio) {
+		// console.log('imageAspectRatio > canvasAspectRatio')
 		// Otherwise, the image fits within the canvas height, and the width should be adjusted.
 		viewportHeight = canvas.clientHeight
 		viewportWidth = viewportHeight * imageAspectRatio
+	} else {
+		// console.log('imageAspectRatio === canvasAspectRatio')
+		viewportWidth = canvas.clientWidth
+		viewportHeight = canvas.clientHeight
 	}
 
 	// Calculate the position to center the viewport within the canvas
 	let x = (canvas.clientWidth - viewportWidth) / 2
 	let y = (canvas.clientHeight - viewportHeight) / 2
 
+	// Use to set the fit the image within the canvas
+	// gl.viewport(x, y, viewportWidth, viewportHeight)
+	// console.log('image.width', image.width)
+	// console.log('image.height', image.height)
+	// console.log('canvas.width', canvas.width)
+	// console.log('canvas.height', canvas.height)
+	// console.log('canvas.clientWidth', canvas.clientWidth)
+	// console.log('canvas.clientHeight', canvas.clientHeight)
+	// console.log('{x, y, viewportWidth, viewportHeight}', {x, y, viewportWidth, viewportHeight})
 	return {x, y, viewportWidth, viewportHeight}
 }
 

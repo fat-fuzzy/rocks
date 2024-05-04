@@ -73,6 +73,8 @@ function clear() {
 		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
 	}
 
+	// console.log('canvas.clientWidth', gl.canvas.clientWidth)
+	// console.log('canvas.clientHeight', gl.canvas.clientHeight)
 	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
 	// Set the clear color to black, fully transparent
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
@@ -129,9 +131,10 @@ function main() {
 }
 
 function draw(t) {
-	utils.resize(gl.canvas)
-
+	// console.log('canvas.clientWidth', gl.canvas.clientWidth)
+	// console.log('canvas.clientHeight', gl.canvas.clientHeight)
 	clear()
+	utils.resize(gl.canvas)
 	// ... rest of your drawing code ...
 	drawScene(gl, programInfo, {channels: channels[channelOrder], blur})
 }
