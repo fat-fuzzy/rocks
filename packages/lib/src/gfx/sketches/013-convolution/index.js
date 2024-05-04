@@ -7,8 +7,13 @@
 
 import utils from '../../lib/utils'
 import setup from '../../lib/webgl/setup'
-import {drawScene, setPositionAttribute, setTextureAttribute} from './draw-scene'
-import {initBuffers, updateBuffers} from './init-buffers'
+import {drawScene} from './draw-scene'
+import {
+	initBuffers,
+	updateBuffers,
+	setPositionAttribute,
+	setTextureAttribute,
+} from '../../lib/buffers/textures'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
@@ -72,8 +77,6 @@ function init(canvas) {
 	if (gl === null) {
 		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
 	}
-
-	utils.resize(gl.canvas)
 
 	image = new Image()
 	image.src = imagePath
@@ -165,15 +168,14 @@ function loadTexture(image, context) {
 
 	textureInfo.width = image.width
 	textureInfo.height = image.height
-	imgWidth = image.width
-	imgHeight = image.height
+
 	gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture)
 	gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
 
 	// WebGL1 has different requirements for power of 2 images
 	// vs. non power of 2 images so check if the image is a
 	// power of 2 in both dimensions.
-	if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
+	if (utils.isPowerOf2(image.width) && utils.isPowerOf2(image.height)) {
 		// Yes, it's a power of 2. Generate mips.
 		gl.generateMipmap(gl.TEXTURE_2D)
 	} else {
@@ -233,10 +235,6 @@ function loadProgram() {
 	setTextureAttribute(gl, buffers, programInfo)
 
 	return programInfo
-}
-
-function isPowerOf2(value) {
-	return (value & (value - 1)) === 0
 }
 
 function update(canvas, {filters}) {

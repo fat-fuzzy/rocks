@@ -44,43 +44,4 @@ function drawScene(gl, programInfo, {channels, blur}) {
 	gl.drawArrays(primitiveType, offset, count)
 }
 
-function setPositionAttribute(gl, buffers, programInfo) {
-	const count = 2 // pull out 3 values from buffer per iteration
-	const type = gl.FLOAT // the data in the buffer is 32bit floats
-	const normalize = false
-	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
-	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
-
-	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.positionBuffer)
-	gl.vertexAttribPointer(
-		programInfo.attribLocations.a_position,
-		count,
-		type,
-		normalize,
-		stride,
-		offset,
-	)
-	gl.enableVertexAttribArray(programInfo.attribLocations.a_position)
-}
-
-function setTextureAttribute(gl, buffers, programInfo) {
-	const count = 2 // pull out 3 values from buffer per iteration
-	const type = gl.FLOAT // the data in the buffer is 32bit floats
-	const normalize = false
-	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
-	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
-
-	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.texCoordBuffer)
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(DEFAULT_TEXTURE_COORDS), gl.STATIC_DRAW)
-	gl.vertexAttribPointer(
-		programInfo.attribLocations.a_texCoord,
-		count,
-		type,
-		normalize,
-		stride,
-		offset,
-	)
-	gl.enableVertexAttribArray(programInfo.attribLocations.a_texCoord)
-}
-
-export {drawScene, setPositionAttribute, setTextureAttribute}
+export {drawScene}
