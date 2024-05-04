@@ -23,6 +23,7 @@ let imgHeight = 518
 let imagePath = `${host}/${imageAssetsPath}/${filename}`
 let gl
 let program
+let vao
 let programInfo = {}
 let buffers
 let vertexShader
@@ -32,7 +33,11 @@ let image
 let level = 1
 
 function clear() {
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientWidth)
+	if (!gl) {
+		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
+	}
+
+	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
 	// Set the clear color to darkish green.
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
@@ -51,8 +56,8 @@ function stop() {
 	clear()
 
 	if (buffers) {
-		if (buffers.position) gl.deleteBuffer(buffers.position)
-		if (buffers.texture) gl.deleteBuffer(buffers.texture)
+		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
+		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
@@ -68,14 +73,16 @@ function init(canvas) {
 		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
 	}
 
+	utils.resize(gl.canvas)
+
 	image = new Image()
 	image.src = imagePath
 
 	return {
 		image,
 		translation: [0, 0],
-		width: 1,
-		height: 1,
+		width: imgWidth,
+		height: imgHeight,
 		effects: ['normal'],
 		level,
 	}
@@ -85,19 +92,33 @@ function main(canvas, context) {
 	image.onload = () => {
 		programInfo = loadProgram()
 		programInfo.context = loadTexture(image, context)
+		// Create a vertex array object (attribute state)
+		vao = gl.createVertexArray()
+
+		// Bind the attribute/buffer set we want.
+		gl.bindVertexArray(vao)
+
+		updateBuffers(gl, programInfo, buffers)
+		setPositionAttribute(gl, buffers, programInfo)
+		setTextureAttribute(gl, buffers, programInfo)
+
+		// Unbind the VAO when we're done drawing
+		gl.bindVertexArray(null)
 	}
 }
 
-function draw(t) {
+function draw(time) {
 	utils.resize(gl.canvas)
 
 	clear()
 
+	// Bind the VAO
+	gl.bindVertexArray(vao)
+
 	drawScene(gl, programInfo, {level})
 
-	updateBuffers(gl, programInfo, buffers)
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
 }
 
 //
@@ -108,7 +129,7 @@ function loadTexture(image, context) {
 	texture = gl.createTexture()
 	// make unit 0 the active texture uint
 	// (ie, the unit all other texture commands will affect)
-	gl.activeTexture(gl.TEXTURE0 + 0)
+	gl.activeTexture(gl.TEXTURE0)
 
 	gl.bindTexture(gl.TEXTURE_2D, texture)
 
@@ -144,7 +165,8 @@ function loadTexture(image, context) {
 
 	textureInfo.width = image.width
 	textureInfo.height = image.height
-
+	imgWidth = image.width
+	imgHeight = image.height
 	gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture)
 	gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
 
@@ -166,8 +188,8 @@ function loadTexture(image, context) {
 	return {
 		image,
 		translation: [0, 0],
-		width: 1,
-		height: 1,
+		width: imgWidth,
+		height: imgHeight,
 		effects: context.filters?.effects ?? ['normal'],
 		level,
 	}
@@ -183,10 +205,6 @@ function loadProgram() {
 			gl.useProgram(program)
 		}
 	}
-	// Create a vertex array object (attribute state)
-	let vao = gl.createVertexArray()
-	// Bind the attribute/buffer set we want.
-	gl.bindVertexArray(vao)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -210,6 +228,7 @@ function loadProgram() {
 	}
 
 	buffers = initBuffers(gl)
+
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
 
@@ -224,8 +243,8 @@ function update(canvas, {filters}) {
 	programInfo.context = {
 		image,
 		translation: [0, 0],
-		width: 1,
-		height: 1,
+		width: imgWidth,
+		height: imgHeight,
 		effects: filters?.effects ?? ['normal'],
 		level,
 	}

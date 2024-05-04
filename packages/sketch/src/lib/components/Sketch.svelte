@@ -2,7 +2,7 @@
 	import type {Scene, SceneContext, SceneMeta, Filters, PlayerPayload, GeometryProps} from '$types'
 	import {PlayerState, GeometryState, CanvasState, SketchState} from '$types'
 
-	import {onDestroy, onMount} from 'svelte'
+	import {onMount} from 'svelte'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
@@ -246,11 +246,6 @@
 		}
 		if (sketchState.canvas === CanvasState.idle) {
 			init()
-		}
-	})
-	onDestroy(() => {
-		if (frame) {
-			stop()
 		}
 	})
 </script>

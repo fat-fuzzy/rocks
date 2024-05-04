@@ -63,7 +63,12 @@ const channels = {
 }
 
 function clear() {
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientWidth)
+	// Only continue if WebGL is available and working
+	if (!gl) {
+		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
+	}
+
+	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
 	// Set the clear color to black, fully transparent
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
@@ -111,6 +116,10 @@ function main() {
 	image.onload = () => {
 		programInfo = loadProgram()
 		programInfo.context = loadTexture(image)
+
+		updateBuffers(gl, programInfo, buffers)
+		setPositionAttribute(gl, buffers, programInfo)
+		setTextureAttribute(gl, buffers, programInfo)
 	}
 }
 
@@ -118,10 +127,6 @@ function draw(t) {
 	utils.resize(gl.canvas)
 
 	clear()
-
-	updateBuffers(gl, programInfo, buffers)
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
 	// ... rest of your drawing code ...
 	drawScene(gl, programInfo, {channels: channels[channelOrder], blur})
 }

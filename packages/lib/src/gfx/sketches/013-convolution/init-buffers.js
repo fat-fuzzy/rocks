@@ -30,9 +30,9 @@ function updatePositionBufferData(gl, positionBuffer, width, height) {
 
 	// Create an array of positions for the geometry.
 	const x1 = 0
-	const x2 = 0 + width
+	const x2 = width
 	const y1 = 0
-	const y2 = 0 + height
+	const y2 = height
 	// prettier-ignore
 	const coords = [
 			x1, y1,
