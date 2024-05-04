@@ -1,6 +1,7 @@
 <script lang="ts">
+
+	import { onMount } from 'svelte'
 	import type {SwitchProps} from './button.types.js'
-	import {actor} from '$lib/actors/switch'
 
 	let {
 		id = 'switch',
@@ -20,28 +21,15 @@
 		dimensions,
 		layout = 'flex',
 		type = 'submit',
-		children,
 		onclick,
+		children,
+		actor
 	}: SwitchProps = $props()
 
-	function handleClick(event: MouseEvent) {
-		// The payload corresponds the value that is displayed to the user before the click
-		// -> we pass that value to the parent component
-		if (currentState.onclick) currentState.onclick(payload)
-		if (onclick) onclick(payload)
-		// Once the parent has been updated, we switch the current state of the button
-		manager.send({type: 'SWITCH'})
-	}
-
-	let manager = actor(id, initial, name)
-	manager.subscribe((snapshot: any) => {
-		switchState = snapshot.value
-	})
-
 	/* Element state */
-	let switchState = $state(initial)
-	let pressed = $derived(switchState === 'active')
-	let currentState = $derived(states[switchState])
+	let state = $state(initial)
+	let currentState = $derived(states[state])
+	let pressed = $derived(state === 'active')
 	let value = $derived(currentState.value)
 
 	let payload = $derived({
@@ -49,6 +37,7 @@
 		name,
 		value,
 		pressed,
+		actor,
 	})
 
 	/* Element styles */
@@ -78,8 +67,18 @@
 		return `switch ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
 	})
 
-	$effect(() => {
-		manager.start()
+
+	function handleClick(event: MouseEvent) {
+		actor.send({type: 'SWITCH'})
+		if (currentState.onclick) currentState.onclick(payload)
+		else if (onclick) onclick(payload)
+	}
+
+	onMount(() => {
+		actor.subscribe((snapshot: any) => {
+			state = snapshot.value
+		})
+		actor.start()
 	})
 </script>
 

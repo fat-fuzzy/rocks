@@ -75,4 +75,4 @@ function actor(toggleId: string, initial: string, name: string) {
 	return newActor(toggleId, initial, name, states, options)
 }
 
-export {newActor, actor, setupOptions}
+export default {newActor, actor, setupOptions}

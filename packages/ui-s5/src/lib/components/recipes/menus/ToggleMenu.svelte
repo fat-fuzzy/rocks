@@ -2,7 +2,7 @@
 	import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 	import type {UiStyleProps} from '$types/index.js'
 	import type {TogglePayload} from '$lib/components/blocks/buttons/button.types.js'
-	import {actor} from '$lib/actors/toggle'
+	import toggleActor from '$lib/actors/toggle'
 
 	type Props = UiStyleProps & {
 		/**
@@ -11,7 +11,7 @@
 		id: string
 		title?: string
 		mode?: string
-		disabled?: boolean
+		disabled?: boolean | undefined
 		formaction?: string
 		items: TogglePayload[],
 		onupdate?: (payload: TogglePayload) => void
@@ -38,9 +38,14 @@
 	}: Props = $props()
 
   let menuActors = $state(items.map((item) => {
-    return {...item, actor: actor(id, item.initial, item.name), pressed: item.initial==='active'}
+    return {...item, actor: toggleActor.actor(id, item.initial, item.name), pressed: item.initial==='active'}
   }))
 	let menuItems = new Map(menuActors.map((item) => [item.id, item]))
+
+	let type = formaction ? 'submit' : 'button'
+	let containerClass = container ? `${container}:${size}` : ''
+	let elementClasses =` l:${layout}:${size} th:${threshold} size:${size} mode:${mode}`
+	let menuClasses = title ? elementClasses :`${elementClasses} ${containerClass}`
 
 	function onclick(payload: TogglePayload) {
 		menuItems.set(payload.id, payload)
@@ -57,12 +62,6 @@
 			onupdate(payload)
 		}
 	}
-
-	let type = formaction ? 'submit' : 'button'
-	let containerClass = container ? `${container}:${size}` : ''
-	let elementClasses =` l:${layout}:${size} th:${threshold} size:${size} mode:${mode}`
-	let menuClasses = title ? elementClasses :`${elementClasses} ${containerClass}`
-
 </script>
 
 {#snippet menuContent()}

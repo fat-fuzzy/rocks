@@ -60,6 +60,12 @@ import {DsStateUpdate} from '$lib/forms/ds-state-update.js'
 import {DsTabsUpdate} from '$lib/forms/ds-tabs-update.js'
 
 /**
+ * Actors
+ */
+import switchActor from '$lib/actors/switch'
+import toggleActor from '$lib/actors/toggle'
+
+/**
  * Stores
  */
 import * as settings from '$lib/stores/settings.js'
@@ -79,6 +85,11 @@ import format from '$lib/utils/format.js'
 const utils = {
 	format,
 	clickOutside,
+}
+
+const actors = {
+	switchActor,
+	toggleActor,
 }
 
 const forms = {
@@ -137,4 +148,4 @@ const headless = {
 	Head,
 }
 
-export {headless, tokens, blocks, layouts, recipes, utils, forms, stores, constants, types}
+export {headless, tokens, blocks, layouts, recipes, utils, forms, stores, constants, types, actors}

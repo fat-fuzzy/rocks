@@ -1,9 +1,9 @@
 import {ButtonEventType} from '$types'
-import {newActor, setupOptions} from './toggle.js'
+import toggleActor from './toggle.js'
 
 function actor(toggleId: string, initial: string, name: string) {
-	const {states, options} = setupOptions(ButtonEventType.SWITCH)
-	return newActor(toggleId, initial, name, states, options)
+	const {states, options} = toggleActor.setupOptions(ButtonEventType.SWITCH)
+	return toggleActor.newActor(toggleId, initial, name, states, options)
 }
 
-export {actor}
+export default {actor}

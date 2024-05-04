@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte'
 	import type {ToggleProps} from './button.types.js'
 
 	let {
@@ -22,19 +23,12 @@
 		type = 'submit',
 		onclick,
 		children,
-    actor
+		actor
 	}: ToggleProps = $props()
 
 	/* Element state */
 	let state = $state(initial)
-
-  actor.subscribe((snapshot: any) => {
-    state = snapshot.value
-  })
-  actor.start()
-
 	let pressed = $derived(state === 'active')
-
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
@@ -42,11 +36,6 @@
 		pressed,
 		actor,
 	})
-
-	function handleClick(event: MouseEvent) {
-		actor.send({type: 'TOGGLE'})
-		if (onclick) onclick(payload)
-	}
 
 	/* Element styles */
 	let colorClass = color ? `bg:${color}` : ''
@@ -68,6 +57,17 @@
 	/* State dependent styles */
 	let buttonClasses = `toggle ${containerClass} ${layoutClasses} ${elementClasses}`
 
+	function handleClick(event: MouseEvent) {
+		actor.send({type: 'TOGGLE'})
+		if (onclick) onclick(payload)
+	}
+
+	onMount(() => {
+		actor.subscribe((snapshot: any) => {
+			state = snapshot.value
+		})
+		actor.start()
+	})
 </script>
 
 <button
