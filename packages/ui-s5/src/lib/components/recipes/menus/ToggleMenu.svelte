@@ -2,6 +2,7 @@
 	import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 	import type {UiStyleProps} from '$types/index.js'
 	import type {TogglePayload} from '$lib/components/blocks/buttons/button.types.js'
+	import {actor} from '$lib/actors/toggle'
 
 	type Props = UiStyleProps & {
 		/**
@@ -12,13 +13,7 @@
 		mode?: string
 		disabled?: boolean
 		formaction?: string
-		items: {
-			id: string,
-			name: string,
-			text: string,
-			value: string,
-			initial: string,
-		}[],
+		items: TogglePayload[],
 		onupdate?: (payload: TogglePayload) => void
 	}
 
@@ -42,13 +37,22 @@
 		onupdate,
 	}: Props = $props()
 
-	let menuItems = new Map(items.map((item) => [item.id, item]))
+	let menuItems = $state(new Map(items.map((item) => [item.id, {...item, manager: actor(id, item.initial, item.name), pressed: item.initial==='active'}])))
 
 	function onclick(payload: TogglePayload) {
-		if(payload.pressed) {
-			menuItems.set(payload.id, payload)
+		menuItems.set(payload.id, payload)
+		if(mode === 'radio') {
+				// Unpress all other buttons
+				menuItems.forEach((value, key, map) => {
+				if (key !== payload.id && value.pressed) {
+					value.manager.send({type: 'TOGGLE'})
+					menuItems.set(key, {...value, pressed: false})
+				}
+			});
 		}
-		if (onupdate) {onupdate(payload)}
+		if (onupdate) {
+			onupdate(payload)
+		}
 	}
 
 	let type = formaction ? 'submit' : 'button'
@@ -67,12 +71,12 @@
 					{type}
 					{formaction}
 					{...props}
-					color={color}
-					variant={variant}
-					size={ size}
-					shape={shape}
-					asset={asset}
-					disabled={disabled}
+					{color}
+					{variant}
+					{size}
+					{shape}
+					{asset}
+					{disabled}
 				/>
 			</li>
 		{/each}

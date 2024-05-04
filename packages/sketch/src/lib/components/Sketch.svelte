@@ -76,6 +76,35 @@
 		current: 'init',
 	}
 
+	let channelMenuItems = $derived(
+		meta?.channels?.map((c) => ({
+			id: c,
+			name: c,
+			text: c,
+			value: c,
+			initial: c === filters.channels ? 'active' : 'inactive',
+		})) || [],
+	)
+
+	let blurMenuItems = $derived(
+		meta?.blur?.map((b) => ({
+			id: b,
+			name: b,
+			text: `blur ${b}`,
+			value: b,
+			initial: b === filters.blur ? 'active' : 'inactive',
+		})) || [],
+	)
+
+	let effectMenuItems = $derived(
+		meta?.convolutions?.map((b) => ({
+			id: b,
+			name: b,
+			text: b,
+			value: b,
+			initial: filters.effects.includes(b) ? 'active' : 'inactive',
+		})) || [],
+	)
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
@@ -206,6 +235,8 @@
 	function updateChannel(selected: {name: string; pressed: boolean}) {
 		if (selected.pressed) {
 			filters.channels = selected.name
+		} else {
+			filters.channels = 'rgba'
 		}
 		if (canvas) {
 			scene.update(canvas, {...context, filters})
@@ -231,7 +262,9 @@
 		} else if (!filters.effects.includes(selected.name)) {
 			filters.effects.push(selected.name)
 		}
-
+		if (filters.effects.length === 0) {
+			filters.effects = ['normal']
+		}
 		if (canvas) {
 			scene.update(canvas, {...context, filters})
 			play()
@@ -361,13 +394,7 @@
 									layout="switcher"
 									color="primary"
 									variant="bare"
-									items={meta.channels.map((c) => ({
-										id: c,
-										name: c,
-										text: c,
-										value: c,
-										initial: c === filters.channels ? 'active' : 'inactive',
-									}))}
+									items={channelMenuItems}
 									onupdate={updateChannel}
 									{disabled}
 								/>
@@ -376,17 +403,11 @@
 								<ToggleMenu
 									id="blur"
 									size="xs"
-									mode="check"
+									mode="radio"
 									layout="switcher"
 									color="accent"
 									variant="bare"
-									items={meta.blur.map((b) => ({
-										id: b,
-										name: b,
-										text: `blur ${b}`,
-										value: b,
-										initial: b === filters.blur ? 'active' : 'inactive',
-									}))}
+									items={blurMenuItems}
 									onupdate={updateBlur}
 									{disabled}
 								/>
@@ -399,13 +420,7 @@
 									layout="switcher"
 									color="accent"
 									variant="bare"
-									items={meta.convolutions.map((b) => ({
-										id: b,
-										name: b,
-										text: b,
-										value: b,
-										initial: filters.effects.includes(b) ? 'active' : 'inactive',
-									}))}
+									items={effectMenuItems}
 									onupdate={updateEffects}
 									{disabled}
 								/>

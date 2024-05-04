@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {ToggleProps} from './button.types.js'
-	import {actor} from '$lib/actors/toggle'
 
 	let {
 		id = 'toggle',
@@ -22,32 +21,32 @@
 		layout = 'flex',
 		type = 'submit',
 		onclick,
-		children
+		children,
+    manager
 	}: ToggleProps = $props()
 
-	function handleClick(event: MouseEvent) {
-		// Once the parent has been updated, we switch the current state of the button
-		manager.send({type: 'TOGGLE'})
-		// The payload corresponds the value that is displayed to the user before the click
-		// -> we pass that value to the parent component
-		if (onclick) onclick(payload)
-	}
-
-	let manager = actor(id, initial, name)
-	manager.subscribe((snapshot: any) => {
-		initial = snapshot.value
-	})
-
 	/* Element state */
-	let pressed = $derived(initial === 'active')
+	let state = $state(initial)
+
+  manager.subscribe((snapshot: any) => {
+    state = snapshot.value
+  })
+  manager.start()
+
+	let pressed = $derived(state === 'active')
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value,
 		pressed,
-		actor: manager,
+		manager,
 	})
+
+	function handleClick(event: MouseEvent) {
+		manager.send({type: 'TOGGLE'})
+		if (onclick) onclick(payload)
+	}
 
 	/* Element styles */
 	let colorClass = color ? `bg:${color}` : ''
@@ -69,9 +68,6 @@
 	/* State dependent styles */
 	let buttonClasses = `toggle ${containerClass} ${layoutClasses} ${elementClasses}`
 
-	$effect(() => {
-		manager.start()
-	})
 </script>
 
 <button
