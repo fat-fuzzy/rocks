@@ -10,9 +10,10 @@ let originalTexture
  * @param {*} programInfo
  * @param {*} buffers
  */
-function drawScene(gl, programInfo, buffers) {
+function drawScene(gl, programInfo, {level}) {
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
+	gl.uniform1i(programInfo.uniformLocations.u_level, level)
 
 	// Create a texture
 	originalTexture = createAndSetupTexture(gl)
@@ -27,14 +28,8 @@ function drawScene(gl, programInfo, buffers) {
 
 	let framebufferOptions = {mipLevel, border, internalFormat, srcFormat, srcType, data}
 	// texImage2D(target, level, internalformat, format, type, source)
-	gl.texImage2D(
-		gl.TEXTURE_2D,
-		mipLevel,
-		internalFormat,
-		srcFormat,
-		srcType,
-		programInfo.context.image,
-	)
+	const image = programInfo.context.image
+	gl.texImage2D(gl.TEXTURE_2D, mipLevel, internalFormat, srcFormat, srcType, image)
 
 	let {textures, framebuffers} = setupFramebuffers(gl, programInfo, framebufferOptions)
 

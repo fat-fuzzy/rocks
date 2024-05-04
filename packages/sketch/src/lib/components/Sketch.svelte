@@ -148,6 +148,7 @@
 
 	function stop() {
 		cancelAnimationFrame(frame)
+		// TODO: use scene.stop() instead of scene.clear()
 		scene.clear()
 		filters = {
 			channels: 'rgba',
@@ -155,7 +156,7 @@
 			effects: ['normal'],
 		}
 		sketchState.canvas = CanvasState.idle
-		sketchState.sketch = PlayerState.idle
+		sketchState.sketch = SketchState.idle
 	}
 
 	function pause() {

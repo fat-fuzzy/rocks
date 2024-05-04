@@ -63,10 +63,6 @@ const channels = {
 }
 
 function clear() {
-	if (!gl) {
-		// TODO: handle error
-		return
-	}
 	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientWidth)
 	// Set the clear color to black, fully transparent
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
@@ -199,15 +195,8 @@ function loadTexture(image) {
 		height: imgHeight,
 	}
 }
-//
-function loadProgram() {
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
 
+function loadProgram() {
 	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
 
@@ -221,7 +210,6 @@ function loadProgram() {
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
-
 	programInfo = {
 		program,
 		attribLocations: {
@@ -248,8 +236,7 @@ function isPowerOf2(value) {
 	return (value & (value - 1)) === 0
 }
 
-function update(canvas, context) {
-	const {filters} = context
+function update(canvas, {filters}) {
 	if (filters.channels !== channelOrder) {
 		channelOrder = filters.channels
 	}

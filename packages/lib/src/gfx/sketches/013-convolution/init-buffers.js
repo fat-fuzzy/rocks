@@ -2,22 +2,29 @@ import geometries from '../../lib/geometries'
 
 const {DEFAULT_TEXTURE_COORDS} = geometries
 
-function initBuffers(gl, programInfo) {
-	const {width, height} = programInfo.context
-
-	const texCoordBuffer = initTextureBuffer(gl)
-	const positionBuffer = initPositionBuffer(gl, {width, height})
+export function initBuffers(gl) {
+	let positionBuffer = gl.createBuffer()
+	let texCoordBuffer = gl.createBuffer()
 
 	return {
-		texture: texCoordBuffer,
-		position: positionBuffer,
+		texCoordBuffer,
+		positionBuffer,
 	}
 }
 
-function initPositionBuffer(gl, {width, height}) {
-	// Create a buffer for the geometry's positions.
-	const positionBuffer = gl.createBuffer()
+//  {width, height} = programInfo.context
+export function updateBuffers(gl, programInfo, {texCoordBuffer, positionBuffer}) {
+	const {width, height} = programInfo.context
+	updateTextureBufferData(gl, texCoordBuffer)
+	updatePositionBufferData(gl, positionBuffer, width, height)
 
+	return {
+		texCoordBuffer,
+		positionBuffer,
+	}
+}
+
+function updatePositionBufferData(gl, positionBuffer, width, height) {
 	// Select positionBuffer as current buffer to use for buffer ops
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
 
@@ -37,16 +44,9 @@ function initPositionBuffer(gl, {width, height}) {
 		]
 	// Pass the list of positions into WebGL to build the shape.
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)
-
-	return positionBuffer
 }
 
-function initTextureBuffer(gl) {
-	const texCoordBuffer = gl.createBuffer()
+function updateTextureBufferData(gl, texCoordBuffer) {
 	gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer)
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(DEFAULT_TEXTURE_COORDS), gl.STATIC_DRAW)
-
-	return texCoordBuffer
 }
-
-export {initBuffers}
