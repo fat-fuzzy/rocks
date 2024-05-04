@@ -70,7 +70,7 @@ const channels = {
 function clear() {
 	// Only continue if WebGL is available and working
 	if (!gl) {
-		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
+		return
 	}
 
 	// console.log('canvas.clientWidth', gl.canvas.clientWidth)

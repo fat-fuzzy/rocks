@@ -2,7 +2,7 @@
 	import type {Scene, SceneContext, SceneMeta, Filters, PlayerPayload, GeometryProps} from '$types'
 	import {PlayerState, GeometryState, CanvasState, SketchState} from '$types'
 
-	import {onMount} from 'svelte'
+	import {onDestroy, onMount} from 'svelte'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
@@ -148,8 +148,12 @@
 
 	function stop() {
 		cancelAnimationFrame(frame)
-		// TODO: use scene.stop() instead of scene.clear()
-		scene.clear()
+		if (scene.stop) {
+			scene.stop()
+		} else {
+			// TODO: use scene.stop() instead of scene.clear()
+			scene.clear()
+		}
 		filters = {
 			channels: 'rgba',
 			blur: 0,
@@ -246,6 +250,12 @@
 		}
 		if (sketchState.canvas === CanvasState.idle) {
 			init()
+		}
+	})
+	onDestroy(() => {
+		// TODO: make sure there are no leftover resources to clean
+		if (frame) {
+			stop()
 		}
 	})
 </script>

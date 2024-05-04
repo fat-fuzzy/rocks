@@ -39,7 +39,7 @@ let level = 1
 
 function clear() {
 	if (!gl) {
-		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
+		return
 	}
 
 	// console.log('clear canvas.clientWidth', gl.canvas.clientWidth)
