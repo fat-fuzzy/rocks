@@ -109,7 +109,18 @@
 		return degrees * (Math.PI / 180)
 	}
 
-	let disabled = $derived(sketchState.canvas === CanvasState.paused ? true : undefined)
+	let disabled = $derived(
+		sketchState.canvas === CanvasState.idle || sketchState.canvas === CanvasState.paused
+			? true
+			: undefined,
+	)
+
+	let menuDisabled = $derived(
+		sketchState.canvas === CanvasState.idle || sketchState.canvas === CanvasState.paused
+			? true
+			: undefined,
+	)
+
 	let showGeometry = $derived(
 		context !== undefined &&
 			(sketchState.canvas === CanvasState.playing ||
@@ -228,6 +239,7 @@
 				break
 		}
 		sketchState.player = payload.state
+		sketchState.canvas = payload.state
 		events.previous = events.current
 		events.current = payload.event
 	}
@@ -330,6 +342,7 @@
 				pause={updateCanvas}
 				clear={updateCanvas}
 				stop={updateCanvas}
+				initial={sketchState.player}
 				{color}
 				size="xs"
 				{variant}
@@ -396,7 +409,7 @@
 									variant="bare"
 									items={channelMenuItems}
 									onupdate={updateChannel}
-									{disabled}
+									disabled={menuDisabled}
 								/>
 							{/if}
 							{#if meta?.blur}
@@ -409,7 +422,7 @@
 									variant="bare"
 									items={blurMenuItems}
 									onupdate={updateBlur}
-									{disabled}
+									disabled={menuDisabled}
 								/>
 							{/if}
 							{#if meta?.convolutions}
@@ -422,7 +435,7 @@
 									variant="bare"
 									items={effectMenuItems}
 									onupdate={updateEffects}
-									{disabled}
+									disabled={menuDisabled}
 								/>
 							{/if}
 						{/if}

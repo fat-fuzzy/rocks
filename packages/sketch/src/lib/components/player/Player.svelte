@@ -1,8 +1,10 @@
 <script lang="ts">
-	import type {SwitchState, ButtonPayload} from '$types'
+	import type {SwitchState, TogglePayload} from '$types'
 	import {PlayerState, PlayerEvent} from '$types'
-	import {blocks} from '@fat-fuzzy/ui-s5'
+	import {blocks, actors} from '@fat-fuzzy/ui-s5'
+
 	const {Button, Switch} = blocks
+	const {switchActor} = actors
 
 	type Props = {
 		id?: string
@@ -30,32 +32,22 @@
 		stop,
 	}: Props = $props()
 
-	function updateState(payload: ButtonPayload) {
-		const tmp = initial
-		const playerPayload = {event: payload.value, state: tmp}
-		switch (payload.value) {
-			case PlayerEvent.play:
-				initial = PlayerState.playing
-				playerPayload.state = initial
-				play(playerPayload)
-				break
-			case PlayerEvent.pause:
-				initial = PlayerState.paused
-				playerPayload.state = initial
-				pause(playerPayload)
-				break
-			case PlayerEvent.clear:
-				clear(playerPayload)
-				initial = tmp
-				break
-			case PlayerEvent.stop:
-				initial = PlayerState.stopped
-				playerPayload.state = initial
-				stop(playerPayload)
-				break
-		}
-		events.previous = events.current
-		events.current = payload.value
+	let playerState = $state(initial)
+	const playSwitch: SwitchState = {
+		active: {
+			value: PlayerEvent.pause,
+			text: 'Pause',
+			asset: 'emoji:pause',
+			variant: 'outline',
+			onclick,
+		},
+		inactive: {
+			value: PlayerEvent.play,
+			text: 'Play',
+			asset: 'emoji:play',
+			variant: 'fill',
+			onclick,
+		},
 	}
 
 	let events: {
@@ -66,40 +58,49 @@
 		current: 'init',
 	})
 
-	let playerState = $derived(initial === PlayerState.idle ? 'inactive' : 'active')
-
 	let disableStop = $derived.by(() => {
-		return initial === PlayerState.idle ||
-			initial === PlayerState.stopped ||
-			initial === PlayerState.ended
+		return playerState === PlayerState.idle ||
+			playerState === PlayerState.stopped ||
+			playerState === PlayerState.ended
 			? true
 			: undefined
 	})
 
 	let disableClear = $derived.by(() => {
 		return events.current === PlayerEvent.clear ||
-			initial === PlayerState.idle ||
-			initial === PlayerState.stopped ||
-			initial === PlayerState.ended
+			playerState === PlayerState.idle ||
+			playerState === PlayerState.stopped ||
+			playerState === PlayerState.ended
 			? true
 			: undefined
 	})
 
-	const playSwitch: SwitchState = {
-		active: {
-			value: PlayerEvent.pause,
-			text: 'Pause',
-			asset: 'emoji:pause',
-			variant: 'outline',
-			onclick: updateState,
-		},
-		inactive: {
-			value: PlayerEvent.play,
-			text: 'Play',
-			asset: 'emoji:play',
-			variant: 'fill',
-			onclick: updateState,
-		},
+	function onclick(payload: TogglePayload) {
+		const tmp = playerState
+		const playerPayload = {event: payload.value, state: tmp}
+		switch (payload.value) {
+			case PlayerEvent.play:
+				playerState = PlayerState.playing
+				playerPayload.state = playerState
+				play(playerPayload)
+				break
+			case PlayerEvent.pause:
+				playerState = PlayerState.paused
+				playerPayload.state = playerState
+				pause(playerPayload)
+				break
+			case PlayerEvent.clear:
+				clear(playerPayload)
+				playerState = tmp
+				break
+			case PlayerEvent.stop:
+				playerState = PlayerState.stopped
+				playerPayload.state = playerState
+				stop(playerPayload)
+				break
+		}
+		events.previous = events.current
+		events.current = payload.value
 	}
 </script>
 
@@ -110,9 +111,14 @@
 		states={playSwitch}
 		{color}
 		{size}
-		initial={playerState}
+		initial={playerState === PlayerState.idle ||
+		playerState === PlayerState.stopped ||
+		playerState === PlayerState.paused
+			? 'inactive'
+			: 'active'}
 		container="main"
 		{disabled}
+		actor={switchActor.actor(id, 'inactive', 'play')}
 	/>
 	<Button
 		id="clear"
@@ -122,7 +128,7 @@
 		{size}
 		value="clear"
 		asset="emoji:clear"
-		onclick={updateState}
+		{onclick}
 		disabled={disableClear}
 	>
 		Clear
@@ -135,7 +141,7 @@
 		{size}
 		value="stop"
 		asset="emoji:rect"
-		onclick={updateState}
+		{onclick}
 		disabled={disableStop}
 	>
 		Stop
