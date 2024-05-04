@@ -37,7 +37,10 @@
 		onupdate,
 	}: Props = $props()
 
-	let menuItems = $state(new Map(items.map((item) => [item.id, {...item, manager: actor(id, item.initial, item.name), pressed: item.initial==='active'}])))
+  let menuActors = $state(items.map((item) => {
+    return {...item, actor: actor(id, item.initial, item.name), pressed: item.initial==='active'}
+  }))
+	let menuItems = new Map(menuActors.map((item) => [item.id, item]))
 
 	function onclick(payload: TogglePayload) {
 		menuItems.set(payload.id, payload)
@@ -45,7 +48,7 @@
 				// Unpress all other buttons
 				menuItems.forEach((value, key, map) => {
 				if (key !== payload.id && value.pressed) {
-					value.manager.send({type: 'TOGGLE'})
+					value.actor.send({type: 'TOGGLE'})
 					menuItems.set(key, {...value, pressed: false})
 				}
 			});

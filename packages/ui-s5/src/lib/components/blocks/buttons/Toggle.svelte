@@ -22,16 +22,16 @@
 		type = 'submit',
 		onclick,
 		children,
-    manager
+    actor
 	}: ToggleProps = $props()
 
 	/* Element state */
 	let state = $state(initial)
 
-  manager.subscribe((snapshot: any) => {
+  actor.subscribe((snapshot: any) => {
     state = snapshot.value
   })
-  manager.start()
+  actor.start()
 
 	let pressed = $derived(state === 'active')
 
@@ -40,11 +40,11 @@
 		name,
 		value,
 		pressed,
-		manager,
+		actor,
 	})
 
 	function handleClick(event: MouseEvent) {
-		manager.send({type: 'TOGGLE'})
+		actor.send({type: 'TOGGLE'})
 		if (onclick) onclick(payload)
 	}
 
