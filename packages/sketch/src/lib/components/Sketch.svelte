@@ -56,11 +56,11 @@
 
 	let filters: Filters = $state({
 		channels: 'rgba',
-		blur: undefined,
+		blur: 0,
 		effects: ['normal'],
 	})
 	let canvas: HTMLCanvasElement | null = $state(null)
-	let programInfo = $state(canvas ? scene.main(canvas, {filters}) : undefined)
+	let programInfo = $state({})
 	let context: SceneContext = $state(programInfo?.context)
 	let width: number | undefined = $state(undefined)
 	let height: number | undefined = $state(undefined)
@@ -83,7 +83,6 @@
 	let disabled = $derived(sketchState.canvas === CanvasState.paused ? true : undefined)
 	let showGeometry = $derived(
 		context !== undefined &&
-			scene?.meta?.type !== 'texture' &&
 			(sketchState.canvas === CanvasState.playing ||
 				sketchState.canvas === CanvasState.paused ||
 				sketchState.canvas === CanvasState.ended),
@@ -103,11 +102,11 @@
 	function init() {
 		if (canvas) {
 			try {
-				programInfo = scene.main(canvas, {filters})
+				scene.main(canvas, {filters})
 				if (sketchState.player === PlayerState.stopped || !context) {
 					context = programInfo.context
 				}
-				scene.update(context)
+				scene.update(context, {filters})
 			} catch (e: any) {
 				feedback = {status: 'error', message: e}
 			}
@@ -123,7 +122,7 @@
 
 	function play() {
 		sketchState.canvas = CanvasState.playing
-		if (scene.meta?.type !== 'texture') {
+		if (meta?.type !== 'texture') {
 			loop(Date.now())
 		} else {
 			frame = requestAnimationFrame((t) => {
@@ -149,25 +148,30 @@
 
 	function stop() {
 		cancelAnimationFrame(frame)
-		scene.clear()
+		if (scene.stop) {
+			scene.stop()
+		} else {
+			// TODO: use scene.stop() instead of scene.clear()
+			scene.clear()
+		}
 		filters = {
 			channels: 'rgba',
-			blur: undefined,
+			blur: 0,
 			effects: ['normal'],
 		}
 		sketchState.canvas = CanvasState.idle
-		sketchState.sketch = PlayerState.idle
+		sketchState.sketch = SketchState.idle
 	}
 
 	function pause() {
 		sketchState.canvas = CanvasState.paused
 		cancelAnimationFrame(frame)
-		scene.update(context)
+		scene.update(context, {filters})
 	}
 
 	function updateGeometry(payload: {value: GeometryProps}) {
 		context = payload.value
-		scene.update(context)
+		scene.update(context, {filters})
 		sketchState.geometry = GeometryState.updated
 	}
 
@@ -199,24 +203,25 @@
 		events.current = payload.event
 	}
 
-	function updateChannel(selected: {name: string}) {
-		filters.channels = selected.name
-		filters.blur = undefined
+	function updateChannel(selected: {name: string; pressed: boolean}) {
+		if (selected.pressed) {
+			filters.channels = selected.name
+		}
 		if (canvas) {
-			programInfo = scene.main(canvas, {filters})
+			scene.update(canvas, {...context, filters})
+			play()
 		}
 	}
 
-	function updateBlur(selected: {name: string}) {
-		const value = selected.name
-		if (value === filters.blur) {
-			filters.blur = undefined
+	function updateBlur(selected: {value: number; name: string; pressed: boolean}) {
+		if (selected.pressed) {
+			filters.blur = selected.value
 		} else {
-			filters.blur = value
+			filters.blur = 0
 		}
-
 		if (canvas) {
-			programInfo = scene.main(canvas, {filters})
+			scene.update(canvas, {...context, filters})
+			play()
 		}
 	}
 
@@ -228,20 +233,27 @@
 		}
 
 		if (canvas) {
-			programInfo = scene.main(canvas, {filters})
+			scene.update(canvas, {...context, filters})
+			play()
 		}
 	}
 
 	function handleMouseEvent(event: MouseEvent) {
-		scene.update(context, event)
+		scene.update(context, {...context, filters}, event)
 	}
 
 	onMount(() => {
+		if (scene.init && canvas) {
+			programInfo.context = scene.init(canvas)
+		} else if (canvas) {
+			programInfo = scene.main(canvas, context)
+		}
 		if (sketchState.canvas === CanvasState.idle) {
 			init()
 		}
 	})
 	onDestroy(() => {
+		// TODO: make sure there are no leftover resources to clean
 		if (frame) {
 			stop()
 		}
@@ -371,7 +383,7 @@
 									items={meta.blur.map((b) => ({
 										id: b,
 										name: b,
-										text: b,
+										text: `blur ${b}`,
 										value: b,
 										initial: b === filters.blur ? 'active' : 'inactive',
 									}))}

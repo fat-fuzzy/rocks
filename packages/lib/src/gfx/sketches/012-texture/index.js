@@ -7,10 +7,15 @@
 
 import utils from '../../lib/utils'
 import setup from '../../lib/webgl/setup'
-import {drawScene, setPositionAttribute, setTextureAttribute} from './draw-scene'
-import {initBuffers} from './init-buffers'
+import {drawScene} from './draw-scene'
+import {
+	initBuffers,
+	updateBuffers,
+	setPositionAttribute,
+	setTextureAttribute,
+} from '../../lib/buffers/textures'
 
-import {channels, blur, defaultFrag} from './shaders/fragment-shader'
+import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
 let host = 'http://localhost:5173'
@@ -20,19 +25,57 @@ let imgWidth = 620
 let imgHeight = 518
 let imagePath = `${host}/${imageAssetsPath}/${filename}`
 let gl
+let program
 let programInfo = {}
 let buffers
 let vertexShader
 let fragmentShader
 let texture
 let image
+let channelOrder
+let blur = 0
+
+function convertToChannelOrder(str) {
+	return new Int32Array(
+		str.split('').map((c) => (c === 'r' ? 0 : c === 'a' ? 3 : c === 'g' ? 1 : 2)),
+	)
+}
+const channels = {
+	ragb: convertToChannelOrder('ragb'),
+	rabg: convertToChannelOrder('rabg'),
+	rbag: convertToChannelOrder('rbag'),
+	rbga: convertToChannelOrder('rbga'),
+	rgba: convertToChannelOrder('rgba'),
+	rgab: convertToChannelOrder('rgab'),
+	abgr: convertToChannelOrder('abgr'),
+	abrg: convertToChannelOrder('abrg'),
+	agrb: convertToChannelOrder('agrb'),
+	agbr: convertToChannelOrder('agbr'),
+	arbg: convertToChannelOrder('arbg'),
+	argb: convertToChannelOrder('argb'),
+	bagr: convertToChannelOrder('bagr'),
+	barg: convertToChannelOrder('barg'),
+	bgar: convertToChannelOrder('bgar'),
+	bgra: convertToChannelOrder('bgra'),
+	brga: convertToChannelOrder('brga'),
+	brag: convertToChannelOrder('brag'),
+	gabr: convertToChannelOrder('gabr'),
+	garb: convertToChannelOrder('garb'),
+	gbar: convertToChannelOrder('gbar'),
+	gbra: convertToChannelOrder('gbra'),
+	grab: convertToChannelOrder('grab'),
+	grba: convertToChannelOrder('grba'),
+}
 
 function clear() {
+	// Only continue if WebGL is available and working
 	if (!gl) {
-		// TODO: handle error
 		return
 	}
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientWidth)
+
+	// console.log('canvas.clientWidth', gl.canvas.clientWidth)
+	// console.log('canvas.clientHeight', gl.canvas.clientHeight)
+	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
 	// Set the clear color to black, fully transparent
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
@@ -42,9 +85,10 @@ function clear() {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
 	gl.clearDepth(1.0) // clear everything (?)
+}
 
-	// tell webgl to cull faces
-	gl.depthFunc(gl.LEQUAL) // near things obscure far things
+function stop() {
+	clear()
 
 	if (buffers) {
 		if (buffers.position) gl.deleteBuffer(buffers.position)
@@ -55,7 +99,7 @@ function clear() {
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 }
 
-function main(canvas, {filters}) {
+function init(canvas) {
 	// Initialize the GL context
 	gl = canvas.getContext('webgl2')
 
@@ -66,63 +110,119 @@ function main(canvas, {filters}) {
 
 	image = new Image()
 	image.src = imagePath
-	image.onload = () => {
-		loadTexture(gl, image, {filters})
-	}
+
 	return {
-		context: {
-			image,
-			translation: [0, 0],
-			width: 1,
-			height: 1,
-		},
+		image,
+		translation: [0, 0],
+		width: 1,
+		height: 1,
+	}
+}
+
+function main() {
+	image.onload = () => {
+		programInfo = loadProgram()
+		programInfo.context = loadTexture(image)
+
+		updateBuffers(gl, programInfo, buffers)
+		setPositionAttribute(gl, buffers, programInfo)
+		setTextureAttribute(gl, buffers, programInfo)
 	}
 }
 
 function draw(t) {
-	drawScene(gl, programInfo, buffers)
+	// console.log('canvas.clientWidth', gl.canvas.clientWidth)
+	// console.log('canvas.clientHeight', gl.canvas.clientHeight)
+	clear()
+	utils.resize(gl.canvas)
+	// ... rest of your drawing code ...
+	drawScene(gl, programInfo, {channels: channels[channelOrder], blur})
 }
 
 //
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadTexture(gl, image, {filters}) {
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-	let program
-	let frag
+function loadTexture(image) {
+	texture = gl.createTexture()
+	// make unit 0 the active texture uint
+	// (ie, the unit all other texture commands will affect
+	gl.activeTexture(gl.TEXTURE0 + 0)
 
-	if (filters.channels) {
-		frag = channels[filters.channels]
+	gl.bindTexture(gl.TEXTURE_2D, texture)
+
+	// Because images have to be downloaded over the internet
+	// they might take a moment until they are ready.
+	// Until then put a single pixel in the texture so we can
+	// use it immediately. When the image has finished downloading
+	// we'll update the texture with the contents of the image.
+
+	let textureInfo = {
+		width: 1, // we don't know the size until it loads
+		height: 1,
+		texture,
 	}
+	const level = 0
+	const internalFormat = gl.RGBA
+	const border = 0
+	const srcFormat = gl.RGBA
+	const srcType = gl.UNSIGNED_BYTE
+	const pixel = new Uint8Array([0, 0, 255, 255]) // opaque blue
 
-	if (filters.blur) {
-		frag = blur[filters.blur]
+	gl.texImage2D(
+		gl.TEXTURE_2D,
+		level,
+		internalFormat,
+		textureInfo.width,
+		textureInfo.height,
+		border,
+		srcFormat,
+		srcType,
+		pixel,
+	)
+
+	textureInfo.width = image.width
+	textureInfo.height = image.height
+
+	gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture)
+	gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
+
+	// WebGL1 has different requirements for power of 2 images
+	// vs. non power of 2 images so check if the image is a
+	// power of 2 in both dimensions.
+	if (utils.isPowerOf2(image.width) && utils.isPowerOf2(image.height)) {
+		// Yes, it's a power of 2. Generate mips.
+		gl.generateMipmap(gl.TEXTURE_2D)
+	} else {
+		// No, it's not a power of 2. Turn off mips and set
+		// wrapping to clamp to edge
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 	}
-
-	if (!frag) {
-		frag = defaultFrag
+	return {
+		image,
+		translation: [0, 0],
+		width: imgWidth,
+		height: imgHeight,
 	}
+}
 
+function loadProgram() {
 	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
 
 	if (vertexShader && fragmentShader) {
 		program = setup.link(gl, vertexShader, fragmentShader)
-		gl.useProgram(program)
+		if (program) {
+			gl.useProgram(program)
+		}
 	}
-
-	utils.resize(gl.canvas)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
-
 	programInfo = {
 		program,
 		attribLocations: {
@@ -133,89 +233,31 @@ function loadTexture(gl, image, {filters}) {
 			// bind u_matrix
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
 			u_image: gl.getUniformLocation(program, 'u_image'),
-		},
-		context: {
-			image,
-			translation: [0, 0],
-			width: imgWidth,
-			height: imgHeight,
+			u_channels: gl.getUniformLocation(program, 'u_channels'),
+			u_blur: gl.getUniformLocation(program, 'u_blur'),
 		},
 	}
 
-	buffers = initBuffers(gl, programInfo)
-
-	if (!texture) {
-		texture = gl.createTexture()
-		// make unit 0 the active texture uint
-		// (ie, the unit all other texture commands will affect
-		gl.activeTexture(gl.TEXTURE0 + 0)
-
-		gl.bindTexture(gl.TEXTURE_2D, texture)
-
-		// Because images have to be downloaded over the internet
-		// they might take a moment until they are ready.
-		// Until then put a single pixel in the texture so we can
-		// use it immediately. When the image has finished downloading
-		// we'll update the texture with the contents of the image.
-
-		let textureInfo = {
-			width: 1, // we don't know the size until it loads
-			height: 1,
-			texture,
-		}
-		const level = 0
-		const internalFormat = gl.RGBA
-		const border = 0
-		const srcFormat = gl.RGBA
-		const srcType = gl.UNSIGNED_BYTE
-		const pixel = new Uint8Array([0, 0, 255, 255]) // opaque blue
-
-		gl.texImage2D(
-			gl.TEXTURE_2D,
-			level,
-			internalFormat,
-			textureInfo.width,
-			textureInfo.height,
-			border,
-			srcFormat,
-			srcType,
-			pixel,
-		)
-
-		textureInfo.width = image.width
-		textureInfo.height = image.height
-
-		gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture)
-		gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
-
-		// WebGL1 has different requirements for power of 2 images
-		// vs. non power of 2 images so check if the image is a
-		// power of 2 in both dimensions.
-		if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
-			// Yes, it's a power of 2. Generate mips.
-			gl.generateMipmap(gl.TEXTURE_2D)
-		} else {
-			// No, it's not a power of 2. Turn off mips and set
-			// wrapping to clamp to edge
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
-		}
-	}
-
+	buffers = initBuffers(gl)
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
-	return image
+
+	return programInfo
 }
 
-function isPowerOf2(value) {
-	return (value & (value - 1)) === 0
+function update(canvas, {filters}) {
+	if (filters.channels !== channelOrder) {
+		channelOrder = filters.channels
+	}
+	if (filters.blur !== blur) {
+		blur = filters.blur
+	}
+	programInfo.context = {
+		image,
+		translation: [0, 0],
+		width: imgWidth,
+		height: imgHeight,
+	}
 }
 
-function update(context) {
-	programInfo.context = context
-	buffers = initBuffers(gl, programInfo)
-}
-
-export default {main, draw, clear, update}
+export default {init, main, draw, clear, update, stop}
