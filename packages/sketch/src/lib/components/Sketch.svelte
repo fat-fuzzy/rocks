@@ -335,7 +335,7 @@
 			{/if}
 		</div>
 	</div>
-	<aside class="context">
+	<aside class="context l:stack">
 		{#if canvas}
 			<Player
 				play={updateCanvas}

@@ -4,6 +4,8 @@
 	align-items: center;
 	justify-content: center;
 	aspect-ratio: 1/1;
+	width: auto;
+	object-fit: contain;
 }
 
 .shape\:round,
@@ -17,14 +19,16 @@
 	border-radius: var(--border-radius-base);
 }
 
-.shape\:round,
-.shape\:square {
-	width: auto;
-	object-fit: contain;
+/*
+button[class*='shape:'] {
+	padding: var(--ui-size);
 }
 
-button.shape\:round {
-	padding: var(--ui-size);
+TODO: See how the code below works out generically
+*/
+
+button[class*='shape:'] {
+	padding: calc(var(--ui-size) - var(--ratio) * 1px);
 }
 
 .shape\:round[class*='l:stack']:only-child,

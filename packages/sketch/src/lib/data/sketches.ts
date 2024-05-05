@@ -212,7 +212,7 @@ const sketches = [
 				'grab',
 				'grba',
 			],
-			blur: ['blur.1', 'blur.2', 'blur.3'],
+			blur: [1, 2, 3],
 		},
 	},
 ]

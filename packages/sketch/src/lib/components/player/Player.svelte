@@ -104,13 +104,14 @@
 	}
 </script>
 
-<menu {id} class={`l:switcher:${size}`}>
+<menu {id} class={`l:switcher:${size} align:stretch`}>
 	<Switch
 		id="play"
 		name="play"
 		states={playSwitch}
 		{color}
 		{size}
+		shape="square"
 		initial={playerState === PlayerState.idle ||
 		playerState === PlayerState.stopped ||
 		playerState === PlayerState.paused
@@ -118,32 +119,34 @@
 			: 'active'}
 		container="main"
 		{disabled}
-		actor={switchActor.actor(id, 'inactive', 'play')}
-	/>
-	<Button
-		id="clear"
-		name="clear"
-		{color}
-		{variant}
-		{size}
-		value="clear"
-		asset="emoji:clear"
-		{onclick}
-		disabled={disableClear}
+		actor={switchActor.actor(id, 'inactive', 'play')}>{playerState}</Switch
 	>
-		Clear
-	</Button>
-	<Button
-		id="stop"
-		name="stop"
-		{color}
-		{variant}
-		{size}
-		value="stop"
-		asset="emoji:rect"
-		{onclick}
-		disabled={disableStop}
-	>
-		Stop
-	</Button>
+	<li class="l:stack">
+		<Button
+			id="clear"
+			name="clear"
+			{color}
+			{variant}
+			{size}
+			value="clear"
+			asset="emoji:clear"
+			{onclick}
+			disabled={disableClear}
+		>
+			Clear
+		</Button>
+		<Button
+			id="stop"
+			name="stop"
+			{color}
+			{variant}
+			{size}
+			value="stop"
+			asset="emoji:rect"
+			{onclick}
+			disabled={disableStop}
+		>
+			Stop
+		</Button>
+	</li>
 </menu>
