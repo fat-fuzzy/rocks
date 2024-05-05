@@ -29,6 +29,8 @@ TODO: See how the code below works out generically
 
 button[class*='shape:'] {
 	padding: calc(var(--ui-size) - var(--ratio) * 1px);
+	height: 100%;
+	width: auto;
 }
 
 .shape\:round[class*='l:stack']:only-child,

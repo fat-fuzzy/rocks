@@ -17,6 +17,10 @@ export enum GeometryState {
 	untouched = 'untouched',
 	updated = 'updated',
 }
+export enum GeometryEvent {
+	update = 'update',
+	pause = 'pause',
+}
 
 export type PlayerPayload = {event: PlayerEvent; state: PlayerState}
 

@@ -1,6 +1,15 @@
 <script lang="ts">
 	import type {Scene, SceneContext, SceneMeta, Filters, PlayerPayload, GeometryProps} from '$types'
-	import {PlayerState, GeometryState, CanvasState, SketchState} from '$types'
+	import {
+		PlayerState,
+		GeometryState,
+		CanvasState,
+		SketchState,
+		SketchEvent,
+		CanvasEvent,
+		PlayerEvent,
+		GeometryEvent,
+	} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
 
@@ -51,9 +60,27 @@
 		sketch: SketchState.idle,
 		canvas: CanvasState.idle,
 		geometry: GeometryState.untouched,
-		player: feedback?.status ?? PlayerState.stopped,
+		player: PlayerState.idle,
 	})
-
+	let sketchTransitions = $state({
+		sketch: {
+			[SketchState.idle]: SketchEvent.load,
+		},
+		canvas: {
+			[CanvasState.idle]: CanvasEvent.load,
+		},
+		geometry: {
+			[GeometryState.untouched]: {
+				[PlayerEvent.play]: GeometryEvent.update,
+			},
+			[GeometryState.touched]: {
+				[PlayerEvent.pause]: GeometryEvent.update,
+			},
+		},
+		player: {
+			[PlayerState.idle]: PlayerEvent.load,
+		},
+	})
 	let filters: Filters = $state({
 		channels: 'rgba',
 		blur: 0,
@@ -334,6 +361,37 @@
 				<pre class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
 			{/if}
 		</div>
+		<aside class="card:dotted maki:block bg:primary:000 size:sm">
+			<table>
+				<thead class="bg:primary:200">
+					<tr>
+						<th class="bg:light"></th>
+						<th>Sketch</th>
+						<th>Canvas</th>
+						<th>Player</th>
+						<th>Geometry</th>
+					</tr>
+				</thead>
+				<tbody class="bg:primary:000 text:center">
+					<tr>
+						<td class="bg:primary:100">State</td>
+						<td>{sketchState.sketch}</td>
+						<td>{sketchState.canvas}</td>
+						<td>{sketchState.player}</td>
+						<td>{sketchState.geometry}</td>
+					</tr>
+				</tbody>
+				<tfoot class="bg:accent:000 text:center">
+					<tr>
+						<td class="bg:accent:100">Actions</td>
+						<td>{sketchState.sketch}</td>
+						<td>{sketchState.canvas}</td>
+						<td>{sketchState.player}</td>
+						<td>{sketchState.geometry}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</aside>
 	</div>
 	<aside class="context l:stack">
 		{#if canvas}
