@@ -364,7 +364,7 @@
 		</div>
 		<aside class="card:dotted maki:block bg:primary:000 size:sm">
 			<table>
-				<thead class="bg:primary:200">
+				<thead class="bg:highlight:300">
 					<tr>
 						<th class="bg:light"></th>
 						<th>Sketch</th>

@@ -76,11 +76,11 @@
 		"shadow": {
 			"$type": "color",
 			"000": {
-				"$value": "hsl(311.39 100% 48%)",
+				"$value": "hsl(254.96 90% 60%)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(311.39 100% 48%)",
-						"night": "hsl(185.97 100% 43%)"
+						"day": "hsl(254.96 90% 60%)",
+						"night": "hsl(254.96 90% 80%)"
 					}
 				}
 			}
@@ -88,9 +88,9 @@
 		"gradient": {
 			"$type": "color",
 			"000": {
-				"start": {"$value": "hsl(311.39 100% 48%)"},
-				"middle": {"$value": "hsl(286.92 100% 74%)"},
-				"end": {"$value": "hsl(185.97 100% 43%)"}
+				"start": {"$value": "hsl(329.3 100% 52%)"},
+				"middle": {"$value": "hsl(248.37 100% 73%)"},
+				"end": {"$value": "hsl(188.19 93% 74%)"}
 			}
 		}
 	},
