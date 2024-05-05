@@ -14,16 +14,25 @@
 <Head page={title} {description} />
 
 <header class={headerClass}>
-	<h1>Fat Fuzzy {title}</h1>
+	<h1 class="w:full">Fat Fuzzy {title}</h1>
+	<h2><small>Tags</small></h2>
 </header>
-
+<p>
+	All sketches so far are exercises from <a
+		href="https://webgl2fundamentals.org"
+		target="_blank"
+		rel="noopener"
+	>
+		WebGL Fundamentals 1 & 2
+	</a>
+</p>
 <div class="l:grid:2xs maki:block">
 	{#each tags as tag}
-		<article class="card:dotted bg:primary:000 l:stack size:sm">
-			<h2 class="font:xxl">{tag}</h2>
+		<article class="card:md bg:accent:000 l:stack size:sm">
+			<h3 class="tag bg:primary:000 card:sm"><small>{tag}</small></h3>
 			{#each sketches as { slug, title, tags }}
 				{#if tags.includes(tag)}
-					<a href={`/${slug}`}>
+					<a class="maki size:xl" href={`/${slug}`}>
 						{title}
 					</a>
 				{/if}
