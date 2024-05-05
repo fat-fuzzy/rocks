@@ -26,7 +26,7 @@
 			/>
 		</details>
 	</svelte:fragment>
-	<svelte:fragment slot="main">
+	<div slot="main" class="card:md">
 		<slot />
-	</svelte:fragment>
+	</div>
 </Sidebar>

@@ -8,18 +8,21 @@ const sketches = [
 		title: 'Random',
 		asset: 'emoji:random',
 		dimensions: 'video',
+    tags:['2D'/* , 'webgl' */],
 	},
 	// {
 	// 	id: '002',
 	// 	slug: 'random-rect-audio',
 	// 	title: 'Audio',
 	// 	asset: '🥁',
+  //  tags:['random', 'audio'],
 	// },
 	{
 		id: '003',
 		slug: 'rectangle-2d',
 		title: 'Rectangle 2D',
 		asset: 'emoji:rect',
+    tags:['2D'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -30,6 +33,7 @@ const sketches = [
 		slug: 'geometry-2d',
 		title: 'Geometry 2D ',
 		asset: 'emoji:geometry-2d',
+    tags:['2D'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -40,6 +44,7 @@ const sketches = [
 		slug: 'matrix-2d',
 		title: 'Matrix 2D',
 		asset: 'emoji:geometry-3d',
+    tags:['2D', 'matrix'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -50,6 +55,7 @@ const sketches = [
 		slug: 'hierarchical',
 		title: 'Hierarchical',
 		asset: 'emoji:russian-dolls',
+    tags:['2D', 'matrix'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -60,6 +66,7 @@ const sketches = [
 		slug: 'center-origin',
 		title: 'Center Origin',
 		asset: 'emoji:bullseye',
+    tags:['2D', 'matrix'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -70,6 +77,7 @@ const sketches = [
 		slug: 'projection',
 		title: 'Projection',
 		asset: 'emoji:projection',
+    tags:['2D', 'matrix'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -80,6 +88,7 @@ const sketches = [
 		slug: 'matrix-3d',
 		title: 'Matrix 3D',
 		asset: 'emoji:matrix-3d',
+    tags:['3D', 'matrix'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'matrix-3d',
@@ -91,6 +100,7 @@ const sketches = [
 		slug: 'camera-3d',
 		title: 'Camera 3D',
 		asset: 'emoji:camera-3d',
+    tags:['3D', 'camera'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			camera: true,
@@ -101,6 +111,7 @@ const sketches = [
 		slug: 'animation-3d',
 		title: 'Animation 3D',
 		asset: 'emoji:animation-3d',
+    tags:['3D', 'matrix', 'camera'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'matrix-3d',
@@ -111,6 +122,7 @@ const sketches = [
 		slug: 'texture',
 		title: 'Texture',
 		asset: 'emoji:texture',
+    tags:['color', 'texture'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'texture',
@@ -149,6 +161,7 @@ const sketches = [
 		slug: 'convolution',
 		title: 'Convolution',
 		asset: 'emoji:convolution',
+    tags:['matrix', 'texture'/* , 'webgl' */],
 		meta: {
 			input: 'form',
 			type: 'texture',
@@ -182,6 +195,7 @@ const sketches = [
 		slug: 'multiple-tex',
 		title: 'Multiple Textures',
 		asset: 'emoji:multiple-tex',
+    tags:['matrix', 'texture'/* , 'webgl' */, 'io'],
 		meta: {
 			input: 'form',
 			type: 'texture',
