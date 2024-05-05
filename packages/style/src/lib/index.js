@@ -85,7 +85,6 @@ import './css/layouts/stack.css' /* Use for stacked column content */
 import './css/layouts/sidebar.css' /* Use for sidebar layouts = layouts containing two children: "main" and "side" */
 import './css/layouts/switcher.css' /* Use for items that switch between column and row layout when the container reaches a threshold width  */
 import './css/layouts/center.css' /* Use for main content centering (wide columns with max-width set using: percentage - margin (in  em units))*/
-import './css/layouts/container.css' /* Use for container queries */
 
 /* == Grid layouts ==
     - relative order of grid styles is necessary for fallbacks */

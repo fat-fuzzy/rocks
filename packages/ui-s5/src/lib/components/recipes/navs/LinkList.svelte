@@ -26,7 +26,7 @@
 		{@const subItems = item.items}
 		<li
 			aria-current={current(slug) ? 'page' : undefined}
-			class={`filling ${current(slug) ? `bg:${color}` : undefined}`}
+			class={`relleno ${current(slug) ? `bg:${color}` : undefined}`}
 		>
 			<a data-sveltekit-preload-data href={format.formatHref(path, slug)} class={`${asset}`}>
 				{title}
