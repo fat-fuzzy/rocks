@@ -11,7 +11,10 @@ details > summary {
 	padding: var(--ui-size-sm);
 	max-width: 100%;
 	background-color: var(--shade);
-	margin-block-end: var(--ui-size-lg);
+}
+
+details > summary + * {
+	margin-block-start: var(--ui-size);
 }
 
 details > summary > h1, /* TODO: not sure h1 inside detail is a good  */idea, check
