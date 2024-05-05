@@ -4,6 +4,7 @@ h3,
 h4,
 h5,
 h6 {
+	color: var(--ink);
 	line-height: var(--font-leading-heading);
 	margin-block-end: var(--ui-size-sm);
 	&.nowrap {
@@ -19,7 +20,16 @@ h3.link {
 }
 
 h1 {
+	/* TODO: use specific tokens for heading colors */
+	--hue: var(--color-theme-primary);
+	--chroma: var(--color-chroma-000);
+	--lightness: var(--color-lightness-000);
+	--lightness-contrast: var(--color-lightness-400);
+	--chroma-contrast: var(--color-chroma-400);
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--font-family-h1: var(--font-family-heading);
+	color: var(--ink);
 	font-size: var(--font-size-h1);
 	font-family: var(--font-family-heading-base);
 	font-weight: var(--font-weight-h1);
@@ -73,20 +83,6 @@ h5 {
 article,
 .l\:text {
 	background-color: inherit;
-}
-
-.day,
-.night .day {
-	h1 {
-		color: var(--current-primary);
-	}
-}
-
-.night,
-.day .night {
-	h1 {
-		color: var(--current-primary-light);
-	}
 }
 
 figcaption {

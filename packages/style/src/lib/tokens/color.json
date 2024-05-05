@@ -75,7 +75,7 @@
 		},
 		"shadow": {
 			"$type": "color",
-			"000": {
+			"primary": {
 				"$value": "hsl(254.96 90% 60%)",
 				"$extensions": {
 					"mode": {
@@ -83,14 +83,32 @@
 						"night": "hsl(254.96 90% 80%)"
 					}
 				}
+			},
+			"accent": {
+				"$value": "hsl(188.19 90% 60%)",
+				"$extensions": {
+					"mode": {
+						"day": "hsl(188.19 90% 60%)",
+						"night": "hsl(188.19 90% 80%)"
+					}
+				}
+			},
+			"highlight": {
+				"$value": "hsl(329.3 90% 60%)",
+				"$extensions": {
+					"mode": {
+						"day": "hsl(329.3 90% 60%)",
+						"night": "hsl(329.3 90% 80%)"
+					}
+				}
 			}
 		},
 		"gradient": {
 			"$type": "color",
 			"000": {
-				"start": {"$value": "hsl(329.3 100% 52%)"},
-				"middle": {"$value": "hsl(248.37 100% 73%)"},
-				"end": {"$value": "hsl(188.19 93% 74%)"}
+				"start": {"$value": "{color.shadow.highlight}"},
+				"middle": {"$value": "{color.shadow.primary}"},
+				"end": {"$value": "{color.shadow.accent}"}
 			}
 		}
 	},
@@ -98,15 +116,15 @@
 		"base": {
 			"$type": "dimension",
 			"sm": {
-				"offsetX": {"$value": "0px"},
-				"offsetY": {"$value": "2px"},
-				"blur": {"$value": "6px"},
-				"spread": {"$value": 0}
+				"offsetX": {"$value": "0"},
+				"offsetY": {"$value": "1px"},
+				"blur": {"$value": "4px"},
+				"spread": {"$value": "0"}
 			},
 			"md": {
-				"offsetX": {"$value": "0px"},
-				"offsetY": {"$value": "4px"},
-				"blur": {"$value": "8px"},
+				"offsetX": {"$value": "0"},
+				"offsetY": {"$value": "2px"},
+				"blur": {"$value": "6px"},
 				"spread": {"$value": 0}
 			}
 		},
@@ -117,7 +135,7 @@
 				"offsetY": "{shadow.base.md.offsetY}",
 				"blur": "{shadow.base.md.blur}",
 				"spread": "{shadow.base.md.spread}",
-				"color": "{color.shadow.000}"
+				"color": "{color.shadow.primary}"
 			}
 		},
 		"inset": {
@@ -128,7 +146,7 @@
 					"offsetY": "{shadow.base.sm.offsetY}",
 					"blur": "{shadow.base.sm.blur}",
 					"spread": "{shadow.base.sm.spread}",
-					"color": "{color.shadow.000}"
+					"color": "{color.shadow.accent}"
 				}
 			},
 			"2": {
@@ -137,7 +155,7 @@
 					"offsetY": "{shadow.base.md.offsetY}",
 					"blur": "{shadow.base.md.blur}",
 					"spread": "{shadow.base.md.spread}",
-					"color": "{color.shadow.000}"
+					"color": "{color.shadow.accent}"
 				}
 			}
 		}

@@ -14,11 +14,20 @@
 	--sidebar-width: var(--layout-sidebar-md);
 	--current-shadow: var(--shadow-md);
 	--gap: var(--layout-gap-md);
+
+	--hue: var(--color-base-light);
+	--chroma: var(--color-chroma-000);
+	--lightness: var(--color-lightness-000);
+	--lightness-contrast: var(--color-lightness-600);
+	--chroma-contrast: var(--color-chroma-600);
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 }
 
 body {
-	background: var(--ink);
-	color: var(--bg-color);
+	--bg-color: var(--shade);
+	color: var(--ink);
+	background: var(--bg-color);
 	font-family: var(--font-family-body);
 	font-size: var(--font-size-body);
 	font-weight: var(--font-weight-body);
