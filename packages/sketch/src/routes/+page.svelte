@@ -30,13 +30,15 @@
 	{#each tags as tag}
 		<article class="card:md bg:accent:000 l:stack size:sm">
 			<h3 class="tag bg:primary:000 card:sm"><small>{tag}</small></h3>
-			{#each sketches as { slug, title, tags }}
-				{#if tags.includes(tag)}
-					<a class="maki size:xl" href={`/${slug}`}>
-						{title}
-					</a>
-				{/if}
-			{/each}
+			<div class="size:xl l:stack">
+				{#each sketches as { slug, asset, title, tags }}
+					{#if tags.includes(tag)}
+						<a class={`font:md ${asset}`} href={`/${slug}`}>
+							{title}
+						</a>
+					{/if}
+				{/each}
+			</div>
 		</article>
 	{/each}
 </div>
