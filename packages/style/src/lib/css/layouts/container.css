@@ -1,0 +1,11 @@
+.l\:burrito {
+	container-type: inline-size;
+	container-name: burrito;
+	inline-size: 100%;
+}
+
+@container burrito (max-width: 280px) {
+	.filling {
+		width: 100%;
+	}
+}
