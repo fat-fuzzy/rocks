@@ -6,11 +6,15 @@
 	export let path = ''
 	export let layout = ''
 	export let size = 'md'
+	export let color = 'primary:100'
 	export let align = 'start'
 	export let id = ''
 	export let depth = 0
+	export let container = 'burrito'
 	export let items: any = [] // TODO: fix type
-	let layoutClass = layout ? `l:${layout}:${size}` : ''
+
+	// TODO: clean classes output
+	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
 	let depthClass = `depth-${depth}`
 
 	$: current = (slug: string) => $page.url.pathname === format.formatHref(path, slug)
@@ -20,8 +24,11 @@
 	{#each items as item}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
-		<li aria-current={current(slug) ? 'page' : undefined}>
-			<a data-sveltekit-preload-data href={format.formatHref(path, slug)} class={asset}>
+		<li
+			aria-current={current(slug) ? 'page' : undefined}
+			class={`filling ${current(slug) ? `bg:${color}` : undefined}`}
+		>
+			<a data-sveltekit-preload-data href={format.formatHref(path, slug)} class={`${asset}`}>
 				{title}
 			</a>
 			{#if subItems}
