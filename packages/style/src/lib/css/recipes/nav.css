@@ -5,13 +5,13 @@ nav {
 nav ul {
 	list-style: none;
 	margin: 0;
-	width: 100%;
+	/* width: 100%; */
 	padding: 0;
 }
 
 /* == Keep nav links to one line with ellipsis == */
 nav li {
-	width: 100%;
+	/* width: 100%; */
 	max-width: calc(var(--sidebar-width) - var(--outline-offset));
 	overflow: hidden;
 	white-space: nowrap;
@@ -21,19 +21,14 @@ nav li {
 }
 
 nav li a {
+	color: var(--current-color);
+	font-weight: var(--font-weight-semibold);
 	max-width: 100%;
 	font-size: var(--font-size-ui);
-	font-weight: var(--font-weight-semibold);
 	line-height: 1;
 	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
 	overflow: hidden;
 	text-decoration: none;
-}
-
-nav li a,
-nav li a:visited {
-	color: var(--current-color);
-	font-weight: var(--font-weight-semibold);
 }
 
 nav a:hover {
@@ -42,6 +37,11 @@ nav a:hover {
 
 nav a:focus {
 	outline-offset: var(--outline-offset-nav);
+}
+
+nav li a:visited {
+	color: var(--current-color);
+	font-weight: var(--font-weight-semibold);
 }
 
 /* == RevealNav (tree-like navigation menus) == */
@@ -74,8 +74,7 @@ nav li[aria-current='page'] > a:visited {
 [class^='l:sidebar'] nav li[aria-current='page'] > a {
 	color: var(--color-light);
 	background-color: var(--current-primary);
-	padding-inline-start: var(--ui-size);
-	padding-inline-end: var(--ui-size);
+	padding-inline: var(--ui-size);
 }
 
 .night [class^='l:sidebar'] nav li[aria-current='page'] > a {

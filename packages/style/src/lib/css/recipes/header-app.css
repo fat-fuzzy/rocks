@@ -67,7 +67,7 @@
 	padding: var(--ui-size) 0;
 	margin: 0;
 	list-style: none;
-	width: 100%;
+	/* width: 100%; */
 	background-color: inherit;
 	height: fit-content;
 }
