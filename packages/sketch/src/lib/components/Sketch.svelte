@@ -148,12 +148,13 @@
 			: undefined,
 	)
 
-	let showGeometry = $derived(
+	let isInteractive = $derived(
 		context !== undefined &&
 			(sketchState.canvas === CanvasState.playing ||
 				sketchState.canvas === CanvasState.paused ||
 				sketchState.canvas === CanvasState.ended),
 	)
+
 	let currentAsset = $derived(
 		sketchState.canvas === CanvasState.idle && asset ? asset : `emoji:${sketchState.canvas}`,
 	)
@@ -406,7 +407,7 @@
 				{variant}
 				disabled={Boolean(feedback)}
 			/>
-			{#if showGeometry}
+			{#if isInteractive}
 				{#if meta?.type === 'matrix-2d'}
 					<Geometry2D
 						id={`${id}-context-2d`}
