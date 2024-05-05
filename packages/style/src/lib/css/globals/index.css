@@ -13,8 +13,13 @@
 @import './ui/scale.css';
 @import './ui/variant.css';
 
+/* Font faces */
+@import './text/_mono.css';
+@import './text/_serif.css';
+@import './text/_sans.css';
+@import './text/_heading.css';
 /* Text */
-@import './text/fonts.css';
+/* @import './text/fonts.css'; */
 @import './text/typography.css';
 @import './text/scale.css';
 
