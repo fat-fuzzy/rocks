@@ -1,31 +1,13 @@
-[class*='emoji:']::before {
+[class*='emoji:'] {
+	--icon-size: var(--ui-size-xl);
 	font-size: var(--icon-size);
 }
 
-[class*='emoji'].size\:2xs::before {
-	--icon-size: var(--size-icon-emoji-2xs);
+[class*='emoji:']::before,
+[class*='emoji:'].align\:start::before {
+	margin-inline-end: var(--ui-size-sm);
 }
 
-[class*='emoji'].size\:xs::before {
-	--icon-size: var(--size-icon-emoji-xs);
-}
-
-[class*='emoji'].size\:sm::before {
-	--icon-size: var(--size-icon-emoji-sm);
-}
-
-[class*='emoji'].size\:md::before {
-	--icon-size: var(--size-icon-emoji-md);
-}
-
-[class*='emoji'].size\:lg::before {
-	--icon-size: var(--size-icon-emoji-lg);
-}
-
-[class*='emoji'].size\:xl::before {
-	--icon-size: var(--size-icon-emoji-xl);
-}
-
-[class*='emoji'].size\:2xl::before {
-	--icon-size: var(--size-icon-emoji-2xl);
+[class*='emoji:'].align\:end::after {
+	margin-inline-start: var(--ui-size-sm);
 }

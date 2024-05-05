@@ -21,7 +21,6 @@ nav li {
 }
 
 nav li a {
-	color: var(--current-color);
 	font-weight: var(--font-weight-semibold);
 	max-width: 100%;
 	font-size: var(--font-size-ui);
@@ -32,7 +31,8 @@ nav li a {
 }
 
 nav a:hover {
-	color: var(--current-primary);
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-lightness-400);
 }
 
 nav a:focus {
@@ -40,7 +40,8 @@ nav a:focus {
 }
 
 nav li a:visited {
-	color: var(--current-color);
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-lightness-500);
 	font-weight: var(--font-weight-semibold);
 }
 
@@ -62,23 +63,22 @@ ul.depth-4 {
 }
 
 /* Active Link */
+nav li[aria-current='page'] {
+	--hue: var(--color-theme-primary);
+	background-color: var(--shade);
+}
+
+/* Active Link */
 nav li[aria-current='page'] > a,
 nav li[aria-current='page'] > a:visited {
-	color: var(--current-primary);
-	font-weight: var(--font-weight-semibold);
-	text-decoration: none;
-	text-decoration-color: var(--current-gray);
+	text-decoration-color: var(--bg-color);
 }
 
 /* Sidebar active links */
 [class^='l:sidebar'] nav li[aria-current='page'] > a {
-	color: var(--color-light);
-	background-color: var(--current-primary);
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-lightness-500);
 	padding-inline: var(--ui-size);
-}
-
-.night [class^='l:sidebar'] nav li[aria-current='page'] > a {
-	color: var(--color-black);
 }
 
 /* override Active Link styles for top level link */
