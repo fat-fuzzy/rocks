@@ -362,39 +362,8 @@
 				<pre class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
 			{/if}
 		</div>
-		<aside class="card:dotted maki:block bg:primary:000 size:sm">
-			<table>
-				<thead class="bg:highlight:300">
-					<tr>
-						<th class="bg:light"></th>
-						<th>Sketch</th>
-						<th>Canvas</th>
-						<th>Player</th>
-						<th>Geometry</th>
-					</tr>
-				</thead>
-				<tbody class="bg:primary:000 text:center">
-					<tr>
-						<td class="bg:primary:100">State</td>
-						<td>{sketchState.sketch}</td>
-						<td>{sketchState.canvas}</td>
-						<td>{sketchState.player}</td>
-						<td>{sketchState.geometry}</td>
-					</tr>
-				</tbody>
-				<tfoot class="bg:accent:000 text:center">
-					<tr>
-						<td class="bg:accent:100">Actions</td>
-						<td>{sketchState.sketch}</td>
-						<td>{sketchState.canvas}</td>
-						<td>{sketchState.player}</td>
-						<td>{sketchState.geometry}</td>
-					</tr>
-				</tfoot>
-			</table>
-		</aside>
 	</div>
-	<aside class="context l:stack">
+	<aside class="context">
 		{#if canvas}
 			<Player
 				play={updateCanvas}
@@ -502,6 +471,37 @@
 				{/if}
 			{/if}
 		{/if}
+	</aside>
+	<aside class="debug card:dotted maki:block bg:primary:000 size:xs overflow:x">
+		<table>
+			<thead class="bg:primary:300">
+				<tr>
+					<th class="bg:light"></th>
+					<th>Sketch</th>
+					<th>Canvas</th>
+					<th>Player</th>
+					<th>Geometry</th>
+				</tr>
+			</thead>
+			<tbody class="bg:primary:000 text:center">
+				<tr>
+					<td class="bg:primary:100">State</td>
+					<td>{sketchState.sketch}</td>
+					<td>{sketchState.canvas}</td>
+					<td>{sketchState.player}</td>
+					<td>{sketchState.geometry}</td>
+				</tr>
+			</tbody>
+			<tfoot class="bg:accent:000 text:center">
+				<tr>
+					<td class="bg:accent:100">Actions</td>
+					<td>{sketchState.sketch}</td>
+					<td>{sketchState.canvas}</td>
+					<td>{sketchState.player}</td>
+					<td>{sketchState.geometry}</td>
+				</tr>
+			</tfoot>
+		</table>
 	</aside>
 </div>
 

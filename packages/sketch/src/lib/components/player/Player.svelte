@@ -104,7 +104,7 @@
 	}
 </script>
 
-<menu {id} class={`l:switcher:${size} align:stretch`}>
+<menu {id} class={`l:switcher:${size} w:full shrink justify:center`}>
 	<Switch
 		id="play"
 		name="play"
@@ -121,7 +121,7 @@
 		{disabled}
 		actor={switchActor.actor(id, 'inactive', 'play')}>{playerState}</Switch
 	>
-	<li class="l:stack">
+	<li class="l:switcher">
 		<Button
 			id="clear"
 			name="clear"

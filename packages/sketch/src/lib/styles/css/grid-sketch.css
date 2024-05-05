@@ -6,10 +6,15 @@
 	grid-area: context;
 }
 
+.debug {
+	grid-area: debug;
+}
+
 .l\:grid\:sketch {
 	grid-template-areas:
 		'scene'
-		'context';
+		'context'
+		'debug';
 }
 
 .l\:grid\:sketch > .scene {
