@@ -1,0 +1,22 @@
+/*  grid-header media queries */
+
+@mixin switchToRowStyles_Burrito($containerSize, $size) {
+	@container burrito-#{$size} (max-width: #{$containerSize}) {
+		.relleno {
+			inline-size: 100%;
+		}
+	}
+}
+@include switchToRowStyles_Burrito(220px, '2xs');
+
+@include switchToRowStyles_Burrito(240px, 'xs');
+
+@include switchToRowStyles_Burrito(260px, 'sm');
+
+@include switchToRowStyles_Burrito(280px, 'md');
+
+@include switchToRowStyles_Burrito(320px, 'lg');
+
+@include switchToRowStyles_Burrito(360px, 'xl');
+
+@include switchToRowStyles_Burrito(380px, '2xl');
