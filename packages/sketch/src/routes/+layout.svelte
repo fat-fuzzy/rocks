@@ -18,10 +18,11 @@
 				id="nav-page"
 				{items}
 				{path}
-				size="sm"
+				size="xs"
 				color="bg:primary:light"
 				background="polar"
 				container="card"
+				layout="switcher"
 			/>
 		</details>
 	</svelte:fragment>

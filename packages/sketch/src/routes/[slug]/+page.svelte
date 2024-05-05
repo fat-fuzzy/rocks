@@ -22,7 +22,7 @@
 	description={`${title} - A sandbox environment to experiment and learn web-based computer graphics`}
 />
 
-<div class="card:md">
+<div class="card:md l:stack:md">
 	<header class={headerClass}>
 		<h1>Play</h1>
 		<h2>&nbsp;❤︎ {title}</h2>
