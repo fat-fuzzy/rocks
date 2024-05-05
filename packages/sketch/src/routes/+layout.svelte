@@ -12,15 +12,18 @@
 
 <Sidebar size="sm">
 	<svelte:fragment slot="side">
-		<Nav
-			id="nav-page"
-			{items}
-			{path}
-			size="sm"
-			color="bg:primary:light"
-			background="polar"
-			container="card"
-		/>
+		<details open>
+			<summary class="bg:primary:300 variant:fill">Sketches</summary>
+			<Nav
+				id="nav-page"
+				{items}
+				{path}
+				size="sm"
+				color="bg:primary:light"
+				background="polar"
+				container="card"
+			/>
+		</details>
 	</svelte:fragment>
 	<svelte:fragment slot="main">
 		<slot />

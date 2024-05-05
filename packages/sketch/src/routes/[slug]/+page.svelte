@@ -13,7 +13,7 @@
 	$: id = $page.data.id
 	$: scene = lib.gfx.sketches[id]
 	$: meta = sketch?.meta ?? undefined
-	$: headerClass = 'l:flex card:sm align:center bg:polar'
+	$: headerClass = 'l:flex align:center'
 </script>
 
 <Head
@@ -22,9 +22,9 @@
 	description={`${title} - A sandbox environment to experiment and learn web-based computer graphics`}
 />
 
-<div class="l:stack:xl card:md">
+<div class="card:md">
 	<header class={headerClass}>
-		<h1 class="card:md">Play</h1>
+		<h1>Play</h1>
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
 	{#key $page.data.slug}
