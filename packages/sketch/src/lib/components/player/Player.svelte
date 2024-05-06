@@ -75,6 +75,14 @@
 			: undefined
 	})
 
+	let playButtonState = $derived(
+		playerState === PlayerState.idle ||
+			playerState === PlayerState.stopped ||
+			playerState === PlayerState.paused
+			? 'inactive'
+			: 'active',
+	)
+
 	function onclick(payload: TogglePayload) {
 		const tmp = playerState
 		const playerPayload = {event: payload.value, state: tmp}
@@ -112,14 +120,10 @@
 		{color}
 		{size}
 		shape="square"
-		initial={playerState === PlayerState.idle ||
-		playerState === PlayerState.stopped ||
-		playerState === PlayerState.paused
-			? 'inactive'
-			: 'active'}
+		initial={playButtonState}
 		container="main"
 		{disabled}
-		actor={switchActor.actor(id, 'inactive', 'play')}>{playerState}</Switch
+		actor={switchActor.actor(id, 'inactive', 'play')}>{playSwitch[playButtonState].text}</Switch
 	>
 	<li class="l:switcher">
 		<Button

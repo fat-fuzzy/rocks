@@ -1,15 +1,6 @@
 <script lang="ts">
 	import type {Scene, SceneContext, SceneMeta, Filters, PlayerPayload, GeometryProps} from '$types'
-	import {
-		PlayerState,
-		GeometryState,
-		CanvasState,
-		SketchState,
-		SketchEvent,
-		CanvasEvent,
-		PlayerEvent,
-		GeometryEvent,
-	} from '$types'
+	import {PlayerState, GeometryState, CanvasState, SketchState} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
 
@@ -19,6 +10,14 @@
 	import Camera from '$lib/components/scene/Camera.svelte'
 	import Player from '$lib/components/player/Player.svelte'
 	import {recipes} from '@fat-fuzzy/ui-s5'
+
+	import {
+		sketchActions,
+		sketchState,
+		sketchEvents,
+		sketchTransitions,
+	} from '$lib/components/sketch/sketch.svelte.js'
+
 	const {ToggleMenu} = recipes
 
 	type Props = {
@@ -55,32 +54,8 @@
 		meta,
 	}: Props = $props()
 
-	let feedback: {message: string; status: string} | undefined = $state(undefined)
-	let sketchState = $state({
-		sketch: SketchState.idle,
-		canvas: CanvasState.idle,
-		geometry: GeometryState.untouched,
-		player: PlayerState.idle,
-	})
-	let sketchTransitions = $state({
-		sketch: {
-			[SketchState.idle]: SketchEvent.load,
-		},
-		canvas: {
-			[CanvasState.idle]: CanvasEvent.load,
-		},
-		geometry: {
-			[GeometryState.untouched]: {
-				[PlayerEvent.play]: GeometryEvent.update,
-			},
-			[GeometryState.touched]: {
-				[PlayerEvent.pause]: GeometryEvent.update,
-			},
-		},
-		player: {
-			[PlayerState.idle]: PlayerEvent.load,
-		},
-	})
+	let feedback = $state(undefined)
+
 	let filters: Filters = $state({
 		channels: 'rgba',
 		blur: 0,
@@ -95,13 +70,6 @@
 	let cameraAngle = $state(60)
 
 	let frame: number
-	let events: {
-		previous?: string
-		current: string
-	} = {
-		previous: undefined,
-		current: 'init',
-	}
 
 	let channelMenuItems = $derived(
 		meta?.channels?.map((c) => ({
@@ -132,6 +100,7 @@
 			initial: filters.effects.includes(b) ? 'active' : 'inactive',
 		})) || [],
 	)
+
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
@@ -158,9 +127,11 @@
 	let currentAsset = $derived(
 		sketchState.canvas === CanvasState.idle && asset ? asset : `emoji:${sketchState.canvas}`,
 	)
+
 	let backgroundClass = background
 		? `l:frame:${dimensions} bg:${background}`
 		: `l:frame:${dimensions}`
+
 	let frameClasses = $derived(
 		canvas
 			? `canvas ${backgroundClass} ${layer} state:${sketchState.canvas} ${currentAsset}`
@@ -268,8 +239,8 @@
 		}
 		sketchState.player = payload.state
 		sketchState.canvas = payload.state
-		events.previous = events.current
-		events.current = payload.event
+		sketchEvents.previous = sketchEvents.current
+		sketchEvents.current = payload.event
 	}
 
 	function updateChannel(selected: {name: string; pressed: boolean}) {
@@ -325,6 +296,7 @@
 			init()
 		}
 	})
+
 	onDestroy(() => {
 		// TODO: make sure there are no leftover resources to clean
 		if (frame) {
@@ -472,41 +444,72 @@
 			{/if}
 		{/if}
 	</aside>
-	<aside class="debug card:dotted maki:block bg:primary:000 size:xs overflow:x">
-		<table>
+	<aside class="debug l:stack maki:block size:xs overflow:x">
+		<table class="card:dotted">
 			<thead class="bg:primary:300">
 				<tr>
 					<th class="bg:light"></th>
 					<th>Sketch</th>
 					<th>Canvas</th>
 					<th>Player</th>
-					<th>Geometry</th>
+					{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d'}
+						<th>Geometry</th>
+					{/if}
+				</tr>
+			</thead>
+			<tbody class="text:center">
+				<tr class="bg:primary:000">
+					<td class="bg:primary:100 text:end">State</td>
+					<td class="variant:outline">{sketchState.sketch}</td>
+					<td class="variant:outline">{sketchState.canvas}</td>
+					<td class="variant:outline">{sketchState.player}</td>
+					{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d'}
+						<td class="variant:outline">{sketchState.geometry}</td>
+					{/if}
+				</tr>
+				<tr class="bg:primary:000 text:center">
+					<td class="bg:primary:100 text:end">Actions</td>
+					<td class="variant:outline">{sketchActions['sketch'][sketchState.sketch]}</td>
+					<td class="variant:outline">{sketchActions['canvas'][sketchState.canvas]}</td>
+					<td class="variant:outline">{sketchActions['player'][sketchState.player]}</td>
+					{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d'}
+						<td class="variant:outline">{sketchActions['geometry'][sketchState.geometry]}</td>
+					{/if}
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr class="bg:danger:000 text:center">
+					<td class="bg:danger:100 text:end">Errors</td>
+					<td class="variant:outline">TODO</td>
+					<td class="variant:outline">TODO</td>
+					<td class="variant:outline">TODO</td>
+					{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d'}
+						<td class="variant:outline">TODO</td>
+					{/if}
+				</tr>
+			</tfoot>
+		</table>
+		<table class="card:dotted">
+			<thead class="bg:accent:300">
+				<tr>
+					<th class="bg:light"></th>
+					<th>Previous</th>
+					<th>Current</th>
 				</tr>
 			</thead>
 			<tbody class="bg:primary:000 text:center">
-				<tr>
-					<td class="bg:primary:100">State</td>
-					<td>{sketchState.sketch}</td>
-					<td>{sketchState.canvas}</td>
-					<td>{sketchState.player}</td>
-					<td>{sketchState.geometry}</td>
+				<tr class="bg:accent:000 text:center">
+					<td class="bg:accent:100 text:end">Event</td>
+					<td class="variant:outline">{sketchEvents['previous']}</td>
+					<td class="variant:outline">{sketchEvents['current']}</td>
 				</tr>
 			</tbody>
-			<tfoot class="bg:accent:000 text:center">
-				<tr>
-					<td class="bg:accent:100">Actions</td>
-					<td>{sketchState.sketch}</td>
-					<td>{sketchState.canvas}</td>
-					<td>{sketchState.player}</td>
-					<td>{sketchState.geometry}</td>
-				</tr>
-			</tfoot>
 		</table>
 	</aside>
 </div>
 
 <style lang="scss">
-	@import '../styles/scss/grid-sketch.scss';
-	@import '../styles/css/grid-sketch.css';
-	@import '../styles/css/sketch.css';
+	@import '../../styles/scss/grid-sketch.scss';
+	@import '../../styles/css/grid-sketch.css';
+	@import '../../styles/css/sketch.css';
 </style>

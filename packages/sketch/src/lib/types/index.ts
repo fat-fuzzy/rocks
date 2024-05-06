@@ -7,19 +7,31 @@ export enum PlayerState {
 }
 
 export enum PlayerEvent {
-	start = 'start',
-	pause = 'pause',
 	play = 'play',
+	pause = 'pause',
 	clear = 'clear',
 	stop = 'stop',
 }
+
+export enum PlayerAction {
+	play = 'play',
+	pause = 'pause',
+	clear = 'clear',
+	stop = 'stop',
+}
+
 export enum GeometryState {
 	untouched = 'untouched',
 	updated = 'updated',
 }
+
 export enum GeometryEvent {
 	update = 'update',
 	pause = 'pause',
+}
+
+export enum GeometryAction {
+	update = 'update',
 }
 
 export type PlayerPayload = {event: PlayerEvent; state: PlayerState}
@@ -49,6 +61,11 @@ export enum SketchState {
 export enum SketchEvent {
 	load = 'load',
 	cancel = 'cancel',
+	exit = 'exit',
+}
+
+export enum SketchAction {
+	load = 'load',
 	exit = 'exit',
 }
 
