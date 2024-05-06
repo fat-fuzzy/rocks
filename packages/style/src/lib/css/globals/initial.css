@@ -16,11 +16,12 @@
 	--gap: var(--layout-gap-md);
 
 	--hue: var(--color-base-light);
+	--ink-hue: var(--color-theme-primary);
 	--chroma: var(--color-chroma-000);
 	--lightness: var(--color-lightness-000);
 	--lightness-contrast: var(--color-lightness-600);
 	--chroma-contrast: var(--color-chroma-600);
-	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--ink-hue));
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 }
 
