@@ -61,16 +61,16 @@
 			"light": {"$value": "{font.weight.200}"},
 			"regular": {"$value": "{font.weight.300}"},
 			"medium": {"$value": "{font.weight.500}"},
-			"semibold": {"$value": "{font.weight.600}"},
-			"bold": {"$value": "{font.weight.700}"},
+			"semibold": {"$value": "{font.weight.700}"},
+			"bold": {"$value": "{font.weight.800}"},
 			"h1": {"$value": "{font.weight.bold}"},
 			"h2": {"$value": "{font.weight.semibold}"},
 			"h3": {"$value": "{font.weight.semibold}"},
-			"h4": {"$value": "{font.weight.medium}"},
-			"h5": {"$value": "{font.weight.medium}"},
-			"body": {"$value": "{font.weight.medium}"},
-			"code": {"$value": "{font.weight.medium}"},
-			"ui": {"$value": "{font.weight.semibold}"}
+			"h4": {"$value": "{font.weight.semibold}"},
+			"h5": {"$value": "{font.weight.semibold}"},
+			"body": {"$value": "{font.weight.regular}"},
+			"code": {"$value": "{font.weight.regular}"},
+			"ui": {"$value": "{font.weight.medium}"}
 		},
 		"size": {
 			"$type": "reference",
