@@ -28,10 +28,10 @@
 </p>
 <div class="l:grid:2xs maki:block">
 	{#each tags as tag}
-		<article class="card:md bg:accent:000 l:stack size:sm">
-			<h3 class="bg:accent:300 card:sm"><small>{tag}</small></h3>
+		<article class="card:md bg:primary:000 l:stack size:sm">
+			<h3 class="bg:primary:100 card:sm"><small>{tag}</small></h3>
 			<details open>
-				<summary class="bg:primary:000 card:2xs"><small>Sketches</small></summary>
+				<summary class="bg:light card:2xs"><small>Sketches</small></summary>
 				<div class="l:stack:xs maki:block">
 					{#each sketches as { slug, asset, title, tags }}
 						{#if tags.includes(tag)}
