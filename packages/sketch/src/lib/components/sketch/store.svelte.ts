@@ -52,6 +52,7 @@ export const sketchTransitions = $state({
 		},
 		[SketchState.loading]: {
 			[SketchEvent.loadOk]: {state: SketchState.active},
+			[SketchEvent.loadNok]: {state: SketchState.error},
 		},
 	},
 	canvas: {
@@ -60,6 +61,7 @@ export const sketchTransitions = $state({
 		},
 		[CanvasState.loading]: {
 			[SketchEvent.loadOk]: {state: CanvasState.active},
+			[SketchEvent.loadNok]: {state: SketchState.error},
 		},
 	},
 	geometry: {

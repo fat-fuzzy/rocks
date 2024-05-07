@@ -3,6 +3,8 @@
 	import {PlayerState, PlayerEvent} from '$types'
 	import {blocks, actors} from '@fat-fuzzy/ui-s5'
 
+	import {playerState, playSwitch} from './store.svelte'
+
 	const {Button, Switch} = blocks
 	const {switchActor} = actors
 
@@ -24,31 +26,12 @@
 		size,
 		variant = 'outline',
 		color = 'primary',
-		initial = PlayerState.idle,
 		disabled,
 		play,
 		pause,
 		clear,
 		stop,
 	}: Props = $props()
-
-	let playerState = $state(initial)
-	const playSwitch: SwitchState = {
-		active: {
-			value: PlayerEvent.pause,
-			text: 'Pause',
-			asset: 'emoji:pause',
-			variant: 'outline',
-			onclick,
-		},
-		inactive: {
-			value: PlayerEvent.play,
-			text: 'Play',
-			asset: 'emoji:play',
-			variant: 'fill',
-			onclick,
-		},
-	}
 
 	let events: {
 		previous?: string

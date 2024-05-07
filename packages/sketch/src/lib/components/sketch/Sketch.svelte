@@ -1,5 +1,12 @@
 <script lang="ts">
-	import type {Scene, SceneContext, SceneMeta, Filters, PlayerPayload, GeometryProps} from '$types'
+	import type {
+		Scene,
+		SceneContext,
+		SceneMeta,
+		Filters,
+		PlayerPayload,
+		GeometryProps,
+	} from '$types'
 	import {PlayerState, GeometryState, CanvasState, SketchState} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
@@ -12,7 +19,7 @@
 	import Debug from '$lib/components/debug/Debug.svelte'
 	import {recipes} from '@fat-fuzzy/ui-s5'
 
-	import {sketchState, sketchEvents} from '$lib/components/sketch/store.svelte'
+	import {sketchState, sketchEvents} from './store.svelte'
 
 	const {ToggleMenu} = recipes
 
@@ -103,13 +110,15 @@
 	}
 
 	let disabled = $derived(
-		sketchState.canvas === CanvasState.idle || sketchState.canvas === CanvasState.paused
+		sketchState.canvas === CanvasState.idle ||
+			sketchState.canvas === CanvasState.paused
 			? true
 			: undefined,
 	)
 
 	let menuDisabled = $derived(
-		sketchState.canvas === CanvasState.idle || sketchState.canvas === CanvasState.paused
+		sketchState.canvas === CanvasState.idle ||
+			sketchState.canvas === CanvasState.paused
 			? true
 			: undefined,
 	)
@@ -122,7 +131,9 @@
 	)
 
 	let currentAsset = $derived(
-		sketchState.canvas === CanvasState.idle && asset ? asset : `emoji:${sketchState.canvas}`,
+		sketchState.canvas === CanvasState.idle && asset
+			? asset
+			: `emoji:${sketchState.canvas}`,
 	)
 
 	let backgroundClass = background
@@ -252,7 +263,11 @@
 		}
 	}
 
-	function updateBlur(selected: {value: number; name: string; pressed: boolean}) {
+	function updateBlur(selected: {
+		value: number
+		name: string
+		pressed: boolean
+	}) {
 		if (selected.pressed) {
 			filters.blur = selected.value
 		} else {
@@ -266,7 +281,9 @@
 
 	function updateEffects(selected: {name: string; pressed: boolean}) {
 		if (!selected.pressed) {
-			filters.effects = filters.effects.filter((filter: string) => filter !== selected.name)
+			filters.effects = filters.effects.filter(
+				(filter: string) => filter !== selected.name,
+			)
 		} else if (!filters.effects.includes(selected.name)) {
 			filters.effects.push(selected.name)
 		}
@@ -304,7 +321,11 @@
 
 <div class={`l:grid:sketch bp:xs`}>
 	<div class="scene">
-		<div class={frameClasses} bind:offsetWidth={width} bind:offsetHeight={height}>
+		<div
+			class={frameClasses}
+			bind:offsetWidth={width}
+			bind:offsetHeight={height}
+		>
 			{#if scene?.meta?.input === 'mouse'}
 				<canvas
 					id={`${id}.canvas`}
@@ -316,19 +337,27 @@
 					onmouseup={handleMouseEvent}
 				>
 					<p class={`feedback emoji:default ${size} content`}>
-						The canvas element needs JavaScript enabled to display and interact with animations
+						The canvas element needs JavaScript enabled to display and interact
+						with animations
 					</p>
 				</canvas>
 			{:else}
-				<canvas id={`${id}.canvas`} aria-label={title} data-test="canvas" bind:this={canvas}>
+				<canvas
+					id={`${id}.canvas`}
+					aria-label={title}
+					data-test="canvas"
+					bind:this={canvas}
+				>
 					<p class={`feedback emoji:default ${size} content`}>
-						The canvas element needs JavaScript enabled to display and interact with animations
+						The canvas element needs JavaScript enabled to display and interact
+						with animations
 					</p>
 				</canvas>
 			{/if}
 
 			{#if feedback}
-				<pre class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
+				<pre
+					class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
 			{/if}
 		</div>
 	</div>
@@ -357,7 +386,9 @@
 						{disabled}
 					/>
 				{:else}
-					<div class={`l:${layout}:${size} th:${threshold} maki:block lg context bg:${background}`}>
+					<div
+						class={`l:${layout}:${size} th:${threshold} maki:block lg context bg:${background}`}
+					>
 						{#if meta?.camera}
 							<Camera
 								id={`${id}-camera-3d`}

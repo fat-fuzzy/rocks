@@ -1,6 +1,10 @@
 <script lang="ts">
 	import type {SceneMeta} from '$types'
-	import {sketchActions, sketchState, sketchEvents} from '$lib/components/sketch/store.svelte'
+	import {
+		sketchActions,
+		sketchState,
+		sketchEvents,
+	} from '$lib/components/sketch/store.svelte'
 
 	type Props = {
 		meta: SceneMeta | undefined
@@ -33,11 +37,19 @@
 			</tr>
 			<tr class="bg:primary:000 text:center">
 				<td class="bg:primary:100 text:end">Actions</td>
-				<td class="variant:outline">{sketchActions['sketch'][sketchState.sketch]}</td>
-				<td class="variant:outline">{sketchActions['canvas'][sketchState.canvas]}</td>
-				<td class="variant:outline">{sketchActions['player'][sketchState.player]}</td>
+				<td class="variant:outline">
+					{sketchActions['sketch'][sketchState.sketch]}
+				</td>
+				<td class="variant:outline">
+					{sketchActions['canvas'][sketchState.canvas]}
+				</td>
+				<td class="variant:outline">
+					{sketchActions['player'][sketchState.player]}
+				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d'}
-					<td class="variant:outline">{sketchActions['geometry'][sketchState.geometry]}</td>
+					<td class="variant:outline">
+						{sketchActions['geometry'][sketchState.geometry]}
+					</td>
 				{/if}
 			</tr>
 		</tbody>
