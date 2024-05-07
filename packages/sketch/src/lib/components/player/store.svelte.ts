@@ -36,12 +36,9 @@ class PlayerStore {
 	public getState(): PlayerState {
 		return this.state
 	}
+
 	public getPlayState(): PlayerState {
 		return this.playState
-	}
-
-	public getPlaySwitchValue(): PlayerState {
-		return this.playSwitch[this.playState].value
 	}
 
 	public getPlayLabel(): PlayerState {
