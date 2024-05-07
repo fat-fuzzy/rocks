@@ -36,8 +36,16 @@ export const sketchActions = $state({
 	},
 	player: {
 		[PlayerState.idle]: [PlayerAction.play],
-		[PlayerState.playing]: [PlayerAction.pause, PlayerAction.stop, PlayerAction.clear],
-		[PlayerState.paused]: [PlayerAction.play, PlayerAction.stop, PlayerAction.clear],
+		[PlayerState.playing]: [
+			PlayerAction.pause,
+			PlayerAction.stop,
+			PlayerAction.clear,
+		],
+		[PlayerState.paused]: [
+			PlayerAction.play,
+			PlayerAction.stop,
+			PlayerAction.clear,
+		],
 	},
 	geometry: {
 		[GeometryState.untouched]: [GeometryAction.update],
@@ -48,7 +56,10 @@ export const sketchActions = $state({
 export const sketchTransitions = $state({
 	sketch: {
 		[SketchState.idle]: {
-			[SketchEvent.load]: {action: SketchEvent.load, state: SketchState.loading},
+			[SketchEvent.load]: {
+				action: SketchEvent.load,
+				state: SketchState.loading,
+			},
 		},
 		[SketchState.loading]: {
 			[SketchEvent.loadOk]: {state: SketchState.active},
@@ -61,7 +72,7 @@ export const sketchTransitions = $state({
 		},
 		[CanvasState.loading]: {
 			[SketchEvent.loadOk]: {state: CanvasState.active},
-			[SketchEvent.loadNok]: {state: SketchState.error},
+			[SketchEvent.loadNok]: {state: CanvasState.error},
 		},
 	},
 	geometry: {

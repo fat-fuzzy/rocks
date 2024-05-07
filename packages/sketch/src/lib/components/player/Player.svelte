@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type {SwitchState, TogglePayload} from '$types'
+	import type {TogglePayload} from '$types'
 	import {PlayerState, PlayerEvent} from '$types'
 	import {blocks, actors} from '@fat-fuzzy/ui-s5'
 
-	import {playerState, playSwitch} from './store.svelte'
+	import PlayerStore from './store.svelte'
 
 	const {Button, Switch} = blocks
 	const {switchActor} = actors
@@ -40,53 +40,45 @@
 		previous: undefined,
 		current: 'init',
 	})
-
+	let playerStore = new PlayerStore({onclick})
 	let disableStop = $derived.by(() => {
-		return playerState === PlayerState.idle ||
-			playerState === PlayerState.stopped ||
-			playerState === PlayerState.ended
+		return playerStore.state === PlayerState.idle ||
+			playerStore.state === PlayerState.stopped ||
+			playerStore.state === PlayerState.ended
 			? true
 			: undefined
 	})
 
 	let disableClear = $derived.by(() => {
 		return events.current === PlayerEvent.clear ||
-			playerState === PlayerState.idle ||
-			playerState === PlayerState.stopped ||
-			playerState === PlayerState.ended
+			playerStore.state === PlayerState.idle ||
+			playerStore.state === PlayerState.stopped ||
+			playerStore.state === PlayerState.ended
 			? true
 			: undefined
 	})
 
-	let playButtonState = $derived(
-		playerState === PlayerState.idle ||
-			playerState === PlayerState.stopped ||
-			playerState === PlayerState.paused
-			? 'inactive'
-			: 'active',
-	)
-
 	function onclick(payload: TogglePayload) {
-		const tmp = playerState
+		const tmp = playerStore.state
 		const playerPayload = {event: payload.value, state: tmp}
 		switch (payload.value) {
 			case PlayerEvent.play:
-				playerState = PlayerState.playing
-				playerPayload.state = playerState
+				playerStore.state = PlayerState.playing
+				playerPayload.state = playerStore.state
 				play(playerPayload)
 				break
 			case PlayerEvent.pause:
-				playerState = PlayerState.paused
-				playerPayload.state = playerState
+				playerStore.state = PlayerState.paused
+				playerPayload.state = playerStore.state
 				pause(playerPayload)
 				break
 			case PlayerEvent.clear:
 				clear(playerPayload)
-				playerState = tmp
+				playerStore.state = tmp
 				break
 			case PlayerEvent.stop:
-				playerState = PlayerState.stopped
-				playerPayload.state = playerState
+				playerStore.state = PlayerState.stopped
+				playerPayload.state = playerStore.state
 				stop(playerPayload)
 				break
 		}
@@ -99,14 +91,15 @@
 	<Switch
 		id="play"
 		name="play"
-		states={playSwitch}
+		states={playerStore.playSwitch}
 		{color}
 		{size}
 		shape="square"
-		initial={playButtonState}
+		initial={playerStore.playState}
 		container="main"
 		{disabled}
-		actor={switchActor.actor(id, 'inactive', 'play')}>{playSwitch[playButtonState].text}</Switch
+		actor={switchActor.actor(id, 'inactive', 'play')}
+		>{playerStore.getPlayLabel()}</Switch
 	>
 	<li class="l:switcher">
 		<Button
