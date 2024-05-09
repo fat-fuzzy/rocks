@@ -19,6 +19,11 @@ function drawScene(gl, programInfo, {textures, channels, blur}) {
 	const primitiveType = gl.TRIANGLES
 	const offset = 0
 	const count = 6
+	// Upload the image into the texture
+	let mipLevel = 0 // the largest mip
+	let internalFormat = gl.RGBA // format we want in the texture
+	let srcFormat = gl.RGBA // format of data we are supplying
+	let srcType = gl.UNSIGNED_BYTE // type of data we are supplying
 
 	// Draw each texture
 	for (let i = 0; i < textures.length; i++) {
@@ -33,11 +38,6 @@ function drawScene(gl, programInfo, {textures, channels, blur}) {
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 
 		let image = programInfo.context.images[i]
-		// Upload the image into the texture
-		let mipLevel = 0 // the largest mip
-		let internalFormat = gl.RGBA // format we want in the texture
-		let srcFormat = gl.RGBA // format of data we are supplying
-		let srcType = gl.UNSIGNED_BYTE // type of data we are supplying
 
 		// texImage2D(target, level, internalformat, format, type, source)
 		gl.texImage2D(
