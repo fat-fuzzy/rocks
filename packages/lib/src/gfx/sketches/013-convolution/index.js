@@ -77,7 +77,9 @@ function init(canvas) {
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
-		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
+		throw Error(
+			'Unable to initialize WebGL. Your browser or machine may not support it.',
+		)
 	}
 	// console.log('init canvas.clientWidth', gl.canvas.clientWidth)
 	// console.log('init canvas.clientHeight', gl.canvas.clientHeight)

@@ -6,7 +6,7 @@ const {DEFAULT_TEXTURE_COORDS} = geometries
  *
  * @param {WebGL2RenderingContext} gl
  * @param {*} programInfo
- * @param {*} buffers
+ * @param {*} context
  */
 function drawScene(gl, programInfo, {channels, blur}) {
 	// Set the parameters so we don't need mips (?):
@@ -26,12 +26,23 @@ function drawScene(gl, programInfo, {channels, blur}) {
 	// texImage2D(target, level, internalformat, format, type, source)
 	const image = programInfo.context.image
 
-	gl.texImage2D(gl.TEXTURE_2D, mipLevel, internalFormat, srcFormat, srcType, image)
+	gl.texImage2D(
+		gl.TEXTURE_2D,
+		mipLevel,
+		internalFormat,
+		srcFormat,
+		srcType,
+		image,
+	)
 
 	gl.uniform4iv(programInfo.uniformLocations.u_channels, channels)
 	gl.uniform1i(programInfo.uniformLocations.u_blur, blur)
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader
-	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
+	gl.uniform2f(
+		programInfo.uniformLocations.u_resolution,
+		gl.canvas.width,
+		gl.canvas.height,
+	)
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
 
 	// Tell the shader to get the texture from texture unit 0

@@ -23,7 +23,7 @@ let imageAssetsPath = 'src/lib/images'
 let filename = 'plants.png'
 let imgWidth = 620
 let imgHeight = 518
-let imagePath = `${host}/${imageAssetsPath}/${filename}`
+let url = `${host}/${imageAssetsPath}/${filename}`
 let gl
 let program
 let programInfo = {}
@@ -37,9 +37,12 @@ let blur = 0
 
 function convertToChannelOrder(str) {
 	return new Int32Array(
-		str.split('').map((c) => (c === 'r' ? 0 : c === 'a' ? 3 : c === 'g' ? 1 : 2)),
+		str
+			.split('')
+			.map((c) => (c === 'r' ? 0 : c === 'a' ? 3 : c === 'g' ? 1 : 2)),
 	)
 }
+
 const channels = {
 	ragb: convertToChannelOrder('ragb'),
 	rabg: convertToChannelOrder('rabg'),
@@ -105,37 +108,42 @@ function init(canvas) {
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
-		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
+		throw Error(
+			'Unable to initialize WebGL. Your browser or machine may not support it.',
+		)
 	}
 
-	image = new Image()
-	image.src = imagePath
-
 	return {
-		image,
 		translation: [0, 0],
 		width: 1,
 		height: 1,
 	}
 }
 
-function main() {
-	image.onload = () => {
-		programInfo = loadProgram()
-		programInfo.context = loadTexture(image)
+function loadImage(url, callback) {
+	let image = new Image()
+	image.src = url
+	image.onload = callback
 
-		updateBuffers(gl, programInfo, buffers)
-		setPositionAttribute(gl, buffers, programInfo)
-		setTextureAttribute(gl, buffers, programInfo)
-	}
+	return image
+}
+
+function render() {
+	programInfo = loadProgram()
+	programInfo.context = loadTexture(image)
+
+	updateBuffers(gl, programInfo, buffers)
+	setPositionAttribute(gl, buffers, programInfo)
+	setTextureAttribute(gl, buffers, programInfo)
+}
+
+function main() {
+	image = loadImage(url, render)
 }
 
 function draw(t) {
-	// console.log('canvas.clientWidth', gl.canvas.clientWidth)
-	// console.log('canvas.clientHeight', gl.canvas.clientHeight)
 	clear()
 	utils.resize(gl.canvas)
-	// ... rest of your drawing code ...
 	drawScene(gl, programInfo, {channels: channels[channelOrder], blur})
 }
 
@@ -252,6 +260,7 @@ function update(canvas, {filters}) {
 	if (filters.blur !== blur) {
 		blur = filters.blur
 	}
+
 	programInfo.context = {
 		image,
 		translation: [0, 0],
