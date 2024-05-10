@@ -9,6 +9,7 @@ import {
 	GeometryAction,
 	PlayerAction,
 	CanvasState,
+	CanvasAction,
 } from '$types'
 
 export const sketchState = $state({
@@ -16,6 +17,12 @@ export const sketchState = $state({
 	canvas: CanvasState.idle,
 	player: PlayerState.idle,
 	geometry: GeometryState.untouched,
+	errors: {
+		sketch: [],
+		canvas: [],
+		player: [],
+		geometry: [],
+	},
 })
 
 export const sketchEvents = $state({
@@ -29,10 +36,18 @@ export const sketchActions = $state({
 		[SketchState.active]: [SketchAction.exit],
 	},
 	canvas: {
-		[CanvasState.idle]: [],
-		[CanvasState.playing]: [],
-		[CanvasState.paused]: [],
-		[CanvasState.ended]: [],
+		[CanvasState.idle]: [CanvasAction.play],
+		[CanvasState.playing]: [
+			CanvasAction.pause,
+			CanvasAction.clear,
+			CanvasAction.stop,
+		],
+		[CanvasState.paused]: [
+			CanvasAction.play,
+			CanvasAction.clear,
+			CanvasAction.stop,
+		],
+		[CanvasState.stopped]: [CanvasAction.play],
 	},
 	player: {
 		[PlayerState.idle]: [PlayerAction.play],
@@ -46,6 +61,7 @@ export const sketchActions = $state({
 			PlayerAction.stop,
 			PlayerAction.clear,
 		],
+		[PlayerState.stopped]: [PlayerAction.play],
 	},
 	geometry: {
 		[GeometryState.untouched]: [GeometryAction.update],
@@ -68,11 +84,17 @@ export const sketchTransitions = $state({
 	},
 	canvas: {
 		[CanvasState.idle]: {
-			[SketchEvent.load]: {state: CanvasState.loading},
+			[PlayerEvent.play]: {state: CanvasState.playing},
 		},
-		[CanvasState.loading]: {
-			[SketchEvent.loadOk]: {state: CanvasState.active},
-			[SketchEvent.loadNok]: {state: CanvasState.error},
+		[CanvasState.playing]: {
+			[PlayerEvent.pause]: {state: CanvasState.paused},
+			[PlayerEvent.stop]: {state: CanvasState.idle},
+			[PlayerEvent.clear]: {state: CanvasState.idle},
+		},
+		[CanvasState.paused]: {
+			[PlayerEvent.play]: {state: CanvasState.playing},
+			[PlayerEvent.stop]: {state: CanvasState.idle},
+			[PlayerEvent.clear]: {state: CanvasState.idle},
 		},
 	},
 	geometry: {
@@ -81,9 +103,6 @@ export const sketchTransitions = $state({
 		},
 		[GeometryState.updated]: {
 			[PlayerEvent.clear]: GeometryState.untouched,
-		},
-		[GeometryState.updated]: {
-			[PlayerEvent.stop]: GeometryState.untouched,
 		},
 	},
 	player: {

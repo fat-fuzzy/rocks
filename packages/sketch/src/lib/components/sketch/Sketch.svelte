@@ -7,7 +7,13 @@
 		PlayerPayload,
 		GeometryProps,
 	} from '$types'
-	import {PlayerState, GeometryState, CanvasState, SketchState} from '$types'
+	import {
+		PlayerState,
+		GeometryState,
+		CanvasState,
+		SketchState,
+		GeometryEvent,
+	} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
 
@@ -19,7 +25,7 @@
 	import Debug from '$lib/components/debug/Debug.svelte'
 	import {recipes} from '@fat-fuzzy/ui-s5'
 
-	import {sketchState, sketchEvents} from './store.svelte'
+	import {sketchState, sketchEvents, sketchTransitions} from './store.svelte'
 
 	const {ToggleMenu} = recipes
 
@@ -58,7 +64,7 @@
 	}: Props = $props()
 
 	let debug = true // TODO : fix this
-	let feedback = $state('')
+	let feedback = $state([])
 
 	let filters: Filters = $state({
 		channels: 'rgba',
@@ -66,7 +72,7 @@
 		effects: ['normal'],
 	})
 	let canvas: HTMLCanvasElement | null = $state(null)
-	let programInfo = $state({})
+	let programInfo = $state({context: {}})
 	let context: SceneContext = $state(programInfo?.context)
 	let width: number | undefined = $state(undefined)
 	let height: number | undefined = $state(undefined)
@@ -148,6 +154,11 @@
 
 	function init() {
 		if (canvas) {
+			if (scene.init) {
+				programInfo.context = scene.init(canvas)
+			} else {
+				programInfo = scene.main(canvas, context)
+			}
 			try {
 				scene.main(canvas, {filters})
 				if (sketchState.player === PlayerState.stopped || !context) {
@@ -155,7 +166,7 @@
 				}
 				scene.update(context, {filters})
 			} catch (e: any) {
-				feedback = {status: 'error', message: e}
+				feedback.push({status: 'error', message: e})
 			}
 		}
 	}
@@ -168,7 +179,6 @@
 	}
 
 	function play() {
-		sketchState.canvas = CanvasState.playing
 		if (meta?.type !== 'texture') {
 			loop(Date.now())
 		} else {
@@ -176,21 +186,23 @@
 				scene.draw(t)
 			})
 		}
+		// sketchState.sketch = SketchState.playing
+		// sketchState.canvas = CanvasState.playing
 	}
 
 	function clear() {
-		const playerTmp = sketchState.player
-		const canvasTmp = sketchState.canvas
-		sketchState.player = PlayerState.stopped
+		// const playerTmp = sketchState.player
+		// const canvasTmp = sketchState.canvas
+		// sketchState.player = PlayerState.stopped
 		stop()
 		init()
-		play()
-		if (canvasTmp === CanvasState.paused) {
-			pause()
-		}
-		sketchState.player = playerTmp
-		sketchState.canvas = canvasTmp
-		sketchState.geometry = GeometryState.untouched
+		// play()
+		// if (canvasTmp === CanvasState.paused) {
+		// 	pause()
+		// }
+		// sketchState.player = playerTmp
+		// sketchState.canvas = canvasTmp
+		// sketchState.geometry = GeometryState.untouched
 	}
 
 	function stop() {
@@ -208,17 +220,20 @@
 		}
 		sketchState.canvas = CanvasState.idle
 		sketchState.sketch = SketchState.idle
+		if (sketchState.canvas === CanvasState.idle) {
+			init()
+		}
 	}
 
 	function pause() {
 		sketchState.canvas = CanvasState.paused
 		cancelAnimationFrame(frame)
-		scene.update(context, {filters})
 	}
 
 	function updateGeometry(payload: {value: GeometryProps}) {
 		context = payload.value
 		scene.update(context, {filters})
+		sketchState.geometry = sketchTransitions['geometry'][GeometryEvent.update]
 		sketchState.geometry = GeometryState.updated
 	}
 
@@ -245,8 +260,8 @@
 				stop()
 				break
 		}
-		sketchState.player = payload.state
-		sketchState.canvas = payload.state
+		sketchState.player = sketchTransitions['player'][payload.event]
+		sketchState.canvas = sketchTransitions['canvas'][payload.event]
 		sketchEvents.previous = sketchEvents.current
 		sketchEvents.current = payload.event
 	}
@@ -301,11 +316,6 @@
 	}
 
 	onMount(() => {
-		if (scene.init && canvas) {
-			programInfo.context = scene.init(canvas)
-		} else if (canvas) {
-			programInfo = scene.main(canvas, context)
-		}
 		if (sketchState.canvas === CanvasState.idle) {
 			init()
 		}
@@ -355,9 +365,11 @@
 				</canvas>
 			{/if}
 
-			{#if feedback}
-				<pre
-					class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
+			{#if feedback.length > 0}
+				{#each feedback as feedback}
+					<pre
+						class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
+				{/each}
 			{/if}
 		</div>
 	</div>

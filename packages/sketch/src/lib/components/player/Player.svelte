@@ -15,10 +15,10 @@
 		color: string
 		disabled?: boolean
 		initial?: string
-		play: (payload: {event: string; state: string}) => void
-		pause: (payload: {event: string; state: string}) => void
-		clear: (payload: {event: string; state: string}) => void
-		stop: (payload: {event: string; state: string}) => void
+		play: (payload: {event: string}) => void
+		pause: (payload: {event: string}) => void
+		clear: (payload: {event: string}) => void
+		stop: (payload: {event: string}) => void
 	}
 
 	let {
@@ -26,7 +26,6 @@
 		size,
 		variant = 'outline',
 		color = 'primary',
-		disabled,
 		play,
 		pause,
 		clear,
@@ -38,38 +37,26 @@
 		current: string
 	} = $state({
 		previous: undefined,
-		current: 'init',
-	})
-	let playerStore = new PlayerStore({onclick})
-	let disableStop = $derived.by(() => {
-		return playerStore.state === PlayerState.idle ||
-			playerStore.state === PlayerState.stopped ||
-			playerStore.state === PlayerState.ended
-			? true
-			: undefined
+		current: undefined,
 	})
 
+	let playerStore = new PlayerStore({onclick: updatePlayer})
+	let playButtonActor = $state(switchActor.actor(id, playerStore.state, 'play'))
+	let disablePlay = $derived.by(playerStore.getPlayDisabled)
+	let disableStop = $derived.by(playerStore.getStopDisabled)
 	let disableClear = $derived.by(() => {
-		return events.current === PlayerEvent.clear ||
-			playerStore.state === PlayerState.idle ||
-			playerStore.state === PlayerState.stopped ||
-			playerStore.state === PlayerState.ended
-			? true
-			: undefined
+		return events.current === PlayerEvent.clear || playerStore.getStopDisabled()
 	})
 
-	function onclick(payload: TogglePayload) {
+	function updatePlayer(payload: TogglePayload) {
+		console.log('updatePlayer', payload)
 		const tmp = playerStore.state
-		const playerPayload = {event: payload.value, state: tmp}
+		const playerPayload = {event: payload.value}
 		switch (payload.value) {
 			case PlayerEvent.play:
-				playerStore.state = PlayerState.playing
-				playerPayload.state = playerStore.state
 				play(playerPayload)
 				break
 			case PlayerEvent.pause:
-				playerStore.state = PlayerState.paused
-				playerPayload.state = playerStore.state
 				pause(playerPayload)
 				break
 			case PlayerEvent.clear:
@@ -77,11 +64,10 @@
 				playerStore.state = tmp
 				break
 			case PlayerEvent.stop:
-				playerStore.state = PlayerState.stopped
-				playerPayload.state = playerStore.state
 				stop(playerPayload)
 				break
 		}
+		playerStore.update({event: payload.value})
 		events.previous = events.current
 		events.current = payload.value
 	}
@@ -97,9 +83,9 @@
 		shape="square"
 		initial={playerStore.playState}
 		container="main"
-		{disabled}
-		actor={switchActor.actor(id, 'inactive', 'play')}
-		>{playerStore.getPlayLabel()}</Switch
+		disabled={disablePlay}
+		onclick={updatePlayer}
+		actor={playButtonActor}>{playerStore.getPlayLabel()}</Switch
 	>
 	<li class="l:switcher">
 		<Button
@@ -110,7 +96,7 @@
 			{size}
 			value="clear"
 			asset="emoji:clear"
-			{onclick}
+			onclick={updatePlayer}
 			disabled={disableClear}
 		>
 			Clear
@@ -123,7 +109,7 @@
 			{size}
 			value="stop"
 			asset="emoji:rect"
-			{onclick}
+			onclick={updatePlayer}
 			disabled={disableStop}
 		>
 			Stop

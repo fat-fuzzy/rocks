@@ -1,5 +1,6 @@
 export enum PlayerState {
 	idle = 'idle',
+	error = 'error',
 	playing = 'playing',
 	paused = 'paused',
 	ended = 'ended',
@@ -16,6 +17,13 @@ export enum PlayerEvent {
 export enum PlayerAction {
 	play = 'play',
 	pause = 'pause',
+	clear = 'clear',
+	stop = 'stop',
+}
+
+export enum PlayerError {
+	load = 'load',
+	play = 'play',
 	clear = 'clear',
 	stop = 'stop',
 }
@@ -40,13 +48,20 @@ export enum CanvasState {
 	idle = 'idle',
 	playing = 'playing',
 	paused = 'paused',
-	ended = 'ended',
+	stopped = 'stopped',
 }
 
 export enum CanvasEvent {
 	start = 'start',
 	pause = 'pause',
 	play = 'play',
+	clear = 'clear',
+	stop = 'stop',
+}
+
+export enum CanvasAction {
+	play = 'play',
+	pause = 'pause',
 	clear = 'clear',
 	stop = 'stop',
 }
