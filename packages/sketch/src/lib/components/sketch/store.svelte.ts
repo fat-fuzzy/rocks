@@ -4,9 +4,9 @@ import {
 	SketchAction,
 	PlayerEvent,
 	PlayerState,
-	GeometryEvent,
-	GeometryState,
-	GeometryAction,
+	ControlsEvent,
+	ControlsState,
+	ControlsAction,
 	PlayerAction,
 	CanvasState,
 	CanvasAction,
@@ -17,12 +17,12 @@ const SKETCH_STATE: {[key: string]: any} = {
 	sketch: SketchState.idle,
 	canvas: CanvasState.idle,
 	player: PlayerState.idle,
-	geometry: GeometryState.untouched,
+	controls: ControlsState.pristine,
 	errors: {
 		sketch: [],
 		canvas: [],
 		player: [],
-		geometry: [],
+		controls: [],
 	},
 }
 
@@ -64,9 +64,9 @@ const SKETCH_ACTIONS: {[key: string]: any} = {
 		],
 		[PlayerState.stopped]: [PlayerAction.play],
 	},
-	geometry: {
-		[GeometryState.untouched]: [GeometryAction.update],
-		[GeometryState.updated]: [GeometryAction.update],
+	controls: {
+		[ControlsState.pristine]: ControlsAction.update,
+		[ControlsState.updated]: ControlsAction.update,
 	},
 }
 
@@ -98,12 +98,12 @@ export const SKETCH_TRANSITIONS: {[key: string]: any} = {
 			[PlayerEvent.clear]: {state: CanvasState.idle},
 		},
 	},
-	geometry: {
-		[GeometryState.untouched]: {
-			[GeometryEvent.update]: GeometryState.updated,
+	controls: {
+		[ControlsState.pristine]: {
+			[ControlsEvent.update]: ControlsState.updated,
 		},
-		[GeometryState.updated]: {
-			[PlayerEvent.clear]: GeometryState.untouched,
+		[ControlsState.updated]: {
+			[PlayerEvent.clear]: ControlsState.pristine,
 		},
 	},
 	player: {
@@ -113,10 +113,12 @@ export const SKETCH_TRANSITIONS: {[key: string]: any} = {
 		[PlayerState.playing]: {
 			[PlayerEvent.pause]: {state: PlayerState.paused},
 			[PlayerEvent.stop]: {state: PlayerState.idle},
+			[PlayerEvent.clear]: {state: PlayerState.playing},
 		},
 		[PlayerState.paused]: {
 			[PlayerEvent.play]: {state: PlayerState.playing},
 			[PlayerEvent.stop]: {state: PlayerState.idle},
+			[PlayerEvent.clear]: {state: PlayerState.paused},
 		},
 	},
 }
@@ -145,8 +147,8 @@ class SketchStore {
 		return this.state === this.state.player ? 'active' : 'inactive'
 	}
 
-	public getGeometryState(): GeometryState {
-		return this.state.geometry
+	public getControlsState(): ControlsState {
+		return this.state.controls
 	}
 
 	public getNextActions(state: string): SketchAction {
@@ -201,13 +203,13 @@ class SketchStore {
 	}
 
 	public update(
-		event: SketchEvent | CanvasEvent | PlayerEvent | GeometryEvent,
+		event: SketchEvent | CanvasEvent | PlayerEvent | ControlsEvent,
 	): void {
 		console.log('update  event', event)
 		this.state.sketch = this.getTransition('sketch', event)
 		this.state.player = this.getTransition('player', event)
 		this.state.canvas = this.getTransition('canvas', event)
-		this.state.geometry = this.getTransition('geometry', event)
+		this.state.controls = this.getTransition('controls', event)
 		this.events.previous = this.events.current
 		this.events.current = event
 
@@ -215,7 +217,7 @@ class SketchStore {
 	}
 
 	public updateFilters(
-		event: SketchEvent | CanvasEvent | PlayerEvent | GeometryEvent,
+		event: SketchEvent | CanvasEvent | PlayerEvent | ControlsEvent,
 	): void {
 		// TODO: implement
 		console.log(event)

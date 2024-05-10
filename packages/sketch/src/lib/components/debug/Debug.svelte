@@ -84,7 +84,7 @@
 				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
 					<td class="variant:outline" colspan="2">
-						{sketchStore.getState('geometry')}
+						{sketchStore.getState('controls')}
 					</td>
 				{/if}
 			</tr>
@@ -101,7 +101,7 @@
 				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
 					<td class="variant:outline" colspan="2">
-						{sketchStore.getNextActions('geometry')}
+						{sketchStore.getNextActions('controls')}
 					</td>
 				{/if}
 			</tr>
@@ -120,7 +120,7 @@
 				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
 					<td class="variant:outline" colspan="2">
-						{sketchStore.getErrors('geometry')}
+						{sketchStore.getErrors('controls')}
 					</td>
 				{/if}
 			</tr>

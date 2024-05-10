@@ -12,7 +12,7 @@
 		PlayerEvent,
 		CanvasState,
 		SketchEvent,
-		GeometryEvent,
+		ControlsEvent,
 	} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
@@ -216,7 +216,7 @@
 	function updateGeometry(payload: {value: GeometryProps}) {
 		context = payload.value
 		scene.update(context, {filters})
-		sketchStore.update(GeometryEvent.update)
+		sketchStore.update(ControlsEvent.update)
 	}
 
 	function updateFieldOfView(event: CustomEvent) {

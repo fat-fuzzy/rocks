@@ -28,17 +28,17 @@ export enum PlayerError {
 	stop = 'stop',
 }
 
-export enum GeometryState {
-	untouched = 'untouched',
+export enum ControlsState {
+	pristine = 'pristine',
 	updated = 'updated',
 }
 
-export enum GeometryEvent {
+export enum ControlsEvent {
 	update = 'update',
 	pause = 'pause',
 }
 
-export enum GeometryAction {
+export enum ControlsAction {
 	update = 'update',
 }
 
