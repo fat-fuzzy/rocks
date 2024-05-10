@@ -73,7 +73,9 @@ let imagesPath = `${host}/${imageAssetsPath}/`
 let gl
 let program
 let vao
-let programInfo = {}
+let programInfo = {
+	errors: [],
+}
 let textures = []
 let buffers
 let vertexShader
@@ -84,6 +86,7 @@ let images = []
 let level = 1
 let channelOrder
 let blur = 0
+let error
 
 function clear() {
 	if (!gl) {
@@ -170,6 +173,12 @@ function main() {
 		updateBuffers(gl, programInfo, buffers)
 		setPositionAttribute(gl, buffers, programInfo)
 		setTextureAttribute(gl, buffers, programInfo)
+		error = gl.getError()
+		if (error !== gl.NO_ERROR) {
+			programInfo.errors.push(error)
+		} else {
+			programInfo.errors = []
+		}
 	})
 	gl.bindVertexArray(null)
 }
@@ -178,10 +187,15 @@ function draw(t) {
 	clear()
 	utils.resize(gl.canvas)
 	drawScene(gl, programInfo, {textures, channels: channels[channelOrder], blur})
-	console.log(`Draw successful`, gl.getError() === gl.NO_ERROR)
+	error = gl.getError()
+	if (error !== gl.NO_ERROR) {
+		programInfo.errors.push(error)
+	} else {
+		programInfo.errors = []
+	}
 }
 
-function loadTexture(image, i) {
+function loadTexture(image) {
 	const texture = gl.createTexture()
 
 	gl.bindTexture(gl.TEXTURE_2D, texture)
@@ -212,8 +226,7 @@ function loadTexture(image, i) {
 //
 function loadTextures(images) {
 	for (let i = 0; i < images.length; i++) {
-		let image = images[i]
-		textures[i] = loadTexture(image, i)
+		textures[i] = loadTexture(images[i])
 	}
 	return {
 		images,
