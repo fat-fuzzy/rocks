@@ -13,10 +13,10 @@
 </script>
 
 <aside class="debug l:stack:sm maki:block size:xs overflow:x card:dotted">
-	<table>
+	<table class="text:center">
 		<thead class="bg:primary:300">
 			<tr>
-				<th class="bg:light"></th>
+				<th class="bg:accent:300">Debug</th>
 				<th colspan="2">Sketch</th>
 				<th colspan="2">Canvas</th>
 				<th colspan="2">Player</th>
@@ -26,7 +26,7 @@
 			</tr>
 		</thead>
 		<tbody class="text:center">
-			<tr class="bg:accent:000 text:center">
+			<tr class="bg:accent:000">
 				<td class="bg:lighttext:center l:stack:2xs card:sm">
 					<span>Event</span>
 					<div>
@@ -60,7 +60,7 @@
 				</td>
 			</tr>
 			<tr class="bg:primary:000">
-				<td class="bg:primary:000 text:end variant:outline">State</td>
+				<td class="bg:primary:000 variant:outline">State</td>
 				<td class="variant:outline" colspan="2">{sketchState.sketch}</td>
 				<td class="variant:outline" colspan="2">{sketchState.canvas}</td>
 				<td class="variant:outline" colspan="2">{sketchState.player}</td>
@@ -68,8 +68,8 @@
 					<td class="variant:outline" colspan="2">{sketchState.geometry}</td>
 				{/if}
 			</tr>
-			<tr class="bg:primary:100 text:center">
-				<td class="bg:primary:100 text:end variant:outline">Actions</td>
+			<tr class="bg:primary:100">
+				<td class="bg:primary:100 variant:outline">Actions</td>
 				<td class="variant:outline" colspan="2">
 					{sketchActions['sketch'][sketchState.sketch]}
 				</td>
@@ -87,13 +87,21 @@
 			</tr>
 		</tbody>
 		<tfoot>
-			<tr class="bg:danger:000 text:center">
-				<td class="bg:danger:100 text:end variant:outline">Errors</td>
-				<td class="variant:outline" colspan="2">TODO</td>
-				<td class="variant:outline" colspan="2">TODO</td>
-				<td class="variant:outline" colspan="2">TODO</td>
+			<tr class="bg:danger:000">
+				<td class="bg:danger:100 variant:outline">Feedback</td>
+				<td class="variant:outline" colspan="2">
+					{sketchState.errors['sketch']}
+				</td>
+				<td class="variant:outline" colspan="2">
+					{sketchState.errors['canvas']}
+				</td>
+				<td class="variant:outline" colspan="2">
+					{sketchState.errors['player']}
+				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
-					<td class="variant:outline" colspan="2">TODO</td>
+					<td class="variant:outline" colspan="2">
+						{sketchState.errors['geometry']}
+					</td>
 				{/if}
 			</tr>
 		</tfoot>
