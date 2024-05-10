@@ -77,6 +77,8 @@ export enum SketchEvent {
 	load = 'load',
 	cancel = 'cancel',
 	exit = 'exit',
+	loadOk = 'loadOk',
+	loadNok = 'loadNok',
 }
 
 export enum SketchAction {

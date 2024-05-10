@@ -7,7 +7,13 @@
 		PlayerPayload,
 		GeometryProps,
 	} from '$types'
-	import {PlayerState, PlayerEvent, CanvasState, GeometryEvent} from '$types'
+	import {
+		PlayerState,
+		PlayerEvent,
+		CanvasState,
+		SketchEvent,
+		GeometryEvent,
+	} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
 
@@ -136,6 +142,7 @@
 	)
 
 	function init() {
+		sketchStore.update(SketchEvent.load)
 		filters = DEFAULT_FILTERS
 		if (canvas) {
 			if (scene.init) {
@@ -143,6 +150,7 @@
 			} else {
 				programInfo = scene.main(canvas, context)
 			}
+			sketchStore.update(SketchEvent.loadOk)
 			try {
 				scene.main(canvas, {filters})
 				if (sketchStore.getPlayerState() === PlayerState.stopped || !context) {
@@ -150,6 +158,7 @@
 				}
 				scene.update(context, {filters})
 			} catch (e: any) {
+				sketchStore.update(SketchEvent.loadNok)
 				feedback.push({status: 'error', message: e})
 			}
 		}
@@ -286,9 +295,7 @@
 	}
 
 	onMount(() => {
-		if (sketchStore.canvas === CanvasState.idle) {
-			init()
-		}
+		init()
 	})
 
 	onDestroy(() => {
@@ -355,6 +362,7 @@
 				size="xs"
 				{variant}
 				disabled={Boolean(feedback)}
+				{sketchStore}
 			/>
 			{#if isInteractive}
 				{#if meta?.type === 'matrix-2d'}

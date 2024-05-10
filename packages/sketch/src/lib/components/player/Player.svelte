@@ -19,6 +19,7 @@
 		pause: (payload: {event: string}) => void
 		clear: (payload: {event: string}) => void
 		stop: (payload: {event: string}) => void
+		sketchStore: any
 	}
 
 	let {
@@ -30,6 +31,7 @@
 		pause,
 		clear,
 		stop,
+		sketchStore,
 	}: Props = $props()
 
 	let events: {
@@ -40,10 +42,10 @@
 		current: undefined,
 	})
 
-	let playerStore = new PlayerStore({onclick: updatePlayer})
-	let playButtonActor = $state(
-		switchActor.actor(id, playerStore.getPlayState(), 'play'),
+	let playerStore = $state(
+		new PlayerStore({onclick: updatePlayer, sketchStore}),
 	)
+	let playButtonActor = $derived.by(playerStore.getPlayLabel)
 	let disablePlay = $derived.by(playerStore.getPlayDisabled)
 	let disableStop = $derived.by(playerStore.getStopDisabled)
 	let disableClear = $derived.by(() => {
@@ -53,7 +55,7 @@
 	function updatePlayer(payload: TogglePayload) {
 		console.log('updatePlayer', payload)
 		const tmp = playerStore.state
-		const playerPayload = {event: payload.value}
+		const playerPayload = {event: payload.id}
 		switch (payload.value) {
 			case PlayerEvent.play:
 				play(playerPayload)
@@ -69,7 +71,7 @@
 				stop(playerPayload)
 				break
 		}
-		playerStore.update(payload.value)
+		playerStore.update(payload.id)
 		events.previous = events.current
 		events.current = payload.value
 	}
@@ -87,8 +89,10 @@
 		container="main"
 		disabled={disablePlay}
 		onclick={updatePlayer}
-		actor={playButtonActor}>{playerStore.getPlayLabel()}</Switch
+		actor={playButtonActor}
 	>
+		{playerStore.getPlayLabel() === 'active' ? 'Play' : 'Pause'}
+	</Switch>
 	<li class="l:switcher">
 		<Button
 			id="clear"

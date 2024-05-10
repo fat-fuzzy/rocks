@@ -11,9 +11,9 @@ import {
 	CanvasState,
 	CanvasAction,
 } from '$types'
-import type { CanvasEvent } from '../../types/index.js'
+import type {CanvasEvent} from '../../types/index.js'
 
-const SKETCH_STATE: {[key:string]: any} = {
+const SKETCH_STATE: {[key: string]: any} = {
 	sketch: SketchState.idle,
 	canvas: CanvasState.idle,
 	player: PlayerState.idle,
@@ -26,12 +26,12 @@ const SKETCH_STATE: {[key:string]: any} = {
 	},
 }
 
-const SKETCH_EVENTS: {[key:string]: string} = {
+const SKETCH_EVENTS: {[key: string]: string} = {
 	previous: '',
 	current: '',
 }
 
-const SKETCH_ACTIONS: {[key:string]: any} = {
+const SKETCH_ACTIONS: {[key: string]: any} = {
 	sketch: {
 		[SketchState.idle]: [SketchAction.load],
 		[SketchState.active]: [SketchAction.exit],
@@ -70,7 +70,7 @@ const SKETCH_ACTIONS: {[key:string]: any} = {
 	},
 }
 
-export const SKETCH_TRANSITIONS = {
+export const SKETCH_TRANSITIONS: {[key: string]: any} = {
 	sketch: {
 		[SketchState.idle]: {
 			[SketchEvent.load]: {
@@ -122,106 +122,104 @@ export const SKETCH_TRANSITIONS = {
 }
 
 class SketchStore {
-  state = $state(SKETCH_STATE)
-  events = $state(SKETCH_EVENTS)
-  actions = $state(SKETCH_ACTIONS)
-  transitions = $state(SKETCH_TRANSITIONS)
-
+	state = $state(SKETCH_STATE)
+	events = $state(SKETCH_EVENTS)
+	actions = $state(SKETCH_ACTIONS)
+	transitions = $state(SKETCH_TRANSITIONS)
 
 	constructor() {}
 
-  public getState(key:string): SketchState {
-    return this.state[key]
-  }
+	public getState(key: string): SketchState {
+		return this.state[key]
+	}
 
-  public getCanvasState(): CanvasState {
-    return this.state.canvas
-  }
+	public getCanvasState(): CanvasState {
+		return this.state.canvas
+	}
 
-  public getPlayerState(): PlayerState {
-    return this.state.player
-  }
+	public getPlayerState(): PlayerState {
+		return this.state.player
+	}
 
-  public getPlayButtonState(): PlayerState {
-    return   this.state === this.state.player? 'active' : 'inactive'
-  }
+	public getPlayButtonState(): PlayerState {
+		return this.state === this.state.player ? 'active' : 'inactive'
+	}
 
-  public getGeometryState(): GeometryState {
-    return this.state.geometry
-  }
+	public getGeometryState(): GeometryState {
+		return this.state.geometry
+	}
 
-  public getNextActions(state: string): SketchAction {
-    return this.actions[state][this.state[state]]
-  }
+	public getNextActions(state: string): SketchAction {
+		return this.actions[state][this.state[state]]
+	}
 
-  // public getSketchNextActions(): SketchAction {
-  //   return this.actions.sketch[this.state.sketch]
-  // }
+	public getErrors(key: string): string[] {
+		return this.state.errors[key]
+	}
 
-  // public getCanvasNextActions(): SketchAction {
-  //   return this.actions.canvas[this.state.canvas]
-  // }
+	public getEvent(key: string): string {
+		return this.events[key]
+	}
 
-  // public getPlayerNextActions(): SketchAction { 
-  //   return this.actions.player[this.state.player]
-  // }
+	public getPreviousEvent(): string {
+		return this.events['previous']
+	}
 
-  // public getGeometryNextActions(): SketchAction {
-  //   return this.actions.geometry[this.state.geometry]
-  // }
-
-  public getErrors(key: string): string[]{
-    return this.state.errors[key]
-  }
-
-  public getEvent(key: string):string {
-    return this.events[key]
-  }
-
-  public getPreviousEvent():string{
-    return this.events['previous']
-  }
-
-  public getSketchDisabled(): boolean {
-    return 	this.state.canvas === CanvasState.idle ||
-    this.state.canvas === CanvasState.paused
-  }
-
-  public getMenuDisabled(): boolean {
-    return this.state.canvas === CanvasState.idle ||
+	public getSketchDisabled(): boolean {
+		return (
+			this.state.canvas === CanvasState.idle ||
 			this.state.canvas === CanvasState.paused
-  }
+		)
+	}
 
-  public getIsInteractive(): boolean {
-    return this.state.canvas === CanvasState.playing ||
-    this.state.canvas === CanvasState.paused ||
-    this.state.canvas === CanvasState.ended
-  }
-  
-  public update(event : SketchEvent | CanvasEvent | PlayerEvent | GeometryEvent): void {
+	public getMenuDisabled(): boolean {
+		return (
+			this.state.canvas === CanvasState.idle ||
+			this.state.canvas === CanvasState.paused
+		)
+	}
 
-    this.state.sketch = this.transitions['sketch'][this.state.sketch][event]
-    this.state.player = this.transitions['player'][this.state.player][event]
-    this.state.canvas = this.transitions['canvas'][this.state.canvas][event]
-    this.state.geometry = this.transitions['geometry'][this.state.geometry][event]
+	public getIsInteractive(): boolean {
+		return (
+			this.state.canvas === CanvasState.playing ||
+			this.state.canvas === CanvasState.paused ||
+			this.state.canvas === CanvasState.ended
+		)
+	}
+
+	public getTransition(key: string, event: string): string {
+		const currentState = this.state[key]
+		const transition = this.transitions[key][currentState]
+		console.log('getTransition  key', key)
+		console.log('getTransition  event', event)
+		console.log('getTransition   this.state[key]', this.state[key])
+		console.log('getTransition   transition', transition)
+		if (transition && transition[event]) {
+			this.state[key] = transition[event].state
+		}
+		return this.state[key]
+	}
+
+	public update(
+		event: SketchEvent | CanvasEvent | PlayerEvent | GeometryEvent,
+	): void {
+		console.log('update  event', event)
+		this.state.sketch = this.getTransition('sketch', event)
+		this.state.player = this.getTransition('player', event)
+		this.state.canvas = this.getTransition('canvas', event)
+		this.state.geometry = this.getTransition('geometry', event)
 		this.events.previous = this.events.current
 		this.events.current = event
 
-    return this.state.sketch
-  }
-  
-  public updateFilters(event : SketchEvent | CanvasEvent | PlayerEvent | GeometryEvent): void {
+		return this.state.sketch
+	}
 
-    this.state.sketch = this.transitions['sketch'][this.state.sketch][event]
-    this.state.player = this.transitions['player'][this.state.player][event]
-    this.state.canvas = this.transitions['canvas'][this.state.canvas][event]
-    this.state.geometry = this.transitions['geometry'][this.state.geometry][event]
-		this.events.previous = this.events.current
-		this.events.current = event
-
-    return this.state.sketch
-  }
+	public updateFilters(
+		event: SketchEvent | CanvasEvent | PlayerEvent | GeometryEvent,
+	): void {
+		// TODO: implement
+		console.log(event)
+	}
 }
-
 
 export default SketchStore
