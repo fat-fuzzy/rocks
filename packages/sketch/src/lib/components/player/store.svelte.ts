@@ -4,29 +4,7 @@ import {PlayerEvent, PlayerState} from '$types'
 class PlayerStore {
 	sketchStore: any
 	state = $state(PlayerState.idle)
-	playState = $derived(
-		this.state === PlayerState.playing ? 'active' : 'inactive',
-	)
-	playSwitch: {[state: string]: PlayerState} = $state({
-		active: {
-			value: PlayerEvent.pause,
-			text: 'Pause',
-			asset: 'emoji:pause',
-			variant: 'outline',
-			onclick: function (payload: TogglePayload) {
-				return payload
-			},
-		},
-		inactive: {
-			value: PlayerEvent.play,
-			text: 'Play',
-			asset: 'emoji:play',
-			variant: 'fill',
-			onclick: function (payload: TogglePayload) {
-				return payload
-			},
-		},
-	})
+	playSwitch: {[state: string]: PlayerState} = $state({})
 
 	constructor({
 		initial,
@@ -38,8 +16,22 @@ class PlayerStore {
 		onclick: (payload: TogglePayload) => void
 	}) {
 		this.state = initial || PlayerState.idle
-		this.playSwitch.active.onclick = onclick
-		this.playSwitch.inactive.onclick = onclick
+		this.playSwitch = {
+			active: {
+				value: PlayerEvent.pause,
+				text: 'Pause',
+				asset: 'emoji:pause',
+				variant: 'outline',
+				onclick,
+			},
+			inactive: {
+				value: PlayerEvent.play,
+				text: 'Play',
+				asset: 'emoji:play',
+				variant: 'fill',
+				onclick,
+			},
+		}
 		this.sketchStore = sketchStore
 	}
 
@@ -52,11 +44,14 @@ class PlayerStore {
 	}
 
 	public getPlayState(): PlayerState {
-		return this.playState
+		return this.state === PlayerState.playing ? 'active' : 'inactive'
 	}
 
 	public getPlayLabel(): PlayerState {
-		return this.playSwitch[this.playState].text
+		const playState = this.getPlayState()
+		if (this.playSwitch && this.playSwitch[playState]) {
+			return this.playSwitch[playState].text
+		}
 	}
 
 	public getPlayDisabled(): PlayerState {

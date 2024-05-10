@@ -45,7 +45,9 @@
 	let playerStore = $state(
 		new PlayerStore({onclick: updatePlayer, sketchStore}),
 	)
-	let playButtonActor = $derived.by(playerStore.getPlayLabel)
+	let playButtonActor = $state(
+		switchActor.actor(id, playerStore.getPlayState(), 'play'),
+	)
 	let disablePlay = $derived.by(playerStore.getPlayDisabled)
 	let disableStop = $derived.by(playerStore.getStopDisabled)
 	let disableClear = $derived.by(() => {
@@ -85,13 +87,13 @@
 		{color}
 		{size}
 		shape="square"
-		initial={playerStore.playState}
+		initial={playerStore.getPlayState()}
 		container="main"
 		disabled={disablePlay}
 		onclick={updatePlayer}
 		actor={playButtonActor}
 	>
-		{playerStore.getPlayLabel() === 'active' ? 'Play' : 'Pause'}
+		{playerStore.getPlayLabel()}
 	</Switch>
 	<li class="l:switcher">
 		<Button
