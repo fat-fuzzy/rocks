@@ -1,10 +1,10 @@
 import type {TogglePayload} from '$types'
 import {PlayerEvent, PlayerState} from '$types'
-import {sketchTransitions} from '../sketch/store.svelte'
+import {SKETCH_TRANSITIONS} from '../sketch/store.svelte'
 
 class PlayerStore {
 	state = $state(PlayerState.idle)
-	playState = $state(this.state === PlayerState.playing ? 'active' : 'inactive')
+	playState = $derived(this.state === PlayerState.playing ? 'active' : 'inactive')
 	playSwitch: {[state: string]: PlayerState} = $state({
 			active: {
 				value: PlayerEvent.pause,
@@ -43,7 +43,7 @@ class PlayerStore {
 	}
 
 	public update(event: PlayerEvent): void {
-		this.state = sketchTransitions['player'][this.state][event]
+		this.state = SKETCH_TRANSITIONS['player'][this.state][event]
 	}
 
 	public getPlayState(): PlayerState {

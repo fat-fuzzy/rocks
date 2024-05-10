@@ -41,7 +41,9 @@
 	})
 
 	let playerStore = new PlayerStore({onclick: updatePlayer})
-	let playButtonActor = $state(switchActor.actor(id, playerStore.state, 'play'))
+	let playButtonActor = $state(
+		switchActor.actor(id, playerStore.getPlayState(), 'play'),
+	)
 	let disablePlay = $derived.by(playerStore.getPlayDisabled)
 	let disableStop = $derived.by(playerStore.getStopDisabled)
 	let disableClear = $derived.by(() => {
@@ -67,7 +69,7 @@
 				stop(playerPayload)
 				break
 		}
-		playerStore.update({event: payload.value})
+		playerStore.update(payload.value)
 		events.previous = events.current
 		events.current = payload.value
 	}
