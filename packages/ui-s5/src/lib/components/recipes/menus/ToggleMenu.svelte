@@ -14,7 +14,7 @@
 		disabled?: boolean | undefined
 		formaction?: string
 		items: TogglePayload[],
-		onupdate?: (payload: TogglePayload) => void
+		onupdate?: (payload: TogglePayload) => void,
 	}
 
 	let {

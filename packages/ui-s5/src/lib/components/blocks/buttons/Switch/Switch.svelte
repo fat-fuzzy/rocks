@@ -1,7 +1,7 @@
 <script lang="ts">
 
 	import { onMount } from 'svelte'
-	import type {SwitchProps} from './button.types.js'
+	import type {SwitchProps} from '../button.types.js'
 
 	let {
 		id = 'switch',

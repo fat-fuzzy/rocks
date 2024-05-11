@@ -7,9 +7,10 @@
 	import constants from '$lib/types/constants'
 
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
-	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
+	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 
-	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE, APP_SETTINGS} = constants
+	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE, APP_SETTINGS} =
+		constants
 	const method = 'POST'
 	export let breakpoint = 'xs'
 	export let background: string | undefined = undefined
@@ -57,7 +58,10 @@
 		switch (event.detail.id) {
 			case 'contrast':
 				updated = event.detail.pressed ? 'contrast' : 'blend'
-				settings.app.set({brightness: appSettings.brightness, contrast: updated})
+				settings.app.set({
+					brightness: appSettings.brightness,
+					contrast: updated,
+				})
 				break
 			case 'brightness':
 				updated = event.detail.pressed ? 'night' : 'day'
@@ -89,11 +93,19 @@
 	})
 </script>
 
-<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutsideSettings}>
+<div
+	class={layoutClasses}
+	use:clickOutside
+	on:clickOutside={handleClickOutsideSettings}
+>
 	<form
 		name="settings-reveal"
 		{method}
-		action={action ? (actionPath ? `${actionPath}?/${action}` : `/?/${action}`) : undefined}
+		action={action
+			? actionPath
+				? `${actionPath}?/${action}`
+				: `/?/${action}`
+			: undefined}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {
@@ -114,7 +126,11 @@
 			value={settingsReveal[id]}
 			states={{
 				active: {text: 'settings', value: 'show', asset: 'emoji:settings'},
-				inactive: {text: 'settings', value: 'minimize', asset: 'emoji:settings'},
+				inactive: {
+					text: 'settings',
+					value: 'minimize',
+					asset: 'emoji:settings',
+				},
 			}}
 			on:click={handleToggle}
 		>
@@ -152,7 +168,9 @@
 		</form>
 		<menu class="menu:settings end">
 			{#each items.links as { id, title, url, shape, size, asset }}
-				{@const assetValue = SVG_ASSETS[brightness] ? SVG_ASSETS[brightness][id] : ''}
+				{@const assetValue = SVG_ASSETS[brightness]
+					? SVG_ASSETS[brightness][id]
+					: ''}
 				<li class="l:frame:round card:sm">
 					<a
 						class={`${variant} font:${size} shape:${shape} ${color}`}

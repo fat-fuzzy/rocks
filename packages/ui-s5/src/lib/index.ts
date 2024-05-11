@@ -16,7 +16,7 @@ import Typography from '$lib/components/tokens/Typography.svelte'
  */
 import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Expand from '$lib/components/blocks/buttons/Expand.svelte'
-import Switch from '$lib/components/blocks/buttons/Switch.svelte'
+import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
@@ -148,4 +148,16 @@ const headless = {
 	Head,
 }
 
-export {headless, tokens, blocks, layouts, recipes, utils, forms, stores, constants, types, actors}
+export {
+	headless,
+	tokens,
+	blocks,
+	layouts,
+	recipes,
+	utils,
+	forms,
+	stores,
+	constants,
+	types,
+	actors,
+}
