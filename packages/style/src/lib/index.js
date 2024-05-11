@@ -73,7 +73,7 @@ import './css/blocks/switch.css' /* Use for Switch button styles and colors (use
 import './css/blocks/expand.css' /* Use for Expand button styles and colors (uses aria-pressed attribute, <button> element) */
 import './css/blocks/form.css' /* Use for form and form inputs */
 import './css/blocks/fieldset.css' /* Use for fieldset element: TODO: maybe move to form */
-import './css/blocks/tables.css' /* Use for tables = tabular data: https://www.w3.org/TR/tabular-data-model/ */
+import './css/blocks/table.css' /* Use for tables = tabular data: https://www.w3.org/TR/tabular-data-model/ */
 import './css/blocks/tags.css' /* Use for tables = tabular data: https://www.w3.org/TR/tabular-data-model/ */
 import './css/blocks/feedback.css' /* Use for feedback elements (success, warnings, errors, etc) */
 import './css/blocks/details.css' /* Use for detail + summary element */

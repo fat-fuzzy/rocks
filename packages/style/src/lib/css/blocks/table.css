@@ -12,7 +12,8 @@ th {
 }
 
 td {
-	padding: calc(var(--ui-size) / var(--ratio)) calc(var(--ui-size-lg) / var(--ratio));
+	padding: calc(var(--ui-size) / var(--ratio))
+		calc(var(--ui-size-lg) / var(--ratio));
 	border: 1px solid var(--current-bg-contrast);
 }
 

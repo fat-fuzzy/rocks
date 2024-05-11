@@ -56,8 +56,21 @@ a:hover {
 	text-decoration: underline;
 }
 
-:focus {
-	outline: var(--outline-width) dotted var(--current-color);
+:where(
+		:is(
+				button,
+				input,
+				textarea,
+				select,
+				details,
+				audio,
+				video:has[controls],
+				object[form],
+				[contenteditable],
+				[tabindex]
+			)
+	):focus {
+	outline: 1px solid var(--shade);
 	outline-offset: var(--outline-offset);
 }
 
