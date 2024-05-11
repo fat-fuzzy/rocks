@@ -19,8 +19,8 @@
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
-	import FieldOfView from '$lib/components/scene/FieldOfView.svelte'
-	import Camera from '$lib/components/scene/Camera.svelte'
+	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
+	import Camera from '$lib/components/camera/Camera.svelte'
 	import Player from '$lib/components/player/Player.svelte'
 	import Debug from '$lib/components/debug/Debug.svelte'
 	import {recipes} from '@fat-fuzzy/ui-s5'
@@ -63,7 +63,7 @@
 		meta,
 	}: Props = $props()
 
-	let sketchStore = new SketchStore()
+	let sketchContext = new SketchStore()
 	let debug = true // TODO : fix this
 	const DEFAULT_FILTERS = {
 		channels: 'rgba',
@@ -76,10 +76,10 @@
 	let canvas: HTMLCanvasElement | null = $state(null)
 	let programInfo = $state({context: {}})
 	let context: SceneContext = $state(programInfo?.context)
-	let width: number | undefined = $state(undefined)
-	let height: number | undefined = $state(undefined)
-	let fieldOfView = $state(60)
-	let cameraAngle = $state(60)
+	let width: number | undefined = undefined
+	let height: number | undefined = undefined
+	let fieldOfView = 60
+	let cameraAngle = 60
 
 	let frame: number
 
@@ -117,18 +117,20 @@
 		return degrees * (Math.PI / 180)
 	}
 
-	let disabled = $derived(sketchStore.getSketchDisabled() ? true : undefined)
+	let disabled = $derived(sketchContext.getSketchDisabled() ? true : undefined)
 
-	let menuDisabled = $derived(sketchStore.getMenuDisabled() ? true : undefined)
+	let menuDisabled = $derived(
+		sketchContext.getMenuDisabled() ? true : undefined,
+	)
 
 	let isInteractive = $derived(
-		context !== undefined && sketchStore.getIsInteractive(),
+		context !== undefined && sketchContext.getIsInteractive(),
 	)
 
 	let currentAsset = $derived(
-		sketchStore.getCanvasState() === CanvasState.idle && asset
+		sketchContext.getCanvasState() === CanvasState.idle && asset
 			? asset
-			: `emoji:${sketchStore.canvas}`,
+			: `emoji:${sketchContext.canvas}`,
 	)
 
 	let backgroundClass = background
@@ -137,12 +139,12 @@
 
 	let frameClasses = $derived(
 		canvas
-			? `canvas ${backgroundClass} ${layer} state:${sketchStore.getCanvasState()} ${currentAsset}`
+			? `canvas ${backgroundClass} ${layer} state:${sketchContext.getCanvasState()} ${currentAsset}`
 			: `canvas ${backgroundClass} ${layer} card:xl`,
 	)
 
 	function init() {
-		sketchStore.update(SketchEvent.load)
+		sketchContext.update(SketchEvent.load)
 		filters = DEFAULT_FILTERS
 		if (canvas) {
 			if (scene.init) {
@@ -150,15 +152,18 @@
 			} else {
 				programInfo = scene.main(canvas, context)
 			}
-			sketchStore.update(SketchEvent.loadOk)
 			try {
 				scene.main(canvas, {filters})
-				if (sketchStore.getPlayerState() === PlayerState.stopped || !context) {
+				if (
+					sketchContext.getPlayerState() === PlayerState.stopped ||
+					!context
+				) {
 					context = programInfo.context
 				}
 				scene.update(context, {filters})
+				sketchContext.update(SketchEvent.loadOk)
 			} catch (e: any) {
-				sketchStore.update(SketchEvent.loadNok)
+				sketchContext.update(SketchEvent.loadNok)
 				feedback.push({status: 'error', message: e})
 			}
 		}
@@ -179,12 +184,12 @@
 				scene.draw(t)
 			})
 		}
-		sketchStore.update(PlayerEvent.play)
+		sketchContext.update(PlayerEvent.play)
 	}
 
 	function clear() {
-		const prevCanvasState = sketchStore.getCanvasState()
-		sketchStore.update(PlayerEvent.clear)
+		const prevCanvasState = sketchContext.getCanvasState()
+		sketchContext.update(PlayerEvent.clear)
 		stop()
 		init()
 		play()
@@ -196,27 +201,26 @@
 	function stop() {
 		cancelAnimationFrame(frame)
 		if (scene.stop) {
+			sketchContext.update(PlayerEvent.stop)
 			scene.stop()
 		} else {
 			// TODO: use scene.stop() instead of scene.clear()
 			scene.clear()
 		}
-		sketchStore.update(PlayerEvent.stop)
-		if (sketchStore.getCanvasState() === CanvasState.idle) {
+		if (sketchContext.getCanvasState() === CanvasState.idle) {
 			init()
 		}
 	}
 
 	function pause() {
-		sketchStore.canvas = CanvasState.paused
 		cancelAnimationFrame(frame)
-		sketchStore.update(PlayerEvent.pause)
+		sketchContext.update(PlayerEvent.pause)
 	}
 
 	function updateGeometry(payload: {value: GeometryProps}) {
 		context = payload.value
 		scene.update(context, {filters})
-		sketchStore.update(ControlsEvent.update)
+		sketchContext.update(ControlsEvent.update)
 	}
 
 	function updateFieldOfView(event: CustomEvent) {
@@ -242,7 +246,6 @@
 				stop()
 				break
 		}
-		sketchStore.update(payload.event)
 	}
 
 	function updateChannel(selected: {name: string; pressed: boolean}) {
@@ -291,7 +294,7 @@
 	}
 
 	function handleMouseEvent(event: MouseEvent) {
-		scene.update(context, {...context, filters}, event)
+		scene.update(context, {...context, filters})
 	}
 
 	onMount(() => {
@@ -357,12 +360,11 @@
 				pause={updateCanvas}
 				clear={updateCanvas}
 				stop={updateCanvas}
-				initial={sketchStore.getPlayButtonState()}
+				initial={sketchContext.getPlayButtonState()}
 				{color}
 				size="xs"
 				{variant}
 				disabled={Boolean(feedback)}
-				{sketchStore}
 			/>
 			{#if isInteractive}
 				{#if meta?.type === 'matrix-2d'}
@@ -463,7 +465,7 @@
 		{/if}
 	</aside>
 	{#if debug}
-		<Debug {meta} {sketchStore} />
+		<Debug {meta} context={sketchContext} />
 	{/if}
 </div>
 

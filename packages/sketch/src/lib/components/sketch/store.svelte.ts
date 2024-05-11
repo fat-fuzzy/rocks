@@ -24,12 +24,12 @@ const SKETCH_STATE: {[key: string]: any} = {
 		player: [],
 		controls: [],
 	},
+	events: {
+		previous: '',
+		current: '',
+	}
 }
 
-const SKETCH_EVENTS: {[key: string]: string} = {
-	previous: '',
-	current: '',
-}
 
 const SKETCH_ACTIONS: {[key: string]: any} = {
 	sketch: {
@@ -125,7 +125,6 @@ export const SKETCH_TRANSITIONS: {[key: string]: any} = {
 
 class SketchStore {
 	state = $state(SKETCH_STATE)
-	events = $state(SKETCH_EVENTS)
 	actions = $state(SKETCH_ACTIONS)
 	transitions = $state(SKETCH_TRANSITIONS)
 
@@ -160,11 +159,11 @@ class SketchStore {
 	}
 
 	public getEvent(key: string): string {
-		return this.events[key]
+		return this.state.events[key]
 	}
 
 	public getPreviousEvent(): string {
-		return this.events['previous']
+		return this.state.events['previous']
 	}
 
 	public getSketchDisabled(): boolean {
@@ -192,10 +191,6 @@ class SketchStore {
 	public getTransition(key: string, event: string): string {
 		const currentState = this.state[key]
 		const transition = this.transitions[key][currentState]
-		console.log('getTransition  key', key)
-		console.log('getTransition  event', event)
-		console.log('getTransition   this.state[key]', this.state[key])
-		console.log('getTransition   transition', transition)
 		if (transition && transition[event]) {
 			this.state[key] = transition[event].state
 		}
@@ -205,13 +200,13 @@ class SketchStore {
 	public update(
 		event: SketchEvent | CanvasEvent | PlayerEvent | ControlsEvent,
 	): void {
-		console.log('update  event', event)
 		this.state.sketch = this.getTransition('sketch', event)
 		this.state.player = this.getTransition('player', event)
 		this.state.canvas = this.getTransition('canvas', event)
 		this.state.controls = this.getTransition('controls', event)
-		this.events.previous = this.events.current
-		this.events.current = event
+		const previous = this.state.events.current
+		this.state.events.current = event
+		this.state.events.previous = previous
 
 		return this.state.sketch
 	}

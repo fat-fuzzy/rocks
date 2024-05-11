@@ -3,16 +3,16 @@
 
 	type Props = {
 		meta: SceneMeta | undefined
-		sketchStore: any
+		context: any
 	}
-	let {meta, sketchStore}: Props = $props()
+	let {meta, context}: Props = $props()
 </script>
 
 <aside class="debug l:stack:sm maki:block size:xs overflow:x card:dotted">
 	<table class="text:center">
 		<thead class="bg:primary:300">
 			<tr>
-				<th class="bg:accent:300">Debug</th>
+				<th class="bg:accent:300" scope="col">Debug</th>
 				<th colspan="2">Sketch</th>
 				<th colspan="2">Canvas</th>
 				<th colspan="2">Player</th>
@@ -25,102 +25,122 @@
 			<tr class="bg:accent:000">
 				<td class="bg:lighttext:center l:stack:2xs card:sm">
 					<span>Event</span>
-					<div>
+					<div class="l:flex nowrap">
 						<span class="card:2xs bg:accent:100">Previous</span>
 						<span class="card:2xs bg:primary:100">Current</span>
 					</div>
 				</td>
-				<td class="variant:outline card:sm">
-					<span class="card:2xs bg:accent:100"
-						>{sketchStore.getEvent('previous')}</span
-					>
+				<td class="variant:outline">
+					<span class="card:2xs bg:accent:100">
+						{context.getEvent('previous')}
+					</span>
 				</td>
-				<td class="variant:outline card:sm">
-					<span class="card:2xs bg:primary:100"
-						>{sketchStore.getEvent('current')}</span
-					>
+				<td class="variant:outline">
+					<span class="card:2xs bg:primary:100">
+						{context.getEvent('current')}
+					</span>
 				</td>
-				<td class="variant:outline card:sm">
-					<span class="card:2xs bg:accent:100"
-						>{sketchStore.getEvent('previous')}</span
-					>
+				<td class="variant:outline">
+					<span class="card:2xs bg:accent:100">
+						{context.getEvent('previous')}
+					</span>
 				</td>
-				<td class="variant:outline card:sm">
-					<span class="card:2xs bg:primary:100"
-						>{sketchStore.getEvent('current')}</span
-					>
+				<td class="variant:outline">
+					<span class="card:2xs bg:primary:100">
+						{context.getEvent('current')}
+					</span>
 				</td>
-				<td class="variant:outline card:sm">
-					<span class="card:2xs bg:accent:100"
-						>{sketchStore.getEvent('previous')}</span
-					>
+				<td class="variant:outline">
+					<span class="card:2xs bg:accent:100">
+						{context.getEvent('previous')}
+					</span>
 				</td>
-				<td class="variant:outline card:sm">
-					<span class="card:2xs bg:primary:100"
-						>{sketchStore.getEvent('current')}</span
-					>
+				<td class="variant:outline">
+					<span class="card:2xs bg:primary:100">
+						{context.getEvent('current')}
+					</span>
 				</td>
-				<td class="variant:outline card:sm">
-					<span class="card:2xs bg:accent:100"
-						>{sketchStore.getEvent('previous')}</span
-					>
+				<td class="variant:outline">
+					<span class="card:2xs bg:accent:100">
+						{context.getEvent('previous')}
+					</span>
 				</td>
-				<td class="variant:outline card:sm">
-					<span class="card:2xs bg:primary:100"
-						>{sketchStore.getEvent('current')}</span
-					>
+				<td class="variant:outline">
+					<span class="card:2xs bg:primary:100">
+						{context.getEvent('current')}
+					</span>
 				</td>
 			</tr>
 			<tr class="bg:primary:000">
 				<td class="bg:primary:000 variant:outline">State</td>
 				<td class="variant:outline" colspan="2">
-					{sketchStore.getState('sketch')}
+					{context.getState('sketch')}
 				</td>
 				<td class="variant:outline" colspan="2">
-					{sketchStore.getState('canvas')}
+					{context.getState('canvas')}
 				</td>
 				<td class="variant:outline" colspan="2">
-					{sketchStore.getState('player')}
+					{context.getState('player')}
 				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
 					<td class="variant:outline" colspan="2">
-						{sketchStore.getState('controls')}
+						{context.getState('controls')}
 					</td>
 				{/if}
 			</tr>
 			<tr class="bg:primary:100">
 				<td class="bg:primary:100 variant:outline">Actions</td>
 				<td class="variant:outline" colspan="2">
-					{sketchStore.getNextActions('sketch')}
+					{context.getNextActions('sketch')}
 				</td>
 				<td class="variant:outline" colspan="2">
-					{sketchStore.getNextActions('canvas')}
+					{context.getNextActions('canvas')}
 				</td>
 				<td class="variant:outline" colspan="2">
-					{sketchStore.getNextActions('player')}
+					{context.getNextActions('player')}
 				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
 					<td class="variant:outline" colspan="2">
-						{sketchStore.getNextActions('controls')}
+						{context.getNextActions('controls')}
 					</td>
 				{/if}
 			</tr>
 		</tbody>
 		<tfoot>
-			<tr class="bg:danger:000">
-				<td class="bg:danger:100 variant:outline">Feedback</td>
-				<td class="variant:outline" colspan="2">
-					{sketchStore.getErrors('sketch')}
+			<tr class="bg:accent:000">
+				<td class="variant:outline">Feedback</td>
+				<td
+					class={`variant:outline ${
+						context.getErrors('sketch').length > 0 ? 'bg:danger:100' : ''
+					}`}
+					colspan="2"
+				>
+					{context.getErrors('sketch')}
 				</td>
-				<td class="variant:outline" colspan="2">
-					{sketchStore.getErrors('canvas')}
+				<td
+					class={`variant:outline ${
+						context.getErrors('sketch').length > 0 ? 'bg:danger:100' : ''
+					}`}
+					colspan="2"
+				>
+					{context.getErrors('canvas')}
 				</td>
-				<td class="variant:outline" colspan="2">
-					{sketchStore.getErrors('player')}
+				<td
+					class={`variant:outline ${
+						context.getErrors('sketch').length > 0 ? 'bg:danger:100' : ''
+					}`}
+					colspan="2"
+				>
+					{context.getErrors('player')}
 				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
-					<td class="variant:outline" colspan="2">
-						{sketchStore.getErrors('controls')}
+					<td
+						class={`variant:outline ${
+							context.getErrors('sketch').length > 0 ? 'bg:danger:100' : ''
+						}`}
+						colspan="2"
+					>
+						{context.getErrors('controls')}
 					</td>
 				{/if}
 			</tr>

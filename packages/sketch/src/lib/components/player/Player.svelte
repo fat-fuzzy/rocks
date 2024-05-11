@@ -1,9 +1,10 @@
 <script lang="ts">
 	import type {TogglePayload} from '$types'
-	import {PlayerState, PlayerEvent} from '$types'
+	import {PlayerEvent} from '$types'
 	import {blocks, actors} from '@fat-fuzzy/ui-s5'
 
-	import PlayerStore from './store.svelte'
+	import playerStore from './store.svelte'
+	import {PlayerState} from '../../types/index.js'
 
 	const {Button, Switch} = blocks
 	const {switchActor} = actors
@@ -19,7 +20,6 @@
 		pause: (payload: {event: string}) => void
 		clear: (payload: {event: string}) => void
 		stop: (payload: {event: string}) => void
-		sketchStore: any
 	}
 
 	let {
@@ -31,28 +31,21 @@
 		pause,
 		clear,
 		stop,
-		sketchStore,
 	}: Props = $props()
 
-	let events: {
-		previous?: string
-		current: string
-	} = $state({
-		previous: undefined,
-		current: undefined,
+	playerStore.init({
+		initial: PlayerState.idle,
+		onclick: updatePlayer,
 	})
-
-	let playerStore = $state(
-		new PlayerStore({onclick: updatePlayer, sketchStore}),
+	let playButtonActor = switchActor.actor(
+		id,
+		playerStore.getPlayState(),
+		'play',
 	)
-	let playButtonActor = $state(
-		switchActor.actor(id, playerStore.getPlayState(), 'play'),
-	)
+	let playButtonLabel = $derived.by(playerStore.getPlayLabel)
 	let disablePlay = $derived.by(playerStore.getPlayDisabled)
 	let disableStop = $derived.by(playerStore.getStopDisabled)
-	let disableClear = $derived.by(() => {
-		return events.current === PlayerEvent.clear || playerStore.getStopDisabled()
-	})
+	let disableClear = $derived.by(playerStore.getClearDisabled)
 
 	function updatePlayer(payload: TogglePayload) {
 		console.log('updatePlayer', payload)
@@ -74,8 +67,6 @@
 				break
 		}
 		playerStore.update(payload.id)
-		events.previous = events.current
-		events.current = payload.value
 	}
 </script>
 
@@ -93,7 +84,7 @@
 		onclick={updatePlayer}
 		actor={playButtonActor}
 	>
-		{playerStore.getPlayLabel()}
+		{playButtonLabel}
 	</Switch>
 	<li class="l:switcher">
 		<Button
