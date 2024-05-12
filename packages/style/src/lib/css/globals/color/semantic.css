@@ -4,14 +4,19 @@
  - hue
 */
 [class*=':info'] {
-	--hue: var(--color-semantic-info);
+	--hue-semantic: var(--color-semantic-info);
+	--hue: var(--hue-semantic);
 }
 [class*=':success'] {
-	--hue: var(--color-semantic-success);
+	--hue-semantic: var(--color-semantic-success);
+	--hue: var(--hue-semantic);
 }
 [class*=':warning'] {
-	--hue: var(--color-semantic-warning);
+	--hue-semantic: var(--color-semantic-warning);
+	--hue: var(--hue-semantic);
 }
-[class*=':danger'] {
-	--hue: var(--color-semantic-danger);
+[class*=':danger'],
+[class*=':error'] {
+	--hue-semantic: var(--color-semantic-danger);
+	--hue: var(--hue-semantic);
 }
