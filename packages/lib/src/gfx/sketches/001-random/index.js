@@ -15,36 +15,35 @@ import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader'
 
 let gl
-let programInfo
+let programInfo = {}
+let program
 let buffers
+let vertexShader
+let fragmentShader
 
-function clear() {
-	if (!gl) {
-		// TODO: handle error
-		return
-	}
-	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
-	// Set the clear color to darkish green.
-	gl.clearColor(0.0, 0.0, 0.0, 0.0)
-	// Clear the context with the newly set color. This is
-	// the function call that actually does the drawing.
-	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-}
-
-function main(canvas) {
+function init(canvas) {
 	// Initialize the GL context
-	gl = canvas.getContext('webgl')
+	gl = canvas.getContext('webgl2')
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
-		alert('Unable to initialize WebGL. Your browser or machine may not support it.')
-		return
+		throw Error(
+			'Unable to initialize WebGL. Your browser or machine may not support it.',
+		)
 	}
-	clear()
 
-	const vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
-	const fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
-	const program = setup.link(gl, vertexShader, fragmentShader)
+	return {context: geometries.getGeometryRandom(canvas.clientWidth, canvas.clientHeight)}
+}
+
+function main(canvas) {
+	clear()
+	return loadProgram(canvas)
+}
+
+function loadProgram(canvas) {
+	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
+	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
+	program = setup.link(gl, vertexShader, fragmentShader)
 
 	gl.useProgram(program)
 	utils.resize(canvas)
@@ -63,11 +62,11 @@ function main(canvas) {
 			// u_translation: gl.getUniformLocation(program, 'u_translation'),
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
-			context: geometries.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
 		},
+		context: geometries.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
 	}
 	buffers = initBuffers(gl, programInfo)
-	return {...programInfo, context: undefined} // TODO figure this out
+	return programInfo
 }
 
 function draw() {
@@ -79,6 +78,28 @@ function update(context) {
 	buffers = initBuffers(gl, programInfo)
 }
 
-export default {main, draw, clear, update}
+function clear() {
+	if (!gl) {
+		// TODO: handle error
+		return
+	}
+	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
+	// Set the clear color to darkish green.
+	gl.clearColor(0.0, 0.0, 0.0, 0.0)
+	// Clear the context with the newly set color. This is
+	// the function call that actually does the drawing.
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+}
 
-// TODO: add destroy
+function stop() {
+	clear()
+	if (buffers) {
+		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
+		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
+	}
+	if (vertexShader) gl.deleteShader(vertexShader)
+	if (fragmentShader) gl.deleteShader(fragmentShader)
+	if (programInfo.program) gl.deleteProgram(programInfo.program)
+}
+
+export default {init, main, draw, update, clear, stop}
