@@ -52,6 +52,7 @@ $film-camera: '🎥';
 $film-frames: '🎞️';
 $framed-picture: '🖼️';
 $cyclone: '🌀';
+$bento-box: '🍱';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -128,5 +129,6 @@ $emojis: (
 	camera-3d: #{$film-camera},
 	animation-3d: #{$film-frames},
 	texture: #{$framed-picture},
-	convolution: #{$cyclone}
+	convolution: #{$cyclone},
+	multiple-tex: #{$bento-box}
 );
