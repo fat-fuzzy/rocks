@@ -125,10 +125,12 @@
 	}
 
 	function reset() {
-		cancelAnimationFrame(frame)
-		scene.clear()
+		if (frame) {
+			cancelAnimationFrame(frame)
+		}
 		store.state.feedback['canvas'] = []
 		store.updateFilters(DEFAULT_FILTERS)
+		scene.clear()
 	}
 
 	function clear() {
@@ -138,6 +140,9 @@
 		play()
 		if (prevCanvasState === CanvasState.paused) {
 			pause()
+			store.update(prevCanvasState)
+		} else {
+			store.update(CanvasEvent.play)
 		}
 	}
 

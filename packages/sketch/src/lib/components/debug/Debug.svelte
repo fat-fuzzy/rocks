@@ -107,34 +107,58 @@
 		<tfoot>
 			<tr class="bg:accent:000">
 				<td class="variant:outline">Feedback</td>
-				<td
-					class={`variant:outline ${
-						context.getErrors('sketch').length > 0 ? 'bg:danger:100' : ''
-					}`}
-				>
-					{context.getErrors('sketch')}
+				<td class="variant:outline">
+					{#if context.getFeedback('sketch').length > 0}
+						{@const feedbackSketch = context.getFeedback('sketch')}
+						{#each feedbackSketch as feedback}
+							<div class={`feedback bg:${feedback.status} variant:bare`}>
+								<p class={`status emoji:${feedback.status}`}>
+									{feedback.status}
+								</p>
+								<p>{feedback.message}</p>
+							</div>
+						{/each}
+					{/if}
 				</td>
-				<td
-					class={`variant:outline ${
-						context.getErrors('sketch').length > 0 ? 'bg:danger:100' : ''
-					}`}
-				>
-					{context.getErrors('canvas')}
+				<td class="variant:outline">
+					{#if context.getFeedback('canvas').length > 0}
+						{@const feedbackSketch = context.getFeedback('canvas')}
+						{#each feedbackSketch as feedback}
+							<div class={`feedback bg:${feedback.status} variant:bare`}>
+								<p class={`status emoji:${feedback.status}`}>
+									{feedback.status}
+								</p>
+								<p>{feedback.message}</p>
+							</div>
+						{/each}
+					{/if}
 				</td>
-				<td
-					class={`variant:outline ${
-						context.getErrors('player').length > 0 ? 'bg:danger:100' : ''
-					}`}
-				>
-					{context.getErrors('player')}
+				<td class="variant:outline">
+					{#if context.getFeedback('player').length > 0}
+						{@const feedbackSketch = context.getFeedback('player')}
+						{#each feedbackSketch as feedback}
+							<div class={`feedback bg:${feedback.status} variant:bare`}>
+								<p class={`status emoji:${feedback.status}`}>
+									{feedback.status}
+								</p>
+								<p>{feedback.message}</p>
+							</div>
+						{/each}
+					{/if}
 				</td>
 				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
-					<td
-						class={`variant:outline ${
-							context.getErrors('sketch').length > 0 ? 'bg:danger:100' : ''
-						}`}
-					>
-						{context.getErrors('controls')}
+					<td class="variant:outline">
+						{#if context.getFeedback('controls').length > 0}
+							{@const feedbackSketch = context.getFeedback('controls')}
+							{#each feedbackSketch as feedback}
+								<div class={`feedback bg:${feedback.status} variant:bare`}>
+									<p class={`status emoji:${feedback.status}`}>
+										{feedback.status}
+									</p>
+									<p>{feedback.message}</p>
+								</div>
+							{/each}
+						{/if}
 					</td>
 				{/if}
 			</tr>

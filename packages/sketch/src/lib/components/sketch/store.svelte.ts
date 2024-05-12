@@ -48,8 +48,8 @@ class SketchStore {
 		return this.actions[state][this.state[state]]
 	}
 
-	public getErrors(key: string): string[] {
-		return this.state.errors[key]
+	public getFeedback(key: string): string[] {
+		return this.state.feedback[key]
 	}
 
 	public getEvent(key: string): string {

@@ -23,7 +23,7 @@ const SKETCH_STATE: {[key: string]: any} = {
 	canvas: CanvasState.idle,
 	player: PlayerState.idle,
 	controls: ControlsState.pristine,
-	errors: {
+	feedback: {
 		sketch: [],
 		canvas: [],
 		player: [],
