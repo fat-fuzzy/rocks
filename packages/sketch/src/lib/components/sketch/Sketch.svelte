@@ -93,11 +93,11 @@
 			try {
 				if (scene.init) {
 					context = {...context, ...scene.init(canvas)}
-					scene.main(canvas, context)
-				} else {
-					context = {...context, ...scene.main(canvas, context)}
 				}
-				scene.update({...context, filters})
+				context = {...context, ...scene.main(canvas, context)}
+				if (meta?.type === 'texture') {
+					scene.update({...context, filters})
+				}
 				store.update(SketchEvent.loadOk)
 			} catch (e: any) {
 				store.update(SketchEvent.loadNok)
