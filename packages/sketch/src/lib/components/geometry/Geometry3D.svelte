@@ -12,17 +12,17 @@
 		id?: string
 		canvasWidth: number
 		canvasHeight: number
-		geometry: GeometryProps
+		context: GeometryProps
 		disabled?: boolean
 		threshold?: string
-		onupdate: (payload: {value: GeometryProps}) => void
+		onupdate: (payload: {geometry: GeometryProps}) => void
 	}
 
 	let {
 		id = 'geometry-3d',
 		canvasWidth,
 		canvasHeight,
-		geometry = $bindable({}),
+		context,
 		threshold,
 		disabled,
 		onupdate,
@@ -34,11 +34,11 @@
 
 	let update = () => {
 		onupdate({
-			value,
+			geometry,
 		})
 	}
 
-	let {scale, translation} = $state(geometry)
+	let {scale, translation} = $state(context)
 
 	// input attributes
 	let maxZ = 1
@@ -55,8 +55,8 @@
 
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
-	let value = $derived({
-		...geometry,
+	let geometry = $derived({
+		...context,
 		rotation: [degToRad(angleX), degToRad(angleY), degToRad(angleZ)],
 		translation: [coordX, coordY, coordZ],
 		scale: [scaleX, scaleY, scaleZ],

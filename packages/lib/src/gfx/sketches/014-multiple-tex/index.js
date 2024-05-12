@@ -100,7 +100,6 @@ function init(canvas) {
 	}
 
 	return {
-		translation: [0, 0],
 		effects: ['normal'],
 		width: imgWidth,
 		height: imgHeight,

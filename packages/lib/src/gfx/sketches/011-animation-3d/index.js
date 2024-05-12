@@ -15,38 +15,38 @@ import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
 let gl
-let programInfo
+let programInfo = {
+	errors: [],
+}
+let program
+let vao
 let buffers
 let then = 0 // used to measure time since last frame
+let vertexShader
+let fragmentShader
 
-function clear() {
-	if (!gl) {
-		// TODO: handle error
-		return
-	}
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientWidth)
-	// Set the clear color to darkish green.
-	gl.clearColor(0.0, 0.0, 0.0, 0.0)
-	// Clear the context with the newly set color. This is
-	// the function call that actually does the drawing.
-	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-}
-
-function main(canvas) {
+function init(canvas) {
 	// Initialize the GL context
 	gl = canvas.getContext('webgl2')
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
-		alert('Unable to initialize WebGL. Your browser or machine may not support it.')
-		return
+		throw Error(
+			'Unable to initialize WebGL. Your browser or machine may not support it.',
+		)
 	}
 
+	return {context: geometries.getGeometryAnimation3D()}
+}
+
+function main(canvas) {
 	clear()
+	return loadProgram(canvas)
+}
 
-	const vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
-	const fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
-
+function loadProgram(canvas) {
+	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
+	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
 	let program
 	if (vertexShader && fragmentShader) {
 		program = setup.link(gl, vertexShader, fragmentShader)
@@ -73,6 +73,7 @@ function main(canvas) {
 	return programInfo
 }
 
+
 function draw(now) {
 	// Calculate frame rate
 	// Convert time to seconds
@@ -94,4 +95,33 @@ function update(context) {
 	buffers = initBuffers(gl, programInfo)
 }
 
-export default {main, draw, clear, update}
+function clear() {
+	if (!gl) {
+		return
+	}
+
+	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
+
+	// Clear the canvas
+	gl.clearColor(0.0, 0.0, 0.0, 0.0)
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
+	// -> use gl.viewport
+	gl.clearDepth(1.0) // clear everything (?)
+
+	// tell webgl to cull faces
+	// gl.depthFunc(gl.LEQUAL) // near things obscure far things
+}
+
+function stop() {
+	clear()
+	if (buffers) {
+		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
+		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
+	}
+	if (vertexShader) gl.deleteShader(vertexShader)
+	if (fragmentShader) gl.deleteShader(fragmentShader)
+	if (programInfo.program) gl.deleteProgram(programInfo.program)
+}
+
+export default {init, main, draw, update, clear, stop}

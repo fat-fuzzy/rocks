@@ -121,8 +121,8 @@
 		if (meta?.type !== 'texture') {
 			loop(time)
 		} else {
-			frame = requestAnimationFrame(() => {
-				scene.draw()
+			frame = requestAnimationFrame((time) => {
+				scene.draw(time)
 			})
 		}
 	}
@@ -156,7 +156,10 @@
 		geometry: GeometryProps
 	}) {
 		store.update(ControlsEvent.update)
-		context = payload.geometry
+		context = {
+			...payload.geometry,
+			fieldOfView: degToRad(payload.fieldOfView ?? 60),
+		}
 		scene.update(context)
 	}
 	function degToRad(degrees: number) {

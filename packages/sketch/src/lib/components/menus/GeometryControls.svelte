@@ -13,7 +13,7 @@
 		breakpoint?: string
 		threshold?: string
 		canvas: $bindable<HTMLCanvasElement>
-		onupdate: (payload: any) => void // TODO: Fix type
+		onupdate: (payload: {geometry: GeometryProps}) => void
 		context: GeometryProps
 	}
 
@@ -30,8 +30,8 @@
 		geometry,
 	})
 
-	function updateGeometry(payload: {value: GeometryProps}) {
-		geometry = payload.value
+	function updateGeometry(payload: {geometry: GeometryProps}) {
+		geometry = payload.geometry
 		onupdate(payload)
 	}
 
@@ -53,7 +53,7 @@
 	id={`${id}-context-3d`}
 	onupdate={updateGeometry}
 	threshold={breakpoint}
-	geometry={context}
+	{context}
 	canvasWidth={width}
 	canvasHeight={height}
 	disabled={store.getSketchDisabled()}
