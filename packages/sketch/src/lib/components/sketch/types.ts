@@ -7,10 +7,12 @@ import {
 	ControlsAction,
 	CanvasState,
 	CanvasAction,
+	type Filters
 } from '$types'
+
 import {PlayerEvent, PlayerState, PlayerAction} from '$lib/components/player/types'
 
-const DEFAULT_FILTERS = {
+const DEFAULT_FILTERS: Filters = {
 	channels: 'rgba',
 	blur: 0,
 	effects: ['normal'],

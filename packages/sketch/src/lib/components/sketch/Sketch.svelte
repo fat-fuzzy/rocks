@@ -61,7 +61,6 @@
 	let feedback = $state([])
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
-	let programInfo = $state({})
 	let context: SceneContext = $state({})
 
 	let frame: number
@@ -90,21 +89,19 @@
 
 	function init() {
 		store.update(SketchEvent.load)
-		filters = DEFAULT_FILTERS
 		if (canvas) {
-			if (scene.init) {
-				programInfo.context = scene.init(canvas)
-			} else {
-				programInfo = scene.main(canvas, context)
-			}
-			context = programInfo.context
 			try {
-				scene.main(canvas, {filters})
+				if (scene.init) {
+					context = {...context, ...scene.init(canvas)}
+					scene.main(canvas, context)
+				} else {
+					context = {...context, ...scene.main(canvas, context)}
+				}
 				scene.update({...context, filters})
 				store.update(SketchEvent.loadOk)
 			} catch (e: any) {
 				store.update(SketchEvent.loadNok)
-				feedback.push({status: 'error', message: e})
+				store.state.feedback['canvas'].push({status: 'error', message: e})
 			}
 		}
 	}
@@ -127,9 +124,16 @@
 		}
 	}
 
+	function reset() {
+		cancelAnimationFrame(frame)
+		scene.clear()
+		store.state.feedback['canvas'] = []
+		store.updateFilters(DEFAULT_FILTERS)
+	}
+
 	function clear() {
 		const prevCanvasState = store.state.canvas
-		stop()
+		reset()
 		init()
 		play()
 		if (prevCanvasState === CanvasState.paused) {
@@ -138,12 +142,9 @@
 	}
 
 	function stop() {
-		cancelAnimationFrame(frame)
+		reset()
 		if (scene.stop) {
 			scene.stop()
-		} else {
-			// TODO: use scene.stop() instead of scene.clear()
-			scene.clear()
 		}
 	}
 
@@ -160,7 +161,7 @@
 			...payload.geometry,
 			fieldOfView: degToRad(payload.fieldOfView ?? 60),
 		}
-		scene.update(context)
+		scene.update({...context, filters})
 	}
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
@@ -169,7 +170,7 @@
 	function updateCamera(payload: {fieldOfView: number; cameraAngle: number}) {
 		context.fieldOfView = degToRad(payload.fieldOfView)
 		context.cameraAngle = degToRad(payload.cameraAngle)
-		scene.update(context)
+		scene.update({...context, filters})
 	}
 
 	function updateCanvas(payload: PlayerPayload) {
