@@ -17,13 +17,9 @@
 	export let step = 1
 	export let disabled: boolean | undefined = undefined
 
-	function degToRad(degrees: number) {
-		return degrees * (Math.PI / 180)
-	}
-
 	function update() {
 		dispatch('input', {
-			value: degToRad(fieldOfView),
+			value: fieldOfView,
 		})
 	}
 </script>

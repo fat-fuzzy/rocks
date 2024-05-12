@@ -9,7 +9,7 @@
 	} from '$types'
 	import {CanvasState, SketchEvent, ControlsEvent} from '$types'
 
-	import {onDestroy, onMount} from 'svelte'
+	import {onMount} from 'svelte'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Player from '$lib/components/player/Player.svelte'
@@ -65,11 +65,19 @@
 	let context: SceneContext = $state({})
 
 	let frame: number
+	let time: number
 
 	let currentAsset = $derived(
-		store.getCanvasState() === CanvasState.idle && asset
+		store.state.canvas === CanvasState.idle && asset
 			? asset
-			: `emoji:${store.canvas}`,
+			: `emoji:${store.state.canvas}`,
+	)
+
+	let currentState = $derived(
+		store.state.canvas === CanvasState.loading ||
+			store.state.canvas === CanvasState.idle
+			? `state:${store.state.canvas}`
+			: '',
 	)
 
 	let backgroundClass = background
@@ -77,9 +85,7 @@
 		: `l:frame:${dimensions}`
 
 	let frameClasses = $derived(
-		canvas
-			? `canvas ${backgroundClass} ${layer} state:${store.getCanvasState()} ${currentAsset}`
-			: `canvas ${backgroundClass} ${layer} card:xl`,
+		`canvas ${backgroundClass} ${layer} ${currentState} ${currentAsset}`,
 	)
 
 	function init() {
@@ -94,8 +100,8 @@
 			context = programInfo.context
 			try {
 				scene.main(canvas, {filters})
-				store.update(SketchEvent.loadOk)
 				scene.update({...context, filters})
+				store.update(SketchEvent.loadOk)
 			} catch (e: any) {
 				store.update(SketchEvent.loadNok)
 				feedback.push({status: 'error', message: e})
@@ -103,25 +109,26 @@
 		}
 	}
 
-	function loop(t) {
-		scene.draw(t)
-		frame = requestAnimationFrame((t) => {
-			loop(t)
+	function loop(time: number) {
+		scene.draw(time)
+		frame = requestAnimationFrame((time) => {
+			loop(time)
 		})
 	}
 
 	function play() {
+		time = Date.now()
 		if (meta?.type !== 'texture') {
-			loop(Date.now())
+			loop(time)
 		} else {
-			frame = requestAnimationFrame((t) => {
-				scene.draw(t)
+			frame = requestAnimationFrame(() => {
+				scene.draw()
 			})
 		}
 	}
 
 	function clear() {
-		const prevCanvasState = store.getCanvasState()
+		const prevCanvasState = store.state.canvas
 		stop()
 		init()
 		play()
@@ -138,9 +145,6 @@
 			// TODO: use scene.stop() instead of scene.clear()
 			scene.clear()
 		}
-		if (store.getCanvasState() === CanvasState.idle) {
-			init()
-		}
 	}
 
 	function pause() {
@@ -155,13 +159,18 @@
 		context = payload.geometry
 		scene.update(context)
 	}
+	function degToRad(degrees: number) {
+		return degrees * (Math.PI / 180)
+	}
 
-	function updateCamera(event: CustomEvent) {
-		context.fieldOfView = event.detail.value.fieldOfView
-		context.cameraAngle = event.detail.value.fieldOfView
+	function updateCamera(payload: {fieldOfView: number; cameraAngle: number}) {
+		context.fieldOfView = degToRad(payload.fieldOfView)
+		context.cameraAngle = degToRad(payload.cameraAngle)
+		scene.update(context)
 	}
 
 	function updateCanvas(payload: PlayerPayload) {
+		store.update(payload.event)
 		switch (payload.event) {
 			case 'play':
 				play()
@@ -176,7 +185,6 @@
 				stop()
 				break
 		}
-		store.update(payload.event)
 	}
 
 	function updateFilters(filters: Filters) {

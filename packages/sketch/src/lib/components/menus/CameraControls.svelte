@@ -12,7 +12,7 @@
 		layout?: string
 		breakpoint?: string
 		threshold?: string
-		onupdate: (payload: any) => void // TODO: Fix type
+		onupdate: (payload: {fieldOfView: number; cameraAngle: number}) => void // TODO: Fix type
 	}
 
 	let {id = 'sketch', color, threshold, onupdate}: Props = $props()

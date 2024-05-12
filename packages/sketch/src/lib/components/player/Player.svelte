@@ -2,7 +2,7 @@
 	import type {TogglePayload} from '$types'
 	import {blocks, actors} from '@fat-fuzzy/ui-s5'
 
-	import playerStore from './store.svelte'
+	import store from './store.svelte'
 	import {PlayerEvent, PlayerState} from './types.js'
 
 	const {Button, Switch} = blocks
@@ -32,25 +32,15 @@
 		stop,
 	}: Props = $props()
 
-	playerStore.init({
+	store.init({
 		initial: PlayerState.idle,
 		onclick: updatePlayer,
 	})
-	let playButtonActor = switchActor.actor(
-		id,
-		playerStore.getPlayState(),
-		'play',
-	)
-	let playButtonLabel = $derived.by(playerStore.getPlayLabel)
-	let disablePlay = $derived.by(playerStore.getPlayDisabled)
-	let disableStop = $derived.by(playerStore.getStopDisabled)
-	let disableClear = $derived.by(playerStore.getClearDisabled)
+	let playButtonActor = switchActor.actor(id, store.getPlayState(), 'play')
 
 	function updatePlayer(payload: TogglePayload) {
-		console.log('updatePlayer', payload)
-		playerStore.update(payload.id)
-		const tmp = playerStore.state
-		const playerPayload = {event: payload.id}
+		const tmp = store.state
+		const playerPayload = {event: payload.value}
 		switch (payload.value) {
 			case PlayerEvent.play:
 				play(playerPayload)
@@ -60,7 +50,7 @@
 				break
 			case PlayerEvent.clear:
 				clear(playerPayload)
-				playerStore.state = tmp
+				store.state = tmp
 				break
 			case PlayerEvent.stop:
 				stop(playerPayload)
@@ -73,17 +63,17 @@
 	<Switch
 		id="play"
 		name="play"
-		states={playerStore.playSwitch}
+		states={store.playSwitch}
 		{color}
 		{size}
 		shape="square"
-		initial={playerStore.getPlayState()}
+		initial={store.getPlayState()}
 		container="main"
-		disabled={disablePlay}
+		disabled={store.getPlayDisabled()}
 		onclick={updatePlayer}
 		actor={playButtonActor}
 	>
-		{playButtonLabel}
+		{store.getPlayLabel()}
 	</Switch>
 	<li class="l:stack:2xs">
 		<Button
@@ -95,7 +85,7 @@
 			value="clear"
 			asset="emoji:clear"
 			onclick={updatePlayer}
-			disabled={disableClear}
+			disabled={store.getClearDisabled()}
 		>
 			Clear
 		</Button>
@@ -108,7 +98,7 @@
 			value="stop"
 			asset="emoji:rect"
 			onclick={updatePlayer}
-			disabled={disableStop}
+			disabled={store.getStopDisabled()}
 		>
 			Stop
 		</Button>

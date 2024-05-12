@@ -18,13 +18,11 @@ const  {
 	SKETCH_TRANSITIONS,
 } = types
 class SketchStore {
-	state = SKETCH_STATE
-	actions = SKETCH_ACTIONS
-	transitions = SKETCH_TRANSITIONS
+	state = $state(SKETCH_STATE)
+	actions =  $state(SKETCH_ACTIONS)
+	transitions = $state(SKETCH_TRANSITIONS)
 
-	constructor() {
-		console.log("SketchStore constructor:", this.state);
-	}
+	constructor() {}
 
 	public getState(key: string): SketchState {
 		return this.state[key]
@@ -38,7 +36,7 @@ class SketchStore {
 		return this.state.player
 	}
 
-	public getPlayButtonState(): PlayerState {
+	public getPlayButtonState(): string {
 		return this.state.player === PlayerState.playing ? 'active' : 'inactive'
 	}
 
@@ -100,8 +98,6 @@ class SketchStore {
 		const previous = this.state.events.current
 		this.state.events.current = event
 		this.state.events.previous = previous
-
-		return this.state.sketch
 	}
 
 	public updateFilters(
