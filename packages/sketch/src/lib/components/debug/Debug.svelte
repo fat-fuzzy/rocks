@@ -8,8 +8,8 @@
 	let {meta, context}: Props = $props()
 </script>
 
-<aside class="debug l:stack:sm maki:block size:xs overflow:x card:dotted">
-	<table class="text:center">
+<aside class="debug l:stack:sm maki:block size:2xs overflow:x card:dotted">
+	<table class="text:center font:sm">
 		<thead class="bg:primary:300">
 			<tr>
 				<th class="bg:accent:300" scope="col">Debug</th>
