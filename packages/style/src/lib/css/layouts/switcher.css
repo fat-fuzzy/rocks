@@ -15,7 +15,7 @@
 	flex-basis: calc((var(--threshold) - 100%) * 999);
 }
 
-[class*='l:switcher:'].shrink > * {
+[class*='l:switcher:'].hug > * {
 	flex-grow: 0;
 }
 

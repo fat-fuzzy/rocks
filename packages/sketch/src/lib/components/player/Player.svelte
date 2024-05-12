@@ -66,11 +66,10 @@
 				stop(playerPayload)
 				break
 		}
-		playerStore.update(payload.id)
 	}
 </script>
 
-<menu {id} class={`l:switcher:${size} w:full shrink justify:center`}>
+<menu {id} class={`l:switcher:${size} hug w:full justify:center`}>
 	<Switch
 		id="play"
 		name="play"
@@ -86,7 +85,7 @@
 	>
 		{playButtonLabel}
 	</Switch>
-	<li class="l:switcher">
+	<li class="l:stack:2xs">
 		<Button
 			id="clear"
 			name="clear"
