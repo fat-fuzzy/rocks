@@ -247,7 +247,7 @@ function loadProgram() {
 	return programInfo
 }
 
-function update(canvas, {filters}) {
+function update({filters}) {
 	programInfo.context = {
 		image,
 		translation: [0, 0],

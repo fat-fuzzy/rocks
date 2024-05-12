@@ -253,7 +253,7 @@ function loadProgram() {
 	return programInfo
 }
 
-function update(canvas, {filters}) {
+function update({filters}) {
 	if (filters.channels !== channelOrder) {
 		channelOrder = filters.channels
 	}
