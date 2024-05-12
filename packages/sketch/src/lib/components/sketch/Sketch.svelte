@@ -66,8 +66,8 @@
 	let canvas: HTMLCanvasElement | null = $state(null)
 	let programInfo = $state({})
 	let context: SceneContext = $state({})
-	let width = $state(canvas?.getBoundingClientRect().width)
-	let height = $state(canvas?.getBoundingClientRect().width)
+	let width = $state(undefined)
+	let height = $state(undefined)
 
 	let frame: number
 
@@ -156,7 +156,7 @@
 	}
 
 	function updateGeometry(payload: {
-		fieldOfView: number
+		fieldOfView?: number
 		geometry: GeometryProps
 	}) {
 		sketchStore.update(ControlsEvent.update)
@@ -273,7 +273,7 @@
 						id={`${id}-context-2d`}
 						onupdate={updateGeometry}
 						threshold={breakpoint}
-						geometry={context}
+						{context}
 						canvasWidth={canvas.getBoundingClientRect().width}
 						canvasHeight={canvas.getBoundingClientRect().height}
 						{disabled}

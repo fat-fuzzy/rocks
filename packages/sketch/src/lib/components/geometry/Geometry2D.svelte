@@ -13,7 +13,7 @@
 		id?: string
 		canvasWidth: number
 		canvasHeight: number
-		geometry: GeometryProps
+		context: GeometryProps
 		background?: string
 		method?: string
 		formaction?: string
@@ -23,14 +23,14 @@
 		layout?: string
 		threshold?: string
 		disabled?: boolean
-		onupdate: (payload: {value: GeometryProps}) => void
+		onupdate: (payload: {geometry: GeometryProps}) => void
 	}
 
 	let {
 		id = 'geometry-2d',
 		canvasWidth,
 		canvasHeight,
-		geometry,
+		context,
 		background,
 		method = 'POST',
 		formaction = 'updateGeometry',
@@ -49,10 +49,10 @@
 
 	let update = () =>
 		onupdate({
-			value,
+			geometry,
 		})
 
-	let {scale, translation, rotation} = $state(geometry)
+	let {scale, translation, rotation} = $state(context)
 
 	// input attributes
 	let [angle] = $state(rotation ?? [])
@@ -66,14 +66,15 @@
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
 	let rotatedAngle = $derived(degToRad(angle))
-	let value = $derived({
-		color: geometry.color,
+	let geometry = $derived({
+		color: context.color,
 		translation: [coordX, coordY],
 		rotation: [rotatedAngle],
 		scale: [scaleX, scaleY],
 	})
 
-	let action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	let action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	let backgroundClass = background ? `bg:${background}` : ''
 
 	onMount(() => {
