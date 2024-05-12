@@ -85,17 +85,17 @@
 	function init() {
 		store.update(SketchEvent.load)
 		filters = DEFAULT_FILTERS
-		if (scene.init) {
-			programInfo.context = scene.init(canvas)
-		} else {
-			programInfo = scene.main(canvas, context)
-		}
-		context = programInfo.context
 		if (canvas) {
+			if (scene.init) {
+				programInfo.context = scene.init(canvas)
+			} else {
+				programInfo = scene.main(canvas, context)
+			}
+			context = programInfo.context
 			try {
 				scene.main(canvas, {filters})
 				store.update(SketchEvent.loadOk)
-				scene.update(context, {filters})
+				scene.update({...context, filters})
 			} catch (e: any) {
 				store.update(SketchEvent.loadNok)
 				feedback.push({status: 'error', message: e})
@@ -153,7 +153,7 @@
 	}) {
 		store.update(ControlsEvent.update)
 		context = payload.geometry
-		scene.update(context, {filters})
+		scene.update(context)
 	}
 
 	function updateCamera(event: CustomEvent) {
@@ -181,13 +181,13 @@
 
 	function updateFilters(filters: Filters) {
 		if (canvas) {
-			scene.update(canvas, {...context, filters})
+			scene.update({...context, filters})
 			play()
 		}
 	}
 
 	function handleMouseEvent(event: MouseEvent) {
-		scene.update(context, {...context, filters})
+		scene.update({...context, filters})
 	}
 
 	onMount(() => {
