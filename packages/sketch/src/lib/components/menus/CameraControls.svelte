@@ -2,7 +2,7 @@
 	import type {SceneContext} from '$types'
 	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
 	import Camera from '$lib/components/camera/Camera.svelte'
-	import sketchStore from '$lib/components/sketch/store.svelte'
+	import store from '$lib/components/sketch/store.svelte'
 
 	type Props = {
 		id: string
@@ -24,8 +24,6 @@
 		cameraAngle,
 	})
 
-	let disabled: boolean | undefined = $derived.by(sketchStore.getSketchDisabled)
-
 	function updateFieldOfView(event: CustomEvent) {
 		fieldOfView = event.detail.value
 		onupdate(payload)
@@ -43,7 +41,7 @@
 	on:input={updateCamera}
 	{color}
 	size={`xs l:burrito:${threshold}`}
-	{disabled}
+	disabled={store.getSketchDisabled()}
 />
 
 <FieldOfView
@@ -53,5 +51,5 @@
 	on:input={updateFieldOfView}
 	{color}
 	size={`xs l:burrito:${threshold}`}
-	{disabled}
+	disabled={store.getSketchDisabled()}
 />

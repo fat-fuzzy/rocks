@@ -1,10 +1,9 @@
 <script lang="ts">
 	import type {TogglePayload} from '$types'
-	import {PlayerEvent} from '$types'
 	import {blocks, actors} from '@fat-fuzzy/ui-s5'
 
 	import playerStore from './store.svelte'
-	import {PlayerState} from '../../types/index.js'
+	import {PlayerEvent, PlayerState} from './types.js'
 
 	const {Button, Switch} = blocks
 	const {switchActor} = actors

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Filters} from '$types'
 	import {recipes} from '@fat-fuzzy/ui-s5'
-	import sketchStore from '$lib/components/sketch/store.svelte'
+	import store from '$lib/components/sketch/store.svelte'
 	const {ToggleMenu} = recipes
 
 	type Props = {
@@ -28,7 +28,6 @@
 	}
 
 	let filters: Filters = $state(DEFAULT_FILTERS)
-	let disabled: boolean | undefined = $derived.by(sketchStore.getMenuDisabled)
 
 	let channelMenuItems = $derived(
 		channels?.map((c) => ({
@@ -107,7 +106,7 @@
 		variant="bare"
 		items={channelMenuItems}
 		onupdate={updateChannel}
-		{disabled}
+		disabled={store.getFiltersDisabled()}
 	/>
 {/if}
 {#if blur}
@@ -120,7 +119,7 @@
 		variant="bare"
 		items={blurMenuItems}
 		onupdate={updateBlur}
-		{disabled}
+		disabled={store.getFiltersDisabled()}
 	/>
 {/if}
 {#if convolutions}
@@ -133,6 +132,6 @@
 		variant="bare"
 		items={effectMenuItems}
 		onupdate={updateEffects}
-		{disabled}
+		disabled={store.getFiltersDisabled()}
 	/>
 {/if}

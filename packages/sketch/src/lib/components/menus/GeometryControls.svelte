@@ -3,7 +3,7 @@
 	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
 	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
 
-	import sketchStore from '$lib/components/sketch/store.svelte'
+	import store from '$lib/components/sketch/store.svelte'
 
 	type Props = {
 		id: string
@@ -30,8 +30,6 @@
 		geometry,
 	})
 
-	let disabled: boolean | undefined = $derived.by(sketchStore.getSketchDisabled)
-
 	function updateGeometry(payload: {value: GeometryProps}) {
 		geometry = payload.value
 		onupdate(payload)
@@ -50,7 +48,6 @@
 	on:input={updateFieldOfView}
 	{color}
 	size={`xs l:burrito:${threshold}`}
-	{disabled}
 />
 <Geometry3D
 	id={`${id}-context-3d`}
@@ -59,5 +56,5 @@
 	geometry={context}
 	canvasWidth={width}
 	canvasHeight={height}
-	{disabled}
+	disabled={store.getSketchDisabled()}
 />

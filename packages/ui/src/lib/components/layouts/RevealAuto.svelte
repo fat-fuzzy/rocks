@@ -55,7 +55,11 @@
 	<form
 		{name}
 		{method}
-		action={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
+		action={action
+			? actionPath
+				? `${actionPath}?/${action}`
+				: `?/${action}`
+			: undefined}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {
@@ -83,7 +87,10 @@
 			{title}
 		</Expand>
 	</form>
-	<div id={`reveal-auto-${id}`} class={`${layoutClass} ${showContent} ${direction} shrink`}>
+	<div
+		id={`reveal-auto-${id}`}
+		class={`${layoutClass} ${showContent} ${direction} hug`}
+	>
 		<slot name="content">
 			<div class={`layer card:${size}`}>
 				<p class="font:lg">Revealed Content</p>

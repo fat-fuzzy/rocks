@@ -1,59 +1,26 @@
 import type {TogglePayload} from '$types'
-import {PlayerEvent, PlayerState, PlayerAction} from '$types'
+import {PlayerEvent, PlayerState, PlayerAction} from './types.js'
 
-const PLAYER_STATE: {[key: string]: any} = {
-	player: PlayerState.idle,
-	errors: [],
-}
+import types from './types.js'
 
-const PLAYER_EVENTS: {[key: string]: string} = {
-	previous: '',
-	current: '',
-}
-
-const PLAYER_ACTIONS: {[key: string]: any} = {
-	player: {
-		[PlayerState.idle]: [PlayerAction.play],
-		[PlayerState.playing]: [
-			PlayerAction.pause,
-			PlayerAction.stop,
-			PlayerAction.clear,
-		],
-		[PlayerState.paused]: [
-			PlayerAction.play,
-			PlayerAction.stop,
-			PlayerAction.clear,
-		],
-		[PlayerState.stopped]: [PlayerAction.play],
-	},
-}
-
-export const PLAYER_TRANSITIONS: {[key: string]: any} = {
-	player: {
-		[PlayerState.idle]: {
-			[PlayerEvent.play]: {state: PlayerState.playing},
-		},
-		[PlayerState.playing]: {
-			[PlayerEvent.pause]: {state: PlayerState.paused},
-			[PlayerEvent.stop]: {state: PlayerState.idle},
-			[PlayerEvent.clear]: {state: PlayerState.playing},
-		},
-		[PlayerState.paused]: {
-			[PlayerEvent.play]: {state: PlayerState.playing},
-			[PlayerEvent.stop]: {state: PlayerState.idle},
-			[PlayerEvent.clear]: {state: PlayerState.paused},
-		},
-	},
-}
+const {
+	PLAYER_STATE,
+	PLAYER_EVENTS,
+	PLAYER_ACTIONS,
+	PLAYER_TRANSITIONS,
+	PLAYER_SWITCH
+} = types
 
 class PlayerStore {
 	state = $state(PLAYER_STATE)
-	events = $state(PLAYER_EVENTS)
-	actions = $state(PLAYER_ACTIONS)
-	transitions = $state(PLAYER_TRANSITIONS)
-	playSwitch: {[state: string]: PlayerState} = $state({})
+	playSwitch = $state(PLAYER_SWITCH)
+	events = PLAYER_EVENTS
+	actions = PLAYER_ACTIONS
+	transitions = PLAYER_TRANSITIONS
 
-	constructor() {}
+	constructor() {
+		console.log("PlayerStore constructor:", this.state);
+	}
 
 	public init({
 		initial,
@@ -63,42 +30,24 @@ class PlayerStore {
 		onclick: (payload: TogglePayload) => void
 	}) {
 		this.state.player = initial ?? PlayerState.idle
-		this.playSwitch = {
-			active: {
-				value: PlayerEvent.pause,
-				text: 'Pause',
-				asset: 'emoji:pause',
-				variant: 'outline',
-				onclick,
-			},
-			inactive: {
-				value: PlayerEvent.play,
-				text: 'Play',
-				asset: 'emoji:play',
-				variant: 'fill',
-				onclick,
-			},
-		}
-		console.log('getPlayLabel this.state ')
-		console.log(this.state?.player)
+		this.playSwitch.active.onclick = onclick
+		this.playSwitch.inactive.onclick = onclick
 	}
 
 	public getState(): PlayerState {
 		return this.state?.player
 	}
 
-	public getPlayState(): PlayerState {
+	public getPlayState(): string {
 		return this.state?.player === PlayerState.playing ? 'active' : 'inactive'
 	}
 
-	public getPlayLabel(): PlayerState {
-		if (!this.state?.player) {
-			return 'Play'
-		}
-		const playState = this.getPlayState()
+	public getPlayLabel(): string {
+		const playState = this.state?.player === PlayerState.playing ? 'active' : 'inactive'
 		if (this.playSwitch && this.playSwitch[playState]) {
 			return this.playSwitch[playState].text
 		}
+		return ''
 	}
 
 	public getNextActions(state: string): PlayerAction {

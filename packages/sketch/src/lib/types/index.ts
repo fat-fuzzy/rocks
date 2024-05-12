@@ -1,33 +1,3 @@
-export enum PlayerState {
-	idle = 'idle',
-	error = 'error',
-	playing = 'playing',
-	paused = 'paused',
-	ended = 'ended',
-	stopped = 'stopped',
-}
-
-export enum PlayerEvent {
-	play = 'play',
-	pause = 'pause',
-	clear = 'clear',
-	stop = 'stop',
-}
-
-export enum PlayerAction {
-	play = 'play',
-	pause = 'pause',
-	clear = 'clear',
-	stop = 'stop',
-}
-
-export enum PlayerError {
-	load = 'load',
-	play = 'play',
-	clear = 'clear',
-	stop = 'stop',
-}
-
 export enum ControlsState {
 	pristine = 'pristine',
 	updated = 'updated',
@@ -41,9 +11,6 @@ export enum ControlsEvent {
 export enum ControlsAction {
 	update = 'update',
 }
-
-export type PlayerPayload = {event: PlayerEvent; state: PlayerState}
-
 export enum CanvasState {
 	idle = 'idle',
 	playing = 'playing',

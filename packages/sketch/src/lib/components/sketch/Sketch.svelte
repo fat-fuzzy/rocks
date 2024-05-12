@@ -18,7 +18,10 @@
 	import GeometryControls from '$lib/components/menus/GeometryControls.svelte'
 	import Debug from '$lib/components/debug/Debug.svelte'
 
-	import sketchStore from './store.svelte'
+	import store from './store.svelte'
+	import types from './types'
+
+	const {DEFAULT_FILTERS} = types
 
 	type Props = {
 		id: string
@@ -55,29 +58,18 @@
 	}: Props = $props()
 
 	let debug = true // TODO : fix this
-	const DEFAULT_FILTERS = {
-		channels: 'rgba',
-		blur: 0,
-		effects: ['normal'],
-	}
 	let feedback = $state([])
-
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
 	let programInfo = $state({})
 	let context: SceneContext = $state({})
-	let width = $state(undefined)
-	let height = $state(undefined)
 
 	let frame: number
 
-	let disabled = $derived.by(sketchStore.getSketchDisabled)
-	let isInteractive = $derived.by(sketchStore.getIsInteractive)
-
 	let currentAsset = $derived(
-		sketchStore.getCanvasState() === CanvasState.idle && asset
+		store.getCanvasState() === CanvasState.idle && asset
 			? asset
-			: `emoji:${sketchStore.canvas}`,
+			: `emoji:${store.canvas}`,
 	)
 
 	let backgroundClass = background
@@ -86,12 +78,12 @@
 
 	let frameClasses = $derived(
 		canvas
-			? `canvas ${backgroundClass} ${layer} state:${sketchStore.getCanvasState()} ${currentAsset}`
+			? `canvas ${backgroundClass} ${layer} state:${store.getCanvasState()} ${currentAsset}`
 			: `canvas ${backgroundClass} ${layer} card:xl`,
 	)
 
 	function init() {
-		sketchStore.update(SketchEvent.load)
+		store.update(SketchEvent.load)
 		filters = DEFAULT_FILTERS
 		if (scene.init) {
 			programInfo.context = scene.init(canvas)
@@ -102,10 +94,10 @@
 		if (canvas) {
 			try {
 				scene.main(canvas, {filters})
-				sketchStore.update(SketchEvent.loadOk)
+				store.update(SketchEvent.loadOk)
 				scene.update(context, {filters})
 			} catch (e: any) {
-				sketchStore.update(SketchEvent.loadNok)
+				store.update(SketchEvent.loadNok)
 				feedback.push({status: 'error', message: e})
 			}
 		}
@@ -129,7 +121,7 @@
 	}
 
 	function clear() {
-		const prevCanvasState = sketchStore.getCanvasState()
+		const prevCanvasState = store.getCanvasState()
 		stop()
 		init()
 		play()
@@ -146,7 +138,7 @@
 			// TODO: use scene.stop() instead of scene.clear()
 			scene.clear()
 		}
-		if (sketchStore.getCanvasState() === CanvasState.idle) {
+		if (store.getCanvasState() === CanvasState.idle) {
 			init()
 		}
 	}
@@ -159,7 +151,7 @@
 		fieldOfView?: number
 		geometry: GeometryProps
 	}) {
-		sketchStore.update(ControlsEvent.update)
+		store.update(ControlsEvent.update)
 		context = payload.geometry
 		scene.update(context, {filters})
 	}
@@ -184,7 +176,7 @@
 				stop()
 				break
 		}
-		sketchStore.update(payload.event)
+		store.update(payload.event)
 	}
 
 	function updateFilters(filters: Filters) {
@@ -201,22 +193,11 @@
 	onMount(() => {
 		init()
 	})
-
-	onDestroy(() => {
-		// TODO: make sure there are no leftover resources to clean
-		if (frame) {
-			stop()
-		}
-	})
 </script>
 
 <div class={`l:grid:sketch bp:xs`}>
 	<div class="scene">
-		<div
-			class={frameClasses}
-			bind:offsetWidth={width}
-			bind:offsetHeight={height}
-		>
+		<div class={frameClasses}>
 			{#if scene?.meta?.input === 'mouse'}
 				<canvas
 					id={`${id}.canvas`}
@@ -261,13 +242,13 @@
 				pause={updateCanvas}
 				clear={updateCanvas}
 				stop={updateCanvas}
-				initial={sketchStore.getPlayButtonState()}
+				initial={store.getPlayButtonState()}
 				{color}
 				size="xs"
 				{variant}
 				disabled={Boolean(feedback)}
 			/>
-			{#if meta && sketchStore.getState('player') === 'playing' && isInteractive}
+			{#if meta && store.getState('player') === 'playing' && store.getIsInteractive()}
 				{#if meta.type === 'matrix-2d'}
 					<Geometry2D
 						id={`${id}-context-2d`}
@@ -276,24 +257,27 @@
 						{context}
 						canvasWidth={canvas.getBoundingClientRect().width}
 						canvasHeight={canvas.getBoundingClientRect().height}
-						{disabled}
+						disabled={store.getSketchDisabled()}
 					/>
 				{:else}
 					<div
 						class={`l:${layout}:${size} th:${threshold} maki:block lg context bg:${background}`}
 					>
 						{#if meta.camera}
-							<CameraControls id="camera-controls" onupdate={updateCamera} />
+							<CameraControls
+								id={`${id}-camera-controls`}
+								onupdate={updateCamera}
+							/>
 						{:else if meta.type === 'matrix-3d'}
 							<GeometryControls
-								id="geometry-controls"
+								id={`${id}-geometry-controls`}
 								{canvas}
 								onupdate={updateGeometry}
 								{context}
 							/>
 						{:else if meta.type === 'texture'}
 							<TextureControls
-								id="texture-controls"
+								id={`${id}-texture-controls`}
 								channels={meta?.channels}
 								blur={meta?.blur}
 								convolutions={meta?.convolutions}
@@ -306,7 +290,7 @@
 		{/if}
 	</aside>
 	{#if debug}
-		<Debug {meta} context={sketchStore} />
+		<Debug {meta} context={store} />
 	{/if}
 </div>
 
