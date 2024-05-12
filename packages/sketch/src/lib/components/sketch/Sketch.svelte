@@ -259,7 +259,7 @@
 				{variant}
 				disabled={Boolean(feedback)}
 			/>
-			{#if meta && store.getState('player') === 'playing' && store.getIsInteractive()}
+			{#if meta && store.getState('sketch') === 'active' && store.getIsInteractive()}
 				{#if meta.type === 'matrix-2d'}
 					<Geometry2D
 						id={`${id}-context-2d`}
