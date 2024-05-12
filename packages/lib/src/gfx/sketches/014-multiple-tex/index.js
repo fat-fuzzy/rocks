@@ -88,35 +88,6 @@ let channelOrder
 let blur = 0
 let error
 
-function clear() {
-	if (!gl) {
-		return
-	}
-
-	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
-
-	// Clear the canvas
-	gl.clearColor(0.0, 0.0, 0.0, 0.0)
-	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
-	// -> use gl.viewport
-	gl.clearDepth(1.0) // clear everything (?)
-
-	// tell webgl to cull faces
-	// gl.depthFunc(gl.LEQUAL) // near things obscure far things
-}
-
-function stop() {
-	clear()
-	if (buffers) {
-		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
-		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
-	}
-	if (vertexShader) gl.deleteShader(vertexShader)
-	if (fragmentShader) gl.deleteShader(fragmentShader)
-	if (programInfo.program) gl.deleteProgram(programInfo.program)
-}
-
 function init(canvas) {
 	// Initialize the GL context
 	gl = canvas.getContext('webgl2')
@@ -134,32 +105,6 @@ function init(canvas) {
 		width: imgWidth,
 		height: imgHeight,
 		level,
-	}
-}
-
-function loadImage(url, callback) {
-	let image = new Image()
-	image.src = url
-	image.onload = callback
-
-	return image
-}
-
-function loadImages(urls, callback) {
-	let imagesToLoad = urls.length
-
-	// Called each time an image finished loading.
-	let onImageLoad = function () {
-		--imagesToLoad
-		// If all the images are loaded call the callback.
-		if (imagesToLoad === 0) {
-			callback(images)
-		}
-	}
-
-	for (let ii = 0; ii < imagesToLoad; ++ii) {
-		let image = loadImage(urls[ii], onImageLoad)
-		images.push(image)
 	}
 }
 
@@ -181,59 +126,6 @@ function main() {
 		}
 	})
 	gl.bindVertexArray(null)
-}
-
-function draw(t) {
-	clear()
-	utils.resize(gl.canvas)
-	drawScene(gl, programInfo, {textures, channels: channels[channelOrder], blur})
-	error = gl.getError()
-	if (error !== gl.NO_ERROR) {
-		programInfo.errors.push(error)
-	} else {
-		programInfo.errors = []
-	}
-}
-
-function loadTexture(image) {
-	const texture = gl.createTexture()
-
-	gl.bindTexture(gl.TEXTURE_2D, texture)
-
-	// Because images have to be downloaded over the internet
-	// they might take a moment until they are ready.
-	// Until then put a single pixel in the texture so we can
-	// use it immediately. When the image has finished downloading
-	// we'll update the texture with the contents of the image.
-
-	const level = 0
-	const internalFormat = gl.RGBA
-	const srcFormat = gl.RGBA
-	const srcType = gl.UNSIGNED_BYTE
-
-	gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
-
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
-
-	return texture
-}
-//
-// Initialize a texture and load an image.
-// When the image finished loading copy it into the texture.
-//
-function loadTextures(images) {
-	for (let i = 0; i < images.length; i++) {
-		textures[i] = loadTexture(images[i])
-	}
-	return {
-		images,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
-	}
 }
 
 function loadProgram() {
@@ -277,7 +169,89 @@ function loadProgram() {
 	return programInfo
 }
 
-function update(canvas, {filters}) {
+function loadImage(url, callback) {
+	let image = new Image()
+	image.src = url
+	image.onload = callback
+
+	return image
+}
+
+function loadImages(urls, callback) {
+	let imagesToLoad = urls.length
+
+	// Called each time an image finished loading.
+	let onImageLoad = function () {
+		--imagesToLoad
+		// If all the images are loaded call the callback.
+		if (imagesToLoad === 0) {
+			callback(images)
+		}
+	}
+
+	for (let ii = 0; ii < imagesToLoad; ++ii) {
+		let image = loadImage(urls[ii], onImageLoad)
+		images.push(image)
+	}
+}
+
+function loadTexture(image) {
+	const texture = gl.createTexture()
+
+	gl.bindTexture(gl.TEXTURE_2D, texture)
+
+	// Because images have to be downloaded over the internet
+	// they might take a moment until they are ready.
+	// Until then put a single pixel in the texture so we can
+	// use it immediately. When the image has finished downloading
+	// we'll update the texture with the contents of the image.
+
+	const level = 0
+	const internalFormat = gl.RGBA
+	const srcFormat = gl.RGBA
+	const srcType = gl.UNSIGNED_BYTE
+
+	gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image)
+
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+
+	return texture
+}
+
+function loadTextures(images) {
+	for (let i = 0; i < images.length; i++) {
+		textures[i] = loadTexture(images[i])
+	}
+	return {
+		images,
+		translation: [0, 0],
+		width: imgWidth,
+		height: imgHeight,
+	}
+}
+
+function draw(t) {
+	clear()
+	utils.resize(gl.canvas)
+	drawScene(gl, programInfo, {textures, channels: channels[channelOrder], blur})
+	error = gl.getError()
+	if (error !== gl.NO_ERROR) {
+		programInfo.errors.push(error)
+	} else {
+		programInfo.errors = []
+	}
+}
+
+function update({filters}) {
+	if (filters.channels !== channelOrder) {
+		channelOrder = filters.channels
+	}
+	if (filters.blur !== blur) {
+		blur = filters.blur
+	}
 	programInfo.context = {
 		images,
 		translation: [0, 0],
@@ -286,4 +260,33 @@ function update(canvas, {filters}) {
 	}
 }
 
-export default {init, main, draw, clear, update, stop}
+function clear() {
+	if (!gl) {
+		return
+	}
+
+	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
+
+	// Clear the canvas
+	gl.clearColor(0.0, 0.0, 0.0, 0.0)
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
+	// -> use gl.viewport
+	gl.clearDepth(1.0) // clear everything (?)
+
+	// tell webgl to cull faces
+	// gl.depthFunc(gl.LEQUAL) // near things obscure far things
+}
+
+function stop() {
+	clear()
+	if (buffers) {
+		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
+		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
+	}
+	if (vertexShader) gl.deleteShader(vertexShader)
+	if (fragmentShader) gl.deleteShader(fragmentShader)
+	if (programInfo.program) gl.deleteProgram(programInfo.program)
+}
+
+export default {init, main, draw, update, clear, stop}
