@@ -74,8 +74,8 @@
 
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
-	let programInfo = $state({context: {}})
-	let context: SceneContext = $state(programInfo?.context)
+	let programInfo = $state({})
+	let context: SceneContext = $state({})
 	let width: number | undefined = undefined
 	let height: number | undefined = undefined
 	let fieldOfView = 60
@@ -146,15 +146,16 @@
 	function init() {
 		sketchContext.update(SketchEvent.load)
 		filters = DEFAULT_FILTERS
+		if (scene.init) {
+			context = scene.init(canvas)
+		} else {
+			programInfo = scene.main(canvas, context)
+		}
 		if (canvas) {
-			if (scene.init) {
-				programInfo.context = scene.init(canvas)
-			} else {
-				programInfo = scene.main(canvas, context)
-			}
 			try {
 				scene.main(canvas, {filters})
 				if (
+					sketchContext.getPlayerState() === PlayerState.idle ||
 					sketchContext.getPlayerState() === PlayerState.stopped ||
 					!context
 				) {

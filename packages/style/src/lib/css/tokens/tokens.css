@@ -136,10 +136,10 @@
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
   --layout-sidebar-xl: calc(var(--layout-sidebar-lg) * var(--size-ratio-sm));
   --layout-sidebar-xs: calc(var(--layout-sidebar-sm) / var(--size-ratio-sm));
-  --outline-offset-base: 0.25rem;
-  --outline-offset-nav: 0.15rem;
+  --outline-offset-base: 1.5px;
+  --outline-offset-nav: 1.75px;
   --outline-offset-settings: 2px;
-  --outline-width: 2px;
+  --outline-width: 1px;
   --scale-base-00: var(--size-base-initial);
   --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-md));
   --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-md));

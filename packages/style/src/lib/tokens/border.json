@@ -16,10 +16,10 @@
 	"outline": {
 		"$type": "dimension",
 		"offset": {
-			"base": {"$value": "0.25rem"},
-			"nav": {"$value": "0.15rem"},
+			"base": {"$value": "1.5px"},
+			"nav": {"$value": "1.75px"},
 			"settings": {"$value": "2px"}
 		},
-		"width": {"$value": "2px"}
+		"width": {"$value": "1px"}
 	}
 }
