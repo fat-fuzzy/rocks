@@ -7,27 +7,18 @@
 		PlayerPayload,
 		GeometryProps,
 	} from '$types'
-	import {
-		PlayerState,
-		PlayerEvent,
-		CanvasState,
-		SketchEvent,
-		ControlsEvent,
-	} from '$types'
+	import {CanvasState, SketchEvent, ControlsEvent} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
-	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
-	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
-	import Camera from '$lib/components/camera/Camera.svelte'
 	import Player from '$lib/components/player/Player.svelte'
+	import TextureControls from '$lib/components/menus/TextureControls.svelte'
+	import CameraControls from '$lib/components/menus/CameraControls.svelte'
+	import GeometryControls from '$lib/components/menus/GeometryControls.svelte'
 	import Debug from '$lib/components/debug/Debug.svelte'
-	import {recipes} from '@fat-fuzzy/ui-s5'
 
-	import SketchStore from './store.svelte'
-
-	const {ToggleMenu} = recipes
+	import sketchStore from './store.svelte'
 
 	type Props = {
 		id: string
@@ -63,7 +54,6 @@
 		meta,
 	}: Props = $props()
 
-	let sketchContext = new SketchStore()
 	let debug = true // TODO : fix this
 	const DEFAULT_FILTERS = {
 		channels: 'rgba',
@@ -76,61 +66,18 @@
 	let canvas: HTMLCanvasElement | null = $state(null)
 	let programInfo = $state({})
 	let context: SceneContext = $state({})
-	let width: number | undefined = undefined
-	let height: number | undefined = undefined
-	let fieldOfView = 60
-	let cameraAngle = 60
+	let width = $state(canvas?.getBoundingClientRect().width)
+	let height = $state(canvas?.getBoundingClientRect().width)
 
 	let frame: number
 
-	let channelMenuItems = $derived(
-		meta?.channels?.map((c) => ({
-			id: c,
-			name: c,
-			text: c,
-			value: c,
-			initial: c === filters.channels ? 'active' : 'inactive',
-		})) || [],
-	)
-
-	let blurMenuItems = $derived(
-		meta?.blur?.map((b) => ({
-			id: b,
-			name: b,
-			text: `blur ${b}`,
-			value: b,
-			initial: b === filters.blur ? 'active' : 'inactive',
-		})) || [],
-	)
-
-	let effectMenuItems = $derived(
-		meta?.convolutions?.map((b) => ({
-			id: b,
-			name: b,
-			text: b,
-			value: b,
-			initial: filters.effects.includes(b) ? 'active' : 'inactive',
-		})) || [],
-	)
-
-	function degToRad(degrees: number) {
-		return degrees * (Math.PI / 180)
-	}
-
-	let disabled = $derived(sketchContext.getSketchDisabled() ? true : undefined)
-
-	let menuDisabled = $derived(
-		sketchContext.getMenuDisabled() ? true : undefined,
-	)
-
-	let isInteractive = $derived(
-		context !== undefined && sketchContext.getIsInteractive(),
-	)
+	let disabled = $derived.by(sketchStore.getSketchDisabled)
+	let isInteractive = $derived.by(sketchStore.getIsInteractive)
 
 	let currentAsset = $derived(
-		sketchContext.getCanvasState() === CanvasState.idle && asset
+		sketchStore.getCanvasState() === CanvasState.idle && asset
 			? asset
-			: `emoji:${sketchContext.canvas}`,
+			: `emoji:${sketchStore.canvas}`,
 	)
 
 	let backgroundClass = background
@@ -139,32 +86,26 @@
 
 	let frameClasses = $derived(
 		canvas
-			? `canvas ${backgroundClass} ${layer} state:${sketchContext.getCanvasState()} ${currentAsset}`
+			? `canvas ${backgroundClass} ${layer} state:${sketchStore.getCanvasState()} ${currentAsset}`
 			: `canvas ${backgroundClass} ${layer} card:xl`,
 	)
 
 	function init() {
-		sketchContext.update(SketchEvent.load)
+		sketchStore.update(SketchEvent.load)
 		filters = DEFAULT_FILTERS
 		if (scene.init) {
-			context = scene.init(canvas)
+			programInfo.context = scene.init(canvas)
 		} else {
 			programInfo = scene.main(canvas, context)
 		}
+		context = programInfo.context
 		if (canvas) {
 			try {
 				scene.main(canvas, {filters})
-				if (
-					sketchContext.getPlayerState() === PlayerState.idle ||
-					sketchContext.getPlayerState() === PlayerState.stopped ||
-					!context
-				) {
-					context = programInfo.context
-				}
+				sketchStore.update(SketchEvent.loadOk)
 				scene.update(context, {filters})
-				sketchContext.update(SketchEvent.loadOk)
 			} catch (e: any) {
-				sketchContext.update(SketchEvent.loadNok)
+				sketchStore.update(SketchEvent.loadNok)
 				feedback.push({status: 'error', message: e})
 			}
 		}
@@ -185,12 +126,10 @@
 				scene.draw(t)
 			})
 		}
-		sketchContext.update(PlayerEvent.play)
 	}
 
 	function clear() {
-		const prevCanvasState = sketchContext.getCanvasState()
-		sketchContext.update(PlayerEvent.clear)
+		const prevCanvasState = sketchStore.getCanvasState()
 		stop()
 		init()
 		play()
@@ -202,34 +141,32 @@
 	function stop() {
 		cancelAnimationFrame(frame)
 		if (scene.stop) {
-			sketchContext.update(PlayerEvent.stop)
 			scene.stop()
 		} else {
 			// TODO: use scene.stop() instead of scene.clear()
 			scene.clear()
 		}
-		if (sketchContext.getCanvasState() === CanvasState.idle) {
+		if (sketchStore.getCanvasState() === CanvasState.idle) {
 			init()
 		}
 	}
 
 	function pause() {
 		cancelAnimationFrame(frame)
-		sketchContext.update(PlayerEvent.pause)
 	}
 
-	function updateGeometry(payload: {value: GeometryProps}) {
-		context = payload.value
+	function updateGeometry(payload: {
+		fieldOfView: number
+		geometry: GeometryProps
+	}) {
+		sketchStore.update(ControlsEvent.update)
+		context = payload.geometry
 		scene.update(context, {filters})
-		sketchContext.update(ControlsEvent.update)
-	}
-
-	function updateFieldOfView(event: CustomEvent) {
-		context.fieldOfView = degToRad(event.detail.value)
 	}
 
 	function updateCamera(event: CustomEvent) {
-		context.cameraAngle = degToRad(event.detail.value)
+		context.fieldOfView = event.detail.value.fieldOfView
+		context.cameraAngle = event.detail.value.fieldOfView
 	}
 
 	function updateCanvas(payload: PlayerPayload) {
@@ -247,47 +184,10 @@
 				stop()
 				break
 		}
+		sketchStore.update(payload.event)
 	}
 
-	function updateChannel(selected: {name: string; pressed: boolean}) {
-		if (selected.pressed) {
-			filters.channels = selected.name
-		} else {
-			filters.channels = 'rgba'
-		}
-		if (canvas) {
-			scene.update(canvas, {...context, filters})
-			play()
-		}
-	}
-
-	function updateBlur(selected: {
-		value: number
-		name: string
-		pressed: boolean
-	}) {
-		if (selected.pressed) {
-			filters.blur = selected.value
-		} else {
-			filters.blur = 0
-		}
-		if (canvas) {
-			scene.update(canvas, {...context, filters})
-			play()
-		}
-	}
-
-	function updateEffects(selected: {name: string; pressed: boolean}) {
-		if (!selected.pressed) {
-			filters.effects = filters.effects.filter(
-				(filter: string) => filter !== selected.name,
-			)
-		} else if (!filters.effects.includes(selected.name)) {
-			filters.effects.push(selected.name)
-		}
-		if (filters.effects.length === 0) {
-			filters.effects = ['normal']
-		}
+	function updateFilters(filters: Filters) {
 		if (canvas) {
 			scene.update(canvas, {...context, filters})
 			play()
@@ -361,14 +261,14 @@
 				pause={updateCanvas}
 				clear={updateCanvas}
 				stop={updateCanvas}
-				initial={sketchContext.getPlayButtonState()}
+				initial={sketchStore.getPlayButtonState()}
 				{color}
 				size="xs"
 				{variant}
 				disabled={Boolean(feedback)}
 			/>
-			{#if isInteractive}
-				{#if meta?.type === 'matrix-2d'}
+			{#if meta && sketchStore.getState('player') === 'playing' && isInteractive}
+				{#if meta.type === 'matrix-2d'}
 					<Geometry2D
 						id={`${id}-context-2d`}
 						onupdate={updateGeometry}
@@ -382,83 +282,23 @@
 					<div
 						class={`l:${layout}:${size} th:${threshold} maki:block lg context bg:${background}`}
 					>
-						{#if meta?.camera}
-							<Camera
-								id={`${id}-camera-3d`}
-								bind:angle={cameraAngle}
-								on:input={updateCamera}
-								{color}
-								size={`xs l:burrito:${threshold}`}
-								{disabled}
-							/>
-							<FieldOfView
-								id={`${id}-fieldOfView`}
-								bind:fieldOfView
-								max={180}
-								on:input={updateFieldOfView}
-								{color}
-								size={`xs l:burrito:${threshold}`}
-								{disabled}
-							/>
-						{:else if meta?.type === 'matrix-3d'}
-							<FieldOfView
-								id={`${id}-fieldOfView`}
-								bind:fieldOfView
-								max={180}
-								on:input={updateFieldOfView}
-								{color}
-								size={`xs l:burrito:${threshold}`}
-								{disabled}
-							/>
-							<Geometry3D
-								id={`${id}-context-3d`}
+						{#if meta.camera}
+							<CameraControls id="camera-controls" onupdate={updateCamera} />
+						{:else if meta.type === 'matrix-3d'}
+							<GeometryControls
+								id="geometry-controls"
+								{canvas}
 								onupdate={updateGeometry}
-								threshold={breakpoint}
-								geometry={context}
-								canvasWidth={canvas.getBoundingClientRect().width}
-								canvasHeight={canvas.getBoundingClientRect().height}
-								{disabled}
+								{context}
 							/>
-						{:else if meta?.type === 'texture'}
-							{#if meta?.channels}
-								<ToggleMenu
-									id="channels"
-									size="xs"
-									mode="radio"
-									layout="switcher"
-									color="primary"
-									variant="bare"
-									items={channelMenuItems}
-									onupdate={updateChannel}
-									disabled={menuDisabled}
-								/>
-							{/if}
-							{#if meta?.blur}
-								<ToggleMenu
-									id="blur"
-									size="xs"
-									mode="radio"
-									layout="switcher"
-									color="accent"
-									variant="bare"
-									items={blurMenuItems}
-									onupdate={updateBlur}
-									disabled={menuDisabled}
-								/>
-							{/if}
-							{#if meta?.convolutions}
-								<ToggleMenu
-									id="convolutions"
-									size="xs"
-									mode="multiple"
-									layout="switcher"
-									color="accent"
-									variant="bare"
-									items={effectMenuItems}
-									onupdate={updateEffects}
-									disabled={menuDisabled}
-								/>
-							{/if}
+						{:else if meta.type === 'texture'}
+							<TextureControls
+								id="texture-controls"
+								channels={meta?.channels}
+								blur={meta?.blur}
+								convolutions={meta?.convolutions}
+								onupdate={updateFilters}
+							/>
 						{/if}
 					</div>
 				{/if}
@@ -466,7 +306,7 @@
 		{/if}
 	</aside>
 	{#if debug}
-		<Debug {meta} context={sketchContext} />
+		<Debug {meta} context={sketchStore} />
 	{/if}
 </div>
 

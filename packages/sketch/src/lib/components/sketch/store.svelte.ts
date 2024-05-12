@@ -124,11 +124,13 @@ export const SKETCH_TRANSITIONS: {[key: string]: any} = {
 }
 
 class SketchStore {
-	state = $state(SKETCH_STATE)
-	actions = $state(SKETCH_ACTIONS)
-	transitions = $state(SKETCH_TRANSITIONS)
+	state = SKETCH_STATE
+	actions = SKETCH_ACTIONS
+	transitions = SKETCH_TRANSITIONS
 
-	constructor() {}
+	constructor() {
+		console.log("SketchStore constructor:", this.state);
+	}
 
 	public getState(key: string): SketchState {
 		return this.state[key]
@@ -143,7 +145,7 @@ class SketchStore {
 	}
 
 	public getPlayButtonState(): PlayerState {
-		return this.state === this.state.player ? 'active' : 'inactive'
+		return this.state.player === PlayerState.playing ? 'active' : 'inactive'
 	}
 
 	public getControlsState(): ControlsState {
@@ -173,19 +175,18 @@ class SketchStore {
 		)
 	}
 
-	public getMenuDisabled(): boolean {
-		return (
-			this.state.canvas === CanvasState.idle ||
-			this.state.canvas === CanvasState.paused
-		)
+	public getMenuDisabled(): boolean | undefined {
+		return this.state.canvas === CanvasState.idle ||
+			this.state.canvas === CanvasState.paused ? true : undefined
 	}
 
-	public getIsInteractive(): boolean {
-		return (
-			this.state.canvas === CanvasState.playing ||
+	public getIsInteractive(): boolean | undefined {
+		console.log('getIsInteractive, this.state.canvas', this.state.canvas);
+
+		return this.state.canvas === CanvasState.playing ||
 			this.state.canvas === CanvasState.paused ||
 			this.state.canvas === CanvasState.ended
-		)
+			? true : undefined
 	}
 
 	public getTransition(key: string, event: string): string {
@@ -219,4 +220,6 @@ class SketchStore {
 	}
 }
 
-export default SketchStore
+const sketchStore = new SketchStore()
+
+export default sketchStore

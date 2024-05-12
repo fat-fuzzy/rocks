@@ -49,6 +49,7 @@
 
 	function updatePlayer(payload: TogglePayload) {
 		console.log('updatePlayer', payload)
+		playerStore.update(payload.id)
 		const tmp = playerStore.state
 		const playerPayload = {event: payload.id}
 		switch (payload.value) {
