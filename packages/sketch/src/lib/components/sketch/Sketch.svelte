@@ -7,7 +7,7 @@
 		PlayerPayload,
 		GeometryProps,
 	} from '$types'
-	import {CanvasState, SketchEvent, ControlsEvent} from '$types'
+	import {CanvasState, CanvasEvent, SketchEvent, ControlsEvent} from '$types'
 
 	import {onMount} from 'svelte'
 
@@ -173,7 +173,13 @@
 	}
 
 	function updateCanvas(payload: PlayerPayload) {
-		store.update(payload.event)
+		let event = payload.event
+		if (payload.id === 'play') {
+			event =
+				store.getState('canvas') === CanvasState.playing
+					? CanvasEvent.pause
+					: CanvasEvent.play
+		}
 		switch (payload.event) {
 			case 'play':
 				play()
@@ -188,6 +194,7 @@
 				stop()
 				break
 		}
+		store.update(event)
 	}
 
 	function updateFilters(filters: Filters) {

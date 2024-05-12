@@ -35,15 +35,15 @@ class PlayerStore {
 	}
 
 	public getState(): PlayerState {
-		return this.state?.player
+		return this.state.player
 	}
 
 	public getPlayState(): string {
-		return this.state?.player === PlayerState.playing ? 'active' : 'inactive'
+		return this.state.player === PlayerState.playing ? 'active' : 'inactive'
 	}
 
 	public getPlayLabel(): string {
-		const playState = this.state?.player === PlayerState.playing ? 'active' : 'inactive'
+		const playState = this.state.player === PlayerState.playing ? 'active' : 'inactive'
 		if (this.playSwitch && this.playSwitch[playState]) {
 			return this.playSwitch[playState].text
 		}
@@ -66,23 +66,23 @@ class PlayerStore {
 		return this.events['previous']
 	}
 
-	public getPlayDisabled(): PlayerState {
-		return this.state?.player === PlayerState.error ? true : undefined
+	public getPlayDisabled(): boolean | undefined {
+		return this.state.player === PlayerState.error ? true : undefined
 	}
 
-	public getStopDisabled(): PlayerState {
-		return this.state?.player === PlayerState.idle ||
-			this.state?.player === PlayerState.stopped ||
-			this.state?.player === PlayerState.ended
+	public getStopDisabled(): boolean | undefined {
+		return this.state.player === PlayerState.idle ||
+			this.state.player === PlayerState.stopped ||
+			this.state.player === PlayerState.ended
 			? true
 			: undefined
 	}
 
-	public getClearDisabled(): PlayerState {
+	public getClearDisabled(): boolean | undefined {
 		return this.events?.current === PlayerEvent.clear ||
-			this.state?.player === PlayerState.idle ||
-			this.state?.player === PlayerState.stopped ||
-			this.state?.player === PlayerState.ended
+			this.state.player === PlayerState.idle ||
+			this.state.player === PlayerState.stopped ||
+			this.state.player === PlayerState.ended
 			? true
 			: undefined
 	}

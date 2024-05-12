@@ -48,6 +48,7 @@
 	on:input={updateFieldOfView}
 	{color}
 	size={`xs l:burrito:${threshold}`}
+	disabled={store.getSketchDisabled()}
 />
 <Geometry3D
 	id={`${id}-context-3d`}

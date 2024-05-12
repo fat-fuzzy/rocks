@@ -1,9 +1,7 @@
 <script lang="ts">
-	import type {TogglePayload} from '$types'
 	import {blocks, actors} from '@fat-fuzzy/ui-s5'
-
 	import store from './store.svelte'
-	import {PlayerEvent, PlayerState} from './types.js'
+	import {type PlayerPayload, PlayerEvent, PlayerState} from './types.js'
 
 	const {Button, Switch} = blocks
 	const {switchActor} = actors
@@ -38,24 +36,29 @@
 	})
 	let playButtonActor = switchActor.actor(id, store.getPlayState(), 'play')
 
-	function updatePlayer(payload: TogglePayload) {
-		const tmp = store.state
-		const playerPayload = {event: payload.value}
+	function updatePlayer(payload: {id: string; value: string}) {
+		let event = payload.id
+		if (payload.id === 'play') {
+			event =
+				store.getState() === PlayerState.playing
+					? PlayerEvent.pause
+					: PlayerEvent.play
+		}
 		switch (payload.value) {
 			case PlayerEvent.play:
-				play(playerPayload)
+				play({event})
 				break
 			case PlayerEvent.pause:
-				pause(playerPayload)
+				pause({event})
 				break
 			case PlayerEvent.clear:
-				clear(playerPayload)
-				store.state = tmp
+				clear({event})
 				break
 			case PlayerEvent.stop:
-				stop(playerPayload)
+				stop({event})
 				break
 		}
+		store.update(event as PlayerEvent)
 	}
 </script>
 

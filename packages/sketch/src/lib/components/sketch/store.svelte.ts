@@ -65,14 +65,7 @@ class SketchStore {
 			this.state.canvas === CanvasState.paused ? true : undefined
 	}
 
-	public getFiltersDisabled(): boolean | undefined {
-		return this.state.canvas === CanvasState.idle ||
-			this.state.canvas === CanvasState.paused ? true : undefined
-	}
-
 	public getIsInteractive(): boolean | undefined {
-		console.log('getIsInteractive, this.state.canvas', this.state.canvas);
-
 		return this.state.canvas === CanvasState.playing ||
 			this.state.canvas === CanvasState.paused ||
 			this.state.canvas === CanvasState.ended

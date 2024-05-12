@@ -106,7 +106,7 @@
 		variant="bare"
 		items={channelMenuItems}
 		onupdate={updateChannel}
-		disabled={store.getFiltersDisabled()}
+		disabled={store.getSketchDisabled()}
 	/>
 {/if}
 {#if blur}
@@ -119,7 +119,7 @@
 		variant="bare"
 		items={blurMenuItems}
 		onupdate={updateBlur}
-		disabled={store.getFiltersDisabled()}
+		disabled={store.getSketchDisabled()}
 	/>
 {/if}
 {#if convolutions}
@@ -132,6 +132,6 @@
 		variant="bare"
 		items={effectMenuItems}
 		onupdate={updateEffects}
-		disabled={store.getFiltersDisabled()}
+		disabled={store.getSketchDisabled()}
 	/>
 {/if}
