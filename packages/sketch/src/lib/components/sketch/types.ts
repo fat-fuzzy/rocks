@@ -7,10 +7,14 @@ import {
 	ControlsAction,
 	CanvasState,
 	CanvasAction,
-	type Filters
+	type Filters,
 } from '$types'
 
-import {PlayerEvent, PlayerState, PlayerAction} from '$lib/components/player/types'
+import {
+	PlayerEvent,
+	PlayerState,
+	PlayerAction,
+} from '$lib/components/player/types'
 
 const DEFAULT_FILTERS: Filters = {
 	channels: 'rgba',
@@ -32,9 +36,8 @@ const SKETCH_STATE: {[key: string]: any} = {
 	events: {
 		previous: '',
 		current: '',
-	}
+	},
 }
-
 
 const SKETCH_ACTIONS: {[key: string]: any} = {
 	sketch: {
@@ -95,12 +98,12 @@ const SKETCH_TRANSITIONS: {[key: string]: any} = {
 		[CanvasState.playing]: {
 			[PlayerEvent.pause]: {state: CanvasState.paused},
 			[PlayerEvent.stop]: {state: CanvasState.idle},
-			[PlayerEvent.clear]: {state: CanvasState.idle},
+			[PlayerEvent.clear]: {state: CanvasState.playing},
 		},
 		[CanvasState.paused]: {
 			[PlayerEvent.play]: {state: CanvasState.playing},
 			[PlayerEvent.stop]: {state: CanvasState.idle},
-			[PlayerEvent.clear]: {state: CanvasState.idle},
+			[PlayerEvent.clear]: {state: CanvasState.paused},
 		},
 	},
 	controls: {

@@ -1,4 +1,3 @@
-
 export enum PlayerState {
 	idle = 'idle',
 	error = 'error',
@@ -31,10 +30,10 @@ export enum PlayerError {
 
 export type PlayerPayload = {event: PlayerEvent; state: PlayerState}
 export type PlayerSwitchState = {
-	value: PlayerEvent.pause | PlayerEvent.play,
-	text: string,
-	asset: string,
-	variant: string,
+	value: PlayerEvent.pause | PlayerEvent.play
+	text: string
+	asset: string
+	variant: string
 	onclick?: (payload: PlayerPayload) => void
 }
 
@@ -43,7 +42,7 @@ const PLAYER_STATE: {[key: string]: any} = {
 	errors: [],
 }
 
-const PLAYER_SWITCH: {[state:string]: PlayerSwitchState} = {
+const PLAYER_SWITCH: {[state: string]: PlayerSwitchState} = {
 	active: {
 		value: PlayerEvent.pause,
 		text: 'Pause',
@@ -55,7 +54,7 @@ const PLAYER_SWITCH: {[state:string]: PlayerSwitchState} = {
 		text: 'Play',
 		asset: 'emoji:play',
 		variant: 'fill',
-	}
+	},
 }
 
 const PLAYER_EVENTS: {[key: string]: string} = {
@@ -103,5 +102,5 @@ export default {
 	PLAYER_EVENTS,
 	PLAYER_ACTIONS,
 	PLAYER_TRANSITIONS,
-	PLAYER_SWITCH
+	PLAYER_SWITCH,
 }
