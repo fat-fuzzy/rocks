@@ -1,7 +1,6 @@
 [class*='state:'].canvas {
-	--current-border-color: var(--current-primary-light, var(--color-neutral));
 	position: relative;
-	border: var(--border-width) dotted var(--current-border-color);
+	border: var(--border-width-lg) dotted var(--ink);
 }
 
 .scene {
@@ -9,18 +8,17 @@
 }
 
 .state\:playing {
-	background-color: var(--current-polar);
+	background-color: var(--bg-color);
 }
 
 .state\:paused,
 .state\:feedback,
 .state\:idle,
 .state\:stopped {
-	background-color: var(--current-bg-color);
+	background-color: var(--shade);
 }
 
 .state\:idle {
-	--current-border-color: var(--current-primary, var(--color-neutral));
 	display: flex;
 	align-items: center;
 	justify-content: center;
