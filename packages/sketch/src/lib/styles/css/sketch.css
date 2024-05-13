@@ -7,14 +7,14 @@
 	position: relative;
 }
 
-.state\:playing {
+.state\:play {
 	background-color: var(--bg-color);
 }
 
-.state\:paused,
+.state\:pause,
 .state\:feedback,
 .state\:idle,
-.state\:stopped {
+.state\:stop {
 	background-color: var(--shade);
 }
 
@@ -35,8 +35,9 @@
 	filter: grayscale(65%) opacity(35%) blur(1px);
 }
 
-.state\:playing::before,
-.state\:paused::before,
+.state\:play::before,
+.state\:clear::before,
+.state\:pause::before,
 .state\:idle::before {
 	height: fit-content;
 	position: absolute;

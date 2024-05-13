@@ -46,7 +46,7 @@
 		title,
 		asset,
 		dimensions = 'video',
-		layer = 'layer', // if 'layer' the canvas will appear on a layer (with drop shadow)
+		layer = '0', // if 'layer' the canvas will appear on a layer (with drop shadow)
 		color,
 		size,
 		variant = 'outline',
@@ -69,7 +69,7 @@
 	let currentAsset = $derived(
 		store.state.canvas === CanvasState.idle && asset
 			? asset
-			: `emoji:${store.state.canvas}`,
+			: `emoji:${store.state.events.current}`,
 	)
 
 	let currentState = $derived(
@@ -138,6 +138,7 @@
 		reset()
 		init()
 		play()
+		//TODO: test this VS transitions
 		if (prevCanvasState === CanvasState.paused) {
 			pause()
 			store.update(prevCanvasState)
@@ -154,6 +155,7 @@
 	}
 
 	function pause() {
+		//TODO: pause scene
 		cancelAnimationFrame(frame)
 	}
 
@@ -161,12 +163,12 @@
 		fieldOfView?: number
 		geometry: GeometryProps
 	}) {
-		store.update(ControlsEvent.update)
 		context = {
 			...payload.geometry,
 			fieldOfView: degToRad(payload.fieldOfView ?? 60),
 		}
 		scene.update({...context, filters})
+		store.update(ControlsEvent.update)
 	}
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
