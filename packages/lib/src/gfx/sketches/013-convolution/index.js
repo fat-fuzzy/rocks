@@ -244,7 +244,7 @@ function loadProgram() {
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
 
-	return programInfo
+	return programInfo.context
 }
 
 function update({filters}) {

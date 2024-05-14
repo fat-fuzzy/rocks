@@ -125,6 +125,8 @@ function main() {
 		}
 	})
 	gl.bindVertexArray(null)
+
+	return programInfo.context
 }
 
 function loadProgram() {

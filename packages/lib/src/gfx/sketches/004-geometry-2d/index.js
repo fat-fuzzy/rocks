@@ -37,7 +37,9 @@ function main(canvas) {
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
-		alert('Unable to initialize WebGL. Your browser or machine may not support it.')
+		alert(
+			'Unable to initialize WebGL. Your browser or machine may not support it.',
+		)
 		return
 	}
 
@@ -69,10 +71,13 @@ function main(canvas) {
 			// bind u_scale
 			u_scale: gl.getUniformLocation(program, 'u_scale'),
 		},
-		context: geometries.getGeometryDefaults(canvas.clientWidth, canvas.clientHeight),
+		context: geometries.getGeometryDefaults(
+			canvas.clientWidth,
+			canvas.clientHeight,
+		),
 	}
 	buffers = initBuffers(gl, programInfo)
-	return programInfo
+	return programInfo.context
 }
 
 function draw() {

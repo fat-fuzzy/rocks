@@ -37,7 +37,9 @@ function main(canvas) {
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
-		throw new Error('Unable to initialize WebGL. Your browser or machine may not support it.')
+		throw new Error(
+			'Unable to initialize WebGL. Your browser or machine may not support it.',
+		)
 	}
 
 	clear()
@@ -68,7 +70,7 @@ function main(canvas) {
 		context: geometries.getGeometryCamera3D(),
 	}
 	buffers = initBuffers(gl)
-	return programInfo
+	return programInfo.context
 }
 
 function draw() {

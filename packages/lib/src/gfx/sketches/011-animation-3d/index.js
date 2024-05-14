@@ -70,9 +70,8 @@ function loadProgram(canvas) {
 		context: geometries.getGeometryAnimation3D(),
 	}
 	buffers = initBuffers(gl, programInfo)
-	return programInfo
+	return programInfo.context
 }
-
 
 function draw(now) {
 	// Calculate frame rate
@@ -86,7 +85,8 @@ function draw(now) {
 	drawScene(gl, programInfo, buffers, vao)
 
 	// Rotate the angle
-	programInfo.context.rotation[1] += programInfo.context.animationSpeed * deltaTime
+	programInfo.context.rotation[1] +=
+		programInfo.context.animationSpeed * deltaTime
 	update(programInfo.context)
 }
 

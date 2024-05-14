@@ -95,9 +95,8 @@
 					context = {...context, ...scene.init(canvas)}
 				}
 				context = {...context, ...scene.main(canvas, context)}
-				if (meta?.type === 'texture') {
-					scene.update({...context, filters})
-				}
+
+				scene.update({...context, filters})
 				store.update(SketchEvent.loadOk)
 			} catch (e: any) {
 				store.update(SketchEvent.loadNok)
@@ -234,7 +233,6 @@
 					aria-label={title}
 					data-test="canvas"
 					bind:this={canvas}
-					onmousedown={handleMouseEvent}
 					onmousemove={handleMouseEvent}
 					onmouseup={handleMouseEvent}
 				>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onMount} from 'svelte'
+	import {onMount, type Snippet} from 'svelte'
 	import {enhance} from '$app/forms'
 	import type {GeometryProps} from '$types'
 
@@ -23,7 +23,8 @@
 		layout?: string
 		threshold?: string
 		disabled?: boolean
-		onupdate: (payload: {geometry: GeometryProps}) => void
+		onupdate: (payload: {geometry: GeometryProps}) => void,
+		children?: Snippet
 	}
 
 	let {
@@ -41,6 +42,7 @@
 		threshold,
 		disabled,
 		onupdate,
+		children
 	}: Props = $props()
 
 	function degToRad(degrees: number) {
@@ -56,16 +58,16 @@
 	let {scale, translation, rotation} = $derived(geometry)
 
 	// input attributes
-	let angle = $state(rotation ?? 0)
+	let angle = rotation ?? 0
 
 	// Position
-	let [coordX, coordY] = $state(translation ?? [0, 0])
+	let maxX = canvasWidth
+	let maxY = canvasHeight
+	let [coordX, coordY] = translation ?? [0, 0]
 
 	// Scale
-	let [scaleX, scaleY] = $state(scale ?? [0, 0])
+	let [scaleX, scaleY] = scale ?? [1, 1]
 
-	let maxX = $state(canvasWidth)
-	let maxY = $state(canvasHeight)
 	let payload = $derived({
 		color: context.color,
 		translation: [coordX, coordY],
@@ -144,7 +146,9 @@
 			</Button>
 		</div>
 	{:then}
-		<slot />
+		{#if children}
+			{@render children()}
+		{/if}
 	{/await}
 </form>
 
