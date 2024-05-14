@@ -49,27 +49,27 @@
 
 	let update = () =>
 		onupdate({
-			geometry,
+			geometry: payload,
 		})
 
-	let {scale, translation, rotation} = $state(context)
+	let geometry = $state(context)
+	let {scale, translation, rotation} = $derived(geometry)
 
 	// input attributes
-	let [angle] = $state(rotation ?? [])
+	let angle = $state(rotation ?? 0)
 
 	// Position
-	let [coordX, coordY] = $state(translation ?? [])
+	let [coordX, coordY] = $state(translation ?? [0, 0])
 
 	// Scale
-	let [scaleX, scaleY] = $state(scale ?? [])
+	let [scaleX, scaleY] = $state(scale ?? [0, 0])
 
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
-	let rotatedAngle = $derived(degToRad(angle))
-	let geometry = $derived({
+	let payload = $derived({
 		color: context.color,
 		translation: [coordX, coordY],
-		rotation: [rotatedAngle],
+		rotation: [degToRad(angle)],
 		scale: [scaleX, scaleY],
 	})
 
