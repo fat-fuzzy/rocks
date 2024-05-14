@@ -114,6 +114,9 @@
 	}
 
 	function play() {
+		if (store.state.canvas === CanvasState.idle) {
+			init()
+		}
 		time = Date.now()
 		if (meta?.type !== 'texture') {
 			loop(time)
@@ -122,6 +125,7 @@
 				scene.draw(time)
 			})
 		}
+		store.update(CanvasEvent.play)
 	}
 
 	function reset() {
