@@ -25,7 +25,7 @@ let imgWidth = 620
 let imgHeight = 518
 // let imgHeight = 620
 // let imgWidth = 518
-let imagePath = `${host}/${imageAssetsPath}/${filename}`
+let url = `${host}/${imageAssetsPath}/${filename}`
 let gl
 let program
 let vao
@@ -81,15 +81,8 @@ function init(canvas) {
 			'Unable to initialize WebGL. Your browser or machine may not support it.',
 		)
 	}
-	// console.log('init canvas.clientWidth', gl.canvas.clientWidth)
-	// console.log('init canvas.clientHeight', gl.canvas.clientHeight)
-
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
-	image = new Image()
-	image.src = imagePath
 
 	return {
-		image,
 		translation: [0, 0],
 		width: imgWidth,
 		height: imgHeight,
@@ -98,25 +91,33 @@ function init(canvas) {
 	}
 }
 
-function main(canvas, context) {
-	// console.log('main canvas.clientWidth', gl.canvas.clientWidth)
-	// console.log('main canvas.clientHeight', gl.canvas.clientHeight)
-	image.onload = () => {
-		programInfo = loadProgram()
-		programInfo.context = loadTexture(image, context)
-		// Create a vertex array object (attribute state)
-		vao = gl.createVertexArray()
+function loadImage(url, callback) {
+	let image = new Image()
+	image.src = url
+	image.onload = callback
 
-		// Bind the attribute/buffer set we want.
-		gl.bindVertexArray(vao)
+	return image
+}
 
-		updateBuffers(gl, programInfo, buffers)
-		setPositionAttribute(gl, buffers, programInfo)
-		setTextureAttribute(gl, buffers, programInfo)
+function render() {
+	programInfo = loadProgram()
+	// Create a vertex array object (attribute state)
+	vao = gl.createVertexArray()
+	// Bind the attribute/buffer set we want.
+	gl.bindVertexArray(vao)
+	programInfo.context = loadTexture(image)
 
-		// Unbind the VAO when we're done drawing
-		gl.bindVertexArray(null)
-	}
+	updateBuffers(gl, programInfo, buffers)
+	setPositionAttribute(gl, buffers, programInfo)
+	setTextureAttribute(gl, buffers, programInfo)
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
+}
+
+function main() {
+	image = loadImage(url, render)
+	return programInfo.context
 }
 
 function draw(time) {
@@ -138,7 +139,7 @@ function draw(time) {
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadTexture(image, context) {
+function loadTexture(image) {
 	texture = gl.createTexture()
 	// make unit 0 the active texture uint
 	// (ie, the unit all other texture commands will affect)
@@ -202,7 +203,7 @@ function loadTexture(image, context) {
 		translation: [0, 0],
 		width: imgWidth,
 		height: imgHeight,
-		effects: context.filters?.effects ?? ['normal'],
+		effects: ['normal'],
 		level,
 	}
 }
@@ -222,7 +223,7 @@ function loadProgram() {
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
 
-	programInfo = {
+	let _programInfo = {
 		program,
 		attribLocations: {
 			a_position: gl.getAttribLocation(program, 'a_position'),
@@ -237,14 +238,21 @@ function loadProgram() {
 			u_flipY: gl.getUniformLocation(program, 'u_flipY'),
 			u_level: gl.getUniformLocation(program, 'u_level'),
 		},
+		context: {
+			image,
+			translation: [0, 0],
+			width: imgWidth,
+			height: imgHeight,
+			effects: ['normal'],
+			level,
+		},
 	}
 
 	buffers = initBuffers(gl)
+	setPositionAttribute(gl, buffers, _programInfo)
+	setTextureAttribute(gl, buffers, _programInfo)
 
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
-
-	return programInfo.context
+	return _programInfo
 }
 
 function update({filters}) {

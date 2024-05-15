@@ -144,7 +144,7 @@ function loadProgram() {
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
 
-	programInfo = {
+	let _programInfo = {
 		program,
 		attribLocations: {
 			a_position: gl.getAttribLocation(program, 'a_position'),
@@ -160,14 +160,19 @@ function loadProgram() {
 			// u_flipY: gl.getUniformLocation(program, 'u_flipY'),
 			// u_level: gl.getUniformLocation(program, 'u_level'),
 		},
+		context: {
+			effects: ['normal'],
+			width: imgWidth,
+			height: imgHeight,
+			level,
+		},
 	}
 
 	buffers = initBuffers(gl)
+	setPositionAttribute(gl, buffers, _programInfo)
+	setTextureAttribute(gl, buffers, _programInfo)
 
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
-
-	return programInfo
+	return _programInfo
 }
 
 function loadImage(url, callback) {

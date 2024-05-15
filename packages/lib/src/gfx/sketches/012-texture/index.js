@@ -139,6 +139,7 @@ function render() {
 
 function main() {
 	image = loadImage(url, render)
+	return programInfo.context
 }
 
 function draw(t) {
@@ -231,7 +232,7 @@ function loadProgram() {
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
-	programInfo = {
+	let _programInfo = {
 		program,
 		attribLocations: {
 			a_position: gl.getAttribLocation(program, 'a_position'),
@@ -247,10 +248,10 @@ function loadProgram() {
 	}
 
 	buffers = initBuffers(gl)
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
+	setPositionAttribute(gl, buffers, _programInfo)
+	setTextureAttribute(gl, buffers, _programInfo)
 
-	return programInfo.context
+	return _programInfo
 }
 
 function update({filters}) {
