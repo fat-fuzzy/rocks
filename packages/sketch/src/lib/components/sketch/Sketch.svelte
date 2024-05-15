@@ -215,10 +215,6 @@
 		}
 	}
 
-	function handleMouseEvent(event: MouseEvent) {
-		scene.update({...context, filters})
-	}
-
 	onMount(() => {
 		init()
 	})
@@ -227,34 +223,17 @@
 <div class={`l:grid:sketch bp:xs`}>
 	<div class="scene">
 		<div class={frameClasses}>
-			{#if scene?.meta?.input === 'mouse'}
-				<canvas
-					id={`${id}.canvas`}
-					aria-label={title}
-					data-test="canvas"
-					bind:this={canvas}
-					onmousemove={handleMouseEvent}
-					onmouseup={handleMouseEvent}
-				>
-					<p class={`feedback emoji:default ${size} content`}>
-						The canvas element needs JavaScript enabled to display and interact
-						with animations
-					</p>
-				</canvas>
-			{:else}
-				<canvas
-					id={`${id}.canvas`}
-					aria-label={title}
-					data-test="canvas"
-					bind:this={canvas}
-				>
-					<p class={`feedback emoji:default ${size} content`}>
-						The canvas element needs JavaScript enabled to display and interact
-						with animations
-					</p>
-				</canvas>
-			{/if}
-
+			<canvas
+				id={`${id}.canvas`}
+				aria-label={title}
+				data-test="canvas"
+				bind:this={canvas}
+			>
+				<p class={`feedback emoji:default ${size} content`}>
+					The canvas element needs JavaScript enabled to display and interact
+					with animations
+				</p>
+			</canvas>
 			{#if feedback.length > 0}
 				{#each feedback as feedback}
 					<pre

@@ -58,15 +58,15 @@
 	let {scale, translation, rotation} = $derived(geometry)
 
 	// input attributes
-	let angle = rotation ?? 0
+	let angle = $state(rotation ?? 0)
 
 	// Position
-	let maxX = canvasWidth
-	let maxY = canvasHeight
-	let [coordX, coordY] = translation ?? [0, 0]
+	let maxX = $state(canvasWidth)
+	let maxY = $state(canvasHeight)
+	let [coordX, coordY] = $state(translation ?? [0, 0])
 
 	// Scale
-	let [scaleX, scaleY] = scale ?? [1, 1]
+	let [scaleX, scaleY] = $state(scale ?? [1, 1])
 
 	let payload = $derived({
 		color: context.color,

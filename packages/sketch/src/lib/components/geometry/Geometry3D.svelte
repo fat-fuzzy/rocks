@@ -46,15 +46,15 @@
 	let minZ = -1000
 
 	// Position
-	let maxX = canvasWidth
-	let maxY = canvasHeight
-	let [coordX, coordY, coordZ] = translation ?? [0, 0, 0]
+	let maxX = $state(canvasWidth)
+	let maxY = $state(canvasHeight)
+	let [coordX, coordY, coordZ] = $state(translation ?? [0, 0, 0])
 
 	// Scale
-	let [scaleX, scaleY, scaleZ] = scale ?? [1, 1, 1]
+	let [scaleX, scaleY, scaleZ] = $state(scale ?? [1, 1, 1])
 
 	// Rotation
-	let [angleX, angleY, angleZ] = [190, 40, 30] // TODO: fix this
+	let [angleX, angleY, angleZ] = $state([190, 40, 30]) // TODO: fix this
 
 	let payload = $derived({
 		...context,
