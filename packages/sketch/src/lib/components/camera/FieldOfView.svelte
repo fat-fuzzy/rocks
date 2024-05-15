@@ -1,26 +1,35 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
-
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {InputRange} = blocks
 
-	const dispatch = createEventDispatcher()
+	type Props = {
+		id?: string
+		label?: string
+		size?: string
+		color?: string
+		fieldOfView: number
+		min?: number
+		max?: number
+		step?: number
+		disabled?: boolean
+		onupdate: (payload: {value: number}) => void
+	}
 
-	export let color = ''
+	let {
+		color = '',
+		size = 'xxs',
+		id = 'fieldOfView',
+		label = 'Field of View',
+		fieldOfView = $bindable(60),
+		min = 1,
+		max = 179,
+		step = 1,
+		disabled,
+		onupdate,
+	}: Props = $props()
 
-	export let size = 'xxs'
-	export let id = 'fieldOfView'
-	export let label = 'Field of View'
-	export let fieldOfView = 60
-	export let min = 1
-	export let max = 179
-	export let step = 1
-	export let disabled: boolean | undefined = undefined
-
-	function update() {
-		dispatch('input', {
-			value: fieldOfView,
-		})
+	function updateFoV() {
+		onupdate({value: fieldOfView})
 	}
 </script>
 
@@ -31,7 +40,7 @@
 	{label}
 	{max}
 	{min}
-	oninput={update}
+	oninput={updateFoV}
 	{size}
 	{step}
 	{color}

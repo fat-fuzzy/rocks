@@ -5,7 +5,7 @@
 	import Scale from '$lib/components/geometry/Scale.svelte'
 	import Rotation from '$lib/components/geometry/Rotation.svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
-	import {onMount} from 'svelte'
+	import {onMount, type Snippet} from 'svelte'
 	const {Button} = blocks
 
 	type Props = {
@@ -15,7 +15,8 @@
 		context: GeometryProps
 		disabled?: boolean
 		threshold?: string
-		onupdate: (payload: {geometry: GeometryProps}) => void
+		onupdate: (payload: {geometry: GeometryProps}) => void,
+		children?: Snippet
 	}
 
 	let {
@@ -26,6 +27,7 @@
 		threshold,
 		disabled,
 		onupdate,
+		children
 	}: Props = $props()
 
 	function degToRad(degrees: number) {
@@ -141,9 +143,10 @@
 		/>
 	</div>
 {:then}
-	<slot />
+	{#if children}
+		{@render children()}
+	{/if}
 {/await}
-
 <style>
 	@import '../../styles/css/geometry.css';
 </style>

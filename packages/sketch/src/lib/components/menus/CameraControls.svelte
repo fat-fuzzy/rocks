@@ -19,26 +19,26 @@
 
 	let fieldOfView = $state(60)
 	let cameraAngle = $state(60)
-	let payload: SceneContext = $derived({
+	let updated: SceneContext = $derived({
 		fieldOfView,
 		cameraAngle,
 	})
 
-	function updateFieldOfView(event: CustomEvent) {
-		fieldOfView = event.detail.value
-		onupdate(payload)
+	function updateFieldOfView(payload: {value: number}) {
+		fieldOfView = payload.value
+		onupdate(updated)
 	}
 
-	function updateCamera(event: CustomEvent) {
-		cameraAngle = event.detail.value
-		onupdate(payload)
+	function updateCamera(payload: {value: number}) {
+		cameraAngle = payload.value
+		onupdate(updated)
 	}
 </script>
 
 <Camera
 	id={`${id}-camera-3d`}
-	bind:angle={cameraAngle}
-	on:input={updateCamera}
+	angle={cameraAngle}
+	onupdate={updateCamera}
 	{color}
 	size={`xs l:burrito:${threshold}`}
 	disabled={store.getSketchDisabled()}
@@ -46,9 +46,9 @@
 
 <FieldOfView
 	id={`${id}-fieldOfView`}
-	bind:fieldOfView
+	{fieldOfView}
 	max={180}
-	on:input={updateFieldOfView}
+	onupdate={updateFieldOfView}
 	{color}
 	size={`xs l:burrito:${threshold}`}
 	disabled={store.getSketchDisabled()}

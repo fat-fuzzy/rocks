@@ -25,31 +25,32 @@
 
 	let geometry: SceneContext = $state(context)
 	let fieldOfView = $state(60)
-	let payload: SceneContext = $derived({
+	let updated: SceneContext = $derived({
 		fieldOfView,
 		geometry,
 	})
 
 	function updateGeometry(payload: {geometry: GeometryProps}) {
 		geometry = payload.geometry
-		onupdate(payload)
+		onupdate(updated)
 	}
 
-	function updateFieldOfView(event: CustomEvent) {
-		fieldOfView = event.detail.value
-		onupdate(payload)
+	function updateFieldOfView(payload: {value: number}) {
+		fieldOfView = payload.value
+		onupdate(updated)
 	}
 </script>
 
 <FieldOfView
 	id={`${id}-fieldOfView`}
-	bind:fieldOfView
+	{fieldOfView}
 	max={180}
-	on:input={updateFieldOfView}
+	onupdate={updateFieldOfView}
 	{color}
 	size={`xs l:burrito:${threshold}`}
 	disabled={store.getSketchDisabled()}
 />
+
 <Geometry3D
 	id={`${id}-context-3d`}
 	onupdate={updateGeometry}

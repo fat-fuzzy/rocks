@@ -1,26 +1,35 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
-
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {InputRange} = blocks
 
-	const dispatch = createEventDispatcher()
+	type Props = {
+		id?: string
+		label?: string
+		size?: string
+		color?: string
+		angle: number
+		min?: number
+		max?: number
+		step?: number
+		disabled?: boolean
+		onupdate: (payload: {value: number}) => void
+	}
 
-	export let color = ''
+	let {
+		color = '',
+		size = 'xxs',
+		id = 'camera',
+		label = 'Camera',
+		angle = $bindable(60),
+		min = 0,
+		max = 360,
+		step = 0.01,
+		disabled,
+		onupdate,
+	}: Props = $props()
 
-	export let size = 'xxs'
-	export let id = 'camera'
-	export let label = 'Camera'
-	export let angle = 60
-	export let min = -360
-	export let max = 360
-	export let step = 0.01
-	export let disabled: boolean | undefined = undefined
-
-	function update() {
-		dispatch('input', {
-			value: angle,
-		})
+	function updateCamera() {
+		onupdate({value: angle})
 	}
 </script>
 
@@ -31,7 +40,7 @@
 	{label}
 	{max}
 	{min}
-	oninput={update}
+	oninput={updateCamera}
 	{size}
 	{step}
 	{color}
