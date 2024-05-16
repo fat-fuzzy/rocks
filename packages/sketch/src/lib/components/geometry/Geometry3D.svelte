@@ -50,6 +50,8 @@
 	// Position
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
+	let minX = $state(-canvasWidth)
+	let minY = $state(-canvasHeight)
 	let [coordX, coordY, coordZ] = $state(translation ?? [0, 0, 0])
 
 	// Scale
@@ -76,7 +78,9 @@
 	bind:coordY
 	bind:coordZ
 	bind:maxX
+	bind:minX
 	bind:maxY
+	bind:minY
 	bind:maxZ
 	bind:minZ
 	onupdate={update}

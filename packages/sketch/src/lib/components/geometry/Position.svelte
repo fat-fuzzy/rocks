@@ -11,7 +11,9 @@
 		coordY: number
 		coordZ?: number
 		maxX: number
+		minX?: number
 		maxY: number
+		minY?: number
 		maxZ?: number
 		minZ?: number
 		disabled?: boolean
@@ -22,13 +24,15 @@
 		color,
 		id = 'position',
 		size = 'xxs',
-		coordX = $bindable(),
-		coordY = $bindable(),
-		coordZ = $bindable(),
-		maxX = $bindable(),
-		maxY = $bindable(),
-		maxZ = $bindable(),
-		minZ = $bindable(),
+		coordX = $bindable(0),
+		coordY = $bindable(0),
+		coordZ = $bindable(0),
+		maxX = $bindable(0),
+		minX = $bindable(0),
+		maxY = $bindable(0),
+		minY = $bindable(0),
+		maxZ = $bindable(0),
+		minZ = $bindable(0),
 		disabled,
 		onupdate,
 	}: Props = $props()
@@ -59,7 +63,7 @@
 		name={`${id}-x`}
 		label="x"
 		max={maxX}
-		min={0}
+		min={minX}
 		step={0.01}
 		oninput={updateX}
 		{size}
@@ -73,7 +77,7 @@
 		name={`${id}-y`}
 		label="y"
 		max={maxY}
-		min={0}
+		min={minY}
 		step={0.01}
 		oninput={updateY}
 		{size}

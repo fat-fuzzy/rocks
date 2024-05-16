@@ -20,9 +20,6 @@
 	let {id, color, breakpoint, threshold, context, canvas, onupdate}: Props =
 		$props()
 
-	let width = $state(canvas?.getBoundingClientRect().width)
-	let height = $state(canvas?.getBoundingClientRect().width)
-
 	let geometry: SceneContext = $state(context)
 	let fieldOfView = $state(60)
 	let updated: SceneContext = $derived({
@@ -56,7 +53,7 @@
 	onupdate={updateGeometry}
 	threshold={breakpoint}
 	{context}
-	canvasWidth={width}
-	canvasHeight={height}
+	canvasWidth={canvas.getBoundingClientRect().width}
+	canvasHeight={canvas.getBoundingClientRect().height}
 	disabled={store.getSketchDisabled()}
 />
