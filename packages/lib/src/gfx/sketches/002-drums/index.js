@@ -9,7 +9,7 @@ import utils from '../../lib/utils'
 import geometries from '../../lib/geometries'
 import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
-import {initBuffers} from './init-buffers'
+import {initBuffers} from '../../lib/buffers/rectangle-2d'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader'
@@ -37,7 +37,9 @@ function main(canvas) {
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
-		alert('Unable to initialize WebGL. Your browser or machine may not support it.')
+		alert(
+			'Unable to initialize WebGL. Your browser or machine may not support it.',
+		)
 		return
 	}
 	clear()
@@ -63,7 +65,10 @@ function main(canvas) {
 			// u_translation: gl.getUniformLocation(program, 'u_translation'),
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
-			context: geometries.getGeometryRandom(canvas.clientWidth, canvas.clientHeight),
+			context: geometries.getGeometryRandom(
+				canvas.clientWidth,
+				canvas.clientHeight,
+			),
 		},
 	}
 	buffers = initBuffers(gl, programInfo)

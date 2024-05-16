@@ -9,7 +9,7 @@ import utils from '../../lib/utils'
 import geometries from '../../lib/geometries'
 import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
-import {initBuffers} from './init-buffers'
+import {initBuffers} from '../../lib/buffers/geometry-default-2d'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-scale-2d'

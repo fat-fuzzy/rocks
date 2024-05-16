@@ -1,6 +1,6 @@
-import utils from '../../lib/utils'
+import utils from '../utils'
 
-function initBuffers(gl, programInfo) {
+export function initBuffers(gl, programInfo) {
 	const x = utils.randomInt(gl.canvas.clientWidth)
 	const y = utils.randomInt(gl.canvas.clientHeight)
 	const width = utils.randomInt(gl.canvas.clientWidth)
@@ -48,4 +48,3 @@ function initColorBuffer(gl, colors) {
 
 	return colorBuffer
 }
-export {initBuffers}
