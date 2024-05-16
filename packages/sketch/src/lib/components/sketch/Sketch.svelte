@@ -61,6 +61,8 @@
 	let feedback = $state([])
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
+	let width = $state(canvas?.getBoundingClientRect().width)
+	let height = $state(canvas?.getBoundingClientRect().width)
 	let context: SceneContext = $state({})
 
 	let frame: number
@@ -262,8 +264,8 @@
 						onupdate={updateGeometry}
 						threshold={breakpoint}
 						{context}
-						canvasWidth={canvas.getBoundingClientRect().width}
-						canvasHeight={canvas.getBoundingClientRect().height}
+						canvasWidth={width}
+						canvasHeight={height}
 						disabled={store.getSketchDisabled()}
 					/>
 				{:else}

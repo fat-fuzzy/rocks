@@ -58,7 +58,7 @@
 	let {scale, translation, rotation} = $derived(geometry)
 
 	// input attributes
-	let angle = $state(rotation ?? 0)
+	let angle = $state(0)
 
 	// Position
 	let maxX = $state(canvasWidth)
