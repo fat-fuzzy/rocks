@@ -83,13 +83,11 @@ function init(canvas) {
 	}
 
 	return {
-		context: {
-			translation: [0, 0],
-			width: imgWidth,
-			height: imgHeight,
-			effects: ['normal'],
-			level,
-		},
+		translation: [0, 0],
+		width: imgWidth,
+		height: imgHeight,
+		effects: ['normal'],
+		level,
 	}
 }
 

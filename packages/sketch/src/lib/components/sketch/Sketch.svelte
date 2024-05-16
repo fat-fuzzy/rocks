@@ -93,10 +93,8 @@
 		store.update(SketchEvent.load)
 		if (canvas) {
 			try {
-				if (scene.init) {
-					context = {...context, ...scene.init(canvas)}
-				}
-				context = {...context, ...scene.main(canvas, context)}
+				context = scene.init(canvas)
+				context = scene.main(canvas)
 
 				scene.update({...context, filters})
 				store.update(SketchEvent.loadOk)

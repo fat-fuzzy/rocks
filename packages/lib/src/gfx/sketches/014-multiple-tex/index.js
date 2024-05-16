@@ -100,12 +100,10 @@ function init(canvas) {
 	}
 
 	return {
-		context: {
-			effects: ['normal'],
-			width: imgWidth,
-			height: imgHeight,
-			level,
-		},
+		effects: ['normal'],
+		width: imgWidth,
+		height: imgHeight,
+		level,
 	}
 }
 

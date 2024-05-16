@@ -114,9 +114,11 @@ function init(canvas) {
 	}
 
 	return {
-		translation: [0, 0],
-		width: 1,
-		height: 1,
+		context: {
+			translation: [0, 0],
+			width: 1,
+			height: 1,
+		},
 	}
 }
 
