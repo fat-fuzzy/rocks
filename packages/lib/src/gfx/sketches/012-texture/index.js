@@ -128,8 +128,8 @@ function loadImage(url, callback) {
 	return image
 }
 
-function render() {
-	programInfo = loadProgram()
+function render(canvas) {
+	programInfo = loadProgram(canvas)
 	programInfo.context = loadTexture(image)
 
 	updateBuffers(gl, programInfo, buffers)
@@ -137,8 +137,8 @@ function render() {
 	setTextureAttribute(gl, buffers, programInfo)
 }
 
-function main() {
-	image = loadImage(url, render)
+function main(canvas) {
+	image = loadImage(url, () => render(canvas))
 	return programInfo.context
 }
 
@@ -218,7 +218,7 @@ function loadTexture(image) {
 	}
 }
 
-function loadProgram() {
+function loadProgram(canvas) {
 	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
 
@@ -228,6 +228,8 @@ function loadProgram() {
 			gl.useProgram(program)
 		}
 	}
+
+	utils.resize(canvas)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using

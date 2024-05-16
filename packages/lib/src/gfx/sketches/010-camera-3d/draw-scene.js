@@ -8,7 +8,7 @@ const {M4} = matrices
  * @param {*} programInfo
  * @param {*} buffers
  */
-function drawScene(gl, programInfo, buffers, vao) {
+function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
 	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
@@ -24,7 +24,6 @@ function drawScene(gl, programInfo, buffers, vao) {
 
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
-	gl.bindVertexArray(vao)
 
 	// Geometry, View and Camera factors
 	let geometryCount = 5
@@ -34,7 +33,12 @@ function drawScene(gl, programInfo, buffers, vao) {
 	let zFar = 2000
 
 	// Initialize the Geometry projection matrix
-	let projectionMatrix = M4.perspective(programInfo.context.fieldOfView, aspect, zNear, zFar)
+	let projectionMatrix = M4.perspective(
+		programInfo.context.fieldOfView,
+		aspect,
+		zNear,
+		zFar,
+	)
 
 	// Compute the position of the first F
 	let target = [geometriesRadius, 0, 0]

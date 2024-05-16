@@ -8,7 +8,7 @@ const {M4} = matrices
  * @param {*} programInfo
  * @param {*} buffers
  */
-function drawScene(gl, programInfo, buffers, vao) {
+function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
 	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
@@ -24,13 +24,17 @@ function drawScene(gl, programInfo, buffers, vao) {
 
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
-	gl.bindVertexArray(vao)
 
 	// Initialize the matrices
 	let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
 	let zNear = 1
 	let zFar = 2000
-	let matrix = M4.perspective(programInfo.context.fieldOfView, aspect, zNear, zFar)
+	let matrix = M4.perspective(
+		programInfo.context.fieldOfView,
+		aspect,
+		zNear,
+		zFar,
+	)
 
 	matrix = M4.translate(matrix, ...programInfo.context.translation)
 	matrix = M4.xRotate(matrix, programInfo.context.rotation[0])

@@ -38,26 +38,29 @@ function init(canvas) {
 
 	return {context: geometries.getGeometryAnimation3D()}
 }
-
 function main(canvas) {
 	clear()
-	return loadProgram(canvas)
+	programInfo = loadProgram(canvas)
+	return programInfo.context
 }
 
 function loadProgram(canvas) {
 	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
-	let program
+
 	if (vertexShader && fragmentShader) {
 		program = setup.link(gl, vertexShader, fragmentShader)
-		gl.useProgram(program)
+		if (program) {
+			gl.useProgram(program)
+		}
 	}
 
 	utils.resize(canvas)
+
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
-	programInfo = {
+	let _programInfo = {
 		program,
 		attribLocations: {
 			a_position: gl.getAttribLocation(program, 'a_position'),
@@ -69,8 +72,13 @@ function loadProgram(canvas) {
 		},
 		context: geometries.getGeometryAnimation3D(),
 	}
-	buffers = initBuffers(gl, programInfo)
-	return programInfo.context
+
+	const vao = gl.createVertexArray()
+	gl.bindVertexArray(vao)
+	buffers = initBuffers(gl, _programInfo)
+	gl.bindVertexArray(null)
+
+	return _programInfo
 }
 
 function draw(now) {
@@ -80,9 +88,7 @@ function draw(now) {
 	let deltaTime = now - then
 	// Save time for next draw
 	then = now
-
-	const vao = gl.createVertexArray()
-	drawScene(gl, programInfo, buffers, vao)
+	drawScene(gl, programInfo, buffers)
 
 	// Rotate the angle
 	programInfo.context.rotation[1] +=

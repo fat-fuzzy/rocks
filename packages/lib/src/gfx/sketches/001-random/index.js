@@ -42,20 +42,27 @@ function init(canvas) {
 
 function main(canvas) {
 	clear()
-	return loadProgram(canvas)
+	programInfo = loadProgram(canvas)
+	return programInfo.context
 }
 
 function loadProgram(canvas) {
 	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
-	program = setup.link(gl, vertexShader, fragmentShader)
 
-	gl.useProgram(program)
+	if (vertexShader && fragmentShader) {
+		program = setup.link(gl, vertexShader, fragmentShader)
+		if (program) {
+			gl.useProgram(program)
+		}
+	}
+
 	utils.resize(canvas)
+
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
-	programInfo = {
+	let _programInfo = {
 		program,
 		attribLocations: {
 			a_position: gl.getAttribLocation(program, 'a_position'),
@@ -73,8 +80,8 @@ function loadProgram(canvas) {
 			canvas.clientHeight,
 		),
 	}
-	buffers = initBuffers(gl, programInfo)
-	return programInfo
+	buffers = initBuffers(gl, _programInfo)
+	return _programInfo
 }
 
 function draw() {

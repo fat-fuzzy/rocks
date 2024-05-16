@@ -100,17 +100,19 @@ function init(canvas) {
 	}
 
 	return {
-		effects: ['normal'],
-		width: imgWidth,
-		height: imgHeight,
-		level,
+		context: {
+			effects: ['normal'],
+			width: imgWidth,
+			height: imgHeight,
+			level,
+		},
 	}
 }
 
-function main() {
+function main(canvas) {
 	let urls = files.map((file) => `${imagesPath}${file.filename}`)
 	loadImages(urls, (loadedImages) => {
-		programInfo = loadProgram()
+		programInfo = loadProgram(canvas)
 		vao = gl.createVertexArray()
 		gl.bindVertexArray(vao)
 		programInfo.context = loadTextures(loadedImages)
@@ -123,13 +125,13 @@ function main() {
 		} else {
 			programInfo.errors = []
 		}
+		gl.bindVertexArray(null)
 	})
-	gl.bindVertexArray(null)
 
 	return programInfo.context
 }
 
-function loadProgram() {
+function loadProgram(canvas) {
 	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
 	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
 
@@ -139,6 +141,8 @@ function loadProgram() {
 			gl.useProgram(program)
 		}
 	}
+
+	utils.resize(canvas)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
