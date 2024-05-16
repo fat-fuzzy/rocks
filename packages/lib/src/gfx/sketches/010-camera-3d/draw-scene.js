@@ -28,7 +28,7 @@ function drawScene(gl, programInfo, buffers) {
 	// Geometry, View and Camera factors
 	let geometryCount = 5
 	let geometriesRadius = 200
-	let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
+	let aspect = gl.canvas.width / gl.canvas.height
 	let zNear = 1
 	let zFar = 2000
 

@@ -71,10 +71,7 @@ function loadProgram(canvas) {
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
 		},
-		context: geometries.getGeometryRandom(
-			canvas.clientWidth,
-			canvas.clientHeight,
-		),
+		context: geometries.getGeometryRandom(canvas.width, canvas.height),
 		errors: [],
 	}
 

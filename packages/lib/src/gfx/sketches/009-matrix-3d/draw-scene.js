@@ -26,7 +26,7 @@ function drawScene(gl, programInfo, buffers) {
 	gl.useProgram(programInfo.program)
 
 	// Initialize the matrices
-	let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
+	let aspect = gl.canvas.width / gl.canvas.height
 	let zNear = 1
 	let zFar = 2000
 	let matrix = M4.perspective(

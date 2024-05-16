@@ -99,7 +99,7 @@ function clear() {
 		// TODO: handle error
 		return
 	}
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientWidth)
+	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
 	// Set the clear color to darkish green.
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is

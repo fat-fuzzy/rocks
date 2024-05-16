@@ -44,10 +44,7 @@ function clear() {
 	if (!gl) {
 		return
 	}
-
-	// console.log('clear canvas.clientWidth', gl.canvas.clientWidth)
-	// console.log('clear canvas.clientHeight', gl.canvas.clientHeight)
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
+	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
 	// Set the clear color to darkish green.
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
@@ -123,8 +120,6 @@ function main(canvas) {
 }
 
 function draw(time) {
-	// console.log('draw canvas.clientWidth', gl.canvas.clientWidth)
-	// console.log('draw canvas.clientHeight', gl.canvas.clientHeight)
 	clear()
 	utils.resize(gl.canvas)
 
@@ -250,6 +245,7 @@ function loadProgram(canvas) {
 			effects: ['normal'],
 			level,
 		},
+		errors: [],
 	}
 
 	buffers = initBuffers(gl)

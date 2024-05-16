@@ -76,10 +76,7 @@ function loadProgram(canvas) {
 			// bind u_scale
 			u_scale: gl.getUniformLocation(program, 'u_scale'),
 		},
-		context: geometries.getGeometryRandom(
-			canvas.clientWidth,
-			canvas.clientHeight,
-		),
+		context: geometries.getGeometryRandom(canvas.width, canvas.height),
 		errors: [],
 	}
 	buffers = initBuffers(gl, _programInfo)

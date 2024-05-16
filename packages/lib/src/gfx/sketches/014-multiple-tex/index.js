@@ -163,6 +163,7 @@ function loadProgram(canvas) {
 			height: imgHeight,
 			level,
 		},
+		errors: [],
 	}
 
 	buffers = initBuffers(gl)

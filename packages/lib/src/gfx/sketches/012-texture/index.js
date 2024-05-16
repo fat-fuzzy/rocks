@@ -79,9 +79,7 @@ function clear() {
 		return
 	}
 
-	// console.log('canvas.clientWidth', gl.canvas.clientWidth)
-	// console.log('canvas.clientHeight', gl.canvas.clientHeight)
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientHeight)
+	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
 	// Set the clear color to black, fully transparent
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is

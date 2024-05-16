@@ -72,10 +72,7 @@ function loadProgram(canvas) {
 			// bind u_translation
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		context: geometries.getGeometryHierarchical(
-			canvas.clientWidth,
-			canvas.clientHeight,
-		),
+		context: geometries.getGeometryHierarchical(canvas.width, canvas.height),
 		errors: [],
 	}
 	buffers = initBuffers(gl, _programInfo)
