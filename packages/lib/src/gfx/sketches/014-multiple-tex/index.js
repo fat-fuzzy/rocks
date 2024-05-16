@@ -98,16 +98,11 @@ function init(canvas) {
 			'Unable to initialize WebGL. Your browser or machine may not support it.',
 		)
 	}
-
-	return {
-		effects: ['normal'],
-		width: imgWidth,
-		height: imgHeight,
-		level,
-	}
 }
 
 function main(canvas) {
+	init(canvas)
+	clear()
 	let urls = files.map((file) => `${imagesPath}${file.filename}`)
 	loadImages(urls, (loadedImages) => {
 		programInfo = loadProgram(canvas)

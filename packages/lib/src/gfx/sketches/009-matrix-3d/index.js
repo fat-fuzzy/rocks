@@ -15,11 +15,14 @@ import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
 let gl
-let programInfo = {}
+let programInfo = {
+	errors: [],
+}
 let program
 let buffers
 let vertexShader
 let fragmentShader
+let error
 
 function init(canvas) {
 	// Initialize the GL context
@@ -31,13 +34,10 @@ function init(canvas) {
 			'Unable to initialize WebGL. Your browser or machine may not support it.',
 		)
 	}
-
-	return {
-		context: geometries.getGeometryMatrix3D(),
-	}
 }
 
 function main(canvas) {
+	init(canvas)
 	clear()
 	programInfo = loadProgram(canvas)
 	return programInfo.context
@@ -70,11 +70,16 @@ function loadProgram(canvas) {
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
 		context: geometries.getGeometryMatrix3D(),
+		errors: [],
 	}
 
 	const vao = gl.createVertexArray()
 	gl.bindVertexArray(vao)
 	buffers = initBuffers(gl, _programInfo)
+	error = gl.getError()
+	if (error !== gl.NO_ERROR) {
+		_programInfo.errors.push(error)
+	}
 	gl.bindVertexArray(null)
 
 	return _programInfo

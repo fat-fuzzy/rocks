@@ -29,13 +29,16 @@ let url = `${host}/${imageAssetsPath}/${filename}`
 let gl
 let program
 let vao
-let programInfo = {}
+let programInfo = {
+	errors: [],
+}
 let buffers
 let vertexShader
 let fragmentShader
 let texture
 let image
 let level = 1
+let error
 
 function clear() {
 	if (!gl) {
@@ -81,14 +84,6 @@ function init(canvas) {
 			'Unable to initialize WebGL. Your browser or machine may not support it.',
 		)
 	}
-
-	return {
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
-		effects: ['normal'],
-		level,
-	}
 }
 
 function loadImage(url, callback) {
@@ -110,12 +105,19 @@ function render(canvas) {
 	updateBuffers(gl, programInfo, buffers)
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
+	error = gl.getError()
+	if (error !== gl.NO_ERROR) {
+		programInfo.errors.push(error)
+	} else {
+		programInfo.errors = []
+	}
 
 	// Unbind the VAO when we're done drawing
 	gl.bindVertexArray(null)
 }
 
 function main(canvas) {
+	init(canvas)
 	image = loadImage(url, () => render(canvas))
 	return programInfo.context
 }

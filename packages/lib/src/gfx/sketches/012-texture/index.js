@@ -26,7 +26,9 @@ let imgHeight = 518
 let url = `${host}/${imageAssetsPath}/${filename}`
 let gl
 let program
-let programInfo = {}
+let programInfo = {
+	errors: [],
+}
 let buffers
 let vertexShader
 let fragmentShader
@@ -34,6 +36,7 @@ let texture
 let image
 let channelOrder
 let blur = 0
+let error
 
 function convertToChannelOrder(str) {
 	return new Int32Array(
@@ -112,14 +115,6 @@ function init(canvas) {
 			'Unable to initialize WebGL. Your browser or machine may not support it.',
 		)
 	}
-
-	return {
-		context: {
-			translation: [0, 0],
-			width: 1,
-			height: 1,
-		},
-	}
 }
 
 function loadImage(url, callback) {
@@ -140,6 +135,7 @@ function render(canvas) {
 }
 
 function main(canvas) {
+	init(canvas)
 	image = loadImage(url, () => render(canvas))
 	return programInfo.context
 }
@@ -249,11 +245,16 @@ function loadProgram(canvas) {
 			u_channels: gl.getUniformLocation(program, 'u_channels'),
 			u_blur: gl.getUniformLocation(program, 'u_blur'),
 		},
+		errors: [],
 	}
 
 	buffers = initBuffers(gl)
 	setPositionAttribute(gl, buffers, _programInfo)
 	setTextureAttribute(gl, buffers, _programInfo)
+	error = gl.getError()
+	if (error !== gl.NO_ERROR) {
+		programInfo.errors.push(error)
+	}
 
 	return _programInfo
 }
