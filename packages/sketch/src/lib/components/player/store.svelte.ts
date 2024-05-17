@@ -8,7 +8,7 @@ const {
 	PLAYER_EVENTS,
 	PLAYER_ACTIONS,
 	PLAYER_TRANSITIONS,
-	PLAYER_SWITCH
+	PLAYER_SWITCH,
 } = types
 
 class PlayerStore {
@@ -17,10 +17,6 @@ class PlayerStore {
 	events = PLAYER_EVENTS
 	actions = PLAYER_ACTIONS
 	transitions = PLAYER_TRANSITIONS
-
-	constructor() {
-		console.log("PlayerStore constructor:", this.state);
-	}
 
 	public init({
 		initial,
@@ -43,7 +39,8 @@ class PlayerStore {
 	}
 
 	public getPlayLabel(): string {
-		const playState = this.state.player === PlayerState.playing ? 'active' : 'inactive'
+		const playState =
+			this.state.player === PlayerState.playing ? 'active' : 'inactive'
 		if (this.playSwitch && this.playSwitch[playState]) {
 			return this.playSwitch[playState].text
 		}

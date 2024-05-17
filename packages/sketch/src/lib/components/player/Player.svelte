@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {blocks, actors} from '@fat-fuzzy/ui-s5'
 	import store from './store.svelte'
-	import {type PlayerPayload, PlayerEvent, PlayerState} from './types.js'
+	import {PlayerEvent, PlayerState} from './types.js'
 
 	const {Button, Switch} = blocks
 	const {switchActor} = actors
@@ -38,7 +38,7 @@
 
 	function updatePlayer(payload: {id: string; value: string}) {
 		let event = payload.id
-		if (payload.id === 'play') {
+		if (event === 'play') {
 			event =
 				store.getState() === PlayerState.playing
 					? PlayerEvent.pause
