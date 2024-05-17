@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {onDestroy, onMount} from 'svelte'
 	import type {
 		Scene,
 		SceneContext,
@@ -8,8 +9,6 @@
 		GeometryProps,
 	} from '$types'
 	import {CanvasState, CanvasEvent, SketchEvent, ControlsEvent} from '$types'
-
-	import {onMount} from 'svelte'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Player from '$lib/components/player/Player.svelte'
@@ -92,7 +91,6 @@
 		if (canvas) {
 			try {
 				context = scene.main(canvas)
-				scene.update({...context, filters})
 				store.update(SketchEvent.loadOk)
 			} catch (e: any) {
 				store.update(SketchEvent.loadNok)
@@ -108,10 +106,8 @@
 		})
 	}
 
-	function play() {
-		if (store.state.canvas === CanvasState.idle) {
-			init()
-		}
+	function render() {
+		scene.update({...context, filters})
 		time = Date.now()
 		if (meta?.type !== 'texture') {
 			loop(time)
@@ -120,6 +116,13 @@
 				scene.draw(time)
 			})
 		}
+	}
+
+	function play() {
+		if (store.state.canvas === CanvasState.idle) {
+			init()
+		}
+		render()
 		store.update(CanvasEvent.play)
 	}
 
@@ -129,14 +132,13 @@
 		}
 		store.state.feedback['canvas'] = []
 		store.updateFilters(DEFAULT_FILTERS)
-		scene.clear()
 	}
 
 	function clear() {
 		const prevCanvasState = store.state.canvas
-		reset()
+		pause()
 		init()
-		play()
+		render()
 		//TODO: test this VS transitions
 		if (prevCanvasState === CanvasState.paused) {
 			pause()
@@ -147,10 +149,10 @@
 	}
 
 	function stop() {
-		reset()
 		if (scene.stop) {
 			scene.stop()
 		}
+		reset()
 	}
 
 	function pause() {
@@ -214,6 +216,10 @@
 	onMount(() => {
 		init()
 	})
+
+	onDestroy(() => {
+		stop()
+	})
 </script>
 
 <div class={`l:grid:sketch bp:xs`}>
@@ -230,7 +236,7 @@
 					with animations
 				</p>
 			</canvas>
-			{#if feedback.length > 0}
+			{#if feedback.length}
 				{#each feedback as feedback}
 					<pre
 						class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
