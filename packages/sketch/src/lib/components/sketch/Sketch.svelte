@@ -8,12 +8,8 @@
 		CameraContext,
 		GeometryContext,
 	} from '$types/index.js'
-	import {
-		CanvasState,
-		CanvasEvent,
-		SketchEvent,
-		ControlsEvent,
-	} from '$types/index.js'
+	import {CanvasState, SketchEvent, ControlsEvent} from '$types/index.js'
+	import {PlayerEvent} from '$lib/components/player/types.js'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Player from '$lib/components/player/Player.svelte'
@@ -128,7 +124,7 @@
 			init()
 		}
 		render()
-		store.update(CanvasEvent.play)
+		store.update(PlayerEvent.play)
 	}
 
 	function reset() {
@@ -147,7 +143,7 @@
 			pause()
 			store.update(prevCanvasState)
 		} else {
-			store.update(CanvasEvent.play)
+			store.update(PlayerEvent.play)
 		}
 	}
 
@@ -156,6 +152,7 @@
 			scene.stop()
 		}
 		reset()
+		store.update(PlayerEvent.stop)
 	}
 
 	function pause() {
@@ -191,8 +188,8 @@
 		if (payload.id === 'play') {
 			event =
 				store.getState('canvas') === CanvasState.playing
-					? CanvasEvent.pause
-					: CanvasEvent.play
+					? PlayerEvent.pause
+					: PlayerEvent.play
 		}
 		switch (payload.event) {
 			case 'play':

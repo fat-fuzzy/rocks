@@ -84,7 +84,7 @@ class PlayerStore {
 			: undefined
 	}
 
-	public getTransition(key: string, event: string): string {
+	public getTransition(key: string, event: string): string | string[] {
 		const currentState = this.state[key]
 		const transition = this.transitions[key][currentState]
 		if (transition && transition[event]) {
@@ -97,8 +97,6 @@ class PlayerStore {
 		this.state.player = this.getTransition('player', event)
 		this.events.previous = this.events.current
 		this.events.current = event
-
-		return this.state.sketch
 	}
 }
 
