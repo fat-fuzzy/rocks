@@ -230,6 +230,7 @@
 				aria-label={title}
 				data-test="canvas"
 				bind:this={canvas}
+				inert={store.getSketchDisabled()}
 			>
 				<p class={`feedback emoji:default ${size} content`}>
 					The canvas element needs JavaScript enabled to display and interact
