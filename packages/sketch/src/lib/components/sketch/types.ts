@@ -8,13 +8,13 @@ import {
 	CanvasState,
 	CanvasAction,
 	type Filters,
-} from '$types'
+} from '$types/index.js'
 
 import {
 	PlayerEvent,
 	PlayerState,
 	PlayerAction,
-} from '$lib/components/player/types'
+} from '$lib/components/player/types.js'
 
 const DEFAULT_FILTERS: Filters = {
 	channels: 'rgba',
@@ -22,24 +22,30 @@ const DEFAULT_FILTERS: Filters = {
 	effects: ['normal'],
 }
 
-const SKETCH_STATE: {[key: string]: any} = {
+const SKETCH_FEEDBACK: {[key: string]: string[]} = {
+	sketch: [],
+	canvas: [],
+	player: [],
+	controls: [],
+}
+
+const SKETCH_STATE: {
+	[key: string]: string | {[key: string]: string | string[]}
+} = {
 	sketch: SketchState.idle,
 	canvas: CanvasState.idle,
 	player: PlayerState.idle,
 	controls: ControlsState.pristine,
-	feedback: {
-		sketch: [],
-		canvas: [],
-		player: [],
-		controls: [],
-	},
+	feedback: SKETCH_FEEDBACK,
 	events: {
 		previous: '',
 		current: '',
 	},
 }
 
-const SKETCH_ACTIONS: {[key: string]: any} = {
+const SKETCH_ACTIONS: {
+	[key: string]: string | {[key: string]: string | string[]}
+} = {
 	sketch: {
 		[SketchState.idle]: [SketchAction.load],
 		[SketchState.active]: [SketchAction.exit],
@@ -78,7 +84,11 @@ const SKETCH_ACTIONS: {[key: string]: any} = {
 	},
 }
 
-const SKETCH_TRANSITIONS: {[key: string]: any} = {
+const SKETCH_TRANSITIONS: {
+	[key: string]: {
+		[key: string]: {[key: string]: {[key: string]: string} | string}
+	}
+} = {
 	sketch: {
 		[SketchState.idle]: {
 			[SketchEvent.load]: {

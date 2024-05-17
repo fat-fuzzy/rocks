@@ -37,7 +37,9 @@ export type PlayerSwitchState = {
 	onclick?: (payload: PlayerPayload) => void
 }
 
-const PLAYER_STATE: {[key: string]: any} = {
+const PLAYER_STATE: {
+	[key: string]: string | string[]
+} = {
 	player: PlayerState.idle,
 	errors: [],
 }
@@ -62,7 +64,9 @@ const PLAYER_EVENTS: {[key: string]: string} = {
 	current: '',
 }
 
-const PLAYER_ACTIONS: {[key: string]: any} = {
+const PLAYER_ACTIONS: {
+	[key: string]: string | {[key: string]: string | string[]}
+} = {
 	player: {
 		[PlayerState.idle]: [PlayerAction.play],
 		[PlayerState.playing]: [
@@ -79,7 +83,11 @@ const PLAYER_ACTIONS: {[key: string]: any} = {
 	},
 }
 
-const PLAYER_TRANSITIONS: {[key: string]: any} = {
+const PLAYER_TRANSITIONS: {
+	[key: string]: {
+		[key: string]: {[key: string]: {[key: string]: string} | string}
+	}
+} = {
 	player: {
 		[PlayerState.idle]: {
 			[PlayerEvent.play]: {state: PlayerState.playing},

@@ -12,6 +12,7 @@ export enum ControlsAction {
 	update = 'update',
 }
 export enum CanvasState {
+	loading = 'loading',
 	idle = 'idle',
 	playing = 'playing',
 	paused = 'paused',
@@ -53,23 +54,34 @@ export enum SketchAction {
 	exit = 'exit',
 }
 
-export type GeometryProps = {
+export type CameraContext = {
+	fieldOfView?: number
+	cameraAngle?: number
+}
+
+export type GeometryContext = {
 	color: number[]
 	translation: (number | undefined)[]
 	rotation: number[]
 	scale: (number | undefined)[]
 }
 
-export type SceneContext = GeometryProps & {
-	fieldOfView?: number
-	cameraAngle?: number
-	animationSpeed?: number
-	pause?: boolean
+export type TextureContext = {
 	image?: HTMLImageElement
+	filters?: Filters
+}
+
+export type SceneContext = (
+	| GeometryContext
+	| TextureContext
+	| CameraContext
+) & {
+	animationSpeed?: number
 }
 
 export type ProgramInfo = {
-	context: SceneContext
+	context?: SceneContext
+	errors: string[]
 }
 
 export type SceneMeta = {
@@ -78,13 +90,13 @@ export type SceneMeta = {
 	camera: number
 	filename?: string
 	channels?: string[]
-	blur?: string[]
+	blur?: number
 	convolutions?: string[]
 }
 
 export type Filters = {
 	channels?: string
-	blur?: string
+	blur?: number
 	effects?: string[]
 }
 
@@ -95,9 +107,11 @@ export type SceneOptions = {
 
 export type Scene = {
 	id: string
-	draw: () => void
-	clear: () => void
-	update: (value: SceneContext, event?: MouseEvent | TouchEvent) => void
-	main: (canvas: HTMLCanvasElement, options?: SceneOptions) => ProgramInfo
 	meta?: SceneMeta
+	init: () => void
+	draw: (time?: number) => void
+	main: (canvas: HTMLCanvasElement, options?: SceneOptions) => SceneContext
+	update: (value: SceneContext, event?: MouseEvent | TouchEvent) => void
+	clear: () => void
+	stop: () => void
 }

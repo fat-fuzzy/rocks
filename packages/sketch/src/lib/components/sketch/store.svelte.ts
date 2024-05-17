@@ -12,14 +12,10 @@ import {PlayerEvent, PlayerState} from '$lib/components/player/types.js'
 
 import types from './types.js'
 
-const  {
-	SKETCH_STATE,
-	SKETCH_ACTIONS,
-	SKETCH_TRANSITIONS,
-} = types
+const {SKETCH_STATE, SKETCH_ACTIONS, SKETCH_TRANSITIONS} = types
 class SketchStore {
 	state = $state(SKETCH_STATE)
-	actions =  $state(SKETCH_ACTIONS)
+	actions = $state(SKETCH_ACTIONS)
 	transitions = $state(SKETCH_TRANSITIONS)
 
 	constructor() {}
@@ -57,19 +53,22 @@ class SketchStore {
 	}
 
 	public getPreviousEvent(): string {
-		return this.state.events['previous']
+		return this.state.events.previous
 	}
 
-	public getSketchDisabled(): boolean | undefined  {
+	public getSketchDisabled(): boolean | undefined {
 		return this.state.canvas === CanvasState.idle ||
-			this.state.canvas === CanvasState.paused ? true : undefined
+			this.state.canvas === CanvasState.paused
+			? true
+			: undefined
 	}
 
 	public getIsInteractive(): boolean | undefined {
 		return this.state.canvas === CanvasState.playing ||
 			this.state.canvas === CanvasState.paused ||
 			this.state.canvas === CanvasState.ended
-			? true : undefined
+			? true
+			: undefined
 	}
 
 	public getTransition(key: string, event: string): string {

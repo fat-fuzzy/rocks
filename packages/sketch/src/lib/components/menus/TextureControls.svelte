@@ -14,7 +14,7 @@
 		breakpoint?: string
 		threshold?: string
 		channels?: string[]
-		blur?: string[]
+		blur?: number
 		convolutions?: string[]
 		onupdate: (payload: any) => void // TODO: Fix type
 	}

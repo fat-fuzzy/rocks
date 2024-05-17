@@ -5,10 +5,15 @@
 		SceneContext,
 		SceneMeta,
 		Filters,
-		PlayerPayload,
-		GeometryProps,
-	} from '$types'
-	import {CanvasState, CanvasEvent, SketchEvent, ControlsEvent} from '$types'
+		CameraContext,
+		GeometryContext,
+	} from '$types/index.js'
+	import {
+		CanvasState,
+		CanvasEvent,
+		SketchEvent,
+		ControlsEvent,
+	} from '$types/index.js'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Player from '$lib/components/player/Player.svelte'
@@ -18,7 +23,7 @@
 	import Debug from '$lib/components/debug/Debug.svelte'
 
 	import store from './store.svelte'
-	import types from './types'
+	import types from './types.js'
 
 	const {DEFAULT_FILTERS} = types
 
@@ -91,10 +96,11 @@
 		if (canvas) {
 			try {
 				context = scene.main(canvas)
+				scene.update({...context, filters})
 				store.update(SketchEvent.loadOk)
-			} catch (e: any) {
+			} catch (e: unknown) {
 				store.update(SketchEvent.loadNok)
-				store.state.feedback['canvas'].push({status: 'error', message: e})
+				store.state.feedback.canvas.push({status: 'error', message: e})
 			}
 		}
 	}
@@ -107,7 +113,6 @@
 	}
 
 	function render() {
-		scene.update({...context, filters})
 		time = Date.now()
 		if (meta?.type !== 'texture') {
 			loop(time)
@@ -127,16 +132,14 @@
 	}
 
 	function reset() {
-		if (frame) {
-			cancelAnimationFrame(frame)
-		}
-		store.state.feedback['canvas'] = []
+		pause()
+		store.state.feedback.canvas = []
 		store.updateFilters(DEFAULT_FILTERS)
 	}
 
 	function clear() {
 		const prevCanvasState = store.state.canvas
-		pause()
+		reset()
 		init()
 		render()
 		//TODO: test this VS transitions
@@ -157,12 +160,14 @@
 
 	function pause() {
 		//TODO: pause scene
-		cancelAnimationFrame(frame)
+		if (frame) {
+			cancelAnimationFrame(frame)
+		}
 	}
 
 	function updateGeometry(payload: {
 		fieldOfView?: number
-		geometry: GeometryProps
+		geometry: GeometryContext
 	}) {
 		context = {
 			...payload.geometry,
@@ -176,12 +181,12 @@
 	}
 
 	function updateCamera(payload: {fieldOfView: number; cameraAngle: number}) {
-		context.fieldOfView = degToRad(payload.fieldOfView)
-		context.cameraAngle = degToRad(payload.cameraAngle)
+		;(context as CameraContext).fieldOfView = degToRad(payload.fieldOfView)
+		;(context as CameraContext).cameraAngle = degToRad(payload.cameraAngle)
 		scene.update({...context, filters})
 	}
 
-	function updateCanvas(payload: PlayerPayload) {
+	function updateCanvas(payload: {event: string}) {
 		let event = payload.event
 		if (payload.id === 'play') {
 			event =
@@ -207,8 +212,9 @@
 	}
 
 	function updateFilters(filters: Filters) {
-		if (canvas) {
-			scene.update({...context, filters})
+		scene.update({...context, filters})
+		store.update(ControlsEvent.update)
+		if (meta?.type === 'texture') {
 			play()
 		}
 	}
