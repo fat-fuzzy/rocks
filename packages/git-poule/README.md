@@ -49,7 +49,7 @@ This script assumes that you have a repo with a commit convention configuration 
 
 ### Commit Data
 
-Inside a git repositor
+Inside a git repository
 
 ```shell
   node path/to/script/index > commits.csv
