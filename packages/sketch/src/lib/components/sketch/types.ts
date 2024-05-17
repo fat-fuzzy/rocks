@@ -22,6 +22,7 @@ const DEFAULT_FILTERS: Filters = {
 	effects: ['normal'],
 }
 
+// TODO: fix types
 const SKETCH_FEEDBACK: {[key: string]: string[]} = {
 	sketch: [],
 	canvas: [],
@@ -29,6 +30,7 @@ const SKETCH_FEEDBACK: {[key: string]: string[]} = {
 	controls: [],
 }
 
+// TODO: fix types
 const SKETCH_STATE: {
 	[key: string]: string | {[key: string]: string | string[]}
 } = {
@@ -43,6 +45,7 @@ const SKETCH_STATE: {
 	},
 }
 
+// TODO: fix types
 const SKETCH_ACTIONS: {
 	[key: string]: string | {[key: string]: string | string[]}
 } = {
@@ -84,6 +87,7 @@ const SKETCH_ACTIONS: {
 	},
 }
 
+// TODO: fix types
 const SKETCH_TRANSITIONS: {
 	[key: string]: {
 		[key: string]: {[key: string]: {[key: string]: string} | string}

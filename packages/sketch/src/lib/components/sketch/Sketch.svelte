@@ -259,7 +259,7 @@
 				{color}
 				size="xs"
 				{variant}
-				disabled={Boolean(feedback)}
+				disabled={store.hasError() ?? undefined}
 			/>
 			{#if meta && store.getState('sketch') === 'active' && store.getIsInteractive()}
 				{#if meta.type === 'matrix-2d'}

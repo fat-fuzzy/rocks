@@ -30,6 +30,7 @@ class PlayerStore {
 		this.playSwitch.inactive.onclick = onclick
 	}
 
+	// TODO: fix types
 	public getState(): PlayerState {
 		return this.state.player
 	}
@@ -47,10 +48,12 @@ class PlayerStore {
 		return ''
 	}
 
+	// TODO: fix types
 	public getNextActions(state: string): PlayerAction {
 		return this.actions[state][this.state[state]]
 	}
 
+	// TODO: Use Feedback
 	public getErrors(key: string): string[] {
 		return this.state.errors[key]
 	}
@@ -63,10 +66,12 @@ class PlayerStore {
 		return this.events['previous']
 	}
 
+	// TODO: Use ACTIONS
 	public getPlayDisabled(): boolean | undefined {
 		return this.state.player === PlayerState.error ? true : undefined
 	}
 
+	// TODO: Use ACTIONS
 	public getStopDisabled(): boolean | undefined {
 		return this.state.player === PlayerState.idle ||
 			this.state.player === PlayerState.stopped ||
@@ -75,6 +80,7 @@ class PlayerStore {
 			: undefined
 	}
 
+	// TODO: Use ACTIONS
 	public getClearDisabled(): boolean | undefined {
 		return this.events?.current === PlayerEvent.clear ||
 			this.state.player === PlayerState.idle ||
@@ -84,6 +90,7 @@ class PlayerStore {
 			: undefined
 	}
 
+	// TODO: fix types
 	public getTransition(key: string, event: string): string | string[] {
 		const currentState = this.state[key]
 		const transition = this.transitions[key][currentState]

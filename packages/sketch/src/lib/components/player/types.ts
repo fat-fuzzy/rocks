@@ -37,11 +37,12 @@ export type PlayerSwitchState = {
 	onclick?: (payload: PlayerPayload) => void
 }
 
+// TODO: fix types
 const PLAYER_STATE: {
 	[key: string]: string | string[]
 } = {
 	player: PlayerState.idle,
-	errors: [],
+	errors: [], // TODO: Use Feedback
 }
 
 const PLAYER_SWITCH: {[state: string]: PlayerSwitchState} = {
@@ -59,11 +60,13 @@ const PLAYER_SWITCH: {[state: string]: PlayerSwitchState} = {
 	},
 }
 
+// TODO: fix types
 const PLAYER_EVENTS: {[key: string]: string} = {
 	previous: '',
 	current: '',
 }
 
+// TODO: fix types
 const PLAYER_ACTIONS: {
 	[key: string]: string | {[key: string]: string | string[]}
 } = {
@@ -83,6 +86,7 @@ const PLAYER_ACTIONS: {
 	},
 }
 
+// TODO: fix types
 const PLAYER_TRANSITIONS: {
 	[key: string]: {
 		[key: string]: {[key: string]: {[key: string]: string} | string}

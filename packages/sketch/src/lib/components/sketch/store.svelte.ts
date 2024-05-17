@@ -28,6 +28,7 @@ class SketchStore {
 		return this.state.canvas
 	}
 
+	// TODO: fix types
 	public getPlayerState(): PlayerState {
 		return this.state.player
 	}
@@ -40,22 +41,34 @@ class SketchStore {
 		return this.state.controls
 	}
 
+	// TODO: fix types
 	public getNextActions(state: string): SketchAction {
 		return this.actions[state][this.state[state]]
 	}
 
+	// TODO: fix types
 	public getFeedback(key: string): string[] {
 		return this.state.feedback[key]
 	}
 
+	// TODO: fix types
+	public hasError(): boolean {
+		return this.state.feedback.find(({status}) => status === 'error')
+			? true
+			: false
+	}
+
+	// TODO: fix types
 	public getEvent(key: string): string {
 		return this.state.events[key]
 	}
 
+	// TODO: fix types
 	public getPreviousEvent(): string {
 		return this.state.events.previous
 	}
 
+	// TODO: Use ACTIONS
 	public getSketchDisabled(): boolean | undefined {
 		return this.state.canvas === CanvasState.idle ||
 			this.state.canvas === CanvasState.paused
@@ -63,6 +76,7 @@ class SketchStore {
 			: undefined
 	}
 
+	// TODO: Use ACTIONS
 	public getIsInteractive(): boolean | undefined {
 		return this.state.canvas === CanvasState.playing ||
 			this.state.canvas === CanvasState.paused ||
@@ -71,6 +85,7 @@ class SketchStore {
 			: undefined
 	}
 
+	// TODO: fix types
 	public getTransition(key: string, event: string): string {
 		const currentState = this.state[key]
 		const transition = this.transitions[key][currentState]
@@ -80,6 +95,7 @@ class SketchStore {
 		return this.state[key]
 	}
 
+	// TODO: fix types
 	public update(
 		event: SketchEvent | CanvasEvent | PlayerEvent | ControlsEvent,
 	): void {
