@@ -2,7 +2,7 @@
 	import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
 	import type {UiStyleProps} from '$types/index.js'
 	import type {TogglePayload} from '$lib/components/blocks/buttons/button.types.js'
-	import toggleActor from '$lib/actors/toggle'
+	import toggleActor from '$lib/actors/toggle.js'
 
 	type Props = UiStyleProps & {
 		/**
