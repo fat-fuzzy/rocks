@@ -1,22 +1,12 @@
-import {
-	SketchEvent,
-	SketchState,
-	SketchAction,
-	ControlsEvent,
-	ControlsState,
-	ControlsAction,
-	CanvasState,
-	CanvasAction,
-} from '$types/index.js'
-import type {CanvasEvent, Filters} from '$types/index.js'
+import {SketchState, ControlsState, CanvasState} from '$types/index.js'
+import type {Filters} from '$types/index.js'
+
+import {PlayerState} from '$lib/components/player/types.js'
 
 import {
-	PlayerEvent,
-	PlayerState,
-	PlayerAction,
-} from '$lib/components/player/types.js'
-
-import {
+	type UiState,
+	type UiEvent,
+	type UiAction,
 	type SketchUi,
 	type SketchStateType,
 	type SketchActionsType,
@@ -60,9 +50,7 @@ class SketchStore {
 		return this.state.player === PlayerState.playing ? 'active' : 'inactive'
 	}
 
-	public getNextActions(
-		state: SketchUi,
-	): (SketchAction | PlayerAction | ControlsAction | CanvasAction)[] {
+	public getNextActions(state: SketchUi): UiAction[] | undefined {
 		return this.actions[state][this.state[state]]
 	}
 
@@ -78,21 +66,11 @@ class SketchStore {
 		return Boolean(errors.length)
 	}
 
-	public getCurrentEvent():
-		| SketchEvent
-		| ControlsEvent
-		| PlayerEvent
-		| CanvasEvent
-		| '' {
+	public getCurrentEvent(): UiEvent | '' {
 		return this.events.current
 	}
 
-	public getPreviousEvent():
-		| SketchEvent
-		| ControlsEvent
-		| PlayerEvent
-		| CanvasEvent
-		| '' {
+	public getPreviousEvent(): UiEvent | '' {
 		return this.events.previous
 	}
 
@@ -110,21 +88,19 @@ class SketchStore {
 			: undefined
 	}
 
-	public getTransition(
-		key: SketchUi,
-		event: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent,
-	): SketchState | PlayerState | ControlsState | CanvasState {
+	public getTransition(key: SketchUi, event: UiEvent): UiState {
 		const currentState = this.state[key]
-		const transition = this.transitions[key][currentState]
-		if (transition && transition[event]) {
-			this.state[key] = transition[event]
+		const transition = this.transitions[key]
+		if (transition) {
+			const transitionState = transition[currentState]
+			if (transitionState && transitionState[event]) {
+				this.state[key] = transitionState[event] as UiState
+			}
 		}
 		return this.state[key]
 	}
 
-	public update(
-		event: SketchEvent | CanvasEvent | PlayerEvent | ControlsEvent,
-	): void {
+	public update(event: UiEvent): void {
 		this.state.sketch = this.getTransition('sketch', event)
 		this.state.player = this.getTransition('player', event)
 		this.state.canvas = this.getTransition('canvas', event)

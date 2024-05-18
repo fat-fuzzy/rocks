@@ -18,6 +18,17 @@ import {
 } from '$lib/components/player/types.js'
 
 export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
+
+export type UiState = SketchState | ControlsState | PlayerState | CanvasState
+
+export type UiEvent = SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
+
+export type UiAction =
+	| SketchAction
+	| ControlsAction
+	| PlayerAction
+	| CanvasAction
+
 export type FeedbackType = {
 	status: string
 	message: string
@@ -28,33 +39,24 @@ export type SketchFeedbackType = {
 }
 
 export type SketchEventType = {
-	previous: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent | ''
-	current: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent | ''
+	previous: UiEvent | ''
+	current: UiEvent | ''
 }
 
 export type SketchStateType = {
-	[key in SketchUi]?: SketchState | ControlsState | PlayerState | CanvasState
+	[key in SketchUi]: UiState
 }
 
 export type SketchActionsType = {
-	[key in SketchUi]?: {
-		[key in SketchState | ControlsState | PlayerState | CanvasState]?: (
-			| SketchAction
-			| PlayerAction
-			| ControlsAction
-			| CanvasAction
-		)[]
+	[key in SketchUi]: {
+		[key in UiState]?: UiAction[]
 	}
 }
 
 export type SketchTransitionsType = {
 	[key in SketchUi]?: {
-		[key in SketchState | ControlsState | PlayerState | CanvasState]?: {
-			[key in SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent]?:
-				| SketchState
-				| ControlsState
-				| PlayerState
-				| CanvasState
+		[key in UiState]?: {
+			[key in UiEvent]?: UiState
 		}
 	}
 }
