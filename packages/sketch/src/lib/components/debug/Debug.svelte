@@ -23,13 +23,15 @@
 		</thead>
 		<tbody class="text:center">
 			<tr>
-				<td class="bg:light text:center l:flex nowrap align:center card:sm">
+				<td class="bg:light justify:center l:flex nowrap align:center card:sm">
 					<span>Event</span>
 					<span class="card:2xs bg:accent:100 variant:bare">prev</span>
 					<span class="card:2xs bg:accent:000">current</span>
 				</td>
 				<td class="variant:outline">
-					<div class="bg:light text:center l:flex nowrap align:center card:sm">
+					<div
+						class="bg:light justify:center l:flex nowrap align:center card:sm"
+					>
 						<span class="card:2xs bg:accent:100 variant:bare">
 							{context.getEvent('previous')}
 						</span>
@@ -39,7 +41,9 @@
 					</div>
 				</td>
 				<td class="variant:outline">
-					<div class="bg:light text:center l:flex nowrap align:center card:sm">
+					<div
+						class="bg:light justify:center l:flex nowrap align:center card:sm"
+					>
 						<span class="card:2xs bg:accent:100 variant:bare">
 							{context.getEvent('previous')}
 						</span>
@@ -49,7 +53,9 @@
 					</div>
 				</td>
 				<td class="variant:outline">
-					<div class="bg:light text:center l:flex nowrap align:center card:sm">
+					<div
+						class="bg:light justify:center l:flex nowrap align:center card:sm"
+					>
 						<span class="card:2xs bg:accent:100 variant:bare">
 							{context.getEvent('previous')}
 						</span>
@@ -58,16 +64,20 @@
 						</span>
 					</div>
 				</td>
-				<td class="variant:outline">
-					<div class="bg:light text:center l:flex nowrap align:center card:sm">
-						<span class="card:2xs bg:accent:100 variant:bare">
-							{context.getEvent('previous')}
-						</span>
-						<span class="card:2xs bg:accent:000">
-							{context.getEvent('current')}
-						</span>
-					</div>
-				</td>
+				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
+					<td class="variant:outline">
+						<div
+							class="bg:light justify:center l:flex nowrap align:center card:sm"
+						>
+							<span class="card:2xs bg:accent:100 variant:bare">
+								{context.getEvent('previous')}
+							</span>
+							<span class="card:2xs bg:accent:000">
+								{context.getEvent('current')}
+							</span>
+						</div>
+					</td>
+				{/if}
 			</tr>
 			<tr class="bg:primary:000">
 				<td class="bg:primary:000 variant:outline">State</td>
@@ -165,3 +175,7 @@
 		</tfoot>
 	</table>
 </aside>
+
+<style>
+	@import '../../styles/css/debug.css';
+</style>
