@@ -28,6 +28,8 @@
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
+		"@fat-fuzzy/style": "workspace:*",
+		"@fat-fuzzy/sketch": "workspace:*",
 		"@playwright/test": "^1.40.0",
 		"@sveltejs/adapter-cloudflare": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",

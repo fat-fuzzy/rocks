@@ -117,6 +117,12 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@fat-fuzzy/sketch':
+        specifier: workspace:*
+        version: link:../../packages/sketch
+      '@fat-fuzzy/style':
+        specifier: workspace:*
+        version: link:../../packages/style
       '@fat-fuzzy/ui':
         specifier: workspace:*
         version: link:../../packages/ui
