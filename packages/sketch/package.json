@@ -43,10 +43,11 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/ui-s5": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
-		"@playwright/test": "^1.28.1",
+		"@fat-fuzzy/ui-s5": "workspace:*",
+		"@playwright/test": "^1.43.1",
+		"@types/node": "^20.11.19",
 		"publint": "^0.1.9",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
