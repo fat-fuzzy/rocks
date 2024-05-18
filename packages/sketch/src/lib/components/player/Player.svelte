@@ -13,10 +13,10 @@
 		color: string
 		disabled?: boolean
 		initial?: string
-		play: (payload: {event: string}) => void
-		pause: (payload: {event: string}) => void
-		clear: (payload: {event: string}) => void
-		stop: (payload: {event: string}) => void
+		play: (payload: {event: PlayerEvent}) => void
+		pause: (payload: {event: PlayerEvent}) => void
+		clear: (payload: {event: PlayerEvent}) => void
+		stop: (payload: {event: PlayerEvent}) => void
 	}
 
 	let {

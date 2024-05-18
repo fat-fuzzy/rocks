@@ -61,7 +61,6 @@
 	}: Props = $props()
 
 	let debug = true // TODO : fix this
-	let feedback = $state([])
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
 	let context: SceneContext = $state({})
@@ -99,7 +98,7 @@
 				store.update(SketchEvent.loadOk)
 			} catch (e: unknown) {
 				store.update(SketchEvent.loadNok)
-				store.feedback.canvas.push({status: 'error', message: e})
+				store.feedback.canvas.push({status: 'error', message: e as string})
 			}
 		}
 	}
@@ -141,10 +140,9 @@
 		reset()
 		init()
 		render()
-		//TODO: test this VS transitions
 		if (prevCanvasState === CanvasState.paused) {
 			pause()
-			store.update(prevCanvasState)
+			store.update(PlayerEvent.pause)
 		} else {
 			store.update(PlayerEvent.play)
 		}
@@ -159,7 +157,7 @@
 	}
 
 	function pause() {
-		//TODO: pause scene
+		//TODO: pause scene with time elapsed
 		if (frame) {
 			cancelAnimationFrame(frame)
 		}
@@ -190,7 +188,7 @@
 		event: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
 	}) {
 		let event = payload.event
-		if (payload.id === 'play') {
+		if (payload.event === 'play') {
 			event =
 				store.getState('canvas') === CanvasState.playing
 					? PlayerEvent.pause
@@ -245,8 +243,8 @@
 					with animations
 				</p>
 			</canvas>
-			{#if feedback.length}
-				{#each feedback as feedback}
+			{#if store.feedback.canvas.length}
+				{#each store.feedback.canvas as feedback}
 					<pre
 						class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
 				{/each}
