@@ -18,7 +18,9 @@
 	<h2>✨ Highlights</h2>
 	<div class="l:switcher:sm bp:xs card:xxl">
 		<article class={`card:lg text:center ${variant}`}>
-			<a data-sveltekit-preload-data href="/play" class="card font:md">🌈 Play</a>
+			<a data-sveltekit-preload-data href="/play" class="card font:md">
+				🌈 Play
+			</a>
 		</article>
 	</div>
 </section>

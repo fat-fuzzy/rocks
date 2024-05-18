@@ -10,7 +10,7 @@
 		id?: string
 		size: string
 		variant?: string
-		color: string
+		color?: string
 		disabled?: boolean
 		initial?: string
 		play: (payload: {event: PlayerEvent}) => void

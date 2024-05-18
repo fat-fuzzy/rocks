@@ -15,6 +15,8 @@
 <div class="l:frame:twin">
 	<div class="l:stack:xxl card:xxl l:text:lg">
 		<h1>Error</h1>
-		<p class={`feedback emoji:${asset} font:md`}>{$page.status}: {$page.error?.message}</p>
+		<p class={`feedback emoji:${asset} font:md`}>
+			{$page.status}: {$page.error?.message}
+		</p>
 	</div>
 </div>

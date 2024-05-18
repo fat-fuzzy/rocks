@@ -2,10 +2,10 @@
 	import {page} from '$app/stores'
 
 	import lib from '@fat-fuzzy/lib'
-	import {graphics, headless} from '@fat-fuzzy/ui'
+	import {headless} from '@fat-fuzzy/ui'
+	import {Sketch} from '@fat-fuzzy/sketch'
 
 	const {Head} = headless
-	const {Sketch} = graphics
 
 	$: sketch = $page.data.sketches.find((s) => s.slug === $page.data.slug)
 	$: title = $page.data.title
@@ -28,6 +28,13 @@
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
 	{#key $page.data.slug}
-		<Sketch {scene} {title} {dimensions} {meta} asset={sketch.asset} size="sm" />
+		<Sketch
+			{scene}
+			{title}
+			{dimensions}
+			{meta}
+			asset={sketch.asset}
+			size="sm"
+		/>
 	{/key}
 </div>
