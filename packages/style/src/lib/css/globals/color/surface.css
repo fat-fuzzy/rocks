@@ -7,5 +7,5 @@
 
 [class*='dotted'] {
 	--border-color: var(--ink);
-	border: var(--border-width-lg) dotted var(--border-color);
+	border: var(--border-width-md) dotted var(--border-color);
 }

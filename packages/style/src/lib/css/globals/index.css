@@ -6,6 +6,7 @@
 @import './color/surface.css';
 @import './color/semantic.css';
 @import './color/ui.css';
+@import './color/contrast.css';
 @import './color/settings.css';
 
 /* State */
@@ -18,15 +19,14 @@
 @import './text/_serif.css';
 @import './text/_sans.css';
 @import './text/_heading.css';
+
 /* Text */
-/* @import './text/fonts.css'; */
 @import './text/typography.css';
 @import './text/scale.css';
 
 /* Icons */
-@import './assets.css'; /* Use to display emojis or svg icons */
-@import './svg.css'; /* Use to display emojis or svg icons */
+@import './icons/assets.css'; /* Use to display emojis or svg icons */
+@import './icons/svg.css'; /* Use to display emojis or svg icons */
 
 /* Content */
 @import './layers.css';
-@import './contrast.css';

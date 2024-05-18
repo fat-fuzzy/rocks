@@ -6,6 +6,10 @@
 	background-color: var(--bg-color);
 }
 
+.bg\:inherit {
+	background-color: inherit;
+}
+
 /* Set current color LIGHTNESS and CHROMA according to a 7 point scale */
 [class*='bg:'][class*=':light'],
 [class*='bg:'][class*=':dark'] [class*='bg:'][class*=':light'] {
