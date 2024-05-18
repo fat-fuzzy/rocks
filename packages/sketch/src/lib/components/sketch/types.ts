@@ -8,6 +8,7 @@ import {
 	CanvasState,
 	CanvasAction,
 	CanvasEvent,
+	type FeedbackType,
 	type Filters,
 } from '$types/index.js'
 
@@ -29,13 +30,8 @@ export type UiAction =
 	| PlayerAction
 	| CanvasAction
 
-export type FeedbackType = {
-	status: string
-	message: string
-}
-
 export type SketchFeedbackType = {
-	[key: string]: FeedbackType[]
+	[ui in SketchUi]: FeedbackType[]
 }
 
 export type SketchEventType = {
@@ -44,19 +40,19 @@ export type SketchEventType = {
 }
 
 export type SketchStateType = {
-	[key in SketchUi]: UiState
+	[ui in SketchUi]: UiState
 }
 
 export type SketchActionsType = {
-	[key in SketchUi]: {
-		[key in UiState]?: UiAction[]
+	[ui in SketchUi]: {
+		[state in UiState]?: UiAction[]
 	}
 }
 
 export type SketchTransitionsType = {
-	[key in SketchUi]?: {
-		[key in UiState]?: {
-			[key in UiEvent]?: UiState
+	[ui in SketchUi]?: {
+		[state in UiState]?: {
+			[event in UiEvent]?: UiState
 		}
 	}
 }

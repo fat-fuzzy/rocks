@@ -54,6 +54,16 @@ export enum SketchAction {
 	exit = 'exit',
 }
 
+export enum EventOrder {
+	previous = 'previous',
+	current = 'current',
+}
+
+export type FeedbackType = {
+	status: string
+	message: string
+}
+
 export type CameraContext = {
 	fieldOfView?: number
 	cameraAngle?: number

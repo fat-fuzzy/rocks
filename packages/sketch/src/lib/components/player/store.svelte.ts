@@ -1,20 +1,19 @@
-import type {TogglePayload} from '$types'
+import type {TogglePayload, FeedbackType} from '$types'
 import {PlayerEvent, PlayerState, PlayerAction} from './types.js'
 
-import types from './types.js'
-
-const {
-	PLAYER_STATE,
+import {
+	type PlayerSwitchType,
+	type PlayerEventsType,
 	PLAYER_EVENTS,
 	PLAYER_ACTIONS,
 	PLAYER_TRANSITIONS,
 	PLAYER_SWITCH,
-} = types
-
+} from './types.js'
 class PlayerStore {
-	state = $state(PLAYER_STATE)
-	playSwitch = $state(PLAYER_SWITCH)
-	events = PLAYER_EVENTS
+	state = $state(PlayerState.idle)
+	events: PlayerEventsType = PLAYER_EVENTS
+	feedback: FeedbackType[] = $state([])
+	playSwitch: PlayerSwitchType = $state(PLAYER_SWITCH)
 	actions = PLAYER_ACTIONS
 	transitions = PLAYER_TRANSITIONS
 
@@ -25,88 +24,77 @@ class PlayerStore {
 		initial?: PlayerState
 		onclick: (payload: TogglePayload) => void
 	}) {
-		this.state.player = initial ?? PlayerState.idle
+		this.state = initial ?? PlayerState.idle
 		this.playSwitch.active.onclick = onclick
 		this.playSwitch.inactive.onclick = onclick
 	}
 
-	// TODO: fix types
 	public getState(): PlayerState {
-		return this.state.player
+		return this.state
 	}
 
 	public getPlayState(): string {
-		return this.state.player === PlayerState.playing ? 'active' : 'inactive'
+		return this.state === PlayerState.playing ? 'active' : 'inactive'
 	}
 
 	public getPlayLabel(): string {
-		const playState =
-			this.state.player === PlayerState.playing ? 'active' : 'inactive'
+		const playState = this.state === PlayerState.playing ? 'active' : 'inactive'
 		if (this.playSwitch && this.playSwitch[playState]) {
 			return this.playSwitch[playState].text
 		}
 		return ''
 	}
 
-	// TODO: fix types
-	public getNextActions(state: string): PlayerAction {
-		return this.actions[state][this.state[state]]
+	public getNextActions(state: PlayerState): PlayerAction[] | undefined {
+		return this.actions[state]
 	}
 
-	// TODO: Use Feedback
-	public getErrors(key: string): string[] {
-		return this.state.errors[key]
+	public getErrors(): string[] {
+		return this.feedback
 	}
 
-	public getEvent(key: string): string {
-		return this.events[key]
+	public getCurrentEvent(): string {
+		return this.events.current
 	}
 
 	public getPreviousEvent(): string {
-		return this.events['previous']
+		return this.events.previous
 	}
 
-	// TODO: Use ACTIONS
 	public getPlayDisabled(): boolean | undefined {
-		return this.state.player === PlayerState.error ? true : undefined
+		const actions = this.actions[this.state]
+		return actions?.includes(PlayerAction.play) ||
+			actions?.includes(PlayerAction.pause)
+			? undefined
+			: true
 	}
 
-	// TODO: Use ACTIONS
 	public getStopDisabled(): boolean | undefined {
-		return this.state.player === PlayerState.idle ||
-			this.state.player === PlayerState.stopped ||
-			this.state.player === PlayerState.ended
-			? true
-			: undefined
+		const actions = this.actions[this.state]
+		return actions?.includes(PlayerAction.stop) ? undefined : true
 	}
 
-	// TODO: Use ACTIONS
 	public getClearDisabled(): boolean | undefined {
-		return this.events?.current === PlayerEvent.clear ||
-			this.state.player === PlayerState.idle ||
-			this.state.player === PlayerState.stopped ||
-			this.state.player === PlayerState.ended
-			? true
-			: undefined
+		const actions = this.actions[this.state]
+		return actions?.includes(PlayerAction.clear) ? undefined : true
 	}
 
-	// TODO: fix types
-	public getTransition(key: string, event: string): string | string[] {
-		const currentState = this.state[key]
-		const transition = this.transitions[key][currentState]
-		if (transition && transition[event]) {
-			this.state[key] = transition[event].state
+	public getTransition(event: PlayerEvent): PlayerState {
+		const state = this.state
+		const transition = this.transitions[state]
+		if (transition) {
+			return transition[event] ?? state
 		}
-		return this.state[key]
+		return state
 	}
 
 	public update(event: PlayerEvent): void {
-		this.state.player = this.getTransition('player', event)
+		this.state = this.getTransition(event)
 		this.events.previous = this.events.current
 		this.events.current = event
 	}
 }
 
-const playerStore = new PlayerStore()
+const stateStore = new PlayerStore()
 
-export default playerStore
+export default stateStore

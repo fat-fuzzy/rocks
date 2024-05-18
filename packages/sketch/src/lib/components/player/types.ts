@@ -1,3 +1,5 @@
+import {EventOrder} from '$types/index.js'
+
 export enum PlayerState {
 	idle = 'idle',
 	error = 'error',
@@ -28,7 +30,34 @@ export enum PlayerError {
 	stop = 'stop',
 }
 
+export type PlayerUi = 'play' | 'pause' | 'stop' | 'clear'
+
+export type PlayButtonState = 'active' | 'inactive'
+
+export type PlayerStateType = {
+	[ui in PlayerUi]: PlayerState | PlayerState[]
+}
+
+export type PlayerSwitchType = {
+	[state in PlayButtonState]: PlayerSwitchState
+}
+
+export type PlayerEventsType = {
+	[order in EventOrder]: PlayerEvent | ''
+}
+
+export type PlayerActionsType = {
+	[state in PlayerState]?: PlayerAction[]
+}
+
+export type PlayerTransitionsType = {
+	[key in PlayerState]?: {
+		[key in PlayerEvent]?: PlayerState
+	}
+}
+
 export type PlayerPayload = {event: PlayerEvent; state: PlayerState}
+
 export type PlayerSwitchState = {
 	value: PlayerEvent.pause | PlayerEvent.play
 	text: string
@@ -37,15 +66,7 @@ export type PlayerSwitchState = {
 	onclick?: (payload: PlayerPayload) => void
 }
 
-// TODO: fix types
-const PLAYER_STATE: {
-	[key: string]: string | string[]
-} = {
-	player: PlayerState.idle,
-	errors: [], // TODO: Use Feedback
-}
-
-const PLAYER_SWITCH: {[state: string]: PlayerSwitchState} = {
+export const PLAYER_SWITCH: PlayerSwitchType = {
 	active: {
 		value: PlayerEvent.pause,
 		text: 'Pause',
@@ -60,59 +81,38 @@ const PLAYER_SWITCH: {[state: string]: PlayerSwitchState} = {
 	},
 }
 
-// TODO: fix types
-const PLAYER_EVENTS: {[key: string]: string} = {
-	previous: '',
-	current: '',
+export const PLAYER_EVENTS: PlayerEventsType = {
+	[EventOrder.previous]: '',
+	[EventOrder.current]: '',
 }
 
-// TODO: fix types
-const PLAYER_ACTIONS: {
-	[key: string]: string | {[key: string]: string | string[]}
-} = {
-	player: {
-		[PlayerState.idle]: [PlayerAction.play],
-		[PlayerState.playing]: [
-			PlayerAction.pause,
-			PlayerAction.stop,
-			PlayerAction.clear,
-		],
-		[PlayerState.paused]: [
-			PlayerAction.play,
-			PlayerAction.stop,
-			PlayerAction.clear,
-		],
-		[PlayerState.stopped]: [PlayerAction.play],
+export const PLAYER_ACTIONS: PlayerActionsType = {
+	[PlayerState.idle]: [PlayerAction.play],
+	[PlayerState.playing]: [
+		PlayerAction.pause,
+		PlayerAction.stop,
+		PlayerAction.clear,
+	],
+	[PlayerState.paused]: [
+		PlayerAction.play,
+		PlayerAction.stop,
+		PlayerAction.clear,
+	],
+	[PlayerState.stopped]: [PlayerAction.play],
+}
+
+export const PLAYER_TRANSITIONS: PlayerTransitionsType = {
+	[PlayerState.idle]: {
+		[PlayerEvent.play]: PlayerState.playing,
 	},
-}
-
-// TODO: fix types
-const PLAYER_TRANSITIONS: {
-	[key: string]: {
-		[key: string]: {[key: string]: {[key: string]: string} | string}
-	}
-} = {
-	player: {
-		[PlayerState.idle]: {
-			[PlayerEvent.play]: {state: PlayerState.playing},
-		},
-		[PlayerState.playing]: {
-			[PlayerEvent.pause]: {state: PlayerState.paused},
-			[PlayerEvent.stop]: {state: PlayerState.idle},
-			[PlayerEvent.clear]: {state: PlayerState.playing},
-		},
-		[PlayerState.paused]: {
-			[PlayerEvent.play]: {state: PlayerState.playing},
-			[PlayerEvent.stop]: {state: PlayerState.idle},
-			[PlayerEvent.clear]: {state: PlayerState.paused},
-		},
+	[PlayerState.playing]: {
+		[PlayerEvent.pause]: PlayerState.paused,
+		[PlayerEvent.stop]: PlayerState.idle,
+		[PlayerEvent.clear]: PlayerState.playing,
 	},
-}
-
-export default {
-	PLAYER_STATE,
-	PLAYER_EVENTS,
-	PLAYER_ACTIONS,
-	PLAYER_TRANSITIONS,
-	PLAYER_SWITCH,
+	[PlayerState.paused]: {
+		[PlayerEvent.play]: PlayerState.playing,
+		[PlayerEvent.stop]: PlayerState.idle,
+		[PlayerEvent.clear]: PlayerState.paused,
+	},
 }
