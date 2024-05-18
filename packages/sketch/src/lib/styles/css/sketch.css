@@ -35,10 +35,10 @@
 	filter: grayscale(65%) opacity(35%) blur(1px);
 }
 
-.state\:play::before,
-.state\:clear::before,
-.state\:pause::before,
-.state\:idle::before {
+.canvas[class*='play']::before,
+.canvas[class*='update']::before,
+.canvas[class*='clear']::before,
+.canvas[class*='pause']::before {
 	height: fit-content;
 	position: absolute;
 	top: 0;
