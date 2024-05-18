@@ -7,6 +7,7 @@ import {
 	ControlsAction,
 	CanvasState,
 	CanvasAction,
+	CanvasEvent,
 	type Filters,
 } from '$types/index.js'
 
@@ -16,39 +17,74 @@ import {
 	PlayerAction,
 } from '$lib/components/player/types.js'
 
-const DEFAULT_FILTERS: Filters = {
+export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
+export type FeedbackType = {
+	status: string
+	message: string
+}
+
+export type SketchFeedbackType = {
+	[key: string]: FeedbackType[]
+}
+
+export type SketchEventType = {
+	previous: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent | ''
+	current: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent | ''
+}
+
+export type SketchStateType = {
+	[key in SketchUi]?: SketchState | ControlsState | PlayerState | CanvasState
+}
+
+export type SketchActionsType = {
+	[key in SketchUi]?: {
+		[key in SketchState | ControlsState | PlayerState | CanvasState]?: (
+			| SketchAction
+			| PlayerAction
+			| ControlsAction
+			| CanvasAction
+		)[]
+	}
+}
+
+export type SketchTransitionsType = {
+	[key in SketchUi]?: {
+		[key in SketchState | ControlsState | PlayerState | CanvasState]?: {
+			[key in SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent]?:
+				| SketchState
+				| ControlsState
+				| PlayerState
+				| CanvasState
+		}
+	}
+}
+
+export const DEFAULT_FILTERS: Filters = {
 	channels: 'rgba',
 	blur: 0,
 	effects: ['normal'],
 }
 
-// TODO: fix types
-const SKETCH_FEEDBACK: {[key: string]: string[]} = {
+export const SKETCH_FEEDBACK: SketchFeedbackType = {
 	sketch: [],
 	canvas: [],
 	player: [],
 	controls: [],
 }
 
-// TODO: fix types
-const SKETCH_STATE: {
-	[key: string]: string | {[key: string]: string | string[]}
-} = {
+export const SKETCH_EVENTS: SketchEventType = {
+	previous: '',
+	current: '',
+}
+
+export const SKETCH_STATE: SketchStateType = {
 	sketch: SketchState.idle,
 	canvas: CanvasState.idle,
 	player: PlayerState.idle,
 	controls: ControlsState.pristine,
-	feedback: SKETCH_FEEDBACK,
-	events: {
-		previous: '',
-		current: '',
-	},
 }
 
-// TODO: fix types
-const SKETCH_ACTIONS: {
-	[key: string]: string | {[key: string]: string | string[]}
-} = {
+export const SKETCH_ACTIONS: SketchActionsType = {
 	sketch: {
 		[SketchState.idle]: [SketchAction.load],
 		[SketchState.active]: [SketchAction.exit],
@@ -82,47 +118,43 @@ const SKETCH_ACTIONS: {
 		[PlayerState.stopped]: [PlayerAction.play],
 	},
 	controls: {
-		[ControlsState.pristine]: ControlsAction.update,
-		[ControlsState.updated]: ControlsAction.update,
+		[ControlsState.pristine]: [ControlsAction.update],
+		[ControlsState.updated]: [ControlsAction.update],
 	},
 }
 
-// TODO: fix types
-const SKETCH_TRANSITIONS: {
-	[key: string]: {
-		[key: string]: {[key: string]: {[key: string]: string} | string}
-	}
-} = {
+export const SKETCH_TRANSITIONS: SketchTransitionsType = {
 	sketch: {
 		[SketchState.idle]: {
-			[SketchEvent.load]: {
-				action: SketchEvent.load,
-				state: SketchState.loading,
-			},
+			[SketchEvent.load]: SketchState.loading,
 		},
 		[SketchState.loading]: {
-			[SketchEvent.loadOk]: {state: SketchState.active},
-			[SketchEvent.loadNok]: {state: SketchState.error},
+			[SketchEvent.loadOk]: SketchState.active,
+			[SketchEvent.loadNok]: SketchState.error,
+		},
+		[SketchState.active]: {
+			[PlayerEvent.stop]: SketchState.idle,
 		},
 	},
 	canvas: {
 		[CanvasState.idle]: {
-			[PlayerEvent.play]: {state: CanvasState.playing},
+			[PlayerEvent.play]: CanvasState.playing,
 		},
 		[CanvasState.playing]: {
-			[PlayerEvent.pause]: {state: CanvasState.paused},
-			[PlayerEvent.stop]: {state: CanvasState.idle},
-			[PlayerEvent.clear]: {state: CanvasState.playing},
+			[PlayerEvent.pause]: CanvasState.paused,
+			[PlayerEvent.stop]: CanvasState.idle,
+			[PlayerEvent.clear]: CanvasState.playing,
 		},
 		[CanvasState.paused]: {
-			[PlayerEvent.play]: {state: CanvasState.playing},
-			[PlayerEvent.stop]: {state: CanvasState.idle},
-			[PlayerEvent.clear]: {state: CanvasState.paused},
+			[PlayerEvent.play]: CanvasState.playing,
+			[PlayerEvent.stop]: CanvasState.idle,
+			[PlayerEvent.clear]: CanvasState.paused,
 		},
 	},
 	controls: {
 		[ControlsState.pristine]: {
 			[ControlsEvent.update]: ControlsState.updated,
+			[PlayerEvent.stop]: ControlsState.pristine,
 		},
 		[ControlsState.updated]: {
 			[PlayerEvent.clear]: ControlsState.pristine,
@@ -130,24 +162,17 @@ const SKETCH_TRANSITIONS: {
 	},
 	player: {
 		[PlayerState.idle]: {
-			[PlayerEvent.play]: {state: PlayerState.playing},
+			[PlayerEvent.play]: PlayerState.playing,
 		},
 		[PlayerState.playing]: {
-			[PlayerEvent.pause]: {state: PlayerState.paused},
-			[PlayerEvent.stop]: {state: PlayerState.idle},
-			[PlayerEvent.clear]: {state: PlayerState.playing},
+			[PlayerEvent.pause]: PlayerState.paused,
+			[PlayerEvent.stop]: PlayerState.idle,
+			[PlayerEvent.clear]: PlayerState.playing,
 		},
 		[PlayerState.paused]: {
-			[PlayerEvent.play]: {state: PlayerState.playing},
-			[PlayerEvent.stop]: {state: PlayerState.idle},
-			[PlayerEvent.clear]: {state: PlayerState.paused},
+			[PlayerEvent.play]: PlayerState.playing,
+			[PlayerEvent.stop]: PlayerState.idle,
+			[PlayerEvent.clear]: PlayerState.paused,
 		},
 	},
-}
-
-export default {
-	DEFAULT_FILTERS,
-	SKETCH_STATE,
-	SKETCH_ACTIONS,
-	SKETCH_TRANSITIONS,
 }

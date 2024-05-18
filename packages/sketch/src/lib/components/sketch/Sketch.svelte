@@ -8,7 +8,12 @@
 		CameraContext,
 		GeometryContext,
 	} from '$types/index.js'
-	import {CanvasState, SketchEvent, ControlsEvent} from '$types/index.js'
+	import {
+		CanvasState,
+		SketchEvent,
+		ControlsEvent,
+		CanvasEvent,
+	} from '$types/index.js'
 	import {PlayerEvent} from '$lib/components/player/types.js'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
@@ -19,9 +24,7 @@
 	import Debug from '$lib/components/debug/Debug.svelte'
 
 	import store from './store.svelte'
-	import types from './types.js'
-
-	const {DEFAULT_FILTERS} = types
+	import {DEFAULT_FILTERS} from './types.js'
 
 	type Props = {
 		id: string
@@ -69,7 +72,7 @@
 	let currentAsset = $derived(
 		store.state.canvas === CanvasState.idle && asset
 			? asset
-			: `emoji:${store.state.events.current}`,
+			: `emoji:${store.events.current}`,
 	)
 
 	let currentState = $derived(
@@ -96,7 +99,7 @@
 				store.update(SketchEvent.loadOk)
 			} catch (e: unknown) {
 				store.update(SketchEvent.loadNok)
-				store.state.feedback.canvas.push({status: 'error', message: e})
+				store.feedback.canvas.push({status: 'error', message: e})
 			}
 		}
 	}
@@ -129,7 +132,7 @@
 
 	function reset() {
 		pause()
-		store.state.feedback.canvas = []
+		store.feedback.canvas = []
 		store.updateFilters(DEFAULT_FILTERS)
 	}
 
@@ -183,7 +186,9 @@
 		scene.update({...context, filters})
 	}
 
-	function updateCanvas(payload: {event: string}) {
+	function updateCanvas(payload: {
+		event: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
+	}) {
 		let event = payload.event
 		if (payload.id === 'play') {
 			event =

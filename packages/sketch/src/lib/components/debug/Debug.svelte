@@ -33,10 +33,10 @@
 						class="bg:light justify:center l:flex nowrap align:center card:sm"
 					>
 						<span class="card:2xs bg:accent:100 variant:bare">
-							{context.getEvent('previous')}
+							{context.getPreviousEvent()}
 						</span>
 						<span class="card:2xs bg:accent:000">
-							{context.getEvent('current')}
+							{context.getCurrentEvent()}
 						</span>
 					</div>
 				</td>
@@ -45,10 +45,10 @@
 						class="bg:light justify:center l:flex nowrap align:center card:sm"
 					>
 						<span class="card:2xs bg:accent:100 variant:bare">
-							{context.getEvent('previous')}
+							{context.getPreviousEvent()}
 						</span>
 						<span class="card:2xs bg:accent:000">
-							{context.getEvent('current')}
+							{context.getCurrentEvent()}
 						</span>
 					</div>
 				</td>
@@ -57,10 +57,10 @@
 						class="bg:light justify:center l:flex nowrap align:center card:sm"
 					>
 						<span class="card:2xs bg:accent:100 variant:bare">
-							{context.getEvent('previous')}
+							{context.getPreviousEvent()}
 						</span>
 						<span class="card:2xs bg:accent:000">
-							{context.getEvent('current')}
+							{context.getCurrentEvent()}
 						</span>
 					</div>
 				</td>
@@ -70,10 +70,10 @@
 							class="bg:light justify:center l:flex nowrap align:center card:sm"
 						>
 							<span class="card:2xs bg:accent:100 variant:bare">
-								{context.getEvent('previous')}
+								{context.getPreviousEvent()}
 							</span>
 							<span class="card:2xs bg:accent:000">
-								{context.getEvent('current')}
+								{context.getCurrentEvent()}
 							</span>
 						</div>
 					</td>
