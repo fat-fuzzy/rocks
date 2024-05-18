@@ -1,2 +1,2 @@
-
-import './index.css'
+/* Layout */
+import './scroll.css'
