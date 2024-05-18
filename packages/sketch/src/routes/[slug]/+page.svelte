@@ -12,7 +12,7 @@
 	$: dimensions = $page.data.dimensions
 	$: id = $page.data.id
 	$: scene = lib.gfx.sketches[id]
-	$: meta = sketch?.meta ?? undefined
+	$: meta = sketch?.meta
 	$: headerClass = 'l:flex align:center'
 </script>
 
@@ -28,6 +28,14 @@
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
 	{#key $page.data.slug}
-		<Sketch {scene} {title} {dimensions} {meta} asset={sketch.asset} size="sm" />
+		<Sketch
+			id={`sketch-${sketch.id}`}
+			{scene}
+			{title}
+			{dimensions}
+			{meta}
+			asset={sketch.asset}
+			size="sm"
+		/>
 	{/key}
 </div>

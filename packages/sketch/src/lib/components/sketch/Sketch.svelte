@@ -32,15 +32,15 @@
 		title: string
 		asset: string
 		dimensions: string
-		layer: string // if 'layer' the canvas will appear on a layer (with drop shadow)
-		color: string
-		size: string
-		variant: string
-		background: string
-		layout: string
-		breakpoint: string
-		threshold: string
-		meta?: SceneMeta
+		layer?: string // if 'layer' the canvas will appear on a layer (with drop shadow)
+		color?: string
+		size?: string
+		variant?: string
+		background?: string
+		layout?: string
+		breakpoint?: string
+		threshold?: string
+		meta: SceneMeta
 	}
 
 	let {
@@ -112,7 +112,7 @@
 
 	function render() {
 		time = Date.now()
-		if (meta?.type !== 'texture') {
+		if (meta.type !== 'texture') {
 			loop(time)
 		} else {
 			frame = requestAnimationFrame((time) => {
@@ -214,7 +214,7 @@
 	function updateFilters(filters: Filters) {
 		scene.update({...context, filters})
 		store.update(ControlsEvent.update)
-		if (meta?.type === 'texture') {
+		if (meta.type === 'texture') {
 			play()
 		}
 	}
@@ -294,9 +294,9 @@
 						{:else if meta.type === 'texture'}
 							<TextureControls
 								id={`${id}-texture-controls`}
-								channels={meta?.channels}
-								blur={meta?.blur}
-								convolutions={meta?.convolutions}
+								channels={meta.channels}
+								blur={meta.blur}
+								convolutions={meta.convolutions}
 								onupdate={updateFilters}
 							/>
 						{/if}
