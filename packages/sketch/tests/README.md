@@ -2,6 +2,8 @@
 
 ## e2e - Playwright
 
+Folder: `e2e`
+
 ```sh
 ✔ Success! Created a Playwright Test project at fat-fuzzy-org/rocks/packages/sketch
 
