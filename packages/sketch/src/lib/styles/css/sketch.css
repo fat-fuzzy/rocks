@@ -1,6 +1,10 @@
 [class*='state:'].canvas {
 	position: relative;
-	border: var(--border-width-lg) dotted var(--ink);
+	border: var(--border-width-md) dotted var(--ink);
+}
+
+.canvas {
+	box-shadow: var(--shadow-md);
 }
 
 .scene {
@@ -27,30 +31,42 @@
 	overflow-x: hidden;
 }
 
-.state\:idle canvas {
+[class*='idle'] canvas {
 	margin-right: -100%; /* Hide the canvas without changing its dimensions */
 }
-
-.state\:paused canvas {
+/* 
+[class*='pause'] canvas {
 	filter: grayscale(65%) opacity(35%) blur(1px);
-}
+} */
+
+/* INvestigate this interesting experiment */
+/* .canvas\:round[class*='play'],
+.canvas\:round[class*='update'],
+.canvas\:round[class*='clear'],
+.canvas\:round[class*='pause'] {
+	border-radius: 100vmax;
+  background-color: var(--ink);
+	filter: opacity(50%);
+} */
 
 .canvas[class*='play']::before,
 .canvas[class*='update']::before,
 .canvas[class*='clear']::before,
-.canvas[class*='pause']::before {
+.canvas[class*='pause']::before,
+.canvas[class*='warning']::before,
+.canvas[class*='error']::before   {
 	height: fit-content;
 	position: absolute;
-	top: 0;
-	left: 0;
-	padding: var(--ui-size);
+	bottom: var(--ui-size-sm);
+	right: var(--ui-size-sm);
+	padding: var(--ui-size-sm);
 	line-height: 1;
+	border-radius: 100vmax;
+  background-color: var(--ink);
 }
 
 .state\:freeze canvas::before,
-.state\:snapshot canvas::before,
-.state\:warning::before,
-.state\:error::before {
+.state\:snapshot canvas::before {
 	display: none;
 }
 
