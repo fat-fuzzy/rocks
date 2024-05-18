@@ -149,9 +149,7 @@
 	}
 
 	function stop() {
-		if (scene.stop) {
-			scene.stop()
-		}
+		scene.stop()
 		reset()
 		store.update(PlayerEvent.stop)
 	}

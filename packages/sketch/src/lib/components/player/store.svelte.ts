@@ -80,12 +80,11 @@ class PlayerStore {
 	}
 
 	public getTransition(event: PlayerEvent): PlayerState {
-		const state = this.state
-		const transition = this.transitions[state]
+		const transition = this.transitions[this.state]
 		if (transition) {
-			return transition[event] ?? state
+			return transition[event] ?? this.state
 		}
-		return state
+		return this.state
 	}
 
 	public update(event: PlayerEvent): void {

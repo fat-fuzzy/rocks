@@ -16,6 +16,7 @@ import {
 	PlayerEvent,
 	PlayerState,
 	PlayerAction,
+	PLAYER_TRANSITIONS,
 } from '$lib/components/player/types.js'
 
 export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
@@ -158,19 +159,5 @@ export const SKETCH_TRANSITIONS: SketchTransitionsType = {
 			[PlayerEvent.clear]: ControlsState.pristine,
 		},
 	},
-	player: {
-		[PlayerState.idle]: {
-			[PlayerEvent.play]: PlayerState.playing,
-		},
-		[PlayerState.playing]: {
-			[PlayerEvent.pause]: PlayerState.paused,
-			[PlayerEvent.stop]: PlayerState.idle,
-			[PlayerEvent.clear]: PlayerState.playing,
-		},
-		[PlayerState.paused]: {
-			[PlayerEvent.play]: PlayerState.playing,
-			[PlayerEvent.stop]: PlayerState.idle,
-			[PlayerEvent.clear]: PlayerState.paused,
-		},
-	},
+	player: PLAYER_TRANSITIONS,
 }

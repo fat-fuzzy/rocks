@@ -37,7 +37,7 @@
 	let playButtonActor = switchActor.actor(id, store.getPlayState(), 'play')
 
 	function updatePlayer(payload: {id: string; value: string}) {
-		let event = payload.id
+		let event = payload.id as PlayerEvent
 		if (event === 'play') {
 			event =
 				store.getState() === PlayerState.playing
