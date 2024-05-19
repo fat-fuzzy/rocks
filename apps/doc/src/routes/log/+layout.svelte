@@ -1,13 +1,14 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {recipes, layouts, headless} from '@fat-fuzzy/ui'
+	import {recipes, layouts, headless} from '@fat-fuzzy/ui-s5'
 
 	const {Head} = headless
 	const {Sidebar} = layouts
 	const {Nav} = recipes
 
 	let title = ' FatFuzzy Log'
-	let description = 'Fat Fuzzy Log: thoughts and choices that provide context for this project'
+	let description =
+		'Fat Fuzzy Log: thoughts and choices that provide context for this project'
 	$: path = ''
 	$: items = [
 		{

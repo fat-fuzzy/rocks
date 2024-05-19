@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {headless} from '@fat-fuzzy/ui'
+	import {headless} from '@fat-fuzzy/ui-s5'
 
 	// TODO; conditional import
 	import introDay from '$lib/images/day/001-intro.png' // TODO : optimize images

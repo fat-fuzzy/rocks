@@ -1,7 +1,7 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 
-import {forms, constants, stores} from '@fat-fuzzy/ui'
+import {forms, constants, stores} from '@fat-fuzzy/ui-s5'
 
 const {NavReveal, SidebarReveal, SettingsReveal, SettingsUpdate} = forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = constants
@@ -23,7 +23,7 @@ export const actions = {
 		cookies.set('fat-fuzzy-nav-reveal', navReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo);
+			redirect(303, redirectTo)
 		}
 		return {success: true}
 	},
@@ -40,10 +40,12 @@ export const actions = {
 			return fail(400, {sidebarRevealError: true})
 		}
 		settings.sidebarReveal.set(sidebarReveal.sidebar)
-		cookies.set('fat-fuzzy-sidebar-reveal', sidebarReveal.toString(), {path: '/'})
+		cookies.set('fat-fuzzy-sidebar-reveal', sidebarReveal.toString(), {
+			path: '/',
+		})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo);
+			redirect(303, redirectTo)
 		}
 		return {success: true}
 	},
@@ -60,10 +62,12 @@ export const actions = {
 			return fail(400, {settingsRevealError: true})
 		}
 		settings.settingsReveal.set(settingsReveal.settings)
-		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {path: '/'})
+		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {
+			path: '/',
+		})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo);
+			redirect(303, redirectTo)
 		}
 		return {success: true}
 	},
@@ -80,10 +84,12 @@ export const actions = {
 			return fail(400, {settingsError: true})
 		}
 		settings.app.set(settingsUpdate.app)
-		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {path: '/'})
+		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {
+			path: '/',
+		})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo);
+			redirect(303, redirectTo)
 		}
 		return {success: true}
 	},

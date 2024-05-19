@@ -1,4 +1,4 @@
-import {api, constants} from '@fat-fuzzy/ui'
+import {api, constants} from '@fat-fuzzy/ui-s5'
 
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = constants
 

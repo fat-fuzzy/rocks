@@ -8,8 +8,9 @@
 		recipes,
 		stores,
 		constants,
-		api,
-	} from '@fat-fuzzy/ui'
+	} from '@fat-fuzzy/ui-s5'
+	import {api} from '@fat-fuzzy/playbook'
+
 	const {RevealNav} = recipes
 	let path = $page.url.pathname
 

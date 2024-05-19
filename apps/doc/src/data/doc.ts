@@ -15,15 +15,14 @@ const recipesImports = import.meta.glob('/src/assets/doc/recipes/*.md')
 // const graphicsImports = import.meta.glob('/src/assets/doc/graphics/*.md')
 
 async function fetchMarkdowns() {
-	const [categories, tokens, blocks, layouts, recipes, graphics] =
-		await Promise.all([
-			markdownUtils.fetchMarkdowns(categoryPrefix, categoryImports),
-			markdownUtils.fetchMarkdowns(tokensPathPrefix, tokensImports),
-			markdownUtils.fetchMarkdowns(blocksPathPrefix, blocksImports),
-			markdownUtils.fetchMarkdowns(layoutsPathPrefix, layoutsImports),
-			markdownUtils.fetchMarkdowns(recipesPathPrefix, recipesImports),
-			// markdownUtils.fetchMarkdowns(graphicsPathPrefix, graphicsImports),
-		])
+	const [categories, tokens, blocks, layouts, recipes] = await Promise.all([
+		markdownUtils.fetchMarkdowns(categoryPrefix, categoryImports),
+		markdownUtils.fetchMarkdowns(tokensPathPrefix, tokensImports),
+		markdownUtils.fetchMarkdowns(blocksPathPrefix, blocksImports),
+		markdownUtils.fetchMarkdowns(layoutsPathPrefix, layoutsImports),
+		markdownUtils.fetchMarkdowns(recipesPathPrefix, recipesImports),
+		// markdownUtils.fetchMarkdowns(graphicsPathPrefix, graphicsImports),
+	])
 
 	return {
 		categories: categories.sort(markdownUtils.sortByTitleDesc),

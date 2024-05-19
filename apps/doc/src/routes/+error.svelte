@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	import {headless} from '@fat-fuzzy/ui'
+	import {headless} from '@fat-fuzzy/ui-s5'
 
 	const {Head} = headless
 
@@ -15,6 +15,8 @@
 <div class="l:frame:twin">
 	<div class="l:stack:xxl card:xxl l:text:lg">
 		<h1>Error</h1>
-		<p class={`feedback emoji:${asset} font:md`}>{$page.status}: {$page.error?.message}</p>
+		<p class={`feedback emoji:${asset} font:md`}>
+			{$page.status}: {$page.error?.message}
+		</p>
 	</div>
 </div>

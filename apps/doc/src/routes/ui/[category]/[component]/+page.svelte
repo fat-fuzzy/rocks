@@ -7,14 +7,14 @@
 	import {
 		headless,
 		stores,
-		api,
 		tokens,
 		blocks,
 		layouts,
 		recipes,
 		constants,
 		utils,
-	} from '@fat-fuzzy/ui'
+	} from '@fat-fuzzy/ui-s5'
+	import {api} from '@fat-fuzzy/playbook'
 
 	const {Head} = headless
 	const {Element, Api} = api

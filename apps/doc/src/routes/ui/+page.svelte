@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {headless, tokens, blocks, layouts, recipes, api} from '@fat-fuzzy/ui'
+	import {headless, tokens, blocks, layouts, recipes} from '@fat-fuzzy/ui-s5'
+	import {api} from '@fat-fuzzy/playbook'
 
 	const {Head} = headless
 	const {Collection} = api

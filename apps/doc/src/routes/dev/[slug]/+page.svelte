@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {headless} from '@fat-fuzzy/ui'
+	import {headless} from '@fat-fuzzy/ui-s5'
 
 	const {Head} = headless
 
@@ -15,7 +15,11 @@
 	// TODO: Fix context menu
 </script>
 
-<Head {title} page="Dev" description={`Developer Doc ${markdown.meta.id}: ${title}`} />
+<Head
+	{title}
+	page="Dev"
+	description={`Developer Doc ${markdown.meta.id}: ${title}`}
+/>
 
 <header class={headerClass}>
 	<h1 class="l:main:80 card:md">{title}</h1>

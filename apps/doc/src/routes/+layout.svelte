@@ -1,11 +1,10 @@
 <script lang="ts">
 	import {onDestroy} from 'svelte'
-	import '$lib/styles/css/tokens/main.css'
-	import '@fat-fuzzy/ui/csscore'
+	import '@fat-fuzzy/style'
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$data/nav'
-	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui'
+	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui-s5'
 
 	const {Header} = recipes
 	const {settings} = stores
@@ -24,7 +23,8 @@
 	$: brightness = appSettings.brightness
 	$: contrast = appSettings.contrast
 	$: pageClass = utils.format.getClassNameFromUrl($page.url)
-	$: layoutClass = APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
+	$: layoutClass =
+		APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
 	$: mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
 	$: headerClass = `header-app ${brightness} bg:${contrast}`
 	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
@@ -49,5 +49,7 @@
 </main>
 
 <footer class={footerClass}>
-	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	<p>
+		👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
+	</p>
 </footer>

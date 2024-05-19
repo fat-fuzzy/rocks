@@ -9,10 +9,10 @@
 		blocks,
 		layouts,
 		recipes,
-		api,
 		stores,
 		constants,
-	} from '@fat-fuzzy/ui'
+	} from '@fat-fuzzy/ui-s5'
+	import {api} from '@fat-fuzzy/playbook'
 
 	const {Head} = headless
 	const {Collection, Api} = api
