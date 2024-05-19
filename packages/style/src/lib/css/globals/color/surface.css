@@ -1,0 +1,11 @@
+.surface\:color {
+	--surface-bg: var(--shade);
+	--surface-ink: var(--ink);
+	color: var(--surface-bg);
+	background-color: var(--surface-ink);
+}
+
+[class*='dotted'] {
+	--border-color: var(--ink);
+	border: var(--border-width-md) dotted var(--border-color);
+}

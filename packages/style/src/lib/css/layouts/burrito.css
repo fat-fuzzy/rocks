@@ -1,0 +1,65 @@
+/* == Burrito container == */
+.l\:burrito {
+	container-type: inline-size;
+	container-name: burrito;
+	inline-size: 100%;
+}
+
+@container burrito (max-width: 280px) {
+	.relleno {
+		inline-size: 100%;
+	}
+}
+
+[class*='l:burrito'] {
+	margin: 0 auto;
+	max-inline-size: calc(100% - calc(2 * var(--gap))); /* width of parent minus base padding */
+}
+
+/* == Sidebar content == */
+[class*='l:burrito:'] {
+	max-inline-size: var(--sidebar-width);
+}
+
+[class*='l:burrito:'].freeze {
+	inline-size: var(--sidebar-width);
+}
+
+/* TODO: Fix container queries per size - not working
+- see also `scss/mixins/mq/burrito
+*/
+/* Scale Burrito */
+.l\:burrito\:2xs {
+	container-name: burrito-2xs;
+	--sidebar-width: var(--layout-sidebar-2xs);
+}
+
+.l\:burrito\:xs {
+	container-name: burrito-xs;
+	--sidebar-width: var(--layout-sidebar-xs);
+}
+
+.l\:burrito\:sm {
+	container-name: burrito-sm;
+	--sidebar-width: var(--layout-sidebar-sm);
+}
+
+.l\:burrito\:md {
+	container-name: burrito-md;
+	--sidebar-width: var(--layout-sidebar-md);
+}
+
+.l\:burrito\:lg {
+	container-name: burrito-lg;
+	--sidebar-width: var(--layout-sidebar-lg);
+}
+
+.l\:burrito\:xl {
+	container-name: burrito-xl;
+	--sidebar-width: var(--layout-sidebar-xl);
+}
+
+.l\:burrito\:2xl {
+	container-name: burrito-2xl;
+	--sidebar-width: var(--layout-sidebar-2xl);
+}

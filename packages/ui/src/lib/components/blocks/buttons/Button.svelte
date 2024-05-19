@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {ButtonType} from '$types'
 	import {createEventDispatcher} from 'svelte'
 
 	/**
@@ -11,7 +10,7 @@
 	export let text = ''
 	export let value = ''
 	export let disabled = false
-	export let type: ButtonType = 'submit'
+	export let type = 'submit'
 	export let formaction: string | undefined = undefined
 
 	/**

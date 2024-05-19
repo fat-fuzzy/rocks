@@ -1,0 +1,22 @@
+/* Set current color SHADE according to current combination of:
+ - lightness
+ - chroma
+ - hue
+*/
+[class*=':info'] {
+	--hue-semantic: var(--color-semantic-info);
+	--hue: var(--hue-semantic);
+}
+[class*=':success'] {
+	--hue-semantic: var(--color-semantic-success);
+	--hue: var(--hue-semantic);
+}
+[class*=':warning'] {
+	--hue-semantic: var(--color-semantic-warning);
+	--hue: var(--hue-semantic);
+}
+[class*=':danger'],
+[class*=':error'] {
+	--hue-semantic: var(--color-semantic-danger);
+	--hue: var(--hue-semantic);
+}

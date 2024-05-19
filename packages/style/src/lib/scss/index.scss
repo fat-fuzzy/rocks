@@ -1,0 +1,24 @@
+/* MEDIA QUERIES */
+
+@forward './mixins/mq/burrito';
+@forward './mixins/mq/grid-header';
+@forward './mixins/mq/header-app';
+@forward './mixins/mq/reveal-auto';
+
+@forward './mixins/form';
+
+/* SCSS design token definitions */
+@use './mixins/scale';
+@use './mixins/assets';
+@use './mixins/mixins';
+
+// Generate Tokens
+$theme-prefix: '-'; // creates CSS variables with specific app prefix. Use '--' for no prefix
+
+@include mixins.theme-default(
+	scale.$modular-scale,
+	scale.$modular-scale-steps-plus,
+	scale.$modular-scale-steps-minus,
+	assets.$emojis,
+	$theme-prefix
+);

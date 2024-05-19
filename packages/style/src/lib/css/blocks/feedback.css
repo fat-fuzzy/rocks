@@ -1,0 +1,29 @@
+.feedback {
+	--hue: var(--hue-semantic, var(--color-semantic-info));
+	color: var(--ink);
+	font-size: var(--font-size);
+	padding: var(--ui-size-lg);
+	border: var(--border-width-xl) solid var(--shade);
+	background-color: var(--shade);
+}
+
+p + .feedback {
+	margin-block-start: var(--ui-size-lg);
+}
+
+.feedback .status {
+	font-family: var(--font-family-heading);
+	font-size: var(--font-size);
+	font-weight: var(--font-weight-ui);
+	line-height: 1.35;
+}
+
+.feedback.fill {
+	box-shadow: var(--shadow-md);
+}
+
+.feedback.outline,
+.feedback.bare {
+	box-shadow: unset;
+	background-color: var(--bg-color);
+}

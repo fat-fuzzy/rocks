@@ -1,0 +1,42 @@
+/* == Center main content == */
+
+/* Use Center class without a size to set a full width with default padding */
+[class*='l:center'] {
+	--max-width-center: calc(100% - calc(2 * var(--gap)));
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Use Center class without a size to set a full width with default padding */
+[class*='l:center:'] {
+	--max-width-center: calc(100% - calc(2 * var(--size-inverse)));
+	max-width: var(--max-width-center); /* width of parent minus base padding */
+}
+
+.l\:center\:2xs {
+	--size-inverse: var(--size-inverse-2xs);
+}
+
+.l\:center\:xs {
+	--size-inverse: var(--size-inverse-xs);
+}
+
+.l\:center\:sm {
+	--size-inverse: var(--size-inverse-sm);
+}
+
+.l\:center\:md {
+	--size-inverse: var(--size-inverse-md);
+}
+
+.l\:center\:lg {
+	--size-inverse: var(--size-inverse-lg);
+}
+
+.l\:center\:xl {
+	--size-inverse: var(--size-inverse-xl);
+}
+
+.l\:center\:2xl {
+	--size-inverse: var(--size-inverse-2xl);
+}

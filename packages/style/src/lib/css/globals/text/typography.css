@@ -1,0 +1,123 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--ink);
+	line-height: var(--font-leading-heading);
+	margin-block-end: var(--ui-size-sm);
+	&.nowrap {
+		white-space: nowrap;
+	}
+}
+
+h1.link,
+h2.link,
+h3.link {
+	margin: 0;
+	font-size: var(--font-size);
+}
+
+/* TODO: decouple card from typography */
+h1[class*='card'],
+h2[class*='card'],
+h3[class*='card'],
+h1[class*='card'] > *,
+h2[class*='card'] > *,
+h3[class*='card'] > * {
+	display: flex;
+	align-items: center;
+	line-height: 1;
+	text-transform: uppercase;
+	font-size: var(--font-size-plus);
+}
+
+h1 {
+	/* TODO: use specific tokens for heading colors */
+	--hue: var(--color-theme-primary);
+	--chroma: var(--color-chroma-000);
+	--lightness: var(--color-lightness-000);
+	--lightness-contrast: var(--color-lightness-400);
+	--chroma-contrast: var(--color-chroma-400);
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--font-family-h1: var(--font-family-heading);
+	color: var(--ink);
+	font-size: var(--font-size-h1);
+	font-family: var(--font-family-heading-base);
+	font-weight: var(--font-weight-h1);
+	line-height: var(--font-leading-heading);
+}
+
+h2 {
+	--font-family-h2: var(--font-family-subheading);
+	font-size: var(--font-size-h2);
+	font-family: var(--font-family-h2);
+	font-weight: var(--font-weight-h2);
+}
+
+h3 {
+	--font-family-h3: var(--font-family-subheading);
+	font-size: var(--font-size-h3);
+	font-family: var(--font-family-h3);
+	font-weight: var(--font-weight-h3);
+}
+
+h4 {
+	--font-family-h4: var(--font-family-subheading);
+	font-size: var(--font-size-h4);
+	font-family: var(--font-family-h4);
+	font-weight: var(--font-weight-h4);
+}
+
+h5 {
+	--font-family-h5: var(--font-family-subheading);
+	font-size: var(--font-size-h5);
+	font-family: var(--font-family-h5);
+	font-weight: var(--font-weight-h5);
+}
+
+.font\:base {
+	--font-family-base: var(--font-family-body);
+	font-size: var(--font-size-base);
+}
+
+[class*='font:']:not(h1, h2, h3, h4, h5, h6) {
+	font-size: var(--font-size);
+}
+
+[class*='font:'][class*=':minus']:not(h1, h2, h3, h4, h5, h6) {
+	font-size: var(--font-size-minus);
+}
+
+[class*='font:'][class*=':plus']:not(h1, h2, h3, h4, h5, h6) {
+	font-size: var(--font-size-plus);
+}
+
+article,
+.l\:text {
+	background-color: inherit;
+}
+
+figcaption {
+	color: var(--current-color);
+}
+
+ol,
+ul {
+	margin-block-end: calc(var(--gap) * var(--ratio-lg));
+}
+
+a {
+	height: fit-content;
+	padding-block: 0;
+	padding-inline: calc(var(--ui-size-sm) / 2);
+	margin-inline-end: 0.25em;
+}
+
+[class*='l:text'] {
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	color: var(--ink);
+	background-color: inherit;
+}

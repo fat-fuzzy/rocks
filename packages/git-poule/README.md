@@ -49,20 +49,20 @@ This script assumes that you have a repo with a commit convention configuration 
 
 ### Commit Data
 
-Inside a git repository, run
+Inside a git repository
 
 ```shell
-  node path/to/script/index commits.csv
+  node path/to/script/index > commits.csv
 ```
 
 This will output a `commits.csv` in the current directory.
 
-### Commit Coventions Data
+### Commit Conventions Data
 
 A second script can be used to extract commit conventions data from the local `.czrc` file:
 
 ```shell
-  node path/to/script/commitTypes commit_types.csv
+  node path/to/script/commitTypes > commit_types.csv
 ```
 
 This will output a `commit_types.csv` in the current directory.
@@ -73,13 +73,13 @@ An earlier version of the script output a JSON file under the following format:
 
 ```json
 {
-	"commits": [
-		["PR", "HASH", "TIMESTAMP", "EMOJI", "SCOPE", "DESCRIPTION", "AUTHOR"],
-		[null, "fd376f5", "1702558783", "fix:", null, "Update dependency X", "bot-name"],
-		[null, "686ae3b", "1705074852", "🚧", "root", "Deprecate some feature", "author-name"],
-		[null, "c7d83d9", "1573663878", "💄", "ui", "New Layout class definitions", "author-name"],
-		[null, "5ec9b8a", "1573663745", "🎉", null, "Initial commit - README", "author-name"]
-	]
+ "commits": [
+  ["PR", "HASH", "TIMESTAMP", "EMOJI", "SCOPE", "DESCRIPTION", "AUTHOR"],
+  [null, "fd376f5", "1702558783", "fix:", null, "Update dependency X", "bot-name"],
+  [null, "686ae3b", "1705074852", "🚧", "root", "Deprecate some feature", "author-name"],
+  [null, "c7d83d9", "1573663878", "💄", "ui", "New Layout class definitions", "author-name"],
+  [null, "5ec9b8a", "1573663745", "🎉", null, "Initial commit - README", "author-name"]
+ ]
 }
 ```
 

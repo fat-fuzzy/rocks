@@ -1,0 +1,163 @@
+{
+	"color": {
+		"$type": "number",
+		"lightness": {
+			"$type": "percentage",
+			"light": {"$value": 99},
+			"dark": {"$value": 25},
+			"000": {"$value": 98},
+			"100": {"$value": 88},
+			"200": {"$value": 76},
+			"300": {"$value": 65},
+			"400": {"$value": 54},
+			"500": {"$value": 42},
+			"600": {"$value": 32}
+		},
+		"chroma": {
+			"neutral": {"$value": 0.001},
+			"000": {"$value": 0.05},
+			"100": {"$value": 0.1},
+			"200": {"$value": 0.2},
+			"300": {"$value": 0.3},
+			"400": {"$value": 0.25},
+			"500": {"$value": 0.15},
+			"600": {"$value": 0.1}
+		},
+		"hue": {
+			"gray": {"$value": 0},
+			"gray-violet": {"$value": 308.5},
+			"violet": {"$value": 285.94},
+			"seagreen": {"$value": -151.23},
+			"fuschia": {"$value": 0},
+			"blue": {"$value": 269.95},
+			"green": {"$value": 180.22},
+			"olive": {"$value": 109.84},
+			"red": {"$value": 11.8}
+		},
+		"theme": {
+			"primary": {"$value": "{color.hue.violet}"},
+			"accent": {"$value": "{color.hue.seagreen}"},
+			"highlight": {"$value": "{color.hue.fuschia}"},
+			"surface": {"$value": "{color.hue.gray-violet}"},
+			"neutral": {"$value": "{color.hue.gray}"}
+		},
+		"semantic": {
+			"info": {"$value": "{color.hue.blue}"},
+			"success": {"$value": "{color.hue.green}"},
+			"warning": {"$value": "{color.hue.olive}"},
+			"danger": {"$value": "{color.hue.red}"}
+		},
+		"state": {
+			"default": {
+				"lightness": {"$value": "{color.lightness.300}"},
+				"chroma": {"$value": "{color.chroma.300}"}
+			},
+			"active": {
+				"lightness": {"$value": "{color.lightness.500}"},
+				"chroma": {"$value": "{color.chroma.500}"}
+			},
+			"hover": {
+				"lightness": {"$value": "{color.lightness.400}"},
+				"chroma": {"$value": "{color.chroma.400}"}
+			},
+			"focus": {
+				"lightness": {"$value": "{color.lightness.500}"},
+				"chroma": {"$value": "{color.chroma.500}"}
+			},
+			"disabled": {
+				"lightness": {"$value": "{color.lightness.100}"},
+				"chroma": {"$value": "{color.chroma.100}"}
+			},
+			"visited": {
+				"lightness": {"$value": "{color.lightness.200}"},
+				"chroma": {"$value": "{color.chroma.200}"}
+			}
+		},
+		"shadow": {
+			"$type": "color",
+			"primary": {
+				"$value": "hsl(254.96 90% 60%)",
+				"$extensions": {
+					"mode": {
+						"day": "hsl(254.96 90% 60%)",
+						"night": "hsl(254.96 90% 80%)"
+					}
+				}
+			},
+			"accent": {
+				"$value": "hsl(188.19 90% 60%)",
+				"$extensions": {
+					"mode": {
+						"day": "hsl(188.19 90% 60%)",
+						"night": "hsl(188.19 90% 80%)"
+					}
+				}
+			},
+			"highlight": {
+				"$value": "hsl(329.3 90% 60%)",
+				"$extensions": {
+					"mode": {
+						"day": "hsl(329.3 90% 60%)",
+						"night": "hsl(329.3 90% 80%)"
+					}
+				}
+			}
+		},
+		"gradient": {
+			"$type": "color",
+			"000": {
+				"start": {"$value": "{color.shadow.highlight}"},
+				"middle": {"$value": "{color.shadow.primary}"},
+				"end": {"$value": "{color.shadow.accent}"}
+			}
+		}
+	},
+	"shadow": {
+		"base": {
+			"$type": "dimension",
+			"sm": {
+				"offsetX": {"$value": "0"},
+				"offsetY": {"$value": "1px"},
+				"blur": {"$value": "4px"},
+				"spread": {"$value": "0"}
+			},
+			"md": {
+				"offsetX": {"$value": "0"},
+				"offsetY": {"$value": "2px"},
+				"blur": {"$value": "6px"},
+				"spread": {"$value": 0}
+			}
+		},
+		"md": {
+			"$type": "shadow",
+			"$value": {
+				"offsetX": "{shadow.base.md.offsetX}",
+				"offsetY": "{shadow.base.md.offsetY}",
+				"blur": "{shadow.base.md.blur}",
+				"spread": "{shadow.base.md.spread}",
+				"color": "{color.shadow.primary}"
+			}
+		},
+		"inset": {
+			"$type": "shadow",
+			"1": {
+				"$value": {
+					"offsetX": "{shadow.base.sm.offsetX}",
+					"offsetY": "{shadow.base.sm.offsetY}",
+					"blur": "{shadow.base.sm.blur}",
+					"spread": "{shadow.base.sm.spread}",
+					"color": "{color.shadow.accent}"
+				}
+			},
+			"2": {
+				"$value": {
+					"offsetX": "{shadow.base.md.offsetX}",
+					"offsetY": "{shadow.base.md.offsetY}",
+					"blur": "{shadow.base.md.blur}",
+					"spread": "{shadow.base.md.spread}",
+					"color": "{color.shadow.accent}"
+				}
+			}
+		}
+	}
+}

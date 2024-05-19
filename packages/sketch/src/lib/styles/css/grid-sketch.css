@@ -1,0 +1,31 @@
+.scene {
+	grid-area: scene;
+}
+
+.context {
+	grid-area: context;
+}
+
+.debug {
+	grid-area: debug;
+}
+
+.l\:grid\:sketch {
+	grid-template-areas:
+		'scene'
+		'context'
+		'debug';
+}
+
+.l\:grid\:sketch > .scene {
+	grid-area: scene;
+}
+
+.l\:grid\:sketch > .context {
+	grid-area: context;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+

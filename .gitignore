@@ -6,6 +6,7 @@
 yarn-error.log
 /cypress/screenshots/
 /__sapper__/
+.vscode/
 
 # Logs
 logs
@@ -146,3 +147,13 @@ iam-policy-default.json
 .RData
 .Rhistory
 packages/lib/src/data
+
+### Styles ###
+packages/style/src/css/tokens/*
+packages/style/src/tests/tmp/*
+
+# Ignore font files for now
+packages/style/src/assets/fonts/
+packages/sketch/static/fonts/
+packages/ui-s5/static/fonts
+

@@ -1,0 +1,41 @@
+.font\:2xs {
+	--font-size: var(--font-size-xs) / var(--fluid-min-ratio);
+	--font-size-minus: calc(var(--font-size-2xs) / var(--fluid-min-ratio));
+	--font-size-plus: var(--font-size-sm);
+}
+
+.font\:xs {
+	--font-size: var(--font-size-xs);
+	--font-size-minus: calc(var(--font-size-xs) / var(--fluid-min-ratio));
+	--font-size-plus: var(--font-size-md);
+}
+
+.font\:sm {
+	--font-size: var(--font-size-sm);
+	--font-size-minus: var(--font-size-xs);
+	--font-size-plus: var(--font-size-lg);
+}
+
+.font\:md {
+	--font-size: var(--font-size-md);
+	--font-size-minus: var(--font-size-xs);
+	--font-size-plus: var(--font-size-xl);
+}
+
+.font\:lg {
+	--font-size: var(--font-size-lg);
+	--font-size-minus: var(--font-size-sm);
+	--font-size-plus: var(--font-size-2xl);
+}
+
+.font\:xl {
+	--font-size: var(--font-size-xl);
+	--font-size-minus: var(--font-size-md);
+	--font-size-plus: calc(var(--font-size-2xl) * var(--fluid-min-ratio));
+}
+
+.font\:2xl {
+	--font-size: var(--font-size-2xl);
+	--font-size-minus: var(--font-size-xl);
+	--font-size-plus: calc(var(--font-size-2xl) * var(--fluid-min-ratio));
+}

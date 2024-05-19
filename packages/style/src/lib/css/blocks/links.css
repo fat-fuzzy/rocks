@@ -1,0 +1,26 @@
+/* == Links
+ - The styles below are global: for example they will apply to links in text
+ - Links in navs have specific styles (except for hover), see: * styles/core/blocks/nav.scss`
+ == */
+a {
+	color: var(--ink);
+	background-color: var(--bg-color);
+	border-color: var(--ink);
+	outline-color: var(--shade);
+	text-decoration-color: var(--ink);
+}
+
+a:hover,
+a:focus,
+a:active,
+a:visited {
+	--hue: var(--color-theme-primary);
+	text-decoration: underline;
+}
+
+a:hover {
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-lightness-400);
+}
+
+/* TODO: CHeck link styles */

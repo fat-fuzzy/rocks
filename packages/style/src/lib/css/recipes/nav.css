@@ -1,0 +1,105 @@
+nav {
+	display: flex;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	/* width: 100%; */
+	padding: 0;
+}
+
+/* == Keep nav links to one line with ellipsis == */
+nav li {
+	/* width: 100%; */
+	max-width: calc(var(--sidebar-width) - var(--outline-offset));
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding: 0 var(--outline-offset);
+	margin-block: 0;
+}
+
+nav li a {
+	font-weight: var(--font-weight-semibold);
+	max-width: 100%;
+	font-size: var(--font-size-ui);
+	line-height: 1;
+	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
+	overflow: hidden;
+	text-decoration: none;
+}
+
+nav a:hover {
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-lightness-400);
+}
+
+nav a:focus {
+	outline-offset: var(--outline-offset-nav);
+}
+
+nav li a:visited {
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-lightness-500);
+	font-weight: var(--font-weight-semibold);
+}
+
+/* == RevealNav (tree-like navigation menus) == */
+ul.depth-1 {
+	padding-inline-start: var(---ui-size-lg);
+}
+
+ul.depth-2 {
+	padding-inline-start: calc(2 * var(--ui-size));
+}
+
+ul.depth-3 {
+	padding-inline-start: calc(3 * var(--ui-size));
+}
+
+ul.depth-4 {
+	padding-inline-start: calc(4 * var(--ui-size));
+}
+
+/* Active Link */
+nav li[aria-current='page'] {
+	--hue: var(--color-theme-primary);
+	background-color: var(--shade);
+}
+
+/* Active Link */
+nav li[aria-current='page'] > a,
+nav li[aria-current='page'] > a:visited {
+	text-decoration-color: var(--bg-color);
+}
+
+/* Sidebar active links */
+[class^='l:sidebar'] nav li[aria-current='page'] > a {
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-lightness-500);
+	padding-inline: var(--ui-size);
+}
+
+/* override Active Link styles for top level link */
+ul.depth-0 > li > a {
+	font-family: var(--font-family-heading);
+	font-weight: var(--font-weight-semibold);
+}
+
+/* == Link Overrides == */
+
+/* == Override global <a> hover styles in nav and header <a> == */
+nav a:hover {
+	background-color: initial;
+}
+
+/* == Override heading styles for headings inside links == */
+a[class*='card'] {
+	text-decoration: none;
+}
+
+/* == Override heading styles for headings inside links == */
+a[class*='card']:hover > *:not(.icon) {
+	text-decoration: underline;
+}

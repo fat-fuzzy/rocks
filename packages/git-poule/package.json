@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/git-poule",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Script to extract commit data from local git history",
 	"main": "index.js",
 	"scripts": {

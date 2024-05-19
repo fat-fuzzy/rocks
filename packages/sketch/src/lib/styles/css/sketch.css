@@ -1,0 +1,92 @@
+[class*='state:'].canvas {
+	position: relative;
+	border: var(--border-width-md) dotted var(--ink);
+}
+
+.canvas {
+	box-shadow: var(--shadow-md);
+}
+
+.scene {
+	position: relative;
+}
+
+.state\:play {
+	background-color: var(--bg-color);
+}
+
+.state\:pause,
+.state\:feedback,
+.state\:idle,
+.state\:stop {
+	background-color: var(--shade);
+}
+
+.state\:idle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* Hide the canvas without changing its dimensions */
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+[class*='idle'] canvas {
+	margin-right: -100%; /* Hide the canvas without changing its dimensions */
+}
+
+/* 
+[class*='pause'] canvas {
+	filter: grayscale(65%) opacity(35%) blur(1px);
+} */
+
+/* INvestigate this interesting experiment */
+/* .canvas\:round[class*='play'],
+.canvas\:round[class*='update'],
+.canvas\:round[class*='clear'],
+.canvas\:round[class*='pause'] {
+	border-radius: 100vmax;
+  background-color: var(--ink);
+	filter: opacity(50%);
+} */
+
+.canvas[class*='play']::before,
+.canvas[class*='update']::before,
+.canvas[class*='clear']::before,
+.canvas[class*='pause']::before,
+.canvas[class*='warning']::before,
+.canvas[class*='error']::before   {
+	height: fit-content;
+	position: absolute;
+	bottom: var(--ui-size-sm);
+	right: var(--ui-size-sm);
+	padding: var(--ui-size-sm);
+	line-height: 1;
+	border-radius: 100vmax;
+  background-color: var(--ink);
+}
+
+.state\:freeze canvas::before,
+.state\:snapshot canvas::before {
+	display: none;
+}
+
+.state\:idle::before {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	font-size: calc(var(--fluid-4) * 5);
+}
+
+.scene .feedback {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: var(--ui-size-lg);
+	height: fit-content;
+	width: calc(100% - 2 * var(--ui-size-lg));
+	max-height: calc(100% - 2 * var(--ui-size-lg));
+	overflow: auto;
+}

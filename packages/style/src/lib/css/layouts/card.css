@@ -1,0 +1,8 @@
+[class*='card'] {
+	border-radius: var(--border-radius-base);
+	padding: var(--ui-size);
+}
+
+[class*='card:feature'] {
+	padding-block-start: var(--gap);
+}

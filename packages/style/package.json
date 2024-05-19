@@ -1,0 +1,60 @@
+{
+	"package": "@fat-fuzzy/style",
+	"name": "@fat-fuzzy/style",
+	"version": "0.1.1",
+	"description": "Fat Fuzzy CSS",
+	"author": "Patricia Boh",
+	"license": "MIT",
+	"scripts": {
+		"dev": "pnpm build:tokens && pnpm dev:scss",
+		"dev:scss": "rollup --config rollup.config.scss.js -w",
+		"build": "pnpm build:scss && pnpm build:css && pnpm build:main",
+		"build:all": "pnpm prebuild:all && pnpm build:css && pnpm build:main",
+		"prebuild:all": "pnpm build:tokens && pnpm build:scss",
+		"build:css": "rollup --config rollup.config.js",
+		"build:main": "rollup --config rollup.config.main.js",
+		"build:scss": "rollup --config rollup.config.scss.js",
+		"build:tokens": "./node_modules/.bin/co build",
+		"lint:css": "stylelint ./src/lib/css/**/*.css &> ./logs/stylelint-css.log",
+		"lint:scss": "stylelint ./src/lib/scss/**/*.scss &> ./logs/stylelint-scss.log",
+		"lint:prettier": "prettier --check --ignore-path=../../.prettierignore . && eslint \".\"",
+		"lint": "pnpm lint:css; pnpm lint:scss; pnpm lint:prettier > ./logs/lint.log",
+		"format": "prettier --write --ignore-path=../../.prettierignore .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"main": "dist/main.css",
+	"files": [
+		"dist/css"
+	],
+	"exports": {
+		".": "./dist/main.css",
+		"./css": "./dist/main.css",
+		"./css/**/*": "./dist/lib/**/*",
+		"./tokens": "./dist/lib/tokens/tokens.css"
+	},
+	"devDependencies": {
+		"@cobalt-ui/cli": "1.11.0",
+		"@cobalt-ui/plugin-css": "1.7.3",
+		"@csstools/postcss-bundler": "^1.0.6",
+		"@csstools/postcss-global-data": "^2.1.0",
+		"@csstools/postcss-minify": "^1.0.2",
+		"@fat-fuzzy/config": "workspace:*",
+		"@types/node": "^20.11.19",
+		"autoprefixer": "^10.4.17",
+		"glob": "^10.3.12",
+		"husky": "^9.0.11",
+		"postcss": "8.4.35",
+		"postcss-jit-props": "^1.0.14",
+		"postcss-preset-env": "^9.2.0",
+		"prettier": "^3.2.5",
+		"rollup": "4.12.0",
+		"rollup-plugin-postcss": "^4.0.2",
+		"rollup-plugin-scss": "^4.0.0",
+		"sass": "^1.75.0",
+		"stylelint": "^16.2.1",
+		"stylelint-config-standard": "^36.0.0",
+		"stylelint-config-standard-scss": "^13.0.0"
+	},
+	"browserslist": "defaults",
+	"type": "module"
+}

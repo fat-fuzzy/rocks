@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ButtonType, ButtonState} from '$types'
+	import type {ButtonState} from '$types'
 	import {createEventDispatcher, onMount} from 'svelte'
 	import {useMachine} from '@xstate/svelte'
 	import {createActor} from 'xstate'
@@ -15,7 +15,7 @@
 	export let title = ''
 	export let initial = false
 	export let disabled = false
-	export let type: ButtonType = 'submit'
+	export let type = 'submit'
 	export let formaction: string | undefined = undefined
 	export let states: ButtonState // this component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
 

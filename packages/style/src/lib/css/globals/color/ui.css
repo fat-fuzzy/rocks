@@ -1,0 +1,21 @@
+/* Set current color SHADE according to current combination of:
+ - lightness
+ - chroma
+ - hue
+*/
+[class*=':primary'] {
+	--hue: var(--color-theme-primary);
+}
+
+[class*=':accent'] {
+	--hue: var(--color-theme-accent);
+}
+
+[class*=':highlight'] {
+	--hue: var(--color-theme-highlight);
+}
+
+[class*=':neutral'] {
+	--hue: var(--color-theme-neutral);
+	--chroma: var(--color-chroma-neutral);
+}

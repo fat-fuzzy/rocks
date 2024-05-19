@@ -1,0 +1,48 @@
+<script lang="ts">
+	import {blocks} from '@fat-fuzzy/ui-s5'
+	const {InputRange} = blocks
+
+	type Props = {
+		id?: string
+		label?: string
+		size?: string
+		color?: string
+		angle: number
+		min?: number
+		max?: number
+		step?: number
+		disabled?: boolean
+		onupdate: (payload: {value: number}) => void
+	}
+
+	let {
+		color = '',
+		size = 'xxs',
+		id = 'camera',
+		label = 'Camera',
+		angle = $bindable(60),
+		min = 0,
+		max = 360,
+		step = 0.01,
+		disabled,
+		onupdate,
+	}: Props = $props()
+
+	function updateCamera() {
+		onupdate({value: angle})
+	}
+</script>
+
+<InputRange
+	bind:value={angle}
+	{id}
+	name={id}
+	{label}
+	{max}
+	{min}
+	oninput={updateCamera}
+	{size}
+	{step}
+	{color}
+	{disabled}
+/>

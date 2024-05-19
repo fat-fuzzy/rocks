@@ -1,3 +1,4 @@
+import utils from '../../lib/utils'
 import geometries from '../../lib/geometries'
 import filters from '../../lib/filters'
 
@@ -10,12 +11,10 @@ let originalTexture
  * @param {*} programInfo
  * @param {*} buffers
  */
-function drawScene(gl, programInfo, buffers) {
-	setPositionAttribute(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
-
+function drawScene(gl, programInfo, {level}) {
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
+	gl.uniform1i(programInfo.uniformLocations.u_level, level)
 
 	// Create a texture
 	originalTexture = createAndSetupTexture(gl)
@@ -30,57 +29,12 @@ function drawScene(gl, programInfo, buffers) {
 
 	let framebufferOptions = {mipLevel, border, internalFormat, srcFormat, srcType, data}
 	// texImage2D(target, level, internalformat, format, type, source)
-	gl.texImage2D(
-		gl.TEXTURE_2D,
-		mipLevel,
-		internalFormat,
-		srcFormat,
-		srcType,
-		programInfo.context.image,
-	)
+	const image = programInfo.context.image
+	gl.texImage2D(gl.TEXTURE_2D, mipLevel, internalFormat, srcFormat, srcType, image)
 
 	let {textures, framebuffers} = setupFramebuffers(gl, programInfo, framebufferOptions)
 
 	drawEffects(gl, programInfo, textures, framebuffers, originalTexture)
-}
-
-function setPositionAttribute(gl, buffers, programInfo) {
-	const count = 2 // pull out 3 values from buffer per iteration
-	const type = gl.FLOAT // the data in the buffer is 32bit floats
-	const normalize = false
-	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
-	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
-
-	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position)
-	gl.vertexAttribPointer(
-		programInfo.attribLocations.a_position,
-		count,
-		type,
-		normalize,
-		stride,
-		offset,
-	)
-	gl.enableVertexAttribArray(programInfo.attribLocations.a_position)
-}
-
-function setTextureAttribute(gl, buffers, programInfo) {
-	const count = 2 // pull out 3 values from buffer per iteration
-	const type = gl.FLOAT // the data in the buffer is 32bit floats
-	const normalize = false
-	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
-	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
-
-	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.texture)
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(DEFAULT_TEXTURE_COORDS), gl.STATIC_DRAW)
-	gl.vertexAttribPointer(
-		programInfo.attribLocations.a_texCoord,
-		count,
-		type,
-		normalize,
-		stride,
-		offset,
-	)
-	gl.enableVertexAttribArray(programInfo.attribLocations.a_texCoord)
 }
 
 function createAndSetupTexture(gl) {
@@ -152,7 +106,7 @@ function setupFramebuffers(gl, programInfo, framebufferOptions) {
  * @param {*} originalTexture
  */
 function drawEffects(gl, programInfo, textures, framebuffers, originalTexture) {
-	let contextFilters = programInfo.context.effects
+	let contextFilters = programInfo.context.convolutions
 	// start with the original image on unit 0
 	gl.activeTexture(gl.TEXTURE0 + 0)
 	gl.bindTexture(gl.TEXTURE_2D, originalTexture)
@@ -214,8 +168,12 @@ function setFrameBuffer(gl, fbo, programInfo) {
 	// Tell the shader the resolution of the framebuffer
 	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
 
+	let {x, y, viewportWidth, viewportHeight} = utils.centerImage(
+		{width: gl.drawingBufferWidth, height: gl.drawingBufferHeight},
+		gl.canvas,
+	)
 	// Tell WebGL how to convert from clip space to pixels
-	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
+	gl.viewport(x, y, viewportWidth, viewportHeight)
 }
 
 /**

@@ -1,7 +1,15 @@
 <script lang="ts">
 	import {onDestroy, setContext} from 'svelte'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, recipes, graphics, stores, constants, api} from '@fat-fuzzy/ui'
+	import {
+		tokens,
+		blocks,
+		layouts,
+		recipes,
+		stores,
+		constants,
+		api,
+	} from '@fat-fuzzy/ui'
 	const {RevealNav} = recipes
 	let path = $page.url.pathname
 
@@ -14,7 +22,6 @@
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
 	const recipeNames = Object.keys(recipes).sort(sortAsc)
-	const graphicsNames = Object.keys(graphics).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
 	let sidebarReveal: {[key: string]: string} = {reveal: ''}
@@ -65,11 +72,11 @@
 					title: 'Recipes',
 					items: recipeNames.map((c) => ({slug: c, title: c})),
 				},
-				{
-					slug: 'graphics',
-					title: 'Graphics',
-					items: graphicsNames.map((c) => ({slug: c, title: c})),
-				},
+				// {
+				// 	slug: 'graphics',
+				// 	title: 'Graphics',
+				// 	items: graphicsNames.map((c) => ({slug: c, title: c})),
+				// },
 			],
 		},
 	]

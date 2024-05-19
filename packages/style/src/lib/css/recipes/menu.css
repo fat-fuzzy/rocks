@@ -1,0 +1,17 @@
+menu {
+	display: flex;
+	align-items: center;
+	height: fit-content;
+	padding: 0;
+	list-style: none;
+	background-color: inherit;
+}
+
+.menu > p {
+	font-size: var(--font-size-small);
+	font-weight: var(--font-weight-ui);
+}
+
+menu > li > * {
+	width: 100%;
+}

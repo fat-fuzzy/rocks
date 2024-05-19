@@ -1,0 +1,32 @@
+/* Global */
+@import './initial.css';
+
+/* Color */
+@import './color/background.css';
+@import './color/surface.css';
+@import './color/semantic.css';
+@import './color/ui.css';
+@import './color/contrast.css';
+@import './color/settings.css';
+
+/* State */
+@import './ui/state.css';
+@import './ui/scale.css';
+@import './ui/variant.css';
+
+/* Font faces */
+@import './text/_mono.css';
+@import './text/_serif.css';
+@import './text/_sans.css';
+@import './text/_heading.css';
+
+/* Text */
+@import './text/typography.css';
+@import './text/scale.css';
+
+/* Icons */
+@import './icons/assets.css'; /* Use to display emojis or svg icons */
+@import './icons/svg.css'; /* Use to display emojis or svg icons */
+
+/* Content */
+@import './layers.css';

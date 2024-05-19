@@ -4,7 +4,8 @@
 
 	const {Head} = headless
 	const title = 'Play'
-	const description = 'A sandbox environment to experiment and learn web-based computer graphics.'
+	const description =
+		'A sandbox environment to experiment and learn web-based computer graphics.'
 
 	$: sketches = $page.data.sketches
 	$: headerClass = 'l:flex card:sm bg:polar align:center'

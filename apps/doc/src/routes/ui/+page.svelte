@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {headless, tokens, blocks, layouts, recipes, graphics, api} from '@fat-fuzzy/ui'
+	import {headless, tokens, blocks, layouts, recipes, api} from '@fat-fuzzy/ui'
 
 	const {Head} = headless
 	const {Collection} = api
@@ -14,7 +14,6 @@
 		{category: 'blocks', items: blocks},
 		{category: 'layouts', items: layouts},
 		{category: 'recipes', items: recipes},
-		{category: 'graphics', items: graphics},
 	]
 	const path = $page.url.pathname
 

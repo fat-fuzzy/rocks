@@ -1,0 +1,30 @@
+
+
+@mixin nightColoredInputStyles($color) {
+	label.#{$color} > [type='file'] {
+		color: var(--color-black);
+	}
+
+	label.outline.#{$color} > input,
+	label.outline.#{$color} > [type='file'] {
+		color: var(--current-#{$color}-light);
+	}
+
+	label.bare.#{$color} > input,
+	label.bare.#{$color} > [type='file'] {
+		color: var(--current-#{$color}-lighter);
+	}
+
+	.outline.#{$color}:hover > input,
+	.outline.#{$color}:hover > [type='file'],
+	.bare.#{$color}:hover > input,
+	.bare.#{$color}:hover > [type='file'] {
+		color: var(--color-black);
+	}
+}
+
+.night {
+	@include nightColoredInputStyles('primary');
+	@include nightColoredInputStyles('accent');
+	@include nightColoredInputStyles('highlight');
+}

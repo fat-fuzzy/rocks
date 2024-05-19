@@ -1,0 +1,7 @@
+.maki\:inline {
+	margin-inline: var(--ui-size);
+}
+
+.maki\:block {
+	margin-block: var(--ui-size);
+}

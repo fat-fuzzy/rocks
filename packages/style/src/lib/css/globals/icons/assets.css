@@ -1,0 +1,5 @@
+/* SVG Icons */
+
+.icon\:svg\:egg::before {
+	--icon-url: url('/icons/egg.svg');
+}

@@ -1,0 +1,13 @@
+[class*='emoji:'] {
+	--icon-size: var(--ui-size-xl);
+	font-size: var(--icon-size);
+}
+
+[class*='emoji:']::before,
+[class*='emoji:'].align\:start::before {
+	margin-inline-end: var(--ui-size-sm);
+}
+
+[class*='emoji:'].align\:end::after {
+	margin-inline-start: var(--ui-size-sm);
+}

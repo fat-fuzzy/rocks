@@ -8,9 +8,14 @@
 import utils from '../../lib/utils'
 import setup from '../../lib/webgl/setup'
 import {drawScene} from './draw-scene'
-import {initBuffers} from './init-buffers'
+import {
+	initBuffers,
+	updateBuffers,
+	setPositionAttribute,
+	setTextureAttribute,
+} from '../../lib/buffers/textures'
 
-import {convolution, defaultFrag} from './shaders/fragment-shader'
+import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
 let host = 'http://localhost:5173'
@@ -20,17 +25,59 @@ let imgWidth = 620
 let imgHeight = 518
 // let imgHeight = 620
 // let imgWidth = 518
-let imagePath = `${host}/${imageAssetsPath}/${filename}`
+let url = `${host}/${imageAssetsPath}/${filename}`
 let gl
-let programInfo = {}
+let program
+let vao
+let programInfo = {
+	errors: [],
+}
 let buffers
+let vertexShader
+let fragmentShader
+let texture
+let image
+let level = 1
+let error
+let meta = 	{
+	id: '013',
+	slug: 'convolution',
+	title: 'Convolution',
+	asset: 'emoji:convolution',
+	tags: ['matrix', 'texture' /* , 'webgl' */],
+	controls: ['texture'],
+	filename: 'plants.png',
+	filters: {
+		convolutions: [
+			'normal',
+			'gaussianBlur',
+			'gaussianBlur2',
+			'gaussianBlur3',
+			'unsharpen',
+			'sharpness',
+			'sharpen',
+			'edgeDetect',
+			'edgeDetect2',
+			'edgeDetect3',
+			'edgeDetect4',
+			'edgeDetect5',
+			'edgeDetect6',
+			'sobelHorizontal',
+			'sobelVertical',
+			'previtHorizontal',
+			'previtVertical',
+			'boxBlur',
+			'triangleBlur',
+			'emboss',
+		],
+	}
+}
 
 function clear() {
 	if (!gl) {
-		// TODO: handle error
 		return
 	}
-	gl.viewport(0, 0, gl.canvas.clientWidth, gl.canvas.clientWidth)
+	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
 	// Set the clear color to darkish green.
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
@@ -45,113 +92,87 @@ function clear() {
 	// gl.depthFunc(gl.LEQUAL) // near things obscure far things
 }
 
-function main(canvas, options) {
+function stop() {
+	clear()
+
+	if (buffers) {
+		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
+		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
+	}
+	if (vertexShader) gl.deleteShader(vertexShader)
+	if (fragmentShader) gl.deleteShader(fragmentShader)
+	if (programInfo.program) gl.deleteProgram(programInfo.program)
+}
+
+function init(canvas) {
 	// Initialize the GL context
 	gl = canvas.getContext('webgl2')
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
-		throw Error('Unable to initialize WebGL. Your browser or machine may not support it.')
-	}
-
-	let image = new Image()
-	image.src = imagePath
-
-	image.onload = () => {
-		loadTexture(gl, image, options)
-	}
-
-	return {
-		context: {
-			image,
-			translation: [0, 0],
-			width: 1,
-			height: 1,
-			effects: options.filters?.effects ?? ['normal'],
-		},
+		throw Error(
+			'Unable to initialize WebGL. Your browser or machine may not support it.',
+		)
 	}
 }
 
-function draw(t) {
-	drawScene(gl, programInfo, buffers)
+function loadImage(url, callback) {
+	let image = new Image()
+	image.src = url
+	image.onload = callback
+
+	return image
+}
+
+function render(canvas) {
+	programInfo = loadProgram(canvas)
+	// Create a vertex array object (attribute state)
+	vao = gl.createVertexArray()
+	// Bind the attribute/buffer set we want.
+	gl.bindVertexArray(vao)
+	programInfo.context = loadTexture(image)
+
+	updateBuffers(gl, programInfo, buffers)
+	setPositionAttribute(gl, buffers, programInfo)
+	setTextureAttribute(gl, buffers, programInfo)
+	error = gl.getError()
+	if (error !== gl.NO_ERROR) {
+		programInfo.errors.push(error)
+	} else {
+		programInfo.errors = []
+	}
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
+}
+
+function main(canvas) {
+	init(canvas)
+	image = loadImage(url, () => render(canvas))
+	return programInfo.context
+}
+
+function draw(time) {
+	clear()
+	utils.resize(gl.canvas)
+
+	// Bind the VAO
+	gl.bindVertexArray(vao)
+
+	drawScene(gl, programInfo, {level})
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
 }
 
 //
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadTexture(gl, image, options) {
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-	let program
-
-	let frag
-	if (options.filters.effects) {
-		frag = convolution['convolution.1']
-	}
-	// if (filters.channels) {
-	// 	frag = channels[filters.channels]
-	// }
-
-	// if (filters.blur) {
-	// 	frag = blur[filters.blur]
-	// }
-
-	if (!frag) {
-		frag = defaultFrag
-	}
-	const vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
-	const fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
-
-	if (vertexShader && fragmentShader) {
-		program = setup.link(gl, vertexShader, fragmentShader)
-		gl.useProgram(program)
-	}
-	// Create a vertex array object (attribute state)
-	let vao = gl.createVertexArray()
-	// Bind the attribute/buffer set we want.
-	gl.bindVertexArray(vao)
-
-	clear()
-
-	utils.resize(gl.canvas)
-
-	// Collect all the info needed to use the shader program.
-	// Look up which attribute our shader program is using
-	// for aVertexPosition and look up uniform locations.
-
-	programInfo = {
-		program,
-		attribLocations: {
-			a_position: gl.getAttribLocation(program, 'a_position'),
-			a_texCoord: gl.getAttribLocation(program, 'a_texCoord'),
-		},
-		uniformLocations: {
-			// bind u_matrix
-			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
-			u_image: gl.getUniformLocation(program, 'u_image'),
-			u_kernel: gl.getUniformLocation(program, 'u_kernel[0]'),
-			u_kernelWeight: gl.getUniformLocation(program, 'u_kernelWeight'),
-			u_flipY: gl.getUniformLocation(program, 'u_flipY'),
-		},
-		context: {
-			image,
-			translation: [0, 0],
-			width: imgWidth,
-			height: imgHeight,
-			effects: options.filters?.effects ?? ['normal'],
-		},
-	}
-
-	buffers = initBuffers(gl, programInfo)
-
-	const texture = gl.createTexture()
+function loadTexture(image) {
+	texture = gl.createTexture()
 	// make unit 0 the active texture uint
-	// (ie, the unit all other texture commands will affect
+	// (ie, the unit all other texture commands will affect)
 	gl.activeTexture(gl.TEXTURE0)
 
 	gl.bindTexture(gl.TEXTURE_2D, texture)
@@ -195,7 +216,7 @@ function loadTexture(gl, image, options) {
 	// WebGL1 has different requirements for power of 2 images
 	// vs. non power of 2 images so check if the image is a
 	// power of 2 in both dimensions.
-	if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
+	if (utils.isPowerOf2(image.width) && utils.isPowerOf2(image.height)) {
 		// Yes, it's a power of 2. Generate mips.
 		gl.generateMipmap(gl.TEXTURE_2D)
 	} else {
@@ -207,16 +228,75 @@ function loadTexture(gl, image, options) {
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 	}
 
-	return image
+	return {
+		image,
+		translation: [0, 0],
+		width: imgWidth,
+		height: imgHeight,
+		convolutions: ['normal'],
+		level,
+	}
 }
 
-function isPowerOf2(value) {
-	return (value & (value - 1)) === 0
+function loadProgram(canvas) {
+	vertexShader = setup.compile(gl, gl.VERTEX_SHADER, vert)
+	fragmentShader = setup.compile(gl, gl.FRAGMENT_SHADER, frag)
+
+	if (vertexShader && fragmentShader) {
+		program = setup.link(gl, vertexShader, fragmentShader)
+		if (program) {
+			gl.useProgram(program)
+		}
+	}
+
+	utils.resize(canvas)
+
+	// Collect all the info needed to use the shader program.
+	// Look up which attribute our shader program is using
+	// for aVertexPosition and look up uniform locations.
+
+	let _programInfo = {
+		program,
+		attribLocations: {
+			a_position: gl.getAttribLocation(program, 'a_position'),
+			a_texCoord: gl.getAttribLocation(program, 'a_texCoord'),
+		},
+		uniformLocations: {
+			// bind u_matrix
+			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
+			u_image: gl.getUniformLocation(program, 'u_image'),
+			u_kernel: gl.getUniformLocation(program, 'u_kernel[0]'),
+			u_kernelWeight: gl.getUniformLocation(program, 'u_kernelWeight'),
+			u_flipY: gl.getUniformLocation(program, 'u_flipY'),
+			u_level: gl.getUniformLocation(program, 'u_level'),
+		},
+		context: {
+			image,
+			translation: [0, 0],
+			width: imgWidth,
+			height: imgHeight,
+			convolutions: ['normal'],
+			level,
+		},
+		errors: [],
+	}
+
+	buffers = initBuffers(gl)
+	setPositionAttribute(gl, buffers, _programInfo)
+	setTextureAttribute(gl, buffers, _programInfo)
+
+	return _programInfo
 }
 
-function update(context) {
-	programInfo.context = context
-	buffers = initBuffers(gl, programInfo)
+function update({filters}) {
+	programInfo.context = {
+		image,
+		translation: [0, 0],
+		width: imgWidth,
+		height: imgHeight,
+		convolutions: filters?.convolutions ?? ['normal'],
+		level,
+	}
 }
 
-export default {main, draw, clear, update}
+export default {init, meta, main, draw, clear, update, stop}

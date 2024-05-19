@@ -67,6 +67,9 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 		'ui',
 		'infra',
 		'resources',
+		'sketch',
+		'style',
+		'playbook',
 	]
 	const commitData = [
 		[
@@ -108,7 +111,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 
 			// Split COMMIT_TYPE from SCOPE if there is no space between the two
 			const commitTypeScoped = commitType.split('[')
-			if (commitTypeScoped.length == 2) {
+			if (commitTypeScoped.length === 2) {
 				commitType = commitTypeScoped[0].trim()
 				scope = `[${commitTypeScoped[1].trim()}`
 			}
@@ -190,7 +193,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 							let scopeValueDetails = scopeTrimmed.split('/')
 							if (scopeValueDetails.length > 1) {
 								if (scopeValueDetails.includes(scopeTrimmed)) {
-									return1
+									return 1
 								}
 							}
 						}

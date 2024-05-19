@@ -1,0 +1,31 @@
+.shape\:round,
+.shape\:square {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1/1;
+	width: auto;
+	object-fit: contain;
+}
+
+.shape\:round,
+.shape\:round > * {
+	line-height: 1;
+	border-radius: 100vmax;
+}
+
+.shape\:round > *,
+.shape\:square > * {
+	border-radius: var(--border-radius-base);
+}
+
+button[class*='shape:'] {
+	padding: calc(var(--ui-size) - var(--ratio) * 1px);
+	height: 100%;
+	width: auto;
+}
+
+.shape\:round[class*='l:stack']:only-child::before,
+.shape\:square[class*='l:stack']:only-child::before {
+	margin-inline: 0;
+}
