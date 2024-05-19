@@ -1,13 +1,15 @@
 <script lang="ts">
-	import type {ExpandProps} from './button.types.js'
-	import {actor} from '$lib/actors/expand'
+	import { UiState, type ButtonEventType} from '$types/index.js'
+	import type {ExpandProps} from './expand.types.js'
+	import ExpandStore from './store.svelte'
+
 
 	let {
 		id = 'expand',
 		name = 'expand',
 		controls,
 		title,
-		initial = 'inactive',
+		initial = UiState.collapsed,
 		disabled,
 		formaction,
 		states,
@@ -25,31 +27,22 @@
 		onclick,
 	}: ExpandProps = $props()
 
-	function handleClick(event: MouseEvent) {
-		// The payload corresponds the value that is displayed to the user before the click
-		// -> we pass that value to the parent component
-		if (currentState.onclick) currentState.onclick(payload)
-		if (onclick) onclick(payload)
-		// Once the parent has been updated, we switch the current state of the button
-		manager.send({type: 'EXPAND'})
-	}
-
-	let manager = actor(id, initial, name)
-	manager.subscribe((snapshot: any) => {
-		expandState = snapshot.value
+	let store = $state(new ExpandStore())
+	store.init({
+		initial,
+		onclick,
+		expandStates: states,
 	})
 
 	/* Element state */
-	let expandState = $state(initial)
-	let expanded = $derived(expandState === 'active')
-	let currentState = $derived(states[expandState])
-	let value = $derived(currentState.value)
+	let currentState = $state(store.getExpandState())
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value,
-		expanded,
+		value: store.getValue(),
+		expanded: store.isExpanded(),
+		update: store.update.bind(store),
 	})
 
 	/* Element styles */
@@ -77,9 +70,14 @@
 		return `expand ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
 	})
 
-	$effect(() => {
-		manager.start()
-	})
+
+	function handleClick(event: MouseEvent) {
+		// The payload corresponds the value that is displayed to the user before the click
+		// -> we pass that value to the parent component
+		if (currentState.onclick) currentState.onclick(payload)
+		if (onclick) onclick(payload)
+		store.update('expand' as ButtonEventType)
+	}
 </script>
 
 <button
@@ -93,7 +91,7 @@
 	class={buttonClasses}
 	data-key={name}
 	onclick={handleClick}
-	aria-expanded={expanded}
+	aria-expanded={store.isExpanded()}
 	aria-controls={controls}
 >
 {#if children}

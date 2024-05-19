@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
-	import type {ToggleProps} from './button.types.js'
+	import { UiState, ButtonEventType} from '$types/index.js'
+	import type {ToggleProps} from './toggle.types.js'
+	import ToggleStore from './store.svelte'
 
 	let {
 		id = 'toggle',
 		name = 'toggle',
 		text,
 		title,
-		initial = 'inactive',
+		initial =  UiState.inactive,
 		value,
 		disabled,
 		formaction,
@@ -23,18 +24,21 @@
 		type = 'submit',
 		onclick,
 		children,
-		actor
 	}: ToggleProps = $props()
 
+	let store = $state(new ToggleStore())
+	store.init({
+		initial,
+		onclick,
+	})
+
 	/* Element state */
-	let state = $state(initial)
-	let pressed = $derived(state === 'active')
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value,
-		pressed,
-		actor,
+		value: store.getValue(),
+		pressed: store.isPressed(),
+		update: store.update.bind(store),
 	})
 
 	/* Element styles */
@@ -58,16 +62,9 @@
 	let buttonClasses = `toggle ${containerClass} ${layoutClasses} ${elementClasses}`
 
 	function handleClick(event: MouseEvent) {
-		actor.send({type: 'TOGGLE'})
+		store.update('toggle' as ButtonEventType)
 		if (onclick) onclick(payload)
 	}
-
-	onMount(() => {
-		actor.subscribe((snapshot: any) => {
-			state = snapshot.value
-		})
-		actor.start()
-	})
 </script>
 
 <button
@@ -81,7 +78,7 @@
 	class={buttonClasses}
 	data-key={name}
 	onclick={handleClick}
-	aria-pressed={pressed}
+	aria-pressed={store.isPressed()}
 >
 	{#if children}
 		{@render children()}

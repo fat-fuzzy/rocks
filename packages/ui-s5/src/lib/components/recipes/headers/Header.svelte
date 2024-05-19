@@ -8,7 +8,7 @@
 	import * as settings from '$stores/settings'
 	import constants from '$lib/types/constants'
 
-	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 
 	const method = 'POST'
@@ -64,7 +64,8 @@
 	$: revealClasses = `form:expand card:md`
 	$: layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
 
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	$: action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -72,7 +73,11 @@
 </script>
 
 <header class={headerClass}>
-	<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutsideMainNav}>
+	<div
+		class={layoutClasses}
+		use:clickOutside
+		on:clickOutside={handleClickOutsideMainNav}
+	>
 		<form
 			name="nav-reveal"
 			{method}
@@ -106,11 +111,23 @@
 		<nav id={`${id}-primary-nav`} class={showNav} aria-label={title}>
 			<ul class={navClasses}>
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-					<a data-sveltekit-preload-data href="/" on:click={handleClickOutsideMainNav}>Home</a>
+					<a
+						data-sveltekit-preload-data
+						href="/"
+						on:click={handleClickOutsideMainNav}>Home</a
+					>
 				</li>
 				{#each items.links as { slug, title }}
-					<li aria-current={$page.url.pathname.startsWith(`/${slug}`) ? 'page' : undefined}>
-						<a data-sveltekit-preload-data href={`/${slug}`} on:click={handleClickOutsideMainNav}>
+					<li
+						aria-current={$page.url.pathname.startsWith(`/${slug}`)
+							? 'page'
+							: undefined}
+					>
+						<a
+							data-sveltekit-preload-data
+							href={`/${slug}`}
+							on:click={handleClickOutsideMainNav}
+						>
 							{title}
 						</a>
 					</li>

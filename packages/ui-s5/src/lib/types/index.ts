@@ -18,6 +18,8 @@ export type ButtonContext = {
 export enum UiState {
 	active = 'active',
 	inactive = 'inactive',
+	expanded = 'expanded',
+	collapsed = 'collapsed',
 }
 
 export enum ButtonEventType {

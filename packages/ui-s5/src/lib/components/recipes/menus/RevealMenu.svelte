@@ -5,7 +5,7 @@
 	import {clickOutside} from '$lib/utils/click-outside.js'
 
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
 	import * as ui from '$stores/ui'
 
@@ -78,7 +78,8 @@
 	$: layoutClasses = position
 		? `l:reveal ${position} ${place} ${reveal}`
 		: `l:reveal ${place} ${reveal}`
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	$: action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -109,8 +110,16 @@
 		controls={`menu-${id}`}
 		value={title}
 		states={{
-			active: {text: title, value: 'show', asset: `emoji:point-${animationDirection}`},
-			inactive: {text: title, value: 'minimize', asset: `emoji:point-${animationDirection}`},
+			active: {
+				text: title,
+				value: 'show',
+				asset: `emoji:point-${animationDirection}`,
+			},
+			inactive: {
+				text: title,
+				value: 'minimize',
+				asset: `emoji:point-${animationDirection}`,
+			},
 		}}
 		on:click={toggleMenu}
 	>
@@ -122,7 +131,13 @@
 	>
 		{#each items as buttonProps}
 			<li>
-				<Button {onClick} {...buttonProps} variant={innerVariant} {color} {disabled} />
+				<Button
+					{onClick}
+					{...buttonProps}
+					variant={innerVariant}
+					{color}
+					{disabled}
+				/>
 			</li>
 		{/each}
 	</menu>

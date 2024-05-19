@@ -1,0 +1,77 @@
+<script lang="ts">
+	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
+	import type {TogglePayload} from '$lib/components/blocks/buttons/Toggle/toggle.types.js'
+	import type { ButtonType } from '$lib/components/blocks/buttons/button.types.js'
+	import { type ToggleMenuProps, type SelectionMode} from './toggleMenu.types.js'
+	import ToggleMenuStore from './store.svelte'
+
+	let {
+		id = 'toggle-menu',
+		title,
+
+		asset,
+		color,
+		size,
+		shape,
+		variant,
+		container,
+		layout = 'switcher',
+		threshold,
+
+		mode = 'radio' as SelectionMode,
+		formaction,
+		items = [],
+		disabled,
+		onupdate,
+	}: ToggleMenuProps = $props()
+
+
+	let store = $state(new ToggleMenuStore())
+	store.init({
+		items,
+		mode
+	})
+
+	let type: ButtonType = formaction ? 'submit' : 'button'
+	let containerClass = container ? `${container}:${size}` : ''
+	let elementClasses =` l:${layout}:${size} th:${threshold} size:${size} mode:${mode}`
+	let menuClasses = title ? elementClasses :`${elementClasses} ${containerClass}`
+
+
+	function updateMenu(payload: TogglePayload) {
+		store.update(payload)
+		if (onupdate) {
+			onupdate(store.getSelected())
+		}
+	}
+</script>
+
+{#snippet menuContent()}
+	<menu {id} class={menuClasses}>
+		{#each store.items as [id, props]}
+			<li>
+				<Toggle
+					onclick={updateMenu}
+					{type}
+					{formaction}
+					{...props}
+					{color}
+					{variant}
+					{size}
+					{shape}
+					{asset}
+					{disabled}
+				/>
+			</li>
+		{/each}
+	</menu>
+{/snippet}
+
+{#if title}
+	<div class={`menu l:stack ${size} ${containerClass}`}>
+		<p>{title}</p>
+		{@render menuContent()}
+	</div>
+{:else}
+	{@render menuContent()}
+{/if}

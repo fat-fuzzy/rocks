@@ -15,9 +15,9 @@ import Typography from '$lib/components/tokens/Typography.svelte'
  * Block components
  */
 import Button from '$lib/components/blocks/buttons/Button.svelte'
-import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
-import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
+import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
@@ -38,7 +38,7 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
  * Compositions - Base
  */
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
-import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
+import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
 import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 
 import LogIn from '$lib/components/recipes/forms/LogIn.svelte'
@@ -60,12 +60,6 @@ import {DsStateUpdate} from '$lib/forms/ds-state-update.js'
 import {DsTabsUpdate} from '$lib/forms/ds-tabs-update.js'
 
 /**
- * Actors
- */
-import switchActor from '$lib/actors/switch'
-import toggleActor from '$lib/actors/toggle'
-
-/**
  * Stores
  */
 import * as settings from '$lib/stores/settings.js'
@@ -85,11 +79,6 @@ import format from '$lib/utils/format.js'
 const utils = {
 	format,
 	clickOutside,
-}
-
-const actors = {
-	switchActor,
-	toggleActor,
 }
 
 const forms = {
@@ -159,5 +148,4 @@ export {
 	stores,
 	constants,
 	types,
-	actors,
 }

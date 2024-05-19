@@ -3,7 +3,7 @@
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants'
 
-	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
 
 	import * as ui from '$stores/ui'
@@ -65,9 +65,15 @@
 	$: contrast = appSettings.contrast
 	$: buttonAlign = place ? ALIGN_OPPOSITE[align] : ''
 	$: animationDirection = place ? ALIGN_ANIMATION_DIRECTION[place][reveal] : ''
-	$: showBackground = background ? `bg:${background}` : `bg:${TRANSITION_CONTRAST[contrast]}`
+	$: showBackground = background
+		? `bg:${background}`
+		: `bg:${TRANSITION_CONTRAST[contrast]}`
 	$: navContainer = container ? `${container}:${size}` : ''
-	$: navLayoutThreshold = breakpoint ? ` bp:${breakpoint}` : threshold ? ` th:${threshold}` : ''
+	$: navLayoutThreshold = breakpoint
+		? ` bp:${breakpoint}`
+		: threshold
+			? ` th:${threshold}`
+			: ''
 	$: navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
 	$: showSidebar = `${sidebarReveal.reveal} ${showBackground} ${place}`
 	$: navClasses = `content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `
@@ -75,7 +81,8 @@
 		? `l:reveal ${position} ${place} ${reveal}`
 		: `l:reveal ${place} ${reveal}`
 	$: revealClasses = `form:expand`
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	$: action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -107,8 +114,16 @@
 			controls={`nav-${id}`}
 			value={title}
 			states={{
-				active: {text: title, value: 'show', asset: `emoji:point-${animationDirection}`},
-				inactive: {text: title, value: 'minimize', asset: `emoji:point-${animationDirection}`},
+				active: {
+					text: title,
+					value: 'show',
+					asset: `emoji:point-${animationDirection}`,
+				},
+				inactive: {
+					text: title,
+					value: 'minimize',
+					asset: `emoji:point-${animationDirection}`,
+				},
 			}}
 			on:click={toggleSidebar}
 		>

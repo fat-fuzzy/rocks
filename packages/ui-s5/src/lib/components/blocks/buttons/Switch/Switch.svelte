@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {SwitchProps} from './types.js'
+	import type {SwitchProps} from './switch.types.js'
 	import { UiState, type ButtonEventType} from '$types/index.js'
-	import store from './store.svelte'
+	import SwitchStore from './store.svelte'
 
 	let {
 		id = 'switch',
@@ -25,11 +25,13 @@
 		children,
 	}: SwitchProps = $props()
 
+	let store = $state(new SwitchStore())
 	store.init({
 		initial,
 		onclick,
 		switchStates: states,
 	})
+
 
 	/* Element state */
 	let currentState = $state(store.getSwitchState())
@@ -39,6 +41,7 @@
 		name,
 		value: store.getValue(),
 		pressed: store.isPressed(),
+		update: store.update.bind(store),
 	})
 
 	/* Element styles */

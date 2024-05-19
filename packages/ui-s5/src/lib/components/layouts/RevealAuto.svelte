@@ -5,7 +5,7 @@
 	// import {clickOutside} from '$lib/utils/click-outside.js'
 	import constants from '$lib/types/constants'
 
-	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
 	const dispatch = createEventDispatcher()
 	const {ALIGN_OPPOSITE} = constants

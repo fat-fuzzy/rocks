@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import {clickOutside} from '$lib/utils/click-outside.js'
-	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
 	type Props = {
 		id: string
