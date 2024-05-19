@@ -23,6 +23,14 @@ let buffers
 let vertexShader
 let fragmentShader
 let error
+let meta = {
+	id: '004',
+	slug: 'geometry-2d',
+	title: 'Geometry 2D ',
+	asset: 'emoji:geometry-2d',
+	tags: ['2D' /* , 'webgl' */],
+	controls: ['matrix-2d', 'loop'],
+}
 
 function init(canvas) {
 	// Initialize the GL context
@@ -120,4 +128,4 @@ function stop() {
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 }
 
-export default {init, main, draw, update, clear, stop}
+export default {init, meta, main, draw, update, clear, stop}

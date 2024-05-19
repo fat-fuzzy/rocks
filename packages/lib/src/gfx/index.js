@@ -21,26 +21,22 @@ import sketch_012 from './sketches/012-texture/index'
 import sketch_013 from './sketches/013-convolution/index'
 import sketch_014 from './sketches/014-multiple-tex/index'
 
-// Utilities
-const sketches = {
-	'001': sketch_001,
+const sketches =[
+	sketch_001,
 	// '002': sketch_002,
-	'003': sketch_003,
-	'004': sketch_004,
-	'005': sketch_005,
-	'006': sketch_006,
-	'007': sketch_007,
-	'008': sketch_008,
-	'009': sketch_009,
-	'010': sketch_010,
-	'011': sketch_011,
-	'012': sketch_012,
-	'013': sketch_013,
-	'014': sketch_014,
-}
-// const sketches = [sketch_001, sketch_002, sketch_003, sketch_004]
-
-const SKETCHES_FOLDER = './sketches'
+	sketch_003,
+	sketch_004,
+	sketch_005,
+	sketch_006,
+	sketch_007,
+	sketch_008,
+	sketch_009,
+	sketch_010,
+	sketch_011,
+	sketch_012,
+	sketch_013,
+	sketch_014
+]
 
 export default {
 	sketches,

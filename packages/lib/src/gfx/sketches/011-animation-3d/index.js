@@ -25,6 +25,14 @@ let then = 0 // used to measure time since last frame
 let vertexShader
 let fragmentShader
 let error
+let meta = {
+	id: '011',
+	slug: 'animation-3d',
+	title: 'Animation 3D',
+	asset: 'emoji:animation-3d',
+	tags: ['3D', 'matrix', 'camera' /* , 'webgl' */],
+	controls: ['matrix-3d', 'loop'],
+}
 
 function init(canvas) {
 	// Initialize the GL context
@@ -138,4 +146,4 @@ function stop() {
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 }
 
-export default {init, main, draw, update, clear, stop}
+export default {init, meta, main, draw, update, clear, stop}

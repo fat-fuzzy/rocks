@@ -23,6 +23,14 @@ let buffers
 let vertexShader
 let fragmentShader
 let error
+let meta = {
+	id: '008',
+	slug: 'projection',
+	title: 'Projection',
+	asset: 'emoji:projection',
+	tags: ['2D', 'matrix' /* , 'webgl' */],
+	controls: ['matrix-2d', 'loop'],
+}
 
 function init(canvas) {
 	// Initialize the GL context
@@ -118,4 +126,4 @@ function stop() {
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 }
 
-export default {init, main, draw, update, clear, stop}
+export default {init, meta, main, draw, update, clear, stop}

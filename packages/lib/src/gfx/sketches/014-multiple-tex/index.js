@@ -34,6 +34,43 @@ let files = [
 	},
 ]
 
+let meta = {
+	id: '014',
+	slug: 'multiple-tex',
+	title: 'Multiple Textures',
+	asset: 'emoji:multiple-tex',
+	tags: ['matrix', 'texture' /* , 'webgl' */, 'io'],
+	controls: ['texture'],
+	images: ['plants.png', 'mineral.png'],
+	channels: [
+		'ragb',
+		'rabg',
+		'rbag',
+		'rbga',
+		'rgba',
+		'rgab',
+		'abgr',
+		'abrg',
+		'agrb',
+		'agbr',
+		'arbg',
+		'argb',
+		'bagr',
+		'barg',
+		'bgar',
+		'bgra',
+		'brga',
+		'brag',
+		'gabr',
+		'garb',
+		'gbar',
+		'gbra',
+		'grab',
+		'grba',
+	],
+	blur: [1, 2, 3],
+}
+
 function convertToChannelOrder(str) {
 	return new Int32Array(
 		str
@@ -293,4 +330,4 @@ function stop() {
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 }
 
-export default {init, main, draw, update, clear, stop}
+export default {init, meta, main, draw, update, clear, stop}

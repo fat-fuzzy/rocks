@@ -37,6 +37,42 @@ let image
 let channelOrder
 let blur = 0
 let error
+let meta = {
+	id: '012',
+	slug: 'texture',
+	title: 'Texture',
+	asset: 'emoji:texture',
+	tags: ['color', 'texture' /* , 'webgl' */],
+	controls: ['texture'],
+	filename: 'plants.png',
+	channels: [
+		'ragb',
+		'rabg',
+		'rbag',
+		'rbga',
+		'rgba',
+		'rgab',
+		'abgr',
+		'abrg',
+		'agrb',
+		'agbr',
+		'arbg',
+		'argb',
+		'bagr',
+		'barg',
+		'bgar',
+		'bgra',
+		'brga',
+		'brag',
+		'gabr',
+		'garb',
+		'gbar',
+		'gbra',
+		'grab',
+		'grba',
+	],
+	blur: [1, 2, 3],
+}
 
 function convertToChannelOrder(str) {
 	return new Int32Array(
@@ -273,4 +309,4 @@ function update({filters}) {
 	}
 }
 
-export default {init, main, draw, clear, update, stop}
+export default {init, meta, main, draw, clear, update, stop}

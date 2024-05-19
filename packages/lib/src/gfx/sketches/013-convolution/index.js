@@ -39,6 +39,37 @@ let texture
 let image
 let level = 1
 let error
+let meta = 	{
+	id: '013',
+	slug: 'convolution',
+	title: 'Convolution',
+	asset: 'emoji:convolution',
+	tags: ['matrix', 'texture' /* , 'webgl' */],
+	controls: ['texture'],
+	filename: 'plants.png',
+	convolutions: [
+		'normal',
+		'gaussianBlur',
+		'gaussianBlur2',
+		'gaussianBlur3',
+		'unsharpen',
+		'sharpness',
+		'sharpen',
+		'edgeDetect',
+		'edgeDetect2',
+		'edgeDetect3',
+		'edgeDetect4',
+		'edgeDetect5',
+		'edgeDetect6',
+		'sobelHorizontal',
+		'sobelVertical',
+		'previtHorizontal',
+		'previtVertical',
+		'boxBlur',
+		'triangleBlur',
+		'emboss',
+	],
+}
 
 function clear() {
 	if (!gl) {
@@ -266,4 +297,4 @@ function update({filters}) {
 	}
 }
 
-export default {init, main, draw, clear, update, stop}
+export default {init, meta, main, draw, clear, update, stop}

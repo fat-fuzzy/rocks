@@ -22,6 +22,14 @@ let buffers
 let vertexShader
 let fragmentShader
 let error
+let meta = {
+	id: '002',
+	slug: 'random-rect-audio',
+	title: 'Audio',
+	asset: '🥁',
+	tags:['random', 'audio'],
+	controls: ['loop'],
+}
 
 function init(canvas) {
 	// Initialize the GL context
@@ -117,4 +125,4 @@ function stop() {
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 }
 
-export default {init, main, draw, update, clear, stop}
+export default {init, meta, main, draw, update, clear, stop}
