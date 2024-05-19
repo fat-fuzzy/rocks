@@ -44,7 +44,6 @@
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/markdown": "workspace:*",
-		"@fat-fuzzy/playbook": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@playwright/test": "^1.43.1",
 		"mdsvex": "^0.11.0",
