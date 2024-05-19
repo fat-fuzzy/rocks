@@ -5,6 +5,7 @@ import './menu.css' /* Use for menus (menus = actions -> use forms [for no-js] -
 import './tabs.css' /* Use for tabs */
 import './context.css' /* Use for header context box */
 
+import './settings.css' /* A Settings menu component (for user input to adjust brightness, contrast, language, ...) */
 import './header-app.css' /* Use for main app header */
 import './layout-page.css' /* Define page layout varians here */
 import './footer.css' /* Use for main app footer */
