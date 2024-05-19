@@ -1,8 +1,11 @@
 // Reexport your entry components here
 
-import './styles/grid-sketch.css' /* Use for a Sketch layout */
-import './styles/sketch.css' /* Use for player inputs layout */
-import './styles/geometry.css' /* Use for geometry inputs **/
+import './styles/css/debug.css' /* Use for a Sketch layout */
+import './styles/scss/grid-sketch.scss' /* Use for a Sketch layout */
+import './styles/css/grid-sketch.css' /* Use for a Sketch layout */
+import './styles/css/sketch.css' /* Use for player inputs layout */
+import './styles/css/player.css' /* Use for player inputs layout */
+import './styles/css/geometry.css' /* Use for geometry inputs **/
 /**
  * Compositions - Graphics
  */
