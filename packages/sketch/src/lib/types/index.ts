@@ -95,7 +95,7 @@ export type ProgramInfo = {
 }
 
 export type SceneMeta = {
-	type?: string
+	controls: string[]
 	input?: string
 	camera?: number
 	filename?: string

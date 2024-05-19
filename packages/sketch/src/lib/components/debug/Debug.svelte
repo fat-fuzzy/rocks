@@ -16,7 +16,7 @@
 				<th>Sketch</th>
 				<th>Canvas</th>
 				<th>Player</th>
-				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
+				{#if meta.controls.length > 1 || (meta.controls.length === 1 && meta.controls[0] !== 'loop')}
 					<th>Controls</th>
 				{/if}
 			</tr>
@@ -64,7 +64,7 @@
 						</span>
 					</div>
 				</td>
-				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
+				{#if meta.controls.length > 1 || (meta.controls.length === 1 && meta.controls[0] !== 'loop')}
 					<td class="variant:outline">
 						<div
 							class="bg:light justify:center l:flex nowrap align:center card:sm"
@@ -90,7 +90,7 @@
 				<td class="variant:outline">
 					{context.getState('player')}
 				</td>
-				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
+				{#if meta.controls.length > 1 || (meta.controls.length === 1 && meta.controls[0] !== 'loop')}
 					<td class="variant:outline">
 						{context.getState('controls')}
 					</td>
@@ -107,7 +107,7 @@
 				<td class="variant:outline">
 					{context.getNextActions('player')}
 				</td>
-				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
+				{#if meta.controls.length > 1 || (meta.controls.length === 1 && meta.controls[0] !== 'loop')}
 					<td class="variant:outline">
 						{context.getNextActions('controls')}
 					</td>
@@ -156,7 +156,7 @@
 						{/each}
 					{/if}
 				</td>
-				{#if meta?.type === 'matrix-2d' || meta?.type === 'matrix-3d' || meta?.type === 'texture'}
+				{#if meta.controls.length > 1 || (meta.controls.length === 1 && meta.controls[0] !== 'loop')}
 					<td class="variant:outline">
 						{#if context.getFeedback('controls').length > 0}
 							{@const feedbackSketch = context.getFeedback('controls')}

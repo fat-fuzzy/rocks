@@ -112,7 +112,7 @@
 
 	function render() {
 		time = Date.now()
-		if (meta.type !== 'texture') {
+		if (meta.controls.includes('loop')) {
 			loop(time)
 		} else {
 			frame = requestAnimationFrame((time) => {
@@ -212,7 +212,7 @@
 	function updateFilters(filters: Filters) {
 		scene.update({...context, filters})
 		store.update(ControlsEvent.update)
-		if (meta.type === 'texture') {
+		if (meta.controls.includes('texture')) {
 			play()
 		}
 	}
@@ -263,7 +263,7 @@
 				disabled={store.hasError() ?? undefined}
 			/>
 			{#if meta && store.getState('sketch') === 'active' && store.getIsInteractive()}
-				{#if meta.type === 'matrix-2d'}
+				{#if meta.controls.includes('matrix-2d')}
 					<Geometry2D
 						id={`${id}-context-2d`}
 						onupdate={updateGeometry}
@@ -282,14 +282,14 @@
 								id={`${id}-camera-controls`}
 								onupdate={updateCamera}
 							/>
-						{:else if meta.type === 'matrix-3d'}
+						{:else if meta.controls.includes('matrix-3d')}
 							<GeometryControls
 								id={`${id}-geometry-controls`}
 								{canvas}
 								onupdate={updateGeometry}
 								{context}
 							/>
-						{:else if meta.type === 'texture'}
+						{:else if meta.controls.includes('texture')}
 							<TextureControls
 								id={`${id}-texture-controls`}
 								channels={meta.channels}

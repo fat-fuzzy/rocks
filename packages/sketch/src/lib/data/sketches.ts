@@ -9,7 +9,9 @@ const sketches = [
 		asset: 'emoji:random',
 		dimensions: 'video',
 		tags: ['2D' /* , 'webgl' */],
-		meta: {},
+		meta: {
+			controls: ['loop'],
+		},
 	},
 	// {
 	// 	id: '002',
@@ -26,7 +28,7 @@ const sketches = [
 		tags: ['2D' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'matrix-2d',
+			controls: ['matrix-2d', 'loop'],
 		},
 	},
 	{
@@ -37,18 +39,18 @@ const sketches = [
 		tags: ['2D' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'matrix-2d',
+			controls: ['matrix-2d', 'loop'],
 		},
 	},
 	{
 		id: '005',
-		slug: 'matrix-2d',
+		slug: ['matrix-2d'],
 		title: 'Matrix 2D',
 		asset: 'emoji:geometry-3d',
 		tags: ['2D', 'matrix' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'matrix-2d',
+			controls: ['matrix-2d', 'loop'],
 		},
 	},
 	{
@@ -59,7 +61,7 @@ const sketches = [
 		tags: ['2D', 'matrix' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'matrix-2d',
+			controls: ['matrix-2d', 'loop'],
 		},
 	},
 	{
@@ -70,7 +72,7 @@ const sketches = [
 		tags: ['2D', 'matrix' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'matrix-2d',
+			controls: ['matrix-2d', 'loop'],
 		},
 	},
 	{
@@ -81,7 +83,7 @@ const sketches = [
 		tags: ['2D', 'matrix' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'matrix-2d',
+			controls: ['matrix-2d', 'loop'],
 		},
 	},
 	{
@@ -92,7 +94,7 @@ const sketches = [
 		tags: ['3D', 'matrix' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'matrix-3d',
+			controls: ['matrix-2d', 'loop'],
 			depth: 400,
 		},
 	},
@@ -105,6 +107,7 @@ const sketches = [
 		meta: {
 			input: 'form',
 			camera: true,
+			controls: ['camera', 'loop'],
 		},
 	},
 	{
@@ -115,7 +118,7 @@ const sketches = [
 		tags: ['3D', 'matrix', 'camera' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'matrix-3d',
+			controls: ['matrix-3d', 'loop'],
 		},
 	},
 	{
@@ -126,7 +129,7 @@ const sketches = [
 		tags: ['color', 'texture' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'texture',
+			controls: ['texture'],
 			filename: 'plants.png',
 			channels: [
 				'ragb',
@@ -165,7 +168,7 @@ const sketches = [
 		tags: ['matrix', 'texture' /* , 'webgl' */],
 		meta: {
 			input: 'form',
-			type: 'texture',
+			controls: ['texture'],
 			filename: 'plants.png',
 			convolutions: [
 				'normal',
@@ -199,7 +202,7 @@ const sketches = [
 		tags: ['matrix', 'texture' /* , 'webgl' */, 'io'],
 		meta: {
 			input: 'form',
-			type: 'texture',
+			controls: ['texture'],
 			images: ['plants.png', 'mineral.png'],
 			channels: [
 				'ragb',
