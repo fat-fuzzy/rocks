@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.42
+
+### Patch Changes
+
+- 0e91d7d9: Split ui: style, ui, sketch. Mitrate to Svelte 5
+
 ## 0.1.41
 
 ### Patch Changes
