@@ -106,7 +106,7 @@ figcaption {
 
 ol,
 ul {
-	margin-block-end: calc(var(--gap) * var(--ratio-lg));
+	margin-block-end: calc(var(--gap) * var(--size-ratio-md));
 }
 
 a {

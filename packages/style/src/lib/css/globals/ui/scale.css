@@ -2,8 +2,8 @@
 [class*='card:'] {
 	--ratio: var(--size-ratio-md);
 	/* Default range */
-	--ui-size-sm: calc(var(--ui-size) / var(--ratio));
-	--ui-size-lg: calc(var(--ui-size) * var(--ratio));
+	--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
+	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
 	/* TODO: scale font */
 	--font-size: var(--font-size-md);
 }

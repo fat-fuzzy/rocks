@@ -1,5 +1,5 @@
 .ui\:menu {
-	gap: calc(var(--gap) / var(--ratio));
+	gap: calc(var(--gap) / var(--size-ratio-md));
 	padding: var(--ui-size) var(--ui-size) var(--ui-size-lg);
 }
 

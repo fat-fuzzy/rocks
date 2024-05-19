@@ -21,15 +21,15 @@
 
 .menu\:settings [class*='svg'] {
 	--current-svg-height: calc(
-		var(--s2) - var(--ratio) * var(--outline-offset-settings)
+		var(--s2) - var(--size-ratio-md) * var(--outline-offset-settings)
 	);
 }
 
 .menu\:settings {
 	--current-svg-height: calc(
-		var(--s2) - var(--ratio) * var(--outline-offset-settings)
+		var(--s2) - var(--size-ratio-md) * var(--outline-offset-settings)
 	);
-	gap: calc(var(--gap) / var(--ratio));
+	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
 }
 

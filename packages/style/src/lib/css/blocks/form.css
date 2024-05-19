@@ -323,7 +323,7 @@ label {
 
 .feedback {
 	font-size: var(--font-size-sm);
-	min-height: calc(var(--font-size-sm) * var(--ratio));
+	min-height: calc(var(--font-size-sm) * var(--size-ratio-md));
 }
 
 /* Display range input step labels */
