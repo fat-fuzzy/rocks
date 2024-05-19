@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {headless} from '@fat-fuzzy/ui'
+	import {headless} from '@fat-fuzzy/ui-s5'
 
 	const {Head} = headless
 

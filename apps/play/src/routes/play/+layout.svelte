@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {layouts, recipes} from '@fat-fuzzy/ui'
+	import {layouts, recipes} from '@fat-fuzzy/ui-s5'
 	const {Sidebar} = layouts
 	const {Nav} = recipes
 

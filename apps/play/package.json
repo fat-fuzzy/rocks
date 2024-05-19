@@ -27,7 +27,7 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/ui": "workspace:*",
+		"@fat-fuzzy/ui-s5": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/sketch": "workspace:*",
 		"@playwright/test": "^1.43.1",

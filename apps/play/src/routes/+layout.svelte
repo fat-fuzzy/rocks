@@ -4,7 +4,7 @@
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$lib/data/nav'
-	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui'
+	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui-s5'
 
 	const {Header} = recipes
 	const {settings} = stores

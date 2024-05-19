@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import Sketch from '@fat-fuzzy/ui'
+	import Sketch from '@fat-fuzzy/ui-s5'
 
 	$: title = $page.data.title
 	$: dimensions = $page.data.dimensions
