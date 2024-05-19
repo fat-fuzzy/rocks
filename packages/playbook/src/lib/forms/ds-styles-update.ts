@@ -1,4 +1,4 @@
-import type {StyleTree} from '@fat-fuzzy/playbook/api/types'
+import type {StyleTree} from '$lib/api/types'
 
 import constants from '$lib/types/constants'
 import {initStyles} from '$lib/api/styles'

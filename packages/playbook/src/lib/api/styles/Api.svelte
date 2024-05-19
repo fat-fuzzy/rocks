@@ -3,7 +3,7 @@
 
 	import {enhance} from '$app/forms'
 	import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
-	import {blocks} from '@fat-fuzzy/ui'
+	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {Button} = blocks
 
 	export let categories: string[]
@@ -19,8 +19,10 @@
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	$: frameClass = categories && categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin'
+	$: action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	$: frameClass =
+		categories && categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin'
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -53,7 +55,11 @@
 			<StyleFamily
 				{category}
 				{meta}
-				formaction={action ? (actionPath ? `${actionPath}?/${action}` : `?/${action}`) : undefined}
+				formaction={action
+					? actionPath
+						? `${actionPath}?/${action}`
+						: `?/${action}`
+					: undefined}
 			/>
 		{/each}
 		{#await Promise.resolve()}

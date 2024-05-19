@@ -5,7 +5,7 @@
 	import type {StylesApi} from '$lib/api/styles'
 
 	import {onDestroy, getContext} from 'svelte'
-	import {blocks, recipes} from '@fat-fuzzy/ui'
+	import {blocks, recipes} from '@fat-fuzzy/ui-s5'
 	const {Fieldset, InputRange} = blocks
 	const {ToggleMenu, InputGroup} = recipes
 
@@ -45,7 +45,10 @@
 		}),
 	]
 
-	const updateStyles = (payload: {name: string; items: {id: string; value: string}[]}) => {
+	const updateStyles = (payload: {
+		name: string
+		items: {id: string; value: string}[]
+	}) => {
 		payload.items.forEach(({id, value}) => {
 			const [category, family, style, name] = id.split('.')
 			const styleValue = {[style]: value}
@@ -75,7 +78,12 @@
 		updateStyles(payload)
 	}
 
-	function handleSelect(event: CustomEvent, familyName: string, name: string, id: string) {
+	function handleSelect(
+		event: CustomEvent,
+		familyName: string,
+		name: string,
+		id: string,
+	) {
 		// TODO: reject input if it's not in values list -> form validation /!\
 		const payload = {
 			name: familyName.toLowerCase(),
@@ -163,7 +171,8 @@
 							container={styleInput.container}
 							mode={styleInput.mode || 'radio'}
 							{formaction}
-							on:click={(event) => handleToggle(event, familyName, styleInput.id)}
+							on:click={(event) =>
+								handleToggle(event, familyName, styleInput.id)}
 						/>
 					{:else}
 						<div class={`l:${family.layout}:${family.size} bg:polar`}>
@@ -214,7 +223,12 @@
 										name={id}
 										class={apiSize}
 										on:input={(event) =>
-											handleSelect(event, familyName, styleInput.name, styleInput.id)}
+											handleSelect(
+												event,
+												familyName,
+												styleInput.name,
+												styleInput.id,
+											)}
 									/>
 									<datalist id={`datalist-${styleInput.name}`}>
 										{#each items as { id, text, asset, value }}

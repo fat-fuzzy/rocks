@@ -25,7 +25,6 @@ import {DsStylesUpdate as form} from '$lib/forms/ds-styles-update'
 /***************************************************
  * Prepare Exports
  **************************************************/
-// TODO: rename this export : stylesApi
 const api = {
 	Api,
 	Collection,
