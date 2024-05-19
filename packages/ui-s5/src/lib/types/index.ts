@@ -21,9 +21,9 @@ export enum UiState {
 }
 
 export enum ButtonEventType {
-	EXPAND = 'EXPAND',
-	TOGGLE = 'TOGGLE',
-	SWITCH = 'SWITCH',
+	expand = 'expand',
+	toggle = 'toggle',
+	switch = 'switch',
 }
 
 export type Settings = {
@@ -35,6 +35,7 @@ export type InputPayload = {
 	name: string
 	value: string
 }
+
 export type UiStyleProps = {
 	/**
 	 * Style props
@@ -45,8 +46,10 @@ export type UiStyleProps = {
 	size?: string
 	shape?: string
 	variant?: string
+	background?: string
 
 	container?: string
+	direction?: string
 	dimensions?: string
 	layout?: string
 	threshold?: string
