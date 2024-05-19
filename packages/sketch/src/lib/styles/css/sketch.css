@@ -56,14 +56,18 @@
 .canvas[class*='pause']::before,
 .canvas[class*='warning']::before,
 .canvas[class*='error']::before   {
-	height: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: absolute;
 	bottom: var(--ui-size-sm);
 	right: var(--ui-size-sm);
+	height: fit-content;
 	padding: var(--ui-size-sm);
 	line-height: 1;
 	border-radius: 100vmax;
   background-color: var(--ink);
+	aspect-ratio: 1/1;
 }
 
 .state\:freeze canvas::before,
