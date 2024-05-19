@@ -62,23 +62,24 @@
 	}
 </script>
 
-<menu {id} class={`l:switcher:${size} hug w:full justify:center`}>
-	<Switch
-		id="play"
-		name="play"
-		states={store.playSwitch}
-		{color}
-		{size}
-		shape="square"
-		initial={store.getPlayState()}
-		container="main"
-		disabled={store.getPlayDisabled()}
-		onclick={updatePlayer}
-		actor={playButtonActor}
-	>
-		{store.getPlayLabel()}
-	</Switch>
-	<li class="l:stack:2xs">
+<menu {id} class={`l:switcher:2xs w:full hug justify:center`}>
+	<li>
+		<Switch
+			id="play"
+			name="play"
+			states={store.playSwitch}
+			{color}
+			{size}
+			shape="square"
+			initial={store.getPlayState()}
+			disabled={store.getPlayDisabled()}
+			onclick={updatePlayer}
+			actor={playButtonActor}
+		>
+			{store.getPlayLabel()}
+		</Switch>
+	</li>
+	<li class="l:stack:2xs group">
 		<Button
 			id="clear"
 			name="clear"
@@ -107,3 +108,7 @@
 		</Button>
 	</li>
 </menu>
+
+<style>
+	@import '../../styles/css/player.css';
+</style>

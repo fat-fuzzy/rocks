@@ -34,6 +34,7 @@
 [class*='idle'] canvas {
 	margin-right: -100%; /* Hide the canvas without changing its dimensions */
 }
+
 /* 
 [class*='pause'] canvas {
 	filter: grayscale(65%) opacity(35%) blur(1px);
