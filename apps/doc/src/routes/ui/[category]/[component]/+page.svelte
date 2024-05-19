@@ -12,7 +12,6 @@
 		blocks,
 		layouts,
 		recipes,
-		graphics,
 		constants,
 		utils,
 	} from '@fat-fuzzy/ui'
@@ -28,7 +27,6 @@
 		blocks: blocks,
 		layouts: layouts,
 		recipes: recipes,
-		graphics: graphics,
 	}
 
 	const tabs = TABS
@@ -57,7 +55,9 @@
 	$: Component = categoryItems[category][title]
 	$: path = $page.url.pathname
 	$: markdowns =
-		$page.data.markdowns && $page.data.markdowns[category] ? $page.data.markdowns[category] : []
+		$page.data.markdowns && $page.data.markdowns[category]
+			? $page.data.markdowns[category]
+			: []
 	$: content = markdowns.find(({meta}) => meta.title === title) || {
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
@@ -76,7 +76,12 @@
 
 	{#if currentTab.value === 'demo'}
 		<div class="context">
-			<Api categories={['app']} {path} {actionPath} redirect={$page.url.pathname} />
+			<Api
+				categories={['app']}
+				{path}
+				{actionPath}
+				redirect={$page.url.pathname}
+			/>
 		</div>
 	{/if}
 
@@ -118,7 +123,9 @@
 		<aside class="l:side">
 			{#if content.meta.props_style}
 				<details open>
-					<summary class={`bg:primary:light box:primary:light`}>Style Props</summary>
+					<summary class={`bg:primary:light box:primary:light`}
+						>Style Props</summary
+					>
 					<ul class="tags l:switcher:md">
 						{#if props.doc}
 							{#each props.doc as docs}
@@ -144,7 +151,9 @@
 			{/if}
 			{#if content.meta.content_type}
 				<details open>
-					<summary class={`bg:primary:light box:primary:light`}>Content Type</summary>
+					<summary class={`bg:primary:light box:primary:light`}
+						>Content Type</summary
+					>
 					<ul class="tags l:switcher:md">
 						{#each content.meta.content_type as prop}
 							<li class="card:sm bg:highlight:lightest">{prop}</li>
@@ -154,7 +163,9 @@
 			{/if}
 			{#if content.meta.props_state}
 				<details open>
-					<summary class={`bg:primary:light box:primary:light`}>State Props</summary>
+					<summary class={`bg:primary:light box:primary:light`}
+						>State Props</summary
+					>
 					<ul class="tags l:switcher:md">
 						{#each content.meta.props_state as prop}
 							<li class="card:sm bg:accent:lightest">{prop}</li>

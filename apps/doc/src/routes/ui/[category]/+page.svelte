@@ -9,7 +9,6 @@
 		blocks,
 		layouts,
 		recipes,
-		graphics,
 		api,
 		stores,
 		constants,
@@ -44,8 +43,6 @@
 				return layouts
 			case 'recipes':
 				return recipes
-			case 'graphics':
-				return graphics
 			default:
 				return {}
 		}
@@ -74,7 +71,12 @@
 	<h1 class="main">{title}</h1>
 	{#if currentTab.value === 'demo'}
 		<div class="context">
-			<Api categories={['app']} {path} {actionPath} redirect={$page.url.pathname} />
+			<Api
+				categories={['app']}
+				{path}
+				{actionPath}
+				redirect={$page.url.pathname}
+			/>
 		</div>
 	{/if}
 
@@ -119,7 +121,9 @@
 					<p class="feedback bare emoji:default">Coming Soon!</p>
 				{:else if content.meta.props_style}
 					<details open>
-						<summary class={`bg:primary:light box:primary:light`}>Style Props</summary>
+						<summary class={`bg:primary:light box:primary:light`}
+							>Style Props</summary
+						>
 						<ul class="tags l:switcher:md">
 							{#each content.meta.props_style as prop}
 								<li class="card:sm bg:primary:lightest">{prop}</li>
