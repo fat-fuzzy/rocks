@@ -96,6 +96,10 @@ export type ProgramInfo = {
 
 export type SceneMeta = {
 	controls: string[]
+	id?: string
+	title?: string
+	asset?: string
+	dimensions?: string
 	input?: string
 	camera?: number
 	filename?: string
@@ -116,8 +120,7 @@ export type SceneOptions = {
 }
 
 export type Scene = {
-	id: string
-	meta?: SceneMeta
+	meta: SceneMeta
 	init: () => void
 	draw: (time?: number) => void
 	main: (canvas: HTMLCanvasElement, options?: SceneOptions) => SceneContext

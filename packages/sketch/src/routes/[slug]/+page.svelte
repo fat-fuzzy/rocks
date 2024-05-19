@@ -7,12 +7,8 @@
 
 	const {Head} = headless
 
-	$: sketch = $page.data.sketches.find((s) => s.slug === $page.data.slug)
-	$: title = $page.data.title
-	$: dimensions = $page.data.dimensions
-	$: id = $page.data.id
-	$: scene = lib.gfx.sketches[id]
-	$: meta = sketch?.meta
+	$: scene = lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug)
+	$: title = scene?.meta.title || ''
 	$: headerClass = 'l:flex align:center'
 </script>
 
@@ -28,14 +24,8 @@
 		<h2>&nbsp;❤︎ {title}</h2>
 	</header>
 	{#key $page.data.slug}
-		<Sketch
-			id={`sketch-${sketch.id}`}
-			{scene}
-			{title}
-			{dimensions}
-			{meta}
-			asset={sketch.asset}
-			size="sm"
-		/>
+		{#if scene}
+			<Sketch id={`sketch-${scene.meta.id}`} {scene} size="sm" />
+		{/if}
 	{/key}
 </div>
