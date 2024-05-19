@@ -1,15 +1,14 @@
 <script lang="ts">
-	import {blocks, actors} from '@fat-fuzzy/ui-s5'
+	import {blocks} from '@fat-fuzzy/ui-s5'
 	import store from './store.svelte'
 	import {PlayerEvent, PlayerState} from './types.js'
-
 	const {Button, Switch} = blocks
-	const {switchActor} = actors
 
 	type Props = {
 		id?: string
 		size: string
 		variant?: string
+
 		color?: string
 		disabled?: boolean
 		initial?: string
@@ -34,7 +33,6 @@
 		initial: PlayerState.idle,
 		onclick: updatePlayer,
 	})
-	let playButtonActor = switchActor.actor(id, store.getPlayState(), 'play')
 
 	function updatePlayer(payload: {id: string; value: string}) {
 		let event = payload.id as PlayerEvent
@@ -74,7 +72,6 @@
 			initial={store.getPlayState()}
 			disabled={store.getPlayDisabled()}
 			onclick={updatePlayer}
-			actor={playButtonActor}
 		>
 			{store.getPlayLabel()}
 		</Switch>

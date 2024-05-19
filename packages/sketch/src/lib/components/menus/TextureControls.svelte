@@ -14,7 +14,7 @@
 		breakpoint?: string
 		threshold?: string
 		channels?: string[]
-		blur?: number
+		blur?: number[]
 		convolutions?: string[]
 		onupdate: (payload: any) => void // TODO: Fix type
 	}
@@ -35,17 +35,15 @@
 			name: c,
 			text: c,
 			value: c,
-			initial: c === filters.channels ? 'active' : 'inactive',
 		})) || [],
 	)
 
 	let blurMenuItems = $derived(
 		blur?.map((b) => ({
-			id: b,
-			name: b,
+			id: String(b),
+			name: String(b),
 			text: `blur ${b}`,
 			value: b,
-			initial: b === filters.blur ? 'active' : 'inactive',
 		})) || [],
 	)
 
@@ -55,40 +53,33 @@
 			name: b,
 			text: b,
 			value: b,
-			initial: filters.convolutions.includes(b) ? 'active' : 'inactive',
 		})) || [],
 	)
 
-	function updateChannel(selected: {name: string; pressed: boolean}) {
-		if (selected.pressed) {
-			filters.channels = selected.name
+	function updateChannel(selected: {name: string}[]) {
+		if (selected[0]) {
+			filters.channels = selected[0].name
 		} else {
 			filters.channels = 'rgba'
 		}
 		onupdate(filters)
 	}
 
-	function updateBlur(selected: {
-		value: number
-		name: string
-		pressed: boolean
-	}) {
-		if (selected.pressed) {
-			filters.blur = selected.value
+	function updateBlur(
+		selected: {
+			name: string
+		}[],
+	) {
+		if (selected[0]) {
+			filters.blur = Number(selected[0].name)
 		} else {
 			filters.blur = 0
 		}
 		onupdate(filters)
 	}
 
-	function updateEffects(selected: {name: string; pressed: boolean}) {
-		if (!selected.pressed) {
-			filters.convolutions = filters.convolutions.filter(
-				(filter: string) => filter !== selected.name,
-			)
-		} else if (!filters.convolutions.includes(selected.name)) {
-			filters.convolutions.push(selected.name)
-		}
+	function updateEffects(selected: {name: string}[]) {
+		filters.convolutions = selected.map((s) => s.name)
 		if (filters.convolutions.length === 0) {
 			filters.convolutions = ['normal']
 		}
@@ -126,7 +117,7 @@
 	<ToggleMenu
 		id="convolutions"
 		{size}
-		mode="multiple"
+		mode="check"
 		layout="switcher"
 		color="primary"
 		variant="bare"
