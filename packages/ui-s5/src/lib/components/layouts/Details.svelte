@@ -1,17 +1,34 @@
 <script lang="ts">
-	export let layout = ''
-	export let size = ''
-	export let breakpoint = ''
-	export let variant = ''
-	export let align = 'start'
-	export let id = 'reveal'
-	let expanded = false
+	import type {Snippet} from 'svelte'
+
+	type Props = {
+		layout: string
+		size: string
+		breakpoint: string
+		variant: string
+		align: string
+		id: string
+		summary?: Snippet
+		content?: Snippet
+	}
+	let {
+		layout = '',
+		size = '',
+		breakpoint = '',
+		variant = '',
+		align = 'start',
+		id = 'reveal',
+		summary,
+		content,
+	}: Props = $props()
+
+	let expanded = $state(false)
 
 	function toggleReveal(event) {
 		expanded = !expanded
 	}
 
-	$: show = expanded ? 'show' : 'hide'
+	let show = $derived(expanded ? 'show' : 'hide')
 </script>
 
 <details class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>
@@ -19,16 +36,22 @@
 		class={`${variant}`}
 		aria-expanded={expanded}
 		aria-controls={`${id}-menu-list`}
-		on:click={toggleReveal}
+		onclick={toggleReveal}
 	>
-		<slot name="summary">Click to Reveal</slot>
+	{#if summary}
+		{@render summary()}
+	{:else}
+		<p >Click to Reveal</p>
+	{/if}
 	</summary>
 	<div class={`${align} ${show}`}>
-		<slot name="content">
+		{#if content}
+			{@render content()}
+		{:else}
 			<div class={`card layer ${size}`}>
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>
-		</slot>
+		{/if}
 	</div>
 </details>

@@ -1,7 +1,10 @@
 <script lang="ts">
-	export let size = 'md'
+	import type { Snippet } from "svelte"
+
+	type Props = {size: string, content: Snippet}
+	let {size = 'md', content}: Props = $props()
 </script>
 
 <div class={`l:burrito:${size}`}>
-	<slot name="content" />
+	{@render content()}
 </div>

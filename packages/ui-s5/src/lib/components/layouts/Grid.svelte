@@ -1,23 +1,45 @@
 <script lang="ts">
-	export let areas = ''
+	import type {Snippet} from 'svelte'
 
-	$: classes = areas ? `l:grid:areas:${areas}` : 'l:grid'
+	type Props = {
+		areas: string
+		flex?: boolean
+		navs?: Snippet
+		header?: Snippet
+		content?: Snippet
+		actions?: Snippet
+		footer?: Snippet
+	}
+	let {areas = 'md',flex,  navs, header, content, actions, footer}: Props = $props()
+
+	let gridClass = flex ? 'l:flex:grid' :'l:grid'
+	let classes = $derived(areas ? `${gridClass}:areas:${areas}` : gridClass)
 </script>
 
 <div class={classes}>
 	<aside class="navs">
-		<slot name="navs" />
+		{#if navs}
+			{@render navs()}
+		{/if}
 	</aside>
 	<header class="header">
-		<slot name="header" />
+		{#if header}
+			{@render header()}
+		{/if}
 	</header>
 	<article class="content">
-		<slot name="content" />
+		{#if content}
+			{@render content()}
+		{/if}
 	</article>
 	<aside class="actions">
-		<slot name="actions" />
+		{#if actions}
+			{@render actions()}
+		{/if}
 	</aside>
 	<footer class="footer">
-		<slot name="footer" />
+		{#if footer}
+			{@render footer()}
+		{/if}
 	</footer>
 </div>

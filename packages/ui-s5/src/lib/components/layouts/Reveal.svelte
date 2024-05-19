@@ -1,23 +1,47 @@
 <script lang="ts">
+	import type {Snippet} from 'svelte'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
 
-	export let layout = ''
-	export let direction = 'tb-lr'
-	export let color = ''
-	export let size = ''
-	export let breakpoint = ''
-	export let variant = ''
-	export let align = ''
-	export let id = 'ui'
-	export let height = ''
-	export let background = ''
-	export let title = 'Reveal'
-	export let asset = ''
-	export let method = 'POST'
-	export let formaction: string | undefined = undefined
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
+	type Props = {
+		id: string
+		title?: string
+		method?: string
+		formaction?: string
+		actionPath?: string
+		redirect?: string
+		layout?: string
+		direction?: string
+		color?: string
+		size?: string
+		breakpoint?: string
+		variant?: string
+		align?: string
+		height?: string
+		background?: string
+		asset?: string
+		content?: Snippet
+	}
+
+	let {
+		id = 'ui',
+		title = 'Reveal',
+		method = 'POST',
+		formaction,
+		actionPath,
+		redirect,
+		layout,
+		direction = 'tb-lr',
+		color,
+		size,
+		breakpoint,
+		variant,
+		align,
+		height,
+		background,
+		asset,
+		content,
+	}: Props = $props()
 
 	let expanded = false
 
@@ -29,12 +53,12 @@
 		expanded = !expanded
 	}
 
-	$: backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
-	$: show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
-	$: setHeight = height ? ` h:${height}` : ''
+	let backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
+	let show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
+	let setHeight = height ? ` h:${height}` : ''
 
 	// TODO: use a form
-	$: action = formaction
+	let action = formaction
 		? redirect
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
@@ -65,11 +89,13 @@
 		{title}
 	</Expand>
 	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
-		<slot name="content">
+		{#if content}
+			{@render content()}
+			{:else}
 			<div class={`card:lg`}>
 				<h3>Revealed Content</h3>
 				<p>This is a card with some content</p>
 			</div>
-		</slot>
+		{/if}
 	</div>
 </div>
