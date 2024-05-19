@@ -1,9 +1,13 @@
 import type {Snippet} from 'svelte'
-import type {InputPayload, ButtonStates, StateSwitch, UiState, UiStyleProps} from '$types'
+import type {InputPayload, UiState, UiStyleProps} from '$types/index.js'
 
 export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 
-export type TogglePayload = InputPayload & {pressed: boolean}
+export type TogglePayload = InputPayload & {
+	text?: string
+	pressed: boolean
+}
+
 export type ButtonProps = UiStyleProps & {
 	/**
 	 * State props
@@ -22,11 +26,6 @@ export type ButtonProps = UiStyleProps & {
 
 export type ToggleProps = ButtonProps & {
 	initial?: UiState
-	onclick?: (payload: TogglePayload) => void
-}
-
-export type SwitchProps = ToggleProps & {
-	states: ButtonStates // this component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
 	onclick?: (payload: TogglePayload) => void
 }
 

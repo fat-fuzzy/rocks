@@ -1,13 +1,13 @@
 <script lang="ts">
-
-	import { onMount } from 'svelte'
-	import type {SwitchProps} from '../button.types.js'
+	import type {SwitchProps} from './types.js'
+	import { UiState, type ButtonEventType} from '$types/index.js'
+	import store from './store.svelte'
 
 	let {
 		id = 'switch',
 		name = 'switch',
 		title,
-		initial = 'inactive',
+		initial = UiState.inactive,
 		disabled,
 		formaction,
 		states,
@@ -23,21 +23,22 @@
 		type = 'submit',
 		onclick,
 		children,
-		actor
 	}: SwitchProps = $props()
 
+	store.init({
+		initial,
+		onclick,
+		switchStates: states,
+	})
+
 	/* Element state */
-	let state = $state(initial)
-	let currentState = $derived(states[state])
-	let pressed = $derived(state === 'active')
-	let value = $derived(currentState.value)
+	let currentState = $state(store.getSwitchState())
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
 		name,
-		value,
-		pressed,
-		actor,
+		value: store.getValue(),
+		pressed: store.isPressed(),
 	})
 
 	/* Element styles */
@@ -67,19 +68,11 @@
 		return `switch ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
 	})
 
-
 	function handleClick(event: MouseEvent) {
-		actor.send({type: 'SWITCH'})
 		if (currentState.onclick) currentState.onclick(payload)
 		else if (onclick) onclick(payload)
+		store.update('switch' as ButtonEventType)
 	}
-
-	onMount(() => {
-		actor.subscribe((snapshot: any) => {
-			state = snapshot.value
-		})
-		actor.start()
-	})
 </script>
 
 <button
@@ -93,7 +86,7 @@
 	class={buttonClasses}
 	data-key={name}
 	onclick={handleClick}
-	aria-pressed={pressed}
+	aria-pressed={store.isPressed()}
 >
 	{#if children}
 		{@render children()}
