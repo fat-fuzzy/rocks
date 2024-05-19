@@ -1,9 +1,5 @@
 menu > li {
-	height: calc(100% - calc(var(--ui-size-sm) / 2));
+	height: calc(100% - 2 * var(--border-width-md));
   width: auto;
   aspect-ratio: 1/1;
-}
-
-menu > .group {
-	justify-content: space-between;
 }
