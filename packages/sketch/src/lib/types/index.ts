@@ -103,15 +103,13 @@ export type SceneMeta = {
 	input?: string
 	camera?: number
 	filename?: string
-	channels?: string[]
-	blur?: number
-	convolutions?: string[]
+	filters?: Filters
 }
 
 export type Filters = {
-	channels?: string
+	channels?: string[]
 	blur?: number
-	effects?: string[]
+	convolutions?: string[]
 }
 
 export type SceneOptions = {

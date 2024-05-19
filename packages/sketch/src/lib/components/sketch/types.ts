@@ -59,9 +59,9 @@ export type SketchTransitionsType = {
 }
 
 export const DEFAULT_FILTERS: Filters = {
-	channels: 'rgba',
+	channels: ['rgba'],
 	blur: 0,
-	effects: ['normal'],
+	convolutions: ['normal'],
 }
 
 export const SKETCH_FEEDBACK: SketchFeedbackType = {

@@ -292,9 +292,9 @@
 						{:else if meta.controls.includes('texture')}
 							<TextureControls
 								id={`${id}-texture-controls`}
-								channels={meta.channels}
-								blur={meta.blur}
-								convolutions={meta.convolutions}
+								channels={meta.filters?.channels}
+								blur={meta.filters?.blur}
+								convolutions={meta.filters?.convolutions}
 								onupdate={updateFilters}
 							/>
 						{/if}

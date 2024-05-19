@@ -24,7 +24,7 @@
 	const DEFAULT_FILTERS = {
 		channels: 'rgba',
 		blur: 0,
-		effects: ['normal'],
+		convolutions: ['normal'],
 	}
 
 	let filters: Filters = $state(DEFAULT_FILTERS)
@@ -55,7 +55,7 @@
 			name: b,
 			text: b,
 			value: b,
-			initial: filters.effects.includes(b) ? 'active' : 'inactive',
+			initial: filters.convolutions.includes(b) ? 'active' : 'inactive',
 		})) || [],
 	)
 
@@ -83,14 +83,14 @@
 
 	function updateEffects(selected: {name: string; pressed: boolean}) {
 		if (!selected.pressed) {
-			filters.effects = filters.effects.filter(
+			filters.convolutions = filters.convolutions.filter(
 				(filter: string) => filter !== selected.name,
 			)
-		} else if (!filters.effects.includes(selected.name)) {
-			filters.effects.push(selected.name)
+		} else if (!filters.convolutions.includes(selected.name)) {
+			filters.convolutions.push(selected.name)
 		}
-		if (filters.effects.length === 0) {
-			filters.effects = ['normal']
+		if (filters.convolutions.length === 0) {
+			filters.convolutions = ['normal']
 		}
 		onupdate(filters)
 	}

@@ -17,6 +17,7 @@ import {
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
+import filters from '../../lib/filters'
 
 let host = 'http://localhost:5173'
 let imageAssetsPath = 'src/lib/images'
@@ -42,33 +43,35 @@ let meta = {
 	tags: ['matrix', 'texture' /* , 'webgl' */, 'io'],
 	controls: ['texture'],
 	images: ['plants.png', 'mineral.png'],
-	channels: [
-		'ragb',
-		'rabg',
-		'rbag',
-		'rbga',
-		'rgba',
-		'rgab',
-		'abgr',
-		'abrg',
-		'agrb',
-		'agbr',
-		'arbg',
-		'argb',
-		'bagr',
-		'barg',
-		'bgar',
-		'bgra',
-		'brga',
-		'brag',
-		'gabr',
-		'garb',
-		'gbar',
-		'gbra',
-		'grab',
-		'grba',
-	],
-	blur: [1, 2, 3],
+	filters: {
+		channels: [
+			'ragb',
+			'rabg',
+			'rbag',
+			'rbga',
+			'rgba',
+			'rgab',
+			'abgr',
+			'abrg',
+			'agrb',
+			'agbr',
+			'arbg',
+			'argb',
+			'bagr',
+			'barg',
+			'bgar',
+			'bgra',
+			'brga',
+			'brag',
+			'gabr',
+			'garb',
+			'gbar',
+			'gbra',
+			'grab',
+			'grba',
+		],
+		blur: [1, 2, 3],
+	}
 }
 
 function convertToChannelOrder(str) {

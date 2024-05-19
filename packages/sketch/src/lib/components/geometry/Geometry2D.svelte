@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {onMount, type Snippet} from 'svelte'
 	import {enhance} from '$app/forms'
-	import type {GeometryProps} from '$types'
+	import type {GeometryContext} from '$types/index.js'
 
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
@@ -13,7 +13,7 @@
 		id?: string
 		canvasWidth: number
 		canvasHeight: number
-		context: GeometryProps
+		context: GeometryContext
 		background?: string
 		method?: string
 		formaction?: string
@@ -23,7 +23,7 @@
 		layout?: string
 		threshold?: string
 		disabled?: boolean
-		onupdate: (payload: {geometry: GeometryProps}) => void,
+		onupdate: (payload: {geometry: GeometryContext}) => void,
 		children?: Snippet
 	}
 

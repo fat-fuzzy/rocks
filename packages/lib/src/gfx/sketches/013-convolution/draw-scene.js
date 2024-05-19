@@ -106,7 +106,7 @@ function setupFramebuffers(gl, programInfo, framebufferOptions) {
  * @param {*} originalTexture
  */
 function drawEffects(gl, programInfo, textures, framebuffers, originalTexture) {
-	let contextFilters = programInfo.context.effects
+	let contextFilters = programInfo.context.convolutions
 	// start with the original image on unit 0
 	gl.activeTexture(gl.TEXTURE0 + 0)
 	gl.bindTexture(gl.TEXTURE_2D, originalTexture)
