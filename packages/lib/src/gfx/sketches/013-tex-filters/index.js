@@ -41,8 +41,8 @@ let level = 1
 let error
 let meta = 	{
 	id: '013',
-	slug: 'convolution',
-	title: 'Convolution',
+	slug: 'tex-filters',
+	title: 'Tex Filters',
 	asset: 'emoji:convolution',
 	tags: ['matrix', 'texture' /* , 'webgl' */],
 	controls: ['texture'],

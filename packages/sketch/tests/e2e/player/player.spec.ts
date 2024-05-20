@@ -44,7 +44,7 @@ await Promise.all(
 			// Expects the Play button to start the canvas animation
 			await page.getByRole('button', {name: '✨ Play'}).click()
 
-			// Expects the Player to enable unavailable actions: Stop, Clear
+			// Expects the Player to enable available actions: Stop, Clear
 			await expect(page.getByRole('button', {name: 'stop'})).toBeEnabled()
 			await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
 
