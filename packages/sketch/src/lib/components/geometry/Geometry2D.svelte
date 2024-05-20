@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onMount, type Snippet} from 'svelte'
+	import type { Snippet } from 'svelte'
 	import {enhance} from '$app/forms'
 	import type {GeometryContext} from '$types/index.js'
 
@@ -7,6 +7,7 @@
 	import Scale from '$lib/components/geometry/Scale.svelte'
 	import Rotation from '$lib/components/geometry/Rotation.svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
+
 	const {Button} = blocks
 
 	type Props = {
@@ -79,9 +80,6 @@
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	let backgroundClass = background ? `bg:${background}` : ''
 
-	onMount(() => {
-		update()
-	})
 </script>
 
 <form

@@ -1,11 +1,12 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte'
 	import type {GeometryContext} from '$types/index.js'
 
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
 	import Rotation from '$lib/components/geometry/Rotation.svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
-	import {onMount, type Snippet} from 'svelte'
+
 	const {Button} = blocks
 
 	type Props = {
@@ -67,9 +68,6 @@
 		scale: [scaleX, scaleY, scaleZ],
 	})
 
-	onMount(() => {
-		update()
-	})
 </script>
 
 <Position
