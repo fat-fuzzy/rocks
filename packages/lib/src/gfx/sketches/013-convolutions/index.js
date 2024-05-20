@@ -39,10 +39,10 @@ let texture
 let image
 let level = 1
 let error
-let meta = 	{
+let meta = {
 	id: '013',
-	slug: 'tex-filters',
-	title: 'Tex Filters',
+	slug: 'convolution',
+	title: 'Convolution',
 	asset: 'emoji:convolution',
 	tags: ['matrix', 'texture' /* , 'webgl' */],
 	controls: ['texture'],
@@ -70,7 +70,7 @@ let meta = 	{
 			'triangleBlur',
 			'emboss',
 		],
-	}
+	},
 }
 
 function clear() {
