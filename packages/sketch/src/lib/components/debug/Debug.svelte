@@ -1,20 +1,20 @@
 <script lang="ts">
 	import type {SceneMeta} from '$types'
-	import {onMount} from 'svelte'
 
 	type Props = {
 		meta: SceneMeta | undefined
 		context: any
 	}
 	let {meta, context}: Props = $props()
-	let sketchUi = ['sketch', 'canvas', 'player']
-	onMount(() => {
+	let sketchUi = $derived.by(() => {
+		let ui = ['sketch', 'canvas', 'player']
 		if (
 			meta.controls?.length > 1 ||
 			(meta.controls?.length === 1 && meta.controls[0] !== 'loop')
 		) {
-			sketchUi.push('controls')
+			ui = [...ui, 'controls']
 		}
+		return ui
 	})
 </script>
 
