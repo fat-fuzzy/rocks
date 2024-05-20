@@ -4,8 +4,6 @@ import lib from '@fat-fuzzy/lib'
 const sketches = lib.gfx.sketches.map((sketch) => sketch.meta)
 let previousEvent
 let currentEvent
-let updateEvent = 'update'
-let playEvent = 'play'
 let events = []
 
 test('Player loads in idle state', async ({page}) => {
