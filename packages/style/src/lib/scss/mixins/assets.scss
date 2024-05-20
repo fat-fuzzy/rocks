@@ -52,7 +52,7 @@ $film-camera: '🎥';
 $film-frames: '🎞️';
 $framed-picture: '🖼️';
 $cyclone: '🌀';
-$bento-box: '🍱';
+$new-moon-face: '🌚';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -131,5 +131,5 @@ $emojis: (
 	animation-3d: #{$film-frames},
 	texture: #{$framed-picture},
 	convolution: #{$cyclone},
-	multiple-tex: #{$bento-box}
+	multiple-tex: #{$new-moon-face}
 );
