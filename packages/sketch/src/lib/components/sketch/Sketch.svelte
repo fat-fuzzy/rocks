@@ -180,6 +180,7 @@
 		;(context as CameraContext).fieldOfView = degToRad(payload.fieldOfView)
 		;(context as CameraContext).cameraAngle = degToRad(payload.cameraAngle)
 		scene.update({...context, filters})
+		store.update(ControlsEvent.update)
 	}
 
 	function updateCanvas(payload: {
@@ -215,6 +216,7 @@
 		if (meta.controls.includes('texture')) {
 			play()
 		}
+		store.update(ControlsEvent.update)
 	}
 
 	onMount(() => {

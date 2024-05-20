@@ -157,6 +157,7 @@ export const SKETCH_TRANSITIONS: SketchTransitionsType = {
 		},
 		[ControlsState.updated]: {
 			[PlayerEvent.clear]: ControlsState.pristine,
+			[PlayerEvent.stop]: ControlsState.pristine,
 		},
 	},
 	player: PLAYER_TRANSITIONS,
