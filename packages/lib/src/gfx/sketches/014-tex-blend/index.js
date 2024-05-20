@@ -17,7 +17,6 @@ import {
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
-import filters from '../../lib/filters'
 
 let host = 'http://localhost:5173'
 let imageAssetsPath = 'src/lib/images'
