@@ -30,16 +30,16 @@
 		</thead>
 		<tbody class="text:center">
 			<tr>
-				<td class="bg:light justify:center l:flex nowrap align:center card:sm">
+				<td
+					class="bg:light justify:center l:flex nowrap align:center maki:block"
+				>
 					<span>Event</span>
 					<span class="card:2xs bg:accent:100 variant:bare">prev</span>
 					<span class="card:2xs bg:accent:000">current</span>
 				</td>
 				{#each sketchUi as ui}
 					<td class="variant:outline" data-testid={`debug-event-${ui}`}>
-						<div
-							class="bg:light justify:center l:flex nowrap align:center card:sm"
-						>
+						<div class="bg:light justify:center l:flex nowrap align:center">
 							<span
 								class="card:2xs bg:accent:100 variant:bare"
 								data-testid="previous-event"
