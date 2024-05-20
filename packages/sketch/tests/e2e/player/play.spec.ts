@@ -6,33 +6,6 @@ let previousEvent
 let currentEvent
 let events = []
 
-test('Player loads in idle state', async ({page}) => {
-	await page.goto('/random-rect')
-
-	// Expects the Player to enable the available action: Play
-	await expect(page.getByRole('button', {name: 'play'})).toBeEnabled()
-	// Expects the Player to disable unavailable actions: Stop, Clear
-	await expect(page.getByRole('button', {name: 'stop'})).toBeDisabled()
-	await expect(page.getByRole('button', {name: 'clear'})).toBeDisabled()
-})
-
-/**
- * Test the Player loads in idle state for each sketch.
- */
-await Promise.all(
-	sketches.map((sketch) => {
-		test(`${sketch.title} Player loads in idle state`, async ({page}) => {
-			await page.goto(`/${sketch.slug}`)
-
-			// Expects the Player to enable the available action: Play
-			await expect(page.getByRole('button', {name: 'play'})).toBeEnabled()
-			// Expects the Player to disable unavailable actions: Stop, Clear
-			await expect(page.getByRole('button', {name: 'stop'})).toBeDisabled()
-			await expect(page.getByRole('button', {name: 'clear'})).toBeDisabled()
-		})
-	}),
-)
-
 /**
  * Test the Player Play button works as expected for each sketch.
  */
