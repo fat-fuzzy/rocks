@@ -23,6 +23,7 @@
 				background="polar"
 				container="card"
 				layout="switcher"
+				align="start"
 			/>
 		</details>
 	</svelte:fragment>

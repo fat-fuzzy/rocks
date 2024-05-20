@@ -18,7 +18,7 @@
 	let depthClass = `depth-${depth}`
 </script>
 
-<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${align} ${depthClass}`}>
+<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${depthClass}`}>
 	{#each items as item}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
@@ -33,7 +33,7 @@
 			<a
 				data-sveltekit-preload-data
 				href={format.formatHref(path, slug)}
-				class={`${asset}`}
+				class={`${asset} align:${align}`}
 			>
 				{title}
 			</a>
