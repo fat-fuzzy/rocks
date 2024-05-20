@@ -4,12 +4,10 @@
 }
 
 .canvas {
+	position: relative;
 	box-shadow: var(--shadow-md);
 }
 
-.scene {
-	position: relative;
-}
 
 .state\:play {
 	background-color: var(--bg-color);
