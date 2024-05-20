@@ -37,8 +37,8 @@ let files = [
 
 let meta = {
 	id: '014',
-	slug: 'multiple-tex',
-	title: 'Multiple Textures',
+	slug: 'tex-blend',
+	title: 'Tex Blend',
 	asset: 'emoji:multiple-tex',
 	tags: ['matrix', 'texture' /* , 'webgl' */, 'io'],
 	controls: ['texture'],

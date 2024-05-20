@@ -17,9 +17,9 @@ import sketch_008 from './sketches/008-projection/index'
 import sketch_009 from './sketches/009-matrix-3d/index'
 import sketch_010 from './sketches/010-camera-3d/index'
 import sketch_011 from './sketches/011-animation-3d/index'
-import sketch_012 from './sketches/012-texture/index'
+import sketch_012 from './sketches/012-tex-channels/index'
 import sketch_013 from './sketches/013-convolution/index'
-import sketch_014 from './sketches/014-multiple-tex/index'
+import sketch_014 from './sketches/014-tex-blend/index'
 
 const sketches =[
 	sketch_001,

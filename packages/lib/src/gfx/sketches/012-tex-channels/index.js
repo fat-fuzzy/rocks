@@ -39,8 +39,8 @@ let blur = 0
 let error
 let meta = {
 	id: '012',
-	slug: 'texture',
-	title: 'Texture',
+	slug: 'tex-channels',
+	title: 'Tex Channels',
 	asset: 'emoji:texture',
 	tags: ['color', 'texture' /* , 'webgl' */],
 	controls: ['texture'],
