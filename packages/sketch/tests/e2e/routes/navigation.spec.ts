@@ -4,6 +4,7 @@ import lib from '@fat-fuzzy/lib'
 const sketches = lib.gfx.sketches.map((sketch) => sketch.meta)
 
 test('has title', async ({page}) => {
+	await page.goto('/')
 	// Expect a title "to contain" a substring.
 	await expect(page).toHaveTitle(/Fat Fuzzy Play/)
 })

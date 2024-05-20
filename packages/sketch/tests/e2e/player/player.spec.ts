@@ -6,6 +6,7 @@ let previousEvent
 let currentEvent
 let updateEvent = 'update'
 let playEvent = 'play'
+let events = []
 
 test('Player loads in idle state', async ({page}) => {
 	await page.goto('/random-rect')
@@ -45,53 +46,68 @@ await Promise.all(
 			// Expects the Play button to start the canvas animation
 			await page.getByRole('button', {name: '✨ Play'}).click()
 
-			previousEvent = await page
+			// Expects the Player to enable unavailable actions: Stop, Clear
+			await expect(page.getByRole('button', {name: 'stop'})).toBeEnabled()
+			await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
+
+			previousEvent = page
 				.getByTestId('debug-table')
 				.getByTestId(`debug-event-player`)
 				.getByTestId(`previous-event`)
 
-			currentEvent = await page
+			currentEvent = page
 				.getByTestId('debug-table')
 				.getByTestId(`debug-event-player`)
 				.getByTestId(`current-event`)
+
+			events = await Promise.all([previousEvent, currentEvent])
+
 			// TODO: Fix initial player state ? or this test
-			// await expect(previousEvent).toHaveText('idle')
+			await expect(events[0]).toHaveText('play')
+			// await expect(events[0]).toHaveText('idle')
+			// if (
+			// 	// sketch.controls.includes('camera') || 	// TODO: Fix this control update
+			// 	sketch.controls.includes('geometry-2d') ||
+			// 	sketch.controls.includes('geometry-3d') ||
+			// 	sketch.controls.includes('matrix-2d') ||
+			// 	sketch.controls.includes('matrix-3d')
+			// ) {
+			// 	await expect(events[0]).toHaveText('update')
+			// } else {
+			// 	await expect(events[0]).toHaveText('play')
+			// }
 
-			if (
-				// sketch.controls.includes('camera') || 	// TODO: Fix this control update
-				sketch.controls.includes('geometry-2d') ||
-				sketch.controls.includes('geometry-3d')
-			) {
-				await expect(currentEvent).toHaveText('update')
-			} else {
-				await expect(currentEvent).toHaveText('play')
-			}
-
-			// Expects the Play button to pause the canvas animation
-
+			// Expects the Pause button to pause the canvas animation
 			// TODO: Fix asset emoji:pause
 			await page.getByRole('button', {name: '✨ Pause'}).click()
-
-			previousEvent = await page
-				.getByTestId('debug-table')
-				.getByTestId(`debug-event-player`)
-				.getByTestId(`previous-event`)
-
-			currentEvent = await page
-				.getByTestId('debug-table')
-				.getByTestId(`debug-event-player`)
-				.getByTestId(`current-event`)
+			events = await Promise.all([previousEvent, currentEvent])
 
 			if (
-				// sketch.controls.includes('camera') || 	// TODO: Fix this control update
+				// TODO: Fix camera control update
+				// sketch.controls.includes('camera') ||
 				sketch.controls.includes('geometry-2d') ||
-				sketch.controls.includes('geometry-3d')
+				sketch.controls.includes('geometry-3d') ||
+				sketch.controls.includes('matrix-2d') ||
+				sketch.controls.includes('matrix-3d')
 			) {
-				await expect(previousEvent).toHaveText('update')
+				await expect(events[0]).toHaveText('update')
 			} else {
-				await expect(previousEvent).toHaveText('play')
+				await expect(events[0]).toHaveText('play')
 			}
-			await expect(currentEvent).toHaveText('pause')
+			await expect(events[1]).toHaveText('pause')
+
+			// Actions should be enabled
+			await expect(page.getByRole('button', {name: 'stop'})).toBeEnabled()
+			await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
+
+			// Expects the Play button to resume the canvas animation
+			await page.getByRole('button', {name: '✨ Play'}).click()
+			events = await Promise.all([previousEvent, currentEvent])
+			await expect(events[1]).toHaveText('play')
+
+			// Actions should be enabled
+			await expect(page.getByRole('button', {name: 'stop'})).toBeEnabled()
+			await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
 		})
 	}),
 )
