@@ -15,10 +15,11 @@ let states = []
  */
 await Promise.all(
 	sketches.map((sketch) => {
-		test.skip(`${sketch.title} Clear button works as expected`, async ({
-			page,
-		}) => {
+		test(`${sketch.title} Clear button works as expected`, async ({page}) => {
 			await page.goto(`/${sketch.slug}`)
+			const hasLoop =
+				sketch.controls?.length > 1 ||
+				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
 
 			previousEvent = page
 				.getByTestId('debug-table')
@@ -42,17 +43,15 @@ await Promise.all(
 				.getByTestId('debug-table')
 				.getByTestId(`debug-state-player`)
 
+			controlsState = page
+				.getByTestId('debug-table')
+				.getByTestId(`debug-state-controls`)
+
 			states = await Promise.all([sketchState, canvasState, playerState])
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('idle')
 			await expect(states[2]).toHaveText('idle')
-			if (
-				sketch.controls?.length > 1 ||
-				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
-			) {
-				controlsState = page
-					.getByTestId('debug-table')
-					.getByTestId(`debug-state-controls`)
+			if (hasLoop) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 
@@ -62,25 +61,8 @@ await Promise.all(
 			// Expects the Clear to be enabled
 			await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
 
-			// TODO: Fix controls state update - should be:
-			// - `hidden` on load until `play`
-			// - `pristine` on `play` until user interaction
-			// - `pristine` (or `cleared` ?) on `clear` until user interaction
-			// - `pristine` on `stop` until user interaction
-			// - `updated` on user interaction until` `clear`
-			// - `paused` on `pause`, then:
-			//   - `updated` or `pristine` (the state previous to `paused`) on `play`
-			//   - `pristine` on `clear`, then as above
-			// - `hidden` on `stop`, then as above
-
-			if (
-				sketch.controls?.length > 1 ||
-				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
-			) {
-				controlsState = page
-					.getByTestId('debug-table')
-					.getByTestId(`debug-state-controls`)
-				await expect(controlsState).toHaveText('updated')
+			if (hasLoop) {
+				await expect(controlsState).toHaveText('pristine')
 			}
 
 			// Clear the canvas
@@ -94,13 +76,7 @@ await Promise.all(
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('playing')
 			await expect(states[2]).toHaveText('playing')
-			if (
-				sketch.controls?.length > 1 ||
-				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
-			) {
-				controlsState = page
-					.getByTestId('debug-table')
-					.getByTestId(`debug-state-controls`)
+			if (hasLoop) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 
@@ -115,13 +91,7 @@ await Promise.all(
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('paused')
 			await expect(states[2]).toHaveText('paused')
-			if (
-				sketch.controls?.length > 1 ||
-				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
-			) {
-				controlsState = page
-					.getByTestId('debug-table')
-					.getByTestId(`debug-state-controls`)
+			if (hasLoop) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 
@@ -135,13 +105,7 @@ await Promise.all(
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('paused')
 			await expect(states[2]).toHaveText('paused')
-			if (
-				sketch.controls?.length > 1 ||
-				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
-			) {
-				controlsState = page
-					.getByTestId('debug-table')
-					.getByTestId(`debug-state-controls`)
+			if (hasLoop) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 

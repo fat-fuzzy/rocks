@@ -23,6 +23,9 @@ await Promise.all(
 	sketches.map((sketch) => {
 		test(`${sketch.title} sketch page loads OK`, async ({page}) => {
 			await page.goto(`/${sketch.slug}`)
+			const hasLoop =
+				sketch.controls?.length > 1 ||
+				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
 
 			// Expects page to have a heading with the name the Sketch
 			await expect(page.getByRole('heading', {name: 'Play'})).toBeVisible()
@@ -55,19 +58,16 @@ await Promise.all(
 			playerState = page
 				.getByTestId('debug-table')
 				.getByTestId(`debug-state-player`)
+			controlsState = page
+				.getByTestId('debug-table')
+				.getByTestId(`debug-state-controls`)
 
 			states = await Promise.all([sketchState, canvasState, playerState])
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('idle')
 			await expect(states[2]).toHaveText('idle')
 
-			if (
-				sketch.controls?.length > 1 ||
-				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
-			) {
-				controlsState = page
-					.getByTestId('debug-table')
-					.getByTestId(`debug-state-controls`)
+			if (hasLoop) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 		})
