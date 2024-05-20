@@ -15,7 +15,9 @@ let states = []
  */
 await Promise.all(
 	sketches.map((sketch) => {
-		test(`${sketch.title} Clear button works as expected`, async ({page}) => {
+		test(`"${sketch.title}" sketch: Clear button works as expected`, async ({
+			page,
+		}) => {
 			await page.goto(`/${sketch.slug}`)
 			const hasLoop =
 				sketch.controls?.length > 1 ||

@@ -11,7 +11,7 @@ test('has title', async ({page}) => {
 
 await Promise.all(
 	sketches.map((sketch) => {
-		test(`get navigation ${sketch.title}`, async ({page}) => {
+		test(`"${sketch.title}" sketch page navigation OK`, async ({page}) => {
 			// Click the get started link.
 			await page.goto('/')
 			await page

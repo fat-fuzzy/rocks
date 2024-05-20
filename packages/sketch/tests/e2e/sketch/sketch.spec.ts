@@ -21,7 +21,7 @@ let controlsActions
  */
 await Promise.all(
 	sketches.map((sketch) => {
-		test(`${sketch.title} sketch page loads OK`, async ({page}) => {
+		test(`"${sketch.title}" sketch loads OK`, async ({page}) => {
 			await page.goto(`/${sketch.slug}`)
 			const hasLoop =
 				sketch.controls?.length > 1 ||

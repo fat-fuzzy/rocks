@@ -8,7 +8,9 @@ const sketches = lib.gfx.sketches.map((sketch) => sketch.meta)
  */
 await Promise.all(
 	sketches.map((sketch) => {
-		test(`${sketch.title} Player loads in idle state`, async ({page}) => {
+		test(`"${sketch.title}" sketch: Player loads in idle state`, async ({
+			page,
+		}) => {
 			await page.goto(`/${sketch.slug}`)
 
 			// Expects the Player to enable the available action: Play
