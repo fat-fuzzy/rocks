@@ -1,5 +1,5 @@
 menu > li {
-	height: calc(100% - 2 * var(--border-width-md));
+	height: 100%;
   width: auto;
   aspect-ratio: 1/1;
 }
