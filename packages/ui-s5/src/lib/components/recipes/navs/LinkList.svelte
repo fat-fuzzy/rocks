@@ -22,19 +22,16 @@
 	{#each items as item}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
+		{@const itemClass = `relleno ${asset} align:${align}`}
 		<li
 			aria-current={$page.url.pathname === format.formatHref(path, slug)
 				? 'page'
 				: undefined}
 			class={$page.url.pathname === format.formatHref(path, slug)
-				? `relleno bg:${color}`
-				: 'relleno'}
+				? `${itemClass} bg:${color}`
+				: itemClass}
 		>
-			<a
-				data-sveltekit-preload-data
-				href={format.formatHref(path, slug)}
-				class={`${asset} align:${align}`}
-			>
+			<a data-sveltekit-preload-data href={format.formatHref(path, slug)}>
 				{title}
 			</a>
 			{#if subItems}

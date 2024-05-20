@@ -3,6 +3,11 @@
 	font-size: var(--icon-size);
 }
 
+[class*='emoji:']::before {
+	--icon-size: var(--ui-size-xl);
+	font-size: var(--icon-size);
+}
+
 [class*='emoji:'].align\:start::before {
 	margin-inline-end: var(--ui-size-sm);
 }
