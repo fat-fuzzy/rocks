@@ -20,11 +20,11 @@ class SwitchStore {
 		onclick,
 		switchStates,
 	}: {
-		initial?: UiState
+		initial?: string
 		onclick?: (payload: TogglePayload) => void
 		switchStates: SwitchStateType
 	}) {
-		this.state = initial ?? UiState.inactive
+		this.state = (initial as UiState) ?? UiState.inactive
 		this.switchStates = switchStates
 		this.switchStates.active.onclick = onclick
 		this.switchStates.inactive.onclick = onclick
@@ -42,7 +42,7 @@ class SwitchStore {
 		return this.switchStates[this.state as ToggleState].id
 	}
 
-	public getValue(): string {
+	public getValue(): string | number {
 		return this.switchStates[this.state as ToggleState].value
 	}
 

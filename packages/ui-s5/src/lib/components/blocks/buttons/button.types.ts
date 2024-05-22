@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {InputPayload, UiStyleProps} from '$types/index.js'
+import type {UiStyleProps} from '$types/index.js'
 
 export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 

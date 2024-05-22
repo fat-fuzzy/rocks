@@ -40,7 +40,7 @@
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
 		name,
 		value: store.getValue(),
-		pressed: store.isPressed(),
+		state: store.getState(),
 		update: store.update.bind(store),
 	})
 

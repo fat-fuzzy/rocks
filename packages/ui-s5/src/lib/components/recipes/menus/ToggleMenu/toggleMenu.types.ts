@@ -21,7 +21,7 @@ export type ToggleMenuProps = UiStyleProps & {
 	formaction?: string
 	items: ToggleProps[]
 	onupdate: (
-		payload: {name: string; value: string | number; pressed?: boolean}[],
+		payload: {name: string; value: string | number; state: string}[],
 	) => void
 }
 

@@ -1,20 +1,32 @@
-import {UiState, type ButtonEventType} from '$types/index.js'
-import type {ButtonProps} from '../button.types.js'
+import {UiState, type ButtonEventType, type UiStyleProps} from '$types/index.js'
+import type {Snippet} from 'svelte'
+import type {ButtonType} from '../button.types.js'
 
 export type ToggleState = UiState.active | UiState.inactive
 
 export type TogglePayload = {
 	id: string
 	name: string
-	value?: string | number
+	value: string | number
 	text?: string
-	pressed: boolean
+	state: string
 	update?: (event: ButtonEventType) => void
 }
 
-export type ToggleProps = ButtonProps & {
+export type ToggleProps = UiStyleProps & {
+	/**
+	 * State props
+	 */
+	id: string // Use for machine id
+	name: string
+	title?: string
+	disabled?: boolean
+	formaction?: string
+	type?: ButtonType
+	children?: Snippet
 	text?: string
-	initial?: ToggleState
+	initial?: string
+	value: string | number
 	states?: ToggleStateType // this component contains a button that will Toggle between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
 	onclick?: (payload: TogglePayload) => void
 }
@@ -25,16 +37,16 @@ export type ToggleType = {
 	text?: string
 	asset?: string
 	variant?: string
-	pressed: boolean
+	state?: string
 	onclick?: (payload: TogglePayload) => void
 }
 
 export type ToggleStateType = {
-	[state in ToggleState]: ToggleType
+	[state in ToggleState as string]: ToggleType
 }
 
 export type ToggleTransitionsType = {
-	[state in ToggleState]: {
+	[state in ToggleState as string]: {
 		[event in ButtonEventType]?: UiState
 	}
 }
@@ -43,12 +55,12 @@ export const TOGGLE: ToggleStateType = {
 	active: {
 		id: 'active',
 		value: 'active',
-		pressed: true,
+		state: 'active',
 	},
 	inactive: {
 		id: 'inactive',
 		value: 'inactive',
-		pressed: false,
+		state: 'inactive',
 	},
 }
 

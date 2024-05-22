@@ -15,10 +15,10 @@ class ToggleStore {
 		initial,
 		onclick,
 	}: {
-		initial?: ToggleState
+		initial?: string
 		onclick?: (payload: TogglePayload) => void
 	}) {
-		this.state = initial ?? UiState.inactive
+		this.state = (initial as UiState) ?? UiState.inactive
 		this.toggleStates.active.onclick = onclick
 		this.toggleStates.inactive.onclick = onclick
 	}
@@ -32,7 +32,7 @@ class ToggleStore {
 	}
 
 	public isPressed(): boolean {
-		return this.toggleStates[this.state as ToggleState].pressed
+		return this.state === 'active'
 	}
 
 	public getTransition(event: ButtonEventType): ToggleState {
