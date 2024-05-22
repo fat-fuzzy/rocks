@@ -110,9 +110,12 @@ class SketchStore {
 		this.events.previous = previous
 	}
 
-	public updateFilters(filters: Filters): void {
+	public updateFilters(filters: Filters, event: UiEvent): void {
 		// TODO: implement
-		console.log(filters)
+		this.state.canvas = this.getTransition('canvas', event)
+		this.state.controls = this.getTransition('controls', event)
+		this.events.previous = this.events.current
+		this.events.current = event
 	}
 }
 

@@ -132,7 +132,7 @@
 	function reset() {
 		pause()
 		store.feedback.canvas = []
-		store.updateFilters(DEFAULT_FILTERS)
+		store.updateFilters(DEFAULT_FILTERS, ControlsEvent.update)
 	}
 
 	function clear() {

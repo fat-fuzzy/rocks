@@ -107,9 +107,9 @@ export type SceneMeta = {
 }
 
 export type Filters = {
-	channels?: string[]
-	blur?: number
-	convolutions?: string[]
+	channels: string[]
+	blur: number[]
+	convolutions: string[]
 }
 
 export type SceneOptions = {

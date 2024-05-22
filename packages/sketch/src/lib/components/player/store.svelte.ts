@@ -1,5 +1,10 @@
-import type {TogglePayload, FeedbackType} from '$types'
-import {PlayerEvent, PlayerState, PlayerAction} from './types.js'
+import type {FeedbackType} from '$types'
+import {
+	PlayerEvent,
+	PlayerState,
+	PlayerAction,
+	type PlayerPayload,
+} from './types.js'
 
 import {
 	type PlayerSwitchType,
@@ -22,7 +27,7 @@ class PlayerStore {
 		onclick,
 	}: {
 		initial?: PlayerState
-		onclick: (payload: TogglePayload) => void
+		onclick: (payload: PlayerPayload) => void
 	}) {
 		this.state = initial ?? PlayerState.idle
 		this.playSwitch.active.onclick = onclick

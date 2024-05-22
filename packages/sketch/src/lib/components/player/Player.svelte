@@ -34,8 +34,8 @@
 		onclick: updatePlayer,
 	})
 
-	function updatePlayer(payload: {id: string; value: string}) {
-		let event = payload.id as PlayerEvent
+	function updatePlayer(payload: {value: string | number}) {
+		let event = payload.value as PlayerEvent
 		if (event === 'play') {
 			event =
 				store.getState() === PlayerState.playing
@@ -65,6 +65,7 @@
 		<Switch
 			id="play"
 			name="play"
+			value="play"
 			states={store.playSwitch}
 			{color}
 			{size}

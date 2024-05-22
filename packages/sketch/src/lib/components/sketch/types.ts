@@ -60,7 +60,7 @@ export type SketchTransitionsType = {
 
 export const DEFAULT_FILTERS: Filters = {
 	channels: ['rgba'],
-	blur: 0,
+	blur: [0],
 	convolutions: ['normal'],
 }
 

@@ -56,34 +56,34 @@ export type PlayerTransitionsType = {
 	}
 }
 
-export type PlayerPayload = {event: PlayerEvent; state: PlayerState}
+export type PlayerPayload = {value: string | number; state: string}
 
 export type PlayerSwitchState = {
 	id: string
-	value: PlayerEvent.pause | PlayerEvent.play
+	value: string | number
 	text: string
 	asset: string
 	variant: string
-	pressed: boolean
+	state: string
 	onclick?: (payload: PlayerPayload) => void
 }
 
 export const PLAYER_SWITCH: PlayerSwitchType = {
 	active: {
 		id: 'active',
-		value: PlayerEvent.pause,
+		value: PlayerEvent.pause as string,
 		text: 'Pause',
 		asset: 'emoji:pause',
 		variant: 'outline',
-		pressed: true,
+		state: 'active',
 	},
 	inactive: {
 		id: 'inactive',
-		value: PlayerEvent.play,
+		value: PlayerEvent.play as string,
 		text: 'Play',
 		asset: 'emoji:play',
 		variant: 'fill',
-		pressed: false,
+		state: 'inactive',
 	},
 }
 
