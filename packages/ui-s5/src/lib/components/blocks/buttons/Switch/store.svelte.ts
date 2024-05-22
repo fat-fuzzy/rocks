@@ -6,7 +6,6 @@ import type {
 
 import {
 	type SwitchStateType,
-	type SwitchType,
 	SWITCH,
 	SWITCH_TRANSITIONS,
 } from './switch.types.js'
@@ -14,6 +13,7 @@ class SwitchStore {
 	state = $state(UiState.inactive)
 	switchStates: SwitchStateType = $state(SWITCH)
 	transitions = SWITCH_TRANSITIONS
+	switchState = $derived(this.switchStates[this.state as ToggleState])
 
 	public init({
 		initial,
@@ -34,16 +34,12 @@ class SwitchStore {
 		return this.state as ToggleState
 	}
 
-	public getSwitchState(): SwitchType {
-		return this.switchStates[this.state as ToggleState]
-	}
-
 	public getId(): string {
-		return this.switchStates[this.state as ToggleState].id
+		return this.switchState.id
 	}
 
 	public getValue(): string | number {
-		return this.switchStates[this.state as ToggleState].value
+		return this.switchState.value
 	}
 
 	public isPressed(): boolean {
@@ -51,7 +47,7 @@ class SwitchStore {
 	}
 
 	public getLabel(): string | undefined {
-		return this.switchStates[this.state as ToggleState].text
+		return this.switchState.text
 	}
 
 	public getTransition(event: ButtonEventType): ToggleState {

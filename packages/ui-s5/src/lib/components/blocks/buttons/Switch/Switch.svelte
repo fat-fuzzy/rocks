@@ -34,7 +34,7 @@
 
 
 	/* Element state */
-	let currentState = $state(store.getSwitchState())
+	let currentState = $state(store.switchState)
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
