@@ -11,7 +11,7 @@ let playerState
 let controlsState
 let states = []
 /**
- * Test the Player Play button works as expected for each sketch.
+ * Test the Player's Clear button works as expected for each sketch.
  */
 await Promise.all(
 	sketches.map((sketch) => {
@@ -19,7 +19,7 @@ await Promise.all(
 			page,
 		}) => {
 			await page.goto(`/${sketch.slug}`)
-			const hasLoop =
+			const hasControls =
 				sketch.controls?.length > 1 ||
 				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
 
@@ -53,8 +53,8 @@ await Promise.all(
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('idle')
 			await expect(states[2]).toHaveText('idle')
-			if (hasLoop) {
-				await expect(controlsState).toHaveText('pristine')
+			if (hasControls) {
+				await expect(controlsState).toHaveText('hidden')
 			}
 
 			// Start the canvas animation
@@ -63,7 +63,7 @@ await Promise.all(
 			// Expects the Clear to be enabled
 			await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
 
-			if (hasLoop) {
+			if (hasControls) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 
@@ -78,12 +78,12 @@ await Promise.all(
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('playing')
 			await expect(states[2]).toHaveText('playing')
-			if (hasLoop) {
+			if (hasControls) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 
 			// Pause the animation
-			await page.getByRole('button', {name: '✨ Pause'}).click()
+			await page.getByRole('button', {name: '🪷 Pause'}).click()
 
 			events = await Promise.all([previousEvent, currentEvent])
 			await expect(events[0]).toHaveText('clear')
@@ -93,7 +93,7 @@ await Promise.all(
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('paused')
 			await expect(states[2]).toHaveText('paused')
-			if (hasLoop) {
+			if (hasControls) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 
@@ -107,7 +107,7 @@ await Promise.all(
 			await expect(states[0]).toHaveText('active')
 			await expect(states[1]).toHaveText('paused')
 			await expect(states[2]).toHaveText('paused')
-			if (hasLoop) {
+			if (hasControls) {
 				await expect(controlsState).toHaveText('pristine')
 			}
 

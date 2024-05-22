@@ -23,7 +23,7 @@ await Promise.all(
 	sketches.map((sketch) => {
 		test(`"${sketch.title}" sketch loads OK`, async ({page}) => {
 			await page.goto(`/${sketch.slug}`)
-			const hasLoop =
+			const hasControls =
 				sketch.controls?.length > 1 ||
 				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
 
@@ -67,8 +67,8 @@ await Promise.all(
 			await expect(states[1]).toHaveText('idle')
 			await expect(states[2]).toHaveText('idle')
 
-			if (hasLoop) {
-				await expect(controlsState).toHaveText('pristine')
+			if (hasControls) {
+				await expect(controlsState).toHaveText('hidden')
 			}
 		})
 	}),

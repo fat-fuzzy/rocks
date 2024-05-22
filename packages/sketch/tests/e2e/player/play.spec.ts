@@ -7,7 +7,7 @@ let currentEvent
 let events = []
 
 /**
- * Test the Player Play button works as expected for each sketch.
+ * Test the Player's Play/Pause button works as expected for each sketch.
  */
 await Promise.all(
 	sketches.map((sketch) => {
@@ -37,13 +37,11 @@ await Promise.all(
 			await expect(page.getByRole('button', {name: 'stop'})).toBeEnabled()
 			await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
 
-			// TODO: Fix initial player state ? or this test: should be `idle`
-			// await expect(events[0]).toHaveText('loadOk')
+			await expect(events[0]).toHaveText('loadOk')
 			await expect(events[1]).toHaveText('play')
 
 			// Expects the Pause button to pause the canvas animation
-			// TODO: Fix asset emoji:pause
-			await page.getByRole('button', {name: '✨ Pause'}).click()
+			await page.getByRole('button', {name: '🪷 Pause'}).click()
 			events = await Promise.all([previousEvent, currentEvent])
 
 			await expect(events[0]).toHaveText('play')
