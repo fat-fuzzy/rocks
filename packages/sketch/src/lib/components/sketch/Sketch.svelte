@@ -142,10 +142,10 @@
 		render()
 		if (prevCanvasState === CanvasState.paused) {
 			pause()
-			store.update(PlayerEvent.pause)
 		} else {
 			store.update(PlayerEvent.play)
 		}
+		store.update(PlayerEvent.clear)
 	}
 
 	function stop() {
@@ -159,6 +159,7 @@
 		if (frame) {
 			cancelAnimationFrame(frame)
 		}
+		store.update(PlayerEvent.pause)
 	}
 
 	function updateGeometry(payload: {
@@ -186,13 +187,6 @@
 	function updateCanvas(payload: {
 		event: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
 	}) {
-		let event = payload.event
-		if (payload.event === 'play') {
-			event =
-				store.getState('canvas') === CanvasState.playing
-					? PlayerEvent.pause
-					: PlayerEvent.play
-		}
 		switch (payload.event) {
 			case 'play':
 				play()
@@ -207,7 +201,6 @@
 				stop()
 				break
 		}
-		store.update(event)
 	}
 
 	function updateFilters(filters: Filters) {

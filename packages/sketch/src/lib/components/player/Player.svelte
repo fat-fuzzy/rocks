@@ -62,20 +62,22 @@
 
 <menu {id} class={`l:switcher:2xs w:full hug justify:center`}>
 	<li>
-		<Switch
-			id="play"
-			name="play"
-			value="play"
-			states={store.playSwitch}
-			{color}
-			{size}
-			shape="square"
-			initial={store.getPlayState()}
-			disabled={store.getPlayDisabled()}
-			onclick={updatePlayer}
-		>
-			{store.getPlayLabel()}
-		</Switch>
+		{#key store.playState}
+			<Switch
+				id="play"
+				name="play"
+				value="play"
+				states={store.playSwitch}
+				{color}
+				{size}
+				shape="square"
+				initial={store.playState}
+				disabled={store.getPlayDisabled()}
+				onclick={updatePlayer}
+			>
+				{store.playLabel}
+			</Switch>
+		{/key}
 	</li>
 	<li class="l:stack:2xs group">
 		<Button
