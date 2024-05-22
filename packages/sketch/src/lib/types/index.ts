@@ -1,6 +1,7 @@
 export enum ControlsState {
 	pristine = 'pristine',
 	updated = 'updated',
+	hidden = 'hidden',
 }
 
 export enum ControlsEvent {

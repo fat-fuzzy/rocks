@@ -80,7 +80,7 @@ export const SKETCH_STATE: SketchStateType = {
 	sketch: SketchState.idle,
 	canvas: CanvasState.idle,
 	player: PlayerState.idle,
-	controls: ControlsState.pristine,
+	controls: ControlsState.hidden,
 }
 
 export const SKETCH_ACTIONS: SketchActionsType = {
@@ -153,11 +153,16 @@ export const SKETCH_TRANSITIONS: SketchTransitionsType = {
 	controls: {
 		[ControlsState.pristine]: {
 			[ControlsEvent.update]: ControlsState.updated,
-			[PlayerEvent.stop]: ControlsState.pristine,
+			[PlayerEvent.stop]: ControlsState.hidden,
+			[PlayerEvent.pause]: ControlsState.pristine,
 		},
 		[ControlsState.updated]: {
 			[PlayerEvent.clear]: ControlsState.pristine,
-			[PlayerEvent.stop]: ControlsState.pristine,
+			[PlayerEvent.stop]: ControlsState.hidden,
+			[PlayerEvent.pause]: ControlsState.updated,
+		},
+		[ControlsState.hidden]: {
+			[PlayerEvent.play]: ControlsState.pristine,
 		},
 	},
 	player: PLAYER_TRANSITIONS,
