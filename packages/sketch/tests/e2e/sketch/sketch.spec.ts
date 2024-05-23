@@ -19,58 +19,56 @@ let controlsActions
 /**
  * Test the Player Play button works as expected for each sketch.
  */
-await Promise.all(
-	sketches.map((sketch) => {
-		test(`"${sketch.title}" sketch loads OK`, async ({page}) => {
-			await page.goto(`/${sketch.slug}`)
-			const hasControls =
-				sketch.controls?.length > 1 ||
-				(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
+sketches.map((sketch) => {
+	test(`"${sketch.title}" sketch loads OK`, async ({page}) => {
+		await page.goto(`/${sketch.slug}`)
+		const hasControls =
+			sketch.controls?.length > 1 ||
+			(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
 
-			// Expects page to have a heading with the name the Sketch
-			await expect(page.getByRole('heading', {name: 'Play'})).toBeVisible()
-			await expect(
-				page.getByRole('heading', {name: ` ❤︎ ${sketch.title}`}),
-			).toBeVisible()
+		// Expects page to have a heading with the name the Sketch
+		await expect(page.getByRole('heading', {name: 'Play'})).toBeVisible()
+		await expect(
+			page.getByRole('heading', {name: ` ❤︎ ${sketch.title}`}),
+		).toBeVisible()
 
-			previousEvent = page
-				.getByTestId('debug-table')
-				.getByTestId(`debug-event-sketch`)
-				.getByTestId(`previous-event`)
+		previousEvent = page
+			.getByTestId('debug-table')
+			.getByTestId(`debug-event-sketch`)
+			.getByTestId(`previous-event`)
 
-			currentEvent = page
-				.getByTestId('debug-table')
-				.getByTestId(`debug-event-sketch`)
-				.getByTestId(`current-event`)
+		currentEvent = page
+			.getByTestId('debug-table')
+			.getByTestId(`debug-event-sketch`)
+			.getByTestId(`current-event`)
 
-			events = await Promise.all([previousEvent, currentEvent])
-			await expect(events[0]).toHaveText('load')
-			await expect(events[1]).toHaveText('loadOk')
+		events = await Promise.all([previousEvent, currentEvent])
+		await expect(events[0]).toHaveText('load')
+		await expect(events[1]).toHaveText('loadOk')
 
-			sketchState = page
-				.getByTestId('debug-table')
-				.getByTestId(`debug-state-sketch`)
+		sketchState = page
+			.getByTestId('debug-table')
+			.getByTestId(`debug-state-sketch`)
 
-			canvasState = page
-				.getByTestId('debug-table')
-				.getByTestId(`debug-state-canvas`)
+		canvasState = page
+			.getByTestId('debug-table')
+			.getByTestId(`debug-state-canvas`)
 
-			playerState = page
-				.getByTestId('debug-table')
-				.getByTestId(`debug-state-player`)
+		playerState = page
+			.getByTestId('debug-table')
+			.getByTestId(`debug-state-player`)
 
-			controlsState = page
-				.getByTestId('debug-table')
-				.getByTestId(`debug-state-controls`)
+		controlsState = page
+			.getByTestId('debug-table')
+			.getByTestId(`debug-state-controls`)
 
-			states = await Promise.all([sketchState, canvasState, playerState])
-			await expect(states[0]).toHaveText('active')
-			await expect(states[1]).toHaveText('idle')
-			await expect(states[2]).toHaveText('idle')
+		states = await Promise.all([sketchState, canvasState, playerState])
+		await expect(states[0]).toHaveText('active')
+		await expect(states[1]).toHaveText('idle')
+		await expect(states[2]).toHaveText('idle')
 
-			if (hasControls) {
-				await expect(controlsState).toHaveText('hidden')
-			}
-		})
-	}),
-)
+		if (hasControls) {
+			await expect(controlsState).toHaveText('hidden')
+		}
+	})
+})

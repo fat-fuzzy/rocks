@@ -9,21 +9,16 @@ test('has title', async ({page}) => {
 	await expect(page).toHaveTitle(/Fat Fuzzy Play/)
 })
 
-await Promise.all(
-	sketches.map((sketch) => {
-		test(`"${sketch.title}" sketch page navigation OK`, async ({page}) => {
-			// Click the get started link.
-			await page.goto('/')
-			await page
-				.getByLabel('Nav')
-				.getByRole('link', {name: sketch.title})
-				.click()
+sketches.map((sketch) => {
+	test(`"${sketch.title}" sketch page navigation OK`, async ({page}) => {
+		// Click the get started link.
+		await page.goto('/')
+		await page.getByLabel('Nav').getByRole('link', {name: sketch.title}).click()
 
-			// Expects page to have a heading with the name of Installation.
-			await expect(page.getByRole('heading', {name: 'Play'})).toBeVisible()
-			await expect(
-				page.getByRole('heading', {name: ` ❤︎ ${sketch.title}`}),
-			).toBeVisible()
-		})
-	}),
-)
+		// Expects page to have a heading with the name of Installation.
+		await expect(page.getByRole('heading', {name: 'Play'})).toBeVisible()
+		await expect(
+			page.getByRole('heading', {name: ` ❤︎ ${sketch.title}`}),
+		).toBeVisible()
+	})
+})
