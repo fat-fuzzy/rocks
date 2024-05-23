@@ -66,6 +66,7 @@
 
 	let frame: number
 	let time: number
+	let resetEvent = $state(0)
 
 	let currentAsset = $derived(
 		store.state.canvas === CanvasState.idle && asset
@@ -132,6 +133,7 @@
 	function reset() {
 		pause()
 		store.feedback.canvas = []
+		resetEvent = Math.random() !== resetEvent ? resetEvent + 1 : resetEvent - 1 // this seems silly but it works
 		store.updateFilters(DEFAULT_FILTERS, ControlsEvent.update)
 	}
 
@@ -205,9 +207,8 @@
 
 	function updateFilters(filters: Filters) {
 		scene.update({...context, filters})
-		store.update(ControlsEvent.update)
 		if (meta.controls.includes('texture')) {
-			play()
+			render()
 		}
 		store.update(ControlsEvent.update)
 	}
@@ -285,13 +286,15 @@
 								{context}
 							/>
 						{:else if meta.controls.includes('texture')}
-							<TextureControls
-								id={`${id}-texture-controls`}
-								channels={meta.filters?.channels}
-								blur={meta.filters?.blur}
-								convolutions={meta.filters?.convolutions}
-								onupdate={updateFilters}
-							/>
+							{#key resetEvent}
+								<TextureControls
+									id={`${id}-texture-controls`}
+									channels={meta.filters?.channels}
+									blur={meta.filters?.blur}
+									convolutions={meta.filters?.convolutions}
+									onupdate={updateFilters}
+								/>
+							{/key}
 						{/if}
 					</div>
 				{/if}
