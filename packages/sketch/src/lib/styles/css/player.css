@@ -1,5 +1,10 @@
 menu > li {
 	height: 100%;
-  width: auto;
-  aspect-ratio: 1/1;
+	width: auto;
+	aspect-ratio: 1/1;
+	padding-block: var(--border-width-lg);
+}
+
+menu > .group {
+	justify-content: space-between;
 }
