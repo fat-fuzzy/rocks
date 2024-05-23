@@ -4,12 +4,10 @@ import lib from '@fat-fuzzy/lib'
 const sketches = lib.gfx.sketches.map((sketch) => sketch.meta)
 let previousEvent
 let currentEvent
-let events = []
 let sketchState
 let canvasState
 let playerState
 let controlsState
-let states = []
 /**
  * Test the Player's Clear button works as expected for each sketch.
  */
@@ -48,10 +46,9 @@ sketches.map((sketch) => {
 			.getByTestId('debug-table')
 			.getByTestId(`debug-state-controls`)
 
-		states = await Promise.all([sketchState, canvasState, playerState])
-		await expect(states[0]).toHaveText('active')
-		await expect(states[1]).toHaveText('idle')
-		await expect(states[2]).toHaveText('idle')
+		await expect(sketchState).toHaveText('active')
+		await expect(canvasState).toHaveText('idle')
+		await expect(playerState).toHaveText('idle')
 		if (hasControls) {
 			await expect(controlsState).toHaveText('hidden')
 		}
@@ -69,14 +66,12 @@ sketches.map((sketch) => {
 		// Clear the canvas
 		await page.getByRole('button', {name: '🐳 Clear'}).click()
 
-		events = await Promise.all([previousEvent, currentEvent])
-		await expect(events[0]).toHaveText('play')
-		await expect(events[1]).toHaveText('clear')
+		await expect(previousEvent).toHaveText('play')
+		await expect(currentEvent).toHaveText('clear')
 
-		states = await Promise.all([sketchState, canvasState, playerState])
-		await expect(states[0]).toHaveText('active')
-		await expect(states[1]).toHaveText('playing')
-		await expect(states[2]).toHaveText('playing')
+		await expect(sketchState).toHaveText('active')
+		await expect(canvasState).toHaveText('playing')
+		await expect(playerState).toHaveText('playing')
 		if (hasControls) {
 			await expect(controlsState).toHaveText('pristine')
 		}
@@ -84,28 +79,24 @@ sketches.map((sketch) => {
 		// Pause the animation
 		await page.getByRole('button', {name: '🪷 Pause'}).click()
 
-		events = await Promise.all([previousEvent, currentEvent])
-		await expect(events[0]).toHaveText('clear')
-		await expect(events[1]).toHaveText('pause')
+		await expect(previousEvent).toHaveText('clear')
+		await expect(currentEvent).toHaveText('pause')
 
-		states = await Promise.all([sketchState, canvasState, playerState])
-		await expect(states[0]).toHaveText('active')
-		await expect(states[1]).toHaveText('paused')
-		await expect(states[2]).toHaveText('paused')
+		await expect(sketchState).toHaveText('active')
+		await expect(canvasState).toHaveText('paused')
+		await expect(playerState).toHaveText('paused')
 		if (hasControls) {
 			await expect(controlsState).toHaveText('pristine')
 		}
 
 		// Clear the canvas
 		await page.getByRole('button', {name: 'clear'}).click()
-		events = await Promise.all([previousEvent, currentEvent])
-		await expect(events[0]).toHaveText('pause')
-		await expect(events[1]).toHaveText('clear')
+		await expect(previousEvent).toHaveText('pause')
+		await expect(currentEvent).toHaveText('clear')
 
-		states = await Promise.all([sketchState, canvasState, playerState])
-		await expect(states[0]).toHaveText('active')
-		await expect(states[1]).toHaveText('paused')
-		await expect(states[2]).toHaveText('paused')
+		await expect(sketchState).toHaveText('active')
+		await expect(canvasState).toHaveText('paused')
+		await expect(playerState).toHaveText('paused')
 		if (hasControls) {
 			await expect(controlsState).toHaveText('pristine')
 		}

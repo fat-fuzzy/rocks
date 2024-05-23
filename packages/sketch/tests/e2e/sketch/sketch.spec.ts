@@ -2,19 +2,12 @@ import {expect, test} from '@playwright/test'
 import lib from '@fat-fuzzy/lib'
 
 const sketches = lib.gfx.sketches.map((sketch) => sketch.meta)
-let debugTable
 let currentEvent
 let previousEvent
-let events = []
 let sketchState
 let canvasState
 let playerState
 let controlsState
-let states = []
-let sketchActions
-let canvasActions
-let playerActions
-let controlsActions
 
 /**
  * Test the Player Play button works as expected for each sketch.
@@ -42,9 +35,8 @@ sketches.map((sketch) => {
 			.getByTestId(`debug-event-sketch`)
 			.getByTestId(`current-event`)
 
-		events = await Promise.all([previousEvent, currentEvent])
-		await expect(events[0]).toHaveText('load')
-		await expect(events[1]).toHaveText('loadOk')
+		await expect(previousEvent).toHaveText('load')
+		await expect(currentEvent).toHaveText('loadOk')
 
 		sketchState = page
 			.getByTestId('debug-table')
@@ -62,10 +54,9 @@ sketches.map((sketch) => {
 			.getByTestId('debug-table')
 			.getByTestId(`debug-state-controls`)
 
-		states = await Promise.all([sketchState, canvasState, playerState])
-		await expect(states[0]).toHaveText('active')
-		await expect(states[1]).toHaveText('idle')
-		await expect(states[2]).toHaveText('idle')
+		await expect(sketchState).toHaveText('active')
+		await expect(canvasState).toHaveText('idle')
+		await expect(playerState).toHaveText('idle')
 
 		if (hasControls) {
 			await expect(controlsState).toHaveText('hidden')
