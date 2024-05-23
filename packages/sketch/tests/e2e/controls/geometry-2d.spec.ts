@@ -10,6 +10,6 @@ import {expect, test} from '@playwright/test'
 //   - `pristine` on `clear`, then as above
 // - `hidden` on `stop`, then as above
 
-test('Geometry 2D controls work as expected', async ({page}) => {
+test.skip('Geometry 2D controls work as expected', async ({page}) => {
 	// TODO: Load a geometry-2d Sketch and check that it loads OK
 })

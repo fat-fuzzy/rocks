@@ -58,6 +58,7 @@ await Promise.all(
 			playerState = page
 				.getByTestId('debug-table')
 				.getByTestId(`debug-state-player`)
+
 			controlsState = page
 				.getByTestId('debug-table')
 				.getByTestId(`debug-state-controls`)
