@@ -7,7 +7,7 @@
 	export let layout = ''
 	export let size = 'md'
 	export let color = 'primary:100'
-	export let align = 'start'
+	export let align = ''
 	export let id = ''
 	export let depth = 0
 	export let container = 'burrito'
@@ -15,6 +15,7 @@
 
 	// TODO: clean classes output
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
+	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
 </script>
 
@@ -22,7 +23,7 @@
 	{#each items as item}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
-		{@const itemClass = `relleno ${asset} align:${align}`}
+		{@const itemClass = `relleno ${asset} ${alignClass}`}
 		<li
 			aria-current={$page.url.pathname === format.formatHref(path, slug)
 				? 'page'

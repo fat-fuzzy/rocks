@@ -8,12 +8,20 @@
 	export let color = ''
 	export let background = ''
 	export let container = 'card'
-	export let align = 'start'
+	export let align = ''
 	export let items: any[] = []
 
 	$: navClasses = `${color} ${container}:${size} bg:${background}`
 </script>
 
 <nav {id} class={navClasses} aria-label={title}>
-	<LinkList id={`${id}-${path}`} {items} {path} depth={0} {layout} {size} {align} />
+	<LinkList
+		id={`${id}-${path}`}
+		{items}
+		{path}
+		depth={0}
+		{layout}
+		{size}
+		{align}
+	/>
 </nav>
