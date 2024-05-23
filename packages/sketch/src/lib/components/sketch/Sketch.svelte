@@ -133,7 +133,8 @@
 	function reset() {
 		pause()
 		store.feedback.canvas = []
-		resetEvent = Math.random() !== resetEvent ? resetEvent + 1 : resetEvent - 1 // this seems silly but it works
+		let random = Math.random()
+		resetEvent = random !== resetEvent ? random : random - 1
 		store.updateFilters(DEFAULT_FILTERS, ControlsEvent.update)
 	}
 

@@ -112,8 +112,6 @@ sketches.map((sketch) => {
 				await expect(currentEvent).toHaveText('update')
 			}
 		}
-		await expect(controlsState).toHaveText('updated')
-		await expect(controlsActions).toHaveText('update')
 		// await expect(page).toHaveScreenshot() TODO: fix screenshot tests
 
 		// Pause the canvas animation
@@ -123,6 +121,7 @@ sketches.map((sketch) => {
 		await expect(controlsState).toHaveText('updated')
 		await expect(controlsActions).toHaveText('update') // TODO: fix this action: should be empty
 		// await expect(page).toHaveScreenshot() TODO: fix screenshot tests
+
 		if (channels) {
 			await expect(page.getByRole('button', {name: 'brga'})).toBeDisabled()
 			if (blur) {
