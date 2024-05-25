@@ -1,28 +1,47 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte'
 	import type {Meta} from '$lib/api/props/types'
 
 	import {enhance} from '$app/forms'
-	import StyleFamily from '$lib/api/styles/StyleFamily.svelte'
+	import StyleFamily from '$lib/api/components/StyleFamily.svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {Button} = blocks
 
-	export let categories: string[]
-	export let path = ''
-	export let method = 'POST'
-	export let formaction = 'updateStyles'
-	export let actionPath: string | undefined
-	export let redirect: string | undefined
-	export let meta: Meta | undefined = undefined
+	type Props = {
+		path?: string
+		categories: string[]
+		method?: string
+		actionPath?: string
+		redirect?: string
+		formaction?: string
+		meta?: Meta
+		children?: Snippet
+	}
+
+	let {
+		path,
+		categories,
+		actionPath,
+		redirect,
+		method = 'POST',
+		formaction = 'updateStyles',
+		meta,
+		children
+	}: Props = $props()
 	// export let reset = 'reset'
 
 	let apiLayout = 'l:switcher:lg nowrap grow align:center'
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
-	$: action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	$: frameClass =
-		categories && categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin'
+	let action = $state(
+		formaction && redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction,
+	)
+	let frameClass = $derived(
+		categories && categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin',
+	)
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
@@ -66,6 +85,7 @@
 			<div class={frameClass}>
 				<Button
 					id={`submit.${path}`}
+					name={`submit.${path}`}
 					title="Apply styles"
 					type="submit"
 					size="lg"
@@ -76,7 +96,9 @@
 				/>
 			</div>
 		{:then}
-			<slot />
+			{#if children}
+				{@render children()}
+			{/if}
 		{/await}
 	</form>
 {/if}

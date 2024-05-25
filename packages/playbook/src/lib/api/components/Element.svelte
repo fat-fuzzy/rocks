@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StyleTree} from './types'
-	import type {StylesApi} from '$lib/api/styles'
+	import type {StylesApi} from '$lib/api/components/styles.api'
+	import type {StyleTree} from '$lib/api/components/styles.types'
 	import type {Meta} from '$lib/api/props/types'
 
 	import {onDestroy, getContext} from 'svelte'
@@ -16,30 +16,40 @@
 	import Recipe from './Recipe.svelte'
 	import Graphics from './Graphics.svelte'
 
-	export let actionPath: string | undefined
-	export let redirect: string | undefined = undefined
+	type Props = {
+		title: string
+		depth?: number
+		isPage?: boolean
+		path?: string
+		component: ComponentType
+		actionPath?: string
+		redirect?: string
+		category?: string
+		color?: string
+		meta: Meta
+	}
 
-	export let title = ''
-	export let depth = 0
-	export let isPage = false
-	export let path = ''
-	export let component: ComponentType
-	export let category = ''
-	export let color = 'primary:light'
-	export let meta: Meta
+	let {
+		title,
+		isPage = false,
+		depth = 0,
+		path = '',
+		component,
+		actionPath,
+		redirect,
+		category = '',
+		color = 'primary:light',
+		meta,
+	}: Props = $props()
 
-	let ApiElement: {[category: string]: ComponentType} = {
+	// TODO: fix types
+	let ApiElement: {[category: string]: any} = {
 		tokens: Token,
 		blocks: Block,
 		layouts: Layout,
 		recipes: Recipe,
 		graphics: Graphics,
 	}
-
-	let contrast = ''
-	let container = ''
-	let size = '' // Container size
-	let status = ''
 
 	const stylesApi: StylesApi = getContext('stylesApi')
 	let styles: StyleTree = stylesApi.getStyleTree()
@@ -58,19 +68,21 @@
 	]
 	// App settings (user controlled)
 	//== App settings (user controlled)
-	$: brightness = settings.app.brightness
-	$: contrast = settings.app.contrast || contrast
+	let brightness = $derived(settings.app.brightness)
+	let contrast = $derived(settings.app.contrast || '')
 
 	//== Layout settings (user controlled)
 	// Container options
 	// - [container + size] work together
-	$: container = styles.layouts?.container.container ?? container
-	$: size = styles.layouts?.container.size ?? size
-	$: status = styles.blocks?.element.status ?? status
+	let container = $derived(styles.layouts?.container.container ?? '')
+	let size = $derived(styles.layouts?.container.size ?? '') // Container size
+	let status = $derived(styles.blocks?.element.status ?? '')
 
-	$: containerClasses = `l:${container}:${size} content`
-	$: fixtures = getFixtures({category, component: title})
-	$: categories = meta.props_style ? Object.keys(meta.props_style) : undefined
+	let containerClasses = $derived(`l:${container}:${size} content`)
+	let fixtures = $derived(getFixtures({category, component: title}))
+	let categories = $derived(
+		meta.props_style ? Object.keys(meta.props_style) : undefined,
+	)
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -82,7 +94,8 @@
 		<section class={`l:main card:xl inset ${brightness} bg:${contrast} `}>
 			<div class={containerClasses}>
 				{#if fixtures?.status}
-					{@const currentProps = fixtures.status.find((p) => p.case === status) || {}}
+					{@const currentProps =
+						fixtures.status.find((p) => p.case === status) || {}}
 					<svelte:component
 						this={ApiElement[category]}
 						{isPage}
@@ -147,7 +160,8 @@
 		</header>
 		<div class="content">
 			{#if fixtures?.status}
-				{@const currentProps = fixtures.status.find((p) => p.case === status) || {}}
+				{@const currentProps =
+					fixtures.status.find((p) => p.case === status) || {}}
 				<svelte:component
 					this={ApiElement[category]}
 					{isPage}

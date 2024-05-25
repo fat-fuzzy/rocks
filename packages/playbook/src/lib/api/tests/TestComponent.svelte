@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {SvelteComponent} from 'svelte'
-	import Element from '$lib/api/styles/Element.svelte'
+	import Element from '$lib/api/components/Element.svelte'
 	export let component: new (...args: any[]) => SvelteComponent
 	type TestComponent = $$Generic<SvelteComponent>
 

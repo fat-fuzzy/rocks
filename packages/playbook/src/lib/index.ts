@@ -4,12 +4,12 @@
  * Styles Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
-import Api from '$lib/api/styles/Api.svelte'
-import Token from '$lib/api/styles/Token.svelte'
-import Element from '$lib/api/styles/Element.svelte'
-import Collection from '$lib/api/styles/Collection.svelte'
+import Api from '$lib/api/components/Api.svelte'
+import Token from '$lib/api/components/Token.svelte'
+import Element from '$lib/api/components/Element.svelte'
+import Collection from '$lib/api/components/Collection.svelte'
 
-import * as stylesApi from '$lib/api/styles'
+import * as stylesApi from '$lib/api/components/styles.api'
 import * as props from '$lib/api/props/'
 import * as fixturesApi from '$lib/api/fixtures/js/'
 
@@ -39,7 +39,7 @@ const api = {
 	stylesApi,
 	fixturesApi,
 	props,
-	form
+	form,
 }
 
 const stores = {

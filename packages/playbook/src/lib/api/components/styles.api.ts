@@ -9,7 +9,7 @@ import type {
 	StyleCategory,
 	StyleInputGroup,
 	StyleFamily,
-} from './types'
+} from './styles.types'
 
 import {getFamily} from '$lib/api/props/props-style'
 
@@ -70,19 +70,29 @@ export class StylesApi {
 		return options
 	}
 
-	filterInputGroups(familyOptions: StyleFamily, filterItems: string[]): StyleInputGroup[] {
-		const options: StyleInputGroup[] = filterItems.reduce((inputs: StyleInputGroup[], input) => {
-			const familyInput: StyleInputGroup | undefined = familyOptions.itemsMap.get(input)
-			if (familyInput !== undefined) {
-				return [...inputs, familyInput]
-			}
-			return inputs
-		}, [])
+	filterInputGroups(
+		familyOptions: StyleFamily,
+		filterItems: string[],
+	): StyleInputGroup[] {
+		const options: StyleInputGroup[] = filterItems.reduce(
+			(inputs: StyleInputGroup[], input) => {
+				const familyInput: StyleInputGroup | undefined =
+					familyOptions.itemsMap.get(input)
+				if (familyInput !== undefined) {
+					return [...inputs, familyInput]
+				}
+				return inputs
+			},
+			[],
+		)
 
 		return options
 	}
 
-	getFamilyOptions(family: string, category: StyleCategory): StyleFamily | undefined {
+	getFamilyOptions(
+		family: string,
+		category: StyleCategory,
+	): StyleFamily | undefined {
 		switch (family) {
 			case 'settings':
 				return category.settings
@@ -126,7 +136,8 @@ export class StylesApi {
 		const tokensStylesTree = this.tokens?.element?.getStyleTree() || {}
 		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
 		const layoutsLayoutStylesTree = this.layouts?.layout?.getStyleTree() || {}
-		const layoutsContainerStylesTree = this.layouts?.container?.getStyleTree() || {}
+		const layoutsContainerStylesTree =
+			this.layouts?.container?.getStyleTree() || {}
 
 		return {
 			tokens: tokensStylesTree,

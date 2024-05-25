@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StyleTree} from './types'
 	import type {Meta} from '$lib/api/props/types'
-	import type {StylesApi} from '$lib/api/styles'
+	import type {StylesApi} from '$lib/api/components/styles.api'
+	import type {StyleTree} from '$lib/api/components/styles.types'
 
 	import {onDestroy, getContext} from 'svelte'
 	import {blocks, recipes} from '@fat-fuzzy/ui-s5'

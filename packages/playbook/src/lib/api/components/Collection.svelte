@@ -1,59 +1,61 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '$lib/api/styles/'
-	import type {StyleTree} from '$lib/api/styles/types'
+	import type {ComponentType, Snippet} from 'svelte'
+	import type {StylesApi} from '$lib/api/components/styles.api'
 	import type {Markdowns} from '$lib/api/props/types'
 
-	import {onDestroy, getContext} from 'svelte'
+	import {getContext} from 'svelte'
 	import {page} from '$app/stores'
 
 	import {getCategoryMarkdowns, getElementMeta} from '$lib/api/props'
-	import * as ui from '$stores/ui'
 
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 
-	export let settings: any = ui
-	export let actionPath: string | undefined
-	export let redirect: string | undefined = undefined
+	type Props = {
+		depth?: number
+		isPage?: boolean
+		path?: string
+		components: {[name: string]: ComponentType}
+		actionPath?: string
+		redirect?: string
+		category?: string
+		color?: string
+		size?: string
+		layout?: string
+		settings: any
+		markdowns: Markdowns
+		content: {html: Snippet}
+	}
 
-	export let content = {html: ''}
-	export let depth = 0
-	export let path = $page.url.pathname
-
-	export let layout = 'grid'
-	export let size = 'xs'
-	export let color = 'primary:light'
-	export let isPage = false
-	export let components: {[name: string]: ComponentType}
-	export let category = $page.params.category
-	export let markdowns: Markdowns
+	let {
+		isPage = false,
+		depth = 0,
+		path = $page.url.pathname,
+		components,
+		actionPath,
+		redirect,
+		size = 'xs',
+		color = 'primary:light',
+		layout = 'grid',
+		category = $page.params.category,
+		markdowns,
+		content,
+	}: Props = $props()
 
 	const multipleCategories = ['graphics', 'recipes']
-	const stylesApi: StylesApi = getContext('stylesApi')
-	let background = ''
-	let styles: StyleTree = stylesApi.getStyleTree()
+	const stylesApi: StylesApi = $state(getContext('stylesApi'))
 
-	const stores = [
-		settings.styles.subscribe((value: StyleTree) => {
-			if (value) {
-				styles = stylesApi.getStyleTree()
-			}
-		}),
-	]
-
-	$: componentNames = Object.keys(components)
-	$: titleDepth = Number(depth) + 1
-	$: background = background ? background : styles.app?.settings.contrast
-	$: layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
-	$: categoryMarkdowns = getCategoryMarkdowns(category, markdowns)
-	$: categories = multipleCategories.includes(category)
-		? ['blocks', 'layouts', 'shared']
-		: [category]
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
+	let componentNames = $state(Object.keys(components))
+	let titleDepth = $derived(Number(depth) + 1)
+	let layoutClass = $derived(
+		category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`,
+	)
+	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
+	let categories = $derived(
+		multipleCategories.includes(category)
+			? ['blocks', 'layouts', 'shared']
+			: [category],
+	)
 </script>
 
 {#if isPage}
@@ -98,7 +100,7 @@
 		</svelte:element>
 
 		{#if content}
-			{@html content.html}
+			{@render content.html()}
 		{:else}
 			<p class={`font:xl`}>🐰</p>
 			<p class={`font:md`}>Coming soon!</p>

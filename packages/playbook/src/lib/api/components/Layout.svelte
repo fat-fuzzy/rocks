@@ -1,32 +1,27 @@
 <script lang="ts">
 	import type {ComponentType} from 'svelte'
-	import type {StyleTree} from './types'
-	import type {StylesApi} from '$lib/api/styles'
+	import type {StylesApi} from '$lib/api/components/styles.api'
+	import type {StyleTree} from '$lib/api/components/styles.types'
 
 	import {onDestroy, getContext} from 'svelte'
 
 	import * as ui from '$stores/ui'
 	import {getFixtures} from '$lib/api/fixtures/js'
 
-	export let title = ''
-	export let isPage = false
-	export let component: ComponentType
-	export let props: any
+	type Props = {
+		title: string
+		isPage?: boolean
+		component: ComponentType
+		props: any
+	}
 
-	let color = ''
-	let variant = ''
-	let size = '' // element's own size
-	let threshold = '' // element's own threshold
-	let breakpoint = '' // element's own breakpoint
-	let background = ''
-	let content = ''
-	let sideContent = ''
-	let mainContent = ''
+	let {title, isPage = false, component, props}: Props = $props()
+
 	let category = 'layouts'
 
 	const stylesApi: StylesApi = getContext('stylesApi')
-	let styles: StyleTree = stylesApi.getStyleTree()
-	let settings = styles.app
+	let styles: StyleTree = $state(stylesApi.getStyleTree())
+	let settings = $state(styles.app)
 
 	const stores = [
 		ui.app.subscribe((value) => {
@@ -42,22 +37,22 @@
 	]
 
 	// App options
-	$: background = settings.app.contrast ?? background
+	let background = $derived(settings.app.contrast ?? '')
 	// Block options
-	$: size = styles.blocks?.element?.size ?? size
-	$: color = styles.blocks?.element?.color ?? color
-	$: variant = styles.blocks?.element?.variant ?? variant
+	let size = $derived(styles.blocks?.element?.size ?? '') // element's own size
+	let color = $derived(styles.blocks?.element?.color ?? '')
+	let variant = $derived(styles.blocks?.element?.variant ?? '')
 	// Layout options
-	$: breakpoint = styles.layouts?.layout.breakpoint ?? breakpoint
-	$: threshold = styles.layouts?.layout.threshold ?? threshold
+	let breakpoint = $derived(styles.layouts?.layout.breakpoint ?? '') // element's own breakpoint
+	let threshold = $derived(styles.layouts?.layout.threshold ?? '') // element's own threshold
 	// Content options
-	// $: content = styles.layouts?.content.content ?? 'card'
-	// $: sideContent = styles.layouts?.content.side ?? 'card'
-	// $: mainContent = styles.layouts?.content.main ?? 'text'
-	$: content = 'card'
-	$: sideContent = 'card'
-	$: mainContent = 'text'
-	$: contentStyles = `card:${size} box ${size} bg:highlight:lightest`
+	// let content = $derived(styles.layouts?.content.content ?? 'card')
+	// let sideContent = $derived(styles.layouts?.content.side ?? 'card')
+	// let mainContent = $derived(styles.layouts?.content.main ?? 'text')
+	let content = 'card'
+	let sideContent = 'card'
+	let mainContent = 'text'
+	let contentStyles = $derived(`card:${size} box ${size} bg:highlight:lightest`)
 
 	onDestroy(() => {
 		stores.forEach((unsubscribe) => unsubscribe())
@@ -133,7 +128,13 @@
 {:else}
 	{@const fixtureProps = getFixtures({category, component: title})}
 	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {size} {background} {...props}>
+		<svelte:component
+			this={component}
+			id={title}
+			{size}
+			{background}
+			{...props}
+		>
 			<div slot="side">
 				{#each fixtureProps.card as item}
 					<div class={contentStyles}>{item}</div>

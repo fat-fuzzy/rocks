@@ -1,9 +1,14 @@
-import type {StyleTree} from '$lib/api/types'
+import type {StyleTree} from '$lib/api/components/styles.types'
 
 import constants from '$lib/types/constants'
-import {initStyles} from '$lib/api/styles'
+import {initStyles} from '$lib/api/components/styles.api'
 
-const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, TRANSITION_REVEAL, NUMBER_TO_SIZE} = constants
+const {
+	DEFAULT_REVEAL_STATE,
+	DEFAULT_APP_SETTINGS,
+	TRANSITION_REVEAL,
+	NUMBER_TO_SIZE,
+} = constants
 
 export class DsStylesUpdate {
 	api
