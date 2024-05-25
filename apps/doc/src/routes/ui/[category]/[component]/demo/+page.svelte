@@ -1,21 +1,12 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {
-		headless,
-		tokens,
-		blocks,
-		layouts,
-		recipes,
-		constants,
-	} from '@fat-fuzzy/ui-s5'
-	import {api, stores} from '@fat-fuzzy/playbook'
+	import {headless, tokens, blocks, layouts, recipes} from '@fat-fuzzy/ui-s5'
+	import {api} from '@fat-fuzzy/playbook'
 
 	const {Head} = headless
 	const {Element, Api} = api
 	const actionPath = '/ui'
-	const {DEFAULT_TABS} = constants
 
 	let categoryItems: {[name: string]: any} = {
 		tokens: tokens,
@@ -23,17 +14,6 @@
 		layouts: layouts,
 		recipes: recipes,
 	}
-
-	let currentTabs = stores.ui.currentTabs
-	let currentTab = $currentTabs.ui || DEFAULT_TABS[0]
-
-	const localStores = [
-		stores.ui.currentTabs.subscribe((value) => {
-			if (value) {
-				currentTab = value.ui
-			}
-		}),
-	]
 
 	let category = $state($page.params.category)
 	let title = $state($page.params.component)
@@ -46,11 +26,7 @@
 	let content = markdowns.find(({meta}) => meta.title === title) || {
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
-	let headerClass = `l:grid:header:${currentTab.value} bp:xs bg:polar`
-
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
-	})
+	let headerClass = `l:grid:header:demo bp:xs bg:polar`
 </script>
 
 <Head {title} page="UI" description={`${title} Doc`} />
@@ -61,6 +37,7 @@
 	<div class="context">
 		<Api
 			categories={['app']}
+			meta={content.meta}
 			{path}
 			{actionPath}
 			redirect={$page.url.pathname}

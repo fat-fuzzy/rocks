@@ -17,7 +17,7 @@
 		{category: 'recipes', items: recipes},
 	]
 	const path = $page.url.pathname
-	let markdowns = $state($page.data.markdowns)
+	let markdowns = $derived($page.data.markdowns)
 	let content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
 	let headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
@@ -31,15 +31,20 @@
 <section class="card:md scroll:y">
 	<div class="l:text:lg snap:start">{@html content.html}</div>
 	{#each components as { category, items }}
+		{@const meta = markdowns.categories.find(
+			({meta}) => meta.slug === category,
+		).meta}
 		<Collection
 			depth={1}
 			isPage={false}
 			path={`${path}/${category}`}
 			components={items}
+			{meta}
 			{category}
-			content={markdowns.categories.find(({meta}) => meta.slug === category)}
 			{markdowns}
 			{actionPath}
-		/>
+		>
+			{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
+		</Collection>
 	{/each}
 </section>

@@ -1,23 +1,10 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {headless, constants} from '@fat-fuzzy/ui-s5'
-	import {api, stores} from '@fat-fuzzy/playbook'
+	import {headless} from '@fat-fuzzy/ui-s5'
+	import {api} from '@fat-fuzzy/playbook'
 
 	const {Head} = headless
-	const {DEFAULT_TABS} = constants
-
-	let currentTabs = stores.ui.currentTabs
-	let currentTab = $currentTabs.ui || DEFAULT_TABS[0]
-
-	const localStores = [
-		stores.ui.currentTabs.subscribe((value) => {
-			if (value) {
-				currentTab = value.ui
-			}
-		}),
-	]
 
 	let category = $page.params.category
 	let title = $page.params.component
@@ -28,12 +15,8 @@
 	let content = markdowns.find(({meta}) => meta.title === title) || {
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
-	let headerClass = `l:grid:header:${currentTab.value} bp:xs bg:polar`
+	let headerClass = `l:grid:header:doc bp:xs bg:polar`
 	let props = api.props.getElementProps(content.meta)
-
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 <Head {title} page="UI" description={`${title} Doc`} />

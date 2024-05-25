@@ -1,47 +1,13 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {
-		headless,
-		tokens,
-		blocks,
-		layouts,
-		recipes,
-		constants,
-	} from '@fat-fuzzy/ui-s5'
-	import {stores} from '@fat-fuzzy/playbook'
+	import {headless} from '@fat-fuzzy/ui-s5'
 
 	const {Head} = headless
-	const {DEFAULT_TABS} = constants
 
-	let categoryItems: {[name: string]: any} = {
-		tokens: tokens,
-		blocks: blocks,
-		layouts: layouts,
-		recipes: recipes,
-	}
-
-	let currentTabs = stores.ui.currentTabs
-	let currentTab = $currentTabs.ui || DEFAULT_TABS[0]
-
-	const localStores = [
-		stores.ui.currentTabs.subscribe((value) => {
-			if (value) {
-				currentTab = value.ui
-			}
-		}),
-	]
-
-	let category = $page.params.category
 	let title = $page.params.component
-	let Component = categoryItems[category][title]
 	let path = $page.url.pathname
-	let headerClass = `l:grid:header:${currentTab.value} bp:xs bg:polar`
-
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
-	})
+	let headerClass = `bp:xs bg:polar`
 </script>
 
 <Head {title} page="UI" description={`${title} Doc`} />

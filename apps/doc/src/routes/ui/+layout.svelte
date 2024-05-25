@@ -9,11 +9,13 @@
 		stores,
 		constants,
 	} from '@fat-fuzzy/ui-s5'
-	import {api, stores as playbookStores} from '@fat-fuzzy/playbook'
+	import {api} from '@fat-fuzzy/playbook'
 
 	const {RevealNav} = recipes
+	const {PlaybookStore} = api
 
 	let {children} = $props()
+	let playbookStore = new PlaybookStore()
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -26,23 +28,20 @@
 	const recipeNames = Object.keys(recipes).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
-	let sidebarReveal: {[key: string]: string} = $state({reveal: ''})
 	let stylesApi = api.stylesApi.initStyles()
+	let sidebarReveal: {[key: string]: string} = $state({reveal: ''})
 	setContext('stylesApi', stylesApi)
+	setContext('playbookStore', playbookStore)
 	setContext('styles', stylesApi.getStyleTree())
 
 	const {styles, context, ui} = $page.data
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = constants
 
-	playbookStores.ui.styles.set(styles)
-	playbookStores.ui.reveal.set(context)
-	playbookStores.ui.navReveal.set(ui?.navReveal || DEFAULT_NAV_REVEAL_STATE)
-	playbookStores.ui.settingsReveal.set(
-		ui?.settingsReveal || DEFAULT_REVEAL_STATE,
-	)
-	playbookStores.ui.sidebarReveal.set(
-		ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE,
-	)
+	playbookStore.styles = styles
+	playbookStore.reveal = context
+	playbookStore.navReveal = ui?.navReveal || DEFAULT_NAV_REVEAL_STATE
+	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
+	playbookStore.sidebarReveal = ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE
 
 	const localStores = [
 		stores.settings.sidebarReveal.subscribe((value) => {

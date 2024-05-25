@@ -18,11 +18,16 @@
 
 	let category = $state($page.params.category)
 	let markdowns = $state($page.data.markdowns)
-	let items = $state(
+	let meta = $derived(
+		markdowns.categories.find(({meta}) => meta.slug === category).meta,
+	)
+	let items = $derived(
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
 	let path = $page.url.pathname
-	let title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
+	let title = $derived(
+		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
+	)
 	let headerClass = `l:grid:header:doc bp:xs bg:polar`
 </script>
 
@@ -33,6 +38,7 @@
 	<div class="context">
 		<Api
 			categories={['app']}
+			{meta}
 			{path}
 			{actionPath}
 			redirect={$page.url.pathname}
@@ -43,10 +49,12 @@
 	depth={1}
 	isPage={true}
 	components={items}
+	{meta}
 	{path}
 	{category}
-	content={markdowns.categories.find(({meta}) => meta.slug === category)}
 	{markdowns}
 	{actionPath}
 	redirect={$page.url.pathname}
-/>
+>
+	{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
+</Collection>
