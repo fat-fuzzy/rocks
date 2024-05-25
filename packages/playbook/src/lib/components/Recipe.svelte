@@ -1,16 +1,15 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '$lib/api/components/styles.api'
-	import type {StyleTree} from '$lib/api/components/styles.types'
+	import type {StylesApi} from '$lib/api/styles.api'
+	import type {StyleTree} from '$lib/api/styles.types'
 
-	import {onDestroy, getContext} from 'svelte'
+	import {getContext} from 'svelte'
 
-	import * as ui from '$stores/ui'
+	import * as ui from '$lib/api/store.svelte'
 
 	type Props = {
 		title: string
 		name?: string
-		component: ComponentType
+		component: any // TODO: fix types
 		props: any
 		actionPath?: string
 		redirect?: string
@@ -30,15 +29,7 @@
 	let page = ''
 
 	const stylesApi: StylesApi = getContext('stylesApi')
-	let styles: StyleTree = stylesApi.getStyleTree()
-
-	const stores = [
-		settings.styles.subscribe((value) => {
-			if (value) {
-				styles = stylesApi.getStyleTree()
-			}
-		}),
-	]
+	let styles: StyleTree = $derived(stylesApi.getStyleTree())
 
 	// Block options
 	let color = $derived(styles.blocks?.element.color ? props?.color : '')
@@ -70,10 +61,6 @@
 		settings,
 		actionPath,
 		redirect,
-	})
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
 	})
 </script>
 

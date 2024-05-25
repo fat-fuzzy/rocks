@@ -1,17 +1,15 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '$lib/api/components/styles.api'
-	import type {StyleTree} from '$lib/api/components/styles.types'
+	import {getContext} from 'svelte'
+	import type {StylesApi} from '$lib/api/styles.api'
+	import type {StyleTree} from '$lib/api/styles.types'
 
-	import {onDestroy, getContext} from 'svelte'
-
-	import * as ui from '$stores/ui'
-	import {getFixtures} from '$lib/api/fixtures/js'
+	import PlaybookStore from '$lib/api/store.svelte'
+	import {getFixtures} from '$lib/fixtures/js'
 
 	type Props = {
 		title: string
 		isPage?: boolean
-		component: ComponentType
+		component: any // TODO: fix types
 		props: any
 	}
 
@@ -20,24 +18,12 @@
 	let category = 'layouts'
 
 	const stylesApi: StylesApi = getContext('stylesApi')
-	let styles: StyleTree = $state(stylesApi.getStyleTree())
-	let settings = $state(styles.app)
-
-	const stores = [
-		ui.app.subscribe((value) => {
-			if (value) {
-				settings = {app: value}
-			}
-		}),
-		ui.styles.subscribe((value) => {
-			if (value) {
-				styles = stylesApi.getStyleTree()
-			}
-		}),
-	]
+	const playbookStore: PlaybookStore = getContext('playbookStore')
+	let styles: StyleTree = $derived(stylesApi.getStyleTree())
+	let settings = $derived(playbookStore.app)
 
 	// App options
-	let background = $derived(settings.app.contrast ?? '')
+	let background = $derived(settings.contrast ?? '')
 	// Block options
 	let size = $derived(styles.blocks?.element?.size ?? '') // element's own size
 	let color = $derived(styles.blocks?.element?.color ?? '')
@@ -53,10 +39,6 @@
 	let sideContent = 'card'
 	let mainContent = 'text'
 	let contentStyles = $derived(`card:${size} box ${size} bg:highlight:lightest`)
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 {#if isPage}

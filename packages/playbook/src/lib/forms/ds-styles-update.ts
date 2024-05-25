@@ -1,7 +1,7 @@
-import type {StyleTree} from '$lib/api/components/styles.types'
+import type {StyleTree} from '$lib/api/styles.types'
 
 import constants from '$lib/types/constants'
-import {initStyles} from '$lib/api/components/styles.api'
+import {initStyles} from '$lib/api/styles.api'
 
 const {
 	DEFAULT_REVEAL_STATE,

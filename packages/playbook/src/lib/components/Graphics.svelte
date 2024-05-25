@@ -1,13 +1,12 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '$lib/api/components/styles.api'
-	import type {StyleTree} from '$lib/api/components/styles.types'
+	import type {StylesApi} from '$lib/api/styles.api'
+	import type {StyleTree} from '$lib/api/styles.types'
 
 	import {onDestroy, getContext} from 'svelte'
 
 	import lib from '@fat-fuzzy/lib'
-	import {sketches} from '$lib/api/fixtures/js/sketches'
-	import * as ui from '$stores/ui'
+	import {sketches} from '$lib/fixtures/js/sketches'
+	import * as ui from '$lib/api/store.svelte'
 	import constants from '$lib/types/constants'
 
 	const {TRANSITION_CONTRAST} = constants
@@ -20,7 +19,7 @@
 	export let title = ''
 	export let name = title
 	let currentSketch = scenes[title] ? scenes[title] : '004'
-	export let component: ComponentType
+	export let component: any
 	export let props: any
 	export let scene = lib.gfx.sketches[currentSketch]
 	export let path = ''
@@ -42,7 +41,7 @@
 	let page = ''
 
 	const stylesApi: StylesApi = getContext('stylesApi')
-	let styles: StyleTree = stylesApi.getStyleTree()
+	let styles: StyleTree = $derived(stylesApi.getStyleTree())
 
 	const stores = [
 		settings.styles.subscribe((value) => {

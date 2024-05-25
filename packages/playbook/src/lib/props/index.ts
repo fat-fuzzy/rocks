@@ -1,5 +1,5 @@
 import type {Meta, Markdown, Markdowns, StyleProps} from './types'
-import {getFamily} from '$lib/api/props/props-style'
+import {getFamily} from '$lib/props/props-style'
 
 const DEFAULT_META: Meta = {
 	title: '',

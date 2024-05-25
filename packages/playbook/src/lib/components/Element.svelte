@@ -1,27 +1,25 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '$lib/api/components/styles.api'
-	import type {StyleTree} from '$lib/api/components/styles.types'
-	import type {Meta} from '$lib/api/props/types'
+	import {getContext} from 'svelte'
+	import type {StylesApi} from '$lib/api/styles.api'
+	import type {StyleTree} from '$lib/api/styles.types'
+	import type {Meta} from '$lib/props/types'
 
-	import {onDestroy, getContext} from 'svelte'
-
-	import * as ui from '$stores/ui'
-	import {getFixtures} from '$lib/api/fixtures/js'
+	import PlaybookStore from '$lib/api/store.svelte'
+	import {getFixtures} from '$lib/fixtures/js'
 
 	import Api from './Api.svelte'
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Recipe from './Recipe.svelte'
-	import Graphics from './Graphics.svelte'
+	// import Graphics from './Graphics.svelte'
 
 	type Props = {
 		title: string
 		depth?: number
 		isPage?: boolean
 		path?: string
-		component: ComponentType
+		component: any // TODO: fix types
 		actionPath?: string
 		redirect?: string
 		category?: string
@@ -48,28 +46,17 @@
 		blocks: Block,
 		layouts: Layout,
 		recipes: Recipe,
-		graphics: Graphics,
+		// graphics: Graphics,
 	}
 
 	const stylesApi: StylesApi = getContext('stylesApi')
-	let styles: StyleTree = stylesApi.getStyleTree()
-	let settings = styles.app
-	const stores = [
-		ui.app.subscribe((value) => {
-			if (value) {
-				settings = {app: value}
-			}
-		}),
-		ui.styles.subscribe((value) => {
-			if (value) {
-				styles = stylesApi.getStyleTree()
-			}
-		}),
-	]
+	const playbookStore: PlaybookStore = getContext('playbookStore')
+	let styles: StyleTree = $derived(stylesApi.getStyleTree())
+	let settings = $derived(playbookStore.app)
 	// App settings (user controlled)
 	//== App settings (user controlled)
-	let brightness = $derived(settings.app.brightness)
-	let contrast = $derived(settings.app.contrast || '')
+	let brightness = $derived(settings.brightness)
+	let contrast = $derived(settings.contrast || '')
 
 	//== Layout settings (user controlled)
 	// Container options
@@ -83,10 +70,6 @@
 	let categories = $derived(
 		meta.props_style ? Object.keys(meta.props_style) : undefined,
 	)
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 {#if isPage}
@@ -106,7 +89,7 @@
 						props={currentProps}
 						{actionPath}
 						{redirect}
-						settings={ui}
+						{settings}
 						id={`ui-${title}`}
 					/>
 				{:else}
@@ -119,7 +102,7 @@
 						props={fixtures}
 						{actionPath}
 						{redirect}
-						settings={ui}
+						{settings}
 						id={`ui-${title}`}
 					/>
 				{/if}
@@ -172,7 +155,7 @@
 					props={currentProps}
 					{actionPath}
 					{redirect}
-					settings={ui}
+					{settings}
 					id={`ui-${title}`}
 				/>
 			{:else}
@@ -185,7 +168,7 @@
 					props={fixtures}
 					{actionPath}
 					{redirect}
-					settings={ui}
+					{settings}
 					id={`ui-${title}`}
 				/>
 			{/if}

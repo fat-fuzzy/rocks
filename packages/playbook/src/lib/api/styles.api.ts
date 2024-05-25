@@ -1,4 +1,4 @@
-import type {Meta} from '$lib/api/props/types'
+import type {Meta} from '$lib/props/types'
 import type {
 	AppStyles,
 	TokenStyles,
@@ -11,7 +11,7 @@ import type {
 	StyleFamily,
 } from './styles.types'
 
-import {getFamily} from '$lib/api/props/props-style'
+import {getFamily} from '$lib/props/props-style'
 
 export class StylesApi {
 	app: AppStyles

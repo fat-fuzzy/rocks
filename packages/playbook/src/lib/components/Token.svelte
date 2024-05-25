@@ -1,16 +1,13 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
-	import type {StylesApi} from '$lib/api/components/styles.api'
-	import type {StyleTree} from '$lib/api/components/styles.types'
+	import type {StylesApi} from '$lib/api/styles.api'
+	import type {StyleTree} from '$lib/api/styles.types'
 
-	import {onDestroy, getContext} from 'svelte'
-
-	import * as ui from '$stores/ui'
+	import {getContext} from 'svelte'
 
 	type Props = {
 		title: string
-		component: ComponentType
-		props: any
+		component: any // TODO: fix type
+		props: any // TODO: fix type
 	}
 
 	let {title, component, props}: Props = $props()
@@ -21,15 +18,7 @@
 	let asset = props?.asset || ''
 	let size = '' // element's own size
 
-	let styles: StyleTree = $state(stylesApi.getStyleTree())
-
-	const stores = [
-		ui.styles.subscribe((value) => {
-			if (value) {
-				styles = stylesApi.getStyleTree()
-			}
-		}),
-	]
+	let styles: StyleTree = $derived(stylesApi.getStyleTree())
 
 	// Block options
 	// $: variant = styles.tokens?.element.variant ?? variant
@@ -43,10 +32,6 @@
 		variant,
 		size,
 		typography,
-	})
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
 	})
 </script>
 

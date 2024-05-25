@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type {Meta} from '$lib/api/props/types'
-	import type {StylesApi} from '$lib/api/components/styles.api'
-	import type {StyleTree} from '$lib/api/components/styles.types'
+	import type {Meta} from '$lib/props/types'
+	import type {StylesApi} from '$lib/api/styles.api'
+	import type {StyleTree} from '$lib/api/styles.types'
 
-	import {onDestroy, getContext} from 'svelte'
+	import {getContext} from 'svelte'
 	import {blocks, recipes} from '@fat-fuzzy/ui-s5'
 	const {Fieldset, InputRange} = blocks
-	const {ToggleMenu} = recipes
+	const {ToggleMenu, InputGroup} = recipes
 
-	import * as ui from '$stores/ui'
+	import * as ui from '$lib/api/store.svelte'
 
 	type Props = {
 		category?: string
@@ -25,27 +25,14 @@
 	let apiVariant = 'outline'
 
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
-		radio: Fieldset,
+		radio: InputGroup,
 		range: InputRange,
-		checkbox: Fieldset,
+		checkbox: InputGroup,
 		toggle: ToggleMenu,
 	}
 
-	let styles: StyleTree = stylesApi.getStyleTree()
-	let settings = styles.app
-
-	const stores = [
-		ui.app.subscribe((value) => {
-			if (value) {
-				settings = {app: value}
-			}
-		}),
-		ui.styles.subscribe((value) => {
-			if (value) {
-				styles = stylesApi.getStyleTree()
-			}
-		}),
-	]
+	let styles: StyleTree = $derived(stylesApi.getStyleTree())
+	let settings = $derived(styles.app)
 
 	const updateStyles = (payload: {
 		name: string
@@ -66,26 +53,20 @@
 	}
 
 	function handleInput(event, name: string) {
-		const target = event.target ?? event.detail
 		const payload = {
 			name,
 			items: [
 				{
-					id: target.id,
-					name: target.name.toLowerCase(),
-					value: target.value,
+					id: event.id,
+					name: event.name.toLowerCase(),
+					value: event.value,
 				},
 			],
 		}
 		updateStyles(payload)
 	}
 
-	function handleSelect(
-		event: CustomEvent,
-		familyName: string,
-		name: string,
-		id: string,
-	) {
+	function handleSelect(event, familyName: string, name: string, id: string) {
 		// TODO: reject input if it's not in values list -> form validation /!\
 		const payload = {
 			name: familyName.toLowerCase(),
@@ -93,25 +74,34 @@
 				{
 					id,
 					name: name.toLowerCase(),
-					value: event.target.value,
+					value: event.value,
 				},
 			],
 		}
 		updateStyles(payload)
 	}
 
-	function handleToggle(event: CustomEvent, familyName: string, id: string) {
-		const selected = event.detail.selected // TODO: test multiple values
+	function handleToggle(
+		selected: {
+			name: string
+			value: string | number
+			state: string
+		}[],
+		familyName: string,
+		id: string,
+	) {
+		console.log('handleToggle selected', selected)
 		if (selected.length) {
 			const payload = {
 				name: familyName,
 				items: [
 					{
 						id,
-						value: selected[0].pressed ? selected[0].value : '',
+						value: String(selected[0].value),
 					},
 				],
 			}
+
 			updateStyles(payload)
 		}
 	}
@@ -128,10 +118,6 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -173,7 +159,7 @@
 							container={styleInput.container}
 							mode={styleInput.mode || 'radio'}
 							{formaction}
-							onclick={(event) =>
+							onupdate={(event) =>
 								handleToggle(event, familyName, styleInput.id)}
 						/>
 					{:else}

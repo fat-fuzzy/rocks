@@ -1,11 +1,9 @@
 <script lang="ts">
-	import type {StylesApi} from '$lib/api/components/styles.api'
+	import type {StylesApi} from '$lib/api/styles.api'
 
-	import {onDestroy, getContext} from 'svelte'
+	import {getContext} from 'svelte'
 
-	import type {StyleTree} from './styles.types'
-
-	import * as ui from '$stores/ui'
+	import type {StyleTree} from '$lib/api/styles.types'
 
 	type Props = {
 		title: string
@@ -16,15 +14,7 @@
 	let {title, component, props}: Props = $props()
 
 	const stylesApi: StylesApi = getContext('stylesApi')
-	let styles: StyleTree = stylesApi.getStyleTree()
-
-	const stores = [
-		ui.styles.subscribe((value) => {
-			if (value) {
-				styles = stylesApi.getStyleTree()
-			}
-		}),
-	]
+	let styles: StyleTree = $derived(stylesApi.getStyleTree())
 
 	// Block options
 	let variant = $derived(styles.blocks?.element.variant ? props?.color : '')
@@ -57,10 +47,6 @@
 		layout,
 		threshold,
 		breakpoint,
-	})
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
 	})
 </script>
 

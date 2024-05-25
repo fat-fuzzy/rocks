@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
-	import type {Meta} from '$lib/api/props/types'
+	import type {Meta} from '$lib/props/types'
 
 	import {enhance} from '$app/forms'
-	import StyleFamily from '$lib/api/components/StyleFamily.svelte'
+	import StyleFamily from '$lib/components/StyleFamily.svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	const {Button} = blocks
 
@@ -14,7 +14,7 @@
 		actionPath?: string
 		redirect?: string
 		formaction?: string
-		meta?: Meta
+		meta: Meta
 		children?: Snippet
 	}
 

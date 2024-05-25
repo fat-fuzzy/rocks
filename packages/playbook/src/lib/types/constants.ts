@@ -1,5 +1,5 @@
 import type {Settings, Tab} from '$types'
-import type {StyleTree} from '$lib/api/styles/types'
+import type {StyleTree} from '$lib/api/styles.types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
@@ -51,16 +51,12 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 	'100': 'xl',
 }
 
-const DEFAULT_TABS: Tab[] = [
-	// TODO: figure out a better way to map range number values to class strings
-	{id: 'component.context.menu.toggle.doc', title: 'Doc', value: 'doc'},
-	{id: 'component.context.menu.toggle.demo', title: 'Demo', value: 'demo'},
-]
-
 /**
  * Indicates the direction that icons should point in when used to indicate direction of movement of the UI element under control
  */
-const ALIGN_ANIMATION_DIRECTION: {[inactivePosition: string]: {[state: string]: string}} = {
+const ALIGN_ANIMATION_DIRECTION: {
+	[inactivePosition: string]: {[state: string]: string}
+} = {
 	left: {show: 'down', minimize: 'left'},
 	right: {show: 'down', minimize: 'right'},
 	top: {show: 'down', minimize: 'up'},
@@ -123,7 +119,9 @@ const TABS: Tab[] = [
 	},
 ]
 
-const APP_LINKS: {[key: string]: string}[] = [{slug: 'about', title: 'About', layout: 'center'}]
+const APP_LINKS: {[key: string]: string}[] = [
+	{slug: 'about', title: 'About', layout: 'center'},
+]
 
 const APP_SETTINGS = {
 	switch: [
@@ -136,8 +134,19 @@ const APP_SETTINGS = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {id: 'night', text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {id: 'day', text: 'day', value: 'day', asset: 'emoji:day', initial: 'pressed'},
+				active: {
+					id: 'night',
+					text: 'night',
+					value: 'night',
+					asset: 'emoji:night',
+				},
+				inactive: {
+					id: 'day',
+					text: 'day',
+					value: 'day',
+					asset: 'emoji:day',
+					initial: 'pressed',
+				},
 			},
 		},
 		{
@@ -149,7 +158,12 @@ const APP_SETTINGS = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {id: 'contrast', text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
+				active: {
+					id: 'contrast',
+					text: 'contrast',
+					value: 'contrast',
+					asset: 'emoji:contrast',
+				},
 				inactive: {
 					id: 'blend',
 					text: 'blend',
@@ -181,19 +195,6 @@ const emojis: {[key: string]: string} = {
 	'en-uk': '🇬🇧 EN',
 }
 
-const langEmojis: {[key: string]: string} = {
-	'fr-fr': '🇫🇷 FR',
-	'es-es': '🇪🇸 ES',
-	'en-uk': '🇬🇧 EN',
-}
-
-const langMenuIcon = emojis['lang']
-const languages = [
-	{code: 'fr-fr', title: 'Français'},
-	{code: 'en-uk', title: 'English'},
-	{code: 'es-es', title: 'Español'},
-]
-
 // TODO: make svg css themeable / fix dark theme
 import githubDay from '$lib/images/day/icon-github.svg'
 import githubNight from '$lib/images/night/icon-github.svg'
@@ -207,7 +208,6 @@ const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
 
 export default {
 	UI_STATE,
-	DEFAULT_TABS,
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,

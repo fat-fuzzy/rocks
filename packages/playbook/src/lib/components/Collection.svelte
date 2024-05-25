@@ -1,12 +1,10 @@
 <script lang="ts">
 	import type { Snippet} from 'svelte'
-	import type {StylesApi} from '$lib/api/components/styles.api'
-	import type {Markdowns} from '$lib/api/props/types'
+	import type {Markdowns} from '$lib/props/types'
 
-	import {getContext} from 'svelte'
 	import {page} from '$app/stores'
 
-	import {getCategoryMarkdowns, getElementMeta} from '$lib/api/props'
+	import {getCategoryMarkdowns, getElementMeta} from '$lib/props'
 
 	import Api from './Api.svelte'
 	import Element from './Element.svelte'
@@ -22,9 +20,9 @@
 		color?: string
 		size?: string
 		layout?: string
-		settings: any
 		markdowns: Markdowns
-		content: {html: Snippet}
+		children?: Snippet
+		meta?: any
 	}
 
 	let {
@@ -39,11 +37,11 @@
 		layout = 'grid',
 		category = $page.params.category,
 		markdowns,
-		content,
+		children,
+		meta
 	}: Props = $props()
 
 	const multipleCategories = ['graphics', 'recipes']
-	const stylesApi: StylesApi = $state(getContext('stylesApi'))
 
 	let componentNames = $state(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
@@ -81,7 +79,7 @@
 					<summary class={`box:${color} bg:${color}`}>Props</summary>
 					{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
 						<div class="drop w:full bg:polar ui:menu">
-							<Api {categories} {path} {actionPath} {redirect} />
+							<Api {categories} {path} {actionPath} {redirect} {meta}/>
 						</div>
 					{:else}
 						<div class="card:lg text:center">
@@ -99,8 +97,8 @@
 			{category}
 		</svelte:element>
 
-		{#if content}
-			{@render content.html()}
+		{#if children}
+			{@render children()}
 		{:else}
 			<p class={`font:xl`}>🐰</p>
 			<p class={`font:md`}>Coming soon!</p>
