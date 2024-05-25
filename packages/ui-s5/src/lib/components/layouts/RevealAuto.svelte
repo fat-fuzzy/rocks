@@ -1,50 +1,52 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
 	import {enhance} from '$app/forms'
-
-	// import {clickOutside} from '$lib/utils/click-outside.js'
-	import constants from '$lib/types/constants'
-
+	import type {RevealLayoutProps} from './layout.types.js'
+	import constants from '$lib/types/constants.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
-	const dispatch = createEventDispatcher()
+	// import {clickOutside} from '$lib/utils/click-outside.js'
+
 	const {ALIGN_OPPOSITE} = constants
 
-	export let layout = ''
-	export let direction = ''
-	export let color = ''
-	export let size = ''
-	export let breakpoint = ''
-	export let variant = ''
-	export let align = ''
-	export let id = 'ui'
-	export let background = ''
-	export let title = 'Reveal'
-	export let name = 'reveal'
-	export let reveal = 'minimize'
-	export let method = 'POST'
-	export let formaction: string | undefined = undefined
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
+	let {
+		id = 'reveal-auto',
+		title = 'RevealAuto',
+		method = 'POST',
+		reveal = 'minimize',
+		formaction,
+		actionPath,
+		redirect,
+		layout,
+		direction = 'tb-lr',
+		color,
+		size,
+		breakpoint,
+		variant,
+		align,
+		height,
+		background,
+		asset,
+		content,
+	}: RevealLayoutProps = $props()
 
+	let expanded = false
 	// function handleClickOutside() {
 	// 	dispatch('toggle', {reveal: 'minimize'})
 	// }
 
-	function handleToggle(event: CustomEvent) {
-		const updated = event.detail.expanded ? 'show' : 'minimize'
-		dispatch('toggle', {reveal: updated})
+	function handleToggle(event) {
+		expanded = !expanded
 	}
 
-	$: buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
-	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
-	$: show = `show ${showBackground}`
-	$: showContent = reveal === 'show' ? show : 'hide:viz-only'
-	$: revealClasses = `form:expand align-self:${buttonAlign} maki:inline lg`
-	$: layoutClass = layout ? `l:${layout}:${size}` : ''
-	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
+	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
+	let showBackground = background ? `bg:${background}` : 'bg:inherit'
+	let show = `show ${showBackground}`
+	let showContent = reveal === 'show' ? show : 'hide:viz-only'
+	let revealClasses = `form:expand align-self:${buttonAlign} maki:inline lg`
+	let layoutClass = layout ? `l:${layout}:${size}` : ''
+	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
-	$: action = formaction
+	let action = formaction
 		? redirect
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
@@ -53,7 +55,6 @@
 
 <div class={layoutClasses}>
 	<form
-		{name}
 		{method}
 		action={action
 			? actionPath
@@ -79,10 +80,20 @@
 			controls={`reveal-auto-${id}`}
 			value={'menu'}
 			states={{
-				active: {text: 'Context', value: 'show', asset: 'emoji:context'},
-				inactive: {text: 'Context', value: 'minimize', asset: 'emoji:context'},
+				expanded: {
+					id: 'show',
+					text: 'Context',
+					value: 'show',
+					asset: 'emoji:context',
+				},
+				collapsed: {
+					id: 'minimize',
+					text: 'Context',
+					value: 'minimize',
+					asset: 'emoji:context',
+				},
 			}}
-			on:click={handleToggle}
+			onclick={handleToggle}
 		>
 			{title}
 		</Expand>
@@ -91,11 +102,13 @@
 		id={`reveal-auto-${id}`}
 		class={`${layoutClass} ${showContent} ${direction} hug`}
 	>
-		<slot name="content">
-			<div class={`layer card:${size}`}>
-				<p class="font:lg">Revealed Content</p>
-				<p>This is a card with some content</p>
-			</div>
-		</slot>
+	{#if content}
+		{@render content()}
+	{:else}
+		<div class={`layer card:${size}`}>
+			<h3>Revealed Content</h3>
+			<p>This is a card with some content</p>
+		</div>
+	{/if}
 	</div>
 </div>

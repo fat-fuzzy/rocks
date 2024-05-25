@@ -1,30 +1,11 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
 	import {clickOutside} from '$lib/utils/click-outside.js'
+	import type {LayoutProps} from './layout.types.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
-	type Props = {
-		id: string
-		title?: string
-		method?: string
-		formaction?: string
-		actionPath?: string
-		redirect?: string
-		layout?: string
-		direction?: string
-		color?: string
-		size?: string
-		breakpoint?: string
-		variant?: string
-		align?: string
-		height?: string
-		background?: string
-		asset?: string
-		content?: Snippet
-	}
 
 	let {
-		id = 'ui',
+		id = 'reveal',
 		title = 'Reveal',
 		method = 'POST',
 		formaction,
@@ -41,7 +22,7 @@
 		background,
 		asset,
 		content,
-	}: Props = $props()
+	}: LayoutProps = $props()
 
 	let expanded = false
 
@@ -81,10 +62,10 @@
 		controls={`${id}-reveal`}
 		value={'menu'}
 		states={{
-			active: {text: 'Reveal', value: 'show', asset},
-			inactive: {text: 'Reveal', value: 'minimize', asset},
+			expanded: {id: 'show', text: 'Reveal', value: 'show', asset},
+			collapsed: {id: 'minimize', text: 'Reveal', value: 'minimize', asset},
 		}}
-		on:click={toggleReveal}
+		onclick={toggleReveal}
 	>
 		{title}
 	</Expand>

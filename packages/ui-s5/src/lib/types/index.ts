@@ -52,7 +52,10 @@ export type UiStyleProps = {
 
 	container?: string
 	direction?: string
+	place?: string
+	position?: string
 	dimensions?: string
+	height?: string
 	layout?: string
 	threshold?: string
 	breakpoint?: string

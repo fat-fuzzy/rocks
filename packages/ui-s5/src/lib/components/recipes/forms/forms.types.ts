@@ -3,4 +3,5 @@ export type FormProps = {
 	actionPath?: string
 	redirect?: string
 	method?: string
+	disabled?: boolean
 }

@@ -1,6 +1,6 @@
 import {writable} from 'svelte/store'
 
-import constants from '$lib/types/constants'
+import constants from '$lib/types/constants.js'
 
 const {
 	DEFAULT_REVEAL_STATE,

@@ -1,12 +1,14 @@
 import type {Snippet} from 'svelte'
 import type {UiStyleProps} from '$types/index.js'
+import type {FormProps} from '../recipes/forms/forms.types.js'
 
-type LayoutProps = UiStyleProps & {
-	id: string
-	title?: string
-	method?: string
-	formaction?: string
-	actionPath?: string
-	redirect?: string
-	content?: Snippet
+export type LayoutProps = UiStyleProps &
+	FormProps & {
+		id: string
+		title?: string
+		content?: Snippet
+	}
+
+export type RevealLayoutProps = LayoutProps & {
+	reveal: string
 }

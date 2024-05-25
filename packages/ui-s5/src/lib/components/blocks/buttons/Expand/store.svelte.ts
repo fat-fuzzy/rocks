@@ -23,7 +23,7 @@ class ExpandStore {
 		expandStates: ExpandStateType
 	}) {
 		this.state = initial ?? UiState.collapsed
-		this.expandStates = expandStates
+		this.expandStates = expandStates ?? EXPAND
 		this.expandStates.expanded.onclick = onclick
 		this.expandStates.collapsed.onclick = onclick
 	}
