@@ -27,15 +27,17 @@ function getCategoryMarkdowns(category: string, markdowns: Markdowns) {
 }
 
 function getElementMeta(name: string, markdowns: Markdown[]) {
-	let markdown = markdowns.find(({meta}) => {
+	const markdown = markdowns.find(({meta}) => {
 		meta.title === name
 	})
-	const meta = markdown ? markdown.meta : {...DEFAULT_META, title: name, slug: name.toLowerCase()}
+	const meta = markdown
+		? markdown.meta
+		: {...DEFAULT_META, title: name, slug: name.toLowerCase()}
 	return meta
 }
 
 function getElementStyleProps(props_style: StyleProps | undefined) {
-	let props: any = {
+	const props: any = {
 		style: {},
 	}
 
@@ -54,7 +56,7 @@ function getElementStyleProps(props_style: StyleProps | undefined) {
 }
 
 function getElementDoc(props_style: StyleProps | undefined) {
-	let props: any = []
+	const props: any = []
 	let currentCategory: string[] = []
 
 	if (props_style) {

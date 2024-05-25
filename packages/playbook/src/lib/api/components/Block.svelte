@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
 	import type {StylesApi} from '$lib/api/components/styles.api'
 
 	import {onDestroy, getContext} from 'svelte'
@@ -10,8 +9,8 @@
 
 	type Props = {
 		title: string
-		component: ComponentType
-		props: any
+		component: any // TODO: fix types
+		props: any // TODO: fix types
 	}
 
 	let {title, component, props}: Props = $props()

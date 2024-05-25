@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ComponentType, Snippet} from 'svelte'
+	import type { Snippet} from 'svelte'
 	import type {StylesApi} from '$lib/api/components/styles.api'
 	import type {Markdowns} from '$lib/api/props/types'
 
@@ -15,7 +15,7 @@
 		depth?: number
 		isPage?: boolean
 		path?: string
-		components: {[name: string]: ComponentType}
+		components: {[name: string]: any} // TODO: fix types
 		actionPath?: string
 		redirect?: string
 		category?: string

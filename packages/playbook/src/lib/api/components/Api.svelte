@@ -34,7 +34,7 @@
 	let apiSize = 'lg'
 	let apiBreakpoint = 'xxs'
 
-	let action = $state(
+	let action = $derived(
 		formaction && redirect
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction,

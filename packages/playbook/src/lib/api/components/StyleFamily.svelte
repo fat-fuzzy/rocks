@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
 	import type {Meta} from '$lib/api/props/types'
 	import type {StylesApi} from '$lib/api/components/styles.api'
 	import type {StyleTree} from '$lib/api/components/styles.types'
@@ -7,25 +6,28 @@
 	import {onDestroy, getContext} from 'svelte'
 	import {blocks, recipes} from '@fat-fuzzy/ui-s5'
 	const {Fieldset, InputRange} = blocks
-	const {ToggleMenu, InputGroup} = recipes
+	const {ToggleMenu} = recipes
 
 	import * as ui from '$stores/ui'
 
-	export let category = 'app'
-	export let formaction: string | undefined = undefined
-	export let meta: Meta | undefined
+	type Props = {
+		category?: string
+		formaction?: string
+		meta: Meta
+	}
+
+	let {category = 'app', formaction, meta}: Props = $props()
 
 	const stylesApi: StylesApi = getContext('stylesApi')
-	let optionsPerCategory = stylesApi.getFormOptions(category, meta)
 
 	let apiSize = 'xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
 
-	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
-		radio: InputGroup,
+	const COMPONENT_IMPORTS: {[input: string]: any} = {
+		radio: Fieldset,
 		range: InputRange,
-		checkbox: InputGroup,
+		checkbox: Fieldset,
 		toggle: ToggleMenu,
 	}
 
@@ -114,7 +116,7 @@
 		}
 	}
 
-	$: optionsPerCategory = stylesApi.getFormOptions(category, meta)
+	let optionsPerCategory = $derived(stylesApi.getFormOptions(category, meta))
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard
@@ -171,7 +173,7 @@
 							container={styleInput.container}
 							mode={styleInput.mode || 'radio'}
 							{formaction}
-							on:click={(event) =>
+							onclick={(event) =>
 								handleToggle(event, familyName, styleInput.id)}
 						/>
 					{:else}
@@ -192,7 +194,7 @@
 									size={apiSize}
 									color={apiColor}
 									variant={styleInput.variant}
-									on:changed={(event) => handleInput(event, familyName)}
+									onchanged={(event) => handleInput(event, familyName)}
 								/>
 							{/if}
 							{#if input == 'range'}
@@ -208,7 +210,7 @@
 									size={apiSize}
 									color={apiColor}
 									variant={styleInput.variant}
-									on:input={(event) => handleInput(event, familyName)}
+									oninput={(event) => handleInput(event, familyName)}
 								/>
 							{/if}
 							{#if input === 'datalist'}
@@ -222,7 +224,7 @@
 										id={`choice-${styleInput.name}`}
 										name={id}
 										class={apiSize}
-										on:input={(event) =>
+										oninput={(event) =>
 											handleSelect(
 												event,
 												familyName,
@@ -232,7 +234,8 @@
 									/>
 									<datalist id={`datalist-${styleInput.name}`}>
 										{#each items as { id, text, asset, value }}
-											<option {id} label={text} value={`${asset}:${value}`} />
+											<option {id} label={text} value={`${asset}:${value}`}>
+											</option>
 										{/each}
 									</datalist>
 								</label>
