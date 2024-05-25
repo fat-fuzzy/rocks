@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type {InputProps} from './input.js'
+	import type {InputProps} from './input.types.js'
 
 	let {
-		id, // TODO: use for machine id
+		id,
 		name,
 		label = 'Range',
 		value = $bindable(0),
@@ -22,9 +22,13 @@
 	}: InputProps = $props()
 
 	let valueLabel = $state(value)
-	let markers: {id: string; label: string; value: number}[] = [{id: '', label: '', value: min}]
+	let markers: {id: string; label: string; value: number}[] = [
+		{id: '', label: '', value: min},
+	]
 
-	function generateStepsFromItems(items: {id: string; text: string; value: string}[]) {
+	function generateStepsFromItems(
+		items: {id: string; text: string; value: string}[],
+	) {
 		let currentValue = min
 		items.forEach((item, index) => {
 			if (markers[index - 1]) {
@@ -39,14 +43,18 @@
 			let selectedMarker = markers.find((m) => m.value === value)
 			if (selectedMarker) {
 				valueLabel = selectedMarker.label
-				oninput({
-					id: selectedMarker.id,
-					name: selectedMarker.label,
-					value: valueLabel,
-				})
+				if (oninput) {
+					oninput({
+						id: selectedMarker.id,
+						name: selectedMarker.label,
+						value: valueLabel,
+					})
+				}
 			}
 		} else {
-			oninput({value})
+			if (oninput) {
+				oninput({value})
+			}
 		}
 	}
 
@@ -75,7 +83,9 @@
 	let elementClasses = `${colorClass} ${sizeClass} ${variantClass} ${alignClass}`
 
 	/* Context styles */
-	let layoutClasses = breakpoint ? `l:${layout} bp:${breakpoint}` : `l:${layout}`
+	let layoutClasses = breakpoint
+		? `l:${layout} bp:${breakpoint}`
+		: `l:${layout}`
 
 	let inputClasses = `${layoutClasses} ${elementClasses}`
 

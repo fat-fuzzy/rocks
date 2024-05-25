@@ -5,7 +5,7 @@ export type InputProps = UiStyleProps & {
 	/**
 	 * State props
 	 */
-	id: string // Use for machine id
+	id: string
 	name: string
 	title?: string
 	value?: string | number
@@ -13,6 +13,20 @@ export type InputProps = UiStyleProps & {
 	formaction?: string
 
 	type?: InputType
+	children?: Snippet
+	oninput?: (payload: InputPayload) => void
+}
+
+export type FieldsetProps = UiStyleProps & {
+	/**
+	 * State props
+	 */
+	id: string
+	name: string
+	legend?: string
+	disabled?: boolean
+
+	type?: InputType // input group if any
 	children?: Snippet
 	oninput?: (payload: InputPayload) => void
 }

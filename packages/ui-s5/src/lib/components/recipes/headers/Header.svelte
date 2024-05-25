@@ -58,7 +58,7 @@
 
 	let reveal = $state(navReveal.reveal)
 	let contrast = $state(appSettings.contrast)
-	let headerClass = `${className} l:sidebar:xl layer sticky:top justify:start bg:${contrast}`
+	let headerClass = `${className} bg:light l:sidebar:xl layer sticky:top justify:start bg:${contrast}`
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
 	let show = `show ${showBackground}`
 	let showNav = reveal === 'show' ? show : 'hide:viz-only'

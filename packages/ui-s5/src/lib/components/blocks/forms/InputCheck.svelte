@@ -1,33 +1,30 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
+	import type {InputProps} from './input.types.js'
 
-	const dispatch = createEventDispatcher()
+	let {
+		id,
+		name,
+		label = 'Checkbox input',
+		checked,
+		layout = 'stack',
+		value,
 
-	export let label = 'Checkbox input'
-	export let name = ''
-	export let id = ''
-	export let value = ''
-	export let checked = false
-	export let color = ''
-	export let variant = ''
-	export let size = ''
-	export let background = ''
-	export let container = ''
-	export let asset = ''
-	export let disabled: boolean
-
-	let layout = 'flex'
-	let align = 'align:center'
+		disabled,
+		asset,
+		align = 'center',
+		color,
+		size,
+		variant,
+		background,
+		container,
+		oninput,
+	}: InputProps = $props()
 
 	function handleInput(event) {
-		const payload = {
-			id,
-			value: event.target.value,
-		}
-		dispatch('input', payload)
+		if (oninput) oninput({value})
 	}
-	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:${layout}:${size} check ${size} font:${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${asset}`
+	let backgroundClass = background ? `bg:${background}` : ''
+	let classes = `l:${layout}:${size} check ${size} font:${size} ${color} ${variant} align:${align} ${backgroundClass} ${container} ${asset}`
 </script>
 
 <label for={id} class={classes}>
@@ -39,7 +36,7 @@
 		{value}
 		{name}
 		{checked}
-		on:input={handleInput}
+		oninput={handleInput}
 		{disabled}
 	/>
 </label>
