@@ -2,8 +2,10 @@ import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 
 import {constants, forms} from '@fat-fuzzy/ui-s5'
+import {api} from '@fat-fuzzy/playbook'
 
-const {DsTabsUpdate, DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
+const {DsTabsUpdate, DsStateUpdate, DsContextReveal} = forms
+const DsStylesUpdate = api.form
 const {TABS, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = constants
 
 export const actions = {
