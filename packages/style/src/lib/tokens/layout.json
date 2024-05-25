@@ -11,13 +11,25 @@
 		},
 		"sidebar": {
 			"base": {"$value": "30ch"},
-			"2xs": {"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"},
+			"2xs": {
+				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
+			},
 			"xs": {"$value": "calc(var(--layout-sidebar-sm) / var(--size-ratio-sm))"},
 			"sm": {"$value": "calc(var(--layout-sidebar-md) / var(--size-ratio-sm))"},
 			"md": {"$value": "{layout.sidebar.base}"},
 			"lg": {"$value": "calc(var(--layout-sidebar-md) * var(--size-ratio-sm))"},
 			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--size-ratio-sm))"},
 			"2xl": {"$value": "calc(var(--layout-sidebar-xl) * var(--size-ratio-sm))"}
+		},
+		"z-index": {
+			"0": {"$value": "0"},
+			"1": {"$value": "1"},
+			"2": {"$value": "2"},
+			"3": {"$value": "3"},
+			"inset": {"$value": "{layout.z-index.0}"},
+			"reveal": {"$value": "{layout.z-index.1}"},
+			"layer": {"$value": "{layout.z-index.2}"},
+			"sticky": {"$value": "{layout.z-index.3}"}
 		}
 	}
 }

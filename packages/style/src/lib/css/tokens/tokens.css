@@ -136,6 +136,14 @@
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
   --layout-sidebar-xl: calc(var(--layout-sidebar-lg) * var(--size-ratio-sm));
   --layout-sidebar-xs: calc(var(--layout-sidebar-sm) / var(--size-ratio-sm));
+  --layout-z-index-0: 0;
+  --layout-z-index-1: 1;
+  --layout-z-index-2: 2;
+  --layout-z-index-3: 3;
+  --layout-z-index-inset: var(--layout-z-index-0);
+  --layout-z-index-layer: var(--layout-z-index-2);
+  --layout-z-index-reveal: var(--layout-z-index-1);
+  --layout-z-index-sticky: var(--layout-z-index-3);
   --outline-offset-base: 1.5px;
   --outline-offset-nav: 1.75px;
   --outline-offset-settings: 2px;

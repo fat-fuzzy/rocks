@@ -1,6 +1,6 @@
 [class^='l:reveal'] [class*='expand'] {
 	position: relative;
-	z-index: var(--z-index-layer);
+	z-index: var(--layout-z-index-layer);
 	width: 100%;
 	color: inherit;
 	background-color: var(--current-polar);
