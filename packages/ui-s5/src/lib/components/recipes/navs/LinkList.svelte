@@ -1,17 +1,21 @@
 <script lang="ts">
-	import format from '$lib/utils/format'
+	import type {LinkListProps} from './nav.types.js'
+	import format from '$lib/utils/format.js'
 	import {getStores} from '$app/stores'
 
 	let page = getStores().page
-	export let path = '/'
-	export let layout = ''
-	export let size = 'md'
-	export let color = 'primary:100'
-	export let align = ''
-	export let id = ''
-	export let depth = 0
-	export let container = 'burrito'
-	export let items: any = [] // TODO: fix type
+
+	let {
+		path = '/',
+		layout,
+		size = 'md',
+		color = 'primary:100',
+		align,
+		id,
+		depth = 0,
+		container = 'burrito',
+		items = [], // TODO: fix type,
+	}: LinkListProps = $props()
 
 	// TODO: clean classes output
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''

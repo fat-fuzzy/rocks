@@ -1,17 +1,21 @@
 <script lang="ts">
+	import type {NavProps} from './nav.types.js'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
-	export let id = ''
-	export let layout = ''
-	export let title = 'Nav'
-	export let size = ''
-	export let path = ''
-	export let color = ''
-	export let background = ''
-	export let container = 'card'
-	export let align = ''
-	export let items: any[] = []
 
-	$: navClasses = `${color} ${container}:${size} bg:${background}`
+	let {
+		id,
+		layout,
+		title = 'Nav',
+		size,
+		path,
+		color,
+		background,
+		container = 'card',
+		align,
+		items = [],
+	}: NavProps = $props()
+
+	let navClasses = `${color} ${container}:${size} bg:${background}`
 </script>
 
 <nav {id} class={navClasses} aria-label={title}>

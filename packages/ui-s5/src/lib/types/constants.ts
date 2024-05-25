@@ -1,7 +1,12 @@
 import type {Settings, Tab, ButtonContext} from '$types'
 // import type {StyleTree} from '$lib/api/styles/types'
 
-const DEFAULT_BUTTON_CONTEXT: ButtonContext = {id: '', name: '', value: '', pressed: false}
+const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
+	id: '',
+	name: '',
+	value: '',
+	pressed: false,
+}
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
@@ -67,7 +72,9 @@ const DEFAULT_TABS: Tab[] = [
 /**
  * Indicates the direction that icons should point in when used to indicate direction of movement of the UI element under control
  */
-const ALIGN_ANIMATION_DIRECTION: {[inactivePosition: string]: {[state: string]: string}} = {
+const ALIGN_ANIMATION_DIRECTION: {
+	[inactivePosition: string]: {[state: string]: string}
+} = {
 	left: {show: 'down', minimize: 'left'},
 	right: {show: 'down', minimize: 'right'},
 	top: {show: 'down', minimize: 'up'},
@@ -130,21 +137,34 @@ const TABS: Tab[] = [
 	},
 ]
 
-const APP_LINKS: {[key: string]: string}[] = [{slug: 'about', title: 'About', layout: 'center'}]
+const APP_LINKS: {[key: string]: string}[] = [
+	{slug: 'about', title: 'About', layout: 'center'},
+]
 
-const APP_SETTINGS = {
+const APP_SETTINGS: SettingsItems = {
 	switch: [
 		{
 			id: 'brightness',
 			name: 'brightness',
 			title: 'Brightness',
 			variant: 'outline',
+			value: 'day',
 			shape: 'round',
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {id: 'night', text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {id: 'day', text: 'day', value: 'day', asset: 'emoji:day', initial: 'pressed'},
+				active: {
+					id: 'night',
+					text: 'night',
+					value: 'night',
+					asset: 'emoji:night',
+				},
+				inactive: {
+					id: 'day',
+					text: 'day',
+					value: 'day',
+					asset: 'emoji:day',
+				},
 			},
 		},
 		{
@@ -152,17 +172,22 @@ const APP_SETTINGS = {
 			name: 'contrast',
 			title: 'Contrast',
 			variant: 'outline',
+			value: 'blend',
 			shape: 'round',
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {id: 'contrast', text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
+				active: {
+					id: 'contrast',
+					text: 'contrast',
+					value: 'contrast',
+					asset: 'emoji:contrast',
+				},
 				inactive: {
 					id: 'blend',
 					text: 'blend',
 					value: 'blend',
 					asset: 'emoji:blend',
-					initial: 'pressed',
 				},
 			},
 		},
@@ -204,6 +229,7 @@ const languages = [
 // TODO: make svg css themeable / fix dark theme
 import githubDay from '$lib/images/day/icon-github.svg'
 import githubNight from '$lib/images/night/icon-github.svg'
+import type {SettingsItems} from '../components/recipes/forms/settings.types.js'
 const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
 	day: {
 		'link-github': githubDay,

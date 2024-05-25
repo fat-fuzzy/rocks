@@ -2,34 +2,36 @@
 	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import {clickOutside} from '$lib/utils/click-outside.js'
-	import * as settings from '$stores/settings'
-	import constants from '$lib/types/constants'
+	import * as settings from '$stores/settings.js'
+	import constants from '$lib/types/constants.js'
+	import type {SettingsProps} from './settings.types.js'
 
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 
-	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE, APP_SETTINGS} =
-		constants
-	const method = 'POST'
-	export let breakpoint = 'xs'
-	export let background: string | undefined = undefined
-	export let id = 'settings'
-	export let size = 'md'
-	export let color = ''
-	export let variant = 'outline'
-	export let layout: string | undefined = undefined
-	export let align = 'end'
-	export let path: string | undefined = undefined
-	export let formaction: string | undefined = undefined
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
+	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 
-	export let items = APP_SETTINGS
+	let {
+		id = 'settings',
+		method = 'POST',
+		breakpoint = 'xs',
+		background,
+		layout,
+		path,
+		color = 'primary',
+		size = 'md',
+		variant = 'outline',
+		align = 'end',
+		formaction,
+		actionPath,
+		redirect,
+		items,
+		children,
+	}: SettingsProps = $props()
 
 	let settingsId = id
-	let appSettings = DEFAULT_APP_SETTINGS
-	let settingsReveal = DEFAULT_REVEAL_STATE
+	let appSettings = $state(DEFAULT_APP_SETTINGS)
+	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
 
 	const stores = [
 		settings.app.subscribe((value) => {
@@ -48,23 +50,23 @@
 		settings.settingsReveal.set({reveal: 'minimize'})
 	}
 
-	function handleToggle(event: CustomEvent) {
-		const updated = event.detail.expanded ? 'show' : 'minimize'
+	function handleToggle(event) {
+		const updated = event.expanded ? 'show' : 'minimize'
 		settings.settingsReveal.set({reveal: updated})
 	}
 
-	function handleUpdate(event: CustomEvent) {
+	function handleUpdate(event) {
 		let updated
-		switch (event.detail.id) {
+		switch (event.id) {
 			case 'contrast':
-				updated = event.detail.pressed ? 'contrast' : 'blend'
+				updated = event.active ? 'contrast' : 'blend'
 				settings.app.set({
 					brightness: appSettings.brightness,
 					contrast: updated,
 				})
 				break
 			case 'brightness':
-				updated = event.detail.pressed ? 'night' : 'day'
+				updated = event.active ? 'night' : 'day'
 				settings.app.set({brightness: updated, contrast: appSettings.contrast})
 				break
 			default:
@@ -72,17 +74,17 @@
 		}
 	}
 
-	$: reveal = settingsReveal.reveal
-	$: brightness = appSettings.brightness
-	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
-	$: show = `show ${showBackground}`
-	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
-	$: revealClasses = `form:expand card:md nowrap`
-	$: formClasses = `l:switcher:xs ${showBackground}`
-	$: layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
-	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
+	let reveal = settingsReveal.reveal
+	let brightness = appSettings.brightness
+	let showBackground = background ? `bg:${background}` : 'bg:inherit'
+	let show = `show ${showBackground}`
+	let showSettings = reveal === 'show' ? show : 'hide:viz-only'
+	let revealClasses = `form:expand card:md nowrap`
+	let formClasses = `l:switcher:xs ${showBackground}`
+	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
+	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
-	$: action = formaction
+	let action = formaction
 		? redirect
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
@@ -93,11 +95,7 @@
 	})
 </script>
 
-<div
-	class={layoutClasses}
-	use:clickOutside
-	on:clickOutside={handleClickOutsideSettings}
->
+<div class={layoutClasses}>
 	<form
 		name="settings-reveal"
 		{method}
@@ -125,14 +123,20 @@
 			controls={id}
 			value={settingsReveal[id]}
 			states={{
-				active: {text: 'settings', value: 'show', asset: 'emoji:settings'},
-				inactive: {
+				expanded: {
+					id: 'settings-expanded',
+					text: 'settings',
+					value: 'show',
+					asset: 'emoji:settings',
+				},
+				collapsed: {
+					id: 'settings-collapsed',
 					text: 'settings',
 					value: 'minimize',
 					asset: 'emoji:settings',
 				},
 			}}
-			on:click={handleToggle}
+			onclick={handleToggle}
 		>
 			Settings
 		</Expand>
@@ -155,13 +159,14 @@
 					<Switch
 						id={`${settingsId}-${id}`}
 						{name}
+						value={id}
 						{title}
 						{variant}
 						{shape}
 						{color}
 						{size}
 						{states}
-						on:click={handleUpdate}
+						onclick={handleUpdate}
 					/>
 				</div>
 			{/each}

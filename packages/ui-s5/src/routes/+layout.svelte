@@ -1,20 +1,35 @@
 <script lang="ts">
-	import '@fat-fuzzy/style';
-	let layout = 'center';
-	let brightness = 'day';
-	let contrast = 'contrast';
-	let mainClass = `${brightness} l:${layout} l:stack:lg bg:${contrast}`;
-	let headerClass = `header-app l:center`;
-	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`;
+	import '@fat-fuzzy/style'
+	import constants from '$lib/types/constants.js'
+	import Header from '$lib/components/recipes/headers/Header.svelte'
+	import type { Snippet } from 'svelte'
+
+	const {APP_SETTINGS, APP_LINKS} = constants
+
+	type Props = { children: Snippet }
+
+	let {children}: Props = $props()
+	let navItems = $state({links: APP_LINKS, settings: APP_SETTINGS})
+	let layout = 'center'
+	let brightness = 'day'
+	let contrast = 'contrast'
+	let mainClass = `${brightness} l:${layout} l:stack:lg bg:${contrast}`
+	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`
 </script>
 
-<header class={headerClass}>
-	<h1 class="l:flex card:md icon:svg:egg size:xl font:xl align:center">Fat Fuzzy Style</h1>
-</header>
+<Header items={navItems} layout="center">
+	<h1 class="l:flex card:md icon:svg:egg size:xl font:xl align:center">
+		Fat Fuzzy Style
+	</h1>
+</Header>
 <main class={mainClass}>
-	<slot />
+	{#if children}
+		{@render children()}
+	{/if}
 </main>
 
 <footer class={footerClass}>
-	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	<p>
+		👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
+	</p>
 </footer>

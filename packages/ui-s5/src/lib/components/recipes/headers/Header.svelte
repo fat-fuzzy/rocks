@@ -3,25 +3,27 @@
 	import {enhance} from '$app/forms'
 	import {getStores} from '$app/stores'
 
-	import {clickOutside} from '$lib/utils/click-outside'
-	import {lang} from '$stores/intl'
-	import * as settings from '$stores/settings'
-	import constants from '$lib/types/constants'
+	import {lang} from '$stores/intl.js'
+	import * as settings from '$stores/settings.js'
 
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
+	import type {HeaderProps} from './header.types.js'
+	import type {ExpandPayload} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 
-	const method = 'POST'
-	const {APP_SETTINGS, APP_LINKS} = constants
-	export let title = 'Header navigation'
-	export let className = 'header-app'
-	export let breakpoint = 'xxl'
-	export let background = ''
-	export let id = 'header'
-	export let formaction: string | undefined = undefined
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
-	export let items = {links: APP_LINKS, settings: APP_SETTINGS}
+	let {
+		id = 'header-app',
+		title = 'App navigation',
+		method = 'POST',
+		breakpoint = 'xxl',
+		background,
+		formaction,
+		actionPath,
+		redirect,
+		items,
+		children,
+	}: HeaderProps = $props()
+	let className = 'header-app'
 
 	let page = getStores().page
 
@@ -45,8 +47,8 @@
 		settings.navReveal.set({reveal: 'minimize'})
 	}
 
-	function toggleNav(event: CustomEvent) {
-		const updated = event.detail.expanded ? 'show' : 'minimize'
+	function toggleNav(payload: ExpandPayload) {
+		const updated = payload.expanded ? 'show' : 'minimize'
 		settings.navReveal.set({reveal: updated})
 	}
 
@@ -54,17 +56,17 @@
 		lang.set(event.detail.payload)
 	}
 
-	$: reveal = navReveal.reveal
-	$: contrast = appSettings.contrast
-	$: headerClass = `${className} l:sidebar:xl layer sticky:top justify:start bg:${contrast}`
-	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
-	$: show = `show ${showBackground}`
-	$: showNav = reveal === 'show' ? show : 'hide:viz-only'
-	$: navClasses = `l:switcher:xxs ${showBackground}`
-	$: revealClasses = `form:expand card:md`
-	$: layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
+	let reveal = $state(navReveal.reveal)
+	let contrast = $state(appSettings.contrast)
+	let headerClass = `${className} l:sidebar:xl layer sticky:top justify:start bg:${contrast}`
+	let showBackground = background ? `bg:${background}` : 'bg:inherit'
+	let show = `show ${showBackground}`
+	let showNav = reveal === 'show' ? show : 'hide:viz-only'
+	let navClasses = `l:switcher:xxs ${showBackground}`
+	let revealClasses = `form:expand card:md`
+	let layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
 
-	$: action =
+	let action =
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 
 	onDestroy(() => {
@@ -73,11 +75,7 @@
 </script>
 
 <header class={headerClass}>
-	<div
-		class={layoutClasses}
-		use:clickOutside
-		on:clickOutside={handleClickOutsideMainNav}
-	>
+	<div class={layoutClasses}>
 		<form
 			name="nav-reveal"
 			{method}
@@ -100,10 +98,20 @@
 				controls={`${id}-primary-nav`}
 				value={'menu'}
 				states={{
-					active: {text: 'menu', value: 'show', asset: 'emoji:menu'},
-					inactive: {text: 'menu', value: 'minimize', asset: 'emoji:menu'},
+					expanded: {
+						id: 'menu-expanded',
+						text: 'menu',
+						value: 'show',
+						asset: 'emoji:menu',
+					},
+					collapsed: {
+						id: 'menu-collapsed',
+						text: 'menu',
+						value: 'minimize',
+						asset: 'emoji:menu',
+					},
 				}}
-				on:click={toggleNav}
+				onclick={toggleNav}
 			>
 				Menu
 			</Expand>
@@ -114,7 +122,7 @@
 					<a
 						data-sveltekit-preload-data
 						href="/"
-						on:click={handleClickOutsideMainNav}>Home</a
+						onclick={handleClickOutsideMainNav}>Home</a
 					>
 				</li>
 				{#each items.links as { slug, title }}
@@ -126,7 +134,7 @@
 						<a
 							data-sveltekit-preload-data
 							href={`/${slug}`}
-							on:click={handleClickOutsideMainNav}
+							onclick={handleClickOutsideMainNav}
 						>
 							{title}
 						</a>
