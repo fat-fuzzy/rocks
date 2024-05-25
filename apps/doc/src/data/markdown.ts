@@ -6,13 +6,15 @@
  */
 const fetchMarkdowns = async (pathPrefix: string, imports: any) => {
 	const logImports = Object.entries(imports)
+
 	const logs = await Promise.all(
 		// TODO: understand this vite functionality
 		logImports.map(async ([path, resolver]) => {
 			const result: any = await resolver()
 
 			const filePath = path.slice(pathPrefix.length, -3) // removes pathPrefix and '*.md'
-			const html = result.default.render().html
+
+			const html = result?.render ? result.render() : '' // WIP : fixing this
 			return {
 				meta: result?.metadata,
 				path: filePath,

@@ -10,6 +10,8 @@
 	const {settings} = stores
 	const {DEFAULT_APP_SETTINGS, APP_LINKS} = constants
 
+	let {children} = $props()
+
 	let appSettings = $page.data.app || DEFAULT_APP_SETTINGS
 
 	const localStores = [
@@ -20,14 +22,13 @@
 		}),
 	]
 
-	$: brightness = appSettings.brightness
-	$: contrast = appSettings.contrast
-	$: pageClass = utils.format.getClassNameFromUrl($page.url)
-	$: layoutClass =
+	let brightness = appSettings.brightness
+	let contrast = appSettings.contrast
+	let pageClass = utils.format.getClassNameFromUrl($page.url)
+	let layoutClass =
 		APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
-	$: mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
-	$: headerClass = `header-app ${brightness} bg:${contrast}`
-	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
+	let mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
+	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`
 
 	onDestroy(() => {
 		localStores.forEach((unsubscribe) => unsubscribe())
@@ -36,7 +37,6 @@
 
 <Header
 	id="doc"
-	className={headerClass}
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
@@ -45,7 +45,11 @@
 />
 
 <main class={mainClass}>
-	<slot />
+	{#if children}
+		{@render children()}
+	{:else}
+		<p>Nothing to see here</p>
+	{/if}
 </main>
 
 <footer class={footerClass}>

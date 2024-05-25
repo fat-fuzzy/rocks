@@ -15,6 +15,7 @@ export const itemsSettings = {
 			shape: 'round',
 			color: 'primary',
 			size: 'md',
+			value: 'day',
 			states: {
 				active: {
 					id: 'app.brightness.night',
@@ -27,7 +28,6 @@ export const itemsSettings = {
 					text: 'day',
 					value: 'day',
 					asset: 'emoji:day',
-					initial: 'pressed',
 				},
 			},
 		},
@@ -39,6 +39,7 @@ export const itemsSettings = {
 			shape: 'round',
 			color: 'primary',
 			size: 'md',
+			value: 'blend',
 			states: {
 				active: {
 					id: 'app.contrast.contrast',
@@ -51,7 +52,6 @@ export const itemsSettings = {
 					text: 'blend',
 					value: 'blend',
 					asset: 'emoji:blend',
-					initial: 'pressed',
 				},
 			},
 		},
