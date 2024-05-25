@@ -36,11 +36,12 @@ import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
 
 /**
- * Compositions - Base
+ * Recipes - Base
  */
+import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
-import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
+import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 
 import LogIn from '$lib/components/recipes/forms/LogIn.svelte'
 
@@ -128,6 +129,7 @@ const recipes = {
 	ButtonMenu,
 	ToggleMenu,
 	RevealMenu,
+	InputGroup,
 	LogIn,
 	Nav,
 	RevealNav,
