@@ -9,7 +9,7 @@
 		stores,
 		constants,
 	} from '@fat-fuzzy/ui-s5'
-	import {api} from '@fat-fuzzy/playbook'
+	import {api, stores as playbookStores} from '@fat-fuzzy/playbook'
 
 	const {RevealNav} = recipes
 	let path = $page.url.pathname
@@ -33,11 +33,15 @@
 	const {styles, context, state} = $page.data
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = constants
 
-	stores.ui.styles.set(styles)
-	stores.ui.reveal.set(context)
-	stores.ui.navReveal.set(state?.navReveal || DEFAULT_NAV_REVEAL_STATE)
-	stores.ui.settingsReveal.set(state?.settingsReveal || DEFAULT_REVEAL_STATE)
-	stores.ui.sidebarReveal.set(state?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE)
+	playbookStores.ui.styles.set(styles)
+	playbookStores.ui.reveal.set(context)
+	playbookStores.ui.navReveal.set(state?.navReveal || DEFAULT_NAV_REVEAL_STATE)
+	playbookStores.ui.settingsReveal.set(
+		state?.settingsReveal || DEFAULT_REVEAL_STATE,
+	)
+	playbookStores.ui.sidebarReveal.set(
+		state?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE,
+	)
 
 	const localStores = [
 		stores.settings.sidebarReveal.subscribe((value) => {
@@ -91,7 +95,7 @@
 	<div class={`l:side ${sidebarReveal.reveal}`}>
 		<RevealNav
 			title="Design Library"
-			name="reveal"
+			reveal="show"
 			id="nav-page"
 			{items}
 			{path}
