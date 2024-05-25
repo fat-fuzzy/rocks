@@ -12,7 +12,8 @@
 	import {api, stores as playbookStores} from '@fat-fuzzy/playbook'
 
 	const {RevealNav} = recipes
-	let path = $page.url.pathname
+
+	let {children} = $props()
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -25,22 +26,22 @@
 	const recipeNames = Object.keys(recipes).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
-	let sidebarReveal: {[key: string]: string} = {reveal: ''}
+	let sidebarReveal: {[key: string]: string} = $state({reveal: ''})
 	let stylesApi = api.stylesApi.initStyles()
 	setContext('stylesApi', stylesApi)
 	setContext('styles', stylesApi.getStyleTree())
 
-	const {styles, context, state} = $page.data
+	const {styles, context, ui} = $page.data
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = constants
 
 	playbookStores.ui.styles.set(styles)
 	playbookStores.ui.reveal.set(context)
-	playbookStores.ui.navReveal.set(state?.navReveal || DEFAULT_NAV_REVEAL_STATE)
+	playbookStores.ui.navReveal.set(ui?.navReveal || DEFAULT_NAV_REVEAL_STATE)
 	playbookStores.ui.settingsReveal.set(
-		state?.settingsReveal || DEFAULT_REVEAL_STATE,
+		ui?.settingsReveal || DEFAULT_REVEAL_STATE,
 	)
 	playbookStores.ui.sidebarReveal.set(
-		state?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE,
+		ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE,
 	)
 
 	const localStores = [
@@ -51,8 +52,7 @@
 		}),
 	]
 
-	$: path = ''
-	$: items = [
+	let items = [
 		{
 			slug: 'ui',
 			title,
@@ -98,7 +98,7 @@
 			reveal="show"
 			id="nav-page"
 			{items}
-			{path}
+			path=""
 			settings={stores.settings}
 			breakpoint="sm"
 			size="md"
@@ -113,6 +113,8 @@
 		/>
 	</div>
 	<div class="l:main l:center l:stack:xl">
-		<slot />
+		{#if children}
+			{@render children()}
+		{/if}
 	</div>
 </div>

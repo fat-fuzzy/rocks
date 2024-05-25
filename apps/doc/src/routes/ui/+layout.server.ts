@@ -4,7 +4,7 @@ import assets from '$data/doc'
 export const load = (async (event) => {
 	let styles = null
 	let context = null
-	let state = null
+	let ui = null
 	let sidebar = null
 	let currentTabs = null
 
@@ -15,7 +15,7 @@ export const load = (async (event) => {
 		context = JSON.parse(event.locals.dsContext)
 	}
 	if (event.locals.dsState) {
-		state = JSON.parse(event.locals.dsState)
+		ui = JSON.parse(event.locals.dsState)
 	}
 	if (event.locals.sidebar) {
 		sidebar = JSON.parse(event.locals.sidebar)
@@ -25,5 +25,5 @@ export const load = (async (event) => {
 	}
 	const markdowns = assets.markdowns
 
-	return {sidebar, styles, context, state, currentTabs, markdowns}
+	return {sidebar, styles, context, ui, currentTabs, markdowns}
 }) satisfies LayoutServerLoad

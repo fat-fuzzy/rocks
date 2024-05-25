@@ -17,10 +17,9 @@
 		{category: 'recipes', items: recipes},
 	]
 	const path = $page.url.pathname
-
-	$: markdowns = $page.data.markdowns
-	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'l:flex card:sm bg:polar align:center'
+	let markdowns = $state($page.data.markdowns)
+	let content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
+	let headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 
 <Head page={title} {description} />

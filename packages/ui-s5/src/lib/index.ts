@@ -19,6 +19,7 @@ import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
@@ -107,7 +108,7 @@ const blocks = {
 	Switch,
 	Toggle,
 	Feedback,
-	// Fieldset,
+	Fieldset,
 	InputCheck,
 	InputRadio,
 	InputRange,

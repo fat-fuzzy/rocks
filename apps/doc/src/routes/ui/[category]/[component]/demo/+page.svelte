@@ -10,9 +10,11 @@
 		recipes,
 		constants,
 	} from '@fat-fuzzy/ui-s5'
-	import {stores} from '@fat-fuzzy/playbook'
+	import {api, stores} from '@fat-fuzzy/playbook'
 
 	const {Head} = headless
+	const {Element, Api} = api
+	const actionPath = '/ui'
 	const {DEFAULT_TABS} = constants
 
 	let categoryItems: {[name: string]: any} = {
@@ -33,10 +35,17 @@
 		}),
 	]
 
-	let category = $page.params.category
-	let title = $page.params.component
+	let category = $state($page.params.category)
+	let title = $state($page.params.component)
 	let Component = categoryItems[category][title]
 	let path = $page.url.pathname
+	let markdowns =
+		$page.data.markdowns && $page.data.markdowns[category]
+			? $page.data.markdowns[category]
+			: []
+	let content = markdowns.find(({meta}) => meta.title === title) || {
+		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
+	}
 	let headerClass = `l:grid:header:${currentTab.value} bp:xs bg:polar`
 
 	onDestroy(() => {
@@ -47,10 +56,26 @@
 <Head {title} page="UI" description={`${title} Doc`} />
 
 <header class={headerClass}>
-	<h1 class="main">{title}</h1>
+	<h1 class="main">{title} | Demo</h1>
+
+	<div class="context">
+		<Api
+			categories={['app']}
+			{path}
+			{actionPath}
+			redirect={$page.url.pathname}
+		/>
+	</div>
 </header>
 
-<ul>
-	<li><a href={`${path}/doc`}>Doc</a></li>
-	<li><a href={`${path}/demo`}>Demo</a></li>
-</ul>
+<Element
+	isPage={true}
+	depth={1}
+	{title}
+	{path}
+	{category}
+	component={Component}
+	meta={content.meta}
+	{actionPath}
+	redirect={$page.url.pathname}
+/>
