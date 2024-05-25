@@ -156,4 +156,6 @@ packages/style/src/tests/tmp/*
 packages/style/src/assets/fonts/
 packages/sketch/static/fonts/
 packages/ui-s5/static/fonts
+apps/doc/static/fonts/
+apps/play/static/fonts/
 
