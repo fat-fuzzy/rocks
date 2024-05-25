@@ -3,8 +3,8 @@ export default {
 	Expand: {
 		title: 'Expand',
 		states: {
-			active: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-down'},
-			inactive: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-right'},
+			expanded: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-down'},
+			collapsed: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-right'},
 		},
 	},
 	Switch: {

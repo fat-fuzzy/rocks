@@ -1,3 +1,5 @@
+import  { links, itemsSettings } from "./nav";
+
 export default {
 	ButtonMenu: {
 		items: [
@@ -84,5 +86,10 @@ export default {
 		slug: 'ui',
 		title: 'Header',
 		formaction: 'updateState',
+		items: {
+
+		links,
+		settings: itemsSettings
+		}
 	},
 }

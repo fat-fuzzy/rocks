@@ -6,8 +6,8 @@ const DEFAULT_CONTENT_TYPES = {
 
 const states = {
 	Expand: {
-		active: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-down'},
-		inactive: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-right'},
+		expanded: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-down'},
+		collapsed: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-right'},
 	},
 	Switch: {
 		active: {id: 'button-switch', text: 'Rabbit', asset: 'emoji:switch-active'},

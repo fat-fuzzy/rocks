@@ -17,6 +17,12 @@ import * as fixturesApi from '$lib/api/fixtures/js/'
  * Forms
  */
 import {DsStylesUpdate as form} from '$lib/forms/ds-styles-update'
+
+/**
+ * Stores
+ */
+import * as ui from '$lib/stores/ui.js'
+
 /**
  * Tests Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
@@ -36,4 +42,8 @@ const api = {
 	form
 }
 
-export {api}
+const stores = {
+	ui,
+}
+
+export {api, stores}
