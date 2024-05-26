@@ -49,7 +49,6 @@
 				playbookStore.app = {...playbookStore.app, [style]: value}
 			}
 		})
-		console.log('updateStyles updatedStyles', updatedStyles)
 		stylesApi.applyStyles(updatedStyles)
 		playbookStore.styles = stylesApi.getStyleTree() // This should update the client if JS is available
 	}
@@ -153,8 +152,6 @@
 				{#if styles[category] && styles[category][familyName]}
 					{@const {id, input, name, value, items} = styleInput}
 					{@const currentValue = styles[category][familyName][name] ?? value}
-					Current Value {currentValue}
-					ITem value {value}
 					{#if input === 'toggle'}
 						{@const updatedItems = items.map((i) => {
 							return {
