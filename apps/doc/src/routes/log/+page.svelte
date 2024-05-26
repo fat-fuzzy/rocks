@@ -5,7 +5,7 @@
 
 	const {Head} = headless
 
-	let markdowns = $page.data.markdowns
+	let markdowns = $state($page.data.markdowns)
 
 	let title = 'Log'
 	let headerClass = 'l:flex card:sm bg:polar align:center'

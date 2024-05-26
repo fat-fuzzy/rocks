@@ -1,13 +1,15 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	import {headless, constants} from '@fat-fuzzy/ui-s5'
+	import {headless} from '@fat-fuzzy/ui-s5'
 
 	const {Head} = headless
 
-	let category = $page.params.category
-	let title = `${category.charAt(0).toUpperCase()}${category.slice(1)}`
-	let path = $page.url.pathname
+	let category = $derived($page.params.category)
+	let path = $derived($page.url.pathname)
+	let title = $derived(
+		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
+	)
 	let headerClass = `bp:xs bg:polar`
 </script>
 

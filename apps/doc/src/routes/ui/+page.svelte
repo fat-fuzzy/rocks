@@ -16,9 +16,11 @@
 		{category: 'layouts', items: layouts},
 		{category: 'recipes', items: recipes},
 	]
-	const path = $page.url.pathname
+	const path = $derived($page.url.pathname)
 	let markdowns = $derived($page.data.markdowns)
-	let content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
+	let content = $derived(
+		markdowns.categories.find(({meta}) => meta.slug === 'ui'),
+	)
 	let headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 

@@ -4,10 +4,12 @@
 
 	const {Head} = headless
 
-	let markdown = $page.data.markdowns.find((d) => d.path === $page.data.path)
-	let title = markdown.meta.title
-	let date = markdown.meta.date
-	let html = $page.data.html
+	let markdown = $derived(
+		$page.data.markdowns.find((d) => d.path === $page.data.path),
+	)
+	let title = $derived(markdown.meta.title)
+	let date = $derived(markdown.meta.date)
+	let html = $derived($page.data.html)
 	let headerClass = 'l:switcher:xs card:sm align:center bg:polar'
 
 	// TODO: Fix context menu

@@ -16,15 +16,15 @@
 		{category: 'recipes', items: recipes},
 	]
 
-	let category = $state($page.params.category)
-	let markdowns = $state($page.data.markdowns)
+	let category = $derived($page.params.category)
+	let markdowns = $derived($page.data.markdowns)
 	let meta = $derived(
 		markdowns.categories.find(({meta}) => meta.slug === category).meta,
 	)
 	let items = $derived(
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
-	let path = $page.url.pathname
+	let path = $derived($page.url.pathname)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)

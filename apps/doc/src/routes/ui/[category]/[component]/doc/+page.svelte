@@ -6,17 +6,22 @@
 
 	const {Head} = headless
 
-	let category = $page.params.category
-	let title = $page.params.component
-	let markdowns =
+	let category = $derived($page.params.category)
+	let title = $derived($page.params.component)
+	let markdowns = $derived(
 		$page.data.markdowns && $page.data.markdowns[category]
 			? $page.data.markdowns[category]
-			: []
-	let content = markdowns.find(({meta}) => meta.title === title) || {
-		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
-	}
+			: [],
+	)
+	let content = $derived(
+		markdowns.find(({meta}) => meta.title === title) || {
+			html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
+		},
+	)
 	let headerClass = `l:grid:header:doc bp:xs bg:polar`
-	let props = content.meta ? api.props.getElementProps(content.meta) : {}
+	let props = $derived(
+		content.meta ? api.props.getElementProps(content.meta) : {},
+	)
 </script>
 
 <Head {title} page="UI" description={`${title} Doc`} />

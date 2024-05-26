@@ -3,7 +3,7 @@
 
 	import {headless} from '@fat-fuzzy/ui-s5'
 
-	let markdowns = $page.data.markdowns
+	let markdowns = $state($page.data.markdowns)
 
 	const {Head} = headless
 

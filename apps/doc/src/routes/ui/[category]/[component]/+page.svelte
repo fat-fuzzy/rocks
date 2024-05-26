@@ -5,8 +5,8 @@
 
 	const {Head} = headless
 
-	let title = $page.params.component
-	let path = $page.url.pathname
+	let title = $derived($page.params.component)
+	let path = $derived($page.url.pathname)
 	let headerClass = `bp:xs bg:polar`
 </script>
 
