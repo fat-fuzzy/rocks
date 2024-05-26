@@ -118,7 +118,6 @@ const color = {
 	layout: 'switcher',
 	size: 'xxs',
 	container: 'card',
-	mode: 'check',
 	items: [
 		{
 			id: 'color.primary',
@@ -163,7 +162,6 @@ const shape = {
 	layout: 'switcher',
 	size: 'sm',
 	variant: 'card',
-	mode: 'check',
 	items: [
 		{id: 'shape.round', text: 'round', value: 'round'},
 		{id: 'shape.square', text: 'square', value: 'square'},

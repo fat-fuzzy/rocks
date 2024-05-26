@@ -32,25 +32,26 @@
 		toggle: ToggleMenu,
 	}
 
-	let styles: StyleTree = $derived(stylesApi.getStyleTree())
-	let settings = $derived(styles.app)
-
-	const updateStyles = (payload: {
+	function updateStyles(payload: {
 		name: string
 		items: {id: string; value: string}[]
-	}) => {
+	}) {
+		let updatedStyles: StyleTree = {}
 		payload.items.forEach(({id, value}) => {
 			const [category, family, style, name] = id.split('.')
 			const styleValue = {[style]: value}
 			const familyValue = {[family]: styleValue}
-			styles[category] = {...styles[category], ...familyValue}
+			updatedStyles[category] = {
+				...playbookStore.styles[category],
+				...familyValue,
+			}
 			if (style === 'brightness' || style === 'contrast') {
-				playbookStore.app = {...settings.app, [style]: value}
+				playbookStore.app = {...playbookStore.app, [style]: value}
 			}
 		})
-		stylesApi.applyStyles(styles)
-
-		playbookStore.styles = stylesApi.getStyleTree() // This updates on the client if JS is available
+		console.log('updateStyles updatedStyles', updatedStyles)
+		stylesApi.applyStyles(updatedStyles)
+		playbookStore.styles = stylesApi.getStyleTree() // This should update the client if JS is available
 	}
 
 	function handleInput(event, name: string) {
@@ -91,23 +92,21 @@
 		familyName: string,
 		id: string,
 	) {
-		console.log('handleToggle selected', selected)
-		if (selected.length) {
-			const payload = {
-				name: familyName,
-				items: [
-					{
-						id,
-						value: String(selected[0].value),
-					},
-				],
-			}
-
-			updateStyles(payload)
+		let payload = {
+			name: familyName.toLowerCase(),
+			items: selected.map((item) => {
+				return {
+					id,
+					name: item.name.toLowerCase(),
+					value: String(item.value),
+				}
+			}),
 		}
+		updateStyles(payload)
 	}
 
-	let optionsPerCategory = $derived(stylesApi.getFormOptions(category, meta))
+	let formOptions = $derived(stylesApi.getFormOptions(category, meta))
+	let styles = $derived(playbookStore.styles)
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard
@@ -123,7 +122,7 @@
 
 <svelte:window on:keydown={keydown} />
 
-{#each optionsPerCategory as options}
+{#each formOptions as options}
 	{#each Object.keys(options) as familyName}
 		{@const family = options[familyName]}
 		<Fieldset
@@ -138,20 +137,17 @@
 				{#if styles[category] && styles[category][familyName]}
 					{@const {id, input, name, value, items} = styleInput}
 					{@const currentValue = styles[category][familyName][name] ?? value}
+					Current Value {currentValue}
+					ITem value {value}
 					{#if input === 'toggle'}
 						{@const updatedItems = items.map((i) => {
-							const initial =
-								currentValue !== '' && i.value === currentValue
-									? 'active'
-									: 'inactive'
-							const updatedItem = {
+							return {
 								...i,
 								text: i.text || '',
 								asset: i.asset || '',
-								initial: initial,
+								initial: i.value === currentValue ? 'active' : 'inactive',
 								name: i.id,
 							}
-							return updatedItem
 						})}
 						<ToggleMenu
 							{id}
@@ -166,6 +162,7 @@
 							{formaction}
 							onupdate={(event) =>
 								handleToggle(event, familyName, styleInput.id)}
+							onload={(event) => handleToggle(event, familyName, styleInput.id)}
 						/>
 					{:else}
 						<div class={`l:${family.layout}:${family.size} bg:polar`}>

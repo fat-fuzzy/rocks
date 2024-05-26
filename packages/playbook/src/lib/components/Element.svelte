@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
-	import type {StyleTree} from '$lib/api/styles.types'
 	import type {Meta} from '$lib/props/types'
 
 	import PlaybookStore from '$lib/api/store.svelte'
@@ -51,8 +50,11 @@
 
 	const stylesApi: StylesApi = getContext('stylesApi')
 	const playbookStore: PlaybookStore = getContext('playbookStore')
-	let styles: StyleTree = $derived(stylesApi.getStyleTree())
+	let styles = $derived(playbookStore.styles)
+	let elementStyles = $derived(styles.blocks.element)
+	let containerStyles = $derived(styles.layouts.container)
 	let settings = $derived(playbookStore.app)
+
 	// App settings (user controlled)
 	//== App settings (user controlled)
 	let brightness = $derived(settings.brightness)
@@ -61,9 +63,9 @@
 	//== Layout settings (user controlled)
 	// Container options
 	// - [container + size] work together
-	let container = $derived(styles.layouts?.container.container ?? '')
-	let size = $derived(styles.layouts?.container.size ?? '') // Container size
-	let status = $derived(styles.blocks?.element.status ?? '')
+	let container = $derived(containerStyles.container ?? '')
+	let size = $derived(containerStyles.size ?? '') // Container size
+	let status = $derived(elementStyles.status ?? '')
 
 	let containerClasses = $derived(`l:${container}:${size} content`)
 	let fixtures = $derived(getFixtures({category, component: title}))

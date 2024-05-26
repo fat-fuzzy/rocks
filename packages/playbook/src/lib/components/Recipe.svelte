@@ -1,10 +1,6 @@
 <script lang="ts">
-	import type {StylesApi} from '$lib/api/styles.api'
-	import type {StyleTree} from '$lib/api/styles.types'
-
 	import {getContext} from 'svelte'
-
-	import * as ui from '$lib/api/store.svelte'
+	import PlaybookStore from '$lib/api/store.svelte'
 
 	type Props = {
 		title: string
@@ -13,7 +9,6 @@
 		props: any
 		actionPath?: string
 		redirect?: string
-		settings?: any
 	}
 
 	let {
@@ -23,44 +18,33 @@
 		props,
 		actionPath,
 		redirect,
-		settings = ui,
 	}: Props = $props()
 
 	let page = ''
 
-	const stylesApi: StylesApi = getContext('stylesApi')
-	let styles: StyleTree = $derived(stylesApi.getStyleTree())
-
-	// Block options
-	let color = $derived(styles.blocks?.element.color ? props?.color : '')
-	let size = $derived(styles.blocks?.element.size ? props?.size : '') // element's own size
-	let asset = $derived(styles.blocks?.element.asset ? props?.asset : '')
-	let variant = $derived(styles.blocks?.element.variant ? props?.variant : '')
-	// Layout options
-	// - [layout + breakpoint] work together
-	let layout = $derived(styles.layouts?.layout.layout ? props?.layout : '')
-	let threshold = $derived(
-		styles.layouts?.layout.threshold ? props?.threshold : '',
-	)
-	let breakpoint = $derived(
-		styles.blocks?.element.breakpoint ? props?.breakpoint : '',
-	)
+	const playbookStore: PlaybookStore = getContext('playbookStore')
+	let styles = $derived(playbookStore.styles)
+	let elementStyles = $derived(styles.blocks.element)
+	let layoutStyles = $derived(styles.layouts.layout)
+	let settings = $derived(playbookStore.app)
 
 	let recipeProps = $derived({
 		...props,
 		page,
 		title,
-		asset,
-		color,
-		variant,
-		size,
-		layout,
-		breakpoint,
-		threshold,
 		name: `ui-${name}`,
 		settings,
 		actionPath,
 		redirect,
+		// Block style options
+		asset: elementStyles.asset,
+		color: elementStyles.color,
+		size: elementStyles.size,
+		variant: elementStyles.variant,
+		// Layout style options
+		layout: layoutStyles.layout,
+		threshold: layoutStyles.threshold,
+		breakpoint: layoutStyles.breakpoint,
 	})
 </script>
 

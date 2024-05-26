@@ -1,8 +1,6 @@
 <script lang="ts">
-	import type {StylesApi} from '$lib/api/styles.api'
-	import type {StyleTree} from '$lib/api/styles.types'
-
 	import {getContext} from 'svelte'
+	import PlaybookStore from '$lib/api/store.svelte'
 
 	type Props = {
 		title: string
@@ -12,26 +10,23 @@
 
 	let {title, component, props}: Props = $props()
 
-	const stylesApi: StylesApi = getContext('stylesApi')
+	const playbookStore: PlaybookStore = getContext('playbookStore')
+	let styles = $derived(playbookStore.styles)
+	let tokenStyles = $derived(styles.tokens.element)
 
 	let variant = ''
-	let asset = props?.asset || ''
 	let size = '' // element's own size
-
-	let styles: StyleTree = $derived(stylesApi.getStyleTree())
 
 	// Block options
 	// $: variant = styles.tokens?.element.variant ?? variant
-	let color = $derived(styles.tokens?.element.color ?? '')
-	let typography = $derived(styles.tokens?.element.typography ?? '')
 	let componentProps = $derived({
 		...props,
-		asset,
+		asset: props?.asset || '',
 		title,
-		color,
+		color: tokenStyles.color,
 		variant,
 		size,
-		typography,
+		typography: tokenStyles.typography,
 	})
 </script>
 

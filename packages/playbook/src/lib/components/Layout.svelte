@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import type {StylesApi} from '$lib/api/styles.api'
 	import type {StyleTree} from '$lib/api/styles.types'
 
 	import PlaybookStore from '$lib/api/store.svelte'
@@ -17,20 +16,22 @@
 
 	let category = 'layouts'
 
-	const stylesApi: StylesApi = getContext('stylesApi')
 	const playbookStore: PlaybookStore = getContext('playbookStore')
-	let styles: StyleTree = $derived(stylesApi.getStyleTree())
+	let styles = $derived(playbookStore.styles)
+	let elementStyles = $derived(styles.blocks.element)
+	let layoutStyles = $derived(styles.layouts.layout)
+
 	let settings = $derived(playbookStore.app)
 
 	// App options
 	let background = $derived(settings.contrast ?? '')
 	// Block options
-	let size = $derived(styles.blocks?.element?.size ?? '') // element's own size
-	let color = $derived(styles.blocks?.element?.color ?? '')
-	let variant = $derived(styles.blocks?.element?.variant ?? '')
+	let size = $derived(elementStyles.size ?? '') // element's own size
+	let color = $derived(elementStyles.color ?? '')
+	let variant = $derived(elementStyles.variant ?? '')
 	// Layout options
-	let breakpoint = $derived(styles.layouts?.layout.breakpoint ?? '') // element's own breakpoint
-	let threshold = $derived(styles.layouts?.layout.threshold ?? '') // element's own threshold
+	let breakpoint = $derived(layoutStyles.breakpoint ?? '') // element's own breakpoint
+	let threshold = $derived(layoutStyles.threshold ?? '') // element's own threshold
 	// Content options
 	// let content = $derived(styles.layouts?.content.content ?? 'card')
 	// let sideContent = $derived(styles.layouts?.content.side ?? 'card')
