@@ -8,7 +8,7 @@
 	const {Fieldset, InputRange} = blocks
 	const {ToggleMenu, InputGroup} = recipes
 
-	import * as ui from '$lib/api/store.svelte'
+	import PlaybookStore from '$lib/api/store.svelte'
 
 	type Props = {
 		category?: string
@@ -19,6 +19,7 @@
 	let {category = 'app', formaction, meta}: Props = $props()
 
 	const stylesApi: StylesApi = getContext('stylesApi')
+	const playbookStore: PlaybookStore = getContext('playbookStore')
 
 	let apiSize = 'xs'
 	let apiColor = 'primary'
@@ -44,12 +45,12 @@
 			const familyValue = {[family]: styleValue}
 			styles[category] = {...styles[category], ...familyValue}
 			if (style === 'brightness' || style === 'contrast') {
-				ui.app.set({...settings.app, [style]: value})
+				playbookStore.app = {...settings.app, [style]: value}
 			}
 		})
 		stylesApi.applyStyles(styles)
 
-		ui.styles.set(stylesApi.getStyleTree()) // This updates on the client if JS is available
+		playbookStore.styles = stylesApi.getStyleTree() // This updates on the client if JS is available
 	}
 
 	function handleInput(event, name: string) {
@@ -121,6 +122,7 @@
 </script>
 
 <svelte:window on:keydown={keydown} />
+
 {#each optionsPerCategory as options}
 	{#each Object.keys(options) as familyName}
 		{@const family = options[familyName]}
@@ -138,12 +140,15 @@
 					{@const currentValue = styles[category][familyName][name] ?? value}
 					{#if input === 'toggle'}
 						{@const updatedItems = items.map((i) => {
-							const pressed = currentValue !== '' && i.value === currentValue
+							const initial =
+								currentValue !== '' && i.value === currentValue
+									? 'active'
+									: 'inactive'
 							const updatedItem = {
 								...i,
 								text: i.text || '',
 								asset: i.asset || '',
-								initial: pressed,
+								initial: initial,
 								name: i.id,
 							}
 							return updatedItem
