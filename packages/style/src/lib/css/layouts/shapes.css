@@ -21,8 +21,8 @@
 
 button[class*='shape:'] {
 	padding: calc(var(--ui-size-sm) - var(--size-ratio-md) * 1px);
-	height: 100%;
-	width: auto;
+	block-size: 100%;
+	inline-size: auto;
 }
 
 .shape\:round[class*='l:stack']:only-child::before,

@@ -13,20 +13,19 @@
 .l\:stack\:auto > * {
 	inline-size: auto;
 }
-
-[class*='l\:stack']:only-child {
-	/* ↓ `height` in horizontal\:tb writing mode */
-	block-size: 100%;
-	/* ↓ `width` in horizontal\:tb writing mode */
-	inline-size: 100%;
+[class*='l\:stack'] > * + * {
+	margin-block-start: var(--gap);
 }
 
 [class*='l\:stack'].recursive * + * {
 	margin-block-start: var(--gap);
 }
 
-[class*='l\:stack'] > * + * {
-	margin-block-start: var(--gap);
+[class*='l\:stack'].w\:full:only-child {
+	/* ↓ `height` in horizontal\:tb writing mode */
+	block-size: 100%;
+	/* ↓ `width` in horizontal\:tb writing mode */
+	inline-size: 100%;
 }
 
 .l\:stack\:2xs {

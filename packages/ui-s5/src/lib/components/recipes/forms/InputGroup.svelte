@@ -26,8 +26,9 @@
 
 	function handleInput(event, name: string) {
 		let payload = {
+			id,
 			name,
-			event,
+			value: event.value,
 		}
 		if (onupdate) {
 			onupdate(payload)

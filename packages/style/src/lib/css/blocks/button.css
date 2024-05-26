@@ -13,7 +13,8 @@ button {
 	display: flex;
 	justify-content: center;
 	flex-wrap: nowrap;
-	min-width: max-content;
+	block-size: fit-content;
+	min-block-size: max-content;
 	font-size: var(--font-size);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
@@ -21,6 +22,13 @@ button {
 	padding: var(--ui-size) var(--ui-size-lg); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
 	border-radius: var(--border-radius-base);
 	border: var(--border-width-md) solid var(--border-color);
+}
+
+button.variant\:fill {
+	--chroma: var(--color-chroma-300);
+	--lightness: var(--color-lightness-300);
+	--chroma-contrast: var(--color-chroma-000);
+	--lightness-contrast: var(--color-lightness-000);
 }
 
 button.variant\:outline {
