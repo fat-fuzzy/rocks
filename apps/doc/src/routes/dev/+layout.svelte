@@ -1,14 +1,17 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {recipes, layouts} from '@fat-fuzzy/ui-s5'
+	import {recipes, layouts, headless} from '@fat-fuzzy/ui-s5'
+
+	const {Head} = headless
 	const {Sidebar} = layouts
 	const {Nav} = recipes
 
+	let {children} = $props()
 	let title = ' Fat Fuzzy Dev'
 	let description =
 		'Fat Fuzzy Dev: how to use the packages in this project to develop other apps'
-	$: path = ''
-	$: items = [
+	let path = ''
+	let items = [
 		{
 			slug: 'dev',
 			title: 'Dev',
@@ -21,16 +24,19 @@
 	]
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={description} />
-</svelte:head>
+<Head page={title} {description} />
 
 <Sidebar size="xs">
-	<svelte:fragment slot="side">
-		<Nav {items} {path} size="md" color="primary" background="polar" />
-	</svelte:fragment>
-	<div slot="main" class="l:center l:stack:xxl">
-		<slot />
-	</div>
+	{#snippet side()}
+		<Nav id='nav-dev' title='nav-dev' {items} {path} background="polar" size="md" color="primary" />
+	{/snippet}
+	{#snippet main()}
+		<div class="l:center l:stack:xxl">
+			{#if children}
+				{@render children()}
+			{:else}
+				<p class="feedback bare emoji:default">Doc Coming Soon!</p>
+			{/if}
+		</div>
+	{/snippet}
 </Sidebar>

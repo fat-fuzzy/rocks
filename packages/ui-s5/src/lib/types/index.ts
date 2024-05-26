@@ -73,7 +73,7 @@ export type UiContentProps = {
 	/**
 	 * Content props
 	 */
-	id: string
+	id?: string
 	title?: string
 	children?: Snippet
 }

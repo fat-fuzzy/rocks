@@ -6,11 +6,12 @@
 	const {Sidebar} = layouts
 	const {Nav} = recipes
 
+	let {children} = $props()
 	let title = ' FatFuzzy Log'
 	let description =
 		'Fat Fuzzy Log: thoughts and choices that provide context for this project'
-	$: path = ''
-	$: items = [
+	let path = ''
+	let items = [
 		{
 			slug: 'log',
 			title: 'Log',
@@ -26,10 +27,16 @@
 <Head page={title} {description} />
 
 <Sidebar size="xs">
-	<svelte:fragment slot="side">
-		<Nav {items} {path} background="polar" size="md" color="primary" />
-	</svelte:fragment>
-	<div slot="main" class="l:center l:stack:xxl">
-		<slot />
-	</div>
+	{#snippet side()}
+		<Nav id='nav-log' title='nav-log' {items} {path} background="polar" size="md" color="primary" />
+	{/snippet}
+	{#snippet main()}
+		<div class="l:center l:stack:xxl">
+			{#if children}
+				{@render children()}
+			{:else}
+				<p class="feedback bare emoji:default">Doc Coming Soon!</p>
+			{/if}
+		</div>
+	{/snippet}
 </Sidebar>
