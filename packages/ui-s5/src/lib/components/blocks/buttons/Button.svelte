@@ -5,6 +5,7 @@
 		id = 'button', // TODO: use for machine id
 		name = 'button',
 		title,
+		text,
 		value,
 		disabled,
 		formaction,
@@ -68,5 +69,7 @@
 >
 	{#if children}
 		{@render children()}
+	{:else if text}
+		{text}
 	{/if}
 </button>

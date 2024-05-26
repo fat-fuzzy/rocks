@@ -9,6 +9,7 @@ export type ButtonProps = UiStyleProps & {
 	 */
 	id: string // Use for machine id
 	name: string
+	text?: string
 	title?: string
 	value?: string | number
 	disabled?: boolean
