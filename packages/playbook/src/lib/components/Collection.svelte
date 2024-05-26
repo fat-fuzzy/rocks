@@ -58,7 +58,7 @@
 
 {#if isPage}
 	<div class="l:sidebar:xs align-content:end">
-		<section class={`main ${layoutClass}`}>
+		<section class={`l:main ${layoutClass}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
 				<Element
@@ -73,7 +73,7 @@
 				/>
 			{/each}
 		</section>
-		<section class="side">
+		<section class="l:side">
 			<div class="l:stack:lg">
 				<details id={`${category}-api`} class="l:stackmd" open>
 					<summary class={`box:${color} bg:${color}`}>Props</summary>
