@@ -1,6 +1,6 @@
 import type {Snippet} from 'svelte'
 
-import type {UiStyleProps} from '$types/index.js'
+import type {UiBlockProps} from '$types/index.js'
 import type {FormProps} from '$lib/components/recipes/forms/forms.types.js'
 import type {SwitchProps} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
@@ -9,7 +9,7 @@ export type SettingsItems = {
 	links: {[key: string]: string}[]
 }
 
-export type SettingsProps = UiStyleProps &
+export type SettingsProps = UiBlockProps &
 	FormProps & {
 		breakpoint: string
 		id: string

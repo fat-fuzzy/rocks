@@ -1,7 +1,7 @@
-import type {UiStyleProps} from '$lib/types/index.js'
+import type {UiBlockProps} from '$lib/types/index.js'
 import type {RevealLayoutProps} from '$lib/components/layouts/layout.types.js'
 
-export type NavProps = UiStyleProps & {
+export type NavProps = UiBlockProps & {
 	id: string
 	title: string
 	path: string
@@ -14,7 +14,7 @@ export type NavProps = UiStyleProps & {
 	items: any[]
 }
 
-export type LinkListProps = UiStyleProps & {
+export type LinkListProps = UiBlockProps & {
 	id: string
 	depth: number
 	path: string

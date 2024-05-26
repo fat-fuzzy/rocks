@@ -1,4 +1,4 @@
-import {UiState, type ButtonEventType, type UiStyleProps} from '$types/index.js'
+import {UiState, type ButtonEventType, type UiBlockProps} from '$types/index.js'
 import type {Snippet} from 'svelte'
 import type {ButtonType} from '../button.types.js'
 
@@ -13,7 +13,7 @@ export type TogglePayload = {
 	update?: (event: ButtonEventType) => void
 }
 
-export type ToggleProps = UiStyleProps & {
+export type ToggleProps = UiBlockProps & {
 	/**
 	 * State props
 	 */

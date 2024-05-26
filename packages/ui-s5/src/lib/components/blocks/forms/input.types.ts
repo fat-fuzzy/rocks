@@ -1,7 +1,7 @@
 import type {Snippet} from 'svelte'
-import type {InputType, InputPayload, UiStyleProps} from '$types'
+import type {InputType, InputPayload, UiBlockProps} from '$types'
 
-export type InputProps = UiStyleProps & {
+export type InputProps = UiBlockProps & {
 	/**
 	 * State props
 	 */
@@ -17,7 +17,7 @@ export type InputProps = UiStyleProps & {
 	oninput?: (payload: InputPayload) => void
 }
 
-export type FieldsetProps = UiStyleProps & {
+export type FieldsetProps = UiBlockProps & {
 	/**
 	 * State props
 	 */

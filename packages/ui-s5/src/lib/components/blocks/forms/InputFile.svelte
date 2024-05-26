@@ -26,9 +26,13 @@
 	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${fontClass}`
 
 	/* Context styles */
-	let layoutClasses = breakpoint ? `l:${layout} bp:${breakpoint}` : `l:${layout}`
+	let layoutClasses = breakpoint
+		? `l:${layout} bp:${breakpoint}`
+		: `l:${layout}`
 	let hintClasses = `feedback card:${size} ${asset} ${status} ${colorClass} ${variantClass} ${alignClass}`
-	hintClasses = fontClass ? `${hintClasses} ${fontClass}:minus` : `${hintClasses}`
+	hintClasses = fontClass
+		? `${hintClasses} ${fontClass}:minus`
+		: `${hintClasses}`
 
 	let inputClasses = `${layoutClasses} ${elementClasses}`
 </script>
@@ -42,7 +46,9 @@
 		{id}
 		{name}
 		accept={fileType}
-		aria-describedby={/* TODO: check is this correct? */ hint ? `${id}-hint` : ''}
+		aria-describedby={/* TODO: check is this correct? */ hint
+			? `${id}-hint`
+			: ''}
 		{multiple}
 		class={`bg:${color}`}
 		{disabled}

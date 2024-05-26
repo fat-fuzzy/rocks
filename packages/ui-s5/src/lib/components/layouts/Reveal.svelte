@@ -1,8 +1,7 @@
 <script lang="ts">
 	import {clickOutside} from '$lib/utils/click-outside.js'
-	import type {LayoutProps} from './layout.types.js'
+	import type {RevealLayoutProps} from './layout.types.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-
 
 	let {
 		id = 'reveal',
@@ -21,8 +20,8 @@
 		height,
 		background,
 		asset,
-		content,
-	}: LayoutProps = $props()
+		children,
+	}: RevealLayoutProps = $props()
 
 	let expanded = false
 
@@ -46,10 +45,10 @@
 		: undefined
 </script>
 
-<div
+<form {method} {action}
 	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size} ${direction}`}
 	use:clickOutside
-	on:clickOutside={handleClickOutside}
+	onclickOutside={handleClickOutside}
 >
 	<Expand
 		id={`button-reveal-${id}`}
@@ -70,13 +69,8 @@
 		{title}
 	</Expand>
 	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
-		{#if content}
-			{@render content()}
-			{:else}
-			<div class={`card:lg`}>
-				<h3>Revealed Content</h3>
-				<p>This is a card with some content</p>
-			</div>
+		{#if children}
+			{@render children()}
 		{/if}
 	</div>
-</div>
+</form>

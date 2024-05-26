@@ -1,14 +1,30 @@
 import type {Snippet} from 'svelte'
-import type {UiStyleProps} from '$types/index.js'
-import type {FormProps} from '../recipes/forms/forms.types.js'
+import type {UiLayoutProps, UiContentProps, UiBlockProps} from '$types/index.js'
+import type {FormProps} from '$lib/components/recipes/forms/forms.types.js'
 
-export type LayoutProps = UiStyleProps &
-	FormProps & {
-		id: string
-		title?: string
-		content?: Snippet
+export type LayoutProps = UiLayoutProps & UiContentProps & FormProps
+
+export type DetailsLayoutProps = LayoutProps & {
+	summary: Snippet
+	variant?: string
+}
+
+export type GridLayoutProps = LayoutProps & {
+	areas: string
+	flex?: boolean
+	navs?: Snippet
+	content?: Snippet
+	header?: Snippet
+	actions?: Snippet
+	footer?: Snippet
+}
+
+export type RevealLayoutProps = LayoutProps &
+	UiBlockProps & {
+		reveal: string
 	}
 
-export type RevealLayoutProps = LayoutProps & {
-	reveal: string
+export type SidebarLayoutProps = LayoutProps & {
+	main?: Snippet
+	side?: Snippet
 }

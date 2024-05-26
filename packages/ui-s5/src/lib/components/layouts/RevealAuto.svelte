@@ -26,13 +26,10 @@
 		height,
 		background,
 		asset,
-		content,
+		children,
 	}: RevealLayoutProps = $props()
 
 	let expanded = false
-	// function handleClickOutside() {
-	// 	dispatch('toggle', {reveal: 'minimize'})
-	// }
 
 	function handleToggle(event) {
 		expanded = !expanded
@@ -44,7 +41,8 @@
 	let showContent = reveal === 'show' ? show : 'hide:viz-only'
 	let revealClasses = `form:expand align-self:${buttonAlign} maki:inline lg`
 	let layoutClass = layout ? `l:${layout}:${size}` : ''
-	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
+	let setHeight = height ? ` h:${height}` : ''
+	let layoutClasses = `${layoutClass} ${setHeight} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
 	let action = formaction
 		? redirect
@@ -84,13 +82,13 @@
 					id: 'show',
 					text: 'Context',
 					value: 'show',
-					asset: 'emoji:context',
+					asset: asset ?? 'emoji:context',
 				},
 				collapsed: {
 					id: 'minimize',
 					text: 'Context',
 					value: 'minimize',
-					asset: 'emoji:context',
+					asset: asset ?? 'emoji:context',
 				},
 			}}
 			onclick={handleToggle}
@@ -102,13 +100,8 @@
 		id={`reveal-auto-${id}`}
 		class={`${layoutClass} ${showContent} ${direction} hug`}
 	>
-	{#if content}
-		{@render content()}
-	{:else}
-		<div class={`layer card:${size}`}>
-			<h3>Revealed Content</h3>
-			<p>This is a card with some content</p>
-		</div>
+	{#if children}
+		{@render children()}
 	{/if}
 	</div>
 </div>

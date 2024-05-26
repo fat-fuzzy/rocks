@@ -1,14 +1,11 @@
 <script lang="ts">
-	import type { Snippet } from "svelte"
+	import type { LayoutProps } from "./layout.types.js"
 
-	type Props = {size: string, content?: Snippet}
-	let {size = 'md', content}: Props = $props()
+	let {size = 'md', children}: LayoutProps = $props()
 </script>
 
 <div class={`l:burrito:${size}`}>
-	{#if content}
-		{@render content()}
-	{:else}
-		<p>Placeholder content</p>
+	{#if children}
+		{@render children()}
 	{/if}
 </div>

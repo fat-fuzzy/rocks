@@ -1,9 +1,9 @@
 import type {Snippet} from 'svelte'
-import type {UiStyleProps} from '$types/index.js'
+import type {UiBlockProps} from '$types/index.js'
 
 export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 
-export type ButtonProps = UiStyleProps & {
+export type ButtonProps = UiBlockProps & {
 	/**
 	 * State props
 	 */

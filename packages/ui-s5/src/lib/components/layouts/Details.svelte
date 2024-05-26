@@ -1,26 +1,16 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
+	import type { DetailsLayoutProps } from "./layout.types.js"
 
-	type Props = {
-		layout: string
-		size: string
-		breakpoint: string
-		variant: string
-		align: string
-		id: string
-		summary?: Snippet
-		content?: Snippet
-	}
 	let {
-		layout = '',
-		size = '',
-		breakpoint = '',
-		variant = '',
+		layout,
+		size,
+		breakpoint,
+		variant,
 		align = 'start',
 		id = 'reveal',
 		summary,
-		content,
-	}: Props = $props()
+		children,
+	}: DetailsLayoutProps = $props()
 
 	let expanded = $state(false)
 
@@ -45,8 +35,8 @@
 	{/if}
 	</summary>
 	<div class={`${align} ${show}`}>
-		{#if content}
-			{@render content()}
+		{#if children}
+			{@render children()}
 		{:else}
 			<div class={`card layer ${size}`}>
 				<h3>Revealed Content</h3>

@@ -1,3 +1,5 @@
+import type {Snippet} from 'svelte'
+
 export type InputType =
 	| 'text'
 	| 'number'
@@ -38,27 +40,42 @@ export type InputPayload = {
 	value: string
 }
 
-export type UiStyleProps = {
+export type UiLayoutProps = {
 	/**
-	 * Style props
+	 * Layout props
 	 */
 	align?: string
-	asset?: string // emoji:value or svg:value
-	color?: string
 	size?: string
-	shape?: string
-	variant?: string
-	background?: string
 
 	container?: string
 	direction?: string
 	place?: string
 	position?: string
 	dimensions?: string
-	height?: string
 	layout?: string
 	threshold?: string
 	breakpoint?: string
+}
+
+export type UiBlockProps = UiLayoutProps & {
+	/**
+	 * Block props
+	 */
+	asset?: string // emoji:value or svg:value
+	color?: string
+	shape?: string
+	variant?: string
+	background?: string
+	height?: string
+}
+
+export type UiContentProps = {
+	/**
+	 * Content props
+	 */
+	id: string
+	title?: string
+	children?: Snippet
 }
 
 export type ButtonState = {

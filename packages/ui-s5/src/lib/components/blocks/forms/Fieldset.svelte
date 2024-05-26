@@ -2,9 +2,9 @@
 	import type {FieldsetProps} from './input.types.js'
 
 	let {
-		id = '',
-		name = '',
-		legend = '',
+		id,
+		name,
+		legend,
 		type, // input group if any
 		disabled,
 
@@ -28,13 +28,12 @@
 		? `l:${layout}:${size} ${thresholdClass} ${breakpointClass}`
 		: ''
 	let backgroundClass = background ? `bg:${background}` : ''
-	let sizeClass = size ? `font:${size}` : ''
+	let fontClass = size ? `font:${size}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
-	let variantClass = variant ? `${variant}:${size}` : ''
-	let contentClass = `${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${type || ''} ${
-		color || ''
-	}`
+	let variantClass = variant ? `variant:${variant}` : ''
+	let sizeClass = size ? `size:${size}` : ''
+	let contentClass = `${sizeClass} ${fontClass} ${variantClass} ${alignClass} ${justifyClass} ${type || ''}`
 	let classes = `${layoutClass} ${containerClass} ${backgroundClass} ${variantClass} ${contentClass}`
 </script>
 

@@ -23,8 +23,27 @@
 	function handleInput(event) {
 		if (oninput) oninput({value})
 	}
+	/* Element styles */
+	let colorClass = color ? `color:${color}` : ''
+	let sizeClass = size ? `size:${size}` : ''
+	let fontClass = size ? `font:${size}` : ''
+	let variantClass = variant ? `variant:${variant}` : ''
+	let alignClass = align ? `align:${align}` : ''
 	let backgroundClass = background ? `bg:${background}` : ''
-	let classes = `l:${layout}:${size} check ${size} font:${size} ${color} ${variant} align:${align} ${backgroundClass} ${container} ${asset}`
+
+	/* Context styles */
+	let containerClasses =
+		container && size
+			? `l:${container}:${size}`
+			: container
+				? `l:${container} `
+				: ''
+	let layoutClasses = layout ? `l:${layout}` : ''
+	let contextClasses = `${containerClasses} ${layoutClasses}`
+
+	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${fontClass} ${backgroundClass}`
+
+	let classes = `${contextClasses} ${elementClasses}`
 </script>
 
 <label for={id} class={classes}>

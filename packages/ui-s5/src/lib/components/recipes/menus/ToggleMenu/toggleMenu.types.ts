@@ -1,4 +1,4 @@
-import {UiState, type UiStyleProps} from '$types/index.js'
+import {UiState, type UiBlockProps} from '$types/index.js'
 import type {
 	TogglePayload,
 	ToggleProps,
@@ -8,7 +8,7 @@ export type ToggleState = UiState.active | UiState.inactive
 
 export type ToggleMenuPayload = TogglePayload | TogglePayload[]
 
-export type ToggleMenuProps = UiStyleProps & {
+export type ToggleMenuProps = UiBlockProps & {
 	/**
 	 * State props
 	 */
