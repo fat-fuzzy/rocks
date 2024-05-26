@@ -32,12 +32,12 @@
 	let sidebarReveal: {[key: string]: string} = $state({reveal: ''})
 	setContext('stylesApi', stylesApi)
 	setContext('playbookStore', playbookStore)
-	setContext('styles', stylesApi.getStyleTree())
 
 	const {styles, context, ui} = $page.data
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = constants
 
-	playbookStore.styles = styles
+	stylesApi.applyStyles(styles)
+	playbookStore.styles = stylesApi.getStyleTree()
 	playbookStore.reveal = context
 	playbookStore.navReveal = ui?.navReveal || DEFAULT_NAV_REVEAL_STATE
 	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
@@ -98,7 +98,7 @@
 			id="nav-page"
 			{items}
 			path=""
-			settings={stores.settings}
+			settings={playbookStore.app}
 			breakpoint="sm"
 			size="md"
 			color="bg:primary:light"
