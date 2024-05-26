@@ -24,13 +24,6 @@ button {
 	border: var(--border-width-md) solid var(--border-color);
 }
 
-button.variant\:fill {
-	--chroma: var(--color-chroma-300);
-	--lightness: var(--color-lightness-300);
-	--chroma-contrast: var(--color-chroma-000);
-	--lightness-contrast: var(--color-lightness-000);
-}
-
 button.variant\:outline {
 	--border-color: var(--ink);
 	--lightness: var(--color-lightness-600);
@@ -68,7 +61,12 @@ button.variant\:bare:active {
 	background-color: var(--bg-color);
 }
 
-button:not([class*=':neutral']) {
+button[class*='bg:']:not([class*=':neutral']) {
+	&.variant\:fill {
+		--chroma: var(--color-chroma-300);
+		--chroma-contrast: var(--color-chroma-000);
+	}
+
 	&.variant\:outline {
 		--chroma: var(--color-chroma-600);
 		--chroma-contrast: var(--color-chroma-300);
