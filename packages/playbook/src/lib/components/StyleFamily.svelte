@@ -92,15 +92,31 @@
 		familyName: string,
 		id: string,
 	) {
-		let payload = {
+		let payload: {
+			id: string
+			name: string
+			items: {id: string; name: string; value: string}[]
+		} = {
+			id,
 			name: familyName.toLowerCase(),
-			items: selected.map((item) => {
+			items: [],
+		}
+		if (selected.length) {
+			payload.items = selected.map((item) => {
 				return {
 					id,
 					name: item.name.toLowerCase(),
 					value: String(item.value),
 				}
-			}),
+			})
+		} else {
+			payload.items = [
+				{
+					id,
+					name: id,
+					value: '',
+				},
+			]
 		}
 		updateStyles(payload)
 	}
@@ -182,7 +198,7 @@
 									size={apiSize}
 									color={apiColor}
 									variant={styleInput.variant}
-									onchanged={(event) => handleInput(event, familyName)}
+									onupdate={(event) => handleInput(event, familyName)}
 								/>
 							{/if}
 							{#if input == 'range'}
