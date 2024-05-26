@@ -17,6 +17,7 @@
 		blur?: number[]
 		convolutions?: string[]
 		onupdate: (payload: any) => void // TODO: Fix type
+		onload: (payload: any) => void // TODO: Fix type
 	}
 
 	let {size = 'xs', channels, blur, convolutions, onupdate}: Props = $props()
@@ -55,6 +56,36 @@
 			value: b,
 		})) || [],
 	)
+
+	function loadChannel(selected: {name: string}[]) {
+		if (selected[0]) {
+			filters.channels = selected[0].name
+		} else {
+			filters.channels = 'rgba'
+		}
+		onload(filters)
+	}
+
+	function loadBlur(
+		selected: {
+			name: string
+		}[],
+	) {
+		if (selected[0]) {
+			filters.blur = Number(selected[0].name)
+		} else {
+			filters.blur = 0
+		}
+		onload(filters)
+	}
+
+	function loadEffects(selected: {name: string}[]) {
+		filters.convolutions = selected.map((s) => s.name)
+		if (filters.convolutions.length === 0) {
+			filters.convolutions = ['normal']
+		}
+		onload(filters)
+	}
 
 	function updateChannel(selected: {name: string}[]) {
 		if (selected[0]) {
@@ -97,6 +128,7 @@
 		variant="bare"
 		items={channelMenuItems}
 		onupdate={updateChannel}
+		onload={loadChannel}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}
@@ -110,6 +142,7 @@
 		variant="bare"
 		items={blurMenuItems}
 		onupdate={updateBlur}
+		onload={loadBlur}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}
@@ -123,6 +156,7 @@
 		variant="bare"
 		items={effectMenuItems}
 		onupdate={updateEffects}
+		onload={loadEffects}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}

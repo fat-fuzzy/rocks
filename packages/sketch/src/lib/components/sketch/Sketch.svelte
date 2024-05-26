@@ -176,6 +176,7 @@
 		scene.update({...context, filters})
 		store.update(ControlsEvent.update)
 	}
+
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
@@ -212,6 +213,14 @@
 			render()
 		}
 		store.update(ControlsEvent.update)
+	}
+
+	function loadFilters(filters: Filters) {
+		scene.update({...context, filters})
+		if (meta.controls.includes('texture')) {
+			render()
+		}
+		store.update(SketchEvent.loadOk)
 	}
 
 	onMount(() => {
@@ -294,6 +303,7 @@
 									blur={meta.filters?.blur}
 									convolutions={meta.filters?.convolutions}
 									onupdate={updateFilters}
+									onload={loadFilters}
 								/>
 							{/key}
 						{/if}
