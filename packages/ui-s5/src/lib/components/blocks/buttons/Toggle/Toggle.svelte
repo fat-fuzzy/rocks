@@ -2,6 +2,7 @@
 	import { UiState, ButtonEventType} from '$types/index.js'
 	import type {ToggleProps} from './toggle.types.js'
 	import ToggleStore from './store.svelte'
+	import { onMount } from 'svelte'
 
 	let {
 		id = 'toggle',
@@ -22,6 +23,7 @@
 		dimensions,
 		layout = 'flex',
 		type = 'submit',
+		onload,
 		onclick,
 		children,
 	}: ToggleProps = $props()
@@ -36,7 +38,7 @@
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value: store.getValue(),
+		value,
 		state: store.getState(),
 		update: store.update.bind(store),
 	})
@@ -65,6 +67,10 @@
 		store.update('toggle' as ButtonEventType)
 		if (onclick) onclick(payload)
 	}
+
+	onMount(() => {
+		if (onload) onload(payload)
+	})
 </script>
 
 <button

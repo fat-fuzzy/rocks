@@ -19,16 +19,14 @@ class ToggleStore {
 		onclick?: (payload: TogglePayload) => void
 	}) {
 		this.state = (initial as UiState) ?? UiState.inactive
-		this.toggleStates.active.onclick = onclick
-		this.toggleStates.inactive.onclick = onclick
+		if (onclick) {
+			this.toggleStates.active.onclick = onclick
+			this.toggleStates.inactive.onclick = onclick
+		}
 	}
 
 	public getState(): ToggleState {
 		return this.state as ToggleState
-	}
-
-	public getValue(): string | number {
-		return this.toggleStates[this.state as ToggleState].value
 	}
 
 	public isPressed(): boolean {

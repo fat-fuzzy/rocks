@@ -2,8 +2,9 @@
 	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 	import type {TogglePayload} from '$lib/components/blocks/buttons/Toggle/toggle.types.js'
 	import type { ButtonType } from '$lib/components/blocks/buttons/button.types.js'
-	import { type ToggleMenuProps, type SelectionMode} from './toggleMenu.types.js'
+	import { type ToggleMenuProps} from './toggleMenu.types.js'
 	import ToggleMenuStore from './store.svelte'
+	import { onMount } from 'svelte'
 
 	let {
 		id = 'toggle-menu',
@@ -18,10 +19,11 @@
 		layout = 'switcher',
 		threshold,
 
-		mode = 'radio' as SelectionMode,
+		mode = 'radio',
 		formaction,
 		items = [],
 		disabled,
+		onload,
 		onupdate,
 	}: ToggleMenuProps = $props()
 
@@ -29,7 +31,7 @@
 	let store = $state(new ToggleMenuStore())
 	store.init({
 		items,
-		mode
+		mode,
 	})
 
 	let type: ButtonType = formaction ? 'submit' : 'button'
@@ -44,6 +46,16 @@
 			onupdate(store.getSelected())
 		}
 	}
+
+	function loadMenu(payload: TogglePayload) {
+		store.update(payload)
+	}
+
+	onMount(() => {
+		if (onload) {
+			onload(store.getSelected())
+		}
+	})
 </script>
 
 {#snippet menuContent()}
@@ -51,6 +63,7 @@
 		{#each store.items as [id, props]}
 			<li>
 				<Toggle
+					onload={loadMenu}
 					onclick={updateMenu}
 					{type}
 					{formaction}

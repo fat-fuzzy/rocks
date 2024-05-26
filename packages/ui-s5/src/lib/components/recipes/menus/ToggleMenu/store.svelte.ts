@@ -3,16 +3,13 @@ import type {
 	ToggleProps,
 	TogglePayload,
 } from '$lib/components/blocks/buttons/Toggle/toggle.types.js'
-import {
-	type ToggleMenuStateType,
-	type SelectionMode,
-} from './toggleMenu.types.js'
+import {type ToggleMenuStateType} from './toggleMenu.types.js'
 
 class ToggleMenuStore {
-	mode: SelectionMode = 'radio'
+	mode = 'radio'
 	items: ToggleMenuStateType = $state(new Map())
 
-	public init({mode, items}: {mode: SelectionMode; items: ToggleProps[]}) {
+	public init({mode, items}: {mode: string; items: ToggleProps[]}) {
 		if (mode) {
 			this.mode = mode
 		}

@@ -29,11 +29,12 @@ export type ToggleProps = UiStyleProps & {
 	value: string | number
 	states?: ToggleStateType // this component contains a button that will Toggle between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
 	onclick?: (payload: TogglePayload) => void
+	onload?: (payload: TogglePayload) => void
 }
 
 export type ToggleType = {
 	id: string
-	value: string | number
+	value?: string | number
 	text?: string
 	asset?: string
 	variant?: string
@@ -54,12 +55,10 @@ export type ToggleTransitionsType = {
 export const TOGGLE: ToggleStateType = {
 	active: {
 		id: 'active',
-		value: 'active',
 		state: 'active',
 	},
 	inactive: {
 		id: 'inactive',
-		value: 'inactive',
 		state: 'inactive',
 	},
 }

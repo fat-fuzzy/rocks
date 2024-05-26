@@ -4,8 +4,6 @@ import type {
 	ToggleProps,
 } from '$lib/components/blocks/buttons/Toggle/toggle.types.js'
 
-export type SelectionMode = 'radio' | 'check'
-
 export type ToggleState = UiState.active | UiState.inactive
 
 export type ToggleMenuPayload = TogglePayload | TogglePayload[]
@@ -16,10 +14,13 @@ export type ToggleMenuProps = UiStyleProps & {
 	 */
 	id: string
 	title?: string
-	mode?: SelectionMode
+	mode?: string
 	disabled?: boolean | undefined
 	formaction?: string
 	items: ToggleProps[]
+	onload: (
+		payload: {name: string; value: string | number; state: string}[],
+	) => void
 	onupdate: (
 		payload: {name: string; value: string | number; state: string}[],
 	) => void
