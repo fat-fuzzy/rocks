@@ -70,6 +70,9 @@
 	let categories = $derived(
 		meta.props_style ? Object.keys(meta.props_style) : undefined,
 	)
+	let link = $derived(
+		path.substring(0, path.indexOf(category) + category.length),
+	)
 </script>
 
 {#if isPage}
@@ -134,7 +137,7 @@
 		<header>
 			<a
 				class="title card:sm w:full l:switcher:xs emoji:link outline primary align:center"
-				href={`${path}/${title}`}
+				href={`${link}/${title}`}
 			>
 				<svelte:element this={`h${String(depth)}`} class="link font:lg">
 					{title}
