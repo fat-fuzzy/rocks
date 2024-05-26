@@ -29,9 +29,7 @@
 	/* TODO: use grid for this */
 	/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
 	.l\:reveal[class*='fixed'] {
-		--y-axis: calc(
-			var(--size-ui-header-height) + var(--ui-size-sm) - var(--border-width-md)
-		);
+		--y-axis: calc(var(--size-ui-header-height) + 2.5 * var(--border-width-lg));
 		position: fixed;
 		top: var(--y-axis);
 		bottom: var(--gap);
@@ -51,7 +49,11 @@
 		overflow: auto;
 	}
 
-	.l\:reveal.minimize[class*='fixed'] .content {
+	.l\:reveal[class*='fixed'].show .content > * {
+		inline-size: 100%;
+	}
+
+	.l\:reveal[class*='fixed'].minimize .content {
 		margin-block-start: var(--gap);
 	}
 

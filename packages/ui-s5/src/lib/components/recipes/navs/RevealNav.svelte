@@ -34,7 +34,7 @@
 		align = 'start',
 		place = 'top',
 		position,
-		container = 'card',
+		container,
 		height,
 		background = 'polar',
 		asset,

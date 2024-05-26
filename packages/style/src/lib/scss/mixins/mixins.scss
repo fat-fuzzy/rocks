@@ -43,9 +43,12 @@ $current_cssvars: ();
 
 @mixin generate-emoji-assets($design_tokens, $prefix) {
 	@each $name, $value in $design_tokens {
-		.emoji\:#{$name}::before,
-		.emoji.#{$name}::before,
-		.emoji[class*=':#{$name}']::before {
+		[class*='emoji'][class*='#{$name}']:not([class*='align'])::before,
+		[class*='emoji'][class*='#{$name}'].align\:start::before {
+			content: '#{$value}';
+		}
+
+		[class*='emoji'][class*='#{$name}'].align\:end::after {
 			content: '#{$value}';
 		}
 	}
@@ -73,7 +76,11 @@ $current_cssvars: ();
 	--f-slope: $slope;
 	--f-size-min-0: $size-max;
 	--f-size-max-0: $size-min;
-	--fluid-0: clamp($size-min * 1rem, $y-axis * 1rem + $slope * 100vw, $size-max * 1rem);
+	--fluid-0: clamp(
+		$size-min * 1rem,
+		$y-axis * 1rem + $slope * 100vw,
+		$size-max * 1rem
+	);
 
 	$previous-step: 0;
 	$size-min-step: $size-min;
@@ -137,7 +144,10 @@ $current_cssvars: ();
 	:root {
 		// Generate Typographic variables
 		@include generate-css-vars($modular-scale, $prefix);
-		@include generate-typographic-scale($modular-scale-steps-plus, $modular-scale-steps-minus);
+		@include generate-typographic-scale(
+			$modular-scale-steps-plus,
+			$modular-scale-steps-minus
+		);
 	}
 	@include generate-emoji-assets($emojis, $prefix);
 }

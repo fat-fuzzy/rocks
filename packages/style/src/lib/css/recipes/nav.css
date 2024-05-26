@@ -4,20 +4,23 @@ nav {
 
 nav ul {
 	list-style: none;
-	margin: 0;
-	/* width: 100%; */
 	padding: 0;
+	margin: 0;
 }
 
 /* == Keep nav links to one line with ellipsis == */
 nav li {
 	/* width: 100%; */
-	max-width: calc(var(--sidebar-width) - var(--outline-offset));
+	max-width: calc(var(--sidebar-width) - var(--size-base-2xs));
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding: 0 var(--outline-offset);
+	padding: calc(var(--size-base-2xs) / var(--ratio-md)) var(--size-base-2xs);
 	margin-block: 0;
+}
+
+nav > ul > li:first-child {
+	padding-block-start: var(--ui-size-sm);
 }
 
 nav li a {
@@ -28,6 +31,7 @@ nav li a {
 	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
 	overflow: hidden;
 	text-decoration: none;
+	margin-inline: var(--size-base-2xs);
 }
 
 nav a:hover {
@@ -62,25 +66,6 @@ ul.depth-4 {
 	padding-inline-start: calc(4 * var(--ui-size));
 }
 
-/* Active Link */
-nav li[aria-current='page'] {
-	--hue: var(--color-theme-primary);
-	background-color: var(--shade);
-}
-
-/* Active Link */
-nav li[aria-current='page'] > a,
-nav li[aria-current='page'] > a:visited {
-	text-decoration-color: var(--bg-color);
-}
-
-/* Sidebar active links */
-[class^='l:sidebar'] nav li[aria-current='page'] > a {
-	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-500);
-	padding-inline: var(--ui-size);
-}
-
 /* override Active Link styles for top level link */
 ul.depth-0 > li > a {
 	font-family: var(--font-family-heading);
@@ -89,9 +74,22 @@ ul.depth-0 > li > a {
 
 /* == Link Overrides == */
 
-/* == Override global <a> hover styles in nav and header <a> == */
-nav a:hover {
-	background-color: initial;
+/* Active Link */
+nav li[aria-current='page'] {
+	--lightness: var(--color-lightness-100);
+	--chroma: var(--color-chroma-500);
+	background-color: var(--shade);
+}
+
+nav li[aria-current='page'] > ul {
+	--lightness: var(--color-lightness-light);
+	background-color: var(--shade);
+}
+
+/* Active Link */
+nav li[aria-current='page'] > a,
+nav li[aria-current='page'] > a:visited {
+	text-decoration-color: var(--bg-color);
 }
 
 /* == Override heading styles for headings inside links == */

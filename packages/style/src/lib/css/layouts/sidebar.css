@@ -1,5 +1,5 @@
 [class^='l:sidebar'] {
-	--gap: var(--layout-gap-md);
+	--gap: 0;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -17,10 +17,6 @@
 /* TODO: not sure this rule is necessary */
 [class^='l:sidebar'].end\:reverse {
 	flex-wrap: wrap-reverse;
-}
-
-main > [class^='l:sidebar'] {
-	padding: var(--gap);
 }
 
 [class^='l:main'] {

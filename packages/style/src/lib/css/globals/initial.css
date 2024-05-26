@@ -40,7 +40,6 @@ body {
 }
 
 main {
-	padding: var(--gap);
 	min-height: calc(100vh - var(--size-ui-header-height));
 }
 

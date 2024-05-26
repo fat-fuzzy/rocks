@@ -9,7 +9,7 @@
 		path = '/',
 		layout,
 		size = 'md',
-		color = 'primary:100',
+		color,
 		align,
 		id,
 		depth = 0,
@@ -27,7 +27,8 @@
 	{#each items as item}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
-		{@const itemClass = `relleno ${asset} ${alignClass}`}
+		{@const assetClass = asset ? asset : ''}
+		{@const itemClass = `relleno ${assetClass} ${alignClass}`}
 		<li
 			aria-current={$page.url.pathname === format.formatHref(path, slug)
 				? 'page'

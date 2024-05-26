@@ -100,12 +100,11 @@
 			path=""
 			settings={playbookStore.app}
 			breakpoint="sm"
-			size="md"
-			color="bg:primary:light"
+			size="sm"
+			color="primary"
 			position="fixed"
 			place="left"
 			background="polar"
-			container="card"
 			formaction="toggleSidebar"
 			actionPath="/"
 			redirect={$page.url.pathname}
