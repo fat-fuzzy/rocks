@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import type {StyleTree} from '$lib/api/styles.types'
 
 	import PlaybookStore from '$lib/api/store.svelte'
 	import {getFixtures} from '$lib/fixtures/js'
@@ -40,31 +39,34 @@
 	let sideContent = 'card'
 	let mainContent = 'text'
 	let contentStyles = $derived(`card:${size} box ${size} bg:highlight:lightest`)
+	let fixtures = $derived(getFixtures({category, component: title}))
 </script>
+
+{#snippet children(props, contentType)}
+	{#if contentType === 'text'}
+			<p>{props.text}</p>
+	{:else if contentType === 'card' || contentType === 'form'}
+		{#each props[content] as item}
+			<div class={contentStyles}>{item}</div>
+		{/each}
+	{/if}
+{/snippet}
 
 {#if isPage}
 	{#if title === 'Sidebar'}
-		<svelte:component this={component} id={title} {size} {background} {props}>
-			<div slot="side">
-				{@const fixtureProps = getFixtures({category, component: title})}
-				{#if sideContent === 'text'}
-					<p>{fixtureProps.text}</p>
-				{:else if sideContent === 'card' || sideContent === 'form'}
-					{#each fixtureProps[sideContent] as item}
-						<div class={contentStyles}>{item}</div>
-					{/each}
-				{/if}
-			</div>
-			<div slot="main">
-				{@const fixtureProps = getFixtures({category, component: title})}
-				{#if mainContent === 'text'}
-					<p>{fixtureProps.text}</p>
-				{:else if mainContent === 'card' || mainContent === 'form'}
-					{#each fixtureProps[mainContent] as item}
-						<div class={contentStyles}>{item}</div>
-					{/each}
-				{/if}
-			</div>
+		<svelte:component
+			this={component}
+			id={title} {size}
+			{background}
+			{props}
+		>
+			{#snippet side()}
+				{@render children(fixtures, sideContent)}
+			{/snippet}
+
+			{#snippet main()}
+				{@render children(fixtures, mainContent)}
+			{/snippet}
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
 		<svelte:component
@@ -77,16 +79,7 @@
 			{breakpoint}
 			{props}
 		>
-			<div slot="content">
-				{@const fixtureProps = getFixtures({category, component: title})}
-				{#if content === 'text'}
-					<p>{fixtureProps.text}</p>
-				{:else if content === 'card' || content === 'form'}
-					{#each fixtureProps[content] as item}
-						<div class={contentStyles}>{item}</div>
-					{/each}
-				{/if}
-			</div>
+			{@render children(fixtures, content)}
 		</svelte:component>
 	{:else}
 		<svelte:component
@@ -97,19 +90,11 @@
 			{breakpoint}
 			{threshold}
 			{props}
-		>
-			{@const fixtureProps = getFixtures({category, component: title})}
-			{#if content === 'text'}
-				<p>{fixtureProps.text}</p>
-			{:else if content === 'card' || content === 'form'}
-				{#each fixtureProps[content] as item}
-					<div class={contentStyles}>{item}</div>
-				{/each}
-			{/if}
+			>
+			{@render children(fixtures, content)}
 		</svelte:component>
 	{/if}
 {:else}
-	{@const fixtureProps = getFixtures({category, component: title})}
 	{#if title === 'Sidebar'}
 		<svelte:component
 			this={component}
@@ -118,14 +103,12 @@
 			{background}
 			{...props}
 		>
-			<div slot="side">
-				{#each fixtureProps.card as item}
-					<div class={contentStyles}>{item}</div>
-				{/each}
-			</div>
-			<div slot="main">
-				<p>{fixtureProps.text}</p>
-			</div>
+			{#snippet side()}
+				{@render children(fixtures, sideContent)}
+			{/snippet}
+			{#snippet main()}
+				{@render children(fixtures, mainContent)}
+			{/snippet}
 		</svelte:component>
 	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
 		<svelte:component
@@ -138,11 +121,7 @@
 			{breakpoint}
 			{...props}
 		>
-			<svelte:fragment slot="content">
-				{#each fixtureProps.form as item}
-					<div class={contentStyles}>{item}</div>
-				{/each}
-			</svelte:fragment>
+			{@render children(fixtures, content)}
 		</svelte:component>
 	{:else}
 		<svelte:component
@@ -153,10 +132,8 @@
 			{breakpoint}
 			{threshold}
 			{...props}
-		>
-			{#each fixtureProps.card as item}
-				<div class={contentStyles}>{item}</div>
-			{/each}
+			>
+			{@render children(fixtures, content)}
 		</svelte:component>
 	{/if}
 {/if}
