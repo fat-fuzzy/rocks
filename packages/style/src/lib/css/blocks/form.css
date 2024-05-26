@@ -1,7 +1,16 @@
 form {
+	--hue: var(--color-theme-primary);
+	--chroma: var(--color-chroma-neutral);
+	--lightness: var(--color-lightness-light);
+	--chroma-contrast: var(--color-chroma-neutral);
+	--lightness-contrast: var(--color-lightness-dark);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--bg-color: var(--shade);
+	--border-color: var(--shade);
 	color: var(--ink);
-	background-color: inherit;
 	max-height: fit-content;
+	background-color: var(--bg-color);
 }
 
 form * {
@@ -33,8 +42,7 @@ legend {
 input,
 select,
 textarea {
-	--accent-color: var(--shade);
-	--border-color: var(--shade);
+	--accent-color: var(--ink);
 	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
 	--padding-inline: var(--ui-size);
 	border: 1px solid var(--border-color);
@@ -83,13 +91,17 @@ label > .feedback + * {
 	margin-block-start: var(--ui-size);
 }
 
+input:hover,
+label:hover > [type='file'] {
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-contrast-200);
+	color: var(--ink);
+	background-color: var(--shade);
+}
+
 [disabled] {
 	filter: contrast(90%) opacity(80%);
 	cursor: not-allowed;
-}
-
-button[disabled] {
-	filter: grayscale(90%) opacity(65%);
 }
 
 /* Manage color on .bare and .outline labels adn inputs */
@@ -136,13 +148,6 @@ fieldset.check {
 		--lightness-contrast: var(--color-lightness-400);
 		background-color: var(--shade);
 	}
-}
-
-label:hover > [type='file'] {
-	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-400);
-	color: var(--ink);
-	background-color: var(--shade);
 }
 
 /* Display range input step labels */

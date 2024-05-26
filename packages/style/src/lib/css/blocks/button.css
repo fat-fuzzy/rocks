@@ -1,8 +1,8 @@
 button {
-	--hue: var(--color-theme-neutral);
-	--chroma: var(--color-chroma-300);
+	--hue: var(--color-theme-primary);
+	--chroma: var(--color-chroma-neutral);
 	--lightness: var(--color-lightness-300);
-	--chroma-contrast: var(--color-chroma-000);
+	--chroma-contrast: var(--color-chroma-neutral);
 	--lightness-contrast: var(--color-lightness-000);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
