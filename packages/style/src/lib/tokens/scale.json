@@ -45,6 +45,19 @@
 				"xl": {"$value": "{scale.base.20}"},
 				"2xl": {"$value": "{scale.base.30}"}
 			}
+		},
+		"ui": {
+			"header": {
+				"height": {"$value": "{scale.base.30}"},
+				"max-height": {"$value": "30vh"},
+				"icon-height": {"$value": "2.25rem"},
+				"margin": {"$value": "calc(var(--gap) / 2)"}
+			},
+			"footer": {
+				"height": {
+					"$value": "calc(var(--font-size-body) * var(--size-ratio-md) + 2 * var(--ui-size-sm))"
+				}
+			}
 		}
 	},
 	"scale": {

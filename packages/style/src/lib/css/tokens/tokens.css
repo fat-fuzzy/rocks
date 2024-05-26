@@ -210,6 +210,11 @@
   --size-ratio-lg: 2.75;
   --size-ratio-md: 1.5;
   --size-ratio-sm: 1.15;
+  --size-ui-footer-height: calc(var(--font-size-body) * var(--size-ratio-md) + 2 * var(--ui-size-sm));
+  --size-ui-header-height: var(--scale-base-30);
+  --size-ui-header-icon-height: 2.25rem;
+  --size-ui-header-margin: calc(var(--gap) / 2);
+  --size-ui-header-max-height: 30vh;
 }
 
 @supports (color: color(display-p3 1 1 1)) {

@@ -1,5 +1,5 @@
 .l\:reveal[class*='fixed'] .content {
-	block-size: var(--max-header-height);
+	block-size: var(--size-ui-max-header-height);
 	overflow: auto;
 }
 
@@ -26,18 +26,29 @@
 		- reveal is not necessary on desktop, so on desktop we unset the reveal layout
 	Constraining this allows usage of reveal layout in desktop, outside a sidebar context */
 
+	/* TODO: use grid for this */
 	/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
 	.l\:reveal[class*='fixed'] {
+		--y-axis: calc(
+			var(--size-ui-header-height) + var(--ui-size-sm) - var(--border-width-md)
+		);
 		position: fixed;
+		top: var(--y-axis);
+		bottom: var(--gap);
+		z-index: 1;
 	}
 
 	.l\:reveal[class*='fixed'].show {
 		transition: transform 250ms ease-in-out;
+		inline-size: var(--sidebar-width);
+		overflow: auto;
 	}
 
-	/* Fixes bug in Safari where .content overflows parent width */
 	.l\:reveal[class*='fixed'].show .content {
+		margin-block-start: var(--gap);
 		transition: width 250ms ease-in-out;
+		block-size: calc(100vh - var(--gap) - 2 * var(--y-axis));
+		overflow: auto;
 	}
 
 	.l\:reveal.minimize[class*='fixed'] .content {
@@ -56,26 +67,5 @@
 			transition: width 250ms ease-in-out;
 			padding-inline-end: calc(-100% + 2 * var(--gap));
 		}
-	}
-
-	/* TODO: use grid for this */
-	.l\:reveal[class*='fixed'] {
-		top: calc(var(--s3) + var(--s-1) - var(--border-width));
-		bottom: var(--gap);
-		z-index: 1;
-	}
-
-	.l\:reveal[class*='fixed'].show {
-		inline-size: var(--sidebar-width);
-		overflow: auto;
-	}
-
-	.l\:reveal[class*='fixed'].show .content {
-		margin-block-start: var(--gap);
-		transition: width 250ms ease-in-out;
-		block-size: calc(
-			100vh - var(--gap) - 2 * calc(var(--s3) + var(--s-1) - var(--border-width-xl))
-		);
-		overflow: auto;
 	}
 }

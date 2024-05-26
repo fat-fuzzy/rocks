@@ -43,7 +43,7 @@
 .l\:frame\:feature > img,
 .l\:frame\:feature > video,
 .l\:frame\:feature > canvas {
-	max-height: calc(100vh - var(--header-height) - var(--gap));
+	max-height: calc(100vh - var(--size-ui-header-height) - var(--gap));
 	width: auto;
 	margin-left: auto;
 	margin-right: auto;
