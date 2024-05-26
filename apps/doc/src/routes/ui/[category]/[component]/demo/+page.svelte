@@ -32,9 +32,9 @@
 <Head {title} page="UI" description={`${title} Doc`} />
 
 <header class={headerClass}>
-	<h1 class="main">{title} | Demo</h1>
+	<h1 class="l:main">{title} | Demo</h1>
 
-	<div class="context">
+	<div class="context l:side">
 		<Api
 			categories={['app']}
 			meta={content.meta}

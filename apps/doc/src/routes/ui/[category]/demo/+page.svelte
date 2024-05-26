@@ -34,8 +34,8 @@
 <Head {title} page={title} description={`${title} Doc`} />
 
 <header class={headerClass}>
-	<h1 class="main">{title}</h1>
-	<div class="context">
+	<h1 class="l:main">{title}</h1>
+	<div class="context l:side">
 		<Api
 			categories={['app']}
 			{meta}
