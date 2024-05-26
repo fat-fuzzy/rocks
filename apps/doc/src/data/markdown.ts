@@ -12,10 +12,12 @@ const fetchMarkdowns = async (pathPrefix: string, imports: any) => {
 		mdImports.map(async ([path, resolver]) => {
 			const result: any = await resolver()
 			const filePath = path.slice(pathPrefix.length, -3) // removes pathPrefix and '*.md'
-			const html = render(result.default, {...result.metadata}).html
+			const html = result
+				? render(result.default, {...result.metadata}).html
+				: ''
 
 			return {
-				meta: result?.metadata,
+				meta: result?.metadata || {},
 				path: filePath,
 				html,
 			}

@@ -16,7 +16,7 @@
 		html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 	}
 	let headerClass = `l:grid:header:doc bp:xs bg:polar`
-	let props = api.props.getElementProps(content.meta)
+	let props = content.meta ? api.props.getElementProps(content.meta) : {}
 </script>
 
 <Head {title} page="UI" description={`${title} Doc`} />
@@ -30,11 +30,11 @@
 		<div class="l:text:lg">{@html content.html}</div>
 	</section>
 	<aside class="l:side">
-		{#if content.meta.props_style}
+		{#if content?.meta?.props_style}
 			<details open>
-				<summary class={`bg:primary:light box:primary:light`}
-					>Style Props</summary
-				>
+				<summary class={`bg:primary:light box:primary:light`}>
+					Style Props
+				</summary>
 				<ul class="tags l:switcher:md">
 					{#if props.doc}
 						{#each props.doc as docs}
@@ -58,25 +58,25 @@
 				</ul>
 			</details>
 		{/if}
-		{#if content.meta.content_type}
+		{#if content?.meta?.content_type}
 			<details open>
-				<summary class={`bg:primary:light box:primary:light`}
-					>Content Type</summary
-				>
+				<summary class={`bg:primary:light box:primary:light`}>
+					Content Type
+				</summary>
 				<ul class="tags l:switcher:md">
-					{#each content.meta.content_type as prop}
+					{#each content?.meta?.content_type as prop}
 						<li class="card:sm bg:highlight:lightest">{prop}</li>
 					{/each}
 				</ul>
 			</details>
 		{/if}
-		{#if content.meta.props_state}
+		{#if content?.meta?.props_state}
 			<details open>
-				<summary class={`bg:primary:light box:primary:light`}
-					>State Props</summary
-				>
+				<summary class={`bg:primary:light box:primary:light`}>
+					State Props
+				</summary>
 				<ul class="tags l:switcher:md">
-					{#each content.meta.props_state as prop}
+					{#each content?.meta?.props_state as prop}
 						<li class="card:sm bg:accent:lightest">{prop}</li>
 					{/each}
 				</ul>
