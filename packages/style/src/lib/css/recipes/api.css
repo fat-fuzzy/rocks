@@ -60,26 +60,21 @@
 /* == UI Feedback colors == */
 
 .night .day {
-	/* == UI Feedback colors == */
-	.bg\:primary {
-		--current-color: var(--color-white);
-	}
-	.bg\:accent {
-		--current-color: var(--color-white);
-	}
-
 	/* == Code == */
 	pre,
 	pre.default,
 	pre[class*='bg:default'].outline,
 	pre[class*='bg:default'].default {
-		--current-bg-color: var(--color-gray-5);
-		--current-border-color: var(--color-gray-4);
+		--lightness: var(--color-lightness-600);
+		--contrast: var(--color-contrast-600);
+		background-color: var(--bg-color);
 	}
 
 	pre.bare,
 	pre[class*='bg:default'].bare {
-		--current-border-color: var(--current-bg-color);
+		--lightness: var(--color-lightness-500);
+		--contrast: var(--color-contrast-500);
+		background-color: var(--bg-color);
 	}
 
 	/* == Feedback == */
@@ -87,45 +82,31 @@
 	pre.feedback.default,
 	pre.feedback[class*='bg:default'].outline,
 	pre.feedback[class*='bg:default'].default {
-		--current-bg-color: var(--color-gray-5);
-		--current-border-color: var(--color-gray-4);
+		--lightness: var(--color-lightness-600);
+		--contrast: var(--color-contrast-600);
+		background-color: var(--bg-color);
 	}
 
 	/* == Form == */
 
 	label > input,
 	label > [type='file'] {
-		color: var(--color-dark);
+		color: var(--ink);
 	}
 
-	label.primary.fill > [type='file'],
-	label.accent.fill > [type='file'] {
-		color: var(--color-light);
+	label:hover > input,
+	label > input:active,
+	label:hover > [type='file'],
+	label > [type='file']:active {
+		color: var(--ink);
 	}
 
-	label.primary.outline > [type='file'],
-	label.primary.bare > [type='file'] {
-		color: var(--current-primary);
+	label.variant\:.fill > [type='file'] {
+		color: var(--ink);
 	}
 
-	label.accent.outline > [type='file'],
-	label.accent.bare > [type='file'] {
-		color: var(--current-accent);
-	}
-
-	label.highlight.outline > [type='file'],
-	label.highlight.bare > [type='file'] {
-		color: var(--color-dark);
-	}
-
-	label.primary:hover > input,
-	label.primary > input:active,
-	label.accent:hover > input,
-	label.accent > input:active,
-	label.primary:hover > [type='file'],
-	label.primary > [type='file']:active,
-	label.accent:hover > [type='file'],
-	label.accent > [type='file']:active {
-		color: var(--color-light);
+	label.variant\:.outline > [type='file'],
+	label.variant\:.bare > [type='file'] {
+		color: var(--ink);
 	}
 }

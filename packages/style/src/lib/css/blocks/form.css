@@ -1,5 +1,5 @@
 form {
-	color: var(--current-color);
+	color: var(--ink);
 	background-color: inherit;
 	max-height: fit-content;
 }
@@ -21,6 +21,15 @@ legend,
 	background-color: inherit;
 }
 
+label {
+	font-size: var(--font-size);
+}
+
+legend {
+	font-size: var(--font-size);
+	margin-block-end: var(--ui-size);
+}
+
 input,
 select,
 textarea {
@@ -33,11 +42,36 @@ textarea {
 	color: var(--ink);
 	accent-color: var(--accent-color);
 	font-size: var(--font-size);
-	padding: var(--current-padding-block) var(--current-padding-inline);
+	padding: var(--ui-size-sm) var(--ui-size);
 }
 
 label > input {
 	max-width: 100%;
+}
+
+/* TODO : cleanup - use "current" size values */
+
+[type='file'] {
+	display: flex;
+	align-items: center;
+	font-size: var(--font-size-sm);
+	padding: var(--ui-size) var(--ui-size) var(--ui-size-sm);
+	color: var(--ink);
+}
+
+[type='file']:hover {
+	--lightness: var(--color-lightness-000);
+	background-color: var(--shade);
+}
+
+[type='file']:active {
+	--lightness: var(--color-lightness-light);
+	background-color: var(--shade);
+}
+
+.feedback {
+	font-size: var(--font-size-sm);
+	min-height: calc(var(--font-size-sm) * var(--size-ratio-md));
 }
 
 /* TODO: move this to recipes ? */
@@ -58,131 +92,20 @@ button[disabled] {
 	filter: grayscale(90%) opacity(65%);
 }
 
-.night {
-	textarea,
-	[type='text'],
-	[type='password'],
-	[type='number'],
-	[type='email'],
-	[type='phone'],
-	[type='dataset'] {
-		color: var(--color-black);
-	}
-	[type='file'] {
-		color: var(--color-white);
-	}
-}
-
-.primary {
-	input,
-	select,
-	textarea {
-		--current-accent-color: var(--current-primary);
-	}
-}
-
-.accent {
-	input,
-	select,
-	textarea {
-		--current-accent-color: var(--current-accent);
-	}
-}
-
-.highlight {
-	input,
-	select,
-	textarea {
-		--current-accent-color: var(--current-highlight);
-	}
-}
-
-.info {
-	input,
-	select,
-	textarea {
-		--current-accent-color: var(--current-info);
-	}
-}
-
-.success {
-	input,
-	select,
-	textarea {
-		--current-accent-color: var(--current-success);
-	}
-}
-
-.warning {
-	input,
-	select,
-	textarea {
-		--current-accent-color: var(--current-warning);
-	}
-}
-
-.error {
-	input,
-	select,
-	textarea {
-		--current-accent-color: var(--current-error);
-	}
-}
-
 /* Manage color on .bare and .outline labels adn inputs */
 
-label.bare > input,
-label.bare > [type='file'] {
-	color: var(--current-color);
-	background-color: inherit;
+label.variant\:outline > input,
+label.variant\:outline > [type='file'] {
+	color: var(--ink);
+	border-color: var(--ink);
+	background-color: var(--shade);
 }
 
-label.outline > input,
-label.outline > [type='file'] {
-	color: var(--current-color);
-	background-color: inherit;
-	border-color: var(--current-gray-contrast);
-}
-
-label.bare.primary > input,
-label.bare.primary > [type='file'],
-label.bare.accent > input,
-label.bare.accent > [type='file'],
-label.bare.highlight > input,
-label.bare.highlight > [type='file'] {
-	color: var(--color-black);
-}
-
-label.outline.primary > input,
-label.outline.primary > [type='file'] {
-	color: var(--current-primary);
-	border-color: var(--current-primary);
-}
-label.outline.accent > input,
-label.outline.accent > [type='file'] {
-	color: var(--current-accent);
-	border-color: var(--current-accent);
-}
-label.outline.highlight > input,
-label.outline.highlight > [type='file'] {
-	color: var(--color-black);
-	border-color: var(--current-highlight-dark);
-}
-
-label.bare.primary > input,
-label.bare.primary > [type='file'] {
-	color: var(--color-black);
-	border-color: var(--current-primary-lightest);
-}
-label.bare.accent > input,
-label.bare.accent > [type='file'] {
-	color: var(--color-black);
-	border-color: var(--current-accent-lightest);
-}
-label.bare.highlight > input,
-label.bare.highlight > [type='file'] {
-	color: var(--color-black);
-	border-color: var(--current-highlight-lighter);
+label.variant\:bare > input,
+label.variant\:bare > [type='file'] {
+	color: var(--ink);
+	border-color: var(--shade);
+	background-color: var(--shade);
 }
 
 fieldset.radio input,
@@ -194,136 +117,32 @@ fieldset.check input {
 fieldset.radio,
 fieldset.check {
 	justify-content: flex-start;
-	.day & label {
-		--current-color: var(--color-black);
-		color: var(--current-color);
-	}
-
-	.night & label {
-		--current-color: var(--color-white);
-		color: var(--current-color);
+	label {
+		color: var(--ink);
 	}
 
 	label:hover {
-		background-color: var(--current-gray);
+		background-color: var(--shade);
 	}
 
-	.night & label:hover {
-		--current-color: var(--color-black);
+	label.variant\:outline:hover {
+		--lightness: var(--color-lightness-100);
+		--lightness-contrast: var(--color-lightness-400);
+		background-color: var(--shade);
 	}
 
-	&.primary {
-		label:hover {
-			background-color: var(--current-primary-lighter);
-		}
-	}
-
-	label.primary:hover {
-		--current-color: var(--color-black);
-		background-color: var(--current-primary-lighter);
-	}
-
-	label.accent:hover {
-		--current-color: var(--color-black);
-		background-color: var(--current-accent-lighter);
-	}
-
-	label.highlight:hover {
-		--current-color: var(--color-black);
-		background-color: var(--current-highlight-lighter);
-	}
-
-	label.info:hover {
-		--current-color: var(--color-black);
-		background-color: var(--current-info-lighter);
-	}
-
-	label.success:hover {
-		--current-color: var(--color-black);
-		background-color: var(--current-success-lighter);
-	}
-
-	label.warning:hover {
-		--current-color: var(--color-black);
-		background-color: var(--current-warning-lighter);
-	}
-
-	label.error:hover {
-		--current-color: var(--color-black);
-		background-color: var(--current-error-lighter);
+	label.variant\:bare:hover {
+		--lightness: var(--color-lightness-000);
+		--lightness-contrast: var(--color-lightness-400);
+		background-color: var(--shade);
 	}
 }
 
-label.primary > [type='file'] {
-	color: var(--color-white);
-}
-
-label.accent > [type='file'] {
-	color: var(--color-white);
-}
-
-label.highlight > [type='file'] {
-	color: var(--color-black);
-}
-
-label.primary:hover > [type='file'] {
-	color: var(--color-black);
-	background-color: var(--current-primary-light);
-}
-
-label.accent:hover > [type='file'] {
-	color: var(--color-black);
-	background-color: var(--current-accent-light);
-}
-
-label.highlight:hover > [type='file'] {
-	color: var(--color-black);
-	background-color: var(--current-highlight-light);
-}
-
-label.primary > [type='file']:active {
-	color: var(--color-black);
-	background-color: var(--current-primary-lighter);
-}
-
-label.accent > [type='file']:active {
-	color: var(--current-black);
-	background-color: var(--current-accent-lighter);
-}
-
-label.highlight > [type='file']:active {
-	color: var(--color-black);
-	background-color: var(--current-highlight-lighter);
-}
-
-/* TODO : cleanup - use "current" size values */
-legend {
-	font-size: var(--font-size);
-	margin-block-end: var(--ui-size);
-}
-
-label {
-	font-size: var(--font-size);
-}
-
-[type='file']:hover {
-	background-color: var(--current-gray-light);
-}
-
-[type='file']:active {
-	background-color: var(--current-bg-polar);
-}
-
-[type='file'] {
-	display: flex;
-	align-items: center;
-	font-size: var(--font-size-sm);
-	padding: var(--ui-size) var(--ui-size) var(--ui-size-sm);
-}
-
-.feedback {
-	font-size: var(--font-size-sm);
-	min-height: calc(var(--font-size-sm) * var(--size-ratio-md));
+label:hover > [type='file'] {
+	--lightness: var(--color-lightness-100);
+	--lightness-contrast: var(--color-lightness-400);
+	color: var(--ink);
+	background-color: var(--shade);
 }
 
 /* Display range input step labels */
@@ -366,29 +185,23 @@ label.check[class*='emoji'] span {
 .night {
 	label:hover > input,
 	label:hover > [type='file'] {
-		color: var(--color-white);
+		color: var(--ink);
 	}
 
 	label.fill > input,
 	label.fill > [type='file'] {
-		background-color: var(--current-bg-color);
+		background-color: var(--shade);
 	}
 
 	label.outline > input,
 	label.outline > [type='file'] {
-		color: var(--color-white);
+		color: var(--ink);
 	}
 
 	label.bare > input,
 	label.bare > [type='file'] {
-		color: var(--color-white);
+		color: var(--ink);
 	}
-}
-
-label:hover > input,
-label:hover > [type='file'] {
-	color: var(--current-color);
-	background-color: var(--current-bg-contrast);
 }
 
 label.primary:hover > input,
@@ -397,6 +210,6 @@ label.accent:hover > input,
 label.accent > input:active,
 label.highlight:hover > input,
 label.highlight > input:active {
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
+	color: var(--ink);
+	background-color: var(--shade);
 }

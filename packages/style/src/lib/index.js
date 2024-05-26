@@ -5,7 +5,7 @@ import './css/tokens/tokens.css'
 /* Global config */
 import './css/config/index.js'
 
-/* Resets and global styles, set --current-* CSS var values used in layouts and blocks */
+/* Resets and global styles, set initial and global styles */
 import './css/globals/index.js'
 
 /* Blocks (self contained, atomic components used in Recipes) */

@@ -23,10 +23,6 @@ button {
 	border: var(--border-width-md) solid var(--border-color);
 }
 
-button:not([disabled]):hover {
-	box-shadow: var(--shadow-md);
-}
-
 button.variant\:outline {
 	--border-color: var(--ink);
 	--lightness: var(--color-lightness-600);
@@ -94,4 +90,8 @@ button:not([class*=':neutral']) {
 		--chroma: var(--color-chroma-100);
 		--chroma-contrast: var(--color-chroma-500);
 	}
+}
+
+button:not([disabled]):hover {
+	box-shadow: var(--shadow-md);
 }

@@ -1,25 +1,23 @@
-
-
 @mixin nightColoredInputStyles($color) {
 	label.#{$color} > [type='file'] {
-		color: var(--color-black);
+		color: var(--ink);
 	}
 
 	label.outline.#{$color} > input,
 	label.outline.#{$color} > [type='file'] {
-		color: var(--current-#{$color}-light);
+		--lightness-contrast: var(--color-lightness-600);
 	}
 
 	label.bare.#{$color} > input,
 	label.bare.#{$color} > [type='file'] {
-		color: var(--current-#{$color}-lighter);
+		--lightness-contrast: var(--color-lightness-500);
 	}
 
 	.outline.#{$color}:hover > input,
 	.outline.#{$color}:hover > [type='file'],
 	.bare.#{$color}:hover > input,
 	.bare.#{$color}:hover > [type='file'] {
-		color: var(--color-black);
+		--lightness-contrast: var(--color-lightness-dark);
 	}
 }
 

@@ -101,7 +101,7 @@ article,
 }
 
 figcaption {
-	color: var(--current-color);
+	color: var(--ink);
 }
 
 ol,

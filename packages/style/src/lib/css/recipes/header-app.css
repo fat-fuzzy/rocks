@@ -1,11 +1,14 @@
 .header-app {
 	display: flex;
 	padding-inline: var(--gap);
+	color: var(--ink);
+	background-color: var(--shade);
 }
 
 /* == Need to override global <a> hover styles in nav and header <a> == */
 .header-app nav a:hover {
-	color: var(--current-primary-light);
+	--lightness-contrast: var(--color-lightness-300);
+	color: var(--ink);
 	background-color: initial;
 	text-decoration: none;
 }
@@ -34,28 +37,27 @@
 	width: 100%;
 	font-weight: var(--font-weight-400);
 	text-transform: uppercase;
-	padding: calc(var(--s-1) + var(--border-width-lg)) var(--s0);
+	padding: calc(var(--ui-size-sm) + var(--border-width-lg)) var(---ui-size);
 }
 
 .header-app > [class*='l:main'] > nav li {
 	background-color: inherit;
-	border-inline-start: var(--border-width-xl) solid var(--current-bg-color);
+	border-inline-start: var(--border-width-xl) solid var(--shade);
 	padding: var(--outline-offset) 0 var(--outline-offset) 0;
 }
 
 .header-app > [class*='l:main'] > nav li:hover {
-	--current-bg-color: var(--current-bg-contrast);
-	--current-border-color: var(--current-bg-contrast);
-	background-color: var(--current-bg-contrast);
+	--lightness: var(--color-lightness-light);
+	background-color: var(--shade);
 }
 
 .header-app [class*='l:side'] a:hover {
-	background-color: var(--current-bg-contrast);
+	background-color: var(--shade);
 	box-shadow: var(--shadow-md);
 }
 
 .header-app > [class*='l:main'] > nav li[aria-current='page'] a {
-	color: var(--current-color);
+	color: var(--ink);
 	text-decoration: none;
 	background-color: inherit;
 }
@@ -94,17 +96,3 @@
 }
 
 /* == Color == */
-
-.nigh.header-app,
-.night .header-app {
-	--current-color: var(--color-light);
-	color: var(--current-color);
-	background-color: var(--current-gray);
-}
-
-.day.header-app,
-.day .header-app {
-	--current-color: var(--current-primary);
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
-}

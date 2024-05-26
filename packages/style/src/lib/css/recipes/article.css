@@ -1,8 +1,9 @@
 article.box > header {
-	border-bottom: var(--border-width) solid var(--current-border-color);
+	border-bottom: var(--border-width) solid var(--ink);
 }
 [class*='l:grid'] > .box:hover {
-	border-color: var(--current-primary-light);
+	--lightness-contrast: var(--color-lightness-300);
+	border-color: var(--ink);
 }
 
 [class*='l:grid'] > .box .content {
@@ -10,12 +11,13 @@ article.box > header {
 }
 
 [class*='l:grid'] > .box:hover header {
-	border-color: var(--current-primary-light);
+	--lightness-contrast: var(--color-lightness-300);
+	border-color: var((--ink));
 }
 
 [class*='l:grid'] > .box header .title {
-	border-top-left-radius: var(--radius);
-	border-top-right-radius: var(--radius);
+	border-top-left-radius: var(--border-radius-base);
+	border-top-right-radius: var(--border-radius-base);
 }
 
 [class*='l:grid'] > .box header .title::before {

@@ -1,9 +1,10 @@
 [class^='l:reveal'] [class*='expand'] {
+	--lightness: var(--color-lightness-light);
 	position: relative;
 	z-index: var(--layout-z-index-layer);
 	width: 100%;
 	color: inherit;
-	background-color: var(--current-polar);
+	background-color: var(--shade);
 }
 
 [class^='l:reveal'] [class*='expand'] > .icon {
@@ -36,8 +37,8 @@
 }
 
 .l\:reveal.minimize [class*='expand'] {
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
+	color: var(--ink);
+	background-color: var(--shade);
 }
 
 [class^='l:reveal'] .end {

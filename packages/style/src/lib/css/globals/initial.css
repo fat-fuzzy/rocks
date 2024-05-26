@@ -15,17 +15,17 @@
 	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
 	--font-size: var(--font-size-md);
 	--sidebar-width: var(--layout-sidebar-md);
-	--current-shadow: var(--shadow-md);
 	--gap: var(--layout-gap-md);
 
-	--hue: var(--color-theme-neutral);
-	--ink-hue: var(--color-theme-primary);
-	--chroma: var(--color-chroma-000);
+	--hue: var(--color-theme-primary);
 	--lightness: var(--color-lightness-light);
 	--lightness-contrast: var(--color-lightness-600);
-	--lightness-ink: var(--color-lightness-dark);
+	--chroma: var(--color-chroma-neutral);
 	--chroma-contrast: var(--color-chroma-600);
-	--ink: oklch(var(--lightness-ink) var(--chroma-contrast) var(--ink-hue));
+	--chroma-ink: var(--color-chroma-600);
+	--ink: oklch(
+		var(--lightness-contrast) var(--chroma-contrast) var(--hue-contrast)
+	);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 }
 
@@ -45,7 +45,7 @@ main {
 }
 
 a {
-	color: var(--current-primary);
+	color: var(--ink);
 	font-size: var(--font-size-ui);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);

@@ -7,7 +7,9 @@
 		}
 
 		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .show,
-		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} [class*='hide:'] {
+		.header-app
+			> [class*='l:main'].l\:reveal\:auto.bp\:#{$size}
+			[class*='hide:'] {
 			height: 100%;
 			overflow: auto;
 		}
@@ -31,12 +33,12 @@
 			align-items: center;
 			justify-content: center;
 			border-inline-start: unset;
-			border-block-start: var(--border-width-xl) solid var(--current-bg-color);
+			border-block-start: var(--border-width-xl) solid var(--shade);
 			padding: 0 0 var(--outline-offset) var(--outline-offset);
 		}
 
 		.header-app > .l\:reveal\:auto.bp\:#{$size} > nav li[aria-current='page'] {
-			border-color: var(--current-primary);
+			border-color: var(--ink);
 		}
 
 		/* Configure reveal menu positioning and width */
