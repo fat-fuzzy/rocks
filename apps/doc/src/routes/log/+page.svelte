@@ -5,10 +5,10 @@
 
 	const {Head} = headless
 
-	$: markdowns = $page.data.markdowns
+	let markdowns = $page.data.markdowns
 
 	let title = 'Log'
-	$: headerClass = 'l:flex card:sm bg:polar align:center'
+	let headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 
 <Head page={title} description="Log of Architectural decisions" />

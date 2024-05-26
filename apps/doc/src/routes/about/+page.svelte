@@ -4,7 +4,7 @@
 	const {Head} = headless
 
 	let title = 'About Fat Fuzzy'
-	$: headerClass = 'l:flex card:sm col:center bg:polar align:center w:full'
+	let headerClass = 'l:flex card:sm col:center bg:polar align:center w:full'
 </script>
 
 <Head {title} page="Rocks" description="About this website" />

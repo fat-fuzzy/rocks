@@ -13,7 +13,7 @@
 		src: theme === 1 ? introDay : introNight,
 		alt: `A drawing: "Creating a web app. Where to Start ?" asks a girl underneath a large cloud with a laptop connected to it and displaying an app in a browser. The cloud contains three boards: to the left is the CLIENT, which contains HTML, CSS, and JavaScript; to the right are RESOURCES which contain backend data and application logic; in the middle is the API, which connects the CLIENT to the RESOURCES using HTTP, URLs, JSON, REST, GraphQL, and enables calls to CRUD operations.`,
 	}
-	$: variant = 'bg:primary:light'
+	let variant = 'bg:primary:light'
 </script>
 
 <Head

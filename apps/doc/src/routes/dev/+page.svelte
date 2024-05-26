@@ -3,12 +3,12 @@
 
 	import {headless} from '@fat-fuzzy/ui-s5'
 
-	$: markdowns = $page.data.markdowns
+	let markdowns = $page.data.markdowns
 
 	const {Head} = headless
 
 	let title = 'Dev'
-	$: headerClass = 'l:flex card:sm bg:polar align:center'
+	let headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 
 <Head page={title} description="Developer Doc" />

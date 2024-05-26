@@ -7,7 +7,7 @@
 
 	let title = 'Error'
 
-	$: asset = $page.status === 404 ? 'not-found' : 'error'
+	let asset = $page.status === 404 ? 'not-found' : 'error'
 </script>
 
 <Head page={title} description="Something went wrong!" />
