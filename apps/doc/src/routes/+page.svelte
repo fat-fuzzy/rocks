@@ -26,18 +26,18 @@
 		<div class="l:frame">
 			<img src={pageImage.src} alt={pageImage.alt} />
 		</div>
-		<h1 class="text:center">Fat Fuzzy Rocks</h1>
+		<h1 class="card:sm text:center">Fat Fuzzy Rocks</h1>
 	</div>
 </header>
 
-<section class="l:center l:text:xxl">
+<section class="l:text:xxl text:center">
 	<h2>✨ Highlights</h2>
 	<div class="l:switcher:sm bp:xs card:xxl">
-		<article class={`card:lg text:center ${variant}`}>
-			<a data-sveltekit-preload-data href="/ui" class="card font:md">🌈 UI</a>
+		<article class={`card:lg text:center emoji:rainbow ${variant}`}>
+			<a data-sveltekit-preload-data href="/ui" class="card font:md"> UI </a>
 		</article>
-		<article class={`card:lg text:center ${variant}`}>
-			<a data-sveltekit-preload-data href="/log" class="card font:md">✏️ LOG</a>
+		<article class={`card:lg text:center emoji:log ${variant}`}>
+			<a data-sveltekit-preload-data href="/log" class="card font:md">LOG</a>
 		</article>
 	</div>
 </section>
