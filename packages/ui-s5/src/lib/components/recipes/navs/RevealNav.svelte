@@ -41,25 +41,22 @@
 		content,
 		settings = ui,
 		items = [],
+		onupdate,
 	}: RevealNavProps = $props()
-	let expanded = false
 
-	let sidebarReveal = $state(
-		reveal ? {reveal: reveal} : DEFAULT_NAV_REVEAL_STATE,
-	)
+	let expanded = $state(false)
+
+	let sidebarReveal = $state(reveal ? {reveal} : DEFAULT_NAV_REVEAL_STATE)
 	let appSettings = $state(DEFAULT_APP_SETTINGS)
 
-	function toggleSidebar(event) {
-		expanded = !expanded
+	function toggleReveal(event) {
+		sidebarReveal.reveal = event.value
+		if (onupdate)
+			onupdate({name: id, value: event.value, state: sidebarReveal.reveal})
 	}
 
+	let formClasses = $derived(`form:${sidebarReveal.reveal}`)
 	let buttonAlign = place ? ALIGN_OPPOSITE[align] : ''
-	let animationDirection = place
-		? ALIGN_ANIMATION_DIRECTION[place][sidebarReveal.reveal]
-		: ''
-	let showBackground = background
-		? `bg:${background}`
-		: `bg:${TRANSITION_CONTRAST[appSettings.contrast]}`
 	let navContainer = container ? `${container}:${size}` : ''
 	let navLayoutThreshold = breakpoint
 		? ` bp:${breakpoint}`
@@ -67,12 +64,25 @@
 			? ` th:${threshold}`
 			: ''
 	let navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
-	let showSidebar = `${sidebarReveal.reveal} ${showBackground} ${place}`
-	let navClasses = `content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `
-	let layoutClasses = position
-		? `l:reveal ${position} ${place} ${sidebarReveal.reveal}`
-		: `l:reveal ${place} ${reveal}`
-	let revealClasses = `form:expand`
+	let animationDirection = $derived(
+		place ? ALIGN_ANIMATION_DIRECTION[place][sidebarReveal.reveal] : '',
+	)
+	let showBackground = $derived(
+		background
+			? `bg:${background}`
+			: `bg:${TRANSITION_CONTRAST[appSettings.contrast]}`,
+	)
+	let showSidebar = $derived(
+		`${sidebarReveal.reveal} ${showBackground} ${place}`,
+	)
+	let navClasses = $derived(
+		`content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `,
+	)
+	let layoutClasses = $derived(
+		position
+			? `l:reveal ${position} ${place} ${sidebarReveal.reveal}`
+			: `l:reveal ${place} ${reveal}`,
+	)
 	let action =
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 </script>
@@ -88,7 +98,7 @@
 				update({reset: false})
 			}
 		}}
-		class={revealClasses}
+		class={formClasses}
 	>
 		<Expand
 			id={`button-expand-${id}`}
@@ -99,7 +109,7 @@
 			name={`button-${id}`}
 			align={buttonAlign}
 			controls={`nav-${id}`}
-			value={title}
+			value={sidebarReveal.reveal}
 			states={{
 				expanded: {
 					id: 'show',
@@ -114,7 +124,7 @@
 					asset: `emoji:point-${animationDirection}`,
 				},
 			}}
-			onclick={toggleSidebar}
+			onclick={toggleReveal}
 		>
 			{title}
 		</Expand>

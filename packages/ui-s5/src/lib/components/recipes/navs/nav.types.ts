@@ -39,4 +39,9 @@ export type RevealNavProps = NavProps &
 		align?: string
 		items: any[]
 		settings: any
+		onupdate: (payload: {
+			name: string
+			value: string | number
+			state: string
+		}) => void
 	}
