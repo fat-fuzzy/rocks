@@ -1,5 +1,4 @@
-[class*='size:'],
-[class*='card:'] {
+[class*='size:'] {
 	--ratio: var(--size-ratio-md);
 	/* Default range */
 	--ui-size-sm: calc(var(--ui-size) / var(--ratio));
@@ -7,54 +6,54 @@
 	/* TODO: scale font */
 	--font-size: var(--font-size-md);
 }
+
 /* Minor range */
-[class*='size:'].scale\:minor,
-[class*='card:'].scale\:minor {
+[class*='size:'].scale\:minor {
 	--ratio: var(--size-ratio-sm);
 }
+
 /* Major range */
-[class*='size:'].scale\:major,
-[class*='card:'].scale\:major {
+[class*='size:'].scale\:major {
 	--ratio: var(--size-ratio-lg);
 }
-.size\:2xs,
-.card\:2xs {
+
+.size\:2xs {
 	/* Base size */
 	--ui-size: var(--size-base-2xs);
 	--font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 }
-.size\:xs,
-.card\:xs {
+
+.size\:xs {
 	/* Base size */
 	--ui-size: var(--size-base-xs);
 	--font-size: var(--font-size-xs);
 }
-.size\:sm,
-.card\:sm {
+
+.size\:sm {
 	/* Base size */
 	--ui-size: var(--size-base-sm);
 	--font-size: var(--font-size-sm);
 }
-.size\:md,
-.card\:md {
+
+.size\:md {
 	/* Base size */
 	--ui-size: var(--size-base-md);
 	--font-size: var(--font-size-md);
 }
-.size\:lg,
-.card\:lg {
+
+.size\:lg {
 	/* Base size */
 	--ui-size: var(--size-base-lg);
 	--font-size: var(--font-size-lg);
 }
-.size\:xl,
-.card\:xl {
+
+.size\:xl {
 	/* Base size */
 	--ui-size: var(--size-base-xl);
 	--font-size: var(--font-size-xl);
 }
-.size\:2xl,
-.card\:2xl {
+
+.size\:2xl {
 	/* Base size */
 	--ui-size: var(--size-base-2xl);
 	--font-size: var(--font-size-2xl);

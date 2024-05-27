@@ -39,14 +39,14 @@
 	.l\:reveal[class*='fixed'].show {
 		transition: transform 250ms ease-in-out;
 		inline-size: var(--sidebar-width);
-		overflow: auto;
 	}
 
 	.l\:reveal[class*='fixed'].show .content {
 		margin-block-start: var(--gap);
 		transition: width 250ms ease-in-out;
-		block-size: calc(100vh - var(--gap) - 2 * var(--y-axis));
-		overflow: auto;
+		block-size: calc(100vh - var(--y-axis));
+		overflow: scroll;
+		scrollbar-color: var(--ink) var(--shade);
 	}
 
 	.l\:reveal[class*='fixed'].show .content > * {

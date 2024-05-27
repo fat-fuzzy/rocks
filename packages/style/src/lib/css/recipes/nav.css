@@ -20,7 +20,7 @@ nav li {
 }
 
 nav > ul > li:first-child {
-	padding-block-start: var(--ui-size-sm);
+	padding-block: var(--ui-size) var(--y-axis);
 }
 
 nav li a {

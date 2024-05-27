@@ -13,7 +13,7 @@
 [class^='l:text'] > * + h3,
 [class^='l:text'] > * + h4,
 [class^='l:text'] > * + h5 {
-	margin-block-start: var(--s2);
+	margin-block-start: var(--ui-size-lg);
 }
 
 [class^='l:text'] > h1 + *,
@@ -21,11 +21,11 @@
 [class^='l:text'] > h3 + *,
 [class^='l:text'] > h4 + *,
 [class^='l:text'] > h5 + * {
-	margin-block-start: var(--s1);
+	margin-block-start: var(--ui-size);
 }
 
 [class^='l:text'] ul {
-	margin-block: var(--s0);
+	margin-block: var(--ui-size-sm);
 }
 
 .l\:text\:xxs {

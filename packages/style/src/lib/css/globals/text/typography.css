@@ -19,20 +19,6 @@ h3.link {
 	font-size: var(--font-size);
 }
 
-/* TODO: decouple card from typography */
-h1[class*='card'],
-h2[class*='card'],
-h3[class*='card'],
-h1[class*='card'] > *,
-h2[class*='card'] > *,
-h3[class*='card'] > * {
-	display: flex;
-	align-items: center;
-	line-height: 1;
-	text-transform: uppercase;
-	font-size: var(--font-size-plus);
-}
-
 h1 {
 	/* TODO: use specific tokens for heading colors */
 	--hue: var(--color-theme-primary);

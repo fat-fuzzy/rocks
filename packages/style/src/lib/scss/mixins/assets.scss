@@ -6,8 +6,6 @@ $bell: '🔔';
 $poop: '💩';
 $sun: '☀️';
 $moon: '🌙';
-$new-moon: '🌑';
-$half-moon: '🌗';
 $invader: '👾';
 $octopus: '🐙';
 $spouting-whale: '🐳';
@@ -52,7 +50,12 @@ $film-camera: '🎥';
 $film-frames: '🎞️';
 $framed-picture: '🖼️';
 $cyclone: '🌀';
+$new-moon: '🌑';
+$half-moon: '🌗';
 $new-moon-face: '🌚';
+$full-moon-face: '🌝';
+$rainbow: '🌈';
+$pencil: '✏️';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -73,6 +76,8 @@ $emojis: (
 	night: #{$moon},
 	contrast: #{$half-moon},
 	blend: #{$new-moon},
+	blend-night: #{$new-moon-face},
+	blend-day: #{$full-moon-face},
 
 	// ButtonMenu fixture emojis
 	vader: #{$invader},
@@ -84,6 +89,7 @@ $emojis: (
 	otter: #{$otter},
 	turtle: #{$turtle},
 	tiger: #{$tiger},
+	rainbow: #{$rainbow},
 
 	// ToggleMenu / RevealMenu fixture emojis
 	idea: #{$bulb},
@@ -105,6 +111,8 @@ $emojis: (
 	switch-active: #{$bunny},
 	switch-inactive: #{$hat},
 	doc: #{$memo},
+	comments: #{$pencil},
+	ui: #{$rainbow},
 	demo: #{$magic-wand},
 	nojs: #{$bunny},
 	wip: #{$construction-sign},
