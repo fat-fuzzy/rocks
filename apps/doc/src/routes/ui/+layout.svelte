@@ -22,6 +22,10 @@
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
+	function toggleSidebar(event) {
+		sidebarReveal.reveal = event.value
+	}
+
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
@@ -108,6 +112,7 @@
 			formaction="toggleSidebar"
 			actionPath="/"
 			redirect={$page.url.pathname}
+			onupdate={toggleSidebar}
 		/>
 	</div>
 	<div class="l:main l:center l:stack:xl">
