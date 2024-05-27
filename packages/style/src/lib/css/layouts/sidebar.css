@@ -57,7 +57,7 @@
 
 	/* TODO: Decouple sidebar layout from sidebar content */
 	.l\:side.minimize {
-		--basis: calc(var(--gap) * 2);
+		--basis: var(--layout-sidebar-minimize);
 		flex-basis: var(--basis);
 		transition: flex-basis 250ms ease-in-out;
 	}

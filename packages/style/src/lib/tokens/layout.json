@@ -11,6 +11,7 @@
 		},
 		"sidebar": {
 			"base": {"$value": "30ch"},
+			"minimize": {"$value": "7ch"},
 			"2xs": {
 				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
 			},

@@ -1,21 +1,37 @@
-.l\:reveal[class*='fixed'] .content {
-	block-size: var(--size-ui-max-header-height);
-	overflow: auto;
-}
+.l\:reveal[class*='fixed'] {
+	--x-size: 100%;
+	--y-size: 100%;
+	inline-size: var(--x-size);
+	block-size: var(---y-size);
+	transition: inline-size 250ms ease-in-out;
+	transition: block-size 250ms ease-in-out;
 
-.l\:reveal.minimize[class*='fixed'] {
-	transform: translateX(0);
-	transition: transform 250ms ease-in-out;
-}
+	.content {
+		block-size: var(---y-size);
+		overflow: auto;
+		transition: inline-size 250ms ease-in-out;
+		transition: block-size 250ms ease-in-out;
+	}
 
-.l\:reveal.minimize[class*='fixed'] .content {
-	border: 0;
-	height: 0;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	white-space: nowrap;
-	transition: width 250ms ease-in-out;
+	&.show {
+		--y-size: 25vh;
+	}
+
+	&.minimize {
+		--y-size: var(--size-ui-header-height);
+		transform: translateX(0);
+		transition: transform 250ms ease-in-out;
+	}
+
+	&.minimize .content {
+		border: 0;
+		block-size: 0;
+		inline-size: var(--x-axis);
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		white-space: nowrap;
+	}
 }
 
 /* TODO fix magic bp */
@@ -30,44 +46,41 @@
 	/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
 	.l\:reveal[class*='fixed'] {
 		--y-axis: calc(var(--size-ui-header-height) + 2.5 * var(--border-width-lg));
+		--y-size: 100%;
 		position: fixed;
 		top: var(--y-axis);
-		bottom: var(--gap);
 		z-index: 1;
-	}
+		inline-size: var(--x-size);
+		block-size: var(--y-size);
 
-	.l\:reveal[class*='fixed'].show {
-		transition: transform 250ms ease-in-out;
-		inline-size: var(--sidebar-width);
-	}
+		&.show {
+			--y-size: 100%;
+			--x-size: var(--sidebar-width);
+			inline-size: var(--x-size);
+			block-size: var(--y-size);
+			/* transition: transform 250ms ease-in-out; */
 
-	.l\:reveal[class*='fixed'].show .content {
-		margin-block-start: var(--gap);
-		transition: width 250ms ease-in-out;
-		block-size: calc(100vh - var(--y-axis));
-		overflow: scroll;
-		scrollbar-color: var(--ink) var(--shade);
-	}
+			.content {
+				overflow: scroll;
+				inline-size: var(--x-size);
+				block-size: 100%;
+				scrollbar-color: var(--ink) var(--shade);
+			}
 
-	.l\:reveal[class*='fixed'].show .content > * {
-		inline-size: 100%;
-	}
-
-	.l\:reveal[class*='fixed'].minimize .content {
-		margin-block-start: var(--gap);
-	}
-
-	[class^='l:side'] > .l\:reveal {
-		&.minimize[class*='fixed'] {
-			overflow: hidden;
-			transform: translateX(calc(-100% + 2 * var(--gap)));
-			transition: transform 250ms ease-in-out;
+			.content > * {
+				block-size: var(--y-size);
+				inline-size: 100%;
+			}
 		}
-		&.minimize[class*='fixed'] .content {
-			height: auto;
-			width: auto;
-			transition: width 250ms ease-in-out;
-			padding-inline-end: calc(-100% + 2 * var(--gap));
+
+		&.minimize {
+			--y-size: 100%;
+			--x-size: var(--layout-sidebar-minimize);
+
+			.content {
+				overflow: hidden;
+				block-size: 100%;
+			}
 		}
 	}
 }

@@ -4,6 +4,7 @@
 	width: 100%;
 	color: var(--ink);
 	background-color: var(--shade);
+	margin: var(--outline-offset-base);
 }
 
 [class^='l:reveal'] [class*='expand'] > .icon {
@@ -23,6 +24,11 @@
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
+}
+
+.l\:reveal.show .content {
+	padding: var(--outline-offset-base);
+	padding-inline-start: calc(3 * var(--outline-offset-base));
 }
 
 .l\:reveal.minimize:not([class*='fixed']) .content {

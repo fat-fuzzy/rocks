@@ -133,6 +133,7 @@
   --layout-sidebar-base: 30ch;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
+  --layout-sidebar-minimize: 7ch;
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
   --layout-sidebar-xl: calc(var(--layout-sidebar-lg) * var(--size-ratio-sm));
   --layout-sidebar-xs: calc(var(--layout-sidebar-sm) / var(--size-ratio-sm));
