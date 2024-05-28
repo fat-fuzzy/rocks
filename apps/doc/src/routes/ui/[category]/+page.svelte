@@ -10,7 +10,7 @@
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
-	let headerClass = `bp:xs bg:polar`
+	let headerClass = `card:sm bp:xs bg:polar`
 </script>
 
 <Head {title} page="UI" description={`${title} Doc`} />
