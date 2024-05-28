@@ -2,20 +2,28 @@
 	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
 	import {layouts, recipes} from '@fat-fuzzy/ui-s5'
+	import type { Snippet } from 'svelte'
 	const {Sidebar} = layouts
 	const {Nav} = recipes
 
-	$: sketches = $page.data.sketches
-	$: path = ''
-	$: items = sketches
+	type Props = {
+		children: Snippet
+	}
+
+	let {children}: Props = $props()
+
+	let sketches = $state($page.data.sketches)
+	let path = ''
+	let items = sketches
 </script>
 
-<Sidebar size="sm">
-	<svelte:fragment slot="side">
+<Sidebar size="md">
+	{#snippet side()}
 		<details open>
 			<summary class="bg:primary:300 variant:fill">Sketches</summary>
-			<Nav
+				<Nav
 				id="nav-page"
+				title="nav-page"
 				{items}
 				{path}
 				size="xs"
@@ -25,8 +33,10 @@
 				layout="switcher"
 			/>
 		</details>
-	</svelte:fragment>
-	<div slot="main" class="card:md">
-		<slot />
-	</div>
+	{/snippet}
+	{#snippet main()}
+		{#if children}
+			{@render children()}
+		{/if}
+	{/snippet}
 </Sidebar>

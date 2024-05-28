@@ -7,9 +7,11 @@
 
 	const {Head} = headless
 
-	$: scene = lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug)
-	$: title = scene?.meta.title || ''
-	$: headerClass = 'l:flex align:center'
+	let scene = $derived(
+		lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),
+	)
+	let title = $derived(scene?.meta.title || '')
+	let headerClass = 'l:flex align:center maki:inline'
 </script>
 
 <Head

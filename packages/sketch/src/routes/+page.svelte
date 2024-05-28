@@ -7,9 +7,9 @@
 	const description =
 		'A sandbox environment to experiment and learn web-based computer graphics.'
 
-	$: sketches = $page.data.sketches
-	$: tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
-	$: headerClass = 'l:switcher:sm bg:polar align:center'
+	let sketches = $page.data.sketches
+	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
+	let headerClass = 'l:switcher:sm bg:polar align:center maki:inline'
 </script>
 
 <Head page={title} {description} />
