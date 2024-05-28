@@ -23,7 +23,7 @@
 		children,
 	}: RevealLayoutProps = $props()
 
-	let expanded = false
+	let expanded = $state(false)
 
 	function handleClickOutside(event) {
 		expanded = false
@@ -34,7 +34,7 @@
 	}
 
 	let backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
-	let show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
+	let show = $derived(expanded ? `${backgroundClass} show` : 'hide:viz-only')
 	let setHeight = height ? ` h:${height}` : ''
 
 	// TODO: use a form

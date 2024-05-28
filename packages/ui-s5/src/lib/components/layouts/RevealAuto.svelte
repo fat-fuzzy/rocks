@@ -39,7 +39,7 @@
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
 	let show = `show ${showBackground}`
 	let showContent = reveal === 'show' ? show : 'hide:viz-only'
-	let revealClasses = `form:expand align-self:${buttonAlign} maki:inline lg`
+	let revealClasses = `form:expand align-self:${buttonAlign} maki:inline size:lg`
 	let layoutClass = layout ? `l:${layout}:${size}` : ''
 	let setHeight = height ? ` h:${height}` : ''
 	let layoutClasses = `${layoutClass} ${setHeight} l:reveal:auto bp:${breakpoint} ${size} align:${align}`

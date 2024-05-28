@@ -44,8 +44,6 @@
 		onupdate,
 	}: RevealNavProps = $props()
 
-	let expanded = $state(false)
-
 	let sidebarReveal = $state(reveal ? {reveal} : DEFAULT_NAV_REVEAL_STATE)
 	let appSettings = $state(DEFAULT_APP_SETTINGS)
 
