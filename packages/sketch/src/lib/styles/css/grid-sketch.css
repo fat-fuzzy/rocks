@@ -15,6 +15,7 @@
 		'scene'
 		'context'
 		'debug';
+	padding: var(--ui-size);
 }
 
 .l\:grid\:sketch > .scene {
@@ -28,4 +29,30 @@
 	justify-content: flex-start;
 }
 
+.l\:grid\:sketch.size\:2xs {
+	--sidebar-size: var(--layout-sidebar-2xs);
+}
 
+.l\:grid\:sketch.size\:xs {
+	--sidebar-size: var(--layout-sidebar-xs);
+}
+
+.l\:grid\:sketch.size\:sm {
+	--sidebar-size: var(--layout-sidebar-sm);
+}
+
+.l\:grid\:sketch.size\:md {
+	--sidebar-size: var(--layout-sidebar-md);
+}
+
+.l\:grid\:sketch.size\:lg {
+	--sidebar-size: var(--layout-sidebar-lg);
+}
+
+.l\:grid\:sketch.size\:xl {
+	--sidebar-size: var(--layout-sidebar-xl);
+}
+
+.l\:grid\:sketch.size\:2xl {
+	--sidebar-size: var(--layout-sidebar-2xl);
+}

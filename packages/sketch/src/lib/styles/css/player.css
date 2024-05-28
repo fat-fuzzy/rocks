@@ -1,3 +1,8 @@
+menu {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: var(--border-width-lg);
+}
 menu > li {
 	height: 100%;
 	width: auto;

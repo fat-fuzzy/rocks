@@ -3,44 +3,22 @@
 @mixin switchToRowStyles_GridSketch($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
 		.l\:grid\:sketch.bp\:#{$size} {
+			grid-template: auto 1fr / auto var(--sidebar-size);
 			grid-template-areas:
 				'scene context'
 				'scene context'
 				'debug context';
-			grid-template-columns: 1fr auto;
-			padding-block-end: var(--ui-size);
-		}
-
-		.l\:grid\:sketch.bp\:#{$size} > .context {
-			inline-size: calc(var(--layout-sidebar-#{$size}) / var(--ratio));
 		}
 	}
 
 	@container (min-width: #{$breakpoint}) {
 		.l\:grid\:sketch.bp\:#{$size} {
+			grid-template: auto 1fr / auto var(--sidebar-size);
 			grid-template-areas:
 				'scene context'
 				'scene context'
 				'debug context';
-			grid-template-columns: 1fr auto;
-			padding-block-end: var(--ui-size);
 		}
-
-		.l\:grid\:sketch.bp\:#{$size} > .context {
-			inline-size: calc(var(--layout-sidebar-#{$size}) / var(--ratio));
-		}
-	}
-
-	.l\:grid\:sketch.bp\:#{$size} > .scene {
-		grid-area: scene;
-	}
-
-	.l\:grid\:sketch.bp\:#{$size} > .context {
-		grid-area: context;
-	}
-
-	.l\:grid\:sketch.bp\:#{$size} > .debug {
-		grid-area: debug;
 	}
 }
 
@@ -50,7 +28,7 @@
 
 /* @media screen and (min-width: 620px) { */
 @media screen and (min-width: 690px) {
-	@include switchToRowStyles_GridSketch(690px, 'xs')
+	@include switchToRowStyles_GridSketch(690px, 'xs');
 }
 
 @media screen and (min-width: 935px) {
