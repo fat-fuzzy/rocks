@@ -123,6 +123,8 @@
   --font-weight-semibold: var(--font-weight-700);
   --font-weight-ui: var(--font-weight-medium);
   --layout-base: 1rem;
+  --layout-gap-2xl: var(--scale-base-30);
+  --layout-gap-2xs: var(--scale-base-03);
   --layout-gap-lg: var(--scale-base-10);
   --layout-gap-md: var(--scale-base-00);
   --layout-gap-sm: var(--scale-base-01);
@@ -130,7 +132,7 @@
   --layout-gap-xs: var(--scale-base-02);
   --layout-sidebar-2xl: calc(var(--layout-sidebar-xl) * var(--size-ratio-sm));
   --layout-sidebar-2xs: calc(var(--layout-sidebar-xs) / var(--size-ratio-sm));
-  --layout-sidebar-base: 30ch;
+  --layout-sidebar-base: 22ch;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
   --layout-sidebar-minimize: 7ch;
@@ -210,7 +212,8 @@
   --size-nul: 0;
   --size-ratio-lg: 2.75;
   --size-ratio-md: 1.5;
-  --size-ratio-sm: 1.15;
+  --size-ratio-sm: 1.25;
+  --size-ratio-xs: 1.15;
   --size-ui-footer-height: calc(var(--font-size-body) * var(--size-ratio-md) + 2 * var(--ui-size-sm));
   --size-ui-header-height: var(--scale-base-30);
   --size-ui-header-icon-height: 2.25rem;

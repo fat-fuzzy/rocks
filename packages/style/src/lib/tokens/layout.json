@@ -3,14 +3,16 @@
 		"$type": "dimension",
 		"base": {"$value": "1rem"},
 		"gap": {
+			"2xs": {"$value": "{scale.base.03}"},
 			"xs": {"$value": "{scale.base.02}"},
 			"sm": {"$value": "{scale.base.01}"},
 			"md": {"$value": "{scale.base.00}"},
 			"lg": {"$value": "{scale.base.10}"},
-			"xl": {"$value": "{scale.base.20}"}
+			"xl": {"$value": "{scale.base.20}"},
+			"2xl": {"$value": "{scale.base.30}"}
 		},
 		"sidebar": {
-			"base": {"$value": "30ch"},
+			"base": {"$value": "22ch"},
 			"minimize": {"$value": "7ch"},
 			"2xs": {
 				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"

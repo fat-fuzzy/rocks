@@ -22,7 +22,8 @@
 			"2xl": {"$value": "{size.base.2xs}"}
 		},
 		"ratio": {
-			"sm": {"$value": "1.15"},
+			"xs": {"$value": "1.15"},
+			"sm": {"$value": "1.25"},
 			"md": {"$value": "1.5"},
 			"lg": {"$value": "2.75"}
 		},
