@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type {Filters} from '$types'
+	import {onMount} from 'svelte'
+	import type {Filters} from '$types/index.js'
 	import {recipes} from '@fat-fuzzy/ui-s5'
 	import store from '$lib/components/sketch/store.svelte'
 	const {ToggleMenu} = recipes
@@ -17,14 +18,21 @@
 		blur?: number[]
 		convolutions?: string[]
 		onupdate: (payload: any) => void // TODO: Fix type
-		onload: (payload: any) => void // TODO: Fix type
+		init: (payload: any) => void // TODO: Fix type
 	}
 
-	let {size = 'xs', channels, blur, convolutions, onupdate}: Props = $props()
+	let {
+		size = 'xs',
+		channels,
+		blur,
+		convolutions,
+		onupdate,
+		init,
+	}: Props = $props()
 
 	const DEFAULT_FILTERS = {
-		channels: 'rgba',
-		blur: 0,
+		channels: ['rgba'],
+		blur: [0],
 		convolutions: ['normal'],
 	}
 
@@ -58,25 +66,19 @@
 	)
 
 	function loadChannel(selected: {name: string}[]) {
-		if (selected[0]) {
-			filters.channels = selected[0].name
+		if (selected.length > 0) {
+			filters.channels = selected.map((s) => s.name)
 		} else {
-			filters.channels = 'rgba'
+			filters.channels = ['rgba']
 		}
-		onload(filters)
 	}
 
-	function loadBlur(
-		selected: {
-			name: string
-		}[],
-	) {
-		if (selected[0]) {
-			filters.blur = Number(selected[0].name)
+	function loadBlur(selected: {name: string}[]) {
+		if (selected.length > 0) {
+			filters.blur = selected.map((s) => Number(s.name))
 		} else {
-			filters.blur = 0
+			filters.blur = [0]
 		}
-		onload(filters)
 	}
 
 	function loadEffects(selected: {name: string}[]) {
@@ -84,38 +86,26 @@
 		if (filters.convolutions.length === 0) {
 			filters.convolutions = ['normal']
 		}
-		onload(filters)
 	}
 
 	function updateChannel(selected: {name: string}[]) {
-		if (selected[0]) {
-			filters.channels = selected[0].name
-		} else {
-			filters.channels = 'rgba'
-		}
+		loadChannel(selected)
 		onupdate(filters)
 	}
 
-	function updateBlur(
-		selected: {
-			name: string
-		}[],
-	) {
-		if (selected[0]) {
-			filters.blur = Number(selected[0].name)
-		} else {
-			filters.blur = 0
-		}
+	function updateBlur(selected: {name: string}[]) {
+		loadBlur(selected)
 		onupdate(filters)
 	}
 
 	function updateEffects(selected: {name: string}[]) {
-		filters.convolutions = selected.map((s) => s.name)
-		if (filters.convolutions.length === 0) {
-			filters.convolutions = ['normal']
-		}
+		loadEffects(selected)
 		onupdate(filters)
 	}
+
+	onMount(() => {
+		init(filters ?? DEFAULT_FILTERS)
+	})
 </script>
 
 {#if channels}

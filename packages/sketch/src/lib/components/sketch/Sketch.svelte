@@ -208,31 +208,50 @@
 	}
 
 	function updateFilters(filters: Filters) {
-		scene.update({...context, filters})
-		if (meta.controls.includes('texture')) {
-			render()
+		try {
+			scene.update({...context, filters})
+			if (meta.controls.includes('texture')) {
+				render()
+			}
+			store.update(ControlsEvent.update)
+		} catch (e: unknown) {
+			store.feedback.canvas.push({status: 'error', message: e as string})
+			store.update(CanvasEvent.error)
 		}
-		store.update(ControlsEvent.update)
 	}
 
 	function loadFilters(filters: Filters) {
-		scene.update({...context, filters})
-		if (meta.controls.includes('texture')) {
-			render()
+		try {
+			scene.update({...context, filters})
+			if (meta.controls.includes('texture')) {
+				render()
+			}
+		} catch (e: unknown) {
+			store.feedback.canvas.push({status: 'error', message: e as string})
+			store.update(CanvasEvent.loadNok)
 		}
-		store.update(SketchEvent.loadOk)
 	}
 
 	onMount(() => {
-		init()
+		try {
+			init()
+		} catch (e: unknown) {
+			store.feedback.sketch.push({status: 'error', message: e as string})
+			store.update(SketchEvent.loadNok)
+		}
 	})
 
 	onDestroy(() => {
-		stop()
+		try {
+			stop()
+		} catch (e: unknown) {
+			store.feedback.sketch.push({status: 'error', message: e as string})
+			store.update(SketchEvent.loadNok) // TODO: fix this
+		}
 	})
 </script>
 
-<div class={`l:grid:sketch bp:xs`}>
+<div class={`l:grid:sketch bp:xs size:sm`}>
 	<div class="scene">
 		<div class={frameClasses}>
 			<canvas
@@ -267,6 +286,7 @@
 				size="xs"
 				{variant}
 				disabled={store.hasError() ?? undefined}
+				{init}
 			/>
 			{#if meta && store.getState('sketch') === 'active' && store.getIsInteractive()}
 				{#if meta.controls.includes('matrix-2d')}
@@ -303,7 +323,7 @@
 									blur={meta.filters?.blur}
 									convolutions={meta.filters?.convolutions}
 									onupdate={updateFilters}
-									onload={loadFilters}
+									init={loadFilters}
 								/>
 							{/key}
 						{/if}

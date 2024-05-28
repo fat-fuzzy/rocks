@@ -14,6 +14,7 @@ export enum PlayerEvent {
 	pause = 'pause',
 	clear = 'clear',
 	stop = 'stop',
+	loadOk = 'loadOk',
 }
 
 export enum PlayerAction {
@@ -72,7 +73,7 @@ export const PLAYER_SWITCH: PlayerSwitchType = {
 	active: {
 		id: 'active',
 		value: PlayerEvent.pause as string,
-		text: 'Pause',
+		text: '🪷 Pause',
 		asset: 'emoji:pause',
 		variant: 'outline',
 		state: 'active',
@@ -80,7 +81,7 @@ export const PLAYER_SWITCH: PlayerSwitchType = {
 	inactive: {
 		id: 'inactive',
 		value: PlayerEvent.play as string,
-		text: 'Play',
+		text: '✨ Play',
 		asset: 'emoji:play',
 		variant: 'fill',
 		state: 'inactive',

@@ -26,6 +26,8 @@ export enum CanvasEvent {
 	play = 'play',
 	clear = 'clear',
 	stop = 'stop',
+	loadNok = 'loadNok',
+	error = 'error',
 }
 
 export enum CanvasAction {
@@ -108,9 +110,9 @@ export type SceneMeta = {
 }
 
 export type Filters = {
-	channels: string[]
+	channels?: string[]
 	blur: number[]
-	convolutions: string[]
+	convolutions?: string[]
 }
 
 export type SceneOptions = {

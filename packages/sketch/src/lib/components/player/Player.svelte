@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {onMount} from 'svelte'
 	import {blocks} from '@fat-fuzzy/ui-s5'
 	import store from './store.svelte'
 	import {PlayerEvent, PlayerState} from './types.js'
@@ -16,6 +17,7 @@
 		pause: (payload: {event: PlayerEvent}) => void
 		clear: (payload: {event: PlayerEvent}) => void
 		stop: (payload: {event: PlayerEvent}) => void
+		init: (payload: {event: PlayerEvent}) => void
 	}
 
 	let {
@@ -27,12 +29,8 @@
 		pause,
 		clear,
 		stop,
+		init,
 	}: Props = $props()
-
-	store.init({
-		initial: PlayerState.idle,
-		onclick: updatePlayer,
-	})
 
 	function updatePlayer(payload: {value: string | number}) {
 		let event = payload.value as PlayerEvent
@@ -58,6 +56,17 @@
 		}
 		store.update(event as PlayerEvent)
 	}
+
+	onMount(() => {
+		store.init({
+			initial: PlayerState.idle,
+			onclick: updatePlayer,
+		})
+
+		if (init) {
+			init({event: PlayerEvent.loadOk})
+		}
+	})
 </script>
 
 <menu {id} class={`l:switcher:2xs w:full hug justify:center`}>
