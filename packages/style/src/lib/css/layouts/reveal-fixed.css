@@ -65,6 +65,8 @@
 				inline-size: var(--x-size);
 				block-size: 100%;
 				scrollbar-color: var(--ink) var(--shade);
+				opacity: 1;
+				transition: opacity 100ms ease-in;
 			}
 
 			.content > * {
@@ -80,6 +82,7 @@
 			.content {
 				overflow: hidden;
 				block-size: 100%;
+				opacity: 0;
 			}
 		}
 	}
