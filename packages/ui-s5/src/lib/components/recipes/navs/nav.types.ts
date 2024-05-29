@@ -38,8 +38,8 @@ export type RevealNavProps = NavProps &
 		container?: string
 		align?: string
 		items: any[]
-		settings: any
-		onupdate: (payload: {
+		settings?: any
+		onupdate?: (payload: {
 			name: string
 			value: string | number
 			state: string
