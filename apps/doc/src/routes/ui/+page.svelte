@@ -1,14 +1,14 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {headless, tokens, blocks, layouts, recipes} from '@fat-fuzzy/ui-s5'
+	import {tokens, blocks, layouts, recipes, content} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
 
-	const {Head} = headless
+	const {PageMain} = content
 	const {Collection} = api
 
-	const actionPath = '/ui'
-	const title = 'UI'
-	const description = `${title} Doc`
+	let actionPath = '/ui'
+	let title = 'Fat Fuzzy UI'
+	let description = $derived(`${title} | Doc`)
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -18,20 +18,13 @@
 	]
 	const path = $derived($page.url.pathname)
 	let markdowns = $derived($page.data.markdowns)
-	let content = $derived(
+	let markdownContent = $derived(
 		markdowns.categories.find(({meta}) => meta.slug === 'ui'),
 	)
-	let headerClass = 'l:flex card:sm bg:polar align:center'
 </script>
 
-<Head page={title} {description} />
-
-<header class={headerClass}>
-	<h1 class="card:md">Fat Fuzzy {title}</h1>
-</header>
-
-<section class="card:md scroll:y">
-	<div class="l:text:lg snap:start">{@html content.html}</div>
+<PageMain {title} {description}>
+	<div class="l:text:lg snap:start">{@html markdownContent.html}</div>
 	{#each components as { category, items }}
 		{@const meta = markdowns.categories.find(
 			({meta}) => meta.slug === category,
@@ -49,4 +42,4 @@
 			{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
 		</Collection>
 	{/each}
-</section>
+</PageMain>

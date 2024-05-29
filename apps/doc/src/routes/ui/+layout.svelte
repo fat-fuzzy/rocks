@@ -1,17 +1,17 @@
 <script lang="ts">
-	import {onDestroy, setContext} from 'svelte'
+	import {setContext} from 'svelte'
 	import {page} from '$app/stores'
 	import {
 		tokens,
 		blocks,
 		layouts,
 		recipes,
-		stores,
+		content,
 		constants,
 	} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
 
-	const {RevealNav} = recipes
+	const {LayoutSidebar} = content
 	const {PlaybookStore} = api
 
 	let {children} = $props()
@@ -22,10 +22,6 @@
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	function toggleSidebar(event) {
-		sidebarReveal.reveal = event.value
-	}
-
 	const tokenNames = Object.keys(tokens).sort(sortAsc)
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
@@ -33,7 +29,6 @@
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 
 	let stylesApi = api.stylesApi.initStyles()
-	let sidebarReveal: {[key: string]: string} = $state({reveal: ''})
 	setContext('stylesApi', stylesApi)
 	setContext('playbookStore', playbookStore)
 
@@ -46,14 +41,6 @@
 	playbookStore.navReveal = ui?.navReveal || DEFAULT_NAV_REVEAL_STATE
 	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
 	playbookStore.sidebarReveal = ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE
-
-	const localStores = [
-		stores.settings.sidebarReveal.subscribe((value) => {
-			if (value) {
-				sidebarReveal = value
-			}
-		}),
-	]
 
 	let items = [
 		{
@@ -89,35 +76,25 @@
 		},
 	]
 
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
-	})
+	let nav ={
+		path: '',
+		title: 'Design Library',
+		id: 'nav-page',
+		items,
+		reveal: 'show',
+		settings: playbookStore.app,
+		breakpoint: 'sm',
+		size: 'sm',
+		color: 'primary',
+		position: 'fixed',
+		place: 'left',
+		background: 'polar',
+		formaction: 'toggleSidebar',
+	}
 </script>
 
-<div class="l:sidebar:xs align-content:start">
-	<div class={`l:side ${sidebarReveal.reveal}`}>
-		<RevealNav
-			title="Design Library"
-			reveal="show"
-			id="nav-page"
-			{items}
-			path=""
-			settings={playbookStore.app}
-			breakpoint="sm"
-			size="sm"
-			color="primary"
-			position="fixed"
-			place="left"
-			background="polar"
-			formaction="toggleSidebar"
-			actionPath="/"
-			redirect={$page.url.pathname}
-			onupdate={toggleSidebar}
-		/>
-	</div>
-	<div class="l:main l:center l:stack:xl">
-		{#if children}
-			{@render children()}
-		{/if}
-	</div>
-</div>
+<LayoutSidebar {nav} redirect={$page.url.pathname} path=''>
+	{#if children}
+		{@render children()}
+	{/if}
+</LayoutSidebar>

@@ -26,7 +26,7 @@
 
 <Head page={title} {description} />
 
-<Sidebar size="xs">
+<Sidebar size="md">
 	{#snippet side()}
 		<Nav id='nav-log' title='nav-log' {items} {path} background="polar" size="md" color="primary" />
 	{/snippet}

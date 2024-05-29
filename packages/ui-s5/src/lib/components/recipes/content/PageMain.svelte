@@ -1,28 +1,35 @@
 <script lang="ts">
-	import {headless} from '@fat-fuzzy/ui-s5'
 	import type {Snippet} from 'svelte'
-
-	const {Head} = headless
+	import Head from '$lib/components/blocks/global/Head.svelte'
 
 	type Props = {
 		title: string
 		description: string
+		page?: string
+		header?: Snippet
 		children: Snippet
 	}
 
 	let {
 		title = 'SidebarPage',
 		description = `Sidebar page layout`,
+		page,
+		header,
 		children,
 	} = $props() as Props
 
+	let currentPage = $derived(page ?? title)
 	let headerClass = 'l:flex bg:polar align:center maki:block'
 </script>
 
-<Head page={title} {description} />
+<Head page={currentPage} {title} {description} />
 
 <header class={headerClass}>
-	<h1 class="card:md">{title}</h1>
+	{#if header}
+		{@render header()}
+	{:else}
+		<h1 class="card:md">{title}</h1>
+	{/if}
 </header>
 
 <section class="card:md scroll:y l:center">

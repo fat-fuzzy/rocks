@@ -26,12 +26,12 @@
 
 <Head page={title} {description} />
 
-<Sidebar size="xs">
+<Sidebar size="md">
 	{#snippet side()}
 		<Nav id='nav-dev' title='nav-dev' {items} {path} background="polar" size="md" color="primary" />
 	{/snippet}
 	{#snippet main()}
-		<div class="l:center l:stack:xxl">
+		<div class="l:center l:stack:xxl maki:inline">
 			{#if children}
 				{@render children()}
 			{:else}

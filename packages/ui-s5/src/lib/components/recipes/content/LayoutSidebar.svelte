@@ -1,19 +1,17 @@
 <script lang="ts">
 	import {onDestroy, type Snippet} from 'svelte'
-	import {page} from '$app/stores'
-	import {
-		recipes,
-		stores,
-	} from '@fat-fuzzy/ui-s5'
-
-	const {RevealNav} = recipes
+	import type { RevealNavProps } from '$lib/components/recipes/navs/nav.types.js'
+	import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
+	import  * as stores from '$lib/stores/ui.js'
 
 	// TODO: fix types
 	type Props = {
-		nav: { title: string, id: string, items: any[], reveal:string, settings: any, color:string, size:string, breakpoint: string, background: string},
 		path: string,
-		children: Snippet}
-	let {path, nav, children}: Props = $props()
+		nav: RevealNavProps,
+		redirect: string,
+		children: Snippet
+	}
+	let {path, nav, redirect, children}: Props = $props()
 
 	let sidebarReveal: {[key: string]: string} = $state({reveal: ''})
 
@@ -22,7 +20,7 @@
 	}
 
 	const localStores = [
-		stores.settings.sidebarReveal.subscribe((value) => {
+		stores.sidebarReveal.subscribe((value) => {
 			if (value) {
 				sidebarReveal = value
 			}
@@ -37,14 +35,14 @@
 <div class="l:sidebar:md align-content:start">
 	<div class={`l:side ${sidebarReveal.reveal}`}>
 		<RevealNav
-			{path}
 			position="fixed"
 			place="left"
 			formaction="toggleSidebar"
 			actionPath="/"
-			redirect={$page.url.pathname}
-			onupdate={toggleSidebar}
+			{redirect}
 			{...nav}
+			{path}
+			onupdate={toggleSidebar}
 		/>
 	</div>
 	<div class="l:main l:stack:xl maki:inline">

@@ -1,24 +1,20 @@
 <script lang="ts">
+	import {content} from '@fat-fuzzy/ui-s5'
 	import {page} from '$app/stores'
 
-	import {headless} from '@fat-fuzzy/ui-s5'
-
-	const {Head} = headless
+	const {PageMain} = content
 
 	let category = $derived($page.params.category)
 	let path = $derived($page.url.pathname)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
-	let headerClass = `card:sm bp:xs bg:polar`
+	let description = $derived(`${title} | Doc`)
 </script>
 
-<Head {title} page="UI" description={`${title} Doc`} />
-
-<header class={headerClass}>
-	<h1 class="main">{title}</h1>
-</header>
-<ul>
-	<li><a href={`${path}/doc`}>Doc</a></li>
-	<li><a href={`${path}/demo`}>Demo</a></li>
-</ul>
+<PageMain {title} {description}>
+	<ul>
+		<li><a href={`${path}/doc`}>Doc</a></li>
+		<li><a href={`${path}/demo`}>Demo</a></li>
+	</ul>
+</PageMain>

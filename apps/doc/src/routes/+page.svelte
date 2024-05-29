@@ -30,7 +30,7 @@
 	</div>
 </header>
 
-<section class="l:text:xxl text:center">
+<section class="l:text:xxl text:center l:center">
 	<h2>✨ Highlights</h2>
 	<div class="l:switcher:sm bp:xs card:xxl">
 		<article class={`card:lg text:center emoji:rainbow ${variant}`}>

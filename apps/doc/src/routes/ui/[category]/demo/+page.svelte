@@ -1,10 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-
-	import {headless, tokens, blocks, layouts, recipes} from '@fat-fuzzy/ui-s5'
+	import {tokens, blocks, layouts, recipes, content} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
 
-	const {Head} = headless
+	const {PageMain} = content
 	const {Collection, Api} = api
 
 	const actionPath = '/ui'
@@ -28,33 +27,34 @@
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
-	let headerClass = `l:grid:header:doc bp:xs bg:polar`
+	let description = $derived(`${title} | Demo`)
 </script>
 
-<Head {title} page={title} description={`${title} Doc`} />
+<PageMain {title} {description}>
+	{#snippet header()}
+		<h1 class="l:main">{title}</h1>
+		<div class="context l:side">
+			<Api
+				categories={['app']}
+				{meta}
+				{path}
+				{actionPath}
+				redirect={$page.url.pathname}
+			/>
+		</div>
+	{/snippet}
 
-<header class={headerClass}>
-	<h1 class="l:main">{title}</h1>
-	<div class="context l:side">
-		<Api
-			categories={['app']}
-			{meta}
-			{path}
-			{actionPath}
-			redirect={$page.url.pathname}
-		/>
-	</div>
-</header>
-<Collection
-	depth={1}
-	isPage={true}
-	components={items}
-	{meta}
-	{path}
-	{category}
-	{markdowns}
-	{actionPath}
-	redirect={$page.url.pathname}
->
-	{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
-</Collection>
+	<Collection
+		depth={1}
+		isPage={true}
+		components={items}
+		{meta}
+		{path}
+		{category}
+		{markdowns}
+		{actionPath}
+		redirect={$page.url.pathname}
+	>
+		{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
+	</Collection>
+</PageMain>
