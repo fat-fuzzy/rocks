@@ -51,6 +51,12 @@ import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Header from '$lib/components/recipes/headers/Header.svelte'
 
 /**
+ * Recipes - Routes
+ */
+import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
+import PageMain from '$lib/components/recipes/content/PageMain.svelte'
+
+/**
  * Forms
  */
 import {NavReveal} from '$lib/forms/nav-reveal.js'
@@ -136,6 +142,11 @@ const recipes = {
 	Header,
 }
 
+const content = {
+	PageMain,
+	LayoutSidebar,
+}
+
 const headless = {
 	Head,
 }
@@ -146,6 +157,7 @@ export {
 	blocks,
 	layouts,
 	recipes,
+	content,
 	utils,
 	forms,
 	stores,
