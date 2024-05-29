@@ -76,7 +76,7 @@
 		},
 	]
 
-	let nav ={
+	let nav = {
 		path: '',
 		title: 'Design Library',
 		id: 'nav-page',

@@ -1,15 +1,10 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {recipes, layouts, headless} from '@fat-fuzzy/ui-s5'
+	import {content} from '@fat-fuzzy/ui-s5'
 
-	const {Head} = headless
-	const {Sidebar} = layouts
-	const {Nav} = recipes
+	const {LayoutSidebar} = content
 
 	let {children} = $props()
-	let title = ' Fat Fuzzy Dev'
-	let description =
-		'Fat Fuzzy Dev: how to use the packages in this project to develop other apps'
 	let path = ''
 	let items = [
 		{
@@ -22,21 +17,27 @@
 			})),
 		},
 	]
+
+	let nav ={
+		path,
+		title: 'Fat Fuzzy Dev',
+		id: 'nav-dev',
+		items,
+		reveal: 'show',
+		breakpoint: 'sm',
+		size: 'sm',
+		color: 'primary',
+		position: 'fixed',
+		place: 'left',
+		background: 'polar',
+		formaction: 'toggleSidebar',
+	}
 </script>
 
-<Head page={title} {description} />
-
-<Sidebar size="md">
-	{#snippet side()}
-		<Nav id='nav-dev' title='nav-dev' {items} {path} background="polar" size="md" color="primary" />
-	{/snippet}
-	{#snippet main()}
-		<div class="l:center l:stack:xxl maki:inline">
-			{#if children}
-				{@render children()}
-			{:else}
-				<p class="feedback bare emoji:default">Doc Coming Soon!</p>
-			{/if}
-		</div>
-	{/snippet}
-</Sidebar>
+<LayoutSidebar {nav} redirect={$page.url.pathname} path=''>
+	{#if children}
+		{@render children()}
+	{:else}
+		<p class="feedback bare emoji:default">Doc Coming Soon!</p>
+	{/if}
+</LayoutSidebar>
