@@ -61,10 +61,16 @@
 			/* transition: transform 250ms ease-in-out; */
 
 			.content {
-				overflow: scroll;
+				--lightness-scrollbar: var(--color-lightness-000);
+				--chroma-scrollbar: var(--color-chroma-000);
+				--track: oklch(
+					var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
+				);
+				--thumb: var(--ink);
+				overflow-y: auto;
 				inline-size: var(--x-size);
 				block-size: 100%;
-				scrollbar-color: var(--ink) var(--shade);
+				scrollbar-color: var(--thumb) var(--track);
 				opacity: 1;
 				transition: opacity 100ms ease-in;
 			}

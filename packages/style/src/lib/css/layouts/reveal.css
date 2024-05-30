@@ -27,8 +27,8 @@
 }
 
 .l\:reveal.show .content {
-	padding: var(--outline-offset-base);
-	padding-inline-start: calc(3 * var(--outline-offset-base));
+	padding-block: var(--outline-offset-base);
+	padding-inline: calc(3 * var(--outline-offset-base)) 0;
 }
 
 .l\:reveal.minimize:not([class*='fixed']) .content {

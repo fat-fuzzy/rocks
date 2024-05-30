@@ -19,7 +19,7 @@ nav li {
 	margin-block: 0;
 }
 
-nav > ul > li:first-child {
+nav > ul > li:only-child {
 	padding-block: var(--ui-size) var(--y-axis);
 }
 
