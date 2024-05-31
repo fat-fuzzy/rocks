@@ -6,7 +6,7 @@
 		name,
 		label = 'Checkbox input',
 		checked,
-		layout = 'stack',
+		layout = 'switcher',
 		value,
 
 		disabled,
@@ -38,7 +38,7 @@
 			: container
 				? `l:${container} `
 				: ''
-	let layoutClasses = layout ? `l:${layout}` : ''
+	let layoutClasses = layout ? `l:${layout}:${size}` : ''
 	let contextClasses = `${containerClasses} ${layoutClasses}`
 
 	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${fontClass} ${backgroundClass}`

@@ -17,7 +17,7 @@
 		variant,
 		container,
 		dimensions,
-		layout = 'flex',
+		layout = 'switcher',
 		type = 'submit',
 		children,
 		onclick

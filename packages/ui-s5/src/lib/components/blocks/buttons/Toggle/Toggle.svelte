@@ -21,7 +21,7 @@
 		variant = 'fill',
 		container,
 		dimensions,
-		layout = 'flex',
+		layout = 'switcher',
 		type = 'submit',
 		onload,
 		onclick,
