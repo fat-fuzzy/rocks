@@ -1,10 +1,10 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte'
 	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
-	import {layouts, recipes} from '@fat-fuzzy/ui-s5'
-	import type { Snippet } from 'svelte'
-	const {Sidebar} = layouts
-	const {Nav} = recipes
+	import {content} from '@fat-fuzzy/ui-s5'
+
+const {LayoutSidebar} = content
 
 	type Props = {
 		children: Snippet
@@ -14,29 +14,27 @@
 
 	let sketches = $state($page.data.sketches)
 	let path = ''
-	let items = sketches
+	let items = [{ slug: 'sketches', title: 'Sketches' ,items: sketches}]
+
+	let nav ={
+		path,
+		title: 'Sketches',
+		id: 'nav-sketches',
+		items: sketches,
+		reveal: 'show',
+		breakpoint: 'sm',
+		size: 'sm',
+		color: 'primary',
+		position: 'fixed',
+		place: 'left',
+		background: 'polar',
+		formaction: 'toggleSidebar',
+	}
 </script>
 
-<Sidebar size="md">
-	{#snippet side()}
-		<details open>
-			<summary class="bg:primary:300 variant:fill">Sketches</summary>
-				<Nav
-				id="nav-page"
-				title="nav-page"
-				{items}
-				{path}
-				size="xs"
-				color="bg:primary:light"
-				background="polar"
-				container="card"
-				layout="switcher"
-			/>
-		</details>
-	{/snippet}
-	{#snippet main()}
-		{#if children}
-			{@render children()}
-		{/if}
-	{/snippet}
-</Sidebar>
+
+<LayoutSidebar {nav} redirect={$page.url.pathname} {path}>
+	{#if children}
+		{@render children()}
+	{/if}
+</LayoutSidebar>

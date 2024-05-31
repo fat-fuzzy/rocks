@@ -1,6 +1,19 @@
-pre,
-code {
+pre {
+	--lightness: var(--color-lightness-600);
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma: var(--color-chroma-600);
+	--chroma-contrast: var(--color-chroma-000);
+	--hue: var(--color-theme-primary);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	color: var(--ink);
+	font-size: var(--font-size);
 	font-family: var(--font-family-code);
+	background-color: var(--shade);
+	border-color: var(--shade);
+	overflow: auto;
+	padding-inline: var(--ui-size) var(--ui-size-lg);
+	padding-block: var(--ui-size);
 }
 
 kbd {
@@ -11,27 +24,7 @@ kbd {
 	border-radius: var(--border-radius-base);
 }
 
-/* Allow space for scrollbar on macOS */
-pre,
-code[class^='language-'] {
-	overflow: auto;
-	padding-inline: var(--ui-size) var(--ui-size-lg);
-	padding-block: var(--ui-size);
-}
-
-pre,
-code[class^='language-'],
-pre.default {
-	--chroma: var(--color-chroma-000);
-	color: var(--ink);
-	background-color: var(--bg-color);
-	border-color: var(--shade);
-}
-
 code:not([class^='language-']) {
-	--lightness-contrast: var(--color-lightness-dark);
-	color: var(--ink);
-	background-color: var(--shade);
 	border: none;
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
 	padding-inline: calc(var(--ui-size) / 2);
