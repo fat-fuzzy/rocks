@@ -46,7 +46,7 @@ textarea {
 	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
 	--padding-inline: var(--ui-size);
 	border: 1px solid var(--border-color);
-	border-radius: var(--radius-base);
+	border-radius: var(--border-radius-md);
 	color: var(--ink);
 	accent-color: var(--accent-color);
 	font-size: var(--font-size);
@@ -120,36 +120,6 @@ label.variant\:bare > [type='file'] {
 	background-color: var(--shade);
 }
 
-fieldset.radio input,
-fieldset.check input {
-	flex-grow: 0;
-	flex-basis: var(--font-size);
-}
-
-fieldset.radio,
-fieldset.check {
-	justify-content: flex-start;
-	label {
-		color: var(--ink);
-	}
-
-	label:hover {
-		background-color: var(--shade);
-	}
-
-	label.variant\:outline:hover {
-		--lightness: var(--color-lightness-100);
-		--lightness-contrast: var(--color-lightness-400);
-		background-color: var(--shade);
-	}
-
-	label.variant\:bare:hover {
-		--lightness: var(--color-lightness-000);
-		--lightness-contrast: var(--color-lightness-400);
-		background-color: var(--shade);
-	}
-}
-
 /* Display range input step labels */
 
 [type='range'][list='markers'] + datalist {
@@ -170,43 +140,6 @@ fieldset.check {
 
 label[class*='l:stack'] > [type='range'] {
 	margin-block-start: 0;
-}
-
-label.radio,
-label.check {
-	margin: 0;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	gap: var(--ui-size);
-}
-
-label.radio[class*='emoji'] span,
-label.check[class*='emoji'] span {
-	flex-grow: 1;
-	font-size: var(--font-size);
-}
-
-.night {
-	label:hover > input,
-	label:hover > [type='file'] {
-		color: var(--ink);
-	}
-
-	label.fill > input,
-	label.fill > [type='file'] {
-		background-color: var(--shade);
-	}
-
-	label.outline > input,
-	label.outline > [type='file'] {
-		color: var(--ink);
-	}
-
-	label.bare > input,
-	label.bare > [type='file'] {
-		color: var(--ink);
-	}
 }
 
 label.primary:hover > input,

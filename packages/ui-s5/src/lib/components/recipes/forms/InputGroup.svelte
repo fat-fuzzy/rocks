@@ -56,7 +56,8 @@
 			name={id}
 			label={input.text}
 			{checked}
-			{color}
+			color={input.color || color}
+			size={input.size || size}
 			{...input}
 			oninput={(event) => handleInput(event, name)}
 		/>

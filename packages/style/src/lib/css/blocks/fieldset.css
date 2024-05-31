@@ -1,9 +1,9 @@
 fieldset {
 	padding: 0;
 	border: none;
-	border-radius: var(--radius-base);
+	border-radius: var(--border-radius-md);
 
-	> legend {
+	legend {
 		font-size: var(--font-size-ui);
 		font-weight: var(--font-weight-ui);
 		line-height: var(--ui-size);
@@ -19,28 +19,66 @@ fieldset.radio,
 fieldset.check {
 	padding: var(--ui-size);
 
-	> legend {
+	input {
+		flex-grow: 0;
+		flex-basis: var(--font-size);
+	}
+
+	legend {
 		inline-size: auto;
 		margin-inline-start: var(--ui-size);
 		padding: var(--ui-size-sm) var(--ui-size);
 	}
 
-	> label {
-		margin: 0;
-		width: 100%;
+	[class*='emoji'] span {
+		flex-grow: 1;
+		font-size: var(--font-size);
+	}
+
+	label {
+		--lightness: var(--color-lightness-000);
+		--lightness-contrast: var(--color-lightness-300);
+		--chroma: var(--color-chroma-000);
+		--chroma-contrast: var(--color-chroma-300);
+		--hue: var(--hue-semantic, var(--color-theme-primary));
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		--bg-color: var(--shade);
 		display: flex;
 		justify-content: space-between;
 		padding: var(--ui-size-sm) var(--ui-size-lg);
 		gap: var(--ui-size);
+		margin: 0;
+		width: 100%;
+		color: var(--ink);
 	}
 
-	> label[class*='emoji'] span {
-		flex-grow: 1;
-	}
-
-	> label [type='radio'] {
+	label [type='radio'] {
 		padding: 0;
 		height: auto;
 		outline-offset: 0;
+	}
+
+	input:checked {
+		--lightness: var(--color-lightness-000);
+		--lightness-contrast: var(--color-lightness-400);
+		--chroma: var(--color-chroma-000);
+		--chroma-contrast: var(--color-chroma-400);
+		background-color: var(--shade);
+	}
+
+	label:hover {
+		--lightness: var(--color-lightness-100);
+		--lightness-contrast: var(--color-lightness-500);
+	}
+
+	label.variant\:outline:hover {
+		--lightness: var(--color-lightness-100);
+		--lightness-contrast: var(--color-lightness-400);
+	}
+
+	label.variant\:bare:hover {
+		--lightness: var(--color-lightness-000);
+		--lightness-contrast: var(--color-lightness-400);
 	}
 }
