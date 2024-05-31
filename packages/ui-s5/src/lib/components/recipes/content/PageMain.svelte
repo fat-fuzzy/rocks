@@ -6,6 +6,7 @@
 		title: string
 		description: string
 		page?: string
+		size?: string
 		header?: Snippet
 		children: Snippet
 	}
@@ -14,12 +15,13 @@
 		title = 'SidebarPage',
 		description = `Sidebar page layout`,
 		page,
+		size,
 		header,
 		children,
 	} = $props() as Props
 
-	let currentPage = $derived(page ?? title)
-	let headerClass = 'l:flex bg:polar align:center maki:block'
+	let currentPage = $state(page ?? title)
+	let headerClass = `l:sidebar:${size} bg:polar align:center maki:block maki:inline`
 </script>
 
 <Head page={currentPage} {title} {description} />
