@@ -12,11 +12,11 @@
 	type Props = {
 		depth?: number
 		isPage?: boolean
-		path?: string
+		path: string
 		components: {[name: string]: any} // TODO: fix types
 		actionPath?: string
 		redirect?: string
-		category?: string
+		category: string
 		color?: string
 		size?: string
 		layout?: string
@@ -28,14 +28,14 @@
 	let {
 		isPage = false,
 		depth = 0,
-		path = $page.url.pathname,
+		path,
 		components,
 		actionPath,
 		redirect,
 		size = 'md',
 		color = 'primary:100',
 		layout = 'grid',
-		category = $page.params.category,
+		category,
 		markdowns,
 		children,
 		meta
@@ -43,7 +43,7 @@
 
 	const multipleCategories = ['graphics', 'recipes']
 
-	let componentNames = $state(Object.keys(components))
+	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
 	let layoutClass = $derived(
 		category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`,
