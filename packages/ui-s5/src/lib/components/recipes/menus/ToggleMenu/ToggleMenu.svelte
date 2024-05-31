@@ -15,7 +15,7 @@
 		size,
 		shape,
 		variant,
-		container,
+		container='stack',
 		layout = 'switcher',
 		threshold,
 
@@ -35,10 +35,12 @@
 	})
 
 	let type: ButtonType = formaction ? 'submit' : 'button'
-	let containerClass = container ? `${container}:${size}` : ''
-	let elementClasses =` l:${layout}:${size} th:${threshold} size:${size} mode:${mode}`
+	let sizeClass = size ? `size:${size}` : ''
+	let containerClass = container ? `l:${container}:${size} ${sizeClass}` : ''
+	let layoutClass = layout ? `l:${layout}:${size}` : ''
+	let thresholdClass = threshold ? `th:${threshold}` : ''
+	let elementClasses =` ${layoutClass} :${thresholdClass} ${sizeClass} mode:${mode}`
 	let menuClasses = title ? elementClasses :`${elementClasses} ${containerClass}`
-
 
 	function updateMenu(payload: TogglePayload) {
 		store.update(payload)
@@ -81,7 +83,7 @@
 {/snippet}
 
 {#if title}
-	<div class={`menu l:stack ${size} ${containerClass}`}>
+	<div class={`menu ${containerClass}`}>
 		<p>{title}</p>
 		{@render menuContent()}
 	</div>
