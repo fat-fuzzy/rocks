@@ -28,7 +28,7 @@ export const sketches = [
 	{
 		id: '004',
 		slug: 'geometry-2d',
-		title: 'Geometry 2D ',
+		title: 'Geometry 2D',
 		asset: 'emoji:geometry-2d',
 		meta: {
 			input: 'form',
