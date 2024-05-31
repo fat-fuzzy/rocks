@@ -25,7 +25,7 @@
 			WebGL Fundamentals 1 & 2
 		</a>
 	</p>
-	<div class="l:grid:2xs maki:block">
+	<div class="l:grid:md maki:block">
 		{#each tags as tag}
 			<article class="card:md bg:primary:000 l:stack size:sm">
 				<h3 class="bg:primary:100 card:sm"><small>{tag}</small></h3>
