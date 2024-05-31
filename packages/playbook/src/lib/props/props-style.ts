@@ -4,8 +4,8 @@ const brightness = {
 	initial: 'day',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{id: 'brightness.day', text: 'day', asset: 'emoji:day', value: 'day'},
 		{
@@ -21,8 +21,8 @@ const contrast = {
 	initial: 'blend',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{
 			id: 'contrast.contrast',
@@ -43,7 +43,7 @@ const container = {
 	initial: 'center',
 	input: 'toggle',
 	layout: 'stack',
-	size: 'sm',
+	size: '2xs',
 	container: 'card',
 	items: [
 		{id: 'container.center', text: 'center', value: 'center'},
@@ -55,7 +55,7 @@ const size = {
 	initial: 'md',
 	input: 'range',
 	layout: 'stack',
-	size: 'sm',
+	size: 'xs',
 	container: 'card',
 	items: [
 		{id: 'size.xs', text: 'xs', value: 'xs'},
@@ -70,7 +70,7 @@ const layout = {
 	initial: 'switcher',
 	input: 'toggle',
 	layout: 'stack',
-	size: 'sm',
+	size: '2xs',
 	container: 'card',
 	items: [
 		{id: 'layout.stack', text: 'stack', value: 'stack'},
@@ -86,7 +86,7 @@ const threshold = {
 	initial: 'md',
 	input: 'range',
 	layout: 'stack',
-	size: 'sm',
+	size: 'xs',
 	container: 'card',
 	items: [
 		{id: 'threshold.xs', text: 'xs', value: 'xs'},
@@ -101,7 +101,7 @@ const breakpoint = {
 	initial: 'xl',
 	input: 'range',
 	layout: 'stack',
-	size: 'sm',
+	size: 'xs',
 	container: 'card',
 	items: [
 		{id: 'breakpoint.xs', text: 'xs', value: 'xs'},
@@ -116,7 +116,7 @@ const color = {
 	initial: '',
 	input: 'toggle',
 	layout: 'switcher',
-	size: 'xxs',
+	size: '2xs',
 	container: 'card',
 	items: [
 		{
@@ -147,8 +147,8 @@ const variant = {
 	initial: 'fill',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{id: 'variant.fill', text: 'fill', value: 'fill'},
 		{id: 'variant.outline', text: 'outline', value: 'outline'},
@@ -160,7 +160,7 @@ const shape = {
 	initial: '',
 	input: 'toggle',
 	layout: 'switcher',
-	size: 'sm',
+	size: '2xs',
 	variant: 'card',
 	items: [
 		{id: 'shape.round', text: 'round', value: 'round'},
@@ -172,8 +172,8 @@ const dimensions = {
 	initial: 'video',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{id: 'dimensions.video', text: 'video', value: 'video'},
 		{id: 'dimensions.twin', text: 'twin', value: 'twin'},
@@ -185,8 +185,8 @@ const background = {
 	initial: 'video',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{id: 'background.layer', text: 'layer', value: 'layer'},
 		{id: 'background.box', text: 'box', value: 'box'},
@@ -198,41 +198,36 @@ const status = {
 	initial: 'default',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{
 			id: 'status.default',
 			text: 'default',
-			color: 'default',
 			asset: 'emoji:default',
 			value: 'default',
 		},
 		{
 			id: 'status.info',
 			text: 'info',
-			color: 'info',
 			asset: 'emoji:info',
 			value: 'info',
 		},
 		{
 			id: 'status.success',
 			text: 'success',
-			color: 'success',
 			asset: 'emoji:success',
 			value: 'success',
 		},
 		{
 			id: 'status.warning',
 			text: 'warning',
-			color: 'warning',
 			asset: 'emoji:warning',
 			value: 'warning',
 		},
 		{
 			id: 'status.error',
 			text: 'error',
-			color: 'error',
 			asset: 'emoji:error',
 			value: 'error',
 		},
@@ -243,9 +238,9 @@ const context = {
 	initial: 'form',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
+	size: '2xs',
 	container: '',
-	variant: 'box card',
+	variant: 'outline',
 	items: [
 		{id: 'context.form', text: 'form', value: 'form'},
 		{id: 'context.code', text: 'code', value: 'code'},
@@ -256,7 +251,7 @@ const asset = {
 	initial: 'default',
 	input: 'toggle',
 	layout: 'switcher',
-	size: 'xxs',
+	size: '2xs',
 	variant: 'card',
 	mode: 'radio',
 	items: [
@@ -297,8 +292,8 @@ const content = {
 	initial: 'card',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{id: 'content.card', text: 'card', value: 'card'},
 		{id: 'content.form', text: 'form', value: 'form'},
@@ -310,8 +305,8 @@ const side = {
 	initial: 'card',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{id: 'side.card', text: 'card', value: 'card'},
 		{id: 'side.form', text: 'form', value: 'form'},
@@ -323,8 +318,8 @@ const main = {
 	initial: 'text',
 	input: 'radio',
 	layout: 'stack',
-	size: 'sm',
-	variant: 'box card',
+	size: '2xs',
+	variant: 'outline',
 	items: [
 		{id: 'main.card', text: 'card', value: 'card'},
 		{id: 'main.form', text: 'form', value: 'form'},
@@ -334,7 +329,7 @@ const main = {
 
 const settingsFamily = {
 	layout: 'flex',
-	size: 'lg',
+	size: 'xs',
 	variant: 'card',
 	justify: 'end',
 	props: ['brightness', 'contrast'],
@@ -342,14 +337,14 @@ const settingsFamily = {
 
 const elementFamily = {
 	layout: 'switcher',
-	size: 'md',
+	size: 'xs',
 	variant: 'card:xl',
 	props: ['color', 'variant', 'size', 'status', 'context', 'asset', 'shape'],
 }
 
 const containerFamily = {
 	layout: 'switcher',
-	size: 'md',
+	size: 'xs',
 	variant: 'card',
 	props: ['container', 'size'],
 }
@@ -357,14 +352,14 @@ const containerFamily = {
 const layoutFamily = {
 	layout: 'switcher',
 	container: 'card',
-	size: 'md',
+	size: 'xs',
 	variant: 'card',
 	props: ['layout', 'threshold', 'breakpoint'],
 }
 
 const contentFamily = {
 	layout: 'switcher',
-	size: 'md',
+	size: 'xs',
 	variant: 'card',
 	props: ['content', 'side', 'main'],
 }

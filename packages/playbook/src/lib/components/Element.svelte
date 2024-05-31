@@ -35,7 +35,7 @@
 		actionPath,
 		redirect,
 		category = '',
-		color = 'primary:light',
+		color = 'primary:100',
 		meta,
 	}: Props = $props()
 
@@ -78,7 +78,7 @@
 </script>
 
 {#if isPage}
-	<article class="l:sidebar:xs">
+	<article class="l:sidebar:md">
 		<section class={`l:main card:xl inset ${brightness} bg:${contrast} `}>
 			<div class={containerClasses}>
 				{#if fixtures?.status}
@@ -113,22 +113,24 @@
 				{/if}
 			</div>
 		</section>
-		<section class="l:side">
-			<div class="l:stack:lg">
-				<details id={`${category}-${title}-api`} class="l:stack:md" open>
-					<summary class={`box:${color} bg:${color}`}>Props</summary>
-					{#if categories}
-						<div class="drop w:full bg:polar ui:menu">
-							<Api {categories} {path} {actionPath} {redirect} {meta} />
-						</div>
-					{:else}
-						<div class="card:lg text:center">
-							<p class={`font:xl`}>🐰</p>
-							<p class={`font:md`}>Coming soon!</p>
-						</div>
-					{/if}
-				</details>
-			</div>
+		<section class="l:side l:stack:md w:full">
+			<details
+				id={`${category}-${title}-api`}
+				class="l:stack:md maki:inline:xs size:xs"
+				open
+			>
+				<summary class={`variant:${color} bg:${color}`}>Props</summary>
+				{#if categories}
+					<div class="ui:menu">
+						<Api {categories} {path} {actionPath} {redirect} {meta} />
+					</div>
+				{:else}
+					<div class="card:lg text:center">
+						<p class={`font:xl`}>🐰</p>
+						<p class={`font:md`}>Coming soon!</p>
+					</div>
+				{/if}
+			</details>
 		</section>
 	</article>
 {:else}

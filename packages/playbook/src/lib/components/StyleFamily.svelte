@@ -21,7 +21,7 @@
 	const stylesApi: StylesApi = getContext('stylesApi')
 	const playbookStore: PlaybookStore = getContext('playbookStore')
 
-	let apiSize = 'xs'
+	let apiSize = '2xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
 
@@ -192,7 +192,7 @@
 									layout={styleInput.layout || ''}
 									container={styleInput.container || ''}
 									threshold={apiSize}
-									size={apiSize}
+									size={styleInput.size || apiSize}
 									color={apiColor}
 									variant={styleInput.variant}
 									onupdate={(event) => handleInput(event, familyName)}

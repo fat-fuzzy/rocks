@@ -32,8 +32,8 @@
 		components,
 		actionPath,
 		redirect,
-		size = 'xs',
-		color = 'primary:light',
+		size = 'md',
+		color = 'primary:100',
 		layout = 'grid',
 		category = $page.params.category,
 		markdowns,
@@ -57,7 +57,7 @@
 </script>
 
 {#if isPage}
-	<div class="l:sidebar:xs align-content:end">
+	<div class="l:sidebar:md">
 		<section class={`l:main ${layoutClass}`}>
 			{#each componentNames as name}
 				{@const component = components[name]}
@@ -73,22 +73,20 @@
 				/>
 			{/each}
 		</section>
-		<section class="l:side">
-			<div class="l:stack:lg">
-				<details id={`${category}-api`} class="l:stackmd" open>
-					<summary class={`box:${color} bg:${color}`}>Props</summary>
-					{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
-						<div class="drop w:full bg:polar ui:menu">
-							<Api {categories} {path} {actionPath} {redirect} {meta}/>
-						</div>
-					{:else}
-						<div class="card:lg text:center">
-							<p class={`font:xl`}>🐰</p>
-							<p class={`font:md`}>Coming soon!</p>
-						</div>
-					{/if}
-				</details>
-			</div>
+		<section class="l:side l:stack:md w:full">
+			<details id={`${category}-api`} class="l:stack:md maki:inline:xs size:xs" open>
+				<summary class={`variant:${color} bg:${color}`}>Props</summary>
+				{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
+					<div class="ui:menu">
+						<Api {categories} {path} {actionPath} {redirect} {meta}/>
+					</div>
+				{:else}
+					<div class="card:lg text:center">
+						<p class={`font:xl`}>🐰</p>
+						<p class={`font:md`}>Coming soon!</p>
+					</div>
+				{/if}
+			</details>
 		</section>
 	</div>
 {:else}
@@ -107,21 +105,19 @@
 			<summary class={`box:${color} bg:${color}`}>
 				{category}
 			</summary>
-			<div class="drop xxl">
-				<div class={layoutClass}>
-					{#each componentNames as name}
-						{@const component = components[name]}
-						<Element
-							title={name}
-							depth={Number(depth) + 2}
-							{path}
-							{category}
-							{component}
-							{actionPath}
-							meta={getElementMeta(name, categoryMarkdowns)}
-						/>
-					{/each}
-				</div>
+			<div class={layoutClass}>
+				{#each componentNames as name}
+					{@const component = components[name]}
+					<Element
+						title={name}
+						depth={Number(depth) + 2}
+						{path}
+						{category}
+						{component}
+						{actionPath}
+						meta={getElementMeta(name, categoryMarkdowns)}
+					/>
+				{/each}
 			</div>
 		</details>
 	</section>

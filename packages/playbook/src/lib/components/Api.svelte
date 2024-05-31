@@ -30,9 +30,9 @@
 	}: Props = $props()
 	// export let reset = 'reset'
 
-	let apiLayout = 'l:switcher:lg nowrap grow align:center'
-	let apiSize = 'lg'
-	let apiBreakpoint = 'xxs'
+	let apiLayout = 'l:switcher:xs nowrap grow align:center'
+	let apiSize = '2xs'
+	let apiBreakpoint = '2xs'
 
 	let action = $derived(
 		formaction && redirect
