@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
+	import {onDestroy, type Snippet} from 'svelte'
 	import '@fat-fuzzy/style'
 
 	import {page} from '$app/stores'
@@ -10,7 +10,12 @@
 	const {settings} = stores
 	const {DEFAULT_APP_SETTINGS, APP_LINKS} = constants
 
-	let {children} = $props()
+	type Props = {
+		sidebar?: Snippet
+		children?: Snippet
+	}
+
+	let {children}:Props = $props()
 
 	let appSettings = $page.data.app || DEFAULT_APP_SETTINGS
 

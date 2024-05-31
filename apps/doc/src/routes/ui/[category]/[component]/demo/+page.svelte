@@ -38,11 +38,10 @@
 	)
 </script>
 
-<PageMain {title} {description}>
+<PageMain {title} {description} size="md">
 	{#snippet header()}
-		<h1 class="l:main">{title} | Demo</h1>
-
-		<div class="context l:side">
+		<h1 class="l:main:60">{title}</h1>
+		<div class="l:side l:flex justify:end">
 			<Api
 				categories={['app']}
 				meta={markdownContent.meta}

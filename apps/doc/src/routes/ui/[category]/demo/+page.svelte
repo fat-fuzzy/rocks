@@ -30,10 +30,10 @@
 	let description = $derived(`${title} | Demo`)
 </script>
 
-<PageMain {title} {description}>
+<PageMain {title} {description} size="lg">
 	{#snippet header()}
-		<h1 class="l:main">{title}</h1>
-		<div class="context l:side">
+		<h1 class="l:main:60">{title}</h1>
+		<div class="l:side l:flex justify:end">
 			<Api
 				categories={['app']}
 				{meta}

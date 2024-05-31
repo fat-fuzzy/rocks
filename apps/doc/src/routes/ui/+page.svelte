@@ -24,7 +24,9 @@
 </script>
 
 <PageMain {title} {description}>
-	<div class="l:text:lg snap:start">{@html markdownContent.html}</div>
+	<div class="l:text:lg snap:start maki:block">
+		{@html markdownContent.html}
+	</div>
 	{#each components as { category, items }}
 		{@const meta = markdowns.categories.find(
 			({meta}) => meta.slug === category,

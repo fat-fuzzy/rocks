@@ -1,4 +1,3 @@
-import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 
 import {forms, constants, stores} from '@fat-fuzzy/ui-s5'
@@ -100,4 +99,4 @@ export const actions = {
 		cookies.delete('fat-fuzzy-settings-reveal', {path: '/'})
 		cookies.delete('fat-fuzzy-settings-app', {path: '/'})
 	},
-} satisfies Actions
+}

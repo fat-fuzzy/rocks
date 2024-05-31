@@ -16,7 +16,7 @@
 <PageMain page="Dev" {title} {description}>
 	{#snippet header()}
 		<h1 class="card:md">{title}</h1>
-		<div class="context justify:end">
+		<div class="l:side l:flex justify:end">
 			<p class="feedback bare sm">Published: {date}</p>
 		</div>
 	{/snippet}

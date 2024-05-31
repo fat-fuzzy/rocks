@@ -34,7 +34,7 @@
 	}
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} path=''>
+<LayoutSidebar {nav} redirect={$page.url.pathname} {path}>
 	{#if children}
 		{@render children()}
 	{:else}
