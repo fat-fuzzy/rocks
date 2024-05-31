@@ -6,6 +6,7 @@ pre {
 	--hue: var(--color-theme-primary);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--border-color: var(--ink-semantic, var(--ink));
 	color: var(--ink);
 	font-size: var(--font-size);
 	font-family: var(--font-family-code);
@@ -14,6 +15,7 @@ pre {
 	overflow: auto;
 	padding-inline: var(--ui-size) var(--ui-size-lg);
 	padding-block: var(--ui-size);
+	border: var(--border-width-xl) solid var(--border-color);
 }
 
 kbd {
@@ -31,6 +33,22 @@ code:not([class^='language-']) {
 	border-radius: var(--border-radius-base);
 }
 
-pre.bare {
-	border-color: var(--bg-color);
+pre.feedback {
+	--border-color: var(--shade-semantic, var(--shade));
+	color: var(--ink-semantic, var(--ink));
+}
+
+pre.feedback.variant\:fill {
+	box-shadow: var(--shadow-md);
+}
+
+pre.feedback.variant\:outline {
+	box-shadow: unset;
+	background-color: var(--shade);
+}
+
+pre.feedback.variant\:bare {
+	border-color: var(--shade);
+	box-shadow: unset;
+	background-color: var(--shade);
 }
