@@ -24,6 +24,25 @@
 			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--size-ratio-sm))"},
 			"2xl": {"$value": "calc(var(--layout-sidebar-xl) * var(--size-ratio-sm))"}
 		},
+		"breakpoint": {
+			"2xs": {"$value": "320px"},
+			"xs": {"$value": "620px"},
+			"sm": {"$value": "935px"},
+			"md": {"$value": "1360px"},
+			"lg": {"$value": "1620px"},
+			"xl": {"$value": "2048px"},
+			"2xl": {"$value": "3048px"}
+		},
+		"threshold": {
+			"3xs": {"$value": "{layout.sidebar.minimize}"},
+			"2xs": {"$value": "{layout.breakpoint.2xs}"},
+			"xs": {"$value": "{layout.breakpoint.xs}"},
+			"sm": {"$value": "{layout.breakpoint.sm}"},
+			"md": {"$value": "{layout.breakpoint.md}"},
+			"lg": {"$value": "{layout.breakpoint.lg}"},
+			"xl": {"$value": "{layout.breakpoint.xl}"},
+			"2xl": {"$value": "{layout.breakpoint.2xl}"}
+		},
 		"z-index": {
 			"0": {"$value": "0"},
 			"1": {"$value": "1"},

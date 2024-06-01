@@ -123,6 +123,13 @@
   --font-weight-semibold: var(--font-weight-700);
   --font-weight-ui: var(--font-weight-medium);
   --layout-base: 1rem;
+  --layout-breakpoint-2xl: 3048px;
+  --layout-breakpoint-2xs: 320px;
+  --layout-breakpoint-lg: 1620px;
+  --layout-breakpoint-md: 1360px;
+  --layout-breakpoint-sm: 935px;
+  --layout-breakpoint-xl: 2048px;
+  --layout-breakpoint-xs: 620px;
   --layout-gap-2xl: var(--scale-base-30);
   --layout-gap-2xs: var(--scale-base-03);
   --layout-gap-lg: var(--scale-base-10);
@@ -139,6 +146,14 @@
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
   --layout-sidebar-xl: calc(var(--layout-sidebar-lg) * var(--size-ratio-sm));
   --layout-sidebar-xs: calc(var(--layout-sidebar-sm) / var(--size-ratio-sm));
+  --layout-threshold-2xl: var(--layout-breakpoint-2xl);
+  --layout-threshold-2xs: var(--layout-breakpoint-2xs);
+  --layout-threshold-3xs: var(--layout-sidebar-minimize);
+  --layout-threshold-lg: var(--layout-breakpoint-lg);
+  --layout-threshold-md: var(--layout-breakpoint-md);
+  --layout-threshold-sm: var(--layout-breakpoint-sm);
+  --layout-threshold-xl: var(--layout-breakpoint-xl);
+  --layout-threshold-xs: var(--layout-breakpoint-xs);
   --layout-z-index-0: 0;
   --layout-z-index-1: 1;
   --layout-z-index-2: 2;
