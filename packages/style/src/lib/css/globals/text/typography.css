@@ -92,7 +92,7 @@ figcaption {
 
 ol,
 ul {
-	margin-block-end: calc(var(--gap) * var(--size-ratio-md));
+	margin: 0;
 }
 
 a {
@@ -106,4 +106,9 @@ a {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	color: var(--ink);
 	background-color: inherit;
+}
+
+pre,
+code {
+	font-family: var(--font-family-mono);
 }
