@@ -1,10 +1,11 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import type {AriaLive} from '$lib/types/index.js'
 
 	type Props = {
 		asset: string
 		text?: string
-		context: string // feedback context: code, form, dialog,
+		context: string // feedback context: code, form, dialog, prose
 		status: string // feedback color: info, success, warning, error,
 		size: string
 		variant: string // feedback variant: default, outline, bare,
@@ -26,7 +27,9 @@
 	let background = $derived(context === 'code' ? '' : `bg:${status}:000`)
 	let containerClass = $derived(container && context !== 'code' ? `l:${container}:${size}` : '')
 	let assetClass = $derived(asset.split(':').length > 1 ? asset : `emoji:${status}`)
-	let feedbackClass = $derived(`feedback ${containerClass} ${assetClass} status:${status} font:${size} variant:${variant} ${background}`)
+	let feedbackClass = $derived(`feedback:${context} ${containerClass} ${assetClass} status:${status} font:${size} size:${size} variant:${variant} ${background}`)
+
+	let ariaLive: AriaLive = $derived(context === 'form' ? 'polite' : undefined)
 </script>
 
 {#if context === 'code'}
@@ -37,15 +40,17 @@
 			{text}
 		{/if}
 	</pre>
-{:else if context === 'form'}
-	<div class={feedbackClass} data-testid={`feedback-${context}`}>
+{:else if context === 'form' || context === 'prose'}
+	<div class={feedbackClass} data-testid={`feedback-${context}`} aria-live={ariaLive}>
 		{#if status !== 'default'}
 			<p class="status">{status}</p>
 		{/if}
-		{#if children}
-			{@render children()}
-		{:else if text}
-			{text}
-		{/if}
+		<div class="message">
+			{#if children}
+				{@render children()}
+			{:else if text}
+				<p>{text}</p>
+			{/if}
+		</div>
 	</div>
 {/if}

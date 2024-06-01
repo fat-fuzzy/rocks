@@ -1,4 +1,8 @@
-.feedback:not(pre) {
+p + [class*='feedback:'] {
+	margin-block-start: var(--ui-size-lg);
+}
+
+[class*='feedback:']:not(.feedback\:code) {
 	--lightness: var(--color-lightness-000);
 	--lightness-contrast: var(--color-lightness-400);
 	--chroma: var(--color-chroma-000);
@@ -10,30 +14,30 @@
 	padding: var(--ui-size);
 	border: var(--border-width-xl) solid var(--border-color);
 	background-color: var(--color-bg);
+
+	.status {
+		font-family: var(--font-family-heading);
+		font-size: var(--font-size);
+		font-weight: var(--font-weight-ui);
+		line-height: 1.35;
+	}
+
+	.message {
+		margin-inline-start: 0;
+	}
 }
 
-p + .feedback {
-	margin-block-start: var(--ui-size-lg);
-}
-
-.feedback .status {
-	font-family: var(--font-family-heading);
-	font-size: var(--font-size);
-	font-weight: var(--font-weight-ui);
-	line-height: 1.35;
-}
-
-.feedback:not(pre).variant\:fill {
+[class*='feedback:']:not(.feedback\:code).variant\:fill {
 	box-shadow: var(--shadow-md);
 	border: var(--border-width-xl) solid var(--border-color);
 }
 
-.feedback:not(pre).variant\:outline {
+[class*='feedback:']:not(.feedback\:code).variant\:outline {
 	background-color: var(--color-bg);
 	box-shadow: unset;
 }
 
-.feedback:not(pre).variant\:bare {
+[class*='feedback:']:not(.feedback\:code).variant\:bare {
 	background-color: var(--color-bg);
 	border-color: var(--color-bg);
 	box-shadow: unset;

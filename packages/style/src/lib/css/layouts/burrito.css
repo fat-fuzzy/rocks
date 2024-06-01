@@ -5,15 +5,11 @@
 	inline-size: 100%;
 }
 
-@container burrito (max-width: 280px) {
-	.relleno {
-		inline-size: 100%;
-	}
-}
-
 [class*='l:burrito'] {
 	margin: 0 auto;
-	max-inline-size: calc(100% - calc(2 * var(--gap))); /* width of parent minus base padding */
+	max-inline-size: calc(
+		100% - calc(2 * var(--gap))
+	); /* width of parent minus base padding */
 }
 
 /* == Sidebar content == */

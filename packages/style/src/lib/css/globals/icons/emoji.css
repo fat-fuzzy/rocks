@@ -1,6 +1,8 @@
-[class*='emoji:'] {
+[class*='emoji:']::before {
 	--icon-size: var(--font-size-plus);
 	font-size: var(--icon-size);
+	width: fit-content;
+	height: fit-content;
 }
 
 [class*='emoji:']:not([class*='align:'])::before {
