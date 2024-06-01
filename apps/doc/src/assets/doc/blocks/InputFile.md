@@ -18,7 +18,7 @@ Use this component within a `<form>`element to allow the user to upload a file.
 
 ### Examples
 
-<p class="feedback bare emoji:default">Coming Soon!</p>
+<p class="feedback:prose bg:default:000 variant:bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

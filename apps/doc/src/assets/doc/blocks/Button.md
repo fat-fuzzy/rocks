@@ -27,7 +27,7 @@ The CSS variables for button colors reflect the combination of the following fac
 
 For each [**Brightness** x **Contrast**], an **Element** has to have styling rules for each **State**, given every combination of [**Color** x **Variant**]
 
-<p class="feedback bare emoji:default"> The generation of  CSS color variables and button mixins is still a work in progress. More to come soon!</p>
+<p class="feedback:prose bg:default:000 variant:bare emoji:wip"> The generation of  CSS color variables and button mixins is still a work in progress. More to come soon!</p>
 
 ## Resources
 

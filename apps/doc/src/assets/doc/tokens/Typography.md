@@ -10,11 +10,11 @@ context: ['app.settings']
 
 Typographic scales are generated using a mixin based on the work of James Gilyead & Trys Mudford: [Utopia.fyi](https://utopia.fyi/).
 
-<p class="feedback bare emoji:default">Doc Coming Soon!</p>
+<p class="feedback:prose bg:default:000 variant:bare emoji:default">Doc Coming Soon!</p>
 
 ### Examples
 
-<p class="feedback bare emoji:default">Coming Soon!</p>
+<p class="feedback:prose bg:default:000 variant:bare emoji:default">Coming Soon!</p>
 
 ## Resources
 
