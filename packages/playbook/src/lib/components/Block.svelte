@@ -14,7 +14,6 @@
 	const playbookStore: PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
-	let layoutStyles = $derived(styles.layouts.layout)
 
 	let blockProps = $derived({
 		...props,
@@ -27,10 +26,6 @@
 		shape: elementStyles.shape,
 		status: elementStyles.status,
 		variant: elementStyles.variant,
-		// Layout style options
-		layout: layoutStyles.layout,
-		threshold: layoutStyles.threshold,
-		breakpoint: layoutStyles.breakpoint,
 	})
 </script>
 

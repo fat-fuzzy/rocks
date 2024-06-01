@@ -3,20 +3,37 @@ export default {
 	Expand: {
 		title: 'Expand',
 		states: {
-			expanded: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-down'},
-			collapsed: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-right'},
+			expanded: {
+				id: 'button-expand',
+				text: 'Expand',
+				asset: 'emoji:point-down',
+			},
+			collapsed: {
+				id: 'button-expand',
+				text: 'Expand',
+				asset: 'emoji:point-right',
+			},
 		},
 	},
 	Switch: {
 		title: 'Switch',
 		shape: 'round',
 		states: {
-			active: {id: 'button-switch', text: 'Rabbit', asset: 'emoji:switch-active'},
-			inactive: {id: 'button-switch', text: 'Hat', asset: 'emoji:switch-inactive'},
+			active: {
+				id: 'button-switch',
+				text: 'Rabbit',
+				asset: 'emoji:switch-active',
+			},
+			inactive: {
+				id: 'button-switch',
+				text: 'Hat',
+				asset: 'emoji:switch-inactive',
+			},
 		},
 	},
 	InputCheck: {id: 'check', text: 'An optional choice choice'},
 	InputRadio: {id: 'radio', text: 'A mandatory choice'},
+	InputRange: {id: 'range', text: 'A range of ordered choices'},
 	Feedback: {
 		status: [
 			{
