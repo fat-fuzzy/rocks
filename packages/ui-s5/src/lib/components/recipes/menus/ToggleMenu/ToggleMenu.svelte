@@ -69,13 +69,13 @@
 					onclick={updateMenu}
 					{type}
 					{formaction}
-					{...props}
 					{color}
 					{variant}
 					{size}
 					{shape}
 					{asset}
 					{disabled}
+					{...props}
 				/>
 			</li>
 		{/each}
