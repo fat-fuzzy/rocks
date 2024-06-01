@@ -47,7 +47,7 @@ details > summary:hover {
 }
 
 details > summary.variant\:outline {
-	--border-color: var(--ink);
+	--color-border: var(--ink);
 	--lightness: var(--color-lightness-600);
 	--lightness-contrast: var(--color-lightness-300);
 	background-color: inherit;

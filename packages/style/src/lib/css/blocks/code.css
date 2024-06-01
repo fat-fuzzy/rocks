@@ -6,7 +6,7 @@ pre {
 	--hue: var(--color-theme-primary);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--border-color: var(--ink-semantic, var(--ink));
+	--color-border: var(--ink-semantic, var(--ink));
 	color: var(--ink);
 	font-size: var(--font-size);
 	font-family: var(--font-family-code);
@@ -15,7 +15,7 @@ pre {
 	overflow: auto;
 	padding-inline: var(--ui-size) var(--ui-size-lg);
 	padding-block: var(--ui-size);
-	border: var(--border-width-xl) solid var(--border-color);
+	border: var(--border-width-xl) solid var(--color-border);
 }
 
 kbd {
@@ -34,7 +34,7 @@ code:not([class^='language-']) {
 }
 
 pre.feedback {
-	--border-color: var(--shade-semantic, var(--shade));
+	--color-border: var(--shade-semantic, var(--shade));
 	color: var(--ink-semantic, var(--ink));
 }
 

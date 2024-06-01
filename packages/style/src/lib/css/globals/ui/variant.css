@@ -4,17 +4,17 @@
  - hue
 */
 [class*=':fill'] {
-	--border-color: var(--shade);
+	--color-border: var(--shade);
 }
 
 [class*=':outline'] {
-	--border-color: var(--ink);
+	--color-border: var(--ink);
 	border: var(--border-width-md) solid var(--ink);
 	background-color: inherit;
 }
 
 [class*=':bare'] {
-	--border-color: var(--shade);
+	--color-border: var(--shade);
 	border: var(--border-width-md) solid var(--color-bg);
 	background-color: inherit;
 }

@@ -7,7 +7,7 @@ form {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--color-bg: var(--shade);
-	--border-color: var(--shade);
+	--color-border: var(--shade);
 	color: var(--ink);
 	max-height: fit-content;
 	background-color: var(--color-bg);
@@ -45,7 +45,7 @@ textarea {
 	--accent-color: var(--ink);
 	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
 	--padding-inline: var(--ui-size);
-	border: 1px solid var(--border-color);
+	border: 1px solid var(--color-border);
 	border-radius: var(--border-radius-md);
 	color: var(--ink);
 	accent-color: var(--accent-color);

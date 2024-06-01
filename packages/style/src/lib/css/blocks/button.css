@@ -7,7 +7,7 @@ button {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--color-bg: var(--shade);
-	--border-color: var(--shade);
+	--color-border: var(--shade);
 	color: var(--ink);
 	background-color: var(--color-bg);
 	display: flex;
@@ -21,11 +21,11 @@ button {
 	line-height: var(--font-leading-ui);
 	padding: var(--ui-size) var(--ui-size-lg); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
 	border-radius: var(--border-radius-base);
-	border: var(--border-width-md) solid var(--border-color);
+	border: var(--border-width-md) solid var(--color-border);
 }
 
 button.variant\:outline {
-	--border-color: var(--ink);
+	--color-border: var(--ink);
 	--lightness: var(--color-lightness-600);
 	--lightness-contrast: var(--color-lightness-300);
 	background-color: inherit;

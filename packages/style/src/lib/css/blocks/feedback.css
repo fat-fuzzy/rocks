@@ -7,12 +7,12 @@ p + [class*='feedback:'] {
 	--lightness-contrast: var(--color-lightness-400);
 	--chroma: var(--color-chroma-000);
 	--chroma-contrast: var(--color-chroma-400);
-	--border-color: var(--ink-semantic, var(--ink));
+	--color-border: var(--ink-semantic, var(--ink));
 	--color-bg: var(--shade-semantic, var(--shade));
 	color: var(--ink-semantic, var(--ink));
 	font-size: var(--font-size);
 	padding: var(--ui-size);
-	border: var(--border-width-xl) solid var(--border-color);
+	border: var(--border-width-xl) solid var(--color-border);
 	background-color: var(--color-bg);
 
 	.status {
@@ -29,7 +29,7 @@ p + [class*='feedback:'] {
 
 [class*='feedback:']:not(.feedback\:code).variant\:fill {
 	box-shadow: var(--shadow-md);
-	border: var(--border-width-xl) solid var(--border-color);
+	border: var(--border-width-xl) solid var(--color-border);
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:outline {
