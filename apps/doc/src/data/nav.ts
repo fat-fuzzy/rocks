@@ -14,7 +14,7 @@ export const itemsSettings = {
 			variant: 'outline',
 			shape: 'round',
 			color: 'primary',
-			size: 'md',
+			size: 'sm',
 			value: 'day',
 			states: {
 				active: {
@@ -38,7 +38,7 @@ export const itemsSettings = {
 			variant: 'outline',
 			shape: 'round',
 			color: 'primary',
-			size: 'md',
+			size: 'sm',
 			value: 'blend',
 			states: {
 				active: {
