@@ -116,10 +116,10 @@
 			<li>
 				<Button
 					{onclick}
-					{...buttonProps}
 					variant={innerVariant}
 					{color}
 					{disabled}
+					{...buttonProps}
 				/>
 			</li>
 		{/each}

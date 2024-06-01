@@ -6,7 +6,7 @@
 		name,
 		label = 'Checkbox input',
 		checked,
-		layout = 'switcher',
+		layout,
 		value,
 
 		disabled,
