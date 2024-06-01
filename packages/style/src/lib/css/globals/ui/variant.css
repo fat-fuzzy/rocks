@@ -9,8 +9,11 @@
 
 [class*=':outline'] {
 	--color-border: var(--ink);
-	border: var(--border-width-md) solid var(--ink);
 	background-color: inherit;
+}
+
+[class*=':outline']:not(label) {
+	border: var(--border-width-md) solid var(--ink);
 }
 
 [class*=':bare'] {
