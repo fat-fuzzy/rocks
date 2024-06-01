@@ -3,32 +3,39 @@
  - chroma
  - hue
 */
+[class*='status:']:where(
+		.status\:info,
+		.status\:success,
+		.status\:warning,
+		.status\:danger,
+		.status\:error
+	) {
+	--shade-semantic: oklch(var(--lightness) var(--chroma) var(--hue-semantic));
+	--ink-semantic: oklch(
+		var(--lightness-contrast) var(--chroma-contrast) var(--hue-semantic)
+	);
+	--accent: oklch(
+		var(--lightness-accent) var(--chroma-accent) var(--hue-semantic)
+	);
+}
+
+[class*=':default'] {
+	--hue-semantic: var(--color-theme-neutral);
+}
+
 [class*=':info'] {
 	--hue-semantic: var(--color-semantic-info);
-	--shade-semantic: oklch(var(--lightness) var(--chroma) var(--hue-semantic));
-	--ink-semantic: oklch(
-		var(--lightness-contrast) var(--chroma-contrast) var(--hue-semantic)
-	);
 }
+
 [class*=':success'] {
 	--hue-semantic: var(--color-semantic-success);
-	--shade-semantic: oklch(var(--lightness) var(--chroma) var(--hue-semantic));
-	--ink-semantic: oklch(
-		var(--lightness-contrast) var(--chroma-contrast) var(--hue-semantic)
-	);
 }
+
 [class*=':warning'] {
 	--hue-semantic: var(--color-semantic-warning);
-	--shade-semantic: oklch(var(--lightness) var(--chroma) var(--hue-semantic));
-	--ink-semantic: oklch(
-		var(--lightness-contrast) var(--chroma-contrast) var(--hue-semantic)
-	);
 }
+
 [class*=':danger'],
 [class*=':error'] {
 	--hue-semantic: var(--color-semantic-danger);
-	--shade-semantic: oklch(var(--lightness) var(--chroma) var(--hue-semantic));
-	--ink-semantic: oklch(
-		var(--lightness-contrast) var(--chroma-contrast) var(--hue-semantic)
-	);
 }

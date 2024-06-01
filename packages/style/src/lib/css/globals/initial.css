@@ -19,14 +19,17 @@
 
 	--hue: var(--color-theme-primary);
 	--lightness: var(--color-lightness-light);
+	--lightness-accent: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-600);
 	--chroma: var(--color-chroma-neutral);
+	--chroma-accent: var(--color-chroma-300);
 	--chroma-contrast: var(--color-chroma-600);
 	--chroma-ink: var(--color-chroma-600);
 	--ink: oklch(
 		var(--lightness-contrast) var(--chroma-contrast) var(--hue-contrast)
 	);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 }
 
 body {

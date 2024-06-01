@@ -3,13 +3,10 @@ p + [class*='feedback:'] {
 }
 
 [class*='feedback:']:not(.feedback\:code) {
-	--lightness: var(--color-lightness-000);
-	--lightness-contrast: var(--color-lightness-400);
-	--chroma: var(--color-chroma-000);
-	--chroma-contrast: var(--color-chroma-400);
-	--color-border: var(--ink-semantic, var(--ink));
+	--color-border: var(--accent-semantic, var(--accent));
 	--color-bg: var(--shade-semantic, var(--shade));
-	color: var(--ink-semantic, var(--ink));
+	--color-ink: var(--ink-semantic, var(--ink));
+	color: var(--color-ink);
 	font-size: var(--font-size);
 	padding: var(--ui-size);
 	border: var(--border-width-xl) solid var(--color-border);
@@ -28,8 +25,8 @@ p + [class*='feedback:'] {
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:fill {
-	box-shadow: var(--shadow-md);
 	border: var(--border-width-xl) solid var(--color-border);
+	box-shadow: var(--shadow-md);
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:outline {

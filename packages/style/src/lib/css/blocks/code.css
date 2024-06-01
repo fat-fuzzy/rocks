@@ -6,23 +6,22 @@ pre {
 	--hue: var(--color-theme-primary);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--color-border: var(--ink-semantic, var(--ink));
-	color: var(--ink);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	color: var(--color-ink);
 	font-size: var(--font-size);
 	font-family: var(--font-family-code);
-	background-color: var(--shade);
-	border-color: var(--shade);
-	overflow: auto;
+	background-color: var(--color-bg);
 	padding-inline: var(--ui-size) var(--ui-size-lg);
 	padding-block: var(--ui-size);
 	border: var(--border-width-xl) solid var(--color-border);
+	overflow: auto;
 }
 
 kbd {
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
 	padding-inline: var(--ui-size);
 	margin-inline: calc(var(--ui-size) / 2);
-	border: var(--border-width) solid var(--shade);
+	border: var(--border-width) solid var(--color-border);
 	border-radius: var(--border-radius-base);
 }
 
@@ -33,22 +32,24 @@ code:not([class^='language-']) {
 	border-radius: var(--border-radius-base);
 }
 
-pre.feedback {
-	--color-border: var(--shade-semantic, var(--shade));
-	color: var(--ink-semantic, var(--ink));
+pre[class*='feedback:'] {
+	--color-border: var(--accent-semantic, var(--accent));
+	--color-bg: var(--shade);
+	--color-ink: var(--ink-semantic, var(--ink));
+	border: var(--border-width-xl) solid var(--color-border);
 }
 
-pre.feedback.variant\:fill {
+pre[class*='feedback:'].variant\:fill {
 	box-shadow: var(--shadow-md);
 }
 
-pre.feedback.variant\:outline {
+pre[class*='feedback:'].variant\:outline {
 	box-shadow: unset;
-	background-color: var(--shade);
+	background-color: var(--color-bg);
 }
 
-pre.feedback.variant\:bare {
-	border-color: var(--shade);
+pre[class*='feedback:'].variant\:bare {
+	background-color: var(--color-bg);
+	border-color: var(--color-bg);
 	box-shadow: unset;
-	background-color: var(--shade);
 }
