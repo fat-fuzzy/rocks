@@ -5,11 +5,16 @@ h4,
 h5,
 h6 {
 	color: var(--ink);
-	line-height: var(--font-leading-heading);
+	line-height: var(--font-leading-body);
 	margin-block: auto;
 	&.nowrap {
 		white-space: nowrap;
 	}
+}
+
+:where(h1, h2, h3, h4, h5, h6) + p,
+:where(h1, h2, h3, h4, h5, h6, p) + :where(pre, code) {
+	margin-block-start: var(--ui-size);
 }
 
 h1.link,
@@ -111,4 +116,5 @@ a {
 pre,
 code {
 	font-family: var(--font-family-mono);
+	font-size: var(--font-size);
 }
