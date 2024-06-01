@@ -36,27 +36,25 @@ fieldset.check {
 	}
 
 	label {
-		--lightness: var(--color-lightness-000);
-		--lightness-contrast: var(--color-lightness-300);
-		--chroma: var(--color-chroma-000);
-		--chroma-contrast: var(--color-chroma-300);
-		--hue: var(--hue-semantic, var(--color-theme-primary));
+		--ink: oklch(
+			var(--lightness-contrast) var(--chroma-contrast) var(--hue-contrast)
+		);
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
-		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+		--hue: var(--hue-semantic, var(--color-theme-primary));
+		--color-accent: var(--accent-semantic, var(--accent));
 		--color-bg: var(--shade);
+		--color-ink: var(--ink);
 		display: flex;
-		justify-content: space-between;
+		justify-content: var(--justify, space-between);
 		padding: var(--ui-size-sm) var(--ui-size-lg);
 		gap: var(--ui-size);
 		margin: 0;
 		width: 100%;
-		color: var(--ink);
-	}
-
-	label [type='radio'] {
-		padding: 0;
-		height: auto;
-		outline-offset: 0;
+		color: var(--color-ink);
+		accent-color: var(--color-accent);
+		border-color: var(--color-accent);
+		background-color: var(--color-bg);
 	}
 
 	input:checked {
@@ -64,21 +62,12 @@ fieldset.check {
 		--lightness-contrast: var(--color-lightness-400);
 		--chroma: var(--color-chroma-000);
 		--chroma-contrast: var(--color-chroma-400);
-		background-color: var(--shade);
 	}
 
 	label:hover {
 		--lightness: var(--color-lightness-100);
-		--lightness-contrast: var(--color-lightness-500);
-	}
-
-	label.variant\:outline:hover {
-		--lightness: var(--color-lightness-100);
 		--lightness-contrast: var(--color-lightness-400);
-	}
-
-	label.variant\:bare:hover {
-		--lightness: var(--color-lightness-000);
-		--lightness-contrast: var(--color-lightness-400);
+		--chroma: var(--color-chroma-000);
+		--chroma-contrast: var(--color-chroma-400);
 	}
 }

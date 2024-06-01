@@ -42,13 +42,21 @@ legend {
 input,
 select,
 textarea {
-	--accent-color: var(--ink);
+	--ink: oklch(
+		var(--lightness-contrast) var(--chroma-contrast) var(--hue-contrast)
+	);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--color-accent: var(--accent-semantic, var(--accent));
+	--color-bg: var(--shade);
+	--color-ink: var(--ink);
 	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
 	--padding-inline: var(--ui-size);
-	border: 1px solid var(--color-border);
+	border: 1px solid var(--color-accent);
 	border-radius: var(--border-radius-md);
-	color: var(--ink);
-	accent-color: var(--accent-color);
+	color: var(--color-ink);
+	accent-color: var(--color-accent);
+	border-color: var(--color-accent);
 	font-size: var(--font-size);
 	padding: var(--ui-size-sm) var(--ui-size);
 }
@@ -64,39 +72,20 @@ label > input {
 	align-items: center;
 	font-size: var(--font-size-sm);
 	padding: var(--ui-size) var(--ui-size) var(--ui-size-sm);
-	color: var(--ink);
 }
 
 [type='file']:hover {
 	--lightness: var(--color-lightness-000);
-	background-color: var(--shade);
 }
 
 [type='file']:active {
 	--lightness: var(--color-lightness-light);
-	background-color: var(--shade);
-}
-
-.feedback {
-	font-size: var(--font-size-sm);
-	min-height: calc(var(--font-size-sm) * var(--size-ratio-md));
-}
-
-/* TODO: move this to recipes ? */
-label > .feedback {
-	padding: var(--ui-size-sm) var(--ui-size);
-}
-
-label > .feedback + * {
-	margin-block-start: var(--ui-size);
 }
 
 input:hover,
 label:hover > [type='file'] {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--color-contrast-200);
-	color: var(--ink);
-	background-color: var(--shade);
 }
 
 [disabled] {
@@ -108,16 +97,12 @@ label:hover > [type='file'] {
 
 label.variant\:outline > input,
 label.variant\:outline > [type='file'] {
-	color: var(--ink);
-	border-color: var(--ink);
-	background-color: var(--shade);
+	border-color: var(--color-bg);
 }
 
 label.variant\:bare > input,
 label.variant\:bare > [type='file'] {
-	color: var(--ink);
-	border-color: var(--shade);
-	background-color: var(--shade);
+	border-color: var(--color-bg);
 }
 
 /* Display range input step labels */
@@ -140,14 +125,4 @@ label.variant\:bare > [type='file'] {
 
 label[class*='l:stack'] > [type='range'] {
 	margin-block-start: 0;
-}
-
-label.primary:hover > input,
-label.primary > input:active,
-label.accent:hover > input,
-label.accent > input:active,
-label.highlight:hover > input,
-label.highlight > input:active {
-	color: var(--ink);
-	background-color: var(--shade);
 }
