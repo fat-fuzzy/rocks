@@ -1,4 +1,7 @@
-[class*='feedback:']:where(.feedback\:form, .feedback\:prose) {
+[class*='feedback:'][class*='status:']:where(
+		.feedback\:form,
+		.feedback\:prose
+	) {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
