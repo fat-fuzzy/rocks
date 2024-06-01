@@ -23,7 +23,7 @@
 }
 
 [class*=':default'] {
-	--hue-semantic: var(--color-theme-neutral);
+	--hue-semantic: var(--color-theme-primary);
 }
 
 [class*=':info'] {
