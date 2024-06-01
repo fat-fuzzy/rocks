@@ -4,12 +4,12 @@
 	--chroma: var(--color-chroma-000);
 	--chroma-contrast: var(--color-chroma-400);
 	--border-color: var(--ink-semantic, var(--ink));
-	--bg-color: var(--shade-semantic, var(--shade));
+	--color-bg: var(--shade-semantic, var(--shade));
 	color: var(--ink-semantic, var(--ink));
 	font-size: var(--font-size);
 	padding: var(--ui-size);
 	border: var(--border-width-xl) solid var(--border-color);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 p + .feedback {
@@ -29,12 +29,12 @@ p + .feedback {
 }
 
 .feedback:not(pre).variant\:outline {
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 	box-shadow: unset;
 }
 
 .feedback:not(pre).variant\:bare {
-	background-color: var(--bg-color);
-	border-color: var(--bg-color);
+	background-color: var(--color-bg);
+	border-color: var(--color-bg);
 	box-shadow: unset;
 }

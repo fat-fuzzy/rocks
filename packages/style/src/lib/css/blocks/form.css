@@ -6,11 +6,11 @@ form {
 	--lightness-contrast: var(--color-lightness-dark);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--bg-color: var(--shade);
+	--color-bg: var(--shade);
 	--border-color: var(--shade);
 	color: var(--ink);
 	max-height: fit-content;
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 form * {

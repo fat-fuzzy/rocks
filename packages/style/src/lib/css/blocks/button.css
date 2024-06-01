@@ -6,10 +6,10 @@ button {
 	--lightness-contrast: var(--color-lightness-000);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--bg-color: var(--shade);
+	--color-bg: var(--shade);
 	--border-color: var(--shade);
 	color: var(--ink);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 	display: flex;
 	justify-content: center;
 	flex-wrap: nowrap;
@@ -40,25 +40,25 @@ button.variant\:bare {
 button.variant\:outline:hover {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 button.variant\:bare:hover {
 	--lightness: var(--color-lightness-000);
 	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 button.variant\:outline:active {
 	--lightness: var(--color-lightness-200);
 	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 button.variant\:bare:active {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 button[class*='bg:']:not([class*=':neutral']) {

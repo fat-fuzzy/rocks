@@ -30,9 +30,9 @@
 }
 
 body {
-	--bg-color: var(--shade);
+	--color-bg: var(--shade);
 	color: var(--ink);
-	background: var(--bg-color);
+	background: var(--color-bg);
 	font-family: var(--font-family-body);
 	font-size: var(--font-size-body);
 	font-weight: var(--font-weight-body);

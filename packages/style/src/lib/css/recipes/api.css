@@ -67,14 +67,14 @@
 	pre[class*='bg:default'].default {
 		--lightness: var(--color-lightness-600);
 		--contrast: var(--color-contrast-600);
-		background-color: var(--bg-color);
+		background-color: var(--color-bg);
 	}
 
 	pre.bare,
 	pre[class*='bg:default'].bare {
 		--lightness: var(--color-lightness-500);
 		--contrast: var(--color-contrast-500);
-		background-color: var(--bg-color);
+		background-color: var(--color-bg);
 	}
 
 	/* == Feedback == */
@@ -84,7 +84,7 @@
 	pre.feedback[class*='bg:default'].default {
 		--lightness: var(--color-lightness-600);
 		--contrast: var(--color-contrast-600);
-		background-color: var(--bg-color);
+		background-color: var(--color-bg);
 	}
 
 	/* == Form == */

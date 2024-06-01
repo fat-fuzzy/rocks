@@ -16,7 +16,7 @@
 
 .menu\:settings [class^='switch'][aria-pressed]:hover {
 	--lightness: var(--color-lightness-light);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 	box-shadow: var(--shadow-md);
 }
 

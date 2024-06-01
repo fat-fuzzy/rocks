@@ -43,7 +43,7 @@ fieldset.check {
 		--hue: var(--hue-semantic, var(--color-theme-primary));
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-		--bg-color: var(--shade);
+		--color-bg: var(--shade);
 		display: flex;
 		justify-content: space-between;
 		padding: var(--ui-size-sm) var(--ui-size-lg);

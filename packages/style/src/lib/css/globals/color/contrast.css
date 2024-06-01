@@ -2,13 +2,13 @@
 .bg\:polar,
 .bg\:contrast > .bg\:polar {
 	/* TODO: adjust color */
-	--bg-color: var(--shade);
+	--color-bg: var(--shade);
 }
 
 .bg\:contrast,
 .bg\:polar > .bg\:contrast {
 	/* TODO: adjust color */
-	--bg-color: var(--shade);
+	--color-bg: var(--shade);
 }
 
 .bg\:polar > .bg\:polar,

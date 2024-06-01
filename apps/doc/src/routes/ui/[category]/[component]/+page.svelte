@@ -1,17 +1,64 @@
 <script lang="ts">
-	import {content} from '@fat-fuzzy/ui-s5'
 	import {page} from '$app/stores'
 
-	const {PageMain} = content
+	import {tokens, blocks, layouts, recipes, content} from '@fat-fuzzy/ui-s5'
+	import {api} from '@fat-fuzzy/playbook'
 
-	let title = $derived($page.params.component)
+	const {PageMain} = content
+	const {Element, Api} = api
+	const actionPath = '/ui'
+
+	let categoryItems: {[name: string]: any} = {
+		tokens: tokens,
+		blocks: blocks,
+		layouts: layouts,
+		recipes: recipes,
+	}
+
 	let path = $derived($page.url.pathname)
+	let category = $derived($page.params.category)
+	let title = $derived($page.params.component)
 	let description = $derived(`${title} | Doc`)
+	let Component = $derived(categoryItems[category][title])
+	let markdowns = $derived(
+		$page.data.markdowns && $page.data.markdowns[category]
+			? $page.data.markdowns[category]
+			: [],
+	)
+	let markdownContent = $derived(
+		markdowns.find(({meta}) => meta.title === title) || {
+			html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
+		},
+	)
 </script>
 
-<PageMain {title} {description}>
-	<ul>
-		<li><a href={`${path}/doc`}>Doc</a></li>
-		<li><a href={`${path}/demo`}>Demo</a></li>
-	</ul>
+<PageMain {title} {description} size="xl">
+	{#snippet header()}
+		<h1 class="l:main:60">{title}</h1>
+		<div class="l:side l:flex justify:end">
+			<ul class="l:stack:2xs maki:inline:xs maki:block:xs">
+				<li><a href={`${path}/doc`} class="font:xs">Doc</a></li>
+				<li><a href={`${path}/demo`} class="font:xs">Demo</a></li>
+			</ul>
+			<Api
+				categories={['app']}
+				meta={markdownContent.meta}
+				{path}
+				{actionPath}
+				redirect={$page.url.pathname}
+			/>
+		</div>
+	{/snippet}
+
+	<Element
+		isPage={true}
+		depth={1}
+		{title}
+		{path}
+		{category}
+		component={Component}
+		meta={markdownContent.meta}
+		{actionPath}
+		redirect={$page.url.pathname}
+	/>
 </PageMain>

@@ -1,9 +1,12 @@
 [class*='bg:'] {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--bg-color: var(--shade);
+	--border: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--color-bg: var(--shade);
+	--color-border: var(--border);
+	--color-text: var(--ink);
 	color: var(--ink);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 .bg\:inherit {

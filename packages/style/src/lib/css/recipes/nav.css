@@ -89,7 +89,7 @@ nav li[aria-current='page'] > ul {
 /* Active Link */
 nav li[aria-current='page'] > a,
 nav li[aria-current='page'] > a:visited {
-	text-decoration-color: var(--bg-color);
+	text-decoration-color: var(--color-bg);
 }
 
 /* == Override heading styles for headings inside links == */
