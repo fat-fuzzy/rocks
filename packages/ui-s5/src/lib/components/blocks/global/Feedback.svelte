@@ -33,13 +33,7 @@
 </script>
 
 {#if context === 'code'}
-	<pre class={feedbackClass} data-testid={`feedback-${context}`}>
-		{#if children}
-			{@render children()}
-		{:else if text}
-			{text}
-		{/if}
-	</pre>
+	<pre class={feedbackClass} data-testid={`feedback-${context}`}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
 	<div class={feedbackClass} data-testid={`feedback-${context}`} aria-live={ariaLive}>
 		{#if status !== 'default'}

@@ -24,6 +24,8 @@ export enum UiState {
 	collapsed = 'collapsed',
 }
 
+export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
+
 export enum ButtonEventType {
 	expand = 'expand',
 	toggle = 'toggle',
