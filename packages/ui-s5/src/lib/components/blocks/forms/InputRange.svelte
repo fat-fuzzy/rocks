@@ -9,7 +9,7 @@
 		min = 0,
 		max = 100,
 		step = 1,
-		layout = 'switcher',
+		layout = 'stack',
 		items = [],
 
 		disabled,
