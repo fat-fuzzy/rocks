@@ -65,6 +65,12 @@ label > input {
 	max-width: 100%;
 }
 
+label > input[type='radio'],
+label > input[type='checkbox'] {
+	padding: 0;
+	outline-offset: 0;
+}
+
 /* TODO : cleanup - use "current" size values */
 
 [type='file'] {

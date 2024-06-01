@@ -12,6 +12,7 @@
 		disabled,
 		asset,
 		align,
+		justify,
 		color,
 		size,
 		variant,
@@ -19,7 +20,6 @@
 		container,
 		oninput,
 	}: InputProps = $props()
-	// @ts-check
 
 	function handleInput(event) {
 		if (oninput) oninput({value})
@@ -31,6 +31,7 @@
 	let fontClass = size ? `font:${size}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
 	let alignClass = align ? `align:${align}` : ''
+	let justifyClass = justify ? `justify:${justify}` : ''
 	let backgroundClass = background ? `bg:${background}` : ''
 
 	/* Context styles */
@@ -43,7 +44,7 @@
 	let layoutClasses = layout ? `l:${layout}:${size}` : ''
 	let contextClasses = `${containerClasses} ${layoutClasses}`
 
-	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${fontClass} ${backgroundClass}`
+	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass} ${backgroundClass}`
 
 	let classes = `${contextClasses} ${elementClasses}`
 </script>

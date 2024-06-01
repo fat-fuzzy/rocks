@@ -3,6 +3,7 @@
 	font-size: var(--icon-size);
 	width: fit-content;
 	height: fit-content;
+	line-height: 1;
 }
 
 [class*='emoji:']:not([class*='justify:'])::before {

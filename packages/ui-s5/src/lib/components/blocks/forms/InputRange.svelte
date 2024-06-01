@@ -13,7 +13,7 @@
 		items = [],
 
 		disabled,
-		align,
+		justify,
 		color,
 		size,
 		variant,
@@ -78,9 +78,9 @@
 	let colorClass = color ? `color:${color}` : ''
 	let sizeClass = size ? `size:${size}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
-	let alignClass = align ? `align:${align}` : ''
+	let justifyClass = justify ? `justify:${justify}` : ''
 
-	let elementClasses = `${colorClass} ${sizeClass} ${variantClass} ${alignClass}`
+	let elementClasses = `${colorClass} ${sizeClass} ${variantClass} ${justifyClass}`
 
 	/* Context styles */
 	let layoutClasses = breakpoint
