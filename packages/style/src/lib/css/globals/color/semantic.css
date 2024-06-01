@@ -17,6 +17,9 @@
 	--accent-semantic: oklch(
 		var(--lightness-accent) var(--chroma-accent) var(--hue-semantic)
 	);
+	--shadow-semantic: oklch(
+		var(--lightness-accent) var(--chroma-accent) var(--hue-semantic)
+	);
 }
 
 [class*=':default'] {

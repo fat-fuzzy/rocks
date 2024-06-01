@@ -1,13 +1,16 @@
 form {
 	--hue: var(--color-theme-primary);
-	--chroma: var(--color-chroma-neutral);
 	--lightness: var(--color-lightness-light);
-	--chroma-contrast: var(--color-chroma-neutral);
+	--lightness-accent: var(--color-lightness-400);
 	--lightness-contrast: var(--color-lightness-dark);
-	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent: var(--color-chroma-400);
+	--chroma-contrast: var(--color-chroma-neutral);
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 	--color-bg: var(--shade);
-	--color-border: var(--shade);
+	--color-border: var(--accent);
 	color: var(--ink);
 	max-height: fit-content;
 	background-color: var(--color-bg);

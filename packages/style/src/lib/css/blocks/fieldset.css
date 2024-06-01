@@ -20,8 +20,11 @@ fieldset.check {
 	padding: var(--ui-size);
 
 	input {
+		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+		--color-accent: var(--accent-semantic, var(--accent));
 		flex-grow: 0;
 		flex-basis: var(--font-size);
+		accent-color: var(--color-accent);
 	}
 
 	legend {
@@ -36,13 +39,9 @@ fieldset.check {
 	}
 
 	label {
-		--ink: oklch(
-			var(--lightness-contrast) var(--chroma-contrast) var(--hue-contrast)
-		);
-		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
-		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 		--hue: var(--hue-semantic, var(--color-theme-primary));
-		--color-accent: var(--accent-semantic, var(--accent));
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 		--color-bg: var(--shade);
 		--color-ink: var(--ink);
 		display: flex;
@@ -52,8 +51,6 @@ fieldset.check {
 		margin: 0;
 		width: 100%;
 		color: var(--color-ink);
-		accent-color: var(--color-accent);
-		border-color: var(--color-accent);
 		background-color: var(--color-bg);
 	}
 

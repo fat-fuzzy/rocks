@@ -1,9 +1,9 @@
 pre {
+	--hue: var(--color-theme-primary);
 	--lightness: var(--color-lightness-600);
 	--lightness-contrast: var(--color-lightness-000);
 	--chroma: var(--color-chroma-600);
 	--chroma-contrast: var(--color-chroma-000);
-	--hue: var(--color-theme-primary);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));

@@ -9,8 +9,8 @@ button {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-	--color-ink: var(--ink);
 	--color-bg: var(--shade);
+	--color-ink: var(--ink);
 	--color-accent: var(--accent);
 
 	color: var(--color-ink);

@@ -47,7 +47,7 @@
   --color-semantic-warning: var(--color-hue-olive);
   --color-shadow-accent: #3ddcf5;
   --color-shadow-highlight: #f53d9b;
-  --color-shadow-primary: #6b3df5;
+  --color-shadow-primary: #5500e3;
   --color-state-active-chroma: var(--color-chroma-500);
   --color-state-active-lightness: var(--color-lightness-500);
   --color-state-default-chroma: var(--color-chroma-300);
@@ -171,15 +171,12 @@
   --scale-major-third-30: 2;
   --shadow-base-md-blur: 6px;
   --shadow-base-md-offsetX: 0;
-  --shadow-base-md-offsetY: 2px;
+  --shadow-base-md-offsetY: 1px;
   --shadow-base-md-spread: 0;
   --shadow-base-sm-blur: 4px;
   --shadow-base-sm-offsetX: 0;
-  --shadow-base-sm-offsetY: 1px;
+  --shadow-base-sm-offsetY: 0.5px;
   --shadow-base-sm-spread: 0;
-  --shadow-inset-1: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY) var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--color-shadow-accent);
-  --shadow-inset-2: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY) var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--color-shadow-accent);
-  --shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY) var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--color-shadow-primary);
   --size-base-2xl: var(--scale-base-30);
   --size-base-2xs: var(--scale-base-03);
   --size-base-initial: 1rem;
@@ -225,7 +222,7 @@
   :root {
     --color-shadow-accent: color(display-p3 0.23921568627450981 0.8627450980392157 0.9607843137254902);
     --color-shadow-highlight: color(display-p3 0.9607843137254902 0.23921568627450981 0.6078431372549019);
-    --color-shadow-primary: color(display-p3 0.4196078431372549 0.23921568627450981 0.9607843137254902);
+    --color-shadow-primary: color(display-p3 0.3333333333333333 0 0.8901960784313725);
   }
 }
 

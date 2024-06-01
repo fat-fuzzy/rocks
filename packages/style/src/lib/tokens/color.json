@@ -76,11 +76,11 @@
 		"shadow": {
 			"$type": "color",
 			"primary": {
-				"$value": "hsl(254.96 90% 60%)",
+				"$value": "oklch(0.42 0.3 285.94)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(254.96 90% 60%)",
-						"night": "hsl(254.96 90% 80%)"
+						"day": "oklch(0.42 0.3 285.94)",
+						"night": "oklch(0.88 0.05 285.94)"
 					}
 				}
 			},
@@ -117,46 +117,15 @@
 			"$type": "dimension",
 			"sm": {
 				"offsetX": {"$value": "0"},
-				"offsetY": {"$value": "1px"},
+				"offsetY": {"$value": "0.5px"},
 				"blur": {"$value": "4px"},
 				"spread": {"$value": "0"}
 			},
 			"md": {
 				"offsetX": {"$value": "0"},
-				"offsetY": {"$value": "2px"},
+				"offsetY": {"$value": "1px"},
 				"blur": {"$value": "6px"},
-				"spread": {"$value": 0}
-			}
-		},
-		"md": {
-			"$type": "shadow",
-			"$value": {
-				"offsetX": "{shadow.base.md.offsetX}",
-				"offsetY": "{shadow.base.md.offsetY}",
-				"blur": "{shadow.base.md.blur}",
-				"spread": "{shadow.base.md.spread}",
-				"color": "{color.shadow.primary}"
-			}
-		},
-		"inset": {
-			"$type": "shadow",
-			"1": {
-				"$value": {
-					"offsetX": "{shadow.base.sm.offsetX}",
-					"offsetY": "{shadow.base.sm.offsetY}",
-					"blur": "{shadow.base.sm.blur}",
-					"spread": "{shadow.base.sm.spread}",
-					"color": "{color.shadow.accent}"
-				}
-			},
-			"2": {
-				"$value": {
-					"offsetX": "{shadow.base.md.offsetX}",
-					"offsetY": "{shadow.base.md.offsetY}",
-					"blur": "{shadow.base.md.blur}",
-					"spread": "{shadow.base.md.spread}",
-					"color": "{color.shadow.accent}"
-				}
+				"spread": {"$value": "0"}
 			}
 		}
 	}

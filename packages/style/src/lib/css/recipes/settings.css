@@ -3,7 +3,7 @@
 }
 
 .menu\:settings [class^='switch'][aria-pressed] {
-	box-shadow: inset var(--shadow-inset-1);
+	box-shadow: inset var(--shadow-inset-sm);
 }
 
 .menu\:settings [class^='switch'][aria-pressed].outline {

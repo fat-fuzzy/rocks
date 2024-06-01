@@ -4,11 +4,11 @@
 }
 
 .inset-1 {
-	box-shadow: inset var(--shadow-inset-1);
+	box-shadow: inset var(--shadow-inset-sm);
 }
 
 .inset {
-	box-shadow: inset var(--shadow-inset-2);
+	box-shadow: inset var(--shadow-inset-md);
 }
 
 .drop {
