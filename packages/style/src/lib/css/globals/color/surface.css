@@ -6,6 +6,5 @@
 }
 
 [class*='dotted'] {
-	--color-border: var(--ink);
-	border: var(--border-width-md) dotted var(--color-border);
+	border: var(--border-width-md) dotted var(--color-accent, var(--color-bg));
 }

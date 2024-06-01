@@ -10,7 +10,7 @@ form {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 	--color-bg: var(--shade);
-	--color-border: var(--accent);
+	--color-accent: var(--accent);
 	color: var(--ink);
 	max-height: fit-content;
 	background-color: var(--color-bg);

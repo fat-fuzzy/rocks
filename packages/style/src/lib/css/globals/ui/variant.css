@@ -4,20 +4,20 @@
  - hue
 */
 [class*=':fill'] {
-	--color-border: var(--shade);
+	--color-accent: var(--shade);
 }
 
 [class*=':outline'] {
-	--color-border: var(--ink);
+	--color-accent: var(--accent, var(--ink));
 	background-color: inherit;
 }
 
 [class*=':outline']:not(label) {
-	border: var(--border-width-md) solid var(--ink);
+	--color-accent: var(--accent, var(--ink));
+	border: var(--border-width-md) solid var(--color-accent);
 }
 
 [class*=':bare'] {
-	--color-border: var(--shade);
 	border: var(--border-width-md) solid var(--color-bg);
 	background-color: inherit;
 }

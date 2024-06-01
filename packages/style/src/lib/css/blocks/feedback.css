@@ -13,13 +13,13 @@ p + [class*='feedback:'] {
 }
 
 [class*='feedback:']:not(.feedback\:code) {
-	--color-border: var(--accent-semantic, var(--accent));
+	--color-accent: var(--accent-semantic, var(--accent));
 	--color-bg: var(--shade-semantic, var(--shade));
 	--color-ink: var(--ink-semantic, var(--ink));
 	color: var(--color-ink);
 	font-size: var(--font-size);
 	padding: var(--ui-size);
-	border: var(--border-width-xl) solid var(--color-border);
+	border: var(--border-width-xl) solid var(--color-accent);
 	background-color: var(--color-bg);
 
 	.status {
@@ -35,7 +35,7 @@ p + [class*='feedback:'] {
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:fill {
-	border: var(--border-width-xl) solid var(--color-border);
+	border: var(--border-width-xl) solid var(--color-accent);
 	box-shadow: var(--shadow-md);
 }
 

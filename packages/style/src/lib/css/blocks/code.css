@@ -7,13 +7,14 @@ pre {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--color-bg: var(--shade);
+	--color-ink: var(--ink);
+	--color-accent: var(--accent);
 	color: var(--color-ink);
-	font-size: var(--font-size);
-	font-family: var(--font-family-code);
 	background-color: var(--color-bg);
 	padding-inline: var(--ui-size) var(--ui-size-lg);
 	padding-block: var(--ui-size);
-	border: var(--border-width-xl) solid var(--color-border);
+	border: var(--border-width-xl) solid var(--color-accent);
 	overflow: auto;
 }
 
@@ -21,7 +22,7 @@ kbd {
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
 	padding-inline: var(--ui-size);
 	margin-inline: calc(var(--ui-size) / 2);
-	border: var(--border-width) solid var(--color-border);
+	border: var(--border-width) solid var(--color-accent);
 	border-radius: var(--border-radius-base);
 }
 
@@ -30,13 +31,14 @@ code:not([class^='language-']) {
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
 	padding-inline: calc(var(--ui-size) / 2);
 	border-radius: var(--border-radius-base);
+	background-color: var(--color-bg);
 }
 
 pre[class*='feedback:'] {
-	--color-border: var(--accent-semantic, var(--accent));
+	--color-accent: var(--accent-semantic, var(--accent));
 	--color-bg: var(--shade);
 	--color-ink: var(--ink-semantic, var(--ink));
-	border: var(--border-width-xl) solid var(--color-border);
+	border: var(--border-width-xl) solid var(--color-accent);
 }
 
 pre[class*='feedback:'].variant\:fill {
@@ -45,7 +47,7 @@ pre[class*='feedback:'].variant\:fill {
 
 pre[class*='feedback:'].variant\:outline {
 	box-shadow: unset;
-	border-color: var(--color-border);
+	border-color: var(--color-accent);
 	background-color: var(--color-bg);
 }
 
