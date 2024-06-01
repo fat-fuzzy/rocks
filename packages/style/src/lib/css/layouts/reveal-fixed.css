@@ -45,7 +45,7 @@
 	/* TODO: use grid for this */
 	/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
 	.l\:reveal[class*='fixed'] {
-		--y-axis: calc(var(--size-ui-header-height) + 2.5 * var(--border-width-lg));
+		--y-axis: calc(var(--size-ui-header-height) + var(--border-width-lg));
 		--y-size: 100%;
 		position: fixed;
 		top: var(--y-axis);

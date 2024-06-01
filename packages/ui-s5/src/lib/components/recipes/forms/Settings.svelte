@@ -19,7 +19,7 @@
 		layout,
 		path,
 		color = 'primary',
-		size = 'md',
+		size = 'sm',
 		variant = 'outline',
 		align = 'end',
 		formaction,
@@ -80,7 +80,7 @@
 	let show = `show ${showBackground}`
 	let showSettings = reveal === 'show' ? show : 'hide:viz-only'
 	let revealClasses = `form:expand card:md nowrap`
-	let formClasses = `l:switcher:xs ${showBackground}`
+	let formClasses = `l:switcher:xs maki:block:2xs ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
@@ -155,7 +155,7 @@
 			class={`menu:settings ${formClasses}`}
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
-				<div class="l:frame:round card:sm">
+				<div class="l:frame:round maki:block:2xs">
 					<Switch
 						id={`${settingsId}-${id}`}
 						{name}
@@ -176,7 +176,7 @@
 				{@const assetValue = SVG_ASSETS[brightness]
 					? SVG_ASSETS[brightness][id]
 					: ''}
-				<li class="l:frame:round card:sm">
+				<li class="l:frame:round maki:block:2xs">
 					<a
 						class={`${variant} font:${size} shape:${shape} ${color}`}
 						href={url}
