@@ -29,3 +29,27 @@
 .maki\:inline\:2xl {
 	margin-inline: var(--size-base-2xl);
 }
+
+.maki\:block\:2xs {
+	margin-block: var(--size-base-2xs);
+}
+
+.maki\:block\:xs {
+	margin-block: var(--size-base-xs);
+}
+
+.maki\:block\:sm {
+	margin-block: var(--size-base-sm);
+}
+
+.maki\:block\:lg {
+	margin-block: var(--size-base-lg);
+}
+
+.maki\:block\:xl {
+	margin-block: var(--size-base-xl);
+}
+
+.maki\:block\:2xl {
+	margin-block: var(--size-base-2xl);
+}

@@ -1,3 +1,10 @@
+[class*='feedback:']:where(.feedback\:form, .feedback\:prose) {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: var(--ui-size-sm);
+}
+
 p + [class*='feedback:'] {
 	margin-block-start: var(--ui-size-lg);
 }
