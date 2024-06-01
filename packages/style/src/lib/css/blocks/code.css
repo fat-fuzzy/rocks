@@ -45,6 +45,7 @@ pre[class*='feedback:'].variant\:fill {
 
 pre[class*='feedback:'].variant\:outline {
 	box-shadow: unset;
+	border-color: var(--color-border);
 	background-color: var(--color-bg);
 }
 

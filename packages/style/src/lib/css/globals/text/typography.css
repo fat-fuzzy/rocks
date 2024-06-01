@@ -6,7 +6,7 @@ h5,
 h6 {
 	color: var(--ink);
 	line-height: var(--font-leading-heading);
-	margin-block-end: var(--ui-size-sm);
+	margin-block: auto;
 	&.nowrap {
 		white-space: nowrap;
 	}

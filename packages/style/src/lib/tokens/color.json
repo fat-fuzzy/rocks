@@ -27,11 +27,11 @@
 			"gray": {"$value": 0},
 			"gray-violet": {"$value": 308.5},
 			"violet": {"$value": 285.94},
-			"seagreen": {"$value": -151.23},
-			"fuschia": {"$value": 0},
+			"seagreen": {"$value": 210.18},
+			"fuschia": {"$value": 325.59},
 			"blue": {"$value": 269.95},
 			"green": {"$value": 180.22},
-			"olive": {"$value": 109.84},
+			"yellow": {"$value": 90.53},
 			"red": {"$value": 11.8}
 		},
 		"theme": {
@@ -44,7 +44,7 @@
 		"semantic": {
 			"info": {"$value": "{color.hue.blue}"},
 			"success": {"$value": "{color.hue.green}"},
-			"warning": {"$value": "{color.hue.olive}"},
+			"warning": {"$value": "{color.hue.yellow}"},
 			"danger": {"$value": "{color.hue.red}"}
 		},
 		"state": {

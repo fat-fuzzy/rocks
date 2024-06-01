@@ -6,7 +6,7 @@
 	const variants = ['000', '100', '200', '300', '400', '500', '600']
 	const baseColor = ['light', 'dark']
 
-	let colorClasses = `card:md l:stack:sm`
+	let colorClasses = `card:md l:stack:sm font:sm text:center`
 </script>
 
 <div class="l:stack:xl">
@@ -14,7 +14,7 @@
 		<svelte:element this={`h${depth + 1}`} class="font:lg maki:block:2xs">
 			Base colors
 		</svelte:element>
-		<article class="l:switcher:2xs th:2xs">
+		<article class="l:grid:md">
 			{#each baseColor as base}
 				<figure class={`${colorClasses} bg:primary:${base}`}>
 					<figcaption>color:{base}</figcaption>

@@ -24,14 +24,14 @@
   --color-gradient-000-middle: var(--color-shadow-primary);
   --color-gradient-000-start: var(--color-shadow-highlight);
   --color-hue-blue: 269.95;
-  --color-hue-fuschia: 0;
+  --color-hue-fuschia: 325.59;
   --color-hue-gray: 0;
   --color-hue-gray-violet: 308.5;
   --color-hue-green: 180.22;
-  --color-hue-olive: 109.84;
   --color-hue-red: 11.8;
-  --color-hue-seagreen: -151.23;
+  --color-hue-seagreen: 210.18;
   --color-hue-violet: 285.94;
+  --color-hue-yellow: 90.53;
   --color-lightness-000: 98%;
   --color-lightness-100: 88%;
   --color-lightness-200: 76%;
@@ -44,7 +44,7 @@
   --color-semantic-danger: var(--color-hue-red);
   --color-semantic-info: var(--color-hue-blue);
   --color-semantic-success: var(--color-hue-green);
-  --color-semantic-warning: var(--color-hue-olive);
+  --color-semantic-warning: var(--color-hue-yellow);
   --color-shadow-accent: #3ddcf5;
   --color-shadow-highlight: #f53d9b;
   --color-shadow-primary: #5500e3;
