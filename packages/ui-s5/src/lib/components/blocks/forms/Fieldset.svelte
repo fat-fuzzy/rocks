@@ -9,7 +9,6 @@
 		disabled,
 
 		align,
-		color,
 		container,
 		layout = 'stack',
 		justify,

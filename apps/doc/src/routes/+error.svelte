@@ -1,22 +1,21 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	import {headless} from '@fat-fuzzy/ui-s5'
+	import {headless, blocks} from '@fat-fuzzy/ui-s5'
 
 	const {Head} = headless
+	const {Feedback} = blocks
 
-	let title = 'Error'
-
-	let asset = $page.status === 404 ? 'not-found' : 'error'
+	let title = $derived(`Error: ${$page.status}`)
+	let asset = $derived(String($page.status))
+	let status = $derived(String($page.status))
+	let message = $derived($page.error?.message)
 </script>
 
-<Head page={title} description="Something went wrong!" />
+<Head {title} description="Something went wrong!" />
 
-<div class="l:frame:twin">
-	<div class="l:stack:xxl card:xxl l:text:lg">
-		<h1>Error</h1>
-		<p class={`feedback emoji:${asset} font:md`}>
-			{$page.status}: {$page.error?.message}
-		</p>
-	</div>
+<div class="l:center:2xs card:2xl maki:block:xl">
+	<Feedback {asset} {status} context="prose" size="lg" container="center">
+		<p>{message}</p>
+	</Feedback>
 </div>
