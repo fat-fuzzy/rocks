@@ -21,8 +21,8 @@
 		recipes: recipes,
 	}
 
-	let category = $derived($page.params.category)
 	let path = $derived($page.url.pathname)
+	let category = $derived($page.params.category)
 	let title = $derived($page.params.component)
 	let description = $derived(`${title} | Demo`)
 	let Component = $derived(categoryItems[category][title])

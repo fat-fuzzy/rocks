@@ -15,6 +15,7 @@
 		{category: 'recipes', items: recipes},
 	]
 
+	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
 	let markdowns = $derived($page.data.markdowns)
 	let meta = $derived(
@@ -23,7 +24,6 @@
 	let items = $derived(
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
-	let path = $derived($page.url.pathname)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)

@@ -35,6 +35,10 @@
 	{#snippet header()}
 		<h1 class="l:main:60">{title}</h1>
 		<div class="l:side l:flex justify:end">
+			<ul class="l:stack:2xs maki:inline:xs maki:block:xs">
+				<li><a href={`${path}/doc`} class="font:xs">Doc</a></li>
+				<li><a href={`${path}/demo`} class="font:xs">Demo</a></li>
+			</ul>
 			<Api
 				categories={['app']}
 				{meta}
