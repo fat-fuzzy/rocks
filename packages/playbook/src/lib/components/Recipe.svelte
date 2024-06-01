@@ -37,15 +37,12 @@
 		actionPath,
 		redirect,
 		// Block style options
-		asset: elementStyles.asset,
-		color: elementStyles.color,
-		size: elementStyles.size,
-		variant: elementStyles.variant,
+		...elementStyles,
 		// Layout style options
-		layout: layoutStyles.layout,
-		threshold: layoutStyles.threshold,
-		breakpoint: layoutStyles.breakpoint,
+		...layoutStyles,
 	})
 </script>
 
-<svelte:component this={component} id={title} {...recipeProps} />
+{#key recipeProps}
+	<svelte:component this={component} id={title} {...recipeProps} />
+{/key}

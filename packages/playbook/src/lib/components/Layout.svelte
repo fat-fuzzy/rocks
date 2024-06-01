@@ -38,7 +38,7 @@
 	let content = 'card'
 	let sideContent = 'card'
 	let mainContent = 'text'
-	let contentStyles = $derived(`card:${size} box ${size} bg:highlight:lightest`)
+	let contentStyles = $derived(`card:${size} variant:outline size:${size} bg:highlight:000`)
 	let fixtures = $derived(getFixtures({category, component: title}))
 </script>
 
@@ -57,8 +57,8 @@
 		<svelte:component
 			this={component}
 			id={title} {size}
+			{...props}
 			{background}
-			{props}
 		>
 			{#snippet side()}
 				{@render children(fixtures, sideContent)}
@@ -72,12 +72,12 @@
 		<svelte:component
 			this={component}
 			id={title}
+			{...props}
 			{color}
 			{variant}
 			{size}
 			{background}
 			{breakpoint}
-			{props}
 		>
 			{@render children(fixtures, content)}
 		</svelte:component>
@@ -85,11 +85,11 @@
 		<svelte:component
 			this={component}
 			id={title}
+			{...props}
 			{size}
 			{background}
 			{breakpoint}
 			{threshold}
-			{props}
 			>
 			{@render children(fixtures, content)}
 		</svelte:component>
@@ -99,9 +99,9 @@
 		<svelte:component
 			this={component}
 			id={title}
+			{...props}
 			{size}
 			{background}
-			{...props}
 		>
 			{#snippet side()}
 				{@render children(fixtures, sideContent)}
@@ -114,12 +114,12 @@
 		<svelte:component
 			this={component}
 			id={title}
+			{...props}
 			{color}
 			{variant}
 			{size}
 			{background}
 			{breakpoint}
-			{...props}
 		>
 			{@render children(fixtures, content)}
 		</svelte:component>
@@ -127,11 +127,11 @@
 		<svelte:component
 			this={component}
 			id={title}
+			{...props}
 			{size}
 			{background}
 			{breakpoint}
 			{threshold}
-			{...props}
 			>
 			{@render children(fixtures, content)}
 		</svelte:component>

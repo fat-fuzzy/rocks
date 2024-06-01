@@ -178,7 +178,9 @@
 							onload={(event) => handleToggle(event, familyName, styleInput.id)}
 						/>
 					{:else}
-						<div class={`l:${family.layout}:${family.size} bg:polar`}>
+						<div
+							class={`l:${family.layout}:${family.size} th:${family.size} bg:polar`}
+						>
 							{#if input === 'radio' || input === 'checkbox'}
 								{@const InputComponent = COMPONENT_IMPORTS[input]}
 								<svelte:component
