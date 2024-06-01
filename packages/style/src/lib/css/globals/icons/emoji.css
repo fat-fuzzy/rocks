@@ -5,14 +5,14 @@
 	height: fit-content;
 }
 
-[class*='emoji:']:not([class*='align:'])::before {
+[class*='emoji:']:not([class*='justify:'])::before {
 	margin-inline: var(--ui-size-sm);
 }
 
-[class*='emoji:'].align\:start::before {
+[class*='emoji:'].justify\:start::before {
 	margin-inline: 0 var(--ui-size-sm);
 }
 
-[class*='emoji:'].align\:end::after {
+[class*='emoji:'].justify\:end::after {
 	margin-inline: var(--ui-size-sm) 0;
 }

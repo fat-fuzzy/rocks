@@ -4,6 +4,7 @@
 
 	type Props = {
 		asset: string
+		justify?: string
 		text?: string
 		context: string // feedback context: code, form, dialog, prose
 		status: string // feedback color: info, success, warning, error,
@@ -14,7 +15,8 @@
 	}
 
 	let {
-		asset = 'emoji:default',
+		asset = 'default',
+		justify = 'start',
 		text,
 		context, // feedback context: code, form, dialog,
 		status, // feedback color: info, success, warning, error,
@@ -26,8 +28,9 @@
 
 	let background = $derived(context === 'code' ? '' : `bg:${status}:000`)
 	let containerClass = $derived(container && context !== 'code' ? `l:${container}:${size}` : '')
-	let assetClass = $derived(asset.split(':').length > 1 ? asset : `emoji:${status}`)
-	let feedbackClass = $derived(`feedback:${context} ${containerClass} ${assetClass} status:${status} font:${size} size:${size} variant:${variant} ${background}`)
+	let assetClass = $derived(status ? `emoji:${status}` : `emoji:${asset}`)
+	let justifyClass = $derived(justify ? `justify:${justify}` : '')
+	let feedbackClass = $derived(`feedback:${context} ${containerClass} ${assetClass} status:${status} font:${size} size:${size} variant:${variant} ${background} ${justifyClass}`)
 
 	let ariaLive: AriaLive = $derived(context === 'form' ? 'polite' : undefined)
 </script>

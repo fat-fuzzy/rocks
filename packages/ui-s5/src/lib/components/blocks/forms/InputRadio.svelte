@@ -6,7 +6,7 @@
 		name,
 		label = 'Radio input',
 		checked = false,
-		layout = 'flex',
+		layout = 'switcher',
 		value,
 
 		disabled,
