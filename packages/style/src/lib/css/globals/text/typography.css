@@ -87,7 +87,7 @@ article,
 }
 
 figcaption {
-	color: var(--ink);
+	color: var(--color-ink, var(--ink));
 }
 
 ol,

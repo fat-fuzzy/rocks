@@ -17,9 +17,17 @@
 	--accent-semantic: oklch(
 		var(--lightness-accent) var(--chroma-accent) var(--hue-semantic)
 	);
-	--shadow-semantic: oklch(
-		var(--lightness-accent) var(--chroma-accent) var(--hue-semantic)
-	);
+	--shadow-semantic: oklch(var(--lightness) var(--chroma) var(--hue-semantic));
+}
+
+[class*='bg:'][class*='status:'] {
+	--color-bg: var(--shade-semantic);
+	--color-ink: var(--ink-semantic);
+	--color-accent: var(--accent-semantic);
+	--color-shadow: var(--shadow-semantic);
+	color: var(--color-ink);
+	background-color: var(--color-bg);
+	border-color: var(--color-accent);
 }
 
 [class*=':default'] {
