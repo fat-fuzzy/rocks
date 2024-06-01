@@ -67,7 +67,11 @@
 	let size = $derived(containerStyles.size ?? '') // Container size
 	let status = $derived(elementStyles.status ?? '')
 
-	let containerClasses = $derived(`l:${container}:${size} content`)
+	let containerClasses = $derived(
+		category !== 'tokens' && category !== 'blocks'
+			? `l:${container}:${size} content`
+			: 'content',
+	)
 	let fixtures = $derived(getFixtures({category, component: title}))
 	let categories = $derived(
 		meta.props_style ? Object.keys(meta.props_style) : undefined,

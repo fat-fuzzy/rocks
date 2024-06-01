@@ -17,8 +17,6 @@
 	let variant = ''
 	let size = '' // element's own size
 
-	// Block options
-	// $: variant = styles.tokens?.element.variant ?? variant
 	let componentProps = $derived({
 		...props,
 		asset: props?.asset || '',
