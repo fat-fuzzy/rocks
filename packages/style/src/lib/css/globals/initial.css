@@ -87,3 +87,7 @@ a:hover {
 [disabled] {
 	pointer-events: none;
 }
+
+/* input {
+	appearance: none;
+} */

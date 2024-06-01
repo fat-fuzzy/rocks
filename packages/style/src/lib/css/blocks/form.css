@@ -42,9 +42,7 @@ legend {
 input,
 select,
 textarea {
-	--ink: oklch(
-		var(--lightness-contrast) var(--chroma-contrast) var(--hue-contrast)
-	);
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 	--color-accent: var(--accent-semantic, var(--accent));
