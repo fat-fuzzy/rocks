@@ -32,7 +32,7 @@
 		components,
 		actionPath,
 		redirect,
-		size = 'md',
+		size = 'lg',
 		color = 'primary:100',
 		layout = 'grid',
 		category,
