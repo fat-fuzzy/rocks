@@ -42,7 +42,7 @@ const contrast = {
 const container = {
 	initial: 'center',
 	input: 'toggle',
-	layout: 'stack',
+	layout: 'switcher',
 	size: '2xs',
 	container: 'card',
 	items: [
@@ -69,7 +69,7 @@ const size = {
 const layout = {
 	initial: 'switcher',
 	input: 'toggle',
-	layout: 'stack',
+	layout: 'switcher',
 	size: '2xs',
 	container: 'card',
 	items: [
