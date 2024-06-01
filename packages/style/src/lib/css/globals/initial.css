@@ -91,10 +91,15 @@ a:hover {
 	outline: var(--outline-width) solid var(--shade);
 }
 
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+	font-family: var(--font-family-ui);
+	font-weight: var(--font-weight-ui);
+}
+
 [disabled] {
 	pointer-events: none;
 }
-
-/* input {
-	appearance: none;
-} */
