@@ -1,5 +1,8 @@
 <script lang="ts">
-	export let depth = 3
+	type Props = {
+		depth?: number
+	}
+	let {depth = 3}: Props = $props()
 
 	const status = ['info', 'success', 'warning', 'error']
 	const colors = ['primary', 'accent', 'highlight']
