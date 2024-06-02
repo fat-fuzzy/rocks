@@ -1,7 +1,7 @@
 [class^='l:sidebar'] {
-	--gap: var(--gap);
 	display: flex;
 	flex-wrap: wrap;
+	gap: var(--gap);
 }
 
 /* NOTE: The following declaration assume that the markup declares .main before .side */
