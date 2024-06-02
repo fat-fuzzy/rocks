@@ -1,6 +1,3 @@
-let host = 'http://localhost:5173'
-let imageAssetsPath = '$lib/images'
-
 export const sketches = [
 	{
 		id: '001',

@@ -38,102 +38,72 @@
 	let content = 'card'
 	let sideContent = 'card'
 	let mainContent = 'text'
-	let contentStyles = $derived(`card:${size} variant:outline size:${size} bg:highlight:000`)
+	let layoutContent = $derived(`card:${size} variant:outline size:${size} bg:highlight:000`)
 	let fixtures = $derived(getFixtures({category, component: title}))
 </script>
 
 {#snippet children(props, contentType)}
 	{#if contentType === 'text'}
 			<p>{props.text}</p>
-	{:else if contentType === 'card' || contentType === 'form'}
+	{:else if contentType === 'card'}
 		{#each props[content] as item}
-			<div class={contentStyles}>{item}</div>
+			<div class={layoutContent}>{item}</div>
 		{/each}
 	{/if}
 {/snippet}
 
-{#if isPage}
-	{#if title === 'Sidebar'}
-		<svelte:component
-			this={component}
-			id={title} {size}
-			{...props}
-			{background}
-		>
-			{#snippet side()}
-				{@render children(fixtures, sideContent)}
-			{/snippet}
+{#snippet sidebar()}
+	<svelte:component
+		this={component}
+		id={title}
+		{size}
+		{...props}
+		{background}
+	>
+		{#snippet side()}
+			{@render children(fixtures, sideContent)}
+		{/snippet}
+		{#snippet main()}
+			{@render children(fixtures, mainContent)}
+		{/snippet}
+	</svelte:component>
+{/snippet}
 
-			{#snippet main()}
-				{@render children(fixtures, mainContent)}
-			{/snippet}
-		</svelte:component>
-	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component
-			this={component}
-			id={title}
-			{...props}
-			{color}
-			{variant}
-			{size}
-			{background}
-			{breakpoint}
-		>
-			{@render children(fixtures, content)}
-		</svelte:component>
-	{:else}
-		<svelte:component
-			this={component}
-			id={title}
-			{...props}
-			{size}
-			{background}
-			{breakpoint}
-			{threshold}
-			>
-			{@render children(fixtures, content)}
-		</svelte:component>
-	{/if}
+{#snippet columnLayout()}
+	<svelte:component
+		this={component}
+		id={title}
+		{...props}
+		{color}
+		{variant}
+		{size}
+		{background}
+		{breakpoint}
+	>
+		{@render children(fixtures, content)}
+	</svelte:component>
+{/snippet}
+
+{#snippet fallbackLayout()}
+	<svelte:component
+		this={component}
+		id={title}
+		{...props}
+		{color}
+		{variant}
+		{size}
+		{background}
+		{breakpoint}
+		{threshold}
+	>
+		{@render children(fixtures, content)}
+	</svelte:component>
+{/snippet}
+
+{#if title === 'Sidebar'}
+	{@render sidebar()}
+{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
+	{@render columnLayout()}
 {:else}
-	{#if title === 'Sidebar'}
-		<svelte:component
-			this={component}
-			id={title}
-			{...props}
-			{size}
-			{background}
-		>
-			{#snippet side()}
-				{@render children(fixtures, sideContent)}
-			{/snippet}
-			{#snippet main()}
-				{@render children(fixtures, mainContent)}
-			{/snippet}
-		</svelte:component>
-	{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-		<svelte:component
-			this={component}
-			id={title}
-			{...props}
-			{color}
-			{variant}
-			{size}
-			{background}
-			{breakpoint}
-		>
-			{@render children(fixtures, content)}
-		</svelte:component>
-	{:else}
-		<svelte:component
-			this={component}
-			id={title}
-			{...props}
-			{size}
-			{background}
-			{breakpoint}
-			{threshold}
-			>
-			{@render children(fixtures, content)}
-		</svelte:component>
-	{/if}
+	{@render fallbackLayout()}
 {/if}

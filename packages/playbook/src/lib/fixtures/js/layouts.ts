@@ -1,37 +1,28 @@
+const content = {
+	card: ['Card 1', 'Card 2', 'Card 3'],
+	text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+}
+
 export default {
 	Sidebar: {
-		card: ['Card 1', 'Card 2', 'Card 3'],
-		form: ['Form input 1', 'Form input 2', 'Form input 3'],
-		text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+		...content,
 	},
 	Reveal: {
-		card: ['Card 1', 'Card 2', 'Card 3'],
-		form: ['Form input 1', 'Form input 2', 'Form input 3'],
-		text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+		...content,
 	},
 	RevealAuto: {
-		card: ['Card 1', 'Card 2', 'Card 3'],
-		form: ['Form input 1', 'Form input 2', 'Form input 3'],
-		text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+		...content,
 	},
 	Burrito: {
-		card: ['Card 1', 'Card 2', 'Card 3'],
-		form: ['Form input 1', 'Form input 2', 'Form input 3'],
-		text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+		...content,
 	},
 	Details: {
-		card: ['Card 1', 'Card 2', 'Card 3'],
-		form: ['Form input 1', 'Form input 2', 'Form input 3'],
-		text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+		...content,
 	},
 	Stack: {
-		card: ['Card 1', 'Card 2', 'Card 3'],
-		form: ['Form input 1', 'Form input 2', 'Form input 3'],
-		text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+		...content,
 	},
 	Switcher: {
-		card: ['Card 1', 'Card 2', 'Card 3'],
-		form: ['Form input 1', 'Form input 2', 'Form input 3'],
-		text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+		...content,
 	},
 }
