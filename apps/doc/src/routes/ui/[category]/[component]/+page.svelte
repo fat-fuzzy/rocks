@@ -50,7 +50,7 @@
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1 class="l:side hug maki:block:lg maki:inline:sm">{title}</h1>
+		<h1 class="l:side hug card:md">{title}</h1>
 		<div class="l:main:50 l:flex justify:end">
 			{#if currentTab.value === 'demo'}
 				<Api
@@ -153,16 +153,18 @@
 			</aside>
 		</article>
 	{:else if currentTab.value === 'demo'}
-		<Element
-			isPage={true}
-			depth={1}
-			{title}
-			{path}
-			{category}
-			component={Component}
-			meta={markdownContent.meta}
-			{actionPath}
-			redirect={$page.url.pathname}
-		/>
+		<div class="card:md">
+			<Element
+				isPage={true}
+				depth={1}
+				{title}
+				{path}
+				{category}
+				component={Component}
+				meta={markdownContent.meta}
+				{actionPath}
+				redirect={$page.url.pathname}
+			/>
+		</div>
 		{/if}
 	</PageMain>

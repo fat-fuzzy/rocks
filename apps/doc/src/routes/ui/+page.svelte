@@ -24,24 +24,27 @@
 </script>
 
 <PageMain {title} {description}>
-	<div class="l:text:lg snap:start maki:block">
-		{@html markdownContent.html}
-	</div>
-	{#each components as { category, items }}
-		{@const meta = markdowns.categories.find(
-			({meta}) => meta.slug === category,
-		).meta}
-		<Collection
-			depth={1}
-			isPage={false}
-			path={`${path}/${category}`}
-			components={items}
-			{meta}
-			{category}
-			{markdowns}
-			{actionPath}
-		>
-			{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
-		</Collection>
-	{/each}
+	<article class="l:sidebar:xs">
+		<section class="l:main card:md">
+			<div class="l:text:lg snap:start">{@html markdownContent.html}</div>
+			{#each components as { category, items }}
+				{@const meta = markdowns.categories.find(
+					({meta}) => meta.slug === category,
+				).meta}
+				<Collection
+					depth={1}
+					isPage={false}
+					path={`${path}/${category}`}
+					components={items}
+					{meta}
+					{category}
+					{markdowns}
+					{actionPath}
+				>
+					{@html markdowns.categories.find(({meta}) => meta.slug === category)
+						.html}
+				</Collection>
+			{/each}
+		</section>
+	</article>
 </PageMain>

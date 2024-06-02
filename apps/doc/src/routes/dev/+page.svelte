@@ -12,9 +12,9 @@
 </script>
 
 <PageMain {title} {description}>
-	<div class="l:stack:xl card:xl">
+	<div class="l:stack:xl">
 		{#each markdowns as { meta }}
-			<a class="font:2xl" href={`/dev/${meta.slug}`}>{meta.title}</a>
+			<a class="font:lg" href={`/dev/${meta.slug}`}>{meta.title}</a>
 		{/each}
 	</div>
 </PageMain>

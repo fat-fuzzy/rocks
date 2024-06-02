@@ -47,7 +47,7 @@
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1 class="l:side hug maki:block:lg maki:inline:sm">{title}</h1>
+		<h1 class="l:side hug card:md">{title}</h1>
 		<div class="l:main:50 l:flex justify:end">
 
 			{#if currentTab.value === 'demo'}

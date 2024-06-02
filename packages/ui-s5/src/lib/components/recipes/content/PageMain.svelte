@@ -21,7 +21,7 @@
 	} = $props() as Props
 
 	let currentPage = $state(page ?? title)
-	let headerClass = `l:sidebar:${size} bg:polar align:center maki:block maki:inline`
+	let headerClass = `l:sidebar:${size} align:center maki:block:lg`
 </script>
 
 <Head page={currentPage} {title} {description} />
@@ -34,7 +34,7 @@
 	{/if}
 </header>
 
-<section class="card:md scroll:y l:center">
+<section class="scroll:y l:center">
 	{#if children}
 		{@render children()}
 	{/if}
