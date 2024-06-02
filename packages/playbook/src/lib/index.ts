@@ -8,6 +8,7 @@ import Api from '$lib/components/Api.svelte'
 import Token from '$lib/components/Token.svelte'
 import Element from '$lib/components/Element.svelte'
 import Collection from '$lib/components/Collection.svelte'
+import Playbook from '$lib/components/Playbook.svelte'
 
 import * as stylesApi from '$lib/api/styles.api'
 import * as props from '$lib/props'
@@ -31,6 +32,7 @@ import PlaybookStore from '$lib/api/store.svelte'
  * Prepare Exports
  **************************************************/
 const api = {
+	Playbook,
 	Api,
 	Collection,
 	Token,
