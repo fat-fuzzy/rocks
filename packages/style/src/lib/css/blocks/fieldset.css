@@ -17,7 +17,7 @@ fieldset {
 
 fieldset.radio,
 fieldset.check {
-	padding: var(--ui-size-sm);
+	padding-block: 0 var(--ui-size-sm);
 	font-size: var(--font-size);
 
 	input {
