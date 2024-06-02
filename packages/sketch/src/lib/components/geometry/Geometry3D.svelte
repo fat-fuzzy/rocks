@@ -45,8 +45,8 @@
 	let {scale, translation} = $derived(geometry)
 
 	// input attributes
-	let maxZ = 1
-	let minZ = -1000
+	let maxZ = $state(1)
+	let minZ = $state(-1000)
 
 	// Position
 	let maxX = $state(canvasWidth)

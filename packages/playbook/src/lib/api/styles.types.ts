@@ -22,6 +22,7 @@ export type StyleInputOptions = {
 	variant?: string
 	color?: string
 	layout?: string
+	status?: string
 	// options?: StyleOption
 }
 

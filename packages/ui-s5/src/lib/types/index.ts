@@ -25,6 +25,14 @@ export enum UiState {
 	collapsed = 'collapsed',
 }
 
+export enum UiStatus {
+	default = 'default',
+	info = 'info',
+	success = 'success',
+	warning = 'warning',
+	error = 'error',
+}
+
 export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export enum ButtonEventType {
@@ -102,7 +110,7 @@ export type Tab = {
 	id: string
 	name: string
 	title: string
-	value?: string
+	value: string
 	initial?: string
 	size?: string
 	color?: string

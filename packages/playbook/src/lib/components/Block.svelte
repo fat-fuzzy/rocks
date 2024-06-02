@@ -14,12 +14,14 @@
 	const playbookStore: PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
+	let containerStyles = $derived(styles.layouts.container)
 
 	let blockProps = $derived({
 		...props,
 		name,
 		// Block style options
 		...elementStyles,
+		...containerStyles,
 	})
 </script>
 
