@@ -1,12 +1,17 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, recipes, content} from '@fat-fuzzy/ui-s5'
+	import {enhance} from '$app/forms'
+	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
+	import appStore from '../../stores.svelte.js'
 
 	const {PageMain} = content
 	const {Collection, Api} = api
+	const {ToggleMenu} = recipes
+	const {DEFAULT_TABS, TABS} = constants
 
 	const actionPath = '/ui'
+	const tabs = TABS
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -14,6 +19,8 @@
 		{category: 'layouts', items: layouts},
 		{category: 'recipes', items: recipes},
 	]
+	let currentTabs = appStore.currentTabs
+	let currentTab = $derived(currentTabs.ui || DEFAULT_TABS[0])
 
 	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
@@ -24,31 +31,89 @@
 	let items = $derived(
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
+	let markdownContent = $derived(markdowns[category].find(({meta}) => meta.slug === category))
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
-	
 	let description = $derived(`${title} | Doc`)
+
+	function handleTabChange(selected: { id: string; value: string; state: string; }[]) {
+		if(selected.length === 0) {
+			return
+		}
+		currentTabs.ui = {...selected[0], title: selected[0].id, name: selected[0].id}
+	}
 </script>
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1 class="l:main:60">{title}</h1>
-		<div class="l:side l:flex justify:end">
-			<ul class="l:stack:2xs maki:inline:xs maki:block:xs">
-				<li><a href={`${path}/doc`} class="font:xs">Doc</a></li>
-				<li><a href={`${path}/demo`} class="font:xs">Demo</a></li>
-			</ul>
-			<Api
-				categories={['app']}
-				{meta}
-				{path}
-				{actionPath}
-				redirect={$page.url.pathname}
-			/>
+		<h1 class="l:side hug">{title}</h1>
+		<div class="l:main:50 l:flex justify:end">
+
+			{#if currentTab.value === 'demo'}
+				<Api
+					categories={['app']}
+					{meta}
+					{path}
+					{actionPath}
+					redirect={$page.url.pathname}
+				/>
+			{/if}
+
+			<form
+				method="POST"
+				class="tabs flex nowrap"
+				action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
+				use:enhance={() => {
+					// prevent default callback from resetting the form
+					return ({update}) => {
+						update({reset: false})
+					}
+				}}
+			>
+				<ToggleMenu
+					id={`submit.${path}`}
+					items={tabs.map((tab) => {
+						if (tab.value == currentTab.value) {
+							tab.initial = 'active'
+						}
+						return tab
+					})}
+					size="md"
+					layout="flex nowrap"
+					container="card:md"
+					color="primary"
+					shape="round"
+					variant="outline"
+					formaction={`/ui?/updateTab&redirectTo=${path}`}
+					onupdate={handleTabChange}
+					onload={handleTabChange}
+				/>
+			</form>
 		</div>
 	{/snippet}
 
+	{#if markdownContent.html && currentTab.value === 'doc'}
+	<article class="l:sidebar:xs">
+		<section class="l:main card:md">
+			<div class="l:text:lg">{@html markdownContent.html}</div>
+		</section>
+		<aside class="l:side">
+			{#if !markdownContent.meta}
+				<p class="feedback bare emoji:default">Coming Soon!</p>
+			{:else if markdownContent.meta.props_style}
+				<details open>
+					<summary class={`bg:primary:light box:primary:light`}>Style Props</summary>
+					<ul class="tags l:switcher:md">
+						{#each markdownContent.meta.props_style as prop}
+							<li class="card:sm bg:primary:lightest">{prop}</li>
+						{/each}
+					</ul>
+				</details>
+			{/if}
+		</aside>
+	</article>
+{:else if currentTab.value === 'demo'}
 	<Collection
 		depth={1}
 		isPage={true}
@@ -62,4 +127,5 @@
 	>
 		{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
 	</Collection>
+	{/if}
 </PageMain>
