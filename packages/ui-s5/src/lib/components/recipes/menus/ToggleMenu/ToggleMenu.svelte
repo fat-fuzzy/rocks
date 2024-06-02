@@ -23,7 +23,7 @@
 		formaction,
 		items = [],
 		disabled,
-		onload,
+		init,
 		onupdate,
 	}: ToggleMenuProps = $props()
 
@@ -53,8 +53,8 @@
 	}
 
 	onMount(() => {
-		if (onload) {
-			onload(store.getSelected())
+		if (init) {
+			init(store.getSelected())
 		}
 	})
 </script>
@@ -64,7 +64,7 @@
 		{#each store.items as [id, props]}
 			<li>
 				<Toggle
-					onload={loadMenu}
+					init={loadMenu}
 					onclick={updateMenu}
 					{type}
 					{formaction}

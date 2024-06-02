@@ -17,7 +17,7 @@
 
 	let {
 		color = '',
-		size = 'xxs',
+		size = '2xs',
 		id = 'camera',
 		label = 'Camera',
 		angle = $bindable(60),

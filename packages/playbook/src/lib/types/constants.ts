@@ -102,6 +102,7 @@ const DEFAULT_STYLES: StyleTree = {
 const TABS: Tab[] = [
 	{
 		id: 'context.menu.toggle.demo',
+		name: 'context.menu.toggle.demo',
 		title: 'Demo',
 		size: 'lg',
 		color: 'accent',
@@ -110,12 +111,12 @@ const TABS: Tab[] = [
 	},
 	{
 		id: 'context.menu.toggle.doc',
+		name: 'context.menu.toggle.doc',
 		title: 'Doc',
 		size: 'lg',
 		color: 'primary',
 		asset: 'emoji:doc',
 		value: 'doc',
-		initial: 'pressed',
 	},
 ]
 

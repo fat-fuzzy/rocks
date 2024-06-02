@@ -118,7 +118,7 @@
 		variant="bare"
 		items={channelMenuItems}
 		onupdate={updateChannel}
-		onload={loadChannel}
+		init={loadChannel}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}
@@ -132,7 +132,7 @@
 		variant="bare"
 		items={blurMenuItems}
 		onupdate={updateBlur}
-		onload={loadBlur}
+		init={loadBlur}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}
@@ -146,7 +146,7 @@
 		variant="bare"
 		items={effectMenuItems}
 		onupdate={updateEffects}
-		onload={loadEffects}
+		init={loadEffects}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}

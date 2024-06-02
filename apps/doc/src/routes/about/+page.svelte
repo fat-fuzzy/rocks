@@ -13,7 +13,7 @@
 	<h1 class="card:md">{title}</h1>
 </header>
 
-<div class="l:center:xxl col:center">
+<div class="l:center:2xl col:center">
 	<div class="card:xl l:text:xl">
 		<p>
 			This is a <a href="https://kit.svelte.dev" class="font:md">SvelteKit</a> app.

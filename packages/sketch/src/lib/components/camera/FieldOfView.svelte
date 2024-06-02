@@ -17,7 +17,7 @@
 
 	let {
 		color = '',
-		size = 'xxs',
+		size = '2xs',
 		id = 'fieldOfView',
 		label = 'Field of View',
 		fieldOfView = $bindable(60),

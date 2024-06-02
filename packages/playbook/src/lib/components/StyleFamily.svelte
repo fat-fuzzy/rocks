@@ -24,6 +24,7 @@
 	let apiSize = '2xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
+	let apiJustify = 'stretch'
 
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
 		radio: InputGroup,
@@ -141,11 +142,12 @@
 	{#each Object.keys(options) as familyName}
 		{@const family = options[familyName]}
 		<Fieldset
+			id={family.title}
 			legend={family.title}
 			layout={family.layout}
 			size={family.size}
 			name={familyName}
-			justify={family.justify}
+			justify={apiJustify}
 			background="polar"
 		>
 			{#each family.items as styleInput}
@@ -175,75 +177,71 @@
 							{formaction}
 							onupdate={(event) =>
 								handleToggle(event, familyName, styleInput.id)}
-							onload={(event) => handleToggle(event, familyName, styleInput.id)}
+							init={(event) => handleToggle(event, familyName, styleInput.id)}
 						/>
 					{:else}
-						<div
-							class={`l:${family.layout}:${family.size} th:${family.size} bg:polar`}
-						>
-							{#if input === 'radio' || input === 'checkbox'}
-								{@const InputComponent = COMPONENT_IMPORTS[input]}
-								<svelte:component
-									this={InputComponent}
-									{id}
-									{items}
+						{#if input === 'radio' || input === 'checkbox'}
+							{@const InputComponent = COMPONENT_IMPORTS[input]}
+							<svelte:component
+								this={InputComponent}
+								{id}
+								{items}
+								name={id}
+								type={input}
+								value={currentValue}
+								legend={name}
+								layout={styleInput.layout || ''}
+								container={styleInput.container || ''}
+								threshold={family.size || apiSize}
+								size={family.size || apiSize}
+								color={apiColor}
+								variant={styleInput.variant}
+								onupdate={(event) => handleInput(event, familyName)}
+							/>
+						{/if}
+						{#if input == 'range'}
+							{@const InputComponent = COMPONENT_IMPORTS[input]}
+							<svelte:component
+								this={InputComponent}
+								{id}
+								label={styleInput.name}
+								{items}
+								value={currentValue}
+								name={id}
+								layout={styleInput.layout || ''}
+								size={apiSize}
+								color={apiColor}
+								variant={styleInput.variant}
+								oninput={(event) => handleInput(event, familyName)}
+							/>
+						{/if}
+						{#if input === 'datalist'}
+							<label
+								for={`choice-${styleInput.name}`}
+								class={`l:stack ${apiSize} font:${apiSize}`}
+							>
+								{`Select ${styleInput.name}`}
+								<input
+									list={`datalist-${styleInput.name}`}
+									id={`choice-${styleInput.name}`}
 									name={id}
-									type={input}
-									value={currentValue}
-									legend={name}
-									layout={styleInput.layout || ''}
-									container={styleInput.container || ''}
-									threshold={apiSize}
-									size={styleInput.size || apiSize}
-									color={apiColor}
-									variant={styleInput.variant}
-									onupdate={(event) => handleInput(event, familyName)}
+									class={apiSize}
+									oninput={(event) =>
+										handleSelect(
+											event,
+											familyName,
+											styleInput.name,
+											styleInput.id,
+										)}
 								/>
-							{/if}
-							{#if input == 'range'}
-								{@const InputComponent = COMPONENT_IMPORTS[input]}
-								<svelte:component
-									this={InputComponent}
-									{id}
-									label={styleInput.name}
-									{items}
-									value={currentValue}
-									name={id}
-									layout={styleInput.layout || ''}
-									size={apiSize}
-									color={apiColor}
-									variant={styleInput.variant}
-									oninput={(event) => handleInput(event, familyName)}
-								/>
-							{/if}
-							{#if input === 'datalist'}
-								<label
-									for={`choice-${styleInput.name}`}
-									class={`l:stack ${apiSize} font:${apiSize}`}
-								>
-									{`Select ${styleInput.name}`}
-									<input
-										list={`datalist-${styleInput.name}`}
-										id={`choice-${styleInput.name}`}
-										name={id}
-										class={apiSize}
-										oninput={(event) =>
-											handleSelect(
-												event,
-												familyName,
-												styleInput.name,
-												styleInput.id,
-											)}
-									/>
-									<datalist id={`datalist-${styleInput.name}`}>
-										{#each items as { id, text, asset, value }}
-											<option {id} label={text} value={`${asset}:${value}`}>
-											</option>
-										{/each}
-									</datalist>
-								</label>
-							{/if}
-						</div>
+								<datalist id={`datalist-${styleInput.name}`}>
+									{#each items as { id, text, asset, value }}
+										<option {id} label={text} value={`${asset}:${value}`}>
+										</option>
+									{/each}
+								</datalist>
+							</label>
+						{/if}
 					{/if}
 				{/if}
 			{/each}

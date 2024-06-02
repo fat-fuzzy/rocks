@@ -18,7 +18,7 @@
 		color = '',
 		id = 'rotation',
 		label = 'Angle',
-		size = 'xxs',
+		size = '2xs',
 		angle = $bindable(0),
 		min = 0,
 		max = 360,

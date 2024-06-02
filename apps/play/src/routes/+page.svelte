@@ -14,9 +14,9 @@
 	<h1 class="card:md">{title}</h1>
 </header>
 
-<section class="l:center l:text:xxl">
+<section class="l:center l:text:2xl">
 	<h2>✨ Highlights</h2>
-	<div class="l:switcher:sm bp:xs card:xxl">
+	<div class="l:switcher:sm bp:xs card:2xl">
 		<article class={`card:lg text:center ${variant}`}>
 			<a data-sveltekit-preload-data href="/play" class="card font:md">
 				🌈 Play

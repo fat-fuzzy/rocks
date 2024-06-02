@@ -330,8 +330,8 @@ const main = {
 const settingsFamily = {
 	layout: 'flex',
 	size: 'xs',
-	variant: 'card',
 	justify: 'end',
+	container: 'card:2xs ',
 	props: ['brightness', 'contrast'],
 }
 

@@ -47,7 +47,9 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 /**
  * Indicates the direction that icons should point in when used to indicate direction of movement of the UI element under control
  */
-const ALIGN_ANIMATION_DIRECTION: {[inactivePosition: string]: {[state: string]: string}} = {
+const ALIGN_ANIMATION_DIRECTION: {
+	[inactivePosition: string]: {[state: string]: string}
+} = {
 	left: {show: 'down', minimize: 'left'},
 	right: {show: 'down', minimize: 'right'},
 	top: {show: 'down', minimize: 'up'},
@@ -63,7 +65,9 @@ const UI_STATE = {
 	ERROR: 'error',
 }
 
-const APP_LINKS: {[key: string]: string}[] = [{slug: 'about', title: 'About', layout: 'center'}]
+const APP_LINKS: {[key: string]: string}[] = [
+	{slug: 'about', title: 'About', layout: 'center'},
+]
 
 const APP_SETTINGS = {
 	switch: [

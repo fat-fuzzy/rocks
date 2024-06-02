@@ -18,7 +18,7 @@ export type ToggleMenuProps = UiBlockProps & {
 	disabled?: boolean | undefined
 	formaction?: string
 	items: ToggleProps[]
-	onload: (
+	init: (
 		payload: {name: string; value: string | number; state: string}[],
 	) => void
 	onupdate: (

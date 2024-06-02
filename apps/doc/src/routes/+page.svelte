@@ -30,9 +30,9 @@
 	</div>
 </header>
 
-<section class="l:text:xxl text:center l:center">
+<section class="l:text:2xl text:center l:center">
 	<h2>✨ Highlights</h2>
-	<div class="l:switcher:sm bp:xs card:xxl">
+	<div class="l:switcher:sm bp:xs card:2xl">
 		<article class={`card:lg text:center emoji:rainbow ${variant}`}>
 			<a data-sveltekit-preload-data href="/ui" class="card font:md"> UI </a>
 		</article>

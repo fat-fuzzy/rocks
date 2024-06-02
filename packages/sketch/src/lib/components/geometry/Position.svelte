@@ -23,7 +23,7 @@
 	let {
 		color,
 		id = 'position',
-		size = 'xxs',
+		size = '2xs',
 		coordX = $bindable(0),
 		coordY = $bindable(0),
 		coordZ = $bindable(0),

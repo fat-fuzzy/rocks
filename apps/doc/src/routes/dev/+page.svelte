@@ -14,7 +14,7 @@
 <PageMain {title} {description}>
 	<div class="l:stack:xl card:xl">
 		{#each markdowns as { meta }}
-			<a class="font:xxl" href={`/dev/${meta.slug}`}>{meta.title}</a>
+			<a class="font:2xl" href={`/dev/${meta.slug}`}>{meta.title}</a>
 		{/each}
 	</div>
 </PageMain>

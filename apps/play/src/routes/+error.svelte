@@ -13,7 +13,7 @@
 <Head page={title} description="Something went wrong!" />
 
 <div class="l:frame:twin">
-	<div class="l:stack:xxl card:xxl l:text:lg">
+	<div class="l:stack:2xl card:2xl l:text:lg">
 		<h1>Error</h1>
 		<p class={`feedback emoji:${asset} font:md`}>
 			{$page.status}: {$page.error?.message}

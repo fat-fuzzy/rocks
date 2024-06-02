@@ -19,6 +19,6 @@
 
 <div class="l:stack:xl card:lg">
 	{#each sketches as sketch}
-		<a class="font:xxl" href={`/play/${sketch.slug}`}>{sketch.title}</a>
+		<a class="font:2xl" href={`/play/${sketch.slug}`}>{sketch.title}</a>
 	{/each}
 </div>
