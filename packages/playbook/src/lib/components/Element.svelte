@@ -4,7 +4,6 @@
 	import type {Meta} from '$lib/props/types'
 
 	import PlaybookStore from '$lib/api/store.svelte'
-	import {getFixtures} from '$lib/fixtures/js'
 
 	import Api from './Api.svelte'
 	import Token from './Token.svelte'
@@ -72,7 +71,9 @@
 			? `l:${container}:${size} content`
 			: 'content',
 	)
-	let fixtures = $derived(getFixtures({category, component: title}))
+	let fixtures = $derived(
+		playbookStore.getFixtures({category, component: title}),
+	)
 	let categories = $derived(
 		meta.props_style ? Object.keys(meta.props_style) : undefined,
 	)

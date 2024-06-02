@@ -11,7 +11,6 @@ import Collection from '$lib/components/Collection.svelte'
 
 import * as stylesApi from '$lib/api/styles.api'
 import * as props from '$lib/props'
-import * as fixturesApi from '$lib/fixtures/js'
 
 /**
  * Forms
@@ -38,7 +37,6 @@ const api = {
 	Element,
 	PlaybookStore,
 	stylesApi,
-	fixturesApi,
 	props,
 	form,
 }

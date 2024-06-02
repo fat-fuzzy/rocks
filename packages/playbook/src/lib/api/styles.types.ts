@@ -64,6 +64,7 @@ export interface BlockStyles extends StyleCategory {
 export interface LayoutStyles extends StyleCategory {
 	layout: StyleFamily
 	container: StyleFamily
+	content: StyleFamily
 }
 
 export interface StyleOptions {
@@ -214,7 +215,16 @@ export class StyleFamily implements IStyleFamily {
 	justify?: string
 	variant?: string
 
-	constructor({id, name, title, items, layout, container, size, variant}: StyleFamilyOptions) {
+	constructor({
+		id,
+		name,
+		title,
+		items,
+		layout,
+		container,
+		size,
+		variant,
+	}: StyleFamilyOptions) {
 		this.id = id
 		this.name = name
 		this.title = title

@@ -102,6 +102,8 @@ export class StylesApi {
 				return category.layout
 			case 'container':
 				return category.container
+			case 'content':
+				return category.content
 			default:
 				return undefined
 		}
@@ -199,6 +201,7 @@ const blocks: BlockStyles = {
 const layouts: LayoutStyles = {
 	layout: getFamily('layouts.layout'),
 	container: getFamily('layouts.container'),
+	content: getFamily('layouts.content'),
 }
 
 export const initStyles = () => new StylesApi({app, tokens, blocks, layouts})

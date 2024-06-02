@@ -2,7 +2,6 @@
 	import {getContext} from 'svelte'
 
 	import PlaybookStore from '$lib/api/store.svelte'
-	import {getFixtures} from '$lib/fixtures/js'
 
 	type Props = {
 		title: string
@@ -11,7 +10,7 @@
 		props: any
 	}
 
-	let {title, isPage = false, component, props}: Props = $props()
+	let {title, component, props}: Props = $props()
 
 	let category = 'layouts'
 
@@ -19,6 +18,7 @@
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
 	let layoutStyles = $derived(styles.layouts.layout)
+	// let contentStyles = $derived(styles.layouts.content) // TODO : Fix this
 
 	let settings = $derived(playbookStore.app)
 
@@ -39,7 +39,7 @@
 	let sideContent = 'card'
 	let mainContent = 'text'
 	let layoutContent = $derived(`card:${size} variant:outline size:${size} bg:highlight:000`)
-	let fixtures = $derived(getFixtures({category, component: title}))
+	let fixtures = $derived(playbookStore.getFixtures({category, component: title}))
 </script>
 
 {#snippet children(props, contentType)}
@@ -53,13 +53,7 @@
 {/snippet}
 
 {#snippet sidebar()}
-	<svelte:component
-		this={component}
-		id={title}
-		{size}
-		{...props}
-		{background}
-	>
+	<svelte:component this={component} id={title} {...props} {size} {background}>
 		{#snippet side()}
 			{@render children(fixtures, sideContent)}
 		{/snippet}
@@ -79,6 +73,7 @@
 		{size}
 		{background}
 		{breakpoint}
+		{threshold}
 	>
 		{@render children(fixtures, content)}
 	</svelte:component>
