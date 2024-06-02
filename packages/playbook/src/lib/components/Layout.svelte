@@ -15,6 +15,7 @@
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
 	let layoutStyles = $derived(styles.layouts.layout)
+	let containerStyles = $derived(styles.layouts.container)
 	// let contentStyles = $derived(styles.layouts.content) // TODO : Fix this
 	let settings = $derived(playbookStore.app)
 
@@ -72,9 +73,19 @@
 {/snippet}
 
 {#key layoutProps}
-	{#if title === 'Sidebar'}
-		{@render sidebar()}
+	{#if containerStyles.container}
+		<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
+			{#if title === 'Sidebar'}
+				{@render sidebar()}
+			{:else}
+				{@render columnLayout()}
+			{/if}
+		</div>
 	{:else}
-		{@render columnLayout()}
+		{#if title === 'Sidebar'}
+			{@render sidebar()}
+		{:else}
+			{@render columnLayout()}
+		{/if}
 	{/if}
 {/key}

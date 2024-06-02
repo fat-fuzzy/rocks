@@ -21,10 +21,15 @@
 		name,
 		// Block style options
 		...elementStyles,
-		...containerStyles,
 	})
 </script>
 
 {#key blockProps}
-	<svelte:component this={component} id={title} {...blockProps} />
+	{#if containerStyles.container}
+		<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
+			<svelte:component this={component} id={title} {...blockProps} />
+		</div>
+	{:else}
+		<svelte:component this={component} id={title} {...blockProps} />
+	{/if}
 {/key}
