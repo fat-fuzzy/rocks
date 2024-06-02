@@ -48,7 +48,7 @@
 
 	<section class="l:stack:md">
 		<svelte:element this={`h${depth + 1}`} class="font:lg maki:block:2xs">
-			Feedback status colors
+			Semantic colors
 		</svelte:element>
 		{#each status as color}
 			<article class="l:switcher:md th:md">
