@@ -11,8 +11,8 @@ export const itemsSettings = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
+				active: {text: 'night', value: 'night', asset: 'night'},
+				inactive: {text: 'day', value: 'day', asset: 'day'},
 			},
 		},
 		{
@@ -24,8 +24,8 @@ export const itemsSettings = {
 			color: 'primary',
 			size: 'md',
 			states: {
-				active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-				inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
+				active: {text: 'contrast', value: 'contrast', asset: 'contrast'},
+				inactive: {text: 'blend', value: 'blend', asset: 'blend'},
 			},
 		},
 	],

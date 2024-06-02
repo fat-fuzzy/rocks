@@ -66,6 +66,7 @@
 		let variantClass = currentState.variant ?? variant
 		variantClass =  variantClass ? `variant:${variantClass}`: ''
 		let assetClass = (currentState.asset ?? asset) ?? ''
+		assetClass = assetClass ? `emoji:${assetClass}` : ''
 		let stateClasses = `${assetClass} ${variantClass}`
 
 		return `switch ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`

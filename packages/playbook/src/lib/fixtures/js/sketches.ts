@@ -3,7 +3,7 @@ export const sketches = [
 		id: '001',
 		slug: 'random-rect',
 		title: 'Random',
-		asset: 'emoji:random',
+		asset: 'random',
 		dimensions: 'video',
 	},
 	// {
@@ -16,7 +16,7 @@ export const sketches = [
 		id: '003',
 		slug: 'rectangle-2d',
 		title: 'Rectangle 2D',
-		asset: 'emoji:rect',
+		asset: 'rect',
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -26,7 +26,7 @@ export const sketches = [
 		id: '004',
 		slug: 'geometry-2d',
 		title: 'Geometry 2D',
-		asset: 'emoji:geometry-2d',
+		asset: 'geometry-2d',
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -36,7 +36,7 @@ export const sketches = [
 		id: '005',
 		slug: 'matrix-2d',
 		title: 'Matrix 2D',
-		asset: 'emoji:geometry-3d',
+		asset: 'geometry-3d',
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -46,7 +46,7 @@ export const sketches = [
 		id: '006',
 		slug: 'hierarchical',
 		title: 'Hierarchical',
-		asset: 'emoji:russian-dolls',
+		asset: 'russian-dolls',
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -56,7 +56,7 @@ export const sketches = [
 		id: '007',
 		slug: 'center-origin',
 		title: 'Center Origin',
-		asset: 'emoji:bullseye',
+		asset: 'bullseye',
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -66,7 +66,7 @@ export const sketches = [
 		id: '008',
 		slug: 'projection',
 		title: 'Projection',
-		asset: 'emoji:projection',
+		asset: 'projection',
 		meta: {
 			input: 'form',
 			type: 'matrix-2d',
@@ -76,7 +76,7 @@ export const sketches = [
 		id: '009',
 		slug: 'matrix-3d',
 		title: 'Matrix 3D',
-		asset: 'emoji:matrix-3d',
+		asset: 'matrix-3d',
 		meta: {
 			input: 'form',
 			type: 'matrix-3d',
@@ -87,7 +87,7 @@ export const sketches = [
 		id: '010',
 		slug: 'camera-3d',
 		title: 'Camera 3D',
-		asset: 'emoji:camera-3d',
+		asset: 'camera-3d',
 		meta: {
 			input: 'form',
 			camera: true,
@@ -97,7 +97,7 @@ export const sketches = [
 		id: '011',
 		slug: 'animation-3d',
 		title: 'Animation 3D',
-		asset: 'emoji:animation-3d',
+		asset: 'animation-3d',
 		meta: {
 			input: 'form',
 			type: 'matrix-3d',
@@ -107,7 +107,7 @@ export const sketches = [
 		id: '012',
 		slug: 'texture',
 		title: 'Texture',
-		asset: 'emoji:texture',
+		asset: 'texture',
 		meta: {
 			input: 'form',
 			type: 'texture',
@@ -145,7 +145,7 @@ export const sketches = [
 		id: '013',
 		slug: 'convolution',
 		title: 'Convolution',
-		asset: 'emoji:convolution',
+		asset: 'convolution',
 		meta: {
 			input: 'form',
 			type: 'texture',
@@ -178,7 +178,7 @@ export const sketches = [
 		id: '014',
 		slug: 'multiple-tex',
 		title: 'Multiple Textures',
-		asset: 'emoji:multiple-tex',
+		asset: 'multiple-tex',
 		meta: {
 			input: 'form',
 			type: 'texture',

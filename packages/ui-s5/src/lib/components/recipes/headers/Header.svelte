@@ -102,13 +102,13 @@
 						id: 'menu-expanded',
 						text: 'menu',
 						value: 'show',
-						asset: 'emoji:menu',
+						asset: 'menu',
 					},
 					collapsed: {
 						id: 'menu-collapsed',
 						text: 'menu',
 						value: 'minimize',
-						asset: 'emoji:menu',
+						asset: 'menu',
 					},
 				}}
 				onclick={toggleNav}

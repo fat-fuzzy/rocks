@@ -64,7 +64,8 @@
 		/* State dependent styles */
 		let variantClass = currentState.variant ?? variant
 		variantClass = variantClass ? `variant:${variantClass}` : ''
-		let assetClass = currentState.asset ?? asset ?? ''
+		let assetClass = (currentState.asset ?? asset) ?? ''
+		assetClass = assetClass ? `emoji:${assetClass}` : ''
 		let stateClasses = `${assetClass} ${variantClass}`
 
 		return `expand ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`

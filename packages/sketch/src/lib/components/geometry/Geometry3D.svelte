@@ -135,12 +135,14 @@
 {#await Promise.resolve()}
 	<div class={`l:frame:twin card:lg`}>
 		<Button
+			id="update-geometry"
+			name="update-geometry"
 			title="Update geometry"
 			size="xl"
 			color="highlight"
 			variant="outline"
 			shape="round"
-			asset="emoji:nojs"
+			asset="nojs"
 			{disabled}
 		/>
 	</div>

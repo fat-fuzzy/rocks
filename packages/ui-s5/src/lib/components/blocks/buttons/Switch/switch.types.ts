@@ -26,14 +26,14 @@ export const SWITCH: SwitchStateType = {
 		id: 'active',
 		value: 'active',
 		text: 'Active',
-		asset: 'emoji:bunny',
+		asset: 'bunny',
 		variant: 'fill',
 	},
 	inactive: {
 		id: 'inactive',
 		value: 'inactive',
 		text: 'Inactive',
-		asset: 'emoji:hat',
+		asset: 'hat',
 		variant: 'fill',
 	},
 }

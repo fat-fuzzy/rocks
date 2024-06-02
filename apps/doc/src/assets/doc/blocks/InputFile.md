@@ -6,7 +6,7 @@ group: 'forms'
 props_state: ['label', 'value', 'errors']
 props_style:
   {
-    'blocks': {'element': ['color', 'size', 'asset']},
+    'blocks': {'element': ['color', 'variant', 'size', 'status', 'asset']},
     'layouts': {'container': ['container', 'size']},
   }
 context: ['app.settings', 'shared.container']

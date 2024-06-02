@@ -113,13 +113,13 @@
 					id: 'show',
 					text: title,
 					value: 'show',
-					asset: `emoji:point-${animationDirection}`,
+					asset: `point-${animationDirection}`,
 				},
 				collapsed: {
 					id: 'minimize',
 					text: title,
 					value: 'minimize',
-					asset: `emoji:point-${animationDirection}`,
+					asset: `point-${animationDirection}`,
 				},
 			}}
 			onclick={toggleReveal}

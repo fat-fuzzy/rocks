@@ -82,13 +82,13 @@
 					id: 'show',
 					text: 'Context',
 					value: 'show',
-					asset: asset ?? 'emoji:context',
+					asset: asset ?? 'context',
 				},
 				collapsed: {
 					id: 'minimize',
 					text: 'Context',
 					value: 'minimize',
-					asset: asset ?? 'emoji:context',
+					asset: asset ?? 'context',
 				},
 			}}
 			onclick={handleToggle}

@@ -1,38 +1,50 @@
 <script lang="ts">
-	export let label = 'Upload image'
-	export let name = 'upload-image'
-	export let id = 'upload-image'
-	export let hint = 'File types accepted: png, jpeg'
-	export let color = ''
-	export let variant = ''
-	export let breakpoint = ''
-	export let size = ''
-	export let align = ''
-	export let status = ''
-	export let asset = ''
-	export let disabled: boolean
+	import {UiStatus} from '$types/index.js'
 
-	export let fileType = 'image/png, image/jpeg'
-	export let multiple = true
-	let layout = 'stack'
+	import type {InputFileProps} from './input.types.js'
+
+	let {
+		id = 'upload-image',
+		name = 'upload-image',
+		label = 'Upload image',
+		hint = 'File types accepted: png, jpeg',
+		layout = 'stack',
+		status = UiStatus.default,
+
+		disabled,
+		asset,
+		align,
+		justify,
+		color,
+		size,
+		variant,
+		breakpoint,
+		fileType = 'image/png, image/jpeg',
+		multiple = true,
+	}: InputFileProps = $props()
 
 	/* Element styles */
-	let colorClass = color ? `color:${color}` : ''
+	let colorClass = color ? `bg:${color}` : ''
 	let sizeClass = size ? `size:${size}` : ''
+	let assetClass = asset ? `emoji:${asset}` : ''
 	let fontClass = size ? `font:${size}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
 	let alignClass = align ? `align:${align}` : ''
+	let justifyClass = justify ? `justify:${justify}` : ''
+	let statusClass = $derived(status ? `status:${status}` : '')
 
-	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${fontClass}`
+	let elementClasses = `${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${fontClass}`
 
 	/* Context styles */
 	let layoutClasses = breakpoint
 		? `l:${layout} bp:${breakpoint}`
 		: `l:${layout}`
-	let hintClasses = `feedback card:${size} ${asset} ${status} ${colorClass} ${variantClass} ${alignClass}`
-	hintClasses = fontClass
-		? `${hintClasses} ${fontClass}:minus`
-		: `${hintClasses}`
+	let feedbackClasses = $derived(
+		`feedback:form ${assetClass} ${statusClass} ${variantClass} ${alignClass} ${justifyClass}`,
+	)
+	let hintClasses = $derived(
+		fontClass ? `${feedbackClasses} ${fontClass}:minus` : `${feedbackClasses}`,
+	)
 
 	let inputClasses = `${layoutClasses} ${elementClasses}`
 </script>

@@ -127,13 +127,13 @@
 					id: 'settings-expanded',
 					text: 'settings',
 					value: 'show',
-					asset: 'emoji:settings',
+					asset: 'settings',
 				},
 				collapsed: {
 					id: 'settings-collapsed',
 					text: 'settings',
 					value: 'minimize',
-					asset: 'emoji:settings',
+					asset: 'settings',
 				},
 			}}
 			onclick={handleToggle}

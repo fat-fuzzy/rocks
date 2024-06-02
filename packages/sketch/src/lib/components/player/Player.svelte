@@ -98,7 +98,7 @@
 			{size}
 			value="clear"
 			align="start"
-			asset="emoji:clear"
+			asset="clear"
 			onclick={updatePlayer}
 			disabled={store.getClearDisabled()}
 		>
@@ -112,7 +112,7 @@
 			{size}
 			value="stop"
 			align="start"
-			asset="emoji:rect"
+			asset="rect"
 			onclick={updatePlayer}
 			disabled={store.getStopDisabled()}
 		>

@@ -65,7 +65,7 @@ export type UiBlockProps = UiLayoutProps & {
 	/**
 	 * Block props
 	 */
-	asset?: string // emoji:value or svg:value
+	asset?: string // the `value` part of  emoji:value or svg:value
 	color?: string
 	shape?: string
 	variant?: string

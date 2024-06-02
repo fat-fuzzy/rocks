@@ -47,10 +47,11 @@
 	let colorClass = color ? `bg:${color}` : ''
 	let sizeClass = size ? `size:${size}` : ''
 	let fontClass = size ? `font:${size}` : ''
+	let assetClass = asset ? `emoji:${asset}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
 	let shapeClass = shape ? ` shape:${shape}` : ''
 	let alignClass = align ? `align:${align}` : ''
-	let assetClass = asset ?? ''
+
 	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${fontClass} ${variantClass} ${assetClass}`
 	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
 

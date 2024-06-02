@@ -137,7 +137,7 @@
 				color="highlight"
 				variant="outline"
 				shape="round"
-				asset="emoji:nojs"
+				asset="nojs"
 				{disabled}
 			>
 				Update geometry

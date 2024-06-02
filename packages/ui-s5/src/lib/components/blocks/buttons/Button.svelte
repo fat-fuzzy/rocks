@@ -33,6 +33,7 @@
 	let colorClass = color ? `bg:${color}` : '';
 	let sizeClass = size ? `size:${size}` : '';
 	let fontClass = size ? `font:${size}` : '';
+	let assetClass = asset ? `emoji:${asset}` : ''
 	let variantClass = variant ? `variant:${variant}` : '';
 	let shapeClass = shape ? ` shape:${shape}` : '';
 	let alignClass = align ? `align:${align}` : '';
@@ -44,7 +45,7 @@
 	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`;
 	let contextClasses =`${containerClasses} ${layoutClasses}`;
 
-	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${fontClass}`;
+	let elementClasses = `${assetClass} ${colorClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${fontClass}`;
 
 	let buttonClasses = `${contextClasses} ${elementClasses}`
 

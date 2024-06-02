@@ -1,17 +1,17 @@
 export default {
-	Button: {id: 'button', text: 'Button', asset: 'emoji:idea'},
+	Button: {id: 'button', text: 'Button', asset: 'idea'},
 	Expand: {
 		title: 'Expand',
 		states: {
 			expanded: {
 				id: 'button-expand',
 				text: 'Expand',
-				asset: 'emoji:point-down',
+				asset: 'point-down',
 			},
 			collapsed: {
 				id: 'button-expand',
 				text: 'Expand',
-				asset: 'emoji:point-right',
+				asset: 'point-right',
 			},
 		},
 	},
@@ -22,12 +22,12 @@ export default {
 			active: {
 				id: 'button-switch',
 				text: 'Rabbit',
-				asset: 'emoji:switch-active',
+				asset: 'switch-active',
 			},
 			inactive: {
 				id: 'button-switch',
 				text: 'Hat',
-				asset: 'emoji:switch-inactive',
+				asset: 'switch-inactive',
 			},
 		},
 	},
@@ -40,35 +40,35 @@ export default {
 				text: 'Too swift arrives as tardy as too slow.',
 				case: 'default',
 				variant: 'outline',
-				asset: 'emoji:default',
+				asset: 'default',
 			},
 			{
 				text: `Though this be madness, yet there is method in't.`,
 				case: 'info',
 				variant: 'outline',
-				asset: 'emoji:info',
+				asset: 'info',
 			},
 			{
 				text: 'One touch of nature makes the whole world kin.',
 				case: 'success',
 				variant: 'outline',
-				asset: 'emoji:success',
+				asset: 'success',
 			},
 			{
 				text: 'The course of true love never did run smooth.',
 				case: 'warning',
 				variant: 'outline',
-				asset: 'emoji:warning',
+				asset: 'warning',
 			},
 			{
 				text: ` There's small choice in rotten apples.`,
 				case: 'error',
 				variant: 'outline',
-				asset: 'emoji:error',
+				asset: 'error',
 			},
 		],
 	},
-	Toggle: {id: 'button-toggle', text: 'Toggle', asset: 'emoji:favorite'},
+	Toggle: {id: 'button-toggle', text: 'Toggle', asset: 'favorite'},
 	Fieldset: {
 		items: ['Form input 1', 'Form input 2', 'Form input 3'],
 	},

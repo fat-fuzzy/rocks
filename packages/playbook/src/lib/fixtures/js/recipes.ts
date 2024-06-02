@@ -1,18 +1,18 @@
-import  { links, itemsSettings } from "./nav";
+import {links, itemsSettings} from './nav'
 
 export default {
 	ButtonMenu: {
 		items: [
-			{id: 'menu.button.vader', text: 'Vader', asset: 'emoji:vader'},
-			{id: 'menu.button.ollie', text: 'Ollie', asset: 'emoji:ollie'},
-			{id: 'menu.button.moby', text: 'Moby', asset: 'emoji:moby'},
+			{id: 'menu.button.vader', text: 'Vader', asset: 'vader'},
+			{id: 'menu.button.ollie', text: 'Ollie', asset: 'ollie'},
+			{id: 'menu.button.moby', text: 'Moby', asset: 'moby'},
 		],
 	},
 	ToggleMenu: {
 		items: [
-			{id: 'menu.toggle.idea', text: 'Idea', asset: 'emoji:idea'},
-			{id: 'menu.toggle.profile', text: 'Profile', asset: 'emoji:profile'},
-			{id: 'menu.toggle.favorite', text: 'Favorite', asset: 'emoji:favorite'},
+			{id: 'menu.toggle.idea', text: 'Idea', asset: 'idea'},
+			{id: 'menu.toggle.profile', text: 'Profile', asset: 'profile'},
+			{id: 'menu.toggle.favorite', text: 'Favorite', asset: 'favorite'},
 		],
 	},
 	RevealMenu: {
@@ -21,9 +21,9 @@ export default {
 		formaction: 'updateState',
 		actionPath: '/doc',
 		items: [
-			{id: 'reveal-menu.button.idea', text: 'Idea', asset: 'emoji:idea'},
-			{id: 'reveal-menu.button.profile', text: 'Profile', asset: 'emoji:profile'},
-			{id: 'reveal-menu.button.favorite', text: 'Favorite', asset: 'emoji:favorite'},
+			{id: 'reveal-menu.button.idea', text: 'Idea', asset: 'idea'},
+			{id: 'reveal-menu.button.profile', text: 'Profile', asset: 'profile'},
+			{id: 'reveal-menu.button.favorite', text: 'Favorite', asset: 'favorite'},
 		],
 	},
 	RadioGroup: [
@@ -45,8 +45,8 @@ export default {
 	Nav: {
 		title: 'Nav',
 		items: [
-			{id: 'nav.home', slug: '', title: 'Home', asset: 'emoji:home'},
-			{id: 'nav.about', slug: 'about', title: 'About', asset: 'emoji:about'},
+			{id: 'nav.home', slug: '', title: 'Home', asset: 'home'},
+			{id: 'nav.about', slug: 'about', title: 'About', asset: 'about'},
 		],
 	},
 	DetailsNav: {
@@ -87,9 +87,8 @@ export default {
 		title: 'Header',
 		formaction: 'updateState',
 		items: {
-
-		links,
-		settings: itemsSettings
-		}
+			links,
+			settings: itemsSettings,
+		},
 	},
 }

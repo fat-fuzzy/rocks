@@ -28,6 +28,7 @@
 	let colorClass = color ? `color:${color}` : ''
 	let sizeClass = size ? `size:${size}` : ''
 	let fontClass = size ? `font:${size}` : ''
+	let assetClass = asset ? `emoji:${asset}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
@@ -43,7 +44,7 @@
 	let layoutClasses = layout ? `l:${layout}:${size}` : ''
 	let contextClasses = `${containerClasses} ${layoutClasses}`
 
-	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass} ${backgroundClass}`
+	let elementClasses = `${assetClass} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass} ${backgroundClass}`
 
 	let classes = `${contextClasses} ${elementClasses}`
 </script>

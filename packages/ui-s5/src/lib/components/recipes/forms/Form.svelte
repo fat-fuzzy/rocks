@@ -4,7 +4,7 @@
 
 	export let title = 'Log In'
 	export let description = 'A log in form'
-	export let asset = 'emoji:log'
+	export let asset = 'log'
 	export let depth = 2 // <h*> elenent depth
 	export let size = 'md'
 	export let align = 'center'
@@ -28,7 +28,11 @@
 	<slot name="authed" />
 {:else}
 	<!-- <section class={`l:text:${size} l:center:${size} card:xl ${background}`}> -->
-	<form method="POST" class={`l:stack:${size} card:${size} ${background}`} {action}>
+	<form
+		method="POST"
+		class={`l:stack:${size} card:${size} ${background}`}
+		{action}
+	>
 		<header class={`l:stack:${size} text:${align} ${asset}`}>
 			<svelte:element this={`h${depth}`}>{title}</svelte:element>
 			<p class={`font:${size}`}>{description}</p>
