@@ -39,3 +39,15 @@
 	--font-size-minus: var(--font-size-xl);
 	--font-size-plus: calc(var(--font-size-2xl) * var(--fluid-min-ratio));
 }
+
+[class*='font:']:not(h1, h2, h3, h4, h5, h6) {
+	font-size: var(--font-size);
+}
+
+[class*='font:'][class*=':minus']:not(h1, h2, h3, h4, h5, h6) {
+	font-size: var(--font-size-minus);
+}
+
+[class*='font:'][class*=':plus']:not(h1, h2, h3, h4, h5, h6) {
+	font-size: var(--font-size-plus);
+}

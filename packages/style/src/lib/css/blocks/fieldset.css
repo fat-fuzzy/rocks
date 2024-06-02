@@ -17,7 +17,8 @@ fieldset {
 
 fieldset.radio,
 fieldset.check {
-	padding: var(--ui-size);
+	padding: var(--ui-size-sm);
+	font-size: var(--font-size);
 
 	input {
 		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
@@ -33,7 +34,7 @@ fieldset.check {
 		padding: var(--ui-size-sm) var(--ui-size);
 	}
 
-	[class*='emoji'] span {
+	label > span {
 		flex-grow: 1;
 		font-size: var(--font-size);
 	}

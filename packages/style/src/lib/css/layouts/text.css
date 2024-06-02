@@ -28,7 +28,7 @@
 	margin-block: var(--ui-size-sm);
 }
 
-.l\:text\:xxs {
+.l\:text\:2xs {
 	max-width: 20ch;
 }
 
@@ -52,6 +52,6 @@
 	max-width: 95ch;
 }
 
-.l\:text\:xxl {
+.l\:text\:2xl {
 	max-width: 110ch;
 }

@@ -9,19 +9,16 @@
 		}
 
 		.l\:reveal\:auto.bp\:#{$size} .show {
+			top: 0;
+			width: auto;
 			min-inline-size: unset;
+			max-height: unset;
+			background-color: inherit;
+			box-shadow: none;
 		}
 
 		.l\:reveal\:auto.bp\:#{$size} [class*='expand'] {
 			display: none;
-		}
-
-		.l\:reveal\:auto.bp\:#{$size} .show {
-			top: 0;
-			width: auto;
-			max-height: unset;
-			background-color: inherit;
-			box-shadow: none;
 		}
 
 		.l\:reveal\:auto.bp\:#{$size} .show,
@@ -38,7 +35,7 @@
 }
 
 @media screen and (min-width: 320px) {
-	@include switchToRowStyles_RevealAuto(320px, 'xxs');
+	@include switchToRowStyles_RevealAuto(320px, '2xs');
 }
 
 @media screen and (min-width: 620px) {
@@ -62,5 +59,5 @@
 }
 
 @media screen and (min-width: 3048px) {
-	@include switchToRowStyles_RevealAuto(3048px, 'xxl');
+	@include switchToRowStyles_RevealAuto(3048px, '2xl');
 }

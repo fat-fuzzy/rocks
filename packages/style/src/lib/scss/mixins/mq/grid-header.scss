@@ -5,15 +5,12 @@
 		[class^='l:grid:header'].bp\:#{$size} {
 			margin: 0 auto;
 			grid-template-columns: auto 1fr auto;
+			grid-template-areas: 'main context tabs';
 		}
 
 		[class^='l:grid:header'].bp\:#{$size} > .main,
 		[class^='l:grid:header'].bp\:#{$size} > .context {
 			grid-column: 1 / -1;
-		}
-
-		[class^='l:grid:header'].bp\:#{$size} {
-			grid-template-areas: 'main context tabs';
 		}
 
 		[class^='l:grid:header'].bp\:#{$size} > .main {
@@ -31,7 +28,7 @@
 }
 
 @media screen and (min-width: 320px) {
-	@include switchToRowStyles_GridHeader(320px, 'xxs');
+	@include switchToRowStyles_GridHeader(320px, '2xs');
 }
 
 @media screen and (min-width: 620px) {
@@ -55,5 +52,5 @@
 }
 
 @media screen and (min-width: 3048px) {
-	@include switchToRowStyles_GridHeader(3048px, 'xxl');
+	@include switchToRowStyles_GridHeader(3048px, '2xl');
 }

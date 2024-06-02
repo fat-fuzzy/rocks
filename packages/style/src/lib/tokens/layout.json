@@ -14,15 +14,17 @@
 		"sidebar": {
 			"base": {"$value": "22ch"},
 			"minimize": {"$value": "7ch"},
-			"2xs": {
-				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
-			},
-			"xs": {"$value": "calc(var(--layout-sidebar-sm) / var(--size-ratio-sm))"},
-			"sm": {"$value": "calc(var(--layout-sidebar-md) / var(--size-ratio-sm))"},
 			"md": {"$value": "{layout.sidebar.base}"},
 			"lg": {"$value": "calc(var(--layout-sidebar-md) * var(--size-ratio-sm))"},
 			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--size-ratio-sm))"},
-			"2xl": {"$value": "calc(var(--layout-sidebar-xl) * var(--size-ratio-sm))"}
+			"xs": {"$value": "calc(var(--layout-sidebar-sm) / var(--size-ratio-sm))"},
+			"sm": {"$value": "calc(var(--layout-sidebar-md) / var(--size-ratio-sm))"},
+			"2xl": {
+				"$value": "calc(var(--layout-sidebar-xl) * var(--size-ratio-sm))"
+			},
+			"2xs": {
+				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
+			}
 		},
 		"breakpoint": {
 			"2xs": {"$value": "320px"},
