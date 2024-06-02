@@ -34,12 +34,12 @@
 		mode,
 	})
 
-	let type: ButtonType = $derived(formaction ? 'submit' : 'button')
-	let sizeClass = $derived(size ? `size:${size}` : '')
-	let containerClass = $derived(container ? `menu l:${container}:${size}` : '')
-	let layoutClass = $derived(layout ? `l:${layout}:${size}` : '')
-	let thresholdClass = $derived(threshold ? `th:${threshold}` : '')
-	let menuClasses = $derived(`${layoutClass} ${thresholdClass} ${sizeClass} mode:${mode}`)
+	let type: ButtonType = formaction ? 'submit' : 'button'
+	let sizeClass = size ? `size:${size}` : ''
+	let containerClass = container ? `menu l:${container}:${size}` : ''
+	let layoutClass = layout ? `l:${layout}:${size}` : ''
+	let thresholdClass = threshold ? `th:${threshold}` : ''
+	let menuClasses = `${layoutClass} ${thresholdClass} ${sizeClass} mode:${mode}`
 
 	function updateMenu(payload: TogglePayload) {
 		store.update(payload)
