@@ -20,7 +20,6 @@ class PlaybookStore {
 	navReveal = $state(DEFAULT_REVEAL_STATE)
 	sidebarReveal = $state(DEFAULT_NAV_REVEAL_STATE)
 	settingsReveal = $state(DEFAULT_REVEAL_STATE)
-	component = $state(null)
 
 	COMPONENT_FIXTURES: any = $state({
 		tokens: tokenFixtures,
@@ -30,7 +29,7 @@ class PlaybookStore {
 		recipes: recipesFixtures,
 	})
 
-	public getFixtures({
+	getComponentFixtures({
 		category,
 		component,
 	}: {

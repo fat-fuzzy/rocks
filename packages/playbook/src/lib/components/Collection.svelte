@@ -41,19 +41,15 @@
 		meta
 	}: Props = $props()
 
-	const multipleCategories = ['graphics', 'recipes']
+	const multipleCategories = ['recipes']
 
 	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
-	let layoutClass = $derived(
-		category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`,
-	)
+	let layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
-	let categories = $derived(
-		multipleCategories.includes(category)
+	let categories = multipleCategories.includes(category)
 			? ['blocks', 'layouts', 'shared']
-			: [category],
-	)
+			: [category]
 </script>
 
 {#if isPage}

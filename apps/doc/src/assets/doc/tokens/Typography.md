@@ -2,7 +2,7 @@
 title: Typography
 slug: Typography
 category: 'tokens'
-props_style: {'blocks': {'element': ['color']}, 'layouts': {'container': ['container', 'size']}}
+# props_style: {'blocks': {'element': ['color']}, 'layouts': {'container': ['container', 'size']}}
 context: ['app.settings']
 ---
 

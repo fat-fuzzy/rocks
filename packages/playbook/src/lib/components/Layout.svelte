@@ -10,7 +10,7 @@
 		props: any
 	}
 
-	let {title, component, props}: Props = $props()
+	let {title, isPage = false, component, props}: Props = $props()
 
 	let category = 'layouts'
 
@@ -39,7 +39,7 @@
 	let sideContent = 'card'
 	let mainContent = 'text'
 	let layoutContent = $derived(`card:${size} variant:outline size:${size} bg:highlight:000`)
-	let fixtures = $derived(playbookStore.getFixtures({category, component: title}))
+	let fixtures = $derived(playbookStore.getComponentFixtures({category, component: title})) // TODO : fix here: get fixtures for collection
 </script>
 
 {#snippet children(props, contentType)}
