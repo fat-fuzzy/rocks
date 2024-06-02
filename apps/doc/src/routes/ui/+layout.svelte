@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {setContext, type Snippet} from 'svelte'
+	import {onMount, setContext, type Snippet} from 'svelte'
 	import {page} from '$app/stores'
 	import {api} from '@fat-fuzzy/playbook'
 	const {Playbook} = api
@@ -12,10 +12,11 @@
 	let stylesApi = api.stylesApi.initStyles()
 	setContext('stylesApi', stylesApi)
 
-	const {styles} = $page.data
+	let {styles} = $state($page.data)
 
-	stylesApi.applyStyles(styles)
-
+	onMount(() => {
+		stylesApi.applyStyles(styles)
+	})
 </script>
 
 <Playbook redirect={$page.url.pathname} >
