@@ -15,7 +15,7 @@
 		id = 'header-app',
 		title = 'App navigation',
 		method = 'POST',
-		breakpoint = 'xxl',
+		breakpoint = '2xl',
 		background,
 		formaction,
 		actionPath,
@@ -62,7 +62,7 @@
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
 	let show = `show ${showBackground}`
 	let showNav = reveal === 'show' ? show : 'hide:viz-only'
-	let navClasses = `l:switcher:xxs ${showBackground}`
+	let navClasses = `l:switcher:2xs ${showBackground}`
 	let revealClasses = `form:expand card:md`
 	let layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
 

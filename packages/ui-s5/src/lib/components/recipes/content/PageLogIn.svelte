@@ -19,7 +19,7 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<PageHeader {title} size="xxl" />
+<PageHeader {title} size="2xl" />
 
 {#if session.user}
 	<slot name="authed" />

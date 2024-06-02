@@ -4,7 +4,8 @@
 	import PageHeader from '$lib/components/recipes/headers/PageHeader.svelte'
 
 	export let title = 'Page Title'
-	export let description = 'A page template with slots for authed vs unauthed content'
+	export let description =
+		'A page template with slots for authed vs unauthed content'
 
 	let page = getStores().page
 
@@ -13,7 +14,7 @@
 
 <Head {title} {description} />
 
-<PageHeader {title} size="xxl" />
+<PageHeader {title} size="2xl" />
 
 {#if session.user}
 	<slot name="authed" />

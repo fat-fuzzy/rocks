@@ -15,6 +15,7 @@ export type UiDimensions = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type ButtonContext = {
 	id: string
 	name: string
+	value: string | number
 }
 
 export enum UiState {
@@ -47,6 +48,7 @@ export type UiLayoutProps = {
 	 * Layout props
 	 */
 	align?: string
+	justify?: string
 	size?: string
 
 	container?: string
@@ -98,6 +100,7 @@ export type SwitchState = {
 
 export type Tab = {
 	id: string
+	name: string
 	title: string
 	value?: string
 	initial?: string

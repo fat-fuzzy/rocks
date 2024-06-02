@@ -1,11 +1,10 @@
-import type {Settings, Tab, ButtonContext} from '$types'
+import type {Settings, Tab, ButtonContext} from '$types/index.js'
 // import type {StyleTree} from '$lib/api/styles/types'
 
 const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	id: '',
 	name: '',
 	value: '',
-	pressed: false,
 }
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
@@ -65,8 +64,18 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 
 const DEFAULT_TABS: Tab[] = [
 	// TODO: figure out a better way to map range number values to class strings
-	{id: 'component.context.menu.toggle.doc', title: 'Doc', value: 'doc'},
-	{id: 'component.context.menu.toggle.demo', title: 'Demo', value: 'demo'},
+	{
+		id: 'component.context.menu.toggle.doc',
+		name: 'component.context.menu.toggle.doc',
+		title: 'Doc',
+		value: 'doc',
+	},
+	{
+		id: 'component.context.menu.toggle.demo',
+		name: 'component.context.menu.toggle.demo',
+		title: 'Demo',
+		value: 'demo',
+	},
 ]
 
 /**
@@ -120,6 +129,7 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 const TABS: Tab[] = [
 	{
 		id: 'context.menu.toggle.demo',
+		name: 'context.menu.toggle.demo',
 		title: 'Demo',
 		size: 'lg',
 		color: 'accent',
@@ -128,12 +138,12 @@ const TABS: Tab[] = [
 	},
 	{
 		id: 'context.menu.toggle.doc',
+		name: 'context.menu.toggle.doc',
 		title: 'Doc',
 		size: 'lg',
 		color: 'primary',
 		asset: 'emoji:doc',
 		value: 'doc',
-		initial: 'pressed',
 	},
 ]
 
