@@ -47,27 +47,38 @@
 	let titleDepth = $derived(Number(depth) + 1)
 	let layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
-	let categories = multipleCategories.includes(category)
+	let categories = $derived(multipleCategories.includes(category)
 			? ['blocks', 'layouts', 'shared']
-			: [category]
+			: [category])
 </script>
+
+{#snippet element()}
+	{#each componentNames as name}
+		{@const component = components[name]}
+		<Element
+			title={name}
+			depth={Number(depth) + 1}
+			{path}
+			{category}
+			{component}
+			{actionPath}
+			meta={getElementMeta(name, categoryMarkdowns)}
+			redirect={$page.url.pathname}
+		/>
+	{/each}
+{/snippet}
+
+{#snippet comingSoon()}
+	<div class="card:lg text:center">
+		<p class={`font:xl`}>🐰</p>
+		<p class={`font:md`}>Coming soon!</p>
+	</div>
+{/snippet}
 
 {#if isPage}
 	<div class="l:sidebar:md">
 		<section class={`l:main ${layoutClass}`}>
-			{#each componentNames as name}
-				{@const component = components[name]}
-				<Element
-					title={name}
-					depth={Number(depth) + 1}
-					{path}
-					{category}
-					{component}
-					{actionPath}
-					meta={getElementMeta(name, categoryMarkdowns)}
-					redirect={$page.url.pathname}
-				/>
-			{/each}
+			{@render element()}
 		</section>
 		<section class="l:side l:stack:md w:full">
 			<details id={`${category}-api`} class="l:stack:md maki:inline:xs size:xs" open>
@@ -77,10 +88,7 @@
 						<Api {categories} {path} {actionPath} {redirect} {meta}/>
 					</div>
 				{:else}
-					<div class="card:lg text:center">
-						<p class={`font:xl`}>🐰</p>
-						<p class={`font:md`}>Coming soon!</p>
-					</div>
+					{@render comingSoon()}
 				{/if}
 			</details>
 		</section>
@@ -90,30 +98,17 @@
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 			{category}
 		</svelte:element>
-
 		{#if children}
 			{@render children()}
 		{:else}
-			<p class={`font:xl`}>🐰</p>
-			<p class={`font:md`}>Coming soon!</p>
+			{@render comingSoon()}
 		{/if}
 		<details class={`l:stack:md ${size}`}>
 			<summary class={`box:${color} bg:${color}`}>
 				{category}
 			</summary>
 			<div class={layoutClass}>
-				{#each componentNames as name}
-					{@const component = components[name]}
-					<Element
-						title={name}
-						depth={Number(depth) + 2}
-						{path}
-						{category}
-						{component}
-						{actionPath}
-						meta={getElementMeta(name, categoryMarkdowns)}
-					/>
-				{/each}
+				{@render element()}
 			</div>
 		</details>
 	</section>

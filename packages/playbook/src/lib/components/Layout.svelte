@@ -10,36 +10,34 @@
 		props: any
 	}
 
-	let {title, isPage = false, component, props}: Props = $props()
-
-	let category = 'layouts'
-
+	let {title, component, props}: Props = $props()
 	const playbookStore: PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
 	let layoutStyles = $derived(styles.layouts.layout)
 	// let contentStyles = $derived(styles.layouts.content) // TODO : Fix this
-
 	let settings = $derived(playbookStore.app)
 
-	// App options
-	let background = $derived(settings.contrast ?? '')
-	// Block options
-	let size = $derived(elementStyles.size ?? '') // element's own size
-	let color = $derived(elementStyles.color ?? '')
-	let variant = $derived(elementStyles.variant ?? '')
-	// Layout options
-	let breakpoint = $derived(layoutStyles.breakpoint ?? '') // element's own breakpoint
-	let threshold = $derived(layoutStyles.threshold ?? '') // element's own threshold
 	// Content options
 	// let content = $derived(styles.layouts?.content.content ?? 'card')
 	// let sideContent = $derived(styles.layouts?.content.side ?? 'card')
 	// let mainContent = $derived(styles.layouts?.content.main ?? 'text')
+
+	let layoutProps = $derived({
+		...props,
+		// App settings (user controlled)
+		...settings,
+		// Block style options
+		...elementStyles,
+		// Layout style options
+		...layoutStyles,
+	})
+
 	let content = 'card'
 	let sideContent = 'card'
 	let mainContent = 'text'
-	let layoutContent = $derived(`card:${size} variant:outline size:${size} bg:highlight:000`)
-	let fixtures = $derived(playbookStore.getComponentFixtures({category, component: title})) // TODO : fix here: get fixtures for collection
+	let layoutContent = $derived(`card:${layoutProps.size} variant:outline size:${layoutProps.size} bg:highlight:000`)
+	let fixtures = $derived(playbookStore.getLayoutFixtures())// TODO : fix here: get fixtures for collection
 </script>
 
 {#snippet children(props, contentType)}
@@ -53,7 +51,7 @@
 {/snippet}
 
 {#snippet sidebar()}
-	<svelte:component this={component} id={title} {...props} {size} {background}>
+	<svelte:component this={component} id={title} {...layoutProps}>
 		{#snippet side()}
 			{@render children(fixtures, sideContent)}
 		{/snippet}
@@ -67,38 +65,16 @@
 	<svelte:component
 		this={component}
 		id={title}
-		{...props}
-		{color}
-		{variant}
-		{size}
-		{background}
-		{breakpoint}
-		{threshold}
+		{...layoutProps}
 	>
 		{@render children(fixtures, content)}
 	</svelte:component>
 {/snippet}
 
-{#snippet fallbackLayout()}
-	<svelte:component
-		this={component}
-		id={title}
-		{...props}
-		{color}
-		{variant}
-		{size}
-		{background}
-		{breakpoint}
-		{threshold}
-	>
-		{@render children(fixtures, content)}
-	</svelte:component>
-{/snippet}
-
-{#if title === 'Sidebar'}
-	{@render sidebar()}
-{:else if title === 'Reveal' || title === 'RevealAuto' || title === 'Burrito'}
-	{@render columnLayout()}
-{:else}
-	{@render fallbackLayout()}
-{/if}
+{#key layoutProps}
+	{#if title === 'Sidebar'}
+		{@render sidebar()}
+	{:else}
+		{@render columnLayout()}
+	{/if}
+{/key}

@@ -72,7 +72,7 @@
 			: 'content',
 	)
 	let fixtures = $derived(
-		playbookStore.getComponentFixtures({category, component: title}),
+		playbookStore.getElementFixtures({category, component: title}),
 	)
 	let categories = $derived(
 		meta.props_style ? Object.keys(meta.props_style) : undefined,

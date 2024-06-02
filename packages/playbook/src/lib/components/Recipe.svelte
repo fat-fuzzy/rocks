@@ -33,9 +33,10 @@
 		page,
 		title,
 		name: `ui-${name}`,
-		settings,
 		actionPath,
 		redirect,
+		// App settings (user controlled)
+		...settings,
 		// Block style options
 		...elementStyles,
 		// Layout style options

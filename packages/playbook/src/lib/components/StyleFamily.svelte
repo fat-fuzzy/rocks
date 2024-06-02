@@ -3,7 +3,7 @@
 	import type {StylesApi} from '$lib/api/styles.api'
 	import type {StyleTree} from '$lib/api/styles.types'
 
-	import {getContext} from 'svelte'
+	import {onMount, getContext} from 'svelte'
 	import {blocks, recipes} from '@fat-fuzzy/ui-s5'
 	const {Fieldset, InputRange} = blocks
 	const {ToggleMenu, InputGroup} = recipes
@@ -20,6 +20,8 @@
 
 	const stylesApi: StylesApi = getContext('stylesApi')
 	const playbookStore: PlaybookStore = getContext('playbookStore')
+	let formOptions = $derived(stylesApi.getFormOptions(category, meta))
+	let styles = $derived(playbookStore.styles)
 
 	let apiSize = '2xs'
 	let apiColor = 'primary'
@@ -46,7 +48,7 @@
 				...playbookStore.styles[category],
 				...familyValue,
 			}
-			if (style === 'brightness' || style === 'contrast') {
+			if (style === 'brightness' ?? style === 'contrast') {
 				playbookStore.app = {...playbookStore.app, [style]: value}
 			}
 		})
@@ -121,8 +123,6 @@
 		updateStyles(payload)
 	}
 
-	let formOptions = $derived(stylesApi.getFormOptions(category, meta))
-	let styles = $derived(playbookStore.styles)
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard
@@ -134,6 +134,11 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
+
+	onMount(() => {
+		// Set the initial styles
+		stylesApi.applyStyles(playbookStore.styles)
+	})
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -158,8 +163,8 @@
 						{@const updatedItems = items.map((i) => {
 							return {
 								...i,
-								text: i.text || '',
-								asset: i.asset || '',
+								text: i.text ?? '',
+								asset: i.asset ?? '',
 								initial: i.value === currentValue ? 'active' : 'inactive',
 								name: i.id,
 							}
@@ -168,19 +173,19 @@
 							{id}
 							title={styleInput.name}
 							items={updatedItems}
-							layout={styleInput.layout || ''}
+							layout={styleInput.layout ?? ''}
 							size={apiSize}
 							color={apiColor}
 							variant={apiVariant}
 							container={styleInput.container}
-							mode={styleInput.mode || 'radio'}
+							mode={styleInput.mode ?? 'radio'}
 							{formaction}
 							onupdate={(event) =>
 								handleToggle(event, familyName, styleInput.id)}
-							init={(event) => handleToggle(event, familyName, styleInput.id)}
+							init={(event) => handleToggle(event, familyName, currentValue)}
 						/>
 					{:else}
-						{#if input === 'radio' || input === 'checkbox'}
+						{#if input === 'radio' ?? input === 'checkbox'}
 							{@const InputComponent = COMPONENT_IMPORTS[input]}
 							<svelte:component
 								this={InputComponent}
@@ -190,10 +195,10 @@
 								type={input}
 								value={currentValue}
 								legend={name}
-								layout={styleInput.layout || ''}
-								container={styleInput.container || ''}
-								threshold={family.size || apiSize}
-								size={family.size || apiSize}
+								layout={styleInput.layout ?? ''}
+								container={styleInput.container ?? ''}
+								threshold={family.size ?? apiSize}
+								size={family.size ?? apiSize}
 								color={apiColor}
 								variant={styleInput.variant}
 								onupdate={(event) => handleInput(event, familyName)}
@@ -208,7 +213,7 @@
 								{items}
 								value={currentValue}
 								name={id}
-								layout={styleInput.layout || ''}
+								layout={styleInput.layout ?? ''}
 								size={apiSize}
 								color={apiColor}
 								variant={styleInput.variant}

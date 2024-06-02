@@ -29,7 +29,7 @@ class PlaybookStore {
 		recipes: recipesFixtures,
 	})
 
-	getComponentFixtures({
+	getElementFixtures({
 		category,
 		component,
 	}: {
@@ -39,6 +39,10 @@ class PlaybookStore {
 		if (this.COMPONENT_FIXTURES[category]) {
 			return this.COMPONENT_FIXTURES[category][component]
 		}
+	}
+
+	getLayoutFixtures() {
+		return this.COMPONENT_FIXTURES.layouts
 	}
 }
 

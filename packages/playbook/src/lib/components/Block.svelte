@@ -19,13 +19,7 @@
 		...props,
 		name,
 		// Block style options
-		asset: elementStyles.asset,
-		color: elementStyles.color,
-		context: elementStyles.context,
-		size: elementStyles.size,
-		shape: elementStyles.shape,
-		status: elementStyles.status,
-		variant: elementStyles.variant,
+		...elementStyles,
 	})
 </script>
 
