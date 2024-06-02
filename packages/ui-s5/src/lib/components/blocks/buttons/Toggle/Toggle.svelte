@@ -23,7 +23,7 @@
 		dimensions,
 		layout = 'switcher',
 		type = 'submit',
-		onload,
+		init,
 		onclick,
 		children,
 	}: ToggleProps = $props()
@@ -69,7 +69,7 @@
 	}
 
 	onMount(() => {
-		if (onload) onload(payload)
+		if (init) init(payload)
 	})
 </script>
 

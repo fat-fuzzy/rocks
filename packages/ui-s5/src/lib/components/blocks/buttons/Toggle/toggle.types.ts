@@ -29,7 +29,7 @@ export type ToggleProps = UiBlockProps & {
 	value: string | number
 	states?: ToggleStateType // this component contains a button that will Toggle between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
 	onclick?: (payload: TogglePayload) => void
-	onload?: (payload: TogglePayload) => void
+	init?: (payload: TogglePayload) => void
 }
 
 export type ToggleType = {
