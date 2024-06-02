@@ -1,6 +1,6 @@
 <script lang="ts">
-	import {page} from '$app/stores'
 	import {enhance} from '$app/forms'
+	import {page} from '$app/stores'
 	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
 	import appStore from '../../stores.svelte.js'
@@ -20,7 +20,7 @@
 		{category: 'recipes', items: recipes},
 	]
 	let currentTabs = appStore.currentTabs
-	let currentTab = $derived(currentTabs.ui || DEFAULT_TABS[0])
+	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
 
 	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
@@ -41,13 +41,13 @@
 		if(selected.length === 0) {
 			return
 		}
-		currentTabs.ui = {...selected[0], title: selected[0].id, name: selected[0].id}
+		currentTab = {...selected[0], title: selected[0].id, name: selected[0].id}
 	}
 </script>
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1 class="l:side hug">{title}</h1>
+		<h1 class="l:side hug maki:block:lg maki:inline:sm">{title}</h1>
 		<div class="l:main:50 l:flex justify:end">
 
 			{#if currentTab.value === 'demo'}
