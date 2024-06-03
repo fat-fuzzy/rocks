@@ -1,37 +1,40 @@
-.maki\:inline {
-	margin-inline: var(--ui-size);
+[class*='maki\:inline'] {
+	--inline-margin: var(--ui-size);
+	margin-inline: var(--inline-margin);
+	max-inline-size: calc(100% - (2 * var(--inline-margin)));
 }
 
 .maki\:block {
-	margin-block: var(--ui-size);
+	--block-margin: var(--ui-size);
+	margin-block: var(--block-margin);
 }
 
 .maki\:inline\:2xs {
-	margin-inline: var(--size-base-2xs);
+	--inline-margin: var(--size-base-2xs);
 }
 
 .maki\:inline\:xs {
-	margin-inline: var(--size-base-xs);
+	--inline-margin: var(--size-base-xs);
 }
 
 .maki\:inline\:sm {
-	margin-inline: var(--size-base-sm);
+	--inline-margin: var(--size-base-sm);
 }
 
 .maki\:inline\:md {
-	margin-inline: var(--size-base-sm);
+	--inline-margin: var(--size-base-md);
 }
 
 .maki\:inline\:lg {
-	margin-inline: var(--size-base-lg);
+	--inline-margin: var(--size-base-lg);
 }
 
 .maki\:inline\:xl {
-	margin-inline: var(--size-base-xl);
+	--inline-margin: var(--size-base-xl);
 }
 
 .maki\:inline\:2xl {
-	margin-inline: var(--size-base-2xl);
+	--inline-margin: var(--size-base-2xl);
 }
 
 .maki\:block\:2xs {

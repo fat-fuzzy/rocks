@@ -65,12 +65,12 @@
 
 /* Scale Sidebar */
 .l\:sidebar\:2xs {
-	--gap: var(--size-base-2xs);
+	--gap: var(--size-base-sm);
 	--sidebar-width: var(--layout-sidebar-2xs);
 }
 
 .l\:sidebar\:xs {
-	--gap: var(--size-base-xs);
+	--gap: var(--size-base-sm);
 	--sidebar-width: var(--layout-sidebar-xs);
 }
 
@@ -90,12 +90,12 @@
 }
 
 .l\:sidebar\:xl {
-	--gap: var(--size-base-xl);
+	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-xl);
 }
 
 .l\:sidebar\:2xl {
-	--gap: var(--size-base-2xl);
+	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-2xl);
 }
 
