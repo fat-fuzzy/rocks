@@ -32,7 +32,7 @@
 	})
 </script>
 
-<div class="l:sidebar:md align-content:start">
+<div class="l:sidebar:md">
 	<div class={`l:side ${sidebarReveal.reveal}`}>
 		<RevealNav
 			position="fixed"

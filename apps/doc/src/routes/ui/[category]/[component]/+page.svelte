@@ -104,7 +104,7 @@
 					<p class="feedback bare emoji:default">Coming Soon!</p>
 				{:else}
 					{#if markdownContent.meta.props_style}
-						<details open class="l:stack:md maki:inline:xs size:xs">
+						<details open class="l:stack:md size:xs">
 							<summary class="bg:primary:100">Style Props</summary>
 							<ul class="tags l:switcher:md">
 								{#if props.doc}
@@ -130,7 +130,7 @@
 						</details>
 					{/if}
 					{#if markdownContent.meta.markdownContent_type}
-						<details open class="l:stack:md maki:inline:xs size:xs">
+						<details open class="l:stack:md size:xs">
 							<summary class={`bg:primary:100`}>Content Type</summary>
 							<ul class="tags l:switcher:md">
 								{#each markdownContent.meta.markdownContent_type as prop}
@@ -140,7 +140,7 @@
 						</details>
 					{/if}
 					{#if markdownContent.meta.props_state}
-						<details open class="l:stack:md maki:inline:xs size:xs">
+						<details open class="l:stack:md size:xs">
 							<summary class={`bg:primary:100`}>State Props</summary>
 							<ul class="tags l:switcher:md">
 								{#each markdownContent.meta.props_state as prop}

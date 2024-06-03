@@ -81,7 +81,7 @@
 			{@render element()}
 		</section>
 		<section class="l:side l:stack:md w:full">
-			<details open class="l:stack:md maki:inline:xs size:xs">
+			<details open class="l:stack:md size:xs">
 				<summary class={`variant:${color} bg:${color}`}>Props</summary>
 				{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
 					<div class="ui:menu">
