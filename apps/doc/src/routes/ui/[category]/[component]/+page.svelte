@@ -50,7 +50,7 @@
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1 class="l:side hug card:md">{title}</h1>
+		<h1 class="l:side hug maki:block:md">{title}</h1>
 		<div class="l:main:50 l:flex justify:end">
 			{#if currentTab.value === 'demo'}
 				<Api
@@ -96,7 +96,7 @@
 
 	{#if markdownContent.html && currentTab.value === 'doc'}
 		<article class="l:sidebar:md">
-			<section class="l:main card:md">
+			<section class="l:main">
 				<div class="l:text:lg">{@html markdownContent.html}</div>
 			</section>
 			<aside class="l:side l:stack:sm">
@@ -105,7 +105,7 @@
 				{:else}
 					{#if markdownContent.meta.props_style}
 						<details open>
-							<summary class={`bg:primary:100`}>Style Props</summary>
+							<summary class="bg:primary:100">Style Props</summary>
 							<ul class="tags l:switcher:md">
 								{#if props.doc}
 									{#each props.doc as docs}
@@ -153,18 +153,16 @@
 			</aside>
 		</article>
 	{:else if currentTab.value === 'demo'}
-		<div class="card:md">
-			<Element
-				isPage={true}
-				depth={1}
-				{title}
-				{path}
-				{category}
-				component={Component}
-				meta={markdownContent.meta}
-				{actionPath}
-				redirect={$page.url.pathname}
-			/>
-		</div>
-		{/if}
-	</PageMain>
+		<Element
+			isPage={true}
+			depth={1}
+			{title}
+			{path}
+			{category}
+			component={Component}
+			meta={markdownContent.meta}
+			{actionPath}
+			redirect={$page.url.pathname}
+		/>
+	{/if}
+</PageMain>

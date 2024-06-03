@@ -23,9 +23,9 @@
 	)
 </script>
 
-<PageMain {title} {description}>
-	<article class="l:sidebar:xs">
-		<section class="l:main card:md">
+<PageMain {title} {description} size="md">
+	<article class="l:sidebar:md">
+		<section class="l:main">
 			<div class="l:text:lg snap:start">{@html markdownContent.html}</div>
 			{#each components as { category, items }}
 				{@const meta = markdowns.categories.find(

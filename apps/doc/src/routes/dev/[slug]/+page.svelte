@@ -15,12 +15,14 @@
 
 <PageMain page="Dev" {title} {description}>
 	{#snippet header()}
-		<h1 class="card:md">{title}</h1>
-		<div class="l:side l:flex justify:end">
-			<p class="feedback bare sm">Published: {date}</p>
+		<h1 class="l:side hug maki:block:md">{title}</h1>
+		<div class="l:main:50 l:flex justify:end">
+			<p class="feedback:prose status:default variant:bare card:sm">
+				Published: {date}
+			</p>
 		</div>
 	{/snippet}
-	<article class="card:md">
+	<article class="l:sidebar:md">
 		<div class="l:text:lg">{@html html}</div>
 	</article>
 </PageMain>
