@@ -37,19 +37,13 @@
 
 @media screen and (min-width: 935px) {
 	.ui\:sidebar {
-		grid-column-end: 3;
+		grid-column-end: 2;
 	}
 }
 
 @media screen and (min-width: 1360px) {
 	.ui\:sidebar {
-		grid-column-end: 4;
-	}
-}
-
-@media screen and (min-width: 1620px) {
-	.ui\:sidebar {
-		grid-column-end: 5;
+		grid-column-end: 3;
 	}
 }
 

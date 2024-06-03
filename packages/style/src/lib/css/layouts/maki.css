@@ -18,6 +18,10 @@
 	margin-inline: var(--size-base-sm);
 }
 
+.maki\:inline\:md {
+	margin-inline: var(--size-base-sm);
+}
+
 .maki\:inline\:lg {
 	margin-inline: var(--size-base-lg);
 }
@@ -39,6 +43,10 @@
 }
 
 .maki\:block\:sm {
+	margin-block: var(--size-base-sm);
+}
+
+.maki\:block\:md {
 	margin-block: var(--size-base-sm);
 }
 
