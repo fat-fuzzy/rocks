@@ -41,9 +41,21 @@
 	white-space: nowrap;
 }
 
-.l\:reveal.minimize [class*='expand'] {
+.l\:reveal.minimize [aria-expanded] {
 	color: var(--ink);
 	background-color: var(--shade);
+}
+
+.l\:reveal.minimize [aria-expanded='true'] {
+	font-size: 0;
+}
+
+.l\:reveal.minimize [aria-expanded='true']::before {
+	margin-inline-end: 0;
+}
+
+.l\:reveal.minimize [aria-expanded='true']::after {
+	margin-inline-start: 0;
 }
 
 [class^='l:reveal'] .end {

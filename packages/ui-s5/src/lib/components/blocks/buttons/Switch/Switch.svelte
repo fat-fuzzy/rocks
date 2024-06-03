@@ -63,10 +63,10 @@
 
 	let buttonClasses = $derived.by(() => {
 		/* State dependent styles */
-		let variantClass = currentState.variant ?? variant
-		variantClass =  variantClass ? `variant:${variantClass}`: ''
-		let assetClass = (currentState.asset ?? asset) ?? ''
-		assetClass = assetClass ? `emoji:${assetClass}` : ''
+		let currentVariant =currentState.variant ?? variant
+		let variantClass =  currentVariant ? `variant:${currentVariant}`: ''
+		let currentAsset = currentState.asset ?? asset
+		let assetClass = currentAsset ?  `emoji:${currentAsset}`: ''
 		let stateClasses = `${assetClass} ${variantClass}`
 
 		return `switch ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`

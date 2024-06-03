@@ -64,7 +64,7 @@
 	let navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
 	let animationDirection = $derived(
 		place ? ALIGN_ANIMATION_DIRECTION[place][sidebarReveal.reveal] : '',
-	)
+	) // TODO fix this
 	let showBackground = $derived(
 		background
 			? `bg:${background}`
@@ -81,6 +81,20 @@
 			? `l:reveal ${position} ${place} ${sidebarReveal.reveal}`
 			: `l:reveal ${place} ${reveal}`,
 	)
+	let states = $derived({
+		expanded: {
+			id: 'expanded',
+			text: title,
+			value: 'show', // TODO: harmonize show/expand
+			asset: `point-${animationDirection}`,
+		},
+		collapsed: {
+			id: 'collapsed',
+			text: title,
+			value: 'minimize', // TODO: harmonize minimize/collapse
+			asset: `point-${animationDirection}`,
+		},
+	})
 	let action =
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 </script>
@@ -108,20 +122,7 @@
 			align={buttonAlign}
 			controls={`nav-${id}`}
 			value={sidebarReveal.reveal}
-			states={{
-				expanded: {
-					id: 'show',
-					text: title,
-					value: 'show',
-					asset: `point-${animationDirection}`,
-				},
-				collapsed: {
-					id: 'minimize',
-					text: title,
-					value: 'minimize',
-					asset: `point-${animationDirection}`,
-				},
-			}}
+			{states}
 			onclick={toggleReveal}
 		>
 			{title}
