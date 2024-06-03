@@ -119,11 +119,7 @@
 			</div>
 		</section>
 		<section class="l:side l:stack:md w:full">
-			<details
-				id={`${category}-${title}-api`}
-				class="l:stack:md maki:inline:xs size:xs"
-				open
-			>
+			<details open class="l:stack:md maki:inline:xs size:xs">
 				<summary class={`variant:${color} bg:${color}`}>Props</summary>
 				{#if categories}
 					<div class="ui:menu">

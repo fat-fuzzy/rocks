@@ -102,7 +102,8 @@
 			{#if !markdownContent.meta}
 				<p class="feedback bare emoji:default">Coming Soon!</p>
 			{:else if markdownContent.meta.props_style}
-				<details open>
+				<details open
+				class="l:stack:md maki:inline:xs size:xs">
 					<summary class="bg:primary:100">Style Props</summary>
 					<ul class="tags l:switcher:md">
 						{#each markdownContent.meta.props_style as prop}
