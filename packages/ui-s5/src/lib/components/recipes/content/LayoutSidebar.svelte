@@ -45,7 +45,7 @@
 			onupdate={toggleSidebar}
 		/>
 	</div>
-	<div class="l:main">
+	<div class="l:main maki:inline:lg">
 		{#if children}
 			{@render children()}
 		{/if}
