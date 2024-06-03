@@ -30,11 +30,11 @@
 	{#if header}
 		{@render header()}
 	{:else}
-		<h1 class="card:md">{title}</h1>
+		<h1 class="maki:block:md">{title}</h1>
 	{/if}
 </header>
 
-<section class="scroll:y l:center">
+<section class="scroll:y">
 	{#if children}
 		{@render children()}
 	{/if}

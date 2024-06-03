@@ -24,8 +24,14 @@
 	margin-block-start: var(--ui-size);
 }
 
-[class^='l:text'] ul {
+ul[class*='l:text'] {
 	margin-block: var(--ui-size-sm);
+}
+
+ol.unstyled,
+ul.unstyled {
+	margin: 0;
+	padding: 0;
 }
 
 .l\:text\:2xs {

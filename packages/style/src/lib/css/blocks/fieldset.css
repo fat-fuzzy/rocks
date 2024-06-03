@@ -17,7 +17,7 @@ fieldset {
 
 fieldset.radio,
 fieldset.check {
-	padding-block: 0 var(--ui-size-sm);
+	padding-block: 0 var(--outline-offset-base); /* TODO: adjust according to size:xyz */
 	font-size: var(--font-size);
 
 	input {
@@ -31,7 +31,8 @@ fieldset.check {
 	legend {
 		inline-size: auto;
 		margin-inline-start: var(--ui-size);
-		padding: var(--ui-size-sm) var(--ui-size);
+		padding-inline: var(--ui-size-sm);
+		padding-block: 0 var(--outline-offset-base);
 	}
 
 	label > span {
