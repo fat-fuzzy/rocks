@@ -40,11 +40,11 @@
 	)
 	let props = $derived(api.props.getElementProps(markdownContent.meta))
 
-	function handleTabChange(selected: { id: string; value: string; state: string; }[]) {
+	function handleTabChange(selected: { name: string; value: string|number; state: string; }[]) {
 		if(selected.length === 0) {
 			return
 		}
-		currentTab = {...selected[0], title: selected[0].id, name: selected[0].id}
+		currentTab = {...selected[0], value: String(selected[0].value),title: selected[0].name, id: selected[0].name}
 	}
 </script>
 
@@ -88,7 +88,7 @@
 					variant="outline"
 					formaction={`/ui?/updateTab&redirectTo=${path}`}
 					onupdate={handleTabChange}
-					onload={handleTabChange}
+					init={handleTabChange}
 				/>
 			</form>
 		</div>
