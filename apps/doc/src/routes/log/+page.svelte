@@ -11,11 +11,11 @@
 </script>
 
 <PageMain {title} {description}>
-	<article class="l:sidebar:xs">
+	<div class="l:sidebar:xs">
 		<section class="l:main card:md l:stack:lg">
 			{#each markdowns as { meta }}
 				<a class="font:lg" href={`/log/${meta.slug}`}>{meta.title}</a>
 			{/each}
 		</section>
-	</article>
+	</div>
 </PageMain>
