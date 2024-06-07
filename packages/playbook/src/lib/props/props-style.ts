@@ -7,11 +7,11 @@ const brightness = {
 	size: '2xs',
 	variant: 'outline',
 	items: [
-		{id: 'brightness.day', text: 'day', asset: 'emoji:day', value: 'day'},
+		{id: 'brightness.day', text: 'day', asset: 'day', value: 'day'},
 		{
 			id: 'brightness.night',
 			text: 'night',
-			asset: 'emoji:night',
+			asset: 'night',
 			value: 'night',
 		},
 	],
@@ -27,13 +27,13 @@ const contrast = {
 		{
 			id: 'contrast.contrast',
 			text: 'contrast',
-			asset: 'emoji:contrast',
+			asset: 'contrast',
 			value: 'contrast',
 		},
 		{
 			id: 'contrast.blend',
 			text: 'blend',
-			asset: 'emoji:blend', // TODO: night / day asset option
+			asset: 'blend', // TODO: night / day asset option
 			value: 'blend',
 		},
 	],
@@ -204,31 +204,31 @@ const status = {
 		{
 			id: 'status.default',
 			text: 'default',
-			asset: 'emoji:default',
+			asset: 'default',
 			value: 'default',
 		},
 		{
 			id: 'status.info',
 			text: 'info',
-			asset: 'emoji:info',
+			asset: 'info',
 			value: 'info',
 		},
 		{
 			id: 'status.success',
 			text: 'success',
-			asset: 'emoji:success',
+			asset: 'success',
 			value: 'success',
 		},
 		{
 			id: 'status.warning',
 			text: 'warning',
-			asset: 'emoji:warning',
+			asset: 'warning',
 			value: 'warning',
 		},
 		{
 			id: 'status.error',
 			text: 'error',
-			asset: 'emoji:error',
+			asset: 'error',
 			value: 'error',
 		},
 	],
@@ -258,20 +258,20 @@ const asset = {
 		{
 			id: 'asset.profile',
 			text: 'profile',
-			value: 'emoji:profile',
-			asset: 'emoji:profile',
+			value: 'profile',
+			asset: 'profile',
 		},
 		{
 			id: 'asset.favorite',
 			text: 'favorite',
-			value: 'emoji:favorite',
-			asset: 'emoji:favorite',
+			value: 'favorite',
+			asset: 'favorite',
 		},
 		{
 			id: 'asset.idea',
 			text: 'idea',
-			value: 'emoji:idea',
-			asset: 'emoji:idea',
+			value: 'idea',
+			asset: 'idea',
 		},
 		{
 			id: 'asset.default',

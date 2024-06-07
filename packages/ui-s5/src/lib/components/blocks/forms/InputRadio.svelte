@@ -6,7 +6,7 @@
 		name,
 		label = 'Radio input',
 		checked = false,
-		layout,
+		layout = 'switcher',
 		value,
 
 		disabled,
@@ -30,6 +30,7 @@
 	let sizeClass = size ? `size:${size}` : ''
 	let fontClass = size ? `font:${size}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
+	let assetClass = asset ? `emoji:${asset}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 	let backgroundClass = background ? `bg:${background}` : ''
@@ -44,7 +45,7 @@
 	let layoutClasses = layout ? `l:${layout}:${size}` : ''
 	let contextClasses = `${containerClasses} ${layoutClasses}`
 
-	let elementClasses = `${asset} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass} ${backgroundClass}`
+	let elementClasses = `${assetClass} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass} ${backgroundClass}`
 
 	let classes = `${contextClasses} ${elementClasses}`
 </script>
