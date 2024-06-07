@@ -1,11 +1,7 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
-	import {getStores} from '$app/stores'
 
-	import {lang} from '$stores/intl.js'
-	import * as settings from '$stores/settings.js'
-
+	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 	import type {HeaderProps} from './header.types.js'
@@ -17,6 +13,7 @@
 		method = 'POST',
 		breakpoint = '2xl',
 		background,
+		path,
 		formaction,
 		actionPath,
 		redirect,
@@ -25,57 +22,40 @@
 	}: HeaderProps = $props()
 	let className = 'header-app'
 
-	let page = getStores().page
-
-	let navReveal: {[key: string]: string} = {reveal: ''}
-	let appSettings: {[key: string]: string} = {brightness: '', contrast: ''}
-
-	const stores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-		settings.navReveal.subscribe((value) => {
-			if (value) {
-				navReveal = value
-			}
-		}),
-	]
+	let navReveal: {[key: string]: string} = $state({reveal: ''})
+	let appSettings: {[key: string]: string} = $state({
+		brightness: '',
+		contrast: '',
+	})
 
 	function handleClickOutsideMainNav() {
-		settings.navReveal.set({reveal: 'minimize'})
+		navReveal = {reveal: 'minimize'}
 	}
 
 	function toggleNav(payload: ExpandPayload) {
 		const updated = payload.expanded ? 'show' : 'minimize'
-		settings.navReveal.set({reveal: updated})
+		navReveal = {reveal: updated}
 	}
 
-	function setLanguage(event: CustomEvent) {
-		lang.set(event.detail.payload)
-	}
-
-	let reveal = $state(navReveal.reveal)
-	let contrast = $state(appSettings.contrast)
-	let headerClass = `${className} bg:light l:sidebar:xl layer sticky:top justify:start bg:${contrast}`
+	let reveal = $derived(navReveal.reveal)
+	let contrast = $derived(appSettings.contrast)
+	let headerClass = $derived(
+		`${className} bg:light l:sidebar:xl layer sticky:top justify:start bg:${contrast}`,
+	)
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
 	let show = `show ${showBackground}`
-	let showNav = reveal === 'show' ? show : 'hide:viz-only'
-	let navClasses = `l:switcher:2xs ${showBackground}`
+	let showNav = $derived(reveal === 'show' ? show : 'hide:viz-only')
+	let navClasses = $derived(`l:switcher:2xs ${showBackground} ${showNav}`)
 	let revealClasses = `form:expand card:md`
 	let layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
 
 	let action =
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 <header class={headerClass}>
-	<div class={layoutClasses}>
+	<SkipLinks />
+	<nav id={`${id}-primary-nav`} class={layoutClasses} aria-label={title}>
 		<form
 			name="nav-reveal"
 			{method}
@@ -91,7 +71,7 @@
 			<Expand
 				id={`header-button-expand-${id}`}
 				variant="outline"
-				size="sm"
+				size="xs"
 				title="Menu"
 				name={`button-${id}-nav-reveal`}
 				type={actionPath && formaction ? 'submit' : 'button'}
@@ -116,42 +96,36 @@
 				Menu
 			</Expand>
 		</form>
-		<nav id={`${id}-primary-nav`} class={showNav} aria-label={title}>
-			<ul class={navClasses}>
-				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+		<ul class={navClasses}>
+			<li aria-current={path === '/' ? 'page' : undefined}>
+				<a
+					data-sveltekit-preload-data
+					href="/"
+					onclick={handleClickOutsideMainNav}>Home</a
+				>
+			</li>
+			{#each items.links as { slug, title }}
+				<li aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}>
 					<a
 						data-sveltekit-preload-data
-						href="/"
-						onclick={handleClickOutsideMainNav}>Home</a
+						href={`/${slug}`}
+						onclick={handleClickOutsideMainNav}
 					>
+						{title}
+					</a>
 				</li>
-				{#each items.links as { slug, title }}
-					<li
-						aria-current={$page.url.pathname.startsWith(`/${slug}`)
-							? 'page'
-							: undefined}
-					>
-						<a
-							data-sveltekit-preload-data
-							href={`/${slug}`}
-							onclick={handleClickOutsideMainNav}
-						>
-							{title}
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</nav>
-	</div>
+			{/each}
+		</ul>
+	</nav>
 	<Settings
-		path={$page.url.pathname}
+		{path}
 		{breakpoint}
 		align="end"
-		size="sm"
+		size="xs"
 		id={`${id}-menu-settings`}
 		{formaction}
 		{actionPath}
-		redirect={$page.url.pathname}
+		redirect={path}
 		items={items.settings}
 	/>
 </header>

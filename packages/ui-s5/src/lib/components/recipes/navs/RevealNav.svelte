@@ -2,10 +2,9 @@
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
 	import type {RevealNavProps} from './nav.types.js'
+	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
-
-	import * as ui from '$lib/stores/ui.js'
 
 	const {
 		DEFAULT_APP_SETTINGS,
@@ -24,7 +23,7 @@
 		formaction,
 		actionPath,
 		redirect,
-		layout,
+		layout = 'stack',
 		direction = 'tb-lr',
 		color,
 		size,
@@ -35,11 +34,7 @@
 		place = 'top',
 		position,
 		container,
-		height,
 		background = 'polar',
-		asset,
-		content,
-		settings = ui,
 		items = [],
 		onupdate,
 	}: RevealNavProps = $props()
@@ -57,9 +52,9 @@
 	let buttonAlign = place ? ALIGN_OPPOSITE[align] : ''
 	let navContainer = container ? `${container}:${size}` : ''
 	let navLayoutThreshold = breakpoint
-		? ` bp:${breakpoint}`
+		? `bp:${breakpoint}`
 		: threshold
-			? ` th:${threshold}`
+			? `th:${threshold}`
 			: ''
 	let navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
 	let animationDirection = $derived(
@@ -74,7 +69,7 @@
 		`${sidebarReveal.reveal} ${showBackground} ${place}`,
 	)
 	let navClasses = $derived(
-		`content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `,
+		`${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `,
 	)
 	let layoutClasses = $derived(
 		position
@@ -100,35 +95,44 @@
 </script>
 
 <div class={layoutClasses}>
-	<form
-		{id}
-		{method}
-		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-		use:enhance={() => {
-			// prevent default callback from resetting the form
-			return ({update}) => {
-				update({reset: false})
-			}
-		}}
-		class={formClasses}
-	>
-		<Expand
-			id={`button-expand-${id}`}
-			{variant}
-			{title}
-			{size}
-			{color}
-			name={`button-${id}`}
-			align={buttonAlign}
-			controls={`nav-${id}`}
-			value={sidebarReveal.reveal}
-			{states}
-			onclick={toggleReveal}
-		>
-			{title}
-		</Expand>
-	</form>
+	<SkipLinks text="Skip to content" />
 	<nav id={`nav-${id}`} class={navClasses} aria-label={title}>
-		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
+		<form
+			{id}
+			{method}
+			action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+			use:enhance={() => {
+				// prevent default callback from resetting the form
+				return ({update}) => {
+					update({reset: false})
+				}
+			}}
+			class={formClasses}
+		>
+			<Expand
+				id={`button-expand-${id}`}
+				{variant}
+				{title}
+				{size}
+				{color}
+				name={`button-${id}`}
+				align={buttonAlign}
+				controls={`nav-${id}`}
+				value={sidebarReveal.reveal}
+				{states}
+				onclick={toggleReveal}
+			>
+				{title}
+			</Expand>
+		</form>
+		<LinkList
+			id={`${id}-${path}`}
+			{path}
+			{items}
+			{size}
+			{align}
+			container="content"
+			depth={0}
+		/>
 	</nav>
 </div>

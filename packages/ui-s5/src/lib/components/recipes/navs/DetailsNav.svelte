@@ -26,21 +26,21 @@
 	$: show = expanded ? `${container}:${size} bg:${background}` : 'hide:viz-only'
 </script>
 
-<details aria-labelledby={id} class={`l:detail h:${height}`} open>
-	<summary
-		{id}
-		class={`card:${size} ${variant} bg:${color}`}
-		aria-expanded={expanded}
-		aria-controls={`nav-${id}`}
-		on:click={toggleReveal}
-	>
-		{format.formatLabel(title, icon)}
-	</summary>
-	<nav
-		id={`nav-${id}`}
-		class={`l:${layout} bp:${breakpoint} ${size} ${show} h:${height}`}
-		aria-label={title}
-	>
+<nav
+	id={`nav-${id}`}
+	class={`l:${layout} bp:${breakpoint} ${size} ${show} h:${height}`}
+	aria-label={title}
+>
+	<details aria-labelledby={id} class={`l:detail h:${height}`} open>
+		<summary
+			{id}
+			class={`card:${size} ${variant} bg:${color}`}
+			aria-expanded={expanded}
+			aria-controls={`nav-${id}`}
+			on:click={toggleReveal}
+		>
+			{format.formatLabel(title, icon)}
+		</summary>
 		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
-	</nav>
-</details>
+	</details>
+</nav>

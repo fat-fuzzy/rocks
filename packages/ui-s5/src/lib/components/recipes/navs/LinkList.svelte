@@ -18,12 +18,21 @@
 	}: LinkListProps = $props()
 
 	// TODO: clean classes output
+	let containerClass =
+		container === 'content'
+			? container
+			: container
+				? `l:${container}:${size}`
+				: ''
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
 </script>
 
-<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${depthClass}`}>
+<ul
+	id={`${id}-depth-${depth}`}
+	class={`${containerClass} ${layoutClass} ${depthClass}`}
+>
 	{#each items as item}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}

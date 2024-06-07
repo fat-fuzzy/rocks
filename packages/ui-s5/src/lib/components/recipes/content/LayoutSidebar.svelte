@@ -35,12 +35,13 @@
 <div class="l:sidebar:md">
 	<div class={`l:side ${sidebarReveal.reveal}`}>
 		<RevealNav
+			{...nav}
 			position="fixed"
 			place="left"
 			formaction="toggleSidebar"
 			actionPath="/"
+			size='sm'
 			{redirect}
-			{...nav}
 			{path}
 			onupdate={toggleSidebar}
 		/>
