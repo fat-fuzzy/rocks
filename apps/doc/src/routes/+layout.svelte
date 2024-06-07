@@ -49,7 +49,7 @@
 	breakpoint="xs"
 />
 
-<main class={mainClass}>
+<main id="main" class={mainClass}>
 	{#if children}
 		{@render children()}
 	{:else}

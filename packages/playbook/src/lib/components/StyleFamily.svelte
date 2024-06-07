@@ -18,9 +18,9 @@
 
 	let {category = 'app', formaction, meta}: Props = $props()
 
-	const stylesApi: StylesApi = getContext('stylesApi')
+	const playbookContext: StylesApi = getContext('playbookContext')
 	const playbookStore: PlaybookStore = getContext('playbookStore')
-	let formOptions = $derived(stylesApi.getFormOptions(category, meta))
+	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
 	let styles = $derived(playbookStore.styles)
 
 	let apiSize = '2xs'
@@ -52,8 +52,8 @@
 				playbookStore.app = {...playbookStore.app, [style]: value}
 			}
 		})
-		stylesApi.applyStyles(updatedStyles)
-		playbookStore.styles = stylesApi.getStyleTree() // This should update the client if JS is available
+		playbookContext.applyStyles(updatedStyles)
+		playbookStore.styles = playbookContext.getStyleTree() // This should update the client if JS is available
 	}
 
 	function handleInput(event, name: string) {
@@ -137,7 +137,7 @@
 
 	onMount(() => {
 		// Set the initial styles
-		stylesApi.applyStyles(playbookStore.styles)
+		playbookContext.applyStyles(playbookStore.styles)
 	})
 </script>
 

@@ -9,13 +9,15 @@
 	}
 	let {children}: Props = $props()
 
-	let stylesApi = api.stylesApi.initStyles()
-	setContext('stylesApi', stylesApi)
+	let playbookContext = api.stylesApi.initStyles()
+	setContext('playbookContext', playbookContext)
 
 	let {styles} = $state($page.data)
 
 	onMount(() => {
-		stylesApi.applyStyles(styles)
+		if(styles){
+			playbookContext.applyStyles(styles)
+		}
 	})
 </script>
 

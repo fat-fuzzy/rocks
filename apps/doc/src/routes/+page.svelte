@@ -17,7 +17,7 @@
 </script>
 
 <Head
-	page={title}
+	{title}
 	description="This is the Fat Fuzzy Rocks website home page. The site contains a small Design System based on CUBE CSS, as well as developer documentation and decision logs. Welcome! 🐰"
 />
 

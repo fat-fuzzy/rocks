@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {setContext, type Snippet} from 'svelte'
+	import {onMount, getContext, setContext, type Snippet} from 'svelte'
 	import {page} from '$app/stores'
 	import {
 		tokens,
@@ -31,16 +31,12 @@
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
 	const recipeNames = Object.keys(recipes).sort(sortAsc)
 	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
-
-	let stylesApi = api.initStyles()
-	setContext('stylesApi', stylesApi)
+	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
 
 	const {styles, context, ui} = $page.data
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = constants
 
-	stylesApi.applyStyles(styles)
-	playbookStore.styles = stylesApi.getStyleTree()
 	playbookStore.reveal = context
 	playbookStore.navReveal = ui?.navReveal || DEFAULT_NAV_REVEAL_STATE
 	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
@@ -95,6 +91,13 @@
 		background: 'polar',
 		formaction: 'toggleSidebar',
 	}
+
+	onMount(() => {
+		if(styles) {
+			playbookContext.applyStyles(styles)
+		}
+		playbookStore.styles = playbookContext.getStyleTree()
+	})
 </script>
 
 <LayoutSidebar {nav} {redirect} path=''>
