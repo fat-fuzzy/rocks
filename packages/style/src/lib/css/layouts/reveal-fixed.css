@@ -1,4 +1,5 @@
 .l\:reveal[class*='fixed'] {
+	--y-axis: var(--size-ui-header-height);
 	--x-size: 100%;
 	--y-size: 100%;
 	inline-size: var(--x-size);
@@ -14,19 +15,18 @@
 	}
 
 	&.show {
-		--y-size: 25vh;
+		--y-size: 25vh; /* small screen column view */
 	}
 
 	&.minimize {
 		--y-size: var(--size-ui-header-height);
-		transform: translateX(0);
-		transition: transform 250ms ease-in-out;
+		transition: block-size 250ms ease-in-out;
 	}
 
 	&.minimize .content {
 		border: 0;
 		block-size: 0;
-		inline-size: var(--x-axis);
+		inline-size: var(--x-size);
 		margin: 0;
 		overflow: hidden;
 		padding: 0;
@@ -45,7 +45,6 @@
 	/* TODO: use grid for this */
 	/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
 	.l\:reveal[class*='fixed'] {
-		--y-axis: calc(var(--size-ui-header-height) + var(--border-width-lg));
 		--y-size: 100%;
 		position: fixed;
 		top: var(--y-axis);
@@ -70,9 +69,10 @@
 				overflow-y: auto;
 				inline-size: var(--x-size);
 				block-size: 100%;
+				transform: translateX(0);
 				scrollbar-color: var(--thumb) var(--track);
 				opacity: 1;
-				transition: opacity 100ms ease-in;
+				transition: transform 100ms ease-in;
 			}
 
 			.content > * {
@@ -86,9 +86,11 @@
 			--x-size: var(--layout-sidebar-minimize);
 
 			.content {
-				overflow: hidden;
+				--x-axis: calc(var(--x-size) * -1);
+				inline-size: fit-content;
 				block-size: 100%;
-				opacity: 0;
+				transform: translateX(var(--x-axis));
+				transition: transform 100ms ease-in;
 			}
 		}
 	}
