@@ -2,20 +2,9 @@
 	position: relative;
 	z-index: var(--layout-z-index-layer);
 	inline-size: 100%;
+	max-inline-size: calc(100% - var(--outline-offset-base));
 	color: var(--ink);
-	background-color: var(--shade);
 	margin: var(--outline-offset-base);
-}
-
-[class^='l:reveal'] [class*='expand'] > .icon {
-	border: 0;
-	block-size: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	inline-size: 1px;
-	white-space: nowrap;
 }
 
 /* Fixes bug in Safari where .content overflows parent inline-size */
@@ -39,11 +28,6 @@
 	padding: 0;
 	position: absolute;
 	white-space: nowrap;
-}
-
-.l\:reveal.minimize [aria-expanded] {
-	color: var(--ink);
-	background-color: var(--shade);
 }
 
 [class^='l:reveal'] .end {

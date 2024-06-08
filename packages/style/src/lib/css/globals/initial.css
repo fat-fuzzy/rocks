@@ -57,7 +57,7 @@ a {
 	color: var(--ink);
 	font-size: var(--font-size-ui);
 	font-family: var(--font-family-ui);
-	font-weight: var(--font-weight-ui);
+	font-weight: var(--font-weight-link);
 }
 
 a[class^='font:'] {

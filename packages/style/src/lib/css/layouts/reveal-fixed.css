@@ -26,9 +26,9 @@
 	&.minimize .content {
 		--y-size: 0;
 		border: 0;
-		margin: 0;
 		overflow: hidden;
-		padding: 0;
+		margin-inline: 0;
+		padding-inline: 0;
 		white-space: nowrap;
 	}
 }
@@ -79,19 +79,28 @@
 			}
 		}
 
+		.form\:minimize {
+			max-inline-size: calc(100% - var(--outline-offset-base));
+		}
+
 		&.minimize {
 			--y-size: 100%;
-			--x-size: calc(
-				var(--layout-sidebar-minimize) + var(--ui-size) +
-					var(--outline-offset-base)
-			);
+			--x-size: calc(var(--layout-sidebar-minimize) + 1ch);
+
+			p,
+			a,
+			button,
+			li {
+				color: var(--color-bg-nav);
+				background-color: var(--color-bg-nav);
+			}
 
 			.content {
 				--x-axis: calc(var(--x-size) * -1);
-				inline-size: fit-content;
+				inline-size: var(--x-size);
+				max-inline-size: calc(100% - var(--outline-offset-base));
 				block-size: 100%;
-				transform: translateX(var(--x-axis));
-				transition: transform 100ms ease-in;
+				border-inline-end: var(--border-width-md) solid var(--ink);
 			}
 		}
 	}

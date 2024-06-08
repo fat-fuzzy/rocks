@@ -33,7 +33,6 @@
  */
 .header-app > nav[class*='l:main'] a {
 	inline-size: 100%;
-	font-weight: var(--font-weight-400);
 	text-transform: uppercase;
 }
 
@@ -82,15 +81,19 @@
 	li {
 		background-color: inherit;
 		border-inline-start: var(--border-width-xl) solid var(--shade);
-		padding: var(--outline-offset) 0 var(--outline-offset) 0;
+		padding: var(--outline-offset) 0;
 		inline-size: fit-content;
-	}
-
-	li[aria-current='page'] {
-		border-color: var(--accent);
 	}
 
 	a {
 		padding: calc(var(--ui-size-sm) + var(--border-width-lg)) var(---ui-size);
+	}
+
+	li[aria-current='page'] {
+		border-color: var(--accent);
+
+		> a {
+			color: var(--shade);
+		}
 	}
 }

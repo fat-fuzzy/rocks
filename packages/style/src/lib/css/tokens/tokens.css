@@ -118,8 +118,9 @@
   --font-weight-h4: var(--font-weight-semibold);
   --font-weight-h5: var(--font-weight-semibold);
   --font-weight-light: var(--font-weight-200);
+  --font-weight-link: var(--font-weight-regular);
   --font-weight-medium: var(--font-weight-500);
-  --font-weight-regular: var(--font-weight-300);
+  --font-weight-regular: var(--font-weight-400);
   --font-weight-semibold: var(--font-weight-700);
   --font-weight-ui: var(--font-weight-medium);
   --layout-base: 1rem;
@@ -142,7 +143,7 @@
   --layout-sidebar-base: 22ch;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
-  --layout-sidebar-minimize: 7ch;
+  --layout-sidebar-minimize: 5ch;
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
   --layout-sidebar-xl: calc(var(--layout-sidebar-lg) * var(--size-ratio-sm));
   --layout-sidebar-xs: calc(var(--layout-sidebar-sm) / var(--size-ratio-sm));

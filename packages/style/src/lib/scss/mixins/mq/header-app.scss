@@ -42,6 +42,7 @@
 			> nav[class*='l:main'].l\:reveal\:auto.bp\:#{$size}
 			li[aria-current='page'] {
 			border-color: var(--accent);
+			background-color: var(--shade);
 		}
 
 		/* Configure reveal menu positioning and width */

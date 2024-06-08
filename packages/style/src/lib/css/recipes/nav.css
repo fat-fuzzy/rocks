@@ -3,9 +3,16 @@ nav {
 }
 
 nav ul {
+	--lightness: var(--color-lightness-light);
+	--chroma: var(--color-chroma-neutral);
+	--color-bg-nav: oklch(var(--lightness) var(--chroma) var(--hue));
 	list-style: none;
-	padding: 0;
-	margin: 0;
+	padding-inline: 0;
+	margin-inline: 0;
+}
+
+nav > ul {
+	padding-block: var(--ui-size);
 }
 
 /* == Keep nav links to one line with ellipsis == */
@@ -19,13 +26,14 @@ nav li {
 	margin-block: 0;
 }
 
-nav > ul > li:only-child {
-	padding-block: var(--ui-size) var(--y-axis);
+nav > ul ul li:has(ul) {
+	padding-inline-start: var(--outline-offset-settings);
+	padding-block-end: var(--outline-offset-settings);
 }
 
 nav li a {
-	font-weight: var(--font-weight-semibold);
 	max-width: 100%;
+	font-weight: var(--font-weight-link);
 	font-size: var(--font-size-ui);
 	line-height: 1;
 	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
@@ -76,20 +84,25 @@ ul.depth-0 > li > a {
 
 /* Active Link */
 nav li[aria-current='page'] {
-	--lightness: var(--color-lightness-100);
-	--chroma: var(--color-chroma-500);
-	background-color: var(--shade);
-}
+	--chroma-accent: var(--color-chroma-100);
+	--lightness-accent: var(--color-lightness-100);
+	background-color: var(--accent);
 
-nav li[aria-current='page'] > ul {
-	--lightness: var(--color-lightness-light);
-	background-color: var(--shade);
-}
+	/* Active Link */
 
-/* Active Link */
-nav li[aria-current='page'] > a,
-nav li[aria-current='page'] > a:visited {
-	text-decoration-color: var(--color-bg);
+	> ul {
+		background-color: var(--color-bg-nav);
+	}
+
+	> a {
+		text-decoration-color: var(--accent);
+		background-color: var(--accent);
+	}
+
+	> ul a {
+		text-decoration-color: var(--accent);
+		background-color: var(--color-bg-nav);
+	}
 }
 
 /* == Override heading styles for headings inside links == */
@@ -111,6 +124,10 @@ a[class*='card']:hover > *:not(.icon) {
 		.form\:show {
 			inline-size: calc(100% - 2 * var(--outline-offset-settings));
 			align-self: center;
+		}
+
+		ul.depth-0 {
+			padding-block: var(--ui-size) var(--ui-size-lg);
 		}
 	}
 }

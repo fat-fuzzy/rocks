@@ -13,7 +13,7 @@
 		align,
 		id,
 		depth = 0,
-		container = 'burrito',
+		container,
 		items = [], // TODO: fix type,
 	}: LinkListProps = $props()
 
