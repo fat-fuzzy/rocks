@@ -30,41 +30,45 @@
 		<svelte:element this={`h${depth + 1}`} class="font:lg maki:block:2xs">
 			Theme colors
 		</svelte:element>
-		{#each colors as color}
-			<article class="l:switcher:md th:md">
-				<svelte:element this={`h${depth + 2}`} class="font:md">
-					{color}
-				</svelte:element>
-				<div class="l:grid:2xs">
-					{#each variants as variant}
-						<figure class={`${colorClasses} bg:${color}:${variant}`}>
-							<figcaption>{color}:{variant}</figcaption>
-						</figure>
-					{/each}
-				</div>
-			</article>
-		{/each}
+		<div class="l:grid:sm">
+			{#each colors as color}
+				<article class="l:switcher:md th:md">
+					<svelte:element this={`h${depth + 2}`} class="font:md">
+						{color}
+					</svelte:element>
+					<div class="l:stack:2xs">
+						{#each variants as variant}
+							<figure class={`${colorClasses} bg:${color}:${variant}`}>
+								<figcaption>{color}:{variant}</figcaption>
+							</figure>
+						{/each}
+					</div>
+				</article>
+			{/each}
+		</div>
 	</section>
 
 	<section class="l:stack:md">
 		<svelte:element this={`h${depth + 1}`} class="font:lg maki:block:2xs">
 			Semantic colors
 		</svelte:element>
-		{#each status as color}
-			<article class="l:switcher:md th:md">
-				<svelte:element this={`h${depth + 2}`} class="font:md">
-					{color}
-				</svelte:element>
-				<div class="l:grid:2xs">
-					{#each variants as variant}
-						<figure
-							class={`${colorClasses} status:${color} bg:${color}:${variant}`}
-						>
-							<figcaption>{color}:{variant}</figcaption>
-						</figure>
-					{/each}
-				</div>
-			</article>
-		{/each}
+		<div class="l:grid:xs">
+			{#each status as color}
+				<article class="l:switcher:md th:md">
+					<svelte:element this={`h${depth + 2}`} class="font:md">
+						{color}
+					</svelte:element>
+					<div class="l:stack:2xs">
+						{#each variants as variant}
+							<figure
+								class={`${colorClasses} status:${color} bg:${color}:${variant}`}
+							>
+								<figcaption>{color}:{variant}</figcaption>
+							</figure>
+						{/each}
+					</div>
+				</article>
+			{/each}
+		</div>
 	</section>
 </div>
