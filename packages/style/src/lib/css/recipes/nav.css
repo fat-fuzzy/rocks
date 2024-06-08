@@ -101,3 +101,16 @@ a[class*='card'] {
 a[class*='card']:hover > *:not(.icon) {
 	text-decoration: underline;
 }
+@media screen and (min-width: 935px) {
+	.fixed.left nav,
+	.fixed.right nav {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden auto;
+
+		.form\:show {
+			inline-size: calc(100% - var(--outline-offset-nav));
+			align-self: flex-end;
+		}
+	}
+}

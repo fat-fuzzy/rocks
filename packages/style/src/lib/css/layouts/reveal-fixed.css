@@ -45,7 +45,7 @@
 	/* TODO: use grid for this */
 	/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
 	.l\:reveal[class*='fixed'] {
-		--y-size: 100%;
+		--y-size: calc(100vh - var(--size-ui-header-height));
 		position: fixed;
 		top: var(--y-axis);
 		z-index: 1;
@@ -53,8 +53,8 @@
 		block-size: var(--y-size);
 
 		&.show {
-			--y-size: 100%;
-			--x-size: var(--sidebar-width);
+			--y-size: calc(100vh - var(--size-ui-header-height));
+			--x-size: calc(var(--sidebar-width) - var(--ui-size));
 			inline-size: var(--x-size);
 			block-size: var(--y-size);
 			/* transition: transform 250ms ease-in-out; */
@@ -66,9 +66,9 @@
 					var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
 				);
 				--thumb: var(--ink);
-				overflow-y: auto;
+				overflow: hidden auto;
 				inline-size: var(--x-size);
-				block-size: 100%;
+				block-size: fit-content;
 				transform: translateX(0);
 				scrollbar-color: var(--thumb) var(--track);
 				opacity: 1;
@@ -76,14 +76,16 @@
 			}
 
 			.content > * {
-				block-size: var(--y-size);
 				inline-size: 100%;
 			}
 		}
 
 		&.minimize {
 			--y-size: 100%;
-			--x-size: var(--layout-sidebar-minimize);
+			--x-size: calc(
+				var(--layout-sidebar-minimize) + var(--ui-size) +
+					var(--outline-offset-base)
+			);
 
 			.content {
 				--x-axis: calc(var(--x-size) * -1);
