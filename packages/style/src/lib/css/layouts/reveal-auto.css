@@ -2,15 +2,15 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	inline-size: 100%;
 }
 
 .l\:reveal\:auto [class*='expand'] {
-	width: fit-content;
+	inline-size: fit-content;
 }
 
 .l\:reveal\:auto .show {
-	width: auto;
-	height: auto;
+	inline-size: auto;
+	block-size: auto;
 	overflow-y: auto;
 }

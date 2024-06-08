@@ -23,7 +23,7 @@
 		formaction,
 		actionPath,
 		redirect,
-		layout = 'stack',
+		layout,
 		direction = 'tb-lr',
 		color,
 		size,

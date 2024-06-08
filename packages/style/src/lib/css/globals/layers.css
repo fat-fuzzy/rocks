@@ -20,7 +20,7 @@
 	position: sticky;
 	top: 0;
 	left: 0;
-	width: 100%;
+	inline-size: 100%;
 	z-index: var(--layout-z-index-sticky);
 }
 

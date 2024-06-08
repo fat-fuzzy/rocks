@@ -29,8 +29,8 @@ function formatHref(path: string, slug: string) {
 	return `${path}/${slug}`
 }
 
-function getClassNameFromUrl(url: URL) {
-	return url.pathname === '/' ? 'home' : url.pathname.slice(1, url.pathname.length)
+function getClassNameFromPathname(path: string) {
+	return path === '/' ? 'home' : path.slice(1, path.length)
 }
 
 function capitalize(category: string) {
@@ -40,6 +40,6 @@ function capitalize(category: string) {
 export default {
 	formatLabel,
 	formatHref,
-	getClassNameFromUrl,
+	getClassNameFromPathname,
 	capitalize,
 }

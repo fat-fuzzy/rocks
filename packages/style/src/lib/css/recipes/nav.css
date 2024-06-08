@@ -109,8 +109,8 @@ a[class*='card']:hover > *:not(.icon) {
 		overflow: hidden auto;
 
 		.form\:show {
-			inline-size: calc(100% - var(--outline-offset-nav));
-			align-self: flex-end;
+			inline-size: calc(100% - 2 * var(--outline-offset-settings));
+			align-self: center;
 		}
 	}
 }

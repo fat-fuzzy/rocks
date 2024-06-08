@@ -29,7 +29,7 @@
 
 	let brightness = appSettings.brightness
 	let contrast = appSettings.contrast
-	let pageClass = utils.format.getClassNameFromUrl($page.url)
+	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
 	let layoutClass =
 		APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
 	let mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
@@ -42,13 +42,13 @@
 
 <Header
 	id="doc"
+	path={$page.url.pathname}
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
 	items={{links, settings: itemsSettings}}
 	breakpoint="xs"
 />
-
 <main id="main" class={mainClass}>
 	{#if children}
 		{@render children()}

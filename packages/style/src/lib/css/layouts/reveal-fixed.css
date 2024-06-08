@@ -1,7 +1,7 @@
 .l\:reveal[class*='fixed'] {
 	--y-axis: var(--size-ui-header-height);
 	--x-size: 100%;
-	--y-size: 100%;
+	--y-size: auto;
 	inline-size: var(--x-size);
 	block-size: var(---y-size);
 	transition: inline-size 250ms ease-in-out;
@@ -24,9 +24,8 @@
 	}
 
 	&.minimize .content {
+		--y-size: 0;
 		border: 0;
-		block-size: 0;
-		inline-size: var(--x-size);
 		margin: 0;
 		overflow: hidden;
 		padding: 0;

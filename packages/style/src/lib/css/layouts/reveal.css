@@ -1,7 +1,7 @@
 [class^='l:reveal'] [class*='expand'] {
 	position: relative;
 	z-index: var(--layout-z-index-layer);
-	width: 100%;
+	inline-size: 100%;
 	color: var(--ink);
 	background-color: var(--shade);
 	margin: var(--outline-offset-base);
@@ -9,21 +9,21 @@
 
 [class^='l:reveal'] [class*='expand'] > .icon {
 	border: 0;
-	height: auto;
+	block-size: auto;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
-	width: 1px;
+	inline-size: 1px;
 	white-space: nowrap;
 }
 
-/* Fixes bug in Safari where .content overflows parent width */
+/* Fixes bug in Safari where .content overflows parent inline-size */
 .l\:reveal.show {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	width: 100%;
+	block-size: 100%;
+	inline-size: 100%;
 }
 
 .l\:reveal.show .content {
@@ -33,7 +33,7 @@
 
 .l\:reveal.minimize:not([class*='fixed']) .content {
 	border: 0;
-	height: 0;
+	block-size: 0;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
@@ -78,7 +78,7 @@
 
 	.l\:reveal.show .content {
 		top: 0;
-		max-height: unset;
+		max-block-size: unset;
 	}
 
 	.l\:reveal.minimize [aria-expanded='true'] {
@@ -102,7 +102,7 @@
 			white-space: normal;
 			overflow: hidden;
 			position: unset;
-			width: 100%;
+			inline-size: 100%;
 			margin: initial;
 		}
 
