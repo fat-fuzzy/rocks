@@ -5,14 +5,14 @@
 		.l\:reveal\:auto.bp\:#{$size},
 		.page-header .l\:reveal\:auto.bp\:#{$size} {
 			position: unset;
-			width: fit-content;
+			inline-size: fit-content;
 		}
 
 		.l\:reveal\:auto.bp\:#{$size} .show {
 			top: 0;
-			width: auto;
+			inline-size: auto;
 			min-inline-size: unset;
-			max-height: unset;
+			max-block-size: unset;
 			background-color: inherit;
 			box-shadow: none;
 		}
@@ -23,12 +23,12 @@
 
 		.l\:reveal\:auto.bp\:#{$size} .show,
 		.l\:reveal\:auto.bp\:#{$size} [class*='hide:'] {
-			height: auto;
+			block-size: auto;
 			margin: initial;
 			overflow: hidden;
 			padding: initial;
 			position: unset;
-			width: 100%;
+			inline-size: 100%;
 			white-space: normal;
 		}
 	}
