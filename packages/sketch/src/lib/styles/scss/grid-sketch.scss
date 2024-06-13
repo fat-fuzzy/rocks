@@ -22,31 +22,10 @@
 	}
 }
 
-@media screen and (min-width: 320px) {
-	@include switchToRowStyles_GridSketch(320px, '2xs');
-}
-
-/* @media screen and (min-width: 620px) { */
-@media screen and (min-width: 690px) {
-	@include switchToRowStyles_GridSketch(690px, 'xs');
-}
-
-@media screen and (min-width: 935px) {
-	@include switchToRowStyles_GridSketch(935px, 'sm');
-}
-
-@media screen and (min-width: 1360px) {
-	@include switchToRowStyles_GridSketch(1360px, 'md');
-}
-
-@media screen and (min-width: 1620px) {
-	@include switchToRowStyles_GridSketch(1620px, 'lg');
-}
-
-@media screen and (min-width: 2048px) {
-	@include switchToRowStyles_GridSketch(2048px, 'xl');
-}
-
-@media screen and (min-width: 3048px) {
-	@include switchToRowStyles_GridSketch(3048px, '2xl');
-}
+@include switchToRowStyles_GridSketch(320px, '2xs');
+@include switchToRowStyles_GridSketch(690px, 'xs');
+@include switchToRowStyles_GridSketch(935px, 'sm');
+@include switchToRowStyles_GridSketch(1360px, 'md');
+@include switchToRowStyles_GridSketch(1620px, 'lg');
+@include switchToRowStyles_GridSketch(2048px, 'xl');
+@include switchToRowStyles_GridSketch(3048px, '2xl');

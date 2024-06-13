@@ -27,30 +27,10 @@
 	}
 }
 
-@media screen and (min-width: 320px) {
-	@include switchToRowStyles_GridHeader(320px, '2xs');
-}
-
-@media screen and (min-width: 620px) {
-	@include switchToRowStyles_GridHeader(620px, 'xs');
-}
-
-@media screen and (min-width: 935px) {
-	@include switchToRowStyles_GridHeader(935px, 'sm');
-}
-
-@media screen and (min-width: 1360px) {
-	@include switchToRowStyles_GridHeader(1360px, 'md');
-}
-
-@media screen and (min-width: 1620px) {
-	@include switchToRowStyles_GridHeader(1620px, 'lg');
-}
-
-@media screen and (min-width: 2048px) {
-	@include switchToRowStyles_GridHeader(2048px, 'xl');
-}
-
-@media screen and (min-width: 3048px) {
-	@include switchToRowStyles_GridHeader(3048px, '2xl');
-}
+@include switchToRowStyles_GridHeader(320px, '2xs');
+@include switchToRowStyles_GridHeader(620px, 'xs');
+@include switchToRowStyles_GridHeader(935px, 'sm');
+@include switchToRowStyles_GridHeader(1360px, 'md');
+@include switchToRowStyles_GridHeader(1620px, 'lg');
+@include switchToRowStyles_GridHeader(2048px, 'xl');
+@include switchToRowStyles_GridHeader(3048px, '2xl');

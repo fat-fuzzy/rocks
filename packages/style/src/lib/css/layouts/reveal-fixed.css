@@ -1,14 +1,22 @@
+/* TODO: use grid for this */
+/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
+
+/* The reveal layout inside a sidebar is currently only used for sidebar menus:
+		- reveal mechanism serves to hide and show the menu on mobile
+		- reveal is not necessary on desktop, so on desktop we unset the reveal layout
+	Constraining this allows usage of reveal layout in desktop, outside a sidebar context */
+
 .l\:reveal[class*='fixed'] {
 	--y-axis: var(--size-ui-header-height);
 	--x-size: 100%;
 	--y-size: auto;
 	inline-size: var(--x-size);
-	block-size: var(---y-size);
+	block-size: var(--y-size);
 	transition: inline-size 250ms ease-in-out;
 	transition: block-size 250ms ease-in-out;
 
 	.content {
-		block-size: var(---y-size);
+		block-size: var(--y-size);
 		overflow: auto;
 		transition: inline-size 250ms ease-in-out;
 		transition: block-size 250ms ease-in-out;
@@ -30,78 +38,5 @@
 		margin-inline: 0;
 		padding-inline: 0;
 		white-space: nowrap;
-	}
-}
-
-/* TODO fix magic bp */
-
-@media screen and (min-width: 935px) {
-	/* The reveal layout inside a sidebar is currently only used for sidebar menus:
-		- reveal mechanism serves to hide and show the menu on mobile
-		- reveal is not necessary on desktop, so on desktop we unset the reveal layout
-	Constraining this allows usage of reveal layout in desktop, outside a sidebar context */
-
-	/* TODO: use grid for this */
-	/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
-	.l\:reveal[class*='fixed'] {
-		--y-size: calc(100vh - var(--size-ui-header-height));
-		position: fixed;
-		top: var(--y-axis);
-		z-index: 1;
-		inline-size: var(--x-size);
-		block-size: var(--y-size);
-
-		&.show {
-			--y-size: calc(100vh - var(--size-ui-header-height));
-			--x-size: calc(var(--sidebar-width) - var(--ui-size));
-			inline-size: var(--x-size);
-			block-size: var(--y-size);
-			/* transition: transform 250ms ease-in-out; */
-
-			.content {
-				--lightness-scrollbar: var(--color-lightness-000);
-				--chroma-scrollbar: var(--color-chroma-000);
-				--track: oklch(
-					var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
-				);
-				--thumb: var(--ink);
-				overflow: hidden auto;
-				inline-size: var(--x-size);
-				block-size: fit-content;
-				transform: translateX(0);
-				scrollbar-color: var(--thumb) var(--track);
-				opacity: 1;
-				transition: transform 100ms ease-in;
-			}
-
-			.content > * {
-				inline-size: 100%;
-			}
-		}
-
-		.form\:minimize {
-			max-inline-size: calc(100% - var(--outline-offset-base));
-		}
-
-		&.minimize {
-			--y-size: 100%;
-			--x-size: calc(var(--layout-sidebar-minimize) + 1ch);
-
-			p,
-			a,
-			button,
-			li {
-				color: var(--color-bg-nav);
-				background-color: var(--color-bg-nav);
-			}
-
-			.content {
-				--x-axis: calc(var(--x-size) * -1);
-				inline-size: var(--x-size);
-				max-inline-size: calc(100% - var(--outline-offset-base));
-				block-size: 100%;
-				border-inline-end: var(--border-width-md) solid var(--ink);
-			}
-		}
 	}
 }

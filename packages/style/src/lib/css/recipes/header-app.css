@@ -86,7 +86,7 @@
 	}
 
 	a {
-		padding: calc(var(--ui-size-sm) + var(--border-width-lg)) var(---ui-size);
+		padding: calc(var(--ui-size-sm) + var(--border-width-lg)) var(--ui-size);
 	}
 
 	li[aria-current='page'] {

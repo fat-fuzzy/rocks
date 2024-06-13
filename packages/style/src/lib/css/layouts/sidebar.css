@@ -43,26 +43,6 @@
 	flex-basis: fit-content;
 }
 
-.l\:side nav {
-	height: auto;
-	max-height: fit-content;
-	overflow-y: auto;
-}
-
-@media screen and (min-width: 935px) {
-	.l\:side nav {
-		height: auto;
-		max-height: unset;
-	}
-
-	/* TODO: Decouple sidebar layout from sidebar content */
-	.l\:side.minimize {
-		--basis: var(--layout-sidebar-minimize);
-		flex-basis: var(--basis);
-		transition: flex-basis 250ms ease-in-out;
-	}
-}
-
 /* Scale Sidebar */
 .l\:sidebar\:2xs {
 	--gap: var(--size-base-sm);

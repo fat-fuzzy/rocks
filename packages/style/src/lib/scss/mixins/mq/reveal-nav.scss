@@ -1,0 +1,102 @@
+/*  reveal-auto media queries */
+
+@mixin switchToRowStyles_RevealNav($breakpoint, $size) {
+	@media screen and (min-width: #{$breakpoint}) {
+		.l\:sidebar\:#{$size} {
+			.l\:side nav {
+				height: auto;
+				max-height: unset;
+			}
+
+			/* TODO: Decouple sidebar layout from sidebar content */
+			.l\:side.minimize {
+				--basis: var(--layout-sidebar-minimize);
+				flex-basis: var(--basis);
+				transition: flex-basis 250ms ease-in-out;
+			}
+
+			.fixed.left nav,
+			.fixed.right nav {
+				display: flex;
+				flex-direction: column;
+				overflow: hidden auto;
+
+				.form\:show {
+					inline-size: calc(100% - 2 * var(--outline-offset-settings));
+					align-self: center;
+				}
+
+				ul.depth-0 {
+					padding-block: var(--ui-size) var(--ui-size-lg);
+				}
+			}
+			.l\:reveal[class*='fixed'] {
+				--y-size: calc(100vh - var(--size-ui-header-height));
+				position: fixed;
+				top: var(--y-axis);
+				z-index: 1;
+				inline-size: var(--x-size);
+				block-size: var(--y-size);
+
+				&.show {
+					--y-size: calc(100vh - var(--size-ui-header-height));
+					--x-size: calc(var(--sidebar-width) - var(--ui-size));
+					/* transition: transform 250ms ease-in-out; */
+
+					.content {
+						--lightness-scrollbar: var(--color-lightness-000);
+						--chroma-scrollbar: var(--color-chroma-000);
+						--track: oklch(
+							var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
+						);
+						--thumb: var(--ink);
+						overflow: hidden auto;
+						inline-size: var(--x-size);
+						block-size: fit-content;
+						transform: translateX(0);
+						scrollbar-color: var(--thumb) var(--track);
+						opacity: 1;
+						transition: transform 100ms ease-in;
+					}
+
+					.content > * {
+						inline-size: 100%;
+					}
+				}
+
+				.form\:minimize {
+					max-inline-size: calc(100% - var(--outline-offset-base));
+				}
+
+				&.minimize {
+					--y-size: 100%;
+					--x-size: calc(var(--layout-sidebar-minimize) + 1ch);
+
+					p,
+					a,
+					button,
+					li {
+						color: var(--color-bg-nav);
+						background-color: var(--color-bg-nav);
+					}
+
+					.content {
+						--x-axis: calc(var(--x-size) * -1);
+						inline-size: var(--x-size);
+						max-inline-size: calc(100% - var(--outline-offset-base));
+						block-size: 100%;
+						border-inline-end: var(--border-width-md) solid var(--ink);
+					}
+				}
+			}
+		}
+	}
+}
+
+@include switchToRowStyles_RevealNav(320px, '2xs');
+@include switchToRowStyles_RevealNav(620px, 'xs');
+@include switchToRowStyles_RevealNav(935px, 'sm');
+@include switchToRowStyles_RevealNav(1360px, 'md');
+@include switchToRowStyles_RevealNav(1620px, 'lg');
+@include switchToRowStyles_RevealNav(2048px, 'xl');
+@include switchToRowStyles_RevealNav(3048px, '2xl');
