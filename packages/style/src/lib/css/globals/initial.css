@@ -54,7 +54,7 @@ main {
 }
 
 a {
-	color: var(--ink);
+	color: var(--color-ink-nav, var(--ink));
 	font-size: var(--font-size-ui);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-link);

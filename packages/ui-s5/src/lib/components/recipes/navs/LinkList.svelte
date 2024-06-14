@@ -9,7 +9,7 @@
 		path = '/',
 		layout,
 		size = 'md',
-		color,
+		color = 'primary:600',
 		align,
 		id,
 		depth = 0,
@@ -25,6 +25,7 @@
 				? `l:${container}:${size}`
 				: ''
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
+	let colorClass = color ? `bg:${color}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
 	let gridClass = depth === 1 ? `l:grid:${size}` : layoutClass
@@ -44,7 +45,7 @@
 				? 'page'
 				: undefined}
 			class={$page.url.pathname === format.formatHref(path, slug)
-				? `${itemClass} bg:${color}`
+				? `${itemClass} ${colorClass}`
 				: itemClass}
 		>
 			<a data-sveltekit-preload-data href={format.formatHref(path, slug)}>

@@ -38,7 +38,7 @@ nav li a {
 }
 
 nav a:hover {
-	--lightness: var(--color-lightness-100);
+	--lightness: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-400);
 }
 
@@ -47,7 +47,7 @@ nav a:focus {
 }
 
 nav li a:visited {
-	--lightness: var(--color-lightness-100);
+	--lightness: var(--color-lightness-500);
 	--lightness-contrast: var(--color-lightness-500);
 	font-weight: var(--font-weight-semibold);
 }
@@ -79,8 +79,6 @@ ul.depth-0 > li > a {
 
 /* Active Link */
 nav li[aria-current='page'] {
-	--chroma-accent: var(--color-chroma-100);
-	--lightness-accent: var(--color-lightness-100);
 	background-color: var(--accent);
 
 	/* Active Link */
@@ -95,6 +93,11 @@ nav li[aria-current='page'] {
 	}
 
 	> ul a {
+		--lightness-contrast: var(--color-lightness-500);
+		--chroma-contrast: var(--color-chroma-500);
+		--color-ink-nav: oklch(
+			var(--lightness-contrast) var(--chroma-contrast) var(--hue)
+		);
 		text-decoration-color: var(--accent);
 		background-color: var(--color-bg-nav);
 	}

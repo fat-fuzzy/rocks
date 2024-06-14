@@ -48,7 +48,7 @@
 	--lightness-contrast: var(--color-lightness-500);
 }
 [class*='bg:'][class*=':200'] {
-	--lightness: var(--color-lightness-200);
+	--lightness: var(--color-lightness-100);
 	--lightness-accent: var(--color-lightness-400);
 	--lightness-contrast: var(--color-lightness-600);
 }
@@ -70,7 +70,7 @@
 [class*='bg:'][class*=':600'] {
 	--lightness: var(--color-lightness-600);
 	--lightness-accent: var(--color-lightness-400);
-	--lightness-contrast: var(--color-lightness-200);
+	--lightness-contrast: var(--color-lightness-100);
 }
 
 [class*='bg:'][class*=':000']:not([class*=':neutral']) {
