@@ -33,10 +33,10 @@
 </script>
 
 <div class="l:sidebar:md">
-	<div class={`l:side ${sidebarReveal.reveal}`}>
+	<div class={`l:side reveal-nav:sm ${sidebarReveal.reveal}`}>
 		<RevealNav
 			{...nav}
-			position="fixed"
+			position="sticky"
 			place="left"
 			formaction="toggleSidebar"
 			actionPath="/"

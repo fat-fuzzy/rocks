@@ -27,7 +27,7 @@
 
 		/* Fixes bug in Safari where .content overflows parent width */
 		[class^='l:side'] > [class^='l:reveal'] {
-			&.minimize:not([class*='fixed']) .content {
+			&.minimize:not([class*='sticky']) .content {
 				padding: var(--ui-size);
 				white-space: normal;
 				overflow: hidden;
@@ -36,11 +36,11 @@
 				margin: initial;
 			}
 
-			&:not([class*='fixed']) [class*='expand'] {
+			&:not([class*='sticky']) [class*='expand'] {
 				display: none;
 			}
 
-			&:not([class*='fixed']) [class*='expand'] + * {
+			&:not([class*='sticky']) [class*='expand'] + * {
 				margin-top: 0;
 			}
 		}

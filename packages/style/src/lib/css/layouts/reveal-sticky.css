@@ -6,7 +6,7 @@
 		- reveal is not necessary on desktop, so on desktop we unset the reveal layout
 	Constraining this allows usage of reveal layout in desktop, outside a sidebar context */
 
-.l\:reveal[class*='fixed'] {
+[class*='l:reveal'].sticky {
 	--y-axis: var(--size-ui-header-height);
 	--x-size: 100%;
 	--y-size: auto;
@@ -23,20 +23,22 @@
 	}
 
 	&.show {
-		--y-size: 25vh; /* small screen column view */
+		.content {
+			--y-size: 25vh; /* small screen column view */
+		}
 	}
 
 	&.minimize {
 		--y-size: var(--size-ui-header-height);
 		transition: block-size 250ms ease-in-out;
-	}
 
-	&.minimize .content {
-		--y-size: 0;
-		border: 0;
-		overflow: hidden;
-		margin-inline: 0;
-		padding-inline: 0;
-		white-space: nowrap;
+		.content {
+			--y-size: 0;
+			border: 0;
+			overflow: hidden;
+			margin-inline: 0;
+			padding-inline: 0;
+			white-space: nowrap;
+		}
 	}
 }

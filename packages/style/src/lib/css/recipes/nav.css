@@ -14,7 +14,6 @@ nav > ul {
 /* == Keep nav links to one line with ellipsis == */
 nav li {
 	/* width: 100%; */
-	max-width: calc(var(--sidebar-width) - var(--size-base-2xs));
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -109,4 +108,37 @@ a[class*='card'] {
 /* == Override heading styles for headings inside links == */
 a[class*='card']:hover > *:not(.icon) {
 	text-decoration: underline;
+}
+
+[class*='reveal-nav'] {
+	container-type: inline-size;
+	inline-size: 100%;
+}
+
+.reveal-nav\:2xs {
+	container-name: reveal-nav-2xs;
+}
+
+.reveal-nav\:xs {
+	container-name: reveal-nav-xs;
+}
+
+.reveal-nav\:sm {
+	container-name: reveal-nav-sm;
+}
+
+.reveal-nav\:md {
+	container-name: reveal-nav-md;
+}
+
+.reveal-nav\:lg {
+	container-name: reveal-nav-lg;
+}
+
+.reveal-nav\:xl {
+	container-name: reveal-nav-xl;
+}
+
+.reveal-nav\:2xl {
+	container-name: reveal-nav-2xl;
 }

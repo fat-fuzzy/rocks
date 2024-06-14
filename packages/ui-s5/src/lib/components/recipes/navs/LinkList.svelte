@@ -27,17 +27,18 @@
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
+	let gridClass = depth === 1 ? `l:grid:${size}` : layoutClass
 </script>
 
 <ul
 	id={`${id}-depth-${depth}`}
-	class={`${containerClass} ${layoutClass} ${depthClass}`}
+	class={`${containerClass} ${gridClass} ${depthClass}`}
 >
 	{#each items as item}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
 		{@const assetClass = asset ? asset : ''}
-		{@const itemClass = `relleno ${assetClass} ${alignClass}`}
+		{@const itemClass = `${assetClass} ${alignClass}`}
 		<li
 			aria-current={$page.url.pathname === format.formatHref(path, slug)
 				? 'page'
