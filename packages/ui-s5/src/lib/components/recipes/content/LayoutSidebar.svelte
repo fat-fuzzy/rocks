@@ -1,8 +1,7 @@
 <script lang="ts">
-	import {onDestroy, type Snippet} from 'svelte'
+	import {type Snippet} from 'svelte'
 	import type { RevealNavProps } from '$lib/components/recipes/navs/nav.types.js'
 	import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
-	import  * as stores from '$lib/stores/ui.js'
 
 	// TODO: fix types
 	type Props = {
@@ -18,18 +17,6 @@
 	function toggleSidebar(event) {
 		sidebarReveal.reveal = event.value
 	}
-
-	const localStores = [
-		stores.sidebarReveal.subscribe((value) => {
-			if (value) {
-				sidebarReveal = value
-			}
-		}),
-	]
-
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 <div class="l:sidebar:lg">
