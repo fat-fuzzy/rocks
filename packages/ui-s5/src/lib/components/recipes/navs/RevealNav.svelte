@@ -30,7 +30,7 @@
 		breakpoint,
 		threshold,
 		variant,
-		align = 'start',
+		align = 'center',
 		place = 'top',
 		position,
 		container,
@@ -49,7 +49,7 @@
 	}
 
 	let formClasses = $derived(`form:${sidebarReveal.reveal}`)
-	let buttonAlign = place ? ALIGN_OPPOSITE[align] : ''
+	let buttonAlign = place ? ALIGN_OPPOSITE[align] : '' //  TODO - fix: this should be justify, not align
 	let navContainer = container ? `${container}:${size}` : ''
 	let navLayoutThreshold = breakpoint
 		? `bp:${breakpoint}`
@@ -117,6 +117,7 @@
 				{color}
 				name={`button-${id}`}
 				align={buttonAlign}
+				justify="start w:full"
 				controls={`nav-${id}`}
 				value={sidebarReveal.reveal}
 				{states}
