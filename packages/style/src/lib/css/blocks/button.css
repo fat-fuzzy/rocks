@@ -17,7 +17,7 @@ button {
 	background-color: var(--color-bg);
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: var(--justify, center);
 	flex-wrap: nowrap;
 	block-size: fit-content;
 	min-block-size: max-content;

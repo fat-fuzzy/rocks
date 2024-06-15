@@ -1,7 +1,6 @@
 [class^='l:reveal'] [class*='expand'] {
 	position: relative;
 	z-index: var(--layout-z-index-layer);
-	inline-size: 100%;
 	max-inline-size: calc(100% - var(--outline-offset-base));
 	color: var(--ink);
 	margin: var(--outline-offset-base);
@@ -18,6 +17,7 @@
 .l\:reveal.show .content {
 	padding-block: var(--outline-offset-base);
 	padding-inline: calc(3 * var(--outline-offset-base)) 0;
+	max-inline-size: calc(100% - var(--outline-offset-base));
 }
 
 .l\:reveal.minimize:not([class*='sticky']) .content {
