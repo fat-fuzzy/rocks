@@ -54,7 +54,7 @@
 				? `${itemClass} ${colorClass}`
 				: itemClass}
 		>
-			{#if subItems}
+			{#if subItems && depth > 0}
 				<ExpandLink
 					{title}
 					{reveal}
@@ -74,7 +74,17 @@
 			{:else}
 				<a data-sveltekit-preload-data href={format.formatHref(path, slug)}>
 					{title}
-				</a>
+				</a>{#if subItems}
+					<svelte:self
+						items={subItems}
+						path={format.formatHref(path, slug)}
+						id={`${id}-${slug}`}
+						{layout}
+						{size}
+						{align}
+						depth={depth + 1}
+					/>
+				{/if}
 			{/if}
 		</li>
 	{/each}

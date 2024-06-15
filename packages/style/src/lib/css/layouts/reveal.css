@@ -10,7 +10,6 @@
 .l\:reveal.show {
 	display: flex;
 	flex-direction: column;
-	block-size: 100%;
 	inline-size: 100%;
 }
 
@@ -18,6 +17,7 @@
 	padding-block: var(--outline-offset-base);
 	padding-inline: calc(3 * var(--outline-offset-base)) 0;
 	max-inline-size: calc(100% - var(--outline-offset-base));
+	scrollbar-gutter: stable;
 }
 
 .l\:reveal.minimize:not([class*='sticky']) .content {

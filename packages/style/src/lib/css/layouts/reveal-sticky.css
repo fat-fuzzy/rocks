@@ -22,12 +22,6 @@
 		transition: block-size 250ms ease-in-out;
 	}
 
-	&.show {
-		.content {
-			--y-size: 25vh; /* small screen column view */
-		}
-	}
-
 	&.minimize {
 		--y-size: var(--size-ui-header-height);
 		transition: block-size 250ms ease-in-out;
