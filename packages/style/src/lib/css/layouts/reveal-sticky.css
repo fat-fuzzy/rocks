@@ -34,5 +34,10 @@
 			padding-inline: 0;
 			white-space: nowrap;
 		}
+
+		nav {
+			block-size: calc(100vh - var(--size-ui-header-height));
+			overflow: scroll;
+		}
 	}
 }

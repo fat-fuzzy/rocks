@@ -28,6 +28,7 @@
 	padding: 0;
 	position: absolute;
 	white-space: nowrap;
+	scrollbar-gutter: stable;
 }
 
 [class^='l:reveal'] .end {

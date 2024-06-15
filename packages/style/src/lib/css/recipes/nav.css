@@ -35,6 +35,7 @@ nav li a {
 	overflow: hidden;
 	text-decoration: none;
 	margin-inline: var(--size-base-2xs);
+	min-width: 1em;
 }
 
 nav a:hover {
@@ -55,6 +56,7 @@ nav li a:visited {
 /* == RevealNav (tree-like navigation menus) == */
 ul.depth-1 {
 	padding-inline-start: 0;
+	padding-block-start: var(--ui-size-sm);
 }
 
 ul.depth-2 {
@@ -79,8 +81,6 @@ ul.depth-0 > li > a {
 
 /* Active Link */
 nav li[aria-current='page'] {
-	background-color: var(--accent);
-
 	/* Active Link */
 
 	> ul {
@@ -89,7 +89,6 @@ nav li[aria-current='page'] {
 
 	> a {
 		text-decoration-color: var(--accent);
-		background-color: var(--accent);
 	}
 
 	> ul a {
@@ -116,6 +115,12 @@ a[class*='card']:hover > *:not(.icon) {
 [class*='reveal-nav'] {
 	container-type: inline-size;
 	inline-size: 100%;
+	transition: inline-size 350ms ease-in-out;
+}
+
+[class*='reveal-nav'].minimize {
+	max-inline-size: var(--layout-sidebar-minimize);
+	transition: inline-size 350ms ease-in-out;
 }
 
 .reveal-nav\:2xs {
