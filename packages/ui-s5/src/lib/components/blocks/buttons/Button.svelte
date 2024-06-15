@@ -10,7 +10,7 @@
 		disabled,
 		formaction,
 		align,
-		justify,
+		justify = 'center',
 		asset, // emoji:value or svg:value
 		color,
 		size,

@@ -14,7 +14,7 @@
 		disabled,
 		formaction,
 		align,
-		justify,
+		justify = 'center',
 		asset,
 		color,
 		size,

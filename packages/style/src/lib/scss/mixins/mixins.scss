@@ -43,7 +43,7 @@ $current_cssvars: ();
 
 @mixin generate-emoji-assets($design_tokens, $prefix) {
 	@each $name, $value in $design_tokens {
-		.emoji\:#{$name}:not([class*='justify'])::before,
+		.emoji\:#{$name}::before,
 		.emoji\:#{$name}.justify\:start::before {
 			content: '#{$value}';
 		}

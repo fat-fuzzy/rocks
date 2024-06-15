@@ -12,7 +12,7 @@
 		formaction,
 		states,
 		align,
-		justify,
+		justify = 'center',
 		asset,
 		color,
 		size,
