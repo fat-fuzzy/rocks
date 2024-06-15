@@ -17,27 +17,27 @@
 
 	.content {
 		block-size: var(--y-size);
-		overflow: auto;
 		transition: inline-size 250ms ease-in-out;
 		transition: block-size 250ms ease-in-out;
 	}
 
 	&.minimize {
 		--y-size: var(--size-ui-header-height);
+		--x-size: 100%;
 		transition: block-size 250ms ease-in-out;
 
-		.content {
-			--y-size: 0;
-			border: 0;
-			overflow: hidden;
-			margin-inline: 0;
-			padding-inline: 0;
-			white-space: nowrap;
-		}
-
 		nav {
-			block-size: calc(100vh - var(--size-ui-header-height));
-			overflow: scroll;
+			inline-size: var(--x-size);
+			block-size: var(--y-size);
+
+			> .content {
+				--y-size: 0;
+				border: 0;
+				margin-inline: 0;
+				padding-inline: 0;
+				white-space: nowrap;
+				overflow: hidden;
+			}
 		}
 	}
 }

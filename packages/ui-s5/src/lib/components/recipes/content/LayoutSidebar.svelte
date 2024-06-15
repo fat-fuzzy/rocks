@@ -32,8 +32,8 @@
 	})
 </script>
 
-<div class="l:sidebar:md">
-	<div class={`l:side reveal-nav:sm ${sidebarReveal.reveal}`}>
+<div class="l:sidebar:lg">
+	<div class={`l:side reveal-nav:md ${sidebarReveal.reveal}`}>
 		<RevealNav
 			{...nav}
 			position="sticky"

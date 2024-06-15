@@ -13,7 +13,7 @@
 		},
 		"sidebar": {
 			"base": {"$value": "22ch"},
-			"minimize": {"$value": "5ch"},
+			"minimize": {"$value": "6ch"},
 			"md": {"$value": "{layout.sidebar.base}"},
 			"lg": {"$value": "calc(var(--layout-sidebar-md) * var(--size-ratio-sm))"},
 			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--size-ratio-sm))"},

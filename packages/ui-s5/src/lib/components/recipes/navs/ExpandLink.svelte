@@ -38,11 +38,11 @@
 		},
 	})
 
-	let layoutClasses = $derived(`l:reveal top  ${linkReveal[slug].reveal}`)
+	let layoutClasses = $derived(`l:reveal top variant:outline ${linkReveal[slug].reveal}`)
 </script>
 
 <div class={layoutClasses}>
-	<div class="l:flex nowrap justify:between">
+	<div class="l:flex nowrap size:xs justify:between">
 		<a data-sveltekit-preload-data href={href}>
 			{title}
 		</a>
@@ -53,9 +53,9 @@
 			{size}
 			{color}
 			{shape}
+			initial={linkReveal[slug].reveal}
 			name={`button-expand-${slug}`}
 			controls={`links-${slug}`}
-			value={linkReveal[slug].reveal}
 			{states}
 			onclick={toggleReveal}
 			formaction={`expand-${slug}`}

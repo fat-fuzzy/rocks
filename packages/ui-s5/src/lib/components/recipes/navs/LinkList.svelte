@@ -13,7 +13,7 @@
 	let {
 		path = '/',
 		layout,
-		size = 'md',
+		size = 'xs',
 		color = 'primary:600',
 		align,
 		id,
@@ -33,7 +33,7 @@
 	let colorClass = color ? `bg:${color}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
-	let gridClass = depth === 1 ? `l:grid:${size}` : layoutClass
+	let gridClass = depth === 1 ? `l:grid:xs` : layoutClass
 </script>
 
 <ul

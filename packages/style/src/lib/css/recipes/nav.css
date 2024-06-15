@@ -115,12 +115,10 @@ a[class*='card']:hover > *:not(.icon) {
 [class*='reveal-nav'] {
 	container-type: inline-size;
 	inline-size: 100%;
-	transition: inline-size 350ms ease-in-out;
 }
 
 [class*='reveal-nav'].minimize {
-	max-inline-size: var(--layout-sidebar-minimize);
-	transition: inline-size 350ms ease-in-out;
+	--sidebar-width: var(--layout-sidebar-minimize);
 }
 
 .reveal-nav\:2xs {

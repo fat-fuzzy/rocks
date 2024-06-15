@@ -2,7 +2,7 @@
 
 @mixin switchToRowStyles_RevealNav($containerSize, $size) {
 	@container reveal-nav-#{$size} (inline-size < #{$containerSize}) {
-		.l\:reveal[class*='sticky'] {
+		[class*='l:reveal'].sticky {
 			--y-size: calc(100vh - var(--size-ui-header-height));
 			position: sticky;
 			top: var(--y-axis);
@@ -36,28 +36,7 @@
 				}
 			}
 			.form\:minimize {
-				max-inline-size: calc(100% - var(--outline-offset-base));
-			}
-
-			&.minimize {
-				--y-size: 100%;
-				--x-size: calc(var(--layout-sidebar-minimize) + 1ch);
-
-				p,
-				a,
-				button,
-				li {
-					color: var(--color-bg-nav);
-					background-color: var(--color-bg-nav);
-				}
-
-				.content {
-					--x-axis: calc(var(--x-size) * -1);
-					inline-size: var(--x-size);
-					max-inline-size: calc(100% - var(--outline-offset-base));
-					block-size: 100%;
-					border-inline-end: var(--border-width-md) solid var(--ink);
-				}
+				inline-size: var(--x-size);
 			}
 
 			&.left nav,
@@ -75,6 +54,34 @@
 					padding-block: var(--ui-size) var(--ui-size-lg);
 				}
 			}
+
+			&.minimize.left,
+			&.minimize.right {
+				--y-size: calc(100vh - var(--size-ui-header-height));
+				--x-size: calc(var(--layout-sidebar-minimize) + 1ch);
+
+				.content {
+					--x-axis: calc(var(--x-size) * -1);
+					inline-size: var(--x-size);
+					max-inline-size: calc(100% - var(--outline-offset-base));
+					border-inline-end: var(--border-width-md) solid var(--ink);
+				}
+
+				nav {
+					.content {
+						block-size: calc(100vh - var(--size-ui-header-height));
+						overflow: hidden auto;
+					}
+					.content .depth-1 .show .content {
+						block-size: fit-content;
+						overflow: hidden auto;
+					}
+					.content .depth-1 .minimize .content {
+						block-size: 0;
+						overflow: hidden;
+					}
+				}
+			}
 		}
 	}
 }
@@ -82,7 +89,7 @@
 @include switchToRowStyles_RevealNav(220px, '2xs');
 @include switchToRowStyles_RevealNav(240px, 'xs');
 @include switchToRowStyles_RevealNav(260px, 'sm');
-@include switchToRowStyles_RevealNav(280px, 'md');
+@include switchToRowStyles_RevealNav(300px, 'md');
 @include switchToRowStyles_RevealNav(320px, 'lg');
 @include switchToRowStyles_RevealNav(360px, 'xl');
 @include switchToRowStyles_RevealNav(380px, '2xl');
