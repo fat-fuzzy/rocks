@@ -14,6 +14,7 @@
 		formaction,
 		states,
 		align,
+		justify,
 		asset,
 		color,
 		size,
@@ -51,7 +52,14 @@
 	let fontClass = size ? `font:${size}` : ''
 	let shapeClass = shape ? ` shape:${shape}` : ''
 	let alignClass = align ? `align:${align}` : ''
-	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${fontClass}`
+	let justifyClass = justify ? `justify:${justify}` : ''
+
+	let currentVariant = $state(currentState.variant ?? variant)
+	let variantClass = $derived(currentVariant ? `variant:${currentVariant}` : '')
+	let currentAsset = $state(currentState.asset ?? asset)
+	let	assetClass = $derived(currentAsset ? `emoji:${currentAsset}` : '')
+
+	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass}`
 	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
 
 	/* Context styles */
@@ -59,18 +67,7 @@
 	if (container) {
 		containerClasses = dimensions ? `l:${container}:${dimensions}` : `l:${container}:${size}`
 	}
-
-	let buttonClasses = $derived.by(() => {
-		/* State dependent styles */
-		let variantClass = currentState.variant ?? variant
-		variantClass = variantClass ? `variant:${variantClass}` : ''
-		let assetClass = (currentState.asset ?? asset) ?? ''
-		assetClass = assetClass ? `emoji:${assetClass}` : ''
-		let stateClasses = `${assetClass} ${variantClass}`
-
-		return `expand ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
-	})
-
+	let buttonClasses = $derived( `expand ${containerClasses} ${layoutClasses} ${elementClasses} ${assetClass} ${variantClass}`)
 
 	function handleClick(event: MouseEvent) {
 		// The payload corresponds the value that is displayed to the user before the click

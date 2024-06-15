@@ -12,6 +12,7 @@
 		formaction,
 		states,
 		align,
+		justify,
 		asset,
 		color,
 		size,
@@ -50,7 +51,9 @@
 	let fontClass = size ? `font:${size}` : ''
 	let shapeClass = shape ? ` shape:${shape}` : ''
 	let alignClass = align ? `align:${align}` : ''
-	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${fontClass}`
+	let justifyClass = justify ? `justify:${justify}` : ''
+
+	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass}`
 	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
 
 	/* Context styles */

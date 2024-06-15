@@ -14,6 +14,7 @@
 		disabled,
 		formaction,
 		align,
+		justify,
 		asset,
 		color,
 		size,
@@ -51,8 +52,9 @@
 	let variantClass = variant ? `variant:${variant}` : ''
 	let shapeClass = shape ? ` shape:${shape}` : ''
 	let alignClass = align ? `align:${align}` : ''
+	let justifyClass = justify ? `justify:${justify}` : ''
 
-	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${fontClass} ${variantClass} ${assetClass}`
+	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass} ${variantClass} ${assetClass}`
 	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
 
 	/* Context styles */

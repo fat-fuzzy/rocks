@@ -10,6 +10,7 @@
 		disabled,
 		formaction,
 		align,
+		justify,
 		asset, // emoji:value or svg:value
 		color,
 		size,
@@ -37,6 +38,7 @@
 	let variantClass = variant ? `variant:${variant}` : '';
 	let shapeClass = shape ? ` shape:${shape}` : '';
 	let alignClass = align ? `align:${align}` : '';
+	let justifyClass = justify ? `justify:${justify}` : ''
 
 	/* Context styles */
 	let containerClasses = container && dimensions
@@ -45,7 +47,7 @@
 	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`;
 	let contextClasses =`${containerClasses} ${layoutClasses}`;
 
-	let elementClasses = `${assetClass} ${colorClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${fontClass}`;
+	let elementClasses = `${assetClass} ${colorClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass}`;
 
 	let buttonClasses = `${contextClasses} ${elementClasses}`
 
