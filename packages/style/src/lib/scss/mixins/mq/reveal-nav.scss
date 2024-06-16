@@ -9,8 +9,6 @@
 			position: sticky;
 			top: var(--y-axis);
 			z-index: 1;
-			inline-size: var(--x-size);
-			block-size: var(--y-size);
 
 			&.show {
 				--y-size: calc(100vh - var(--size-ui-header-height));
@@ -53,13 +51,12 @@
 			&.minimize.left,
 			&.minimize.right {
 				--y-size: calc(100vh - var(--size-ui-header-height));
-				--x-size: calc(var(--layout-sidebar-minimize) + 1ch);
+				--x-size: calc(var(--layout-sidebar-minimize) + var(--ui-size-lg));
 
 				.content {
 					--x-axis: calc(var(--x-size) * -1);
 					inline-size: var(--x-size);
 					max-inline-size: calc(100% - var(--outline-offset-base));
-					border-inline-end: var(--border-width-md) solid var(--ink);
 				}
 
 				nav {

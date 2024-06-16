@@ -78,15 +78,15 @@
 
 	let nav = {
 		path: '',
-		title: 'Design Library',
+		title: 'Menu',
 		id: 'nav-page',
 		items,
 		reveal: 'show',
-		settings: playbookStore.app,
+		settings: {...playbookStore.app},
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',
-		position: 'fixed',
+		position: 'sticky',
 		place: 'left',
 		background: 'polar',
 		formaction: 'toggleSidebar',

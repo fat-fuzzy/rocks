@@ -11,7 +11,7 @@
 	let page = getStores().page
 
 	let {
-		path = '/',
+		path = '',
 		layout,
 		size = 'xs',
 		color = 'primary:600',
@@ -72,9 +72,14 @@
 					/>
 				</ExpandLink>
 			{:else}
-				<a data-sveltekit-preload-data href={format.formatHref(path, slug)}>
+				<a
+					data-sveltekit-preload-data
+					href={format.formatHref(path, slug)}
+					class="card:xs font:md"
+				>
 					{title}
-				</a>{#if subItems}
+				</a>
+				{#if subItems}
 					<svelte:self
 						items={subItems}
 						path={format.formatHref(path, slug)}

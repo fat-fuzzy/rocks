@@ -25,7 +25,7 @@
 		items,
 		reveal: 'show',
 		breakpoint: 'sm',
-		size: 'sm',
+		size: 'md',
 		color: 'primary:600',
 		position: 'sticky',
 		place: 'left',

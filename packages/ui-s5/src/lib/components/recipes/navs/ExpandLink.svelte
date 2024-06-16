@@ -38,19 +38,19 @@
 		},
 	})
 
-	let layoutClasses = $derived(`l:reveal top variant:outline ${linkReveal[slug].reveal}`)
+	let layoutClasses = $derived(`l:reveal top ${linkReveal[slug].reveal}`)
 </script>
 
 <div class={layoutClasses}>
-	<div class="l:flex nowrap size:xs justify:between">
-		<a data-sveltekit-preload-data href={href}>
+	<div class="l:flex nowrap justify:between">
+		<a data-sveltekit-preload-data href={href} class="card:xs font:md">
 			{title}
 		</a>
 		<Expand
 			id={`button-expand-${slug}`}
 			{variant}
 			{title}
-			{size}
+			size='sm'
 			{color}
 			{shape}
 			initial={linkReveal[slug].reveal}

@@ -28,6 +28,7 @@ nav > ul ul li:has(ul) {
 }
 
 nav li a {
+	--border-radius-base: 0;
 	max-width: 100%;
 	font-weight: var(--font-weight-link);
 	font-size: var(--font-size-ui);
@@ -36,14 +37,12 @@ nav li a {
 	text-decoration: none;
 	margin-inline: var(--size-base-2xs);
 	min-width: 1em;
+	margin: var(--outline-offset-nav);
 }
 
 [class*='reveal-nav'] {
 	container-type: inline-size;
 	inline-size: 100%;
-	a {
-		margin-inline: 0;
-	}
 }
 
 [class*='reveal-nav'].minimize {
