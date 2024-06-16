@@ -8,7 +8,7 @@ import './color/background.css'
 import './color/surface.css'
 import './color/ui.css'
 import './color/semantic.css'
-import './color/contrast.css'
+import './color/settings.css'
 
 /* State */
 import './ui/state.css'

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
 
 	import * as settings from '$stores/settings.js'
@@ -47,14 +46,14 @@
 		switch (event.id) {
 			case 'brightness':
 				appSettings.brightness = event.value
-				if (onupdate) onupdate(event)
+				break
 			case 'contrast':
 				appSettings.contrast = event.value
-				if (onupdate) onupdate(event)
 				break
 			default:
 				break
 		}
+		if (onupdate) onupdate(event)
 	}
 
 	let reveal = $derived(settingsReveal.reveal)

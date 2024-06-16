@@ -17,6 +17,7 @@
 	--sidebar-width: var(--layout-sidebar-md);
 	--gap: var(--layout-gap-md);
 
+	color-scheme: light;
 	--hue: var(--color-theme-primary);
 	--lightness: var(--color-lightness-light);
 	--lightness-accent: var(--color-lightness-300);

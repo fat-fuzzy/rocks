@@ -1,13 +1,12 @@
 <script lang="ts">
-	import {onDestroy, type Snippet} from 'svelte'
+	import {type Snippet} from 'svelte'
 	import '@fat-fuzzy/style'
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$data/nav'
-	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui-s5'
+	import {recipes, utils, constants} from '@fat-fuzzy/ui-s5'
 
 	const {Header} = recipes
-	const {settings} = stores
 	const {DEFAULT_APP_SETTINGS, APP_LINKS} = constants
 
 	type Props = {
@@ -15,7 +14,7 @@
 		children?: Snippet
 	}
 
-	let {children}:Props = $props()
+	let {children}: Props = $props()
 
 	let appSettings = $state($page.data.app || DEFAULT_APP_SETTINGS)
 
@@ -25,13 +24,14 @@
 	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
 	let layoutClass =
 		APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
-	let mainClass =  $derived(`${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`)
-	let footerClass =  $derived(`l:center font:sm ${brightness} bg:${contrast}`)
+	let mainClass =  $derived(`${pageClass} settings:${brightness}:${contrast} l:page:${layoutClass}`)
+	let footerClass =  $derived(`l:center font:sm settings:${brightness}:${contrast}`)
 
 	function updateSettings(event) {
 		switch (event.id) {
 			case 'brightness':
 				appSettings.brightness = event.value
+				break
 			case 'contrast':
 				appSettings.contrast = event.value
 				break

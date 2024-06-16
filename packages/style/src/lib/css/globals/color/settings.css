@@ -1,13 +1,127 @@
-.day {
-	--chroma: var(--color-chroma-300);
-	--lightness: var(--color-lightness-300);
-	--chroma-contrast: var(--color-chroma-000);
-	--lightness-contrast: var(--color-lightness-000);
+:root {
+	color-scheme: light;
+	--hue: var(--color-theme-primary);
+	--lightness: var(--color-lightness-light);
+	--lightness-accent: var(--color-lightness-300);
+	--lightness-contrast: var(--color-lightness-600);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent: var(--color-chroma-300);
+	--chroma-contrast: var(--color-chroma-600);
+	--chroma-ink: var(--color-chroma-600);
+
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
-.night {
-	--chroma: var(--color-chroma-200);
-	--lightness: var(--color-lightness-200);
-	--chroma-contrast: var(--color-chroma-600);
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+
+		--hue: var(--color-theme-primary);
+		--lightness: var(--color-lightness-dark);
+		--lightness-accent: var(--color-lightness-400);
+		--lightness-contrast: var(--color-lightness-000);
+		--chroma: var(--color-chroma-neutral);
+		--chroma-accent: var(--color-chroma-400);
+		--chroma-contrast: var(--color-chroma-000);
+		--chroma-ink: var(--color-chroma-000);
+
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+		--shadow: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+
+		--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+			var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+		--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+			var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+		--shadow-inset-sm: var(--shadow-sm);
+		--shadow-inset-md: var(--shadow-md);
+	}
+}
+
+.settings\:day\:blend,
+.settings\:day\:contrast,
+[color-scheme='light'] {
+	color-scheme: light;
+
+	--hue: var(--color-theme-primary);
+	--lightness: var(--color-lightness-light);
+	--lightness-accent: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-600);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent: var(--color-chroma-300);
+	--chroma-contrast: var(--color-chroma-600);
+	--chroma-ink: var(--color-chroma-600);
+
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
+.settings\:night\:blend,
+.settings\:night\:contrast,
+[color-scheme='dark'] {
+	color-scheme: dark;
+
+	--hue: var(--color-theme-primary);
+	--lightness: var(--color-lightness-dark);
+	--lightness-accent: var(--color-lightness-400);
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent: var(--color-chroma-400);
+	--chroma-contrast: var(--color-chroma-000);
+	--chroma-ink: var(--color-chroma-000);
+
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
+/* == Contrast == */
+.bg\:polar,
+.bg\:contrast > .bg\:polar {
+	/* TODO: adjust color */
+	--color-bg: var(--shade);
+}
+
+.bg\:contrast,
+.bg\:polar > .bg\:contrast {
+	/* TODO: adjust color */
+	--color-bg: var(--shade);
+}
+
+.bg\:polar > .bg\:polar,
+.bg\:blend > .bg\:blend,
+.bg\:contrast > .bg\:contrast {
+	background-color: inherit;
 }
