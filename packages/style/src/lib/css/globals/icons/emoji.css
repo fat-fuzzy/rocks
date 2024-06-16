@@ -1,5 +1,5 @@
 [class*='emoji:']::before {
-	--icon-size: var(--font-size-plus);
+	--icon-size: var(--font-size);
 	font-size: var(--icon-size);
 	display: inline;
 	inline-size: fit-content;
