@@ -16,9 +16,17 @@
 	transition: block-size 250ms ease-in-out;
 
 	.content {
+		/* transition: transform 250ms ease-in-out; */
+		--lightness-scrollbar: var(--color-lightness-000);
+		--chroma-scrollbar: var(--color-chroma-000);
+		--track: oklch(
+			var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
+		);
+		--thumb: var(--ink);
 		block-size: var(--y-size);
 		transition: inline-size 250ms ease-in-out;
 		transition: block-size 250ms ease-in-out;
+		scrollbar-color: var(--thumb) var(--track);
 	}
 
 	&.minimize {

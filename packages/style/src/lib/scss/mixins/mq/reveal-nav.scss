@@ -18,17 +18,10 @@
 				/* transition: transform 250ms ease-in-out; */
 
 				.content {
-					--lightness-scrollbar: var(--color-lightness-000);
-					--chroma-scrollbar: var(--color-chroma-000);
-					--track: oklch(
-						var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
-					);
-					--thumb: var(--ink);
 					overflow: hidden auto;
 					inline-size: var(--x-size);
 					block-size: fit-content;
 					transform: translateX(0);
-					scrollbar-color: var(--thumb) var(--track);
 					opacity: 1;
 					transition: transform 100ms ease-in;
 				}
