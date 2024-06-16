@@ -3,16 +3,16 @@
 @mixin switchToRowStyles_RevealNav($containerSize, $size) {
 	@container reveal-nav-#{$size} (inline-size < #{$containerSize}) {
 		[class*='l:reveal'].sticky {
-			--y-size: calc(
-				100vh - var(--size-ui-header-height) - var(--outline-offset-base)
+			--y-size-sticky: calc(
+				100vh - var(--size-ui-header-height) - var(--outline-offset-settings)
 			);
 			position: sticky;
 			top: var(--y-axis);
 			z-index: 1;
 
 			&.show {
-				--y-size: calc(100vh - var(--size-ui-header-height));
-				--x-size: calc(var(--sidebar-width) - var(--outline-offset-base));
+				--y-size: var(--y-size-sticky);
+				--x-size: calc(var(--sidebar-width) - var(--outline-offset-settings));
 				/* transition: transform 250ms ease-in-out; */
 
 				.content {
@@ -28,20 +28,12 @@
 					inline-size: 100%;
 				}
 			}
-			.form\:minimize {
-				inline-size: var(--x-size);
-			}
 
 			&.left nav,
 			&.right nav {
 				display: flex;
 				flex-direction: column;
 				overflow: hidden auto;
-
-				.form\:show {
-					inline-size: calc(100% - 2 * var(--outline-offset-settings));
-					align-self: center;
-				}
 
 				ul.depth-0 {
 					padding-block: var(--ui-size) var(--ui-size-lg);
@@ -50,7 +42,7 @@
 
 			&.minimize.left,
 			&.minimize.right {
-				--y-size: calc(100vh - var(--size-ui-header-height));
+				--y-size: var(--y-size-sticky);
 				--x-size: calc(var(--layout-sidebar-minimize) + var(--ui-size-lg));
 
 				.content {
@@ -75,6 +67,16 @@
 				}
 			}
 		}
+	}
+}
+
+/**
+	 * This fixes the layout for the reveal nav when the sidebar is minimized
+	 * TODO: figure out how to avoid this magic stuff: design change? / code change?
+	 */
+@media screen and (min-width: 1225px) {
+	[class*='reveal-nav'].minimize {
+		--sidebar-width: calc(var(--layout-sidebar-minimize) + var(--ui-size-lg));
 	}
 }
 

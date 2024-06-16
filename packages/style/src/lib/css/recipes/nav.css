@@ -43,10 +43,15 @@ nav li a {
 [class*='reveal-nav'] {
 	container-type: inline-size;
 	inline-size: 100%;
-}
 
-[class*='reveal-nav'].minimize {
-	--sidebar-width: var(--layout-sidebar-minimize);
+	nav > form {
+		padding: var(--outline-offset-nav);
+		inline-size: 100%;
+	}
+
+	nav > form > [aria-expanded] {
+		border-radius: 0;
+	}
 }
 
 nav a:hover {
