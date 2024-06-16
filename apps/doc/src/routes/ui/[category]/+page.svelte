@@ -3,7 +3,7 @@
 	import {page} from '$app/stores'
 	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
-	import appStore from '../../stores.svelte.js'
+	import appStore from '$lib/stores/stores.svelte.js'
 
 	const {PageMain} = content
 	const {Collection, Api} = api

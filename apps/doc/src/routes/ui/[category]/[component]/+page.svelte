@@ -4,7 +4,7 @@
 
 	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
-	import appStore from '../../../stores.svelte.js'
+	import appStore from '$lib/stores/stores.svelte.js'
 	const {DEFAULT_TABS, TABS} = constants
 
 	const {PageMain} = content
