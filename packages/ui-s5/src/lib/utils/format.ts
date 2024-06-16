@@ -26,7 +26,7 @@ function formatLabel(text: string, asset?: string | SVGElement) {
 }
 
 function formatHref(path: string, slug: string) {
-	return `${path}/${slug}`
+	return slug ? `${path}/${slug}` : path
 }
 
 function getClassNameFromPathname(path: string) {
