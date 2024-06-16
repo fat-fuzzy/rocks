@@ -77,6 +77,9 @@ function getElementDoc(props_style: StyleProps | undefined) {
 }
 
 function getElementProps(meta: Meta): StyleProps {
+	if (!meta) {
+		return {}
+	}
 	const {props_style, props_state} = meta
 
 	const props: StyleProps = {}

@@ -27,8 +27,8 @@ export class StylesApi {
 	}
 
 	getFormOptions(category: string, meta: Meta | undefined): StyleCategory[] {
-		if (meta && meta.props_style) {
-			return this.filterFormOptions(meta.props_style)
+		if (meta?.props_style) {
+			return this.filterFormOptions(meta.props_style) // TODO : fix types
 		}
 		return [this.getCategoryOptions(category)]
 	}

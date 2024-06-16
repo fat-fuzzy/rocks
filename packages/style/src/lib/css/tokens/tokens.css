@@ -84,7 +84,7 @@
   --font-family-vendor-serif: Trirong;
   --font-leading-body: 1.75;
   --font-leading-heading: 1.25;
-  --font-leading-ui: 1.4;
+  --font-leading-ui: 2;
   --font-size-2xl: var(--fluid-3);
   --font-size-2xs: var(--fluid--3);
   --font-size-body: var(--fluid-0);
@@ -143,7 +143,7 @@
   --layout-sidebar-base: 22ch;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
-  --layout-sidebar-minimize: 6ch;
+  --layout-sidebar-minimize: 4em;
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
   --layout-sidebar-xl: calc(var(--layout-sidebar-lg) * var(--size-ratio-sm));
   --layout-sidebar-xs: calc(var(--layout-sidebar-sm) / var(--size-ratio-sm));

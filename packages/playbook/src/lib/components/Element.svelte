@@ -75,7 +75,7 @@
 		playbookStore.getElementFixtures({category, component: title}),
 	)
 	let categories = $derived(
-		meta.props_style ? Object.keys(meta.props_style) : undefined,
+		meta?.props_style ? Object.keys(meta.props_style) : undefined,
 	)
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),

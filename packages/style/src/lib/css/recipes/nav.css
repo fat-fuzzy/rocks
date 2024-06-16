@@ -19,6 +19,7 @@ nav li {
 	text-overflow: ellipsis;
 	padding: calc(var(--size-base-2xs) / var(--ratio-md)) var(--size-base-2xs);
 	margin-block: 0;
+	line-height: var(--font-leading-ui);
 }
 
 nav > ul ul li:has(ul) {
@@ -30,12 +31,23 @@ nav li a {
 	max-width: 100%;
 	font-weight: var(--font-weight-link);
 	font-size: var(--font-size-ui);
-	line-height: 1;
 	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
 	overflow: hidden;
 	text-decoration: none;
 	margin-inline: var(--size-base-2xs);
 	min-width: 1em;
+}
+
+[class*='reveal-nav'] {
+	container-type: inline-size;
+	inline-size: 100%;
+	a {
+		margin-inline: 0;
+	}
+}
+
+[class*='reveal-nav'].minimize {
+	--sidebar-width: var(--layout-sidebar-minimize);
 }
 
 nav a:hover {
@@ -60,7 +72,8 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
-	padding-inline-start: calc(2 * var(--ui-size));
+	padding-inline: calc(2 * var(--ui-size)) var(--ui-size);
+	padding-block: calc(2 * var(--outline-offset-settings));
 }
 
 ul.depth-3 {
@@ -110,15 +123,6 @@ a[class*='card'] {
 /* == Override heading styles for headings inside links == */
 a[class*='card']:hover > *:not(.icon) {
 	text-decoration: underline;
-}
-
-[class*='reveal-nav'] {
-	container-type: inline-size;
-	inline-size: 100%;
-}
-
-[class*='reveal-nav'].minimize {
-	--sidebar-width: var(--layout-sidebar-minimize);
 }
 
 .reveal-nav\:2xs {

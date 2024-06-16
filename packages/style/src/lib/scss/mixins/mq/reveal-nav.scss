@@ -3,7 +3,9 @@
 @mixin switchToRowStyles_RevealNav($containerSize, $size) {
 	@container reveal-nav-#{$size} (inline-size < #{$containerSize}) {
 		[class*='l:reveal'].sticky {
-			--y-size: calc(100vh - var(--size-ui-header-height));
+			--y-size: calc(
+				100vh - var(--size-ui-header-height) - var(--outline-offset-base)
+			);
 			position: sticky;
 			top: var(--y-axis);
 			z-index: 1;
@@ -12,7 +14,7 @@
 
 			&.show {
 				--y-size: calc(100vh - var(--size-ui-header-height));
-				--x-size: calc(var(--sidebar-width) - var(--ui-size));
+				--x-size: calc(var(--sidebar-width) - var(--outline-offset-base));
 				/* transition: transform 250ms ease-in-out; */
 
 				.content {

@@ -11,18 +11,6 @@
 			max-block-size: unset;
 		}
 
-		.l\:reveal.minimize [aria-expanded='true'] {
-			font-size: 0;
-		}
-
-		.l\:reveal.minimize [aria-expanded='true']::before {
-			margin-inline-end: 0;
-		}
-
-		.l\:reveal.minimize [aria-expanded='true']::after {
-			margin-inline-start: 0;
-		}
-
 		/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
 
 		/* Fixes bug in Safari where .content overflows parent width */
