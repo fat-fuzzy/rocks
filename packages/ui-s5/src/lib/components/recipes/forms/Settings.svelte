@@ -27,24 +27,12 @@
 		redirect,
 		items,
 		children,
+		onupdate,
 	}: SettingsProps = $props()
 
 	let settingsId = id
 	let appSettings = $state(DEFAULT_APP_SETTINGS)
 	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
-
-	const stores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-		settings.settingsReveal.subscribe((value) => {
-			if (value) {
-				settingsReveal = value
-			}
-		}),
-	]
 
 	function handleClickOutsideSettings() {
 		settings.settingsReveal.set({reveal: 'minimize'})
@@ -56,29 +44,24 @@
 	}
 
 	function handleUpdate(event) {
-		let updated
 		switch (event.id) {
-			case 'contrast':
-				updated = event.active ? 'contrast' : 'blend'
-				settings.app.set({
-					brightness: appSettings.brightness,
-					contrast: updated,
-				})
-				break
 			case 'brightness':
-				updated = event.active ? 'night' : 'day'
-				settings.app.set({brightness: updated, contrast: appSettings.contrast})
+				appSettings.brightness = event.value
+				if (onupdate) onupdate(event)
+			case 'contrast':
+				appSettings.contrast = event.value
+				if (onupdate) onupdate(event)
 				break
 			default:
 				break
 		}
 	}
 
-	let reveal = settingsReveal.reveal
-	let brightness = appSettings.brightness
+	let reveal = $derived(settingsReveal.reveal)
+	let brightness = $derived(appSettings.brightness)
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
 	let show = `show ${showBackground}`
-	let showSettings = reveal === 'show' ? show : 'hide:viz-only'
+	let showSettings = $derived(reveal === 'show' ? show : 'hide:viz-only')
 	let revealClasses = `form:expand card:md nowrap`
 	let formClasses = `l:switcher:xs maki:block:2xs ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
@@ -89,10 +72,6 @@
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
 		: 'toggleNav'
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 <div class={layoutClasses}>

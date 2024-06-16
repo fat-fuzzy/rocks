@@ -7,6 +7,11 @@ import type {SwitchProps} from '$lib/components/blocks/buttons/Switch/switch.typ
 export type SettingsItems = {
 	switch: SwitchProps[]
 	links: {[key: string]: string}[]
+	onupdate?: (payload: {
+		name: string
+		value: string | number
+		state: string
+	}) => void
 }
 
 export type SettingsProps = UiBlockProps &
@@ -16,4 +21,9 @@ export type SettingsProps = UiBlockProps &
 		path?: String
 		items: SettingsItems
 		children?: Snippet
+		onupdate?: (payload: {
+			name: string
+			value: string | number
+			state: string
+		}) => void
 	}

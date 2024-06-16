@@ -17,27 +17,28 @@
 
 	let {children}:Props = $props()
 
-	let appSettings = $page.data.app || DEFAULT_APP_SETTINGS
+	let appSettings = $state($page.data.app || DEFAULT_APP_SETTINGS)
 
-	const localStores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-	]
 
-	let brightness = appSettings.brightness
-	let contrast = appSettings.contrast
+	let brightness = $derived(appSettings.brightness)
+	let contrast = $derived(appSettings.contrast)
 	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
 	let layoutClass =
 		APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
-	let mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
-	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`
+	let mainClass =  $derived(`${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`)
+	let footerClass =  $derived(`l:center font:sm ${brightness} bg:${contrast}`)
 
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
-	})
+	function updateSettings(event) {
+		switch (event.id) {
+			case 'brightness':
+				appSettings.brightness = event.value
+			case 'contrast':
+				appSettings.contrast = event.value
+				break
+			default:
+				break
+		}
+	}
 </script>
 
 <Header
@@ -46,7 +47,7 @@
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
-	items={{links, settings: itemsSettings}}
+	items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
 	breakpoint="xs"
 />
 <main id="main" class={mainClass}>

@@ -127,5 +127,6 @@
 		{actionPath}
 		redirect={path}
 		items={items.settings}
+		onupdate={items.settings.onupdate}
 	/>
 </header>
