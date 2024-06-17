@@ -9,7 +9,7 @@
 		content,
 		constants,
 	} from '@fat-fuzzy/ui-s5'
-	import PlaybookStore from '$lib/api/store.svelte'
+	import playbookStore from '$lib/api/store.svelte'
 	import * as api from '$lib/api/styles.api'
 
 	const {LayoutSidebar} = content
@@ -19,7 +19,7 @@
 		children: Snippet
 	}	
 	let {redirect, children}: Props= $props()
-	let playbookStore = new PlaybookStore()
+	let appSettings = $derived(playbookStore.app)
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -100,7 +100,7 @@
 	})
 </script>
 
-<LayoutSidebar {nav} {redirect} path=''>
+<LayoutSidebar {nav} {redirect} path='' app={{settings: appSettings}}>
 	{#if children}
 		{@render children()}
 	{/if}

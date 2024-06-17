@@ -8,18 +8,22 @@
 		path: string,
 		nav: RevealNavProps,
 		redirect: string,
+		app: {settings: {[key: string]: string}}
 		children: Snippet
 	}
-	let {path, nav, redirect, children}: Props = $props()
+	let {path, nav, redirect, app, children}: Props = $props()
 
 	let sidebarReveal: {[key: string]: string} = $state({reveal: ''})
+	let brightness = $derived(app.settings.brightness)
+	let contrast = $derived(app.settings.contrast)
+	let settingsClass = $derived(`settings:${brightness}:${contrast}`)
 
 	function toggleSidebar(event) {
 		sidebarReveal.reveal = event.value
 	}
 </script>
 
-<div class="l:sidebar:lg align-content:start">
+<div class={`l:sidebar:lg align-content:start ${settingsClass}`}>
 	<div class={`l:side reveal-nav:md ${sidebarReveal.reveal}`}>
 		<RevealNav
 			{...nav}

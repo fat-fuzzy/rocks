@@ -1,10 +1,13 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {content} from '@fat-fuzzy/ui-s5'
+	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {LayoutSidebar} = content
 
 	let {children} = $props()
+	let appSettings = $derived(fatFuzzyStore.app)
+
 	let path = ''
 	let items = [
 		{
@@ -34,7 +37,7 @@
 	}
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} path=''>
+<LayoutSidebar {nav} redirect={$page.url.pathname} path='' app={{settings: appSettings}}>
 	{#if children}
 		{@render children()}
 	{:else}

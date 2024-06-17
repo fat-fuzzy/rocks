@@ -21,7 +21,6 @@
 	]
 	let currentTabs = fatFuzzyStore.currentTabs
 	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
-	let appSettings = $derived(fatFuzzyStore.app)
 
 	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
@@ -46,7 +45,7 @@
 	}
 </script>
 
-<PageMain {title} {description} size="xl" app={{settings: appSettings}}>
+<PageMain {title} {description} size="xl">
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 		<div class="l:main:50 l:flex justify:end">

@@ -1,10 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {content} from '@fat-fuzzy/ui-s5'
-	import sketchStore from '$lib/stores/stores.svelte'
-
-
-	let appSettings = $derived(sketchStore.app)
 
 	const {PageMain} = content
 	const title = 'Play'
@@ -15,7 +11,7 @@
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
 </script>
 
-<PageMain {title} {description} app={{settings: appSettings}}>
+<PageMain {title} {description}>
 	{#snippet header()}
 		<h1 class="w:full">Fat Fuzzy {title}</h1>
 		<h2><small>Tags</small></h2>

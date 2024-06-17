@@ -1,6 +1,5 @@
 .scroll\:y {
 	scroll-snap-type: y proximity;
-	block-size: 100%;
 	overflow-y: auto;
 }
 
