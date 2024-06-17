@@ -25,12 +25,10 @@
 	})
 </script>
 
-{#key blockProps}
-	{#if isPage && containerStyles.container}
-		<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
-			<svelte:component this={component} id={title} {...blockProps} />
-		</div>
-	{:else}
+{#if isPage && containerStyles.container}
+	<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
 		<svelte:component this={component} id={title} {...blockProps} />
-	{/if}
-{/key}
+	</div>
+{:else}
+	<svelte:component this={component} id={title} {...blockProps} />
+{/if}

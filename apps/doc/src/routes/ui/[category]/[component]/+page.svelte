@@ -154,6 +154,7 @@
 			</aside>
 		</article>
 	{:else if currentTab.value === 'demo'}
+	{#key Component}
 		<Element
 			isPage={true}
 			depth={1}
@@ -165,5 +166,6 @@
 			{actionPath}
 			redirect={$page.url.pathname}
 		/>
+		{/key}
 	{/if}
 </PageMain>

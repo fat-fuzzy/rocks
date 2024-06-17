@@ -71,6 +71,7 @@
 			? `l:${container}:${size} content`
 			: 'content',
 	)
+	let componentType = $derived(ApiElement[category])
 	let fixtures = $derived(
 		playbookStore.getElementFixtures({category, component: title}),
 	)
@@ -90,7 +91,7 @@
 					{@const currentProps =
 						fixtures.status.find((p) => p.case === status) || {}}
 					<svelte:component
-						this={ApiElement[category]}
+						this={componentType}
 						{isPage}
 						{title}
 						{path}
@@ -104,7 +105,7 @@
 					/>
 				{:else}
 					<svelte:component
-						this={ApiElement[category]}
+						this={componentType}
 						{isPage}
 						{title}
 						{path}
@@ -154,7 +155,7 @@
 				{@const currentProps =
 					fixtures.status.find((p) => p.case === status) || {}}
 				<svelte:component
-					this={ApiElement[category]}
+					this={componentType}
 					{isPage}
 					{path}
 					{title}
@@ -168,7 +169,7 @@
 				/>
 			{:else}
 				<svelte:component
-					this={ApiElement[category]}
+					this={componentType}
 					{isPage}
 					{path}
 					{title}
