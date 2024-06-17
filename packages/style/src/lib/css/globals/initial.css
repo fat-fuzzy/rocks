@@ -16,34 +16,11 @@
 	--font-size: var(--font-size-md);
 	--sidebar-width: var(--layout-sidebar-md);
 	--gap: var(--layout-gap-md);
-
-	color-scheme: light;
-	--hue: var(--color-theme-primary);
-	--lightness: var(--color-lightness-light);
-	--lightness-accent: var(--color-lightness-300);
-	--lightness-contrast: var(--color-lightness-600);
-	--chroma: var(--color-chroma-neutral);
-	--chroma-accent: var(--color-chroma-300);
-	--chroma-contrast: var(--color-chroma-600);
-	--chroma-ink: var(--color-chroma-600);
-	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-	--shadow: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-
-	--shadow-inset-sm: var(--shadow-sm);
-	--shadow-inset-md: var(--shadow-md);
 }
 
 body {
-	--color-bg: var(--shade);
 	color: var(--ink);
-	background: var(--color-bg);
+	background-color: var(--shade);
 	font-family: var(--font-family-body);
 	font-size: var(--font-size-body);
 	font-weight: var(--font-weight-body);
@@ -51,6 +28,7 @@ body {
 }
 
 main {
+	background-color: var(--shade);
 	min-height: calc(100vh - var(--size-ui-header-height));
 }
 
