@@ -1,8 +1,8 @@
 [class*='bg:'] {
-	/* --shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-	--shadow: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue)); */
+	--shadow: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--color-bg: var(--shade);
 	--color-ink: var(--ink);
 	--color-accent: var(--accent);

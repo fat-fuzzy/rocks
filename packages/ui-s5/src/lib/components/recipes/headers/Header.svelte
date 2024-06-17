@@ -12,14 +12,12 @@
 		title = 'App navigation',
 		method = 'POST',
 		breakpoint = '2xl',
-		background,
 		path,
 		formaction,
 		actionPath,
 		redirect,
 		items,
 		app,
-		children,
 	}: HeaderProps = $props()
 	let className = 'header-app'
 

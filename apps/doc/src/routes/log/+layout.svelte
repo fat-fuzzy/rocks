@@ -32,12 +32,11 @@
 		color: 'primary:600',
 		position: 'sticky',
 		place: 'left',
-		background: 'polar',
 		formaction: 'toggleSidebar',
 	}
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} path='' app={{settings: appSettings}}>
+<LayoutSidebar {nav} redirect={$page.url.pathname} path='' app={appSettings}>
 	{#if children}
 		{@render children()}
 	{:else}

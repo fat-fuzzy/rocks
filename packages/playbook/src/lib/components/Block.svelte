@@ -12,7 +12,7 @@
 
 	let {title, name = title, isPage, component, props}: Props = $props()
 
-	const playbookStore: PlaybookStore = getContext('playbookStore')
+	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
 	let containerStyles = $derived(styles.layouts.container)
@@ -25,10 +25,12 @@
 	})
 </script>
 
-{#if isPage && containerStyles.container}
-	<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
+{#key blockProps}
+	{#if isPage && containerStyles.container}
+		<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
+			<svelte:component this={component} id={title} {...blockProps} />
+		</div>
+	{:else}
 		<svelte:component this={component} id={title} {...blockProps} />
-	</div>
-{:else}
-	<svelte:component this={component} id={title} {...blockProps} />
-{/if}
+	{/if}
+{/key}

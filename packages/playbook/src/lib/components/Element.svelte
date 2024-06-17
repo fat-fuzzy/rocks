@@ -3,8 +3,6 @@
 	import type {StylesApi} from '$lib/api/styles.api'
 	import type {Meta} from '$lib/props/types'
 
-	import PlaybookStore from '$lib/api/store.svelte'
-
 	import Api from './Api.svelte'
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
@@ -85,7 +83,7 @@
 
 {#if isPage}
 	<article class="l:sidebar:md">
-		<section class={`l:main card:xl inset ${brightness} bg:${contrast} `}>
+		<section class={`l:main card:xl inset`}>
 			<div class={containerClasses}>
 				{#if fixtures?.status}
 					{@const currentProps =
@@ -121,7 +119,7 @@
 		</section>
 		<section class="l:side l:stack:md w:full">
 			<details open class="l:stack:md size:xs">
-				<summary class={`variant:${color} bg:${color}`}>Props</summary>
+				<summary class={`variant:fill bg:${color}`}>Props</summary>
 				{#if categories}
 					<div class="ui:menu">
 						<Api {categories} {path} {actionPath} {redirect} {meta} />
@@ -138,7 +136,7 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline brightness:${brightness} contrast:${contrast} l:stack ui:${title.toLowerCase()}`}
+		class={`card variant:outline settings:${brightness}:${contrast} l:stack ui:${title.toLowerCase()}`}
 	>
 		<header>
 			<a

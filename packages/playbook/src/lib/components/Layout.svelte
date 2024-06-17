@@ -11,8 +11,8 @@
 	}
 
 	let {title, component, props}: Props = $props()
-	const playbookStore: PlaybookStore = getContext('playbookStore')
-	let styles = $derived(playbookStore.styles)
+	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
+	let styles =  $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
 	let layoutStyles = $derived(styles.layouts.layout)
 	let containerStyles = $derived(styles.layouts.container)

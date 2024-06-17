@@ -21,7 +21,7 @@
 	description="This is the Fat Fuzzy Rocks website home page. The site contains a small Design System based on CUBE CSS, as well as developer documentation and decision logs. Welcome! 🐰"
 />
 
-<header class="bg:polar">
+<header>
 	<div class="l:text:md l:center card:xl">
 		<div class="l:frame">
 			<img src={pageImage.src} alt={pageImage.alt} />

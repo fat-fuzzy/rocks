@@ -11,7 +11,7 @@ const {
 class FatFuzzyStore {
 	styles = $state(DEFAULT_STYLES)
 	reveal = $state(DEFAULT_REVEAL_STATE)
-	app = $state(DEFAULT_APP_SETTINGS)
+	app = $state({settings: DEFAULT_APP_SETTINGS})
 	menuReveal = $state(DEFAULT_REVEAL_STATE)
 	navReveal = $state(DEFAULT_REVEAL_STATE)
 	sidebarReveal = $state(DEFAULT_NAV_REVEAL_STATE)

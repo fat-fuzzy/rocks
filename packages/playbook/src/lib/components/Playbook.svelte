@@ -15,11 +15,11 @@
 	const {LayoutSidebar} = content
 
 	type Props = {
+		app?: {settings: {[key: string]: string}}
 		redirect: string
 		children: Snippet
 	}	
-	let {redirect, children}: Props= $props()
-	let appSettings = $derived(playbookStore.app)
+	let {redirect, children, app}: Props= $props()
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -34,7 +34,7 @@
 	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
 
-	const {styles, context, ui} = $page.data
+	let {styles, context, ui} = $state($page.data)
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = constants
 
 	playbookStore.reveal = context
@@ -88,7 +88,6 @@
 		color: 'primary:600',
 		position: 'sticky',
 		place: 'left',
-		background: 'polar',
 		formaction: 'toggleSidebar',
 	}
 
@@ -100,7 +99,7 @@
 	})
 </script>
 
-<LayoutSidebar {nav} {redirect} path='' app={{settings: appSettings}}>
+<LayoutSidebar {nav} {redirect} path='' {app}>
 	{#if children}
 		{@render children()}
 	{/if}

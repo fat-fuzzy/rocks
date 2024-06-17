@@ -6,13 +6,8 @@
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
 
-	const {
-		DEFAULT_APP_SETTINGS,
-		DEFAULT_NAV_REVEAL_STATE,
-		ALIGN_OPPOSITE,
-		ALIGN_ANIMATION_DIRECTION,
-		TRANSITION_CONTRAST,
-	} = constants
+	const {DEFAULT_NAV_REVEAL_STATE, ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION} =
+		constants
 
 	let {
 		id = 'reveal-nav',
@@ -34,13 +29,12 @@
 		place = 'top',
 		position,
 		container,
-		background = 'polar',
+		background,
 		items = [],
 		onupdate,
 	}: RevealNavProps = $props()
 
 	let sidebarReveal = $state(reveal ? {reveal} : DEFAULT_NAV_REVEAL_STATE)
-	let appSettings = $state(DEFAULT_APP_SETTINGS)
 
 	function toggleReveal(event) {
 		sidebarReveal.reveal = event.value
@@ -59,12 +53,8 @@
 	let navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
 	let animationDirection = $derived(
 		place ? ALIGN_ANIMATION_DIRECTION[place][sidebarReveal.reveal] : '',
-	) // TODO fix this
-	let showBackground = $derived(
-		background
-			? `bg:${background}`
-			: `bg:${TRANSITION_CONTRAST[appSettings.contrast]}`,
 	)
+	let showBackground = $derived(background ? `bg:${background}` : '')
 	let showSidebar = $derived(
 		`${sidebarReveal.reveal} ${showBackground} ${place}`,
 	)

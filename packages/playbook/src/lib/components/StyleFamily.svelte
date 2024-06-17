@@ -153,7 +153,6 @@
 			size={family.size}
 			name={familyName}
 			justify={apiJustify}
-			background="polar"
 		>
 			{#each family.items as styleInput}
 				{#if styles[category] && styles[category][familyName]}

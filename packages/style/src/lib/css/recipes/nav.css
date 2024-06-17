@@ -1,7 +1,4 @@
 nav ul {
-	--lightness: var(--color-lightness-light);
-	--chroma: var(--color-chroma-neutral);
-	--color-bg-nav: oklch(var(--lightness) var(--chroma) var(--hue));
 	list-style: none;
 	padding-inline: 0;
 	margin-inline: 0;
@@ -109,11 +106,6 @@ nav li[aria-current='page'] {
 	}
 
 	> ul a {
-		--lightness-contrast: var(--color-lightness-500);
-		--chroma-contrast: var(--color-chroma-500);
-		--color-ink-nav: oklch(
-			var(--lightness-contrast) var(--chroma-contrast) var(--hue)
-		);
 		text-decoration-color: var(--accent);
 		background-color: var(--color-bg-nav);
 	}

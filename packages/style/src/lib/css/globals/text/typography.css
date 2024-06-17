@@ -79,6 +79,7 @@ article,
 	background-color: inherit;
 }
 
+p,
 figcaption {
 	color: var(--color-ink, var(--ink));
 }

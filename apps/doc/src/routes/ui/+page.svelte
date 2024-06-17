@@ -16,6 +16,7 @@
 		{category: 'layouts', items: layouts},
 		{category: 'recipes', items: recipes},
 	]
+
 	const path = $derived($page.url.pathname)
 	let markdowns = $derived($page.data.markdowns)
 	let markdownContent = $derived(

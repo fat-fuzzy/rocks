@@ -30,7 +30,6 @@ const {LayoutSidebar} = content
 		color: 'primary',
 		position: 'fixed',
 		place: 'left',
-		background: 'polar',
 		formaction: 'toggleSidebar',
 	}
 </script>
