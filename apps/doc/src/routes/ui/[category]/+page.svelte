@@ -3,7 +3,7 @@
 	import {page} from '$app/stores'
 	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
-	import appStore from '$lib/stores/stores.svelte.js'
+	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {PageMain} = content
 	const {Collection, Api} = api
@@ -19,8 +19,9 @@
 		{category: 'layouts', items: layouts},
 		{category: 'recipes', items: recipes},
 	]
-	let currentTabs = appStore.currentTabs
+	let currentTabs = fatFuzzyStore.currentTabs
 	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
+	let appSettings = $derived(fatFuzzyStore.app)
 
 	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
@@ -45,7 +46,7 @@
 	}
 </script>
 
-<PageMain {title} {description} size="xl">
+<PageMain {title} {description} size="xl" app={{settings: appSettings}}>
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 		<div class="l:main:50 l:flex justify:end">

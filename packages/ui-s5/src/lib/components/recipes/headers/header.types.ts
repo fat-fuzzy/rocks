@@ -13,5 +13,6 @@ export type HeaderProps = UiBlockProps &
 			links: {[key: string]: string}[]
 			settings: SettingsItems
 		}
+		app: {settings: {[key: string]: string}}
 		children?: Snippet
 	}

@@ -17,7 +17,7 @@
 	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`
 </script>
 
-<Header items={navItems} layout="center">
+<Header items={navItems} layout="center" app={{settings: {brightness: 'day', contrast: 'blend'}}}>
 	<h1 class="l:flex card:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style
 	</h1>

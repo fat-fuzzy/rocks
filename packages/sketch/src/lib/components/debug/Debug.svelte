@@ -30,9 +30,7 @@
 		</thead>
 		<tbody class="text:center">
 			<tr>
-				<td
-					class="bg:light justify:center l:flex nowrap align:center maki:block"
-				>
+				<td class="justify:center l:flex nowrap align:center maki:block">
 					<span>Event</span>
 					<span class="card:2xs bg:accent:100 variant:bare">prev</span>
 					<span class="card:2xs bg:accent:000">current</span>

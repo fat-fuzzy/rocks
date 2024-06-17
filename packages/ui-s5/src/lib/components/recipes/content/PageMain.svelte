@@ -8,6 +8,7 @@
 		page?: string
 		size?: string
 		header?: Snippet
+		app: {settings: {[key: string]: string}}
 		children: Snippet
 	}
 
@@ -17,11 +18,15 @@
 		page,
 		size,
 		header,
+		app,
 		children,
 	} = $props() as Props
 
+	let brightness = $derived(app.settings.brightness)
+	let contrast = $derived(app.settings.contrast)
+
 	let currentPage = $state(page ?? title)
-	let headerClass = `l:sidebar:${size} align:center maki:block:lg`
+	let headerClass = $derived(`l:sidebar:${size} align:center maki:block:lg settings:${brightness}:${contrast}`)
 </script>
 
 <Head page={currentPage} {title} {description} />

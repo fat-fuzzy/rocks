@@ -18,6 +18,7 @@ class FatFuzzyStore {
 	settingsReveal = $state(DEFAULT_REVEAL_STATE)
 	currentTabs = $state({ui: DEFAULT_TABS[0]})
 
+	constructor() {}
 	// TODO: init and update functions
 }
 

@@ -1,6 +1,10 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import {content} from '@fat-fuzzy/ui-s5'
+	import sketchStore from '$lib/stores/stores.svelte'
+
+
+	let appSettings = $derived(sketchStore.app)
 
 	const {PageMain} = content
 	const title = 'Play'
@@ -11,7 +15,7 @@
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
 </script>
 
-<PageMain {title} {description}>
+<PageMain {title} {description} app={{settings: appSettings}}>
 	{#snippet header()}
 		<h1 class="w:full">Fat Fuzzy {title}</h1>
 		<h2><small>Tags</small></h2>
@@ -30,7 +34,7 @@
 			<article class="card:md bg:primary:000 l:stack size:sm">
 				<h3 class="bg:primary:100 card:sm"><small>{tag}</small></h3>
 				<details open>
-					<summary class="bg:light card:2xs"><small>Sketches</small></summary>
+					<summary class="card:2xs"><small>Sketches</small></summary>
 					<div class="l:stack:xs maki:block">
 						{#each sketches as { slug, asset, title, tags }}
 							{#if tags.includes(tag)}

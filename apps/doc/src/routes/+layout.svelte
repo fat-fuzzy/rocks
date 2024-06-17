@@ -1,13 +1,13 @@
 <script lang="ts">
-	import {type Snippet} from 'svelte'
+	import {onMount, type Snippet} from 'svelte'
 	import '@fat-fuzzy/style'
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$data/nav'
-	import {recipes, utils, constants} from '@fat-fuzzy/ui-s5'
+	import {recipes, utils} from '@fat-fuzzy/ui-s5'
+	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {Header} = recipes
-	const {DEFAULT_APP_SETTINGS, APP_LINKS} = constants
 
 	type Props = {
 		sidebar?: Snippet
@@ -16,15 +16,12 @@
 
 	let {children}: Props = $props()
 
-	let appSettings = $state($page.data.app || DEFAULT_APP_SETTINGS)
-
+	let appSettings = $derived(fatFuzzyStore.app)
 
 	let brightness = $derived(appSettings.brightness)
 	let contrast = $derived(appSettings.contrast)
 	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
-	let layoutClass =
-		APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
-	let mainClass =  $derived(`${pageClass} settings:${brightness}:${contrast} l:page:${layoutClass}`)
+	let mainClass =  $derived(`${pageClass} settings:${brightness}:${contrast}`)
 	let footerClass =  $derived(`l:center font:sm settings:${brightness}:${contrast}`)
 
 	function updateSettings(event) {
@@ -39,6 +36,12 @@
 				break
 		}
 	}
+
+	onMount(() => {
+		if($page.data.app) {
+			fatFuzzyStore.app = $page.data.app
+		}
+	})
 </script>
 
 <Header
@@ -49,6 +52,7 @@
 	redirect={$page.url.pathname}
 	items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
 	breakpoint="xs"
+	app={{settings: appSettings}}
 />
 <main id="main" class={mainClass}>
 	{#if children}

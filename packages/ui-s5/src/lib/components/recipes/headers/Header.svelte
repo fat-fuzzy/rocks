@@ -18,15 +18,12 @@
 		actionPath,
 		redirect,
 		items,
+		app,
 		children,
 	}: HeaderProps = $props()
 	let className = 'header-app'
 
 	let navReveal: {[key: string]: string} = $state({reveal: ''})
-	let appSettings: {[key: string]: string} = $state({
-		brightness: '',
-		contrast: '',
-	})
 
 	function handleClickOutsideMainNav() {
 		navReveal = {reveal: 'minimize'}
@@ -37,15 +34,14 @@
 		navReveal = {reveal: updated}
 	}
 
+	let brightness = $derived(app.settings.brightness)
+	let contrast = $derived(app.settings.contrast)
 	let reveal = $derived(navReveal.reveal)
-	let contrast = $derived(appSettings.contrast)
 	let headerClass = $derived(
-		`${className} bg:light l:sidebar:xl layer sticky:top justify:start bg:${contrast}`,
+		`${className} l:sidebar:xl layer sticky:top justify:start settings:${brightness}:${contrast}`,
 	)
-	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `show ${showBackground}`
-	let showNav = $derived(reveal === 'show' ? show : 'hide:viz-only')
-	let navClasses = $derived(`l:switcher:2xs ${showBackground} ${showNav}`)
+	let showNav = $derived(reveal === 'show' ? 'show' : 'hide:viz-only')
+	let navClasses = $derived(`l:switcher:2xs ${showNav}`)
 	let revealClasses = `form:expand card:md`
 	let layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
 
