@@ -14,7 +14,7 @@
 	<div class="l:text maki:block:2xs">
 		<ul class="l:stack:lg unstyled">
 			{#each markdowns as { meta }}
-				<a class="font:lg bg:primary:000 card:md" href={`/dev/${meta.slug}`}>
+				<a class="font:lg surface:3:primary card:md" href={`/dev/${meta.slug}`}>
 					{meta.title}
 				</a>
 			{/each}

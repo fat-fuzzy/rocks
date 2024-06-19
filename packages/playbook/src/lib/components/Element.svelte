@@ -136,7 +136,7 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline settings:${brightness}:${contrast} l:stack ui:${title.toLowerCase()}`}
+		class={`card variant:outline l:stack ui:${title.toLowerCase()}`}
 	>
 		<header>
 			<a

@@ -41,7 +41,7 @@ a {
 }
 
 a[class^='font:'] {
-	color: var(--font-size);
+	font-size: var(--font-size);
 }
 
 a:hover {

@@ -14,7 +14,7 @@
 		path = '',
 		layout,
 		size = 'xs',
-		color = 'primary:600',
+		color = 'primary',
 		align,
 		id,
 		depth = 0,
@@ -30,7 +30,7 @@
 				? `l:${container}:${size}`
 				: ''
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
-	let colorClass = color ? `bg:${color}` : ''
+	let colorClass = color ? `surface:1:${color}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
 	let gridClass = depth === 1 ? `l:grid:xs` : layoutClass
