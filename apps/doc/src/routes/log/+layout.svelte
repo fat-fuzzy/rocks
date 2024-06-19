@@ -6,7 +6,7 @@
 	const {LayoutSidebar} = content
 
 	let {children} = $props()
-	let appSettings = $derived(fatFuzzyStore.app)
+	let app = fatFuzzyStore.app
 
 	let path = ''
 	let items = [
@@ -36,7 +36,7 @@
 	}
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} path='' app={appSettings}>
+<LayoutSidebar {nav} redirect={$page.url.pathname} path='' {app}>
 	{#if children}
 		{@render children()}
 	{:else}

@@ -2,7 +2,6 @@
 	import {onMount, setContext, type Snippet} from 'svelte'
 	import {page} from '$app/stores'
 	import {api} from '@fat-fuzzy/playbook'
-	import fatFuzzyStore from '$lib/stores/stores.svelte'
 	const {Playbook} = api
 
 	type Props = {

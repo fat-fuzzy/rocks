@@ -16,10 +16,10 @@
 
 	let {children}: Props = $props()
 
-	let appSettings = $derived(fatFuzzyStore.app)
+	let app = fatFuzzyStore.app
 
-	let brightness = $derived(appSettings.brightness)
-	let contrast = $derived(appSettings.contrast)
+	let brightness = $derived(app.settings.brightness)
+	let contrast = $derived(app.settings.contrast)
 	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
 	let mainClass =  $derived(`${pageClass} settings:${brightness}:${contrast}`)
 	let footerClass =  $derived(`l:center font:sm settings:${brightness}:${contrast}`)
@@ -27,10 +27,10 @@
 	function updateSettings(event) {
 		switch (event.id) {
 			case 'brightness':
-				appSettings.brightness = event.value
+				app.settings.brightness = event.value
 				break
 			case 'contrast':
-				appSettings.contrast = event.value
+				app.settings.contrast = event.value
 				break
 			default:
 				break
@@ -52,7 +52,7 @@
 	redirect={$page.url.pathname}
 	items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
 	breakpoint="xs"
-	app={{settings: appSettings}}
+	app={{settings: app.settings}}
 />
 <main id="main" class={mainClass}>
 	{#if children}
