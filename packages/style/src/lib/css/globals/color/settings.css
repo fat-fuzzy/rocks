@@ -4,9 +4,21 @@
 	--lightness: var(--color-lightness-light);
 	--lightness-accent: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-600);
+	--lightness-surface-1: var(--color-lightness-000);
+	--lightness-surface-1-contrast: var(--color-lightness-400);
+	--lightness-surface-2: var(--color-lightness-100);
+	--lightness-surface-2-contrast: var(--color-lightness-500);
+	--lightness-surface-3: var(--color-lightness-200);
+	--lightness-surface-3-contrast: var(--color-lightness-600);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-300);
 	--chroma-contrast: var(--color-chroma-600);
+	--chroma-surface-1: var(--color-chroma-000);
+	--chroma-surface-1-contrast: var(--color-chroma-400);
+	--chroma-surface-2: var(--color-chroma-100);
+	--chroma-surface-2-contrast: var(--color-chroma-500);
+	--chroma-surface-3: var(--color-chroma-200);
+	--chroma-surface-3-contrast: var(--color-chroma-600);
 	--chroma-ink: var(--color-chroma-600);
 }
 
@@ -18,9 +30,21 @@
 		--lightness: var(--color-lightness-dark);
 		--lightness-accent: var(--color-lightness-400);
 		--lightness-contrast: var(--color-lightness-000);
+		--lightness-surface-1: var(--color-lightness-600);
+		--lightness-surface-1-contrast: var(--color-lightness-200);
+		--lightness-surface-2: var(--color-lightness-500);
+		--lightness-surface-2-contrast: var(--color-lightness-100);
+		--lightness-surface-3: var(--color-lightness-400);
+		--lightness-surface-3-contrast: var(--color-lightness-000);
 		--chroma: var(--color-chroma-neutral);
 		--chroma-accent: var(--color-chroma-400);
 		--chroma-contrast: var(--color-chroma-000);
+		--chroma-surface-1: var(--color-chroma-600);
+		--chroma-surface-1-contrast: var(--color-chroma-200);
+		--chroma-surface-2: var(--color-chroma-500);
+		--chroma-surface-2-contrast: var(--color-chroma-100);
+		--chroma-surface-3: var(--color-chroma-400);
+		--chroma-surface-3-contrast: var(--color-chroma-000);
 		--chroma-ink: var(--color-chroma-000);
 
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
@@ -47,9 +71,21 @@
 	--lightness: var(--color-lightness-light);
 	--lightness-accent: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-600);
+	--lightness-surface-1: var(--color-lightness-000);
+	--lightness-surface-1-contrast: var(--color-lightness-400);
+	--lightness-surface-2: var(--color-lightness-100);
+	--lightness-surface-2-contrast: var(--color-lightness-500);
+	--lightness-surface-3: var(--color-lightness-200);
+	--lightness-surface-3-contrast: var(--color-lightness-600);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-300);
 	--chroma-contrast: var(--color-chroma-600);
+	--chroma-surface-1: var(--color-chroma-000);
+	--chroma-surface-1-contrast: var(--color-chroma-400);
+	--chroma-surface-2: var(--color-chroma-100);
+	--chroma-surface-2-contrast: var(--color-chroma-500);
+	--chroma-surface-3: var(--color-chroma-200);
+	--chroma-surface-3-contrast: var(--color-chroma-600);
 	--chroma-ink: var(--color-chroma-600);
 
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
@@ -74,9 +110,21 @@
 	--lightness: var(--color-lightness-dark);
 	--lightness-accent: var(--color-lightness-400);
 	--lightness-contrast: var(--color-lightness-000);
+	--lightness-surface-1: var(--color-lightness-600);
+	--lightness-surface-1-contrast: var(--color-lightness-200);
+	--lightness-surface-2: var(--color-lightness-500);
+	--lightness-surface-2-contrast: var(--color-lightness-100);
+	--lightness-surface-3: var(--color-lightness-400);
+	--lightness-surface-3-contrast: var(--color-lightness-000);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-400);
 	--chroma-contrast: var(--color-chroma-000);
+	--chroma-surface-1: var(--color-chroma-600);
+	--chroma-surface-1-contrast: var(--color-chroma-200);
+	--chroma-surface-2: var(--color-chroma-500);
+	--chroma-surface-2-contrast: var(--color-chroma-100);
+	--chroma-surface-3: var(--color-chroma-400);
+	--chroma-surface-3-contrast: var(--color-chroma-000);
 	--chroma-ink: var(--color-chroma-000);
 
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
@@ -101,9 +149,21 @@
 	--lightness: var(--color-lightness-dark);
 	--lightness-accent: var(--color-lightness-400);
 	--lightness-contrast: var(--color-lightness-000);
+	--lightness-surface-1: var(--color-lightness-600);
+	--lightness-surface-1-contrast: var(--color-lightness-200);
+	--lightness-surface-2: var(--color-lightness-500);
+	--lightness-surface-2-contrast: var(--color-lightness-100);
+	--lightness-surface-3: var(--color-lightness-400);
+	--lightness-surface-3-contrast: var(--color-lightness-000);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-400);
 	--chroma-contrast: var(--color-chroma-000);
+	--chroma-surface-1: var(--color-chroma-600);
+	--chroma-surface-1-contrast: var(--color-chroma-200);
+	--chroma-surface-2: var(--color-chroma-500);
+	--chroma-surface-2-contrast: var(--color-chroma-100);
+	--chroma-surface-3: var(--color-chroma-400);
+	--chroma-surface-3-contrast: var(--color-chroma-000);
 	--chroma-ink: var(--color-chroma-000);
 
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
