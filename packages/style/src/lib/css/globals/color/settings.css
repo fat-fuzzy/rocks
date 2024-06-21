@@ -1,6 +1,10 @@
 :root {
 	color-scheme: light;
 	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-light);
+	--lightness-contrast-base: var(--color-lightness-dark);
+	--chroma-base: var(--color-chroma-neutral);
+	--chroma-contrast-base: var(--color-chroma-600);
 	--lightness: var(--color-lightness-light);
 	--lightness-accent: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-600);
@@ -27,6 +31,10 @@
 		color-scheme: dark;
 
 		--hue: var(--color-theme-primary);
+		--lightness-base: var(--color-lightness-dark);
+		--lightness-contrast-base: var(--color-lightness-light);
+		--chroma-base: var(--color-chroma-600);
+		--chroma-contrast-base: var(--color-chroma-neutral);
 		--lightness: var(--color-lightness-dark);
 		--lightness-accent: var(--color-lightness-400);
 		--lightness-contrast: var(--color-lightness-000);
@@ -68,6 +76,10 @@
 	color-scheme: light;
 
 	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-light);
+	--lightness-contrast-base: var(--color-lightness-dark);
+	--chroma-base: var(--color-chroma-neutral);
+	--chroma-contrast-base: var(--color-chroma-600);
 	--lightness: var(--color-lightness-light);
 	--lightness-accent: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-600);
@@ -107,6 +119,10 @@
 	color-scheme: dark;
 
 	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-dark);
+	--lightness-contrast-base: var(--color-lightness-light);
+	--chroma-base: var(--color-chroma-600);
+	--chroma-contrast-base: var(--color-chroma-neutral);
 	--lightness: var(--color-lightness-dark);
 	--lightness-accent: var(--color-lightness-400);
 	--lightness-contrast: var(--color-lightness-000);
@@ -146,6 +162,10 @@
 	color-scheme: dark;
 
 	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-dark);
+	--lightness-contrast-base: var(--color-lightness-light);
+	--chroma-base: var(--color-chroma-600);
+	--chroma-contrast-base: var(--color-chroma-neutral);
 	--lightness: var(--color-lightness-dark);
 	--lightness-accent: var(--color-lightness-400);
 	--lightness-contrast: var(--color-lightness-000);
