@@ -80,7 +80,6 @@
 				{color}
 				{size}
 				shape="square"
-				align="center"
 				initial={store.playState}
 				disabled={store.getPlayDisabled()}
 				onclick={updatePlayer}
@@ -97,7 +96,6 @@
 			{variant}
 			{size}
 			value="clear"
-			align="start"
 			asset="clear"
 			onclick={updatePlayer}
 			disabled={store.getClearDisabled()}
@@ -111,7 +109,6 @@
 			{variant}
 			{size}
 			value="stop"
-			align="start"
 			asset="rect"
 			onclick={updatePlayer}
 			disabled={store.getStopDisabled()}
