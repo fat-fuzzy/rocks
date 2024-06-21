@@ -33,7 +33,11 @@
 		--y-size: var(--size-ui-header-height);
 		--x-size: 100%;
 		transition: block-size 250ms ease-in-out;
+		transition: inline-size 250ms ease-in-out;
 
+		.content {
+			transition: inline-size 100ms ease-in;
+		}
 		nav {
 			inline-size: var(--x-size);
 			block-size: var(--y-size);

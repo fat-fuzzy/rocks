@@ -13,6 +13,7 @@
 			&.show {
 				--y-size: var(--y-size-sticky);
 				--x-size: calc(var(--sidebar-width) - var(--outline-offset-settings));
+				transition: inline-size 250ms ease-in-out;
 				/* transition: transform 250ms ease-in-out; */
 
 				.content {
@@ -21,11 +22,13 @@
 					block-size: fit-content;
 					transform: translateX(0);
 					opacity: 1;
-					transition: transform 100ms ease-in;
+					transition: transform 250ms ease-in;
+					transition: inline-size 250ms ease-in-out;
 				}
 
 				.content > * {
 					inline-size: 100%;
+					transition: inline-size 250ms ease-in-out;
 				}
 			}
 
