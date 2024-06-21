@@ -97,17 +97,22 @@ ul.depth-0 > li > a {
 nav li[aria-current='page'] {
 	/* Active Link */
 
-	> ul {
-		background-color: var(--color-bg-nav);
+	ul.depth-1 {
+		--lightness: var(--lightness-base);
+		--lightness-contrast: var(--lightness-contrast-base);
+		--chroma: var(--chroma-base);
+		--chroma-contrast: var(--chroma-contrast-base);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		color: var(--ink);
+		background-color: var(--shade);
 	}
 
 	> a {
 		text-decoration-color: var(--accent);
 	}
-
 	> ul a {
 		text-decoration-color: var(--accent);
-		background-color: var(--color-bg-nav);
 	}
 }
 
