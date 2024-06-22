@@ -3,7 +3,7 @@
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-light);
 	--lightness-accent-base: var(--color-lightness-400);
-	--lightness-contrast-base: var(--color-lightness-dark);
+	--lightness-contrast-base: var(--color-lightness-500);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-600);
 	--lightness: var(--color-lightness-light);
@@ -46,7 +46,7 @@
 		--hue: var(--color-theme-primary);
 		--lightness-base: var(--color-lightness-dark);
 		--lightness-accent-base: var(--color-lightness-200);
-		--lightness-contrast-base: var(--color-lightness-light);
+		--lightness-contrast-base: var(--color-lightness-000);
 		--chroma-base: var(--color-chroma-neutral);
 		--chroma-contrast-base: var(--color-chroma-100);
 		--lightness: var(--color-lightness-dark);
@@ -92,7 +92,7 @@
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-light);
 	--lightness-accent-base: var(--color-lightness-400);
-	--lightness-contrast-base: var(--color-lightness-dark);
+	--lightness-contrast-base: var(--color-lightness-500);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-600);
 	--lightness: var(--color-lightness-light);
@@ -136,7 +136,7 @@
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-dark);
 	--lightness-accent-base: var(--color-lightness-200);
-	--lightness-contrast-base: var(--color-lightness-light);
+	--lightness-contrast-base: var(--color-lightness-000);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-100);
 	--lightness: var(--color-lightness-dark);
@@ -180,7 +180,7 @@
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-dark);
 	--lightness-accent-base: var(--color-lightness-200);
-	--lightness-contrast-base: var(--color-lightness-light);
+	--lightness-contrast-base: var(--color-lightness-000);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-100);
 	--lightness: var(--color-lightness-dark);

@@ -35,23 +35,33 @@ code:not([class^='language-']) {
 }
 
 pre[class*='feedback:'] {
+	--ink-semantic: oklch(
+		var(--color-lightness-200) var(--color-chroma-200) var(--hue-semantic)
+	);
 	--color-accent: var(--accent-semantic, var(--accent));
 	--color-bg: var(--shade);
 	--color-ink: var(--ink-semantic, var(--ink));
+	color: var(--color-ink);
+	background-color: var(--color-bg);
 	border: var(--border-width-xl) solid var(--color-accent);
 }
 
 pre[class*='feedback:'].variant\:fill {
 	box-shadow: var(--shadow-md);
+	color: var(--color-ink);
+	border-color: var(--color-accent);
+	background-color: var(--color-bg);
 }
 
 pre[class*='feedback:'].variant\:outline {
 	box-shadow: unset;
+	color: var(--color-ink);
 	border-color: var(--color-accent);
 	background-color: var(--color-bg);
 }
 
 pre[class*='feedback:'].variant\:bare {
+	color: var(--color-ink);
 	background-color: var(--color-bg);
 	border-color: var(--color-bg);
 	box-shadow: unset;
