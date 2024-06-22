@@ -16,7 +16,7 @@ nav li {
 	text-overflow: ellipsis;
 	padding: calc(var(--size-base-2xs) / var(--ratio-md)) var(--size-base-2xs);
 	margin-block: 0;
-	line-height: var(--font-leading-ui);
+	line-height: var(--font-leading-nav);
 }
 
 nav > ul ul li:has(ul) {
@@ -69,12 +69,10 @@ nav li a:visited {
 /* == RevealNav (tree-like navigation menus) == */
 ul.depth-1 {
 	padding-inline-start: 0;
-	padding-block-start: var(--ui-size-sm);
 }
 
 ul.depth-2 {
 	padding-inline: calc(2 * var(--ui-size)) var(--ui-size);
-	padding-block: calc(2 * var(--outline-offset-settings));
 }
 
 ul.depth-3 {

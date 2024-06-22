@@ -22,9 +22,9 @@ button {
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
 	line-height: var(--font-leading-ui);
-	padding: var(--ui-size) var(--ui-size-lg); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
+	padding: var(--ui-size-sm) var(--ui-size);
 	border-radius: var(--border-radius-base);
-	border: var(--border-width-md) solid var(--color-accent);
+	border: var(--border-width-md) solid var(--accent);
 }
 
 button.variant\:outline {

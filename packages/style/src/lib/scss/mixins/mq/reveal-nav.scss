@@ -10,6 +10,10 @@
 			top: var(--y-axis);
 			z-index: 1;
 
+			ul.depth-1 {
+				--gap: 0;
+			}
+
 			&.show {
 				--y-size: var(--y-size-sticky);
 				--x-size: calc(var(--sidebar-width) - var(--outline-offset-settings));

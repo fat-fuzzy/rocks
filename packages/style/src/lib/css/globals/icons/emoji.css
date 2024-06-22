@@ -21,5 +21,5 @@
 }
 
 [class*='emoji:'][class*='shape:']:not(:has(.sr-only), :empty)::before {
-	margin-block: var(--ui-size-sm);
+	margin-block: var(--outline-offset-settings);
 }

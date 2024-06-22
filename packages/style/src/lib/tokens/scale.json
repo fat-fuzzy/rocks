@@ -64,17 +64,17 @@
 	"scale": {
 		"$type": "dimension",
 		"base": {
-			"05": {"$value": "calc(var(--scale-base-04) / var(--size-ratio-md))"},
-			"04": {"$value": "calc(var(--scale-base-03) / var(--size-ratio-md))"},
-			"03": {"$value": "calc(var(--scale-base-02) / var(--size-ratio-md))"},
-			"02": {"$value": "calc(var(--scale-base-01) / var(--size-ratio-md))"},
-			"01": {"$value": "calc(var(--scale-base-00) / var(--size-ratio-md))"},
+			"05": {"$value": "calc(var(--scale-base-04) / var(--size-ratio-sm))"},
+			"04": {"$value": "calc(var(--scale-base-03) / var(--size-ratio-sm))"},
+			"03": {"$value": "calc(var(--scale-base-02) / var(--size-ratio-sm))"},
+			"02": {"$value": "calc(var(--scale-base-01) / var(--size-ratio-sm))"},
+			"01": {"$value": "calc(var(--scale-base-00) / var(--size-ratio-sm))"},
 			"00": {"$value": "{size.base.initial}"},
-			"10": {"$value": "calc(var(--scale-base-00) * var(--size-ratio-md))"},
-			"20": {"$value": "calc(var(--scale-base-10) * var(--size-ratio-md))"},
-			"30": {"$value": "calc(var(--scale-base-20) * var(--size-ratio-md))"},
-			"40": {"$value": "calc(var(--scale-base-30) * var(--size-ratio-md))"},
-			"50": {"$value": "calc(var(--scale-base-40) * var(--size-ratio-md))"}
+			"10": {"$value": "calc(var(--scale-base-00) * var(--size-ratio-sm))"},
+			"20": {"$value": "calc(var(--scale-base-10) * var(--size-ratio-sm))"},
+			"30": {"$value": "calc(var(--scale-base-20) * var(--size-ratio-sm))"},
+			"40": {"$value": "calc(var(--scale-base-30) * var(--size-ratio-sm))"},
+			"50": {"$value": "calc(var(--scale-base-40) * var(--size-ratio-sm))"}
 		},
 		"major-third": {
 			"03": {"$value": "0.6"},
