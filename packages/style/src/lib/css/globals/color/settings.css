@@ -2,6 +2,7 @@
 	color-scheme: light;
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-light);
+	--lightness-accent-base: var(--color-lightness-400);
 	--lightness-contrast-base: var(--color-lightness-dark);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-600);
@@ -24,6 +25,18 @@
 	--chroma-surface-3: var(--color-chroma-200);
 	--chroma-surface-3-contrast: var(--color-chroma-600);
 	--chroma-ink: var(--color-chroma-600);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,6 +45,7 @@
 
 		--hue: var(--color-theme-primary);
 		--lightness-base: var(--color-lightness-dark);
+		--lightness-accent-base: var(--color-lightness-200);
 		--lightness-contrast-base: var(--color-lightness-light);
 		--chroma-base: var(--color-chroma-neutral);
 		--chroma-contrast-base: var(--color-chroma-100);
@@ -77,6 +91,7 @@
 
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-light);
+	--lightness-accent-base: var(--color-lightness-400);
 	--lightness-contrast-base: var(--color-lightness-dark);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-600);
@@ -120,6 +135,7 @@
 
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-dark);
+	--lightness-accent-base: var(--color-lightness-200);
 	--lightness-contrast-base: var(--color-lightness-light);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-100);
@@ -163,6 +179,7 @@
 
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-dark);
+	--lightness-accent-base: var(--color-lightness-200);
 	--lightness-contrast-base: var(--color-lightness-light);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-100);
