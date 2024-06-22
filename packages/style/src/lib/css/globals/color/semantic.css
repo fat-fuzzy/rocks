@@ -21,13 +21,13 @@
 }
 
 [class*='bg:'][class*='status:'] {
-	--color-bg: var(--shade-semantic);
-	--color-ink: var(--ink-semantic);
-	--color-accent: var(--accent-semantic);
-	--color-shadow: var(--shadow-semantic);
-	color: var(--color-ink);
-	background-color: var(--color-bg);
-	border-color: var(--color-accent);
+	--shade: var(--shade-semantic);
+	--ink: var(--ink-semantic);
+	--accent: var(--accent-semantic);
+	--shadow: var(--shadow-semantic);
+	color: var(--ink);
+	background-color: var(--shade);
+	border-color: var(--accent);
 }
 
 [class*=':default'] {
