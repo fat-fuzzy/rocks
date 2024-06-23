@@ -69,7 +69,7 @@
 	})
 </script>
 
-<menu {id} class={`l:switcher:2xs w:full hug justify:center`}>
+<menu {id} class={`player l:switcher:2xs w:full hug justify:center`}>
 	<li>
 		{#key store.playState}
 			<Switch
