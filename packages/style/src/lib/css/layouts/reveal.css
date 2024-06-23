@@ -4,6 +4,7 @@
 	max-inline-size: calc(100% - var(--outline-offset-base));
 	color: var(--ink);
 	margin: var(--outline-offset-base);
+	margin-inline-end: calc(var(--outline-offset-settings) * 2);
 }
 
 /* Fixes bug in Safari where .content overflows parent inline-size */

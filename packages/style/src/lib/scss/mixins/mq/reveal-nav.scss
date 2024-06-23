@@ -50,7 +50,10 @@
 			&.minimize.left,
 			&.minimize.right {
 				--y-size: var(--y-size-sticky);
-				--x-size: calc(var(--layout-sidebar-minimize) + var(--ui-size-lg));
+				--x-size: calc(
+					var(--layout-sidebar-minimize) + var(--ui-size-lg) +
+						var(--outline-offset-settings) * 2
+				);
 
 				.content {
 					--x-axis: calc(var(--x-size) * -1);
@@ -58,6 +61,7 @@
 					max-inline-size: calc(100% - var(--outline-offset-base));
 				}
 
+				// TODO: clean this up
 				nav {
 					.content {
 						block-size: calc(100vh - var(--size-ui-header-height));
