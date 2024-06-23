@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {InputProps} from './input.types.js'
+	import type {InputRangeProps} from './input.types.js'
 
 	let {
 		id,
@@ -10,6 +10,7 @@
 		max = 100,
 		step = 1,
 		layout = 'stack',
+		container,
 		items = [],
 
 		disabled,
@@ -18,8 +19,9 @@
 		size,
 		variant,
 		breakpoint,
+		threshold,
 		oninput,
-	}: InputProps = $props()
+	}: InputRangeProps = $props()
 
 	let valueLabel = $state(value)
 	let markers: {id: string; label: string; value: number}[] = [
@@ -85,9 +87,12 @@
 	/* Context styles */
 	let layoutClasses = breakpoint
 		? `l:${layout} bp:${breakpoint}`
-		: `l:${layout}`
+		: threshold
+			? `l:${layout} th:threshold`
+			: `l:${layout}:size`
+	let containerClasses = container ? `l:${container}` : ''
 
-	let inputClasses = `${layoutClasses} ${elementClasses}`
+	let inputClasses = `${layoutClasses} ${elementClasses} ${containerClasses}`
 
 	$effect(() => {
 		if (items.length) {
