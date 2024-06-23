@@ -19,3 +19,11 @@
 	--hue: var(--color-theme-neutral);
 	--chroma: var(--color-chroma-neutral);
 }
+
+[class*='color:'] :is(input, textarea, select) {
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	accent-color: var(--accent);
+}
