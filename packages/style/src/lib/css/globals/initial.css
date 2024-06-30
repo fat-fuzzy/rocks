@@ -9,11 +9,13 @@
 		var(--font-family-subheading-fallback);
 	--font-family-mono: var(--font-family-mono-base),
 		var(--font-family-mono-fallback);
+	--font-family-ui: var(--font-family-ui-base);
 
 	--ui-size: var(--scale-base-00);
 	--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
 	--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
 	--font-size: var(--font-size-md);
+	--font-size-ui: var(--font-size-md);
 	--sidebar-width: var(--layout-sidebar-md);
 	--gap: var(--layout-gap-md);
 }
@@ -63,10 +65,10 @@ a:hover {
 		[contenteditable],
 		[tabindex]
 	):not([disabled]):focus {
-	--chroma: var(--color-chroma-200);
-	--lightness: var(--color-lightness-200);
-	--chroma-contrast: var(--color-chroma-600);
-	--lightness-contrast: var(--color-lightness-600);
+	--chroma: var(--chroma-focus);
+	--lightness: var(--lightness-focus);
+	--chroma-contrast: var(--chroma-focus);
+	--lightness-contrast: var(--lightness-focus);
 	outline-offset: var(--outline-offset-base);
 	outline: var(--outline-width) solid var(--shade);
 }

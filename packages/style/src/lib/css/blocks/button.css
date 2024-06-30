@@ -75,7 +75,7 @@ button.variant\:bare:active {
 	background-color: var(--shade);
 }
 
-button[class*='bg:']:not([class*=':neutral']) {
+button[class*='bg:']:not([class*=':neutral'], :focus) {
 	&.variant\:fill {
 		--chroma: var(--color-chroma-300);
 		--chroma-contrast: var(--color-chroma-000);
