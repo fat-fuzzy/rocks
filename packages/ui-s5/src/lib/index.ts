@@ -63,9 +63,6 @@ import {NavReveal} from '$lib/forms/nav-reveal.js'
 import {SettingsReveal} from '$lib/forms/settings-reveal.js'
 import {SettingsUpdate} from '$lib/forms/settings-update.js'
 import {SidebarReveal} from '$lib/forms/sidebar-reveal.js'
-import {DsContextReveal} from '$lib/forms/ds-context-reveal.js'
-import {DsStateUpdate} from '$lib/forms/ds-state-update.js'
-import {DsTabsUpdate} from '$lib/forms/ds-tabs-update.js'
 
 /**
  * Stores
@@ -94,9 +91,6 @@ const forms = {
 	SidebarReveal,
 	SettingsReveal,
 	SettingsUpdate,
-	DsContextReveal,
-	DsStateUpdate,
-	DsTabsUpdate,
 }
 
 const stores = {
