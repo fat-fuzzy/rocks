@@ -104,10 +104,10 @@
 			{:else if markdownContent.meta.props_style}
 				<details open
 				class="l:stack:md size:xs">
-					<summary class="bg:primary:100">Style Props</summary>
+					<summary class="surface:2:primary">Style Props</summary>
 					<ul class="tags l:switcher:md">
 						{#each markdownContent.meta.props_style as prop}
-							<li class="ccard:xs font:sm bg:primary:000">{prop}</li>
+							<li class="ccard:xs font:sm surface:1:primary">{prop}</li>
 						{/each}
 					</ul>
 				</details>

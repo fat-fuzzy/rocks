@@ -106,23 +106,23 @@
 				{:else}
 					{#if markdownContent.meta.props_style}
 						<details open class="l:stack:md size:xs">
-							<summary class="bg:primary:100">Style Props</summary>
+							<summary class="surface:2:primary">Style Props</summary>
 							<ul class="tags l:switcher:md">
 								{#if props.doc}
 									{#each props.doc as docs}
 										{#if docs.tokens}
 											{#each docs.tokens as prop}
-												<li class="card:xs font:sm bg:primary:000">{prop}</li>
+												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
 											{/each}
 										{/if}
 										{#if docs.blocks}
 											{#each docs.blocks as prop}
-												<li class="card:xs font:sm bg:primary:000">{prop}</li>
+												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
 											{/each}
 										{/if}
 										{#if docs.layouts}
 											{#each docs.layouts as prop}
-												<li class="card:xs font:sm bg:primary:000">{prop}</li>
+												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
 											{/each}
 										{/if}
 									{/each}
@@ -132,20 +132,20 @@
 					{/if}
 					{#if markdownContent.meta.markdownContent_type}
 						<details open class="l:stack:md size:xs">
-							<summary class={`bg:primary:100`}>Content Type</summary>
+							<summary class={`surface:2:highlight`}>Content Type</summary>
 							<ul class="tags l:switcher:md">
 								{#each markdownContent.meta.markdownContent_type as prop}
-									<li class="card:xs font:sm bg:highlight:000">{prop}</li>
+									<li class="card:2xs font:sm surface:1:highlight">{prop}</li>
 								{/each}
 							</ul>
 						</details>
 					{/if}
 					{#if markdownContent.meta.props_state}
 						<details open class="l:stack:md size:xs">
-							<summary class={`bg:primary:100`}>State Props</summary>
+							<summary class={`surface:2:accent`}>State Props</summary>
 							<ul class="tags l:switcher:md">
 								{#each markdownContent.meta.props_state as prop}
-									<li class="card:xs font:sm bg:accent:000">{prop}</li>
+									<li class="card:2xs font:sm surface:1:accent">{prop}</li>
 								{/each}
 							</ul>
 						</details>
