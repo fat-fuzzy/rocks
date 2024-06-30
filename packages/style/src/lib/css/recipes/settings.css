@@ -21,9 +21,7 @@
 }
 
 .menu\:settings [class*='svg'] {
-	--icon-size: calc(
-		var(--size-base-xl) - var(--size-ratio-md) * var(--outline-offset-settings)
-	);
+	--icon-size: var(--size-base-2xl);
 	height: var(--icon-size);
 }
 

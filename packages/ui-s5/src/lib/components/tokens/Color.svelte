@@ -6,6 +6,7 @@
 
 	const status = ['info', 'success', 'warning', 'error']
 	const colors = ['primary', 'accent', 'highlight']
+	const statusVariants = ['000', '100', '200', '300']
 	const variants = ['000', '100', '200', '300', '400', '500', '600']
 	const baseColor = ['light', 'dark']
 
@@ -59,7 +60,7 @@
 						{color}
 					</svelte:element>
 					<div class="l:stack:2xs">
-						{#each variants as variant}
+						{#each statusVariants as variant}
 							<figure
 								class={`${colorClasses} status:${color} bg:${color}:${variant}`}
 							>

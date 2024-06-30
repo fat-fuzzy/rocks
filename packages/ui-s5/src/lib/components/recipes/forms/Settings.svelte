@@ -62,7 +62,7 @@
 	let show = `show ${showBackground}`
 	let showSettings = $derived(reveal === 'show' ? show : 'hide:viz-only')
 	let revealClasses = `form:expand card:md nowrap`
-	let formClasses = `l:switcher:xs maki:block:2xs ${showBackground}`
+	let formClasses = `l:switcher:xs ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 

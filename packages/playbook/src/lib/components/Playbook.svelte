@@ -78,7 +78,7 @@
 
 	let nav = {
 		path: '',
-		title: 'Menu',
+		title: 'Library',
 		id: 'nav-page',
 		items,
 		reveal: 'show',
