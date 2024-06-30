@@ -18,7 +18,7 @@
 		size,
 		header,
 		children,
-	} = $props() as Props
+	}: Props = $props()
 
 	let currentPage = $state(page ?? title)
 	let headerClass = $derived(`l:sidebar:${size} align:center maki:block:lg`)
