@@ -4,7 +4,6 @@
 	display: inline;
 	inline-size: fit-content;
 	block-size: fit-content;
-	line-height: 1;
 }
 
 [class*='emoji:']:not([class*='justify:'], [class*='l:frame'])::before {
