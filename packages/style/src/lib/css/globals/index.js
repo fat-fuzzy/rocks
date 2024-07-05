@@ -6,9 +6,9 @@ import './initial.css'
 /* Color */
 import './color/background.css'
 import './color/surface.css'
-import './color/ui.css'
 import './color/semantic.css'
 import './color/settings.css'
+import './color/ui.css'
 
 /* State */
 import './ui/state.css'

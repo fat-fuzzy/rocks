@@ -18,7 +18,7 @@
 		var(--lightness-contrast-base) var(--chroma-contrast) var(--hue-semantic)
 	);
 	--accent-semantic: oklch(
-		var(--lightness-accent-base) var(--chroma-accent) var(--hue-semantic)
+		var(--lightness-accent) var(--chroma-accent-base) var(--hue-semantic)
 	);
 	--shadow-semantic: oklch(
 		var(--lightness-base) var(--chroma) var(--hue-semantic)

@@ -31,7 +31,6 @@ button.variant\:fill {
 	--lightness: var(--color-lightness-300);
 	--lightness-accent: var(--color-lightness-300);
 	--lightness-contrast: var(--lightness-base);
-	color: var(--ink);
 	background-color: var(--shade);
 	border-color: var(--accent);
 }
