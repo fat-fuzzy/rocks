@@ -68,7 +68,7 @@ a:hover {
 	--chroma: var(--chroma-focus);
 	--lightness: var(--lightness-focus);
 	--chroma-contrast: var(--chroma-focus);
-	--lightness-contrast: var(--lightness-focus);
+	--lightness-contrast: var(--lightness-contrast-focus);
 	outline-offset: var(--outline-offset-base);
 	outline: var(--outline-width) solid var(--shade);
 }

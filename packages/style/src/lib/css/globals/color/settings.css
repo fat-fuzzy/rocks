@@ -18,7 +18,7 @@
 	--chroma-focus: var(--color-chroma-300);
 	--lightness-focus: var(--color-lightness-600);
 	--chroma-focus-contrast: var(--color-chroma-300);
-	--lightness-focus-contrast: var(--color-lightness-600);
+	--lightness-contrast-focus: var(--color-lightness-600);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-300);
 	--chroma-contrast: var(--color-chroma-600);
@@ -74,7 +74,7 @@
 		--chroma-focus: var(--color-chroma-200);
 		--lightness-focus: var(--color-lightness-200);
 		--chroma-focus-contrast: var(--color-chroma-000);
-		--lightness-focus-contrast: var(--color-lightness-000);
+		--lightness-contrast-focus: var(--color-lightness-000);
 		--chroma-ink: var(--color-chroma-000);
 
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
@@ -115,7 +115,7 @@
 	--chroma-focus: var(--color-chroma-300);
 	--lightness-focus: var(--color-lightness-600);
 	--chroma-focus-contrast: var(--color-chroma-300);
-	--lightness-focus-contrast: var(--color-lightness-600);
+	--lightness-contrast-focus: var(--color-lightness-600);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-300);
 	--chroma-contrast: var(--color-chroma-600);
@@ -163,7 +163,7 @@
 	--chroma-focus: var(--color-chroma-200);
 	--lightness-focus: var(--color-lightness-200);
 	--chroma-focus-contrast: var(--color-chroma-000);
-	--lightness-focus-contrast: var(--color-lightness-000);
+	--lightness-contrast-focus: var(--color-lightness-000);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-400);
 	--chroma-contrast: var(--color-chroma-000);
@@ -211,7 +211,7 @@
 	--chroma-focus: var(--color-chroma-200);
 	--lightness-focus: var(--color-lightness-200);
 	--chroma-focus-contrast: var(--color-chroma-000);
-	--lightness-focus-contrast: var(--color-lightness-000);
+	--lightness-contrast-focus: var(--color-lightness-000);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-400);
 	--chroma-contrast: var(--color-chroma-000);
