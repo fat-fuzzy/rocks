@@ -41,6 +41,7 @@
 				display: flex;
 				flex-direction: column;
 				overflow: hidden auto;
+				scrollbar-gutter: stable;
 
 				ul.depth-0 {
 					padding-block-end: var(--ui-size) var(--ui-size-lg);
@@ -66,14 +67,17 @@
 					.content {
 						block-size: calc(100vh - var(--size-ui-header-height));
 						overflow: hidden auto;
+						scrollbar-gutter: stable;
 					}
 					.content .depth-1 .show .content {
 						block-size: fit-content;
 						overflow: hidden auto;
 					}
-					.content .depth-1 .minimize .content {
-						block-size: 0;
-						overflow: hidden;
+					.content .depth-1 .minimize {
+						.content {
+							block-size: 0;
+							overflow: hidden;
+						}
 					}
 				}
 			}
