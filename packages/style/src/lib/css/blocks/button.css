@@ -45,9 +45,10 @@ button.variant\:outline {
 
 button.variant\:bare {
 	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--lightness-accent-base);
+	--lightness-accent: var(--lightness-base);
+	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
-	border: var(--border-width-md) solid var(--shade);
+	border: var(--border-width-md) solid var(--accent);
 }
 
 button.variant\:outline:hover {
