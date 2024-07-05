@@ -5,19 +5,60 @@
 */
 [class*=':primary'] {
 	--hue: var(--color-theme-primary);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*=':accent'] {
 	--hue: var(--color-theme-accent);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*=':highlight'] {
 	--hue: var(--color-theme-highlight);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*=':neutral'] {
 	--hue: var(--color-theme-neutral);
 	--chroma: var(--color-chroma-neutral);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
 }
 
 [class*='color:'] :is(input, textarea, select) {
