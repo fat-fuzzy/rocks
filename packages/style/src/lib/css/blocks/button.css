@@ -47,7 +47,7 @@ button.variant\:bare {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
-	border-color: var(--shade);
+	border: var(--border-width-md) solid var(--shade);
 }
 
 button.variant\:outline:hover {
