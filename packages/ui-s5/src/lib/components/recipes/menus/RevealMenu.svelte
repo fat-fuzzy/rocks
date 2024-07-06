@@ -5,6 +5,7 @@
 
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 
 	const {ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION} = constants
 	const VARIANT_MATCH: {[key: string]: string} = {
@@ -16,14 +17,12 @@
 	let {
 		id = 'reveal-menu',
 		title = 'RevealMenu',
-		method = 'POST',
-		reveal = 'minimize',
+		reveal = 'collapsed',
 		formaction,
 		actionPath,
 		redirect,
 		layout = 'stack',
 		container = 'card',
-		direction = 'tb-lr',
 		color,
 		size,
 		threshold,
@@ -33,8 +32,6 @@
 		background,
 		place = 'left',
 		position,
-		asset,
-		content,
 		disabled,
 		items = [],
 		onclick,
@@ -60,13 +57,25 @@
 	let animationDirection = place
 		? ALIGN_ANIMATION_DIRECTION[place][menuReveal.reveal]
 		: ''
-	let show = reveal ? `show ${place}` : `minimize ${place}`
-	let setHeight = height ? ` h:${height}` : ''
+	let show = reveal ? `expanded ${place}` : `collapsed ${place}`
 	let layoutClasses = position
 		? `l:reveal ${position} ${place} ${reveal}`
 		: `l:reveal ${place} ${reveal}`
 	let action =
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+
+	let revealStates = {
+		expanded: {
+			...EXPAND_MACHINE.expanded,
+			text: title,
+			asset: `point-${animationDirection}`,
+		},
+		collapsed: {
+			...EXPAND_MACHINE.collapsed,
+			text: title,
+			asset: `point-${animationDirection}`,
+		},
+	}
 </script>
 
 <form
@@ -90,27 +99,14 @@
 		align={buttonAlign}
 		controls={`menu-${id}`}
 		value={title}
-		states={{
-			expanded: {
-				id: 'show',
-				text: title,
-				value: 'show',
-				asset: `point-${animationDirection}`,
-			},
-			collapsed: {
-				id: 'minimize',
-				text: title,
-				value: 'minimize',
-				asset: `point-${animationDirection}`,
-			},
-		}}
+		states={revealStates}
 		onclick={toggleMenu}
 	>
 		{title}
 	</Expand>
 	<menu
 		id={`menu-${id}`}
-		class={`content l:${layout}:${size} ${container}:${size} th:${threshold} layer bg:${background} card:${size} align:${align} ${size}`}
+		class={`content l:${layout}:${size} ${container}:${size} th:${threshold} layer bg:${background} card:${size} align:${align} ${size} ${show}`}
 	>
 		{#each items as buttonProps}
 			<li>

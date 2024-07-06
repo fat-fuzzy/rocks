@@ -3,6 +3,7 @@
 	import type {RevealLayoutProps} from './layout.types.js'
 	import constants from '$lib/types/constants.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 
 	// import {clickOutside} from '$lib/utils/click-outside.js'
 
@@ -12,7 +13,7 @@
 		id = 'reveal-auto',
 		title = 'RevealAuto',
 		method = 'POST',
-		reveal = 'minimize',
+		reveal = 'collapsed',
 		formaction,
 		actionPath,
 		redirect,
@@ -37,9 +38,9 @@
 
 	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `show ${showBackground}`
-	let showContent = reveal === 'show' ? show : 'hide:viz-only'
-	let revealClasses = `form:expand align-self:${buttonAlign} maki:inline size:lg`
+	let show = `expanded ${showBackground}`
+	let showContent = reveal === 'expanded' ? show : 'hide:viz-only'
+	let revealClasses = `form:expanded align-self:${buttonAlign} maki:inline size:lg`
 	let layoutClass = layout ? `l:${layout}:${size}` : ''
 	let setHeight = height ? ` h:${height}` : ''
 	let layoutClasses = `${layoutClass} ${setHeight} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
@@ -77,20 +78,8 @@
 			name="reveal-auto"
 			controls={`reveal-auto-${id}`}
 			value={'menu'}
-			states={{
-				expanded: {
-					id: 'show',
-					text: 'Context',
-					value: 'show',
-					asset: asset ?? 'context',
-				},
-				collapsed: {
-					id: 'minimize',
-					text: 'Context',
-					value: 'minimize',
-					asset: asset ?? 'context',
-				},
-			}}
+			asset="context"
+			states={EXPAND_MACHINE}
 			onclick={handleToggle}
 		>
 			{title}

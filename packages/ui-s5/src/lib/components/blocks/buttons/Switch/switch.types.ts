@@ -1,48 +1,44 @@
-import type {ButtonEventType} from '$types/index.js'
-import type {
-	ToggleState,
-	ToggleProps,
-	ToggleType,
-} from '$lib/components/blocks/buttons/Toggle/toggle.types.js'
+import {type FuzzyState, type FuzzyTransitions} from '$types/machines.js'
+import type {ToggleProps} from '../Toggle/toggle.types.js'
+import {UiState} from '$types/index.js'
+import {ButtonEvent} from '../button.types.js'
 
-export type SwitchProps = ToggleProps & {
-	states: SwitchStateType // this component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
+export type UiStateSwitch = UiState.active | UiState.inactive
+
+export type SwitchMachine = {
+	active: FuzzyState
+	inactive: FuzzyState
 }
 
-export type SwitchType = ToggleType
-
-export type SwitchStateType = {
-	[state in ToggleState]: SwitchType
-}
-
-export type SwitchTransitionsType = {
-	[state in ToggleState]: {
-		[event in ButtonEventType]?: ToggleState
-	}
-}
-
-export const SWITCH: SwitchStateType = {
+export const SWITCH_MACHINE: SwitchMachine = {
 	active: {
-		id: 'active',
-		value: 'active',
+		id: UiState.active,
+		state: UiState.active,
+		event: ButtonEvent.switch,
 		text: 'Active',
 		asset: 'bunny',
-		variant: 'fill',
 	},
 	inactive: {
-		id: 'inactive',
-		value: 'inactive',
+		id: UiState.active,
+		state: UiState.active,
+		event: ButtonEvent.switch,
 		text: 'Inactive',
 		asset: 'hat',
-		variant: 'fill',
 	},
 }
 
-export const SWITCH_TRANSITIONS: SwitchTransitionsType = {
+export const SWITCH_TRANSITIONS: FuzzyTransitions = {
 	active: {
-		switch: 'inactive' as ToggleState,
+		switch: UiState.inactive,
 	},
 	inactive: {
-		switch: 'active' as ToggleState,
+		switch: UiState.active,
 	},
+}
+
+/**
+ * This component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
+ */
+export type SwitchProps = ToggleProps & {
+	states?: SwitchMachine
 }

@@ -1,18 +1,45 @@
-import {UiState, type ButtonEventType, type UiBlockProps} from '$types/index.js'
+import {UiState, type UiBlockProps} from '$types/index.js'
+import {
+	type FuzzyPayload,
+	type FuzzyState,
+	type FuzzyMachine,
+	type FuzzyTransitions,
+} from '$types/machines.js'
 import type {Snippet} from 'svelte'
-import type {ButtonType} from '../button.types.js'
+import {type ButtonType, ButtonEvent} from '../button.types.js'
 
-export type ToggleState = UiState.active | UiState.inactive
+export type UiStateToggle = UiState.active | UiState.inactive
 
-export type TogglePayload = {
-	id: string
-	name: string
-	value: string | number
-	text?: string
-	state: string
-	update?: (event: ButtonEventType) => void
+export type ToggleMachine = {
+	active: FuzzyState
+	inactive: FuzzyState
 }
 
+export const TOGGLE_MACHINE: ToggleMachine = {
+	active: {
+		id: UiState.active,
+		state: UiState.active,
+		event: ButtonEvent.toggle,
+	},
+	inactive: {
+		id: UiState.inactive,
+		state: UiState.inactive,
+		event: ButtonEvent.toggle,
+	},
+}
+
+export const TOGGLE_TRANSITIONS: FuzzyTransitions = {
+	active: {
+		toggle: UiState.inactive,
+	},
+	inactive: {
+		toggle: UiState.active,
+	},
+}
+
+/**
+ * This component contains a button that will Toggle between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
+ */
 export type ToggleProps = UiBlockProps & {
 	/**
 	 * State props
@@ -27,47 +54,7 @@ export type ToggleProps = UiBlockProps & {
 	text?: string
 	initial?: string
 	value: string | number
-	states?: ToggleStateType // this component contains a button that will Toggle between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
-	onclick?: (payload: TogglePayload) => void
-	init?: (payload: TogglePayload) => void
-}
-
-export type ToggleType = {
-	id: string
-	value?: string | number
-	text?: string
-	asset?: string
-	variant?: string
-	state?: string
-	onclick?: (payload: TogglePayload) => void
-}
-
-export type ToggleStateType = {
-	[state in ToggleState as string]: ToggleType
-}
-
-export type ToggleTransitionsType = {
-	[state in ToggleState as string]: {
-		[event in ButtonEventType]?: UiState
-	}
-}
-
-export const TOGGLE: ToggleStateType = {
-	active: {
-		id: 'active',
-		state: 'active',
-	},
-	inactive: {
-		id: 'inactive',
-		state: 'inactive',
-	},
-}
-
-export const TOGGLE_TRANSITIONS: ToggleTransitionsType = {
-	active: {
-		toggle: 'inactive' as UiState,
-	},
-	inactive: {
-		toggle: 'active' as UiState,
-	},
+	states?: FuzzyMachine
+	onclick?: (payload: FuzzyPayload) => void
+	init?: (payload: FuzzyPayload) => void
 }

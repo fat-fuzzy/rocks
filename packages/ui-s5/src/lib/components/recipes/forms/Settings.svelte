@@ -6,6 +6,7 @@
 	import type {SettingsProps} from './settings.types.js'
 
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 
 	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
@@ -34,11 +35,11 @@
 	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
 
 	function handleClickOutsideSettings() {
-		settings.settingsReveal.set({reveal: 'minimize'})
+		settings.settingsReveal.set({reveal: 'collapsed'})
 	}
 
 	function handleToggle(event) {
-		const updated = event.expanded ? 'show' : 'minimize'
+		const updated = event.expanded ? 'expanded' : 'collapsed'
 		settings.settingsReveal.set({reveal: updated})
 	}
 
@@ -59,8 +60,8 @@
 	let reveal = $derived(settingsReveal.reveal)
 	let brightness = $derived(appSettings.brightness)
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `show ${showBackground}`
-	let showSettings = $derived(reveal === 'show' ? show : 'hide:viz-only')
+	let show = `expanded ${showBackground}`
+	let showSettings = $derived(reveal === 'expanded' ? show : 'hide:viz-only')
 	let revealClasses = `form:expand card:md nowrap`
 	let formClasses = `l:switcher:xs ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
@@ -100,21 +101,10 @@
 			name={`button-${id}`}
 			controls={id}
 			value={settingsReveal[id]}
-			states={{
-				expanded: {
-					id: 'settings-expanded',
-					text: 'settings',
-					value: 'show',
-					asset: 'settings',
-				},
-				collapsed: {
-					id: 'settings-collapsed',
-					text: 'settings',
-					value: 'minimize',
-					asset: 'settings',
-				},
-			}}
+			text="settings"
+			asset="settings"
 			onclick={handleToggle}
+			states={EXPAND_MACHINE}
 		>
 			Settings
 		</Expand>

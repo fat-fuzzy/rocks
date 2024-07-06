@@ -35,12 +35,6 @@ export enum UiStatus {
 
 export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
-export enum ButtonEventType {
-	expand = 'expand',
-	toggle = 'toggle',
-	switch = 'switch',
-}
-
 export type Settings = {
 	[key: string]: string
 }
@@ -88,14 +82,6 @@ export type UiContentProps = {
 	id?: string
 	title?: string
 	children?: Snippet
-}
-
-export type ButtonState = {
-	text: string
-	value: string
-	asset: string
-	variant?: string
-	onclick: (event: MouseEvent, payload: any) => void
 }
 
 export type SwitchState = {

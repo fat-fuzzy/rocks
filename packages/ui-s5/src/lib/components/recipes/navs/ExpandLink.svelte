@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import { EXPAND_MACHINE } from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import constants from '$lib/types/constants.js'
 
 	const {
@@ -11,7 +12,7 @@
 		href,
 		slug,
 		color,
-		size='2xs',
+		size,
 		variant='bare',
 		shape='square hug',
 		title,
@@ -25,18 +26,16 @@
 	}
 
 	let linkReveal = $state(reveal ? {[slug]:reveal} : {[slug]:DEFAULT_REVEAL_STATE})
-	let states = $derived({
+	let states = {
 		expanded: {
-			id: 'expanded',
-			value: 'show', // TODO: harmonize show/expand
+			...	EXPAND_MACHINE.expanded,
 			asset: `point-down`,
 		},
 		collapsed: {
-			id: 'collapsed',
-			value: 'minimize', // TODO: harmonize minimize/collapse
+			...	EXPAND_MACHINE.collapsed,
 			asset: `point-up`,
 		},
-	})
+	}
 
 	let layoutClasses = $derived(`l:reveal top ${linkReveal[slug].reveal}`)
 </script>
@@ -50,10 +49,11 @@
 			id={`button-expand-${slug}`}
 			{variant}
 			{title}
-			size='sm'
+			{size}
 			{color}
 			{shape}
 			initial={linkReveal[slug].reveal}
+			value={linkReveal[slug].reveal}
 			name={`button-expand-${slug}`}
 			controls={`links-${slug}`}
 			{states}

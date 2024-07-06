@@ -18,7 +18,7 @@
 		expanded = !expanded
 	}
 
-	let show = $derived(expanded ? 'show' : 'hide')
+	let show = $derived(expanded ? 'expanded' : 'collapsed')
 </script>
 
 <details class={`l:reveal l:${layout} bp:${breakpoint} ${size}`} open>

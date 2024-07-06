@@ -7,7 +7,7 @@ export type ButtonProps = UiBlockProps & {
 	/**
 	 * State props
 	 */
-	id: string // Use for machine id
+	id: string
 	name: string
 	text?: string
 	title?: string
@@ -18,4 +18,12 @@ export type ButtonProps = UiBlockProps & {
 	type?: ButtonType
 	children?: Snippet
 	onclick?: (payload: any) => void
+}
+
+export enum ButtonEvent {
+	expand = 'expand',
+	collapse = 'collapse',
+	toggle = 'toggle',
+	switch = 'switch',
+	click = 'click',
 }

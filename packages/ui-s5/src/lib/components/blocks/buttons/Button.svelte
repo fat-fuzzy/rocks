@@ -11,7 +11,7 @@
 		formaction,
 		align,
 		justify = 'center',
-		asset, // emoji:value or svg:value
+		asset, // the `value` in emoji:value or svg:value
 		color,
 		size,
 		shape,
@@ -24,20 +24,18 @@
 		onclick
 	}: ButtonProps  = $props();
 
-
-
 	function handleClick(event: MouseEvent) {
 		if (onclick) onclick(payload)
 	}
 
 	/* Element styles */
-	let colorClass = color ? `bg:${color}` : '';
-	let sizeClass = size ? `size:${size}` : '';
-	let fontClass = size ? `font:${size}` : '';
+	let colorClass = color ? `bg:${color}` : ''
+	let sizeClass = size ? `size:${size}` : ''
+	let fontClass = size ? `font:${size}` : ''
 	let assetClass = asset ? `emoji:${asset}` : ''
-	let variantClass = variant ? `variant:${variant}` : '';
-	let shapeClass = shape ? ` shape:${shape}` : '';
-	let alignClass = align ? `align:${align}` : '';
+	let variantClass = variant ? `variant:${variant}` : ''
+	let shapeClass = shape ? ` shape:${shape}` : ''
+	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 
 	/* Context styles */
@@ -48,7 +46,6 @@
 	let contextClasses =`${containerClasses} ${layoutClasses}`;
 
 	let elementClasses = `${assetClass} ${colorClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass}`;
-
 	let buttonClasses = `${contextClasses} ${elementClasses}`
 
 	let payload = $state({

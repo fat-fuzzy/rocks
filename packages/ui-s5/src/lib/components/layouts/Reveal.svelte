@@ -2,6 +2,7 @@
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import type {RevealLayoutProps} from './layout.types.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 
 	let {
 		id = 'reveal',
@@ -34,7 +35,7 @@
 	}
 
 	let backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
-	let show = $derived(expanded ? `${backgroundClass} show` : 'hide:viz-only')
+	let show = $derived(expanded ? `${backgroundClass} expanded` : 'hide:viz-only')
 	let setHeight = height ? ` h:${height}` : ''
 
 	// TODO: use a form
@@ -60,11 +61,10 @@
 		name="reveal"
 		controls={`${id}-reveal`}
 		value={'menu'}
-		states={{
-			expanded: {id: 'show', text: 'Reveal', value: 'show', asset},
-			collapsed: {id: 'minimize', text: 'Reveal', value: 'minimize', asset},
-		}}
+		{asset}
+		text= 'Reveal'
 		onclick={toggleReveal}
+		states={EXPAND_MACHINE}
 	>
 		{title}
 	</Expand>

@@ -3,9 +3,10 @@
 
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 	import type {HeaderProps} from './header.types.js'
-	import type {ExpandPayload} from '$lib/components/blocks/buttons/Expand/expand.types.js'
+	import type {FuzzyPayload} from '$types/machines.js'
 
 	let {
 		id = 'header-app',
@@ -24,11 +25,11 @@
 	let navReveal: {[key: string]: string} = $state({reveal: ''})
 
 	function handleClickOutsideMainNav() {
-		navReveal = {reveal: 'minimize'}
+		navReveal = {reveal: 'collapsed'}
 	}
 
-	function toggleNav(payload: ExpandPayload) {
-		const updated = payload.expanded ? 'show' : 'minimize'
+	function toggleNav(payload: FuzzyPayload) {
+		const updated = payload.state
 		navReveal = {reveal: updated}
 	}
 
@@ -38,7 +39,7 @@
 	let headerClass = $derived(
 		`${className} l:sidebar:xl layer sticky:top justify:start settings:${brightness}:${contrast}`,
 	)
-	let showNav = $derived(reveal === 'show' ? 'show' : 'hide:viz-only')
+	let showNav = $derived(reveal === 'expanded' ? 'expanded' : 'hide:viz-only')
 	let navClasses = $derived(`l:switcher:2xs ${showNav}`)
 	let revealClasses = `form:expand card:md`
 	let layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
@@ -71,21 +72,10 @@
 				type={actionPath && formaction ? 'submit' : 'button'}
 				controls={`${id}-primary-nav`}
 				value={'menu'}
-				states={{
-					expanded: {
-						id: 'menu-expanded',
-						text: 'menu',
-						value: 'show',
-						asset: 'menu',
-					},
-					collapsed: {
-						id: 'menu-collapsed',
-						text: 'menu',
-						value: 'minimize',
-						asset: 'menu',
-					},
-				}}
+				asset="menu"
+				text="Menu"
 				onclick={toggleNav}
+				states={EXPAND_MACHINE}
 			>
 				Menu
 			</Expand>

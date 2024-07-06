@@ -26,7 +26,7 @@
 		children,
 	}: Props = $props()
 
-	let background = $derived(context === 'code' ? '' : `bg:${status}:300`)
+	let background = $derived(context === 'code' ? '' : `bg:${status}:100`)
 	let containerClass = $derived(container && context !== 'code' ? `l:${container}:${size}` : '')
 	let assetClass = $derived(status ? `emoji:${status}` : `emoji:${asset}`)
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
