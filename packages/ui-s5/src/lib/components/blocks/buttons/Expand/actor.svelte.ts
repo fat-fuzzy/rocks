@@ -1,7 +1,7 @@
 import type {ButtonEvent} from '../button.types.js'
+import blocksHelpers from '../../blocks.helpers.js'
 import {type FuzzyActor, type FuzzyPayload} from '$types/machines.js'
 import {UiState, type UiBlockProps} from '$types/index.js'
-
 import {
 	type UiStateExpand,
 	type ExpandMachine,
@@ -50,43 +50,16 @@ class ExpandActor implements FuzzyActor {
 	}
 
 	public getStyles(props: UiBlockProps): string {
-		let {
-			color,
-			size,
-			shape,
-			align,
-			justify,
-			asset,
-			variant,
-			layout,
-			container,
-			dimensions,
-		} = props
+		let currentVariant = this.currentState?.variant ?? props.variant
+		let currentAsset = this.currentState?.asset ?? props.asset
 
-		/* Element styles */
-		let colorClass = color ? `bg:${color}` : ''
-		let sizeClass = size ? `size:${size}` : ''
-		let fontClass = size ? `font:${size}` : ''
-		let shapeClass = shape ? ` shape:${shape}` : ''
-		let alignClass = align ? `align:${align}` : ''
-		let justifyClass = justify ? `justify:${justify}` : ''
+		let blockClasses = blocksHelpers.getElementStyles({
+			...props,
+			asset: currentAsset,
+			variant: currentVariant,
+		})
 
-		let currentVariant = this.machine[this.state]?.variant ?? variant
-		let variantClass = currentVariant ? `variant:${currentVariant}` : ''
-		let currentAsset = this.machine[this.state]?.asset ?? asset
-		let assetClass = currentAsset ? `emoji:${currentAsset}` : ''
-		let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass}`
-		let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
-
-		/* Context styles */
-		let containerClasses = ''
-		if (container) {
-			containerClasses = dimensions
-				? `l:${container}:${dimensions}`
-				: `l:${container}:${size}`
-		}
-
-		return `expand ${containerClasses} ${layoutClasses} ${elementClasses} ${assetClass} ${variantClass}`
+		return `expand ${blockClasses}`
 	}
 }
 

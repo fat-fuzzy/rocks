@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {onMount} from 'svelte'
 	import type {ButtonType} from '$lib/components/blocks/buttons/button.types.js'
 	import type {ButtonMenuProps} from './menu.types.js'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'

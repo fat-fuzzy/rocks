@@ -23,7 +23,6 @@
 		actionPath,
 		redirect,
 		items,
-		children,
 		onupdate,
 	}: SettingsProps = $props()
 

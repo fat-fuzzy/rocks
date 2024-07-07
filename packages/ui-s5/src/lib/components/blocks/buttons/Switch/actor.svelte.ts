@@ -1,4 +1,5 @@
 import type {ButtonEvent} from '../button.types.js'
+import blocksHelpers from '../../blocks.helpers.js'
 import {type FuzzyPayload, type FuzzyActor} from '$types/machines.js'
 import {UiState, type UiBlockProps} from '$types/index.js'
 import {
@@ -49,47 +50,16 @@ class SwitchActor implements FuzzyActor {
 	}
 
 	public getStyles(props: UiBlockProps): string {
-		let {
-			color,
-			size,
-			shape,
-			align,
-			justify,
-			asset,
-			variant,
-			layout,
-			container,
-			dimensions,
-		} = props
+		let currentVariant = this.currentState?.variant ?? props.variant
+		let currentAsset = this.currentState?.asset ?? props.asset
 
-		/* Element styles */
-		let colorClass = color ? `bg:${color}` : ''
-		let sizeClass = size ? `size:${size}` : ''
-		let fontClass = size ? `font:${size}` : ''
-		let shapeClass = shape ? ` shape:${shape}` : ''
-		let alignClass = align ? `align:${align}` : ''
-		let justifyClass = justify ? `justify:${justify}` : ''
+		let blockClasses = blocksHelpers.getElementStyles({
+			...props,
+			asset: currentAsset,
+			variant: currentVariant,
+		})
 
-		let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass}`
-		let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
-
-		/* Context styles */
-		let containerClasses = ''
-		if (container) {
-			containerClasses = dimensions
-				? `l:${container}:${dimensions}`
-				: `l:${container}:${size}`
-		}
-		/* State dependent styles */
-		let currentVariant = $derived(this.currentState?.variant ?? variant)
-		let variantClass = $derived(
-			currentVariant ? `variant:${currentVariant}` : '',
-		)
-		let currentAsset = $derived(this.currentState?.asset ?? asset)
-		let assetClass = $derived(currentAsset ? `emoji:${currentAsset}` : '')
-		let stateClasses = $derived(`${assetClass} ${variantClass}`)
-
-		return `switch ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
+		return `switch ${blockClasses}`
 	}
 }
 
