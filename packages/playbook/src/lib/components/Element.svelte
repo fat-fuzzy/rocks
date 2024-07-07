@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
+	import PlaybookStore from '$lib/api/store.svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
 	import type {Meta} from '$lib/props/types'
 

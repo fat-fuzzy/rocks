@@ -16,21 +16,23 @@
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
 	let containerStyles = $derived(styles.layouts.container)
-
-	let blockProps = $derived({
-		...props,
-		name,
-		// Block style options
-		...elementStyles,
-	})
 </script>
 
-{#key blockProps}
-	{#if isPage && containerStyles.container}
-		<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
-			<svelte:component this={component} id={title} {...blockProps} />
-		</div>
-	{:else}
-		<svelte:component this={component} id={title} {...blockProps} />
-	{/if}
-{/key}
+{#if isPage && containerStyles.container}
+	<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
+		<svelte:component
+			this={component}
+			id={title}
+			{name}
+			{...props}
+			{...elementStyles}
+		/>
+	</div>
+{:else}
+	<svelte:component
+		this={component}
+		id="{title}{name}"
+		{...props}
+		{...elementStyles}
+	/>
+{/if}

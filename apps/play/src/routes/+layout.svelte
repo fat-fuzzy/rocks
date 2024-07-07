@@ -1,37 +1,22 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import '@fat-fuzzy/style'
-
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$lib/data/nav'
-	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui-s5'
+	import {recipes, utils, constants} from '@fat-fuzzy/ui-s5'
 
 	const {Header} = recipes
-	const {settings} = stores
 	const {DEFAULT_APP_SETTINGS, APP_LINKS} = constants
 
-	let appSettings = $page.data.app || DEFAULT_APP_SETTINGS
+	let appSettings = $derived($page.data.app || DEFAULT_APP_SETTINGS)
 
-	const localStores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-	]
-
-	$: brightness = appSettings.brightness
-	$: contrast = appSettings.contrast
-	$: pageClass = utils.format.getClassNameFromUrl($page.url)
-	$: layoutClass =
+	let brightness = appSettings.brightness
+	let contrast = appSettings.contrast
+	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
+	let layoutClass =
 		APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
-	$: mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
-	$: headerClass = `header-app ${brightness} bg:${contrast}`
-	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
-
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
-	})
+	let mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
+	let headerClass = `header-app ${brightness} bg:${contrast}`
+	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`
 </script>
 
 <Header

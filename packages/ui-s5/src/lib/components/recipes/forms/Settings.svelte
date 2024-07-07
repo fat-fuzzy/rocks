@@ -1,10 +1,7 @@
 <script lang="ts">
 	import {enhance} from '$app/forms'
-
-	import * as settings from '$stores/settings.js'
 	import constants from '$lib/types/constants.js'
 	import type {SettingsProps} from './settings.types.js'
-
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
@@ -35,12 +32,11 @@
 	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
 
 	function handleClickOutsideSettings() {
-		settings.settingsReveal.set({reveal: 'collapsed'})
+		settingsReveal = {reveal: 'collapsed'}
 	}
 
 	function handleToggle(event) {
-		const updated = event.expanded ? 'expanded' : 'collapsed'
-		settings.settingsReveal.set({reveal: updated})
+		settingsReveal = {reveal: event.state}
 	}
 
 	function handleUpdate(event) {

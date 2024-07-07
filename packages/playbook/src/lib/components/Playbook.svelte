@@ -81,7 +81,7 @@
 		title: 'Library',
 		id: 'nav-page',
 		items,
-		reveal: 'show',
+		reveal: 'expanded',
 		settings: {...playbookStore.app},
 		breakpoint: 'sm',
 		size: 'md',

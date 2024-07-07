@@ -65,12 +65,6 @@ import {SettingsUpdate} from '$lib/forms/settings-update.js'
 import {SidebarReveal} from '$lib/forms/sidebar-reveal.js'
 
 /**
- * Stores
- */
-import * as settings from '$lib/stores/settings.js'
-import * as intl from '$lib/stores/intl.js'
-
-/**
  * Utilities
  */
 import * as types from '$lib/types/index.js'
@@ -91,11 +85,6 @@ const forms = {
 	SidebarReveal,
 	SettingsReveal,
 	SettingsUpdate,
-}
-
-const stores = {
-	settings,
-	intl,
 }
 
 const tokens = {
@@ -154,7 +143,6 @@ export {
 	content,
 	utils,
 	forms,
-	stores,
 	constants,
 	types,
 }
