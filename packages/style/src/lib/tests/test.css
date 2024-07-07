@@ -14,7 +14,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 	}
 
 	.shade {
-		box-shadow: inset var(--shadow-inset-1);
+		box-shadow: inset var(--shadow-inset-sm);
 	}
 }
 

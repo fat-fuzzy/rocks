@@ -23,14 +23,16 @@ function getElementStyles(props: UiBlockProps): string {
  * Context styles
  */
 function getContainerStyles(props: UiBlockProps): string {
-	let {size, container, dimensions} = props
+	let {size, container, dimensions, layer} = props
 
 	let containerClass = container ? `l:${container} ` : ''
+	let layerClass = layer ? ` layer:${layer}` : ''
+
 	if (containerClass) {
 		containerClass = dimensions
-			? `${container}:${dimensions}`
+			? `${container}:${dimensions} ${layerClass}`
 			: size
-				? `${container}:${size}`
+				? `${container}:${size} ${layerClass}`
 				: ''
 	}
 
@@ -38,17 +40,19 @@ function getContainerStyles(props: UiBlockProps): string {
 }
 
 function getLayoutStyles(props: UiBlockProps): string {
-	let {size, height, shape, layout, threshold, breakpoint} = props
+	let {size, height, shape, layout, threshold, breakpoint, layer} = props
 
 	let thresholdClass = threshold ? `th:${threshold}` : ''
 	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
 	let layoutClass = layout && shape ? 'stack' : layout
 	let heightClass = height ? ` h:${height}` : ''
+	let layerClass = layer ? ` layer:${layer}` : ''
+
 	if (layoutClass) {
 		layoutClass = size ? `l:${layoutClass}:${size}` : `l:${layoutClass}`
 	}
 
-	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass} ${heightClass}`
+	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass} ${heightClass} ${layerClass}`
 
 	return layoutClasses.trim()
 }

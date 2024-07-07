@@ -1,4 +1,4 @@
-[class^='l:reveal'] [class*='expand'] {
+[class^='l:reveal'] [class*='expanded'] {
 	position: relative;
 	z-index: var(--layout-z-index-layer);
 	max-inline-size: calc(100% - var(--outline-offset-base));

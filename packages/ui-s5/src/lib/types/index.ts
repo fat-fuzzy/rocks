@@ -80,6 +80,7 @@ export type UiBlockProps = UiLayoutProps & {
 	variant?: string
 	background?: string
 	height?: string
+	layer?: string
 }
 
 export type UiContentProps = {

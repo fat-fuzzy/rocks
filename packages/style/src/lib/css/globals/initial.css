@@ -70,7 +70,7 @@ a:hover {
 	--chroma-contrast: var(--chroma-focus);
 	--lightness-contrast: var(--lightness-contrast-focus);
 	outline-offset: var(--outline-offset-base);
-	outline: var(--outline-width) solid var(--shade);
+	outline: var(--outline-width) solid var(--shadow); /* TODO: improve color */
 }
 
 /* Inherit fonts for inputs and buttons */

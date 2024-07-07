@@ -27,7 +27,6 @@
 .card\:2xs {
 	/* Base size */
 	--ui-size: var(--size-base-2xs);
-	--font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 }
 
 .card\:xs {

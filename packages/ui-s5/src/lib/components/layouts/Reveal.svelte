@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import type {RevealLayoutProps} from './layout.types.js'
+	import styleHelper from '$lib/utils/styles.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 
@@ -20,25 +21,35 @@
 		align,
 		height,
 		background,
+		layer,
 		asset,
 		children,
 	}: RevealLayoutProps = $props()
 
-	let expanded = $state(false)
+	let expanded = $state('collapsed')
 
 	function handleClickOutside(event) {
-		expanded = false
+		expanded = 'collapsed'
 	}
 
 	function toggleReveal(event) {
-		expanded = !expanded
+		expanded = event.state
 	}
 
-	let backgroundClass = background ? `layer bg:${background}` : 'collapsed'
-	let show = $derived(expanded ? `${backgroundClass} expanded` : 'collapsed')
-	let setHeight = height ? ` h:${height}` : ''
+	let layoutClasses = $derived(styleHelper.getLayoutStyles({
+			color,
+			size,
+			height,
+			align,
+			asset,
+			variant,
+			layout,
+			background,
+			layer
+		}))
 
-	// TODO: use a form
+	let revealClasses = $derived(`l:reveal form:${expanded} ${layoutClasses} ${direction} ${expanded}`)
+
 	let action = formaction
 		? redirect
 			? `${formaction}&redirectTo=${redirect}`
@@ -47,9 +58,7 @@
 </script>
 
 <form {method} {action}
-	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size} ${direction}`}
-	use:clickOutside
-	onclickOutside={handleClickOutside}
+	class={revealClasses}
 >
 	<Expand
 		id={`button-reveal-${id}`}
@@ -68,7 +77,7 @@
 	>
 		{title}
 	</Expand>
-	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
+	<div id={`${id}-reveal`} class="content">
 		{#if children}
 			{@render children()}
 		{/if}

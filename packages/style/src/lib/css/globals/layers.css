@@ -1,14 +1,43 @@
-.layer,
-[class*=':layer'] {
-	box-shadow: var(--shadow-md);
+[class*='layer:'] {
+	--layer: var(--shadow-md);
+	box-shadow: var(--layer);
 }
 
-.inset-1 {
-	box-shadow: inset var(--shadow-inset-sm);
+.layer\:0 {
+	--layer: unset;
 }
 
-.inset {
-	box-shadow: inset var(--shadow-inset-md);
+.layer\:1 {
+	--layer: var(--shadow-sm);
+}
+
+.layer\:2 {
+	--layer: var(--shadow-md);
+}
+
+.layer\:3 {
+	--layer: var(--shadow-lg);
+}
+
+[class*='inset'] {
+	--layer-inset: var(--shadow-inset-md);
+	box-shadow: inset var(--layer-inset);
+}
+
+.inset\:0 {
+	--layer-inset: unset;
+}
+
+.inset\:1 {
+	--layer-inset: inset var(--shadow-inset-sm);
+}
+
+.inset\:2 {
+	--layer-inset: inset var(--shadow-inset-md);
+}
+
+.inset\:3 {
+	--layer-inset: inset var(--shadow-inset-lg);
 }
 
 .drop {

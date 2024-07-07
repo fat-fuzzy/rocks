@@ -37,9 +37,9 @@
 	let contrast = $derived(app.settings.contrast)
 	let reveal = $derived(navReveal.reveal)
 	let headerClass = $derived(
-		`${className} l:sidebar:xl layer sticky:top justify:start settings:${brightness}:${contrast}`,
+		`${className} l:sidebar:xl layer:2 sticky:top justify:start settings:${brightness}:${contrast}`,
 	)
-	let showNav = $derived(reveal === 'expanded' ? 'expanded' : 'hide:viz-only')
+	let showNav = $derived(reveal)
 	let navClasses = $derived(`l:switcher:2xs ${showNav}`)
 	let revealClasses = `form:expand card:md`
 	let layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`

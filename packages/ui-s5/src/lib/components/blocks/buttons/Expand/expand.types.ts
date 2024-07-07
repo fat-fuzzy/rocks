@@ -16,14 +16,14 @@ export const EXPAND_MACHINE: ExpandMachine = {
 		state: UiState.expanded,
 		event: ButtonEvent.collapse,
 		text: 'Collapse',
-		asset: 'point-right',
+		asset: 'point-down',
 	},
 	collapsed: {
 		id: UiState.collapsed,
 		state: UiState.collapsed,
 		event: ButtonEvent.expand,
 		text: 'Expand',
-		asset: 'point-down',
+		asset: 'point-right',
 	},
 }
 

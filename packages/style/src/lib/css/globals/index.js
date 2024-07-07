@@ -22,8 +22,8 @@ import './text/_serif.css'
 import './text/_heading.css'
 
 /* Text */
-import './text/scale.css'
 import './text/typography.css'
+import './text/scale.css'
 
 /* Icons */
 import './icons/icon.css' /* Use to display emojis and svg icons */

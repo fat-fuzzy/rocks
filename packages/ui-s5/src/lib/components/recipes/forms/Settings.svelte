@@ -55,8 +55,7 @@
 	let reveal = $derived(settingsReveal.reveal)
 	let brightness = $derived(appSettings.brightness)
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `expanded ${showBackground}`
-	let showSettings = $derived(reveal === 'expanded' ? show : 'hide:viz-only')
+	let show = $derived(`${reveal} ${showBackground}`)
 	let revealClasses = `form:expand card:md nowrap`
 	let formClasses = `l:switcher:xs ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
@@ -104,7 +103,7 @@
 			Settings
 		</Expand>
 	</form>
-	<div {id} class={`${showSettings} l:flex align:center`}>
+	<div {id} class={`${show} l:flex align:center`}>
 		<form
 			name="settings-update"
 			{method}
