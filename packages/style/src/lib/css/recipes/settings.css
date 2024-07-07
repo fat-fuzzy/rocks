@@ -2,11 +2,11 @@
 	outline-offset: var(--outline-offset-settings);
 }
 
-.menu\:settings [class^='switch'][aria-pressed] {
+.menu\:settings [class*='switch'][aria-pressed] {
 	box-shadow: inset var(--shadow-inset-sm);
 }
 
-.menu\:settings [class^='switch'][aria-pressed].outline {
+.menu\:settings [class*='switch'][aria-pressed].outline {
 	background-color: inherit;
 }
 
@@ -14,7 +14,7 @@
 	background-color: inherit;
 }
 
-.menu\:settings [class^='switch'][aria-pressed]:hover {
+.menu\:settings [class*='switch'][aria-pressed]:hover {
 	--lightness: var(--color-lightness-light);
 	background-color: var(--color-bg);
 	box-shadow: var(--shadow-md);

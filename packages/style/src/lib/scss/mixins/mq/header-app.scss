@@ -28,7 +28,7 @@
 			inline-size: fit-content;
 		}
 
-		.header-app > nav[class*='l:main'].l\:reveal\:auto.bp\:#{$size} li {
+		.header-app > [class*='l:main'] nav.l\:reveal\:auto.bp\:#{$size} li {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -38,7 +38,8 @@
 		}
 
 		.header-app
-			> nav[class*='l:main'].l\:reveal\:auto.bp\:#{$size}
+			> [class*='l:main']
+			nav.l\:reveal\:auto.bp\:#{$size}
 			li[aria-current='page'] {
 			border-color: var(--accent);
 			background-color: var(--shade);

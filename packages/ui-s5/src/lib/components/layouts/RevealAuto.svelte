@@ -42,7 +42,7 @@
 	let layoutClasses = $derived(
 		styleHelper.getLayoutStyles({size, height, layout, breakpoint, background, direction}),
 	)
-	let formClasses = $derived(`form:${expanded}`)
+	let formClasses = $derived(`form:${expanded} card:${size}`)
 	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses} maki:inline size:lg`)
 
 	let action = formaction

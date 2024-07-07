@@ -20,13 +20,13 @@
 /**
  * App header - Main Nav
  */
-.header-app > nav[class*='l:main'] a {
+.header-app > [class*='l:main'] nav a {
 	inline-size: 100%;
 	text-transform: uppercase;
 	padding: var(--ui-size-sm);
 }
 
-.header-app > nav[class*='l:main'] li[aria-current='page'] a {
+.header-app > [class*='l:main'] nav li[aria-current='page'] a {
 	color: var(--ink);
 	text-decoration: none;
 	background-color: inherit;

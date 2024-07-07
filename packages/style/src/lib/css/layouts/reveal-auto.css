@@ -4,11 +4,31 @@
 	flex-direction: column;
 }
 
-.l\:reveal\:auto .expand {
+.l\:reveal\:auto.hug {
 	inline-size: fit-content;
 }
 
-.l\:reveal\:auto.collapsed .content {
+.l\:reveal\:auto [aria-expanded] {
+	inline-size: fit-content;
+}
+
+.l\:reveal\:auto [class*='form:'] {
+	position: relative;
+}
+
+.l\:reveal\:auto [aria-expanded='true'] + .content {
+	position: absolute;
+	inline-size: auto;
+	block-size: auto;
+	overflow: hidden auto;
+	margin: initial;
+	padding: initial;
+	white-space: normal;
+	scrollbar-gutter: stable;
+}
+
+.l\:reveal\:auto [aria-expanded='false'] + .content,
+.l\:reveal\:auto form:has([aria-expanded='false']) + .content {
 	border: 0;
 	block-size: 0;
 	margin: 0;
@@ -17,16 +37,14 @@
 	overflow: hidden;
 }
 
-.l\:reveal\:auto.expanded .content {
+.l\:reveal\:auto form:has([aria-expanded='true']) + .content {
+	position: absolute;
 	inline-size: auto;
 	block-size: auto;
-	overflow-y: auto;
+	overflow: hidden auto;
 	margin: initial;
 	padding: initial;
 	white-space: normal;
 	scrollbar-gutter: stable;
-}
-
-.l\:reveal\:auto.expanded .hug {
-	inline-size: fit-content;
+	top: var(--size-ui-header-height);
 }
