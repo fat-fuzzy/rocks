@@ -2,20 +2,21 @@ import {UiState, type UiBlockProps} from '$types/index.js'
 import type {ButtonEvent} from '../button.types.js'
 import {type FuzzyPayload, type FuzzyActor} from '$types/machines.js'
 import {
+	type UiStateToggle,
 	type ToggleMachine,
 	TOGGLE_MACHINE,
 	TOGGLE_TRANSITIONS,
 } from './toggle.types.js'
 
 class ToggleActor implements FuzzyActor {
-	state = $state(UiState.inactive)
+	state: UiStateToggle = $state(UiState.inactive)
 	machine: ToggleMachine = $state(TOGGLE_MACHINE)
 	transitions = TOGGLE_TRANSITIONS
 	currentState = $derived(this.machine[this.state])
 	pressed = $derived(this.state === UiState.active)
 	value = $derived(this.machine[this.state]?.value)
 	id = $derived(this.machine[this.state]?.id)
-	text = $derived(this.machine[this.state]?.text)
+	text = $derived(this.machine[this.state]?.text || '')
 
 	constructor({
 		initial,
@@ -26,7 +27,7 @@ class ToggleActor implements FuzzyActor {
 		onclick?: (payload: FuzzyPayload) => void
 		machine?: ToggleMachine
 	}) {
-		if (initial) this.state = initial
+		if (initial) this.state = initial as UiStateToggle
 		if (machine) this.machine = machine
 		if (onclick) {
 			this.machine.active.action = onclick
@@ -34,11 +35,11 @@ class ToggleActor implements FuzzyActor {
 		}
 	}
 
-	public getTransition(event: ButtonEvent): UiState {
-		const state = this.state as UiState
+	public getTransition(event: ButtonEvent): UiStateToggle {
+		const state = this.state
 		const transition = this.transitions[state][event]
 		if (transition) {
-			return transition as UiState
+			return transition as UiStateToggle
 		}
 		return state
 	}

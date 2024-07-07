@@ -2,21 +2,21 @@ import type {ButtonEvent} from '../button.types.js'
 import {type FuzzyPayload, type FuzzyActor} from '$types/machines.js'
 import {UiState, type UiBlockProps} from '$types/index.js'
 import {
-	type SwitchMachine,
 	type UiStateSwitch,
+	type SwitchMachine,
 	SWITCH_MACHINE,
 	SWITCH_TRANSITIONS,
 } from './switch.types.js'
 
 class SwitchActor implements FuzzyActor {
-	state = $state(UiState.inactive)
+	state: UiStateSwitch = $state(UiState.inactive)
 	machine = $state(SWITCH_MACHINE)
 	transitions = SWITCH_TRANSITIONS
-	currentState = $derived(this.machine[this.state as UiStateSwitch])
+	currentState = $derived(this.machine[this.state])
 	pressed = $derived(this.state === UiState.active)
 	value = $derived(this.machine[this.state]?.value)
 	id = $derived(this.machine[this.state]?.id)
-	text = $derived(this.machine[this.state]?.text)
+	text = $derived(this.machine[this.state]?.text || '')
 
 	constructor({
 		initial,
@@ -27,17 +27,19 @@ class SwitchActor implements FuzzyActor {
 		onclick?: (payload: FuzzyPayload) => void
 		machine?: SwitchMachine
 	}) {
-		if (initial) this.state = initial
+		if (initial) this.state = initial as UiStateSwitch
 		if (machine) this.machine = machine
-		this.machine.active.action = onclick
-		this.machine.inactive.action = onclick
+		if (onclick) {
+			this.machine.active.action = onclick
+			this.machine.inactive.action = onclick
+		}
 	}
 
-	public getTransition(event: ButtonEvent): UiState {
-		const state = this.state as UiState
+	public getTransition(event: ButtonEvent): UiStateSwitch {
+		const state = this.state
 		const transition = this.transitions[state][event]
 		if (transition) {
-			return transition as UiState
+			return transition as UiStateSwitch
 		}
 		return state
 	}
