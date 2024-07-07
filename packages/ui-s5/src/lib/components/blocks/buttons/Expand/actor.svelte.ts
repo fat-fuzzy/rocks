@@ -34,10 +34,7 @@ class ExpandActor implements FuzzyActor {
 	}
 
 	public update(event: ButtonEvent): void {
-		console.log('update event', event)
-
 		this.state = this.getTransition(event)
-		console.log('update this.state', this.state)
 	}
 
 	public getStyles(props: UiBlockProps): string {

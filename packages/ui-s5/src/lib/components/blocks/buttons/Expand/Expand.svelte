@@ -4,7 +4,6 @@
 	import { ButtonEvent } from '../button.types.js'
 	import Actor from './actor.svelte.js'
 
-
 	let {
 		id = 'expand',
 		name = 'expand',
