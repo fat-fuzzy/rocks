@@ -196,6 +196,7 @@
   --shadow-base-sm-spread: 0;
   --size-base-2xl: var(--scale-base-30);
   --size-base-2xs: var(--scale-base-03);
+  --size-base-3xs: var(--scale-base-04);
   --size-base-initial: 1rem;
   --size-base-lg: var(--scale-base-10);
   --size-base-md: var(--scale-base-00);

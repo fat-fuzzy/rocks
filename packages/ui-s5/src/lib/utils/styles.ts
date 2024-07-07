@@ -40,19 +40,21 @@ function getContainerStyles(props: UiBlockProps): string {
 }
 
 function getLayoutStyles(props: UiBlockProps): string {
-	let {size, height, shape, layout, threshold, breakpoint, layer} = props
+	let {size, height, shape, layout, threshold, breakpoint, layer, background} =
+		props
 
 	let thresholdClass = threshold ? `th:${threshold}` : ''
 	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
 	let layoutClass = layout && shape ? 'stack' : layout
 	let heightClass = height ? ` h:${height}` : ''
 	let layerClass = layer ? ` layer:${layer}` : ''
+	let backgroundClass = background ? `bg:${background}` : 'bg:inherit'
 
 	if (layoutClass) {
 		layoutClass = size ? `l:${layoutClass}:${size}` : `l:${layoutClass}`
 	}
 
-	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass} ${heightClass} ${layerClass}`
+	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass} ${heightClass} ${backgroundClass} ${layerClass}`
 
 	return layoutClasses.trim()
 }

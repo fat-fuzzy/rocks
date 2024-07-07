@@ -15,6 +15,7 @@
 		title = 'RevealAuto',
 		method = 'POST',
 		reveal = 'collapsed',
+		element = 'div',
 		formaction,
 		actionPath,
 		redirect,
@@ -27,25 +28,22 @@
 		align,
 		height,
 		background,
-		asset,
+		asset = 'context',
 		children,
 	}: RevealLayoutProps = $props()
 
-	let expanded = false
+	let expanded = $state(reveal)
 
-	function handleToggle(event) {
-		expanded = !expanded
+	function toggleReveal(event) {
+		expanded = event.state
 	}
 
 	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
-	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `${reveal} ${showBackground}`
-	let revealClasses = `form:${reveal} align-self:${buttonAlign} maki:inline size:lg`
-	let layoutClass = layout ? `l:${layout}:${size}` : ''
-
 	let layoutClasses = $derived(
-		styleHelper.getLayoutStyles({size, height, layout, breakpoint}),
+		styleHelper.getLayoutStyles({size, height, layout, breakpoint, background, direction}),
 	)
+	let formClasses = $derived(`form:${expanded}`)
+	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses} maki:inline size:lg`)
 
 	let action = formaction
 		? redirect
@@ -54,8 +52,9 @@
 		: undefined
 </script>
 
-<div class={`l:reveal:auto ${layoutClasses}`}>
+<svelte:element {id} this={element} class={revealClasses} aria-label={title}>
 	<form
+		name={`${id}-reveal`}
 		{method}
 		action={action
 			? actionPath
@@ -68,7 +67,7 @@
 				update({reset: false})
 			}
 		}}
-		class={revealClasses}
+		class={formClasses}
 	>
 		<Expand
 			id={`button-reveal-auto-${id}`}
@@ -80,19 +79,19 @@
 			name="reveal-auto"
 			controls={`reveal-auto-${id}`}
 			value={'menu'}
-			asset="context"
+			asset={asset}
 			states={EXPAND_MACHINE}
-			onclick={handleToggle}
+			onclick={toggleReveal}
 		>
 			{title}
 		</Expand>
+		<div
+			id={`reveal-auto-${id}`}
+			class="content"
+		>
+			{#if children}
+				{@render children()}
+			{/if}
+		</div>
 	</form>
-	<div
-		id={`reveal-auto-${id}`}
-		class={`${layoutClass} ${show} ${direction} hug`}
-	>
-	{#if children}
-		{@render children()}
-	{/if}
-	</div>
-</div>
+</svelte:element>

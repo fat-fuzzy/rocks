@@ -13,12 +13,12 @@ export type ButtonState = {
 	}
 }
 
-const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
+const DEFAULT_REVEAL_STATE: Settings = {reveal: 'collapsed'}
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
-	show: 'minimize',
-	minimize: 'show',
+	expanded: 'collapsed',
+	collapsed: 'expanded',
 }
 
 const TRANSITION_BRIGHTNESS: {[key: string]: string} = {
@@ -50,10 +50,10 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 const ALIGN_ANIMATION_DIRECTION: {
 	[inactivePosition: string]: {[state: string]: string}
 } = {
-	left: {show: 'down', minimize: 'left'},
-	right: {show: 'down', minimize: 'right'},
-	top: {show: 'down', minimize: 'up'},
-	bottom: {show: 'up', minimize: 'down'},
+	left: {expanded: 'down', collapsed: 'left'},
+	right: {expanded: 'down', collapsed: 'right'},
+	top: {expanded: 'down', collapsed: 'up'},
+	bottom: {expanded: 'up', collapsed: 'down'},
 }
 
 const UI_STATE = {

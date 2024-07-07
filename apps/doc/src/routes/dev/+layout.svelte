@@ -26,7 +26,7 @@
 		title: 'Fat Fuzzy Dev',
 		id: 'nav-dev',
 		items,
-		reveal: 'show',
+		reveal: 'expanded',
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',

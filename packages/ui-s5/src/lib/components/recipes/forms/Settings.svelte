@@ -5,6 +5,7 @@
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
+	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
 	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 
@@ -56,7 +57,7 @@
 	let brightness = $derived(appSettings.brightness)
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
 	let show = $derived(`${reveal} ${showBackground}`)
-	let revealClasses = `form:expand card:md nowrap`
+	let revealClasses = `form:${reveal} nowrap`
 	let formClasses = `l:switcher:xs ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
@@ -117,6 +118,18 @@
 			class={`menu:settings ${formClasses}`}
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
+				{@const switchStates = states
+					? {
+							active: {
+								...SWITCH_MACHINE.active,
+								...states.inactive,
+							},
+							inactive: {
+								...SWITCH_MACHINE.inactive,
+								...states.inactive,
+							},
+						}
+					: SWITCH_MACHINE}
 				<div class="l:frame:round maki:block:2xs">
 					<Switch
 						id={`${settingsId}-${id}`}
@@ -127,7 +140,7 @@
 						{shape}
 						{color}
 						{size}
-						{states}
+						states={switchStates}
 						onclick={handleUpdate}
 					/>
 				</div>

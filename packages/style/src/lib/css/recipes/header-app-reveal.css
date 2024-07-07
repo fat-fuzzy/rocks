@@ -1,0 +1,71 @@
+/* Configure reveal items default dimensions */
+.header-app .l\:reveal\:auto {
+	block-size: fit-content;
+	inline-size: fit-content;
+}
+
+/* Configure reveal items default dimensions */
+.header-app .l\:reveal\:auto.expanded {
+	block-size: fit-content;
+	inline-size: fit-content;
+}
+
+.header-app .l\:reveal\:auto > button {
+	margin-inline: 0;
+}
+
+/* == Main navigation (in application Header) == */
+/* - Change these styles to adapt to design */
+.header-app .l\:reveal\:auto > ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	/* inline-size: 100%; */
+	background-color: inherit;
+
+	li {
+		display: flex;
+		align-items: center;
+	}
+}
+
+/* Configure reveal main nav dimensions */
+.header-app .l\:reveal\:auto[class*='l:side'].expanded {
+	padding: var(--ui-size);
+
+	menu {
+		padding-block: var(--ui-size);
+	}
+}
+
+/* Configure reveal settings menu dimensions */
+.header-app .l\:reveal\:auto[class*='l:main'].expanded {
+	max-block-size: fit-content;
+	inline-size: calc(100vw - 2 * var(--gap));
+
+	/* - Change these styles to adapt to design */
+	ul {
+		position: relative;
+		padding: var(--ui-size) 0;
+		block-size: fit-content;
+	}
+
+	li {
+		background-color: inherit;
+		border-inline-start: var(--border-width-xl) solid var(--shade);
+		padding: var(--outline-offset) 0;
+		inline-size: fit-content;
+	}
+
+	a {
+		padding: calc(var(--ui-size-sm) + var(--border-width-lg)) var(--ui-size);
+	}
+
+	li[aria-current='page'] {
+		border-color: var(--accent);
+
+		> a {
+			color: var(--shade);
+		}
+	}
+}

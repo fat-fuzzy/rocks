@@ -48,48 +48,46 @@
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
-		<div class="l:main:50 l:flex justify:end">
-
-			{#if currentTab.value === 'demo'}
-				<Api
-					categories={['app']}
-					{meta}
-					{path}
-					{actionPath}
-					redirect={$page.url.pathname}
-				/>
-			{/if}
-
-			<form
-				method="POST"
-				class="tabs flex nowrap"
-				action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
-				use:enhance={() => {
-					// prevent default callback from resetting the form
-					return ({update}) => {
-						update({reset: false})
-					}
-				}}
-			>
-				<ToggleMenu
-					id={`submit.${path}`}
-					items={tabs.map((tab) => {
-						if (tab.value == currentTab.value) {
-							tab.initial = 'active'
+			<div class="l:main l:flex">
+				<form
+					method="POST"
+					class="tabs flex nowrap"
+					action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
+					use:enhance={() => {
+						// prevent default callback from resetting the form
+						return ({update}) => {
+							update({reset: false})
 						}
-						return tab
-					})}
-					size="md"
-					layout="flex nowrap"
-					container="card:md"
-					color="primary"
-					shape="round"
-					variant="outline"
-					formaction={`/ui?/updateTab&redirectTo=${path}`}
-					onupdate={handleTabChange}
-					init={handleTabChange}
-				/>
-			</form>
+					}}
+				>
+					<ToggleMenu
+						id={`submit.${path}`}
+						items={tabs.map((tab) => {
+							if (tab.value == currentTab.value) {
+								tab.initial = 'active'
+							}
+							return tab
+						})}
+						size="md"
+						layout="flex nowrap"
+						container="card:md"
+						color="primary"
+						shape="round"
+						variant="outline"
+						formaction={`/ui?/updateTab&redirectTo=${path}`}
+						onupdate={handleTabChange}
+						init={handleTabChange}
+					/>
+				</form>
+				{#if currentTab.value === 'demo'}
+					<Api
+						categories={['app']}
+						{meta}
+						{path}
+						{actionPath}
+						redirect={$page.url.pathname}
+					/>
+				{/if}
 		</div>
 	{/snippet}
 

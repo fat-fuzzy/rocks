@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import type {RevealLayoutProps} from './layout.types.js'
 	import styleHelper from '$lib/utils/styles.js'
@@ -44,6 +45,7 @@
 			asset,
 			variant,
 			layout,
+			breakpoint,
 			background,
 			layer
 		}))
@@ -59,6 +61,12 @@
 
 <form {method} {action}
 	class={revealClasses}
+	use:enhance={() => {
+		// prevent default callback from resetting the form
+		return ({update}) => {
+			update({reset: false})
+		}
+	}}
 >
 	<Expand
 		id={`button-reveal-${id}`}

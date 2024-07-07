@@ -2,15 +2,31 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	inline-size: 100%;
 }
 
-.l\:reveal\:auto [class*='expand'] {
+.l\:reveal\:auto .expand {
 	inline-size: fit-content;
 }
 
-.l\:reveal\:auto .expanded {
+.l\:reveal\:auto.collapsed .content {
+	border: 0;
+	block-size: 0;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.l\:reveal\:auto.expanded .content {
 	inline-size: auto;
 	block-size: auto;
 	overflow-y: auto;
+	margin: initial;
+	padding: initial;
+	white-space: normal;
+	scrollbar-gutter: stable;
+}
+
+.l\:reveal\:auto.expanded .hug {
+	inline-size: fit-content;
 }

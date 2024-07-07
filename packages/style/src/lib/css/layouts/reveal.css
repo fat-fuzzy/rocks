@@ -1,4 +1,4 @@
-[class^='l:reveal'] [class*='expanded'] {
+[class^='l:reveal'][class*='expanded'] {
 	position: relative;
 	z-index: var(--layout-z-index-layer);
 	max-inline-size: calc(100% - var(--outline-offset-base));
@@ -32,7 +32,7 @@
 	scrollbar-gutter: stable;
 }
 
-[class^='l:reveal'] .end {
+[class^='l:reveal'].end {
 	justify-self: flex-end;
 }
 

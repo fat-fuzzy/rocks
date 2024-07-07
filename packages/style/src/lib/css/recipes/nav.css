@@ -14,7 +14,8 @@ nav li {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding: calc(var(--size-base-2xs) / var(--ratio-md)) var(--size-base-2xs);
+	padding: calc(var(--size-base-3xs) / var(--size-ratio-md))
+		var(--size-base-3xs);
 	margin-block: 0;
 	line-height: var(--font-leading-nav);
 }

@@ -4,6 +4,7 @@
 		"nul": {"$value": "0"},
 		"base": {
 			"initial": {"$value": "1rem"},
+			"3xs": {"$value": "{scale.base.04}"},
 			"2xs": {"$value": "{scale.base.03}"},
 			"xs": {"$value": "{scale.base.02}"},
 			"sm": {"$value": "{scale.base.01}"},

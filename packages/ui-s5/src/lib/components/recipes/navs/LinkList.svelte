@@ -13,7 +13,7 @@
 	let {
 		path = '',
 		layout,
-		size = 'xs',
+		size = '2xs',
 		color = 'primary',
 		align,
 		id,
@@ -76,7 +76,7 @@
 				<a
 					data-sveltekit-preload-data
 					href={format.formatHref(path, slug)}
-					class="card:xs font:md"
+					class="card:3xs"
 				>
 					{title}
 				</a>

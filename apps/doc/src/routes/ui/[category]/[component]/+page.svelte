@@ -51,18 +51,8 @@
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">{title}</h1>
-		<div class="l:main:50 l:flex justify:end">
-			{#if currentTab.value === 'demo'}
-				<Api
-					categories={['app']}
-					meta={markdownContent.meta}
-					{path}
-					{actionPath}
-					redirect={$page.url.pathname}
-				/>
-			{/if}
-
+	<h1 class="l:side hug maki:block:md">{title}</h1>
+		<div class="l:main l:flex">
 			<form
 				method="POST"
 				class="tabs"
@@ -92,6 +82,15 @@
 					init={handleTabChange}
 				/>
 			</form>
+			{#if currentTab.value === 'demo'}
+				<Api
+					categories={['app']}
+					meta={markdownContent.meta}
+					{path}
+					{actionPath}
+					redirect={$page.url.pathname}
+				/>
+			{/if}
 		</div>
 	{/snippet}
 

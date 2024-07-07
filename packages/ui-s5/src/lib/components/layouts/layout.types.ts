@@ -23,6 +23,7 @@ export type GridLayoutProps = LayoutProps & {
 export type RevealLayoutProps = LayoutProps &
 	UiBlockProps & {
 		reveal: string
+		element?: string
 	}
 
 export type SidebarLayoutProps = LayoutProps & {

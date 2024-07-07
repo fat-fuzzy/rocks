@@ -9,7 +9,7 @@
 		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .expanded,
 		.header-app
 			> [class*='l:main'].l\:reveal\:auto.bp\:#{$size}
-			[class*='hide:'] {
+			[class*='collapsed'] {
 			block-size: 100%;
 			overflow: auto;
 		}
@@ -26,7 +26,6 @@
 		.header-app nav.l\:reveal\:auto.bp\:#{$size} li,
 		.header-app nav.l\:reveal\:auto.bp\:#{$size} a {
 			inline-size: fit-content;
-			padding: var(--ui-size);
 		}
 
 		.header-app > nav[class*='l:main'].l\:reveal\:auto.bp\:#{$size} li {
