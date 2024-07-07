@@ -14,7 +14,7 @@
 				--gap: 0;
 			}
 
-			&.show {
+			&.expanded {
 				--y-size: var(--y-size-sticky);
 				--x-size: calc(var(--sidebar-width) - var(--outline-offset-settings));
 				transition: inline-size 250ms ease-in-out;
@@ -48,11 +48,11 @@
 				}
 			}
 
-			&.minimize.left,
-			&.minimize.right {
+			&.collapsed.left,
+			&.collapsed.right {
 				--y-size: var(--y-size-sticky);
 				--x-size: calc(
-					var(--layout-sidebar-minimize) + var(--ui-size-lg) +
+					var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
 						var(--outline-offset-settings) * 2
 				);
 
@@ -69,11 +69,11 @@
 						overflow: hidden auto;
 						scrollbar-gutter: stable;
 					}
-					.content .depth-1 .show .content {
+					.content .depth-1 .expanded .content {
 						block-size: fit-content;
 						overflow: hidden auto;
 					}
-					.content .depth-1 .minimize {
+					.content .depth-1 .collapsed {
 						.content {
 							block-size: 0;
 							overflow: hidden;
@@ -86,12 +86,12 @@
 }
 
 /**
-	 * This fixes the layout for the reveal nav when the sidebar is minimized
+	 * This fixes the layout for the reveal nav when the sidebar is collapsedd
 	 * TODO: figure out how to avoid this magic stuff: design change? / code change?
 	 */
 @media screen and (min-width: 1225px) {
-	[class*='reveal-nav'].minimize {
-		--sidebar-width: calc(var(--layout-sidebar-minimize) + var(--ui-size-lg));
+	[class*='reveal-nav'].collapsed {
+		--sidebar-width: calc(var(--layout-sidebar-collapsed) + var(--ui-size-lg));
 	}
 }
 

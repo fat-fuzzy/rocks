@@ -6,7 +6,7 @@
 			justify-content: center;
 		}
 
-		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .show,
+		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .expanded,
 		.header-app
 			> [class*='l:main'].l\:reveal\:auto.bp\:#{$size}
 			[class*='hide:'] {
@@ -51,7 +51,7 @@
 		}
 
 		/* Configure reveal settings menu dimensions */
-		.header-app [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .show {
+		.header-app [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .expanded {
 			block-size: auto;
 		}
 

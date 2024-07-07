@@ -142,15 +142,15 @@
   --layout-sidebar-2xl: calc(var(--layout-sidebar-xl) * var(--size-ratio-sm));
   --layout-sidebar-2xs: calc(var(--layout-sidebar-xs) / var(--size-ratio-sm));
   --layout-sidebar-base: 22ch;
+  --layout-sidebar-collapsed: 5.15em;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
-  --layout-sidebar-minimize: 5.15em;
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
   --layout-sidebar-xl: calc(var(--layout-sidebar-lg) * var(--size-ratio-sm));
   --layout-sidebar-xs: calc(var(--layout-sidebar-sm) / var(--size-ratio-sm));
   --layout-threshold-2xl: var(--layout-breakpoint-2xl);
   --layout-threshold-2xs: var(--layout-breakpoint-2xs);
-  --layout-threshold-3xs: var(--layout-sidebar-minimize);
+  --layout-threshold-3xs: var(--layout-sidebar-collapsed);
   --layout-threshold-lg: var(--layout-breakpoint-lg);
   --layout-threshold-md: var(--layout-breakpoint-md);
   --layout-threshold-sm: var(--layout-breakpoint-sm);

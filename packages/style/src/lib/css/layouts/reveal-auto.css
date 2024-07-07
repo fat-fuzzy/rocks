@@ -9,7 +9,7 @@
 	inline-size: fit-content;
 }
 
-.l\:reveal\:auto .show {
+.l\:reveal\:auto .expanded {
 	inline-size: auto;
 	block-size: auto;
 	overflow-y: auto;

@@ -8,20 +8,20 @@
 }
 
 /* Fixes bug in Safari where .content overflows parent inline-size */
-.l\:reveal.show {
+.l\:reveal.expanded {
 	display: flex;
 	flex-direction: column;
 	inline-size: 100%;
 }
 
-.l\:reveal.show .content {
+.l\:reveal.expanded .content {
 	padding-block: var(--outline-offset-base);
 	padding-inline: calc(3 * var(--outline-offset-base)) 0;
 	max-inline-size: calc(100% - var(--outline-offset-base));
 	scrollbar-gutter: stable;
 }
 
-.l\:reveal.minimize:not([class*='sticky']) .content {
+.l\:reveal.collapsed:not([class*='sticky']) .content {
 	border: 0;
 	block-size: 0;
 	margin: 0;

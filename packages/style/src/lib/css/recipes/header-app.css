@@ -19,7 +19,7 @@
 }
 
 /* Configure reveal items default dimensions */
-.header-app .l\:reveal\:auto .show {
+.header-app .l\:reveal\:auto .expanded {
 	block-size: fit-content;
 	inline-size: fit-content;
 }
@@ -58,7 +58,7 @@
 }
 
 /* Configure reveal main nav dimensions */
-.header-app .l\:reveal\:auto[class*='l:side'] .show {
+.header-app .l\:reveal\:auto[class*='l:side'] .expanded {
 	padding: var(--ui-size);
 
 	menu {
@@ -67,7 +67,7 @@
 }
 
 /* Configure reveal settings menu dimensions */
-.header-app .l\:reveal\:auto[class*='l:main'] .show {
+.header-app .l\:reveal\:auto[class*='l:main'] .expanded {
 	max-block-size: fit-content;
 	inline-size: calc(100vw - 2 * var(--gap));
 

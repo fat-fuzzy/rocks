@@ -29,7 +29,7 @@
 		scrollbar-color: var(--thumb) var(--track);
 	}
 
-	&.minimize {
+	&.collapsed {
 		--y-size: var(--size-ui-header-height);
 		--x-size: 100%;
 		transition: block-size 250ms ease-in-out;

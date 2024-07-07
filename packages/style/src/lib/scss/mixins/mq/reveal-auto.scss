@@ -8,7 +8,7 @@
 			inline-size: fit-content;
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} .show {
+		.l\:reveal\:auto.bp\:#{$size} .expanded {
 			top: 0;
 			inline-size: auto;
 			min-inline-size: unset;
@@ -21,7 +21,7 @@
 			display: none;
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} .show,
+		.l\:reveal\:auto.bp\:#{$size} .expanded,
 		.l\:reveal\:auto.bp\:#{$size} [class*='hide:'] {
 			block-size: auto;
 			margin: initial;
