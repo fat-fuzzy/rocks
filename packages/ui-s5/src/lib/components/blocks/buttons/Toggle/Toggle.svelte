@@ -30,9 +30,11 @@
 		children,
 	}: ToggleProps = $props()
 
-	let store = $state(new Actor())
+	let store = new Actor({
+			initial,
+			onclick,
+		})
 
-	/* Element state */
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
@@ -41,7 +43,7 @@
 		update: store.update.bind(store),
 	})
 
-	let buttonClasses = store.getStyles({
+	let buttonClasses =  $derived(store.getStyles({
 			color,
 			size,
 			shape,
@@ -52,7 +54,7 @@
 			layout,
 			container,
 			dimensions,
-		})
+		}))
 
 	function handleClick(event: MouseEvent) {
 		store.update(store.currentState.event as ButtonEvent)
@@ -60,10 +62,6 @@
 	}
 
 	onMount(() => {
-		store.init({
-			initial,
-			onclick,
-		})
 		if (init) init(payload)
 	})
 </script>

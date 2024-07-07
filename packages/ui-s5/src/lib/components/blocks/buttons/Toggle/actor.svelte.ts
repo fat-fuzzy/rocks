@@ -13,13 +13,11 @@ class ToggleActor implements FuzzyActor {
 	transitions = TOGGLE_TRANSITIONS
 	currentState = $derived(this.machine[this.state])
 	pressed = $derived(this.state === UiState.active)
-	value = $derived(this.machine[this.state].value)
-	id = $derived(this.machine[this.state].id)
-	text = $derived(this.machine[this.state].text)
+	value = $derived(this.machine[this.state]?.value)
+	id = $derived(this.machine[this.state]?.id)
+	text = $derived(this.machine[this.state]?.text)
 
-	constructor() {}
-
-	public init({
+	constructor({
 		initial,
 		onclick,
 		machine,

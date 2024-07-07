@@ -29,20 +29,22 @@
 		children,
 	}: SwitchProps = $props()
 
-	let store = $state(new Actor())
-
-	/* Element state */
-	let currentState = $state(store.currentState)
+	let store = new Actor({
+			initial,
+			onclick,
+			machine: states,
+		})
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
 		name,
 		value: store.value,
 		state: store.state,
+		pressed: store.pressed,
 		update: store.update.bind(store),
 	})
 
-	let buttonClasses = store.getStyles({
+	let buttonClasses =  $derived(store.getStyles({
 			color,
 			size,
 			shape,
@@ -53,20 +55,14 @@
 			layout,
 			container,
 			dimensions,
-		})
+		}))
 
 	function handleClick(event: MouseEvent) {
 		store.update(store.currentState.event as ButtonEvent)
-		if (currentState.action) currentState.action(payload)
-		else if (onclick) onclick(payload)
+		if (store.currentState.action) store.currentState.action(payload)
 	}
 
 	onMount(() => {
-		store.init({
-			initial,
-			onclick,
-			machine: states,
-		})
 		if (init) init(payload)
 	})
 </script>
@@ -78,7 +74,7 @@
 	{title}
 	{disabled}
 	{formaction}
-	value={currentState.value}
+	value={store.value}
 	class={buttonClasses}
 	data-key={name}
 	aria-pressed={store.pressed}
@@ -91,7 +87,7 @@
 			<span class="sr-only">{title}</span>
 		{:else}
 			<span class="sr-only">{title}</span>
-			<span class="viz-only">{currentState.text}</span>
+			<span class="viz-only">{store.text}</span>
 		{/if}
 	{/if}
 </button>

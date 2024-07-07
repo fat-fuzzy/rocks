@@ -89,7 +89,7 @@
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>
-		<span class="viz-only">{store.currentState.text}</span>
+		<span class="viz-only">{store.text}</span>
 	{/if}
 {/if}
 </button>

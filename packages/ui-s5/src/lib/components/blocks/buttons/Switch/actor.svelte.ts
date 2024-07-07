@@ -10,17 +10,15 @@ import {
 
 class SwitchActor implements FuzzyActor {
 	state = $state(UiState.inactive)
-	machine: SwitchMachine = $state(SWITCH_MACHINE)
+	machine = $state(SWITCH_MACHINE)
 	transitions = SWITCH_TRANSITIONS
 	currentState = $derived(this.machine[this.state as UiStateSwitch])
 	pressed = $derived(this.state === UiState.active)
-	value = $derived(this.machine[this.state].value)
-	id = $derived(this.machine[this.state].id)
-	text = $derived(this.machine[this.state].text)
+	value = $derived(this.machine[this.state]?.value)
+	id = $derived(this.machine[this.state]?.id)
+	text = $derived(this.machine[this.state]?.text)
 
-	constructor() {}
-
-	public init({
+	constructor({
 		initial,
 		onclick,
 		machine,
@@ -81,11 +79,11 @@ class SwitchActor implements FuzzyActor {
 				: `l:${container}:${size}`
 		}
 		/* State dependent styles */
-		let currentVariant = $derived(this.currentState.variant ?? variant)
+		let currentVariant = $derived(this.currentState?.variant ?? variant)
 		let variantClass = $derived(
 			currentVariant ? `variant:${currentVariant}` : '',
 		)
-		let currentAsset = $derived(this.currentState.asset ?? asset)
+		let currentAsset = $derived(this.currentState?.asset ?? asset)
 		let assetClass = $derived(currentAsset ? `emoji:${currentAsset}` : '')
 		let stateClasses = $derived(`${assetClass} ${variantClass}`)
 
