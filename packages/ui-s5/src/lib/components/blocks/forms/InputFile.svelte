@@ -1,7 +1,7 @@
 <script lang="ts">
-	import {UiStatus} from '$types/index.js'
-
 	import type {InputFileProps} from './input.types.js'
+	import {UiStatus, UiTextContext} from '$types/index.js'
+	import styleHelper from '../blocks.styles.js'
 
 	let {
 		id = 'upload-image',
@@ -23,35 +23,31 @@
 		multiple = true,
 	}: InputFileProps = $props()
 
-	/* Element styles */
-	let colorClass = color ? `bg:${color}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let assetClass = asset ? `emoji:${asset}` : ''
-	let fontClass = size ? `font:${size}` : ''
-	let variantClass = variant ? `variant:${variant}` : ''
-	let alignClass = align ? `align:${align}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
-	let statusClass = $derived(status ? `status:${status}` : '')
-
-	let elementClasses = `${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${fontClass}`
-
-	/* Context styles */
-	let layoutClasses = breakpoint
-		? `l:${layout} bp:${breakpoint}`
-		: `l:${layout}`
 	let feedbackClasses = $derived(
-		`feedback:form ${assetClass} ${statusClass} ${variantClass} ${alignClass} ${justifyClass}`,
-	)
-	let hintClasses = $derived(
-		fontClass ? `${feedbackClasses} ${fontClass}:minus` : `${feedbackClasses}`,
+		styleHelper.getFeedbackStyles(
+			{size, asset, variant, align, justify},
+			status,
+			UiTextContext.form,
+		),
 	)
 
-	let inputClasses = `${layoutClasses} ${elementClasses}`
+	let inputClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			font: size,
+			size,
+			align,
+			justify,
+			variant,
+			layout,
+			breakpoint,
+		}),
+	)
 </script>
 
 <label for={id} class={inputClasses}>
 	<span class={`font:${size} ${color}`}>{label}</span>
-	{#if hint}<p id={`${id}-hint`} class={hintClasses}>{hint}</p>
+	{#if hint}<p id={`${id}-hint`} class={feedbackClasses}>{hint}</p>
 	{/if}
 	<input
 		type="file"

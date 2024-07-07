@@ -33,6 +33,12 @@ export enum UiStatus {
 	error = 'error',
 }
 
+export enum UiTextContext {
+	form = 'form',
+	prose = 'prose',
+	code = 'code',
+}
+
 export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export type Settings = {
@@ -42,7 +48,7 @@ export type Settings = {
 export type InputPayload = {
 	id: string
 	name: string
-	value: string
+	value?: string | number
 }
 
 export type UiLayoutProps = {
@@ -52,6 +58,7 @@ export type UiLayoutProps = {
 	align?: string
 	justify?: string
 	size?: string
+	font?: string
 
 	container?: string
 	direction?: string

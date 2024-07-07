@@ -1,5 +1,5 @@
 import type {ButtonEvent} from '../button.types.js'
-import blocksHelpers from '../../blocks.helpers.js'
+import styleHelper from '../../blocks.styles.js'
 import {type FuzzyActor, type FuzzyPayload} from '$types/machines.js'
 import {UiState, type UiBlockProps} from '$types/index.js'
 import {
@@ -15,9 +15,9 @@ class ExpandActor implements FuzzyActor {
 	transitions = EXPAND_TRANSITIONS
 	currentState = $derived(this.machine[this.state])
 	expanded = $derived(this.state === UiState.expanded)
-	value = $derived(this.machine[this.state]?.value)
-	id = $derived(this.machine[this.state]?.id)
-	text = $derived(this.machine[this.state]?.text || '')
+	value = $derived(this.currentState?.value || this.state)
+	id = $derived(this.currentState?.id)
+	text = $derived(this.currentState?.text || '')
 
 	constructor({
 		initial,
@@ -53,7 +53,7 @@ class ExpandActor implements FuzzyActor {
 		let currentVariant = this.currentState?.variant ?? props.variant
 		let currentAsset = this.currentState?.asset ?? props.asset
 
-		let blockClasses = blocksHelpers.getElementStyles({
+		let blockClasses = styleHelper.getStyles({
 			...props,
 			asset: currentAsset,
 			variant: currentVariant,

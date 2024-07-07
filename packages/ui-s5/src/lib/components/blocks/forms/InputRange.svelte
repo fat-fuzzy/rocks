@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {InputRangeProps} from './input.types.js'
+	import styleHelper from '../blocks.styles.js'
 
 	let {
 		id,
@@ -76,23 +77,18 @@
 		value = valueObject ? valueObject : value
 	}
 
-	/* Element styles */
-	let colorClass = color ? `color:${color}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let variantClass = variant ? `variant:${variant}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
-
-	let elementClasses = `${colorClass} ${sizeClass} ${variantClass} ${justifyClass}`
-
-	/* Context styles */
-	let layoutClasses = breakpoint
-		? `l:${layout} bp:${breakpoint}`
-		: threshold
-			? `l:${layout} th:threshold`
-			: `l:${layout}:size`
-	let containerClasses = container ? `l:${container}` : ''
-
-	let inputClasses = `${layoutClasses} ${elementClasses} ${containerClasses}`
+	let inputClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			size,
+			variant,
+			justify,
+			layout,
+			breakpoint,
+			threshold,
+			container,
+		}),
+	)
 
 	$effect(() => {
 		if (items.length) {

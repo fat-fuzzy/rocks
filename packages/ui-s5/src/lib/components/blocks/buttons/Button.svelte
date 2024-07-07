@@ -1,9 +1,9 @@
 <script lang="ts">
-	import blocksHelpers from '../blocks.helpers.js'
 	import type { ButtonProps } from './button.types.js'
+	import styleHelper from '../blocks.styles.js'
 
 	let {
-		id = 'button', // TODO: use for machine id
+		id = 'button',
 		name = 'button',
 		title,
 		text,
@@ -29,7 +29,7 @@
 		if (onclick) onclick(payload)
 	}
 
-	let buttonClasses =  $derived(blocksHelpers.getElementStyles({
+	let buttonClasses =  $derived(styleHelper.getStyles({
 			color,
 			size,
 			shape,
