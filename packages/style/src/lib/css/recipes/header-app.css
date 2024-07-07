@@ -11,6 +11,11 @@
 	color: var(--ink);
 }
 
+.header-app .l\:reveal\:auto {
+	justify-content: center;
+	padding-block: var(--ui-size-sm);
+}
+
 .header-app > [class*='l:side'] {
 	flex-basis: content; /* property as content of flex container */
 	position: relative;

@@ -57,7 +57,7 @@
 	let brightness = $derived(appSettings.brightness)
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
 	let show = $derived(`${reveal} ${showBackground}`)
-	let revealClasses = $derived(`form:${reveal} card:${size} nowrap`)
+	let revealClasses = $derived(`form:${reveal} nowrap`)
 	let formClasses = `l:switcher:xs ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`

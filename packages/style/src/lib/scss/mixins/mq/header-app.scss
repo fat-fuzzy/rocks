@@ -4,6 +4,7 @@
 	@media screen and (min-width: #{$breakpoint}) {
 		.header-app .l\:reveal\:auto.bp\:#{$size} {
 			justify-content: center;
+			padding-block: 0;
 		}
 
 		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .expanded,
