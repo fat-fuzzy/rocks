@@ -22,7 +22,6 @@
 	block-size: auto;
 	overflow: hidden auto;
 	margin: initial;
-	padding: initial;
 	white-space: normal;
 	scrollbar-gutter: stable;
 }
@@ -43,8 +42,6 @@
 	block-size: auto;
 	overflow: hidden auto;
 	margin: initial;
-	padding: initial;
 	white-space: normal;
 	scrollbar-gutter: stable;
-	top: var(--size-ui-header-height);
 }

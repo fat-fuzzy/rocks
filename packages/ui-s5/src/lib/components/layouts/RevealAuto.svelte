@@ -43,7 +43,7 @@
 		styleHelper.getLayoutStyles({size, height, layout, breakpoint, background, direction}),
 	)
 	let formClasses = $derived(`form:${expanded}`)
-	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses} maki:inline size:lg`)
+	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses}`)
 
 	let action = formaction
 		? redirect

@@ -4,6 +4,10 @@
 	inline-size: fit-content;
 }
 
+.header-app > [class*='l:main'] {
+	min-inline-size: 50%;
+}
+
 .header-app .l\:reveal\:auto > button {
 	margin-inline: 0;
 }
@@ -24,11 +28,12 @@
 }
 
 /* Configure reveal main nav dimensions */
-.header-app
-	.l\:reveal\:auto[class*='l:side']
-	[aria-expanded='true']
-	+ .content {
-	padding: var(--ui-size);
+
+/* Configure reveal main nav dimensions */
+.header-app .l\:reveal\:auto form:has([aria-expanded='true']) + .content {
+	top: calc(var(--size-ui-header-height) + var(--ui-size));
+	background-color: var(--shade);
+	padding: var(--ui-size-sm);
 
 	menu {
 		padding-block: var(--ui-size);
@@ -40,16 +45,22 @@
 	.l\:reveal\:auto[class*='l:main']
 	[aria-expanded='true']
 	+ .content {
+	top: calc(var(--size-ui-header-height) + var(--outline-offset-nav));
+	display: flex;
+	flex-direction: column;
 	max-block-size: fit-content;
 	inline-size: calc(100vw - 2 * var(--gap));
-	flex-direction: column;
-	background-color: var(--color-bg);
+	color: var(--ink);
+	background-color: var(--shade);
+	padding: var(--ui-size-sm);
 
 	/* - Change these styles to adapt to design */
 	ul {
 		position: relative;
 		padding: var(--ui-size) 0;
 		block-size: fit-content;
+		display: flex;
+		flex-direction: column;
 	}
 
 	li {
@@ -67,7 +78,7 @@
 		border-color: var(--accent);
 
 		> a {
-			color: var(--shade);
+			color: var(--accent);
 		}
 	}
 }

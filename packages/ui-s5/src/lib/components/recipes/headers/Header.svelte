@@ -31,7 +31,7 @@
 </script>
 
 <header class={headerClass}>
-	<div class="l:main:50">
+	<div class="l:main">
 		<SkipLinks />
 		<RevealAuto
 			id={`${id}-primary-nav`}
