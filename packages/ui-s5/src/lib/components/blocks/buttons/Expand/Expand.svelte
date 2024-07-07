@@ -30,7 +30,11 @@
 		onclick,
 	}: ExpandProps = $props()
 
-	let store = new Actor()
+	let store = new Actor({
+			initial,
+			onclick,
+			machine: states,
+		})
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
@@ -61,11 +65,6 @@
 
 	onMount(() => {
 		if (init) init(payload)
-		store.init({
-			initial,
-			onclick,
-			machine: states,
-		})
 	})
 </script>
 
@@ -76,7 +75,7 @@
 	{title}
 	{disabled}
 	{formaction}
-	value={store.currentState.value}
+	value={store.value}
 	class={buttonClasses}
 	data-key={name}
 	aria-expanded={store.expanded}

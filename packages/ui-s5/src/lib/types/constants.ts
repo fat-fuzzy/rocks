@@ -4,7 +4,6 @@ import {
 	type Tab,
 	type ButtonContext,
 } from '$types/index.js'
-import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
 const DEFAULT_BUTTON_CONTEXT: ButtonContext = {

@@ -21,11 +21,7 @@
 	}: any = $props()
 	
 
-	function toggleReveal(event) {
-		linkReveal[slug].reveal = event.value
-	}
-
-	let linkReveal = $state(reveal ? {[slug]:reveal} : {[slug]:DEFAULT_REVEAL_STATE})
+	let linkReveal = $state(reveal ? {[slug]: reveal} : {[slug] :DEFAULT_REVEAL_STATE})
 	let states = {
 		expanded: {
 			...	EXPAND_MACHINE.expanded,
@@ -33,11 +29,15 @@
 		},
 		collapsed: {
 			...	EXPAND_MACHINE.collapsed,
-			asset: `point-up`,
+			asset: `point-left`,
 		},
 	}
 
-	let layoutClasses = $derived(`l:reveal top ${linkReveal[slug].reveal}`)
+	let layoutClasses = $derived(`l:reveal top ${linkReveal[slug].reveal ?? 'collapsed'}`)
+
+	function toggleReveal(event) {
+		linkReveal[slug].reveal = event.state
+	}
 </script>
 
 <div class={layoutClasses}>
@@ -52,7 +52,7 @@
 			{size}
 			{color}
 			{shape}
-			initial={linkReveal[slug].reveal}
+			initial={reveal.reveal}
 			value={linkReveal[slug].reveal}
 			name={`button-expand-${slug}`}
 			controls={`links-${slug}`}

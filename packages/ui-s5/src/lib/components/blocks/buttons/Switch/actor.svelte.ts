@@ -1,5 +1,5 @@
 import type {ButtonEvent} from '../button.types.js'
-import {type FuzzyPayload} from '$types/machines.js'
+import {type FuzzyPayload, type FuzzyActor} from '$types/machines.js'
 import {UiState, type UiBlockProps} from '$types/index.js'
 import {
 	type SwitchMachine,
@@ -8,11 +8,15 @@ import {
 	SWITCH_TRANSITIONS,
 } from './switch.types.js'
 
-class SwitchActor {
+class SwitchActor implements FuzzyActor {
 	state = $state(UiState.inactive)
 	machine: SwitchMachine = $state(SWITCH_MACHINE)
 	transitions = SWITCH_TRANSITIONS
 	currentState = $derived(this.machine[this.state as UiStateSwitch])
+	pressed = $derived(this.state === UiState.active)
+	value = $derived(this.machine[this.state].value)
+	id = $derived(this.machine[this.state].id)
+	text = $derived(this.machine[this.state].text)
 
 	constructor() {}
 
@@ -29,26 +33,6 @@ class SwitchActor {
 		if (machine) this.machine = machine
 		this.machine.active.action = onclick
 		this.machine.inactive.action = onclick
-	}
-
-	public getState(): UiState {
-		return this.state as UiState
-	}
-
-	public getId(): string {
-		return this.currentState.id
-	}
-
-	public getValue(): string | number | undefined {
-		return this.currentState.value
-	}
-
-	public isPressed(): boolean {
-		return this.state === UiState.active
-	}
-
-	public getLabel(): string | undefined {
-		return this.currentState.text
 	}
 
 	public getTransition(event: ButtonEvent): UiState {

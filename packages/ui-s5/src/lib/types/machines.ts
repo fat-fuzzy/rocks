@@ -17,7 +17,7 @@ export type FuzzyPayload = {
  */
 export type FuzzyState = {
 	id: string // Element id
-	value?: string | number // Element id
+	value?: string | number // Element value
 	text?: string // Element label
 	asset?: string // Element icon: the `value` in emoji:value or svg:value
 	variant?: string // Variant style for the element state
@@ -40,4 +40,14 @@ export type FuzzyTransitions = {
 	[state: string]: {
 		[event: string]: UiState
 	}
+}
+
+export interface FuzzyActor {
+	state: UiState
+	machine: FuzzyMachine
+	transitions: FuzzyTransitions
+	currentState: FuzzyState
+	value?: string | number
+	id: string
+	text: string
 }

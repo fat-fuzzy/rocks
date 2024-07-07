@@ -1,35 +1,21 @@
 import type {ButtonEvent} from '../button.types.js'
-import {type FuzzyPayload} from '$types/machines.js'
+import {type FuzzyActor} from '$types/machines.js'
 import {UiState, type UiBlockProps} from '$types/index.js'
 
-import {
-	type UiStateExpand,
-	type ExpandMachine,
-	EXPAND_MACHINE,
-	EXPAND_TRANSITIONS,
-} from './expand.types.js'
+import {EXPAND_MACHINE, EXPAND_TRANSITIONS} from './expand.types.js'
 
-class ExpandActor {
+class ExpandActor implements FuzzyActor {
 	state = $state(UiState.collapsed)
-	machine: ExpandMachine = $state(EXPAND_MACHINE)
+	machine = $state(EXPAND_MACHINE)
 	transitions = EXPAND_TRANSITIONS
-	currentState = $derived(this.machine[this.state as UiStateExpand])
+	currentState = $derived(this.machine[this.state])
 	expanded = $derived(this.state === UiState.expanded)
-	value = $derived(this.machine[this.state as UiStateExpand].value)
-	id = $derived(this.machine[this.state as UiStateExpand].id)
-	text = $derived(this.machine[this.state as UiStateExpand].text)
+	value = $derived(this.machine[this.state]?.value)
+	id = $derived(this.machine[this.state]?.id)
+	text = $derived(this.machine[this.state]?.text)
 
-	constructor() {}
-
-	public init({
-		initial,
-		onclick,
-		machine,
-	}: {
-		initial?: string
-		onclick?: (payload: FuzzyPayload) => void
-		machine?: ExpandMachine
-	}) {
+	constructor({initial, onclick, machine}) {
+		this.state = initial ?? UiState.collapsed
 		if (initial) this.state = initial
 		if (machine) this.machine = machine
 		if (onclick) {
@@ -76,10 +62,9 @@ class ExpandActor {
 		let alignClass = align ? `align:${align}` : ''
 		let justifyClass = justify ? `justify:${justify}` : ''
 
-		let currentVariant =
-			this.machine[this.state as UiStateExpand].variant ?? variant
+		let currentVariant = this.machine[this.state]?.variant ?? variant
 		let variantClass = currentVariant ? `variant:${currentVariant}` : ''
-		let currentAsset = this.machine[this.state as UiStateExpand].asset ?? asset
+		let currentAsset = this.machine[this.state]?.asset ?? asset
 		let assetClass = currentAsset ? `emoji:${currentAsset}` : ''
 		let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass}`
 		let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`

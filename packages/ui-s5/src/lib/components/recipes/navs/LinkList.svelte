@@ -60,6 +60,7 @@
 					{reveal}
 					{slug}
 					href={format.formatHref(path, slug)}
+					size="2xs"
 				>
 					<svelte:self
 						items={subItems}
