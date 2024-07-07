@@ -1,22 +1,25 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import type {AriaLive} from '$lib/types/index.js'
+	import  {type AriaLive, UiStatus, UiTextContext} from '$types/index.js'
+	import styleHelper from '../blocks.styles.js'
 
 	type Props = {
-		asset: string
+		asset?: string
+		align?: string
 		justify?: string
 		text?: string
-		context: string // feedback context: code, form, dialog, prose
-		status: string // feedback color: info, success, warning, error,
-		size: string
-		variant: string // feedback variant: default, outline, bare,
-		container: string
+		context: UiTextContext // feedback context: code, form, dialog, prose
+		status: UiStatus // feedback color: info, success, warning, error,
+		size?: string
+		variant?: string // feedback variant: default, outline, bare,
+		container?: string
 		children: Snippet
 	}
 
 	let {
 		asset = 'default',
 		justify = 'start',
+		align,
 		text,
 		context, // feedback context: code, form, dialog,
 		status, // feedback color: info, success, warning, error,
@@ -26,19 +29,20 @@
 		children,
 	}: Props = $props()
 
-	let background = $derived(context === 'code' ? '' : `bg:${status}:100`)
-	let containerClass = $derived(container && context !== 'code' ? `l:${container}:${size}` : '')
-	let assetClass = $derived(status ? `emoji:${status}` : `emoji:${asset}`)
-	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let feedbackClass = $derived(`feedback:${context} ${containerClass} ${assetClass} status:${status} font:${size} size:${size} variant:${variant} ${background} ${justifyClass}`)
-
+	let feedbackClasses = $derived(
+		styleHelper.getFeedbackStyles(
+			{size, asset, variant, align, justify, container},
+			status,
+			context,
+		),
+	)
 	let ariaLive: AriaLive = $derived(context === 'form' ? 'polite' : undefined)
 </script>
 
 {#if context === 'code'}
-	<pre class={feedbackClass} data-testid={`feedback-${context}`}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
+	<pre class={feedbackClasses} data-testid={`feedback-${context}`}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
-	<div class={feedbackClass} data-testid={`feedback-${context}`} aria-live={ariaLive}>
+	<div class={feedbackClasses} data-testid={`feedback-${context}`} aria-live={ariaLive}>
 		{#if status !== 'default'}
 			<p class="status">{status}</p>
 		{/if}

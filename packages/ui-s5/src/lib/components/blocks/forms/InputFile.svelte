@@ -2,6 +2,7 @@
 	import type {InputFileProps} from './input.types.js'
 	import {UiStatus, UiTextContext} from '$types/index.js'
 	import styleHelper from '../blocks.styles.js'
+	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
 	let {
 		id = 'upload-image',
@@ -46,9 +47,7 @@
 </script>
 
 <label for={id} class={inputClasses}>
-	<span class={`font:${size} ${color}`}>{label}</span>
-	{#if hint}<p id={`${id}-hint`} class={feedbackClasses}>{hint}</p>
-	{/if}
+	{label}
 	<input
 		type="file"
 		{id}
@@ -58,7 +57,11 @@
 			? `${id}-hint`
 			: ''}
 		{multiple}
-		class={`bg:${color}`}
 		{disabled}
 	/>
 </label>
+{#if hint}
+	<Feedback {status} context={UiTextContext.form} {size} {variant}>
+		{hint}
+	</Feedback>
+{/if}

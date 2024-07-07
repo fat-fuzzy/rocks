@@ -37,6 +37,7 @@ function getContainerStyles(props: UiBlockProps): string {
 
 function getLayoutStyles(props: UiBlockProps): string {
 	let {size, shape, layout, threshold, breakpoint} = props
+
 	let thresholdClass = threshold ? `th:${threshold}` : ''
 	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
 	let layoutClass = layout && shape ? 'stack' : layout
@@ -51,18 +52,27 @@ function getLayoutStyles(props: UiBlockProps): string {
 function getFeedbackStyles(
 	props: UiBlockProps,
 	status: UiStatus,
-	type: UiTextContext,
+	context: UiTextContext,
 ): string {
-	let {size, asset, variant, align, justify} = props
+	let {size, asset, variant, align, justify, container} = props
+
 	let variantClass = variant ? `variant:${variant}` : ''
-	let fontClass = size ? `font:${size}:minus` : ''
+	let fontClass =
+		context === 'form' && size
+			? `font:${size}:minus`
+			: size
+				? `font:${size}`
+				: ''
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 	let statusClass = status ? `status:${status}` : ''
-	let assetClass = asset ? `emoji:${asset}` : ''
-	let typeClass = type ? `feedback:${type}` : 'feedback'
+	let assetClass = status ? `emoji:${status}` : asset ? `emoji:${asset}` : ''
+	let typeClass = context ? `feedback:${context}` : 'feedback'
+	let backgroundClass = context === 'code' ? '' : `bg:${status}:100`
+	let containerClass =
+		container && context !== 'code' ? `l:${container}:${size}` : ''
 
-	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${fontClass} ${variantClass} ${alignClass} ${justifyClass}`
+	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${fontClass} ${variantClass} ${alignClass} ${justifyClass} ${backgroundClass} ${containerClass}`
 
 	return feedbackClasses.trim()
 }
@@ -93,7 +103,6 @@ function getStyles(props: UiBlockProps): string {
 		variant,
 	})
 
-	let containerClasses = getContainerStyles({size, container, dimensions})
 	let layoutClasses = getLayoutStyles({
 		size,
 		shape,
@@ -101,6 +110,8 @@ function getStyles(props: UiBlockProps): string {
 		threshold,
 		breakpoint,
 	})
+
+	let containerClasses = getContainerStyles({size, container, dimensions})
 
 	let classes = `${containerClasses} ${layoutClasses} ${elementClasses}`
 
