@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ButtonProps } from './button.types.js'
-	import styleHelper from '../blocks.styles.js'
+	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		id = 'button',

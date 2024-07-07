@@ -34,8 +34,8 @@
 		expanded = !expanded
 	}
 
-	let backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
-	let show = $derived(expanded ? `${backgroundClass} expanded` : 'hide:viz-only')
+	let backgroundClass = background ? `layer bg:${background}` : 'collapsed'
+	let show = $derived(expanded ? `${backgroundClass} expanded` : 'collapsed')
 	let setHeight = height ? ` h:${height}` : ''
 
 	// TODO: use a form

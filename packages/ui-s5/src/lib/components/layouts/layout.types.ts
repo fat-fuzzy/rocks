@@ -7,6 +7,7 @@ export type LayoutProps = UiLayoutProps & UiContentProps & FormProps
 export type DetailsLayoutProps = LayoutProps & {
 	summary: Snippet
 	variant?: string
+	open?: boolean
 }
 
 export type GridLayoutProps = LayoutProps & {

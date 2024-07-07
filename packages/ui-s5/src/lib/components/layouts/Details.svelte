@@ -8,11 +8,12 @@
 		variant,
 		align = 'start',
 		id = 'reveal',
+		open = false,
 		summary,
 		children,
 	}: DetailsLayoutProps = $props()
 
-	let expanded = $state(false)
+	let expanded = $state(open)
 
 	function toggleReveal(event) {
 		expanded = !expanded

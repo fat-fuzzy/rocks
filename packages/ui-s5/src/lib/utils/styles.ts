@@ -25,26 +25,30 @@ function getElementStyles(props: UiBlockProps): string {
 function getContainerStyles(props: UiBlockProps): string {
 	let {size, container, dimensions} = props
 
-	let containerClass =
-		container && dimensions
-			? `l:${container}:${dimensions}`
-			: container && size
-				? `l:${container}:${size}`
+	let containerClass = container ? `l:${container} ` : ''
+	if (containerClass) {
+		containerClass = dimensions
+			? `${container}:${dimensions}`
+			: size
+				? `${container}:${size}`
 				: ''
+	}
 
 	return containerClass.trim()
 }
 
 function getLayoutStyles(props: UiBlockProps): string {
-	let {size, shape, layout, threshold, breakpoint} = props
+	let {size, height, shape, layout, threshold, breakpoint} = props
 
 	let thresholdClass = threshold ? `th:${threshold}` : ''
 	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
 	let layoutClass = layout && shape ? 'stack' : layout
-	layoutClass =
-		layout && size ? `l:${layout}:${size}` : layout ? `l:${layout}` : ''
+	let heightClass = height ? ` h:${height}` : ''
+	if (layoutClass) {
+		layoutClass = size ? `l:${layoutClass}:${size}` : `l:${layoutClass}`
+	}
 
-	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass}`
+	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass} ${heightClass}`
 
 	return layoutClasses.trim()
 }
@@ -57,12 +61,10 @@ function getFeedbackStyles(
 	let {size, asset, variant, align, justify, container} = props
 
 	let variantClass = variant ? `variant:${variant}` : ''
-	let fontClass =
-		context === 'form' && size
-			? `font:${size}:minus`
-			: size
-				? `font:${size}`
-				: ''
+	let fontClass = size ? `font:${size}` : ''
+	if (fontClass) {
+		fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
+	}
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 	let statusClass = status ? `status:${status}` : ''

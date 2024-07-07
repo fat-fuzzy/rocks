@@ -1,5 +1,5 @@
 import {UiState, type UiBlockProps} from '$types/index.js'
-import styleHelper from '../../blocks.styles.js'
+import styleHelper from '$lib/utils/styles.js'
 import type {ButtonEvent} from '../button.types.js'
 import {type FuzzyPayload, type FuzzyActor} from '$types/machines.js'
 import {

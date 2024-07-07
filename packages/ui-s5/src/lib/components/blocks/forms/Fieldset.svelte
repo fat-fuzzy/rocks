@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {FieldsetProps} from './input.types.js'
-	import styleHelper from '../blocks.styles.js'
+	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		id,

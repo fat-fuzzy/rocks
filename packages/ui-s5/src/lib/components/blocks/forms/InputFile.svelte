@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {InputFileProps} from './input.types.js'
 	import {UiStatus, UiTextContext} from '$types/index.js'
-	import styleHelper from '../blocks.styles.js'
+	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
 	let {

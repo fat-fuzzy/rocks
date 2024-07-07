@@ -4,6 +4,7 @@
 	import constants from '$lib/types/constants.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
+	import styleHelper from '$lib/utils/styles.js'
 
 	// import {clickOutside} from '$lib/utils/click-outside.js'
 
@@ -38,12 +39,13 @@
 
 	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
 	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `expanded ${showBackground}`
-	let showContent = reveal === 'expanded' ? show : 'hide:viz-only'
-	let revealClasses = `form:expanded align-self:${buttonAlign} maki:inline size:lg`
+	let show = `${reveal} ${showBackground}`
+	let revealClasses = `form:${reveal} align-self:${buttonAlign} maki:inline size:lg`
 	let layoutClass = layout ? `l:${layout}:${size}` : ''
-	let setHeight = height ? ` h:${height}` : ''
-	let layoutClasses = `${layoutClass} ${setHeight} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
+
+	let layoutClasses = $derived(
+		styleHelper.getLayoutStyles({size, height, layout, breakpoint}),
+	)
 
 	let action = formaction
 		? redirect
@@ -52,7 +54,7 @@
 		: undefined
 </script>
 
-<div class={layoutClasses}>
+<div class={`l:reveal:auto ${layoutClasses}`}>
 	<form
 		{method}
 		action={action
@@ -87,7 +89,7 @@
 	</form>
 	<div
 		id={`reveal-auto-${id}`}
-		class={`${layoutClass} ${showContent} ${direction} hug`}
+		class={`${layoutClass} ${show} ${direction} hug`}
 	>
 	{#if children}
 		{@render children()}
