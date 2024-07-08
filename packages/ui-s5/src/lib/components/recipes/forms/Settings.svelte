@@ -55,7 +55,11 @@
 
 	let reveal = $derived(settingsReveal.reveal)
 	let brightness = $derived(appSettings.brightness)
-	let showBackground = background ? `bg:${background}` : 'bg:inherit'
+	let showBackground = background
+		? `bg:${background}`
+		: !color
+			? 'bg:inherit'
+			: ''
 	let show = $derived(`${reveal} ${showBackground}`)
 	let revealClasses = $derived(`form:${reveal} nowrap`)
 	let formClasses = `l:switcher:xs ${showBackground}`

@@ -48,7 +48,7 @@ function getLayoutStyles(props: UiBlockProps): string {
 	let layoutClass = layout && shape ? 'stack' : layout
 	let heightClass = height ? ` h:${height}` : ''
 	let layerClass = layer ? ` layer:${layer}` : ''
-	let backgroundClass = background ? `bg:${background}` : 'bg:inherit'
+	let backgroundClass = background ? `bg:${background}` : ''
 
 	if (layoutClass) {
 		layoutClass = size ? `l:${layoutClass}:${size}` : `l:${layoutClass}`

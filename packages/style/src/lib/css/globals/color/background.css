@@ -3,11 +3,13 @@
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 	--shadow: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	color: var(--ink);
 	background-color: var(--shade);
 	border-color: var(--accent);
 }
 
 .bg\:inherit {
+	color: inherit;
 	background-color: inherit;
 }
 
