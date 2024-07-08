@@ -37,7 +37,17 @@
 
 		.header-app nav.l\:reveal\:auto.bp\:#{$size} li,
 		.header-app nav.l\:reveal\:auto.bp\:#{$size} a {
-			inline-size: fit-content;
+			inline-size: max-content;
+		}
+
+		.header-app nav.l\:reveal\:auto.bp\:#{$size} a {
+			padding: var(--ui-size) var(--ui-size-lg);
+
+			&:focus-within {
+				outline: none;
+				border-left: 1px dotted var(--accent);
+				border-right: 1px dotted var(--accent);
+			}
 		}
 
 		.header-app

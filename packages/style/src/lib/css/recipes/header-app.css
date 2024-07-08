@@ -5,12 +5,6 @@
 	background-color: var(--shade);
 }
 
-/* == Need to override global <a> hover styles in nav and header <a> == */
-.header-app nav a:hover {
-	--hue: var(--color-theme-accent);
-	color: var(--ink);
-}
-
 .header-app .l\:reveal\:auto {
 	justify-content: center;
 	padding-block: var(--ui-size-sm);
@@ -25,14 +19,37 @@
 /**
  * App header - Main Nav
  */
-.header-app > [class*='l:main'] nav a {
-	inline-size: 100%;
-	text-transform: uppercase;
-	padding: var(--ui-size-sm);
-}
+.header-app > [class*='l:main'] nav {
+	/* - Change these styles to adapt to design */
+	ul {
+		position: relative;
+		padding: var(--ui-size) 0;
+		display: flex;
+		flex-direction: column;
+	}
 
-.header-app > [class*='l:main'] nav li[aria-current='page'] a {
-	color: var(--ink);
-	text-decoration: none;
-	background-color: inherit;
+	li {
+		background-color: inherit;
+		border-inline-start: var(--border-width-xl) solid var(--shade);
+		inline-size: 100%;
+	}
+
+	a {
+		block-size: calc(100% - 2 * var(--border-width-xl));
+		inline-size: calc(100% - var(--border-width-xl));
+		text-transform: uppercase;
+		margin-inline: var(--outline-offset-nav);
+		padding: var(--ui-size-sm);
+		display: block;
+	}
+
+	li[aria-current='page'] {
+		border-color: var(--accent);
+
+		a {
+			text-decoration: none;
+			background-color: inherit;
+			color: var(--accent);
+		}
+	}
 }

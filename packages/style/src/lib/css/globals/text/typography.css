@@ -90,7 +90,6 @@ ul {
 }
 
 a {
-	height: fit-content;
 	padding-block: 0;
 	padding-inline: calc(var(--ui-size-sm) / 2);
 	margin-inline-end: 0.25em;
