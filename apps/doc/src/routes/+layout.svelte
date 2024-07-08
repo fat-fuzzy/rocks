@@ -51,7 +51,7 @@
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
 	items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
-	breakpoint="md"
+	breakpoint="sm"
 	app={{settings: app.settings}}
 />
 <main id="main" class={mainClass}>

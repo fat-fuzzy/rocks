@@ -8,6 +8,11 @@
 			padding-block: 0;
 		}
 
+		.header-app > [class*='l:main']:has(.l\:reveal\:auto.bp\:#{$size}) {
+			min-inline-size: 80%;
+			flex-grow: 1;
+		}
+
 		/* Configure reveal menu positioning and width */
 		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} {
 			justify-content: center;
