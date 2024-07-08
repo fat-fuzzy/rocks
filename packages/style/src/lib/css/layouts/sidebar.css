@@ -46,9 +46,7 @@
 /* Scale Sidebar */
 .l\:sidebar\:2xs {
 	--gap: var(--size-base-sm);
-	.l\:side {
-		--sidebar-width: var(--layout-sidebar-2xs);
-	}
+	--sidebar-width: var(--layout-sidebar-2xs);
 }
 
 .l\:sidebar\:xs {
