@@ -145,14 +145,19 @@ const color = {
 
 const variant = {
 	initial: 'fill',
-	input: 'radio',
-	layout: 'stack',
+	input: 'toggle',
+	layout: 'switcher',
 	size: '2xs',
-	variant: 'outline',
+	container: 'card',
 	items: [
-		{id: 'variant.fill', text: 'fill', value: 'fill'},
-		{id: 'variant.outline', text: 'outline', value: 'outline'},
-		{id: 'variant.bare', text: 'bare', value: 'bare'},
+		{id: 'variant.fill', text: 'fill', value: 'fill', variant: 'fill'},
+		{
+			id: 'variant.outline',
+			text: 'outline',
+			value: 'outline',
+			variant: 'outline',
+		},
+		{id: 'variant.bare', text: 'bare', value: 'bare', variant: 'bare'},
 	],
 }
 
