@@ -126,7 +126,7 @@
 					? {
 							active: {
 								...SWITCH_MACHINE.active,
-								...states.inactive,
+								...states.active,
 							},
 							inactive: {
 								...SWITCH_MACHINE.inactive,
