@@ -86,7 +86,7 @@
 </script>
 
 <div class={layoutClasses}>
-	<SkipLinks text="Skip to content" />
+	<SkipLinks text="Skip to content" href="#content" />
 	<nav id={`nav-${id}`} class={navClasses} aria-label={title}>
 		<form
 			{id}

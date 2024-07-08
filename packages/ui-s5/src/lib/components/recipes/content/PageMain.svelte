@@ -26,7 +26,7 @@
 
 <Head page={currentPage} {title} {description} />
 
-<header class={headerClass}>
+<header id="content" class={headerClass}>
 	{#if header}
 		{@render header()}
 	{:else}
