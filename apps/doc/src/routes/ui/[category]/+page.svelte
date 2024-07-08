@@ -105,7 +105,7 @@
 					<summary class="surface:2:primary">Style Props</summary>
 					<ul class="tags l:switcher:md">
 						{#each markdownContent.meta.props_style as prop}
-							<li class="ccard:xs font:sm surface:1:primary">{prop}</li>
+							<li class="card:xs font:sm surface:1:primary">{prop}</li>
 						{/each}
 					</ul>
 				</details>
