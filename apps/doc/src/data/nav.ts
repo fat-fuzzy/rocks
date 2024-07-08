@@ -3,6 +3,7 @@ export const links = [
 	{slug: 'dev', title: 'Dev', layout: 'sidebar'},
 	{slug: 'ui', title: 'UI', layout: 'sidebar'},
 	{slug: 'log', title: 'Log', layout: 'sidebar'},
+	{slug: 'play', title: 'Play', layout: 'sidebar'},
 ]
 
 export const itemsSettings = {
