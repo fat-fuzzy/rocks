@@ -4,7 +4,9 @@
 	@container reveal-nav-#{$size} (inline-size < #{$containerSize}) {
 		[class*='l:reveal'].sticky {
 			--y-size-sticky: calc(
-				100vh - var(--size-ui-header-height) - var(--outline-offset-settings)
+				100vh - 2 * var(--size-ui-header-height) - var(
+						--outline-offset-settings
+					)
 			);
 			position: sticky;
 			top: var(--y-axis);
