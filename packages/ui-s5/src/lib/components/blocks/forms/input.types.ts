@@ -42,6 +42,13 @@ export type FieldsetProps = UiBlockProps & {
 	oninput?: (payload: InputPayload) => void
 }
 
+export type InputRangeProps = InputProps & {
+	min?: number
+	max?: number
+	step?: number
+	items?: number[]
+}
+
 type FileType = 'image/png, image/jpeg'
 
 export type InputFileProps = InputProps & {

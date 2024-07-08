@@ -1,122 +1,74 @@
 <script lang="ts">
-	import {enhance} from '$app/forms'
-
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
-	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
+	import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
 	import type {HeaderProps} from './header.types.js'
-	import type {ExpandPayload} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 
 	let {
 		id = 'header-app',
-		title = 'App navigation',
-		method = 'POST',
-		breakpoint = '2xl',
-		background,
+		breakpoint = 'md',
 		path,
 		formaction,
 		actionPath,
 		redirect,
 		items,
-		children,
+		app,
 	}: HeaderProps = $props()
 	let className = 'header-app'
 
 	let navReveal: {[key: string]: string} = $state({reveal: ''})
-	let appSettings: {[key: string]: string} = $state({
-		brightness: '',
-		contrast: '',
-	})
 
 	function handleClickOutsideMainNav() {
-		navReveal = {reveal: 'minimize'}
+		navReveal = {reveal: 'collapsed'}
 	}
 
-	function toggleNav(payload: ExpandPayload) {
-		const updated = payload.expanded ? 'show' : 'minimize'
-		navReveal = {reveal: updated}
-	}
-
+	let brightness = $derived(app.settings.brightness)
+	let contrast = $derived(app.settings.contrast)
 	let reveal = $derived(navReveal.reveal)
-	let contrast = $derived(appSettings.contrast)
 	let headerClass = $derived(
-		`${className} bg:light l:sidebar:xl layer sticky:top justify:start bg:${contrast}`,
+		`${className} l:sidebar:xl layer:2 sticky:top justify:start settings:${brightness}:${contrast}`,
 	)
-	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `show ${showBackground}`
-	let showNav = $derived(reveal === 'show' ? show : 'hide:viz-only')
-	let navClasses = $derived(`l:switcher:2xs ${showBackground} ${showNav}`)
-	let revealClasses = `form:expand card:md`
-	let layoutClasses = `l:main:50 l:reveal:auto bp:${breakpoint}`
-
-	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 </script>
 
 <header class={headerClass}>
-	<SkipLinks />
-	<nav id={`${id}-primary-nav`} class={layoutClasses} aria-label={title}>
-		<form
-			name="nav-reveal"
-			{method}
-			action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-			use:enhance={() => {
-				// prevent default callback from resetting the form
-				return ({update}) => {
-					update({reset: false})
-				}
-			}}
-			class={revealClasses}
+	<div class="l:main">
+		<SkipLinks />
+		<RevealAuto
+			id={`${id}-primary-nav`}
+			element="nav"
+			layout="main"
+			title="Menu"
+			size="xs"
+			variant="outline"
+			asset="home"
+			{reveal}
+			{breakpoint}
+			{formaction}
+			{redirect}
+			{actionPath}
 		>
-			<Expand
-				id={`header-button-expand-${id}`}
-				variant="outline"
-				size="xs"
-				title="Menu"
-				name={`button-${id}-nav-reveal`}
-				type={actionPath && formaction ? 'submit' : 'button'}
-				controls={`${id}-primary-nav`}
-				value={'menu'}
-				states={{
-					expanded: {
-						id: 'menu-expanded',
-						text: 'menu',
-						value: 'show',
-						asset: 'menu',
-					},
-					collapsed: {
-						id: 'menu-collapsed',
-						text: 'menu',
-						value: 'minimize',
-						asset: 'menu',
-					},
-				}}
-				onclick={toggleNav}
-			>
-				Menu
-			</Expand>
-		</form>
-		<ul class={navClasses}>
-			<li aria-current={path === '/' ? 'page' : undefined}>
-				<a
-					data-sveltekit-preload-data
-					href="/"
-					onclick={handleClickOutsideMainNav}>Home</a
-				>
-			</li>
-			{#each items.links as { slug, title }}
-				<li aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}>
+			<ul class="l:switcher:md">
+				<li aria-current={path === '/' ? 'page' : undefined}>
 					<a
 						data-sveltekit-preload-data
-						href={`/${slug}`}
-						onclick={handleClickOutsideMainNav}
+						href="/"
+						onclick={handleClickOutsideMainNav}>Home</a
 					>
-						{title}
-					</a>
 				</li>
-			{/each}
-		</ul>
-	</nav>
+				{#each items.links as { slug, title }}
+					<li aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}>
+						<a
+							data-sveltekit-preload-data
+							href={`/${slug}`}
+							onclick={handleClickOutsideMainNav}
+						>
+							{title}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</RevealAuto>
+	</div>
 	<Settings
 		{path}
 		{breakpoint}
@@ -125,7 +77,9 @@
 		id={`${id}-menu-settings`}
 		{formaction}
 		{actionPath}
+		container="side "
 		redirect={path}
 		items={items.settings}
+		onupdate={items.settings.onupdate}
 	/>
 </header>

@@ -69,7 +69,7 @@
 	})
 </script>
 
-<menu {id} class={`l:switcher:2xs w:full hug justify:center`}>
+<menu {id} class={`player l:switcher:2xs w:full hug justify:center`}>
 	<li>
 		{#key store.playState}
 			<Switch
@@ -80,7 +80,6 @@
 				{color}
 				{size}
 				shape="square"
-				align="center"
 				initial={store.playState}
 				disabled={store.getPlayDisabled()}
 				onclick={updatePlayer}
@@ -97,7 +96,6 @@
 			{variant}
 			{size}
 			value="clear"
-			align="start"
 			asset="clear"
 			onclick={updatePlayer}
 			disabled={store.getClearDisabled()}
@@ -111,7 +109,6 @@
 			{variant}
 			{size}
 			value="stop"
-			align="start"
 			asset="rect"
 			onclick={updatePlayer}
 			disabled={store.getStopDisabled()}

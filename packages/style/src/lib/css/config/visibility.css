@@ -26,7 +26,7 @@
 .hide\:sr-always,
 .hide\:viz-only {
 	border: 0;
-	clip: rect(0 0 0 0);
+	clip-path: rect(0 0 0 0);
 	height: auto;
 	margin: 0;
 	overflow: hidden;
@@ -40,7 +40,7 @@
 /* To undo hide: */
 .unhide {
 	border: unset;
-	clip: unset;
+	clip-path: unset;
 	height: auto;
 	margin: initial;
 	overflow: hidden;

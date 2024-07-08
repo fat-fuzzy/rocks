@@ -8,7 +8,7 @@
 
 	let actionPath = '/ui'
 	let title = 'Fat Fuzzy UI'
-	let description = $derived(`${title} | Doc`)
+	let description = `${title} | Doc`
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -16,6 +16,7 @@
 		{category: 'layouts', items: layouts},
 		{category: 'recipes', items: recipes},
 	]
+
 	const path = $derived($page.url.pathname)
 	let markdowns = $derived($page.data.markdowns)
 	let markdownContent = $derived(

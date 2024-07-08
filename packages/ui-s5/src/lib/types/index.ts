@@ -33,13 +33,13 @@ export enum UiStatus {
 	error = 'error',
 }
 
-export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
-
-export enum ButtonEventType {
-	expand = 'expand',
-	toggle = 'toggle',
-	switch = 'switch',
+export enum UiTextContext {
+	form = 'form',
+	prose = 'prose',
+	code = 'code',
 }
+
+export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export type Settings = {
 	[key: string]: string
@@ -48,7 +48,7 @@ export type Settings = {
 export type InputPayload = {
 	id: string
 	name: string
-	value: string
+	value?: string | number
 }
 
 export type UiLayoutProps = {
@@ -58,6 +58,7 @@ export type UiLayoutProps = {
 	align?: string
 	justify?: string
 	size?: string
+	font?: string
 
 	container?: string
 	direction?: string
@@ -79,6 +80,7 @@ export type UiBlockProps = UiLayoutProps & {
 	variant?: string
 	background?: string
 	height?: string
+	layer?: string
 }
 
 export type UiContentProps = {
@@ -88,14 +90,6 @@ export type UiContentProps = {
 	id?: string
 	title?: string
 	children?: Snippet
-}
-
-export type ButtonState = {
-	text: string
-	value: string
-	asset: string
-	variant?: string
-	onclick: (event: MouseEvent, payload: any) => void
 }
 
 export type SwitchState = {

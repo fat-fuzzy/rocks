@@ -90,5 +90,8 @@ export default {
 			links,
 			settings: itemsSettings,
 		},
+		app: {
+			settings: {brightness: 'day', contrast: 'blend'},
+		},
 	},
 }

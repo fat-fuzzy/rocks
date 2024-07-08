@@ -1,11 +1,10 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 
-import {forms, constants, stores} from '@fat-fuzzy/ui-s5'
+import {forms, constants} from '@fat-fuzzy/ui-s5'
 
 const {NavReveal, SidebarReveal, SettingsReveal, SettingsUpdate} = forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = constants
-const {settings} = stores
 
 export const actions = {
 	toggleNav: async ({request, url, cookies}) => {
@@ -19,7 +18,6 @@ export const actions = {
 		if (!navReveal.reveal(data)) {
 			return fail(400, {navRevealError: true})
 		}
-		settings.navReveal.set(navReveal.nav)
 		cookies.set('fat-fuzzy-nav-reveal', navReveal.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
@@ -39,7 +37,6 @@ export const actions = {
 		if (!sidebarReveal.reveal(data)) {
 			return fail(400, {sidebarRevealError: true})
 		}
-		settings.sidebarReveal.set(sidebarReveal.sidebar)
 		cookies.set('fat-fuzzy-sidebar-reveal', sidebarReveal.toString(), {
 			path: '/',
 		})
@@ -61,7 +58,6 @@ export const actions = {
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
-		settings.settingsReveal.set(settingsReveal.settings)
 		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {
 			path: '/',
 		})
@@ -83,7 +79,6 @@ export const actions = {
 		if (!settingsUpdate.update(data)) {
 			return fail(400, {settingsError: true})
 		}
-		settings.app.set(settingsUpdate.app)
 		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {
 			path: '/',
 		})

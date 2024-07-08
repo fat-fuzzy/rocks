@@ -1,0 +1,53 @@
+/**
+ * Fuzzy State Machine
+ */
+import {UiState} from '$types/index.js'
+export type FuzzyEvent = boolean | number | string | Event
+
+export type FuzzyPayload = {
+	id: string
+	name: string
+	value?: string | number
+	state: string
+	callback?: (event: FuzzyEvent) => void // Callback function defined in the parent component
+}
+
+/**
+ * Describes the state of a component
+ */
+export type FuzzyState = {
+	id: string // Element id
+	value?: string | number // Element value
+	text?: string // Element label
+	asset?: string // Element icon: the `value` in emoji:value or svg:value
+	variant?: string // Variant style for the element state
+	state?: UiState // Name of the current state
+	event?: string // Event that can be emitted from the current state
+	action?: (payload: FuzzyPayload) => void // Action available on the current state
+}
+
+/**
+ * Describes the state of a component
+ */
+export type FuzzyMachine = {
+	[state in UiState]?: FuzzyState
+}
+
+/**
+ * Describes the transitions between states
+ */
+export type FuzzyTransitions = {
+	[state: string]: {
+		[event: string]: UiState
+	}
+}
+
+export interface FuzzyActor {
+	state: UiState
+	machine: FuzzyMachine
+	transitions: FuzzyTransitions
+	currentState: FuzzyState
+	value?: string | number
+	id: string
+	text: string
+}

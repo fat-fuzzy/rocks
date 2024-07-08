@@ -9,17 +9,17 @@
 		content,
 		constants,
 	} from '@fat-fuzzy/ui-s5'
-	import PlaybookStore from '$lib/api/store.svelte'
+	import playbookStore from '$lib/api/store.svelte'
 	import * as api from '$lib/api/styles.api'
 
 	const {LayoutSidebar} = content
 
 	type Props = {
+		app?: {settings: {[key: string]: string}}
 		redirect: string
 		children: Snippet
 	}	
-	let {redirect, children}: Props= $props()
-	let playbookStore = new PlaybookStore()
+	let {redirect, children, app}: Props= $props()
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -34,7 +34,7 @@
 	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
 
-	const {styles, context, ui} = $page.data
+	let {styles, context, ui} = $state($page.data)
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = constants
 
 	playbookStore.reveal = context
@@ -78,17 +78,16 @@
 
 	let nav = {
 		path: '',
-		title: 'Menu',
+		title: 'Library',
 		id: 'nav-page',
 		items,
-		reveal: 'show',
+		reveal: 'expanded',
 		settings: {...playbookStore.app},
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',
 		position: 'sticky',
 		place: 'left',
-		background: 'polar',
 		formaction: 'toggleSidebar',
 	}
 
@@ -100,7 +99,7 @@
 	})
 </script>
 
-<LayoutSidebar {nav} {redirect} path=''>
+<LayoutSidebar {nav} {redirect} path='' {app}>
 	{#if children}
 		{@render children()}
 	{/if}

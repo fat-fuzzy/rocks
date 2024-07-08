@@ -5,17 +5,86 @@
 */
 [class*=':primary'] {
 	--hue: var(--color-theme-primary);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*=':accent'] {
 	--hue: var(--color-theme-accent);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*=':highlight'] {
 	--hue: var(--color-theme-highlight);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*=':neutral'] {
 	--hue: var(--color-theme-neutral);
 	--chroma: var(--color-chroma-neutral);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+}
+
+[class*='color:'] :is(input, textarea, select) {
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	accent-color: var(--accent);
+}
+
+[class*='bg:']:focus {
+	--shade: var(--shade-focus);
+	--ink: var(--ink-focus);
+}
+
+[class*='bg:'].variant\:fill:focus {
+	--shade-focus: oklch(var(--lightness-focus) var(--chroma-focus) var(--hue));
+	--ink-focus: oklch(
+		var(--lightness-contrast-focus) var(--chroma-contrast-focus) var(--hue)
+	);
+}
+
+[class*='bg:'].variant\:bare:focus,
+[class*='bg:'].variant\:outline:focus {
+	--shade-focus: var(--color-bg);
+	--ink-focus: oklch(
+		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
+	);
 }

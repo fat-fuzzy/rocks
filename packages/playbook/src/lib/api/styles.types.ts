@@ -1,6 +1,3 @@
-import type {ComponentType} from 'svelte'
-export type ComponentChild = string | ComponentType | (string | ComponentType)[] // TODO: figure out if I really need this
-
 // TODO: figure out if I can extract this info from Svelte component
 interface IStyleInputOptions {
 	[key: string]: string

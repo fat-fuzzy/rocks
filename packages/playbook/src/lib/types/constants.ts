@@ -3,7 +3,7 @@ import type {StyleTree} from '$lib/api/styles.types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
-const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'show'}
+const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'expanded'}
 
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 
@@ -16,15 +16,15 @@ const DEFAULT_DS_STATE: {
 	sidebarReveal: Settings
 	settingsReveal: Settings
 } = {
-	menuReveal: {reveal: 'minimize'},
-	navReveal: {reveal: 'minimize'},
-	sidebarReveal: {reveal: 'minimize'},
-	settingsReveal: {reveal: 'minimize'},
+	menuReveal: {reveal: 'collapsed'},
+	navReveal: {reveal: 'collapsed'},
+	sidebarReveal: {reveal: 'collapsed'},
+	settingsReveal: {reveal: 'collapsed'},
 }
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
-	show: 'minimize',
-	minimize: 'show',
+	expanded: 'collapsed',
+	collapsed: 'expanded',
 }
 
 const TRANSITION_BRIGHTNESS: {[key: string]: string} = {
@@ -57,10 +57,10 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 const ALIGN_ANIMATION_DIRECTION: {
 	[inactivePosition: string]: {[state: string]: string}
 } = {
-	left: {show: 'down', minimize: 'left'},
-	right: {show: 'down', minimize: 'right'},
-	top: {show: 'down', minimize: 'up'},
-	bottom: {show: 'up', minimize: 'down'},
+	left: {expanded: 'down', collapsed: 'left'},
+	right: {expanded: 'down', collapsed: 'right'},
+	top: {expanded: 'down', collapsed: 'up'},
+	bottom: {expanded: 'up', collapsed: 'down'},
 }
 
 const UI_STATE = {

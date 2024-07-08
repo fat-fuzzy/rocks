@@ -4,7 +4,8 @@
 
 	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
-	import appStore from '$lib/stores/stores.svelte.js'
+	import fatFuzzyStore from '$lib/stores/stores.svelte'
+
 	const {DEFAULT_TABS, TABS} = constants
 
 	const {PageMain} = content
@@ -13,7 +14,7 @@
 	const actionPath = '/ui'
 	const tabs = TABS
 
-	let currentTabs = appStore.currentTabs
+	let currentTabs = fatFuzzyStore.currentTabs
 	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
 
 	let categoryItems: {[name: string]: any} = {
@@ -50,18 +51,8 @@
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">{title}</h1>
-		<div class="l:main:50 l:flex justify:end">
-			{#if currentTab.value === 'demo'}
-				<Api
-					categories={['app']}
-					meta={markdownContent.meta}
-					{path}
-					{actionPath}
-					redirect={$page.url.pathname}
-				/>
-			{/if}
-
+	<h1 class="l:side hug maki:block:md">{title}</h1>
+		<div class="l:main l:flex">
 			<form
 				method="POST"
 				class="tabs"
@@ -91,6 +82,15 @@
 					init={handleTabChange}
 				/>
 			</form>
+			{#if currentTab.value === 'demo'}
+				<Api
+					categories={['app']}
+					meta={markdownContent.meta}
+					{path}
+					{actionPath}
+					redirect={$page.url.pathname}
+				/>
+			{/if}
 		</div>
 	{/snippet}
 
@@ -105,23 +105,23 @@
 				{:else}
 					{#if markdownContent.meta.props_style}
 						<details open class="l:stack:md size:xs">
-							<summary class="bg:primary:100">Style Props</summary>
+							<summary class="surface:2:primary">Style Props</summary>
 							<ul class="tags l:switcher:md">
 								{#if props.doc}
 									{#each props.doc as docs}
 										{#if docs.tokens}
 											{#each docs.tokens as prop}
-												<li class="card:xs font:sm bg:primary:000">{prop}</li>
+												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
 											{/each}
 										{/if}
 										{#if docs.blocks}
 											{#each docs.blocks as prop}
-												<li class="card:xs font:sm bg:primary:000">{prop}</li>
+												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
 											{/each}
 										{/if}
 										{#if docs.layouts}
 											{#each docs.layouts as prop}
-												<li class="card:xs font:sm bg:primary:000">{prop}</li>
+												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
 											{/each}
 										{/if}
 									{/each}
@@ -131,20 +131,20 @@
 					{/if}
 					{#if markdownContent.meta.markdownContent_type}
 						<details open class="l:stack:md size:xs">
-							<summary class={`bg:primary:100`}>Content Type</summary>
+							<summary class={`surface:2:highlight`}>Content Type</summary>
 							<ul class="tags l:switcher:md">
 								{#each markdownContent.meta.markdownContent_type as prop}
-									<li class="card:xs font:sm bg:highlight:000">{prop}</li>
+									<li class="card:2xs font:sm surface:1:highlight">{prop}</li>
 								{/each}
 							</ul>
 						</details>
 					{/if}
 					{#if markdownContent.meta.props_state}
 						<details open class="l:stack:md size:xs">
-							<summary class={`bg:primary:100`}>State Props</summary>
+							<summary class={`surface:2:accent`}>State Props</summary>
 							<ul class="tags l:switcher:md">
 								{#each markdownContent.meta.props_state as prop}
-									<li class="card:xs font:sm bg:accent:000">{prop}</li>
+									<li class="card:2xs font:sm surface:1:accent">{prop}</li>
 								{/each}
 							</ul>
 						</details>
@@ -153,6 +153,7 @@
 			</aside>
 		</article>
 	{:else if currentTab.value === 'demo'}
+	{#key Component}
 		<Element
 			isPage={true}
 			depth={1}
@@ -164,5 +165,6 @@
 			{actionPath}
 			redirect={$page.url.pathname}
 		/>
+		{/key}
 	{/if}
 </PageMain>

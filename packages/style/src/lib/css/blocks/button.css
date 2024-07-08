@@ -3,18 +3,15 @@ button {
 	--chroma: var(--color-chroma-neutral);
 	--lightness: var(--color-lightness-300);
 	--lightness-accent: var(--color-lightness-300);
-	--lightness-contrast: var(--color-lightness-000);
-	--chroma-contrast: var(--color-chroma-neutral);
+	--lightness-contrast: var(--lightness-base);
+	--chroma-contrast: var(--chroma-base);
 	--chroma-accent: var(--color-chroma-300);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-	--color-bg: var(--shade);
-	--color-ink: var(--ink);
-	--color-accent: var(--accent);
 
-	color: var(--color-ink);
-	background-color: var(--color-bg);
+	color: var(--ink);
+	background-color: var(--shade);
 	display: flex;
 	align-items: center;
 	justify-content: var(--justify, center);
@@ -25,51 +22,60 @@ button {
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
 	line-height: var(--font-leading-ui);
-	padding: var(--ui-size) var(--ui-size-lg); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
+	padding: var(--ui-size-sm) var(--ui-size);
 	border-radius: var(--border-radius-base);
-	border: var(--border-width-md) solid var(--color-accent);
+	border: var(--border-width-md) solid var(--accent);
+}
+
+button.variant\:fill {
+	--lightness: var(--color-lightness-300);
+	--lightness-accent: var(--color-lightness-300);
+	--lightness-contrast: var(--lightness-base);
+	background-color: var(--shade);
+	border-color: var(--accent);
 }
 
 button.variant\:outline {
 	--lightness: var(--color-lightness-600);
 	--lightness-accent: var(--color-lightness-300);
-	--lightness-contrast: var(--color-lightness-400);
+	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
-	border-color: var(--color-accent);
+	border-color: var(--accent);
 }
 
 button.variant\:bare {
 	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-400);
+	--lightness-accent: var(--lightness-base);
+	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
-	border-color: var(--color-bg);
+	border: var(--border-width-md) solid var(--accent);
 }
 
 button.variant\:outline:hover {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--color-bg);
+	background-color: var(--shade);
 }
 
 button.variant\:bare:hover {
 	--lightness: var(--color-lightness-000);
 	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--color-bg);
+	background-color: var(--shade);
 }
 
 button.variant\:outline:active {
 	--lightness: var(--color-lightness-200);
-	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--color-bg);
+	--lightness-contrast: var(--color-lightness-600);
+	background-color: var(--shade);
 }
 
 button.variant\:bare:active {
 	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--color-bg);
+	--lightness-contrast: var(--color-lightness-600);
+	background-color: var(--shade);
 }
 
-button[class*='bg:']:not([class*=':neutral']) {
+button[class*='bg:']:not([class*=':neutral'], :focus) {
 	&.variant\:fill {
 		--chroma: var(--color-chroma-300);
 		--chroma-contrast: var(--color-chroma-000);

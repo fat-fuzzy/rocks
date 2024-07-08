@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
-	import type {TogglePayload} from '$lib/components/blocks/buttons/Toggle/toggle.types.js'
+	import type {FuzzyPayload} from '$types/machines.js'
 	import type { ButtonType } from '$lib/components/blocks/buttons/button.types.js'
 	import { type ToggleMenuProps} from './toggleMenu.types.js'
 	import ToggleMenuStore from './store.svelte'
@@ -41,14 +41,14 @@
 	let thresholdClass = threshold ? `th:${threshold}` : ''
 	let menuClasses = `${layoutClass} ${thresholdClass} ${sizeClass} mode:${mode}`
 
-	function updateMenu(payload: TogglePayload) {
+	function updateMenu(payload: FuzzyPayload) {
 		store.update(payload)
 		if (onupdate) {
 			onupdate(store.getSelected())
 		}
 	}
 
-	function loadMenu(payload: TogglePayload) {
+	function loadMenu(payload: FuzzyPayload) {
 		store.update(payload)
 	}
 

@@ -68,7 +68,7 @@
 				update({reset: false})
 			}
 		}}
-		class={`${apiLayout} bp:${apiBreakpoint} bg:polar ${apiSize}`}
+		class={`${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 	>
 		{#each categories as category}
 			<StyleFamily

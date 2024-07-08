@@ -3,6 +3,7 @@
 	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
 	import {content} from '@fat-fuzzy/ui-s5'
+	import sketchStore from '$lib/stores/stores.svelte'
 
 const {LayoutSidebar} = content
 
@@ -13,6 +14,8 @@ const {LayoutSidebar} = content
 	let {children}: Props = $props()
 
 	let sketches = $state($page.data.sketches)
+	let appSettings = $derived(sketchStore.app)
+
 	let path = ''
 	let items = [{ slug: 'sketches', title: 'Sketches' ,items: sketches}]
 
@@ -21,19 +24,18 @@ const {LayoutSidebar} = content
 		title: 'Sketches',
 		id: 'nav-sketches',
 		items: sketches,
-		reveal: 'show',
+		reveal: 'expanded',
 		breakpoint: 'sm',
 		size: 'sm',
 		color: 'primary',
 		position: 'fixed',
 		place: 'left',
-		background: 'polar',
 		formaction: 'toggleSidebar',
 	}
 </script>
 
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} {path}>
+<LayoutSidebar {nav} redirect={$page.url.pathname} {path} app={{settings: appSettings}}>
 	{#if children}
 		{@render children()}
 	{/if}

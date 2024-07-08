@@ -7,6 +7,7 @@ export type LayoutProps = UiLayoutProps & UiContentProps & FormProps
 export type DetailsLayoutProps = LayoutProps & {
 	summary: Snippet
 	variant?: string
+	open?: boolean
 }
 
 export type GridLayoutProps = LayoutProps & {
@@ -22,6 +23,7 @@ export type GridLayoutProps = LayoutProps & {
 export type RevealLayoutProps = LayoutProps &
 	UiBlockProps & {
 		reveal: string
+		element?: string
 	}
 
 export type SidebarLayoutProps = LayoutProps & {

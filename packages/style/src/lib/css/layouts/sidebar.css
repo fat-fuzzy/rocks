@@ -1,25 +1,25 @@
-[class^='l:sidebar'] {
+[class*='l:sidebar'] {
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--gap);
 }
 
 /* NOTE: The following declaration assume that the markup declares .main before .side */
-[class^='l:sidebar'].start {
+[class*='l:sidebar'].start {
 	flex-direction: row;
 }
 
 /* TODO: not sure this rule is necessary */
-[class^='l:sidebar'].end {
+[class*='l:sidebar'].end {
 	flex-direction: row-reverse;
 }
 
 /* TODO: not sure this rule is necessary */
-[class^='l:sidebar'].end\:reverse {
+[class*='l:sidebar'].end\:reverse {
 	flex-wrap: wrap-reverse;
 }
 
-[class^='l:main'] {
+[class*='l:main'] {
 	flex-basis: 0;
 	flex-grow: 999;
 	/* ~ min-width in horizontal\:tb writing mode: if (width < 70%) -> wrap */

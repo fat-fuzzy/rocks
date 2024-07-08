@@ -1,13 +1,11 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
-
-	import * as settings from '$stores/settings.js'
 	import constants from '$lib/types/constants.js'
 	import type {SettingsProps} from './settings.types.js'
-
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
+	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
 	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 
@@ -26,61 +24,45 @@
 		actionPath,
 		redirect,
 		items,
-		children,
+		onupdate,
 	}: SettingsProps = $props()
 
 	let settingsId = id
 	let appSettings = $state(DEFAULT_APP_SETTINGS)
 	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
 
-	const stores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-		settings.settingsReveal.subscribe((value) => {
-			if (value) {
-				settingsReveal = value
-			}
-		}),
-	]
-
 	function handleClickOutsideSettings() {
-		settings.settingsReveal.set({reveal: 'minimize'})
+		settingsReveal = {reveal: 'collapsed'}
 	}
 
 	function handleToggle(event) {
-		const updated = event.expanded ? 'show' : 'minimize'
-		settings.settingsReveal.set({reveal: updated})
+		settingsReveal = {reveal: event.state}
 	}
 
 	function handleUpdate(event) {
-		let updated
 		switch (event.id) {
-			case 'contrast':
-				updated = event.active ? 'contrast' : 'blend'
-				settings.app.set({
-					brightness: appSettings.brightness,
-					contrast: updated,
-				})
-				break
 			case 'brightness':
-				updated = event.active ? 'night' : 'day'
-				settings.app.set({brightness: updated, contrast: appSettings.contrast})
+				appSettings.brightness = event.value
+				break
+			case 'contrast':
+				appSettings.contrast = event.value
 				break
 			default:
 				break
 		}
+		if (onupdate) onupdate(event)
 	}
 
-	let reveal = settingsReveal.reveal
-	let brightness = appSettings.brightness
-	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `show ${showBackground}`
-	let showSettings = reveal === 'show' ? show : 'hide:viz-only'
-	let revealClasses = `form:expand card:md nowrap`
-	let formClasses = `l:switcher:xs maki:block:2xs ${showBackground}`
+	let reveal = $derived(settingsReveal.reveal)
+	let brightness = $derived(appSettings.brightness)
+	let showBackground = background
+		? `bg:${background}`
+		: !color
+			? 'bg:inherit'
+			: ''
+	let show = $derived(`${reveal} ${showBackground}`)
+	let revealClasses = $derived(`form:${reveal} nowrap`)
+	let formClasses = `l:switcher:xs ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
@@ -89,10 +71,6 @@
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
 		: 'toggleNav'
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
 </script>
 
 <div class={layoutClasses}>
@@ -122,26 +100,15 @@
 			name={`button-${id}`}
 			controls={id}
 			value={settingsReveal[id]}
-			states={{
-				expanded: {
-					id: 'settings-expanded',
-					text: 'settings',
-					value: 'show',
-					asset: 'settings',
-				},
-				collapsed: {
-					id: 'settings-collapsed',
-					text: 'settings',
-					value: 'minimize',
-					asset: 'settings',
-				},
-			}}
+			text="settings"
+			asset="settings"
 			onclick={handleToggle}
+			states={EXPAND_MACHINE}
 		>
 			Settings
 		</Expand>
 	</form>
-	<div {id} class={`${showSettings} l:flex align:center`}>
+	<div {id} class={`${show} l:flex align:center content`}>
 		<form
 			name="settings-update"
 			{method}
@@ -155,6 +122,18 @@
 			class={`menu:settings ${formClasses}`}
 		>
 			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
+				{@const switchStates = states
+					? {
+							active: {
+								...SWITCH_MACHINE.active,
+								...states.active,
+							},
+							inactive: {
+								...SWITCH_MACHINE.inactive,
+								...states.inactive,
+							},
+						}
+					: SWITCH_MACHINE}
 				<div class="l:frame:round maki:block:2xs">
 					<Switch
 						id={`${settingsId}-${id}`}
@@ -165,7 +144,7 @@
 						{shape}
 						{color}
 						{size}
-						{states}
+						states={switchStates}
 						onclick={handleUpdate}
 					/>
 				</div>

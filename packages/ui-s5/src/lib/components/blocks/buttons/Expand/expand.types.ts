@@ -1,61 +1,45 @@
-import type {UiState, ButtonEventType, InputPayload} from '$types/index.js'
-import type {ButtonProps} from '$lib/components/blocks/buttons/button.types.js'
+import {type FuzzyState, type FuzzyTransitions} from '$types/machines.js'
+import type {ToggleProps} from '../Toggle/toggle.types.js'
+import {UiState} from '$types/index.js'
+import {ButtonEvent} from '../button.types.js'
 
-export type ExpandState = UiState.expanded | UiState.collapsed
+export type UiStateExpand = UiState.expanded | UiState.collapsed
 
-export type ExpandPayload = InputPayload & {
-	text?: string
-	expanded: boolean
-	update: (event: ButtonEventType) => void
+export type ExpandMachine = {
+	expanded: FuzzyState
+	collapsed: FuzzyState
 }
 
-export type ExpandProps = ButtonProps & {
-	initial?: ExpandState
-	controls: string // id of the DOM element that is controlled by this button
-	states: ExpandStateType // this component contains a button that will Expand the DOM element it controls when expanded, or minimize it when collapsed. Each state can have its own text, style, and asset (if any) according to its expanded / collapsed state
-	onclick?: (payload: ExpandPayload) => void
-}
-export type ExpandType = {
-	id: string
-	value: string
-	text?: string
-	asset?: string
-	variant?: string
-	onclick?: (payload: ExpandPayload) => void
-}
-
-export type ExpandStateType = {
-	[state in ExpandState]: ExpandType
-}
-
-export type ExpandTransitionsType = {
-	[state in ExpandState]: {
-		[event in ButtonEventType]?: ExpandState
-	}
-}
-
-export const EXPAND: ExpandStateType = {
+export const EXPAND_MACHINE: ExpandMachine = {
 	expanded: {
-		id: 'expanded',
-		value: 'expanded',
-		text: 'Active',
-		asset: 'emoji:bunny',
-		variant: 'fill',
+		id: UiState.expanded,
+		state: UiState.expanded,
+		event: ButtonEvent.collapse,
+		text: 'Collapse',
+		asset: 'point-down',
 	},
 	collapsed: {
-		id: 'collapsed',
-		value: 'collapsed',
+		id: UiState.collapsed,
+		state: UiState.collapsed,
+		event: ButtonEvent.expand,
 		text: 'Expand',
-		asset: 'emoji:hat',
-		variant: 'fill',
+		asset: 'point-right',
 	},
 }
 
-export const EXPAND_TRANSITIONS: ExpandTransitionsType = {
+export const EXPAND_TRANSITIONS: FuzzyTransitions = {
 	expanded: {
-		expand: 'collapsed' as ExpandState,
+		collapse: UiState.collapsed,
 	},
 	collapsed: {
-		expand: 'expanded' as ExpandState,
+		expand: UiState.expanded,
 	},
+}
+
+/**
+ * This component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
+ */
+export type ExpandProps = ToggleProps & {
+	controls: string
+	states?: ExpandMachine
 }

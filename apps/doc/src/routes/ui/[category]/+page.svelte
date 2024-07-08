@@ -3,7 +3,7 @@
 	import {page} from '$app/stores'
 	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
-	import appStore from '$lib/stores/stores.svelte.js'
+	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {PageMain} = content
 	const {Collection, Api} = api
@@ -19,7 +19,7 @@
 		{category: 'layouts', items: layouts},
 		{category: 'recipes', items: recipes},
 	]
-	let currentTabs = appStore.currentTabs
+	let currentTabs = fatFuzzyStore.currentTabs
 	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
 
 	let path = $derived($page.url.pathname)
@@ -48,48 +48,46 @@
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
-		<div class="l:main:50 l:flex justify:end">
-
-			{#if currentTab.value === 'demo'}
-				<Api
-					categories={['app']}
-					{meta}
-					{path}
-					{actionPath}
-					redirect={$page.url.pathname}
-				/>
-			{/if}
-
-			<form
-				method="POST"
-				class="tabs flex nowrap"
-				action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
-				use:enhance={() => {
-					// prevent default callback from resetting the form
-					return ({update}) => {
-						update({reset: false})
-					}
-				}}
-			>
-				<ToggleMenu
-					id={`submit.${path}`}
-					items={tabs.map((tab) => {
-						if (tab.value == currentTab.value) {
-							tab.initial = 'active'
+			<div class="l:main l:flex">
+				<form
+					method="POST"
+					class="tabs flex nowrap"
+					action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
+					use:enhance={() => {
+						// prevent default callback from resetting the form
+						return ({update}) => {
+							update({reset: false})
 						}
-						return tab
-					})}
-					size="md"
-					layout="flex nowrap"
-					container="card:md"
-					color="primary"
-					shape="round"
-					variant="outline"
-					formaction={`/ui?/updateTab&redirectTo=${path}`}
-					onupdate={handleTabChange}
-					init={handleTabChange}
-				/>
-			</form>
+					}}
+				>
+					<ToggleMenu
+						id={`submit.${path}`}
+						items={tabs.map((tab) => {
+							if (tab.value == currentTab.value) {
+								tab.initial = 'active'
+							}
+							return tab
+						})}
+						size="md"
+						layout="flex nowrap"
+						container="card:md"
+						color="primary"
+						shape="round"
+						variant="outline"
+						formaction={`/ui?/updateTab&redirectTo=${path}`}
+						onupdate={handleTabChange}
+						init={handleTabChange}
+					/>
+				</form>
+				{#if currentTab.value === 'demo'}
+					<Api
+						categories={['app']}
+						{meta}
+						{path}
+						{actionPath}
+						redirect={$page.url.pathname}
+					/>
+				{/if}
 		</div>
 	{/snippet}
 
@@ -104,10 +102,10 @@
 			{:else if markdownContent.meta.props_style}
 				<details open
 				class="l:stack:md size:xs">
-					<summary class="bg:primary:100">Style Props</summary>
+					<summary class="surface:2:primary">Style Props</summary>
 					<ul class="tags l:switcher:md">
 						{#each markdownContent.meta.props_style as prop}
-							<li class="ccard:xs font:sm bg:primary:000">{prop}</li>
+							<li class="card:xs font:sm surface:1:primary">{prop}</li>
 						{/each}
 					</ul>
 				</details>

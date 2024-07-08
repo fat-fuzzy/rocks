@@ -1,8 +1,8 @@
-export type StyleProps = {
-	doc?: {[key: string]: string[]}[]
-	style?: {[key: string]: string[]}
-	state?: string[]
-}
+export type DocProps = {[key: string]: string[]}[]
+
+export type StateProps = string[]
+
+export type StyleProps = {[key: string]: {[key: string]: string[]}}
 
 export type Meta = {
 	title: string
@@ -10,7 +10,7 @@ export type Meta = {
 	category?: string
 	group?: string
 	props_style?: StyleProps
-	props_state?: string[]
+	props_state?: StateProps
 	content_types?: string[]
 	context: string[]
 }

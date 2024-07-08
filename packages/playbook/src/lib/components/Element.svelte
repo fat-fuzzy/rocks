@@ -1,9 +1,8 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
+	import PlaybookStore from '$lib/api/store.svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
 	import type {Meta} from '$lib/props/types'
-
-	import PlaybookStore from '$lib/api/store.svelte'
 
 	import Api from './Api.svelte'
 	import Token from './Token.svelte'
@@ -71,6 +70,7 @@
 			? `l:${container}:${size} content`
 			: 'content',
 	)
+	let componentType = $derived(ApiElement[category])
 	let fixtures = $derived(
 		playbookStore.getElementFixtures({category, component: title}),
 	)
@@ -84,13 +84,13 @@
 
 {#if isPage}
 	<article class="l:sidebar:md">
-		<section class={`l:main card:xl inset ${brightness} bg:${contrast} `}>
+		<section class={`l:main card:xl inset`}>
 			<div class={containerClasses}>
 				{#if fixtures?.status}
 					{@const currentProps =
 						fixtures.status.find((p) => p.case === status) || {}}
 					<svelte:component
-						this={ApiElement[category]}
+						this={componentType}
 						{isPage}
 						{title}
 						{path}
@@ -104,7 +104,7 @@
 					/>
 				{:else}
 					<svelte:component
-						this={ApiElement[category]}
+						this={componentType}
 						{isPage}
 						{title}
 						{path}
@@ -120,7 +120,7 @@
 		</section>
 		<section class="l:side l:stack:md w:full">
 			<details open class="l:stack:md size:xs">
-				<summary class={`variant:${color} bg:${color}`}>Props</summary>
+				<summary class={`variant:fill surface:2:${color}`}>Props</summary>
 				{#if categories}
 					<div class="ui:menu">
 						<Api {categories} {path} {actionPath} {redirect} {meta} />
@@ -137,7 +137,7 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline brightness:${brightness} contrast:${contrast} l:stack ui:${title.toLowerCase()}`}
+		class={`card variant:outline l:stack ui:${title.toLowerCase()}`}
 	>
 		<header>
 			<a
@@ -154,7 +154,7 @@
 				{@const currentProps =
 					fixtures.status.find((p) => p.case === status) || {}}
 				<svelte:component
-					this={ApiElement[category]}
+					this={componentType}
 					{isPage}
 					{path}
 					{title}
@@ -168,7 +168,7 @@
 				/>
 			{:else}
 				<svelte:component
-					this={ApiElement[category]}
+					this={componentType}
 					{isPage}
 					{path}
 					{title}

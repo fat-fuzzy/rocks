@@ -13,7 +13,7 @@ Use a `Switcher` layout for items that switch between column and row layouts whe
 
 ### Examples
 
-<p class="feedback:prose bg:default:000 variant:bare emoji:default">Coming Soon!</p>
+<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

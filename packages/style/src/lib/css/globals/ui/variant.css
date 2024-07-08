@@ -12,7 +12,7 @@
 	background-color: inherit;
 }
 
-[class*=':outline']:not(label) {
+[class*=':outline']:not(label, pre) {
 	--color-accent: var(--accent, var(--ink));
 	border: var(--border-width-md) solid var(--color-accent);
 }

@@ -15,11 +15,15 @@ th {
 td {
 	padding: calc(var(--ui-size) / var(--size-ratio-md))
 		calc(var(--ui-size-lg) / var(--size-ratio-md));
-	border: 1px solid var(--ink);
+	border: 1px solid var(--accent);
+	color: var(--ink);
 }
 
 tr:hover td {
-	--lightness: var(--color-lightness-000);
+	--lightness: var(--lightness-base);
+	--lightness-contrast: var(--lightness-contrast-base);
+	--chroma: var(--chroma-base);
+	--chroma-contrast: var(--chroma-contrast-base);
 	color: var(--ink);
 	background-color: var(--shade);
 }

@@ -5,13 +5,14 @@
 
 	import {onMount, getContext} from 'svelte'
 	import {blocks, recipes} from '@fat-fuzzy/ui-s5'
-	const {Fieldset, InputRange} = blocks
-	const {ToggleMenu, InputGroup} = recipes
 
 	import PlaybookStore from '$lib/api/store.svelte'
 
+	const {Fieldset, InputRange} = blocks
+	const {ToggleMenu, InputGroup} = recipes
+
 	type Props = {
-		category?: string
+		category: string
 		formaction?: string
 		meta: Meta
 	}
@@ -19,7 +20,7 @@
 	let {category = 'app', formaction, meta}: Props = $props()
 
 	const playbookContext: StylesApi = getContext('playbookContext')
-	const playbookStore: PlaybookStore = getContext('playbookStore')
+	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
 	let styles = $derived(playbookStore.styles)
 
@@ -150,10 +151,10 @@
 			id={family.title}
 			legend={family.title}
 			layout={family.layout}
+			container={family.container}
 			size={family.size}
 			name={familyName}
 			justify={apiJustify}
-			background="polar"
 		>
 			{#each family.items as styleInput}
 				{#if styles[category] && styles[category][familyName]}

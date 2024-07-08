@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { UiState, ButtonEventType} from '$types/index.js'
-	import type {ToggleProps} from './toggle.types.js'
-	import ToggleStore from './store.svelte'
+	import type { ToggleProps } from './toggle.types.js'
 	import { onMount } from 'svelte'
+	import { UiState} from '$types/index.js'
+	import { ButtonEvent } from '../button.types.js'
+	import Actor from './actor.svelte.js'
 
 	let {
 		id = 'toggle',
@@ -29,45 +30,34 @@
 		children,
 	}: ToggleProps = $props()
 
-	let store = $state(new ToggleStore())
-	store.init({
-		initial,
-		onclick,
-	})
+	let store = new Actor({
+			initial,
+			onclick,
+		})
 
-	/* Element state */
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value,
-		state: store.getState(),
+		state: store.state,
 		update: store.update.bind(store),
 	})
 
-	/* Element styles */
-	let colorClass = color ? `bg:${color}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = size ? `font:${size}` : ''
-	let assetClass = asset ? `emoji:${asset}` : ''
-	let variantClass = variant ? `variant:${variant}` : ''
-	let shapeClass = shape ? ` shape:${shape}` : ''
-	let alignClass = align ? `align:${align}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
-
-	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass} ${variantClass} ${assetClass}`
-	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
-
-	/* Context styles */
-	let containerClass = ''
-	if (container) {
-		containerClass = dimensions ? `l:${container}:${dimensions}` : `l:${container}:${size}`
-	}
-
-	/* State dependent styles */
-	let buttonClasses = `toggle ${containerClass} ${layoutClasses} ${elementClasses}`
+	let buttonClasses =  $derived(store.getStyles({
+			color,
+			size,
+			shape,
+			align,
+			justify,
+			asset,
+			variant,
+			layout,
+			container,
+			dimensions,
+		}))
 
 	function handleClick(event: MouseEvent) {
-		store.update('toggle' as ButtonEventType)
+		store.update(store.currentState.event as ButtonEvent)
 		if (onclick) onclick(payload)
 	}
 
@@ -86,12 +76,16 @@
 	{value}
 	class={buttonClasses}
 	data-key={name}
+	aria-pressed={store.pressed}
 	onclick={handleClick}
-	aria-pressed={store.isPressed()}
 >
 	{#if children}
 		{@render children()}
-	{:else if text}
-		{text}
+	{:else}
+		{#if shape}
+			<span class="sr-only">{title}</span>
+		{:else}
+			{text}
+		{/if}
 	{/if}
 </button>

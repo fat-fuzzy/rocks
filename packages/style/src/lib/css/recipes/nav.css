@@ -1,7 +1,4 @@
 nav ul {
-	--lightness: var(--color-lightness-light);
-	--chroma: var(--color-chroma-neutral);
-	--color-bg-nav: oklch(var(--lightness) var(--chroma) var(--hue));
 	list-style: none;
 	padding-inline: 0;
 	margin-inline: 0;
@@ -17,9 +14,10 @@ nav li {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding: calc(var(--size-base-2xs) / var(--ratio-md)) var(--size-base-2xs);
+	padding: calc(var(--size-base-3xs) / var(--size-ratio-md))
+		var(--size-base-3xs);
 	margin-block: 0;
-	line-height: var(--font-leading-ui);
+	line-height: var(--font-leading-nav);
 }
 
 nav > ul ul li:has(ul) {
@@ -72,12 +70,10 @@ nav li a:visited {
 /* == RevealNav (tree-like navigation menus) == */
 ul.depth-1 {
 	padding-inline-start: 0;
-	padding-block-start: var(--ui-size-sm);
 }
 
 ul.depth-2 {
 	padding-inline: calc(2 * var(--ui-size)) var(--ui-size);
-	padding-block: calc(2 * var(--outline-offset-settings));
 }
 
 ul.depth-3 {
@@ -100,22 +96,22 @@ ul.depth-0 > li > a {
 nav li[aria-current='page'] {
 	/* Active Link */
 
-	> ul {
-		background-color: var(--color-bg-nav);
+	ul.depth-1 {
+		--lightness: var(--lightness-base);
+		--lightness-contrast: var(--lightness-contrast-base);
+		--chroma: var(--chroma-base);
+		--chroma-contrast: var(--chroma-contrast-base);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		color: var(--ink);
+		background-color: var(--shade);
 	}
 
 	> a {
 		text-decoration-color: var(--accent);
 	}
-
 	> ul a {
-		--lightness-contrast: var(--color-lightness-500);
-		--chroma-contrast: var(--color-chroma-500);
-		--color-ink-nav: oklch(
-			var(--lightness-contrast) var(--chroma-contrast) var(--hue)
-		);
 		text-decoration-color: var(--accent);
-		background-color: var(--color-bg-nav);
 	}
 }
 

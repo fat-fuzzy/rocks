@@ -26,7 +26,7 @@ Use a `RevealMenu` component to provide a menu of related actions that can be sh
 
 ### Examples
 
-<p class="feedback:prose bg:default:000 variant:bare emoji:default">Coming Soon!</p>
+<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
 
 ## Resources
 

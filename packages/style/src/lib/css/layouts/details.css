@@ -14,7 +14,7 @@ details .end {
 /* TODO: generate mq mixin */
 
 @media screen and (min-width: 320px) {
-	details.bp\:2xs [class^='hide:'] {
+	details.bp\:2xs [class^='collapsed'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -32,7 +32,7 @@ details .end {
 }
 
 @media screen and (min-width: 620px) {
-	details.bp\:xs [class^='hide:'] {
+	details.bp\:xs [class^='collapsed'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -50,7 +50,7 @@ details .end {
 }
 
 @media screen and (min-width: 935px) {
-	details.bp\:sm [class^='hide:'] {
+	details.bp\:sm [class^='collapsed'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -68,7 +68,7 @@ details .end {
 }
 
 @media screen and (min-width: 1360px) {
-	details.bp\:md [class^='hide:'] {
+	details.bp\:md [class^='collapsed'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -86,7 +86,7 @@ details .end {
 }
 
 @media screen and (min-width: 1620px) {
-	details.bp\:lg [class^='hide:'] {
+	details.bp\:lg [class^='collapsed'] {
 		border: unset;
 		clip: unset;
 		height: auto;
@@ -104,7 +104,7 @@ details .end {
 }
 
 @media screen and (min-width: 2048px) {
-	details.bp\:xl [class^='hide:'] {
+	details.bp\:xl [class^='collapsed'] {
 		border: unset;
 		clip: unset;
 		height: auto;

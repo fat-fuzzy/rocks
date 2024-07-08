@@ -13,8 +13,8 @@
 	let {
 		path = '',
 		layout,
-		size = 'xs',
-		color = 'primary:600',
+		size = '2xs',
+		color = 'primary',
 		align,
 		id,
 		depth = 0,
@@ -30,10 +30,10 @@
 				? `l:${container}:${size}`
 				: ''
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
-	let colorClass = color ? `bg:${color}` : ''
+	let colorClass = color ? `surface:1:${color}` : ''
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
-	let gridClass = depth === 1 ? `l:grid:xs` : layoutClass
+	let gridClass = depth === 1 ? `l:grid:sm` : layoutClass
 </script>
 
 <ul
@@ -60,6 +60,7 @@
 					{reveal}
 					{slug}
 					href={format.formatHref(path, slug)}
+					size="2xs"
 				>
 					<svelte:self
 						items={subItems}
@@ -75,7 +76,7 @@
 				<a
 					data-sveltekit-preload-data
 					href={format.formatHref(path, slug)}
-					class="card:xs font:md"
+					class="card:3xs"
 				>
 					{title}
 				</a>

@@ -79,6 +79,7 @@ article,
 	background-color: inherit;
 }
 
+p,
 figcaption {
 	color: var(--color-ink, var(--ink));
 }
@@ -89,7 +90,6 @@ ul {
 }
 
 a {
-	height: fit-content;
 	padding-block: 0;
 	padding-inline: calc(var(--ui-size-sm) / 2);
 	margin-inline-end: 0.25em;

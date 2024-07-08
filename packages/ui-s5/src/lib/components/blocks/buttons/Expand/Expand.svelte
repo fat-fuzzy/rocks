@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { UiState, type ButtonEventType} from '$types/index.js'
 	import type {ExpandProps} from './expand.types.js'
-	import ExpandStore from './store.svelte'
-
+	import { onMount } from 'svelte'
+	import { ButtonEvent } from '../button.types.js'
+	import Actor from './actor.svelte.js'
 
 	let {
 		id = 'expand',
 		name = 'expand',
 		controls,
 		title,
-		initial = UiState.collapsed,
+		initial,
 		disabled,
 		formaction,
 		states,
@@ -25,57 +25,46 @@
 		layout = 'switcher',
 		type = 'submit',
 		children,
+		init,
 		onclick,
 	}: ExpandProps = $props()
 
-	let store = $state(new ExpandStore())
-	store.init({
-		initial,
-		onclick,
-		expandStates: states,
-	})
-
-	/* Element state */
-	let currentState = $state(store.getExpandState())
+	let store = new Actor({
+			initial,
+			onclick,
+			machine: states,
+		})
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value: store.getValue(),
-		expanded: store.isExpanded(),
+		value: store.value,
+		expanded: store.expanded,
+		state: store.state,
 		update: store.update.bind(store),
 	})
 
-	/* Element styles */
-	let colorClass = color ? `bg:${color}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = size ? `font:${size}` : ''
-	let shapeClass = shape ? ` shape:${shape}` : ''
-	let alignClass = align ? `align:${align}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
-
-	let currentVariant = $state(currentState.variant ?? variant)
-	let variantClass = $derived(currentVariant ? `variant:${currentVariant}` : '')
-	let currentAsset = $state(currentState.asset ?? asset)
-	let	assetClass = $derived(currentAsset ? `emoji:${currentAsset}` : '')
-
-	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass}`
-	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
-
-	/* Context styles */
-	let containerClasses = ''
-	if (container) {
-		containerClasses = dimensions ? `l:${container}:${dimensions}` : `l:${container}:${size}`
-	}
-	let buttonClasses = $derived( `expand ${containerClasses} ${layoutClasses} ${elementClasses} ${assetClass} ${variantClass}`)
+	let buttonClasses = $derived(store.getStyles({
+			color,
+			size,
+			shape,
+			align,
+			justify,
+			asset,
+			variant,
+			layout,
+			container,
+			dimensions,
+		}))
 
 	function handleClick(event: MouseEvent) {
-		// The payload corresponds the value that is displayed to the user before the click
-		// -> we pass that value to the parent component
-		if (currentState.onclick) currentState.onclick(payload)
-		if (onclick) onclick(payload)
-		store.update('expand' as ButtonEventType)
+		store.update(store.currentState.event as ButtonEvent)
+		if (store.currentState.action) store.currentState.action(payload)
 	}
+
+	onMount(() => {
+		if (init) init(payload)
+	})
 </script>
 
 <button
@@ -85,12 +74,12 @@
 	{title}
 	{disabled}
 	{formaction}
-	value={currentState.value}
+	value={store.value}
 	class={buttonClasses}
 	data-key={name}
-	onclick={handleClick}
-	aria-expanded={store.isExpanded()}
+	aria-expanded={store.expanded}
 	aria-controls={controls}
+	onclick={handleClick}
 >
 {#if children}
 	{@render children()}
@@ -99,7 +88,7 @@
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>
-		<span class="viz-only">{currentState.text}</span>
+		<span class="viz-only">{store.text}</span>
 	{/if}
 {/if}
 </button>

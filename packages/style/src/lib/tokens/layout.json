@@ -13,7 +13,7 @@
 		},
 		"sidebar": {
 			"base": {"$value": "22ch"},
-			"minimize": {"$value": "4em"},
+			"collapsed": {"$value": "6em"},
 			"md": {"$value": "{layout.sidebar.base}"},
 			"lg": {"$value": "calc(var(--layout-sidebar-md) * var(--size-ratio-sm))"},
 			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--size-ratio-sm))"},
@@ -36,7 +36,7 @@
 			"2xl": {"$value": "3048px"}
 		},
 		"threshold": {
-			"3xs": {"$value": "{layout.sidebar.minimize}"},
+			"3xs": {"$value": "{layout.sidebar.collapsed}"},
 			"2xs": {"$value": "{layout.breakpoint.2xs}"},
 			"xs": {"$value": "{layout.breakpoint.xs}"},
 			"sm": {"$value": "{layout.breakpoint.sm}"},

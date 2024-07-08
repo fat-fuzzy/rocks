@@ -1,64 +1,66 @@
 /* header-app media queries */
 
+/* TODO: clean this up - not so good  */
 @mixin switchToRowStyles_Header($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
 		.header-app .l\:reveal\:auto.bp\:#{$size} {
 			justify-content: center;
+			padding-block: 0;
 		}
 
-		.header-app > [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .show,
-		.header-app
-			> [class*='l:main'].l\:reveal\:auto.bp\:#{$size}
-			[class*='hide:'] {
-			block-size: 100%;
-			overflow: auto;
-		}
-
-		.header-app nav.l\:reveal\:auto.bp\:#{$size} > ul {
-			padding: 0;
-			margin: 0;
-			inline-size: auto;
-			flex-wrap: nowrap;
-			gap: var(--gap);
-			block-size: 100%;
-		}
-
-		.header-app nav.l\:reveal\:auto.bp\:#{$size} li,
-		.header-app nav.l\:reveal\:auto.bp\:#{$size} a {
-			inline-size: fit-content;
-			padding: var(--ui-size);
-		}
-
-		.header-app > nav[class*='l:main'].l\:reveal\:auto.bp\:#{$size} li {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			border-inline-start: unset;
-			border-block-start: var(--border-width-xl) solid var(--shade);
-			padding: 0 0 var(--outline-offset) var(--outline-offset);
-		}
-
-		.header-app
-			> nav[class*='l:main'].l\:reveal\:auto.bp\:#{$size}
-			li[aria-current='page'] {
-			border-color: var(--accent);
-			background-color: var(--shade);
+		.header-app > [class*='l:main']:has(.l\:reveal\:auto.bp\:#{$size}) {
+			min-inline-size: 80%;
+			flex-grow: 1;
 		}
 
 		/* Configure reveal menu positioning and width */
 		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} {
 			justify-content: center;
+
+			form:has([aria-expanded]) + .content {
+				block-size: fit-content;
+				inline-size: fit-content;
+				padding: 0;
+				margin: 0;
+				box-shadow: unset;
+			}
 		}
 
-		/* Configure reveal settings menu dimensions */
-		.header-app [class*='l:main'].l\:reveal\:auto.bp\:#{$size} .show {
-			block-size: auto;
-		}
-
-		/* Configure reveal menu positioning and width */
-		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} > menu {
-			justify-content: flex-end;
+		.header-app [class*='l:main'] nav.l\:reveal\:auto.bp\:#{$size} {
+			flex-direction: row;
 			padding-block: 0;
+			inline-size: fit-content;
+
+			ul {
+				flex-flow: row nowrap;
+				gap: var(--gap);
+				padding: 0;
+				margin: 0;
+				inline-size: fit-content;
+				block-size: 100%;
+				padding-block: 0;
+			}
+
+			li {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-inline-start: unset;
+				border-block-start: var(--border-width-xl) solid var(--shade);
+				inline-size: fit-content;
+
+				&[aria-current='page'] {
+					flex-direction: row;
+					border-inline-start: unset;
+					border-color: var(--accent);
+					background-color: var(--shade);
+				}
+			}
+
+			a {
+				inline-size: fit-content;
+				padding: var(--ui-size-sm) var(--ui-size-lg) var(--ui-size);
+			}
 		}
 	}
 }

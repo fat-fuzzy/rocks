@@ -4,22 +4,18 @@
 	import type {RevealNavProps} from './nav.types.js'
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
 
-	const {
-		DEFAULT_APP_SETTINGS,
-		DEFAULT_NAV_REVEAL_STATE,
-		ALIGN_OPPOSITE,
-		ALIGN_ANIMATION_DIRECTION,
-		TRANSITION_CONTRAST,
-	} = constants
+	const {DEFAULT_NAV_REVEAL_STATE, ALIGN_OPPOSITE, ALIGN_ANIMATION_DIRECTION} =
+		constants
 
 	let {
 		id = 'reveal-nav',
 		title = 'RevealNav',
 		path = '',
 		method = 'POST',
-		reveal = 'minimize',
+		reveal = 'collapsed',
 		formaction,
 		actionPath,
 		redirect,
@@ -34,16 +30,15 @@
 		place = 'top',
 		position,
 		container,
-		background = 'polar',
+		background,
 		items = [],
 		onupdate,
 	}: RevealNavProps = $props()
 
 	let sidebarReveal = $state(reveal ? {reveal} : DEFAULT_NAV_REVEAL_STATE)
-	let appSettings = $state(DEFAULT_APP_SETTINGS)
 
 	function toggleReveal(event) {
-		sidebarReveal.reveal = event.value
+		sidebarReveal.reveal = event.state
 		if (onupdate)
 			onupdate({name: id, value: event.value, state: sidebarReveal.reveal})
 	}
@@ -57,14 +52,10 @@
 			? `th:${threshold}`
 			: ''
 	let navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
-	let animationDirection = $derived(
-		place ? ALIGN_ANIMATION_DIRECTION[place][sidebarReveal.reveal] : '',
-	) // TODO fix this
-	let showBackground = $derived(
-		background
-			? `bg:${background}`
-			: `bg:${TRANSITION_CONTRAST[appSettings.contrast]}`,
-	)
+	let animationDirection = place
+		? ALIGN_ANIMATION_DIRECTION[place][sidebarReveal.reveal]
+		: ''
+	let showBackground = $derived(background ? `bg:${background}` : '')
 	let showSidebar = $derived(
 		`${sidebarReveal.reveal} ${showBackground} ${place}`,
 	)
@@ -76,26 +67,26 @@
 			? `l:reveal ${position} ${place} ${sidebarReveal.reveal}`
 			: `l:reveal ${place} ${reveal}`,
 	)
-	let states = $derived({
+
+	let revealStates = {
 		expanded: {
-			id: 'expanded',
+			...EXPAND_MACHINE.expanded,
 			text: title,
-			value: 'show', // TODO: harmonize show/expand
 			asset: `point-${animationDirection}`,
 		},
 		collapsed: {
-			id: 'collapsed',
+			...EXPAND_MACHINE.collapsed,
 			text: title,
-			value: 'minimize', // TODO: harmonize minimize/collapse
 			asset: `point-${animationDirection}`,
 		},
-	})
+	}
+
 	let action =
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 </script>
 
 <div class={layoutClasses}>
-	<SkipLinks text="Skip to content" />
+	<SkipLinks text="Skip to content" href="#content" />
 	<nav id={`nav-${id}`} class={navClasses} aria-label={title}>
 		<form
 			{id}
@@ -119,8 +110,9 @@
 				align={buttonAlign}
 				justify="start w:full"
 				controls={`nav-${id}`}
+				initial={reveal}
 				value={sidebarReveal.reveal}
-				{states}
+				states={revealStates}
 				onclick={toggleReveal}
 			>
 				{title}

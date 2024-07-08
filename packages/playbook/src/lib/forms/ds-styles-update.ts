@@ -31,13 +31,17 @@ export class DsStylesUpdate {
 	 */
 	enter(data: FormData) {
 		const styleValues = []
+		let category
+		let family
+		let style
+		let _
 
 		for (const [key, value] of data) {
 			if (key === 'reveal') {
 				this.settings.reveal = TRANSITION_REVEAL[this.settings.reveal]
 				return true
 			}
-			let [category, family, style, _] = key.split('.')
+			;[category, family, style, _] = key.split('.')
 			let styleValue = {[style]: value.toString()}
 			// FIXES: allows to enter range number values mapped to class names with no JS on client
 			// TODO: figure out generic way to map range number values to string labels
@@ -54,7 +58,7 @@ export class DsStylesUpdate {
 
 		const styles = this.api.getStyleTree()
 		styleValues.forEach(({id, value}) => {
-			const [category, family, style, _] = id.split('.')
+			;[category, family, style, _] = id.split('.')
 			if (category !== 'submit' && category !== 'button') {
 				styles[category][family][style] = value[category][family][style]
 			}

@@ -3,6 +3,8 @@
 	import type {RevealLayoutProps} from './layout.types.js'
 	import constants from '$lib/types/constants.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
+	import styleHelper from '$lib/utils/styles.js'
 
 	// import {clickOutside} from '$lib/utils/click-outside.js'
 
@@ -12,7 +14,8 @@
 		id = 'reveal-auto',
 		title = 'RevealAuto',
 		method = 'POST',
-		reveal = 'minimize',
+		reveal = 'collapsed',
+		element = 'div',
 		formaction,
 		actionPath,
 		redirect,
@@ -25,24 +28,22 @@
 		align,
 		height,
 		background,
-		asset,
+		asset = 'context',
 		children,
 	}: RevealLayoutProps = $props()
 
-	let expanded = false
+	let expanded = $state(reveal)
 
-	function handleToggle(event) {
-		expanded = !expanded
+	function toggleReveal(event) {
+		expanded = event.state
 	}
 
 	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
-	let showBackground = background ? `bg:${background}` : 'bg:inherit'
-	let show = `show ${showBackground}`
-	let showContent = reveal === 'show' ? show : 'hide:viz-only'
-	let revealClasses = `form:expand align-self:${buttonAlign} maki:inline size:lg`
-	let layoutClass = layout ? `l:${layout}:${size}` : ''
-	let setHeight = height ? ` h:${height}` : ''
-	let layoutClasses = `${layoutClass} ${setHeight} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
+	let layoutClasses = $derived(
+		styleHelper.getLayoutStyles({size, height, layout, breakpoint, background, direction}),
+	)
+	let formClasses = $derived(`form:${expanded}`)
+	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses}`)
 
 	let action = formaction
 		? redirect
@@ -51,8 +52,9 @@
 		: undefined
 </script>
 
-<div class={layoutClasses}>
+<svelte:element {id} this={element} class={revealClasses} aria-label={title}>
 	<form
+		name={`${id}-reveal`}
 		{method}
 		action={action
 			? actionPath
@@ -65,7 +67,7 @@
 				update({reset: false})
 			}
 		}}
-		class={revealClasses}
+		class={formClasses}
 	>
 		<Expand
 			id={`button-reveal-auto-${id}`}
@@ -77,31 +79,19 @@
 			name="reveal-auto"
 			controls={`reveal-auto-${id}`}
 			value={'menu'}
-			states={{
-				expanded: {
-					id: 'show',
-					text: 'Context',
-					value: 'show',
-					asset: asset ?? 'context',
-				},
-				collapsed: {
-					id: 'minimize',
-					text: 'Context',
-					value: 'minimize',
-					asset: asset ?? 'context',
-				},
-			}}
-			onclick={handleToggle}
+			asset={asset}
+			states={EXPAND_MACHINE}
+			onclick={toggleReveal}
 		>
 			{title}
 		</Expand>
+		<div
+			id={`reveal-auto-${id}`}
+			class="content"
+		>
+			{#if children}
+				{@render children()}
+			{/if}
+		</div>
 	</form>
-	<div
-		id={`reveal-auto-${id}`}
-		class={`${layoutClass} ${showContent} ${direction} hug`}
-	>
-	{#if children}
-		{@render children()}
-	{/if}
-	</div>
-</div>
+</svelte:element>

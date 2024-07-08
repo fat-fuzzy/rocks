@@ -1,5 +1,10 @@
-import type {Settings, Tab, ButtonContext} from '$types/index.js'
-// import type {StyleTree} from '$lib/api/styles/types'
+import {
+	UiState,
+	type Settings,
+	type Tab,
+	type ButtonContext,
+} from '$types/index.js'
+import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
 const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	id: '',
@@ -7,9 +12,9 @@ const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	value: '',
 }
 
-const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
+const DEFAULT_REVEAL_STATE: Settings = {reveal: UiState.collapsed}
 
-const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'show'}
+const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: UiState.expanded}
 
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 
@@ -22,10 +27,10 @@ const DEFAULT_DS_STATE: {
 	sidebarReveal: Settings
 	settingsReveal: Settings
 } = {
-	menuReveal: {reveal: 'minimize'},
-	navReveal: {reveal: 'minimize'},
-	sidebarReveal: {reveal: 'minimize'},
-	settingsReveal: {reveal: 'minimize'},
+	menuReveal: {reveal: UiState.collapsed},
+	navReveal: {reveal: UiState.collapsed},
+	sidebarReveal: {reveal: UiState.collapsed},
+	settingsReveal: {reveal: UiState.collapsed},
 }
 
 const STATE_SWITCHER: {[key: string]: string} = {
@@ -34,8 +39,8 @@ const STATE_SWITCHER: {[key: string]: string} = {
 }
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
-	show: 'minimize',
-	minimize: 'show',
+	expand: UiState.collapsed,
+	collapsed: UiState.expanded,
 }
 
 const TRANSITION_BRIGHTNESS: {[key: string]: string} = {
@@ -84,10 +89,10 @@ const DEFAULT_TABS: Tab[] = [
 const ALIGN_ANIMATION_DIRECTION: {
 	[inactivePosition: string]: {[state: string]: string}
 } = {
-	left: {show: 'down', minimize: 'left'},
-	right: {show: 'down', minimize: 'right'},
-	top: {show: 'down', minimize: 'up'},
-	bottom: {show: 'up', minimize: 'down'},
+	left: {expand: 'down', collapsed: 'left'},
+	right: {expand: 'down', collapsed: 'right'},
+	top: {expand: 'down', collapsed: 'up'},
+	bottom: {expand: 'up', collapsed: 'down'},
 }
 
 const UI_STATE = {
@@ -164,13 +169,13 @@ const APP_SETTINGS: SettingsItems = {
 			size: 'md',
 			states: {
 				active: {
-					id: 'night',
+					...SWITCH_MACHINE.active,
 					text: 'night',
 					value: 'night',
 					asset: 'night',
 				},
 				inactive: {
-					id: 'day',
+					...SWITCH_MACHINE.inactive,
 					text: 'day',
 					value: 'day',
 					asset: 'day',
@@ -188,13 +193,13 @@ const APP_SETTINGS: SettingsItems = {
 			size: 'md',
 			states: {
 				active: {
-					id: 'contrast',
+					...SWITCH_MACHINE.active,
 					text: 'contrast',
 					value: 'contrast',
 					asset: 'contrast',
 				},
 				inactive: {
-					id: 'blend',
+					...SWITCH_MACHINE.inactive,
 					text: 'blend',
 					value: 'blend',
 					asset: 'blend',
@@ -222,19 +227,6 @@ const emojis: {[key: string]: string} = {
 	'es-es': '🇪🇸 ES',
 	'en-uk': '🇬🇧 EN',
 }
-
-const langEmojis: {[key: string]: string} = {
-	'fr-fr': '🇫🇷 FR',
-	'es-es': '🇪🇸 ES',
-	'en-uk': '🇬🇧 EN',
-}
-
-const langMenuIcon = emojis['lang']
-const languages = [
-	{code: 'fr-fr', title: 'Français'},
-	{code: 'en-uk', title: 'English'},
-	{code: 'es-es', title: 'Español'},
-]
 
 // TODO: make svg css themeable / fix dark theme
 import githubDay from '$lib/images/day/icon-github.svg'

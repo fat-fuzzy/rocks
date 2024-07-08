@@ -82,8 +82,8 @@
 	bind:maxZ
 	bind:minZ
 	onupdate={update}
-	color={'primary'}
-	size={`xs l:burrito:${threshold}`}
+	color='primary'
+	size='xs'
 	{disabled}
 />
 <Rotation
@@ -92,8 +92,8 @@
 	bind:angle={angleX}
 	max={360}
 	onupdate={update}
-	color={'accent'}
-	size={`xs l:burrito:${threshold}`}
+	color='accent'
+	size='xs'
 	{disabled}
 />
 <Rotation
@@ -102,8 +102,8 @@
 	bind:angle={angleY}
 	max={360}
 	onupdate={update}
-	color={'accent'}
-	size={`xs l:burrito:${threshold}`}
+	color='accent'
+	size='xs'
 	{disabled}
 />
 <Rotation
@@ -112,8 +112,8 @@
 	bind:angle={angleZ}
 	max={360}
 	onupdate={update}
-	color={'accent'}
-	size={`xs l:burrito:${threshold}`}
+	color='accent'
+	size='xs'
 	{disabled}
 />
 <Scale
@@ -128,8 +128,8 @@
 	minY={-5}
 	minZ={-5}
 	onupdate={update}
-	color={'highlight'}
-	size={`xs l:burrito:${threshold}`}
+	color='highlight'
+	size='xs'
 	{disabled}
 />
 {#await Promise.resolve()}

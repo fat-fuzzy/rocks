@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type {InputProps} from './input.types.js'
+	import type {InputRangeProps} from './input.types.js'
+	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		id,
@@ -10,6 +11,7 @@
 		max = 100,
 		step = 1,
 		layout = 'stack',
+		container,
 		items = [],
 
 		disabled,
@@ -18,8 +20,9 @@
 		size,
 		variant,
 		breakpoint,
+		threshold,
 		oninput,
-	}: InputProps = $props()
+	}: InputRangeProps = $props()
 
 	let valueLabel = $state(value)
 	let markers: {id: string; label: string; value: number}[] = [
@@ -74,20 +77,18 @@
 		value = valueObject ? valueObject : value
 	}
 
-	/* Element styles */
-	let colorClass = color ? `color:${color}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let variantClass = variant ? `variant:${variant}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
-
-	let elementClasses = `${colorClass} ${sizeClass} ${variantClass} ${justifyClass}`
-
-	/* Context styles */
-	let layoutClasses = breakpoint
-		? `l:${layout} bp:${breakpoint}`
-		: `l:${layout}`
-
-	let inputClasses = `${layoutClasses} ${elementClasses}`
+	let inputClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			size,
+			variant,
+			justify,
+			layout,
+			breakpoint,
+			threshold,
+			container,
+		}),
+	)
 
 	$effect(() => {
 		if (items.length) {

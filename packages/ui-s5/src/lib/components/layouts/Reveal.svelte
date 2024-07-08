@@ -1,7 +1,10 @@
 <script lang="ts">
+	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import type {RevealLayoutProps} from './layout.types.js'
+	import styleHelper from '$lib/utils/styles.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 
 	let {
 		id = 'reveal',
@@ -19,25 +22,36 @@
 		align,
 		height,
 		background,
+		layer,
 		asset,
 		children,
 	}: RevealLayoutProps = $props()
 
-	let expanded = $state(false)
+	let expanded = $state('collapsed')
 
 	function handleClickOutside(event) {
-		expanded = false
+		expanded = 'collapsed'
 	}
 
 	function toggleReveal(event) {
-		expanded = !expanded
+		expanded = event.state
 	}
 
-	let backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
-	let show = $derived(expanded ? `${backgroundClass} show` : 'hide:viz-only')
-	let setHeight = height ? ` h:${height}` : ''
+	let layoutClasses = $derived(styleHelper.getLayoutStyles({
+			color,
+			size,
+			height,
+			align,
+			asset,
+			variant,
+			layout,
+			breakpoint,
+			background,
+			layer
+		}))
 
-	// TODO: use a form
+	let revealClasses = $derived(`l:reveal form:${expanded} ${layoutClasses} ${direction} ${expanded}`)
+
 	let action = formaction
 		? redirect
 			? `${formaction}&redirectTo=${redirect}`
@@ -46,9 +60,13 @@
 </script>
 
 <form {method} {action}
-	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size} ${direction}`}
-	use:clickOutside
-	onclickOutside={handleClickOutside}
+	class={revealClasses}
+	use:enhance={() => {
+		// prevent default callback from resetting the form
+		return ({update}) => {
+			update({reset: false})
+		}
+	}}
 >
 	<Expand
 		id={`button-reveal-${id}`}
@@ -60,15 +78,14 @@
 		name="reveal"
 		controls={`${id}-reveal`}
 		value={'menu'}
-		states={{
-			expanded: {id: 'show', text: 'Reveal', value: 'show', asset},
-			collapsed: {id: 'minimize', text: 'Reveal', value: 'minimize', asset},
-		}}
+		{asset}
+		text= 'Reveal'
 		onclick={toggleReveal}
+		states={EXPAND_MACHINE}
 	>
 		{title}
 	</Expand>
-	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
+	<div id={`${id}-reveal`} class="content">
 		{#if children}
 			{@render children()}
 		{/if}

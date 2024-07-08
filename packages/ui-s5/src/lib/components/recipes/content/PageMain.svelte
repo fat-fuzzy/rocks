@@ -18,15 +18,15 @@
 		size,
 		header,
 		children,
-	} = $props() as Props
+	}: Props = $props()
 
 	let currentPage = $state(page ?? title)
-	let headerClass = `l:sidebar:${size} align:center maki:block:lg`
+	let headerClass = $derived(`l:sidebar:${size} align:center maki:block:lg`)
 </script>
 
 <Head page={currentPage} {title} {description} />
 
-<header class={headerClass}>
+<header id="content" class={headerClass}>
 	{#if header}
 		{@render header()}
 	{:else}

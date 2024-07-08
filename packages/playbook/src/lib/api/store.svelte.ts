@@ -29,6 +29,8 @@ class PlaybookStore {
 		recipes: recipesFixtures,
 	})
 
+	constructor() {}
+
 	getElementFixtures({
 		category,
 		component,
@@ -46,4 +48,5 @@ class PlaybookStore {
 	}
 }
 
-export default PlaybookStore
+const store = new PlaybookStore()
+export default store

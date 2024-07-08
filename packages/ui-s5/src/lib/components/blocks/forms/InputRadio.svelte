@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {InputProps} from './input.types.js'
+	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		id,
@@ -22,32 +23,29 @@
 	}: InputProps = $props()
 
 	function handleInput(event) {
-		if (oninput) oninput({value})
+		if (oninput) oninput(payload)
 	}
 
-	/* Element styles */
-	let colorClass = color ? `color:${color}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = size ? `font:${size}` : ''
-	let variantClass = variant ? `variant:${variant}` : ''
-	let assetClass = asset ? `emoji:${asset}` : ''
-	let alignClass = align ? `align:${align}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
-	let backgroundClass = background ? `bg:${background}` : ''
+	let classes = $derived(
+		styleHelper.getStyles({
+			color,
+			font: size,
+			size,
+			align,
+			justify,
+			asset,
+			variant,
+			layout,
+			container,
+			background,
+		}),
+	)
 
-	/* Context styles */
-	let containerClasses =
-		container && size
-			? `l:${container}:${size}`
-			: container
-				? `l:${container} `
-				: ''
-	let layoutClasses = layout ? `l:${layout}:${size}` : ''
-	let contextClasses = `${containerClasses} ${layoutClasses}`
-
-	let elementClasses = `${assetClass} ${colorClass} ${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass} ${backgroundClass}`
-
-	let classes = `${contextClasses} ${elementClasses}`
+	let payload = $derived({
+		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		name,
+		value,
+	})
 </script>
 
 <label for={id} class={classes}>

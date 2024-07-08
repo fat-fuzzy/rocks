@@ -4,15 +4,22 @@
 	@container reveal-nav-#{$size} (inline-size < #{$containerSize}) {
 		[class*='l:reveal'].sticky {
 			--y-size-sticky: calc(
-				100vh - var(--size-ui-header-height) - var(--outline-offset-settings)
+				100vh - 2 * var(--size-ui-header-height) - var(
+						--outline-offset-settings
+					)
 			);
 			position: sticky;
 			top: var(--y-axis);
 			z-index: 1;
 
-			&.show {
+			ul.depth-1 {
+				--gap: 0;
+			}
+
+			&.expanded {
 				--y-size: var(--y-size-sticky);
 				--x-size: calc(var(--sidebar-width) - var(--outline-offset-settings));
+				transition: inline-size 250ms ease-in-out;
 				/* transition: transform 250ms ease-in-out; */
 
 				.content {
@@ -21,11 +28,13 @@
 					block-size: fit-content;
 					transform: translateX(0);
 					opacity: 1;
-					transition: transform 100ms ease-in;
+					transition: transform 250ms ease-in;
+					transition: inline-size 250ms ease-in-out;
 				}
 
 				.content > * {
 					inline-size: 100%;
+					transition: inline-size 250ms ease-in-out;
 				}
 			}
 
@@ -34,16 +43,21 @@
 				display: flex;
 				flex-direction: column;
 				overflow: hidden auto;
+				scrollbar-gutter: stable;
 
 				ul.depth-0 {
-					padding-block: var(--ui-size) var(--ui-size-lg);
+					padding-block-end: var(--ui-size) var(--ui-size-lg);
+					inline-size: 100%;
 				}
 			}
 
-			&.minimize.left,
-			&.minimize.right {
+			&.collapsed.left,
+			&.collapsed.right {
 				--y-size: var(--y-size-sticky);
-				--x-size: calc(var(--layout-sidebar-minimize) + var(--ui-size-lg));
+				--x-size: calc(
+					var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
+						var(--outline-offset-settings) * 2
+				);
 
 				.content {
 					--x-axis: calc(var(--x-size) * -1);
@@ -51,18 +65,22 @@
 					max-inline-size: calc(100% - var(--outline-offset-base));
 				}
 
+				// TODO: clean this up
 				nav {
 					.content {
 						block-size: calc(100vh - var(--size-ui-header-height));
 						overflow: hidden auto;
+						scrollbar-gutter: stable;
 					}
-					.content .depth-1 .show .content {
+					.content .depth-1 .expanded .content {
 						block-size: fit-content;
 						overflow: hidden auto;
 					}
-					.content .depth-1 .minimize .content {
-						block-size: 0;
-						overflow: hidden;
+					.content .depth-1 .collapsed {
+						.content {
+							block-size: 0;
+							overflow: hidden;
+						}
 					}
 				}
 			}
@@ -71,12 +89,12 @@
 }
 
 /**
-	 * This fixes the layout for the reveal nav when the sidebar is minimized
+	 * This fixes the layout for the reveal nav when the sidebar is collapsedd
 	 * TODO: figure out how to avoid this magic stuff: design change? / code change?
 	 */
 @media screen and (min-width: 1225px) {
-	[class*='reveal-nav'].minimize {
-		--sidebar-width: calc(var(--layout-sidebar-minimize) + var(--ui-size-lg));
+	[class*='reveal-nav'].collapsed {
+		--sidebar-width: calc(var(--layout-sidebar-collapsed) + var(--ui-size-lg));
 	}
 }
 

@@ -20,7 +20,7 @@
 }
 
 button[class*='shape:'] {
-	padding: calc(var(--ui-size-sm) - var(--size-ratio-md) * 1px);
+	padding: var(--ui-size-sm);
 	block-size: 100%;
 	inline-size: auto;
 }

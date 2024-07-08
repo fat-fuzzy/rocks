@@ -1,5 +1,0 @@
-/* == Toggle  default == */
-
-.expand[aria-expanded='true'] {
-	color: var(--ink);
-}

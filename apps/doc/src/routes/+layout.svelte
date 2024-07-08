@@ -1,42 +1,46 @@
 <script lang="ts">
-	import {onDestroy, type Snippet} from 'svelte'
+	import {onMount, type Snippet} from 'svelte'
 	import '@fat-fuzzy/style'
 
 	import {page} from '$app/stores'
 	import {links, itemsSettings} from '$data/nav'
-	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui-s5'
+	import {recipes, utils} from '@fat-fuzzy/ui-s5'
+	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {Header} = recipes
-	const {settings} = stores
-	const {DEFAULT_APP_SETTINGS, APP_LINKS} = constants
 
 	type Props = {
 		sidebar?: Snippet
 		children?: Snippet
 	}
 
-	let {children}:Props = $props()
+	let {children}: Props = $props()
 
-	let appSettings = $page.data.app || DEFAULT_APP_SETTINGS
+	let app = fatFuzzyStore.app
 
-	const localStores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-	]
-
-	let brightness = appSettings.brightness
-	let contrast = appSettings.contrast
+	let brightness = $derived(app.settings.brightness)
+	let contrast = $derived(app.settings.contrast)
 	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
-	let layoutClass =
-		APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
-	let mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
-	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`
+	let mainClass =  $derived(`${pageClass} settings:${brightness}:${contrast}`)
+	let footerClass =  $derived(`l:center font:sm settings:${brightness}:${contrast}`)
 
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
+	function updateSettings(event) {
+		switch (event.id) {
+			case 'brightness':
+				app.settings.brightness = event.value
+				break
+			case 'contrast':
+				app.settings.contrast = event.value
+				break
+			default:
+				break
+		}
+	}
+
+	onMount(() => {
+		if($page.data.app) {
+			fatFuzzyStore.app = $page.data.app
+		}
 	})
 </script>
 
@@ -46,8 +50,9 @@
 	actionPath="/"
 	formaction="toggleNav"
 	redirect={$page.url.pathname}
-	items={{links, settings: itemsSettings}}
-	breakpoint="xs"
+	items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
+	breakpoint="sm"
+	app={{settings: app.settings}}
 />
 <main id="main" class={mainClass}>
 	{#if children}

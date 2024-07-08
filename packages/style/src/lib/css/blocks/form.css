@@ -1,19 +1,11 @@
 form {
 	--hue: var(--color-theme-primary);
-	--lightness: var(--color-lightness-light);
 	--lightness-accent: var(--color-lightness-400);
-	--lightness-contrast: var(--color-lightness-dark);
-	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-400);
-	--chroma-contrast: var(--color-chroma-neutral);
-	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-	--color-bg: var(--shade);
 	--color-accent: var(--accent);
 	color: var(--ink);
 	max-height: fit-content;
-	background-color: var(--color-bg);
 }
 
 form * {
@@ -28,6 +20,7 @@ label,
 label,
 legend,
 .form\:element {
+	color: var(--ink);
 	font-weight: var(--font-weight-ui);
 	padding-inline: 0;
 	background-color: inherit;
@@ -45,19 +38,13 @@ legend {
 input,
 select,
 textarea {
-	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-	--color-accent: var(--accent-semantic, var(--accent));
-	--color-bg: var(--shade);
-	--color-ink: var(--ink);
 	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
 	--padding-inline: var(--ui-size);
-	border: 1px solid var(--color-accent);
+	border: 1px solid var(--accent);
 	border-radius: var(--border-radius-md);
-	color: var(--color-ink);
-	accent-color: var(--color-accent);
-	border-color: var(--color-accent);
+	color: var(--ink);
+	accent-color: var(--accent);
+	border-color: var(--accent);
 	font-size: var(--font-size);
 	padding: var(--ui-size-sm) var(--ui-size);
 }
@@ -91,25 +78,13 @@ label > input[type='checkbox'] {
 
 input:hover,
 label:hover > [type='file'] {
-	--lightness: var(--color-lightness-100);
+	--lightness: var(--color-lightness-100); /* TODO: use themeable color var */
 	--lightness-contrast: var(--color-contrast-200);
 }
 
 [disabled] {
 	filter: contrast(90%) opacity(80%);
 	cursor: not-allowed;
-}
-
-/* Manage color on .bare and .outline labels adn inputs */
-
-label.variant\:outline > input,
-label.variant\:outline > [type='file'] {
-	border-color: var(--color-bg);
-}
-
-label.variant\:bare > input,
-label.variant\:bare > [type='file'] {
-	border-color: var(--color-bg);
 }
 
 /* Display range input step labels */

@@ -3,7 +3,7 @@ menu {
 	flex-wrap: nowrap;
 	gap: var(--border-width-lg);
 }
-menu > li {
+menu.player > li {
 	height: 100%;
 	width: auto;
 	aspect-ratio: 1/1;

@@ -1,7 +1,9 @@
 <script lang="ts">
-	import type {SwitchProps} from './switch.types.js'
-	import { UiState, type ButtonEventType} from '$types/index.js'
-	import SwitchStore from './store.svelte'
+	import type { SwitchProps } from './switch.types.js'
+	import { onMount } from 'svelte'
+	import { UiState } from '$types/index.js'
+	import { ButtonEvent } from '../button.types.js'
+	import Actor from './actor.svelte.js'
 
 	let {
 		id = 'switch',
@@ -23,63 +25,46 @@
 		layout = 'switcher',
 		type = 'submit',
 		onclick,
+		init,
 		children,
 	}: SwitchProps = $props()
 
-	let store = $state(new SwitchStore())
-	store.init({
-		initial,
-		onclick,
-		switchStates: states,
-	})
-
-
-	/* Element state */
-	let currentState = $state(store.switchState)
+	let store = new Actor({
+			initial,
+			onclick,
+			machine: states,
+		})
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
 		name,
-		value: store.getValue(),
-		state: store.getState(),
+		value: store.value,
+		state: store.state,
+		pressed: store.pressed,
 		update: store.update.bind(store),
 	})
 
-	/* Element styles */
-	let colorClass = color ? `bg:${color}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = size ? `font:${size}` : ''
-	let shapeClass = shape ? ` shape:${shape}` : ''
-	let alignClass = align ? `align:${align}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
-
-	let elementClasses = `${colorClass} ${sizeClass} ${shapeClass} ${alignClass} ${justifyClass} ${fontClass}`
-	let layoutClasses = shapeClass ? `l:stack:${size}` : `l:${layout}`
-
-	/* Context styles */
-	let containerClasses =''
-	if (container) {
-		containerClasses =  dimensions
-				? `l:${container}:${dimensions}`
-				: `l:${container}:${size}`
-	}
-
-	let buttonClasses = $derived.by(() => {
-		/* State dependent styles */
-		let currentVariant =currentState.variant ?? variant
-		let variantClass =  currentVariant ? `variant:${currentVariant}`: ''
-		let currentAsset = currentState.asset ?? asset
-		let assetClass = currentAsset ?  `emoji:${currentAsset}`: ''
-		let stateClasses = `${assetClass} ${variantClass}`
-
-		return `switch ${containerClasses} ${layoutClasses} ${elementClasses} ${stateClasses}`
-	})
+	let buttonClasses =  $derived(store.getStyles({
+			color,
+			size,
+			shape,
+			align,
+			justify,
+			asset,
+			variant,
+			layout,
+			container,
+			dimensions,
+		}))
 
 	function handleClick(event: MouseEvent) {
-		if (currentState.onclick) currentState.onclick(payload)
-		else if (onclick) onclick(payload)
-		store.update('switch' as ButtonEventType)
+		store.update(store.currentState.event as ButtonEvent)
+		if (store.currentState.action) store.currentState.action(payload)
 	}
+
+	onMount(() => {
+		if (init) init(payload)
+	})
 </script>
 
 <button
@@ -89,11 +74,11 @@
 	{title}
 	{disabled}
 	{formaction}
-	value={currentState.value}
+	value={store.value}
 	class={buttonClasses}
 	data-key={name}
+	aria-pressed={store.pressed}
 	onclick={handleClick}
-	aria-pressed={store.isPressed()}
 >
 	{#if children}
 		{@render children()}
@@ -102,7 +87,7 @@
 			<span class="sr-only">{title}</span>
 		{:else}
 			<span class="sr-only">{title}</span>
-			<span class="viz-only">{currentState.text}</span>
+			<span class="viz-only">{store.text}</span>
 		{/if}
 	{/if}
 </button>

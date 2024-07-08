@@ -1,13 +1,246 @@
-.day {
-	--chroma: var(--color-chroma-300);
-	--lightness: var(--color-lightness-300);
-	--chroma-contrast: var(--color-chroma-000);
-	--lightness-contrast: var(--color-lightness-000);
+:root {
+	color-scheme: light;
+	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-light);
+	--lightness-accent-base: var(--color-lightness-400);
+	--lightness-contrast-base: var(--color-lightness-400);
+	--chroma-base: var(--color-chroma-neutral);
+	--chroma-contrast-base: var(--color-chroma-600);
+	--lightness: var(--color-lightness-light);
+	--lightness-accent: var(--color-lightness-300);
+	--lightness-contrast: var(--color-lightness-600);
+	--lightness-focus: var(--color-lightness-400);
+	--lightness-contrast-focus: var(--color-lightness-000);
+	--lightness-surface-1: var(--color-lightness-000);
+	--lightness-surface-1-contrast: var(--color-lightness-400);
+	--lightness-surface-2: var(--color-lightness-100);
+	--lightness-surface-2-contrast: var(--color-lightness-500);
+	--lightness-surface-3: var(--color-lightness-200);
+	--lightness-surface-3-contrast: var(--color-lightness-600);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent-base: var(--color-chroma-300);
+	--chroma-ink: var(--color-chroma-600);
+	--chroma-contrast: var(--color-chroma-600);
+	--chroma-focus: var(--color-chroma-400);
+	--chroma-contrast-focus: var(--color-chroma-000);
+	--chroma-surface-1: var(--color-chroma-000);
+	--chroma-surface-1-contrast: var(--color-chroma-400);
+	--chroma-surface-2: var(--color-chroma-100);
+	--chroma-surface-2-contrast: var(--color-chroma-500);
+	--chroma-surface-3: var(--color-chroma-200);
+	--chroma-surface-3-contrast: var(--color-chroma-600);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
 
-.night {
-	--chroma: var(--color-chroma-200);
-	--lightness: var(--color-lightness-200);
-	--chroma-contrast: var(--color-chroma-600);
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+
+		--hue: var(--color-theme-primary);
+		--lightness-base: var(--color-lightness-dark);
+		--lightness-accent-base: var(--color-lightness-200);
+		--lightness-contrast-base: var(--color-lightness-000);
+		--chroma-base: var(--color-chroma-neutral);
+		--chroma-contrast-base: var(--color-chroma-100);
+		--lightness: var(--color-lightness-dark);
+		--lightness-accent: var(--color-lightness-400);
+		--lightness-contrast: var(--color-lightness-000);
+		--lightness-focus: var(--color-lightness-500);
+		--lightness-contrast-focus: var(--color-lightness-100);
+		--lightness-surface-1: var(--color-lightness-600);
+		--lightness-surface-1-contrast: var(--color-lightness-200);
+		--lightness-surface-2: var(--color-lightness-500);
+		--lightness-surface-2-contrast: var(--color-lightness-100);
+		--lightness-surface-3: var(--color-lightness-400);
+		--lightness-surface-3-contrast: var(--color-lightness-000);
+		--chroma: var(--color-chroma-neutral);
+		--chroma-accent-base: var(--color-chroma-400);
+		--chroma-ink: var(--color-chroma-000);
+		--chroma-contrast: var(--color-chroma-000);
+		--chroma-focus: var(--color-chroma-500);
+		--chroma-contrast-focus: var(--color-chroma-100);
+		--chroma-surface-1: var(--color-chroma-600);
+		--chroma-surface-1-contrast: var(--color-chroma-200);
+		--chroma-surface-2: var(--color-chroma-500);
+		--chroma-surface-2-contrast: var(--color-chroma-100);
+		--chroma-surface-3: var(--color-chroma-400);
+		--chroma-surface-3-contrast: var(--color-chroma-000);
+
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+		--shadow: oklch(
+			var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+		);
+
+		--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+			var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+		--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+			var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+		--shadow-inset-sm: var(--shadow-sm);
+		--shadow-inset-md: var(--shadow-md);
+	}
+}
+
+.settings\:day\:blend,
+.settings\:day\:contrast,
+[color-scheme='light'] {
+	color-scheme: light;
+	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-light);
+	--lightness-accent-base: var(--color-lightness-400);
+	--lightness-contrast-base: var(--color-lightness-400);
+	--chroma-base: var(--color-chroma-neutral);
+	--chroma-contrast-base: var(--color-chroma-600);
+	--lightness: var(--color-lightness-light);
+	--lightness-accent: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-600);
+	--lightness-focus: var(--color-lightness-400);
+	--lightness-contrast-focus: var(--color-lightness-000);
+	--lightness-surface-1: var(--color-lightness-000);
+	--lightness-surface-1-contrast: var(--color-lightness-400);
+	--lightness-surface-2: var(--color-lightness-100);
+	--lightness-surface-2-contrast: var(--color-lightness-500);
+	--lightness-surface-3: var(--color-lightness-200);
+	--lightness-surface-3-contrast: var(--color-lightness-600);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent-base: var(--color-chroma-300);
+	--chroma-ink: var(--color-chroma-600);
+	--chroma-contrast: var(--color-chroma-600);
+	--chroma-focus: var(--color-chroma-400);
+	--chroma-contrast-focus: var(--color-chroma-000);
+	--chroma-surface-1: var(--color-chroma-000);
+	--chroma-surface-1-contrast: var(--color-chroma-400);
+	--chroma-surface-2: var(--color-chroma-100);
+	--chroma-surface-2-contrast: var(--color-chroma-500);
+	--chroma-surface-3: var(--color-chroma-200);
+	--chroma-surface-3-contrast: var(--color-chroma-600);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
+.settings\:night\:contrast,
+[color-scheme='dark'] {
+	color-scheme: dark;
+
+	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-dark);
+	--lightness-accent-base: var(--color-lightness-200);
+	--lightness-contrast-base: var(--color-lightness-000);
+	--chroma-base: var(--color-chroma-neutral);
+	--chroma-contrast-base: var(--color-chroma-100);
+	--lightness: var(--color-lightness-dark);
+	--lightness-accent: var(--color-lightness-400);
+	--lightness-contrast: var(--color-lightness-000);
+	--lightness-focus: var(--color-lightness-500);
+	--lightness-contrast-focus: var(--color-lightness-100);
+	--lightness-surface-1: var(--color-lightness-600);
+	--lightness-surface-1-contrast: var(--color-lightness-200);
+	--lightness-surface-2: var(--color-lightness-500);
+	--lightness-surface-2-contrast: var(--color-lightness-100);
+	--lightness-surface-3: var(--color-lightness-400);
+	--lightness-surface-3-contrast: var(--color-lightness-000);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent-base: var(--color-chroma-400);
+	--chroma-ink: var(--color-chroma-000);
+	--chroma-contrast: var(--color-chroma-000);
+	--chroma-focus: var(--color-chroma-500);
+	--chroma-contrast-focus: var(--color-chroma-100);
+	--chroma-surface-1: var(--color-chroma-600);
+	--chroma-surface-1-contrast: var(--color-chroma-200);
+	--chroma-surface-2: var(--color-chroma-500);
+	--chroma-surface-2-contrast: var(--color-chroma-100);
+	--chroma-surface-3: var(--color-chroma-400);
+	--chroma-surface-3-contrast: var(--color-chroma-000);
+
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
+.settings\:night\:blend,
+[color-scheme='dark'] {
+	color-scheme: dark;
+
+	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-dark);
+	--lightness-accent-base: var(--color-lightness-200);
+	--lightness-contrast-base: var(--color-lightness-000);
+	--chroma-base: var(--color-chroma-neutral);
+	--chroma-contrast-base: var(--color-chroma-100);
+	--lightness: var(--color-lightness-dark);
+	--lightness-accent: var(--color-lightness-400);
+	--lightness-contrast: var(--color-lightness-000);
+	--lightness-focus: var(--color-lightness-500);
+	--lightness-contrast-focus: var(--color-lightness-100);
+	--lightness-surface-1: var(--color-lightness-600);
+	--lightness-surface-1-contrast: var(--color-lightness-200);
+	--lightness-surface-2: var(--color-lightness-500);
+	--lightness-surface-2-contrast: var(--color-lightness-100);
+	--lightness-surface-3: var(--color-lightness-400);
+	--lightness-surface-3-contrast: var(--color-lightness-000);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent-base: var(--color-chroma-400);
+	--chroma-ink: var(--color-chroma-000);
+	--chroma-contrast: var(--color-chroma-000);
+	--chroma-focus: var(--color-chroma-500);
+	--chroma-contrast-focus: var(--color-chroma-100);
+	--chroma-surface-1: var(--color-chroma-600);
+	--chroma-surface-1-contrast: var(--color-chroma-200);
+	--chroma-surface-2: var(--color-chroma-500);
+	--chroma-surface-2-contrast: var(--color-chroma-100);
+	--chroma-surface-3: var(--color-chroma-400);
+	--chroma-surface-3-contrast: var(--color-chroma-000);
+
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
