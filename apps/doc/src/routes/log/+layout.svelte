@@ -6,14 +6,14 @@
 	const {LayoutSidebar} = content
 
 	let {children} = $props()
-	let app = fatFuzzyStore.app
+	let app = $derived(fatFuzzyStore.app)
 
 	let path = ''
 	let items = [
 		{
 			slug: 'log',
 			title: 'Log',
-			items: $page.data.markdowns.map(({meta, path}) => ({
+			items: $page.data.markdowns.map(({meta}) => ({
 				id: meta.id,
 				slug: meta.slug,
 				title: meta.title,
@@ -26,7 +26,7 @@
 		title: 'Fat Fuzzy Log',
 		id: 'nav-log',
 		items,
-		reveal: 'show',
+		reveal: 'expanded',
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',

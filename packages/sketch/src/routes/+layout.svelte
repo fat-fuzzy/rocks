@@ -24,7 +24,7 @@ const {LayoutSidebar} = content
 		title: 'Sketches',
 		id: 'nav-sketches',
 		items: sketches,
-		reveal: 'show',
+		reveal: 'expanded',
 		breakpoint: 'sm',
 		size: 'sm',
 		color: 'primary',
