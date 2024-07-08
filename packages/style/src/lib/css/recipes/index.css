@@ -6,7 +6,6 @@
 @import './context.css'; /* Use for header context box */
 
 @import './header-app.css'; /* Use for main app header */
-@import './header-app-reveal.css'; /* Use for main app header */
 @import './layout-page.css'; /* Define page layout varians here */
 @import './footer.css'; /* Use for main app footer */
 @import './article.css'; /* Use for articles (header + section(s) + optional footer) */

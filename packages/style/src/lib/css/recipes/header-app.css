@@ -1,13 +1,52 @@
+/**
+ * App header - Main Nav
+ */
+
 .header-app {
 	display: flex;
 	padding-inline: var(--gap);
 	color: var(--ink);
 	background-color: var(--shade);
+	overflow-x: clip;
+}
+
+.header-app > [class*='l:main'] {
+	min-inline-size: 50%;
+	flex-grow: 0;
 }
 
 .header-app .l\:reveal\:auto {
 	justify-content: center;
 	padding-block: var(--ui-size-sm);
+
+	> ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		/* inline-size: 100%; */
+		background-color: inherit;
+
+		li {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	[aria-expanded] {
+		margin-inline: 0;
+	}
+
+	[aria-expanded='true'] + .content {
+		display: flex;
+		flex-direction: column;
+		block-size: fit-content;
+		inline-size: 100vw;
+		top: calc(var(--size-ui-header-height) + var(--outline-offset-nav));
+		color: var(--ink);
+		background-color: var(--shade);
+		padding: 0;
+		margin-inline-start: calc(-1 * var(--gap));
+	}
 }
 
 .header-app > [class*='l:side'] {
@@ -15,11 +54,15 @@
 	position: relative;
 	display: flex;
 	align-items: flex-end;
+
+	form:has([aria-expanded='true']) + .content {
+		top: calc(var(--size-ui-header-height) + var(--ui-size));
+		background-color: var(--shade);
+		box-shadow: var(--shadow-md);
+	}
 }
-/**
- * App header - Main Nav
- */
-.header-app > [class*='l:main'] nav {
+
+.header-app [class*='l:main'] nav {
 	/* - Change these styles to adapt to design */
 	ul {
 		position: relative;
@@ -35,12 +78,12 @@
 	}
 
 	a {
+		display: flex;
 		block-size: calc(100% - 2 * var(--border-width-xl));
 		inline-size: calc(100% - var(--border-width-xl));
 		text-transform: uppercase;
 		margin-inline: var(--outline-offset-nav);
 		padding: var(--ui-size-sm);
-		display: block;
 	}
 
 	li[aria-current='page'] {

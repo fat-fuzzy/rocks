@@ -28,9 +28,9 @@
 .menu\:settings {
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
+	padding-inline-start: var(--ui-size-sm);
 }
 
 .menu\:settings a {
 	margin: 0;
-	padding: 0;
 }
