@@ -160,7 +160,7 @@ apps/doc/static/fonts/
 apps/play/static/fonts/
 
 # Ignore play page for now
-apps/doc/src/routes/play/
+# apps/doc/src/routes/play/
 apps/doc/src/lib/images/alpha.png
 apps/doc/src/lib/images/mineral.png
 apps/doc/src/lib/images/plants.png
