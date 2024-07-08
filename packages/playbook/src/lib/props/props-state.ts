@@ -6,12 +6,22 @@ const DEFAULT_CONTENT_TYPES = {
 
 const states = {
 	Expand: {
-		expanded: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-down'},
-		collapsed: {id: 'button-expand', text: 'Expand', asset: 'emoji:point-right'},
+		expanded: {
+			id: 'button-collapse',
+			value: 'collapse',
+			text: 'Collapse',
+			asset: 'point-down',
+		},
+		collapsed: {
+			id: 'button-expand',
+			value: 'expand',
+			text: 'Expand',
+			asset: 'point-right',
+		},
 	},
 	Switch: {
-		active: {id: 'button-switch', text: 'Rabbit', asset: 'emoji:switch-active'},
-		inactive: {id: 'button-switch', text: 'Hat', asset: 'emoji:switch-inactive'},
+		active: {id: 'button-switch', text: 'Rabbit', asset: 'switch-active'},
+		inactive: {id: 'button-switch', text: 'Hat', asset: 'switch-inactive'},
 	},
 }
 

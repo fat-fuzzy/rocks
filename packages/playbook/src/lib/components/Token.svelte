@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
 
 	type Props = {
 		title: string

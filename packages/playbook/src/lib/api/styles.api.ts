@@ -1,4 +1,4 @@
-import type {Meta} from '$lib/props/types'
+import type {Meta, StyleProps} from '$lib/props/types'
 import type {
 	AppStyles,
 	TokenStyles,
@@ -28,16 +28,12 @@ export class StylesApi {
 
 	getFormOptions(category: string, meta: Meta | undefined): StyleCategory[] {
 		if (meta?.props_style) {
-			return this.filterFormOptions(meta.props_style) // TODO : fix types
+			return this.filterFormOptions(meta.props_style)
 		}
 		return [this.getCategoryOptions(category)]
 	}
 
-	filterFormOptions(styleProps: {
-		[key: string]: {
-			[key: string]: string[]
-		}
-	}): StyleCategory[] {
+	filterFormOptions(styleProps: StyleProps): StyleCategory[] {
 		const catNames = Object.keys(styleProps)
 		let families
 
