@@ -64,10 +64,10 @@
 	// Position
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
-	let [coordX, coordY] = $state(translation ?? [0, 0])
+	let [coordX, coordY] = $state([translation[0] ?? 0, translation[1] ?? 0] )
 
 	// Scale
-	let [scaleX, scaleY] = $state(scale ?? [1, 1])
+	let [scaleX, scaleY] = $state([scale[0] ?? 1, scale[1] ?? 1])
 
 	let payload = $derived({
 		color: context.color,
