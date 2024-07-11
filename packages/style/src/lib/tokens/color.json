@@ -3,10 +3,18 @@
 		"$type": "number",
 		"lightness": {
 			"$type": "percentage",
-			"light": {"$value": 99},
-			"dark": {"$value": 25},
-			"000": {"$value": 98},
-			"100": {"$value": 93},
+			"light": {
+				"base": {"$value": 99},
+				"contrast": {"$value": 99},
+				"blend": {"$value": 96}
+			},
+			"dark": {
+				"base": {"$value": 25},
+				"contrast": {"$value": 25},
+				"blend": {"$value": 29}
+			},
+			"000": {"$value": 95},
+			"100": {"$value": 90},
 			"200": {"$value": 80},
 			"300": {"$value": 65},
 			"400": {"$value": 54},
@@ -17,7 +25,7 @@
 			"neutral": {"$value": 0.001},
 			"000": {"$value": 0.025},
 			"100": {"$value": 0.075},
-			"200": {"$value": 0.25},
+			"200": {"$value": 0.2},
 			"300": {"$value": 0.35},
 			"400": {"$value": 0.25},
 			"500": {"$value": 0.15},
