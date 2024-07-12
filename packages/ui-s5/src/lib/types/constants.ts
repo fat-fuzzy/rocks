@@ -89,10 +89,10 @@ const DEFAULT_TABS: Tab[] = [
 const ALIGN_ANIMATION_DIRECTION: {
 	[inactivePosition: string]: {[state: string]: string}
 } = {
-	left: {expand: 'down', collapsed: 'left'},
-	right: {expand: 'down', collapsed: 'right'},
-	top: {expand: 'down', collapsed: 'up'},
-	bottom: {expand: 'up', collapsed: 'down'},
+	left: {expanded: 'down', collapsed: 'left'},
+	right: {expanded: 'down', collapsed: 'right'},
+	top: {expanded: 'down', collapsed: 'up'},
+	bottom: {expanded: 'up', collapsed: 'down'},
 }
 
 const UI_STATE = {

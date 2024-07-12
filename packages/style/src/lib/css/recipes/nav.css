@@ -50,6 +50,16 @@ nav li a {
 	nav > form > [aria-expanded] {
 		border-radius: 0;
 	}
+
+	.collapsed ul {
+		block-size: 0;
+
+		> * {
+			block-size: 0;
+			padding: 0;
+			margin: 0;
+		}
+	}
 }
 
 nav a:hover {
@@ -69,6 +79,7 @@ nav li a:visited {
 
 /* == RevealNav (tree-like navigation menus) == */
 ul.depth-1 {
+	--gap: 0;
 	padding-inline-start: 0;
 }
 

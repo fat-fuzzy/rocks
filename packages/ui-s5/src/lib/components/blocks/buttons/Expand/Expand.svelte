@@ -15,6 +15,7 @@
 		states,
 		align,
 		justify = 'center',
+		place = 'end',
 		asset,
 		color,
 		size,

@@ -1,4 +1,5 @@
 import type {Snippet} from 'svelte'
+import type {FuzzyPayload} from '$types/machines.js'
 import type {UiLayoutProps, UiContentProps, UiBlockProps} from '$types/index.js'
 import type {FormProps} from '$lib/components/recipes/forms/forms.types.js'
 
@@ -24,6 +25,7 @@ export type RevealLayoutProps = LayoutProps &
 	UiBlockProps & {
 		reveal: string
 		element?: string
+		onclick?: (payload: FuzzyPayload) => void
 	}
 
 export type SidebarLayoutProps = LayoutProps & {

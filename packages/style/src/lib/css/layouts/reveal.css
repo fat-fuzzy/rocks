@@ -1,4 +1,4 @@
-[class^='l:reveal'][class*='expanded'] {
+[class^='l:reveal'] {
 	position: relative;
 	z-index: var(--layout-z-index-layer);
 	max-inline-size: calc(100% - var(--outline-offset-base));
@@ -12,13 +12,6 @@
 	display: flex;
 	flex-direction: column;
 	inline-size: 100%;
-}
-
-.l\:reveal.expanded .content {
-	padding-block: var(--outline-offset-base);
-	padding-inline: calc(3 * var(--outline-offset-base)) 0;
-	max-inline-size: calc(100% - var(--outline-offset-base));
-	scrollbar-gutter: stable;
 }
 
 .l\:reveal.collapsed:not([class*='sticky']) .content {

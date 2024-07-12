@@ -1,5 +1,6 @@
 import type {UiBlockProps} from '$lib/types/index.js'
 import type {RevealLayoutProps} from '$lib/components/layouts/layout.types.js'
+import type {FuzzyPayload} from '$types/machines.js'
 
 export type NavProps = UiBlockProps & {
 	id: string
@@ -39,9 +40,5 @@ export type RevealNavProps = NavProps &
 		align?: string
 		items: any[]
 		settings?: any
-		onupdate?: (payload: {
-			name: string
-			value: string | number
-			state: string
-		}) => void
+		onclick?: (payload: FuzzyPayload) => void
 	}

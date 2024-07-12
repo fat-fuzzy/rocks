@@ -4,50 +4,38 @@
 	@container reveal-nav-#{$size} (inline-size < #{$containerSize}) {
 		[class*='l:reveal'].sticky {
 			--y-size-sticky: calc(
-				100vh - 2 * var(--size-ui-header-height) - var(
-						--outline-offset-settings
-					)
+				100vh - 2 * var(--size-ui-header-height) - 2 * var(--ui-size-lg)
 			);
+			--y-size: var(--y-size-sticky);
 			position: sticky;
+			block-size: var(--y-size);
 			top: var(--y-axis);
 			z-index: 1;
 
-			ul.depth-1 {
-				--gap: 0;
+			ul.depth-0 {
+				block-size: var(--y-size-sticky);
+				overflow: hidden auto;
 			}
 
-			&.expanded {
-				--y-size: var(--y-size-sticky);
+			ul:not(.depth-0) {
+				block-size: max-content;
+			}
+
+			> .expanded {
 				--x-size: calc(var(--sidebar-width) - var(--outline-offset-settings));
 				transition: inline-size 250ms ease-in-out;
 				/* transition: transform 250ms ease-in-out; */
 
-				.content {
-					overflow: hidden auto;
+				> .content {
 					inline-size: var(--x-size);
-					block-size: fit-content;
 					transform: translateX(0);
-					opacity: 1;
 					transition: transform 250ms ease-in;
 					transition: inline-size 250ms ease-in-out;
 				}
 
-				.content > * {
+				> .content > * {
 					inline-size: 100%;
 					transition: inline-size 250ms ease-in-out;
-				}
-			}
-
-			&.left nav,
-			&.right nav {
-				display: flex;
-				flex-direction: column;
-				overflow: hidden auto;
-				scrollbar-gutter: stable;
-
-				ul.depth-0 {
-					padding-block-end: var(--ui-size) var(--ui-size-lg);
-					inline-size: 100%;
 				}
 			}
 
@@ -59,28 +47,18 @@
 						var(--outline-offset-settings) * 2
 				);
 
-				.content {
+				> .content {
 					--x-axis: calc(var(--x-size) * -1);
 					inline-size: var(--x-size);
 					max-inline-size: calc(100% - var(--outline-offset-base));
 				}
 
-				// TODO: clean this up
-				nav {
-					.content {
-						block-size: calc(100vh - var(--size-ui-header-height));
-						overflow: hidden auto;
-						scrollbar-gutter: stable;
-					}
-					.content .depth-1 .expanded .content {
-						block-size: fit-content;
-						overflow: hidden auto;
-					}
-					.content .depth-1 .collapsed {
-						.content {
-							block-size: 0;
-							overflow: hidden;
-						}
+				ul {
+					> * {
+						block-size: max-content;
+						block-size: initial;
+						padding: initial;
+						margin: initial;
 					}
 				}
 			}
