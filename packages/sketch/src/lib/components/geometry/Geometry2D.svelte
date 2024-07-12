@@ -76,8 +76,9 @@
 		scale: [scaleX, scaleY],
 	})
 
-	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	let action = formaction && redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
 	let backgroundClass = background ? `bg:${background}` : ''
 
 </script>

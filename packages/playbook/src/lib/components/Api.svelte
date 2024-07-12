@@ -34,11 +34,9 @@
 	let apiSize = '2xs'
 	let apiBreakpoint = '2xs'
 
-	let action = $derived(
-		formaction && redirect
+	let action = formaction && redirect
 			? `${formaction}&redirectTo=${redirect}`
-			: formaction,
-	)
+			: formaction
 	let frameClass = $derived(
 		categories && categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin',
 	)
@@ -61,7 +59,6 @@
 	<form
 		name="styles-update"
 		{method}
-		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {
@@ -74,11 +71,7 @@
 			<StyleFamily
 				{category}
 				{meta}
-				formaction={action
-					? actionPath
-						? `${actionPath}?/${action}`
-						: `?/${action}`
-					: undefined}
+				formaction={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 			/>
 		{/each}
 		{#await Promise.resolve()}
