@@ -18,6 +18,7 @@
 
 .l\:reveal\:auto [aria-expanded='true'] + .content {
 	position: absolute;
+	z-index: var(--layout-z-index-reveal);
 	inline-size: auto;
 	block-size: auto;
 	overflow: hidden auto;

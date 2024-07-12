@@ -51,9 +51,9 @@
 			"2": {"$value": "2"},
 			"3": {"$value": "3"},
 			"inset": {"$value": "{layout.z-index.0}"},
-			"reveal": {"$value": "{layout.z-index.1}"},
-			"layer": {"$value": "{layout.z-index.2}"},
-			"sticky": {"$value": "{layout.z-index.3}"}
+			"layer": {"$value": "{layout.z-index.1}"},
+			"sticky": {"$value": "{layout.z-index.2}"},
+			"reveal": {"$value": "{layout.z-index.3}"}
 		}
 	}
 }
