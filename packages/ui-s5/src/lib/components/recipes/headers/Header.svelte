@@ -41,6 +41,7 @@
 			size="xs"
 			variant="outline"
 			asset="home"
+			justify="start"
 			{reveal}
 			{breakpoint}
 			{formaction}

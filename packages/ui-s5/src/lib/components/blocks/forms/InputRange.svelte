@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type {InputRangeProps} from './input.types.js'
+	import {UiStatus, UiTextContext} from '$types/index.js'
 	import styleHelper from '$lib/utils/styles.js'
+	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
 	let {
 		id,
@@ -10,17 +12,21 @@
 		min = 0,
 		max = 100,
 		step = 1,
+		disabled,
+		items = [],
+		status = UiStatus.default,
+		hint,
+
 		layout = 'stack',
 		container,
-		items = [],
-
-		disabled,
 		justify,
 		color,
 		size,
 		variant,
+		background,
 		breakpoint,
 		threshold,
+
 		oninput,
 	}: InputRangeProps = $props()
 
@@ -87,6 +93,7 @@
 			breakpoint,
 			threshold,
 			container,
+			background: background ? background : 'inherit',
 		}),
 	)
 
@@ -129,3 +136,8 @@
 		</datalist>
 	{/if}
 </label>
+{#if hint}
+	<Feedback {status} context={UiTextContext.form} {size} {variant}>
+		{hint}
+	</Feedback>
+{/if}

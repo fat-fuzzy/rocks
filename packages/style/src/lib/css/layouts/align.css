@@ -69,11 +69,11 @@
 }
 
 .justify\:end {
-	--justify: end;
+	--justify: flex-end;
 }
 
 .justify\:start {
-	--justify: start;
+	--justify: flex-start;
 }
 
 .justify\:center {

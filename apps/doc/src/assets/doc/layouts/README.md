@@ -2,7 +2,7 @@
 title: Layouts
 slug: layouts
 tags: ['layouts']
-inputs: ['layouts.container', 'layouts.element']
+inputs: ['blocks.element', 'layouts.element','layouts.container']
 context: ['app.settings']
 ---
 

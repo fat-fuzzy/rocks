@@ -8,8 +8,8 @@
 	gap: var(--ui-size-sm);
 }
 
-p + [class*='feedback:'] {
-	margin-block-start: var(--ui-size-lg);
+:where(p, label, input) + [class*='feedback:'] {
+	margin-block-start: var(--ui-size);
 }
 
 [class*='feedback:']:not(.feedback\:code) {

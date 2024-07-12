@@ -53,20 +53,23 @@ fieldset.check {
 		margin: 0;
 		width: 100%;
 		color: var(--color-ink);
-		background-color: var(--color-bg);
 	}
 
 	input:checked {
 		--lightness: var(--color-lightness-000);
+		--lightness-accent: var(--color-lightness-200);
 		--lightness-contrast: var(--color-lightness-400);
 		--chroma: var(--color-chroma-000);
 		--chroma-contrast: var(--color-chroma-400);
+		--chroma-accent: var(--color-lightness-200);
+		background-color: var(--shade);
 	}
 
 	label:hover {
-		--lightness: var(--color-lightness-100);
+		--lightness: var(--color-lightness-000);
 		--lightness-contrast: var(--color-lightness-400);
 		--chroma: var(--color-chroma-000);
 		--chroma-contrast: var(--color-chroma-400);
+		background-color: var(--shade);
 	}
 }

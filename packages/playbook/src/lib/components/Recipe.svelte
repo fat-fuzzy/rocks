@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
 
 	type Props = {
 		title: string
@@ -11,14 +10,7 @@
 		redirect?: string
 	}
 
-	let {
-		title,
-		name = title,
-		component,
-		props,
-		actionPath,
-		redirect,
-	}: Props = $props()
+	let {title, name, component, props, actionPath, redirect}: Props = $props()
 
 	let page = ''
 
@@ -27,23 +19,19 @@
 	let elementStyles = $derived(styles.blocks.element)
 	let layoutStyles = $derived(styles.layouts.layout)
 	let settings = $derived(playbookStore.app)
-
-	let recipeProps = $derived({
-		...props,
-		page,
-		title,
-		name: `ui-${name}`,
-		actionPath,
-		redirect,
-		// App settings (user controlled)
-		...settings,
-		// Block style options
-		...elementStyles,
-		// Layout style options
-		...layoutStyles,
-	})
+	let recipeName = $derived(name ? `ui-${name}` : `ui-${title}`)
 </script>
 
-{#key recipeProps}
-	<svelte:component this={component} id={title} {...recipeProps} />
-{/key}
+<svelte:component
+	this={component}
+	id={title}
+	{page}
+	{title}
+	name={recipeName}
+	{actionPath}
+	{redirect}
+	{...props}
+	{...settings}
+	{...elementStyles}
+	{...layoutStyles}
+/>

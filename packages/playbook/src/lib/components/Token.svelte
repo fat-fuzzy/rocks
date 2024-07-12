@@ -15,16 +15,17 @@
 
 	let variant = ''
 	let size = '' // element's own size
-
-	let componentProps = $derived({
-		...props,
-		asset: props?.asset || '',
-		title,
-		color: tokenStyles.color,
-		variant,
-		size,
-		typography: tokenStyles.typography,
-	})
+	let asset = $derived(props?.asset || '')
+	let color = $derived(tokenStyles?.color || '')
+	let typography = $derived(tokenStyles?.typography || '')
 </script>
 
-<svelte:component this={component} id={title} {...componentProps} />
+<svelte:component
+	this={component}
+	id={title}
+	{variant}
+	{asset}
+	{color}
+	{size}
+	{typography}
+/>

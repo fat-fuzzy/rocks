@@ -26,6 +26,7 @@
 		breakpoint,
 		variant,
 		align,
+		justify,
 		height,
 		background,
 		asset = 'context',
@@ -44,8 +45,11 @@
 	let layoutClasses = $derived(
 		styleHelper.getLayoutStyles({size, height, layout, breakpoint, background, direction}),
 	)
+	let elementClasses = $derived(
+		styleHelper.getElementStyles({justify}),
+	)
 	let formClasses = $derived(`form:${expanded}`)
-	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses}`)
+	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses} ${elementClasses}`)
 
 	let action =
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction

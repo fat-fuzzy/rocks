@@ -10,29 +10,18 @@
 		props: any // TODO: fix types
 	}
 
-	let {title, name = title, isPage, component, props}: Props = $props()
+	let {title, name = title, component, props}: Props = $props()
 
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
+
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
-	let containerStyles = $derived(styles.layouts.container)
 </script>
 
-{#if isPage && containerStyles.container}
-	<div class={`l:${containerStyles.container}:${containerStyles.size}`}>
-		<svelte:component
-			this={component}
-			id={title}
-			{name}
-			{...props}
-			{...elementStyles}
-		/>
-	</div>
-{:else}
-	<svelte:component
-		this={component}
-		id="{title}{name}"
-		{...props}
-		{...elementStyles}
-	/>
-{/if}
+<svelte:component
+	this={component}
+	id={title}
+	{name}
+	{...props}
+	{...elementStyles}
+/>
