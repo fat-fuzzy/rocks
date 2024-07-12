@@ -28,7 +28,6 @@
 	let inputClasses = $derived(
 		styleHelper.getStyles({
 			color,
-			asset,
 			font: size,
 			size,
 			align,
@@ -39,10 +38,16 @@
 			background: background ? background : 'inherit',
 		}),
 	)
+
+	let assetClass = $derived(
+		styleHelper.getStyles({
+			asset,
+		}),
+	)
 </script>
 
 <label for={id} class={inputClasses}>
-	{label}
+	<span class={assetClass}>{label}</span>
 	<input
 		type="file"
 		{id}

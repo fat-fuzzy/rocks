@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {InputRangeProps} from './input.types.js'
-	import {UiStatus, UiTextContext} from '$types/index.js
+	import {UiStatus, UiTextContext} from '$types/index.js'
 	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
@@ -16,7 +16,6 @@
 		items = [],
 		status = UiStatus.default,
 		hint,
-
 
 		layout = 'stack',
 		container,
