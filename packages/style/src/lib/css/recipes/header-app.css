@@ -11,8 +11,8 @@
 }
 
 .header-app > [class*='l:main'] {
-	min-inline-size: 50%;
-	flex-grow: 0;
+	min-inline-size: unset;
+	flex-grow: 1;
 }
 
 .header-app .l\:reveal\:auto {
@@ -54,6 +54,7 @@
 	position: relative;
 	display: flex;
 	align-items: flex-end;
+	flex-grow: 0;
 
 	form:has([aria-expanded='true']) + .content {
 		top: calc(var(--size-ui-header-height) + var(--ui-size));
@@ -63,6 +64,7 @@
 }
 
 .header-app [class*='l:main'] nav {
+	display: flex;
 	/* - Change these styles to adapt to design */
 	ul {
 		position: relative;

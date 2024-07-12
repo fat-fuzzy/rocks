@@ -4,7 +4,7 @@
 @mixin switchToRowStyles_Header($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
 		.header-app .l\:reveal\:auto.bp\:#{$size} {
-			justify-content: center;
+			justify-content: var(--justify);
 			padding-block: 0;
 		}
 
@@ -14,8 +14,6 @@
 
 		/* Configure reveal menu positioning and width */
 		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} {
-			justify-content: center;
-
 			form:has([aria-expanded]) + .content {
 				block-size: fit-content;
 				inline-size: fit-content;
