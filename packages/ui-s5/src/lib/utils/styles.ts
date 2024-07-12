@@ -109,6 +109,7 @@ function getStyles(props: UiBlockProps): string {
 		dimensions,
 		threshold,
 		breakpoint,
+		background,
 	} = props
 
 	let elementClasses = getElementStyles({
@@ -127,6 +128,7 @@ function getStyles(props: UiBlockProps): string {
 		layout,
 		threshold,
 		breakpoint,
+		background,
 	})
 
 	let containerClasses = getContainerStyles({size, container, dimensions})

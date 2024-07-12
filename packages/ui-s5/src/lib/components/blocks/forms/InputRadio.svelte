@@ -1,16 +1,20 @@
 <script lang="ts">
 	import type {InputProps} from './input.types.js'
+	import {UiStatus, UiTextContext} from '$types/index.js'
 	import styleHelper from '$lib/utils/styles.js'
+	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
 	let {
 		id,
 		name,
 		label = 'Radio input',
 		checked = false,
-		layout = 'switcher',
-		value,
-
 		disabled,
+		value,
+		status = UiStatus.default,
+		hint,
+
+		layout = 'switcher',
 		asset,
 		align,
 		justify,
@@ -19,6 +23,7 @@
 		variant,
 		background,
 		container,
+
 		oninput,
 	}: InputProps = $props()
 
@@ -37,7 +42,7 @@
 			variant,
 			layout,
 			container,
-			background,
+			background: background ? background : 'inherit',
 		}),
 	)
 
@@ -61,3 +66,8 @@
 		{disabled}
 	/>
 </label>
+{#if hint}
+	<Feedback {status} context={UiTextContext.form} {size} {variant}>
+		{hint}
+	</Feedback>
+{/if}

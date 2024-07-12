@@ -53,7 +53,6 @@ fieldset.check {
 		margin: 0;
 		width: 100%;
 		color: var(--color-ink);
-		background-color: var(--color-bg);
 	}
 
 	input:checked {
@@ -61,6 +60,7 @@ fieldset.check {
 		--lightness-contrast: var(--color-lightness-400);
 		--chroma: var(--color-chroma-000);
 		--chroma-contrast: var(--color-chroma-400);
+		background-color: var(--shade);
 	}
 
 	label:hover {
@@ -68,5 +68,6 @@ fieldset.check {
 		--lightness-contrast: var(--color-lightness-400);
 		--chroma: var(--color-chroma-000);
 		--chroma-contrast: var(--color-chroma-400);
+		background-color: var(--shade);
 	}
 }

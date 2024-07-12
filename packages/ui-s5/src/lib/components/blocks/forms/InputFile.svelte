@@ -9,32 +9,26 @@
 		name = 'upload-image',
 		label = 'Upload image',
 		hint = 'File types accepted: png, jpeg',
-		layout = 'stack',
-		status = UiStatus.default,
-
 		disabled,
+		multiple = true,
+		status = UiStatus.default,
+		fileType = 'image/png, image/jpeg',
+
+		layout = 'stack',
 		asset,
 		align,
 		justify,
 		color,
 		size,
 		variant,
+		background,
 		breakpoint,
-		fileType = 'image/png, image/jpeg',
-		multiple = true,
 	}: InputFileProps = $props()
-
-	let feedbackClasses = $derived(
-		styleHelper.getFeedbackStyles(
-			{size, asset, variant, align, justify},
-			status,
-			UiTextContext.form,
-		),
-	)
 
 	let inputClasses = $derived(
 		styleHelper.getStyles({
 			color,
+			asset,
 			font: size,
 			size,
 			align,
@@ -42,6 +36,7 @@
 			variant,
 			layout,
 			breakpoint,
+			background: background ? background : 'inherit',
 		}),
 	)
 </script>
