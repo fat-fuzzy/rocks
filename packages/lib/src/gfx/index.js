@@ -19,7 +19,7 @@ import sketch_010 from './sketches/010-camera-3d/index'
 import sketch_011 from './sketches/011-animation-3d/index'
 import sketch_012 from './sketches/012-texture/index'
 import sketch_013 from './sketches/013-convolutions/index'
-import sketch_014 from './sketches/014-tex-blend/index'
+// import sketch_014 from './sketches/014-tex-blend/index'
 
 const sketches = [
 	sketch_001,
@@ -35,7 +35,7 @@ const sketches = [
 	sketch_011,
 	sketch_012,
 	sketch_013,
-	sketch_014,
+	// sketch_014,
 ]
 
 export default {
