@@ -83,9 +83,11 @@
 		<section class="l:side l:stack:md w:full">
 			<details open class="l:stack:md size:xs">
 				<summary class={`variant:${color} surface:2:${color}`}>Props</summary>
-				{#if category !== 'graphics' && category !== 'tokens' && category !== 'recipes'}
+				{#if category !== 'graphics' && category !== 'tokens'}
 					<div class="ui:menu">
-						<Api {categories} {path} {actionPath} {redirect} {meta}/>
+						{#key category}
+							<Api {categories} {path} {actionPath} {redirect} {meta}/>
+						{/key}
 					</div>
 				{:else}
 					{@render comingSoon()}

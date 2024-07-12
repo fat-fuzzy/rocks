@@ -21,7 +21,9 @@
 
 	const playbookContext: StylesApi = getContext('playbookContext')
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
-	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
+	let formOptions = $derived.by(() =>
+		playbookContext.getFormOptions(category, meta),
+	)
 	let styles = $derived(playbookStore.styles)
 
 	let apiSize = '2xs'
@@ -143,7 +145,6 @@
 </script>
 
 <svelte:window on:keydown={keydown} />
-
 {#each formOptions as options}
 	{#each Object.keys(options) as familyName}
 		{@const family = options[familyName]}

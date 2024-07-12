@@ -16,6 +16,7 @@ export type StyleInputOptions = {
 	container?: string
 	content?: string
 	breakpoint?: string
+	threshold?: string
 	variant?: string
 	color?: string
 	layout?: string

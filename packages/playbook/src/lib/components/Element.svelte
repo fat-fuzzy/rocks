@@ -47,13 +47,13 @@
 	}
 
 	const stylesApi: StylesApi = getContext('stylesApi')
-	const playbookStore: PlaybookStore = getContext('playbookStore')
+	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
+	let layoutStyles = $derived(styles.layouts.layout)
 	let containerStyles = $derived(styles.layouts.container)
 	let settings = $derived(playbookStore.app)
 
-	// App settings (user controlled)
 	//== App settings (user controlled)
 	let brightness = $derived(settings.brightness)
 	let contrast = $derived(settings.contrast || '')
@@ -67,13 +67,15 @@
 
 	let containerClasses = $derived(
 		category !== 'tokens' && category !== 'blocks'
-			? `l:${container}:${size} content`
-			: 'content',
+			? `l:${container}:${size} content settings${brightness}:${contrast}`
+			: `content settings${brightness}:${contrast}`,
 	)
 	let componentType = $derived(ApiElement[category])
 	let fixtures = $derived(
 		playbookStore.getElementFixtures({category, component: title}),
 	)
+	let statusFixures = $derived(fixtures?.status ? fixtures.status.find((p) => p.case === status) : {})
+	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 	let categories = $derived(
 		meta?.props_style ? Object.keys(meta.props_style) : undefined,
 	)
@@ -82,41 +84,30 @@
 	)
 </script>
 
+{#snippet renderElement()}
+	<div class={containerClasses}>
+		<svelte:component
+			this={componentType}
+			{isPage}
+			{path}
+			{title}
+			{component}
+			{stylesApi}
+			props={currentProps}
+			{actionPath}
+			{redirect}
+			{...settings}
+			{...elementStyles}
+			{...layoutStyles}
+			id={`ui-${title}`}
+		/>
+	</div>
+{/snippet}
+
 {#if isPage}
 	<article class="l:sidebar:md">
 		<section class={`l:main card:xl inset`}>
-			<div class={containerClasses}>
-				{#if fixtures?.status}
-					{@const currentProps =
-						fixtures.status.find((p) => p.case === status) || {}}
-					<svelte:component
-						this={componentType}
-						{isPage}
-						{title}
-						{path}
-						{component}
-						{stylesApi}
-						props={currentProps}
-						{actionPath}
-						{redirect}
-						{settings}
-						id={`ui-${title}`}
-					/>
-				{:else}
-					<svelte:component
-						this={componentType}
-						{isPage}
-						{title}
-						{path}
-						{component}
-						props={fixtures}
-						{actionPath}
-						{redirect}
-						{settings}
-						id={`ui-${title}`}
-					/>
-				{/if}
-			</div>
+			{@render renderElement()}
 		</section>
 		<section class="l:side l:stack:md w:full">
 			<details open class="l:stack:md size:xs">
@@ -149,37 +140,8 @@
 				</svelte:element>
 			</a>
 		</header>
-		<div class="content">
-			{#if fixtures?.status}
-				{@const currentProps =
-					fixtures.status.find((p) => p.case === status) || {}}
-				<svelte:component
-					this={componentType}
-					{isPage}
-					{path}
-					{title}
-					{component}
-					{stylesApi}
-					props={currentProps}
-					{actionPath}
-					{redirect}
-					{settings}
-					id={`ui-${title}`}
-				/>
-			{:else}
-				<svelte:component
-					this={componentType}
-					{isPage}
-					{path}
-					{title}
-					{component}
-					props={fixtures}
-					{actionPath}
-					{redirect}
-					{settings}
-					id={`ui-${title}`}
-				/>
-			{/if}
+		<div class={containerClasses}>
+			{@render renderElement()}
 		</div>
 	</article>
 {/if}
