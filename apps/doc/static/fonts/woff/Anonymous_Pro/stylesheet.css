@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Anonymous Pro';
+    src: url('AnonymousPro-BoldItalic.woff2') format('woff2'),
+        url('AnonymousPro-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anonymous Pro';
+    src: url('AnonymousPro-Italic.woff2') format('woff2'),
+        url('AnonymousPro-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anonymous Pro';
+    src: url('AnonymousPro-Bold.woff2') format('woff2'),
+        url('AnonymousPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anonymous Pro';
+    src: url('AnonymousPro-Regular.woff2') format('woff2'),
+        url('AnonymousPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
