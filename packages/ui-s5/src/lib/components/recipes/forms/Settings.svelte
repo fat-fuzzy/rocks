@@ -77,11 +77,7 @@
 	<form
 		name="settings-reveal"
 		{method}
-		action={action
-			? actionPath
-				? `${actionPath}?/${action}`
-				: `/?/${action}`
-			: undefined}
+		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {

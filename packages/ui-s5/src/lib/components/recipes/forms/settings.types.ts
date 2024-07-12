@@ -18,9 +18,5 @@ export type SettingsProps = UiBlockProps &
 		path?: String
 		items: SettingsItems
 		children?: Snippet
-		onupdate?: (payload: {
-			name: string
-			value: string | number
-			state: string
-		}) => void
+		onupdate?: (payload: FuzzyPayload) => void
 	}

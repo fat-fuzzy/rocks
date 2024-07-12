@@ -21,7 +21,7 @@
 		},
 	]
 
-	let nav ={
+	let nav = {
 		path,
 		title: 'Fat Fuzzy Dev',
 		id: 'nav-dev',

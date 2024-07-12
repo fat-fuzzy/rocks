@@ -30,12 +30,14 @@
 		background,
 		asset = 'context',
 		children,
+		onclick,
 	}: RevealLayoutProps = $props()
 
 	let expanded = $state(reveal)
 
 	function toggleReveal(event) {
 		expanded = event.state
+		if (onclick) { onclick(event) }
 	}
 
 	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
@@ -45,22 +47,15 @@
 	let formClasses = $derived(`form:${expanded}`)
 	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses}`)
 
-	let action = formaction
-		? redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-		: undefined
+	let action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 </script>
 
 <svelte:element {id} this={element} class={revealClasses} aria-label={title}>
 	<form
 		name={`${id}-reveal`}
 		{method}
-		action={action
-			? actionPath
-				? `${actionPath}?/${action}`
-				: `?/${action}`
-			: undefined}
+		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {

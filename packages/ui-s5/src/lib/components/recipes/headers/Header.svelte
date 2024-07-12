@@ -80,6 +80,6 @@
 		container="side "
 		redirect={path}
 		items={items.settings}
-		onupdate={items.settings.onupdate}
+		onupdate={items?.settings.onupdate}
 	/>
 </header>

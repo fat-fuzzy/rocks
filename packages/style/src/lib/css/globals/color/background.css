@@ -16,9 +16,9 @@
 /* Set current color LIGHTNESS and CHROMA according to a 7 point scale */
 [class*='bg:'][class*=':light'],
 [class*='bg:'][class*=':dark'] [class*='bg:'][class*=':light'] {
-	--lightness: var(--color-lightness-light);
+	--lightness: var(--color-lightness-light-base);
 	--lightness-accent: var(--color-lightness-300);
-	--lightness-contrast: var(--color-lightness-dark);
+	--lightness-contrast: var(--color-lightness-dark-base);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-300);
 	--chroma-contrast: var(--color-chroma-neutral);
@@ -26,9 +26,9 @@
 
 [class*='bg:'][class*=':dark'],
 [class*='bg:'][class*=':light'] [class*='bg:'][class*=':dark'] {
-	--lightness: var(--color-lightness-dark);
+	--lightness: var(--color-lightness-dark-base);
 	--lightness-accent: var(--color-lightness-300);
-	--lightness-contrast: var(--color-lightness-light);
+	--lightness-contrast: var(--color-lightness-light-base);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-300);
 	--chroma-contrast: var(--color-chroma-neutral);

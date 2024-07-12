@@ -18,6 +18,8 @@
 		title,
 		children,
 		reveal,
+		formaction,
+		onclick,
 	}: any = $props()
 	
 
@@ -37,6 +39,7 @@
 
 	function toggleReveal(event) {
 		linkReveal[slug].reveal = event.state
+		if (onclick) { onclick(event) }
 	}
 </script>
 
@@ -58,7 +61,7 @@
 			controls={`links-${slug}`}
 			{states}
 			onclick={toggleReveal}
-			formaction={`expand-${slug}`}
+			formaction={formaction ? formaction : undefined}
 		/>
 	</div>
 	<div id={`links-${slug}`} class='content'>

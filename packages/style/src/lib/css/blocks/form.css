@@ -73,7 +73,7 @@ label > input[type='checkbox'] {
 }
 
 [type='file']:active {
-	--lightness: var(--color-lightness-light);
+	--lightness: var(--lightness-base);
 }
 
 input:hover,

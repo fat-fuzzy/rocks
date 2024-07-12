@@ -9,8 +9,7 @@
 		}
 
 		.header-app > [class*='l:main']:has(.l\:reveal\:auto.bp\:#{$size}) {
-			min-inline-size: 80%;
-			flex-grow: 1;
+			min-inline-size: unset;
 		}
 
 		/* Configure reveal menu positioning and width */

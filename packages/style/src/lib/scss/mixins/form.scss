@@ -17,7 +17,7 @@
 	.outline.#{$color}:hover > [type='file'],
 	.bare.#{$color}:hover > input,
 	.bare.#{$color}:hover > [type='file'] {
-		--lightness-contrast: var(--color-lightness-dark);
+		--lightness-contrast: var(--color-lightness-dark-base);
 	}
 }
 
