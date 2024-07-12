@@ -382,6 +382,8 @@ const CATEGORIES: {[key: string]: any} = {
 	tokens: {element: FAMILIES['element']},
 	blocks: {element: FAMILIES['element']},
 	layouts: {
+		element: FAMILIES['element'],
+		layout: FAMILIES['layout'],
 		container: FAMILIES['container'],
 	},
 }

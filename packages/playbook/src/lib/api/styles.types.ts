@@ -82,6 +82,8 @@ export interface IStylesSet {
 
 	layout?: string
 	container?: string
+	breakpoint?: string
+	threshold?: string
 	size?: string
 	variant?: string
 	mode?: string
@@ -113,6 +115,8 @@ type StylesSetOptions = {
 	name: string
 	layout?: string
 	container?: string
+	breakpoint?: string
+	threshold?: string
 	size?: string
 	variant?: string
 	mode?: string
@@ -141,6 +145,8 @@ export class StyleInputGroup implements IStyleInputGroup {
 	value: string
 	layout?: string
 	container?: string
+	breakpoint?: string
+	threshold?: string
 	size?: string
 	variant?: string
 	mode?: string
