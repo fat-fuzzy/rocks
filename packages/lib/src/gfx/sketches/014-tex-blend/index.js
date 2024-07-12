@@ -107,7 +107,7 @@ const channels = {
 	grba: convertToChannelOrder('grba'),
 }
 
-let imagesPath = `${host}/${imageAssetsPath}/`
+let imagesPath = `/${imageAssetsPath}/`
 let gl
 let program
 let vao
