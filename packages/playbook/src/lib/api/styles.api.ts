@@ -33,7 +33,7 @@ export class StylesApi {
 		if (meta?.props_style) {
 			return this.filterFormOptions(meta.props_style)
 		}
-		return [this.getCategoryOptions('app')]
+		return []
 	}
 
 	filterFormOptions(styleProps: StyleProps): StyleCategory[] {

@@ -39,7 +39,6 @@
 			html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
 		},
 	)
-	let props = $derived(api.props.getElementProps(markdownContent.meta))
 
 	function handleTabChange(selected: { name: string; value: string|number; state: string; }[]) {
 		if(selected.length === 0) {
@@ -94,77 +93,20 @@
 		</div>
 	{/snippet}
 
-	{#if markdownContent.html && currentTab.value === 'doc'}
-		<article class="l:sidebar:md">
-			<section class="l:main">
-				<div class="l:text:lg">{@html markdownContent.html}</div>
-			</section>
-			<aside class="l:side l:stack:sm">
-				{#if !markdownContent.meta}
-					<p class="feedback bare emoji:default">Coming Soon!</p>
-				{:else}
-					{#if markdownContent.meta.props_style}
-						<details open class="l:stack:md size:xs">
-							<summary class="surface:2:primary">Style Props</summary>
-							<ul class="tags l:switcher:md">
-								{#if props.doc}
-									{#each props.doc as docs}
-										{#if docs.tokens}
-											{#each docs.tokens as prop}
-												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
-											{/each}
-										{/if}
-										{#if docs.blocks}
-											{#each docs.blocks as prop}
-												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
-											{/each}
-										{/if}
-										{#if docs.layouts}
-											{#each docs.layouts as prop}
-												<li class="card:2xs font:sm surface:1:primary">{prop}</li>
-											{/each}
-										{/if}
-									{/each}
-								{/if}
-							</ul>
-						</details>
-					{/if}
-					{#if markdownContent.meta.markdownContent_type}
-						<details open class="l:stack:md size:xs">
-							<summary class={`surface:2:highlight`}>Content Type</summary>
-							<ul class="tags l:switcher:md">
-								{#each markdownContent.meta.markdownContent_type as prop}
-									<li class="card:2xs font:sm surface:1:highlight">{prop}</li>
-								{/each}
-							</ul>
-						</details>
-					{/if}
-					{#if markdownContent.meta.props_state}
-						<details open class="l:stack:md size:xs">
-							<summary class={`surface:2:accent`}>State Props</summary>
-							<ul class="tags l:switcher:md">
-								{#each markdownContent.meta.props_state as prop}
-									<li class="card:2xs font:sm surface:1:accent">{prop}</li>
-								{/each}
-							</ul>
-						</details>
-					{/if}
-				{/if}
-			</aside>
-		</article>
-	{:else if currentTab.value === 'demo'}
-		{#key Component}
-			<Element
-				isPage={true}
-				depth={1}
-				{title}
-				{path}
-				{category}
-				component={Component}
-				meta={markdownContent.meta}
-				{actionPath}
-				redirect={$page.url.pathname}
-			/>
-		{/key}
-	{/if}
+	{#key Component}
+		<Element
+			isPage={true}
+			depth={1}
+			{title}
+			{path}
+			{category}
+			component={Component}
+			meta={markdownContent.meta}
+			{actionPath}
+			redirect={$page.url.pathname}
+			tab={currentTab.value}
+		>
+			<div class="l:text:lg">{@html markdownContent.html}</div>
+		</Element>
+	{/key}
 </PageMain>

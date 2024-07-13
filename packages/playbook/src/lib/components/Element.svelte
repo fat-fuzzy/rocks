@@ -9,7 +9,8 @@
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Recipe from './Recipe.svelte'
-	// import Graphics from './Graphics.svelte'
+	import PropsDemo from './PropsDemo.svelte'
+	import PropsDoc from './PropsDoc.svelte'
 
 	type Props = {
 		title: string
@@ -21,7 +22,9 @@
 		redirect?: string
 		category?: string
 		color?: string
+		tab?: string
 		meta: Meta
+		children?: Snippet
 	}
 
 	let {
@@ -33,8 +36,9 @@
 		actionPath,
 		redirect,
 		category = '',
-		color = 'primary:100',
+		tab,
 		meta,
+		children,
 	}: Props = $props()
 
 	// TODO: fix types
@@ -43,7 +47,6 @@
 		blocks: Block,
 		layouts: Layout,
 		recipes: Recipe,
-		// graphics: Graphics,
 	}
 
 	const stylesApi: StylesApi = getContext('stylesApi')
@@ -108,26 +111,34 @@
 {/snippet}
 
 {#if isPage}
-	<article class="l:sidebar:md">
-		<section class={sectionClasses}>
-			{@render renderElement()}
-		</section>
-		<section class="l:side l:stack:md w:full">
-			<details open class="l:stack:md size:xs">
-				<summary class={`variant:fill surface:2:${color}`}>Props</summary>
-				{#if categories}
-					<div class="ui:menu">
-						<Api {categories} {path} {actionPath} {redirect} {meta} />
-					</div>
-				{:else}
-					<div class="card:lg text:center">
-						<p class={`font:xl`}>🐰</p>
-						<p class={`font:md`}>Coming soon!</p>
-					</div>
+	<div class="l:sidebar:md">
+		{#if tab === 'demo'}
+			<section class={sectionClasses}>
+				{@render renderElement()}
+			</section>
+			<aside class="l:side l:stack:md w:full">
+				{#key title}
+					<PropsDemo
+						{path}
+						{actionPath}
+						{redirect}
+						color = 'primary'
+						{meta}
+						{categories}
+					/>
+				{/key}
+			</aside>
+		{:else if tab === 'doc'}
+			<section class="l:main">
+				{#if children}
+					{@render children()}
 				{/if}
-			</details>
-		</section>
-	</article>
+			</section>
+			<aside class="l:side l:stack:md w:full">
+				<PropsDoc {meta} />
+			</aside>
+		{/if}
+	</div>
 {:else}
 	<article
 		id={`card-${title}`}

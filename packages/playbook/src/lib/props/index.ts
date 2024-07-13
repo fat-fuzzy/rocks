@@ -1,4 +1,10 @@
-import type {Meta, Markdown, Markdowns, StyleProps} from './types'
+import type {
+	Meta,
+	Markdown,
+	Markdowns,
+	PlaybookProps,
+	StyleProps,
+} from './types'
 import {getFamily} from '$lib/props/props-style'
 
 const DEFAULT_META: Meta = {
@@ -76,19 +82,17 @@ function getElementDoc(props_style: StyleProps | undefined) {
 	return props
 }
 
-function getElementProps(meta: Meta): StyleProps {
+function getElementProps(meta: Meta): PlaybookProps {
 	if (!meta) {
 		return {}
 	}
-	const {props_style, props_state} = meta
+	const {props_style, props_state, content_types} = meta
 
-	const props: StyleProps = {}
-	props.style = getElementStyleProps(props_style)
-	props.doc = getElementDoc(props_style)
-	if (props_state) {
-		props.state = props_state
+	const props: PlaybookProps = {
+		style: getElementStyleProps(props_style),
+		doc: content_types ?? getElementDoc(content_types),
+		state: props_state,
 	}
-
 	return props
 }
 export {getCategoryMarkdowns, getElementMeta, getElementProps}

@@ -42,8 +42,6 @@
 			return
 		}
 		currentTab = {...selected[0], value: String(selected[0].value),title: selected[0].name, id: selected[0].name}
-		console.log('Cat META');
-		console.log(meta);
 	}
 </script>
 
@@ -93,28 +91,7 @@
 		</div>
 	{/snippet}
 
-	{#if markdownContent.html && currentTab.value === 'doc'}
-		<article class="l:sidebar:md">
-			<section class="l:main">
-				<div class="l:text:lg">{@html markdownContent.html}</div>
-			</section>
-			<aside class="l:side l:stack:sm">
-				{#if !markdownContent.meta}
-					<p class="feedback bare emoji:default">Coming Soon!</p>
-				{:else if markdownContent.meta.props_style}
-					<details open
-					class="l:stack:md size:xs">
-						<summary class="surface:2:primary">Style Props</summary>
-						<ul class="tags l:switcher:md">
-							{#each markdownContent.meta.props_style as prop}
-								<li class="card:xs font:sm surface:1:primary">{prop}</li>
-							{/each}
-						</ul>
-					</details>
-				{/if}
-			</aside>
-		</article>
-	{:else if currentTab.value === 'demo'}
+	{#key category}
 		<Collection
 			depth={1}
 			isPage={true}
@@ -124,9 +101,10 @@
 			{category}
 			{markdowns}
 			{actionPath}
+			tab={currentTab.value}
 			redirect={$page.url.pathname}
 		>
-			{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
+			{@html markdownContent.html}
 		</Collection>
-	{/if}
+	{/key}
 </PageMain>
