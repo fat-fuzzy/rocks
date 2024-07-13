@@ -70,7 +70,8 @@
 			? `l:${container}:${size}`
 			: ''
 	)
-	let settingsClasses = $derived(`settings:${brightness}:${contrast} surface:1:neutral`)
+	let settingsClasses = $derived(`settings:${brightness}:${contrast}`)
+	let sectionClasses = $derived(`l:main card:xl inset ${settingsClasses}`)
 
 	let componentType = $derived(ApiElement[category])
 	let fixtures = $derived(
@@ -108,7 +109,7 @@
 
 {#if isPage}
 	<article class="l:sidebar:md">
-		<section class={`l:main card:xl inset ${settingsClasses}`}>
+		<section class={sectionClasses}>
 			{@render renderElement()}
 		</section>
 		<section class="l:side l:stack:md w:full">
@@ -130,7 +131,7 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline l:stack ui:${title.toLowerCase()} ${settingsClasses}`}
+		class={`card variant:outline l:stack ui:${title.toLowerCase()} bg:inherit`}
 	>
 		<header>
 			<a
@@ -142,7 +143,7 @@
 				</svelte:element>
 			</a>
 		</header>
-		<div class={containerClasses}>
+		<div class={`${containerClasses} ${settingsClasses}`}>
 			{@render renderElement()}
 		</div>
 	</article>

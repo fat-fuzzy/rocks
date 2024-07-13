@@ -25,7 +25,7 @@
 	let content = 'card'
 	let sideContent = 'card'
 	let mainContent = 'text'
-	let layoutContent = $derived(`card:${elementStyles.size} variant:outline size:${elementStyles.size} bg:accent:000`)
+	let layoutContent = $derived(`card:${elementStyles.size} variant:outline size:${elementStyles.size} surface:1:accent`)
 	let fixtures = $derived(playbookStore.getLayoutFixtures())// TODO : fix here: get fixtures for collection
 </script>
 
