@@ -55,7 +55,7 @@
 	let settings = $derived(playbookStore.app)
 
 	//== App settings (user controlled)
-	let brightness = $derived(settings.brightness)
+	let brightness = $derived(settings.brightness || '')
 	let contrast = $derived(settings.contrast || '')
 
 	//== Layout settings (user controlled)
@@ -67,9 +67,11 @@
 
 	let containerClasses = $derived(
 		category !== 'tokens' && category !== 'blocks'
-			? `l:${container}:${size} content settings${brightness}:${contrast}`
-			: `content settings${brightness}:${contrast}`,
+			? `l:${container}:${size}`
+			: ''
 	)
+	let settingsClasses = $derived(`settings:${brightness}:${contrast} surface:1:neutral`)
+
 	let componentType = $derived(ApiElement[category])
 	let fixtures = $derived(
 		playbookStore.getElementFixtures({category, component: title}),
@@ -106,7 +108,7 @@
 
 {#if isPage}
 	<article class="l:sidebar:md">
-		<section class={`l:main card:xl inset`}>
+		<section class={`l:main card:xl inset ${settingsClasses}`}>
 			{@render renderElement()}
 		</section>
 		<section class="l:side l:stack:md w:full">
@@ -128,14 +130,14 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline l:stack ui:${title.toLowerCase()}`}
+		class={`card variant:outline l:stack ui:${title.toLowerCase()} ${settingsClasses}`}
 	>
 		<header>
 			<a
-				class="title card:sm w:full l:switcher:xs emoji:link outline primary align:center"
+				class="title card:2xs w:full l:switcher:xs emoji:link outline surface:1:primary align:center"
 				href={`${link}/${title}`}
 			>
-				<svelte:element this={`h${String(depth)}`} class="link font:lg">
+				<svelte:element this={`h${String(depth)}`} class="link font:md">
 					{title}
 				</svelte:element>
 			</a>

@@ -216,6 +216,8 @@ export class StyleFamily implements IStyleFamily {
 	itemsMap: Map<string, StyleInputGroup>
 	layout?: string
 	container?: string
+	breakpoint?: string
+	threshold?: string
 	size?: string
 	justify?: string
 	variant?: string

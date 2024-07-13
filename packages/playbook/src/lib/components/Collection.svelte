@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Snippet} from 'svelte'
 	import type {Markdowns} from '$lib/props/types'
+	import {getContext} from 'svelte'
+	import PlaybookStore from '$lib/api/store.svelte'
 
 	import {page} from '$app/stores'
 
@@ -32,7 +34,7 @@
 		components,
 		actionPath,
 		redirect,
-		size = 'lg',
+		size = 'md',
 		color = 'primary:100',
 		layout = 'grid',
 		category,
@@ -41,11 +43,19 @@
 		meta
 	}: Props = $props()
 
+	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
+	let settings = $derived(playbookStore.app)
+
+	//== App settings (user controlled)
+	let brightness = $derived(settings.brightness || '')
+	let contrast = $derived(settings.contrast || '')
+
 	const multipleCategories = ['recipes']
 
 	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
-	let layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
+	let settingsClasses = $derived(`settings:${brightness}:${contrast} surface:1:neutral`)
+	let layoutClass = $derived(category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`)
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
 	let categories = $derived(multipleCategories.includes(category)
 			? ['blocks', 'layouts', 'shared']
@@ -77,7 +87,7 @@
 
 {#if isPage}
 	<div class="l:sidebar:md">
-		<section class={`l:main ${layoutClass}`}>
+		<section class={`l:main card:md ${layoutClass} ${settingsClasses}`}>
 			{@render element()}
 		</section>
 		<section class="l:side l:stack:md w:full">
