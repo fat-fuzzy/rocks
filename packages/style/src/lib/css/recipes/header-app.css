@@ -7,7 +7,6 @@
 	padding-inline: var(--gap);
 	color: var(--ink);
 	background-color: var(--shade);
-	overflow-x: clip;
 }
 
 .header-app > [class*='l:main'] {
