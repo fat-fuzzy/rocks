@@ -58,6 +58,7 @@
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
 	let categories = $derived(category === 'recipes'
 			? ['blocks', 'layouts', 'shared']
+			: category === 'tokens'? undefined
 			: [category])
 </script>
 
@@ -91,14 +92,16 @@
 				{@render categoryElements()}
 			</section>
 			<aside class="l:side l:stack:md w:full">
-				<PropsDemo
-					{path}
-					{actionPath}
-					{redirect}
-					color = 'primary'
-					{meta}
-					{categories}
-				/>
+				{#key category}
+					<PropsDemo
+						{path}
+						{actionPath}
+						{redirect}
+						color = 'primary'
+						{meta}
+						{categories}
+					/>
+				{/key}
 			</aside>
 		{:else if tab === 'doc'}
 			<section class="l:main">

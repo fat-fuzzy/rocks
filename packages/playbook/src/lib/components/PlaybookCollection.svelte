@@ -35,9 +35,6 @@
 	let currentTabs = playbookStore.currentTabs
 	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
 
-	let meta = $derived(
-		markdowns.categories.find(({meta}) => meta.slug === category).meta,
-	)
 	let items = $derived(
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
@@ -92,7 +89,7 @@
 			{#if currentTab.value === 'demo'}
 				<Api
 					categories={['app']}
-					{meta}
+					meta={markdownContent.meta}
 					{path}
 					{actionPath}
 					redirect={$page.url.pathname}
@@ -106,7 +103,7 @@
 			depth={1}
 			isPage={true}
 			components={items}
-			{meta}
+			meta={markdownContent.meta}
 			{path}
 			{category}
 			{markdowns}

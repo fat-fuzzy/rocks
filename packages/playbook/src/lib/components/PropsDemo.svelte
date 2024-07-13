@@ -31,7 +31,7 @@
 
 <details open class="l:stack:md size:xs">
 	<summary class={`variant:fill surface:2:${color}`}>Props</summary>
-	{#if categories}
+	{#if categories && categories.length > 0}
 		<div class="ui:menu">
 			<Api {categories} {path} {actionPath} {redirect} {meta} />
 		</div>

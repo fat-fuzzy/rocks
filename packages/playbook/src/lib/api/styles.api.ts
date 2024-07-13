@@ -26,14 +26,18 @@ export class StylesApi {
 		this.layouts = layouts
 	}
 
-	getFormOptions(category: string, meta: Meta | undefined): StyleCategory[] {
-		if (category) {
-			return [this.getCategoryOptions(category)]
-		}
+	getFormOptions(
+		category: string,
+		meta: Meta | undefined,
+	): StyleCategory[] | undefined {
 		if (meta?.props_style) {
 			return this.filterFormOptions(meta.props_style)
 		}
-		return []
+		if (category) {
+			const options = this.getCategoryOptions(category)
+			return options ? [options] : undefined
+		}
+		return
 	}
 
 	filterFormOptions(styleProps: StyleProps): StyleCategory[] {
@@ -108,7 +112,7 @@ export class StylesApi {
 		}
 	}
 
-	getCategoryOptions(category: string): StyleCategory {
+	getCategoryOptions(category: string): StyleCategory | undefined {
 		switch (category) {
 			case 'tokens':
 				return this.tokens
@@ -119,7 +123,7 @@ export class StylesApi {
 			case 'layouts':
 				return this.layouts
 			default:
-				return {}
+				return undefined
 		}
 	}
 
