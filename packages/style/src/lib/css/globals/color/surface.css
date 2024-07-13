@@ -20,7 +20,6 @@
 }
 
 [class*='surface:'] {
-	--hue: var(--color-theme-neutral);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	color: var(--ink);
