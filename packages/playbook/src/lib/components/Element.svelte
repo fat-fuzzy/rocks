@@ -117,16 +117,14 @@
 				{@render renderElement()}
 			</section>
 			<aside class="l:side l:stack:md w:full">
-				{#key title}
-					<PropsDemo
-						{path}
-						{actionPath}
-						{redirect}
-						color = 'primary'
-						{meta}
-						{categories}
-					/>
-				{/key}
+				<PropsDemo
+					{path}
+					{actionPath}
+					{redirect}
+					color = 'primary'
+					{meta}
+					{categories}
+				/>
 			</aside>
 		{:else if tab === 'doc'}
 			<section class="l:main">
