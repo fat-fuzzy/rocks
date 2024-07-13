@@ -71,7 +71,7 @@
 			: ''
 	)
 	let settingsClasses = $derived(`settings:${brightness}:${contrast}`)
-	let sectionClasses = $derived(`l:main card:xl inset ${settingsClasses}`)
+	let sectionClasses = $derived(`l:main card:xl inset ${settingsClasses} surface:1:neutral`)
 
 	let componentType = $derived(ApiElement[category])
 	let fixtures = $derived(
@@ -80,7 +80,7 @@
 	let statusFixures = $derived(fixtures?.status ? fixtures.status.find((p) => p.case === status) : {})
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 	let categories = $derived(
-		meta?.props_style ? Object.keys(meta.props_style) : undefined,
+		meta?.props_style ? Object.keys(meta.props_style) : ['app'],
 	)
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),

@@ -21,9 +21,7 @@
 
 	const playbookContext: StylesApi = getContext('playbookContext')
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
-	let formOptions = $derived.by(() =>
-		playbookContext.getFormOptions(category, meta),
-	)
+	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
 	let styles = $derived(playbookStore.styles)
 
 	let apiSize = '2xs'

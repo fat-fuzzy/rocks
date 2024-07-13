@@ -27,10 +27,13 @@ export class StylesApi {
 	}
 
 	getFormOptions(category: string, meta: Meta | undefined): StyleCategory[] {
+		if (category) {
+			return [this.getCategoryOptions(category)]
+		}
 		if (meta?.props_style) {
 			return this.filterFormOptions(meta.props_style)
 		}
-		return [this.getCategoryOptions(category)]
+		return [this.getCategoryOptions('app')]
 	}
 
 	filterFormOptions(styleProps: StyleProps): StyleCategory[] {

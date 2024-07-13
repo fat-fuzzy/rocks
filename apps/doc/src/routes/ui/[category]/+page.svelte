@@ -42,89 +42,91 @@
 			return
 		}
 		currentTab = {...selected[0], value: String(selected[0].value),title: selected[0].name, id: selected[0].name}
+		console.log('Cat META');
+		console.log(meta);
 	}
 </script>
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
-			<div class="l:main l:flex">
-				<form
-					method="POST"
-					class="tabs flex nowrap"
-					action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
-					use:enhance={() => {
-						// prevent default callback from resetting the form
-						return ({update}) => {
-							update({reset: false})
+		<div class="l:main l:flex">
+			<form
+				method="POST"
+				class="tabs flex nowrap"
+				action={`/ui?/updateTab&redirectTo=${$page.url.pathname}`}
+				use:enhance={() => {
+					// prevent default callback from resetting the form
+					return ({update}) => {
+						update({reset: false})
+					}
+				}}
+			>
+				<ToggleMenu
+					id={`submit.${path}`}
+					items={tabs.map((tab) => {
+						if (tab.value == currentTab.value) {
+							tab.initial = 'active'
 						}
-					}}
-				>
-					<ToggleMenu
-						id={`submit.${path}`}
-						items={tabs.map((tab) => {
-							if (tab.value == currentTab.value) {
-								tab.initial = 'active'
-							}
-							return tab
-						})}
-						size="md"
-						layout="flex nowrap"
-						container="card:md"
-						color="primary"
-						shape="round"
-						variant="outline"
-						formaction={`/ui?/updateTab&redirectTo=${path}`}
-						onupdate={handleTabChange}
-						init={handleTabChange}
-					/>
-				</form>
-				{#if currentTab.value === 'demo'}
-					<Api
-						categories={['app']}
-						{meta}
-						{path}
-						{actionPath}
-						redirect={$page.url.pathname}
-					/>
-				{/if}
+						return tab
+					})}
+					size="md"
+					layout="flex nowrap"
+					container="card:md"
+					color="primary"
+					shape="round"
+					variant="outline"
+					formaction={`/ui?/updateTab&redirectTo=${path}`}
+					onupdate={handleTabChange}
+					init={handleTabChange}
+				/>
+			</form>
+			{#if currentTab.value === 'demo'}
+				<Api
+					categories={['app']}
+					{meta}
+					{path}
+					{actionPath}
+					redirect={$page.url.pathname}
+				/>
+			{/if}
 		</div>
 	{/snippet}
 
 	{#if markdownContent.html && currentTab.value === 'doc'}
-	<article class="l:sidebar:md">
-		<section class="l:main">
-			<div class="l:text:lg">{@html markdownContent.html}</div>
-		</section>
-		<aside class="l:side l:stack:sm">
-			{#if !markdownContent.meta}
-				<p class="feedback bare emoji:default">Coming Soon!</p>
-			{:else if markdownContent.meta.props_style}
-				<details open
-				class="l:stack:md size:xs">
-					<summary class="surface:2:primary">Style Props</summary>
-					<ul class="tags l:switcher:md">
-						{#each markdownContent.meta.props_style as prop}
-							<li class="card:xs font:sm surface:1:primary">{prop}</li>
-						{/each}
-					</ul>
-				</details>
-			{/if}
-		</aside>
-	</article>
-{:else if currentTab.value === 'demo'}
-	<Collection
-		depth={1}
-		isPage={true}
-		components={items}
-		{meta}
-		{path}
-		{category}
-		{markdowns}
-		{actionPath}
-		redirect={$page.url.pathname}
-	>
-		{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
-	</Collection>
+		<article class="l:sidebar:md">
+			<section class="l:main">
+				<div class="l:text:lg">{@html markdownContent.html}</div>
+			</section>
+			<aside class="l:side l:stack:sm">
+				{#if !markdownContent.meta}
+					<p class="feedback bare emoji:default">Coming Soon!</p>
+				{:else if markdownContent.meta.props_style}
+					<details open
+					class="l:stack:md size:xs">
+						<summary class="surface:2:primary">Style Props</summary>
+						<ul class="tags l:switcher:md">
+							{#each markdownContent.meta.props_style as prop}
+								<li class="card:xs font:sm surface:1:primary">{prop}</li>
+							{/each}
+						</ul>
+					</details>
+				{/if}
+			</aside>
+		</article>
+	{:else if currentTab.value === 'demo'}
+		<Collection
+			depth={1}
+			isPage={true}
+			components={items}
+			{meta}
+			{path}
+			{category}
+			{markdowns}
+			{actionPath}
+			redirect={$page.url.pathname}
+		>
+			{@html markdowns.categories.find(({meta}) => meta.slug === category).html}
+		</Collection>
 	{/if}
 </PageMain>

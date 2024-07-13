@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
-
 	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
 	import {api} from '@fat-fuzzy/playbook'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
@@ -11,6 +10,7 @@
 	const {PageMain} = content
 	const {Element, Api} = api
 	const {ToggleMenu} = recipes
+
 	const actionPath = '/ui'
 	const tabs = TABS
 
@@ -45,13 +45,13 @@
 		if(selected.length === 0) {
 			return
 		}
-		currentTab = {...selected[0], value: String(selected[0].value),title: selected[0].name, id: selected[0].name}
+		currentTab = {...selected[0], value: String(selected[0].value), title: selected[0].name, id: selected[0].name}
 	}
 </script>
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-	<h1 class="l:side hug maki:block:md">{title}</h1>
+		<h1 class="l:side hug maki:block:md">{title}</h1>
 		<div class="l:main l:flex">
 			<form
 				method="POST"
@@ -153,18 +153,18 @@
 			</aside>
 		</article>
 	{:else if currentTab.value === 'demo'}
-	{#key Component}
-		<Element
-			isPage={true}
-			depth={1}
-			{title}
-			{path}
-			{category}
-			component={Component}
-			meta={markdownContent.meta}
-			{actionPath}
-			redirect={$page.url.pathname}
-		/>
+		{#key Component}
+			<Element
+				isPage={true}
+				depth={1}
+				{title}
+				{path}
+				{category}
+				component={Component}
+				meta={markdownContent.meta}
+				{actionPath}
+				redirect={$page.url.pathname}
+			/>
 		{/key}
 	{/if}
 </PageMain>
