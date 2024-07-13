@@ -1,10 +1,10 @@
 <script lang="ts">
+	import type { Snippet} from 'svelte'
 	import {getContext} from 'svelte'
 	import PlaybookStore from '$lib/api/store.svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
 	import type {Meta} from '$lib/props/types'
 
-	import Api from './Api.svelte'
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
