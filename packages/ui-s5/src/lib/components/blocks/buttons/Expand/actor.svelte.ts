@@ -51,7 +51,7 @@ class ExpandActor implements FuzzyActor {
 
 	public getStyles(props: UiBlockProps): string {
 		let currentVariant = this.currentState?.variant ?? props.variant
-		let currentAsset = props.asset ?? this.currentState?.asset ?? props.asset
+		let currentAsset = this.currentState?.asset ?? props.asset
 
 		let blockClasses = styleHelper.getStyles({
 			...props,

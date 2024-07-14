@@ -18,6 +18,7 @@
 		color = 'primary',
 		size = 'sm',
 		variant = 'outline',
+		asset,
 		align = 'end',
 		formaction,
 		actionPath,

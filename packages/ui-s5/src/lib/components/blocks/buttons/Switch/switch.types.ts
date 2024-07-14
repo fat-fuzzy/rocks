@@ -16,14 +16,12 @@ export const SWITCH_MACHINE: SwitchMachine = {
 		state: UiState.active,
 		event: ButtonEvent.switch,
 		text: 'Active',
-		asset: 'bunny',
 	},
 	inactive: {
 		id: UiState.active,
 		state: UiState.active,
 		event: ButtonEvent.switch,
 		text: 'Inactive',
-		asset: 'hat',
 	},
 }
 
