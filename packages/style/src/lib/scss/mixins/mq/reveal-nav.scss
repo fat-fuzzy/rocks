@@ -15,6 +15,7 @@
 			ul.depth-0 {
 				block-size: var(--y-size-sticky);
 				overflow: hidden auto;
+				scrollbar-gutter: stable;
 			}
 
 			ul:not(.depth-0) {
@@ -27,7 +28,7 @@
 				/* transition: transform 250ms ease-in-out; */
 
 				> .content {
-					inline-size: var(--x-size);
+					inline-size: 100%;
 					transform: translateX(0);
 					transition: transform 250ms ease-in;
 					transition: inline-size 250ms ease-in-out;
@@ -49,14 +50,13 @@
 
 				> .content {
 					--x-axis: calc(var(--x-size) * -1);
-					inline-size: var(--x-size);
-					max-inline-size: calc(100% - var(--outline-offset-base));
+					inline-size: 100%;
 				}
 
 				ul {
 					> * {
-						block-size: max-content;
-						block-size: initial;
+						block-size: fit-content;
+						inline-size: 100%;
 						padding: initial;
 						margin: initial;
 					}

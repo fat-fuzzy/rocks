@@ -36,6 +36,7 @@
 		transition: inline-size 250ms ease-in-out;
 
 		.content {
+			block-size: fit-content;
 			transition: inline-size 100ms ease-in;
 		}
 		nav {

@@ -18,6 +18,7 @@
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
+	let containerStyles = $derived(styles.layouts.container)
 	let layoutStyles = $derived(styles.layouts.layout)
 	let recipeName = $derived(name ? `ui-${name}` : `ui-${title}`)
 </script>
@@ -30,7 +31,8 @@
 	name={recipeName}
 	{actionPath}
 	{redirect}
-	{...elementStyles}
+	{...containerStyles}
 	{...layoutStyles}
+	{...elementStyles}
 	{...props}
 />

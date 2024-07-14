@@ -58,6 +58,7 @@ export default {
 	},
 	RevealNav: {
 		slug: 'ui',
+		path: '/ui',
 		title: 'RevealNav',
 		actionPath: '/',
 		place: 'top',

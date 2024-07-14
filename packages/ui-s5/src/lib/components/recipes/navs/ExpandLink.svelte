@@ -16,6 +16,7 @@
 		variant='bare',
 		shape='square hug',
 		title,
+		asset,
 		children,
 		reveal,
 		formaction,
@@ -27,11 +28,11 @@
 	let states = {
 		expanded: {
 			...	EXPAND_MACHINE.expanded,
-			asset: `point-down`,
+			asset: asset ? asset: `point-down`,
 		},
 		collapsed: {
 			...	EXPAND_MACHINE.collapsed,
-			asset: `point-left`,
+			asset: asset ? asset: `point-left`,
 		},
 	}
 
