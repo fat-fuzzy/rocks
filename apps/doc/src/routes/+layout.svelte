@@ -49,7 +49,6 @@
 	path={$page.url.pathname}
 	actionPath="/"
 	formaction="toggleNav"
-	redirect={$page.url.pathname}
 	items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
 	breakpoint="sm"
 	app={{settings: app.settings}}

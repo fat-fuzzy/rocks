@@ -15,7 +15,6 @@
 		breakpoint = 'xs',
 		background,
 		layout,
-		path,
 		color = 'primary',
 		size = 'sm',
 		variant = 'outline',
@@ -66,18 +65,23 @@
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
-	let action = formaction
+	let revealAction = formaction
 		? redirect
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
 		: 'toggleNav'
+	let settingsUpdateAction = redirect
+		? `updateSettings&redirectTo=${redirect}`
+		: 'updateSettings'
 </script>
 
 <div class={layoutClasses}>
 	<form
 		name="settings-reveal"
 		{method}
-		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+		action={revealAction && actionPath
+			? `${actionPath}?/${revealAction}`
+			: `?/${revealAction}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {
@@ -108,7 +112,9 @@
 		<form
 			name="settings-update"
 			{method}
-			action={`/?/updateSettings&redirectTo=${path}`}
+			action={settingsUpdateAction && actionPath
+				? `${actionPath}?/${settingsUpdateAction}`
+				: `?/${settingsUpdateAction}`}
 			use:enhance={() => {
 				// prevent default callback from resetting the form
 				return ({update}) => {

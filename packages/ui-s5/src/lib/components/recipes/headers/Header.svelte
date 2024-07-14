@@ -78,8 +78,7 @@
 		id={`${id}-menu-settings`}
 		{formaction}
 		{actionPath}
-		container="side "
-		redirect={path}
+		{redirect}
 		items={items.settings}
 		onupdate={items?.settings.onupdate}
 	/>
