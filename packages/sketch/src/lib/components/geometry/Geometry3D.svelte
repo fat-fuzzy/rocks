@@ -53,10 +53,10 @@
 	let maxY = $state(canvasHeight)
 	let minX = $state(-canvasWidth)
 	let minY = $state(-canvasHeight)
-	let [coordX, coordY, coordZ] = $state(translation ?? [0, 0, 0])
+	let [coordX, coordY, coordZ] = $state([translation[0] ?? 0, translation[1] ?? 0, translation[2] ?? 0])
 
 	// Scale
-	let [scaleX, scaleY, scaleZ] = $state(scale ?? [1, 1, 1])
+	let [scaleX, scaleY, scaleZ] = $state([scale[0] ?? 1, scale[1] ?? 1, scale[2] ?? 1])
 
 	// Rotation
 	let [angleX, angleY, angleZ] = $state([190, 40, 30]) // TODO: fix this

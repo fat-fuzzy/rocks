@@ -52,7 +52,7 @@
 }
 
 [class*=':neutral'] {
-	--hue: var(--color-theme-primary);
+	--hue: var(--color-theme-neutral);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-contrast: var(--color-chroma-neutral);
 	--accent: oklch(

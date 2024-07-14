@@ -300,7 +300,7 @@
 						disabled={store.getSketchDisabled()}
 					/>
 				{:else}
-					<div class={`l:${layout}:${size} maki:block lg context`}>
+					<div class={`l:${layout}:${size} maki:block l:burrito:lg`}>
 						{#if meta.controls.includes('camera')}
 							<CameraControls
 								id={`${id}-camera-controls`}

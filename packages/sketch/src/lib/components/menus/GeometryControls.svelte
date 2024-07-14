@@ -17,8 +17,15 @@
 		context: GeometryProps
 	}
 
-	let {id, color, breakpoint, threshold, context, canvas, onupdate}: Props =
-		$props()
+	let {
+		id,
+		color = 'neutral',
+		breakpoint,
+		threshold,
+		context,
+		canvas,
+		onupdate,
+	}: Props = $props()
 
 	let geometry: SceneContext = $state(context)
 	let fieldOfView = $state(60)
