@@ -142,7 +142,7 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline l:stack:md ui:${title.toLowerCase()} bg:inherit`}
+		class={`card variant:outline l:stack:md w:auto ui:${title.toLowerCase()} bg:inherit`}
 	>
 		<a
 			href={`${link}/${title}`}
