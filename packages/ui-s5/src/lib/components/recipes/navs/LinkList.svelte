@@ -44,7 +44,7 @@
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
 		{@const assetClass = asset ? asset : ''}
-		{@const itemClass = `${assetClass} ${alignClass}`}
+		{@const itemClass = !subItems ? `${assetClass} ${alignClass}` : alignClass}
 		{@const reveal = {[slug]: DEFAULT_REVEAL_STATE}}
 		<li
 			aria-current={$page.url.pathname === format.formatHref(path, slug)
@@ -59,6 +59,7 @@
 					{title}
 					{reveal}
 					{slug}
+					asset={assetClass}
 					href={format.formatHref(path, slug)}
 					size="2xs"
 				>

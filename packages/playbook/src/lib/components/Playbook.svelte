@@ -50,21 +50,25 @@
 				{
 					slug: 'tokens',
 					title: 'Tokens',
+					asset: 'tokens',
 					items: tokenNames.map((c) => ({slug: c, title: c})),
 				},
 				{
 					slug: 'blocks',
 					title: 'Blocks',
+					asset: 'blocks',
 					items: blockNames.map((c) => ({slug: c, title: c})),
 				},
 				{
 					slug: 'layouts',
 					title: 'Layouts',
+					asset: 'layouts',
 					items: layoutNames.map((c) => ({slug: c, title: c})),
 				},
 				{
 					slug: 'recipes',
 					title: 'Recipes',
+					asset: 'recipes',
 					items: recipeNames.map((c) => ({slug: c, title: c})),
 				},
 				// {
