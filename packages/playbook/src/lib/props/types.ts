@@ -1,8 +1,14 @@
-export type DocProps = {[key: string]: string[]}[]
+export type DocProps = string[]
 
 export type StateProps = string[]
 
 export type StyleProps = {[key: string]: {[key: string]: string[]}}
+
+export type PlaybookProps = {
+	doc?: DocProps
+	style?: StyleProps
+	state?: StateProps
+}
 
 export type Meta = {
 	title: string

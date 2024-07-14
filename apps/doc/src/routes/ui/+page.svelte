@@ -41,6 +41,7 @@
 					{category}
 					{markdowns}
 					{actionPath}
+					tab="doc"
 				>
 					{@html markdowns.categories.find(({meta}) => meta.slug === category)
 						.html}

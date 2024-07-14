@@ -1,10 +1,9 @@
-[class*='l\:stack'] > * {
+[class*='l:stack'] > * {
 	/* top and bottom margins in horizontal\:tb writing mode */
 	margin-block: 0;
-	inline-size: 100%;
 }
 
-[class*='l\:stack'] {
+[class*='l:stack'] {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -13,15 +12,20 @@
 .l\:stack\:auto > * {
 	inline-size: auto;
 }
-[class*='l\:stack'] > * + * {
+
+[class*='l:stack'] > * + * {
 	margin-block-start: var(--gap);
 }
 
-[class*='l\:stack'].recursive * + * {
+[class*='l:stack']:not(:is([class*='w:auto'])) > * {
+	inline-size: 100%;
+}
+
+[class*='l:stack'].recursive * + * {
 	margin-block-start: var(--gap);
 }
 
-[class*='l\:stack'].w\:full:only-child {
+[class*='l:stack'].w\:full:only-child {
 	/* ↓ `height` in horizontal\:tb writing mode */
 	block-size: 100%;
 	/* ↓ `width` in horizontal\:tb writing mode */

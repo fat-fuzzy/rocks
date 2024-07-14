@@ -379,13 +379,9 @@ const FAMILIES: {[key: string]: any} = {
 
 const CATEGORIES: {[key: string]: any} = {
 	app: {settings: FAMILIES['settings']},
-	tokens: {element: FAMILIES['element']},
+	tokens: {element: FAMILIES['container']},
 	blocks: {element: FAMILIES['element']},
-	layouts: {
-		element: FAMILIES['element'],
-		layout: FAMILIES['layout'],
-		container: FAMILIES['container'],
-	},
+	layouts: {layout: FAMILIES['container']},
 }
 
 const PROPS_STYLE: {[key: string]: any} = {

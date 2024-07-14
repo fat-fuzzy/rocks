@@ -1,12 +1,13 @@
 <script lang="ts">
 	import type { Snippet} from 'svelte'
 	import type {Markdowns} from '$lib/props/types'
-
-	import {page} from '$app/stores'
+	import {getContext} from 'svelte'
+	import PlaybookStore from '$lib/api/store.svelte'
+	import PropsDemo from './PropsDemo.svelte'
+	import PropsDoc from './PropsDoc.svelte'
 
 	import {getCategoryMarkdowns, getElementMeta} from '$lib/props'
 
-	import Api from './Api.svelte'
 	import Element from './Element.svelte'
 
 	type Props = {
@@ -20,6 +21,7 @@
 		color?: string
 		size?: string
 		layout?: string
+		tab?: string
 		markdowns: Markdowns
 		children?: Snippet
 		meta?: any
@@ -32,27 +34,35 @@
 		components,
 		actionPath,
 		redirect,
-		size = 'lg',
+		size = 'md',
 		color = 'primary:100',
 		layout = 'grid',
 		category,
 		markdowns,
+		tab,
+		meta,
 		children,
-		meta
 	}: Props = $props()
 
-	const multipleCategories = ['recipes']
+	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
+	let settings = $derived(playbookStore.app)
+
+	//== App settings (user controlled)
+	let brightness = $derived(settings.brightness || '')
+	let contrast = $derived(settings.contrast || '')
 
 	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
-	let layoutClass = category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`
+	let settingsClasses = $derived(`settings:${brightness}:${contrast} surface:1:neutral`)
+	let layoutClass = $derived(category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`)
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
-	let categories = $derived(multipleCategories.includes(category)
+	let categories = $derived(category === 'recipes'
 			? ['blocks', 'layouts', 'shared']
+			: category === 'tokens'? undefined
 			: [category])
 </script>
 
-{#snippet element()}
+{#snippet categoryElements()}
 	{#each componentNames as name}
 		{@const component = components[name]}
 		<Element
@@ -63,7 +73,7 @@
 			{component}
 			{actionPath}
 			meta={getElementMeta(name, categoryMarkdowns)}
-			redirect={$page.url.pathname}
+			{redirect}
 		/>
 	{/each}
 {/snippet}
@@ -77,23 +87,32 @@
 
 {#if isPage}
 	<div class="l:sidebar:md">
-		<section class={`l:main ${layoutClass}`}>
-			{@render element()}
-		</section>
-		<section class="l:side l:stack:md w:full">
-			<details open class="l:stack:md size:xs">
-				<summary class={`variant:${color} surface:2:${color}`}>Props</summary>
-				{#if category !== 'graphics' && category !== 'tokens'}
-					<div class="ui:menu">
-						{#key category}
-							<Api {categories} {path} {actionPath} {redirect} {meta}/>
-						{/key}
-					</div>
-				{:else}
-					{@render comingSoon()}
+		{#if tab === 'demo'}
+			<section class={`l:main card:md ${layoutClass} ${settingsClasses}`}>
+				{@render categoryElements()}
+			</section>
+			<aside class="l:side l:stack:md w:full">
+				{#key category}
+					<PropsDemo
+						{path}
+						{actionPath}
+						{redirect}
+						color = 'primary'
+						{meta}
+						{categories}
+					/>
+				{/key}
+			</aside>
+		{:else if tab === 'doc'}
+			<section class="l:main">
+				{#if children}
+					{@render children()}
 				{/if}
-			</details>
-		</section>
+			</section>
+			<aside class="l:side l:stack:md w:full">
+				<PropsDoc {meta} />
+			</aside>
+		{/if}
 	</div>
 {:else}
 	<section class="l:text:lg snap:start">
@@ -110,7 +129,7 @@
 				{category}
 			</summary>
 			<div class={layoutClass}>
-				{@render element()}
+				{@render categoryElements()}
 			</div>
 		</details>
 	</section>

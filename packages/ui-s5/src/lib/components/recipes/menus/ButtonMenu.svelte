@@ -32,8 +32,8 @@ let type: ButtonType = formaction ? 'submit' : 'button'
 let sizeClass = size ? `size:${size}` : ''
 let containerClass = container ? `menu l:${container}:${size}` : ''
 let layoutClass = layout ? `l:${layout}:${size}` : ''
-let thresholdClass = threshold ? `th:${threshold}` : ''
-let menuClasses = `${layoutClass} ${thresholdClass} ${sizeClass}`
+let thresholdClass = $derived(threshold ? `th:${threshold}` : '')
+let menuClasses = $derived(`${layoutClass} ${thresholdClass} ${sizeClass}`)
 
 </script>
 

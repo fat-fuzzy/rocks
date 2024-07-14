@@ -16,7 +16,6 @@
 	let styles =  $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks.element)
 	let layoutStyles = $derived(styles.layouts.layout)
-	let settings = $derived(playbookStore.app)
 
 	// Content options
 	// let content = $derived(styles.layouts?.content.content ?? 'card')
@@ -26,13 +25,13 @@
 	let content = 'card'
 	let sideContent = 'card'
 	let mainContent = 'text'
-	let layoutContent = $derived(`card:${elementStyles.size} variant:outline size:${elementStyles.size} bg:highlight:000`)
+	let layoutContent = $derived(`card:${elementStyles.size} variant:outline size:${elementStyles.size} surface:1:accent`)
 	let fixtures = $derived(playbookStore.getLayoutFixtures())// TODO : fix here: get fixtures for collection
 </script>
 
 {#snippet children(props, contentType)}
 	{#if contentType === 'text'}
-			<p>{props.text}</p>
+			<p class={`card:${elementStyles.size} surface:1:accent`}>{props.text}</p>
 	{:else if contentType === 'card'}
 		{#each props[content] as item}
 			<div class={layoutContent}>{item}</div>
@@ -42,7 +41,6 @@
 
 {#if title === 'Sidebar'}
 	<svelte:component this={component} id={title}
-		{...settings}
 		{...elementStyles}
 		{...layoutStyles}
 		{...props}
@@ -58,7 +56,6 @@
 	<svelte:component
 			this={component}
 			id={title}
-			{...settings}
 			{...elementStyles}
 			{...layoutStyles}
 			{...props}

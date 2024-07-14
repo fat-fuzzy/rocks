@@ -9,6 +9,10 @@ import Token from '$lib/components/Token.svelte'
 import Element from '$lib/components/Element.svelte'
 import Collection from '$lib/components/Collection.svelte'
 import Playbook from '$lib/components/Playbook.svelte'
+import PropsDoc from '$lib/components/PropsDoc.svelte'
+import PropsDemo from '$lib/components/PropsDemo.svelte'
+import PlaybookCollection from '$lib/components/PlaybookCollection.svelte'
+import PlaybookElement from '$lib/components/PlaybookElement.svelte'
 
 import * as stylesApi from '$lib/api/styles.api'
 import * as props from '$lib/props'
@@ -41,6 +45,10 @@ const api = {
 	Token,
 	Element,
 	PlaybookStore,
+	PropsDoc,
+	PropsDemo,
+	PlaybookCollection,
+	PlaybookElement,
 	stylesApi,
 	props,
 }

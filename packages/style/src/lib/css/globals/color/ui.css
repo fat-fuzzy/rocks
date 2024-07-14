@@ -54,6 +54,7 @@
 [class*=':neutral'] {
 	--hue: var(--color-theme-neutral);
 	--chroma: var(--color-chroma-neutral);
+	--chroma-contrast: var(--color-chroma-neutral);
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);

@@ -1,15 +1,16 @@
 <script lang="ts">
+	import type { Snippet} from 'svelte'
 	import {getContext} from 'svelte'
 	import PlaybookStore from '$lib/api/store.svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
 	import type {Meta} from '$lib/props/types'
 
-	import Api from './Api.svelte'
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Recipe from './Recipe.svelte'
-	// import Graphics from './Graphics.svelte'
+	import PropsDemo from './PropsDemo.svelte'
+	import PropsDoc from './PropsDoc.svelte'
 
 	type Props = {
 		title: string
@@ -21,7 +22,9 @@
 		redirect?: string
 		category?: string
 		color?: string
+		tab?: string
 		meta: Meta
+		children?: Snippet
 	}
 
 	let {
@@ -33,8 +36,9 @@
 		actionPath,
 		redirect,
 		category = '',
-		color = 'primary:100',
+		tab,
 		meta,
+		children,
 	}: Props = $props()
 
 	// TODO: fix types
@@ -43,7 +47,6 @@
 		blocks: Block,
 		layouts: Layout,
 		recipes: Recipe,
-		// graphics: Graphics,
 	}
 
 	const stylesApi: StylesApi = getContext('stylesApi')
@@ -55,7 +58,7 @@
 	let settings = $derived(playbookStore.app)
 
 	//== App settings (user controlled)
-	let brightness = $derived(settings.brightness)
+	let brightness = $derived(settings.brightness || '')
 	let contrast = $derived(settings.contrast || '')
 
 	//== Layout settings (user controlled)
@@ -67,9 +70,12 @@
 
 	let containerClasses = $derived(
 		category !== 'tokens' && category !== 'blocks'
-			? `l:${container}:${size} content settings${brightness}:${contrast}`
-			: `content settings${brightness}:${contrast}`,
+			? `l:${container}:${size}`
+			: ''
 	)
+	let settingsClasses = $derived(`settings:${brightness}:${contrast}`)
+	let sectionClasses = $derived(`l:main card:xl inset ${settingsClasses} surface:1:neutral`)
+
 	let componentType = $derived(ApiElement[category])
 	let fixtures = $derived(
 		playbookStore.getElementFixtures({category, component: title}),
@@ -77,7 +83,7 @@
 	let statusFixures = $derived(fixtures?.status ? fixtures.status.find((p) => p.case === status) : {})
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 	let categories = $derived(
-		meta?.props_style ? Object.keys(meta.props_style) : undefined,
+		meta?.props_style ? Object.keys(meta.props_style) : ['app'],
 	)
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
@@ -85,7 +91,7 @@
 </script>
 
 {#snippet renderElement()}
-	<div class={containerClasses}>
+	<div class={`w:auto ${settingsClasses} ${containerClasses}`}>
 		<svelte:component
 			this={componentType}
 			{isPage}
@@ -105,43 +111,47 @@
 {/snippet}
 
 {#if isPage}
-	<article class="l:sidebar:md">
-		<section class={`l:main card:xl inset`}>
-			{@render renderElement()}
-		</section>
-		<section class="l:side l:stack:md w:full">
-			<details open class="l:stack:md size:xs">
-				<summary class={`variant:fill surface:2:${color}`}>Props</summary>
-				{#if categories}
-					<div class="ui:menu">
-						<Api {categories} {path} {actionPath} {redirect} {meta} />
-					</div>
-				{:else}
-					<div class="card:lg text:center">
-						<p class={`font:xl`}>🐰</p>
-						<p class={`font:md`}>Coming soon!</p>
-					</div>
+	<div class="l:sidebar:md">
+		{#if tab === 'demo'}
+			<section class={sectionClasses}>
+				{@render renderElement()}
+			</section>
+			<aside class="l:side l:stack:md">
+				{#key title}
+					<PropsDemo
+						{path}
+						{actionPath}
+						{redirect}
+						color = 'primary'
+						{meta}
+						{categories}
+					/>
+				{/key}
+			</aside>
+		{:else if tab === 'doc'}
+			<section class="l:main">
+				{#if children}
+					{@render children()}
 				{/if}
-			</details>
-		</section>
-	</article>
+			</section>
+			<aside class="l:side l:stack:md">
+				<PropsDoc {meta} />
+			</aside>
+		{/if}
+	</div>
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline l:stack ui:${title.toLowerCase()}`}
+		class={`card variant:outline l:stack:md ui:${title.toLowerCase()} bg:inherit`}
 	>
-		<header>
-			<a
-				class="title card:sm w:full l:switcher:xs emoji:link outline primary align:center"
-				href={`${link}/${title}`}
-			>
-				<svelte:element this={`h${String(depth)}`} class="link font:lg">
-					{title}
-				</svelte:element>
-			</a>
-		</header>
-		<div class={containerClasses}>
-			{@render renderElement()}
-		</div>
+		<a
+			href={`${link}/${title}`}
+			class="title card:2xs l:switcher:xs emoji:link surface:1:primary align:center"
+		>
+			<svelte:element this={`h${String(depth)}`} class="link font:md">
+				{title}
+			</svelte:element>
+		</a>
+		{@render renderElement()}
 	</article>
 {/if}
