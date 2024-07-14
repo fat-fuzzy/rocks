@@ -39,13 +39,13 @@
 		if (onclick) onclick(event)
 	}
 
-	let navContainer = container ? `${container}:${size}` : ''
-	let navLayoutThreshold = breakpoint
-		? `bp:${breakpoint}`
-		: threshold
-			? `th:${threshold}`
-			: ''
-	let navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
+	let navContainer = $derived(container ? `${container}:${size}` : '')
+	let navLayoutThreshold = $derived(
+		breakpoint ? `bp:${breakpoint}` : threshold ? `th:${threshold}` : '',
+	)
+	let navLayout = $derived(
+		layout ? `l:${layout}:${size} ${navLayoutThreshold}` : '',
+	)
 	let showBackground = $derived(background ? `bg:${background}` : '')
 	let showSidebar = $derived(
 		`${sidebarReveal.reveal} ${showBackground} ${place}`,
