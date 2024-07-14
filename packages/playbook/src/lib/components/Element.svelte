@@ -74,7 +74,7 @@
 			: ''
 	)
 	let articleContainer = $derived(
-		category !== 'tokens' && category !== 'blocks' && title !== 'Burrito' && title !== 'Stack' && title !== 'Burrito' && title !== 'Switcher'
+		category !== 'tokens' && category !== 'blocks' && title !== 'Burrito' && title !== 'Stack' && title !== 'Switcher'
 			? `l:${container}:${size}`
 			:  category === 'blocks' ? 'l:center:sm col:center l:stack w:auto': ''
 	)
