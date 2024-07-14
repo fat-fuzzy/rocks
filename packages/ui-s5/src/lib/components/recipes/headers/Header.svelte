@@ -26,7 +26,7 @@
 	let contrast = $derived(app.settings.contrast)
 	let reveal = $derived(navReveal.reveal)
 	let headerClass = $derived(
-		`${className} l:sidebar:xl layer:2 sticky:top justify:start settings:${brightness}:${contrast}`,
+		`${className} l:sidebar layer:2 sticky:top justify:start settings:${brightness}:${contrast}`,
 	)
 </script>
 

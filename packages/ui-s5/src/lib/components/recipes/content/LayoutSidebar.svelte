@@ -42,7 +42,7 @@
 			onclick={toggleSidebar}
 		/>
 	</div>
-	<div class="l:main maki:inline:lg">
+	<div class="l:main">
 		{#if children}
 			{@render children()}
 		{/if}
