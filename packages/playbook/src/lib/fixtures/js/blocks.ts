@@ -6,11 +6,13 @@ export default {
 			expanded: {
 				id: 'button-expand',
 				text: 'Expand',
+				event: 'collapse',
 				asset: 'point-down',
 			},
 			collapsed: {
 				id: 'button-expand',
 				text: 'Expand',
+				event: 'expand',
 				asset: 'point-right',
 			},
 		},
@@ -22,11 +24,13 @@ export default {
 			active: {
 				id: 'button-switch',
 				text: 'Rabbit',
+				event: 'switch',
 				asset: 'switch-active',
 			},
 			inactive: {
 				id: 'button-switch',
 				text: 'Hat',
+				event: 'switch',
 				asset: 'switch-inactive',
 			},
 		},
