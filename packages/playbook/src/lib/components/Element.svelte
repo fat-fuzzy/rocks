@@ -68,13 +68,20 @@
 	let size = $derived(containerStyles.size ?? '') // Container size
 	let status = $derived(elementStyles.status ?? '')
 
-	let containerClasses = $derived(
-		category !== 'tokens' && category !== 'blocks'
+	let sectionContainer = $derived(
+		category !== 'tokens'
 			? `l:${container}:${size}`
-			:  category === 'blocks' ? 'l:center:sm card': ''
+			: ''
 	)
-	let settingsClasses = $derived(`settings:${brightness}:${contrast}`)
-	let sectionClasses = $derived(`l:main card:xl inset ${settingsClasses} surface:1:neutral`)
+	let articleContainer = $derived(
+		category !== 'tokens' && category !== 'blocks' && title !== 'Burrito' && title !== 'Stack' && title !== 'Burrito' && title !== 'Switcher'
+			? `l:${container}:${size}`
+			:  category === 'blocks' ? 'l:center:sm col:center l:stack w:auto': ''
+	)
+	let surfaceClass = $derived( `surface:0:neutral`)
+	let settingsClasses = $derived(`settings:${brightness}:${contrast} ${surfaceClass}`)
+	let sectionClasses = $derived(`l:main card:xl inset ${settingsClasses}`)
+	let containerClasses = $derived(isPage ? sectionContainer : articleContainer)
 
 	let componentType = $derived(ApiElement[category])
 	let fixtures = $derived(
@@ -83,7 +90,7 @@
 	let statusFixures = $derived(fixtures?.status ? fixtures.status.find((p) => p.case === status) : {})
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 	let categories = $derived(
-		meta?.props_style ? Object.keys(meta.props_style) : ['app'],
+		meta?.props_style ? Object.keys(meta.props_style) : [],
 	)
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
@@ -91,7 +98,7 @@
 </script>
 
 {#snippet renderElement()}
-	<div class={`${settingsClasses} ${containerClasses}`}>
+	<div class={containerClasses}>
 		<svelte:component
 			this={componentType}
 			{isPage}
@@ -102,6 +109,10 @@
 			props={currentProps}
 			{actionPath}
 			{redirect}
+			{...settings}
+			{...containerStyles}
+			{...layoutStyles}
+			{...elementStyles}
 			id={`ui-${title}`}
 		/>
 	</div>
@@ -139,7 +150,7 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline l:stack w:auto ui:${title.toLowerCase()} bg:inherit`}
+		class={`card variant:bare l:stack w:auto ui:${title.toLowerCase()} bg:inherit ${settingsClasses}`}
 	>
 		<a
 			href={`${link}/${title}`}
