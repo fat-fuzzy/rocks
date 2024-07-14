@@ -91,7 +91,7 @@
 			<section class={`l:main card:md ${layoutClass} ${settingsClasses}`}>
 				{@render categoryElements()}
 			</section>
-			<aside class="l:side l:stack:md w:full">
+			<aside class="l:side l:stack:md">
 				{#key category}
 					<PropsDemo
 						{path}
@@ -109,7 +109,7 @@
 					{@render children()}
 				{/if}
 			</section>
-			<aside class="l:side l:stack:md w:full">
+			<aside class="l:side l:stack:md">
 				<PropsDoc {meta} />
 			</aside>
 		{/if}

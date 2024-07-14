@@ -27,6 +27,7 @@ body {
 	font-size: var(--font-size-body);
 	font-weight: var(--font-weight-body);
 	line-height: var(--font-leading-body);
+	overflow: hidden auto; /* TODO: Figure this out: playbook bug when setting shape prop in Blocks category page */
 }
 
 main {

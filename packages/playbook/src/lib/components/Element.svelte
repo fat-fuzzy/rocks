@@ -71,7 +71,7 @@
 	let containerClasses = $derived(
 		category !== 'tokens' && category !== 'blocks'
 			? `l:${container}:${size}`
-			: ''
+			:  category === 'blocks' ? 'l:center:sm card': ''
 	)
 	let settingsClasses = $derived(`settings:${brightness}:${contrast}`)
 	let sectionClasses = $derived(`l:main card:xl inset ${settingsClasses} surface:1:neutral`)
@@ -91,7 +91,7 @@
 </script>
 
 {#snippet renderElement()}
-	<div class={`w:auto ${settingsClasses} ${containerClasses}`}>
+	<div class={`${settingsClasses} ${containerClasses}`}>
 		<svelte:component
 			this={componentType}
 			{isPage}
@@ -102,9 +102,6 @@
 			props={currentProps}
 			{actionPath}
 			{redirect}
-			{...settings}
-			{...elementStyles}
-			{...layoutStyles}
 			id={`ui-${title}`}
 		/>
 	</div>
@@ -142,11 +139,11 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline l:stack:md w:auto ui:${title.toLowerCase()} bg:inherit`}
+		class={`card variant:outline l:stack w:auto ui:${title.toLowerCase()} bg:inherit`}
 	>
 		<a
 			href={`${link}/${title}`}
-			class="title card:2xs l:switcher:xs emoji:link surface:1:primary align:center"
+			class="title card:2xs l:flex emoji:link surface:1:primary align:center"
 		>
 			<svelte:element this={`h${String(depth)}`} class="link font:md">
 				{title}
