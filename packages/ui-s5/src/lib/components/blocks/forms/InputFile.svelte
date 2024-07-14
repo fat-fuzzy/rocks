@@ -3,6 +3,7 @@
 	import {UiStatus, UiTextContext} from '$types/index.js'
 	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 
 	let {
 		id = 'upload-image',
@@ -46,22 +47,30 @@
 	)
 </script>
 
-<label for={id} class={inputClasses}>
-	<span class={assetClass}>{label}</span>
-	<input
-		type="file"
-		{id}
-		{name}
-		accept={fileType}
-		aria-describedby={/* TODO: check is this correct? */ hint
-			? `${id}-hint`
-			: ''}
-		{multiple}
-		{disabled}
-	/>
-</label>
+{#snippet input()}
+	<label for={id} class={inputClasses}>
+		<span class={assetClass}>{label}</span>
+		<input
+			type="file"
+			{id}
+			{name}
+			accept={fileType}
+			aria-describedby={/* TODO: check is this correct? */ hint
+				? `${id}-hint`
+				: ''}
+			{multiple}
+			{disabled}
+		/>
+	</label>
+{/snippet}
+
 {#if hint}
-	<Feedback {status} context={UiTextContext.form} {size} {variant}>
-		{hint}
-	</Feedback>
+	<Fieldset id={`fieldset-${id}`} name={`fieldset-${name}`}	{layout}>
+	{@render input()}
+		<Feedback {status} context={UiTextContext.form} {size} {variant}>
+			{hint}
+		</Feedback>
+	</Fieldset>
+	{:else}
+		{@render input()}
 {/if}

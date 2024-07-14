@@ -12,7 +12,7 @@
 	const {ToggleMenu, InputGroup} = recipes
 
 	type Props = {
-		category: string
+		category?: string
 		formaction?: string
 		meta: Meta
 	}
@@ -21,8 +21,8 @@
 
 	const playbookContext: StylesApi = getContext('playbookContext')
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
-	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
 	let styles = $derived(playbookStore.styles)
+	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
 
 	let apiSize = '2xs'
 	let apiColor = 'primary'
@@ -49,7 +49,7 @@
 				...playbookStore.styles[category],
 				...familyValue,
 			}
-			if (style === 'brightness' ?? style === 'contrast') {
+			if (style === 'brightness' || style === 'contrast') {
 				playbookStore.app = {...playbookStore.app, [style]: value}
 			}
 		})

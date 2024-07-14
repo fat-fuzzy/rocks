@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { Snippet} from 'svelte'
 	import type {Markdowns} from '$lib/props/types'
-	import {getContext} from 'svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
@@ -44,16 +42,8 @@
 		children,
 	}: Props = $props()
 
-	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
-	let settings = $derived(playbookStore.app)
-
-	//== App settings (user controlled)
-	let brightness = $derived(settings.brightness || '')
-	let contrast = $derived(settings.contrast || '')
-
 	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
-	let settingsClasses = $derived(`settings:${brightness}:${contrast} surface:1:neutral`)
 	let layoutClass = $derived(category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`)
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
 	let categories = $derived(category === 'recipes'
@@ -88,7 +78,7 @@
 {#if isPage}
 	<div class="l:sidebar:md">
 		{#if tab === 'demo'}
-			<section class={`l:main card:md ${layoutClass} ${settingsClasses}`}>
+			<section class={`l:main ${layoutClass}`}>
 				{@render categoryElements()}
 			</section>
 			<aside class="l:side l:stack:md">

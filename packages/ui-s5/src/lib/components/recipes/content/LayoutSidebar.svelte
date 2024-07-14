@@ -19,7 +19,7 @@
 	let sidebarReveal: {[key: string]: string} = $state(nav.reveal ? {reveal: nav.reveal} : DEFAULT_NAV_REVEAL_STATE)
 	let brightness = $derived(app?.settings?.brightness)
 	let contrast = $derived(app?.settings?.contrast)
-	let settingsClass = $derived(brightness && contrast ? ` settings:${brightness}:${contrast}` : ''
+	let settingsClass = $derived(brightness && contrast ? `settings:${brightness}:${contrast}` : ''
 )
 	function toggleSidebar(event) {
 		sidebarReveal.reveal = event.state
@@ -42,7 +42,7 @@
 			onclick={toggleSidebar}
 		/>
 	</div>
-	<div class="l:main maki:inline:lg">
+	<div class="l:main maki:inline">
 		{#if children}
 			{@render children()}
 		{/if}

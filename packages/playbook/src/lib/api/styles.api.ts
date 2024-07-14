@@ -37,7 +37,6 @@ export class StylesApi {
 			const options = this.getCategoryOptions(category)
 			return options ? [options] : undefined
 		}
-		return
 	}
 
 	filterFormOptions(styleProps: StyleProps): StyleCategory[] {

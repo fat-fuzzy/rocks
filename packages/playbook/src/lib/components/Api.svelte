@@ -70,7 +70,7 @@
 		{#each categories as category}
 			<StyleFamily
 				{category}
-				{meta}
+				meta={category !== 'app' ? meta : undefined}
 				formaction={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 			/>
 		{/each}

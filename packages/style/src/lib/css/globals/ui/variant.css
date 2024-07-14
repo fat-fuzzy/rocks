@@ -18,6 +18,18 @@
 }
 
 [class*=':bare'] {
-	border: var(--border-width-md) solid var(--color-bg);
+	--border-color: var(--color-bg);
+	border: var(--border-width-md) solid var(--border-color);
 	background-color: inherit;
+}
+
+[class*=':outline'][class*='card'],
+[class*=':bare'][class*='card'] {
+	background-color: var(--shade);
+}
+
+[class*=':bare'][class*='card'] {
+	--border-color: oklch(
+		var(--lightness-surface-2) var(--chroma-contrast) var(--hue)
+	);
 }

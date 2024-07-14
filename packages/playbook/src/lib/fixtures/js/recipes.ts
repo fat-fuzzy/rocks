@@ -18,8 +18,7 @@ export default {
 	RevealMenu: {
 		slug: 'ui',
 		title: 'RevealMenu',
-		formaction: 'updateState',
-		actionPath: '/doc',
+		actionPath: '/',
 		items: [
 			{id: 'reveal-menu.button.idea', text: 'Idea', asset: 'idea'},
 			{id: 'reveal-menu.button.profile', text: 'Profile', asset: 'profile'},
@@ -60,8 +59,7 @@ export default {
 	RevealNav: {
 		slug: 'ui',
 		title: 'RevealNav',
-		formaction: 'updateState',
-		actionPath: '/doc',
+		actionPath: '/',
 		place: 'top',
 		items: [
 			{
@@ -85,7 +83,7 @@ export default {
 	Header: {
 		slug: 'ui',
 		title: 'Header',
-		formaction: 'updateState',
+		actionPath: '/',
 		items: {
 			links,
 			settings: itemsSettings,
