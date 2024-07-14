@@ -91,7 +91,7 @@
 </script>
 
 {#snippet renderElement()}
-	<div class={containerClasses}>
+	<div class={`w:auto ${settingsClasses} ${containerClasses}`}>
 		<svelte:component
 			this={componentType}
 			{isPage}
@@ -116,7 +116,7 @@
 			<section class={sectionClasses}>
 				{@render renderElement()}
 			</section>
-			<aside class="l:side l:stack:md w:full">
+			<aside class="l:side l:stack:md">
 				{#key title}
 					<PropsDemo
 						{path}
@@ -134,7 +134,7 @@
 					{@render children()}
 				{/if}
 			</section>
-			<aside class="l:side l:stack:md w:full">
+			<aside class="l:side l:stack:md">
 				<PropsDoc {meta} />
 			</aside>
 		{/if}
@@ -142,20 +142,16 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:outline l:stack ui:${title.toLowerCase()} bg:inherit`}
+		class={`card variant:outline l:stack:md ui:${title.toLowerCase()} bg:inherit`}
 	>
-		<header>
-			<a
-				class="title card:2xs w:full l:switcher:xs emoji:link outline surface:1:primary align:center"
-				href={`${link}/${title}`}
-			>
-				<svelte:element this={`h${String(depth)}`} class="link font:md">
-					{title}
-				</svelte:element>
-			</a>
-		</header>
-		<div class={`${containerClasses} ${settingsClasses}`}>
-			{@render renderElement()}
-		</div>
+		<a
+			href={`${link}/${title}`}
+			class="title card:2xs l:switcher:xs emoji:link surface:1:primary align:center"
+		>
+			<svelte:element this={`h${String(depth)}`} class="link font:md">
+				{title}
+			</svelte:element>
+		</a>
+		{@render renderElement()}
 	</article>
 {/if}

@@ -13,6 +13,7 @@
 }
 
 .w\:auto {
+	inline-size: fit-content;
 	width: auto;
 }
 
