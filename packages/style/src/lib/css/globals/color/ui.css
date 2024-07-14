@@ -52,13 +52,15 @@
 }
 
 [class*=':neutral'] {
-	--hue: var(--color-theme-neutral);
+	--hue: var(--color-theme-primary);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-contrast: var(--color-chroma-neutral);
-	--shadow: oklch(
-		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	--accent: oklch(
+		var(--lightness-accent-base) var(--color-chroma-neutral) var(--hue)
 	);
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--color-chroma-neutral) var(--hue)
+	);
 
 	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
