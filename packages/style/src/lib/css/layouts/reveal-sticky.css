@@ -48,6 +48,8 @@
 				border: 0;
 				margin: 0;
 				padding: 0;
+				position: absolute;
+				inline-size: 0;
 				white-space: nowrap;
 				overflow: hidden;
 			}

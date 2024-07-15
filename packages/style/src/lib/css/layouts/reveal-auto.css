@@ -29,6 +29,7 @@
 
 .l\:reveal\:auto [aria-expanded='false'] + .content,
 .l\:reveal\:auto form:has([aria-expanded='false']) + .content {
+	position: absolute;
 	border: 0;
 	block-size: 0;
 	inline-size: 0;
