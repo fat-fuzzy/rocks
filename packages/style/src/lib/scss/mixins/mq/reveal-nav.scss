@@ -43,10 +43,7 @@
 			&.collapsed.left,
 			&.collapsed.right {
 				--y-size: var(--y-size-sticky);
-				--x-size: calc(
-					var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
-						var(--outline-offset-settings) * 2
-				);
+				--x-size: calc(--sidebar-width);
 
 				> .content {
 					--x-axis: calc(var(--x-size) * -1);
@@ -57,22 +54,12 @@
 					> * {
 						block-size: fit-content;
 						inline-size: 100%;
-						padding: initial;
-						margin: initial;
+						padding: calc(var(--ui-size-sm) / var(--size-ratio-lg));
+						margin: 0;
 					}
 				}
 			}
 		}
-	}
-}
-
-/**
-	 * This fixes the layout for the reveal nav when the sidebar is collapsedd
-	 * TODO: figure out how to avoid this magic stuff: design change? / code change?
-	 */
-@media screen and (min-width: 1225px) {
-	[class*='reveal-nav'].collapsed {
-		--sidebar-width: calc(var(--layout-sidebar-collapsed) + var(--ui-size-lg));
 	}
 }
 

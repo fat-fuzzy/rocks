@@ -23,7 +23,7 @@
 
 	let nav = {
 		path,
-		title: 'Fat Fuzzy Dev',
+		title: 'Contents',
 		id: 'nav-dev',
 		items,
 		reveal: 'expanded',

@@ -137,33 +137,47 @@ a[class*='card']:hover > *:not(.icon) {
 }
 
 [class*='reveal-nav:'] {
-	max-inline-size: calc(100vw - 2 * var(--outline-offset-nav));
+	flex-basis: var(--sidebar-width);
+}
+
+[class*='reveal-nav:'].collapsed {
+	--sidebar-width: calc(
+		var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
+			var(--outline-offset-settings) * 2
+	);
 }
 
 .reveal-nav\:2xs {
 	container-name: reveal-nav-2xs;
+	--sidebar-width: var(--layout-sidebar-2xs);
 }
 
 .reveal-nav\:xs {
 	container-name: reveal-nav-xs;
+	--sidebar-width: var(--layout-sidebar-xs);
 }
 
 .reveal-nav\:sm {
 	container-name: reveal-nav-sm;
+	--sidebar-width: var(--layout-sidebar-sm);
 }
 
 .reveal-nav\:md {
 	container-name: reveal-nav-md;
+	--sidebar-width: var(--layout-sidebar-md);
 }
 
 .reveal-nav\:lg {
 	container-name: reveal-nav-lg;
+	--sidebar-width: var(--layout-sidebar-lg);
 }
 
 .reveal-nav\:xl {
 	container-name: reveal-nav-xl;
+	--sidebar-width: var(--layout-sidebar-xl);
 }
 
 .reveal-nav\:2xl {
 	container-name: reveal-nav-2xl;
+	--sidebar-width: var(--layout-sidebar-2xl);
 }

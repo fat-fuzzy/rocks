@@ -23,7 +23,7 @@
 
 	let nav ={
 		path,
-		title: 'Fat Fuzzy Log',
+		title: 'Contents',
 		id: 'nav-log',
 		items,
 		reveal: 'expanded',
