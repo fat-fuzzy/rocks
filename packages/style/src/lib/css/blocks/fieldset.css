@@ -2,6 +2,8 @@ fieldset {
 	padding: 0;
 	border: none;
 	border-radius: var(--border-radius-md);
+	max-inline-size: 100%;
+	max-width: 100%;
 
 	legend {
 		font-size: var(--font-size-ui);
@@ -17,6 +19,8 @@ fieldset {
 	> label,
 	> .feedback {
 		inline-size: 100%;
+		max-inline-size: 100%;
+		max-width: 100%;
 	}
 }
 
