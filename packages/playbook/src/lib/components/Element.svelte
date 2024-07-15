@@ -76,7 +76,7 @@
 	let articleContainer = $derived(
 		category !== 'tokens' && category !== 'blocks' && title !== 'Burrito' && title !== 'Stack' && title !== 'Switcher'
 			? `l:${container}:${size}`
-			:  category === 'blocks' ? 'l:center:sm col:center l:stack w:auto': ''
+			:  category === 'blocks' ? 'l:center:xl col:center': ''
 	)
 	let surfaceClass = $derived( `surface:0:neutral`)
 	let settingsClasses = $derived(`settings:${brightness}:${contrast} ${surfaceClass}`)
@@ -150,7 +150,7 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:bare l:stack w:auto ui:${title.toLowerCase()} bg:inherit ${settingsClasses}`}
+		class={`card variant:bare l:stack:md w:auto ui:${title.toLowerCase()} bg:inherit ${settingsClasses}`}
 	>
 		<a
 			href={`${link}/${title}`}

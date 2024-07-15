@@ -136,6 +136,10 @@ a[class*='card']:hover > *:not(.icon) {
 	text-decoration: underline;
 }
 
+[class*='reveal-nav:'] {
+	max-inline-size: calc(100vw - 2 * var(--outline-offset-nav));
+}
+
 .reveal-nav\:2xs {
 	container-name: reveal-nav-2xs;
 }

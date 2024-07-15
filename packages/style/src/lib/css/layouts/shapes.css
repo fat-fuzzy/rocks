@@ -4,24 +4,17 @@
 	align-items: center;
 	justify-content: center;
 	aspect-ratio: 1/1;
-	width: auto;
 	object-fit: contain;
 }
 
-.shape\:round,
-.shape\:round > * {
+.shape\:round {
 	line-height: 1;
 	border-radius: 100vmax;
 }
 
-.shape\:round > *,
-.shape\:square > * {
-	border-radius: var(--border-radius-base);
-}
-
 button[class*='shape:'] {
 	padding: var(--ui-size-sm);
-	block-size: 100%;
+	block-size: fit-content;
 	inline-size: auto;
 }
 
