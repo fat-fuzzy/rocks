@@ -26,6 +26,17 @@
 				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
 			}
 		},
+		"grid": {
+			"item": {
+				"2xs": {"$value": "50px"},
+				"xs": {"$value": "100px"},
+				"sm": {"$value": "200px"},
+				"md": {"$value": "300px"},
+				"lg": {"$value": "400px"},
+				"xl": {"$value": "500px"},
+				"2xl": {"$value": "600px"}
+			}
+		},
 		"breakpoint": {
 			"2xs": {"$value": "320px"},
 			"xs": {"$value": "620px"},
