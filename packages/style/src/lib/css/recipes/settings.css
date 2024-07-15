@@ -1,5 +1,20 @@
+:where(:has(.menu\:settings)) {
+	margin-block: auto;
+}
+
+.menu\:settings {
+	gap: calc(var(--gap) / var(--size-ratio-md));
+	height: fit-content;
+	padding: var(--ui-size-sm);
+	margin: 0 auto;
+}
+
 .menu\:settings *:focus {
 	outline-offset: var(--outline-offset-settings);
+}
+
+.menu\:settings li:hover {
+	background-color: inherit;
 }
 
 .menu\:settings [class*='switch'][aria-pressed] {
@@ -10,27 +25,21 @@
 	background-color: inherit;
 }
 
-.menu\:settings li:hover {
-	background-color: inherit;
-}
-
 .menu\:settings [class*='switch'][aria-pressed]:hover {
 	--lightness: var(--color-lightness-light);
 	background-color: var(--color-bg);
 	box-shadow: var(--shadow-md);
 }
 
-.menu\:settings [class*='svg'] {
+.links\:settings {
+	margin: 0 auto;
+}
+
+.links\:settings a {
+	padding: var(--ui-size-sm);
+}
+
+.links\:settings [class*='svg'] {
 	--icon-size: var(--size-base-2xl);
 	height: var(--icon-size);
-}
-
-.menu\:settings {
-	gap: calc(var(--gap) / var(--size-ratio-md));
-	height: fit-content;
-	padding-inline-start: var(--ui-size-sm);
-}
-
-.menu\:settings a {
-	margin: 0;
 }

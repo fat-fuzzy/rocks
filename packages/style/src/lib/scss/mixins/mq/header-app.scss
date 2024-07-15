@@ -21,6 +21,12 @@
 				margin: 0;
 				box-shadow: unset;
 			}
+
+			.menu\:settings,
+			.links\:settings a {
+				margin: auto;
+				padding: 0;
+			}
 		}
 
 		.header-app [class*='l:main'] nav.l\:reveal\:auto.bp\:#{$size} {

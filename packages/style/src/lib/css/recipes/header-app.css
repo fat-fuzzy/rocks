@@ -79,6 +79,7 @@
 		background-color: inherit;
 		border-inline-start: var(--border-width-xl) solid var(--shade);
 		inline-size: 100%;
+		padding: 0 var(--outline-offset-nav);
 	}
 
 	a {

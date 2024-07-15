@@ -137,7 +137,7 @@
 							},
 						}
 					: SWITCH_MACHINE}
-				<div class="l:frame:round maki:block:2xs">
+				<div class="l:frame:round">
 					<Switch
 						id={`${settingsId}-${id}`}
 						{name}
@@ -153,12 +153,12 @@
 				</div>
 			{/each}
 		</form>
-		<menu class="menu:settings end">
+		<menu class="links:settings end">
 			{#each items.links as { id, title, url, shape, size, asset }}
 				{@const assetValue = SVG_ASSETS[brightness]
 					? SVG_ASSETS[brightness][id]
 					: ''}
-				<li class="l:frame:round maki:block:2xs">
+				<li class="l:frame:round">
 					<a
 						class={`${variant} font:${size} shape:${shape} ${color}`}
 						href={url}
