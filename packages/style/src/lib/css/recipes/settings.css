@@ -1,4 +1,4 @@
-:where(:has(.menu\:settings)) {
+.header-app *:where(:has(.menu\:settings)) {
 	margin-block: auto;
 }
 
