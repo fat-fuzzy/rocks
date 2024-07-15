@@ -8,6 +8,15 @@
 	margin-inline: auto;
 }
 
+.ui\:button,
+.ui\:expand,
+.ui\:switch,
+.ui\:toggle {
+	flex-grow: 0;
+	flex-basis: var(--sidebar-size, var(--layout-sidebar-md));
+	max-inline-size: var(--sidebar-size, var(--layout-sidebar-md));
+}
+
 @media screen and (min-width: 620px) {
 	.page-header .ui\:menu {
 		margin-inline: var(--ui-size);
@@ -15,34 +24,12 @@
 	}
 }
 
-.ui\:header,
-.ui\:sketch {
-	grid-row: 1;
-	z-index: 0;
-	grid-column-start: 1;
-}
-
-@media screen and (min-width: 620px) {
-	.ui\:header,
-	.ui\:sketch {
-		grid-column-end: 3;
-	}
-}
-
-.ui\:sidebar {
-	grid-row: 1;
-	grid-column-start: 1;
-	z-index: 0;
-}
-
 @media screen and (min-width: 935px) {
-	.ui\:sidebar {
-		grid-column-end: 2;
-	}
-}
-
-@media screen and (min-width: 1360px) {
-	.ui\:sidebar {
-		grid-column-end: 3;
+	.ui\:button,
+	.ui\:expand,
+	.ui\:switch,
+	.ui\:toggle {
+		flex-basis: var(--sidebar-size, var(--layout-sidebar-lg));
+		max-inline-size: var(--sidebar-size, var(--layout-sidebar-lg));
 	}
 }

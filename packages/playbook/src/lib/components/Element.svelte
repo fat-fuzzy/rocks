@@ -70,13 +70,13 @@
 
 	let sectionContainer = $derived(
 		category !== 'tokens'
-			? `l:${container}:${size}`
+			? `l:${container}:${size} th:sm`
 			: ''
 	)
 	let articleContainer = $derived(
 		category !== 'tokens' && category !== 'blocks' && title !== 'Burrito' && title !== 'Stack' && title !== 'Switcher'
 			? `l:${container}:${size}`
-			:  category === 'blocks' ? 'l:center:xl col:center': ''
+			: ''
 	)
 	let surfaceClass = $derived( `surface:0:neutral`)
 	let settingsClasses = $derived(`settings:${brightness}:${contrast} ${surfaceClass}`)

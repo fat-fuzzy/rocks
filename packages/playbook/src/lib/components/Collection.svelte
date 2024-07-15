@@ -34,7 +34,7 @@
 		redirect,
 		size = 'md',
 		color = 'primary:100',
-		layout = 'grid',
+		layout = 'switcher',
 		category,
 		markdowns,
 		tab,

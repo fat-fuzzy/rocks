@@ -36,15 +36,18 @@
 	}
 
 	[aria-expanded='true'] + .content {
+		--y-axis: var(--size-ui-header-height) + var(--outline-offset-nav);
 		display: flex;
 		flex-direction: column;
 		block-size: fit-content;
 		inline-size: 100vw;
-		top: calc(var(--size-ui-header-height) + var(--outline-offset-nav));
+		top: var(--y-axis);
 		color: var(--ink);
 		background-color: var(--shade);
 		padding: 0;
 		margin-inline-start: calc(-1 * var(--gap));
+		max-block-size: calc(100vh - var(--y-axis));
+		overflow: auto;
 	}
 }
 

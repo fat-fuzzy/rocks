@@ -49,12 +49,12 @@
 
 	let layoutClasses = $derived(styleHelper.getLayoutStyles({
 			color,
-			size,
+			size: '2xs',
 			height,
 			align,
 			asset,
 			variant,
-			layout,
+			layout: 'stack',
 			position,
 			breakpoint,
 			background,
