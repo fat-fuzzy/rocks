@@ -16,7 +16,7 @@
 		formaction,
 		actionPath,
 		redirect,
-		layout = 'stack',
+		layout,
 		container = 'card',
 		color,
 		size,

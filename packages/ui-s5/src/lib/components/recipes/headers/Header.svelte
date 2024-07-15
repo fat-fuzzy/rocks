@@ -26,49 +26,53 @@
 	let contrast = $derived(app.settings.contrast)
 	let reveal = $derived(navReveal.reveal)
 	let headerClass = $derived(
-		`${className} l:sidebar layer:2 sticky:top justify:start settings:${brightness}:${contrast}`,
+		`${className} l:flex layer:2 sticky:top justify:start settings:${brightness}:${contrast}`,
 	)
 </script>
 
 <header class={headerClass}>
 	<div class="l:main">
 		<SkipLinks />
-		<RevealAuto
-			id={`${id}-primary-nav`}
-			element="nav"
-			layout="main"
-			title="Menu"
-			size="xs"
-			variant="outline"
-			asset="home"
-			justify="start"
-			{reveal}
-			{breakpoint}
-			{formaction}
-			{redirect}
-			{actionPath}
-		>
-			<ul class="l:switcher:md">
-				<li aria-current={path === '/' ? 'page' : undefined}>
-					<a
-						data-sveltekit-preload-data
-						href="/"
-						onclick={handleClickOutsideMainNav}>Home</a
-					>
-				</li>
-				{#each items.links as { slug, title }}
-					<li aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}>
+		{#key path}
+			<RevealAuto
+				id={`${id}-primary-nav`}
+				element="nav"
+				layout="main"
+				title="Menu"
+				size="xs"
+				variant="outline"
+				asset="home"
+				justify="start"
+				{reveal}
+				{breakpoint}
+				{formaction}
+				{redirect}
+				{actionPath}
+			>
+				<ul class="l:switcher:md">
+					<li aria-current={path === '/' ? 'page' : undefined}>
 						<a
 							data-sveltekit-preload-data
-							href={`/${slug}`}
-							onclick={handleClickOutsideMainNav}
+							href="/"
+							onclick={handleClickOutsideMainNav}>Home</a
 						>
-							{title}
-						</a>
 					</li>
-				{/each}
-			</ul>
-		</RevealAuto>
+					{#each items.links as { slug, title }}
+						<li
+							aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}
+						>
+							<a
+								data-sveltekit-preload-data
+								href={`/${slug}`}
+								onclick={handleClickOutsideMainNav}
+							>
+								{title}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</RevealAuto>
+		{/key}
 	</div>
 	<Settings
 		{path}
