@@ -359,7 +359,7 @@ const layoutFamily = {
 	container: 'card',
 	size: 'xs',
 	variant: 'card',
-	props: ['layout', 'threshold', 'breakpoint'],
+	props: ['size', 'layout', 'threshold', 'breakpoint'],
 }
 
 const contentFamily = {

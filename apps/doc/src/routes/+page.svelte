@@ -22,7 +22,7 @@
 />
 
 <header>
-	<div class="l:text:md l:center card:xl">
+	<div class="l:text:md l:center:sm card:xl">
 		<div class="l:frame">
 			<img src={pageImage.src} alt={pageImage.alt} />
 		</div>
@@ -30,7 +30,7 @@
 	</div>
 </header>
 
-<section class="l:text:2xl text:center l:center">
+<section class="l:text:2xl text:center l:center:sm">
 	<h2>✨ Highlights</h2>
 	<div class="l:switcher:sm bp:xs card:2xl">
 		<article class={`card:lg text:center emoji:rainbow ${variant}`}>
