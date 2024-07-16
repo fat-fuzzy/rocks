@@ -20,7 +20,7 @@
 
 	let brightness = $derived(app.settings.brightness)
 	let contrast = $derived(app.settings.contrast)
-	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
+	let pageClass = $derived(utils.format.getClassNameFromPathname($page.url.pathname))
 	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
 	let footerClass = "l:center font:sm"
 
