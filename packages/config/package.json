@@ -13,14 +13,14 @@
 		".": "./index.js"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "^6.7.4",
-		"@typescript-eslint/parser": "^6.7.4",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-config-turbo": "^1.10.15",
-		"eslint-plugin-svelte": "^2.34.0",
-		"prettier": "^2.8.0",
+		"@typescript-eslint/eslint-plugin": "^6.21.0",
+		"@typescript-eslint/parser": "^6.21.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-config-turbo": "^1.13.4",
+		"eslint-plugin-svelte": "^2.42.0",
+		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",
-		"tslib": "^2.6.2",
-		"typescript": "^5.2.2"
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.3"
 	}
 }
