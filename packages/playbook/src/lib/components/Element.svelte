@@ -70,7 +70,7 @@
 
 	let sectionContainer = $derived(
 		category !== 'tokens'
-			? `l:${container}:${size} th:sm`
+			? `l:${container}:${size}`
 			: ''
 	)
 	let articleContainer = $derived(
