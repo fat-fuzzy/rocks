@@ -30,7 +30,7 @@ function formatHref(path: string, slug: string) {
 }
 
 function getClassNameFromPathname(path: string) {
-	return path === '/' ? 'home' : path.slice(1, path.length)
+	return path === '/' ? 'page:home' : `page:${path.slice(1, path.length)}`
 }
 
 function capitalize(category: string) {

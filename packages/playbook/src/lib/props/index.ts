@@ -25,8 +25,6 @@ function getCategoryMarkdowns(category: string, markdowns: Markdowns) {
 			return markdowns.layouts
 		case 'recipes':
 			return markdowns.recipes
-		case 'graphics':
-			return markdowns.graphics
 		default:
 			return []
 	}

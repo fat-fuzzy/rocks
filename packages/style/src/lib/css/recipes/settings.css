@@ -6,7 +6,6 @@
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
 	padding: var(--ui-size-sm);
-	margin: 0 auto;
 }
 
 .menu\:settings *:focus {
@@ -36,7 +35,7 @@
 }
 
 .links\:settings a {
-	padding: var(--ui-size-sm);
+	padding: var(--ui-size-sm) 0;
 }
 
 .links\:settings [class*='svg'] {

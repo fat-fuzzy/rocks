@@ -12,8 +12,8 @@
 	}
 
 	let {
-		title = 'SidebarPage',
-		description = `Sidebar page layout`,
+		title = 'PageMain',
+		description = `Basic page layout`,
 		page,
 		size,
 		header,

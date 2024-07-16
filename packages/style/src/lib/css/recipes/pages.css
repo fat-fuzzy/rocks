@@ -1,0 +1,9 @@
+.page\:home header > * {
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+	.page\:home header > * {
+		--max-inline-size-center: 65vw;
+	}
+}

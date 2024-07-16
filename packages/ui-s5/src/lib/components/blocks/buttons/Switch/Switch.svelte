@@ -50,7 +50,7 @@
 			justify,
 			asset,
 			variant,
-			layout: 'switcher',
+			layout: shape ? undefined: 'switcher',
 			dimensions,
 		}))
 

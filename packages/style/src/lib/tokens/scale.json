@@ -57,7 +57,7 @@
 			},
 			"footer": {
 				"height": {
-					"$value": "calc(var(--font-size-body) * var(--size-ratio-md) + 2 * var(--ui-size-sm))"
+					"$value": "var(--font-size-body)"
 				}
 			}
 		}
