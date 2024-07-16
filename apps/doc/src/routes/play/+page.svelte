@@ -12,10 +12,9 @@
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
 </script>
 
-<PageMain {title} {description}>
+<PageMain {title} {description} size="lg">
 	{#snippet header()}
-		<h1 class="w:full">Fat Fuzzy {title}</h1>
-		<h2><small>Tags</small></h2>
+		<h1 class="w:full maki:block:md">Fat Fuzzy {title}</h1>
 	{/snippet}
 	<p>
 		Sketches are exercises from <a

@@ -46,7 +46,7 @@
 
 <div class={layoutClasses}>
 	<div class="l:flex nowrap justify:between">
-		<a data-sveltekit-preload-data href={href} class="card:xs font:md">
+		<a data-sveltekit-preload-data href={href} class="font:md">
 			{title}
 		</a>
 		<Expand

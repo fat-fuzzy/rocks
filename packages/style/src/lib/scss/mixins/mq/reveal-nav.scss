@@ -40,14 +40,14 @@
 				}
 			}
 
-			&.collapsed.left,
-			&.collapsed.right {
+			> .collapsed {
 				--y-size: var(--y-size-sticky);
 				--x-size: calc(--sidebar-width);
 
 				> .content {
 					--x-axis: calc(var(--x-size) * -1);
 					inline-size: 100%;
+					block-size: var(--y-size);
 				}
 
 				ul {
