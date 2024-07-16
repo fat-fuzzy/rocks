@@ -7,7 +7,7 @@ import './context.css' /* Use for header context box */
 
 import './settings.css' /* A Settings menu component (for user input to adjust brightness, contrast, language, ...) */
 import './header-app.css' /* Use for main app header */
-import './layout-page.css' /* Define page layout varians here */
+import './pages.css' /* Define page layout varians here */
 import './footer.css' /* Use for main app footer */
 import './article.css' /* Use for articles (header + section(s) + optional footer) */
 

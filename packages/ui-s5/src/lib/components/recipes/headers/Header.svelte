@@ -12,7 +12,6 @@
 		actionPath,
 		redirect,
 		items,
-		app,
 	}: HeaderProps = $props()
 	let className = 'header-app'
 
@@ -22,11 +21,9 @@
 		navReveal = {reveal: 'collapsed'}
 	}
 
-	let brightness = $derived(app.settings.brightness)
-	let contrast = $derived(app.settings.contrast)
 	let reveal = $derived(navReveal.reveal)
 	let headerClass = $derived(
-		`${className} l:flex layer:2 sticky:top justify:start settings:${brightness}:${contrast}`,
+		`${className} l:flex layer:2 sticky:top justify:start`,
 	)
 </script>
 

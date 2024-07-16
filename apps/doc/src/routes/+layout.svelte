@@ -21,8 +21,8 @@
 	let brightness = $derived(app.settings.brightness)
 	let contrast = $derived(app.settings.contrast)
 	let pageClass = utils.format.getClassNameFromPathname($page.url.pathname)
-	let mainClass =  $derived(`${pageClass} settings:${brightness}:${contrast}`)
-	let footerClass =  $derived(`l:center font:sm settings:${brightness}:${contrast}`)
+	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
+	let footerClass = "l:center font:sm"
 
 	function updateSettings(event) {
 		switch (event.id) {
@@ -44,25 +44,26 @@
 	})
 </script>
 
-<Header
-	id="doc"
-	path={$page.url.pathname}
-	actionPath="/"
-	formaction="toggleNav"
-	items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
-	breakpoint="sm"
-	app={{settings: app.settings}}
-/>
-<main id="main" class={mainClass}>
-	{#if children}
-		{@render children()}
-	{:else}
-		<p>Nothing to see here</p>
-	{/if}
-</main>
+<div class={themeClass}>
+	<Header
+		id="doc"
+		path={$page.url.pathname}
+		actionPath="/"
+		formaction="toggleNav"
+		items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
+		breakpoint="sm"
+	/>
+	<main id="main">
+		{#if children}
+			{@render children()}
+		{:else}
+			<p>Nothing to see here</p>
+		{/if}
+	</main>
 
-<footer class={footerClass}>
-	<p>
-		👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
-	</p>
-</footer>
+	<footer class={footerClass}>
+		<p>
+			👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
+		</p>
+	</footer>
+</div>
