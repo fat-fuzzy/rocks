@@ -21,9 +21,7 @@
 		size,
 		shape,
 		variant = 'fill',
-		container,
 		dimensions,
-		layout = 'switcher',
 		type = 'submit',
 		children,
 		init,
@@ -51,10 +49,10 @@
 			shape,
 			align,
 			justify,
+			place,
 			asset,
 			variant,
-			layout,
-			container,
+			layout: 'switcher',
 			dimensions,
 		}))
 

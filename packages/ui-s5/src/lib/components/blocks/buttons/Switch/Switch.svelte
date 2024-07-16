@@ -20,9 +20,7 @@
 		size,
 		shape,
 		variant,
-		container,
 		dimensions,
-		layout = 'switcher',
 		type = 'submit',
 		onclick,
 		init,
@@ -52,8 +50,7 @@
 			justify,
 			asset,
 			variant,
-			layout,
-			container,
+			layout: 'switcher',
 			dimensions,
 		}))
 
