@@ -44,7 +44,7 @@
 
 	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
-	let layoutClass = $derived(category === 'tokens' ? `l:stack:${size}` : `l:${layout}:${size}`)
+	let layoutClass = $derived(category === 'tokens' ? `l:stack:${size}` : category === 'recipes' ? `l:${layout}:lg` : `l:${layout}:${size}`)
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
 	let categories = $derived(category === 'recipes'
 			? ['blocks', 'layouts', 'shared']

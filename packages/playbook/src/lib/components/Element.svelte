@@ -68,15 +68,13 @@
 	let size = $derived(containerStyles.size ?? '') // Container size
 	let status = $derived(elementStyles.status ?? '')
 
-	let sectionContainer = $derived(
-		category !== 'tokens'
-			? `l:${container}:${size}`
-			: ''
+	let sectionContainer = $derived(category === 'blocks' ? 'col:center'
+		: category !== 'tokens'
+		? `l:${container}:${size}` : ''
 	)
-	let articleContainer = $derived(
-		category !== 'tokens' && category !== 'blocks' && title !== 'Burrito' && title !== 'Stack' && title !== 'Switcher'
-			? `l:${container}:${size}`
-			: ''
+	let articleContainer = $derived(category === 'blocks' ? 'col:center'
+		: category !== 'tokens' && category !== 'blocks' && title !== 'Burrito' && title !== 'Stack' && title !== 'Switcher'
+		? `l:${container}:${size}` : ''
 	)
 	let surfaceClass = $derived( `surface:0:neutral`)
 	let settingsClasses = $derived(`settings:${brightness}:${contrast} ${surfaceClass}`)

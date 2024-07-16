@@ -21,7 +21,8 @@
 	}: Props = $props()
 
 	let currentPage = $state(page ?? title)
-	let headerClass = $derived(`l:sidebar:${size} align:center maki:block:lg`)
+	let layoutClass= $derived(size ? `l:sidebar:${size}` : `l:sidebar`)
+	let headerClass = $derived(`${layoutClass} text:left maki:block:lg`)
 </script>
 
 <Head page={currentPage} {title} {description} />

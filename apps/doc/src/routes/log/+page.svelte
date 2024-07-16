@@ -10,7 +10,7 @@
 	let description = 'Log of Architectural decisions'
 </script>
 
-<PageMain {title} {description}>
+<PageMain {title} {description} size="lg">
 	<div class="l:text maki:block:2xs">
 		<ul class="l:stack:lg unstyled">
 			{#each markdowns as { meta }}

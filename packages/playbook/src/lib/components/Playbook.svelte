@@ -30,7 +30,7 @@
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
 	const recipeNames = Object.keys(recipes).sort(sortAsc)
-	let title = 'Fat Fuzzy UI' // TODO : Fix title in children components: add breadcrumb nav component ?
+	let title = 'UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
 
