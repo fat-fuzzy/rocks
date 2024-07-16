@@ -8,28 +8,9 @@
 	margin-inline: auto;
 }
 
-.ui\:button,
-.ui\:expand,
-.ui\:switch,
-.ui\:toggle {
-	flex-grow: 0;
-	flex-basis: var(--sidebar-size, var(--layout-sidebar-md));
-	max-inline-size: var(--sidebar-size, var(--layout-sidebar-md));
-}
-
 @media screen and (min-width: 620px) {
 	.page-header .ui\:menu {
 		margin-inline: var(--ui-size);
 		margin-block-start: var(--ui-size);
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.ui\:button,
-	.ui\:expand,
-	.ui\:switch,
-	.ui\:toggle {
-		flex-basis: var(--sidebar-size, var(--layout-sidebar-lg));
-		max-inline-size: var(--sidebar-size, var(--layout-sidebar-lg));
 	}
 }
