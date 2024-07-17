@@ -1,5 +1,14 @@
 <script>
-	const hues = ['neutral', 'warning', 'primary', 'info', 'accent', 'success', 'highlight', 'danger']
+	const hues = [
+		'neutral',
+		'warning',
+		'primary',
+		'info',
+		'accent',
+		'success',
+		'highlight',
+		'danger',
+	]
 	const shades = ['000', '100', '200', '300', '400', '500', '600']
 </script>
 
@@ -7,7 +16,9 @@
 	<h2>CSS Pattern library</h2>
 	<p>
 		CSS patterns from the package
-		<a href="https://github.com/fat-fuzzy/lab/tree/dev/packages/style">@fat-fuzzy/style</a>
+		<a href="https://github.com/fat-fuzzy/lab/tree/dev/packages/style"
+			>@fat-fuzzy/style</a
+		>
 	</p>
 </div>
 
@@ -81,27 +92,66 @@
 				<button class="bg:danger variant:bare">danger bare</button>
 			</div>
 			<div class="l:flex align:end">
-				<button class="bg:info variant:bare shape:round emoji:info" title="info"></button>
-				<button class="bg:neutral variant:bare shape:round emoji:default" title="bunny"></button>
-				<button class="bg:warning variant:bare shape:round emoji:warning" title="warning"></button>
-				<button class="bg:success variant:bare shape:round emoji:success" title="success"></button>
-				<button class="bg:danger variant:bare shape:round emoji:error" title="danger"></button>
+				<button class="bg:info variant:bare shape:round emoji:info" title="info"
+				></button>
+				<button
+					class="bg:neutral variant:bare shape:round emoji:default"
+					title="bunny"
+				></button>
+				<button
+					class="bg:warning variant:bare shape:round emoji:warning"
+					title="warning"
+				></button>
+				<button
+					class="bg:success variant:bare shape:round emoji:success"
+					title="success"
+				></button>
+				<button
+					class="bg:danger variant:bare shape:round emoji:error"
+					title="danger"
+				></button>
 			</div>
 			<div class="l:flex align:end">
-				<button class="bg:info variant:outline shape:round emoji:info" title="info"></button>
-				<button class="bg:neutral variant:outline shape:round emoji:default" title="bunny"></button>
-				<button class="bg:warning variant:outline shape:round emoji:warning" title="warning"
+				<button
+					class="bg:info variant:outline shape:round emoji:info"
+					title="info"
 				></button>
-				<button class="bg:success variant:outline shape:round emoji:success" title="success"
+				<button
+					class="bg:neutral variant:outline shape:round emoji:default"
+					title="bunny"
 				></button>
-				<button class="bg:danger variant:outline shape:round emoji:error" title="error"></button>
+				<button
+					class="bg:warning variant:outline shape:round emoji:warning"
+					title="warning"
+				></button>
+				<button
+					class="bg:success variant:outline shape:round emoji:success"
+					title="success"
+				></button>
+				<button
+					class="bg:danger variant:outline shape:round emoji:error"
+					title="error"
+				></button>
 			</div>
 			<div class="l:flex align:end">
-				<button class="bg:info:fill shape:round emoji:info" title="info"></button>
-				<button class="bg:neutral variant:fill shape:round emoji:default" title="bunny"></button>
-				<button class="bg:warning variant:fill shape:round emoji:warning" title="warning"></button>
-				<button class="bg:success variant:fill shape:round emoji:success" title="success"></button>
-				<button class="bg:danger variant:fill shape:round emoji:error" title="danger"></button>
+				<button class="bg:info:fill shape:round emoji:info" title="info"
+				></button>
+				<button
+					class="bg:neutral variant:fill shape:round emoji:default"
+					title="bunny"
+				></button>
+				<button
+					class="bg:warning variant:fill shape:round emoji:warning"
+					title="warning"
+				></button>
+				<button
+					class="bg:success variant:fill shape:round emoji:success"
+					title="success"
+				></button>
+				<button
+					class="bg:danger variant:fill shape:round emoji:error"
+					title="danger"
+				></button>
 			</div>
 		</div>
 	</div>
@@ -111,32 +161,36 @@
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
-				aspernatur voluptatum labore dolores perspiciatis.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+				doloremque modi veniam aspernatur voluptatum labore dolores
+				perspiciatis.
 			</p>
 		</div>
 		<div class="bg:primary:000 card:outline">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
-				aspernatur voluptatum labore dolores perspiciatis.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+				doloremque modi veniam aspernatur voluptatum labore dolores
+				perspiciatis.
 			</p>
 		</div>
 		<div class="bg:accent:000 card box:dotted">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
-				aspernatur voluptatum labore dolores perspiciatis.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+				doloremque modi veniam aspernatur voluptatum labore dolores
+				perspiciatis.
 			</p>
 		</div>
 		<div class="bg:higlight:000 card dotted">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque doloremque modi veniam
-				aspernatur voluptatum labore dolores perspiciatis.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+				doloremque modi veniam aspernatur voluptatum labore dolores
+				perspiciatis.
 			</p>
 		</div>
 	</article>

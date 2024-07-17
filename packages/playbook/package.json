@@ -9,12 +9,12 @@
 		"dev": "vite dev",
 		"build": "vite build && svelte-package",
 		"preview": "vite preview",
-		"test": "npm run test:integration && npm run test:unit",
+		"test": "pnpm test:e2e",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
-		"test:integration": "playwright test",
+		"test:e2e": "playwright test",
 		"test:unit": "vitest"
 	},
 	"main": "./dist/index.js",
@@ -40,6 +40,7 @@
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",
+		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui-s5": "workspace:*",
 		"@playwright/test": "^1.45.2",
 		"@typescript-eslint/eslint-plugin": "^7.16.1",

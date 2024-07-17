@@ -1,12 +1,12 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
+import type {PlaywrightTestConfig} from '@playwright/test'
 
 const config: PlaywrightTestConfig = {
 	webServer: {
-		command: 'npm run build && npm run preview',
-		port: 4173
+		command: 'pnpm build && pnpm preview', // This will run tests in watch mode
+		port: 4173,
 	},
-	testDir: 'tests',
-	testMatch: /(.+\.)?(test|spec)\.[jt]s/
-};
+	testDir: 'tests/e2e',
+	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
+}
 
-export default config;
+export default config
