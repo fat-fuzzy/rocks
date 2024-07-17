@@ -25,7 +25,7 @@
 			WebGL Fundamentals 1 & 2
 		</a>
 	</p>
-	<div class="l:grid:md maki:block">
+	<div class="l:grid:sm maki:block">
 		{#each tags as tag}
 			<article class="card:md l:stack size:sm surface:1:primary">
 				<h3 class="surface:1:accent"><small class='maki:inline'>{tag}</small></h3>

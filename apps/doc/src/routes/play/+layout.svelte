@@ -15,13 +15,21 @@ const {LayoutSidebar} = content
 
 	let sketches = $state($page.data.sketches)
 	let app = $derived(fatFuzzyStore.app)
-	let path = '/play'
+	let path = ''
+
+	let items = [
+		{
+			slug: 'play',
+			title: 'Play',
+			items: sketches,
+		},
+	]
 
 	let nav ={
 		path,
-		title: 'Sketches',
+		title: 'Content',
 		id: 'nav-sketches',
-		items: sketches,
+		items,
 		reveal: 'expanded',
 		breakpoint: 'sm',
 		size: 'sm',

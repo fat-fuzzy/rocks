@@ -30,7 +30,6 @@
 	const blockNames = Object.keys(blocks).sort(sortAsc)
 	const layoutNames = Object.keys(layouts).sort(sortAsc)
 	const recipeNames = Object.keys(recipes).sort(sortAsc)
-	let title = 'UI' // TODO : Fix title in children components: add breadcrumb nav component ?
 	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
 
@@ -42,10 +41,11 @@
 	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
 	playbookStore.sidebarReveal = ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE
 
+	let path = ''
 	let items = [
 		{
 			slug: 'ui',
-			title,
+			title: 'Library',
 			items: [
 				{
 					slug: 'tokens',
@@ -71,18 +71,13 @@
 					asset: 'recipes',
 					items: recipeNames.map((c) => ({slug: c, title: c})),
 				},
-				// {
-				// 	slug: 'graphics',
-				// 	title: 'Graphics',
-				// 	items: graphicsNames.map((c) => ({slug: c, title: c})),
-				// },
 			],
 		},
 	]
 
 	let nav = {
-		path: '',
-		title: 'Library',
+		path,
+		title: 'Content',
 		id: 'nav-page',
 		items,
 		reveal: 'expanded',
@@ -103,7 +98,7 @@
 	})
 </script>
 
-<LayoutSidebar {nav} {redirect} path='' {app}>
+<LayoutSidebar {nav} {redirect} {path} {app}>
 	{#if children}
 		{@render children()}
 	{/if}

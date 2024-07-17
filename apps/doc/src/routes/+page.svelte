@@ -14,12 +14,12 @@
 		src: theme === 1 ? introDay : introNight,
 		alt: `A drawing: "Creating a web app. Where to Start ?" asks a girl underneath a large cloud with a laptop connected to it and displaying an app in a browser. The cloud contains three boards: to the left is the CLIENT, which contains HTML, CSS, and JavaScript; to the right are RESOURCES which contain backend data and application logic; in the middle is the API, which connects the CLIENT to the RESOURCES using HTTP, URLs, JSON, REST, GraphQL, and enables calls to CRUD operations.`,
 	}
-	let variant = 'surface:3:primary'
+	let variant = 'surface:2:primary'
 </script>
 
-<PageMain {title} {description} size="md">
+<PageMain {title} {description} size="md" justify="center">
 	{#snippet header()}
-		<div class="l:text:md l:center:2xl card:md">
+		<div class="l:text:md card:md">
 			<div class="l:frame">
 				<img src={pageImage.src} alt={pageImage.alt} />
 			</div>
@@ -27,14 +27,14 @@
 		</div>
 	{/snippet}
 
-	<section class="l:text:md text:center l:center:2xl card:md">
-		<h2>✨ Highlights</h2>
-		<ul class="l:switcher:sm bp:xs card:2xl" role="group">
-			<li class={`card:lg text:center emoji:rainbow ${variant}`}>
-				<a data-sveltekit-preload-data href="/ui" class="card font:md"> UI </a>
+	<section class="l:center:md">
+		<h2 class="text:center">✨ Highlights</h2>
+		<ul class="l:switcher:sm maki:block:2xl" role="group">
+			<li class={`card:lg text:center emoji:vader ${variant}`}>
+				<a data-sveltekit-preload-data href="/log" class="card font:md">SKETCHES</a>
 			</li>
-			<li class={`card:lg text:center emoji:log ${variant}`}>
-				<a data-sveltekit-preload-data href="/log" class="card font:md">LOG</a>
+			<li class={`card:lg text:center emoji:rainbow ${variant}`}>
+				<a data-sveltekit-preload-data href="/ui" class="card font:md">COMPONENTS</a>
 			</li>
 		</ul>
 	</section>
