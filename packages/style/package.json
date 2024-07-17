@@ -20,7 +20,7 @@
 		"lint:prettier": "prettier --check --ignore-path=../../.prettierignore . && eslint \".\"",
 		"lint": "pnpm lint:css; pnpm lint:scss; pnpm lint:prettier > ./logs/lint.log",
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"@fat-fuzzy/style: no tests specified\""
 	},
 	"main": "dist/main.css",
 	"files": [

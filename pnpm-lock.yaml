@@ -244,6 +244,9 @@ importers:
       '@fat-fuzzy/lib':
         specifier: workspace:*
         version: link:../lib
+      '@fat-fuzzy/style':
+        specifier: workspace:*
+        version: link:../style
       '@fat-fuzzy/ui-s5':
         specifier: workspace:*
         version: link:../ui-s5
@@ -512,7 +515,7 @@ importers:
         version: 3.2.2(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))
       '@sveltejs/enhanced-img':
         specifier: ^0.3.0
-        version: 0.3.0(rollup@4.18.1)(svelte@5.0.0-next.184)
+        version: 0.3.0(rollup@4.12.0)(svelte@5.0.0-next.184)
       '@sveltejs/kit':
         specifier: ^2.5.18
         version: 2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2))
@@ -7466,13 +7469,13 @@ snapshots:
     optionalDependencies:
       rollup: 4.0.2
 
-  '@rollup/pluginutils@5.1.0(rollup@4.18.1)':
+  '@rollup/pluginutils@5.1.0(rollup@4.12.0)':
     dependencies:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
     optionalDependencies:
-      rollup: 4.18.1
+      rollup: 4.12.0
 
   '@rollup/rollup-android-arm-eabi@4.0.2':
     optional: true
@@ -7675,11 +7678,11 @@ snapshots:
       worktop: 0.8.0-next.18
       wrangler: 3.64.0(@cloudflare/workers-types@4.20240712.0)
 
-  '@sveltejs/enhanced-img@0.3.0(rollup@4.18.1)(svelte@5.0.0-next.184)':
+  '@sveltejs/enhanced-img@0.3.0(rollup@4.12.0)(svelte@5.0.0-next.184)':
     dependencies:
       magic-string: 0.30.10
       svelte-parse-markup: 0.1.5(svelte@5.0.0-next.184)
-      vite-imagetools: 7.0.4(rollup@4.18.1)
+      vite-imagetools: 7.0.4(rollup@4.12.0)
     transitivePeerDependencies:
       - rollup
       - svelte
@@ -12285,9 +12288,9 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite-imagetools@7.0.4(rollup@4.18.1):
+  vite-imagetools@7.0.4(rollup@4.12.0):
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.18.1)
+      '@rollup/pluginutils': 5.1.0(rollup@4.12.0)
       imagetools-core: 7.0.1
       sharp: 0.33.4
     transitivePeerDependencies:

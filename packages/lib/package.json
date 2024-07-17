@@ -9,8 +9,8 @@
 	"scripts": {
 		"build": "rollup -c",
 		"dev": "rollup -c -w",
-		"pretest": "npm run build",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"pretest": "pnpm build",
+		"test": "echo \"@fat-fuzzy/lib: no tests specified\""
 	},
 	"exports": {
 		"./package.json": "./package.json",
