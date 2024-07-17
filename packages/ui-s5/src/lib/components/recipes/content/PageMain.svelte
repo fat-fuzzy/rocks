@@ -8,6 +8,7 @@
 		page?: string
 		size?: string
 		header?: Snippet
+		layout?: string
 		justify?: string
 		children: Snippet
 	}
@@ -17,6 +18,7 @@
 		description = `Basic page layout`,
 		page,
 		size,
+		layout='sidebar',
 		justify,
 		header,
 		children,
@@ -24,7 +26,7 @@
 
 	let currentPage = $state(page ?? title)
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass= $derived(size ? `l:sidebar:${size}` : `l:sidebar`)
+	let layoutClass= $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
 	let headerClass = $derived(`${layoutClass} ${justifyClass} maki:block:lg`)
 </script>
 
