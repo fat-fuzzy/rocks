@@ -71,11 +71,6 @@
 					asset: 'recipes',
 					items: recipeNames.map((c) => ({slug: c, title: c})),
 				},
-				// {
-				// 	slug: 'graphics',
-				// 	title: 'Graphics',
-				// 	items: graphicsNames.map((c) => ({slug: c, title: c})),
-				// },
 			],
 		},
 	]

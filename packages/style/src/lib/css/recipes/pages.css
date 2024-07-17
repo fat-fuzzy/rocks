@@ -3,7 +3,12 @@
 }
 
 @media screen and (min-width: 768px) {
-	.page\:home header > * {
-		--max-inline-size-center: 65vw;
+	.page\:home main {
+		header > *,
+		> section {
+			--max-inline-size-center: 55vw;
+			max-inline-size: var(--max-inline-size-center);
+			margin-inline: auto;
+		}
 	}
 }
