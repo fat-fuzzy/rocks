@@ -23,7 +23,7 @@
 
 	let nav = {
 		path,
-		title: 'Contents',
+		title: 'Content',
 		id: 'nav-dev',
 		items,
 		reveal: 'expanded',
