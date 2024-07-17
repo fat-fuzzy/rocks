@@ -11,5 +11,11 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# CSS side effects
+# === CSS side effects
 /src/lib/styles/css/
+
+# === Playwright ignores
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
