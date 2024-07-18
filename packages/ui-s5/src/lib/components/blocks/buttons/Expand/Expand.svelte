@@ -79,6 +79,7 @@
 	aria-expanded={store.expanded}
 	aria-controls={controls}
 	onclick={handleClick}
+	data-testid={id}
 >
 {#if children}
 	{@render children()}

@@ -39,8 +39,9 @@
 </script>
 
 <ul
-	id={`${id}-depth-${depth}`}
+	{id}
 	class={`${containerClass} ${gridClass} ${depthClass}`}
+	data-testid={id}
 >
 	{#each items as item (item.slug)}
 		{@const {slug, title, asset} = item}
