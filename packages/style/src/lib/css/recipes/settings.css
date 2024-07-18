@@ -37,8 +37,3 @@
 .links\:settings a {
 	padding: var(--ui-size-sm) 0;
 }
-
-.links\:settings [class*='svg'] {
-	--icon-size: var(--size-base-2xl);
-	height: var(--icon-size);
-}

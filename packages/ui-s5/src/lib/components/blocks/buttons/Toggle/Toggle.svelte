@@ -75,6 +75,7 @@
 	data-key={name}
 	aria-pressed={store.pressed}
 	onclick={handleClick}
+	data-testid={id}
 >
 	{#if children}
 		{@render children()}

@@ -57,6 +57,7 @@
 	class={buttonClasses}
 	data-key={name}
 	onclick={handleClick}
+	data-testid={id}
 >
 	{#if children}
 		{@render children()}

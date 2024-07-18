@@ -8,7 +8,7 @@ test('has title', async ({page}) => {
 	await expect(page.getByRole('heading', {name: '✨ Highlights'})).toBeVisible()
 })
 
-test(`Main navigation OK`, async ({page}) => {
+test(`Main navigation works as expected`, async ({page}) => {
 	await page.goto('/')
 	await expect(page.getByRole('link', {name: 'Home'})).toBeVisible()
 	await expect(page.getByRole('link', {name: 'About'})).toBeVisible()
@@ -17,7 +17,7 @@ test(`Main navigation OK`, async ({page}) => {
 	await expect(page.getByRole('link', {name: 'Play'})).toBeVisible()
 })
 
-test(`Side navigation OK`, async ({page}) => {
+test(`Settings menu works as expected`, async ({page}) => {
 	await page.goto('/')
 	await expect(page.getByRole('button', {name: 'Brightness'})).toBeVisible()
 	await expect(page.getByRole('button', {name: 'Contrast'})).toBeVisible()

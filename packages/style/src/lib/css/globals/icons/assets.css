@@ -1,5 +1,10 @@
 /* SVG Icons */
 
-.icon\:svg\:egg::before {
+.svg\:egg::before {
 	--icon-url: url('/icons/egg.svg');
+}
+/* SVG Icons */
+
+.svg\:github::before {
+	--icon-url: url('/icons/github.svg');
 }

@@ -16,7 +16,7 @@ const DEFAULT_REVEAL_STATE: Settings = {reveal: UiState.collapsed}
 
 const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: UiState.expanded}
 
-const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
+const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
 
 const DEFAULT_PLAYER_STATE: Settings = {value: ''}
 const DEFAULT_SCENE_ID = '004'
@@ -212,33 +212,15 @@ const APP_SETTINGS: SettingsItems = {
 			id: 'link-github',
 			title: 'GitHub',
 			url: 'https://github.com/fat-fuzzy/rocks',
-			asset: 'svg:icon-github',
+			asset: 'svg:github',
 			shape: 'round',
 			size: 'md',
+			color: 'primary',
 		},
 	],
 }
 
-const emojis: {[key: string]: string} = {
-	lang: '🌐',
-	day: '☀️',
-	night: '🌙',
-	'fr-fr': '🇫🇷 FR',
-	'es-es': '🇪🇸 ES',
-	'en-uk': '🇬🇧 EN',
-}
-
-// TODO: make svg css themeable / fix dark theme
-import githubDay from '$lib/images/day/icon-github.svg'
-import githubNight from '$lib/images/night/icon-github.svg'
 import type {SettingsItems} from '../components/recipes/forms/settings.types.js'
-const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
-	day: {
-		'link-github': githubDay,
-		'button-theme': '☀️',
-	},
-	night: {'link-github': githubNight, 'button-theme': emojis.night},
-}
 
 export default {
 	UI_STATE,
@@ -258,7 +240,6 @@ export default {
 	ALIGN_OPPOSITE,
 	ALIGN_ANIMATION_DIRECTION,
 	NUMBER_TO_SIZE,
-	SVG_ASSETS,
 	TABS,
 	APP_LINKS,
 	APP_SETTINGS,

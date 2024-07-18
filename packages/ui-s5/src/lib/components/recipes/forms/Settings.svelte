@@ -7,7 +7,7 @@
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
-	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
+	const {DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'settings',
@@ -154,19 +154,15 @@
 			{/each}
 		</form>
 		<menu class="links:settings end">
-			{#each items.links as { id, title, url, shape, size, asset }}
-				{@const assetValue = SVG_ASSETS[brightness]
-					? SVG_ASSETS[brightness][id]
-					: ''}
+			{#each items.links as { title, url, shape, size, asset }}
 				<li class="l:frame:round">
 					<a
-						class={`${variant} font:${size} shape:${shape} ${color}`}
+						class={`${variant} shape:${shape} color:${color} ${asset} size:${size}`}
 						href={url}
 						target="_blank"
 						rel="noreferrer"
+						{title}
 					>
-						<!---TODO: Manage svg assets as SVGs -->
-						<img src={assetValue} alt={title} class={`${id} ${asset}`} />
 					</a>
 				</li>
 			{/each}

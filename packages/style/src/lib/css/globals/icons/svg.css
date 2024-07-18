@@ -11,6 +11,11 @@
 
 @supports (mask: var(--icon-url)) {
 	[class*='svg']::before {
+		background: var(--ink);
+		mask: var(--icon-url) center center / 100% auto no-repeat;
+	}
+
+	[class*='svg'].magic::before {
 		background: linear-gradient(
 			148deg,
 			var(--color-gradient-000-start) 31% 31%,
@@ -22,29 +27,29 @@
 }
 
 [class*='svg'].size\:2xs::before {
-	--icon-size: var(--size-icon-svg-2xs);
+	--icon-size: var(--icon-svg-2xs);
 }
 
 [class*='svg'].size\:xs::before {
-	--icon-size: var(--size-icon-svg-xs);
+	--icon-size: var(--icon-svg-xs);
 }
 
 [class*='svg'].size\:sm::before {
-	--icon-size: var(--size-icon-svg-sm);
+	--icon-size: var(--icon-svg-sm);
 }
 
 [class*='svg'].size\:md::before {
-	--icon-size: var(--size-icon-svg-md);
+	--icon-size: var(--icon-svg-md);
 }
 
 [class*='svg'].size\:lg::before {
-	--icon-size: var(--size-icon-svg-lg);
+	--icon-size: var(--icon-svg-lg);
 }
 
 [class*='svg'].size\:xl::before {
-	--icon-size: var(--size-icon-svg-xl);
+	--icon-size: var(--icon-svg-xl);
 }
 
 [class*='svg'].size\:2x2xls::before {
-	--icon-size: var(--size-icon-svg-2xl);
+	--icon-size: var(--icon-svg-2xl);
 }

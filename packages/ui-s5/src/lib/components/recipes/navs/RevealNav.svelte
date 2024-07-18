@@ -61,7 +61,12 @@
 	)
 </script>
 
-<nav id={`nav-${id}`} class={layoutClasses} aria-label={title}>
+<nav
+	id={`nav-${id}`}
+	class={layoutClasses}
+	aria-label={title}
+	data-testid={`nav-${id}`}
+>
 	<SkipLinks text="Skip to content" href="#content" />
 	<Reveal
 		{id}
