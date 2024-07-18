@@ -22,14 +22,12 @@
 		"lint": "pnpm lint:css; pnpm lint:scss; pnpm lint:prettier",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
-	"dependencies": {
-		"@fat-fuzzy/lib": "workspace:*",
-		"@fat-fuzzy/sketch": "workspace:*"
-	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
+		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/markdown": "workspace:*",
 		"@fat-fuzzy/playbook": "workspace:*",
+		"@fat-fuzzy/sketch": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui-s5": "workspace:*",
 		"@playwright/test": "^1.45.2",
