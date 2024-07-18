@@ -34,23 +34,22 @@ importers:
         version: 1.13.3
 
   apps/doc:
-    dependencies:
-      '@fat-fuzzy/lib':
-        specifier: workspace:*
-        version: link:../../packages/lib
-      '@fat-fuzzy/sketch':
-        specifier: workspace:*
-        version: link:../../packages/sketch
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@fat-fuzzy/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
       '@fat-fuzzy/markdown':
         specifier: workspace:*
         version: link:../../packages/markdown
       '@fat-fuzzy/playbook':
         specifier: workspace:*
         version: link:../../packages/playbook
+      '@fat-fuzzy/sketch':
+        specifier: workspace:*
+        version: link:../../packages/sketch
       '@fat-fuzzy/style':
         specifier: workspace:*
         version: link:../../packages/style
@@ -215,7 +214,22 @@ importers:
         version: 11.0.3
 
   packages/playbook:
-    dependencies:
+    devDependencies:
+      '@fat-fuzzy/config':
+        specifier: workspace:*
+        version: link:../config
+      '@fat-fuzzy/lib':
+        specifier: workspace:*
+        version: link:../lib
+      '@fat-fuzzy/style':
+        specifier: workspace:*
+        version: link:../style
+      '@fat-fuzzy/ui-s5':
+        specifier: workspace:*
+        version: link:../ui-s5
+      '@playwright/test':
+        specifier: ^1.45.2
+        version: 1.45.2
       '@sveltejs/adapter-cloudflare':
         specifier: ^4.6.1
         version: 4.6.1(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.0.2(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(wrangler@3.64.0(@cloudflare/workers-types@4.20240712.0))
@@ -228,6 +242,15 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: 3.0.2
         version: 3.0.2(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2))
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^7.16.1
+        version: 7.16.1(@typescript-eslint/parser@7.16.1(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/parser':
+        specifier: ^7.16.1
+        version: 7.16.1(eslint@8.57.0)(typescript@5.5.3)
+      prettier:
+        specifier: ^3.3.3
+        version: 3.3.3
       svelte:
         specifier: 5.0.0-next.184
         version: 5.0.0-next.184
@@ -237,6 +260,20 @@ importers:
       svelte-preprocess:
         specifier: ^5.1.4
         version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.39))(postcss@8.4.39)(sass@1.77.8)(svelte@5.0.0-next.184)(typescript@5.5.3)
+      tslib:
+        specifier: ^2.6.3
+        version: 2.6.3
+      typescript:
+        specifier: ^5.5.3
+        version: 5.5.3
+      vite:
+        specifier: ^5.3.4
+        version: 5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.0(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)
+
+  packages/sketch:
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
@@ -253,33 +290,6 @@ importers:
       '@playwright/test':
         specifier: ^1.45.2
         version: 1.45.2
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^7.16.1
-        version: 7.16.1(@typescript-eslint/parser@7.16.1(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)(typescript@5.5.3)
-      '@typescript-eslint/parser':
-        specifier: ^7.16.1
-        version: 7.16.1(eslint@8.57.0)(typescript@5.5.3)
-      prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
-      tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
-      typescript:
-        specifier: ^5.5.3
-        version: 5.5.3
-      validator:
-        specifier: ^13.12.0
-        version: 13.12.0
-      vite:
-        specifier: ^5.3.4
-        version: 5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)
-      vitest:
-        specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)
-
-  packages/sketch:
-    dependencies:
       '@sveltejs/adapter-cloudflare':
         specifier: ^4.6.1
         version: 4.6.1(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(wrangler@3.64.0(@cloudflare/workers-types@4.20240712.0))
@@ -292,31 +302,6 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.1.1
         version: 3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2))
-      svelte:
-        specifier: 5.0.0-next.184
-        version: 5.0.0-next.184
-      svelte-check:
-        specifier: ^3.8.4
-        version: 3.8.4(postcss-load-config@3.1.4(postcss@8.4.39))(postcss@8.4.39)(sass@1.77.8)(svelte@5.0.0-next.184)
-      svelte-preprocess:
-        specifier: ^5.1.4
-        version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.39))(postcss@8.4.39)(sass@1.77.8)(svelte@5.0.0-next.184)(typescript@5.5.3)
-    devDependencies:
-      '@fat-fuzzy/config':
-        specifier: workspace:*
-        version: link:../config
-      '@fat-fuzzy/lib':
-        specifier: workspace:*
-        version: link:../lib
-      '@fat-fuzzy/style':
-        specifier: workspace:*
-        version: link:../style
-      '@fat-fuzzy/ui-s5':
-        specifier: workspace:*
-        version: link:../ui-s5
-      '@playwright/test':
-        specifier: ^1.45.2
-        version: 1.45.2
       '@types/node':
         specifier: ^20.14.10
         version: 20.14.10
@@ -335,6 +320,15 @@ importers:
       stylelint-config-standard-scss:
         specifier: ^13.1.0
         version: 13.1.0(postcss@8.4.39)(stylelint@16.7.0(typescript@5.5.3))
+      svelte:
+        specifier: 5.0.0-next.184
+        version: 5.0.0-next.184
+      svelte-check:
+        specifier: ^3.8.4
+        version: 3.8.4(postcss-load-config@3.1.4(postcss@8.4.39))(postcss@8.4.39)(sass@1.77.8)(svelte@5.0.0-next.184)
+      svelte-preprocess:
+        specifier: ^5.1.4
+        version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.39))(postcss@8.4.39)(sass@1.77.8)(svelte@5.0.0-next.184)(typescript@5.5.3)
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -509,28 +503,6 @@ importers:
         version: 1.3.0(@types/node@20.11.19)(sass@1.77.8)(terser@5.31.2)
 
   packages/ui-s5:
-    dependencies:
-      '@sveltejs/adapter-auto':
-        specifier: ^3.2.2
-        version: 3.2.2(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))
-      '@sveltejs/enhanced-img':
-        specifier: ^0.3.0
-        version: 0.3.0(rollup@4.12.0)(svelte@5.0.0-next.184)
-      '@sveltejs/kit':
-        specifier: ^2.5.18
-        version: 2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2))
-      '@sveltejs/package':
-        specifier: ^2.3.2
-        version: 2.3.2(svelte@5.0.0-next.184)(typescript@5.5.3)
-      '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.1.1
-        version: 3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2))
-      svelte:
-        specifier: 5.0.0-next.184
-        version: 5.0.0-next.184
-      svelte-check:
-        specifier: ^3.8.4
-        version: 3.8.4(postcss-load-config@3.1.4(postcss@8.4.39))(postcss@8.4.39)(sass@1.77.8)(svelte@5.0.0-next.184)
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
@@ -547,6 +519,21 @@ importers:
       '@playwright/test':
         specifier: ^1.45.2
         version: 1.45.2
+      '@sveltejs/adapter-auto':
+        specifier: ^3.2.2
+        version: 3.2.2(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))
+      '@sveltejs/enhanced-img':
+        specifier: ^0.3.0
+        version: 0.3.0(rollup@4.12.0)(svelte@5.0.0-next.184)
+      '@sveltejs/kit':
+        specifier: ^2.5.18
+        version: 2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2)))(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2))
+      '@sveltejs/package':
+        specifier: ^2.3.2
+        version: 2.3.2(svelte@5.0.0-next.184)(typescript@5.5.3)
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^3.1.1
+        version: 3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2))
       mdsvex:
         specifier: ^0.11.2
         version: 0.11.2(svelte@5.0.0-next.184)
@@ -559,6 +546,12 @@ importers:
       publint:
         specifier: ^0.1.16
         version: 0.1.16
+      svelte:
+        specifier: 5.0.0-next.184
+        version: 5.0.0-next.184
+      svelte-check:
+        specifier: ^3.8.4
+        version: 3.8.4(postcss-load-config@3.1.4(postcss@8.4.39))(postcss@8.4.39)(sass@1.77.8)(svelte@5.0.0-next.184)
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -5967,10 +5960,6 @@ packages:
 
   validator@13.11.0:
     resolution: {integrity: sha512-Ii+sehpSfZy+At5nPdnyMhx78fEoPDkR2XW/zimHEL3MyGJQOCQ7WeP20jPYRz7ZCpcKLB21NxuXHF3bxjStBQ==}
-    engines: {node: '>= 0.10'}
-
-  validator@13.12.0:
-    resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
   vfile-location@5.0.3:
@@ -12264,8 +12253,6 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   validator@13.11.0: {}
-
-  validator@13.12.0: {}
 
   vfile-location@5.0.3:
     dependencies:
