@@ -34,9 +34,10 @@ export const itemsSettings = {
 			id: 'link-github',
 			title: 'GitHub icon',
 			url: 'https://github.com/fat-fuzzy/rocks',
-			asset: 'svg:icon-github',
+			asset: 'svg:github',
 			shape: 'round',
-			size: 'xs',
+			size: 'md',
+			color: 'primary',
 		},
 	],
 }

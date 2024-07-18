@@ -16,7 +16,7 @@ const DEFAULT_REVEAL_STATE: Settings = {reveal: UiState.collapsed}
 
 const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: UiState.expanded}
 
-const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
+const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
 
 const DEFAULT_PLAYER_STATE: Settings = {value: ''}
 const DEFAULT_SCENE_ID = '004'
@@ -212,9 +212,10 @@ const APP_SETTINGS: SettingsItems = {
 			id: 'link-github',
 			title: 'GitHub',
 			url: 'https://github.com/fat-fuzzy/rocks',
-			asset: 'svg:icon-github',
+			asset: 'svg:github',
 			shape: 'round',
 			size: 'md',
+			color: 'primary',
 		},
 	],
 }
