@@ -40,7 +40,7 @@
 	angle={cameraAngle}
 	onupdate={updateCamera}
 	{color}
-	size={`xs l:burrito:${threshold}`}
+	size="xs"
 	disabled={store.getSketchDisabled()}
 />
 
@@ -50,6 +50,6 @@
 	max={180}
 	onupdate={updateFieldOfView}
 	{color}
-	size={`xs l:burrito:${threshold}`}
+	size="xs"
 	disabled={store.getSketchDisabled()}
 />
