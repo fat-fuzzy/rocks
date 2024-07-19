@@ -7,9 +7,16 @@
 	const {Feedback} = blocks
 
 	let title = $derived(`Error: ${$page.status}`)
-	let asset = $derived(String($page.status))
-	let status = $derived(String($page.status))
-	let message = $derived($page.error?.message)
+	let status = $state('error')
+	let asset = $derived.by(() => {
+		switch ($page.status) {
+			case 404:
+				return 'not-found'
+			default:
+				return 'error'
+		}
+	})
+	let message = $derived(`${$page.status}: ${$page.error?.message}`)
 </script>
 
 <Head {title} description="Something went wrong!" />
