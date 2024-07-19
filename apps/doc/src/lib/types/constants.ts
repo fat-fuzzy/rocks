@@ -130,33 +130,6 @@ const TABS_CONTENT = [
 	},
 ]
 
-const emojis: {[key: string]: string} = {
-	lang: '🌐',
-	day: '☀️',
-	night: '🌙',
-	'fr-fr': '🇫🇷 FR',
-	'es-es': '🇪🇸 ES',
-	'en-uk': '🇬🇧 EN',
-}
-
-const languages = [
-	{code: 'fr-fr', title: 'Français'},
-	{code: 'en-uk', title: 'English'},
-	{code: 'es-es', title: 'Español'},
-]
-
-// TODO: make svg css themeable / fix dark theme
-import githubDay from '$lib/images/day/icon-github.svg'
-import githubNight from '$lib/images/night/icon-github.svg'
-// TODO: make svg css themeable / fix dark theme
-const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
-	day: {
-		'link-github': githubDay,
-		'button-theme': '☀️',
-	},
-	night: {'link-github': githubNight, 'button-theme': emojis.night},
-}
-
 export default {
 	UI_STATE,
 	DEFAULT_REVEAL_STATE,
@@ -167,7 +140,6 @@ export default {
 	ALIGN_OPPOSITE,
 	ALIGN_ANIMATION_DIRECTION,
 	NUMBER_TO_SIZE,
-	SVG_ASSETS,
 	APP_LINKS,
 	APP_SETTINGS,
 	TABS_CONTENT,

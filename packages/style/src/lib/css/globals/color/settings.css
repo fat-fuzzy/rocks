@@ -4,7 +4,7 @@
 		--hue: var(--color-theme-primary);
 		--lightness-base: var(--color-lightness-light-base);
 		--lightness-accent-base: var(--color-lightness-400);
-		--lightness-contrast-base: var(--color-lightness-400);
+		--lightness-contrast-base: var(--color-lightness-600);
 		--chroma-base: var(--color-chroma-neutral);
 		--chroma-contrast-base: var(--color-chroma-600);
 		--lightness: var(--color-lightness-light-base);
@@ -105,7 +105,7 @@
 	--hue: var(--color-theme-primary);
 	--lightness-base: var(--color-lightness-light-base);
 	--lightness-accent-base: var(--color-lightness-400);
-	--lightness-contrast-base: var(--color-lightness-400);
+	--lightness-contrast-base: var(--color-lightness-600);
 	--chroma-base: var(--color-chroma-neutral);
 	--chroma-contrast-base: var(--color-chroma-600);
 	--lightness: var(--color-lightness-light-base);

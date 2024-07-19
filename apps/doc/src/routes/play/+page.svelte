@@ -27,21 +27,22 @@
 	</p>
 	<div class="l:grid:sm maki:block">
 		{#each tags as tag}
-			<article class="card:md l:stack size:sm surface:1:primary">
-				<h3 class="surface:1:accent"><small class='maki:inline'>{tag}</small></h3>
-				<details open>
-					<summary class="surface:2:primary card:2xs"><small>Sketches</small></summary>
-					<div class="l:stack:xs maki:block">
-						{#each sketches as { slug, asset, title, tags }}
-							{#if tags.includes(tag)}
-								<a class={`font:md ${asset}`} href={`${path}/${slug}`}>
-									{title}
-								</a>
-							{/if}
-						{/each}
-					</div>
-				</details>
-			</article>
+		<details class="card:md l:stack size:sm surface:1:primary" open>
+			<summary class="surface:3:primary card:2xs">{tag}</summary>
+			<div class="l:stack:xs maki:block">
+				<ul role="group">
+				{#each sketches as { slug, asset, title, tags }}
+					{#if tags.includes(tag)}
+						<li class="card:3xs">
+							<a class={`font:md ${asset}`} href={`${path}/${slug}`}>
+								{title}
+							</a>
+						</li>
+					{/if}
+				{/each}
+			</ul>
+			</div>
+		</details>
 		{/each}
 	</div>
 </PageMain>

@@ -36,7 +36,7 @@
 			justify="start"
 			formaction="toggleSidebar"
 			actionPath="/"
-			size='sm'
+			size='md'
 			{redirect}
 			{path}
 			onclick={toggleSidebar}
