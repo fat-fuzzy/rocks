@@ -29,4 +29,16 @@ const blocks = {
 	draft: ['Fieldset'],
 }
 
-export default {pages, categories, blocks}
+const layouts = {
+	path: `${pages[4].path}/layouts`,
+	ready: ['Burrito', 'Reveal', 'RevealAuto', 'Sidebar', 'Stack', 'Switcher'],
+	draft: [],
+}
+
+const recipes = {
+	path: `${pages[4].path}/recipes`,
+	ready: ['ButtonMenu', 'RevealMenu', 'RevealNav', 'ToggleMenu'],
+	draft: ['Header', 'InputGroup', 'Login', 'Nav'],
+}
+
+export default {pages, categories, blocks, layouts, recipes}

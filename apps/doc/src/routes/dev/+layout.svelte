@@ -40,6 +40,6 @@
 	{#if children}
 		{@render children()}
 	{:else}
-		<p class="feedback bare emoji:default">Doc Coming Soon!</p>
+		<p class="feedback bare emoji:default">Coming Soon!</p>
 	{/if}
 </LayoutSidebar>

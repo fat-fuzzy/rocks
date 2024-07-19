@@ -16,7 +16,7 @@
 	)
 	let markdownContent = $derived(
 		markdowns.find(({meta}) => meta.title === title) || {
-			html: `<p class="feedback bare emoji:default">Doc Coming Soon!</p>`,
+			html: `<p class="feedback bare emoji:default">Coming Soon!</p>`,
 		},
 	)
 </script>
