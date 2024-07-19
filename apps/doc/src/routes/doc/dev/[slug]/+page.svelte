@@ -5,7 +5,7 @@
 	const {PageMain} = content
 
 	let markdown = $derived(
-		$page.data.markdowns.find((d) => d.path === $page.data.path),
+		$page.data.markdowns.doc.find((d) => d.path === $page.data.path),
 	)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(`Developer Doc ${markdown.meta.id}: ${title}`)

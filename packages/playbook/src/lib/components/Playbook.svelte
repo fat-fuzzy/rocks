@@ -16,10 +16,11 @@
 
 	type Props = {
 		app?: {settings: {[key: string]: string}}
+		path?: string
 		redirect: string
 		children: Snippet
 	}	
-	let {redirect, children, app}: Props= $props()
+	let {redirect, children, app, path=''}: Props= $props()
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -41,10 +42,9 @@
 	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
 	playbookStore.sidebarReveal = ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE
 
-	let path = ''
 	let items = [
 		{
-			slug: 'ui',
+			slug: 'ui', // root path of the Playbook
 			title: 'Library',
 			items: [
 				{

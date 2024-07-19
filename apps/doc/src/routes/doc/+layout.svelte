@@ -10,21 +10,35 @@
 
 	let path = ''
 	let items = [
-		{
-			slug: 'dev',
-			title: 'Dev',
-			items: $page.data.markdowns.map(({meta}) => ({
-				id: meta.id,
-				slug: meta.slug,
-				title: meta.title,
-			})),
-		},
+		{	slug: 'doc',
+			title: 'Doc',
+			items: [
+				{
+					slug: 'dev',
+					title: 'Dev',
+					items: $page.data.markdowns.doc.map(({meta}) => ({
+						id: meta.id,
+						slug: meta.slug,
+						title: meta.title,
+					})),
+				},
+				{
+					slug: 'log',
+					title: 'Log',
+					items: $page.data.markdowns.log.map(({meta}) => ({
+						id: meta.id,
+						slug: meta.slug,
+						title: meta.title,
+					})),
+				},
+			],
+		}
 	]
 
 	let nav = {
 		path,
 		title: 'Content',
-		id: 'nav-dev',
+		id: 'nav-dev-log',
 		items,
 		reveal: 'expanded',
 		breakpoint: 'sm',
@@ -36,7 +50,7 @@
 	}
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} {path} {app}>
+<LayoutSidebar {nav} redirect={$page.url.pathname} path='' {app}>
 	{#if children}
 		{@render children()}
 	{:else}

@@ -31,7 +31,7 @@
 		<h2 class="text:center">✨ Highlights</h2>
 		<ul class="l:switcher:sm maki:block:2xl" role="group">
 			<li class={`card:lg text:center emoji:vader ${variant}`}>
-				<a data-sveltekit-preload-data href="/log" class="card font:md">SKETCHES</a>
+				<a data-sveltekit-preload-data href="/play" class="card font:md">SKETCHES</a>
 			</li>
 			<li class={`card:lg text:center emoji:rainbow ${variant}`}>
 				<a data-sveltekit-preload-data href="/ui" class="card font:md">COMPONENTS</a>
