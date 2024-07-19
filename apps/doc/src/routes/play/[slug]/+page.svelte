@@ -13,7 +13,6 @@
 	)
 	let title = $derived(scene?.meta.title || '')
 	let description = `Sketch is a sandbox environment to experiment and learn web-based computer graphics`
-	let headerClass = 'l:flex align:center'
 </script>
 
 <PageMain {title} {description} size="xl">

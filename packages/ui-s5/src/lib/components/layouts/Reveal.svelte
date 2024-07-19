@@ -18,7 +18,6 @@
 		actionPath,
 		redirect,
 		reveal,
-		layout,
 		direction = 'tb-lr',
 		place = 'top',
 		position,
