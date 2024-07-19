@@ -1,29 +1,26 @@
 <script lang="ts">
+	import {page} from '$app/stores'
 	import {content} from '@fat-fuzzy/ui-s5'
 
 	const {PageMain} = content
 
-	let title = 'What is Fat Fuzzy ?'
-	let description = 'About Fat Fuzzy Rocks and the projects it contains'
+	let markdown = $page.data.content
+	let title = $derived(markdown.meta.title)
+	let description = $derived(markdown.meta.description)
+	let date = $derived(markdown.meta.date)
+	let html = $derived(markdown.html)
 </script>
 
 <PageMain {title} {description} size="md">
-	<section class="l:center:2xl">
-		<div class="l:text:xl">
-			<p>
-				This is a <a href="https://kit.svelte.dev" class="font:md">SvelteKit</a>
-				app. You can make your own by typing the following into your command line
-				and following the prompts:
-			</p>
-
-			<pre>npm create svelte@latest</pre>
-
-			<p>
-				The page you're looking at is purely static HTML, with no client-side
-				interactivity needed. Because of that, we don't need to load any
-				JavaScript. Try viewing the page's source, or opening the devtools
-				network panel and reloading.
+	{#snippet header()}
+		<h1 class="l:side hug maki:block:md">{title}</h1>
+		<div class="l:main:50 l:flex justify:end">
+			<p class="feedback:prose status:default variant:bare card:sm">
+				Published: {date}
 			</p>
 		</div>
-	</section>
+	{/snippet}
+	<article class="l:sidebar:md">
+		<div class="l:text:lg">{@html html}</div>
+	</article>
 </PageMain>
