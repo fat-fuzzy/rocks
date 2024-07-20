@@ -7,9 +7,12 @@ export const load = async (event) => {
 	const docMarkdowns = await doc.markdowns
 	const content = await pages.fetchMarkdowns('doc')
 
-	// TODO: Implement a better way to handle this
 	const data = {
-		markdowns: {log: logMarkdowns, doc: docMarkdowns},
+		markdowns: {
+			log: logMarkdowns.filter(({meta}) => meta.status !== 'draft'),
+			doc: docMarkdowns.filter(({meta}) => meta.status !== 'draft'),
+		},
+		// TODO: Implement a better way to handle this
 		content: content.length ? content[0] : {meta: {title: ''}},
 	}
 

@@ -12,7 +12,7 @@ test(`Main navigation works as expected`, async ({page}) => {
 	await page.goto('/')
 	await expect(page.getByRole('link', {name: 'Home'})).toBeVisible()
 	await expect(page.getByRole('link', {name: 'Doc'})).toBeVisible()
-	await expect(page.getByRole('link', {name: 'UI'})).toBeVisible()
+	await expect(page.getByRole('link', {name: 'UI', exact: true})).toBeVisible()
 	await expect(page.getByRole('link', {name: 'Play'})).toBeVisible()
 })
 
