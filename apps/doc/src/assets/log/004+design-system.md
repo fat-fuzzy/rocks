@@ -8,7 +8,7 @@ tags: ['design', 'ui']
 
 ## Context and Problem
 
-I need to have a source of truth for design decisions, and a way to ensure a better and consistent quality of front end components and UI in general. I also want to make sure that any improvements I make are reflected across the sites that use these components.
+I need to have a source of truth for design decisions, and a way to ensure a better and consistent quality of frontend components and UI in general. I also want to make sure that any improvements I make are reflected across the sites that use these components.
 Design systems are made for this.
 
 ## Considered Options
