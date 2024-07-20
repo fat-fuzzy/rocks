@@ -8,11 +8,10 @@ context: ['app.settings']
 
 ## Usage
 
-There are two(\*) groups of color:
+There are two color groups:
 
-- **Theme colors:** these colors are the colors the brand colors of the application or website
-- **Feedback status colors:** these colors are used to style notifications, form feedback messages and code blocks
-- **Neutral colors:** (\* wip) coming soon
+- **Theme colors:** these are the brand colors of the application or website
+- **Feedback colors:** these colors are used to style notifications, form feedback messages and code blocks
 
 ### Examples
 

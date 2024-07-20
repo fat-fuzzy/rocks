@@ -37,7 +37,7 @@ The repository is organized into three workspaces:
     - this is the first component library I created for this project, and it contains the initial logic for the **playbook**,  **style**, and **sketch** packages
   - **ui-s5** A frontend component library (Svelte 5):
     - A UI library that can be used as a common source of truth for web projects
-    - I reduced the UI library to a set of components that can be shared across sites, and extracted the logic of the **playbook**,  **style**, and **sketch** interfaces into their own packages
+    - I reduced the UI library to a set of components that can be shared across sites, and extracted the logic of the **playbook** and **sketch** interfaces, as well as the CSS library into their own packages
 
 ---
 
