@@ -11,7 +11,7 @@
 </script>
 
 <PageMain {title} {description} size="lg">
-	<div class="maki:block:2xs">
+	<div class="l:text maki:block:2xs">
 		<ul class="l:stack:lg w:full" role="group">
 			{#each markdowns as { meta }}
 				{#if meta.status !== 'draft'}
