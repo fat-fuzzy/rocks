@@ -59,7 +59,8 @@ $beans: '🫘';
 $seedling: '🌱';
 $herb: '🌿';
 $tree: '🌳';
-$ledger: '📒';
+$scales: '⚖️';
+$open-book: '📖';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -116,7 +117,9 @@ $emojis: (
 	// Composition Emojis
 	menu: #{$bunny},
 	settings: #{$control-knobs},
-	log: #{$ledger},
+	log: #{$log},
+	usage: #{$open-book},
+	decisions: #{$scales},
 	context: #{$umbrella},
 	switch-active: #{$bunny},
 	switch-inactive: #{$hat},
