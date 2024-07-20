@@ -1,4 +1,4 @@
-# 👾 ✨ Fat Fuzzy Lab 🫧 🐙
+# 👾 ✨ Fat Fuzzy Rocks 🫧 🐙
 
 This repository contains learning notes, tools, and experiments.
 Much of the work is based on examples and projects made by others: I try to make attributions clear in the code and docs, and while I am at it, thank you !
@@ -16,17 +16,12 @@ Below is a rough attempt at categorizing the contents of this repo.
 The repository is organized into three workspaces:
 
 - **apps** contains client facing code, organized by project
-  - **doc** The doc website for this project, accessible here: https://rocks.pages.dev/
-  - **play** A playground for learning and experimenting with web graphics
+  - **doc** The doc website for this project, accessible here:  [Fat Fuzzy Rocks](https://rocks.pages.dev/)
 - **infra** contains infrastructure code
   - This is WIP and in private repos for the moment
 - **packages** contains UI, web graphics, logic and experiments libraries, as well as common config
 
   - **config** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
-  - **design** a design sandbox
-    - isolates design work from the UI library
-    - design assets and collections go here
-    - design tests and experiments go here
   - **git-poule** a tool to extract commit data
   - **lib** Libraries unrelated to building an interface or utility functions: logic and experiments
     - 👾 gfx - everything related to working with webgl
@@ -34,8 +29,15 @@ The repository is organized into three workspaces:
     - ➕ maths
   - **markdown** A utility package for loading markdown files
     - based on [bluwy website markdown package](https://github.com/bluwy/website/tree/master/packages/markdown)
-  - **ui** A frontend component library
+  - **playbook** a package used to display, document and test the **ui** and **style** packages
+  - **style** a CSS library
+  - **sketch** a package used to display and handle interactive web graphics programs (used for learning: this usage is one of the main motivations for the Fat Fuzzy Rocks project!)
+  - **ui** A frontend component library (Svelte 4):
     - A UI library that can be used as a common source of truth for web projects
+    - this is the initial component library I created in Svelte, and it contains the initial logic for the **playbook**,  **style**, and **sketch** packages
+  - **ui-s5** A frontend component library (Svelte 5):
+    - A UI library that can be used as a common source of truth for web projects
+    - I reduced the UI library to a set of components that can be shared across sites, and extracted the logic of the **playbook**,  **style**, and **sketch** interfaces into their own packages
 
 ---
 
@@ -71,7 +73,7 @@ I chose to put all these things in one repository for convenience, to centralize
 
 Using a private NPM Registry: Verdaccio
 
-- Install verdaccio: https://verdaccio.org/docs/installation
+- Install verdaccio: [Verdaccio Doc - Installation](https://verdaccio.org/docs/installation)
 - Launch the private registry with the command: `verdaccio`
 - To publish a package to the private registry, run the following command in the package's root directory:
 
