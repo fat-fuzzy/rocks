@@ -12,7 +12,9 @@ export const load = async (event) => {
 	const data = {
 		markdowns: {
 			decisions: decisionsMarkdowns.filter(({meta}) => meta.status !== 'draft'),
-			usages: usagesMarkdowns.filter(({meta}) => meta.status !== 'draft'),
+			usages: usagesMarkdowns
+				.filter(({meta}) => meta.status !== 'draft')
+				.reverse(),
 		},
 		// TODO: Implement a better way to handle this
 		content: content.length ? content[0] : {meta: {title: ''}},

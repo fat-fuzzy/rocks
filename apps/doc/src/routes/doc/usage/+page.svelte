@@ -19,7 +19,7 @@
 						class="font:lg surface:2:neutral card:md"
 						href={`${$page.url.pathname}/${meta.slug}`}
 					>
-						{meta.title}
+						{Number(meta.id)} - {meta.title}
 					</a>
 				{/if}
 			{/each}
