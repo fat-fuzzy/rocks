@@ -14,12 +14,14 @@
 	<div class="l:text maki:block:2xs">
 		<ul class="l:stack:lg unstyled">
 			{#each markdowns as { meta }}
-				<a
-					class="font:lg surface:3:primary card:md"
-					href={`/doc/dev/${meta.slug}`}
-				>
-					{meta.title}
-				</a>
+				{#if meta.status !== 'draft'}
+					<a
+						class="font:lg surface:3:primary card:md"
+						href={`/doc/dev/${meta.slug}`}
+					>
+						{meta.title}
+					</a>
+				{/if}
 			{/each}
 		</ul>
 	</div>

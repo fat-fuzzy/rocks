@@ -3,6 +3,7 @@ title: Using an App Template
 date: 'YYYY-MM-DD'
 slug: using-app-template
 id: '003'
+status: 'draft'
 tags: ['example', 'doc', 'app']
 ---
 

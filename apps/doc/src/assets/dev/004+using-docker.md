@@ -4,7 +4,8 @@ date: '2023-02-18'
 updated: '2023-05-17'
 slug: using-docker
 id: '004'
-tags: ['example', 'doc', 'docker', 'wip']
+status: 'draft'
+tags: ['example', 'doc', 'docker']
 ---
 
 ## Use Cases

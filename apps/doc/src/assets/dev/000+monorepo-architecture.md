@@ -3,6 +3,7 @@ title: Monorepo Architecture
 date: 'YYYY-MM-DD'
 slug: monorepo-architecture
 id: '000'
+status: 'draft'
 tags: ['example', 'doc', 'monorepo']
 ---
 
