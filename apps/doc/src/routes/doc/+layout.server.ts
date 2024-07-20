@@ -7,8 +7,11 @@ export const load = async (event) => {
 	const docMarkdowns = await doc.markdowns
 	const content = await pages.fetchMarkdowns('doc')
 
-	return {
+	// TODO: Implement a better way to handle this
+	const data = {
 		markdowns: {log: logMarkdowns, doc: docMarkdowns},
-		content: content.length ? content[0] : {meta: {title: 'Content Not found'}},
+		content: content.length ? content[0] : {meta: {title: ''}},
 	}
+
+	return data
 }

@@ -10,7 +10,8 @@
 
 	let path = ''
 	let items = [
-		{	slug: 'doc',
+		{
+			slug: 'doc',
 			title: 'Doc',
 			items: [
 				{
@@ -40,7 +41,7 @@
 	let nav = {
 		path,
 		title: 'Content',
-		id: 'nav-dev-log',
+		id: 'nav-doc',
 		items,
 		reveal: 'expanded',
 		breakpoint: 'sm',
