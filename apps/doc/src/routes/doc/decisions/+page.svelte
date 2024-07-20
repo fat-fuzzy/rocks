@@ -4,7 +4,7 @@
 
 	const {PageMain} = content
 
-	let markdowns = $state($page.data.markdowns.log)
+	let markdowns = $state($page.data.markdowns.decisions)
 
 	let title = 'Decision Log'
 	let description = 'Log of Architectural decisions'

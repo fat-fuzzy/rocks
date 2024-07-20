@@ -4,7 +4,7 @@
 
 	const {PageMain} = content
 
-	let markdowns = $state($page.data.markdowns.doc)
+	let markdowns = $state($page.data.markdowns.usages)
 	let title = 'Using Fat Fuzzy Packages'
 	let description =
 		'Fat Fuzzy Doc: how to use the packages in this project, examples, notes'

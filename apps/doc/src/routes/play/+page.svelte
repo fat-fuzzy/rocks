@@ -33,8 +33,8 @@
 				<ul role="group">
 				{#each sketches as { slug, asset, title, tags }}
 					{#if tags.includes(tag)}
-						<li class="card:3xs">
-							<a class={`font:md ${asset}`} href={`${path}/${slug}`}>
+						<li class={`card:3xs ${asset}`}>
+							<a class="font:md" href={`${path}/${slug}`}>
 								{title}
 							</a>
 						</li>

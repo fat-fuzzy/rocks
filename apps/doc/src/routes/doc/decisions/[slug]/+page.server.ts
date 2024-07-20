@@ -1,5 +1,5 @@
 import {error} from '@sveltejs/kit'
-import logs from '$data/log'
+import decisions from '$data/decisions'
 /**
  * Load data from markdown file based on route parameters
  * @param params Request parameters
@@ -7,7 +7,7 @@ import logs from '$data/log'
  */
 export const load = async ({params}) => {
 	const {slug} = params
-	const markdowns = await logs.markdowns
+	const markdowns = await decisions.markdowns
 	const html = markdowns?.find((v) => v.meta.slug === slug)
 
 	if (!html) {
