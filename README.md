@@ -31,10 +31,10 @@ The repository is organized into three workspaces:
     - based on [bluwy website markdown package](https://github.com/bluwy/website/tree/master/packages/markdown)
   - **playbook** a package used to display, document and test the **ui** and **style** packages
   - **style** a CSS library
-  - **sketch** a package used to display and handle interactive web graphics programs (used for learning: this usage is one of the main motivations for the Fat Fuzzy Rocks project!)
+  - **sketch** a package used to display and handle interactive web graphics programs (used for learning: this usage is one of the initial motivations for this project)
   - **ui** A frontend component library (Svelte 4):
     - A UI library that can be used as a common source of truth for web projects
-    - this is the initial component library I created in Svelte, and it contains the initial logic for the **playbook**,  **style**, and **sketch** packages
+    - this is the first component library I created for this project, and it contains the initial logic for the **playbook**,  **style**, and **sketch** packages
   - **ui-s5** A frontend component library (Svelte 5):
     - A UI library that can be used as a common source of truth for web projects
     - I reduced the UI library to a set of components that can be shared across sites, and extracted the logic of the **playbook**,  **style**, and **sketch** interfaces into their own packages
