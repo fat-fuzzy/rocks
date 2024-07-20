@@ -84,7 +84,7 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
-	padding-inline: calc(2 * var(--ui-size)) var(--ui-size);
+	padding-inline: calc(2 * var(--ui-size-sm)) var(--ui-size);
 }
 
 ul.depth-3 {
