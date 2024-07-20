@@ -15,8 +15,8 @@
 			title: 'Doc',
 			items: [
 				{
-					slug: 'dev',
-					title: 'Dev',
+					slug: 'usage',
+					title: 'Usage',
 					asset: 'doc',
 					items: $page.data.markdowns.doc.map(({meta}) => ({
 						id: meta.id,
@@ -25,8 +25,8 @@
 					}))	,
 				},
 				{
-					slug: 'log',
-					title: 'Log',
+					slug: 'decisions',
+					title: 'Decisions',
 					asset: 'log',
 					items: $page.data.markdowns.log.map(({meta}) => ({
 						id: meta.id,
