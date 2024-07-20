@@ -148,7 +148,7 @@
 {:else}
 	<article
 		id={`card-${title}`}
-		class={`card variant:bare l:stack:md w:auto ui:${title.toLowerCase()} bg:inherit ${settingsClasses}`}
+		class={`card variant:bare l:stack:md w:auto ui:${title.toLowerCase()} ${settingsClasses}`}
 	>
 		<a
 			href={`${link}/${title}`}
