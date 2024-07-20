@@ -1,8 +1,8 @@
 import markdownUtils from './markdown'
 
-const pathPrefix = '/src/assets/log/'
+const pathPrefix = '/src/assets/usages/'
 
-const imports = import.meta.glob('/src/assets/log/*.md')
+const imports = import.meta.glob('/src/assets/usages/*.md')
 
 async function fetchMarkdowns() {
 	const markdowns = await markdownUtils.fetchMarkdowns(pathPrefix, imports)

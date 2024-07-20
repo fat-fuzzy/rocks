@@ -4,7 +4,7 @@
 
 	const {PageMain} = content
 
-	let markdowns = $state($page.data.markdowns.log)
+	let markdowns = $state($page.data.markdowns.decisions)
 
 	let title = 'Decision Log'
 	let description = 'Log of Architectural decisions'
@@ -12,14 +12,14 @@
 
 <PageMain {title} {description} size="lg">
 	<div class="l:text maki:block:2xs">
-		<ul class="l:stack:lg unstyled">
+		<ul class="l:stack:lg w:full" role="group">
 			{#each markdowns as { meta }}
 				{#if meta.status !== 'draft'}
 					<a
-						class="font:lg surface:3:primary card:md"
-						href={`/doc/log/${meta.slug}`}
+						class="font:lg surface:2:neutral card:md"
+						href={`${$page.url.pathname}/${meta.slug}`}
 					>
-						{meta.title}
+						{Number(meta.id)} - {meta.title}
 					</a>
 				{/if}
 			{/each}

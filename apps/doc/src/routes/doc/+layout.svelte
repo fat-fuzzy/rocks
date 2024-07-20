@@ -17,8 +17,8 @@
 				{
 					slug: 'usage',
 					title: 'Usage',
-					asset: 'doc',
-					items: $page.data.markdowns.doc.map(({meta}) => ({
+					asset: 'usage',
+					items: $page.data.markdowns.usages.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
@@ -27,8 +27,8 @@
 				{
 					slug: 'decisions',
 					title: 'Decisions',
-					asset: 'log',
-					items: $page.data.markdowns.log.map(({meta}) => ({
+					asset: 'decisions',
+					items: $page.data.markdowns.decisions.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,

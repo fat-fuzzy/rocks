@@ -23,7 +23,7 @@ A longer list of [why make a website (from the IndieWeb perspective)](https://in
 
 I want to make an IndieWeb site. This does take a bit of involvement and the acquisition of new understanding.
 It makes sense to make a **new package indiesite** that contains an _indiewebified_ website template.
-This will allow me to track and document that work. And to use the template of course.
+This will allow me to track and document that work and to use the template.
 
 ## Considerations
 
@@ -34,16 +34,16 @@ IndieWeb references:
 
 ### Tools
 
-- https://microformats.org/
-- https://indieweb.org/Micropub
-- https://indieweb.org/IndieAuth
-- https://indieweb.org/POSSE
-- https://indieweb.org/backfeed
-- https://indieweb.org/IndieMark
-- https://indieweb.org/social_reader
-  - https://aaronparecki.com/2018/04/20/46/indieweb-reader-my-new-home-on-the-internet
-  - https://aaronparecki.com/2018/03/12/17/building-an-indieweb-reader
-- Rust: https://docs.rs/indieweb/latest/indieweb/index.html
+- [Microformats](https://microformats.org/)
+- [IndieWeb Doc - Micropub](https://indieweb.org/Micropub)
+- [IndieWeb Doc - IndieAuth](https://indieweb.org/IndieAuth)
+- [IndieWeb Doc - POSSE](https://indieweb.org/POSSE)
+- [IndieWeb Doc - backfeed](https://indieweb.org/backfeed)
+- [IndieWeb Doc - IndieMark](https://indieweb.org/IndieMark)
+- [IndieWeb Doc - social_reader](https://indieweb.org/social_reader)
+  - [An IndieWeb reader: My new home on the internet](https://aaronparecki.com/2018/04/20/46/indieweb-reader-my-new-home-on-the-internet)
+  - [Building an IndieWeb Reader](https://aaronparecki.com/2018/03/12/17/building-an-indieweb-reader)
+- [IndieWeb Rust package](https://docs.rs/indieweb/latest/indieweb/index.html)
 
 ## Decision
 

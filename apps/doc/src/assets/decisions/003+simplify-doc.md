@@ -14,7 +14,7 @@ I want to minimize maintenance and dependency management
 
 Libraries I don't want to maintain for now:
 
-- ADR libraries (used rto generate architectural decision logs)
+- ADR libraries (used to generate architectural decision logs)
 - Storybook (it is very heavy on dependencies, forces me to include React in my project)
 
 But I still want to document my project efficiently
@@ -51,8 +51,8 @@ Removed dependencies in root package.json:
 
 ```json
 "dependencies": {
-	"adr-log": "2.2.0",
-	"madr": "2.1.2"
+ "adr-log": "2.2.0",
+ "madr": "2.1.2"
 }
 ```
 
@@ -68,7 +68,7 @@ Removed scripts in root package.json:
 
 Removed storybook
 
-This was a lot dependecy renmovals. I actually considered and made this decision while upgrading to the RC version of SvelteKit.
+This was a lot dependency removals. I considered and made this decision while upgrading SvelteKit.
 I departed from a fresh SvelteKit lib project for the **ui** package, and it did not include storybook. I then felt I did not to want to add it back (see reasons at the start of this document).
 
 ### ➕ Kept or added
@@ -79,7 +79,7 @@ These are the resources used for ADR:
 
 - [Markdown Any Decision Records](https://adr.github.io/madr/)
 - [arc42 template](https://arc42.org/overview)
-- [HTML Sanity Checker Architecture](https://hsc.aim42.org/documentation/hsc_arc42.html)html#section-introduction-and-goals)
+- [HTML Sanity Checker Architecture](https://hsc.aim42.org/documentation/hsc_arc42.html#section-introduction-and-goals)
 - [biking2, Architecture and API](https://biking.michael-simons.eu/docs/index.html#section-introduction-and-goals)
 - [Architecture decision record](https://github.com/joelparkerhenderson/architecture-decision-record)
 
@@ -91,4 +91,4 @@ These are the resources used for ADR:
 pnpm dlx svelte-add@latest mdsvex
 ```
 
-- It wasn't very clear how to load markdown files dynamically - this post helped : [Build a static site with SvelteKit#Two ways to load Markdown](https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog#two-ways-to-load-markdown)
+- It wasn't very clear how to load markdown files dynamically - this post helped : [Build a static site with SvelteKit](https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog#two-ways-to-load-markdown)

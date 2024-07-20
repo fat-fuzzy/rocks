@@ -33,7 +33,7 @@
 		actionPath,
 		redirect,
 		size = 'md',
-		color = 'primary:100',
+		color = 'neutral',
 		layout = 'switcher',
 		category,
 		markdowns,
@@ -115,7 +115,7 @@
 			{@render comingSoon()}
 		{/if}
 		<details class={`l:stack:md ${size}`}>
-			<summary class={`box:${color} bg:${color}`}>
+			<summary class={`surface:2:${color} card:2xs emoji:${category}`}>
 				{category}
 			</summary>
 			<div class={layoutClass}>

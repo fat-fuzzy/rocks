@@ -1,10 +1,10 @@
 ---
-title: Using the CSS Library
+title: App Template
 date: 'YYYY-MM-DD'
-slug: using-css-library
-id: '002'
+slug: using-app-template
+id: '003'
 status: 'draft'
-tags: ['example', 'doc', 'css']
+tags: ['example', 'doc', 'app']
 ---
 
 ## Use Case Example

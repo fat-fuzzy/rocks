@@ -27,14 +27,14 @@
 	</p>
 	<div class="l:grid:sm maki:block">
 		{#each tags as tag}
-		<details class="card:md l:stack size:sm surface:1:primary" open>
-			<summary class="surface:3:primary card:2xs">{tag}</summary>
+		<details class="card:md l:stack size:sm bg:netural varian:bare" open>
+			<summary class="surface:2:neutral card:2xs">{tag}</summary>
 			<div class="l:stack:xs maki:block">
 				<ul role="group">
 				{#each sketches as { slug, asset, title, tags }}
 					{#if tags.includes(tag)}
-						<li class="card:3xs">
-							<a class={`font:md ${asset}`} href={`${path}/${slug}`}>
+						<li class={`card:3xs ${asset}`}>
+							<a class="font:md" href={`${path}/${slug}`}>
 								{title}
 							</a>
 						</li>

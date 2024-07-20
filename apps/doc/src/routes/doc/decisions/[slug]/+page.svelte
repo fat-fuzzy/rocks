@@ -5,10 +5,10 @@
 	const {PageMain} = content
 
 	let markdown = $derived(
-		$page.data.markdowns.log.find((d) => d.path === $page.data.path),
+		$page.data.markdowns.decisions.find((d) => d.path === $page.data.path),
 	)
 	let title = $derived(markdown.meta.title)
-	let description = `Decision Log ${markdown.meta.id}: ${title}`
+	let description =  $derived(`Decision Log ${markdown.meta.id}: ${title}`)
 	let date = $derived(markdown.meta.date)
 	let html = $derived($page.data.html)
 </script>

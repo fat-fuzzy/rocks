@@ -1,10 +1,10 @@
 ---
-title: Monorepo Architecture
+title: CSS Library
 date: 'YYYY-MM-DD'
-slug: monorepo-architecture
-id: '000'
+slug: using-css-library
+id: '002'
 status: 'draft'
-tags: ['example', 'doc', 'monorepo']
+tags: ['example', 'doc', 'css']
 ---
 
 ## Use Case Example
