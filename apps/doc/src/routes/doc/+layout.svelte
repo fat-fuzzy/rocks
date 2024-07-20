@@ -18,7 +18,7 @@
 					slug: 'dev',
 					title: 'Dev',
 					asset: 'doc',
-					items: $page.data.markdowns.doc.filter(({meta})=> meta.status !== 'draft').map(({meta}) => ({
+					items: $page.data.markdowns.doc.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
@@ -28,7 +28,7 @@
 					slug: 'log',
 					title: 'Log',
 					asset: 'log',
-					items: $page.data.markdowns.log.filter(({meta})=> meta.status !== 'draft').map(({meta}) => ({
+					items: $page.data.markdowns.log.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
