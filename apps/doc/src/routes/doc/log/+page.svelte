@@ -4,9 +4,9 @@
 
 	const {PageMain} = content
 
-	let markdowns = $state($page.data.markdowns)
+	let markdowns = $state($page.data.markdowns.log)
 
-	let title = 'Fat Fuzzy Log'
+	let title = 'Decision Log'
 	let description = 'Log of Architectural decisions'
 </script>
 
@@ -14,9 +14,14 @@
 	<div class="l:text maki:block:2xs">
 		<ul class="l:stack:lg unstyled">
 			{#each markdowns as { meta }}
-				<a class="font:lg surface:3:primary card:md" href={`/log/${meta.slug}`}>
-					{meta.title}
-				</a>
+				{#if meta.status !== 'draft'}
+					<a
+						class="font:lg surface:3:primary card:md"
+						href={`/doc/log/${meta.slug}`}
+					>
+						{meta.title}
+					</a>
+				{/if}
 			{/each}
 		</ul>
 	</div>

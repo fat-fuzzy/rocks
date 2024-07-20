@@ -55,11 +55,11 @@ $half-moon: '🌗';
 $new-moon-face: '🌚';
 $full-moon-face: '🌝';
 $rainbow: '🌈';
-$pencil: '✏️';
 $beans: '🫘';
 $seedling: '🌱';
 $herb: '🌿';
 $tree: '🌳';
+$ledger: '📒';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -116,7 +116,7 @@ $emojis: (
 	// Composition Emojis
 	menu: #{$bunny},
 	settings: #{$control-knobs},
-	log: #{$log},
+	log: #{$ledger},
 	context: #{$umbrella},
 	switch-active: #{$bunny},
 	switch-inactive: #{$hat},

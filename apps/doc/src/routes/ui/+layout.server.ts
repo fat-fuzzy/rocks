@@ -1,4 +1,4 @@
-import assets from '$data/doc'
+import assets from '$data/ui'
 
 export const load = async (event) => {
 	let styles = null

@@ -4,19 +4,24 @@
 
 	const {PageMain} = content
 
-	let markdowns = $state($page.data.markdowns)
-	let title = ' Fat Fuzzy Dev'
+	let markdowns = $state($page.data.markdowns.doc)
+	let title = 'Dev Notes'
 	let description =
-		'Fat Fuzzy Dev: how to use the packages in this project, examples, notes'
+		'Fat Fuzzy Doc: how to use the packages in this project, examples, notes'
 </script>
 
 <PageMain {title} {description} size="lg">
 	<div class="l:text maki:block:2xs">
 		<ul class="l:stack:lg unstyled">
 			{#each markdowns as { meta }}
-				<a class="font:lg surface:3:primary card:md" href={`/dev/${meta.slug}`}>
-					{meta.title}
-				</a>
+				{#if meta.status !== 'draft'}
+					<a
+						class="font:lg surface:3:primary card:md"
+						href={`/doc/dev/${meta.slug}`}
+					>
+						{meta.title}
+					</a>
+				{/if}
 			{/each}
 		</ul>
 	</div>

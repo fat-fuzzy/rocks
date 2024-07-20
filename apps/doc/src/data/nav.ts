@@ -1,8 +1,6 @@
 export const links = [
-	{slug: 'about', title: 'About', layout: 'center'},
-	{slug: 'dev', title: 'Dev', layout: 'sidebar'},
+	{slug: 'doc', title: 'Doc', layout: 'sidebar'},
 	{slug: 'ui', title: 'UI', layout: 'sidebar'},
-	{slug: 'log', title: 'Log', layout: 'sidebar'},
 	{slug: 'play', title: 'Play', layout: 'sidebar'},
 ]
 

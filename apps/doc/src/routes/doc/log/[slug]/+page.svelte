@@ -5,15 +5,15 @@
 	const {PageMain} = content
 
 	let markdown = $derived(
-		$page.data.markdowns.find((d) => d.path === $page.data.path),
+		$page.data.markdowns.log.find((d) => d.path === $page.data.path),
 	)
 	let title = $derived(markdown.meta.title)
-	let description = $derived(`Developer Doc ${markdown.meta.id}: ${title}`)
+	let description = `Decision Log ${markdown.meta.id}: ${title}`
 	let date = $derived(markdown.meta.date)
 	let html = $derived($page.data.html)
 </script>
 
-<PageMain page="Dev" {title} {description}>
+<PageMain page="Log" {title} {description}>
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 		<div class="l:main:50 l:flex justify:end">

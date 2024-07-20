@@ -1,18 +1,18 @@
 import markdownUtils from './markdown'
 
-const categoryPrefix = '/src/assets/doc/'
-const tokensPathPrefix = '/src/assets/doc/tokens/'
-const blocksPathPrefix = '/src/assets/doc/blocks/'
-const layoutsPathPrefix = '/src/assets/doc/layouts/'
-// const graphicsPathPrefix = '/src/assets/doc/graphics/'
-const recipesPathPrefix = '/src/assets/doc/recipes/'
+const categoryPrefix = '/src/assets/ui/'
+const tokensPathPrefix = '/src/assets/ui/tokens/'
+const blocksPathPrefix = '/src/assets/ui/blocks/'
+const layoutsPathPrefix = '/src/assets/ui/layouts/'
+// const graphicsPathPrefix = '/src/assets/ui/graphics/'
+const recipesPathPrefix = '/src/assets/ui/recipes/'
 
-const categoryImports = import.meta.glob('/src/assets/doc/*.md')
-const tokensImports = import.meta.glob('/src/assets/doc/tokens/*.md')
-const blocksImports = import.meta.glob('/src/assets/doc/blocks/*.md')
-const layoutsImports = import.meta.glob('/src/assets/doc/layouts/*.md')
-const recipesImports = import.meta.glob('/src/assets/doc/recipes/*.md')
-// const graphicsImports = import.meta.glob('/src/assets/doc/graphics/*.md')
+const categoryImports = import.meta.glob('/src/assets/ui/*.md')
+const tokensImports = import.meta.glob('/src/assets/ui/tokens/*.md')
+const blocksImports = import.meta.glob('/src/assets/ui/blocks/*.md')
+const layoutsImports = import.meta.glob('/src/assets/ui/layouts/*.md')
+const recipesImports = import.meta.glob('/src/assets/ui/recipes/*.md')
+// const graphicsImports = import.meta.glob('/src/assets/ui/graphics/*.md')
 
 async function fetchMarkdowns() {
 	const [categories, tokens, blocks, layouts, recipes] = await Promise.all([
