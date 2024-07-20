@@ -16,10 +16,10 @@
 			{#each markdowns as { meta }}
 				{#if meta.status !== 'draft'}
 					<a
-						class="font:lg surface:3:primary card:md"
-						href={`/doc/log/${meta.slug}`}
+						class="font:lg surface:2:neutral card:md"
+						href={`${$page.url.pathname}/${meta.slug}`}
 					>
-						{meta.title}
+						{Number(meta.id)} - {meta.title}
 					</a>
 				{/if}
 			{/each}
