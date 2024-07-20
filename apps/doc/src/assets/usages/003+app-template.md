@@ -1,5 +1,5 @@
 ---
-title: Using an App Template
+title: App Template
 date: 'YYYY-MM-DD'
 slug: using-app-template
 id: '003'

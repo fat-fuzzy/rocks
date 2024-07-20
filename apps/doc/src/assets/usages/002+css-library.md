@@ -1,5 +1,5 @@
 ---
-title: Using the CSS Library
+title: CSS Library
 date: 'YYYY-MM-DD'
 slug: using-css-library
 id: '002'

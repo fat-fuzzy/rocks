@@ -12,7 +12,7 @@
 
 <PageMain {title} {description} size="lg">
 	<div class="l:text maki:block:2xs">
-		<ul class="l:stack:lg unstyled">
+		<ul class="l:stack:lg w:full" role="group">
 			{#each markdowns as { meta }}
 				{#if meta.status !== 'draft'}
 					<a
