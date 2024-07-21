@@ -15,7 +15,7 @@
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
 	let styles = $derived(playbookStore.styles)
-	let elementStyles = $derived(styles.blocks.families.element)
+	let elementStyles = $derived(styles.blocks?.families?.element || '')
 </script>
 
 <svelte:component

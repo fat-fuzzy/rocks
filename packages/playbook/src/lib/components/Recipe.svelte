@@ -17,8 +17,8 @@
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
-	let elementStyles = $derived(styles.blocks?.families.element || '')
-	let layoutStyles = $derived(styles.layouts?.families.layout || '')
+	let elementStyles = $derived(styles.blocks?.families?.element || '')
+	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let recipeName = $derived(name ? `ui-${name}` : `ui-${title}`)
 </script>
 
