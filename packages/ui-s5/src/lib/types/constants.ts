@@ -110,8 +110,8 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 	},
 	app: {
 		settings: {
-			brightness: 'day',
-			contrast: 'blend',
+			brightness: '',
+			contrast: '',
 		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
 	},
 	blocks: {
@@ -166,7 +166,7 @@ const APP_SETTINGS: SettingsItems = {
 			value: 'day',
 			shape: 'round',
 			color: 'primary',
-			size: 'md',
+			size: 'sm',
 			states: {
 				active: {
 					...SWITCH_MACHINE.active,
@@ -187,10 +187,10 @@ const APP_SETTINGS: SettingsItems = {
 			name: 'contrast',
 			title: 'Contrast',
 			variant: 'outline',
-			value: 'blend',
+			value: 'contrast',
 			shape: 'round',
 			color: 'primary',
-			size: 'md',
+			size: 'sm',
 			states: {
 				active: {
 					...SWITCH_MACHINE.active,

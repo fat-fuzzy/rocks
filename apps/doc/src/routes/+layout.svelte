@@ -3,8 +3,8 @@
 	import '@fat-fuzzy/style'
 
 	import {page} from '$app/stores'
-	import {links, itemsSettings} from '$data/nav'
-	import {recipes, utils} from '@fat-fuzzy/ui-s5'
+	import {links} from '$data/nav'
+	import {recipes, utils, constants} from '@fat-fuzzy/ui-s5'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {Header} = recipes
@@ -50,7 +50,7 @@
 		path={$page.url.pathname}
 		actionPath="/"
 		formaction="toggleNav"
-		items={{links, settings: {...itemsSettings, onupdate: updateSettings}}}
+		items={{links, settings: {...constants.APP_SETTINGS, onupdate: updateSettings}}}
 		breakpoint="sm"
 	/>
 	<main id="main">
