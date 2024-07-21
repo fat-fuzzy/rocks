@@ -75,29 +75,29 @@
 		? `updateSettings&redirectTo=${redirect}`
 		: 'updateSettings'
 
-	function initSettings(event) {
-		let preferredScheme = {...event}
-		switch (event.id) {
-			case 'brightness':
-				// TODO Fix this, not working
-				brightness = window.matchMedia('(prefers-color-scheme: dark)').matches
-					? 'night'
-					: 'day'
-				let state = brightness === 'day' ? 'inactive' : 'active'
-				let pressed = brightness === 'day' ? false : true
-				appSettings.brightness = brightness
-				preferredScheme.value = brightness
-				preferredScheme.state = state
-				preferredScheme.pressed = pressed
-				break
-			case 'contrast':
-				appSettings.contrast = event.value
-				break
-			default:
-				break
-		}
-		if (onupdate) onupdate(preferredScheme)
-	}
+	// function initSettings(event) {
+	// 	let preferredScheme = {...event}
+	// 	switch (event.id) {
+	// 		case 'brightness':
+	// 			// TODO Fix this, not working
+	// 			brightness = window.matchMedia('(prefers-color-scheme: dark)').matches
+	// 				? 'night'
+	// 				: 'day'
+	// 			let state = brightness === 'day' ? 'inactive' : 'active'
+	// 			let pressed = brightness === 'day' ? false : true
+	// 			appSettings.brightness = brightness
+	// 			preferredScheme.value = brightness
+	// 			preferredScheme.state = state
+	// 			preferredScheme.pressed = pressed
+	// 			break
+	// 		case 'contrast':
+	// 			appSettings.contrast = event.value
+	// 			break
+	// 		default:
+	// 			break
+	// 	}
+	// 	if (onupdate) onupdate(preferredScheme)
+	// }
 </script>
 
 <div class={layoutClasses}>
@@ -173,7 +173,6 @@
 						{value}
 						states={switchStates}
 						onclick={handleUpdate}
-						init={initSettings}
 					/>
 				</div>
 			{/each}
