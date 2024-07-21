@@ -23,7 +23,8 @@
 	background-color: inherit;
 }
 
-[class*=':outline'][class*='card'] {
+[class*=':outline'][class*='card'],
+[class*=':bare'][class*='card'] {
 	background-color: var(--shade);
 }
 
@@ -31,5 +32,4 @@
 	--border-color: oklch(
 		var(--lightness-surface-2) var(--chroma-contrast) var(--hue)
 	);
-	background-color: inherit;
 }
