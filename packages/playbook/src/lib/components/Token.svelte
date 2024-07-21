@@ -12,7 +12,7 @@
 
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
-	let tokenStyles = $derived(styles.tokens.families.element)
+	let tokenStyles = $derived(styles.tokens?.families?.element || '')
 
 	let variant = ''
 	let size = '' // element's own size
