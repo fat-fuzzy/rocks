@@ -69,48 +69,6 @@ const APP_LINKS: {[key: string]: string}[] = [
 	{slug: 'about', title: 'About', layout: 'center'},
 ]
 
-const APP_SETTINGS = {
-	switch: [
-		{
-			id: 'brightness',
-			name: 'brightness',
-			title: 'Brightness',
-			variant: 'outline',
-			shape: 'round',
-			color: 'primary',
-			size: 'md',
-			states: {
-				active: {text: 'night', value: 'night', asset: 'night'},
-				inactive: {text: 'day', value: 'day', asset: 'day'},
-			},
-		},
-		{
-			id: 'contrast',
-			name: 'contrast',
-			title: 'Contrast',
-			variant: 'outline',
-			shape: 'round',
-			color: 'primary',
-			size: 'md',
-			states: {
-				active: {text: 'contrast', value: 'contrast', asset: 'contrast'},
-				inactive: {text: 'blend', value: 'blend', asset: 'blend'},
-			},
-		},
-	],
-	links: [
-		{
-			id: 'link-github',
-			title: 'GitHub icon',
-			url: 'https://github.com/fat-fuzzy/rocks',
-			asset: 'svg:github',
-			shape: 'round',
-			size: 'sm',
-			color: 'primary',
-		},
-	],
-}
-
 const TABS_CONTENT = [
 	{
 		id: 'context.menu.toggle.demo',
@@ -141,6 +99,5 @@ export default {
 	ALIGN_ANIMATION_DIRECTION,
 	NUMBER_TO_SIZE,
 	APP_LINKS,
-	APP_SETTINGS,
 	TABS_CONTENT,
 }

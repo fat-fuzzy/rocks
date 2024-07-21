@@ -15,7 +15,7 @@
 	const {LayoutSidebar} = content
 
 	type Props = {
-		app?: {settings: {[key: string]: string}}
+		app: {settings: {[key: string]: string}}
 		path?: string
 		redirect: string
 		children: Snippet
@@ -81,7 +81,7 @@
 		id: 'nav-page',
 		items,
 		reveal: 'expanded',
-		settings: {...playbookStore.app},
+		settings: {...playbookStore.app.settings},
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',

@@ -1,6 +1,5 @@
 import type {StyleTree} from '$lib/api/styles.types'
-
-import constants from '$lib/types/constants'
+import {constants} from '@fat-fuzzy/ui-s5'
 import {initStyles} from '$lib/api/styles.api'
 
 const {

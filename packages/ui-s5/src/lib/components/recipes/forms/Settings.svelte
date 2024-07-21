@@ -54,7 +54,7 @@
 	}
 
 	let reveal = $derived(settingsReveal.reveal)
-	let brightness = $derived(appSettings.brightness)
+	let brightness = $state(appSettings.brightness)
 	let showBackground = background
 		? `bg:${background}`
 		: !color
@@ -74,6 +74,30 @@
 	let settingsUpdateAction = redirect
 		? `updateSettings&redirectTo=${redirect}`
 		: 'updateSettings'
+
+	function initSettings(event) {
+		let preferredScheme = {...event}
+		switch (event.id) {
+			case 'brightness':
+				// TODO Fix this, not working
+				brightness = window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'night'
+					: 'day'
+				let state = brightness === 'day' ? 'inactive' : 'active'
+				let pressed = brightness === 'day' ? false : true
+				appSettings.brightness = brightness
+				preferredScheme.value = brightness
+				preferredScheme.state = state
+				preferredScheme.pressed = pressed
+				break
+			case 'contrast':
+				appSettings.contrast = event.value
+				break
+			default:
+				break
+		}
+		if (onupdate) onupdate(preferredScheme)
+	}
 </script>
 
 <div class={layoutClasses}>
@@ -124,7 +148,7 @@
 			}}
 			class={`menu:settings ${formClasses}`}
 		>
-			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
+			{#each items.switch as { id, name, title, variant, shape, color, size, value, states }}
 				{@const switchStates = states
 					? {
 							active: {
@@ -141,14 +165,15 @@
 					<Switch
 						id={`${settingsId}-${id}`}
 						{name}
-						value={id}
 						{title}
 						{variant}
 						{shape}
 						{color}
 						{size}
+						{value}
 						states={switchStates}
 						onclick={handleUpdate}
+						init={initSettings}
 					/>
 				</div>
 			{/each}

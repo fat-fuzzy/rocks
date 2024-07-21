@@ -1,4 +1,6 @@
-import {links, itemsSettings} from './nav'
+import {links} from './nav'
+import {constants} from '@fat-fuzzy/ui-s5'
+const {APP_SETTINGS} = constants
 
 export default {
 	ButtonMenu: {
@@ -87,7 +89,7 @@ export default {
 		actionPath: '/',
 		items: {
 			links,
-			settings: itemsSettings,
+			settings: APP_SETTINGS,
 		},
 		app: {
 			settings: {brightness: 'day', contrast: 'blend'},

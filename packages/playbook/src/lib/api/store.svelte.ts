@@ -1,5 +1,4 @@
-import constants from '$lib/types/constants'
-
+import {constants} from '@fat-fuzzy/ui-s5'
 import buttonFixtures from '$lib/fixtures/js/blocks'
 import tokenFixtures from '$lib/fixtures/js/tokens'
 import layoutsFixtures from '$lib/fixtures/js/layouts'
@@ -16,7 +15,7 @@ class PlaybookStore {
 	api = $state()
 	styles = $state(DEFAULT_STYLES)
 	reveal = $state(DEFAULT_REVEAL_STATE)
-	app = $state(DEFAULT_APP_SETTINGS)
+	app = $state({settings: DEFAULT_APP_SETTINGS})
 	menuReveal = $state(DEFAULT_REVEAL_STATE)
 	navReveal = $state(DEFAULT_REVEAL_STATE)
 	sidebarReveal = $state(DEFAULT_NAV_REVEAL_STATE)

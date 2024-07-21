@@ -14,7 +14,7 @@
 	let brightness = 'day'
 	let contrast = 'contrast'
 	let mainClass = `${brightness} l:${layout} l:stack:lg bg:${contrast}`
-	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`
+	let footerClass = "font:sm card:2xl color:primary"
 </script>
 
 <Header items={navItems} layout="center" app={{settings: {brightness: 'day', contrast: 'blend'}}}>
