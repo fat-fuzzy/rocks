@@ -3,9 +3,9 @@ title: Layouts
 slug: layouts
 tags: ['layouts']
 props_style: {
-	'blocks': {'element': ['size']},
-	'layouts': {'layout': ['threshold', 'breakpoint'],
-	'container': ['container', 'size']}
+  'blocks': {'element': ['size']},
+  'layouts': {'layout': ['threshold', 'breakpoint'],
+  'container': ['container', 'size']}
 }
 context: ['app.settings']
 ---

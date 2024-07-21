@@ -5,8 +5,8 @@ category: ['recipes']
 group: 'forms'
 props_state: ['action']
 props_style: {
-	'blocks': {'element': ['color', 'variant', 'size']},
-	'layouts': {'container': ['container', 'size']}
+  'blocks': {'element': ['color', 'variant', 'size']},
+  'layouts': {'container': ['container', 'size']}
 }
 context: ['app.settings', 'shared.container']
 ---
