@@ -52,9 +52,8 @@
 	const stylesApi: StylesApi = getContext('stylesApi')
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
-	let elementStyles = $derived(styles.blocks.element)
-	let layoutStyles = $derived(styles.layouts.layout)
-	let containerStyles = $derived(styles.layouts.container)
+	let elementStyles = $derived(styles.blocks?.families?.element || '')
+	let containerStyles = $derived(styles.layouts?.families?.container || '')
 	let settings = $derived(playbookStore.app)
 
 	//== App settings (user controlled)
@@ -87,9 +86,6 @@
 	)
 	let statusFixures = $derived(fixtures?.status ? fixtures.status.find((p) => p.case === status) : {})
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
-	let categories = $derived(
-		meta?.props_style ? Object.keys(meta.props_style) : [],
-	)
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
 	)
@@ -108,9 +104,6 @@
 			{actionPath}
 			{redirect}
 			{...settings}
-			{...containerStyles}
-			{...layoutStyles}
-			{...elementStyles}
 			id={`ui-${title}`}
 		/>
 	</div>
@@ -130,7 +123,7 @@
 						{redirect}
 						color = 'primary'
 						{meta}
-						{categories}
+						categories={[category]}
 					/>
 				{/key}
 			</aside>

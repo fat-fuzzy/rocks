@@ -59,13 +59,18 @@ export class DsStylesUpdate {
 		const styles = this.api.getStyleTree()
 		styleValues.forEach(({id, value}) => {
 			;[category, family, style, _] = id.split('.')
+			if (!styles[category]) {
+				styles[category] = {families: {}}
+			}
 			if (category !== 'submit' && category !== 'button') {
-				styles[category][family][style] = value[category][family][style]
+				styles[category].families[family][style] =
+					value[category][family][style]
 			}
 			if (style === 'brightness' || style === 'contrast') {
 				this.settings[style] = value[category][family][style]
 			}
 		})
+
 		this.api.applyStyles(styles)
 		return true
 	}

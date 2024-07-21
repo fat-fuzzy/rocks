@@ -378,10 +378,31 @@ const FAMILIES: {[key: string]: any} = {
 }
 
 const CATEGORIES: {[key: string]: any} = {
-	app: {settings: FAMILIES['settings']},
-	tokens: {element: FAMILIES['container']},
-	blocks: {element: FAMILIES['element']},
-	layouts: {layout: FAMILIES['container']},
+	app: {
+		name: 'app',
+		families: {
+			settings: FAMILIES['settings'],
+		},
+	},
+	tokens: {
+		name: 'tokens',
+		families: {
+			element: FAMILIES['container'],
+		},
+	},
+	blocks: {
+		name: 'blocks',
+		families: {
+			element: FAMILIES['element'],
+		},
+	},
+	layouts: {
+		name: 'layouts',
+		families: {
+			layout: FAMILIES['layout'],
+			container: FAMILIES['container'],
+		},
+	},
 }
 
 const PROPS_STYLE: {[key: string]: any} = {

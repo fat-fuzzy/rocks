@@ -29,9 +29,11 @@ export type StyleInputOptions = {
 type StyleNode = {
 	[style: string]: string
 }
+
 type StyleBranch = {
-	[family: string]: StyleNode
+	families: {[family: string]: StyleNode}
 }
+
 export type StyleTree = {
 	[category: string]: StyleBranch
 }
@@ -44,25 +46,32 @@ type StyleTreeFlat = {
 }
 
 export interface StyleCategory {
-	[key: string]: StyleFamily
+	name: string
+	families: {[key: string]: StyleFamily}
 }
 
 export interface AppStyles extends StyleCategory {
-	settings: StyleFamily
+	name: 'app'
+	families: {settings: StyleFamily}
 }
 
 export interface TokenStyles extends StyleCategory {
-	element: StyleFamily
+	name: 'tokens'
+	families: {element: StyleFamily}
 }
 
 export interface BlockStyles extends StyleCategory {
-	element: StyleFamily
+	name: 'blocks'
+	families: {element: StyleFamily}
 }
 
 export interface LayoutStyles extends StyleCategory {
-	layout: StyleFamily
-	container: StyleFamily
-	content: StyleFamily
+	name: 'layouts'
+	families: {
+		layout: StyleFamily
+		container: StyleFamily
+		content: StyleFamily
+	}
 }
 
 export interface StyleOptions {
@@ -261,7 +270,7 @@ export class StyleFamily implements IStyleFamily {
 		const children = this.items.reduce((childrenTrees, style) => {
 			return {...childrenTrees, ...style.getStyleTree()}
 		}, {})
-		return {[family]: {...children}}
+		return {families: {[family]: {...children}}}
 	}
 
 	getStyleTreeFlat() {

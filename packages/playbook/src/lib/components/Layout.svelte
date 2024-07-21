@@ -13,9 +13,10 @@
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
-	let styles =  $derived(playbookStore.styles)
-	let elementStyles = $derived(styles.blocks.element)
-	let layoutStyles = $derived(styles.layouts.layout)
+	let styles = $derived(playbookStore.styles)
+	let elementStyles = $derived(styles.blocks?.families?.element || '')
+	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
+	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	// Content options
 	// let content = $derived(styles.layouts?.content.content ?? 'card')
@@ -41,8 +42,9 @@
 
 {#if title === 'Sidebar'}
 	<svelte:component this={component} id={title}
-		{...elementStyles}
+		{...containerStyles}
 		{...layoutStyles}
+		{...elementStyles}
 		{...props}
 	>
 		{#snippet side()}
@@ -56,8 +58,9 @@
 	<svelte:component
 			this={component}
 			id={title}
-			{...elementStyles}
+			{...containerStyles}
 			{...layoutStyles}
+			{...elementStyles}
 			{...props}
 		>
 		{@render children(fixtures, content)}

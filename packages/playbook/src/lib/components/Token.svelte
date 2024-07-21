@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
+	import PlaybookStore from '$lib/api/store.svelte'
 
 	type Props = {
 		title: string
@@ -9,9 +10,9 @@
 
 	let {title, component, props}: Props = $props()
 
-	const playbookStore: PlaybookStore = getContext('playbookStore')
+	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
-	let tokenStyles = $derived(styles.tokens.element)
+	let tokenStyles = $derived(styles.tokens.families.element)
 
 	let variant = ''
 	let size = '' // element's own size
