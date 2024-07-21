@@ -3,8 +3,8 @@ title: Recipes
 slug: recipes
 tags: ['recipes']
 props_style: {
-	'blocks': {'element': ['color', 'variant', 'size', 'asset', 'context', 'shape', 'status']},
-	'layouts': {'layout': ['threshold', 'breakpoint'], 'container': ['container', 'size']},
+	'blocks': {'element': ['color', 'variant', 'size', 'asset', 'shape']},
+	'layouts': {'layout': ['layout', 'threshold', 'breakpoint'], 'container': ['container', 'size']},
 }
 context: ['app.settings']
 ---

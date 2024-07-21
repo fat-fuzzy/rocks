@@ -46,10 +46,6 @@
 	let titleDepth = $derived(Number(depth) + 1)
 	let layoutClass = $derived(category === 'tokens' ? `l:stack:${size}` : category === 'recipes' ? `l:${layout}:lg` : `l:${layout}:${size}`)
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
-	let categories = $derived(category === 'recipes'
-			? ['blocks', 'layouts', 'shared']
-			: category === 'tokens' ? undefined
-			: [category])
 </script>
 
 {#snippet categoryElements()}
@@ -89,7 +85,7 @@
 						{redirect}
 						color = 'primary'
 						{meta}
-						{categories}
+						categories = {[category]}
 					/>
 				{/key}
 			</aside>
