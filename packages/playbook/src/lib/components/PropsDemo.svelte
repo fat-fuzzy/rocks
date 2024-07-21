@@ -33,7 +33,7 @@
 	<summary class={`variant:fill surface:2:${color}`}>
 		Style Props
 	</summary>
-	{#if categories && categories.length > 0}
+	{#if categories && categories.length > 0 && meta.props_style}
 		<div class="ui:menu">
 			<Api {categories} {path} {actionPath} {redirect} {meta} />
 		</div>

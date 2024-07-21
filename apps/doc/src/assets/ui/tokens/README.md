@@ -2,7 +2,7 @@
 title: Tokens
 slug: tokens
 tags: ['tokens']
-# props_style: {}
+props_style: null
 context: ['app.settings']
 ---
 
