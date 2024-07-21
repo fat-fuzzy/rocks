@@ -2,7 +2,6 @@
 title: Layouts
 slug: layouts
 category: 'layouts'
-inputs: ['blocks.element', 'layouts.element', 'layouts.container']
 context: ['app.settings']
 ---
 

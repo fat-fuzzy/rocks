@@ -2,7 +2,7 @@
 title: Color
 slug: Color
 category: 'tokens'
-# props_style: {'blocks': {'element': ['color']}, 'layouts': {'container': ['container', 'size']}}
+# props_style: {}
 context: ['app.settings']
 ---
 
