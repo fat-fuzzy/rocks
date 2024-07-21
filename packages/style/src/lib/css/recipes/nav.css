@@ -36,6 +36,7 @@ nav li a {
 	margin-inline: var(--size-base-2xs);
 	min-width: 1em;
 	margin: var(--outline-offset-nav);
+	inline-size: 100%;
 }
 
 [class*='reveal-nav'] {
