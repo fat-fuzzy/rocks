@@ -2,7 +2,11 @@
 title: Layouts
 slug: layouts
 tags: ['layouts']
-inputs: ['blocks.element', 'layouts.element','layouts.container']
+props_style: {
+  'blocks': {'element': ['size']},
+  'layouts': {'layout': ['threshold', 'breakpoint'],
+  'container': ['container', 'size']}
+}
 context: ['app.settings']
 ---
 

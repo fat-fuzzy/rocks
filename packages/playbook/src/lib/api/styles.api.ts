@@ -26,23 +26,21 @@ export class StylesApi {
 		this.layouts = layouts
 	}
 
-	getFormOptions(
-		category: string,
-		meta: Meta | undefined,
-	): StyleCategory[] | undefined {
+	getFormOptions(category: string, meta: Meta | undefined): StyleCategory[] {
+		let options: StyleCategory[] | undefined
 		if (meta?.props_style) {
-			return this.filterFormOptions(meta.props_style)
+			options = this.filterFormOptions(meta.props_style)
+		} else if (category) {
+			const categoryOptions = this.getCategoryOptions(category)
+			options = categoryOptions ? [categoryOptions] : []
 		}
-		if (category) {
-			const options = this.getCategoryOptions(category)
-			return options ? [options] : undefined
-		}
+
+		return options ? options : []
 	}
 
 	filterFormOptions(styleProps: StyleProps): StyleCategory[] {
 		const catNames = Object.keys(styleProps)
 		let families
-
 		const options = catNames.map((category) => {
 			families = styleProps[category]
 			return this.filterCategoryOptions(category, families)
@@ -57,7 +55,10 @@ export class StylesApi {
 		},
 	): StyleCategory {
 		const famNames = Object.keys(families)
-		const options: StyleCategory = {}
+		const options: StyleCategory = {
+			name: category,
+			families: {},
+		}
 
 		let styleFamily: StyleFamily
 		let filterItems: string[]
@@ -66,7 +67,7 @@ export class StylesApi {
 			styleFamily = getFamily(`${category}.${familyName}`)
 			styleFamily.items = this.filterInputGroups(styleFamily, filterItems)
 
-			options[familyName] = styleFamily
+			options.families[familyName] = styleFamily
 		})
 
 		return options
@@ -97,15 +98,15 @@ export class StylesApi {
 	): StyleFamily | undefined {
 		switch (family) {
 			case 'settings':
-				return category.settings
+				return category.families.settings
 			case 'element':
-				return category.element
+				return category.families.element
 			case 'layout':
-				return category.layout
+				return category.families.layout
 			case 'container':
-				return category.container
+				return category.families.container
 			case 'content':
-				return category.content
+				return category.families.content
 			default:
 				return undefined
 		}
@@ -136,20 +137,41 @@ export class StylesApi {
 	}
 
 	getStyleTree(): StyleTree {
-		const appStylesTree = this.app?.settings?.getStyleTree() || {}
-		const tokensStylesTree = this.tokens?.element?.getStyleTree() || {}
-		const blocksStylesTree = this.blocks?.element?.getStyleTree() || {}
-		const layoutsLayoutStylesTree = this.layouts?.layout?.getStyleTree() || {}
-		const layoutsContainerStylesTree =
-			this.layouts?.container?.getStyleTree() || {}
+		let appFamilies = {families: {}}
+		let tokensFamilies = {families: {}}
+		let blocksFamilies = {families: {}}
+		let layoutsLayoutFamilies = {families: {}}
+		let layoutsContainerFamilies = {families: {}}
+
+		if (this.app) {
+			appFamilies = {...this.app.families.settings?.getStyleTree()}
+		}
+		if (this.tokens) {
+			tokensFamilies = {...this.tokens.families.element?.getStyleTree()}
+		}
+		if (this.blocks) {
+			blocksFamilies = {...this.blocks.families.element?.getStyleTree()}
+		}
+		if (this.layouts) {
+			layoutsLayoutFamilies = {
+				...this.layouts.families.layout?.getStyleTree(),
+			}
+		}
+		if (this.layouts) {
+			layoutsContainerFamilies = {
+				...this.layouts.families.container?.getStyleTree(),
+			}
+		}
 
 		return {
-			tokens: tokensStylesTree,
-			app: appStylesTree,
-			blocks: blocksStylesTree,
+			tokens: tokensFamilies,
+			app: appFamilies,
+			blocks: blocksFamilies,
 			layouts: {
-				...layoutsLayoutStylesTree,
-				...layoutsContainerStylesTree,
+				families: {
+					...layoutsLayoutFamilies.families,
+					...layoutsContainerFamilies.families,
+				},
 			},
 		}
 	}
@@ -157,53 +179,69 @@ export class StylesApi {
 	applyStyles(updatedStyles: StyleTree) {
 		Object.keys(updatedStyles).map((updatedCategory) => {
 			const category = updatedStyles[updatedCategory]
-			let families: string[] = []
-			let styles: StyleCategory
+			const styles: StyleCategory = {name: updatedCategory, families: {}}
 
 			switch (updatedCategory) {
 				case 'tokens':
-					families = Object.keys(this.tokens)
-					styles = this.tokens
+					styles.families = this.tokens.families || {
+						element: getFamily('tokens.element'),
+					}
 					break
 				case 'app':
-					families = Object.keys(this.app)
-					styles = this.app
+					styles.families = this.app.families || {
+						settings: getFamily('app.settings'),
+					}
 					break
 				case 'blocks':
-					families = Object.keys(this.blocks)
-					styles = this.blocks
+					styles.families = this.blocks.families || {
+						element: getFamily('blocks.element'),
+					}
 					break
 				case 'layouts':
-					families = Object.keys(this.layouts)
-					styles = this.layouts
+					styles.families = this.layouts.families || {
+						layout: getFamily('layouts.layout'),
+						container: getFamily('layouts.container'),
+						content: getFamily('layouts.content'),
+					}
 					break
 				default:
 					break
 			}
+			const families = Object.keys(styles.families)
 			families.map((family) => {
-				const updatedFamily = category[family]
-				styles[family].applyStyles(updatedFamily)
+				const updatedFamily = category.families
+					? category.families[family]
+					: undefined
+				if (updatedFamily) {
+					styles.families[family].applyStyles(updatedFamily)
+				}
 			})
 		})
 	}
 }
 
 const tokens: TokenStyles = {
-	element: getFamily('tokens.element'),
+	name: 'tokens',
+	families: {element: getFamily('tokens.element')},
 }
 
 const app: AppStyles = {
-	settings: getFamily('app.settings'),
+	name: 'app',
+	families: {settings: getFamily('app.settings')},
 }
 
 const blocks: BlockStyles = {
-	element: getFamily('blocks.element'),
+	name: 'blocks',
+	families: {element: getFamily('blocks.element')},
 }
 
 const layouts: LayoutStyles = {
-	layout: getFamily('layouts.layout'),
-	container: getFamily('layouts.container'),
-	content: getFamily('layouts.content'),
+	name: 'layouts',
+	families: {
+		layout: getFamily('layouts.layout'),
+		container: getFamily('layouts.container'),
+		content: getFamily('layouts.content'),
+	},
 }
 
 export const initStyles = () => new StylesApi({app, tokens, blocks, layouts})

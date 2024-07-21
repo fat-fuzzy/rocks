@@ -72,29 +72,37 @@ const TABS: Tab[] = [
 
 const DEFAULT_STYLES: StyleTree = {
 	tokens: {
-		element: {color: 'primary', typography: 'h1'},
+		families: {
+			element: {color: 'primary', typography: 'h1'},
+		},
 	},
 	app: {
-		settings: {
-			brightness: 'day',
-			contrast: 'blend',
-		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
+		families: {
+			settings: {
+				brightness: 'day',
+				contrast: 'blend',
+			} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
+		},
 	},
 	blocks: {
-		element: {
-			variant: 'fill',
-			color: '',
-			status: 'default',
-			context: 'form',
-			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-			asset: 'emoji:default',
-			size: 'md',
+		families: {
+			element: {
+				variant: 'fill',
+				color: '',
+				status: 'default',
+				context: 'form',
+				// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
+				asset: 'emoji:default',
+				size: 'md',
+			},
 		},
 	},
 	layouts: {
-		// layout: {layout: 'switcher', threshold: 'md', breakpoint: 'lg'}, // need large breakpoint for Header default demo
-		container: {container: 'center', size: 'md'},
-		// content: {content: 'card', side: 'card', main: 'text'}, // TODO: fix demo content
+		families: {
+			// layout: {layout: 'switcher', threshold: 'md', breakpoint: 'lg'}, // need large breakpoint for Header default demo
+			container: {container: 'center', size: 'md'},
+			// content: {content: 'card', side: 'card', main: 'text'}, // TODO: fix demo content
+		},
 	},
 }
 

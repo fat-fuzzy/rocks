@@ -3,7 +3,10 @@ title: Switcher
 slug: Switcher
 category: 'layouts'
 content_types: ['items']
-props_style: {'blocks': {'element': ['size']}, 'layouts': {'layout': ['threshold'] }}
+props_style: {
+  'blocks': {'element': ['size']},
+  'layouts': {'layout': ['threshold'], 'container': ['container', 'size'] }
+}
 context: ['app.settings', 'shared.container']
 ---
 

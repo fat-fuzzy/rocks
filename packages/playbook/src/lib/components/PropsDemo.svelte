@@ -30,8 +30,10 @@
 {/snippet}
 
 <details open class="l:stack:md size:xs">
-	<summary class={`variant:fill surface:2:${color}`}>Props</summary>
-	{#if categories && categories.length > 0}
+	<summary class={`variant:fill surface:2:${color}`}>
+		Style Props
+	</summary>
+	{#if categories && categories.length > 0 && meta.props_style}
 		<div class="ui:menu">
 			<Api {categories} {path} {actionPath} {redirect} {meta} />
 		</div>

@@ -20,7 +20,9 @@
 	{@const blocks = meta.props_style.blocks}
 	{@const layouts = meta.props_style.layouts}
 		<details open class="l:stack:md size:xs">
-			<summary class="surface:2:primary">Style Props</summary>
+			<summary class="surface:2:primary">
+				Style Props
+			</summary>
 			<ul class="tags l:switcher:md">
 				{#if blocks}
 					{@const blockStyles = Object.keys(blocks)}

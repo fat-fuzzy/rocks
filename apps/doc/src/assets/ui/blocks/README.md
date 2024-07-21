@@ -2,7 +2,7 @@
 title: Blocks
 slug: blocks
 tags: ['blocks']
-inputs: ['blocks.element']
+props_style: {'blocks': {'element': ['color', 'variant', 'size', 'asset', 'context', 'shape', 'status']}}
 context: ['app.settings']
 ---
 

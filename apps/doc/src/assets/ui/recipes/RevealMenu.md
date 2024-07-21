@@ -5,11 +5,10 @@ category: 'recipes'
 group: 'menus'
 content_types: ['menus']
 props_state: ['title', 'formaction', 'value']
-props_style:
-  {
-    'blocks': {'element': ['color', 'variant', 'size', 'background']},
-    'layouts': {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
-  }
+props_style: {
+  'blocks': {'element': ['color', 'variant', 'size', 'background']},
+  'layouts': {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
+}
 context: ['app.settings', 'shared.container']
 ---
 

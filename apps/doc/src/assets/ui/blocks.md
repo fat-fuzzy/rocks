@@ -2,7 +2,6 @@
 title: Blocks
 slug: blocks
 category: 'blocks'
-inputs: ['blocks.element']
 context: ['app.settings']
 ---
 
