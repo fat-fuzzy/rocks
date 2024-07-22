@@ -39,7 +39,7 @@
 		background?: string
 		layout?: string
 		breakpoint?: string
-		threshold?: string
+		dev?: boolean
 	}
 
 	let {
@@ -52,10 +52,10 @@
 		background,
 		layout = 'switcher',
 		breakpoint,
-		threshold,
+		dev,
 	}: Props = $props()
 
-	let debug = false // TODO : use env variable, set to true for testing
+	let debug = dev
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
 	let context: SceneContext = $state({})
