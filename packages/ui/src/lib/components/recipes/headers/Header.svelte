@@ -6,7 +6,7 @@
 
 	let {
 		id = 'header-app',
-		breakpoint = 'md',
+		breakpoint = 'sm',
 		path,
 		formaction,
 		actionPath,
@@ -22,9 +22,7 @@
 	}
 
 	let reveal = $derived(navReveal.reveal)
-	let headerClass = $derived(
-		`${className} l:flex layer:2 sticky:top justify:start`,
-	)
+	let headerClass = $derived(`${className} l:flex sticky:top justify:start`)
 </script>
 
 <header class={headerClass}>
@@ -46,7 +44,7 @@
 				{redirect}
 				{actionPath}
 			>
-				<ul class="l:switcher:md">
+				<ul class="l:switcher:sm">
 					<li aria-current={path === '/' ? 'page' : undefined}>
 						<a
 							data-sveltekit-preload-data

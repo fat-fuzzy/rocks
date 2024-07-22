@@ -19,6 +19,7 @@
 		color,
 		size,
 		shape,
+		layout,
 		variant,
 		dimensions,
 		type = 'submit',
@@ -50,7 +51,7 @@
 			justify,
 			asset,
 			variant,
-			layout: shape ? undefined: 'switcher',
+			layout: shape ? layout : 'switcher',
 			dimensions,
 		}))
 

@@ -1,10 +1,11 @@
 /**
- * Set max line width for text:
+ * Set inline-size for text:
  * - improve readability by using ch units to adapt to user zoom settings
  */
 
 [class^='l:text'] {
-	max-width: 80ch;
+	inline-size: 80ch;
+	max-inline-size: 100%;
 	padding-block-end: var(--ui-size-lg);
 }
 
@@ -35,29 +36,29 @@ ul.unstyled {
 }
 
 .l\:text\:2xs {
-	max-width: 20ch;
+	inline-size: 20ch;
 }
 
 .l\:text\:xs {
-	max-width: 35ch;
+	inline-size: 35ch;
 }
 
 .l\:text\:sm {
-	max-width: 50ch;
+	inline-size: 50ch;
 }
 
 .l\:text\:md {
-	max-width: 65ch;
+	inline-size: 65ch;
 }
 
 .l\:text\:lg {
-	max-width: 80ch;
+	inline-size: 80ch;
 }
 
 .l\:text\:xl {
-	max-width: 95ch;
+	inline-size: 95ch;
 }
 
 .l\:text\:2xl {
-	max-width: 110ch;
+	inline-size: 110ch;
 }
