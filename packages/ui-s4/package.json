@@ -1,6 +1,6 @@
 {
-	"package": "@fat-fuzzy/ui",
-	"name": "@fat-fuzzy/ui",
+	"package": "@fat-fuzzy/ui-s4",
+	"name": "@fat-fuzzy/ui-s4",
 	"version": "0.1.46",
 	"description": "Fat Fuzzy UI",
 	"author": "Patricia Boh",
