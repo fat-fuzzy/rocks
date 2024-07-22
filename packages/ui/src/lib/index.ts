@@ -15,9 +15,9 @@ import Typography from '$lib/components/tokens/Typography.svelte'
  * Block components
  */
 import Button from '$lib/components/blocks/buttons/Button.svelte'
-import Expand from '$lib/components/blocks/buttons/Expand.svelte'
-import Switch from '$lib/components/blocks/buttons/Switch.svelte'
-import Toggle from '$lib/components/blocks/buttons/Toggle.svelte'
+import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
+import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
@@ -36,14 +36,14 @@ import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
 
 /**
- * Compositions - Base
+ * Recipes - Base
  */
-import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
-import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu.svelte'
 import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
+import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
+import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
+import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 
 import LogIn from '$lib/components/recipes/forms/LogIn.svelte'
-import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
@@ -51,63 +51,26 @@ import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Header from '$lib/components/recipes/headers/Header.svelte'
 
 /**
- * Compositions - Graphics
+ * Recipes - Routes
  */
-import Geometry2D from '$lib/components/graphics/Geometry2D.svelte'
-import Geometry3D from '$lib/components/graphics/Geometry3D.svelte'
-import Player from '$lib/components/graphics/Player.svelte'
-import Sketch from '$lib/components/graphics/Sketch.svelte'
-
-/**
- * Styles Api components
- * - Used to display documentation about UI library components and their options (=API) in documentation website
- */
-import Api from '$lib/api/styles/Api.svelte'
-import Token from '$lib/api/styles/Token.svelte'
-import Element from '$lib/api/styles/Element.svelte'
-import Collection from '$lib/api/styles/Collection.svelte'
-
-import * as stylesApi from '$lib/api/styles'
-import * as fixturesApi from '$lib/api/fixtures/js/'
-
-/**
- * Tests Api components
- * - Used to display documentation about UI library components and their options (=API) in documentation website
- */
-import Test from '$lib/api/tests/TestComponent.svelte'
-
-/**
- * Api webcomponents - WIP
- * - Idea:  be able to test UI Library for different apps using web components to encapsulate styles - not working yet
- */
-// import StyleCapsule from '$lib/api/StyleCapsule.wc.svelte'
+import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
+import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 
 /**
  * Forms
  */
-import {NavReveal} from '$lib/forms/nav-reveal'
-import {SettingsReveal} from '$lib/forms/settings-reveal'
-import {SettingsUpdate} from '$lib/forms/settings-update'
-import {SidebarReveal} from '$lib/forms/sidebar-reveal'
-import {DsContextReveal} from '$lib/forms/ds-context-reveal'
-import {DsStylesUpdate} from '$lib/forms/ds-styles-update'
-import {DsStateUpdate} from '$lib/forms/ds-state-update'
-import {DsTabsUpdate} from '$lib/forms/ds-tabs-update'
-
-/**
- * Stores
- */
-import * as settings from '$lib/stores/settings'
-import * as ui from '$lib/stores/ui'
-import * as intl from '$lib/stores/intl'
+import {NavReveal} from '$lib/forms/nav-reveal.js'
+import {SettingsReveal} from '$lib/forms/settings-reveal.js'
+import {SettingsUpdate} from '$lib/forms/settings-update.js'
+import {SidebarReveal} from '$lib/forms/sidebar-reveal.js'
 
 /**
  * Utilities
  */
-import constants from '$lib/types/constants'
-import * as clickOutside from '$lib/utils/click-outside'
-import * as props from '$lib/api/props'
-import format from '$lib/utils/format'
+import * as types from '$lib/types/index.js'
+import constants from '$lib/types/constants.js'
+import * as clickOutside from '$lib/utils/click-outside.js'
+import format from '$lib/utils/format.js'
 
 /***************************************************
  * Prepare Exports
@@ -115,7 +78,6 @@ import format from '$lib/utils/format'
 const utils = {
 	format,
 	clickOutside,
-	props,
 }
 
 const forms = {
@@ -123,16 +85,6 @@ const forms = {
 	SidebarReveal,
 	SettingsReveal,
 	SettingsUpdate,
-	DsContextReveal,
-	DsStateUpdate,
-	DsStylesUpdate,
-	DsTabsUpdate,
-}
-
-const stores = {
-	settings,
-	ui,
-	intl,
 }
 
 const tokens = {
@@ -166,37 +118,31 @@ const recipes = {
 	ButtonMenu,
 	ToggleMenu,
 	RevealMenu,
+	InputGroup,
 	LogIn,
 	Nav,
 	RevealNav,
 	Header,
-	InputGroup,
 }
 
-const graphics = {
-	// Geometry2D,
-	// Geometry3D,
-	// Player,
-	Sketch,
+const content = {
+	PageMain,
+	LayoutSidebar,
 }
 
-// TODO: rename this export : stylesApi
-const api = {
-	Api,
-	Collection,
-	Token,
-	Element,
-	stylesApi,
-	fixturesApi,
-}
-
-// TODO: rename this export : stylesApi
 const headless = {
 	Head,
 }
 
-const testsApi = {
-	Test,
+export {
+	headless,
+	tokens,
+	blocks,
+	layouts,
+	recipes,
+	content,
+	utils,
+	forms,
+	constants,
+	types,
 }
-
-export {headless, tokens, blocks, layouts, recipes, graphics, api, utils, forms, stores, constants}

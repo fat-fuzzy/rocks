@@ -1,5 +1,5 @@
 import {links} from './nav'
-import {constants} from '@fat-fuzzy/ui-s5'
+import {constants} from '@fat-fuzzy/ui'
 const {APP_SETTINGS} = constants
 
 export default {

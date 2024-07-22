@@ -1,50 +1,94 @@
 <script lang="ts">
+	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
-	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import constants from '$lib/types/constants.js'
+	import type {RevealLayoutProps} from './layout.types.js'
+	import styleHelper from '$lib/utils/styles.js'
+	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
+	import { UiState } from '$types/index.js'
 
-	export let layout = ''
-	export let direction = 'tb-lr'
-	export let color = ''
-	export let size = ''
-	export let breakpoint = ''
-	export let variant = ''
-	export let align = ''
-	export let id = 'ui'
-	export let height = ''
-	export let background = ''
-	export let title = 'Reveal'
-	export let asset = ''
-	export let method = 'POST'
-	export let formaction: string | undefined = undefined
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
+	const { ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE} = constants
 
-	let expanded = false
+	let {
+		id = 'reveal',
+		title = 'Reveal',
+		method = 'POST',
+		formaction,
+		actionPath,
+		redirect,
+		reveal,
+		direction = 'tb-lr',
+		place = 'top',
+		position,
+		color,
+		size,
+		breakpoint,
+		variant,
+		align,
+		justify,
+		height,
+		background,
+		layer,
+		asset,
+		children,
+		onclick,
+	}: RevealLayoutProps = $props()
+
+	let expanded = $state(reveal ? reveal : UiState.collapsed)
 
 	function handleClickOutside(event) {
-		expanded = false
+		expanded = 'collapsed'
 	}
 
 	function toggleReveal(event) {
-		expanded = !expanded
+		expanded = event.state
+		if (onclick) { onclick(event) }
 	}
 
-	$: backgroundClass = background ? `layer bg:${background}` : 'hide:viz-only'
-	$: show = expanded ? `${backgroundClass} show` : 'hide:viz-only'
-	$: setHeight = height ? ` h:${height}` : ''
+	let layoutClasses = $derived(styleHelper.getLayoutStyles({
+			color,
+			size: '2xs',
+			height,
+			align,
+			asset,
+			variant,
+			layout: 'stack',
+			position,
+			breakpoint,
+			background,
+			layer
+		}))
 
-	// TODO: use a form
-	$: action = formaction
-		? redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-		: undefined
+	let revealClasses = $derived(`l:reveal ${layoutClasses} ${direction} ${expanded}`)
+	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : '' // TODO: fix this
+
+	let revealStates = {
+		expanded: {
+			...EXPAND_MACHINE.expanded,
+			text: title,
+			asset: `point-${ALIGN_ANIMATION_DIRECTION[place]['expanded']}`,
+		},
+		collapsed: {
+			...EXPAND_MACHINE.collapsed,
+			text: title,
+			asset: `point-${ALIGN_ANIMATION_DIRECTION[place]['collapsed']}`,
+		},
+	}
+
+	let action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 </script>
 
-<div
-	class={`l:reveal ${setHeight} l:${layout} bp:${breakpoint} ${size} ${direction}`}
-	use:clickOutside
-	on:clickOutside={handleClickOutside}
+<form {method}
+	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+	class={revealClasses}
+	use:enhance={() => {
+		// prevent default callback from resetting the form
+		return ({update}) => {
+			update({reset: false})
+		}
+	}}
 >
 	<Expand
 		id={`button-reveal-${id}`}
@@ -56,20 +100,18 @@
 		name="reveal"
 		controls={`${id}-reveal`}
 		value={'menu'}
-		states={{
-			active: {text: 'Reveal', value: 'show', asset},
-			inactive: {text: 'Reveal', value: 'minimize', asset},
-		}}
-		on:click={toggleReveal}
+		{asset}
+		initial={expanded}
+		text= 'Reveal'
+		place={placeIcon}
+		onclick={toggleReveal}
+		states={revealStates}
 	>
 		{title}
 	</Expand>
-	<div id={`${id}-reveal`} class={`align:${align} ${show}`}>
-		<slot name="content">
-			<div class={`card:lg`}>
-				<h3>Revealed Content</h3>
-				<p>This is a card with some content</p>
-			</div>
-		</slot>
+	<div id={`${id}-reveal`} class="content">
+		{#if children}
+			{@render children()}
+		{/if}
 	</div>
-</div>
+</form>

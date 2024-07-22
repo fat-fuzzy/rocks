@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
 	import {enhance} from '$app/forms'
-	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui-s5'
+	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui'
 	import {api} from '@fat-fuzzy/playbook'
 	import PlaybookStore from '$lib/api/store.svelte'
 

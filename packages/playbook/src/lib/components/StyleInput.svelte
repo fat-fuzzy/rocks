@@ -3,7 +3,7 @@
 	import type {StyleInputGroup} from '$lib/api/styles.types'
 
 	import {onMount, getContext} from 'svelte'
-	import {blocks, recipes} from '@fat-fuzzy/ui-s5' // TODO: fix types
+	import {blocks, recipes} from '@fat-fuzzy/ui' // TODO: fix types
 
 	import PlaybookStore from '$lib/api/store.svelte'
 

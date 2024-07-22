@@ -2,7 +2,7 @@
 	import {page} from '$app/stores'
 
 	import lib from '@fat-fuzzy/lib'
-	import {headless} from '@fat-fuzzy/ui-s5'
+	import {headless} from '@fat-fuzzy/ui'
 	import Sketch from '$lib/components/sketch/Sketch.svelte'
 
 	const {Head} = headless

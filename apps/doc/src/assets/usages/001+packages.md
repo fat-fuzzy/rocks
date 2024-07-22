@@ -21,7 +21,4 @@ This repository contains the following packages
 - **playbook** a package used to display, document and test the **ui** and **style** packages, started as a way to replace Storybook (you can read about this decision [here](http://localhost:5173/doc/decisions/simplify-doc))
 - **style** a CSS library
 - **sketch** a package used to display and handle interactive web graphics programs (used for learning: this usage is one of the initial motivations for this project)
-- **ui** A frontend component library (Svelte 4):
-  - this is the first component library I created for this project, and it contains the initial logic for the **playbook**,  **style**, and **sketch** packages
-- **ui-s5** A frontend component library (Svelte 5):
-  - I reduced the UI library to a set of components that can be shared across sites, and extracted the logic of the **playbook** and **sketch** interfaces, as well as the CSS library (**style**) into their own packages
+- **ui** A frontend component library written in Svelte

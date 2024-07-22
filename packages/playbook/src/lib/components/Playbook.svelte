@@ -8,7 +8,7 @@
 		recipes,
 		content,
 		constants,
-	} from '@fat-fuzzy/ui-s5'
+	} from '@fat-fuzzy/ui'
 	import playbookStore from '$lib/api/store.svelte'
 	import * as api from '$lib/api/styles.api'
 

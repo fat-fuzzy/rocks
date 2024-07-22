@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, recipes, content} from '@fat-fuzzy/ui-s5'
+	import {tokens, blocks, layouts, recipes, content} from '@fat-fuzzy/ui'
 	import {api} from '@fat-fuzzy/playbook'
 
 	const {PageMain} = content

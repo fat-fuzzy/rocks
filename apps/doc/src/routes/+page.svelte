@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {content} from '@fat-fuzzy/ui-s5'
+	import {content} from '@fat-fuzzy/ui'
 
 	const {PageMain} = content
 	// TODO; conditional import

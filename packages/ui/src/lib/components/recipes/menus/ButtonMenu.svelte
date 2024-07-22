@@ -1,72 +1,73 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
+	import type {ButtonType} from '$lib/components/blocks/buttons/button.types.js'
+	import type {ButtonMenuProps} from './menu.types.js'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
-	const dispatch = createEventDispatcher()
-	export let id = 'button-menu'
-	export let title = ''
-	export let size = ''
-	export let threshold = ''
-	export let layout = 'switcher'
-	export let container = ''
-	export let color = ''
-	export let variant = ''
-	export let asset = ''
-	export let formaction: string | undefined = undefined
-	export let items: any = [] // TODO Fix type
-	export let disabled = false
+	let {
+		id = 'button-menu',
+		title,
 
-	const onClick = (event: CustomEvent) => {
-		dispatch('click', event.detail)
+		asset,
+		color,
+		size,
+		shape,
+		variant,
+		container = 'stack',
+		layout = 'switcher',
+		threshold,
+
+		formaction,
+		items = [],
+		disabled,
+		onupdate,
+	}: ButtonMenuProps = $props()
+
+	function updateMenu(payload: {name: string; value: string | number}) {
+		if (onupdate) {
+			onupdate(payload)
+		}
 	}
-	$: type = formaction ? 'submit' : 'button'
+
+let type: ButtonType = formaction ? 'submit' : 'button'
+let sizeClass = size ? `size:${size}` : ''
+let containerClass = container ? `menu l:${container}:${size}` : ''
+let layoutClass = layout ? `l:${layout}:${size}` : ''
+let thresholdClass = $derived(threshold ? `th:${threshold}` : '')
+let menuClasses = $derived(`${layoutClass} ${thresholdClass} ${sizeClass}`)
+
 </script>
 
-{#if title}
-	<div class={`menu l:stack:${size}`}>
-		<p>{title}</p>
-		<menu {id} class={`l:${layout}:${size} ${container}:${size} th:${threshold} ${size}`}>
-			{#each items as props, i}
-				{@const itemColor = props.color ?? color}
-				{@const itemVariant = props.variant ?? variant}
-				{@const itemSize = props.size ?? size}
-				{@const itemAsset = props.asset ?? asset}
-				<li>
-					<Button
-						on:click={onClick}
-						{type}
-						{formaction}
-						{...props}
-						color={itemColor}
-						variant={itemVariant}
-						size={itemSize}
-						asset={itemAsset}
-						{disabled}
-					/>
-				</li>
-			{/each}
-		</menu>
-	</div>
-{:else}
-	<menu {id} class={`l:${layout}:${size} ${container}:${size} th:${threshold} ${size}`}>
+{#snippet menuContent()}
+	<menu {id} class={menuClasses}>
 		{#each items as props, i}
 			{@const itemColor = props.color ?? color}
 			{@const itemVariant = props.variant ?? variant}
 			{@const itemSize = props.size ?? size}
 			{@const itemAsset = props.asset ?? asset}
+			{@const itemShape = props.shape ?? shape}
 			<li>
 				<Button
-					on:click={onClick}
+					onclick={updateMenu}
 					{type}
 					{formaction}
-					{...props}
 					color={itemColor}
 					variant={itemVariant}
 					size={itemSize}
 					asset={itemAsset}
+					shape={itemShape}
 					{disabled}
+					{...props}
 				/>
 			</li>
 		{/each}
 	</menu>
+{/snippet}
+
+{#if title}
+	<div class={containerClass}>
+		<p>{title}</p>
+		{@render menuContent()}
+	</div>
+{:else}
+	{@render menuContent()}
 {/if}

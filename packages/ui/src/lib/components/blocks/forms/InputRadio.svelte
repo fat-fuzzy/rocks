@@ -1,33 +1,56 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
+	import type {InputProps} from './input.types.js'
+	import {UiStatus, UiTextContext} from '$types/index.js'
+	import styleHelper from '$lib/utils/styles.js'
+	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
-	const dispatch = createEventDispatcher()
+	let {
+		id,
+		name,
+		label = 'Radio input',
+		checked = false,
+		disabled,
+		value,
+		status = UiStatus.default,
+		hint,
 
-	// @ts-check
-	export let label = 'Radio input'
-	export let name = ''
-	export let id = ''
-	export let value = ''
-	export let checked = false
-	export let color = ''
-	export let variant = ''
-	export let size = ''
-	export let background = ''
-	export let asset = ''
-	export let container = ''
-	export let disabled: boolean
-	let layout = 'flex'
-	let align = 'align:center'
+		layout = 'switcher',
+		asset,
+		align,
+		justify,
+		color,
+		size,
+		variant,
+		background,
+		container,
+
+		oninput,
+	}: InputProps = $props()
 
 	function handleInput(event) {
-		const payload = {
-			id,
-			value: event.target.value,
-		}
-		dispatch('input', payload)
+		if (oninput) oninput(payload)
 	}
-	$: backgroundClass = background ? `bg:${background}` : ''
-	$: classes = `l:${layout}:${size} check ${size} font:${size} ${color} ${variant} ${align} ${backgroundClass} ${container} ${asset}`
+
+	let classes = $derived(
+		styleHelper.getStyles({
+			color,
+			font: size,
+			size,
+			align,
+			justify,
+			asset,
+			variant,
+			layout,
+			container,
+			background: background ? background : 'inherit',
+		}),
+	)
+
+	let payload = $derived({
+		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		name,
+		value,
+	})
 </script>
 
 <label for={id} class={classes}>
@@ -38,8 +61,13 @@
 		{value}
 		{name}
 		{checked}
-		on:input={handleInput}
+		oninput={handleInput}
 		data-test={id}
 		{disabled}
 	/>
 </label>
+{#if hint}
+	<Feedback {status} context={UiTextContext.form} {size} {variant}>
+		{hint}
+	</Feedback>
+{/if}

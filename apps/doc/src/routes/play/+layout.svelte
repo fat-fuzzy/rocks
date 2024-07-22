@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte'
 	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui-s5'
+	import {content} from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 const {LayoutSidebar} = content

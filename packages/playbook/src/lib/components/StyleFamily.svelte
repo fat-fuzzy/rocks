@@ -4,7 +4,7 @@
 	import type {StyleTree} from '$lib/api/styles.types'
 
 	import {onMount, getContext} from 'svelte'
-	import {blocks} from '@fat-fuzzy/ui-s5' // TODO: fix types
+	import {blocks} from '@fat-fuzzy/ui' // TODO: fix types
 
 	import PlaybookStore from '$lib/api/store.svelte'
 	import StyleInput from './StyleInput.svelte'

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {blocks} from '@fat-fuzzy/ui-s5'
+	import {blocks} from '@fat-fuzzy/ui'
 	const {InputRange} = blocks
 
 	type Props = {

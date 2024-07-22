@@ -1,121 +1,97 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
-	import {enhance} from '$app/forms'
-	import constants from '$lib/types/constants'
-
-	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
+	import constants from '$lib/types/constants.js'
+	import type {RevealNavProps} from './nav.types.js'
+	import Reveal from '$lib/components/layouts/Reveal.svelte'
+	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
 
-	import * as ui from '$stores/ui'
+	const {DEFAULT_NAV_REVEAL_STATE} = constants
 
-	const {
-		DEFAULT_APP_SETTINGS,
-		DEFAULT_NAV_REVEAL_STATE,
-		ALIGN_OPPOSITE,
-		ALIGN_ANIMATION_DIRECTION,
-		TRANSITION_CONTRAST,
-	} = constants
+	let {
+		id = 'reveal-nav',
+		title = 'RevealNav',
+		path = '',
+		reveal,
+		formaction,
+		actionPath,
+		redirect,
+		layout,
+		direction = 'tb-lr',
+		color,
+		size,
+		breakpoint,
+		threshold,
+		variant,
+		align = 'center',
+		justify,
+		place = 'top',
+		position,
+		container,
+		background,
+		items = [],
+		onclick,
+	}: RevealNavProps = $props()
 
-	const method = 'POST'
-	export let size = ''
-	export let settings: any = ui
-	export let breakpoint: string | undefined = undefined
-	export let threshold: string | undefined = undefined
-	export let container = 'card'
-	export let variant = ''
-	export let layout = ''
-	export let color = ''
-	export let background = 'polar'
-	export let path = ''
-	export let id = 'ui'
-	export let title = 'RevealNav'
-	export let name = 'reveal-nav'
-	export let align = 'start'
-	export let place = 'top'
-	export let value: string | undefined = undefined
-	export let position: string | undefined = undefined
-	export let formaction: string | undefined = undefined
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
+	let sidebarReveal = $state(reveal ? {reveal} : DEFAULT_NAV_REVEAL_STATE)
 
-	export let items: any[] = [] // TODO: fix type
-
-	let sidebarReveal = value ? {reveal: value} : DEFAULT_NAV_REVEAL_STATE
-	let appSettings = DEFAULT_APP_SETTINGS
-
-	const stores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-		settings.sidebarReveal.subscribe((value) => {
-			if (value) {
-				sidebarReveal = value
-			}
-		}),
-	]
-
-	function toggleSidebar(event: CustomEvent) {
-		const updated = event.detail.expanded ? 'show' : 'minimize'
-		settings.sidebarReveal.set({reveal: updated})
+	function toggleReveal(event) {
+		sidebarReveal.reveal = event.state
+		if (onclick) onclick(event)
 	}
 
-	$: reveal = sidebarReveal.reveal
-	$: contrast = appSettings.contrast
-	$: buttonAlign = place ? ALIGN_OPPOSITE[align] : ''
-	$: animationDirection = place ? ALIGN_ANIMATION_DIRECTION[place][reveal] : ''
-	$: showBackground = background ? `bg:${background}` : `bg:${TRANSITION_CONTRAST[contrast]}`
-	$: navContainer = container ? `${container}:${size}` : ''
-	$: navLayoutThreshold = breakpoint ? ` bp:${breakpoint}` : threshold ? ` th:${threshold}` : ''
-	$: navLayout = layout ? `l:${layout}:${size} ${navLayoutThreshold}` : ''
-	$: showSidebar = `${sidebarReveal.reveal} ${showBackground} ${place}`
-	$: navClasses = `content ${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `
-	$: layoutClasses = position
-		? `l:reveal ${position} ${place} ${reveal}`
-		: `l:reveal ${place} ${reveal}`
-	$: revealClasses = `form:expand`
-	$: action = formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
+	let navContainer = $derived(container ? `${container}:${size}` : '')
+	let navLayoutThreshold = $derived(
+		breakpoint ? `bp:${breakpoint}` : threshold ? `th:${threshold}` : '',
+	)
+	let navLayout = $derived(
+		layout ? `l:${layout}:${size} ${navLayoutThreshold}` : '',
+	)
+	let showBackground = $derived(background ? `bg:${background}` : '')
+	let showSidebar = $derived(
+		`${sidebarReveal.reveal} ${showBackground} ${place}`,
+	)
+	let navClasses = $derived(
+		`${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `,
+	)
+	let revealClasses = $derived(
+		`l:reveal ${place} ${navClasses} ${sidebarReveal.reveal}`,
+	)
+	let layoutClasses = $derived(
+		position ? `${position} ${revealClasses}` : revealClasses,
+	)
 </script>
 
-<div class={layoutClasses}>
-	<form
+<nav
+	id={`nav-${id}`}
+	class={layoutClasses}
+	aria-label={title}
+	data-testid={`nav-${id}`}
+>
+	<SkipLinks text="Skip to content" href="#content" />
+	<Reveal
 		{id}
-		{name}
-		{method}
-		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-		use:enhance={() => {
-			// prevent default callback from resetting the form
-			return ({update}) => {
-				update({reset: false})
-			}
-		}}
-		class={revealClasses}
+		{variant}
+		{title}
+		{size}
+		{color}
+		reveal={sidebarReveal.reveal}
+		{actionPath}
+		{formaction}
+		{redirect}
+		{position}
+		{place}
+		{align}
+		{justify}
+		onclick={toggleReveal}
 	>
-		<Expand
-			id={`button-expand-${id}`}
-			{variant}
-			{title}
+		<LinkList
+			id={`${id}-${path}`}
+			{path}
+			{items}
 			{size}
-			{color}
-			name={`button-${name}`}
-			align={buttonAlign}
-			controls={`nav-${id}`}
-			value={title}
-			states={{
-				active: {text: title, value: 'show', asset: `emoji:point-${animationDirection}`},
-				inactive: {text: title, value: 'minimize', asset: `emoji:point-${animationDirection}`},
-			}}
-			on:click={toggleSidebar}
-		>
-			{title}
-		</Expand>
-	</form>
-	<nav id={`nav-${id}`} class={navClasses} aria-label={title}>
-		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
-	</nav>
-</div>
+			{align}
+			container="content"
+			depth={0}
+		/>
+	</Reveal>
+</nav>

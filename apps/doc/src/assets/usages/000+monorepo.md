@@ -28,7 +28,7 @@ The packages in this repo can be used together or independently, depending on th
 For example, the package `packages/ui` can be used to build apps in different contexts:
 
 - on a Django app and in a Jupyter Notebook (currently working on a private repo)
-- this documentation is built using the following packages: `style`, `ui-s5`, `playbook` and `sketch`
+- this documentation is built using the following packages: `style`, `ui`, `playbook` and `sketch`
 
 The package `lib/gfx` package is a package that I use to learn web graphics.
 

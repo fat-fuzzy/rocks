@@ -1,99 +1,112 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
 	import {enhance} from '$app/forms'
+	import constants from '$lib/types/constants.js'
+	import type {SettingsProps} from './settings.types.js'
+	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
+	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
+	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
-	import {clickOutside} from '$lib/utils/click-outside.js'
-	import * as settings from '$stores/settings'
-	import constants from '$lib/types/constants'
+	const {DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 
-	import Expand from '$lib/components/blocks/buttons/Expand.svelte'
-	import Switch from '$lib/components/blocks/buttons/Switch.svelte'
-
-	const {SVG_ASSETS, DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE, APP_SETTINGS} = constants
-	const method = 'POST'
-	export let breakpoint = 'xs'
-	export let background: string | undefined = undefined
-	export let id = 'settings'
-	export let size = 'md'
-	export let color = ''
-	export let variant = 'outline'
-	export let layout: string | undefined = undefined
-	export let align = 'end'
-	export let path: string | undefined = undefined
-	export let formaction: string | undefined = undefined
-	export let actionPath: string | undefined = undefined
-	export let redirect: string | undefined = undefined
-
-	export let items = APP_SETTINGS
+	let {
+		id = 'settings',
+		method = 'POST',
+		breakpoint = 'xs',
+		background,
+		layout,
+		color = 'primary',
+		size = 'sm',
+		variant = 'outline',
+		asset,
+		align = 'end',
+		formaction,
+		actionPath,
+		redirect,
+		items,
+		onupdate,
+	}: SettingsProps = $props()
 
 	let settingsId = id
-	let appSettings = DEFAULT_APP_SETTINGS
-	let settingsReveal = DEFAULT_REVEAL_STATE
-
-	const stores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-		settings.settingsReveal.subscribe((value) => {
-			if (value) {
-				settingsReveal = value
-			}
-		}),
-	]
+	let appSettings = $state(DEFAULT_APP_SETTINGS)
+	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
 
 	function handleClickOutsideSettings() {
-		settings.settingsReveal.set({reveal: 'minimize'})
+		settingsReveal = {reveal: 'collapsed'}
 	}
 
-	function handleToggle(event: CustomEvent) {
-		const updated = event.detail.expanded ? 'show' : 'minimize'
-		settings.settingsReveal.set({reveal: updated})
+	function handleToggle(event) {
+		settingsReveal = {reveal: event.state}
 	}
 
-	function handleUpdate(event: CustomEvent) {
-		let updated
-		switch (event.detail.id) {
-			case 'contrast':
-				updated = event.detail.pressed ? 'contrast' : 'blend'
-				settings.app.set({brightness: appSettings.brightness, contrast: updated})
-				break
+	function handleUpdate(event) {
+		switch (event.id) {
 			case 'brightness':
-				updated = event.detail.pressed ? 'night' : 'day'
-				settings.app.set({brightness: updated, contrast: appSettings.contrast})
+				appSettings.brightness = event.value
+				break
+			case 'contrast':
+				appSettings.contrast = event.value
 				break
 			default:
 				break
 		}
+		if (onupdate) onupdate(event)
 	}
 
-	$: reveal = settingsReveal.reveal
-	$: brightness = appSettings.brightness
-	$: showBackground = background ? `bg:${background}` : 'bg:inherit'
-	$: show = `show ${showBackground}`
-	$: showSettings = reveal === 'show' ? show : 'hide:viz-only'
-	$: revealClasses = `form:expand card:md nowrap`
-	$: formClasses = `l:switcher:xs ${showBackground}`
-	$: layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
-	$: layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
+	let reveal = $derived(settingsReveal.reveal)
+	let brightness = $state(appSettings.brightness)
+	let showBackground = background
+		? `bg:${background}`
+		: !color
+			? 'bg:inherit'
+			: ''
+	let show = $derived(`${reveal} ${showBackground}`)
+	let revealClasses = $derived(`form:${reveal} nowrap`)
+	let formClasses = `l:switcher:xs ${showBackground}`
+	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
+	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
-	$: action = formaction
+	let revealAction = formaction
 		? redirect
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
 		: 'toggleNav'
+	let settingsUpdateAction = redirect
+		? `updateSettings&redirectTo=${redirect}`
+		: 'updateSettings'
 
-	onDestroy(() => {
-		stores.forEach((unsubscribe) => unsubscribe())
-	})
+	// function initSettings(event) {
+	// 	let preferredScheme = {...event}
+	// 	switch (event.id) {
+	// 		case 'brightness':
+	// 			// TODO Fix this, not working
+	// 			brightness = window.matchMedia('(prefers-color-scheme: dark)').matches
+	// 				? 'night'
+	// 				: 'day'
+	// 			let state = brightness === 'day' ? 'inactive' : 'active'
+	// 			let pressed = brightness === 'day' ? false : true
+	// 			appSettings.brightness = brightness
+	// 			preferredScheme.value = brightness
+	// 			preferredScheme.state = state
+	// 			preferredScheme.pressed = pressed
+	// 			break
+	// 		case 'contrast':
+	// 			appSettings.contrast = event.value
+	// 			break
+	// 		default:
+	// 			break
+	// 	}
+	// 	if (onupdate) onupdate(preferredScheme)
+	// }
 </script>
 
-<div class={layoutClasses} use:clickOutside on:clickOutside={handleClickOutsideSettings}>
+<div class={layoutClasses}>
 	<form
 		name="settings-reveal"
 		{method}
-		action={action ? (actionPath ? `${actionPath}?/${action}` : `/?/${action}`) : undefined}
+		action={revealAction && actionPath
+			? `${actionPath}?/${revealAction}`
+			: `?/${revealAction}`}
 		use:enhance={() => {
 			// prevent default callback from resetting the form
 			return ({update}) => {
@@ -112,20 +125,21 @@
 			name={`button-${id}`}
 			controls={id}
 			value={settingsReveal[id]}
-			states={{
-				active: {text: 'settings', value: 'show', asset: 'emoji:settings'},
-				inactive: {text: 'settings', value: 'minimize', asset: 'emoji:settings'},
-			}}
-			on:click={handleToggle}
+			text="settings"
+			asset="settings"
+			onclick={handleToggle}
+			states={EXPAND_MACHINE}
 		>
 			Settings
 		</Expand>
 	</form>
-	<div {id} class={`${showSettings} l:flex align:center`}>
+	<div {id} class={`${show} l:flex align:center content`}>
 		<form
 			name="settings-update"
 			{method}
-			action={`/?/updateSettings&redirectTo=${path}`}
+			action={settingsUpdateAction && actionPath
+				? `${actionPath}?/${settingsUpdateAction}`
+				: `?/${settingsUpdateAction}`}
 			use:enhance={() => {
 				// prevent default callback from resetting the form
 				return ({update}) => {
@@ -134,8 +148,20 @@
 			}}
 			class={`menu:settings ${formClasses}`}
 		>
-			{#each items.switch as { id, name, title, variant, shape, color, size, states }}
-				<div class="l:frame:round card:sm">
+			{#each items.switch as { id, name, title, variant, shape, color, size, value, states }}
+				{@const switchStates = states
+					? {
+							active: {
+								...SWITCH_MACHINE.active,
+								...states.active,
+							},
+							inactive: {
+								...SWITCH_MACHINE.inactive,
+								...states.inactive,
+							},
+						}
+					: SWITCH_MACHINE}
+				<div class="l:frame:round">
 					<Switch
 						id={`${settingsId}-${id}`}
 						{name}
@@ -144,24 +170,23 @@
 						{shape}
 						{color}
 						{size}
-						{states}
-						on:click={handleUpdate}
+						{value}
+						states={switchStates}
+						onclick={handleUpdate}
 					/>
 				</div>
 			{/each}
 		</form>
-		<menu class="menu:settings end">
-			{#each items.links as { id, title, url, shape, size, asset }}
-				{@const assetValue = SVG_ASSETS[brightness] ? SVG_ASSETS[brightness][id] : ''}
-				<li class="l:frame:round card:sm">
+		<menu class="links:settings end">
+			{#each items.links as { title, url, shape, size, asset }}
+				<li class="l:frame:round">
 					<a
-						class={`${variant} font:${size} shape:${shape} ${color}`}
+						class={`${variant} shape:${shape} color:${color} ${asset} size:${size}`}
 						href={url}
 						target="_blank"
 						rel="noreferrer"
+						{title}
 					>
-						<!---TODO: Manage svg assets as SVGs -->
-						<img src={assetValue} alt={title} class={`${id} ${asset}`} />
 					</a>
 				</li>
 			{/each}

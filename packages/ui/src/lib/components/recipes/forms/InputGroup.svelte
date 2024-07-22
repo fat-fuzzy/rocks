@@ -1,57 +1,51 @@
 <script lang="ts">
-	import type {ComponentType} from 'svelte'
+	import type {InputProps} from '$lib/components/blocks/forms/input.types.js'
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
-	import {createEventDispatcher} from 'svelte'
+	let {
+		id,
+		name,
+		legend,
+		value,
+		type = 'radio', // checkbox, radio
+		items = [],
+		layout,
+		container,
+		size,
+		color,
+		variant,
+		onupdate,
+	}: InputProps = $props()
 
-	const dispatch = createEventDispatcher()
-
-	// export let label = 'To be or not to be'
-	// export let hint = 'That is the question'
-
-	// 	export let label = 'A hundred thousand welcomes.'
-	// 	export let hint = `I could weep
-	// And I could laugh, I am light and heavy. Welcome.`
-	export let id = ''
-	export let name = ''
-	export let legend = ''
-	export let value = ''
-	export let type = 'radio' // checkbox
-	export let items: any = []
-	export let layout = ''
-	export let container = ''
-	export let size = ''
-	export let color = ''
-	export let variant = ''
-
-	const COMPONENT_IMPORTS: {[input: string]: ComponentType} = {
+	// TODO: fix type
+	const COMPONENT_IMPORTS: {[input: string]: any} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
 	}
 
-	function handleInput(event, name) {
-		let payload = {}
-		switch (type) {
-			case 'radio':
-				payload = {
-					name,
-					...event.detail,
-				}
-				break
-			case 'check':
-
-			case 'radio':
-				payload = {
-					name,
-					items: event.detail,
-				}
+	function handleInput(event, name: string) {
+		let payload = {
+			id,
+			name,
+			value: event.value,
 		}
-		dispatch('changed', payload)
+		if (onupdate) {
+			onupdate(payload)
+		}
 	}
 </script>
 
-<Fieldset {id} {type} {legend} {layout} {size} {variant} container={container ?? ''} {color}>
+<Fieldset
+	{id}
+	{type}
+	{legend}
+	{layout}
+	{size}
+	{variant}
+	container={container ?? ''}
+	{color}
+>
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
 	{#each items as input}
 		{@const checked = input.value === value}
@@ -62,9 +56,9 @@
 			name={id}
 			label={input.text}
 			{checked}
-			{color}
+			color={input.color || color}
 			{...input}
-			on:input={(event) => handleInput(event, name)}
+			oninput={(event) => handleInput(event, name)}
 		/>
 	{/each}
 </Fieldset>

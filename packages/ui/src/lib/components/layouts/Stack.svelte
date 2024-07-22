@@ -1,7 +1,11 @@
 <script lang="ts">
-	export let size = ''
+	import type {LayoutProps} from './layout.types.js'
+
+	let {size = 'md', children}: LayoutProps = $props()
 </script>
 
 <div class={`l:stack:${size}`}>
-	<slot />
+	{#if children}
+		{@render children()}
+	{/if}
 </div>

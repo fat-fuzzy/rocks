@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui-s5'
+	import {content} from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {LayoutSidebar} = content
