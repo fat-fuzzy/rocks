@@ -1,7 +1,7 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 
-import {constants} from '@fat-fuzzy/ui-s5'
+import {constants} from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
 
 const {DsTabsUpdate, DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms

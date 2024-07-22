@@ -6,7 +6,7 @@
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
 	import Rotation from '$lib/components/geometry/Rotation.svelte'
-	import {blocks} from '@fat-fuzzy/ui-s5'
+	import {blocks} from '@fat-fuzzy/ui'
 
 	const {Button} = blocks
 

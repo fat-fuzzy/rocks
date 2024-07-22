@@ -29,7 +29,7 @@
 		"@fat-fuzzy/playbook": "workspace:*",
 		"@fat-fuzzy/sketch": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
-		"@fat-fuzzy/ui-s5": "workspace:*",
+		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "^1.45.2",
 		"@sveltejs/adapter-cloudflare": "^4.6.1",
 		"@sveltejs/kit": "^2.5.18",

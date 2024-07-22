@@ -1,4 +1,4 @@
-# @fat-fuzzy/ui-s5
+# @fat-fuzzy/ui
 
 ## 0.1.1
 

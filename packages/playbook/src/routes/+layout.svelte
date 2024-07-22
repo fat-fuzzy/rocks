@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '@fat-fuzzy/style'
-	import {recipes, constants} from '@fat-fuzzy/ui-s5'
+	import {recipes, constants} from '@fat-fuzzy/ui'
 	import type { Snippet } from 'svelte'
 
 	const {APP_SETTINGS, APP_LINKS} = constants

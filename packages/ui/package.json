@@ -1,6 +1,6 @@
 {
-	"package": "@fat-fuzzy/ui-s5",
-	"name": "@fat-fuzzy/ui-s5",
+	"package": "@fat-fuzzy/ui",
+	"name": "@fat-fuzzy/ui",
 	"version": "0.1.1",
 	"scripts": {
 		"dev": "vite dev",

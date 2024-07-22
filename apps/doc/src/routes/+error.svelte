@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	import {headless, blocks} from '@fat-fuzzy/ui-s5'
+	import {headless, blocks} from '@fat-fuzzy/ui'
 
 	const {Head} = headless
 	const {Feedback} = blocks

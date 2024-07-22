@@ -4,7 +4,7 @@
 
 	import {page} from '$app/stores'
 	import {links} from '$data/nav'
-	import {recipes, utils, constants} from '@fat-fuzzy/ui-s5'
+	import {recipes, utils, constants} from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {Header} = recipes

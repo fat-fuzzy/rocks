@@ -1,4 +1,4 @@
-import {constants} from '@fat-fuzzy/ui-s5'
+import {constants} from '@fat-fuzzy/ui'
 
 const {
 	DEFAULT_REVEAL_STATE,

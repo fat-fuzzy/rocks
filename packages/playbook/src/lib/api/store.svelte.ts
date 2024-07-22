@@ -1,4 +1,4 @@
-import {constants} from '@fat-fuzzy/ui-s5'
+import {constants} from '@fat-fuzzy/ui'
 import buttonFixtures from '$lib/fixtures/js/blocks'
 import tokenFixtures from '$lib/fixtures/js/tokens'
 import layoutsFixtures from '$lib/fixtures/js/layouts'

@@ -1,5 +1,5 @@
 import {fail, redirect} from '@sveltejs/kit'
-import {forms, constants} from '@fat-fuzzy/ui-s5'
+import {forms, constants} from '@fat-fuzzy/ui'
 
 const {NavReveal, SidebarReveal, SettingsReveal, SettingsUpdate} = forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = constants

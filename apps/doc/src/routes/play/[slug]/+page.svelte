@@ -2,7 +2,7 @@
 	import {page} from '$app/stores'
 
 	import lib from '@fat-fuzzy/lib'
-	import {content} from '@fat-fuzzy/ui-s5'
+	import {content} from '@fat-fuzzy/ui'
 	import {graphics} from '@fat-fuzzy/sketch'
 
 	const {Sketch} = graphics
