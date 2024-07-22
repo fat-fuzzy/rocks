@@ -55,7 +55,7 @@
 		threshold,
 	}: Props = $props()
 
-	let debug = true // TODO : fix this
+	let debug = false // TODO : use env variable, set to true for testing
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
 	let context: SceneContext = $state({})
