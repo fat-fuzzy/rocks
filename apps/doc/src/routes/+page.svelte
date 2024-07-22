@@ -29,7 +29,7 @@
 
 	<section class="l:center:md">
 		<h2 class="text:center">✨ Highlights</h2>
-		<ul class="l:switcher:sm maki:block:2xl" role="group">
+		<ul class="l:switcher:sm maki:block:2xl unstyled">
 			<li class={`card:lg text:center emoji:recipes ${variant}`}>
 				<a data-sveltekit-preload-data href="/ui" class="card font:md">UI Library</a>
 			</li>

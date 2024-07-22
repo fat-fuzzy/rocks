@@ -15,7 +15,7 @@
 
 <PageMain {title} {description} size="lg">
 	<div class="l:text maki:block:2xs">
-		<ul class="l:stack:lg w:full" role="group">
+		<ul class="l:stack:lg w:full unstyled">
 			{#each markdowns as { meta }}
 				{#if meta.status !== 'draft'}
 					<a
@@ -34,7 +34,7 @@
 			<details class="card:md l:stack size:sm bg:netural varian:bare" open>
 				<summary class="surface:2:neutral card:2xs">{tag}</summary>
 				<div class="l:stack:xs maki:block">
-					<ul role="group">
+					<ul class="unstyled">
 						{#each markdowns as { meta }}
 							{#if meta.tags.includes(tag)}
 								<li class={`card:3xs`}>

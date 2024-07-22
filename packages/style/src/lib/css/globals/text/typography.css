@@ -87,6 +87,10 @@ figcaption {
 ol,
 ul {
 	margin: 0;
+
+	&.unstyled {
+		list-style: none;
+	}
 }
 
 a {

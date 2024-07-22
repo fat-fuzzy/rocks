@@ -22,7 +22,7 @@
 	let contrast = $derived(app.settings.contrast)
 	let pageClass = $derived(utils.format.getClassNameFromPathname($page.url.pathname))
 	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
-	let footerClass = "font:sm card:md maki:block:2xl color:primary"
+	let footerClass = "font:sm card:2xl color:primary"
 
 	function updateSettings(event) {
 		switch (event.id) {
