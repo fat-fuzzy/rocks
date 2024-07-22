@@ -1,12 +1,13 @@
 <script lang="ts">
-	import {onMount, type Snippet} from 'svelte'
+	import type { Snippet } from 'svelte'
 	import {enhance} from '$app/forms'
 	import type {GeometryContext} from '$types/index.js'
 
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
 	import Rotation from '$lib/components/geometry/Rotation.svelte'
-	import {blocks} from '@fat-fuzzy/ui-s5'
+	import {blocks} from '@fat-fuzzy/ui'
+
 	const {Button} = blocks
 
 	type Props = {
@@ -63,10 +64,10 @@
 	// Position
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
-	let [coordX, coordY] = $state(translation ?? [0, 0])
+	let [coordX, coordY] = $state([translation[0] ?? 0, translation[1] ?? 0] )
 
 	// Scale
-	let [scaleX, scaleY] = $state(scale ?? [1, 1])
+	let [scaleX, scaleY] = $state([scale[0] ?? 1, scale[1] ?? 1])
 
 	let payload = $derived({
 		color: context.color,
@@ -75,13 +76,11 @@
 		scale: [scaleX, scaleY],
 	})
 
-	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	let action = formaction && redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
 	let backgroundClass = background ? `bg:${background}` : ''
 
-	onMount(() => {
-		update()
-	})
 </script>
 
 <form
@@ -139,7 +138,7 @@
 				color="highlight"
 				variant="outline"
 				shape="round"
-				asset="emoji:nojs"
+				asset="nojs"
 				{disabled}
 			>
 				Update geometry

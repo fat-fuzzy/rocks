@@ -13,7 +13,7 @@
 [class^='l:text'] > * + h3,
 [class^='l:text'] > * + h4,
 [class^='l:text'] > * + h5 {
-	margin-block-start: var(--s2);
+	margin-block-start: var(--ui-size-lg);
 }
 
 [class^='l:text'] > h1 + *,
@@ -21,14 +21,20 @@
 [class^='l:text'] > h3 + *,
 [class^='l:text'] > h4 + *,
 [class^='l:text'] > h5 + * {
-	margin-block-start: var(--s1);
+	margin-block-start: var(--ui-size);
 }
 
-[class^='l:text'] ul {
-	margin-block: var(--s0);
+ul[class*='l:text'] {
+	margin-block: var(--ui-size-sm);
 }
 
-.l\:text\:xxs {
+ol.unstyled,
+ul.unstyled {
+	margin: 0;
+	padding: 0;
+}
+
+.l\:text\:2xs {
 	max-width: 20ch;
 }
 
@@ -52,6 +58,6 @@
 	max-width: 95ch;
 }
 
-.l\:text\:xxl {
+.l\:text\:2xl {
 	max-width: 110ch;
 }

@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.11
+
+### Patch Changes
+
+- 36f04b9: Migrate to Svelte 5, new packages
+
 ## 0.1.10
 
 ### Patch Changes

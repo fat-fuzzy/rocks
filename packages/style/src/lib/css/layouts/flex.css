@@ -29,3 +29,13 @@
 .wrap\:reverse {
 	flex-wrap: wrap-reverse;
 }
+
+[class*='l:flex'].size\:xs,
+[class*='l:flex'].size\:2xs {
+	--gap: var(--ui-size-sm);
+}
+
+[class*='l:flex'].size\:xl,
+[class*='l:flex'].size\:2xl {
+	--gap: var(--ui-size-lg);
+}

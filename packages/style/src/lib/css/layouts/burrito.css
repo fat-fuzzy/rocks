@@ -1,19 +1,9 @@
 /* == Burrito container == */
-.l\:burrito {
+[class*='l:burrito'] {
 	container-type: inline-size;
 	container-name: burrito;
 	inline-size: 100%;
-}
-
-@container burrito (max-width: 280px) {
-	.relleno {
-		inline-size: 100%;
-	}
-}
-
-[class*='l:burrito'] {
-	margin: 0 auto;
-	max-inline-size: calc(100% - calc(2 * var(--gap))); /* width of parent minus base padding */
+	margin-inline: auto;
 }
 
 /* == Sidebar content == */

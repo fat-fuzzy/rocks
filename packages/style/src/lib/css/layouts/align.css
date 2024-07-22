@@ -13,7 +13,10 @@
 }
 
 .w\:auto {
+	inline-size: fit-content;
+	max-inline-size: 100%;
 	width: auto;
+	max-width: 100%;
 }
 
 [class*='align-self:'] {
@@ -69,11 +72,11 @@
 }
 
 .justify\:end {
-	--justify: end;
+	--justify: flex-end;
 }
 
 .justify\:start {
-	--justify: start;
+	--justify: flex-start;
 }
 
 .justify\:center {

@@ -13,12 +13,12 @@ export type ButtonState = {
 	}
 }
 
-const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
+const DEFAULT_REVEAL_STATE: Settings = {reveal: 'collapsed'}
 const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
-	show: 'minimize',
-	minimize: 'show',
+	expanded: 'collapsed',
+	collapsed: 'expanded',
 }
 
 const TRANSITION_BRIGHTNESS: {[key: string]: string} = {
@@ -47,11 +47,13 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 /**
  * Indicates the direction that icons should point in when used to indicate direction of movement of the UI element under control
  */
-const ALIGN_ANIMATION_DIRECTION: {[inactivePosition: string]: {[state: string]: string}} = {
-	left: {show: 'down', minimize: 'left'},
-	right: {show: 'down', minimize: 'right'},
-	top: {show: 'down', minimize: 'up'},
-	bottom: {show: 'up', minimize: 'down'},
+const ALIGN_ANIMATION_DIRECTION: {
+	[inactivePosition: string]: {[state: string]: string}
+} = {
+	left: {expanded: 'down', collapsed: 'left'},
+	right: {expanded: 'down', collapsed: 'right'},
+	top: {expanded: 'down', collapsed: 'up'},
+	bottom: {expanded: 'up', collapsed: 'down'},
 }
 
 const UI_STATE = {
@@ -63,48 +65,9 @@ const UI_STATE = {
 	ERROR: 'error',
 }
 
-const APP_LINKS: {[key: string]: string}[] = [{slug: 'about', title: 'About', layout: 'center'}]
-
-const APP_SETTINGS = {
-	switch: [
-		{
-			id: 'brightness',
-			name: 'brightness',
-			title: 'Brightness',
-			variant: 'outline',
-			shape: 'round',
-			color: 'primary',
-			size: 'md',
-			states: {
-				active: {text: 'night', value: 'night', asset: 'emoji:night'},
-				inactive: {text: 'day', value: 'day', asset: 'emoji:day'},
-			},
-		},
-		{
-			id: 'contrast',
-			name: 'contrast',
-			title: 'Contrast',
-			variant: 'outline',
-			shape: 'round',
-			color: 'primary',
-			size: 'md',
-			states: {
-				active: {text: 'contrast', value: 'contrast', asset: 'emoji:contrast'},
-				inactive: {text: 'blend', value: 'blend', asset: 'emoji:blend'},
-			},
-		},
-	],
-	links: [
-		{
-			id: 'link-github',
-			title: 'GitHub icon',
-			url: 'https://github.com/fat-fuzzy/rocks',
-			asset: 'svg:icon-github',
-			shape: 'round',
-			size: 'xs',
-		},
-	],
-}
+const APP_LINKS: {[key: string]: string}[] = [
+	{slug: 'about', title: 'About', layout: 'center'},
+]
 
 const TABS_CONTENT = [
 	{
@@ -112,7 +75,7 @@ const TABS_CONTENT = [
 		title: 'Demo',
 		size: 'lg',
 		color: 'accent',
-		asset: 'emoji:demo',
+		asset: 'demo',
 		value: 'demo',
 	},
 	{
@@ -120,37 +83,10 @@ const TABS_CONTENT = [
 		title: 'Doc',
 		size: 'lg',
 		color: 'primary',
-		asset: 'emoji:doc',
+		asset: 'doc',
 		value: 'doc',
 	},
 ]
-
-const emojis: {[key: string]: string} = {
-	lang: '🌐',
-	day: '☀️',
-	night: '🌙',
-	'fr-fr': '🇫🇷 FR',
-	'es-es': '🇪🇸 ES',
-	'en-uk': '🇬🇧 EN',
-}
-
-const languages = [
-	{code: 'fr-fr', title: 'Français'},
-	{code: 'en-uk', title: 'English'},
-	{code: 'es-es', title: 'Español'},
-]
-
-// TODO: make svg css themeable / fix dark theme
-import githubDay from '$lib/images/day/icon-github.svg'
-import githubNight from '$lib/images/night/icon-github.svg'
-// TODO: make svg css themeable / fix dark theme
-const SVG_ASSETS: {[key: string]: {[key: string]: string}} = {
-	day: {
-		'link-github': githubDay,
-		'button-theme': '☀️',
-	},
-	night: {'link-github': githubNight, 'button-theme': emojis.night},
-}
 
 export default {
 	UI_STATE,
@@ -162,8 +98,6 @@ export default {
 	ALIGN_OPPOSITE,
 	ALIGN_ANIMATION_DIRECTION,
 	NUMBER_TO_SIZE,
-	SVG_ASSETS,
 	APP_LINKS,
-	APP_SETTINGS,
 	TABS_CONTENT,
 }

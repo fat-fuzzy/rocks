@@ -1,53 +1,49 @@
 <script lang="ts">
-	import {createEventDispatcher} from 'svelte'
+	import type { ButtonProps } from './button.types.js'
+	import styleHelper from '$lib/utils/styles.js'
 
-	/**
-	 * State props
-	 */
-	export let id = 'button'
-	export let title = ''
-	export let name = ''
-	export let text = ''
-	export let value = ''
-	export let disabled = false
-	export let type = 'submit'
-	export let formaction: string | undefined = undefined
+	let {
+		id = 'button',
+		name = 'button',
+		title,
+		text,
+		value,
+		disabled,
+		formaction,
+		align,
+		justify = 'center',
+		asset, // the `value` in emoji:value or svg:value
+		color,
+		size,
+		shape,
+		variant,
+		dimensions,
+		type = 'submit',
+		children,
+		onclick
+	}: ButtonProps  = $props();
 
-	/**
-	 * Style props
-	 */
-	export let align = ''
-	export let asset = '' // emoji:value or svg:value
-	export let color = ''
-	export let size = ''
-	export let shape = ''
-	export let variant = 'fill'
-
-	export let container = ''
-	export let dimensions = ''
-	export let layout = 'switcher'
-
-	const dispatch = createEventDispatcher()
-
-	export let onClick = (event: MouseEvent) => {
-		const payload = {
-			id: name,
-			value,
-		}
-		dispatch('click', payload)
+	function handleClick(event: MouseEvent) {
+		if (onclick) onclick(payload)
 	}
 
-	$: containerClasses = container.startsWith('main')
-		? `l:${container}:${dimensions}`
-		: `l:${container}:${size}`
-	$: shapeClass = shape ? ` shape:${shape}` : ''
-	$: alignClass = align ? `align:${align}` : ''
-	$: layoutClasses = shapeClass ? `l:stack:${size}` : `l:flex`
-	$: contextClasses = `${layoutClasses} ${containerClasses}`
-	$: elementClasses = `${asset} ${color} ${size} ${shapeClass} ${variant} ${alignClass} font:${size}`
+	let buttonClasses =  $derived(styleHelper.getStyles({
+			color,
+			size,
+			shape,
+			align,
+			justify,
+			asset,
+			variant,
+			layout: 'switcher',
+			dimensions,
+		}))
 
-	// Order is important
-	$: buttonClasses = `${contextClasses} ${elementClasses}`
+	let payload = $state({
+		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		name,
+		value
+	});
 </script>
 
 <button
@@ -60,7 +56,12 @@
 	{value}
 	class={buttonClasses}
 	data-key={name}
-	on:click={onClick}
+	onclick={handleClick}
+	data-testid={id}
 >
-	<slot>{text}</slot>
+	{#if children}
+		{@render children()}
+	{:else if text}
+		{text}
+	{/if}
 </button>

@@ -7,7 +7,7 @@
 	export let redirectTo: string = ''
 	export let title = 'Log In'
 	export let description = 'A log in form'
-	export let asset = 'emoji:log'
+	export let asset = 'log'
 	export let depth = 2 // <h*> elenent depth
 	export let size = 'md'
 	export let align = 'center'
@@ -40,7 +40,13 @@
 				Password
 				<input id="password" type="password" name="password" required />
 			</label>
-			<Button id="button-submit-login" {type} {variant} {color} onClick={() => {}}>Submit</Button>
+			<Button
+				id="button-submit-login"
+				{type}
+				{variant}
+				{color}
+				onClick={() => {}}>Submit</Button
+			>
 		</form>
 	</div>
 {/if}

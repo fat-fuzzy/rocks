@@ -1,15 +1,15 @@
 <script lang="ts">
-	import {blocks, actors} from '@fat-fuzzy/ui-s5'
+	import {onMount} from 'svelte'
+	import {blocks} from '@fat-fuzzy/ui'
 	import store from './store.svelte'
 	import {PlayerEvent, PlayerState} from './types.js'
-
 	const {Button, Switch} = blocks
-	const {switchActor} = actors
 
 	type Props = {
 		id?: string
 		size: string
 		variant?: string
+
 		color?: string
 		disabled?: boolean
 		initial?: string
@@ -17,6 +17,7 @@
 		pause: (payload: {event: PlayerEvent}) => void
 		clear: (payload: {event: PlayerEvent}) => void
 		stop: (payload: {event: PlayerEvent}) => void
+		init: (payload: {event: PlayerEvent}) => void
 	}
 
 	let {
@@ -28,16 +29,11 @@
 		pause,
 		clear,
 		stop,
+		init,
 	}: Props = $props()
 
-	store.init({
-		initial: PlayerState.idle,
-		onclick: updatePlayer,
-	})
-	let playButtonActor = switchActor.actor(id, store.getPlayState(), 'play')
-
-	function updatePlayer(payload: {id: string; value: string}) {
-		let event = payload.id as PlayerEvent
+	function updatePlayer(payload: {value: string | number}) {
+		let event = payload.value as PlayerEvent
 		if (event === 'play') {
 			event =
 				store.getState() === PlayerState.playing
@@ -60,24 +56,37 @@
 		}
 		store.update(event as PlayerEvent)
 	}
+
+	onMount(() => {
+		store.init({
+			initial: PlayerState.idle,
+			onclick: updatePlayer,
+		})
+
+		if (init) {
+			init({event: PlayerEvent.loadOk})
+		}
+	})
 </script>
 
-<menu {id} class={`l:switcher:2xs w:full hug justify:center`}>
+<menu {id} class={`player l:switcher:2xs w:full hug justify:center`}>
 	<li>
-		<Switch
-			id="play"
-			name="play"
-			states={store.playSwitch}
-			{color}
-			{size}
-			shape="square"
-			initial={store.getPlayState()}
-			disabled={store.getPlayDisabled()}
-			onclick={updatePlayer}
-			actor={playButtonActor}
-		>
-			{store.getPlayLabel()}
-		</Switch>
+		{#key store.playState}
+			<Switch
+				id="play"
+				name="play"
+				value="play"
+				states={store.playSwitch}
+				{color}
+				{size}
+				shape="square"
+				initial={store.playState}
+				disabled={store.getPlayDisabled()}
+				onclick={updatePlayer}
+			>
+				{store.playLabel}
+			</Switch>
+		{/key}
 	</li>
 	<li class="l:stack:2xs group">
 		<Button
@@ -87,7 +96,7 @@
 			{variant}
 			{size}
 			value="clear"
-			asset="emoji:clear"
+			asset="clear"
 			onclick={updatePlayer}
 			disabled={store.getClearDisabled()}
 		>
@@ -100,7 +109,7 @@
 			{variant}
 			{size}
 			value="stop"
-			asset="emoji:rect"
+			asset="rect"
 			onclick={updatePlayer}
 			disabled={store.getStopDisabled()}
 		>

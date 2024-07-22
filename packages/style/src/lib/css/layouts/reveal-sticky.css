@@ -1,0 +1,59 @@
+/* TODO: use grid for this */
+/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
+
+/* The reveal layout inside a sidebar is currently only used for sidebar menus:
+		- reveal mechanism serves to collapse and expand the menu on mobile
+		- reveal is not necessary on desktop, so on desktop we unset the reveal layout
+	Constraining this allows usage of reveal layout in desktop, outside a sidebar context */
+
+[class*='l:reveal'].sticky {
+	--y-axis: 0;
+	--x-size: 100%;
+	--y-size: auto;
+	inline-size: var(--x-size);
+	block-size: var(--y-size);
+	transition: inline-size 250ms ease-in-out;
+	transition: block-size 250ms ease-in-out;
+
+	.content {
+		/* transition: transform 250ms ease-in-out; */
+		--lightness-scrollbar: var(--color-lightness-000);
+		--chroma-scrollbar: var(--color-chroma-000);
+		--track: oklch(
+			var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
+		);
+		--thumb: var(--ink);
+		block-size: var(--y-size);
+		transition: inline-size 250ms ease-in-out;
+		transition: block-size 250ms ease-in-out;
+		scrollbar-color: var(--thumb) var(--track);
+	}
+
+	&.collapsed {
+		--y-size: var(--size-ui-header-height);
+		--x-size: 100%;
+		transition: block-size 250ms ease-in-out;
+		transition: inline-size 250ms ease-in-out;
+
+		.content {
+			block-size: fit-content;
+			max-block-size: var(--y-size-sticky);
+			transition: inline-size 100ms ease-in;
+		}
+		nav {
+			inline-size: var(--x-size);
+			block-size: var(--y-size);
+
+			> .content {
+				--y-size: 0;
+				border: 0;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				inline-size: 0;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+		}
+	}
+}

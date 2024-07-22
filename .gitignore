@@ -155,5 +155,8 @@ packages/style/src/tests/tmp/*
 # Ignore font files for now
 packages/style/src/assets/fonts/
 packages/sketch/static/fonts/
-packages/ui-s5/static/fonts
-
+packages/ui/static/fonts
+packages/playbook/static/fonts
+apps/doc/static/fonts/*/*/demo.html
+apps/doc/static/fonts/*/*/stylesheet.css
+apps/play/static/fonts/

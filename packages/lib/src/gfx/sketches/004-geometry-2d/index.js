@@ -26,7 +26,7 @@ let error
 let meta = {
 	id: '004',
 	slug: 'geometry-2d',
-	title: 'Geometry 2D ',
+	title: 'Geometry 2D',
 	asset: 'emoji:geometry-2d',
 	tags: ['2D' /* , 'webgl' */],
 	controls: ['matrix-2d', 'loop'],

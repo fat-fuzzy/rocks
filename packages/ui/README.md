@@ -1,65 +1,58 @@
-# Fat Fuzzy UI
+# create-svelte
 
-Fat Fuzzy UI is a component library that aims to maximize use HTML and CSS's native
-capabilities to produce harmonious and robust designs.
+Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-The components are built using [SASS](https://sass-lang.com/), [Svelte](https://svelte.dev) and [SvelteKit]("https://kit.svelte.dev/), and the structure of the library as well as the way the components are designed are based on the ideas put forth in [Algorithmic Design](https://every-layout.dev/blog/algorithmic-design/) and [CUBE CSS](https://cube.fyi/).
+Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
 
-## Tools & Resources
+## Creating a project
 
-### Svelte libraries
+If you're seeing this, you've probably already done this step. Congrats!
 
-Resources for building a blog site using Svelte and SvelteKit
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-- [mdsvex](https://mdsvex.pngwn.io/)
-- [bluwy/website](https://github.com/bluwy/website)
-- [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
-
-### Front End Testing
-
-🚧 WIP
-
-- Test runner [Vitest](https://vitest.dev/)
-  - [Svelte example](https://github.com/vitest-dev/vitest/tree/main/examples/svelte)
-  - [Playwright example](https://github.com/vitest-dev/vitest/tree/main/examples/playwright)
-- [DOM Testing Library](https://github.com/testing-library/dom-testing-library)
-- E2E tests [Playwright](https://playwright.dev/)
-
-### Design System
-
-- [CUBE CSS](https://cube.fyi)
-- [Open UI](https://open-ui.org/)
-- [Every Layout blog post on Algorithmic design](https://every-layout.dev/blog/algorithmic-design/)
-- [Inclusive design principles](https://inclusivedesignprinciples.org/)
-- [Inclusive componenets](https://inclusive-components.design/)
-- [Accessible SVG](https://tink.uk/accessible-svg-line-graphs/)
-
-### Design Tokens
-
-- [Creating utility classes with design tokens using SASS](https://www.alwaystwisted.com/articles/creating-utility-classes-with-design-tokens-using-sass)
-- [Style Dictionary](https://amzn.github.io/style-dictionary/)
-  - [Managing and Exporting design tokens with style dictionary](https://www.michaelmang.dev/blog/managing-and-exporting-design-tokens-with-style-dictionary)
-- [Open Props](https://open-props.style/)
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
-pnpm dev
+npm run dev
 
 # or start the server and open the app in a new browser tab
-pnpm dev -- --open
+npm run dev -- --open
 ```
+
+Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
 
 ## Building
 
-To create a production version of your app:
+To build your library:
 
 ```bash
-pnpm build
+npm run package
+```
+
+To create a production version of your showcase app:
+
+```bash
+npm run build
 ```
 
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Publishing
+
+Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
+
+To publish your library to [npm](https://www.npmjs.com):
+
+```bash
+npm publish
+```

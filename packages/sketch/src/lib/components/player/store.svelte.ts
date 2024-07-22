@@ -1,5 +1,10 @@
-import type {TogglePayload, FeedbackType} from '$types'
-import {PlayerEvent, PlayerState, PlayerAction} from './types.js'
+import type {FeedbackType} from '$types'
+import {
+	PlayerEvent,
+	PlayerState,
+	PlayerAction,
+	type PlayerPayload,
+} from './types.js'
 
 import {
 	type PlayerSwitchType,
@@ -14,6 +19,19 @@ class PlayerStore {
 	events: PlayerEventsType = PLAYER_EVENTS
 	feedback: FeedbackType[] = $state([])
 	playSwitch: PlayerSwitchType = $state(PLAYER_SWITCH)
+	playState = $derived(
+		this.state === PlayerState.playing ? 'active' : 'inactive',
+	)
+	playLabel = $derived.by(() => {
+		{
+			const playState =
+				this.state === PlayerState.playing ? 'active' : 'inactive'
+			if (this.playSwitch && this.playSwitch[playState]) {
+				return this.playSwitch[playState].text
+			}
+			return ''
+		}
+	})
 	actions = PLAYER_ACTIONS
 	transitions = PLAYER_TRANSITIONS
 
@@ -22,7 +40,7 @@ class PlayerStore {
 		onclick,
 	}: {
 		initial?: PlayerState
-		onclick: (payload: TogglePayload) => void
+		onclick: (payload: PlayerPayload) => void
 	}) {
 		this.state = initial ?? PlayerState.idle
 		this.playSwitch.active.onclick = onclick
@@ -31,18 +49,6 @@ class PlayerStore {
 
 	public getState(): PlayerState {
 		return this.state
-	}
-
-	public getPlayState(): string {
-		return this.state === PlayerState.playing ? 'active' : 'inactive'
-	}
-
-	public getPlayLabel(): string {
-		const playState = this.state === PlayerState.playing ? 'active' : 'inactive'
-		if (this.playSwitch && this.playSwitch[playState]) {
-			return this.playSwitch[playState].text
-		}
-		return ''
 	}
 
 	public getNextActions(state: PlayerState): PlayerAction[] | undefined {

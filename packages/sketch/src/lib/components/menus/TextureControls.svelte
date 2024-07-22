@@ -1,6 +1,7 @@
 <script lang="ts">
-	import type {Filters} from '$types'
-	import {recipes} from '@fat-fuzzy/ui-s5'
+	import {onMount} from 'svelte'
+	import type {Filters} from '$types/index.js'
+	import {recipes} from '@fat-fuzzy/ui'
 	import store from '$lib/components/sketch/store.svelte'
 	const {ToggleMenu} = recipes
 
@@ -14,16 +15,24 @@
 		breakpoint?: string
 		threshold?: string
 		channels?: string[]
-		blur?: number
+		blur?: number[]
 		convolutions?: string[]
 		onupdate: (payload: any) => void // TODO: Fix type
+		init: (payload: any) => void // TODO: Fix type
 	}
 
-	let {size = 'xs', channels, blur, convolutions, onupdate}: Props = $props()
+	let {
+		size = 'xs',
+		channels,
+		blur,
+		convolutions,
+		onupdate,
+		init,
+	}: Props = $props()
 
 	const DEFAULT_FILTERS = {
-		channels: 'rgba',
-		blur: 0,
+		channels: ['rgba'],
+		blur: [0],
 		convolutions: ['normal'],
 	}
 
@@ -35,17 +44,15 @@
 			name: c,
 			text: c,
 			value: c,
-			initial: c === filters.channels ? 'active' : 'inactive',
 		})) || [],
 	)
 
 	let blurMenuItems = $derived(
 		blur?.map((b) => ({
-			id: b,
-			name: b,
+			id: String(b),
+			name: String(b),
 			text: `blur ${b}`,
 			value: b,
-			initial: b === filters.blur ? 'active' : 'inactive',
 		})) || [],
 	)
 
@@ -55,45 +62,50 @@
 			name: b,
 			text: b,
 			value: b,
-			initial: filters.convolutions.includes(b) ? 'active' : 'inactive',
 		})) || [],
 	)
 
-	function updateChannel(selected: {name: string; pressed: boolean}) {
-		if (selected.pressed) {
-			filters.channels = selected.name
+	function loadChannel(selected: {name: string}[]) {
+		if (selected.length > 0) {
+			filters.channels = selected.map((s) => s.name)
 		} else {
-			filters.channels = 'rgba'
+			filters.channels = ['rgba']
 		}
-		onupdate(filters)
 	}
 
-	function updateBlur(selected: {
-		value: number
-		name: string
-		pressed: boolean
-	}) {
-		if (selected.pressed) {
-			filters.blur = selected.value
+	function loadBlur(selected: {name: string}[]) {
+		if (selected.length > 0) {
+			filters.blur = selected.map((s) => Number(s.name))
 		} else {
-			filters.blur = 0
+			filters.blur = [0]
 		}
-		onupdate(filters)
 	}
 
-	function updateEffects(selected: {name: string; pressed: boolean}) {
-		if (!selected.pressed) {
-			filters.convolutions = filters.convolutions.filter(
-				(filter: string) => filter !== selected.name,
-			)
-		} else if (!filters.convolutions.includes(selected.name)) {
-			filters.convolutions.push(selected.name)
-		}
+	function loadEffects(selected: {name: string}[]) {
+		filters.convolutions = selected.map((s) => s.name)
 		if (filters.convolutions.length === 0) {
 			filters.convolutions = ['normal']
 		}
+	}
+
+	function updateChannel(selected: {name: string}[]) {
+		loadChannel(selected)
 		onupdate(filters)
 	}
+
+	function updateBlur(selected: {name: string}[]) {
+		loadBlur(selected)
+		onupdate(filters)
+	}
+
+	function updateEffects(selected: {name: string}[]) {
+		loadEffects(selected)
+		onupdate(filters)
+	}
+
+	onMount(() => {
+		init(filters ?? DEFAULT_FILTERS)
+	})
 </script>
 
 {#if channels}
@@ -106,6 +118,7 @@
 		variant="bare"
 		items={channelMenuItems}
 		onupdate={updateChannel}
+		init={loadChannel}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}
@@ -119,6 +132,7 @@
 		variant="bare"
 		items={blurMenuItems}
 		onupdate={updateBlur}
+		init={loadBlur}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}
@@ -126,12 +140,13 @@
 	<ToggleMenu
 		id="convolutions"
 		{size}
-		mode="multiple"
+		mode="check"
 		layout="switcher"
 		color="primary"
 		variant="bare"
 		items={effectMenuItems}
 		onupdate={updateEffects}
+		init={loadEffects}
 		disabled={store.getSketchDisabled()}
 	/>
 {/if}

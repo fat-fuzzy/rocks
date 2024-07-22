@@ -1,70 +1,103 @@
 button {
-	--hue: var(--color-theme-neutral);
-	--chroma: var(--color-chroma-300);
+	--hue: var(--color-theme-primary);
+	--chroma: var(--color-chroma-neutral);
 	--lightness: var(--color-lightness-300);
-	--chroma-contrast: var(--color-chroma-000);
-	--lightness-contrast: var(--color-lightness-000);
+	--lightness-accent: var(--color-lightness-300);
+	--lightness-contrast: var(--lightness-base);
+	--chroma-contrast: var(--chroma-base);
+	--chroma-accent: var(--color-chroma-300);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--bg-color: var(--shade);
-	--border-color: var(--shade);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+
 	color: var(--ink);
-	background-color: var(--bg-color);
+	background-color: var(--shade);
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	justify-content: var(--justify, center);
 	flex-wrap: nowrap;
-	min-width: max-content;
+	block-size: fit-content;
+	min-block-size: max-content;
 	font-size: var(--font-size);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
 	line-height: var(--font-leading-ui);
-	padding: var(--ui-size) var(--ui-size-lg); /* Fluid padding will adjust according to closest size class (on self or ancestor) */
+	padding: var(--ui-size-sm) var(--ui-size);
 	border-radius: var(--border-radius-base);
-	border: var(--border-width-md) solid var(--border-color);
+	border: var(--border-width-md) solid var(--accent);
 }
 
-button:not([disabled]):hover {
-	box-shadow: var(--shadow-md);
+button.variant\:fill {
+	--lightness: var(--color-lightness-300);
+	--lightness-accent: var(--color-lightness-300);
+	--lightness-contrast: var(--lightness-base);
+	background-color: var(--shade);
+	border-color: var(--accent);
 }
 
 button.variant\:outline {
-	--border-color: var(--ink);
 	--lightness: var(--color-lightness-600);
-	--lightness-contrast: var(--color-lightness-300);
+	--lightness-accent: var(--color-lightness-300);
+	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
+	border-color: var(--accent);
 }
 
 button.variant\:bare {
 	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-400);
+	--lightness-accent: var(--lightness-base);
+	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
+	border: var(--border-width-md) solid var(--accent);
 }
 
 button.variant\:outline:hover {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--bg-color);
+	background-color: var(--shade);
 }
 
 button.variant\:bare:hover {
 	--lightness: var(--color-lightness-000);
 	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--bg-color);
+	background-color: var(--shade);
 }
 
 button.variant\:outline:active {
 	--lightness: var(--color-lightness-200);
-	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--bg-color);
+	--lightness-contrast: var(--color-lightness-600);
+	background-color: var(--shade);
 }
 
 button.variant\:bare:active {
 	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--bg-color);
+	--lightness-contrast: var(--color-lightness-600);
+	background-color: var(--shade);
 }
 
-button:not([class*=':neutral']) {
+[aria-pressed='true'] {
+	&.variant\:fill {
+		--lightness: var(--color-lightness-400);
+		--lightness-contrast: var(--color-lightness-000);
+
+		&:active {
+			--lightness: var(--color-lightness-600);
+			--lightness-contrast: var(--color-lightness-100);
+		}
+
+		&:hover {
+			--lightness: var(--color-lightness-500);
+			--lightness-contrast: var(--color-lightness-000);
+		}
+	}
+}
+
+button[class*='bg:']:not([class*=':neutral'], :focus) {
+	&.variant\:fill {
+		--chroma: var(--color-chroma-400);
+		--chroma-contrast: var(--color-chroma-000);
+	}
+
 	&.variant\:outline {
 		--chroma: var(--color-chroma-600);
 		--chroma-contrast: var(--color-chroma-300);
@@ -94,4 +127,8 @@ button:not([class*=':neutral']) {
 		--chroma: var(--color-chroma-100);
 		--chroma-contrast: var(--color-chroma-500);
 	}
+}
+
+button:not([disabled]):hover {
+	box-shadow: var(--shadow-md);
 }

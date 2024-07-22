@@ -38,16 +38,12 @@ class SketchStore {
 		return this.state.canvas as CanvasState
 	}
 
-	public getPlayerState(): PlayerState {
-		return this.state.player as PlayerState
-	}
-
 	public getControlsState(): ControlsState {
 		return this.state.controls as ControlsState
 	}
 
 	public getPlayButtonState(): string {
-		return this.state.player === PlayerState.playing ? 'active' : 'inactive'
+		return this.state.canvas === PlayerState.playing ? 'active' : 'inactive'
 	}
 
 	public getNextActions(state: SketchUi): UiAction[] | undefined {
@@ -110,9 +106,9 @@ class SketchStore {
 		this.events.previous = previous
 	}
 
-	public updateFilters(filters: Filters): void {
+	public updateFilters(filters: Filters, event: UiEvent): void {
 		// TODO: implement
-		console.log(filters)
+		this.update(event)
 	}
 }
 

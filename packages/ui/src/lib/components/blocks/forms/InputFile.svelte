@@ -1,37 +1,76 @@
 <script lang="ts">
-	export let label = 'Upload image'
-	export let name = 'upload-image'
-	export let id = 'upload-image'
-	export let hint = 'File types accepted: png, jpeg'
-	export let color = ''
-	export let variant = ''
-	export let breakpoint = ''
-	export let size = ''
-	export let align = ''
-	export let status = ''
-	export let asset = ''
-	export let disabled: boolean
+	import type {InputFileProps} from './input.types.js'
+	import {UiStatus, UiTextContext} from '$types/index.js'
+	import styleHelper from '$lib/utils/styles.js'
+	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 
-	export let fileType = 'image/png, image/jpeg'
-	export let multiple = true
-	let layout = 'stack'
+	let {
+		id = 'upload-image',
+		name = 'upload-image',
+		label = 'Upload image',
+		hint = 'File types accepted: png, jpeg',
+		disabled,
+		multiple = true,
+		status = UiStatus.default,
+		fileType = 'image/png, image/jpeg',
 
-	$: classes = `l:${layout} bp:${breakpoint} font:${size} ${size} ${color} ${variant} ${align}`
-	$: hintClasses = `feedback card:${size} ${asset} ${status} outline font:${size}:minus ${color} ${variant} ${align}`
+		layout = 'stack',
+		asset,
+		align,
+		justify,
+		color,
+		size,
+		variant,
+		background,
+		breakpoint,
+	}: InputFileProps = $props()
+
+	let inputClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			font: size,
+			size,
+			align,
+			justify,
+			variant,
+			layout,
+			breakpoint,
+			background: background ? background : 'inherit',
+		}),
+	)
+
+	let assetClass = $derived(
+		styleHelper.getStyles({
+			asset,
+		}),
+	)
 </script>
 
-<label for={id} class={classes}>
-	<span class={`font:${size} ${color}`}>{label}</span>
-	{#if hint}<p id={`${id}-hint`} class={hintClasses}>{hint}</p>
-	{/if}
-	<input
-		type="file"
-		{id}
-		{name}
-		accept={fileType}
-		aria-describedby={/* TODO: check is this correct? */ hint ? `${id}-hint` : ''}
-		{multiple}
-		class={`bg:${color}`}
-		{disabled}
-	/>
-</label>
+{#snippet input()}
+	<label for={id} class={inputClasses}>
+		<span class={assetClass}>{label}</span>
+		<input
+			type="file"
+			{id}
+			{name}
+			accept={fileType}
+			aria-describedby={/* TODO: check is this correct? */ hint
+				? `${id}-hint`
+				: ''}
+			{multiple}
+			{disabled}
+		/>
+	</label>
+{/snippet}
+
+{#if hint}
+	<Fieldset id={`fieldset-${id}`} name={`fieldset-${name}`}	{layout}>
+	{@render input()}
+		<Feedback {status} context={UiTextContext.form} {size} {variant}>
+			{hint}
+		</Feedback>
+	</Fieldset>
+	{:else}
+		{@render input()}
+{/if}

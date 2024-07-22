@@ -6,8 +6,6 @@ $bell: '🔔';
 $poop: '💩';
 $sun: '☀️';
 $moon: '🌙';
-$new-moon: '🌑';
-$half-moon: '🌗';
 $invader: '👾';
 $octopus: '🐙';
 $spouting-whale: '🐳';
@@ -52,7 +50,17 @@ $film-camera: '🎥';
 $film-frames: '🎞️';
 $framed-picture: '🖼️';
 $cyclone: '🌀';
-$bento-box: '🍱';
+$new-moon: '🌑';
+$half-moon: '🌗';
+$new-moon-face: '🌚';
+$full-moon-face: '🌝';
+$rainbow: '🌈';
+$beans: '🫘';
+$seedling: '🌱';
+$herb: '🌿';
+$tree: '🌳';
+$scales: '⚖️';
+$open-book: '📖';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -73,6 +81,14 @@ $emojis: (
 	night: #{$moon},
 	contrast: #{$half-moon},
 	blend: #{$new-moon},
+	blend-night: #{$new-moon-face},
+	blend-day: #{$full-moon-face},
+
+	// UI Emojis
+	tokens: #{$beans},
+	blocks: #{$seedling},
+	layouts: #{$herb},
+	recipes: #{$tree},
 
 	// ButtonMenu fixture emojis
 	vader: #{$invader},
@@ -84,6 +100,7 @@ $emojis: (
 	otter: #{$otter},
 	turtle: #{$turtle},
 	tiger: #{$tiger},
+	rainbow: #{$rainbow},
 
 	// ToggleMenu / RevealMenu fixture emojis
 	idea: #{$bulb},
@@ -101,10 +118,14 @@ $emojis: (
 	menu: #{$bunny},
 	settings: #{$control-knobs},
 	log: #{$log},
+	usage: #{$open-book},
+	decisions: #{$scales},
 	context: #{$umbrella},
 	switch-active: #{$bunny},
 	switch-inactive: #{$hat},
 	doc: #{$memo},
+	comments: #{$pencil},
+	ui: #{$rainbow},
 	demo: #{$magic-wand},
 	nojs: #{$bunny},
 	wip: #{$construction-sign},
@@ -116,7 +137,7 @@ $emojis: (
 	clear: #{$spouting-whale},
 	stop: #{$yellow-square},
 	update: #{$lightning},
-	not-found: #{$hole},
+	404: #{$hole},
 
 	// Sketches
 	random: #{$slot-machine},
@@ -131,5 +152,5 @@ $emojis: (
 	animation-3d: #{$film-frames},
 	texture: #{$framed-picture},
 	convolution: #{$cyclone},
-	multiple-tex: #{$bento-box}
+	multiple-tex: #{$new-moon-face}
 );

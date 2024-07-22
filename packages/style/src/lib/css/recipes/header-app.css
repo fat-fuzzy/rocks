@@ -1,13 +1,54 @@
+/**
+ * App header - Main Nav
+ */
+
 .header-app {
 	display: flex;
 	padding-inline: var(--gap);
+	color: var(--ink);
+	background-color: var(--shade);
 }
 
-/* == Need to override global <a> hover styles in nav and header <a> == */
-.header-app nav a:hover {
-	color: var(--current-primary-light);
-	background-color: initial;
-	text-decoration: none;
+.header-app > [class*='l:main'] {
+	min-inline-size: unset;
+	flex-grow: 1;
+}
+
+.header-app .l\:reveal\:auto {
+	justify-content: center;
+	padding-block: var(--ui-size-sm);
+
+	> ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		/* inline-size: 100%; */
+		background-color: inherit;
+
+		li {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	[aria-expanded] {
+		margin-inline: 0;
+	}
+
+	[aria-expanded='true'] + .content {
+		--y-axis: var(--size-ui-header-height) + var(--outline-offset-nav);
+		display: flex;
+		flex-direction: column;
+		block-size: fit-content;
+		inline-size: 100vw;
+		top: var(--y-axis);
+		color: var(--ink);
+		background-color: var(--shade);
+		padding: 0;
+		margin-inline-start: calc(-1 * var(--gap));
+		max-block-size: calc(100vh - var(--y-axis));
+		overflow: auto;
+	}
 }
 
 .header-app > [class*='l:side'] {
@@ -15,96 +56,47 @@
 	position: relative;
 	display: flex;
 	align-items: flex-end;
+	flex-grow: 0;
+
+	form:has([aria-expanded='true']) + .content {
+		top: calc(var(--size-ui-header-height) + var(--ui-size));
+		background-color: var(--shade);
+		box-shadow: var(--shadow-md);
+	}
 }
 
-/* Configure reveal items default dimensions */
-.header-app .l\:reveal\:auto .show {
-	height: fit-content;
-	width: fit-content;
-}
-
-.header-app .l\:reveal\:auto > button {
-	margin-inline: 0;
-}
-
-/**
- * App header - Main Nav
- */
-.header-app > [class*='l:main'] > nav a {
-	width: 100%;
-	font-weight: var(--font-weight-400);
-	text-transform: uppercase;
-	padding: calc(var(--s-1) + var(--border-width-lg)) var(--s0);
-}
-
-.header-app > [class*='l:main'] > nav li {
-	background-color: inherit;
-	border-inline-start: var(--border-width-xl) solid var(--current-bg-color);
-	padding: var(--outline-offset) 0 var(--outline-offset) 0;
-}
-
-.header-app > [class*='l:main'] > nav li:hover {
-	--current-bg-color: var(--current-bg-contrast);
-	--current-border-color: var(--current-bg-contrast);
-	background-color: var(--current-bg-contrast);
-}
-
-.header-app [class*='l:side'] a:hover {
-	background-color: var(--current-bg-contrast);
-	box-shadow: var(--shadow-md);
-}
-
-.header-app > [class*='l:main'] > nav li[aria-current='page'] a {
-	color: var(--current-color);
-	text-decoration: none;
-	background-color: inherit;
-}
-
-/* == Main navigation (in application Header) == */
-/* - Change these styles to adapt to design */
-.header-app .l\:reveal\:auto > nav > ul {
-	position: relative;
-	padding: var(--ui-size) 0;
-	margin: 0;
-	list-style: none;
-	/* width: 100%; */
-	background-color: inherit;
-	height: fit-content;
-}
-
-.header-app .l\:reveal\:auto > nav li {
+.header-app [class*='l:main'] nav {
 	display: flex;
-	align-items: center;
-}
+	/* - Change these styles to adapt to design */
+	ul {
+		position: relative;
+		padding: var(--ui-size) 0;
+		display: flex;
+		flex-direction: column;
+	}
 
-/* Configure reveal menu positioning and width */
-.header-app [class*='l:side'].l\:reveal\:auto > menu {
-	padding-block: var(--ui-size);
-}
+	li {
+		background-color: inherit;
+		border-inline-start: var(--border-width-xl) solid var(--shade);
+		inline-size: 100%;
+		padding: 0 var(--outline-offset-nav);
+	}
 
-/* Configure reveal main nav dimensions */
-.header-app .l\:reveal\:auto[class*='l:side'] .show {
-	padding: var(--ui-size);
-}
+	a {
+		display: flex;
+		block-size: calc(100% - 2 * var(--border-width-xl));
+		inline-size: calc(100% - var(--border-width-xl));
+		text-transform: uppercase;
+		margin-inline: var(--outline-offset-nav);
+		padding: var(--ui-size-sm);
+	}
 
-/* Configure reveal settings menu dimensions */
-.header-app .l\:reveal\:auto[class*='l:main'] .show {
-	max-height: fit-content;
-	width: calc(100vw - 2 * var(--gap));
-}
+	li[aria-current='page'] {
+		border-color: var(--accent);
 
-/* == Color == */
-
-.nigh.header-app,
-.night .header-app {
-	--current-color: var(--color-light);
-	color: var(--current-color);
-	background-color: var(--current-gray);
-}
-
-.day.header-app,
-.day .header-app {
-	--current-color: var(--current-primary);
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
+		a {
+			text-decoration: none;
+			background-color: inherit;
+		}
+	}
 }

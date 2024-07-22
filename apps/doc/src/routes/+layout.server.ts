@@ -1,6 +1,4 @@
-import type {LayoutServerLoad} from './$types'
-
-export const load = (async (event) => {
+export const load = async (event) => {
 	let styles = {}
 	let settings = {}
 	let app = {}
@@ -15,4 +13,4 @@ export const load = (async (event) => {
 	}
 
 	return {styles, settings, app}
-}) satisfies LayoutServerLoad
+}

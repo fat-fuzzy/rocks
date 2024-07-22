@@ -1,119 +1,38 @@
-[class^='l:reveal'] [class*='expand'] {
+[class^='l:reveal'] {
 	position: relative;
-	z-index: var(--z-index-layer);
-	width: 100%;
-	color: inherit;
-	background-color: var(--current-polar);
-}
-
-[class^='l:reveal'] [class*='expand'] > .icon {
-	border: 0;
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
-}
-
-/* Fixes bug in Safari where .content overflows parent width */
-.l\:reveal.show {
+	z-index: var(--layout-z-index-layer);
+	inline-size: 100%;
+	max-inline-size: calc(100% - var(--outline-offset-base));
+	color: var(--ink);
+	margin: var(--outline-offset-base);
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	width: 100%;
 }
 
-.l\:reveal.minimize:not([class*='fixed']) .content {
+/* Fixes bug in Safari where .content overflows parent inline-size
+.l\:reveal.expanded {
+	display: flex;
+	flex-direction: column;
+	inline-size: 100%;
+}
+*/
+
+.l\:reveal.collapsed:not([class*='sticky']) .content {
 	border: 0;
-	height: 0;
+	block-size: 0;
+	inline-size: 0;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
 	white-space: nowrap;
+	scrollbar-gutter: stable;
 }
 
-.l\:reveal.minimize [class*='expand'] {
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
-}
-
-[class^='l:reveal'] .end {
+[class^='l:reveal'].end {
 	justify-self: flex-end;
 }
 
-/* TODO: generate mq mixin */
-/* TODO: set [inline/block] size according to alignment */
-
-@media screen and (min-width: 320px) {
-	.l\:reveal.bp\:xxs.l\:stack:only-child {
-		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
-	}
-}
-
-@media screen and (min-width: 620px) {
-	.l\:reveal.bp\:xs.l\:stack:only-child {
-		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
-	}
-}
-
-/* TODO fix magic bp */
-@media screen and (min-width: 935px) {
-	/* The reveal layout inside a sidebar is currently only used for sidebar menus:
-		- reveal mechanism serves to hide and show the menu on mobile
-		- reveal is not necessary on desktop, so on desktop we unset the reveal layout
-	Constraining this allows usage of reveal layout in desktop, outside a sidebar context */
-
-	/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
-
-	/* Fixes bug in Safari where .content overflows parent width */
-	[class^='l:side'] > [class^='l:reveal'] {
-		&.minimize:not([class*='fixed']) .content {
-			padding: var(--ui-size);
-			white-space: normal;
-			overflow: hidden;
-			position: unset;
-			width: 100%;
-			margin: initial;
-		}
-
-		&:not([class*='fixed']) [class*='expand'] {
-			display: none;
-		}
-
-		&:not([class*='fixed']) [class*='expand'] + * {
-			margin-top: 0;
-		}
-	}
-
-	.l\:reveal.show .content {
-		top: 0;
-		max-height: unset;
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.l\:reveal.bp\:sm.l\:stack:only-child {
-		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
-	}
-}
-
-@media screen and (min-width: 1360px) {
-	.l\:reveal.bp\:md.l\:stack:only-child {
-		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
-	}
-}
-
-@media screen and (min-width: 1620px) {
-	.l\:reveal.bp\:lg.l\:stack:only-child {
-		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
-	}
-}
-
-@media screen and (min-width: 2048px) {
-	.l\:reveal.bp\:xl.l\:stack:only-child {
-		inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
-	}
+[class^='l:reveal'][class^='bp:'].l\:stack:only-child {
+	inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 }

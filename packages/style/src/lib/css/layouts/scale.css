@@ -1,55 +1,27 @@
 .bp\:2xs {
-	--breakpoint: var(--bp-2xs);
+	--breakpoint: var(--layout-breakpoint-2xs);
 }
 
 .bp\:xs {
-	--breakpoint: var(--bp-xs);
+	--breakpoint: var(--layout-breakpoint-xs);
 }
 
 .bp\:sm {
-	--breakpoint: var(--bp-sm);
+	--breakpoint: var(--layout-breakpoint-sm);
 }
 
 .bp\:md {
-	--breakpoint: var(--bp-md);
+	--breakpoint: var(--layout-breakpoint-md);
 }
 
 .bp\:lg {
-	--breakpoint: var(--bp-lg);
+	--breakpoint: var(--layout-breakpoint-lg);
 }
 
 .bp\:xl {
-	--breakpoint: var(--bp-xl);
+	--breakpoint: var(--layout-breakpoint-xl);
 }
 
 .bp\:2xl {
-	--breakpoint: var(--bp-2xl);
-}
-
-.th\:2xs {
-	--threshold: var(--bp-2xs);
-}
-
-.th\:xs {
-	--threshold: var(--bp-xs);
-}
-
-.th\:sm {
-	--threshold: var(--bp-sm);
-}
-
-.th\:md {
-	--threshold: var(--bp-md);
-}
-
-.th\:lg {
-	--threshold: var(--bp-lg);
-}
-
-.th\:xl {
-	--threshold: var(--bp-xl);
-}
-
-.th\:2xl {
-	--threshold: var(--bp-2xl);
+	--breakpoint: var(--layout-breakpoint-2xl);
 }

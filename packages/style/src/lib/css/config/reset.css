@@ -41,7 +41,6 @@ html:focus-within {
 body {
 	min-height: 100vh;
 	text-rendering: optimizespeed;
-	line-height: 1.5;
 }
 
 /* A elements that don't have a class get default styles */
@@ -61,7 +60,7 @@ input,
 button,
 textarea,
 select {
-	font: inherit;
+	font-family: inherit;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */

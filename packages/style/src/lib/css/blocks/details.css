@@ -1,3 +1,7 @@
+details {
+	padding-inline: var(--outline-offset-base);
+}
+
 p + details {
 	margin-block-start: var(--ui-size-lg);
 }
@@ -17,13 +21,6 @@ details > summary + * {
 	margin-block-start: var(--ui-size);
 }
 
-details > summary > h1, /* TODO: not sure h1 inside detail is a good  */idea, check
-details > summary > h2,
-details > summary > h3,
-details > summary > h4 {
-	display: inline-block;
-}
-
 details > summary::before {
 	content: '👉';
 	margin-inline-end: var(--ui-size-sm);
@@ -41,15 +38,15 @@ details[open] > summary::before {
 }
 
 details > summary:hover {
-	--lightness: var(--color-lightness-600);
-	--lightness-contrast: var(--color-lightness-300);
+	--lightness: var(--color-lightness-400);
+	--lightness-contrast: var(--color-lightness-000);
 	box-shadow: var(--shadow-md);
 }
 
 details > summary.variant\:outline {
-	--border-color: var(--ink);
-	--lightness: var(--color-lightness-600);
-	--lightness-contrast: var(--color-lightness-300);
+	--color-accent: var(--accent, var(--shade));
+	--lightness: var(--color-lightness-400);
+	--lightness-contrast: var(--color-lightness-000);
 	background-color: inherit;
 }
 
@@ -62,25 +59,25 @@ details > summary.variant\:bare {
 details > summary.variant\:outline:hover {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 details > summary.variant\:bare:hover {
 	--lightness: var(--color-lightness-000);
 	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 details > summary.variant\:outline:active {
 	--lightness: var(--color-lightness-200);
 	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 details > summary.variant\:bare:active {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 }
 
 details > summary:not([class*=':neutral']) {

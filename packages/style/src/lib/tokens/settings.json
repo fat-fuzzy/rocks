@@ -1,20 +1,20 @@
 {
-    "settings": {
-        "brightness": {
-            "day": {
-                "$value": "{color.hue.violet}"
-            },
-            "night": {
-                "$value": "{color.hue.seagreen}"
-            }
-        },
-        "contrast": {
-            "high": {
-                "$value": "{color.hue.violet}"
-            },
-            "low": {
-                "$value": "{color.hue.seagreen}"
-            }
-        }
-    }
+	"settings": {
+		"brightness": {
+			"day": {
+				"$value": "{color.hue.violet}"
+			},
+			"night": {
+				"$value": "{color.hue.seagreen}"
+			}
+		},
+		"contrast": {
+			"high": {
+				"$value": "{color.hue.violet}"
+			},
+			"low": {
+				"$value": "{color.hue.seagreen}"
+			}
+		}
+	}
 }

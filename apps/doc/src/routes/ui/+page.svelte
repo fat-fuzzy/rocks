@@ -1,13 +1,14 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {headless, tokens, blocks, layouts, recipes, api} from '@fat-fuzzy/ui'
+	import {tokens, blocks, layouts, recipes, content} from '@fat-fuzzy/ui'
+	import {api} from '@fat-fuzzy/playbook'
 
-	const {Head} = headless
+	const {PageMain} = content
 	const {Collection} = api
 
-	const actionPath = '/ui'
-	const title = 'UI'
-	const description = `${title} Doc`
+	let actionPath = '/ui'
+	let title = 'Fat Fuzzy UI'
+	let description = `${title} | Doc`
 
 	const components = [
 		{category: 'tokens', items: tokens},
@@ -15,31 +16,37 @@
 		{category: 'layouts', items: layouts},
 		{category: 'recipes', items: recipes},
 	]
-	const path = $page.url.pathname
 
-	$: markdowns = $page.data.markdowns
-	$: content = markdowns.categories.find(({meta}) => meta.slug === 'ui')
-	$: headerClass = 'l:flex card:sm bg:polar align:center'
+	const path = $derived($page.url.pathname)
+	let markdowns = $derived($page.data.markdowns)
+	let markdownContent = $derived(
+		markdowns.categories.find(({meta}) => meta.slug === 'ui'),
+	)
 </script>
 
-<Head page={title} {description} />
-
-<header class={headerClass}>
-	<h1 class="card:md">Fat Fuzzy {title}</h1>
-</header>
-
-<section class="card:md scroll:y">
-	<div class="l:text:lg snap:start">{@html content.html}</div>
-	{#each components as { category, items }}
-		<Collection
-			depth={1}
-			isPage={false}
-			path={`${path}/${category}`}
-			components={items}
-			{category}
-			content={markdowns.categories.find(({meta}) => meta.slug === category)}
-			{markdowns}
-			{actionPath}
-		/>
-	{/each}
-</section>
+<PageMain {title} {description} size="md">
+	<article class="l:sidebar:md">
+		<section class="l:main">
+			<div class="l:text:lg snap:start">{@html markdownContent.html}</div>
+			{#each components as { category, items }}
+				{@const meta = markdowns.categories.find(
+					({meta}) => meta.slug === category,
+				).meta}
+				<Collection
+					depth={1}
+					isPage={false}
+					path={`${path}/${category}`}
+					components={items}
+					{meta}
+					{category}
+					{markdowns}
+					{actionPath}
+					tab="doc"
+				>
+					{@html markdowns.categories.find(({meta}) => meta.slug === category)
+						.html}
+				</Collection>
+			{/each}
+		</section>
+	</article>
+</PageMain>

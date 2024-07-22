@@ -1,29 +1,43 @@
 <script lang="ts">
-	import {createEventDispatcher, onMount} from 'svelte'
+	import type {InputRangeProps} from './input.types.js'
+	import {UiStatus, UiTextContext} from '$types/index.js'
+	import styleHelper from '$lib/utils/styles.js'
+	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
-	const dispatch = createEventDispatcher()
+	let {
+		id,
+		name,
+		label = 'Range',
+		value = $bindable(0),
+		min = 0,
+		max = 100,
+		step = 1,
+		disabled,
+		items = [],
+		status = UiStatus.default,
+		hint,
 
-	// @ts-check
-	export let id = ''
-	export let name = ''
-	export let label = 'Range'
-	export let value: string | number = 0
-	export let min = 0
-	export let max = 100
-	export let step = 1
-	export let color = ''
-	export let variant = ''
-	export let breakpoint = ''
-	export let size = ''
-	export let align = ''
-	export let items: any[] = []
-	export let disabled: boolean
-	let layout = 'stack'
+		layout = 'stack',
+		container,
+		justify,
+		color,
+		size,
+		variant,
+		background,
+		breakpoint,
+		threshold,
 
-	let valueLabel = value
-	let markers: {id: string; label: string; value: number}[] = [{id: '', label: '', value: min}]
+		oninput,
+	}: InputRangeProps = $props()
 
-	function generateStepsFromItems(items: {id: string; text: string; value: string}[]) {
+	let valueLabel = $state(value)
+	let markers: {id: string; label: string; value: number}[] = [
+		{id: '', label: '', value: min},
+	]
+
+	function generateStepsFromItems(
+		items: {id: string; text: string; value: string}[],
+	) {
 		let currentValue = min
 		items.forEach((item, index) => {
 			if (markers[index - 1]) {
@@ -38,14 +52,18 @@
 			let selectedMarker = markers.find((m) => m.value === value)
 			if (selectedMarker) {
 				valueLabel = selectedMarker.label
-				dispatch('input', {
-					id: selectedMarker.id,
-					name: selectedMarker.label,
-					value: valueLabel,
-				})
+				if (oninput) {
+					oninput({
+						id: selectedMarker.id,
+						name: selectedMarker.label,
+						value: valueLabel,
+					})
+				}
 			}
 		} else {
-			dispatch('input', {value})
+			if (oninput) {
+				oninput({value})
+			}
 		}
 	}
 
@@ -65,8 +83,21 @@
 		value = valueObject ? valueObject : value
 	}
 
-	$: classes = `l:${layout}:${size} bp:${breakpoint} ${size} ${color} ${variant} ${align}`
-	$: {
+	let inputClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			size,
+			variant,
+			justify,
+			layout,
+			breakpoint,
+			threshold,
+			container,
+			background: background ? background : 'inherit',
+		}),
+	)
+
+	$effect(() => {
 		if (items.length) {
 			let selectedMarker = markers.find((m) => m.label === value)
 			if (selectedMarker) {
@@ -76,10 +107,10 @@
 		} else {
 			valueLabel = !Number.isNaN(value) ? value : min + max / 2
 		}
-	}
+	})
 </script>
 
-<label for={id} class={classes}>
+<label for={id} class={inputClasses}>
 	<span class={`font:${size}`}>
 		{label}:
 		{valueLabel}
@@ -93,15 +124,20 @@
 		{min}
 		{max}
 		{step}
-		on:input={handleInput}
+		oninput={handleInput}
 		list={items ? `${id}-markers` : undefined}
 		{disabled}
 	/>
 	{#if items.length}
 		<datalist id={`${id}-markers`} class="l:flex justify:between">
 			{#each markers as { id, label, value }}
-				<option {id} {label} {value} />
+				<option {id} {label} {value}></option>
 			{/each}
 		</datalist>
 	{/if}
 </label>
+{#if hint}
+	<Feedback {status} context={UiTextContext.form} {size} {variant}>
+		{hint}
+	</Feedback>
+{/if}

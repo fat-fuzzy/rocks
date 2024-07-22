@@ -1,9 +1,13 @@
-import type {StyleTree} from '@fat-fuzzy/playbook/api/types'
+import type {StyleTree} from '$lib/api/styles.types'
+import {constants} from '@fat-fuzzy/ui'
+import {initStyles} from '$lib/api/styles.api'
 
-import constants from '$lib/types/constants'
-import {initStyles} from '$lib/api/styles'
-
-const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, TRANSITION_REVEAL, NUMBER_TO_SIZE} = constants
+const {
+	DEFAULT_REVEAL_STATE,
+	DEFAULT_APP_SETTINGS,
+	TRANSITION_REVEAL,
+	NUMBER_TO_SIZE,
+} = constants
 
 export class DsStylesUpdate {
 	api
@@ -26,13 +30,17 @@ export class DsStylesUpdate {
 	 */
 	enter(data: FormData) {
 		const styleValues = []
+		let category
+		let family
+		let style
+		let _
 
 		for (const [key, value] of data) {
 			if (key === 'reveal') {
 				this.settings.reveal = TRANSITION_REVEAL[this.settings.reveal]
 				return true
 			}
-			let [category, family, style, _] = key.split('.')
+			;[category, family, style, _] = key.split('.')
 			let styleValue = {[style]: value.toString()}
 			// FIXES: allows to enter range number values mapped to class names with no JS on client
 			// TODO: figure out generic way to map range number values to string labels
@@ -49,14 +57,19 @@ export class DsStylesUpdate {
 
 		const styles = this.api.getStyleTree()
 		styleValues.forEach(({id, value}) => {
-			const [category, family, style, _] = id.split('.')
+			;[category, family, style, _] = id.split('.')
+			if (!styles[category]) {
+				styles[category] = {families: {}}
+			}
 			if (category !== 'submit' && category !== 'button') {
-				styles[category][family][style] = value[category][family][style]
+				styles[category].families[family][style] =
+					value[category][family][style]
 			}
 			if (style === 'brightness' || style === 'contrast') {
 				this.settings[style] = value[category][family][style]
 			}
 		})
+
 		this.api.applyStyles(styles)
 		return true
 	}

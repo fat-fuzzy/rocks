@@ -1,13 +1,24 @@
-[class*='emoji:'] {
-	--icon-size: var(--ui-size-xl);
+[class*='emoji:']::before {
+	--icon-size: var(--font-size);
 	font-size: var(--icon-size);
+	display: inline;
+	inline-size: fit-content;
+	block-size: fit-content;
 }
 
-[class*='emoji:']::before,
-[class*='emoji:'].align\:start::before {
-	margin-inline-end: var(--ui-size-sm);
+[class*='emoji:']:not([class*='justify:'], [class*='l:frame'])::before {
+	margin-inline: var(--ui-size-sm);
 }
 
-[class*='emoji:'].align\:end::after {
-	margin-inline-start: var(--ui-size-sm);
+[class*='emoji:'].justify\:start::before,
+[class*='emoji:']:not([class*='shape:']).justify\:center::before {
+	margin-inline: 0 var(--ui-size-sm);
+}
+
+[class*='emoji:'].justify\:end::after {
+	margin-inline: var(--ui-size-sm) 0;
+}
+
+[class*='emoji:'][class*='shape:']:not(:has(.sr-only), :empty)::before {
+	margin-block: var(--outline-offset-settings);
 }

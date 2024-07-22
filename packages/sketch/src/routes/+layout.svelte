@@ -1,32 +1,42 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte'
 	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
-	import {layouts, recipes} from '@fat-fuzzy/ui-s5'
-	const {Sidebar} = layouts
-	const {Nav} = recipes
+	import {content} from '@fat-fuzzy/ui'
+	import sketchStore from '$lib/stores/stores.svelte'
 
-	$: sketches = $page.data.sketches
-	$: path = ''
-	$: items = sketches
+const {LayoutSidebar} = content
+
+	type Props = {
+		children: Snippet
+	}
+
+	let {children}: Props = $props()
+
+	let sketches = $state($page.data.sketches)
+	let appSettings = $derived(sketchStore.app)
+
+	let path = ''
+	let items = [{ slug: 'sketches', title: 'Sketches' ,items: sketches}]
+
+	let nav ={
+		path,
+		title: 'Sketches',
+		id: 'nav-sketches',
+		items: sketches,
+		reveal: 'expanded',
+		breakpoint: 'sm',
+		size: 'sm',
+		color: 'primary',
+		position: 'fixed',
+		place: 'left',
+		formaction: 'toggleSidebar',
+	}
 </script>
 
-<Sidebar size="sm">
-	<svelte:fragment slot="side">
-		<details open>
-			<summary class="bg:primary:300 variant:fill">Sketches</summary>
-			<Nav
-				id="nav-page"
-				{items}
-				{path}
-				size="xs"
-				color="bg:primary:light"
-				background="polar"
-				container="card"
-				layout="switcher"
-			/>
-		</details>
-	</svelte:fragment>
-	<div slot="main" class="card:md">
-		<slot />
-	</div>
-</Sidebar>
+
+<LayoutSidebar {nav} redirect={$page.url.pathname} {path} app={{settings: appSettings}}>
+	{#if children}
+		{@render children()}
+	{/if}
+</LayoutSidebar>

@@ -1,9 +1,11 @@
 fieldset {
 	padding: 0;
 	border: none;
-	border-radius: var(--radius-base);
+	border-radius: var(--border-radius-md);
+	max-inline-size: 100%;
+	max-width: 100%;
 
-	> legend {
+	legend {
 		font-size: var(--font-size-ui);
 		font-weight: var(--font-weight-ui);
 		line-height: var(--ui-size);
@@ -13,34 +15,70 @@ fieldset {
 		font-size: var(--font-size-small);
 		font-weight: var(--font-weight-ui);
 	}
+
+	> label,
+	> .feedback {
+		inline-size: 100%;
+		max-inline-size: 100%;
+		max-width: 100%;
+	}
 }
 
 fieldset.radio,
 fieldset.check {
-	padding: var(--ui-size);
+	padding-block: 0 var(--outline-offset-base); /* TODO: adjust according to size:xyz */
+	font-size: var(--font-size);
 
-	> legend {
+	input {
+		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+		--color-accent: var(--accent-semantic, var(--accent));
+		flex-grow: 0;
+		flex-basis: var(--font-size);
+		accent-color: var(--color-accent);
+	}
+
+	legend {
 		inline-size: auto;
 		margin-inline-start: var(--ui-size);
-		padding: var(--ui-size-sm) var(--ui-size);
+		padding-inline: var(--ui-size-sm);
+		padding-block: 0 var(--outline-offset-base);
 	}
 
-	> label {
+	label > span {
+		flex-grow: 1;
+		font-size: var(--font-size);
+	}
+
+	label {
+		--hue: var(--hue-semantic, var(--color-theme-primary));
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		--color-bg: var(--shade);
+		--color-ink: var(--ink);
+		display: flex;
+		justify-content: var(--justify, space-between);
+		padding: calc(var(--ui-size-sm) / var(--size-ratio-sm)) var(--ui-size);
+		gap: var(--ui-size);
 		margin: 0;
 		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		padding: var(--ui-size-sm) var(--ui-size-lg);
-		gap: var(--ui-size);
+		color: var(--color-ink);
 	}
 
-	> label[class*='emoji'] span {
-		flex-grow: 1;
+	input:checked {
+		--lightness: var(--color-lightness-000);
+		--lightness-accent: var(--color-lightness-200);
+		--lightness-contrast: var(--color-lightness-400);
+		--chroma: var(--color-chroma-000);
+		--chroma-contrast: var(--color-chroma-400);
+		--chroma-accent: var(--color-lightness-200);
+		background-color: var(--shade);
 	}
 
-	> label [type='radio'] {
-		padding: 0;
-		height: auto;
-		outline-offset: 0;
+	label:hover {
+		--lightness: var(--color-lightness-000);
+		--lightness-contrast: var(--color-lightness-400);
+		--chroma: var(--color-chroma-000);
+		--chroma-contrast: var(--color-chroma-400);
+		background-color: var(--shade);
 	}
 }

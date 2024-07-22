@@ -1,9 +1,10 @@
 <script lang="ts">
 	import {getStores} from '$app/stores'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
+
 	export let title = 'Log In'
 	export let description = 'A log in form'
-	export let asset = 'emoji:log'
+	export let asset = 'log'
 	export let depth = 2 // <h*> elenent depth
 	export let size = 'md'
 	export let align = 'center'
@@ -23,12 +24,15 @@
 	$: type = action ? 'submit' : 'button'
 </script>
 
-/* stylelint-disable CssSyntaxError */
 {#if session.user}
 	<slot name="authed" />
 {:else}
 	<!-- <section class={`l:text:${size} l:center:${size} card:xl ${background}`}> -->
-	<form method="POST" class={`l:stack:${size} card:${size} ${background}`} {action}>
+	<form
+		method="POST"
+		class={`l:stack:${size} card:${size} ${background}`}
+		{action}
+	>
 		<header class={`l:stack:${size} text:${align} ${asset}`}>
 			<svelte:element this={`h${depth}`}>{title}</svelte:element>
 			<p class={`font:${size}`}>{description}</p>

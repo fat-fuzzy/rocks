@@ -1,5 +1,15 @@
-menu > li {
-	height: calc(100% - 2 * var(--border-width-md));
-  width: auto;
-  aspect-ratio: 1/1;
+menu {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: var(--border-width-lg);
+}
+menu.player > li {
+	height: 100%;
+	width: auto;
+	aspect-ratio: 1/1;
+	padding-block: var(--border-width-lg);
+}
+
+menu > .group {
+	justify-content: space-between;
 }

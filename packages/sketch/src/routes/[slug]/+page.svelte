@@ -2,14 +2,16 @@
 	import {page} from '$app/stores'
 
 	import lib from '@fat-fuzzy/lib'
-	import {headless} from '@fat-fuzzy/ui-s5'
+	import {headless} from '@fat-fuzzy/ui'
 	import Sketch from '$lib/components/sketch/Sketch.svelte'
 
 	const {Head} = headless
 
-	$: scene = lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug)
-	$: title = scene?.meta.title || ''
-	$: headerClass = 'l:flex align:center'
+	let scene = $derived(
+		lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),
+	)
+	let title = $derived(scene?.meta.title || '')
+	let headerClass = 'l:flex align:center maki:inline'
 </script>
 
 <Head

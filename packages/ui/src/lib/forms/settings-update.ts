@@ -1,7 +1,8 @@
 import type {Settings} from '$types'
 import constants from '$types/constants'
 
-const {DEFAULT_APP_SETTINGS, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} = constants
+const {DEFAULT_APP_SETTINGS, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
+	constants
 
 export class SettingsUpdate {
 	app: Settings
@@ -10,9 +11,9 @@ export class SettingsUpdate {
 	 */
 	constructor(settings: Settings | null = null) {
 		if (settings) {
-			this.app = settings
+			this.app = {settings: settings.settings}
 		} else {
-			this.app = DEFAULT_APP_SETTINGS
+			this.app = {settings: DEFAULT_APP_SETTINGS}
 		}
 	}
 

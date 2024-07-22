@@ -1,7 +1,7 @@
 /* ==  A Page Header Layout that uses a grid to achieve  a responsive layout with changing order of contents */
 
 [class^='l:grid:header'] {
-	padding: calc(var(--gap) / var(--ratio));
+	padding: calc(var(--gap) / var(--size-ratio-md));
 	grid-template-columns: 1fr auto;
 	gap: var(--gap);
 	height: auto;

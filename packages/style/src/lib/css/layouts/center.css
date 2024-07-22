@@ -1,16 +1,13 @@
 /* == Center main content == */
 
 /* Use Center class without a size to set a full width with default padding */
-[class*='l:center'] {
-	--max-width-center: calc(100% - calc(2 * var(--gap)));
+[class*='l:center:'] {
+	--max-inline-size-center: calc(100% - calc(2 * var(--size-inverse)));
+	max-inline-size: var(
+		--max-inline-size-center
+	); /* width of parent minus base padding */
 	margin-left: auto;
 	margin-right: auto;
-}
-
-/* Use Center class without a size to set a full width with default padding */
-[class*='l:center:'] {
-	--max-width-center: calc(100% - calc(2 * var(--size-inverse)));
-	max-width: var(--max-width-center); /* width of parent minus base padding */
 }
 
 .l\:center\:2xs {

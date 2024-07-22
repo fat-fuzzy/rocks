@@ -1,11 +1,12 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte'
 	import type {GeometryContext} from '$types/index.js'
 
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
 	import Rotation from '$lib/components/geometry/Rotation.svelte'
-	import {blocks} from '@fat-fuzzy/ui-s5'
-	import {onMount, type Snippet} from 'svelte'
+	import {blocks} from '@fat-fuzzy/ui'
+
 	const {Button} = blocks
 
 	type Props = {
@@ -44,18 +45,18 @@
 	let {scale, translation} = $derived(geometry)
 
 	// input attributes
-	let maxZ = 1
-	let minZ = -1000
+	let maxZ = $state(1)
+	let minZ = $state(-1000)
 
 	// Position
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
 	let minX = $state(-canvasWidth)
 	let minY = $state(-canvasHeight)
-	let [coordX, coordY, coordZ] = $state(translation ?? [0, 0, 0])
+	let [coordX, coordY, coordZ] = $state([translation[0] ?? 0, translation[1] ?? 0, translation[2] ?? 0])
 
 	// Scale
-	let [scaleX, scaleY, scaleZ] = $state(scale ?? [1, 1, 1])
+	let [scaleX, scaleY, scaleZ] = $state([scale[0] ?? 1, scale[1] ?? 1, scale[2] ?? 1])
 
 	// Rotation
 	let [angleX, angleY, angleZ] = $state([190, 40, 30]) // TODO: fix this
@@ -67,9 +68,6 @@
 		scale: [scaleX, scaleY, scaleZ],
 	})
 
-	onMount(() => {
-		update()
-	})
 </script>
 
 <Position
@@ -84,8 +82,8 @@
 	bind:maxZ
 	bind:minZ
 	onupdate={update}
-	color={'primary'}
-	size={`xs l:burrito:${threshold}`}
+	color='primary'
+	size='xs'
 	{disabled}
 />
 <Rotation
@@ -94,8 +92,8 @@
 	bind:angle={angleX}
 	max={360}
 	onupdate={update}
-	color={'accent'}
-	size={`xs l:burrito:${threshold}`}
+	color='accent'
+	size='xs'
 	{disabled}
 />
 <Rotation
@@ -104,8 +102,8 @@
 	bind:angle={angleY}
 	max={360}
 	onupdate={update}
-	color={'accent'}
-	size={`xs l:burrito:${threshold}`}
+	color='accent'
+	size='xs'
 	{disabled}
 />
 <Rotation
@@ -114,8 +112,8 @@
 	bind:angle={angleZ}
 	max={360}
 	onupdate={update}
-	color={'accent'}
-	size={`xs l:burrito:${threshold}`}
+	color='accent'
+	size='xs'
 	{disabled}
 />
 <Scale
@@ -130,19 +128,21 @@
 	minY={-5}
 	minZ={-5}
 	onupdate={update}
-	color={'highlight'}
-	size={`xs l:burrito:${threshold}`}
+	color='highlight'
+	size='xs'
 	{disabled}
 />
 {#await Promise.resolve()}
 	<div class={`l:frame:twin card:lg`}>
 		<Button
+			id="update-geometry"
+			name="update-geometry"
 			title="Update geometry"
 			size="xl"
 			color="highlight"
 			variant="outline"
 			shape="round"
-			asset="emoji:nojs"
+			asset="nojs"
 			{disabled}
 		/>
 	</div>

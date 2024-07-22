@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {blocks} from '@fat-fuzzy/ui-s5'
+	import {blocks} from '@fat-fuzzy/ui'
 	const {InputRange} = blocks
 
 	type Props = {
@@ -22,7 +22,7 @@
 	let {
 		color = '',
 		id = 'scale',
-		size = 'xxs',
+		size = '2xs',
 		scaleX = $bindable(0),
 		scaleY = $bindable(0),
 		scaleZ = $bindable(undefined),

@@ -25,11 +25,13 @@ a[class*='icon:']::before {
 	justify-content: space-between;
 }
 
+[class*='card:'][class*='icon:'][class*=':2xs']:not(.feedback)::before,
+[class*='card:'][class*='icon:'][class*=':xs']:not(.feedback)::before,
 [class*='card:'][class*='icon:'][class*=':sm']:not(.feedback)::before,
 [class*='card:'][class*='icon:'][class*=':md']:not(.feedback)::before,
 [class*='card:'][class*='icon:'][class*=':lg']:not(.feedback)::before,
 [class*='card:'][class*='icon:'][class*=':xl']:not(.feedback)::before,
-[class*='card:'][class*='icon:'][class*=':xxl']:not(.feedback)::before {
+[class*='card:'][class*='icon:'][class*=':2xl']:not(.feedback)::before {
 	margin-inline: 0;
 }
 

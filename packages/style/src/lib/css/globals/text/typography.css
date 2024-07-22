@@ -5,11 +5,16 @@ h4,
 h5,
 h6 {
 	color: var(--ink);
-	line-height: var(--font-leading-heading);
-	margin-block-end: var(--ui-size-sm);
+	line-height: var(--font-leading-body);
+	margin-block: auto;
 	&.nowrap {
 		white-space: nowrap;
 	}
+}
+
+:where(h1, h2, h3, h4, h5, h6) + p,
+:where(h1, h2, h3, h4, h5, h6, p) + :where(pre, code) {
+	margin-block-start: var(--ui-size);
 }
 
 h1.link,
@@ -17,20 +22,6 @@ h2.link,
 h3.link {
 	margin: 0;
 	font-size: var(--font-size);
-}
-
-/* TODO: decouple card from typography */
-h1[class*='card'],
-h2[class*='card'],
-h3[class*='card'],
-h1[class*='card'] > *,
-h2[class*='card'] > *,
-h3[class*='card'] > * {
-	display: flex;
-	align-items: center;
-	line-height: 1;
-	text-transform: uppercase;
-	font-size: var(--font-size-plus);
 }
 
 h1 {
@@ -83,34 +74,26 @@ h5 {
 	font-size: var(--font-size-base);
 }
 
-[class*='font:']:not(h1, h2, h3, h4, h5, h6) {
-	font-size: var(--font-size);
-}
-
-[class*='font:'][class*=':minus']:not(h1, h2, h3, h4, h5, h6) {
-	font-size: var(--font-size-minus);
-}
-
-[class*='font:'][class*=':plus']:not(h1, h2, h3, h4, h5, h6) {
-	font-size: var(--font-size-plus);
-}
-
 article,
 .l\:text {
 	background-color: inherit;
 }
 
+p,
 figcaption {
-	color: var(--current-color);
+	color: var(--color-ink, var(--ink));
 }
 
 ol,
 ul {
-	margin-block-end: calc(var(--gap) * var(--ratio-lg));
+	margin: 0;
+
+	&.unstyled {
+		list-style: none;
+	}
 }
 
 a {
-	height: fit-content;
 	padding-block: 0;
 	padding-inline: calc(var(--ui-size-sm) / 2);
 	margin-inline-end: 0.25em;
@@ -120,4 +103,10 @@ a {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	color: var(--ink);
 	background-color: inherit;
+}
+
+pre,
+code {
+	font-family: var(--font-family-mono);
+	font-size: var(--font-size);
 }

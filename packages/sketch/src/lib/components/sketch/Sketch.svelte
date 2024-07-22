@@ -66,6 +66,7 @@
 
 	let frame: number
 	let time: number
+	let resetEvent = $state(0)
 
 	let currentAsset = $derived(
 		store.state.canvas === CanvasState.idle && asset
@@ -132,7 +133,9 @@
 	function reset() {
 		pause()
 		store.feedback.canvas = []
-		store.updateFilters(DEFAULT_FILTERS)
+		let random = Math.random()
+		resetEvent = random !== resetEvent ? random : random - 1
+		store.updateFilters(DEFAULT_FILTERS, ControlsEvent.update)
 	}
 
 	function clear() {
@@ -142,10 +145,10 @@
 		render()
 		if (prevCanvasState === CanvasState.paused) {
 			pause()
-			store.update(PlayerEvent.pause)
 		} else {
 			store.update(PlayerEvent.play)
 		}
+		store.update(PlayerEvent.clear)
 	}
 
 	function stop() {
@@ -159,6 +162,7 @@
 		if (frame) {
 			cancelAnimationFrame(frame)
 		}
+		store.update(PlayerEvent.pause)
 	}
 
 	function updateGeometry(payload: {
@@ -172,6 +176,7 @@
 		scene.update({...context, filters})
 		store.update(ControlsEvent.update)
 	}
+
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
@@ -180,18 +185,12 @@
 		;(context as CameraContext).fieldOfView = degToRad(payload.fieldOfView)
 		;(context as CameraContext).cameraAngle = degToRad(payload.cameraAngle)
 		scene.update({...context, filters})
+		store.update(ControlsEvent.update)
 	}
 
 	function updateCanvas(payload: {
 		event: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
 	}) {
-		let event = payload.event
-		if (payload.event === 'play') {
-			event =
-				store.getState('canvas') === CanvasState.playing
-					? PlayerEvent.pause
-					: PlayerEvent.play
-		}
 		switch (payload.event) {
 			case 'play':
 				play()
@@ -206,27 +205,53 @@
 				stop()
 				break
 		}
-		store.update(event)
 	}
 
 	function updateFilters(filters: Filters) {
-		scene.update({...context, filters})
-		store.update(ControlsEvent.update)
-		if (meta.controls.includes('texture')) {
-			play()
+		try {
+			scene.update({...context, filters})
+			if (meta.controls.includes('texture')) {
+				render()
+			}
+			store.update(ControlsEvent.update)
+		} catch (e: unknown) {
+			store.feedback.canvas.push({status: 'error', message: e as string})
+			store.update(CanvasEvent.error)
+		}
+	}
+
+	function loadFilters(filters: Filters) {
+		try {
+			scene.update({...context, filters})
+			if (meta.controls.includes('texture')) {
+				render()
+			}
+		} catch (e: unknown) {
+			store.feedback.canvas.push({status: 'error', message: e as string})
+			store.update(CanvasEvent.loadNok)
 		}
 	}
 
 	onMount(() => {
-		init()
+		try {
+			init()
+		} catch (e: unknown) {
+			store.feedback.sketch.push({status: 'error', message: e as string})
+			store.update(SketchEvent.loadNok)
+		}
 	})
 
 	onDestroy(() => {
-		stop()
+		try {
+			stop()
+		} catch (e: unknown) {
+			store.feedback.sketch.push({status: 'error', message: e as string})
+			store.update(SketchEvent.loadNok) // TODO: fix this
+		}
 	})
 </script>
 
-<div class={`l:grid:sketch bp:xs`}>
+<div class={`l:grid:sketch bp:xs size:sm`}>
 	<div class="scene">
 		<div class={frameClasses}>
 			<canvas
@@ -261,6 +286,7 @@
 				size="xs"
 				{variant}
 				disabled={store.hasError() ?? undefined}
+				{init}
 			/>
 			{#if meta && store.getState('sketch') === 'active' && store.getIsInteractive()}
 				{#if meta.controls.includes('matrix-2d')}
@@ -274,9 +300,7 @@
 						disabled={store.getSketchDisabled()}
 					/>
 				{:else}
-					<div
-						class={`l:${layout}:${size} th:${threshold} maki:block lg context bg:${background}`}
-					>
+					<div class={`l:${layout}:${size} maki:block`}>
 						{#if meta.controls.includes('camera')}
 							<CameraControls
 								id={`${id}-camera-controls`}
@@ -290,13 +314,16 @@
 								{context}
 							/>
 						{:else if meta.controls.includes('texture')}
-							<TextureControls
-								id={`${id}-texture-controls`}
-								channels={meta.filters?.channels}
-								blur={meta.filters?.blur}
-								convolutions={meta.filters?.convolutions}
-								onupdate={updateFilters}
-							/>
+							{#key resetEvent}
+								<TextureControls
+									id={`${id}-texture-controls`}
+									channels={meta.filters?.channels}
+									blur={meta.filters?.blur}
+									convolutions={meta.filters?.convolutions}
+									onupdate={updateFilters}
+									init={loadFilters}
+								/>
+							{/key}
 						{/if}
 					</div>
 				{/if}

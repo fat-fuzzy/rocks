@@ -1,21 +1,47 @@
-.layer,
-[class*=':layer'] {
-	box-shadow: var(--shadow-md);
+[class*='layer:'] {
+	--layer: var(--shadow-md);
+	box-shadow: var(--layer);
 }
 
-.inset-1 {
-	box-shadow: inset var(--shadow-inset-1);
-	z-index: var(--z-index-inset-1);
+.layer\:0 {
+	--layer: unset;
 }
 
-.inset {
-	box-shadow: inset var(--shadow-inset-2);
-	z-index: var(--z-index-inset-2);
+.layer\:1 {
+	--layer: var(--shadow-sm);
+}
+
+.layer\:2 {
+	--layer: var(--shadow-md);
+}
+
+.layer\:3 {
+	--layer: var(--shadow-lg);
+}
+
+[class*='inset'] {
+	--layer-inset: var(--shadow-inset-md);
+	box-shadow: inset var(--layer-inset);
+}
+
+.inset\:0 {
+	--layer-inset: unset;
+}
+
+.inset\:1 {
+	--layer-inset: inset var(--shadow-inset-sm);
+}
+
+.inset\:2 {
+	--layer-inset: inset var(--shadow-inset-md);
+}
+
+.inset\:3 {
+	--layer-inset: inset var(--shadow-inset-lg);
 }
 
 .drop {
 	position: relative;
-	z-index: var(--z-index-inset);
 }
 
 /* == Sticky layer: App header == */
@@ -23,18 +49,22 @@
 	position: sticky;
 	top: 0;
 	left: 0;
-	width: 100%;
-	z-index: var(--z-index-sticky);
+	inline-size: 100%;
+	z-index: var(--layout-z-index-sticky);
 }
 
 .sticky\:top > main {
 	min-height: calc(
-		100vh - calc(var(--header-height) - var(--header-margin) - var(--footer-height))
+		100vh -
+			calc(
+				var(--size-ui-header-height) - var(--size-ui-header-margin) -
+					var(--size-ui-footer-height)
+			)
 	);
 }
 
 /* == Sticky layer: Page header == */
 .sticky\:reveal {
 	position: relative;
-	z-index: var(--z-index-sticky);
+	z-index: var(--layout-z-index-sticky);
 }

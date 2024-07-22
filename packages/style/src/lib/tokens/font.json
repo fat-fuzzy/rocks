@@ -59,7 +59,7 @@
 			"700": {"$value": 700},
 			"800": {"$value": 800},
 			"light": {"$value": "{font.weight.200}"},
-			"regular": {"$value": "{font.weight.300}"},
+			"regular": {"$value": "{font.weight.400}"},
 			"medium": {"$value": "{font.weight.500}"},
 			"semibold": {"$value": "{font.weight.700}"},
 			"bold": {"$value": "{font.weight.800}"},
@@ -70,7 +70,8 @@
 			"h5": {"$value": "{font.weight.semibold}"},
 			"body": {"$value": "{font.weight.regular}"},
 			"code": {"$value": "{font.weight.regular}"},
-			"ui": {"$value": "{font.weight.medium}"}
+			"ui": {"$value": "{font.weight.medium}"},
+			"link": {"$value": "{font.weight.regular}"}
 		},
 		"size": {
 			"$type": "reference",
@@ -94,7 +95,8 @@
 		"leading": {
 			"$type": "dimension",
 			"heading": {"$value": "1.25"},
-			"ui": {"$value": "1.4"},
+			"ui": {"$value": "1.25"},
+			"nav": {"$value": "2"},
 			"body": {"$value": "1.75"}
 		}
 	}

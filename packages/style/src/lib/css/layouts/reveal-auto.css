@@ -2,15 +2,49 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	width: 100%;
 }
 
-.l\:reveal\:auto [class*='expand'] {
-	width: fit-content;
+.l\:reveal\:auto.hug {
+	inline-size: fit-content;
 }
 
-.l\:reveal\:auto .show {
-	width: auto;
-	height: auto;
-	overflow-y: auto;
+.l\:reveal\:auto [aria-expanded] {
+	inline-size: fit-content;
+}
+
+.l\:reveal\:auto [class*='form:'] {
+	position: relative;
+}
+
+.l\:reveal\:auto [aria-expanded='true'] + .content {
+	position: absolute;
+	z-index: var(--layout-z-index-reveal);
+	inline-size: auto;
+	block-size: auto;
+	overflow: hidden auto;
+	margin: initial;
+	white-space: normal;
+	scrollbar-gutter: stable;
+}
+
+.l\:reveal\:auto [aria-expanded='false'] + .content,
+.l\:reveal\:auto form:has([aria-expanded='false']) + .content {
+	position: absolute;
+	border: 0;
+	block-size: 0;
+	inline-size: 0;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.l\:reveal\:auto form:has([aria-expanded='true']) + .content {
+	position: absolute;
+	inline-size: auto;
+	block-size: auto;
+	overflow: hidden auto;
+	margin: initial;
+	white-space: normal;
+	scrollbar-gutter: stable;
 }

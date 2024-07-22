@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {blocks} from '@fat-fuzzy/ui-s5'
+	import {blocks} from '@fat-fuzzy/ui'
 	const {InputRange} = blocks
 
 	type Props = {
@@ -18,7 +18,7 @@
 		color = '',
 		id = 'rotation',
 		label = 'Angle',
-		size = 'xxs',
+		size = '2xs',
 		angle = $bindable(0),
 		min = 0,
 		max = 360,

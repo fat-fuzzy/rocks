@@ -1,7 +1,11 @@
 <script lang="ts">
-	export let size = 'md'
+	import type { LayoutProps } from "./layout.types.js"
+
+	let {size = 'md', children}: LayoutProps = $props()
 </script>
 
 <div class={`l:burrito:${size}`}>
-	<slot name="content" />
+	{#if children}
+		{@render children()}
+	{/if}
 </div>

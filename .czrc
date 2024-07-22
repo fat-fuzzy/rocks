@@ -18,11 +18,11 @@
 			"description": "Gardening / baby step / cleaning code",
 			"title": "Gardening"
 		},
-		"♻️  ": {
+		"♻️ ": {
 			"description": "Refactor / rename / move",
 			"title": "Refactor"
 		},
-		"🗑️  ": {
+		"🗑️ ": {
 			"description": "Deprecate related changes",
 			"title": "Deprecate"
 		},
@@ -42,7 +42,7 @@
 			"description": "Add dependencies / new files",
 			"title": "Add"
 		},
-		"⬆️  ": {
+		"⬆️ ": {
 			"description": "Update dependencies",
 			"title": "Update"
 		},
@@ -62,7 +62,7 @@
 			"description": "Types / TypesScript related changes",
 			"title": "Types"
 		},
-		"❄️  ": {
+		"❄️ ": {
 			"description": "Freeze something",
 			"title": "Freeze"
 		},
@@ -86,7 +86,7 @@
 			"description": "Add / Update README / doc",
 			"title": "Doc"
 		},
-		"✏️  ": {
+		"✏️ ": {
 			"description": "Code comments",
 			"title": "Comments"
 		},
@@ -110,7 +110,7 @@
 			"description": "Data analysis and data viz related changes",
 			"title": "Data"
 		},
-		"🗄️  ": {
+		"🗄️ ": {
 			"description": "Database related changes",
 			"title": "Database"
 		},
@@ -118,7 +118,7 @@
 			"description": "Backend related changes (python)",
 			"title": "Backend Python"
 		},
-		"🛼  ": {
+		"🛼 ": {
 			"description": "Backend related changes (node)",
 			"title": "Backend Node"
 		},
@@ -126,7 +126,7 @@
 			"description": "Backend related changes (wordpress)",
 			"title": "Backend Wordpress"
 		},
-		"☁️  ": {
+		"☁️ ": {
 			"description": "Backend related changes (serverless)",
 			"title": "Backend Serverless"
 		},
@@ -150,15 +150,15 @@
 			"description": "i18n / L10n / Date & Time",
 			"title": "i18n / L10n"
 		},
-		"🎙️  ": {
+		"🎙️ ": {
 			"description": "Improve tone & voice: copy / text content / ui text",
 			"title": "Voice"
 		},
-		"🌶️  ": {
+		"🌶️ ": {
 			"description": "Hot take, spicy change, burrito",
 			"title": "Hot"
 		},
-		"⚗️  ": {
+		"⚗️ ": {
 			"description": "Experimental (appears useful, might be unstable)",
 			"title": "Experiment"
 		},
@@ -182,7 +182,7 @@
 			"description": "Ignore files",
 			"title": "Ignore"
 		},
-		"⚖️  ": {
+		"⚖️ ": {
 			"description": "Add / Update LICENSES",
 			"title": "Legal"
 		},

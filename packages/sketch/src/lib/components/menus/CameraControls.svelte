@@ -15,7 +15,7 @@
 		onupdate: (payload: {fieldOfView: number; cameraAngle: number}) => void // TODO: Fix type
 	}
 
-	let {id = 'sketch', color, threshold, onupdate}: Props = $props()
+	let {id = 'sketch', color = 'neutral', threshold, onupdate}: Props = $props()
 
 	let fieldOfView = $state(60)
 	let cameraAngle = $state(60)
@@ -40,7 +40,7 @@
 	angle={cameraAngle}
 	onupdate={updateCamera}
 	{color}
-	size={`xs l:burrito:${threshold}`}
+	size="xs"
 	disabled={store.getSketchDisabled()}
 />
 
@@ -50,6 +50,6 @@
 	max={180}
 	onupdate={updateFieldOfView}
 	{color}
-	size={`xs l:burrito:${threshold}`}
+	size="xs"
 	disabled={store.getSketchDisabled()}
 />

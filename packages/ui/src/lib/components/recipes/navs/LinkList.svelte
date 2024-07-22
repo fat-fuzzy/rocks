@@ -1,39 +1,100 @@
 <script lang="ts">
-	import format from '$lib/utils/format'
+	import type {LinkListProps} from './nav.types.js'
+	import format from '$lib/utils/format.js'
 	import {getStores} from '$app/stores'
 
-	let page = getStores().page
-	export let path = ''
-	export let layout = ''
-	export let size = 'md'
-	export let align = 'start'
-	export let id = ''
-	export let depth = 0
-	export let items: any = [] // TODO: fix type
-	let layoutClass = layout ? `l:${layout}:${size}` : ''
-	let depthClass = `depth-${depth}`
+	import ExpandLink from './ExpandLink.svelte'
+	import constants from '$lib/types/constants.js'
 
-	$: current = (slug: string) => $page.url.pathname === format.formatHref(path, slug)
+	const {DEFAULT_REVEAL_STATE} = constants
+
+	let page = getStores().page
+
+	let {
+		path = '',
+		layout,
+		size = '2xs',
+		color = 'primary',
+		align,
+		id,
+		depth = 0,
+		container,
+		items = [], // TODO: fix type,
+	}: LinkListProps = $props()
+
+	// TODO: clean classes output
+	let containerClass =
+		container === 'content'
+			? container
+			: container
+				? `l:${container}:${size}`
+				: ''
+	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
+	let colorClass = color ? `surface:1:${color}` : ''
+	let alignClass = align ? `align:${align}` : ''
+	let depthClass = `depth-${depth}`
+	let gridClass = depth === 1 ? `l:grid:sm` : layoutClass
+	let linkClass =
+		depth === 0 ? 'card:2xs font:md maki:inline:2xs' : 'card:2xs font:md'
 </script>
 
-<ul id={`${id}-depth-${depth}`} class={`${layoutClass} ${align} ${depthClass}`}>
-	{#each items as item}
+<ul
+	{id}
+	class={`${containerClass} ${gridClass} ${depthClass}`}
+	data-testid={id}
+>
+	{#each items as item (item.slug)}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
-		<li aria-current={current(slug) ? 'page' : undefined}>
-			<a data-sveltekit-preload-data href={format.formatHref(path, slug)} class={asset}>
-				{title}
-			</a>
-			{#if subItems}
-				<svelte:self
-					items={subItems}
-					path={format.formatHref(path, slug)}
-					id={`${id}-${slug}`}
-					{layout}
-					{size}
-					{align}
-					depth={depth + 1}
-				/>
+		{@const assetClass = asset ? asset : ''}
+		{@const itemClass = !subItems ? `${assetClass} ${alignClass}` : alignClass}
+		{@const reveal = {[slug]: DEFAULT_REVEAL_STATE}}
+		<li
+			aria-current={$page.url.pathname === format.formatHref(path, slug)
+				? 'page'
+				: undefined}
+			class={$page.url.pathname === format.formatHref(path, slug)
+				? `${itemClass} ${colorClass}`
+				: itemClass}
+		>
+			{#if subItems && depth > 0}
+				<ExpandLink
+					{title}
+					{reveal}
+					{slug}
+					asset={assetClass}
+					href={format.formatHref(path, slug)}
+					size="2xs"
+				>
+					<svelte:self
+						items={subItems}
+						path={format.formatHref(path, slug)}
+						id={`${id}-${slug}`}
+						{layout}
+						{size}
+						{align}
+						depth={depth + 1}
+					/>
+				</ExpandLink>
+			{:else}
+				<a
+					data-sveltekit-preload-data
+					href={format.formatHref(path, slug)}
+					class={linkClass}
+				>
+					{title}
+				</a>
+				{#if subItems}
+					<svelte:self
+						items={subItems}
+						path={format.formatHref(path, slug)}
+						id={`${id}-${slug}`}
+						{layout}
+						{size}
+						{align}
+						depth={depth + 1}
+					/>
+				{/if}
 			{/if}
 		</li>
 	{/each}

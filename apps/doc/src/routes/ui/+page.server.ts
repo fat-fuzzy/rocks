@@ -1,7 +1,8 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 
-import {constants, forms} from '@fat-fuzzy/ui'
+import {constants} from '@fat-fuzzy/ui'
+import {forms} from '@fat-fuzzy/playbook'
 
 const {DsTabsUpdate, DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
 const {TABS, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = constants
@@ -18,10 +19,12 @@ export const actions = {
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
-		cookies.set('fat-fuzzy-ui-context-reveal', settingsReveal.toString(), {path: '/'})
+		cookies.set('fat-fuzzy-ui-context-reveal', settingsReveal.toString(), {
+			path: '/',
+		})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo);
+			redirect(303, redirectTo)
 		}
 		return {success: true}
 	},
@@ -40,7 +43,7 @@ export const actions = {
 		cookies.set('fat-fuzzy-ui-state', state.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo);
+			redirect(303, redirectTo)
 		}
 
 		return {success: true}
@@ -60,7 +63,7 @@ export const actions = {
 		cookies.set('fat-fuzzy-ui-styles', styles.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo);
+			redirect(303, redirectTo)
 		}
 
 		return {success: true}
@@ -80,7 +83,7 @@ export const actions = {
 		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo);
+			redirect(303, redirectTo)
 		}
 
 		return {success: true}

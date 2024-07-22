@@ -1,37 +1,70 @@
-nav {
-	display: flex;
-}
-
 nav ul {
 	list-style: none;
-	margin: 0;
-	/* width: 100%; */
-	padding: 0;
+	padding-inline: 0;
+	margin-inline: 0;
+}
+
+nav > ul {
+	padding-block: var(--ui-size);
 }
 
 /* == Keep nav links to one line with ellipsis == */
 nav li {
 	/* width: 100%; */
-	max-width: calc(var(--sidebar-width) - var(--outline-offset));
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding: 0 var(--outline-offset);
+	padding: calc(var(--size-base-3xs) / var(--size-ratio-md))
+		var(--size-base-3xs);
 	margin-block: 0;
+	line-height: var(--font-leading-nav);
+}
+
+nav > ul ul li:has(ul) {
+	padding-inline-start: var(--outline-offset-settings);
+	padding-block-end: var(--outline-offset-settings);
 }
 
 nav li a {
-	font-weight: var(--font-weight-semibold);
+	--border-radius-base: 0;
 	max-width: 100%;
+	font-weight: var(--font-weight-link);
 	font-size: var(--font-size-ui);
-	line-height: 1;
 	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
 	overflow: hidden;
 	text-decoration: none;
+	margin-inline: var(--size-base-2xs);
+	min-width: 1em;
+	margin: var(--outline-offset-nav);
+	inline-size: 100%;
+}
+
+[class*='reveal-nav'] {
+	container-type: inline-size;
+	inline-size: 100%;
+
+	nav > form {
+		padding: var(--outline-offset-nav);
+		inline-size: 100%;
+	}
+
+	nav > form > [aria-expanded] {
+		border-radius: 0;
+	}
+
+	.collapsed ul {
+		block-size: 0;
+
+		> * {
+			block-size: 0;
+			padding: 0;
+			margin: 0;
+		}
+	}
 }
 
 nav a:hover {
-	--lightness: var(--color-lightness-100);
+	--lightness: var(--color-lightness-300);
 	--lightness-contrast: var(--color-lightness-400);
 }
 
@@ -40,18 +73,19 @@ nav a:focus {
 }
 
 nav li a:visited {
-	--lightness: var(--color-lightness-100);
+	--lightness: var(--color-lightness-500);
 	--lightness-contrast: var(--color-lightness-500);
 	font-weight: var(--font-weight-semibold);
 }
 
 /* == RevealNav (tree-like navigation menus) == */
 ul.depth-1 {
-	padding-inline-start: var(---ui-size-lg);
+	--gap: 0;
+	padding-inline-start: 0;
 }
 
 ul.depth-2 {
-	padding-inline-start: calc(2 * var(--ui-size));
+	padding-inline: calc(2 * var(--ui-size-sm)) var(--ui-size);
 }
 
 ul.depth-3 {
@@ -62,25 +96,6 @@ ul.depth-4 {
 	padding-inline-start: calc(4 * var(--ui-size));
 }
 
-/* Active Link */
-nav li[aria-current='page'] {
-	--hue: var(--color-theme-primary);
-	background-color: var(--shade);
-}
-
-/* Active Link */
-nav li[aria-current='page'] > a,
-nav li[aria-current='page'] > a:visited {
-	text-decoration-color: var(--bg-color);
-}
-
-/* Sidebar active links */
-[class^='l:sidebar'] nav li[aria-current='page'] > a {
-	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-500);
-	padding-inline: var(--ui-size);
-}
-
 /* override Active Link styles for top level link */
 ul.depth-0 > li > a {
 	font-family: var(--font-family-heading);
@@ -89,17 +104,82 @@ ul.depth-0 > li > a {
 
 /* == Link Overrides == */
 
-/* == Override global <a> hover styles in nav and header <a> == */
-nav a:hover {
-	background-color: initial;
+/* Active Link */
+nav li[aria-current='page'] {
+	/* Active Link */
+
+	ul.depth-1 {
+		--lightness: var(--lightness-base);
+		--lightness-contrast: var(--lightness-contrast-base);
+		--chroma: var(--chroma-base);
+		--chroma-contrast: var(--chroma-contrast-base);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		color: var(--ink);
+		background-color: var(--shade);
+	}
+
+	> a {
+		text-decoration-color: var(--accent);
+	}
+	> ul a {
+		text-decoration-color: var(--accent);
+	}
 }
 
 /* == Override heading styles for headings inside links == */
 a[class*='card'] {
 	text-decoration: none;
+	margin-inline-end: 0;
 }
 
 /* == Override heading styles for headings inside links == */
 a[class*='card']:hover > *:not(.icon) {
 	text-decoration: underline;
+}
+
+[class*='reveal-nav:'] {
+	flex-basis: var(--sidebar-width);
+}
+
+[class*='reveal-nav:'].collapsed {
+	--sidebar-width: calc(
+		var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
+			var(--outline-offset-settings) * 2
+	);
+}
+
+.reveal-nav\:2xs {
+	container-name: reveal-nav-2xs;
+	--sidebar-width: var(--layout-sidebar-2xs);
+}
+
+.reveal-nav\:xs {
+	container-name: reveal-nav-xs;
+	--sidebar-width: var(--layout-sidebar-xs);
+}
+
+.reveal-nav\:sm {
+	container-name: reveal-nav-sm;
+	--sidebar-width: var(--layout-sidebar-sm);
+}
+
+.reveal-nav\:md {
+	container-name: reveal-nav-md;
+	--sidebar-width: var(--layout-sidebar-md);
+}
+
+.reveal-nav\:lg {
+	container-name: reveal-nav-lg;
+	--sidebar-width: var(--layout-sidebar-lg);
+}
+
+.reveal-nav\:xl {
+	container-name: reveal-nav-xl;
+	--sidebar-width: var(--layout-sidebar-xl);
+}
+
+.reveal-nav\:2xl {
+	container-name: reveal-nav-2xl;
+	--sidebar-width: var(--layout-sidebar-2xl);
 }

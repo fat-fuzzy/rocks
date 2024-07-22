@@ -1,4 +1,6 @@
 /* == Layout == */
+/* Shared Scale styles */
+@import './scale.css';
 @import './text.css'; /* Use for text content width */
 @import './stack.css'; /* Use for stacked column content */
 @import './sidebar.css'; /* Use for sidebar layouts = layouts containing two children: "main" and "side" */
@@ -18,12 +20,9 @@
 @import './card.css'; /* Use for displaying self-contained content items */
 @import './reveal.css'; /* Use for displaying hidden content with a button action */
 @import './reveal-auto.css'; /* Use for displaying hidden content in response to a container breakpoint */
-@import './reveal-fixed.css'; /* Use for displaying hidden content in response to a button action */
+@import './reveal-sticky.css'; /* Use for displaying hidden content in response to a button action */
 @import './details.css'; /* Use to style <details> and <summary> elements */
 @import './shapes.css'; /* Use to style geometric shapes */
-
-/* Shared Scale styles */
-@import './scale.css';
 
 /* Other Layout utilities */
 @import './overflow.css';

@@ -1,8 +1,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-BlackItalic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-BlackItalic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-BlackItalic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-BlackItalic.woff') format('woff');
 	font-weight: 900;
 	font-style: italic;
 	font-display: swap;
@@ -11,8 +11,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-Bold.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-Bold.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-Bold.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-Bold.woff') format('woff');
 	font-weight: bold;
 	font-style: normal;
 	font-display: swap;
@@ -21,8 +21,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-Black.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-Black.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-Black.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-Black.woff') format('woff');
 	font-weight: 900;
 	font-style: normal;
 	font-display: swap;
@@ -31,8 +31,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-BoldItalic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-BoldItalic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-BoldItalic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-BoldItalic.woff') format('woff');
 	font-weight: bold;
 	font-style: italic;
 	font-display: swap;
@@ -41,8 +41,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-LightItalic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-LightItalic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-LightItalic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-LightItalic.woff') format('woff');
 	font-weight: 300;
 	font-style: italic;
 	font-display: swap;
@@ -51,8 +51,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-Medium.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-Medium.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-Medium.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-Medium.woff') format('woff');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
@@ -61,8 +61,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-ExtraLightItalic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-ExtraLightItalic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-ExtraLightItalic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-ExtraLightItalic.woff') format('woff');
 	font-weight: 200;
 	font-style: italic;
 	font-display: swap;
@@ -71,8 +71,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-Italic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-Italic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-Italic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-Italic.woff') format('woff');
 	font-weight: normal;
 	font-style: italic;
 	font-display: swap;
@@ -81,8 +81,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-Light.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-Light.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-Light.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-Light.woff') format('woff');
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
@@ -91,8 +91,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-ExtraBold.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-ExtraBold.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-ExtraBold.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-ExtraBold.woff') format('woff');
 	font-weight: bold;
 	font-style: normal;
 	font-display: swap;
@@ -101,8 +101,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-ExtraLight.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-ExtraLight.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-ExtraLight.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-ExtraLight.woff') format('woff');
 	font-weight: 200;
 	font-style: normal;
 	font-display: swap;
@@ -111,8 +111,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-ExtraBoldItalic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-ExtraBoldItalic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-ExtraBoldItalic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-ExtraBoldItalic.woff') format('woff');
 	font-weight: bold;
 	font-style: italic;
 	font-display: swap;
@@ -121,8 +121,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-Regular.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-Regular.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-Regular.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-Regular.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
@@ -131,8 +131,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-SemiBoldItalic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-SemiBoldItalic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-SemiBoldItalic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-SemiBoldItalic.woff') format('woff');
 	font-weight: 600;
 	font-style: italic;
 	font-display: swap;
@@ -141,8 +141,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-MediumItalic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-MediumItalic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-MediumItalic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-MediumItalic.woff') format('woff');
 	font-weight: 500;
 	font-style: italic;
 	font-display: swap;
@@ -151,8 +151,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-Thin.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-Thin.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-Thin.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-Thin.woff') format('woff');
 	font-weight: 100;
 	font-style: normal;
 	font-display: swap;
@@ -161,8 +161,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-SemiBold.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-SemiBold.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-SemiBold.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-SemiBold.woff') format('woff');
 	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
@@ -171,8 +171,8 @@
 @font-face {
 	font-family: 'Trirong';
 	src:
-		url('fonts/woff/Trirong/Trirong-ThinItalic.woff2') format('woff2'),
-		url('fonts/woff/Trirong/Trirong-ThinItalic.woff') format('woff');
+		url('/fonts/woff/Trirong/Trirong-ThinItalic.woff2') format('woff2'),
+		url('/fonts/woff/Trirong/Trirong-ThinItalic.woff') format('woff');
 	font-weight: 100;
 	font-style: italic;
 	font-display: swap;

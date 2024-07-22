@@ -1,29 +1,51 @@
-.feedback {
-	--hue: var(--hue-semantic, var(--color-semantic-info));
-	color: var(--ink);
+[class*='feedback:'][class*='status:']:where(
+		.feedback\:form,
+		.feedback\:prose
+	) {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: var(--ui-size-sm);
+}
+
+:where(p, label, input) + [class*='feedback:'] {
+	margin-block-start: var(--ui-size);
+}
+
+[class*='feedback:']:not(.feedback\:code) {
+	--color-accent: var(--accent-semantic, var(--accent));
+	--color-bg: var(--shade-semantic, var(--shade));
+	--color-ink: var(--ink-semantic, var(--ink));
+	color: var(--color-ink);
 	font-size: var(--font-size);
-	padding: var(--ui-size-lg);
-	border: var(--border-width-xl) solid var(--shade);
-	background-color: var(--shade);
+	padding: var(--ui-size);
+	border: var(--border-width-xl) solid var(--color-accent);
+	background-color: var(--color-bg);
+
+	.status {
+		font-family: var(--font-family-heading);
+		font-size: var(--font-size);
+		font-weight: var(--font-weight-ui);
+		line-height: 1.35;
+	}
+
+	.message {
+		margin-inline-start: 0;
+	}
 }
 
-p + .feedback {
-	margin-block-start: var(--ui-size-lg);
-}
-
-.feedback .status {
-	font-family: var(--font-family-heading);
-	font-size: var(--font-size);
-	font-weight: var(--font-weight-ui);
-	line-height: 1.35;
-}
-
-.feedback.fill {
+[class*='feedback:']:not(.feedback\:code).variant\:fill {
+	border: var(--border-width-xl) solid var(--color-accent);
 	box-shadow: var(--shadow-md);
 }
 
-.feedback.outline,
-.feedback.bare {
+[class*='feedback:']:not(.feedback\:code).variant\:outline {
+	background-color: var(--color-bg);
 	box-shadow: unset;
-	background-color: var(--bg-color);
+}
+
+[class*='feedback:']:not(.feedback\:code).variant\:bare {
+	background-color: var(--color-bg);
+	border-color: var(--color-bg);
+	box-shadow: unset;
 }

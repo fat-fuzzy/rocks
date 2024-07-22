@@ -4,10 +4,10 @@
 }
 
 .tags li {
-	color: var(--current-color);
+	color: var(--ink);
 	text-align: center;
-	border-radius: var(--radius-lg);
+	border-radius: var(--border-radius-lg);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
-	font-size: var(--font-size);
+	font-size: var(--font-size-small);
 }

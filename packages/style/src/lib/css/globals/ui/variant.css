@@ -4,17 +4,32 @@
  - hue
 */
 [class*=':fill'] {
-	--border-color: var(--shade);
+	--color-accent: var(--shade);
 }
 
 [class*=':outline'] {
-	--border-color: var(--ink);
-	border: var(--border-width-md) solid var(--ink);
+	--color-accent: var(--accent, var(--ink));
 	background-color: inherit;
 }
 
+[class*=':outline']:not(label, pre) {
+	--color-accent: var(--accent, var(--ink));
+	border: var(--border-width-md) solid var(--color-accent);
+}
+
 [class*=':bare'] {
-	--border-color: var(--shade);
-	border: var(--border-width-md) solid var(--bg-color);
+	--border-color: var(--color-bg);
+	border: var(--border-width-md) solid var(--border-color);
 	background-color: inherit;
+}
+
+[class*=':outline'][class*='card'],
+[class*=':bare'][class*='card'] {
+	background-color: var(--shade);
+}
+
+[class*=':bare'][class*='card'] {
+	--border-color: oklch(
+		var(--lightness-surface-2) var(--chroma-contrast) var(--hue)
+	);
 }

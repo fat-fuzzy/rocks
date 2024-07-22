@@ -4,6 +4,7 @@
 		"nul": {"$value": "0"},
 		"base": {
 			"initial": {"$value": "1rem"},
+			"3xs": {"$value": "{scale.base.04}"},
 			"2xs": {"$value": "{scale.base.03}"},
 			"xs": {"$value": "{scale.base.02}"},
 			"sm": {"$value": "{scale.base.01}"},
@@ -22,45 +23,39 @@
 			"2xl": {"$value": "{size.base.2xs}"}
 		},
 		"ratio": {
-			"sm": {"$value": "1.15"},
+			"xs": {"$value": "1.15"},
+			"sm": {"$value": "1.25"},
 			"md": {"$value": "1.5"},
 			"lg": {"$value": "2.75"}
 		},
-		"icon": {
-			"emoji": {
-				"2xs": {"$value": "{scale.base.03}"},
-				"xs": {"$value": "{scale.base.02}"},
-				"sm": {"$value": "{scale.base.01}"},
-				"md": {"$value": "{scale.base.00}"},
-				"lg": {"$value": "{scale.base.10}"},
-				"xl": {"$value": "{scale.base.20}"},
-				"2xl": {"$value": "{scale.base.30}"}
+		"ui": {
+			"header": {
+				"height": {"$value": "{scale.base.30}"},
+				"max-height": {"$value": "30vh"},
+				"icon-height": {"$value": "2.25rem"},
+				"margin": {"$value": "calc(var(--gap) / 2)"}
 			},
-			"svg": {
-				"2xs": {"$value": "{scale.base.03}"},
-				"xs": {"$value": "{scale.base.02}"},
-				"sm": {"$value": "{scale.base.01}"},
-				"md": {"$value": "{scale.base.00}"},
-				"lg": {"$value": "{scale.base.10}"},
-				"xl": {"$value": "{scale.base.20}"},
-				"2xl": {"$value": "{scale.base.30}"}
+			"footer": {
+				"height": {
+					"$value": "var(--font-size-body)"
+				}
 			}
 		}
 	},
 	"scale": {
 		"$type": "dimension",
 		"base": {
-			"05": {"$value": "calc(var(--scale-base-04) / var(--size-ratio-md))"},
-			"04": {"$value": "calc(var(--scale-base-03) / var(--size-ratio-md))"},
-			"03": {"$value": "calc(var(--scale-base-02) / var(--size-ratio-md))"},
-			"02": {"$value": "calc(var(--scale-base-01) / var(--size-ratio-md))"},
-			"01": {"$value": "calc(var(--scale-base-00) / var(--size-ratio-md))"},
+			"05": {"$value": "calc(var(--scale-base-04) / var(--size-ratio-sm))"},
+			"04": {"$value": "calc(var(--scale-base-03) / var(--size-ratio-sm))"},
+			"03": {"$value": "calc(var(--scale-base-02) / var(--size-ratio-sm))"},
+			"02": {"$value": "calc(var(--scale-base-01) / var(--size-ratio-sm))"},
+			"01": {"$value": "calc(var(--scale-base-00) / var(--size-ratio-sm))"},
 			"00": {"$value": "{size.base.initial}"},
-			"10": {"$value": "calc(var(--scale-base-00) * var(--size-ratio-md))"},
-			"20": {"$value": "calc(var(--scale-base-10) * var(--size-ratio-md))"},
-			"30": {"$value": "calc(var(--scale-base-20) * var(--size-ratio-md))"},
-			"40": {"$value": "calc(var(--scale-base-30) * var(--size-ratio-md))"},
-			"50": {"$value": "calc(var(--scale-base-40) * var(--size-ratio-md))"}
+			"10": {"$value": "calc(var(--scale-base-00) * var(--size-ratio-sm))"},
+			"20": {"$value": "calc(var(--scale-base-10) * var(--size-ratio-sm))"},
+			"30": {"$value": "calc(var(--scale-base-20) * var(--size-ratio-sm))"},
+			"40": {"$value": "calc(var(--scale-base-30) * var(--size-ratio-sm))"},
+			"50": {"$value": "calc(var(--scale-base-40) * var(--size-ratio-sm))"}
 		},
 		"major-third": {
 			"03": {"$value": "0.6"},

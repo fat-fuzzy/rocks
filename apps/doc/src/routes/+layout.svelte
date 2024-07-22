@@ -1,53 +1,69 @@
 <script lang="ts">
-	import {onDestroy} from 'svelte'
-	import '$lib/styles/css/tokens/main.css'
-	import '@fat-fuzzy/ui/csscore'
+	import {onMount, type Snippet} from 'svelte'
+	import '@fat-fuzzy/style'
 
 	import {page} from '$app/stores'
-	import {links, itemsSettings} from '$data/nav'
-	import {recipes, stores, utils, constants} from '@fat-fuzzy/ui'
+	import {links} from '$data/nav'
+	import {recipes, utils, constants} from '@fat-fuzzy/ui'
+	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {Header} = recipes
-	const {settings} = stores
-	const {DEFAULT_APP_SETTINGS, APP_LINKS} = constants
 
-	let appSettings = $page.data.app || DEFAULT_APP_SETTINGS
+	type Props = {
+		sidebar?: Snippet
+		children?: Snippet
+	}
 
-	const localStores = [
-		settings.app.subscribe((value) => {
-			if (value) {
-				appSettings = value
-			}
-		}),
-	]
+	let {children}: Props = $props()
 
-	$: brightness = appSettings.brightness
-	$: contrast = appSettings.contrast
-	$: pageClass = utils.format.getClassNameFromUrl($page.url)
-	$: layoutClass = APP_LINKS.find((link) => link.slug === pageClass)?.layout ?? ''
-	$: mainClass = `${pageClass} ${brightness} bg:${contrast} l:page:${layoutClass}`
-	$: headerClass = `header-app ${brightness} bg:${contrast}`
-	$: footerClass = `l:center font:sm ${brightness} bg:${contrast}`
+	let app = fatFuzzyStore.app
 
-	onDestroy(() => {
-		localStores.forEach((unsubscribe) => unsubscribe())
+	let brightness = $derived(app.settings.brightness)
+	let contrast = $derived(app.settings.contrast)
+	let pageClass = $derived(utils.format.getClassNameFromPathname($page.url.pathname))
+	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
+	let footerClass = "font:sm card:2xl color:primary"
+
+	function updateSettings(event) {
+		switch (event.id) {
+			case 'brightness':
+				app.settings.brightness = event.value
+				break
+			case 'contrast':
+				app.settings.contrast = event.value
+				break
+			default:
+				break
+		}
+	}
+
+	onMount(() => {
+		if($page.data.app) {
+			fatFuzzyStore.app = $page.data.app
+		}
 	})
 </script>
 
-<Header
-	id="doc"
-	className={headerClass}
-	actionPath="/"
-	formaction="toggleNav"
-	redirect={$page.url.pathname}
-	items={{links, settings: itemsSettings}}
-	breakpoint="xs"
-/>
+<div class={themeClass}>
+	<Header
+		id="doc"
+		path={$page.url.pathname}
+		actionPath="/"
+		formaction="toggleNav"
+		items={{links, settings: {...constants.APP_SETTINGS, onupdate: updateSettings}}}
+		breakpoint="sm"
+	/>
+	<main id="main">
+		{#if children}
+			{@render children()}
+		{:else}
+			<p>Nothing to see here</p>
+		{/if}
+	</main>
 
-<main class={mainClass}>
-	<slot />
-</main>
-
-<footer class={footerClass}>
-	<p>👉 Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
+	<footer class={footerClass}>
+		<p>
+			Illustrations & content by Patricia Boh.
+		</p>
+	</footer>
+</div>

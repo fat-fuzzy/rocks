@@ -1,183 +1,69 @@
-pre,
-code {
-	font-family: var(--font-family-code);
+pre {
+	--hue: var(--color-theme-primary);
+	--lightness: var(--color-lightness-600);
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma: var(--color-chroma-600);
+	--chroma-contrast: var(--color-chroma-000);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	--color-bg: var(--shade);
+	--color-ink: var(--ink);
+	--color-accent: var(--accent);
+	color: var(--color-ink);
+	background-color: var(--color-bg);
+	padding-inline: var(--ui-size) var(--ui-size-lg);
+	padding-block: var(--ui-size);
+	border: var(--border-width-xl) solid var(--color-accent);
+	max-inline-size: 100%;
+	overflow: auto;
 }
 
 kbd {
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
 	padding-inline: var(--ui-size);
 	margin-inline: calc(var(--ui-size) / 2);
-	border: var(--border-width) solid var(--current-gray);
-	border-radius: var(--radius-base);
-}
-
-/* Allow space for scrollbar on macOS */
-pre,
-code[class^='language-'] {
-	overflow: auto;
-	padding-inline: var(--ui-size) var(--ui-size-lg);
-	padding-block: var(--ui-size);
-}
-
-pre,
-code[class^='language-'],
-pre.default {
-	--current-color: var(--color-light);
-	--current-bg-color: var(--color-gray-5);
-	--current-border-color: var(--current-gray);
-	color: var(--current-color);
-	background-color: var(--current-bg-color);
-	border-color: var(--current-border-color);
+	border: var(--border-width) solid var(--color-accent);
+	border-radius: var(--border-radius-base);
 }
 
 code:not([class^='language-']) {
-	--current-color: var(--color-dark);
-	color: var(--current-color);
-	background-color: var(--current-bg-contrast);
 	border: none;
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
-	padding-inline: calc(var(--ui-size) / 2);
-	border-radius: var(--radius-base);
+	padding-inline: 0;
+	border-radius: var(--border-radius-base);
+	background-color: var(--color-bg);
 }
 
-pre.bare {
-	--current-bg-color: var(--color-gray-5);
-	border-color: var(--current-bg-color);
+pre[class*='feedback:'] {
+	--ink-semantic: oklch(
+		var(--color-lightness-200) var(--color-chroma-200) var(--hue-semantic)
+	);
+	--color-accent: var(--accent-semantic, var(--accent));
+	--color-bg: var(--shade);
+	--color-ink: var(--ink-semantic, var(--ink));
+	color: var(--color-ink);
+	background-color: var(--color-bg);
+	border: var(--border-width-xl) solid var(--color-accent);
 }
 
-.night {
-	code:not([class^='language-']) {
-		--current-color: var(--color-light);
-	}
-
-	pre,
-	code,
-	pre.default {
-		--current-color: var(--color-light);
-		--current-bg-color: var(--current-bg-contrast);
-		--current-border-color: var(--color-gray-4);
-	}
-
-	pre[class*='bg:default:'].bare {
-		--current-color: var(--color-light);
-		--current-bg-color: var(--current-bg-contrast);
-		--current-border-color: var(--current-bg-color);
-	}
-
-	&.bg\:contrast,
-	&.bg\:blend .bg\:contrast {
-		pre,
-		pre.default,
-		pre[class*='bg:default'].outline,
-		pre[class*='bg:default'].default {
-			--current-color: var(--color-light);
-			--current-bg-color: var(--color-gray-5);
-			--current-border-color: var(--color-gray-4);
-		}
-		pre.bare,
-		pre[class*='bg:default:'].bare {
-			--current-bg-color: var(--color-gray-5);
-			--current-border-color: var(--current-bg-color);
-		}
-
-		kbd {
-			border-color: var(--color-light-3);
-		}
-
-		code:not([class^='language-']) {
-			background-color: var(--color-gray-5);
-		}
-	}
-
-	&.bg\:blend,
-	&.bg\:contrast .bg\:blend {
-		pre,
-		pre.default,
-		pre[class*='bg:default'].outline,
-		pre[class*='bg:default'].default {
-			--current-color: var(--color-light);
-			--current-bg-color: var(--current-bg-contrast);
-			--current-border-color: var(--color-gray-4);
-		}
-		pre.bare,
-		pre[class*='bg:default:'].bare {
-			--current-border-color: var(--current-bg-color);
-		}
-	}
+pre[class*='feedback:'].variant\:fill {
+	box-shadow: var(--shadow-md);
+	color: var(--color-ink);
+	border-color: var(--color-accent);
+	background-color: var(--color-bg);
 }
 
-.day {
-	pre,
-	pre.default,
-	pre[class*='bg:default'].outline,
-	pre[class*='bg:default'].default {
-		--current-bg-color: var(--color-gray-5);
-		--current-border-color: var(--color-gray-4);
-	}
-
-	pre.bare,
-	pre[class*='bg:default'].bare {
-		--current-border-color: var(--current-bg-color);
-	}
+pre[class*='feedback:'].variant\:outline {
+	box-shadow: unset;
+	color: var(--color-ink);
+	border-color: var(--color-accent);
+	background-color: var(--color-bg);
 }
 
-.day,
-.night {
-	pre[class*='info'] {
-		--current-color: var(--current-info-lightest);
-		--current-border-color: var(--current-info);
-	}
-
-	pre[class*='success'] {
-		--current-color: var(--current-success-lighter);
-		--current-border-color: var(--current-success);
-	}
-
-	pre[class*='warning'] {
-		--current-color: var(--current-warning-lighter);
-		--current-border-color: var(--current-warning);
-	}
-
-	pre[class*='error'] {
-		--current-color: var(--current-error-lightest);
-		--current-border-color: var(--current-error);
-	}
-
-	&.bg\:contrast,
-	&.bg\:blend {
-		pre[class*='info'] {
-			--current-color: var(--current-info-lightest);
-			--current-border-color: var(--current-info);
-		}
-
-		pre[class*='success'] {
-			--current-color: var(--current-success-lighter);
-			--current-border-color: var(--current-success);
-		}
-
-		pre[class*='warning'] {
-			--current-color: var(--current-warning-lighter);
-			--current-border-color: var(--current-warning);
-		}
-
-		pre[class*='error'] {
-			--current-color: var(--current-error-lightest);
-			--current-border-color: var(--current-error);
-		}
-
-		.feedback[class*='info'].bare:not(pre),
-		.feedback[class*='success'].bare:not(pre),
-		.feedback[class*='warning'].bare:not(pre),
-		.feedback[class*='error'].bare:not(pre) {
-			--current-border-color: var(--current-bg-color);
-		}
-	}
-}
-
-.night,
-.day {
-	pre > code {
-		color: inherit;
-		background-color: inherit;
-	}
+pre[class*='feedback:'].variant\:bare {
+	color: var(--color-ink);
+	background-color: var(--color-bg);
+	border-color: var(--color-bg);
+	box-shadow: unset;
 }

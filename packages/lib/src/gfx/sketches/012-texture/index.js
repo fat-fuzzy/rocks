@@ -18,12 +18,11 @@ import {
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
-let host = 'http://localhost:5173'
-let imageAssetsPath = 'src/lib/images'
+let imageAssetsPath = 'images'
 let filename = 'plants.png'
 let imgWidth = 620
 let imgHeight = 518
-let url = `${host}/${imageAssetsPath}/${filename}`
+let url = `/${imageAssetsPath}/${filename}`
 let gl
 let program
 let programInfo = {
@@ -73,8 +72,7 @@ let meta = {
 			'grba',
 		],
 		blur: [1, 2, 3],
-
-	}
+	},
 }
 
 function convertToChannelOrder(str) {

@@ -6,18 +6,24 @@ table {
 }
 
 th {
+	--lightness: var(--color-lightness-200);
 	padding: var(--ui-size) var(--ui-size-lg);
-	background-color: var(--current-bg-contrast);
+	background-color: var(--shade);
 	text-align: center;
 }
 
 td {
-	padding: calc(var(--ui-size) / var(--ratio))
-		calc(var(--ui-size-lg) / var(--ratio));
-	border: 1px solid var(--current-bg-contrast);
+	padding: calc(var(--ui-size) / var(--size-ratio-md))
+		calc(var(--ui-size-lg) / var(--size-ratio-md));
+	border: 1px solid var(--accent);
+	color: var(--ink);
 }
 
 tr:hover td {
-	color: var(--color-dark);
-	background-color: var(--current-primary-lightest);
+	--lightness: var(--lightness-base);
+	--lightness-contrast: var(--lightness-contrast-base);
+	--chroma: var(--chroma-base);
+	--chroma-contrast: var(--chroma-contrast-base);
+	color: var(--ink);
+	background-color: var(--shade);
 }

@@ -16,13 +16,13 @@
 		"cz": "cz --no-verify"
 	},
 	"devDependencies": {
-		"@changesets/cli": "^2.26.2",
+		"@changesets/cli": "^2.27.7",
 		"@fat-fuzzy/config": "workspace:*",
 		"commitizen": "^4.3.0",
 		"cz-conventional-changelog": "^3.3.0",
-		"husky": "^8.0.0",
-		"prettier": "^3.0.3",
-		"prettier-plugin-svelte": "^3.0.3",
+		"husky": "^8.0.3",
+		"prettier": "^3.3.3",
+		"prettier-plugin-svelte": "^3.2.5",
 		"turbo": "1.13.3"
 	},
 	"packageManager": "pnpm@9.0.4",

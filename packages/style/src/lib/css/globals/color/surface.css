@@ -1,11 +1,38 @@
-.surface\:color {
-	--surface-bg: var(--shade);
-	--surface-ink: var(--ink);
-	color: var(--surface-bg);
-	background-color: var(--surface-ink);
+[class*='surface:0'] {
+	--lightness: var(--lightness-base);
+	--lightness-contrast: var(--lightness-contrast-base);
+	--chroma: var(--chroma-surface-1);
+	--chroma-contrast: var(--chroma-surface-1-contrast);
+}
+
+[class*='surface:1'] {
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
+	--chroma: var(--chroma-surface-1);
+	--chroma-contrast: var(--chroma-surface-1-contrast);
+}
+
+[class*='surface:2'] {
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-2-contrast);
+	--chroma: var(--chroma-surface-2);
+	--chroma-contrast: var(--chroma-surface-2-contrast);
+}
+
+[class*='surface:3'] {
+	--lightness: var(--lightness-surface-3);
+	--lightness-contrast: var(--lightness-surface-3-contrast);
+	--chroma: var(--chroma-surface-3);
+	--chroma-contrast: var(--chroma-surface-3-contrast);
+}
+
+[class*='surface:'] {
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	color: var(--ink);
+	background-color: var(--shade);
 }
 
 [class*='dotted'] {
-	--border-color: var(--ink);
-	border: var(--border-width-md) dotted var(--border-color);
+	border: var(--border-width-md) dotted var(--color-accent, var(--color-bg));
 }

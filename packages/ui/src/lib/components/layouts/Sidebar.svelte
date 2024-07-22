@@ -1,17 +1,21 @@
 <script lang="ts">
-	export let size = ''
-	export let align = ''
-	export let theme = ''
-	export let threshold: string | undefined = undefined
+	import type {SidebarLayoutProps} from './layout.types.js'
 
-	$: mainClass = threshold ? `l:main th:${threshold}` : 'l:main'
+	let {size, align, threshold, side, main}: SidebarLayoutProps = $props()
+
+	let mainClass = threshold ? `l:main th:${threshold}` : 'l:main'
+	let alignClass = align ? `align:${align}` : ''
 </script>
 
-<div class={`l:sidebar:${size} ${align} ${theme}`}>
+<div class={`l:sidebar:${size} ${alignClass}`}>
 	<div class={`l:side`}>
-		<slot name="side"><!-- optional fallback --></slot>
+		{#if side}
+			{@render side()}
+		{/if}
 	</div>
 	<div class={mainClass}>
-		<slot name="main"><!-- optional fallback --></slot>
+		{#if main}
+			{@render main()}
+		{/if}
 	</div>
 </div>

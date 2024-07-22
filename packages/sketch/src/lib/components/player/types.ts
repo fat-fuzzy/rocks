@@ -14,6 +14,7 @@ export enum PlayerEvent {
 	pause = 'pause',
 	clear = 'clear',
 	stop = 'stop',
+	loadOk = 'loadOk',
 }
 
 export enum PlayerAction {
@@ -56,28 +57,34 @@ export type PlayerTransitionsType = {
 	}
 }
 
-export type PlayerPayload = {event: PlayerEvent; state: PlayerState}
+export type PlayerPayload = {value: string | number; state: string}
 
 export type PlayerSwitchState = {
-	value: PlayerEvent.pause | PlayerEvent.play
+	id: string
+	value: string | number
 	text: string
 	asset: string
 	variant: string
+	state: string
 	onclick?: (payload: PlayerPayload) => void
 }
 
 export const PLAYER_SWITCH: PlayerSwitchType = {
 	active: {
-		value: PlayerEvent.pause,
+		id: 'active',
+		value: PlayerEvent.pause as string,
 		text: 'Pause',
-		asset: 'emoji:pause',
+		asset: 'pause',
 		variant: 'outline',
+		state: 'active',
 	},
 	inactive: {
-		value: PlayerEvent.play,
+		id: 'inactive',
+		value: PlayerEvent.play as string,
 		text: 'Play',
-		asset: 'emoji:play',
+		asset: 'play',
 		variant: 'fill',
+		state: 'inactive',
 	},
 }
 

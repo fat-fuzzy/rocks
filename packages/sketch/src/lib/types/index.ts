@@ -1,6 +1,7 @@
 export enum ControlsState {
 	pristine = 'pristine',
 	updated = 'updated',
+	hidden = 'hidden',
 }
 
 export enum ControlsEvent {
@@ -25,6 +26,8 @@ export enum CanvasEvent {
 	play = 'play',
 	clear = 'clear',
 	stop = 'stop',
+	loadNok = 'loadNok',
+	error = 'error',
 }
 
 export enum CanvasAction {
@@ -108,7 +111,7 @@ export type SceneMeta = {
 
 export type Filters = {
 	channels?: string[]
-	blur?: number
+	blur: number[]
 	convolutions?: string[]
 }
 

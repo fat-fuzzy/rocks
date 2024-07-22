@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {blocks} from '@fat-fuzzy/ui-s5'
+	import {blocks} from '@fat-fuzzy/ui'
 	const {InputRange} = blocks
 
 	type Props = {
@@ -17,7 +17,7 @@
 
 	let {
 		color = '',
-		size = 'xxs',
+		size = '2xs',
 		id = 'fieldOfView',
 		label = 'Field of View',
 		fieldOfView = $bindable(60),

@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/lib",
 	"name": "@fat-fuzzy/lib",
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"description": "Fat Fuzzy Libraries",
 	"main": "package/index.cjs.js",
 	"module": "package/index.esm.js",
@@ -9,8 +9,8 @@
 	"scripts": {
 		"build": "rollup -c",
 		"dev": "rollup -c -w",
-		"pretest": "npm run build",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"pretest": "pnpm build",
+		"test": "echo \"@fat-fuzzy/lib: no tests specified\""
 	},
 	"exports": {
 		"./package.json": "./package.json",
@@ -23,11 +23,11 @@
 		"@fat-fuzzy/config": "workspace:*",
 		"@rollup/plugin-json": "6.0.1",
 		"@rollup/plugin-terser": "^0.4.4",
-		"@typescript-eslint/eslint-plugin": "^6.7.4",
-		"@typescript-eslint/parser": "^6.7.4",
+		"@typescript-eslint/eslint-plugin": "^6.21.0",
+		"@typescript-eslint/parser": "^6.21.0",
 		"rollup": "4.0.2",
-		"tslib": "^2.6.2",
-		"typescript": "^5.2.2"
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.3"
 	},
 	"type": "module",
 	"files": [
