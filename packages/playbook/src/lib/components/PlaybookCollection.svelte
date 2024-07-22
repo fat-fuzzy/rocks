@@ -55,10 +55,10 @@
 <PageMain {title} {description} size="lg">
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
-		<div class="l:main l:flex">
+		<div class="l:main l:flex reverse">
 			<form
 				method="POST"
-				class="tabs flex nowrap"
+				class="tabs maki:inline:lg"
 				action={`${actionPath}?/updateTab&redirectTo=${redirect}`}
 				use:enhance={() => {
 					// prevent default callback from resetting the form
