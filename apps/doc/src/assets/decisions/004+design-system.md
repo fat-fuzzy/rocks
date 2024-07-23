@@ -3,7 +3,7 @@ title: Design System
 date: '2022'
 slug: design-system
 id: '004'
-tags: ['design', 'ui']
+tags: ['ui', 'wip']
 ---
 
 ## Context and Problem

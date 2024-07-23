@@ -28,15 +28,17 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"svelte": "^5.0.0"
+		"svelte": "^5.0.0",
+		"@sveltejs/kit": "^2.0.0",
+		"@fat-fuzzy/lib": "^workspace",
+		"@fat-fuzzy/style": "^workspace"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",
-		"@fat-fuzzy/markdown": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@playwright/test": "^1.45.2",
-		"@sveltejs/adapter-auto": "^3.2.2",
+		"@sveltejs/adapter-cloudflare": "^4.6.1",
 		"@sveltejs/enhanced-img": "^0.3.0",
 		"@sveltejs/kit": "^2.5.18",
 		"@sveltejs/package": "^2.3.2",

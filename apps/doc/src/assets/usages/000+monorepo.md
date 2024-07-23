@@ -1,6 +1,7 @@
 ---
 title: Monorepo
 date: '2024-07-21'
+updated: '2023-07-23'
 slug: monorepo
 id: '000'
 tags: ['example', 'doc', 'monorepo', 'wip']
@@ -8,9 +9,14 @@ tags: ['example', 'doc', 'monorepo', 'wip']
 
 ## Architecture
 
-The initial motivation for this setup was usage of [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces).
+The initial motivation for this monorepo setup was usage of [pnpm](https://pnpm.io/) and [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces).
 
 It evolves when necessary.
+
+### Stack
+
+The main technologies I use to build this project are HTML, CSS, Svelte (with TypeScript), and Markdown.
+I also add the WebGL shaders I write as I continue to learn, and might add a backend at some point.
 
 ### Packages Overview
 
@@ -22,19 +28,7 @@ The repository is organized into three workspaces:
   - This is WIP and in private repos for the moment
 - **packages** : contains UI, web graphics, logic and experiments libraries, as well as common config
 
-## Usage
-
-The packages in this repo can be used together or independently, depending on the use case.
-For example, the package `packages/ui` can be used to build apps in different contexts:
-
-- on a Django app and in a Jupyter Notebook (currently working on a private repo)
-- this documentation is built using the following packages: `style`, `ui`, `playbook` and `sketch`
-
-The package `lib/gfx` package is a package that I use to learn web graphics.
-
-I'm experimenting with data analysis and learning R: I built the `packages/git-poule` script to analyze the work done in this repo. I figured I could use that data as material for my learning, and maybe gain insights to guide future work while at it.
-
-I chose to put all these things in one repository for convenience, to centralize notes and shared libraries.
+You can learn more about individual packages in the [Packages](/doc/usage/packages) section.
 
 ## Requirements
 

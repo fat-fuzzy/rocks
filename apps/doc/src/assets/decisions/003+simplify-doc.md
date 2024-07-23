@@ -3,7 +3,7 @@ title: Simplify doc
 date: '2022'
 slug: simplify-doc
 id: '003'
-tags: ['doc', 'dependencies', 'markdown']
+tags: ['dependencies']
 ---
 
 ## Context and Problem

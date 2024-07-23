@@ -3,7 +3,7 @@
 	import {content} from '@fat-fuzzy/ui'
 
 	const {PageMain} = content
-	const path = '/play'
+	const path = $derived($page.url.pathname)
 
 	let markdown = $page.data.content
 	let title = $derived(markdown.meta.title)

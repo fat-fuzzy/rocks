@@ -40,7 +40,7 @@
 	{/if}
 </header>
 
-<section class="scroll:y">
+<section>
 	{#if children}
 		{@render children()}
 	{/if}

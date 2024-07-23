@@ -3,7 +3,7 @@ title: Document decisions
 date: '2022'
 slug: document-decisions
 id: '000'
-tags: ['architecture', 'doc', 'dependencies']
+tags: ['architecture']
 ---
 
 ## Context and Problem

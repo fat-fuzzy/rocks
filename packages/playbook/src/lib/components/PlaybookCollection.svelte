@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {getContext} from 'svelte'
+	import {getContext, type Snippet} from 'svelte'
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
 	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui'
@@ -17,9 +17,12 @@
 		path: string
 		actionPath: string
 		redirect: string
+		depth: number
+		isPage: boolean
+		children?: Snippet
 	}
 
-	let {category, markdowns, path, actionPath, redirect}: Props = $props()
+	let {category, markdowns, path, actionPath, redirect, depth=1, isPage=true, children}: Props = $props()
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
@@ -52,66 +55,77 @@
 	}
 </script>
 
-<PageMain {title} {description} size="lg">
-	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">{title}</h1>
-		<div class="l:main l:flex reverse">
-			<form
-				method="POST"
-				class="tabs maki:inline:lg"
-				action={`${actionPath}?/updateTab&redirectTo=${redirect}`}
-				use:enhance={() => {
-					// prevent default callback from resetting the form
-					return ({update}) => {
-						update({reset: false})
-					}
-				}}
-			>
-				<ToggleMenu
-					id={`submit.${path}`}
-					items={tabs.map((tab) => {
-						if (tab.value == currentTab.value) {
-							tab.initial = 'active'
-						}
-						return tab
-					})}
-					size="md"
-					layout="flex nowrap"
-					container="card:md"
-					color="primary"
-					shape="round"
-					variant="outline"
-					formaction={`${actionPath}?/updateTab&redirectTo=${path}`}
-					onupdate={handleTabChange}
-					init={handleTabChange}
-				/>
-			</form>
-			{#if currentTab.value === 'demo'}
-				<Api
-					categories={['app']}
-					meta={markdownContent.meta}
-					{path}
-					{actionPath}
-					redirect={$page.url.pathname}
-				/>
-			{/if}
-		</div>
-	{/snippet}
+{#snippet collection()}
+	<Collection
+	{depth}
+	{isPage}
+	components={items}
+	meta={markdownContent.meta}
+	{path}
+	{category}
+	{markdowns}
+	{actionPath}
+	tab={currentTab.value}
+	redirect={$page.url.pathname}
+	>
+	{#if isPage}
+		{@html markdownContent.html}
+	{:else if children}
+		{@render children()}
+	{/if}	
+	</Collection>
+{/snippet}
 
-	{#key category}
-		<Collection
-			depth={1}
-			isPage={true}
-			components={items}
-			meta={markdownContent.meta}
-			{path}
-			{category}
-			{markdowns}
-			{actionPath}
-			tab={currentTab.value}
-			redirect={$page.url.pathname}
-		>
-			{@html markdownContent.html}
-		</Collection>
-	{/key}
-</PageMain>
+{#if isPage}
+	<PageMain {title} {description} size="lg">
+		{#snippet header()}
+			<h1 class="l:side hug maki:block:md">{title}</h1>
+			<div class="l:main l:flex reverse">
+				<form
+					method="POST"
+					class="tabs maki:inline:lg"
+					action={`${actionPath}?/updateTab&redirectTo=${redirect}`}
+					use:enhance={() => {
+						// prevent default callback from resetting the form
+						return ({update}) => {
+							update({reset: false})
+						}
+					}}
+				>
+					<ToggleMenu
+						id={`submit.${path}`}
+						items={tabs.map((tab) => {
+							if (tab.value == currentTab.value) {
+								tab.initial = 'active'
+							}
+							return tab
+						})}
+						size="md"
+						layout="flex nowrap"
+						container="card:md"
+						color="primary"
+						shape="round"
+						variant="outline"
+						formaction={`${actionPath}?/updateTab&redirectTo=${path}`}
+						onupdate={handleTabChange}
+						init={handleTabChange}
+					/>
+				</form>
+				{#if currentTab.value === 'demo'}
+					<Api
+						categories={['app']}
+						meta={markdownContent.meta}
+						{path}
+						{actionPath}
+						redirect={$page.url.pathname}
+					/>
+				{/if}
+			</div>
+		{/snippet}
+		{#key category}
+			{@render collection()}
+		{/key}
+	</PageMain>
+{:else}
+	{@render collection()}
+{/if}
