@@ -1,8 +1,8 @@
 ---
 title: Fat Fuzzy UI
 slug: ui
-category: 'app'
-context: ['app.settings']
+id: '002'
+tags: ['pages', 'doc', 'ui']
 ---
 
 ## Introduction

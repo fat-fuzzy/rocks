@@ -1,4 +1,7 @@
 import assets from '$data/ui'
+import pages from '$data/pages'
+
+const page = 'ui'
 
 export const load = async (event) => {
 	let styles = null
@@ -6,6 +9,7 @@ export const load = async (event) => {
 	let ui = null
 	let sidebar = null
 	let currentTabs = null
+	let content = await pages.fetchMarkdowns(page)
 
 	if (event.locals.dsStyles) {
 		styles = JSON.parse(event.locals.dsStyles)
@@ -24,5 +28,13 @@ export const load = async (event) => {
 	}
 	const markdowns = assets.markdowns
 
-	return {sidebar, styles, context, ui, currentTabs, markdowns}
+	return {
+		sidebar,
+		styles,
+		context,
+		ui,
+		currentTabs,
+		markdowns,
+		content: content.length ? content[0] : {meta: {title: ''}},
+	}
 }
