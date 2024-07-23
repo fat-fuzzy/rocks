@@ -9,7 +9,7 @@ tags: ['example', 'doc', 'packages', 'wip']
 
 ## Contents
 
-This repository contains the following packages :
+This project contains the following packages :
 
 - **config** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
 - **markdown** a utility package for loading markdown files based on [bluwy website markdown package](https://github.com/bluwy/website/tree/master/packages/markdown) (currently unused)
