@@ -97,7 +97,7 @@
 			"heading": {"$value": "1.25"},
 			"ui": {"$value": "1.25"},
 			"nav": {"$value": "2"},
-			"body": {"$value": "1.75"}
+			"body": {"$value": "2"}
 		}
 	}
 }

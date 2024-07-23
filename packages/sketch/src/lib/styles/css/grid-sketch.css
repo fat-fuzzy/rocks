@@ -15,7 +15,7 @@
 		'scene'
 		'context'
 		'debug';
-	padding: var(--ui-size);
+	padding: 0 var(--outline-offset-nav);
 }
 
 .l\:grid\:sketch > .scene {

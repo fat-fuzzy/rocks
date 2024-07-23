@@ -62,8 +62,11 @@
 	</main>
 
 	<footer class={footerClass}>
-		<p>
-			Illustrations & content by Patricia Boh.
-		</p>
+			<details class="l:side l:burrito:md maki:block:2xl">
+				<summary class="card:2xs">About</summary>
+				<p>
+					Website and illustrations by Patricia Boh.
+				</p>
+			</details>
 	</footer>
 </div>

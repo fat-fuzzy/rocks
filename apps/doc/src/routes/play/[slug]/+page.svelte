@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
+	import {dev} from '$app/environment'
 
 	import lib from '@fat-fuzzy/lib'
 	import {content} from '@fat-fuzzy/ui'
@@ -17,12 +18,12 @@
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1>Play</h1>
+		<h1 class="l:side hug maki:block:md">Play</h1>
 		<h2>&nbsp;❤︎ {title}</h2>
 	{/snippet}
 	{#key scene}
 		{#if scene}
-			<Sketch id={`sketch-${scene.meta.id}`} {scene} size="sm" />
+			<Sketch id={`sketch-${scene.meta.id}`} {scene} size="sm" {dev}/>
 		{/if}
 	{/key}
 </PageMain>
