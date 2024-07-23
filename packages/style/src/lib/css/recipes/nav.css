@@ -85,7 +85,8 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
-	padding-inline: calc(2 * var(--ui-size-sm)) var(--ui-size);
+	padding-inline: calc(2 * var(--ui-size-sm)) var(--outline-offset-nav);
+	margin-block: var(--ui-size-sm);
 }
 
 ul.depth-3 {

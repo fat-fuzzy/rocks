@@ -19,7 +19,7 @@
 
 <PageMain {title} {description} size="md" justify="center">
 	{#snippet header()}
-		<div class="l:text:md card:md">
+		<div class="l:text:md">
 			<div class="l:frame">
 				<img src={pageImage.src} alt={pageImage.alt} />
 			</div>
@@ -29,13 +29,15 @@
 
 	<section class="l:center:md">
 		<h2 class="text:center">✨ Highlights</h2>
-		<ul class="l:switcher:sm maki:block:2xl unstyled">
-			<li class={`card:lg text:center emoji:recipes ${variant}`}>
-				<a data-sveltekit-preload-data href="/ui" class="card font:md">UI Library</a>
-			</li>
-			<li class={`card:lg text:center emoji:rainbow ${variant}`}>
-				<a data-sveltekit-preload-data href="/play" class="card font:md">Graphics</a>
-			</li>
-		</ul>
+		<div class="maki:block:2xl">
+			<ul class="l:switcher:sm unstyled">
+				<li class={`card:lg text:center emoji:recipes ${variant}`}>
+					<a data-sveltekit-preload-data href="/ui" class="card font:md">UI Library</a>
+				</li>
+				<li class={`card:lg text:center emoji:rainbow ${variant}`}>
+					<a data-sveltekit-preload-data href="/play" class="card font:md">Graphics</a>
+				</li>
+			</ul>
+		</div>
 	</section>
 </PageMain>

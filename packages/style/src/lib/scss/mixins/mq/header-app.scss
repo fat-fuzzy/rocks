@@ -58,7 +58,8 @@
 
 			a {
 				inline-size: fit-content;
-				padding: var(--ui-size-sm) var(--ui-size-lg) var(--ui-size);
+				padding: var(--ui-size-sm) calc(2 * var(--outline-offset-nav))
+					var(--ui-size);
 			}
 		}
 	}

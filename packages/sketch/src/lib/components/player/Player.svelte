@@ -69,7 +69,7 @@
 	})
 </script>
 
-<menu {id} class={`player l:switcher:2xs w:full hug justify:center`}>
+<menu {id} class={`player l:grid:2xs l:burrito:sm`}>
 	<li>
 		{#key store.playState}
 			<Switch
@@ -79,7 +79,8 @@
 				states={store.playSwitch}
 				{color}
 				{size}
-				shape="square"
+				shape="round"
+				layout="stack"
 				initial={store.playState}
 				disabled={store.getPlayDisabled()}
 				onclick={updatePlayer}
@@ -88,7 +89,7 @@
 			</Switch>
 		{/key}
 	</li>
-	<li class="l:stack:2xs group">
+	<li>
 		<Button
 			id="clear"
 			name="clear"
@@ -97,11 +98,14 @@
 			{size}
 			value="clear"
 			asset="clear"
+			shape="square"
 			onclick={updatePlayer}
 			disabled={store.getClearDisabled()}
 		>
 			Clear
 		</Button>
+	</li>
+	<li>
 		<Button
 			id="stop"
 			name="stop"
@@ -110,6 +114,7 @@
 			{size}
 			value="stop"
 			asset="rect"
+			shape="square"
 			onclick={updatePlayer}
 			disabled={store.getStopDisabled()}
 		>

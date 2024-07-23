@@ -47,6 +47,7 @@
 		padding: 0;
 		margin-inline-start: calc(-1 * var(--gap));
 		max-block-size: calc(100vh - var(--y-axis));
+		max-inline-size: calc(100vw - var(--ui-size-lg));
 		overflow: auto;
 	}
 }

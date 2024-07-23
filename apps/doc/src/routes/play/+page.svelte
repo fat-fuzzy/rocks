@@ -3,28 +3,21 @@
 	import {content} from '@fat-fuzzy/ui'
 
 	const {PageMain} = content
-	const title = 'Play'
 	const path = '/play'
-	const description =
-		'A sandbox environment to experiment and learn web-based computer graphics.'
 
+	let markdown = $page.data.content
+	let title = $derived(markdown.meta.title)
+	let description = $derived(markdown.meta.description)
+	let html = $derived(markdown.html)
 	let sketches = $state($page.data.sketches)
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
 </script>
 
 <PageMain {title} {description} size="lg">
 	{#snippet header()}
-		<h1 class="w:full maki:block:md">Fat Fuzzy {title}</h1>
+		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
-	<p>
-		Sketches are exercises from <a
-			href="https://webgl2fundamentals.org"
-			target="_blank"
-			rel="noopener"
-		>
-			WebGL Fundamentals 1 & 2
-		</a>
-	</p>
+	<div class="l:text:lg">{@html html}</div>
 	<div class="l:grid:sm maki:block">
 		{#each tags as tag}
 			<details class="card:md l:stack size:sm bg:netural varian:bare" open>
