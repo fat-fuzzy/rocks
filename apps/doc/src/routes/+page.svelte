@@ -20,7 +20,7 @@
 <PageMain {title} {description} size="md" justify="center">
 	{#snippet header()}
 		<div class="l:text:md">
-			<div class="l:frame">
+			<div class="l:frame maki:inline:sm">
 				<img src={pageImage.src} alt={pageImage.alt} />
 			</div>
 			<h1 class="card:sm text:center">Fat Fuzzy Rocks</h1>
