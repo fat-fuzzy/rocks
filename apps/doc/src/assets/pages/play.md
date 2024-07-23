@@ -10,4 +10,4 @@ The animations on this page are exercises from [WebGL Fundamentals](https://webg
 
 As I began learning WebGL, I wished to have a way to easily setup the interfaces that I need to display graphics programs and interact with the canvas. This is the result.
 
-I shall update this page with my own experiments and ideas once I've grown a bit more comfortable with what I am doing !
+I shall update this page with experiments and ideas as I progress.
