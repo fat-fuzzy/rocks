@@ -1,7 +1,8 @@
 ---
 title: App Template
 date: 'YYYY-MM-DD'
-slug: using-app-template
+updated: null
+slug: app-template
 id: '003'
 status: 'draft'
 tags: ['example', 'doc', 'app']

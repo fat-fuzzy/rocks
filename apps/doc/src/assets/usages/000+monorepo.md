@@ -1,6 +1,7 @@
 ---
 title: Monorepo
 date: '2024-07-21'
+updated: '2023-07-23'
 slug: monorepo
 id: '000'
 tags: ['example', 'doc', 'monorepo', 'wip']
