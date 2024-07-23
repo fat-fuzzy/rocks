@@ -3,7 +3,7 @@ title: Use Monorepo
 date: '2022'
 slug: use-monorepo
 id: '001'
-tags: ['architecture', 'monorepo', 'dependencies']
+tags: ['architecture', 'dependencies']
 ---
 
 ## Context and Problem

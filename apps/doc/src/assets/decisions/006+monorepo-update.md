@@ -3,7 +3,7 @@ title: Monorepo Update
 date: '2023-03-23'
 slug: monorepo-update
 id: '006'
-tags: ['architecture', 'dependencies', 'doc', 'monorepo']
+tags: ['architecture', 'dependencies']
 ---
 
 ## Context and Problem
