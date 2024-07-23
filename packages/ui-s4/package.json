@@ -58,7 +58,6 @@
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",
-		"@fat-fuzzy/markdown": "workspace:^",
 		"@playwright/experimental-ct-svelte": "^1.41.2",
 		"@playwright/test": "^1.41.2",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
