@@ -18,7 +18,7 @@
 
 <PageMain {title} {description} size="xl">
 	{#snippet header()}
-		<h1>Play</h1>
+		<h1 class="l:side hug maki:block:md">Play</h1>
 		<h2>&nbsp;❤︎ {title}</h2>
 	{/snippet}
 	{#key scene}

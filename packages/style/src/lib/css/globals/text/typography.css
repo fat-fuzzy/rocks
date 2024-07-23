@@ -82,6 +82,7 @@ article,
 p,
 figcaption {
 	color: var(--color-ink, var(--ink));
+	line-height: var(--font-leading-body);
 }
 
 ol,
@@ -90,6 +91,10 @@ ul {
 
 	&.unstyled {
 		list-style: none;
+	}
+
+	li {
+		line-height: var(--font-leading-nav);
 	}
 }
 
