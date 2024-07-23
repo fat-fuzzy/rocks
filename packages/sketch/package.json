@@ -29,7 +29,11 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"svelte": "^5.0.0"
+		"svelte": "^5.0.0",
+		"@sveltejs/kit": "^2.0.0",
+		"@fat-fuzzy/lib": "^workspace",
+		"@fat-fuzzy/style": "^workspace",
+		"@fat-fuzzy/ui": "^workspace"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
