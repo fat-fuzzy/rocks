@@ -15,8 +15,6 @@ Up until then, I had been shuffling gists around for my research and experiments
 So I decided to gather my thoughts and put my efforts in a codebase that I could improve over time.
 Along came my batch at the [Recurse Center](https://www.recurse.com/), at which point I channelled my volitional muscles to do the thing.
 
-This website is the result of that work. It's also its documentation, and the support for learning I was aiming for!
-
-In terms of stack, this is essentially a static site generator built with HTML, CSS, Svelte, Markdown. I add the WebGL lessons I complete as I continue to learn, and might add a backend at some point.
+This website is the result of that work!
 
 The code is [accessible on GitHub](https://github.com/fat-fuzzy/rocks), and the illustrations and design are my own.
