@@ -1,17 +1,5 @@
 # CSS Library
 
-The work in this library is based on the ideas put forth in the following resources:
-
-- [CUBE CSS](https://cube.fyi)
-- [Every Layout blog post on Algorithmic design](https://every-layout.dev/blog/algorithmic-design/)
-- [Every Layout](https://every-layout.dev)
-- [Grid by Example](https://gridbyexample.com/)
-- [UTOPIA](https://utopia.fyi/)
-- [Inclusive design principles](https://inclusivedesignprinciples.org/)
-- [Inclusive components](https://inclusive-components.design/)
-- [Open Props](https://open-props.style/)
-- [Gui Challenges](https://github.com/argyleink/gui-challenges/)
-
 ## DONE
 
 - Export CSS library: `@fat-fuzzy/ui/csscore` and `@fat-fuzzy/ui/csstokens`

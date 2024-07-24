@@ -7,25 +7,17 @@ id: '000'
 tags: ['example', 'doc', 'monorepo', 'wip']
 ---
 
-## Architecture
-
-The initial motivation for this monorepo setup was usage of [pnpm](https://pnpm.io/) and [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces).
-
-It evolves when necessary.
-
 ### Stack
 
-The main technologies I use to build this project are HTML, CSS, Svelte (with TypeScript), and Markdown.
-I also add the WebGL shaders I write as I continue to learn, and might add a backend at some point.
+The main technologies I use to build this project are HTML, CSS, [Svelte](https://svelte.dev/) (with TypeScript), and Markdown.
+There are also some WebGL shaders, that I add as I continue to learn, and I might add a backend at some point.
 
 ### Packages Overview
 
-The repository is organized into three workspaces:
+The repository is organized into three workspaces (these are top-level directories in the repository):
 
-- **apps** : contains client facing code, organized by project
-  - **doc** : This site!
-- **infra** : contains infrastructure code
-  - This is WIP and in private repos for the moment
+- **apps** : contains client facing code, organized by project. It contains **apps/doc**  which is this site!
+- **infra** : contains infrastructure code. This is WIP and in private repos for the moment
 - **packages** : contains UI, web graphics, logic and experiments libraries, as well as common config
 
 You can learn more about individual packages in the [Packages](/doc/usage/packages) section.
@@ -33,23 +25,15 @@ You can learn more about individual packages in the [Packages](/doc/usage/packag
 ## Requirements
 
 - [Node.js](https://nodejs.org/en)
-- The UI library has recently been upgraded to [Svelte 5](https://svelte-5-preview.vercel.app/docs/introduction)
+- [pnpm](https://pnpm.io/) and [Turborepo](https://turbo.build) to manage the packages and builds
+- [Svelte](https://svelte.dev/), recently upgraded to [Svelte 5](https://svelte-5-preview.vercel.app/docs/introduction)
+- [Verdaccio](https://verdaccio.org/), which allows me to create a private registry and use these packages in other projects
 
-🚧 This is work in progress
+The initial guide I used for this setup was [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces) and evolves as necessary.
 
-- Test runner [Vitest](https://vitest.dev/)
+## How to `...`
 
-  - [Examples](https://github.com/vitest-dev/vitest/tree/main/examples)
-
-- Code / Env
-
-  - [docker](https://www.docker.com/)
-  - [changesets](https://github.com/changesets/changesets)
-  - [verdaccio](https://verdaccio.org/)
-
-## Resources
-
-Using a private NPM Registry: Verdaccio
+Use a private NPM Registry with Verdaccio
 
 - Install verdaccio: [Verdaccio Doc - Installation](https://verdaccio.org/docs/installation)
 - Launch the private registry with the command: `verdaccio`
@@ -64,3 +48,15 @@ Using a private NPM Registry: Verdaccio
   ```shell
   pnpm i --registry http://localhost:4873
   ```
+
+## WIP
+
+🚧 These items are work in progress
+
+- **Testing**
+  - Integrating [Vitest](https://vitest.dev/)
+    - [Examples](https://github.com/vitest-dev/vitest/tree/main/examples)
+- **Workflow Tools**
+  - [changesets](https://github.com/changesets/changesets)
+  - [verdaccio](https://verdaccio.org/)
+- **Infrastructure and Backend** I'm exploring and learning about backend technologies and architecture, but this site does not use a backend server
