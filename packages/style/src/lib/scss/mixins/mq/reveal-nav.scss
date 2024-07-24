@@ -1,7 +1,7 @@
 /*  reveal-auto media queries */
 
 @mixin switchToRowStyles_RevealNav($containerSize, $size) {
-	@container reveal-nav-#{$size} (inline-size < #{$containerSize}) {
+	@container reveal-nav-#{$size} (inline-size <= #{$containerSize}) {
 		[class*='l:reveal'].sticky {
 			--y-size-sticky: calc(
 				100vh - 2 * var(--size-ui-header-height) - 2 * var(--ui-size-lg)
@@ -67,10 +67,10 @@
 	}
 }
 
-@include switchToRowStyles_RevealNav(220px, '2xs');
-@include switchToRowStyles_RevealNav(240px, 'xs');
-@include switchToRowStyles_RevealNav(260px, 'sm');
-@include switchToRowStyles_RevealNav(300px, 'md');
-@include switchToRowStyles_RevealNav(320px, 'lg');
-@include switchToRowStyles_RevealNav(360px, 'xl');
-@include switchToRowStyles_RevealNav(380px, '2xl');
+@include switchToRowStyles_RevealNav(16ch, '2xs');
+@include switchToRowStyles_RevealNav(18ch, 'xs');
+@include switchToRowStyles_RevealNav(20ch, 'sm');
+@include switchToRowStyles_RevealNav(22ch, 'md');
+@include switchToRowStyles_RevealNav(24ch, 'lg');
+@include switchToRowStyles_RevealNav(26ch, 'xl');
+@include switchToRowStyles_RevealNav(28ch, '2xl');

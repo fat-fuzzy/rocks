@@ -14,17 +14,13 @@
 		"sidebar": {
 			"base": {"$value": "22ch"},
 			"collapsed": {"$value": "6em"},
-			"2xs": {
-				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
-			},
-			"xs": {"$value": "calc(var(--layout-sidebar-sm) / var(--size-ratio-sm))"},
-			"sm": {"$value": "calc(var(--layout-sidebar-md) / var(--size-ratio-sm))"},
+			"2xs": {"$value": "16ch"},
+			"xs": {"$value": "18ch"},
+			"sm": {"$value": "20ch"},
 			"md": {"$value": "{layout.sidebar.base}"},
-			"lg": {"$value": "calc(var(--layout-sidebar-md) * var(--size-ratio-sm))"},
-			"xl": {"$value": "calc(var(--layout-sidebar-lg) * var(--size-ratio-sm))"},
-			"2xl": {
-				"$value": "calc(var(--layout-sidebar-xl) * var(--size-ratio-sm))"
-			}
+			"lg": {"$value": "24ch"},
+			"xl": {"$value": "26ch"},
+			"2xl": {"$value": "28ch"}
 		},
 		"grid": {
 			"item": {

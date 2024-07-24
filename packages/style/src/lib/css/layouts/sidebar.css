@@ -23,7 +23,7 @@
 	flex-basis: 0;
 	flex-grow: 999;
 	/* ~ min-width in horizontal\:tb writing mode: if (width < 70%) -> wrap */
-	min-inline-size: 70%;
+	min-inline-size: var(100% - var(--sidebar-width));
 
 	> main {
 		block-size: 100%;
@@ -81,7 +81,7 @@
 
 /* Scale Sidebar > Main */
 
-.l\:main\:30 {
+/* .l\:main\:30 {
 	min-inline-size: 30%;
 }
 
@@ -103,4 +103,4 @@
 
 .l\:main\:80 {
 	min-inline-size: 80%;
-}
+} */
