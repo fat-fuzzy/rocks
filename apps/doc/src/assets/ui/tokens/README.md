@@ -23,4 +23,5 @@ All the tokens that are currently defined can be found in the [SCSS library's to
 
 - [W3C Design Tokens Community Group](https://www.w3.org/groups/cg/design-tokens/)
 - [Open Props](https://open-props.style/) : A design tokens library
-- [Style Dictionary](https://amzn.github.io/style-dictionary) : A tool to generate design tokens from json files
+- [Cobalt UI](https://cobalt-ui.pages.dev/): The tool I used to generate the design tokens from JSON files
+- [Style Dictionary](https://amzn.github.io/style-dictionary): Another tool to generate design tokens
