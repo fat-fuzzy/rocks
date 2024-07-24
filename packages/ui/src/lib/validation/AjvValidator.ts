@@ -1,4 +1,3 @@
-import {tick} from 'svelte'
 import * as validations from './ajv.validations.default.js'
 
 /**
@@ -44,7 +43,6 @@ class AjvValidator {
 			})
 		}
 
-		await tick()
 		const formElement = document.getElementById(formId)
 		const formElementServerValue = document.getElementById(
 			`${formId}_js_enabled`,

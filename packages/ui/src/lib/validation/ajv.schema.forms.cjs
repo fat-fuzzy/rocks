@@ -133,4 +133,18 @@ const schemaAjvValidator = {
 	definitions: schemaInputs,
 }
 
-module.exports = {schemaInputs, schemaAjvValidator}
+/**
+ * Validation schema for the form: DsrcFormValidator
+ */
+const schemaSignUp = {
+	$id: '#/definitions/SignUpValidator',
+	type: 'object',
+	properties: {
+		sample_email: {$ref: '#/definitions/email'},
+		sample_password: {$ref: '#/definitions/password'},
+	},
+	required: ['sample_email', 'sample_password'],
+	definitions: schemaInputs,
+}
+
+module.exports = {schemaInputs, schemaSignUp, schemaAjvValidator}

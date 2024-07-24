@@ -23,10 +23,11 @@ const AJV_OPTIONS = {
 
 // Add your Schemas here
 const FormInputs = schemaForms.schemaInputs
+const SignUpValidator = schemaForms.schemaSignUp
 const AjvValidator = schemaForms.schemaAjvValidator
 const ajv = new Ajv({
 	...AJV_OPTIONS,
-	schemas: [FormInputs, AjvValidator],
+	schemas: [FormInputs, SignUpValidator, AjvValidator],
 })
 
 addFormats(ajv)
@@ -34,6 +35,7 @@ addErrors(ajv)
 
 let moduleCode = standaloneCode(ajv, {
 	FormValidationFunction: '#/definitions/AjvValidator', // Validation function for the AjvValidator schema
+	SignUpValidationFunction: '#/definitions/SignUpValidator', // Validation function for the SignUpValidator schema
 })
 
 // Now you can write the module code to file
