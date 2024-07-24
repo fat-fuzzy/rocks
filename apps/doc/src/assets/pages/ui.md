@@ -18,7 +18,7 @@ The structure of the library as well as the way the components are designed draw
 - [Open Props](https://open-props.style/)
 - [Inclusive Components](https://inclusive-components.design)
 
-While this library and the rest of the work on this website is not built with the objective to be used as a dependency in external projects, it you are curious as to how this is built, you can see the code here:
+While this library and the rest of the work on this website was built with a specific need in mind and is not intended for distribution, if you are curious as to how this site is built, the code is available here:
 
 - [@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui): the component library, built in [Svelte](https://svelte.dev/) - I migrated it recently to [Svelte 5](https://svelte-5-preview.vercel.app/docs/introduction), and I am very happy with the transition!
 - [@fat-fuzzy/style](https://github.com/fat-fuzzy/rocks/tree/main/packages/style): the CSS library
