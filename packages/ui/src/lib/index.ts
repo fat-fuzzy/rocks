@@ -44,7 +44,7 @@ import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
 import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 
-import LogIn from '$lib/components/recipes/forms/LogIn.svelte'
+import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
@@ -60,8 +60,8 @@ import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 /**
  * Forms
  */
-import AjvValidator from '$lib/validation/AjvValidator.svelte.js'
 import {UiReveal} from '$lib/forms/ui-reveal.js'
+import AjvValidator from '$lib/validation/AjvValidator.js'
 import {SettingsUpdate} from '$lib/forms/settings-update.js'
 
 /**
@@ -117,7 +117,7 @@ const recipes = {
 	ToggleMenu,
 	RevealMenu,
 	InputGroup,
-	LogIn,
+	SignUp,
 	Nav,
 	RevealNav,
 	Header,
