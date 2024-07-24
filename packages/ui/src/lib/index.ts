@@ -60,6 +60,7 @@ import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 /**
  * Forms
  */
+import AjvValidator from '$lib/validation/AjvValidator.svelte.js'
 import {UiReveal} from '$lib/forms/ui-reveal.js'
 import {SettingsUpdate} from '$lib/forms/settings-update.js'
 
@@ -81,6 +82,7 @@ const utils = {
 const forms = {
 	UiReveal,
 	SettingsUpdate,
+	AjvValidator,
 }
 
 const tokens = {

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {getStores} from '$app/stores'
+	import AjvValidator from '$lib/validation/AjvValidator.svelte.js'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
 	// export let action: string = '/login'
