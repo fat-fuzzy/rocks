@@ -5,20 +5,19 @@ id: '002'
 tags: ['pages', 'doc', 'ui', 'wip']
 ---
 
-## Introduction
-
 Fat Fuzzy UI is a design guide and component library and that aims to maximize use HTML and
 CSS's native capabilities to produce harmonious and robust designs.
 
+The underlying intention of all this is that interfaces may adapt to all sorts of browser environments and display conditions so that users can happily access the content and functionality of the app (a website being a specific kind of app).
+
 The structure of the library as well as the way the components are designed draws heavily from the following sources:
 
-- The blogpost [Algorithmic Design](https://every-layout.dev/blog/algorithmic-design/)
-- The lessons and examples in [every-layout](https://every-layout.dev/)
+- The blog post [Algorithmic Design](https://every-layout.dev/blog/algorithmic-design/) and the lessons and examples in [every-layout](https://every-layout.dev/)
 - [CUBE CSS](https://cube.fyi/)
 - [Open Props](https://open-props.style/)
 - [Inclusive Components](https://inclusive-components.design)
 
-While this library and the rest of the work on this website was built with a specific need in mind and is not intended for distribution, if you are curious as to how this site is built, the code is available here:
+While this library and the rest of the work on this website was built with a specific need in mind and is not specifically intended for distribution, if you are curious as to how this site is built, the code is available here:
 
 - [@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui): the component library, built in [Svelte](https://svelte.dev/) - I migrated it recently to [Svelte 5](https://svelte-5-preview.vercel.app/docs/introduction), and I am very happy with the transition!
 - [@fat-fuzzy/style](https://github.com/fat-fuzzy/rocks/tree/main/packages/style): the CSS library

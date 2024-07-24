@@ -14,10 +14,6 @@ context: ['app.settings']
 
 Use a `Stack` layout for stacked column content.
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [Every Layout - The Stack](https://every-layout.dev/layouts/stack/)
