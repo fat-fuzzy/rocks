@@ -457,7 +457,20 @@ importers:
         version: 2.3.2(svelte@5.0.0-next.184)(typescript@5.5.4)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.1.1
+<<<<<<< HEAD
         version: 3.1.1(svelte@5.0.0-next.184)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3))
+=======
+        version: 3.1.1(svelte@5.0.0-next.184)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(terser@5.31.2))
+      ajv:
+        specifier: ^8.17.1
+        version: 8.17.1
+      ajv-errors:
+        specifier: ^3.0.0
+        version: 3.0.0(ajv@8.17.1)
+      ajv-formats:
+        specifier: ^3.0.1
+        version: 3.0.1(ajv@8.17.1)
+>>>>>>> 01a7886c (➕ [ui] Add dependencies: AJV)
       mdsvex:
         specifier: ^0.11.2
         version: 0.11.2(svelte@5.0.0-next.184)
@@ -1992,6 +2005,7 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
+<<<<<<< HEAD
   agent-base@7.1.1:
     resolution: {integrity: sha512-H0TSyFNDMomMNJQBn8wFV5YC/2eJ+VXECwOadZJT554xP6cODZHPX3H9QMQECxvrgiSOP1pHjy1sMWQVYJOUOA==}
     engines: {node: '>= 14'}
@@ -1999,6 +2013,20 @@ packages:
   aggregate-error@3.1.0:
     resolution: {integrity: sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA==}
     engines: {node: '>=8'}
+=======
+  ajv-errors@3.0.0:
+    resolution: {integrity: sha512-V3wD15YHfHz6y0KdhYFjyy9vWtEVALT9UrxfN3zqlI6dMioHnJrqOYfyPKol3oqrnCM9uwkcdCwkJ0WUcbLMTQ==}
+    peerDependencies:
+      ajv: ^8.0.1
+
+  ajv-formats@3.0.1:
+    resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+>>>>>>> 01a7886c (➕ [ui] Add dependencies: AJV)
 
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
@@ -7893,6 +7921,7 @@ snapshots:
 
   acorn@8.12.1: {}
 
+<<<<<<< HEAD
   agent-base@7.1.1:
     dependencies:
       debug: 4.3.6
@@ -7903,6 +7932,15 @@ snapshots:
     dependencies:
       clean-stack: 2.2.0
       indent-string: 4.0.0
+=======
+  ajv-errors@3.0.0(ajv@8.17.1):
+    dependencies:
+      ajv: 8.17.1
+
+  ajv-formats@3.0.1(ajv@8.17.1):
+    optionalDependencies:
+      ajv: 8.17.1
+>>>>>>> 01a7886c (➕ [ui] Add dependencies: AJV)
 
   ajv@6.12.6:
     dependencies:
@@ -7917,8 +7955,11 @@ snapshots:
       fast-uri: 3.0.1
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
+<<<<<<< HEAD
 
   ansi-colors@4.1.1: {}
+=======
+>>>>>>> 01a7886c (➕ [ui] Add dependencies: AJV)
 
   ansi-colors@4.1.3: {}
 
