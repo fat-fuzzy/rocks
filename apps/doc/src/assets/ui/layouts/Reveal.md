@@ -19,10 +19,6 @@ Use a `Reveal` layout to show or minimize content with a button action.
 
 - `Button` component in `blocks`
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Form Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)

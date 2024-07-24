@@ -46,7 +46,7 @@ Use a private NPM Registry with Verdaccio
 - Use the package in another repository that has access to the private registry:
 
   ```shell
-  pnpm i --registry http://localhost:4873
+  pnpm i your-package --registry http://localhost:4873
   ```
 
 ## WIP

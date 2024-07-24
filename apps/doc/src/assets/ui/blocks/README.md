@@ -19,17 +19,17 @@ They are implemented using the [web platform](https://developer.mozilla.org/en-U
 
 The examples below are two ways of achieving the same end result: a button that will submit the `<form>` that contains it.
 
-1. HTML markup
+**HTML markup**
 
-   ```html
-   <button id="submit">Submit</button>
-   ```
+```html
+<button id="submit">Submit</button>
+```
 
-1. A Svelte `Button` component
+**A Svelte `Button` component**
 
-   ```svelte
-   <Button id="submit" text="Submit" />
-   ```
+```svelte
+<Button id="submit" text="Submit" />
+```
 
 What is the point of creating a `Button` component ? (regardless of the choice of framework)
 
