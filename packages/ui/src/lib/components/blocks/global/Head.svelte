@@ -2,20 +2,20 @@
 	type Props = {
 		title: string
 		description: string
-		page?: string
+		pageName?: string
 		prefix?: string
 	}
 	let {
 		title,
 		description = 'Page description',
-		page,
+		pageName,
 		prefix = 'Fat Fuzzy',
 	}: Props = $props()
 	let fullPrefix = $derived(
-		!page?.includes(prefix) ? `${prefix} ${page}` : `${page}`,
+		!pageName?.startsWith(prefix) ? `${prefix} ${pageName}` : `${pageName}`,
 	)
 	let fullTitle = $derived(
-		title && title !== page ? `${fullPrefix} | ${title}` : `${fullPrefix}`,
+		title && title !== pageName ? `${fullPrefix} | ${title}` : `${fullPrefix}`,
 	)
 </script>
 

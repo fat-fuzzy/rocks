@@ -28,31 +28,31 @@ sketches.map((sketch) => {
 		await expect(currentEvent).toHaveText('loadOk')
 
 		// Expects the Play button to start the canvas animation
-		await page.getByRole('button', {name: '✨ Play'}).click()
+		await page.getByRole('button', {name: 'Play'}).click()
 
 		// Expects the Player to enable available actions: Stop, Clear
-		await expect(page.getByRole('button', {name: 'stop'})).toBeEnabled()
-		await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
+		await expect(page.getByRole('button', {name: 'Stop'})).toBeEnabled()
+		await expect(page.getByRole('button', {name: 'Clear'})).toBeEnabled()
 
 		await expect(previousEvent).toHaveText('loadOk')
 		await expect(currentEvent).toHaveText('play')
 
 		// Expects the Pause button to pause the canvas animation
-		await page.getByRole('button', {name: '🪷 Pause'}).click()
+		await page.getByRole('button', {name: 'Pause'}).click()
 
 		await expect(previousEvent).toHaveText('play')
 		await expect(currentEvent).toHaveText('pause')
 
 		// Actions should be enabled
-		await expect(page.getByRole('button', {name: 'stop'})).toBeEnabled()
-		await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
+		await expect(page.getByRole('button', {name: 'Stop'})).toBeEnabled()
+		await expect(page.getByRole('button', {name: 'Clear'})).toBeEnabled()
 
 		// Expects the Play button to resume the canvas animation
-		await page.getByRole('button', {name: '✨ Play'}).click()
+		await page.getByRole('button', {name: 'Play'}).click()
 		await expect(currentEvent).toHaveText('play')
 
 		// Actions should be enabled
-		await expect(page.getByRole('button', {name: 'stop'})).toBeEnabled()
-		await expect(page.getByRole('button', {name: 'clear'})).toBeEnabled()
+		await expect(page.getByRole('button', {name: 'Stop'})).toBeEnabled()
+		await expect(page.getByRole('button', {name: 'Clear'})).toBeEnabled()
 	})
 })

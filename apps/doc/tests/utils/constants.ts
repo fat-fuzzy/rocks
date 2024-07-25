@@ -37,8 +37,15 @@ const layouts = {
 
 const recipes = {
 	path: `${pages[4].path}/recipes`,
-	ready: ['ButtonMenu', 'RevealMenu', 'RevealNav', 'ToggleMenu'],
-	draft: ['Header', 'InputGroup', 'Login', 'Nav'],
+	ready: [
+		'ButtonMenu',
+		'RevealMenu',
+		'RevealNav',
+		'ToggleMenu',
+		'Header',
+		'Nav',
+	],
+	draft: ['InputGroup', 'Login'],
 }
 
 export default {pages, categories, blocks, layouts, recipes}
