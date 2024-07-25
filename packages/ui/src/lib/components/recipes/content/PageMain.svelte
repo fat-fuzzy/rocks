@@ -5,7 +5,7 @@
 	type Props = {
 		title: string
 		description: string
-		page?: string
+		pageName?: string
 		size?: string
 		header?: Snippet
 		layout?: string
@@ -16,7 +16,7 @@
 	let {
 		title = 'PageMain',
 		description = `Basic page layout`,
-		page,
+		pageName,
 		size,
 		layout='sidebar',
 		justify,
@@ -24,13 +24,13 @@
 		children,
 	}: Props = $props()
 
-	let currentPage = $state(page ?? title)
+	let currentPage = $state(pageName ?? title)
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
 	let layoutClass= $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
 	let headerClass = $derived(`${layoutClass} ${justifyClass} maki:block:lg`)
 </script>
 
-<Head page={currentPage} {title} {description} />
+<Head pageName={currentPage} {title} {description} />
 
 <header id="content" class={headerClass}>
 	{#if header}
