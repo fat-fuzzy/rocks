@@ -12,7 +12,7 @@ context: ['app.settings']
 Design Tokens are `[key, value]` pairs that define design choices such as `Color`, `Typography`, or `Scale`.
 `Tokens` are defined using CSS variables, and are sometimes styled via native HTML tags (ex: `Typography` rules can target `h1` elements directly).
 
-`Tokens` provide the base values used to build `Blocks`, `Layouts`, and `Compositions`.
+`Tokens` provide the base values used to build `Blocks`, `Layouts`, and `Recipes`.
 
 All the tokens that are currently defined can be found in the [SCSS library's tokens folder](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui/src/lib/styles/scss/tokens)
 
