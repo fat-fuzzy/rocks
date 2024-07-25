@@ -11,7 +11,7 @@ context: ['app.settings']
 
 ## Usage
 
-Use a `Burrito` layout to center context in narrow columns.
+Use a `Burrito` layout to center content in narrow columns.
 Column width is determined by the size prop, which sets a `max-width` using sidebar width CSS variables.
 
 ## Resources
