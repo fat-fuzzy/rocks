@@ -20,10 +20,6 @@ Use a `RevealAuto` layout to automatically collapse content at a specified break
 - `Expand` component in `blocks`
 - `Reveal` component in `layouts`
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Form Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)

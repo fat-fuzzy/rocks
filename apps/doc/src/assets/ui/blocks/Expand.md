@@ -23,10 +23,6 @@ This component can be used to submit a form, either via the default `action` set
 - `Button` component in `blocks`
 - `Reveal` component in `layouts`
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Button Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)

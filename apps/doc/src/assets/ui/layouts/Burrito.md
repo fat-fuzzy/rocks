@@ -14,10 +14,6 @@ context: ['app.settings']
 Use a `Burrito` layout to center context in narrow columns.
 Column width is determined by the size prop, which sets a `max-width` using sidebar width CSS variables.
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [Every Layout - The Center](https://every-layout.dev/layouts/center/)

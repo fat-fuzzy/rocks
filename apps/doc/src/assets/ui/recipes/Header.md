@@ -19,10 +19,6 @@ Use a `Header` component to provide main app navigation and settings controls to
 - `Nav` component in `composition/navs`
 - `Settings` component in `recipes/forms`
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Anchor Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)

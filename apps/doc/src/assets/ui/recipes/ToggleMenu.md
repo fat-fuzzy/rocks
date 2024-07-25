@@ -20,10 +20,6 @@ Use a `ToggleMenu` component to provide a menu of mutually exclusive related act
 
 - `Toggle` component in `blocks`
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Button Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)

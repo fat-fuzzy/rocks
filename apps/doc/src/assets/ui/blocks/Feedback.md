@@ -14,10 +14,6 @@ Use this component to provide feedback to the user.
 
 The feedback component is styled according to its `status` and the `context` it appears in.
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 [Inclusive Components - Notifications](https://inclusive-components.design/notifications/)
