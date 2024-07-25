@@ -6,7 +6,7 @@
 	import introDay from '$lib/images/day/001-intro.png' // TODO : optimize images
 	import introNight from '$lib/images/night/001-intro.png' // TODO : optimize images
 
-	let title = 'Home'
+	let title = 'Rocks'
 	let description =
 		'This is the Fat Fuzzy Rocks website home page. The site contains a small Design System based on CUBE CSS, as well as developer documentation and decision logs. Welcome! 🐰'
 	let theme = 1

@@ -16,5 +16,7 @@
 	{category}
 	{markdowns}
 	{actionPath}
+	depth={0}
+	isPage={true}
 	redirect={$page.url.pathname}
 />

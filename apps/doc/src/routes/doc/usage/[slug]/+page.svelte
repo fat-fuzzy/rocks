@@ -13,7 +13,7 @@
 	let html = $derived($page.data.html)
 </script>
 
-<PageMain page="Dev" {title} {description}>
+<PageMain page="Usage" {title} {description}>
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 		<div class="l:main:50 l:flex justify:end">

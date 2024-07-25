@@ -77,7 +77,7 @@
 {/snippet}
 
 {#if isPage}
-	<PageMain {title} {description} size="lg">
+	<PageMain page="UI" {title} {description} size="lg">
 		{#snippet header()}
 			<h1 class="l:side hug maki:block:md">{title}</h1>
 			<div class="l:main l:flex reverse">

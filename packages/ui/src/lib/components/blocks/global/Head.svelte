@@ -11,8 +11,12 @@
 		page,
 		prefix = 'Fat Fuzzy',
 	}: Props = $props()
-	let fullPrefix = $derived(page ? `${prefix} ${page}` : `${prefix}`)
-	let fullTitle = $derived(title ? `${fullPrefix} | ${title}` : `${fullPrefix}`)
+	let fullPrefix = $derived(
+		!page?.includes(prefix) ? `${prefix} ${page}` : `${page}`,
+	)
+	let fullTitle = $derived(
+		title && title !== page ? `${fullPrefix} | ${title}` : `${fullPrefix}`,
+	)
 </script>
 
 <svelte:head>
