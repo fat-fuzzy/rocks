@@ -12,10 +12,6 @@ context: ['app.settings', 'shared.container']
 
 Use this component within a `<form>`element to allow the user to choose a single option in a group two or more values.
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - Input Radio](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)

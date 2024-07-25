@@ -16,10 +16,6 @@ The state is reflected in the value of the attribute `aria-pressed`.
 
 This component can be used to submit a form, either via the default `action` set on the parent form element, or via a specific `formaction` provided as props to the Button component.
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Button Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)

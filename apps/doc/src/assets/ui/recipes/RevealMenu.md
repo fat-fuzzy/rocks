@@ -23,10 +23,6 @@ Use a `RevealMenu` component to provide a menu of related actions that can be sh
 - `Reveal` component in `layouts`
 - `ButtonMenu` component in `recipes`
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Button Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)

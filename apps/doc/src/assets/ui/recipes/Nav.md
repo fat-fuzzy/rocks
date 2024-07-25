@@ -18,10 +18,6 @@ Use a `Nav` component to provide related navigation options to the user.
 - `RevealNav` component in `recipes/navs`
 - `DetailsNav` component in `recipes/navs`
 
-### Examples
-
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Anchor Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)

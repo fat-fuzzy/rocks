@@ -22,10 +22,6 @@ Use a `RevealNav` component to provide related navigation options that can be sh
 - `Reveal` component in `layouts`
 - `Nav` component in `recipes`
 
-### Examples
-
-<p class="status:default  variant:bare emoji:default">Coming Soon!</p>
-
 ## Resources
 
 - [MDN - The Anchor Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
