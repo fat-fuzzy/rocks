@@ -1,10 +1,11 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	import {headless, blocks} from '@fat-fuzzy/ui'
+	import {blocks} from '@fat-fuzzy/ui'
+	import {content} from '@fat-fuzzy/ui'
 
-	const {Head} = headless
 	const {Feedback} = blocks
+	const {PageMain} = content
 
 	let title = $derived(`Error: ${$page.status}`)
 	let status = $state('error')
@@ -16,13 +17,17 @@
 				return 'error'
 		}
 	})
+	let description = 'Something went wrong!'
 	let message = $derived(`${$page.status}: ${$page.error?.message}`)
 </script>
 
-<Head {title} description="Something went wrong!" />
-
-<div class="l:center:2xs card:2xl maki:block:xl">
-	<Feedback {asset} {status} context="prose" size="lg" container="center">
-		<p>{message}</p>
-	</Feedback>
-</div>
+<PageMain {title} {description} size="xl" pageName={$page.status}>
+	{#snippet header()}
+		<h1 class="l:side hug maki:block:md">Error</h1>
+	{/snippet}
+	<div class="l:center:2xs card:2xl maki:block:xl">
+		<Feedback {asset} {status} context="prose" size="lg" container="center">
+			<p>{message}</p>
+		</Feedback>
+	</div>
+</PageMain>

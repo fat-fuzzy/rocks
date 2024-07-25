@@ -2,32 +2,26 @@
 	import {page} from '$app/stores'
 
 	import lib from '@fat-fuzzy/lib'
-	import {headless} from '@fat-fuzzy/ui'
+	import {content} from '@fat-fuzzy/ui'
 	import Sketch from '$lib/components/sketch/Sketch.svelte'
 
-	const {Head} = headless
+	const {PageMain} = content
 
 	let scene = $derived(
 		lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),
 	)
 	let title = $derived(scene?.meta.title || '')
-	let headerClass = 'l:flex align:center maki:inline'
+	let description = $derived(`${title} - Play`)
 </script>
 
-<Head
-	{title}
-	page="Play"
-	description={`${title} - A sandbox environment to experiment and learn web-based computer graphics`}
-/>
-
-<div class="card:md l:stack:md">
-	<header class={headerClass}>
+<PageMain {title} {description} pageName='Play'>
+	{#snippet header()}
 		<h1>Play</h1>
 		<h2>&nbsp;❤︎ {title}</h2>
-	</header>
-	{#key $page.data.slug}
+	{/snippet}
+	{#key scene}
 		{#if scene}
-			<Sketch id={`sketch-${scene.meta.id}`} {scene} size="sm" />
+			<Sketch id={`sketch-${scene.meta.id}`} {scene} size="sm" dev={true}/>
 		{/if}
 	{/key}
-</div>
+</PageMain>

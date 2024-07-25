@@ -11,7 +11,7 @@
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
 </script>
 
-<PageMain {title} {description} {page}>
+<PageMain {title} {description}>
 	{#snippet header()}
 		<h1 class="w:full">Fat Fuzzy {title}</h1>
 		<h2><small>Tags</small></h2>
