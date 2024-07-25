@@ -26,7 +26,8 @@ You can learn more about individual packages in the [Packages](/doc/usage/packag
 
 - [Node.js](https://nodejs.org/en)
 - [pnpm](https://pnpm.io/) and [Turborepo](https://turbo.build) to manage the packages and builds
-- [Svelte](https://svelte.dev/), recently upgraded to [Svelte 5](https://svelte-5-preview.vercel.app/docs/introduction)
+- [Svelte](https://svelte.dev/), recently upgraded to [Svelte 5](https://svelte-5-preview.vercel.app/docs/introduction) that I use to build UI components
+- [SvelteKit](https://kit.svelte.dev/), which helps me develop, build and package my sites or apps
 - [Verdaccio](https://verdaccio.org/), which allows me to create a private registry and use these packages in other projects
 
 The initial guide I used for this setup was [Turborepo's workspaces conventions](https://turbo.build/repo/docs/getting-started/existing-monorepo#configure-workspaces) and evolves as necessary.
