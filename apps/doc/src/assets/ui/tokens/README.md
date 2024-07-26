@@ -13,7 +13,7 @@ Design Tokens are `[key, value]` pairs that define design choices such as `Color
 
 `Tokens` provide the base values used to build `Blocks`, `Layouts`, and `Recipes`.
 
-All the tokens that are currently defined can be found in the [SCSS library's tokens folder](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui/src/lib/styles/scss/tokens)
+All the tokens that are currently defined can be found in the [CSS library's tokens folder](https://github.com/fat-fuzzy/rocks/tree/main/packages/style/src/lib/tokens)
 
 <p class="feedback:prose status:default bg:default:100 variant:bare emoji:wip">The generation of design tokens in this library is still a work in progress. More detailed documentation coming soon! </p>
 
