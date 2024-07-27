@@ -1,6 +1,7 @@
-import {links} from './nav'
 import {constants} from '@fat-fuzzy/ui'
 const {APP_SETTINGS} = constants
+
+export const links = [{id: 'link-list.doc', slug: 'doc', title: 'Doc'}]
 
 export default {
 	ButtonMenu: {
@@ -38,25 +39,19 @@ export default {
 		{id: 'check-3', label: 'Checkbox 3'},
 	],
 	LinkList: {
-		items: [
-			{id: 'link-list.home', slug: '', title: 'Home'},
-			{id: 'link-list.about', slug: 'about', title: 'About'},
-		],
+		items: links,
 	},
 	Nav: {
 		title: 'Nav',
 		items: [
-			{id: 'nav.home', slug: '', title: 'Home', asset: 'home'},
-			{id: 'nav.about', slug: 'about', title: 'About', asset: 'about'},
+			{id: 'link-list.home', slug: '', title: 'Home'},
+			{id: 'link-list.doc', slug: 'doc', title: 'Doc'},
 		],
 	},
 	DetailsNav: {
 		slug: 'ui',
 		title: 'DetailsNav',
-		items: [
-			{id: 'details-nav.home', slug: '', title: 'Home'},
-			{id: 'details-nav.about', slug: 'about', title: 'About'},
-		],
+		items: links,
 	},
 	RevealNav: {
 		slug: 'ui',
