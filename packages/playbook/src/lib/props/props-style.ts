@@ -115,7 +115,7 @@ const breakpoint = {
 const color = {
 	initial: '',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'stack',
 	size: '2xs',
 	container: 'card',
 	items: [
@@ -146,7 +146,7 @@ const color = {
 const variant = {
 	initial: 'fill',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'stack',
 	size: '2xs',
 	container: 'card',
 	items: [
@@ -168,8 +168,20 @@ const shape = {
 	size: '2xs',
 	variant: 'card',
 	items: [
-		{id: 'shape.round', text: 'round', value: 'round'},
-		{id: 'shape.square', text: 'square', value: 'square'},
+		{
+			id: 'shape.round',
+			text: 'round',
+			value: 'round',
+			shape: 'round',
+			asset: 'round',
+		},
+		{
+			id: 'shape.square',
+			text: 'square',
+			value: 'square',
+			shape: 'square',
+			asset: 'square',
+		},
 	],
 }
 
@@ -247,7 +259,7 @@ const context = {
 	container: '',
 	variant: 'outline',
 	items: [
-		{id: 'context.form', text: 'form', value: 'form'},
+		{id: 'context.prose', text: 'prose', value: 'prose'},
 		{id: 'context.code', text: 'code', value: 'code'},
 	],
 }
@@ -255,7 +267,7 @@ const context = {
 const asset = {
 	initial: 'default',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex',
 	size: '2xs',
 	variant: 'card',
 	mode: 'radio',
@@ -265,24 +277,28 @@ const asset = {
 			text: 'profile',
 			value: 'profile',
 			asset: 'profile',
+			shape: 'square',
 		},
 		{
 			id: 'asset.favorite',
 			text: 'favorite',
 			value: 'favorite',
 			asset: 'favorite',
+			shape: 'square',
 		},
 		{
 			id: 'asset.idea',
 			text: 'idea',
 			value: 'idea',
 			asset: 'idea',
+			shape: 'square',
 		},
 		{
 			id: 'asset.default',
 			text: 'default',
 			value: 'default',
 			asset: 'default',
+			shape: 'square',
 		},
 	],
 }

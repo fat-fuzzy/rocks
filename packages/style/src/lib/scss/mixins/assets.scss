@@ -61,6 +61,7 @@ $herb: '🌿';
 $tree: '🌳';
 $scales: '⚖️';
 $open-book: '📖';
+$purple-round: '🟣';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -114,7 +115,7 @@ $emojis: (
 	machines: #{$robot},
 	star: #{$star},
 
-	// Composition Emojis
+	// Recipe Emojis
 	menu: #{$bunny},
 	settings: #{$control-knobs},
 	log: #{$log},
@@ -129,6 +130,8 @@ $emojis: (
 	demo: #{$magic-wand},
 	nojs: #{$bunny},
 	wip: #{$construction-sign},
+	square: #{$yellow-square},
+	round: #{$purple-round},
 
 	// Playground fixture emojis
 	sketch: #{$spouting-whale},

@@ -82,6 +82,7 @@
 						size={family.size}
 						name={familyName}
 						justify={apiJustify}
+						variant="bare"
 					>
 						<StyleInput
 							styleInput={styleInputGroup}
