@@ -22,7 +22,9 @@
 	let contrast = $derived(app.settings.contrast)
 	let pageClass = $derived(utils.format.getClassNameFromPathname($page.url.pathname))
 	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
-	let footerClass = "font:sm card:2xl color:primary"
+	let footerClass = "card:xs"
+	let aboutContainerClass = $derived(pageClass === 'page:home' ? "card:xl" : "")
+	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 
 	function updateSettings(event) {
 		switch (event.id) {
@@ -62,11 +64,13 @@
 	</main>
 
 	<footer class={footerClass}>
-			<details class="l:side l:burrito:md maki:block:2xl">
+			<details class={`l:center:2xl l:text:2xl color:neutral font:sm maki:block:xl ${aboutContainerClass}`} open={footerOpen}>
 				<summary class="card:2xs">About</summary>
 				<p>
-					Website and illustrations by Patricia Boh.
+					Made with 🩷 by <a href="https://github.com/patiboh" target="_blank"
+					rel="noopener">@patiboh</a>
 				</p>
+				<div class="rc-scout"></div>
 			</details>
 	</footer>
 </div>
