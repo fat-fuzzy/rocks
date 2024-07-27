@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.44
+
+### Patch Changes
+
+- bdba519: Update docs, bugfixes
+
 ## 0.1.43
 
 ### Patch Changes
