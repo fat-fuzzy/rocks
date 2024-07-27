@@ -1,17 +1,17 @@
 ---
-title: 'UI'
+title: 'Sketch'
 date: '2024-07-27'
 updated: null
-slug: ui
-asset: package-ui
-id: '003'
+slug: sketch
+asset: package-sketch
+id: '006'
 status: draft
-tags: ['example', 'doc', 'ui', 'packages']
+tags: ['example', 'doc', 'sketch', 'packages']
 ---
 
 ## Contents
 
-This package contains a library written in Svelte that exposes generic, reusable UI components.
+This package is used to render the documentation and interactive demos of the UI library
 
 ## Requirements
 
@@ -22,14 +22,14 @@ This package contains a library written in Svelte that exposes generic, reusable
 1. Install the package as a `devDependency`:
 
  ```shell
- pnpm i -D @fat-fuzzy/ui
+ pnpm i -D @fat-fuzzy/sketch
  ```
 
 [TODO]
 
 ## 🚧 Resources
 
-- [CUBE CSS](https://cube.fyi/)
+[TODO]
 
 ## TODO
 

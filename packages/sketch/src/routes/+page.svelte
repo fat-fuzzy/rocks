@@ -3,7 +3,7 @@
 	import {content} from '@fat-fuzzy/ui'
 
 	const {PageMain} = content
-	const title = 'Play'
+	const title = 'Fat Fuzzy Play'
 	const description =
 		'A sandbox environment to experiment and learn web-based computer graphics.'
 

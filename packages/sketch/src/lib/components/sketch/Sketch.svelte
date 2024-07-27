@@ -70,7 +70,7 @@
 
 	let currentAsset = $derived(
 		store.state.canvas === CanvasState.idle && asset
-			? asset
+			? `emoji:${asset}`
 			: `emoji:${store.events.current}`,
 	)
 

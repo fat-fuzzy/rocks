@@ -65,6 +65,7 @@ $open-book: '📖';
 $purple-round: '🟣';
 $lipstick: '💄';
 $roller-skate: '🛼';
+$toolbox: '🧰';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -161,7 +162,8 @@ $emojis: (
 	multiple-tex: #{$new-moon-face},
 
 	// Packages emojis
-	package-style: #{$lipstick},
+	package-style: #{$sparkles},
+	package-utilities: #{$toolbox},
 	package-ui: #{$tree},
 	package-playbook: #{$roller-skate},
 	package-sketch: #{$rainbow},
