@@ -34,8 +34,7 @@
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
 	let gridClass = depth === 1 ? `l:grid:sm` : layoutClass
-	let linkClass =
-		depth === 0 ? 'card:2xs font:md maki:inline:2xs' : 'card:2xs font:md'
+	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
 </script>
 
 <ul
