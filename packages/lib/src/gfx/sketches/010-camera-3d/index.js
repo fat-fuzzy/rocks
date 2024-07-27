@@ -27,7 +27,7 @@ let meta = {
 	id: '010',
 	slug: 'camera-3d',
 	title: 'Camera 3D',
-	asset: 'emoji:camera-3d',
+	asset: 'camera-3d',
 	tags: ['3D', 'camera' /* , 'webgl' */],
 	controls: ['camera', 'loop'],
 }

@@ -1,14 +1,15 @@
 ---
 title: Fat Fuzzy UI
+description: 'Documentation and playground for the Fat Fuzzy UI library'
 slug: ui
 id: '002'
-tags: ['pages', 'doc', 'ui', 'wip']
+tags: ['pages', 'ui', 'wip']
 ---
 
 Fat Fuzzy UI is a design guide and component library and that aims to maximize use HTML and
 CSS's native capabilities to produce harmonious and robust designs.
 
-The underlying intention of all this is that interfaces may adapt to all sorts of browser environments and display conditions so that users can happily access the content and functionality of the app (a website being a specific kind of app).
+The underlying intention of all this is to build interfaces that can adapt to all sorts of browser environments and display conditions so that users may happily access the content and functionality of the app (a website being a specific kind of app).
 
 The structure of the library as well as the way the components are designed draws heavily from the following sources:
 

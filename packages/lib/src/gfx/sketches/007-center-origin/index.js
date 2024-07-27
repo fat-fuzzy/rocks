@@ -27,7 +27,7 @@ let meta = {
 	id: '007',
 	slug: 'center-origin',
 	title: 'Center Origin',
-	asset: 'emoji:bullseye',
+	asset: 'bullseye',
 	tags: ['2D', 'matrix' /* , 'webgl' */],
 	controls: ['matrix-2d', 'loop'],
 }

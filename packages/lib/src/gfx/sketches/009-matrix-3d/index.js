@@ -27,7 +27,7 @@ let meta = {
 	id: '009',
 	slug: 'matrix-3d',
 	title: 'Matrix 3D',
-	asset: 'emoji:matrix-3d',
+	asset: 'matrix-3d',
 	tags: ['3D', 'matrix' /* , 'webgl' */],
 	controls: ['matrix-3d', 'loop'],
 }

@@ -29,8 +29,14 @@
 	"exports": {
 		".": "./dist/main.css",
 		"./css": "./dist/main.css",
-		"./css/**/*": "./dist/lib/**/*",
-		"./tokens": "./dist/lib/tokens/tokens.css"
+		"./css/blocks/*": "./dist/lib/css/blocks/*",
+		"./css/config/*": "./dist/lib/css/config/*",
+		"./css/globals/*": "./dist/lib/css/globals/*",
+		"./css/layouts/*": "./dist/lib/css/layouts/*",
+		"./css/mixins/*": "./dist/lib/css/mixins/*",
+		"./css/motion/*": "./dist/lib/css/motion/*",
+		"./css/recipes/*": "./dist/lib/css/recipes/*",
+		"./css/tokens/*": "./dist/lib/css/tokens/*"
 	},
 	"devDependencies": {
 		"@cobalt-ui/cli": "1.11.0",

@@ -34,8 +34,7 @@
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
 	let gridClass = depth === 1 ? `l:grid:sm` : layoutClass
-	let linkClass =
-		depth === 0 ? 'card:2xs font:md maki:inline:2xs' : 'card:2xs font:md'
+	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
 </script>
 
 <ul
@@ -46,23 +45,26 @@
 	{#each items as item (item.slug)}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
-		{@const assetClass = asset ? asset : ''}
-		{@const itemClass = !subItems ? `${assetClass} ${alignClass}` : alignClass}
+		{@const buttonAssetClass = subItems && asset ? asset : ''}
+		{@const linkAssetClass = !subItems && asset ? `emoji:${asset}` : ''}
+		{@const itemClass = !subItems
+			? `${buttonAssetClass} ${alignClass}`
+			: alignClass}
 		{@const reveal = {[slug]: DEFAULT_REVEAL_STATE}}
 		<li
 			aria-current={$page.url.pathname === format.formatHref(path, slug)
 				? 'page'
 				: undefined}
 			class={$page.url.pathname === format.formatHref(path, slug)
-				? `${itemClass} ${colorClass}`
-				: itemClass}
+				? `${itemClass} ${linkAssetClass} ${colorClass}`
+				: `${itemClass} ${linkAssetClass}`}
 		>
 			{#if subItems && depth > 0}
 				<ExpandLink
 					{title}
 					{reveal}
 					{slug}
-					asset={assetClass}
+					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
 					size="2xs"
 				>

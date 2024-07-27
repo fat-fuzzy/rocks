@@ -16,9 +16,9 @@ export const load = async (event) => {
 				.filter(({meta}) => meta.status !== 'draft')
 				.reverse(),
 		},
+
 		// TODO: Implement a better way to handle this
 		content: content.length ? content[0] : {meta: {title: ''}},
 	}
-
 	return data
 }

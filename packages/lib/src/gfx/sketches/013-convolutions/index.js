@@ -42,7 +42,7 @@ let meta = {
 	id: '013',
 	slug: 'convolution',
 	title: 'Convolution',
-	asset: 'emoji:convolution',
+	asset: 'convolution',
 	tags: ['matrix', 'texture' /* , 'webgl' */],
 	controls: ['texture'],
 	filename: 'plants.png',
