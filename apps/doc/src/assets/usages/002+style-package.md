@@ -1,9 +1,9 @@
 ---
-title: Style
+title: 'Style'
 date: '2024-07-27'
 updated: null
 slug: style
-asset: page-style
+asset: package-style
 id: '002'
 tags: ['example', 'doc', 'css', 'packages','wip']
 ---
