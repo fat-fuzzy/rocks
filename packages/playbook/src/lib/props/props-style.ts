@@ -162,7 +162,7 @@ const variant = {
 const shape = {
 	initial: '',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex',
 	size: '2xs',
 	items: [
 		{
