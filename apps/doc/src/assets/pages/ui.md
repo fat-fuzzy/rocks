@@ -1,8 +1,9 @@
 ---
 title: Fat Fuzzy UI
+description: 'Documentation and playground for the Fat Fuzzy UI library'
 slug: ui
 id: '002'
-tags: ['pages', 'doc', 'ui', 'wip']
+tags: ['pages', 'ui', 'wip']
 ---
 
 Fat Fuzzy UI is a design guide and component library and that aims to maximize use HTML and

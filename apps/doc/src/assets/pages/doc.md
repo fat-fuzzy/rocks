@@ -1,8 +1,9 @@
 ---
 title: Fat Fuzzy Doc
+description: 'Documentation for the Fat Fuzzy Rocks packages'
 slug: doc
-id: '000'
-tags: ['pages', 'doc', 'about']
+id: '001'
+tags: ['pages', 'doc']
 ---
 
 ## What is Fat Fuzzy ?

@@ -1,8 +1,8 @@
 ---
 title: Fat Fuzzy Play
-description: 'A sandbox environment to experiment and learn web-based computer graphics.'
+description: 'A sandbox environment to experiment and learn web-based computer graphics'
 slug: play
-id: '001'
+id: '003'
 tags: ['pages', 'play']
 ---
 
