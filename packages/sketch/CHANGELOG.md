@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.3
+
+### Patch Changes
+
+- bdba519: Update docs, bugfixes
+
 ## 0.1.2
 
 ### Patch Changes

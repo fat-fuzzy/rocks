@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.51
+
+### Patch Changes
+
+- bdba519: Update docs, bugfixes
+
 ## 0.1.50
 
 ### Patch Changes

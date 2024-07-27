@@ -22,6 +22,7 @@
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
+						asset: meta.asset,
 					}))	,
 				},
 				{
@@ -32,6 +33,7 @@
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
+						asset: meta.asset,
 					}))	,
 				},
 			],

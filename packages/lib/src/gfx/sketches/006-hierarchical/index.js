@@ -27,7 +27,7 @@ let meta = {
 	id: '006',
 	slug: 'hierarchical',
 	title: 'Hierarchical',
-	asset: 'emoji:russian-dolls',
+	asset: 'russian-dolls',
 	tags: ['2D', 'matrix' /* , 'webgl' */],
 	controls: ['matrix-2d', 'loop'],
 }

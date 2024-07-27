@@ -37,7 +37,7 @@ let meta = {
 	id: '014',
 	slug: 'tex-blend',
 	title: 'Tex Blend',
-	asset: 'emoji:multiple-tex',
+	asset: 'multiple-tex',
 	tags: ['matrix', 'texture' /* , 'webgl' */, 'io'],
 	controls: ['texture'],
 	images: ['plants.png', 'mineral.png'],

@@ -1,5 +1,11 @@
 # @fat-fuzzy/markdown
 
+## 0.1.5
+
+### Patch Changes
+
+- bdba519: Update docs, bugfixes
+
 ## 0.1.4
 
 ### Patch Changes

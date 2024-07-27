@@ -7,7 +7,7 @@
 	const {Feedback} = blocks
 	const {PageMain} = content
 
-	let title = $derived(`Error: ${$page.status}`)
+	let title = $derived($page.status)
 	let status = $state('error')
 	let asset = $derived.by(() => {
 		switch ($page.status) {
@@ -21,10 +21,13 @@
 	let message = $derived(`${$page.status}: ${$page.error?.message}`)
 </script>
 
-<PageMain {title} {description} size="xl" pageName={$page.status}>
-	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">Error</h1>
-	{/snippet}
+<PageMain
+	{title}
+	{description}
+	size="xl"
+	pageName={String($page.status)}
+	justify="center"
+>
 	<div class="l:center:2xs card:2xl maki:block:xl">
 		<Feedback {asset} {status} context="prose" size="lg" container="center">
 			<p>{message}</p>

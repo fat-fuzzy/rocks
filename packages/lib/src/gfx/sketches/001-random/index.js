@@ -27,7 +27,7 @@ let meta = {
 	id: '001',
 	slug: 'random-rect',
 	title: 'Random',
-	asset: 'emoji:random',
+	asset: 'random',
 	dimensions: 'video',
 	tags: ['2D' /* , 'webgl' */],
 	controls: ['loop'],

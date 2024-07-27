@@ -27,7 +27,7 @@ let meta = {
 	id: '008',
 	slug: 'projection',
 	title: 'Projection',
-	asset: 'emoji:projection',
+	asset: 'projection',
 	tags: ['2D', 'matrix' /* , 'webgl' */],
 	controls: ['matrix-2d', 'loop'],
 }

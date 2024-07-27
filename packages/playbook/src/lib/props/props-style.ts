@@ -5,7 +5,7 @@ const brightness = {
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
 		{id: 'brightness.day', text: 'day', asset: 'day', value: 'day'},
 		{
@@ -22,7 +22,7 @@ const contrast = {
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
 		{
 			id: 'contrast.contrast',
@@ -115,9 +115,8 @@ const breakpoint = {
 const color = {
 	initial: '',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'stack',
 	size: '2xs',
-	container: 'card',
 	items: [
 		{
 			id: 'color.primary',
@@ -146,9 +145,8 @@ const color = {
 const variant = {
 	initial: 'fill',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'stack',
 	size: '2xs',
-	container: 'card',
 	items: [
 		{id: 'variant.fill', text: 'fill', value: 'fill', variant: 'fill'},
 		{
@@ -164,12 +162,23 @@ const variant = {
 const shape = {
 	initial: '',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex',
 	size: '2xs',
-	variant: 'card',
 	items: [
-		{id: 'shape.round', text: 'round', value: 'round'},
-		{id: 'shape.square', text: 'square', value: 'square'},
+		{
+			id: 'shape.round',
+			text: 'round',
+			value: 'round',
+			shape: 'round',
+			asset: 'round',
+		},
+		{
+			id: 'shape.square',
+			text: 'square',
+			value: 'square',
+			shape: 'square',
+			asset: 'square',
+		},
 	],
 }
 
@@ -178,7 +187,7 @@ const dimensions = {
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
 		{id: 'dimensions.video', text: 'video', value: 'video'},
 		{id: 'dimensions.twin', text: 'twin', value: 'twin'},
@@ -191,7 +200,7 @@ const background = {
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
 		{id: 'background.layer', text: 'layer', value: 'layer'},
 		{id: 'background.box', text: 'box', value: 'box'},
@@ -203,8 +212,7 @@ const status = {
 	initial: 'default',
 	input: 'radio',
 	layout: 'stack',
-	size: '2xs',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
 		{
 			id: 'status.default',
@@ -243,11 +251,9 @@ const context = {
 	initial: 'form',
 	input: 'radio',
 	layout: 'stack',
-	size: '2xs',
-	container: '',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
-		{id: 'context.form', text: 'form', value: 'form'},
+		{id: 'context.prose', text: 'prose', value: 'prose'},
 		{id: 'context.code', text: 'code', value: 'code'},
 	],
 }
@@ -255,9 +261,8 @@ const context = {
 const asset = {
 	initial: 'default',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex',
 	size: '2xs',
-	variant: 'card',
 	mode: 'radio',
 	items: [
 		{
@@ -265,24 +270,28 @@ const asset = {
 			text: 'profile',
 			value: 'profile',
 			asset: 'profile',
+			shape: 'square',
 		},
 		{
 			id: 'asset.favorite',
 			text: 'favorite',
 			value: 'favorite',
 			asset: 'favorite',
+			shape: 'square',
 		},
 		{
 			id: 'asset.idea',
 			text: 'idea',
 			value: 'idea',
 			asset: 'idea',
+			shape: 'square',
 		},
 		{
 			id: 'asset.default',
 			text: 'default',
 			value: 'default',
 			asset: 'default',
+			shape: 'square',
 		},
 	],
 }
@@ -298,7 +307,7 @@ const content = {
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
 		{id: 'content.card', text: 'card', value: 'card'},
 		{id: 'content.form', text: 'form', value: 'form'},
@@ -311,7 +320,7 @@ const side = {
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
 		{id: 'side.card', text: 'card', value: 'card'},
 		{id: 'side.form', text: 'form', value: 'form'},
@@ -324,7 +333,7 @@ const main = {
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
-	variant: 'outline',
+	variant: 'bare',
 	items: [
 		{id: 'main.card', text: 'card', value: 'card'},
 		{id: 'main.form', text: 'form', value: 'form'},
@@ -336,36 +345,34 @@ const settingsFamily = {
 	layout: 'flex',
 	size: 'xs',
 	justify: 'end',
-	container: 'card:2xs ',
 	props: ['brightness', 'contrast'],
 }
 
 const elementFamily = {
 	layout: 'switcher',
 	size: 'xs',
-	variant: 'card:xl',
 	props: ['color', 'variant', 'size', 'status', 'context', 'asset', 'shape'],
 }
 
 const containerFamily = {
 	layout: 'switcher',
 	size: 'xs',
-	variant: 'card',
+	container: 'card',
+	variant: 'bare',
 	props: ['container', 'size'],
 }
 
 const layoutFamily = {
 	layout: 'switcher',
-	container: 'card',
 	size: 'xs',
-	variant: 'card',
+	container: 'card',
+	variant: 'bare',
 	props: ['size', 'layout', 'threshold', 'breakpoint'],
 }
 
 const contentFamily = {
 	layout: 'switcher',
 	size: 'xs',
-	variant: 'card',
 	props: ['content', 'side', 'main'],
 }
 
