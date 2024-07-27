@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.8
+
+### Patch Changes
+
+- bdba519: Update docs, bugfixes
+
 ## 0.1.7
 
 ### Patch Changes
