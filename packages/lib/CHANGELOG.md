@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.12
+
+### Patch Changes
+
+- bdba519: Update docs, bugfixes
+
 ## 0.1.11
 
 ### Patch Changes
