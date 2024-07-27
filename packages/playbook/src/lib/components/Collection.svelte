@@ -53,7 +53,7 @@
 		{@const component = components[name]}
 		<Element
 			title={name}
-			depth={Number(depth) + 1}
+			depth={isPage ? Number(depth) + 1 : Number(depth) + 2}
 			{path}
 			{category}
 			{component}

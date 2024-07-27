@@ -12,6 +12,11 @@
 		--lightness-contrast: var(--color-lightness-600);
 		--lightness-focus: var(--color-lightness-400);
 		--lightness-contrast-focus: var(--color-lightness-000);
+		--lightness-ui-base: var(--color-lightness-300);
+		--lightness-ui-base-pressed-hover: var(--color-lightness-400);
+		--lightness-ui-contrast-base: var(--color-lightness-light-base);
+		--lightness-ui-hover-base: var(--color-lightness-400);
+		--lightness-ui-hover-contrast-base: var(--color-lightness-light-base);
 		--lightness-surface-1: var(--color-lightness-000);
 		--lightness-surface-1-contrast: var(--color-lightness-400);
 		--lightness-surface-2: var(--color-lightness-100);
@@ -63,6 +68,11 @@
 		--lightness-contrast: var(--color-lightness-000);
 		--lightness-focus: var(--color-lightness-500);
 		--lightness-contrast-focus: var(--color-lightness-100);
+		--lightness-ui-base: var(--color-lightness-400);
+		--lightness-ui-base-pressed-hover: var(--color-lightness-300);
+		--lightness-ui-contrast-base: var(--color-lightness-light-base);
+		--lightness-ui-hover-base: var(--color-lightness-300);
+		--lightness-ui-hover-contrast-base: var(--color-lightness-light-base);
 		--lightness-surface-1: var(--color-lightness-600);
 		--lightness-surface-1-contrast: var(--color-lightness-200);
 		--lightness-surface-2: var(--color-lightness-500);
@@ -113,6 +123,11 @@
 	--lightness-contrast: var(--color-lightness-600);
 	--lightness-focus: var(--color-lightness-400);
 	--lightness-contrast-focus: var(--color-lightness-000);
+	--lightness-ui-base: var(--color-lightness-300);
+	--lightness-ui-base-pressed-hover: var(--color-lightness-400);
+	--lightness-ui-contrast-base: var(--color-lightness-light-base);
+	--lightness-ui-hover-base: var(--color-lightness-400);
+	--lightness-ui-hover-contrast-base: var(--color-lightness-light-base);
 	--lightness-surface-1: var(--color-lightness-000);
 	--lightness-surface-1-contrast: var(--color-lightness-400);
 	--lightness-surface-2: var(--color-lightness-100);
@@ -163,6 +178,11 @@
 	--lightness-contrast: var(--color-lightness-000);
 	--lightness-focus: var(--color-lightness-500);
 	--lightness-contrast-focus: var(--color-lightness-100);
+	--lightness-ui-base: var(--color-lightness-400);
+	--lightness-ui-base-pressed-hover: var(--color-lightness-300);
+	--lightness-ui-contrast-base: var(--color-lightness-light-base);
+	--lightness-ui-hover-base: var(--color-lightness-300);
+	--lightness-ui-hover-contrast-base: var(--color-lightness-light-base);
 	--lightness-surface-1: var(--color-lightness-600);
 	--lightness-surface-1-contrast: var(--color-lightness-200);
 	--lightness-surface-2: var(--color-lightness-500);
