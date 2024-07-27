@@ -1,10 +1,11 @@
 ---
-title: App Template
+title: 'Templates'
 date: 'YYYY-MM-DD'
 updated: null
-slug: app-template
-id: '003'
-status: 'draft'
+slug: templates
+asset: template
+id: '009'
+status: draft
 tags: ['example', 'doc', 'app']
 ---
 

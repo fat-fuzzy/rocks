@@ -11,8 +11,8 @@ tags: ['example', 'doc', 'packages', 'wip']
 
 This project contains the following packages :
 
-- **[@fat-fuzzy/config](https://github.com/fat-fuzzy/rocks/tree/main/packages/config)** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
-- **[@fat-fuzzy/markdown](https://github.com/fat-fuzzy/rocks/tree/main/packages/markdown)** a utility package for loading markdown files
+**Frontend & Exploratory Packages**
+
 - **[@fat-fuzzy/style](https://github.com/fat-fuzzy/rocks/tree/main/packages/style)** a CSS library
 - **[@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui)** a frontend component library written in Svelte
 - **[@fat-fuzzy/playbook](https://github.com/fat-fuzzy/rocks/tree/main/packages/playbook)** a library used to display, document and test the `@fat-fuzzy/style` and `@fat-fuzzy/ui` packages, started as a way to replace Storybook (you can read about this decision [here](/doc/decisions/simplify-doc))
@@ -20,6 +20,11 @@ This project contains the following packages :
 - **[@fat-fuzzy/lib](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib)** Libraries unrelated to tooling: logic and experiments
   - 👾 gfx - everything related to working with web graphics, except the interface
   - ...
+
+**Utility Packages**
+
+- **[@fat-fuzzy/config](https://github.com/fat-fuzzy/rocks/tree/main/packages/config)** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
+- **[@fat-fuzzy/markdown](https://github.com/fat-fuzzy/rocks/tree/main/packages/markdown)** a utility package for loading markdown files
 - **[@fat-fuzzy/git-poule](https://github.com/fat-fuzzy/rocks/tree/main/packages/git-poule)** a tool to extract commit data
 
 ## Usage Examples
