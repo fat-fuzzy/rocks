@@ -3,7 +3,6 @@ title: 'Templates'
 date: 'YYYY-MM-DD'
 updated: null
 slug: templates
-asset: template
 id: '009'
 status: draft
 tags: ['example', 'doc', 'app']
