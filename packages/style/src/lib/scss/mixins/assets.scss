@@ -143,7 +143,7 @@ $emojis: (
 	clear: #{$spouting-whale},
 	stop: #{$yellow-square},
 	update: #{$lightning},
-	404: #{$hole},
+	not-found: #{$hole},
 
 	// Sketches
 	random: #{$slot-machine},
@@ -161,10 +161,10 @@ $emojis: (
 	multiple-tex: #{$new-moon-face},
 
 	// Packages emojis
-	page-style: #{$lipstick},
-	page-ui: #{$tree},
-	page-playbook: #{$roller-skate},
-	page-sketch: #{$rainbow},
-	page-gfx: #{$invader},
-	page-git-poule: #{$hatching-chick}
+	package-style: #{$lipstick},
+	package-ui: #{$tree},
+	package-playbook: #{$roller-skate},
+	package-sketch: #{$rainbow},
+	package-gfx: #{$invader},
+	package-git-poule: #{$hatching-chick}
 );
