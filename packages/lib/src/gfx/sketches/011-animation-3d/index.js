@@ -29,7 +29,7 @@ let meta = {
 	id: '011',
 	slug: 'animation-3d',
 	title: 'Animation 3D',
-	asset: 'emoji:animation-3d',
+	asset: 'animation-3d',
 	tags: ['3D', 'matrix', 'camera' /* , 'webgl' */],
 	controls: ['matrix-3d', 'loop'],
 }

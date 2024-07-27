@@ -40,7 +40,7 @@ let meta = {
 	id: '012',
 	slug: 'texture',
 	title: 'Texture',
-	asset: 'emoji:texture',
+	asset: 'texture',
 	tags: ['color', 'texture' /* , 'webgl' */],
 	controls: ['texture'],
 	filename: 'plants.png',

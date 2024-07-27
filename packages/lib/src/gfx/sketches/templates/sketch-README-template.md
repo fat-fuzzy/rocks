@@ -3,7 +3,7 @@ title: A Feature
 date: '2022'
 slug: poop
 id: '000'
-emoji: '💩'
+asset: 'poop'
 ---
 
 ## 🚧 WHat / Why
