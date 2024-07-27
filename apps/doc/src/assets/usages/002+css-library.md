@@ -58,6 +58,7 @@ None besides a Node.js environment and a `package.json`
 ## TODO
 
 - optimize CSS loading strategy
+- load custom design tokens
 - CSS library:
   - a11y testing
   - design tokens doc
