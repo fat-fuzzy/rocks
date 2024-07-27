@@ -30,9 +30,7 @@
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "^2.0.0",
-		"svelte": "^5.0.0",
-		"@fat-fuzzy/style": "^workspace",
-		"@fat-fuzzy/ui": "^workspace"
+		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
