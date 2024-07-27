@@ -7,12 +7,12 @@ id: '000'
 tags: ['example', 'doc', 'monorepo', 'wip']
 ---
 
-### Stack
+## Stack
 
 The main technologies I use to build this project are HTML, CSS, [Svelte](https://svelte.dev/) (with TypeScript), and Markdown.
 There are also some WebGL shaders, that I add as I continue to learn, and I might add a backend at some point.
 
-### Packages Overview
+## Packages Overview
 
 The repository is organized into three workspaces (these are top-level directories in the repository):
 
