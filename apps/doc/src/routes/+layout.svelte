@@ -22,8 +22,8 @@
 	let contrast = $derived(app.settings.contrast)
 	let pageClass = $derived(utils.format.getClassNameFromPathname($page.url.pathname))
 	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
-	let footerClass = "card:xs"
-	let aboutContainerClass = $derived(pageClass === 'page:home' ? "card:xl" : "")
+	let footerClass = 'card:xs'
+	let aboutContainerClass = $derived(pageClass === 'page:home' ? 'card:xl' : '')
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 
 	function updateSettings(event) {

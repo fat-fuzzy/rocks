@@ -1,10 +1,11 @@
 ---
-title: CSS Library
+title: Style
 date: '2024-07-27'
 updated: null
-slug: css-library
+slug: style
+asset: page-style
 id: '002'
-tags: ['example', 'doc', 'css', 'wip']
+tags: ['example', 'doc', 'css', 'packages','wip']
 ---
 
 ## Contents
