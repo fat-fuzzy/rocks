@@ -1,11 +1,11 @@
 button {
 	--hue: var(--color-theme-primary);
 	--chroma: var(--color-chroma-neutral);
-	--lightness: var(--color-lightness-300);
-	--lightness-accent: var(--color-lightness-300);
-	--lightness-contrast: var(--lightness-base);
+	--lightness: var(--lightness-ui-base);
+	--lightness-accent: var(--lightness-ui-base);
+	--lightness-contrast: var(--lightness-ui-contrast-base);
 	--chroma-contrast: var(--chroma-base);
-	--chroma-accent: var(--color-chroma-300);
+	--chroma-accent: var(--color-chroma-400);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
@@ -28,16 +28,16 @@ button {
 }
 
 button.variant\:fill {
-	--lightness: var(--color-lightness-300);
-	--lightness-accent: var(--color-lightness-300);
-	--lightness-contrast: var(--lightness-base);
+	--lightness: var(--lightness-ui-base);
+	--lightness-accent: var(--lightness-ui-base);
+	--lightness-contrast: var(--lightness-ui-contrast-base);
 	background-color: var(--shade);
 	border-color: var(--accent);
 }
 
 button.variant\:outline {
 	--lightness: var(--color-lightness-600);
-	--lightness-accent: var(--color-lightness-300);
+	--lightness-accent: var(--lightness-ui-base);
 	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
 	border-color: var(--accent);
@@ -77,7 +77,7 @@ button.variant\:bare:active {
 
 [aria-pressed='true'] {
 	&.variant\:fill {
-		--lightness: var(--color-lightness-400);
+		--lightness: var(--color-lightness-500);
 		--lightness-contrast: var(--color-lightness-000);
 
 		&:active {
@@ -86,7 +86,7 @@ button.variant\:bare:active {
 		}
 
 		&:hover {
-			--lightness: var(--color-lightness-500);
+			--lightness: var(--lightness-ui-base-pressed-hover);
 			--lightness-contrast: var(--color-lightness-000);
 		}
 	}
