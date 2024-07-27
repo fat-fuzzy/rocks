@@ -7,6 +7,7 @@ const pages: {[page: string]: any} = {
 	doc: await import.meta.glob('/src/assets/pages/doc.md'),
 	play: await import.meta.glob('/src/assets/pages/play.md'),
 	ui: await import.meta.glob('/src/assets/pages/ui.md'),
+	blog: await import.meta.glob('/src/assets/pages/blog.md'),
 }
 
 async function fetchMarkdowns(page: string) {
