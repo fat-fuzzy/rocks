@@ -6,7 +6,7 @@ slug: playbook
 asset: package-playbook
 id: '005'
 status: draft
-tags: ['example', 'doc', 'playbook', 'packages']
+tags: ['example', 'doc', 'playbook', 'packages', 'wip']
 ---
 
 ## Contents

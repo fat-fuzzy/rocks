@@ -5,7 +5,7 @@ updated: null
 slug: sketch
 asset: package-sketch
 id: '006'
-tags: ['example', 'doc', 'sketch', 'packages']
+tags: ['example', 'doc', 'sketch', 'packages', 'wip']
 ---
 
 ## Contents
@@ -26,5 +26,7 @@ This package is used in conjunction with the [@fat-fuzzy/lib](https://github.com
 ```shell
 pnpm i -D @fat-fuzzy/sketch
 ```
+
+[TODO]
 
 You can see how the interface is rendered in the [PLAY](/play) page's sketches.
