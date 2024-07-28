@@ -1,6 +1,6 @@
-import type {PlaywrightTestConfig} from '@playwright/test'
+/** @type { import("@playwright/test").PlaywrightTestConfig } */
 
-const config: PlaywrightTestConfig = {
+const config = {
 	webServer: {
 		command: 'pnpm build && pnpm preview', // This will run tests in watch mode
 		port: 4173,
