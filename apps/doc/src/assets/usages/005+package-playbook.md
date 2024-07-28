@@ -10,7 +10,9 @@ tags: ['example', 'doc', 'playbook', 'packages', 'wip']
 
 ## Contents
 
-This package is used to render the documentation and interactive demos of the UI library
+This package is used to render the documentation and interactive demos of the UI library.
+
+You can see how that renders here: [UI](/ui)
 
 ### Requirements
 
@@ -43,7 +45,7 @@ Build the routing structure using this example: [UI route for @fat-fuzzy/doc](ht
 
 ### Providing content
 
-The components' documentation content from their corresponding markdown assets, which must be located in the `src/assets/ui` folder of the doc website (assuming `ui` is the name of the route used to render the demo).
+The components' documentation content comes from their corresponding markdown assets, which must be located in the `src/assets/ui` folder of the doc website (assuming `ui` is the name of the route used to render the demo).
 
 The markdown also provides the metadata necessary to render the inputs for the style props required by the element.
 
@@ -54,5 +56,3 @@ Here is what that looks like for the UI library in this site: [UI Library Markdo
 ## Resources
 
 - [@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui)
-
-You can see how this package renders the UI library doc here: [UI](/ui)
