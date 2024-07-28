@@ -23,7 +23,7 @@
 	{/snippet}
 	{#key scene}
 		{#if scene}
-			<Sketch id={`sketch-${scene.meta.id}`} {scene} size="sm" {dev}/>
+			<Sketch {scene} size="sm" {dev}/>
 		{/if}
 	{/key}
 </PageMain>

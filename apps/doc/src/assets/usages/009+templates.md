@@ -15,11 +15,11 @@ Examples
 
 [TODO]
 
-## Requirements
+### Requirements
 
 [TODO]
 
-## Getting started
+### Usage
 
 [TODO]
 

@@ -13,11 +13,14 @@ tags: ['example', 'doc', 'sketch', 'packages']
 
 This package is used to render the documentation and interactive demos of the UI library
 
-## Requirements
+### Requirements
 
 - [Svelte](https://svelte.dev/)
+- [@fat-fuzzy/style](https://github.com/fat-fuzzy/rocks/tree/main/packages/style)
+- [@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui)
+- [@fat-fuzzy/lib](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib)
 
-## 🚧 Getting started
+### Usage
 
 1. Install the package as a `devDependency`:
 
@@ -25,12 +28,4 @@ This package is used to render the documentation and interactive demos of the UI
 pnpm i -D @fat-fuzzy/sketch
 ```
 
-[TODO]
-
-## 🚧 Resources
-
-[TODO]
-
-## TODO
-
-[TODO]
+Use in conjunction with the [@fat-fuzzy/lib](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib) package to display graphics programs

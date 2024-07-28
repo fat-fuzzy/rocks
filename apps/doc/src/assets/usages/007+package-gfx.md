@@ -16,11 +16,15 @@ This package contains:
 - a collection of `sketches`: these are self contained programs that can be rendered by the Sketch library
 - learning notes
 
-## Requirements
+### Requirements
 
-[TODO]
+A Node.js environment and a `package.json`
 
-## 🚧 Getting started
+Sketches can be rendered using this package:
+
+- [@fat-fuzzy/sketch](https://github.com/fat-fuzzy/rocks/tree/main/packages/sketch)
+
+### Usage
 
 1. Install the package as a `devDependency`:
 
@@ -28,11 +32,26 @@ This package contains:
 pnpm i -D @fat-fuzzy/lib
 ```
 
-[TODO]
+Import and use the sketches:
 
-🚧 WIP
+```js
+
+<script lang="ts">
+ import {dev} from '$app/environment'
+ import lib from '@fat-fuzzy/lib'
+ import {graphics} from '@fat-fuzzy/sketch'
+  
+ let scene = $derived(
+  lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),
+ )
+</script>
+
+<Sketch {scene} size="sm" {dev}/>
+```
 
 ### GLSL
+
+[TODO]
 
 ```js
 import shader from '/some/shader.glsl?raw'
