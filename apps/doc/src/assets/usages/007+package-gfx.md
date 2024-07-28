@@ -26,7 +26,7 @@ Sketches can be rendered using this package:
 
 ### Usage
 
-1. Install the package as a `devDependency`:
+Install the package as a `devDependency`:
 
 ```shell
 pnpm i -D @fat-fuzzy/lib
@@ -49,9 +49,22 @@ Import and use the sketches:
 <Sketch {scene} size="sm" {dev}/>
 ```
 
+GFX library sketches are modules that expose the following functions:
+
+```js
+function init(canvas) {}
+function main(canvas) {}
+function update(context) {} // context depends on the type of program
+function clear() {}
+function stop() {}
+function draw(t) {} // t is for time, an optional parameter
+```
+
+[TODO] : elaborate doc about graphics programs
+
 ### GLSL
 
-[TODO]
+Importing a shader in vite:
 
 ```js
 import shader from '/some/shader.glsl?raw'

@@ -10,7 +10,7 @@ tags: ['example', 'doc', 'sketch', 'packages']
 
 ## Contents
 
-This package is used to render the documentation and interactive demos of the UI library
+This package is used in conjunction with the [@fat-fuzzy/lib](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib) package to display graphics programs.
 
 ### Requirements
 
@@ -27,4 +27,4 @@ This package is used to render the documentation and interactive demos of the UI
 pnpm i -D @fat-fuzzy/sketch
 ```
 
-Use in conjunction with the [@fat-fuzzy/lib](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib) package to display graphics programs
+You can see how the interface is rendered in the [PLAY](/play) page's sketches.

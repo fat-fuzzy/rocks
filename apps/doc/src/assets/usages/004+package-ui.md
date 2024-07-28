@@ -19,11 +19,10 @@ This package contains a library written in Svelte that exposes generic, reusable
 
 ### Usage
 
-1. Install the package as a `devDependency`:
+Install the package as a `devDependency` and then use the components as any Svelte component.
 
 ```shell
 pnpm i -D @fat-fuzzy/ui
 ```
 
-Use the components in your app as any Svelte component.
-This library has a [dedicated documentation page](/ui).
+This library has a dedicated documentation page here: [UI](/ui).

@@ -27,13 +27,13 @@ The following packages contain shared utilities:
 
 ### Usage
 
-1. Install the package as a `devDependency` in your package:
+Install the package as a `devDependency` in your package:
 
 ```shell
 pnpm i -D @fat-fuzzy/config
 ```
 
-1. Import the shared config in another package:
+Import the shared config in another package:
 
 ```js
 // in .packages/new-package/.eslintrc.js
@@ -65,8 +65,7 @@ Set the `prettier.configPath` in `.vscode/settings.json`
 {
  "prettier.configPath": "./prettier.config.js"
 }
-,,,
-
+```
 
 If you use a VSCode workspace and you add folders outside the root folder the Explorer view (the sidebar view of your folders), then you have to set `prettier.configPath` for that folder in a `.code-workspace` file located under the main project root folder:
 
@@ -103,7 +102,7 @@ If you use a VSCode workspace and you add folders outside the root folder the Ex
 
 ### Usage
 
-1. Install the `commitizen` and `cz-conventional-changelog` in the repository root:
+Install the `commitizen` and `cz-conventional-changelog` in the repository root:
 
 ```shell
 pnpm i -D commitizen cz-conventional-changelog
@@ -138,7 +137,7 @@ add a `.czrc` config with the following shape:
 
 ## Markdown
 
-1. Install the package as a `devDependency`:
+Install the package as a `devDependency`:
 
 ```shell
 pnpm i -D @fat-fuzzy/markdown
