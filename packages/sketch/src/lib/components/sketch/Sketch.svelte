@@ -27,7 +27,6 @@
 	import {DEFAULT_FILTERS} from './types.js'
 
 	type Props = {
-		id: string
 		scene: Scene
 		title: string
 		asset: string
@@ -43,7 +42,6 @@
 	}
 
 	let {
-		id = 'sketch',
 		scene,
 		layer = '0', // if 'layer' the canvas will appear on a layer (with drop shadow)
 		color,
@@ -55,6 +53,7 @@
 		dev,
 	}: Props = $props()
 
+	let id = $derived(scene.meta?.id ? `sketch-${scene.meta.id}` : 'sketch')
 	let debug = dev
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
