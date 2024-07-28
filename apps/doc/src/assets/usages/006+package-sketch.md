@@ -27,6 +27,6 @@ This package is used in conjunction with the [@fat-fuzzy/lib](https://github.com
 pnpm i -D @fat-fuzzy/sketch
 ```
 
-[TODO]
+Use it in conjunction with the `@fat-fuzzy/lib` as detailed in the [Usage | GFX](/doc/usage/gfs) page.
 
 You can see how the interface is rendered in the [PLAY](/play) page's sketches.

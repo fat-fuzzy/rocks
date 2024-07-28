@@ -36,6 +36,7 @@ Import and use the sketches:
 
 ```js
 <script lang="ts">
+
  import {dev} from '$app/environment'
  import lib from '@fat-fuzzy/lib'
  import {graphics} from '@fat-fuzzy/sketch'

@@ -23,13 +23,13 @@ None besides a Node.js environment and a `package.json`
 
 ### Usage
 
-1. Install the package as a `devDependency`:
+Install the package as a `devDependency`:
 
 ```shell
 pnpm i -D @fat-fuzzy/style
 ```
 
-1. Then:
+Then:
 
 Import the full minified CSS using JavaScript, for example in `+layout.svelte`:
 
