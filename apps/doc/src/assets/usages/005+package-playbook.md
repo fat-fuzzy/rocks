@@ -26,22 +26,30 @@ This package is used to render the documentation and interactive demos of the UI
 pnpm i -D @fat-fuzzy/playbook
 ```
 
-Build the routing structure using this example: [@fat-fuzzy/doc UI route](https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/routes/ui)
+### UI Library requirements
 
-The structure assumes you have a UI library that exports components grouped into five `StyleFamily` constants:
+The `Playground`  component assumes that the UI library exports components grouped into five objects:
 
-- tokens
-- blocks
-- layouts
-- recipes
+- `tokens`
+- `blocks`
+- `layouts`
+- `recipes`
 
-You can see how this is done for the UI library package: [@fat-fuzzy/ui library exports](https://github.com/fat-fuzzy/rocks/blob/main/packages/ui/src/lib/index.ts)
+You can see how this is done for the UI library package: [exports from @fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/blob/main/packages/ui/src/lib/index.ts)
 
-The components will be rendered using the props that are declared in its corresponding markdown asset, which must be included in the `src/assets/ui` folder of the doc website.
+### Building the pages
+
+Build the routing structure using this example: [UI route for @fat-fuzzy/doc](https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/routes/ui)
+
+### Providing content
+
+The components' documentation content from their corresponding markdown assets, which must be located in the `src/assets/ui` folder of the doc website (assuming `ui` is the name of the route used to render the demo).
+
+The markdown also provides the metadata necessary to render the inputs for the style props required by the element.
 
 Here is what that looks like for the UI library in this site: [UI Library Markdown assets](https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/assets/ui)
 
-[TODO] Elaborate on how this thing was built
+[TODO] Elaborate on how this thing was built and how it works
 
 ## Resources
 
