@@ -12,21 +12,20 @@ tags: ['example', 'doc', 'utilities', 'config', 'packages']
 
 The following packages contain shared utilities:
 
-- **[@fat-fuzzy/config](https://github.com/fat-fuzzy/rocks/tree/main/packages/config)**
-- **[@fat-fuzzy/markdown](https://github.com/fat-fuzzy/rocks/tree/main/packages/markdown)**: a package adapted from [@bjornlu/markdown](https://github.com/bluwy/website/tree/master/packages/markdown) to process markdown contents [TODO: use this lib!]
-  - You might also want to check out [this discussion on GitHub](https://github.com/vitejs/vite/discussions/13808) concerning the emission of static assets in Vite
+- **[@fat-fuzzy/config](https://github.com/fat-fuzzy/rocks/tree/main/packages/config)** shared configuration
+- **[@fat-fuzzy/markdown](https://github.com/fat-fuzzy/rocks/tree/main/packages/markdown)**: a package adapted from [@bjornlu/markdown](https://github.com/bluwy/website/tree/master/packages/markdown) to process markdown contents
 - **[@fat-fuzzy/cz-changelog](https://github.com/fat-fuzzy/rocks/tree/main/packages/cz-changelog)** This is a package that takes the [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) and adapts it to produce commit comments as specified in [@fat-fuzzy/git-poule](https://github.com/fat-fuzzy/rocks/tree/main/packages/git-poule).
 
 ## Config
 
-**Requirements**
+### Requirements
 
 - [prettier](https://prettier.io/docs/en/install)
 - [eslint](https://eslint.org/docs/latest/extend/shareable-configs)
 - [playwright](https://playwright.dev/docs/intro)
 - [stylelint](https://stylelint.io/user-guide/configure/)
 
-**Usage**
+### Usage
 
 1. Install the package as a `devDependency` in your package:
 
@@ -102,7 +101,7 @@ If you use a VSCode workspace and you add folders outside the root folder the Ex
 - [commitizen](https://github.com/commitizen/cz-cli)
 - [cz-conventional-changelog](https://eslint.org/docs/latest/extend/shareable-configs)
 
-**Usage**
+### Usage
 
 1. Install the `commitizen` and `cz-conventional-changelog` in the repository root:
 
@@ -146,3 +145,9 @@ pnpm i -D @fat-fuzzy/markdown
 ```
 
 [TODO] Usage notes (I'm not currently using this package)
+
+### Resources on Asset management
+
+- [Images in SvelteKit](https://kit.svelte.dev/docs/images)
+- [Vite asset management](https://vitejs.dev/guide/assets.html)
+- [This discussion on GitHub](https://github.com/vitejs/vite/discussions/13808) concerning the emission of static assets in Vite

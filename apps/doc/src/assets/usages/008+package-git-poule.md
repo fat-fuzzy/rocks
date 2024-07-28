@@ -59,9 +59,9 @@ null, "5ec9b8a", "02/09/2023", "2023", "sept.", "02", "21:12", "🎉", null, "SC
 
 This script assumes that you have a repo with a commit convention configuration as described above. If the commit conventions vary, the script has to be adapted to fit those conventions.
 
-## Usage
+### Usage
 
-### Commit Data
+#### Commit Data
 
 Inside a git repository
 
@@ -71,7 +71,7 @@ Inside a git repository
 
 This will output a `commits.csv` in the current directory.
 
-### Commit Conventions Data
+#### Commit Conventions Data
 
 A second script can be used to extract commit conventions data from the local `.czrc` file:
 
@@ -81,51 +81,51 @@ A second script can be used to extract commit conventions data from the local `.
 
 This will output a `commit_types.csv` in the current directory.
 
-## JSON
+### JSON
 
 An earlier version of the script output a JSON file under the following format:
 
 ```json
 {
-	"commits": [
-		["PR", "HASH", "TIMESTAMP", "EMOJI", "SCOPE", "DESCRIPTION", "AUTHOR"],
-		[
-			null,
-			"fd376f5",
-			"1702558783",
-			"fix:",
-			null,
-			"Update dependency X",
-			"bot-name"
-		],
-		[
-			null,
-			"686ae3b",
-			"1705074852",
-			"🚧",
-			"root",
-			"Deprecate some feature",
-			"author-name"
-		],
-		[
-			null,
-			"c7d83d9",
-			"1573663878",
-			"💄",
-			"ui",
-			"New Layout class definitions",
-			"author-name"
-		],
-		[
-			null,
-			"5ec9b8a",
-			"1573663745",
-			"🎉",
-			null,
-			"Initial commit - README",
-			"author-name"
-		]
-	]
+ "commits": [
+  ["PR", "HASH", "TIMESTAMP", "EMOJI", "SCOPE", "DESCRIPTION", "AUTHOR"],
+  [
+   null,
+   "fd376f5",
+   "1702558783",
+   "fix:",
+   null,
+   "Update dependency X",
+   "bot-name"
+  ],
+  [
+   null,
+   "686ae3b",
+   "1705074852",
+   "🚧",
+   "root",
+   "Deprecate some feature",
+   "author-name"
+  ],
+  [
+   null,
+   "c7d83d9",
+   "1573663878",
+   "💄",
+   "ui",
+   "New Layout class definitions",
+   "author-name"
+  ],
+  [
+   null,
+   "5ec9b8a",
+   "1573663745",
+   "🎉",
+   null,
+   "Initial commit - README",
+   "author-name"
+  ]
+ ]
 }
 ```
 

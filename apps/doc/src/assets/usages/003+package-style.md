@@ -17,11 +17,11 @@ The package's exports are:
 - a prettified, fully concatenated `main.css` stylesheet
 - individual stylesheets under `css/**`
 
-## Requirements
+### Requirements
 
 None besides a Node.js environment and a `package.json`
 
-## 🚧 Getting started
+### Usage
 
 1. Install the package as a `devDependency`:
 
@@ -47,13 +47,13 @@ import '@fat-fuzzy/style/css/blocks/button.css'
 
 ```html
 <link
-	href="{% static 'styles/css/main.css' %}"
-	rel="stylesheet"
-	type="text/css"
+ href="{% static 'styles/css/main.css' %}"
+ rel="stylesheet"
+ type="text/css"
 />
 ```
 
-## 🚧 Resources
+## Resources
 
 - [CUBE CSS](https://cube.fyi/)
 - [Open Props](https://open-props.style/)
