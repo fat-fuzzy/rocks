@@ -87,13 +87,45 @@ An earlier version of the script output a JSON file under the following format:
 
 ```json
 {
- "commits": [
-  ["PR", "HASH", "TIMESTAMP", "EMOJI", "SCOPE", "DESCRIPTION", "AUTHOR"],
-  [null, "fd376f5", "1702558783", "fix:", null, "Update dependency X", "bot-name"],
-  [null, "686ae3b", "1705074852", "🚧", "root", "Deprecate some feature", "author-name"],
-  [null, "c7d83d9", "1573663878", "💄", "ui", "New Layout class definitions", "author-name"],
-  [null, "5ec9b8a", "1573663745", "🎉", null, "Initial commit - README", "author-name"]
- ]
+	"commits": [
+		["PR", "HASH", "TIMESTAMP", "EMOJI", "SCOPE", "DESCRIPTION", "AUTHOR"],
+		[
+			null,
+			"fd376f5",
+			"1702558783",
+			"fix:",
+			null,
+			"Update dependency X",
+			"bot-name"
+		],
+		[
+			null,
+			"686ae3b",
+			"1705074852",
+			"🚧",
+			"root",
+			"Deprecate some feature",
+			"author-name"
+		],
+		[
+			null,
+			"c7d83d9",
+			"1573663878",
+			"💄",
+			"ui",
+			"New Layout class definitions",
+			"author-name"
+		],
+		[
+			null,
+			"5ec9b8a",
+			"1573663745",
+			"🎉",
+			null,
+			"Initial commit - README",
+			"author-name"
+		]
+	]
 }
 ```
 

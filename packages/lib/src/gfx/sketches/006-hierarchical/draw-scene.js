@@ -19,9 +19,16 @@ function drawScene(gl, programInfo, buffers) {
 	// Set the aspect ratio to the display dimensions of the canvas
 
 	// set the resolution
-	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
+	gl.uniform2f(
+		programInfo.uniformLocations.u_resolution,
+		gl.canvas.width,
+		gl.canvas.height,
+	)
 	// Set a random color.
-	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.context.color)
+	gl.uniform4f(
+		programInfo.uniformLocations.u_color,
+		...programInfo.context.color,
+	)
 
 	// Compute Matrices
 	const translationMatrix = M3.translation(...programInfo.context.translation)

@@ -197,14 +197,23 @@ function render(image) {
 	var normalize = false // don't normalize the data
 	var stride = 0 // 0 = move forward size * sizeof(type) each iteration to get the next position
 	var offset = 0 // start at the beginning of the buffer
-	gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
+	gl.vertexAttribPointer(
+		positionAttributeLocation,
+		size,
+		type,
+		normalize,
+		stride,
+		offset,
+	)
 
 	// provide texture coordinates for the rectangle.
 	var texCoordBuffer = gl.createBuffer()
 	gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer)
 	gl.bufferData(
 		gl.ARRAY_BUFFER,
-		new Float32Array([0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0]),
+		new Float32Array([
+			0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0,
+		]),
 		gl.STATIC_DRAW,
 	)
 
@@ -217,7 +226,14 @@ function render(image) {
 	var normalize = false // don't normalize the data
 	var stride = 0 // 0 = move forward size * sizeof(type) each iteration to get the next position
 	var offset = 0 // start at the beginning of the buffer
-	gl.vertexAttribPointer(texCoordAttributeLocation, size, type, normalize, stride, offset)
+	gl.vertexAttribPointer(
+		texCoordAttributeLocation,
+		size,
+		type,
+		normalize,
+		stride,
+		offset,
+	)
 
 	function createAndSetupTexture(gl) {
 		var texture = gl.createTexture()
@@ -240,7 +256,14 @@ function render(image) {
 	var internalFormat = gl.RGBA // format we want in the texture
 	var srcFormat = gl.RGBA // format of data we are supplying
 	var srcType = gl.UNSIGNED_BYTE // type of data we are supplying
-	gl.texImage2D(gl.TEXTURE_2D, mipLevel, internalFormat, srcFormat, srcType, image)
+	gl.texImage2D(
+		gl.TEXTURE_2D,
+		mipLevel,
+		internalFormat,
+		srcFormat,
+		srcType,
+		image,
+	)
 
 	// create 2 textures and attach them to framebuffers.
 	var textures = []
@@ -275,7 +298,13 @@ function render(image) {
 
 		// Attach a texture to it.
 		var attachmentPoint = gl.COLOR_ATTACHMENT0
-		gl.framebufferTexture2D(gl.FRAMEBUFFER, attachmentPoint, gl.TEXTURE_2D, texture, mipLevel)
+		gl.framebufferTexture2D(
+			gl.FRAMEBUFFER,
+			attachmentPoint,
+			gl.TEXTURE_2D,
+			texture,
+			mipLevel,
+		)
 	}
 
 	// Bind the position buffer so gl.bufferData that will be called
@@ -288,13 +317,17 @@ function render(image) {
 	// Define several convolution kernels
 	var kernels = {
 		normal: [0, 0, 0, 0, 1, 0, 0, 0, 0],
-		gaussianBlur: [0.045, 0.122, 0.045, 0.122, 0.332, 0.122, 0.045, 0.122, 0.045],
+		gaussianBlur: [
+			0.045, 0.122, 0.045, 0.122, 0.332, 0.122, 0.045, 0.122, 0.045,
+		],
 		gaussianBlur2: [1, 2, 1, 2, 4, 2, 1, 2, 1],
 		gaussianBlur3: [0, 1, 0, 1, 1, 1, 0, 1, 0],
 		unsharpen: [-1, -1, -1, -1, 9, -1, -1, -1, -1],
 		sharpness: [0, -1, 0, -1, 5, -1, 0, -1, 0],
 		sharpen: [-1, -1, -1, -1, 16, -1, -1, -1, -1],
-		edgeDetect: [-0.125, -0.125, -0.125, -0.125, 1, -0.125, -0.125, -0.125, -0.125],
+		edgeDetect: [
+			-0.125, -0.125, -0.125, -0.125, 1, -0.125, -0.125, -0.125, -0.125,
+		],
 		edgeDetect2: [-1, -1, -1, -1, 8, -1, -1, -1, -1],
 		edgeDetect3: [-5, 0, 0, 0, 0, 0, 0, 0, 5],
 		edgeDetect4: [-1, -1, -1, 0, 0, 0, 1, 1, 1],
@@ -305,7 +338,9 @@ function render(image) {
 		previtHorizontal: [1, 1, 1, 0, 0, 0, -1, -1, -1],
 		previtVertical: [1, 0, -1, 1, 0, -1, 1, 0, -1],
 		boxBlur: [0.111, 0.111, 0.111, 0.111, 0.111, 0.111, 0.111, 0.111, 0.111],
-		triangleBlur: [0.0625, 0.125, 0.0625, 0.125, 0.25, 0.125, 0.0625, 0.125, 0.0625],
+		triangleBlur: [
+			0.0625, 0.125, 0.0625, 0.125, 0.25, 0.125, 0.0625, 0.125, 0.0625,
+		],
 		emboss: [-2, -1, 0, -1, 1, 1, 0, 1, 2],
 	}
 

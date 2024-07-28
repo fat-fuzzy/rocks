@@ -35,7 +35,8 @@
 
 		width: calc(#{$width-value} * #{$multiple});
 	}
-	@if map-has-key($theme-layout, $width) and map-has-key($theme-layout, $margin) {
+	@if map-has-key($theme-layout, $width) and map-has-key($theme-layout, $margin)
+	{
 		$width-value: map-get($theme-layout, $width);
 		$margin-value: map-get($theme-layout, $margin);
 
@@ -105,7 +106,9 @@
 }
 
 @mixin min-aspect-ratio-min-width($aspect-ratio, $breakpoint) {
-	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+	@if map-has-key($theme-layout, $aspect-ratio) and
+		map-has-key($breakpoints, $breakpoint)
+	{
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
 		@media screen and (min-width: #{$breakpoint-value}) and (min-aspect-ratio: #{$aspect-ratio-value}) {
@@ -122,7 +125,9 @@
 }
 
 @mixin min-aspect-ratio-max-width($aspect-ratio, $breakpoint) {
-	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+	@if map-has-key($theme-layout, $aspect-ratio) and
+		map-has-key($breakpoints, $breakpoint)
+	{
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
 		@media screen and (max-width: #{$breakpoint-value}) and (min-aspect-ratio: #{$aspect-ratio-value}) {
@@ -139,7 +144,9 @@
 }
 
 @mixin max-aspect-ratio-min-width($aspect-ratio, $breakpoint) {
-	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+	@if map-has-key($theme-layout, $aspect-ratio) and
+		map-has-key($breakpoints, $breakpoint)
+	{
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
 		@media screen and (min-width: #{$breakpoint-value}) and (max-aspect-ratio: #{$aspect-ratio-value}) {
@@ -156,7 +163,9 @@
 }
 
 @mixin max-aspect-ratio-max-width($aspect-ratio, $breakpoint) {
-	@if map-has-key($theme-layout, $aspect-ratio) and map-has-key($breakpoints, $breakpoint) {
+	@if map-has-key($theme-layout, $aspect-ratio) and
+		map-has-key($breakpoints, $breakpoint)
+	{
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
 		$aspect-ratio-value: map-get($theme-layout, $aspect-ratio);
 		@media screen and (max-width: #{$breakpoint-value}) and (max-aspect-ratio: #{$aspect-ratio-value}) {

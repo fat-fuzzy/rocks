@@ -26,7 +26,11 @@
 </script>
 
 <div class="l:main">
-	<div class={`l:frame ${dimensions} ${layer}`} bind:offsetWidth={width} bind:offsetHeight={height}>
+	<div
+		class={`l:frame ${dimensions} ${layer}`}
+		bind:offsetWidth={width}
+		bind:offsetHeight={height}
+	>
 		<canvas aria-label={title} data-test="canvas" bind:this={canvas}>
 			You need HTML5 canvas support to display this content
 		</canvas>

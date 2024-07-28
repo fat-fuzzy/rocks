@@ -1,6 +1,6 @@
 {
-	"path": "packages/config/src/cz-conventional-changelog",
-	"name": "cz-conventional-changelog-ffr",
+	"path": "packages/cz-changelog",
+	"name": "@fat-fuzzy/cz-changelog",
 	"punctuation": {
 		"type": " ",
 		"scope": [

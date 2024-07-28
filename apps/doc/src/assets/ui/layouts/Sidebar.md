@@ -3,10 +3,11 @@ title: Sidebar
 slug: Sidebar
 category: 'layouts'
 content_types: ['main', 'side']
-props_style: {
-  'blocks': {'element': ['size']},
-  'layouts': {'container': ['container', 'size']}
-}
+props_style:
+  {
+    'blocks': {'element': ['size']},
+    'layouts': {'container': ['container', 'size']},
+  }
 context: ['app.settings', 'shared.container']
 ---
 

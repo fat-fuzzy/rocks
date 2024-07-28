@@ -347,7 +347,12 @@ function flipAndCenter(geometry) {
 	matrix = M4.translate(matrix, -50, -75, -15) // This is specific to DEFAULT_3D_GEOMETRY_COORDS
 
 	for (var i = 0; i < geometry.length; i += 3) {
-		var vector = M4.transformVector(matrix, [geometry[i + 0], geometry[i + 1], geometry[i + 2], 1])
+		var vector = M4.transformVector(matrix, [
+			geometry[i + 0],
+			geometry[i + 1],
+			geometry[i + 2],
+			1,
+		])
 		coords[i + 0] = vector[0]
 		coords[i + 1] = vector[1]
 		coords[i + 2] = vector[2]

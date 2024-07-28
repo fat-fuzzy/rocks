@@ -2,10 +2,15 @@
 title: Recipes
 slug: recipes
 tags: ['recipes']
-props_style: {
-  'blocks': {'element': ['color', 'variant', 'size', 'shape']},
-  'layouts': {'layout': ['layout', 'threshold', 'breakpoint'], 'container': ['container', 'size']},
-}
+props_style:
+  {
+    'blocks': {'element': ['color', 'variant', 'size', 'shape']},
+    'layouts':
+      {
+        'layout': ['layout', 'threshold', 'breakpoint'],
+        'container': ['container', 'size'],
+      },
+  }
 context: ['app.settings']
 ---
 

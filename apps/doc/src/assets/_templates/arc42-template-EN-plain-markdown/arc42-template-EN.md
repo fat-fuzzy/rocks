@@ -1,4 +1,4 @@
-# 
+#
 
 **About arc42**
 
@@ -15,31 +15,31 @@ architecture template, <https://arc42.org>.
 
 # Introduction and Goals {#section-introduction-and-goals}
 
-## Requirements Overview {#_requirements_overview}
+## Requirements Overview {#\_requirements_overview}
 
-## Quality Goals {#_quality_goals}
+## Quality Goals {#\_quality_goals}
 
-## Stakeholders {#_stakeholders}
+## Stakeholders {#\_stakeholders}
 
 +-------------+---------------------------+---------------------------+
-| Role/Name   | Contact                   | Expectations              |
+| Role/Name | Contact | Expectations |
 +=============+===========================+===========================+
-| *\<Role-1>* | *\<Contact-1>*            | *\<Expectation-1>*        |
+| _\<Role-1>_ | _\<Contact-1>_ | _\<Expectation-1>_ |
 +-------------+---------------------------+---------------------------+
-| *\<Role-2>* | *\<Contact-2>*            | *\<Expectation-2>*        |
+| _\<Role-2>_ | _\<Contact-2>_ | _\<Expectation-2>_ |
 +-------------+---------------------------+---------------------------+
 
 # Architecture Constraints {#section-architecture-constraints}
 
 # System Scope and Context {#section-system-scope-and-context}
 
-## Business Context {#_business_context}
+## Business Context {#\_business_context}
 
 **\<Diagram or Table>**
 
 **\<optionally: Explanation of external domain interfaces>**
 
-## Technical Context {#_technical_context}
+## Technical Context {#\_technical_context}
 
 **\<Diagram or Table>**
 
@@ -51,161 +51,161 @@ architecture template, <https://arc42.org>.
 
 # Building Block View {#section-building-block-view}
 
-## Whitebox Overall System {#_whitebox_overall_system}
+## Whitebox Overall System {#\_whitebox_overall_system}
 
-***\<Overview Diagram>***
+**_\<Overview Diagram>_**
 
 Motivation
 
-:   *\<text explanation>*
+: _\<text explanation>_
 
 Contained Building Blocks
 
-:   *\<Description of contained building block (black boxes)>*
+: _\<Description of contained building block (black boxes)>_
 
 Important Interfaces
 
-:   *\<Description of important interfaces>*
+: _\<Description of important interfaces>_
 
-### \<Name black box 1> {#__name_black_box_1}
+### \<Name black box 1> {#\_\_name_black_box_1}
 
-*\<Purpose/Responsibility>*
+_\<Purpose/Responsibility>_
 
-*\<Interface(s)>*
+_\<Interface(s)>_
 
-*\<(Optional) Quality/Performance Characteristics>*
+_\<(Optional) Quality/Performance Characteristics>_
 
-*\<(Optional) Directory/File Location>*
+_\<(Optional) Directory/File Location>_
 
-*\<(Optional) Fulfilled Requirements>*
+_\<(Optional) Fulfilled Requirements>_
 
-*\<(optional) Open Issues/Problems/Risks>*
+_\<(optional) Open Issues/Problems/Risks>_
 
-### \<Name black box 2> {#__name_black_box_2}
+### \<Name black box 2> {#\_\_name_black_box_2}
 
-*\<black box template>*
+_\<black box template>_
 
-### \<Name black box n> {#__name_black_box_n}
+### \<Name black box n> {#\_\_name_black_box_n}
 
-*\<black box template>*
+_\<black box template>_
 
-### \<Name interface 1> {#__name_interface_1}
-
-...
-
-### \<Name interface m> {#__name_interface_m}
-
-## Level 2 {#_level_2}
-
-### White Box *\<building block 1>* {#_white_box_emphasis_building_block_1_emphasis}
-
-*\<white box template>*
-
-### White Box *\<building block 2>* {#_white_box_emphasis_building_block_2_emphasis}
-
-*\<white box template>*
+### \<Name interface 1> {#\_\_name_interface_1}
 
 ...
 
-### White Box *\<building block m>* {#_white_box_emphasis_building_block_m_emphasis}
+### \<Name interface m> {#\_\_name_interface_m}
 
-*\<white box template>*
+## Level 2 {#\_level_2}
 
-## Level 3 {#_level_3}
+### White Box _\<building block 1>_ {#\_white_box_emphasis_building_block_1_emphasis}
 
-### White Box \<\_building block x.1\_\> {#_white_box_building_block_x_1}
+_\<white box template>_
 
-*\<white box template>*
+### White Box _\<building block 2>_ {#\_white_box_emphasis_building_block_2_emphasis}
 
-### White Box \<\_building block x.2\_\> {#_white_box_building_block_x_2}
+_\<white box template>_
 
-*\<white box template>*
+...
 
-### White Box \<\_building block y.1\_\> {#_white_box_building_block_y_1}
+### White Box _\<building block m>_ {#\_white_box_emphasis_building_block_m_emphasis}
 
-*\<white box template>*
+_\<white box template>_
+
+## Level 3 {#\_level_3}
+
+### White Box \<\_building block x.1\_\> {#\_white_box_building_block_x_1}
+
+_\<white box template>_
+
+### White Box \<\_building block x.2\_\> {#\_white_box_building_block_x_2}
+
+_\<white box template>_
+
+### White Box \<\_building block y.1\_\> {#\_white_box_building_block_y_1}
+
+_\<white box template>_
 
 # Runtime View {#section-runtime-view}
 
-## \<Runtime Scenario 1> {#__runtime_scenario_1}
+## \<Runtime Scenario 1> {#\_\_runtime_scenario_1}
 
--   *\<insert runtime diagram or textual description of the scenario>*
+- _\<insert runtime diagram or textual description of the scenario>_
 
--   *\<insert description of the notable aspects of the interactions
-    between the building block instances depicted in this diagram.\>*
+- _\<insert description of the notable aspects of the interactions
+  between the building block instances depicted in this diagram.\>_
 
-## \<Runtime Scenario 2> {#__runtime_scenario_2}
+## \<Runtime Scenario 2> {#\_\_runtime_scenario_2}
 
-## ... {#_}
+## ... {#\_}
 
-## \<Runtime Scenario n> {#__runtime_scenario_n}
+## \<Runtime Scenario n> {#\_\_runtime_scenario_n}
 
 # Deployment View {#section-deployment-view}
 
-## Infrastructure Level 1 {#_infrastructure_level_1}
+## Infrastructure Level 1 {#\_infrastructure_level_1}
 
-***\<Overview Diagram>***
+**_\<Overview Diagram>_**
 
 Motivation
 
-:   *\<explanation in text form>*
+: _\<explanation in text form>_
 
 Quality and/or Performance Features
 
-:   *\<explanation in text form>*
+: _\<explanation in text form>_
 
 Mapping of Building Blocks to Infrastructure
 
-:   *\<description of the mapping>*
+: _\<description of the mapping>_
 
-## Infrastructure Level 2 {#_infrastructure_level_2}
+## Infrastructure Level 2 {#\_infrastructure_level_2}
 
-### *\<Infrastructure Element 1>* {#__emphasis_infrastructure_element_1_emphasis}
+### _\<Infrastructure Element 1>_ {#\_\_emphasis_infrastructure_element_1_emphasis}
 
-*\<diagram + explanation>*
+_\<diagram + explanation>_
 
-### *\<Infrastructure Element 2>* {#__emphasis_infrastructure_element_2_emphasis}
+### _\<Infrastructure Element 2>_ {#\_\_emphasis_infrastructure_element_2_emphasis}
 
-*\<diagram + explanation>*
+_\<diagram + explanation>_
 
 ...
 
-### *\<Infrastructure Element n>* {#__emphasis_infrastructure_element_n_emphasis}
+### _\<Infrastructure Element n>_ {#\_\_emphasis_infrastructure_element_n_emphasis}
 
-*\<diagram + explanation>*
+_\<diagram + explanation>_
 
 # Cross-cutting Concepts {#section-concepts}
 
-## *\<Concept 1>* {#__emphasis_concept_1_emphasis}
+## _\<Concept 1>_ {#\_\_emphasis_concept_1_emphasis}
 
-*\<explanation>*
+_\<explanation>_
 
-## *\<Concept 2>* {#__emphasis_concept_2_emphasis}
+## _\<Concept 2>_ {#\_\_emphasis_concept_2_emphasis}
 
-*\<explanation>*
+_\<explanation>_
 
 ...
 
-## *\<Concept n>* {#__emphasis_concept_n_emphasis}
+## _\<Concept n>_ {#\_\_emphasis_concept_n_emphasis}
 
-*\<explanation>*
+_\<explanation>_
 
 # Architecture Decisions {#section-design-decisions}
 
 # Quality Requirements {#section-quality-scenarios}
 
-## Quality Tree {#_quality_tree}
+## Quality Tree {#\_quality_tree}
 
-## Quality Scenarios {#_quality_scenarios}
+## Quality Scenarios {#\_quality_scenarios}
 
 # Risks and Technical Debts {#section-technical-risks}
 
 # Glossary {#section-glossary}
 
 +-----------------------+-----------------------------------------------+
-| Term                  | Definition                                    |
+| Term | Definition |
 +=======================+===============================================+
-| *\<Term-1>*           | *\<definition-1>*                             |
+| _\<Term-1>_ | _\<definition-1>_ |
 +-----------------------+-----------------------------------------------+
-| *\<Term-2>*           | *\<definition-2>*                             |
+| _\<Term-2>_ | _\<definition-2>_ |
 +-----------------------+-----------------------------------------------+

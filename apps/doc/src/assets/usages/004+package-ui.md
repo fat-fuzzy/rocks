@@ -21,9 +21,9 @@ This package contains a library written in Svelte that exposes generic, reusable
 
 1. Install the package as a `devDependency`:
 
- ```shell
- pnpm i -D @fat-fuzzy/ui
- ```
+```shell
+pnpm i -D @fat-fuzzy/ui
+```
 
 [TODO]
 
