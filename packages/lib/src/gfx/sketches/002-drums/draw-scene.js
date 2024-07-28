@@ -21,7 +21,11 @@ function drawScene(gl, programInfo, buffers) {
 	// -> use gl.viewport
 	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
 	// set the resolution
-	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
+	gl.uniform2f(
+		programInfo.uniformLocations.u_resolution,
+		gl.canvas.width,
+		gl.canvas.height,
+	)
 	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
 	gl.clearColor(0.0, 0.0, 0.0, 0.65) // Clear to black, fully opaque
 	gl.clearDepth(1.0) // clear everything (?)
@@ -52,7 +56,13 @@ function drawScene(gl, programInfo, buffers) {
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	gl.uniform4f(programInfo.uniformLocations.u_color, Math.random(), Math.random(), Math.random(), 1)
+	gl.uniform4f(
+		programInfo.uniformLocations.u_color,
+		Math.random(),
+		Math.random(),
+		Math.random(),
+		1,
+	)
 	const primitiveType = gl.TRIANGLES
 	const offset = 0
 	const count = 6

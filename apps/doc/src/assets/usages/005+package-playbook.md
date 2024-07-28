@@ -13,17 +13,19 @@ tags: ['example', 'doc', 'playbook', 'packages']
 
 This package is used to render the documentation and interactive demos of the UI library
 
-## Requirements
+### Requirements
 
 - [Svelte](https://svelte.dev/)
+- [@fat-fuzzy/style](https://github.com/fat-fuzzy/rocks/tree/main/packages/style)
+- [@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui)
 
-## 🚧 Getting started
+### Usage
 
 1. Install the package as a `devDependency`:
 
- ```shell
- pnpm i -D @fat-fuzzy/playbook
- ```
+```shell
+pnpm i -D @fat-fuzzy/playbook
+```
 
 [TODO]
 

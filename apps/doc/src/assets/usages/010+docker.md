@@ -30,15 +30,15 @@ As is, it creates an image for the `@fat-fuzzy/doc` package only.
 [error] 30#30: *6 open() "/usr/share/nginx/html/dev/__data.json" failed (2: No such file or directory)
 ```
 
-## Requirements
+### Requirements
 
 - Docker
 - pnpm
 - Turborepo
 
-## Getting started
+### Usage
 
-### 1. Change the adapters
+#### 1. Change the adapters
 
 For the Docker builds to work, the adapters in the following projects need to change :
 
@@ -64,7 +64,7 @@ If you want to use the Dockerfile for the `@fat-fuzzy/sandbox` project:
 pnpm i --save-dev @sveltejs/adapter-auto
 ```
 
-### 1. Update Svelte Configs
+#### 1. Update Svelte Configs
 
 In `packages/ui` change the `svelte.config.js`:
 
@@ -102,7 +102,7 @@ kit: {
 
 Do the same for `apps/doc` and if necessary to `apps/sandbox`, using the respective adapters
 
-### Creating an App image
+#### Creating an App image
 
 Run **apps/doc** site in a docker container
 

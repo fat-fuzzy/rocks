@@ -47,7 +47,8 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 	const commits = data.split('\n')
 	const hashRegex = /([a-z,\d]{7})/g
 	const timestampRegex = /([\d]{10})/g
-	const scopeRegex = /\[(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}?\]/g
+	const scopeRegex =
+		/\[(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}?\]/g
 
 	const scopes = [
 		'all',

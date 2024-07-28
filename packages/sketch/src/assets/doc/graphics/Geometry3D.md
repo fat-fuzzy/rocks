@@ -6,7 +6,8 @@ props_state: ['geometry']
 props_style:
   {
     'blocks': {'element': ['color', 'size']},
-    'layouts': {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
+    'layouts':
+      {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
   }
 context: ['app.settings']
 ---

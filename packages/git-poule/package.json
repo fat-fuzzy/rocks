@@ -9,7 +9,8 @@
 	"author": "Patricia Boh",
 	"license": "BSD-3-Clause",
 	"dependencies": {
-		"prettier": "^1.19.1",
+		"@fat-fuzzy/config": "workspace:*",
 		"shelljs": "^0.8.5"
-	}
+	},
+	"type": "module"
 }

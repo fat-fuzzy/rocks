@@ -179,14 +179,23 @@ function render(image) {
 	var normalize = false // don't normalize the data
 	var stride = 0 // 0 = move forward size * sizeof(type) each iteration to get the next position
 	var offset = 0 // start at the beginning of the buffer
-	gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
+	gl.vertexAttribPointer(
+		positionAttributeLocation,
+		size,
+		type,
+		normalize,
+		stride,
+		offset,
+	)
 
 	// provide texture coordinates for the rectangle.
 	var texCoordBuffer = gl.createBuffer()
 	gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer)
 	gl.bufferData(
 		gl.ARRAY_BUFFER,
-		new Float32Array([0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0]),
+		new Float32Array([
+			0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0,
+		]),
 		gl.STATIC_DRAW,
 	)
 
@@ -199,7 +208,14 @@ function render(image) {
 	var normalize = false // don't normalize the data
 	var stride = 0 // 0 = move forward size * sizeof(type) each iteration to get the next position
 	var offset = 0 // start at the beginning of the buffer
-	gl.vertexAttribPointer(texCoordAttributeLocation, size, type, normalize, stride, offset)
+	gl.vertexAttribPointer(
+		texCoordAttributeLocation,
+		size,
+		type,
+		normalize,
+		stride,
+		offset,
+	)
 
 	// Create a texture.
 	var texture = gl.createTexture()
@@ -223,7 +239,14 @@ function render(image) {
 	var internalFormat = gl.RGBA // format we want in the texture
 	var srcFormat = gl.RGBA // format of data we are supplying
 	var srcType = gl.UNSIGNED_BYTE // type of data we are supplying
-	gl.texImage2D(gl.TEXTURE_2D, mipLevel, internalFormat, srcFormat, srcType, image)
+	gl.texImage2D(
+		gl.TEXTURE_2D,
+		mipLevel,
+		internalFormat,
+		srcFormat,
+		srcType,
+		image,
+	)
 
 	resize(gl.canvas)
 

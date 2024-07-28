@@ -5,32 +5,26 @@ updated: null
 slug: sketch
 asset: package-sketch
 id: '006'
-status: draft
 tags: ['example', 'doc', 'sketch', 'packages']
 ---
 
 ## Contents
 
-This package is used to render the documentation and interactive demos of the UI library
+This package is used in conjunction with the [@fat-fuzzy/lib](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib) package to display graphics programs.
 
-## Requirements
+### Requirements
 
 - [Svelte](https://svelte.dev/)
+- [@fat-fuzzy/style](https://github.com/fat-fuzzy/rocks/tree/main/packages/style)
+- [@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui)
+- [@fat-fuzzy/lib](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib)
 
-## 🚧 Getting started
+### Usage
 
 1. Install the package as a `devDependency`:
 
- ```shell
- pnpm i -D @fat-fuzzy/sketch
- ```
+```shell
+pnpm i -D @fat-fuzzy/sketch
+```
 
-[TODO]
-
-## 🚧 Resources
-
-[TODO]
-
-## TODO
-
-[TODO]
+You can see how the interface is rendered in the [PLAY](/play) page's sketches.

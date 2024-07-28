@@ -1,0 +1,94 @@
+{
+	"folders": [
+		{
+			"path": ".",
+		},
+		{
+			"path": "packages/playbook",
+		},
+		{
+			"path": "packages/sketch",
+		},
+		{
+			"path": "packages/ui",
+		},
+		{
+			"path": "packages/style",
+		},
+		{
+			"path": "packages/lib",
+		},
+		{
+			"path": "packages/config",
+		},
+		{
+			"path": "packages/git-poule",
+		},
+		{
+			"path": "packages/markdown",
+		},
+		{
+			"path": "packages/cz-changelog",
+		},
+		{
+			"path": "apps/doc",
+		},
+	],
+	"settings": {
+		".": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/playbook": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/sketch": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/ui": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/config": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/style": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/lib": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/git-poule": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/markdown": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/cz-changelog": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"apps/doc": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+	},
+}

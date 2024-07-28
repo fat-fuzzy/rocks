@@ -26,7 +26,10 @@ function drawScene(gl, programInfo, buffers) {
 
 	// set the resolution
 	// Set a random color.
-	gl.uniform4f(programInfo.uniformLocations.u_color, ...programInfo.context.color)
+	gl.uniform4f(
+		programInfo.uniformLocations.u_color,
+		...programInfo.context.color,
+	)
 
 	setPositionAttribute(gl, buffers, programInfo)
 

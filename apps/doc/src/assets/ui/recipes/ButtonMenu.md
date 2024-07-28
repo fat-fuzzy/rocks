@@ -7,7 +7,8 @@ props_state: ['title', 'formaction', 'value']
 props_style:
   {
     'blocks': {'element': ['color', 'variant', 'size', 'shape']},
-    'layouts': {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
+    'layouts':
+      {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
   }
 context: ['app.settings', 'shared.container', 'shared.layout']
 ---

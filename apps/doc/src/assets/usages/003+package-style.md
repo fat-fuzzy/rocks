@@ -5,7 +5,7 @@ updated: null
 slug: style
 asset: package-style
 id: '003'
-tags: ['example', 'doc', 'css', 'packages','wip']
+tags: ['example', 'doc', 'css', 'packages', 'wip']
 ---
 
 ## Contents
@@ -17,41 +17,43 @@ The package's exports are:
 - a prettified, fully concatenated `main.css` stylesheet
 - individual stylesheets under `css/**`
 
-## Requirements
+### Requirements
 
 None besides a Node.js environment and a `package.json`
 
-## 🚧 Getting started
+### Usage
 
 1. Install the package as a `devDependency`:
 
- ```shell
- pnpm i -D @fat-fuzzy/style
- ```
+```shell
+pnpm i -D @fat-fuzzy/style
+```
 
 1. Then:
 
- Import the full minified CSS using JavaScript, for example in `+layout.svelte`:
+Import the full minified CSS using JavaScript, for example in `+layout.svelte`:
 
- ```js
- import '@fat-fuzzy/style'
- ```
+```js
+import '@fat-fuzzy/style'
+```
 
- [WIP] or import the individual stylesheets into your components (recommended usage for a component library)
+[WIP] or import the individual stylesheets into your components (recommended usage for a component library)
 
- ```js
- import '@fat-fuzzy/style/css/blocks/button.css'
- ```
+```js
+import '@fat-fuzzy/style/css/blocks/button.css'
+```
 
- [WIP]  or link to the files in a Django template
+[WIP] or link to the files in a Django template
 
- ```html
- <link href="{% static 'styles/css/main.css' %}"
-  rel="stylesheet"
-  type="text/css">
- ```
+```html
+<link
+ href="{% static 'styles/css/main.css' %}"
+ rel="stylesheet"
+ type="text/css"
+/>
+```
 
-## 🚧 Resources
+## Resources
 
 - [CUBE CSS](https://cube.fyi/)
 - [Open Props](https://open-props.style/)

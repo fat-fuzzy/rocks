@@ -10,17 +10,47 @@
 	},
 	"main": "./index.js",
 	"exports": {
-		".": "./index.js"
+		".": "./index.js",
+		"./eslint": "./src/eslint.config.js",
+		"./prettier": "./src/prettier.config.js",
+		"./stylelint": "./src/stylelint.config.js",
+		"./playwright": "./src/playwright.config.js"
 	},
-	"dependencies": {
+	"peerDependencies": {
+		"@playwright/test": "^1.45.3",
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
 		"@typescript-eslint/parser": "^6.21.0",
+		"eslint": "^9.8.0",
 		"eslint-config-prettier": "^9.1.0",
+		"eslint-config-recommended": "^4.1.0",
 		"eslint-config-turbo": "^1.13.4",
-		"eslint-plugin-svelte": "^2.42.0",
+		"eslint-plugin-svelte": "^2.43.0",
 		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",
+		"publint": "^0.1.16",
+		"stylelint": "^16.7.0",
+		"stylelint-config-standard": "^36.0.1",
+		"stylelint-config-standard-scss": "^13.1.0",
 		"tslib": "^2.6.3",
-		"typescript": "^5.5.3"
-	}
+		"typescript": "^5.5.4"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.45.3",
+		"@typescript-eslint/eslint-plugin": "^6.21.0",
+		"@typescript-eslint/parser": "^6.21.0",
+		"eslint": "^9.8.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-config-recommended": "^4.1.0",
+		"eslint-config-turbo": "^1.13.4",
+		"eslint-plugin-svelte": "^2.43.0",
+		"prettier": "^2.8.8",
+		"prettier-plugin-svelte": "^2.10.1",
+		"publint": "^0.1.16",
+		"stylelint": "^16.7.0",
+		"stylelint-config-standard": "^36.0.1",
+		"stylelint-config-standard-scss": "^13.1.0",
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.4"
+	},
+	"type": "module"
 }

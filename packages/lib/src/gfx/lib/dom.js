@@ -1,9 +1,8 @@
 /**
  * Utils to poke at the DOM
- * 
+ *
  * see: `dom.md` for more details about dom events
  */
-
 
 /**
  * This function will log the order of events that happen when the document is loaded

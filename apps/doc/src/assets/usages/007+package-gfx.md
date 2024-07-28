@@ -16,23 +16,55 @@ This package contains:
 - a collection of `sketches`: these are self contained programs that can be rendered by the Sketch library
 - learning notes
 
-## Requirements
+### Requirements
 
-[TODO]
+A Node.js environment and a `package.json`
 
-## 🚧 Getting started
+Sketches can be rendered using this package:
 
-1. Install the package as a `devDependency`:
+- [@fat-fuzzy/sketch](https://github.com/fat-fuzzy/rocks/tree/main/packages/sketch)
 
- ```shell
- pnpm i -D @fat-fuzzy/lib
- ```
+### Usage
 
-[TODO]
+Install the package as a `devDependency`:
 
-🚧 WIP
+```shell
+pnpm i -D @fat-fuzzy/lib
+```
+
+Import and use the sketches:
+
+```js
+
+<script lang="ts">
+ import {dev} from '$app/environment'
+ import lib from '@fat-fuzzy/lib'
+ import {graphics} from '@fat-fuzzy/sketch'
+  
+ let scene = $derived(
+  lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),
+ )
+</script>
+
+<Sketch {scene} size="sm" {dev}/>
+```
+
+GFX library sketches are modules that expose the following functions:
+
+```js
+function init(canvas) {}
+function main(canvas) {}
+function update(context) {} // context depends on the type of program
+function clear() {}
+function stop() {}
+function draw(t) {} // t is for time, an optional parameter
+```
+
+[TODO] : elaborate doc about graphics programs
 
 ### GLSL
+
+Importing a shader in vite:
 
 ```js
 import shader from '/some/shader.glsl?raw'

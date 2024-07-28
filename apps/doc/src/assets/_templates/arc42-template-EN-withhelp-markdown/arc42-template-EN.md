@@ -1,4 +1,4 @@
-# 
+#
 
 **About arc42**
 
@@ -17,7 +17,7 @@ architecture template, <https://arc42.org>.
 This version of the template contains some help and explanations. It is
 used for familiarization with arc42 and the understanding of the
 concepts. For documentation of your own system you use better the
-*plain* version.
+_plain_ version.
 :::
 
 # Introduction and Goals {#section-introduction-and-goals}
@@ -25,17 +25,17 @@ concepts. For documentation of your own system you use better the
 Describes the relevant requirements and the driving forces that software
 architects and development team must consider. These include
 
--   underlying business goals,
+- underlying business goals,
 
--   essential features,
+- essential features,
 
--   essential functional requirements,
+- essential functional requirements,
 
--   quality goals for the architecture and
+- quality goals for the architecture and
 
--   relevant stakeholders and their expectations
+- relevant stakeholders and their expectations
 
-## Requirements Overview {#_requirements_overview}
+## Requirements Overview {#\_requirements_overview}
 
 ::: formalpara-title
 **Contents**
@@ -67,7 +67,7 @@ document with potential redundancy w.r.t to requirements documents.
 See [Introduction and Goals](https://docs.arc42.org/section-1/) in the
 arc42 documentation.
 
-## Quality Goals {#_quality_goals}
+## Quality Goals {#\_quality_goals}
 
 ::: formalpara-title
 **Contents**
@@ -99,7 +99,7 @@ architect do not know how the quality of your work will be judged...
 
 A table with quality goals and concrete scenarios, ordered by priorities
 
-## Stakeholders {#_stakeholders}
+## Stakeholders {#\_stakeholders}
 
 ::: formalpara-title
 **Contents**
@@ -108,15 +108,15 @@ A table with quality goals and concrete scenarios, ordered by priorities
 Explicit overview of stakeholders of the system, i.e. all person, roles
 or organizations that
 
--   should know the architecture
+- should know the architecture
 
--   have to be convinced of the architecture
+- have to be convinced of the architecture
 
--   have to work with the architecture or with code
+- have to work with the architecture or with code
 
--   need the documentation of the architecture for their work
+- need the documentation of the architecture for their work
 
--   have to come up with decisions about the system or its development
+- have to come up with decisions about the system or its development
 
 ::: formalpara-title
 **Motivation**
@@ -135,11 +135,11 @@ Table with role names, person names, and their expectations with respect
 to the architecture and its documentation.
 
 +-------------+---------------------------+---------------------------+
-| Role/Name   | Contact                   | Expectations              |
+| Role/Name | Contact | Expectations |
 +=============+===========================+===========================+
-| *\<Role-1>* | *\<Contact-1>*            | *\<Expectation-1>*        |
+| _\<Role-1>_ | _\<Contact-1>_ | _\<Expectation-1>_ |
 +-------------+---------------------------+---------------------------+
-| *\<Role-2>* | *\<Contact-2>*            | *\<Expectation-2>*        |
+| _\<Role-2>_ | _\<Contact-2>_ | _\<Expectation-2>_ |
 +-------------+---------------------------+---------------------------+
 
 # Architecture Constraints {#section-architecture-constraints}
@@ -201,14 +201,14 @@ completely understand them.
 
 Various options:
 
--   Context diagrams
+- Context diagrams
 
--   Lists of communication partners and their interfaces.
+- Lists of communication partners and their interfaces.
 
 See [Context and Scope](https://docs.arc42.org/section-3/) in the arc42
 documentation.
 
-## Business Context {#_business_context}
+## Business Context {#\_business_context}
 
 ::: formalpara-title
 **Contents**
@@ -241,7 +241,7 @@ the communication partner, the inputs, and the outputs.
 
 **\<optionally: Explanation of external domain interfaces>**
 
-## Technical Context {#_technical_context}
+## Technical Context {#\_technical_context}
 
 ::: formalpara-title
 **Contents**
@@ -283,15 +283,15 @@ and input/output.
 A short summary and explanation of the fundamental decisions and
 solution strategies, that shape system architecture. It includes
 
--   technology decisions
+- technology decisions
 
--   decisions about the top-level decomposition of the system, e.g.
-    usage of an architectural pattern or design pattern
+- decisions about the top-level decomposition of the system, e.g.
+  usage of an architectural pattern or design pattern
 
--   decisions on how to achieve key quality goals
+- decisions on how to achieve key quality goals
 
--   relevant organizational decisions, e.g. selecting a development
-    process or delegating certain tasks to third parties.
+- relevant organizational decisions, e.g. selecting a development
+  process or delegating certain tasks to third parties.
 
 ::: formalpara-title
 **Motivation**
@@ -327,7 +327,7 @@ functions, macros, operations, datas structures, ...) as well as their
 dependencies (relationships, associations, ...)
 
 This view is mandatory for every architecture documentation. In analogy
-to a house this is the *floor plan*.
+to a house this is the _floor plan_.
 
 ::: formalpara-title
 **Motivation**
@@ -360,49 +360,49 @@ together with black box descriptions of their internal building blocks.
 See [Building Block View](https://docs.arc42.org/section-5/) in the
 arc42 documentation.
 
-## Whitebox Overall System {#_whitebox_overall_system}
+## Whitebox Overall System {#\_whitebox_overall_system}
 
 Here you describe the decomposition of the overall system using the
 following white box template. It contains
 
--   an overview diagram
+- an overview diagram
 
--   a motivation for the decomposition
+- a motivation for the decomposition
 
--   black box descriptions of the contained building blocks. For these
-    we offer you alternatives:
+- black box descriptions of the contained building blocks. For these
+  we offer you alternatives:
 
-    -   use *one* table for a short and pragmatic overview of all
-        contained building blocks and their interfaces
+  - use _one_ table for a short and pragmatic overview of all
+    contained building blocks and their interfaces
 
-    -   use a list of black box descriptions of the building blocks
-        according to the black box template (see below). Depending on
-        your choice of tool this list could be sub-chapters (in text
-        files), sub-pages (in a Wiki) or nested elements (in a modeling
-        tool).
+  - use a list of black box descriptions of the building blocks
+    according to the black box template (see below). Depending on
+    your choice of tool this list could be sub-chapters (in text
+    files), sub-pages (in a Wiki) or nested elements (in a modeling
+    tool).
 
--   (optional:) important interfaces, that are not explained in the
-    black box templates of a building block, but are very important for
-    understanding the white box. Since there are so many ways to specify
-    interfaces why do not provide a specific template for them. In the
-    worst case you have to specify and describe syntax, semantics,
-    protocols, error handling, restrictions, versions, qualities,
-    necessary compatibilities and many things more. In the best case you
-    will get away with examples or simple signatures.
+- (optional:) important interfaces, that are not explained in the
+  black box templates of a building block, but are very important for
+  understanding the white box. Since there are so many ways to specify
+  interfaces why do not provide a specific template for them. In the
+  worst case you have to specify and describe syntax, semantics,
+  protocols, error handling, restrictions, versions, qualities,
+  necessary compatibilities and many things more. In the best case you
+  will get away with examples or simple signatures.
 
-***\<Overview Diagram>***
+**_\<Overview Diagram>_**
 
 Motivation
 
-:   *\<text explanation>*
+: _\<text explanation>_
 
 Contained Building Blocks
 
-:   *\<Description of contained building block (black boxes)>*
+: _\<Description of contained building block (black boxes)>_
 
 Important Interfaces
 
-:   *\<Description of important interfaces>*
+: _\<Description of important interfaces>_
 
 Insert your explanations of black boxes from level 1:
 
@@ -410,65 +410,65 @@ If you use tabular form you will only describe your black boxes with
 name and responsibility according to the following schema:
 
 +-----------------------+-----------------------------------------------+
-| **Name**              | **Responsibility**                            |
+| **Name** | **Responsibility** |
 +=======================+===============================================+
-| *\<black box 1>*      |  *\<Text>*                                    |
+| _\<black box 1>_ |  *\<Text>* |
 +-----------------------+-----------------------------------------------+
-| *\<black box 2>*      |  *\<Text>*                                    |
+| _\<black box 2>_ |  *\<Text>* |
 +-----------------------+-----------------------------------------------+
 
 If you use a list of black box descriptions then you fill in a separate
 black box template for every important building block . Its headline is
 the name of the black box.
 
-### \<Name black box 1> {#__name_black_box_1}
+### \<Name black box 1> {#\_\_name_black_box_1}
 
 Here you describe \<black box 1> according the the following black box
 template:
 
--   Purpose/Responsibility
+- Purpose/Responsibility
 
--   Interface(s), when they are not extracted as separate paragraphs.
-    This interfaces may include qualities and performance
-    characteristics.
+- Interface(s), when they are not extracted as separate paragraphs.
+  This interfaces may include qualities and performance
+  characteristics.
 
--   (Optional) Quality-/Performance characteristics of the black box,
-    e.g.availability, run time behavior, ....
+- (Optional) Quality-/Performance characteristics of the black box,
+  e.g.availability, run time behavior, ....
 
--   (Optional) directory/file location
+- (Optional) directory/file location
 
--   (Optional) Fulfilled requirements (if you need traceability to
-    requirements).
+- (Optional) Fulfilled requirements (if you need traceability to
+  requirements).
 
--   (Optional) Open issues/problems/risks
+- (Optional) Open issues/problems/risks
 
-*\<Purpose/Responsibility>*
+_\<Purpose/Responsibility>_
 
-*\<Interface(s)>*
+_\<Interface(s)>_
 
-*\<(Optional) Quality/Performance Characteristics>*
+_\<(Optional) Quality/Performance Characteristics>_
 
-*\<(Optional) Directory/File Location>*
+_\<(Optional) Directory/File Location>_
 
-*\<(Optional) Fulfilled Requirements>*
+_\<(Optional) Fulfilled Requirements>_
 
-*\<(optional) Open Issues/Problems/Risks>*
+_\<(optional) Open Issues/Problems/Risks>_
 
-### \<Name black box 2> {#__name_black_box_2}
+### \<Name black box 2> {#\_\_name_black_box_2}
 
-*\<black box template>*
+_\<black box template>_
 
-### \<Name black box n> {#__name_black_box_n}
+### \<Name black box n> {#\_\_name_black_box_n}
 
-*\<black box template>*
+_\<black box template>_
 
-### \<Name interface 1> {#__name_interface_1}
+### \<Name interface 1> {#\_\_name_interface_1}
 
 ...
 
-### \<Name interface m> {#__name_interface_m}
+### \<Name interface m> {#\_\_name_interface_m}
 
-## Level 2 {#_level_2}
+## Level 2 {#\_level_2}
 
 Here you can specify the inner structure of (some) building blocks from
 level 1 as white boxes.
@@ -479,23 +479,23 @@ over completeness. Specify important, surprising, risky, complex or
 volatile building blocks. Leave out normal, simple, boring or
 standardized parts of your system
 
-### White Box *\<building block 1>* {#_white_box_emphasis_building_block_1_emphasis}
+### White Box _\<building block 1>_ {#\_white_box_emphasis_building_block_1_emphasis}
 
-...describes the internal structure of *building block 1*.
+...describes the internal structure of _building block 1_.
 
-*\<white box template>*
+_\<white box template>_
 
-### White Box *\<building block 2>* {#_white_box_emphasis_building_block_2_emphasis}
+### White Box _\<building block 2>_ {#\_white_box_emphasis_building_block_2_emphasis}
 
-*\<white box template>*
+_\<white box template>_
 
 ...
 
-### White Box *\<building block m>* {#_white_box_emphasis_building_block_m_emphasis}
+### White Box _\<building block m>_ {#\_white_box_emphasis_building_block_m_emphasis}
 
-*\<white box template>*
+_\<white box template>_
 
-## Level 3 {#_level_3}
+## Level 3 {#\_level_3}
 
 Here you can specify the inner structure of (some) building blocks from
 level 2 as white boxes.
@@ -503,19 +503,19 @@ level 2 as white boxes.
 When you need more detailed levels of your architecture please copy this
 part of arc42 for additional levels.
 
-### White Box \<\_building block x.1\_\> {#_white_box_building_block_x_1}
+### White Box \<\_building block x.1\_\> {#\_white_box_building_block_x_1}
 
-Specifies the internal structure of *building block x.1*.
+Specifies the internal structure of _building block x.1_.
 
-*\<white box template>*
+_\<white box template>_
 
-### White Box \<\_building block x.2\_\> {#_white_box_building_block_x_2}
+### White Box \<\_building block x.2\_\> {#\_white_box_building_block_x_2}
 
-*\<white box template>*
+_\<white box template>_
 
-### White Box \<\_building block y.1\_\> {#_white_box_building_block_y_1}
+### White Box \<\_building block y.1\_\> {#\_white_box_building_block_y_1}
 
-*\<white box template>*
+_\<white box template>_
 
 # Runtime View {#section-runtime-view}
 
@@ -526,15 +526,15 @@ Specifies the internal structure of *building block x.1*.
 The runtime view describes concrete behavior and interactions of the
 system's building blocks in form of scenarios from the following areas:
 
--   important use cases or features: how do building blocks execute
-    them?
+- important use cases or features: how do building blocks execute
+  them?
 
--   interactions at critical external interfaces: how do building blocks
-    cooperate with users and neighboring systems?
+- interactions at critical external interfaces: how do building blocks
+  cooperate with users and neighboring systems?
 
--   operation and administration: launch, start-up, stop
+- operation and administration: launch, start-up, stop
 
--   error and exception scenarios
+- error and exception scenarios
 
 Remark: The main criterion for the choice of possible scenarios
 (sequences, workflows) is their **architectural relevance**. It is
@@ -557,33 +557,33 @@ static models (building block view, deployment view).
 
 There are many notations for describing scenarios, e.g.
 
--   numbered list of steps (in natural language)
+- numbered list of steps (in natural language)
 
--   activity diagrams or flow charts
+- activity diagrams or flow charts
 
--   sequence diagrams
+- sequence diagrams
 
--   BPMN or EPCs (event process chains)
+- BPMN or EPCs (event process chains)
 
--   state machines
+- state machines
 
--   ...
+- ...
 
 See [Runtime View](https://docs.arc42.org/section-6/) in the arc42
 documentation.
 
-## \<Runtime Scenario 1> {#__runtime_scenario_1}
+## \<Runtime Scenario 1> {#\_\_runtime_scenario_1}
 
--   *\<insert runtime diagram or textual description of the scenario>*
+- _\<insert runtime diagram or textual description of the scenario>_
 
--   *\<insert description of the notable aspects of the interactions
-    between the building block instances depicted in this diagram.\>*
+- _\<insert description of the notable aspects of the interactions
+  between the building block instances depicted in this diagram.\>_
 
-## \<Runtime Scenario 2> {#__runtime_scenario_2}
+## \<Runtime Scenario 2> {#\_\_runtime_scenario_2}
 
-## ... {#_}
+## ... {#\_}
 
-## \<Runtime Scenario n> {#__runtime_scenario_n}
+## \<Runtime Scenario n> {#\_\_runtime_scenario_n}
 
 # Deployment View {#section-deployment-view}
 
@@ -628,69 +628,69 @@ Maybe a highest level deployment diagram is already contained in section
 In this section one can zoom into this black box using additional
 deployment diagrams:
 
--   UML offers deployment diagrams to express that view. Use it,
-    probably with nested diagrams, when your infrastructure is more
-    complex.
+- UML offers deployment diagrams to express that view. Use it,
+  probably with nested diagrams, when your infrastructure is more
+  complex.
 
--   When your (hardware) stakeholders prefer other kinds of diagrams
-    rather than a deployment diagram, let them use any kind that is able
-    to show nodes and channels of the infrastructure.
+- When your (hardware) stakeholders prefer other kinds of diagrams
+  rather than a deployment diagram, let them use any kind that is able
+  to show nodes and channels of the infrastructure.
 
 See [Deployment View](https://docs.arc42.org/section-7/) in the arc42
 documentation.
 
-## Infrastructure Level 1 {#_infrastructure_level_1}
+## Infrastructure Level 1 {#\_infrastructure_level_1}
 
 Describe (usually in a combination of diagrams, tables, and text):
 
--   distribution of a system to multiple locations, environments,
-    computers, processors, .., as well as physical connections between
-    them
+- distribution of a system to multiple locations, environments,
+  computers, processors, .., as well as physical connections between
+  them
 
--   important justifications or motivations for this deployment
-    structure
+- important justifications or motivations for this deployment
+  structure
 
--   quality and/or performance features of this infrastructure
+- quality and/or performance features of this infrastructure
 
--   mapping of software artifacts to elements of this infrastructure
+- mapping of software artifacts to elements of this infrastructure
 
 For multiple environments or alternative deployments please copy and
 adapt this section of arc42 for all relevant environments.
 
-***\<Overview Diagram>***
+**_\<Overview Diagram>_**
 
 Motivation
 
-:   *\<explanation in text form>*
+: _\<explanation in text form>_
 
 Quality and/or Performance Features
 
-:   *\<explanation in text form>*
+: _\<explanation in text form>_
 
 Mapping of Building Blocks to Infrastructure
 
-:   *\<description of the mapping>*
+: _\<description of the mapping>_
 
-## Infrastructure Level 2 {#_infrastructure_level_2}
+## Infrastructure Level 2 {#\_infrastructure_level_2}
 
 Here you can include the internal structure of (some) infrastructure
 elements from level 1.
 
 Please copy the structure from level 1 for each selected element.
 
-### *\<Infrastructure Element 1>* {#__emphasis_infrastructure_element_1_emphasis}
+### _\<Infrastructure Element 1>_ {#\_\_emphasis_infrastructure_element_1_emphasis}
 
-*\<diagram + explanation>*
+_\<diagram + explanation>_
 
-### *\<Infrastructure Element 2>* {#__emphasis_infrastructure_element_2_emphasis}
+### _\<Infrastructure Element 2>_ {#\_\_emphasis_infrastructure_element_2_emphasis}
 
-*\<diagram + explanation>*
+_\<diagram + explanation>_
 
 ...
 
-### *\<Infrastructure Element n>* {#__emphasis_infrastructure_element_n_emphasis}
+### _\<Infrastructure Element n>_ {#\_\_emphasis_infrastructure_element_n_emphasis}
 
-*\<diagram + explanation>*
+_\<diagram + explanation>_
 
 # Cross-cutting Concepts {#section-concepts}
 
@@ -703,22 +703,22 @@ that are relevant in multiple parts (= cross-cutting) of your system.
 Such concepts are often related to multiple building blocks. They can
 include many different topics, such as
 
--   models, especially domain models
+- models, especially domain models
 
--   architecture or design patterns
+- architecture or design patterns
 
--   rules for using specific technology
+- rules for using specific technology
 
--   principal, often technical decisions of an overarching (=
-    cross-cutting) nature
+- principal, often technical decisions of an overarching (=
+  cross-cutting) nature
 
--   implementation rules
+- implementation rules
 
 ::: formalpara-title
 **Motivation**
 :::
 
-Concepts form the basis for *conceptual integrity* (consistency,
+Concepts form the basis for _conceptual integrity_ (consistency,
 homogeneity) of the architecture. Thus, they are an important
 contribution to achieve inner qualities of your system.
 
@@ -731,15 +731,15 @@ e.g. security or safety.
 
 The form can be varied:
 
--   concept papers with any kind of structure
+- concept papers with any kind of structure
 
--   cross-cutting model excerpts or scenarios using notations of the
-    architecture views
+- cross-cutting model excerpts or scenarios using notations of the
+  architecture views
 
--   sample implementations, especially for technical concepts
+- sample implementations, especially for technical concepts
 
--   reference to typical usage of standard frameworks (e.g. using
-    Hibernate for object/relational mapping)
+- reference to typical usage of standard frameworks (e.g. using
+  Hibernate for object/relational mapping)
 
 ::: formalpara-title
 **Structure**
@@ -747,19 +747,19 @@ The form can be varied:
 
 A potential (but not mandatory) structure for this section could be:
 
--   Domain concepts
+- Domain concepts
 
--   User Experience concepts (UX)
+- User Experience concepts (UX)
 
--   Safety and security concepts
+- Safety and security concepts
 
--   Architecture and design patterns
+- Architecture and design patterns
 
--   \"Under-the-hood\"
+- \"Under-the-hood\"
 
--   development concepts
+- development concepts
 
--   operational concepts
+- operational concepts
 
 Note: it might be difficult to assign individual concepts to one
 specific topic on this list.
@@ -770,19 +770,19 @@ concepts](images/08-Crosscutting-Concepts-Structure-EN.png)
 See [Concepts](https://docs.arc42.org/section-8/) in the arc42
 documentation.
 
-## *\<Concept 1>* {#__emphasis_concept_1_emphasis}
+## _\<Concept 1>_ {#\_\_emphasis_concept_1_emphasis}
 
-*\<explanation>*
+_\<explanation>_
 
-## *\<Concept 2>* {#__emphasis_concept_2_emphasis}
+## _\<Concept 2>_ {#\_\_emphasis_concept_2_emphasis}
 
-*\<explanation>*
+_\<explanation>_
 
 ...
 
-## *\<Concept n>* {#__emphasis_concept_n_emphasis}
+## _\<Concept n>_ {#\_\_emphasis_concept_n_emphasis}
 
-*\<explanation>*
+_\<explanation>_
 
 # Architecture Decisions {#section-design-decisions}
 
@@ -815,14 +815,14 @@ your decisions.
 
 Various options:
 
--   ADR []{.indexterm
-    primary="Architecture Decision Record"}[Architecture Decision
-    Record](https://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
-    for every important decision
+- ADR []{.indexterm
+  primary="Architecture Decision Record"}[Architecture Decision
+  Record](https://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
+  for every important decision
 
--   List or table, ordered by importance and consequences or:
+- List or table, ordered by importance and consequences or:
 
--   more detailed in form of separate sections per decision
+- more detailed in form of separate sections per decision
 
 See [Architecture Decisions](https://docs.arc42.org/section-9/) in the
 arc42 documentation. There you will find links and examples about ADR.
@@ -851,7 +851,7 @@ to them, concrete and measurable.
 See [Quality Requirements](https://docs.arc42.org/section-10/) in the
 arc42 documentation.
 
-## Quality Tree {#_quality_tree}
+## Quality Tree {#\_quality_tree}
 
 ::: formalpara-title
 **Content**
@@ -874,15 +874,15 @@ large number of quality requirements.
 The quality tree is a high-level overview of the quality goals and
 requirements:
 
--   tree-like refinement of the term \"quality\". Use \"quality\" or
-    \"usefulness\" as a root
+- tree-like refinement of the term \"quality\". Use \"quality\" or
+  \"usefulness\" as a root
 
--   a mind map with quality categories as main branches
+- a mind map with quality categories as main branches
 
 In any case the tree should include links to the scenarios of the
 following section.
 
-## Quality Scenarios {#_quality_scenarios}
+## Quality Scenarios {#\_quality_scenarios}
 
 ::: formalpara-title
 **Contents**
@@ -896,15 +896,15 @@ the system.
 
 For architects, two kinds of scenarios are important:
 
--   Usage scenarios (also called application scenarios or use case
-    scenarios) describe the system's runtime reaction to a certain
-    stimulus. This also includes scenarios that describe the system's
-    efficiency or performance. Example: The system reacts to a user's
-    request within one second.
+- Usage scenarios (also called application scenarios or use case
+  scenarios) describe the system's runtime reaction to a certain
+  stimulus. This also includes scenarios that describe the system's
+  efficiency or performance. Example: The system reacts to a user's
+  request within one second.
 
--   Change scenarios describe a modification of the system or of its
-    immediate environment. Example: Additional functionality is
-    implemented or requirements for a quality attribute change.
+- Change scenarios describe a modification of the system or of its
+  immediate environment. Example: Additional functionality is
+  implemented or requirements for a quality attribute change.
 
 ::: formalpara-title
 **Motivation**
@@ -973,24 +973,25 @@ multi-language teams.
 
 You should clearly define your terms, so that all stakeholders
 
--   have an identical understanding of these terms
+- have an identical understanding of these terms
 
--   do not use synonyms and homonyms
+- do not use synonyms and homonyms
 
 ```{=html}
 <!-- -->
 ```
--   A table with columns \<Term> and \<Definition>.
 
--   Potentially more columns in case you need translations.
+- A table with columns \<Term> and \<Definition>.
+
+- Potentially more columns in case you need translations.
 
 See [Glossary](https://docs.arc42.org/section-12/) in the arc42
 documentation.
 
 +-----------------------+-----------------------------------------------+
-| Term                  | Definition                                    |
+| Term | Definition |
 +=======================+===============================================+
-| *\<Term-1>*           | *\<definition-1>*                             |
+| _\<Term-1>_ | _\<definition-1>_ |
 +-----------------------+-----------------------------------------------+
-| *\<Term-2>*           | *\<definition-2>*                             |
+| _\<Term-2>_ | _\<definition-2>_ |
 +-----------------------+-----------------------------------------------+

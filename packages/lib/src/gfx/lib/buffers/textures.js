@@ -13,7 +13,11 @@ export function initBuffers(gl) {
 	}
 }
 //  {width, height} = programInfo.context
-export function updateBuffers(gl, programInfo, {texCoordBuffer, positionBuffer}) {
+export function updateBuffers(
+	gl,
+	programInfo,
+	{texCoordBuffer, positionBuffer},
+) {
 	const {width, height} = programInfo.context
 	updateTextureBufferData(gl, texCoordBuffer)
 	updatePositionBufferData(gl, positionBuffer, width, height)
@@ -48,7 +52,11 @@ function updatePositionBufferData(gl, positionBuffer, width, height) {
 
 function updateTextureBufferData(gl, texCoordBuffer) {
 	gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer)
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(DEFAULT_TEXTURE_COORDS), gl.STATIC_DRAW)
+	gl.bufferData(
+		gl.ARRAY_BUFFER,
+		new Float32Array(DEFAULT_TEXTURE_COORDS),
+		gl.STATIC_DRAW,
+	)
 }
 
 export function setPositionAttribute(gl, buffers, programInfo) {
@@ -78,7 +86,11 @@ export function setTextureAttribute(gl, buffers, programInfo) {
 	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.texCoordBuffer)
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(DEFAULT_TEXTURE_COORDS), gl.STATIC_DRAW)
+	gl.bufferData(
+		gl.ARRAY_BUFFER,
+		new Float32Array(DEFAULT_TEXTURE_COORDS),
+		gl.STATIC_DRAW,
+	)
 	gl.vertexAttribPointer(
 		programInfo.attribLocations.a_texCoord,
 		count,

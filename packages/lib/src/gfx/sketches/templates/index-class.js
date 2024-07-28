@@ -103,7 +103,11 @@ class Sketch {
 			x2, y1,
 			x2, y2,
 		]
-		this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(coords), this.gl.STATIC_DRAW)
+		this.gl.bufferData(
+			this.gl.ARRAY_BUFFER,
+			new Float32Array(coords),
+			this.gl.STATIC_DRAW,
+		)
 	}
 
 	#drawGeometry() {
@@ -143,7 +147,11 @@ class Sketch {
 			return
 		}
 		// set the resolution
-		this.gl.uniform2f(this.u_resolution, this.gl.canvas.width, this.gl.canvas.height)
+		this.gl.uniform2f(
+			this.u_resolution,
+			this.gl.canvas.width,
+			this.gl.canvas.height,
+		)
 
 		// Clear the canvas
 		this.gl.clearColor(0, 0, 0, 0.5) // set color to use as default when clearing buffer
@@ -171,7 +179,14 @@ class Sketch {
 		const normalize = false // don't normalize the data
 		const stride = 0 // 0: move forward (size * sizeof(type)) each iteration to get to the next position
 		const offset = 0 // start at the beginning of the buffer
-		this.gl.vertexAttribPointer(this.a_position, size, type, normalize, stride, offset)
+		this.gl.vertexAttribPointer(
+			this.a_position,
+			size,
+			type,
+			normalize,
+			stride,
+			offset,
+		)
 	}
 
 	draw() {
@@ -190,7 +205,12 @@ class Sketch {
 			// TODO: handle error
 			return
 		}
-		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight)
+		this.gl.viewport(
+			0,
+			0,
+			this.gl.drawingBufferWidth,
+			this.gl.drawingBufferHeight,
+		)
 		// Set the clear color to darkish green.
 		this.gl.clearColor(0.0, 0.0, 0.0, 0.0)
 		// Clear the context with the newly set color. This is
@@ -207,20 +227,36 @@ class Sketch {
 			return
 		}
 		console.log('---- Sketch - reflect ------')
-		const countAttributes = this.gl.getProgramParameter(this.program, this.gl.ACTIVE_ATTRIBUTES)
-		const countUniforms = this.gl.getProgramParameter(this.program, this.gl.ACTIVE_UNIFORMS)
+		const countAttributes = this.gl.getProgramParameter(
+			this.program,
+			this.gl.ACTIVE_ATTRIBUTES,
+		)
+		const countUniforms = this.gl.getProgramParameter(
+			this.program,
+			this.gl.ACTIVE_UNIFORMS,
+		)
 		const attributes = []
 		const uniforms = []
 		for (let i = 0; i < countAttributes; i++) {
 			const attribute = this.gl.getActiveAttrib(this.program, i)
 			if (attribute) {
-				attributes.push({[attribute.name]: this.gl.getAttribLocation(this.program, attribute.name)})
+				attributes.push({
+					[attribute.name]: this.gl.getAttribLocation(
+						this.program,
+						attribute.name,
+					),
+				})
 			}
 		}
 		for (let i = 0; i < countUniforms; i++) {
 			const uniform = this.gl.getActiveUniform(this.program, i)
 			if (uniform) {
-				uniforms.push({[uniform.name]: this.gl.getUniformLocation(this.program, uniform.name)})
+				uniforms.push({
+					[uniform.name]: this.gl.getUniformLocation(
+						this.program,
+						uniform.name,
+					),
+				})
 			}
 		}
 		console.log('attributes')
