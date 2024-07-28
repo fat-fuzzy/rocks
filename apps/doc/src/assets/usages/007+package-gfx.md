@@ -35,7 +35,6 @@ pnpm i -D @fat-fuzzy/lib
 Import and use the sketches:
 
 ```js
-
 <script lang="ts">
  import {dev} from '$app/environment'
  import lib from '@fat-fuzzy/lib'
@@ -72,16 +71,17 @@ import shader from '/some/shader.glsl?raw'
 
 ## Tools & Resources
 
-- 👾 Everything related to working with webgl
-  - [MDN WebGL API Doc](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
-  - [WebGL Fundamentals](https://webglfundamentals.org/)
-  - [WebGL Fundamentals - 2](https://webgl2fundamentals.org/)
-  - [The Book of Shaders](https://thebookofshaders.com/)
-  - [Inigo Quilez](https://iquilezles.org/)
-  - [Learn WebGL](https://learnwebgl.brown37.net/index.html)
-  - [Raw WebGL - a talk by Nick Desaulniers](https://www.youtube.com/watch?v=H4c8t6myAWU)
-  - [Introduction to computer graphics](https://math.hws.edu/graphicsbook/index.html)
-  - [Introduction to WebGL](https://dev.opera.com/articles/introduction-to-webgl-part-1/)
+👾 Everything related to working with webgl
+
+- [MDN WebGL API Doc](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
+- [WebGL Fundamentals](https://webglfundamentals.org/)
+- [WebGL Fundamentals - 2](https://webgl2fundamentals.org/)
+- [The Book of Shaders](https://thebookofshaders.com/)
+- [Inigo Quilez](https://iquilezles.org/)
+- [Learn WebGL](https://learnwebgl.brown37.net/index.html)
+- [Raw WebGL - a talk by Nick Desaulniers](https://www.youtube.com/watch?v=H4c8t6myAWU)
+- [Introduction to computer graphics](https://math.hws.edu/graphicsbook/index.html)
+- [Introduction to WebGL](https://dev.opera.com/articles/introduction-to-webgl-part-1/)
 
 ## Notes from WebGL courses
 
@@ -196,9 +196,10 @@ Uniforms and Attributes are shader inputs
 
 #### Varyings
 
-- Communication channel between shaders: vertex shader feeds into fragment shader:
-  - vertex output
-  - fragment input
+Communication channel between shaders: vertex shader feeds into fragment shader:
+
+- vertex output
+- fragment input
 
 ### Running a program
 
