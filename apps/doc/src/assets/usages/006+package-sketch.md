@@ -21,7 +21,7 @@ This package is used in conjunction with the [@fat-fuzzy/lib](https://github.com
 
 ### Usage
 
-1. Install the package as a `devDependency`:
+Install the package as a `devDependency`:
 
 ```shell
 pnpm i -D @fat-fuzzy/sketch

@@ -5,12 +5,12 @@
 	const {PageMain} = content
 
 	let markdowns = $state($page.data.markdowns.usages)
-	let title = 'Fat Fuzzy Usage'
+	let title = 'Usage'
 	let description =
 		'Fat Fuzzy Doc: how to use the packages in this project, examples, notes'
 </script>
 
-<PageMain {title} {description} size="lg">
+<PageMain {title} {description} size="lg" page="Doc">
 	<div class="l:text maki:block:2xs">
 		<ul class="l:stack:lg w:full unstyled">
 			{#each markdowns as { meta }}
