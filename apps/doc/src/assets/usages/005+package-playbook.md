@@ -5,8 +5,7 @@ updated: null
 slug: playbook
 asset: package-playbook
 id: '005'
-status: draft
-tags: ['example', 'doc', 'playbook', 'packages']
+tags: ['example', 'doc', 'playbook', 'packages', 'wip']
 ---
 
 ## Contents
@@ -27,12 +26,33 @@ This package is used to render the documentation and interactive demos of the UI
 pnpm i -D @fat-fuzzy/playbook
 ```
 
-[TODO]
+### UI Library requirements
 
-## 🚧 Resources
+The `Playground`  component assumes that the UI library exports components grouped into five objects:
 
-- [CUBE CSS](https://cube.fyi/)
+- `tokens`
+- `blocks`
+- `layouts`
+- `recipes`
 
-## TODO
+You can see how this is done for the UI library package: [exports from @fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/blob/main/packages/ui/src/lib/index.ts)
 
-[TODO]
+### Building the pages
+
+Build the routing structure using this example: [UI route for @fat-fuzzy/doc](https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/routes/ui)
+
+### Providing content
+
+The components' documentation content from their corresponding markdown assets, which must be located in the `src/assets/ui` folder of the doc website (assuming `ui` is the name of the route used to render the demo).
+
+The markdown also provides the metadata necessary to render the inputs for the style props required by the element.
+
+Here is what that looks like for the UI library in this site: [UI Library Markdown assets](https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/assets/ui)
+
+[TODO] Elaborate on how this thing was built and how it works
+
+## Resources
+
+- [@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui)
+
+You can see how this package renders the UI library doc here: [UI](/ui)
