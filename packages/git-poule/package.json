@@ -11,5 +11,6 @@
 	"dependencies": {
 		"prettier": "^1.19.1",
 		"shelljs": "^0.8.5"
-	}
+	},
+	"type": "module"
 }

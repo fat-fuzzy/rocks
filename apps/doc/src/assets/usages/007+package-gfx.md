@@ -24,9 +24,9 @@ This package contains:
 
 1. Install the package as a `devDependency`:
 
- ```shell
- pnpm i -D @fat-fuzzy/lib
- ```
+```shell
+pnpm i -D @fat-fuzzy/lib
+```
 
 [TODO]
 

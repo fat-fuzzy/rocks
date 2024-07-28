@@ -1,31 +1,22 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "tasks": {
-    "test": {
-      "dependsOn": [
-        "^test"
-      ],
-      "outputs": [
-        "test-results/**"
-      ]
-    },
-    "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".svelte-kit/**",
-        ".vercel/**"
-      ]
-    },
-    "lint": {
-      "outputs": []
-    },
-    "dev": {
-      "cache": false
-    },
-    "clean": {
-      "cache": false
-    }
-  }
+	"$schema": "https://turbo.build/schema.json",
+	"tasks": {
+		"test": {
+			"dependsOn": ["^test"],
+			"outputs": ["test-results/**"]
+		},
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": [".svelte-kit/**", ".vercel/**"]
+		},
+		"lint": {
+			"outputs": []
+		},
+		"dev": {
+			"cache": false
+		},
+		"clean": {
+			"cache": false
+		}
+	}
 }

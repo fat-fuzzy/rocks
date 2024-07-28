@@ -49,7 +49,8 @@ export class DsStateUpdate {
 	toggleMenuReveal(data: FormData) {
 		const updated = data.get('button-ui-RevealMenu')?.toString()
 		if (updated) {
-			this.state.menuReveal.reveal = TRANSITION_REVEAL[this.state.menuReveal.reveal]
+			this.state.menuReveal.reveal =
+				TRANSITION_REVEAL[this.state.menuReveal.reveal]
 			return true
 		}
 		return false
@@ -58,7 +59,8 @@ export class DsStateUpdate {
 	toggleNavReveal(data: FormData) {
 		const updated = data.get('button-ui-RevealNav')?.toString()
 		if (updated) {
-			this.state.navReveal.reveal = TRANSITION_REVEAL[this.state.navReveal.reveal]
+			this.state.navReveal.reveal =
+				TRANSITION_REVEAL[this.state.navReveal.reveal]
 			return true
 		}
 		return false
@@ -67,7 +69,8 @@ export class DsStateUpdate {
 	toggleSidebarReveal(data: FormData) {
 		const updated = data.get('button-ui-Header-nav-reveal')?.toString()
 		if (updated) {
-			this.state.sidebarReveal.reveal = TRANSITION_REVEAL[this.state.sidebarReveal.reveal]
+			this.state.sidebarReveal.reveal =
+				TRANSITION_REVEAL[this.state.sidebarReveal.reveal]
 			return true
 		}
 		return false
@@ -76,7 +79,8 @@ export class DsStateUpdate {
 	toggleSettingsReveal(data: FormData) {
 		const updated = data.get('button-ui-Header-menu-settings')?.toString()
 		if (updated) {
-			this.state.settingsReveal.reveal = TRANSITION_REVEAL[this.state.settingsReveal.reveal]
+			this.state.settingsReveal.reveal =
+				TRANSITION_REVEAL[this.state.settingsReveal.reveal]
 			return true
 		}
 		return false

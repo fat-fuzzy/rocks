@@ -3,11 +3,11 @@ title: RevealAuto
 slug: RevealAuto
 category: 'layouts'
 content_types: ['any']
-props_style: {
-  'blocks': {'element': ['size', 'color', 'variant']},
-  'layouts': {'layout': ['breakpoint'],
-  'container': ['container', 'size']}
-}
+props_style:
+  {
+    'blocks': {'element': ['size', 'color', 'variant']},
+    'layouts': {'layout': ['breakpoint'], 'container': ['container', 'size']},
+  }
 context: ['app.settings']
 ---
 

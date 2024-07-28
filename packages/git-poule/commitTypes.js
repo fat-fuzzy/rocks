@@ -20,7 +20,11 @@ fs.readFile(CZ_CONFIG_FILE, 'utf8', (err, data) => {
 
 	COMMIT_TYPES.forEach((type) => {
 		const data = czConfig.types[type]
-		commitTypesData.push([`"${type.trim()}"`, `"${data.title}"`, `"${data.description}"`])
+		commitTypesData.push([
+			`"${type.trim()}"`,
+			`"${data.title}"`,
+			`"${data.description}"`,
+		])
 	})
 
 	// COMIT_TYPES_CSV

@@ -4,7 +4,8 @@ slug: Button
 category: 'blocks'
 group: 'buttons'
 props_state: ['title', 'text', 'formaction', 'value']
-props_style: {'blocks': {'element': ['color', 'variant', 'size', 'asset', 'shape']}}
+props_style:
+  {'blocks': {'element': ['color', 'variant', 'size', 'asset', 'shape']}}
 context: ['app.settings']
 ---
 

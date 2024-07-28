@@ -12,7 +12,9 @@ var filter = function (array) {
 }
 
 var headerLength = function (answers) {
-	return answers.type.length + 2 + (answers.scope ? answers.scope.length + 2 : 0)
+	return (
+		answers.type.length + 2 + (answers.scope ? answers.scope.length + 2 : 0)
+	)
 }
 
 var maxSummaryLength = function (options, answers) {
@@ -21,7 +23,10 @@ var maxSummaryLength = function (options, answers) {
 
 var filterSubject = function (subject, disableSubjectLowerCase) {
 	subject = subject.trim()
-	if (!disableSubjectLowerCase && subject.charAt(0).toLowerCase() !== subject.charAt(0)) {
+	if (
+		!disableSubjectLowerCase &&
+		subject.charAt(0).toLowerCase() !== subject.charAt(0)
+	) {
 		subject = subject.charAt(0).toLowerCase() + subject.slice(1, subject.length)
 	}
 	while (subject.endsWith('.')) {
@@ -79,7 +84,9 @@ module.exports = function (options) {
 						'What is the scope of this change (e.g. component or file name): (press enter to skip)',
 					default: options.defaultScope,
 					filter: function (value) {
-						return options.disableScopeLowerCase ? value.trim() : value.trim().toLowerCase()
+						return options.disableScopeLowerCase
+							? value.trim()
+							: value.trim().toLowerCase()
 					},
 				},
 				{
@@ -94,21 +101,29 @@ module.exports = function (options) {
 					},
 					default: options.defaultSubject,
 					validate: function (subject, answers) {
-						var filteredSubject = filterSubject(subject, options.disableSubjectLowerCase)
+						var filteredSubject = filterSubject(
+							subject,
+							options.disableSubjectLowerCase,
+						)
 						return filteredSubject.length == 0
 							? 'subject is required'
 							: filteredSubject.length <= maxSummaryLength(options, answers)
-							? true
-							: 'Subject length must be less than or equal to ' +
-							  maxSummaryLength(options, answers) +
-							  ' characters. Current length is ' +
-							  filteredSubject.length +
-							  ' characters.'
+								? true
+								: 'Subject length must be less than or equal to ' +
+									maxSummaryLength(options, answers) +
+									' characters. Current length is ' +
+									filteredSubject.length +
+									' characters.'
 					},
 					transformer: function (subject, answers) {
-						var filteredSubject = filterSubject(subject, options.disableSubjectLowerCase)
+						var filteredSubject = filterSubject(
+							subject,
+							options.disableSubjectLowerCase,
+						)
 						var color =
-							filteredSubject.length <= maxSummaryLength(options, answers) ? chalk.green : chalk.red
+							filteredSubject.length <= maxSummaryLength(options, answers)
+								? chalk.green
+								: chalk.red
 						return color('(' + filteredSubject.length + ') ' + subject)
 					},
 					filter: function (subject) {
@@ -118,7 +133,8 @@ module.exports = function (options) {
 				{
 					type: 'input',
 					name: 'body',
-					message: 'Provide a longer description of the change: (press enter to skip)\n',
+					message:
+						'Provide a longer description of the change: (press enter to skip)\n',
 					default: options.defaultBody,
 				},
 				{
@@ -137,7 +153,10 @@ module.exports = function (options) {
 						return answers.isBreaking && !answers.body
 					},
 					validate: function (breakingBody, answers) {
-						return breakingBody.trim().length > 0 || 'Body is required for BREAKING CHANGE'
+						return (
+							breakingBody.trim().length > 0 ||
+							'Body is required for BREAKING CHANGE'
+						)
 					},
 				},
 				{
@@ -162,7 +181,9 @@ module.exports = function (options) {
 					message:
 						'If issues are closed, the commit requires a body. Please enter a longer description of the commit itself:\n',
 					when: function (answers) {
-						return answers.isIssueAffected && !answers.body && !answers.breakingBody
+						return (
+							answers.isIssueAffected && !answers.body && !answers.breakingBody
+						)
 					},
 				},
 				{
@@ -185,18 +206,23 @@ module.exports = function (options) {
 
 				// parentheses are only needed when a scope is present
 				var scope = answers.scope
-					? options.punctuation.scope[0] + answers.scope + options.punctuation.scope[1]
+					? options.punctuation.scope[0] +
+						answers.scope +
+						options.punctuation.scope[1]
 					: ''
 
 				// Hard limit this line in the validate
-				var head = answers.type + scope + options.punctuation.type + answers.subject
+				var head =
+					answers.type + scope + options.punctuation.type + answers.subject
 
 				// Wrap these lines at options.maxLineWidth characters
 				var body = answers.body ? wrap(answers.body, wrapOptions) : false
 
 				// Apply breaking change prefix, removing it if already present
 				var breaking = answers.breaking ? answers.breaking.trim() : ''
-				breaking = breaking ? 'BREAKING CHANGE: ' + breaking.replace(/^BREAKING CHANGE: /, '') : ''
+				breaking = breaking
+					? 'BREAKING CHANGE: ' + breaking.replace(/^BREAKING CHANGE: /, '')
+					: ''
 				breaking = breaking ? wrap(breaking, wrapOptions) : false
 
 				var issues = answers.issues ? wrap(answers.issues, wrapOptions) : false

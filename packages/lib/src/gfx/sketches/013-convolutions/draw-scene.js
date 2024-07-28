@@ -13,7 +13,11 @@ let originalTexture
  */
 function drawScene(gl, programInfo, {level}) {
 	// Pass in the canvas resolution to convert from pixels to clipspace in the shader
-	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
+	gl.uniform2f(
+		programInfo.uniformLocations.u_resolution,
+		gl.canvas.width,
+		gl.canvas.height,
+	)
 	gl.uniform1i(programInfo.uniformLocations.u_level, level)
 
 	// Create a texture
@@ -27,12 +31,30 @@ function drawScene(gl, programInfo, {level}) {
 	let srcType = gl.UNSIGNED_BYTE // type of data we are supplying
 	let data = null // no data = create a black texture
 
-	let framebufferOptions = {mipLevel, border, internalFormat, srcFormat, srcType, data}
+	let framebufferOptions = {
+		mipLevel,
+		border,
+		internalFormat,
+		srcFormat,
+		srcType,
+		data,
+	}
 	// texImage2D(target, level, internalformat, format, type, source)
 	const image = programInfo.context.image
-	gl.texImage2D(gl.TEXTURE_2D, mipLevel, internalFormat, srcFormat, srcType, image)
+	gl.texImage2D(
+		gl.TEXTURE_2D,
+		mipLevel,
+		internalFormat,
+		srcFormat,
+		srcType,
+		image,
+	)
 
-	let {textures, framebuffers} = setupFramebuffers(gl, programInfo, framebufferOptions)
+	let {textures, framebuffers} = setupFramebuffers(
+		gl,
+		programInfo,
+		framebufferOptions,
+	)
 
 	drawEffects(gl, programInfo, textures, framebuffers, originalTexture)
 }
@@ -64,7 +86,8 @@ function createAndSetupTexture(gl) {
 function setupFramebuffers(gl, programInfo, framebufferOptions) {
 	let textures = []
 	let framebuffers = []
-	let {mipLevel, border, internalFormat, srcFormat, srcType, data} = framebufferOptions
+	let {mipLevel, border, internalFormat, srcFormat, srcType, data} =
+		framebufferOptions
 
 	for (let i = 0; i < filters.kernelKeys.length; i++) {
 		// Create a texture
@@ -91,7 +114,13 @@ function setupFramebuffers(gl, programInfo, framebufferOptions) {
 
 		// Attach a texture to it
 		let attachmentPoint = gl.COLOR_ATTACHMENT0
-		gl.framebufferTexture2D(gl.FRAMEBUFFER, attachmentPoint, gl.TEXTURE_2D, texture, mipLevel)
+		gl.framebufferTexture2D(
+			gl.FRAMEBUFFER,
+			attachmentPoint,
+			gl.TEXTURE_2D,
+			texture,
+			mipLevel,
+		)
 	}
 
 	return {textures, framebuffers}
@@ -166,7 +195,11 @@ function setFrameBuffer(gl, fbo, programInfo) {
 	gl.bindFramebuffer(gl.FRAMEBUFFER, fbo)
 
 	// Tell the shader the resolution of the framebuffer
-	gl.uniform2f(programInfo.uniformLocations.u_resolution, gl.canvas.width, gl.canvas.height)
+	gl.uniform2f(
+		programInfo.uniformLocations.u_resolution,
+		gl.canvas.width,
+		gl.canvas.height,
+	)
 
 	let {x, y, viewportWidth, viewportHeight} = utils.centerImage(
 		{width: gl.drawingBufferWidth, height: gl.drawingBufferHeight},
@@ -185,7 +218,10 @@ function setFrameBuffer(gl, fbo, programInfo) {
 function draWithKernel(gl, programInfo, kernel) {
 	// Set the kernel and its weight
 	gl.uniform1fv(programInfo.uniformLocations.u_kernel, kernel)
-	gl.uniform1f(programInfo.uniformLocations.u_kernelWeight, filters.computeKernelWeight(kernel))
+	gl.uniform1f(
+		programInfo.uniformLocations.u_kernelWeight,
+		filters.computeKernelWeight(kernel),
+	)
 
 	// Set a rectangle the same dimensions as the image
 	const primitiveType = gl.TRIANGLES

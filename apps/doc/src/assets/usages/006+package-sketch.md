@@ -21,9 +21,9 @@ This package is used to render the documentation and interactive demos of the UI
 
 1. Install the package as a `devDependency`:
 
- ```shell
- pnpm i -D @fat-fuzzy/sketch
- ```
+```shell
+pnpm i -D @fat-fuzzy/sketch
+```
 
 [TODO]
 

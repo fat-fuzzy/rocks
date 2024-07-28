@@ -1,7 +1,7 @@
 {
-	"name": "cz-conventional-changelog",
+	"name": "@fat-fuzzy/cz-changelog",
 	"version": "0.0.1",
-	"description": "Commitizen adapter following the conventional-changelog format.",
+	"description": "Commitizen adapter ADAPTED FROM the conventional-changelog format.",
 	"main": "index.js",
 	"scripts": {
 		"commit": "git-cz",
