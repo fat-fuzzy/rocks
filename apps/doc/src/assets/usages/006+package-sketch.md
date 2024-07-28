@@ -5,7 +5,6 @@ updated: null
 slug: sketch
 asset: package-sketch
 id: '006'
-status: draft
 tags: ['example', 'doc', 'sketch', 'packages']
 ---
 
