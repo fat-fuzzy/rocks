@@ -36,14 +36,11 @@ Import and use the sketches:
 
 ```js
 <script lang="ts">
-
- import {dev} from '$app/environment'
- import lib from '@fat-fuzzy/lib'
- import {graphics} from '@fat-fuzzy/sketch'
+  import {dev} from '$app/environment'
+  import lib from '@fat-fuzzy/lib'
+  import {graphics} from '@fat-fuzzy/sketch'
   
- let scene = $derived(
-  lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),
- )
+  let scene = $derived(lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug))
 </script>
 
 <Sketch {scene} size="sm" {dev}/>

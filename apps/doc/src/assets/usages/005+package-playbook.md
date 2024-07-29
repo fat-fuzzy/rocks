@@ -22,7 +22,7 @@ You can see how that renders here: [UI](/ui)
 
 ### Usage
 
-1. Install the package as a `devDependency`:
+Install the package as a `devDependency`:
 
 ```shell
 pnpm i -D @fat-fuzzy/playbook

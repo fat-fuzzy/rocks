@@ -32,7 +32,7 @@ let variant = 'surface:2:primary'
 	{/snippet}
 
 	<section class="l:center:md">
-		<div class="l:text:lg col:center">{@html html}</div>
+		<div class="l:text:lg col:center w:full">{@html html}</div>
 		<div class="maki:block:2xl">
 			<ul class="l:switcher:sm unstyled">
 				<li class={`card:lg text:center emoji:recipes ${variant}`}>
