@@ -1,4 +1,4 @@
-import type {Settings} from '$types'
+import type {Settings, Tab} from '$types'
 import type {StyleTree} from '$lib/api/styles.types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
@@ -34,7 +34,6 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 }
 
 const DEFAULT_TABS: Tab[] = [
-	// TODO: figure out a better way to map range number values to class strings
 	{
 		id: 'component.context.menu.toggle.doc',
 		name: 'component.context.menu.toggle.doc',
@@ -81,7 +80,7 @@ const DEFAULT_STYLES: StyleTree = {
 			settings: {
 				brightness: 'day',
 				contrast: 'blend',
-			} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
+			},
 		},
 	},
 	blocks: {
@@ -91,7 +90,6 @@ const DEFAULT_STYLES: StyleTree = {
 				color: '',
 				status: 'default',
 				context: 'form',
-				// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
 				asset: 'emoji:default',
 				size: 'md',
 			},
