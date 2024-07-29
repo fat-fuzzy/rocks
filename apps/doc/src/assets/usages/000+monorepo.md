@@ -24,7 +24,7 @@ You can learn more about individual packages in the [Packages](/doc/usage/packag
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/en)
+- [Node.js](https://nodejs.org/)
 - [pnpm](https://pnpm.io/) and [Turborepo](https://turbo.build) to manage the packages and builds
 - [Svelte](https://svelte.dev/), recently upgraded to [Svelte 5](https://svelte-5-preview.vercel.app/docs/introduction) that I use to build UI components
 - [SvelteKit](https://kit.svelte.dev/), which helps me develop, build and package my sites or apps
