@@ -54,7 +54,7 @@
 		<div class="l:main l:flex reverse">
 			<form
 				method="POST"
-				class="tabs maki:inline:lg"
+				class="tabs"
 				action={`${actionPath}?/updateTab&redirectTo=${redirect}`}
 				use:enhance={() => {
 					// prevent default callback from resetting the form
