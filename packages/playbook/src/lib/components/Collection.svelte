@@ -91,9 +91,11 @@
 			</aside>
 		{:else if tab === 'doc'}
 			<section class="l:main">
-				{#if children}
-					{@render children()}
-				{/if}
+				<div class="l:text:lg">
+					{#if children}
+						{@render children()}
+					{/if}
+				</div>
 			</section>
 			<aside class="l:side l:stack:md">
 				<PropsDoc {meta} />
