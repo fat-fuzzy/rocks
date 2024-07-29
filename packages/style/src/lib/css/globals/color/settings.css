@@ -233,3 +233,29 @@
 .settings\:night\:blend {
 	--lightness-base: var(--color-lightness-dark-blend);
 }
+
+@media (prefers-color-scheme: light) {
+	.emoji\:blend::before {
+		content: var(--emoji-blend-day);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.emoji\:blend::before {
+		content: var(--emoji-blend-night);
+	}
+}
+
+[class*='settings:night'],
+[color-scheme='dark'] {
+	.emoji\:blend::before {
+		content: var(--emoji-blend-night);
+	}
+}
+
+[class*='settings:day'],
+[color-scheme='light'] {
+	.emoji\:blend::before {
+		content: var(--emoji-blend-day);
+	}
+}
