@@ -43,13 +43,19 @@ $current_cssvars: ();
 
 @mixin generate-emoji-assets($design_tokens, $prefix) {
 	@each $name, $value in $design_tokens {
+		#{$prefix}-emoji-#{$name}: '#{$value}';
+	}
+}
+
+@mixin generate-emoji-rules($design_tokens, $prefix) {
+	@each $name, $value in $design_tokens {
 		.emoji\:#{$name}:not(.justify\:end, .place\:end)::before,
 		.emoji\:#{$name}.justify\:start::before {
-			content: '#{$value}';
+			content: var(--emoji-#{$name});
 		}
 		.emoji\:#{$name}.place\:end::after,
 		.emoji\:#{$name}.justify\:end::after {
-			content: '#{$value}';
+			content: var(--emoji-#{$name});
 		}
 	}
 }
@@ -148,6 +154,7 @@ $current_cssvars: ();
 			$modular-scale-steps-plus,
 			$modular-scale-steps-minus
 		);
+		@include generate-emoji-assets($emojis, $prefix);
 	}
-	@include generate-emoji-assets($emojis, $prefix);
+	@include generate-emoji-rules($emojis, $prefix);
 }

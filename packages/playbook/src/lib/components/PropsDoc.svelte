@@ -47,7 +47,7 @@
 	{/if}
 	{#if meta.content_types}
 		<details open class="l:stack:md size:xs">
-			<summary class={`surface:2:highlight`}>Content Type</summary>
+			<summary class={`surface:2:highlight`}>Children</summary>
 			<ul class="tags l:switcher:md">
 				{#each meta.content_types as prop}
 					<li class="card:2xs font:sm surface:1:highlight">{prop}</li>

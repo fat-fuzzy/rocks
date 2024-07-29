@@ -85,7 +85,7 @@
 					color="highlight"
 					variant="outline"
 					shape="round"
-					asset="emoji:nojs"
+					asset="nojs"
 				/>
 			</div>
 		{:then}
