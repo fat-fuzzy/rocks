@@ -6,7 +6,7 @@
 	block-size: fit-content;
 }
 
-button[class*='emoji:'][class*='shape:']::before {
+button[class*='emoji:'][class*='shape:']:not([class*='l:stack'])::before {
 	line-height: 0;
 }
 
