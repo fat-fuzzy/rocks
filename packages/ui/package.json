@@ -5,7 +5,6 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && pnpm package",
-		"build:ajv": "node ./src/lib/validation/ajv.cjs",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "pnpm package",
@@ -29,12 +28,12 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"svelte": "^5.0.0",
-		"@sveltejs/kit": "^2.0.0",
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
-		"@fat-fuzzy/ui": "workspace:*"
+		"@fat-fuzzy/ui": "workspace:*",
+		"@sveltejs/kit": "^2.0.0",
+		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
@@ -46,9 +45,6 @@
 		"@sveltejs/kit": "^2.5.18",
 		"@sveltejs/package": "^2.3.2",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
-		"ajv": "^8.17.1",
-		"ajv-errors": "^3.0.0",
-		"ajv-formats": "^3.0.1",
 		"mdsvex": "^0.11.2",
 		"postcss": "^8.4.39",
 		"publint": "^0.1.16",

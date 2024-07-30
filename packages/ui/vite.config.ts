@@ -7,8 +7,6 @@ export default defineConfig({
 		include: ['src/**/*.{test,spec}.{js,ts}'],
 	},
 	build: {
-		commonjsOptions: {
-			transformMixedEsModules: true,
-		},
+		target: 'esnext',
 	},
 })

@@ -3,9 +3,9 @@
 	import type { ButtonType } from '$lib/components/blocks/buttons/button.types.js'
 
 	import {getStores} from '$app/stores'
-	import AjvValidator from '$lib/validation/AjvValidator.js'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import { onMount } from 'svelte'
+
 
 	let {
 		id,
@@ -31,7 +31,6 @@
 	}: InputProps = $props()
 
 	let page = getStores().page
-	let validator = new AjvValidator(validationFunction)
 	let fields = {
 		email: '',
 		password: '',
@@ -42,7 +41,7 @@
 	let type: ButtonType = action ? 'submit' : 'button'
 
 	onMount(async () => {
-		await validator.init(id, {fields, errors: []})
+		// await validator.init(id, {fields, errors: []})
 	})
 </script>
 
