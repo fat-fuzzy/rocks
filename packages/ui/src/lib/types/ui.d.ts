@@ -18,27 +18,6 @@ export type ButtonContext = {
 	value: string | number
 }
 
-export enum UiState {
-	active = 'active',
-	inactive = 'inactive',
-	expanded = 'expanded',
-	collapsed = 'collapsed',
-}
-
-export enum UiStatus {
-	default = 'default',
-	info = 'info',
-	success = 'success',
-	warning = 'warning',
-	error = 'error',
-}
-
-export enum UiTextContext {
-	form = 'form',
-	prose = 'prose',
-	code = 'code',
-}
-
 export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export type Settings = {

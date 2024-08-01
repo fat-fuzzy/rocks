@@ -1,5 +1,5 @@
 // Reexport your entry components here
-
+/// <reference path="./types/index.d.ts" />
 /**
  * Headless components
  */
@@ -67,7 +67,6 @@ import {SidebarReveal} from '$lib/forms/sidebar-reveal.js'
 /**
  * Utilities
  */
-import * as types from '$lib/types/index.js'
 import constants from '$lib/types/constants.js'
 import * as clickOutside from '$lib/utils/click-outside.js'
 import format from '$lib/utils/format.js'
@@ -144,5 +143,4 @@ export {
 	utils,
 	forms,
 	constants,
-	types,
 }

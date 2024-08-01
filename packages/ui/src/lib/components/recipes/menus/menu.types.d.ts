@@ -1,6 +1,4 @@
-import {type UiBlockProps} from '$types/index.js'
-import type {ButtonProps} from '$lib/components/blocks/buttons/button.types.js'
-import type {RevealLayoutProps} from '$lib/components/layouts/layout.types.js'
+import type {UiBlockProps, ButtonProps, RevealLayoutProps} from '$types'
 
 export type ButtonMenuProps = UiBlockProps & {
 	/**

@@ -1,7 +1,11 @@
 import type {Snippet} from 'svelte'
-import type {FuzzyPayload} from '$types/machines.js'
-import type {UiLayoutProps, UiContentProps, UiBlockProps} from '$types/index.js'
-import type {FormProps} from '$lib/components/recipes/forms/forms.types.js'
+import type {
+	FuzzyPayload,
+	UiLayoutProps,
+	UiContentProps,
+	UiBlockProps,
+	FormProps,
+} from '$types'
 
 export type LayoutProps = UiLayoutProps & UiContentProps & FormProps
 

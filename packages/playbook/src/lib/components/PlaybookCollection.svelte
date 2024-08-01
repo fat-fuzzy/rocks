@@ -38,9 +38,7 @@
 	let currentTabs = playbookStore.currentTabs
 	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
 
-	let items = $derived(
-		components.find(({category: c}) => c === category)?.items ?? [],
-	)
+	let items = $derived(components.find(({category: c}) => c === category)?.items ?? [])
 	let markdownContent = $derived(markdowns[category].find(({meta}) => meta.slug === category))
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,

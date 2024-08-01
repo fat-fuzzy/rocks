@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import { EXPAND_MACHINE } from '$lib/components/blocks/buttons/Expand/expand.types.js'
+	import { EXPAND_MACHINE } from  '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
 
 	const {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { DetailsLayoutProps } from "./layout.types.js"
+	import type { DetailsLayoutProps } from  '$types'
 
 	let {
 		layout,

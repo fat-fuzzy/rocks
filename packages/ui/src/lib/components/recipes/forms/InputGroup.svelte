@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {InputProps} from '$lib/components/blocks/forms/input.types.js'
+	import type {InputProps} from '$types'
 	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'

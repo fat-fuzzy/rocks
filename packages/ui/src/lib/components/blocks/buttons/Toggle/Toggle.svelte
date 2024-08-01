@@ -1,8 +1,7 @@
 <script lang="ts">
-	import type { ToggleProps } from './toggle.types.js'
+	import type { ToggleProps } from '$types'
+	import { UiState, ButtonEvent } from '$types'
 	import { onMount } from 'svelte'
-	import { UiState} from '$types/index.js'
-	import { ButtonEvent } from '../button.types.js'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -38,7 +37,7 @@
 		name,
 		value,
 		state: store.state,
-		update: store.update.bind(store),
+		action: store.update.bind(store),
 	})
 
 	let buttonClasses =  $derived(store.getStyles({

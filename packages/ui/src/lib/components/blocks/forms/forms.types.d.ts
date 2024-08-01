@@ -1,10 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {
-	InputType,
-	InputPayload,
-	UiBlockProps,
-	UiStatus,
-} from '$types/index.js'
+import type {InputType, InputPayload, UiBlockProps, UiStatus} from '$types'
 
 export type InputProps = UiBlockProps & {
 	id: string

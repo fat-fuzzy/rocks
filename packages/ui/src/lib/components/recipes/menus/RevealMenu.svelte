@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type {RevealMenuProps} from './menu.types.js'
-
+	import type {RevealMenuProps} from '$types'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	const VARIANT_MATCH: {[key: string]: string} = {
