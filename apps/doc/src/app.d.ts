@@ -5,6 +5,10 @@ declare namespace App {
 	// interface Error {}
 	interface Locals {
 		nav
+		navTokens
+		navBlocks
+		navLayouts
+		navRecipes
 		sidebar
 		settings
 		app

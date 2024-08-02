@@ -21,12 +21,25 @@ export class NavReveal {
 	 * Update nav based on inputs
 	 */
 	reveal(data: FormData) {
+		let updated
 		if (data.has('reveal')) {
-			const updated = data.get('reveal')?.toString()
-			if (updated) {
-				this.nav.reveal = TRANSITION_REVEAL[this.nav.reveal]
-				return true
-			}
+			updated = data.get('reveal')?.toString()
+		}
+		if (data.has('reveal-tokens')) {
+			updated = data.get('reveal-tokens')?.toString()
+		}
+		if (data.has('reveal-blocks')) {
+			updated = data.get('reveal-blocks')?.toString()
+		}
+		if (data.has('reveal-layouts')) {
+			updated = data.get('reveal-layouts')?.toString()
+		}
+		if (data.has('reveal-recipes')) {
+			updated = data.get('reveal-recipes')?.toString()
+		}
+		if (updated) {
+			this.nav.reveal = TRANSITION_REVEAL[this.nav.reveal]
+			return true
 		}
 		return false
 	}

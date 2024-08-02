@@ -1,4 +1,4 @@
-import {fail, redirect} from '@sveltejs/kit'
+import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
 const {NavReveal, SidebarReveal, SettingsReveal, SettingsUpdate} = ui.forms
@@ -14,13 +14,9 @@ export const actions = {
 		}
 		let navReveal = new NavReveal(currentState)
 		if (!navReveal.reveal(data)) {
-			return fail(400, {navRevealError: true})
+			error(500, 'navRevealError')
 		}
 		cookies.set('fat-fuzzy-nav-reveal', navReveal.toString(), {path: '/'})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo)
-		}
 		return {success: true}
 	},
 
@@ -33,16 +29,30 @@ export const actions = {
 		}
 		let sidebarReveal = new SidebarReveal(currentState)
 		if (!sidebarReveal.reveal(data)) {
-			return fail(400, {sidebarRevealError: true})
+			error(500, 'sidebarRevealError')
 		}
 		cookies.set('fat-fuzzy-sidebar-reveal', sidebarReveal.toString(), {
 			path: '/',
 		})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo)
+		return {status: 200}
+	},
+
+	toggleSubnav: async ({request, url, cookies}) => {
+		const data = await request.formData()
+		const name = data.get('name')
+		const cookie = `fat-fuzzy-${name}`
+		const serialized = cookies.get(cookie)
+		let currentState = DEFAULT_REVEAL_STATE
+
+		if (serialized) {
+			currentState = JSON.parse(serialized)
 		}
-		return {success: true}
+		let navReveal = new NavReveal(currentState)
+		if (!navReveal.reveal(data)) {
+			error(500, 'subnavRevealError')
+		}
+		cookies.set(cookie, navReveal.toString(), {path: '/'})
+		return {status: 200}
 	},
 
 	toggleSettings: async ({request, url, cookies}) => {
@@ -54,16 +64,12 @@ export const actions = {
 		}
 		let settingsReveal = new SettingsReveal(currentState)
 		if (!settingsReveal.reveal(data)) {
-			return fail(400, {settingsRevealError: true})
+			error(500, 'settingsRevealError')
 		}
 		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {
 			path: '/',
 		})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo)
-		}
-		return {success: true}
+		return {status: 200}
 	},
 
 	updateSettings: async ({request, url, cookies}) => {
@@ -75,22 +81,19 @@ export const actions = {
 		}
 		let settingsUpdate = new SettingsUpdate(currentSettings)
 		if (!settingsUpdate.update(data)) {
-			return fail(400, {settingsError: true})
+			error(500, 'settingsError')
 		}
 		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {
 			path: '/',
 		})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo)
-		}
-		return {success: true}
+		return {status: 200}
 	},
 
 	reset: async ({cookies}) => {
-		cookies.delete('fat-fuzzy-nav-reveal', {path: '/'})
-		cookies.delete('fat-fuzzy-sidebar-reveal', {path: '/'})
-		cookies.delete('fat-fuzzy-settings-reveal', {path: '/'})
-		cookies.delete('fat-fuzzy-settings-app', {path: '/'})
+		cookies.getAll().forEach((cookie) => {
+			if (cookie.name.startsWith('fat-fuzzy-')) {
+				cookies.delete(cookie.name, {path: '/'})
+			}
+		})
 	},
 }

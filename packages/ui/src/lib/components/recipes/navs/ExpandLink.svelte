@@ -19,7 +19,7 @@
 		asset,
 		children,
 		reveal,
-		formaction,
+		formaction='/?/toggleSubnav',
 		onclick,
 	}: any = $props()
 	
@@ -50,7 +50,7 @@
 			{title}
 		</a>
 		<Expand
-			id={`button-expand-${slug}`}
+			id={`button-reveal-${slug}`}
 			{variant}
 			{title}
 			{size}
@@ -58,11 +58,11 @@
 			{shape}
 			initial={reveal.reveal}
 			value={linkReveal[slug].reveal}
-			name={`button-expand-${slug}`}
+			name="{`reveal-${slug}`}"
 			controls={`links-${slug}`}
 			{states}
 			onclick={toggleReveal}
-			formaction={formaction ? formaction : undefined}
+			{formaction}
 		/>
 	</div>
 	<div id={`links-${slug}`} class='content'>
