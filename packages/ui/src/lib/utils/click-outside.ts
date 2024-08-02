@@ -4,7 +4,9 @@
  *
  *  Dispatch event on click outside of node
  */
+// @ts-expect-error TODO clean this function
 export function clickOutside(node) {
+	// @ts-expect-error TODO clean this function
 	const handleClick = (event) => {
 		if (node && !node.contains(event.target) && !event.defaultPrevented) {
 			node.dispatchEvent(new CustomEvent('clickOutside', node))

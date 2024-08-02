@@ -1,13 +1,14 @@
-import type {ButtonEvent} from '../button.types.js'
+import type {
+	ButtonEvent,
+	FuzzyPayload,
+	FuzzyActor,
+	UiBlockProps,
+	UiStateSwitch,
+	SwitchMachine,
+} from '$types'
+import {SWITCH_MACHINE, SWITCH_TRANSITIONS} from './definitions.js'
+import {UiState} from '$types'
 import styleHelper from '$lib/utils/styles.js'
-import {type FuzzyPayload, type FuzzyActor} from '$types/machines.js'
-import {UiState, type UiBlockProps} from '$types/index.js'
-import {
-	type UiStateSwitch,
-	type SwitchMachine,
-	SWITCH_MACHINE,
-	SWITCH_TRANSITIONS,
-} from './switch.types.js'
 
 class SwitchActor implements FuzzyActor {
 	state: UiStateSwitch = $state(UiState.inactive)

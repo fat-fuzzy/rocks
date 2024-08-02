@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {InputProps} from './input.types.js'
-	import {UiStatus, UiTextContext} from '$types/index.js'
+	import type {InputProps} from '$types'
+	import {UiStatus, UiTextContext} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 

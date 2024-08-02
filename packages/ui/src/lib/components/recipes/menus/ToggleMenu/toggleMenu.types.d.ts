@@ -1,12 +1,9 @@
-import {UiState, type UiBlockProps} from '$types/index.js'
-import type {
-	TogglePayload,
-	ToggleProps,
-} from '$lib/components/blocks/buttons/Toggle/toggle.types.js'
+import type {UiBlockProps, FuzzyPayload, ToggleProps} from '$types'
+import {UiState} from '$types'
 
 export type ToggleState = UiState.active | UiState.inactive
 
-export type ToggleMenuPayload = TogglePayload | TogglePayload[]
+export type ToggleMenuPayload = FuzzyPayload[]
 
 export type ToggleMenuProps = UiBlockProps & {
 	/**
@@ -26,4 +23,4 @@ export type ToggleMenuProps = UiBlockProps & {
 	) => void
 }
 
-export type ToggleMenuStateType = Map<string, TogglePayload>
+export type ToggleMenuStateType = Map<string, FuzzyPayload>

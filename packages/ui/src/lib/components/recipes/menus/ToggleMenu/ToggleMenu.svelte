@@ -1,10 +1,8 @@
 <script lang="ts">
-	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
-	import type {FuzzyPayload} from '$types/machines.js'
-	import type { ButtonType } from '$lib/components/blocks/buttons/button.types.js'
-	import { type ToggleMenuProps} from './toggleMenu.types.js'
-	import ToggleMenuStore from './store.svelte'
+	import type {FuzzyPayload ,ButtonType, ToggleMenuProps} from '$types'
 	import { onMount } from 'svelte'
+	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
+	import ToggleMenuStore from './store.svelte'
 
 	let {
 		id = 'toggle-menu',

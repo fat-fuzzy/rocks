@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import  {type AriaLive, UiStatus, UiTextContext} from '$types/index.js'
+	import type {AriaLive} from '$types'
+	import {UiStatus, UiTextContext} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 
 	type Props = {

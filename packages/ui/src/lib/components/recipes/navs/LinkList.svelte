@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {LinkListProps} from './nav.types.js'
+	import type {LinkListProps} from '$types'
 	import format from '$lib/utils/format.js'
 	import {getStores} from '$app/stores'
 

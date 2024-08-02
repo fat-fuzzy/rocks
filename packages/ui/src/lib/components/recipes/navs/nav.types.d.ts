@@ -1,6 +1,4 @@
-import type {UiBlockProps} from '$lib/types/index.js'
-import type {RevealLayoutProps} from '$lib/components/layouts/layout.types.js'
-import type {FuzzyPayload} from '$types/machines.js'
+import type {UiBlockProps, RevealLayoutProps, FuzzyPayload} from '$types'
 
 export type NavProps = UiBlockProps & {
 	id: string

@@ -1,7 +1,7 @@
+import ui from '@fat-fuzzy/ui'
 import type {Settings} from '$types'
-import constants from '$lib/types/constants'
 
-const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
+const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = ui.constants
 
 export class DsContextReveal {
 	settings: Settings

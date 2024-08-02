@@ -1,12 +1,12 @@
 <script lang="ts">
+	import type { RevealLayoutProps} from '$types'
 	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
+	import {UiState} from '$lib/types/enums.js'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
-	import type {RevealLayoutProps} from './layout.types.js'
 	import styleHelper from '$lib/utils/styles.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
-	import { UiState } from '$types/index.js'
 
 	const { ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE} = constants
 

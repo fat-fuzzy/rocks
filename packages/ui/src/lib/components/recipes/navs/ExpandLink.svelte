@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import { EXPAND_MACHINE } from '$lib/components/blocks/buttons/Expand/expand.types.js'
+	import { EXPAND_MACHINE } from  '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
 
 	const {
@@ -19,7 +19,7 @@
 		asset,
 		children,
 		reveal,
-		formaction,
+		formaction='/?/toggleSubnav',
 		onclick,
 	}: any = $props()
 	
@@ -50,7 +50,7 @@
 			{title}
 		</a>
 		<Expand
-			id={`button-expand-${slug}`}
+			id={`button-reveal-${slug}`}
 			{variant}
 			{title}
 			{size}
@@ -58,11 +58,11 @@
 			{shape}
 			initial={reveal.reveal}
 			value={linkReveal[slug].reveal}
-			name={`button-expand-${slug}`}
+			name="{`reveal-${slug}`}"
 			controls={`links-${slug}`}
 			{states}
 			onclick={toggleReveal}
-			formaction={formaction ? formaction : undefined}
+			{formaction}
 		/>
 	</div>
 	<div id={`links-${slug}`} class='content'>

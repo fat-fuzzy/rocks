@@ -2,10 +2,10 @@
 	import {page} from '$app/stores'
 
 	import lib from '@fat-fuzzy/lib'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import Sketch from '$lib/components/sketch/Sketch.svelte'
 
-	const {PageMain} = content
+	const {PageMain} = ui.content
 
 	let scene = $derived(
 		lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),

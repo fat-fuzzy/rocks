@@ -1,6 +1,6 @@
 <script lang="ts">
-	import {blocks} from '@fat-fuzzy/ui'
-	const {InputRange} = blocks
+	import ui from '@fat-fuzzy/ui'
+	const {InputRange} = ui.blocks
 
 	type Props = {
 		color: string

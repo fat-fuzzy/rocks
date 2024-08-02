@@ -1,6 +1,6 @@
 <script lang="ts">
 	import constants from '$lib/types/constants.js'
-	import type {RevealNavProps} from './nav.types.js'
+	import type {RevealNavProps} from '$types'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'

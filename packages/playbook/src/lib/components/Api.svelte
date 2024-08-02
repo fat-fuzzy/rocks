@@ -4,8 +4,9 @@
 
 	import {enhance} from '$app/forms'
 	import StyleFamily from '$lib/components/StyleFamily.svelte'
-	import {blocks} from '@fat-fuzzy/ui'
-	const {Button} = blocks
+	import ui from '@fat-fuzzy/ui'
+
+	const {Button} = ui.blocks
 
 	type Props = {
 		path?: string

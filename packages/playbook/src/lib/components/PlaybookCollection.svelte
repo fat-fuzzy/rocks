@@ -2,14 +2,14 @@
 	import {getContext, type Snippet} from 'svelte'
 	import {enhance} from '$app/forms'
 	import {page} from '$app/stores'
-	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui'
+	import fatFuzzyUi from '@fat-fuzzy/ui'
 	import {api} from '@fat-fuzzy/playbook'
 	import PlaybookStore from '$lib/api/store.svelte'
 
-	const {PageMain} = content
+	const {PageMain} = fatFuzzyUi.content
 	const {Collection, Api} = api
-	const {ToggleMenu} = recipes
-	const {DEFAULT_TABS, TABS} = constants
+	const {ToggleMenu} = fatFuzzyUi.recipes
+	const {DEFAULT_TABS, TABS} = fatFuzzyUi.constants
 
 	type Props = {
 		category: any // TODO: fix types
@@ -29,18 +29,16 @@
 	const tabs = TABS
 
 	const components = [
-		{category: 'tokens', items: tokens},
-		{category: 'blocks', items: blocks},
-		{category: 'layouts', items: layouts},
-		{category: 'recipes', items: recipes},
+		{category: 'tokens', items: fatFuzzyUi.tokens},
+		{category: 'blocks', items: fatFuzzyUi.blocks},
+		{category: 'layouts', items: fatFuzzyUi.layouts},
+		{category: 'recipes', items: fatFuzzyUi.recipes},
 	]
 	
 	let currentTabs = playbookStore.currentTabs
 	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
 
-	let items = $derived(
-		components.find(({category: c}) => c === category)?.items ?? [],
-	)
+	let items = $derived(components.find(({category: c}) => c === category)?.items ?? [])
 	let markdownContent = $derived(markdowns[category].find(({meta}) => meta.slug === category))
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
