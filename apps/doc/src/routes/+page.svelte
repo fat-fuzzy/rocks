@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain} = content
+	const {PageMain} = ui.content
 
 	// TODO; conditional import
 	import introDay from '$lib/images/day/001-intro.png' // TODO : optimize images

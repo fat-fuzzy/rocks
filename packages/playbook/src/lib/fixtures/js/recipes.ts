@@ -1,5 +1,5 @@
-import {constants} from '@fat-fuzzy/ui'
-const {APP_SETTINGS} = constants
+import ui from '@fat-fuzzy/ui'
+const {APP_SETTINGS} = ui.constants
 
 export const links = [{id: 'link-list.doc', slug: 'doc', title: 'Doc'}]
 

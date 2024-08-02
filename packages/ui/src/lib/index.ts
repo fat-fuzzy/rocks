@@ -1,5 +1,6 @@
 // Reexport your entry components here
 /// <reference path="./types/index.d.ts" />
+import type {FatFuzzyUi} from '$types'
 /**
  * Headless components
  */
@@ -133,7 +134,7 @@ const headless = {
 	Head,
 }
 
-export {
+export default {
 	headless,
 	tokens,
 	blocks,
@@ -143,4 +144,4 @@ export {
 	utils,
 	forms,
 	constants,
-}
+} as FatFuzzyUi

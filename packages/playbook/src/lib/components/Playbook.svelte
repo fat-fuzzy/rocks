@@ -1,18 +1,11 @@
 <script lang="ts">
 	import {onMount, getContext, setContext, type Snippet} from 'svelte'
 	import {page} from '$app/stores'
-	import {
-		tokens,
-		blocks,
-		layouts,
-		recipes,
-		content,
-		constants,
-	} from '@fat-fuzzy/ui'
+	import fatFuzzyUi from '@fat-fuzzy/ui'
 	import playbookStore from '$lib/api/store.svelte'
 	import * as api from '$lib/api/styles.api'
 
-	const {LayoutSidebar} = content
+	const {LayoutSidebar} = fatFuzzyUi.content
 
 	type Props = {
 		app: {settings: {[key: string]: string}}
@@ -27,15 +20,15 @@
 		return a < b ? -1 : b < a ? 1 : 0
 	}
 
-	const tokenNames = Object.keys(tokens).sort(sortAsc)
-	const blockNames = Object.keys(blocks).sort(sortAsc)
-	const layoutNames = Object.keys(layouts).sort(sortAsc)
-	const recipeNames = Object.keys(recipes).sort(sortAsc)
+	const tokenNames = Object.keys(fatFuzzyUi.tokens).sort(sortAsc)
+	const blockNames = Object.keys(fatFuzzyUi.blocks).sort(sortAsc)
+	const layoutNames = Object.keys(fatFuzzyUi.layouts).sort(sortAsc)
+	const recipeNames = Object.keys(fatFuzzyUi.recipes).sort(sortAsc)
 	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
 
 	let {styles, context, ui} = $state($page.data)
-	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = constants
+	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = fatFuzzyUi.constants
 
 	playbookStore.reveal = context
 	playbookStore.navReveal = ui?.navReveal || DEFAULT_NAV_REVEAL_STATE

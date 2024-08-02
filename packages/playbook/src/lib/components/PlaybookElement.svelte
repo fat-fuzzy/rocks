@@ -1,15 +1,15 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
 	import {enhance} from '$app/forms'
-	import {tokens, blocks, layouts, recipes, content, constants} from '@fat-fuzzy/ui'
+	import fatFuzzyUi from '@fat-fuzzy/ui'
 	import {api} from '@fat-fuzzy/playbook'
 	import PlaybookStore from '$lib/api/store.svelte'
 
-	const {DEFAULT_TABS, TABS} = constants
+	const {DEFAULT_TABS, TABS} = fatFuzzyUi.constants
 
-	const {PageMain} = content
+	const {PageMain} = fatFuzzyUi.content
 	const {Element, Api} = api
-	const {ToggleMenu} = recipes
+	const {ToggleMenu} = fatFuzzyUi.recipes
 
 	type Props = {
 		category: any // TODO: fix types
@@ -31,10 +31,10 @@
 	let currentTab = $state(currentTabs.ui || DEFAULT_TABS[0])
 
 	let categoryItems: {[name: string]: any} = {
-		tokens: tokens,
-		blocks: blocks,
-		layouts: layouts,
-		recipes: recipes,
+		tokens: fatFuzzyUi.tokens,
+		blocks: fatFuzzyUi.blocks,
+		layouts: fatFuzzyUi.layouts,
+		recipes: fatFuzzyUi.recipes,
 	}
 
 	let description = $derived(`${title} | Doc`)

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain} = content
+	const {PageMain} = ui.content
 	const path = $derived($page.url.pathname)
 
 	let markdown = $page.data.content

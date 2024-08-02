@@ -3,12 +3,12 @@
 	import type {StyleInputGroup} from '$lib/api/styles.types'
 
 	import {onMount, getContext} from 'svelte'
-	import {blocks, recipes} from '@fat-fuzzy/ui' // TODO: fix types
+	import fatFuzzyUi from '@fat-fuzzy/ui'
 
 	import PlaybookStore from '$lib/api/store.svelte'
 
-	const {InputRange} = blocks
-	const {ToggleMenu, InputGroup} = recipes
+	const {InputRange} = fatFuzzyUi.blocks
+	const {ToggleMenu, InputGroup} = fatFuzzyUi.recipes
 
 	type Props = {
 		styleInput: StyleInputGroup

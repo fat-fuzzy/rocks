@@ -18,7 +18,7 @@
 	},
 	"exports": {
 		".": {
-			"types": "./dist/types/index.d.ts",
+			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		}
 	},
@@ -55,8 +55,9 @@
 		"vite": "^5.3.4",
 		"vitest": "^1.6.0"
 	},
+	"main": "./dist/index.js",
 	"svelte": "./dist/index.js",
-	"types": "./dist/types/index.d.ts",
+	"types": "./dist/index.d.ts",
 	"type": "module",
 	"engines": {
 		"node": ">= 20"

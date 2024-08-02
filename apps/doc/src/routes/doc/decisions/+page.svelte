@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain} = content
+	const {PageMain} = ui.content
 
 	let markdowns = $state($page.data.markdowns.decisions)
 

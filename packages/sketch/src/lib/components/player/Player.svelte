@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import {blocks} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import store from './store.svelte'
 	import {PlayerEvent, PlayerState} from './types.js'
-	const {Button, Switch} = blocks
+	const {Button, Switch} = ui.blocks
 
 	type Props = {
 		id?: string

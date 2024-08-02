@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain} = content
+	const {PageMain} = ui.content
 
 	let markdown = $derived(
 		$page.data.markdowns.usages.find((d) => d.path === $page.data.path),

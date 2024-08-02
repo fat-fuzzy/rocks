@@ -1,6 +1,7 @@
-import {api, constants} from '@fat-fuzzy/ui'
+import ui from '@fat-fuzzy/ui'
+import {api} from '@fat-fuzzy/playbook'
 
-const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = constants
+const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
 
 export class Styles {
 	api
