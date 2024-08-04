@@ -37,6 +37,12 @@ export class NavReveal {
 		if (data.has('reveal-recipes')) {
 			updated = data.get('reveal-recipes')?.toString()
 		}
+		if (data.has('reveal-usage')) {
+			updated = data.get('reveal-usage')?.toString()
+		}
+		if (data.has('reveal-decisions')) {
+			updated = data.get('reveal-decisions')?.toString()
+		}
 		if (updated) {
 			this.nav.reveal = TRANSITION_REVEAL[this.nav.reveal]
 			return true
