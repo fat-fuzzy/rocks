@@ -2,7 +2,7 @@ import {expect, test} from '@playwright/test'
 import utils from '../../utils/constants'
 
 const {ready, draft} = utils.recipes
-const path = utils.recipes.path
+const path = utils.recipes.path()
 
 // const components = [...ready, ...draft]
 

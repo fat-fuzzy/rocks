@@ -8,7 +8,7 @@ categories.forEach(async (category) => {
 	test(`UI page navigation works as expected: ${category} link`, async ({
 		page,
 	}) => {
-		await page.goto(utils.categories.path)
+		await page.goto(utils.categories.path())
 		await expect(page.getByTestId('nav-nav-page')).toBeVisible()
 		await page
 			.getByTestId('nav-nav-page')
@@ -24,7 +24,7 @@ blocks.forEach(async (block) => {
 	test(`UI page navigation works as expected: ${block} link`, async ({
 		page,
 	}) => {
-		await page.goto(utils.blocks.path)
+		await page.goto(utils.blocks.path())
 		await expect(page.getByTestId('nav-nav-page')).toBeVisible()
 		await page
 			.getByTestId('nav-nav-page')

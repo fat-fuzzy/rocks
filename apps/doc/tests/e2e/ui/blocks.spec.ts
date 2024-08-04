@@ -2,7 +2,7 @@ import {expect, test} from '@playwright/test'
 import utils from '../../utils/constants'
 
 const {ready, draft} = utils.blocks
-const path = utils.blocks.path
+const path = utils.blocks.path()
 
 // const components = [...ready, ...draft]
 
