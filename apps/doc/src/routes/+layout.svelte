@@ -51,9 +51,11 @@
 		id="doc"
 		path={$page.url.pathname}
 		actionPath="/"
+		redirect={$page.url.pathname}
 		formaction="toggleNav"
 		items={{links, settings: {...ui.constants.APP_SETTINGS, onupdate: updateSettings}}}
 		breakpoint="sm"
+		app={fatFuzzyStore.app}
 	/>
 	<main id="main">
 		{#if children}

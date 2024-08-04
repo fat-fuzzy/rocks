@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {ExpandLinkProps} from '$types'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import { EXPAND_MACHINE } from  '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
@@ -19,9 +20,9 @@
 		asset,
 		children,
 		reveal,
-		formaction='/?/toggleSubnav',
+		formaction,
 		onclick,
-	}: any = $props()
+	}: ExpandLinkProps = $props()
 	
 
 	let linkReveal = $state(reveal ? {[slug]: reveal} : {[slug] :DEFAULT_REVEAL_STATE})

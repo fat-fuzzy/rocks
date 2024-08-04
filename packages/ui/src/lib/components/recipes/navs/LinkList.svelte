@@ -19,6 +19,7 @@
 		id,
 		depth = 0,
 		container,
+		redirect,
 		items = [], // TODO: fix type,
 	}: LinkListProps = $props()
 
@@ -67,6 +68,7 @@
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
 					size="2xs"
+					{redirect}
 				>
 					<svelte:self
 						items={subItems}

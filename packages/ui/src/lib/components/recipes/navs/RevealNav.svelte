@@ -92,6 +92,7 @@
 			{align}
 			container="content"
 			depth={0}
+			{redirect}
 		/>
 	</Reveal>
 </nav>
