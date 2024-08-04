@@ -10,7 +10,7 @@ export type FuzzyPayload = {
 	name: string
 	value?: string | number
 	state: string
-	callback?: (event: FuzzyEvent) => void // Callback function defined in the parent component
+	action?: (event: FuzzyEvent) => void // Callback function defined in the parent component
 }
 
 /**

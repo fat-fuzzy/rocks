@@ -42,16 +42,16 @@ class ToggleMenuStore {
 	}
 
 	public update(payload: FuzzyPayload): void {
-		if (payload && payload.callback) {
+		if (payload && payload.action) {
 			this.items.set(payload.name, payload)
 			if (this.mode === 'radio' && payload.state === 'active') {
 				this.items.forEach((value, key) => {
 					if (
 						key !== payload.name &&
 						value.state === 'active' &&
-						value.callback
+						value.action
 					) {
-						value.callback('toggle' as ButtonEvent)
+						value.action('toggle' as ButtonEvent)
 						value.state = 'inactive'
 						this.items.set(key, value)
 					}
