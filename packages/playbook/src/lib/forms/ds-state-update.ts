@@ -1,7 +1,7 @@
+import ui from '@fat-fuzzy/ui'
 import type {Settings} from '$types'
-import constants from '$types/constants'
 
-const {DEFAULT_DS_STATE, TRANSITION_REVEAL} = constants
+const {DEFAULT_DS_STATE, TRANSITION_REVEAL} = ui.constants
 
 export class DsStateUpdate {
 	state: {

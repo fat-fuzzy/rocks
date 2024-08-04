@@ -1,11 +1,11 @@
 <script lang="ts">
+	import type {SettingsProps} from '$types'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
-	import type {SettingsProps} from './settings.types.js'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
+	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
-	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
 	const {DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 

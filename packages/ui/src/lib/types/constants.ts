@@ -1,10 +1,7 @@
-import {
-	UiState,
-	type Settings,
-	type Tab,
-	type ButtonContext,
-} from '$types/index.js'
-import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
+import type {Settings, Tab, ButtonContext} from '$types'
+import {UiState} from '$types'
+import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
+import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 
 const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	id: '',
@@ -243,4 +240,6 @@ export default {
 	TABS,
 	APP_LINKS,
 	APP_SETTINGS,
+	SWITCH_MACHINE,
+	EXPAND_MACHINE,
 }

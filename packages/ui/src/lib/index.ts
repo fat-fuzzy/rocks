@@ -1,5 +1,6 @@
 // Reexport your entry components here
-
+/// <reference path="./types/index.d.ts" />
+import type {FatFuzzyUi} from '$types'
 /**
  * Headless components
  */
@@ -67,7 +68,6 @@ import {SidebarReveal} from '$lib/forms/sidebar-reveal.js'
 /**
  * Utilities
  */
-import * as types from '$lib/types/index.js'
 import constants from '$lib/types/constants.js'
 import * as clickOutside from '$lib/utils/click-outside.js'
 import format from '$lib/utils/format.js'
@@ -134,7 +134,7 @@ const headless = {
 	Head,
 }
 
-export {
+export default {
 	headless,
 	tokens,
 	blocks,
@@ -144,5 +144,4 @@ export {
 	utils,
 	forms,
 	constants,
-	types,
-}
+} as FatFuzzyUi

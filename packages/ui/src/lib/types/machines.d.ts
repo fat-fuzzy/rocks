@@ -1,7 +1,8 @@
 /**
  * Fuzzy State Machine
  */
-import {UiState} from '$types/index.js'
+import type {UiState} from '$types'
+
 export type FuzzyEvent = boolean | number | string | Event
 
 export type FuzzyPayload = {

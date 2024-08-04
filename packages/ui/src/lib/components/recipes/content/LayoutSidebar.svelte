@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {type Snippet} from 'svelte'
 	import constants from '$lib/types/constants.js'
-	import type { RevealNavProps } from '$lib/components/recipes/navs/nav.types.js'
+	import type { RevealNavProps } from '$types'
 	import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 	const {DEFAULT_NAV_REVEAL_STATE} = constants

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {NavProps} from './nav.types.js'
+	import type {NavProps} from '$types'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
 
 	let {

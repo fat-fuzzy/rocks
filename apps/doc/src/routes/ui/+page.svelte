@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import {api} from '@fat-fuzzy/playbook'
 
-	const {PageMain} = content
+	const {PageMain} = ui.content
 
 	const {PlaybookCollection} = api
 

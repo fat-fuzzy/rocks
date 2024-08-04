@@ -1,9 +1,10 @@
-import {UiState, type ButtonEventType} from '$types/index.js'
 import type {
+	ButtonEvent,
 	ToggleProps,
-	TogglePayload,
-} from '$lib/components/blocks/buttons/Toggle/toggle.types.js'
-import {type ToggleMenuStateType} from './toggleMenu.types.js'
+	FuzzyPayload,
+	ToggleMenuStateType,
+} from '$types'
+import {UiState} from '$types'
 
 class ToggleMenuStore {
 	mode = 'radio'
@@ -23,12 +24,12 @@ class ToggleMenuStore {
 
 	public getSelected(): {
 		name: string
-		value: string | number
+		value?: string | number
 		state: string
 	}[] {
 		let selected: {
 			name: string
-			value: string | number
+			value?: string | number
 			state: string
 		}[] = []
 		this.items.forEach((item) => {
@@ -40,17 +41,17 @@ class ToggleMenuStore {
 		return selected
 	}
 
-	public update(payload: TogglePayload): void {
-		if (payload && payload.update) {
+	public update(payload: FuzzyPayload): void {
+		if (payload && payload.callback) {
 			this.items.set(payload.name, payload)
 			if (this.mode === 'radio' && payload.state === 'active') {
 				this.items.forEach((value, key) => {
 					if (
 						key !== payload.name &&
 						value.state === 'active' &&
-						value.update
+						value.callback
 					) {
-						value.update('toggle' as ButtonEventType)
+						value.callback('toggle' as ButtonEvent)
 						value.state = 'inactive'
 						this.items.set(key, value)
 					}

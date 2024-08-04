@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {Filters} from '$types/index.js'
-	import {recipes} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import store from '$lib/components/sketch/store.svelte'
-	const {ToggleMenu} = recipes
+	const {ToggleMenu} = ui.recipes
 
 	type Props = {
 		id: string

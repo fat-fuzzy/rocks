@@ -1,6 +1,6 @@
-import {constants} from '@fat-fuzzy/ui'
+import ui from '@fat-fuzzy/ui'
 
-const {DEFAULT_APP_SETTINGS} = constants
+const {DEFAULT_APP_SETTINGS} = ui.constants
 
 class SketchStore {
 	app = $state({settings: DEFAULT_APP_SETTINGS})

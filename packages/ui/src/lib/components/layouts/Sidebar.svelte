@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {SidebarLayoutProps} from './layout.types.js'
+	import type {SidebarLayoutProps} from '$types'
 
 	let {size, align, threshold, side, main}: SidebarLayoutProps = $props()
 

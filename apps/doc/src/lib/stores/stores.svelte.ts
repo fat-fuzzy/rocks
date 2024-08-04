@@ -1,4 +1,4 @@
-import {constants} from '@fat-fuzzy/ui'
+import ui from '@fat-fuzzy/ui'
 
 const {
 	DEFAULT_REVEAL_STATE,
@@ -6,7 +6,7 @@ const {
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_STYLES,
 	DEFAULT_TABS,
-} = constants
+} = ui.constants
 
 class FatFuzzyStore {
 	styles = $state(DEFAULT_STYLES)

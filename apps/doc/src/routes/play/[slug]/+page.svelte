@@ -3,11 +3,11 @@
 	import {dev} from '$app/environment'
 
 	import lib from '@fat-fuzzy/lib'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import {graphics} from '@fat-fuzzy/sketch'
 
 	const {Sketch} = graphics
-	const {PageMain} = content
+	const {PageMain} = ui.content
 
 	let scene = $derived(
 		lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),

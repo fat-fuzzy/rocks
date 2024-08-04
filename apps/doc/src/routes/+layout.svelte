@@ -4,10 +4,10 @@
 
 	import {page} from '$app/stores'
 	import {links} from '$data/nav'
-	import {recipes, utils, constants} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
-	const {Header} = recipes
+	const {Header} = ui.recipes
 
 	type Props = {
 		sidebar?: Snippet
@@ -20,7 +20,7 @@
 
 	let brightness = $derived(app.settings.brightness)
 	let contrast = $derived(app.settings.contrast)
-	let pageClass = $derived(utils.format.getClassNameFromPathname($page.url.pathname))
+	let pageClass = $derived(ui.utils.format.getClassNameFromPathname($page.url.pathname))
 	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
 	let footerClass = 'card:xs'
 	let aboutContainerClass = $derived(pageClass === 'page:home' ? 'card:xl' : '')
@@ -52,7 +52,7 @@
 		path={$page.url.pathname}
 		actionPath="/"
 		formaction="toggleNav"
-		items={{links, settings: {...constants.APP_SETTINGS, onupdate: updateSettings}}}
+		items={{links, settings: {...ui.constants.APP_SETTINGS, onupdate: updateSettings}}}
 		breakpoint="sm"
 	/>
 	<main id="main">

@@ -1,4 +1,5 @@
-import {UiStatus, type UiBlockProps, type UiTextContext} from '$types/index.js'
+import type {UiBlockProps, UiTextContext} from '$types'
+import {UiStatus} from '$types'
 
 function getElementStyles(props: UiBlockProps): string {
 	let {color, size, shape, align, justify, asset, variant, background} = props

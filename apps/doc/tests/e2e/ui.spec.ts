@@ -28,7 +28,7 @@ blocks.forEach(async (block) => {
 		await expect(page.getByTestId('nav-nav-page')).toBeVisible()
 		await page
 			.getByTestId('nav-nav-page')
-			.getByTestId('button-expand-blocks')
+			.getByTestId('button-reveal-blocks')
 			.click()
 		await page
 			.getByTestId('nav-nav-page')

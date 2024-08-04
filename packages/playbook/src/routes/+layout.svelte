@@ -1,10 +1,10 @@
 <script lang="ts">
 	import '@fat-fuzzy/style'
-	import {recipes, constants} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import type { Snippet } from 'svelte'
 
-	const {APP_SETTINGS, APP_LINKS} = constants
-	const {Header} = recipes
+	const {APP_SETTINGS, APP_LINKS} = ui.constants
+	const {Header} = ui.recipes
 
 	type Props = { children: Snippet }
 

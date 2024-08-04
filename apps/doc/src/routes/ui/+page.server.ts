@@ -1,11 +1,12 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
 
-import {constants} from '@fat-fuzzy/ui'
+import ui from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
 
 const {DsTabsUpdate, DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
-const {TABS, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = constants
+const {TABS, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} =
+	ui.constants
 
 export const actions = {
 	toggleContext: async ({request, url, cookies}) => {
