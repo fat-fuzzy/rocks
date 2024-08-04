@@ -60,10 +60,8 @@ import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 /**
  * Forms
  */
-import {NavReveal} from '$lib/forms/nav-reveal.js'
-import {SettingsReveal} from '$lib/forms/settings-reveal.js'
+import {UiReveal} from '$lib/forms/ui-reveal.js'
 import {SettingsUpdate} from '$lib/forms/settings-update.js'
-import {SidebarReveal} from '$lib/forms/sidebar-reveal.js'
 
 /**
  * Utilities
@@ -81,9 +79,7 @@ const utils = {
 }
 
 const forms = {
-	NavReveal,
-	SidebarReveal,
-	SettingsReveal,
+	UiReveal,
 	SettingsUpdate,
 }
 

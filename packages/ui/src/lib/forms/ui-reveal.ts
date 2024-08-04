@@ -3,7 +3,7 @@ import constants from '$lib/types/constants.js'
 
 const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
-export class NavReveal {
+export class UiReveal {
 	nav: Settings
 
 	/**
