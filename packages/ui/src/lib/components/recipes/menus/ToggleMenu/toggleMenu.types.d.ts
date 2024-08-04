@@ -16,10 +16,10 @@ export type ToggleMenuProps = UiBlockProps & {
 	formaction?: string
 	items: ToggleProps[]
 	init: (
-		payload: {name: string; value: string | number; state: string}[],
+		payload: {name: string; value?: string | number; state: string}[],
 	) => void
 	onupdate: (
-		payload: {name: string; value: string | number; state: string}[],
+		payload: {name: string; value?: string | number; state: string}[],
 	) => void
 }
 
