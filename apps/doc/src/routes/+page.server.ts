@@ -1,7 +1,7 @@
 import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
-const {NavReveal, SidebarReveal, SettingsReveal, SettingsUpdate} = ui.forms
+const {UiReveal, SettingsUpdate} = ui.forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
 
 export const actions = {
@@ -12,7 +12,7 @@ export const actions = {
 		if (serialized) {
 			currentState = JSON.parse(serialized)
 		}
-		let navReveal = new NavReveal(currentState)
+		let navReveal = new UiReveal(currentState)
 		if (!navReveal.reveal(data)) {
 			error(500, 'navRevealError')
 		}
@@ -27,7 +27,7 @@ export const actions = {
 		if (serialized) {
 			currentState = JSON.parse(serialized)
 		}
-		let sidebarReveal = new SidebarReveal(currentState)
+		let sidebarReveal = new UiReveal(currentState)
 		if (!sidebarReveal.reveal(data)) {
 			error(500, 'sidebarRevealError')
 		}
@@ -47,7 +47,7 @@ export const actions = {
 		if (serialized) {
 			currentState = JSON.parse(serialized)
 		}
-		let navReveal = new NavReveal(currentState)
+		let navReveal = new UiReveal(currentState)
 		if (!navReveal.reveal(data)) {
 			error(500, 'subnavRevealError')
 		}
@@ -62,7 +62,7 @@ export const actions = {
 		if (serialized) {
 			currentState = JSON.parse(serialized)
 		}
-		let settingsReveal = new SettingsReveal(currentState)
+		let settingsReveal = new UiReveal(currentState)
 		if (!settingsReveal.reveal(data)) {
 			error(500, 'settingsRevealError')
 		}

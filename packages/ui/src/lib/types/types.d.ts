@@ -7,9 +7,7 @@ export interface Utils {
 }
 
 export interface Forms {
-	NavReveal: typeof import('$lib/forms/nav-reveal.js').default
-	SidebarReveal: typeof import('$lib/forms/settings-reveal.js').default
-	SettingsReveal: typeof import('$lib/forms/settings-update.js').default
+	UiReveal: typeof import('$lib/forms/ui-reveal.js').default
 	SettingsUpdate: typeof import('$lib/forms/sidebar-reveal.js').default
 }
 
