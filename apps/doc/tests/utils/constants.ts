@@ -14,8 +14,8 @@ const pages = [
 			},
 		],
 	},
-	{path: '/ui', slug: 'ui', title: 'UI'},
-	{path: '/play', slug: 'play', title: 'Play'},
+	{path: '/ui', slug: 'ui', title: 'UI', draft: true},
+	{path: '/play', slug: 'play', title: 'Play', draft: true},
 ]
 
 const categories = {
