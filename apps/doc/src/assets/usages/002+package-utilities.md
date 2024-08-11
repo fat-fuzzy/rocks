@@ -15,7 +15,7 @@ The following packages contain shared utilities:
 - **[@fat-fuzzy/config](https://github.com/fat-fuzzy/rocks/tree/main/packages/config)** shared configuration
 - **[@fat-fuzzy/markdown](https://github.com/fat-fuzzy/rocks/tree/main/packages/markdown)**: a package adapted from [@bjornlu/markdown](https://github.com/bluwy/website/tree/master/packages/markdown) to process markdown contents
 - **[@fat-fuzzy/cz-changelog](https://github.com/fat-fuzzy/rocks/tree/main/packages/cz-changelog)** This is a package that takes the [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) and adapts it to produce commit comments as specified in [@fat-fuzzy/git-poule](https://github.com/fat-fuzzy/rocks/tree/main/packages/git-poule).
-- **[@fat-fuzzy/validation](https://github.com/fat-fuzzy/rocks/tree/main/packages/validation)** a tool that uses [AJV](https://ajv.js.org/) to generate custom validation functions using [JSON Schema](https://json-schema.org/).
+- **[@fat-fuzzy/validation](https://github.com/fat-fuzzy/rocks/tree/main/packages/validation)** a package that exports validation tools
 
 ## Config
 
@@ -162,7 +162,7 @@ pnpm i -D @fat-fuzzy/markdown
 ### Usage
 
 In order to adapt validation functions to a particular usage, you have to define the data structure using JSON Schema.
-Once this is setup, you can generate standalone code to validate the schema during runtime.
+Once this is setup, you can generate standalone code to validate data according to the schema during runtime.
 
 [TODO]
 
