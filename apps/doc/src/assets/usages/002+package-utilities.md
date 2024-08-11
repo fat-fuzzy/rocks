@@ -15,6 +15,7 @@ The following packages contain shared utilities:
 - **[@fat-fuzzy/config](https://github.com/fat-fuzzy/rocks/tree/main/packages/config)** shared configuration
 - **[@fat-fuzzy/markdown](https://github.com/fat-fuzzy/rocks/tree/main/packages/markdown)**: a package adapted from [@bjornlu/markdown](https://github.com/bluwy/website/tree/master/packages/markdown) to process markdown contents
 - **[@fat-fuzzy/cz-changelog](https://github.com/fat-fuzzy/rocks/tree/main/packages/cz-changelog)** This is a package that takes the [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) and adapts it to produce commit comments as specified in [@fat-fuzzy/git-poule](https://github.com/fat-fuzzy/rocks/tree/main/packages/git-poule).
+- **[@fat-fuzzy/validation](https://github.com/fat-fuzzy/rocks/tree/main/packages/validation)** a tool that uses [AJV](https://ajv.js.org/) to generate custom validation functions using [JSON Schema](https://json-schema.org/).
 
 ## Config
 
@@ -95,7 +96,7 @@ If you use a VSCode workspace and you add folders outside the root folder the Ex
 
 ## Commitizen + Git Poule
 
-**Requirements**
+### Requirements
 
 - [commitizen](https://github.com/commitizen/cz-cli)
 - [cz-conventional-changelog](https://eslint.org/docs/latest/extend/shareable-configs)
@@ -150,3 +151,20 @@ pnpm i -D @fat-fuzzy/markdown
 - [Images in SvelteKit](https://kit.svelte.dev/docs/images)
 - [Vite asset management](https://vitejs.dev/guide/assets.html)
 - [This discussion on GitHub](https://github.com/vitejs/vite/discussions/13808) concerning the emission of static assets in Vite
+
+## Validation
+
+### Requirements
+
+- [AJV](https://ajv.js.org/)
+- some understanding of [JSON Schema](https://json-schema.org/)
+
+### Usage
+
+In order to adapt validation functions to a particular usage, you have to define the data structure using JSON Schema.
+Once this is setup, you can generate standalone code to validate the schema during runtime.
+
+[TODO]
+
+- make validation generation configurable from consumer
+- document usage in more detail, add examples & resources
