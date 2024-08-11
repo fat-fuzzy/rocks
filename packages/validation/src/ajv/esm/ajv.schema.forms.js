@@ -73,13 +73,6 @@ const schemaInputs = {
 			},
 		],
 	},
-	confirm_password: {
-		type: 'string',
-		const: {$data: '1/sample_password'},
-		errorMessage: {
-			const: 'Passwords do not match',
-		},
-	},
 	postcode: {
 		allOf: [
 			{
@@ -157,7 +150,11 @@ const schemaSignUp = {
 		sample_email: {$ref: '#/definitions/email'},
 		sample_password: {$ref: '#/definitions/password'},
 		confirm_password: {
-			$ref: '#/definitions/confirm_password',
+			type: 'string',
+			const: {$data: '1/sample_password'},
+			errorMessage: {
+				const: 'Passwords do not match',
+			},
 		},
 	},
 	required: ['sample_email', 'sample_password'],
