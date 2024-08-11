@@ -15,6 +15,3 @@ dist
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-
-## == AJV output files
-src/lib/validation/ajv.validations.default.js
