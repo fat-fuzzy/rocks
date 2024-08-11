@@ -130,10 +130,11 @@ A webGL app consists of three types of assets
 
 **Shaders** Programs that come in pairs and that describe how pixels should display on any given frame by running massively in parallel in the GPU
 
-- a vertex shader can feed into a fragment shader
+- a vertex shader can fed into a fragment shader
 - they can be mixed as long as the outputs of one match the inputs of the other
-- apparently the are like Mr Potato head:- I can re-use shaders that i wrote before and mix them with other shaders
-- Vertex shaders : run once for every vertex
+- apparently the are like Mr Potato head:
+  - I can re-use shaders that i wrote before and mix them with other shaders
+- Vertex shaders: run once for every vertex
 - Fragment shader: run once for every fragment, color values are interpolated between fragments
 
 ### Field of View
