@@ -122,7 +122,7 @@ const schemaInputs = {
 }
 
 /**
- * Validation schema for the form: DsrcFormValidator
+ * Validation schema for the form: AjvValidator
  */
 const schemaAjvValidator = {
 	$id: '#/definitions/AjvValidator',
@@ -147,7 +147,7 @@ const schemaAjvValidator = {
 }
 
 /**
- * Validation schema for the form: DsrcFormValidator
+ * Validation schema for the form: SignUpValidator
  */
 const schemaSignUp = {
 	$id: '#/definitions/SignUpValidator',

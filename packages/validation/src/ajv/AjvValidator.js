@@ -4,7 +4,7 @@ import * as validations from './out/validate.ajv.mjs'
  * Use this Class to provide frontend validation capabilities to a form rendered by the server.
  * @param {string} formId The id of the <form> element
  * @param {Object} formData The serialized form data from the server, defined in `forms.py` and serialized in `views.py`
- * @param {string} validationFunctionName The name of the AJV validation function to use. It should be generated into `ajv.validations.default.js` by the script `build:ajv` (`DsrcFormValidationFunction` is the default validation function for DsrcExampleForm). To Change the default validation function, add the schema for your form to `ajv.schema.forms.cjs` and run `npm run build:ajv`
+ * @param {string} validationFunctionName The name of the AJV validation function to use. It should be generated into `ajv.validations.default.js` by the script `build:ajv` (`SignUpValidationFunction` is the default validation function for a sample SignUp form component). To Change the default validation function, add the schema for your form to `ajv.schema.forms.cjs` and run `npm run build:ajv`
  * @returns an Alpine component object containing the form data and methods to validate and handle form submission
  */
 class AjvValidator {
