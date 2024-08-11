@@ -18,9 +18,9 @@
 }
 
 [disabled] {
-	--chroma: var(--color-chroma-100);
+	--chroma: var(--color-chroma-neutral);
 	--lightness: var(--color-lightness-100);
-	--chroma-contrast: var(--color-chroma-300);
+	--chroma-contrast: var(--color-chroma-neutral);
 	--lightness-contrast: var(--color-lightness-300);
 }
 
