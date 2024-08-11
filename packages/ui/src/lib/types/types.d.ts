@@ -9,6 +9,7 @@ export interface Utils {
 export interface Forms {
 	UiReveal: typeof import('$lib/forms/ui-reveal.js').default
 	SettingsUpdate: typeof import('$lib/forms/sidebar-reveal.js').default
+	SignUpUser: typeof import('$lib/forms/ui-sample-signup.js').default
 }
 
 export interface Tokens {
@@ -43,7 +44,7 @@ export interface Recipes {
 	ToggleMenu: typeof import('$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte').default
 	RevealMenu: typeof import('$lib/components/recipes/menus/RevealMenu.svelte').default
 	InputGroup: typeof import('$lib/components/recipes/forms/InputGroup.svelte').default
-	LogIn: typeof import('$lib/components/recipes/forms/LogIn.svelte').default
+	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
 	Header: typeof import('$lib/components/recipes/headers/Header.svelte').default
