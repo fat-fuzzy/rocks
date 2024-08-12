@@ -436,9 +436,6 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
-      '@fat-fuzzy/lib':
-        specifier: workspace:*
-        version: link:../lib
       '@fat-fuzzy/style':
         specifier: workspace:*
         version: link:../style

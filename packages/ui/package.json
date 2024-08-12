@@ -2,6 +2,8 @@
 	"package": "@fat-fuzzy/ui",
 	"name": "@fat-fuzzy/ui",
 	"version": "0.1.51",
+	"author": "Patricia Boh",
+	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && pnpm package",
@@ -29,7 +31,6 @@
 	],
 	"peerDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@fat-fuzzy/validation": "workspace:*",
@@ -38,7 +39,6 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/validation": "workspace:*",
 		"@playwright/test": "^1.45.3",

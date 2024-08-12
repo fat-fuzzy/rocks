@@ -3,11 +3,11 @@
 	"package": "@fat-fuzzy/intl",
 	"version": "0.1.0",
 	"description": "",
+	"author": "Patricia Boh",
+	"keywords": [],
+	"license": "MIT",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"@fat-fuzzy/intl: no tests specified\""
-	},
-	"keywords": [],
-	"author": "",
-	"license": "MIT"
+	}
 }
