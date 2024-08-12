@@ -227,6 +227,8 @@ importers:
         specifier: ^0.8.5
         version: 0.8.5
 
+  packages/intl: {}
+
   packages/lib:
     devDependencies:
       '@fat-fuzzy/config':
