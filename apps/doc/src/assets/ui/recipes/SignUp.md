@@ -22,7 +22,6 @@ The password validation schema used for this sample form validates patterns, but
 
 - it will not check against common or compromised passwords: a password such as `password123!!!` will pass validation
 
-In a project with production data, such a form might be provided by a trusted third-party authentication service.
 To learn more about authentication best practices see: [OWASP Authentication Cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html).
 
 ### Related Components
