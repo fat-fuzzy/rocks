@@ -4,7 +4,9 @@
  * AJV Doc on Combining Schemas: https://ajv.js.org/guide/combining-schemas.html
  ************************************************************************************/
 
-import L10nFormatter from './L10n/index.js'
+import fatFuzzyIntl from '@fat-fuzzy/intl'
+
+const {L10nFormatter} = fatFuzzyIntl
 
 const messages = new L10nFormatter('en')
 /**

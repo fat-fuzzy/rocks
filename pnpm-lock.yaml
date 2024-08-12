@@ -489,20 +489,22 @@ importers:
         version: 1.6.0(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)
 
   packages/validation:
-    dependencies:
-      ajv:
-        specifier: ^8.17.1
-        version: 8.17.1
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
+      '@fat-fuzzy/intl':
+        specifier: workspace:*
+        version: link:../intl
       '@rollup/plugin-commonjs':
         specifier: ^26.0.1
         version: 26.0.1(rollup@4.20.0)
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.20.0)
+      ajv:
+        specifier: ^8.17.1
+        version: 8.17.1
       ajv-errors:
         specifier: ^3.0.0
         version: 3.0.0(ajv@8.17.1)
