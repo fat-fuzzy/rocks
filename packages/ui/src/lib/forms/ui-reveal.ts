@@ -28,6 +28,9 @@ export class UiReveal {
 		if (data.has('reveal-tokens')) {
 			updated = data.get('reveal-tokens')?.toString()
 		}
+		if (data.has('reveal-auto')) {
+			updated = data.get('reveal-auto')?.toString()
+		}
 		if (data.has('reveal-blocks')) {
 			updated = data.get('reveal-blocks')?.toString()
 		}
