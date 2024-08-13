@@ -33,42 +33,6 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 	'100': 'xl',
 }
 
-const DEFAULT_TABS: Tab[] = [
-	{
-		id: 'component.context.menu.toggle.doc',
-		name: 'component.context.menu.toggle.doc',
-		title: 'Doc',
-		value: 'doc',
-	},
-	{
-		id: 'component.context.menu.toggle.playbook',
-		name: 'component.context.menu.toggle.playbook',
-		title: 'Playbook',
-		value: 'playbook',
-	},
-]
-
-const TABS: Tab[] = [
-	{
-		id: 'context.menu.toggle.playbook',
-		name: 'context.menu.toggle.playbook',
-		title: 'Playbook',
-		size: 'lg',
-		color: 'accent',
-		asset: 'playbook',
-		value: 'playbook',
-	},
-	{
-		id: 'context.menu.toggle.doc',
-		name: 'context.menu.toggle.doc',
-		title: 'Doc',
-		size: 'lg',
-		color: 'primary',
-		asset: 'doc',
-		value: 'doc',
-	},
-]
-
 const DEFAULT_STYLES: StyleTree = {
 	tokens: {
 		families: {
@@ -112,6 +76,4 @@ export default {
 	DEFAULT_DS_STATE,
 	TRANSITION_REVEAL,
 	NUMBER_TO_SIZE,
-	DEFAULT_TABS,
-	TABS,
 }
