@@ -4,9 +4,9 @@ const {ajvValidate} = validations
 /**
  * Use this Class to provide frontend validation capabilities to a form rendered by the server.
  * @param {string} formId The id of the <form> element
- * @param {Object} formData The serialized form data from the server, defined in `forms.py` and serialized in `views.py`
- * @param {string} validationFunctionName The name of the AJV validation function to use. It should be generated into `ajv.validations.default.js` by the script `build:ajv` (`DsrcFormValidationFunction` is the default validation function for DsrcExampleForm). To Change the default validation function, add the schema for your form to `ajv.schema.forms.cjs` and run `npm run build:ajv`
- * @returns an Alpine component object containing the form data and methods to validate and handle form submission
+ * @param {FormData} formData The form data object
+ * @param {string} validationFunctionName The name of the AJV validation function to use, generated using the package `@fat-fuzzy/validation` (`SignUpValidationFunction` is the default validation function for the sample SignUp form component). To Change the default validation function or add a new function, you must modify the `@fat-fuzzy/validation` package (TODO: define schemas in apps): add the schema of the form to `ajv.schema.forms.js` and rebuild the package
+ * @returns a validation class with utilitiy methods to validate the form and fields, check and manage field stastuses, and manage feedback messages
  */
 class AjvValidator {
 	form: {[key: string]: any} = $state({})
