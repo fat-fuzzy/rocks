@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {InputType, InputPayload, UiBlockProps, UiStatus} from '$types'
+import type {InputType, FuzzyPayload, UiBlockProps, UiStatus} from '$types'
 
 export type InputProps = UiBlockProps & {
 	id: string
@@ -20,7 +20,7 @@ export type InputProps = UiBlockProps & {
 
 	type?: InputType
 	children?: Snippet
-	oninput?: (payload: InputPayload) => void
+	oninput?: (payload: FuzzyPayload) => void
 }
 
 export type FieldsetProps = UiBlockProps & {
@@ -34,7 +34,7 @@ export type FieldsetProps = UiBlockProps & {
 
 	type?: InputType // input group if any
 	children?: Snippet
-	oninput?: (payload: InputPayload) => void
+	oninput?: (payload: FuzzyPayload) => void
 }
 
 export type InputRangeProps = InputProps & {

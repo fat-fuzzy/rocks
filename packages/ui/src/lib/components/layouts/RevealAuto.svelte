@@ -70,7 +70,6 @@
 	>
 		<Expand
 			id={`button-reveal-auto-${id}`}
-			{title}
 			{color}
 			{variant}
 			{size}
