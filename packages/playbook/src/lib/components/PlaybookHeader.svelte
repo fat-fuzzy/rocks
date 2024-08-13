@@ -74,7 +74,7 @@
 			init={handleTabChange}
 		/>
 	</form>
-	{#if currentTab.value === 'demo'}
+	{#if currentTab.value === 'playbook'}
 		<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
 	{/if}
 </div>

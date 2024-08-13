@@ -111,7 +111,7 @@
 
 {#if isPage}
 	<div class="l:sidebar:md">
-		{#if tab === 'demo'}
+		{#if tab === 'playbook'}
 			<section class={sectionClasses}>
 				{@render renderElement()}
 			</section>

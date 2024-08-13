@@ -41,22 +41,22 @@ const DEFAULT_TABS: Tab[] = [
 		value: 'doc',
 	},
 	{
-		id: 'component.context.menu.toggle.demo',
-		name: 'component.context.menu.toggle.demo',
-		title: 'Demo',
-		value: 'demo',
+		id: 'component.context.menu.toggle.playbook',
+		name: 'component.context.menu.toggle.playbook',
+		title: 'Playbook',
+		value: 'playbook',
 	},
 ]
 
 const TABS: Tab[] = [
 	{
-		id: 'context.menu.toggle.demo',
-		name: 'context.menu.toggle.demo',
-		title: 'Demo',
+		id: 'context.menu.toggle.playbook',
+		name: 'context.menu.toggle.playbook',
+		title: 'Playbook',
 		size: 'lg',
 		color: 'accent',
-		asset: 'demo',
-		value: 'demo',
+		asset: 'playbook',
+		value: 'playbook',
 	},
 	{
 		id: 'context.menu.toggle.doc',
