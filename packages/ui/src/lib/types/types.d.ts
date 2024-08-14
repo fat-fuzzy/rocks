@@ -23,11 +23,11 @@ export interface Blocks {
 	Switch: typeof import('$lib/components/blocks/buttons/Switch/Switch.svelte').default
 	Toggle: typeof import('$lib/components/blocks/buttons/Toggle/Toggle.svelte').default
 	Feedback: typeof import('$lib/components/blocks/global/Feedback.svelte').default
-	Fieldset: typeof import('$lib/components/blocks/forms/Fieldset.svelte').default
-	InputCheck: typeof import('$lib/components/blocks/forms/InputCheck.svelte').default
-	InputRadio: typeof import('$lib/components/blocks/forms/InputRadio.svelte').default
-	InputRange: typeof import('$lib/components/blocks/forms/InputRange.svelte').default
-	InputFile: typeof import('$lib/components/blocks/forms/InputFile.svelte').default
+	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
+	InputCheck: typeof import('$lib/components/blocks/inputs/InputCheck.svelte').default
+	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
+	InputRange: typeof import('$lib/components/blocks/inputs/InputRange.svelte').default
+	InputFile: typeof import('$lib/components/blocks/inputs/InputFile.svelte').default
 }
 
 export interface Layouts {

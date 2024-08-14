@@ -24,6 +24,12 @@ export type Settings = {
 	[key: string]: string
 }
 
+export type InputPayload = {
+	id: string
+	name: string
+	value?: string | number
+}
+
 export type UiLayoutProps = {
 	/**
 	 * Layout props

@@ -9,6 +9,7 @@
 		name,
 		label = 'Range',
 		value = $bindable(0),
+		required,
 		min = 0,
 		max = 100,
 		step = 1,
@@ -121,6 +122,7 @@
 		data-test={`input-range-${id}`}
 		type="range"
 		bind:value
+		{required}
 		{min}
 		{max}
 		{step}

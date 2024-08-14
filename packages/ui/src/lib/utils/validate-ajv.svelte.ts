@@ -1,34 +1,33 @@
 import validations from '@fat-fuzzy/validation'
-
+import {UiStatus} from '$types'
 const {ajvValidate} = validations
 /**
  * Use this Class to provide frontend validation capabilities to a form rendered by the server.
  * @param {string} formId The id of the <form> element
  * @param {FormData} formData The form data object
  * @param {string} validationFunctionName The name of the AJV validation function to use, generated using the package `@fat-fuzzy/validation` (`SignUpValidationFunction` is the default validation function for the sample SignUp form component). To Change the default validation function or add a new function, you must modify the `@fat-fuzzy/validation` package (TODO: define schemas in apps): add the schema of the form to `ajv.schema.forms.js` and rebuild the package
- * @returns a validation class with utilitiy methods to validate the form and fields, check and manage field stastuses, and manage feedback messages
+ * @returns a validation class with utility methods to validate the form and fields, check and manage field statuses, and manage feedback messages
  */
 class AjvValidator {
 	form: {[key: string]: any} = $state({})
-	errors: any[] = $state([])
+	errors: string[] = $state([])
 	ajvValidate: any = $state(() => ({}))
 
-	constructor(formData: FormData, validationFunctionName: string) {
+	constructor(validationFunctionName: string) {
 		this.form = {}
 		this.errors = []
 		this.ajvValidate = ajvValidate // @ts-expect-error need to add types for ajvValidate
 		this.ajvValidate = ajvValidate[validationFunctionName]
+	}
+
+	init(formData: FormData) {
 		if (!formData) {
 			// We shouldn't reach this state: the data should be available, or the server should have returned an error before reaching this point and the form should not have been rendered
-			console.error('Error fetching form data')
+			// console.error('Error fetching form data')
 		} else {
-			// There are no errors: This is a blank form
-			for (const [key, value] of formData) {
-				this.form[key] = {
-					message_group: {
-						messages: [],
-					},
-					errors: [],
+			for (const [name, value] of formData) {
+				this.form[name] = {
+					feedback: {},
 					touched: false,
 					changed: false,
 					value,
@@ -37,98 +36,52 @@ class AjvValidator {
 		}
 	}
 
-	async init(formId: string) {
-		const formElement = document.getElementById(formId)
-		const formElementServerValue = document.getElementById(
-			`${formId}_js_enabled`,
-		)
-
-		if (formElement) {
-			// Disable browser validation as we are using our own
-			formElement.setAttribute('novalidate', '')
-
-			if (formElementServerValue) {
-				// Let the server know that JS is enabled
-				formElementServerValue.setAttribute('data-value', 'js-enabled')
-			}
-		}
-	}
-
 	validate() {
-		const fields = Object.keys(this.form)
+		let fields = Object.keys(this.form)
+		this.errors = []
 		const validateMap: {[fieldName: string]: string} = {}
 		fields.forEach((field) => {
 			validateMap[field] = this.form[field].value
 		})
 		let valid = this.ajvValidate(validateMap)
+
 		if (!valid) {
 			this.errors = this.ajvValidate.errors
+			fields.forEach((name: any) => {
+				let inputErrors = this.errors
+					.filter((error: any) => error.instancePath.substring(1) === name)
+					.map((error: any) => error.message)
+				if (inputErrors.length) {
+					this.form[name].feedback[UiStatus.error] = inputErrors
+					this.form[name].is_valid = false
+				}
+			})
 		} else {
 			this.errors = []
+			fields.forEach((field: any) => {
+				this.form[field].is_valid = true
+				this.form[field].feedback[UiStatus.error] = undefined
+			})
 		}
-		// // Set the focus on the first field with an error
-		// const firstErrorField = this.errors[0].instancePath.substring(1)
-		// this.form[firstErrorField].is_valid = false
-		// this.form[firstErrorField].errors = this.errors[0].message
 	}
 
-	setFieldMessages(fieldName: string) {
-		const field = this.form[fieldName]
-		if (!field.message_group || !field.message_group.messages) {
-			field.message_group = {help_text: '', messages: []}
-		}
-		let filteredMessages = []
-		if (field.message_group.messages.length === 0 && field.errors?.length > 0) {
-			filteredMessages = (field.errors || []).map(
-				(error: {type: string; text: string}) => ({
-					text: error,
-					type: 'error',
-				}),
-			)
-		} else {
-			// If the field has a message_group set by the server: match local messages with error messages and set the message type accordingly
-			filteredMessages = field.message_group.messages.reduce(
-				(updatedMessages: string[], message: {type: string; text: string}) => {
-					if (field.errors.includes(message.text)) {
-						message.type = 'error'
-					} else {
-						message.type = 'valid'
-					}
-					return [...updatedMessages, message]
-				},
-				[],
-			)
-		}
-		this.form[fieldName].message_group.messages = filteredMessages
+	formHasErrors(): boolean {
+		return this.errors.length > 0
 	}
 
 	fieldHasError(fieldName: string) {
 		const field = this.form[fieldName]
-		if (field) {
-			return field.changed === true && !field.is_valid
-		}
-		return false
+		return field?.changed && !field.is_valid
 	}
 
-	//TODO: return message_group.messages
-	getFieldErrors(fieldName: string) {
-		const fieldErrors = this.errors
-			.filter((error: any) => error.instancePath.substring(1) === fieldName)
-			.map((error: any) => error.message)
-		if (fieldErrors) {
-			return fieldErrors
-		}
-		return []
+	getFieldErrors(name: string): string[] {
+		let errors = this.form[name]?.feedback[UiStatus.error]
+		return errors?.length ? errors : undefined
 	}
 
 	validateInput(event: Event) {
 		if (event.target instanceof HTMLInputElement) {
-			const fieldName = event.target.name
-			this.form[fieldName].value = event.target.value
 			this.validate()
-			this.form[fieldName].errors.push(this.getFieldErrors(fieldName))
-			this.form[fieldName].is_valid = this.form[fieldName].errors?.length === 0
-			this.setFieldMessages(fieldName)
 		}
 	}
 
@@ -141,12 +94,12 @@ class AjvValidator {
 
 	changeInput(event: Event) {
 		if (event.target instanceof HTMLInputElement) {
-			const field = event.target.name
-			this.form[field].changed = true
-			// validate the field when it changes: remove this if you want to validate the form only on `blur` or `submit` events
-			// Use a debounce mechanism for slow/complex/async validations (e.g. API calls)
-			this.validateInput(event)
+			const name = event.target.name
+			this.form[name].changed = true
 		}
+		// validate the field when it changes: remove this if you want to validate the form only on `blur` or `submit` events
+		// Use a debounce mechanism for slow/complex/async validations (e.g. API calls)
+		this.validateInput(event)
 	}
 }
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {InputProps} from '$types'
-	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
-	import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
-	import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
+	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
+	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
+	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 	let {
 		id,
 		name,

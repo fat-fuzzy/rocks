@@ -3,7 +3,7 @@
 	import {UiStatus, UiTextContext} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
-	import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
+	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 
 	let {
 		id = 'upload-image',
@@ -16,6 +16,7 @@
 		fileType = 'image/png, image/jpeg',
 
 		layout = 'stack',
+		required,
 		asset,
 		align,
 		justify,
@@ -59,6 +60,7 @@
 				? `${id}-hint`
 				: ''}
 			{multiple}
+			{required}
 			{disabled}
 		/>
 	</label>
