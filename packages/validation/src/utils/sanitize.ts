@@ -19,19 +19,17 @@ function replaceChar(s: string): string {
 	)
 }
 
-// Simple plain text sanitization function to use before validation
 function sanitizePlainText(input: string): string {
 	let sanitized = input.trim()
 	if (sanitized === '') return sanitized
 	return sanitized.replace(/[&<>"'`=\/]/g, replaceChar)
 }
 
-// Simple number sanitization function to use before validation
 function sanitizeNumber(input: number): number {
 	return isNaN(input) ? 0 : input
 }
 
-// Simple email sanitization function to use before validation
+// TODO: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#email-address-validation
 function sanitizeEmail(input: string): string {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 	return emailRegex.test(input) ? input : ''

@@ -12,7 +12,12 @@ const messages = new L10nFormatter('en')
 /**
  * Common Schemas for form inputs.
  * Adjust as necessary for your form.
+ * TODO: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#implementing-input-validation
  */
+
+// TODO: File inputs
+// https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#file-upload-validation
+
 const schemaInputs = {
 	text: {
 		allOf: [
@@ -36,6 +41,7 @@ const schemaInputs = {
 			pattern: 'Please enter a valid phone number',
 		},
 	},
+	// See: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#email-address-validation
 	email: {
 		type: 'string',
 		format: 'email',
@@ -53,6 +59,9 @@ const schemaInputs = {
 		 *   * Use a password manager to generate and store passwords
 		 *   * Add a second factor of authentication (2FA)
 		 * If you are handling sensitive data, usage of a trusted service that provides additional security measures is recommended.
+		 * TODO: in backend
+		 * - https://github.com/zxcvbn-ts/zxcvbn
+		 * - https://haveibeenpwned.com/API/v3#PwnedPasswords
 		 */
 		allOf: [
 			{
@@ -60,6 +69,11 @@ const schemaInputs = {
 				format: 'password',
 				minLength: 12,
 				errorMessage: messages.getErrorMessage('FORMAT_TEXT_MIN', 12),
+			},
+			{
+				type: 'string',
+				maxLength: 1000,
+				errorMessage: messages.getErrorMessage('FORMAT_TEXT_MAX', 1000),
 			},
 			{
 				type: 'string',
