@@ -34,6 +34,7 @@
 	let successPlaceholder: boolean = $state(false)
 
 	const inputTypes: {[name: string]: string} = {
+		sample_username: 'text',
 		sample_email: 'email',
 		sample_password: 'password',
 		confirm_password: 'password',
@@ -103,6 +104,18 @@
 					<svelte:element this={`h${depth}`}>{title}</svelte:element>
 					<p class={`font:${size}`}>{description}</p>
 				</header>
+				<Input
+					id="username"
+					type="text"
+					name="sample_username"
+					label="Username"
+					required
+					{size}
+					onfocus={handleFocus}
+					onblur={handleBlur}
+					oninput={handleInput}
+					{validator}
+				/>
 				<Input
 					id="email"
 					type="email"

@@ -79,9 +79,9 @@ function getFeedbackStyles(
 
 	let variantClass = variant ? `variant:${variant}` : ''
 	let fontClass = size ? `font:${size}` : ''
-	if (fontClass) {
-		fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
-	}
+	// if (fontClass) {
+	// 	fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
+	// }
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 	let statusClass = status ? `status:${status}` : ''
