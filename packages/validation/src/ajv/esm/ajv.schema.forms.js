@@ -60,7 +60,7 @@ const schemaInputs = {
 		 *   * Add a second factor of authentication (2FA)
 		 * If you are handling sensitive data, usage of a trusted service that provides additional security measures is recommended.
 		 * TODO: in backend
-		 * - https://github.com/zxcvbn-ts/zxcvbn
+		 * - https://www.npmjs.com/package/@zxcvbn-ts/core
 		 * - https://haveibeenpwned.com/API/v3#PwnedPasswords
 		 */
 		allOf: [
@@ -72,6 +72,7 @@ const schemaInputs = {
 			},
 			{
 				type: 'string',
+				format: 'password',
 				maxLength: 1000,
 				errorMessage: messages.getErrorMessage('FORMAT_TEXT_MAX', 1000),
 			},
