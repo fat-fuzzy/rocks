@@ -1,13 +1,13 @@
 <script lang="ts">
 	import {getContext, type Snippet} from 'svelte'
 	import {page} from '$app/stores'
-	import fatFuzzyUi from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import Collection from '$lib/components/Collection.svelte'
 	import PlaybookHeader from '$lib/components/PlaybookHeader.svelte'
 	import PlaybookStore from '$lib/api/store.svelte'
 
-	const {PageMain} = fatFuzzyUi.content
-	const {DEFAULT_TABS} = fatFuzzyUi.constants
+	const {PageMain} = ui.content
+	const {DEFAULT_TABS} = ui.constants
 
 	type Props = {
 		category: any // TODO: fix types
@@ -25,10 +25,10 @@
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
 	const components = [
-		{category: 'tokens', items: fatFuzzyUi.tokens},
-		{category: 'blocks', items: fatFuzzyUi.blocks},
-		{category: 'layouts', items: fatFuzzyUi.layouts},
-		{category: 'recipes', items: fatFuzzyUi.recipes},
+		{category: 'tokens', items: ui.tokens},
+		{category: 'blocks', items: ui.blocks},
+		{category: 'layouts', items: ui.layouts},
+		{category: 'recipes', items: ui.recipes},
 	]
 	
 	let currentTab = $derived(playbookStore.currentTabs.ui || DEFAULT_TABS[0])

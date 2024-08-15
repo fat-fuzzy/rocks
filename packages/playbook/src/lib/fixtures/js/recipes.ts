@@ -78,10 +78,16 @@ export default {
 			},
 		],
 	},
+	SignUp: {
+		slug: 'ui',
+		title: 'SignUp',
+		validationFunction: 'SignUpValidationFunction',
+		dataPrefix: 'sample',
+		inputs: ['email', 'password'],
+	},
 	Header: {
 		slug: 'ui',
 		title: 'Header',
-		actionPath: '/',
 		items: {
 			links,
 			settings: APP_SETTINGS,

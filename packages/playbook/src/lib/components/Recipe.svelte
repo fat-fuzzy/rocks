@@ -28,9 +28,9 @@
 	{page}
 	{title}
 	name={recipeName}
-	{actionPath}
-	{redirect}
 	{...layoutStyles}
 	{...elementStyles}
 	{...props}
+	{actionPath}
+	{redirect}
 />

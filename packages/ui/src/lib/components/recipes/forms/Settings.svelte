@@ -70,7 +70,7 @@
 		? redirect
 			? `${formaction}&redirectTo=${redirect}`
 			: formaction
-		: 'toggleNav'
+		: 'toggleSettings'
 	let settingsUpdateAction = redirect
 		? `updateSettings&redirectTo=${redirect}`
 		: 'updateSettings'
@@ -116,13 +116,12 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`button-expand-${id}`}
+			id={`button-reveal-${id}`}
 			{variant}
 			{color}
 			{size}
 			type={actionPath && formaction ? 'submit' : 'button'}
-			title="Settings"
-			name={`button-${id}`}
+			name={`reveal-settings`}
 			controls={id}
 			value={settingsReveal[id]}
 			text="settings"

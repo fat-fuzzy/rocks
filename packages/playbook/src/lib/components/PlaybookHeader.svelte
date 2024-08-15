@@ -1,13 +1,13 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
 	import {enhance} from '$app/forms'
-	import fatFuzzyUi from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import Api from '$lib/components/Api.svelte'
 	import PlaybookStore from '$lib/api/store.svelte'
 
-	const {DEFAULT_TABS, TABS} = fatFuzzyUi.constants
+	const {DEFAULT_TABS, TABS} = ui.constants
 
-	const {ToggleMenu} = fatFuzzyUi.recipes
+	const {ToggleMenu} = ui.recipes
 
 	type Props = {
 		path: string
@@ -74,7 +74,7 @@
 			init={handleTabChange}
 		/>
 	</form>
-	{#if currentTab.value === 'demo'}
+	{#if currentTab.value === 'playbook'}
 		<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
 	{/if}
 </div>

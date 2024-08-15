@@ -12,6 +12,7 @@ export const actions = {
 		if (serialized) {
 			currentState = JSON.parse(serialized)
 		}
+
 		let navReveal = new UiReveal(currentState)
 		if (!navReveal.reveal(data)) {
 			error(500, 'navRevealError')

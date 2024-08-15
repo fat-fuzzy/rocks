@@ -11,6 +11,7 @@
 		checked,
 		disabled,
 		value,
+		required,
 		status = UiStatus.default,
 		hint,
 
@@ -62,6 +63,7 @@
 		{value}
 		{name}
 		{checked}
+		{required}
 		oninput={handleInput}
 		{disabled}
 	/>

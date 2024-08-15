@@ -31,6 +31,8 @@
 		{#key path}
 			<RevealAuto
 				id={`${id}-primary-nav`}
+				name={`${id}-primary-nav`}
+				label=""
 				element="nav"
 				layout="main"
 				title="Menu"
@@ -70,12 +72,13 @@
 		{/key}
 	</div>
 	<Settings
+		name={`${id}-primary-nav`}
+		label=""
 		{path}
 		{breakpoint}
 		align="end"
 		size="xs"
 		id={`${id}-menu-settings`}
-		{formaction}
 		{actionPath}
 		{redirect}
 		items={items.settings}
