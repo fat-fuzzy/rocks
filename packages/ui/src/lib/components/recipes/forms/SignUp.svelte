@@ -14,7 +14,7 @@
 		title = 'Sign Up',
 		description = 'A sample signup form',
 		actionPath, // 'ui'
-		formaction = 'signup', // 'signup'
+		formaction, // 'signup'
 		redirect,
 		layout,
 		container,

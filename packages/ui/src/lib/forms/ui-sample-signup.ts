@@ -1,7 +1,11 @@
-import AjvValidator from '$lib/utils/validate-ajv.svelte.js'
+import FormValidator from '$lib/utils/validate-form.svelte.js'
 
 export class SignUpUser {
-	user: {username: string} | undefined
+	inputTypes: {[name: string]: string} = {
+		sample_email: 'email',
+		sample_password: 'password',
+		confirm_password: 'password',
+	}
 	/**
 	 * Initialize default SignUp object with an undefined user
 	 */
@@ -11,25 +15,23 @@ export class SignUpUser {
 	 * Update SignUp based on inputs
 	 */
 	signup(formData: FormData) {
-		const validator = new AjvValidator(formData, 'SignUpValidationFunction')
-		try {
-			// This is a placeholder for the actual API call to test form validation on the client side
-			// TODO: call your identity management API to sign up the user
+		const validator = new FormValidator('SignUpValidationFunction')
 
-			validator.validate()
-			if (validator.errors.length === 0) {
-				this.user = {username: 'test-user'}
-			}
-			return true
-		} catch (e) {
-			return false
+		validator.init(formData, this.inputTypes)
+		validator.validate()
+		if (validator.errors.length > 0) {
+			throw new Error('Validation failed')
 		}
+		// API calls
+		// - necessary checks and backend validation
+		// - call your identity management API to sign up the user
+		return true
 	}
 
 	/**
 	 * Serialize SignUp so it can be set as a cookie
 	 */
 	toString() {
-		return JSON.stringify(this.user)
+		return ''
 	}
 }
