@@ -1,3 +1,4 @@
-import * as ajvValidate from './ajv/out/validate.ajv.mjs'
+import * as validate from './ajv/out/validate.ajv.mjs'
+import sanitize from './utils/sanitize.js'
 
-export default {ajvValidate}
+export default {validate, sanitize}

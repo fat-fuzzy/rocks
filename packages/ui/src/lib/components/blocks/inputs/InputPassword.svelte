@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {InputProps} from '$types'
+	import {UiStatus} from '$types'
 	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 	let {
@@ -11,9 +12,11 @@
 		onfocus,
 		onblur,
 		oninput,
-		feedback,
 		disabled,
+		validator,
 	}: InputProps = $props()
+
+	let errors = $derived(validator.getFieldErrors(name))
 </script>
 
 <label class={`l:stack:${size}`}>
@@ -31,4 +34,4 @@
 	/>
 </label>
 
-<Feedback messageGroup={feedback} {size} />
+<Feedback {errors} {size} />

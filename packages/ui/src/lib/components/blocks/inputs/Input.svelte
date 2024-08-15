@@ -13,9 +13,11 @@
 		onfocus,
 		onblur,
 		oninput,
-		feedback,
 		disabled,
+		validator,
 	}: InputProps = $props()
+
+	let errors = $derived(validator.getFieldErrors(name))
 </script>
 
 <label class={`l:stack:${size}`}>
@@ -33,4 +35,4 @@
 	/>
 </label>
 
-<Feedback messageGroup={feedback} {size} />
+<Feedback {errors} {size} />

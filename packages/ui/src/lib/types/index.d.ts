@@ -1,6 +1,7 @@
 export * from '$lib/types/enums.js'
 export type * from '$lib/types/ui.d.ts'
 export type * from '$lib/types/machines.d.ts'
+export type * from '$lib/utils/validate.d.ts'
 export type * from '$lib/components/blocks/buttons/button.types.d.ts'
 export type * from '$lib/components/blocks/buttons/Toggle/toggle.types.d.ts'
 export type * from '$lib/components/blocks/buttons/Switch/switch.types.d.ts'

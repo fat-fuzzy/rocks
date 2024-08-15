@@ -1,5 +1,11 @@
 import type {Snippet} from 'svelte'
-import type {InputType, FuzzyPayload, UiBlockProps, UiStatus} from '$types'
+import type {
+	InputType,
+	FuzzyPayload,
+	UiBlockProps,
+	UiStatus,
+	IFormValidator,
+} from '$types'
 
 export type MessageGroup = {
 	[UiStatus]: string[]
@@ -17,7 +23,7 @@ export type FeedbackMessage = {
 
 export type InputFeedbackProps = {
 	size?: string
-	messageGroup?: FeedbackMessage
+	errors?: string[]
 }
 
 export type InputProps = UiBlockProps & {
@@ -40,10 +46,10 @@ export type InputProps = UiBlockProps & {
 
 	type?: InputType
 	children?: Snippet
-	feedback?: FeedbackMessage
 	onfocus?: (payload: InputPayload) => void
 	onblur?: (payload: InputPayload) => void
 	oninput?: (payload: InputPayload) => void
+	validator: IFormValidator
 }
 
 export type FieldsetProps = UiBlockProps & {
