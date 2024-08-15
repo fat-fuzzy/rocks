@@ -15,9 +15,6 @@ class L10nFormatter {
 		en: errors_en,
 	}
 
-	/**
-	 * Initialize default sidebar object or from the user's cookie values, if any
-	 */
 	constructor(locale) {
 		if (locale) this.locale = locale
 	}
@@ -34,9 +31,6 @@ class L10nFormatter {
 		return key
 	}
 
-	/**
-	 * Update sidebar based on inputs
-	 */
 	getErrorMessage(key, ...args) {
 		if (this.errors[this.locale]) {
 			return this.getError(this.errors[this.locale], key, ...args)
