@@ -19,19 +19,17 @@ function replaceChar(s) {
 	)
 }
 
-// Simple plain text sanitization function to use before validation
 function sanitizePlainText(input) {
+	if (typeof input !== 'string') return ''
 	let sanitized = input.trim()
 	if (sanitized === '') return sanitized
 	return sanitized.replace(/[&<>"'`=\/]/g, replaceChar)
 }
 
-// Simple number sanitization function to use before validation
 function sanitizeNumber(input) {
-	return isNaN(input) ? 0 : input
+	return isNaN(input) ? null : input
 }
 
-// Simple email sanitization function to use before validation
 function sanitizeEmail(input) {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 	return emailRegex.test(input) ? input : ''
@@ -64,17 +62,17 @@ async function sanitize(name, value, inputTypeMap) {
 	if (inputType === 'password') {
 		return value
 	} else if (inputType === 'text') {
-		return sanitizePlainText(value)
+		sanitizedValue = sanitizePlainText(value)
 	} else if (inputType === 'number') {
-		return sanitizeNumber(Number(value))
+		sanitizedValue = sanitizeNumber(Number(value)) ? value : ''
 	} else if (inputType === 'email') {
-		return sanitizeEmail(value) ? value : ''
+		sanitizedValue = sanitizeEmail(value) ? value : ''
 	} else if (inputType === 'url') {
-		return sanitizeURL(value) ? value : ''
+		sanitizedValue = sanitizeURL(value) ? value : ''
 	} else if (inputType === 'date') {
-		return sanitizeDate(value) ? value : ''
+		sanitizedValue = sanitizeDate(value) ? value : ''
 	} else if (inputType === 'file') {
-		return sanitizeFilePath(value) ? value : ''
+		sanitizedValue = sanitizeFilePath(value) ? value : ''
 	}
 
 	return sanitizedValue
