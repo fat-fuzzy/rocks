@@ -33,13 +33,29 @@ const schemaInputs = {
 			},
 		],
 	},
+	username: {
+		allOf: [
+			{
+				type: 'string',
+				minLength: 3,
+				errorMessage: messages.getErrorMessage('FORMAT_TEXT_MIN', 3),
+			},
+			{
+				type: 'string',
+				maxLength: 1000,
+				errorMessage: messages.getErrorMessage('FORMAT_TEXT_MAX', 1000),
+			},
+			{
+				type: 'string',
+				pattern: '^([\\W\\D\\S]{0}[\\.\\-]?[\\w\\d]){3,1000}$',
+				errorMessage: messages.getErrorMessage('FORMAT_USERNAME'),
+			},
+		],
+	},
 	phone: {
 		type: 'string',
 		pattern: '[\\+0-9]{10,14}',
-		errorMessage: {
-			errorMessage: messages.getErrorMessage('FORMAT_PHONE'),
-			pattern: 'Please enter a valid phone number',
-		},
+		errorMessage: messages.getErrorMessage('FORMAT_PHONE'),
 	},
 	// See: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#email-address-validation
 	email: {
@@ -134,27 +150,27 @@ const schemaInputs = {
 /**
  * Validation schema for the form: AjvValidator
  */
-const schemaAjvValidator = {
-	$id: '#/definitions/AjvValidator',
-	$schema: 'http://json-schema.org/draft-07/schema#',
-	type: 'object',
-	properties: {
-		sample_name: {$ref: '#/definitions/text'},
-		sample_phone: {$ref: '#/definitions/phone'},
-		sample_email: {$ref: '#/definitions/email'},
-		sample_password: {$ref: '#/definitions/password'},
-		confirm_password: {$ref: '#/definitions/confirm_password'},
-		sample_postcode: {$ref: '#/definitions/postcode'},
-		sample_description: {$ref: '#/definitions/textarea'},
-		sample_checkbox: {$ref: '#/definitions/checkbox'},
-		sample_select: {$ref: '#/definitions/select'},
-		sample_disabled_field: {$ref: '#/definitions/disabled_field'},
-		sample_radio_group: {$ref: '#/definitions/radio_group'},
-		sample_checkbox_group: {$ref: '#/definitions/checkbox_group'},
-	},
-	required: ['sample_name', 'sample_email', 'sample_password'],
-	definitions: schemaInputs,
-}
+// const schemaAjvValidator = {
+// 	$id: '#/definitions/AjvValidator',
+// 	$schema: 'http://json-schema.org/draft-07/schema#',
+// 	type: 'object',
+// 	properties: {
+// 		sample_name: {$ref: '#/definitions/text'},
+// 		sample_phone: {$ref: '#/definitions/phone'},
+// 		sample_email: {$ref: '#/definitions/email'},
+// 		sample_password: {$ref: '#/definitions/password'},
+// 		confirm_password: {$ref: '#/definitions/confirm_password'},
+// 		sample_postcode: {$ref: '#/definitions/postcode'},
+// 		sample_description: {$ref: '#/definitions/textarea'},
+// 		sample_checkbox: {$ref: '#/definitions/checkbox'},
+// 		sample_select: {$ref: '#/definitions/select'},
+// 		sample_disabled_field: {$ref: '#/definitions/disabled_field'},
+// 		sample_radio_group: {$ref: '#/definitions/radio_group'},
+// 		sample_checkbox_group: {$ref: '#/definitions/checkbox_group'},
+// 	},
+// 	required: ['sample_name', 'sample_email', 'sample_password'],
+// 	definitions: schemaInputs,
+// }
 
 /**
  * Validation schema for the form: SignUpValidator
@@ -164,6 +180,7 @@ const schemaSignUp = {
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
 	properties: {
+		sample_username: {$ref: '#/definitions/username'},
 		sample_email: {$ref: '#/definitions/email'},
 		sample_password: {$ref: '#/definitions/password'},
 		confirm_password: {
@@ -174,8 +191,8 @@ const schemaSignUp = {
 			},
 		},
 	},
-	required: ['sample_email', 'sample_password'],
+	required: ['sample_username', 'sample_email', 'sample_password'],
 	definitions: schemaInputs,
 }
 
-export default {schemaInputs, schemaSignUp, schemaAjvValidator}
+export default {schemaInputs, schemaSignUp}

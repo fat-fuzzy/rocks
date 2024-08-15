@@ -36,10 +36,10 @@ const AJV_OPTIONS = {
 // Add your Schemas here
 const FormInputs = schemas.schemaInputs
 const SignUpValidator = schemas.schemaSignUp
-const AjvValidator = schemas.schemaAjvValidator
+// const AjvValidator = schemas.schemaAjvValidator
 const ajv = new Ajv({
 	...AJV_OPTIONS,
-	schemas: [FormInputs, AjvValidator, SignUpValidator],
+	schemas: [FormInputs, SignUpValidator],
 })
 
 addFormats(ajv)

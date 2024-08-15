@@ -21,6 +21,10 @@ const ERRORS = {
 	FORMAT_EMAIL: 'Please enter a valid email address',
 	FORMAT_PHONE: 'Please enter a valid phone number',
 	FORMAT_POSTCODE: 'Please enter a valid email address',
+	FORMAT_USERNAME:
+		'Characters allowed: alphanumeric characters, hyphens (-), periods (.), underscores (_), and no spaces',
+	CHECKBOX_PATTERN: 'Please choose at least one option',
+	RADIO_PATTERN: 'Please select an option',
 }
 
 const ERRORS_FUNCTIONS = {
@@ -28,8 +32,6 @@ const ERRORS_FUNCTIONS = {
 	FORMAT_TEXT_MIN: minLengthErrorMessage,
 	FORMAT_TEXT_MAX: maxLengthErrorMessage,
 	CHECKBOX_MIN: minChoiceErrorMessage,
-	CHECKBOX_PATTERN: () => 'Please choose at least one option',
-	RADIO_PATTERN: () => 'Please select an option',
 }
 
 export default {
