@@ -1,19 +1,14 @@
 {
 	"compilerOptions": {
-    "target": "ES6",
+		"module": "esnext",
+		"target": "esnext",
+		"strict": true,
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
+		"declaration": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
-		"strict": true,
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-    "outDir": "./dist",
-    "rootDir": "./src"
 	},
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
 }
