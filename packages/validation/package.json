@@ -10,7 +10,7 @@
 		"build:ajv": "pnpm build:schemas && rollup --config rollup.config.ajv.js",
 		"dev": "rollup -c -w",
 		"dev:ajv": "rollup --config rollup.config.ajv.js -w",
-		"test": "pnpm test:integrity && vitest",
+		"test": "pnpm test:integrity && vitest run",
 		"test:integrity": "node tests/integrity.ajv.js",
 		"pretest": "pnpm build"
 	},
