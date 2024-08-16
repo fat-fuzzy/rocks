@@ -53,3 +53,8 @@
 	container-name: burrito-2xl;
 	--sidebar-width: var(--layout-sidebar-2xl);
 }
+
+.l\:burrito\:3xl {
+	container-name: burrito-3xl;
+	--sidebar-width: var(--layout-sidebar-3xl);
+}
