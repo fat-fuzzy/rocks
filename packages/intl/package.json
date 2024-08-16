@@ -6,23 +6,30 @@
 	"author": "Patricia Boh",
 	"keywords": [],
 	"license": "MIT",
-	"main": "./src/index.js",
 	"exports": {
-		".": "./src/index.js"
+		".": "./dist/index.js",
+		"./types/*": "./dist/index.d.js"
 	},
+	"files": [
+		"dist"
+	],
 	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
 		"test": "echo \"@fat-fuzzy/intl: no tests specified\""
 	},
 	"peerDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"tslib": "^2.6.3",
 		"typescript": "^5.5.3"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"tslib": "^2.6.3",
-		"typescript": "^5.5.3"
+		"typescript": "^5.5.3",
+		"vite": "^5.3.4"
 	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"type": "module",
 	"engines": {
 		"node": ">= 20"
