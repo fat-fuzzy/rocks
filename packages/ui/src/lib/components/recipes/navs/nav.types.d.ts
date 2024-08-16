@@ -1,8 +1,9 @@
 import type {
-	Settings,
+	UiRevealState,
 	UiBlockProps,
 	RevealLayoutProps,
 	FuzzyPayload,
+	FormCommonProps,
 } from '$types'
 import type {Snippet} from 'svelte'
 
@@ -37,17 +38,18 @@ export type ExpandLinkProps = UiBlockProps & {
 	slug: string
 	title: string
 	children: Snippet
-	reveal: Settings
-	formaction: string
-	redirect: string
+	reveal: UiState
 	onclick?: (payload: FuzzyPayload) => void
 }
 
 export type RevealNavProps = NavProps &
-	RevealLayoutProps & {
+	RevealLayoutProps &
+	FormCommonProps & {
 		id: string
 		title: string
 		path: string
+		type?: string
+		validator?: string
 		layout?: string
 		size?: string
 		color?: string

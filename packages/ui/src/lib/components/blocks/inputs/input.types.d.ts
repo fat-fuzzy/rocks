@@ -29,7 +29,12 @@ export type InputFeedbackProps = {
 	errors?: string[]
 }
 
-export type InputProps = UiBlockProps & {
+export type ValidationProps = {
+	type: string
+	validator: IFormValidator
+}
+
+export type InputCommonProps = {
 	id: string
 	name: string
 	label: string
@@ -47,13 +52,13 @@ export type InputProps = UiBlockProps & {
 	formaction?: string
 	required?: boolean
 
-	type: InputType
 	children?: Snippet
 	onfocus?: (payload: InputPayload) => void
 	onblur?: (payload: InputPayload) => void
 	oninput?: (payload: InputPayload) => void
-	validator: IFormValidator
 }
+
+export type InputProps = UiBlockProps & ValidationProps & InputCommonProps
 
 export type FieldsetProps = UiBlockProps & {
 	/**

@@ -26,6 +26,10 @@ export type Settings = {
 	[setting in UiSettings]?: string
 }
 
+export type UiRevealState = {
+	reveal: UiState
+}
+
 export type InputPayload = {
 	id: string
 	name: string

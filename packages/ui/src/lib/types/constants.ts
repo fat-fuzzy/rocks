@@ -1,5 +1,5 @@
-import type {Settings, Tab, ButtonContext} from '$types'
-import {UiState} from '$types'
+import type {Settings, UiRevealState, Tab, ButtonContext} from '$types'
+import {UiColor, UiSize, UiState} from '$types'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 
@@ -9,20 +9,19 @@ const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	value: '',
 }
 
-const DEFAULT_REVEAL_STATE: Settings = {reveal: UiState.collapsed}
+const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
-const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: UiState.expanded}
+const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
 
 const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
 
-const DEFAULT_PLAYER_STATE: Settings = {value: ''}
 const DEFAULT_SCENE_ID = '004'
 
 const DEFAULT_DS_STATE: {
-	menuReveal: Settings
-	navReveal: Settings
-	sidebarReveal: Settings
-	settingsReveal: Settings
+	menuReveal: UiRevealState
+	navReveal: UiRevealState
+	sidebarReveal: UiRevealState
+	settingsReveal: UiRevealState
 } = {
 	menuReveal: {reveal: UiState.collapsed},
 	navReveal: {reveal: UiState.collapsed},
@@ -133,8 +132,8 @@ const TABS: Tab[] = [
 		id: 'context.menu.toggle.playbook',
 		name: 'context.menu.toggle.playbook',
 		title: 'Playbook',
-		size: 'lg',
-		color: 'accent',
+		size: UiSize.lg,
+		color: UiColor.accent,
 		asset: 'playbook',
 		value: 'playbook',
 	},
@@ -142,8 +141,8 @@ const TABS: Tab[] = [
 		id: 'context.menu.toggle.doc',
 		name: 'context.menu.toggle.doc',
 		title: 'Doc',
-		size: 'lg',
-		color: 'primary',
+		size: UiSize.lg,
+		color: UiColor.primary,
 		asset: 'doc',
 		value: 'doc',
 	},
@@ -229,7 +228,6 @@ export default {
 	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
-	DEFAULT_PLAYER_STATE,
 	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,

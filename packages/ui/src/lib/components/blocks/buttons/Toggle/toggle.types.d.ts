@@ -1,4 +1,10 @@
 import type {Snippet} from 'svelte'
+import type {
+	FuzzyPayload,
+	FuzzyState,
+	FuzzyMachine,
+	UiBlockProps,
+} from '$lib/types'
 
 export type UiStateToggle = UiState.active | UiState.inactive
 

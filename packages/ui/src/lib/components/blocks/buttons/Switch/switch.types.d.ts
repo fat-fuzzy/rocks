@@ -1,4 +1,4 @@
-import type {FuzzyState, FuzzyTransitions, ToggleProps} from '$types'
+import type {FuzzyState, ToggleProps} from '$types'
 import {UiState, ButtonEvent} from '$types'
 
 export type UiStateSwitch = UiState.active | UiState.inactive
