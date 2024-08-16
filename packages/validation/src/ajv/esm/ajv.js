@@ -12,7 +12,7 @@ import schemas from './ajv.schema.forms.js'
 import utils from '../../utils/gpg.js'
 import constants from '../../utils/constants.js'
 
-const {modulePath, hashFilePath} = constants
+const {modulePath, hashFilePath} = constants.PATHS
 
 const require = createRequire(import.meta.url)
 const standaloneCode = require('ajv/dist/standalone')
@@ -35,113 +35,30 @@ const AJV_OPTIONS = {
 
 // Add your Schemas here
 const FormInputs = schemas.schemaInputs
-const SignUpValidator = schemas.schemaSignUp
-// const AjvValidator = schemas.schemaAjvValidator
+const SignUpSchema = schemas.schemaSignUp
+const AjvValidator = schemas.schemaAjvValidator
 const ajv = new Ajv({
 	...AJV_OPTIONS,
-	schemas: [FormInputs, SignUpValidator],
+	schemas: [FormInputs, AjvValidator, SignUpSchema],
 })
 
 addFormats(ajv)
 addErrors(ajv)
 
 let moduleCode = standaloneCode(ajv, {
-	// FormValidationFunction: '#/definitions/AjvValidator', // Validation function for the AjvValidator schema
-	SignUpValidationFunction: '#/definitions/SignUpValidator', // Validation function for the SignUpValidator schema
+	FormValidationFunction: '#/definitions/AjvValidator', // Validation function for the AjvValidator schema
+	SignUpValidationFunction: '#/definitions/SignUpSchema', // Validation function for the SignUpValidator schema
 })
 
 /**
  * ISSUE: https://github.com/eclipsesource/jsonforms/issues/1498#issuecomment-1620136830
  */
-/**
- *
- * See: https://github.com/mathiasbynens/punycode.js
- * and: https://mathiasbynens.be/notes/javascript-encoding
- */
-// const ucs2lengthReplacement = `function (str) {
-// 	const len = str.length;
-// 	let length = 0;
-// 	let pos = 0;
-// 	let value;
-// 	while (pos < len) {
-// 			length++;
-// 			value = str.charCodeAt(pos++);
-// 			if (value >= 0xd800 && value <= 0xdbff && pos < len) {
-// 					value = str.charCodeAt(pos);
-// 					if ((value & 0xfc00) === 0xdc00)
-// 							pos++;
-// 			}
-// 	}
-// 	return length;
-// }`
 
-const ucs2lengthReplacement = `function (str) {const len = str.length;let length = 0;let pos = 0;let value;while (pos < len) {length++;value = str.charCodeAt(pos++);if (value >= 0xd800 && value <= 0xdbff && pos < len) {value = str.charCodeAt(pos);if ((value & 0xfc00) === 0xdc00) pos++;}} return length;}`
+const ucs2lengthReplacement = `function(str){const len=str.length;let length=0;let pos=0;let value;while (pos<len){length++;value=str.charCodeAt(pos++);if(value>=0xd800&&value<=0xdbff&&pos<len){value=str.charCodeAt(pos);if((value & 0xfc00)===0xdc00) pos++;}} return length;}`
 
-const equalReplacement = ` function equal(a, b) {
-  if (a === b) return true;
+// see ./equal.js for the original implementation
+const equalReplacement = `function r(e,t){if(e===t)return!0;if(e&&t&&"object"==typeof e&&"object"==typeof t){if(e.constructor!==t.constructor)return!1;var f,n,i;if(Array.isArray(e)){if((f=e.length)!=t.length)return!1;for(n=f;0!=n--;)if(!r(e[n],t[n]))return!1;return!0}if(e instanceof Map&&t instanceof Map){if(e.size!==t.size)return!1;for(n of e.entries())if(!t.has(n[0]))return!1;for(n of e.entries())if(!r(n[1],t.get(n[0])))return!1;return!0}if(e instanceof Set&&t instanceof Set){if(e.size!==t.size)return!1;for(n of e.entries())if(!t.has(n[0]))return!1;return!0}if(ArrayBuffer.isView(e)&&ArrayBuffer.isView(t)){if((f=e.length)!=t.length)return!1;for(n=f;0!=n--;)if(e[n]!==t[n])return!1;return!0}if(e.constructor===RegExp)return e.source===t.source&&e.flags===t.flags;if(e.valueOf!==Object.prototype.valueOf)return e.valueOf()===t.valueOf();if(e.toString!==Object.prototype.toString)return e.toString()===t.toString();if((f=(i=Object.keys(e)).length)!==Object.keys(t).length)return!1;for(n=f;0!=n--;)if(!Object.prototype.hasOwnProperty.call(t,i[n]))return!1;for(n=f;0!=n--;){var o=i[n];if(!r(e[o],t[o]))return!1}return!0}return e!=e&&t!=t}`
 
-  if (a && b && typeof a == 'object' && typeof b == 'object') {
-    if (a.constructor !== b.constructor) return false;
-
-    var length, i, keys;
-    if (Array.isArray(a)) {
-      length = a.length;
-      if (length != b.length) return false;
-      for (i = length; i-- !== 0;)
-        if (!equal(a[i], b[i])) return false;
-      return true;
-    }
-
-
-    if ((a instanceof Map) && (b instanceof Map)) {
-      if (a.size !== b.size) return false;
-      for (i of a.entries())
-        if (!b.has(i[0])) return false;
-      for (i of a.entries())
-        if (!equal(i[1], b.get(i[0]))) return false;
-      return true;
-    }
-
-    if ((a instanceof Set) && (b instanceof Set)) {
-      if (a.size !== b.size) return false;
-      for (i of a.entries())
-        if (!b.has(i[0])) return false;
-      return true;
-    }
-
-    if (ArrayBuffer.isView(a) && ArrayBuffer.isView(b)) {
-      length = a.length;
-      if (length != b.length) return false;
-      for (i = length; i-- !== 0;)
-        if (a[i] !== b[i]) return false;
-      return true;
-    }
-
-
-    if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
-    if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b.valueOf();
-    if (a.toString !== Object.prototype.toString) return a.toString() === b.toString();
-
-    keys = Object.keys(a);
-    length = keys.length;
-    if (length !== Object.keys(b).length) return false;
-
-    for (i = length; i-- !== 0;)
-      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
-
-    for (i = length; i-- !== 0;) {
-      var key = keys[i];
-
-      if (!equal(a[key], b[key])) return false;
-    }
-
-    return true;
-  }
-
-  // true if both NaN, false otherwise
-  return a!==a && b!==b;
-};
-`
 const replacements = [
 	{
 		search: 'require("ajv/dist/runtime/ucs2length").default',

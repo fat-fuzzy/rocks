@@ -12,4 +12,13 @@ const hashFilePath = path.join(outDir, ajvHash)
 const hashFilePathTmp = path.join(outDir, ajvHashTmp)
 const signatureFilePath = path.join(outDir, ajvSigned)
 
-export default {modulePath, hashFilePath, hashFilePathTmp, signatureFilePath}
+const PATHS = {modulePath, hashFilePath, hashFilePathTmp, signatureFilePath}
+
+const PATTERNS = {
+	USERNAME: '^([\\W\\D\\S]{0}[\\.\\-]{0,1000}[\\w\\d]{0,1000}){3,1000}$',
+	PASSWORD_SPECIAL_CHARS: '([$\\-+!?*&%~_@#]{1}[a-z|A-Z|0-9]{0,100}){3}',
+	PASSWORD_DIGITS: '([0-9]{1}[a-z|A-Z|0-9]{0,100}){3}',
+	PHONE: '[\\+0-9]{10,14}',
+}
+
+export default {PATHS, PATTERNS}

@@ -5,10 +5,11 @@
  ************************************************************************************/
 
 import fatFuzzyIntl from '@fat-fuzzy/intl'
+import constants from '../../utils/constants.js'
 
 const {L10nFormatter} = fatFuzzyIntl
-
 const messages = new L10nFormatter('en')
+const {PATTERNS} = constants
 /**
  * Common Schemas for form inputs.
  * Adjust as necessary for your form.
@@ -47,14 +48,14 @@ const schemaInputs = {
 			},
 			{
 				type: 'string',
-				pattern: '^([\\W\\D\\S]{0}[\\.\\-]?[\\w\\d]){3,1000}$',
+				pattern: PATTERNS.USERNAME,
 				errorMessage: messages.getErrorMessage('FORMAT_USERNAME'),
 			},
 		],
 	},
 	phone: {
 		type: 'string',
-		pattern: '[\\+0-9]{10,14}',
+		pattern: PATTERNS.PHONE,
 		errorMessage: messages.getErrorMessage('FORMAT_PHONE'),
 	},
 	// See: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#email-address-validation
@@ -95,16 +96,23 @@ const schemaInputs = {
 			{
 				type: 'string',
 				format: 'password',
-				pattern: '([$\\-+!?*&%~_@#]{1}[a-z|A-Z|0-9]{0,100}){3}',
+				pattern: PATTERNS.PASSWORD_SPECIAL_CHARS,
 				errorMessage: messages.getErrorMessage('FORMAT_PATTERN', 3),
 			},
 			{
 				type: 'string',
 				format: 'password',
-				pattern: '([0-9]{1}[a-z|A-Z|0-9]{0,100}){3}',
+				pattern: PATTERNS.PASSWORD_DIGITS,
 				errorMessage: messages.getErrorMessage('FORMAT_PATTERN', 3, 'digit'),
 			},
 		],
+	},
+	confirm_password: {
+		type: 'string',
+		const: {$data: '1/password'},
+		errorMessage: {
+			const: messages.getErrorMessage('MATCH_PASSWORD'),
+		},
 	},
 	postcode: {
 		allOf: [
@@ -150,33 +158,33 @@ const schemaInputs = {
 /**
  * Validation schema for the form: AjvValidator
  */
-// const schemaAjvValidator = {
-// 	$id: '#/definitions/AjvValidator',
-// 	$schema: 'http://json-schema.org/draft-07/schema#',
-// 	type: 'object',
-// 	properties: {
-// 		sample_name: {$ref: '#/definitions/text'},
-// 		sample_phone: {$ref: '#/definitions/phone'},
-// 		sample_email: {$ref: '#/definitions/email'},
-// 		sample_password: {$ref: '#/definitions/password'},
-// 		confirm_password: {$ref: '#/definitions/confirm_password'},
-// 		sample_postcode: {$ref: '#/definitions/postcode'},
-// 		sample_description: {$ref: '#/definitions/textarea'},
-// 		sample_checkbox: {$ref: '#/definitions/checkbox'},
-// 		sample_select: {$ref: '#/definitions/select'},
-// 		sample_disabled_field: {$ref: '#/definitions/disabled_field'},
-// 		sample_radio_group: {$ref: '#/definitions/radio_group'},
-// 		sample_checkbox_group: {$ref: '#/definitions/checkbox_group'},
-// 	},
-// 	required: ['sample_name', 'sample_email', 'sample_password'],
-// 	definitions: schemaInputs,
-// }
+const schemaAjvValidator = {
+	$id: '#/definitions/AjvValidator',
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	type: 'object',
+	properties: {
+		sample_name: {$ref: '#/definitions/text'},
+		sample_phone: {$ref: '#/definitions/phone'},
+		sample_email: {$ref: '#/definitions/email'},
+		sample_password: {$ref: '#/definitions/password'},
+		confirm_password: {$ref: '#/definitions/confirm_password'},
+		sample_postcode: {$ref: '#/definitions/postcode'},
+		sample_description: {$ref: '#/definitions/textarea'},
+		sample_checkbox: {$ref: '#/definitions/checkbox'},
+		sample_select: {$ref: '#/definitions/select'},
+		sample_disabled_field: {$ref: '#/definitions/disabled_field'},
+		sample_radio_group: {$ref: '#/definitions/radio_group'},
+		sample_checkbox_group: {$ref: '#/definitions/checkbox_group'},
+	},
+	required: ['sample_name', 'sample_email', 'sample_password'],
+	definitions: schemaInputs,
+}
 
 /**
- * Validation schema for the form: SignUpValidator
+ * Validation schema for the form: SignUpSchema
  */
 const schemaSignUp = {
-	$id: '#/definitions/SignUpValidator',
+	$id: '#/definitions/SignUpSchema',
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
 	properties: {
@@ -195,4 +203,4 @@ const schemaSignUp = {
 	definitions: schemaInputs,
 }
 
-export default {schemaInputs, schemaSignUp}
+export default {schemaInputs, schemaSignUp, schemaAjvValidator}

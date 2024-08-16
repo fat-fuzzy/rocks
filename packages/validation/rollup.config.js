@@ -1,3 +1,4 @@
+import terser from '@rollup/plugin-terser'
 import {createRequire} from 'module'
 const require = createRequire(import.meta.url)
 const packageJson = require('./package.json')
@@ -10,5 +11,6 @@ export default [
 			format: 'es',
 		},
 		external: ['ajv', 'ajv-formats', 'ajv-errors'],
+		plugins: [terser()],
 	},
 ]
