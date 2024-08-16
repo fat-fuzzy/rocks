@@ -25,7 +25,7 @@
 	}: ExpandLinkProps = $props()
 	
 
-	let linkReveal = $state(reveal ? {[slug]: {reveal}} : {[slug] :DEFAULT_REVEAL_STATE})
+	let linkReveal = $state(reveal ? {[slug]: reveal} : {[slug] :DEFAULT_REVEAL_STATE})
 	let states = {
 		expanded: {
 			...	EXPAND_MACHINE.expanded,
