@@ -10,6 +10,8 @@
 		value = $bindable(),
 		required,
 		size,
+		color,
+		variant,
 		onfocus,
 		onblur,
 		oninput,
@@ -35,4 +37,4 @@
 	/>
 </label>
 
-<Feedback {errors} {size} />
+<Feedback {errors} {size} {variant} />

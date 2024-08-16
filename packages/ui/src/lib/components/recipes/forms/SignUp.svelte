@@ -1,5 +1,6 @@
 <script lang="ts">
-	import {UiStatus, UiTextContext, type FormProps} from '$types'
+	import type {FormProps} from '$types'
+	import {UiStatus, UiTextContext, UiColor, UiVariant, InputType} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
@@ -20,8 +21,8 @@
 		container,
 		depth = 2, // <h*> elenent depth
 		size,
-		color = 'primary',
-		variant = 'default',
+		color = UiColor.primary,
+		variant = UiVariant.fill,
 		asset = 'log',
 		align = 'center',
 		background = 'contrast',
@@ -106,11 +107,12 @@
 				</header>
 				<Input
 					id="username"
-					type="text"
+					type={InputType.text}
 					name="sample_username"
 					label="Username"
 					required
 					{size}
+					{variant}
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
@@ -118,33 +120,41 @@
 				/>
 				<Input
 					id="email"
-					type="email"
+					type={InputType.email}
 					name="sample_email"
 					label="Email"
 					required
 					{size}
+					{color}
+					{variant}
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
 					{validator}
 				/>
 				<InputPassword
+					type={InputType.password}
 					id="password"
 					name="sample_password"
 					label="Password"
 					required
 					{size}
+					{color}
+					{variant}
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
 					{validator}
 				/>
 				<InputPassword
-					id="password"
+					id="confirm_password"
+					type={InputType.password}
 					name="confirm_password"
 					label="Confirm Password"
 					required
 					{size}
+					{color}
+					{variant}
 					disabled={validator.getFieldErrors('sample_password')
 						? true
 						: undefined}
@@ -155,8 +165,9 @@
 				/>
 				<Button
 					id="button-submit-signup"
-					{variant}
+					{size}
 					{color}
+					{variant}
 					name="submit"
 					{disabled}
 				>

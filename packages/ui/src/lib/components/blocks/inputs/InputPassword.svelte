@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {InputProps} from '$types'
-	import {UiStatus} from '$types'
 	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 	let {
@@ -9,6 +8,7 @@
 		label,
 		value = $bindable(),
 		size,
+		variant,
 		onfocus,
 		onblur,
 		oninput,
@@ -34,4 +34,4 @@
 	/>
 </label>
 
-<Feedback {errors} {size} />
+<Feedback {errors} {size} {variant} />

@@ -4,6 +4,8 @@ import type {
 	FuzzyPayload,
 	UiBlockProps,
 	UiStatus,
+	UiSize,
+	UiVariant,
 	IFormValidator,
 } from '$types'
 
@@ -22,7 +24,8 @@ export type FeedbackMessage = {
 }
 
 export type InputFeedbackProps = {
-	size?: string
+	size?: UiSize
+	variant?: UiVariant
 	errors?: string[]
 }
 
@@ -44,7 +47,7 @@ export type InputProps = UiBlockProps & {
 	formaction?: string
 	required?: boolean
 
-	type?: InputType
+	type: InputType
 	children?: Snippet
 	onfocus?: (payload: InputPayload) => void
 	onblur?: (payload: InputPayload) => void
