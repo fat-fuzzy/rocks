@@ -7,6 +7,7 @@
 	import PlaybookStore from '$lib/api/store.svelte'
 
 	const {PageMain} = ui.content
+	const {EscapeHtml} = ui.headless
 	const {DEFAULT_TABS} = ui.constants
 
 	type Props = {
@@ -56,7 +57,7 @@
 	redirect={$page.url.pathname}
 	>
 	{#if isPage}
-		{@html markdownContent.html}
+		<EscapeHtml html={markdownContent.html}/>
 	{:else if children}
 		{@render children()}
 	{/if}	

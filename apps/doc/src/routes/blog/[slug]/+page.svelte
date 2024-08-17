@@ -3,6 +3,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
+	const {EscapeHtml} = ui.headless
 
 	let markdown = $derived(
 		$page.data.markdowns.usages.find((d) => d.path === $page.data.path),
@@ -23,6 +24,8 @@
 		</div>
 	{/snippet}
 	<article class="l:sidebar:md">
-		<div class="l:text:lg">{@html html}</div>
+		<div class="l:text:lg">
+			<EscapeHtml {html}/>
+		</div>
 	</article>
 </PageMain>

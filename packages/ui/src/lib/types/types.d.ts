@@ -57,6 +57,7 @@ export interface Content {
 
 export interface Headless {
 	Head: typeof import('$lib/components/blocks/global/Head.svelte').default
+	EscapeHtml: typeof import('$lib/components/blocks/global/EscapeHtml.svelte').default
 }
 
 export interface FatFuzzyUi {

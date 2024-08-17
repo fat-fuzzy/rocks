@@ -19,7 +19,10 @@ import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
+
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
+
 import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
@@ -134,6 +137,7 @@ const content = {
 
 const headless = {
 	Head,
+	EscapeHtml,
 }
 
 export default {

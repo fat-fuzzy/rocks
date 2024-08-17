@@ -1,4 +1,4 @@
 import * as validate from './ajv/out/validate.ajv.mjs'
 import sanitize from './utils/sanitize.js'
 
-export default {validate, sanitize}
+export default {sanitize, validate}

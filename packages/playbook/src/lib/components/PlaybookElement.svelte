@@ -8,6 +8,7 @@
 	const {DEFAULT_TABS} = ui.constants
 
 	const {PageMain} = ui.content
+	const {EscapeHtml} = ui.headless
 
 	type Props = {
 		category: any // TODO: fix types
@@ -54,7 +55,9 @@
 			{redirect}
 			tab={currentTab.value}
 		>
-			<div class="l:text:lg">{@html markdown.html}</div>
+			<div class="l:text:lg">
+				<EscapeHtml html={markdown.html}/>
+			</div>
 		</Element>
 	{/key}
 </PageMain>

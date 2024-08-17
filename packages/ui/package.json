@@ -29,12 +29,16 @@
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
+	"dependencies": {
+		"dompurify": "^3.1.6"
+	},
 	"peerDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@fat-fuzzy/validation": "workspace:*",
 		"@sveltejs/kit": "^2.0.0",
+		"dompurify": "^3.1.6",
 		"svelte": "^5.0.0"
 	},
 	"devDependencies": {

@@ -4,6 +4,7 @@
 	import {api} from '@fat-fuzzy/playbook'
 
 	const {PageMain} = ui.content
+	const {EscapeHtml} = ui.headless
 
 	const {PlaybookCollection} = api
 
@@ -21,7 +22,9 @@
 <PageMain {title} {description} size="md">
 	<article class="l:sidebar:md">
 		<section class="l:main">
-			<div class="l:text:lg snap:start">{@html markdown.html}</div>
+			<div class="l:text:lg snap:start">
+				<EscapeHtml html={markdown.html} />
+			</div>
 			{#each categories as category}
 				<PlaybookCollection
 					{category}
@@ -32,8 +35,10 @@
 					path={`${path}/${category}`}
 					redirect={$page.url.pathname}
 				>
-					{@html markdowns.categories.find(({meta}) => meta.slug === category)
-						.html}
+					<EscapeHtml
+						html={markdowns.categories.find(({meta}) => meta.slug === category)
+							.html}
+					/>
 				</PlaybookCollection>
 			{/each}
 		</section>

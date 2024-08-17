@@ -23,6 +23,9 @@
 		"lint": "pnpm lint:css; pnpm lint:scss; pnpm lint:prettier",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"dependencies": {
+		"dompurify": "^3.1.6"
+	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",

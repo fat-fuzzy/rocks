@@ -3,6 +3,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
+	const {EscapeHtml} = ui.headless
 
 	let markdown = $page.data.content
 	let title = $derived(markdown.meta.title)
@@ -15,6 +16,8 @@
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
 	<article class="l:sidebar:md">
-		<div class="l:text:lg">{@html html}</div>
+		<div class="l:text:lg">
+			<EscapeHtml {html}/>
+		</div>
 	</article>
 </PageMain>
