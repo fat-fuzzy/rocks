@@ -19,7 +19,7 @@
 		redirect,
 		layout,
 		container,
-		depth = 2, // <h*> elenent depth
+		depth = 2, // <h*> element depth
 		size,
 		color = UiColor.primary,
 		variant = UiVariant.fill,
