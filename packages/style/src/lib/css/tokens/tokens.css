@@ -195,11 +195,11 @@
   --outline-offset-settings: 2px;
   --outline-width: 1px;
   --scale-base-00: var(--size-base-initial);
-  --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-sm));
-  --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-sm));
-  --scale-base-03: calc(var(--scale-base-02) / var(--size-ratio-sm));
-  --scale-base-04: calc(var(--scale-base-03) / var(--size-ratio-sm));
-  --scale-base-05: calc(var(--scale-base-04) / var(--size-ratio-sm));
+  --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
+  --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-xs));
+  --scale-base-03: calc(var(--scale-base-02) / var(--size-ratio-xs));
+  --scale-base-04: calc(var(--scale-base-03) / var(--size-ratio-xs));
+  --scale-base-05: calc(var(--scale-base-04) / var(--size-ratio-xs));
   --scale-base-10: calc(var(--scale-base-00) * var(--size-ratio-sm));
   --scale-base-20: calc(var(--scale-base-10) * var(--size-ratio-sm));
   --scale-base-30: calc(var(--scale-base-20) * var(--size-ratio-sm));
