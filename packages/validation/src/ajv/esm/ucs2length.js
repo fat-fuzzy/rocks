@@ -1,5 +1,5 @@
 /**
- * See ./node-modules/ajv/dist/runtime/equal.js for the original implementation
+ * The original implementation is in ./node-modules/ajv/dist/runtime/equal.js
  * Src: https://github.com/mathiasbynens/punycode.js
  * and: https://mathiasbynens.be/notes/javascript-encoding
  */
@@ -18,5 +18,3 @@ function ucs2length(str) {
 	}
 	return length
 }
-
-export default ucs2length

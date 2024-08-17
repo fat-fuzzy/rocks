@@ -1,4 +1,4 @@
-// See ./node-modules/ajv/dist/runtime/equal.js for the original implementation
+// The original implementation is in ./node-modules/ajv/dist/runtime/equal.js
 
 function equal(a, b) {
 	if (a === b) return true
@@ -60,5 +60,3 @@ function equal(a, b) {
 	// true if both NaN, false otherwise
 	return a !== a && b !== b
 }
-
-export default equal
