@@ -52,7 +52,7 @@
 	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses} ${elementClasses}`)
 
 	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+		$derived(formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction)
 </script>
 
 <svelte:element {id} this={element} class={revealClasses} aria-label={title}>
@@ -76,7 +76,6 @@
 			type={actionPath && formaction ? 'submit' : 'button'}
 			name="reveal-auto"
 			controls={`reveal-auto-${id}`}
-			value={'menu'}
 			asset={asset}
 			states={EXPAND_MACHINE}
 			onclick={toggleReveal}

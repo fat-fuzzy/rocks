@@ -35,22 +35,22 @@
 		settingsReveal = {reveal: 'collapsed'}
 	}
 
-	function handleToggle(event) {
-		settingsReveal = {reveal: event.state}
+	function handleToggle(payload) {
+		settingsReveal = {reveal: payload.state}
 	}
 
-	function handleUpdate(event) {
-		switch (event.id) {
+	function handleUpdate(payload) {
+		switch (payload.id) {
 			case 'brightness':
-				appSettings.brightness = event.value
+				appSettings.brightness = payload.value
 				break
 			case 'contrast':
-				appSettings.contrast = event.value
+				appSettings.contrast = payload.value
 				break
 			default:
 				break
 		}
-		if (onupdate) onupdate(event)
+		if (onupdate) onupdate(payload)
 	}
 
 	let reveal = $derived(settingsReveal.reveal)
@@ -66,14 +66,16 @@
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
-	let revealAction = formaction
-		? redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-		: 'toggleSettings'
-	let settingsUpdateAction = redirect
-		? `updateSettings&redirectTo=${redirect}`
-		: 'updateSettings'
+	let revealAction = $derived(
+		formaction
+			? redirect
+				? `${formaction}&redirectTo=${redirect}`
+				: formaction
+			: 'toggleSettings',
+	)
+	let settingsUpdateAction = $derived(
+		redirect ? `updateSettings&redirectTo=${redirect}` : 'updateSettings',
+	)
 
 	// function initSettings(event) {
 	// 	let preferredScheme = {...event}
@@ -123,7 +125,6 @@
 			type={actionPath && formaction ? 'submit' : 'button'}
 			name={`reveal-settings`}
 			controls={id}
-			value={settingsReveal[id]}
 			text="settings"
 			asset="settings"
 			onclick={handleToggle}
