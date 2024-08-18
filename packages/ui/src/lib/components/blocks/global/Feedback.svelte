@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FeedbackProps, AriaLive} from '$types'
+	import type {FeedbackProps, AriaLive, UiStatus, UiTextContext} from '$types'
 	import {AriaLiveEnum} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 
@@ -8,10 +8,10 @@
 		justify = 'start',
 		align,
 		text,
-		context, // feedback context: code, form, dialog,
-		status, // feedback color: info, success, warning, error,
+		context,
+		status,
 		size,
-		variant, // feedback variant: default, outline, bare,
+		variant,
 		container,
 		children,
 	}: FeedbackProps = $props()
@@ -19,8 +19,8 @@
 	let feedbackClasses = $derived(
 		styleHelper.getFeedbackStyles(
 			{size, asset, variant, align, justify, container},
-			status,
-			context,
+			status as UiStatus,
+			context as UiTextContext,
 		),
 	)
 	let ariaLive: AriaLive = $derived(context === 'form' ? AriaLiveEnum.polite : undefined)

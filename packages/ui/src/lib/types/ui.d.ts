@@ -42,14 +42,14 @@ export type UiLayoutProps = {
 	 */
 	align?: string
 	justify?: string
-	size?: UiSize
+	size?: string
 	font?: string
 
 	container?: string
 	direction?: string
 	place?: string
 	position?: string
-	dimensions?: UiDimensions
+	dimensions?: string
 	layout?: string
 	threshold?: string
 	breakpoint?: string
@@ -60,9 +60,9 @@ export type UiBlockProps = UiLayoutProps & {
 	 * Block props
 	 */
 	asset?: string // the `value` part of  emoji:value or svg:value
-	color?: UiColor
-	shape?: UiShape
-	variant?: UiVariant
+	color?: string
+	shape?: string
+	variant?: string
 	background?: string
 	height?: string
 	layer?: string

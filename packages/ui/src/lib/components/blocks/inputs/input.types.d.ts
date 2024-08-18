@@ -24,8 +24,8 @@ export type FeedbackMessage = {
 }
 
 export type InputFeedbackProps = {
-	size?: UiSize
-	variant?: UiVariant
+	size?: string
+	variant?: string
 	errors?: string[]
 }
 
