@@ -1,17 +1,17 @@
 export default {
-	Button: {id: 'button', text: 'Button', asset: 'idea'},
+	Button: {id: 'button', label: 'Button', asset: 'idea'},
 	Expand: {
 		title: 'Expand',
 		states: {
 			expanded: {
 				id: 'button-expand',
-				text: 'Expand',
+				label: 'Expand',
 				event: 'collapse',
 				asset: 'point-down',
 			},
 			collapsed: {
 				id: 'button-expand',
-				text: 'Expand',
+				label: 'Expand',
 				event: 'expand',
 				asset: 'point-right',
 			},
@@ -23,21 +23,21 @@ export default {
 		states: {
 			active: {
 				id: 'button-switch',
-				text: 'Rabbit',
+				label: 'Rabbit',
 				event: 'switch',
 				asset: 'switch-active',
 			},
 			inactive: {
 				id: 'button-switch',
-				text: 'Hat',
+				label: 'Hat',
 				event: 'switch',
 				asset: 'switch-inactive',
 			},
 		},
 	},
-	InputCheck: {id: 'check', text: 'An optional choice choice'},
-	InputRadio: {id: 'radio', text: 'A mandatory choice'},
-	InputRange: {id: 'range', text: 'A range of ordered choices'},
+	InputCheck: {id: 'check', label: 'An optional choice choice'},
+	InputRadio: {id: 'radio', label: 'A mandatory choice'},
+	InputRange: {id: 'range', label: 'A range of ordered choices'},
 	Feedback: {
 		status: [
 			{
@@ -72,7 +72,7 @@ export default {
 			},
 		],
 	},
-	Toggle: {id: 'button-toggle', text: 'Toggle', asset: 'favorite'},
+	Toggle: {id: 'button-toggle', label: 'Toggle', asset: 'favorite'},
 	Fieldset: {
 		items: ['Form input 1', 'Form input 2', 'Form input 3'],
 	},

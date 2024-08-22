@@ -184,7 +184,7 @@
 			size={size ?? apiSize}
 			color={apiColor}
 			variant={styleInput.variant}
-			onupdate={(event) => handleInput(event, familyName)}
+			oninput={(event) => handleInput(event, familyName)}
 		/>
 	{/if}
 	{#if input == 'range'}
