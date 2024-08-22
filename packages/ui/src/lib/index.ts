@@ -65,9 +65,9 @@ import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 /**
  * Forms
  */
-import {UiReveal} from '$lib/forms/ui-reveal.js'
-import {SignUpUser} from '$lib/forms/ui-sample-signup.js'
-import {SettingsUpdate} from '$lib/forms/settings-update.js'
+import UiReveal from '$lib/forms/ui-reveal.js'
+import SignUpUser from '$lib/forms/ui-sample-signup.js'
+import SettingsUpdate from '$lib/forms/settings-update.js'
 
 /**
  * Utilities

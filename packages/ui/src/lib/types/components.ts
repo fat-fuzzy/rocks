@@ -1,6 +1,4 @@
 // types.d.ts
-import type {SvelteComponent} from 'svelte'
-
 export interface Utils {
 	format: typeof import('$lib/utils/format.js').default
 	clickOutside: typeof import('$lib/utils/click-outside.js')
@@ -8,7 +6,7 @@ export interface Utils {
 
 export interface Forms {
 	UiReveal: typeof import('$lib/forms/ui-reveal.js').default
-	SettingsUpdate: typeof import('$lib/forms/sidebar-reveal.js').default
+	SettingsUpdate: typeof import('$lib/forms/settings-update.js').default
 	SignUpUser: typeof import('$lib/forms/ui-sample-signup.js').default
 }
 

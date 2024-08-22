@@ -1,6 +1,6 @@
 import FormValidator from '$lib/utils/validate-form.svelte.js'
 
-export class SignUpUser {
+class SignUpUser {
 	inputTypes: {[name: string]: string} = {
 		sample_username: 'username',
 		sample_email: 'email',
@@ -37,3 +37,5 @@ export class SignUpUser {
 		return ''
 	}
 }
+
+export default SignUpUser
