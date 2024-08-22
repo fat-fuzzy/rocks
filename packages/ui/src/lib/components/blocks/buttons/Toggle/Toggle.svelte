@@ -7,7 +7,7 @@
 	let {
 		id = 'toggle',
 		name = 'toggle',
-		text,
+		label,
 		title,
 		initial =  UiState.inactive,
 		value,
@@ -82,7 +82,7 @@
 		{#if shape}
 			<span class="sr-only">{title}</span>
 		{:else}
-			{text}
+			{label}
 		{/if}
 	{/if}
 </button>

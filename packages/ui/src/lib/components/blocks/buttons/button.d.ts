@@ -9,7 +9,7 @@ export type ButtonProps = UiBlockProps & {
 	 */
 	id: string
 	name: string
-	text?: string
+	label?: string
 	title?: string
 	value?: string | number
 	disabled?: boolean

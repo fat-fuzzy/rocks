@@ -102,6 +102,7 @@ const blocks = {
 	Toggle,
 	Feedback,
 	Fieldset,
+	InputGroup,
 	InputCheck,
 	InputRadio,
 	InputRange,
