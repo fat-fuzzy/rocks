@@ -7,8 +7,8 @@ import postcssGlobalData from '@csstools/postcss-global-data'
 import postcssJitProps from 'postcss-jit-props'
 import postcssMinify from '@csstools/postcss-minify'
 import postcssPresetEnv from 'postcss-preset-env'
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 const production = process.env.NODE_ENV === 'production'
 const inDir = path.resolve('src/lib')

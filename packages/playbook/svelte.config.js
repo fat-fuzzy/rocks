@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 import adapter from '@sveltejs/adapter-cloudflare'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'

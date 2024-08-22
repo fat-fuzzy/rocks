@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 const outDir = './src/ajv/out'
 const ajvValidate = 'validate.ajv.mjs'

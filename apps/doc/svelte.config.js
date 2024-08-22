@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import adapter from '@sveltejs/adapter-cloudflare'

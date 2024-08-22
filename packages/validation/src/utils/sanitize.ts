@@ -2,7 +2,7 @@
  *  Simple sanitization functions to use before validation
  *
  */
-import path from 'path'
+import path from 'node:path'
 
 function replaceChar(s: string): string {
 	return (

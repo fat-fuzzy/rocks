@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import crypto from 'crypto'
 import utils from '../src/utils/gpg.js'
 
