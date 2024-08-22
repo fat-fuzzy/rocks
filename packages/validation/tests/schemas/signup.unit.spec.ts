@@ -18,12 +18,6 @@ schemas.forEach((schema) => {
 				ajvValidate(validateMap)
 				const errors = ajvValidate.errors
 				expect(errors).toBe(null)
-				// // Check that the result is either valid or invalid without throwing errors
-				// if (match) {
-				// 	expect(errors.length).toBe(0)
-				// } else {
-				// 	expect(errors.length).toBeGreaterThanOrEqual(3)
-				// }
 			}),
 		)
 	})

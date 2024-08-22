@@ -19,7 +19,6 @@ class FormValidator implements IFormValidator {
 	constructor(validationFunctionName: string) {
 		this.form = new Proxy({}, this.validationHandler())
 		this.errors = []
-		// @ts-expect-error need to add types for ajvValidate
 		this.ajvValidate = validate[validationFunctionName]
 	}
 
