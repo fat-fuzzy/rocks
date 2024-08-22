@@ -20,7 +20,7 @@ They are generally mapped to a specific HTML tag, or related tags.
 
 They are implemented using the [web platform](https://developer.mozilla.org/en-US/docs/Web)'s capabilities and with help from the examples provided in [Inclusive Components](https://inclusive-components.design/).
 
-`Blocks` can be [composed](https://cube.fyi/composition.html) with `Layouts` and other `Blocks` to create simple or elaborate interfaces while respecting HTML semantics and document structure.
+`Blocks` can be combined in [compositions](https://cube.fyi/composition.html) using `Layout` components and classes to create interfaces that apply HTML semantics to convey document structure.
 
 ### Example
 

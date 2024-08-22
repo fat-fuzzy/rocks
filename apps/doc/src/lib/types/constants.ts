@@ -71,12 +71,12 @@ const APP_LINKS: {[key: string]: string}[] = [
 
 const TABS_CONTENT = [
 	{
-		id: 'context.menu.toggle.demo',
-		title: 'Demo',
+		id: 'context.menu.toggle.playbook',
+		title: 'Playbook',
 		size: 'lg',
 		color: 'accent',
-		asset: 'demo',
-		value: 'demo',
+		asset: 'playbook',
+		value: 'playbook',
 	},
 	{
 		id: 'context.menu.toggle.doc',

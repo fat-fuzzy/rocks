@@ -70,6 +70,8 @@
 	<SkipLinks text="Skip to content" href="#content" />
 	<Reveal
 		{id}
+		name={id}
+		label=""
 		{variant}
 		{title}
 		{size}

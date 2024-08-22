@@ -11,7 +11,7 @@
 	grid-template-areas: 'main tabs';
 }
 
-.l\:grid\:header\:demo {
+.l\:grid\:header\:playbook {
 	grid-template-areas:
 		'main			tabs'
 		'context	context';

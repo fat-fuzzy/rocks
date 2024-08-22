@@ -19,12 +19,17 @@ import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
+
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
-import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
-import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
-import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
-import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
-import InputFile from '$lib/components/blocks/forms/InputFile.svelte'
+import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
+
+import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
+import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
+import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
+import InputRange from '$lib/components/blocks/inputs/InputRange.svelte'
+import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
+// import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
+// import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 /**
  * Layout components
@@ -44,7 +49,7 @@ import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
 import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 
-import LogIn from '$lib/components/recipes/forms/LogIn.svelte'
+import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
@@ -61,6 +66,7 @@ import PageMain from '$lib/components/recipes/content/PageMain.svelte'
  * Forms
  */
 import {UiReveal} from '$lib/forms/ui-reveal.js'
+import {SignUpUser} from '$lib/forms/ui-sample-signup.js'
 import {SettingsUpdate} from '$lib/forms/settings-update.js'
 
 /**
@@ -81,6 +87,7 @@ const utils = {
 const forms = {
 	UiReveal,
 	SettingsUpdate,
+	SignUpUser,
 }
 
 const tokens = {
@@ -99,6 +106,8 @@ const blocks = {
 	InputRadio,
 	InputRange,
 	InputFile,
+	// InputPassword,
+	// InputFeedback,
 }
 
 const layouts = {
@@ -115,7 +124,7 @@ const recipes = {
 	ToggleMenu,
 	RevealMenu,
 	InputGroup,
-	LogIn,
+	SignUp,
 	Nav,
 	RevealNav,
 	Header,
@@ -128,6 +137,7 @@ const content = {
 
 const headless = {
 	Head,
+	EscapeHtml,
 }
 
 export default {

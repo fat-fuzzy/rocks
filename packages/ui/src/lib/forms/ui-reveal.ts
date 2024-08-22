@@ -22,11 +22,18 @@ export class UiReveal {
 	 */
 	reveal(data: FormData) {
 		let updated
+
 		if (data.has('reveal')) {
 			updated = data.get('reveal')?.toString()
 		}
 		if (data.has('reveal-tokens')) {
 			updated = data.get('reveal-tokens')?.toString()
+		}
+		if (data.has('reveal-auto')) {
+			updated = data.get('reveal-auto')?.toString()
+		}
+		if (data.has('reveal-settings')) {
+			updated = data.get('reveal-auto')?.toString()
 		}
 		if (data.has('reveal-blocks')) {
 			updated = data.get('reveal-blocks')?.toString()

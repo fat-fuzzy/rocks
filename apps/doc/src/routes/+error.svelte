@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-
 	import ui from '@fat-fuzzy/ui'
 
 	const {Feedback} = ui.blocks
@@ -21,7 +20,7 @@
 </script>
 
 <PageMain
-	{title}
+	title={String(title)}
 	{description}
 	size="xl"
 	pageName={String($page.status)}

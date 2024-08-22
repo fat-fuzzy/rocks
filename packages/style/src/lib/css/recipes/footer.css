@@ -1,6 +1,6 @@
 footer {
 	text-align: center;
-	padding-top: var(--size-sm);
-	padding-bottom: var(--size-sm);
+	padding-block-start: var(--size-sm);
+	padding-block-end: var(--size-sm);
 	background-color: var(--shade);
 }

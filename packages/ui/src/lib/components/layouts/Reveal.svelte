@@ -77,7 +77,7 @@
 	}
 
 	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+		$derived(formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction)
 </script>
 
 <form {method}

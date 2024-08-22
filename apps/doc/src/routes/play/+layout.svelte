@@ -25,7 +25,7 @@
 		},
 	]
 
-	let nav ={
+	let nav = {
 		path,
 		title: 'Content',
 		id: 'nav-sketches',

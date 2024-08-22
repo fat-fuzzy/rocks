@@ -1,16 +1,13 @@
 import type {Snippet} from 'svelte'
-
-export type InputType =
-	| 'text'
-	| 'number'
-	| 'range'
-	| 'radio'
-	| 'checkbox'
-	| 'file'
-	| 'email'
-	| 'submit'
-
-export type UiDimensions = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+import {
+	AriaLiveEnum,
+	UiSettings,
+	UiSize,
+	UiDimensions,
+	UiShape,
+	UiColor,
+	UiVariant,
+} from '$types'
 
 export type ButtonContext = {
 	id: string
@@ -18,10 +15,19 @@ export type ButtonContext = {
 	value: string | number
 }
 
-export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
+export type AriaLive =
+	| AriaLiveEnum.polite
+	| AriaLiveEnum.off
+	| AriaLiveEnum.assertive
+	| null
+	| undefined
 
 export type Settings = {
-	[key: string]: string
+	[setting in UiSettings]?: string
+}
+
+export type UiRevealState = {
+	reveal: UiState
 }
 
 export type InputPayload = {
@@ -79,13 +85,10 @@ export type SwitchState = {
 	send: (event: string) => unknown
 }
 
-export type Tab = {
+export type Tab = UiBlockProps & {
 	id: string
 	name: string
 	title: string
 	value: string
 	initial?: string
-	size?: string
-	color?: string
-	asset?: string
 }

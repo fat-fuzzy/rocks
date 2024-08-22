@@ -1,7 +1,10 @@
 import {test, expect} from '@playwright/test'
 import utils from '../utils/constants'
+import errorUtils from '../utils/errors'
 
 const pages = utils.pages
+const errors = errorUtils.httpErrors
+const errorCodes = Object.keys(errors)
 
 test('has title', async ({page}) => {
 	await page.goto('/')
@@ -49,4 +52,30 @@ test(`Settings menu works as expected`, async ({page}) => {
 	await expect(page.getByRole('button', {name: 'Brightness'})).toBeVisible()
 	await expect(page.getByRole('button', {name: 'Contrast'})).toBeVisible()
 	await expect(page.getByRole('link', {name: 'GitHub'})).toBeVisible()
+})
+
+pages.forEach((item) => {
+	// if (item.draft) {
+	// 	return
+	// }
+	errorCodes.forEach((code) => {
+		let error = errors[code]
+		test(`Returns ${code} error if ${error.condition}: page ${item.title}`, async ({
+			page,
+		}) => {
+			await error.testFn(page, item)
+			await expect(page.getByText(error.message)).toBeVisible()
+		})
+
+		if (item.items) {
+			item.items.forEach((subpage) => {
+				test(`Returns ${code} error if ${error.condition}: page ${subpage.title}`, async ({
+					page,
+				}) => {
+					await error.testFn(page, subpage)
+					await expect(page.getByText(error.message)).toBeVisible()
+				})
+			})
+		}
+	})
 })

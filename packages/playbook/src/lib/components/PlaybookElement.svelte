@@ -1,13 +1,14 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import fatFuzzyUi from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import Element from '$lib/components/Element.svelte'
 	import PlaybookHeader from '$lib/components/PlaybookHeader.svelte'
 	import PlaybookStore from '$lib/api/store.svelte'
 
-	const {DEFAULT_TABS} = fatFuzzyUi.constants
+	const {DEFAULT_TABS} = ui.constants
 
-	const {PageMain} = fatFuzzyUi.content
+	const {PageMain} = ui.content
+	const {EscapeHtml} = ui.headless
 
 	type Props = {
 		category: any // TODO: fix types
@@ -26,10 +27,10 @@
 	let currentTab = $derived(playbookStore.currentTabs.ui || DEFAULT_TABS[0])
 
 	let categoryItems: {[name: string]: any} = {
-		tokens: fatFuzzyUi.tokens,
-		blocks: fatFuzzyUi.blocks,
-		layouts: fatFuzzyUi.layouts,
-		recipes: fatFuzzyUi.recipes,
+		tokens: ui.tokens,
+		blocks: ui.blocks,
+		layouts: ui.layouts,
+		recipes: ui.recipes,
 	}
 
 	let description = $derived(`${title} | Doc`)
@@ -54,7 +55,9 @@
 			{redirect}
 			tab={currentTab.value}
 		>
-			<div class="l:text:lg">{@html markdown.html}</div>
+			<div class="l:text:lg">
+				<EscapeHtml html={markdown.html}/>
+			</div>
 		</Element>
 	{/key}
 </PageMain>

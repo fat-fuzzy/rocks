@@ -19,6 +19,9 @@
 			"path": "packages/lib",
 		},
 		{
+			"path": "packages/intl",
+		},
+		{
 			"path": "packages/config",
 		},
 		{
@@ -29,6 +32,9 @@
 		},
 		{
 			"path": "packages/cz-changelog",
+		},
+		{
+			"path": "packages/validation",
 		},
 		{
 			"path": "apps/doc",
@@ -81,6 +87,11 @@
 			"prettier.configPath": "./prettier.config.js",
 		},
 		"packages/cz-changelog": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/validation": {
 			"prettier.prettierPath": "./node_modules/prettier",
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",

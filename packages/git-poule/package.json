@@ -11,6 +11,5 @@
 	"dependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"shelljs": "^0.8.5"
-	},
-	"type": "module"
+	}
 }

@@ -1,0 +1,145 @@
+<script lang="ts">
+	import type {InputRangeProps} from '$types'
+	import {UiStatus, UiTextContext} from '$types'
+	import styleHelper from '$lib/utils/styles.js'
+	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+
+	let {
+		id,
+		name,
+		label = 'Range',
+		value = $bindable(0),
+		required,
+		min = 0,
+		max = 100,
+		step = 1,
+		disabled,
+		items = [],
+		status = UiStatus.default,
+		hint,
+
+		layout = 'stack',
+		container,
+		justify,
+		color,
+		size,
+		variant,
+		background,
+		breakpoint,
+		threshold,
+
+		oninput,
+	}: InputRangeProps = $props()
+
+	let valueLabel = $state(value)
+	let markers: {id: string; label: string; value: number}[] = [
+		{id: '', label: '', value: min},
+	]
+
+	function generateStepsFromItems(
+		items: {id: string; text: string; value: string}[],
+	) {
+		let currentValue = min
+		items.forEach((item, index) => {
+			if (markers[index - 1]) {
+				currentValue = markers[index - 1].value + step
+			}
+			markers[index] = {id: item.id, label: item.text, value: currentValue}
+		})
+	}
+
+	function handleInput(event) {
+		if (items.length) {
+			let selectedMarker = markers.find((m) => m.value === value)
+			if (selectedMarker) {
+				valueLabel = selectedMarker.label
+				if (oninput) {
+					oninput({
+						id: selectedMarker.id,
+						name: selectedMarker.label,
+						value: valueLabel,
+					})
+				}
+			}
+		} else {
+			if (oninput) {
+				oninput({value})
+			}
+		}
+	}
+
+	const classToNumber: {[key: string]: string} = {
+		// TODO: figure out a generic way to map range number values to string labels with no JS
+		'0': 'xs',
+		'25': 'sm',
+		'50': 'md',
+		'75': 'lg',
+		'100': 'xl',
+	}
+	if (items.length) {
+		step = (max - min) / (items.length - 1)
+		generateStepsFromItems(items)
+		// Set default number value if nojs
+		let valueObject = classToNumber[value]
+		value = valueObject ? valueObject : value
+	}
+
+	let inputClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			size,
+			variant,
+			justify,
+			layout,
+			breakpoint,
+			threshold,
+			container,
+			background: background ? background : 'inherit',
+		}),
+	)
+
+	$effect(() => {
+		if (items.length) {
+			let selectedMarker = markers.find((m) => m.label === value)
+			if (selectedMarker) {
+				value = selectedMarker.value
+				valueLabel = selectedMarker.label
+			}
+		} else {
+			valueLabel = !Number.isNaN(value) ? value : min + max / 2
+		}
+	})
+</script>
+
+<label for={id} class={inputClasses}>
+	<span class={`font:${size}`}>
+		{label}:
+		{valueLabel}
+	</span>
+	<input
+		{id}
+		{name}
+		data-test={`input-range-${id}`}
+		type="range"
+		bind:value
+		{required}
+		{min}
+		{max}
+		{step}
+		oninput={handleInput}
+		list={items ? `${id}-markers` : undefined}
+		{disabled}
+	/>
+	{#if items.length}
+		<datalist id={`${id}-markers`} class="l:flex justify:between">
+			{#each markers as { id, label, value }}
+				<option {id} {label} {value}></option>
+			{/each}
+		</datalist>
+	{/if}
+</label>
+{#if hint}
+	<Feedback {status} context={UiTextContext.form} {size} {variant}>
+		{hint}
+	</Feedback>
+{/if}
