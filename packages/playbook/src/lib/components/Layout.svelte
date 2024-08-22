@@ -5,11 +5,11 @@
 	type Props = {
 		title: string
 		isPage?: boolean
-		component: any // TODO: fix types
+		SpecifiedElement: any // TODO: fix types
 		props: any
 	}
 
-	let {title, component, props}: Props = $props()
+	let {title, SpecifiedElement, props}: Props = $props()
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
@@ -41,7 +41,7 @@
 {/snippet}
 
 {#if title === 'Sidebar'}
-	<svelte:component this={component} id={title}
+	<SpecifiedElement id={title}
 		{...containerStyles}
 		{...layoutStyles}
 		{...elementStyles}
@@ -53,10 +53,9 @@
 		{#snippet main()}
 			{@render children(fixtures, mainContent)}
 		{/snippet}
-	</svelte:component>
+	</SpecifiedElement>
 {:else}
-	<svelte:component
-			this={component}
+	<SpecifiedElement
 			id={title}
 			{...containerStyles}
 			{...layoutStyles}
@@ -64,5 +63,5 @@
 			{...props}
 		>
 		{@render children(fixtures, content)}
-	</svelte:component>
+	</SpecifiedElement>
 	{/if}

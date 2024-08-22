@@ -34,7 +34,7 @@
 	}
 
 	let description = $derived(`${title} | Doc`)
-	let Component = $derived(categoryItems[category][title])
+	let SpecifiedElement = $derived(categoryItems[category][title])
 </script>
 
 <PageMain pageName="UI" {title} {description} size="lg">
@@ -49,7 +49,7 @@
 			{title}
 			{path}
 			{category}
-			component={Component}
+			{SpecifiedElement}
 			meta={markdown.meta}
 			{actionPath}
 			{redirect}

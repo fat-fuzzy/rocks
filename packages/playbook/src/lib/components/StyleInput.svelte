@@ -171,8 +171,7 @@
 {:else}
 	{#if input === 'radio' ?? input === 'checkbox'}
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
-		<svelte:component
-			this={InputComponent}
+		<InputComponent
 			{id}
 			{items}
 			name={id}
@@ -190,8 +189,7 @@
 	{/if}
 	{#if input == 'range'}
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
-		<svelte:component
-			this={InputComponent}
+		<InputComponent
 			{id}
 			label={styleInput.name}
 			{items}

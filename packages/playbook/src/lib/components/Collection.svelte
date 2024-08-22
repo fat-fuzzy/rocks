@@ -50,13 +50,13 @@
 
 {#snippet categoryElements()}
 	{#each componentNames as name}
-		{@const component = components[name]}
+		{@const SpecifiedElement = components[name]}
 		<Element
 			title={name}
 			depth={isPage ? Number(depth) + 1 : Number(depth) + 2}
 			{path}
 			{category}
-			{component}
+			{SpecifiedElement}
 			{actionPath}
 			meta={getElementMeta(name, categoryMarkdowns)}
 			{redirect}

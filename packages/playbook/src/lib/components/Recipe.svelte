@@ -5,13 +5,14 @@
 	type Props = {
 		title: string
 		name?: string
-		component: any // TODO: fix types
+		SpecifiedElement: any // TODO: fix types
 		props: any
 		actionPath?: string
 		redirect?: string
 	}
 
-	let {title, name, component, props, actionPath, redirect}: Props = $props()
+	let {title, name, SpecifiedElement, props, actionPath, redirect}: Props =
+		$props()
 
 	let page = ''
 
@@ -22,8 +23,7 @@
 	let recipeName = $derived(name ? `ui-${name}` : `ui-${title}`)
 </script>
 
-<svelte:component
-	this={component}
+<SpecifiedElement
 	id={title}
 	{page}
 	{title}
