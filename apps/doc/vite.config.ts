@@ -6,7 +6,6 @@ const config: UserConfig = {
 	build: {
 		target: 'esnext',
 		commonjsOptions: {transformMixedEsModules: true},
-		rollupOptions: {external: ['dompurify']},
 	},
 }
 
