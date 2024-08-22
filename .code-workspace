@@ -19,6 +19,9 @@
 			"path": "packages/lib",
 		},
 		{
+			"path": "packages/intl",
+		},
+		{
 			"path": "packages/config",
 		},
 		{
