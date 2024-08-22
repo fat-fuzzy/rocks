@@ -6,7 +6,7 @@
 		id = 'button',
 		name = 'button',
 		title,
-		text,
+		label,
 		value,
 		disabled,
 		formaction,
@@ -61,7 +61,7 @@
 >
 	{#if children}
 		{@render children()}
-	{:else if text}
-		{text}
+	{:else if label}
+		{label}
 	{/if}
 </button>

@@ -42,7 +42,7 @@
 		channels?.map((c) => ({
 			id: c,
 			name: c,
-			text: c,
+			label: c,
 			value: c,
 		})) || [],
 	)
@@ -51,7 +51,7 @@
 		blur?.map((b) => ({
 			id: String(b),
 			name: String(b),
-			text: `blur ${b}`,
+			label: `blur ${b}`,
 			value: b,
 		})) || [],
 	)
@@ -60,7 +60,7 @@
 		convolutions?.map((b) => ({
 			id: b,
 			name: b,
-			text: b,
+			label: b,
 			value: b,
 		})) || [],
 	)

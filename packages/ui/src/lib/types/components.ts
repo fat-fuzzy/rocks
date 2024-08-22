@@ -22,6 +22,7 @@ export interface Blocks {
 	Toggle: typeof import('$lib/components/blocks/buttons/Toggle/Toggle.svelte').default
 	Feedback: typeof import('$lib/components/blocks/global/Feedback.svelte').default
 	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
+	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	InputCheck: typeof import('$lib/components/blocks/inputs/InputCheck.svelte').default
 	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
 	InputRange: typeof import('$lib/components/blocks/inputs/InputRange.svelte').default
@@ -41,7 +42,6 @@ export interface Recipes {
 	ButtonMenu: typeof import('$lib/components/recipes/menus/ButtonMenu.svelte').default
 	ToggleMenu: typeof import('$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte').default
 	RevealMenu: typeof import('$lib/components/recipes/menus/RevealMenu.svelte').default
-	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default

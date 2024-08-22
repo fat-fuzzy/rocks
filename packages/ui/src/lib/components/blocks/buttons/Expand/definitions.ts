@@ -6,13 +6,13 @@ export const EXPAND_MACHINE: ExpandMachine = {
 		id: UiState.expanded,
 		state: UiState.expanded,
 		event: ButtonEvent.collapse,
-		text: 'Collapse',
+		label: 'Collapse',
 	},
 	collapsed: {
 		id: UiState.collapsed,
 		state: UiState.collapsed,
 		event: ButtonEvent.expand,
-		text: 'Expand',
+		label: 'Expand',
 	},
 }
 

@@ -18,7 +18,7 @@ class SwitchActor implements FuzzyActor {
 	pressed = $derived(this.state === UiState.active)
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
-	text = $derived(this.currentState?.text || '')
+	label = $derived(this.currentState?.label || '')
 
 	constructor({
 		initial,

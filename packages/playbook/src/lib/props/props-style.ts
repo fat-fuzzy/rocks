@@ -7,10 +7,10 @@ const brightness = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'brightness.day', text: 'day', asset: 'day', value: 'day'},
+		{id: 'brightness.day', label: 'day', asset: 'day', value: 'day'},
 		{
 			id: 'brightness.night',
-			text: 'night',
+			label: 'night',
 			asset: 'night',
 			value: 'night',
 		},
@@ -26,13 +26,13 @@ const contrast = {
 	items: [
 		{
 			id: 'contrast.contrast',
-			text: 'contrast',
+			label: 'contrast',
 			asset: 'contrast',
 			value: 'contrast',
 		},
 		{
 			id: 'contrast.blend',
-			text: 'blend',
+			label: 'blend',
 			asset: 'blend', // TODO: night / day asset option
 			value: 'blend',
 		},
@@ -46,8 +46,8 @@ const container = {
 	size: '2xs',
 	container: 'card',
 	items: [
-		{id: 'container.center', text: 'center', value: 'center'},
-		{id: 'container.burrito', text: 'burrito', value: 'burrito'},
+		{id: 'container.center', label: 'center', value: 'center'},
+		{id: 'container.burrito', label: 'burrito', value: 'burrito'},
 	],
 }
 
@@ -58,11 +58,11 @@ const size = {
 	size: 'xs',
 	container: 'card',
 	items: [
-		{id: 'size.xs', text: 'xs', value: 'xs'},
-		{id: 'size.sm', text: 'sm', value: 'sm'},
-		{id: 'size.md', text: 'md', value: 'md'},
-		{id: 'size.lg', text: 'lg', value: 'lg'},
-		{id: 'size.xl', text: 'xl', value: 'xl'},
+		{id: 'size.xs', label: 'xs', value: 'xs'},
+		{id: 'size.sm', label: 'sm', value: 'sm'},
+		{id: 'size.md', label: 'md', value: 'md'},
+		{id: 'size.lg', label: 'lg', value: 'lg'},
+		{id: 'size.xl', label: 'xl', value: 'xl'},
 	],
 }
 
@@ -73,10 +73,10 @@ const layout = {
 	size: '2xs',
 	container: 'card',
 	items: [
-		{id: 'layout.stack', text: 'stack', value: 'stack'},
+		{id: 'layout.stack', label: 'stack', value: 'stack'},
 		{
 			id: 'layout.switcher',
-			text: 'switcher',
+			label: 'switcher',
 			value: 'switcher',
 		},
 	],
@@ -89,11 +89,11 @@ const threshold = {
 	size: 'xs',
 	container: 'card',
 	items: [
-		{id: 'threshold.xs', text: 'xs', value: 'xs'},
-		{id: 'threshold.sm', text: 'sm', value: 'sm'},
-		{id: 'threshold.md', text: 'md', value: 'md'},
-		{id: 'threshold.lg', text: 'lg', value: 'lg'},
-		{id: 'threshold.xl', text: 'xl', value: 'xl'},
+		{id: 'threshold.xs', label: 'xs', value: 'xs'},
+		{id: 'threshold.sm', label: 'sm', value: 'sm'},
+		{id: 'threshold.md', label: 'md', value: 'md'},
+		{id: 'threshold.lg', label: 'lg', value: 'lg'},
+		{id: 'threshold.xl', label: 'xl', value: 'xl'},
 	],
 }
 
@@ -104,11 +104,11 @@ const breakpoint = {
 	size: 'xs',
 	container: 'card',
 	items: [
-		{id: 'breakpoint.xs', text: 'xs', value: 'xs'},
-		{id: 'breakpoint.sm', text: 'sm', value: 'sm'},
-		{id: 'breakpoint.md', text: 'md', value: 'md'},
-		{id: 'breakpoint.lg', text: 'lg', value: 'lg'},
-		{id: 'breakpoint.xl', text: 'xl', value: 'xl'},
+		{id: 'breakpoint.xs', label: 'xs', value: 'xs'},
+		{id: 'breakpoint.sm', label: 'sm', value: 'sm'},
+		{id: 'breakpoint.md', label: 'md', value: 'md'},
+		{id: 'breakpoint.lg', label: 'lg', value: 'lg'},
+		{id: 'breakpoint.xl', label: 'xl', value: 'xl'},
 	],
 }
 
@@ -120,21 +120,21 @@ const color = {
 	items: [
 		{
 			id: 'color.primary',
-			text: 'primary',
+			label: 'primary',
 			variant: 'outline',
 			color: 'primary',
 			value: 'primary',
 		},
 		{
 			id: 'color.accent',
-			text: 'accent',
+			label: 'accent',
 			variant: 'outline',
 			color: 'accent',
 			value: 'accent',
 		},
 		{
 			id: 'color.highlight',
-			text: 'highlight',
+			label: 'highlight',
 			variant: 'outline',
 			color: 'highlight',
 			value: 'highlight',
@@ -148,14 +148,14 @@ const variant = {
 	layout: 'stack',
 	size: '2xs',
 	items: [
-		{id: 'variant.fill', text: 'fill', value: 'fill', variant: 'fill'},
+		{id: 'variant.fill', label: 'fill', value: 'fill', variant: 'fill'},
 		{
 			id: 'variant.outline',
-			text: 'outline',
+			label: 'outline',
 			value: 'outline',
 			variant: 'outline',
 		},
-		{id: 'variant.bare', text: 'bare', value: 'bare', variant: 'bare'},
+		{id: 'variant.bare', label: 'bare', value: 'bare', variant: 'bare'},
 	],
 }
 
@@ -167,14 +167,14 @@ const shape = {
 	items: [
 		{
 			id: 'shape.round',
-			text: 'round',
+			label: 'round',
 			value: 'round',
 			shape: 'round',
 			asset: 'round',
 		},
 		{
 			id: 'shape.square',
-			text: 'square',
+			label: 'square',
 			value: 'square',
 			shape: 'square',
 			asset: 'square',
@@ -189,9 +189,9 @@ const dimensions = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'dimensions.video', text: 'video', value: 'video'},
-		{id: 'dimensions.twin', text: 'twin', value: 'twin'},
-		{id: 'dimensions.square', text: 'square', value: 'square'},
+		{id: 'dimensions.video', label: 'video', value: 'video'},
+		{id: 'dimensions.twin', label: 'twin', value: 'twin'},
+		{id: 'dimensions.square', label: 'square', value: 'square'},
 	],
 }
 
@@ -202,9 +202,9 @@ const background = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'background.layer', text: 'layer', value: 'layer'},
-		{id: 'background.box', text: 'box', value: 'box'},
-		{id: 'background.polar', text: 'polar', value: 'polar'},
+		{id: 'background.layer', label: 'layer', value: 'layer'},
+		{id: 'background.box', label: 'box', value: 'box'},
+		{id: 'background.polar', label: 'polar', value: 'polar'},
 	],
 }
 
@@ -216,31 +216,31 @@ const status = {
 	items: [
 		{
 			id: 'status.default',
-			text: 'default',
+			label: 'default',
 			asset: 'default',
 			value: 'default',
 		},
 		{
 			id: 'status.info',
-			text: 'info',
+			label: 'info',
 			asset: 'info',
 			value: 'info',
 		},
 		{
 			id: 'status.success',
-			text: 'success',
+			label: 'success',
 			asset: 'success',
 			value: 'success',
 		},
 		{
 			id: 'status.warning',
-			text: 'warning',
+			label: 'warning',
 			asset: 'warning',
 			value: 'warning',
 		},
 		{
 			id: 'status.error',
-			text: 'error',
+			label: 'error',
 			asset: 'error',
 			value: 'error',
 		},
@@ -253,8 +253,8 @@ const context = {
 	layout: 'stack',
 	variant: 'bare',
 	items: [
-		{id: 'context.prose', text: 'prose', value: 'prose'},
-		{id: 'context.code', text: 'code', value: 'code'},
+		{id: 'context.prose', label: 'prose', value: 'prose'},
+		{id: 'context.code', label: 'code', value: 'code'},
 	],
 }
 
@@ -267,28 +267,28 @@ const asset = {
 	items: [
 		{
 			id: 'asset.profile',
-			text: 'profile',
+			label: 'profile',
 			value: 'profile',
 			asset: 'profile',
 			shape: 'square',
 		},
 		{
 			id: 'asset.favorite',
-			text: 'favorite',
+			label: 'favorite',
 			value: 'favorite',
 			asset: 'favorite',
 			shape: 'square',
 		},
 		{
 			id: 'asset.idea',
-			text: 'idea',
+			label: 'idea',
 			value: 'idea',
 			asset: 'idea',
 			shape: 'square',
 		},
 		{
 			id: 'asset.default',
-			text: 'default',
+			label: 'default',
 			value: 'default',
 			asset: 'default',
 			shape: 'square',
@@ -309,9 +309,9 @@ const content = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'content.card', text: 'card', value: 'card'},
-		{id: 'content.form', text: 'form', value: 'form'},
-		{id: 'content.text', text: 'text', value: 'text'},
+		{id: 'content.card', label: 'card', value: 'card'},
+		{id: 'content.form', label: 'form', value: 'form'},
+		{id: 'content.text', label: 'text', value: 'text'},
 	],
 }
 
@@ -322,9 +322,9 @@ const side = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'side.card', text: 'card', value: 'card'},
-		{id: 'side.form', text: 'form', value: 'form'},
-		{id: 'side.text', text: 'text', value: 'text'},
+		{id: 'side.card', label: 'card', value: 'card'},
+		{id: 'side.form', label: 'form', value: 'form'},
+		{id: 'side.text', label: 'text', value: 'text'},
 	],
 }
 
@@ -335,9 +335,9 @@ const main = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'main.card', text: 'card', value: 'card'},
-		{id: 'main.form', text: 'form', value: 'form'},
-		{id: 'main.text', text: 'text', value: 'text'},
+		{id: 'main.card', label: 'card', value: 'card'},
+		{id: 'main.form', label: 'form', value: 'form'},
+		{id: 'main.text', label: 'text', value: 'text'},
 	],
 }
 

@@ -44,7 +44,7 @@
 			if (markers[index - 1]) {
 				currentValue = markers[index - 1].value + step
 			}
-			markers[index] = {id: item.id, label: item.text, value: currentValue}
+			markers[index] = {id: item.id, label: item.label, value: currentValue}
 		})
 	}
 

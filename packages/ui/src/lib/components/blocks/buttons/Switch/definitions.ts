@@ -6,13 +6,13 @@ export const SWITCH_MACHINE: SwitchMachine = {
 		id: UiState.active,
 		state: UiState.active,
 		event: ButtonEvent.switch,
-		text: 'Active',
+		label: 'Active',
 	},
 	inactive: {
 		id: UiState.active,
 		state: UiState.active,
 		event: ButtonEvent.switch,
-		text: 'Inactive',
+		label: 'Inactive',
 	},
 }
 
