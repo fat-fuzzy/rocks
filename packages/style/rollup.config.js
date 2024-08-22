@@ -8,7 +8,7 @@ import postcssJitProps from 'postcss-jit-props'
 import postcssMinify from '@csstools/postcss-minify'
 import postcssPresetEnv from 'postcss-preset-env'
 import fs from 'fs'
-import path from 'node:path'
+import path from 'path'
 
 const production = process.env.NODE_ENV === 'production'
 const inDir = path.resolve('src/lib')
