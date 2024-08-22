@@ -1,3 +1,4 @@
+import {createRequire} from 'module'
 import terser from '@rollup/plugin-terser'
 const require = createRequire(import.meta.url)
 const pkg = require('./package.json')
