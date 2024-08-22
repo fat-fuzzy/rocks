@@ -216,7 +216,7 @@ const APP_SETTINGS: SettingsItems = {
 	],
 }
 
-import type {SettingsItems} from '../components/recipes/forms/settings.types.js'
+import type {SettingsItems} from '../components/recipes/forms/settings.js'
 
 export default {
 	UI_STATE,
