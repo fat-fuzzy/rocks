@@ -69,8 +69,9 @@ export type FieldsetProps = UiBlockProps & {
 	legend?: string
 	disabled?: boolean
 
-	type?: InputType // input group if any
-	children?: Snippet
+	type?: string // TODO:  InputType - input group if any
+	items?: InputProps[] // 1. EITHER Use items for InputGroups
+	children?: Snippet // 2. OR use children
 }
 
 export type InputRangeProps = InputProps & {

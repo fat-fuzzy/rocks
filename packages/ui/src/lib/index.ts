@@ -24,6 +24,7 @@ import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
 
 import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
+import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/inputs/InputRange.svelte'
@@ -47,7 +48,6 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
-import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 

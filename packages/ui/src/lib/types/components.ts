@@ -43,7 +43,7 @@ export interface Recipes {
 	ButtonMenu: typeof import('$lib/components/recipes/menus/ButtonMenu.svelte').default
 	ToggleMenu: typeof import('$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte').default
 	RevealMenu: typeof import('$lib/components/recipes/menus/RevealMenu.svelte').default
-	InputGroup: typeof import('$lib/components/recipes/forms/InputGroup.svelte').default
+	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
