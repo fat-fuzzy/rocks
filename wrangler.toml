@@ -1,0 +1,5 @@
+# Top-level configuration
+name = "lab"
+main = ".svelte-kit/output/server/index.js"
+
+compatibility_flags = [ "nodejs_compat" ]
