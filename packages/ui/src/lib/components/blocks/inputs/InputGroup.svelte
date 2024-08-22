@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FieldsetProps, InputProps} from '$types'
+	import type {FieldsetProps} from '$types'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
@@ -16,7 +16,7 @@
 		color,
 		variant,
 		oninput,
-	}: FieldsetProps & InputProps = $props()
+	}: FieldsetProps = $props()
 
 	// TODO: fix type
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
@@ -38,7 +38,6 @@
 
 <Fieldset
 	{id}
-	{name}
 	{type}
 	{legend}
 	{layout}
@@ -51,13 +50,14 @@
 	{#each items as input}
 		{@const checked = input.value === value}
 		<InputComponent
+			this={InputComponent}
+			id={`${name}-${input.value}`}
 			{value}
+			name={id}
+			label={input.label}
 			{checked}
 			color={input.color || color}
 			{...input}
-			id={`${name}-${input.name}`}
-			name={id}
-			label={input.label}
 			oninput={(event) => handleInput(event, name)}
 		/>
 	{/each}
