@@ -42,22 +42,20 @@
 		<PlaybookHeader {title} meta={markdown.meta} {path} {actionPath} {redirect} />
 	{/snippet}
 
-	{#key title}
-		<Element
-			isPage={true}
-			depth={1}
-			{title}
-			{path}
-			{category}
-			{SpecifiedElement}
-			meta={markdown.meta}
-			{actionPath}
-			{redirect}
-			tab={currentTab.value}
-		>
-			<div class="l:text:lg">
-				<EscapeHtml html={markdown.html}/>
-			</div>
-		</Element>
-	{/key}
+	<Element
+		isPage={true}
+		depth={1}
+		{title}
+		{path}
+		{category}
+		{SpecifiedElement}
+		meta={markdown.meta}
+		{actionPath}
+		{redirect}
+		tab={currentTab.value}
+	>
+		<div class="l:text:lg">
+			<EscapeHtml html={markdown.html} />
+		</div>
+	</Element>
 </PageMain>

@@ -57,7 +57,7 @@
 	redirect={$page.url.pathname}
 	>
 	{#if isPage}
-		<EscapeHtml html={markdownContent.html}/>
+		<EscapeHtml html={markdownContent.html} />
 	{:else if children}
 		{@render children()}
 	{/if}	
