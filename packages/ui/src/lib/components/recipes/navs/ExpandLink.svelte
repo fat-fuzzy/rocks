@@ -59,7 +59,7 @@
 			{shape}
 			initial={reveal.reveal}
 			value={linkReveal[slug].reveal}
-			name="{`reveal-${slug}`}"
+			name={`reveal-${slug}`}
 			controls={`links-${slug}`}
 			{states}
 			onclick={toggleReveal}

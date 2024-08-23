@@ -9,7 +9,7 @@
 	import introDay from '$lib/images/day/001-intro.png' // TODO : optimize images
 	import introNight from '$lib/images/night/001-intro.png' // TODO : optimize images
 
-	let markdown = $page.data.content
+	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
