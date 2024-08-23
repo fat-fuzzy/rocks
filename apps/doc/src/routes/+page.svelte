@@ -34,7 +34,7 @@ let variant = 'surface:2:primary'
 
 	<section class="l:center:md">
 		<div class="l:text:lg col:center w:full">
-			<EscapeHtml {html}/>
+			<EscapeHtml {html} />
 		</div>
 		<div class="maki:block:2xl">
 			<ul class="l:switcher:sm unstyled">

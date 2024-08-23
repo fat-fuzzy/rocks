@@ -17,7 +17,7 @@
 	{/snippet}
 	<article class="l:sidebar:md">
 		<div class="l:text:lg">
-			<EscapeHtml {html}/>
+			<EscapeHtml {html} />
 		</div>
 	</article>
 </PageMain>
