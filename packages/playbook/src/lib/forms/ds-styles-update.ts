@@ -9,7 +9,7 @@ const {
 	NUMBER_TO_SIZE,
 } = ui.constants
 
-export class DsStylesUpdate {
+class DsStylesUpdate {
 	api
 	settings
 	contextReveal
@@ -82,3 +82,5 @@ export class DsStylesUpdate {
 		return JSON.stringify(styleTree)
 	}
 }
+
+export default DsStylesUpdate

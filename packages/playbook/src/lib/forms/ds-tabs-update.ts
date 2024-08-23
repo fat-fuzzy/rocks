@@ -3,7 +3,7 @@ import type {Tab} from '$types/index.js'
 
 const {DEFAULT_TABS} = ui.constants
 
-export class DsTabsUpdate {
+class DsTabsUpdate {
 	currentTabs: {[key: string]: Tab}
 
 	/**
@@ -38,3 +38,5 @@ export class DsTabsUpdate {
 		return JSON.stringify(this.currentTabs)
 	}
 }
+
+export default DsTabsUpdate

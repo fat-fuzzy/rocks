@@ -3,7 +3,7 @@ import type {Settings} from '$types'
 
 const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = ui.constants
 
-export class DsContextReveal {
+class DsContextReveal {
 	settings: Settings
 
 	/**
@@ -38,3 +38,5 @@ export class DsContextReveal {
 		return JSON.stringify(this.settings)
 	}
 }
+
+export default DsContextReveal
