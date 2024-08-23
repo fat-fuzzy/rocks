@@ -1,7 +1,7 @@
 const DEFAULT_CONTENT_TYPES = {
 	card: ['Card 1', 'Card 2', 'Card 3'],
 	form: ['Form input 1', 'Form input 2', 'Form input 3'],
-	text: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+	label: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
 }
 
 const states = {
@@ -9,19 +9,19 @@ const states = {
 		expanded: {
 			id: 'button-collapse',
 			value: 'collapse',
-			text: 'Collapse',
+			label: 'Collapse',
 			asset: 'point-down',
 		},
 		collapsed: {
 			id: 'button-expand',
 			value: 'expand',
-			text: 'Expand',
+			label: 'Expand',
 			asset: 'point-right',
 		},
 	},
 	Switch: {
-		active: {id: 'button-switch', text: 'Rabbit', asset: 'switch-active'},
-		inactive: {id: 'button-switch', text: 'Hat', asset: 'switch-inactive'},
+		active: {id: 'button-switch', label: 'Rabbit', asset: 'switch-active'},
+		inactive: {id: 'button-switch', label: 'Hat', asset: 'switch-inactive'},
 	},
 }
 

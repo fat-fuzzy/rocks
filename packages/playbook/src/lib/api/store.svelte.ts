@@ -44,8 +44,11 @@ class PlaybookStore {
 		}
 	}
 
-	getLayoutFixtures() {
-		return this.COMPONENT_FIXTURES.layouts
+	getLayoutFixtures(component: string) {
+		return (
+			this.COMPONENT_FIXTURES.layouts[component] ??
+			this.COMPONENT_FIXTURES.layouts.content
+		)
 	}
 }
 
