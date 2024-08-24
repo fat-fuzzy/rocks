@@ -7,9 +7,11 @@
 		isPage?: boolean
 		SpecifiedElement: any // TODO: fix types
 		props: any
+		actionPath?: string
+		redirect?: string
 	}
 
-	let {title, SpecifiedElement, props}: Props = $props()
+	let {title, SpecifiedElement, props, actionPath, redirect}: Props = $props()
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
@@ -27,7 +29,7 @@
 	let sideContent = 'card'
 	let mainContent = 'text'
 	let layoutContent = $derived(`card:${elementStyles.size} variant:outline size:${elementStyles.size} surface:1:accent`)
-	let fixtures = $derived(playbookStore.getLayoutFixtures())// TODO : fix here: get fixtures for collection
+	let fixtures = $derived(playbookStore.getLayoutFixtures(SpecifiedElement))
 </script>
 
 {#snippet children(props, contentType)}
@@ -61,7 +63,9 @@
 			{...layoutStyles}
 			{...elementStyles}
 			{...props}
+			{actionPath}
+			{redirect}
 		>
 		{@render children(fixtures, content)}
 	</SpecifiedElement>
-	{/if}
+{/if}

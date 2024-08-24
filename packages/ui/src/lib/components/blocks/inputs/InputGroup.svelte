@@ -38,6 +38,7 @@
 
 <Fieldset
 	{id}
+	{name}
 	{type}
 	{legend}
 	{layout}
@@ -50,14 +51,13 @@
 	{#each items as input}
 		{@const checked = input.value === value}
 		<InputComponent
-			this={InputComponent}
+			{...input}
 			id={`${name}-${input.value}`}
 			{value}
 			name={id}
 			label={input.label}
 			{checked}
 			color={input.color || color}
-			{...input}
 			oninput={(event) => handleInput(event, name)}
 		/>
 	{/each}

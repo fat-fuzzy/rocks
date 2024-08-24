@@ -9,7 +9,7 @@
 	import introDay from '$lib/images/day/001-intro.png' // TODO : optimize images
 	import introNight from '$lib/images/night/001-intro.png' // TODO : optimize images
 
-	let markdown = $page.data.content
+	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
@@ -34,7 +34,7 @@ let variant = 'surface:2:primary'
 
 	<section class="l:center:md">
 		<div class="l:text:lg col:center w:full">
-			<EscapeHtml {html}/>
+			<EscapeHtml {html} />
 		</div>
 		<div class="maki:block:2xl">
 			<ul class="l:switcher:sm unstyled">

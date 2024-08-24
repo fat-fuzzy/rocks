@@ -20,7 +20,7 @@
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
 	<div class="l:text:lg">
-		<EscapeHtml {html}/>
+		<EscapeHtml {html} />
 	</div>
 	<h2>Tags</h2>
 	<div class="l:text l:grid:sm maki:block">
