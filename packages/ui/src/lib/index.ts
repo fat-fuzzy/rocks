@@ -124,7 +124,6 @@ const recipes = {
 	ButtonMenu,
 	ToggleMenu,
 	RevealMenu,
-	InputGroup,
 	SignUp,
 	Nav,
 	RevealNav,

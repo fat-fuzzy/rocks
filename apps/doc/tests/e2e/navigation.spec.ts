@@ -55,9 +55,6 @@ test(`Settings menu works as expected`, async ({page}) => {
 })
 
 pages.forEach((item) => {
-	// if (item.draft) {
-	// 	return
-	// }
 	errorCodes.forEach((code) => {
 		let error = errors[code]
 		test(`Returns ${code} error if ${error.condition}: page ${item.title}`, async ({

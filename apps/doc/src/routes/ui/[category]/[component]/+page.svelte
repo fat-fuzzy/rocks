@@ -9,24 +9,16 @@
 	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
 	let title = $derived($page.params.component)
-	let markdowns = $derived(
-		$page.data.markdowns && $page.data.markdowns[category]
-			? $page.data.markdowns[category]
-			: [],
-	)
-	let markdownContent = $derived(
-		markdowns.find(({meta}) => meta.title === title) || {
-			html: `<p class="feedback bare emoji:default">Coming Soon!</p>`,
-		},
-	)
+	let content = $derived($page.data.content)
 </script>
 
-<PlaybookElement
-	{title}
-	{category}
-	meta={markdownContent.meta}
-	markdown={markdownContent}
-	{path}
-	{actionPath}
-	redirect={$page.url.pathname}
-/>
+{#key path}
+	<PlaybookElement
+		{title}
+		{category}
+		{content}
+		{path}
+		{actionPath}
+		redirect={$page.url.pathname}
+	/>
+{/key}

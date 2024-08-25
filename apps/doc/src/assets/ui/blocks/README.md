@@ -10,7 +10,6 @@ props_style:
           ['color', 'variant', 'size', 'asset', 'shape', 'context', 'status'],
       },
   }
-context: ['app.settings']
 ---
 
 ## What are Blocks ?

@@ -1,6 +1,6 @@
 ---
-title: Fieldset
-slug: Fieldset
+title: InputGroup
+slug: InputGroup
 category: 'blocks'
 # props_style: {'blocks': {'element': ['color']}, 'layouts': {'container': ['container', 'size']}}
 ---

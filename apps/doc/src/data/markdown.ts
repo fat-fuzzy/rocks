@@ -6,6 +6,7 @@ import {render} from 'svelte/server'
  * @returns { path, html, id, slug } frontmatter metadata and path of markdown files to load
  */
 const fetchMarkdowns = async (pathPrefix: string, imports: any) => {
+	if (!imports) return []
 	const mdImports = Object.entries(imports)
 
 	const logs = await Promise.all(

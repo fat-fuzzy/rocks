@@ -15,7 +15,7 @@
 
 	const categories = ['tokens', 'blocks', 'layouts', 'recipes']
 
-	let markdown = $derived($page.data.content)
+	let content = $derived($page.data.content)
 	let markdowns = $derived($page.data.markdowns)
 </script>
 
@@ -23,7 +23,7 @@
 	<article class="l:sidebar:md">
 		<section class="l:main">
 			<div class="l:text:lg snap:start">
-				<EscapeHtml html={markdown.html} />
+				<EscapeHtml html={content.html} />
 			</div>
 			{#each categories as category}
 				<PlaybookCollection
@@ -34,6 +34,7 @@
 					isPage={false}
 					path={`${path}/${category}`}
 					redirect={$page.url.pathname}
+					{content}
 				>
 					<EscapeHtml
 						html={markdowns.categories.find(({meta}) => meta.slug === category)

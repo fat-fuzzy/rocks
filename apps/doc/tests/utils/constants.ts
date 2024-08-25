@@ -41,7 +41,7 @@ const blocks = {
 		'InputRange',
 		'InputFile',
 	],
-	draft: ['Fieldset'],
+	draft: ['Fieldset', 'InputGroup'],
 }
 
 const layouts = {
@@ -67,8 +67,9 @@ const recipes = {
 		'ToggleMenu',
 		'Header',
 		'Nav',
+		'SignUp',
 	],
-	draft: ['InputGroup', 'Login'],
+	draft: [],
 }
 
 export default {pages, categories, blocks, layouts, recipes}

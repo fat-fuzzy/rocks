@@ -3,7 +3,6 @@ title: Color
 slug: Color
 category: 'tokens'
 # props_style: {}
-context: ['app.settings']
 ---
 
 ## Usage

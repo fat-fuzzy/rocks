@@ -2,7 +2,6 @@
 title: Tokens
 slug: tokens
 category: 'tokens'
-context: ['app.settings']
 ---
 
 These are the Design Tokens of the UI library.

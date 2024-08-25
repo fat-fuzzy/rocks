@@ -14,7 +14,7 @@ const layoutsImports = import.meta.glob('/src/assets/ui/layouts/*.md')
 const recipesImports = import.meta.glob('/src/assets/ui/recipes/*.md')
 // const graphicsImports = import.meta.glob('/src/assets/ui/graphics/*.md')
 
-async function fetchMarkdowns() {
+async function fetchMarkdowns(): Promise<{[key: string]: any}> {
 	const [categories, tokens, blocks, layouts, recipes] = await Promise.all([
 		markdownUtils.fetchMarkdowns(categoryPrefix, categoryImports),
 		markdownUtils.fetchMarkdowns(tokensPathPrefix, tokensImports),

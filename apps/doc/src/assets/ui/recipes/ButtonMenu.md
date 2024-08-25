@@ -10,7 +10,6 @@ props_style:
     'layouts':
       {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
   }
-context: ['app.settings', 'shared.container', 'shared.layout']
 ---
 
 ## Usage
