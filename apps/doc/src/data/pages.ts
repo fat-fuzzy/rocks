@@ -10,7 +10,7 @@ const pages: {[page: string]: any} = {
 	blog: await import.meta.glob('/src/assets/pages/blog.md'),
 }
 
-async function fetchMarkdowns(page: string) {
+async function fetchMarkdowns(page: string): Promise<{[key: string]: any}> {
 	const imports = pages[page]
 	const markdowns = await markdownUtils.fetchMarkdowns(pathPrefix, imports)
 	return markdowns.sort(markdownUtils.sortByIdDesc)

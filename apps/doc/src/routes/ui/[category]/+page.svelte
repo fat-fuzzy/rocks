@@ -9,6 +9,7 @@
 	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
 	let markdowns = $derived($page.data.markdowns)
+	let content = $derived($page.data.content)
 </script>
 
 <PlaybookCollection
@@ -19,4 +20,5 @@
 	depth={1}
 	isPage={true}
 	redirect={$page.url.pathname}
+	{content}
 />

@@ -12,15 +12,14 @@
 
 	type Props = {
 		category: any // TODO: fix types
-		markdown: any
+		content: any
 		path: string
 		actionPath: string
 		redirect: string
-		meta: any
 		title: any
 	}
 
-	let {category, markdown, path, actionPath, redirect, title}: Props = $props()
+	let {category, content, path, actionPath, redirect, title}: Props = $props()
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
@@ -39,7 +38,7 @@
 
 <PageMain pageName="UI" {title} {description} size="lg">
 	{#snippet header()}
-		<PlaybookHeader {title} meta={markdown.meta} {path} {actionPath} {redirect} />
+		<PlaybookHeader {title} meta={content.meta} {path} {actionPath} {redirect} />
 	{/snippet}
 
 	<Element
@@ -49,13 +48,13 @@
 		{path}
 		{category}
 		{SpecifiedElement}
-		meta={markdown.meta}
+		meta={content.meta}
 		{actionPath}
 		{redirect}
 		tab={currentTab.value}
 	>
 		<div class="l:text:lg">
-			<EscapeHtml html={markdown.html} />
+			<EscapeHtml html={content.html} />
 		</div>
 	</Element>
 </PageMain>
