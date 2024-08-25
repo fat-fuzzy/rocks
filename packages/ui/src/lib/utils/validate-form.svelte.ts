@@ -26,7 +26,7 @@ class FormValidator implements IFormValidator {
 	validationHandler() {
 		return {
 			set: (target: any, prop: string, value: any) => {
-				const sanitized = sanitize(prop, value, this.inputTypes)
+				const sanitized = sanitize.sanitizeForm(prop, value, this.inputTypes)
 
 				if (sanitized) {
 					target[prop] = sanitized
