@@ -5,7 +5,6 @@ category: 'recipes'
 group: 'navs'
 props_state: ['items']
 props_style: {'blocks': {'element': ['size']}}
-context: ['app.settings', 'shared.container', 'shared.layout']
 ---
 
 ## Usage

@@ -3,7 +3,6 @@ title: Typography
 slug: Typography
 category: 'tokens'
 # props_style: {}
-context: ['app.settings']
 ---
 
 ## Usage

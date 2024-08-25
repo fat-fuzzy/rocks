@@ -3,7 +3,6 @@ title: Fieldset
 slug: Fieldset
 category: 'blocks'
 # props_style: {'blocks': {'element': ['color']}, 'layouts': {'container': ['container', 'size']}}
-context: ['app.settings']
 ---
 
 ## Usage

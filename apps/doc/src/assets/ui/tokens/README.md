@@ -3,7 +3,6 @@ title: Tokens
 slug: tokens
 tags: ['tokens']
 props_style: null
-context: ['app.settings']
 ---
 
 ## What are Tokens ?
