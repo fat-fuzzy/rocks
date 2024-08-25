@@ -14,6 +14,7 @@
 	let html = $derived($page.data.html)
 </script>
 
+{#key title}
 <PageMain pageName="Decisions" {title} {description}>
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
@@ -29,3 +30,4 @@
 		</div>
 	</article>
 </PageMain>
+{/key}
