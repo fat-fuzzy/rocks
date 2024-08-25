@@ -1,10 +1,10 @@
 ---
-title: Example title
+title: Hello World
 id: '000'
-date_created: 'YYYY-MM-DD'
-date_updated: 'YYYY-MM-DD'
-slug: Same as name of file without '000+' prefix and '.md' suffix
-status: draft
+date_created: '2024-08-25'
+date_updated: '2024-08-25'
+slug: hello-world
+status: 'draft'
 author: 'Me'
 tags: ['wip']
 ---
@@ -13,4 +13,4 @@ tags: ['wip']
 
 <p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Getting there ...</p>
 
-The latest aid in getting this blog off the ground comes from [this article by Scott Pence on building an RSS feed with SvelteKit](https://scottspence.com/posts/make-an-rss-feed-with-sveltekit) 🐰
+Got an RSS feed running by adapting the code from the [svelte.dev website](https://github.com/sveltejs/svelte/tree/main/sites/svelte.dev/src/routes/blog/rss.xml) and added some polish with help from [this article](https://www.davidwparker.com/posts/how-to-make-an-rss-feed-in-sveltekit) 🐰

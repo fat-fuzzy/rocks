@@ -1,6 +1,6 @@
+import {error} from '@sveltejs/kit'
 import assets from '$data/ui'
 import pages from '$data/pages'
-import {error} from '@sveltejs/kit'
 
 const page = 'ui'
 
