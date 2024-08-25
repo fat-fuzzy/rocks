@@ -33,6 +33,7 @@
 		"@fat-fuzzy/sketch": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
+		"@fat-fuzzy/validation": "workspace:*",
 		"@playwright/test": "^1.46.1",
 		"@sveltejs/adapter-cloudflare": "^4.6.1",
 		"@sveltejs/enhanced-img": "^0.3.3",

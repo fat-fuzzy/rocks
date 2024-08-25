@@ -1,3 +1,4 @@
+import {error} from '@sveltejs/kit'
 import lib from '@fat-fuzzy/lib'
 import pages from '$data/pages'
 
@@ -5,11 +6,20 @@ const page = 'play'
 
 export const load = async (event) => {
 	const sketches = lib.gfx.sketches.map((sketch) => sketch.meta)
-	const content = await pages.fetchMarkdowns(page)
+	let content = await pages.fetchMarkdowns(page)
+
+	if (!content?.length) {
+		throw error(404, {message: 'Not found'})
+	}
+	content = content[0]
+
+	if (!content?.meta) {
+		throw error(404, {message: 'Not found'})
+	}
 
 	const data = {
 		sketches,
-		content: content.length ? content[0] : {meta: {title: ''}},
+		content,
 	}
 
 	return data

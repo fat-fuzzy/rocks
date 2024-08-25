@@ -53,7 +53,7 @@ function sanitizeDate(input) {
 	return !isNaN(Date.parse(input))
 }
 
-async function sanitize(name, value, inputTypeMap) {
+async function sanitizeForm(name, value, inputTypeMap) {
 	// Retrieve input type from the mapping
 	const inputType = inputTypeMap[name] || 'text' // Default to 'text' if not found
 
@@ -78,4 +78,4 @@ async function sanitize(name, value, inputTypeMap) {
 	return sanitizedValue
 }
 
-export default sanitize
+export default {sanitizeForm, sanitizePlainText}

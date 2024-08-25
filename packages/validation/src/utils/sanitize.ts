@@ -19,7 +19,7 @@ function replaceChar(s: string): string {
 	)
 }
 
-function sanitizePlainText(input: string): string {
+export function sanitizePlainText(input: string): string {
 	let sanitized = input.trim()
 	if (sanitized === '') return sanitized
 	return sanitized.replace(/[&<>"'`=\/]/g, replaceChar)
@@ -53,7 +53,7 @@ function sanitizeDate(input: string): string {
 	return !isNaN(Date.parse(input)) ? input : ''
 }
 
-async function sanitize(
+async function sanitizeForm(
 	name: string,
 	value: string | number,
 	inputTypeMap: {[key: string]: string},
@@ -82,4 +82,4 @@ async function sanitize(
 	return sanitizedValue
 }
 
-export default sanitize
+export default {sanitizeForm, sanitizePlainText}
