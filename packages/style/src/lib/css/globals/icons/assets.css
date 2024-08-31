@@ -3,7 +3,12 @@
 .svg\:egg::before {
 	--icon-url: url('/icons/egg.svg');
 }
-/* SVG Icons */
+
+.svg\:sparkles::before {
+	--icon-url: url('/icons/sparkles.svg');
+}
+
+/* Brand Icons */
 
 .svg\:github::before {
 	--icon-url: url('/icons/github.svg');

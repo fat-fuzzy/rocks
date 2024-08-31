@@ -16,3 +16,5 @@ import './grid-props.css' /* Use for a props inputs layouts */
 
 import './api.css' /* Use for API components (used in Doc website) */
 import './app.css' /* Use for app layout specifics */
+import './pages.css' /* Use for page layout specifics */
+import './magic.css' /* Use for page layout specifics */

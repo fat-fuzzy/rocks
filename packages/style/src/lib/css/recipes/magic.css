@@ -1,0 +1,74 @@
+.ffr\:icon {
+	color: var(--ink);
+	background-color: var(--shade);
+	display: inline-flex;
+	align-items: center;
+	justify-content: var(--justify, center);
+	flex-wrap: nowrap;
+	block-size: fit-content;
+	inline-size: fit-content;
+	font-size: var(--font-size);
+	font-family: var(--font-family-ui);
+	font-weight: var(--font-weight-ui);
+	line-height: var(--font-leading-ui);
+	border-radius: var(--border-radius-base);
+}
+
+.ffr\:callout[class*='magic'] {
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	background-clip: text;
+	background: var(--magic-gradient);
+	color: var(--ink);
+}
+
+.magic\:base {
+	--magic-gradient: linear-gradient(
+		148deg,
+		var(--color-gradient-000-start) 12% 12%,
+		var(--color-gradient-000-middle) 49% 49%,
+		var(--color-gradient-000-end) 88% 88%
+	);
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma-contrast: var(--color-chroma-000);
+
+	&[class*='radial'] {
+		--magic-gradient: radial-gradient(
+			farthest-corner at 50% 5%,
+			var(--color-gradient-000-start) 40% 40%,
+			var(--color-gradient-000-middle) 60% 60%,
+			var(--color-gradient-000-end) 88% 88%
+		);
+	}
+
+	&[class*='svg'] {
+		--magic-gradient: linear-gradient(
+			148deg,
+			var(--color-gradient-000-start) 22% 22%,
+			var(--color-gradient-000-middle) 49% 49%,
+			var(--color-gradient-000-end) 88% 88%
+		);
+	}
+}
+
+.magic\:dante {
+	--magic-gradient: linear-gradient(
+		148deg,
+		var(--color-gradient-001-start) 12% 12%,
+		var(--color-gradient-001-middle) 49% 49%,
+		var(--color-gradient-001-end) 88% 88%
+	);
+	--lightness-contrast: var(--color-lightness-600);
+	--chroma-contrast: var(--color-chroma-600);
+
+	&[class*='radial'] {
+		--magic-gradient: radial-gradient(
+			farthest-corner at 50% 95%,
+			/* var(--color-gradient-000-start) 40% 40%, */
+				var(--color-gradient-001-end) 40% 40%,
+			var(--color-gradient-001-middle) 70% 70%,
+			var(--color-gradient-001-start) 88% 88%
+		);
+		--lightness-contrast: var(--color-lightness-000);
+		--chroma-contrast: var(--color-chroma-000);
+	}
+}

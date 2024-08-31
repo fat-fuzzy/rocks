@@ -15,13 +15,8 @@
 		mask: var(--icon-url) center center / 100% auto no-repeat;
 	}
 
-	[class*='svg'].magic::before {
-		background: linear-gradient(
-			148deg,
-			var(--color-gradient-000-start) 31% 31%,
-			var(--color-gradient-000-middle) 49% 49%,
-			var(--color-gradient-000-end) 88% 88%
-		);
+	[class*='svg'][class*='magic']::before {
+		background: var(--magic-gradient);
 		mask: var(--icon-url) center center / 100% auto no-repeat;
 	}
 }
@@ -50,6 +45,6 @@
 	--icon-size: var(--icon-svg-xl);
 }
 
-[class*='svg'].size\:2x2xls::before {
+[class*='svg'].size\:2xl::before {
 	--icon-size: var(--icon-svg-2xl);
 }
