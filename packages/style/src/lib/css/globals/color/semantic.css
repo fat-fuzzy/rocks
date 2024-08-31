@@ -3,6 +3,7 @@
  - chroma
  - hue
 */
+
 [class*='status:']:where(
 		.status\:default,
 		.status\:info,
@@ -11,28 +12,14 @@
 		.status\:danger,
 		.status\:error
 	) {
-	--shade-semantic: oklch(
-		var(--lightness-base) var(--chroma) var(--hue-semantic)
-	);
-	--ink-semantic: oklch(
+	--shade: oklch(var(--lightness-base) var(--chroma) var(--hue-semantic));
+	--ink: oklch(
 		var(--lightness-contrast-base) var(--chroma-contrast) var(--hue-semantic)
 	);
-	--accent-semantic: oklch(
+	--accent: oklch(
 		var(--lightness-accent) var(--chroma-accent-base) var(--hue-semantic)
 	);
-	--shadow-semantic: oklch(
-		var(--lightness-base) var(--chroma) var(--hue-semantic)
-	);
-}
-
-[class*='bg:'][class*='status:'] {
-	--color-bg: var(--shade-semantic, --shade);
-	--color-ink: var(--ink-semantic, --ink);
-	--color-accent: var(--accent-semantic, --accent);
-	--color-shadow: var(--shadow-semantic, --shadow);
-	color: var(--color-ink);
-	background-color: var(--color-bg);
-	border-color: var(--color-accent);
+	--shadow: oklch(var(--lightness-base) var(--chroma) var(--hue-semantic));
 }
 
 [class*=':default'] {
@@ -54,4 +41,84 @@
 [class*=':danger'],
 [class*=':error'] {
 	--hue-semantic: var(--color-semantic-danger);
+}
+
+[class*='status:default'] {
+	--hue: var(--color-theme-primary);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
+[class*=':info'] {
+	--hue: var(--color-semantic-info);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
+[class*=':success'] {
+	--hue: var(--color-semantic-success);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
+[class*=':warning'] {
+	--hue: var(--color-semantic-warning);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
+[class*=':danger'] {
+	--hue: var(--color-semantic-danger);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+
+	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
 }
