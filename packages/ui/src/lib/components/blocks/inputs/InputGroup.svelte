@@ -1,8 +1,5 @@
 <script lang="ts">
-	import type {
-		FieldsetProps,
-		InputProps,
-	} from '$lib/components/blocks/inputs/input.types.js'
+	import type {FieldsetProps, InputProps} from '$types'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
@@ -42,6 +39,7 @@
 
 <Fieldset
 	{id}
+	{name}
 	{type}
 	{legend}
 	{layout}
