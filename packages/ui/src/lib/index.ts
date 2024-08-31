@@ -32,6 +32,7 @@ import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
+import Picture from '$lib/components/blocks/media/Picture.svelte'
 /**
  * Layout components
  */
@@ -109,6 +110,7 @@ const blocks = {
 	InputFile,
 	// InputPassword,
 	// InputFeedback,
+	Picture,
 }
 
 const layouts = {

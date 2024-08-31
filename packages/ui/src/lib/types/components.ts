@@ -27,6 +27,7 @@ export interface Blocks {
 	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
 	InputRange: typeof import('$lib/components/blocks/inputs/InputRange.svelte').default
 	InputFile: typeof import('$lib/components/blocks/inputs/InputFile.svelte').default
+	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 }
 
 export interface Layouts {
