@@ -1,7 +1,7 @@
 ---
 title: 'Templates'
-date: 'YYYY-MM-DD'
-updated: null
+date_created: 'YYYY-MM-DD'
+date_updated: 'YYYY-MM-DD'
 slug: templates
 id: '009'
 status: draft

@@ -30,7 +30,7 @@ const get_rss = (posts) =>
 		<item>
 			<title>${sanitizePlainText(post.meta.title)}</title>
 			<link>https://rocks.pages.dev/blog/${post.meta.slug}</link>
-			<description>${sanitizePlainText(post.html)}</description>
+			<description>${sanitizePlainText(post.meta.description)}</description>
 			<pubDate>${formatPubdate(post.meta.date_created)}</pubDate>
 		</item>
 	`,

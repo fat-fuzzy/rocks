@@ -1,6 +1,7 @@
 ---
 title: Document decisions
-date: '2022'
+date_created: '2022'
+date_updated: '2022'
 slug: document-decisions
 id: '000'
 tags: ['architecture']

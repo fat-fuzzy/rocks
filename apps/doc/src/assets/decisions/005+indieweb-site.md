@@ -1,6 +1,7 @@
 ---
 title: Indieweb site
-date: '2022'
+date_created: '2022'
+date_updated: '2022'
 slug: indieweb-site
 id: '005'
 tags: ['indieweb', 'wip']

@@ -23,7 +23,7 @@
 						slug: meta.slug,
 						title: meta.title,
 						asset: meta.asset,
-					}))	,
+					})),
 				},
 				{
 					slug: 'decisions',
@@ -34,7 +34,7 @@
 						slug: meta.slug,
 						title: meta.title,
 						asset: meta.asset,
-					}))	,
+					})),
 				},
 			],
 		}

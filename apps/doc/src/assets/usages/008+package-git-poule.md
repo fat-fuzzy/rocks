@@ -1,7 +1,7 @@
 ---
 title: 'Git Poule'
-date: '2024-07-27'
-updated: null
+date_created: '2024-07-27'
+date_updated: '2024-07-27'
 slug: git-poule
 asset: package-git-poule
 id: '008'

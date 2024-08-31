@@ -1,6 +1,7 @@
 ---
 title: Design System
-date: '2022'
+date_created: '2022'
+date_updated: '2022'
 slug: design-system
 id: '004'
 tags: ['ui', 'wip']
