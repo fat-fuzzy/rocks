@@ -195,20 +195,20 @@
 				}
 			},
 			"accent": {
-				"$value": "hsl(188.19 90% 60%)",
+				"$value": "hsla(188.19 90% 60% / 1)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(188.19 90% 60%)",
-						"night": "hsl(188.19 90% 80%)"
+						"day": "hsla(188.19 90% 60% / 1)",
+						"night": "hsla(188.19 90% 80% / 1)"
 					}
 				}
 			},
 			"highlight": {
-				"$value": "hsl(329.3 90% 60%)",
+				"$value": "hsla(329.3 90% 60% / 1)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(329.3 90% 60%)",
-						"night": "hsl(329.3 90% 80%)"
+						"day": "hsla(329.3 90% 60% / 1)",
+						"night": "hsla(329.3 90% 80% / 1)"
 					}
 				}
 			}
@@ -225,47 +225,74 @@
 				}
 			},
 			"accent": {
-				"$value": "hsl(188.19 90% 60%)",
+				"$value": "hsla(188.19 90% 60% / 1)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(188.19 90% 60%)",
-						"night": "hsl(188.19 90% 80%)"
+						"day": "hsla(188.19 90% 60% / 1)",
+						"night": "hsla(188.19 90% 80% / 1)"
 					}
 				}
 			},
 			"highlight": {
-				"$value": "hsl(329.3 90% 60%)",
+				"$value": "hsla(329.3 90% 60% / 1)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(329.3 90% 60%)",
-						"night": "hsl(329.3 90% 80%)"
+						"day": "hsla(329.3 90% 60% / 1)",
+						"night": "hsla(329.3 90% 80% / 1)"
 					}
 				}
 			},
 			"success": {
-				"$value": "hsl(171.07 99% 60%)",
+				"$value": "hsla(171.07 99% 60% / 1)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(171.07 99% 60%)",
-						"night": "hsl(171.07 99% 80%)"
+						"day": "hsla(171.07 99% 60% / 1)",
+						"night": "hsla(171.07 99% 80% / 1)"
 					}
 				}
 			},
 			"warning": {
-				"$value": "hsl(48 99% 60%)",
+				"$value": "hsla(48 99% 60% / 1)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(48 99% 60%)",
-						"night": "hsl(48 99% 80%)"
+						"day": "hsla(48 99% 60% / 1)",
+						"night": "hsla(48 99% 80% / 1)"
 					}
 				}
 			},
 			"danger": {
-				"$value": "hsl(340.57 100% 60%)",
+				"$value": "hsla(340.57 100% 60% / 1)",
 				"$extensions": {
 					"mode": {
-						"day": "hsl(340.57 100% 60%)",
-						"night": "hsl(340.57 100% 80%)"
+						"day": "hsla(340.57 100% 60% / 1)",
+						"night": "hsla(340.57 100% 80% / 1)"
+					}
+				}
+			},
+			"success-a": {
+				"$value": "hsla(171.07 99% 60% / 0.5)",
+				"$extensions": {
+					"mode": {
+						"day": "hsla(171.07 99% 60% / 0.5)",
+						"night": "hsla(171.07 99% 80% / 0.5)"
+					}
+				}
+			},
+			"warning-a": {
+				"$value": "hsla(48 99% 60% / 0.5)",
+				"$extensions": {
+					"mode": {
+						"day": "hsla(48 99% 60% / 0.5)",
+						"night": "hsla(48 99% 80% / 0.5)"
+					}
+				}
+			},
+			"danger-a": {
+				"$value": "hsla(340.57 100% 60% / 0.7)",
+				"$extensions": {
+					"mode": {
+						"day": "hsla(340.57 100% 60% / 0.7)",
+						"night": "hsla(340.57 100% 80% / 0.7)"
 					}
 				}
 			}
@@ -296,13 +323,13 @@
 			},
 			"002": {
 				"start": {
-					"$value": "{color.magic.success}"
+					"$value": "{color.magic.success-a}"
 				},
 				"middle": {
-					"$value": "{color.magic.warning}"
+					"$value": "{color.magic.warning-a}"
 				},
 				"end": {
-					"$value": "{color.magic.danger}"
+					"$value": "{color.magic.danger-a}"
 				}
 			}
 		}
