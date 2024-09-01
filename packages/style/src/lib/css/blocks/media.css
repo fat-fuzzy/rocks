@@ -3,5 +3,7 @@ img {
 }
 
 [class*='frame'] img {
-	max-height: calc(100vh - 3 * var(--size-ui-header-height));
+	max-height: calc(
+		100vh - 2 * var(--size-ui-header-height) - 2 * var(--ui-size)
+	);
 }
