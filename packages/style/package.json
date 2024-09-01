@@ -14,6 +14,7 @@
 		"build:main": "rollup --config rollup.config.main.js",
 		"build:scss": "rollup --config rollup.config.scss.js",
 		"build:tokens": "tz build",
+		"build:icons": "rollup --config rollup.config.icons.js",
 		"dev": "pnpm build:tokens && pnpm dev:scss",
 		"dev:scss": "rollup --config rollup.config.scss.js -w",
 		"lint:css": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/css/**/*.css &> ./logs/stylelint-css.log",
@@ -37,7 +38,8 @@
 		"./css/mixins/*": "./dist/lib/css/mixins/*",
 		"./css/motion/*": "./dist/lib/css/motion/*",
 		"./css/recipes/*": "./dist/lib/css/recipes/*",
-		"./css/tokens/*": "./dist/lib/css/tokens/*"
+		"./css/tokens/*": "./dist/lib/css/tokens/*",
+		"./assets/icons/*": "./dist/lib/assets/icons/*"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
