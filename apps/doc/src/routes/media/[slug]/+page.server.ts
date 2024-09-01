@@ -8,7 +8,7 @@ export const ssr = true
  */
 export const load = async ({params}) => {
 	const {slug} = params
-	const ext = 'jpeg' // TODO: get file extension from file
+	const ext = 'webp' // TODO: get file extension from file
 	const alt = slug.replace(/-/g, ' ') // TODO: Add a proper alt text
 	const path = 'images' // TODO: Handle other types of media
 	const orientation = 'portrait' // TODO: Handle other types of media

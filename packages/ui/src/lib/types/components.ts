@@ -1,4 +1,3 @@
-// types.d.ts
 export interface Utils {
 	format: typeof import('$lib/utils/format.js').default
 	clickOutside: typeof import('$lib/utils/click-outside.js')
