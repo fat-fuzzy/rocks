@@ -8,7 +8,8 @@
 	import PlaybookStore from '$lib/api/store.svelte'
 
 	const {InputRange} = fatFuzzyUi.blocks
-	const {ToggleMenu, InputGroup} = fatFuzzyUi.recipes
+	const {InputGroup} = fatFuzzyUi.drafts
+	const {ToggleMenu} = fatFuzzyUi.recipes
 
 	type Props = {
 		styleInput: StyleInputGroup

@@ -13,7 +13,13 @@
 		{
 			slug: 'blog',
 			title: 'Blog',
-			items: [],
+			items:  $page.data.markdowns.map(({meta}) => ({
+						id: meta.id,
+						slug: meta.slug,
+						title: meta.title,
+						asset: meta.asset,
+						description: meta.decription,
+					})),
 		}
 	]
 

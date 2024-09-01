@@ -1,4 +1,3 @@
-// types.d.ts
 export interface Utils {
 	format: typeof import('$lib/utils/format.js').default
 	clickOutside: typeof import('$lib/utils/click-outside.js')
@@ -21,8 +20,6 @@ export interface Blocks {
 	Switch: typeof import('$lib/components/blocks/buttons/Switch/Switch.svelte').default
 	Toggle: typeof import('$lib/components/blocks/buttons/Toggle/Toggle.svelte').default
 	Feedback: typeof import('$lib/components/blocks/global/Feedback.svelte').default
-	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
-	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	InputCheck: typeof import('$lib/components/blocks/inputs/InputCheck.svelte').default
 	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
 	InputRange: typeof import('$lib/components/blocks/inputs/InputRange.svelte').default
@@ -53,12 +50,20 @@ export interface Content {
 	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
 }
 
+export interface Drafts {
+	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
+	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
+	Magic: typeof import('$lib/components/blocks/global/Magic.svelte').default
+	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
+}
+
 export interface Headless {
 	Head: typeof import('$lib/components/blocks/global/Head.svelte').default
 	EscapeHtml: typeof import('$lib/components/blocks/global/EscapeHtml.svelte').default
 }
 
 export interface FatFuzzyUi {
+	drafts: Drafts
 	headless: Headless
 	tokens: Tokens
 	blocks: Blocks

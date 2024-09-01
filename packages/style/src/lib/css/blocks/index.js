@@ -16,3 +16,4 @@ import './tags.css' /* Use for tables = tabular data: https://www.w3.org/TR/tabu
 import './feedback.css' /* Use for feedback elements (success, warnings, errors, etc) */
 import './details.css' /* Use for detail + summary element */
 import './code.css' /* Use for code blocks and inline code text */
+import './magic.css' /* Use for page layout specifics */

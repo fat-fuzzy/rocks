@@ -1,0 +1,5 @@
+dialog {
+	border: none;
+	padding: var(--gap);
+	overflow: auto;
+}

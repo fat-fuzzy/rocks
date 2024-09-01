@@ -45,16 +45,16 @@
 
 {#snippet collection()}
 	<Collection
-	{depth}
-	{isPage}
-	components={items}
-	meta={content.meta}
-	{path}
-	{category}
-	{markdowns}
-	{actionPath}
-	tab={currentTab.value}
-	redirect={$page.url.pathname}
+		{depth}
+		{isPage}
+		components={items}
+		meta={content.meta}
+		{path}
+		{category}
+		{markdowns}
+		{actionPath}
+		tab={currentTab.value}
+		redirect={$page.url.pathname}
 	>
 	{#if isPage}
 		<EscapeHtml html={content.html} />

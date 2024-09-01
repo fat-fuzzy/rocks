@@ -1,7 +1,7 @@
 ---
 title: 'Using Docker'
-date: '2023-02-18'
-updated: '2023-05-17'
+date_created: '2023-02-18'
+date_updated: '2023-05-17'
 slug: docker
 id: '010'
 status: draft

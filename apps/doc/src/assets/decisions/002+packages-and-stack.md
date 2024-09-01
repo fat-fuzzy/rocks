@@ -1,6 +1,7 @@
 ---
 title: Packages and stack
-date: '2022'
+date_created: '2022'
+date_updated: '2022'
 updated: '2023-06-02'
 slug: packages-and-stack
 id: '002'

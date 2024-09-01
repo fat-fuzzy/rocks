@@ -1,7 +1,7 @@
 ---
 title: 'Playbook'
-date: '2024-07-27'
-updated: null
+date_created: '2024-07-27'
+date_updated: '2024-07-27'
 slug: playbook
 asset: package-playbook
 id: '005'

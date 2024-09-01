@@ -10,7 +10,8 @@
 	)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(`Developer Doc ${markdown.meta.id}: ${title}`)
-	let date = $derived(markdown.meta.date)
+	let date = $derived(markdown.meta.date_created)
+	// let updated = $derived(markdown.meta.date_created) TODO
 	let html = $derived($page.data.html)
 </script>
 

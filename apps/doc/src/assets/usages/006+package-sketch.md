@@ -1,7 +1,7 @@
 ---
 title: 'Sketch'
-date: '2024-07-27'
-updated: null
+date_created: '2024-07-27'
+date_updated: '2024-07-27'
 slug: sketch
 asset: package-sketch
 id: '006'

@@ -9,7 +9,7 @@
 	import PlaybookStore from '$lib/api/store.svelte'
 	import StyleInput from './StyleInput.svelte'
 
-	const {Fieldset} = fatFuzzyUi.blocks
+	const {Fieldset} = fatFuzzyUi.drafts
 
 	type Props = {
 		category?: string

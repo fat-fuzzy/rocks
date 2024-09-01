@@ -23,14 +23,10 @@ import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
 
-import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
-import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/inputs/InputRange.svelte'
 import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
-// import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
-// import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 /**
  * Layout components
@@ -57,10 +53,20 @@ import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Header from '$lib/components/recipes/headers/Header.svelte'
 
 /**
- * Recipes - Routes
+ * Recipes - Content
  */
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
+
+/**
+ * Draft components
+ */
+import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
+import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
+import Magic from '$lib/components/blocks/global/Magic.svelte'
+import Picture from '$lib/components/blocks/media/Picture.svelte'
+// import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
+// import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 /**
  * Forms
@@ -101,14 +107,10 @@ const blocks = {
 	Switch,
 	Toggle,
 	Feedback,
-	Fieldset,
-	InputGroup,
 	InputCheck,
 	InputRadio,
 	InputRange,
 	InputFile,
-	// InputPassword,
-	// InputFeedback,
 }
 
 const layouts = {
@@ -135,12 +137,22 @@ const content = {
 	LayoutSidebar,
 }
 
+const drafts = {
+	Fieldset,
+	// InputPassword,
+	// InputFeedback,
+	InputGroup,
+	Magic,
+	Picture,
+}
+
 const headless = {
 	Head,
 	EscapeHtml,
 }
 
 export default {
+	drafts,
 	headless,
 	tokens,
 	blocks,

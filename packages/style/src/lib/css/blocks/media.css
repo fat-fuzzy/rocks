@@ -1,3 +1,9 @@
 img {
 	max-width: 100%;
 }
+
+[class*='frame'] img {
+	max-height: calc(
+		100vh - 2 * var(--size-ui-header-height) - 2 * var(--ui-size)
+	);
+}

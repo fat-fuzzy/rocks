@@ -2,6 +2,7 @@
 title: Fieldset
 slug: Fieldset
 category: 'blocks'
+status: 'draft'
 # props_style: {'blocks': {'element': ['color']}, 'layouts': {'container': ['container', 'size']}}
 ---
 

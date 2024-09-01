@@ -22,7 +22,9 @@ export const load = async (event) => {
 		content = await pages.fetchMarkdowns(page)
 	} else if (slug === component && category) {
 		let categoryMarkdowns = markdowns[category]
-		content = categoryMarkdowns.find(({meta}) => meta.slug === slug)
+		content = categoryMarkdowns.find(
+			({meta}) => meta.slug === slug && meta.status !== 'draft',
+		)
 		if (!content?.meta) {
 			throw error(404, {message: 'Not found'})
 		}
@@ -30,7 +32,9 @@ export const load = async (event) => {
 		if (!markdowns[category]) {
 			throw error(404, {message: 'Not found'})
 		}
-		content = markdowns[category].find(({meta}) => meta.slug === category)
+		content = markdowns[category].find(
+			({meta}) => meta.slug === category && meta.status !== 'draft',
+		)
 		if (!content?.meta) {
 			throw error(404, {message: 'Not found'})
 		}

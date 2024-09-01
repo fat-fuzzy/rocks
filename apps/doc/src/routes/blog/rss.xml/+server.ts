@@ -1,3 +1,8 @@
+/**
+ * Adapted from svelte.dev website's RSS feed: https://github.com/sveltejs/svelte/tree/main/sites/svelte.dev/src/routes/blog/rss.xml
+ * more resources:
+ * - https://www.davidwparker.com/posts/how-to-make-an-rss-feed-in-sveltekit
+ */
 import blog from '$data/blog'
 import validation from '@fat-fuzzy/validation'
 export const prerender = true
@@ -10,6 +15,11 @@ function formatPubdate(str: string) {
 	return `${d} ${months[+m]} ${y} 12:00 +0000`
 }
 
+/**
+ * Validate with: https://validator.w3.org/feed/
+ * @param posts
+ * @returns an RSS feed
+ */
 const get_rss = (posts) =>
 	`
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -30,7 +40,7 @@ const get_rss = (posts) =>
 		<item>
 			<title>${sanitizePlainText(post.meta.title)}</title>
 			<link>https://rocks.pages.dev/blog/${post.meta.slug}</link>
-			<description>${sanitizePlainText(post.html)}</description>
+			<description>${sanitizePlainText(post.meta.description)}</description>
 			<pubDate>${formatPubdate(post.meta.date_created)}</pubDate>
 		</item>
 	`,

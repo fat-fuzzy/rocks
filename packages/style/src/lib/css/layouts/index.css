@@ -22,6 +22,7 @@
 @import './reveal-auto.css'; /* Use for displaying hidden content in response to a container breakpoint */
 @import './reveal-sticky.css'; /* Use for displaying hidden content in response to a button action */
 @import './details.css'; /* Use to style <details> and <summary> elements */
+@import './dialog.css'; /* Use to style the <dialog> element */
 @import './shapes.css'; /* Use to style geometric shapes */
 
 /* Other Layout utilities */
