@@ -6,4 +6,8 @@ id: '004'
 tags: ['pages', 'blog']
 ---
 
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
+Hi! Welcome to my blog! 🐰
+
+It might be fat and it might be fuzzy. Here's an idea of [what to expect](/blog/what-to-expect).
+
+There is also an [RSS feed](/blog/rss.xml).
