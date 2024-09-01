@@ -12,14 +12,28 @@
 		.status\:danger,
 		.status\:error
 	) {
-	--shade: oklch(var(--lightness-base) var(--chroma) var(--hue-semantic));
-	--ink: oklch(
+	--shade-semantic: oklch(
+		var(--lightness-base) var(--chroma) var(--hue-semantic)
+	);
+	--ink-semantic: oklch(
 		var(--lightness-contrast-base) var(--chroma-contrast) var(--hue-semantic)
 	);
-	--accent: oklch(
+	--accent-semantic: oklch(
 		var(--lightness-accent) var(--chroma-accent-base) var(--hue-semantic)
 	);
-	--shadow: oklch(var(--lightness-base) var(--chroma) var(--hue-semantic));
+	--shadow-semantic: oklch(
+		var(--lightness-base) var(--chroma) var(--hue-semantic)
+	);
+}
+
+[class*='bg:'][class*='status:'] {
+	--color-bg: var(--shade-semantic, --shade);
+	--color-ink: var(--ink-semantic, --ink);
+	--color-accent: var(--accent-semantic, --accent);
+	--color-shadow: var(--shadow-semantic, --shadow);
+	color: var(--color-ink);
+	background-color: var(--color-bg);
+	border-color: var(--color-accent);
 }
 
 [class*=':default'] {
