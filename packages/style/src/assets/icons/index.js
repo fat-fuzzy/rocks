@@ -1,0 +1,6 @@
+import './egg.svg'
+import './github.svg'
+import './magic.svg'
+import './sparkles.svg'
+import './tsunami.svg'
+import './water.svg'

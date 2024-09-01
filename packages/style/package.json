@@ -14,6 +14,7 @@
 		"build:main": "rollup --config rollup.config.main.js",
 		"build:scss": "rollup --config rollup.config.scss.js",
 		"build:tokens": "./node_modules/.bin/co build",
+		"build:icons": "rollup --config rollup.config.icons.js",
 		"lint:css": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/css/**/*.css &> ./logs/stylelint-css.log",
 		"lint:scss": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/scss/**/*.scss &> ./logs/stylelint-scss.log",
 		"lint:prettier": "prettier --check --ignore-path=../../.prettierignore . && eslint \".\"",
@@ -35,7 +36,8 @@
 		"./css/mixins/*": "./dist/lib/css/mixins/*",
 		"./css/motion/*": "./dist/lib/css/motion/*",
 		"./css/recipes/*": "./dist/lib/css/recipes/*",
-		"./css/tokens/*": "./dist/lib/css/tokens/*"
+		"./css/tokens/*": "./dist/lib/css/tokens/*",
+		"./assets/icons/*": "./dist/lib/assets/icons/*"
 	},
 	"devDependencies": {
 		"@cobalt-ui/cli": "1.11.0",
