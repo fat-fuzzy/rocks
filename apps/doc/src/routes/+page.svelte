@@ -26,7 +26,7 @@
 			<div class="l:frame">
 				<Picture
 					src={imageSrc}
-					ext="png"
+					ext="webp"
 					alt={imageAlt}
 					width="2647"
 					height="1869"
