@@ -21,7 +21,7 @@
 	color: var(--ink);
 }
 
-.magic\:base {
+.magic\:bleu {
 	--magic-gradient: linear-gradient(
 		148deg,
 		var(--color-gradient-000-start) 12% 12%,
@@ -31,21 +31,32 @@
 	--lightness-contrast: var(--color-lightness-000);
 	--chroma-contrast: var(--color-chroma-000);
 
-	&[class*='radial'] {
-		--magic-gradient: radial-gradient(
-			farthest-corner at 50% 5%,
-			var(--color-gradient-000-start) 40% 40%,
-			var(--color-gradient-000-middle) 60% 60%,
-			var(--color-gradient-000-end) 88% 88%
-		);
-	}
-
 	&[class*='svg'] {
 		--magic-gradient: linear-gradient(
 			148deg,
 			var(--color-gradient-000-start) 22% 22%,
 			var(--color-gradient-000-middle) 49% 49%,
 			var(--color-gradient-000-end) 88% 88%
+		);
+	}
+}
+
+.magic\:sea {
+	--magic-gradient: linear-gradient(
+		148deg,
+		var(--color-gradient-000-end) 22% 22%,
+		var(--color-gradient-001-middle) 70% 70%,
+		var(--color-gradient-000-middle) 88% 88%
+	);
+	--lightness-contrast: var(--color-lightness-600);
+	--chroma-contrast: var(--color-chroma-600);
+
+	&[class*='svg'] {
+		--magic-gradient: linear-gradient(
+			148deg,
+			var(--color-gradient-000-end) 22% 22%,
+			var(--color-gradient-001-middle) 49% 49%,
+			var(--color-gradient-000-middle) 88% 88%
 		);
 	}
 }

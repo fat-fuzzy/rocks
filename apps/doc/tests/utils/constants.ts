@@ -42,7 +42,7 @@ const blocks = {
 		'InputRange',
 		'InputFile',
 	],
-	draft: ['Fieldset', 'InputGroup'],
+	draft: ['Fieldset', 'InputGroup', 'Picture', 'Magic'],
 }
 
 const layouts = {

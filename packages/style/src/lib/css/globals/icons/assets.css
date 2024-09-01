@@ -4,8 +4,20 @@
 	--icon-url: url('/icons/egg.svg');
 }
 
+.svg\:magic::before {
+	--icon-url: url('/icons/magic.svg');
+}
+
 .svg\:sparkles::before {
 	--icon-url: url('/icons/sparkles.svg');
+}
+
+.svg\:water::before {
+	--icon-url: url('/icons/water.svg');
+}
+
+.svg\:tsunami::before {
+	--icon-url: url('/icons/tsunami.svg');
 }
 
 /* Brand Icons */

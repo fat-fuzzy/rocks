@@ -29,8 +29,8 @@ draft.forEach((component) => {
 	}) => {
 		await page.goto(`${path}/${component}`)
 		await expect(
-			page.getByRole('heading', {level: 1, name: component}),
+			page.getByRole('heading', {level: 1, name: '404'}),
 		).toBeVisible()
-		await expect(page.getByText('Coming Soon!')).toBeVisible()
+		await expect(page.getByText('Not Found')).toBeVisible()
 	})
 })

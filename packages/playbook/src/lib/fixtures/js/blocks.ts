@@ -76,4 +76,13 @@ export default {
 	Fieldset: {
 		items: ['Form input 1', 'Form input 2', 'Form input 3'],
 	},
+	Magic: {
+		text: 'Abracadabra',
+		spell: 'bleu',
+		daemons: {
+			uno: 'magic',
+			dos: 'sparkles',
+		},
+		size: 'md',
+	},
 }
