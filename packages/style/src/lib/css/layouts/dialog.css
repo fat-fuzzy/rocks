@@ -3,9 +3,3 @@ dialog {
 	padding: var(--gap);
 	overflow: auto;
 }
-
-[method='dialog'] {
-	position: absolute;
-	top: var(--gap);
-	left: var(--gap);
-}

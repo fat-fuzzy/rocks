@@ -7,8 +7,8 @@
 	let media = $derived($page.data)
 </script>
 
-<dialog class="l:frame:twin w:full layer:inset:3" open>
-	<form method="dialog">
+<dialog class="l:frame w:full l:sidebar:2xs bg:inherit" open>
+	<form method="dialog" class="l:side hug">
 		<button
 			onclick={() => history.back()}
 			class="bg:primary variant:fill size:xs"
@@ -16,7 +16,7 @@
 			Back
 		</button>
 	</form>
-	<div class="l:main col:center">
+	<div class="l:main:90 col:center">
 		{#if media.path === 'images'}
 			<Picture
 				src={media.src}
