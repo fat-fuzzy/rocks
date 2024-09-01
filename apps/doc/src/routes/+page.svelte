@@ -6,20 +6,17 @@
 
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
-	const {Picture} = ui.blocks
+	const {Picture} = ui.drafts
 
 	let app = fatFuzzyStore.app
 	
-	let brightness = $derived(app.settings.brightness)
+	let brightness = $derived(app.settings?.brightness || '')
 	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
-
-	let images = $derived({
-		src: !brightness || brightness === 'day' ?  '/images/day/001-intro' :  '/images/night/001-intro',
-		alt: `A drawing: "Creating a web app. Where to Start ?" asks a girl underneath a large cloud with a laptop connected to it and displaying an app in a browser. The cloud contains three boards: to the left is the CLIENT, which contains HTML, CSS, and JavaScript; to the right are RESOURCES which contain backend data and application logic; in the middle is the API, which connects the CLIENT to the RESOURCES using HTTP, URLs, JSON, REST, GraphQL, and enables calls to CRUD operations.`,
-	})
+	let imageSrc = $derived(!brightness ?  '/images/day/001-intro' :  `/images/${brightness}/001-intro`)
+	let imageAlt = `A drawing: "Creating a web app. Where to Start ?" asks a girl underneath a large cloud with a laptop connected to it and displaying an app in a browser. The cloud contains three boards: to the left is the CLIENT, in the middle is the API, and to the right are RESOURCES.`
 	let variant = 'surface:2:primary'
 </script>
 
@@ -27,17 +24,17 @@
 	{#snippet header()}
 		<div class="l:center:md">
 			<div class="l:frame">
-					<Picture
-						src={images.src}
-						ext="png"
-						alt={images.alt}
-						width="2647"
-						height="1869"
-						sources={[
-							['2647', '1869', 'png'],
-							['2647', '1869', 'webp'],
-						]}
-					/>
+				<Picture
+					src={imageSrc}
+					ext="png"
+					alt={imageAlt}
+					width="2647"
+					height="1869"
+					sources={[
+						['2647', '1869', 'png'],
+						['2647', '1869', 'webp'],
+					]}
+				/>
 			</div>
 			<h1 class="card:sm text:center">Fat Fuzzy Rocks</h1>
 		</div>
