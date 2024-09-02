@@ -38,5 +38,9 @@
 	"type": "module",
 	"files": [
 		"package"
-	]
+	],
+	"dependencies": {
+		"got": "^14.4.2",
+		"sharp": "^0.33.5"
+	}
 }
