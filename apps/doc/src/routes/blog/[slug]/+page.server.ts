@@ -8,11 +8,20 @@ import blog from '$data/blog'
 export const load = async ({params}) => {
 	const {slug} = params
 	const markdowns = await blog.markdowns
-	const html = markdowns?.find((v) => v.meta.slug === slug)
+	const markdown = markdowns?.find(
+		(v) => v.meta.status !== 'draft' && v.meta.slug === slug,
+	)
 
-	if (!html) {
+	if (!markdown) {
 		error(404, 'Not found')
 	}
 
-	return html
+	return {
+		html: markdown?.html,
+		title: markdown?.meta.title,
+		description:
+			markdown?.meta.description ??
+			`Post ${markdown?.meta.id}: ${markdown?.meta.title}`,
+		date_created: markdown?.meta.date_created,
+	}
 }
