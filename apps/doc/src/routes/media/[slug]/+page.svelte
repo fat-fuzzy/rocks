@@ -23,12 +23,9 @@
 				ext={media.ext}
 				alt={media.alt}
 				orientation={media.orientation}
-				width="1645"
-				height="2465"
-				sources={[
-					['1645', '2465', 'webp'],
-					['1645', '2465', media.ext],
-				]}
+				width={media.width}
+				height={media.height}
+				sources={media.sources}
 			/>
 		{/if}
 	</div>

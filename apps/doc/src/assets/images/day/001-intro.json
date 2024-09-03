@@ -1,0 +1,75 @@
+{
+	"file": "001-intro",
+	"ext": "png",
+	"width": 2647,
+	"height": 1869,
+	"path": "images/day",
+	"alt": "A drawing: \"Creating a web app. Where to Start ?\" asks a girl underneath a large cloud with a laptop connected to it and displaying an app in a browser. The cloud contains three boards: to the left is the CLIENT, in the middle is the API, and to the right are RESOURCES.",
+	"orientation": "landscape",
+	"sources": [
+		{
+			"format": "webp",
+			"width": 2000,
+			"height": 1412,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 155972
+		},
+		{
+			"format": "png",
+			"width": 2000,
+			"height": 1412,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 334278
+		},
+		{
+			"format": "webp",
+			"width": 1500,
+			"height": 1059,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 108708
+		},
+		{
+			"format": "png",
+			"width": 1500,
+			"height": 1059,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 227409
+		},
+		{
+			"format": "webp",
+			"width": 1000,
+			"height": 706,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 63654
+		},
+		{
+			"format": "png",
+			"width": 1000,
+			"height": 706,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 117770
+		},
+		{
+			"format": "webp",
+			"width": 500,
+			"height": 353,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 24296
+		},
+		{
+			"format": "png",
+			"width": 500,
+			"height": 353,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 43505
+		}
+	]
+}
