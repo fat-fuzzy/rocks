@@ -8,6 +8,8 @@
 	const {EscapeHtml} = ui.headless
 	const {Picture} = ui.drafts
 
+	let images = $derived($page.data)
+
 	let app = fatFuzzyStore.app
 	
 	let brightness = $derived(app.settings?.brightness || '')
@@ -15,8 +17,7 @@
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
-	let imageSrc = $derived(!brightness ?  '/images/day/001-intro' :  `/images/${brightness}/001-intro`)
-	let imageAlt = `A drawing: "Creating a web app. Where to Start ?" asks a girl underneath a large cloud with a laptop connected to it and displaying an app in a browser. The cloud contains three boards: to the left is the CLIENT, in the middle is the API, and to the right are RESOURCES.`
+	let media = $derived(brightness ? images[brightness]:  images['day'])
 	let variant = 'surface:2:primary'
 </script>
 
@@ -25,15 +26,13 @@
 		<div class="l:center:md">
 			<div class="l:frame">
 				<Picture
-					src={imageSrc}
-					ext="webp"
-					alt={imageAlt}
-					width="2647"
-					height="1869"
-					sources={[
-						['2647', '1869', 'webp'],
-						['2647', '1869', 'png'],
-					]}
+					src={media.src}
+					ext={media.ext}
+					alt={media.alt}
+					orientation={media.orientation}
+					width={media.width}
+					height={media.height}
+					sources={media.sources}
 				/>
 			</div>
 			<h1 class="card:sm text:center">Fat Fuzzy Rocks</h1>

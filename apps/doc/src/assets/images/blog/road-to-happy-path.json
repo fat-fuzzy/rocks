@@ -1,0 +1,59 @@
+{
+	"file": "road-to-happy-path",
+	"ext": "jpeg",
+	"width": 1645,
+	"height": 2465,
+	"path": "images",
+	"alt": "A marker drawing that shows layers of technologies from a hellish bottom to a heavenly top",
+	"orientation": "portrait",
+	"sources": [
+		{
+			"format": "webp",
+			"width": 1500,
+			"height": 2248,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 578160
+		},
+		{
+			"format": "jpeg",
+			"width": 1500,
+			"height": 2248,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 715835
+		},
+		{
+			"format": "webp",
+			"width": 1000,
+			"height": 1498,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 286974
+		},
+		{
+			"format": "jpeg",
+			"width": 1000,
+			"height": 1498,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 347426
+		},
+		{
+			"format": "webp",
+			"width": 500,
+			"height": 749,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 91466
+		},
+		{
+			"format": "jpeg",
+			"width": 500,
+			"height": 749,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 104408
+		}
+	]
+}

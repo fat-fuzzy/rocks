@@ -5,29 +5,22 @@
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	let markdown = $derived(
-		$page.data.markdowns.find((d) => d.path === $page.data.path),
-	)
-	let title = $derived(markdown.meta.title)
-	let description = $derived(`Developer Doc ${markdown.meta.id}: ${title}`)
-	let date = $derived(markdown.meta.date_created)
-	// let updated = $derived(markdown.meta.date_created) TODO
-	let html = $derived($page.data.html)
+	let post = $derived($page.data)
 </script>
 
-{#key title}
-	<PageMain pageName="Usage" {title} {description}>
+{#key post.title}
+	<PageMain pageName="Usage" title={post.title} description={post.description}>
 		{#snippet header()}
-			<h1 class="l:side hug maki:block:md">{title}</h1>
+			<h1 class="l:side hug maki:block:md">{post.title}</h1>
 			<div class="l:main:50 l:flex justify:end">
 				<p class="feedback:prose status:default variant:bare card:sm">
-					Published: {date}
+					Published: {post.date_created}
 				</p>
 			</div>
 		{/snippet}
 		<article class="l:sidebar:md">
 			<div class="l:text:lg">
-				<EscapeHtml {html} />
+				<EscapeHtml html={post.html} />
 			</div>
 		</article>
 	</PageMain>

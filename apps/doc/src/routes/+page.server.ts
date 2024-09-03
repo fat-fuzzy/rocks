@@ -1,8 +1,35 @@
 import {error, redirect} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
+import images from '$data/images'
 
 const {UiReveal, SettingsUpdate} = ui.forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
+
+export const load = async () => {
+	try {
+		const dayImageData = await images.getImageData('day', '001-intro')
+		const nightImageData = await images.getImageData('night', '001-intro')
+
+		if (!dayImageData?.json.sources || !nightImageData?.json.sources) {
+			error(404, 'Not Found')
+		}
+
+		return {
+			day: {
+				src: '/images/day/001-intro',
+				...dayImageData.json,
+				sources: dayImageData.json.sources,
+			},
+			night: {
+				src: '/images/night/001-intro',
+				...nightImageData.json,
+				sources: nightImageData.json.sources,
+			},
+		}
+	} catch (e) {
+		error(500, 'Error loading image data')
+	}
+}
 
 export const actions = {
 	toggleNav: async ({request, url, cookies}) => {

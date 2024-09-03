@@ -1,72 +1,123 @@
 // Create a pipeline that will download an image, resize it and format it to different files
 // Using Promises to know when the pipeline is complete
+// src: https://sharp.pixelplumbing.com/api-constructor
 import fs from 'node:fs'
 import got from 'got'
 import sharp from 'sharp'
 
 const sharpStream = sharp({failOn: 'none'})
-
-// TODO: Strip image metadata
-// TODO: Generate content metadata
-
-const promises = []
+let promises = []
 const images = [
-	{file: 'road-to-happy-path', width: 1645, height: 2465, paths: ['images']},
+	// {
+	// 	file: 'road-to-happy-path',
+	// 	ext: 'jpeg',
+	// 	width: 1645,
+	// 	height: 2465,
+	// 	path: 'images',
+	// },
+	// {
+	// 	file: '001-intro',
+	// 	ext: 'png',
+	// 	width: 2647,
+	// 	height: 1869,
+	// 	path: 'images/day',
+	// },
 	{
 		file: '001-intro',
+		ext: 'png',
 		width: 2647,
 		height: 1869,
-		paths: ['images/day', 'images/night'],
+		path: 'images/night',
 	},
 ]
-const sizes = [500, 1000, 1500, 2000]
+const sizes = [
+	{width: 2000, mq: '(min-width: 2000px)'},
+	{width: 1500, mq: '(min-width: 1500px)'},
+	{width: 1000, mq: '(min-width: 1000px)'},
+	{width: 500, mq: '(min-width: 500px)'},
+]
 const host = 'http://localhost:5173'
+let filePath = 0
 
-function optimize() {
-	images.forEach(({file, width, height, paths}) => {
-		paths.forEach((path) => {
+function optimize(sharpStream, images) {
+	images.forEach(({file, ext, width, height, path}) => {
+		filePath = `${path}/${file}`
+
+		sizes.forEach((size) => {
+			if (size.width > width) return
+
+			promises.push(
+				sharpStream
+					.clone()
+					.resize({width: size.width})
+					.webp({quality: 80})
+					.toFile(`./out/${filePath}-${size.width}.webp`),
+			)
+
+			if (ext === 'jpeg' || ext === 'jpg') {
+				promises.push(
+					sharpStream
+						.clone()
+						.resize({width: size.width})
+						.jpeg({quality: 80})
+						.toFile(`./out/${filePath}-${size.width}.${ext}`),
+				)
+			}
+			if (ext === 'png') {
+				promises.push(
+					sharpStream
+						.clone()
+						.resize({width: size.width})
+						.png({quality: 80})
+						.toFile(`./out/${filePath}-${size.width}.${ext}`),
+				)
+			}
+		})
+
+		if (ext === 'jpeg' || ext === 'jpg') {
 			promises.push(
 				sharpStream
 					.clone()
 					.jpeg({quality: 100})
-					.toFile(`./out/${path}/${file}.jpg`),
+					.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
 			)
-			sizes.forEach((size) => {
-				promises.push(
-					sharpStream
-						.clone()
-						.resize({width: size})
-						.jpeg({quality: 80})
-						.toFile(`./out/${path}/${file}-${size}.jpg`),
-				)
+		}
+		if (ext === 'png') {
+			promises.push(
+				sharpStream
+					.clone()
+					.png({quality: 100})
+					.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
+			)
+		}
+		// https://github.com/sindresorhus/got/blob/main/documentation/3-streams.md
+		got
+			.stream(`${host}/${filePath}-${width}-${height}.${ext}`)
+			.pipe(sharpStream)
 
-				promises.push(
-					sharpStream
-						.clone()
-						.resize({width: size})
-						.webp({quality: 80})
-						.toFile(`./out/${path}/${file}-${size}.webp`),
+		Promise.all(promises)
+			.then((res) => {
+				res.pop()
+				console.log(
+					JSON.stringify({file, ext, width, height, path, sources: res}),
 				)
 			})
-			// https://github.com/sindresorhus/got/blob/main/documentation/3-streams.md
-			got
-				.stream(`${host}/${path}/${file}-${width}-${height}.webp`)
-				.pipe(sharpStream)
-		})
-	})
+			.catch((err) => {
+				console.error("Error processing files, let's clean it up", err)
+				try {
+					fs.unlinkSync(`./out/${path}/${file}-${width}-${height}.${ext}`)
 
-	Promise.all(promises)
-		.then((res) => {
-			console.log('Done!', res)
-		})
-		.catch((err) => {
-			console.error("Error processing files, let's clean it up", err)
-			try {
-				fs.unlinkSync('originalFile.jpg')
-				fs.unlinkSync('optimized-500.jpg')
-				fs.unlinkSync('optimized-500.webp')
-			} catch (e) {}
-		})
+					sizes.forEach((size) => {
+						fs.unlinkSync(`./out/${path}/${file}-${size.width}.${ext}`)
+						fs.unlinkSync(`./out/${path}/${file}-${size.width}.webp`)
+					})
+				} catch (e) {}
+			})
+	})
 }
 
-export default optimize()
+function main() {
+	optimize(sharpStream, images)
+}
+
+export default main()

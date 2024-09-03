@@ -15,15 +15,18 @@
 		height: string
 		orientation?: 'landscape' | 'portrait'
 		dimensions?: string
-		sources: [string, string, string][]
+		sources: {width: string; height: string; format: string}[]
 	} = $props()
+
+	let srcsetSources = $derived(sources)
 </script>
 
 <picture>
-	{#each sources as [_width, _height, _ext]}
+	{#each srcsetSources as source}
 		<source
-			srcset={`${src}-${_width}-${_height}.${_ext}`}
-			media={`(orientation: ${orientation})`}
+			srcset={`${src}-${source.width}.${source.format}`}
+			media={`(min-width: ${source.width}px)`}
+			width={source.width}
 		/>
 	{/each}
 	<img src={`${src}-${width}-${height}.${ext}`} {alt} />

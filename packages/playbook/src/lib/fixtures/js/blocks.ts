@@ -35,7 +35,7 @@ export default {
 			},
 		},
 	},
-	InputCheck: {id: 'check', label: 'An optional choice choice'},
+	InputCheck: {id: 'check', label: 'An optional choice'},
 	InputRadio: {id: 'radio', label: 'A mandatory choice'},
 	InputRange: {id: 'range', label: 'A range of ordered choices'},
 	Feedback: {
