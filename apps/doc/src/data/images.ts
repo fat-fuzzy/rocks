@@ -7,9 +7,6 @@ import assetsUtils from './assets'
 
 // original src: https://github.com/bluwy/website/blob/f1aab96779efede611f91db93f9114f86c2cf105/src/data/assets.js
 
-// ts-ignore
-// const pageImages = import.meta.glob('../assets/images/pages/*.{png,jpg, svg}')
-
 const dayImagesPrefix = '/src/assets/images/day/'
 const nightImagesPrefix = '/src/assets/images/night/'
 const blogImagesPrefix = '/src/assets/images/blog/'
@@ -23,16 +20,6 @@ const [day, night, blog] = await Promise.all([
 	assetsUtils.fetchJson(nightImagesPrefix, nightImagesImports),
 	assetsUtils.fetchJson(blogImagesPrefix, blogImagesImports),
 ])
-
-// const imageDayPath = '../assets//images/day/001-intro.json'
-// const imageNightPath = '../assets//images/day/001-intro.json'
-
-// const dayImageData = require(imageDayPath)
-// const nightImageData = require(imageNightPath)
-// // The last generated image is the fallback image
-// // so we remove it from teh sources array
-// dayImageData.sources.pop()
-// nightImageData.sources.pop()
 
 export async function getImageData(folder: string, slug: string) {
 	switch (folder) {

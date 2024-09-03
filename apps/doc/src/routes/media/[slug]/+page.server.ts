@@ -14,9 +14,6 @@ export const load = async ({params}) => {
 			error(404, 'Not Found')
 		}
 
-		// The last generated image is the fallback image
-		// so we remove it from teh sources array
-
 		return {
 			src: `/images/blog/${slug}`,
 			...imageData.json,
