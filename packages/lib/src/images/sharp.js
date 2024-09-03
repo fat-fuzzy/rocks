@@ -120,5 +120,4 @@ function main() {
 	optimize(sharpStream, images)
 }
 
-//  node ./sharp.js > out/images/path/to/fileName.json
 export default main()
