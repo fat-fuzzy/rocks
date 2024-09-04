@@ -9,7 +9,7 @@
 </script>
 
 {#key post.title}
-	<PageMain pageName="Usage" title={post.title} description={post.description}>
+	<PageMain pageName="Blog" title={post.title} description={post.description}>
 		{#snippet header()}
 			<h1 class="l:side hug maki:block:md">{post.title}</h1>
 			<div class="l:main:50 l:flex justify:end">

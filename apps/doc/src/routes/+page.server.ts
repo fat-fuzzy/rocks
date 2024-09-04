@@ -12,7 +12,7 @@ export const load = async () => {
 		const nightImageData = await images.getImageData('night', imageSlug)
 
 		if (!dayImageData?.json.sources || !nightImageData?.json.sources) {
-			error(404, 'Not Found')
+			error(404, 'Not found')
 		}
 		return {
 			day: {
