@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount, type Snippet} from 'svelte'
-	import '@fat-fuzzy/style'
+	import '$lib/styles/css/main.css'
 
 	import {page} from '$app/stores'
 	import {links} from '$data/nav'
