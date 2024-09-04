@@ -64,6 +64,7 @@ import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 import Magic from '$lib/components/blocks/global/Magic.svelte'
+import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
@@ -143,6 +144,7 @@ const drafts = {
 	// InputFeedback,
 	InputGroup,
 	Magic,
+	Image,
 	Picture,
 }
 

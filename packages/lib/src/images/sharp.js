@@ -30,6 +30,9 @@ const images = [
 		path: 'images/night',
 	},
 ]
+
+// TODO: use this to generate sizes & media queries
+// TODO: Generate 2x responsive images
 const sizes = [
 	{width: 2000, mq: '(min-width: 2000px)'},
 	{width: 1500, mq: '(min-width: 1500px)'},
