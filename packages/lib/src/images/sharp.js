@@ -47,9 +47,9 @@ const images = [
 		// See: packages/style/src/scss/mixins/mg/hero_section.scss
 		// TODO: Organize sizes & media queries
 		sizes: [
-			{width: '1620px', size: '75vw'},
-			{width: '1360px', size: '65vw'},
-			{width: '935px', size: '55vw'},
+			{width: '1620px', size: '60vw'},
+			{width: '1360px', size: '60vw'},
+			{width: '935px', size: '70vw'},
 			{width: null, size: '100%'},
 		],
 	},
@@ -91,9 +91,9 @@ const images = [
 		// See: packages/style/src/scss/mixins/mg/hero_section.scss
 		// TODO: Organize sizes & media queries
 		sizes: [
-			{width: '1620px', size: '75vw'},
-			{width: '1360px', size: '65vw'},
-			{width: '935px', size: '55vw'},
+			{width: '1620px', size: '60vw'},
+			{width: '1360px', size: '60vw'},
+			{width: '935px', size: '70vw'},
 			{width: null, size: '100%'},
 		],
 	},
@@ -135,9 +135,9 @@ const images = [
 		// See: packages/style/src/scss/mixins/mg/hero_section.scss
 		// TODO: Organize sizes & media queries
 		sizes: [
-			{width: '1620px', size: '75vw'},
-			{width: '1360px', size: '65vw'},
-			{width: '935px', size: '55vw'},
+			{width: '1620px', size: '60vw'},
+			{width: '1360px', size: '60vw'},
+			{width: '935px', size: '70vw'},
 			{width: null, size: '100%'},
 		],
 	},

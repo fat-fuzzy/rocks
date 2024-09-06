@@ -67,15 +67,15 @@
 	"sizes": [
 		{
 			"width": "1620px",
-			"size": "75vw"
+			"size": "60vw"
 		},
 		{
 			"width": "1360px",
-			"size": "65vw"
+			"size": "60vw"
 		},
 		{
 			"width": "935px",
-			"size": "55vw"
+			"size": "70vw"
 		},
 		{
 			"width": null,
