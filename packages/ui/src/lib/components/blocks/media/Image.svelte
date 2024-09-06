@@ -7,6 +7,7 @@
 		width,
 		height,
 		sources,
+		// sizes,
 	}: {
 		src: string
 		ext: string
@@ -16,6 +17,7 @@
 		orientation?: 'landscape' | 'portrait'
 		dimensions?: string
 		sources: {width: string; height: string; format: string}[]
+		// sizes: {width: string; size: string}[]
 	} = $props()
 
 	let srcset = $derived(

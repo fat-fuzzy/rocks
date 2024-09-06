@@ -7,120 +7,227 @@ import sharp from 'sharp'
 
 const sharpStream = sharp({failOn: 'none'})
 let promises = []
+
 const images = [
-	// {
-	// 	file: 'road-to-happy-path',
-	// 	ext: 'jpeg',
-	// 	width: 1645,
-	// 	height: 2465,
-	// 	path: 'images',
-	// },
-	// {
-	// 	file: '001-intro',
-	// 	ext: 'png',
-	// 	width: 2647,
-	// 	height: 1869,
-	// 	path: 'images/day',
-	// },
+	{
+		file: 'road-to-happy-path',
+		ext: 'jpeg',
+		width: 1645,
+		height: 2465,
+		path: 'images/blog',
+		srcset: [
+			{
+				width: 2000,
+				descriptors: [
+					{mq: '(min-width: 667px)', dpr: 3},
+					{mq: '(min-width: 1000px)', dpr: 2},
+					{mq: '(min-width: 2000px)', dpr: 1},
+				],
+			},
+			{
+				width: 1500,
+				descriptors: [
+					{mq: '(min-width: 500px)', dpr: 3},
+					{mq: '(min-width: 750px)', dpr: 2},
+					{mq: '(min-width: 1000px)', dpr: 1},
+				],
+			},
+			{
+				width: 1000,
+				descriptors: [
+					{mq: '(min-width: 500px)', dpr: 2},
+					{mq: '(min-width: 1000px)', dpr: 1},
+				],
+			},
+			{
+				width: 500,
+				descriptors: [{mq: null, dpr: 1}],
+			},
+		],
+		// See: packages/style/src/scss/mixins/mg/hero_section.scss
+		// TODO: Organize sizes & media queries
+		sizes: [
+			{width: '1620px', size: '75vw'},
+			{width: '1360px', size: '65vw'},
+			{width: '935px', size: '55vw'},
+			{width: null, size: '100%'},
+		],
+	},
+	{
+		file: '001-intro',
+		ext: 'png',
+		width: 2647,
+		height: 1869,
+		path: 'images/day',
+		srcset: [
+			{
+				width: 2000,
+				descriptors: [
+					{mq: '(min-width: 667px)', dpr: 3},
+					{mq: '(min-width: 1000px)', dpr: 2},
+					{mq: '(min-width: 2000px)', dpr: 1},
+				],
+			},
+			{
+				width: 1500,
+				descriptors: [
+					{mq: '(min-width: 500px)', dpr: 3},
+					{mq: '(min-width: 750px)', dpr: 2},
+					{mq: '(min-width: 1000px)', dpr: 1},
+				],
+			},
+			{
+				width: 1000,
+				descriptors: [
+					{mq: '(min-width: 500px)', dpr: 2},
+					{mq: '(min-width: 1000px)', dpr: 1},
+				],
+			},
+			{
+				width: 500,
+				descriptors: [{mq: null, dpr: 1}],
+			},
+		],
+		// See: packages/style/src/scss/mixins/mg/hero_section.scss
+		// TODO: Organize sizes & media queries
+		sizes: [
+			{width: '1620px', size: '75vw'},
+			{width: '1360px', size: '65vw'},
+			{width: '935px', size: '55vw'},
+			{width: null, size: '100%'},
+		],
+	},
 	{
 		file: '001-intro',
 		ext: 'png',
 		width: 2647,
 		height: 1869,
 		path: 'images/night',
+		srcset: [
+			{
+				width: 2000,
+				descriptors: [
+					{mq: '(min-width: 667px)', dpr: 3},
+					{mq: '(min-width: 1000px)', dpr: 2},
+					{mq: '(min-width: 2000px)', dpr: 1},
+				],
+			},
+			{
+				width: 1500,
+				descriptors: [
+					{mq: '(min-width: 500px)', dpr: 3},
+					{mq: '(min-width: 750px)', dpr: 2},
+					{mq: '(min-width: 1000px)', dpr: 1},
+				],
+			},
+			{
+				width: 1000,
+				descriptors: [
+					{mq: '(min-width: 500px)', dpr: 2},
+					{mq: '(min-width: 1000px)', dpr: 1},
+				],
+			},
+			{
+				width: 500,
+				descriptors: [{mq: null, dpr: 1}],
+			},
+		],
+		// See: packages/style/src/scss/mixins/mg/hero_section.scss
+		// TODO: Organize sizes & media queries
+		sizes: [
+			{width: '1620px', size: '75vw'},
+			{width: '1360px', size: '65vw'},
+			{width: '935px', size: '55vw'},
+			{width: null, size: '100%'},
+		],
 	},
 ]
 
-// TODO: use this to generate sizes & media queries
-// TODO: Generate 2x responsive images
-const sizes = [
-	{width: 2000, mq: '(min-width: 2000px)'},
-	{width: 1500, mq: '(min-width: 1500px)'},
-	{width: 1000, mq: '(min-width: 1000px)'},
-	{width: 500, mq: '(min-width: 500px)'},
-]
 const host = 'http://localhost:5173'
 let filePath = 0
 
-function optimize(sharpStream, images) {
-	images.forEach(({file, ext, width, height, path}) => {
-		filePath = `${path}/${file}`
+// TODO: use this to generate sizes & media queries
+// TODO: Generate 2x responsive images
+function optimize(sharpStream, image) {
+	const {file, ext, width, height, path, srcset} = image
 
-		sizes.forEach((size) => {
-			if (size.width > width) return
+	filePath = `${path}/${file}`
 
-			promises.push(
-				sharpStream
-					.clone()
-					.resize({width: size.width})
-					.webp({quality: 80})
-					.toFile(`./out/${filePath}-${size.width}.webp`),
-			)
+	srcset.forEach((src) => {
+		if (src.width > width) return
 
-			if (ext === 'jpeg' || ext === 'jpg') {
-				promises.push(
-					sharpStream
-						.clone()
-						.resize({width: size.width})
-						.jpeg({quality: 80})
-						.toFile(`./out/${filePath}-${size.width}.${ext}`),
-				)
-			}
-			if (ext === 'png') {
-				promises.push(
-					sharpStream
-						.clone()
-						.resize({width: size.width})
-						.png({quality: 80})
-						.toFile(`./out/${filePath}-${size.width}.${ext}`),
-				)
-			}
-		})
+		promises.push(
+			sharpStream
+				.clone()
+				.resize({width: src.width})
+				.webp({quality: 80})
+				.toFile(`./out/${filePath}-${src.width}.webp`),
+		)
 
 		if (ext === 'jpeg' || ext === 'jpg') {
 			promises.push(
 				sharpStream
 					.clone()
-					.jpeg({quality: 100})
-					.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
+					.resize({width: src.width})
+					.jpeg({quality: 80})
+					.toFile(`./out/${filePath}-${src.width}.${ext}`),
 			)
 		}
 		if (ext === 'png') {
 			promises.push(
 				sharpStream
 					.clone()
-					.png({quality: 100})
-					.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
+					.resize({width: src.width})
+					.png({quality: 80})
+					.toFile(`./out/${filePath}-${src.width}.${ext}`),
 			)
 		}
-		// https://github.com/sindresorhus/got/blob/main/documentation/3-streams.md
-		got
-			.stream(`${host}/${filePath}-${width}-${height}.${ext}`)
-			.pipe(sharpStream)
-
-		Promise.all(promises)
-			.then((res) => {
-				res.pop()
-				console.log(
-					JSON.stringify({file, ext, width, height, path, sources: res}),
-				)
-			})
-			.catch((err) => {
-				console.error("Error processing files, let's clean it up", err)
-				try {
-					fs.unlinkSync(`./out/${path}/${file}-${width}-${height}.${ext}`)
-
-					sizes.forEach((size) => {
-						fs.unlinkSync(`./out/${path}/${file}-${size.width}.${ext}`)
-						fs.unlinkSync(`./out/${path}/${file}-${size.width}.webp`)
-					})
-				} catch (e) {}
-			})
 	})
+
+	if (ext === 'jpeg' || ext === 'jpg') {
+		promises.push(
+			sharpStream
+				.clone()
+				.jpeg({quality: 100})
+				.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
+		)
+	}
+	if (ext === 'png') {
+		promises.push(
+			sharpStream
+				.clone()
+				.png({quality: 100})
+				.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
+		)
+	}
+	// https://github.com/sindresorhus/got/blob/main/documentation/3-streams.md
+	got.stream(`${host}/${filePath}-${width}-${height}.${ext}`).pipe(sharpStream)
+
+	Promise.all(promises)
+		.then((res) => {
+			res.pop()
+			console.log(
+				JSON.stringify({
+					...image,
+					sources: res,
+				}),
+			)
+		})
+		.catch((err) => {
+			console.error("Error processing files, let's clean it up", err)
+			try {
+				fs.unlinkSync(`./out/${path}/${file}-${width}-${height}.${ext}`)
+
+				sizes.forEach((size) => {
+					fs.unlinkSync(`./out/${path}/${file}-${src.width}.${ext}`)
+					fs.unlinkSync(`./out/${path}/${file}-${src.width}.webp`)
+				})
+			} catch (e) {}
+		})
 }
 
 function main() {
-	optimize(sharpStream, images)
+	optimize(sharpStream, images[0])
 }
 
 export default main()

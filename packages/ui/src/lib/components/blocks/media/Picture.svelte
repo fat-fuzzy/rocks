@@ -9,6 +9,8 @@
 		width,
 		height,
 		sources,
+		// srcset,
+		// sizes,
 	}: {
 		src: string
 		ext: string
@@ -18,6 +20,8 @@
 		orientation?: 'landscape' | 'portrait'
 		dimensions?: string
 		sources: {width: string; height: string; format: string}[]
+		// srcset: {width: string; descriptors: {mq: string; dpr: number}[]}[]
+		// sizes: {width: string; size: string}[]
 	} = $props()
 </script>
 
