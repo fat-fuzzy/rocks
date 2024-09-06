@@ -6,6 +6,7 @@
 		ext,
 		alt,
 		orientation = 'landscape',
+		dimensions,
 		width,
 		height,
 		sources,
@@ -23,9 +24,11 @@
 		// srcset: {width: string; descriptors: {mq: string; dpr: number}[]}[]
 		// sizes: {width: string; size: string}[]
 	} = $props()
+
+	let frameClass = $derived(dimensions ? `l:frame:${dimensions}` : 'l:frame')
 </script>
 
-<picture>
+<picture class={frameClass}>
 	{#each sources as source}
 		<source
 			srcset={`${src}-${source.width}.${source.format}`}
