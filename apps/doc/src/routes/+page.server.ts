@@ -6,22 +6,22 @@ const {UiReveal, SettingsUpdate} = ui.forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
 
 export const load = async () => {
+	const imageSlug = '001-intro'
 	try {
-		const dayImageData = await images.getImageData('day', '001-intro')
-		const nightImageData = await images.getImageData('night', '001-intro')
+		const dayImageData = await images.getImageData('day', imageSlug)
+		const nightImageData = await images.getImageData('night', imageSlug)
 
 		if (!dayImageData?.json.sources || !nightImageData?.json.sources) {
-			error(404, 'Not Found')
+			error(404, 'Not found')
 		}
-
 		return {
 			day: {
-				src: '/images/day/001-intro',
+				src: `/${dayImageData.json.path}/${imageSlug}`,
 				...dayImageData.json,
 				sources: dayImageData.json.sources,
 			},
 			night: {
-				src: '/images/night/001-intro',
+				src: `/${nightImageData.json.path}/${imageSlug}`,
 				...nightImageData.json,
 				sources: nightImageData.json.sources,
 			},

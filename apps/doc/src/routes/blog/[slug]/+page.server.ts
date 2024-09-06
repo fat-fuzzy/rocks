@@ -17,11 +17,11 @@ export const load = async ({params}) => {
 	}
 
 	return {
-		html: markdown?.html,
-		title: markdown?.meta.title,
+		html: markdown.html,
+		title: markdown.meta.title,
 		description:
-			markdown?.meta.description ??
-			`Post ${markdown?.meta.id}: ${markdown?.meta.title}`,
-		date_created: markdown?.meta.date_created,
+			markdown.meta.description ??
+			`Post ${markdown.meta.id}: ${markdown.meta.title}`,
+		date_created: markdown.meta.date_created,
 	}
 }

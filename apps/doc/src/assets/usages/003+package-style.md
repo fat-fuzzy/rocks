@@ -19,9 +19,8 @@ The package's exports are:
 
 ### Requirements
 
-None besides a Node.js environment and a `package.json`
-
-### Usage
+A Node.js environment and a `package.json`.
+The rest of this project uses Vite, which allows static asset imports in JavaScript files.
 
 Install the package as a `devDependency`:
 
@@ -29,21 +28,25 @@ Install the package as a `devDependency`:
 pnpm i -D @fat-fuzzy/style
 ```
 
-Then:
+You can then import the desired CSS stylesheet from another CSS file:
 
-Import the full minified CSS using JavaScript, for example in `+layout.svelte`:
+```css
+@import '@fat-fuzzy/style/css';
+```
+
+Or import the full minified CSS using JavaScript, for example in `+layout.svelte`:
 
 ```js
 import '@fat-fuzzy/style'
 ```
 
-[WIP] or import the individual stylesheets into your components (recommended usage for a component library)
+[WIP] Or import the individual stylesheets into your components (recommended usage for a component library)
 
 ```js
 import '@fat-fuzzy/style/css/blocks/button.css'
 ```
 
-[WIP] or link to the files in a Django template
+[WIP] Or link to the files in a Django template
 
 ```html
 <link

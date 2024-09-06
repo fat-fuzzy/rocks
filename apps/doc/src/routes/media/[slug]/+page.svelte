@@ -11,22 +11,20 @@
 	<form method="dialog" class="l:side hug">
 		<button
 			onclick={() => history.back()}
-			class="bg:primary variant:fill size:xs"
+			class="bg:primary variant:outline size:xs"
 		>
 			Back
 		</button>
 	</form>
 	<div class="l:main:90 col:center">
-		{#if media.path === 'images'}
-			<Picture
-				src={media.src}
-				ext={media.ext}
-				alt={media.alt}
-				orientation={media.orientation}
-				width={media.width}
-				height={media.height}
-				sources={media.sources}
-			/>
-		{/if}
+		<Picture
+			src={media.src}
+			ext={media.ext}
+			alt={media.alt}
+			orientation={media.orientation}
+			width={media.width}
+			height={media.height}
+			sources={media.sources}
+		/>
 	</div>
 </dialog>

@@ -11,11 +11,11 @@ export const load = async ({params}) => {
 		const imageData = await images.getImageData('blog', slug)
 
 		if (!imageData?.json.sources) {
-			error(404, 'Not Found')
+			error(404, 'Not found')
 		}
 
 		return {
-			src: `/images/blog/${slug}`,
+			src: `/${imageData.json.path}/${slug}`,
 			...imageData.json,
 			sources: imageData.json.sources,
 		}

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Image from './Image.svelte'
-
 	let {
 		src,
 		ext,
@@ -9,7 +7,6 @@
 		width,
 		height,
 		sources,
-		// srcset,
 		// sizes,
 	}: {
 		src: string
@@ -20,18 +17,23 @@
 		orientation?: 'landscape' | 'portrait'
 		dimensions?: string
 		sources: {width: string; height: string; format: string}[]
-		// srcset: {width: string; descriptors: {mq: string; dpr: number}[]}[]
 		// sizes: {width: string; size: string}[]
 	} = $props()
+
+	let srcset = $derived(
+		sources
+			.map(({width, format}) => `${src}-${width}.${format} ${width}w`)
+			.join(`, `),
+	)
+
+	let sizes = $derived(
+		sources.map(({width}) => `(min-width: ${width}px) ${width}px`).join(`, `),
+	)
 </script>
 
-<picture>
-	{#each sources as source}
-		<source
-			srcset={`${src}-${source.width}.${source.format}`}
-			media={`(min-width: ${source.width}px)`}
-			width={source.width}
-		/>
-	{/each}
-	<Image {src} {ext} {alt} {orientation} {width} {height} {sources} />
-</picture>
+<img
+	src={`${src}-${width}-${height}.${ext}`}
+	{alt}
+	{srcset}
+	sizes={`100vw, ${sizes}`}
+/>
