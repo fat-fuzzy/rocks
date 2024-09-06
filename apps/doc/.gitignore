@@ -12,7 +12,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # === CSS side effects
-/src/lib/styles/css/
 
 # === Playwright ignores
 /test-results/
