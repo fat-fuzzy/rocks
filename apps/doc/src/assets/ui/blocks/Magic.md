@@ -2,7 +2,7 @@
 title: Magic
 slug: Magic
 category: 'blocks'
-status: 'draft'
+# status: 'draft'
 content_types: ['text']
 props_style: {'blocks': {'element': ['spell', 'size', 'daemons']}}
 ---

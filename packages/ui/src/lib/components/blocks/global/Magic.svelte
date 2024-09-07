@@ -1,15 +1,18 @@
 <script lang="ts">
 	import type {MagicProps} from '$types'
-	let {text, spell, daemons, size}: MagicProps = $props()
+	let {text, spell, uno, dos, size, children}: MagicProps = $props()
 </script>
 
-{#if text}
-	<span
-		class={`ffr:icon magic:${spell} svg:${daemons.uno} size:${size} align:start`}
-	>
-		<span class={`ffr:callout card:xs magic:${spell}`}>{text}</span>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<span class={`ffr:icon magic:${spell} svg:${daemons.dos} size:${size}`}
-		></span>
+<span
+	class={`ffr:icon magic:${spell} svg:${uno} size:${size} align:center justify:between`}
+>
+	<span class={`ffr:callout magic:${spell}`}>
+		{#if text}
+			{text}
+		{:else if children}
+			{@render children()}
+		{/if}
 	</span>
-{/if}
+	<span class={`ffr:icon magic:${spell} svg:${dos} size:${size}`}
+	></span>
+</span>

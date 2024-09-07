@@ -112,6 +112,7 @@ const blocks = {
 	InputRadio,
 	InputRange,
 	InputFile,
+	Magic,
 }
 
 const layouts = {
@@ -143,7 +144,6 @@ const drafts = {
 	// InputPassword,
 	// InputFeedback,
 	InputGroup,
-	Magic,
 	Image,
 	Picture,
 }

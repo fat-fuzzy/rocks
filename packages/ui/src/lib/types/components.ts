@@ -24,6 +24,7 @@ export interface Blocks {
 	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
 	InputRange: typeof import('$lib/components/blocks/inputs/InputRange.svelte').default
 	InputFile: typeof import('$lib/components/blocks/inputs/InputFile.svelte').default
+	Magic: typeof import('$lib/components/blocks/global/Magic.svelte').default
 }
 
 export interface Layouts {
@@ -53,7 +54,6 @@ export interface Content {
 export interface Drafts {
 	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
-	Magic: typeof import('$lib/components/blocks/global/Magic.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 }
 
