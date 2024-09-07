@@ -296,6 +296,78 @@ const asset = {
 	],
 }
 
+const spell = {
+	initial: 'card',
+	input: 'toggle',
+	layout: 'stack',
+	size: '2xs',
+	variant: 'bare',
+	items: [
+		{id: 'spell.bleu', label: 'bleu', value: 'bleu'},
+		{id: 'spell.sea', label: 'sea', value: 'sea'},
+		{id: 'spell.dante', label: 'dante', value: 'dante'},
+	],
+}
+
+const uno = {
+	initial: 'card',
+	input: 'toggle',
+	layout: 'grid',
+	size: '2xs',
+	variant: 'bare',
+	assetType: 'svg',
+	items: [
+		{id: 'uno.tsunami', label: 'tsunami', value: 'tsunami', asset: 'tsunami'},
+		{id: 'uno.water', label: 'water', value: 'water', asset: 'water'},
+		{
+			id: 'uno.sparkles',
+			label: 'sparkles',
+			value: 'sparkles',
+			asset: 'sparkles',
+		},
+		{id: 'uno.egg', label: 'egg', value: 'egg', asset: 'egg'},
+		{id: 'uno.magic', label: 'magic', value: 'magic', asset: 'magic'},
+	],
+}
+
+const dos = {
+	initial: 'card',
+	input: 'toggle',
+	layout: 'grid',
+	size: '2xs',
+	variant: 'bare',
+	assetType: 'svg',
+	items: [
+		{id: 'uno.tsunami', label: 'tsunami', value: 'tsunami', asset: 'tsunami'},
+		{id: 'uno.water', label: 'water', value: 'water', asset: 'water'},
+		{
+			id: 'uno.sparkles',
+			label: 'sparkles',
+			value: 'sparkles',
+			asset: 'sparkles',
+		},
+		{id: 'uno.egg', label: 'egg', value: 'egg', asset: 'egg'},
+		{id: 'uno.magic', label: 'magic', value: 'magic', asset: 'magic'},
+	],
+}
+
+const level = {
+	initial: 'card',
+	input: 'toggle',
+	layout: 'grid',
+	size: '2xs',
+	variant: 'bare',
+	assetType: 'svg',
+	items: [
+		{
+			id: 'level.purgatorio',
+			label: 'purgatorio',
+			value: 'purgatorio',
+		},
+		{id: 'level.inferno', label: 'inferno', value: 'inferno'},
+	],
+}
+
 // TODO: Fix asset - SVG / emoji
 // const asset = {
 // 	emoji,
@@ -351,7 +423,19 @@ const settingsFamily = {
 const elementFamily = {
 	layout: 'switcher',
 	size: 'xs',
-	props: ['color', 'variant', 'size', 'status', 'context', 'asset', 'shape'],
+	props: [
+		'color',
+		'variant',
+		'size',
+		'status',
+		'context',
+		'asset',
+		'shape',
+		'spell',
+		'uno',
+		'dos',
+		'level',
+	],
 }
 
 const containerFamily = {
@@ -423,6 +507,10 @@ const PROPS_STYLE: {[key: string]: any} = {
 	color,
 	variant,
 	shape,
+	spell,
+	level,
+	uno,
+	dos,
 	dimensions,
 	background,
 	status,
