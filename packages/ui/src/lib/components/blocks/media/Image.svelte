@@ -7,7 +7,7 @@
 		width,
 		height,
 		sources,
-		// sizes,
+		sizes,
 	}: {
 		src: string
 		ext: string
@@ -17,7 +17,7 @@
 		orientation?: 'landscape' | 'portrait'
 		dimensions?: string
 		sources: {width: string; height: string; format: string}[]
-		// sizes: {width: string; size: string}[]
+		sizes: {query?: string; slot: string}[]
 	} = $props()
 
 	let srcset = $derived(
@@ -25,15 +25,13 @@
 			.map(({width, format}) => `${src}-${width}.${format} ${width}w`)
 			.join(`, `),
 	)
-
-	let sizes = $derived(
-		sources.map(({width}) => `(min-width: ${width}px) ${width}px`).join(`, `),
-	)
 </script>
 
 <img
 	src={`${src}-${width}-${height}.${ext}`}
 	{alt}
 	{srcset}
-	sizes={`100vw, ${sizes}`}
+	sizes={sizes
+		.map(({query, slot}) => (query ? `${query} ${slot}` : slot))
+		.join(`, `)}
 />

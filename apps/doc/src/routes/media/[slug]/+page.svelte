@@ -25,6 +25,8 @@
 			width={media.width}
 			height={media.height}
 			sources={media.sources}
+			sizes={media.sizes}
+			media={media.media}
 		/>
 	</div>
 </dialog>

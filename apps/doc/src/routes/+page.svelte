@@ -24,17 +24,17 @@
 <PageMain {title} {description} size="md" justify="center">
 	{#snippet header()}
 		<div class="l:center:md">
-			<div class="l:frame">
-				<Picture
-					src={media.src}
-					ext={media.ext}
-					alt={media.alt}
-					orientation={media.orientation}
-					width={media.width}
-					height={media.height}
-					sources={media.sources}
-				/>
-			</div>
+			<Picture
+				src={media.src}
+				ext={media.ext}
+				alt={media.alt}
+				orientation={media.orientation}
+				width={media.width}
+				height={media.height}
+				sources={media.sources}
+				sizes={media.sizes}
+				media={media.media}
+			/>
 			<h1 class="card:sm text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
