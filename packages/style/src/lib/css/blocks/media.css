@@ -7,4 +7,5 @@ img {
 	max-block-size: calc(
 		100vh - 2 * var(--size-ui-header-height) - 2 * var(--ui-size)
 	);
+	inline-size: auto;
 }

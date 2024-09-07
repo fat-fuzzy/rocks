@@ -6,59 +6,107 @@
 	"path": "images/day",
 	"alt": "A drawing: \"Creating a web app. Where to Start ?\" asks a girl underneath a large cloud with a laptop connected to it and displaying an app in a browser. The cloud contains three boards: to the left is the CLIENT, in the middle is the API, and to the right are RESOURCES.",
 	"orientation": "landscape",
-	"srcset": [
+	"media": [
 		{
-			"width": 2000,
-			"descriptors": [
+			"query": "(min-width: 3600px)",
+			"srcset": [
 				{
-					"mq": "(min-width: 667px)",
-					"dpr": 3
-				},
+					"width": 2000,
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"query": "(min-width: 970px)",
+			"srcset": [
 				{
-					"mq": "(min-width: 1000px)",
+					"width": 1500,
+					"dpr": 1.5
+				}
+			]
+		},
+		{
+			"query": "(min-width: 800px)",
+			"srcset": [
+				{
+					"width": 1500,
 					"dpr": 2
 				},
 				{
-					"mq": "(min-width: 2000px)",
+					"width": 1000,
 					"dpr": 1
+				}
+			]
+		},
+		{
+			"query": "(min-width: 500px)",
+			"srcset": [
+				{
+					"width": 500,
+					"dpr": 1
+				}
+			]
+		}
+	],
+	"srcset": [
+		{
+			"width": 2000,
+			"media": [
+				{
+					"query": "(min-width: 700px)",
+					"dpr": 3
+				},
+				{
+					"query": "(min-width: 970px)",
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 1200px)",
+					"dpr": 1.5
 				}
 			]
 		},
 		{
 			"width": 1500,
-			"descriptors": [
+			"media": [
 				{
-					"mq": "(min-width: 500px)",
-					"dpr": 3
+					"query": "(min-width: 530px)",
+					"dpr": 2.5
 				},
 				{
-					"mq": "(min-width: 750px)",
+					"query": "(min-width: 700px)",
 					"dpr": 2
 				},
 				{
-					"mq": "(min-width: 1000px)",
-					"dpr": 1
+					"query": "(min-width: 970px)",
+					"dpr": 1.5
 				}
 			]
 		},
 		{
 			"width": 1000,
-			"descriptors": [
+			"media": [
 				{
-					"mq": "(min-width: 500px)",
 					"dpr": 2
 				},
 				{
-					"mq": "(min-width: 1000px)",
+					"query": "(min-width: 970px)",
 					"dpr": 1
 				}
 			]
 		},
 		{
 			"width": 500,
-			"descriptors": [
+			"media": [
 				{
-					"mq": null,
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 300px)",
+					"dpr": 1.5
+				},
+				{
+					"query": "(min-width: 430px)",
 					"dpr": 1
 				}
 			]
@@ -66,20 +114,19 @@
 	],
 	"sizes": [
 		{
-			"width": "1620px",
-			"size": "60vw"
+			"query": "(min-width:1620px)",
+			"slot": "60vw"
 		},
 		{
-			"width": "1360px",
-			"size": "60vw"
+			"query": "(min-width:1360px)",
+			"slot": "60vw"
 		},
 		{
-			"width": "935px",
-			"size": "70vw"
+			"query": "(min-width:935px)",
+			"slot": "70vw"
 		},
 		{
-			"width": null,
-			"size": "100%"
+			"slot": "100vw"
 		}
 	],
 	"sources": [

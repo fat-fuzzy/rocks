@@ -6,12 +6,12 @@
 		ext,
 		alt,
 		orientation = 'landscape',
-		dimensions,
+		dimensions = 'feature',
 		width,
 		height,
 		sources,
-		// srcset,
-		// sizes,
+		media,
+		sizes,
 	}: {
 		src: string
 		ext: string
@@ -21,20 +21,35 @@
 		orientation?: 'landscape' | 'portrait'
 		dimensions?: string
 		sources: {width: string; height: string; format: string}[]
-		// srcset: {width: string; descriptors: {mq: string; dpr: number}[]}[]
-		// sizes: {width: string; size: string}[]
+		media: {query?: string; srcset: {width: string; dpr: number}[]}[]
+		sizes: {query?: string; slot: string}[]
 	} = $props()
 
 	let frameClass = $derived(dimensions ? `l:frame:${dimensions}` : 'l:frame')
+
+	function getSources(width: string) {
+		const _sources = sources.filter(({width: w}) => w === width)
+		if (!_sources) return [`${src}-${width}.${ext}`]
+		return _sources.map((source) => `${src}-${source.width}.${source.format}`)
+	}
+
+	function getSrcset(srcset: {width: string; dpr: number}[]) {
+		return srcset
+			.map(({width, dpr}) => {
+				const _sources = getSources(width)
+				return _sources.map((source) => `${source} ${dpr}x`).join(`, `)
+			})
+			.join(`, `)
+	}
+
+	let srcset = $derived(
+		media.map(({query, srcset}) => ({query, srcset: getSrcset(srcset)})),
+	)
 </script>
 
 <picture class={frameClass}>
-	{#each sources as source}
-		<source
-			srcset={`${src}-${source.width}.${source.format}`}
-			media={`(min-width: ${source.width}px)`}
-			width={source.width}
-		/>
+	{#each srcset as set}
+		<source srcset={set.srcset} media={set.query} />
 	{/each}
-	<Image {src} {ext} {alt} {orientation} {width} {height} {sources} />
+	<Image {src} {ext} {alt} {orientation} {width} {height} {sources} {sizes} />
 </picture>

@@ -4,6 +4,7 @@
 import fs from 'node:fs'
 import got from 'got'
 import sharp from 'sharp'
+import config from './config.js'
 
 const sharpStream = sharp({failOn: 'none'})
 let promises = []
@@ -15,43 +16,6 @@ const images = [
 		width: 1645,
 		height: 2465,
 		path: 'images/blog',
-		srcset: [
-			{
-				width: 2000,
-				descriptors: [
-					{mq: '(min-width: 667px)', dpr: 3},
-					{mq: '(min-width: 1000px)', dpr: 2},
-					{mq: '(min-width: 2000px)', dpr: 1},
-				],
-			},
-			{
-				width: 1500,
-				descriptors: [
-					{mq: '(min-width: 500px)', dpr: 3},
-					{mq: '(min-width: 750px)', dpr: 2},
-					{mq: '(min-width: 1000px)', dpr: 1},
-				],
-			},
-			{
-				width: 1000,
-				descriptors: [
-					{mq: '(min-width: 500px)', dpr: 2},
-					{mq: '(min-width: 1000px)', dpr: 1},
-				],
-			},
-			{
-				width: 500,
-				descriptors: [{mq: null, dpr: 1}],
-			},
-		],
-		// See: packages/style/src/scss/mixins/mg/hero_section.scss
-		// TODO: Organize sizes & media queries
-		sizes: [
-			{width: '1620px', size: '60vw'},
-			{width: '1360px', size: '60vw'},
-			{width: '935px', size: '70vw'},
-			{width: null, size: '100%'},
-		],
 	},
 	{
 		file: '001-intro',
@@ -59,43 +23,6 @@ const images = [
 		width: 2647,
 		height: 1869,
 		path: 'images/day',
-		srcset: [
-			{
-				width: 2000,
-				descriptors: [
-					{mq: '(min-width: 667px)', dpr: 3},
-					{mq: '(min-width: 1000px)', dpr: 2},
-					{mq: '(min-width: 2000px)', dpr: 1},
-				],
-			},
-			{
-				width: 1500,
-				descriptors: [
-					{mq: '(min-width: 500px)', dpr: 3},
-					{mq: '(min-width: 750px)', dpr: 2},
-					{mq: '(min-width: 1000px)', dpr: 1},
-				],
-			},
-			{
-				width: 1000,
-				descriptors: [
-					{mq: '(min-width: 500px)', dpr: 2},
-					{mq: '(min-width: 1000px)', dpr: 1},
-				],
-			},
-			{
-				width: 500,
-				descriptors: [{mq: null, dpr: 1}],
-			},
-		],
-		// See: packages/style/src/scss/mixins/mg/hero_section.scss
-		// TODO: Organize sizes & media queries
-		sizes: [
-			{width: '1620px', size: '60vw'},
-			{width: '1360px', size: '60vw'},
-			{width: '935px', size: '70vw'},
-			{width: null, size: '100%'},
-		],
 	},
 	{
 		file: '001-intro',
@@ -103,43 +30,6 @@ const images = [
 		width: 2647,
 		height: 1869,
 		path: 'images/night',
-		srcset: [
-			{
-				width: 2000,
-				descriptors: [
-					{mq: '(min-width: 667px)', dpr: 3},
-					{mq: '(min-width: 1000px)', dpr: 2},
-					{mq: '(min-width: 2000px)', dpr: 1},
-				],
-			},
-			{
-				width: 1500,
-				descriptors: [
-					{mq: '(min-width: 500px)', dpr: 3},
-					{mq: '(min-width: 750px)', dpr: 2},
-					{mq: '(min-width: 1000px)', dpr: 1},
-				],
-			},
-			{
-				width: 1000,
-				descriptors: [
-					{mq: '(min-width: 500px)', dpr: 2},
-					{mq: '(min-width: 1000px)', dpr: 1},
-				],
-			},
-			{
-				width: 500,
-				descriptors: [{mq: null, dpr: 1}],
-			},
-		],
-		// See: packages/style/src/scss/mixins/mg/hero_section.scss
-		// TODO: Organize sizes & media queries
-		sizes: [
-			{width: '1620px', size: '60vw'},
-			{width: '1360px', size: '60vw'},
-			{width: '935px', size: '70vw'},
-			{width: null, size: '100%'},
-		],
 	},
 ]
 
@@ -148,8 +38,9 @@ let filePath = 0
 
 // TODO: use this to generate sizes & media queries
 // TODO: Generate 2x responsive images
-function optimize(sharpStream, image) {
-	const {file, ext, width, height, path, srcset} = image
+function optimize(sharpStream, image, config) {
+	const {file, ext, width, height, path} = image
+	const {srcset, sizes} = config
 
 	filePath = `${path}/${file}`
 
@@ -209,6 +100,7 @@ function optimize(sharpStream, image) {
 			console.log(
 				JSON.stringify({
 					...image,
+					...config,
 					sources: res,
 				}),
 			)
@@ -218,7 +110,7 @@ function optimize(sharpStream, image) {
 			try {
 				fs.unlinkSync(`./out/${path}/${file}-${width}-${height}.${ext}`)
 
-				sizes.forEach((size) => {
+				srcset.forEach((src) => {
 					fs.unlinkSync(`./out/${path}/${file}-${src.width}.${ext}`)
 					fs.unlinkSync(`./out/${path}/${file}-${src.width}.webp`)
 				})
@@ -227,7 +119,7 @@ function optimize(sharpStream, image) {
 }
 
 function main() {
-	optimize(sharpStream, images[0])
+	optimize(sharpStream, images[1], config)
 }
 
 export default main()
