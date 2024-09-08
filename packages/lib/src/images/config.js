@@ -10,7 +10,7 @@ const config = {
 			],
 		},
 		{
-			query: '(min-width: 970px)',
+			query: '(min-width: 1000px)',
 			srcset: [
 				{
 					width: 1500,
@@ -22,12 +22,12 @@ const config = {
 			query: '(min-width: 800px)',
 			srcset: [
 				{
-					width: 1500,
-					dpr: 2,
-				},
-				{
 					width: 1000,
 					dpr: 1,
+				},
+				{
+					width: 1500,
+					dpr: 2,
 				},
 			],
 		},
@@ -46,16 +46,16 @@ const config = {
 			width: 2000,
 			media: [
 				{
-					query: '(min-width: 700px)',
-					dpr: 3,
+					query: '(min-width: 1200px)',
+					dpr: 1.5,
 				},
 				{
-					query: '(min-width: 970px)',
+					query: '(min-width: 1000px)',
 					dpr: 2,
 				},
 				{
-					query: '(min-width: 1200px)',
-					dpr: 1.5,
+					query: '(min-width: 600px)',
+					dpr: 3,
 				},
 			],
 		},
@@ -63,16 +63,16 @@ const config = {
 			width: 1500,
 			media: [
 				{
-					query: '(min-width: 530px)',
-					dpr: 2.5,
+					query: '(min-width: 1000px)',
+					dpr: 1.5,
 				},
 				{
-					query: '(min-width: 700px)',
+					query: '(min-width: 750px)',
 					dpr: 2,
 				},
 				{
-					query: '(min-width: 970px)',
-					dpr: 1.5,
+					query: '(min-width: 530px)',
+					dpr: 2.5,
 				},
 			],
 		},
@@ -80,11 +80,11 @@ const config = {
 			width: 1000,
 			media: [
 				{
-					dpr: 2,
-				},
-				{
 					query: '(min-width: 970px)',
 					dpr: 1,
+				},
+				{
+					dpr: 2,
 				},
 			],
 		},
@@ -92,15 +92,15 @@ const config = {
 			width: 500,
 			media: [
 				{
-					dpr: 2,
+					query: '(min-width: 430px)',
+					dpr: 1,
 				},
 				{
 					query: '(min-width: 300px)',
 					dpr: 1.5,
 				},
 				{
-					query: '(min-width: 430px)',
-					dpr: 1,
+					dpr: 2,
 				},
 			],
 		},
