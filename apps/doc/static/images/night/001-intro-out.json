@@ -1,0 +1,81 @@
+{
+	"file": "001-intro",
+	"ext": "png",
+	"width": 2647,
+	"height": 1869,
+	"path": "images/night",
+	"sources": [
+		{
+			"format": "png",
+			"width": 2647,
+			"height": 1869,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 787955
+		},
+		{
+			"format": "png",
+			"width": 500,
+			"height": 353,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 40630
+		},
+		{
+			"format": "webp",
+			"width": 500,
+			"height": 353,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 20926
+		},
+		{
+			"format": "png",
+			"width": 1000,
+			"height": 706,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 112175
+		},
+		{
+			"format": "webp",
+			"width": 1000,
+			"height": 706,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 55818
+		},
+		{
+			"format": "png",
+			"width": 1500,
+			"height": 1059,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 196365
+		},
+		{
+			"format": "webp",
+			"width": 1500,
+			"height": 1059,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 93332
+		},
+		{
+			"format": "png",
+			"width": 2000,
+			"height": 1412,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 301192
+		},
+		{
+			"format": "webp",
+			"width": 2000,
+			"height": 1412,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 131176
+		}
+	]
+}

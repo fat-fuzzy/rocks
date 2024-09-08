@@ -1,14 +1,23 @@
 .page\:home header > * {
 	margin: 0 auto;
 }
-
-@media screen and (min-width: 768px) {
-	.page\:home main {
-		header > *,
-		> section {
-			--max-inline-size-center: 55vw;
-			max-inline-size: var(--max-inline-size-center);
-			margin-inline: auto;
-		}
+.page\:home main {
+	header > *,
+	> section {
+		max-inline-size: var(--max-inline-size-center);
+		margin-inline: auto;
 	}
+}
+
+/* This Centers content in the sidebar's main section */
+/* TODO: Figure out how to handle this better (use container query ?)
+ * Currently used for media page: see also blocks/media.css
+ */
+
+[class*='page:media/'] main {
+	position: relative;
+}
+
+[class*='page:media/'] main > [class*='l:sidebar'] {
+	padding: var(--ui-size);
 }

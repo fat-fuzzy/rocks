@@ -6,9 +6,9 @@
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
 	import Rotation from '$lib/components/geometry/Rotation.svelte'
-	import {blocks} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 
-	const {Button} = blocks
+	const {Button} = ui.blocks
 
 	type Props = {
 		id?: string

@@ -8,7 +8,6 @@ props_style:
     'blocks': {'element': ['size']},
     'layouts': {'container': ['container', 'size']},
   }
-context: ['app.settings', 'shared.container']
 ---
 
 ## Usage

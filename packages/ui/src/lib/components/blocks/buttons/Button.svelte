@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { ButtonProps } from './button.types.js'
+	import type { ButtonProps } from  '$types'
 	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		id = 'button',
 		name = 'button',
 		title,
-		text,
+		label,
 		value,
 		disabled,
 		formaction,
@@ -61,7 +61,7 @@
 >
 	{#if children}
 		{@render children()}
-	{:else if text}
-		{text}
+	{:else if label}
+		{label}
 	{/if}
 </button>

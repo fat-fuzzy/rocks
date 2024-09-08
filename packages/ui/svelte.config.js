@@ -13,10 +13,10 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		alias: {
+			$stores: path.resolve('./src/lib/stores'),
+			$types: path.resolve('./src/lib/types/index.d.ts'),
 			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),
-			$stores: path.resolve('./src/lib/stores'),
-			$types: path.resolve('./src/lib/types'),
 		},
 	},
 	extensions: ['.svelte', ...mdsvexConfig.extensions],

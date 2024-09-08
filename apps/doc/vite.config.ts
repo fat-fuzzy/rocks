@@ -5,6 +5,7 @@ const config: UserConfig = {
 	plugins: [sveltekit()],
 	build: {
 		target: 'esnext',
+		commonjsOptions: {transformMixedEsModules: true},
 	},
 }
 

@@ -17,7 +17,7 @@
 		depth?: number
 		isPage?: boolean
 		path?: string
-		component: any // TODO: fix types
+		SpecifiedElement: any // TODO: fix types
 		actionPath?: string
 		redirect?: string
 		category?: string
@@ -32,7 +32,7 @@
 		isPage = false,
 		depth = 0,
 		path = '',
-		component,
+		SpecifiedElement,
 		actionPath,
 		redirect,
 		category = '',
@@ -77,10 +77,10 @@
 	)
 	let surfaceClass = $derived( `surface:0:neutral`)
 	let settingsClasses = $derived(`settings:${brightness}:${contrast} ${surfaceClass}`)
-	let sectionClasses = $derived(`l:main card:xl inset ${settingsClasses}`)
+	let sectionClasses = $derived(`l:main stage card:xl inset ${settingsClasses}`)
 	let containerClasses = $derived(isPage ? sectionContainer : articleContainer)
 
-	let componentType = $derived(ApiElement[category])
+	let GenericElement = $derived(ApiElement[category])
 	let fixtures = $derived(
 		playbookStore.getElementFixtures({category, component: title}),
 	)
@@ -93,12 +93,11 @@
 
 {#snippet renderElement()}
 	<div class={containerClasses}>
-		<svelte:component
-			this={componentType}
+		<GenericElement
 			{isPage}
 			{path}
 			{title}
-			{component}
+			{SpecifiedElement}
 			{stylesApi}
 			props={currentProps}
 			{actionPath}
@@ -111,7 +110,7 @@
 
 {#if isPage}
 	<div class="l:sidebar:md">
-		{#if tab === 'demo'}
+		{#if tab === 'playbook'}
 			<section class={sectionClasses}>
 				{@render renderElement()}
 			</section>

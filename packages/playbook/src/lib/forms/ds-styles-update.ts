@@ -1,5 +1,5 @@
+import ui from '@fat-fuzzy/ui'
 import type {StyleTree} from '$lib/api/styles.types'
-import {constants} from '@fat-fuzzy/ui'
 import {initStyles} from '$lib/api/styles.api'
 
 const {
@@ -7,9 +7,9 @@ const {
 	DEFAULT_APP_SETTINGS,
 	TRANSITION_REVEAL,
 	NUMBER_TO_SIZE,
-} = constants
+} = ui.constants
 
-export class DsStylesUpdate {
+class DsStylesUpdate {
 	api
 	settings
 	contextReveal
@@ -82,3 +82,5 @@ export class DsStylesUpdate {
 		return JSON.stringify(styleTree)
 	}
 }
+
+export default DsStylesUpdate

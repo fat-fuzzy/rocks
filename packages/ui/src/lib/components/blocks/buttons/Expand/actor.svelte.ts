@@ -1,13 +1,14 @@
-import type {ButtonEvent} from '../button.types.js'
+import type {
+	ButtonEvent,
+	UiBlockProps,
+	UiStateExpand,
+	ExpandMachine,
+	FuzzyActor,
+	FuzzyPayload,
+} from '$types'
+import {UiState} from '$types'
+import {EXPAND_MACHINE, EXPAND_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
-import {type FuzzyActor, type FuzzyPayload} from '$types/machines.js'
-import {UiState, type UiBlockProps} from '$types/index.js'
-import {
-	type UiStateExpand,
-	type ExpandMachine,
-	EXPAND_MACHINE,
-	EXPAND_TRANSITIONS,
-} from './expand.types.js'
 
 class ExpandActor implements FuzzyActor {
 	state: UiStateExpand = $state(UiState.collapsed)
@@ -17,7 +18,7 @@ class ExpandActor implements FuzzyActor {
 	expanded = $derived(this.state === UiState.expanded)
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
-	text = $derived(this.currentState?.text || '')
+	label = $derived(this.currentState?.label || '')
 
 	constructor({
 		initial,

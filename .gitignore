@@ -2,10 +2,6 @@
 .DS_Store
 **/.DS_Store
 /node_modules/
-/src/node_modules/@sapper/
-yarn-error.log
-/cypress/screenshots/
-/__sapper__/
 .vscode/
 
 # Logs
@@ -131,7 +127,7 @@ Temporary Items
 
 # turbo
 .turbo
-out/
+-out/
 
 ### CDK-specific ignores ###
 *.swp

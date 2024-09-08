@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type {LinkListProps} from './nav.types.js'
+	import type {LinkListProps} from '$types'
+	import {UiSize, UiColor} from '$types'
 	import format from '$lib/utils/format.js'
 	import {getStores} from '$app/stores'
 
@@ -13,12 +14,13 @@
 	let {
 		path = '',
 		layout,
-		size = '2xs',
-		color = 'primary',
+		size = UiSize['2xs'],
+		color = UiColor.primary,
 		align,
 		id,
 		depth = 0,
 		container,
+		redirect,
 		items = [], // TODO: fix type,
 	}: LinkListProps = $props()
 
@@ -66,7 +68,8 @@
 					{slug}
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
-					size="2xs"
+					size={UiSize['2xs']}
+					{redirect}
 				>
 					<svelte:self
 						items={subItems}

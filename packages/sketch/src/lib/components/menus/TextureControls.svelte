@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {Filters} from '$types/index.js'
-	import {recipes} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import store from '$lib/components/sketch/store.svelte'
-	const {ToggleMenu} = recipes
+	const {ToggleMenu} = ui.recipes
 
 	type Props = {
 		id: string
@@ -42,7 +42,7 @@
 		channels?.map((c) => ({
 			id: c,
 			name: c,
-			text: c,
+			label: c,
 			value: c,
 		})) || [],
 	)
@@ -51,7 +51,7 @@
 		blur?.map((b) => ({
 			id: String(b),
 			name: String(b),
-			text: `blur ${b}`,
+			label: `blur ${b}`,
 			value: b,
 		})) || [],
 	)
@@ -60,7 +60,7 @@
 		convolutions?.map((b) => ({
 			id: b,
 			name: b,
-			text: b,
+			label: b,
 			value: b,
 		})) || [],
 	)

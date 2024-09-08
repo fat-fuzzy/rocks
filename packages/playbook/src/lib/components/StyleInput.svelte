@@ -3,12 +3,13 @@
 	import type {StyleInputGroup} from '$lib/api/styles.types'
 
 	import {onMount, getContext} from 'svelte'
-	import {blocks, recipes} from '@fat-fuzzy/ui' // TODO: fix types
+	import fatFuzzyUi from '@fat-fuzzy/ui'
 
 	import PlaybookStore from '$lib/api/store.svelte'
 
-	const {InputRange} = blocks
-	const {ToggleMenu, InputGroup} = recipes
+	const {InputRange} = fatFuzzyUi.blocks
+	const {InputGroup} = fatFuzzyUi.drafts
+	const {ToggleMenu} = fatFuzzyUi.recipes
 
 	type Props = {
 		styleInput: StyleInputGroup
@@ -130,7 +131,7 @@
 		playbookContext.applyStyles(playbookStore.styles)
 	})
 
-	let {id, input, name, value, items} = $derived(styleInput)
+	let {id, input, name, value, assetType, items} = $derived(styleInput)
 	let currentValue = $derived(
 		styles[categoryName] &&
 			styles[categoryName].families[familyName] &&
@@ -164,6 +165,7 @@
 		variant={apiVariant}
 		container={styleInput.container}
 		mode={styleInput.mode ?? 'radio'}
+		{assetType}
 		{formaction}
 		onupdate={(event) => handleToggle(event, familyName, styleInput.id)}
 		init={(event) => handleToggle(event, familyName, currentValue)}
@@ -171,8 +173,7 @@
 {:else}
 	{#if input === 'radio' ?? input === 'checkbox'}
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
-		<svelte:component
-			this={InputComponent}
+		<InputComponent
 			{id}
 			{items}
 			name={id}
@@ -185,13 +186,12 @@
 			size={size ?? apiSize}
 			color={apiColor}
 			variant={styleInput.variant}
-			onupdate={(event) => handleInput(event, familyName)}
+			oninput={(event) => handleInput(event, familyName)}
 		/>
 	{/if}
 	{#if input == 'range'}
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
-		<svelte:component
-			this={InputComponent}
+		<InputComponent
 			{id}
 			label={styleInput.name}
 			{items}

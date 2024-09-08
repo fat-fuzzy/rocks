@@ -12,14 +12,9 @@
 			top: var(--y-axis);
 			z-index: 1;
 
-			[aria-expanded] {
-				max-inline-size: calc(100% - var(--ui-size));
-			}
-
 			ul.depth-0 {
 				block-size: var(--y-size-sticky);
 				overflow: hidden auto;
-				scrollbar-gutter: stable;
 			}
 
 			ul:not(.depth-0) {

@@ -1,23 +1,24 @@
-import {UiState, type UiBlockProps} from '$types/index.js'
+import type {
+	ButtonEvent,
+	UiBlockProps,
+	FuzzyPayload,
+	FuzzyActor,
+	ToggleMachine,
+	UiStateToggle,
+} from '$types'
+import {UiState} from '$types'
+import {TOGGLE_MACHINE, TOGGLE_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
-import type {ButtonEvent} from '../button.types.js'
-import {type FuzzyPayload, type FuzzyActor} from '$types/machines.js'
-import {
-	type UiStateToggle,
-	type ToggleMachine,
-	TOGGLE_MACHINE,
-	TOGGLE_TRANSITIONS,
-} from './toggle.types.js'
-
 class ToggleActor implements FuzzyActor {
 	state: UiStateToggle = $state(UiState.inactive)
-	machine: ToggleMachine = $state(TOGGLE_MACHINE)
+	machine = $state(TOGGLE_MACHINE)
 	transitions = TOGGLE_TRANSITIONS
+	// @ts-expect-error TODO: Fix this.state type
 	currentState = $derived(this.machine[this.state])
 	pressed = $derived(this.state === UiState.active)
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
-	text = $derived(this.currentState?.text || '')
+	label = $derived(this.currentState?.label || '')
 
 	constructor({
 		initial,
@@ -40,7 +41,7 @@ class ToggleActor implements FuzzyActor {
 		const state = this.state
 		const transition = this.transitions[state][event]
 		if (transition) {
-			return transition as UiStateToggle
+			return transition as UiState
 		}
 		return state
 	}

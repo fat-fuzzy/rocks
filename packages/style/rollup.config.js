@@ -7,7 +7,7 @@ import postcssGlobalData from '@csstools/postcss-global-data'
 import postcssJitProps from 'postcss-jit-props'
 import postcssMinify from '@csstools/postcss-minify'
 import postcssPresetEnv from 'postcss-preset-env'
-import fs from 'fs'
+import fs from 'node:fs'
 import path from 'node:path'
 
 const production = process.env.NODE_ENV === 'production'
@@ -34,7 +34,7 @@ export default {
 					fs.mkdirSync(path.dirname(outputPath), {recursive: true})
 					fs.writeFileSync(outputPath, content)
 				})
-			}, // will output compiled styles to "src/lib/**/*.css" as separate files including the folder structure
+			}, // will output compiled styles to "dist/lib/**/*.css" as separate files including the folder structure. Use in conjunction with exports in package.json to expose css files
 		}),
 		postcss({
 			extract: true,

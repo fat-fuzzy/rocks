@@ -1,14 +1,26 @@
-import {UiStatus, type UiBlockProps, type UiTextContext} from '$types/index.js'
+import type {UiBlockProps, UiTextContext} from '$types'
+import {UiStatus} from '$types'
 
 function getElementStyles(props: UiBlockProps): string {
-	let {color, size, shape, align, justify, asset, variant, background} = props
+	let {
+		color,
+		size,
+		shape,
+		align,
+		justify,
+		asset,
+		assetType,
+		variant,
+		background,
+	} = props
 
 	/* Element styles */
 	let colorClass = color ? `color:${color}` : '' // TODO: clarify bg/color/surface
 	let backgroundClass = color ? `bg:${color}` : ''
 	let sizeClass = size ? `size:${size}` : ''
 	let fontClass = size ? `font:${size}` : ''
-	let assetClass = asset ? `emoji:${asset}` : ''
+	let assetTypeClass = assetType ? assetType : 'emoji'
+	let assetClass = asset ? `${assetTypeClass}:${asset}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
 	let shapeClass = shape ? ` shape:${shape}` : ''
 	let alignClass = align ? `align:${align}` : ''
@@ -74,17 +86,22 @@ function getFeedbackStyles(
 	status: UiStatus,
 	context: UiTextContext,
 ): string {
-	let {size, asset, variant, align, justify, container} = props
+	let {size, asset, assetType, variant, align, justify, container} = props
 
 	let variantClass = variant ? `variant:${variant}` : ''
 	let fontClass = size ? `font:${size}` : ''
-	if (fontClass) {
-		fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
-	}
+	// if (fontClass) {
+	// 	fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
+	// }
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 	let statusClass = status ? `status:${status}` : ''
-	let assetClass = status ? `emoji:${status}` : asset ? `emoji:${asset}` : ''
+	let assetTypeClass = assetType ? assetType : 'emoji'
+	let assetClass = status
+		? `${assetTypeClass}:${status}`
+		: asset
+			? `${assetTypeClass}:${asset}`
+			: ''
 	let typeClass = context ? `feedback:${context}` : 'feedback'
 	let backgroundClass = context === 'code' ? '' : `bg:${status}:100`
 	let containerClass =
@@ -103,6 +120,7 @@ function getStyles(props: UiBlockProps): string {
 		align,
 		justify,
 		asset,
+		assetType,
 		variant,
 		layout,
 		container,
@@ -119,6 +137,7 @@ function getStyles(props: UiBlockProps): string {
 		align,
 		justify,
 		asset,
+		assetType,
 		variant,
 	})
 

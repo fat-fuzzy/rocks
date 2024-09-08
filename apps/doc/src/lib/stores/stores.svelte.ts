@@ -1,4 +1,4 @@
-import {constants} from '@fat-fuzzy/ui'
+import ui from '@fat-fuzzy/ui'
 
 const {
 	DEFAULT_REVEAL_STATE,
@@ -6,17 +6,21 @@ const {
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_STYLES,
 	DEFAULT_TABS,
-} = constants
+} = ui.constants
 
+// TODO - Get type from @fat-fuzzy/ui
+type Settings = {[key: string]: string}
 class FatFuzzyStore {
 	styles = $state(DEFAULT_STYLES)
-	reveal = $state(DEFAULT_REVEAL_STATE)
-	app = $state({settings: DEFAULT_APP_SETTINGS})
-	menuReveal = $state(DEFAULT_REVEAL_STATE)
-	navReveal = $state(DEFAULT_REVEAL_STATE)
-	sidebarReveal = $state(DEFAULT_NAV_REVEAL_STATE)
-	settingsReveal = $state(DEFAULT_REVEAL_STATE)
-	currentTabs = $state({ui: DEFAULT_TABS[0]})
+	reveal: Settings = $state(DEFAULT_REVEAL_STATE)
+	app: {settings: Settings} = $state({
+		settings: DEFAULT_APP_SETTINGS,
+	})
+	menuReveal: Settings = $state(DEFAULT_REVEAL_STATE)
+	navReveal: Settings = $state(DEFAULT_REVEAL_STATE)
+	sidebarReveal: Settings = $state(DEFAULT_NAV_REVEAL_STATE)
+	settingsReveal: Settings = $state(DEFAULT_REVEAL_STATE)
+	currentTabs: {ui: Settings} = $state({ui: DEFAULT_TABS[0]})
 
 	constructor() {}
 	// TODO: init and update functions

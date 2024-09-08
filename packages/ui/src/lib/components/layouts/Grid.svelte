@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { GridLayoutProps } from "./layout.types.js"
+	import type { GridLayoutProps } from '$types'
 
 	let {areas = 'md',flex,  navs, header, content, actions, footer}: GridLayoutProps = $props()
 

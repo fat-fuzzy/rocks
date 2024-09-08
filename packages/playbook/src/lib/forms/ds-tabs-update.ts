@@ -1,9 +1,9 @@
+import ui from '@fat-fuzzy/ui'
 import type {Tab} from '$types/index.js'
-import constants from '$lib/types/constants.js'
 
-const {DEFAULT_TABS} = constants
+const {DEFAULT_TABS} = ui.constants
 
-export class DsTabsUpdate {
+class DsTabsUpdate {
 	currentTabs: {[key: string]: Tab}
 
 	/**
@@ -38,3 +38,5 @@ export class DsTabsUpdate {
 		return JSON.stringify(this.currentTabs)
 	}
 }
+
+export default DsTabsUpdate

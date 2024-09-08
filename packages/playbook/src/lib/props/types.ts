@@ -19,6 +19,7 @@ export type Meta = {
 	props_state?: StateProps
 	content_types?: string[]
 	context: string[]
+	status: string
 }
 
 export type Markdown = {html: string; meta: Meta}

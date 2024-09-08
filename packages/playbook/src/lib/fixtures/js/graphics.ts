@@ -2,9 +2,9 @@ export default {
 	Sketch: {
 		background: 'contrast',
 		items: [
-			{id: 'play', value: 'play', text: 'Play', asset: 'play'},
-			{id: 'pause', value: 'pause', text: 'Pause', asset: 'pause'},
-			{id: 'clear', value: 'clear', text: 'Clear', asset: 'clear'},
+			{id: 'play', value: 'play', label: 'Play', asset: 'play'},
+			{id: 'pause', value: 'pause', label: 'Pause', asset: 'pause'},
+			{id: 'clear', value: 'clear', label: 'Clear', asset: 'clear'},
 		],
 	},
 	Geometry: {

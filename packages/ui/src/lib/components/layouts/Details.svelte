@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { DetailsLayoutProps } from "./layout.types.js"
+	import type { DetailsLayoutProps } from  '$types'
 
 	let {
 		layout,
@@ -32,7 +32,7 @@
 	{#if summary}
 		{@render summary()}
 	{:else}
-		<p >Click to Reveal</p>
+		<p>Click to Reveal</p>
 	{/if}
 	</summary>
 	<div class={`${align} ${show}`}>

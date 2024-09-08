@@ -11,7 +11,6 @@ props_style:
         'container': ['container', 'size'],
       },
   }
-context: ['app.settings']
 ---
 
 ## What are Layouts ?

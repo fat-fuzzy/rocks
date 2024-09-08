@@ -1,21 +1,21 @@
-import {constants} from '@fat-fuzzy/ui'
-const {APP_SETTINGS} = constants
+import ui from '@fat-fuzzy/ui'
+const {APP_SETTINGS} = ui.constants
 
 export const links = [{id: 'link-list.doc', slug: 'doc', title: 'Doc'}]
 
 export default {
 	ButtonMenu: {
 		items: [
-			{id: 'menu.button.vader', text: 'Vader', asset: 'vader'},
-			{id: 'menu.button.ollie', text: 'Ollie', asset: 'ollie'},
-			{id: 'menu.button.moby', text: 'Moby', asset: 'moby'},
+			{id: 'menu.button.vader', label: 'Vader', asset: 'vader'},
+			{id: 'menu.button.ollie', label: 'Ollie', asset: 'ollie'},
+			{id: 'menu.button.moby', label: 'Moby', asset: 'moby'},
 		],
 	},
 	ToggleMenu: {
 		items: [
-			{id: 'menu.toggle.idea', text: 'Idea', asset: 'idea'},
-			{id: 'menu.toggle.profile', text: 'Profile', asset: 'profile'},
-			{id: 'menu.toggle.favorite', text: 'Favorite', asset: 'favorite'},
+			{id: 'menu.toggle.idea', label: 'Idea', asset: 'idea'},
+			{id: 'menu.toggle.profile', label: 'Profile', asset: 'profile'},
+			{id: 'menu.toggle.favorite', label: 'Favorite', asset: 'favorite'},
 		],
 	},
 	RevealMenu: {
@@ -23,9 +23,9 @@ export default {
 		title: 'RevealMenu',
 		actionPath: '/',
 		items: [
-			{id: 'reveal-menu.button.idea', text: 'Idea', asset: 'idea'},
-			{id: 'reveal-menu.button.profile', text: 'Profile', asset: 'profile'},
-			{id: 'reveal-menu.button.favorite', text: 'Favorite', asset: 'favorite'},
+			{id: 'reveal-menu.button.idea', label: 'Idea', asset: 'idea'},
+			{id: 'reveal-menu.button.profile', label: 'Profile', asset: 'profile'},
+			{id: 'reveal-menu.button.favorite', label: 'Favorite', asset: 'favorite'},
 		],
 	},
 	RadioGroup: [
@@ -78,10 +78,16 @@ export default {
 			},
 		],
 	},
+	SignUp: {
+		slug: 'ui',
+		title: 'SignUp',
+		validationFunction: 'SignUpValidationFunction',
+		dataPrefix: 'sample',
+		inputs: ['email', 'password'],
+	},
 	Header: {
 		slug: 'ui',
 		title: 'Header',
-		actionPath: '/',
 		items: {
 			links,
 			settings: APP_SETTINGS,

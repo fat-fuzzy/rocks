@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain} = content
+	const {PageMain} = ui.content
 
 	let markdowns = $state($page.data.markdowns.usages)
 	let title = 'Usage'
@@ -10,7 +10,7 @@
 		'Fat Fuzzy Doc: how to use the packages in this project, examples, notes'
 </script>
 
-<PageMain {title} {description} size="lg" page="Doc">
+<PageMain {title} {description} size="lg" pageName="Doc">
 	<div class="l:text maki:block:2xs">
 		<ul class="l:stack:lg w:full unstyled">
 			{#each markdowns as { meta }}

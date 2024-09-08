@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/sketch",
 	"name": "@fat-fuzzy/sketch",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -16,7 +16,7 @@
 		"lint:scss": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/styles/scss/**/*.scss &> ./logs/stylelint-scss.log",
 		"format": "prettier --write .",
 		"test:e2e": "./node_modules/@fat-fuzzy/config/node_modules/.bin/playwright test",
-		"test:unit": "vitest"
+		"test:unit": "vitest run"
 	},
 	"exports": {
 		".": {
@@ -31,24 +31,24 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"@sveltejs/kit": "^2.0.0",
-		"svelte": "^5.0.0",
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
-		"@fat-fuzzy/ui": "workspace:*"
+		"@fat-fuzzy/ui": "workspace:*",
+		"@sveltejs/kit": "^2.5.4",
+		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/lib": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
-		"@playwright/test": "^1.45.3",
+		"@playwright/test": "^1.46.1",
 		"@sveltejs/adapter-cloudflare": "^4.6.1",
-		"@sveltejs/kit": "^2.5.18",
-		"@sveltejs/package": "^2.3.2",
-		"@sveltejs/vite-plugin-svelte": "^3.1.1",
-		"svelte": "5.0.0-next.184",
+		"@sveltejs/kit": "^2.5.4",
+		"@sveltejs/package": "^2.3.4",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.5",
+		"svelte": "5.0.0-next.238",
 		"svelte-check": "^3.8.4",
 		"svelte-preprocess": "^5.1.4",
 		"@types/node": "^20.14.10",

@@ -1,0 +1,103 @@
+.ffr\:icon {
+	color: var(--ink);
+	background-color: var(--shade);
+	display: inline-flex;
+	flex-wrap: nowrap;
+	block-size: fit-content;
+	inline-size: fit-content;
+	font-size: var(--font-size);
+	font-family: var(--font-family-ui);
+	font-weight: var(--font-weight-ui);
+}
+
+.ffr\:callout[class*='magic'] {
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	background-clip: text;
+	background: var(--magic-gradient);
+	color: var(--ink);
+	padding: var(--ui-size-sm);
+	border-radius: var(--border-radius-base);
+
+	&:has(~ [class*='icon']) {
+		margin-inline-end: var(--ui-size-sm);
+	}
+}
+
+.magic\:bleu {
+	--magic-gradient: linear-gradient(
+		148deg,
+		var(--color-gradient-000-start) 12% 12%,
+		var(--color-gradient-000-middle) 49% 49%,
+		var(--color-gradient-000-end) 88% 88%
+	);
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma-contrast: var(--color-chroma-000);
+
+	&[class*='svg'] {
+		--magic-gradient: linear-gradient(
+			148deg,
+			var(--color-gradient-000-start) 22% 22%,
+			var(--color-gradient-000-middle) 49% 49%,
+			var(--color-gradient-000-end) 88% 88%
+		);
+	}
+}
+
+.magic\:sea {
+	--magic-gradient: linear-gradient(
+		148deg,
+		var(--color-gradient-000-end) 22% 22%,
+		var(--color-gradient-001-middle) 70% 70%,
+		var(--color-gradient-000-middle) 88% 88%
+	);
+	--lightness-contrast: var(--color-lightness-600);
+	--chroma-contrast: var(--color-chroma-600);
+
+	&[class*='svg'] {
+		--magic-gradient: linear-gradient(
+			148deg,
+			var(--color-gradient-000-end) 22% 22%,
+			var(--color-gradient-001-middle) 49% 49%,
+			var(--color-gradient-000-middle) 88% 88%
+		);
+	}
+}
+
+.magic\:dante {
+	--magic-gradient: linear-gradient(
+		148deg,
+		var(--color-gradient-001-start) 12% 12%,
+		var(--color-gradient-001-middle) 49% 49%,
+		var(--color-gradient-001-end) 88% 88%
+	);
+	--lightness-contrast: var(--color-lightness-600);
+	--chroma-contrast: var(--color-chroma-600);
+
+	&.purgatorio {
+		--magic-gradient: radial-gradient(
+			farthest-corner at 50% 95%,
+			/* var(--color-gradient-000-start) 40% 40%, */
+				var(--color-gradient-001-end) 40% 40%,
+			var(--color-gradient-001-middle) 70% 70%,
+			var(--color-gradient-001-start) 88% 88%
+		);
+		font-weight: var(--font-weight-semibold);
+	}
+
+	&.inferno {
+		--magic-gradient: repeating-radial-gradient(
+			farthest-corner at 50% 50%,
+			var(--color-gradient-001-start) 20%,
+			var(--color-gradient-001-end) 30%,
+			var(--color-gradient-001-middle) 45%,
+			var(--color-gradient-001-end) 60%,
+			var(--color-gradient-001-start) 80%
+		);
+		font-weight: var(--font-weight-semibold);
+	}
+}
+
+.ink\:white {
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma-contrast: var(--color-chroma-000);
+}

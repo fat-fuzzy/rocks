@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/config",
-	"version": "0.1.8",
+	"version": "0.1.9",
 	"description": "",
 	"keywords": [],
 	"author": "Patricia Boh",
@@ -17,7 +17,7 @@
 		"./playwright": "./src/playwright.config.js"
 	},
 	"peerDependencies": {
-		"@playwright/test": "^1.45.3",
+		"@playwright/test": "^1.46.1",
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
 		"@typescript-eslint/parser": "^6.21.0",
 		"eslint": "^9.8.0",
@@ -35,7 +35,7 @@
 		"typescript": "^5.5.4"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.45.3",
+		"@playwright/test": "^1.46.1",
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
 		"@typescript-eslint/parser": "^6.21.0",
 		"eslint": "^9.8.0",

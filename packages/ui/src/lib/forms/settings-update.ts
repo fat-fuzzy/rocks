@@ -1,10 +1,10 @@
 import type {Settings} from '$types'
-import constants from '$types/constants'
+import constants from '$lib/types/constants.js'
 
 const {DEFAULT_APP_SETTINGS, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
 	constants
 
-export class SettingsUpdate {
+class SettingsUpdate {
 	app: Settings
 	/**
 	 * Initialize default Settings object or from the user's cookie values, if any
@@ -13,7 +13,7 @@ export class SettingsUpdate {
 		if (settings) {
 			this.app = {settings: settings.settings}
 		} else {
-			this.app = {settings: DEFAULT_APP_SETTINGS}
+			this.app = DEFAULT_APP_SETTINGS
 		}
 	}
 
@@ -43,3 +43,5 @@ export class SettingsUpdate {
 		return JSON.stringify(this.app)
 	}
 }
+
+export default SettingsUpdate

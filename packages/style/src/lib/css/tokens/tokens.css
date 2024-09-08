@@ -20,9 +20,15 @@
   --color-chroma-500: 0.15;
   --color-chroma-600: 0.1;
   --color-chroma-neutral: 0.001;
-  --color-gradient-000-end: var(--color-shadow-accent);
-  --color-gradient-000-middle: var(--color-shadow-primary);
-  --color-gradient-000-start: var(--color-shadow-highlight);
+  --color-gradient-000-end: var(--color-magic-accent);
+  --color-gradient-000-middle: var(--color-magic-primary);
+  --color-gradient-000-start: var(--color-magic-highlight);
+  --color-gradient-001-end: var(--color-magic-danger);
+  --color-gradient-001-middle: var(--color-magic-warning);
+  --color-gradient-001-start: var(--color-magic-success);
+  --color-gradient-002-end: var(--color-magic-danger-a);
+  --color-gradient-002-middle: var(--color-magic-warning-a);
+  --color-gradient-002-start: var(--color-magic-success-a);
   --color-hue-blue: 269.95;
   --color-hue-fuschia: 360;
   --color-hue-gray: 0;
@@ -45,6 +51,15 @@
   --color-lightness-light-base: 99%;
   --color-lightness-light-blend: 96%;
   --color-lightness-light-contrast: 99%;
+  --color-magic-accent: #3ddcf5;
+  --color-magic-danger: #ff3375;
+  --color-magic-danger-a: #ff3375b3;
+  --color-magic-highlight: #f53d9b;
+  --color-magic-primary: #5500e3;
+  --color-magic-success: #34fee0;
+  --color-magic-success-a: #34fee080;
+  --color-magic-warning: #fed634;
+  --color-magic-warning-a: #fed63480;
   --color-semantic-danger: var(--color-hue-red);
   --color-semantic-info: var(--color-hue-blue);
   --color-semantic-success: var(--color-hue-green);
@@ -166,6 +181,7 @@
   --layout-grid-item-xs: 10rem;
   --layout-sidebar-2xl: calc(var(--layout-sidebar-xl) * var(--size-ratio-sm));
   --layout-sidebar-2xs: calc(var(--layout-sidebar-xs) / var(--size-ratio-sm));
+  --layout-sidebar-3xl: calc(var(--layout-sidebar-2xl) * var(--size-ratio-lg));
   --layout-sidebar-base: 22ch;
   --layout-sidebar-collapsed: 6em;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
@@ -194,7 +210,7 @@
   --outline-offset-settings: 2px;
   --outline-width: 1px;
   --scale-base-00: var(--size-base-initial);
-  --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-sm));
+  --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
   --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-sm));
   --scale-base-03: calc(var(--scale-base-02) / var(--size-ratio-sm));
   --scale-base-04: calc(var(--scale-base-03) / var(--size-ratio-sm));
@@ -249,6 +265,15 @@
 
 @supports (color: color(display-p3 1 1 1)) {
   :root {
+    --color-magic-accent: color(display-p3 0.23921568627450981 0.8627450980392157 0.9607843137254902);
+    --color-magic-danger: color(display-p3 1 0.2 0.4588235294117647);
+    --color-magic-danger-a: color(display-p3 1 0.2 0.4588235294117647 / 0.7019607843137254);
+    --color-magic-highlight: color(display-p3 0.9607843137254902 0.23921568627450981 0.6078431372549019);
+    --color-magic-primary: color(display-p3 0.3333333333333333 0 0.8901960784313725);
+    --color-magic-success: color(display-p3 0.20392156862745098 0.996078431372549 0.8784313725490196);
+    --color-magic-success-a: color(display-p3 0.20392156862745098 0.996078431372549 0.8784313725490196 / 0.5019607843137255);
+    --color-magic-warning: color(display-p3 0.996078431372549 0.8392156862745098 0.20392156862745098);
+    --color-magic-warning-a: color(display-p3 0.996078431372549 0.8392156862745098 0.20392156862745098 / 0.5019607843137255);
     --color-shadow-accent: color(display-p3 0.23921568627450981 0.8627450980392157 0.9607843137254902);
     --color-shadow-highlight: color(display-p3 0.9607843137254902 0.23921568627450981 0.6078431372549019);
     --color-shadow-primary: color(display-p3 0.3333333333333333 0 0.8901960784313725);

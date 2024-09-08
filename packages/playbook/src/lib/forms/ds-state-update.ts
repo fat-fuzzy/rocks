@@ -1,9 +1,9 @@
-import type {Settings} from '$types'
-import constants from '$types/constants'
+import ui from '@fat-fuzzy/ui'
+import type {Settings, UiRevealState} from '$types'
 
-const {DEFAULT_DS_STATE, TRANSITION_REVEAL} = constants
+const {DEFAULT_DS_STATE, TRANSITION_REVEAL} = ui.constants
 
-export class DsStateUpdate {
+class DsStateUpdate {
 	state: {
 		menuReveal: Settings
 		navReveal: Settings
@@ -93,3 +93,5 @@ export class DsStateUpdate {
 		return JSON.stringify(this.state)
 	}
 }
+
+export default DsStateUpdate

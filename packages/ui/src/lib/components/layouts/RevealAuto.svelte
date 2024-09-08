@@ -1,9 +1,9 @@
 <script lang="ts">
+	import type { RevealLayoutProps} from '$types'
 	import {enhance} from '$app/forms'
-	import type {RevealLayoutProps} from './layout.types.js'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import styleHelper from '$lib/utils/styles.js'
 
 	// import {clickOutside} from '$lib/utils/click-outside.js'
@@ -52,7 +52,7 @@
 	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses} ${elementClasses}`)
 
 	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+		$derived(formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction)
 </script>
 
 <svelte:element {id} this={element} class={revealClasses} aria-label={title}>
@@ -70,14 +70,12 @@
 	>
 		<Expand
 			id={`button-reveal-auto-${id}`}
-			{title}
 			{color}
 			{variant}
 			{size}
 			type={actionPath && formaction ? 'submit' : 'button'}
 			name="reveal-auto"
 			controls={`reveal-auto-${id}`}
-			value={'menu'}
 			asset={asset}
 			states={EXPAND_MACHINE}
 			onclick={toggleReveal}

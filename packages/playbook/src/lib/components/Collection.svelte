@@ -50,13 +50,13 @@
 
 {#snippet categoryElements()}
 	{#each componentNames as name}
-		{@const component = components[name]}
+		{@const SpecifiedElement = components[name]}
 		<Element
 			title={name}
 			depth={isPage ? Number(depth) + 1 : Number(depth) + 2}
 			{path}
 			{category}
-			{component}
+			{SpecifiedElement}
 			{actionPath}
 			meta={getElementMeta(name, categoryMarkdowns)}
 			{redirect}
@@ -73,7 +73,7 @@
 
 {#if isPage}
 	<div class="l:sidebar:md">
-		{#if tab === 'demo'}
+		{#if tab === 'playbook'}
 			<section class={`l:main ${layoutClass}`}>
 				{@render categoryElements()}
 			</section>
@@ -91,9 +91,11 @@
 			</aside>
 		{:else if tab === 'doc'}
 			<section class="l:main">
-				{#if children}
-					{@render children()}
-				{/if}
+				<div class="l:text:lg">
+					{#if children}
+						{@render children()}
+					{/if}
+				</div>
 			</section>
 			<aside class="l:side l:stack:md">
 				<PropsDoc {meta} />

@@ -1,20 +1,36 @@
 const pages = [
 	{path: '/', slug: '', title: 'Home'},
-	{path: 'about', slug: 'about', title: 'About'},
-	{path: '/dev', slug: 'dev', title: 'Dev'},
-	{path: '/log', slug: 'log', title: 'Log'},
+	{
+		path: '/doc',
+		slug: 'doc',
+		title: 'Doc',
+		items: [
+			{path: '/doc/usage', slug: 'usage', title: 'Usage', linkTitle: 'Usage'},
+			{
+				path: '/doc/decisions',
+				slug: 'decisions',
+				title: 'Decisions Log',
+				linkTitle: 'Usage',
+			},
+		],
+	},
 	{path: '/ui', slug: 'ui', title: 'UI'},
 	{path: '/play', slug: 'play', title: 'Play'},
+	{path: '/blog', slug: 'blog', title: 'Blog'},
 ]
 
 const categories = {
-	path: pages[4].path,
+	path: () => pages.find(({slug}) => slug === 'ui')?.path ?? '/ui',
 	ready: ['Tokens', 'Blocks'],
 	draft: ['Layouts', 'Recipes'],
 }
 
 const blocks = {
-	path: `${pages[4].path}/blocks`,
+	path: () => {
+		const parent = pages.find(({slug}) => slug === 'ui')?.path
+		if (parent) return `${parent}/blocks`
+		return '/ui/blocks'
+	},
 	ready: [
 		'Button',
 		'Expand',
@@ -25,18 +41,27 @@ const blocks = {
 		'InputRadio',
 		'InputRange',
 		'InputFile',
+		'Magic',
 	],
-	draft: ['Fieldset'],
+	draft: ['Fieldset', 'InputGroup', 'Picture'],
 }
 
 const layouts = {
-	path: `${pages[4].path}/layouts`,
+	path: () => {
+		const parent = pages.find(({slug}) => slug === 'ui')?.path
+		if (parent) return `${parent}/layouts`
+		return '/ui/layouts'
+	},
 	ready: ['Burrito', 'Reveal', 'RevealAuto', 'Sidebar', 'Stack', 'Switcher'],
 	draft: [],
 }
 
 const recipes = {
-	path: `${pages[4].path}/recipes`,
+	path: () => {
+		const parent = pages.find(({slug}) => slug === 'ui')?.path
+		if (parent) return `${parent}/recipes`
+		return '/ui/recipes'
+	},
 	ready: [
 		'ButtonMenu',
 		'RevealMenu',
@@ -44,8 +69,9 @@ const recipes = {
 		'ToggleMenu',
 		'Header',
 		'Nav',
+		'SignUp',
 	],
-	draft: ['InputGroup', 'Login'],
+	draft: [],
 }
 
 export default {pages, categories, blocks, layouts, recipes}

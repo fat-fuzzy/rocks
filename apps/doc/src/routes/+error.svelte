@@ -1,11 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
+	import ui from '@fat-fuzzy/ui'
 
-	import {blocks} from '@fat-fuzzy/ui'
-	import {content} from '@fat-fuzzy/ui'
-
-	const {Feedback} = blocks
-	const {PageMain} = content
+	const {Feedback} = ui.blocks
+	const {PageMain} = ui.content
 
 	let title = $derived($page.status)
 	let status = $state('error')
@@ -22,7 +20,7 @@
 </script>
 
 <PageMain
-	{title}
+	title={String(title)}
 	{description}
 	size="xl"
 	pageName={String($page.status)}

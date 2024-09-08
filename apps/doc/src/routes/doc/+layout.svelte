@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
-	const {LayoutSidebar} = content
+	const {LayoutSidebar} = ui.content
 
 	let {children} = $props()
 	let app = $derived(fatFuzzyStore.app)
@@ -23,7 +23,7 @@
 						slug: meta.slug,
 						title: meta.title,
 						asset: meta.asset,
-					}))	,
+					})),
 				},
 				{
 					slug: 'decisions',
@@ -34,7 +34,7 @@
 						slug: meta.slug,
 						title: meta.title,
 						asset: meta.asset,
-					}))	,
+					})),
 				},
 			],
 		}

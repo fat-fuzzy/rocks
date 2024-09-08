@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.9
+
+### Patch Changes
+
+- 0fed8f8: New pages (blog, media) & perf improvements for media
+
 ## 0.1.8
 
 ### Patch Changes

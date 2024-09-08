@@ -2,10 +2,10 @@
 	import type { Snippet } from 'svelte'
 	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import sketchStore from '$lib/stores/stores.svelte'
 
-const {LayoutSidebar} = content
+const {LayoutSidebar} = ui.content
 
 	type Props = {
 		children: Snippet

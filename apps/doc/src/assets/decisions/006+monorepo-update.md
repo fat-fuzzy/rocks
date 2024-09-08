@@ -1,6 +1,7 @@
 ---
 title: Monorepo Update
-date: '2023-03-23'
+date_created: '2023-03-23'
+date_updated: '2023-03-23'
 slug: monorepo-update
 id: '006'
 tags: ['architecture', 'dependencies']

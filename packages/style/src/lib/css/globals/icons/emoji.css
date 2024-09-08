@@ -6,6 +6,10 @@
 	block-size: fit-content;
 }
 
+button[class*='emoji:'][class*='shape:']:not([class*='l:stack'])::before {
+	line-height: 0;
+}
+
 [class*='emoji:']:not([class*='justify:'], [class*='l:frame'])::before {
 	margin-inline: var(--ui-size-sm);
 }

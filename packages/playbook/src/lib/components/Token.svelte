@@ -4,11 +4,11 @@
 
 	type Props = {
 		title: string
-		component: any // TODO: fix type
+		SpecifiedElement: any // TODO: fix type
 		props: any // TODO: fix type
 	}
 
-	let {title, component, props}: Props = $props()
+	let {title, SpecifiedElement, props}: Props = $props()
 
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let styles = $derived(playbookStore.styles)
@@ -21,12 +21,4 @@
 	let typography = $derived(tokenStyles?.typography || '')
 </script>
 
-<svelte:component
-	this={component}
-	id={title}
-	{variant}
-	{asset}
-	{color}
-	{size}
-	{typography}
-/>
+<SpecifiedElement id={title} {variant} {asset} {color} {size} {typography} />

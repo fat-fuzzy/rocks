@@ -1,7 +1,6 @@
 .scroll\:y {
 	scroll-snap-type: y proximity;
 	overflow-y: auto;
-	scrollbar-gutter: stable;
 }
 
 .snap\:start {

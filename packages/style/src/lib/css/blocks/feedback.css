@@ -16,6 +16,7 @@
 	--color-accent: var(--accent-semantic, var(--accent));
 	--color-bg: var(--shade-semantic, var(--shade));
 	--color-ink: var(--ink-semantic, var(--ink));
+	--icon-size: var(--font-size-minus);
 	color: var(--color-ink);
 	font-size: var(--font-size);
 	padding: var(--ui-size);
@@ -24,13 +25,13 @@
 
 	.status {
 		font-family: var(--font-family-heading);
-		font-size: var(--font-size);
+		font-size: var(--font-size-minus);
 		font-weight: var(--font-weight-ui);
-		line-height: 1.35;
 	}
 
 	.message {
 		margin-inline-start: 0;
+		font-size: var(--font-size-minus);
 	}
 }
 

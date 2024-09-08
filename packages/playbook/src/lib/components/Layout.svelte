@@ -5,11 +5,13 @@
 	type Props = {
 		title: string
 		isPage?: boolean
-		component: any // TODO: fix types
+		SpecifiedElement: any // TODO: fix types
 		props: any
+		actionPath?: string
+		redirect?: string
 	}
 
-	let {title, component, props}: Props = $props()
+	let {title, SpecifiedElement, props, actionPath, redirect}: Props = $props()
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
@@ -27,7 +29,7 @@
 	let sideContent = 'card'
 	let mainContent = 'text'
 	let layoutContent = $derived(`card:${elementStyles.size} variant:outline size:${elementStyles.size} surface:1:accent`)
-	let fixtures = $derived(playbookStore.getLayoutFixtures())// TODO : fix here: get fixtures for collection
+	let fixtures = $derived(playbookStore.getLayoutFixtures(SpecifiedElement))
 </script>
 
 {#snippet children(props, contentType)}
@@ -41,7 +43,7 @@
 {/snippet}
 
 {#if title === 'Sidebar'}
-	<svelte:component this={component} id={title}
+	<SpecifiedElement id={title}
 		{...containerStyles}
 		{...layoutStyles}
 		{...elementStyles}
@@ -53,16 +55,17 @@
 		{#snippet main()}
 			{@render children(fixtures, mainContent)}
 		{/snippet}
-	</svelte:component>
+	</SpecifiedElement>
 {:else}
-	<svelte:component
-			this={component}
+	<SpecifiedElement
 			id={title}
 			{...containerStyles}
 			{...layoutStyles}
 			{...elementStyles}
 			{...props}
+			{actionPath}
+			{redirect}
 		>
 		{@render children(fixtures, content)}
-	</svelte:component>
-	{/if}
+	</SpecifiedElement>
+{/if}

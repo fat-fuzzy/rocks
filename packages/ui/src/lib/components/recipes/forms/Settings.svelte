@@ -1,11 +1,11 @@
 <script lang="ts">
+	import type {SettingsProps} from '$types'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
-	import type {SettingsProps} from './settings.types.js'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
+	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/expand.types.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
-	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
 
 	const {DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
 
@@ -35,22 +35,22 @@
 		settingsReveal = {reveal: 'collapsed'}
 	}
 
-	function handleToggle(event) {
-		settingsReveal = {reveal: event.state}
+	function handleToggle(payload) {
+		settingsReveal = {reveal: payload.state}
 	}
 
-	function handleUpdate(event) {
-		switch (event.id) {
+	function handleUpdate(payload) {
+		switch (payload.id) {
 			case 'brightness':
-				appSettings.brightness = event.value
+				appSettings.brightness = payload.value
 				break
 			case 'contrast':
-				appSettings.contrast = event.value
+				appSettings.contrast = payload.value
 				break
 			default:
 				break
 		}
-		if (onupdate) onupdate(event)
+		if (onupdate) onupdate(payload)
 	}
 
 	let reveal = $derived(settingsReveal.reveal)
@@ -66,14 +66,16 @@
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
-	let revealAction = formaction
-		? redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-		: 'toggleNav'
-	let settingsUpdateAction = redirect
-		? `updateSettings&redirectTo=${redirect}`
-		: 'updateSettings'
+	let revealAction = $derived(
+		formaction
+			? redirect
+				? `${formaction}&redirectTo=${redirect}`
+				: formaction
+			: 'toggleSettings',
+	)
+	let settingsUpdateAction = $derived(
+		redirect ? `updateSettings&redirectTo=${redirect}` : 'updateSettings',
+	)
 
 	// function initSettings(event) {
 	// 	let preferredScheme = {...event}
@@ -116,15 +118,13 @@
 		class={revealClasses}
 	>
 		<Expand
-			id={`button-expand-${id}`}
+			id={`button-reveal-${id}`}
 			{variant}
 			{color}
 			{size}
 			type={actionPath && formaction ? 'submit' : 'button'}
-			title="Settings"
-			name={`button-${id}`}
+			name={`reveal-settings`}
 			controls={id}
-			value={settingsReveal[id]}
 			text="settings"
 			asset="settings"
 			onclick={handleToggle}

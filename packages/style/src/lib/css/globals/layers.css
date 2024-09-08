@@ -40,6 +40,12 @@
 	--layer-inset: inset var(--shadow-inset-lg);
 }
 
+/*  TODO: Harmonize layer classes / z-index values */
+.stage {
+	position: relative;
+	z-index: var(--layout-z-index-layer);
+}
+
 .drop {
 	position: relative;
 }

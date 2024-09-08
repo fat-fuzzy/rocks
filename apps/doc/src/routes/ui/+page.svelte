@@ -1,9 +1,10 @@
 <script lang="ts">
 	import {page} from '$app/stores'
-	import {content} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import {api} from '@fat-fuzzy/playbook'
 
-	const {PageMain} = content
+	const {PageMain} = ui.content
+	const {EscapeHtml} = ui.headless
 
 	const {PlaybookCollection} = api
 
@@ -14,14 +15,16 @@
 
 	const categories = ['tokens', 'blocks', 'layouts', 'recipes']
 
-	let markdown = $derived($page.data.content)
+	let content = $derived($page.data.content)
 	let markdowns = $derived($page.data.markdowns)
 </script>
 
 <PageMain {title} {description} size="md">
 	<article class="l:sidebar:md">
 		<section class="l:main">
-			<div class="l:text:lg snap:start">{@html markdown.html}</div>
+			<div class="l:text:lg snap:start">
+				<EscapeHtml html={content.html} />
+			</div>
 			{#each categories as category}
 				<PlaybookCollection
 					{category}
@@ -31,9 +34,12 @@
 					isPage={false}
 					path={`${path}/${category}`}
 					redirect={$page.url.pathname}
+					{content}
 				>
-					{@html markdowns.categories.find(({meta}) => meta.slug === category)
-						.html}
+					<EscapeHtml
+						html={markdowns.categories.find(({meta}) => meta.slug === category)
+							.html}
+					/>
 				</PlaybookCollection>
 			{/each}
 		</section>

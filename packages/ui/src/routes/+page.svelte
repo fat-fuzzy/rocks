@@ -16,9 +16,9 @@
 	<h2>CSS Pattern library</h2>
 	<p>
 		CSS patterns from the package
-		<a href="https://github.com/fat-fuzzy/lab/tree/dev/packages/style"
-			>@fat-fuzzy/style</a
-		>
+		<a href="https://github.com/fat-fuzzy/lab/tree/dev/packages/style">
+			@fat-fuzzy/style
+		</a>
 	</p>
 </div>
 

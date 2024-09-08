@@ -1,10 +1,7 @@
-import {
-	UiState,
-	type Settings,
-	type Tab,
-	type ButtonContext,
-} from '$types/index.js'
-import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/switch.types.js'
+import type {Settings, UiRevealState, Tab, ButtonContext} from '$types'
+import {UiColor, UiSize, UiState} from '$types'
+import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
+import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 
 const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	id: '',
@@ -12,20 +9,19 @@ const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	value: '',
 }
 
-const DEFAULT_REVEAL_STATE: Settings = {reveal: UiState.collapsed}
+const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
-const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: UiState.expanded}
+const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
 
 const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
 
-const DEFAULT_PLAYER_STATE: Settings = {value: ''}
 const DEFAULT_SCENE_ID = '004'
 
 const DEFAULT_DS_STATE: {
-	menuReveal: Settings
-	navReveal: Settings
-	sidebarReveal: Settings
-	settingsReveal: Settings
+	menuReveal: UiRevealState
+	navReveal: UiRevealState
+	sidebarReveal: UiRevealState
+	settingsReveal: UiRevealState
 } = {
 	menuReveal: {reveal: UiState.collapsed},
 	navReveal: {reveal: UiState.collapsed},
@@ -76,10 +72,10 @@ const DEFAULT_TABS: Tab[] = [
 		value: 'doc',
 	},
 	{
-		id: 'component.context.menu.toggle.demo',
-		name: 'component.context.menu.toggle.demo',
-		title: 'Demo',
-		value: 'demo',
+		id: 'component.context.menu.toggle.playbook',
+		name: 'component.context.menu.toggle.playbook',
+		title: 'Playbook',
+		value: 'playbook',
 	},
 ]
 
@@ -123,6 +119,9 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
 			asset: 'default',
 			size: 'md',
+			spell: 'bleu',
+			uno: 'magic',
+			due: 'sparkles',
 		},
 	},
 	layouts: {
@@ -133,20 +132,20 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 
 const TABS: Tab[] = [
 	{
-		id: 'context.menu.toggle.demo',
-		name: 'context.menu.toggle.demo',
-		title: 'Demo',
-		size: 'lg',
-		color: 'accent',
-		asset: 'demo',
-		value: 'demo',
+		id: 'context.menu.toggle.playbook',
+		name: 'context.menu.toggle.playbook',
+		title: 'Playbook',
+		size: UiSize.lg,
+		color: UiColor.accent,
+		asset: 'playbook',
+		value: 'playbook',
 	},
 	{
 		id: 'context.menu.toggle.doc',
 		name: 'context.menu.toggle.doc',
 		title: 'Doc',
-		size: 'lg',
-		color: 'primary',
+		size: UiSize.lg,
+		color: UiColor.primary,
 		asset: 'doc',
 		value: 'doc',
 	},
@@ -220,7 +219,7 @@ const APP_SETTINGS: SettingsItems = {
 	],
 }
 
-import type {SettingsItems} from '../components/recipes/forms/settings.types.js'
+import type {SettingsItems} from '../components/recipes/forms/settings.js'
 
 export default {
 	UI_STATE,
@@ -232,7 +231,6 @@ export default {
 	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
-	DEFAULT_PLAYER_STATE,
 	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,
@@ -243,4 +241,6 @@ export default {
 	TABS,
 	APP_LINKS,
 	APP_SETTINGS,
+	SWITCH_MACHINE,
+	EXPAND_MACHINE,
 }

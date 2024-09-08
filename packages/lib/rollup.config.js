@@ -1,18 +1,9 @@
-import json from '@rollup/plugin-json'
+import {createRequire} from 'module'
 import terser from '@rollup/plugin-terser'
-import pkg from './package.json' assert {type: 'json'}
+const require = createRequire(import.meta.url)
+const pkg = require('./package.json')
 
 export default [
-	{
-		input: 'src/index.js',
-		output: {
-			name: 'ff-lib',
-			file: pkg.browser,
-			format: 'umd',
-			plugins: [json(), terser()],
-		},
-	},
-
 	// CommonJS (for Node) and ES module (for bundlers) build.
 	// (We could have three entries in the configuration array
 	// instead of two, but it's quicker to generate multiple
@@ -23,13 +14,11 @@ export default [
 		input: 'src/index.js',
 		output: [
 			{
-				file: pkg.main,
-				format: 'cjs',
-			},
-			{
 				file: pkg.module,
 				format: 'es',
+				plugins: [terser()],
 			},
 		],
+		external: ['sharp'],
 	},
 ]

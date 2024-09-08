@@ -5,7 +5,6 @@ category: 'blocks'
 group: 'buttons'
 props_state: ['title', 'text', 'formaction', 'value', 'controls', 'states']
 props_style: {'blocks': {'element': ['color', 'variant', 'size', 'shape']}}
-context: ['app.settings']
 ---
 
 ## Usage

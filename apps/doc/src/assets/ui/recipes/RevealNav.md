@@ -10,7 +10,6 @@ props_style:
     'blocks': {'element': ['color', 'variant', 'size', 'background']},
     'layouts': {'container': ['container', 'size']},
   }
-context: ['app.settings', 'shared.container']
 ---
 
 ## Usage

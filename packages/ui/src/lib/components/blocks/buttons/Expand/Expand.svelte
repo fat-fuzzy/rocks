@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {ExpandProps} from './expand.types.js'
 	import { onMount } from 'svelte'
-	import { ButtonEvent } from '../button.types.js'
+	import type { ExpandProps} from '$types'
+	import { ButtonEvent} from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -40,7 +40,7 @@
 		value: store.value,
 		expanded: store.expanded,
 		state: store.state,
-		update: store.update.bind(store),
+		action: store.update.bind(store),
 	})
 
 	let buttonClasses = $derived(store.getStyles({
@@ -88,7 +88,7 @@
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>
-		<span class="viz-only">{store.text}</span>
+		<span class="viz-only">{store.label}</span>
 	{/if}
 {/if}
 </button>

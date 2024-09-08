@@ -1,13 +1,13 @@
 <script lang="ts">
 	import {onMount, type Snippet} from 'svelte'
-	import '@fat-fuzzy/style'
+	import '$lib/styles/css/main.css'
 
 	import {page} from '$app/stores'
 	import {links} from '$data/nav'
-	import {recipes, utils, constants} from '@fat-fuzzy/ui'
+	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
-	const {Header} = recipes
+	const {Header} = ui.recipes
 
 	type Props = {
 		sidebar?: Snippet
@@ -20,7 +20,7 @@
 
 	let brightness = $derived(app.settings.brightness)
 	let contrast = $derived(app.settings.contrast)
-	let pageClass = $derived(utils.format.getClassNameFromPathname($page.url.pathname))
+	let pageClass = $derived(ui.utils.format.getClassNameFromPathname($page.url.pathname))
 	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
 	let footerClass = 'card:xs'
 	let aboutContainerClass = $derived(pageClass === 'page:home' ? 'card:xl' : '')
@@ -49,11 +49,15 @@
 <div class={themeClass}>
 	<Header
 		id="doc"
+		name="main-header"
+		label=""
 		path={$page.url.pathname}
 		actionPath="/"
+		redirect={$page.url.pathname}
 		formaction="toggleNav"
-		items={{links, settings: {...constants.APP_SETTINGS, onupdate: updateSettings}}}
+		items={{links, settings: {...ui.constants.APP_SETTINGS, onupdate: updateSettings}}}
 		breakpoint="sm"
+		app={fatFuzzyStore.app}
 	/>
 	<main id="main">
 		{#if children}
@@ -64,7 +68,7 @@
 	</main>
 
 	<footer class={footerClass}>
-			<details class={`l:center:2xl color:neutral font:sm maki:block:xl ${aboutContainerClass}`} open={footerOpen}>
+			<details class={`l:burrito:3xl color:neutral font:md maki:block:xl ${aboutContainerClass}`} open={footerOpen}>
 				<summary class="card:2xs">About</summary>
 				<p>
 					Made with 🩷 by <a href="https://github.com/patiboh" target="_blank"

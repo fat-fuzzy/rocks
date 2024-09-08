@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type {ButtonType} from '$lib/components/blocks/buttons/button.types.js'
-	import type {ButtonMenuProps} from './menu.types.js'
+	import type {ButtonType, ButtonMenuProps} from '$types'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
 	let {

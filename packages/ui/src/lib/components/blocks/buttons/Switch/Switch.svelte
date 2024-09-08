@@ -1,8 +1,7 @@
 <script lang="ts">
-	import type { SwitchProps } from './switch.types.js'
 	import { onMount } from 'svelte'
-	import { UiState } from '$types/index.js'
-	import { ButtonEvent } from '../button.types.js'
+	import type { SwitchProps } from '$types'
+	import { ButtonEvent, UiState } from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -40,7 +39,7 @@
 		value: store.value,
 		state: store.state,
 		pressed: store.pressed,
-		update: store.update.bind(store),
+		action: store.update.bind(store),
 	})
 
 	let buttonClasses =  $derived(store.getStyles({
@@ -86,7 +85,7 @@
 			<span class="sr-only">{title}</span>
 		{:else}
 			<span class="sr-only">{title}</span>
-			<span class="viz-only">{store.text}</span>
+			<span class="viz-only">{store.label}</span>
 		{/if}
 	{/if}
 </button>

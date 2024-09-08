@@ -15,8 +15,12 @@ a[class*='icon:']::before {
 	padding: var(--asset-padding);
 }
 
-:not([class*='shape:'])[class*='icon']::before {
+[class*='icon']:not([class*='shape:'])::before {
 	margin-inline: 0 var(--ui-size);
+}
+
+[class*='icon'][class*='ffr:']::before {
+	margin-inline: 0 var(--ui-size-sm);
 }
 
 [class*='icon'].align\:end {

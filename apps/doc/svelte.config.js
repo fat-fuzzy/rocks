@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import adapter from '@sveltejs/adapter-cloudflare'
@@ -33,18 +33,6 @@ const config = {
 	},
 	build: {
 		target: 'esnext',
-	},
-	vitePlugin: {
-		// To compile WC on the go: https://github.com/sveltejs/vite-plugin-svelte/issues/270#issuecomment-1033190138
-		experimental: {
-			dynamicCompileOptions({code}) {
-				if (isWebComponentSvelte(code)) {
-					return {
-						customElement: true,
-					}
-				}
-			},
-		},
 	},
 }
 

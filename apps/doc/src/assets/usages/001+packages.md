@@ -1,6 +1,7 @@
 ---
 title: Packages
-date: '2024-07-21'
+date_created: '2024-07-21'
+date_updated: '2024-07-21'
 updated: null
 slug: packages
 id: '001'
@@ -26,6 +27,7 @@ This project contains the following packages :
 - **[@fat-fuzzy/config](https://github.com/fat-fuzzy/rocks/tree/main/packages/config)** common config (eslint, prettier, cz-conventional-commit _slightly_ custom lib)
 - **[@fat-fuzzy/markdown](https://github.com/fat-fuzzy/rocks/tree/main/packages/markdown)** a utility package for loading markdown files
 - **[@fat-fuzzy/git-poule](https://github.com/fat-fuzzy/rocks/tree/main/packages/git-poule)** a tool to extract commit data
+- **[@fat-fuzzy/validation](https://github.com/fat-fuzzy/rocks/tree/main/packages/validation)** a utility package for validation tools
 
 ## Usage Examples
 

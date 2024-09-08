@@ -4,6 +4,23 @@
 	gap: var(--gap);
 }
 
+/* This Centers content in the sidebar's main section */
+/* TODO: Figure out how to handle this better (use container query ?)
+ * Currently used for media page: see also blocks/media.css
+ */
+@media (min-width: 800px) {
+	[class*='l:sidebar'] {
+		&.justify\:center > [class*='l:main'] > * {
+			inline-size: calc(100% - var(--sidebar-width) + var(--gap));
+			margin-inline-start: 0;
+		}
+		&.justify\:center.end > [class*='l:main'] > * {
+			margin-inline-start: initial;
+			margin-inline-end: 0;
+		}
+	}
+}
+
 /* NOTE: The following declaration assume that the markup declares .main before .side */
 [class*='l:sidebar'].start {
 	flex-direction: row;
@@ -47,36 +64,64 @@
 .l\:sidebar\:2xs {
 	--gap: var(--size-base-sm);
 	--sidebar-width: var(--layout-sidebar-2xs);
+	> [class*='l:main'] {
+		--gap: var(--size-base-sm);
+		--sidebar-width: var(--layout-sidebar-2xs);
+	}
 }
 
 .l\:sidebar\:xs {
 	--gap: var(--size-base-sm);
 	--sidebar-width: var(--layout-sidebar-xs);
+	> [class*='l:main'] {
+		--gap: var(--size-base-sm);
+		--sidebar-width: var(--layout-sidebar-xs);
+	}
 }
 
 .l\:sidebar\:sm {
-	--gap: var(--size-base-sm);
+	--gap: var(--size-base-md);
 	--sidebar-width: var(--layout-sidebar-sm);
+	> [class*='l:main'] {
+		--gap: var(--size-base-md);
+		--sidebar-width: var(--layout-sidebar-sm);
+	}
 }
 
 .l\:sidebar\:md {
 	--gap: var(--size-base-md);
 	--sidebar-width: var(--layout-sidebar-md);
+	> [class*='l:main'] {
+		--gap: var(--size-base-md);
+		--sidebar-width: var(--layout-sidebar-md);
+	}
 }
 
 .l\:sidebar\:lg {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-lg);
+	> [class*='l:main'] {
+		--gap: var(--size-base-lg);
+		--sidebar-width: var(--layout-sidebar-lg);
+	}
 }
 
 .l\:sidebar\:xl {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-xl);
+	> [class*='l:main'] {
+		--gap: var(--size-base-lg);
+		--sidebar-width: var(--layout-sidebar-xl);
+	}
 }
 
 .l\:sidebar\:2xl {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-2xl);
+	> [class*='l:main'] {
+		--gap: var(--size-base-lg);
+		--sidebar-width: var(--layout-sidebar-2xl);
+	}
 }
 
 /* Scale Sidebar > Main */
@@ -103,4 +148,8 @@
 
 .l\:main\:80 {
 	min-inline-size: 80%;
+}
+
+.l\:main\:90 {
+	min-inline-size: 90%;
 }

@@ -2,7 +2,7 @@ import {expect, test} from '@playwright/test'
 import utils from '../../utils/constants'
 
 const {ready, draft} = utils.blocks
-const path = utils.blocks.path
+const path = utils.blocks.path()
 
 // const components = [...ready, ...draft]
 
@@ -29,8 +29,8 @@ draft.forEach((component) => {
 	}) => {
 		await page.goto(`${path}/${component}`)
 		await expect(
-			page.getByRole('heading', {level: 1, name: component}),
+			page.getByRole('heading', {level: 1, name: '404'}),
 		).toBeVisible()
-		await expect(page.getByText('Coming Soon!')).toBeVisible()
+		await expect(page.getByText('Not found')).toBeVisible()
 	})
 })

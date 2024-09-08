@@ -6,7 +6,6 @@ group: 'global'
 props_state: ['title', 'text']
 props_style:
   {'blocks': {'element': ['variant', 'context', 'size', 'asset', 'status']}}
-context: ['app.settings', 'shared.container']
 ---
 
 ## Usage

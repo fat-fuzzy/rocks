@@ -1,14 +1,13 @@
 <script lang="ts">
-	import type { ToggleProps } from './toggle.types.js'
+	import type { ToggleProps } from '$types'
+	import { UiState, ButtonEvent } from '$types'
 	import { onMount } from 'svelte'
-	import { UiState} from '$types/index.js'
-	import { ButtonEvent } from '../button.types.js'
 	import Actor from './actor.svelte.js'
 
 	let {
 		id = 'toggle',
 		name = 'toggle',
-		text,
+		label,
 		title,
 		initial =  UiState.inactive,
 		value,
@@ -17,6 +16,7 @@
 		align,
 		justify = 'center',
 		asset,
+		assetType,
 		color,
 		size,
 		shape,
@@ -38,7 +38,7 @@
 		name,
 		value,
 		state: store.state,
-		update: store.update.bind(store),
+		action: store.update.bind(store),
 	})
 
 	let buttonClasses =  $derived(store.getStyles({
@@ -48,6 +48,7 @@
 			align,
 			justify,
 			asset,
+			assetType,
 			variant,
 			layout: shape ? undefined: 'switcher',
 			dimensions,
@@ -83,7 +84,7 @@
 		{#if shape}
 			<span class="sr-only">{title}</span>
 		{:else}
-			{text}
+			{label}
 		{/if}
 	{/if}
 </button>

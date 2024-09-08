@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {LayoutProps} from './layout.types.js'
+	import type {LayoutProps} from '$types'
 
 	let {size = 'md', threshold, children}: LayoutProps = $props()
 </script>

@@ -6,11 +6,11 @@
 		title: string
 		name?: string
 		isPage?: boolean
-		component: any // TODO: fix types
+		SpecifiedElement: any // TODO: fix types
 		props: any // TODO: fix types
 	}
 
-	let {title, name = title, component, props}: Props = $props()
+	let {title, name = title, SpecifiedElement, props}: Props = $props()
 
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
@@ -18,10 +18,4 @@
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 </script>
 
-<svelte:component
-	this={component}
-	id={title}
-	{name}
-	{...props}
-	{...elementStyles}
-/>
+<SpecifiedElement id={title} {name} {...props} {...elementStyles} />

@@ -1,4 +1,4 @@
-import markdownUtils from './markdown'
+import assetsUtils from './assets'
 
 const categoryPrefix = '/src/assets/ui/'
 const tokensPathPrefix = '/src/assets/ui/tokens/'
@@ -14,23 +14,23 @@ const layoutsImports = import.meta.glob('/src/assets/ui/layouts/*.md')
 const recipesImports = import.meta.glob('/src/assets/ui/recipes/*.md')
 // const graphicsImports = import.meta.glob('/src/assets/ui/graphics/*.md')
 
-async function fetchMarkdowns() {
+async function fetchMarkdowns(): Promise<{[key: string]: any}> {
 	const [categories, tokens, blocks, layouts, recipes] = await Promise.all([
-		markdownUtils.fetchMarkdowns(categoryPrefix, categoryImports),
-		markdownUtils.fetchMarkdowns(tokensPathPrefix, tokensImports),
-		markdownUtils.fetchMarkdowns(blocksPathPrefix, blocksImports),
-		markdownUtils.fetchMarkdowns(layoutsPathPrefix, layoutsImports),
-		markdownUtils.fetchMarkdowns(recipesPathPrefix, recipesImports),
-		// markdownUtils.fetchMarkdowns(graphicsPathPrefix, graphicsImports),
+		assetsUtils.fetchMarkdowns(categoryPrefix, categoryImports),
+		assetsUtils.fetchMarkdowns(tokensPathPrefix, tokensImports),
+		assetsUtils.fetchMarkdowns(blocksPathPrefix, blocksImports),
+		assetsUtils.fetchMarkdowns(layoutsPathPrefix, layoutsImports),
+		assetsUtils.fetchMarkdowns(recipesPathPrefix, recipesImports),
+		// assetsUtils.fetchMarkdowns(graphicsPathPrefix, graphicsImports),
 	])
 
 	return {
-		categories: categories.sort(markdownUtils.sortByTitleDesc),
-		tokens: tokens.sort(markdownUtils.sortByTitleDesc),
-		blocks: blocks.sort(markdownUtils.sortByTitleDesc),
-		layouts: layouts.sort(markdownUtils.sortByTitleDesc),
-		recipes: recipes.sort(markdownUtils.sortByTitleDesc),
-		// graphics: graphics.sort(markdownUtils.sortByTitleDesc),
+		categories: categories.sort(assetsUtils.sortByTitleDesc),
+		tokens: tokens.sort(assetsUtils.sortByTitleDesc),
+		blocks: blocks.sort(assetsUtils.sortByTitleDesc),
+		layouts: layouts.sort(assetsUtils.sortByTitleDesc),
+		recipes: recipes.sort(assetsUtils.sortByTitleDesc),
+		// graphics: graphics.sort(assetsUtils.sortByTitleDesc),
 	}
 }
 

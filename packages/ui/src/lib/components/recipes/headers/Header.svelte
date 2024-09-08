@@ -1,8 +1,8 @@
 <script lang="ts">
+	import type {HeaderProps} from '$types'
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 	import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
-	import type {HeaderProps} from './header.types.js'
 
 	let {
 		id = 'header-app',
@@ -31,6 +31,8 @@
 		{#key path}
 			<RevealAuto
 				id={`${id}-primary-nav`}
+				name={`${id}-primary-nav`}
+				label=""
 				element="nav"
 				layout="main"
 				title="Menu"
@@ -70,12 +72,13 @@
 		{/key}
 	</div>
 	<Settings
+		name={`${id}-primary-nav`}
+		label=""
 		{path}
 		{breakpoint}
 		align="end"
 		size="xs"
 		id={`${id}-menu-settings`}
-		{formaction}
 		{actionPath}
 		{redirect}
 		items={items.settings}

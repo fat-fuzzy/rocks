@@ -1,5 +1,6 @@
 // Reexport your entry components here
-
+/// <reference path="./types/index.d.ts" />
+import type {FatFuzzyUi} from '$types'
 /**
  * Headless components
  */
@@ -18,12 +19,14 @@ import Button from '$lib/components/blocks/buttons/Button.svelte'
 import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
+
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
-import Fieldset from '$lib/components/blocks/forms/Fieldset.svelte'
-import InputCheck from '$lib/components/blocks/forms/InputCheck.svelte'
-import InputRadio from '$lib/components/blocks/forms/InputRadio.svelte'
-import InputRange from '$lib/components/blocks/forms/InputRange.svelte'
-import InputFile from '$lib/components/blocks/forms/InputFile.svelte'
+import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
+
+import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
+import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
+import InputRange from '$lib/components/blocks/inputs/InputRange.svelte'
+import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
 
 /**
  * Layout components
@@ -41,9 +44,8 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
-import InputGroup from '$lib/components/recipes/forms/InputGroup.svelte'
 
-import LogIn from '$lib/components/recipes/forms/LogIn.svelte'
+import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
@@ -51,23 +53,33 @@ import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Header from '$lib/components/recipes/headers/Header.svelte'
 
 /**
- * Recipes - Routes
+ * Recipes - Content
  */
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 
 /**
+ * Draft components
+ */
+import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
+import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
+import Magic from '$lib/components/blocks/global/Magic.svelte'
+import Image from '$lib/components/blocks/media/Image.svelte'
+import Picture from '$lib/components/blocks/media/Picture.svelte'
+import Aside from '$lib/components/recipes/content/Aside.svelte'
+// import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
+// import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
+
+/**
  * Forms
  */
-import {NavReveal} from '$lib/forms/nav-reveal.js'
-import {SettingsReveal} from '$lib/forms/settings-reveal.js'
-import {SettingsUpdate} from '$lib/forms/settings-update.js'
-import {SidebarReveal} from '$lib/forms/sidebar-reveal.js'
+import UiReveal from '$lib/forms/ui-reveal.js'
+import SignUpUser from '$lib/forms/ui-sample-signup.js'
+import SettingsUpdate from '$lib/forms/settings-update.js'
 
 /**
  * Utilities
  */
-import * as types from '$lib/types/index.js'
 import constants from '$lib/types/constants.js'
 import * as clickOutside from '$lib/utils/click-outside.js'
 import format from '$lib/utils/format.js'
@@ -81,10 +93,9 @@ const utils = {
 }
 
 const forms = {
-	NavReveal,
-	SidebarReveal,
-	SettingsReveal,
+	UiReveal,
 	SettingsUpdate,
+	SignUpUser,
 }
 
 const tokens = {
@@ -98,11 +109,11 @@ const blocks = {
 	Switch,
 	Toggle,
 	Feedback,
-	Fieldset,
 	InputCheck,
 	InputRadio,
 	InputRange,
 	InputFile,
+	Magic,
 }
 
 const layouts = {
@@ -118,8 +129,7 @@ const recipes = {
 	ButtonMenu,
 	ToggleMenu,
 	RevealMenu,
-	InputGroup,
-	LogIn,
+	SignUp,
 	Nav,
 	RevealNav,
 	Header,
@@ -130,11 +140,23 @@ const content = {
 	LayoutSidebar,
 }
 
-const headless = {
-	Head,
+const drafts = {
+	Fieldset,
+	// InputPassword,
+	// InputFeedback,
+	InputGroup,
+	Image,
+	Picture,
+	Aside,
 }
 
-export {
+const headless = {
+	Head,
+	EscapeHtml,
+}
+
+export default {
+	drafts,
 	headless,
 	tokens,
 	blocks,
@@ -144,5 +166,4 @@ export {
 	utils,
 	forms,
 	constants,
-	types,
-}
+} as FatFuzzyUi

@@ -1,0 +1,198 @@
+{
+	"file": "001-intro",
+	"ext": "png",
+	"width": 2647,
+	"height": 1869,
+	"path": "images/night",
+	"alt": "A drawing: \"Creating a web app. Where to Start ?\" asks a girl underneath a large cloud with a laptop connected to it and displaying an app in a browser. The cloud contains three boards: to the left is the CLIENT, in the middle is the API, and to the right are RESOURCES.",
+	"orientation": "landscape",
+	"media": [
+		{
+			"query": "(min-width: 3600px)",
+			"srcset": [
+				{
+					"width": 2000,
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"query": "(min-width: 1000px)",
+			"srcset": [
+				{
+					"width": 1500,
+					"dpr": 1.5
+				}
+			]
+		},
+		{
+			"query": "(min-width: 800px)",
+			"srcset": [
+				{
+					"width": 1000,
+					"dpr": 1
+				},
+				{
+					"width": 1500,
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"query": "(min-width: 500px)",
+			"srcset": [
+				{
+					"width": 500,
+					"dpr": 1
+				}
+			]
+		}
+	],
+	"srcset": [
+		{
+			"width": 2000,
+			"media": [
+				{
+					"query": "(min-width: 1200px)",
+					"dpr": 1.5
+				},
+				{
+					"query": "(min-width: 1000px)",
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 600px)",
+					"dpr": 3
+				}
+			]
+		},
+		{
+			"width": 1500,
+			"media": [
+				{
+					"query": "(min-width: 1000px)",
+					"dpr": 1.5
+				},
+				{
+					"query": "(min-width: 750px)",
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 530px)",
+					"dpr": 2.5
+				}
+			]
+		},
+		{
+			"width": 1000,
+			"media": [
+				{
+					"query": "(min-width: 970px)",
+					"dpr": 1
+				},
+				{
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"width": 500,
+			"media": [
+				{
+					"query": "(min-width: 430px)",
+					"dpr": 1
+				},
+				{
+					"query": "(min-width: 300px)",
+					"dpr": 1.5
+				},
+				{
+					"dpr": 2
+				}
+			]
+		}
+	],
+	"sizes": [
+		{
+			"query": "(min-width:1620px)",
+			"slot": "60vw"
+		},
+		{
+			"query": "(min-width:1360px)",
+			"slot": "60vw"
+		},
+		{
+			"query": "(min-width:935px)",
+			"slot": "70vw"
+		},
+		{
+			"slot": "100vw"
+		}
+	],
+	"sources": [
+		{
+			"format": "webp",
+			"width": 2000,
+			"height": 1412,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 131848
+		},
+		{
+			"format": "png",
+			"width": 2000,
+			"height": 1412,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 310819
+		},
+		{
+			"format": "webp",
+			"width": 1500,
+			"height": 1059,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 93686
+		},
+		{
+			"format": "png",
+			"width": 1500,
+			"height": 1059,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 198666
+		},
+		{
+			"format": "webp",
+			"width": 1000,
+			"height": 706,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 55936
+		},
+		{
+			"format": "png",
+			"width": 1000,
+			"height": 706,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 110577
+		},
+		{
+			"format": "webp",
+			"width": 500,
+			"height": 353,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 21402
+		},
+		{
+			"format": "png",
+			"width": 500,
+			"height": 353,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 40397
+		}
+	]
+}

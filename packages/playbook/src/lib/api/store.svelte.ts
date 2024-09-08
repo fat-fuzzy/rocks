@@ -1,4 +1,4 @@
-import {constants} from '@fat-fuzzy/ui'
+import ui from '@fat-fuzzy/ui'
 import buttonFixtures from '$lib/fixtures/js/blocks'
 import tokenFixtures from '$lib/fixtures/js/tokens'
 import layoutsFixtures from '$lib/fixtures/js/layouts'
@@ -10,7 +10,7 @@ const {
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_STYLES,
 	DEFAULT_TABS,
-} = constants
+} = ui.constants
 class PlaybookStore {
 	api = $state()
 	styles = $state(DEFAULT_STYLES)
@@ -44,8 +44,11 @@ class PlaybookStore {
 		}
 	}
 
-	getLayoutFixtures() {
-		return this.COMPONENT_FIXTURES.layouts
+	getLayoutFixtures(component: string) {
+		return (
+			this.COMPONENT_FIXTURES.layouts[component] ??
+			this.COMPONENT_FIXTURES.layouts.content
+		)
 	}
 }
 

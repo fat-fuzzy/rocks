@@ -1,3 +1,4 @@
+import {error} from '@sveltejs/kit'
 import decisions from '$data/decisions'
 import usages from '$data/usages'
 import pages from '$data/pages'
@@ -7,7 +8,16 @@ const page = 'doc'
 export const load = async (event) => {
 	const decisionsMarkdowns = await decisions.markdowns
 	const usagesMarkdowns = await usages.markdowns
-	const content = await pages.fetchMarkdowns(page)
+	let content = await pages.fetchMarkdowns(page)
+
+	if (!content?.length) {
+		throw error(404, {message: 'Not found'})
+	}
+	content = content[0]
+
+	if (!content?.meta) {
+		throw error(404, {message: 'Not found'})
+	}
 
 	const data = {
 		markdowns: {
@@ -16,9 +26,8 @@ export const load = async (event) => {
 				.filter(({meta}) => meta.status !== 'draft')
 				.reverse(),
 		},
-
-		// TODO: Implement a better way to handle this
-		content: content.length ? content[0] : {meta: {title: ''}},
+		content,
 	}
+
 	return data
 }
