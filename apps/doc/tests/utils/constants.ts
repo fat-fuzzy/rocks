@@ -41,8 +41,9 @@ const blocks = {
 		'InputRadio',
 		'InputRange',
 		'InputFile',
+		'Magic',
 	],
-	draft: ['Fieldset', 'InputGroup', 'Picture', 'Magic'],
+	draft: ['Fieldset', 'InputGroup', 'Picture'],
 }
 
 const layouts = {
