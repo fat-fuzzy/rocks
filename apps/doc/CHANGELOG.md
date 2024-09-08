@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.45
+
+### Patch Changes
+
+- 0fed8f8: New pages (blog, media) & perf improvements for media
+
 ## 0.1.44
 
 ### Patch Changes
