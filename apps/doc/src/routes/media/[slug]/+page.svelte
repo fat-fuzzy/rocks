@@ -14,13 +14,14 @@
 
 	function openDialog(e) {
 		dialog.show()
-		window.scrollTo(0, 0)
 		stage = true
+		window.scrollTo(0, 0)
 	}
 
 	function closeDialog(e) {
 		stage = undefined
 	}
+
 </script>
 
 <Head {title} description={`Details page for media: ${title}`} />
@@ -121,7 +122,7 @@
 	/*   Closed state of the dialog   */
 	dialog {
 		opacity: 0;
-		transform: scaleY(0) translateY(0);
+		transform: translateY(0);
 		transition:
 			opacity 0.3s ease-out,
 			transform 0.3s ease-out,
