@@ -142,15 +142,17 @@
 		z-index: 1;
 		opacity: 1;
 		top: 0;
+		overflow: auto;
 		transform: scaleY(1);
-		overflow: hidden;
 		padding-block: var(--gap);
 		block-size: max-content;
+		min-block-size: 100%;
 		& > * {
 			inline-size: 100%;
 			block-size: 100%;
 		}
 	}
+
 
 	/* Transition the :backdrop when the dialog modal is promoted to the top layer */
 	dialog::backdrop {
