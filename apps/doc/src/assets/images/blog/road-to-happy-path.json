@@ -3,6 +3,9 @@
 	"ext": "jpeg",
 	"width": 1645,
 	"height": 2465,
+	"title": "Road to happy path",
+	"alt": "A colorful drawing of a stairway (to heaven ?) of UI related technologies, beginning with Swing, and ending with HTML and CSS",
+	"description": "This came out as a reaction to being tasked to code PDF documents using Email markup (yes, you read that right) despite my objections. It grew organically until its therapeutic effects came out in full color.",
 	"path": "images/blog",
 	"media": [
 		{
