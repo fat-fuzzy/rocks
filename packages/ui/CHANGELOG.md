@@ -1,5 +1,16 @@
 # @fat-fuzzy/ui
 
+## 0.1.52
+
+### Patch Changes
+
+- 0fed8f8: New pages (blog, media) & perf improvements for media
+- Updated dependencies [0fed8f8]
+  - @fat-fuzzy/validation@0.1.1
+  - @fat-fuzzy/config@0.1.9
+  - @fat-fuzzy/style@0.1.4
+  - @fat-fuzzy/ui@0.1.52
+
 ## 0.1.51
 
 ### Patch Changes
