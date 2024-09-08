@@ -128,6 +128,7 @@ type StylesSetOptions = {
 	size?: string
 	variant?: string
 	mode?: string
+	assetType?: string
 }
 
 export type StyleInputGroupOptions = StylesSetOptions & {
@@ -158,6 +159,7 @@ export class StyleInputGroup implements IStyleInputGroup {
 	size?: string
 	variant?: string
 	mode?: string
+	assetType?: string
 
 	constructor({
 		id,
@@ -170,6 +172,7 @@ export class StyleInputGroup implements IStyleInputGroup {
 		size,
 		variant,
 		mode,
+		assetType,
 	}: StyleInputGroupOptions) {
 		this.id = id
 		this.name = name
@@ -177,6 +180,8 @@ export class StyleInputGroup implements IStyleInputGroup {
 		this.items = items
 		this.input = input
 		this.value = value ?? ''
+		this.assetType = assetType ?? 'emoji'
+
 		if (layout) {
 			this.layout = layout
 		}

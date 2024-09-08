@@ -131,7 +131,7 @@
 		playbookContext.applyStyles(playbookStore.styles)
 	})
 
-	let {id, input, name, value, items} = $derived(styleInput)
+	let {id, input, name, value, assetType, items} = $derived(styleInput)
 	let currentValue = $derived(
 		styles[categoryName] &&
 			styles[categoryName].families[familyName] &&
@@ -165,6 +165,7 @@
 		variant={apiVariant}
 		container={styleInput.container}
 		mode={styleInput.mode ?? 'radio'}
+		{assetType}
 		{formaction}
 		onupdate={(event) => handleToggle(event, familyName, styleInput.id)}
 		init={(event) => handleToggle(event, familyName, currentValue)}
