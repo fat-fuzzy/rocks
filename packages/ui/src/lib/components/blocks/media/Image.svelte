@@ -37,4 +37,5 @@
 		.map(({query, slot}) => (query ? `${query} ${slot}` : slot))
 		.join(`, `)}
 	{loading}
+	{width}
 />
