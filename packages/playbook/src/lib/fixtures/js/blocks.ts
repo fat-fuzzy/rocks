@@ -79,10 +79,8 @@ export default {
 	Magic: {
 		text: 'Abracadabra',
 		spell: 'bleu',
-		daemons: {
-			uno: 'magic',
-			dos: 'sparkles',
-		},
+		uno: 'magic',
+		due: 'sparkles',
 		size: 'md',
 	},
 }

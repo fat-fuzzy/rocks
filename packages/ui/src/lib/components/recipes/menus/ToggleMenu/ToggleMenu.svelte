@@ -9,6 +9,7 @@
 		title,
 
 		asset,
+		assetType,
 		color,
 		size,
 		shape,
@@ -71,6 +72,7 @@
 					{size}
 					{shape}
 					{asset}
+					{assetType}
 					{disabled}
 					{...props}
 				/>

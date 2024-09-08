@@ -8,3 +8,16 @@
 		margin-inline: auto;
 	}
 }
+
+/* This Centers content in the sidebar's main section */
+/* TODO: Figure out how to handle this better (use container query ?)
+ * Currently used for media page: see also blocks/media.css
+ */
+
+[class*='page:media/'] main {
+	position: relative;
+}
+
+[class*='page:media/'] main > [class*='l:sidebar'] {
+	padding: var(--ui-size);
+}

@@ -23,5 +23,6 @@ export const load = async ({params}) => {
 			markdown.meta.description ??
 			`Post ${markdown.meta.id}: ${markdown.meta.title}`,
 		date_created: markdown.meta.date_created,
+		date_updated: markdown.meta.date_updated,
 	}
 }

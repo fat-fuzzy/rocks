@@ -296,6 +296,145 @@ const asset = {
 	],
 }
 
+const spell = {
+	initial: 'card',
+	input: 'toggle',
+	layout: 'stack',
+	size: '2xs',
+	variant: 'bare',
+	items: [
+		{id: 'spell.bleu', label: 'bleu', value: 'bleu'},
+		{id: 'spell.sea', label: 'sea', value: 'sea'},
+		{id: 'spell.dante', label: 'dante', value: 'dante'},
+	],
+}
+
+const uno = {
+	initial: 'card',
+	input: 'toggle',
+	layout: 'switcher',
+	size: '2xs',
+	variant: 'bare',
+	items: [
+		{
+			id: 'uno.tsunami',
+			label: 'tsunami',
+			value: 'tsunami',
+			color: 'highlight',
+			shape: 'square',
+			asset: 'tsunami',
+			assetType: 'svg',
+		},
+		{
+			id: 'uno.water',
+			label: 'water',
+			value: 'water',
+			color: 'highlight',
+			shape: 'square',
+			asset: 'water',
+			assetType: 'svg',
+		},
+		{
+			id: 'uno.sparkles',
+			label: 'sparkles',
+			value: 'sparkles',
+			color: 'highlight',
+			shape: 'square',
+			asset: 'sparkles',
+			assetType: 'svg',
+		},
+		{
+			id: 'uno.egg',
+			label: 'egg',
+			value: 'egg',
+			color: 'highlight',
+			shape: 'square',
+			asset: 'egg',
+			assetType: 'svg',
+		},
+		{
+			id: 'uno.magic',
+			label: 'magic',
+			value: 'magic',
+			color: 'highlight',
+			shape: 'square',
+			asset: 'magic',
+			assetType: 'svg',
+		},
+	],
+}
+
+const due = {
+	initial: 'card',
+	input: 'toggle',
+	layout: 'switcher',
+	size: '2xs',
+	variant: 'bare',
+	items: [
+		{
+			id: 'due.tsunami',
+			label: 'tsunami',
+			value: 'tsunami',
+			shape: 'square',
+			color: 'accent',
+			asset: 'tsunami',
+			assetType: 'svg',
+		},
+		{
+			id: 'due.water',
+			label: 'water',
+			value: 'water',
+			color: 'accent',
+			shape: 'square',
+			asset: 'water',
+			assetType: 'svg',
+		},
+		{
+			id: 'due.sparkles',
+			label: 'sparkles',
+			value: 'sparkles',
+			color: 'accent',
+			shape: 'square',
+			asset: 'sparkles',
+			assetType: 'svg',
+		},
+		{
+			id: 'due.egg',
+			label: 'egg',
+			value: 'egg',
+			color: 'accent',
+			shape: 'square',
+			asset: 'egg',
+			assetType: 'svg',
+		},
+		{
+			id: 'due.magic',
+			label: 'magic',
+			value: 'magic',
+			color: 'accent',
+			shape: 'square',
+			asset: 'magic',
+			assetType: 'svg',
+		},
+	],
+}
+
+const level = {
+	initial: 'card',
+	input: 'toggle',
+	layout: 'switcher',
+	size: '2xs',
+	variant: 'bare',
+	items: [
+		{
+			id: 'level.purgatorio',
+			label: 'purgatorio',
+			value: 'purgatorio',
+		},
+		{id: 'level.inferno', label: 'inferno', value: 'inferno'},
+	],
+}
+
 // TODO: Fix asset - SVG / emoji
 // const asset = {
 // 	emoji,
@@ -351,7 +490,19 @@ const settingsFamily = {
 const elementFamily = {
 	layout: 'switcher',
 	size: 'xs',
-	props: ['color', 'variant', 'size', 'status', 'context', 'asset', 'shape'],
+	props: [
+		'color',
+		'variant',
+		'size',
+		'status',
+		'context',
+		'asset',
+		'shape',
+		'spell',
+		'uno',
+		'due',
+		'level',
+	],
 }
 
 const containerFamily = {
@@ -423,6 +574,10 @@ const PROPS_STYLE: {[key: string]: any} = {
 	color,
 	variant,
 	shape,
+	spell,
+	level,
+	uno,
+	due,
 	dimensions,
 	background,
 	status,

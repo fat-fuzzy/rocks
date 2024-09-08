@@ -24,7 +24,7 @@
 			]
 		},
 		{
-			"query": "(min-width: 800px)",
+			"query": "(min-width: 700px)",
 			"srcset": [
 				{
 					"width": 1500,
@@ -112,15 +112,15 @@
 	],
 	"sizes": [
 		{
-			"query": "(min-width:1620px)",
+			"query": "(min-width: 1620px)",
 			"slot": "60vw"
 		},
 		{
-			"query": "(min-width:1360px)",
+			"query": "(min-width: 1360px)",
 			"slot": "60vw"
 		},
 		{
-			"query": "(min-width:935px)",
+			"query": "(min-width: 935px)",
 			"slot": "70vw"
 		},
 		{
@@ -134,7 +134,7 @@
 			"height": 2248,
 			"channels": 3,
 			"premultiplied": false,
-			"size": 578160
+			"size": 568296
 		},
 		{
 			"format": "jpeg",
@@ -142,7 +142,7 @@
 			"height": 2248,
 			"channels": 3,
 			"premultiplied": false,
-			"size": 715835
+			"size": 709955
 		},
 		{
 			"format": "webp",
@@ -150,7 +150,7 @@
 			"height": 1498,
 			"channels": 3,
 			"premultiplied": false,
-			"size": 286974
+			"size": 284402
 		},
 		{
 			"format": "jpeg",
@@ -158,7 +158,7 @@
 			"height": 1498,
 			"channels": 3,
 			"premultiplied": false,
-			"size": 347426
+			"size": 345127
 		},
 		{
 			"format": "webp",
@@ -166,7 +166,7 @@
 			"height": 749,
 			"channels": 3,
 			"premultiplied": false,
-			"size": 91466
+			"size": 90500
 		},
 		{
 			"format": "jpeg",
@@ -174,7 +174,7 @@
 			"height": 749,
 			"channels": 3,
 			"premultiplied": false,
-			"size": 104408
+			"size": 103991
 		}
 	]
 }

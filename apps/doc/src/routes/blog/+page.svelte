@@ -16,7 +16,7 @@
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
 	<article class="l:sidebar:md">
-		<div class="l:text:lg">
+		<div class="l:text:md">
 			<EscapeHtml {html} />
 		</div>
 	</article>

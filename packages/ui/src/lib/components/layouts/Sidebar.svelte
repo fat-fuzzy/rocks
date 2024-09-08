@@ -1,13 +1,14 @@
 <script lang="ts">
 	import type {SidebarLayoutProps} from '$types'
 
-	let {size, align, threshold, side, main}: SidebarLayoutProps = $props()
+	let {size, align, threshold, side, main, justify}: SidebarLayoutProps = $props()
 
 	let mainClass = threshold ? `l:main th:${threshold}` : 'l:main'
 	let alignClass = align ? `align:${align}` : ''
+	let justifyClass = justify ? `justify:${justify}` : ''
 </script>
 
-<div class={`l:sidebar:${size} ${alignClass}`}>
+<div class={`l:sidebar:${size} ${alignClass} ${justifyClass}`}>
 	<div class={`l:side`}>
 		{#if side}
 			{@render side()}

@@ -66,6 +66,7 @@ import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
+import Aside from '$lib/components/recipes/content/Aside.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
@@ -112,6 +113,7 @@ const blocks = {
 	InputRadio,
 	InputRange,
 	InputFile,
+	Magic,
 }
 
 const layouts = {
@@ -143,9 +145,9 @@ const drafts = {
 	// InputPassword,
 	// InputFeedback,
 	InputGroup,
-	Magic,
 	Image,
 	Picture,
+	Aside,
 }
 
 const headless = {

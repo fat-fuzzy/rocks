@@ -2,16 +2,12 @@
 	color: var(--ink);
 	background-color: var(--shade);
 	display: inline-flex;
-	align-items: center;
-	justify-content: var(--justify, center);
 	flex-wrap: nowrap;
 	block-size: fit-content;
 	inline-size: fit-content;
 	font-size: var(--font-size);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
-	line-height: var(--font-leading-ui);
-	border-radius: var(--border-radius-base);
 }
 
 .ffr\:callout[class*='magic'] {
@@ -19,6 +15,12 @@
 	background-clip: text;
 	background: var(--magic-gradient);
 	color: var(--ink);
+	padding: var(--ui-size-sm);
+	border-radius: var(--border-radius-base);
+
+	&:has(~ [class*='icon']) {
+		margin-inline-end: var(--ui-size-sm);
+	}
 }
 
 .magic\:bleu {
@@ -79,20 +81,23 @@
 			var(--color-gradient-001-middle) 70% 70%,
 			var(--color-gradient-001-start) 88% 88%
 		);
-		--lightness-contrast: var(--color-lightness-000);
-		--chroma-contrast: var(--color-chroma-000);
+		font-weight: var(--font-weight-semibold);
 	}
 
 	&.inferno {
 		--magic-gradient: repeating-radial-gradient(
 			farthest-corner at 50% 50%,
-			var(--color-gradient-001-end) 20%,
-			var(--color-gradient-001-middle) 30%,
-			var(--color-gradient-001-start) 45%,
-			var(--color-gradient-001-middle) 60%,
-			var(--color-gradient-001-end) 80%
+			var(--color-gradient-001-start) 20%,
+			var(--color-gradient-001-end) 30%,
+			var(--color-gradient-001-middle) 45%,
+			var(--color-gradient-001-end) 60%,
+			var(--color-gradient-001-start) 80%
 		);
-		--lightness-contrast: var(--color-lightness-000);
-		--chroma-contrast: var(--color-chroma-000);
+		font-weight: var(--font-weight-semibold);
 	}
+}
+
+.ink\:white {
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma-contrast: var(--color-chroma-000);
 }

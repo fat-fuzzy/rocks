@@ -40,7 +40,7 @@ let filePath = 0
 // TODO: Generate 2x responsive images
 function optimize(sharpStream, image, config) {
 	const {file, ext, width, height, path} = image
-	const {srcset, sizes} = config
+	const {srcset} = config
 
 	filePath = `${path}/${file}`
 
@@ -75,22 +75,12 @@ function optimize(sharpStream, image, config) {
 		}
 	})
 
-	if (ext === 'jpeg' || ext === 'jpg') {
-		promises.push(
-			sharpStream
-				.clone()
-				.jpeg({quality: 100})
-				.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
-		)
-	}
-	if (ext === 'png') {
-		promises.push(
-			sharpStream
-				.clone()
-				.png({quality: 100})
-				.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
-		)
-	}
+	promises.push(
+		sharpStream
+			.clone()
+			.png({quality: 100})
+			.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
+	)
 	// https://github.com/sindresorhus/got/blob/main/documentation/3-streams.md
 	got.stream(`${host}/${filePath}-${width}-${height}.${ext}`).pipe(sharpStream)
 
@@ -119,7 +109,7 @@ function optimize(sharpStream, image, config) {
 }
 
 function main() {
-	optimize(sharpStream, images[1], config)
+	optimize(sharpStream, images[0], config)
 }
 
 export default main()

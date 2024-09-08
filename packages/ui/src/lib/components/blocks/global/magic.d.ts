@@ -1,11 +1,11 @@
 import type {Snippet} from 'svelte'
 
 export type MagicProps = {
-	text: string
+	text?: string
 	spell: string
-	daemons: {
-		uno: string
-		dos: string
-	}
+	level?: string
+	uno: string
+	due: string
 	size: string
+	children?: Snippet
 }
