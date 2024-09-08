@@ -127,6 +127,10 @@
 			transform 0.3s ease-out,
 			overlay 0.5s ease-out allow-discrete,
 			display 0.5s ease-out allow-discrete;
+		& > * {
+			inline-size: 0;
+			block-size: 0;
+		}
 	}
 
 	/*   Open state of the dialog  */
@@ -138,6 +142,11 @@
 		transform: scaleY(1);
 		overflow: auto;
 		padding-block-end: 5rem;
+
+		& > * {
+			inline-size: 100%;
+			block-size: 100%;
+		}
 	}
 
 	/* Transition the :backdrop when the dialog modal is promoted to the top layer */
