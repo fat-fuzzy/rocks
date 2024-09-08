@@ -123,9 +123,11 @@
 	dialog {
 		opacity: 0;
 		transform: translateY(0);
+		block-size: 0;
 		transition:
 			opacity 0.3s ease-out,
 			transform 0.3s ease-out,
+			block-size 0.3s ease-out,
 			overlay 0.5s ease-out allow-discrete,
 			display 0.5s ease-out allow-discrete;
 		& > * {
@@ -141,9 +143,9 @@
 		opacity: 1;
 		top: 0;
 		transform: scaleY(1);
-		overflow: auto;
-		padding-block-end: 5rem;
-
+		overflow: hidden;
+		padding-block: var(--gap);
+		block-size: max-content;
 		& > * {
 			inline-size: 100%;
 			block-size: 100%;
