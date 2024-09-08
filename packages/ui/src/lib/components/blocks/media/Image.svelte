@@ -4,6 +4,7 @@
 		ext,
 		alt,
 		orientation = 'landscape',
+		loading,
 		width,
 		height,
 		sources,
@@ -15,6 +16,7 @@
 		width: string
 		height: string
 		orientation?: 'landscape' | 'portrait'
+		loading?: 'lazy' | 'eager'
 		dimensions?: string
 		sources: {width: string; height: string; format: string}[]
 		sizes: {query?: string; slot: string}[]
@@ -34,4 +36,5 @@
 	sizes={sizes
 		.map(({query, slot}) => (query ? `${query} ${slot}` : slot))
 		.join(`, `)}
+	{loading}
 />

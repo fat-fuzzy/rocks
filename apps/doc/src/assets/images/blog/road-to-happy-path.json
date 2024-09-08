@@ -24,7 +24,7 @@
 			]
 		},
 		{
-			"query": "(min-width: 800px)",
+			"query": "(min-width: 700px)",
 			"srcset": [
 				{
 					"width": 1500,
@@ -112,15 +112,15 @@
 	],
 	"sizes": [
 		{
-			"query": "(min-width:1620px)",
+			"query": "(min-width: 1620px)",
 			"slot": "60vw"
 		},
 		{
-			"query": "(min-width:1360px)",
+			"query": "(min-width: 1360px)",
 			"slot": "60vw"
 		},
 		{
-			"query": "(min-width:935px)",
+			"query": "(min-width: 935px)",
 			"slot": "70vw"
 		},
 		{

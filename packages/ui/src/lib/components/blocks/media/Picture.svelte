@@ -7,6 +7,7 @@
 		alt,
 		orientation = 'landscape',
 		dimensions = 'feature',
+		loading,
 		width,
 		height,
 		sources,
@@ -20,12 +21,19 @@
 		height: string
 		orientation?: 'landscape' | 'portrait'
 		dimensions?: string
+		loading?: string
 		sources: {width: string; height: string; format: string}[]
 		media: {query?: string; srcset: {width: string; dpr: number}[]}[]
 		sizes: {query?: string; slot: string}[]
 	} = $props()
 
-	let frameClass = $derived(dimensions ? `l:frame:${dimensions}` : 'l:frame')
+	let frameClass = $derived(
+		dimensions === 'full'
+			? ''
+			: dimensions
+				? `l:frame:${dimensions}`
+				: 'l:frame',
+	)
 
 	function getSources(width: string) {
 		const _sources = sources.filter(({width: w}) => w === width)
@@ -51,5 +59,15 @@
 	{#each srcset as set}
 		<source srcset={set.srcset} media={set.query} />
 	{/each}
-	<Image {src} {ext} {alt} {orientation} {width} {height} {sources} {sizes} />
+	<Image
+		{src}
+		{ext}
+		{alt}
+		{orientation}
+		{width}
+		{height}
+		{sources}
+		{sizes}
+		{loading}
+	/>
 </picture>
