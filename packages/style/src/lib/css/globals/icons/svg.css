@@ -15,7 +15,7 @@
 		mask: var(--icon-url) center center / 100% auto no-repeat;
 	}
 
-	[class*='svg'][class*='magic']::before {
+	[class*='svg'][class*='magic:']::before {
 		background: var(--magic-gradient);
 		mask: var(--icon-url) center center / 100% auto no-repeat;
 	}

@@ -119,6 +119,9 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
 			asset: 'default',
 			size: 'md',
+			spell: 'bleu',
+			uno: 'magic',
+			due: 'sparkles',
 		},
 	},
 	layouts: {

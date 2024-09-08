@@ -80,7 +80,7 @@ export default {
 		text: 'Abracadabra',
 		spell: 'bleu',
 		uno: 'magic',
-		dos: 'sparkles',
+		due: 'sparkles',
 		size: 'md',
 	},
 }

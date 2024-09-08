@@ -5,7 +5,7 @@ export type MagicProps = {
 	spell: string
 	level?: string
 	uno: string
-	dos: string
+	due: string
 	size: string
 	children?: Snippet
 }
