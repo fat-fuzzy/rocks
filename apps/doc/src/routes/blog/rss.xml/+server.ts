@@ -23,9 +23,10 @@ function formatPubdate(str: string) {
 const get_rss = (posts) =>
 	`
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 
 <channel>
+	<atom:link href="https://rocks.pages.dev/blog/rss.xml" rel="self" type="application/rss+xml" />
 	<title>Fat Fuzzy Blog</title>
 	<link>https://rocks.pages.dev/blog</link>
 	<description></description>
@@ -39,6 +40,7 @@ const get_rss = (posts) =>
 			(post) => `
 		<item>
 			<title>${sanitizePlainText(post.meta.title)}</title>
+			<guid isPermaLink="false">fat-fuzzy:blog:${sanitizePlainText(post.meta.id)}:${sanitizePlainText(post.meta.slug)}</guid>
 			<link>https://rocks.pages.dev/blog/${post.meta.slug}</link>
 			<description>${sanitizePlainText(post.meta.description)}</description>
 			<pubDate>${formatPubdate(post.meta.date_created)}</pubDate>
