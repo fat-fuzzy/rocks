@@ -3,6 +3,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	const {Picture} = ui.drafts
+	const {Head} = ui.headless
 	const {Sidebar} = ui.layouts
 
 	let dialog: HTMLDialogElement
@@ -13,6 +14,7 @@
 
 	function openDialog(e) {
 		dialog.show()
+		window.scrollTo(0, 0)
 		stage = true
 	}
 
@@ -21,25 +23,27 @@
 	}
 </script>
 
-<Sidebar {title} {description} size="2xs" justify="center">
+<Head {title} description={`Details page for media: ${title}`} />
+
+<Sidebar {title} {description} size="md">
 	{#snippet side()}
 
-	<div class="l:stack:xs">
+	<div class="l:stack:xs l:center:md">
 		<button
 			onclick={() => history.back()}
 			class="bg:primary variant:fill size:xs"
 		>
 			Back
 		</button>
-
-		<button id="button-zoom"
-		class="bg:primary variant:outline size:xs" onclick={openDialog}>
-			Zoom
-		</button>
-
+		<article>
+			<h1>{media.title}</h1>
+			<p class='font:md'>{media.description}</p>
+		</article>
 	</div>
 	{/snippet}
 	{#snippet main()}
+	<Sidebar {title} {description} size="2xs end" justify="center">
+		{#snippet main()}
 		<div class='l:center:md' hidden={stage}>
 			<Picture
 				src={media.src}
@@ -53,14 +57,24 @@
 				media={media.media}
 			/>
 		</div>
+		{/snippet}
+		{#snippet side()}
+			<div class="l:stack:xs button-zoom">
+				<button
+				class="bg:primary variant:outline size:xs" onclick={openDialog}>
+					Zoom
+				</button>
+			</div>
+		{/snippet}
+	</Sidebar>
 	{/snippet}
 </Sidebar>
 
 <dialog
 	bind:this={dialog}
-	class="w:full sticky l:sidebar:2xs bg:inherit"
+	class="w:full l:sidebar:2xs bg:inherit"
 >
-	<form method="dialog" class="l:side hug">
+	<form method="dialog" class="l:side l:flex justify:end button-zoom">
 		<button class="bg:primary variant:outline size:xs" onclick={closeDialog}> Close </button>
 	</form>
 	<div class="l:main:90 col:center">
@@ -81,16 +95,33 @@
 </dialog>
 
 <style>
-	@media (max-width: 480px) {
-		#button-zoom {
+	@media (max-width: 600px) {
+		/* Hide zoom button when there is no roo mto zoom  */
+		:global(.l\:side:has(.button-zoom)) {
 			display: none;
+			flex-basis: 0;
+			flex-grow: 0;
+			& > * {
+				display: none
+			}
+		}
+	}
+
+	@media (min-width: 800px) {
+		/**This makes sure the zoom and close zoom buttons are coherently aligned in all viewports */
+		.button-zoom {
+			flex-basis: 0;
+			flex-grow: 0;
+		}
+		dialog.l\:sidebar\:2xs {
+			flex-direction: row-reverse;
 		}
 	}
 
 	/*   Closed state of the dialog   */
 	dialog {
 		opacity: 0;
-		transform: translateY(0);
+		transform: scaleY(0) translateY(0);
 		transition:
 			opacity 0.3s ease-out,
 			transform 0.3s ease-out,

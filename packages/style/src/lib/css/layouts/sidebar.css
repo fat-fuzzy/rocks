@@ -14,6 +14,10 @@
 			inline-size: calc(100% - var(--sidebar-width) + var(--gap));
 			margin-inline-start: 0;
 		}
+		&.justify\:center.end > [class*='l:main'] > * {
+			margin-inline-start: initial;
+			margin-inline-end: 0;
+		}
 	}
 }
 
