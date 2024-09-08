@@ -20,6 +20,11 @@ export const load = async (event) => {
 
 	if (!slug) {
 		content = await pages.fetchMarkdowns(page)
+		if (!content?.length) {
+			throw error(404, {message: 'Not found'})
+		} else {
+			content = content[0]
+		}
 	} else if (slug === component && category) {
 		let categoryMarkdowns = markdowns[category]
 		content = categoryMarkdowns.find(
