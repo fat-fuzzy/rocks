@@ -167,14 +167,14 @@ const shape = {
 	items: [
 		{
 			id: 'shape.round',
-			label: 'round',
+			title: 'round',
 			value: 'round',
 			shape: 'round',
 			asset: 'round',
 		},
 		{
 			id: 'shape.square',
-			label: 'square',
+			title: 'square',
 			value: 'square',
 			shape: 'square',
 			asset: 'square',
@@ -267,28 +267,28 @@ const asset = {
 	items: [
 		{
 			id: 'asset.profile',
-			label: 'profile',
+			title: 'profile',
 			value: 'profile',
 			asset: 'profile',
 			shape: 'square',
 		},
 		{
 			id: 'asset.favorite',
-			label: 'favorite',
+			title: 'favorite',
 			value: 'favorite',
 			asset: 'favorite',
 			shape: 'square',
 		},
 		{
 			id: 'asset.idea',
-			label: 'idea',
+			title: 'idea',
 			value: 'idea',
 			asset: 'idea',
 			shape: 'square',
 		},
 		{
 			id: 'asset.default',
-			label: 'default',
+			title: 'default',
 			value: 'default',
 			asset: 'default',
 			shape: 'square',
@@ -318,7 +318,7 @@ const uno = {
 	items: [
 		{
 			id: 'uno.tsunami',
-			label: 'tsunami',
+			title: 'tsunami',
 			value: 'tsunami',
 			color: 'highlight',
 			shape: 'square',
@@ -327,7 +327,7 @@ const uno = {
 		},
 		{
 			id: 'uno.water',
-			label: 'water',
+			title: 'water',
 			value: 'water',
 			color: 'highlight',
 			shape: 'square',
@@ -336,7 +336,7 @@ const uno = {
 		},
 		{
 			id: 'uno.sparkles',
-			label: 'sparkles',
+			title: 'sparkles',
 			value: 'sparkles',
 			color: 'highlight',
 			shape: 'square',
@@ -345,7 +345,7 @@ const uno = {
 		},
 		{
 			id: 'uno.egg',
-			label: 'egg',
+			title: 'egg',
 			value: 'egg',
 			color: 'highlight',
 			shape: 'square',
@@ -354,7 +354,7 @@ const uno = {
 		},
 		{
 			id: 'uno.magic',
-			label: 'magic',
+			title: 'magic',
 			value: 'magic',
 			color: 'highlight',
 			shape: 'square',
@@ -373,7 +373,7 @@ const due = {
 	items: [
 		{
 			id: 'due.tsunami',
-			label: 'tsunami',
+			title: 'tsunami',
 			value: 'tsunami',
 			shape: 'square',
 			color: 'accent',
@@ -382,7 +382,7 @@ const due = {
 		},
 		{
 			id: 'due.water',
-			label: 'water',
+			title: 'water',
 			value: 'water',
 			color: 'accent',
 			shape: 'square',
@@ -391,7 +391,7 @@ const due = {
 		},
 		{
 			id: 'due.sparkles',
-			label: 'sparkles',
+			title: 'sparkles',
 			value: 'sparkles',
 			color: 'accent',
 			shape: 'square',
@@ -400,7 +400,7 @@ const due = {
 		},
 		{
 			id: 'due.egg',
-			label: 'egg',
+			title: 'egg',
 			value: 'egg',
 			color: 'accent',
 			shape: 'square',
@@ -409,7 +409,7 @@ const due = {
 		},
 		{
 			id: 'due.magic',
-			label: 'magic',
+			title: 'magic',
 			value: 'magic',
 			color: 'accent',
 			shape: 'square',
