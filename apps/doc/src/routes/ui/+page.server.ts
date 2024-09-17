@@ -4,6 +4,9 @@ import {fail, redirect} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
 
+export const prerender = false
+export const ssr = true
+
 const {DsTabsUpdate, DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
 const {SignUpUser} = ui.forms
 const {TABS, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} =

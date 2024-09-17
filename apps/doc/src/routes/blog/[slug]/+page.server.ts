@@ -1,5 +1,9 @@
 import {error} from '@sveltejs/kit'
 import blog from '$data/blog'
+
+export const prerender = true
+export const ssr = true
+
 /**
  * Load data from markdown file based on route parameters
  * @param params Request parameters

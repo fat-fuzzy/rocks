@@ -24,7 +24,17 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
+		prerender: {
+			handleHttpError: ({path, referrer, status, message}) => {
+				// ignore deliberate link to shiny 404 page
+				if (status === 404) {
+					return
+				}
 
+				// otherwise fail the build
+				throw new Error(message)
+			},
+		},
 		alias: {
 			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),
