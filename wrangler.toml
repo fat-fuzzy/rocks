@@ -1,5 +1,0 @@
-# Top-level configuration
-name = "lab"
-main = "apps/doc/.svelte-kit/cloudflare/_worker.js"
-
-compatibility_flags = [ "nodejs_compat" ]
