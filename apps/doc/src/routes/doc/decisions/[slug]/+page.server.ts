@@ -1,5 +1,6 @@
 import {error} from '@sveltejs/kit'
 import decisions from '$data/decisions'
+
 /**
  * Load data from markdown file based on route parameters
  * @param params Request parameters

@@ -5,7 +5,10 @@ import images from '$data/images'
 const {UiReveal, SettingsUpdate} = ui.forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
 
-export const load = async () => {
+export const prerender = false
+export const ssr = true
+
+export const load = async ({params}) => {
 	const imageSlug = '001-intro'
 	try {
 		const dayImageData = await images.getImageData('day', imageSlug)
