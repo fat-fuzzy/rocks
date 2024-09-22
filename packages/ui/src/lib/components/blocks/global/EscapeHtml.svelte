@@ -1,7 +1,7 @@
 <script lang="ts">
 	import DOMPurify from 'dompurify'
 	import {onMount} from 'svelte'
-	let {html} = $props()
+	let {html}: {html: string} = $props()
 	let purify
 	let escaped: string | undefined = $state()
 

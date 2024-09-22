@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Image from './Image.svelte'
+	import type {PictureProps} from '$types'
 
 	let {
+		id,
 		src,
 		ext,
 		alt,
@@ -13,19 +15,7 @@
 		sources,
 		media,
 		sizes,
-	}: {
-		src: string
-		ext: string
-		alt: string
-		width: string
-		height: string
-		orientation?: 'landscape' | 'portrait'
-		dimensions?: string
-		loading?: string
-		sources: {width: string; height: string; format: string}[]
-		media: {query?: string; srcset: {width: string; dpr: number}[]}[]
-		sizes: {query?: string; slot: string}[]
-	} = $props()
+	}: PictureProps = $props()
 
 	let frameClass = $derived(
 		dimensions === 'full'
@@ -55,7 +45,7 @@
 	)
 </script>
 
-<picture class={frameClass}>
+<picture {id} class={frameClass}>
 	{#each srcset as set}
 		<source srcset={set.srcset} media={set.query} />
 	{/each}

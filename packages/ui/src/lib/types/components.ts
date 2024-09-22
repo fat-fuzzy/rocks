@@ -43,7 +43,7 @@ export interface Recipes {
 	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
-	Header: typeof import('$lib/components/recipes/headers/Header.svelte').default
+	Header: typeof import('$lib/components/recipes/header/Header.svelte').default
 }
 
 export interface Content {

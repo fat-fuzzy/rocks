@@ -50,7 +50,7 @@ import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
-import Header from '$lib/components/recipes/headers/Header.svelte'
+import Header from '$lib/components/recipes/header/Header.svelte'
 
 /**
  * Recipes - Content
