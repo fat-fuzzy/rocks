@@ -20,16 +20,51 @@ const images = [
 	{
 		file: '001-intro',
 		ext: 'png',
-		width: 2647,
-		height: 1869,
+		width: 2732,
+		height: 2048,
 		path: 'images/day',
 	},
 	{
 		file: '001-intro',
 		ext: 'png',
-		width: 2647,
-		height: 1869,
+		width: 2732,
+		height: 2048,
 		path: 'images/night',
+	},
+	{
+		file: 'Fat-Fuzzy-1',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-2',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-3',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-4',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-5',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/all',
 	},
 ]
 
@@ -89,6 +124,7 @@ function optimize(sharpStream, image, config) {
 			res.pop()
 			console.log(
 				JSON.stringify({
+					id: filePath,
 					...image,
 					...config,
 					sources: res,

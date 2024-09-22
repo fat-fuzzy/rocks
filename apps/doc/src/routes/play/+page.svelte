@@ -4,6 +4,7 @@
 
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
+	const {Scrolly} = ui.drafts
 
 	const path = $derived($page.url.pathname)
 
@@ -12,7 +13,9 @@
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
 	let sketches = $state($page.data.sketches)
+	let animations = $state($page.data.animations)
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
+	let animationMedia = $derived(animations[0].media)
 </script>
 
 <PageMain {title} {description} size="lg">
@@ -21,6 +24,10 @@
 	{/snippet}
 	<div class="l:text:lg">
 		<EscapeHtml {html} />
+	</div>
+	<h2>CSS Animations</h2>
+	<div>
+		<Scrolly title={animations[0].title} animations={['fade', 'slide', 'scale']} dimensions="video" items={animationMedia} />
 	</div>
 	<h2>Tags</h2>
 	<div class="l:text l:grid:sm maki:block">

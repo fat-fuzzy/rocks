@@ -4,6 +4,7 @@ import './nav.css' /* Use for navigation (navigation = links = hrefs = <a>) */
 import './menu.css' /* Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements */
 import './tabs.css' /* Use for tabs */
 import './context.css' /* Use for header context box */
+import './scrolly.css' /* Use with ScrollReveal component  */
 
 import './settings.css' /* A Settings menu component (for user input to adjust brightness, contrast, language, ...) */
 import './header-app.css' /* Use for main app header */

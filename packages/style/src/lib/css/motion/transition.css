@@ -1,0 +1,12 @@
+[class*='fade'] {
+	transition: opacity 300ms ease-in-out;
+	opacity: 0;
+}
+
+.fade\:in {
+	opacity: 1;
+}
+
+.fade\:out {
+	opacity: 0;
+}

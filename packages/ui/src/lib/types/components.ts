@@ -56,6 +56,8 @@ export interface Drafts {
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
+	Scrolly: typeof import('$lib/components/recipes/animations/Scrolly.svelte').default
+	ScrollyItem: typeof import('$lib/components/recipes/animations/ScrollyItem.svelte').default
 }
 
 export interface Headless {

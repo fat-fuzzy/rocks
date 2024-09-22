@@ -10,15 +10,18 @@ import assetsUtils from './assets'
 const dayImagesPrefix = '/src/assets/images/day/'
 const nightImagesPrefix = '/src/assets/images/night/'
 const blogImagesPrefix = '/src/assets/images/blog/'
+const playImagesPrefix = '/src/assets/images/play/'
 
 const dayImagesImports = import.meta.glob('/src/assets/images/day/*.json')
 const nightImagesImports = import.meta.glob('/src/assets/images/night/*.json')
 const blogImagesImports = import.meta.glob('/src/assets/images/blog/*.json')
+const playImagesImports = import.meta.glob('/src/assets/images/play/*.json')
 
-const [day, night, blog] = await Promise.all([
+const [day, night, blog, play] = await Promise.all([
 	assetsUtils.fetchJson(dayImagesPrefix, dayImagesImports),
 	assetsUtils.fetchJson(nightImagesPrefix, nightImagesImports),
 	assetsUtils.fetchJson(blogImagesPrefix, blogImagesImports),
+	assetsUtils.fetchJson(playImagesPrefix, playImagesImports),
 ])
 
 export async function getImageData(folder: string, slug: string) {
@@ -29,6 +32,8 @@ export async function getImageData(folder: string, slug: string) {
 			return night.find((image: any) => image.path === slug)
 		case 'blog':
 			return blog.find((image: any) => image.path === slug)
+		case 'play':
+			return play.find((image: any) => image.path === slug)
 		default:
 			return null
 	}
