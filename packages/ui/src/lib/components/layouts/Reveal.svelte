@@ -17,7 +17,8 @@
 		formaction,
 		actionPath,
 		redirect,
-		reveal,
+		layout,
+		reveal = 'collapsed',
 		direction = 'tb-lr',
 		place = 'top',
 		position,
@@ -35,7 +36,7 @@
 		onclick,
 	}: RevealLayoutProps = $props()
 
-	let expanded = $state(reveal ? reveal : UiState.collapsed)
+	let expanded = $state(reveal)
 
 	function handleClickOutside(event) {
 		expanded = 'collapsed'
@@ -48,12 +49,12 @@
 
 	let layoutClasses = $derived(styleHelper.getLayoutStyles({
 			color,
-			size: '2xs',
+			size,
 			height,
 			align,
 			asset,
 			variant,
-			layout: 'stack',
+			layout,
 			position,
 			breakpoint,
 			background,
@@ -77,18 +78,18 @@
 	}
 
 	let action =
-		$derived(formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction)
+		$derived(formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction ? formaction : '')
 </script>
 
 <form {method}
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-	class={revealClasses}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
 			update({reset: false})
 		}
 	}}
+	class={revealClasses}
 >
 	<Expand
 		id={`button-reveal-${id}`}
