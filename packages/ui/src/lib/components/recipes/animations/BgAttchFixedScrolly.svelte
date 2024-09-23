@@ -1,12 +1,11 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {PictureProps} from '$types'
-	import ScrollyItem from './ScrollyItem.svelte'
+	import ScrollyItem from './BgAttchFixedScrollyItem.svelte'
 
 	let {
 		title,
 		level = 3,
-		overlay = false,
 		animations = ['fade'],
 		dimensions = 'video',
 		items,
@@ -18,7 +17,6 @@
 		animations?: string[]
 		items: PictureProps[]
 	} = $props()
-	let prevRatio = $state(0.0)
 	let scrollArea: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let frameClasses = $derived(dimensions ? ` l:frame:${dimensions}` : 'l:frame')
@@ -39,7 +37,6 @@
 	function handleIntersect(entries: IntersectionObserverEntry[]) {
 		entries.forEach((entry) => {
 			let element = entry.target
-			console.log(entry)
 
 			if (entry.isIntersecting) {
 				animations.forEach((animation) => {

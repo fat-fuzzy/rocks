@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {PictureProps} from '$types'
-	import Picture from '$lib/components/blocks/media/Picture.svelte'
 
 	let {
 		item,
