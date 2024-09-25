@@ -1,23 +1,14 @@
 .page\:home main {
-	header > *,
-	> section {
-		max-inline-size: var(--max-inline-size-center);
-		margin-inline: auto;
-	}
-}
-
-.page\:home main {
 	header {
-		max-inline-size: var(--max-inline-size-center);
-		margin-inline: auto;
 		position: fixed;
 		z-index: 1;
 		top: var(--size-ui-header-height);
 		left: 0;
 		right: 0;
+		margin-block-end: 0;
 	}
 	> section:first-child {
-		padding-block-start: calc(var(--font-size-h1) + 2 * var(--size-base-2xl));
+		padding-block-start: calc(var(--font-size-h1) + var(--size-base-2xl));
 	}
 }
 

@@ -6,7 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
-	const {HeaderSettings} = ui.recipes
+	const {HeaderSettings} = ui.drafts
 
 	type Props = {
 		fixed?: boolean

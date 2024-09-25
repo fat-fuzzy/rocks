@@ -16,11 +16,11 @@
 
 <PageMain {title} {description} size="md" justify="center">
 	{#snippet header()}
-		<div class="l:center:md surface:0:neutral w:full">
+		<div class="surface:0:neutral w:full">
 			<h1 class="card:sm text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
-	<div class="l:text:lg col:center w:full bg:inherit">
+	<div class="l:text:lg col:center w:full gradient:end neutral">
 		<EscapeHtml {html} />
 	</div>
 </PageMain>

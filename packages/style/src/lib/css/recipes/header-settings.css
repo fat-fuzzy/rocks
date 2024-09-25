@@ -11,8 +11,6 @@
 }
 
 .header-settings .l\:reveal\:auto {
-	padding-block: var(--ui-size-sm);
-
 	> ul {
 		padding: 0;
 		margin: 0;

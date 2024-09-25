@@ -25,29 +25,26 @@ const cssAnimations = [
 ]
 
 async function loadAnimations() {
-	const animationData = cssAnimations.map(
-		async ({slug, title, count, sections}) => {
-			const animationAssets: Promise<any>[] = []
-			for (let i = 0; i < count; i++) {
-				animationAssets.push(images.getImageData('play', `${slug}-${i + 1}`))
-			}
-			const assets = await Promise.all(animationAssets)
-			const mediaData = assets.map((asset, index) => {
-				return {
-					src: `/${asset.json.path}/${asset.json.file}`,
-					...asset.json,
-					sources: asset.json.sources,
-					content: sections[index],
-				}
-			})
+	const animationData = cssAnimations.map(async ({slug, count, sections}) => {
+		const animationAssets: Promise<any>[] = []
+		for (let i = 0; i < count; i++) {
+			animationAssets.push(images.getImageData('play', `${slug}-${i + 1}`))
+		}
+		const assets = await Promise.all(animationAssets)
+		const mediaData = assets.map((asset, index) => {
 			return {
-				slug,
-				title,
-				media: mediaData,
-				overlay: count === 0,
+				src: `/${asset.json.path}/${asset.json.file}`,
+				...asset.json,
+				sources: asset.json.sources,
+				content: sections[index],
 			}
-		},
-	)
+		})
+		return {
+			slug,
+			media: mediaData,
+			overlay: count === 0,
+		}
+	})
 	const animations = await Promise.all(animationData)
 
 	return animations
