@@ -44,7 +44,6 @@ export interface Recipes {
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
 	Header: typeof import('$lib/components/recipes/header/Header.svelte').default
-	HeaderSettings: typeof import('$lib/components/recipes/header/HeaderSettings.svelte').default
 }
 
 export interface Content {
@@ -59,6 +58,7 @@ export interface Drafts {
 	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
 	Scrolly: typeof import('$lib/components/recipes/animations/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/ScrollyItem.svelte').default
+	HeaderSettings: typeof import('$lib/components/recipes/header/HeaderSettings.svelte').default
 }
 
 export interface Headless {

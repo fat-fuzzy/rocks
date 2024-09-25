@@ -136,7 +136,6 @@ const recipes = {
 	Nav,
 	RevealNav,
 	Header,
-	HeaderSettings,
 }
 
 const content = {
@@ -154,6 +153,7 @@ const drafts = {
 	Aside,
 	Scrolly,
 	ScrollyItem,
+	HeaderSettings,
 }
 
 const headless = {
