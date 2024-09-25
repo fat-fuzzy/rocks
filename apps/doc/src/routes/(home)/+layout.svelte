@@ -54,7 +54,7 @@
 		path={$page.url.pathname}
 		actionPath="/"
 		redirect={$page.url.pathname}
-		items={{settings: {...ui.constants.APP_SETTINGS, onupdate: updateSettings}}}
+		items={{settings: {switch: ui.constants.APP_SETTINGS.switch, links:[], onupdate: updateSettings}}}
 		breakpoint="sm"
 		app={fatFuzzyStore.app}/>
 	<main id="main">
