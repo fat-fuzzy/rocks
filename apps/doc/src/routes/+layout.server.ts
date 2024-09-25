@@ -1,6 +1,6 @@
 export const load = async (event) => {
-	let styles = {}
-	let settings = {}
+	let styles
+	let settings
 	if (event.locals.styles) {
 		styles = JSON.parse(event.locals.styles)
 	}
