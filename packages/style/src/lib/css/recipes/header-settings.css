@@ -57,6 +57,5 @@
 	form:has([aria-expanded='true']) + .content {
 		top: calc(var(--size-ui-header-height) + var(--ui-size));
 		background-color: var(--shade);
-		box-shadow: var(--shadow-md);
 	}
 }
