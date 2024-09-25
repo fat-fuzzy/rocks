@@ -22,13 +22,10 @@
 	let scrollArea: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let frameClasses = $derived(dimensions ? ` l:frame:${dimensions}` : 'l:frame')
-	let animationClasses = $derived(
-		animations.map((animation) => `${animation}:out`).join(' '),
-	)
 
 	function buildThresholdList() {
 		let thresholds = []
-		const numSteps = 5.0
+		const numSteps = 3.0
 
 		for (let i = 1.0; i <= numSteps; i++) {
 			let ratio = i / numSteps
@@ -42,20 +39,18 @@
 	function handleIntersect(entries: IntersectionObserverEntry[]) {
 		entries.forEach((entry) => {
 			let element = entry.target
-			console.log(entry)
 
-			if (entry.intersectionRatio > prevRatio) {
+			if (entry.isIntersecting) {
 				animations.forEach((animation) => {
 					element.classList.add(`${animation}:in`)
 					element.classList.remove(`${animation}:out`)
 				})
 			} else {
 				animations.forEach((animation) => {
-					element.classList.add(`${animation}:in`)
-					element.classList.remove(`${animation}:out`)
+					element.classList.remove(`${animation}:in`)
+					element.classList.add(`${animation}:out`)
 				})
 			}
-			prevRatio = entry.intersectionRatio
 		})
 	}
 
@@ -80,17 +75,11 @@
 	<svelte:element this={`h${level}`}>{title}</svelte:element>
 {/if}
 
-<div class={`scroll:container layer:inset:1 ${frameClasses}`}>
-	<ol bind:this={scrollArea} class={`scroll:y  w:full `}>
+<div class={`scroll:container ${frameClasses}`}>
+	<ol bind:this={scrollArea} class={`scroll:y w:full`}>
 		{#key observer}
 			{#each items as item, index (index)}
-				<ScrollyItem
-					{observer}
-					{item}
-					{animations}
-					overlay={index === 0}
-					level={level + 1}
-				/>
+				<ScrollyItem {observer} {item} {animations} level={level + 1} />
 			{/each}
 		{/key}
 	</ol>

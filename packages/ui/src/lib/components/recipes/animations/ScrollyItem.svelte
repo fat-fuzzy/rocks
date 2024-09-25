@@ -1,28 +1,23 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {PictureProps} from '$types'
+	import Picture from '$lib/components/blocks/media/Picture.svelte'
 
 	let {
 		item,
 		level,
 		observer, // Observer from the parent component that is observing this component
 		animations,
-		overlay,
 	}: {
 		item: PictureProps
 		level: number
 		observer?: IntersectionObserver
 		animations: string[]
-		overlay?: boolean
 	} = $props()
 
 	let observedArea: HTMLElement | undefined = $state()
 
-	let classes = $derived(
-		overlay
-			? `${animations} item snap:start overlay`
-			: `${animations} item snap:start`,
-	)
+	let classes = $derived(`${animations} scroll:item`)
 
 	onMount(() => {
 		if (!observedArea) return
@@ -37,14 +32,11 @@
 	})
 </script>
 
-<li
-	bind:this={observedArea}
-	class={classes}
-	style={`--image-url: url(${item.src}-1000.${item.ext});`}
->
+<li bind:this={observedArea} class={classes}>
 	{#if item.title}
 		<svelte:element this={`h${level + 1}`}>{item.title}</svelte:element>
 	{/if}
+	<Picture {...item} />
 	{#if item.caption}
 		<p>{item.caption}</p>
 	{/if}

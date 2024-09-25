@@ -26,6 +26,20 @@
 	--chroma-contrast: var(--chroma-surface-3-contrast);
 }
 
+[class*='surface:4'] {
+	--lightness: var(--lightness-surface-4);
+	--lightness-contrast: var(--lightness-surface-4-contrast);
+	--chroma: var(--chroma-surface-4);
+	--chroma-contrast: var(--chroma-surface-4-contrast);
+}
+
+[class*='surface:5'] {
+	--lightness: var(--lightness-surface-5);
+	--lightness-contrast: var(--lightness-surface-5-contrast);
+	--chroma: var(--chroma-surface-5);
+	--chroma-contrast: var(--chroma-surface-5-contrast);
+}
+
 [class*='surface:'] {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
