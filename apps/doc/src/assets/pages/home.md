@@ -6,4 +6,4 @@ id: '000'
 tags: ['pages', 'home']
 ---
 
-## ✨ Highlights
+## ✨ Contents ✨

@@ -145,7 +145,7 @@ function optimize(sharpStream, image, config) {
 }
 
 function main() {
-	optimize(sharpStream, images[0], config)
+	optimize(sharpStream, images[3], config)
 }
 
 export default main()
