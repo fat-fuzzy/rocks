@@ -32,15 +32,15 @@
 
 <Head pageName={currentPage} {title} {description} />
 
-<header id="content" class={headerClass}>
-	{#if header}
-		{@render header()}
-	{:else}
-		<h1 class="maki:block:md">{title}</h1>
-	{/if}
-</header>
-
 <section>
+	<header id="content" class={headerClass}>
+		{#if header}
+			{@render header()}
+		{:else}
+			<h1 class="maki:block:md">{title}</h1>
+		{/if}
+	</header>
+
 	{#if children}
 		{@render children()}
 	{/if}

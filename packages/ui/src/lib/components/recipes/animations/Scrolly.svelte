@@ -1,27 +1,30 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {PictureProps} from '$types'
+	import type {ScrollyItemProps} from '$types'
 	import ScrollyItem from './ScrollyItem.svelte'
 
 	let {
 		title,
 		level = 3,
-		overlay = false,
+		fixed = false,
 		animations = ['fade'],
-		dimensions = 'video',
+		dimensions,
 		items,
 	}: {
 		title?: string
 		level?: number
-		overlay?: boolean
+		fixed?: boolean
 		dimensions?: string
 		animations?: string[]
-		items: PictureProps[]
+		items: ScrollyItemProps[]
 	} = $props()
 	let prevRatio = $state(0.0)
 	let scrollArea: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let frameClasses = $derived(dimensions ? ` l:frame:${dimensions}` : 'l:frame')
+	let scrollContainerClasses = $derived(
+		fixed ? `fixed ${frameClasses}` : frameClasses,
+	)
 
 	function buildThresholdList() {
 		let thresholds = []
@@ -40,7 +43,7 @@
 		entries.forEach((entry) => {
 			let element = entry.target
 
-			if (entry.isIntersecting) {
+			if (entry.intersectionRatio > 0.3) {
 				animations.forEach((animation) => {
 					element.classList.add(`${animation}:in`)
 					element.classList.remove(`${animation}:out`)
@@ -51,6 +54,7 @@
 					element.classList.add(`${animation}:out`)
 				})
 			}
+			prevRatio = entry.intersectionRatio
 		})
 	}
 
@@ -58,7 +62,6 @@
 		if (!scrollArea) return
 		if (!observer) {
 			observer = new IntersectionObserver(handleIntersect, {
-				root: scrollArea,
 				rootMargin: '0px',
 				threshold: buildThresholdList(),
 			})
@@ -75,12 +78,12 @@
 	<svelte:element this={`h${level}`}>{title}</svelte:element>
 {/if}
 
-<div class={`scroll:container ${frameClasses}`}>
-	<ol bind:this={scrollArea} class={`scroll:y w:full`}>
+<nav class={`scroll:container ${scrollContainerClasses}`}>
+	<ul bind:this={scrollArea} class="scroll:y w:full unstyled">
 		{#key observer}
 			{#each items as item, index (index)}
 				<ScrollyItem {observer} {item} {animations} level={level + 1} />
 			{/each}
 		{/key}
-	</ol>
-</div>
+	</ul>
+</nav>

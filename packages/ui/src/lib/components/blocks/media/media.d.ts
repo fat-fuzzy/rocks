@@ -1,3 +1,5 @@
+export type Source = {width: string; height: string; format: string}
+
 export type MediaProps = {
 	id?: string
 	slug?: string
@@ -8,11 +10,10 @@ export type MediaProps = {
 	height: string
 	title?: string
 	caption?: string
-	overlay?: boolean
 	orientation?: 'landscape' | 'portrait'
 	loading?: 'lazy' | 'eager'
 	dimensions?: string
-	sources: {width: string; height: string; format: string}[]
+	sources: Source[]
 	sizes: {query?: string; slot: string}[]
 }
 
