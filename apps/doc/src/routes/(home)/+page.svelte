@@ -17,7 +17,7 @@
 <PageMain {title} {description} size="md" justify="center">
 	{#snippet header()}
 		<div class="surface:0:neutral w:full">
-			<h1 class="card:sm text:center">Fat Fuzzy Rocks</h1>
+			<h1 class="card:lg text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
 	<div class="l:text:lg col:center w:full gradient:end neutral">
