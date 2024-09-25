@@ -1,12 +1,57 @@
 import {error, redirect} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
+import pages from '$data/pages'
 import images from '$data/images'
+
+const page = 'home'
 
 const {UiReveal, SettingsUpdate} = ui.forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
 
 export const prerender = false
 export const ssr = true
+const cssAnimations = [
+	{
+		slug: 'fat-fuzzy',
+		count: 5,
+		sections: [
+			{title: '', link: '', content: ''},
+			{title: 'Play', link: 'play', content: ''},
+			{title: 'UI', link: 'ui', content: ''},
+			{title: 'Doc', link: 'doc', content: ''},
+			{title: 'Blog', link: 'blog', content: ''},
+		],
+	},
+]
+
+async function loadAnimations() {
+	const animationData = cssAnimations.map(
+		async ({slug, title, count, sections}) => {
+			const animationAssets: Promise<any>[] = []
+			for (let i = 0; i < count; i++) {
+				animationAssets.push(images.getImageData('play', `${slug}-${i + 1}`))
+			}
+			const assets = await Promise.all(animationAssets)
+			const mediaData = assets.map((asset, index) => {
+				return {
+					src: `/${asset.json.path}/${asset.json.file}`,
+					...asset.json,
+					sources: asset.json.sources,
+					content: sections[index],
+				}
+			})
+			return {
+				slug,
+				title,
+				media: mediaData,
+				overlay: count === 0,
+			}
+		},
+	)
+	const animations = await Promise.all(animationData)
+
+	return animations
+}
 
 export const load = async ({params}) => {
 	const imageSlug = '001-intro'
@@ -17,7 +62,11 @@ export const load = async ({params}) => {
 		if (!dayImageData?.json.sources || !nightImageData?.json.sources) {
 			error(404, 'Not found')
 		}
+		const animations = await loadAnimations()
+		const content = await pages.fetchMarkdowns(page)
+
 		return {
+			animations,
 			day: {
 				src: `/${dayImageData.json.path}/${imageSlug}`,
 				...dayImageData.json,
@@ -28,6 +77,8 @@ export const load = async ({params}) => {
 				...nightImageData.json,
 				sources: nightImageData.json.sources,
 			},
+			// TODO: Implement a better way to handle this: HTTP error
+			content: content.length ? content[0] : {meta: {title: ''}},
 		}
 	} catch (e) {
 		error(500, 'Error loading image data')

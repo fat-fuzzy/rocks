@@ -1,13 +1,7 @@
-import pages from '$data/pages'
-
-const page = 'home'
-
 export const load = async (event) => {
 	let styles = {}
 	let settings = {}
 	let app = {}
-	const content = await pages.fetchMarkdowns(page)
-
 	if (event.locals.styles) {
 		styles = JSON.parse(event.locals.styles)
 	}
@@ -22,7 +16,5 @@ export const load = async (event) => {
 		styles,
 		settings,
 		app,
-		// TODO: Implement a better way to handle this: HTTP error
-		content: content.length ? content[0] : {meta: {title: ''}},
 	}
 }
