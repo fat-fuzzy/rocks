@@ -20,8 +20,8 @@
 
 	let classes = $derived(
 		item.overlay
-			? `${animations} overlay scroll:item snap:start`
-			: `${animations} scroll:item snap:start`,
+			? `${animations} overlay scroll:item snap:center`
+			: `${animations} scroll:item snap:center`,
 	)
 
 	onMount(() => {

@@ -18,8 +18,8 @@
 
 	let app = fatFuzzyStore.app
 
-	let brightness = $derived(app.settings?.brightness)
-	let contrast = $derived(app.settings?.contrast)
+	let brightness = $derived(app.settings.brightness)
+	let contrast = $derived(app.settings.contrast)
 	let pageClass = $derived(ui.utils.format.getClassNameFromPathname($page.url.pathname))
 	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
 	let footerClass = 'card:xs'
@@ -40,11 +40,9 @@
 	}
 
 	onMount(() => {
-		if($page.data.app) {
-			fatFuzzyStore.app = $page.data.app
+		if($page.data.settings) {
+			fatFuzzyStore.app.settings = $page.data.settings
 		}
-console.log('pages fatFuzzyStore.app store');
-console.log(fatFuzzyStore.app);
 	})
 </script>
 

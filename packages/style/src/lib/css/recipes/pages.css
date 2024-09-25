@@ -8,6 +8,20 @@
 		margin-inline: auto;
 	}
 }
+.page\:home main {
+	header {
+		max-inline-size: var(--max-inline-size-center);
+		margin-inline: auto;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	> section:first-child {
+		padding-block-start: calc(var(--font-size-h1) + 2 * var(--size-base-2xl));
+	}
+}
 
 /* This Centers content in the sidebar's main section */
 /* TODO: Figure out how to handle this better (use container query ?)

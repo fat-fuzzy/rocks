@@ -23,22 +23,14 @@
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
-	<article class="l:sidebar:lg">
-		<div class="l:side l:text:lg">
-			<EscapeHtml {html} />
+	<article class="l:sidebar:2xl">
+		<div class="l:side">
+				<EscapeHtml {html} />
 		</div>
-		<div class="l:main">
-			<Picture
-				src={media.src}
-				ext={media.ext}
-				alt={media.alt}
-				orientation={media.orientation}
-				width={media.width}
-				height={media.height}
-				sources={media.sources}
-				sizes={media.sizes}
-				media={media.media}
-			/>
+		<div class="l:main:50">
+			<div class="l:center">
+				<Picture {...media} dimensions="full"/>
+			</div>
 		</div>
 	</article>
 </PageMain>

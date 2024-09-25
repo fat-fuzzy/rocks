@@ -27,9 +27,15 @@
 	inline-size: auto;
 	max-inline-size: 100%;
 	background-image: var(--image-url);
-	background-position: center 4.5em;
+	background-position: center 8em;
 	background-repeat: no-repeat;
 	background-size: contain;
+}
+
+@media screen and (min-width: 768px) {
+	.scroll\:item {
+		background-position: center 4em;
+	}
 }
 
 .scroll\:item.overlay {

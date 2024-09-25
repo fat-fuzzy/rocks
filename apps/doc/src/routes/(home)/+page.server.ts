@@ -16,10 +16,10 @@ const cssAnimations = [
 		count: 5,
 		sections: [
 			{title: '', link: '', content: ''},
-			{title: 'Play', link: 'play', content: ''},
-			{title: 'UI', link: 'ui', content: ''},
 			{title: 'Doc', link: 'doc', content: ''},
+			{title: 'UI', link: 'ui', content: ''},
 			{title: 'Blog', link: 'blog', content: ''},
+			{title: 'Play', link: 'play', content: ''},
 		],
 	},
 ]
