@@ -11,7 +11,9 @@ test('has title', async ({page}) => {
 	await expect(
 		page.getByRole('heading', {name: 'Fat Fuzzy Rocks'}),
 	).toBeVisible()
-	await expect(page.getByRole('heading', {name: '✨ Highlights'})).toBeVisible()
+	await expect(
+		page.getByRole('heading', {name: '✨ Contents ✨'}),
+	).toBeVisible()
 })
 
 pages.forEach((item) => {
@@ -19,12 +21,14 @@ pages.forEach((item) => {
 		page,
 	}) => {
 		await page.goto('/')
-		await page.getByRole('link', {name: item.title, exact: true}).click()
+		await page.getByTestId('scrolly').hover()
+		await page.mouse.wheel(0, 200)
 		if (item.title === 'Home') {
 			await expect(
 				page.getByRole('heading', {name: `Fat Fuzzy Rocks`}),
 			).toBeVisible()
 		} else {
+			await page.getByRole('link', {name: item.title}).click()
 			await expect(
 				page.getByRole('heading', {name: `Fat Fuzzy ${item.title}`}),
 			).toBeVisible()
@@ -62,6 +66,9 @@ pages.forEach((item) => {
 		}) => {
 			await error.testFn(page, item)
 			await expect(page.getByText(error.message)).toBeVisible()
+			await expect(
+				page.getByRole('heading', {name: `Fat Fuzzy ${code}`}),
+			).toBeVisible()
 		})
 
 		if (item.items) {
