@@ -51,6 +51,7 @@ import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
+import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte'
 
 /**
  * Recipes - Content
@@ -135,6 +136,7 @@ const recipes = {
 	Nav,
 	RevealNav,
 	Header,
+	HeaderSettings,
 }
 
 const content = {

@@ -1,0 +1,62 @@
+/**
+ * App header - Main Nav
+ */
+
+.header-settings {
+	display: flex;
+	justify-content: flex-end;
+	padding-inline: var(--gap);
+	color: var(--ink);
+	background-color: var(--shade);
+}
+
+.header-settings .l\:reveal\:auto {
+	padding-block: var(--ui-size-sm);
+
+	> ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		/* inline-size: 100%; */
+		background-color: inherit;
+
+		li {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	[aria-expanded] {
+		margin-inline: 0;
+	}
+
+	[aria-expanded='true'] + .content {
+		--y-axis: var(--size-ui-header-height) + var(--outline-offset-nav);
+		display: flex;
+		flex-direction: column;
+		block-size: fit-content;
+		inline-size: 100vw;
+		top: var(--y-axis);
+		color: var(--ink);
+		background-color: var(--shade);
+		padding: 0;
+		margin-inline-start: calc(-1 * var(--gap));
+		max-block-size: calc(100vh - var(--y-axis));
+		max-inline-size: calc(100vw - var(--ui-size-lg));
+		overflow: auto;
+	}
+}
+
+.header-settings > [class*='l:side'] {
+	flex-basis: content; /* property as content of flex container */
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	flex-grow: 0;
+
+	form:has([aria-expanded='true']) + .content {
+		top: calc(var(--size-ui-header-height) + var(--ui-size));
+		background-color: var(--shade);
+		box-shadow: var(--shadow-md);
+	}
+}

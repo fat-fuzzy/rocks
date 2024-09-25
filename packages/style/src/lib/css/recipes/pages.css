@@ -1,6 +1,3 @@
-.page\:home header > * {
-	margin: 0 auto;
-}
 .page\:home main {
 	header > *,
 	> section {
@@ -8,13 +5,14 @@
 		margin-inline: auto;
 	}
 }
+
 .page\:home main {
 	header {
 		max-inline-size: var(--max-inline-size-center);
 		margin-inline: auto;
 		position: fixed;
 		z-index: 1;
-		top: 0;
+		top: var(--size-ui-header-height);
 		left: 0;
 		right: 0;
 	}

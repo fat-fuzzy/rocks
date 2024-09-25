@@ -6,6 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
+	const {HeaderSettings} = ui.recipes
 
 	type Props = {
 		fixed?: boolean
@@ -46,6 +47,16 @@
 </script>
 
 <div class={themeClass}>
+	<HeaderSettings
+		id="doc"
+		name="main-header"
+		label=""
+		path={$page.url.pathname}
+		actionPath="/"
+		redirect={$page.url.pathname}
+		items={{settings: {...ui.constants.APP_SETTINGS, onupdate: updateSettings}}}
+		breakpoint="sm"
+		app={fatFuzzyStore.app}/>
 	<main id="main">
 		{#if children}
 			{@render children()}

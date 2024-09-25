@@ -44,6 +44,7 @@ export interface Recipes {
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
 	Header: typeof import('$lib/components/recipes/header/Header.svelte').default
+	HeaderSettings: typeof import('$lib/components/recipes/header/HeaderSettings.svelte').default
 }
 
 export interface Content {
