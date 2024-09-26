@@ -5,5 +5,3 @@ slug: blog
 id: '000'
 tags: ['pages', 'home']
 ---
-
-## ✨ Contents ✨

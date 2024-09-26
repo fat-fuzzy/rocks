@@ -24,4 +24,4 @@
 		<EscapeHtml {html} />
 	</div>
 </PageMain>
-<Scrolly animations={['fade']} fixed={true} items={animations[0].media} />
+<Scrolly animations={['fade']} fixed={true} items={animations[0].media} level={2}/>

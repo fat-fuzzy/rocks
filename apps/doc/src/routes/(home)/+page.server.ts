@@ -15,11 +15,11 @@ const cssAnimations = [
 		slug: 'fat-fuzzy',
 		count: 5,
 		sections: [
-			{title: '', link: '', content: ''},
-			{title: 'Doc', link: 'doc', content: ''},
-			{title: 'UI', link: 'ui', content: ''},
-			{title: 'Blog', link: 'blog', content: ''},
-			{title: 'Play', link: 'play', content: ''},
+			{title: 'Contents ✨', link: '', content: '', asset: 'sparkles'},
+			{title: 'Doc', link: 'doc', content: '', asset: 'usage'},
+			{title: 'UI', link: 'ui', content: '', asset: 'recipes'},
+			{title: 'Blog', link: 'blog', content: '', asset: 'default'},
+			{title: 'Play', link: 'play', content: '', asset: 'rainbow'},
 		],
 	},
 ]

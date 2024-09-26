@@ -3,5 +3,5 @@ import {PictureProps} from '$types'
 
 type ScrollyItemProps = PictureProps & {
 	overlay?: boolean
-	content?: {title: string; link: string; content: string}
+	content?: {title: string; link: string; content: string; asset: string}
 }

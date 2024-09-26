@@ -42,13 +42,27 @@
 	class={classes}
 	style={`--image-url: url(${item.src}-1000.${item.ext});`}
 >
-	{#if item.content && item.content.link}
+	{#if item.content}
 		<div class="overlay unstyled place:end l:burrito:xl">
-			<div class={`card:lg text:center emoji:recipes surface:4:${variant}`}>
-				<a href={item.content.link} class="card font:md">
-					{item.content.title}
-				</a>
-			</div>
+			{#if item.content.link}
+				<div class={`card:lg text:center surface:4:${variant}`}>
+					<a
+						href={item.content.link}
+						class={`card font:md emoji:${item.content.asset}`}
+					>
+						{item.content.title}
+					</a>
+				</div>
+			{:else if item.content.title}
+				<div class={`card:lg text:center`}>
+					<svelte:element
+						this={`h${level}`}
+						class={`emoji:${item.content.asset}`}
+					>
+						{item.content.title}
+					</svelte:element>
+				</div>
+			{/if}
 		</div>
 	{:else}
 		{#if item.title}
