@@ -3,7 +3,7 @@
 	"file": "Fat-Fuzzy-4",
 	"ext": "png",
 	"width": 2732,
-	"height": 2048,
+	"height": 1708,
 	"path": "images/fat-fuzzy/all",
 	"media": [
 		{
@@ -132,66 +132,66 @@
 		{
 			"format": "webp",
 			"width": 2000,
-			"height": 1499,
+			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 274808
+			"size": 307384
 		},
 		{
 			"format": "png",
 			"width": 2000,
-			"height": 1499,
+			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 457667
+			"size": 438638
 		},
 		{
 			"format": "webp",
 			"width": 1500,
-			"height": 1124,
+			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 179552
+			"size": 199220
 		},
 		{
 			"format": "png",
 			"width": 1500,
-			"height": 1124,
+			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 278434
+			"size": 274774
 		},
 		{
 			"format": "webp",
 			"width": 1000,
-			"height": 750,
+			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 95038
+			"size": 107208
 		},
 		{
 			"format": "png",
 			"width": 1000,
-			"height": 750,
+			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 141876
+			"size": 140066
 		},
 		{
 			"format": "webp",
 			"width": 500,
-			"height": 375,
+			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 32186
+			"size": 34848
 		},
 		{
 			"format": "png",
 			"width": 500,
-			"height": 375,
+			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 42140
+			"size": 41727
 		}
 	]
 }
