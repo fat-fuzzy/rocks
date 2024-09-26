@@ -87,9 +87,9 @@
 		--lightness-surface-2-contrast: var(--color-lightness-100);
 		--lightness-surface-3: var(--color-lightness-400);
 		--lightness-surface-3-contrast: var(--color-lightness-000);
-		--lightness-surface-4: var(--color-lightness-200);
-		--lightness-surface-4-contrast: var(--color-lightness-500);
-		--lightness-surface-5: var(--color-lightness-100);
+		--lightness-surface-4: var(--color-lightness-300);
+		--lightness-surface-4-contrast: var(--color-lightness-000);
+		--lightness-surface-5: var(--color-lightness-200);
 		--lightness-surface-5-contrast: var(--color-lightness-600);
 		--chroma: var(--color-chroma-neutral);
 		--chroma-accent-base: var(--color-chroma-400);
@@ -103,9 +103,9 @@
 		--chroma-surface-2-contrast: var(--color-chroma-100);
 		--chroma-surface-3: var(--color-chroma-400);
 		--chroma-surface-3-contrast: var(--color-chroma-000);
-		--chroma-surface-4: var(--color-chroma-200);
-		--chroma-surface-4-contrast: var(--color-chroma-500);
-		--chroma-surface-5: var(--color-chroma-100);
+		--chroma-surface-4: var(--color-chroma-300);
+		--chroma-surface-4-contrast: var(--color-chroma-000);
+		--chroma-surface-5: var(--color-chroma-200);
 		--chroma-surface-5-contrast: var(--color-chroma-600);
 
 		--shade: oklch(var(--lightness-base) var(--chroma) var(--hue));
@@ -213,9 +213,9 @@
 	--lightness-surface-2-contrast: var(--color-lightness-100);
 	--lightness-surface-3: var(--color-lightness-400);
 	--lightness-surface-3-contrast: var(--color-lightness-000);
-	--lightness-surface-4: var(--color-lightness-200);
-	--lightness-surface-4-contrast: var(--color-lightness-500);
-	--lightness-surface-5: var(--color-lightness-100);
+	--lightness-surface-4: var(--color-lightness-300);
+	--lightness-surface-4-contrast: var(--color-lightness-000);
+	--lightness-surface-5: var(--color-lightness-200);
 	--lightness-surface-5-contrast: var(--color-lightness-600);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-accent-base: var(--color-chroma-400);
@@ -229,9 +229,9 @@
 	--chroma-surface-2-contrast: var(--color-chroma-100);
 	--chroma-surface-3: var(--color-chroma-400);
 	--chroma-surface-3-contrast: var(--color-chroma-000);
-	--chroma-surface-4: var(--color-chroma-200);
-	--chroma-surface-4-contrast: var(--color-chroma-500);
-	--chroma-surface-5: var(--color-chroma-100);
+	--chroma-surface-4: var(--color-chroma-300);
+	--chroma-surface-4-contrast: var(--color-chroma-000);
+	--chroma-surface-5: var(--color-chroma-200);
 	--chroma-surface-5-contrast: var(--color-chroma-600);
 
 	--shade: oklch(var(--lightness-base) var(--chroma) var(--hue));
