@@ -45,10 +45,10 @@
 	{#if item.content}
 		<div class="overlay unstyled place:end l:burrito:xl">
 			{#if item.content.link}
-				<div class={`card:lg text:center surface:4:${variant}`}>
+				<div class={`card:md text:center surface:4:${variant}`}>
 					<a
 						href={item.content.link}
-						class={`card font:md emoji:${item.content.asset}`}
+						class={`card h${level + 1} emoji:${item.content.asset}`}
 					>
 						{item.content.title}
 					</a>
@@ -64,14 +64,11 @@
 				</div>
 			{/if}
 		</div>
-	{:else}
-		{#if item.title}
-			<svelte:element this={`h${level}`}>{item.title}</svelte:element>
-			<p>{item.caption}</p>
-		{/if}
-		{#if item.caption}
-			<svelte:element this={`h${level}`}>{item.title}</svelte:element>
-			<p>{item.caption}</p>
-		{/if}
+	{:else if item.title}
+		<svelte:element this={`h${level}`}>{item.title}</svelte:element>
+		<p>{item.caption}</p>
+	{:else if item.caption}
+		<svelte:element this={`h${level}`}>{item.title}</svelte:element>
+		<p>{item.caption}</p>
 	{/if}
 </li>

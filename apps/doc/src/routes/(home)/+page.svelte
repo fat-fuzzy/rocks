@@ -11,7 +11,6 @@
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
-	let variant = 'surface:2:primary'
 </script>
 
 <PageMain {title} {description} size="md" justify="center">
@@ -20,8 +19,5 @@
 			<h1 class="card:lg text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
-	<div class="l:text:lg col:center w:full gradient:end neutral">
-		<EscapeHtml {html} />
-	</div>
+	<Scrolly animations={['fade']} fixed={true} items={animations[0].media} level={2}/>
 </PageMain>
-<Scrolly animations={['fade']} fixed={true} items={animations[0].media} level={2}/>

@@ -42,14 +42,16 @@ h1 {
 	line-height: var(--font-leading-heading);
 }
 
-h2 {
+h2,
+.h2 {
 	--font-family-h2: var(--font-family-subheading);
 	font-size: var(--font-size-h2);
 	font-family: var(--font-family-h2);
 	font-weight: var(--font-weight-h2);
 }
 
-h3 {
+h3,
+.h3 {
 	--font-family-h3: var(--font-family-subheading);
 	font-size: var(--font-size-h3);
 	font-family: var(--font-family-h3);
