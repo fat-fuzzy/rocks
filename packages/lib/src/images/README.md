@@ -2,8 +2,13 @@
 
 Use this script to optimize images.
 
-Before you can use the script, you have to install [sharp](https://sharp.pixelplumbing.com/install).
-This script is adapted from an example in the `sharp` documentation.
+Before you can use the script, you have to install [sharp](https://sharp.pixelplumbing.com/install):
+
+```sh
+ pnpm i sharp got
+```
+
+This script is adapted from examples in the `sharp` documentation.
 
 Modify the script to fit your needs (images sources, sizes, media queries...).
 

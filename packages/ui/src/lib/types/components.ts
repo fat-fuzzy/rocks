@@ -43,7 +43,7 @@ export interface Recipes {
 	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
-	Header: typeof import('$lib/components/recipes/headers/Header.svelte').default
+	Header: typeof import('$lib/components/recipes/header/Header.svelte').default
 }
 
 export interface Content {
@@ -56,6 +56,10 @@ export interface Drafts {
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
+	Scrolly: typeof import('$lib/components/recipes/animations/Scrolly.svelte').default
+	ScrollyItem: typeof import('$lib/components/recipes/animations/ScrollyItem.svelte').default
+	HeaderSettings: typeof import('$lib/components/recipes/header/HeaderSettings.svelte').default
+	SettingsMenu: typeof import('$lib/components/recipes/menus/SettingsMenu.svelte').default
 }
 
 export interface Headless {

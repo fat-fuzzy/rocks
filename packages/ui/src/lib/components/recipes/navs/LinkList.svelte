@@ -39,6 +39,18 @@
 	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
 </script>
 
+{#snippet nestedLinkList(subItems, slug)}
+	<svelte:self
+		items={subItems}
+		path={format.formatHref(path, slug)}
+		id={`${id}-${slug}`}
+		{layout}
+		{size}
+		{align}
+		depth={depth + 1}
+	/>
+{/snippet}
+
 <ul
 	{id}
 	class={`${containerClass} ${gridClass} ${depthClass}`}
@@ -71,15 +83,7 @@
 					size={UiSize['2xs']}
 					{redirect}
 				>
-					<svelte:self
-						items={subItems}
-						path={format.formatHref(path, slug)}
-						id={`${id}-${slug}`}
-						{layout}
-						{size}
-						{align}
-						depth={depth + 1}
-					/>
+					{@render nestedLinkList(subItems, slug)}
 				</ExpandLink>
 			{:else}
 				<a
@@ -90,15 +94,7 @@
 					{title}
 				</a>
 				{#if subItems}
-					<svelte:self
-						items={subItems}
-						path={format.formatHref(path, slug)}
-						id={`${id}-${slug}`}
-						{layout}
-						{size}
-						{align}
-						depth={depth + 1}
-					/>
+					{@render nestedLinkList(subItems, slug)}
 				{/if}
 			{/if}
 		</li>

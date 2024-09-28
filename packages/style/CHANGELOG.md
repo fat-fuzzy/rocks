@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.5
+
+### Patch Changes
+
+- af2620c: Update homepage design, cleanup
+
 ## 0.1.4
 
 ### Patch Changes

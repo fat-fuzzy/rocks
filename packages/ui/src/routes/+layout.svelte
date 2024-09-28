@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '@fat-fuzzy/style'
 	import constants from '$lib/types/constants.js'
-	import Header from '$lib/components/recipes/headers/Header.svelte'
+	import Header from '$lib/components/recipes/header/Header.svelte'
 	import type { Snippet } from 'svelte'
 
 	const {APP_SETTINGS, APP_LINKS} = constants

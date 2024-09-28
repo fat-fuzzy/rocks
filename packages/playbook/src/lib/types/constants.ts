@@ -61,9 +61,7 @@ const DEFAULT_STYLES: StyleTree = {
 	},
 	layouts: {
 		families: {
-			// layout: {layout: 'switcher', threshold: 'md', breakpoint: 'lg'}, // need large breakpoint for Header default demo
 			container: {container: 'center', size: 'md'},
-			// content: {content: 'card', side: 'card', main: 'text'}, // TODO: fix demo content
 		},
 	},
 }

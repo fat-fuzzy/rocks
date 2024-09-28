@@ -44,13 +44,15 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
+import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
 
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
-import Header from '$lib/components/recipes/headers/Header.svelte'
+import Header from '$lib/components/recipes/header/Header.svelte'
+import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte'
 
 /**
  * Recipes - Content
@@ -67,6 +69,8 @@ import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
 import Aside from '$lib/components/recipes/content/Aside.svelte'
+import Scrolly from '$lib/components/recipes/animations/Scrolly.svelte'
+import ScrollyItem from '$lib/components/recipes/animations/ScrollyItem.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
@@ -148,6 +152,10 @@ const drafts = {
 	Image,
 	Picture,
 	Aside,
+	Scrolly,
+	ScrollyItem,
+	HeaderSettings,
+	SettingsMenu,
 }
 
 const headless = {

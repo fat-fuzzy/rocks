@@ -4,12 +4,5 @@ export const content = {
 }
 
 export default {
-	Reveal: {
-		slug: 'ui',
-		path: '/ui',
-		title: 'Reveal',
-		formaction: 'updateState',
-		actionPath: '/',
-	},
 	content,
 }

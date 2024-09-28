@@ -8,7 +8,6 @@ h6,
 .h5 {
 	color: var(--ink);
 	line-height: var(--font-leading-body);
-	margin-block: auto;
 	&.nowrap {
 		white-space: nowrap;
 	}
@@ -43,14 +42,16 @@ h1 {
 	line-height: var(--font-leading-heading);
 }
 
-h2 {
+h2,
+.h2 {
 	--font-family-h2: var(--font-family-subheading);
 	font-size: var(--font-size-h2);
 	font-family: var(--font-family-h2);
 	font-weight: var(--font-weight-h2);
 }
 
-h3 {
+h3,
+.h3 {
 	--font-family-h3: var(--font-family-subheading);
 	font-size: var(--font-size-h3);
 	font-family: var(--font-family-h3);
@@ -125,4 +126,17 @@ code {
 hr {
 	margin-block-start: calc(var(--ui-size-lg) * var(--size-ratio-lg));
 	margin-block-end: calc(var(--ui-size) * var(--size-ratio-md));
+}
+
+blockquote {
+	/* Same values as surface:1:primary */
+	--hue: var(--color-theme-primary);
+	--lightness: var(--lightness-surface-1);
+	--chroma: var(--chroma-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	color: var(--ink);
+	background-color: var(--shade);
+	border-left: 0.25em solid var(--color-ink);
+	padding: var(--ui-size);
+	margin-block: var(--ui-size-lg);
 }
