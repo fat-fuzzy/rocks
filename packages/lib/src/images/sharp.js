@@ -20,16 +20,72 @@ const images = [
 	{
 		file: '001-intro',
 		ext: 'png',
-		width: 2647,
-		height: 1869,
+		width: 2732,
+		height: 2048,
 		path: 'images/day',
 	},
 	{
 		file: '001-intro',
 		ext: 'png',
-		width: 2647,
-		height: 1869,
+		width: 2732,
+		height: 2048,
 		path: 'images/night',
+	},
+	{
+		file: 'Fat-Fuzzy-1',
+		ext: 'png',
+		width: 2732,
+		height: 1708,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-2',
+		ext: 'png',
+		width: 2732,
+		height: 1708,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-3',
+		ext: 'png',
+		width: 2732,
+		height: 1708,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-4',
+		ext: 'png',
+		width: 2732,
+		height: 1708,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-5',
+		ext: 'png',
+		width: 2732,
+		height: 1708,
+		path: 'images/fat-fuzzy/all',
+	},
+	{
+		file: 'Fat-Fuzzy-color-1',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/color',
+	},
+	{
+		file: 'Fat-Fuzzy-color-2',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/color',
+	},
+	{
+		file: 'Fat-Fuzzy-color-3',
+		ext: 'png',
+		width: 2732,
+		height: 1708,
+		path: 'images/fat-fuzzy/color',
 	},
 ]
 
@@ -89,6 +145,7 @@ function optimize(sharpStream, image, config) {
 			res.pop()
 			console.log(
 				JSON.stringify({
+					id: filePath,
 					...image,
 					...config,
 					sources: res,
@@ -109,7 +166,7 @@ function optimize(sharpStream, image, config) {
 }
 
 function main() {
-	optimize(sharpStream, images[0], config)
+	optimize(sharpStream, images[3], config)
 }
 
 export default main()

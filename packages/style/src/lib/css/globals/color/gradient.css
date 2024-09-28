@@ -1,0 +1,3 @@
+.gradient\:end.neutral {
+	background: linear-gradient(var(--shade) 80%, transparent);
+}

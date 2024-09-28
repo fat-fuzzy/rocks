@@ -10,6 +10,7 @@ import './color/surface.css'
 import './color/settings.css'
 import './color/ui.css'
 import './color/ink.css'
+import './color/gradient.css'
 
 /* State */
 import './ui/state.css'

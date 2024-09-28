@@ -53,8 +53,8 @@
 		if (onupdate) onupdate(payload)
 	}
 
-	let reveal = $derived(settingsReveal.reveal)
 	let brightness = $state(appSettings.brightness)
+	let reveal = $derived(settingsReveal.reveal)
 	let showBackground = background
 		? `bg:${background}`
 		: !color
@@ -62,7 +62,7 @@
 			: ''
 	let show = $derived(`${reveal} ${showBackground}`)
 	let revealClasses = $derived(`form:${reveal} nowrap`)
-	let formClasses = `l:switcher:xs ${showBackground}`
+	let formClasses = `l:flex nowrap ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 

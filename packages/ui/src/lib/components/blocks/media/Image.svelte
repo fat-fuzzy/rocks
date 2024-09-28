@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type {MediaProps} from '$types'
+
 	let {
 		src,
 		ext,
@@ -9,18 +11,7 @@
 		height,
 		sources,
 		sizes,
-	}: {
-		src: string
-		ext: string
-		alt: string
-		width: string
-		height: string
-		orientation?: 'landscape' | 'portrait'
-		loading?: 'lazy' | 'eager'
-		dimensions?: string
-		sources: {width: string; height: string; format: string}[]
-		sizes: {query?: string; slot: string}[]
-	} = $props()
+	}: MediaProps = $props()
 
 	let srcset = $derived(
 		sources

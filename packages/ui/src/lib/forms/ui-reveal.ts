@@ -1,15 +1,15 @@
-import type {Settings} from '$types'
+import type {UiRevealState} from '$types'
 import constants from '$lib/types/constants.js'
 
 const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
 class UiReveal {
-	nav: Settings
+	nav: UiRevealState
 
 	/**
 	 * Initialize default nav object or from the user's cookie values, if any
 	 */
-	constructor(nav: Settings | null = null) {
+	constructor(nav: UiRevealState | null = null) {
 		if (nav) {
 			this.nav = nav
 		} else {

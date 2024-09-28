@@ -10,6 +10,7 @@ import {getFamily} from '$lib/props/props-style'
 const DEFAULT_META: Meta = {
 	title: '',
 	slug: '',
+	status: '',
 	props_state: [],
 	content_types: [],
 	context: ['app.settings'],

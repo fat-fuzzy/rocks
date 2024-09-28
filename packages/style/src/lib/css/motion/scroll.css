@@ -1,10 +1,22 @@
 .scroll\:y {
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--ink);
 	scroll-snap-type: y proximity;
 	overflow-y: auto;
+	block-size: 100%;
+	scrollbar-color: var(--thumb) var(--track);
 }
 
 .snap\:start {
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
-	scroll-padding-top: var(--ui-size);
+	scroll-padding-block-start: var(--ui-size);
+}
+
+.snap\:center {
+	scroll-snap-align: center;
+	scroll-snap-stop: always;
+	scroll-padding-block: var(--ui-size);
 }
