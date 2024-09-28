@@ -34,7 +34,16 @@
 	{/snippet}
 	<div class="l:center:2xs card:2xl maki:block:xl">
 		<Feedback {asset} {status} context="prose" size="lg" container="center">
-			<p>{message}</p>
+			<div class="l:stack:md">
+				<p>{message}</p>
+				<div class="l:switcher:xs">
+					<button class={`variant:outline bg:danger:500 size:sm`} onclick={()=>history.back()}>
+						Back
+					</button>
+					<a class={`variant:outline card:xs font:sm`} href='/'>Home</a>
+				</div>
+			</div>
 		</Feedback>
 	</div>
 </PageMain>
+
