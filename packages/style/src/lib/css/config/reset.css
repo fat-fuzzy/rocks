@@ -1,6 +1,13 @@
 /**
+	Modern CSS Reset
+	================
 * source : https://github.com/hankchizljaw/modern-css-reset/blob/master/src/reset.css
 **/
+
+/* https://developer.chrome.com/docs/css-ui/animate-to-height-auto/ */
+:root {
+	interpolate-size: allow-keywords;
+}
 
 /* Box sizing rules */
 *,
