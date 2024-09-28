@@ -3,11 +3,10 @@
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
-	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
+	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
 
-	const {DEFAULT_APP_SETTINGS, DEFAULT_REVEAL_STATE} = constants
+	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'settings',
@@ -27,8 +26,6 @@
 		onupdate,
 	}: SettingsProps = $props()
 
-	let settingsId = id
-	let appSettings = $state(DEFAULT_APP_SETTINGS)
 	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
 
 	function handleClickOutsideSettings() {
@@ -39,21 +36,6 @@
 		settingsReveal = {reveal: payload.state}
 	}
 
-	function handleUpdate(payload) {
-		switch (payload.id) {
-			case 'brightness':
-				appSettings.brightness = payload.value
-				break
-			case 'contrast':
-				appSettings.contrast = payload.value
-				break
-			default:
-				break
-		}
-		if (onupdate) onupdate(payload)
-	}
-
-	let brightness = $state(appSettings.brightness)
 	let reveal = $derived(settingsReveal.reveal)
 	let showBackground = background
 		? `bg:${background}`
@@ -62,7 +44,6 @@
 			: ''
 	let show = $derived(`${reveal} ${showBackground}`)
 	let revealClasses = $derived(`form:${reveal} nowrap`)
-	let formClasses = `l:flex nowrap ${showBackground}`
 	let layoutClass = layout ? `l:${layout}:${size}` : 'l:side'
 	let layoutClasses = `${layoutClass} l:reveal:auto bp:${breakpoint} ${size} align:${align}`
 
@@ -73,33 +54,6 @@
 				: formaction
 			: 'toggleSettings',
 	)
-	let settingsUpdateAction = $derived(
-		redirect ? `updateSettings&redirectTo=${redirect}` : 'updateSettings',
-	)
-
-	// function initSettings(event) {
-	// 	let preferredScheme = {...event}
-	// 	switch (event.id) {
-	// 		case 'brightness':
-	// 			// TODO Fix this, not working
-	// 			brightness = window.matchMedia('(prefers-color-scheme: dark)').matches
-	// 				? 'night'
-	// 				: 'day'
-	// 			let state = brightness === 'day' ? 'inactive' : 'active'
-	// 			let pressed = brightness === 'day' ? false : true
-	// 			appSettings.brightness = brightness
-	// 			preferredScheme.value = brightness
-	// 			preferredScheme.state = state
-	// 			preferredScheme.pressed = pressed
-	// 			break
-	// 		case 'contrast':
-	// 			appSettings.contrast = event.value
-	// 			break
-	// 		default:
-	// 			break
-	// 	}
-	// 	if (onupdate) onupdate(preferredScheme)
-	// }
 </script>
 
 <div class={layoutClasses}>
@@ -134,49 +88,13 @@
 		</Expand>
 	</form>
 	<div {id} class={`${show} l:flex align:center content`}>
-		<form
-			name="settings-update"
-			{method}
-			action={settingsUpdateAction && actionPath
-				? `${actionPath}?/${settingsUpdateAction}`
-				: `?/${settingsUpdateAction}`}
-			use:enhance={() => {
-				// prevent default callback from resetting the form
-				return ({update}) => {
-					update({reset: false})
-				}
-			}}
-			class={`menu:settings ${formClasses}`}
-		>
-			{#each items.switch as { id, name, title, variant, shape, color, size, value, states }}
-				{@const switchStates = states
-					? {
-							active: {
-								...SWITCH_MACHINE.active,
-								...states.active,
-							},
-							inactive: {
-								...SWITCH_MACHINE.inactive,
-								...states.inactive,
-							},
-						}
-					: SWITCH_MACHINE}
-				<div class="l:frame:round">
-					<Switch
-						id={`${settingsId}-${id}`}
-						{name}
-						{title}
-						{variant}
-						{shape}
-						{color}
-						{size}
-						{value}
-						states={switchStates}
-						onclick={handleUpdate}
-					/>
-				</div>
-			{/each}
-		</form>
+		<SettingsMenu
+			items={items.switch}
+			{formaction}
+			{actionPath}
+			{redirect}
+			{onupdate}
+		/>
 		<menu class="links:settings end">
 			{#each items.links as { title, url, shape, size, asset }}
 				<li class="l:frame:round">

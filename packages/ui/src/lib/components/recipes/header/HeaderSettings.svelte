@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {HeaderProps} from '$types'
-	import Settings from '$lib/components/recipes/forms/Settings.svelte'
+	import type {SettingsMenuProps} from '$types'
+	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
 
 	let {
 		id = 'header-settings',
@@ -9,14 +9,14 @@
 		actionPath,
 		redirect,
 		items,
-	}: HeaderProps = $props()
+	}: SettingsMenuProps = $props()
 	let className = 'header-settings'
 
-	let headerClass = $derived(`${className} sticky:top`)
+	let headerClass = $derived(`${className} sticky:top card:sm`)
 </script>
 
 <header class={headerClass}>
-	<Settings
+	<SettingsMenu
 		name={`${id}-primary-nav`}
 		label=""
 		{path}
@@ -25,7 +25,7 @@
 		id={`${id}-menu-settings`}
 		{actionPath}
 		{redirect}
-		items={items.settings}
+		items={items.settings.switch}
 		onupdate={items?.settings.onupdate}
 	/>
 </header>

@@ -16,7 +16,7 @@
 <PageMain {title} {description} size="md" justify="center">
 	{#snippet header()}
 		<div class="surface:0:neutral w:full">
-			<h1 class="card:lg text:center">Fat Fuzzy Rocks</h1>
+			<h1 class="card:md text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
 	<Scrolly animations={['fade']} fixed={true} items={animations[0].media} level={1}/>
