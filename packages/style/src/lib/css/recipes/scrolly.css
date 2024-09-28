@@ -27,14 +27,14 @@
 	inline-size: auto;
 	max-inline-size: 100%;
 	background-image: var(--image-url);
-	background-position: center 8em;
+	background-position: center calc(2 * var(--size-ratio-lg) * var(--ui-size-lg));
 	background-repeat: no-repeat;
 	background-size: contain;
 }
 
 @media screen and (min-width: 768px) {
 	.scroll\:item {
-		background-position: center 3em;
+		background-position: center calc(var(--size-ratio-md) * var(--ui-size-lg));
 	}
 }
 
