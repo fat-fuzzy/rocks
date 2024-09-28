@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.2
+
+### Patch Changes
+
+- af2620c: Update homepage design, cleanup
+
 ## 0.1.1
 
 ### Patch Changes
