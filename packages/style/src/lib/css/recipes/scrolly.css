@@ -34,7 +34,7 @@
 
 @media screen and (min-width: 768px) {
 	.scroll\:item {
-		background-position: center 4em;
+		background-position: center 3em;
 	}
 }
 
@@ -44,7 +44,7 @@
 
 .scroll\:item .overlay {
 	position: absolute;
-	top: 0;
+	top: var(--ui-size);
 	left: 50%;
 	transform: translate(-50%, 0);
 
