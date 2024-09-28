@@ -16,7 +16,7 @@
 			items:  $page.data.markdowns.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
-						title: meta.title,
+						title: meta.index ? `${meta.index}. ${meta.title}` : meta.title,
 						asset: meta.asset,
 						description: meta.decription,
 					})),

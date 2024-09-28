@@ -127,3 +127,16 @@ hr {
 	margin-block-start: calc(var(--ui-size-lg) * var(--size-ratio-lg));
 	margin-block-end: calc(var(--ui-size) * var(--size-ratio-md));
 }
+
+blockquote {
+	/* Same values as surface:1:primary */
+	--hue: var(--color-theme-primary);
+	--lightness: var(--lightness-surface-1);
+	--chroma: var(--chroma-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	color: var(--ink);
+	background-color: var(--shade);
+	border-left: 0.25em solid var(--color-ink);
+	padding: var(--ui-size);
+	margin-block: var(--ui-size-lg);
+}

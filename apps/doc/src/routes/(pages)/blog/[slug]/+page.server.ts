@@ -21,8 +21,12 @@ export const load = async ({params}) => {
 	}
 
 	return {
+		id: markdown.meta.id,
 		html: markdown.html,
 		title: markdown.meta.title,
+		subtitle: markdown.meta.subtitle,
+		series: markdown.meta.series,
+		index: markdown.meta.index,
 		description:
 			markdown.meta.description ??
 			`Post ${markdown.meta.id}: ${markdown.meta.title}`,

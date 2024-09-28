@@ -7,13 +7,20 @@
 	const {EscapeHtml} = ui.headless
 
 	let post = $derived($page.data)
+	let title = $derived(post.index ? `${post.title}: Part ${post.index}` : post.title)
 </script>
 
-{#key post.title}
-	<PageMain pageName="Blog" title={post.title} description={post.description}>
+{#key post.id}
+	<PageMain pageName="Blog" title={title} description={post.description}>
 		{#snippet header()}
-			<h1 class="l:main:50 maki:block:md">{post.title}</h1>
-			<Aside created={post.date_created}  updated={post.date_updated}/>
+			<div class="l:main:50 maki:block:md">
+				<h1>{title}</h1>
+				{#if post.subtitle}<p class="h4">{post.subtitle}</p>{/if}
+				{#if post.description}<p>{post.description}</p>{/if}
+			</div>
+			<div class="l:side">
+				<Aside created={post.date_created}  updated={post.date_updated}  series={post.series} page={post.index}/>
+			</div>
 		{/snippet}
 		<article class="l:sidebar:md">
 			<div class="l:text:lg">
