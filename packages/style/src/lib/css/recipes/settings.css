@@ -5,7 +5,14 @@
 .menu\:settings {
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
+}
+
+.expanded:has(.menu\:settings) {
 	padding: var(--ui-size-sm);
+}
+
+.menu\:settings + menu:empty {
+	display: none;
 }
 
 .menu\:settings *:focus {
