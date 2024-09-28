@@ -44,6 +44,7 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
+import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
 
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
@@ -154,6 +155,7 @@ const drafts = {
 	Scrolly,
 	ScrollyItem,
 	HeaderSettings,
+	SettingsMenu,
 }
 
 const headless = {
