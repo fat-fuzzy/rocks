@@ -1,5 +1,15 @@
 # @fat-fuzzy/playbook
 
+## 0.1.5
+
+### Patch Changes
+
+- af2620c: Update homepage design, cleanup
+- Updated dependencies [af2620c]
+  - @fat-fuzzy/style@0.1.5
+  - @fat-fuzzy/lib@0.1.14
+  - @fat-fuzzy/ui@0.1.53
+
 ## 0.1.4
 
 ### Patch Changes
