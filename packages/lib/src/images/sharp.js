@@ -66,6 +66,27 @@ const images = [
 		height: 1708,
 		path: 'images/fat-fuzzy/all',
 	},
+	{
+		file: 'Fat-Fuzzy-color-1',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/color',
+	},
+	{
+		file: 'Fat-Fuzzy-color-2',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/fat-fuzzy/color',
+	},
+	{
+		file: 'Fat-Fuzzy-color-3',
+		ext: 'png',
+		width: 2732,
+		height: 1708,
+		path: 'images/fat-fuzzy/color',
+	},
 ]
 
 const host = 'http://localhost:5173'
