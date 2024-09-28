@@ -5,6 +5,8 @@
 	"width": 2732,
 	"height": 1708,
 	"path": "images/fat-fuzzy/all",
+	"title": "Fat Fuzzy 3",
+	"alt": "Fat Fuzzy, a colorful owl, spreading its wings midway",
 	"media": [
 		{
 			"query": "(min-width: 3600px)",
@@ -135,7 +137,7 @@
 			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 224528
+			"size": 189876
 		},
 		{
 			"format": "png",
@@ -143,7 +145,7 @@
 			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 330143
+			"size": 311001
 		},
 		{
 			"format": "webp",
@@ -151,7 +153,7 @@
 			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 138634
+			"size": 127032
 		},
 		{
 			"format": "png",
@@ -159,7 +161,7 @@
 			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 207840
+			"size": 194964
 		},
 		{
 			"format": "webp",
@@ -167,7 +169,7 @@
 			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 73460
+			"size": 68908
 		},
 		{
 			"format": "png",
@@ -175,7 +177,7 @@
 			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 104993
+			"size": 100554
 		},
 		{
 			"format": "webp",
@@ -183,7 +185,7 @@
 			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 24328
+			"size": 23664
 		},
 		{
 			"format": "png",
@@ -191,7 +193,7 @@
 			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 31569
+			"size": 31075
 		}
 	]
 }

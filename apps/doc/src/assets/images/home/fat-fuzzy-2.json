@@ -1,10 +1,12 @@
 {
-	"id": "images/fat-fuzzy/all/Fat-Fuzzy-4",
-	"file": "Fat-Fuzzy-4",
+	"id": "images/fat-fuzzy/all/Fat-Fuzzy-2",
+	"file": "Fat-Fuzzy-2",
 	"ext": "png",
 	"width": 2732,
 	"height": 1708,
 	"path": "images/fat-fuzzy/all",
+	"title": "Fat Fuzzy 2",
+	"alt": "Fat Fuzzy, a colorful owl, getting ready to spread its wings.",
 	"media": [
 		{
 			"query": "(min-width: 3600px)",
@@ -135,7 +137,7 @@
 			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 307384
+			"size": 170328
 		},
 		{
 			"format": "png",
@@ -143,7 +145,7 @@
 			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 438638
+			"size": 282143
 		},
 		{
 			"format": "webp",
@@ -151,7 +153,7 @@
 			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 199220
+			"size": 114368
 		},
 		{
 			"format": "png",
@@ -159,7 +161,7 @@
 			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 274774
+			"size": 179053
 		},
 		{
 			"format": "webp",
@@ -167,7 +169,7 @@
 			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 107208
+			"size": 60790
 		},
 		{
 			"format": "png",
@@ -175,7 +177,7 @@
 			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 140066
+			"size": 91484
 		},
 		{
 			"format": "webp",
@@ -183,7 +185,7 @@
 			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 34848
+			"size": 20660
 		},
 		{
 			"format": "png",
@@ -191,7 +193,7 @@
 			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 41727
+			"size": 28183
 		}
 	]
 }

@@ -28,7 +28,7 @@ async function loadAnimations() {
 	const animationData = cssAnimations.map(async ({slug, count, sections}) => {
 		const animationAssets: Promise<any>[] = []
 		for (let i = 0; i < count; i++) {
-			animationAssets.push(images.getImageData('play', `${slug}-${i + 1}`))
+			animationAssets.push(images.getImageData('home', `${slug}-${i + 1}`))
 		}
 		const assets = await Promise.all(animationAssets)
 		const mediaData = assets.map((asset, index) => {

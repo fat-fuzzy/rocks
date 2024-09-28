@@ -5,6 +5,8 @@
 	"width": 2732,
 	"height": 1708,
 	"path": "images/fat-fuzzy/all",
+	"title": "Fat Fuzzy 5",
+	"alt": "Fat Fuzzy, a colorful owl, with its wings fully extended.",
 	"media": [
 		{
 			"query": "(min-width: 3600px)",
@@ -135,7 +137,7 @@
 			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 361226
+			"size": 311346
 		},
 		{
 			"format": "png",
@@ -143,7 +145,7 @@
 			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 517232
+			"size": 482456
 		},
 		{
 			"format": "webp",
@@ -151,7 +153,7 @@
 			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 231790
+			"size": 206588
 		},
 		{
 			"format": "png",
@@ -159,7 +161,7 @@
 			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 329951
+			"size": 302766
 		},
 		{
 			"format": "webp",
@@ -167,7 +169,7 @@
 			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 122344
+			"size": 111098
 		},
 		{
 			"format": "png",
@@ -175,7 +177,7 @@
 			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 157442
+			"size": 152524
 		},
 		{
 			"format": "webp",
@@ -183,7 +185,7 @@
 			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 40752
+			"size": 37690
 		},
 		{
 			"format": "png",
@@ -191,7 +193,7 @@
 			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 46304
+			"size": 45435
 		}
 	]
 }

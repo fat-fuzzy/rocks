@@ -1,10 +1,12 @@
 {
-	"id": "images/fat-fuzzy/all/Fat-Fuzzy-2",
-	"file": "Fat-Fuzzy-2",
+	"id": "images/fat-fuzzy/all/Fat-Fuzzy-1",
+	"file": "Fat-Fuzzy-1",
 	"ext": "png",
 	"width": 2732,
 	"height": 1708,
 	"path": "images/fat-fuzzy/all",
+	"title": "Fat Fuzzy 1",
+	"alt": "Fat Fuzzy, a colorful owl, in stand-by position.",
 	"media": [
 		{
 			"query": "(min-width: 3600px)",
@@ -135,7 +137,7 @@
 			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 185530
+			"size": 138636
 		},
 		{
 			"format": "png",
@@ -143,7 +145,7 @@
 			"height": 1250,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 298085
+			"size": 237207
 		},
 		{
 			"format": "webp",
@@ -151,7 +153,7 @@
 			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 119278
+			"size": 92900
 		},
 		{
 			"format": "png",
@@ -159,7 +161,7 @@
 			"height": 938,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 187652
+			"size": 150368
 		},
 		{
 			"format": "webp",
@@ -167,7 +169,7 @@
 			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 64316
+			"size": 48910
 		},
 		{
 			"format": "png",
@@ -175,7 +177,7 @@
 			"height": 625,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 95425
+			"size": 76255
 		},
 		{
 			"format": "webp",
@@ -183,7 +185,7 @@
 			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 21442
+			"size": 16452
 		},
 		{
 			"format": "png",
@@ -191,7 +193,7 @@
 			"height": 313,
 			"channels": 4,
 			"premultiplied": true,
-			"size": 28739
+			"size": 23513
 		}
 	]
 }
