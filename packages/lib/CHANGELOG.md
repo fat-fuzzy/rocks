@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.14
+
+### Patch Changes
+
+- af2620c: Update homepage design, cleanup
+
 ## 0.1.13
 
 ### Patch Changes
