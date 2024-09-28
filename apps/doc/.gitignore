@@ -18,3 +18,8 @@ vite.config.ts.timestamp-*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+
+# === Assets ignores
+
+/static/tests
