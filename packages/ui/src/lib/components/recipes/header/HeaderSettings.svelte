@@ -12,7 +12,7 @@
 	}: SettingsMenuProps = $props()
 	let className = 'header-settings'
 
-	let headerClass = $derived(`${className} sticky:top card:sm`)
+	let headerClass = $derived(`${className} sticky:top card:xs`)
 </script>
 
 <header class={headerClass}>

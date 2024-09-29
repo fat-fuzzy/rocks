@@ -3,7 +3,7 @@
 // src: https://sharp.pixelplumbing.com/api-constructor
 import fs from 'node:fs'
 import got from 'got'
-import sharp from 'sharp'
+import sharp from './sharp.js'
 import config from './config.js'
 
 const sharpStream = sharp({failOn: 'none'})

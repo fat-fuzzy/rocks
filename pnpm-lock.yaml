@@ -42,9 +42,9 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@fat-fuzzy/lib':
+      '@fat-fuzzy/gfx':
         specifier: workspace:*
-        version: link:../../packages/lib
+        version: link:../../packages/gfx
       '@fat-fuzzy/playbook':
         specifier: workspace:*
         version: link:../../packages/playbook
@@ -231,6 +231,27 @@ importers:
         specifier: 7.5.2
         version: 7.5.2
 
+  packages/gfx:
+    devDependencies:
+      '@fat-fuzzy/config':
+        specifier: workspace:*
+        version: link:../config
+      '@rollup/plugin-json':
+        specifier: ^6.1.0
+        version: 6.1.0(rollup@4.20.0)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.20.0)
+      rollup:
+        specifier: ^4.20.0
+        version: 4.20.0
+      tslib:
+        specifier: ^2.6.3
+        version: 2.6.3
+      typescript:
+        specifier: ^5.5.3
+        version: 5.5.4
+
   packages/git-poule:
     dependencies:
       '@fat-fuzzy/config':
@@ -294,14 +315,35 @@ importers:
         specifier: 11.0.3
         version: 11.0.3
 
+  packages/media:
+    devDependencies:
+      '@fat-fuzzy/config':
+        specifier: workspace:*
+        version: link:../config
+      '@rollup/plugin-json':
+        specifier: ^6.1.0
+        version: 6.1.0(rollup@4.20.0)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.20.0)
+      rollup:
+        specifier: ^4.20.0
+        version: 4.20.0
+      tslib:
+        specifier: ^2.6.3
+        version: 2.6.3
+      typescript:
+        specifier: ^5.5.3
+        version: 5.5.4
+
   packages/playbook:
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
-      '@fat-fuzzy/lib':
+      '@fat-fuzzy/gfx':
         specifier: workspace:*
-        version: link:../lib
+        version: link:../gfx
       '@fat-fuzzy/style':
         specifier: workspace:*
         version: link:../style
@@ -350,9 +392,9 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
-      '@fat-fuzzy/lib':
+      '@fat-fuzzy/gfx':
         specifier: workspace:*
-        version: link:../lib
+        version: link:../gfx
       '@fat-fuzzy/style':
         specifier: workspace:*
         version: link:../style
@@ -552,6 +594,9 @@ importers:
       rollup:
         specifier: ^4.20.0
         version: 4.20.0
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.0(@types/node@20.14.15)(jsdom@24.1.1)(sass@1.77.8)(terser@5.31.3)
 
 packages:
 

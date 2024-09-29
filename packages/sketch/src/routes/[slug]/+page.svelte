@@ -1,14 +1,14 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 
-	import lib from '@fat-fuzzy/lib'
+	import gfx from '@fat-fuzzy/gfx'
 	import ui from '@fat-fuzzy/ui'
 	import Sketch from '$lib/components/sketch/Sketch.svelte'
 
 	const {PageMain} = ui.content
 
 	let scene = $derived(
-		lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),
+		gfx.gl.sketches.find((s) => s.meta.slug === $page.data.slug),
 	)
 	let title = $derived(scene?.meta.title || '')
 	let description = $derived(`${title} - Play`)

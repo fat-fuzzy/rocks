@@ -1,12 +1,12 @@
 import {error} from '@sveltejs/kit'
-import lib from '@fat-fuzzy/lib'
+import gfx from '@fat-fuzzy/gfx'
 import pages from '$data/pages'
 
 const page = 'play'
 
 export const load = async (event) => {
 	try {
-		const sketches = lib.gfx.sketches.map((sketch) => sketch.meta)
+		const sketches = gfx.gl.sketches.map((sketch) => sketch.meta)
 		let content = await pages.fetchMarkdowns(page)
 
 		if (!content?.length) {

@@ -18,8 +18,8 @@ This project contains the following packages :
 - **[@fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/tree/main/packages/ui)** a frontend component library written in Svelte
 - **[@fat-fuzzy/playbook](https://github.com/fat-fuzzy/rocks/tree/main/packages/playbook)** a library used to display, document and test the `@fat-fuzzy/style` and `@fat-fuzzy/ui` packages, started as a way to replace Storybook (you can read about this decision [here](/doc/decisions/simplify-doc))
 - **[@fat-fuzzy/sketch](https://github.com/fat-fuzzy/rocks/tree/main/packages/sketch)** a library used to display and handle interactive web graphics programs: this usage is one of the initial motivations for this project
+- **[@fat-fuzzy/gfx](https://github.com/fat-fuzzy/rocks/tree/main/packages/gfx)** Everything related to working with web graphics, except the interface
 - **[@fat-fuzzy/lib](https://github.com/fat-fuzzy/rocks/tree/main/packages/lib)** Libraries unrelated to tooling: logic and experiments
-  - 👾 gfx - everything related to working with web graphics, except the interface
   - ...
 
 **Utility Packages**
@@ -41,5 +41,5 @@ For example, the package `@fat-fuzzy/ui` can be used to build apps in different 
   - `@fat-fuzzy/ui`
   - `@fat-fuzzy/playbook` used to render the content and functionality of the [UI](/ui) page and its children
   - `@fat-fuzzy/sketch` used to render the children of the [PLAY](/play) page
-- I use the `gfx` library in the package `@fat-fuzzy/lib` to gather what I learn about web graphics
+- The package `@fat-fuzzy/gfx` contains what I learn about web graphics
 - I'm experimenting with data analysis and learning R: I built the `@fat-fuzzy/git-poule` script to analyze the work done in this repo
