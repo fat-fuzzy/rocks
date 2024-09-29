@@ -7,12 +7,12 @@ export const load = ({params}) => {
 	})
 
 	if (!sketchData) {
-		throw error(404, {message: 'Not found'})
+		throw error(404, {message: 'Sketch not found'})
 	}
 	let meta = sketchData.meta
 
 	if (!meta) {
-		throw error(404, {message: 'Not found'})
+		throw error(500, {message: 'Sketch data not found'})
 	}
 
 	return meta

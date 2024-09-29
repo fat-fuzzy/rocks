@@ -66,6 +66,8 @@ $purple-round: '🟣';
 $lipstick: '💄';
 $roller-skate: '🛼';
 $toolbox: '🧰';
+$brain: '🧠';
+$kite: '🪁';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -168,5 +170,9 @@ $emojis: (
 	package-playbook: #{$roller-skate},
 	package-sketch: #{$rainbow},
 	package-gfx: #{$invader},
-	package-git-poule: #{$hatching-chick}
+	package-git-poule: #{$hatching-chick},
+
+	// Page Emojis
+	study: #{$brain},
+	experiment: #{$kite}
 );

@@ -21,7 +21,19 @@
 		{
 			slug: 'play',
 			title: 'Play',
-			items: sketches,
+			items: [
+				{
+					slug: 'experiments',
+					title: 'Experiments',
+					asset: 'experiments',
+				},
+				{
+					slug: 'study',
+					title: 'Study',
+					asset: 'study',
+					items: sketches.study,
+				},
+			],
 		},
 	]
 
@@ -46,3 +58,4 @@
 		{@render children()}
 	{/if}
 </LayoutSidebar>
+

@@ -8,6 +8,8 @@ const pages: {[page: string]: any} = {
 	play: await import.meta.glob('/src/assets/pages/play.md'),
 	ui: await import.meta.glob('/src/assets/pages/ui.md'),
 	blog: await import.meta.glob('/src/assets/pages/blog.md'),
+	study: await import.meta.glob('/src/assets/pages/study.md'),
+	experiments: await import.meta.glob('/src/assets/pages/experiments.md'),
 }
 
 async function fetchMarkdowns(page: string): Promise<{[key: string]: any}> {
