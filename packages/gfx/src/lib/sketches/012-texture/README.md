@@ -2,7 +2,8 @@
 title: Textures
 date: '2024-01-06'
 slug: textures
-tags: ['webgl', 'texture', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['color', 'texture']
 id: '012'
 ---
 

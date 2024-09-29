@@ -2,7 +2,8 @@
 title: Projection
 date: '2024-01-02'
 slug: projection
-tags: ['webgl', '2D', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['2D', 'matrix']
 id: '008'
 ---
 

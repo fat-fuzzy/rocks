@@ -27,7 +27,8 @@ let meta = {
 	slug: 'random-rect-audio',
 	title: 'Audio',
 	asset: 'drums',
-	tags: ['random', 'audio'],
+	categories: ['study'],
+	tags: ['random', '2D', 'audio', 'webgl', 'webglfundamentals'],
 	controls: ['loop'],
 }
 

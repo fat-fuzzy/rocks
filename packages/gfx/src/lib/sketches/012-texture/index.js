@@ -42,7 +42,8 @@ let meta = {
 	slug: 'texture',
 	title: 'Texture',
 	asset: 'texture',
-	tags: ['color', 'texture' /* , 'webgl' */],
+	categories: ['study'],
+	tags: ['color', 'texture', 'webgl', 'webglfundamentals'],
 	controls: ['texture'],
 	filename: 'plants.png',
 	filters: {

@@ -30,7 +30,8 @@ let meta = {
 	slug: 'animation-3d',
 	title: 'Animation 3D',
 	asset: 'animation-3d',
-	tags: ['3D', 'matrix', 'camera' /* , 'webgl' */],
+	categories: ['study'],
+	tags: ['3D', 'matrix', 'camera', 'webgl', 'webglfundamentals'],
 	controls: ['matrix-3d', 'loop'],
 }
 

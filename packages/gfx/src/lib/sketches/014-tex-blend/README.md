@@ -2,7 +2,8 @@
 title: Multiple Textures
 date: '2024-01-15'
 slug: multiple-tex
-tags: ['webgl', 'texture', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['matrix', 'texture', 'io']
 id: '014'
 ---
 

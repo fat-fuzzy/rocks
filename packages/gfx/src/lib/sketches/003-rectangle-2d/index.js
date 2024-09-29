@@ -28,7 +28,8 @@ let meta = {
 	slug: 'rectangle-2d',
 	title: 'Rectangle 2D',
 	asset: 'rect',
-	tags: ['2D' /* , 'webgl' */],
+	categories: ['study'],
+	tags: ['2D', 'webgl', 'webglfundamentals'],
 	controls: ['matrix-2d', 'loop'],
 }
 

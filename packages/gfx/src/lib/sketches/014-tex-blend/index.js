@@ -38,7 +38,8 @@ let meta = {
 	slug: 'tex-blend',
 	title: 'Tex Blend',
 	asset: 'multiple-tex',
-	tags: ['matrix', 'texture' /* , 'webgl' */, 'io'],
+	categories: ['study'],
+	tags: ['matrix', 'texture', 'io', 'webgl', 'webglfundamentals'],
 	controls: ['texture'],
 	images: ['plants.png', 'mineral.png'],
 	filters: {

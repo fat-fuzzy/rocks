@@ -2,7 +2,8 @@
 title: Matrix 3D
 date: '2024-01-03'
 slug: matrix-3d
-tags: ['webgl', '3D', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['3D', 'matrix']
 id: '009'
 ---
 

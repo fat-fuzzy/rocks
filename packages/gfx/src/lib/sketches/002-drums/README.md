@@ -2,7 +2,8 @@
 title: Audio
 date: '2022'
 slug: random-rect-audio
-tags: ['webgl', '2D', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['random', '2D', 'audio']
 id: '002'
 ---
 

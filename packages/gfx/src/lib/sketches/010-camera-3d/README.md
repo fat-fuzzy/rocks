@@ -2,7 +2,8 @@
 title: Camera 3D
 date: '2024-01-05'
 slug: camera-3d
-tags: ['webgl', '3D', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['3D', 'camera']
 id: '010'
 ---
 

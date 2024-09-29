@@ -2,7 +2,8 @@
 title: Animation
 date: '2024-01-05'
 slug: animation
-tags: ['webgl', '3D', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['3D', 'matrix', 'camera']
 id: '011'
 ---
 

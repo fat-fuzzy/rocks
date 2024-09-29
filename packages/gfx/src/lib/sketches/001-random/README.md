@@ -2,7 +2,8 @@
 title: Random
 date: '2022'
 slug: random-rect
-tags: ['webgl', '2D', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['2D']
 id: '001'
 ---
 

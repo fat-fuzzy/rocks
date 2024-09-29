@@ -28,7 +28,8 @@ let meta = {
 	slug: 'matrix-3d',
 	title: 'Matrix 3D',
 	asset: 'matrix-3d',
-	tags: ['3D', 'matrix' /* , 'webgl' */],
+	categories: ['study'],
+	tags: ['3D', 'webgl', 'webglfundamentals', 'matrix'],
 	controls: ['matrix-3d', 'loop'],
 }
 

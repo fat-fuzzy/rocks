@@ -2,7 +2,8 @@
 title: Convolution
 date: '2024-01-06'
 slug: convolution
-tags: ['webgl', 'texture', 'learn', 'webglfundamentals']
+categories: ['webgl', 'learn']
+tags: ['matrix', 'texture']
 id: '013'
 ---
 
