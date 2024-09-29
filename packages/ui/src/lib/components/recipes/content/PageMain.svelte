@@ -27,7 +27,7 @@
 	let currentPage = $state(pageName ?? title)
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
 	let layoutClass= $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let headerClass = $derived(`${layoutClass} ${justifyClass} maki:block:lg`)
+	let headerClass = $derived(`${layoutClass} ${justifyClass} align:baseline maki:block:lg`)
 </script>
 
 <Head pageName={currentPage} {title} {description} />
