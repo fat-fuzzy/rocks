@@ -1,4 +1,4 @@
-import utils from '../../utils'
+import utils from '../../math/utils'
 
 export function initBuffers(gl, programInfo) {
 	const x = utils.randomInt(gl.canvas.clientWidth)

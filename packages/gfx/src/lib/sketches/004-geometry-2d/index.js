@@ -5,7 +5,7 @@
  ***********************
  */
 import dom from '../../dom'
-import geometries from '../../geometries'
+import geometries from '../../math/geometries'
 import setup from '../../webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from '../../webgl/buffers/geometry-default-2d'

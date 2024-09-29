@@ -1,4 +1,4 @@
-import geometries from '../../geometries'
+import geometries from '../../math/geometries'
 
 const {DEFAULT_GEOMETRY_COORDS} = geometries
 

@@ -1,4 +1,4 @@
-import geometries from '../../geometries'
+import geometries from '../../math/geometries'
 
 const {DEFAULT_3D_GEOMETRY_COORDS, DEFAULT_3D_GEOMETRY_COLORS, flipAndCenter} =
 	geometries

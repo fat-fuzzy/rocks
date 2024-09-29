@@ -1,5 +1,5 @@
 import dom from '../../dom'
-import filters from '../../filters'
+import filters from '../../math/filters'
 
 let originalTexture
 

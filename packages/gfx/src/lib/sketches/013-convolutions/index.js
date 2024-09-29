@@ -6,7 +6,7 @@
  */
 
 import dom from '../../dom'
-import utils from '../../utils'
+import utils from '../../math/utils'
 import setup from '../../webgl/setup'
 import {drawScene} from './draw-scene'
 import {

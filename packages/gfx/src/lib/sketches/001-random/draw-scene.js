@@ -1,4 +1,4 @@
-import utils from '../../utils'
+import utils from '../../math/utils'
 
 function drawRectangle(gl, x, y, width, height) {
 	const x1 = x

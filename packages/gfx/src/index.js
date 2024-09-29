@@ -3,8 +3,8 @@
  */
 
 // Tools
-import utils from './lib/utils'
-import geometries from './lib/geometries'
+import utils from './lib/math/utils'
+import geometries from './lib/math/geometries'
 
 /**
  * All graphics Sketches
