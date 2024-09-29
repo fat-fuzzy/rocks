@@ -1,5 +1,14 @@
 # @fat-fuzzy/ui
 
+## 0.1.54
+
+### Patch Changes
+
+- 873c019: Move gfx and media to won packages
+- Updated dependencies [873c019]
+  - @fat-fuzzy/validation@0.1.3
+  - @fat-fuzzy/ui@0.1.54
+
 ## 0.1.53
 
 ### Patch Changes

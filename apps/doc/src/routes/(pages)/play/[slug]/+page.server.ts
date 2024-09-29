@@ -1,8 +1,8 @@
 import {error} from '@sveltejs/kit'
-import lib from '@fat-fuzzy/lib'
+import gfx from '@fat-fuzzy/gfx'
 
 export const load = ({params}) => {
-	let sketchData = lib.gfx.sketches.find((s) => {
+	let sketchData = gfx.gl.sketches.find((s) => {
 		return s.meta.slug === params.slug
 	})
 

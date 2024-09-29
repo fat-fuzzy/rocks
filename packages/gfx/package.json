@@ -1,0 +1,42 @@
+{
+	"package": "@fat-fuzzy/gfx",
+	"name": "@fat-fuzzy/gfx",
+	"version": "0.1.2",
+	"description": "Fat Fuzzy Graphics Libraries",
+	"main": "package/index.cjs.js",
+	"module": "package/index.esm.js",
+	"browser": "package/index.umd.min.js",
+	"scripts": {
+		"build": "rollup -c",
+		"dev": "rollup -c -w",
+		"pretest": "pnpm build",
+		"test": "echo \"@fat-fuzzy/gfx: no tests specified\""
+	},
+	"exports": {
+		"./package.json": "./package.json",
+		".": "./package/index.esm.js",
+		"./sketches/*": "./src/sketches/*"
+	},
+	"author": "Patricia Boh",
+	"license": "MIT",
+	"peerDependencies": {
+		"@fat-fuzzy/config": "workspace:*",
+		"@rollup/plugin-json": "6.0.1",
+		"@rollup/plugin-terser": "^0.4.4",
+		"rollup": "^4.20.0",
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.3"
+	},
+	"devDependencies": {
+		"@fat-fuzzy/config": "workspace:*",
+		"@rollup/plugin-json": "^6.1.0",
+		"@rollup/plugin-terser": "^0.4.4",
+		"rollup": "^4.20.0",
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.3"
+	},
+	"type": "module",
+	"files": [
+		"package"
+	]
+}

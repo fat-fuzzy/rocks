@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/lib",
 	"name": "@fat-fuzzy/lib",
-	"version": "0.1.14",
+	"version": "0.1.15",
 	"description": "Fat Fuzzy Libraries",
 	"main": "package/index.cjs.js",
 	"module": "package/index.esm.js",
@@ -14,8 +14,7 @@
 	},
 	"exports": {
 		"./package.json": "./package.json",
-		".": "./package/index.esm.js",
-		"./src/gfx/sketches/*": "./src/gfx/sketches/*"
+		".": "./package/index.esm.js"
 	},
 	"author": "Patricia Boh",
 	"license": "MIT",

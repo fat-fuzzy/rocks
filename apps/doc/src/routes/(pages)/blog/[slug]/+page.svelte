@@ -14,7 +14,7 @@
 {#key post.id}
 	<PageMain pageName="Blog" title={post.title} description={post.description}>
 		{#snippet header()}
-			<div class="l:main:50 maki:block:md">
+			<div class="l:main:50 maki:block:md l:stack:lg">
 				<h1>{post.title}</h1>
 				{#if post.subtitle}<p class="h4">{post.index ? `Part ${post.index}: ${post.subtitle}` : post.subtitle}</p>{/if}
 				{#if post.description}<p>{post.description}</p>{/if}
