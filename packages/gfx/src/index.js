@@ -3,23 +3,28 @@
  */
 
 // Tools
-import utils from './lib/utils'
-import geometries from './lib/geometries'
-// Sketches
-import sketch_001 from './sketches/001-random/index'
-// import sketch_002 from './sketches/002/index'
-import sketch_003 from './sketches/003-rectangle-2d/index'
-import sketch_004 from './sketches/004-geometry-2d/index'
-import sketch_005 from './sketches/005-matrix-2d/index'
-import sketch_006 from './sketches/006-hierarchical/index'
-import sketch_007 from './sketches/007-center-origin/index'
-import sketch_008 from './sketches/008-projection/index'
-import sketch_009 from './sketches/009-matrix-3d/index'
-import sketch_010 from './sketches/010-camera-3d/index'
-import sketch_011 from './sketches/011-animation-3d/index'
-import sketch_012 from './sketches/012-texture/index'
-import sketch_013 from './sketches/013-convolutions/index'
-// import sketch_014 from ./sketches/014-tex-blend/index'
+import utils from './lib/math/utils'
+import geometries from './lib/math/geometries'
+
+/**
+ * All graphics Sketches
+ */
+
+// Learning webgl from https://webglfundamentals.org/
+import sketch_001 from './lib/sketches/001-random/index'
+// import sketch_002 from './lib/sketches/002/index'
+import sketch_003 from './lib/sketches/003-rectangle-2d/index'
+import sketch_004 from './lib/sketches/004-geometry-2d/index'
+import sketch_005 from './lib/sketches/005-matrix-2d/index'
+import sketch_006 from './lib/sketches/006-hierarchical/index'
+import sketch_007 from './lib/sketches/007-center-origin/index'
+import sketch_008 from './lib/sketches/008-projection/index'
+import sketch_009 from './lib/sketches/009-matrix-3d/index'
+import sketch_010 from './lib/sketches/010-camera-3d/index'
+import sketch_011 from './lib/sketches/011-animation-3d/index'
+import sketch_012 from './lib/sketches/012-texture/index'
+import sketch_013 from './lib/sketches/013-convolutions/index'
+// import sketch_014 from ./lib/sketches/014-tex-blend/index'
 
 const sketches = [
 	sketch_001,

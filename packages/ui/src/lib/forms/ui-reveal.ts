@@ -50,6 +50,9 @@ class UiReveal {
 		if (data.has('reveal-decisions')) {
 			updated = data.get('reveal-decisions')?.toString()
 		}
+		if (data.has('reveal-study')) {
+			updated = data.get('reveal-study')?.toString()
+		}
 		if (updated) {
 			this.nav.reveal = TRANSITION_REVEAL[this.nav.reveal]
 			return true
