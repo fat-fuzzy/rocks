@@ -14,7 +14,7 @@
 	let sketches = $state($page.data.sketches.study)
 
 	// TODO: Use webgl & webglfundamentals tags to group sketches elsewhere
-	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
+	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []).filter((tag)=> tag !== 'webgl' && tag !== 'webglfundamentals'))
 </script>
 
 <PageMain {title} {description} size="lg">
