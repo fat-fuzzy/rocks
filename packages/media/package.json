@@ -1,8 +1,8 @@
 {
-	"package": "@fat-fuzzy/lib",
-	"name": "@fat-fuzzy/lib",
-	"version": "0.1.14",
-	"description": "Fat Fuzzy Libraries",
+	"package": "@fat-fuzzy/media",
+	"name": "@fat-fuzzy/media",
+	"version": "0.1.1",
+	"description": "Fat Fuzzy Media manipulation libraries",
 	"main": "package/index.cjs.js",
 	"module": "package/index.esm.js",
 	"browser": "package/index.umd.min.js",
@@ -10,7 +10,7 @@
 		"build": "rollup -c",
 		"dev": "rollup -c -w",
 		"pretest": "pnpm build",
-		"test": "echo \"@fat-fuzzy/lib: no tests specified\""
+		"test": "echo \"@fat-fuzzy/media: no tests specified\""
 	},
 	"exports": {
 		"./package.json": "./package.json",

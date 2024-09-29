@@ -315,6 +315,27 @@ importers:
         specifier: 11.0.3
         version: 11.0.3
 
+  packages/media:
+    devDependencies:
+      '@fat-fuzzy/config':
+        specifier: workspace:*
+        version: link:../config
+      '@rollup/plugin-json':
+        specifier: ^6.1.0
+        version: 6.1.0(rollup@4.20.0)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.20.0)
+      rollup:
+        specifier: ^4.20.0
+        version: 4.20.0
+      tslib:
+        specifier: ^2.6.3
+        version: 2.6.3
+      typescript:
+        specifier: ^5.5.3
+        version: 5.5.4
+
   packages/playbook:
     devDependencies:
       '@fat-fuzzy/config':
