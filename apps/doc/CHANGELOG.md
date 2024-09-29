@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.47
+
+### Patch Changes
+
+- 873c019: Move gfx and media to won packages
+
 ## 0.1.46
 
 ### Patch Changes
