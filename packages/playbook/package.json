@@ -30,7 +30,7 @@
 	},
 	"peerDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/lib": "workspace:*",
+		"@fat-fuzzy/gfx": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@sveltejs/kit": "2.5.4",
@@ -38,7 +38,7 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/lib": "workspace:*",
+		"@fat-fuzzy/gfx": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "^1.46.1",

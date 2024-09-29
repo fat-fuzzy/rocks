@@ -1,7 +1,7 @@
-import lib from '@fat-fuzzy/lib'
+import gfx from '@fat-fuzzy/gfx'
 
 export const load = () => {
 	return {
-		sketches: lib.gfx.sketches.map((sketch) => sketch.meta),
+		sketches: gfx.gl.sketches.map((sketch) => sketch.meta),
 	}
 }

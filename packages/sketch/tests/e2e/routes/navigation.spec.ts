@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test'
-import lib from '@fat-fuzzy/lib'
+import gfx from '@fat-fuzzy/gfx'
 
-const sketches = lib.gfx.sketches.map((sketch) => sketch.meta)
+const sketches = gfx.gl.sketches.map((sketch) => sketch.meta)
 
 test('has title', async ({page}) => {
 	await page.goto('/')

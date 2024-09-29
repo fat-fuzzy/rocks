@@ -29,7 +29,7 @@ Sketches can be rendered using this package:
 Install the package as a `devDependency`:
 
 ```shell
-pnpm i -D @fat-fuzzy/lib
+pnpm i -D @fat-fuzzy/gfx
 ```
 
 Import and use the sketches:
@@ -37,10 +37,10 @@ Import and use the sketches:
 ```js
 <script lang="ts">
   import {dev} from '$app/environment'
-  import lib from '@fat-fuzzy/lib'
+  import gfx from '@fat-fuzzy/gfx'
   import {graphics} from '@fat-fuzzy/sketch'
   
-  let scene = $derived(lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug))
+  let scene = $derived(gfx.gl.sketches.find((s) => s.meta.slug === $page.data.slug))
 </script>
 
 <Sketch {scene} size="sm" {dev}/>

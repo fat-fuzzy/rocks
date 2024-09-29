@@ -28,7 +28,7 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/lib": "workspace:*",
+		"@fat-fuzzy/gfx": "workspace:*",
 		"@fat-fuzzy/playbook": "workspace:*",
 		"@fat-fuzzy/sketch": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",

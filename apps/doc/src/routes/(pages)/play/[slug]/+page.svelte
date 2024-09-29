@@ -2,7 +2,7 @@
 	import {page} from '$app/stores'
 	import {dev} from '$app/environment'
 
-	import lib from '@fat-fuzzy/lib'
+	import gfx from '@fat-fuzzy/gfx'
 	import ui from '@fat-fuzzy/ui'
 	import {graphics} from '@fat-fuzzy/sketch'
 
@@ -10,7 +10,7 @@
 	const {PageMain} = ui.content
 
 	let scene = $derived(
-		lib.gfx.sketches.find((s) => s.meta.slug === $page.data.slug),
+		gfx.gl.sketches.find((s) => s.meta.slug === $page.data.slug),
 	)
 	let title = $derived(scene?.meta.title || '')
 	let description = `Sketch is a sandbox environment to experiment and learn web-based computer graphics`
