@@ -9,6 +9,11 @@
 	interpolate-size: allow-keywords;
 }
 
+/* Tab size rules */
+* {
+	tab-size: 4 !important;
+}
+
 /* Box sizing rules */
 *,
 *::before,
