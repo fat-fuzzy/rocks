@@ -111,8 +111,8 @@ function getWing(width, height) {
 	// + sprites
 	return {
 		origin: [width * 0.9, height / 2 + height * 0.1],
-		steps: 100, // This controls movement speed
-		pause: 7, // This controls the pause time at the end of each cycle
+		steps: WING.steps, // This controls movement speed
+		pause: WING.pause, // This controls the pause time at the end of each cycle
 		bones: BONES.magnitude,
 		beginning: BONES.beginning,
 		middle: BONES.middle,
@@ -146,14 +146,42 @@ function getWing(width, height) {
 }
 
 /**
- *
+ * Wing Structure & Movement:
+ * - the wing moves in a cycle of two sequences of movements: opening and closing
+ * - each sequence has three movements: beginning, middle, end
+ * - each movement has a sequence of steps which can be variable in length
+ *   - the number of steps of a movement determines its speed and smoothness
+ * - the first movement (and last, TODO) has a pause at the end of the movement
+ * - the wing has bones:
+ *   - a scapula bone that moves the wing to and from the body
+ *   - a humerus bone that moves the wing up and down`
+ *   - a radius bone that moves the mid wing in and out
+ * 	 - a ulna bone that moves the wing tip in and out
+ *   - a carpometacarpal bone that moves the wing tip in and out
+ * - the wing has 3 layers of feathers:
+ *   - layer 1:
+ *     - the humerus bone has 6 feathers
+ *     - the radius bone has 10 feathers
+ *     - the ulna bone has 8 feathers
+ *   - layer 2:
+ *     - the radius bone has 12 feathers
+ *     - the ulna bone has 10 feathers
+ *   - layer 3:
+ *     - the humerus bone has 5 feathers
+ *     - the radius bone has 7 feathers
+ *     - the ulna bone has 5 feathers
+ *   - layer 4:
+ *     - the humerus bone has fluffy feathers
+ *     - the radius bone has fluffy feathers
+ *     - the ulna bone has fluffy feathers
+ *     - the carpometacarpal bone has 3 feathers
  * @param {*} wing : typeof Wing
- * @param {number} timeContext
+ * @param {number} timeContext point in time of the current movement of a sequence of movements
  * @returns {*} updated {time, wing} state
  */
 function updateWingState(wing, timeContext) {
 	let time = timeContext
-	// Case 1 : we are in an opening sequence (= positive direction) and this is the end of a movent
+	// Case 1 : we are in an opening sequence (= positive direction) and this is the end of a movement
 	if (wing.direction === 1 && time === wing.angles.length - 1) {
 		// 1. We have arrived at the end of the pause: change to an closing movement (= negative direction)
 		if (wing.currentStep === 2) {
@@ -180,7 +208,7 @@ function updateWingState(wing, timeContext) {
 			time = 0
 		}
 	}
-	// Case 2 : we are in a closing sequence (= negative direction) and this is the start of a movent
+	// Case 2 : we are in a closing sequence (= negative direction) and this is the start of a movement
 	if (wing.direction === -1 && time === 0) {
 		// 1. We arrive at the first movement of the sequence: change to an opening movement (= positive direction)
 		if (wing.currentStep === 0) {
@@ -239,6 +267,8 @@ function updateWingState(wing, timeContext) {
 
 function getGeometryCoords(width, height) {
 	const wing = getWing(width, height)
+
+	// TODO: transform wing data into geometry coordinates (= vertices)
 	return DEFAULT_GEOMETRY_COORDS
 }
 
