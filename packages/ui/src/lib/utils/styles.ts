@@ -26,6 +26,9 @@ function getElementStyles(props: UiBlockProps): string {
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 
+	if (shapeClass) {
+		justifyClass = 'justify:center'
+	}
 	let elementClasses = `${assetClass} ${colorClass} ${backgroundClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass}`
 
 	return elementClasses.trim()
