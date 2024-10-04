@@ -90,6 +90,10 @@ function normalizeAndInterpolate(beginValues, endValues, steps) {
 	return result
 }
 
+function normalizeAngleDeg(angle) {
+	return ((angle % 360) + 360) % 360
+}
+
 export default {
 	randomInt,
 	multiply,
@@ -99,4 +103,5 @@ export default {
 	round,
 	interpolate,
 	normalizeAndInterpolate,
+	normalizeAngleDeg,
 }
