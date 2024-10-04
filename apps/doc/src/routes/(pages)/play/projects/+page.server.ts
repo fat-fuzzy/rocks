@@ -12,7 +12,7 @@ export const prerender = true
 
 export const ssr = true
 
-const page = 'experiments'
+const page = 'projects'
 
 export const load = async ({params}) => {
 	let content = await pages.fetchMarkdowns(page)

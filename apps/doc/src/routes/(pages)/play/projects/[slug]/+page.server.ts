@@ -2,7 +2,7 @@ import {error} from '@sveltejs/kit'
 import gfx from '@fat-fuzzy/gfx'
 
 export const load = ({params}) => {
-	let sketchData = gfx.gl.sketches.study.find((s) => {
+	let sketchData = gfx.gl.sketches.projects.find((s) => {
 		return s.meta.slug === params.slug
 	})
 

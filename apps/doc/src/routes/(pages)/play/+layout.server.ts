@@ -3,19 +3,14 @@ import gfx from '@fat-fuzzy/gfx'
 
 export const load = async (event) => {
 	try {
-		const sketches = gfx.gl.sketches.map((sketch) => sketch.meta)
+		const study = gfx.gl.sketches.study.map((sketch) => sketch.meta)
 
-		const study = sketches.filter(({categories}) =>
-			categories.includes('study'),
-		)
-		const experiments = sketches.filter(({categories}) =>
-			categories.includes('experiment'),
-		)
+		const projects = gfx.gl.sketches.projects.map((sketch) => sketch.meta)
 
 		const data = {
 			sketches: {
 				study,
-				experiments,
+				projects,
 			},
 		}
 

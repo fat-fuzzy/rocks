@@ -11,7 +11,7 @@
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
-	let sketches = $state($page.data.sketches.experiments)
+	let sketches = $state($page.data.sketches.projects)
 
 	// TODO: Use webgl & webglfundamentals tags to group sketches elsewhere
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
