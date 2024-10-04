@@ -68,6 +68,8 @@ $roller-skate: '🛼';
 $toolbox: '🧰';
 $brain: '🧠';
 $kite: '🪁';
+$wing: '🪽';
+$owl: '🦉';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -174,5 +176,9 @@ $emojis: (
 
 	// Page Emojis
 	study: #{$brain},
-	experiment: #{$kite}
+	projects: #{$kite},
+
+	// Play Emojis
+	wing: #{$wing},
+	fat-fuzzy: #{$owl}
 );
