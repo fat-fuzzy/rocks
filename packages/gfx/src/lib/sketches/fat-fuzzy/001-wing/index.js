@@ -6,9 +6,10 @@
  */
 import dom from '../../../dom'
 import geometries from '../../../math/geometries'
+import wing from '../Flyer/wing'
 import setup from '../../../webgl/setup'
 import {drawScene} from './draw-scene'
-import {initBuffers} from '../../../webgl/buffers/geometry-default-2d'
+import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-scale-2d'
@@ -86,6 +87,7 @@ function loadProgram(canvas) {
 			u_scale: gl.getUniformLocation(program, 'u_scale'),
 		},
 		context: geometries.getGeometryDefaults(canvas.width, canvas.height),
+		geometry: wing.getGeometryCoords(canvas.width, canvas.height),
 		errors: [],
 	}
 	buffers = initBuffers(gl, _programInfo)
