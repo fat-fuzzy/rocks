@@ -15,7 +15,7 @@
 
 <PageMain {title} {description} size="lg">
 	<div class="l:text maki:block:2xs">
-		<ul class="l:stack:lg w:full unstyled">
+		<ul class="l:grid:md w:full unstyled">
 			{#each markdowns as { meta }}
 				{#if meta.status !== 'draft'}
 					<a
@@ -31,7 +31,7 @@
 	<h2>Tags</h2>
 	<div class="l:text l:grid:sm maki:block">
 		{#each tags as tag}
-			<details class="card:md l:stack size:sm bg:netural varian:bare" open>
+			<details class="card:md l:stack size:sm bg:netural varian:bare">
 				<summary class="surface:2:neutral card:2xs">{tag}</summary>
 				<div class="l:stack:xs maki:block">
 					<ul class="unstyled">

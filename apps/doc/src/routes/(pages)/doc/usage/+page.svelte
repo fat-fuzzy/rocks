@@ -12,7 +12,7 @@
 
 <PageMain {title} {description} size="lg" pageName="Doc">
 	<div class="l:text maki:block:2xs">
-		<ul class="l:stack:lg w:full unstyled">
+		<ul class="l:grid:md w:full unstyled">
 			{#each markdowns as { meta }}
 				{#if meta.status !== 'draft'}
 					<a
