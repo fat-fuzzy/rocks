@@ -12,7 +12,7 @@ import {drawScene} from './draw-scene'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
 import {frag} from './shaders/fragment-shader'
-import {vert} from './shaders/vertex-shader-scale-2d'
+import {vert} from './shaders/vertex-shader-2d'
 
 let gl
 let programInfo = {
@@ -30,7 +30,7 @@ let meta = {
 	title: 'Wing',
 	asset: 'wing',
 	categories: ['sketches'],
-	tags: ['2D', 'webgl', 'sketches', 'wing', 'fat-fuzzy'],
+	tags: ['2D', 'webgl', 'matrix', 'sketches', 'wing', 'fat-fuzzy'],
 	controls: ['matrix-2d', 'loop'],
 }
 
@@ -80,11 +80,7 @@ function loadProgram(canvas) {
 			// bind u_resolution
 			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
 			// bind u_translation
-			u_translation: gl.getUniformLocation(program, 'u_translation'),
-			// bind u_rotation
-			u_rotation: gl.getUniformLocation(program, 'u_rotation'),
-			// bind u_scale
-			u_scale: gl.getUniformLocation(program, 'u_scale'),
+			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
 		context: geometries.getGeometryDefaults(canvas.width, canvas.height),
 		geometry: wing.getGeometryCoords(canvas.width, canvas.height),

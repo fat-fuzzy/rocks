@@ -1,3 +1,7 @@
+import matrices from '../../../math/matrices'
+
+const {M3} = matrices
+
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
@@ -25,28 +29,26 @@ function drawScene(gl, programInfo, buffers) {
 		programInfo.uniformLocations.u_color,
 		...programInfo.context.color,
 	)
-	// Set the translation.
-	gl.uniform2fv(
-		programInfo.uniformLocations.u_translation,
-		programInfo.context.translation,
-	)
-	// Set the rotation.
-	const radCoords = [
-		Math.cos(programInfo.context.rotation),
-		Math.sin(programInfo.context.rotation),
-	]
-	gl.uniform2fv(programInfo.uniformLocations.u_rotation, radCoords)
-	// Set the scale.
-	// Set the scale.
-	gl.uniform2fv(programInfo.uniformLocations.u_scale, programInfo.context.scale)
+	// Compute Matrices
+	const translationMatrix = M3.translation(...programInfo.context.translation)
+	const rotationMatrix = M3.rotation(programInfo.context.rotation)
+	const scaleMatrix = M3.scaling(...programInfo.context.scale)
+
+	// Multiply the Matrices
+	let matrix = M3.multiply(translationMatrix, rotationMatrix)
+	matrix = M3.multiply(matrix, scaleMatrix)
+
+	// Set the matrix
+	gl.uniformMatrix3fv(programInfo.uniformLocations.u_matrix, false, matrix)
 
 	setPositionAttribute(gl, buffers, programInfo)
 	// setColorAttribute(gl, buffers, programInfo)
-
+	// Set a random color.
+	// gl.uniform4f(programInfo.uniformLocations.u_color, Math.random(), Math.random(), Math.random(), 1)
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
+	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
 
 	const primitiveType = gl.TRIANGLES
 	const offset = 0
