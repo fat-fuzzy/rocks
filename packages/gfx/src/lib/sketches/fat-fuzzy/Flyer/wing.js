@@ -1,4 +1,5 @@
 import maths from '../../../math/utils'
+import vectors from '../../../math/vectors'
 import geometries from '../../../math/geometries'
 
 const {DEFAULT_GEOMETRY_COORDS} = geometries
@@ -101,6 +102,100 @@ const FEATHERS = {
 	},
 }
 
+function getBoneVertices(wing, time) {
+	// Save current coordinate system
+	// push()
+
+	let {angles, bones, boneAngles, position, feathers} = wing
+	let angle
+	let magnitude
+	let section
+	let origin = position
+	let vectorVertices = []
+	let sections = Object.keys(boneAngles)
+	// 1. Draw the bones in sequence so that a new bone's origin is the last bone's tip
+	for (section = 0; section < sections.length - 1; section++) {
+		// Translate to current origin (initial or previous bone coords)
+		// translate(...origin)
+		console.log('ORIGIN')
+		console.log(origin)
+
+		vectorVertices.push(...origin)
+		magnitude = bones[section]
+
+		// Set the new angle -> This is what creates the movement !
+		angle = angles[section]
+
+		// Set current origin to new bone coordinates
+		origin = vectors.getCoordsFromMagnitudeAndAngle(magnitude, angle[section])
+
+		console.log('DESTINATION')
+		console.log(origin)
+
+		// Draw the bone
+		vectorVertices.push(...origin)
+
+		if (section > 0) {
+			// drawFeathers(angle, section, origin, feathers, time)
+		}
+	}
+
+	return vectorVertices
+}
+
+function drawFeathers(angle, section, origin, feathers, time) {
+	let [x, y] = origin
+
+	// Hypothenuse
+	let magnitude = Math.abs(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))
+
+	let featherMagnitude = 1
+	let featherCoords
+	let insertionOrigin
+	let insertionDistance = 0
+	let featherCount = feathers.featherCount
+	let featherAngles = feathers.angles[time]
+	let featherAngle = featherAngles[section - 1]
+
+	let distance = magnitude / featherCount
+
+	for (let step = 0; step < featherCount; step++) {
+		// Save current coordinate system
+		// push()
+		let angleStep = step + 1
+		if (section === 1) {
+			insertionDistance = distance * step
+			featherMagnitude = 30 + (step * step) / 30
+			featherAngle = featherAngle + angleStep
+		}
+		if (section === 2) {
+			insertionDistance = distance * step
+			featherMagnitude = 20 + (step * step) / 20
+			featherAngle = featherAngle
+		}
+		if (section === 3) {
+			insertionDistance = distance * step
+			featherMagnitude = 50 + (step * step) / 20
+			featherAngle = featherAngle + angleStep * 1.5
+		}
+
+		insertionOrigin = getInsertionPoint(x, y, insertionDistance, magnitude)
+
+		// translate(...insertionOrigin)
+
+		// New Wing Coordinates
+
+		let angleRad = featherAngle * (Math.PI / 180)
+		let featherX = insertionOrigin[0] + featherMagnitude * angleRad
+		let featherY = insertionOrigin[1] + featherMagnitude * angleRad
+		featherCoords = [featherX, featherY]
+
+		// Draw the feather
+		drawVector(featherAngle, step, featherCoords)
+		// pop()
+	}
+}
+
 /**
  *
  * @param {number} width
@@ -110,7 +205,7 @@ const FEATHERS = {
 function getWing(width, height) {
 	// + sprites
 	return {
-		origin: [width * 0.9, height / 2 + height * 0.1],
+		position: [width * 0.9, height / 2 + height * 0.1],
 		steps: WING.steps, // This controls movement speed
 		pause: WING.pause, // This controls the pause time at the end of each cycle
 		bones: BONES.magnitude,
@@ -237,11 +332,14 @@ function updateWingState(wing, timeContext) {
 // 	67, 90,
 // ]
 
-function getGeometryCoords(width, height) {
-	const wing = getWing(width, height)
+function getGeometryCoords(width, height, timeContext) {
+	const wingState = getWing(width, height)
+	const {time, wing} = updateWingState(wingState, timeContext)
+
+	const boneVertices = getBoneVertices(wing, time)
 
 	// TODO: transform wing data into geometry coordinates (= vertices)
-	return DEFAULT_GEOMETRY_COORDS
+	return boneVertices
 }
 
 export default {

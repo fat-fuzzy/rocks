@@ -50,9 +50,9 @@ function drawScene(gl, programInfo, buffers) {
 	// Set the shader uniforms
 	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
 
-	const primitiveType = gl.TRIANGLES
+	const primitiveType = gl.LINES
 	const offset = 0
-	const count = 18
+	const count = 6
 	gl.drawArrays(primitiveType, offset, count)
 	//
 }
