@@ -24,26 +24,26 @@ TODO
 1. The wing has bones:
    - a scapula bone that moves the wing to and from the body
    - a humerus bone that moves the wing up and down`
-   - a radius bone that moves the mid wing in and out
-   - a ulna bone that moves the wing tip in and out
-   - a carpometacarpal bone that moves the wing tip in and out
+   - a radius+ulna bone structure that moves the mid wing in and out
+   - a metacarpal 'finger' bone that moves the wing tip in and out
+   - a metacarpal 'thumb' bone that moves the wing tip in and out
 1. The wing has 3 layers of feathers:
    - layer 1:
      - the humerus bone has 6 feathers
-     - the radius bone has 10 feathers
-     - the ulna bone has 8 feathers
+     - the radius+ulna bone structure has 10 feathers
+     - the metacarpal 'finger' bone has 8 feathers
    - layer 2:
-     - the radius bone has 12 feathers
-     - the ulna bone has 10 feathers
+     - the radius+ulna bone structure has 12 feathers
+     - the metacarpal 'finger' bone has 10 feathers
    - layer 3:
      - the humerus bone has 5 feathers
-     - the radius bone has 7 feathers
-     - the ulna bone has 5 feathers
+     - the radius+ulna bone structure has 7 feathers
+     - the metacarpal 'finger' bone has 5 feathers
    - layer 4:
      - the humerus bone has fluffy feathers
-     - the radius bone has fluffy feathers
-     - the ulna bone has fluffy feathers
-     - the carpometacarpal bone has 3 feathers
+     - the radius+ulna bone structure has fluffy feathers
+     - the metacarpal 'finger' bone has fluffy feathers
+     - the metacarpal 'thumb' bone has 3 feathers
 
 ### Wing movement
 
@@ -52,7 +52,7 @@ TODO
 1. Cycle
    - the wing moves in a cycle of two sequences of movements: opening and closing
 1. Sequence
-   - each sequence has three movements: beginning, middle, end
+   - each sequence has four (five) movements: pause, beginning, middle, end, (pause)
 1. Movement
    - each movement has a sequence of steps which can be variable in length
    - the number of steps of a movement determines its speed and smoothness
