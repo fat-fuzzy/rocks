@@ -16,7 +16,7 @@ function initPositionBuffer(gl, programInfo) {
 	// Pass the list of positions into WebGL to build the shape.
 	gl.bufferData(
 		gl.ARRAY_BUFFER,
-		new Float32Array(programInfo.geometry),
+		new Float32Array(programInfo.context.geometry),
 		gl.STATIC_DRAW,
 	)
 

@@ -1,8 +1,5 @@
-import maths from '../../../math/utils'
+import utils from '../../../math/utils'
 import vectors from '../../../math/vectors'
-import geometries from '../../../math/geometries'
-
-const {DEFAULT_GEOMETRY_COORDS} = geometries
 
 const WING = {
 	steps: 100, // This controls movement speed
@@ -16,7 +13,7 @@ const BONES = {
 	beginning: [305, 292, 158, 257, 320],
 	middle: [315, 260, 200, 220, 300],
 	end: [320, 250, 212, 212, 290],
-	angles: maths.normalizeAndInterpolate(
+	angles: utils.normalizeAndInterpolate(
 		[305, 292, 158, 257, 320],
 		[315, 260, 200, 220, 300],
 		100,
@@ -29,7 +26,10 @@ const BONES = {
 				middle: 315,
 				end: 320,
 			},
-			interpolated: maths.normalizeAndInterpolate([305], [315], WING.steps),
+			interpolated: [
+				utils.normalizeAndInterpolate([305], [315], WING.steps),
+				utils.normalizeAndInterpolate([315], [320], WING.steps / 3),
+			],
 		},
 		{
 			magnitude: 180,
@@ -38,7 +38,10 @@ const BONES = {
 				middle: 260,
 				end: 250,
 			},
-			interpolated: maths.normalizeAndInterpolate([292], [260], WING.steps),
+			interpolated: [
+				utils.normalizeAndInterpolate([292], [260], WING.steps),
+				utils.normalizeAndInterpolate([260], [250], WING.steps / 3),
+			],
 		},
 		{
 			magnitude: 200,
@@ -47,7 +50,10 @@ const BONES = {
 				middle: 200,
 				end: 212,
 			},
-			interpolated: maths.normalizeAndInterpolate([158], [200], WING.steps),
+			interpolated: [
+				utils.normalizeAndInterpolate([158], [200], WING.steps),
+				utils.normalizeAndInterpolate([200], [212], WING.steps / 3),
+			],
 		},
 	],
 }
@@ -59,7 +65,7 @@ const FEATHERS = {
 			beginning: 180,
 			middle: 190,
 			end: 200,
-			angles: maths.normalizeAndInterpolate(
+			angles: utils.normalizeAndInterpolate(
 				[180, 358, 160],
 				[220, 340, 120],
 				WING.steps,
@@ -79,22 +85,22 @@ const FEATHERS = {
 		},
 	],
 	angles: {
-		startPause: maths.normalizeAndInterpolate(
+		startPause: utils.normalizeAndInterpolate(
 			[180, 358, 160],
 			[280, 340, 120],
 			WING.pause,
 		),
-		middle: maths.normalizeAndInterpolate(
+		middle: utils.normalizeAndInterpolate(
 			[180, 358, 160],
 			[280, 340, 100],
 			WING.steps,
 		),
-		end: maths.normalizeAndInterpolate(
+		end: utils.normalizeAndInterpolate(
 			[280, 340, 100],
 			[200, 330, 90],
 			WING.steps / 3,
 		),
-		endPause: maths.normalizeAndInterpolate(
+		endPause: utils.normalizeAndInterpolate(
 			[220, 340, 100],
 			[200, 330, 90],
 			WING.pause,
@@ -111,26 +117,22 @@ function getBoneVertices(wing, time) {
 	let magnitude
 	let section
 	let origin = position
+	let prevOrigin = position
 	let vectorVertices = []
 	let sections = Object.keys(boneAngles)
+	let currentAngles = angles[time]
 	// 1. Draw the bones in sequence so that a new bone's origin is the last bone's tip
 	for (section = 0; section < sections.length - 1; section++) {
 		// Translate to current origin (initial or previous bone coords)
-		// translate(...origin)
-		console.log('ORIGIN')
-		console.log(origin)
 
 		vectorVertices.push(...origin)
 		magnitude = bones[section]
-
+		prevOrigin = [...origin]
 		// Set the new angle -> This is what creates the movement !
-		angle = angles[section]
+		angle = currentAngles[section]
 
 		// Set current origin to new bone coordinates
-		origin = vectors.getCoordsFromMagnitudeAndAngle(magnitude, angle[section])
-
-		console.log('DESTINATION')
-		console.log(origin)
+		origin = vectors.getCoordsFromMagnitudeAndAngle(magnitude, angle)
 
 		// Draw the bone
 		vectorVertices.push(...origin)
@@ -139,6 +141,13 @@ function getBoneVertices(wing, time) {
 			// drawFeathers(angle, section, origin, feathers, time)
 		}
 	}
+
+	// 2. Draw the last bone that shares its origin with the previous bone
+	magnitude = bones[section]
+	angle = currentAngles[section]
+	vectorVertices.push(...prevOrigin)
+	origin = vectors.getCoordsFromMagnitudeAndAngle(magnitude, angle)
+	vectorVertices.push(...origin)
 
 	return vectorVertices
 }
@@ -203,9 +212,16 @@ function drawFeathers(angle, section, origin, feathers, time) {
  * @returns {*} typeof Wing
  */
 function getWing(width, height) {
+	let position = utils.p5ToWebGL(
+		width * 0.9,
+		height / 2 + height * 0.1,
+		width,
+		height,
+	)
 	// + sprites
 	return {
-		position: [width * 0.9, height / 2 + height * 0.1],
+		position: [0, 0],
+		direction: WING.direction,
 		steps: WING.steps, // This controls movement speed
 		pause: WING.pause, // This controls the pause time at the end of each cycle
 		bones: BONES.magnitude,
@@ -216,22 +232,22 @@ function getWing(width, height) {
 		feathers: FEATHERS.sections,
 		featherAngles: FEATHERS.angles,
 		boneAngles: {
-			startPause: maths.normalizeAndInterpolate(
+			startPause: utils.normalizeAndInterpolate(
 				BONES.beginning,
 				BONES.middle,
 				WING.pause,
 			),
-			middle: maths.normalizeAndInterpolate(
+			middle: utils.normalizeAndInterpolate(
 				BONES.beginning,
 				BONES.middle,
 				WING.steps,
 			),
-			end: maths.normalizeAndInterpolate(
+			end: utils.normalizeAndInterpolate(
 				BONES.middle,
 				BONES.end,
 				WING.steps / 3,
 			),
-			endPause: maths.normalizeAndInterpolate(
+			endPause: utils.normalizeAndInterpolate(
 				BONES.middle,
 				BONES.end,
 				WING.pause,
@@ -305,41 +321,21 @@ function updateWingState(wing, timeContext) {
 	return {time, wing}
 }
 
-// /* prettier-ignore */
-// const DEFAULT_GEOMETRY_COORDS = [
-// 	// left column
-// 	0, 0,
-// 	30, 0,
-// 	0, 150,
-// 	0, 150,
-// 	30, 0,
-// 	30, 150,
-
-// 	// top rung
-// 	30, 0,
-// 	100, 0,
-// 	30, 30,
-// 	30, 30,
-// 	100, 0,
-// 	100, 30,
-
-// 	// middle rung
-// 	30, 60,
-// 	67, 60,
-// 	30, 90,
-// 	30, 90,
-// 	67, 60,
-// 	67, 90,
-// ]
-
-function getGeometryCoords(width, height, timeContext) {
+function getGeometryCoords(width, height) {
 	const wingState = getWing(width, height)
-	const {time, wing} = updateWingState(wingState, timeContext)
-
-	const boneVertices = getBoneVertices(wing, time)
 
 	// TODO: transform wing data into geometry coordinates (= vertices)
-	return boneVertices
+	const boneVertices = getBoneVertices(wingState, 1)
+
+	return {
+		color: [Math.random(), Math.random(), Math.random(), 1],
+		translation: [width / 2, height / 2],
+		rotation: [utils.degToRad(360)],
+		scale: [1, 1],
+		width,
+		height,
+		geometry: boneVertices,
+	}
 }
 
 export default {
