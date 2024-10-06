@@ -5,8 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
-import utils from '../../../math/utils'
-import wingState from '../Flyer/wing'
+import wingState from './wing'
 import setup from '../../../webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
