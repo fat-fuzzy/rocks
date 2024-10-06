@@ -13,46 +13,88 @@ const BONES = {
 	beginning: [305, 292, 158, 257, 320],
 	middle: [315, 260, 200, 220, 300],
 	end: [320, 250, 212, 212, 290],
-	angles: utils.normalizeAndInterpolate(
-		[305, 292, 158, 257, 320],
-		[315, 260, 200, 220, 300],
-		100,
-	),
+}
+
+/* prettier-ignore */
+const DEFAULT_GEOMETRY_COORDS = [
+	// scapula
+	0, 0,
+	-40, -150,
+	// humerus
+	-40, -150,
+	-300, -110,
+	// radius+ulna
+	-300, -110,
+	-580, -170,
+	// finger
+	-580, -170,
+	-680, -200,
+	// thumb
+	-580, -170,
+	-620, -210,
+]
+
+const BONE_STRUCTURE = {
+	angles: utils.normalizeAndInterpolate(BONES.beginning, BONES.end, WING.steps),
 	sections: [
 		{
-			magnitude: 160,
+			magnitude: BONES.magnitude[0],
 			angles: {
-				beginning: 305,
-				middle: 315,
-				end: 320,
+				beginning: BONES.beginning[0],
+				middle: BONES.middle[0],
+				end: BONES.end[0],
 			},
 			interpolated: [
-				utils.normalizeAndInterpolate([305], [315], WING.steps),
-				utils.normalizeAndInterpolate([315], [320], WING.steps / 3),
+				utils.normalizeAndInterpolate(
+					[BONES.beginning[0]],
+					[BONES.middle[0]],
+					WING.steps,
+				),
+				utils.normalizeAndInterpolate(
+					[BONES.middle[0]],
+					[BONES.end[0]],
+					WING.steps / 3,
+				),
 			],
 		},
 		{
-			magnitude: 180,
+			magnitude: BONES.magnitude[1],
 			angles: {
-				beginning: 292,
-				middle: 260,
-				end: 250,
+				beginning: BONES.beginning[1],
+				middle: BONES.middle[1],
+				end: BONES.end[1],
 			},
 			interpolated: [
-				utils.normalizeAndInterpolate([292], [260], WING.steps),
-				utils.normalizeAndInterpolate([260], [250], WING.steps / 3),
+				utils.normalizeAndInterpolate(
+					[BONES.beginning[1]],
+					[BONES.middle[1]],
+					WING.steps,
+				),
+				utils.normalizeAndInterpolate(
+					[BONES.middle[1]],
+					[BONES.end[1]],
+					WING.steps / 3,
+				),
 			],
 		},
 		{
-			magnitude: 200,
+			magnitude: BONES.magnitude[2],
 			angles: {
-				beginning: 158,
-				middle: 200,
-				end: 212,
+				beginning: BONES.beginning[2],
+				middle: BONES.middle[2],
+				end: BONES.end[2],
 			},
 			interpolated: [
-				utils.normalizeAndInterpolate([158], [200], WING.steps),
-				utils.normalizeAndInterpolate([200], [212], WING.steps / 3),
+				utils.normalizeAndInterpolate(
+					[BONES.beginning[2]],
+					[BONES.middle[2]],
+					WING.steps,
+				),
+				utils.normalizeAndInterpolate(
+					[BONES.middle[2]],
+					[BONES.end[2]],
+					WING.steps / 3,
+				),
 			],
 		},
 	],
@@ -65,11 +107,6 @@ const FEATHERS = {
 			beginning: 180,
 			middle: 190,
 			end: 200,
-			angles: utils.normalizeAndInterpolate(
-				[180, 358, 160],
-				[220, 340, 120],
-				WING.steps,
-			),
 		},
 		{
 			featherCount: 10,
@@ -84,70 +121,108 @@ const FEATHERS = {
 			end: 180,
 		},
 	],
+}
+const FEATHERS_STRUCTURE = {
 	angles: {
 		startPause: utils.normalizeAndInterpolate(
-			[180, 358, 160],
-			[280, 340, 120],
+			[
+				FEATHERS.sections[0].beginning,
+				FEATHERS.sections[1].beginning,
+				FEATHERS.sections[2].beginning,
+			],
+			[
+				FEATHERS.sections[0].middle,
+				FEATHERS.sections[1].middle,
+				FEATHERS.sections[2].middle,
+			],
 			WING.pause,
 		),
 		middle: utils.normalizeAndInterpolate(
-			[180, 358, 160],
-			[280, 340, 100],
+			[
+				FEATHERS.sections[0].beginning,
+				FEATHERS.sections[1].beginning,
+				FEATHERS.sections[2].beginning,
+			],
+			[
+				FEATHERS.sections[0].middle,
+				FEATHERS.sections[1].middle,
+				FEATHERS.sections[2].middle,
+			],
 			WING.steps,
 		),
 		end: utils.normalizeAndInterpolate(
-			[280, 340, 100],
-			[200, 330, 90],
+			[
+				FEATHERS.sections[0].middle,
+				FEATHERS.sections[1].middle,
+				FEATHERS.sections[2].middle,
+			],
+			[
+				FEATHERS.sections[0].end,
+				FEATHERS.sections[1].end,
+				FEATHERS.sections[2].end,
+			],
 			WING.steps / 3,
 		),
 		endPause: utils.normalizeAndInterpolate(
-			[220, 340, 100],
-			[200, 330, 90],
+			[
+				FEATHERS.sections[0].middle,
+				FEATHERS.sections[1].middle,
+				FEATHERS.sections[2].middle,
+			],
+			[
+				FEATHERS.sections[0].end,
+				FEATHERS.sections[1].end,
+				FEATHERS.sections[2].end,
+			],
 			WING.pause,
 		),
 	},
 }
 
-function getBoneVertices(wing, time) {
+function getBoneVertices(wing, canvasWidth, canvasHeight, time) {
 	// Save current coordinate system
 	// push()
-
 	let {angles, bones, boneAngles, position, feathers} = wing
 	let angle
 	let magnitude
 	let section
-	let origin = position
-	let prevOrigin = position
+	let coords = vectors.getCoordsFromMagnitudeAndAngle(0, 0)
+	let prevOrigin = coords
 	let vectorVertices = []
 	let sections = Object.keys(boneAngles)
 	let currentAngles = angles[time]
-	// 1. Draw the bones in sequence so that a new bone's origin is the last bone's tip
+	// 1. Draw the bones in sequence so that a new bone's coords is the last bone's tip
 	for (section = 0; section < sections.length - 1; section++) {
-		// Translate to current origin (initial or previous bone coords)
-
-		vectorVertices.push(...origin)
+		// Translate to current coords (initial or previous bone coords)
+		vectorVertices.push(...coords)
+		prevOrigin = [...coords]
 		magnitude = bones[section]
-		prevOrigin = [...origin]
 		// Set the new angle -> This is what creates the movement !
 		angle = currentAngles[section]
 
-		// Set current origin to new bone coordinates
-		origin = vectors.getCoordsFromMagnitudeAndAngle(magnitude, angle)
+		// Set current coords to new bone coordinates
+		coords = vectors.getCoordsFromMagnitudeAndAngle(
+			magnitude,
+			utils.degToRad(angle),
+		)
 
 		// Draw the bone
-		vectorVertices.push(...origin)
+		vectorVertices.push(...coords)
 
 		if (section > 0) {
-			// drawFeathers(angle, section, origin, feathers, time)
+			// drawFeathers(angle, section, coords, feathers, time)
 		}
 	}
 
-	// 2. Draw the last bone that shares its origin with the previous bone
+	// 2. Draw the last bone that shares its coords with the previous bone
 	magnitude = bones[section]
 	angle = currentAngles[section]
 	vectorVertices.push(...prevOrigin)
-	origin = vectors.getCoordsFromMagnitudeAndAngle(magnitude, angle)
-	vectorVertices.push(...origin)
+	coords = vectors.getCoordsFromMagnitudeAndAngle(
+		magnitude,
+		utils.degToRad(angle),
+	)
+	vectorVertices.push(...coords)
 
 	return vectorVertices
 }
@@ -228,9 +303,9 @@ function getWing(width, height) {
 		beginning: BONES.beginning,
 		middle: BONES.middle,
 		end: BONES.end,
-		angles: BONES.angles,
+		angles: BONE_STRUCTURE.angles,
 		feathers: FEATHERS.sections,
-		featherAngles: FEATHERS.angles,
+		featherAngles: FEATHERS_STRUCTURE.angles,
 		boneAngles: {
 			startPause: utils.normalizeAndInterpolate(
 				BONES.beginning,
@@ -321,19 +396,22 @@ function updateWingState(wing, timeContext) {
 	return {time, wing}
 }
 
-function getGeometryCoords(width, height) {
-	const wingState = getWing(width, height)
+function getGeometryCoords(canvasWidth, canvasHeight) {
+	const wingState = getWing(canvasWidth, canvasHeight)
 
 	// TODO: transform wing data into geometry coordinates (= vertices)
-	const boneVertices = getBoneVertices(wingState, 1)
+	let boneVertices = getBoneVertices(wingState, canvasWidth, canvasHeight, 1)
 
+	console.log('boneVertices', boneVertices)
+	boneVertices = DEFAULT_GEOMETRY_COORDS
 	return {
 		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [width / 2, height / 2],
+		translation: [canvasWidth * 0.9, canvasHeight * 0.6],
+		// translation: [canvasWidth / 2, canvasHeight / 2],
 		rotation: [utils.degToRad(360)],
 		scale: [1, 1],
-		width,
-		height,
+		width: canvasWidth,
+		height: canvasHeight,
 		geometry: boneVertices,
 	}
 }
