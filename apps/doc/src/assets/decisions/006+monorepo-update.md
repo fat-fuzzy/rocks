@@ -4,7 +4,7 @@ date_created: '2023-03-23'
 date_updated: '2023-03-23'
 slug: monorepo-update
 id: '006'
-tags: ['architecture', 'dependencies']
+tags: ['architecture', 'tooling']
 ---
 
 ## Context and Problem
