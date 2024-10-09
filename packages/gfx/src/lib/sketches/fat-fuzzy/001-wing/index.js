@@ -5,7 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
-import wingState from './wing'
+import Wing from './wing'
 import setup from '../../../webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
@@ -22,15 +22,18 @@ let buffers
 let vertexShader
 let fragmentShader
 let error
+
+let wingState = new Wing()
 let meta = {
 	project: 'fat-fuzzy',
 	id: '001',
 	slug: 'wing',
 	title: 'Wing',
 	asset: 'wing',
+	// status: 'draft',
 	categories: ['sketches'],
 	tags: ['2D', 'webgl', 'matrix', 'sketches', 'wing', 'fat-fuzzy'],
-	controls: ['speed', 'color', 'loop'],
+	controls: ['speed', 'color', 'grid', 'loop'],
 }
 
 function init(canvas) {
@@ -62,7 +65,6 @@ function loadProgram(canvas) {
 			gl.useProgram(program)
 		}
 	}
-
 	dom.resize(canvas)
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using

@@ -52,7 +52,7 @@ function drawScene(gl, programInfo, buffers) {
 
 	const primitiveType = gl.LINES
 	const offset = 0
-	const count = 10
+	const count = programInfo.context.geometry.length / 2
 	gl.drawArrays(primitiveType, offset, count)
 	//
 }
