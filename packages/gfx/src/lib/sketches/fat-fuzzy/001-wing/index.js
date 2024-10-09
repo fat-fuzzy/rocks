@@ -5,7 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
-import Wing from './wing'
+import wing from './wing'
 import setup from '../../../webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
@@ -23,7 +23,6 @@ let vertexShader
 let fragmentShader
 let error
 
-let wingState = new Wing()
 let meta = {
 	project: 'fat-fuzzy',
 	id: '001',
@@ -82,7 +81,7 @@ function loadProgram(canvas) {
 			// bind u_translation
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		context: wingState.getGeometryCoords(canvas.width, canvas.height),
+		context: wing.getGeometryCoords(canvas.width, canvas.height),
 		errors: [],
 	}
 	buffers = initBuffers(gl, _programInfo)
@@ -98,6 +97,11 @@ function draw() {
 }
 
 function update(context) {
+	wing.updateWingState()
+	programInfo.context.geometry = wing.getGeometryCoords(
+		context.width,
+		context.height,
+	)
 	programInfo.context = context
 	buffers = initBuffers(gl, programInfo)
 }

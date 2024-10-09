@@ -287,91 +287,6 @@ const FEATHERS_STRUCTURE = {
 	},
 }
 
-const DEFAULT_GEOMETRY_COORDS = {
-	/* prettier-ignore */
-	beginning: {vertices:BONE_VERTICES.beginning, ...BONE_MAGNITUDES.beginning},
-	/* prettier-ignore */
-	middle: {vertices:BONE_VERTICES.beginning, ...BONE_MAGNITUDES.beginning},
-	/* prettier-ignore */
-	end: [
-		// scapula
-		0, 0,
-		-40, -150,
-		// humerus
-		-40, -150,
-		-300, -110,
-		// radius+ulna
-		-300, -110,
-		-580, -170,
-		// finger
-		-580, -170,
-		-680, -200,
-		// thumb
-		-580, -170,
-		-620, -210,
-	],
-}
-
-let origin = [0, 0]
-
-/**
- *
- * @param {number} width
- * @param {number} height
- * @returns {*} typeof Wing
- */
-function getWing(width, height) {
-	let position = utils.p5ToWebGLVertex(
-		width * 0.9,
-		height / 2 + height * 0.1,
-		width,
-		height,
-	)
-
-	// + sprites
-	return {
-		position: [0, 0],
-		direction: WING.direction,
-		steps: WING.steps, // This controls movement speed
-		pause: WING.pause, // This controls the pause time at the end of each cycle
-		bones: BONE_VERTICES.magnitude,
-		beginning: BONE_VERTICES.beginning,
-		middle: BONE_VERTICES.middle,
-		end: BONE_VERTICES.end,
-		angles: BONE_STRUCTURE.angles,
-		feathers: FEATHERS.sections,
-		featherAngles: FEATHERS_STRUCTURE.angles,
-		boneAngles: {
-			startPause: utils.normalizeAndInterpolate(
-				BONE_VERTICES.beginning,
-				BONE_VERTICES.middle,
-				WING.pause,
-			),
-			middle: utils.normalizeAndInterpolate(
-				BONE_VERTICES.beginning,
-				BONE_VERTICES.middle,
-				WING.steps,
-			),
-			end: utils.normalizeAndInterpolate(
-				BONE_VERTICES.middle,
-				BONE_VERTICES.end,
-				WING.steps / 3,
-			),
-			endPause: utils.normalizeAndInterpolate(
-				BONE_VERTICES.middle,
-				BONE_VERTICES.end,
-				WING.pause,
-			),
-		},
-	}
-}
-
-/**
- * Wing Movement
- * @param {*} wing : typeof Wing
- * @param {number} timeContext point in time of the current movement of a sequence of movements
- * @returns {*} updated {time, wing} state
- */
 function updateWingState(wing, timeContext) {
 	let time = timeContext
 	// Case 1 : we are in an opening sequence (= positive direction) and this is the end of a movement
@@ -431,35 +346,6 @@ function updateWingState(wing, timeContext) {
 	return {time, wing}
 }
 
-function getGeometryCoords(canvasWidth, canvasHeight) {
-	const wingState = getWing(canvasWidth, canvasHeight)
-
-	// TODO: transform wing data into geometry coordinates (= vertices)
-	let boneVertices = [
-		wingState.getBoneVertices(wingState, canvasWidth, canvasHeight, 1),
-	]
-
-	console.log('boneVertices', boneVertices)
-	console.log(
-		'beginningAngles',
-		wingState.DEFAULT_GEOMETRY_COORDS.beginning.vertices,
-	)
-	boneVertices = [
-		wingState.DEFAULT_GEOMETRY_COORDS.beginning.vertices,
-		wingState.DEFAULT_GEOMETRY_COORDS.middle.vertices,
-	]
-	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [canvasWidth * 0.9, canvasHeight * 0.6],
-		// translation: [canvasWidth / 2, canvasHeight / 2],
-		rotation: [utils.degToRad(360)],
-		scale: [1, 1],
-		width: canvasWidth,
-		height: canvasHeight,
-		geometry: boneVertices.flat(),
-	}
-}
-
 function getBoneVertices(wing, canvasWidth, canvasHeight, time) {
 	// Save current coordinate system
 	// push()
@@ -507,40 +393,116 @@ function getBoneVertices(wing, canvasWidth, canvasHeight, time) {
 
 	return vectorVertices
 }
-export default class Wing {
-	constructor() {
-		this.position = [0, 0]
-		this.direction = WING.direction
-		this.steps = WING.steps // This controls movement speed
-		this.pause = WING.pause // This controls the pause time at the end of each cycle
+class Wing {
+	position
+	direction
+	layers
+	currentStep
+	currentTime
+	currentLayer
+	currentSection
+	steps // This controls movement speed
+	pause // This controls the pause time at the end of each cycle
+
+	constructor({position, direction, layers, steps, pause}) {
+		// Context
+		this.position = position
+		this.layers = layers
+		this.direction = direction
+		this.steps = steps
+		this.pause = pause
+
+		// State
+		this.currentLayer = 0
+		this.currentSection = 0
+		this.currentStep = 0
+		this.currentTime = 0
+
+		// Vertices
 		this.bones = BONE_VERTICES.magnitude
 		this.beginning = BONE_VERTICES.beginning
 		this.middle = BONE_VERTICES.middle
 		this.end = BONE_VERTICES.end
-		this.angles = BONE_STRUCTURE.angles
 		this.feathers = FEATHERS.sections
-		this.featherAngles = FEATHERS_STRUCTURE.angles
-		this.boneAngles = {
-			startPause: utils.normalizeAndInterpolate(
-				BONE_VERTICES.beginning,
-				BONE_VERTICES.middle,
+		this.featherAngles = [
+			utils.normalizeAndInterpolate(
+				[
+					FEATHERS.sections[0].beginning,
+					FEATHERS.sections[1].beginning,
+					FEATHERS.sections[2].beginning,
+				],
+				[
+					FEATHERS.sections[0].middle,
+					FEATHERS.sections[1].middle,
+					FEATHERS.sections[2].middle,
+				],
 				WING.pause,
 			),
-			middle: utils.normalizeAndInterpolate(
+			utils.normalizeAndInterpolate(
+				[
+					FEATHERS.sections[0].beginning,
+					FEATHERS.sections[1].beginning,
+					FEATHERS.sections[2].beginning,
+				],
+				[
+					FEATHERS.sections[0].middle,
+					FEATHERS.sections[1].middle,
+					FEATHERS.sections[2].middle,
+				],
+				WING.steps,
+			),
+			utils.normalizeAndInterpolate(
+				[
+					FEATHERS.sections[0].middle,
+					FEATHERS.sections[1].middle,
+					FEATHERS.sections[2].middle,
+				],
+				[
+					FEATHERS.sections[0].end,
+					FEATHERS.sections[1].end,
+					FEATHERS.sections[2].end,
+				],
+				WING.steps / 3,
+			),
+			utils.normalizeAndInterpolate(
+				[
+					FEATHERS.sections[0].middle,
+					FEATHERS.sections[1].middle,
+					FEATHERS.sections[2].middle,
+				],
+				[
+					FEATHERS.sections[0].end,
+					FEATHERS.sections[1].end,
+					FEATHERS.sections[2].end,
+				],
+				WING.pause,
+			),
+		]
+		this.boneAngles = [
+			utils.normalizeAndInterpolate(
+				BONE_VERTICES.beginning,
+				BONE_VERTICES.middle,
+				WING.pause, // A pause is a  movement where the angles are equal to the angles of the immediately preceding or immediately following movement. A pause has its own, shorter steps (= shorter duration)
+			),
+			utils.normalizeAndInterpolate(
 				BONE_VERTICES.beginning,
 				BONE_VERTICES.middle,
 				WING.steps,
 			),
-			end: utils.normalizeAndInterpolate(
+			utils.normalizeAndInterpolate(
 				BONE_VERTICES.middle,
 				BONE_VERTICES.end,
-				WING.steps / 3,
+				WING.steps / 3, // A shorter movement
 			),
-			endPause: utils.normalizeAndInterpolate(
+			utils.normalizeAndInterpolate(
 				BONE_VERTICES.middle,
 				BONE_VERTICES.end,
-				WING.pause,
+				WING.pause, // A pause
 			),
+		]
+		this.angles = {
+			bones: this.boneAngles[this.currentStep],
+			feathers: this.featherAngles[this.currentStep],
 		}
 		this.DEFAULT_GEOMETRY_COORDS = {
 			/* prettier-ignore */
@@ -622,10 +584,6 @@ export default class Wing {
 		// let boneVertices = [this.getBoneVertices(canvasWidth, canvasHeight, 1)]
 		let boneVertices = [this.DEFAULT_GEOMETRY_COORDS.beginning.vertices]
 		console.log('boneVertices', boneVertices)
-		console.log(
-			'beginningAngles',
-			this.DEFAULT_GEOMETRY_COORDS.beginning.vertices,
-		)
 		// boneVertices = [
 		// 	this.DEFAULT_GEOMETRY_COORDS.beginning.vertices,
 		// 	this.DEFAULT_GEOMETRY_COORDS.middle.vertices,
@@ -642,37 +600,29 @@ export default class Wing {
 		}
 	}
 
-	updateWingState(timeContext) {
-		let time = timeContext
+	/**
+	 * Wing Movement
+	 */
+	updateWingState() {
 		// Case 1 : we are in an opening sequence (= positive direction) and this is the end of a movement
-		if (this.direction === 1 && time === this.angles.length - 1) {
+		if (
+			this.direction === 1 &&
+			this.currentTime === this.angles.bones.length - 1
+		) {
 			// 1. We have arrived at the end of the pause: change to an closing movement (= negative direction)
 			if (this.currentStep === 2) {
 				this.direction = -1
-			}
-
-			// 2. We have arrived at the end of the last movement of the sequence
-			if (this.currentStep === 1) {
+			} else {
 				// load the next movement
-				this.currentStep = 2
-				this.angles = this.boneAngles.endPause //step 2 is the pause in this case. A pause is a movement where the angles are the same as the last movement's angles. A pause has its own, shorter steps (= shorter duration)
-				this.feathers[this.currentStep].angles = this.featherAngles.endPause
-				// set the next movement (a pause movement) to start
-				time = 0
-			}
-			// 3. We have arrived at the end of the first movement of the sequence
-			if (this.currentStep === 0) {
-				// load the next movement
-				this.currentStep = 1
-				// load the next movement's steps
-				this.angles = this.boneAngles.end // step 1 is the last movement in this case
-				this.feathers[this.currentStep].angles = this.featherAngles.end
+				this.currentStep += 1
+				this.angles.bones = this.boneAngles[this.currentStep] // step 2 is the pause in this case. A pause is a movement where the angles are the same as the last movement's angles. A pause has its own, shorter steps (= shorter duration)
+				this.angles.feathers = this.featherAngles[this.currentStep]
 				// set the next movement to start
-				time = 0
+				this.currentTime = 0
 			}
 		}
 		// Case 2 : we are in a closing sequence (= negative direction) and this is the start of a movement
-		if (this.direction === -1 && time === 0) {
+		if (this.direction === -1 && this.currentTime === 0) {
 			// 1. We arrive at the first movement of the sequence: change to an opening movement (= positive direction)
 			if (this.currentStep === 0) {
 				this.direction = 1
@@ -680,24 +630,27 @@ export default class Wing {
 			// 2. We arrive at a middle movement:
 			// - update the current data with the data of the middle movement
 			// - set the current step to the preceding movement in order
-			if (this.currentStep === 1) {
-				this.angles = this.boneAngles.middle
-				this.feathers[this.currentStep].angles = this.featherAngles.middle
-				time = this.angles.length - 1
+			else {
+				// load the next movement
+				this.angles.bones = this.boneAngles[this.currentStep]
+				this.angles.feathers = this.featherAngles[this.currentStep]
+				this.currentTime = this.angles.bones.length - 1
+				// set the next movement to start
 				this.currentStep = 0
-			}
-			// 3. We arrive at the last movement of the sequence (= a pause): update the current movement's coordinates sequence to the data of the previous movement, set the current step to the previous movement
-			if (this.currentStep === 2) {
-				this.angles = this.boneAngles.end
-				this.feathers[this.currentStep].angles = this.featherAngles.end
-				time = this.angles.length - 1
-				this.currentStep = 1
 			}
 		}
 
 		// Finally: Update the movement one step in the current direction
-		time = time + this.direction
-
-		return {time, wing: this}
+		this.currentTime = this.currentTime + this.direction
 	}
 }
+
+const wing = new Wing({
+	position: [0, 0],
+	direction: WING.direction,
+	layers: 1,
+	steps: WING.steps,
+	pause: WING.pause,
+})
+
+export default wing
