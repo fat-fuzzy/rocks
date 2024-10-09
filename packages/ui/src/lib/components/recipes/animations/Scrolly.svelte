@@ -5,7 +5,7 @@
 
 	let {
 		title,
-		level = 3,
+		level,
 		fixed = false,
 		animations = ['fade'],
 		dimensions,
@@ -19,6 +19,7 @@
 		items: ScrollyItemProps[]
 	} = $props()
 	let prevRatio = $state(0.0)
+	let nestedLevel = $derived(level && title ? level + 1 : level ? level : 2)
 	let scrollArea: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let frameClasses = $derived(dimensions ? ` l:frame:${dimensions}` : 'l:frame')
@@ -75,14 +76,14 @@
 </script>
 
 {#if title}
-	<svelte:element this={`h${level}`}>{title}</svelte:element>
+	<svelte:element this={`h${level}`}></svelte:element>
 {/if}
 
 <nav data-testid="scrolly" class={`scroll:container ${scrollContainerClasses}`}>
 	<ul bind:this={scrollArea} class="scroll:y w:full unstyled">
 		{#key observer}
 			{#each items as item, index (index)}
-				<ScrollyItem {observer} {item} {animations} level={level + 1} />
+				<ScrollyItem {observer} {item} {animations} level={nestedLevel} />
 			{/each}
 		{/key}
 	</ul>

@@ -56,8 +56,8 @@
 			{:else if item.content.title}
 				<div class={`card:lg text:center`}>
 					<svelte:element
-						this={`h${level + 1}`}
-						class={`emoji:${item.content.asset}`}
+						this={`h${level}`}
+						class={`emoji:${item.content.asset} h${level + 1}`}
 					>
 						{item.content.title}
 					</svelte:element>
