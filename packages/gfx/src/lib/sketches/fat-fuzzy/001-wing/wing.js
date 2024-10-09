@@ -53,29 +53,6 @@ const FEATHERS = {
 	],
 }
 
-function calculateMagnitudeAndAndAngle(vertices) {
-	const coords = []
-	for (let i = 0; i < vertices.length; i += 4) {
-		let x1 = vertices[i]
-		let y1 = vertices[i + 1]
-		let x2 = vertices[i + 2]
-		let y2 = vertices[i + 3]
-		let angle = Math.atan2(y2 - y1, x2 - x1)
-		let magnitude = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
-		coords.push({angle, magnitude})
-	}
-
-	return coords
-}
-
-const BONE_MAGNITUDES = {
-	beginning: {
-		...calculateMagnitudeAndAndAngle(BONES.beginning),
-	},
-	middle: [315, 260, 200, 220, 300],
-	end: [320, 250, 212, 212, 290],
-}
-
 class Wing {
 	position
 	direction
@@ -244,7 +221,6 @@ class Wing {
 	}
 
 	getGeometryCoords() {
-		console.log('boneVertices', this.getBoneVertices())
 		return {
 			color: [Math.random(), Math.random(), Math.random(), 1],
 			// translation: [this.width * 0.6, this.height * 0.6],
