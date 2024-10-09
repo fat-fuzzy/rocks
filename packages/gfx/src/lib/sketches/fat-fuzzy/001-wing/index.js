@@ -65,6 +65,9 @@ function loadProgram(canvas) {
 		}
 	}
 	dom.resize(canvas)
+
+	wing.init(canvas.width, canvas.height)
+
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
 	// for aVertexPosition and look up uniform locations.
@@ -81,7 +84,7 @@ function loadProgram(canvas) {
 			// bind u_translation
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		context: wing.getGeometryCoords(canvas.width, canvas.height),
+		context: wing.getGeometryCoords(),
 		errors: [],
 	}
 	buffers = initBuffers(gl, _programInfo)
@@ -98,11 +101,7 @@ function draw() {
 
 function update(context) {
 	wing.updateWingState()
-	programInfo.context.geometry = wing.getGeometryCoords(
-		context.width,
-		context.height,
-	)
-	programInfo.context = context
+	programInfo.context = wing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
 }
 
