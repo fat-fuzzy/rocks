@@ -96,10 +96,11 @@ function loadProgram(canvas) {
 }
 
 function draw() {
+	update()
 	drawScene(gl, programInfo, buffers)
 }
 
-function update(context) {
+function update() {
 	wing.updateWingState()
 	programInfo.context = wing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
