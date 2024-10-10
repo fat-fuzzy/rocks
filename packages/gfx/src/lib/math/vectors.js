@@ -1,4 +1,4 @@
-import math from './utils'
+import utils from './utils'
 const VECTOR = {
 	cross: function (a, b) {
 		/* prettier-ignore */
@@ -32,10 +32,10 @@ function getMagnitudeFromCoords(x, y) {
 	return Math.abs(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))
 }
 
-function getCoordsFromMagnitudeAndAngle(magnitude, angle) {
-	const angleInRadians = math.degToRad(angle) // Convert angle to radians
-	const x = magnitude * Math.cos(angleInRadians) // The horizontal component
-	const y = magnitude * Math.sin(angleInRadians) // The vertical component
+function getCoordsFromMagAndAngle(magnitude, angle) {
+	const radians = utils.degToRad(angle)
+	const x = magnitude * Math.cos(radians)
+	const y = magnitude * Math.sin(radians)
 	return [x, y]
 }
 
@@ -52,6 +52,6 @@ function getIntersectionPoint(x, y, distance, magnitude) {
 export default {
 	VECTOR,
 	getMagnitudeFromCoords,
-	getCoordsFromMagnitudeAndAngle,
+	getCoordsFromMagAndAngle,
 	getIntersectionPoint,
 }
