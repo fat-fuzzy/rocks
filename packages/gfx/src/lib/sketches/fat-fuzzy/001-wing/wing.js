@@ -137,6 +137,7 @@ class Wing {
 				WING.pause,
 			),
 		]
+
 		this.boneAngles = [
 			utils.normalizeAndInterpolate(
 				BONES.beginning,
@@ -155,6 +156,7 @@ class Wing {
 				WING.pause, // A pause
 			),
 		]
+
 		this.magnitudes = {
 			bones: BONES.magnitude,
 		}
