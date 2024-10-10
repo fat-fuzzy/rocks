@@ -197,7 +197,8 @@ class Wing {
 		// 1. Add the  bone vertices in sequence so that a new bone's coords is the last bone's tip
 		for (bone = 0; bone < currentMovement.length - 1; bone++) {
 			// Translate to current coords (initial or previous bone coords)
-			vectorVertices.push(...origin)
+			vectorVertices.push(...coords)
+			origin = coords
 			magnitude = this.magnitudes.bones[bone]
 			// Set the new angle -> This is what creates the movement !
 			angle = currentMovement[bone]
@@ -207,9 +208,9 @@ class Wing {
 			let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
 
 			// console.log('dest', dest)
-			origin = [origin[0] + dest[0], origin[1] + dest[1]]
+			coords = [origin[0] + dest[0], origin[1] + dest[1]]
 			// Draw the bone
-			vectorVertices.push(...origin)
+			vectorVertices.push(...coords)
 
 			if (bone > 0) {
 				// drawFeathers(angle, bone, coords, feathers, time)
