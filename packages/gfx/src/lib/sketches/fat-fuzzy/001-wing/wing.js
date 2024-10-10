@@ -2,17 +2,17 @@ import utils from '../../../math/utils'
 import vectors from '../../../math/vectors'
 
 const WING = {
-	steps: 100, // This controls movement speed
+	steps: 300, // This controls movement speed
 	pause: 7, // This controls the pause time at the end of each cycle
 	direction: -1,
 	currentStep: 0,
 }
 
 const BONES = {
-	magnitude: [160, 180, 200, 80, 50], // Bone magnitudes (=length)
-	beginning: [305, 292, 158, 257, 320],
-	middle: [315, 260, 200, 220, 300],
-	end: [320, 250, 212, 212, 290],
+	magnitude: [160, 180, 200, 80, 50], // Bone magnitudes (=length in px)
+	beginning: [360, 292, 158, 257, 320], // Bone angles in degrees : first movement
+	middle: [315, 260, 200, 220, 300], // Bone angles in degrees : middle movement
+	end: [320, 250, 212, 212, 290], // Bone angles in degrees : end movement
 }
 
 const BONES_WEBGL = {
@@ -73,6 +73,7 @@ class Wing {
 		this.direction = direction
 		this.steps = steps
 		this.pause = pause
+		this.color = [Math.random(), Math.random(), Math.random(), 1]
 
 		// State
 		this.currentLayer = 0
@@ -81,6 +82,7 @@ class Wing {
 		this.currentTime = 0
 		this.width = 0
 		this.height = 0
+		this.BONES = BONES
 
 		// Trigonometric assets
 		this.featherAngles = [
@@ -185,7 +187,7 @@ class Wing {
 		// Save current coordinate system
 		// push()
 		let coords = this.position
-		let prevOrigin = coords
+		let origin = coords
 		let angle
 		let magnitude
 		let vectorVertices = []
@@ -195,40 +197,50 @@ class Wing {
 		// 1. Add the  bone vertices in sequence so that a new bone's coords is the last bone's tip
 		for (bone = 0; bone < currentMovement.length - 1; bone++) {
 			// Translate to current coords (initial or previous bone coords)
-			vectorVertices.push(...coords)
-			prevOrigin = [...coords]
+			vectorVertices.push(...origin)
 			magnitude = this.magnitudes.bones[bone]
 			// Set the new angle -> This is what creates the movement !
 			angle = currentMovement[bone]
+			// console.log('angle', angle)
 
 			// Set current coords to new bone coordinates
-			coords = vectors.getCoordsFromMagnitudeAndAngle(magnitude, angle)
+			let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
 
+			// console.log('dest', dest)
+			origin = [origin[0] + dest[0], origin[1] + dest[1]]
 			// Draw the bone
-			vectorVertices.push(...coords)
+			vectorVertices.push(...origin)
 
 			if (bone > 0) {
 				// drawFeathers(angle, bone, coords, feathers, time)
 			}
 		}
+		// console.log('bone', bone)
+		// console.log('origin', coords)
+		// console.log('origin', origin)
 
 		// 2. Draw the last bone that shares its coords with the previous bone
 		magnitude = this.magnitudes.bones[bone]
+		// console.log('magnitude', magnitude)
 		angle = currentMovement[bone]
-		vectorVertices.push(...prevOrigin)
-		coords = vectors.getCoordsFromMagnitudeAndAngle(magnitude, angle)
-		vectorVertices.push(...coords)
+		// console.log('angle', angle)
+		vectorVertices.push(...origin)
+		let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
+
+		// console.log('dest', dest)
+		// Draw the bone
+		vectorVertices.push(origin[0] + dest[0], origin[1] + dest[1])
 
 		return vectorVertices
 	}
 
 	getGeometryCoords() {
 		return {
-			color: [Math.random(), Math.random(), Math.random(), 1],
-			// translation: [this.width * 0.6, this.height * 0.6],
+			color: this.color,
+			translation: [this.width * 0.9, this.height * 0.7],
 			// translation: [this.width / 2, this.height / 2],
-			translation: [this.width / 3, this.height / 3],
-			rotation: [utils.degToRad(360)],
+			// translation: [this.width / 3, this.height / 3],
+			rotation: [utils.degToRad(180)],
 			scale: [1, 1],
 			width: this.width,
 			height: this.height,
@@ -267,12 +279,12 @@ class Wing {
 			// - update the current data with the data of the middle movement
 			// - set the current step to the preceding movement in order
 			else {
+				this.currentStep -= 1
 				// load the next movement
 				this.angles.bones = this.boneAngles[this.currentStep]
 				this.angles.feathers = this.featherAngles[this.currentStep]
 				this.currentTime = this.angles.bones.length - 1
 				// set the next movement to start
-				this.currentStep = 0
 			}
 		}
 
