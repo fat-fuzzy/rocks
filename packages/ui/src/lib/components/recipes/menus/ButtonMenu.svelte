@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {ButtonType, ButtonMenuProps} from '$types'
+	import styleHelper from '$lib/utils/styles.js'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
 	let {
@@ -11,7 +12,7 @@
 		size,
 		shape,
 		variant,
-		container = 'stack',
+		container,
 		layout = 'switcher',
 		threshold,
 
@@ -28,11 +29,14 @@
 	}
 
 let type: ButtonType = formaction ? 'submit' : 'button'
-let sizeClass = size ? `size:${size}` : ''
-let containerClass = container ? `menu l:${container}:${size}` : ''
-let layoutClass = layout ? `l:${layout}:${size}` : ''
-let thresholdClass = $derived(threshold ? `th:${threshold}` : '')
-let menuClasses = $derived(`${layoutClass} ${thresholdClass} ${sizeClass}`)
+
+let menuClasses =  $derived(styleHelper.getStyles({
+			color,
+			size,
+			layout,
+			threshold,
+			container,
+		}))
 
 </script>
 
@@ -63,7 +67,7 @@ let menuClasses = $derived(`${layoutClass} ${thresholdClass} ${sizeClass}`)
 {/snippet}
 
 {#if title}
-	<div class={containerClass}>
+	<div class="menu">
 		<p>{title}</p>
 		{@render menuContent()}
 	</div>
