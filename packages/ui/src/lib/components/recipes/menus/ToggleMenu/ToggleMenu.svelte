@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {FuzzyPayload ,ButtonType, ToggleMenuProps} from '$types'
 	import { onMount } from 'svelte'
+	import styleHelper from '$lib/utils/styles.js'
 	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 	import ToggleMenuStore from './store.svelte'
 
@@ -14,7 +15,7 @@
 		size,
 		shape,
 		variant,
-		container='stack',
+		container,
 		layout = 'switcher',
 		threshold,
 
@@ -34,11 +35,14 @@
 	})
 
 	let type: ButtonType = formaction ? 'submit' : 'button'
-	let sizeClass = size ? `size:${size}` : ''
-	let containerClass = container ? `menu l:${container}:${size}` : ''
-	let layoutClass = layout ? `l:${layout}:${size}` : ''
-	let thresholdClass = $derived(threshold ? `th:${threshold}` : '')
-	let menuClasses = $derived(`${layoutClass} ${thresholdClass} ${sizeClass} mode:${mode}`)
+
+	let menuClasses =  $derived(styleHelper.getStyles({
+			color,
+			size,
+			layout,
+			threshold,
+			container,
+		}))
 
 	function updateMenu(payload: FuzzyPayload) {
 		store.update(payload)
@@ -82,7 +86,7 @@
 {/snippet}
 
 {#if title}
-	<div class={containerClass}>
+	<div class="menu">
 		<p>{title}</p>
 		{@render menuContent()}
 	</div>
