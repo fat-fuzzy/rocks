@@ -171,7 +171,7 @@
 		init={(event) => handleToggle(event, familyName, currentValue)}
 	/>
 {:else}
-	{#if input === 'radio' ?? input === 'checkbox'}
+	{#if input === 'radio' || input === 'checkbox'}
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
 		<InputComponent
 			{id}
