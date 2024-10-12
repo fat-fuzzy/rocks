@@ -1,13 +1,6 @@
 import utils from '../../../math/utils'
 import vectors from '../../../math/vectors'
 
-const WING = {
-	steps: 300, // This controls movement speed
-	pause: 7, // This controls the pause time at the end of each cycle
-	direction: -1,
-	currentStep: 0,
-}
-
 const BONES = {
 	magnitude: [160, 180, 200, 80, 50], // Bone magnitudes (=length in px)
 	beginning: [360, 292, 158, 257, 320], // Bone angles in degrees : first movement
@@ -66,11 +59,21 @@ class Wing {
 	width
 	height
 
-	constructor({position, direction, layers, steps, pause}) {
+	constructor({
+		position,
+		direction,
+		step,
+		layers,
+		steps,
+		pause,
+		BONES,
+		FEATHERS,
+	}) {
 		// Context
 		this.position = position
 		this.layers = layers
 		this.direction = direction
+		this.currentStep = step
 		this.steps = steps
 		this.pause = pause
 		this.color = [Math.random(), Math.random(), Math.random(), 1]
@@ -78,11 +81,9 @@ class Wing {
 		// State
 		this.currentLayer = 0
 		this.currentSection = 0
-		this.currentStep = 0
 		this.currentTime = 0
 		this.width = 0
 		this.height = 0
-		this.BONES = BONES
 
 		// Trigonometric assets
 		this.featherAngles = [
@@ -97,7 +98,7 @@ class Wing {
 					FEATHERS.sections[1].middle,
 					FEATHERS.sections[2].middle,
 				],
-				WING.pause,
+				pause,
 			),
 			utils.normalizeAndInterpolate(
 				[
@@ -110,7 +111,7 @@ class Wing {
 					FEATHERS.sections[1].middle,
 					FEATHERS.sections[2].middle,
 				],
-				WING.steps,
+				steps,
 			),
 			utils.normalizeAndInterpolate(
 				[
@@ -123,7 +124,7 @@ class Wing {
 					FEATHERS.sections[1].end,
 					FEATHERS.sections[2].end,
 				],
-				WING.steps / 3,
+				steps / 3,
 			),
 			utils.normalizeAndInterpolate(
 				[
@@ -136,26 +137,26 @@ class Wing {
 					FEATHERS.sections[1].end,
 					FEATHERS.sections[2].end,
 				],
-				WING.pause,
+				pause,
 			),
 		]
 
 		this.boneAngles = [
 			utils.normalizeAndInterpolate(
 				BONES.beginning,
-				BONES.middle,
-				WING.pause, // A pause is a  movement where the angles are equal to the angles of the immediately preceding or immediately following movement. A pause has its own, shorter steps (= shorter duration)
+				BONES.beginning,
+				pause, // A pause is a movement where the angles are equal to the angles of the immediately preceding or immediately following movement. A pause has its own, shorter steps (= shorter duration)
 			),
-			utils.normalizeAndInterpolate(BONES.beginning, BONES.middle, WING.steps),
+			utils.normalizeAndInterpolate(BONES.beginning, BONES.middle, steps),
 			utils.normalizeAndInterpolate(
 				BONES.middle,
 				BONES.end,
-				WING.steps / 3, // A shorter movement
+				steps / 3, // A shorter movement
 			),
 			utils.normalizeAndInterpolate(
-				BONES.middle,
 				BONES.end,
-				WING.pause, // A pause
+				BONES.end,
+				pause, // A pause
 			),
 		]
 
@@ -179,7 +180,6 @@ class Wing {
 	init(canvasWidth, canvasHeight) {
 		this.width = canvasWidth
 		this.height = canvasHeight
-		this.position = [canvasWidth / 2, canvasHeight / 2]
 	}
 
 	// TODO: transform wing data into geometry coordinates (= vertices)
@@ -188,7 +188,7 @@ class Wing {
 		// push()
 		let coords = this.position
 		let origin = coords
-		let angle
+		let angle = 0
 		let magnitude
 		let vectorVertices = []
 		let currentMovement = this.angles.bones[this.currentTime]
@@ -202,7 +202,6 @@ class Wing {
 			magnitude = this.magnitudes.bones[bone]
 			// Set the new angle -> This is what creates the movement !
 			angle = currentMovement[bone]
-			// console.log('angle', angle)
 
 			// Set current coords to new bone coordinates
 			let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
@@ -238,10 +237,10 @@ class Wing {
 	getGeometryCoords() {
 		return {
 			color: this.color,
-			translation: [this.width * 0.9, this.height * 0.7],
+			translation: [this.width * 0.6, this.height * 0.6],
 			// translation: [this.width / 2, this.height / 2],
 			// translation: [this.width / 3, this.height / 3],
-			rotation: [utils.degToRad(180)],
+			rotation: [utils.degToRad(0)],
 			scale: [1, 1],
 			width: this.width,
 			height: this.height,
@@ -261,11 +260,11 @@ class Wing {
 			// 1. We have arrived at the end of the pause: change to an closing movement (= negative direction)
 			if (this.currentStep === 2) {
 				this.direction = -1
-			} else {
+			} else if (this.currentStep === 1 || this.currentStep === 0) {
 				// load the next movement
-				this.currentStep += 1
-				this.angles.bones = this.boneAngles[this.currentStep] // step 2 is the pause in this case. A pause is a movement where the angles are the same as the last movement's angles. A pause has its own, shorter steps (= shorter duration)
-				this.angles.feathers = this.featherAngles[this.currentStep]
+				this.currentStep++
+				this.angles.bones = this.boneAngles[this.currentStep + 1]
+				this.angles.feathers = this.featherAngles[this.currentStep + 1]
 				// set the next movement to start
 				this.currentTime = 0
 			}
@@ -277,15 +276,14 @@ class Wing {
 				this.direction = 1
 			}
 			// 2. We arrive at a middle movement:
-			// - update the current data with the data of the middle movement
-			// - set the current step to the preceding movement in order
-			else {
-				this.currentStep -= 1
+			// - update the current data with the data of the current movement
+			// - set the current step to the preceding movement in order for the next loop
+			else if (this.currentStep === 1 || this.currentStep === 2) {
 				// load the next movement
 				this.angles.bones = this.boneAngles[this.currentStep]
 				this.angles.feathers = this.featherAngles[this.currentStep]
 				this.currentTime = this.angles.bones.length - 1
-				// set the next movement to start
+				this.currentStep--
 			}
 		}
 
@@ -294,12 +292,22 @@ class Wing {
 	}
 }
 
+const WING = {
+	steps: 300, // This controls movement speed
+	pause: 7, // This controls the pause time at the end of each cycle
+	direction: 1,
+	currentStep: 0,
+}
+
 const wing = new Wing({
 	position: [0, 0],
 	direction: WING.direction,
+	step: WING.currentStep,
 	layers: 1,
 	steps: WING.steps,
 	pause: WING.pause,
+	BONES,
+	FEATHERS,
 })
 
 export default wing
