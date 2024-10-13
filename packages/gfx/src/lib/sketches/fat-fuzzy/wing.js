@@ -138,6 +138,7 @@ export default class Wing {
 		]
 		this.magnitudes = {
 			bones: bones.magnitude,
+			feathers: feathers.sections,
 		}
 		this.angles = {
 			bones: this.boneAngles[this.currentStep],
@@ -184,7 +185,9 @@ export default class Wing {
 			vectorVertices.push(...coords)
 
 			if (this.drawFeathers && bone > 0) {
-				// drawFeathers(angle, bone, coords, feathers, time)
+				this.getFeatherVertices(angle, bone, coords, vectorVertices)
+				// Draw the bone
+				vectorVertices.push(...coords)
 			}
 		}
 		// 2. Draw the last bone that shares its coords with the previous bone
@@ -192,11 +195,72 @@ export default class Wing {
 		angle = currentMovement[bone]
 		vectorVertices.push(...origin)
 		let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
+		coords = [origin[0] + dest[0], origin[1] + dest[1]]
 
 		// Draw the bone
-		vectorVertices.push(origin[0] + dest[0], origin[1] + dest[1])
+		vectorVertices.push(...coords)
+		if (this.drawFeathers && bone > 0) {
+			this.getFeatherVertices(angle, bone - 1, coords, vectorVertices)
+			// Draw the bone
+			vectorVertices.push(...coords)
+		}
 
 		return vectorVertices
+	}
+
+	getFeatherVertices(angle, bone, origin, vectorVertices) {
+		let [x, y] = origin
+
+		// Draw the feather
+		vectorVertices.push(...origin)
+		// Hypothenuse
+		let magnitude = Math.abs(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))
+
+		let featherMagnitude = this.magnitudes.feathers[bone - 1].beginning
+		let insertionOrigin
+		let insertionDistance = 0
+		let featherCount = this.magnitudes.feathers[bone - 1].featherCount
+		let featherAngles = this.angles.feathers[this.currentTime]
+		let featherAngle = featherAngles[bone - 1]
+
+		let distance = magnitude / featherCount
+
+		for (let step = 0; step < featherCount; step++) {
+			// Save current coordinate system
+			let angleStep = step + 1
+			if (bone === 1) {
+				insertionDistance = distance * step
+				featherMagnitude = 30 + step * step
+				featherAngle = featherAngle + angleStep
+			}
+			if (bone === 2) {
+				insertionDistance = distance * step
+				featherMagnitude = 20 + step * step
+				featherAngle = featherAngle
+			}
+			if (bone === 3) {
+				insertionDistance = distance * step
+				featherMagnitude = 50 + step * step
+				featherAngle = featherAngle + angleStep * 1.5
+			}
+
+			insertionOrigin = vectors.getIntersectionPoint(
+				x,
+				y,
+				insertionDistance,
+				magnitude,
+			)
+
+			// New Wing Coordinates
+
+			let featherX = insertionOrigin[0] + featherMagnitude * featherAngle
+			let featherY = insertionOrigin[1] + featherMagnitude * featherAngle
+
+			// Draw the feather
+			vectorVertices.push(featherX, featherY)
+			// Draw the feather
+			vectorVertices.push(origin[0], origin[1])
+		}
 	}
 
 	getGeometryCoords() {
@@ -207,9 +271,9 @@ export default class Wing {
 				this.color,
 				this.currentTime / this.steps,
 			),
-			translation: [this.width * 0.9, this.height * 0.6],
+			translation: [this.width * 0.8, this.height * 0.4],
 			rotation: [utils.degToRad(0)],
-			scale: [1, 1],
+			scale: [0.9, 0.9],
 			width: this.width,
 			height: this.height,
 			geometry: this.getBoneVertices(),
