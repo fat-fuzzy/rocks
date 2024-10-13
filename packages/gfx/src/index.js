@@ -26,8 +26,9 @@ import sketch_012 from './lib/sketches/fundamentals/012-texture/index'
 import sketch_013 from './lib/sketches/fundamentals/013-convolutions/index'
 // import sketch_014 from ./lib/sketches/014-tex-blend/index'
 
-// Learning webgl from https://webglfundamentals.org/
-import fat_fuzzy_001 from './lib/sketches/fat-fuzzy/001-wing/index'
+// Fat Fuzzy Projects
+import fat_fuzzy_001 from './lib/sketches/fat-fuzzy/001-wing-base/index'
+import fat_fuzzy_002 from './lib/sketches/fat-fuzzy/002-wing-feathers/index'
 
 const study = [
 	sketch_001,
@@ -46,7 +47,7 @@ const study = [
 	// sketch_014,
 ]
 
-const projects = [fat_fuzzy_001]
+const projects = [fat_fuzzy_001, fat_fuzzy_002]
 
 const gl = {
 	sketches: {
