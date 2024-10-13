@@ -2,25 +2,10 @@ import utils from '../../../math/utils'
 import vectors from '../../../math/vectors'
 
 const BONES = {
-	magnitude: [160, 180, 200, 80, 50], // Bone magnitudes (=length in px)
-	beginning: [360, 292, 158, 257, 320], // Bone angles in degrees : first movement
-	middle: [315, 260, 200, 220, 300], // Bone angles in degrees : middle movement
-	end: [320, 250, 212, 212, 290], // Bone angles in degrees : end movement
-}
-
-const BONES_WEBGL = {
-	beginning: [
-		// scapula
-		0, 0, -40, -150,
-		// humerus
-		-40, -150, -300, -110,
-		// radius+ulna
-		-300, -110, -580, -170,
-		// finger
-		-580, -170, -680, -200,
-		// thumb
-		-580, -170, -620, -210,
-	],
+	magnitude: [160, 220, 200, 100, 60], // Bone magnitudes (=length in px)
+	beginning: [-120, -185, 180, -170, 220], // Bone angles in degrees : first movement
+	middle: [-105, -260, 255, -225, 120], // Bone angles in degrees : middle movement
+	end: [-85, -260, 280, -260, 100], // Bone angles in degrees : end movement
 }
 
 const FEATHERS = {
@@ -59,6 +44,19 @@ class Wing {
 	width
 	height
 
+	/**
+	 *
+	 * @param {*} wing state = {
+			position: number[],
+			direction: number,
+			step: number,
+			layers: number,
+			steps: number,
+			pause: number,
+			BONES: { magnitude: number[], beginning: number[], middle: number[], end: number[] },
+			FEATHERS: { sections: { featherCount: number, beginning: number, middle: number, end: number }[] },
+		}
+	 */
 	constructor({
 		position,
 		direction,
@@ -76,7 +74,13 @@ class Wing {
 		this.currentStep = step
 		this.steps = steps
 		this.pause = pause
-		this.color = [Math.random(), Math.random(), Math.random(), 1]
+		this.colorDraw = [Math.random(), Math.random(), Math.random()]
+		this.colorBg = [
+			this.colorDraw[0] / 2,
+			this.colorDraw[1] / 2,
+			this.colorDraw[2] / 2,
+		]
+		this.color = this.colorDraw
 
 		// State
 		this.currentLayer = 0
@@ -84,8 +88,27 @@ class Wing {
 		this.currentTime = 0
 		this.width = 0
 		this.height = 0
+		this.clear = false
+		this.erase = 0
 
-		// Trigonometric assets
+		this.boneAngles = [
+			utils.normalizeAndInterpolate(
+				BONES.beginning,
+				BONES.beginning,
+				pause, // A pause is a movement where the angles are equal to the angles of the immediately preceding or immediately following movement. A pause has its own, shorter steps (= shorter duration)
+			),
+			utils.normalizeAndInterpolate(BONES.beginning, BONES.middle, steps),
+			utils.normalizeAndInterpolate(
+				BONES.middle,
+				BONES.end,
+				steps / 3, // A shorter movement
+			),
+			utils.normalizeAndInterpolate(
+				BONES.end,
+				BONES.end,
+				pause, // A pause
+			),
+		]
 		this.featherAngles = [
 			utils.normalizeAndInterpolate(
 				[
@@ -140,31 +163,8 @@ class Wing {
 				pause,
 			),
 		]
-
-		this.boneAngles = [
-			utils.normalizeAndInterpolate(
-				BONES.beginning,
-				BONES.beginning,
-				pause, // A pause is a movement where the angles are equal to the angles of the immediately preceding or immediately following movement. A pause has its own, shorter steps (= shorter duration)
-			),
-			utils.normalizeAndInterpolate(BONES.beginning, BONES.middle, steps),
-			utils.normalizeAndInterpolate(
-				BONES.middle,
-				BONES.end,
-				steps / 3, // A shorter movement
-			),
-			utils.normalizeAndInterpolate(
-				BONES.end,
-				BONES.end,
-				pause, // A pause
-			),
-		]
-
 		this.magnitudes = {
 			bones: BONES.magnitude,
-		}
-		this.vertices = {
-			bones: [BONES.beginning, BONES.beginning, BONES.middle, BONES.end],
 		}
 		this.angles = {
 			bones: this.boneAngles[this.currentStep],
@@ -206,7 +206,6 @@ class Wing {
 			// Set current coords to new bone coordinates
 			let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
 
-			// console.log('dest', dest)
 			coords = [origin[0] + dest[0], origin[1] + dest[1]]
 			// Draw the bone
 			vectorVertices.push(...coords)
@@ -215,19 +214,12 @@ class Wing {
 				// drawFeathers(angle, bone, coords, feathers, time)
 			}
 		}
-		// console.log('bone', bone)
-		// console.log('origin', coords)
-		// console.log('origin', origin)
-
 		// 2. Draw the last bone that shares its coords with the previous bone
 		magnitude = this.magnitudes.bones[bone]
-		// console.log('magnitude', magnitude)
 		angle = currentMovement[bone]
-		// console.log('angle', angle)
 		vectorVertices.push(...origin)
 		let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
 
-		// console.log('dest', dest)
 		// Draw the bone
 		vectorVertices.push(origin[0] + dest[0], origin[1] + dest[1])
 
@@ -236,15 +228,20 @@ class Wing {
 
 	getGeometryCoords() {
 		return {
-			color: this.color,
-			translation: [this.width * 0.6, this.height * 0.6],
-			// translation: [this.width / 2, this.height / 2],
-			// translation: [this.width / 3, this.height / 3],
+			color: colors.mute(
+				this.angles.bones[this.currentTime][this.currentStep] /
+					utils.degToRad(360),
+				this.color,
+				this.currentTime / this.steps,
+			),
+			translation: [this.width * 0.9, this.height * 0.6],
 			rotation: [utils.degToRad(0)],
 			scale: [1, 1],
 			width: this.width,
 			height: this.height,
 			geometry: this.getBoneVertices(),
+			background: this.color,
+			clear: this.clear,
 		}
 	}
 
@@ -253,6 +250,7 @@ class Wing {
 	 */
 	updateWingState() {
 		// Case 1 : we are in an opening sequence (= positive direction) and this is the end of a movement
+		this.clear = false
 		if (
 			this.direction === 1 &&
 			this.currentTime === this.angles.bones.length - 1
@@ -260,6 +258,14 @@ class Wing {
 			// 1. We have arrived at the end of the pause: change to an closing movement (= negative direction)
 			if (this.currentStep === 2) {
 				this.direction = -1
+				if (this.erase === 4) {
+					// Clear the canvas periodically to free up memory
+					this.clear = true
+					this.color = this.colorDraw
+					this.erase = 0
+				} else {
+					this.erase++
+				}
 			} else if (this.currentStep === 1 || this.currentStep === 0) {
 				// load the next movement
 				this.currentStep++
@@ -274,6 +280,11 @@ class Wing {
 			// 1. We arrive at the first movement of the sequence: change to an opening movement (= positive direction)
 			if (this.currentStep === 0) {
 				this.direction = 1
+				if (this.erase === 2) {
+					this.color = this.colorBg
+				} else {
+					this.erase++
+				}
 			}
 			// 2. We arrive at a middle movement:
 			// - update the current data with the data of the current movement
@@ -286,17 +297,44 @@ class Wing {
 				this.currentStep--
 			}
 		}
-
 		// Finally: Update the movement one step in the current direction
 		this.currentTime = this.currentTime + this.direction
 	}
 }
 
+// const colors = {
+// 	mute: (angle, step) => {
+// 		stroke(step * 10, step * 15, step * 22, 0.25)
+// 	},
+// 	bright: (angle, step) => {
+// 		stroke(angle + step, angle + step, angle + step, 0.25)
+// 	},
+// 	section: (angle, section, step) => {
+// 		stroke(angle + section + 0.5 * 12, step + 2 * 15, step + 2 * 20, 0.25)
+// 	},
+// }
+const colors = {
+	mute: (angle, color, step) => {
+		return [
+			color[0] * (step / angle),
+			color[1] * (step / angle),
+			color[2] * (step / angle),
+			0.5,
+		]
+	},
+	bright: (angle, color, step) => {
+		return [angle + step, angle + step, angle + step, 0.5]
+	},
+	section: (angle, color, section, step) => {
+		return [angle + section + 0.5 * 12, step + 2 * 15, step + 2 * 20, 0.5]
+	},
+}
+
 const WING = {
-	steps: 300, // This controls movement speed
-	pause: 7, // This controls the pause time at the end of each cycle
-	direction: 1,
-	currentStep: 0,
+	steps: 600, // This controls movement speed
+	pause: 20, // This controls the pause time at the end of each cycle
+	direction: -1,
+	currentStep: 1,
 }
 
 const wing = new Wing({

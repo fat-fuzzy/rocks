@@ -33,9 +33,8 @@ function getMagnitudeFromCoords(x, y) {
 }
 
 function getCoordsFromMagAndAngle(magnitude, angle) {
-	const radians = utils.degToRad(angle)
-	const x = magnitude * Math.cos(radians)
-	const y = magnitude * Math.sin(radians)
+	const x = magnitude * Math.cos(angle)
+	const y = magnitude * Math.sin(angle)
 	return [x, y]
 }
 
