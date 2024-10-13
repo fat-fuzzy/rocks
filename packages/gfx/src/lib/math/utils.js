@@ -44,7 +44,7 @@ function degToRad(degrees) {
  * @returns number
  */
 function radToDeg(rads) {
-	return (rads * Math.PI) / 180
+	return rads * (180 / Math.PI)
 }
 
 /**
@@ -75,13 +75,15 @@ function interpolate(beginning, end, t) {
  */
 function normalizeAndInterpolate(beginValues, endValues, steps) {
 	const result = []
+	let radiansStart = beginValues.map((deg) => degToRad(normalizeAngleDeg(deg)))
+	let radiansEnd = endValues.map((deg) => degToRad(normalizeAngleDeg(deg)))
 
 	for (let i = 0; i <= steps; i++) {
 		// `t` gives a value between 0 and 1 used to normalize (= place) the point for which we want to calculate a value (= draw)
 		const t = i / steps
 
-		const interpolated = beginValues.map((begin, index) =>
-			interpolate(begin, endValues[index], t),
+		const interpolated = radiansStart.map((begin, index) =>
+			interpolate(begin, radiansEnd[index], t),
 		)
 
 		result.push(interpolated)
@@ -103,5 +105,4 @@ export default {
 	round,
 	interpolate,
 	normalizeAndInterpolate,
-	normalizeAngleDeg,
 }

@@ -22,12 +22,13 @@ let buffers
 let vertexShader
 let fragmentShader
 let error
+let bgColor = [0.0298, 0.02089, 0.1233]
 
 let meta = {
 	project: 'fat-fuzzy',
 	id: '001',
-	slug: 'wing',
-	title: 'Wing',
+	slug: 'wing-base',
+	title: 'Wing Base',
 	asset: 'wing',
 	// status: 'draft',
 	categories: ['sketches'],
@@ -37,7 +38,7 @@ let meta = {
 
 function init(canvas) {
 	// Initialize the GL context
-	gl = canvas.getContext('webgl2')
+	gl = canvas.getContext('webgl2', {preserveDrawingBuffer: true})
 
 	// Only continue if WebGL is available and working
 	if (gl === null) {
@@ -51,6 +52,7 @@ function main(canvas) {
 	init(canvas)
 	clear()
 	programInfo = loadProgram(canvas)
+	bgColor = programInfo.context.background
 	return programInfo.context
 }
 
@@ -87,6 +89,7 @@ function loadProgram(canvas) {
 		context: wing.getGeometryCoords(),
 		errors: [],
 	}
+	clear()
 	buffers = initBuffers(gl, _programInfo)
 	error = gl.getError()
 	if (error !== gl.NO_ERROR) {
@@ -102,6 +105,10 @@ function draw() {
 
 function update() {
 	wing.updateWingState()
+	if (programInfo.context.clear) {
+		clear()
+	}
+
 	programInfo.context = wing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
 }
@@ -113,7 +120,7 @@ function clear() {
 	}
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
 	// Set the clear color to darkish green.
-	gl.clearColor(0.0, 0.0, 0.0, 0.0)
+	gl.clearColor(...bgColor, 1.0)
 	// Clear the context with the newly set color. This is
 	// the function call that actually does the drawing.
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
