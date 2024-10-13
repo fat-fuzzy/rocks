@@ -5,13 +5,9 @@ const {M3} = matrices
 function drawScene(gl, programInfo, buffers) {
 	// - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
 	// -> use gl.viewport
-	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
-	gl.clearDepth(1.0) // clear everything (?)
-	gl.enable(gl.DEPTH_TEST) // enable depth testing
-	gl.depthFunc(gl.LEQUAL) // near things obscure far things
-
-	// Clear the canvas before drawing on it
-	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+	// gl.clearDepth(1.0) // clear everything (?)
+	gl.enable(gl.BLEND) // enable blend mode
+	gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA) // set blend function
 
 	// Create a perspective matrix:
 	// - simulates the distortion of perspective in the camera
@@ -24,10 +20,11 @@ function drawScene(gl, programInfo, buffers) {
 		gl.canvas.width,
 		gl.canvas.height,
 	)
-	// Set a random color.
+	// Set the color
 	gl.uniform4f(
 		programInfo.uniformLocations.u_color,
 		...programInfo.context.color,
+		0.25,
 	)
 	// Compute Matrices
 	const translationMatrix = M3.translation(...programInfo.context.translation)
@@ -48,7 +45,10 @@ function drawScene(gl, programInfo, buffers) {
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
+	gl.uniform4fv(programInfo.uniformLocations.u_color, [
+		...programInfo.context.color,
+		0.25,
+	])
 
 	const primitiveType = gl.LINES
 	const offset = 0
