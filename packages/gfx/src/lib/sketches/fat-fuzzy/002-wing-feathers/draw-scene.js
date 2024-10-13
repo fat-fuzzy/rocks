@@ -45,10 +45,7 @@ function drawScene(gl, programInfo, buffers) {
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	gl.uniform4fv(programInfo.uniformLocations.u_color, [
-		...programInfo.context.color,
-		0.25,
-	])
+	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
 
 	const primitiveType = gl.LINES
 	const offset = 0

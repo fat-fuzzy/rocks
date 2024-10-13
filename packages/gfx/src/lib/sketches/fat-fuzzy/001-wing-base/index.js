@@ -5,7 +5,8 @@
  ***********************
  */
 import dom from '../../../dom'
-import wing from './wing'
+import Wing from '../wing'
+import props from '../props'
 import setup from '../../../webgl/setup'
 import {drawScene} from './draw-scene'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
@@ -23,6 +24,19 @@ let vertexShader
 let fragmentShader
 let error
 let bgColor = [0.0298, 0.02089, 0.1233]
+let {WING, BONES, FEATHERS, COLORS} = props
+
+let wing = new Wing({
+	position: [0, 0],
+	direction: WING.direction,
+	step: WING.currentStep,
+	layers: 1,
+	steps: WING.steps,
+	pause: WING.pause,
+	bones: BONES,
+	feathers: FEATHERS,
+	colors: COLORS,
+})
 
 let meta = {
 	project: 'fat-fuzzy',
