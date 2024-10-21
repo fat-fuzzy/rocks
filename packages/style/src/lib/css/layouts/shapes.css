@@ -1,8 +1,8 @@
 .shape\:round,
 .shape\:square {
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: var(--align, center);
+	justify-content: var(--justify, center);
 	aspect-ratio: 1/1;
 	width: auto;
 	object-fit: contain;
