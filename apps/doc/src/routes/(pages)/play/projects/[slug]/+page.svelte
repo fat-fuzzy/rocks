@@ -18,8 +18,8 @@
 
 <PageMain {title} {description} pageName="Play" size="xl">
 	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">Play</h1>
-		<h2>&nbsp;❤︎ {title}</h2>
+		<h1 class="l:side hug maki:block:md">Sketch</h1>
+		<h2>{title}</h2>
 	{/snippet}
 	{#key scene}
 		{#if scene}
