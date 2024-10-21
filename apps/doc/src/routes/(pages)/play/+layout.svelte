@@ -13,7 +13,8 @@
 
 	let {children}: Props = $props()
 
-	let sketches = $state($page.data.sketches)
+	let projects = $state($page.data.sketches.projects)
+	let learning = $state($page.data.sketches.learning)
 	let app = $derived(fatFuzzyStore.app)
 	let path = ''
 
@@ -23,15 +24,16 @@
 			title: 'Play',
 			items: [
 				{
-					slug: 'experiments',
-					title: 'Experiments',
-					asset: 'experiments',
+					slug: 'projects',
+					title: 'Projects',
+					asset: 'projects',
+					items: projects,
 				},
 				{
-					slug: 'study',
-					title: 'Study',
-					asset: 'study',
-					items: sketches.study,
+					slug: 'learning',
+					title: 'Learning',
+					asset: 'learning',
+					items: learning,
 				},
 			],
 		},
@@ -40,7 +42,7 @@
 	let nav = {
 		path,
 		title: 'Content',
-		id: 'nav-sketches',
+		id: 'nav-play',
 		items,
 		reveal: 'expanded',
 		breakpoint: 'sm',

@@ -20,6 +20,7 @@
 	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
+	let containerStyles = $derived(styles.layouts?.families?.container || '')
 	let recipeName = $derived(name ? `ui-${name}` : `ui-${title}`)
 </script>
 
@@ -28,6 +29,7 @@
 	{page}
 	{title}
 	name={recipeName}
+	{...containerStyles}
 	{...layoutStyles}
 	{...elementStyles}
 	{...props}

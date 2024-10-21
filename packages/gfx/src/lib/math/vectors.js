@@ -1,3 +1,4 @@
+import utils from './utils'
 const VECTOR = {
 	cross: function (a, b) {
 		/* prettier-ignore */
@@ -23,6 +24,33 @@ const VECTOR = {
 	},
 }
 
+function getUnitVector(x, y, magnitude) {
+	return [x / magnitude, y / magnitude]
+}
+
+function getMagnitudeFromCoords(x, y) {
+	return Math.abs(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))
+}
+
+function getCoordsFromMagAndAngle(magnitude, angle) {
+	const x = magnitude * Math.cos(angle)
+	const y = magnitude * Math.sin(angle)
+	return [x, y]
+}
+
+/*
+ * (x, y) are the coordinates of the bone vector
+ * distance is the lenght along the bone where we want to insert the feather
+ * returns the coordinates of the insertion point: we want to translate the origin here
+ */
+function getIntersectionPoint(x, y, distance, magnitude) {
+	let unit = getUnitVector(x, y, magnitude)
+	return [distance * unit[0], distance * unit[1]]
+}
+
 export default {
 	VECTOR,
+	getMagnitudeFromCoords,
+	getCoordsFromMagAndAngle,
+	getIntersectionPoint,
 }

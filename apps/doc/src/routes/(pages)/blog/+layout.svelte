@@ -14,11 +14,9 @@
 			slug: 'blog',
 			title: 'Blog',
 			items:  $page.data.markdowns.map(({meta}) => ({
-						id: meta.id,
 						slug: meta.slug,
 						title:  meta.title,
 						asset: meta.asset,
-						description: meta.decription,
 					})),
 		}
 	]
@@ -38,7 +36,7 @@
 	}
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} path='' {app}>
+<LayoutSidebar {nav} redirect={$page.url.pathname} {path} {app}>
 	{#if children}
 		{@render children()}
 	{:else}

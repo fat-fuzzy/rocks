@@ -19,6 +19,7 @@ class UiReveal {
 
 	/**
 	 * Update nav based on inputs
+	 * TODO: make configurable from consumer
 	 */
 	reveal(data: FormData) {
 		let updated
@@ -50,8 +51,11 @@ class UiReveal {
 		if (data.has('reveal-decisions')) {
 			updated = data.get('reveal-decisions')?.toString()
 		}
-		if (data.has('reveal-study')) {
-			updated = data.get('reveal-study')?.toString()
+		if (data.has('reveal-learning')) {
+			updated = data.get('reveal-learning')?.toString()
+		}
+		if (data.has('reveal-projects')) {
+			updated = data.get('reveal-projects')?.toString()
 		}
 		if (updated) {
 			this.nav.reveal = TRANSITION_REVEAL[this.nav.reveal]
