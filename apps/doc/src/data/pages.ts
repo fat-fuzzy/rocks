@@ -8,7 +8,7 @@ const pages: {[page: string]: any} = {
 	play: await import.meta.glob('/src/assets/pages/play.md'),
 	ui: await import.meta.glob('/src/assets/pages/ui.md'),
 	blog: await import.meta.glob('/src/assets/pages/blog.md'),
-	study: await import.meta.glob('/src/assets/pages/study.md'),
+	learning: await import.meta.glob('/src/assets/pages/learning.md'),
 	projects: await import.meta.glob('/src/assets/pages/projects.md'),
 }
 

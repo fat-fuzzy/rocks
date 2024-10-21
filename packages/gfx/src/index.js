@@ -30,7 +30,7 @@ import sketch_013 from './lib/sketches/fundamentals/013-convolutions/index'
 import fat_fuzzy_001 from './lib/sketches/fat-fuzzy/001-wing-base/index'
 // import fat_fuzzy_002 from './lib/sketches/fat-fuzzy/002-wing-feathers/index'
 
-const study = [
+const learning = [
 	sketch_001,
 	// '002': sketch_002,
 	sketch_003,
@@ -51,7 +51,7 @@ const projects = [fat_fuzzy_001]
 
 const gl = {
 	sketches: {
-		study,
+		learning,
 		projects,
 	},
 	utils,

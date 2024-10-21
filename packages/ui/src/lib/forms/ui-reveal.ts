@@ -51,8 +51,8 @@ class UiReveal {
 		if (data.has('reveal-decisions')) {
 			updated = data.get('reveal-decisions')?.toString()
 		}
-		if (data.has('reveal-study')) {
-			updated = data.get('reveal-study')?.toString()
+		if (data.has('reveal-learning')) {
+			updated = data.get('reveal-learning')?.toString()
 		}
 		if (data.has('reveal-projects')) {
 			updated = data.get('reveal-projects')?.toString()

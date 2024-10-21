@@ -10,16 +10,16 @@
 	const {PageMain} = ui.content
 
 	let scene = $derived(
-		gfx.gl.sketches.study.find((s) => s.meta.slug === $page.data.slug),
+		gfx.gl.sketches.learning.find((s) => s.meta.slug === $page.data.slug),
 	)
 	let title = $derived(scene?.meta.title || '')
 	let description = `Sketch is a sandbox environment to experiment and learn web-based computer graphics`
 </script>
 
-<PageMain {title} {description} pageName="Play" size="xl">
+<PageMain {title} {description} pageName="Learning" size="xl">
 	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">Play</h1>
-		<h2>&nbsp;❤︎ {title}</h2>
+		<h1 class="l:side hug maki:block:md">Sketch</h1>
+		<h2>{title}</h2>
 	{/snippet}
 	{#key scene}
 		{#if scene}
