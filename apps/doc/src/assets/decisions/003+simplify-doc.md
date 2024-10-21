@@ -4,7 +4,7 @@ date_created: '2022'
 date_updated: '2022'
 slug: simplify-doc
 id: '003'
-tags: ['dependencies']
+tags: ['tooling']
 ---
 
 ## Context and Problem

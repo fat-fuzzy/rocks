@@ -61,7 +61,7 @@ $current_cssvars: ();
 }
 
 /**
-* Attempting this:
+* Attempting this (it works!):
 * - https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
 * - https://utopia.fyi/blog/clamp
 * It can probably be improved with better usage of sass syntax
@@ -113,7 +113,6 @@ $current_cssvars: ();
 		$previous-step: calc($previous-step + 1);
 	}
 
-	// TODO: fix - small scale is not giving the expected results
 	$previous-step: 0;
 	$size-min-step: $size-min;
 	$size-max-step: $size-max;

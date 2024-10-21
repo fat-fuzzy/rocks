@@ -1,5 +1,7 @@
 # DOM Utils
 
+Notes taken while viewing: [DOM ready events considered harmful | HTTP 203](https://www.youtube.com/watch?v=_iq1fPjeqMQ)
+
 - **PROBLEM:** An element (and a component) needs to react to changes over time
 - **SOLUTION(S):** Use the DOM to listen for events and update the component
 
@@ -9,10 +11,10 @@ If there is a script with `defer` attribute, it will load scripts after the docu
 
 ```html
 <head>
-	<script defer src="deps.js"></script>
-	<script defer src="bundle.js"></script>
-	<script src="app.js" type="module"></script>
-	<!-- ESM modules are deferred by default -->
+  <script defer src="deps.js"></script>
+  <script defer src="bundle.js"></script>
+  <script src="app.js" type="module"></script>
+  <!-- ESM modules are deferred by default -->
 </head>
 ```
 
@@ -24,8 +26,8 @@ If there is a script with `async` attribute, it will be executed as soon as it i
 
 ```html
 <head>
-	<!-- Async modules will run as soon as they are loaded -->
-	<script async type="module" src="animation.js"></script>
+  <!-- Async modules will run as soon as they are loaded -->
+  <script async type="module" src="animation.js"></script>
 </head>
 ```
 
@@ -37,9 +39,9 @@ If there is a script with `async` attribute, it will be executed as soon as it i
 
 ```html
 <head>
-     <!-- Async modules will run as soon as they are loaded -->
-     <script async type="module" src="animation.js"></script>
-     <link rel="preload" href="animation.js" as="script" crossorigin></link>
+  <!-- Async modules will run as soon as they are loaded -->
+  <script async type="module" src="animation.js"></script>
+  <link rel="preload" href="animation.js" as="script" crossorigin></link>
 </head>
 ```
 
@@ -53,27 +55,27 @@ You can hook to a `connected` event from a custom element inside a component: th
 
 ```js
 customElements.define(
-	'enhance-parent',
-	class extends HTMLElement {
-		connectedCallback() {
-			console.log('connected', this.innerHTML)
-		}
-		disconnectCallback() {
-			console.log('disconnected', this.innerHTML)
-		}
-	},
+  'enhance-parent',
+  class extends HTMLElement {
+    connectedCallback() {
+      console.log('connected', this.innerHTML)
+    }
+    disconnectCallback() {
+       console.log('disconnected', this.innerHTML)
+    }
+  },
 )
 ```
 
 ```html
 <div class="gallery">
-	<!-- ... content -->
+  <!-- ... content -->
 
-	<!--
+  <!--
          👇 This will trigger a 'connected' event:
          by the time this loads, I can be sure that all the content in "gallery" will have loaded
      -->
-	<enhance-parent></enhance-parent>
+  <enhance-parent></enhance-parent>
 </div>
 ```
 
@@ -81,14 +83,14 @@ customElements.define(
 
 ```js
 new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
+  mutations.forEach((mutation) => {
 
-      // I can observe the changes in the DOM here
-       console.log(mutation.addedNodes.length)
-     })
+    // I can observe the changes in the DOM here
+    console.log(mutation.addedNodes.length)
+  })
 }).observe(document.body, {
-childList: true,
-subtree: true,
+  childList: true,
+  subtree: true,
 }
 ```
 
@@ -102,7 +104,7 @@ div.append(document.createElement('p'))
 document.body.append(div)
 ```
 
-- WHereas The following code will log 2 events, because the `div` is added to the `document.body`, which means that the MutationObserver can observe its changes
+- Whereas The following code will log 2 events, because the `div` is added to the `document.body`, which means that the MutationObserver can observe its changes
 
 ```js
 const div = document.createElement('div')
@@ -112,6 +114,5 @@ div.append(document.createElement('p'))
 
 ## Resources
 
-[DOM ready events considered harmful | HTTP 203](https://www.youtube.com/watch?v=_iq1fPjeqMQ)
-[MDN - Using custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements)
-[MDN- MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+- [MDN - Using custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements)
+- [MDN- MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
