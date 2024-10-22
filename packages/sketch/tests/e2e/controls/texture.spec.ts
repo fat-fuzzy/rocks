@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test'
 import gfx from '@fat-fuzzy/gfx'
 
-const sketches = gfx.gl.sketches
+const sketches = gfx.gl.sketches.learning
 	.filter((sketch) => sketch.meta.controls.includes('texture'))
 	.map((sketch) => sketch.meta)
 let previousEvent
