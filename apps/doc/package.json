@@ -50,7 +50,7 @@
 		"rollup-plugin-scss": "^4.0.0",
 		"sass": "^1.77.8",
 		"svelte": "5.0.5",
-		"svelte-check": "^3.8.4",
+		"svelte-check": "^4.0.5",
 		"svelte-preprocess": "^5.1.4",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.3",
