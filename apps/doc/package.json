@@ -34,7 +34,7 @@
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@fat-fuzzy/validation": "workspace:*",
-		"@playwright/test": "^1.46.1",
+		"@playwright/test": "^1.48.1",
 		"@sveltejs/adapter-cloudflare": "^4.7.3",
 		"@sveltejs/enhanced-img": "^0.3.3",
 		"@sveltejs/kit": "^2.5.4",
