@@ -64,8 +64,8 @@ importers:
         specifier: ^1.46.1
         version: 1.46.1
       '@sveltejs/adapter-cloudflare':
-        specifier: ^4.6.1
-        version: 4.7.2(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
+        specifier: ^4.7.3
+        version: 4.7.3(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
       '@sveltejs/enhanced-img':
         specifier: ^0.3.3
         version: 0.3.3(rollup@4.24.0)(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3))
@@ -354,8 +354,8 @@ importers:
         specifier: ^1.46.1
         version: 1.46.1
       '@sveltejs/adapter-cloudflare':
-        specifier: ^4.6.1
-        version: 4.7.2(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
+        specifier: ^4.7.3
+        version: 4.7.3(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
       '@sveltejs/kit':
         specifier: ^2.5.4
         version: 2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3))
@@ -405,8 +405,8 @@ importers:
         specifier: ^1.46.1
         version: 1.46.1
       '@sveltejs/adapter-cloudflare':
-        specifier: ^4.6.1
-        version: 4.7.2(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
+        specifier: ^4.7.3
+        version: 4.7.3(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
       '@sveltejs/kit':
         specifier: ^2.5.4
         version: 2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3))
@@ -517,8 +517,8 @@ importers:
         specifier: ^1.46.1
         version: 1.46.1
       '@sveltejs/adapter-cloudflare':
-        specifier: ^4.6.1
-        version: 4.7.2(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
+        specifier: ^4.7.3
+        version: 4.7.3(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
       '@sveltejs/enhanced-img':
         specifier: ^0.3.3
         version: 0.3.3(rollup@4.24.0)(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3))
@@ -1757,8 +1757,8 @@ packages:
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
 
-  '@sveltejs/adapter-cloudflare@4.7.2':
-    resolution: {integrity: sha512-zdFtQ2nzVHvc3OweA3zF2+WgSRUW536kKGPzfdRmWo/+UbvwAXB3c3pB66/JaypkxWTIhxz1umshtw5eHWyx/w==}
+  '@sveltejs/adapter-cloudflare@4.7.3':
+    resolution: {integrity: sha512-mHw0Jvd+74jj8fkduA8jrVXgsCY3+NwDc7FrDUiwU1Qe5QEuqPUab8Lv+np+4afEuMtFNytxUJsiiWlNN2w10w==}
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
       wrangler: ^3.28.4
@@ -7627,7 +7627,7 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
-  '@sveltejs/adapter-cloudflare@4.7.2(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))':
+  '@sveltejs/adapter-cloudflare@4.7.3(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))':
     dependencies:
       '@cloudflare/workers-types': 4.20240725.0
       '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.238)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3))
@@ -7635,7 +7635,7 @@ snapshots:
       worktop: 0.8.0-next.18
       wrangler: 3.67.1(@cloudflare/workers-types@4.20240725.0)
 
-  '@sveltejs/adapter-cloudflare@4.7.2(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))':
+  '@sveltejs/adapter-cloudflare@4.7.3(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))':
     dependencies:
       '@cloudflare/workers-types': 4.20240725.0
       '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.13)(sass@1.77.8)(terser@5.31.3))
@@ -7643,7 +7643,7 @@ snapshots:
       worktop: 0.8.0-next.18
       wrangler: 3.67.1(@cloudflare/workers-types@4.20240725.0)
 
-  '@sveltejs/adapter-cloudflare@4.7.2(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))':
+  '@sveltejs/adapter-cloudflare@4.7.3(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))':
     dependencies:
       '@cloudflare/workers-types': 4.20240725.0
       '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@4.0.0-next.5(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3)))(svelte@5.0.0-next.264)(vite@5.3.5(@types/node@20.14.15)(sass@1.77.8)(terser@5.31.3))
@@ -8420,7 +8420,7 @@ snapshots:
   code-red@1.0.4:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       acorn: 8.12.1
       estree-walker: 3.0.3
       periscopic: 3.1.0
@@ -11239,7 +11239,7 @@ snapshots:
 
   periscopic@3.1.0:
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       estree-walker: 3.0.3
       is-reference: 3.0.2
 
@@ -12657,7 +12657,7 @@ snapshots:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
       '@jridgewell/trace-mapping': 0.3.25
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       acorn: 8.12.1
       aria-query: 5.3.2
       axobject-query: 4.1.0
