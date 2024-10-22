@@ -44,7 +44,7 @@
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "^1.46.1",
-		"@sveltejs/adapter-cloudflare": "^4.6.1",
+		"@sveltejs/adapter-cloudflare": "^4.7.3",
 		"@sveltejs/kit": "^2.5.4",
 		"@sveltejs/package": "^2.3.4",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.5",
