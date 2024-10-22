@@ -40,7 +40,7 @@
 	"devDependencies": {
 		"@cobalt-ui/cli": "1.11.0",
 		"@cobalt-ui/plugin-css": "1.7.3",
-		"@csstools/postcss-bundler": "^1.0.15",
+		"@csstools/postcss-bundler": "^2.0.3",
 		"@csstools/postcss-global-data": "^3.0.0",
 		"@csstools/postcss-minify": "^2.0.2",
 		"@fat-fuzzy/config": "workspace:*",
