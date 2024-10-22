@@ -39,7 +39,7 @@
 	},
 	"devDependencies": {
 		"@cobalt-ui/cli": "1.11.3",
-		"@cobalt-ui/plugin-css": "1.7.3",
+		"@cobalt-ui/plugin-css": "1.7.5",
 		"@csstools/postcss-bundler": "^2.0.3",
 		"@csstools/postcss-global-data": "^3.0.0",
 		"@csstools/postcss-minify": "^2.0.2",

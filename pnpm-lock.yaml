@@ -447,8 +447,8 @@ importers:
         specifier: 1.11.3
         version: 1.11.3
       '@cobalt-ui/plugin-css':
-        specifier: 1.7.3
-        version: 1.7.3(@cobalt-ui/cli@1.11.3)
+        specifier: 1.7.5
+        version: 1.7.5(@cobalt-ui/cli@1.11.3)
       '@csstools/postcss-bundler':
         specifier: ^2.0.3
         version: 2.0.3(postcss@8.4.47)
@@ -739,10 +739,10 @@ packages:
   '@cobalt-ui/core@1.11.3':
     resolution: {integrity: sha512-zK7gSAtErZvFpFWP5am86BKqheE4bFt6vWQ2KpUQI1r6BowKYT5gsJXWsqT2UAd9wgRmBk+3mLSajokJcpoEDQ==}
 
-  '@cobalt-ui/plugin-css@1.7.3':
-    resolution: {integrity: sha512-e0okljQXwlmJM0IDUxakcecg0vb1Hen9rQjLxJoru58WpgpWtmWLJUyhG/YMMKeIA7FXb6dqa3beofHMahfFJw==}
+  '@cobalt-ui/plugin-css@1.7.5':
+    resolution: {integrity: sha512-U9t+mjTyx7hjJO5FlaBmIIBRkT0XfrAdB7MdpXtX94DsqcLwKLwccxB0tZd8aXSsxYc0yjAq4t+xa3ZJTNnKDg==}
     peerDependencies:
-      '@cobalt-ui/cli': ^1.x
+      '@cobalt-ui/cli': ^1.11.0
 
   '@cobalt-ui/utils@1.2.6':
     resolution: {integrity: sha512-dlSU76WAUTUDt1nA1qAFb9tDSNMsPvBcPeL/oRFYDVK91auxB8SlncsAasOSILfRe4waSvYJAy5wWYanrzf25A==}
@@ -2658,10 +2658,6 @@ packages:
   cssstyle@4.0.1:
     resolution: {integrity: sha512-8ZYiJ3A/3OkDd093CBT/0UKDWry7ak4BdPTFP2+QEP7cmhouyq/Up709ASSj2cK02BbZiMgk7kYjZNS4QP5qrQ==}
     engines: {node: '>=18'}
-
-  culori@3.3.0:
-    resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   culori@4.0.1:
     resolution: {integrity: sha512-LSnjA6HuIUOlkfKVbzi2OlToZE8OjFi667JWN9qNymXVXzGDmvuP60SSgC+e92sd7B7158f7Fy3Mb6rXS5EDPw==}
@@ -6772,13 +6768,13 @@ snapshots:
       scule: 1.3.0
       yaml: 2.5.0
 
-  '@cobalt-ui/plugin-css@1.7.3(@cobalt-ui/cli@1.11.3)':
+  '@cobalt-ui/plugin-css@1.7.5(@cobalt-ui/cli@1.11.3)':
     dependencies:
       '@cobalt-ui/cli': 1.11.3
       '@cobalt-ui/utils': 1.2.6
       '@types/culori': 2.1.1
       '@types/mime': 3.0.4
-      culori: 3.3.0
+      culori: 4.0.1
       mime: 3.0.0
       svgo: 3.3.2
 
@@ -8703,8 +8699,6 @@ snapshots:
     dependencies:
       rrweb-cssom: 0.6.0
     optional: true
-
-  culori@3.3.0: {}
 
   culori@4.0.1: {}
 
