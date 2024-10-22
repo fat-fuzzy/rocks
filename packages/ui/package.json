@@ -30,7 +30,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"dependencies": {
-		"dompurify": "^3.1.6"
+		"dompurify": "^3.1.7"
 	},
 	"peerDependencies": {
 		"@fat-fuzzy/config": "workspace:*",

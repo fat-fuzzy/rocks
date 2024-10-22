@@ -24,7 +24,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
-		"dompurify": "^3.1.6"
+		"dompurify": "^3.1.7"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
