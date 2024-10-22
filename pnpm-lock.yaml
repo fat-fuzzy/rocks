@@ -115,8 +115,8 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.47))(postcss@8.4.47)(sass@1.80.3)(svelte@5.0.5)(typescript@5.6.3)
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -172,8 +172,8 @@ importers:
         specifier: ^13.1.0
         version: 13.1.0(postcss@8.4.47)(stylelint@16.7.0(typescript@5.6.3))
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -246,8 +246,8 @@ importers:
         specifier: ^4.24.0
         version: 4.24.0
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -267,8 +267,8 @@ importers:
         specifier: workspace:*
         version: link:../config
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -291,8 +291,8 @@ importers:
         specifier: ^4.24.0
         version: 4.24.0
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -330,8 +330,8 @@ importers:
         specifier: ^4.24.0
         version: 4.24.0
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -375,8 +375,8 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.47))(postcss@8.4.47)(sass@1.80.3)(svelte@5.0.5)(typescript@5.6.3)
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -432,8 +432,8 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.47))(postcss@8.4.47)(sass@1.80.3)(svelte@5.0.5)(typescript@5.6.3)
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -550,8 +550,8 @@ importers:
         specifier: ^4.0.5
         version: 4.0.5(picomatch@2.3.1)(svelte@5.0.5)(typescript@5.6.3)
       tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
+        specifier: ^2.8.0
+        version: 2.8.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -6041,8 +6041,8 @@ packages:
   tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==}
 
-  tslib@2.6.3:
-    resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
+  tslib@2.8.0:
+    resolution: {integrity: sha512-jWVzBLplnCmoaTr13V9dYbiQ99wvZRd0vNWaDRg+aVYRcjDF3nDksxFDE/+fkXnKhpnUUkmx5pK/v8mCtLVqZA==}
 
   turbo-darwin-64@2.0.9:
     resolution: {integrity: sha512-owlGsOaExuVGBUfrnJwjkL1BWlvefjSKczEAcpLx4BI7Oh6ttakOi+JyomkPkFlYElRpjbvlR2gP8WIn6M/+xQ==}
@@ -7092,7 +7092,7 @@ snapshots:
 
   '@emnapi/runtime@1.2.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.0
     optional: true
 
   '@esbuild-plugins/node-globals-polyfill@0.2.3(esbuild@0.17.19)':
@@ -8368,7 +8368,7 @@ snapshots:
   capnp-ts@0.7.0:
     dependencies:
       debug: 4.3.6
-      tslib: 2.6.3
+      tslib: 2.8.0
     transitivePeerDependencies:
       - supports-color
 
@@ -10433,7 +10433,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.0
 
   lru-cache@10.4.3: {}
 
@@ -10953,7 +10953,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.3
+      tslib: 2.8.0
 
   node-addon-api@3.2.1:
     optional: true
@@ -11193,7 +11193,7 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.0
 
   path-exists@3.0.0: {}
 
@@ -12019,7 +12019,7 @@ snapshots:
 
   rxjs@7.8.1:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.0
 
   sade@1.8.1:
     dependencies:
@@ -12684,7 +12684,7 @@ snapshots:
       minimist: 1.2.8
       strip-bom: 3.0.0
 
-  tslib@2.6.3: {}
+  tslib@2.8.0: {}
 
   turbo-darwin-64@2.0.9:
     optional: true
