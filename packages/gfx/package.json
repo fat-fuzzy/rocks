@@ -23,7 +23,7 @@
 		"@fat-fuzzy/config": "workspace:*",
 		"@rollup/plugin-json": "^6.1.0",
 		"@rollup/plugin-terser": "^0.4.4",
-		"rollup": "^4.22.4",
+		"rollup": "^4.24.0",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.3"
 	},
