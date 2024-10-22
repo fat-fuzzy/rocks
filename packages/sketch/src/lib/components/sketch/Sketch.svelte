@@ -335,7 +335,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../styles/scss/grid-sketch.scss';
-	@import '../../styles/css/grid-sketch.css';
-	@import '../../styles/css/sketch.css';
+	@forward '../../styles/scss/grid-sketch.scss';
+	@forward '../../styles/css/grid-sketch.css';
+	@forward '../../styles/css/sketch.css';
 </style>
