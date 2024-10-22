@@ -50,7 +50,7 @@
 		"postcss": "8.4.35",
 		"postcss-jit-props": "^1.0.14",
 		"postcss-preset-env": "^9.6.0",
-		"rollup": "^4.22.4",
+		"rollup": "^4.24.0",
 		"rollup-plugin-postcss": "^4.0.2",
 		"rollup-plugin-scss": "^4.0.0",
 		"sass": "^1.77.8"
