@@ -41,7 +41,7 @@
 		"@cobalt-ui/cli": "1.11.0",
 		"@cobalt-ui/plugin-css": "1.7.3",
 		"@csstools/postcss-bundler": "^1.0.15",
-		"@csstools/postcss-global-data": "^2.1.1",
+		"@csstools/postcss-global-data": "^3.0.0",
 		"@csstools/postcss-minify": "^1.1.5",
 		"@fat-fuzzy/config": "workspace:*",
 		"autoprefixer": "^10.4.19",
