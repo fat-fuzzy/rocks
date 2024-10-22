@@ -109,8 +109,8 @@ importers:
         specifier: 5.0.5
         version: 5.0.5
       svelte-check:
-        specifier: ^3.8.4
-        version: 3.8.4(postcss-load-config@3.1.4(postcss@8.4.35))(postcss@8.4.35)(sass@1.77.8)(svelte@5.0.5)
+        specifier: ^4.0.5
+        version: 4.0.5(picomatch@2.3.1)(svelte@5.0.5)(typescript@5.5.4)
       svelte-preprocess:
         specifier: ^5.1.4
         version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.35))(postcss@8.4.35)(sass@1.77.8)(svelte@5.0.5)(typescript@5.5.4)
@@ -369,8 +369,8 @@ importers:
         specifier: 5.0.5
         version: 5.0.5
       svelte-check:
-        specifier: ^3.8.4
-        version: 3.8.4(postcss-load-config@3.1.4(postcss@8.4.40))(postcss@8.4.40)(sass@1.77.8)(svelte@5.0.5)
+        specifier: ^4.0.5
+        version: 4.0.5(picomatch@2.3.1)(svelte@5.0.5)(typescript@5.5.4)
       svelte-preprocess:
         specifier: ^5.1.4
         version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.40))(postcss@8.4.40)(sass@1.77.8)(svelte@5.0.5)(typescript@5.5.4)
@@ -426,8 +426,8 @@ importers:
         specifier: 5.0.5
         version: 5.0.5
       svelte-check:
-        specifier: ^3.8.4
-        version: 3.8.4(postcss-load-config@3.1.4(postcss@8.4.40))(postcss@8.4.40)(sass@1.77.8)(svelte@5.0.5)
+        specifier: ^4.0.5
+        version: 4.0.5(picomatch@2.3.1)(svelte@5.0.5)(typescript@5.5.4)
       svelte-preprocess:
         specifier: ^5.1.4
         version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.40))(postcss@8.4.40)(sass@1.77.8)(svelte@5.0.5)(typescript@5.5.4)
@@ -547,8 +547,8 @@ importers:
         specifier: 5.0.5
         version: 5.0.5
       svelte-check:
-        specifier: ^3.8.4
-        version: 3.8.4(postcss-load-config@3.1.4(postcss@8.4.40))(postcss@8.4.40)(sass@1.77.8)(svelte@5.0.5)
+        specifier: ^4.0.5
+        version: 4.0.5(picomatch@2.3.1)(svelte@5.0.5)(typescript@5.5.4)
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -2324,6 +2324,10 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
+  chokidar@4.0.1:
+    resolution: {integrity: sha512-n8enUVCED/KVRQlab1hr3MVpcVMvxtZjmEa956u+4YijlmQED223XMSYj2tLuKvr4jcCTzNNMpQDUer72MMmzA==}
+    engines: {node: '>= 14.16.0'}
+
   ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
     engines: {node: '>=8'}
@@ -3119,6 +3123,14 @@ packages:
 
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
+
+  fdir@6.4.2:
+    resolution: {integrity: sha512-KnhMXsKSPZlAhp7+IjUkRZKPb4fUyccpDrdFXbi4QL1qkmFh9kVY09Yox+n4MaOb3lHZ1Tv829C3oaaXoMYPDQ==}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
 
   figures@2.0.0:
     resolution: {integrity: sha512-Oa2M9atig69ZkfwiApY8F2Yy+tzMbazyvqv21R0NsSC8floSOC09BbT1ITWAdoMGQvJ/aZnR1KMwdx9tvHnTNA==}
@@ -5282,6 +5294,10 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
+  readdirp@4.0.2:
+    resolution: {integrity: sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==}
+    engines: {node: '>= 14.16.0'}
+
   rechoir@0.6.2:
     resolution: {integrity: sha512-HFM8rkZ+i3zrV+4LQjwQ0W+ez98pApMGM3HUrN04j3CqzPOzl9nmP15Y8YXNm8QHGv/eacOVEjqhmWpkRV0NAw==}
     engines: {node: '>= 0.10'}
@@ -5805,11 +5821,13 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte-check@3.8.4:
-    resolution: {integrity: sha512-61aHMkdinWyH8BkkTX9jPLYxYzaAAz/FK/VQqdr2FiCQQ/q04WCwDlpGbHff1GdrMYTmW8chlTFvRWL9k0A8vg==}
+  svelte-check@4.0.5:
+    resolution: {integrity: sha512-icBTBZ3ibBaywbXUat3cK6hB5Du+Kq9Z8CRuyLmm64XIe2/r+lQcbuBx/IQgsbrC+kT2jQ0weVpZSSRIPwB6jQ==}
+    engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
-      svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
+      svelte: ^4.0.0 || ^5.0.0-next.0
+      typescript: '>=5.0.0'
 
   svelte-eslint-parser@0.41.0:
     resolution: {integrity: sha512-L6f4hOL+AbgfBIB52Z310pg1d2QjRqm7wy3kI1W6hhdhX5bvu7+f0R6w4ykp5HoDdzq+vGhIJmsisaiJDGmVfA==}
@@ -8322,6 +8340,10 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
+  chokidar@4.0.1:
+    dependencies:
+      readdirp: 4.0.2
+
   ci-info@3.9.0: {}
 
   clean-stack@2.2.0: {}
@@ -9369,6 +9391,10 @@ snapshots:
   fastq@1.17.1:
     dependencies:
       reusify: 1.0.4
+
+  fdir@6.4.2(picomatch@2.3.1):
+    optionalDependencies:
+      picomatch: 2.3.1
 
   figures@2.0.0:
     dependencies:
@@ -11768,6 +11794,8 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
+  readdirp@4.0.2: {}
+
   rechoir@0.6.2:
     dependencies:
       resolve: 1.22.8
@@ -12468,45 +12496,17 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@3.8.4(postcss-load-config@3.1.4(postcss@8.4.35))(postcss@8.4.35)(sass@1.77.8)(svelte@5.0.5):
+  svelte-check@4.0.5(picomatch@2.3.1)(svelte@5.0.5)(typescript@5.5.4):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
-      chokidar: 3.6.0
+      chokidar: 4.0.1
+      fdir: 6.4.2(picomatch@2.3.1)
       picocolors: 1.0.1
       sade: 1.8.1
       svelte: 5.0.5
-      svelte-preprocess: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.35))(postcss@8.4.35)(sass@1.77.8)(svelte@5.0.5)(typescript@5.5.4)
       typescript: 5.5.4
     transitivePeerDependencies:
-      - '@babel/core'
-      - coffeescript
-      - less
-      - postcss
-      - postcss-load-config
-      - pug
-      - sass
-      - stylus
-      - sugarss
-
-  svelte-check@3.8.4(postcss-load-config@3.1.4(postcss@8.4.40))(postcss@8.4.40)(sass@1.77.8)(svelte@5.0.5):
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.25
-      chokidar: 3.6.0
-      picocolors: 1.0.1
-      sade: 1.8.1
-      svelte: 5.0.5
-      svelte-preprocess: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.40))(postcss@8.4.40)(sass@1.77.8)(svelte@5.0.5)(typescript@5.5.4)
-      typescript: 5.5.4
-    transitivePeerDependencies:
-      - '@babel/core'
-      - coffeescript
-      - less
-      - postcss
-      - postcss-load-config
-      - pug
-      - sass
-      - stylus
-      - sugarss
+      - picomatch
 
   svelte-eslint-parser@0.41.0(svelte@5.0.5):
     dependencies:
