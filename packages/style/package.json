@@ -45,7 +45,7 @@
 		"@csstools/postcss-minify": "^2.0.2",
 		"@fat-fuzzy/config": "workspace:*",
 		"autoprefixer": "^10.4.20",
-		"glob": "^10.4.5",
+		"glob": "^11.0.0",
 		"postcss": "8.4.47",
 		"postcss-jit-props": "^1.0.14",
 		"postcss-preset-env": "^10.0.7",
