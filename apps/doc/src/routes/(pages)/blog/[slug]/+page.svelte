@@ -10,6 +10,7 @@
 	let title = $derived(post.title)
 	let description = $derived(post.description)
 	let html = $derived(post.html)
+	let slug = $derived(post.slug)
 	let series = $derived(
 		post.series
 			? post.series.items.map((id) =>
@@ -20,7 +21,7 @@
 	let seriesData = $derived(
 		series
 			? series.map((post) => ({
-					link: post.meta.slug,
+					link: slug,
 					title: post.meta.subtitle,
 				}))
 			: undefined,
@@ -49,9 +50,7 @@
 			</div>
 		{/snippet}
 		<article class="l:sidebar:md">
-			<div class="l:text:lg">
-				<EscapeHtml {html} />
-			</div>
+			<EscapeHtml id={slug} {html} size="lg" />
 		</article>
 	</PageMain>
 {/key}

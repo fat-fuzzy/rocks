@@ -16,6 +16,7 @@
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
+	let slug = $derived(markdown.meta.slug)
 	let media = $derived(brightness ? images[brightness] : images['day'])
 </script>
 
@@ -25,7 +26,7 @@
 	{/snippet}
 	<article class="l:sidebar:2xl">
 		<div class="l:side">
-			<EscapeHtml {html} />
+			<EscapeHtml id={slug} {html} size="lg" />
 		</div>
 		<div class="l:main:50">
 			<div class="l:center">

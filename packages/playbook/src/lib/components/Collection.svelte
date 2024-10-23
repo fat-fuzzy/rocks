@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
 	import type {Markdowns, Meta} from '$lib/props/types'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
@@ -44,7 +44,13 @@
 
 	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
-	let layoutClass = $derived(category === 'tokens' ? `l:stack:${size}` : category === 'recipes' ? `l:${layout}:lg` : `l:${layout}:${size}`)
+	let layoutClass = $derived(
+		category === 'tokens'
+			? `l:stack:${size}`
+			: category === 'recipes'
+				? `l:${layout}:lg`
+				: `l:${layout}:${size}`,
+	)
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
 </script>
 
@@ -83,19 +89,17 @@
 						{path}
 						{actionPath}
 						{redirect}
-						color = 'primary'
+						color="primary"
 						{meta}
-						categories = {[category]}
+						categories={[category]}
 					/>
 				{/key}
 			</aside>
 		{:else if tab === 'doc'}
 			<section class="l:main">
-				<div class="l:text:lg">
-					{#if children}
-						{@render children()}
-					{/if}
-				</div>
+				{#if children}
+					{@render children()}
+				{/if}
 			</section>
 			<aside class="l:side l:stack:md">
 				<PropsDoc {meta} />

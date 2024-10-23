@@ -17,14 +17,13 @@
 
 	let content = $derived($page.data.content)
 	let markdowns = $derived($page.data.markdowns)
+	let slug = $derived(content.meta.slug)
 </script>
 
 <PageMain {title} {description} size="md">
 	<article class="l:sidebar:md">
 		<section class="l:main">
-			<div class="l:text:lg snap:start">
-				<EscapeHtml html={content.html} />
-			</div>
+			<EscapeHtml id={slug} html={content.html} size="lg" />
 			{#each categories as category}
 				<PlaybookCollection
 					{category}
@@ -37,8 +36,10 @@
 					{content}
 				>
 					<EscapeHtml
+						id={`${slug}-${category}`}
 						html={markdowns.categories.find(({meta}) => meta.slug === category)
 							.html}
+						size="lg"
 					/>
 				</PlaybookCollection>
 			{/each}
