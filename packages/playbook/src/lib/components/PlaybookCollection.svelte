@@ -22,7 +22,17 @@
 		children?: Snippet
 	}
 
-	let {category, markdowns, content, path, actionPath, redirect, depth=1, isPage=true, children}: Props = $props()
+	let {
+		category,
+		markdowns,
+		content,
+		path,
+		actionPath,
+		redirect,
+		depth = 1,
+		isPage = true,
+		children,
+	}: Props = $props()
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
@@ -32,15 +42,16 @@
 		{category: 'layouts', items: ui.layouts},
 		{category: 'recipes', items: ui.recipes},
 	]
-	
+
 	let currentTab = $derived(playbookStore.currentTabs.ui || DEFAULT_TABS[0])
 
-	let items = $derived(components.find(({category: c}) => c === category)?.items ?? [])
+	let items = $derived(
+		components.find(({category: c}) => c === category)?.items ?? [],
+	)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
 	let description = $derived(`${title} | Doc`)
-
 </script>
 
 {#snippet collection()}
@@ -56,18 +67,24 @@
 		tab={currentTab.value}
 		redirect={$page.url.pathname}
 	>
-	{#if isPage}
-		<EscapeHtml html={content.html} />
-	{:else if children}
-		{@render children()}
-	{/if}	
+		{#if isPage}
+			<EscapeHtml id={content.meta.slug} html={content.html} size="lg" />
+		{:else if children}
+			{@render children()}
+		{/if}
 	</Collection>
 {/snippet}
 
 {#if isPage}
 	<PageMain pageName="UI" {title} {description} size="lg">
 		{#snippet header()}
-			<PlaybookHeader {title} meta={content.meta} {path} {actionPath} {redirect} />
+			<PlaybookHeader
+				{title}
+				meta={content.meta}
+				{path}
+				{actionPath}
+				{redirect}
+			/>
 		{/snippet}
 		{#key category}
 			{@render collection()}

@@ -8,8 +8,6 @@ const page = 'home'
 const {UiReveal, SettingsUpdate} = ui.forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
 
-export const prerender = false
-export const ssr = true
 const cssAnimations = [
 	{
 		slug: 'fat-fuzzy',
