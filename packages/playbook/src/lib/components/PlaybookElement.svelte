@@ -38,7 +38,13 @@
 
 <PageMain pageName="UI" {title} {description} size="lg">
 	{#snippet header()}
-		<PlaybookHeader {title} meta={content.meta} {path} {actionPath} {redirect} />
+		<PlaybookHeader
+			{title}
+			meta={content.meta}
+			{path}
+			{actionPath}
+			{redirect}
+		/>
 	{/snippet}
 
 	<Element
@@ -53,8 +59,6 @@
 		{redirect}
 		tab={currentTab.value}
 	>
-		<div class="l:text:lg">
-			<EscapeHtml html={content.html} />
-		</div>
+		<EscapeHtml id={content.meta.slug} html={content.html} size="lg" />
 	</Element>
 </PageMain>

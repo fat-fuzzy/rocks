@@ -7,16 +7,17 @@
 	const {EscapeHtml} = ui.headless
 	const {Picture} = ui.drafts
 
-	let images = $derived($page.data)
+	let images = $derived($page.data.images)
 
 	let app = fatFuzzyStore.app
-	
+
 	let brightness = $derived(app.settings?.brightness || '')
-	let markdown = $page.data.content
+	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
-	let media = $derived(brightness ? images[brightness]:  images['day'])
+	let slug = $derived(markdown.meta.slug)
+	let media = $derived(brightness ? images[brightness] : images['day'])
 </script>
 
 <PageMain {title} {description} size="md">
@@ -25,11 +26,11 @@
 	{/snippet}
 	<article class="l:sidebar:2xl">
 		<div class="l:side">
-				<EscapeHtml {html} />
+			<EscapeHtml id={slug} {html} />
 		</div>
 		<div class="l:main:50">
 			<div class="l:center">
-				<Picture {...media} dimensions="full"/>
+				<Picture {...media} dimensions="full" />
 			</div>
 		</div>
 	</article>

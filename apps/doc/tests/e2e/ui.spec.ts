@@ -5,7 +5,7 @@ const categories = [...utils.categories.ready, ...utils.categories.draft]
 // const blocks = [...utils.blocks.ready, ...utils.blocks.draft]
 
 categories.forEach(async (category) => {
-	test(`UI page navigation works as expected: ${category} link`, async ({
+	test(`UI categories navigation works as expected: ${category} link`, async ({
 		page,
 	}) => {
 		await page.goto(utils.categories.path())
@@ -21,7 +21,7 @@ categories.forEach(async (category) => {
 })
 
 utils.blocks.ready.forEach(async (block) => {
-	test(`UI page navigation works as expected: ${block} link`, async ({
+	test(`UI blocks navigation works as expected: ${block} link`, async ({
 		page,
 	}) => {
 		await page.goto(utils.blocks.path())
@@ -42,9 +42,7 @@ utils.blocks.ready.forEach(async (block) => {
 })
 
 utils.blocks.draft.forEach(async (block) => {
-	test(`UI page navigation works as expected: ${block} link`, async ({
-		page,
-	}) => {
+	test(`UI draft pages are not found: ${block} link`, async ({page}) => {
 		await page.goto(`${utils.blocks.path()}/${block}`)
 		await expect(
 			page.getByRole('heading', {level: 1, name: '404'}),
