@@ -1,10 +1,6 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
 
-// since there's no dynamic data here, we can prerender
-// it so that it gets served as a static asset in production
-export const prerender = false
-
 const page = 'blog'
 const markdowns = await pages.fetchMarkdowns(page)
 
