@@ -2,7 +2,7 @@
 	import DOMPurify from 'dompurify'
 	import {onMount} from 'svelte'
 
-	let {id, html, size}: {id: string; html: string; size: string} = $props()
+	let {id, html, size}: {id: string; html: string; size?: string} = $props()
 	let purify
 	let escaped: string | undefined = $state()
 

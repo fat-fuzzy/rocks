@@ -26,7 +26,7 @@
 	{/snippet}
 	<article class="l:sidebar:2xl">
 		<div class="l:side">
-			<EscapeHtml id={slug} {html} size="lg" />
+			<EscapeHtml id={slug} {html} />
 		</div>
 		<div class="l:main:50">
 			<div class="l:center">
