@@ -1,13 +1,10 @@
 import {error} from '@sveltejs/kit'
 import blog from '$data/blog'
 
-export const prerender = true
-export const ssr = true
-
 /**
  * Load data from markdown file based on route parameters
  * @param params Request parameters
- * @returns { title, year, rawHtml } frontmatter metadata and markdown content as a rawHtml string
+ * @returns post data
  */
 export const load = async ({params}) => {
 	const {slug} = params

@@ -1,33 +1,24 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
-import {dev} from '$app/environment'
-
-// we don't need any JS on this page, though we'll load
-// it in dev so that we get hot module replacement
-export const csr = dev
 
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production
-export const prerender = true
-export const ssr = true
+export const prerender = false
 
 const page = 'blog'
+const markdowns = await pages.fetchMarkdowns(page)
 
 export const load = async (event) => {
-	let content = await pages.fetchMarkdowns(page)
-
-	if (!content?.length) {
+	if (!markdowns?.length) {
 		throw error(404, {message: 'Not found'})
 	}
-	content = content[0]
+	let content = markdowns[0]
 
 	if (!content?.meta) {
 		throw error(404, {message: 'Not found'})
 	}
 
-	const data = {
+	return {
 		content,
 	}
-
-	return data
 }
