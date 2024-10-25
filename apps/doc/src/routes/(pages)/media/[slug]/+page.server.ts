@@ -1,9 +1,6 @@
 import {error} from '@sveltejs/kit'
 import images from '$data/images'
 
-export const prerender = 'auto'
-export const ssr = true
-
 export const load = async ({params}) => {
 	const {slug} = params
 

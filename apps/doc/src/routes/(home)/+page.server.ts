@@ -8,72 +8,74 @@ const page = 'home'
 const {UiReveal, SettingsUpdate} = ui.forms
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
 
-const cssAnimations = [
-	{
-		slug: 'fat-fuzzy',
-		count: 5,
-		sections: [
-			{title: 'Contents ✨', link: '', content: '', asset: 'sparkles'},
-			{title: 'Doc', link: 'doc', content: '', asset: 'usage'},
-			{title: 'UI', link: 'ui', content: '', asset: 'recipes'},
-			{title: 'Blog', link: 'blog', content: '', asset: 'default'},
-			{title: 'Play', link: 'play', content: '', asset: 'rainbow'},
-		],
-	},
-]
+const pageAssets = {
+	slug: 'fat-fuzzy',
+	name: 'Fat-Fuzzy',
+	count: 5,
+	sections: [
+		{
+			title: 'Contents ✨',
+			link: '',
+			content: '',
+			asset: 'sparkles',
+			image: undefined,
+		},
+		{
+			title: 'Doc',
+			link: 'doc',
+			content: '',
+			asset: 'usage',
+			image: undefined,
+		},
+		{
+			title: 'UI',
+			link: 'ui',
+			content: '',
+			asset: 'recipes',
+			image: undefined,
+		},
+		{
+			title: 'Blog',
+			link: 'blog',
+			content: '',
+			asset: 'default',
+			image: undefined,
+		},
+		{
+			title: 'Play',
+			link: 'play',
+			content: '',
+			asset: 'rainbow',
+			image: undefined,
+		},
+	],
+}
 
-async function loadAnimations() {
-	const animationData = cssAnimations.map(async ({slug, count, sections}) => {
-		const animationAssets: Promise<any>[] = []
-		for (let i = 0; i < count; i++) {
-			animationAssets.push(images.getImageData('home', `${slug}-${i + 1}`))
-		}
-		const assets = await Promise.all(animationAssets)
-		const mediaData = assets.map((asset, index) => {
-			return {
-				src: `/${asset.json.path}/${asset.json.file}`,
-				...asset.json,
-				sources: asset.json.sources,
-				content: sections[index],
-			}
-		})
-		return {
-			slug,
-			media: mediaData,
-			overlay: count === 0,
+async function loadSectionsContent(pageAssets) {
+	const assetPromises: Promise<any>[] = []
+	for (let i = 0; i < pageAssets.count; i++) {
+		assetPromises.push(
+			images.getImageData('home', `${pageAssets.slug}-${i + 1}`),
+		)
+	}
+	const assets = await Promise.all(assetPromises)
+	assets.forEach((asset, index) => {
+		pageAssets.sections[index].image = {
+			src: `/${asset.json.path}/${pageAssets.name}-${index + 1}`,
+			...asset.json,
+			sources: asset.json.sources,
 		}
 	})
-	const animations = await Promise.all(animationData)
-
-	return animations
+	return pageAssets.sections
 }
 
 export const load = async ({params}) => {
-	const imageSlug = '001-intro'
 	try {
-		const dayImageData = await images.getImageData('day', imageSlug)
-		const nightImageData = await images.getImageData('night', imageSlug)
-
-		if (!dayImageData?.json.sources || !nightImageData?.json.sources) {
-			error(404, 'Not found')
-		}
-		const animations = await loadAnimations()
 		const content = await pages.fetchMarkdowns(page)
-
+		const sections = await loadSectionsContent(pageAssets)
 		return {
-			animations,
-			day: {
-				src: `/${dayImageData.json.path}/${imageSlug}`,
-				...dayImageData.json,
-				sources: dayImageData.json.sources,
-			},
-			night: {
-				src: `/${nightImageData.json.path}/${imageSlug}`,
-				...nightImageData.json,
-				sources: nightImageData.json.sources,
-			},
-			// TODO: Implement a better way to handle this: HTTP error
 			content: content.length ? content[0] : {meta: {title: ''}},
+			sections,
 		}
 	} catch (e) {
 		error(500, 'Error loading image data')

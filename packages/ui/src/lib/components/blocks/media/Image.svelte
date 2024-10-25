@@ -29,4 +29,5 @@
 		.join(`, `)}
 	{loading}
 	{width}
+	{height}
 />

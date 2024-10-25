@@ -4,34 +4,40 @@
 			"path": ".",
 		},
 		{
+			"path": "packages/config",
+		},
+		{
+			"path": "packages/cz-changelog",
+		},
+		{
+			"path": "packages/gfx",
+		},
+		{
+			"path": "packages/git-poule",
+		},
+		{
+			"path": "packages/intl",
+		},
+		{
+			"path": "packages/lib",
+		},
+		{
+			"path": "packages/markdown",
+		},
+		{
+			"path": "packages/media",
+		},
+		{
 			"path": "packages/playbook",
 		},
 		{
 			"path": "packages/sketch",
 		},
 		{
-			"path": "packages/ui",
-		},
-		{
 			"path": "packages/style",
 		},
 		{
-			"path": "packages/lib",
-		},
-		{
-			"path": "packages/intl",
-		},
-		{
-			"path": "packages/config",
-		},
-		{
-			"path": "packages/git-poule",
-		},
-		{
-			"path": "packages/markdown",
-		},
-		{
-			"path": "packages/cz-changelog",
+			"path": "packages/ui",
 		},
 		{
 			"path": "packages/validation",
@@ -46,6 +52,46 @@
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",
 		},
+		"packages/config": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/cz-changelog": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/gfx": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/git-poule": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/intl": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/lib": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/markdown": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/media": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
 		"packages/playbook": {
 			"prettier.prettierPath": "./node_modules/prettier",
 			"editor.formatOnSave": true,
@@ -56,42 +102,17 @@
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",
 		},
-		"packages/ui": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
-		"packages/config": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
 		"packages/style": {
 			"prettier.prettierPath": "./node_modules/prettier",
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",
 		},
-		"packages/lib": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
-		"packages/git-poule": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
-		"packages/markdown": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
-		"packages/cz-changelog": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
 		"packages/validation": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/ui": {
 			"prettier.prettierPath": "./node_modules/prettier",
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",
