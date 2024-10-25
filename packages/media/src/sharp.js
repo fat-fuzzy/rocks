@@ -3,7 +3,7 @@
 // src: https://sharp.pixelplumbing.com/api-constructor
 import fs from 'node:fs'
 import got from 'got'
-import sharp from './sharp.js'
+import sharp from 'sharp'
 import config from './config.js'
 
 const sharpStream = sharp({failOn: 'none'})
@@ -20,15 +20,15 @@ const images = [
 	{
 		file: '001-intro',
 		ext: 'png',
-		width: 2732,
-		height: 2048,
+		width: 2647,
+		height: 1869,
 		path: 'images/day',
 	},
 	{
 		file: '001-intro',
 		ext: 'png',
-		width: 2732,
-		height: 2048,
+		width: 2647,
+		height: 1869,
 		path: 'images/night',
 	},
 	{
@@ -66,27 +66,27 @@ const images = [
 		height: 1708,
 		path: 'images/fat-fuzzy/all',
 	},
-	{
-		file: 'Fat-Fuzzy-color-1',
-		ext: 'png',
-		width: 2732,
-		height: 2048,
-		path: 'images/fat-fuzzy/color',
-	},
-	{
-		file: 'Fat-Fuzzy-color-2',
-		ext: 'png',
-		width: 2732,
-		height: 2048,
-		path: 'images/fat-fuzzy/color',
-	},
-	{
-		file: 'Fat-Fuzzy-color-3',
-		ext: 'png',
-		width: 2732,
-		height: 1708,
-		path: 'images/fat-fuzzy/color',
-	},
+	// {
+	// 	file: 'Fat-Fuzzy-color-1',
+	// 	ext: 'png',
+	// 	width: 2732,
+	// 	height: 2048,
+	// 	path: 'images/fat-fuzzy/color',
+	// },
+	// {
+	// 	file: 'Fat-Fuzzy-color-2',
+	// 	ext: 'png',
+	// 	width: 2732,
+	// 	height: 2048,
+	// 	path: 'images/fat-fuzzy/color',
+	// },
+	// {
+	// 	file: 'Fat-Fuzzy-color-3',
+	// 	ext: 'png',
+	// 	width: 2732,
+	// 	height: 1708,
+	// 	path: 'images/fat-fuzzy/color',
+	// },
 ]
 
 const host = 'http://localhost:5173'
@@ -137,6 +137,12 @@ function optimize(sharpStream, image, config) {
 			.png({quality: 100})
 			.toFile(`./out/${filePath}-${width}-${height}.${ext}`),
 	)
+	promises.push(
+		sharpStream
+			.clone()
+			.png({quality: 100})
+			.toFile(`./out/${filePath}-${width}-${height}.webp`),
+	)
 	// https://github.com/sindresorhus/got/blob/main/documentation/3-streams.md
 	got.stream(`${host}/${filePath}-${width}-${height}.${ext}`).pipe(sharpStream)
 
@@ -156,6 +162,7 @@ function optimize(sharpStream, image, config) {
 			console.error("Error processing files, let's clean it up", err)
 			try {
 				fs.unlinkSync(`./out/${path}/${file}-${width}-${height}.${ext}`)
+				fs.unlinkSync(`./out/${path}/${file}-${width}-${height}.webp`)
 
 				srcset.forEach((src) => {
 					fs.unlinkSync(`./out/${path}/${file}-${src.width}.${ext}`)
@@ -165,8 +172,10 @@ function optimize(sharpStream, image, config) {
 		})
 }
 
+// Generate images 0 to 7 (10)
+// Generate images 0 to 10
 function main() {
-	optimize(sharpStream, images[3], config)
+	optimize(sharpStream, images[7], config)
 }
 
 export default main()
