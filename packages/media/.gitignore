@@ -11,5 +11,4 @@ vite.config.ts.timestamp-*
 
 ## Ignode Sharp output
 
-/src/images/out/
-/src/images/fat-fuzzy/
+out/images/*
