@@ -24,25 +24,13 @@
 	block-size: 100%;
 	inline-size: auto;
 	max-inline-size: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
 	.scroll\:item {
-		background-position: center calc(var(--size-ratio-md) * var(--ui-size-lg));
-	}
-}
-
-.scroll\:item.overlay {
-	position: fixed;
-}
-
-.scroll\:item .overlay {
-	position: absolute;
-	top: var(--ui-size);
-	left: 50%;
-	transform: translate(-50%, 0);
-
-	&.place\:end {
-		bottom: var(--ui-size);
+		justify-content: flex-start;
 	}
 }

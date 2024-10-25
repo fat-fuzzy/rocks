@@ -20,8 +20,12 @@
 
 	let brightness = $derived(app.settings.brightness)
 	let contrast = $derived(app.settings.contrast)
-	let pageClass = $derived(ui.utils.format.getClassNameFromPathname($page.url.pathname))
-	let themeClass = $derived(`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`)
+	let pageClass = $derived(
+		ui.utils.format.getClassNameFromPathname($page.url.pathname),
+	)
+	let themeClass = $derived(
+		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
+	)
 	let footerClass = 'card:xs'
 	let aboutContainerClass = $derived(pageClass === 'page:home' ? 'card:xl' : '')
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
@@ -40,7 +44,7 @@
 	}
 
 	onMount(() => {
-		if($page.data.settings) {
+		if ($page.data.settings) {
 			fatFuzzyStore.app.settings = $page.data.settings
 		}
 	})
@@ -54,9 +58,16 @@
 		path={$page.url.pathname}
 		actionPath="/"
 		redirect={$page.url.pathname}
-		items={{settings: {switch: ui.constants.APP_SETTINGS.switch, links:[], onupdate: updateSettings}}}
+		items={{
+			settings: {
+				switch: ui.constants.APP_SETTINGS.switch,
+				links: [],
+				onupdate: updateSettings,
+			},
+		}}
 		breakpoint="sm"
-		app={fatFuzzyStore.app}/>
+		app={fatFuzzyStore.app}
+	/>
 	<main id="main">
 		{#if children}
 			{@render children()}
@@ -66,13 +77,19 @@
 	</main>
 
 	<footer class={footerClass}>
-			<details class={`l:burrito:3xl color:neutral font:md maki:block:xl ${aboutContainerClass}`} open={footerOpen}>
-				<summary class="card:2xs">About</summary>
-				<p>
-					Made with 🩷 by <a href="https://github.com/patiboh" target="_blank"
-					rel="noopener">@patiboh</a>
-				</p>
-				<div class="rc-scout"></div>
-			</details>
+		<details
+			class={`l:burrito:3xl color:neutral font:md maki:block:xl ${aboutContainerClass}`}
+			open={footerOpen}
+		>
+			<summary class="card:2xs">About</summary>
+			<p>
+				Made with 🩷 by <a
+					href="https://github.com/patiboh"
+					target="_blank"
+					rel="noopener">@patiboh</a
+				>
+			</p>
+			<div class="rc-scout"></div>
+		</details>
 	</footer>
 </div>

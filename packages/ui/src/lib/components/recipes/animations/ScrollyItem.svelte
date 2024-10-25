@@ -32,10 +32,7 @@
 	})
 </script>
 
-<li
-	bind:this={observedArea}
-	class={`${animations} scroll:item snap:start l:flex align:center`}
->
+<li class={`${animations} scroll:item snap:center`}>
 	<div class="l:burrito:xl">
 		{#if item.link}
 			<div class={`card:xs text:center surface:4:${variant}`}>
@@ -55,7 +52,7 @@
 		{/if}
 	</div>
 	{#if item.image}
-		<div class="w:full col:center maki:block">
+		<div class="w:full col:center">
 			<Picture {...item.image} />
 		</div>
 	{/if}
