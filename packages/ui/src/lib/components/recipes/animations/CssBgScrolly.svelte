@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {ScrollyProps} from '$types'
+	import type {ScrollyItemProps} from '$types'
 	import ScrollyItem from './ScrollyItem.svelte'
 
 	let {
@@ -10,8 +10,14 @@
 		animations = ['fade'],
 		dimensions,
 		items,
-	}: ScrollyProps = $props()
-
+	}: {
+		title?: string
+		level?: number
+		fixed?: boolean
+		dimensions?: string
+		animations?: string[]
+		items: ScrollyItemProps[]
+	} = $props()
 	let prevRatio = $state(0.0)
 	let nestedLevel = $derived(level && title ? level + 1 : level ? level : 2)
 	let scrollArea: HTMLElement | undefined = $state()
@@ -38,7 +44,7 @@
 		entries.forEach((entry) => {
 			let element = entry.target
 
-			if (entry.intersectionRatio > 0.25) {
+			if (entry.intersectionRatio > 0.3) {
 				animations.forEach((animation) => {
 					element.classList.add(`${animation}:in`)
 					element.classList.remove(`${animation}:out`)

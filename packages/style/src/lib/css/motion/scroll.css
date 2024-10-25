@@ -11,12 +11,12 @@
 
 .snap\:start {
 	scroll-snap-align: start;
-	scroll-snap-stop: always;
+	scroll-snap-stop: normal;
 	scroll-padding-block-start: var(--ui-size);
 }
 
 .snap\:center {
 	scroll-snap-align: center;
-	scroll-snap-stop: always;
+	scroll-snap-stop: normal;
 	scroll-padding-block: var(--ui-size);
 }

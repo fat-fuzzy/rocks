@@ -21,9 +21,15 @@
 }
 
 .scroll\:item {
+	--image-url: url(../images/plants.png);
+	position: relative;
 	block-size: 100%;
 	inline-size: auto;
 	max-inline-size: 100%;
+	background-image: var(--image-url);
+	background-position: center calc(2 * var(--size-ratio-lg) * var(--ui-size-lg));
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 @media screen and (min-width: 768px) {
