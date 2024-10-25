@@ -19,12 +19,6 @@
 
 	let observedArea: HTMLElement | undefined = $state()
 
-	let classes = $derived(
-		item.overlay
-			? `${animations} overlay col:center scroll:item snap:start l:flex align:center`
-			: `${animations} scroll:item snap:start l:flex align:center`,
-	)
-
 	onMount(() => {
 		if (!observedArea) return
 		if (observer) {
@@ -38,13 +32,11 @@
 	})
 </script>
 
-<li bind:this={observedArea} class={classes}>
-	{#if item.image}
-		<div class="w:full col:center">
-			<Picture {...item.image} />
-		</div>
-	{/if}
-	<div class="overlay unstyled place:end l:burrito:xl">
+<li
+	bind:this={observedArea}
+	class={`${animations} scroll:item snap:start l:flex align:center`}
+>
+	<div class="l:burrito:xl">
 		{#if item.link}
 			<div class={`card:xs text:center surface:4:${variant}`}>
 				<a href={item.link} class={`card:xs h${level + 2} emoji:${item.asset}`}>
@@ -62,4 +54,9 @@
 			</div>
 		{/if}
 	</div>
+	{#if item.image}
+		<div class="w:full col:center maki:block">
+			<Picture {...item.image} />
+		</div>
+	{/if}
 </li>
