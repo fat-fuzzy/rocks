@@ -13,7 +13,7 @@
 
 <PageMain {title} {description} size="md" justify="center">
 	{#snippet header()}
-		<div class="w:full">
+		<div class="w:full surface:0:neutral">
 			<h1 class="card:md text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
