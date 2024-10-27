@@ -21,16 +21,25 @@
 }
 
 .scroll\:item {
-	block-size: 100%;
+	block-size: 85vh;
 	inline-size: auto;
 	max-inline-size: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	padding: 0;
+	line-height: 0;
+}
+
+.scroll\:item .media {
+	block-size: 100%;
+	max-inline-size: 100%;
+	margin-block: var(--size-base-2xl);
 }
 
 @media screen and (min-width: 768px) {
 	.scroll\:item {
 		justify-content: flex-start;
+	}
+
+	.scroll\:item .media {
+		margin-block: 0;
 	}
 }
