@@ -25,7 +25,7 @@ export type RevealMenuProps = RevealLayoutProps & {
 }
 
 export type SettingsMenuProps = UiBlockProps &
-	FormProps & {
+	Partial<FormProps> & {
 		id: string
 		path?: String
 		items: SwitchProps[]

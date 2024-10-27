@@ -1,19 +1,17 @@
 <script lang="ts">
-	import type { RevealLayoutProps} from '$types'
-	import {enhance} from '$app/forms'
+	import type {RevealLayoutProps} from '$types'
 	import {clickOutside} from '$lib/utils/click-outside.js'
-	import {UiState} from '$lib/types/enums.js'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
-	const { ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE} = constants
+	const {ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE} = constants
 
 	let {
 		id = 'reveal',
 		title = 'Reveal',
-		method = 'POST',
+		method = 'GET',
 		formaction,
 		actionPath,
 		redirect,
@@ -44,10 +42,13 @@
 
 	function toggleReveal(event) {
 		expanded = event.state
-		if (onclick) { onclick(event) }
+		if (onclick) {
+			onclick(event)
+		}
 	}
 
-	let layoutClasses = $derived(styleHelper.getLayoutStyles({
+	let layoutClasses = $derived(
+		styleHelper.getLayoutStyles({
 			color,
 			size,
 			height,
@@ -58,10 +59,13 @@
 			position,
 			breakpoint,
 			background,
-			layer
-		}))
+			layer,
+		}),
+	)
 
-	let revealClasses = $derived(`l:reveal ${layoutClasses} ${direction} ${expanded}`)
+	let revealClasses = $derived(
+		`l:reveal ${layoutClasses} ${direction} ${expanded}`,
+	)
 	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : '' // TODO: fix this
 
 	let revealStates = {
@@ -77,18 +81,18 @@
 		},
 	}
 
-	let action =
-		$derived(formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction ? formaction : '')
+	let action = $derived(
+		formaction && redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+				? formaction
+				: '',
+	)
 </script>
 
-<form {method}
+<form
+	{method}
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-	use:enhance={() => {
-		// prevent default callback from resetting the form
-		return ({update}) => {
-			update({reset: false})
-		}
-	}}
 	class={revealClasses}
 >
 	<Expand
@@ -103,7 +107,7 @@
 		value={'menu'}
 		{asset}
 		initial={expanded}
-		text= 'Reveal'
+		text="Reveal"
 		place={placeIcon}
 		onclick={toggleReveal}
 		states={revealStates}

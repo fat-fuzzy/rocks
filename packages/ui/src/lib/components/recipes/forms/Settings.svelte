@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {SettingsProps} from '$types'
-	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
@@ -10,7 +9,7 @@
 
 	let {
 		id = 'settings',
-		method = 'POST',
+		method = 'GET',
 		breakpoint = 'xs',
 		background,
 		layout,
@@ -63,12 +62,6 @@
 		action={revealAction && actionPath
 			? `${actionPath}?/${revealAction}`
 			: `?/${revealAction}`}
-		use:enhance={() => {
-			// prevent default callback from resetting the form
-			return ({update}) => {
-				update({reset: false})
-			}
-		}}
 		class={revealClasses}
 	>
 		<Expand
@@ -104,6 +97,7 @@
 						target="_blank"
 						rel="noreferrer"
 						{title}
+						aria-label={title}
 					>
 					</a>
 				</li>
