@@ -34,15 +34,15 @@
 
 <li bind:this={observedArea} class={`${animations} scroll:item snap:start`}>
 	{#if item.link}
-		<a href={item.link} class="card:xs">
-			<div class="l:burrito:lg">
-				<div
-					class={`title card:xs text:center surface:4:${variant} h${level + 2} emoji:${item.asset}`}
-				>
+		<div class="l:burrito:lg">
+			<div
+				class={`card:xs font:lg text:center surface:4:${variant} emoji:${item.asset}`}
+			>
+				<a href={item.link} class={`h${level + 2}`}>
 					{item.title}
-				</div>
+				</a>
 			</div>
-		</a>
+		</div>
 	{:else if item.title}
 		<div class={`card:lg text:center`}>
 			<svelte:element
