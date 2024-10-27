@@ -32,27 +32,29 @@
 	})
 </script>
 
-<li class={`${animations} scroll:item snap:center`}>
-	<div class="l:burrito:xl">
-		{#if item.link}
-			<div class={`card:xs text:center surface:4:${variant}`}>
-				<a href={item.link} class={`card:xs h${level + 2} emoji:${item.asset}`}>
-					{item.title}
-				</a>
-			</div>
-		{:else if item.title}
-			<div class={`card:lg text:center`}>
-				<svelte:element
-					this={`h${level}`}
-					class={`emoji:${item.asset} h${level + 1}`}
+<li bind:this={observedArea} class={`${animations} scroll:item snap:start`}>
+	{#if item.link}
+		<a href={item.link} class="card:xs">
+			<div class="l:burrito:lg">
+				<div
+					class={`title card:xs text:center surface:4:${variant} h${level + 2} emoji:${item.asset}`}
 				>
 					{item.title}
-				</svelte:element>
+				</div>
 			</div>
-		{/if}
-	</div>
+		</a>
+	{:else if item.title}
+		<div class={`card:lg text:center`}>
+			<svelte:element
+				this={`h${level}`}
+				class={`emoji:${item.asset} h${level + 1}`}
+			>
+				{item.title}
+			</svelte:element>
+		</div>
+	{/if}
 	{#if item.image}
-		<div class="w:full col:center">
+		<div class="media w:full col:center">
 			<Picture {...item.image} />
 		</div>
 	{/if}
