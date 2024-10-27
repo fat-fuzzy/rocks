@@ -8,7 +8,7 @@ export type SettingsItems = {
 }
 
 export type SettingsProps = UiBlockProps &
-	FormProps & {
+	Partial<FormProps> & {
 		breakpoint: string
 		id: string
 		path?: String
