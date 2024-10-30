@@ -13,3 +13,5 @@ vite.config.ts.timestamp-*
 
 /src/images/out/
 /src/images/fat-fuzzy/
+
+/src/data

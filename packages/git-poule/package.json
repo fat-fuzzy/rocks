@@ -2,7 +2,7 @@
 	"name": "@fat-fuzzy/git-poule",
 	"version": "0.1.4",
 	"description": "Script to extract commit data from local git history",
-	"main": "index.js",
+	"main": "index.cjs",
 	"scripts": {
 		"test": "echo \"@fat-fuzzy/git-poule: no tests specified\""
 	},

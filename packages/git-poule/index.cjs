@@ -6,10 +6,7 @@ const shell = require('shelljs')
 const fs = require('fs')
 
 const COMMIT_HISTORY_FILE = 'commit-history.txt'
-const COMMITS_JSON = 'commits.json'
-const COMMITS_CSV = 'commits.csv'
 const CZ_CONFIG_FILE = '.czrc'
-let COMMIT_TYPES = []
 
 if (!shell.which('git')) {
 	shell.echo('Sorry, this script requires git')
@@ -52,28 +49,30 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 
 	const scopes = [
 		'all',
-		'root',
 		'apps',
-		'sandbox',
 		'client',
-		'play',
-		'doc',
-		'packages',
 		'config',
+		'cz-changelog',
 		'design',
-		'git-poule',
-		'lib',
+		'doc',
 		'gfx',
-		'markdown',
-		'ui',
+		'git-poule',
 		'infra',
+		'intl',
+		'lib',
+		'markdown',
+		'media',
 		'resources',
+		'root',
+		'sandbox',
 		'sketch',
 		'style',
+		'packages',
+		'play',
 		'playbook',
+		'ui',
 		'validation',
 		'validate',
-		'intl',
 	]
 	const commitData = [
 		[
