@@ -12,7 +12,7 @@
 	let {
 		id = 'reveal-auto',
 		title = 'RevealAuto',
-		method = 'GET',
+		method = 'POST',
 		reveal = 'collapsed',
 		element = 'div',
 		formaction,

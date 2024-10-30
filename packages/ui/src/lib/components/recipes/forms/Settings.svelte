@@ -9,7 +9,7 @@
 
 	let {
 		id = 'settings',
-		method = 'GET',
+		method = 'POST',
 		breakpoint = 'xs',
 		background,
 		layout,

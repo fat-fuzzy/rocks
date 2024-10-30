@@ -8,7 +8,7 @@
 
 	let {
 		id = 'settings',
-		method = 'GET',
+		method = 'POST',
 		background,
 		color = 'primary',
 		actionPath,
