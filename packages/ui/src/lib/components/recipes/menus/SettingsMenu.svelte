@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {SettingsMenuProps} from '$types'
+	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
 	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
@@ -75,6 +76,12 @@
 	action={settingsUpdateAction && actionPath
 		? `${actionPath}?/${settingsUpdateAction}`
 		: `?/${settingsUpdateAction}`}
+	use:enhance={() => {
+		// prevent default callback from resetting the form
+		return ({update}) => {
+			update({reset: false})
+		}
+	}}
 	class={`menu:settings ${formClasses}`}
 >
 	{#each items as { id, name, title, variant, shape, color, size, value, states }}
