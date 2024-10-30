@@ -31,3 +31,4 @@ To learn more about authentication best practices see: [OWASP Authentication Che
 ## Resources
 
 - [MDN - The Form Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
+- [chromium.org - Create Amazing Password Forms](https://www.chromium.org/developers/design-documents/create-amazing-password-forms/)
