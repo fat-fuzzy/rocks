@@ -11,7 +11,7 @@
 	let {
 		id = 'reveal',
 		title = 'Reveal',
-		method = 'GET',
+		method = 'POST',
 		formaction,
 		actionPath,
 		redirect,
