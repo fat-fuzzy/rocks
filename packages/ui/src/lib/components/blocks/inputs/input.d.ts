@@ -1,6 +1,7 @@
 import type {Snippet} from 'svelte'
 import type {
 	InputType,
+	Autocomplete,
 	FuzzyPayload,
 	UiBlockProps,
 	UiStatus,
@@ -39,6 +40,7 @@ export type InputCommonProps = {
 	name: string
 	label: string
 	placeholder?: string
+	autocomplete?: Autocomplete
 
 	/**
 	 * State props

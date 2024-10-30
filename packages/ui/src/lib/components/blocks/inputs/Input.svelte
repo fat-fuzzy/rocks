@@ -17,6 +17,7 @@
 		oninput,
 		disabled,
 		validator,
+		autocomplete,
 	}: InputProps = $props()
 
 	let errors = $derived(validator.getFieldErrors(name))
@@ -34,6 +35,7 @@
 		{onblur}
 		{oninput}
 		{disabled}
+		{autocomplete}
 	/>
 </label>
 
