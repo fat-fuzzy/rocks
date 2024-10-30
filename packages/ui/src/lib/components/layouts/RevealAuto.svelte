@@ -78,6 +78,12 @@
 		name={`${id}-reveal`}
 		{method}
 		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+		use:enhance={() => {
+			// prevent default callback from resetting the form
+			return ({update}) => {
+				update({reset: false})
+			}
+		}}
 		class={formClasses}
 	>
 		<Expand

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
+	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
@@ -93,6 +94,12 @@
 <form
 	{method}
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+	use:enhance={() => {
+		// prevent default callback from resetting the form
+		return ({update}) => {
+			update({reset: false})
+		}
+	}}
 	class={revealClasses}
 >
 	<Expand
