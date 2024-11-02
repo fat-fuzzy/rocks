@@ -3,6 +3,7 @@
 	import PlaybookStore from '$lib/api/store.svelte'
 
 	type Props = {
+		id?: string
 		title: string
 		name?: string
 		SpecifiedElement: any // TODO: fix types
@@ -11,7 +12,7 @@
 		redirect?: string
 	}
 
-	let {title, name, SpecifiedElement, props, actionPath, redirect}: Props =
+	let {id, title, name, SpecifiedElement, props, actionPath, redirect}: Props =
 		$props()
 
 	let page = ''
@@ -25,7 +26,7 @@
 </script>
 
 <SpecifiedElement
-	id={title}
+	id={id ?? title}
 	{page}
 	{title}
 	name={recipeName}

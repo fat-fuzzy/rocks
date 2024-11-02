@@ -1,5 +1,5 @@
 import ui from '@fat-fuzzy/ui'
-import type {Settings, UiRevealState} from '$types'
+import type {Settings} from '$types'
 
 const {DEFAULT_DS_STATE, TRANSITION_REVEAL} = ui.constants
 

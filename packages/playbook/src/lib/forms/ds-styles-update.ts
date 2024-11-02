@@ -2,12 +2,8 @@ import ui from '@fat-fuzzy/ui'
 import type {StyleTree} from '$lib/api/styles.types'
 import {initStyles} from '$lib/api/styles.api'
 
-const {
-	DEFAULT_REVEAL_STATE,
-	DEFAULT_APP_SETTINGS,
-	TRANSITION_REVEAL,
-	NUMBER_TO_SIZE,
-} = ui.constants
+const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, NUMBER_TO_SIZE} =
+	ui.constants
 
 class DsStylesUpdate {
 	api
@@ -29,6 +25,14 @@ class DsStylesUpdate {
 	 * Update UI library styles based on inputs
 	 */
 	enter(data: FormData) {
+		if (
+			data.has('ui-Header-menu-settings-menu-brightness') ||
+			data.has('ui-Header-menu-settings-menu-contrast')
+		) {
+			// TODO: fix this not doing anything
+			// return this.toggleSettingsUpdate(data)
+		}
+
 		const styleValues = []
 		let category
 		let family
@@ -36,10 +40,6 @@ class DsStylesUpdate {
 		let _
 
 		for (const [key, value] of data) {
-			if (key === 'reveal') {
-				this.settings.reveal = TRANSITION_REVEAL[this.settings.reveal]
-				return true
-			}
 			;[category, family, style, _] = key.split('.')
 			let styleValue = {[style]: value.toString()}
 			// FIXES: allows to enter range number values mapped to class names with no JS on client
@@ -72,6 +72,25 @@ class DsStylesUpdate {
 
 		this.api.applyStyles(styles)
 		return true
+	}
+
+	toggleSettingsUpdate(data: FormData) {
+		let updated = data
+			.get('ui-Header-menu-settings-menu-brightness')
+			?.toString()
+
+		if (updated) {
+			this.settings.brightness = updated
+			return true
+		}
+
+		updated = data.get('ui-Header-menu-settings-menu-contrast')?.toString()
+
+		if (updated) {
+			this.settings.contrast = updated
+			return true
+		}
+		return false
 	}
 
 	/**

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
+	import type {Snippet} from 'svelte'
 	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
@@ -54,10 +54,8 @@
 	}
 </script>
 
-
 <LayoutSidebar {nav} redirect={$page.url.pathname} {path} {app}>
 	{#if children}
 		{@render children()}
 	{/if}
 </LayoutSidebar>
-
