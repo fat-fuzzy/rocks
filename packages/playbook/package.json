@@ -2,7 +2,7 @@
 	"package": "@fat-fuzzy/playbook",
 	"name": "@fat-fuzzy/playbook",
 	"version": "0.1.6",
-	"description": "Fat Fuzzy Playbook / UI package explorer",
+	"description": "A UI library explorer and demo",
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"scripts": {
