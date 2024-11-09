@@ -1,6 +1,5 @@
 .page\:home main {
 	header {
-		position: fixed;
 		z-index: 1;
 		top: calc(var(--size-ui-header-height) - var(--scale-base-05));
 		left: 0;

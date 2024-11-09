@@ -16,7 +16,7 @@
 	let nestedLevel = $derived(level && title ? level + 1 : level ? level : 2)
 	let scrollArea: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
-	let frameClasses = $derived(dimensions ? ` l:frame:${dimensions}` : 'l:frame')
+	let frameClasses = $derived(dimensions ? ` l:frame:${dimensions}` : '')
 	let scrollContainerClasses = $derived(
 		fixed ? `fixed ${frameClasses}` : frameClasses,
 	)

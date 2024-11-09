@@ -7,7 +7,7 @@
 	justify-content: flex-end;
 	padding-inline: var(--gap);
 	color: var(--ink);
-	background-color: var(--shade);
+	background-color: transparent;
 }
 
 .header-settings .l\:reveal\:auto {

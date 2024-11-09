@@ -8,24 +8,27 @@
 	block-size: 100%;
 }
 
-.scroll\:container[class*='l:frame'] {
+.scroll\:container {
 	display: flex;
 	flex-direction: column;
 	gap: 20vh;
 	justify-content: space-between;
 	align-items: center;
 	inline-size: 100%;
-	block-size: 85vh;
 	overflow-y: auto;
 	scrollbar-color: var(--thumb) var(--track);
 }
 
 .scroll\:item {
-	block-size: 85vh;
 	inline-size: auto;
 	max-inline-size: 100%;
 	padding: 0;
+	min-block-size: 85vh;
 	line-height: 0;
+}
+
+.scroll\:container[class*='l:frame'] {
+	block-size: 85vh;
 }
 
 .scroll\:item .media {

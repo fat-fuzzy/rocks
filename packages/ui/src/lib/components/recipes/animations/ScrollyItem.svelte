@@ -54,7 +54,7 @@
 		</div>
 	{/if}
 	{#if item.image}
-		<div class="media w:full col:center">
+		<div class="media">
 			<Picture {...item.image} />
 		</div>
 	{/if}
