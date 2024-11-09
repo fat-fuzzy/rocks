@@ -159,4 +159,4 @@ apps/doc/static/fonts/*/*/stylesheet.css
 apps/play/static/fonts/
 
 # Working samples
-packages/_svtemplate
+_svtemplate

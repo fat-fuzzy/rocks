@@ -1,13 +1,15 @@
 <script lang="ts">
-	import { onMount, onDestroy, setContext } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 
 	import Menu from './Menu.svelte';
 
 	let element: Element;
+
+	// @ts-expect-error editor is not defined at this point but will be on mount
 	let editor: Editor = $state();
-	let { html } = $props();
+	let { html }: { html: string } = $props();
 	let commands = $state({
 		h1: false,
 		h2: false,

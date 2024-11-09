@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Editor } from '@tiptap/core';
-	let { editor, commands }: { editor: Editor; commands } = $props();
+	let { editor, commands }: { editor: Editor; commands: { [key: string]: boolean } } = $props();
 </script>
 
 <menu class="l:flex size:2xs card:2xs surface:1:neutral">
