@@ -1,5 +1,9 @@
-[class*='fade'] {
-	transition: opacity 300ms ease-in-out;
+[class*=':in'] {
+	transition: opacity 200ms ease-in-out 150ms;
+}
+
+[class*=':out'] {
+	transition: block-size 150ms ease-in-out;
 }
 
 .fade\:in {
@@ -8,10 +12,6 @@
 
 .fade\:out {
 	opacity: 0;
-}
-
-[class*='slide'] {
-	transition: block-size 300ms ease-in-out;
 }
 
 .slide\:in {
