@@ -5,7 +5,7 @@ export const load = async ({params}) => {
 	const {slug} = params
 
 	try {
-		const imageData = await images.getImageData('blog', slug)
+		const imageData = await images.getImageData('media', slug)
 
 		if (!imageData?.json.sources) {
 			error(404, 'Not found')
