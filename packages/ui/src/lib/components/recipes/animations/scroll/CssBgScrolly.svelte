@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {ScrollyItemProps} from '$types'
-	import ScrollyItem from './ScrollyItem.svelte'
+	import ScrollyItem from '../ScrollyItem.svelte'
 
 	let {
 		title,

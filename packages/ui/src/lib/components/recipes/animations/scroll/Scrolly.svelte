@@ -23,7 +23,7 @@
 
 	function buildThresholdList() {
 		let thresholds = []
-		const numSteps = 3.0
+		const numSteps = items.length - 1
 
 		for (let i = 1.0; i <= numSteps; i++) {
 			let ratio = i / numSteps

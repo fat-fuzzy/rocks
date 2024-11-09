@@ -2,7 +2,7 @@
 	import type {Snippet} from 'svelte'
 	import type {ScrollyItemProps} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
-	import Scrolly from '$lib/components/recipes/animations/Scrolly.svelte'
+	import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 
 	type Props = {
 		title: string
