@@ -9,18 +9,18 @@ import assetsUtils from './assets'
 
 const dayImagesPrefix = '/src/assets/images/day/'
 const nightImagesPrefix = '/src/assets/images/night/'
-const blogImagesPrefix = '/src/assets/images/blog/'
+const mediaImagesPrefix = '/src/assets/images/media/'
 const homeImagesPrefix = '/src/assets/images/home/'
 
 const dayImagesImports = import.meta.glob('/src/assets/images/day/*.json')
 const nightImagesImports = import.meta.glob('/src/assets/images/night/*.json')
-const blogImagesImports = import.meta.glob('/src/assets/images/blog/*.json')
+const mediaImagesImports = import.meta.glob('/src/assets/images/media/*.json')
 const homeImagesImports = import.meta.glob('/src/assets/images/home/*.json')
 
-const [day, night, blog, home] = await Promise.all([
+const [day, night, media, home] = await Promise.all([
 	assetsUtils.fetchJson(dayImagesPrefix, dayImagesImports),
 	assetsUtils.fetchJson(nightImagesPrefix, nightImagesImports),
-	assetsUtils.fetchJson(blogImagesPrefix, blogImagesImports),
+	assetsUtils.fetchJson(mediaImagesPrefix, mediaImagesImports),
 	assetsUtils.fetchJson(homeImagesPrefix, homeImagesImports),
 ])
 
@@ -30,8 +30,8 @@ export async function getImageData(folder: string, slug: string) {
 			return day.find((image: any) => image.path === slug)
 		case 'night':
 			return night.find((image: any) => image.path === slug)
-		case 'blog':
-			return blog.find((image: any) => image.path === slug)
+		case 'media':
+			return media.find((image: any) => image.path === slug)
 		case 'home':
 			return home.find((image: any) => image.path === slug)
 		default:
