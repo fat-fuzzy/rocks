@@ -59,6 +59,7 @@ import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte
  */
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
+import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
 
 /**
  * Draft components
@@ -156,6 +157,7 @@ const drafts = {
 	ScrollyItem,
 	HeaderSettings,
 	SettingsMenu,
+	PageScrolly,
 }
 
 const headless = {
