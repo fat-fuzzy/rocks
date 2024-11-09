@@ -18,5 +18,4 @@ export default {
 			},
 		},
 	],
-	ignorePath: '.prettierignore',
 }
