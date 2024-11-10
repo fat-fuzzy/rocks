@@ -28,18 +28,6 @@ export const handle = (async ({event, resolve}) => {
 	if (navRevealRecipes) {
 		event.locals.navRecipes = navRevealRecipes
 	}
-	if (navReveal) {
-		event.locals.nav = navReveal
-	}
-	if (navReveal) {
-		event.locals.nav = navReveal
-	}
-	if (navReveal) {
-		event.locals.nav = navReveal
-	}
-	if (navReveal) {
-		event.locals.nav = navReveal
-	}
 	if (sidebarReveal) {
 		event.locals.sidebar = sidebarReveal
 	}

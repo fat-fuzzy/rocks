@@ -43,7 +43,7 @@
 			li {
 				display: flex;
 				align-items: center;
-				justify-content: center;
+				justify-content: var(--justify, center);
 				border-inline-start: unset;
 				border-block-start: var(--border-width-xl) solid var(--shade);
 				inline-size: fit-content;

@@ -152,7 +152,11 @@ packages/style/src/tests/tmp/*
 packages/style/src/assets/fonts/
 packages/sketch/static/fonts/
 packages/ui/static/fonts
+packages/prose/static/fonts/
 packages/playbook/static/fonts
 apps/doc/static/fonts/*/*/demo.html
 apps/doc/static/fonts/*/*/stylesheet.css
 apps/play/static/fonts/
+
+# Working samples
+_svtemplate

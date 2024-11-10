@@ -15,7 +15,7 @@
 }
 
 .header-app .l\:reveal\:auto {
-	justify-content: center;
+	justify-content: var(--justify, center);
 	padding-block: var(--ui-size-sm);
 
 	> ul {

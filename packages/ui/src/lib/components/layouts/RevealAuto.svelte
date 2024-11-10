@@ -1,12 +1,11 @@
 <script lang="ts">
-	import type { RevealLayoutProps} from '$types'
+	import type {RevealLayoutProps} from '$types'
 	// import {clickOutside} from '$lib/utils/click-outside.js'
 	import {enhance} from '$app/forms'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import styleHelper from '$lib/utils/styles.js'
-
 
 	const {ALIGN_OPPOSITE} = constants
 
@@ -39,7 +38,9 @@
 
 	function toggleReveal(event) {
 		expanded = event.state
-		if (onclick) { onclick(event) }
+		if (onclick) {
+			onclick(event)
+		}
 	}
 
 	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
@@ -54,20 +55,25 @@
 			layout,
 			breakpoint,
 			background,
-			layer
+			layer,
 		}),
 	)
-	let elementClasses = $derived(
-		styleHelper.getElementStyles({justify}),
-	)
+	let elementClasses = $derived(styleHelper.getElementStyles({justify}))
 	let formClasses = $derived(`form:${expanded}`)
-	let revealClasses = $derived(`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses} ${elementClasses}`)
+	let revealClasses = $derived(
+		`l:reveal:auto align-self:${buttonAlign} ${expanded} ${layoutClasses} ${elementClasses}`,
+	)
 
-	let action =
-		$derived(formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction ? formaction : '')
+	let action = $derived(
+		formaction && redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction
+				? formaction
+				: '',
+	)
 </script>
 
-<svelte:element {id} this={element} class={revealClasses} aria-label={title}>
+<svelte:element this={element} {id} class={revealClasses} aria-label={title}>
 	<form
 		name={`${id}-reveal`}
 		{method}
@@ -94,10 +100,7 @@
 		>
 			{title}
 		</Expand>
-		<div
-			id={`reveal-auto-${id}`}
-			class="content"
-		>
+		<div id={`reveal-auto-${id}`} class="content">
 			{#if children}
 				{@render children()}
 			{/if}

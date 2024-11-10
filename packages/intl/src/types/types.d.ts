@@ -4,7 +4,7 @@ export type Message = string
 
 export type MessageFunction = (...args: (string | number)[]) => string
 
-export type Errors = {
+export type ErrorMessages = {
 	ERRORS: Record<string, string>
 	ERRORS_FUNCTIONS: Record<string, MessageFunction>
 }
@@ -14,7 +14,7 @@ export type Labels = {
 }
 
 export type L10nErrors = {
-	[locale in Locale]: Errors
+	[locale in Locale]: ErrorMessages
 }
 
 export type L10nLabels = {
@@ -25,7 +25,11 @@ export interface Formatter {
 	locale: string
 	errors: L10nErrors
 	labels: L10nLabels
-	getError(messages: Errors, key: string, ...args: (string | number)[]): Message
+	getError(
+		messages: ErrorMessages,
+		key: string,
+		...args: (string | number)[]
+	): Message
 
 	getErrorMessage(key: string, ...args: (string | number)[]): Message
 }

@@ -91,7 +91,7 @@ label:hover > [type='file'] {
 
 [type='range'][list='markers'] + datalist {
 	display: flex;
-	justify-content: space-between;
+	justify-content: var(--justify, space-between);
 	padding: 0 var(--ui-size);
 }
 

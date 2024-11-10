@@ -21,7 +21,6 @@
 	let settingsId = id
 	let appSettings = $state(DEFAULT_APP_SETTINGS)
 
-	let brightness = $state(appSettings.brightness)
 	function handleUpdate(payload) {
 		switch (payload.id) {
 			case 'brightness':

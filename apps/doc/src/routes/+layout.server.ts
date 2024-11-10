@@ -3,14 +3,14 @@
 export const prerender = true
 export const ssr = true
 
-export const load = async (event) => {
+export const load = async ({locals}) => {
 	let styles
 	let settings
-	if (event.locals.styles) {
-		styles = JSON.parse(event.locals.styles)
+	if (locals.styles) {
+		styles = JSON.parse(locals.styles)
 	}
-	if (event.locals.settings) {
-		settings = JSON.parse(event.locals.settings)
+	if (locals.settings) {
+		settings = JSON.parse(locals.settings)
 	}
 
 	return {

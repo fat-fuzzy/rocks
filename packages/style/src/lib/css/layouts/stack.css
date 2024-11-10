@@ -6,7 +6,7 @@
 [class*='l:stack'] {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: var(--justify, flex-start);
 }
 
 .l\:stack\:auto > * {

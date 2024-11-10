@@ -22,7 +22,7 @@
 .state\:idle {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: var(--justify, center);
 	/* Hide the canvas without changing its dimensions */
 	max-width: 100%;
 	overflow-x: hidden;
@@ -55,7 +55,7 @@
 .canvas[class*='error']::before   {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: var(--justify, center);
 	position: absolute;
 	bottom: var(--ui-size-sm);
 	right: var(--ui-size-sm);
@@ -75,7 +75,7 @@
 .state\:idle::before {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: var(--justify, center);
 	width: 100%;
 	height: 100%;
 	font-size: calc(var(--fluid-4) * 5);

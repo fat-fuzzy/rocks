@@ -117,6 +117,7 @@
 					onblur={handleBlur}
 					oninput={handleInput}
 					{validator}
+					autocomplete="username"
 				/>
 				<Input
 					id="email"
@@ -145,6 +146,7 @@
 					onblur={handleBlur}
 					oninput={handleInput}
 					{validator}
+					autocomplete="new-password"
 				/>
 				<InputPassword
 					id="confirm_password"
@@ -162,6 +164,7 @@
 					onblur={handleBlur}
 					oninput={handleInput}
 					{validator}
+					autocomplete="new-password"
 				/>
 				<Button
 					id="button-submit-signup"

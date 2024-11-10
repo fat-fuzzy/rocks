@@ -72,7 +72,7 @@
 		{/key}
 	</div>
 	<Settings
-		name={`${id}-primary-nav`}
+		name={`${id}-settings`}
 		label=""
 		{path}
 		{breakpoint}

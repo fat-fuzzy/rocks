@@ -22,6 +22,8 @@ export type AriaLive =
 	| null
 	| undefined
 
+export type Autocomplete = FullAutoFill | null | undefined
+
 export type Settings = {
 	[setting in UiSettings]?: string
 }

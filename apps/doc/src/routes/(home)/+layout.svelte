@@ -57,6 +57,7 @@
 		label=""
 		path={$page.url.pathname}
 		actionPath="/"
+		background="transparent"
 		redirect={$page.url.pathname}
 		items={{
 			settings: {

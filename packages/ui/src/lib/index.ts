@@ -59,6 +59,7 @@ import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte
  */
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
+import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
 
 /**
  * Draft components
@@ -69,8 +70,8 @@ import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
 import Aside from '$lib/components/recipes/content/Aside.svelte'
-import Scrolly from '$lib/components/recipes/animations/Scrolly.svelte'
-import ScrollyItem from '$lib/components/recipes/animations/ScrollyItem.svelte'
+import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
+import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
@@ -156,6 +157,7 @@ const drafts = {
 	ScrollyItem,
 	HeaderSettings,
 	SettingsMenu,
+	PageScrolly,
 }
 
 const headless = {

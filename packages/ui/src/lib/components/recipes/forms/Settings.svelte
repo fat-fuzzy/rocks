@@ -78,7 +78,7 @@
 			{size}
 			type={actionPath && formaction ? 'submit' : 'button'}
 			name={`reveal-settings`}
-			controls={id}
+			controls={`${id}-content`}
 			text="settings"
 			asset="settings"
 			onclick={handleToggle}
@@ -87,8 +87,9 @@
 			Settings
 		</Expand>
 	</form>
-	<div {id} class={`${show} l:flex align:center content`}>
+	<div id={`${id}-content`} class={`${show} l:flex align:center content`}>
 		<SettingsMenu
+			id={`${id}-menu`}
 			items={items.switch}
 			{formaction}
 			{actionPath}
@@ -104,6 +105,7 @@
 						target="_blank"
 						rel="noreferrer"
 						{title}
+						aria-label={title}
 					>
 					</a>
 				</li>
