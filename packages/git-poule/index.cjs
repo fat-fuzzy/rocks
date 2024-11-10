@@ -70,6 +70,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 		'packages',
 		'play',
 		'playbook',
+		'prose',
 		'ui',
 		'validation',
 		'validate',
