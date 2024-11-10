@@ -1,8 +1,8 @@
 [class*='l:frame'] {
 	overflow: hidden;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content: var(--justify, center);
+	align-items: center; /* TODO: use var */
 	max-inline-size: 100%;
 }
 

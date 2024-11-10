@@ -32,7 +32,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 	figure {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: var(--justify, center);
 	}
 }
 

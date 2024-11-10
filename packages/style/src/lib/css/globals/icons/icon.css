@@ -26,7 +26,7 @@ a[class*='icon:']::before {
 [class*='icon'].align\:end {
 	display: flex;
 	flex-direction: row-reverse;
-	justify-content: space-between;
+	justify-content: var(--justify, space-between);
 }
 
 [class*='card:'][class*='icon:'][class*=':2xs']:not(.feedback)::before,

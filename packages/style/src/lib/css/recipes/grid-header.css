@@ -33,5 +33,5 @@
 	grid-area: context;
 	order: 3;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: var(--justify, flex-end);
 }

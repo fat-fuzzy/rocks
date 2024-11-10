@@ -4,7 +4,7 @@
 
 .header-settings {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: var(--justify, flex-end);
 	padding-inline: var(--gap);
 	color: var(--ink);
 	background-color: transparent;
