@@ -139,7 +139,8 @@
 				<button
 					class="bg:neutral variant:fill shape:round emoji:default"
 					title="bunny"
-				></button>
+				>
+				</button>
 				<button
 					class="bg:warning variant:fill shape:round emoji:warning"
 					title="warning"
@@ -204,7 +205,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 		.palette {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: center;
+			justify-content: var(--justify, center);
 		}
 		.hue {
 			display: grid;
@@ -214,7 +215,7 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 		figure {
 			display: flex;
 			align-items: center;
-			justify-content: center;
+			justify-content: var(--justify, center);
 			padding: var(--ui-size);
 		}
 	}

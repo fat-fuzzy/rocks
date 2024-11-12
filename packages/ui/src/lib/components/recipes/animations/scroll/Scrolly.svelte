@@ -38,7 +38,7 @@
 		entries.forEach((entry) => {
 			let element = entry.target
 
-			if (entry.intersectionRatio > 0.35) {
+			if (entry.intersectionRatio > 0.05) {
 				animations.forEach((animation) => {
 					element.classList.add(`${animation}:in`)
 					element.classList.remove(`${animation}:out`)
