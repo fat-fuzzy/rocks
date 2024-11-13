@@ -30,3 +30,7 @@
 [class*=':bare'][class*='card'] {
 	background-color: var(--shade);
 }
+
+[class*='dotted'] {
+	border: var(--border-width-md) dotted var(--color-accent, var(--color-bg));
+}
