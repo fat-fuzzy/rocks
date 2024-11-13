@@ -73,7 +73,7 @@ importers:
         specifier: ^2.5.4
         version: 2.5.4(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.5)(vite@5.4.9(@types/node@22.7.8)(sass@1.80.3)(terser@5.31.3)))(svelte@5.0.5)(vite@5.4.9(@types/node@22.7.8)(sass@1.80.3)(terser@5.31.3))
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^4.0.0
+        specifier: ^4.0.0-next.5
         version: 4.0.0(svelte@5.0.5)(vite@5.4.9(@types/node@22.7.8)(sass@1.80.3)(terser@5.31.3))
       '@types/dompurify':
         specifier: ^3.0.5
@@ -345,7 +345,7 @@ importers:
         specifier: ^2.3.4
         version: 2.3.4(svelte@5.0.5)(typescript@5.6.3)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^4.0.0
+        specifier: ^4.0.0-next.5
         version: 4.0.0(svelte@5.0.5)(vite@5.4.9(@types/node@22.7.8)(sass@1.80.3)(terser@5.31.3))
       svelte:
         specifier: 5.0.5
@@ -393,7 +393,7 @@ importers:
         specifier: ^2.3.4
         version: 2.3.4(svelte@5.0.5)(typescript@5.6.3)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^4.0.0
+        specifier: ^4.0.0-next.5
         version: 4.0.0(svelte@5.0.5)(vite@5.4.9(@types/node@22.7.8)(sass@1.80.3)(terser@5.31.3))
       '@tiptap/core':
         specifier: ^2.9.1
@@ -459,7 +459,7 @@ importers:
         specifier: ^2.3.4
         version: 2.3.4(svelte@5.0.5)(typescript@5.6.3)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^4.0.0
+        specifier: ^4.0.0-next.5
         version: 4.0.0(svelte@5.0.5)(vite@5.4.9(@types/node@22.7.8)(sass@1.80.3)(terser@5.31.3))
       publint:
         specifier: ^0.2.11
@@ -565,7 +565,7 @@ importers:
         specifier: ^2.3.4
         version: 2.3.4(svelte@5.0.5)(typescript@5.6.3)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^4.0.0
+        specifier: ^4.0.0-next.5
         version: 4.0.0(svelte@5.0.5)(vite@5.4.9(@types/node@22.7.8)(sass@1.80.3)(terser@5.31.3))
       '@types/dompurify':
         specifier: ^3.0.5
