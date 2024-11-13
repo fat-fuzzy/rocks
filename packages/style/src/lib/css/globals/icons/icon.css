@@ -19,10 +19,6 @@ a[class*='icon:']::before {
 	margin-inline: 0 var(--ui-size);
 }
 
-[class*='icon'][class*='ffr:']::before {
-	margin-inline: 0 var(--ui-size-sm);
-}
-
 [class*='icon'].align\:end {
 	display: flex;
 	flex-direction: row-reverse;
@@ -47,4 +43,12 @@ summary[class*='icon'].align\:end {
 button[class*='icon'].align\:start,
 summary[class*='icon'].align\:start {
 	text-align: end;
+}
+
+ff-magic[class*='svg']::before {
+	margin-inline: 0 var(--ui-size-sm);
+}
+
+ff-icon[class*='svg']::before {
+	margin-inline: var(--ui-size-sm) 0;
 }
