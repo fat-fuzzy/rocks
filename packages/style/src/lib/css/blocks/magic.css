@@ -11,6 +11,7 @@ ff-icon {
 	font-weight: var(--font-weight-ui);
 }
 
+.ff\:callout[class*='magic'],
 ff-callout[class*='magic'] {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	background-clip: text;
