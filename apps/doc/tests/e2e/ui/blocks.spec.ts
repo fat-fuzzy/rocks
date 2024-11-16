@@ -43,19 +43,29 @@ ready.forEach((component) => {
 				.getByTestId('context.menu.toggle.playbook')
 				.click({force: true})
 
-			if (styleProps.includes('size')) await props.testSize(page)
+			await expect(styleProps.includes('size')).toBeTruthy()
+			await props.testSize(page, component)
 		})
 
-		if (component !== 'Magic') {
+		if (component !== 'Magic' && component !== 'Feedback') {
 			test(`Playbook has working color input`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
 				await page
 					.getByTestId('context.menu.toggle.playbook')
 					.click({force: true})
 
-				if (styleProps.includes('color')) await props.testColor(page)
+				await expect(styleProps.includes('color')).toBeTruthy()
+				await props.testColor(page, component)
 			})
+		}
 
+		if (
+			component !== 'Magic' &&
+			component !== 'InputCheck' &&
+			component !== 'InputRadio' &&
+			component !== 'InputRange' &&
+			component !== 'InputFile'
+		) {
 			test(`Playbook has working variant input`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
 				styleProps = await page
@@ -66,7 +76,8 @@ ready.forEach((component) => {
 					.getByTestId('context.menu.toggle.playbook')
 					.click({force: true})
 
-				if (styleProps.includes('variant')) await props.testVariant(page)
+				await expect(styleProps.includes('variant')).toBeTruthy()
+				await props.testVariant(page, component)
 			})
 		}
 
@@ -74,7 +85,9 @@ ready.forEach((component) => {
 			component !== 'Expand' &&
 			component !== 'Switch' &&
 			component !== 'InputRange' &&
-			component !== 'Magic'
+			component !== 'InputFile' &&
+			component !== 'Magic' &&
+			component !== 'Feedback'
 		) {
 			test(`Playbook has working asset input [TODO: fix name]`, async ({
 				page,
@@ -84,7 +97,8 @@ ready.forEach((component) => {
 					.getByTestId('context.menu.toggle.playbook')
 					.click({force: true})
 
-				if (styleProps.includes('asset')) await props.testAsset(page)
+				await expect(styleProps.includes('asset')).toBeTruthy()
+				await props.testAsset(page, component)
 			})
 		}
 
@@ -102,7 +116,8 @@ ready.forEach((component) => {
 					.getByTestId('context.menu.toggle.playbook')
 					.click({force: true})
 
-				if (styleProps.includes('shape')) await props.testShape(page)
+				await expect(styleProps.includes('shape')).toBeTruthy()
+				await props.testShape(page, component)
 			})
 		}
 
@@ -117,7 +132,8 @@ ready.forEach((component) => {
 					.getByTestId('context.menu.toggle.playbook')
 					.click({force: true})
 
-				if (styleProps.includes('context')) await props.testContext(page)
+				await expect(styleProps.includes('context')).toBeTruthy()
+				await props.testContext(page, component)
 			})
 
 			test(`Playbook has working status input`, async ({page}) => {
@@ -130,7 +146,8 @@ ready.forEach((component) => {
 					.getByTestId('context.menu.toggle.playbook')
 					.click({force: true})
 
-				if (styleProps.includes('status')) await props.testStatus(page)
+				await expect(styleProps.includes('status')).toBeTruthy()
+				await props.testStatus(page, component)
 			})
 		}
 	})
