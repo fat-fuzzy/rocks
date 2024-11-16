@@ -58,7 +58,7 @@
 	<span>{label}</span>
 	<input
 		{id}
-		data-test={id}
+		data-testid={id}
 		type="checkbox"
 		{value}
 		{name}

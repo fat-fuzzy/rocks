@@ -54,6 +54,7 @@
 		<input
 			type="file"
 			{id}
+			data-testid={id}
 			{name}
 			accept={fileType}
 			aria-describedby={/* TODO: check is this correct? */ hint
@@ -67,12 +68,12 @@
 {/snippet}
 
 {#if hint}
-	<Fieldset id={`fieldset-${id}`} name={`fieldset-${name}`}	{layout}>
-	{@render input()}
+	<Fieldset id={`fieldset-${id}`} name={`fieldset-${name}`} {layout}>
+		{@render input()}
 		<Feedback {status} context={UiTextContext.form} {size} {variant}>
 			{hint}
 		</Feedback>
 	</Fieldset>
-	{:else}
-		{@render input()}
+{:else}
+	{@render input()}
 {/if}

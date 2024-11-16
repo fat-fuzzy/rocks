@@ -256,7 +256,7 @@
 			<canvas
 				id={`${id}.canvas`}
 				aria-label={title}
-				data-test="canvas"
+				data-testid="canvas"
 				bind:this={canvas}
 				inert={store.getSketchDisabled()}
 			>

@@ -118,8 +118,8 @@
 	</span>
 	<input
 		{id}
+		data-testid={id}
 		{name}
-		data-test={`input-range-${id}`}
 		type="range"
 		bind:value
 		{required}

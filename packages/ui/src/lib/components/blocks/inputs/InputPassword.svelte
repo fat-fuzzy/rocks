@@ -24,6 +24,7 @@
 	{label}
 	<input
 		{id}
+		data-testid={id}
 		type="password"
 		{name}
 		bind:value

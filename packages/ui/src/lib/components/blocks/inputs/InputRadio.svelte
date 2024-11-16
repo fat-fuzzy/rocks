@@ -58,13 +58,13 @@
 	<span>{label}</span>
 	<input
 		{id}
+		data-testid={id}
 		type="radio"
 		{value}
 		{name}
 		{checked}
 		{required}
 		oninput={handleInput}
-		data-test={id}
 		{disabled}
 	/>
 </label>
