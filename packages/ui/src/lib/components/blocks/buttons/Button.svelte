@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ButtonProps } from  '$types'
+	import type {ButtonProps} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 
 	let {
@@ -20,14 +20,15 @@
 		dimensions,
 		type = 'submit',
 		children,
-		onclick
-	}: ButtonProps  = $props();
+		onclick,
+	}: ButtonProps = $props()
 
 	function handleClick(event: MouseEvent) {
 		if (onclick) onclick(payload)
 	}
 
-	let buttonClasses =  $derived(styleHelper.getStyles({
+	let buttonClasses = $derived(
+		styleHelper.getStyles({
 			color,
 			size,
 			shape,
@@ -37,13 +38,14 @@
 			variant,
 			layout: 'switcher',
 			dimensions,
-		}))
+		}),
+	)
 
 	let payload = $state({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value
-	});
+		value,
+	})
 </script>
 
 <button

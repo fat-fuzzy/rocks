@@ -20,7 +20,7 @@
 	let errors = $derived(validator.getFieldErrors(name))
 </script>
 
-<label class={`l:stack:${size}`}>
+<label class={`l:stack:${size}`} data-testid={id}>
 	{label}
 	<input
 		{id}

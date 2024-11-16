@@ -299,7 +299,7 @@ const asset = {
 const spell = {
 	initial: 'card',
 	input: 'toggle',
-	layout: 'stack',
+	layout: 'switcher',
 	size: '2xs',
 	variant: 'bare',
 	items: [

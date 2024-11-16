@@ -1,4 +1,5 @@
-.ffr\:icon {
+ff-magic,
+ff-icon {
 	color: var(--ink);
 	background-color: var(--shade);
 	display: inline-flex;
@@ -10,7 +11,8 @@
 	font-weight: var(--font-weight-ui);
 }
 
-.ffr\:callout[class*='magic'] {
+.ff\:callout[class*='magic'],
+ff-callout[class*='magic'] {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	background-clip: text;
 	background: var(--magic-gradient);

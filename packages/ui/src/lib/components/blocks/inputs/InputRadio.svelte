@@ -54,7 +54,7 @@
 	})
 </script>
 
-<label for={id} class={classes}>
+<label for={id} class={classes} data-testid={id}>
 	<span>{label}</span>
 	<input
 		{id}
@@ -64,7 +64,6 @@
 		{checked}
 		{required}
 		oninput={handleInput}
-		data-test={id}
 		{disabled}
 	/>
 </label>

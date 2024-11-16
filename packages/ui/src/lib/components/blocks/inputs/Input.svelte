@@ -27,6 +27,7 @@
 	{label}
 	<input
 		{id}
+		data-testid={id}
 		{type}
 		{name}
 		bind:value

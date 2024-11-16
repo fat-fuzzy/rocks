@@ -92,7 +92,7 @@ function getFeedbackStyles(
 	let {size, asset, assetType, variant, align, justify, container} = props
 
 	let variantClass = variant ? `variant:${variant}` : ''
-	let fontClass = size ? `font:${size}` : ''
+	let sizeClass = size ? `size:${size}` : ''
 	// if (fontClass) {
 	// 	fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
 	// }
@@ -110,7 +110,7 @@ function getFeedbackStyles(
 	let containerClass =
 		container && context !== 'code' ? `l:${container}:${size}` : ''
 
-	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${fontClass} ${variantClass} ${alignClass} ${justifyClass} ${backgroundClass} ${containerClass}`
+	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${backgroundClass} ${containerClass}`
 
 	return feedbackClasses.trim()
 }

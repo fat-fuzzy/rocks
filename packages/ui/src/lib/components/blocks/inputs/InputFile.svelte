@@ -49,7 +49,7 @@
 </script>
 
 {#snippet input()}
-	<label for={id} class={inputClasses}>
+	<label for={id} class={inputClasses} data-testid={id}>
 		<span class={assetClass}>{label}</span>
 		<input
 			type="file"
@@ -67,12 +67,12 @@
 {/snippet}
 
 {#if hint}
-	<Fieldset id={`fieldset-${id}`} name={`fieldset-${name}`}	{layout}>
-	{@render input()}
+	<Fieldset id={`fieldset-${id}`} name={`fieldset-${name}`} {layout}>
+		{@render input()}
 		<Feedback {status} context={UiTextContext.form} {size} {variant}>
 			{hint}
 		</Feedback>
 	</Fieldset>
-	{:else}
-		{@render input()}
+{:else}
+	{@render input()}
 {/if}

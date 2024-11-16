@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { ToggleProps } from '$types'
-	import { UiState, ButtonEvent } from '$types'
-	import { onMount } from 'svelte'
+	import type {ToggleProps} from '$types'
+	import {UiState, ButtonEvent} from '$types'
+	import {onMount} from 'svelte'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -9,7 +9,7 @@
 		name = 'toggle',
 		label,
 		title,
-		initial =  UiState.inactive,
+		initial = UiState.inactive,
 		value,
 		disabled,
 		formaction,
@@ -29,9 +29,9 @@
 	}: ToggleProps = $props()
 
 	let store = new Actor({
-			initial,
-			onclick,
-		})
+		initial,
+		onclick,
+	})
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
@@ -41,7 +41,8 @@
 		action: store.update.bind(store),
 	})
 
-	let buttonClasses =  $derived(store.getStyles({
+	let buttonClasses = $derived(
+		store.getStyles({
 			color,
 			size,
 			shape,
@@ -50,9 +51,10 @@
 			asset,
 			assetType,
 			variant,
-			layout: shape ? undefined: 'switcher',
+			layout: shape ? undefined : 'switcher',
 			dimensions,
-		}))
+		}),
+	)
 
 	function handleClick(event: MouseEvent) {
 		store.update(store.currentState.event as ButtonEvent)
@@ -80,11 +82,9 @@
 >
 	{#if children}
 		{@render children()}
+	{:else if shape}
+		<span class="sr-only">{title}</span>
 	{:else}
-		{#if shape}
-			<span class="sr-only">{title}</span>
-		{:else}
-			{label}
-		{/if}
+		{label}
 	{/if}
 </button>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
 	import {getContext} from 'svelte'
 	import PlaybookStore from '$lib/api/store.svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
@@ -67,16 +67,28 @@
 	let size = $derived(containerStyles.size ?? '') // Container size
 	let status = $derived(elementStyles.status ?? '')
 
-	let sectionContainer = $derived(category === 'blocks' ? 'col:center'
-		: category !== 'tokens'
-		? `l:${container}:${size}` : ''
+	let sectionContainer = $derived(
+		category === 'blocks'
+			? 'col:center'
+			: category !== 'tokens'
+				? `l:${container}:${size}`
+				: '',
 	)
-	let articleContainer = $derived(category === 'blocks' ? 'col:center'
-		: category !== 'tokens' && category !== 'blocks' && title !== 'Burrito' && title !== 'Stack' && title !== 'Switcher'
-		? `l:${container}:${size}` : ''
+	let articleContainer = $derived(
+		category === 'blocks'
+			? 'col:center'
+			: category !== 'tokens' &&
+				  category !== 'blocks' &&
+				  title !== 'Burrito' &&
+				  title !== 'Stack' &&
+				  title !== 'Switcher'
+				? `l:${container}:${size}`
+				: '',
 	)
-	let surfaceClass = $derived( `surface:0:neutral`)
-	let settingsClasses = $derived(`settings:${brightness}:${contrast} ${surfaceClass}`)
+	let surfaceClass = $derived(`surface:0:neutral`)
+	let settingsClasses = $derived(
+		`settings:${brightness}:${contrast} ${surfaceClass}`,
+	)
 	let sectionClasses = $derived(`l:main stage card:xl inset ${settingsClasses}`)
 	let containerClasses = $derived(isPage ? sectionContainer : articleContainer)
 
@@ -84,7 +96,9 @@
 	let fixtures = $derived(
 		playbookStore.getElementFixtures({category, component: title}),
 	)
-	let statusFixures = $derived(fixtures?.status ? fixtures.status.find((p) => p.case === status) : {})
+	let statusFixures = $derived(
+		fixtures?.status ? fixtures.status.find((p) => p.case === status) : {},
+	)
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
@@ -103,7 +117,7 @@
 			{actionPath}
 			{redirect}
 			{...settings}
-			id={`ui-${title}`}
+			id={title}
 		/>
 	</div>
 {/snippet}
@@ -120,7 +134,7 @@
 						{path}
 						{actionPath}
 						{redirect}
-						color = 'primary'
+						color="primary"
 						{meta}
 						categories={[category]}
 					/>

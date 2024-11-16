@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {FuzzyPayload ,ButtonType, ToggleMenuProps} from '$types'
-	import { onMount } from 'svelte'
+	import type {FuzzyPayload, ButtonType, ToggleMenuProps} from '$types'
+	import {onMount} from 'svelte'
 	import styleHelper from '$lib/utils/styles.js'
 	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 	import ToggleMenuStore from './store.svelte'
@@ -27,7 +27,6 @@
 		onupdate,
 	}: ToggleMenuProps = $props()
 
-
 	let store = $state(new ToggleMenuStore())
 	store.init({
 		items,
@@ -36,13 +35,15 @@
 
 	let type: ButtonType = formaction ? 'submit' : 'button'
 
-	let menuClasses =  $derived(styleHelper.getStyles({
+	let menuClasses = $derived(
+		styleHelper.getStyles({
 			color,
 			size,
 			layout,
 			threshold,
 			container,
-		}))
+		}),
+	)
 
 	function updateMenu(payload: FuzzyPayload) {
 		store.update(payload)
@@ -63,8 +64,8 @@
 </script>
 
 {#snippet menuContent()}
-	<menu {id} class={menuClasses}>
-		{#each store.items as [id, props]}
+	<menu {id} class={menuClasses} data-testid={id}>
+		{#each store.items as [itemId, props]}
 			<li>
 				<Toggle
 					init={loadMenu}
@@ -79,6 +80,7 @@
 					{assetType}
 					{disabled}
 					{...props}
+					id={itemId}
 				/>
 			</li>
 		{/each}
