@@ -37,6 +37,8 @@ export default class Wing {
 		feathers,
 		colors,
 		drawFeathers = false,
+		canvasWidth,
+		canvasHeight,
 	}) {
 		// Context
 		this.position = position
@@ -144,6 +146,8 @@ export default class Wing {
 			bones: this.boneAngles[this.currentStep],
 			feathers: this.featherAngles[this.currentStep],
 		}
+		this.width = canvasWidth
+		this.height = canvasHeight
 	}
 
 	/**

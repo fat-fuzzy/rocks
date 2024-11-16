@@ -15,28 +15,18 @@ import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-2d'
 
 let gl
-let programInfo = {
-	errors: [],
-}
 let program
 let buffers
 let vertexShader
 let fragmentShader
+let programInfo = {
+	errors: [],
+}
 let error
 let bgColor = [0.0298, 0.02089, 0.1233]
 let {WING, BONES, FEATHERS, COLORS} = props
 
-let wing = new Wing({
-	position: [0, 0],
-	direction: WING.direction,
-	step: WING.currentStep,
-	layers: 1,
-	steps: WING.steps,
-	pause: WING.pause,
-	bones: BONES,
-	feathers: FEATHERS,
-	colors: COLORS,
-})
+let wing
 
 let meta = {
 	project: 'fat-fuzzy',
@@ -65,6 +55,7 @@ function init(canvas) {
 function main(canvas) {
 	init(canvas)
 	clear()
+
 	programInfo = loadProgram(canvas)
 	bgColor = programInfo.context.background
 	return programInfo.context
@@ -81,8 +72,19 @@ function loadProgram(canvas) {
 		}
 	}
 	dom.resize(canvas)
-
-	wing.init(canvas.width, canvas.height)
+	wing = new Wing({
+		position: [0, 0],
+		direction: WING.direction,
+		step: WING.currentStep,
+		layers: 1,
+		steps: WING.steps,
+		pause: WING.pause,
+		bones: BONES,
+		feathers: FEATHERS,
+		colors: COLORS,
+		canvasWidth: canvas.width,
+		canvasHeight: canvas.height,
+	})
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -103,7 +105,7 @@ function loadProgram(canvas) {
 		context: wing.getGeometryCoords(),
 		errors: [],
 	}
-	clear()
+
 	buffers = initBuffers(gl, _programInfo)
 	error = gl.getError()
 	if (error !== gl.NO_ERROR) {
@@ -119,10 +121,6 @@ function draw() {
 
 function update() {
 	wing.updateWingState()
-	if (programInfo.context.clear) {
-		clear()
-	}
-
 	programInfo.context = wing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
 }
@@ -149,6 +147,7 @@ function stop() {
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
+	wing = null
 }
 
 export default {init, meta, main, draw, update, clear, stop}
