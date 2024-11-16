@@ -1,5 +1,5 @@
 export default {
-	Button: {id: 'button', label: 'Button', asset: 'idea'},
+	Button: {label: 'Button', asset: 'idea'},
 	Expand: {
 		title: 'Expand',
 		states: {
@@ -35,9 +35,9 @@ export default {
 			},
 		},
 	},
-	InputCheck: {id: 'check', label: 'An optional choice'},
-	InputRadio: {id: 'radio', label: 'A mandatory choice'},
-	InputRange: {id: 'range', label: 'A range of ordered choices'},
+	InputCheck: {label: 'An optional choice'},
+	InputRadio: {label: 'A mandatory choice'},
+	InputRange: {label: 'A range of ordered choices'},
 	Feedback: {
 		status: [
 			{
@@ -72,7 +72,7 @@ export default {
 			},
 		],
 	},
-	Toggle: {id: 'button-toggle', label: 'Toggle', asset: 'favorite'},
+	Toggle: {label: 'Toggle', asset: 'favorite'},
 	Fieldset: {
 		items: ['Form input 1', 'Form input 2', 'Form input 3'],
 	},

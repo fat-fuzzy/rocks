@@ -28,13 +28,15 @@
 	let content = 'card'
 	let sideContent = 'card'
 	let mainContent = 'text'
-	let layoutContent = $derived(`card:${elementStyles.size} variant:outline size:${elementStyles.size} surface:1:accent`)
+	let layoutContent = $derived(
+		`card:${elementStyles.size} variant:outline size:${elementStyles.size} surface:1:accent`,
+	)
 	let fixtures = $derived(playbookStore.getLayoutFixtures(SpecifiedElement))
 </script>
 
 {#snippet children(props, contentType)}
 	{#if contentType === 'text'}
-			<p class={`card:${elementStyles.size} surface:1:accent`}>{props.text}</p>
+		<p class={`card:${elementStyles.size} surface:1:accent`}>{props.text}</p>
 	{:else if contentType === 'card'}
 		{#each props[content] as item}
 			<div class={layoutContent}>{item}</div>
@@ -43,7 +45,8 @@
 {/snippet}
 
 {#if title === 'Sidebar'}
-	<SpecifiedElement id={title}
+	<SpecifiedElement
+		id={title}
 		{...containerStyles}
 		{...layoutStyles}
 		{...elementStyles}
@@ -58,14 +61,14 @@
 	</SpecifiedElement>
 {:else}
 	<SpecifiedElement
-			id={title}
-			{...containerStyles}
-			{...layoutStyles}
-			{...elementStyles}
-			{...props}
-			{actionPath}
-			{redirect}
-		>
+		id={title}
+		{...containerStyles}
+		{...layoutStyles}
+		{...elementStyles}
+		{...props}
+		{actionPath}
+		{redirect}
+	>
 		{@render children(fixtures, content)}
 	</SpecifiedElement>
 {/if}
