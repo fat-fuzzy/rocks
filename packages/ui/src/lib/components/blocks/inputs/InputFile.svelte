@@ -49,12 +49,11 @@
 </script>
 
 {#snippet input()}
-	<label for={id} class={inputClasses}>
+	<label for={id} class={inputClasses} data-testid={id}>
 		<span class={assetClass}>{label}</span>
 		<input
 			type="file"
 			{id}
-			data-testid={id}
 			{name}
 			accept={fileType}
 			aria-describedby={/* TODO: check is this correct? */ hint

@@ -111,14 +111,13 @@
 	})
 </script>
 
-<label for={id} class={inputClasses}>
+<label for={id} class={inputClasses} data-testid={id}>
 	<span class={`font:${size}`}>
 		{label}:
 		{valueLabel}
 	</span>
 	<input
 		{id}
-		data-testid={id}
 		{name}
 		type="range"
 		bind:value

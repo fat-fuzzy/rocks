@@ -23,13 +23,17 @@
 			context as UiTextContext,
 		),
 	)
-	let ariaLive: AriaLive = $derived(context === 'form' ? AriaLiveEnum.polite : undefined)
+	let ariaLive: AriaLive = $derived(
+		context === 'form' ? AriaLiveEnum.polite : undefined,
+	)
 </script>
 
 {#if context === 'code'}
-	<pre class={feedbackClasses} data-testid={`feedback-${context}`}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
+	<pre
+		class={feedbackClasses}
+		data-testid="Feedback">{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
-	<div class={feedbackClasses} data-testid={`feedback-${context}`} aria-live={ariaLive}>
+	<div class={feedbackClasses} data-testid="Feedback" aria-live={ariaLive}>
 		{#if context === 'prose' && status !== 'default'}
 			<p class="status">{status}</p>
 		{/if}

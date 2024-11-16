@@ -54,11 +54,10 @@
 	})
 </script>
 
-<label for={id} class={classes}>
+<label for={id} class={classes} data-testid={id}>
 	<span>{label}</span>
 	<input
 		{id}
-		data-testid={id}
 		type="checkbox"
 		{value}
 		{name}

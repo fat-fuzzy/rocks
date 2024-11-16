@@ -6,7 +6,10 @@
 	let genieDue = $derived(due ? `magic:${spell} svg:${due} size:${size}` : '')
 </script>
 
-<ff-magic class={`${genieUno} align:center justify:between size:${size}`}>
+<div
+	class={`ff:magic ${genieUno} align:center justify:between size:${size}`}
+	data-testid="Magic"
+>
 	<ff-callout class={`magic:${spell} ${level} font:${size}`}>
 		{#if text}
 			{text}
@@ -17,4 +20,4 @@
 	{#if genieDue}
 		<ff-icon class={genieDue}></ff-icon>
 	{/if}
-</ff-magic>
+</div>

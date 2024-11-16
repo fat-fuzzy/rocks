@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
-	import type { SwitchProps } from '$types'
-	import { ButtonEvent, UiState } from '$types'
+	import {onMount} from 'svelte'
+	import type {SwitchProps} from '$types'
+	import {ButtonEvent, UiState} from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -28,10 +28,10 @@
 	}: SwitchProps = $props()
 
 	let store = new Actor({
-			initial,
-			onclick,
-			machine: states,
-		})
+		initial,
+		onclick,
+		machine: states,
+	})
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
@@ -42,7 +42,8 @@
 		action: store.update.bind(store),
 	})
 
-	let buttonClasses =  $derived(store.getStyles({
+	let buttonClasses = $derived(
+		store.getStyles({
 			color,
 			size,
 			shape,
@@ -52,7 +53,8 @@
 			variant,
 			layout: shape ? layout : 'switcher',
 			dimensions,
-		}))
+		}),
+	)
 
 	function handleClick(event: MouseEvent) {
 		store.update(store.currentState.event as ButtonEvent)
@@ -80,12 +82,10 @@
 >
 	{#if children}
 		{@render children()}
+	{:else if shape}
+		<span class="sr-only">{title}</span>
 	{:else}
-		{#if shape}
-			<span class="sr-only">{title}</span>
-		{:else}
-			<span class="sr-only">{title}</span>
-			<span class="viz-only">{store.label}</span>
-		{/if}
+		<span class="sr-only">{title}</span>
+		<span class="viz-only">{store.label}</span>
 	{/if}
 </button>
