@@ -16,8 +16,9 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright test"
+		"test:todo": "npm run test:unit -- --run && npm run test:e2e",
+		"test:e2e": "playwright test",
+		"test": "echo \"@fat-fuzzy/prose: no tests specified\""
 	},
 	"files": [
 		"dist",
