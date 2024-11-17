@@ -72,6 +72,7 @@ function loadProgram(canvas) {
 		}
 	}
 	dom.resize(canvas)
+
 	wing = new Wing({
 		position: [0, 0],
 		direction: WING.direction,
@@ -82,9 +83,8 @@ function loadProgram(canvas) {
 		bones: BONES,
 		feathers: FEATHERS,
 		colors: COLORS,
-		canvasWidth: canvas.width,
-		canvasHeight: canvas.height,
 	})
+	wing.init(gl.canvas.width, gl.canvas.height)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using

@@ -158,6 +158,23 @@ export default class Wing {
 	init(canvasWidth, canvasHeight) {
 		this.width = canvasWidth
 		this.height = canvasHeight
+		this.magnitudes.bones = this.scaleToCanvasSize(this.magnitudes.bones)
+	}
+
+	/**
+	 *
+	 * @param {number[]} magnitudes
+	 */
+	scaleToCanvasSize(magnitudes) {
+		if (!Array.isArray(magnitudes) || magnitudes.some(isNaN)) {
+			throw new Error('Invalid magnitudes array')
+		}
+		let total = magnitudes.reduce((acc, curr) => acc + curr, 0)
+		if (total === 0) {
+			throw new Error('Total magnitude is zero')
+		}
+		let scale = this.width / total
+		return magnitudes.map((m) => m * scale)
 	}
 
 	// TODO: transform wing data into geometry coordinates (= vertices)
@@ -171,7 +188,6 @@ export default class Wing {
 		let vectorVertices = []
 		let currentMovement = this.angles.bones[this.currentTime]
 		let bone
-
 		// 1. Add the  bone vertices in sequence so that a new bone's coords is the last bone's tip
 		for (bone = 0; bone < currentMovement.length - 1; bone++) {
 			// Translate to current coords (initial or previous bone coords)
@@ -275,9 +291,9 @@ export default class Wing {
 				this.color,
 				this.currentTime / this.steps,
 			),
-			translation: [this.width * 0.8, this.height * 0.4],
+			translation: [this.width * 0.9, this.height * 0.6],
 			rotation: [utils.degToRad(0)],
-			scale: [0.9, 0.9],
+			scale: [1, 1],
 			width: this.width,
 			height: this.height,
 			geometry: this.getBoneVertices(),
