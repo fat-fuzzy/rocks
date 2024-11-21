@@ -6,10 +6,6 @@
 			--sidebar-width: var(--sidebar-width-#{$size});
 		}
 
-		.l\:reveal.expanded .content {
-			max-block-size: unset;
-		}
-
 		/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
 
 		/* Fixes bug in Safari where .content overflows parent width */
