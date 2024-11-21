@@ -5,9 +5,6 @@
 @forward './mixins/mq/header-app';
 @forward './mixins/mq/reveal';
 @forward './mixins/mq/reveal-auto';
-@forward './mixins/mq/reveal-nav';
-
-// @forward './mixins/form';
 
 /* SCSS design token definitions */
 @use './mixins/scale';

@@ -9,7 +9,7 @@
 [class*='l:reveal'].sticky {
 	--y-axis: 0;
 	--x-size: 100%;
-	--y-size: auto;
+	--y-size: fit-content;
 	inline-size: var(--x-size);
 	block-size: var(--y-size);
 	transition: inline-size 250ms ease-in-out;
@@ -23,7 +23,7 @@
 			var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
 		);
 		--thumb: var(--ink);
-		block-size: var(--y-size);
+		max-block-size: var(--y-size);
 		transition: inline-size 250ms ease-in-out;
 		transition: block-size 250ms ease-in-out;
 		scrollbar-color: var(--thumb) var(--track);

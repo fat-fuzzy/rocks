@@ -39,7 +39,7 @@ nav li a {
 	max-inline-size: 100%;
 }
 
-[class*='reveal-nav'] {
+[class*='l:sidebar'] .reveal-nav {
 	container-type: inline-size;
 	inline-size: 100%;
 
@@ -139,48 +139,77 @@ a[class*='card']:hover > *:not(.icon) {
 	text-decoration: underline;
 }
 
-[class*='reveal-nav:'] {
+[class*='l:sidebar'] .reveal-nav,
+[class*='l:sidebar'] .reveal-nav.expanded {
 	flex-basis: var(--sidebar-width);
 }
 
-[class*='reveal-nav:'].collapsed {
-	--sidebar-width: calc(
-		var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
-			var(--outline-offset-settings) * 2
-	);
-}
+/**/
+@media screen and (min-width: 1160px) {
+	[class*='l:sidebar'] .reveal-nav {
+		&.collapsed {
+			--sidebar-width: calc(
+				var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
+					var(--outline-offset-settings) * 2
+			);
+		}
 
-.reveal-nav\:2xs {
-	container-name: reveal-nav-2xs;
-	--sidebar-width: var(--layout-sidebar-2xs);
-}
+		[class*='l:reveal'].sticky {
+			--y-size-sticky: calc(
+				100vh - 2 * var(--size-ui-header-height) - 2 * var(--ui-size-lg)
+			);
+			--y-size: var(--y-size-sticky);
+			position: sticky;
+			block-size: var(--y-size);
+			top: var(--y-axis);
+			z-index: 1;
 
-.reveal-nav\:xs {
-	container-name: reveal-nav-xs;
-	--sidebar-width: var(--layout-sidebar-xs);
-}
+			ul.depth-0 {
+				block-size: var(--y-size-sticky);
+				overflow: hidden auto;
+			}
 
-.reveal-nav\:sm {
-	container-name: reveal-nav-sm;
-	--sidebar-width: var(--layout-sidebar-sm);
-}
+			ul:not(.depth-0) {
+				block-size: max-content;
+			}
 
-.reveal-nav\:md {
-	container-name: reveal-nav-md;
-	--sidebar-width: var(--layout-sidebar-md);
-}
+			> .expanded {
+				--x-size: calc(var(--sidebar-width) - var(--outline-offset-settings));
+				transition: inline-size 250ms ease-in-out;
+				/* transition: transform 250ms ease-in-out; */
 
-.reveal-nav\:lg {
-	container-name: reveal-nav-lg;
-	--sidebar-width: var(--layout-sidebar-lg);
-}
+				> .content {
+					inline-size: 100%;
+					transform: translateX(0);
+					transition: transform 250ms ease-in;
+					transition: inline-size 250ms ease-in-out;
+				}
 
-.reveal-nav\:xl {
-	container-name: reveal-nav-xl;
-	--sidebar-width: var(--layout-sidebar-xl);
-}
+				> .content > * {
+					inline-size: 100%;
+					transition: inline-size 250ms ease-in-out;
+				}
+			}
 
-.reveal-nav\:2xl {
-	container-name: reveal-nav-2xl;
-	--sidebar-width: var(--layout-sidebar-2xl);
+			> .collapsed {
+				--y-size: var(--y-size-sticky);
+				--x-size: calc(--sidebar-width);
+
+				> .content {
+					--x-axis: calc(var(--x-size) * -1);
+					inline-size: 100%;
+					block-size: var(--y-size);
+				}
+
+				ul {
+					> * {
+						block-size: fit-content;
+						inline-size: 100%;
+						padding: calc(var(--ui-size-sm) / var(--size-ratio-lg));
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
 }

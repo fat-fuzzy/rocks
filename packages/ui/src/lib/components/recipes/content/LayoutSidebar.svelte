@@ -30,7 +30,7 @@
 </script>
 
 <div class={`l:sidebar:lg align-content:start ${settingsClass}`}>
-	<div class={`l:side reveal-nav:lg ${sidebarReveal.reveal}`}>
+	<div class={`l:side reveal-nav ${sidebarReveal.reveal}`}>
 		<RevealNav
 			{...nav}
 			reveal={sidebarReveal.reveal}
