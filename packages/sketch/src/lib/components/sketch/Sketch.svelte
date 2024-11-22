@@ -250,7 +250,7 @@
 	})
 </script>
 
-<div class={`l:grid:sketch bp:xs size:sm`}>
+<article class="l:grid:sketch bp:xs size:sm media">
 	<div class="scene">
 		<div class={frameClasses}>
 			<canvas
@@ -332,7 +332,7 @@
 	{#if debug}
 		<Debug {meta} context={store} />
 	{/if}
-</div>
+</article>
 
 <style lang="scss">
 	@forward '../../styles/scss/grid-sketch.scss';

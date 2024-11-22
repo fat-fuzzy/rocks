@@ -144,7 +144,6 @@ a[class*='card']:hover > *:not(.icon) {
 	flex-basis: var(--sidebar-width);
 }
 
-/**/
 @media screen and (min-width: 1160px) {
 	[class*='l:sidebar'] .reveal-nav {
 		&.collapsed {
@@ -211,5 +210,30 @@ a[class*='card']:hover > *:not(.icon) {
 				}
 			}
 		}
+	}
+
+	/* Make main content grow when sidebar collapses only if it has media content */
+	[class*='l:side'].reveal-nav + .l\:main > * {
+		transition: margin-inline 250ms ease-in-out;
+	}
+
+	[class*='l:side'].reveal-nav.collapsed + .l\:main > * {
+		margin-inline-start: var(--layout-sidebar-collapsed) - var(--gap);
+	}
+
+	[class*='l:side'].reveal-nav.collapsed + .l\:main > *:has(.media) {
+		margin-inline-start: initial;
+	}
+}
+
+@media screen and (min-width: 1260px) {
+	[class*='l:side'].reveal-nav.collapsed + .l\:main > * {
+		margin-inline-start: var(--layout-sidebar-collapsed);
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	[class*='l:side'].reveal-nav.collapsed + .l\:main > * {
+		margin-inline-start: calc(var(--layout-sidebar-sm) - var(--gap));
 	}
 }

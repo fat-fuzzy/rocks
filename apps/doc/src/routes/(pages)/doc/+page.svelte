@@ -24,7 +24,7 @@
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
-	<article class="l:sidebar:2xl">
+	<article class="l:sidebar:2xl media">
 		<div class="l:side">
 			<EscapeHtml id={slug} {html} />
 		</div>
