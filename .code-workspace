@@ -19,9 +19,6 @@
 			"path": "packages/intl",
 		},
 		{
-			"path": "packages/lib",
-		},
-		{
 			"path": "packages/media",
 		},
 		{
@@ -73,11 +70,6 @@
 			"prettier.configPath": "./prettier.config.js",
 		},
 		"packages/intl": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
-		"packages/lib": {
 			"prettier.prettierPath": "./node_modules/prettier",
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",
