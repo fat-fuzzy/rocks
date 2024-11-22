@@ -37,7 +37,7 @@
 					})),
 				},
 			],
-		}
+		},
 	]
 
 	let nav = {
@@ -55,7 +55,7 @@
 	}
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} path='' {app}>
+<LayoutSidebar {nav} redirect={$page.url.pathname} path="" {app}>
 	{#if children}
 		{@render children()}
 	{:else}

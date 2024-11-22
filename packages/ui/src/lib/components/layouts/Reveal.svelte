@@ -54,6 +54,7 @@
 			size,
 			height,
 			align,
+			justify,
 			asset,
 			variant,
 			layout,
@@ -113,13 +114,14 @@
 		controls={`${id}-reveal`}
 		value={'menu'}
 		{asset}
+		justify={`${justify} nowrap`}
 		initial={expanded}
 		text="Reveal"
 		place={placeIcon}
 		onclick={toggleReveal}
 		states={revealStates}
 	>
-		{title}
+		<span class="content ellipsis">{title}</span>
 	</Expand>
 	<div id={`${id}-reveal`} class="content">
 		{#if children}

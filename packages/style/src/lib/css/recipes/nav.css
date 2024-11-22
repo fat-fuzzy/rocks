@@ -144,6 +144,19 @@ a[class*='card']:hover > *:not(.icon) {
 	flex-basis: var(--sidebar-width);
 }
 
+[class*='l:sidebar'] .reveal-nav > form {
+	[aria-expanded='true'] .content {
+		margin: 0;
+		padding: 0;
+		inline-size: fit-content;
+	}
+
+	[aria-expanded='false'] .content {
+		inline-size: 0;
+		overflow: hidden;
+	}
+}
+
 @media screen and (min-width: 1160px) {
 	[class*='l:sidebar'] .reveal-nav {
 		&.collapsed {
@@ -209,6 +222,10 @@ a[class*='card']:hover > *:not(.icon) {
 					}
 				}
 			}
+		}
+
+		form.expanded > [aria-expanded] {
+			inline-size: 100%;
 		}
 	}
 
