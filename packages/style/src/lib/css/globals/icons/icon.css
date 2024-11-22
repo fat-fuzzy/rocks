@@ -45,7 +45,7 @@ summary[class*='icon'].align\:start {
 	text-align: end;
 }
 
-ff-magic[class*='svg']::before {
+.ff\:magic[class*='svg']::before {
 	margin-inline: 0 var(--ui-size-sm);
 }
 
