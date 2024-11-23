@@ -5,6 +5,7 @@
 	let {created, updated, series, children, page}: AsideProps = $props()
 
 	let colorClass = 'surface:1:primary'
+	let publishedIcon = updated !== created ? 'outdated' : 'published'
 </script>
 
 <aside class="l:side l:stack:md justify:end">
@@ -19,7 +20,7 @@
 				container="stack"
 			>
 				<p class="l:flex justify:between">
-					<span class="emoji:published">Published</span>
+					<span class={`emoji:${publishedIcon}`}>Published</span>
 					<span class="maki:inline">{created}</span>
 				</p>
 				{#if updated !== created}
