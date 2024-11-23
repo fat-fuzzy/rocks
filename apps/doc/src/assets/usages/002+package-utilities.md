@@ -14,7 +14,6 @@ tags: ['example', 'doc', 'utilities', 'config', 'packages', 'wip']
 The following packages contain shared utilities:
 
 - **[@fat-fuzzy/config](https://github.com/fat-fuzzy/rocks/tree/main/packages/config)** shared configuration
-- **[@fat-fuzzy/markdown](https://github.com/fat-fuzzy/rocks/tree/main/packages/markdown)**: a package adapted from [@bjornlu/markdown](https://github.com/bluwy/website/tree/master/packages/markdown) to process markdown contents
 - **[@fat-fuzzy/cz-changelog](https://github.com/fat-fuzzy/rocks/tree/main/packages/cz-changelog)** This is a package that takes the [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) and adapts it to produce commit comments as specified in [@fat-fuzzy/git-poule](https://github.com/fat-fuzzy/rocks/tree/main/packages/git-poule).
 - **[@fat-fuzzy/validation](https://github.com/fat-fuzzy/rocks/tree/main/packages/validation)** a package that exports validation tools
 
@@ -137,15 +136,14 @@ add a `.czrc` config with the following shape:
 }
 ```
 
-## Markdown
+## Media
 
-Install the package as a `devDependency`:
+🚧 Work in progress
 
-```shell
-pnpm i -D @fat-fuzzy/markdown
-```
+This package can be used to resize images using [https://sharp.pixelplumbing.com/](https://sharp.pixelplumbing.com/)
+I am currently using this locally as a script and uploading the resulting images to the repository, which is far from ideal.
 
-[TODO] Usage notes (I'm not currently using this package)
+The script's instructions can be found here on the package's [README](https://github.com/fat-fuzzy/rocks/tree/main/packages/media)
 
 ### Resources on Asset management
 

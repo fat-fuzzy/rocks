@@ -26,6 +26,8 @@ let error
 let bgColor = [0.0298, 0.02089, 0.1233]
 let {WING, BONES, FEATHERS, COLORS} = props
 
+// Initialize the wing here to maintain color across main calls
+// TODO: chose color mode
 let wing
 
 let meta = {

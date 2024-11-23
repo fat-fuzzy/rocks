@@ -21,7 +21,7 @@
 	let seriesData = $derived(
 		series
 			? series.map((post) => ({
-					link: slug,
+					link: post.meta.slug,
 					title: post.meta.subtitle,
 				}))
 			: undefined,

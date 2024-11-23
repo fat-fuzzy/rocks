@@ -5,6 +5,7 @@
 	import {getStores} from '$app/stores'
 
 	import ExpandLink from './ExpandLink.svelte'
+	import LinkList from './LinkList.svelte'
 	import constants from '$lib/types/constants.js'
 
 	const {DEFAULT_REVEAL_STATE} = constants
@@ -40,7 +41,7 @@
 </script>
 
 {#snippet nestedLinkList(subItems, slug)}
-	<svelte:self
+	<LinkList
 		items={subItems}
 		path={format.formatHref(path, slug)}
 		id={`${id}-${slug}`}

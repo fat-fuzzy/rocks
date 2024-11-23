@@ -99,7 +99,7 @@ function getFeedbackStyles(
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 	let statusClass = status ? `status:${status}` : ''
-	let assetTypeClass = assetType ? assetType : 'emoji'
+	let assetTypeClass = asset === 'none' ? '' : assetType ? assetType : 'emoji'
 	let assetClass = status
 		? `${assetTypeClass}:${status}`
 		: asset

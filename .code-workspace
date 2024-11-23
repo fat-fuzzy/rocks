@@ -19,16 +19,13 @@
 			"path": "packages/intl",
 		},
 		{
-			"path": "packages/lib",
-		},
-		{
-			"path": "packages/markdown",
-		},
-		{
 			"path": "packages/media",
 		},
 		{
 			"path": "packages/playbook",
+		},
+		{
+			"path": "packages/prose",
 		},
 		{
 			"path": "packages/sketch",
@@ -77,22 +74,17 @@
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",
 		},
-		"packages/lib": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
-		"packages/markdown": {
-			"prettier.prettierPath": "./node_modules/prettier",
-			"editor.formatOnSave": true,
-			"prettier.configPath": "./prettier.config.js",
-		},
 		"packages/media": {
 			"prettier.prettierPath": "./node_modules/prettier",
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",
 		},
 		"packages/playbook": {
+			"prettier.prettierPath": "./node_modules/prettier",
+			"editor.formatOnSave": true,
+			"prettier.configPath": "./prettier.config.js",
+		},
+		"packages/prose": {
 			"prettier.prettierPath": "./node_modules/prettier",
 			"editor.formatOnSave": true,
 			"prettier.configPath": "./prettier.config.js",

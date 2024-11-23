@@ -36,7 +36,7 @@
 			reveal={sidebarReveal.reveal}
 			position="sticky"
 			place="left"
-			justify="start"
+			justify="between"
 			formaction="toggleSidebar"
 			actionPath="/"
 			size="md"

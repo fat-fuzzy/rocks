@@ -71,6 +71,9 @@ $kite: '🪁';
 $wing: '🪽';
 $feather: '🪶';
 $owl: '🦉';
+$recycle: '♻️';
+$calendar: '📅';
+$tear-off-calendar: '📆';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -141,6 +144,10 @@ $emojis: (
 	wip: #{$construction-sign},
 	square: #{$yellow-square},
 	round: #{$purple-round},
+	prose: #{$fountain-pen},
+	dates: #{$calendar},
+	published: #{$calendar},
+	updated: #{$tear-off-calendar},
 
 	// Playground fixture emojis
 	sketch: #{$spouting-whale},
@@ -171,6 +178,7 @@ $emojis: (
 	package-utilities: #{$toolbox},
 	package-ui: #{$tree},
 	package-playbook: #{$roller-skate},
+	package-prose: #{$fountain-pen},
 	package-sketch: #{$rainbow},
 	package-gfx: #{$invader},
 	package-git-poule: #{$hatching-chick},

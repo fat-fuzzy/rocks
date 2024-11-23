@@ -140,3 +140,9 @@ blockquote {
 	padding: var(--ui-size);
 	margin-block: var(--ui-size-lg);
 }
+
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

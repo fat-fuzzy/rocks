@@ -38,8 +38,10 @@
 		.content {
 			block-size: fit-content;
 			max-block-size: var(--y-size-sticky);
+			transition: block-size 250ms ease-in-out;
 			transition: inline-size 100ms ease-in;
 		}
+
 		nav {
 			inline-size: var(--x-size);
 			block-size: var(--y-size);
