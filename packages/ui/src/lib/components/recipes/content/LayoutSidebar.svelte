@@ -42,6 +42,7 @@
 			size="md"
 			{redirect}
 			{path}
+			dismiss="click"
 			onclick={toggleSidebar}
 		/>
 	</div>
