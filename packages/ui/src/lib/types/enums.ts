@@ -73,6 +73,12 @@ export enum UiDimensions {
 	square = 'square',
 }
 
+export enum UiEvents {
+	hover = 'hover',
+	click = 'click',
+	outside = 'outside',
+}
+
 export enum InputType {
 	text = 'text',
 	number = 'number',

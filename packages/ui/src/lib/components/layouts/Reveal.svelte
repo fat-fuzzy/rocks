@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
+	import {UiEvents} from '$types'
 	import {enhance} from '$app/forms'
 	import {clickOutside} from '$lib/utils/click-outside.js'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
@@ -24,6 +25,8 @@
 		color,
 		size,
 		breakpoint,
+		// trigger = UiEvents.click,
+		dismiss = UiEvents.outside,
 		variant,
 		align,
 		justify,
@@ -36,10 +39,8 @@
 	}: RevealLayoutProps = $props()
 
 	let expanded = $state(reveal)
-
-	function handleClickOutside(event) {
-		expanded = 'collapsed'
-	}
+	let initial = $derived(expanded)
+	let content: HTMLElement
 
 	function toggleReveal(event) {
 		expanded = event.state
@@ -90,7 +91,21 @@
 				? formaction
 				: '',
 	)
+
+	// function onKeyUp(e: KeyboardEvent) {
+	// 	if (dismiss === UiEvents.outside && e.key === 'Escape') {
+	// 		toggleReveal({state: 'collapsed'})
+	// 	}
+	// }
+
+	// function handleClickOutside() {
+	// 	if (dismiss === UiEvents.outside) {
+	// 		clickOutside(content, () => toggleReveal({state: 'collapsed'}))
+	// 	}
+	// }
 </script>
+
+<!-- <svelte:window on:keyup={onKeyUp} on:click={handleClickOutside} /> -->
 
 <form
 	{method}
@@ -112,20 +127,20 @@
 		type={actionPath && formaction ? 'submit' : 'button'}
 		name="reveal"
 		controls={`${id}-reveal`}
-		value={'menu'}
+		value={`button-reveal-${id}`}
 		{asset}
 		justify={`${justify} nowrap`}
-		initial={expanded}
+		{initial}
 		text="Reveal"
 		place={placeIcon}
 		onclick={toggleReveal}
 		states={revealStates}
 	>
-		<span class="content ellipsis">{title}</span>
+		<span class="ellipsis">{title}</span>
 	</Expand>
-	<div id={`${id}-reveal`} class="content">
+	<ff-popover id={`${id}-reveal`} class="content" bind:this={content}>
 		{#if children}
 			{@render children()}
 		{/if}
-	</div>
+	</ff-popover>
 </form>

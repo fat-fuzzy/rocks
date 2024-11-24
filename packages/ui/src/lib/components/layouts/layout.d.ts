@@ -1,6 +1,7 @@
 import type {Snippet} from 'svelte'
 import type {
 	FuzzyPayload,
+	UiEvents,
 	UiLayoutProps,
 	UiContentProps,
 	UiBlockProps,
@@ -29,6 +30,8 @@ export type RevealLayoutProps = LayoutProps &
 	UiBlockProps & {
 		reveal: string
 		element?: string
+		trigger?: UiEvents
+		dismiss?: UiEvents
 		onclick?: (payload: FuzzyPayload) => void
 	}
 

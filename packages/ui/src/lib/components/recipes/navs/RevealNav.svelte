@@ -1,6 +1,7 @@
 <script lang="ts">
-	import constants from '$lib/types/constants.js'
 	import type {RevealNavProps} from '$types'
+	import {UiEvents} from '$types'
+	import constants from '$lib/types/constants.js'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
 	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
@@ -17,6 +18,7 @@
 		redirect,
 		layout,
 		direction = 'tb-lr',
+		dismiss = UiEvents.outside,
 		color,
 		size,
 		breakpoint,
@@ -77,6 +79,7 @@
 		{size}
 		{color}
 		reveal={sidebarReveal.reveal}
+		{dismiss}
 		{actionPath}
 		{formaction}
 		{redirect}

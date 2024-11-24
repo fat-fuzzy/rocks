@@ -7,12 +7,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--gap);
-
-	/* Enables breaking out of switcher for ellipsis in nav  */
-	/* TODO: rethink this */
-	&.nowrap {
-		flex-wrap: nowrap;
-	}
 }
 
 [class*='l:switcher:'] > * {

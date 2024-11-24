@@ -25,6 +25,11 @@ button {
 	padding: var(--ui-size-sm) var(--ui-size);
 	border-radius: var(--border-radius-base);
 	border: var(--border-width-md) solid var(--accent);
+
+	/* Enables breaking out of switcher for ellipsis in nav  */
+	&.nowrap {
+		flex-wrap: nowrap;
+	}
 }
 
 button.variant\:fill {
