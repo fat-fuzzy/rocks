@@ -121,7 +121,7 @@
 		onclick={toggleReveal}
 		states={revealStates}
 	>
-		<span class="content ellipsis">{title}</span>
+		<span class="ellipsis">{title}</span>
 	</Expand>
 	<div id={`${id}-reveal`} class="content">
 		{#if children}
