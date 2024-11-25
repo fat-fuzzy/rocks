@@ -1,5 +1,8 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
+import ui from '@fat-fuzzy/ui'
+
+const {uiActions} = ui.actions
 
 const page = 'projects'
 
@@ -19,4 +22,8 @@ export const load = async ({params}) => {
 	}
 
 	return data
+}
+
+export const actions = {
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 }

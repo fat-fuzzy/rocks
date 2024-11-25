@@ -54,15 +54,12 @@ export const load = async (event) => {
 	if (event.locals.dsState) {
 		ui = JSON.parse(event.locals.dsState)
 	}
-	if (event.locals.sidebar) {
-		sidebar = JSON.parse(event.locals.sidebar)
-	}
 	if (event.locals.currentTabs) {
 		currentTabs = JSON.parse(event.locals.currentTabs)
 	}
 
 	return {
-		sidebar,
+		sidebar: event.locals.sidebar,
 		styles,
 		context,
 		ui,

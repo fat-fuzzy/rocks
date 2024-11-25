@@ -4,6 +4,8 @@ import {fail, redirect} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
 
+const {uiActions} = ui.actions
+
 export const prerender = false
 export const ssr = true
 
@@ -18,6 +20,8 @@ const {
 } = ui.constants
 
 export const actions = {
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+
 	toggleContext: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-ui-context-reveal')

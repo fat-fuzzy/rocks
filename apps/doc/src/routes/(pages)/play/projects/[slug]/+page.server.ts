@@ -1,5 +1,8 @@
 import {error} from '@sveltejs/kit'
 import gfx from '@fat-fuzzy/gfx'
+import ui from '@fat-fuzzy/ui'
+
+const {uiActions} = ui.actions
 
 export const load = ({params}) => {
 	let sketchData = gfx.gl.sketches.projects.find((s) => {
@@ -16,4 +19,8 @@ export const load = ({params}) => {
 	}
 
 	return meta
+}
+
+export const actions = {
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 }

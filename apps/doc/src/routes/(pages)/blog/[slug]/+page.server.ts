@@ -1,5 +1,8 @@
 import {error} from '@sveltejs/kit'
 import blog from '$data/blog'
+import ui from '@fat-fuzzy/ui'
+
+const {uiActions} = ui.actions
 
 /**
  * Load data from markdown file based on route parameters
@@ -31,4 +34,8 @@ export const load = async ({params}) => {
 		date_created: markdown.meta.date_created,
 		date_updated: markdown.meta.date_updated,
 	}
+}
+
+export const actions = {
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 }

@@ -1,5 +1,8 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
+import ui from '@fat-fuzzy/ui'
+
+const {uiActions} = ui.actions
 
 const page = 'blog'
 const markdowns = await pages.fetchMarkdowns(page)
@@ -17,4 +20,8 @@ export const load = async (event) => {
 	return {
 		content,
 	}
+}
+
+export const actions = {
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 }

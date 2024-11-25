@@ -11,14 +11,11 @@ function getUiState({cookies, key, options}: UiStateGetInput): any {
 	if (!serialized) {
 		return options.state
 	}
-	console.log('serialized', serialized)
 
 	return JSON.parse(serialized)
 }
 
 function setUiState({cookies, key, value, options}: UiStateSetInput) {
-	console.log('setUiState', key, value, options)
-
 	cookies.set(key, JSON.stringify(value), options)
 }
 

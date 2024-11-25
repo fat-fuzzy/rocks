@@ -17,9 +17,6 @@ async function handleUiToggleReveal({
 	try {
 		const data = await request.formData()
 		const key = `fat-fuzzy-reveal-${element}`
-
-		console.log('handleUiToggleReveal data', data)
-
 		const currentState = uiStateService.getUiState({
 			cookies,
 			key,
@@ -32,7 +29,6 @@ async function handleUiToggleReveal({
 			error(500, `Failed to toggle ${key}`)
 		}
 
-		console.log('handleUiToggleReveal newState.state', newState.state)
 		uiStateService.setUiState({
 			cookies,
 			key,
@@ -59,8 +55,6 @@ async function handleUiToggleReveal({
 }
 
 async function handleToggleSidebar(event) {
-	console.log('toggleSidebar event', event)
-
 	const element = 'sidebar'
 	return handleUiToggleReveal({
 		event,
