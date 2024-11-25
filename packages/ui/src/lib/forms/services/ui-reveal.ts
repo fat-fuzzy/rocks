@@ -4,16 +4,16 @@ import constants from '$lib/types/constants.js'
 const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
 class UiReveal {
-	nav: UiRevealState
+	state: UiRevealState
 
 	/**
-	 * Initialize default nav object or from the user's cookie values, if any
+	 * Initialize default state object or from the user's cookie values, if any
 	 */
-	constructor(nav: UiRevealState | null = null) {
-		if (nav) {
-			this.nav = nav
+	constructor(state: UiRevealState | null = null) {
+		if (state) {
+			this.state = state
 		} else {
-			this.nav = DEFAULT_REVEAL_STATE
+			this.state = DEFAULT_REVEAL_STATE
 		}
 	}
 
@@ -22,8 +22,12 @@ class UiReveal {
 	 * TODO: make configurable from consumer
 	 */
 	reveal(data: FormData) {
+		console.log('handleUiToggleReveal data', data)
 		let updated
 
+		if (data.has('state')) {
+			updated = data.get('state')?.toString()
+		}
 		if (data.has('reveal')) {
 			updated = data.get('reveal')?.toString()
 		}
@@ -34,7 +38,7 @@ class UiReveal {
 			updated = data.get('reveal-auto')?.toString()
 		}
 		if (data.has('reveal-settings')) {
-			updated = data.get('reveal-auto')?.toString()
+			updated = data.get('reveal-settings')?.toString()
 		}
 		if (data.has('reveal-blocks')) {
 			updated = data.get('reveal-blocks')?.toString()
@@ -58,17 +62,22 @@ class UiReveal {
 			updated = data.get('reveal-projects')?.toString()
 		}
 		if (updated) {
-			this.nav.reveal = TRANSITION_REVEAL[this.nav.reveal]
-			return true
+			this.state.reveal = TRANSITION_REVEAL[this.state.reveal]
+			return {
+				success: true,
+				state: this.state,
+			}
 		}
-		return false
+		return {
+			success: false,
+		}
 	}
 
 	/**
-	 * Serialize nav so it can be set as a cookie
+	 * Serialize state so it can be set as a cookie
 	 */
 	toString() {
-		return JSON.stringify(this.nav)
+		return JSON.stringify(this.state)
 	}
 }
 

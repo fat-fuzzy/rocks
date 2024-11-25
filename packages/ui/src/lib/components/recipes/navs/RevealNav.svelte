@@ -17,7 +17,6 @@
 		actionPath,
 		redirect,
 		layout,
-		direction = 'tb-lr',
 		dismiss = UiEvents.outside,
 		color,
 		size,
@@ -80,9 +79,7 @@
 		{color}
 		reveal={sidebarReveal.reveal}
 		{dismiss}
-		{actionPath}
 		{formaction}
-		{redirect}
 		{position}
 		{place}
 		{align}

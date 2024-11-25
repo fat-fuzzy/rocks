@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FormProps} from '$types'
+	import type {SignUpProps} from '$types'
 	import {UiStatus, UiTextContext, UiColor, UiVariant, InputType} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
@@ -26,7 +26,7 @@
 		asset = 'log',
 		align = 'center',
 		background = 'contrast',
-	}: FormProps = $props()
+	}: SignUpProps = $props()
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()

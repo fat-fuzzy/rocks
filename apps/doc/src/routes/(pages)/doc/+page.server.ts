@@ -2,6 +2,9 @@ import {error} from '@sveltejs/kit'
 
 import images from '$data/images'
 import pages from '$data/pages'
+import ui from '@fat-fuzzy/ui'
+
+const {uiActions} = ui.actions
 
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
@@ -43,4 +46,8 @@ export const load = async ({params}) => {
 	} catch (e) {
 		error(500, 'Error loading image data')
 	}
+}
+
+export const actions = {
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 }

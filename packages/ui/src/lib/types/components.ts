@@ -3,8 +3,16 @@ export interface Utils {
 	clickOutside: typeof import('$lib/utils/click-outside.js')
 }
 
+export interface Services {
+	uiStateService: typeof import('$lib/forms/services/ui-state.js').default
+}
+
+export interface Actions {
+	uiActions: typeof import('$lib/forms/actions/ui-actions.js').default
+}
+
 export interface Forms {
-	UiReveal: typeof import('$lib/forms/ui-reveal.js').default
+	UiReveal: typeof import('$lib/forms/services/ui-reveal.js').default
 	SettingsUpdate: typeof import('$lib/forms/settings-update.js').default
 	SignUpUser: typeof import('$lib/forms/ui-sample-signup.js').default
 }
@@ -79,5 +87,7 @@ export interface FatFuzzyUi {
 	content: Content
 	utils: Utils
 	forms: Forms
+	services: Services
+	actions: Actions
 	constants: typeof import('$lib/types/constants.js').default
 }

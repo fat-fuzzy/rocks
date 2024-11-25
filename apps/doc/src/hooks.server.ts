@@ -1,6 +1,19 @@
 import type {Handle} from '@sveltejs/kit'
 
+import ui from '@fat-fuzzy/ui'
+
+const {uiStateService} = ui.services
+const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
+
 export const handle = (async ({event, resolve}) => {
+	let {cookies} = event
+	// Load all UI states into locals
+	const sidebarReveal = await uiStateService.getUiState({
+		cookies,
+		key: 'fat-fuzzy-reveal-sidebar',
+		options: {state: DEFAULT_REVEAL_STATE},
+	})
+	// Add other UI states here
 	const appSettings = event.cookies.get('fat-fuzzy-settings-app')
 	const navReveal = event.cookies.get('fat-fuzzy-nav-reveal')
 	const navRevealTokens = event.cookies.get('fat-fuzzy-reveal-tokens')
@@ -8,7 +21,7 @@ export const handle = (async ({event, resolve}) => {
 	const navRevealLayouts = event.cookies.get('fat-fuzzy-reveal-layouts')
 	const navRevealRecipes = event.cookies.get('fat-fuzzy-reveal-recipes')
 	const settingsReveal = event.cookies.get('fat-fuzzy-settings-reveal')
-	const sidebarReveal = event.cookies.get('fat-fuzzy-sidebar-reveal')
+	// const sidebarReveal = event.cookies.get('fat-fuzzy-sidebar-reveal')
 	const dsStyles = event.cookies.get('fat-fuzzy-ui-styles')
 	const dsState = event.cookies.get('fat-fuzzy-ui-state')
 	const currentTabs = event.cookies.get('fat-fuzzy-ui-tabs')

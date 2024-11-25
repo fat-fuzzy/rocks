@@ -1,4 +1,5 @@
 import type {InputCommonProps, ButtonType} from '$types'
+import FormValidator from '$lib/utils/validate-form.svelte.js'
 
 export type FormCommonProps = InputCommonProps & {
 	depth?: number
@@ -11,6 +12,18 @@ export type FormCommonProps = InputCommonProps & {
 }
 
 export type FormProps = InputProps & {
+	depth?: number
+	description?: string
+	formaction?: string
+	path?: string
+	redirect?: string
+	method?: string
+	disabled?: boolean
+	validator: typeof FormValidator
+	inputTypes: {[name: string]: string}
+}
+
+export type SignUpProps = InputProps & {
 	depth?: number
 	description?: string
 	formaction?: string

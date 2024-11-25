@@ -30,12 +30,12 @@ const DEFAULT_DS_STATE: {
 }
 
 const STATE_SWITCHER: {[key: string]: string} = {
-	active: 'inactive',
-	inactive: 'active',
+	active: UiState.inactive,
+	inactive: UiState.active,
 }
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
-	expand: UiState.collapsed,
+	expanded: UiState.collapsed,
 	collapsed: UiState.expanded,
 }
 

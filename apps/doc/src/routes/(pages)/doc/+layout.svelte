@@ -7,6 +7,12 @@
 
 	let {children} = $props()
 	let app = $derived(fatFuzzyStore.app)
+	let formId = 'nav-doc'
+	let reveal = $derived(
+		$page.form?.formId === formId
+			? $page.form.state
+			: $page.data.sidebar.reveal,
+	)
 
 	let path = ''
 	let items = [
@@ -40,22 +46,22 @@
 		},
 	]
 
-	let nav = {
+	let nav = $derived({
 		path,
 		title: 'Content',
-		id: 'nav-doc',
+		id: formId,
 		items,
-		reveal: 'expanded',
+		reveal,
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',
 		position: 'sticky',
 		place: 'left',
 		formaction: 'toggleSidebar',
-	}
+	})
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} path="" {app}>
+<LayoutSidebar {nav} {app}>
 	{#if children}
 		{@render children()}
 	{:else}

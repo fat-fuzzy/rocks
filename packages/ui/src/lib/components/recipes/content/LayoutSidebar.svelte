@@ -8,13 +8,11 @@
 
 	// TODO: fix types
 	type Props = {
-		path: string
 		nav: RevealNavProps
-		redirect: string
 		app?: {settings: {[key: string]: string}}
 		children: Snippet
 	}
-	let {path, nav, redirect, app, children}: Props = $props()
+	let {nav, app, children}: Props = $props()
 
 	let sidebarReveal: {[key: string]: string} = $state(
 		nav.reveal ? {reveal: nav.reveal} : DEFAULT_NAV_REVEAL_STATE,
@@ -38,10 +36,7 @@
 			place="left"
 			justify="between"
 			formaction="toggleSidebar"
-			actionPath="/"
 			size="md"
-			{redirect}
-			{path}
 			dismiss="click"
 			onclick={toggleSidebar}
 		/>

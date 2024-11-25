@@ -6,7 +6,10 @@
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
+
+	import FormValidator from '$lib/utils/validate-form.svelte.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {onMount} from 'svelte'
 
 	const {ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE} = constants
 
@@ -15,11 +18,8 @@
 		title = 'Reveal',
 		method = 'POST',
 		formaction,
-		actionPath,
-		redirect,
 		layout,
 		reveal = 'collapsed',
-		direction = 'tb-lr',
 		place = 'top',
 		position,
 		color,
@@ -41,6 +41,14 @@
 	let expanded = $state(reveal)
 	let initial = $derived(expanded)
 	let content: HTMLElement
+	let boundForm: HTMLFormElement | undefined = $state()
+	let formData: FormData | undefined = $state()
+	let validator: FormValidator = new FormValidator('UiStateValidationFunction')
+	let disabled: boolean | undefined = $state(undefined)
+
+	$effect(() => {
+		disabled = validator.formHasErrors()
+	})
 
 	function toggleReveal(event) {
 		expanded = event.state
@@ -66,10 +74,13 @@
 		}),
 	)
 
-	let revealClasses = $derived(
-		`l:reveal ${layoutClasses} ${direction} ${expanded}`,
-	)
+	let revealClasses = $derived(`l:reveal ${layoutClasses} ${expanded}`)
 	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : '' // TODO: fix this
+
+	const inputTypes: {[name: string]: string} = {
+		formId: 'text',
+		state: 'text',
+	}
 
 	let revealStates = {
 		expanded: {
@@ -84,32 +95,38 @@
 		},
 	}
 
-	let action = $derived(
-		formaction && redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-				? formaction
-				: '',
-	)
+	let action = $derived(formaction)
+	function onKeyUp(e: KeyboardEvent) {
+		if (dismiss === UiEvents.outside && e.key === 'Escape') {
+			toggleReveal({state: 'collapsed'})
+		}
+	}
 
-	// function onKeyUp(e: KeyboardEvent) {
-	// 	if (dismiss === UiEvents.outside && e.key === 'Escape') {
-	// 		toggleReveal({state: 'collapsed'})
-	// 	}
-	// }
+	function handleClickOutside() {
+		if (dismiss === UiEvents.outside) {
+			clickOutside(content, () => toggleReveal({state: 'collapsed'}))
+		}
+	}
 
-	// function handleClickOutside() {
-	// 	if (dismiss === UiEvents.outside) {
-	// 		clickOutside(content, () => toggleReveal({state: 'collapsed'}))
-	// 	}
-	// }
+	function handleInput(event: Event) {
+		// TODO: test that this works with hidden inputs
+		validator.changeInput(event)
+		validator.validateInput(event)
+	}
+
+	onMount(() => {
+		if (boundForm) {
+			formData = new FormData(boundForm)
+			validator.init(formData, inputTypes)
+		}
+	})
 </script>
 
-<!-- <svelte:window on:keyup={onKeyUp} on:click={handleClickOutside} /> -->
+<svelte:window onkeyup={onKeyUp} onclick={handleClickOutside} />
 
 <form
 	{method}
-	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+	action={`?/${action}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
@@ -117,17 +134,17 @@
 		}
 	}}
 	class={revealClasses}
+	bind:this={boundForm}
 >
+	<input type="hidden" name="formId" value={id} oninput={handleInput} />
+	<input type="hidden" name="state" value={expanded} oninput={handleInput} />
 	<Expand
 		id={`button-reveal-${id}`}
 		{title}
 		{color}
 		{variant}
 		{size}
-		type={actionPath && formaction ? 'submit' : 'button'}
-		name="reveal"
 		controls={`${id}-reveal`}
-		value={`button-reveal-${id}`}
 		{asset}
 		justify={`${justify} nowrap`}
 		{initial}
@@ -135,6 +152,7 @@
 		place={placeIcon}
 		onclick={toggleReveal}
 		states={revealStates}
+		{disabled}
 	>
 		<span class="ellipsis">{title}</span>
 	</Expand>
