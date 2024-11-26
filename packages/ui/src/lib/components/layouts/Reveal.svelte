@@ -19,7 +19,7 @@
 		method = 'POST',
 		formaction,
 		layout,
-		reveal = 'collapsed',
+		reveal,
 		place = 'top',
 		position,
 		color,
@@ -137,7 +137,12 @@
 	bind:this={boundForm}
 >
 	<input type="hidden" name="formId" value={id} oninput={handleInput} />
-	<input type="hidden" name="state" value={expanded} oninput={handleInput} />
+	<input
+		type="hidden"
+		name={`state-${id}`}
+		value={expanded}
+		oninput={handleInput}
+	/>
 	<Expand
 		id={`button-reveal-${id}`}
 		{title}

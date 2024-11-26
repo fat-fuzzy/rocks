@@ -14,8 +14,6 @@
 		path = '',
 		reveal,
 		formaction,
-		actionPath,
-		redirect,
 		layout,
 		dismiss = UiEvents.outside,
 		color,
@@ -94,7 +92,6 @@
 			{align}
 			container="content"
 			depth={0}
-			{redirect}
 		/>
 	</Reveal>
 </nav>

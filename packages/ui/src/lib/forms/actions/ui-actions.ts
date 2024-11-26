@@ -63,4 +63,96 @@ async function handleToggleSidebar(event) {
 	})
 }
 
-export default {handleToggleSidebar}
+async function handleToggleNav(event) {
+	const element = 'nav'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleTokens(event) {
+	const element = 'tokens'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleBlocks(event) {
+	const element = 'blocks'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleLayouts(event) {
+	const element = 'layouts'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleRecipes(event) {
+	const element = 'recipes'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleUsage(event) {
+	const element = 'usage'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleDecisions(event) {
+	const element = 'decisions'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleLearning(event) {
+	const element = 'learning'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleProjects(event) {
+	const element = 'projects'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+export default {
+	handleToggleSidebar,
+	handleToggleNav,
+	handleToggleTokens,
+	handleToggleBlocks,
+	handleToggleLayouts,
+	handleToggleRecipes,
+	handleToggleUsage,
+	handleToggleDecisions,
+	handleToggleLearning,
+	handleToggleProjects,
+}
