@@ -24,6 +24,7 @@
 					slug: 'usage',
 					title: 'Usage',
 					asset: 'usage',
+					formaction: 'toggleUsage',
 					items: $page.data.markdowns.usages.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
@@ -35,6 +36,7 @@
 					slug: 'decisions',
 					title: 'Decisions',
 					asset: 'decisions',
+					formaction: 'toggleDecisions',
 					items: $page.data.markdowns.decisions.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,

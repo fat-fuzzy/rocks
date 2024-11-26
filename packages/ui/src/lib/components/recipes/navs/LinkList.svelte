@@ -23,6 +23,7 @@
 		container,
 		redirect,
 		items = [], // TODO: fix type,
+		oninput,
 	}: LinkListProps = $props()
 
 	// TODO: clean classes output
@@ -75,6 +76,16 @@
 				: `${itemClass} ${linkAssetClass}`}
 		>
 			{#if subItems && depth > 0}
+				<input
+					type="hidden"
+					name={`state-nav-${slug}`}
+					value={reveal[slug]}
+					oninput={(e) => {
+						if (oninput) {
+							oninput(e)
+						}
+					}}
+				/>
 				<ExpandLink
 					{title}
 					{reveal}
@@ -82,7 +93,7 @@
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
 					size={UiSize['2xs']}
-					{redirect}
+					formaction={`?/${item.formaction}`}
 				>
 					{@render nestedLinkList(subItems, slug)}
 				</ExpandLink>

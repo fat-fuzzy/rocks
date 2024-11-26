@@ -31,6 +31,7 @@ export type LinkListProps = UiBlockProps & {
 	container?: string
 	items: any[]
 	redirect?: string
+	oninput?: (payload: FuzzyPayload) => void
 }
 
 export type ExpandLinkProps = UiBlockProps & {
@@ -39,7 +40,7 @@ export type ExpandLinkProps = UiBlockProps & {
 	title: string
 	children: Snippet
 	reveal: UiState
-	redirect?: string
+	formaction?: string
 	onclick?: (payload: FuzzyPayload) => void
 }
 

@@ -20,6 +20,11 @@
 			? $page.form.state
 			: $page.data.sidebar.reveal,
 	)
+	let tokensReveal = $derived(
+		$page.form?.formId === formId
+			? $page.form.stateTokens
+			: $page.data.sidebar.reveal,
+	)
 
 	// TODO: move to utils / clean
 	function sortAsc(a, b) {
@@ -50,25 +55,41 @@
 					slug: 'tokens',
 					title: 'Tokens',
 					asset: 'tokens',
-					items: tokenNames.map((c) => ({slug: c, title: c})),
+					formaction: 'toggleTokens',
+					items: tokenNames.map((c) => ({
+						slug: c,
+						title: c,
+					})),
 				},
 				{
 					slug: 'blocks',
 					title: 'Blocks',
 					asset: 'blocks',
-					items: blockNames.map((c) => ({slug: c, title: c})),
+					formaction: 'toggleBlocks',
+					items: blockNames.map((c) => ({
+						slug: c,
+						title: c,
+					})),
 				},
 				{
 					slug: 'layouts',
 					title: 'Layouts',
 					asset: 'layouts',
-					items: layoutNames.map((c) => ({slug: c, title: c})),
+					formaction: 'toggleLayouts',
+					items: layoutNames.map((c) => ({
+						slug: c,
+						title: c,
+					})),
 				},
 				{
 					slug: 'recipes',
 					title: 'Recipes',
 					asset: 'recipes',
-					items: recipeNames.map((c) => ({slug: c, title: c})),
+					formaction: 'toggleRecipes',
+					items: recipeNames.map((c) => ({
+						slug: c,
+						title: c,
+					})),
 				},
 			],
 		},

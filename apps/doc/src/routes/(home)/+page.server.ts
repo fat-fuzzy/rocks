@@ -83,69 +83,6 @@ export const load = async ({params, locals}) => {
 }
 
 export const actions = {
-	toggleNav: async ({request, url, cookies}) => {
-		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-nav-reveal')
-		let currentState = DEFAULT_REVEAL_STATE
-		if (serialized) {
-			currentState = JSON.parse(serialized)
-		}
-
-		let navReveal = new UiReveal(currentState)
-		if (!navReveal.reveal(data)) {
-			error(500, 'navRevealError')
-		}
-		cookies.set('fat-fuzzy-nav-reveal', navReveal.toString(), {path: '/'})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
-		}
-		return {success: true}
-	},
-
-	toggleSidebar: async ({request, url, cookies}) => {
-		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-sidebar-reveal')
-		let currentState = DEFAULT_REVEAL_STATE
-		if (serialized) {
-			currentState = JSON.parse(serialized)
-		}
-		let sidebarReveal = new UiReveal(currentState)
-		if (!sidebarReveal.reveal(data)) {
-			error(500, 'sidebarRevealError')
-		}
-		cookies.set('fat-fuzzy-sidebar-reveal', sidebarReveal.toString(), {
-			path: '/',
-		})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
-		}
-		return {status: 200}
-	},
-
-	toggleSubnav: async ({request, url, cookies}) => {
-		const data = await request.formData()
-		const name = data.get('name')
-		const cookie = `fat-fuzzy-${name}`
-		const serialized = cookies.get(cookie)
-		let currentState = DEFAULT_REVEAL_STATE
-
-		if (serialized) {
-			currentState = JSON.parse(serialized)
-		}
-		let navReveal = new UiReveal(currentState)
-		if (!navReveal.reveal(data)) {
-			error(500, 'subnavRevealError')
-		}
-		cookies.set(cookie, navReveal.toString(), {path: '/'})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
-		}
-		return {status: 200}
-	},
-
 	toggleSettings: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-settings-reveal')

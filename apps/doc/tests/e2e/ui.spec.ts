@@ -9,9 +9,9 @@ categories.forEach(async (category) => {
 		page,
 	}) => {
 		await page.goto(utils.categories.path())
-		await expect(page.getByTestId('nav-nav-page')).toBeVisible()
+		await expect(page.getByTestId('nav-nav-ui')).toBeVisible()
 		await page
-			.getByTestId('nav-nav-page')
+			.getByTestId('nav-nav-ui')
 			.getByRole('link', {name: category})
 			.click()
 		await expect(
@@ -25,14 +25,14 @@ utils.blocks.ready.forEach(async (block) => {
 		page,
 	}) => {
 		await page.goto(utils.blocks.path())
-		await expect(page.getByTestId('nav-nav-page')).toBeVisible()
+		await expect(page.getByTestId('nav-nav-ui')).toBeVisible()
 		await page
-			.getByTestId('nav-nav-page')
+			.getByTestId('nav-nav-ui')
 			.getByTestId('button-reveal-blocks')
 			.click()
 		await page
-			.getByTestId('nav-nav-page')
-			.getByTestId('nav-page--ui-blocks')
+			.getByTestId('nav-nav-ui')
+			.getByTestId('nav-ui--ui-blocks')
 			.getByRole('link', {name: block})
 			.click()
 		await expect(

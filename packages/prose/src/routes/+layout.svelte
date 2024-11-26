@@ -36,6 +36,6 @@
 	{@render children()}
 </ParaglideJS> -->
 
-<LayoutSidebar {path} {nav} redirect={$page.url.pathname}>
+<LayoutSidebar {nav}>
 	{@render children()}
 </LayoutSidebar>
