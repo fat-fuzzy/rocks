@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
+	import type {Snippet} from 'svelte'
 	import '@fat-fuzzy/style'
 	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
 	import sketchStore from '$lib/stores/stores.svelte'
 
-const {LayoutSidebar} = ui.content
+	const {LayoutSidebar} = ui.content
 
 	type Props = {
 		children: Snippet
@@ -17,9 +17,9 @@ const {LayoutSidebar} = ui.content
 	let appSettings = $derived(sketchStore.app)
 
 	let path = ''
-	let items = [{ slug: 'sketches', title: 'Sketches' ,items: sketches}]
+	let items = [{slug: 'sketches', title: 'Sketches', items: sketches}]
 
-	let nav ={
+	let nav = {
 		path,
 		title: 'Sketches',
 		id: 'nav-sketches',
@@ -34,8 +34,7 @@ const {LayoutSidebar} = ui.content
 	}
 </script>
 
-
-<LayoutSidebar {nav} redirect={$page.url.pathname} {path} app={{settings: appSettings}}>
+<LayoutSidebar {nav} app={{settings: appSettings}}>
 	{#if children}
 		{@render children()}
 	{/if}

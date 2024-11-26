@@ -24,4 +24,5 @@ export const load = async (event) => {
 
 export const actions = {
 	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleNav: async (event) => uiActions.handleToggleNav(event),
 }

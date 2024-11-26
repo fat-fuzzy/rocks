@@ -3,10 +3,10 @@ export const load = async ({locals}) => {
 	let settings
 
 	if (locals.styles) {
-		styles = JSON.parse(locals.styles)
+		styles = locals.styles
 	}
 	if (locals.settings) {
-		settings = JSON.parse(locals.settings)
+		settings = locals.settings
 	}
 
 	return {
