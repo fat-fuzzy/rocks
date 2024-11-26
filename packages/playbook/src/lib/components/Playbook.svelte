@@ -14,15 +14,10 @@
 	}
 	let {children, app, path = ''}: Props = $props()
 
-	let formId = 'nav-ui'
+	let formId = 'sidebar'
 	let reveal = $derived(
 		$page.form?.formId === formId
 			? $page.form.state
-			: $page.data.sidebar.reveal,
-	)
-	let tokensReveal = $derived(
-		$page.form?.formId === formId
-			? $page.form.stateTokens
 			: $page.data.sidebar.reveal,
 	)
 

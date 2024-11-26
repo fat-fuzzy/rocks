@@ -3,11 +3,12 @@
 	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
+	const {DEFAULT_REVEAL_STATE} = ui.constants
 	const {LayoutSidebar} = ui.content
 
 	let {children} = $props()
 	let app = $derived(fatFuzzyStore.app)
-	let formId = 'nav-blog'
+	let formId = 'sidebar'
 	let reveal = $derived(
 		$page.form?.formId === formId
 			? $page.form.state

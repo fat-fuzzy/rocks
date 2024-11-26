@@ -1,11 +1,9 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
-import ui from '@fat-fuzzy/ui'
-
-const {uiActions} = ui.actions
 
 const page = 'blog'
 const markdowns = await pages.fetchMarkdowns(page)
+import uiActions from '$lib/forms/actions/ui-actions'
 
 export const load = async (event) => {
 	if (!markdowns?.length) {

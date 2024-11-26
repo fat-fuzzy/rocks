@@ -7,7 +7,7 @@
 
 	let {children} = $props()
 	let app = $derived(fatFuzzyStore.app)
-	let formId = 'nav-doc'
+	let formId = 'sidebar'
 	let reveal = $derived(
 		$page.form?.formId === formId
 			? $page.form.state

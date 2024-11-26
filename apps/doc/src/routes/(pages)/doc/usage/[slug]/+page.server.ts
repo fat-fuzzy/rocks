@@ -1,8 +1,6 @@
 import {error} from '@sveltejs/kit'
 import usages from '$data/usages'
-import ui from '@fat-fuzzy/ui'
-
-const {uiActions} = ui.actions
+import uiActions from '$lib/forms/actions/ui-actions'
 
 /**
  * Load data from markdown file based on route parameters

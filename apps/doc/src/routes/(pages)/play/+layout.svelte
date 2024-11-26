@@ -16,7 +16,7 @@
 	let projects = $state($page.data.sketches.projects)
 	let learning = $state($page.data.sketches.learning)
 	let app = $derived(fatFuzzyStore.app)
-	let formId = 'nav-play'
+	let formId = 'sidebar'
 	let reveal = $derived(
 		$page.form?.formId === formId
 			? $page.form.state

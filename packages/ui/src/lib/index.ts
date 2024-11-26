@@ -79,7 +79,7 @@ import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.s
 /**
  * Forms
  */
-import UiReveal from '$lib/forms/services/ui-reveal.js'
+import UiReveal from '$lib/forms/ui-reveal.js'
 import SignUpUser from '$lib/forms/ui-sample-signup.js'
 import SettingsUpdate from '$lib/forms/settings-update.js'
 
@@ -89,16 +89,6 @@ import SettingsUpdate from '$lib/forms/settings-update.js'
 import constants from '$lib/types/constants.js'
 import * as clickOutside from '$lib/utils/click-outside.js'
 import format from '$lib/utils/format.js'
-
-/**
- * Services
- */
-import uiStateService from '$lib/forms/services/ui-state.js'
-
-/**
- * Actions
- */
-import uiActions from '$lib/forms/actions/ui-actions.js'
 
 /***************************************************
  * Prepare Exports
@@ -112,14 +102,6 @@ const forms = {
 	UiReveal,
 	SettingsUpdate,
 	SignUpUser,
-}
-
-const services = {
-	uiStateService,
-}
-
-const actions = {
-	uiActions,
 }
 
 const tokens = {
@@ -195,7 +177,5 @@ export default {
 	content,
 	utils,
 	forms,
-	services,
-	actions,
 	constants,
 } as FatFuzzyUi

@@ -2,9 +2,7 @@ import {error} from '@sveltejs/kit'
 
 import images from '$data/images'
 import pages from '$data/pages'
-import ui from '@fat-fuzzy/ui'
-
-const {uiActions} = ui.actions
+import uiActions from '$lib/forms/actions/ui-actions'
 
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)

@@ -90,7 +90,7 @@ export const actions = {
 		if (serialized) {
 			currentState = JSON.parse(serialized)
 		}
-		let settingsReveal = new UiReveal(currentState)
+		let settingsReveal = new UiReveal(currentState, 'settings')
 		if (!settingsReveal.reveal(data)) {
 			error(500, 'settingsRevealError')
 		}
