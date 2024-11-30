@@ -84,6 +84,7 @@ export const load = async ({params, locals}) => {
 }
 
 export const actions = {
+	toggleNav: async (event) => uiActions.handleToggleNav(event),
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	updateSettings: async ({request, url, cookies}) => {
 		const data = await request.formData()
