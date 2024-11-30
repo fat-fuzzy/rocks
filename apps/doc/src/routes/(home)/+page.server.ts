@@ -2,6 +2,7 @@ import {error, redirect} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 import pages from '$data/pages'
 import images from '$data/images'
+import uiActions from '$lib/forms/actions/ui-actions'
 
 const page = 'home'
 
@@ -83,27 +84,7 @@ export const load = async ({params, locals}) => {
 }
 
 export const actions = {
-	toggleSettings: async ({request, url, cookies}) => {
-		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-settings-reveal')
-		let currentState = DEFAULT_REVEAL_STATE
-		if (serialized) {
-			currentState = JSON.parse(serialized)
-		}
-		let settingsReveal = new UiReveal(currentState, 'settings')
-		if (!settingsReveal.reveal(data)) {
-			error(500, 'settingsRevealError')
-		}
-		cookies.set('fat-fuzzy-settings-reveal', settingsReveal.toString(), {
-			path: '/',
-		})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			throw redirect(303, redirectTo)
-		}
-		return {status: 200}
-	},
-
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	updateSettings: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-settings-app')

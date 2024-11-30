@@ -1,22 +1,23 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
-	import {UiEvents} from '$types'
+	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
-	import {clickOutside} from '$lib/utils/click-outside.js'
-	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
+
+	import {UiEvents} from '$types'
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
-
+	import {clickOutside} from '$lib/utils/click-outside.js'
 	import FormValidator from '$lib/utils/validate-form.svelte.js'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import {onMount} from 'svelte'
 
 	const {ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE} = constants
 
 	let {
 		id = 'reveal',
+		name = 'reveal',
 		title = 'Reveal',
-		method = 'POST',
+		method = 'POST', // TODO: change to GET with params
 		formaction,
 		layout,
 		reveal,
@@ -79,7 +80,7 @@
 
 	const inputTypes: {[name: string]: string} = {
 		formId: 'text',
-		state: 'text',
+		state: 'text', // TODO: fix this - it wont work with multiple reveals
 	}
 
 	let revealStates = {
@@ -161,9 +162,9 @@
 	>
 		<span class="ellipsis">{title}</span>
 	</Expand>
-	<ff-popover id={`${id}-reveal`} class="content" bind:this={content}>
+	<ff-reveal id={`${id}-reveal`} class="content" bind:this={content}>
 		{#if children}
 			{@render children()}
 		{/if}
-	</ff-popover>
+	</ff-reveal>
 </form>

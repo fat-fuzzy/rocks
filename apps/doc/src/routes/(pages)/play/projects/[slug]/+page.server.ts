@@ -20,8 +20,9 @@ export const load = ({params}) => {
 }
 
 export const actions = {
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
 }

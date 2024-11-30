@@ -78,8 +78,8 @@
 			{#if subItems && depth > 0}
 				<input
 					type="hidden"
-					name={`state-nav-${slug}`}
-					value={reveal[slug]}
+					name={`state-${slug}`}
+					value={reveal[slug].reveal}
 					oninput={(e) => {
 						if (oninput) {
 							oninput(e)
