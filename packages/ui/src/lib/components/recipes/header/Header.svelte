@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
-	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 	import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
+	import Settings from '$lib/components/recipes/header/Settings.svelte'
 
 	let {
 		id = 'header-app',

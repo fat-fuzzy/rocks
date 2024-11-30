@@ -53,6 +53,7 @@ import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
+import Settings from '$lib/components/recipes/header/Settings.svelte'
 import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte'
 
 /**
@@ -159,6 +160,7 @@ const drafts = {
 	ScrollyItem,
 	HeaderSettings,
 	SettingsMenu,
+	Settings,
 	PageScrolly,
 }
 
