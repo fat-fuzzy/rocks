@@ -2,6 +2,7 @@ import {test, expect} from '@playwright/test'
 import utils from '../utils/constants'
 
 const categories = [...utils.categories.ready, ...utils.categories.draft]
+const sidebarTestId = 'sidebar--ui'
 // const blocks = [...utils.blocks.ready, ...utils.blocks.draft]
 
 categories.forEach(async (category) => {
@@ -9,9 +10,9 @@ categories.forEach(async (category) => {
 		page,
 	}) => {
 		await page.goto(utils.categories.path())
-		await expect(page.getByTestId('nav-nav-ui')).toBeVisible()
+		await expect(page.getByTestId(sidebarTestId)).toBeVisible()
 		await page
-			.getByTestId('nav-nav-ui')
+			.getByTestId(sidebarTestId)
 			.getByRole('link', {name: category})
 			.click()
 		await expect(
@@ -25,14 +26,14 @@ utils.blocks.ready.forEach(async (block) => {
 		page,
 	}) => {
 		await page.goto(utils.blocks.path())
-		await expect(page.getByTestId('nav-nav-ui')).toBeVisible()
+		await expect(page.getByTestId(`${sidebarTestId}-blocks`)).toBeVisible()
 		await page
-			.getByTestId('nav-nav-ui')
+			.getByTestId(sidebarTestId)
 			.getByTestId('button-reveal-blocks')
 			.click()
 		await page
-			.getByTestId('nav-nav-ui')
-			.getByTestId('nav-ui--ui-blocks')
+			.getByTestId(sidebarTestId)
+			.getByTestId(`${sidebarTestId}-blocks`)
 			.getByRole('link', {name: block})
 			.click()
 		await expect(
