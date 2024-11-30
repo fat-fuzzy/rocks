@@ -42,31 +42,31 @@ export default {
 		status: [
 			{
 				text: 'Too swift arrives as tardy as too slow.',
-				case: 'default',
+				value: 'default',
 				variant: 'outline',
 				asset: 'default',
 			},
 			{
 				text: `Though this be madness, yet there is method in't.`,
-				case: 'info',
+				value: 'info',
 				variant: 'outline',
 				asset: 'info',
 			},
 			{
 				text: 'One touch of nature makes the whole world kin.',
-				case: 'success',
+				value: 'success',
 				variant: 'outline',
 				asset: 'success',
 			},
 			{
 				text: 'The course of true love never did run smooth.',
-				case: 'warning',
+				value: 'warning',
 				variant: 'outline',
 				asset: 'warning',
 			},
 			{
 				text: ` There's small choice in rotten apples.`,
-				case: 'error',
+				value: 'error',
 				variant: 'outline',
 				asset: 'error',
 			},
