@@ -169,12 +169,8 @@
 				{size}
 				controls={`${id}-reveal`}
 				{asset}
-				{initial}
-			justify={`${justify} nowrap`}
-			justify={`${justify} nowrap`}
-			{initial}
 				justify={`${justify} nowrap`}
-			{initial}
+				{initial}
 				place={placeIcon}
 				onclick={toggleReveal}
 				states={revealStates}
