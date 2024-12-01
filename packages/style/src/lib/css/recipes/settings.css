@@ -2,6 +2,7 @@
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
 	padding: var(--ui-size-sm);
+	justify-content: var(--justify, flex-end);
 }
 
 .menu\:settings + menu:empty {
