@@ -94,20 +94,18 @@
 					},
 				}
 			: SWITCH_MACHINE}
-		<div class="l:frame:round">
-			<Switch
-				id={`${settingsId}-${id}`}
-				{name}
-				{title}
-				{variant}
-				{shape}
-				{color}
-				{size}
-				{value}
-				initial={appSettings[id as UiSettings]}
-				states={switchStates}
-				onclick={handleUpdate}
-			/>
-		</div>
+		<Switch
+			id={`${settingsId}-${id}`}
+			{name}
+			{title}
+			{variant}
+			{shape}
+			{color}
+			{size}
+			{value}
+			initial={appSettings[id as UiSettings]}
+			states={switchStates}
+			onclick={handleUpdate}
+		/>
 	{/each}
 </form>

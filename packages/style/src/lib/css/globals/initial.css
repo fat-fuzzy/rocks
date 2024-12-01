@@ -51,20 +51,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-:where(
-		a,
-		button,
-		input,
-		select,
-		textarea,
-		select,
-		details,
-		audio,
-		video:has[controls],
-		object[form],
-		[contenteditable],
-		[tabindex]
-	):not([disabled]):focus {
+*:not([disabled]):focus {
 	--chroma: var(--chroma-focus);
 	--lightness: var(--lightness-focus);
 	--chroma-contrast: var(--chroma-focus);
