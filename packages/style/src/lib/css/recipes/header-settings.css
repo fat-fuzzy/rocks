@@ -31,7 +31,7 @@
 	}
 
 	[aria-expanded='true'] + .content {
-		--y-axis: var(--size-ui-header-height) + var(--outline-offset-nav);
+		--y-axis: var(--ui-header-height) + var(--outline-offset-nav);
 		display: flex;
 		flex-direction: column;
 		block-size: fit-content;
@@ -55,7 +55,7 @@
 	flex-grow: 0;
 
 	form:has([aria-expanded='true']) + .content {
-		top: calc(var(--size-ui-header-height) + var(--ui-size));
+		top: calc(var(--ui-header-height) + var(--ui-size));
 		background-color: var(--shade);
 	}
 }

@@ -42,25 +42,7 @@ nav li a {
 [class*='l:sidebar'] .reveal-nav {
 	container-type: inline-size;
 	inline-size: 100%;
-
-	nav > form {
-		padding: var(--outline-offset-nav);
-		inline-size: 100%;
-	}
-
-	nav > form > [aria-expanded] {
-		border-radius: 0;
-	}
-
-	.collapsed ul {
-		block-size: 0;
-
-		> * {
-			block-size: 0;
-			padding: 0;
-			margin: 0;
-		}
-	}
+	padding-block-start: var(--outline-offset-reveal);
 }
 
 nav a:hover {
@@ -145,13 +127,13 @@ a[class*='card']:hover > *:not(.icon) {
 }
 
 [class*='l:sidebar'] .reveal-nav > form {
-	[aria-expanded='true'] .content {
+	[aria-expanded='true'] ff-reveal {
 		margin: 0;
 		padding: 0;
 		inline-size: fit-content;
 	}
 
-	[aria-expanded='false'] .content {
+	[aria-expanded='false'] ff-reveal {
 		inline-size: 0;
 		overflow: hidden;
 	}
@@ -162,20 +144,11 @@ a[class*='card']:hover > *:not(.icon) {
 		&.collapsed {
 			--sidebar-width: calc(
 				var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
-					var(--outline-offset-settings) * 2
+					var(--outline-offset-reveal) * 2
 			);
 		}
 
 		[class*='l:reveal'].sticky {
-			--y-size-sticky: calc(
-				100vh - 2 * var(--size-ui-header-height) - 2 * var(--ui-size-lg)
-			);
-			--y-size: var(--y-size-sticky);
-			position: sticky;
-			block-size: var(--y-size);
-			top: var(--y-axis);
-			z-index: 1;
-
 			ul.depth-0 {
 				block-size: var(--y-size-sticky);
 				overflow: hidden auto;
@@ -186,28 +159,28 @@ a[class*='card']:hover > *:not(.icon) {
 			}
 
 			> .expanded {
-				--x-size: calc(var(--sidebar-width) - var(--outline-offset-settings));
+				--x-size: var(--sidebar-width);
 				transition: inline-size 250ms ease-in-out;
 				/* transition: transform 250ms ease-in-out; */
 
-				> .content {
+				> ff-reveal {
 					inline-size: 100%;
 					transform: translateX(0);
 					transition: transform 250ms ease-in;
 					transition: inline-size 250ms ease-in-out;
 				}
 
-				> .content > * {
+				> ff-reveal > * {
 					inline-size: 100%;
 					transition: inline-size 250ms ease-in-out;
 				}
 			}
 
 			> .collapsed {
-				--y-size: var(--y-size-sticky);
+				--y-size: var(--ui-header-height);
 				--x-size: calc(--sidebar-width);
 
-				> .content {
+				> ff-reveal {
 					--x-axis: calc(var(--x-size) * -1);
 					inline-size: 100%;
 					block-size: var(--y-size);

@@ -62,10 +62,7 @@
 .sticky\:top > main {
 	min-height: calc(
 		100vh -
-			calc(
-				var(--size-ui-header-height) - var(--size-ui-header-margin) -
-					var(--size-ui-footer-height)
-			)
+			calc(var(--ui-header-height) - var(--ui-size) - var(--ui-footer-height))
 	);
 }
 

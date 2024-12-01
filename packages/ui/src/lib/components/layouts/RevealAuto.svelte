@@ -7,6 +7,7 @@
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import styleHelper from '$lib/utils/styles.js'
 
+	import Reveal from './Reveal.svelte'
 	const {ALIGN_OPPOSITE} = constants
 
 	let {

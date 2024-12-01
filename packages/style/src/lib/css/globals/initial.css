@@ -31,7 +31,7 @@ body {
 
 main {
 	background-color: var(--shade);
-	min-height: calc(100vh - var(--size-ui-header-height));
+	min-height: calc(100vh - var(--ui-header-height));
 }
 
 a {

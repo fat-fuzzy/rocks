@@ -18,10 +18,12 @@
 		name = 'reveal',
 		title = 'Reveal',
 		method = 'POST', // TODO: change to GET with params
+		auto = false,
 		formaction,
 		layout,
 		reveal,
 		place = 'top',
+		element = 'div',
 		position,
 		color,
 		size,
@@ -58,15 +60,22 @@
 		}
 	}
 
-	let layoutClasses = $derived(
-		styleHelper.getLayoutStyles({
+	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
+	let elementClasses = $derived(
+		styleHelper.getElementStyles({
 			color,
 			size,
-			height,
-			align,
+			alignSelf: buttonAlign,
 			justify,
 			asset,
 			variant,
+		}),
+	)
+	let layoutClasses = $derived(
+		styleHelper.getLayoutStyles({
+			height,
+			align,
+			justify,
 			layout,
 			position,
 			breakpoint,
@@ -74,10 +83,14 @@
 			layer,
 		}),
 	)
-
-	let revealClasses = $derived(`l:reveal ${layoutClasses} ${expanded}`)
+	let formClasses = $derived(`form:${expanded}`)
 	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : '' // TODO: fix this
-
+	let revealLayoutClasses = $derived(` ${expanded} ${layoutClasses}`)
+	let revealClasses = $derived(
+		auto
+			? `l:reveal:auto ${revealLayoutClasses}`
+			: `l:reveal ${revealLayoutClasses}`,
+	)
 	const inputTypes: {[name: string]: string} = {
 		formId: 'text',
 		state: 'text', // TODO: fix this - it wont work with multiple reveals
@@ -87,12 +100,16 @@
 		expanded: {
 			...EXPAND_MACHINE.expanded,
 			text: title,
-			asset: `point-${ALIGN_ANIMATION_DIRECTION[place]['expanded']}`,
+			asset: asset
+				? asset
+				: `point-${ALIGN_ANIMATION_DIRECTION[place]['expanded']}`,
 		},
 		collapsed: {
 			...EXPAND_MACHINE.collapsed,
 			text: title,
-			asset: `point-${ALIGN_ANIMATION_DIRECTION[place]['collapsed']}`,
+			asset: asset
+				? asset
+				: `point-${ALIGN_ANIMATION_DIRECTION[place]['collapsed']}`,
 		},
 	}
 
@@ -125,46 +142,56 @@
 
 <svelte:window onkeyup={onKeyUp} onclick={handleClickOutside} />
 
-<form
-	{method}
-	action={`?/${action}`}
-	use:enhance={() => {
-		// prevent default callback from resetting the form
-		return ({update}) => {
-			update({reset: false})
-		}
-	}}
-	class={revealClasses}
-	bind:this={boundForm}
->
-	<input type="hidden" name="formId" value={id} oninput={handleInput} />
-	<input
-		type="hidden"
-		name={`state-${id}`}
-		value={expanded}
-		oninput={handleInput}
-	/>
-	<Expand
-		id={`button-reveal-${id}`}
-		{title}
-		{color}
-		{variant}
-		{size}
-		controls={`${id}-reveal`}
-		{asset}
-		justify={`${justify} nowrap`}
-		{initial}
-		text="Reveal"
-		place={placeIcon}
-		onclick={toggleReveal}
-		states={revealStates}
-		{disabled}
+{#if auto}
+	<svelte:element this={element} {id} class={revealClasses} aria-label={title}>
+		{@render revealForm()}
+	</svelte:element>
+{:else}
+	{@render revealForm()}
+{/if}
+
+{#snippet revealForm()}
+	<form
+		{name}
+		{method}
+		action={`?/${action}`}
+		use:enhance={() => {
+			// prevent default callback from resetting the form
+			return ({update}) => {
+				update({reset: false})
+			}
+		}}
+		class={formClasses}
+		bind:this={boundForm}
 	>
-		<span class="ellipsis">{title}</span>
-	</Expand>
-	<ff-reveal id={`${id}-reveal`} class="content" bind:this={content}>
+		<input type="hidden" name="formId" value={id} oninput={handleInput} />
+		<input
+			type="hidden"
+			name={`state-${id}`}
+			value={expanded}
+			oninput={handleInput}
+		/>
+		<Expand
+			id={`button-reveal-${id}`}
+			{title}
+			{color}
+			{variant}
+			{size}
+			controls={`${id}-reveal`}
+			{asset}
+			justify={`${justify} nowrap`}
+			{initial}
+			place={placeIcon}
+			onclick={toggleReveal}
+			states={revealStates}
+			{disabled}
+		>
+			<span class="ellipsis">{title}</span>
+		</Expand>
+	</form>
+	<ff-reveal id={`${id}-reveal`} bind:this={content}>
 		{#if children}
 			{@render children()}
 		{/if}
 	</ff-reveal>
-</form>
+{/snippet}

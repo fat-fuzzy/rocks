@@ -6,6 +6,15 @@
 		.header-app .l\:reveal\:auto.bp\:#{$size} {
 			justify-content: var(--justify);
 			padding-block: 0;
+
+			[aria-expanded] + ff-reveal {
+				margin-block-start: 0;
+				margin-inline-start: calc(-1 * var(--gap));
+				block-size: fit-content;
+				inline-size: fit-content;
+				padding: 0;
+				box-shadow: unset;
+			}
 		}
 
 		.header-app > [class*='l:main']:has(.l\:reveal\:auto.bp\:#{$size}) {
@@ -14,12 +23,11 @@
 
 		/* Configure reveal menu positioning and width */
 		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} {
-			form:has([aria-expanded]) + .content {
+			form:has([aria-expanded]) + ff-reveal {
 				block-size: fit-content;
 				inline-size: fit-content;
 				padding: 0;
 				box-shadow: unset;
-				margin: auto;
 			}
 		}
 

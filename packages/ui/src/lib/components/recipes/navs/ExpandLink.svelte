@@ -69,9 +69,9 @@
 			onclick={toggleReveal}
 		/>
 	</div>
-	<div id={`links-${slug}`} class="content">
+	<ff-reveal id={`links-${slug}`}>
 		{#if children}
 			{@render children()}
 		{/if}
-	</div>
+	</ff-reveal>
 </div>

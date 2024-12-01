@@ -16,7 +16,7 @@
 	position: relative;
 }
 
-.l\:reveal\:auto [aria-expanded='true'] + .content {
+.l\:reveal\:auto [aria-expanded='true'] + ff-reveal {
 	position: absolute;
 	z-index: var(--layout-z-index-reveal);
 	inline-size: auto;
@@ -26,8 +26,8 @@
 	white-space: normal;
 }
 
-.l\:reveal\:auto [aria-expanded='false'] + .content,
-.l\:reveal\:auto form:has([aria-expanded='false']) + .content {
+.l\:reveal\:auto [aria-expanded='false'] + ff-reveal,
+.l\:reveal\:auto form:has([aria-expanded='false']) + ff-reveal {
 	position: absolute;
 	border: 0;
 	block-size: 0;
@@ -38,7 +38,7 @@
 	overflow: hidden;
 }
 
-.l\:reveal\:auto form:has([aria-expanded='true']) + .content {
+.l\:reveal\:auto form:has([aria-expanded='true']) + ff-reveal {
 	position: absolute;
 	inline-size: auto;
 	block-size: auto;

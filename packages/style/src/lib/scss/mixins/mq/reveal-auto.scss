@@ -8,8 +8,10 @@
 			inline-size: fit-content;
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='false'] + .content,
-		.l\:reveal\:auto.bp\:#{$size} form:has([aria-expanded='false']) + .content {
+		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='false'] + ff-reveal,
+		.l\:reveal\:auto.bp\:#{$size}
+			form:has([aria-expanded='false'])
+			+ ff-reveal {
 			top: 0;
 			inline-size: auto;
 			min-inline-size: unset;
@@ -22,10 +24,12 @@
 			display: none;
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='true'] + .content,
-		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='false'] + .content,
-		.l\:reveal\:auto.bp\:#{$size} form:has([aria-expanded='true']) + .content,
-		.l\:reveal\:auto.bp\:#{$size} form:has([aria-expanded='false']) + .content {
+		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='true'] + ff-reveal,
+		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='false'] + ff-reveal,
+		.l\:reveal\:auto.bp\:#{$size} form:has([aria-expanded='true']) + ff-reveal,
+		.l\:reveal\:auto.bp\:#{$size}
+			form:has([aria-expanded='false'])
+			+ ff-reveal {
 			block-size: auto;
 			margin: initial;
 			overflow: hidden;

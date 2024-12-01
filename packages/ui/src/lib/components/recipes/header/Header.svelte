@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
-	import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
+	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import Settings from '$lib/components/recipes/header/Settings.svelte'
 
 	let {
@@ -9,8 +9,6 @@
 		breakpoint = 'sm',
 		path,
 		formaction,
-		actionPath,
-		redirect,
 		items,
 	}: HeaderProps = $props()
 	let className = 'header-app'
@@ -28,60 +26,54 @@
 <header class={headerClass}>
 	<div class="l:main">
 		<SkipLinks />
-		{#key path}
-			<RevealAuto
-				id={`${id}-primary-nav`}
-				name={`${id}-primary-nav`}
-				label=""
-				element="nav"
-				layout="main"
-				title="Menu"
-				size="xs"
-				variant="outline"
-				asset="home"
-				justify="start"
-				{reveal}
-				{breakpoint}
-				{formaction}
-				{redirect}
-				{actionPath}
-			>
-				<ul class="l:switcher:sm">
-					<li aria-current={path === '/' ? 'page' : undefined}>
+		<Reveal
+			{id}
+			name={id}
+			label=""
+			element="nav"
+			title="Menu"
+			size="xs"
+			variant="outline"
+			asset="home"
+			justify="start"
+			auto={true}
+			{reveal}
+			{breakpoint}
+			{formaction}
+		>
+			<ul class="l:switcher:sm">
+				<li aria-current={path === '/' ? 'page' : undefined}>
+					<a
+						data-sveltekit-preload-data
+						href="/"
+						onclick={handleClickOutsideMainNav}>Home</a
+					>
+				</li>
+				{#each items.links as { slug, title }}
+					<li aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}>
 						<a
 							data-sveltekit-preload-data
-							href="/"
-							onclick={handleClickOutsideMainNav}>Home</a
+							href={`/${slug}`}
+							onclick={handleClickOutsideMainNav}
 						>
+							{title}
+						</a>
 					</li>
-					{#each items.links as { slug, title }}
-						<li
-							aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}
-						>
-							<a
-								data-sveltekit-preload-data
-								href={`/${slug}`}
-								onclick={handleClickOutsideMainNav}
-							>
-								{title}
-							</a>
-						</li>
-					{/each}
-				</ul>
-			</RevealAuto>
-		{/key}
+				{/each}
+			</ul>
+		</Reveal>
 	</div>
-	<Settings
-		name={`${id}-settings`}
-		label=""
-		{path}
-		{breakpoint}
-		align="end"
-		size="xs"
-		id={`${id}-menu-settings`}
-		{actionPath}
-		{redirect}
-		items={items.settings}
-		onupdate={items?.settings.onupdate}
-	/>
+	<div class="l:side">
+		<Settings
+			name={`${id}-settings`}
+			label=""
+			{path}
+			{breakpoint}
+			align="end"
+			size="xs"
+			id={`${id}-menu-settings`}
+			items={items.settings}
+			onupdate={items?.settings.onupdate}
+		/>
+	</div>
 </header>
