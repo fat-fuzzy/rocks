@@ -7,7 +7,9 @@
 	color: var(--ink);
 	background-color: var(--shade);
 	justify-content: var(--justify, center);
-	padding: var(--ui-size-sm);
+	padding-inline: var(--ui-size-sm);
+	padding-block: calc(var(--ui-size-sm) + var(--outline-offset-nav) / 2)
+		calc(var(--ui-size-sm) - var(--outline-offset-nav) / 2);
 
 	.form\:expanded + ff-reveal {
 		--y-axis: var(--ui-header-height);

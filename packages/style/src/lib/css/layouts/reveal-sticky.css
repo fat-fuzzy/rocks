@@ -1,10 +1,4 @@
-/* TODO: use grid for this */
-/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
-
-/* The reveal layout inside a sidebar is currently only used for sidebar menus:
-		- reveal mechanism serves to collapse and expand the menu on mobile
-		- reveal is not necessary on desktop, so on desktop we unset the reveal layout
-	Constraining this allows usage of reveal layout in desktop, outside a sidebar context */
+/* The reveal layout inside a sidebar is currently only used for the sidebar nav in LayoutSidebar */
 
 [class*='l:reveal'].sticky {
 	--y-axis: var(--ui-header-height);
@@ -17,22 +11,6 @@
 	> form > [aria-expanded] {
 		inline-size: 100%;
 	}
-
-	nav {
-		inline-size: var(--x-size);
-		block-size: var(--y-size);
-
-		> ff-reveal {
-			--y-size: 0;
-			border: 0;
-			margin: 0;
-			padding: 0;
-			position: relative;
-			inline-size: 0;
-			white-space: nowrap;
-			overflow: hidden;
-		}
-	}
 }
 
 @media screen and (min-width: 1160px) {
@@ -41,5 +19,14 @@
 			100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size-lg)
 		);
 		--y-size: var(--y-size-sticky);
+
+		&.collapsed > ff-reveal {
+			border: initial;
+			margin: initial;
+			overflow: auto;
+			padding: initial;
+			position: unset;
+			white-space: initial;
+		}
 	}
 }

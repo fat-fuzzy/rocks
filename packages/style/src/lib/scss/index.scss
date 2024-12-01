@@ -1,6 +1,8 @@
 /* MEDIA QUERIES */
 
 @forward './mixins/mq/burrito';
+@forward './mixins/mq/reveal-auto';
+@forward './mixins/mq/header-app';
 
 /* SCSS design token definitions */
 @use './mixins/scale';

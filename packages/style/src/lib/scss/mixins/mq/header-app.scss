@@ -3,35 +3,37 @@
 /* TODO: clean this up - not so good  */
 @mixin switchToRowStyles_Header($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
+		.header-app:has(.l\:reveal\:auto.bp\:#{$size}) {
+			padding-block: 0;
+			padding-inline: var(--gap);
+		}
+
 		.header-app .l\:reveal\:auto.bp\:#{$size} {
 			justify-content: var(--justify);
-			padding-block: 0;
 
-			[aria-expanded] + ff-reveal {
-				margin-block-start: 0;
-				margin-inline-start: calc(-1 * var(--gap));
+			> ff-reveal {
+				position: unset;
 				block-size: fit-content;
 				inline-size: fit-content;
 				padding: 0;
 				box-shadow: unset;
 			}
-		}
-
-		.header-app > [class*='l:main']:has(.l\:reveal\:auto.bp\:#{$size}) {
-			min-inline-size: unset;
 		}
 
 		/* Configure reveal menu positioning and width */
-		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} {
-			form:has([aria-expanded]) + ff-reveal {
+		.header-app [class*='l:side'] .l\:reveal\:auto.bp\:#{$size} {
+			> ff-reveal {
+				flex-wrap: nowrap;
+				display: flex;
 				block-size: fit-content;
-				inline-size: fit-content;
+				inline-size: max-content;
 				padding: 0;
 				box-shadow: unset;
 			}
 		}
 
-		.header-app [class*='l:main'] nav.l\:reveal\:auto.bp\:#{$size} {
+		.header-app nav.l\:reveal\:auto.bp\:#{$size} {
+			min-inline-size: unset;
 			flex-direction: row;
 			padding-block: 0;
 			inline-size: fit-content;
@@ -60,7 +62,6 @@
 					flex-direction: row;
 					border-inline-start: unset;
 					border-color: var(--accent);
-					background-color: var(--shade);
 				}
 			}
 

@@ -44,7 +44,7 @@
 				{breakpoint}
 				{formaction}
 			>
-				<ul class="l:switcher:sm unstyled">
+				<ul class="l:switcher:sm unstyled color:primary">
 					<li aria-current={path === '/' ? 'page' : undefined}>
 						<a
 							data-sveltekit-preload-data
