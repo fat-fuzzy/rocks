@@ -1,7 +1,10 @@
 <script lang="ts">
 	import type {SettingsProps} from '$types'
+	import constants from '$lib/types/constants.js'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
+
+	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'settings',
@@ -17,6 +20,9 @@
 		items,
 		onupdate,
 	}: SettingsProps = $props()
+
+	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
+	let reveal = $derived(settingsReveal.reveal)
 </script>
 
 <Reveal
@@ -24,6 +30,7 @@
 	title="Settings"
 	name={id}
 	auto={true}
+	{reveal}
 	{breakpoint}
 	{background}
 	{layout}
@@ -40,7 +47,7 @@
 		{formaction}
 		{onupdate}
 	/>
-	<menu class="links:settings end">
+	<menu class="links:settings end unstyled">
 		{#each items.links as { title, url, shape, size, asset }}
 			<li class="l:frame:round">
 				<a

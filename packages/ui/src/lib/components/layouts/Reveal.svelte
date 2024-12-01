@@ -60,17 +60,6 @@
 		}
 	}
 
-	let buttonAlign = align ? ALIGN_OPPOSITE[align] : ''
-	let elementClasses = $derived(
-		styleHelper.getElementStyles({
-			color,
-			size,
-			alignSelf: buttonAlign,
-			justify,
-			asset,
-			variant,
-		}),
-	)
 	let layoutClasses = $derived(
 		styleHelper.getLayoutStyles({
 			height,

@@ -18,7 +18,6 @@ import './overflow.css' /* Use to manage content overflow*/
 /* == Reveal layouts == */
 
 import './reveal.css' /* Use for displaying hidden content with a button action */
-import './reveal-auto.css' /* Use for displaying hidden content in response to a container breakpoint */
 import './reveal-sticky.css' /* Use for displaying hidden content in response to a button action */
 import './details.css' /* Use to style <details> and <summary> elements */
 import './dialog.css' /* Use to style the <dialog> element */

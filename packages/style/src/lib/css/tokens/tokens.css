@@ -257,7 +257,7 @@
   --size-ratio-sm: 1.25;
   --size-ratio-xs: 1.15;
   --ui-footer-height: var(--font-size-body);
-  --ui-header-height: var(--scale-base-30);
+  --ui-header-height: var(--scale-base-50);
   --ui-header-icon-height: 2.25rem;
   --ui-header-margin: calc(var(--gap) / 2);
   --ui-header-max-height: 30vh;

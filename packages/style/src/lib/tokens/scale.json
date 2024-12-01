@@ -133,7 +133,7 @@
 		"$type": "dimension",
 		"header": {
 			"height": {
-				"$value": "var(--scale-base-30)"
+				"$value": "var(--scale-base-50)"
 			},
 			"max-height": {
 				"$value": "30vh"
