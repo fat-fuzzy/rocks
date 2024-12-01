@@ -30,7 +30,6 @@ export interface Blocks {
 export interface Layouts {
 	Burrito: typeof import('$lib/components/layouts/Burrito.svelte').default
 	Reveal: typeof import('$lib/components/layouts/Reveal.svelte').default
-	RevealAuto: typeof import('$lib/components/layouts/RevealAuto.svelte').default
 	Stack: typeof import('$lib/components/layouts/Stack.svelte').default
 	Switcher: typeof import('$lib/components/layouts/Switcher.svelte').default
 	Sidebar: typeof import('$lib/components/layouts/Sidebar.svelte').default
