@@ -42,7 +42,7 @@
 
 			li {
 				display: flex;
-				align-items: center;
+				align-items: var(--align, center);
 				justify-content: var(--justify, center);
 				border-inline-start: unset;
 				border-block-start: var(--border-width-xl) solid var(--shade);
@@ -56,6 +56,7 @@
 			}
 
 			a {
+				align-items: var(--align, center);
 				justify-content: var(--justify, center);
 			}
 		}

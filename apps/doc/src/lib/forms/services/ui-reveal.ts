@@ -29,7 +29,6 @@ class UiReveal {
 			updated = data.get(`state-${this.id}`)?.toString()
 		}
 		if (updated) {
-			console.log('data', data)
 			this.state.reveal = updated
 			return {
 				success: true,
