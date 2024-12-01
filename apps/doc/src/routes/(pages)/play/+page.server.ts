@@ -30,5 +30,5 @@ export const actions = {
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
 	updateSettings: async (event) =>
-		settingsActions.handleToggleAppSettings({event}),
+		settingsActions.handleUpdateAppSettings({event}),
 }

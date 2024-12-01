@@ -10,7 +10,7 @@ const {APP_PREFIX} = ui.constants
 /**
  * TODO validate input
  */
-async function handleToggleAppSettings({event}: UiActionSetInput) {
+async function handleUpdateAppSettings({event}: UiActionSetInput) {
 	const {request, cookies} = event
 
 	try {
@@ -50,7 +50,7 @@ async function handleToggleAppSettings({event}: UiActionSetInput) {
 
 async function handleToggleBrightness(event) {
 	const element = 'brightness'
-	return handleToggleAppSettings({
+	return handleUpdateAppSettings({
 		event,
 		element,
 		options: {},
@@ -59,7 +59,7 @@ async function handleToggleBrightness(event) {
 
 async function handleToggleContrast(event) {
 	const element = 'contrast'
-	return handleToggleAppSettings({
+	return handleUpdateAppSettings({
 		event,
 		element,
 		options: {},
@@ -69,5 +69,5 @@ async function handleToggleContrast(event) {
 export default {
 	handleToggleBrightness,
 	handleToggleContrast,
-	handleToggleAppSettings,
+	handleUpdateAppSettings,
 }

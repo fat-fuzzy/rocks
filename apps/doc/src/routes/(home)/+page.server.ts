@@ -84,7 +84,7 @@ export const actions = {
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	updateSettings: async (event) =>
-		settingsActions.handleToggleAppSettings({event}),
+		settingsActions.handleUpdateAppSettings({event}),
 	reset: async ({cookies}) => {
 		cookies.getAll().forEach((cookie) => {
 			if (cookie.name.startsWith('fat-fuzzy-')) {

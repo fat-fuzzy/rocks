@@ -23,7 +23,7 @@ export const actions = {
 	toggleLayouts: async (event) => uiActions.handleToggleLayouts(event),
 	toggleRecipes: async (event) => uiActions.handleToggleRecipes(event),
 	updateSettings: async (event) =>
-		settingsActions.handleToggleAppSettings({event}),
+		settingsActions.handleUpdateAppSettings({event}),
 
 	toggleContext: async ({request, url, cookies}) => {
 		const data = await request.formData()

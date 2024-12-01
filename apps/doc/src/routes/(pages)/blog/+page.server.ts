@@ -26,5 +26,5 @@ export const actions = {
 	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	updateSettings: async (event) =>
-		settingsActions.handleToggleAppSettings({event}),
+		settingsActions.handleUpdateAppSettings({event}),
 }

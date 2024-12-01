@@ -54,5 +54,5 @@ export const actions = {
 	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
 	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),
 	updateSettings: async (event) =>
-		settingsActions.handleToggleAppSettings({event}),
+		settingsActions.handleUpdateAppSettings({event}),
 }
