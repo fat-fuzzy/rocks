@@ -8,7 +8,7 @@
 			padding-inline: var(--gap);
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} {
+		.header-app .l\:reveal\:auto.bp\:#{$size} {
 			justify-content: var(--justify);
 
 			> ff-reveal {
@@ -22,7 +22,7 @@
 			}
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} {
+		nav.l\:reveal\:auto.bp\:#{$size} {
 			min-inline-size: unset;
 			flex-direction: row;
 			padding-block: 0;
@@ -32,7 +32,6 @@
 
 			ul {
 				flex-flow: row nowrap;
-				gap: var(--gap);
 				padding: 0;
 				margin: 0;
 				inline-size: fit-content;
@@ -44,13 +43,13 @@
 				display: flex;
 				align-items: var(--align, center);
 				justify-content: var(--justify, center);
-				border-inline-start: unset;
+				border-inline-start: none;
 				border-block-start: var(--border-width-xl) solid var(--shade);
 				inline-size: fit-content;
 
 				&[aria-current='page'] {
 					flex-direction: row;
-					border-inline-start: unset;
+					border-inline-start: none;
 					border-color: var(--accent);
 				}
 			}

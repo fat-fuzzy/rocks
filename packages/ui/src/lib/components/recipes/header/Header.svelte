@@ -17,11 +17,6 @@
 	let className = 'header-app'
 
 	let navReveal = $state(DEFAULT_REVEAL_STATE)
-
-	function handleClickOutsideMainNav() {
-		navReveal = {reveal: 'collapsed'}
-	}
-
 	let reveal = $derived(navReveal.reveal)
 </script>
 
@@ -39,6 +34,7 @@
 				variant="outline"
 				asset="home"
 				justify="start"
+				dismiss="outside"
 				auto={true}
 				{reveal}
 				{breakpoint}
@@ -46,21 +42,13 @@
 			>
 				<ul class="l:switcher:sm unstyled color:primary">
 					<li aria-current={path === '/' ? 'page' : undefined}>
-						<a
-							data-sveltekit-preload-data
-							href="/"
-							onclick={handleClickOutsideMainNav}>Home</a
-						>
+						<a data-sveltekit-preload-data href="/">Home</a>
 					</li>
 					{#each items.links as { slug, title }}
 						<li
 							aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}
 						>
-							<a
-								data-sveltekit-preload-data
-								href={`/${slug}`}
-								onclick={handleClickOutsideMainNav}
-							>
+							<a data-sveltekit-preload-data href={`/${slug}`}>
 								{title}
 							</a>
 						</li>
