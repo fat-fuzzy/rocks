@@ -25,6 +25,7 @@
 		id={`${id}-menu-settings`}
 		{actionPath}
 		{redirect}
+		formaction="updateSettings"
 		items={items.settings.switch}
 		onupdate={items?.settings.onupdate}
 	/>

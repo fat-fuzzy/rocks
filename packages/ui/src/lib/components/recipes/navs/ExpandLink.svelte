@@ -49,7 +49,7 @@
 </script>
 
 <div class={layoutClasses}>
-	<div class="l:flex nowrap justify:between">
+	<div class="l:flex nowrap justify:between align:center">
 		<a data-sveltekit-preload-data {href} class="font:md">
 			{title}
 		</a>

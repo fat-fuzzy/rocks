@@ -11,7 +11,7 @@
 	padding-block: calc(var(--ui-size-sm) + var(--outline-offset-nav) / 2)
 		calc(var(--ui-size-sm) - var(--outline-offset-nav) / 2);
 
-	.form\:expanded + ff-reveal {
+	.expanded > ff-reveal {
 		--y-axis: var(--ui-header-height);
 		position: absolute;
 		top: var(--y-axis);
@@ -57,7 +57,7 @@
 		}
 	}
 
-	.form\:expanded + ff-reveal {
+	.expanded > ff-reveal {
 		display: flex;
 		flex-direction: column;
 		left: var(--x-axis);
@@ -71,7 +71,7 @@
 	align-items: flex-end;
 	flex-grow: 0;
 
-	.form\:expanded + ff-reveal {
+	.expanded > ff-reveal {
 		color: var(--ink);
 		background-color: var(--shade);
 		display: flex;

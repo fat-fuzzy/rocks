@@ -74,7 +74,7 @@
 	)
 	let formClasses = $derived(`form:${expanded}`)
 	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : '' // TODO: fix this
-	let revealLayoutClasses = $derived(` ${expanded} ${layoutClasses}`)
+	let revealLayoutClasses = $derived(`${expanded} ${layoutClasses}`)
 	let revealClasses = $derived(
 		auto
 			? `l:reveal:auto ${revealLayoutClasses}`
@@ -140,44 +140,50 @@
 {/if}
 
 {#snippet revealForm()}
-	<form
-		{name}
-		{method}
-		action={`?/${action}`}
-		use:enhance={() => {
-			// prevent default callback from resetting the form
-			return ({update}) => {
-				update({reset: false})
-			}
-		}}
-		class={formClasses}
-		bind:this={boundForm}
-	>
-		<input type="hidden" name="formId" value={id} oninput={handleInput} />
-		<input
-			type="hidden"
-			name={`state-${id}`}
-			value={expanded}
-			oninput={handleInput}
-		/>
-		<Expand
-			id={`button-reveal-${id}`}
-			{title}
-			{color}
-			{variant}
-			{size}
-			controls={`${id}-reveal`}
-			{asset}
+	{#key initial}
+		<form
+			{name}
+			{method}
+			action={`?/${action}`}
+			use:enhance={() => {
+				// prevent default callback from resetting the form
+				return ({update}) => {
+					update({reset: false})
+				}
+			}}
+			class={formClasses}
+			bind:this={boundForm}
+		>
+			<input type="hidden" name="formId" value={id} oninput={handleInput} />
+			<input
+				type="hidden"
+				name={`state-${id}`}
+				value={expanded}
+				oninput={handleInput}
+			/>
+			<Expand
+				id={`button-reveal-${id}`}
+				{title}
+				{color}
+				{variant}
+				{size}
+				controls={`${id}-reveal`}
+				{asset}
+				{initial}
+			justify={`${justify} nowrap`}
 			justify={`${justify} nowrap`}
 			{initial}
-			place={placeIcon}
-			onclick={toggleReveal}
-			states={revealStates}
-			{disabled}
-		>
-			<span class="ellipsis">{title}</span>
-		</Expand>
-	</form>
+				justify={`${justify} nowrap`}
+			{initial}
+				place={placeIcon}
+				onclick={toggleReveal}
+				states={revealStates}
+				{disabled}
+			>
+				<span class="ellipsis">{title}</span>
+			</Expand>
+		</form>
+	{/key}
 	<ff-reveal id={`${id}-reveal`} bind:this={content}>
 		{#if children}
 			{@render children()}

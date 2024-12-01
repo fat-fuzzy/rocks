@@ -3,6 +3,7 @@ title: RevealAuto
 slug: RevealAuto
 category: 'layouts'
 content_types: ['any']
+status: 'draft'
 props_style:
   {
     'blocks': {'element': ['size', 'color', 'variant']},

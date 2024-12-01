@@ -8,9 +8,9 @@ export type UiActionGetInput = {
 
 export type UiActionSetInput = {
 	event: RequestEvent
-	element: string
+	element?: string
 	value?: any
-	options: {
+	options?: {
 		state?: any
 		domain?: string
 	} // TODO: improve options (use schema ?)

@@ -1,6 +1,7 @@
 import {error} from '@sveltejs/kit'
 import gfx from '@fat-fuzzy/gfx'
 import uiActions from '$lib/forms/actions/ui-actions'
+import settingsActions from '$lib/forms/actions/settings-actions'
 
 export const load = ({params}) => {
 	let sketchData = gfx.gl.sketches.projects.find((s) => {
@@ -25,4 +26,6 @@ export const actions = {
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
+	updateSettings: async (event) =>
+		settingsActions.handleUpdateAppSettings({event}),
 }
