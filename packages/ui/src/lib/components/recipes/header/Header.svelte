@@ -1,52 +1,50 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
+	import constants from '$lib/types/constants.js'
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
-	import Settings from '$lib/components/recipes/forms/Settings.svelte'
-	import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
+	import Reveal from '$lib/components/layouts/Reveal.svelte'
+	import Settings from '$lib/components/recipes/header/Settings.svelte'
+
+	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'header-app',
 		breakpoint = 'sm',
 		path,
 		formaction,
-		actionPath,
-		redirect,
 		items,
 	}: HeaderProps = $props()
 	let className = 'header-app'
 
-	let navReveal: {[key: string]: string} = $state({reveal: ''})
+	let navReveal = $state(DEFAULT_REVEAL_STATE)
 
 	function handleClickOutsideMainNav() {
 		navReveal = {reveal: 'collapsed'}
 	}
 
 	let reveal = $derived(navReveal.reveal)
-	let headerClass = $derived(`${className} l:flex sticky:top justify:start`)
 </script>
 
-<header class={headerClass}>
-	<div class="l:main">
-		<SkipLinks />
-		{#key path}
-			<RevealAuto
-				id={`${id}-primary-nav`}
-				name={`${id}-primary-nav`}
+<header class="sticky:top">
+	<div class={`l:sidebar ${className}`}>
+		<div class="l:main">
+			<SkipLinks />
+			<Reveal
+				{id}
+				name={id}
 				label=""
 				element="nav"
-				layout="main"
 				title="Menu"
 				size="xs"
 				variant="outline"
 				asset="home"
 				justify="start"
+				auto={true}
 				{reveal}
 				{breakpoint}
 				{formaction}
-				{redirect}
-				{actionPath}
 			>
-				<ul class="l:switcher:sm">
+				<ul class="l:switcher:sm unstyled color:primary">
 					<li aria-current={path === '/' ? 'page' : undefined}>
 						<a
 							data-sveltekit-preload-data
@@ -68,20 +66,20 @@
 						</li>
 					{/each}
 				</ul>
-			</RevealAuto>
-		{/key}
+			</Reveal>
+		</div>
+		<div class="l:side">
+			<Settings
+				name={`${id}-settings`}
+				label=""
+				{path}
+				{breakpoint}
+				align="end"
+				size="xs"
+				id={`${id}-menu-settings`}
+				items={items.settings}
+				onupdate={items?.settings.onupdate}
+			/>
+		</div>
 	</div>
-	<Settings
-		name={`${id}-settings`}
-		label=""
-		{path}
-		{breakpoint}
-		align="end"
-		size="xs"
-		id={`${id}-menu-settings`}
-		{actionPath}
-		{redirect}
-		items={items.settings}
-		onupdate={items?.settings.onupdate}
-	/>
 </header>

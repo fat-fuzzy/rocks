@@ -1,10 +1,9 @@
-import ui from '@fat-fuzzy/ui'
-
-const {uiActions} = ui.actions
+import uiActions from '$lib/forms/actions/ui-actions'
 
 export const actions = {
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
 	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),
 }

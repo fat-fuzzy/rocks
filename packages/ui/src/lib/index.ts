@@ -34,7 +34,6 @@ import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
  */
 import Burrito from '$lib/components/layouts/Burrito.svelte'
 import Reveal from '$lib/components/layouts/Reveal.svelte'
-import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
 import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
@@ -53,6 +52,7 @@ import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
+import Settings from '$lib/components/recipes/header/Settings.svelte'
 import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte'
 
 /**
@@ -79,7 +79,7 @@ import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.s
 /**
  * Forms
  */
-import UiReveal from '$lib/forms/services/ui-reveal.js'
+import UiReveal from '$lib/forms/ui-reveal.js'
 import SignUpUser from '$lib/forms/ui-sample-signup.js'
 import SettingsUpdate from '$lib/forms/settings-update.js'
 
@@ -89,16 +89,6 @@ import SettingsUpdate from '$lib/forms/settings-update.js'
 import constants from '$lib/types/constants.js'
 import * as clickOutside from '$lib/utils/click-outside.js'
 import format from '$lib/utils/format.js'
-
-/**
- * Services
- */
-import uiStateService from '$lib/forms/services/ui-state.js'
-
-/**
- * Actions
- */
-import uiActions from '$lib/forms/actions/ui-actions.js'
 
 /***************************************************
  * Prepare Exports
@@ -112,14 +102,6 @@ const forms = {
 	UiReveal,
 	SettingsUpdate,
 	SignUpUser,
-}
-
-const services = {
-	uiStateService,
-}
-
-const actions = {
-	uiActions,
 }
 
 const tokens = {
@@ -143,7 +125,6 @@ const blocks = {
 const layouts = {
 	Burrito,
 	Reveal,
-	RevealAuto,
 	Stack,
 	Switcher,
 	Sidebar,
@@ -177,6 +158,7 @@ const drafts = {
 	ScrollyItem,
 	HeaderSettings,
 	SettingsMenu,
+	Settings,
 	PageScrolly,
 }
 
@@ -195,7 +177,5 @@ export default {
 	content,
 	utils,
 	forms,
-	services,
-	actions,
 	constants,
 } as FatFuzzyUi

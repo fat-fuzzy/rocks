@@ -207,9 +207,10 @@
   --layout-z-index-sticky: var(--layout-z-index-2);
   --outline-offset-base: 1.5px;
   --outline-offset-nav: 1.75px;
+  --outline-offset-reveal: 3px;
   --outline-offset-settings: 2px;
   --outline-width: 1px;
-  --scale-base-00: var(--size-base-initial);
+  --scale-base-00: 1rem;
   --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
   --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-sm));
   --scale-base-03: calc(var(--scale-base-02) / var(--size-ratio-sm));
@@ -238,7 +239,6 @@
   --size-base-2xl: var(--scale-base-30);
   --size-base-2xs: var(--scale-base-03);
   --size-base-3xs: var(--scale-base-04);
-  --size-base-initial: 1rem;
   --size-base-lg: var(--scale-base-10);
   --size-base-md: var(--scale-base-00);
   --size-base-sm: var(--scale-base-01);
@@ -256,11 +256,11 @@
   --size-ratio-md: 1.5;
   --size-ratio-sm: 1.25;
   --size-ratio-xs: 1.15;
-  --size-ui-footer-height: var(--font-size-body);
-  --size-ui-header-height: var(--scale-base-30);
-  --size-ui-header-icon-height: 2.25rem;
-  --size-ui-header-margin: calc(var(--gap) / 2);
-  --size-ui-header-max-height: 30vh;
+  --ui-footer-height: var(--font-size-body);
+  --ui-header-height: var(--scale-base-50);
+  --ui-header-icon-height: 2.25rem;
+  --ui-header-margin: calc(var(--gap) / 2);
+  --ui-header-max-height: 30vh;
 }
 
 @supports (color: color(display-p3 1 1 1)) {

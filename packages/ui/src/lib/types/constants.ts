@@ -3,6 +3,8 @@ import {UiColor, UiSize, UiState} from '$types'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 
+const APP_PREFIX = 'ff'
+
 const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	id: '',
 	name: '',
@@ -222,6 +224,7 @@ const APP_SETTINGS: SettingsItems = {
 import type {SettingsItems} from '../components/recipes/forms/settings.js'
 
 export default {
+	APP_PREFIX,
 	UI_STATE,
 	STATE_SWITCHER,
 	DEFAULT_BUTTON_CONTEXT,

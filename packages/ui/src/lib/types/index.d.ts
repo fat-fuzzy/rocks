@@ -1,8 +1,6 @@
 export * from '$lib/types/enums.js'
 export * from '$lib/types/components.js'
 export type * from '$lib/types/ui.d.ts'
-export type * from '$lib/types/actions.d.ts'
-export type * from '$lib/types/services.d.ts'
 export type * from '$lib/types/machines.d.ts'
 export type * from '$lib/types/components.js'
 export type * from '$lib/types/validation.d.ts'

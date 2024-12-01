@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { DetailsLayoutProps } from  '$types'
+	import type {DetailsLayoutProps} from '$types'
 
 	let {
 		layout,
@@ -29,11 +29,11 @@
 		aria-controls={`${id}-menu-list`}
 		onclick={toggleReveal}
 	>
-	{#if summary}
-		{@render summary()}
-	{:else}
-		<p>Click to Reveal</p>
-	{/if}
+		{#if summary}
+			{@render summary()}
+		{:else}
+			<p>Click to Reveal</p>
+		{/if}
 	</summary>
 	<div class={`${align} ${show}`}>
 		{#if children}

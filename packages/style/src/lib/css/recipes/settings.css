@@ -1,13 +1,6 @@
-.header-app *:where(:has(.menu\:settings)) {
-	margin-block: auto;
-}
-
 .menu\:settings {
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
-}
-
-.expanded:has(.menu\:settings) {
 	padding: var(--ui-size-sm);
 }
 
@@ -37,10 +30,6 @@
 	box-shadow: var(--shadow-md);
 }
 
-.links\:settings {
-	margin: 0 auto;
-}
-
 .links\:settings a {
-	padding: var(--ui-size-sm) 0;
+	padding: var(--ui-size-sm);
 }

@@ -5,9 +5,6 @@
 			"$value": "0"
 		},
 		"base": {
-			"initial": {
-				"$value": "1rem"
-			},
 			"3xs": {
 				"$value": "{scale.base.04}"
 			},
@@ -69,27 +66,6 @@
 			"lg": {
 				"$value": "2.75"
 			}
-		},
-		"ui": {
-			"header": {
-				"height": {
-					"$value": "{scale.base.30}"
-				},
-				"max-height": {
-					"$value": "30vh"
-				},
-				"icon-height": {
-					"$value": "2.25rem"
-				},
-				"margin": {
-					"$value": "calc(var(--gap) / 2)"
-				}
-			},
-			"footer": {
-				"height": {
-					"$value": "var(--font-size-body)"
-				}
-			}
 		}
 	},
 	"scale": {
@@ -111,7 +87,7 @@
 				"$value": "calc(var(--scale-base-00) / var(--size-ratio-xs))"
 			},
 			"00": {
-				"$value": "{size.base.initial}"
+				"$value": "1rem"
 			},
 			"10": {
 				"$value": "calc(var(--scale-base-00) * var(--size-ratio-sm))"
@@ -150,6 +126,28 @@
 			},
 			"30": {
 				"$value": "2"
+			}
+		}
+	},
+	"ui": {
+		"$type": "dimension",
+		"header": {
+			"height": {
+				"$value": "var(--scale-base-50)"
+			},
+			"max-height": {
+				"$value": "30vh"
+			},
+			"icon-height": {
+				"$value": "2.25rem"
+			},
+			"margin": {
+				"$value": "calc(var(--gap) / 2)"
+			}
+		},
+		"footer": {
+			"height": {
+				"$value": "var(--font-size-body)"
 			}
 		}
 	}

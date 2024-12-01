@@ -21,7 +21,7 @@
 		breakpoint,
 		threshold,
 		variant,
-		align = 'center',
+		align,
 		justify,
 		place = 'top',
 		position,
@@ -84,14 +84,6 @@
 		{justify}
 		onclick={toggleReveal}
 	>
-		<LinkList
-			id={`${id}-${path}`}
-			{path}
-			{items}
-			{size}
-			{align}
-			container="content"
-			depth={0}
-		/>
+		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</Reveal>
 </nav>

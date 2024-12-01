@@ -3,8 +3,7 @@ import {fail, redirect} from '@sveltejs/kit'
 
 import ui from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
-
-const {uiActions} = ui.actions
+import uiActions from '$lib/forms/actions/ui-actions'
 
 export const prerender = false
 export const ssr = true

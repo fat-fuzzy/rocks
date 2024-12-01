@@ -3,16 +3,8 @@ export interface Utils {
 	clickOutside: typeof import('$lib/utils/click-outside.js')
 }
 
-export interface Services {
-	uiStateService: typeof import('$lib/forms/services/ui-state.js').default
-}
-
-export interface Actions {
-	uiActions: typeof import('$lib/forms/actions/ui-actions.js').default
-}
-
 export interface Forms {
-	UiReveal: typeof import('$lib/forms/services/ui-reveal.js').default
+	UiReveal: typeof import('$lib/forms/ui-reveal.js').default
 	SettingsUpdate: typeof import('$lib/forms/settings-update.js').default
 	SignUpUser: typeof import('$lib/forms/ui-sample-signup.js').default
 }
@@ -38,7 +30,6 @@ export interface Blocks {
 export interface Layouts {
 	Burrito: typeof import('$lib/components/layouts/Burrito.svelte').default
 	Reveal: typeof import('$lib/components/layouts/Reveal.svelte').default
-	RevealAuto: typeof import('$lib/components/layouts/RevealAuto.svelte').default
 	Stack: typeof import('$lib/components/layouts/Stack.svelte').default
 	Switcher: typeof import('$lib/components/layouts/Switcher.svelte').default
 	Sidebar: typeof import('$lib/components/layouts/Sidebar.svelte').default
@@ -68,6 +59,7 @@ export interface Drafts {
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
 	HeaderSettings: typeof import('$lib/components/recipes/header/HeaderSettings.svelte').default
+	Settings: typeof import('$lib/components/recipes/header/Settings.svelte').default
 	SettingsMenu: typeof import('$lib/components/recipes/menus/SettingsMenu.svelte').default
 	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default
 }
@@ -87,7 +79,5 @@ export interface FatFuzzyUi {
 	content: Content
 	utils: Utils
 	forms: Forms
-	services: Services
-	actions: Actions
 	constants: typeof import('$lib/types/constants.js').default
 }

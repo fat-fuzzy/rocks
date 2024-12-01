@@ -5,11 +5,13 @@ const {DEFAULT_REVEAL_STATE} = constants
 
 class UiReveal {
 	state: UiRevealState
+	id: string
 
 	/**
 	 * Initialize default state object or from the user's cookie values, if any
 	 */
-	constructor(state: UiRevealState | null = null) {
+	constructor(state: UiRevealState | null = null, id: string) {
+		this.id = id
 		if (state) {
 			this.state = state
 		} else {
@@ -23,10 +25,11 @@ class UiReveal {
 	reveal(data: FormData) {
 		let updated
 
-		if (data.has('state')) {
-			updated = data.get('state')?.toString()
+		if (data.has(`state-${this.id}`)) {
+			updated = data.get(`state-${this.id}`)?.toString()
 		}
 		if (updated) {
+			console.log('data', data)
 			this.state.reveal = updated
 			return {
 				success: true,

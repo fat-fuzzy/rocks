@@ -8,7 +8,6 @@ import './scrolly.css' /* Use with ScrollReveal component  */
 
 import './settings.css' /* A Settings menu component (for user input to adjust brightness, contrast, language, ...) */
 import './header-app.css' /* Use for main app header */
-import './header-settings.css' /* Use for home page settings header */
 import './pages.css' /* Define page layout varians here */
 import './footer.css' /* Use for main app footer */
 import './article.css' /* Use for articles (header + section(s) + optional footer) */

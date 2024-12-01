@@ -1,8 +1,6 @@
 import {error} from '@sveltejs/kit'
 import gfx from '@fat-fuzzy/gfx'
-import ui from '@fat-fuzzy/ui'
-
-const {uiActions} = ui.actions
+import uiActions from '$lib/forms/actions/ui-actions'
 
 export const load = ({params}) => {
 	let sketchData = gfx.gl.sketches.learning.find((s) => {
@@ -22,8 +20,9 @@ export const load = ({params}) => {
 }
 
 export const actions = {
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
 }

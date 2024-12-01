@@ -1,9 +1,11 @@
-import type {UiActionSetInput} from '$types'
+import type {UiActionSetInput} from '$lib/types/actions.js'
 import {error, fail} from '@sveltejs/kit'
+import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/forms/services/ui-state.js'
 import UiReveal from '$lib/forms/services/ui-reveal.js'
 
+const {APP_PREFIX} = ui.constants
 /**
  * TODO validate input
  */
@@ -16,15 +18,16 @@ async function handleUiToggleReveal({
 
 	try {
 		const data = await request.formData()
-		const key = `fat-fuzzy-reveal-${element}`
+		const key = `${APP_PREFIX}-reveal-${element}`
 		const currentState = uiStateService.getUiState({
 			cookies,
 			key,
 			options,
 		})
 
-		const reveal = new UiReveal(currentState)
+		const reveal = new UiReveal(currentState, element)
 		const newState = reveal.reveal(data)
+
 		if (!newState.success) {
 			error(500, `Failed to toggle ${key}`)
 		}
@@ -56,6 +59,15 @@ async function handleUiToggleReveal({
 
 async function handleToggleSidebar(event) {
 	const element = 'sidebar'
+	return handleUiToggleReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
+async function handleToggleSettings(event) {
+	const element = 'settings'
 	return handleUiToggleReveal({
 		event,
 		element,
@@ -147,6 +159,7 @@ async function handleToggleProjects(event) {
 export default {
 	handleToggleSidebar,
 	handleToggleNav,
+	handleToggleSettings,
 	handleToggleTokens,
 	handleToggleBlocks,
 	handleToggleLayouts,

@@ -53,8 +53,8 @@
 
 <div class={themeClass}>
 	<Header
-		id="doc"
-		name="main-header"
+		id="nav"
+		name="nav"
 		label=""
 		path={$page.url.pathname}
 		actionPath="/"

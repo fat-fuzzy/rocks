@@ -2,9 +2,7 @@ import {error} from '@sveltejs/kit'
 
 import images from '$data/images'
 import pages from '$data/pages'
-import ui from '@fat-fuzzy/ui'
-
-const {uiActions} = ui.actions
+import uiActions from '$lib/forms/actions/ui-actions'
 
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
@@ -49,8 +47,9 @@ export const load = async ({params}) => {
 }
 
 export const actions = {
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
 	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),
 }

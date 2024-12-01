@@ -1,26 +1,44 @@
 [class^='l:reveal'] {
-	position: relative;
-	z-index: var(--layout-z-index-layer);
-	inline-size: 100%;
+	--y-axis: 0;
+	--x-size: 100%;
+	--x-axis: 0;
+	--y-size: fit-content;
+
+	display: flex;
+	flex-direction: column;
+	inline-size: var(--x-size);
+	block-size: var(--y-size);
 	max-inline-size: calc(100% - var(--outline-offset-base));
-	color: var(--ink);
 	margin: var(--outline-offset-base);
-	display: flex;
-	flex-direction: column;
+	color: var(--ink);
+	z-index: var(--layout-z-index-layer);
+	transition: inline-size 250ms ease-in-out;
+	transition: block-size 250ms ease-in-out;
+
+	&.collapsed {
+		transition: block-size 250ms ease-in-out;
+		transition: inline-size 250ms ease-in-out;
+	}
 }
 
-/* Fixes bug in Safari where .content overflows parent inline-size
-.l\:reveal.expanded {
-	display: flex;
-	flex-direction: column;
-	inline-size: 100%;
-}
-*/
+ff-reveal {
+	/* transition: transform 250ms ease-in-out; */
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--ink);
 
-.l\:reveal.collapsed:not([class*='sticky']) .content {
+	top: var(--y-axis);
+	block-size: var(--y-size);
+	max-block-size: var(--y-size);
+	scrollbar-color: var(--thumb) var(--track);
+}
+
+.collapsed > ff-reveal {
+	--x-size: 0;
+	--y-size: 0;
+
 	border: 0;
-	block-size: 0;
-	inline-size: 0;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;

@@ -1,8 +1,6 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
-import ui from '@fat-fuzzy/ui'
-
-const {uiActions} = ui.actions
+import uiActions from '$lib/forms/actions/ui-actions'
 
 const page = 'play'
 
@@ -25,8 +23,9 @@ export const load = async ({params}) => {
 }
 
 export const actions = {
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
 }
