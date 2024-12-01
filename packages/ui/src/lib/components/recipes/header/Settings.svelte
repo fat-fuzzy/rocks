@@ -47,9 +47,9 @@
 		{formaction}
 		{onupdate}
 	/>
-	<menu class="links:settings end unstyled">
+	<ul class="links:settings end unstyled">
 		{#each items.links as { title, url, shape, size, asset }}
-			<li class="l:frame:round">
+			<li>
 				<a
 					class={`${variant} shape:${shape} color:${color} ${asset} size:${size}`}
 					href={url}
@@ -61,5 +61,5 @@
 				</a>
 			</li>
 		{/each}
-	</menu>
+	</ul>
 </Reveal>

@@ -9,7 +9,7 @@ const {APP_PREFIX} = ui.constants
 /**
  * TODO validate input
  */
-async function handleUiToggleReveal({
+async function handleToggleUiReveal({
 	event,
 	element,
 	options,
@@ -59,7 +59,7 @@ async function handleUiToggleReveal({
 
 async function handleToggleSidebar(event) {
 	const element = 'sidebar'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -68,7 +68,7 @@ async function handleToggleSidebar(event) {
 
 async function handleToggleSettings(event) {
 	const element = 'settings'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -77,7 +77,7 @@ async function handleToggleSettings(event) {
 
 async function handleToggleNav(event) {
 	const element = 'nav'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -86,7 +86,7 @@ async function handleToggleNav(event) {
 
 async function handleToggleTokens(event) {
 	const element = 'tokens'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -95,7 +95,7 @@ async function handleToggleTokens(event) {
 
 async function handleToggleBlocks(event) {
 	const element = 'blocks'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -104,7 +104,7 @@ async function handleToggleBlocks(event) {
 
 async function handleToggleLayouts(event) {
 	const element = 'layouts'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -113,7 +113,7 @@ async function handleToggleLayouts(event) {
 
 async function handleToggleRecipes(event) {
 	const element = 'recipes'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -122,7 +122,7 @@ async function handleToggleRecipes(event) {
 
 async function handleToggleUsage(event) {
 	const element = 'usage'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -131,7 +131,7 @@ async function handleToggleUsage(event) {
 
 async function handleToggleDecisions(event) {
 	const element = 'decisions'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -140,7 +140,7 @@ async function handleToggleDecisions(event) {
 
 async function handleToggleLearning(event) {
 	const element = 'learning'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},
@@ -149,7 +149,7 @@ async function handleToggleLearning(event) {
 
 async function handleToggleProjects(event) {
 	const element = 'projects'
-	return handleUiToggleReveal({
+	return handleToggleUiReveal({
 		event,
 		element,
 		options: {},

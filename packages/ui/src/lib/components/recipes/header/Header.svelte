@@ -66,6 +66,7 @@
 				size="xs"
 				id={`${id}-menu-settings`}
 				items={items.settings}
+				formaction="updateSettings"
 				onupdate={items?.settings.onupdate}
 			/>
 		</div>

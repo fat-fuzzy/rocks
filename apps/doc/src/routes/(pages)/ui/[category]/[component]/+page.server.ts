@@ -1,3 +1,4 @@
+import settingsActions from '$lib/forms/actions/settings-actions'
 import uiActions from '$lib/forms/actions/ui-actions'
 
 export const actions = {
@@ -8,4 +9,6 @@ export const actions = {
 	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),
 	toggleLayouts: async (event) => uiActions.handleToggleLayouts(event),
 	toggleRecipes: async (event) => uiActions.handleToggleRecipes(event),
+	updateSettings: async (event) =>
+		settingsActions.handleToggleAppSettings({event}),
 }
