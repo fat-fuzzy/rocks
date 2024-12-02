@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {SettingsMenuProps} from '$types'
+	import type {SettingsMenuProps, UiSettings} from '$types'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
 	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
@@ -12,14 +12,14 @@
 		method = 'POST',
 		background,
 		color = 'primary',
-		actionPath,
-		redirect,
+		formaction,
 		items,
 		onupdate,
 	}: SettingsMenuProps = $props()
 
 	let settingsId = id
 	let appSettings = $state(DEFAULT_APP_SETTINGS)
+	let action = $derived(formaction)
 
 	function handleUpdate(payload) {
 		switch (payload.id) {
@@ -41,9 +41,6 @@
 			? 'bg:inherit'
 			: ''
 	let formClasses = `l:flex nowrap ${showBackground}`
-	let settingsUpdateAction = $derived(
-		redirect ? `updateSettings&redirectTo=${redirect}` : 'updateSettings',
-	)
 
 	// function initSettings(event) {
 	// 	let preferredScheme = {...event}
@@ -73,9 +70,7 @@
 <form
 	name="settings-update"
 	{method}
-	action={settingsUpdateAction && actionPath
-		? `${actionPath}?/${settingsUpdateAction}`
-		: `?/${settingsUpdateAction}`}
+	action={`?/${action}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
@@ -90,26 +85,27 @@
 					active: {
 						...SWITCH_MACHINE.active,
 						...states.active,
+						formaction: `toggle${title}`,
 					},
 					inactive: {
 						...SWITCH_MACHINE.inactive,
 						...states.inactive,
+						formaction: `toggle${title}`,
 					},
 				}
 			: SWITCH_MACHINE}
-		<div class="l:frame:round">
-			<Switch
-				id={`${settingsId}-${id}`}
-				{name}
-				{title}
-				{variant}
-				{shape}
-				{color}
-				{size}
-				{value}
-				states={switchStates}
-				onclick={handleUpdate}
-			/>
-		</div>
+		<Switch
+			id={`${settingsId}-${id}`}
+			{name}
+			{title}
+			{variant}
+			{shape}
+			{color}
+			{size}
+			{value}
+			initial={appSettings[id as UiSettings]}
+			states={switchStates}
+			onclick={handleUpdate}
+		/>
 	{/each}
 </form>

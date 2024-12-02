@@ -16,6 +16,13 @@
 	let projects = $state($page.data.sketches.projects)
 	let learning = $state($page.data.sketches.learning)
 	let app = $derived(fatFuzzyStore.app)
+	let formId = 'sidebar'
+	let reveal = $derived(
+		$page.form?.formId === formId
+			? $page.form.state
+			: $page.data.sidebar.reveal,
+	)
+
 	let path = ''
 
 	let items = [
@@ -27,34 +34,36 @@
 					slug: 'projects',
 					title: 'Projects',
 					asset: 'projects',
+					formaction: 'toggleProjects',
 					items: projects,
 				},
 				{
 					slug: 'learning',
 					title: 'Learning',
 					asset: 'learning',
+					formaction: 'toggleLearning',
 					items: learning,
 				},
 			],
 		},
 	]
 
-	let nav = {
+	let nav = $derived({
 		path,
 		title: 'Content',
-		id: 'nav-play',
+		id: formId,
 		items,
-		reveal: 'expanded',
+		reveal,
 		breakpoint: 'sm',
 		size: 'sm',
 		color: 'primary:600',
 		position: 'fixed',
 		place: 'left',
 		formaction: 'toggleSidebar',
-	}
+	})
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} {path} {app}>
+<LayoutSidebar {nav} {app}>
 	{#if children}
 		{@render children()}
 	{/if}

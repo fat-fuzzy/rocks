@@ -21,7 +21,7 @@ import './css/motion/index.js'
 import './css/recipes/index.js'
 
 /* Overrides */
-import './css/config/visibility.css'
+import './css/globals/visibility.css'
 
 /* Media Queries */
 import './css/mixins/index.css'

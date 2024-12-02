@@ -2,14 +2,22 @@
 
 @mixin switchToRowStyles_RevealAuto($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
-		.l\:reveal\:auto.bp\:#{$size},
-		.page-header .l\:reveal\:auto.bp\:#{$size} {
+		.l\:reveal\:auto.bp\:#{$size} {
 			position: unset;
 			inline-size: fit-content;
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='false'] + .content,
-		.l\:reveal\:auto.bp\:#{$size} form:has([aria-expanded='false']) + .content {
+		.l\:reveal\:auto.bp\:#{$size} > ff-reveal {
+			block-size: auto;
+			margin: initial;
+			overflow: hidden;
+			padding: initial;
+			position: unset;
+			white-space: normal;
+			max-block-size: unset;
+		}
+
+		.l\:reveal\:auto.bp\:#{$size}.collapsed > ff-reveal {
 			top: 0;
 			inline-size: auto;
 			min-inline-size: unset;
@@ -20,19 +28,6 @@
 
 		.l\:reveal\:auto.bp\:#{$size} [aria-expanded] {
 			display: none;
-		}
-
-		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='true'] + .content,
-		.l\:reveal\:auto.bp\:#{$size} [aria-expanded='false'] + .content,
-		.l\:reveal\:auto.bp\:#{$size} form:has([aria-expanded='true']) + .content,
-		.l\:reveal\:auto.bp\:#{$size} form:has([aria-expanded='false']) + .content {
-			block-size: auto;
-			margin: initial;
-			overflow: hidden;
-			padding: initial;
-			position: unset;
-			white-space: normal;
-			max-block-size: unset;
 		}
 	}
 }

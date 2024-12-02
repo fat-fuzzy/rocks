@@ -5,18 +5,20 @@
 }
 
 .max\:w\:full {
-	max-width: 100%;
+	max-inline-size: 100%;
 }
 
 .w\:full {
-	width: 100%;
+	inline-size: 100%;
 }
 
 .w\:auto {
-	inline-size: fit-content;
+	inline-size: auto;
 	max-inline-size: 100%;
-	width: auto;
-	max-width: 100%;
+}
+
+.hug {
+	inline-size: fit-content;
 }
 
 [class*='align-self:'] {

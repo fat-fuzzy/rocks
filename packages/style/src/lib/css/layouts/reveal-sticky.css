@@ -1,61 +1,32 @@
-/* TODO: use grid for this */
-/* TODO: consider creating a specific menu layout that does this without coupling sidebar + reveal layouts */
-
-/* The reveal layout inside a sidebar is currently only used for sidebar menus:
-		- reveal mechanism serves to collapse and expand the menu on mobile
-		- reveal is not necessary on desktop, so on desktop we unset the reveal layout
-	Constraining this allows usage of reveal layout in desktop, outside a sidebar context */
+/* The reveal layout inside a sidebar is currently only used for the sidebar nav in LayoutSidebar */
 
 [class*='l:reveal'].sticky {
-	--y-axis: 0;
-	--x-size: 100%;
-	--y-size: fit-content;
-	inline-size: var(--x-size);
+	--y-axis: var(--ui-header-height);
+
+	position: sticky;
 	block-size: var(--y-size);
-	transition: inline-size 250ms ease-in-out;
-	transition: block-size 250ms ease-in-out;
+	top: var(--y-axis);
+	z-index: 1;
 
-	.content {
-		/* transition: transform 250ms ease-in-out; */
-		--lightness-scrollbar: var(--lightness-base);
-		--chroma-scrollbar: var(--chroma-base);
-		--track: oklch(
-			var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
-		);
-		--thumb: var(--ink);
-		max-block-size: var(--y-size);
-		transition: inline-size 250ms ease-in-out;
-		transition: block-size 250ms ease-in-out;
-		scrollbar-color: var(--thumb) var(--track);
+	> form > [aria-expanded] {
+		inline-size: 100%;
 	}
+}
 
-	&.collapsed {
-		--y-size: var(--size-ui-header-height);
-		--x-size: 100%;
-		transition: block-size 250ms ease-in-out;
-		transition: inline-size 250ms ease-in-out;
+@media screen and (min-width: 1160px) {
+	[class*='l:reveal'].sticky {
+		--y-size-sticky: calc(
+			100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size-lg)
+		);
+		--y-size: var(--y-size-sticky);
 
-		.content {
-			block-size: fit-content;
-			max-block-size: var(--y-size-sticky);
-			transition: block-size 250ms ease-in-out;
-			transition: inline-size 100ms ease-in;
-		}
-
-		nav {
-			inline-size: var(--x-size);
-			block-size: var(--y-size);
-
-			> .content {
-				--y-size: 0;
-				border: 0;
-				margin: 0;
-				padding: 0;
-				position: absolute;
-				inline-size: 0;
-				white-space: nowrap;
-				overflow: hidden;
-			}
+		&.collapsed > ff-reveal {
+			border: initial;
+			margin: initial;
+			overflow: auto;
+			padding: initial;
+			position: unset;
+			white-space: initial;
 		}
 	}
 }

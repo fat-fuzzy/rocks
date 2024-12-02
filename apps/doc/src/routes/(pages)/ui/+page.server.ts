@@ -1,24 +1,30 @@
 import type {Actions} from './$types'
 import {fail, redirect} from '@sveltejs/kit'
-import {dev} from '$app/environment'
 
 import ui from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
+import uiActions from '$lib/forms/actions/ui-actions'
+import settingsActions from '$lib/forms/actions/settings-actions'
 
 export const prerender = false
 export const ssr = true
 
 const {DsTabsUpdate, DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
-const {SignUpUser, SettingsUpdate} = ui.forms
-const {
-	TABS,
-	DEFAULT_STYLES,
-	DEFAULT_DS_STATE,
-	DEFAULT_REVEAL_STATE,
-	DEFAULT_APP_SETTINGS,
-} = ui.constants
+const {SignUpUser} = ui.forms
+const {TABS, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} =
+	ui.constants
 
 export const actions = {
+	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	toggleTokens: async (event) => uiActions.handleToggleTokens(event),
+	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),
+	toggleLayouts: async (event) => uiActions.handleToggleLayouts(event),
+	toggleRecipes: async (event) => uiActions.handleToggleRecipes(event),
+	updateSettings: async (event) =>
+		settingsActions.handleUpdateAppSettings({event}),
+
 	toggleContext: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('fat-fuzzy-ui-context-reveal')
@@ -77,27 +83,6 @@ export const actions = {
 			redirect(303, redirectTo)
 		}
 
-		return {success: true}
-	},
-
-	updateSettings: async ({request, url, cookies}) => {
-		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-settings-app')
-		let currentSettings = DEFAULT_APP_SETTINGS
-		if (serialized) {
-			currentSettings = JSON.parse(serialized)
-		}
-		let settingsUpdate = new SettingsUpdate(currentSettings)
-		if (!settingsUpdate.update(data)) {
-			return fail(400, {settingsError: true})
-		}
-		cookies.set('fat-fuzzy-settings-app', settingsUpdate.toString(), {
-			path: '/',
-		})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo)
-		}
 		return {success: true}
 	},
 

@@ -14,6 +14,7 @@ export const load = async (event) => {
 				.filter(({meta}) => meta.status !== 'draft')
 				.reverse(),
 		},
+		sidebar: event.locals.sidebar,
 	}
 
 	return data

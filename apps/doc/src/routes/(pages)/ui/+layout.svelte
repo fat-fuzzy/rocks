@@ -16,13 +16,13 @@
 	let {styles} = $state($page.data)
 
 	onMount(() => {
-		if(styles){
+		if (styles) {
 			playbookContext.applyStyles(styles)
 		}
 	})
 </script>
 
-<Playbook redirect={$page.url.pathname} app={fatFuzzyStore.app}>
+<Playbook app={fatFuzzyStore.app}>
 	{#if children}
 		{@render children()}
 	{/if}

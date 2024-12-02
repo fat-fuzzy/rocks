@@ -1,51 +1,94 @@
 import type {Handle} from '@sveltejs/kit'
+import ui from '@fat-fuzzy/ui'
+import uiStateService from '$lib/forms/services/ui-state'
+
+const {APP_PREFIX, DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, DEFAULT_TABS} =
+	ui.constants
+
+const revealForms = [
+	// global app forms
+	'nav',
+	'sidebar',
+	// doc page forms
+	'usage',
+	'decisions',
+	// ui page forms
+	'tokens',
+	'blocks',
+	'layouts',
+	'recipes',
+	// play page forms
+	'projects',
+	'learning',
+]
+
+enum RevealFormsEnum {
+	// global app forms
+	nav = 'nav',
+	settings = 'settings',
+	sidebar = 'sidebar',
+	// ui page forms
+	tokens = 'tokens',
+	blocks = 'blocks',
+	layouts = 'layouts',
+	recipes = 'recipes',
+	dsState = 'dsState',
+	dsStyles = 'dsStyles',
+	currentTabs = 'currentTabs',
+}
 
 export const handle = (async ({event, resolve}) => {
-	const appSettings = event.cookies.get('fat-fuzzy-settings-app')
-	const navReveal = event.cookies.get('fat-fuzzy-nav-reveal')
-	const navRevealTokens = event.cookies.get('fat-fuzzy-reveal-tokens')
-	const navRevealBlocks = event.cookies.get('fat-fuzzy-reveal-blocks')
-	const navRevealLayouts = event.cookies.get('fat-fuzzy-reveal-layouts')
-	const navRevealRecipes = event.cookies.get('fat-fuzzy-reveal-recipes')
-	const settingsReveal = event.cookies.get('fat-fuzzy-settings-reveal')
-	const sidebarReveal = event.cookies.get('fat-fuzzy-sidebar-reveal')
-	const dsStyles = event.cookies.get('fat-fuzzy-ui-styles')
-	const dsState = event.cookies.get('fat-fuzzy-ui-state')
-	const currentTabs = event.cookies.get('fat-fuzzy-ui-tabs')
+	let {cookies} = event
+	// Load all UI states into locals
 
-	if (navReveal) {
-		event.locals.nav = navReveal
-	}
-	if (navRevealTokens) {
-		event.locals.navTokens = navRevealTokens
-	}
-	if (navRevealBlocks) {
-		event.locals.navBlocks = navRevealBlocks
-	}
-	if (navRevealLayouts) {
-		event.locals.navLayouts = navRevealLayouts
-	}
-	if (navRevealRecipes) {
-		event.locals.navRecipes = navRevealRecipes
-	}
-	if (sidebarReveal) {
-		event.locals.sidebar = sidebarReveal
-	}
-	if (settingsReveal) {
-		event.locals.settings = settingsReveal
-	}
-	if (appSettings) {
-		event.locals.app = appSettings
-	}
-	if (dsState) {
-		event.locals.dsState = dsState
-	}
-	if (dsStyles) {
-		event.locals.dsStyles = dsStyles
-	}
-	if (currentTabs) {
-		event.locals.currentTabs = currentTabs
-	}
+	const appSettings = await uiStateService.getUiState({
+		cookies,
+		key: `${APP_PREFIX}-app-settings`,
+		options: {state: DEFAULT_APP_SETTINGS},
+	})
+	const currentTabs = await uiStateService.getUiState({
+		cookies,
+		key: `${APP_PREFIX}-ui-tabs`,
+		options: {state: DEFAULT_TABS},
+	})
+	const dsState = await uiStateService.getUiState({
+		cookies,
+		key: `${APP_PREFIX}-ui-state`,
+		options: {state: DEFAULT_REVEAL_STATE},
+	})
+	const dsStyles = await uiStateService.getUiState({
+		cookies,
+		key: `${APP_PREFIX}-ui-styles`,
+		options: {state: DEFAULT_REVEAL_STATE},
+	})
+
+	const appLocalsPromises = revealForms.map(async (form) => ({
+		[form]: uiStateService.getUiState({
+			cookies,
+			key: `${APP_PREFIX}-reveal-${form}`,
+			options: {state: DEFAULT_REVEAL_STATE},
+		}),
+	}))
+
+	const appLocals = await (
+		await Promise.all(appLocalsPromises)
+	).reduce((acc, curr) => {
+		return {...acc, ...curr}
+	}, {})
+
+	event.locals.settings = appSettings
+	event.locals.currentTabs = currentTabs
+	event.locals.dsState = dsState
+	event.locals.dsStyles = dsStyles
+
+	event.locals.app = appLocals[RevealFormsEnum.settings]
+	event.locals.sidebar = appLocals[RevealFormsEnum.sidebar]
+	event.locals.nav = appLocals[RevealFormsEnum.nav]
+	event.locals.navTokens = appLocals[RevealFormsEnum.tokens]
+	event.locals.navBlocks = appLocals[RevealFormsEnum.blocks]
+	event.locals.navLayouts = appLocals[RevealFormsEnum.layouts]
+	event.locals.navRecipes = appLocals[RevealFormsEnum.recipes]
+
 	const response = await resolve(event)
 	return response
 }) satisfies Handle

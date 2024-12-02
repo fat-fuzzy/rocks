@@ -1,74 +1,49 @@
 import type {UiRevealState} from '$types'
 import constants from '$lib/types/constants.js'
 
-const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
+const {DEFAULT_REVEAL_STATE} = constants
 
 class UiReveal {
-	nav: UiRevealState
+	state: UiRevealState
+	id: string
 
 	/**
-	 * Initialize default nav object or from the user's cookie values, if any
+	 * Initialize default state object or from the user's cookie values, if any
 	 */
-	constructor(nav: UiRevealState | null = null) {
-		if (nav) {
-			this.nav = nav
+	constructor(state: UiRevealState | null = null, id: string) {
+		this.id = id
+		if (state) {
+			this.state = state
 		} else {
-			this.nav = DEFAULT_REVEAL_STATE
+			this.state = DEFAULT_REVEAL_STATE
 		}
 	}
 
 	/**
-	 * Update nav based on inputs
-	 * TODO: make configurable from consumer
+	 * Update nav
 	 */
 	reveal(data: FormData) {
 		let updated
 
-		if (data.has('reveal')) {
-			updated = data.get('reveal')?.toString()
-		}
-		if (data.has('reveal-tokens')) {
-			updated = data.get('reveal-tokens')?.toString()
-		}
-		if (data.has('reveal-auto')) {
-			updated = data.get('reveal-auto')?.toString()
-		}
-		if (data.has('reveal-settings')) {
-			updated = data.get('reveal-auto')?.toString()
-		}
-		if (data.has('reveal-blocks')) {
-			updated = data.get('reveal-blocks')?.toString()
-		}
-		if (data.has('reveal-layouts')) {
-			updated = data.get('reveal-layouts')?.toString()
-		}
-		if (data.has('reveal-recipes')) {
-			updated = data.get('reveal-recipes')?.toString()
-		}
-		if (data.has('reveal-usage')) {
-			updated = data.get('reveal-usage')?.toString()
-		}
-		if (data.has('reveal-decisions')) {
-			updated = data.get('reveal-decisions')?.toString()
-		}
-		if (data.has('reveal-learning')) {
-			updated = data.get('reveal-learning')?.toString()
-		}
-		if (data.has('reveal-projects')) {
-			updated = data.get('reveal-projects')?.toString()
+		if (data.has(`state-${this.id}`)) {
+			updated = data.get(`state-${this.id}`)?.toString()
 		}
 		if (updated) {
-			this.nav.reveal = TRANSITION_REVEAL[this.nav.reveal]
-			return true
+			return {
+				success: true,
+				state: updated,
+			}
 		}
-		return false
+		return {
+			success: false,
+		}
 	}
 
 	/**
-	 * Serialize nav so it can be set as a cookie
+	 * Serialize state so it can be set as a cookie
 	 */
 	toString() {
-		return JSON.stringify(this.nav)
+		return JSON.stringify(this.state)
 	}
 }
 

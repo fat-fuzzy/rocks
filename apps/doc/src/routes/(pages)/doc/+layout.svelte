@@ -6,7 +6,11 @@
 	const {LayoutSidebar} = ui.content
 
 	let {children} = $props()
+
+	let {sidebar, markdowns} = $state($page.data)
 	let app = $derived(fatFuzzyStore.app)
+	let formId = 'sidebar'
+	let reveal = $derived(sidebar.reveal)
 
 	let path = ''
 	let items = [
@@ -18,7 +22,8 @@
 					slug: 'usage',
 					title: 'Usage',
 					asset: 'usage',
-					items: $page.data.markdowns.usages.map(({meta}) => ({
+					formaction: 'toggleUsage',
+					items: markdowns.usages.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
@@ -29,7 +34,8 @@
 					slug: 'decisions',
 					title: 'Decisions',
 					asset: 'decisions',
-					items: $page.data.markdowns.decisions.map(({meta}) => ({
+					formaction: 'toggleDecisions',
+					items: markdowns.decisions.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
@@ -40,22 +46,22 @@
 		},
 	]
 
-	let nav = {
+	let nav = $derived({
 		path,
 		title: 'Content',
-		id: 'nav-doc',
+		id: formId,
 		items,
-		reveal: 'expanded',
+		reveal,
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',
 		position: 'sticky',
 		place: 'left',
 		formaction: 'toggleSidebar',
-	}
+	})
 </script>
 
-<LayoutSidebar {nav} redirect={$page.url.pathname} path="" {app}>
+<LayoutSidebar {nav} {app}>
 	{#if children}
 		{@render children()}
 	{:else}

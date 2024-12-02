@@ -43,6 +43,7 @@ export type UiLayoutProps = {
 	 * Layout props
 	 */
 	align?: string
+	alignSelf?: string
 	justify?: string
 	size?: string
 	font?: string

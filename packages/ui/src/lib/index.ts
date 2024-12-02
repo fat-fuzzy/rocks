@@ -34,7 +34,6 @@ import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
  */
 import Burrito from '$lib/components/layouts/Burrito.svelte'
 import Reveal from '$lib/components/layouts/Reveal.svelte'
-import RevealAuto from '$lib/components/layouts/RevealAuto.svelte'
 import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
@@ -53,6 +52,7 @@ import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
+import Settings from '$lib/components/recipes/header/Settings.svelte'
 import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte'
 
 /**
@@ -125,7 +125,6 @@ const blocks = {
 const layouts = {
 	Burrito,
 	Reveal,
-	RevealAuto,
 	Stack,
 	Switcher,
 	Sidebar,
@@ -159,6 +158,7 @@ const drafts = {
 	ScrollyItem,
 	HeaderSettings,
 	SettingsMenu,
+	Settings,
 	PageScrolly,
 }
 

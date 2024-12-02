@@ -5,6 +5,7 @@ export const load = async (event) => {
 
 	const data = {
 		markdowns: posts.filter(({meta}) => meta.status !== 'draft'),
+		sidebar: event.locals.sidebar,
 	}
 
 	return data

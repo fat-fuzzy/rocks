@@ -4,17 +4,12 @@ import pages from '$data/pages'
 
 const page = 'ui'
 
-export const load = async (event) => {
-	let styles = null
-	let context = null
-	let ui = null
-	let sidebar = null
-	let currentTabs = null
+export const load = async ({locals, params}) => {
 	let content = null
 	let markdowns = assets.markdowns
 
-	let component = event.params.component
-	let category = event.params.category
+	let component = params.component
+	let category = params.category
 
 	let slug = component ? component : category
 
@@ -45,28 +40,12 @@ export const load = async (event) => {
 		}
 	}
 
-	if (event.locals.dsStyles) {
-		styles = JSON.parse(event.locals.dsStyles)
-	}
-	if (event.locals.dsContext) {
-		context = JSON.parse(event.locals.dsContext)
-	}
-	if (event.locals.dsState) {
-		ui = JSON.parse(event.locals.dsState)
-	}
-	if (event.locals.sidebar) {
-		sidebar = JSON.parse(event.locals.sidebar)
-	}
-	if (event.locals.currentTabs) {
-		currentTabs = JSON.parse(event.locals.currentTabs)
-	}
-
 	return {
-		sidebar,
-		styles,
-		context,
-		ui,
-		currentTabs,
+		sidebar: locals.sidebar,
+		styles: locals.dsStyles,
+		context: locals.dsContext,
+		ui: locals.dsState,
+		currentTabs: locals.currentTabs,
 		markdowns,
 		content,
 	}

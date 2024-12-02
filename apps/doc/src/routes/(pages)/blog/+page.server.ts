@@ -3,6 +3,8 @@ import pages from '$data/pages'
 
 const page = 'blog'
 const markdowns = await pages.fetchMarkdowns(page)
+import uiActions from '$lib/forms/actions/ui-actions'
+import settingsActions from '$lib/forms/actions/settings-actions'
 
 export const load = async (event) => {
 	if (!markdowns?.length) {
@@ -17,4 +19,12 @@ export const load = async (event) => {
 	return {
 		content,
 	}
+}
+
+export const actions = {
+	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	updateSettings: async (event) =>
+		settingsActions.handleUpdateAppSettings({event}),
 }

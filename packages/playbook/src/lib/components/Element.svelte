@@ -97,7 +97,7 @@
 		playbookStore.getElementFixtures({category, component: title}),
 	)
 	let statusFixures = $derived(
-		fixtures?.status ? fixtures.status.find((p) => p.case === status) : {},
+		fixtures?.status ? fixtures.status.find((p) => p.value === status) : {},
 	)
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 	let link = $derived(

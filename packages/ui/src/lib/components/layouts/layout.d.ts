@@ -29,6 +29,7 @@ export type GridLayoutProps = LayoutProps & {
 export type RevealLayoutProps = LayoutProps &
 	UiBlockProps & {
 		reveal: string
+		auto?: boolean
 		element?: string
 		trigger?: UiEvents
 		dismiss?: UiEvents

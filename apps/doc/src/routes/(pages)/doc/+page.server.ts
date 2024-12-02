@@ -2,6 +2,8 @@ import {error} from '@sveltejs/kit'
 
 import images from '$data/images'
 import pages from '$data/pages'
+import uiActions from '$lib/forms/actions/ui-actions'
+import settingsActions from '$lib/forms/actions/settings-actions'
 
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
@@ -43,4 +45,14 @@ export const load = async ({params}) => {
 	} catch (e) {
 		error(500, 'Error loading image data')
 	}
+}
+
+export const actions = {
+	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
+	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),
+	updateSettings: async (event) =>
+		settingsActions.handleUpdateAppSettings({event}),
 }

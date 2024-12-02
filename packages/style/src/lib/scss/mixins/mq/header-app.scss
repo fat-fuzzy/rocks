@@ -3,27 +3,27 @@
 /* TODO: clean this up - not so good  */
 @mixin switchToRowStyles_Header($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
+		.header-app:has(.l\:reveal\:auto.bp\:#{$size}) {
+			padding-block: 0;
+			padding-inline: var(--gap);
+		}
+
 		.header-app .l\:reveal\:auto.bp\:#{$size} {
 			justify-content: var(--justify);
-			padding-block: 0;
-		}
 
-		.header-app > [class*='l:main']:has(.l\:reveal\:auto.bp\:#{$size}) {
-			min-inline-size: unset;
-		}
-
-		/* Configure reveal menu positioning and width */
-		.header-app [class*='l:side'].l\:reveal\:auto.bp\:#{$size} {
-			form:has([aria-expanded]) + .content {
+			> ff-reveal {
+				position: unset;
+				flex-wrap: nowrap;
+				display: flex;
 				block-size: fit-content;
 				inline-size: fit-content;
 				padding: 0;
 				box-shadow: unset;
-				margin: auto;
 			}
 		}
 
-		.header-app [class*='l:main'] nav.l\:reveal\:auto.bp\:#{$size} {
+		nav.l\:reveal\:auto.bp\:#{$size} {
+			min-inline-size: unset;
 			flex-direction: row;
 			padding-block: 0;
 			inline-size: fit-content;
@@ -32,7 +32,6 @@
 
 			ul {
 				flex-flow: row nowrap;
-				gap: var(--gap);
 				padding: 0;
 				margin: 0;
 				inline-size: fit-content;
@@ -42,24 +41,22 @@
 
 			li {
 				display: flex;
-				align-items: center;
+				align-items: var(--align, center);
 				justify-content: var(--justify, center);
-				border-inline-start: unset;
+				border-inline-start: none;
 				border-block-start: var(--border-width-xl) solid var(--shade);
 				inline-size: fit-content;
 
 				&[aria-current='page'] {
 					flex-direction: row;
-					border-inline-start: unset;
+					border-inline-start: none;
 					border-color: var(--accent);
-					background-color: var(--shade);
 				}
 			}
 
 			a {
-				inline-size: fit-content;
-				padding: var(--ui-size-sm) calc(2 * var(--outline-offset-nav))
-					var(--ui-size);
+				align-items: var(--align, center);
+				justify-content: var(--justify, center);
 			}
 		}
 	}

@@ -14,17 +14,14 @@
 		path = '',
 		reveal,
 		formaction,
-		actionPath,
-		redirect,
 		layout,
-		direction = 'tb-lr',
 		dismiss = UiEvents.outside,
 		color,
 		size,
 		breakpoint,
 		threshold,
 		variant,
-		align = 'center',
+		align,
 		justify,
 		place = 'top',
 		position,
@@ -80,24 +77,13 @@
 		{color}
 		reveal={sidebarReveal.reveal}
 		{dismiss}
-		{actionPath}
 		{formaction}
-		{redirect}
 		{position}
 		{place}
 		{align}
 		{justify}
 		onclick={toggleReveal}
 	>
-		<LinkList
-			id={`${id}-${path}`}
-			{path}
-			{items}
-			{size}
-			{align}
-			container="content"
-			depth={0}
-			{redirect}
-		/>
+		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</Reveal>
 </nav>

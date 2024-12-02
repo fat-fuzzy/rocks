@@ -7,6 +7,7 @@ function getElementStyles(props: UiBlockProps): string {
 		size,
 		shape,
 		align,
+		alignSelf,
 		justify,
 		asset,
 		assetType,
@@ -16,20 +17,25 @@ function getElementStyles(props: UiBlockProps): string {
 
 	/* Element styles */
 	let colorClass = color ? `color:${color}` : '' // TODO: clarify bg/color/surface
-	let backgroundClass = color ? `bg:${color}` : ''
+	let backgroundClass = background
+		? `bg:${background}`
+		: color
+			? `bg:${color}`
+			: ''
 	let sizeClass = size ? `size:${size}` : ''
 	let fontClass = size ? `font:${size}` : ''
 	let assetTypeClass = assetType ? assetType : 'emoji'
 	let assetClass = asset ? `${assetTypeClass}:${asset}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
 	let shapeClass = shape ? ` shape:${shape}` : ''
-	let alignClass = align ? `align:${align}` : ''
+	let alignClass = align ? `align-self:${alignSelf}` : ''
+	let alignSelfClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 
 	if (shapeClass) {
 		justifyClass = 'justify:center'
 	}
-	let elementClasses = `${assetClass} ${colorClass} ${backgroundClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${justifyClass} ${fontClass}`
+	let elementClasses = `${assetClass} ${colorClass} ${backgroundClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${alignSelfClass} ${justifyClass} ${fontClass}`
 
 	return elementClasses.trim()
 }

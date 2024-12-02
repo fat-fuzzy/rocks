@@ -1,32 +1,35 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
-	import {UiEvents} from '$types'
+	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
-	import {clickOutside} from '$lib/utils/click-outside.js'
-	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
+
+	import {UiEvents} from '$types'
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
+	import {clickOutside} from '$lib/utils/click-outside.js'
+	import FormValidator from '$lib/utils/validate-form.svelte.js'
+	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
 	const {ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE} = constants
 
 	let {
 		id = 'reveal',
+		name = 'reveal',
 		title = 'Reveal',
-		method = 'POST',
+		method = 'POST', // TODO: change to GET with params
+		auto = false,
 		formaction,
-		actionPath,
-		redirect,
 		layout,
-		reveal = 'collapsed',
-		direction = 'tb-lr',
+		reveal,
 		place = 'top',
+		element = 'div',
 		position,
 		color,
 		size,
 		breakpoint,
 		// trigger = UiEvents.click,
-		dismiss = UiEvents.outside,
+		dismiss = UiEvents.click,
 		variant,
 		align,
 		justify,
@@ -40,9 +43,20 @@
 
 	let expanded = $state(reveal)
 	let initial = $derived(expanded)
-	let content: HTMLElement
+	let boundForm: HTMLFormElement | undefined = $state()
+	let formData: FormData | undefined = $state()
+	let validator: FormValidator = new FormValidator('UiStateValidationFunction')
+	let disabled: boolean | undefined = $state(undefined)
+
+	$effect(() => {
+		disabled = validator.formHasErrors()
+	})
 
 	function toggleReveal(event) {
+		if (event.id !== `button-reveal-${id}` || event.state === expanded) {
+			return
+		}
+
 		expanded = event.state
 		if (onclick) {
 			onclick(event)
@@ -51,13 +65,9 @@
 
 	let layoutClasses = $derived(
 		styleHelper.getLayoutStyles({
-			color,
-			size,
 			height,
 			align,
 			justify,
-			asset,
-			variant,
 			layout,
 			position,
 			breakpoint,
@@ -65,82 +75,120 @@
 			layer,
 		}),
 	)
-
-	let revealClasses = $derived(
-		`l:reveal ${layoutClasses} ${direction} ${expanded}`,
-	)
+	let formClasses = $derived(`form:${expanded}`)
 	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : '' // TODO: fix this
+	let revealLayoutClasses = $derived(`${expanded} ${layoutClasses}`)
+	let revealClasses = $derived(
+		auto
+			? `l:reveal:auto ${revealLayoutClasses}`
+			: `l:reveal ${revealLayoutClasses}`,
+	)
+	const inputTypes: {[name: string]: string} = {
+		formId: 'text',
+		state: 'text', // TODO: fix this - it wont work with multiple reveals
+	}
 
 	let revealStates = {
 		expanded: {
 			...EXPAND_MACHINE.expanded,
 			text: title,
-			asset: `point-${ALIGN_ANIMATION_DIRECTION[place]['expanded']}`,
+			asset: asset
+				? asset
+				: `point-${ALIGN_ANIMATION_DIRECTION[place]['expanded']}`,
 		},
 		collapsed: {
 			...EXPAND_MACHINE.collapsed,
 			text: title,
-			asset: `point-${ALIGN_ANIMATION_DIRECTION[place]['collapsed']}`,
+			asset: asset
+				? asset
+				: `point-${ALIGN_ANIMATION_DIRECTION[place]['collapsed']}`,
 		},
 	}
 
-	let action = $derived(
-		formaction && redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
-				? formaction
-				: '',
-	)
+	let action = $derived(formaction)
+	function onKeyUp(e: KeyboardEvent) {
+		if (dismiss === UiEvents.outside && e.key === 'Escape') {
+			toggleReveal({state: 'collapsed', id: `button-reveal-${id}`})
+		}
+	}
 
-	// function onKeyUp(e: KeyboardEvent) {
-	// 	if (dismiss === UiEvents.outside && e.key === 'Escape') {
-	// 		toggleReveal({state: 'collapsed'})
-	// 	}
-	// }
+	function handleClickOutside() {
+		if (dismiss === UiEvents.outside && boundForm) {
+			clickOutside(boundForm, () =>
+				toggleReveal({state: 'collapsed', id: `button-reveal-${id}`}),
+			)
+		}
+	}
 
-	// function handleClickOutside() {
-	// 	if (dismiss === UiEvents.outside) {
-	// 		clickOutside(content, () => toggleReveal({state: 'collapsed'}))
-	// 	}
-	// }
+	function handleInput(event: Event) {
+		// TODO: test that this works with hidden inputs
+		validator.changeInput(event)
+		validator.validateInput(event)
+	}
+
+	onMount(() => {
+		if (boundForm) {
+			formData = new FormData(boundForm)
+			validator.init(formData, inputTypes)
+		}
+	})
 </script>
 
-<!-- <svelte:window on:keyup={onKeyUp} on:click={handleClickOutside} /> -->
+<svelte:window onkeyup={onKeyUp} onclick={handleClickOutside} />
 
-<form
-	{method}
-	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-	use:enhance={() => {
-		// prevent default callback from resetting the form
-		return ({update}) => {
-			update({reset: false})
-		}
-	}}
-	class={revealClasses}
->
-	<Expand
-		id={`button-reveal-${id}`}
-		{title}
-		{color}
-		{variant}
-		{size}
-		type={actionPath && formaction ? 'submit' : 'button'}
-		name="reveal"
-		controls={`${id}-reveal`}
-		value={`button-reveal-${id}`}
-		{asset}
-		justify={`${justify} nowrap`}
-		{initial}
-		text="Reveal"
-		place={placeIcon}
-		onclick={toggleReveal}
-		states={revealStates}
-	>
-		<span class="ellipsis">{title}</span>
-	</Expand>
-	<ff-popover id={`${id}-reveal`} class="content" bind:this={content}>
+{#if auto}
+	<svelte:element this={element} {id} class={revealClasses} aria-label={title}>
+		{@render revealForm()}
+	</svelte:element>
+{:else}
+	{@render revealForm()}
+{/if}
+
+{#snippet revealForm()}
+	{#key initial}
+		<form
+			{name}
+			{method}
+			action={`?/${action}`}
+			use:enhance={() => {
+				// prevent default callback from resetting the form
+				return ({update}) => {
+					update({reset: false})
+				}
+			}}
+			class={formClasses}
+			bind:this={boundForm}
+		>
+			<input type="hidden" name="formId" value={id} oninput={handleInput} />
+			<input
+				type="hidden"
+				name={`state-${id}`}
+				value={expanded}
+				oninput={handleInput}
+			/>
+			<Expand
+				id={`button-reveal-${id}`}
+				name={`button-reveal-${id}`}
+				{title}
+				{color}
+				{variant}
+				{size}
+				controls={`${id}-reveal`}
+				{asset}
+				justify={`${justify} nowrap`}
+				{initial}
+				place={placeIcon}
+				onclick={toggleReveal}
+				states={revealStates}
+				{disabled}
+			>
+				<span class="ellipsis">{title}</span>
+			</Expand>
+		</form>
+	{/key}
+	<ff-reveal id={`${id}-reveal`}>
 		{#if children}
 			{@render children()}
 		{/if}
-	</ff-popover>
-</form>
+	</ff-reveal>
+{/snippet}

@@ -8,7 +8,7 @@ import crypto from 'crypto'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import addErrors from 'ajv-errors'
-import schemas from './ajv.schema.forms.js'
+import schemas from '../in/ajv.schema.sample.js'
 import utils from '../../utils/gpg.js'
 import constants from '../../utils/constants.js'
 
@@ -36,18 +36,28 @@ const AJV_OPTIONS = {
 // Add your Schemas here
 const FormInputs = schemas.schemaInputs
 const SignUpSchema = schemas.schemaSignUp
-const AjvValidator = schemas.schemaAjvValidator
+// const AjvValidator = schemas.schemaAjvValidator
+const UiStateSchema = schemas.schemaUiState
 const ajv = new Ajv({
 	...AJV_OPTIONS,
-	schemas: [FormInputs, AjvValidator, SignUpSchema],
+	schemas: [
+		FormInputs,
+		// AjvValidator,
+		SignUpSchema,
+		UiStateSchema,
+	],
 })
 
 addFormats(ajv)
 addErrors(ajv)
 
+/**
+ * Generate validation functions for each schema
+ */
 let moduleCode = standaloneCode(ajv, {
-	FormValidationFunction: '#/definitions/AjvValidator', // Validation function for the AjvValidator schema
-	SignUpValidationFunction: '#/definitions/SignUpSchema', // Validation function for the SignUpValidator schema
+	// FormValidationFunction: '#/definitions/AjvValidator',
+	SignUpValidationFunction: '#/definitions/SignUpSchema',
+	UiStateValidationFunction: '#/definitions/UiStateSchema',
 })
 
 /**

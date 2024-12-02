@@ -12,6 +12,7 @@ export const load = async (event) => {
 				learning,
 				projects,
 			},
+			sidebar: event.locals.sidebar,
 		}
 
 		return data

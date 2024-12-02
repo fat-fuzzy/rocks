@@ -21,17 +21,10 @@
 		id,
 		depth = 0,
 		container,
-		redirect,
 		items = [], // TODO: fix type,
+		oninput,
 	}: LinkListProps = $props()
 
-	// TODO: clean classes output
-	let containerClass =
-		container === 'content'
-			? container
-			: container
-				? `l:${container}:${size}`
-				: ''
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
 	let colorClass = color ? `surface:1:${color}` : ''
 	let alignClass = align ? `align:${align}` : ''
@@ -52,11 +45,7 @@
 	/>
 {/snippet}
 
-<ul
-	{id}
-	class={`${containerClass} ${gridClass} ${depthClass}`}
-	data-testid={id}
->
+<ul {id} class={`${gridClass} ${depthClass}`} data-testid={id}>
 	{#each items as item (item.slug)}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
@@ -75,6 +64,16 @@
 				: `${itemClass} ${linkAssetClass}`}
 		>
 			{#if subItems && depth > 0}
+				<input
+					type="hidden"
+					name={`state-${slug}`}
+					value={reveal[slug].reveal}
+					oninput={(e) => {
+						if (oninput) {
+							oninput(e)
+						}
+					}}
+				/>
 				<ExpandLink
 					{title}
 					{reveal}
@@ -82,7 +81,7 @@
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
 					size={UiSize['2xs']}
-					{redirect}
+					formaction={`?/${item.formaction}`}
 				>
 					{@render nestedLinkList(subItems, slug)}
 				</ExpandLink>
