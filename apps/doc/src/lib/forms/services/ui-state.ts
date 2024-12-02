@@ -1,4 +1,4 @@
-import type {UiStateGetInput, UiStateSetInput} from '$types'
+import type {UiStateGetInput, UiStateSetInput} from '$lib/types/services.js'
 
 /**
  * TODO improve types, validate serialized ?
