@@ -52,7 +52,7 @@ const layouts = {
 		if (parent) return `${parent}/layouts`
 		return '/ui/layouts'
 	},
-	ready: ['Burrito', 'Reveal', 'RevealAuto', 'Sidebar', 'Stack', 'Switcher'],
+	ready: ['Burrito', 'Reveal', 'Sidebar', 'Stack', 'Switcher'],
 	draft: [],
 }
 
