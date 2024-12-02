@@ -29,7 +29,7 @@
 		size,
 		breakpoint,
 		// trigger = UiEvents.click,
-		dismiss = UiEvents.outside,
+		dismiss = UiEvents.click,
 		variant,
 		align,
 		justify,
@@ -43,7 +43,6 @@
 
 	let expanded = $state(reveal)
 	let initial = $derived(expanded)
-	let content: HTMLElement
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
 	let validator: FormValidator = new FormValidator('UiStateValidationFunction')
@@ -54,6 +53,10 @@
 	})
 
 	function toggleReveal(event) {
+		if (event.id !== `button-reveal-${id}` || event.state === expanded) {
+			return
+		}
+
 		expanded = event.state
 		if (onclick) {
 			onclick(event)
@@ -105,13 +108,15 @@
 	let action = $derived(formaction)
 	function onKeyUp(e: KeyboardEvent) {
 		if (dismiss === UiEvents.outside && e.key === 'Escape') {
-			toggleReveal({state: 'collapsed'})
+			toggleReveal({state: 'collapsed', id: `button-reveal-${id}`})
 		}
 	}
 
 	function handleClickOutside() {
-		if (dismiss === UiEvents.outside) {
-			clickOutside(content, () => toggleReveal({state: 'collapsed'}))
+		if (dismiss === UiEvents.outside && boundForm) {
+			clickOutside(boundForm, () =>
+				toggleReveal({state: 'collapsed', id: `button-reveal-${id}`}),
+			)
 		}
 	}
 
@@ -163,6 +168,7 @@
 			/>
 			<Expand
 				id={`button-reveal-${id}`}
+				name={`button-reveal-${id}`}
 				{title}
 				{color}
 				{variant}
@@ -180,7 +186,7 @@
 			</Expand>
 		</form>
 	{/key}
-	<ff-reveal id={`${id}-reveal`} bind:this={content}>
+	<ff-reveal id={`${id}-reveal`}>
 		{#if children}
 			{@render children()}
 		{/if}

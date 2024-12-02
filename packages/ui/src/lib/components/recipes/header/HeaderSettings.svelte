@@ -17,12 +17,12 @@
 
 <header class={headerClass}>
 	<SettingsMenu
-		name={`${id}-primary-nav`}
+		id={`${id}-menu-settings`}
+		name={`${id}-menu-settings`}
 		label=""
 		{path}
 		{breakpoint}
 		size="xs"
-		id={`${id}-menu-settings`}
 		{actionPath}
 		{redirect}
 		formaction="updateSettings"
