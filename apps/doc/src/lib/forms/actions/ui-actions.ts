@@ -18,6 +18,11 @@ async function handleToggleUiReveal({
 
 	try {
 		const data = await request.formData()
+
+		if (!element) {
+			error(500, `Cannot toggle ${element} element`)
+		}
+
 		const key = `${APP_PREFIX}-reveal-${element}`
 		const currentState = uiStateService.getUiState({
 			cookies,
@@ -37,7 +42,7 @@ async function handleToggleUiReveal({
 			key,
 			value: newState.state,
 			options: {
-				host: options.domain,
+				host: options?.domain,
 				path: '/',
 			},
 		})

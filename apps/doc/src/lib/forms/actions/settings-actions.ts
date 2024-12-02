@@ -42,7 +42,6 @@ async function handleUpdateAppSettings({event}: UiActionSetInput) {
 		console.error(error)
 		return fail(500, {
 			success: false,
-			type: element,
 			error: 'Failed to update settings', // TODO: improve / manage error message with intl package
 		})
 	}

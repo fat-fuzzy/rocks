@@ -9,7 +9,11 @@ function getUiState({cookies, key, options}: UiStateGetInput): any {
 	const serialized = cookies.get(key)
 
 	if (!serialized) {
-		return options.state
+		if (options?.state) {
+			return options.state
+		} else {
+			return {}
+		}
 	}
 
 	return JSON.parse(serialized)

@@ -6,13 +6,11 @@
 	const {LayoutSidebar} = ui.content
 
 	let {children} = $props()
+
+	let {sidebar, markdowns} = $state($page.data)
 	let app = $derived(fatFuzzyStore.app)
 	let formId = 'sidebar'
-	let reveal = $derived(
-		$page.form?.formId === formId
-			? $page.form[`state-${formId}`]
-			: $page.data.sidebar.reveal,
-	)
+	let reveal = $derived(sidebar.reveal)
 
 	let path = ''
 	let items = [
@@ -25,7 +23,7 @@
 					title: 'Usage',
 					asset: 'usage',
 					formaction: 'toggleUsage',
-					items: $page.data.markdowns.usages.map(({meta}) => ({
+					items: markdowns.usages.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
@@ -37,7 +35,7 @@
 					title: 'Decisions',
 					asset: 'decisions',
 					formaction: 'toggleDecisions',
-					items: $page.data.markdowns.decisions.map(({meta}) => ({
+					items: markdowns.decisions.map(({meta}) => ({
 						id: meta.id,
 						slug: meta.slug,
 						title: meta.title,
