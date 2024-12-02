@@ -58,13 +58,13 @@
 		</div>
 		<div class="l:side">
 			<Settings
-				name={`${id}-settings`}
+				id="settings"
+				name="settings"
 				label=""
 				{path}
 				{breakpoint}
 				align="end"
 				size="xs"
-				id={`${id}-menu-settings`}
 				items={items.settings}
 				formaction="updateSettings"
 				onupdate={items?.settings.onupdate}
