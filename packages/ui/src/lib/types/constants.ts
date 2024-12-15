@@ -1,5 +1,5 @@
-import type {Settings, UiRevealState, Tab, ButtonContext} from '$types'
-import {UiColor, UiSize, UiState} from '$types'
+import type {Settings, UiRevealState, ButtonContext} from '$types'
+import {UiState} from '$types'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 

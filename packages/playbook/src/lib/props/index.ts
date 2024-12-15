@@ -22,7 +22,7 @@ const TABS = [
 		title: 'Doc',
 		initial: true,
 		variant: 'bare',
-		color: 'primary',
+		color: 'highlight',
 		size: 'lg',
 		shape: 'round',
 		asset: 'doc',

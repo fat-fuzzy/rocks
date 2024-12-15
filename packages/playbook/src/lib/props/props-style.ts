@@ -481,7 +481,7 @@ const main = {
 }
 
 const settingsFamily = {
-	layout: 'flex',
+	layout: 'switcher',
 	size: 'xs',
 	justify: 'end',
 	props: ['brightness', 'contrast'],

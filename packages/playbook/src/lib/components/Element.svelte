@@ -7,6 +7,7 @@
 	import PlaybookStore from '$lib/api/store.svelte'
 	import {getPlaybookTab, getDocTab} from '$lib/props'
 
+	import Api from '$lib/components/Api.svelte'
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
@@ -22,6 +23,7 @@
 		isPage?: boolean
 		path?: string
 		SpecifiedElement: any // TODO: fix types
+		formaction?: string
 		actionPath?: string
 		redirect?: string
 		category?: string
@@ -36,6 +38,7 @@
 		depth = 0,
 		path = '',
 		SpecifiedElement,
+		formaction,
 		actionPath,
 		redirect,
 		category = '',
@@ -113,6 +116,7 @@
 		},
 		{
 			...getPlaybookTab(),
+			header: playbookHeader,
 			content: playbookContent,
 		},
 	]
@@ -127,6 +131,7 @@
 			{SpecifiedElement}
 			{stylesApi}
 			props={currentProps}
+			{formaction}
 			{actionPath}
 			{redirect}
 			{...settings}
@@ -135,8 +140,11 @@
 	</div>
 {/snippet}
 
+{#snippet playbookHeader()}
+	<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
+{/snippet}
 {#snippet playbookContent()}
-	<div class="l:sidebar:md">
+	<div class="l:sidebar:md media end:reverse">
 		<section class={sectionClasses}>
 			{@render renderElement()}
 		</section>
@@ -146,7 +154,7 @@
 					{path}
 					{actionPath}
 					{redirect}
-					color="primary"
+					color="accent"
 					{meta}
 					categories={[category]}
 				/>

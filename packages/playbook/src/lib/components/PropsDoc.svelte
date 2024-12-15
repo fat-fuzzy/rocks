@@ -20,7 +20,7 @@
 		{@const blocks = meta.props_style.blocks}
 		{@const layouts = meta.props_style.layouts}
 		<details open class="l:stack:md size:xs">
-			<summary class="surface:2:primary"> Style Props </summary>
+			<summary class="surface:2:accent"> Style Props </summary>
 			<ul class="tags l:switcher:md" data-testid="doc-style-props">
 				{#if blocks}
 					{@const blockStyles = Object.keys(blocks)}
@@ -70,11 +70,11 @@
 	{/if}
 	{#if meta.props_state}
 		<details open class="l:stack:md size:xs">
-			<summary class={`surface:2:accent`}>State Props</summary>
+			<summary class={`surface:2:primary`}>State Props</summary>
 			<ul class="tags l:switcher:md" data-testid="doc-state-props">
 				{#each meta.props_state as prop}
 					<li
-						class="card:2xs font:sm surface:1:accent"
+						class="card:2xs font:sm surface:1:primary"
 						data-testid={`prop-state-${prop}`}
 					>
 						{prop}

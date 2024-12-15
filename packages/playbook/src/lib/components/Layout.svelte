@@ -7,11 +7,19 @@
 		isPage?: boolean
 		SpecifiedElement: any // TODO: fix types
 		props: any
+		formaction?: string
 		actionPath?: string
 		redirect?: string
 	}
 
-	let {title, SpecifiedElement, props, actionPath, redirect}: Props = $props()
+	let {
+		title,
+		SpecifiedElement,
+		props,
+		formaction,
+		actionPath,
+		redirect,
+	}: Props = $props()
 
 	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
 
@@ -68,6 +76,7 @@
 		{...props}
 		{actionPath}
 		{redirect}
+		{formaction}
 	>
 		{@render children(fixtures, content)}
 	</SpecifiedElement>
