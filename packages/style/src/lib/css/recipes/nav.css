@@ -26,7 +26,6 @@ nav > ul ul li:has(ul) {
 }
 
 nav li a {
-	--border-radius-base: 0;
 	font-weight: var(--font-weight-link);
 	font-size: var(--font-size-ui);
 	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
@@ -37,6 +36,7 @@ nav li a {
 	margin: var(--outline-offset-nav);
 	inline-size: 100%;
 	max-inline-size: 100%;
+	border-radius: var(--border-radius-null);
 }
 
 .reveal-nav {

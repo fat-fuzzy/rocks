@@ -62,6 +62,7 @@ export interface Drafts {
 	Settings: typeof import('$lib/components/recipes/header/Settings.svelte').default
 	SettingsMenu: typeof import('$lib/components/recipes/menus/SettingsMenu.svelte').default
 	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default
+	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 }
 
 export interface Headless {

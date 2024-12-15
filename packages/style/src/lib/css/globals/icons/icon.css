@@ -1,6 +1,6 @@
 [class*='icon:']::before {
-	display: inline;
 	--icon-size: var(--ui-size);
+	display: inline;
 }
 
 a[class*='icon:']::before {
@@ -12,7 +12,8 @@ a[class*='icon:']::before {
 }
 
 [class*='shape:'][class*='icon'] {
-	padding: var(--asset-padding);
+	padding: var(--ui-size-sm);
+	max-inline-size: fit-content;
 }
 
 [class*='icon']:not([class*='shape:'])::before {

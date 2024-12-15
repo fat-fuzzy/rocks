@@ -88,11 +88,3 @@ export type SwitchState = {
 	name: string
 	send: (event: string) => unknown
 }
-
-export type Tab = UiBlockProps & {
-	id: string
-	name: string
-	title: string
-	value: string
-	initial?: string
-}
