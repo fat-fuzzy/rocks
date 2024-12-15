@@ -20,11 +20,13 @@ const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
 const DEFAULT_SCENE_ID = '004'
 
 const DEFAULT_DS_STATE: {
+	reveal: UiRevealState
 	menuReveal: UiRevealState
 	navReveal: UiRevealState
 	sidebarReveal: UiRevealState
 	settingsReveal: UiRevealState
 } = {
+	reveal: {reveal: UiState.collapsed},
 	menuReveal: {reveal: UiState.collapsed},
 	navReveal: {reveal: UiState.collapsed},
 	sidebarReveal: {reveal: UiState.collapsed},
