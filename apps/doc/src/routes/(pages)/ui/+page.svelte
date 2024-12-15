@@ -31,7 +31,7 @@
 					{actionPath}
 					depth={1}
 					isPage={false}
-					path={`${path}/${category}`}
+					path={`${path}/${category}${$page.url.hash}`}
 					redirect={$page.url.pathname}
 					{content}
 				>

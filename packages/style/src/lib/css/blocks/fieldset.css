@@ -1,7 +1,6 @@
 fieldset {
-	padding: 0;
 	border: none;
-	border-radius: var(--border-radius-md);
+	border-radius: var(--border-radius-base);
 	max-inline-size: 100%;
 	max-width: 100%;
 
@@ -26,7 +25,6 @@ fieldset {
 
 fieldset.radio,
 fieldset.check {
-	padding-block: 0 var(--outline-offset-base); /* TODO: adjust according to size:xyz */
 	font-size: var(--font-size);
 
 	input {
@@ -40,8 +38,6 @@ fieldset.check {
 	legend {
 		inline-size: auto;
 		margin-inline-start: var(--ui-size);
-		padding-inline: var(--ui-size-sm);
-		padding-block: 0 var(--outline-offset-base);
 	}
 
 	label > span {

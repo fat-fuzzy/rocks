@@ -23,7 +23,6 @@ import * as props from '$lib/props'
 import DsStylesUpdate from '$lib/forms/ds-styles-update'
 import DsContextReveal from '$lib/forms/ds-context-reveal'
 import DsStateUpdate from '$lib/forms/ds-state-update'
-import DsTabsUpdate from '$lib/forms/ds-tabs-update'
 
 /**
  * Stores
@@ -57,7 +56,6 @@ const forms = {
 	DsContextReveal,
 	DsStateUpdate,
 	DsStylesUpdate,
-	DsTabsUpdate,
 }
 
 export {api, forms}

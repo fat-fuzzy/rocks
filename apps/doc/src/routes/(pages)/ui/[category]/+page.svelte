@@ -13,10 +13,10 @@
 </script>
 
 <PlaybookCollection
-	{path}
 	{category}
 	{markdowns}
 	{actionPath}
+	path={`${path}${$page.url.hash}`}
 	depth={1}
 	isPage={true}
 	redirect={$page.url.pathname}

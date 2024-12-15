@@ -5,7 +5,6 @@ const {
 	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_STYLES,
-	DEFAULT_TABS,
 } = ui.constants
 
 // TODO - Get type from @fat-fuzzy/ui
@@ -20,7 +19,6 @@ class FatFuzzyStore {
 	navReveal: Settings = $state(DEFAULT_REVEAL_STATE)
 	sidebarReveal: Settings = $state(DEFAULT_NAV_REVEAL_STATE)
 	settingsReveal: Settings = $state(DEFAULT_REVEAL_STATE)
-	currentTabs: {ui: Settings} = $state({ui: DEFAULT_TABS[0]})
 
 	constructor() {}
 	// TODO: init and update functions

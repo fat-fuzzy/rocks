@@ -5,6 +5,7 @@ function getElementStyles(props: UiBlockProps): string {
 	let {
 		color,
 		size,
+		font,
 		shape,
 		align,
 		alignSelf,
@@ -23,7 +24,7 @@ function getElementStyles(props: UiBlockProps): string {
 			? `bg:${color}`
 			: ''
 	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = size ? `font:${size}` : ''
+	let fontClass = font ? `font:${font}` : size ? `font:${size}` : ''
 	let assetTypeClass = assetType ? assetType : 'emoji'
 	let assetClass = asset ? `${assetTypeClass}:${asset}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
@@ -125,6 +126,7 @@ function getStyles(props: UiBlockProps): string {
 	let {
 		color,
 		size,
+		font,
 		shape,
 		align,
 		justify,
@@ -142,6 +144,7 @@ function getStyles(props: UiBlockProps): string {
 	let elementClasses = getElementStyles({
 		color,
 		size,
+		font,
 		shape,
 		align,
 		justify,
