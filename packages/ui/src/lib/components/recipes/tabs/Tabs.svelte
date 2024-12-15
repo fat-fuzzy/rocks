@@ -11,7 +11,7 @@
 		container,
 	}: TabsProps = $props()
 
-	let selectedTab = $state(tabs.filter((tab: Tab) => tab.initial)[0]?.slug)
+	let selectedTab = $state()
 	let layoutClasses = styleHelper.getLayoutStyles({
 		layout,
 		background,
@@ -33,12 +33,9 @@
 			{#each tabs as { id, title, slug, color, size, variant, shape, asset }}
 				{@const link = id ? `${slug}-${id}` : slug}
 				{@const presentationClasses = styleHelper.getStyles({
-					size,
-					threshold: '2xs',
-					layout: 'switcher',
+					layout: 'switcher:xs',
 					align: 'center',
 					justify: 'between',
-					container: 'card',
 				})}
 				{@const iconClasses = styleHelper.getStyles({
 					color,
@@ -49,9 +46,16 @@
 					assetType: 'emoji',
 				})}
 				{@const linkClasses = styleHelper.getStyles({
+					size: '2xs',
+					font: 'md',
 					color,
+					container: 'card',
 				})}
-				<li role="presentation">
+				<li
+					role="presentation"
+					aria-current={selectedTab === slug ? 'page' : undefined}
+					class={`surface:0:${color}`}
+				>
 					<a
 						id={`tab-${link}`}
 						href={`#${link}`}
@@ -79,7 +83,6 @@
 				role="tabpanel"
 				hidden={selectedTab !== slug}
 				tabindex={selectedTab === slug ? undefined : -1}
-				class={selectedTab === slug ? 'focused' : undefined}
 			>
 				{@render content()}
 			</article>

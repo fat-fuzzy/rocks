@@ -1,12 +1,21 @@
 [role='tablist'],
-[role='tab'],
-[role='presentation'] {
+[role='tab'] {
 	inline-size: fit-content;
+	background-color: inherit;
 }
 
 nav li a[role='tab'] {
-	font-size: var(--font-size-minus);
 	border-radius: var(--border-radius-base);
-	outline-color: var(--accent-color);
-	padding-inline: var(--ui-size-sm);
+	outline-color: var(--accent);
+	padding-block: var(--ui-size-sm);
+	padding-inline: var(--ui-size);
+	background-color: inherit;
+}
+
+[role='presentation'][class*='surface'] {
+	background-color: inherit;
+}
+
+[role='presentation'][aria-current='page'] {
+	background-color: var(--shade);
 }

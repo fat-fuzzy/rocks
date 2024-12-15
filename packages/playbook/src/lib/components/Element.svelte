@@ -1,9 +1,11 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import {getContext} from 'svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
 	import type {Meta} from '$lib/props/types'
+	import {getContext} from 'svelte'
+	import ui from '@fat-fuzzy/ui'
+	import PlaybookStore from '$lib/api/store.svelte'
+	import {getPlaybookTab, getDocTab} from '$lib/props'
 
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
@@ -11,6 +13,8 @@
 	import Recipe from './Recipe.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
+
+	const {Tabs} = ui.drafts
 
 	type Props = {
 		title: string
@@ -22,7 +26,6 @@
 		redirect?: string
 		category?: string
 		color?: string
-		tab?: string
 		meta: Meta
 		children?: Snippet
 	}
@@ -36,7 +39,6 @@
 		actionPath,
 		redirect,
 		category = '',
-		tab,
 		meta,
 		children,
 	}: Props = $props()
@@ -103,6 +105,17 @@
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
 	)
+
+	let tabs = [
+		{
+			...getDocTab(),
+			content: docContent,
+		},
+		{
+			...getPlaybookTab(),
+			content: playbookContent,
+		},
+	]
 </script>
 
 {#snippet renderElement()}
@@ -122,35 +135,41 @@
 	</div>
 {/snippet}
 
-{#if isPage}
+{#snippet playbookContent()}
 	<div class="l:sidebar:md">
-		{#if tab === 'playbook'}
-			<section class={sectionClasses}>
-				{@render renderElement()}
-			</section>
-			<aside class="l:side l:stack:md">
-				{#key title}
-					<PropsDemo
-						{path}
-						{actionPath}
-						{redirect}
-						color="primary"
-						{meta}
-						categories={[category]}
-					/>
-				{/key}
-			</aside>
-		{:else if tab === 'doc'}
-			<section class="l:main">
-				{#if children}
-					{@render children()}
-				{/if}
-			</section>
-			<aside class="l:side l:stack:md">
-				<PropsDoc {meta} />
-			</aside>
-		{/if}
+		<section class={sectionClasses}>
+			{@render renderElement()}
+		</section>
+		<aside class="l:side l:stack:md">
+			{#key title}
+				<PropsDemo
+					{path}
+					{actionPath}
+					{redirect}
+					color="primary"
+					{meta}
+					categories={[category]}
+				/>
+			{/key}
+		</aside>
 	</div>
+{/snippet}
+
+{#snippet docContent()}
+	<div class="l:sidebar:md">
+		<section class="l:main">
+			{#if children}
+				{@render children()}
+			{/if}
+		</section>
+		<aside class="l:side l:stack:md">
+			<PropsDoc {meta} />
+		</aside>
+	</div>
+{/snippet}
+
+{#if isPage}
+	<Tabs id="playbook-tabs" {tabs} {path} />
 {:else}
 	<article
 		id={`card-${title}`}

@@ -1,11 +1,7 @@
 <script lang="ts">
-	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import Element from '$lib/components/Element.svelte'
-	import PlaybookHeader from '$lib/components/PlaybookHeader.svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
-
-	const {DEFAULT_TABS} = ui.constants
+	import Api from '$lib/components/Api.svelte'
 
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
@@ -18,12 +14,7 @@
 		redirect: string
 		title: any
 	}
-
 	let {category, content, path, actionPath, redirect, title}: Props = $props()
-
-	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
-
-	let currentTab = $derived(playbookStore.currentTabs.ui || DEFAULT_TABS[0])
 
 	let categoryItems: {[name: string]: any} = {
 		tokens: ui.tokens,
@@ -34,19 +25,24 @@
 
 	let description = $derived(`${title} | Doc`)
 	let SpecifiedElement = $derived(categoryItems[category][title])
+	let isPlaybook = $derived(path.includes('#playbook'))
 </script>
 
 <PageMain pageName="UI" {title} {description} size="lg">
 	{#snippet header()}
-		<PlaybookHeader
-			{title}
-			meta={content.meta}
-			{path}
-			{actionPath}
-			{redirect}
-		/>
+		<h1 class="l:side hug maki:block:md">{title}</h1>
+		<div class="l:main l:flex reverse">
+			{#if isPlaybook}
+				<Api
+					categories={['app']}
+					meta={content.meta}
+					{path}
+					{actionPath}
+					{redirect}
+				/>
+			{/if}
+		</div>
 	{/snippet}
-
 	<Element
 		isPage={true}
 		depth={1}
@@ -57,7 +53,6 @@
 		meta={content.meta}
 		{actionPath}
 		{redirect}
-		tab={currentTab.value}
 	>
 		<EscapeHtml id={content.meta.slug} html={content.html} size="lg" />
 	</Element>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {StylesApi} from '$lib/api/styles.api'
-	import type {StyleInputGroup} from '$lib/api/styles.types'
+	import type {StyleInputGroup, StyleFamily} from '$lib/api/styles.types'
 
 	import {onMount, getContext} from 'svelte'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
@@ -10,12 +10,13 @@
 	const {InputRange} = fatFuzzyUi.blocks
 	const {InputGroup} = fatFuzzyUi.drafts
 	const {ToggleMenu} = fatFuzzyUi.recipes
+	const {Fieldset} = fatFuzzyUi.drafts
 
 	type Props = {
 		styleInput: StyleInputGroup
+		family: StyleFamily
 		familyName: string
 		categoryName: string
-		size?: string
 		formaction?: string
 		onupdate: (payload: {
 			name: string
@@ -25,9 +26,9 @@
 
 	let {
 		styleInput,
+		family,
 		categoryName,
 		familyName,
-		size,
 		formaction,
 		onupdate,
 	}: Props = $props()
@@ -39,6 +40,7 @@
 	let apiSize = '2xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
+	let apiJustify = 'stretch'
 
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
 		radio: InputGroup,
@@ -155,21 +157,31 @@
 <svelte:window on:keydown={keydown} />
 
 {#if input === 'toggle'}
-	<ToggleMenu
-		{id}
-		title={styleInput.name}
-		items={updatedItems}
-		layout={styleInput.layout ?? ''}
-		size={apiSize}
-		color={apiColor}
-		variant={apiVariant}
-		container={styleInput.container}
-		mode={styleInput.mode ?? 'radio'}
-		{assetType}
-		{formaction}
-		onupdate={(event) => handleToggle(event, familyName, styleInput.id)}
-		init={(event) => handleToggle(event, familyName, currentValue)}
-	/>
+	<Fieldset
+		id={family.title}
+		legend={family.title}
+		layout={family.layout}
+		container={family.container}
+		size={family.size}
+		name={familyName}
+		justify={apiJustify}
+	>
+		<ToggleMenu
+			{id}
+			title={styleInput.name}
+			items={updatedItems}
+			layout={styleInput.layout ?? ''}
+			size={apiSize}
+			color={apiColor}
+			variant={apiVariant}
+			container={styleInput.container}
+			mode={styleInput.mode ?? 'radio'}
+			{assetType}
+			{formaction}
+			onupdate={(event) => handleToggle(event, familyName, styleInput.id)}
+			init={(event) => handleToggle(event, familyName, currentValue)}
+		/>
+	</Fieldset>
 {:else}
 	{#if input === 'radio' || input === 'checkbox'}
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
@@ -182,8 +194,8 @@
 			legend={name}
 			layout={styleInput.layout ?? ''}
 			container={styleInput.container ?? ''}
-			threshold={size ?? apiSize}
-			size={size ?? apiSize}
+			threshold={apiSize}
+			size={family.size ?? apiSize}
 			color={apiColor}
 			variant={styleInput.variant}
 			oninput={(event) => handleInput(event, familyName)}
@@ -191,18 +203,28 @@
 	{/if}
 	{#if input == 'range'}
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
-		<InputComponent
-			{id}
-			label={styleInput.name}
-			{items}
-			value={currentValue}
-			name={id}
-			layout={styleInput.layout ?? ''}
-			size={apiSize}
-			color={apiColor}
-			variant={styleInput.variant}
-			oninput={(event) => handleInput(event, familyName)}
-		/>
+		<Fieldset
+			id={family.title}
+			legend={family.title}
+			layout={family.layout}
+			container={family.container}
+			size={family.size}
+			name={familyName}
+			justify={apiJustify}
+		>
+			<InputComponent
+				{id}
+				label={styleInput.name}
+				{items}
+				value={currentValue}
+				name={id}
+				layout={styleInput.layout ?? ''}
+				size={apiSize}
+				color={apiColor}
+				variant={styleInput.variant}
+				oninput={(event) => handleInput(event, familyName)}
+			/>
+		</Fieldset>
 	{/if}
 	{#if input === 'datalist'}
 		<label

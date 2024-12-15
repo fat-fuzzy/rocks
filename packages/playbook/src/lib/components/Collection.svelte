@@ -1,12 +1,21 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import ui from '@fat-fuzzy/ui'
 	import type {Markdowns, Meta} from '$lib/props/types'
+
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
-	import {getCategoryMarkdowns, getElementMeta} from '$lib/props'
+	import {
+		getCategoryMarkdowns,
+		getElementMeta,
+		getPlaybookTab,
+		getDocTab,
+	} from '$lib/props'
 
 	import Element from './Element.svelte'
+
+	const {Tabs} = ui.drafts
 
 	type Props = {
 		depth?: number
@@ -19,7 +28,6 @@
 		color?: string
 		size?: string
 		layout?: string
-		tab?: string
 		markdowns: Markdowns
 		children?: Snippet
 		meta: Meta
@@ -37,11 +45,20 @@
 		layout = 'switcher',
 		category,
 		markdowns,
-		tab,
 		meta,
 		children,
 	}: Props = $props()
 
+	let tabs = [
+		{
+			...getDocTab(),
+			content: docContent,
+		},
+		{
+			...getPlaybookTab(),
+			content: playbookContent,
+		},
+	]
 	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
 	let layoutClass = $derived(
@@ -77,35 +94,41 @@
 	</div>
 {/snippet}
 
-{#if isPage}
+{#snippet playbookContent()}
 	<div class="l:sidebar:md">
-		{#if tab === 'playbook'}
-			<section class={`l:main ${layoutClass}`}>
-				{@render categoryElements()}
-			</section>
-			<aside class="l:side l:stack:md">
-				{#key category}
-					<PropsDemo
-						{path}
-						{actionPath}
-						{redirect}
-						color="primary"
-						{meta}
-						categories={[category]}
-					/>
-				{/key}
-			</aside>
-		{:else if tab === 'doc'}
-			<section class="l:main">
-				{#if children}
-					{@render children()}
-				{/if}
-			</section>
-			<aside class="l:side l:stack:md">
-				<PropsDoc {meta} />
-			</aside>
-		{/if}
+		<section class={`l:main ${layoutClass}`}>
+			{@render categoryElements()}
+		</section>
+		<aside class="l:side l:stack:md">
+			{#key category}
+				<PropsDemo
+					{path}
+					{actionPath}
+					{redirect}
+					color="primary"
+					{meta}
+					categories={[category]}
+				/>
+			{/key}
+		</aside>
 	</div>
+{/snippet}
+
+{#snippet docContent()}
+	<div class="l:sidebar:md">
+		<section class="l:main">
+			{#if children}
+				{@render children()}
+			{/if}
+		</section>
+		<aside class="l:side l:stack:md">
+			<PropsDoc {meta} />
+		</aside>
+	</div>
+{/snippet}
+
+{#if isPage}
+	<Tabs id="playbook-tabs" {tabs} {path} />
 {:else}
 	<section class="l:text:lg snap:start">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">

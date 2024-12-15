@@ -1,14 +1,12 @@
 <script lang="ts">
-	import {getContext, type Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
 	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
 	import Collection from '$lib/components/Collection.svelte'
-	import PlaybookHeader from '$lib/components/PlaybookHeader.svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
+	import Api from '$lib/components/Api.svelte'
 
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
-	const {DEFAULT_TABS} = ui.constants
 
 	type Props = {
 		category: any // TODO: fix types
@@ -34,16 +32,12 @@
 		children,
 	}: Props = $props()
 
-	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
-
 	const components = [
 		{category: 'tokens', items: ui.tokens},
 		{category: 'blocks', items: ui.blocks},
 		{category: 'layouts', items: ui.layouts},
 		{category: 'recipes', items: ui.recipes},
 	]
-
-	let currentTab = $derived(playbookStore.currentTabs.ui || DEFAULT_TABS[0])
 
 	let items = $derived(
 		components.find(({category: c}) => c === category)?.items ?? [],
@@ -52,6 +46,7 @@
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
 	let description = $derived(`${title} | Doc`)
+	let isPlaybook = $derived(path.includes('#playbook'))
 </script>
 
 {#snippet collection()}
@@ -64,7 +59,6 @@
 		{category}
 		{markdowns}
 		{actionPath}
-		tab={currentTab.value}
 		redirect={$page.url.pathname}
 	>
 		{#if isPage}
@@ -78,13 +72,18 @@
 {#if isPage}
 	<PageMain pageName="UI" {title} {description} size="lg">
 		{#snippet header()}
-			<PlaybookHeader
-				{title}
-				meta={content.meta}
-				{path}
-				{actionPath}
-				{redirect}
-			/>
+			<h1 class="l:side hug maki:block:md">{title}</h1>
+			<div class="l:main l:flex reverse">
+				{#if isPlaybook}
+					<Api
+						categories={['app']}
+						meta={content.meta}
+						{path}
+						{actionPath}
+						{redirect}
+					/>
+				{/if}
+			</div>
 		{/snippet}
 		{#key category}
 			{@render collection()}

@@ -17,7 +17,7 @@
 		{title}
 		{category}
 		{content}
-		{path}
+		path={`${path}${$page.url.hash}`}
 		{actionPath}
 		redirect={$page.url.pathname}
 	/>

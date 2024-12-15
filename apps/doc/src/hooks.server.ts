@@ -2,8 +2,7 @@ import type {Handle} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 import uiStateService from '$lib/forms/services/ui-state'
 
-const {APP_PREFIX, DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, DEFAULT_TABS} =
-	ui.constants
+const {APP_PREFIX, DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS} = ui.constants
 
 const revealForms = [
 	// global app forms
@@ -46,11 +45,6 @@ export const handle = (async ({event, resolve}) => {
 		key: `${APP_PREFIX}-app-settings`,
 		options: {state: DEFAULT_APP_SETTINGS},
 	})
-	const currentTabs = await uiStateService.getUiState({
-		cookies,
-		key: `${APP_PREFIX}-ui-tabs`,
-		options: {state: DEFAULT_TABS},
-	})
 	const dsState = await uiStateService.getUiState({
 		cookies,
 		key: `${APP_PREFIX}-ui-state`,
@@ -77,7 +71,6 @@ export const handle = (async ({event, resolve}) => {
 	}, {})
 
 	event.locals.settings = appSettings
-	event.locals.currentTabs = currentTabs
 	event.locals.dsState = dsState
 	event.locals.dsStyles = dsStyles
 
