@@ -53,7 +53,7 @@ fieldset.check {
 		--color-ink: var(--ink);
 		display: flex;
 		justify-content: var(--justify, space-between);
-		padding: calc(var(--ui-size-sm) / var(--size-ratio-sm)) var(--ui-size);
+		padding: var(--outline-offset-base);
 		gap: var(--ui-size);
 		margin: 0;
 		width: 100%;

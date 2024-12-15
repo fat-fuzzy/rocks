@@ -208,7 +208,7 @@
 			legend={family.title}
 			layout={family.layout}
 			container={family.container}
-			size={family.size}
+			size={family.size ?? apiSize}
 			name={familyName}
 			justify={apiJustify}
 		>
@@ -229,7 +229,7 @@
 	{#if input === 'datalist'}
 		<label
 			for={`choice-${styleInput.name}`}
-			class={`l:stack ${apiSize} font:${apiSize}`}
+			class={`l:stack size:${apiSize} font:${apiSize}`}
 		>
 			{`Select ${styleInput.name}`}
 			<input

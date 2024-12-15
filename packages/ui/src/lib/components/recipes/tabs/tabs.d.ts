@@ -3,6 +3,7 @@ export type Tab = UiBlockProps & {
 	id?: string
 	title: string
 	initial?: boolean
+	header?: Snippet
 	content?: Snippet
 }
 

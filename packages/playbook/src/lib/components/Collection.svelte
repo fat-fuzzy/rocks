@@ -3,6 +3,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import type {Markdowns, Meta} from '$lib/props/types'
 
+	import Api from '$lib/components/Api.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
@@ -22,6 +23,7 @@
 		isPage?: boolean
 		path: string
 		components: {[name: string]: any} // TODO: fix types
+		formaction?: string
 		actionPath?: string
 		redirect?: string
 		category: string
@@ -38,6 +40,7 @@
 		depth = 0,
 		path,
 		components,
+		formaction,
 		actionPath,
 		redirect,
 		size = 'md',
@@ -56,6 +59,7 @@
 		},
 		{
 			...getPlaybookTab(),
+			header: playbookHeader,
 			content: playbookContent,
 		},
 	]
@@ -80,6 +84,7 @@
 			{path}
 			{category}
 			{SpecifiedElement}
+			{formaction}
 			{actionPath}
 			meta={getElementMeta(name, categoryMarkdowns)}
 			{redirect}
@@ -94,8 +99,11 @@
 	</div>
 {/snippet}
 
+{#snippet playbookHeader()}
+	<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
+{/snippet}
 {#snippet playbookContent()}
-	<div class="l:sidebar:md">
+	<div class="l:sidebar:md media end:reverse">
 		<section class={`l:main ${layoutClass}`}>
 			{@render categoryElements()}
 		</section>
@@ -105,7 +113,7 @@
 					{path}
 					{actionPath}
 					{redirect}
-					color="primary"
+					color="accent"
 					{meta}
 					categories={[category]}
 				/>

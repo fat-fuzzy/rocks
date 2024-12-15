@@ -15,7 +15,7 @@
 		path = '',
 		actionPath,
 		redirect,
-		color = 'primary',
+		color = 'accent',
 		meta,
 		categories,
 	}: Props = $props()
