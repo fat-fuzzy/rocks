@@ -1,13 +1,12 @@
-.tabs {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+[role='tablist'],
+[role='tab'],
+[role='presentation'] {
+	inline-size: fit-content;
 }
 
-.tabs.end {
-	justify-content: flex-end;
-}
-
-.tabs.start {
-	justify-content: flex-start;
+nav li a[role='tab'] {
+	font-size: var(--font-size-minus);
+	border-radius: var(--border-radius-base);
+	outline-color: var(--accent-color);
+	padding-inline: var(--ui-size-sm);
 }

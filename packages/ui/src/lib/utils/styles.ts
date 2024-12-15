@@ -28,7 +28,7 @@ function getElementStyles(props: UiBlockProps): string {
 	let assetClass = asset ? `${assetTypeClass}:${asset}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
 	let shapeClass = shape ? ` shape:${shape}` : ''
-	let alignClass = align ? `align-self:${alignSelf}` : ''
+	let alignClass = alignSelf ? `align-self:${alignSelf}` : ''
 	let alignSelfClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 
