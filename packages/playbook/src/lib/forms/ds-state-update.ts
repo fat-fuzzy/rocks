@@ -5,6 +5,7 @@ const {DEFAULT_DS_STATE, TRANSITION_REVEAL} = ui.constants
 
 class DsStateUpdate {
 	state: {
+		reveal: Settings
 		menuReveal: Settings
 		navReveal: Settings
 		sidebarReveal: Settings
@@ -15,6 +16,7 @@ class DsStateUpdate {
 	 */
 	constructor(
 		state: {
+			reveal: Settings
 			menuReveal: Settings
 			navReveal: Settings
 			sidebarReveal: Settings
@@ -32,6 +34,9 @@ class DsStateUpdate {
 	 * Update State based on inputs
 	 */
 	enter(data: FormData) {
+		if (data.has('button-reveal-Reveal')) {
+			return this.toggleReveal(data)
+		}
 		if (data.has('button-ui-RevealMenu')) {
 			return this.toggleMenuReveal(data)
 		}
@@ -44,6 +49,15 @@ class DsStateUpdate {
 		if (data.has('button-ui-Header-menu-settings')) {
 			return this.toggleSettingsReveal(data)
 		}
+	}
+
+	toggleReveal(data: FormData) {
+		const updated = data.get('button-reveal-Reveal')?.toString()
+		if (updated) {
+			this.state.reveal.reveal = TRANSITION_REVEAL[this.state.reveal.reveal]
+			return true
+		}
+		return false
 	}
 
 	toggleMenuReveal(data: FormData) {

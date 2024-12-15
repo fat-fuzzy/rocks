@@ -5,6 +5,7 @@
 	const {PlaybookElement} = api
 
 	const actionPath = '/ui'
+	let formaction = 'updateState'
 
 	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
@@ -18,6 +19,7 @@
 		{category}
 		{content}
 		path={`${path}${$page.url.hash}`}
+		{formaction}
 		{actionPath}
 		redirect={$page.url.pathname}
 	/>
