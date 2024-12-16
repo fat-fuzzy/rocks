@@ -15,8 +15,8 @@
 		constants
 
 	let {
-		id = 'reveal',
-		name = 'reveal',
+		id = 'ui-reveal',
+		name = 'ui-reveal',
 		title = 'Reveal',
 		method = 'POST', // TODO: change to GET with params
 		auto = false,

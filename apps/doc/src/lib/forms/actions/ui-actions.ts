@@ -27,7 +27,6 @@ async function handleToggleUiReveal({
 		const currentState = uiStateService.getUiState({
 			cookies,
 			key,
-			options,
 		})
 
 		const reveal = new UiReveal(currentState, element)

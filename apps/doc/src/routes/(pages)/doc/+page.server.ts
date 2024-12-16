@@ -8,7 +8,7 @@ import settingsActions from '$lib/forms/actions/settings-actions'
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
 
-export const load = async ({params}) => {
+export const load = async ({locals}) => {
 	const imageSlug = '001-intro'
 
 	if (!markdowns?.length) {
@@ -41,6 +41,7 @@ export const load = async ({params}) => {
 				},
 			},
 			content,
+			sidebar: locals.sidebar,
 		}
 	} catch (e) {
 		error(500, 'Error loading image data')

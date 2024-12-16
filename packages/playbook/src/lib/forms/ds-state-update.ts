@@ -34,7 +34,7 @@ class DsStateUpdate {
 	 * Update State based on inputs
 	 */
 	enter(data: FormData) {
-		if (data.has('button-reveal-Reveal')) {
+		if (data.has('button-ui-Reveal')) {
 			return this.toggleReveal(data)
 		}
 		if (data.has('button-ui-RevealMenu')) {
