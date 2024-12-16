@@ -110,6 +110,7 @@
 	let action = $derived(
 		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
 	)
+
 	function onKeyUp(e: KeyboardEvent) {
 		if (dismiss === UiEvents.outside && e.key === 'Escape') {
 			toggleReveal({state: 'collapsed', id: `button-reveal-${id}`})

@@ -104,7 +104,7 @@
 {/snippet}
 {#snippet playbookContent()}
 	<div class="l:sidebar:md media end:reverse">
-		<section class={`l:main ${layoutClass}`}>
+		<section id={`tabs-${category}-playbook`} class={`l:main ${layoutClass}`}>
 			{@render categoryElements()}
 		</section>
 		<aside class="l:side l:stack:md">
@@ -124,7 +124,7 @@
 
 {#snippet docContent()}
 	<div class="l:sidebar:md">
-		<section class="l:main">
+		<section id={`tabs-${category}-doc`} class="l:main">
 			{#if children}
 				{@render children()}
 			{/if}
@@ -136,7 +136,7 @@
 {/snippet}
 
 {#if isPage}
-	<Tabs id="playbook-tabs" {tabs} {path} />
+	<Tabs id={`tabs-${category}`} {tabs} {path} />
 {:else}
 	<section class="l:text:lg snap:start">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
