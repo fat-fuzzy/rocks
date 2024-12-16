@@ -19,3 +19,7 @@ nav li a[role='tab'] {
 [role='presentation'][aria-current='page'] {
 	background-color: var(--shade);
 }
+
+[role='tabpanel']:not(:target) {
+	display: none;
+}

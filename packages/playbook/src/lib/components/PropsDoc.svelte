@@ -28,7 +28,7 @@
 						{@const blocksProps = blocks[prop]}
 						{#each blocksProps as style}
 							<li
-								class="card:2xs font:sm surface:1:primary"
+								class="card:2xs font:sm surface:1:accent"
 								data-testid={`prop-block-${style}`}
 							>
 								{style}
@@ -42,7 +42,7 @@
 						{@const layoutsProp = layouts[prop]}
 						{#each layoutsProp as style}
 							<li
-								class="card:2xs font:sm surface:1:primary"
+								class="card:2xs font:sm surface:1:accent"
 								data-testid={`prop-layout-${style}`}
 							>
 								{style}
