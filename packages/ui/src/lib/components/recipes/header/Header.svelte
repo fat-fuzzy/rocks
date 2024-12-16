@@ -8,7 +8,7 @@
 	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
-		id = 'header-app',
+		id = 'ui-header-app',
 		breakpoint = 'sm',
 		path,
 		formaction,
@@ -58,8 +58,8 @@
 		</div>
 		<div class="l:side">
 			<Settings
-				id="settings"
-				name="settings"
+				id={`${id}-settings`}
+				name={`${id}-settings`}
 				label=""
 				{path}
 				{breakpoint}

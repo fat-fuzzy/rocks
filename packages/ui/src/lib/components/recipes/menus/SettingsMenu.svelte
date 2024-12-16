@@ -8,7 +8,7 @@
 	const {DEFAULT_APP_SETTINGS} = constants
 
 	let {
-		id = 'settings',
+		id = 'ui-settings-menu',
 		method = 'POST',
 		background,
 		color = 'primary',
