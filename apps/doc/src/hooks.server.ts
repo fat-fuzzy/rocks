@@ -2,8 +2,7 @@ import type {Handle} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 import uiStateService from '$lib/forms/services/ui-state'
 
-const {APP_PREFIX, DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, DEFAULT_TABS} =
-	ui.constants
+const {APP_PREFIX} = ui.constants
 
 const revealForms = [
 	// global app forms
@@ -41,32 +40,23 @@ export const handle = (async ({event, resolve}) => {
 	let {cookies} = event
 	// Load all UI states into locals
 
-	const appSettings = await uiStateService.getUiState({
+	const appSettings = uiStateService.getUiState({
 		cookies,
 		key: `${APP_PREFIX}-app-settings`,
-		options: {state: DEFAULT_APP_SETTINGS},
 	})
-	const currentTabs = await uiStateService.getUiState({
-		cookies,
-		key: `${APP_PREFIX}-ui-tabs`,
-		options: {state: DEFAULT_TABS},
-	})
-	const dsState = await uiStateService.getUiState({
+	const dsState = uiStateService.getUiState({
 		cookies,
 		key: `${APP_PREFIX}-ui-state`,
-		options: {state: DEFAULT_REVEAL_STATE},
 	})
-	const dsStyles = await uiStateService.getUiState({
+	const dsStyles = uiStateService.getUiState({
 		cookies,
 		key: `${APP_PREFIX}-ui-styles`,
-		options: {state: DEFAULT_REVEAL_STATE},
 	})
 
-	const appLocalsPromises = revealForms.map(async (form) => ({
+	const appLocalsPromises = revealForms.map((form) => ({
 		[form]: uiStateService.getUiState({
 			cookies,
 			key: `${APP_PREFIX}-reveal-${form}`,
-			options: {state: DEFAULT_REVEAL_STATE},
 		}),
 	}))
 
@@ -75,9 +65,7 @@ export const handle = (async ({event, resolve}) => {
 	).reduce((acc, curr) => {
 		return {...acc, ...curr}
 	}, {})
-
 	event.locals.settings = appSettings
-	event.locals.currentTabs = currentTabs
 	event.locals.dsState = dsState
 	event.locals.dsStyles = dsStyles
 

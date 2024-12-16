@@ -7,10 +7,9 @@
 
 	let {children} = $props()
 
-	let {sidebar, markdowns} = $state($page.data)
+	let {markdowns} = $state($page.data)
 	let app = $derived(fatFuzzyStore.app)
 	let formId = 'sidebar'
-	let reveal = $derived(sidebar.reveal)
 
 	let path = ''
 	let items = [
@@ -51,7 +50,7 @@
 		title: 'Content',
 		id: formId,
 		items,
-		reveal,
+		reveal: $page.data.sidebar.reveal,
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',

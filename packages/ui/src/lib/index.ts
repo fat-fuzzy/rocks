@@ -73,6 +73,7 @@ import Picture from '$lib/components/blocks/media/Picture.svelte'
 import Aside from '$lib/components/recipes/content/Aside.svelte'
 import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
+import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
@@ -160,6 +161,7 @@ const drafts = {
 	SettingsMenu,
 	Settings,
 	PageScrolly,
+	Tabs,
 }
 
 const headless = {

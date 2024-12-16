@@ -16,6 +16,29 @@ const DEFAULT_META: Meta = {
 	context: ['app.settings'],
 }
 
+const TABS = [
+	{
+		slug: 'doc',
+		title: 'Doc',
+		initial: true,
+		variant: 'bare',
+		color: 'highlight',
+		size: 'lg',
+		shape: 'round',
+		asset: 'doc',
+	},
+	{
+		slug: 'playbook',
+		title: 'Playbook',
+		initial: false,
+		variant: 'bare',
+		color: 'accent',
+		size: 'lg',
+		shape: 'round',
+		asset: 'playbook',
+	},
+]
+
 function getCategoryMarkdowns(category: string, markdowns: Markdowns) {
 	switch (category) {
 		case 'tokens':
@@ -94,4 +117,19 @@ function getElementProps(meta: Meta): PlaybookProps {
 	}
 	return props
 }
-export {getCategoryMarkdowns, getElementMeta, getElementProps}
+
+function getDocTab() {
+	return TABS[0]
+}
+
+function getPlaybookTab() {
+	return TABS[1]
+}
+
+export {
+	getCategoryMarkdowns,
+	getElementMeta,
+	getElementProps,
+	getPlaybookTab,
+	getDocTab,
+}

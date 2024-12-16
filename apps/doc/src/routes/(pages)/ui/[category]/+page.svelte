@@ -5,6 +5,7 @@
 	const {PlaybookCollection} = api
 
 	const actionPath = '/ui'
+	let formaction = 'updateState'
 
 	let path = $derived($page.url.pathname)
 	let category = $derived($page.params.category)
@@ -13,12 +14,13 @@
 </script>
 
 <PlaybookCollection
-	{path}
 	{category}
 	{markdowns}
-	{actionPath}
+	path={`${path}${$page.url.hash}`}
 	depth={1}
 	isPage={true}
+	{formaction}
+	{actionPath}
 	redirect={$page.url.pathname}
 	{content}
 />

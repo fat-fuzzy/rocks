@@ -1,5 +1,5 @@
-import type {Settings, UiRevealState, Tab, ButtonContext} from '$types'
-import {UiColor, UiSize, UiState} from '$types'
+import type {Settings, UiRevealState, ButtonContext} from '$types'
+import {UiState} from '$types'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 
@@ -20,11 +20,13 @@ const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
 const DEFAULT_SCENE_ID = '004'
 
 const DEFAULT_DS_STATE: {
+	reveal: UiRevealState
 	menuReveal: UiRevealState
 	navReveal: UiRevealState
 	sidebarReveal: UiRevealState
 	settingsReveal: UiRevealState
 } = {
+	reveal: {reveal: UiState.collapsed},
 	menuReveal: {reveal: UiState.collapsed},
 	navReveal: {reveal: UiState.collapsed},
 	sidebarReveal: {reveal: UiState.collapsed},
@@ -65,22 +67,6 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 	'100': 'xl',
 }
 
-const DEFAULT_TABS: Tab[] = [
-	// TODO: figure out a better way to map range number values to class strings
-	{
-		id: 'component.context.menu.toggle.doc',
-		name: 'component.context.menu.toggle.doc',
-		title: 'Doc',
-		value: 'doc',
-	},
-	{
-		id: 'component.context.menu.toggle.playbook',
-		name: 'component.context.menu.toggle.playbook',
-		title: 'Playbook',
-		value: 'playbook',
-	},
-]
-
 /**
  * Indicates the direction that icons should point in when used to indicate direction of movement of the UI element under control
  */
@@ -104,54 +90,41 @@ const UI_STATE = {
 
 const DEFAULT_STYLES /*: StyleTree */ = {
 	tokens: {
-		element: {color: 'primary', typography: 'h1'},
+		families: {
+			element: {color: 'primary', typography: 'h1'},
+		},
 	},
 	app: {
-		settings: {
-			brightness: '',
-			contrast: '',
-		} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
+		families: {
+			settings: {
+				brightness: '',
+				contrast: '',
+			} /* theme: {theme: 'ui'} // TODO : figure out if it is possible to do a dynamic import of app theme */,
+		},
 	},
 	blocks: {
-		element: {
-			variant: 'fill',
-			color: '',
-			status: 'default',
-			context: 'form',
-			// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
-			asset: 'default',
-			size: 'md',
-			spell: 'bleu',
-			uno: 'magic',
-			due: 'sparkles',
+		families: {
+			element: {
+				variant: 'fill',
+				color: '',
+				status: 'default',
+				context: 'form',
+				// theme: {theme: 'ui'}, // TODO: figure out how to load app styles (i.e. load CSS with prefix, encapsulate component content): maybe: use web components ?
+				asset: 'default',
+				size: 'md',
+				spell: 'bleu',
+				uno: 'magic',
+				due: 'sparkles',
+			},
 		},
 	},
 	layouts: {
-		layout: {layout: 'switcher', threshold: 'md', breakpoint: 'lg'}, // need large breakpoint for Header default demo
-		container: {container: 'center', size: 'md'},
+		families: {
+			layout: {layout: 'switcher', threshold: 'md', breakpoint: 'lg'}, // need large breakpoint for Header default demo
+			container: {container: 'center', size: 'md'},
+		},
 	},
 }
-
-const TABS: Tab[] = [
-	{
-		id: 'context.menu.toggle.playbook',
-		name: 'context.menu.toggle.playbook',
-		title: 'Playbook',
-		size: UiSize.lg,
-		color: UiColor.accent,
-		asset: 'playbook',
-		value: 'playbook',
-	},
-	{
-		id: 'context.menu.toggle.doc',
-		name: 'context.menu.toggle.doc',
-		title: 'Doc',
-		size: UiSize.lg,
-		color: UiColor.primary,
-		asset: 'doc',
-		value: 'doc',
-	},
-]
 
 const APP_LINKS: {[key: string]: string}[] = [
 	{slug: 'about', title: 'About', layout: 'center'},
@@ -228,7 +201,6 @@ export default {
 	UI_STATE,
 	STATE_SWITCHER,
 	DEFAULT_BUTTON_CONTEXT,
-	DEFAULT_TABS,
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,
@@ -241,7 +213,6 @@ export default {
 	ALIGN_OPPOSITE,
 	ALIGN_ANIMATION_DIRECTION,
 	NUMBER_TO_SIZE,
-	TABS,
 	APP_LINKS,
 	APP_SETTINGS,
 	SWITCH_MACHINE,

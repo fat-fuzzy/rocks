@@ -11,7 +11,7 @@
 		value,
 		type = 'radio', // checkbox, radio
 		items = [],
-		layout,
+		layout = 'stack',
 		container,
 		size,
 		color,
@@ -52,13 +52,12 @@
 	{#each items as input}
 		{@const checked = input.value === value}
 		<InputComponent
-			id={`${name}-${input.value}`}
 			{value}
-			name={id}
-			label={input.label}
 			{checked}
 			color={input.color || color}
 			{...input}
+			name={id}
+			id={`${name}-${input.value}`}
 			oninput={(event) => handleInput(event, name)}
 		/>
 	{/each}

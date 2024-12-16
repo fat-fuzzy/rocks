@@ -34,6 +34,7 @@ ff-reveal {
 	scrollbar-color: var(--thumb) var(--track);
 }
 
+.form\:collapsed + ff-reveal,
 .collapsed > ff-reveal {
 	--x-size: 0;
 	--y-size: 0;

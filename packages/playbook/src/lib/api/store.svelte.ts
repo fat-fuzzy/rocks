@@ -9,7 +9,6 @@ const {
 	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_STYLES,
-	DEFAULT_TABS,
 } = ui.constants
 class PlaybookStore {
 	api = $state()
@@ -20,7 +19,6 @@ class PlaybookStore {
 	navReveal = $state(DEFAULT_REVEAL_STATE)
 	sidebarReveal = $state(DEFAULT_NAV_REVEAL_STATE)
 	settingsReveal = $state(DEFAULT_REVEAL_STATE)
-	currentTabs = $state({ui: DEFAULT_TABS[0]})
 
 	COMPONENT_FIXTURES: any = $state({
 		tokens: tokenFixtures,

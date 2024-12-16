@@ -6,6 +6,11 @@
 	block-size: fit-content;
 }
 
+[class*='shape:'][class*='emoji'] {
+	padding: var(--ui-size-sm);
+	max-inline-size: fit-content;
+}
+
 button[class*='emoji:'][class*='shape:']:not([class*='l:stack'])::before {
 	line-height: 0;
 }

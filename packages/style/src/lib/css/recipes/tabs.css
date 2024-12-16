@@ -1,13 +1,21 @@
-.tabs {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+[role='tablist'],
+[role='tab'] {
+	inline-size: fit-content;
+	background-color: inherit;
 }
 
-.tabs.end {
-	justify-content: flex-end;
+nav li a[role='tab'] {
+	border-radius: var(--border-radius-base);
+	outline-color: var(--accent);
+	padding-block: var(--ui-size-sm);
+	padding-inline: var(--ui-size);
+	background-color: inherit;
 }
 
-.tabs.start {
-	justify-content: flex-start;
+[role='presentation'][class*='surface'] {
+	background-color: inherit;
+}
+
+[role='presentation'][aria-current='page'] {
+	background-color: var(--shade);
 }

@@ -7,6 +7,7 @@
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
+	import RcScout from '$lib/ui/RcScout.svelte'
 
 	const {Header} = ui.recipes
 
@@ -53,8 +54,8 @@
 
 <div class={themeClass}>
 	<Header
-		id="nav"
-		name="nav"
+		id="main-nav"
+		name="main-nav"
 		label=""
 		path={$page.url.pathname}
 		actionPath="/"
@@ -81,14 +82,16 @@
 			open={footerOpen}
 		>
 			<summary class="card:2xs">About</summary>
-			<p>
-				Made with 🩷 by <a
-					href="https://github.com/patiboh"
-					target="_blank"
-					rel="noopener">@patiboh</a
-				>
-			</p>
-			<div class="rc-scout"></div>
+			<div class="l:stack:2xl">
+				<p>
+					Made with 🩷 by <a
+						href="https://github.com/patiboh"
+						target="_blank"
+						rel="noopener">@patiboh</a
+					>
+				</p>
+				<RcScout />
+			</div>
 		</details>
 	</footer>
 </div>
