@@ -41,7 +41,6 @@ export const load = async ({locals}) => {
 				},
 			},
 			content,
-			sidebar: locals.sidebar,
 		}
 	} catch (e) {
 		error(500, 'Error loading image data')
