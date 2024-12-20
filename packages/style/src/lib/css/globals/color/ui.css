@@ -76,11 +76,6 @@
 	accent-color: var(--accent);
 }
 
-[class*='bg:']:focus {
-	--shade: var(--shade-focus);
-	--ink: var(--ink-focus);
-}
-
 [class*='bg:'].variant\:fill:focus {
 	--shade-focus: oklch(var(--lightness-focus) var(--chroma-focus) var(--hue));
 	--ink-focus: oklch(

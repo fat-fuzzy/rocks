@@ -31,7 +31,11 @@
 	function onkeydown(e: KeyboardEvent) {
 		let target = e.target as HTMLElement
 
-		if (target?.id !== selectedTab.id) {
+		let link = selectedTab.id
+			? `${selectedTab.slug}-${selectedTab.id}`
+			: selectedTab.slug
+
+		if (target?.id !== link) {
 			return
 		}
 		e.preventDefault()
@@ -51,11 +55,8 @@
 				} else if (tabIndex >= tabs.length) {
 					tabIndex = 0
 				}
-				selectedTab = indexedTabs[tabIndex]
-				let link = selectedTab.id
-					? `${selectedTab.slug}-${selectedTab.id}`
-					: selectedTab.slug
 				tab = document.getElementById(`tab-${link}`)
+				selectedTab = indexedTabs[tabIndex]
 				break
 			case 'Enter':
 				// Get the current tab's main content
@@ -66,10 +67,6 @@
 		}
 		// Focus on the tab nav or tab content
 		tab?.focus()
-		window.scroll({
-			top: 0,
-			behavior: 'smooth',
-		})
 	}
 
 	onMount(() => {
