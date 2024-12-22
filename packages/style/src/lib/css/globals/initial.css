@@ -82,7 +82,6 @@ a:hover {
 
 /* Inherit fonts for inputs and buttons */
 input,
-button,
 textarea,
 select {
 	font-family: var(--font-family-ui);

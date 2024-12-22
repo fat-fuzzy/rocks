@@ -1,0 +1,18 @@
+ff-popover {
+	display: none;
+}
+
+*:has(ff-popover) {
+	position: relative;
+	pointer-events: hover;
+}
+
+*:has(ff-popover):hover {
+	cursor: pointer;
+
+	ff-popover {
+		display: block;
+		position: absolute;
+		top: 0;
+	}
+}

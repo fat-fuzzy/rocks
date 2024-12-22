@@ -134,6 +134,12 @@ button[class*='bg:']:not([class*=':neutral'], :focus) {
 	}
 }
 
+button:not([disabled]):focus {
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	outline-offset: var(--outline-offset-base);
+	outline: var(--outline-width) solid var(--accent);
+}
+
 button:not([disabled]):hover {
 	box-shadow: var(--shadow-md);
 }
