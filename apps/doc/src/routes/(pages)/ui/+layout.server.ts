@@ -1,4 +1,4 @@
-import {error} from '@sveltejs/kit'
+import {error, redirect} from '@sveltejs/kit'
 import assets from '$data/ui'
 import pages from '$data/pages'
 
@@ -20,13 +20,19 @@ export const load = async ({locals, params}) => {
 		} else {
 			content = content[0]
 		}
+	} else if (category === 'graphics') {
+		redirect(301, '/doc/usage/sketch')
 	} else if (slug === component && category) {
 		let categoryMarkdowns = markdowns[category]
-		content = categoryMarkdowns.find(
-			({meta}) => meta.slug === slug && meta.status !== 'draft',
-		)
-		if (!content?.meta) {
+		if (!categoryMarkdowns?.length) {
 			throw error(404, {message: 'Not found'})
+		} else {
+			content = categoryMarkdowns.find(
+				({meta}) => meta.slug === slug && meta.status !== 'draft',
+			)
+			if (!content?.meta) {
+				throw error(404, {message: 'Not found'})
+			}
 		}
 	} else if (slug === category) {
 		if (!markdowns[category]) {
