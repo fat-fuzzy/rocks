@@ -3,6 +3,9 @@
 	import type {FuzzyPayload, SwitchProps} from '$types'
 	import {ButtonEvent, UiState} from '$types'
 	import Actor from './actor.svelte.js'
+	import '@fat-fuzzy/style/css/globals/ui.css'
+	import '@fat-fuzzy/style/css/blocks/button.css'
+	import '@fat-fuzzy/style/css/blocks/switch.css'
 
 	let {
 		id = 'switch',

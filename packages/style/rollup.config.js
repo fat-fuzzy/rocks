@@ -23,7 +23,7 @@ fs.mkdirSync(outDir)
  * This config will preserve folder structure of source files (scss and css, not json) and output a css library in "dist/lib/"
  */
 export default {
-	input: `${inDir}/index.js`,
+	input: `${inDir}/outputs.js`,
 	output: {dir: outDir, format: 'esm'},
 	plugins: [
 		scss({

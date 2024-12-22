@@ -3,6 +3,8 @@
 	import type {ExpandProps, FuzzyPayload} from '$types'
 	import {ButtonEvent} from '$types'
 	import Actor from './actor.svelte.js'
+	import '@fat-fuzzy/style/css/globals/ui.css'
+	import '@fat-fuzzy/style/css/blocks/button.css'
 
 	let {
 		id = 'expand',

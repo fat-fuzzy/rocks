@@ -3,6 +3,9 @@
 	import {UiState, ButtonEvent} from '$types'
 	import {onMount} from 'svelte'
 	import Actor from './actor.svelte.js'
+	import '@fat-fuzzy/style/css/globals/ui.css'
+	import '@fat-fuzzy/style/css/blocks/button.css'
+	import '@fat-fuzzy/style/css/blocks/toggle.css'
 
 	let {
 		id = 'toggle',

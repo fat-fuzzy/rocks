@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type {ButtonProps} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
+	import '@fat-fuzzy/style/css/globals/ui.css'
+	import '@fat-fuzzy/style/css/blocks/button.css'
 
 	let {
 		id = 'button',
