@@ -3,8 +3,8 @@ import {render} from 'svelte/server'
 /**
  * Load data from markdown files
  * @param pathPrefix relative path from this folder to markdown assets
- * @param markdownImports markdown default imports
- * @returns { path, html, id, slug } frontmatter metadata and path of markdown files to load
+ * @param imports markdown default imports
+ * @returns frontmatter metadata and path of markdown files to load
  */
 const fetchJson = async (pathPrefix: string, imports: any) => {
 	if (!imports) return []
@@ -12,7 +12,7 @@ const fetchJson = async (pathPrefix: string, imports: any) => {
 
 	const logs = await Promise.all(
 		mdImports.map(async ([path, resolver]) => {
-			const result: any = await resolver()
+			const result: any = await (resolver as () => Promise<any>)()
 			const filePath = path.slice(pathPrefix.length, -5) // removes pathPrefix and '.json'
 
 			return {
@@ -27,8 +27,8 @@ const fetchJson = async (pathPrefix: string, imports: any) => {
 /**
  * Load data from markdown files
  * @param pathPrefix relative path from this folder to markdown assets
- * @param markdownImports markdown default imports
- * @returns { path, html, id, slug } frontmatter metadata and path of markdown files to load
+ * @param imports markdown default imports
+ * @returns  frontmatter metadata and path of markdown files to load
  */
 const fetchMarkdowns = async (pathPrefix: string, imports: any) => {
 	if (!imports) return []
@@ -36,7 +36,7 @@ const fetchMarkdowns = async (pathPrefix: string, imports: any) => {
 
 	const logs = await Promise.all(
 		mdImports.map(async ([path, resolver]) => {
-			const result: any = await resolver()
+			const result: any = await (resolver as () => Promise<any>)()
 			const filePath = path.slice(pathPrefix.length, -3) // removes pathPrefix and '.md'
 			const html = result
 				? render(result.default, {...result.metadata}).body

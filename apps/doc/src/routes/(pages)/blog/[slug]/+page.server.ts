@@ -8,9 +8,9 @@ import settingsActions from '$lib/forms/actions/settings-actions'
  * @param params Request parameters
  * @returns post data
  */
-export const load = async ({params}) => {
+export const load = ({params}) => {
 	const {slug} = params
-	const markdowns = await blog.markdowns
+	const markdowns = blog.markdowns
 	const markdown = markdowns?.find(
 		(v) => v.meta.status !== 'draft' && v.meta.slug === slug,
 	)
