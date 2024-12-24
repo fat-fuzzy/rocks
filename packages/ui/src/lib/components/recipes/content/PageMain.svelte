@@ -18,7 +18,7 @@
 		description = `Basic page layout`,
 		pageName,
 		size,
-		layout='sidebar',
+		layout = 'sidebar',
 		justify,
 		header,
 		children,
@@ -26,14 +26,16 @@
 
 	let currentPage = $state(pageName ?? title)
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass= $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let headerClass = $derived(`${layoutClass} ${justifyClass} align:baseline maki:block:lg`)
+	let layoutClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
+	let headerClass = $derived(
+		`${layoutClass} ${justifyClass} align:baseline maki:block:lg`,
+	)
 </script>
 
 <Head pageName={currentPage} {title} {description} />
 
-<section>
-	<header id="content" class={headerClass}>
+<main id="main">
+	<header class={headerClass}>
 		{#if header}
 			{@render header()}
 		{:else}
@@ -44,4 +46,4 @@
 	{#if children}
 		{@render children()}
 	{/if}
-</section>
+</main>

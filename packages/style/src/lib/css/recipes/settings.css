@@ -1,8 +1,6 @@
 .menu\:settings {
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
-	padding-inline-start: var(--ui-size-sm);
-	padding-block: calc(var(--ui-size-sm) - var(--border-width-xl));
 	justify-content: var(--justify, flex-end);
 }
 

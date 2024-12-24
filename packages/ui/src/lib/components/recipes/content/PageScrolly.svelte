@@ -41,12 +41,14 @@
 
 <Head pageName={currentPage} {title} {description} />
 
-<header id="content" class={headerClass}>
-	{#if header}
-		{@render header()}
-	{:else}
-		<h1 class="maki:block:md">{title}</h1>
-	{/if}
-</header>
+<main id="content">
+	<header class={headerClass}>
+		{#if header}
+			{@render header()}
+		{:else}
+			<h1 class="maki:block:md">{title}</h1>
+		{/if}
+	</header>
 
-<Scrolly {animations} {fixed} {items} level={0} />
+	<Scrolly {animations} {fixed} {items} level={0} />
+</main>

@@ -16,7 +16,7 @@
 @media screen and (min-width: 1160px) {
 	[class*='l:reveal'].sticky {
 		--y-size-sticky: calc(
-			100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size-lg)
+			100vh - var(--ui-header-height) - 2 * var(--ui-size-lg)
 		);
 		--y-size: var(--y-size-sticky);
 

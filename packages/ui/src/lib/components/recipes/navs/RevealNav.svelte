@@ -31,10 +31,7 @@
 		onclick,
 	}: RevealNavProps = $props()
 
-	let sidebarReveal = $state(reveal ? {reveal} : DEFAULT_NAV_REVEAL_STATE)
-
 	function toggleReveal(event) {
-		sidebarReveal.reveal = event.state
 		if (onclick) onclick(event)
 	}
 
@@ -46,15 +43,11 @@
 		layout ? `l:${layout}:${size} ${navLayoutThreshold}` : '',
 	)
 	let showBackground = $derived(background ? `bg:${background}` : '')
-	let showSidebar = $derived(
-		`${sidebarReveal.reveal} ${showBackground} ${place}`,
-	)
+	let showSidebar = $derived(`${reveal} ${showBackground} ${place}`)
 	let navClasses = $derived(
 		`${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `,
 	)
-	let revealClasses = $derived(
-		`l:reveal ${place} ${navClasses} ${sidebarReveal.reveal}`,
-	)
+	let revealClasses = $derived(`l:reveal ${place} ${navClasses} ${reveal}`)
 	let layoutClasses = $derived(
 		position ? `${position} ${revealClasses}` : revealClasses,
 	)
@@ -75,7 +68,7 @@
 		{title}
 		{size}
 		{color}
-		reveal={sidebarReveal.reveal}
+		{reveal}
 		{dismiss}
 		{formaction}
 		{position}
