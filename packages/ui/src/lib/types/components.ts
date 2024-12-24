@@ -59,6 +59,7 @@ export interface Drafts {
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
 	HeaderSettings: typeof import('$lib/components/recipes/header/HeaderSettings.svelte').default
+	HeaderNav: typeof import('$lib/components/recipes/header/HeaderNav.svelte').default
 	Settings: typeof import('$lib/components/recipes/header/Settings.svelte').default
 	SettingsMenu: typeof import('$lib/components/recipes/menus/SettingsMenu.svelte').default
 	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default

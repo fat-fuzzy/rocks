@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
 	import constants from '$lib/types/constants.js'
+	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
+	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
-	import Reveal from '$lib/components/layouts/Reveal.svelte'
-	import Settings from '$lib/components/recipes/header/Settings.svelte'
 
 	const {DEFAULT_REVEAL_STATE} = constants
 
@@ -11,7 +11,6 @@
 		id = 'ui-header-app',
 		breakpoint = 'sm',
 		path,
-		formaction,
 		items,
 	}: HeaderProps = $props()
 	let className = 'header-app'
@@ -21,14 +20,13 @@
 </script>
 
 <header class="sticky:top">
-	<div class={`l:sidebar ${className}`}>
-		<div class="l:main">
-			<SkipLinks />
-			<Reveal
+	<SkipLinks />
+	<div class={`l:sidebar ${className} align:center`}>
+		<div class="l:main l:flex">
+			<HeaderNav
 				{id}
 				name={id}
 				label=""
-				element="nav"
 				title="Menu"
 				size="xs"
 				variant="outline"
@@ -36,37 +34,24 @@
 				justify="start"
 				dismiss="outside"
 				auto={true}
+				links={items.links}
+				{path}
 				{reveal}
 				{breakpoint}
-				{formaction}
-			>
-				<ul class="l:switcher:sm unstyled color:primary">
-					<li aria-current={path === '/' ? 'page' : undefined}>
-						<a data-sveltekit-preload-data href="/">Home</a>
-					</li>
-					{#each items.links as { slug, title }}
-						<li
-							aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}
-						>
-							<a data-sveltekit-preload-data href={`/${slug}`}>
-								{title}
-							</a>
-						</li>
-					{/each}
-				</ul>
-			</Reveal>
+				actionPath={path}
+				formaction="toggleNav"
+			/>
 		</div>
 		<div class="l:side">
-			<Settings
-				id={`${id}-settings`}
-				name={`${id}-settings`}
+			<SettingsMenu
+				id={`${id}-menu-settings`}
+				name={`${id}-menu-settings`}
 				label=""
 				{path}
 				{breakpoint}
-				align="end"
 				size="xs"
-				items={items.settings}
 				formaction="updateSettings"
+				items={items.settings.switch}
 				onupdate={items?.settings.onupdate}
 			/>
 		</div>
