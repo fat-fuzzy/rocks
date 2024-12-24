@@ -131,13 +131,13 @@
 		{/if}
 	</header>
 	<section class="tab-content">
-		{#each tabs as { id, slug, content }}
+		{#each tabs as { id, slug, content, labelledBy }}
 			{@const link = id ? `${slug}-${id}` : slug}
 			<!-- The article tag receives focus via JS when the corresponding tab is active -->
 			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
 			<article
 				id={link}
-				aria-labelledby={`tab-${link}`}
+				aria-labelledby={labelledBy ? labelledBy : `tab-${link}`}
 				role="tabpanel"
 				tabindex={selectedTab.slug === slug ? 0 : -1}
 			>

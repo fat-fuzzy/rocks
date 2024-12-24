@@ -5,6 +5,7 @@ export type Tab = UiBlockProps & {
 	initial?: boolean
 	header?: Snippet
 	content?: Snippet
+	labelledBy?: string
 }
 
 export type TabsProps = UiLayoutProps & {
