@@ -1,24 +1,28 @@
-import {error} from '@sveltejs/kit'
 import gfx from '@fat-fuzzy/gfx'
 
-export const load = async (event) => {
-	try {
-		const learning = gfx.gl.sketches.learning.map((sketch) => sketch.meta)
+import {buildNav} from '$data/nav'
 
-		const projects = gfx.gl.sketches.projects.map((sketch) => sketch.meta)
+let projects = gfx.gl.sketches.projects.map((sketch) => sketch.meta)
+let learning = gfx.gl.sketches.learning.map((sketch) => sketch.meta)
 
-		const data = {
-			sketches: {
-				learning,
-				projects,
-			},
-			sidebar: event.locals.sidebar,
-		}
+let nav = buildNav('play')
 
-		return data
-	} catch (e) {
-		console.log(e)
-
-		error(500, 'Error loading play data')
+nav.items[0].items = nav.items[0].items.map((item) => {
+	if (item.slug === 'learning') {
+		item.items = learning
+	} else if (item.slug === 'projects') {
+		item.items = projects
 	}
+	return item
+})
+
+export const load = async (event) => {
+	nav.reveal = event.locals.sidebar.reveal
+
+	const data = {
+		nav,
+		projects,
+		learning,
+	}
+	return data
 }

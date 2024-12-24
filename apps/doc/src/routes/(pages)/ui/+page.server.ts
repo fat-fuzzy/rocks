@@ -6,9 +6,6 @@ import {forms} from '@fat-fuzzy/playbook'
 import uiActions from '$lib/forms/actions/ui-actions'
 import settingsActions from '$lib/forms/actions/settings-actions'
 
-export const prerender = false
-export const ssr = true
-
 const {DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
 const {SignUpUser} = ui.forms
 const {DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = ui.constants
