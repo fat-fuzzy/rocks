@@ -56,11 +56,13 @@
 		{
 			...getDocTab(),
 			content: docContent,
+			labelledBy: category,
 		},
 		{
 			...getPlaybookTab(),
 			header: playbookHeader,
 			content: playbookContent,
+			labelledBy: category,
 		},
 	]
 	let componentNames = $derived(Object.keys(components))

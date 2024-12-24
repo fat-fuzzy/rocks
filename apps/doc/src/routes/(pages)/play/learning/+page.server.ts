@@ -5,7 +5,7 @@ import settingsActions from '$lib/forms/actions/settings-actions'
 
 const page = 'learning'
 
-export const load = async ({params}) => {
+export const load = async () => {
 	let content = await pages.fetchMarkdowns(page)
 
 	if (!content?.length) {

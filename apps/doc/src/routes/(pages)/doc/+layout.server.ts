@@ -1,20 +1,45 @@
+import {buildNav} from '$data/nav'
+
 import decisions from '$data/decisions'
 import usages from '$data/usages'
 
+const decisionsMarkdowns = decisions.markdowns
+	.filter(({meta}) => meta.status !== 'draft')
+	.reverse()
+const usagesMarkdowns = usages.markdowns
+	.filter(({meta}) => meta.status !== 'draft')
+	.reverse()
+
+let nav = buildNav('doc')
+
+nav.items[0].items = nav.items[0].items.map((item) => {
+	if (item.slug === 'usage') {
+		item.items = usagesMarkdowns.map(({meta}) => ({
+			id: meta.id,
+			slug: meta.slug,
+			title: meta.title,
+			asset: meta.asset,
+		}))
+	} else if (item.slug === 'decisions') {
+		item.items = decisionsMarkdowns.map(({meta}) => ({
+			id: meta.id,
+			slug: meta.slug,
+			title: meta.title,
+			asset: meta.asset,
+		}))
+	}
+	return item
+})
+
 export const load = async (event) => {
-	const decisionsMarkdowns = decisions.markdowns
-	const usagesMarkdowns = usages.markdowns
+	nav.reveal = event.locals.sidebar.reveal
 
 	const data = {
+		nav,
 		markdowns: {
-			decisions: decisionsMarkdowns
-				.filter(({meta}) => meta.status !== 'draft')
-				.reverse(),
-			usages: usagesMarkdowns
-				.filter(({meta}) => meta.status !== 'draft')
-				.reverse(),
+			decisions: decisionsMarkdowns,
+			usages: usagesMarkdowns,
 		},
-		sidebar: event.locals.sidebar,
 	}
 
 	return data

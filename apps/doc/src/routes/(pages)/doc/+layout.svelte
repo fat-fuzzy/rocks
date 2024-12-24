@@ -1,63 +1,18 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import type {Snippet} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
+	import {page} from '$app/stores'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {LayoutSidebar} = ui.content
 
-	let {children} = $props()
+	type Props = {
+		children: Snippet
+	}
 
-	let {markdowns} = $state($page.data)
+	let {children}: Props = $props()
+	let nav = $derived($page.data.nav)
 	let app = $derived(fatFuzzyStore.app)
-	let formId = 'sidebar'
-
-	let path = ''
-	let items = [
-		{
-			slug: 'doc',
-			title: 'Doc',
-			items: [
-				{
-					slug: 'usage',
-					title: 'Usage',
-					asset: 'usage',
-					formaction: 'toggleUsage',
-					items: markdowns.usages.map(({meta}) => ({
-						id: meta.id,
-						slug: meta.slug,
-						title: meta.title,
-						asset: meta.asset,
-					})),
-				},
-				{
-					slug: 'decisions',
-					title: 'Decisions',
-					asset: 'decisions',
-					formaction: 'toggleDecisions',
-					items: markdowns.decisions.map(({meta}) => ({
-						id: meta.id,
-						slug: meta.slug,
-						title: meta.title,
-						asset: meta.asset,
-					})),
-				},
-			],
-		},
-	]
-
-	let nav = $derived({
-		path,
-		title: 'Content',
-		id: formId,
-		items,
-		reveal: $page.data.sidebar.reveal,
-		breakpoint: 'sm',
-		size: 'md',
-		color: 'primary:600',
-		position: 'sticky',
-		place: 'left',
-		formaction: 'toggleSidebar',
-	})
 </script>
 
 <LayoutSidebar {nav} {app}>

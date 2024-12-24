@@ -3,11 +3,12 @@
 	import '$lib/styles/css/main.css'
 
 	import {page} from '$app/stores'
+	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
 	import RcScout from '$lib/ui/RcScout.svelte'
 
-	const {HeaderSettings} = ui.drafts
+	const {Header} = ui.recipes
 
 	type Props = {
 		fixed?: boolean
@@ -52,31 +53,26 @@
 </script>
 
 <div class={themeClass}>
-	<HeaderSettings
-		id="doc"
-		name="main-header"
+	<Header
+		id="main-nav"
+		name="main-nav"
 		label=""
 		path={$page.url.pathname}
 		actionPath="/"
-		background="transparent"
 		redirect={$page.url.pathname}
+		formaction="toggleNav"
 		items={{
-			settings: {
-				switch: ui.constants.APP_SETTINGS.switch,
-				links: [],
-				onupdate: updateSettings,
-			},
+			links,
+			settings: {...ui.constants.APP_SETTINGS, onupdate: updateSettings},
 		}}
 		breakpoint="sm"
 		app={fatFuzzyStore.app}
 	/>
-	<main id="main">
-		{#if children}
-			{@render children()}
-		{:else}
-			<p>Nothing to see here</p>
-		{/if}
-	</main>
+	{#if children}
+		{@render children()}
+	{:else}
+		<p>Nothing to see here</p>
+	{/if}
 
 	<footer class={footerClass}>
 		<details
