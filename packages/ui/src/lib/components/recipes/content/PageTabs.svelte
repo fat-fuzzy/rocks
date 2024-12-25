@@ -76,27 +76,25 @@
 	</ul>
 {/snippet}
 
-{#key pageName}
-	<main {id}>
-		<header class={headerClass}>
-			<Breadcrumb {id} {path} level={1} {breadcrumbTabs} size="2xs" />
-		</header>
+<main {id}>
+	<header class={headerClass}>
+		<Breadcrumb {id} {path} level={1} {breadcrumbTabs} size="2xs" />
+	</header>
 
-		<section class="tab-content">
-			{#each tabs as { slug, content }}
-				<!-- The article tag receives focus when the corresponding tab is active -->
-				<!-- aria-labelledby inside Breadcrumb -->
+	<section class="tab-content">
+		{#each tabs as { slug, content }}
+			<!-- The article tag receives focus when the corresponding tab is active -->
+			<!-- aria-labelledby inside Breadcrumb -->
 
-				<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
-				<article
-					id={slug}
-					aria-labelledby={`${title}-${slug}`}
-					tabindex={currentHash === slug ? 0 : undefined}
-					role="tabpanel"
-				>
-					{@render content()}
-				</article>
-			{/each}
-		</section>
-	</main>
-{/key}
+			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
+			<article
+				id={slug}
+				aria-labelledby={`${title}-${slug}`}
+				tabindex={currentHash === slug ? 0 : undefined}
+				role="tabpanel"
+			>
+				{@render content()}
+			</article>
+		{/each}
+	</section>
+</main>
