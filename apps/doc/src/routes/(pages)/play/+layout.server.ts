@@ -17,7 +17,7 @@ nav.items[0].items = nav.items[0].items.map((item) => {
 })
 
 export const load = async (event) => {
-	nav.reveal = event.locals.sidebar.reveal
+	nav.reveal = event.locals.sidebar.reveal ?? nav.reveal
 
 	const data = {
 		nav,

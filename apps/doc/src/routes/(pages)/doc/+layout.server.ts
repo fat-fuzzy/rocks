@@ -14,25 +14,15 @@ let nav = buildNav('doc')
 
 nav.items[0].items = nav.items[0].items.map((item) => {
 	if (item.slug === 'usage') {
-		item.items = usagesMarkdowns.map(({meta}) => ({
-			id: meta.id,
-			slug: meta.slug,
-			title: meta.title,
-			asset: meta.asset,
-		}))
+		item.items = usagesMarkdowns.map(({meta}) => meta)
 	} else if (item.slug === 'decisions') {
-		item.items = decisionsMarkdowns.map(({meta}) => ({
-			id: meta.id,
-			slug: meta.slug,
-			title: meta.title,
-			asset: meta.asset,
-		}))
+		item.items = decisionsMarkdowns.map(({meta}) => meta)
 	}
 	return item
 })
 
 export const load = async (event) => {
-	nav.reveal = event.locals.sidebar.reveal
+	nav.reveal = event.locals.sidebar.reveal ?? nav.reveal
 
 	const data = {
 		nav,

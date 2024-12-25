@@ -7,17 +7,13 @@ let nav = buildNav('blog')
 
 nav.items = nav.items.map((item) => {
 	if (item.slug === 'blog') {
-		item.items = posts.map(({meta}) => ({
-			slug: meta.slug,
-			title: meta.title,
-			asset: meta.asset,
-		}))
+		item.items = posts.map(({meta}) => meta)
 	}
 	return item
 })
 
 export const load = async (event) => {
-	nav.reveal = event.locals.sidebar.reveal
+	nav.reveal = event.locals.sidebar.reveal ?? nav.reveal
 
 	const data = {
 		nav,
