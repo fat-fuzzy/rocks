@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Meta} from '$lib/props/types'
+	import type {Meta} from '$types'
 
 	type Props = {meta: Meta}
 
@@ -19,9 +19,9 @@
 	{#if meta.props_style}
 		{@const blocks = meta.props_style.blocks}
 		{@const layouts = meta.props_style.layouts}
-		<details open class="l:stack:md size:xs">
-			<summary class="surface:2:accent"> Style Props </summary>
-			<ul class="tags l:switcher:md" data-testid="doc-style-props">
+		<details class="l:stack:2xs size:2xs">
+			<summary class="surface:2:accent"> Style Props</summary>
+			<ul class="tags l:switcher:2xs" data-testid="doc-style-props">
 				{#if blocks}
 					{@const blockStyles = Object.keys(blocks)}
 					{#each blockStyles as prop}
@@ -54,9 +54,9 @@
 		</details>
 	{/if}
 	{#if meta.content_types}
-		<details open class="l:stack:md size:xs">
-			<summary class={`surface:2:highlight`}>Children</summary>
-			<ul class="tags l:switcher:md" data-testid="doc-child-props">
+		<details class="l:stack:2xs size:2xs">
+			<summary class={`surface:2:highlight`}> Children</summary>
+			<ul class="tags l:switcher:2xs" data-testid="doc-child-props">
 				{#each meta.content_types as prop}
 					<li
 						class="card:2xs font:sm surface:1:highlight"
@@ -69,9 +69,9 @@
 		</details>
 	{/if}
 	{#if meta.props_state}
-		<details open class="l:stack:md size:xs">
-			<summary class={`surface:2:primary`}>State Props</summary>
-			<ul class="tags l:switcher:md" data-testid="doc-state-props">
+		<details class="l:stack:2xs size:2xs">
+			<summary class={`surface:2:primary`}> State Props</summary>
+			<ul class="tags l:switcher:2xs" data-testid="doc-state-props">
 				{#each meta.props_state as prop}
 					<li
 						class="card:2xs font:sm surface:1:primary"

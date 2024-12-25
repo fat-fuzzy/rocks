@@ -1,3 +1,4 @@
+import type {StyleTree} from '$types'
 import ui from '@fat-fuzzy/ui'
 import buttonFixtures from '$lib/fixtures/js/blocks'
 import tokenFixtures from '$lib/fixtures/js/tokens'
@@ -12,7 +13,7 @@ const {
 } = ui.constants
 class PlaybookStore {
 	api = $state()
-	styles = $state(DEFAULT_STYLES)
+	styles = $state<StyleTree>(DEFAULT_STYLES)
 	reveal = $state(DEFAULT_REVEAL_STATE)
 	app = $state({settings: DEFAULT_APP_SETTINGS})
 	menuReveal = $state(DEFAULT_REVEAL_STATE)

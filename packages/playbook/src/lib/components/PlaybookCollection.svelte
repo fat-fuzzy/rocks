@@ -71,6 +71,9 @@
 
 {#if isPage}
 	<PageMain pageName="UI" {title} {description} size="lg">
+		{#snippet header()}
+			<h1 id={category} class="maki:block:md">{title}</h1>
+		{/snippet}
 		{#key category}
 			{@render collection()}
 		{/key}

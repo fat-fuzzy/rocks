@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
-	import type {Meta} from '$lib/props/types'
+	import type {Meta} from '$types'
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import PlaybookStore from '$lib/api/store.svelte'
@@ -113,11 +113,12 @@
 		{
 			...getDocTab(),
 			content: docContent,
+			labelledBy: title,
 		},
 		{
 			...getPlaybookTab(),
-			header: playbookHeader,
 			content: playbookContent,
+			labelledBy: title,
 		},
 	]
 </script>
@@ -140,14 +141,8 @@
 	</div>
 {/snippet}
 
-{#snippet playbookHeader()}
-	<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
-{/snippet}
 {#snippet playbookContent()}
-	<div class="l:sidebar:md media end:reverse">
-		<section class={sectionClasses}>
-			{@render renderElement()}
-		</section>
+	<div class="l:sidebar:md media end">
 		<aside class="l:side l:stack:md">
 			{#key title}
 				<PropsDemo
@@ -160,16 +155,19 @@
 				/>
 			{/key}
 		</aside>
+		<div class={sectionClasses}>
+			{@render renderElement()}
+		</div>
 	</div>
 {/snippet}
 
 {#snippet docContent()}
 	<div class="l:sidebar:md">
-		<section class="l:main">
+		<div class="l:main">
 			{#if children}
 				{@render children()}
 			{/if}
-		</section>
+		</div>
 		<aside class="l:side l:stack:md">
 			<PropsDoc {meta} />
 		</aside>
