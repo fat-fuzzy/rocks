@@ -26,7 +26,7 @@ pages.forEach((item) => {
 				page.getByRole('heading', {name: `Fat Fuzzy Rocks`}),
 			).toBeVisible()
 		} else {
-			await page.getByRole('link', {name: item.title}).click()
+			await page.getByRole('link', {name: item.title}).nth(0).click()
 			await expect(
 				page.getByRole('heading', {name: `Fat Fuzzy ${item.title}`}),
 			).toBeVisible()
@@ -39,7 +39,7 @@ pages.forEach((item) => {
 				page,
 			}) => {
 				await page.goto('/')
-				await page.getByRole('link', {name: item.title}).click()
+				await page.getByRole('link', {name: item.title}).nth(0).click()
 				await page.getByTestId(`button-reveal-${subpage.slug}`).click()
 				await expect(
 					page.getByRole('link', {name: subpage.linkTitle}),

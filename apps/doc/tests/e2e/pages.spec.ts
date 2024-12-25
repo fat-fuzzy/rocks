@@ -8,7 +8,7 @@ pages.forEach((item) => {
 		await page.goto('/')
 		if (item.title === 'Home') {
 			await page.reload()
-			await expect(page.getByRole('link', {name: `Play`})).toBeVisible()
+			await expect(page.getByRole('link', {name: `Play`}).nth(0)).toBeVisible()
 		} else {
 			await page.goto(`/${item.slug}`)
 			await page.reload()
