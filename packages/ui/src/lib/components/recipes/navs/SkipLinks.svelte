@@ -7,7 +7,7 @@
 </script>
 
 <nav id="a11y-links" class="sr-only">
-	<ui>
+	<ul>
 		<li><a class="skip-link" {href}>{text}</a></li>
-	</ui>
+	</ul>
 </nav>
