@@ -164,7 +164,7 @@ const APP_SETTINGS: SettingsItems = {
 			value: 'contrast',
 			shape: 'round',
 			color: 'primary',
-			size: 'sm',
+			size: 'xs',
 			states: {
 				active: {
 					...SWITCH_MACHINE.active,

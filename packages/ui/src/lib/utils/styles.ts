@@ -83,7 +83,12 @@ function getLayoutStyles(props: UiBlockProps): string {
 	let backgroundClass = background ? `bg:${background}` : ''
 
 	if (layoutClass) {
-		layoutClass = size ? `l:${layoutClass}:${size}` : `l:${layoutClass}`
+		layoutClass =
+			layout && size
+				? `l:${layoutClass}:${size}`
+				: layout
+					? `l:${layoutClass}`
+					: ''
 	}
 
 	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass} ${heightClass} ${backgroundClass} ${layerClass} ${positionClass}`
