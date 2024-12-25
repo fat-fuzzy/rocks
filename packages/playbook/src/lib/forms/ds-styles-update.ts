@@ -1,5 +1,5 @@
 import ui from '@fat-fuzzy/ui'
-import type {StyleTree} from '$types/styles'
+import type {StyleTree} from '$types'
 import {initStyles} from '$lib/api/styles.api'
 
 const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, NUMBER_TO_SIZE} =
