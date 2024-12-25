@@ -117,7 +117,6 @@
 					{path}
 					{actionPath}
 					{redirect}
-					color="accent"
 					{meta}
 					categories={[category]}
 				/>
