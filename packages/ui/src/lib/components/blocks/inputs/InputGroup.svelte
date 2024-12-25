@@ -57,7 +57,7 @@
 			color={input.color || color}
 			{...input}
 			name={id}
-			id={`${name}-${input.value}`}
+			id={`${name}.${input.value}`}
 			oninput={(event) => handleInput(event, name)}
 		/>
 	{/each}

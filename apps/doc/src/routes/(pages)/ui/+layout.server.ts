@@ -51,7 +51,6 @@ export const load = async ({locals, params}) => {
 		styles: locals.dsStyles,
 		context: locals.dsContext,
 		ui: locals.dsState,
-		currentTabs: locals.currentTabs,
 		markdowns,
 		content,
 	}

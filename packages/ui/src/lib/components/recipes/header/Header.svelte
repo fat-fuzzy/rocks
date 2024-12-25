@@ -22,7 +22,7 @@
 <header class="sticky:top">
 	<SkipLinks />
 	<div class={`l:sidebar ${className} align:center`}>
-		<div class="l:main l:flex">
+		<div class="l:main l:flex align:center">
 			<HeaderNav
 				{id}
 				name={id}
@@ -42,7 +42,7 @@
 				formaction="toggleNav"
 			/>
 		</div>
-		<div class="l:side">
+		<div class="l:side l:flex align:center">
 			<SettingsMenu
 				id={`${id}-menu-settings`}
 				name={`${id}-menu-settings`}
@@ -54,6 +54,21 @@
 				items={items.settings.switch}
 				onupdate={items?.settings.onupdate}
 			/>
+			<ul class="links:settings end unstyled">
+				{#each items.settings.links as { title, url, shape, size, asset }}
+					<li>
+						<a
+							class={`shape:${shape} ${asset} size:${size}`}
+							href={url}
+							target="_blank"
+							rel="noreferrer"
+							{title}
+							aria-label={title}
+						>
+						</a>
+					</li>
+				{/each}
+			</ul>
 		</div>
 	</div>
 </header>
