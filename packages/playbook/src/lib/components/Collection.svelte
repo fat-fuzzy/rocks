@@ -16,7 +16,7 @@
 
 	import Element from './Element.svelte'
 
-	const {Tabs} = ui.drafts
+	const {PageTabs} = ui.drafts
 
 	type Props = {
 		depth?: number
@@ -65,6 +65,10 @@
 			labelledBy: category,
 		},
 	]
+	let title = $derived(
+		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
+	)
+	let description = $derived(`${title} | Doc`)
 	let componentNames = $derived(Object.keys(components))
 	let titleDepth = $derived(Number(depth) + 1)
 	let layoutClass = $derived(
@@ -139,7 +143,11 @@
 {/snippet}
 
 {#if isPage}
-	<Tabs id={`tabs-${category}`} {tabs} {path} />
+	<PageTabs pageName="UI" {title} {description} size="lg" {path} {tabs}>
+		{#snippet header()}
+			<h1 id={category} class="maki:block:md">{title}</h1>
+		{/snippet}
+	</PageTabs>
 {:else}
 	<section class="l:text:lg snap:start">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">

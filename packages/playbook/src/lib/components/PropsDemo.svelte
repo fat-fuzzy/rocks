@@ -15,7 +15,7 @@
 		path = '',
 		actionPath,
 		redirect,
-		color = 'accent',
+		color = 'primary',
 		meta,
 		categories,
 	}: Props = $props()
@@ -32,7 +32,7 @@
 	<summary class={`variant:fill surface:2:neutral`}> Settings</summary>
 	<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
 </details>
-<details class="l:stack:2xs size:2xs">
+<details open class="l:stack:2xs size:2xs">
 	<summary class={`variant:fill surface:2:${color}`}> Style Props</summary>
 	{#if categories && categories.length > 0 && meta.props_style}
 		<div class="ui:menu">

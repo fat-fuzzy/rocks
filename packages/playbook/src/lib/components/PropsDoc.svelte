@@ -19,8 +19,8 @@
 	{#if meta.props_style}
 		{@const blocks = meta.props_style.blocks}
 		{@const layouts = meta.props_style.layouts}
-		<details class="l:stack:2xs size:2xs">
-			<summary class="surface:2:accent"> Style Props</summary>
+		<details open class="l:stack:2xs size:2xs">
+			<summary class="surface:2:primary"> Style Props</summary>
 			<ul class="tags l:switcher:2xs" data-testid="doc-style-props">
 				{#if blocks}
 					{@const blockStyles = Object.keys(blocks)}
@@ -28,7 +28,7 @@
 						{@const blocksProps = blocks[prop]}
 						{#each blocksProps as style}
 							<li
-								class="card:2xs font:sm surface:1:accent"
+								class="card:2xs font:sm surface:1:primary"
 								data-testid={`prop-block-${style}`}
 							>
 								{style}
@@ -42,7 +42,7 @@
 						{@const layoutsProp = layouts[prop]}
 						{#each layoutsProp as style}
 							<li
-								class="card:2xs font:sm surface:1:accent"
+								class="card:2xs font:sm surface:1:primary"
 								data-testid={`prop-layout-${style}`}
 							>
 								{style}
@@ -54,7 +54,7 @@
 		</details>
 	{/if}
 	{#if meta.content_types}
-		<details class="l:stack:2xs size:2xs">
+		<details open class="l:stack:2xs size:2xs">
 			<summary class={`surface:2:highlight`}> Children</summary>
 			<ul class="tags l:switcher:2xs" data-testid="doc-child-props">
 				{#each meta.content_types as prop}
@@ -69,12 +69,12 @@
 		</details>
 	{/if}
 	{#if meta.props_state}
-		<details class="l:stack:2xs size:2xs">
-			<summary class={`surface:2:primary`}> State Props</summary>
+		<details open class="l:stack:2xs size:2xs">
+			<summary class={`surface:2:accent`}> State Props</summary>
 			<ul class="tags l:switcher:2xs" data-testid="doc-state-props">
 				{#each meta.props_state as prop}
 					<li
-						class="card:2xs font:sm surface:1:primary"
+						class="card:2xs font:sm surface:1:accent"
 						data-testid={`prop-state-${prop}`}
 					>
 						{prop}

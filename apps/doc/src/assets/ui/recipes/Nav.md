@@ -13,7 +13,7 @@ Use a `Nav` component to provide related navigation options to the user.
 
 ### Related Components
 
-- `LinkList` component in `recipes/navs`
+- `LinkTree` component in `recipes/navs`
 - `RevealNav` component in `recipes/navs`
 - `DetailsNav` component in `recipes/navs`
 

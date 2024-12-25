@@ -1,18 +1,6 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
+	import type {PageProps} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
-
-	type Props = {
-		id?: string
-		title: string
-		description: string
-		pageName?: string
-		size?: string
-		header?: Snippet
-		layout?: string
-		justify?: string
-		children: Snippet
-	}
 
 	let {
 		id = 'main',
@@ -24,7 +12,7 @@
 		justify,
 		header,
 		children,
-	}: Props = $props()
+	}: PageProps = $props()
 
 	let currentPage = $state(pageName ?? title)
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
