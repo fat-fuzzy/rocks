@@ -14,6 +14,7 @@
 	setContext('playbookContext', playbookContext)
 
 	let {styles} = $state($page.data)
+	let nav = $derived($page.data.nav)
 
 	onMount(() => {
 		if (styles) {
@@ -22,7 +23,7 @@
 	})
 </script>
 
-<Playbook app={fatFuzzyStore.app}>
+<Playbook app={fatFuzzyStore.app} {nav}>
 	{#if children}
 		{@render children()}
 	{/if}

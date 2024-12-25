@@ -64,6 +64,40 @@ export const pages: {[key: string]: any} = {
 			},
 		],
 	},
+	ui: {
+		slug: 'ui', // root path of the Playbook
+		title: 'Library',
+		items: [
+			{
+				slug: 'tokens',
+				title: 'Tokens',
+				asset: 'tokens',
+				formaction: 'toggleTokens',
+				items: [],
+			},
+			{
+				slug: 'blocks',
+				title: 'Blocks',
+				asset: 'blocks',
+				formaction: 'toggleBlocks',
+				items: [],
+			},
+			{
+				slug: 'layouts',
+				title: 'Layouts',
+				asset: 'layouts',
+				formaction: 'toggleLayouts',
+				items: [],
+			},
+			{
+				slug: 'recipes',
+				title: 'Recipes',
+				asset: 'recipes',
+				formaction: 'toggleRecipes',
+				items: [],
+			},
+		],
+	},
 }
 
 export function buildNav(page: string) {
