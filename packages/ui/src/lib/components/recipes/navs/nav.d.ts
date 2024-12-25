@@ -20,7 +20,7 @@ export type NavProps = UiBlockProps & {
 	items: any[]
 }
 
-export type LinkListProps = UiBlockProps & {
+export type LinkTreeProps = UiBlockProps & {
 	id: string
 	depth: number
 	path: string

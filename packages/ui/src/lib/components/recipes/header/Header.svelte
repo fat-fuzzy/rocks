@@ -3,7 +3,7 @@
 	import constants from '$lib/types/constants.js'
 	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
 	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
-	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
+	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 
 	const {DEFAULT_REVEAL_STATE} = constants
 

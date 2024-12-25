@@ -1,12 +1,9 @@
 <script lang="ts">
 	import type {RevealNavProps} from '$types'
 	import {UiEvents} from '$types'
-	import constants from '$lib/types/constants.js'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
-	import SkipLinks from '$lib/components/blocks/global/SkipLinks.svelte'
-	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
-
-	const {DEFAULT_NAV_REVEAL_STATE} = constants
+	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
+	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
 
 	let {
 		id = 'reveal-nav',
@@ -59,7 +56,7 @@
 	aria-label={title}
 	data-testid={`nav-${id}`}
 >
-	<SkipLinks text="Skip to content" href="#content" />
+	<SkipLinks text="Skip to content" href="#main" />
 	<Reveal
 		{id}
 		name={id}
@@ -77,6 +74,6 @@
 		{justify}
 		onclick={toggleReveal}
 	>
-		<LinkList id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
+		<LinkTree id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</Reveal>
 </nav>

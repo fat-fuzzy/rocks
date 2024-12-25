@@ -3,6 +3,7 @@
 	import Head from '$lib/components/blocks/global/Head.svelte'
 
 	type Props = {
+		id?: string
 		title: string
 		description: string
 		pageName?: string
@@ -14,6 +15,7 @@
 	}
 
 	let {
+		id = 'main',
 		title = 'PageMain',
 		description = `Basic page layout`,
 		pageName,
@@ -34,7 +36,7 @@
 
 <Head pageName={currentPage} {title} {description} />
 
-<main id="main">
+<main {id}>
 	<header class={headerClass}>
 		{#if header}
 			{@render header()}
