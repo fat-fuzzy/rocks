@@ -36,6 +36,9 @@
 </script>
 
 <PageMain pageName="UI" {title} {description} size="lg">
+	{#snippet header()}
+		<h1 id={title} class="maki:block:md">{title}</h1>
+	{/snippet}
 	<Element
 		isPage={true}
 		depth={1}

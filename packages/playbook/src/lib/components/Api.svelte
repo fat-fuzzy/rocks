@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
-	import type {Meta} from '$lib/props/types'
+	import type {Snippet} from 'svelte'
+	import type {Meta} from '$types'
 
 	import {enhance} from '$app/forms'
 	import StyleFamily from '$lib/components/StyleFamily.svelte'
@@ -27,7 +27,7 @@
 		method = 'POST',
 		formaction = 'updateStyles',
 		meta,
-		children
+		children,
 	}: Props = $props()
 	// export let reset = 'reset'
 
@@ -35,9 +35,8 @@
 	let apiSize = '2xs'
 	let apiBreakpoint = '2xs'
 
-	let action = formaction && redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
+	let action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	let frameClass = $derived(
 		categories && categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin',
 	)
@@ -72,7 +71,9 @@
 			<StyleFamily
 				{category}
 				meta={category !== 'app' ? meta : undefined}
-				formaction={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+				formaction={action && actionPath
+					? `${actionPath}?/${action}`
+					: `?/${action}`}
 			/>
 		{/each}
 		{#await Promise.resolve()}

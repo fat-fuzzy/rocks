@@ -1,5 +1,6 @@
 // Reexport your entry components here
 
+/// <reference path="./types/index.d.ts" />
 /**
  * Styles Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website

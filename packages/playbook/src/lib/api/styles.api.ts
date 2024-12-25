@@ -1,5 +1,6 @@
-import type {Meta, StyleProps} from '$lib/props/types'
 import type {
+	Meta,
+	StyleProps,
 	AppStyles,
 	TokenStyles,
 	BlockStyles,
@@ -7,10 +8,9 @@ import type {
 	StyleOptions,
 	StyleTree,
 	StyleCategory,
-	StyleInputGroup,
-	StyleFamily,
-} from './styles.types'
-
+} from '$types'
+import StyleInputGroup from './styles.input-group'
+import StyleFamily from './styles.family'
 import {getFamily} from '$lib/props/props-style'
 
 export class StylesApi {

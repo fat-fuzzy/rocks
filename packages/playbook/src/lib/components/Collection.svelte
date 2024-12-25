@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-	import type {Markdowns, Meta} from '$lib/props/types'
+	import type {Markdowns, Meta} from '$types'
 
 	import Api from '$lib/components/Api.svelte'
 	import PropsDemo from './PropsDemo.svelte'
@@ -104,11 +104,9 @@
 {#snippet playbookHeader()}
 	<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
 {/snippet}
+
 {#snippet playbookContent()}
-	<div class="l:sidebar:md media end:reverse">
-		<section id={`tabs-${category}-playbook`} class={`l:main ${layoutClass}`}>
-			{@render categoryElements()}
-		</section>
+	<div class="l:sidebar:md media end">
 		<aside class="l:side l:stack:md">
 			{#key category}
 				<PropsDemo
@@ -121,16 +119,19 @@
 				/>
 			{/key}
 		</aside>
+		<div id={`tabs-${category}-playbook`} class={`l:main ${layoutClass}`}>
+			{@render categoryElements()}
+		</div>
 	</div>
 {/snippet}
 
 {#snippet docContent()}
 	<div class="l:sidebar:md">
-		<section id={`tabs-${category}-doc`} class="l:main">
+		<div id={`tabs-${category}-doc`} class="l:main">
 			{#if children}
 				{@render children()}
 			{/if}
-		</section>
+		</div>
 		<aside class="l:side l:stack:md">
 			<PropsDoc {meta} />
 		</aside>

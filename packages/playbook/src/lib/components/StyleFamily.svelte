@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type {Meta} from '$lib/props/types'
+	import type {Meta, StyleTree} from '$types'
 	import type {StylesApi} from '$lib/api/styles.api'
-	import type {StyleTree} from '$lib/api/styles.types'
 
 	import {onMount, getContext} from 'svelte'
 

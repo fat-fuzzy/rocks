@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {StylesApi} from '$lib/api/styles.api'
-	import type {StyleInputGroup, StyleFamily} from '$lib/api/styles.types'
+	import type {IStyleInputGroup, IStyleFamily} from '$types'
 
 	import {onMount, getContext} from 'svelte'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
@@ -13,8 +13,8 @@
 	const {Fieldset} = fatFuzzyUi.drafts
 
 	type Props = {
-		styleInput: StyleInputGroup
-		family: StyleFamily
+		styleInput: IStyleInputGroup
+		family: IStyleFamily
 		familyName: string
 		categoryName: string
 		formaction?: string
@@ -149,6 +149,7 @@
 				asset: i.asset ?? '',
 				initial: i.value === currentValue ? 'active' : 'inactive',
 				name: i.id,
+				id: i.id,
 			}
 		}),
 	)

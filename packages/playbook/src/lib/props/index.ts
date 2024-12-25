@@ -1,10 +1,4 @@
-import type {
-	Meta,
-	Markdown,
-	Markdowns,
-	PlaybookProps,
-	StyleProps,
-} from './types'
+import type {Meta, Markdown, Markdowns, PlaybookProps, StyleProps} from '$types'
 import {getFamily} from '$lib/props/props-style'
 
 const DEFAULT_META: Meta = {

@@ -1,5 +1,4 @@
-import type {Settings, Tab} from '$types'
-import type {StyleTree} from '$lib/api/styles.types'
+import type {Settings, StyleTree} from '$types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
