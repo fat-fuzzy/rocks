@@ -1,22 +1,7 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
-	import type {ScrollyItemProps} from '$types'
+	import type {PageScrollyProps} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
 	import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
-
-	type Props = {
-		title: string
-		description: string
-		pageName?: string
-		size?: string
-		header?: Snippet
-		layout?: string
-		justify?: string
-		fixed?: boolean
-		dimensions?: string
-		animations?: string[]
-		items: ScrollyItemProps[]
-	}
 
 	let {
 		title = 'PageMain',
@@ -29,7 +14,7 @@
 		fixed = false,
 		animations = ['fade'],
 		items,
-	}: Props = $props()
+	}: PageScrollyProps = $props()
 
 	let currentPage = $state(pageName ?? title)
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')

@@ -1,5 +1,3 @@
-import type {RevealNavProps} from '../../../../packages/ui/dist/types'
-
 export const links = [
 	{slug: 'doc', title: 'Doc', layout: 'sidebar'},
 	{slug: 'ui', title: 'UI', layout: 'sidebar'},
@@ -7,7 +5,7 @@ export const links = [
 	{slug: 'play', title: 'Play', layout: 'sidebar'},
 ]
 
-const navBase: RevealNavProps = {
+const navBase = {
 	id: 'sidebar',
 	title: 'Content',
 	reveal: 'collapsed',
@@ -20,7 +18,7 @@ const navBase: RevealNavProps = {
 	items: [],
 }
 
-export const pages: {[key: string]: RevealNavProps} = {
+export const pages: {[key: string]: any} = {
 	blog: {
 		slug: 'blog',
 		title: 'Blog',
@@ -68,7 +66,7 @@ export const pages: {[key: string]: RevealNavProps} = {
 	},
 }
 
-export function buildNav(page) {
+export function buildNav(page: string) {
 	let nav = {...navBase}
 	nav.items = [pages[page]]
 

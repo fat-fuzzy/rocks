@@ -7,7 +7,6 @@
 	import PlaybookStore from '$lib/api/store.svelte'
 	import {getPlaybookTab, getDocTab} from '$lib/props'
 
-	import Api from '$lib/components/Api.svelte'
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
@@ -15,7 +14,7 @@
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
-	const {Tabs} = ui.drafts
+	const {PageTabs} = ui.drafts
 
 	type Props = {
 		title: string
@@ -121,6 +120,8 @@
 			labelledBy: title,
 		},
 	]
+
+	let description = $derived(`${title} | Doc`)
 </script>
 
 {#snippet renderElement()}
@@ -149,7 +150,6 @@
 					{path}
 					{actionPath}
 					{redirect}
-					color="accent"
 					{meta}
 					categories={[category]}
 				/>
@@ -175,7 +175,11 @@
 {/snippet}
 
 {#if isPage}
-	<Tabs id="playbook-tabs" {tabs} {path} />
+	<PageTabs pageName="UI" {title} {description} {path} {tabs} size="lg">
+		{#snippet header()}
+			<h1 id={title} class="maki:block:md">{title}</h1>
+		{/snippet}
+	</PageTabs>
 {:else}
 	<article
 		id={`card-${title}`}

@@ -4,6 +4,10 @@
 	background-color: inherit;
 }
 
+[role='tab'] h1 {
+	line-height: 1;
+}
+
 nav li a[role='tab'] {
 	border-radius: var(--border-radius-base);
 	outline-color: var(--accent);
@@ -24,6 +28,8 @@ nav li a[role='tab'] {
 	display: none;
 }
 
+[role='tabpanel'][tabindex='0'],
 [role='tabpanel']:target {
 	display: block;
+	scroll-margin-block: 10em; /* TODO: fix magic number */
 }
