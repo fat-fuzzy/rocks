@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {NavProps} from '$types'
-	import LinkList from '$lib/components/recipes/navs/LinkList.svelte'
+	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
 
 	let {
 		id,
@@ -21,7 +21,7 @@
 </script>
 
 <nav {id} class={navClasses} aria-label={title}>
-	<LinkList
+	<LinkTree
 		id={`${id}-${path}`}
 		{items}
 		{path}
