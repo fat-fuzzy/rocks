@@ -67,8 +67,6 @@
 
 .header-app > [class*='l:side'] {
 	flex-basis: content; /* property as content of flex container */
-	display: flex;
-	align-items: flex-end;
 	flex-grow: 0;
 
 	.expanded > ff-reveal {
