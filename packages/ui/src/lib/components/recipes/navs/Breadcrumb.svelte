@@ -13,7 +13,7 @@
 		breadcrumbTabs,
 	}: BreadcrumbProps = $props()
 
-	let items: {slug: string; title: string}[] = $derived.by(() => {
+	let items: {slug: string; title: string; path: string}[] = $derived.by(() => {
 		let links: string[] = path.split('/').filter((link: string) => link !== '')
 		let hashed = links[links.length - 1].split('#')
 		if (hashed.length > 1) {
@@ -48,12 +48,12 @@
 				<a
 					data-sveltekit-preload-data
 					href={item.path}
-					class="l:flex align:center"
+					class="l:flex align:center card:2xs"
 				>
 					{#if i === items.length - 1}
 						<svelte:element
 							this={`h${level}`}
-							id={`${title}-${item.slug}`}
+							id={title}
 							class="l:flex align:center"
 						>
 							{item.title}

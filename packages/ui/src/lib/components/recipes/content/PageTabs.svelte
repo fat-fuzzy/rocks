@@ -78,7 +78,7 @@
 
 <main {id}>
 	<header class={headerClass}>
-		<Breadcrumb {id} {path} level={1} {breadcrumbTabs} size="2xs" />
+		<Breadcrumb {id} {title} {path} level={1} {breadcrumbTabs} size="2xs" />
 	</header>
 
 	<section class="tab-content">
@@ -89,7 +89,7 @@
 			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
 			<article
 				id={slug}
-				aria-labelledby={`${title}-${slug}`}
+				aria-labelledby={title}
 				tabindex={currentHash === slug ? 0 : undefined}
 				role="tabpanel"
 			>
