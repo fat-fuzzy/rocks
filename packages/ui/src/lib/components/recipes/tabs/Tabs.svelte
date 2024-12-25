@@ -10,69 +10,36 @@
 		background,
 		container,
 	}: TabsProps = $props()
+
 	let currentHash = $state(path.split('#')[1])
 	let indexedTabs = $state(
 		tabs.map((tab: Tab, index: number) => ({...tab, index})),
 	)
-	let selectedTab = $state(
-		indexedTabs.find((tab: Tab) => tab.initial) ?? tabs[0],
+
+	let selectedTab = $derived(
+		indexedTabs.find((tab: Tab) => tab.slug === currentHash) ?? indexedTabs[0],
 	)
-	let tabHeader = $derived(selectedTab.header)
+
 	let layoutClasses = styleHelper.getLayoutStyles({
 		layout,
 		background,
 		container,
 	})
 
+	let presentationClasses = styleHelper.getStyles({
+		layout: 'switcher:xs',
+		align: 'center',
+		justify: 'between',
+	})
+
 	function updateActiveTab(slug: string) {
-		selectedTab = indexedTabs.find((tab: Tab) => tab.slug === slug)
-	}
-
-	function onkeydown(e: KeyboardEvent) {
-		let target = e.target as HTMLElement
-
-		let link = selectedTab.id
-			? `${selectedTab.slug}-${selectedTab.id}`
-			: selectedTab.slug
-
-		if (target?.id !== link) {
-			return
-		}
-		e.preventDefault()
-
-		let tab
-		switch (e.key) {
-			case 'Tab':
-				// Get the next tab navigation
-				let tabIndex = selectedTab.index
-				if (e.shiftKey) {
-					tabIndex--
-				} else {
-					tabIndex++
-				}
-				if (tabIndex < 0) {
-					tabIndex = tabs.length - 1
-				} else if (tabIndex >= tabs.length) {
-					tabIndex = 0
-				}
-				tab = document.getElementById(`tab-${link}`)
-				selectedTab = indexedTabs[tabIndex]
-				break
-			case 'Enter':
-				// Get the current tab's main content
-				tab = document.getElementById(`${id}-${selectedTab.slug}`)
-				break
-			default:
-				return
-		}
-		// Focus on the tab nav or tab content
-		tab?.focus()
+		currentHash = slug
 	}
 
 	onMount(() => {
 		let tabFound = indexedTabs.find((tab: Tab) => currentHash === tab.slug)
 		if (tabFound) {
-			selectedTab = tabFound
+			currentHash = tabFound.slug
 		}
 	})
 </script>
@@ -81,13 +48,7 @@
 	<header class="l:sidebar:lg">
 		<nav {id} class="l:main:50">
 			<ul role="tablist" class="unstyled l:switcher:xs">
-				{#each tabs as { id, title, slug, color, size, variant, shape, asset }}
-					{@const link = id ? `${slug}-${id}` : slug}
-					{@const presentationClasses = styleHelper.getStyles({
-						layout: 'switcher:xs',
-						align: 'center',
-						justify: 'between',
-					})}
+				{#each tabs as { title, slug, color, size, variant, shape, asset }}
 					{@const iconClasses = styleHelper.getStyles({
 						color,
 						size,
@@ -108,14 +69,13 @@
 						class={`surface:0:${color}`}
 					>
 						<a
-							id={`tab-${link}`}
-							href={`#${link}`}
+							id={`tab-${slug}`}
+							href={`#${slug}`}
 							role="tab"
 							aria-selected={selectedTab.slug === slug}
-							aria-controls={link}
+							aria-controls={slug}
 							onclick={() => updateActiveTab(slug)}
 							class={`${presentationClasses} ${linkClasses}`}
-							{onkeydown}
 						>
 							<ff-icon class={iconClasses}></ff-icon>
 							{title}
@@ -124,22 +84,16 @@
 				{/each}
 			</ul>
 		</nav>
-		{#if tabHeader}
-			<div class="l:side">
-				{@render tabHeader()}
-			</div>
-		{/if}
 	</header>
 	<section class="tab-content">
-		{#each tabs as { id, slug, content, labelledBy }}
-			{@const link = id ? `${slug}-${id}` : slug}
-			<!-- The article tag receives focus via JS when the corresponding tab is active -->
+		{#each tabs as { slug, content, labelledBy }}
+			<!-- The article tag receives focus when the corresponding tab is active -->
 			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
 			<article
-				id={link}
-				aria-labelledby={labelledBy ? labelledBy : `tab-${link}`}
+				id={slug}
+				aria-labelledby={labelledBy ? labelledBy : `tab-${slug}`}
 				role="tabpanel"
-				tabindex={selectedTab.slug === slug ? 0 : -1}
+				tabindex={selectedTab.slug === slug ? 0 : undefined}
 			>
 				{@render content()}
 			</article>
