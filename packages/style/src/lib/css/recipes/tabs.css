@@ -20,6 +20,10 @@ nav li a[role='tab'] {
 	background-color: var(--shade);
 }
 
-[role='tabpanel']:not(:target) {
+[role='tabpanel'] {
 	display: none;
+}
+
+[role='tabpanel']:target {
+	display: block;
 }

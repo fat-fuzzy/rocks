@@ -98,6 +98,7 @@ nav li[aria-current='page'] {
 		--chroma-contrast: var(--chroma-contrast-base);
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 		color: var(--ink);
 		background-color: var(--shade);
 	}
