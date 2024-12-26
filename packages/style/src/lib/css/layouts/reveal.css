@@ -8,8 +8,8 @@
 	flex-direction: column;
 	inline-size: var(--x-size);
 	block-size: var(--y-size);
-	max-inline-size: calc(100% - var(--outline-offset-base));
-	margin: var(--outline-offset-base);
+	max-inline-size: calc(100% - var(--outline-offset-xs));
+	margin: var(--outline-offset-xs);
 	color: var(--ink);
 	z-index: var(--layout-z-index-layer);
 	transition: inline-size 250ms ease-in-out;
@@ -34,6 +34,7 @@ ff-reveal {
 	scrollbar-color: var(--thumb) var(--track);
 }
 
+.form\:collapsed + ff-reveal,
 .collapsed > ff-reveal {
 	--x-size: 0;
 	--y-size: 0;

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {LinkListProps} from '$types'
+	import type {LinkTreeProps} from '$types'
 	import {UiSize, UiColor} from '$types'
 	import format from '$lib/utils/format.js'
 	import {getStores} from '$app/stores'
 
 	import ExpandLink from './ExpandLink.svelte'
-	import LinkList from './LinkList.svelte'
+	import LinkTree from './LinkTree.svelte'
 	import constants from '$lib/types/constants.js'
 
 	const {DEFAULT_REVEAL_STATE} = constants
@@ -23,7 +23,7 @@
 		container,
 		items = [], // TODO: fix type,
 		oninput,
-	}: LinkListProps = $props()
+	}: LinkTreeProps = $props()
 
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
 	let colorClass = color ? `surface:1:${color}` : ''
@@ -33,8 +33,8 @@
 	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
 </script>
 
-{#snippet nestedLinkList(subItems, slug)}
-	<LinkList
+{#snippet nestedLinkTree(subItems, slug)}
+	<LinkTree
 		items={subItems}
 		path={format.formatHref(path, slug)}
 		id={`${id}-${slug}`}
@@ -83,7 +83,7 @@
 					size={UiSize['2xs']}
 					formaction={`?/${item.formaction}`}
 				>
-					{@render nestedLinkList(subItems, slug)}
+					{@render nestedLinkTree(subItems, slug)}
 				</ExpandLink>
 			{:else}
 				<a
@@ -94,7 +94,7 @@
 					{title}
 				</a>
 				{#if subItems}
-					{@render nestedLinkList(subItems, slug)}
+					{@render nestedLinkTree(subItems, slug)}
 				{/if}
 			{/if}
 		</li>

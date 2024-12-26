@@ -31,30 +31,23 @@ ready.forEach((component) => {
 
 		test(`Playbook page is accessible`, async ({page}) => {
 			await page.goto(`${path}/${component}`)
-			await page
-				.getByTestId('context.menu.toggle.playbook')
-				.click({force: true})
-			await page.getByRole('heading', {level: 1, name: component})
+			await page.getByRole('tab', {name: 'Playbook'}).click()
+			page.getByRole('heading', {level: 1, name: component})
 		})
 
 		test(`Playbook has working size input`, async ({page}) => {
 			await page.goto(`${path}/${component}`)
-			await page
-				.getByTestId('context.menu.toggle.playbook')
-				.click({force: true})
+			await page.getByRole('tab', {name: 'Playbook'}).click()
 
-			await expect(styleProps.includes('size')).toBeTruthy()
+			expect(styleProps.includes('size')).toBeTruthy()
 			await props.testSize(page, component)
 		})
 
 		if (component !== 'Magic' && component !== 'Feedback') {
 			test(`Playbook has working color input`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
-				await page
-					.getByTestId('context.menu.toggle.playbook')
-					.click({force: true})
-
-				await expect(styleProps.includes('color')).toBeTruthy()
+				await page.getByRole('tab', {name: 'Playbook'}).click()
+				expect(styleProps.includes('color')).toBeTruthy()
 				await props.testColor(page, component)
 			})
 		}
@@ -72,11 +65,8 @@ ready.forEach((component) => {
 					.getByTestId('doc-style-props')
 					.getByRole('listitem')
 					.allInnerTexts()
-				await page
-					.getByTestId('context.menu.toggle.playbook')
-					.click({force: true})
-
-				await expect(styleProps.includes('variant')).toBeTruthy()
+				await page.getByRole('tab', {name: 'Playbook'}).click()
+				expect(styleProps.includes('variant')).toBeTruthy()
 				await props.testVariant(page, component)
 			})
 		}
@@ -93,11 +83,10 @@ ready.forEach((component) => {
 				page,
 			}) => {
 				await page.goto(`${path}/${component}`)
-				await page
-					.getByTestId('context.menu.toggle.playbook')
-					.click({force: true})
 
-				await expect(styleProps.includes('asset')).toBeTruthy()
+				await page.getByRole('tab', {name: 'Playbook'}).click()
+
+				expect(styleProps.includes('asset')).toBeTruthy()
 				await props.testAsset(page, component)
 			})
 		}
@@ -112,11 +101,10 @@ ready.forEach((component) => {
 				page,
 			}) => {
 				await page.goto(`${path}/${component}`)
-				await page
-					.getByTestId('context.menu.toggle.playbook')
-					.click({force: true})
 
-				await expect(styleProps.includes('shape')).toBeTruthy()
+				await page.getByRole('tab', {name: 'Playbook'}).click()
+
+				expect(styleProps.includes('shape')).toBeTruthy()
 				await props.testShape(page, component)
 			})
 		}
@@ -128,11 +116,10 @@ ready.forEach((component) => {
 					.getByTestId('doc-style-props')
 					.getByRole('listitem')
 					.allInnerTexts()
-				await page
-					.getByTestId('context.menu.toggle.playbook')
-					.click({force: true})
 
-				await expect(styleProps.includes('context')).toBeTruthy()
+				await page.getByRole('tab', {name: 'Playbook'}).click()
+
+				expect(styleProps.includes('context')).toBeTruthy()
 				await props.testContext(page, component)
 			})
 
@@ -142,11 +129,10 @@ ready.forEach((component) => {
 					.getByTestId('doc-style-props')
 					.getByRole('listitem')
 					.allInnerTexts()
-				await page
-					.getByTestId('context.menu.toggle.playbook')
-					.click({force: true})
 
-				await expect(styleProps.includes('status')).toBeTruthy()
+				await page.getByRole('tab', {name: 'Playbook'}).click()
+
+				expect(styleProps.includes('status')).toBeTruthy()
 				await props.testStatus(page, component)
 			})
 		}

@@ -1,15 +1,11 @@
 <script lang="ts">
-	import type {Meta} from '$lib/props/types'
+	import type {Meta, StyleTree} from '$types'
 	import type {StylesApi} from '$lib/api/styles.api'
-	import type {StyleTree} from '$lib/api/styles.types'
 
 	import {onMount, getContext} from 'svelte'
-	import fatFuzzyUi from '@fat-fuzzy/ui'
 
 	import PlaybookStore from '$lib/api/store.svelte'
 	import StyleInput from './StyleInput.svelte'
-
-	const {Fieldset} = fatFuzzyUi.drafts
 
 	type Props = {
 		category?: string
@@ -22,8 +18,6 @@
 	const playbookContext: StylesApi = getContext('playbookContext')
 	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
 	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
-
-	let apiJustify = 'stretch'
 
 	function updateStyles(payload: {
 		name: string
@@ -74,24 +68,14 @@
 			{#each families as familyName}
 				{@const family = categoryOptions.families[familyName]}
 				{#each family.items as styleInputGroup}
-					<Fieldset
-						id={family.title}
-						legend={family.title}
-						layout={family.layout}
-						container={family.container}
-						size={family.size}
-						name={familyName}
-						justify={apiJustify}
-					>
-						<StyleInput
-							styleInput={styleInputGroup}
-							{familyName}
-							categoryName={categoryOptions.name}
-							size={styleInputGroup.size}
-							{formaction}
-							onupdate={updateStyles}
-						/>
-					</Fieldset>
+					<StyleInput
+						{family}
+						styleInput={styleInputGroup}
+						{familyName}
+						categoryName={categoryOptions.name}
+						{formaction}
+						onupdate={updateStyles}
+					/>
 				{/each}
 			{/each}
 		{/if}

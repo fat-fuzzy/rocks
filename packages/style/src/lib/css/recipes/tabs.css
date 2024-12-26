@@ -1,13 +1,35 @@
-.tabs {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+[role='tablist'] {
+	padding-block: calc(var(--ui-size) + var(--border-width-xl));
 }
 
-.tabs.end {
-	justify-content: flex-end;
+[role='tablist'],
+[role='tab'] {
+	inline-size: fit-content;
+	background-color: inherit;
 }
 
-.tabs.start {
-	justify-content: flex-start;
+nav li a[role='tab'] {
+	border-radius: var(--border-radius-base);
+	outline-color: var(--accent);
+	padding-block: var(--ui-size-sm);
+	padding-inline: var(--ui-size);
+	background-color: inherit;
+}
+
+[role='presentation'][class*='surface'] {
+	background-color: inherit;
+}
+
+[role='presentation'][aria-current='page'] {
+	background-color: var(--shade);
+}
+
+[role='tabpanel'] {
+	display: none;
+}
+
+[role='tabpanel'][tabindex='0'],
+[role='tabpanel']:target {
+	display: block;
+	scroll-margin-block: 10em; /* TODO: fix magic number */
 }

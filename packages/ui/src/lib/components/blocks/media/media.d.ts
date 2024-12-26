@@ -10,6 +10,7 @@ export type MediaProps = {
 	height: string
 	title?: string
 	caption?: string
+	style?: string
 	orientation?: 'landscape' | 'portrait'
 	loading?: 'lazy' | 'eager'
 	dimensions?: string

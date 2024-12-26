@@ -11,17 +11,20 @@
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
-	const {ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE} = constants
+	const {ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE, DEFAULT_REVEAL_STATE} =
+		constants
 
 	let {
-		id = 'reveal',
-		name = 'reveal',
+		id = 'ui-reveal',
+		name = 'ui-reveal',
 		title = 'Reveal',
 		method = 'POST', // TODO: change to GET with params
 		auto = false,
 		formaction,
+		actionPath,
+		redirect,
 		layout,
-		reveal,
+		reveal = DEFAULT_REVEAL_STATE.reveal,
 		place = 'top',
 		element = 'div',
 		position,
@@ -42,7 +45,6 @@
 	}: RevealLayoutProps = $props()
 
 	let expanded = $state(reveal)
-	let initial = $derived(expanded)
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
 	let validator: FormValidator = new FormValidator('UiStateValidationFunction')
@@ -105,7 +107,10 @@
 		},
 	}
 
-	let action = $derived(formaction)
+	let action = $derived(
+		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
+	)
+
 	function onKeyUp(e: KeyboardEvent) {
 		if (dismiss === UiEvents.outside && e.key === 'Escape') {
 			toggleReveal({state: 'collapsed', id: `button-reveal-${id}`})
@@ -145,47 +150,45 @@
 {/if}
 
 {#snippet revealForm()}
-	{#key initial}
-		<form
-			{name}
-			{method}
-			action={`?/${action}`}
-			use:enhance={() => {
-				// prevent default callback from resetting the form
-				return ({update}) => {
-					update({reset: false})
-				}
-			}}
-			class={formClasses}
-			bind:this={boundForm}
+	<form
+		{name}
+		{method}
+		action={actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+		use:enhance={() => {
+			// prevent default callback from resetting the form
+			return ({update}) => {
+				update({reset: false})
+			}
+		}}
+		class={formClasses}
+		bind:this={boundForm}
+	>
+		<input type="hidden" name="formId" value={id} oninput={handleInput} />
+		<input
+			type="hidden"
+			name={`state-${id}`}
+			value={expanded}
+			oninput={handleInput}
+		/>
+		<Expand
+			id={`button-reveal-${id}`}
+			name={`button-reveal-${id}`}
+			{title}
+			{color}
+			{variant}
+			{size}
+			controls={`${id}-reveal`}
+			{asset}
+			justify={`${justify} nowrap`}
+			initial={reveal}
+			place={placeIcon}
+			onclick={toggleReveal}
+			states={revealStates}
+			{disabled}
 		>
-			<input type="hidden" name="formId" value={id} oninput={handleInput} />
-			<input
-				type="hidden"
-				name={`state-${id}`}
-				value={expanded}
-				oninput={handleInput}
-			/>
-			<Expand
-				id={`button-reveal-${id}`}
-				name={`button-reveal-${id}`}
-				{title}
-				{color}
-				{variant}
-				{size}
-				controls={`${id}-reveal`}
-				{asset}
-				justify={`${justify} nowrap`}
-				{initial}
-				place={placeIcon}
-				onclick={toggleReveal}
-				states={revealStates}
-				{disabled}
-			>
-				<span class="ellipsis">{title}</span>
-			</Expand>
-		</form>
-	{/key}
+			<span class="ellipsis">{title}</span>
+		</Expand>
+	</form>
 	<ff-reveal id={`${id}-reveal`}>
 		{#if children}
 			{@render children()}

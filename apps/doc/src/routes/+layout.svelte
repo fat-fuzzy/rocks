@@ -1,16 +1,17 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
-	import {onMount} from 'svelte'
+	import {onMount, type Snippet} from 'svelte'
 	import '$lib/styles/css/main.css'
 
 	import {page} from '$app/stores'
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
 	import fatFuzzyStore from '$lib/stores/stores.svelte'
+	import RcScout from '$lib/ui/RcScout.svelte'
 
 	const {Header} = ui.recipes
 
 	type Props = {
+		fixed?: boolean
 		sidebar?: Snippet
 		children?: Snippet
 	}
@@ -53,8 +54,8 @@
 
 <div class={themeClass}>
 	<Header
-		id="nav"
-		name="nav"
+		id="main-nav"
+		name="main-nav"
 		label=""
 		path={$page.url.pathname}
 		actionPath="/"
@@ -67,13 +68,11 @@
 		breakpoint="sm"
 		app={fatFuzzyStore.app}
 	/>
-	<main id="main">
-		{#if children}
-			{@render children()}
-		{:else}
-			<p>Nothing to see here</p>
-		{/if}
-	</main>
+	{#if children}
+		{@render children()}
+	{:else}
+		<p>Nothing to see here</p>
+	{/if}
 
 	<footer class={footerClass}>
 		<details
@@ -81,14 +80,16 @@
 			open={footerOpen}
 		>
 			<summary class="card:2xs">About</summary>
-			<p>
-				Made with 🩷 by <a
-					href="https://github.com/patiboh"
-					target="_blank"
-					rel="noopener">@patiboh</a
-				>
-			</p>
-			<div class="rc-scout"></div>
+			<div class="l:stack:2xl">
+				<p>
+					Made with 🩷 by <a
+						href="https://github.com/patiboh"
+						target="_blank"
+						rel="noopener">@patiboh</a
+					>
+				</p>
+				<RcScout />
+			</div>
 		</details>
 	</footer>
 </div>

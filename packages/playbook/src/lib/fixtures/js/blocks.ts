@@ -35,8 +35,8 @@ export default {
 			},
 		},
 	},
-	InputCheck: {label: 'An optional choice'},
-	InputRadio: {label: 'A mandatory choice'},
+	InputCheck: {label: 'A checkbox choice'},
+	InputRadio: {label: 'A radio choice'},
 	InputRange: {label: 'A range of ordered choices'},
 	Feedback: {
 		status: [

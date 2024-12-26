@@ -1,12 +1,50 @@
 import {error, redirect} from '@sveltejs/kit'
+import ui from '@fat-fuzzy/ui'
 import assets from '$data/ui'
 import pages from '$data/pages'
+import {buildNav} from '$data/nav'
 
 const page = 'ui'
+let markdowns = assets.markdowns
+
+let nav = buildNav('ui')
+
+// TODO: move to utils / clean
+function sortAsc(a, b) {
+	return a < b ? -1 : b < a ? 1 : 0
+}
+
+const tokenNames = Object.keys(ui.tokens).sort(sortAsc)
+const blockNames = Object.keys(ui.blocks).sort(sortAsc)
+const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
+const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
+nav.items[0].items = nav.items[0].items.map((item) => {
+	if (item.slug === 'tokens') {
+		item.items = tokenNames.map((c) => ({
+			slug: c,
+			title: c,
+		}))
+	} else if (item.slug === 'blocks') {
+		item.items = blockNames.map((c) => ({
+			slug: c,
+			title: c,
+		}))
+	} else if (item.slug === 'layouts') {
+		item.items = layoutNames.map((c) => ({
+			slug: c,
+			title: c,
+		}))
+	} else if (item.slug === 'recipes') {
+		item.items = recipeNames.map((c) => ({
+			slug: c,
+			title: c,
+		}))
+	}
+	return item
+})
 
 export const load = async ({locals, params}) => {
 	let content = null
-	let markdowns = assets.markdowns
 
 	let component = params.component
 	let category = params.category
@@ -45,13 +83,13 @@ export const load = async ({locals, params}) => {
 			throw error(404, {message: 'Not found'})
 		}
 	}
+	nav.reveal = locals.sidebar.reveal ?? nav.reveal
 
 	return {
-		sidebar: locals.sidebar,
+		nav,
 		styles: locals.dsStyles,
 		context: locals.dsContext,
 		ui: locals.dsState,
-		currentTabs: locals.currentTabs,
 		markdowns,
 		content,
 	}

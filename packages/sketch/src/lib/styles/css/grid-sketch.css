@@ -15,7 +15,7 @@
 		'scene'
 		'context'
 		'debug';
-	padding: 0 var(--outline-offset-nav);
+	padding: 0 var(--outline-offset-sm);
 }
 
 .l\:grid\:sketch > .scene {

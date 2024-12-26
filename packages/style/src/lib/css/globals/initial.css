@@ -51,12 +51,32 @@ a:hover {
 	text-decoration: underline;
 }
 
-*:not([disabled]):focus {
-	--chroma: var(--chroma-focus);
-	--lightness: var(--lightness-focus);
-	--chroma-contrast: var(--chroma-focus);
-	--lightness-contrast: var(--lightness-contrast-focus);
-	outline-offset: var(--outline-offset-base);
+:where(audio, video:has[controls], object[form], [contenteditable]):not(
+		[disabled]
+	):focus {
+	--hue: var(--color-theme-primary);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	outline-offset: var(--ui-size-sm);
+	outline: var(--outline-width) dotted var(--accent); /* TODO: improve color */
+}
+
+:where(
+		audio,
+		video:has[controls],
+		object[form],
+		[contenteditable],
+		[role='tabpanel'],
+		[tabindex]
+	):not([disabled]):focus-visible {
+	--hue: var(--color-theme-primary);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	outline-offset: var(--ui-size-sm);
+	outline: var(--outline-width) dotted var(--accent); /* TODO: improve color */
+}
+
+:where(a, button, input, select, textarea, details):not([disabled]):focus {
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	outline-offset: var(--outline-offset-xs);
 	outline: var(--outline-width) solid var(--accent); /* TODO: improve color */
 }
 

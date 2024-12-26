@@ -1,20 +1,8 @@
-import type {
-	Meta,
-	Markdown,
-	Markdowns,
-	PlaybookProps,
-	StyleProps,
-} from './types'
+import type {Meta, Markdown, Markdowns, PlaybookProps, StyleProps} from '$types'
+import constants from '$lib/types/constants'
 import {getFamily} from '$lib/props/props-style'
 
-const DEFAULT_META: Meta = {
-	title: '',
-	slug: '',
-	status: '',
-	props_state: [],
-	content_types: [],
-	context: ['app.settings'],
-}
+const {DEFAULT_META, TABS} = constants
 
 function getCategoryMarkdowns(category: string, markdowns: Markdowns) {
 	switch (category) {
@@ -94,4 +82,19 @@ function getElementProps(meta: Meta): PlaybookProps {
 	}
 	return props
 }
-export {getCategoryMarkdowns, getElementMeta, getElementProps}
+
+function getDocTab() {
+	return TABS[0]
+}
+
+function getPlaybookTab() {
+	return TABS[1]
+}
+
+export {
+	getCategoryMarkdowns,
+	getElementMeta,
+	getElementProps,
+	getPlaybookTab,
+	getDocTab,
+}

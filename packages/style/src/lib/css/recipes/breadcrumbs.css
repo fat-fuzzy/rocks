@@ -1,0 +1,14 @@
+.breadcrumbs h1 {
+	margin-block-end: var(--size-base-3xs);
+}
+
+.breadcrumbs > ul > li {
+	padding-inline: var(--outline-offset-lg);
+}
+
+.breadcrumbs > ul:first-child > li + li::before {
+	content: '➜';
+	padding: 0;
+	color: var(--ink);
+	font-weight: var(--font-weight-ui);
+}

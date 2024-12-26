@@ -8,12 +8,21 @@
 		name?: string
 		SpecifiedElement: any // TODO: fix types
 		props: any
+		formaction?: string
 		actionPath?: string
 		redirect?: string
 	}
 
-	let {id, title, name, SpecifiedElement, props, actionPath, redirect}: Props =
-		$props()
+	let {
+		id,
+		title,
+		name,
+		SpecifiedElement,
+		props,
+		formaction,
+		actionPath,
+		redirect,
+	}: Props = $props()
 
 	let page = ''
 
@@ -34,6 +43,7 @@
 	{...layoutStyles}
 	{...elementStyles}
 	{...props}
+	{formaction}
 	{actionPath}
 	{redirect}
 />

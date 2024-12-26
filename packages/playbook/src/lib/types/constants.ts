@@ -1,5 +1,4 @@
-import type {Settings, Tab} from '$types'
-import type {StyleTree} from '$lib/api/styles.types'
+import type {Settings, StyleTree, Meta} from '$types'
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
@@ -66,6 +65,37 @@ const DEFAULT_STYLES: StyleTree = {
 	},
 }
 
+const DEFAULT_META: Meta = {
+	title: '',
+	slug: '',
+	status: '',
+	props_state: [],
+	content_types: [],
+	context: ['app.settings'],
+}
+
+const TABS = [
+	{
+		slug: 'doc',
+		title: 'Doc',
+		initial: true,
+		variant: 'outline',
+		color: 'primary',
+		size: 'md',
+		shape: 'round',
+		asset: 'doc',
+	},
+	{
+		slug: 'playbook',
+		title: 'Playbook',
+		initial: false,
+		variant: 'outline',
+		color: 'accent',
+		size: 'md',
+		shape: 'round',
+		asset: 'playbook',
+	},
+]
 export default {
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
@@ -74,4 +104,6 @@ export default {
 	DEFAULT_DS_STATE,
 	TRANSITION_REVEAL,
 	NUMBER_TO_SIZE,
+	DEFAULT_META,
+	TABS,
 }

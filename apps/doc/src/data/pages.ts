@@ -3,13 +3,13 @@ import assetsUtils from './assets'
 const pathPrefix = '/src/assets/pages/'
 
 const pages: {[page: string]: any} = {
-	home: await import.meta.glob('/src/assets/pages/home.md'),
-	doc: await import.meta.glob('/src/assets/pages/doc.md'),
-	play: await import.meta.glob('/src/assets/pages/play.md'),
-	ui: await import.meta.glob('/src/assets/pages/ui.md'),
-	blog: await import.meta.glob('/src/assets/pages/blog.md'),
-	learning: await import.meta.glob('/src/assets/pages/learning.md'),
-	projects: await import.meta.glob('/src/assets/pages/projects.md'),
+	home: import.meta.glob('/src/assets/pages/home.md'),
+	doc: import.meta.glob('/src/assets/pages/doc.md'),
+	play: import.meta.glob('/src/assets/pages/play.md'),
+	ui: import.meta.glob('/src/assets/pages/ui.md'),
+	blog: import.meta.glob('/src/assets/pages/blog.md'),
+	learning: import.meta.glob('/src/assets/pages/learning.md'),
+	projects: import.meta.glob('/src/assets/pages/projects.md'),
 }
 
 async function fetchMarkdowns(page: string): Promise<{[key: string]: any}> {

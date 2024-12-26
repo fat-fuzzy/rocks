@@ -30,12 +30,30 @@
 	flex-wrap: wrap-reverse;
 }
 
-[class*='l:flex'].size\:xs,
 [class*='l:flex'].size\:2xs {
-	--gap: var(--ui-size-sm);
+	--gap: var(--size-base-2xs);
 }
 
-[class*='l:flex'].size\:xl,
+[class*='l:flex'].size\:xs {
+	--gap: var(--size-base-xs);
+}
+
+[class*='l:flex'].size\:sm {
+	--gap: var(--size-base-sm);
+}
+
+[class*='l:flex'].size\:md {
+	--gap: var(--size-base-md);
+}
+
+[class*='l:flex'].size\:lg {
+	--gap: var(--size-base-lg);
+}
+
+[class*='l:flex'].size\:xl {
+	--gap: var(--size-base-xl);
+}
+
 [class*='l:flex'].size\:2xl {
-	--gap: var(--ui-size-lg);
+	--gap: var(--size-base-2xl);
 }

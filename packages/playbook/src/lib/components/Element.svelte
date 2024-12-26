@@ -1,9 +1,11 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import {getContext} from 'svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
 	import type {StylesApi} from '$lib/api/styles.api'
-	import type {Meta} from '$lib/props/types'
+	import type {Meta} from '$types'
+	import {getContext} from 'svelte'
+	import ui from '@fat-fuzzy/ui'
+	import PlaybookStore from '$lib/api/store.svelte'
+	import {getPlaybookTab, getDocTab} from '$lib/props'
 
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
@@ -12,17 +14,19 @@
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
+	const {PageTabs} = ui.drafts
+
 	type Props = {
 		title: string
 		depth?: number
 		isPage?: boolean
 		path?: string
 		SpecifiedElement: any // TODO: fix types
+		formaction?: string
 		actionPath?: string
 		redirect?: string
 		category?: string
 		color?: string
-		tab?: string
 		meta: Meta
 		children?: Snippet
 	}
@@ -33,10 +37,10 @@
 		depth = 0,
 		path = '',
 		SpecifiedElement,
+		formaction,
 		actionPath,
 		redirect,
 		category = '',
-		tab,
 		meta,
 		children,
 	}: Props = $props()
@@ -103,6 +107,21 @@
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
 	)
+
+	let tabs = [
+		{
+			...getDocTab(),
+			content: docContent,
+			labelledBy: title,
+		},
+		{
+			...getPlaybookTab(),
+			content: playbookContent,
+			labelledBy: title,
+		},
+	]
+
+	let description = $derived(`${title} | Doc`)
 </script>
 
 {#snippet renderElement()}
@@ -114,6 +133,7 @@
 			{SpecifiedElement}
 			{stylesApi}
 			props={currentProps}
+			{formaction}
 			{actionPath}
 			{redirect}
 			{...settings}
@@ -122,35 +142,44 @@
 	</div>
 {/snippet}
 
-{#if isPage}
-	<div class="l:sidebar:md">
-		{#if tab === 'playbook'}
-			<section class={sectionClasses}>
-				{@render renderElement()}
-			</section>
-			<aside class="l:side l:stack:md">
-				{#key title}
-					<PropsDemo
-						{path}
-						{actionPath}
-						{redirect}
-						color="primary"
-						{meta}
-						categories={[category]}
-					/>
-				{/key}
-			</aside>
-		{:else if tab === 'doc'}
-			<section class="l:main">
-				{#if children}
-					{@render children()}
-				{/if}
-			</section>
-			<aside class="l:side l:stack:md">
-				<PropsDoc {meta} />
-			</aside>
-		{/if}
+{#snippet playbookContent()}
+	<div class="l:sidebar:md media end">
+		<aside class="l:side l:stack:md">
+			{#key title}
+				<PropsDemo
+					{path}
+					{actionPath}
+					{redirect}
+					{meta}
+					categories={[category]}
+				/>
+			{/key}
+		</aside>
+		<div class={sectionClasses}>
+			{@render renderElement()}
+		</div>
 	</div>
+{/snippet}
+
+{#snippet docContent()}
+	<div class="l:sidebar:md">
+		<div class="l:main">
+			{#if children}
+				{@render children()}
+			{/if}
+		</div>
+		<aside class="l:side l:stack:md">
+			<PropsDoc {meta} />
+		</aside>
+	</div>
+{/snippet}
+
+{#if isPage}
+	<PageTabs pageName="UI" {title} {description} {path} {tabs} size="lg">
+		{#snippet header()}
+			<h1 id={title} class="maki:block:md">{title}</h1>
+		{/snippet}
+	</PageTabs>
 {:else}
 	<article
 		id={`card-${title}`}

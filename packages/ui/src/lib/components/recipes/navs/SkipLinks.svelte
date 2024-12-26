@@ -6,4 +6,8 @@
 	let {text = 'Skip to main', href = '#main'}: Props = $props()
 </script>
 
-<a class="skip-link sr-only" {href}>{text}</a>
+<nav id="a11y-links" class="sr-only">
+	<ul>
+		<li><a class="skip-link" {href}>{text}</a></li>
+	</ul>
+</nav>

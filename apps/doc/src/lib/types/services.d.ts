@@ -1,7 +1,6 @@
 export type UiStateGetInput = {
 	cookies: Cookies
 	key: string
-	options: {state?: any}
 }
 
 export type UiStateSetInput = {

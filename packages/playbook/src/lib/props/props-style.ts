@@ -1,8 +1,9 @@
-import {StyleInputGroup, StyleFamily} from '$lib/api/styles.types'
+import StyleFamily from '$lib/api/styles.family'
+import StyleInputGroup from '$lib/api/styles.input-group'
 
 const brightness = {
 	initial: 'day',
-	input: 'radio',
+	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
 	variant: 'bare',
@@ -19,7 +20,7 @@ const brightness = {
 
 const contrast = {
 	initial: 'blend',
-	input: 'radio',
+	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
 	variant: 'bare',
@@ -481,7 +482,7 @@ const main = {
 }
 
 const settingsFamily = {
-	layout: 'flex',
+	layout: 'switcher',
 	size: 'xs',
 	justify: 'end',
 	props: ['brightness', 'contrast'],

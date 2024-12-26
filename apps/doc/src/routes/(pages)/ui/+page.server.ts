@@ -6,13 +6,9 @@ import {forms} from '@fat-fuzzy/playbook'
 import uiActions from '$lib/forms/actions/ui-actions'
 import settingsActions from '$lib/forms/actions/settings-actions'
 
-export const prerender = false
-export const ssr = true
-
-const {DsTabsUpdate, DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
+const {DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
 const {SignUpUser} = ui.forms
-const {TABS, DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} =
-	ui.constants
+const {DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = ui.constants
 
 export const actions = {
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
@@ -27,7 +23,7 @@ export const actions = {
 
 	toggleContext: async ({request, url, cookies}) => {
 		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-ui-context-reveal')
+		const serialized = cookies.get('ff-ui-context-reveal')
 		let currentState = DEFAULT_REVEAL_STATE
 		if (serialized) {
 			currentState = JSON.parse(serialized)
@@ -36,7 +32,7 @@ export const actions = {
 		if (!settingsReveal.reveal(data)) {
 			return fail(400, {settingsRevealError: true})
 		}
-		cookies.set('fat-fuzzy-ui-context-reveal', settingsReveal.toString(), {
+		cookies.set('ff-ui-context-reveal', settingsReveal.toString(), {
 			path: '/',
 		})
 		if (url.searchParams.has('redirectTo')) {
@@ -48,7 +44,7 @@ export const actions = {
 
 	updateState: async ({request, url, cookies}) => {
 		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-ui-state')
+		const serialized = cookies.get('ff-ui-state')
 		let currentState = DEFAULT_DS_STATE
 		if (serialized) {
 			currentState = JSON.parse(serialized)
@@ -57,7 +53,7 @@ export const actions = {
 		if (!state.enter(data)) {
 			return fail(400, {stylesError: true})
 		}
-		cookies.set('fat-fuzzy-ui-state', state.toString(), {path: '/'})
+		cookies.set('ff-ui-state', state.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
 			redirect(303, redirectTo)
@@ -68,7 +64,7 @@ export const actions = {
 
 	updateStyles: async ({request, url, cookies}) => {
 		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-ui-styles')
+		const serialized = cookies.get('ff-ui-styles')
 		let currentStyles = DEFAULT_STYLES
 		if (serialized) {
 			currentStyles = JSON.parse(serialized)
@@ -77,27 +73,7 @@ export const actions = {
 		if (!styles.enter(data)) {
 			return fail(400, {stylesError: true})
 		}
-		cookies.set('fat-fuzzy-ui-styles', styles.toString(), {path: '/'})
-		if (url.searchParams.has('redirectTo')) {
-			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
-			redirect(303, redirectTo)
-		}
-
-		return {success: true}
-	},
-
-	updateTab: async ({request, url, cookies}) => {
-		const data = await request.formData()
-		const serialized = cookies.get('fat-fuzzy-ui-tabs')
-		let currentTabs = {element: TABS[0], category: TABS[0]}
-		if (serialized) {
-			currentTabs = JSON.parse(serialized)
-		}
-		const tabs = new DsTabsUpdate(currentTabs)
-		if (!tabs.update(data)) {
-			return fail(400, {tabsError: true})
-		}
-		cookies.set('fat-fuzzy-ui-tabs', tabs.toString(), {path: '/'})
+		cookies.set('ff-ui-styles', styles.toString(), {path: '/'})
 		if (url.searchParams.has('redirectTo')) {
 			const redirectTo = url.searchParams.get('redirectTo') ?? url.pathname
 			redirect(303, redirectTo)
@@ -121,9 +97,8 @@ export const actions = {
 	},
 
 	restart: async ({cookies, url}) => {
-		cookies.delete('fat-fuzzy-ui-tabs', {path: '/'})
-		cookies.delete('fat-fuzzy-ui-styles', {path: '/'})
-		cookies.delete('fat-fuzzy-ui-state', {path: '/'})
-		cookies.delete('fat-fuzzy-ui-context-reveal', {path: '/'})
+		cookies.delete('ff-ui-styles', {path: '/'})
+		cookies.delete('ff-ui-state', {path: '/'})
+		cookies.delete('ff-ui-context-reveal', {path: '/'})
 	},
 } satisfies Actions

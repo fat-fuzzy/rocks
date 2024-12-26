@@ -69,25 +69,6 @@ const APP_LINKS: {[key: string]: string}[] = [
 	{slug: 'about', title: 'About', layout: 'center'},
 ]
 
-const TABS_CONTENT = [
-	{
-		id: 'context.menu.toggle.playbook',
-		title: 'Playbook',
-		size: 'lg',
-		color: 'accent',
-		asset: 'playbook',
-		value: 'playbook',
-	},
-	{
-		id: 'context.menu.toggle.doc',
-		title: 'Doc',
-		size: 'lg',
-		color: 'primary',
-		asset: 'doc',
-		value: 'doc',
-	},
-]
-
 export default {
 	UI_STATE,
 	DEFAULT_REVEAL_STATE,
@@ -99,5 +80,4 @@ export default {
 	ALIGN_ANIMATION_DIRECTION,
 	NUMBER_TO_SIZE,
 	APP_LINKS,
-	TABS_CONTENT,
 }

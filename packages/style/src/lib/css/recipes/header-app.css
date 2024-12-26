@@ -8,8 +8,8 @@
 	background-color: var(--shade);
 	justify-content: var(--justify, center);
 	padding-inline: var(--ui-size-sm);
-	padding-block: calc(var(--ui-size-sm) + var(--outline-offset-nav) / 2)
-		calc(var(--ui-size-sm) - var(--outline-offset-nav) / 2);
+	padding-block: calc(var(--ui-size-sm) + var(--outline-offset-sm) / 2)
+		calc(var(--ui-size-sm) - var(--outline-offset-sm) / 2);
 
 	.expanded > ff-reveal {
 		--y-axis: var(--ui-header-height);
@@ -36,14 +36,14 @@
 		background-color: inherit;
 		border-inline-start: var(--border-width-xl) solid var(--shade);
 		inline-size: 100%;
-		padding: 0 var(--outline-offset-nav);
+		padding: 0 var(--outline-offset-sm);
 
 		a {
 			display: flex;
 			block-size: calc(100% - 2 * var(--border-width-xl));
 			inline-size: calc(100% - var(--border-width-xl));
 			text-transform: uppercase;
-			margin-inline: var(--outline-offset-nav);
+			margin-inline: var(--outline-offset-sm);
 			padding: var(--ui-size-sm);
 		}
 
@@ -67,8 +67,6 @@
 
 .header-app > [class*='l:side'] {
 	flex-basis: content; /* property as content of flex container */
-	display: flex;
-	align-items: flex-end;
 	flex-grow: 0;
 
 	.expanded > ff-reveal {

@@ -1,6 +1,7 @@
 /* Compositions */
 
 @import './nav.css'; /* Use for navigation (navigation = links = hrefs = <a>) */
+@import './breadcrumbs.css'; /* Use for breadcrumbs navigation */
 @import './menu.css'; /* Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements */
 @import './tabs.css'; /* Use for tabs */
 @import './context.css'; /* Use for header context box */

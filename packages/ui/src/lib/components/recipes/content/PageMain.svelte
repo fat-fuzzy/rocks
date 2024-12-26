@@ -1,39 +1,31 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
+	import type {PageProps} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
 
-	type Props = {
-		title: string
-		description: string
-		pageName?: string
-		size?: string
-		header?: Snippet
-		layout?: string
-		justify?: string
-		children: Snippet
-	}
-
 	let {
+		id = 'main',
 		title = 'PageMain',
 		description = `Basic page layout`,
 		pageName,
 		size,
-		layout='sidebar',
+		layout = 'sidebar',
 		justify,
 		header,
 		children,
-	}: Props = $props()
+	}: PageProps = $props()
 
 	let currentPage = $state(pageName ?? title)
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass= $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let headerClass = $derived(`${layoutClass} ${justifyClass} align:baseline maki:block:lg`)
+	let layoutClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
+	let headerClass = $derived(
+		`${layoutClass} ${justifyClass} align:baseline maki:block:lg`,
+	)
 </script>
 
 <Head pageName={currentPage} {title} {description} />
 
-<section>
-	<header id="content" class={headerClass}>
+<main {id}>
+	<header class={headerClass}>
 		{#if header}
 			{@render header()}
 		{:else}
@@ -44,4 +36,4 @@
 	{#if children}
 		{@render children()}
 	{/if}
-</section>
+</main>

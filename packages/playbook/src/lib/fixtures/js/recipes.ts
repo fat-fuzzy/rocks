@@ -38,7 +38,7 @@ export default {
 		{id: 'check-2', label: 'Checkbox 2'},
 		{id: 'check-3', label: 'Checkbox 3'},
 	],
-	LinkList: {
+	LinkTree: {
 		items: links,
 	},
 	Nav: {

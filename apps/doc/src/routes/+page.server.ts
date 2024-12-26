@@ -87,7 +87,7 @@ export const actions = {
 		settingsActions.handleUpdateAppSettings({event}),
 	reset: async ({cookies}) => {
 		cookies.getAll().forEach((cookie) => {
-			if (cookie.name.startsWith('fat-fuzzy-')) {
+			if (cookie.name.startsWith('ff-')) {
 				cookies.delete(cookie.name, {path: '/'})
 			}
 		})

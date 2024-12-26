@@ -7,7 +7,7 @@
 	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
-		id = 'settings',
+		id = 'ui-settings',
 		breakpoint = 'xs',
 		background,
 		layout,

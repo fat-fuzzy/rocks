@@ -1,5 +1,6 @@
 // Reexport your entry components here
 
+/// <reference path="./types/index.d.ts" />
 /**
  * Styles Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
@@ -23,7 +24,6 @@ import * as props from '$lib/props'
 import DsStylesUpdate from '$lib/forms/ds-styles-update'
 import DsContextReveal from '$lib/forms/ds-context-reveal'
 import DsStateUpdate from '$lib/forms/ds-state-update'
-import DsTabsUpdate from '$lib/forms/ds-tabs-update'
 
 /**
  * Stores
@@ -57,7 +57,6 @@ const forms = {
 	DsContextReveal,
 	DsStateUpdate,
 	DsStylesUpdate,
-	DsTabsUpdate,
 }
 
 export {api, forms}

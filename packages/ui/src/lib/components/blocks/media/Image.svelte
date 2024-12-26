@@ -11,6 +11,7 @@
 		height,
 		sources,
 		sizes,
+		style,
 	}: MediaProps = $props()
 
 	let srcset = $derived(
@@ -30,4 +31,5 @@
 	{loading}
 	{width}
 	{height}
+	{style}
 />

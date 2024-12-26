@@ -3,8 +3,17 @@
 	--chroma-scrollbar: var(--chroma-base);
 	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
 	--thumb: var(--ink);
-	scroll-snap-type: y proximity;
-	overflow-y: auto;
+	overflow: hidden auto;
+	block-size: 100%;
+	scrollbar-color: var(--thumb) var(--track);
+}
+
+.scroll\:x {
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--ink);
+	overflow: auto hidden;
 	block-size: 100%;
 	scrollbar-color: var(--thumb) var(--track);
 }
@@ -19,4 +28,27 @@
 	scroll-snap-align: center;
 	scroll-snap-stop: normal;
 	scroll-padding-block: var(--ui-size);
+}
+
+.scroll\:y.snap {
+	scroll-snap-type: y mandatory;
+}
+
+.scroll\:x.snap {
+	scroll-snap-type: x mandatory;
+}
+
+.noscrollbar {
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	[class*='scroll:'] {
+		scroll-behavior: smooth;
+	}
 }

@@ -41,7 +41,7 @@ textarea {
 	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
 	--padding-inline: var(--ui-size);
 	border: 1px solid var(--accent);
-	border-radius: var(--border-radius-md);
+	border-radius: var(--border-radius-base);
 	color: var(--ink);
 	accent-color: var(--accent);
 	border-color: var(--accent);

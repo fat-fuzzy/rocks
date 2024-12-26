@@ -1,9 +1,8 @@
 .menu\:settings {
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
-	padding-inline-start: var(--ui-size-sm);
-	padding-block: calc(var(--ui-size-sm) - var(--border-width-xl));
 	justify-content: var(--justify, flex-end);
+	padding-block: var(--outline-offset-sm);
 }
 
 .menu\:settings + menu:empty {
@@ -36,9 +35,4 @@
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
 	justify-content: var(--justify, flex-end);
-}
-
-.links\:settings li {
-	padding-inline: var(--ui-size-sm);
-	padding-block: calc(var(--ui-size-sm) - var(--border-width-xl));
 }

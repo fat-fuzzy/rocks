@@ -26,7 +26,6 @@ nav > ul ul li:has(ul) {
 }
 
 nav li a {
-	--border-radius-base: 0;
 	font-weight: var(--font-weight-link);
 	font-size: var(--font-size-ui);
 	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
@@ -34,15 +33,16 @@ nav li a {
 	text-decoration: none;
 	margin-inline: var(--size-base-2xs);
 	min-width: 1em;
-	margin: var(--outline-offset-nav);
+	margin: var(--outline-offset-sm);
 	inline-size: 100%;
 	max-inline-size: 100%;
+	border-radius: var(--border-radius-null);
 }
 
 .reveal-nav {
 	container-type: inline-size;
 	inline-size: 100%;
-	padding-block-start: var(--outline-offset-reveal);
+	padding-block-start: var(--outline-offset-lg);
 }
 
 nav a:hover {
@@ -51,7 +51,7 @@ nav a:hover {
 }
 
 nav a:focus {
-	outline-offset: var(--outline-offset-nav);
+	outline-offset: var(--outline-offset-sm);
 }
 
 nav li a:visited {
@@ -67,7 +67,7 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
-	padding-inline: calc(2 * var(--ui-size-sm)) var(--outline-offset-nav);
+	padding-inline: calc(2 * var(--ui-size-sm)) var(--outline-offset-sm);
 	margin-block: var(--ui-size-sm);
 }
 
@@ -98,6 +98,7 @@ nav li[aria-current='page'] {
 		--chroma-contrast: var(--chroma-contrast-base);
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 		color: var(--ink);
 		background-color: var(--shade);
 	}
@@ -144,7 +145,7 @@ a[class*='card']:hover > *:not(.icon) {
 		&.collapsed {
 			--sidebar-width: calc(
 				var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
-					var(--outline-offset-reveal) * 2
+					var(--outline-offset-lg) * 2
 			);
 		}
 

@@ -205,10 +205,10 @@
   --layout-z-index-layer: var(--layout-z-index-1);
   --layout-z-index-reveal: var(--layout-z-index-3);
   --layout-z-index-sticky: var(--layout-z-index-2);
-  --outline-offset-base: 1.5px;
-  --outline-offset-nav: 1.75px;
-  --outline-offset-reveal: 3px;
-  --outline-offset-settings: 2px;
+  --outline-offset-lg: 3px;
+  --outline-offset-md: 2px;
+  --outline-offset-sm: 1.75px;
+  --outline-offset-xs: 1.5px;
   --outline-width: 1px;
   --scale-base-00: 1rem;
   --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
