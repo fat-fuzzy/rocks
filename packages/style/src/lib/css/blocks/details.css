@@ -1,5 +1,5 @@
 details {
-	padding-inline: var(--outline-offset-base);
+	padding-inline: var(--outline-offset-xs);
 }
 
 p + details {

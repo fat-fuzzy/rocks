@@ -15,6 +15,7 @@
 		sources,
 		media,
 		sizes,
+		style,
 	}: PictureProps = $props()
 
 	let frameClass = $derived(
@@ -59,5 +60,6 @@
 		{sources}
 		{sizes}
 		{loading}
+		{style}
 	/>
 </picture>

@@ -1,9 +1,11 @@
 <script lang="ts">
-	import type {BreadcrumbProps} from '$types'
+	import type {BreadcrumbsProps} from '$types'
+	import styleHelper from '$lib/utils/styles.js'
+
 	let {
 		id,
 		title,
-		layout = 'switcher',
+		layout = 'flex',
 		size,
 		level,
 		color,
@@ -11,7 +13,7 @@
 		container,
 		path,
 		breadcrumbTabs,
-	}: BreadcrumbProps = $props()
+	}: BreadcrumbsProps = $props()
 
 	let items: {slug: string; title: string; path: string}[] = $derived.by(() => {
 		let links: string[] = path.split('/').filter((link: string) => link !== '')
@@ -30,25 +32,31 @@
 			return {slug: link, title: linkTitle, path: linkPath}
 		})
 	})
-	let backgroundClass = background ? `bg:${background}` : ''
-	let colorClass = color ? `color:${color}` : ''
-	let navClasses = `breadcrumb w:full l:flex justify:between ${colorClass} ${container}:${size} ${backgroundClass}`
+
+	let navClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			size,
+			justify: 'between',
+			layout,
+			background,
+			container,
+		}),
+	)
 </script>
 
-<nav {id} class={navClasses}>
-	<ul {id} class={`l:${layout}:${size} align:center unstyled`} data-testid={id}>
+<nav {id} class={`breadcrumbs w:full ${navClasses}`}>
+	<ul {id} class={`l:flex size:${size} align:center unstyled`} data-testid={id}>
 		{#each items as item, i}
+			{@const font = items.length - 1 ? '' : 'font:sm'}
 			<li
 				aria-current={path === item.slug ? 'page' : undefined}
-				class="l:flex nowrap align:center"
+				class={`l:flex nowrap align:center`}
 			>
-				{#if i > 0}
-					<ff-icon role="presentation">➜</ff-icon>
-				{/if}
 				<a
 					data-sveltekit-preload-data
 					href={item.path}
-					class="l:flex align:center card:2xs"
+					class={`l:flex card:2xs align:center ${font}`}
 				>
 					{#if i === items.length - 1}
 						<svelte:element

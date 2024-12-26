@@ -33,7 +33,7 @@ nav li a {
 	text-decoration: none;
 	margin-inline: var(--size-base-2xs);
 	min-width: 1em;
-	margin: var(--outline-offset-nav);
+	margin: var(--outline-offset-sm);
 	inline-size: 100%;
 	max-inline-size: 100%;
 	border-radius: var(--border-radius-null);
@@ -42,7 +42,7 @@ nav li a {
 .reveal-nav {
 	container-type: inline-size;
 	inline-size: 100%;
-	padding-block-start: var(--outline-offset-reveal);
+	padding-block-start: var(--outline-offset-lg);
 }
 
 nav a:hover {
@@ -51,7 +51,7 @@ nav a:hover {
 }
 
 nav a:focus {
-	outline-offset: var(--outline-offset-nav);
+	outline-offset: var(--outline-offset-sm);
 }
 
 nav li a:visited {
@@ -67,7 +67,7 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
-	padding-inline: calc(2 * var(--ui-size-sm)) var(--outline-offset-nav);
+	padding-inline: calc(2 * var(--ui-size-sm)) var(--outline-offset-sm);
 	margin-block: var(--ui-size-sm);
 }
 
@@ -145,7 +145,7 @@ a[class*='card']:hover > *:not(.icon) {
 		&.collapsed {
 			--sidebar-width: calc(
 				var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
-					var(--outline-offset-reveal) * 2
+					var(--outline-offset-lg) * 2
 			);
 		}
 

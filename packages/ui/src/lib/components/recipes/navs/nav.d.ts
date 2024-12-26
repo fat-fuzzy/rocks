@@ -19,7 +19,7 @@ export type NavProps = UiBlockProps & {
 	items: any[]
 }
 
-export type BreadcrumbProps = UiBlockProps & {
+export type BreadcrumbsProps = UiBlockProps & {
 	level: number
 	id: string
 	title?: string

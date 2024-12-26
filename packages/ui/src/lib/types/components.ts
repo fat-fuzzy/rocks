@@ -61,7 +61,7 @@ export interface Drafts {
 	HeaderSettings: typeof import('$lib/components/recipes/header/HeaderSettings.svelte').default
 	HeaderNav: typeof import('$lib/components/recipes/header/HeaderNav.svelte').default
 	Settings: typeof import('$lib/components/recipes/header/Settings.svelte').default
-	Breadcrumb: typeof import('$lib/components/recipes/navs/Breadcrumb.svelte').default
+	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
 	SettingsMenu: typeof import('$lib/components/recipes/menus/SettingsMenu.svelte').default
 	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default
 	PageTabs: typeof import('$lib/components/recipes/content/PageTabs.svelte').default
