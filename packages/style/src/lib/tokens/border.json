@@ -30,16 +30,16 @@
 	"outline": {
 		"$type": "dimension",
 		"offset": {
-			"base": {
+			"xs": {
 				"$value": "1.5px"
 			},
-			"nav": {
+			"sm": {
 				"$value": "1.75px"
 			},
-			"settings": {
+			"md": {
 				"$value": "2px"
 			},
-			"reveal": {
+			"lg": {
 				"$value": "3px"
 			}
 		},

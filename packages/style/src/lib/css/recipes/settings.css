@@ -2,7 +2,7 @@
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
 	justify-content: var(--justify, flex-end);
-	padding-block: var(--outline-offset-nav);
+	padding-block: var(--outline-offset-sm);
 }
 
 .menu\:settings + menu:empty {
