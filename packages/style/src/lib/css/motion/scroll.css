@@ -30,7 +30,11 @@
 	scroll-padding-block: var(--ui-size);
 }
 
-[class*='scroll:'].snap {
+.scroll\:y.snap {
+	scroll-snap-type: y mandatory;
+}
+
+.scroll\:x.snap {
 	scroll-snap-type: x mandatory;
 }
 

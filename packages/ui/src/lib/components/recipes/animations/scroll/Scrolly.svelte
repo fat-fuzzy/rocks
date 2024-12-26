@@ -74,7 +74,7 @@
 {/if}
 
 <nav data-testid="scrolly" class={`scroll:container ${scrollContainerClasses}`}>
-	<ul bind:this={scrollArea} class="scroll:y w:full unstyled">
+	<ul bind:this={scrollArea} class="scroll:y snap w:full unstyled">
 		{#key observer}
 			{#each items as item, index (index)}
 				<ScrollyItem {observer} {item} {animations} level={nestedLevel} />
