@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type {PageTabsProps} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
-	import Breadcrumb from '$lib/components/recipes/navs/Breadcrumb.svelte'
+	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 	import styleHelper from '$lib/utils/styles.js'
-	import {onMount} from 'svelte'
 
 	let {
 		id = 'main',
@@ -78,7 +77,7 @@
 
 <main {id}>
 	<header class={headerClass}>
-		<Breadcrumb {id} {title} {path} level={1} {breadcrumbTabs} size="2xs" />
+		<Breadcrumbs {id} {title} {path} level={1} {breadcrumbTabs} size="2xs" />
 	</header>
 
 	<section class="tab-content">

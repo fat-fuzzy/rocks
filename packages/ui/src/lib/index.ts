@@ -50,7 +50,7 @@ import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
-import Breadcrumb from '$lib/components/recipes/navs/Breadcrumb.svelte'
+import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
 import Settings from '$lib/components/recipes/header/Settings.svelte'
@@ -160,7 +160,7 @@ const drafts = {
 	Aside,
 	Scrolly,
 	ScrollyItem,
-	Breadcrumb,
+	Breadcrumbs,
 	HeaderSettings,
 	HeaderNav,
 	SettingsMenu,
