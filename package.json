@@ -16,7 +16,7 @@
 		"cz": "cz --no-verify"
 	},
 	"devDependencies": {
-		"@changesets/cli": "^2.27.7",
+		"@changesets/cli": "^2.27.11",
 		"@fat-fuzzy/config": "workspace:*",
 		"commitizen": "^4.3.0",
 		"cz-conventional-changelog": "^3.3.0",
