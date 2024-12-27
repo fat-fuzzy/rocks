@@ -81,6 +81,8 @@
 	--ink-focus: oklch(
 		var(--lightness-contrast-focus) var(--chroma-contrast-focus) var(--hue)
 	);
+	color: var(--ink-focus);
+	background-color: var(--shade-focus);
 }
 
 [class*='bg:'].variant\:bare:focus,
@@ -89,4 +91,6 @@
 	--ink-focus: oklch(
 		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
 	);
+	color: var(--ink-focus);
+	background-color: var(--shade-focus);
 }
