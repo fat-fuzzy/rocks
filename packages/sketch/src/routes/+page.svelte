@@ -22,16 +22,16 @@
 				<summary class="surface:2:neutral card:2xs">{tag}</summary>
 				<div class="l:stack:xs maki:block">
 					<ul class="unstyled">
-					{#each sketches as { slug, asset, title, tags }}
-						{#if tags.includes(tag)}
-							<li class={`card:3xs ${asset}`}>
-								<a class="font:md" href={`${path}/${slug}`}>
-									{title}
-								</a>
-							</li>
-						{/if}
-					{/each}
-				</ul>
+						{#each sketches as { slug, asset, title, tags }}
+							{#if tags.includes(tag)}
+								<li class={`card:3xs ${asset}`}>
+									<a class="font:md" href={`${path}/${slug}`}>
+										{title}
+									</a>
+								</li>
+							{/if}
+						{/each}
+					</ul>
 				</div>
 			</details>
 		{/each}

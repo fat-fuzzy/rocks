@@ -15,3 +15,9 @@ export type UiActionSetInput = {
 		domain?: string
 	} // TODO: improve options (use schema ?)
 }
+
+export type UiActionSetOutput = void | {
+	success: boolean
+	key: string
+	state: any
+}

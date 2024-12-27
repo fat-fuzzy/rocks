@@ -16,6 +16,5 @@ export const load = async ({locals}) => {
 	return {
 		styles,
 		settings,
-		sidebar: locals.sidebar,
 	}
 }

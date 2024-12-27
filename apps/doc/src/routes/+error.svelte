@@ -37,13 +37,17 @@
 			<div class="l:stack:md">
 				<p>{message}</p>
 				<div class="l:switcher:xs">
-					<button class={`variant:fill bg:accent:500 size:sm`} onclick={()=>history.back()}>
+					<button
+						class={`variant:fill bg:accent:500 size:sm`}
+						onclick={() => history.back()}
+					>
 						Back
 					</button>
-					<a class={`variant:outline bg:primary:500 card:xs font:sm`} href='/'>Home</a>
+					<a class={`variant:outline bg:primary:500 card:xs font:sm`} href="/">
+						Home
+					</a>
 				</div>
 			</div>
 		</Feedback>
 	</div>
 </PageMain>
-

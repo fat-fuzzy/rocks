@@ -1,11 +1,8 @@
 <script lang="ts">
-	import type {SettingsMenuProps, UiSettings} from '$types'
+	import type {SettingsMenuProps} from '$types'
 	import {enhance} from '$app/forms'
-	import constants from '$lib/types/constants.js'
 	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
-
-	const {DEFAULT_APP_SETTINGS} = constants
 
 	let {
 		id = 'ui-settings-menu',
@@ -18,20 +15,9 @@
 	}: SettingsMenuProps = $props()
 
 	let settingsId = id
-	let appSettings = $state(DEFAULT_APP_SETTINGS)
 	let action = $derived(formaction)
 
 	function handleUpdate(payload) {
-		switch (payload.id) {
-			case 'brightness':
-				appSettings.brightness = payload.value
-				break
-			case 'contrast':
-				appSettings.contrast = payload.value
-				break
-			default:
-				break
-		}
 		if (onupdate) onupdate(payload)
 	}
 
@@ -79,21 +65,8 @@
 	}}
 	class={`menu:settings ${formClasses}`}
 >
-	{#each items as { id, name, title, variant, shape, color, size, value, states }}
-		{@const switchStates = states
-			? {
-					active: {
-						...SWITCH_MACHINE.active,
-						...states.active,
-						formaction: `toggle${title}`,
-					},
-					inactive: {
-						...SWITCH_MACHINE.inactive,
-						...states.inactive,
-						formaction: `toggle${title}`,
-					},
-				}
-			: SWITCH_MACHINE}
+	{#each items as { id, name, title, initial, variant, shape, color, size, value, states }}
+		{@const switchStates = states ? states : SWITCH_MACHINE}
 		<Switch
 			id={`${settingsId}-${id}`}
 			{name}
@@ -103,7 +76,7 @@
 			{color}
 			{size}
 			{value}
-			initial={appSettings[id as UiSettings]}
+			{initial}
 			states={switchStates}
 			onclick={handleUpdate}
 		/>

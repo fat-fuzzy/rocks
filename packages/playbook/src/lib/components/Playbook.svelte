@@ -5,14 +5,12 @@
 	import playbookStore from '$lib/api/store.svelte'
 	import * as api from '$lib/api/styles.api'
 
-	const {LayoutSidebar} = fatFuzzyUi.content
-
 	type Props = {
 		app: {settings: {[key: string]: string}}
 		nav: any
 		children: Snippet
 	}
-	let {children, app, nav}: Props = $props()
+	let {children}: Props = $props()
 
 	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
@@ -33,8 +31,4 @@
 	})
 </script>
 
-<LayoutSidebar {nav} {app}>
-	{#if children}
-		{@render children()}
-	{/if}
-</LayoutSidebar>
+{@render children()}
