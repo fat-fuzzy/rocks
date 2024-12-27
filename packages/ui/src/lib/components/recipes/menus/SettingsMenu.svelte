@@ -15,7 +15,6 @@
 	}: SettingsMenuProps = $props()
 
 	let settingsId = id
-	let action = $derived(formaction)
 
 	function handleUpdate(payload) {
 		if (onupdate) onupdate(payload)
@@ -27,36 +26,12 @@
 			? 'bg:inherit'
 			: ''
 	let formClasses = `l:flex nowrap ${showBackground}`
-
-	// function initSettings(event) {
-	// 	let preferredScheme = {...event}
-	// 	switch (event.id) {
-	// 		case 'brightness':
-	// 			// TODO Fix this, not working
-	// 			brightness = window.matchMedia('(prefers-color-scheme: dark)').matches
-	// 				? 'night'
-	// 				: 'day'
-	// 			let state = brightness === 'day' ? 'inactive' : 'active'
-	// 			let pressed = brightness === 'day' ? false : true
-	// 			appSettings.brightness = brightness
-	// 			preferredScheme.value = brightness
-	// 			preferredScheme.state = state
-	// 			preferredScheme.pressed = pressed
-	// 			break
-	// 		case 'contrast':
-	// 			appSettings.contrast = event.value
-	// 			break
-	// 		default:
-	// 			break
-	// 	}
-	// 	if (onupdate) onupdate(preferredScheme)
-	// }
 </script>
 
 <form
 	name="settings-update"
 	{method}
-	action={`?/${action}`}
+	action={`?/${formaction}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
 		return ({update}) => {
