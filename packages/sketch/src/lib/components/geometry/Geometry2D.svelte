@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
+	import type {Snippet} from 'svelte'
 	import {enhance} from '$app/forms'
 	import type {GeometryContext} from '$types/index.js'
 
@@ -24,7 +24,7 @@
 		layout?: string
 		threshold?: string
 		disabled?: boolean
-		onupdate: (payload: {geometry: GeometryContext}) => void,
+		onupdate: (payload: {geometry: GeometryContext}) => void
 		children?: Snippet
 	}
 
@@ -43,7 +43,7 @@
 		threshold,
 		disabled,
 		onupdate,
-		children
+		children,
 	}: Props = $props()
 
 	function degToRad(degrees: number) {
@@ -55,8 +55,8 @@
 			geometry: payload,
 		})
 
-	let geometry = $state(context)
-	let {scale, translation, rotation} = $derived(geometry)
+	let geometry = context
+	let {scale, translation, rotation} = geometry
 
 	// input attributes
 	let angle = $state(0)
@@ -64,7 +64,7 @@
 	// Position
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
-	let [coordX, coordY] = $state([translation[0] ?? 0, translation[1] ?? 0] )
+	let [coordX, coordY] = $state([translation[0] ?? 0, translation[1] ?? 0])
 
 	// Scale
 	let [scaleX, scaleY] = $state([scale[0] ?? 1, scale[1] ?? 1])
@@ -76,17 +76,14 @@
 		scale: [scaleX, scaleY],
 	})
 
-	let action = formaction && redirect
-			? `${formaction}&redirectTo=${redirect}`
-			: formaction
+	let action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
 	let backgroundClass = background ? `bg:${background}` : ''
-
 </script>
 
 <form
 	class={`l:${layout}:${size} th:${threshold} maki:block geometry ${backgroundClass}`}
 	name="geometry-update"
-	{method}
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 	use:enhance={() => {
 		// prevent default callback from resetting the form
