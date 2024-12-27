@@ -7,7 +7,7 @@
 	const {Sidebar} = ui.layouts
 
 	let dialog: HTMLDialogElement
-	let stage: boolean|undefined = $state(undefined)
+	let stage: boolean | undefined = $state(undefined)
 	let media = $derived($page.data)
 	let title = $derived(media.title ?? '')
 	let description = $derived(media.description ?? '')
@@ -21,62 +21,61 @@
 	function closeDialog(e) {
 		stage = undefined
 	}
-
 </script>
 
 <Head {title} description={`Details page for media: ${title}`} />
 
 <Sidebar {title} {description} size="md">
 	{#snippet side()}
-
-	<div class="l:stack:xs l:center:md">
-		<button
-			onclick={() => history.back()}
-			class="bg:primary variant:fill size:xs"
-		>
-			Back
-		</button>
-		<article>
-			<h1>{media.title}</h1>
-			<p class='font:md'>{media.description}</p>
-		</article>
-	</div>
+		<div class="l:stack:xs l:center:md">
+			<button
+				onclick={() => history.back()}
+				class="bg:primary variant:fill size:xs"
+			>
+				Back
+			</button>
+			<article>
+				<h1>{media.title}</h1>
+				<p class="font:md">{media.description}</p>
+			</article>
+		</div>
 	{/snippet}
 	{#snippet main()}
-	<Sidebar {title} {description} size="2xs end" justify="center">
-		{#snippet main()}
-		<div class='l:center:md' hidden={stage}>
-			<Picture
-				src={media.src}
-				ext={media.ext}
-				alt={media.alt}
-				orientation={media.orientation}
-				width={media.width}
-				height={media.height}
-				sources={media.sources}
-				sizes={media.sizes}
-				media={media.media}
-			/>
-		</div>
-		{/snippet}
-		{#snippet side()}
-			<div class="l:stack:xs button-zoom">
-				<button
-				class="bg:primary variant:outline size:xs" onclick={openDialog}>
-					Zoom
-				</button>
-			</div>
-		{/snippet}
-	</Sidebar>
+		<Sidebar {title} {description} size="2xs end" justify="center">
+			{#snippet main()}
+				<div class="l:center:md" hidden={stage}>
+					<Picture
+						src={media.src}
+						ext={media.ext}
+						alt={media.alt}
+						orientation={media.orientation}
+						width={media.width}
+						height={media.height}
+						sources={media.sources}
+						sizes={media.sizes}
+						media={media.media}
+					/>
+				</div>
+			{/snippet}
+			{#snippet side()}
+				<div class="l:stack:xs button-zoom">
+					<button
+						class="bg:primary variant:outline size:xs"
+						onclick={openDialog}
+					>
+						Zoom
+					</button>
+				</div>
+			{/snippet}
+		</Sidebar>
 	{/snippet}
 </Sidebar>
 
-<dialog
-	bind:this={dialog}
-	class="w:full l:sidebar:2xs bg:inherit"
->
+<dialog bind:this={dialog} class="w:full l:sidebar:2xs bg:inherit">
 	<form method="dialog" class="l:side l:flex justify:end button-zoom">
-		<button class="bg:primary variant:outline size:xs" onclick={closeDialog}> Close </button>
+		<button class="bg:primary variant:outline size:xs" onclick={closeDialog}>
+			Close
+		</button>
 	</form>
 	<div class="l:main:90 col:center">
 		<Picture
@@ -84,8 +83,8 @@
 			ext={media.ext}
 			alt={media.alt}
 			orientation={media.orientation}
-			dimensions='full'
-			loading=lazy
+			dimensions="full"
+			loading="lazy"
 			width={media.width}
 			height={media.height}
 			sources={media.sources}
@@ -103,7 +102,7 @@
 			flex-basis: 0;
 			flex-grow: 0;
 			& > * {
-				display: none
+				display: none;
 			}
 		}
 	}
@@ -152,7 +151,6 @@
 			block-size: 100%;
 		}
 	}
-
 
 	/* Transition the :backdrop when the dialog modal is promoted to the top layer */
 	dialog::backdrop {

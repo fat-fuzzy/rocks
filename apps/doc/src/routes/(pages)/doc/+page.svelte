@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
-	import fatFuzzyStore from '$lib/stores/stores.svelte'
 
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
@@ -9,9 +8,7 @@
 
 	let images = $derived($page.data.images)
 
-	let app = fatFuzzyStore.app
-
-	let brightness = $derived(app.settings?.brightness || '')
+	let brightness = $derived($page.data.settings.brightness || '')
 	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)

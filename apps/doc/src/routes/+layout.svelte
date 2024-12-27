@@ -1,11 +1,13 @@
 <script lang="ts">
-	import {onMount, type Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
+
+	import {setContext} from 'svelte'
 	import '$lib/styles/css/main.css'
 
 	import {page} from '$app/stores'
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
-	import fatFuzzyStore from '$lib/stores/stores.svelte'
+	import FatFuzzyStore from '$lib/stores/stores.svelte'
 	import RcScout from '$lib/ui/RcScout.svelte'
 
 	const {Header} = ui.recipes
@@ -18,7 +20,10 @@
 
 	let {children}: Props = $props()
 
-	let app = fatFuzzyStore.app
+	const store = new FatFuzzyStore($page.data.settings)
+	setContext('fatFuzzyStore', store)
+
+	let app = $derived(store.app)
 
 	let brightness = $derived(app.settings.brightness)
 	let contrast = $derived(app.settings.contrast)
@@ -31,25 +36,37 @@
 	let footerClass = 'card:xs'
 	let aboutContainerClass = $derived(pageClass === 'page:home' ? 'card:xl' : '')
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
+	let settings = $derived.by(() => {
+		let inputs = ui.constants.APP_SETTINGS
+		inputs.switch.forEach((input) => {
+			if (input.id === 'brightness') {
+				input.value = brightness
+				input.initial = brightness === 'night' ? 'active' : 'inactive'
+			}
+			if (input.id === 'contrast') {
+				input.value = contrast
+				input.initial = contrast === 'contrast' ? 'active' : 'inactive'
+			}
+		})
+		return {
+			...inputs,
+			formaction: 'updateSettings',
+			onupdate: updateSettings,
+		}
+	})
 
 	function updateSettings(event) {
 		switch (event.id) {
 			case 'brightness':
-				app.settings.brightness = event.value
+				store.updateBrightness(event.value)
 				break
 			case 'contrast':
-				app.settings.contrast = event.value
+				store.updateContrast(event.value)
 				break
 			default:
 				break
 		}
 	}
-
-	onMount(() => {
-		if ($page.data.settings) {
-			fatFuzzyStore.app.settings = $page.data.settings
-		}
-	})
 </script>
 
 <div class={themeClass}>
@@ -63,10 +80,10 @@
 		formaction="toggleNav"
 		items={{
 			links,
-			settings: {...ui.constants.APP_SETTINGS, onupdate: updateSettings},
+			settings,
 		}}
 		breakpoint="sm"
-		app={fatFuzzyStore.app}
+		{app}
 	/>
 	{#if children}
 		{@render children()}
