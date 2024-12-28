@@ -21,7 +21,7 @@ const revealForms = [
 	'learning',
 ]
 
-enum RevealFormsEnum {
+enum FormsEnum {
 	// global app forms
 	nav = 'nav',
 	settings = 'settings',
@@ -42,7 +42,7 @@ export const handle = (async ({event, resolve}) => {
 
 	const appSettings = uiStateService.getUiState({
 		cookies,
-		key: `${APP_PREFIX}-app-settings`,
+		key: `${APP_PREFIX}-settings-app`,
 	})
 	const dsState = uiStateService.getUiState({
 		cookies,
@@ -68,14 +68,12 @@ export const handle = (async ({event, resolve}) => {
 	event.locals.settings = appSettings
 	event.locals.dsState = dsState
 	event.locals.dsStyles = dsStyles
-
-	event.locals.app = appLocals[RevealFormsEnum.settings]
-	event.locals.sidebar = appLocals[RevealFormsEnum.sidebar]
-	event.locals.nav = appLocals[RevealFormsEnum.nav]
-	event.locals.navTokens = appLocals[RevealFormsEnum.tokens]
-	event.locals.navBlocks = appLocals[RevealFormsEnum.blocks]
-	event.locals.navLayouts = appLocals[RevealFormsEnum.layouts]
-	event.locals.navRecipes = appLocals[RevealFormsEnum.recipes]
+	event.locals.sidebar = appLocals[FormsEnum.sidebar]
+	event.locals.nav = appLocals[FormsEnum.nav]
+	event.locals.navTokens = appLocals[FormsEnum.tokens]
+	event.locals.navBlocks = appLocals[FormsEnum.blocks]
+	event.locals.navLayouts = appLocals[FormsEnum.layouts]
+	event.locals.navRecipes = appLocals[FormsEnum.recipes]
 
 	const response = await resolve(event)
 	return response

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {ButtonType, ButtonMenuProps} from '$types'
+
 	import styleHelper from '$lib/utils/styles.js'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 
@@ -15,6 +16,7 @@
 		container,
 		layout = 'switcher',
 		threshold,
+		background = 'inherit',
 
 		formaction,
 		items = [],
@@ -28,16 +30,18 @@
 		}
 	}
 
-let type: ButtonType = formaction ? 'submit' : 'button'
+	let type: ButtonType = formaction ? 'submit' : 'button'
 
-let menuClasses =  $derived(styleHelper.getStyles({
+	let menuClasses = $derived(
+		styleHelper.getStyles({
 			color,
 			size,
 			layout,
 			threshold,
 			container,
-		}))
-
+			background,
+		}),
+	)
 </script>
 
 {#snippet menuContent()}

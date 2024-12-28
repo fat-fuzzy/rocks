@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type {FuzzyPayload, ButtonType, ToggleMenuProps} from '$types'
+
 	import {onMount} from 'svelte'
+
 	import styleHelper from '$lib/utils/styles.js'
 	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 	import ToggleMenuStore from './store.svelte'
@@ -18,6 +20,7 @@
 		container,
 		layout = 'switcher',
 		threshold,
+		background = 'inherit',
 
 		mode = 'radio',
 		formaction,
@@ -42,6 +45,7 @@
 			layout,
 			threshold,
 			container,
+			background,
 		}),
 	)
 

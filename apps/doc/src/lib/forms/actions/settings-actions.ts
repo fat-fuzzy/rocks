@@ -1,4 +1,4 @@
-import type {UiActionSetInput} from '$lib/types/actions.js'
+import type {UiActionSetInput, UiActionSetOutput} from '$lib/types/actions.js'
 import {error, fail} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
@@ -10,25 +10,28 @@ const {APP_PREFIX} = ui.constants
 /**
  * TODO validate input
  */
-async function handleUpdateAppSettings({event}: UiActionSetInput) {
+async function handleUpdateAppSettings({
+	event,
+	options,
+}: UiActionSetInput): Promise<UiActionSetOutput> {
 	const {request, cookies} = event
 
 	try {
 		const data = await request.formData()
 		const key = `${APP_PREFIX}-settings-app`
 		let currentState = DEFAULT_APP_SETTINGS
-		const settingsUpdate = new SettingsUpdate(currentState)
+		const newState = new SettingsUpdate(currentState)
 
-		if (!settingsUpdate.update(data)) {
+		if (!newState.update(data)) {
 			error(500, `Failed to update ${key}`)
 		}
 
 		uiStateService.setUiState({
 			cookies,
 			key,
-			value: settingsUpdate.toString(),
+			value: newState.app,
 			options: {
-				host: '',
+				host: options?.domain,
 				path: '/',
 			},
 		})
@@ -36,11 +39,10 @@ async function handleUpdateAppSettings({event}: UiActionSetInput) {
 		return {
 			success: true,
 			key,
-			state: settingsUpdate.toString(),
+			state: newState.toString(),
 		}
 	} catch (error) {
-		console.error(error)
-		return fail(500, {
+		fail(500, {
 			success: false,
 			error: 'Failed to update settings', // TODO: improve / manage error message with intl package
 		})

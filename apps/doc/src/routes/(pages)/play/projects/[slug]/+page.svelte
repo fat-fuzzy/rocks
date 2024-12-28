@@ -23,8 +23,7 @@
 	{/snippet}
 	{#key scene}
 		{#if scene}
-			<Sketch {scene} size="sm" {dev}/>
+			<Sketch {scene} size="sm" {dev} />
 		{/if}
 	{/key}
 </PageMain>
-

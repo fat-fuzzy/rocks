@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
+	import type {Snippet} from 'svelte'
 	import type {GeometryContext} from '$types/index.js'
 
 	import Position from '$lib/components/geometry/Position.svelte'
@@ -16,7 +16,7 @@
 		context: GeometryContext
 		disabled?: boolean
 		threshold?: string
-		onupdate: (payload: {geometry: GeometryContext}) => void,
+		onupdate: (payload: {geometry: GeometryContext}) => void
 		children?: Snippet
 	}
 
@@ -28,7 +28,7 @@
 		threshold,
 		disabled,
 		onupdate,
-		children
+		children,
 	}: Props = $props()
 
 	function degToRad(degrees: number) {
@@ -41,8 +41,8 @@
 		})
 	}
 
-	let geometry = $state(context)
-	let {scale, translation} = $derived(geometry)
+	let geometry = context
+	let {scale, translation} = geometry
 
 	// input attributes
 	let maxZ = $state(1)
@@ -53,10 +53,18 @@
 	let maxY = $state(canvasHeight)
 	let minX = $state(-canvasWidth)
 	let minY = $state(-canvasHeight)
-	let [coordX, coordY, coordZ] = $state([translation[0] ?? 0, translation[1] ?? 0, translation[2] ?? 0])
+	let [coordX, coordY, coordZ] = $state([
+		translation[0] ?? 0,
+		translation[1] ?? 0,
+		translation[2] ?? 0,
+	])
 
 	// Scale
-	let [scaleX, scaleY, scaleZ] = $state([scale[0] ?? 1, scale[1] ?? 1, scale[2] ?? 1])
+	let [scaleX, scaleY, scaleZ] = $state([
+		scale[0] ?? 1,
+		scale[1] ?? 1,
+		scale[2] ?? 1,
+	])
 
 	// Rotation
 	let [angleX, angleY, angleZ] = $state([190, 40, 30]) // TODO: fix this
@@ -67,7 +75,6 @@
 		translation: [coordX, coordY, coordZ],
 		scale: [scaleX, scaleY, scaleZ],
 	})
-
 </script>
 
 <Position
@@ -82,8 +89,8 @@
 	bind:maxZ
 	bind:minZ
 	onupdate={update}
-	color='primary'
-	size='xs'
+	color="primary"
+	size="xs"
 	{disabled}
 />
 <Rotation
@@ -92,8 +99,8 @@
 	bind:angle={angleX}
 	max={360}
 	onupdate={update}
-	color='accent'
-	size='xs'
+	color="accent"
+	size="xs"
 	{disabled}
 />
 <Rotation
@@ -102,8 +109,8 @@
 	bind:angle={angleY}
 	max={360}
 	onupdate={update}
-	color='accent'
-	size='xs'
+	color="accent"
+	size="xs"
 	{disabled}
 />
 <Rotation
@@ -112,8 +119,8 @@
 	bind:angle={angleZ}
 	max={360}
 	onupdate={update}
-	color='accent'
-	size='xs'
+	color="accent"
+	size="xs"
 	{disabled}
 />
 <Scale
@@ -128,8 +135,8 @@
 	minY={-5}
 	minZ={-5}
 	onupdate={update}
-	color='highlight'
-	size='xs'
+	color="highlight"
+	size="xs"
 	{disabled}
 />
 {#await Promise.resolve()}
@@ -151,6 +158,7 @@
 		{@render children()}
 	{/if}
 {/await}
+
 <style>
 	@import '../../styles/css/geometry.css';
 </style>

@@ -11,7 +11,7 @@ class SettingsUpdate {
 	 */
 	constructor(settings: Settings | null = null) {
 		if (settings) {
-			this.app = {settings: settings.settings}
+			this.app = settings
 		} else {
 			this.app = DEFAULT_APP_SETTINGS
 		}
@@ -24,11 +24,11 @@ class SettingsUpdate {
 		try {
 			let updated = data.get('brightness')?.toString()
 			if (updated) {
-				this.app.brightness = TRANSITION_BRIGHTNESS[this.app.brightness]
+				this.app.brightness = updated
 			}
 			updated = data.get('contrast')?.toString()
 			if (updated) {
-				this.app.contrast = TRANSITION_CONTRAST[this.app.contrast]
+				this.app.contrast = updated
 			}
 			return true
 		} catch (e) {

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type {RevealMenuProps} from '$types'
+
+	import styleHelper from '$lib/utils/styles.js'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	const VARIANT_MATCH: {[key: string]: string} = {
@@ -32,6 +34,17 @@
 
 	let innerVariant = VARIANT_MATCH[variant]
 	let show = reveal ? `expanded ${place}` : `collapsed ${place}`
+	let menuClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			size,
+			align,
+			layout,
+			threshold,
+			container,
+			background,
+		}),
+	)
 </script>
 
 <Reveal
@@ -47,10 +60,7 @@
 	{position}
 	{place}
 >
-	<menu
-		id={`menu-${id}`}
-		class={`content l:${layout}:${size} ${container}:${size} th:${threshold} layer bg:${background} card:${size} align:${align} ${size} ${show}`}
-	>
+	<menu id={`menu-${id}`} class={`content layer ${menuClasses} ${show}`}>
 		{#each items as buttonProps}
 			<li>
 				<Button

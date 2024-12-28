@@ -18,17 +18,19 @@
 </script>
 
 <div class={`l:sidebar:lg align-content:start ${settingsClass}`}>
-	<div class={`l:side reveal-nav ${nav.reveal}`}>
-		<RevealNav
-			{...nav}
-			position="sticky"
-			place="left"
-			justify="between"
-			formaction="toggleSidebar"
-			size="md"
-			dismiss="click"
-		/>
-	</div>
+	{#if nav}
+		<div class={`l:side reveal-nav ${nav.reveal}`}>
+			<RevealNav
+				{...nav}
+				position="sticky"
+				place="left"
+				justify="between"
+				formaction="toggleSidebar"
+				size="md"
+				dismiss="click"
+			/>
+		</div>
+	{/if}
 	<div class="l:main maki:inline">
 		{#if children}
 			{@render children()}
