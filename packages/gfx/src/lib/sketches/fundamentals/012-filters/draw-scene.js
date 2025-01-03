@@ -1,7 +1,3 @@
-import geometries from '../../../math/geometries'
-
-const {DEFAULT_TEXTURE_COORDS} = geometries
-
 /**
  *
  * @param {WebGL2RenderingContext} gl

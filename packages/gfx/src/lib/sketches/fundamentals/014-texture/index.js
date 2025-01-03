@@ -42,9 +42,9 @@ let meta = {
 	slug: 'texture',
 	title: 'Texture',
 	asset: 'texture',
-	categories: ['study'],
+	categories: ['learning'],
 	tags: ['color', 'texture', 'webgl', 'webglfundamentals'],
-	controls: ['texture'],
+	controls: ['filters'],
 	filename: 'plants.png',
 	filters: {
 		channels: [
@@ -154,7 +154,7 @@ function init(canvas) {
 	}
 }
 
-function loadImage(url, callback) {
+async function loadImage(url, callback) {
 	let image = new Image()
 	image.src = url
 	image.onload = callback
@@ -171,9 +171,9 @@ function render(canvas) {
 	setTextureAttribute(gl, buffers, programInfo)
 }
 
-function main(canvas) {
+async function main(canvas) {
 	init(canvas)
-	image = loadImage(url, () => render(canvas))
+	image = await loadImage(url, () => render(canvas))
 	return programInfo.context
 }
 

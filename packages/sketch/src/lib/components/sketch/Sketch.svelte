@@ -209,7 +209,7 @@
 	function updateFilters(filters: Filters) {
 		try {
 			scene.update({...context, filters})
-			if (meta.controls.includes('texture')) {
+			if (meta.controls.includes('filters')) {
 				render()
 			}
 			store.update(ControlsEvent.update)
@@ -222,7 +222,7 @@
 	function loadFilters(filters: Filters) {
 		try {
 			scene.update({...context, filters})
-			if (meta.controls.includes('texture')) {
+			if (meta.controls.includes('filters')) {
 				render()
 			}
 		} catch (e: unknown) {
@@ -312,7 +312,7 @@
 								onupdate={updateGeometry}
 								{context}
 							/>
-						{:else if meta.controls.includes('texture')}
+						{:else if meta.controls.includes('filters')}
 							{#key resetEvent}
 								<TextureControls
 									id={`${id}-texture-controls`}
