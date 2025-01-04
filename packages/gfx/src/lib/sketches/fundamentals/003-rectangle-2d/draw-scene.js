@@ -23,21 +23,24 @@ function drawScene(gl, programInfo, buffers) {
 	// Set a random color.
 	gl.uniform4f(
 		programInfo.uniformLocations.u_color,
-		...programInfo.context.color,
+		...programInfo.context.geometry.color,
 	)
 	// Set the translation.
 	gl.uniform2fv(
 		programInfo.uniformLocations.u_translation,
-		programInfo.context.translation,
+		programInfo.context.geometry.translation,
 	)
 	// Set the rotation.
 	const radCoords = [
-		Math.cos(programInfo.context.rotation),
-		Math.sin(programInfo.context.rotation),
+		Math.cos(programInfo.context.geometry.rotation),
+		Math.sin(programInfo.context.geometry.rotation),
 	]
 	gl.uniform2fv(programInfo.uniformLocations.u_rotation, radCoords)
 	// Set the scale.
-	gl.uniform2fv(programInfo.uniformLocations.u_scale, programInfo.context.scale)
+	gl.uniform2fv(
+		programInfo.uniformLocations.u_scale,
+		programInfo.context.geometry.scale,
+	)
 
 	setPositionAttribute(gl, buffers, programInfo)
 	// setColorAttribute(gl, buffers, programInfo)
@@ -46,7 +49,10 @@ function drawScene(gl, programInfo, buffers) {
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
+	gl.uniform4fv(
+		programInfo.uniformLocations.u_color,
+		programInfo.context.geometry.color,
+	)
 
 	const primitiveType = gl.TRIANGLES
 	const offset = 0

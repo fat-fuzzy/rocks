@@ -1,13 +1,6 @@
 <script lang="ts">
 	import {onDestroy, onMount} from 'svelte'
-	import type {
-		SketchProps,
-		SceneContext,
-		SceneMeta,
-		Filters,
-		CameraContext,
-		GeometryContext,
-	} from '$types'
+	import type {SketchProps, SceneContext, SceneMeta, Filters} from '$types'
 	import {
 		CanvasState,
 		SketchEvent,
@@ -79,7 +72,7 @@
 			try {
 				context = scene.main(canvas)
 				meta = scene.meta as SceneMeta
-				scene.update({...context, filters})
+				scene.update({...context, texture: {filters}})
 				actor.update(SketchEvent.loadOk)
 			} catch (e: unknown) {
 				actor.update(SketchEvent.loadNok)
@@ -149,15 +142,12 @@
 		actor.update(PlayerEvent.pause)
 	}
 
-	function updateGeometry(payload: {
-		fieldOfView?: number
-		geometry: GeometryContext
-	}) {
-		context = {
-			...payload.geometry,
-			fieldOfView: degToRad(payload.fieldOfView ?? 60),
+	function updateGeometry(payload: SceneContext) {
+		context.geometry = payload.geometry
+		if (context.camera) {
+			context.camera.fieldOfView = payload.camera?.fieldOfView ?? 60
 		}
-		scene.update({...context, filters})
+		scene.update({...context, texture: {filters}})
 		actor.update(ControlsEvent.update)
 	}
 
@@ -165,10 +155,12 @@
 		return degrees * (Math.PI / 180)
 	}
 
-	function updateCamera(payload: {fieldOfView: number; cameraAngle: number}) {
-		;(context as CameraContext).fieldOfView = degToRad(payload.fieldOfView)
-		;(context as CameraContext).cameraAngle = degToRad(payload.cameraAngle)
-		scene.update({...context, filters})
+	function updateCamera(payload: SceneContext) {
+		if (context.camera && payload.camera) {
+			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
+			context.camera.cameraAngle = degToRad(payload.camera.cameraAngle ?? 0)
+		}
+		scene.update({...context, texture: {filters}})
 		actor.update(ControlsEvent.update)
 	}
 
@@ -193,7 +185,7 @@
 
 	function updateFilters(filters: Filters) {
 		try {
-			scene.update({...context, filters})
+			scene.update({...context, texture: {filters}})
 			if (meta.controls.includes('texture')) {
 				render()
 			}
@@ -206,7 +198,7 @@
 
 	function loadFilters(filters: Filters) {
 		try {
-			scene.update({...context, filters})
+			scene.update({...context, texture: {filters}})
 			if (meta.controls.includes('texture')) {
 				render()
 			}
@@ -273,12 +265,12 @@
 				{init}
 			/>
 			{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
-				{#if meta.controls.includes('matrix-2d')}
+				{#if context.geometry && meta.controls.includes('matrix-2d')}
 					<Geometry2D
 						id={`${id}-context-2d`}
 						onupdate={updateGeometry}
 						threshold={breakpoint}
-						{context}
+						context={context.geometry}
 						canvasWidth={canvas.getBoundingClientRect().width}
 						canvasHeight={canvas.getBoundingClientRect().height}
 						disabled={actor.getSketchDisabled()}
@@ -290,7 +282,7 @@
 								id={`${id}-camera-controls`}
 								onupdate={updateCamera}
 							/>
-						{:else if meta.controls.includes('matrix-3d')}
+						{:else if context.geometry && meta.controls.includes('matrix-3d')}
 							<GeometryControls
 								id={`${id}-geometry-controls`}
 								{canvas}

@@ -19,7 +19,7 @@ import {
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
-let imageAssetsPath = 'images'
+let imageAssetsPath = 'images/sketches'
 let filename = 'plants.png'
 let imgWidth = 620
 let imgHeight = 518
@@ -44,7 +44,7 @@ let meta = {
 	asset: 'filters',
 	categories: ['learning'],
 	tags: ['color', 'filters', 'webgl', 'webglfundamentals'],
-	controls: ['filters'],
+	controls: ['texture'],
 	filename: 'plants.png',
 	filters: {
 		channels: [
@@ -306,9 +306,7 @@ function update({filters}) {
 
 	programInfo.context = {
 		image,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
+		geometry: {translation: [0, 0], width: imgWidth, height: imgHeight},
 	}
 }
 

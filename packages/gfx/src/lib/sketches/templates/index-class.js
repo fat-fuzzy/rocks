@@ -18,7 +18,7 @@ class Sketch {
 
 	constructor(canvas) {
 		this.#init(canvas)
-		this.context = geometries.getGeometryDefaults(this.maxWidth, this.maxHeight)
+		this.context = geometries.getDefaultGeometry(this.maxWidth, this.maxHeight)
 	}
 
 	/**

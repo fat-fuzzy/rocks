@@ -400,16 +400,18 @@ function generatePolygon(points, radius, outset) {
  * @param {number} canvasHeight
  * @returns geometry
  */
-function getGeometryDefaults(canvasWidth, canvasHeight) {
+function getDefaultGeometry(canvasWidth, canvasHeight) {
 	const width = utils.round(canvasWidth / 5, 2)
 	const height = round(canvasHeight / 5, 2)
 	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [canvasWidth / 2, canvasHeight / 2],
-		rotation: [degToRad(randomInt(360))],
-		scale: [1, 1],
-		width,
-		height,
+		geometry: {
+			color: [Math.random(), Math.random(), Math.random(), 1],
+			translation: [canvasWidth / 2, canvasHeight / 2],
+			rotation: [degToRad(randomInt(360))],
+			scale: [1, 1],
+			width,
+			height,
+		},
 	}
 }
 
@@ -422,12 +424,14 @@ function getGeometryRandom(canvasWidth, canvasHeight) {
 	const width = randomInt(canvasWidth)
 	const height = randomInt(canvasHeight)
 	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [width, height],
-		rotation: [degToRad(randomInt(360))],
-		scale: [1, 1],
-		width,
-		height,
+		geometry: {
+			color: [Math.random(), Math.random(), Math.random(), 1],
+			translation: [width, height],
+			rotation: [degToRad(randomInt(360))],
+			scale: [1, 1],
+			width,
+			height,
+		},
 	}
 }
 
@@ -438,7 +442,7 @@ function getGeometryRandom(canvasWidth, canvasHeight) {
  */
 
 function getGeometryMatrix2D(canvasWidth, canvasHeight) {
-	return getGeometryDefaults(canvasWidth, canvasHeight)
+	return getDefaultGeometry(canvasWidth, canvasHeight)
 }
 
 /**
@@ -447,7 +451,7 @@ function getGeometryMatrix2D(canvasWidth, canvasHeight) {
  * @returns geometry
  */
 function getGeometryHierarchical(canvasWidth, canvasHeight) {
-	return getGeometryDefaults(canvasWidth, canvasHeight)
+	return getDefaultGeometry(canvasWidth, canvasHeight)
 }
 
 /**
@@ -458,11 +462,15 @@ function getGeometryMatrix3D() {
 	const ty = 0
 	const tz = -360
 	return {
-		color: DEFAULT_3D_GEOMETRY_COLORS,
-		translation: [tx, ty, tz],
-		rotation: [degToRad(190), degToRad(40), degToRad(30)],
-		scale: [1, 1, 1],
-		fieldOfView: degToRad(60),
+		geometry: {
+			color: DEFAULT_3D_GEOMETRY_COLORS,
+			translation: [tx, ty, tz],
+			rotation: [degToRad(190), degToRad(40), degToRad(30)],
+			scale: [1, 1, 1],
+		},
+		camera: {
+			fieldOfView: degToRad(60),
+		},
 	}
 }
 
@@ -471,9 +479,13 @@ function getGeometryMatrix3D() {
  */
 function getGeometryCamera3D() {
 	return {
-		color: DEFAULT_3D_GEOMETRY_COLORS,
-		fieldOfView: degToRad(60),
-		cameraAngle: degToRad(60),
+		geometry: {
+			color: DEFAULT_3D_GEOMETRY_COLORS,
+		},
+		camera: {
+			fieldOfView: degToRad(60),
+			cameraAngle: degToRad(60),
+		},
 	}
 }
 
@@ -495,7 +507,7 @@ export default {
 	DEFAULT_TEXTURE_COORDS,
 	flipAndCenter,
 	generatePolygon,
-	getGeometryDefaults,
+	getDefaultGeometry,
 	getGeometryRandom,
 	getGeometryMatrix2D,
 	getGeometryHierarchical,

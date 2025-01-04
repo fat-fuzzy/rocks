@@ -1,21 +1,13 @@
 <script lang="ts">
-	import type {SceneContext, GeometryContext} from '$types'
+	import type {
+		GeometryContext,
+		SceneContext,
+		GeometryControlsProps,
+	} from '$types'
 	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
 	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
 
 	import actor from '$lib/components/sketch/actor.svelte'
-
-	type Props = {
-		id: string
-		color?: string
-		size?: string
-		layout?: string
-		breakpoint?: string
-		threshold?: string
-		canvas: HTMLCanvasElement
-		onupdate: (payload: {geometry: GeometryContext}) => void
-		context: GeometryContext
-	}
 
 	let {
 		id,
@@ -25,16 +17,18 @@
 		context,
 		canvas,
 		onupdate,
-	}: Props = $props()
+	}: GeometryControlsProps = $props()
 
-	let geometry: SceneContext = $state(context)
+	let geometry: GeometryContext | undefined = $state(context.geometry)
 	let fieldOfView = $state(60)
 	let updated: SceneContext = $derived({
-		fieldOfView,
+		camera: {
+			fieldOfView,
+		},
 		geometry,
 	})
 
-	function updateGeometry(payload: {geometry: GeometryContext}) {
+	function updateGeometry(payload: SceneContext) {
 		geometry = payload.geometry
 		onupdate(updated)
 	}
@@ -55,12 +49,14 @@
 	disabled={actor.getSketchDisabled()}
 />
 
-<Geometry3D
-	id={`${id}-context-3d`}
-	onupdate={updateGeometry}
-	threshold={breakpoint}
-	{context}
-	canvasWidth={canvas.getBoundingClientRect().width}
-	canvasHeight={canvas.getBoundingClientRect().height}
-	disabled={actor.getSketchDisabled()}
-/>
+{#if geometry}
+	<Geometry3D
+		id={`${id}-context-3d`}
+		onupdate={updateGeometry}
+		threshold={breakpoint}
+		context={geometry}
+		canvasWidth={canvas.getBoundingClientRect().width}
+		canvasHeight={canvas.getBoundingClientRect().height}
+		disabled={actor.getSketchDisabled()}
+	/>
+{/if}

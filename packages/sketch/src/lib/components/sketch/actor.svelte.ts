@@ -114,6 +114,6 @@ class SketchActor {
 	}
 }
 
-const sketchActor = new SketchActor()
+const actor = new SketchActor()
 
-export default sketchActor
+export default actor

@@ -84,7 +84,7 @@ function loadProgram(canvas) {
 			// bind u_scale
 			u_scale: gl.getUniformLocation(program, 'u_scale'),
 		},
-		context: geometries.getGeometryDefaults(canvas.width, canvas.height),
+		context: geometries.getDefaultGeometry(canvas.width, canvas.height),
 		errors: [],
 	}
 	buffers = initBuffers(gl, _programInfo)

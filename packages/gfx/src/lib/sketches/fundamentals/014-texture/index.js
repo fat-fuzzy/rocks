@@ -8,24 +8,27 @@
 import dom from '../../../dom'
 import utils from '../../../math/utils'
 import setup from '../../../webgl/setup'
+import geometries from '../../../math/geometries'
 import {drawScene} from './draw-scene'
 import {
 	initBuffers,
-	updateBuffers,
-	setPositionAttribute,
+	updateGeometryBuffers,
+	setPositionAttributeGeometry,
 	setTextureAttribute,
 } from '../../../webgl/buffers/textures'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
-let imageAssetsPath = 'images'
-let filename = 'plants.png'
-let imgWidth = 620
-let imgHeight = 518
+let imageAssetsPath = 'images/sketches'
+let filename = 'f-texture.png'
+let imgWidth = 256
+let imgHeight = 256
 let url = `/${imageAssetsPath}/${filename}`
 let gl
+let vao
 let program
+let then = 0 // used to measure time since last frame
 let programInfo = {
 	errors: [],
 }
@@ -38,78 +41,15 @@ let channelOrder
 let blur = 0
 let error
 let meta = {
-	id: '012',
+	id: '014',
+	draft: true,
 	slug: 'texture',
 	title: 'Texture',
 	asset: 'texture',
 	categories: ['learning'],
-	tags: ['color', 'texture', 'webgl', 'webglfundamentals'],
-	controls: ['filters'],
-	filename: 'plants.png',
-	filters: {
-		channels: [
-			'ragb',
-			'rabg',
-			'rbag',
-			'rbga',
-			'rgba',
-			'rgab',
-			'abgr',
-			'abrg',
-			'agrb',
-			'agbr',
-			'arbg',
-			'argb',
-			'bagr',
-			'barg',
-			'bgar',
-			'bgra',
-			'brga',
-			'brag',
-			'gabr',
-			'garb',
-			'gbar',
-			'gbra',
-			'grab',
-			'grba',
-		],
-		blur: [1, 2, 3],
-	},
-}
-
-function convertToChannelOrder(str) {
-	return new Int32Array(
-		str
-			.split('')
-			.map((c) => (c === 'r' ? 0 : c === 'a' ? 3 : c === 'g' ? 1 : 2)),
-	)
-}
-
-const channels = {
-	ragb: convertToChannelOrder('ragb'),
-	rabg: convertToChannelOrder('rabg'),
-	rbag: convertToChannelOrder('rbag'),
-	rbga: convertToChannelOrder('rbga'),
-	rgba: convertToChannelOrder('rgba'),
-	rgab: convertToChannelOrder('rgab'),
-	abgr: convertToChannelOrder('abgr'),
-	abrg: convertToChannelOrder('abrg'),
-	agrb: convertToChannelOrder('agrb'),
-	agbr: convertToChannelOrder('agbr'),
-	arbg: convertToChannelOrder('arbg'),
-	argb: convertToChannelOrder('argb'),
-	bagr: convertToChannelOrder('bagr'),
-	barg: convertToChannelOrder('barg'),
-	bgar: convertToChannelOrder('bgar'),
-	bgra: convertToChannelOrder('bgra'),
-	brga: convertToChannelOrder('brga'),
-	brag: convertToChannelOrder('brag'),
-	gabr: convertToChannelOrder('gabr'),
-	garb: convertToChannelOrder('garb'),
-	gbar: convertToChannelOrder('gbar'),
-	gbra: convertToChannelOrder('gbra'),
-	grab: convertToChannelOrder('grab'),
-	grba: convertToChannelOrder('grba'),
+	tags: ['color', 'texture', 'matrix', 'camera', 'webgl', 'webglfundamentals'],
+	controls: ['matrix-3d', 'loop'],
+	filename: 'f-texture.png',
 }
 
 function clear() {
@@ -164,25 +104,39 @@ async function loadImage(url, callback) {
 
 function render(canvas) {
 	programInfo = loadProgram(canvas)
-	programInfo.context = loadTexture(image)
+	programInfo.context.texture = loadTexture(image)
 
-	updateBuffers(gl, programInfo, buffers)
-	setPositionAttribute(gl, buffers, programInfo)
+	updateGeometryBuffers(gl, buffers)
+	setPositionAttributeGeometry(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
 }
 
 async function main(canvas) {
 	init(canvas)
 	image = await loadImage(url, () => render(canvas))
+	programInfo = loadProgram(canvas)
 	return programInfo.context
 }
 
-function draw(t) {
-	clear()
-	dom.resize(gl.canvas)
-	drawScene(gl, programInfo, {channels: channels[channelOrder], blur})
+function draw(now) {
+	// Calculate frame rate
+	// Convert time to seconds
+	now *= 0.001
+	let deltaTime = now - then
+	// Save time for next draw
+	then = now
+	drawScene(gl, programInfo, buffers)
+
+	// Rotate the angle
+	programInfo.context.rotation[1] +=
+		programInfo.context.animationSpeed * deltaTime
+	update(programInfo.context)
 }
 
+function update(context) {
+	programInfo.context = context
+	buffers = initBuffers(gl, programInfo)
+}
 //
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
@@ -274,42 +228,27 @@ function loadProgram(canvas) {
 		attribLocations: {
 			a_position: gl.getAttribLocation(program, 'a_position'),
 			a_texCoord: gl.getAttribLocation(program, 'a_texCoord'),
+			a_color: gl.getAttribLocation(program, 'a_color'),
 		},
 		uniformLocations: {
 			// bind u_matrix
-			u_resolution: gl.getUniformLocation(program, 'u_resolution'),
-			u_image: gl.getUniformLocation(program, 'u_image'),
-			u_channels: gl.getUniformLocation(program, 'u_channels'),
-			u_blur: gl.getUniformLocation(program, 'u_blur'),
+			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
+			u_texture: gl.getUniformLocation(program, 'u_texture'),
 		},
 		errors: [],
+		context: geometries.getGeometryAnimation3D(),
 	}
 
+	vao = gl.createVertexArray()
+	gl.bindVertexArray(vao)
+
 	buffers = initBuffers(gl)
-	setPositionAttribute(gl, buffers, _programInfo)
-	setTextureAttribute(gl, buffers, _programInfo)
 	error = gl.getError()
 	if (error !== gl.NO_ERROR) {
 		programInfo.errors.push(error)
 	}
 
 	return _programInfo
-}
-
-function update({filters}) {
-	if (filters.channels !== channelOrder) {
-		channelOrder = filters.channels
-	}
-	if (filters.blur !== blur) {
-		blur = filters.blur
-	}
-
-	programInfo.context = {
-		image,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
-	}
 }
 
 export default {init, meta, main, draw, clear, update, stop}

@@ -20,20 +20,12 @@ export type TextureContext = {
 	filters?: Filters
 }
 
-export type SceneContext = (
-	| GeometryContext
-	| TextureContext
-	| CameraContext
-) & {
+export type SceneContext = {
+	geometry?: GeometryContext
+	texture?: TextureContext
+	camera?: CameraContext
 	animationSpeed?: number
 }
-
-// export type SceneContext = {
-// 	geometry?: GeometryContext
-// 	texture?: TextureContext
-// 	camera?: CameraContext
-// 	animationSpeed?: number
-// }
 
 export type ProgramInfo = {
 	context?: SceneContext

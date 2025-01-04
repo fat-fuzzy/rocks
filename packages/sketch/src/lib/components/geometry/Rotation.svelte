@@ -1,18 +1,8 @@
 <script lang="ts">
+	import type {RotationProps} from '$types'
+
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks
-
-	type Props = {
-		color: string
-		id?: string
-		size: string
-		label?: string
-		angle: number
-		min?: number
-		max?: number
-		disabled?: boolean
-		onupdate: (payload: {value: number | undefined}) => void
-	}
 
 	let {
 		color = '',
@@ -24,7 +14,7 @@
 		max = 360,
 		disabled,
 		onupdate,
-	}: Props = $props()
+	}: RotationProps = $props()
 
 	function update() {
 		onupdate({

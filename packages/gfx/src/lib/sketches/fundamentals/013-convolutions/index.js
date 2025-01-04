@@ -19,7 +19,7 @@ import {
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
-let imageAssetsPath = 'images'
+let imageAssetsPath = 'images/sketches'
 let filename = 'plants.png'
 let imgWidth = 620
 let imgHeight = 518

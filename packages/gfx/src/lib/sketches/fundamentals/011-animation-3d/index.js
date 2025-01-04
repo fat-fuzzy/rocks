@@ -84,7 +84,7 @@ function loadProgram(canvas) {
 		errors: [],
 	}
 
-	const vao = gl.createVertexArray()
+	vao = gl.createVertexArray()
 	gl.bindVertexArray(vao)
 	buffers = initBuffers(gl, _programInfo)
 
@@ -108,7 +108,7 @@ function draw(now) {
 	drawScene(gl, programInfo, buffers)
 
 	// Rotate the angle
-	programInfo.context.rotation[1] +=
+	programInfo.context.geometry.rotation[1] +=
 		programInfo.context.animationSpeed * deltaTime
 	update(programInfo.context)
 }

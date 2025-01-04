@@ -11,7 +11,7 @@ import {
 	PLAYER_TRANSITIONS,
 	PLAYER_SWITCH,
 } from '$lib/components/player/definitions.js'
-class PlayerStore {
+class PlayerActor {
 	state = $state(PlayerState.idle)
 	events: PlayerEventsType = PLAYER_EVENTS
 	feedback: FeedbackType[] = $state([])
@@ -97,6 +97,6 @@ class PlayerStore {
 	}
 }
 
-const stateStore = new PlayerStore()
+const actor = new PlayerActor()
 
-export default stateStore
+export default actor

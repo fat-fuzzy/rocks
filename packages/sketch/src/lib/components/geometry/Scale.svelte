@@ -1,23 +1,8 @@
 <script lang="ts">
+	import type {ScaleProps} from '$types'
+
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks
-
-	type Props = {
-		color: string
-		id: string
-		size: string
-		scaleX: number
-		scaleY: number
-		scaleZ?: number
-		minX: number
-		maxX: number
-		minY: number
-		maxY: number
-		minZ?: number
-		maxZ?: number
-		disabled?: boolean
-		onupdate: (payload: {value: number | undefined}) => void
-	}
 
 	let {
 		color = '',
@@ -34,7 +19,7 @@
 		maxZ,
 		disabled,
 		onupdate,
-	}: Props = $props()
+	}: ScaleProps = $props()
 
 	function updateX() {
 		onupdate({
