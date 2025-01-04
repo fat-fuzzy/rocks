@@ -1,4 +1,5 @@
 import {EventOrder} from '$types'
+import type {PlayerEvent, PlayerState} from '$types'
 
 export type PlayerUi = 'play' | 'pause' | 'stop' | 'clear'
 
@@ -36,4 +37,19 @@ export type PlayerSwitchState = {
 	variant: string
 	state: string
 	onclick?: (payload: PlayerPayload) => void
+}
+
+export type PlayerProps = {
+	id?: string
+	size: string
+	variant?: string
+
+	color?: string
+	disabled?: boolean
+	initial?: string
+	play: (payload: {event: PlayerEvent}) => void
+	pause: (payload: {event: PlayerEvent}) => void
+	clear: (payload: {event: PlayerEvent}) => void
+	stop: (payload: {event: PlayerEvent}) => void
+	init: (payload: {event: PlayerEvent}) => void
 }

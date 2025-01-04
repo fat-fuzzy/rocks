@@ -19,8 +19,9 @@ import {
 	SKETCH_STATE,
 	SKETCH_ACTIONS,
 	SKETCH_TRANSITIONS,
-} from './actor.js'
-class SketchStore {
+} from './definitions.js'
+
+class SketchActor {
 	public state: SketchStateType = $state(SKETCH_STATE)
 	public events: SketchEventType = $state(SKETCH_EVENTS)
 	public feedback: SketchFeedbackType = $state(SKETCH_FEEDBACK)
@@ -113,6 +114,6 @@ class SketchStore {
 	}
 }
 
-const sketchStore = new SketchStore()
+const sketchActor = new SketchActor()
 
-export default sketchStore
+export default sketchActor

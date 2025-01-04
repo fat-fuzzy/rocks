@@ -10,7 +10,7 @@ import {
 	PLAYER_ACTIONS,
 	PLAYER_TRANSITIONS,
 	PLAYER_SWITCH,
-} from '$lib/components/player/actor.js'
+} from '$lib/components/player/definitions.js'
 class PlayerStore {
 	state = $state(PlayerState.idle)
 	events: PlayerEventsType = PLAYER_EVENTS

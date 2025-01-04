@@ -2,7 +2,7 @@
 	import type {SceneContext} from '$types'
 	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
 	import Camera from '$lib/components/camera/Camera.svelte'
-	import store from '$lib/components/sketch/store.svelte'
+	import actor from '$lib/components/sketch/actor.svelte'
 
 	type Props = {
 		id: string
@@ -41,7 +41,7 @@
 	onupdate={updateCamera}
 	{color}
 	size="xs"
-	disabled={store.getSketchDisabled()}
+	disabled={actor.getSketchDisabled()}
 />
 
 <FieldOfView
@@ -51,5 +51,5 @@
 	onupdate={updateFieldOfView}
 	{color}
 	size="xs"
-	disabled={store.getSketchDisabled()}
+	disabled={actor.getSketchDisabled()}
 />

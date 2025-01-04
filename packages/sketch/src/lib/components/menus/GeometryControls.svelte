@@ -3,7 +3,7 @@
 	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
 	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
 
-	import store from '$lib/components/sketch/store.svelte'
+	import actor from '$lib/components/sketch/actor.svelte'
 
 	type Props = {
 		id: string
@@ -52,7 +52,7 @@
 	onupdate={updateFieldOfView}
 	{color}
 	size="xs"
-	disabled={store.getSketchDisabled()}
+	disabled={actor.getSketchDisabled()}
 />
 
 <Geometry3D
@@ -62,5 +62,5 @@
 	{context}
 	canvasWidth={canvas.getBoundingClientRect().width}
 	canvasHeight={canvas.getBoundingClientRect().height}
-	disabled={store.getSketchDisabled()}
+	disabled={actor.getSketchDisabled()}
 />

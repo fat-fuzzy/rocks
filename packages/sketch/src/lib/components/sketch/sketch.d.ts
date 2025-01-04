@@ -1,4 +1,4 @@
-import type {FeedbackType, Filters} from '$types'
+import type {FeedbackType, Filters, Scene} from '$types'
 import {
 	SketchEvent,
 	SketchState,
@@ -51,4 +51,19 @@ export type SketchTransitionsType = {
 			[event in UiEvent]?: UiState
 		}
 	}
+}
+
+export type SketchProps = {
+	scene: Scene
+	title: string
+	asset: string
+	dimensions: string
+	layer?: string // if 'layer' the canvas will appear on a layer (with drop shadow)
+	color?: string
+	size?: string
+	variant?: string
+	background?: string
+	layout?: string
+	breakpoint?: string
+	dev?: boolean
 }

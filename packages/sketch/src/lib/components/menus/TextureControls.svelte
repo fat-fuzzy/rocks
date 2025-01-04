@@ -2,7 +2,7 @@
 	import {onMount} from 'svelte'
 	import type {Filters} from '$types'
 	import ui from '@fat-fuzzy/ui'
-	import store from '$lib/components/sketch/store.svelte'
+	import actor from '$lib/components/sketch/actor.svelte'
 	const {ToggleMenu} = ui.recipes
 
 	type Props = {
@@ -119,7 +119,7 @@
 		items={channelMenuItems}
 		onupdate={updateChannel}
 		init={loadChannel}
-		disabled={store.getSketchDisabled()}
+		disabled={actor.getSketchDisabled()}
 	/>
 {/if}
 {#if blur}
@@ -133,7 +133,7 @@
 		items={blurMenuItems}
 		onupdate={updateBlur}
 		init={loadBlur}
-		disabled={store.getSketchDisabled()}
+		disabled={actor.getSketchDisabled()}
 	/>
 {/if}
 {#if convolutions}
@@ -147,6 +147,6 @@
 		items={effectMenuItems}
 		onupdate={updateEffects}
 		init={loadEffects}
-		disabled={store.getSketchDisabled()}
+		disabled={actor.getSketchDisabled()}
 	/>
 {/if}

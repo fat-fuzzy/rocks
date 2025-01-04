@@ -1,25 +1,11 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-	import store from './store.svelte'
+	import actor from './actor.svelte'
+	import type {PlayerProps} from '$types'
 	import {PlayerEvent, PlayerState} from '$types'
 
 	const {Button, Switch} = ui.blocks
-
-	type Props = {
-		id?: string
-		size: string
-		variant?: string
-
-		color?: string
-		disabled?: boolean
-		initial?: string
-		play: (payload: {event: PlayerEvent}) => void
-		pause: (payload: {event: PlayerEvent}) => void
-		clear: (payload: {event: PlayerEvent}) => void
-		stop: (payload: {event: PlayerEvent}) => void
-		init: (payload: {event: PlayerEvent}) => void
-	}
 
 	let {
 		id = 'player',
@@ -31,13 +17,13 @@
 		clear,
 		stop,
 		init,
-	}: Props = $props()
+	}: PlayerProps = $props()
 
 	function updatePlayer(payload: {value: string | number}) {
 		let event = payload.value as PlayerEvent
 		if (event === 'play') {
 			event =
-				store.getState() === PlayerState.playing
+				actor.getState() === PlayerState.playing
 					? PlayerEvent.pause
 					: PlayerEvent.play
 		}
@@ -55,11 +41,11 @@
 				stop({event})
 				break
 		}
-		store.update(event as PlayerEvent)
+		actor.update(event as PlayerEvent)
 	}
 
 	onMount(() => {
-		store.init({
+		actor.init({
 			initial: PlayerState.idle,
 			onclick: updatePlayer,
 		})
@@ -72,21 +58,21 @@
 
 <menu {id} class={`player l:grid:2xs l:burrito:sm`}>
 	<li>
-		{#key store.playState}
+		{#key actor.playState}
 			<Switch
 				id="play"
 				name="play"
 				value="play"
-				states={store.playSwitch}
+				states={actor.playSwitch}
 				{color}
 				{size}
 				shape="round"
 				layout="stack"
-				initial={store.playState}
-				disabled={store.getPlayDisabled()}
+				initial={actor.playState}
+				disabled={actor.getPlayDisabled()}
 				onclick={updatePlayer}
 			>
-				{store.playLabel}
+				{actor.playLabel}
 			</Switch>
 		{/key}
 	</li>
@@ -101,7 +87,7 @@
 			asset="clear"
 			shape="square"
 			onclick={updatePlayer}
-			disabled={store.getClearDisabled()}
+			disabled={actor.getClearDisabled()}
 		>
 			Clear
 		</Button>
@@ -117,7 +103,7 @@
 			asset="rect"
 			shape="square"
 			onclick={updatePlayer}
-			disabled={store.getStopDisabled()}
+			disabled={actor.getStopDisabled()}
 		>
 			Stop
 		</Button>
