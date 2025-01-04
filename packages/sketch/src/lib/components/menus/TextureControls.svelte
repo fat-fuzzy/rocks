@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {Filters} from '$types/index.js'
+	import type {Filters} from '$types'
 	import ui from '@fat-fuzzy/ui'
 	import store from '$lib/components/sketch/store.svelte'
 	const {ToggleMenu} = ui.recipes

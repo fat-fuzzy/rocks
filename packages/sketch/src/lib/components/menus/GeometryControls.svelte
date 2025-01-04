@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {SceneContext, GeometryProps} from '$types'
+	import type {SceneContext, GeometryContext} from '$types'
 	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
 	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
 
@@ -12,9 +12,9 @@
 		layout?: string
 		breakpoint?: string
 		threshold?: string
-		canvas: $bindable<HTMLCanvasElement>
-		onupdate: (payload: {geometry: GeometryProps}) => void
-		context: GeometryProps
+		canvas: HTMLCanvasElement
+		onupdate: (payload: {geometry: GeometryContext}) => void
+		context: GeometryContext
 	}
 
 	let {
@@ -34,7 +34,7 @@
 		geometry,
 	})
 
-	function updateGeometry(payload: {geometry: GeometryProps}) {
+	function updateGeometry(payload: {geometry: GeometryContext}) {
 		geometry = payload.geometry
 		onupdate(updated)
 	}

@@ -1,24 +1,25 @@
-import {SketchState, ControlsState, CanvasState} from '$types/index.js'
-import type {Filters} from '$types/index.js'
+import type {
+	Filters,
+	UiState,
+	UiEvent,
+	UiAction,
+	SketchUi,
+	SketchStateType,
+	SketchActionsType,
+	SketchTransitionsType,
+	SketchFeedbackType,
+	SketchEventType,
+} from '$types'
 
-import {PlayerState} from '$lib/components/player/types.js'
+import {PlayerState, SketchState, ControlsState, CanvasState} from '$types'
 
 import {
-	type UiState,
-	type UiEvent,
-	type UiAction,
-	type SketchUi,
-	type SketchStateType,
-	type SketchActionsType,
-	type SketchTransitionsType,
-	type SketchFeedbackType,
-	type SketchEventType,
 	SKETCH_FEEDBACK,
 	SKETCH_EVENTS,
 	SKETCH_STATE,
 	SKETCH_ACTIONS,
 	SKETCH_TRANSITIONS,
-} from './types.js'
+} from './actor.js'
 class SketchStore {
 	public state: SketchStateType = $state(SKETCH_STATE)
 	public events: SketchEventType = $state(SKETCH_EVENTS)

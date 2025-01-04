@@ -1,62 +1,27 @@
-import {
-	SketchEvent,
-	SketchState,
-	SketchAction,
-	ControlsEvent,
-	ControlsState,
-	ControlsAction,
-	CanvasState,
-	CanvasAction,
-	CanvasEvent,
-	type FeedbackType,
-	type Filters,
-} from '$types/index.js'
+import type {
+	Filters,
+	SketchStateType,
+	SketchActionsType,
+	SketchTransitionsType,
+	SketchFeedbackType,
+	SketchEventType,
+} from '$types'
 
 import {
-	PlayerEvent,
 	PlayerState,
+	SketchState,
+	ControlsState,
+	CanvasState,
 	PlayerAction,
-	PLAYER_TRANSITIONS,
-} from '$lib/components/player/types.js'
+	ControlsAction,
+	SketchAction,
+	CanvasAction,
+	PlayerEvent,
+	SketchEvent,
+	ControlsEvent,
+} from '$types'
 
-export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
-
-export type UiState = SketchState | ControlsState | PlayerState | CanvasState
-
-export type UiEvent = SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
-
-export type UiAction =
-	| SketchAction
-	| ControlsAction
-	| PlayerAction
-	| CanvasAction
-
-export type SketchFeedbackType = {
-	[ui in SketchUi]: FeedbackType[]
-}
-
-export type SketchEventType = {
-	previous: UiEvent | ''
-	current: UiEvent | ''
-}
-
-export type SketchStateType = {
-	[ui in SketchUi]: UiState
-}
-
-export type SketchActionsType = {
-	[ui in SketchUi]: {
-		[state in UiState]?: UiAction[]
-	}
-}
-
-export type SketchTransitionsType = {
-	[ui in SketchUi]?: {
-		[state in UiState]?: {
-			[event in UiEvent]?: UiState
-		}
-	}
-}
+import {PLAYER_TRANSITIONS} from '$lib/components/player/actor.js'
 
 export const DEFAULT_FILTERS: Filters = {
 	channels: ['rgba'],

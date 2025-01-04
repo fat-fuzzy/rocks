@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import type {GeometryContext} from '$types/index.js'
+	import type {GeometryContext} from '$types'
 
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'

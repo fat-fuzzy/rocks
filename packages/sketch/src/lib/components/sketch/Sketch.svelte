@@ -7,14 +7,14 @@
 		Filters,
 		CameraContext,
 		GeometryContext,
-	} from '$types/index.js'
+	} from '$types'
 	import {
 		CanvasState,
 		SketchEvent,
 		ControlsEvent,
 		CanvasEvent,
-	} from '$types/index.js'
-	import {PlayerEvent} from '$lib/components/player/types.js'
+		PlayerEvent,
+	} from '$types'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Player from '$lib/components/player/Player.svelte'
@@ -24,7 +24,7 @@
 	import Debug from '$lib/components/debug/Debug.svelte'
 
 	import store from './store.svelte'
-	import {DEFAULT_FILTERS} from './types.js'
+	import {DEFAULT_FILTERS} from './actor.js'
 
 	type Props = {
 		scene: Scene
@@ -209,7 +209,7 @@
 	function updateFilters(filters: Filters) {
 		try {
 			scene.update({...context, filters})
-			if (meta.controls.includes('filters')) {
+			if (meta.controls.includes('texture')) {
 				render()
 			}
 			store.update(ControlsEvent.update)
@@ -222,7 +222,7 @@
 	function loadFilters(filters: Filters) {
 		try {
 			scene.update({...context, filters})
-			if (meta.controls.includes('filters')) {
+			if (meta.controls.includes('texture')) {
 				render()
 			}
 		} catch (e: unknown) {
@@ -312,7 +312,7 @@
 								onupdate={updateGeometry}
 								{context}
 							/>
-						{:else if meta.controls.includes('filters')}
+						{:else if meta.controls.includes('texture')}
 							{#key resetEvent}
 								<TextureControls
 									id={`${id}-texture-controls`}

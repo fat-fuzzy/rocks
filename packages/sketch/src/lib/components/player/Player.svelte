@@ -2,7 +2,8 @@
 	import {onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import store from './store.svelte'
-	import {PlayerEvent, PlayerState} from './types.js'
+	import {PlayerEvent, PlayerState} from '$types'
+
 	const {Button, Switch} = ui.blocks
 
 	type Props = {
