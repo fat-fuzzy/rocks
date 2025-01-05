@@ -1,6 +1,9 @@
 <script lang="ts">
-	import {onDestroy, onMount} from 'svelte'
 	import type {SketchProps, SceneContext, SceneMeta, Filters} from '$types'
+
+	import {onDestroy, onMount} from 'svelte'
+	import ui from '@fat-fuzzy/ui'
+
 	import {
 		CanvasState,
 		SketchEvent,
@@ -18,6 +21,8 @@
 
 	import {DEFAULT_FILTERS} from './definitions.js'
 	import actor from './actor.svelte'
+
+	const {Feedback} = ui.blocks
 
 	let {
 		scene,
@@ -112,7 +117,10 @@
 		actor.feedback.canvas = []
 		let random = Math.random()
 		resetEvent = random !== resetEvent ? random : random - 1
-		actor.updateFilters(DEFAULT_FILTERS, ControlsEvent.update)
+		actor.updateTexture(
+			{texture: {filters: DEFAULT_FILTERS}},
+			ControlsEvent.update,
+		)
 	}
 
 	function clear() {
@@ -144,8 +152,8 @@
 
 	function updateGeometry(payload: SceneContext) {
 		context.geometry = payload.geometry
-		if (context.camera) {
-			context.camera.fieldOfView = payload.camera?.fieldOfView ?? 60
+		if (context.camera && payload.camera) {
+			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
 		}
 		scene.update({...context, texture: {filters}})
 		actor.update(ControlsEvent.update)
@@ -183,7 +191,7 @@
 		}
 	}
 
-	function updateFilters(filters: Filters) {
+	function updateTexture(filters: Filters) {
 		try {
 			scene.update({...context, texture: {filters}})
 			if (meta.controls.includes('texture')) {
@@ -196,7 +204,7 @@
 		}
 	}
 
-	function loadFilters(filters: Filters) {
+	function initTexture(filters: Filters) {
 		try {
 			scene.update({...context, texture: {filters}})
 			if (meta.controls.includes('texture')) {
@@ -243,10 +251,13 @@
 				</p>
 			</canvas>
 			{#if actor.feedback.canvas.length}
-				{#each actor.feedback.canvas as feedback}
-					<pre
-						class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
-				{/each}
+				<div class="feedback">
+					{#each actor.feedback.canvas as feedback}
+						<Feedback status={feedback.status} context="code" {size}>
+							{feedback.message}
+						</Feedback>
+					{/each}
+				</div>
 			{/if}
 		</div>
 	</div>
@@ -293,11 +304,9 @@
 							{#key resetEvent}
 								<TextureControls
 									id={`${id}-texture-controls`}
-									channels={meta.filters?.channels}
-									blur={meta.filters?.blur}
-									convolutions={meta.filters?.convolutions}
-									onupdate={updateFilters}
-									init={loadFilters}
+									filters={meta.filters ?? DEFAULT_FILTERS}
+									onupdate={updateTexture}
+									init={initTexture}
 								/>
 							{/key}
 						{/if}

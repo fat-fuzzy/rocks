@@ -31,7 +31,7 @@ export function updateBuffers(
 	programInfo,
 	{texCoordBuffer, positionBuffer},
 ) {
-	const {width, height} = programInfo.context
+	const {width, height} = programInfo.context.texture.image
 	updateTextureBufferData(gl, texCoordBuffer)
 	updatePositionBufferData(gl, positionBuffer, width, height)
 

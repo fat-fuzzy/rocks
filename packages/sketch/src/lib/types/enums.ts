@@ -18,6 +18,7 @@ export enum CanvasState {
 	playing = 'playing',
 	paused = 'paused',
 	stopped = 'stopped',
+	error = 'error',
 }
 
 export enum CanvasEvent {

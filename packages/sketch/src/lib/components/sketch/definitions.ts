@@ -103,6 +103,7 @@ export const SKETCH_TRANSITIONS: SketchTransitionsType = {
 	canvas: {
 		[CanvasState.idle]: {
 			[PlayerEvent.play]: CanvasState.playing,
+			[SketchEvent.loadNok]: CanvasState.error,
 		},
 		[CanvasState.playing]: {
 			[PlayerEvent.pause]: CanvasState.paused,

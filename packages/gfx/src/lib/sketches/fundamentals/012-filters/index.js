@@ -18,6 +18,7 @@ import {
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
+import geometries from '../../../math/geometries'
 
 let imageAssetsPath = 'images/sketches'
 let filename = 'plants.png'
@@ -246,10 +247,14 @@ function loadTexture(image) {
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 	}
 	return {
-		image,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
+		texture: {
+			image,
+		},
+		geometry: {
+			translation: [0, 0],
+			width: imgWidth,
+			height: imgHeight,
+		},
 	}
 }
 
@@ -296,16 +301,16 @@ function loadProgram(canvas) {
 	return _programInfo
 }
 
-function update({filters}) {
-	if (filters.channels !== channelOrder) {
-		channelOrder = filters.channels
+function update({texture}) {
+	if (texture.filters.channels !== channelOrder) {
+		channelOrder = texture.filters.channels
 	}
-	if (filters.blur !== blur) {
-		blur = filters.blur
+	if (texture.filters.blur !== blur) {
+		blur = texture.filters.blur
 	}
 
 	programInfo.context = {
-		image,
+		texture: {image},
 		geometry: {translation: [0, 0], width: imgWidth, height: imgHeight},
 	}
 }

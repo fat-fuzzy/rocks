@@ -117,7 +117,7 @@ function init(canvas) {
 	}
 }
 
-function loadImage(url, callback) {
+async function loadImage(url, callback) {
 	let image = new Image()
 	image.src = url
 	image.onload = callback
@@ -147,9 +147,9 @@ function render(canvas) {
 	gl.bindVertexArray(null)
 }
 
-function main(canvas) {
+async function main(canvas) {
 	init(canvas)
-	image = loadImage(url, () => render(canvas))
+	image = await loadImage(url, () => render(canvas))
 	return programInfo.context
 }
 
@@ -230,12 +230,14 @@ function loadTexture(image) {
 	}
 
 	return {
-		image,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
-		convolutions: ['normal'],
-		level,
+		texture: {
+			image,
+			filters: {
+				convolutions: ['normal'],
+				level,
+			},
+		},
+		geometry: {translation: [0, 0], width: imgWidth, height: imgHeight},
 	}
 }
 
@@ -272,12 +274,14 @@ function loadProgram(canvas) {
 			u_level: gl.getUniformLocation(program, 'u_level'),
 		},
 		context: {
-			image,
-			translation: [0, 0],
-			width: imgWidth,
-			height: imgHeight,
-			convolutions: ['normal'],
-			level,
+			texture: {
+				image,
+				filters: {
+					convolutions: ['normal'],
+					level,
+				},
+			},
+			geometry: {translation: [0, 0], width: imgWidth, height: imgHeight},
 		},
 		errors: [],
 	}
@@ -289,14 +293,16 @@ function loadProgram(canvas) {
 	return _programInfo
 }
 
-function update({filters}) {
+function update({texture}) {
 	programInfo.context = {
-		image,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
-		convolutions: filters?.convolutions ?? ['normal'],
-		level,
+		texture: {
+			image,
+			filters: {
+				convolutions: texture.filters?.convolutions ?? ['normal'],
+				level,
+			},
+		},
+		geometry: {translation: [0, 0], width: imgWidth, height: imgHeight},
 	}
 }
 

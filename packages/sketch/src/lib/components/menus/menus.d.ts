@@ -1,8 +1,10 @@
 import type {
+	Filters,
 	GeometryContext,
 	CameraContext,
 	GeometryControlsProps,
 	SceneContext,
+	TextureContext,
 } from '$types'
 
 export type CameraControlsProps = {
@@ -26,4 +28,18 @@ export type GeometryControlsProps = {
 	canvas: HTMLCanvasElement
 	onupdate: (payload: SceneContext) => void
 	context: SceneContext
+}
+
+export type TextureControlProps = {
+	id: string
+	color?: string
+	size?: string
+	variant?: string
+	background?: string
+	layout?: string
+	breakpoint?: string
+	threshold?: string
+	init: (payload: Filters) => void // TODO: Fix type
+	onupdate: (payload: Filters) => void
+	filters: Filters
 }

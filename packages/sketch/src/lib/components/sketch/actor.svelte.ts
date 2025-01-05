@@ -1,5 +1,4 @@
 import type {
-	Filters,
 	UiState,
 	UiEvent,
 	UiAction,
@@ -9,6 +8,7 @@ import type {
 	SketchTransitionsType,
 	SketchFeedbackType,
 	SketchEventType,
+	SceneContext,
 } from '$types'
 
 import {PlayerState, SketchState, ControlsState, CanvasState} from '$types'
@@ -48,8 +48,8 @@ class SketchActor {
 		return this.state.canvas === PlayerState.playing ? 'active' : 'inactive'
 	}
 
-	public getNextActions(state: SketchUi): UiAction[] | undefined {
-		return this.actions[state][this.state[state]]
+	public getNextActions(ui: SketchUi): UiAction[] | undefined {
+		return this.actions[ui][this.state[ui]]
 	}
 
 	public getFeedback(key: SketchUi): {status: string; message: string}[] {
@@ -86,16 +86,16 @@ class SketchActor {
 			: undefined
 	}
 
-	public getTransition(key: SketchUi, event: UiEvent): UiState {
-		const currentState = this.state[key]
-		const transition = this.transitions[key]
-		if (transition) {
-			const transitionState = transition[currentState]
+	public getTransition(ui: SketchUi, event: UiEvent): UiState {
+		const currentState = this.state[ui]
+		const transitions = this.transitions[ui]
+		if (transitions) {
+			const transitionState = transitions[currentState]
 			if (transitionState && transitionState[event]) {
-				this.state[key] = transitionState[event] as UiState
+				this.state[ui] = transitionState[event] as UiState
 			}
 		}
-		return this.state[key]
+		return this.state[ui]
 	}
 
 	public update(event: UiEvent): void {
@@ -108,7 +108,7 @@ class SketchActor {
 		this.events.previous = previous
 	}
 
-	public updateFilters(filters: Filters, event: UiEvent): void {
+	public updateTexture({texture}: SceneContext, event: UiEvent): void {
 		// TODO: implement
 		this.update(event)
 	}
