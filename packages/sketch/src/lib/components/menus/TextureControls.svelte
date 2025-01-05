@@ -3,7 +3,7 @@
 	import Filters from '$lib/components/texture/Filters.svelte'
 	import actor from '$lib/components/sketch/actor.svelte'
 
-	let {size = 'xs', init, onupdate, filters}: TextureControlProps = $props()
+	let {size = 'xs', onupdate, filters}: TextureControlProps = $props()
 
 	let channels = filters.channels
 	let blur = filters.blur
@@ -19,5 +19,4 @@
 	{blur}
 	{convolutions}
 	{onupdate}
-	{init}
 />

@@ -27,6 +27,7 @@ let imgHeight = 518
 let url = `/${imageAssetsPath}/${filename}`
 let gl
 let program
+let vao
 let programInfo = {
 	errors: [],
 }
@@ -136,7 +137,7 @@ function stop() {
 
 	if (buffers) {
 		if (buffers.position) gl.deleteBuffer(buffers.position)
-		if (buffers.texture) gl.deleteBuffer(buffers.texture)
+		if (buffers.texCoord) gl.deleteBuffer(buffers.texCoord)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
@@ -165,11 +166,25 @@ async function loadImage(url, callback) {
 
 function render(canvas) {
 	programInfo = loadProgram(canvas)
+	// Create a vertex array object (attribute state)
+	vao = gl.createVertexArray()
+	// Bind the attribute/buffer set we want.
+	gl.bindVertexArray(vao)
 	programInfo.context = loadTexture(image)
 
 	updateBuffers(gl, programInfo, buffers)
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
+
+	error = gl.getError()
+	if (error !== gl.NO_ERROR) {
+		programInfo.errors.push(error)
+	} else {
+		programInfo.errors = []
+	}
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
 }
 
 async function main(canvas) {
@@ -181,7 +196,14 @@ async function main(canvas) {
 function draw(t) {
 	clear()
 	dom.resize(gl.canvas)
+
+	// Bind the VAO
+	gl.bindVertexArray(vao)
+
 	drawScene(gl, programInfo, {channels: channels[channelOrder], blur})
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
 }
 
 //

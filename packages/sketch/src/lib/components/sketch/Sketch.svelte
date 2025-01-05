@@ -193,7 +193,8 @@
 
 	function updateTexture(filters: Filters) {
 		try {
-			scene.update({...context, texture: {filters}})
+			context.texture = {filters}
+			scene.update(context)
 			if (meta.controls.includes('texture')) {
 				render()
 			}
@@ -201,18 +202,6 @@
 		} catch (e: unknown) {
 			actor.feedback.canvas.push({status: 'error', message: e as string})
 			actor.update(CanvasEvent.error)
-		}
-	}
-
-	function initTexture(filters: Filters) {
-		try {
-			scene.update({...context, texture: {filters}})
-			if (meta.controls.includes('texture')) {
-				render()
-			}
-		} catch (e: unknown) {
-			actor.feedback.canvas.push({status: 'error', message: e as string})
-			actor.update(CanvasEvent.loadNok)
 		}
 	}
 
@@ -306,7 +295,6 @@
 									id={`${id}-texture-controls`}
 									filters={meta.filters ?? DEFAULT_FILTERS}
 									onupdate={updateTexture}
-									init={initTexture}
 								/>
 							{/key}
 						{/if}

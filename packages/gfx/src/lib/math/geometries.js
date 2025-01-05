@@ -455,7 +455,7 @@ function getGeometryHierarchical(canvasWidth, canvasHeight) {
 }
 
 /**
- * @returns geometry
+ * @returns sceneContext
  */
 function getGeometryMatrix3D() {
 	const tx = -150
@@ -499,6 +499,28 @@ function getGeometryAnimation3D() {
 	}
 }
 
+/**
+ * @returns geometry
+ */
+function getGeometryTexture() {
+	const tx = -150
+	const ty = 0
+	const tz = -360
+	return {
+		geometry: {
+			color: DEFAULT_3D_GEOMETRY_COLORS,
+			translation: [tx, ty, tz],
+			rotation: [degToRad(190), degToRad(40), degToRad(30)],
+			scale: [1, 1, 1],
+		},
+		camera: {
+			fieldOfView: degToRad(60),
+			cameraAngle: degToRad(60),
+		},
+		animationSpeed: 1.2,
+	}
+}
+
 export default {
 	DEFAULT_RECT_COORDS,
 	DEFAULT_GEOMETRY_COORDS,
@@ -514,4 +536,5 @@ export default {
 	getGeometryMatrix3D,
 	getGeometryCamera3D,
 	getGeometryAnimation3D,
+	getGeometryTexture,
 }

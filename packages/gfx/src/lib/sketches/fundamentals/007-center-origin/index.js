@@ -117,8 +117,7 @@ function clear() {
 function stop() {
 	clear()
 	if (buffers) {
-		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
-		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
+		if (buffers.position) gl.delete(buffers.position)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)

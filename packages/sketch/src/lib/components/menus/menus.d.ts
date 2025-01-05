@@ -39,7 +39,6 @@ export type TextureControlProps = {
 	layout?: string
 	breakpoint?: string
 	threshold?: string
-	init: (payload: Filters) => void // TODO: Fix type
 	onupdate: (payload: Filters) => void
 	filters: Filters
 }

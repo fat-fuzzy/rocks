@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {onMount} from 'svelte'
 	import type {Filters, FiltersProps} from '$types'
 	import ui from '@fat-fuzzy/ui'
 	import {DEFAULT_FILTERS} from '$lib/components/sketch/definitions.js'
@@ -12,7 +11,6 @@
 		blur,
 		convolutions,
 		onupdate,
-		init,
 		disabled,
 	}: FiltersProps = $props()
 
@@ -82,10 +80,6 @@
 		loadEffects(selected)
 		onupdate(filters)
 	}
-
-	onMount(() => {
-		init(filters)
-	})
 </script>
 
 {#if channels}

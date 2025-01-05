@@ -11,11 +11,12 @@ import setup from '../../../webgl/setup'
 import geometries from '../../../math/geometries'
 import {drawScene} from './draw-scene'
 import {
-	initBuffers,
+	initTextureBuffer,
 	updateGeometryBuffers,
 	setPositionAttributeGeometry,
 	setTextureAttribute,
 } from '../../../webgl/buffers/textures'
+import {initBuffers as initGeometryBuffers} from '../../../webgl/buffers/geometry-default-3d'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
@@ -37,8 +38,6 @@ let vertexShader
 let fragmentShader
 let texture
 let image
-let channelOrder
-let blur = 0
 let error
 let meta = {
 	id: '014',
@@ -48,7 +47,7 @@ let meta = {
 	asset: 'texture',
 	categories: ['learning'],
 	tags: ['color', 'texture', 'matrix', 'camera', 'webgl', 'webglfundamentals'],
-	controls: ['matrix-3d', 'loop'],
+	controls: ['loop', 'camera'],
 	filename: 'f-texture.png',
 }
 
@@ -59,6 +58,11 @@ function clear() {
 	}
 
 	gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
+	// tell webgl to cull faces
+	gl.enable(gl.CULL_FACE)
+	gl.enable(gl.DEPTH_TEST) // enable depth testing
+	gl.depthFunc(gl.LEQUAL) // near things obscure far things
+
 	// Set the clear color to black, fully transparent
 	gl.clearColor(0.0, 0.0, 0.0, 0.0)
 	// Clear the context with the newly set color. This is
@@ -75,7 +79,7 @@ function stop() {
 
 	if (buffers) {
 		if (buffers.position) gl.deleteBuffer(buffers.position)
-		if (buffers.texture) gl.deleteBuffer(buffers.texture)
+		if (buffers.texCoord) gl.deleteBuffer(buffers.texCoord)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
@@ -104,7 +108,11 @@ async function loadImage(url, callback) {
 
 function render(canvas) {
 	programInfo = loadProgram(canvas)
-	programInfo.context.texture = loadTexture(image)
+	// Create a vertex array object (attribute state)
+	vao = gl.createVertexArray()
+	// Bind the attribute/buffer set we want.
+	gl.bindVertexArray(vao)
+	programInfo.context = loadContext(image)
 
 	updateGeometryBuffers(gl, buffers)
 	setPositionAttributeGeometry(gl, buffers, programInfo)
@@ -114,34 +122,42 @@ function render(canvas) {
 async function main(canvas) {
 	init(canvas)
 	image = await loadImage(url, () => render(canvas))
-	programInfo = loadProgram(canvas)
 	return programInfo.context
 }
 
 function draw(now) {
+	// Bind the VAO
+	gl.bindVertexArray(vao)
+
+	drawScene(gl, programInfo, buffers)
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
+
 	// Calculate frame rate
 	// Convert time to seconds
 	now *= 0.001
 	let deltaTime = now - then
 	// Save time for next draw
 	then = now
-	drawScene(gl, programInfo, buffers)
 
 	// Rotate the angle
-	programInfo.context.rotation[1] +=
+	programInfo.context.geometry.rotation[1] +=
 		programInfo.context.animationSpeed * deltaTime
-	update(programInfo.context)
 }
 
 function update(context) {
 	programInfo.context = context
-	buffers = initBuffers(gl, programInfo)
+	buffers = {
+		...initTextureBuffer(gl),
+		...initGeometryBuffers(gl),
+	}
 }
 //
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadTexture(image) {
+function loadContext(image) {
 	texture = gl.createTexture()
 	// make unit 0 the active texture uint
 	// (ie, the unit all other texture commands will affect
@@ -200,10 +216,10 @@ function loadTexture(image) {
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 	}
 	return {
-		image,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
+		texture: {
+			image,
+		},
+		...geometries.getGeometryTexture(),
 	}
 }
 
@@ -235,14 +251,17 @@ function loadProgram(canvas) {
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 			u_texture: gl.getUniformLocation(program, 'u_texture'),
 		},
+		context: geometries.getGeometryTexture(),
 		errors: [],
-		context: geometries.getGeometryAnimation3D(),
 	}
 
 	vao = gl.createVertexArray()
 	gl.bindVertexArray(vao)
 
-	buffers = initBuffers(gl)
+	buffers = {
+		...initTextureBuffer(gl),
+		...initGeometryBuffers(gl),
+	}
 	error = gl.getError()
 	if (error !== gl.NO_ERROR) {
 		programInfo.errors.push(error)

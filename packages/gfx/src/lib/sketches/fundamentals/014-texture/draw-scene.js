@@ -27,26 +27,23 @@ function drawScene(gl, programInfo, buffers) {
 	gl.useProgram(programInfo.program)
 
 	// Geometry, View and Camera factors
-	let geometryCount = 5
-	let geometriesRadius = 200
 	let aspect = gl.canvas.width / gl.canvas.height
 	let zNear = 1
 	let zFar = 2000
 
 	// Initialize the Geometry projection matrix
 	let projectionMatrix = M4.perspective(
-		programInfo.context.fieldOfView,
+		programInfo.context.camera.fieldOfView,
 		aspect,
 		zNear,
 		zFar,
 	)
 
 	// Compute the position of the first F
-	let target = [geometriesRadius, 0, 0]
+	let target = [0, 0, 0]
 
 	// Initialize the Camera matrix
 	let cameraMatrix = M4.yRotation(programInfo.context.camera.cameraAngle)
-	cameraMatrix = M4.translate(cameraMatrix, 0, 65, geometriesRadius * 1.5)
 
 	/* prettier-ignore */
 	let cameraPosition = [
@@ -56,8 +53,6 @@ function drawScene(gl, programInfo, buffers) {
 	]
 
 	let up = [0, 1, 0]
-	let modelYRotationRadians = programInfo.context.geometry.rotation[0]
-	let modelXRotationRadians = programInfo.context.geometry.rotation[1]
 
 	// Compute the Camera matrix's position in relation to its target
 	cameraMatrix = M4.lookAt(cameraPosition, target, up)
@@ -68,11 +63,18 @@ function drawScene(gl, programInfo, buffers) {
 	// Make the Projection matrix: move the projection space to vue space (=space in front of camera)
 	let viewProjectionMatrix = M4.multiply(projectionMatrix, viewMatrix)
 
-	let matrix = M4.xRotate(viewProjectionMatrix, modelXRotationRadians)
-	matrix = M4.yRotate(matrix, modelYRotationRadians)
+	let matrix = M4.xRotate(
+		viewProjectionMatrix,
+		programInfo.context.geometry.rotation[0],
+	)
+	matrix = M4.yRotate(matrix, programInfo.context.geometry.rotation[1])
+	matrix = M4.zRotate(matrix, programInfo.context.geometry.rotation[2])
 
 	// Set the matrix.
 	gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
+
+	setPositionAttribute(gl, buffers, programInfo)
+	setColorAttribute(gl, buffers, programInfo)
 
 	// Draw the geometry.
 	let primitiveType = gl.TRIANGLES

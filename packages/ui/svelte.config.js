@@ -14,9 +14,9 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			$stores: path.resolve('./src/lib/stores'),
-			$types: path.resolve('./src/lib/types/index.d.ts'),
 			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),
+			$types: path.resolve('./src/lib/types/index.d.ts'),
 		},
 	},
 	extensions: ['.svelte', ...mdsvexConfig.extensions],

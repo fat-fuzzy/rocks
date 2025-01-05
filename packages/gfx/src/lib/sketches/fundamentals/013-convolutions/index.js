@@ -97,8 +97,8 @@ function stop() {
 	clear()
 
 	if (buffers) {
-		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
-		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
+		if (buffers.position) gl.deleteBuffer(buffers.position)
+		if (buffers.texCoord) gl.deleteBuffer(buffers.texCoord)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
@@ -131,7 +131,7 @@ function render(canvas) {
 	vao = gl.createVertexArray()
 	// Bind the attribute/buffer set we want.
 	gl.bindVertexArray(vao)
-	programInfo.context = loadTexture(image)
+	programInfo.context.texture = loadContext(image)
 
 	updateBuffers(gl, programInfo, buffers)
 	setPositionAttribute(gl, buffers, programInfo)
@@ -170,7 +170,7 @@ function draw(time) {
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadTexture(image) {
+function loadContext(image) {
 	texture = gl.createTexture()
 	// make unit 0 the active texture uint
 	// (ie, the unit all other texture commands will affect)
@@ -230,14 +230,11 @@ function loadTexture(image) {
 	}
 
 	return {
-		texture: {
-			image,
-			filters: {
-				convolutions: ['normal'],
-				level,
-			},
+		image,
+		filters: {
+			convolutions: ['normal'],
+			level,
 		},
-		geometry: {translation: [0, 0], width: imgWidth, height: imgHeight},
 	}
 }
 

@@ -12,5 +12,4 @@ export type FiltersProps = {
 	blur?: number[]
 	convolutions?: string[]
 	onupdate: (payload: any) => void // TODO: Fix type
-	init: (payload: any) => void // TODO: Fix type
 }
