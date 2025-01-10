@@ -4,9 +4,9 @@
 
 	import gfx from '@fat-fuzzy/gfx'
 	import ui from '@fat-fuzzy/ui'
-	import {graphics} from '@fat-fuzzy/sketch'
+	import sketch from '@fat-fuzzy/sketch'
 
-	const {Sketch} = graphics
+	const {Sketch} = sketch.graphics
 	const {PageMain} = ui.content
 
 	let scene = $derived(
