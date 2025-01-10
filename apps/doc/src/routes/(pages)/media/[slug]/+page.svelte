@@ -113,17 +113,6 @@
 		}
 	}
 
-	@media (min-width: 800px) {
-		/**This makes sure the zoom and close zoom buttons are coherently aligned in all viewports */
-		.button-zoom {
-			flex-basis: 0;
-			flex-grow: 0;
-		}
-		dialog.l\:sidebar\:2xs {
-			flex-direction: row-reverse;
-		}
-	}
-
 	/*   Closed state of the dialog   */
 	dialog {
 		opacity: 0;
