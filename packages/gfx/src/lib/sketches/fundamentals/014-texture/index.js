@@ -13,14 +13,15 @@ import {drawScene} from './draw-scene'
 import {
 	initTextureBuffer,
 	updateGeometryBuffers,
-	setPositionAttributeGeometry,
+	setPositionAttribute,
 	setTextureAttribute,
 } from '../../../webgl/buffers/textures'
-import {initBuffers as initGeometryBuffers} from '../../../webgl/buffers/geometry-default-3d'
+import {initPositionBuffer} from '../../../webgl/buffers/geometry-default-3d'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
+const {DEFAULT_3D_GEOMETRY_TEX_COORDS} = geometries
 let imageAssetsPath = 'images/sketches'
 let filename = 'f-texture.png'
 let imgWidth = 256
@@ -91,7 +92,7 @@ function init(canvas) {
 	gl = canvas.getContext('webgl2')
 
 	// Only continue if WebGL is available and working
-	if (gl === null) {
+	if (!gl) {
 		throw Error(
 			'Unable to initialize WebGL. Your browser or machine may not support it.',
 		)
@@ -112,28 +113,21 @@ function render(canvas) {
 	vao = gl.createVertexArray()
 	// Bind the attribute/buffer set we want.
 	gl.bindVertexArray(vao)
-	programInfo.context = loadContext(image)
+	programInfo.context.texture = loadTexture(image)
 
 	updateGeometryBuffers(gl, buffers)
-	setPositionAttributeGeometry(gl, buffers, programInfo)
-	setTextureAttribute(gl, buffers, programInfo)
+	setPositionAttribute(gl, buffers, programInfo)
+	setTextureAttribute(gl, buffers, programInfo, DEFAULT_3D_GEOMETRY_TEX_COORDS)
 }
 
 async function main(canvas) {
 	init(canvas)
 	image = await loadImage(url, () => render(canvas))
+	programInfo.context = geometries.getGeometryTexture()
 	return programInfo.context
 }
 
 function draw(now) {
-	// Bind the VAO
-	gl.bindVertexArray(vao)
-
-	drawScene(gl, programInfo, buffers)
-
-	// Unbind the VAO when we're done drawing
-	gl.bindVertexArray(null)
-
 	// Calculate frame rate
 	// Convert time to seconds
 	now *= 0.001
@@ -144,20 +138,28 @@ function draw(now) {
 	// Rotate the angle
 	programInfo.context.geometry.rotation[1] +=
 		programInfo.context.animationSpeed * deltaTime
+
+	// Bind the VAO
+	gl.bindVertexArray(vao)
+	drawScene(gl, programInfo, buffers)
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
 }
 
-function update(context) {
-	programInfo.context = context
-	buffers = {
-		...initTextureBuffer(gl),
-		...initGeometryBuffers(gl),
+function update({texture, geometry, camera}) {
+	programInfo.context = {
+		texture: {
+			image,
+		},
+		...geometries.getGeometryTexture(),
 	}
 }
 //
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadContext(image) {
+function loadTexture(image) {
 	texture = gl.createTexture()
 	// make unit 0 the active texture uint
 	// (ie, the unit all other texture commands will affect
@@ -215,6 +217,7 @@ function loadContext(image) {
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 	}
+
 	return {
 		texture: {
 			image,
@@ -244,12 +247,10 @@ function loadProgram(canvas) {
 		attribLocations: {
 			a_position: gl.getAttribLocation(program, 'a_position'),
 			a_texCoord: gl.getAttribLocation(program, 'a_texCoord'),
-			a_color: gl.getAttribLocation(program, 'a_color'),
 		},
 		uniformLocations: {
 			// bind u_matrix
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
-			u_texture: gl.getUniformLocation(program, 'u_texture'),
 		},
 		context: geometries.getGeometryTexture(),
 		errors: [],
@@ -259,8 +260,8 @@ function loadProgram(canvas) {
 	gl.bindVertexArray(vao)
 
 	buffers = {
+		...initPositionBuffer(gl),
 		...initTextureBuffer(gl),
-		...initGeometryBuffers(gl),
 	}
 	error = gl.getError()
 	if (error !== gl.NO_ERROR) {

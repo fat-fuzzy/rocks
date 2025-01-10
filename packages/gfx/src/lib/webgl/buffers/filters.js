@@ -2,11 +2,7 @@ import geometries from '../../math/geometries'
 import matrices from '../../math/matrices'
 
 const {M4} = matrices
-const {
-	DEFAULT_TEXTURE_COORDS,
-	DEFAULT_3D_GEOMETRY_COORDS,
-	DEFAULT_3D_GEOMETRY_TEX_COORDS,
-} = geometries
+const {DEFAULT_TEXTURE_COORDS} = geometries
 
 //  {width, height} = programInfo.context
 export function initBuffers(gl) {
@@ -30,7 +26,7 @@ export function initTextureBuffer(gl) {
 
 //  {width, height} = programInfo.context
 export function updateGeometryBuffers(gl, {texCoord, position}) {
-	updateTextureBufferGeometry(gl, texCoord)
+	updateTextureBufferData(gl, texCoord)
 	updatePositionBufferGeometry(gl, position)
 
 	return {
@@ -38,7 +34,6 @@ export function updateGeometryBuffers(gl, {texCoord, position}) {
 		position,
 	}
 }
-
 //  {width, height} = programInfo.context
 export function updateBuffers(gl, programInfo, {texCoord, position}) {
 	const {width, height} = programInfo.context.texture.image
@@ -65,19 +60,19 @@ function updatePositionBufferGeometry(gl, positionBuffer) {
 	var matrix = M4.translate(M4.xRotation(Math.PI), -50, -75, -15)
 	//var matrix = M4.xRotate(m4.translation(-50, -75, -15), Math.PI);
 
-	for (var ii = 0; ii < DEFAULT_3D_GEOMETRY_COORDS.length; ii += 3) {
+	for (var ii = 0; ii < DEFAULT_TEXTURE_COORDS.length; ii += 3) {
 		var vector = M4.transformPoint(matrix, [
-			DEFAULT_3D_GEOMETRY_COORDS[ii + 0],
-			DEFAULT_3D_GEOMETRY_COORDS[ii + 1],
-			DEFAULT_3D_GEOMETRY_COORDS[ii + 2],
+			DEFAULT_TEXTURE_COORDS[ii + 0],
+			DEFAULT_TEXTURE_COORDS[ii + 1],
+			DEFAULT_TEXTURE_COORDS[ii + 2],
 			1,
 		])
-		DEFAULT_3D_GEOMETRY_COORDS[ii + 0] = vector[0]
-		DEFAULT_3D_GEOMETRY_COORDS[ii + 1] = vector[1]
-		DEFAULT_3D_GEOMETRY_COORDS[ii + 2] = vector[2]
+		DEFAULT_TEXTURE_COORDS[ii + 0] = vector[0]
+		DEFAULT_TEXTURE_COORDS[ii + 1] = vector[1]
+		DEFAULT_TEXTURE_COORDS[ii + 2] = vector[2]
 	}
 
-	gl.bufferData(gl.ARRAY_BUFFER, DEFAULT_3D_GEOMETRY_COORDS, gl.STATIC_DRAW)
+	gl.bufferData(gl.ARRAY_BUFFER, DEFAULT_TEXTURE_COORDS, gl.STATIC_DRAW)
 }
 
 function updatePositionBufferData(gl, positionBuffer, width, height) {
@@ -102,16 +97,7 @@ function updatePositionBufferData(gl, positionBuffer, width, height) {
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)
 }
 
-export function updateTextureBufferGeometry(gl, texCoordBuffer) {
-	gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer)
-	gl.bufferData(
-		gl.ARRAY_BUFFER,
-		new Float32Array(DEFAULT_3D_GEOMETRY_TEX_COORDS),
-		gl.STATIC_DRAW,
-	)
-}
-
-export function updateTextureBufferData(gl, texCoordBuffer) {
+function updateTextureBufferData(gl, texCoordBuffer) {
 	gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer)
 	gl.bufferData(
 		gl.ARRAY_BUFFER,
@@ -120,7 +106,7 @@ export function updateTextureBufferData(gl, texCoordBuffer) {
 	)
 }
 
-export function setPositionAttribute(gl, buffers, programInfo) {
+export function setPositionAttributeGeometry(gl, buffers, programInfo) {
 	const count = 3 // pull out 3 values from buffer per iteration
 	const type = gl.FLOAT // the data in the buffer is 32bit floats
 	const normalize = false
@@ -139,7 +125,26 @@ export function setPositionAttribute(gl, buffers, programInfo) {
 	gl.enableVertexAttribArray(programInfo.attribLocations.a_position)
 }
 
-export function setTextureAttribute(gl, buffers, programInfo, coords) {
+export function setPositionAttribute(gl, buffers, programInfo) {
+	const count = 2 // pull out 3 values from buffer per iteration
+	const type = gl.FLOAT // the data in the buffer is 32bit floats
+	const normalize = false
+	const stride = 0 // indicates # of bytes from one set of values to the next = 0 -> use type & count instead
+	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
+
+	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position)
+	gl.vertexAttribPointer(
+		programInfo.attribLocations.a_position,
+		count,
+		type,
+		normalize,
+		stride,
+		offset,
+	)
+	gl.enableVertexAttribArray(programInfo.attribLocations.a_position)
+}
+
+export function setTextureAttribute(gl, buffers, programInfo) {
 	const count = 2 // pull out 2 values from buffer per iteration
 	const type = gl.FLOAT // the data in the buffer is 32bit floats
 	const normalize = false
@@ -147,7 +152,11 @@ export function setTextureAttribute(gl, buffers, programInfo, coords) {
 	const offset = 0 // byte index to start reading data in the buffer = 0 -> start at the beginning
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, buffers.texCoord)
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coords), gl.STATIC_DRAW)
+	gl.bufferData(
+		gl.ARRAY_BUFFER,
+		new Float32Array(DEFAULT_TEXTURE_COORDS),
+		gl.STATIC_DRAW,
+	)
 	gl.vertexAttribPointer(
 		programInfo.attribLocations.a_texCoord,
 		count,

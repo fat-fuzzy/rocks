@@ -168,7 +168,8 @@
 			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
 			context.camera.cameraAngle = degToRad(payload.camera.cameraAngle ?? 0)
 		}
-		scene.update({...context, texture: {filters}})
+		context.texture = {filters}
+		scene.update(context)
 		actor.update(ControlsEvent.update)
 	}
 
@@ -282,14 +283,16 @@
 								id={`${id}-camera-controls`}
 								onupdate={updateCamera}
 							/>
-						{:else if context.geometry && meta.controls.includes('matrix-3d')}
+						{/if}
+						{#if context.geometry && meta.controls.includes('matrix-3d')}
 							<GeometryControls
 								id={`${id}-geometry-controls`}
 								{canvas}
 								onupdate={updateGeometry}
 								{context}
 							/>
-						{:else if meta.controls.includes('texture')}
+						{/if}
+						{#if meta.controls.includes('texture')}
 							{#key resetEvent}
 								<TextureControls
 									id={`${id}-texture-controls`}

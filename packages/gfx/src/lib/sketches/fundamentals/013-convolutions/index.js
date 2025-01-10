@@ -14,7 +14,7 @@ import {
 	updateBuffers,
 	setPositionAttribute,
 	setTextureAttribute,
-} from '../../../webgl/buffers/textures'
+} from '../../../webgl/buffers/filters'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
