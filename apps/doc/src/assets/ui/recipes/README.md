@@ -4,12 +4,8 @@ slug: recipes
 tags: ['recipes']
 props_style:
   {
-    'blocks': {'element': ['color', 'variant', 'size', 'shape']},
-    'layouts':
-      {
-        'layout': ['layout', 'threshold', 'breakpoint'],
-        'container': ['container', 'size'],
-      },
+    'blocks': { 'element': ['color', 'variant', 'size', 'shape'] },
+    'layouts': { 'container': ['container', 'size'] },
   }
 ---
 
