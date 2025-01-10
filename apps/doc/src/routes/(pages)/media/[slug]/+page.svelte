@@ -58,7 +58,7 @@
 				</div>
 			{/snippet}
 			{#snippet side()}
-				<div class="l:stack:xs button-zoom">
+				<div class="l:stack:xs button-zoom maki:block">
 					<button
 						class="bg:primary variant:outline size:xs"
 						onclick={openDialog}
@@ -71,9 +71,15 @@
 	{/snippet}
 </Sidebar>
 
-<dialog bind:this={dialog} class="w:full l:sidebar:2xs bg:inherit">
-	<form method="dialog" class="l:side l:flex justify:end button-zoom">
-		<button class="bg:primary variant:outline size:xs" onclick={closeDialog}>
+<dialog bind:this={dialog} class="w:full l:stack:lg surface:0:neutral">
+	<form
+		method="dialog"
+		class="l:side l:flex justify:end button-zoom maki:block:xl"
+	>
+		<button
+			class="bg:primary variant:outline size:xs maki:block"
+			onclick={closeDialog}
+		>
 			Close
 		</button>
 	</form>
