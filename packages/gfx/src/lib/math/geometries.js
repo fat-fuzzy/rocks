@@ -341,6 +341,56 @@ const DEFAULT_TEXTURE_COORDS = [
 	1.0, 1.0,
 ]
 
+const DEFAULT_3D_GEOMETRY_TEX_COORDS = [
+	// left column front
+	0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0,
+
+	// top rung front
+	0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0,
+
+	// middle rung front
+	0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0,
+
+	// left column back
+	0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1,
+
+	// top rung back
+	0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1,
+
+	// middle rung back
+	0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1,
+
+	// top
+	0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1,
+
+	// top rung right
+	0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1,
+
+	// under top rung
+	0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
+
+	// between top rung and middle
+	0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1,
+
+	// top of middle rung
+	0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1,
+
+	// right of middle rung
+	0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1,
+
+	// bottom of middle rung.
+	0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
+
+	// right of bottom
+	0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1,
+
+	// bottom
+	0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
+
+	// left side
+	0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
+]
+
 function flipAndCenter(geometry) {
 	let coords = []
 	var matrix = M4.xRotation(Math.PI)
@@ -400,16 +450,18 @@ function generatePolygon(points, radius, outset) {
  * @param {number} canvasHeight
  * @returns geometry
  */
-function getGeometryDefaults(canvasWidth, canvasHeight) {
+function getDefaultGeometry(canvasWidth, canvasHeight) {
 	const width = utils.round(canvasWidth / 5, 2)
 	const height = round(canvasHeight / 5, 2)
 	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [canvasWidth / 2, canvasHeight / 2],
-		rotation: [degToRad(randomInt(360))],
-		scale: [1, 1],
-		width,
-		height,
+		geometry: {
+			color: [Math.random(), Math.random(), Math.random(), 1],
+			translation: [canvasWidth / 2, canvasHeight / 2],
+			rotation: [degToRad(randomInt(360))],
+			scale: [1, 1],
+			width,
+			height,
+		},
 	}
 }
 
@@ -422,12 +474,14 @@ function getGeometryRandom(canvasWidth, canvasHeight) {
 	const width = randomInt(canvasWidth)
 	const height = randomInt(canvasHeight)
 	return {
-		color: [Math.random(), Math.random(), Math.random(), 1],
-		translation: [width, height],
-		rotation: [degToRad(randomInt(360))],
-		scale: [1, 1],
-		width,
-		height,
+		geometry: {
+			color: [Math.random(), Math.random(), Math.random(), 1],
+			translation: [width, height],
+			rotation: [degToRad(randomInt(360))],
+			scale: [1, 1],
+			width,
+			height,
+		},
 	}
 }
 
@@ -438,7 +492,7 @@ function getGeometryRandom(canvasWidth, canvasHeight) {
  */
 
 function getGeometryMatrix2D(canvasWidth, canvasHeight) {
-	return getGeometryDefaults(canvasWidth, canvasHeight)
+	return getDefaultGeometry(canvasWidth, canvasHeight)
 }
 
 /**
@@ -447,22 +501,26 @@ function getGeometryMatrix2D(canvasWidth, canvasHeight) {
  * @returns geometry
  */
 function getGeometryHierarchical(canvasWidth, canvasHeight) {
-	return getGeometryDefaults(canvasWidth, canvasHeight)
+	return getDefaultGeometry(canvasWidth, canvasHeight)
 }
 
 /**
- * @returns geometry
+ * @returns sceneContext
  */
 function getGeometryMatrix3D() {
 	const tx = -150
 	const ty = 0
 	const tz = -360
 	return {
-		color: DEFAULT_3D_GEOMETRY_COLORS,
-		translation: [tx, ty, tz],
-		rotation: [degToRad(190), degToRad(40), degToRad(30)],
-		scale: [1, 1, 1],
-		fieldOfView: degToRad(60),
+		geometry: {
+			color: DEFAULT_3D_GEOMETRY_COLORS,
+			translation: [tx, ty, tz],
+			rotation: [degToRad(190), degToRad(40), degToRad(30)],
+			scale: [1, 1, 1],
+		},
+		camera: {
+			fieldOfView: degToRad(60),
+		},
 	}
 }
 
@@ -471,9 +529,13 @@ function getGeometryMatrix3D() {
  */
 function getGeometryCamera3D() {
 	return {
-		color: DEFAULT_3D_GEOMETRY_COLORS,
-		fieldOfView: degToRad(60),
-		cameraAngle: degToRad(60),
+		geometry: {
+			color: DEFAULT_3D_GEOMETRY_COLORS,
+		},
+		camera: {
+			fieldOfView: degToRad(60),
+			cameraAngle: degToRad(60),
+		},
 	}
 }
 
@@ -487,19 +549,43 @@ function getGeometryAnimation3D() {
 	}
 }
 
+/**
+ * @returns geometry
+ */
+function getGeometryTexture() {
+	const tx = -150
+	const ty = 0
+	const tz = -360
+	return {
+		geometry: {
+			color: DEFAULT_3D_GEOMETRY_COLORS,
+			translation: [tx, ty, tz],
+			rotation: [degToRad(190), degToRad(40), degToRad(30)],
+			scale: [1, 1, 1],
+		},
+		camera: {
+			fieldOfView: degToRad(60),
+			cameraAngle: degToRad(60),
+		},
+		animationSpeed: 1.2,
+	}
+}
+
 export default {
 	DEFAULT_RECT_COORDS,
 	DEFAULT_GEOMETRY_COORDS,
+	DEFAULT_3D_GEOMETRY_TEX_COORDS,
 	DEFAULT_3D_GEOMETRY_COORDS,
 	DEFAULT_3D_GEOMETRY_COLORS,
 	DEFAULT_TEXTURE_COORDS,
 	flipAndCenter,
 	generatePolygon,
-	getGeometryDefaults,
+	getDefaultGeometry,
 	getGeometryRandom,
 	getGeometryMatrix2D,
 	getGeometryHierarchical,
 	getGeometryMatrix3D,
 	getGeometryCamera3D,
 	getGeometryAnimation3D,
+	getGeometryTexture,
 }

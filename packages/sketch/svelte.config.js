@@ -18,9 +18,10 @@ const config = {
 			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),
 			$stores: path.resolve('./src/lib/stores'),
-			$types: path.resolve('./src/lib/types'),
+			$types: path.resolve('./src/lib/types/index.d.ts'),
 		},
 	},
+	extensions: ['.svelte'],
 }
 
 export default config

@@ -1,24 +1,7 @@
 <script lang="ts">
+	import type {PositionProps} from '$types'
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks
-
-	type Props = {
-		color: string
-		id?: string
-		size: string
-		label?: string
-		coordX: number
-		coordY: number
-		coordZ?: number
-		maxX: number
-		minX?: number
-		maxY: number
-		minY?: number
-		maxZ?: number
-		minZ?: number
-		disabled?: boolean
-		onupdate: (payload: {value: number | undefined}) => void
-	}
 
 	let {
 		color,
@@ -35,7 +18,7 @@
 		minZ = $bindable(0),
 		disabled,
 		onupdate,
-	}: Props = $props()
+	}: PositionProps = $props()
 
 	function updateX() {
 		onupdate({

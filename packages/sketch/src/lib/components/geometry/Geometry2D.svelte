@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
-	import {enhance} from '$app/forms'
-	import type {GeometryContext} from '$types/index.js'
+	import type {Geometry2DProps} from '$types'
 
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
@@ -10,31 +8,12 @@
 
 	const {Button} = ui.blocks
 
-	type Props = {
-		id?: string
-		canvasWidth: number
-		canvasHeight: number
-		context: GeometryContext
-		background?: string
-		method?: string
-		formaction?: string
-		actionPath?: string
-		redirect?: string
-		size?: string
-		layout?: string
-		threshold?: string
-		disabled?: boolean
-		onupdate: (payload: {geometry: GeometryContext}) => void
-		children?: Snippet
-	}
-
 	let {
 		id = 'geometry-2d',
 		canvasWidth,
 		canvasHeight,
 		context,
 		background,
-		method = 'POST',
 		formaction = 'updateGeometry',
 		actionPath,
 		redirect,
@@ -44,7 +23,7 @@
 		disabled,
 		onupdate,
 		children,
-	}: Props = $props()
+	}: Geometry2DProps = $props()
 
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
@@ -55,8 +34,7 @@
 			geometry: payload,
 		})
 
-	let geometry = context
-	let {scale, translation, rotation} = geometry
+	let {scale, translation, rotation} = context
 
 	// input attributes
 	let angle = $state(0)
@@ -85,12 +63,6 @@
 	class={`l:${layout}:${size} th:${threshold} maki:block geometry ${backgroundClass}`}
 	name="geometry-update"
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-	use:enhance={() => {
-		// prevent default callback from resetting the form
-		return ({update}) => {
-			update({reset: false})
-		}
-	}}
 >
 	<Position
 		id={`${id}-position`}

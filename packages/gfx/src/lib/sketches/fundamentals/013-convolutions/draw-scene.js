@@ -38,7 +38,7 @@ function drawScene(gl, programInfo, {level}) {
 		data,
 	}
 	// texImage2D(target, level, internalformat, format, type, source)
-	const image = programInfo.context.image
+	const image = programInfo.context.texture.image
 	gl.texImage2D(
 		gl.TEXTURE_2D,
 		mipLevel,
@@ -97,8 +97,8 @@ function setupFramebuffers(gl, programInfo, framebufferOptions) {
 			gl.TEXTURE_2D,
 			mipLevel,
 			internalFormat,
-			programInfo.context.image.width,
-			programInfo.context.image.height,
+			programInfo.context.texture.image.width,
+			programInfo.context.texture.image.height,
 			border,
 			srcFormat,
 			srcType,
@@ -133,7 +133,7 @@ function setupFramebuffers(gl, programInfo, framebufferOptions) {
  * @param {*} originalTexture
  */
 function drawEffects(gl, programInfo, textures, framebuffers, originalTexture) {
-	let contextFilters = programInfo.context.convolutions
+	let contextFilters = programInfo.context.texture.filters.convolutions
 	// start with the original image on unit 0
 	gl.activeTexture(gl.TEXTURE0 + 0)
 	gl.bindTexture(gl.TEXTURE_2D, originalTexture)

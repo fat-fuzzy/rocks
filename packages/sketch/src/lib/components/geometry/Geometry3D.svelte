@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
-	import type {GeometryContext} from '$types/index.js'
+	import type {Geometry2DProps} from '$types'
 
 	import Position from '$lib/components/geometry/Position.svelte'
 	import Scale from '$lib/components/geometry/Scale.svelte'
@@ -9,27 +8,22 @@
 
 	const {Button} = ui.blocks
 
-	type Props = {
-		id?: string
-		canvasWidth: number
-		canvasHeight: number
-		context: GeometryContext
-		disabled?: boolean
-		threshold?: string
-		onupdate: (payload: {geometry: GeometryContext}) => void
-		children?: Snippet
-	}
-
 	let {
 		id = 'geometry-3d',
 		canvasWidth,
 		canvasHeight,
 		context,
 		threshold,
+		size = 'xs',
+		layout = 'stack',
+		formaction = 'updateGeometry',
+		actionPath,
+		redirect,
+		background,
 		disabled,
 		onupdate,
 		children,
-	}: Props = $props()
+	}: Geometry2DProps = $props()
 
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
@@ -41,8 +35,7 @@
 		})
 	}
 
-	let geometry = context
-	let {scale, translation} = geometry
+	let {scale, translation} = context
 
 	// input attributes
 	let maxZ = $state(1)
@@ -75,89 +68,98 @@
 		translation: [coordX, coordY, coordZ],
 		scale: [scaleX, scaleY, scaleZ],
 	})
+	let action =
+		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	let backgroundClass = background ? `bg:${background}` : ''
 </script>
 
-<Position
-	id={`${id}-position`}
-	bind:coordX
-	bind:coordY
-	bind:coordZ
-	bind:maxX
-	bind:minX
-	bind:maxY
-	bind:minY
-	bind:maxZ
-	bind:minZ
-	onupdate={update}
-	color="primary"
-	size="xs"
-	{disabled}
-/>
-<Rotation
-	id={`${id}-rotation-x`}
-	label="Angle x"
-	bind:angle={angleX}
-	max={360}
-	onupdate={update}
-	color="accent"
-	size="xs"
-	{disabled}
-/>
-<Rotation
-	id={`${id}-rotation-y`}
-	label="Angle y"
-	bind:angle={angleY}
-	max={360}
-	onupdate={update}
-	color="accent"
-	size="xs"
-	{disabled}
-/>
-<Rotation
-	id={`${id}-rotation-z`}
-	label="Angle z"
-	bind:angle={angleZ}
-	max={360}
-	onupdate={update}
-	color="accent"
-	size="xs"
-	{disabled}
-/>
-<Scale
-	id={`${id}-scale`}
-	bind:scaleX
-	bind:scaleY
-	bind:scaleZ
-	maxX={5}
-	maxY={5}
-	maxZ={5}
-	minX={-5}
-	minY={-5}
-	minZ={-5}
-	onupdate={update}
-	color="highlight"
-	size="xs"
-	{disabled}
-/>
-{#await Promise.resolve()}
-	<div class={`l:frame:twin card:lg`}>
-		<Button
-			id="update-geometry"
-			name="update-geometry"
-			title="Update geometry"
-			size="xl"
-			color="highlight"
-			variant="outline"
-			shape="round"
-			asset="nojs"
-			{disabled}
-		/>
-	</div>
-{:then}
-	{#if children}
-		{@render children()}
-	{/if}
-{/await}
+<form
+	class={`l:${layout}:${size} th:${threshold} maki:block geometry ${backgroundClass}`}
+	name="geometry-update"
+	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
+>
+	<Position
+		id={`${id}-position`}
+		bind:coordX
+		bind:coordY
+		bind:coordZ
+		bind:maxX
+		bind:minX
+		bind:maxY
+		bind:minY
+		bind:maxZ
+		bind:minZ
+		onupdate={update}
+		color="primary"
+		size="xs"
+		{disabled}
+	/>
+	<Rotation
+		id={`${id}-rotation-x`}
+		label="Angle x"
+		bind:angle={angleX}
+		max={360}
+		onupdate={update}
+		color="accent"
+		size="xs"
+		{disabled}
+	/>
+	<Rotation
+		id={`${id}-rotation-y`}
+		label="Angle y"
+		bind:angle={angleY}
+		max={360}
+		onupdate={update}
+		color="accent"
+		size="xs"
+		{disabled}
+	/>
+	<Rotation
+		id={`${id}-rotation-z`}
+		label="Angle z"
+		bind:angle={angleZ}
+		max={360}
+		onupdate={update}
+		color="accent"
+		size="xs"
+		{disabled}
+	/>
+	<Scale
+		id={`${id}-scale`}
+		bind:scaleX
+		bind:scaleY
+		bind:scaleZ
+		maxX={5}
+		maxY={5}
+		maxZ={5}
+		minX={-5}
+		minY={-5}
+		minZ={-5}
+		onupdate={update}
+		color="highlight"
+		size="xs"
+		{disabled}
+	/>
+	{#await Promise.resolve()}
+		<div class={`l:frame:twin card:lg`}>
+			<Button
+				id="update-geometry"
+				name="update-geometry"
+				title="Update geometry"
+				size="xl"
+				color="highlight"
+				variant="outline"
+				shape="round"
+				asset="nojs"
+				{disabled}
+			/>
+		</div>
+	{:then}
+		{#if children}
+			{@render children()}
+		{/if}
+	{/await}
+</form>
 
 <style>
 	@import '../../styles/css/geometry.css';

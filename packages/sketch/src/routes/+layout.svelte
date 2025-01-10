@@ -17,7 +17,6 @@
 	let appSettings = $derived(sketchStore.app)
 
 	let path = ''
-	let items = [{slug: 'sketches', title: 'Sketches', items: sketches}]
 
 	let nav = {
 		path,

@@ -1,20 +1,17 @@
-import type {FeedbackType} from '$types'
+import type {
+	FeedbackType,
+	PlayerPayload,
+	PlayerSwitchType,
+	PlayerEventsType,
+} from '$types'
+import {PlayerEvent, PlayerState, PlayerAction} from '$types'
 import {
-	PlayerEvent,
-	PlayerState,
-	PlayerAction,
-	type PlayerPayload,
-} from './types.js'
-
-import {
-	type PlayerSwitchType,
-	type PlayerEventsType,
 	PLAYER_EVENTS,
 	PLAYER_ACTIONS,
 	PLAYER_TRANSITIONS,
 	PLAYER_SWITCH,
-} from './types.js'
-class PlayerStore {
+} from '$lib/components/player/definitions.js'
+class PlayerActor {
 	state = $state(PlayerState.idle)
 	events: PlayerEventsType = PLAYER_EVENTS
 	feedback: FeedbackType[] = $state([])
@@ -55,7 +52,7 @@ class PlayerStore {
 		return this.actions[state]
 	}
 
-	public getErrors(): string[] {
+	public getErrors(): FeedbackType[] {
 		return this.feedback
 	}
 
@@ -100,6 +97,6 @@ class PlayerStore {
 	}
 }
 
-const stateStore = new PlayerStore()
+const actor = new PlayerActor()
 
-export default stateStore
+export default actor

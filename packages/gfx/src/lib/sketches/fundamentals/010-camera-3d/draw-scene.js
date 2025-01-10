@@ -34,7 +34,7 @@ function drawScene(gl, programInfo, buffers) {
 
 	// Initialize the Geometry projection matrix
 	let projectionMatrix = M4.perspective(
-		programInfo.context.fieldOfView,
+		programInfo.context.camera.fieldOfView,
 		aspect,
 		zNear,
 		zFar,
@@ -44,7 +44,7 @@ function drawScene(gl, programInfo, buffers) {
 	let target = [geometriesRadius, 0, 0]
 
 	// Initialize the Camera matrix
-	let cameraMatrix = M4.yRotation(programInfo.context.cameraAngle)
+	let cameraMatrix = M4.yRotation(programInfo.context.camera.cameraAngle)
 	cameraMatrix = M4.translate(cameraMatrix, 0, 65, geometriesRadius * 1.5)
 
 	/* prettier-ignore */

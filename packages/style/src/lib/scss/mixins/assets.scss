@@ -49,6 +49,7 @@ $world-map: '🗺️';
 $game-dice: '🎲';
 $film-camera: '🎥';
 $film-frames: '🎞️';
+$crayon: '🖍️';
 $framed-picture: '🖼️';
 $cyclone: '🌀';
 $new-moon: '🌑';
@@ -170,8 +171,9 @@ $emojis: (
 	matrix-3d: #{$game-dice},
 	camera-3d: #{$film-camera},
 	animation-3d: #{$film-frames},
-	texture: #{$framed-picture},
+	filters: #{$crayon},
 	convolution: #{$cyclone},
+	texture: #{$framed-picture},
 	multiple-tex: #{$new-moon-face},
 
 	// Packages emojis

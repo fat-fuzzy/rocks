@@ -30,16 +30,16 @@ function drawScene(gl, programInfo, buffers) {
 	let zNear = 1
 	let zFar = 2000
 	let matrix = M4.perspective(
-		programInfo.context.fieldOfView,
+		programInfo.context.camera.fieldOfView,
 		aspect,
 		zNear,
 		zFar,
 	)
-	matrix = M4.translate(matrix, ...programInfo.context.translation)
-	matrix = M4.xRotate(matrix, programInfo.context.rotation[0])
-	matrix = M4.yRotate(matrix, programInfo.context.rotation[1])
-	matrix = M4.zRotate(matrix, programInfo.context.rotation[2])
-	matrix = M4.scale(matrix, ...programInfo.context.scale)
+	matrix = M4.translate(matrix, ...programInfo.context.geometry.translation)
+	matrix = M4.xRotate(matrix, programInfo.context.geometry.rotation[0])
+	matrix = M4.yRotate(matrix, programInfo.context.geometry.rotation[1])
+	matrix = M4.zRotate(matrix, programInfo.context.geometry.rotation[2])
+	matrix = M4.scale(matrix, ...programInfo.context.geometry.scale)
 	// Set the matrix
 	gl.uniformMatrix4fv(programInfo.uniformLocations.u_matrix, false, matrix)
 
