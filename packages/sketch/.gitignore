@@ -12,6 +12,7 @@ vite.config.ts.timestamp-*
 
 # === Playwright ignores
 /test-results/
+/tests/test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/

@@ -2,18 +2,7 @@
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks
 
-	type Props = {
-		id?: string
-		label?: string
-		size?: string
-		color?: string
-		angle: number
-		min?: number
-		max?: number
-		step?: number
-		disabled?: boolean
-		onupdate: (payload: {value: number}) => void
-	}
+	import type {CameraProps} from '$types'
 
 	let {
 		color = '',
@@ -26,7 +15,7 @@
 		step = 0.01,
 		disabled,
 		onupdate,
-	}: Props = $props()
+	}: CameraProps = $props()
 
 	function updateCamera() {
 		onupdate({value: angle})

@@ -1,20 +1,16 @@
 <script lang="ts">
+	import type {SketchProps, SceneContext, SceneMeta, Filters} from '$types'
+
 	import {onDestroy, onMount} from 'svelte'
-	import type {
-		Scene,
-		SceneContext,
-		SceneMeta,
-		Filters,
-		CameraContext,
-		GeometryContext,
-	} from '$types/index.js'
+	import ui from '@fat-fuzzy/ui'
+
 	import {
 		CanvasState,
 		SketchEvent,
 		ControlsEvent,
 		CanvasEvent,
-	} from '$types/index.js'
-	import {PlayerEvent} from '$lib/components/player/types.js'
+		PlayerEvent,
+	} from '$types'
 
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Player from '$lib/components/player/Player.svelte'
@@ -23,23 +19,10 @@
 	import GeometryControls from '$lib/components/menus/GeometryControls.svelte'
 	import Debug from '$lib/components/debug/Debug.svelte'
 
-	import store from './store.svelte'
-	import {DEFAULT_FILTERS} from './types.js'
+	import {DEFAULT_FILTERS} from './definitions.js'
+	import actor from './actor.svelte'
 
-	type Props = {
-		scene: Scene
-		title: string
-		asset: string
-		dimensions: string
-		layer?: string // if 'layer' the canvas will appear on a layer (with drop shadow)
-		color?: string
-		size?: string
-		variant?: string
-		background?: string
-		layout?: string
-		breakpoint?: string
-		dev?: boolean
-	}
+	const {Feedback} = ui.blocks
 
 	let {
 		scene,
@@ -51,7 +34,7 @@
 		layout = 'switcher',
 		breakpoint,
 		dev,
-	}: Props = $props()
+	}: SketchProps = $props()
 
 	let id = $derived(scene.meta?.id ? `sketch-${scene.meta.id}` : 'sketch')
 	let debug = dev
@@ -68,15 +51,15 @@
 	let resetEvent = $state(0)
 
 	let currentAsset = $derived(
-		store.state.canvas === CanvasState.idle && asset
+		actor.state.canvas === CanvasState.idle && asset
 			? `emoji:${asset}`
-			: `emoji:${store.events.current}`,
+			: `emoji:${actor.events.current}`,
 	)
 
 	let currentState = $derived(
-		store.state.canvas === CanvasState.loading ||
-			store.state.canvas === CanvasState.idle
-			? `state:${store.state.canvas}`
+		actor.state.canvas === CanvasState.loading ||
+			actor.state.canvas === CanvasState.idle
+			? `state:${actor.state.canvas}`
 			: '',
 	)
 
@@ -89,16 +72,16 @@
 	)
 
 	function init() {
-		store.update(SketchEvent.load)
+		actor.update(SketchEvent.load)
 		if (canvas) {
 			try {
 				context = scene.main(canvas)
 				meta = scene.meta as SceneMeta
-				scene.update({...context, filters})
-				store.update(SketchEvent.loadOk)
+				scene.update({...context, texture: {filters}})
+				actor.update(SketchEvent.loadOk)
 			} catch (e: unknown) {
-				store.update(SketchEvent.loadNok)
-				store.feedback.canvas.push({status: 'error', message: e as string})
+				actor.update(SketchEvent.loadNok)
+				actor.feedback.canvas.push({status: 'error', message: e as string})
 			}
 		}
 	}
@@ -122,38 +105,41 @@
 	}
 
 	function play() {
-		if (store.state.canvas === CanvasState.idle) {
+		if (actor.state.canvas === CanvasState.idle) {
 			init()
 		}
 		render()
-		store.update(PlayerEvent.play)
+		actor.update(PlayerEvent.play)
 	}
 
 	function reset() {
 		pause()
-		store.feedback.canvas = []
+		actor.feedback.canvas = []
 		let random = Math.random()
 		resetEvent = random !== resetEvent ? random : random - 1
-		store.updateFilters(DEFAULT_FILTERS, ControlsEvent.update)
+		actor.updateTexture(
+			{texture: {filters: DEFAULT_FILTERS}},
+			ControlsEvent.update,
+		)
 	}
 
 	function clear() {
-		const prevCanvasState = store.state.canvas
+		const prevCanvasState = actor.state.canvas
 		reset()
 		init()
 		render()
 		if (prevCanvasState === CanvasState.paused) {
 			pause()
 		} else {
-			store.update(PlayerEvent.play)
+			actor.update(PlayerEvent.play)
 		}
-		store.update(PlayerEvent.clear)
+		actor.update(PlayerEvent.clear)
 	}
 
 	function stop() {
 		scene.stop()
 		reset()
-		store.update(PlayerEvent.stop)
+		actor.update(PlayerEvent.stop)
 	}
 
 	function pause() {
@@ -161,30 +147,30 @@
 		if (frame) {
 			cancelAnimationFrame(frame)
 		}
-		store.update(PlayerEvent.pause)
+		actor.update(PlayerEvent.pause)
 	}
 
-	function updateGeometry(payload: {
-		fieldOfView?: number
-		geometry: GeometryContext
-	}) {
-		context = {
-			...payload.geometry,
-			fieldOfView: degToRad(payload.fieldOfView ?? 60),
+	function updateGeometry(payload: SceneContext) {
+		context.geometry = payload.geometry
+		if (context.camera && payload.camera) {
+			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
 		}
-		scene.update({...context, filters})
-		store.update(ControlsEvent.update)
+		scene.update({...context, texture: {filters}})
+		actor.update(ControlsEvent.update)
 	}
 
 	function degToRad(degrees: number) {
 		return degrees * (Math.PI / 180)
 	}
 
-	function updateCamera(payload: {fieldOfView: number; cameraAngle: number}) {
-		;(context as CameraContext).fieldOfView = degToRad(payload.fieldOfView)
-		;(context as CameraContext).cameraAngle = degToRad(payload.cameraAngle)
-		scene.update({...context, filters})
-		store.update(ControlsEvent.update)
+	function updateCamera(payload: SceneContext) {
+		if (context.camera && payload.camera) {
+			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
+			context.camera.cameraAngle = degToRad(payload.camera.cameraAngle ?? 0)
+		}
+		context.texture = {filters}
+		scene.update(context)
+		actor.update(ControlsEvent.update)
 	}
 
 	function updateCanvas(payload: {
@@ -206,28 +192,17 @@
 		}
 	}
 
-	function updateFilters(filters: Filters) {
+	function updateTexture(filters: Filters) {
 		try {
-			scene.update({...context, filters})
+			context.texture = {filters}
+			scene.update(context)
 			if (meta.controls.includes('texture')) {
 				render()
 			}
-			store.update(ControlsEvent.update)
+			actor.update(ControlsEvent.update)
 		} catch (e: unknown) {
-			store.feedback.canvas.push({status: 'error', message: e as string})
-			store.update(CanvasEvent.error)
-		}
-	}
-
-	function loadFilters(filters: Filters) {
-		try {
-			scene.update({...context, filters})
-			if (meta.controls.includes('texture')) {
-				render()
-			}
-		} catch (e: unknown) {
-			store.feedback.canvas.push({status: 'error', message: e as string})
-			store.update(CanvasEvent.loadNok)
+			actor.feedback.canvas.push({status: 'error', message: e as string})
+			actor.update(CanvasEvent.error)
 		}
 	}
 
@@ -235,8 +210,8 @@
 		try {
 			init()
 		} catch (e: unknown) {
-			store.feedback.sketch.push({status: 'error', message: e as string})
-			store.update(SketchEvent.loadNok)
+			actor.feedback.sketch.push({status: 'error', message: e as string})
+			actor.update(SketchEvent.loadNok)
 		}
 	})
 
@@ -244,8 +219,8 @@
 		try {
 			stop()
 		} catch (e: unknown) {
-			store.feedback.sketch.push({status: 'error', message: e as string})
-			store.update(SketchEvent.loadNok) // TODO: fix this
+			actor.feedback.sketch.push({status: 'error', message: e as string})
+			actor.update(SketchEvent.loadNok) // TODO: fix this
 		}
 	})
 </script>
@@ -258,18 +233,21 @@
 				aria-label={title}
 				data-testid="canvas"
 				bind:this={canvas}
-				inert={store.getSketchDisabled()}
+				inert={actor.getSketchDisabled()}
 			>
 				<p class={`feedback emoji:default ${size} content`}>
 					The canvas element needs JavaScript enabled to display and interact
 					with animations
 				</p>
 			</canvas>
-			{#if store.feedback.canvas.length}
-				{#each store.feedback.canvas as feedback}
-					<pre
-						class={`feedback emoji:${feedback.status} content ${size}`}>{feedback.message}</pre>
-				{/each}
+			{#if actor.feedback.canvas.length}
+				<div class="feedback">
+					{#each actor.feedback.canvas as feedback}
+						<Feedback status={feedback.status} context="code" {size}>
+							{feedback.message}
+						</Feedback>
+					{/each}
+				</div>
 			{/if}
 		</div>
 	</div>
@@ -280,23 +258,23 @@
 				pause={updateCanvas}
 				clear={updateCanvas}
 				stop={updateCanvas}
-				initial={store.getPlayButtonState()}
+				initial={actor.getPlayButtonState()}
 				{color}
 				size="xs"
 				{variant}
-				disabled={store.hasError() ?? undefined}
+				disabled={actor.hasError() ?? undefined}
 				{init}
 			/>
-			{#if meta && store.getState('sketch') === 'active' && store.getIsInteractive()}
-				{#if meta.controls.includes('matrix-2d')}
+			{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
+				{#if context.geometry && meta.controls.includes('matrix-2d')}
 					<Geometry2D
 						id={`${id}-context-2d`}
 						onupdate={updateGeometry}
 						threshold={breakpoint}
-						{context}
+						context={context.geometry}
 						canvasWidth={canvas.getBoundingClientRect().width}
 						canvasHeight={canvas.getBoundingClientRect().height}
-						disabled={store.getSketchDisabled()}
+						disabled={actor.getSketchDisabled()}
 					/>
 				{:else}
 					<div class={`l:${layout}:${size} maki:block`}>
@@ -305,22 +283,21 @@
 								id={`${id}-camera-controls`}
 								onupdate={updateCamera}
 							/>
-						{:else if meta.controls.includes('matrix-3d')}
+						{/if}
+						{#if context.geometry && meta.controls.includes('matrix-3d')}
 							<GeometryControls
 								id={`${id}-geometry-controls`}
 								{canvas}
 								onupdate={updateGeometry}
 								{context}
 							/>
-						{:else if meta.controls.includes('texture')}
+						{/if}
+						{#if meta.controls.includes('texture')}
 							{#key resetEvent}
 								<TextureControls
 									id={`${id}-texture-controls`}
-									channels={meta.filters?.channels}
-									blur={meta.filters?.blur}
-									convolutions={meta.filters?.convolutions}
-									onupdate={updateFilters}
-									init={loadFilters}
+									filters={meta.filters ?? DEFAULT_FILTERS}
+									onupdate={updateTexture}
 								/>
 							{/key}
 						{/if}
@@ -330,7 +307,7 @@
 		{/if}
 	</aside>
 	{#if debug}
-		<Debug {meta} context={store} />
+		<Debug {meta} context={actor} />
 	{/if}
 </article>
 

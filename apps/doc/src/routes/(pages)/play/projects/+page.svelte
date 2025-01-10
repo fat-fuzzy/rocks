@@ -23,6 +23,16 @@
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
 	<EscapeHtml id={slug} {html} size="lg" />
+
+	<ul class="unstyled">
+		{#each sketches as { slug, asset, title }}
+			<li class={`card:3xs ${asset}`}>
+				<a class="font:md" href={`${path}/${slug}`}>
+					{title}
+				</a>
+			</li>
+		{/each}
+	</ul>
 	{#if sketches.length > 5 && tags.size > 0}
 		<h2>Tags</h2>
 		<div class="l:text l:grid:sm maki:block">
@@ -31,7 +41,7 @@
 					<summary class="surface:2:neutral card:2xs">{tag}</summary>
 					<div class="l:stack:xs maki:block">
 						<ul class="unstyled">
-							{#each sketches as { slug, asset, title, tags, categories }}
+							{#each sketches as { slug, asset, title, tags }}
 								{#if tags.includes(tag)}
 									<li class={`card:3xs ${asset}`}>
 										<a class="font:md" href={`${path}/${slug}`}>

@@ -2,18 +2,7 @@
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks
 
-	type Props = {
-		id?: string
-		label?: string
-		size?: string
-		color?: string
-		fieldOfView: number
-		min?: number
-		max?: number
-		step?: number
-		disabled?: boolean
-		onupdate: (payload: {value: number}) => void
-	}
+	import type {FieldOfViewProps} from '$types'
 
 	let {
 		color = '',
@@ -26,7 +15,7 @@
 		step = 1,
 		disabled,
 		onupdate,
-	}: Props = $props()
+	}: FieldOfViewProps = $props()
 
 	function updateFoV() {
 		onupdate({value: fieldOfView})

@@ -38,4 +38,4 @@ function initColorBuffer(gl) {
 
 	return colorBuffer
 }
-export {initBuffers}
+export {initBuffers, initPositionBuffer}

@@ -84,7 +84,7 @@ function loadProgram(canvas) {
 			// bind u_scale
 			u_scale: gl.getUniformLocation(program, 'u_scale'),
 		},
-		context: geometries.getGeometryDefaults(canvas.width, canvas.height),
+		context: geometries.getDefaultGeometry(canvas.width, canvas.height),
 		errors: [],
 	}
 	buffers = initBuffers(gl, _programInfo)
@@ -120,8 +120,7 @@ function clear() {
 function stop() {
 	clear()
 	if (buffers) {
-		if (buffers.positionBuffer) gl.deleteBuffer(buffers.positionBuffer)
-		if (buffers.texCoordBuffer) gl.deleteBuffer(buffers.texCoordBuffer)
+		if (buffers.position) gl.deleteBuffer(buffers.position)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)

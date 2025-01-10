@@ -27,13 +27,19 @@ function drawScene(gl, programInfo, buffers) {
 	// Set a random color.
 	gl.uniform4f(
 		programInfo.uniformLocations.u_color,
-		...programInfo.context.color,
+		...programInfo.context.geometry.color,
 	)
 
 	// Compute Matrices
-	const translationMatrix = M3.translation(...programInfo.context.translation)
-	const rotationMatrix = M3.rotation(programInfo.context.rotation)
-	const scaleMatrix = M3.scaling(...programInfo.context.scale)
+	const translationMatrix = M3.translation(
+		programInfo.context.geometry.translation[0],
+		programInfo.context.geometry.translation[1],
+	)
+	const rotationMatrix = M3.rotation(programInfo.context.geometry.rotation)
+	const scaleMatrix = M3.scaling(
+		programInfo.context.geometry.scale[0],
+		programInfo.context.geometry.scale[1],
+	)
 
 	// Initialize the matrix
 	let matrix = M3.identity()
@@ -46,7 +52,7 @@ function drawScene(gl, programInfo, buffers) {
 	// Tell WebGL to use our program when drawing
 	gl.useProgram(programInfo.program)
 	// Set the shader uniforms
-	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.color)
+	// gl.uniform4fv(programInfo.uniformLocations.u_color, programInfo.context.geometry.color)
 
 	for (let i = 0; i < 5; i++) {
 		// Multiply the Matrices in order for Hierarchical animation

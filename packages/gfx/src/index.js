@@ -22,8 +22,9 @@ import sketch_008 from './lib/sketches/fundamentals/008-projection/index'
 import sketch_009 from './lib/sketches/fundamentals/009-matrix-3d/index'
 import sketch_010 from './lib/sketches/fundamentals/010-camera-3d/index'
 import sketch_011 from './lib/sketches/fundamentals/011-animation-3d/index'
-import sketch_012 from './lib/sketches/fundamentals/012-texture/index'
+import sketch_012 from './lib/sketches/fundamentals/012-filters/index'
 import sketch_013 from './lib/sketches/fundamentals/013-convolutions/index'
+import sketch_014 from './lib/sketches/fundamentals/014-texture/index'
 // import sketch_014 from ./lib/sketches/014-tex-blend/index'
 
 // Fat Fuzzy Projects
@@ -44,6 +45,7 @@ const learning = [
 	sketch_011,
 	sketch_012,
 	sketch_013,
+	sketch_014,
 	// sketch_014,
 ]
 

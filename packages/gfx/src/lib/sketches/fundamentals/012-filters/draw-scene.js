@@ -1,7 +1,3 @@
-import geometries from '../../../math/geometries'
-
-const {DEFAULT_TEXTURE_COORDS} = geometries
-
 /**
  *
  * @param {WebGL2RenderingContext} gl
@@ -24,7 +20,7 @@ function drawScene(gl, programInfo, {channels, blur}) {
 	let srcType = gl.UNSIGNED_BYTE // type of data we are supplying
 
 	// texImage2D(target, level, internalformat, format, type, source)
-	const image = programInfo.context.image
+	const image = programInfo.context.texture.image
 
 	gl.texImage2D(
 		gl.TEXTURE_2D,

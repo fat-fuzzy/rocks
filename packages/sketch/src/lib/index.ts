@@ -1,4 +1,6 @@
 // Reexport your entry components here
+/// <reference path="./types/index.d.ts" />
+import type {FatFuzzySketch} from '$types'
 
 import './styles/css/debug.css' /* Use for a Sketch layout */
 import './styles/scss/grid-sketch.scss' /* Use for a Sketch layout */
@@ -9,9 +11,9 @@ import './styles/css/geometry.css' /* Use for geometry inputs **/
 /**
  * Compositions - Graphics
  */
-import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
-import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
-import Player from '$lib/components/player/Player.svelte'
+// import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
+// import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
+// import Player from '$lib/components/player/Player.svelte'
 import Sketch from '$lib/components/sketch/Sketch.svelte'
 
 const graphics = {
@@ -21,4 +23,4 @@ const graphics = {
 	Sketch,
 }
 
-export {graphics}
+export default {graphics} as FatFuzzySketch

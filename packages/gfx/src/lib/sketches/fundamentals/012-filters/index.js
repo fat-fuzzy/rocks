@@ -14,18 +14,19 @@ import {
 	updateBuffers,
 	setPositionAttribute,
 	setTextureAttribute,
-} from '../../../webgl/buffers/textures'
+} from '../../../webgl/buffers/filters'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-3d'
 
-let imageAssetsPath = 'images'
+let imageAssetsPath = 'images/sketches'
 let filename = 'plants.png'
 let imgWidth = 620
 let imgHeight = 518
 let url = `/${imageAssetsPath}/${filename}`
 let gl
 let program
+let vao
 let programInfo = {
 	errors: [],
 }
@@ -39,11 +40,11 @@ let blur = 0
 let error
 let meta = {
 	id: '012',
-	slug: 'texture',
-	title: 'Texture',
-	asset: 'texture',
-	categories: ['study'],
-	tags: ['color', 'texture', 'webgl', 'webglfundamentals'],
+	slug: 'filters',
+	title: 'Filters',
+	asset: 'filters',
+	categories: ['learning'],
+	tags: ['color', 'filters', 'webgl', 'webglfundamentals'],
 	controls: ['texture'],
 	filename: 'plants.png',
 	filters: {
@@ -135,7 +136,7 @@ function stop() {
 
 	if (buffers) {
 		if (buffers.position) gl.deleteBuffer(buffers.position)
-		if (buffers.texture) gl.deleteBuffer(buffers.texture)
+		if (buffers.texCoord) gl.deleteBuffer(buffers.texCoord)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
@@ -154,7 +155,7 @@ function init(canvas) {
 	}
 }
 
-function loadImage(url, callback) {
+async function loadImage(url, callback) {
 	let image = new Image()
 	image.src = url
 	image.onload = callback
@@ -164,23 +165,44 @@ function loadImage(url, callback) {
 
 function render(canvas) {
 	programInfo = loadProgram(canvas)
+	// Create a vertex array object (attribute state)
+	vao = gl.createVertexArray()
+	// Bind the attribute/buffer set we want.
+	gl.bindVertexArray(vao)
 	programInfo.context = loadTexture(image)
 
 	updateBuffers(gl, programInfo, buffers)
 	setPositionAttribute(gl, buffers, programInfo)
 	setTextureAttribute(gl, buffers, programInfo)
+
+	error = gl.getError()
+	if (error !== gl.NO_ERROR) {
+		programInfo.errors.push(error)
+	} else {
+		programInfo.errors = []
+	}
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
 }
 
-function main(canvas) {
+async function main(canvas) {
 	init(canvas)
-	image = loadImage(url, () => render(canvas))
+	image = await loadImage(url, () => render(canvas))
 	return programInfo.context
 }
 
 function draw(t) {
 	clear()
 	dom.resize(gl.canvas)
+
+	// Bind the VAO
+	gl.bindVertexArray(vao)
+
 	drawScene(gl, programInfo, {channels: channels[channelOrder], blur})
+
+	// Unbind the VAO when we're done drawing
+	gl.bindVertexArray(null)
 }
 
 //
@@ -246,10 +268,14 @@ function loadTexture(image) {
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 	}
 	return {
-		image,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
+		texture: {
+			image,
+		},
+		geometry: {
+			translation: [0, 0],
+			width: imgWidth,
+			height: imgHeight,
+		},
 	}
 }
 
@@ -296,19 +322,17 @@ function loadProgram(canvas) {
 	return _programInfo
 }
 
-function update({filters}) {
-	if (filters.channels !== channelOrder) {
-		channelOrder = filters.channels
+function update({texture}) {
+	if (texture.filters.channels !== channelOrder) {
+		channelOrder = texture.filters.channels
 	}
-	if (filters.blur !== blur) {
-		blur = filters.blur
+	if (texture.filters.blur !== blur) {
+		blur = texture.filters.blur
 	}
 
 	programInfo.context = {
-		image,
-		translation: [0, 0],
-		width: imgWidth,
-		height: imgHeight,
+		texture: {image},
+		geometry: {translation: [0, 0], width: imgWidth, height: imgHeight},
 	}
 }
 

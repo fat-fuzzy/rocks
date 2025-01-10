@@ -1,25 +1,27 @@
-import {SketchState, ControlsState, CanvasState} from '$types/index.js'
-import type {Filters} from '$types/index.js'
+import type {
+	UiState,
+	UiEvent,
+	UiAction,
+	SketchUi,
+	SketchStateType,
+	SketchActionsType,
+	SketchTransitionsType,
+	SketchFeedbackType,
+	SketchEventType,
+	SceneContext,
+} from '$types'
 
-import {PlayerState} from '$lib/components/player/types.js'
+import {PlayerState, SketchState, ControlsState, CanvasState} from '$types'
 
 import {
-	type UiState,
-	type UiEvent,
-	type UiAction,
-	type SketchUi,
-	type SketchStateType,
-	type SketchActionsType,
-	type SketchTransitionsType,
-	type SketchFeedbackType,
-	type SketchEventType,
 	SKETCH_FEEDBACK,
 	SKETCH_EVENTS,
 	SKETCH_STATE,
 	SKETCH_ACTIONS,
 	SKETCH_TRANSITIONS,
-} from './types.js'
-class SketchStore {
+} from './definitions.js'
+
+class SketchActor {
 	public state: SketchStateType = $state(SKETCH_STATE)
 	public events: SketchEventType = $state(SKETCH_EVENTS)
 	public feedback: SketchFeedbackType = $state(SKETCH_FEEDBACK)
@@ -46,8 +48,8 @@ class SketchStore {
 		return this.state.canvas === PlayerState.playing ? 'active' : 'inactive'
 	}
 
-	public getNextActions(state: SketchUi): UiAction[] | undefined {
-		return this.actions[state][this.state[state]]
+	public getNextActions(ui: SketchUi): UiAction[] | undefined {
+		return this.actions[ui][this.state[ui]]
 	}
 
 	public getFeedback(key: SketchUi): {status: string; message: string}[] {
@@ -84,16 +86,16 @@ class SketchStore {
 			: undefined
 	}
 
-	public getTransition(key: SketchUi, event: UiEvent): UiState {
-		const currentState = this.state[key]
-		const transition = this.transitions[key]
-		if (transition) {
-			const transitionState = transition[currentState]
+	public getTransition(ui: SketchUi, event: UiEvent): UiState {
+		const currentState = this.state[ui]
+		const transitions = this.transitions[ui]
+		if (transitions) {
+			const transitionState = transitions[currentState]
 			if (transitionState && transitionState[event]) {
-				this.state[key] = transitionState[event] as UiState
+				this.state[ui] = transitionState[event] as UiState
 			}
 		}
-		return this.state[key]
+		return this.state[ui]
 	}
 
 	public update(event: UiEvent): void {
@@ -106,12 +108,12 @@ class SketchStore {
 		this.events.previous = previous
 	}
 
-	public updateFilters(filters: Filters, event: UiEvent): void {
+	public updateTexture({texture}: SceneContext, event: UiEvent): void {
 		// TODO: implement
 		this.update(event)
 	}
 }
 
-const sketchStore = new SketchStore()
+const actor = new SketchActor()
 
-export default sketchStore
+export default actor

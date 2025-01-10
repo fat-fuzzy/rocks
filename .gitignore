@@ -151,6 +151,7 @@ packages/style/src/tests/tmp/*
 # Ignore font files for now
 packages/style/src/assets/fonts/
 packages/sketch/static/fonts/
+packages/sketch/static/images/
 packages/ui/static/fonts
 packages/prose/static/fonts/
 packages/playbook/static/fonts
