@@ -1,4 +1,6 @@
 import {error} from '@sveltejs/kit'
+import uiActions from '$lib/forms/actions/ui-actions'
+import settingsActions from '$lib/forms/actions/settings-actions'
 import images from '$data/images'
 
 export const load = async ({params}) => {
@@ -19,4 +21,11 @@ export const load = async ({params}) => {
 	} catch (e) {
 		error(500, 'Error loading image data')
 	}
+}
+
+export const actions = {
+	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	updateSettings: async (event) =>
+		settingsActions.handleUpdateAppSettings({event}),
 }
