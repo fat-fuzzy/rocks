@@ -2,8 +2,12 @@ import gfx from '@fat-fuzzy/gfx'
 
 import {buildNav} from '$data/nav'
 
-let projects = gfx.gl.sketches.projects.map((sketch) => sketch.meta)
-let learning = gfx.gl.sketches.learning.map((sketch) => sketch.meta)
+let projects = gfx.gl.sketches.projects
+	.filter((markdown) => !markdown.meta.draft)
+	.map((sketch) => sketch.meta)
+let learning = gfx.gl.sketches.learning
+	.filter((markdown) => !markdown.meta.draft)
+	.map((sketch) => sketch.meta)
 
 let nav = buildNav('play')
 
