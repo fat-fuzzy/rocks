@@ -4,3 +4,10 @@
 	--lightness-contrast-base: var(--color-lightness-600);
 	--chroma-contrast-base: var(--color-chroma-600);
 }
+
+.ink\:primary {
+	/* Set current color LIGHTNESS and CHROMA according to a 7 point scale */
+
+	--hue: var(--color-theme-primary);
+	color: var(--ink);
+}
