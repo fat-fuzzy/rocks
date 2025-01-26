@@ -20,7 +20,7 @@
 	items={sections}
 >
 	{#snippet header()}
-		<div class="w:full surface:0:neutral">
+		<div class="w:full">
 			<h1 class="card:md text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}

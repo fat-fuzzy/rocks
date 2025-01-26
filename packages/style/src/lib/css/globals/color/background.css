@@ -9,7 +9,7 @@
 }
 
 .bg\:inherit {
-	color: inherit;
+	color: var(--ink, inherit);
 	accent-color: inherit;
 	background-color: inherit;
 }

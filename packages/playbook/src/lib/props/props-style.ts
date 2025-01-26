@@ -41,13 +41,13 @@ const contrast = {
 }
 
 const container = {
-	initial: 'center',
+	initial: 'taco',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
 	container: 'card',
 	items: [
-		{id: 'container.center', label: 'center', value: 'center'},
+		{id: 'container.taco', label: 'taco', value: 'taco'},
 		{id: 'container.burrito', label: 'burrito', value: 'burrito'},
 	],
 }

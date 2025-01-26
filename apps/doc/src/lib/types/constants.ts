@@ -66,7 +66,7 @@ const UI_STATE = {
 }
 
 const APP_LINKS: {[key: string]: string}[] = [
-	{slug: 'about', title: 'About', layout: 'center'},
+	{slug: 'about', title: 'About', layout: 'taco'},
 ]
 
 export default {
