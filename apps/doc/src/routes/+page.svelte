@@ -21,7 +21,9 @@
 >
 	{#snippet header()}
 		<div class="w:full surface:0:neutral">
-			<h1 class="card:md text:center">Fat Fuzzy Rocks</h1>
+			<h1 class="card:md text:center bg:inherit ink:primary">
+				Fat Fuzzy Rocks
+			</h1>
 		</div>
 	{/snippet}
 </PageScrolly>
