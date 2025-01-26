@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {SwitchProps} from '$types'
+	import type {FuzzyPayload, SwitchProps} from '$types'
 	import {ButtonEvent, UiState} from '$types'
 	import Actor from './actor.svelte.js'
 
@@ -27,7 +27,7 @@
 		children,
 	}: SwitchProps = $props()
 
-	let store = new Actor({
+	let actor = new Actor({
 		initial,
 		onclick,
 		machine: states,
@@ -36,14 +36,14 @@
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
 		name,
-		value: store.value,
-		state: store.state,
-		pressed: store.pressed,
-		action: store.update.bind(store),
+		value: actor.value,
+		state: actor.state,
+		pressed: actor.pressed,
+		action: actor.update.bind(actor),
 	})
 
 	let buttonClasses = $derived(
-		store.getStyles({
+		actor.getStyles({
 			color,
 			size,
 			shape,
@@ -57,8 +57,10 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		store.update(store.currentState.event as ButtonEvent)
-		if (store.currentState.action) store.currentState.action(payload)
+		actor.update(actor.currentState.event as ButtonEvent)
+		if (actor.currentState.action) {
+			actor.currentState.action(payload as FuzzyPayload)
+		}
 	}
 
 	onMount(() => {
@@ -73,10 +75,10 @@
 	{title}
 	{disabled}
 	{formaction}
-	value={store.value}
+	value={actor.value}
 	class={buttonClasses}
 	data-key={name}
-	aria-pressed={store.pressed}
+	aria-pressed={actor.pressed}
 	onclick={handleClick}
 	data-testid={id}
 >
@@ -86,6 +88,6 @@
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>
-		<span class="viz-only">{store.label}</span>
+		<span class="viz-only">{actor.label}</span>
 	{/if}
 </button>

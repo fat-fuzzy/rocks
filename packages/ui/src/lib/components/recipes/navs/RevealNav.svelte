@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {RevealNavProps} from '$types'
-	import {UiEvents} from '$types'
+	import {DismissEvent} from '$types'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
@@ -12,7 +12,7 @@
 		reveal,
 		formaction,
 		layout,
-		dismiss = UiEvents.outside,
+		dismiss = DismissEvent.outside,
 		color,
 		size,
 		breakpoint,

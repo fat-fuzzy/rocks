@@ -7,6 +7,9 @@ import {
 	UiShape,
 	UiColor,
 	UiVariant,
+	UiMoveParams,
+	UiMouseEvent,
+	UiTouchEvent,
 } from '$types'
 
 export type ButtonContext = {
@@ -87,4 +90,10 @@ export type SwitchState = {
 	pressed: boolean
 	name: string
 	send: (event: string) => unknown
+}
+
+export type UiAnimationEvent = UiMouseEvent | UiTouchEvent
+
+export type UiCoords = {
+	[param in UiMoveParams]: number[]
 }

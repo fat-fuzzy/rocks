@@ -3,7 +3,7 @@
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import {UiEvents} from '$types'
+	import {DismissEvent} from '$types'
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
 	import {clickOutside} from '$lib/utils/click-outside.js'
@@ -31,8 +31,8 @@
 		color,
 		size,
 		breakpoint,
-		// trigger = UiEvents.click,
-		dismiss = UiEvents.click,
+		// trigger = ButtonEvent.click,
+		dismiss = DismissEvent.click,
 		variant,
 		align,
 		justify,
@@ -112,13 +112,13 @@
 	)
 
 	function onKeyUp(e: KeyboardEvent) {
-		if (dismiss === UiEvents.outside && e.key === 'Escape') {
+		if (dismiss === DismissEvent.outside && e.key === 'Escape') {
 			toggleReveal({state: 'collapsed', id: `button-reveal-${id}`})
 		}
 	}
 
 	function handleClickOutside() {
-		if (dismiss === UiEvents.outside && boundForm) {
+		if (dismiss === DismissEvent.outside && boundForm) {
 			clickOutside(boundForm, () =>
 				toggleReveal({state: 'collapsed', id: `button-reveal-${id}`}),
 			)

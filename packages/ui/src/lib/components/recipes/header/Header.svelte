@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
+	import {DismissEvent} from '$types'
 	import constants from '$lib/types/constants.js'
 	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
 	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
@@ -32,7 +33,7 @@
 				variant="outline"
 				asset="home"
 				justify="start"
-				dismiss="outside"
+				dismiss={DismissEvent.outside}
 				auto={true}
 				links={items.links}
 				{path}

@@ -52,3 +52,7 @@ export interface FuzzyActor {
 	id: string
 	label: string
 }
+
+export interface FuzzySystem {
+	state: Map<string, FuzzyPayload>
+}
