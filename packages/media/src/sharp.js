@@ -11,11 +11,18 @@ let promises = []
 
 const images = [
 	{
+		file: 'css-taco',
+		ext: 'png',
+		width: 606,
+		height: 213,
+		path: 'images/media',
+	},
+	{
 		file: 'road-to-happy-path',
 		ext: 'jpeg',
 		width: 1645,
 		height: 2465,
-		path: 'images/blog',
+		path: 'images/media',
 	},
 	{
 		file: '001-intro',
@@ -175,7 +182,7 @@ function optimize(sharpStream, image, config) {
 // Generate images 0 to 7 (10)
 // Generate images 0 to 10
 function main() {
-	optimize(sharpStream, images[7], config)
+	optimize(sharpStream, images[0], config)
 }
 
 export default main()
