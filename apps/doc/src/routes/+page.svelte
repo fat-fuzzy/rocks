@@ -20,10 +20,8 @@
 	items={sections}
 >
 	{#snippet header()}
-		<div class="w:full surface:0:neutral">
-			<h1 class="card:md text:center bg:inherit ink:primary">
-				Fat Fuzzy Rocks
-			</h1>
+		<div class="w:full">
+			<h1 class="card:md text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
 </PageScrolly>
