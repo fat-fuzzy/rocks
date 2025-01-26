@@ -3,6 +3,9 @@ export enum UiState {
 	inactive = 'inactive',
 	expanded = 'expanded',
 	collapsed = 'collapsed',
+	hovering = 'hovering',
+	dropped = 'dropped',
+	over = 'over',
 }
 
 export enum UiStatus {
@@ -23,14 +26,6 @@ export enum UiTextContext {
 	form = 'form',
 	prose = 'prose',
 	code = 'code',
-}
-
-export enum ButtonEvent {
-	expand = 'expand',
-	collapse = 'collapse',
-	toggle = 'toggle',
-	switch = 'switch',
-	click = 'click',
 }
 
 export enum UiSize {
@@ -73,10 +68,55 @@ export enum UiDimensions {
 	square = 'square',
 }
 
-export enum UiEvents {
-	hover = 'hover',
+export enum DismissEvent {
 	click = 'click',
 	outside = 'outside',
+}
+
+export enum ButtonEvent {
+	expand = 'expand',
+	collapse = 'collapse',
+	toggle = 'toggle',
+	switch = 'switch',
+	click = 'click',
+	outside = 'outside',
+}
+
+export enum MoveEvent {
+	dragstart = 'dragstart',
+	drag = 'drag',
+	dragend = 'dragend',
+	movestart = 'movestart',
+	move = 'move',
+	moveend = 'moveend',
+}
+
+export enum UiTouchEvent {
+	move = 'touchmove',
+	cancel = 'touchend',
+	end = 'touchend',
+}
+
+export enum UiMouseEvent {
+	hover = 'hover',
+	move = 'mousemove',
+	cancel = 'mouseup dragstart',
+	end = 'mouseup',
+}
+
+export enum UiEffect {
+	none = 'none',
+	copy = 'copy',
+	link = 'link',
+	move = 'move',
+}
+
+export enum UiMoveParams {
+	viewport = 'viewport', // [x, y]
+	start = 'start', // [x, y]
+	dist = 'dist', // [x, y]
+	delta = 'delta', // [x, y]
+	velocity = 'velocity', // [x, y]
 }
 
 export enum InputType {

@@ -1,20 +1,15 @@
-import type {
-	ButtonEvent,
-	ToggleProps,
-	FuzzyPayload,
-	ToggleMenuStateType,
-} from '$types'
+import type {ButtonEvent, ToggleProps, FuzzyPayload, FuzzySystem} from '$types'
 import {UiState} from '$types'
 
-class ToggleMenuStore {
+class ToggleMenuActor implements FuzzySystem {
+	state: Map<string, FuzzyPayload> = $state(new Map())
 	mode = 'radio'
-	items: ToggleMenuStateType = $state(new Map())
 
 	public init({mode, items}: {mode: string; items: ToggleProps[]}) {
 		if (mode) {
 			this.mode = mode
 		}
-		this.items = new Map(
+		this.state = new Map(
 			items.map((item) => [
 				item.id,
 				{...item, state: item.initial || UiState.inactive},
@@ -32,7 +27,7 @@ class ToggleMenuStore {
 			value?: string | number
 			state: string
 		}[] = []
-		this.items.forEach((item) => {
+		this.state.forEach((item) => {
 			if (item.state === 'active') {
 				selected.push(item)
 			}
@@ -43,9 +38,9 @@ class ToggleMenuStore {
 
 	public update(payload: FuzzyPayload): void {
 		if (payload && payload.action) {
-			this.items.set(payload.name, payload)
+			this.state.set(payload.name, payload)
 			if (this.mode === 'radio' && payload.state === 'active') {
-				this.items.forEach((value, key) => {
+				this.state.forEach((value, key) => {
 					if (
 						key !== payload.name &&
 						value.state === 'active' &&
@@ -53,7 +48,7 @@ class ToggleMenuStore {
 					) {
 						value.action('toggle' as ButtonEvent)
 						value.state = 'inactive'
-						this.items.set(key, value)
+						this.state.set(key, value)
 					}
 				})
 			}
@@ -61,4 +56,4 @@ class ToggleMenuStore {
 	}
 }
 
-export default ToggleMenuStore
+export default ToggleMenuActor

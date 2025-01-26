@@ -5,7 +5,7 @@
 
 	import styleHelper from '$lib/utils/styles.js'
 	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
-	import ToggleMenuStore from './store.svelte'
+	import ToggleMenuActor from './actor.svelte.js'
 
 	let {
 		id = 'toggle-menu',
@@ -30,8 +30,8 @@
 		onupdate,
 	}: ToggleMenuProps = $props()
 
-	let store = $state(new ToggleMenuStore())
-	store.init({
+	let actor = $state(new ToggleMenuActor())
+	actor.init({
 		items,
 		mode,
 	})
@@ -50,26 +50,26 @@
 	)
 
 	function updateMenu(payload: FuzzyPayload) {
-		store.update(payload)
+		actor.update(payload)
 		if (onupdate) {
-			onupdate(store.getSelected())
+			onupdate(actor.getSelected())
 		}
 	}
 
 	function loadMenu(payload: FuzzyPayload) {
-		store.update(payload)
+		actor.update(payload)
 	}
 
 	onMount(() => {
 		if (init) {
-			init(store.getSelected())
+			init(actor.getSelected())
 		}
 	})
 </script>
 
 {#snippet menuContent()}
 	<menu {id} class={menuClasses} data-testid={id}>
-		{#each store.items as [itemId, props]}
+		{#each actor.state as [itemId, props]}
 			<li>
 				<Toggle
 					init={loadMenu}

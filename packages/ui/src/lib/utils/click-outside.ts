@@ -5,8 +5,9 @@ export function clickOutside(
 	node: HTMLElement,
 	callback: (args?: any) => void,
 ) {
-	const handleClick = (event) => {
-		if (node && !node.contains(event.target) && !event.defaultPrevented) {
+	const handleClick = (event: Event) => {
+		let target = event.target as HTMLElement
+		if (node && !node.contains(target) && !event.defaultPrevented) {
 			callback()
 		}
 	}
