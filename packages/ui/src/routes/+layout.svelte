@@ -10,7 +10,7 @@
 
 	let {children}: Props = $props()
 	let navItems = $state({links: APP_LINKS, settings: APP_SETTINGS})
-	let layout = 'center'
+	let layout = 'taco'
 	let brightness = 'day'
 	let contrast = 'contrast'
 	let mainClass = `${brightness} l:${layout} l:stack:lg bg:${contrast}`
@@ -19,7 +19,7 @@
 
 <Header
 	items={navItems}
-	layout="center"
+	layout="taco"
 	app={{settings: {brightness: 'day', contrast: 'blend'}}}
 >
 	<h1 class="l:flex card:md icon:svg:egg size:xl font:xl align:center">

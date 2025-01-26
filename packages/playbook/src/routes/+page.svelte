@@ -12,7 +12,7 @@
 	const shades = ['000', '100', '200', '300', '400', '500', '600']
 </script>
 
-<div class="l:center:xs">
+<div class="l:taco:xs">
 	<h2>CSS Pattern library</h2>
 	<p>
 		CSS patterns from the package
@@ -22,7 +22,7 @@
 	</p>
 </div>
 
-<div class="palette l:center:xs">
+<div class="palette l:taco:xs">
 	{#each hues as hue}
 		<div class="hue">
 			{#each shades as shade}
@@ -33,7 +33,7 @@
 		</div>
 	{/each}
 </div>
-<main class="l:sidebar l:center:2xs">
+<main class="l:sidebar l:taco:2xs">
 	<div class="l:main:50 l:stack:md">
 		<div class="buttons l:stack:md">
 			<div class="l:flex align:end">
