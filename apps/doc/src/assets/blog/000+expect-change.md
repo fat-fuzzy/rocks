@@ -5,7 +5,7 @@ date_created: '2024-08-31'
 date_updated: '2024-08-31'
 slug: what-to-expect
 description: 'A welcome post where I lay down the essentials of what you might expect from this blog.'
-author: 'Me'
+author: 'patiboh'
 ---
 
 ## External Cycles

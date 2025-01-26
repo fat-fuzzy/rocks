@@ -83,7 +83,7 @@
 			Close
 		</button>
 	</form>
-	<div class="l:main:90 col:taco">
+	<div class="zoom l:main:90 col:taco">
 		<Picture
 			src={media.src}
 			ext={media.ext}
