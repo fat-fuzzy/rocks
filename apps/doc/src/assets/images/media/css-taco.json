@@ -1,0 +1,71 @@
+{
+	"id": "images/media/css-taco",
+	"file": "css-taco",
+	"ext": "png",
+	"width": 606,
+	"height": 213,
+	"path": "images/media",
+	"title": "Taconfusion",
+	"alt": "Copilot culinary CSS hallucination",
+	"description": "Copilot's snippet suggests creating a heading and styles that use a 🌮 emoji, all inside a container that uses a 🌯 class. ",
+	"media": [
+		{
+			"query": "(min-width: 500px)",
+			"srcset": [
+				{
+					"width": 500,
+					"dpr": 1
+				}
+			]
+		}
+	],
+	"srcset": [
+		{
+			"width": 500,
+			"media": [
+				{
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 300px)",
+					"dpr": 1.5
+				},
+				{
+					"query": "(min-width: 430px)",
+					"dpr": 1
+				}
+			]
+		}
+	],
+	"sizes": [
+		{
+			"slot": "600px"
+		}
+	],
+	"sources": [
+		{
+			"format": "webp",
+			"width": 500,
+			"height": 176,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 7254
+		},
+		{
+			"format": "png",
+			"width": 500,
+			"height": 176,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 11516
+		},
+		{
+			"format": "png",
+			"width": 606,
+			"height": 213,
+			"channels": 4,
+			"premultiplied": false,
+			"size": 10632
+		}
+	]
+}
