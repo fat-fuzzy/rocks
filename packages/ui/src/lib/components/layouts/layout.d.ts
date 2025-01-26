@@ -1,11 +1,12 @@
 import type {Snippet} from 'svelte'
 import type {
 	FuzzyPayload,
-	UiEvents,
+	DismissEvent,
 	UiLayoutProps,
 	UiContentProps,
 	UiBlockProps,
 	FormProps,
+	UiAnimationEvent,
 } from '$types'
 
 export type LayoutProps = UiLayoutProps & UiContentProps & FormProps
@@ -31,8 +32,8 @@ export type RevealLayoutProps = LayoutProps &
 		reveal: string
 		auto?: boolean
 		element?: string
-		trigger?: UiEvents
-		dismiss?: UiEvents
+		trigger?: UiAnimationEvent
+		dismiss?: DismissEvent
 		onclick?: (payload: FuzzyPayload) => void
 	}
 

@@ -1,4 +1,9 @@
-import type {Settings, UiRevealState, ButtonContext} from '$types'
+import type {
+	Settings,
+	SettingsItems,
+	UiRevealState,
+	ButtonContext,
+} from '$types'
 import {UiState} from '$types'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
@@ -191,8 +196,6 @@ const APP_SETTINGS: SettingsItems = {
 		},
 	],
 }
-
-import type {SettingsItems} from '../components/recipes/forms/settings.js'
 
 export default {
 	APP_PREFIX,

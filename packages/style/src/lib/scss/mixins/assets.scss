@@ -75,6 +75,7 @@ $owl: '🦉';
 $recycle: '♻️';
 $calendar: '📅';
 $tear-off-calendar: '📆';
+$chilli: '🌶️';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -150,6 +151,7 @@ $emojis: (
 	published: #{$calendar},
 	updated: #{$calendar},
 	outdated: #{$tear-off-calendar},
+	spicy: #{$chilli},
 
 	// Playground fixture emojis
 	sketch: #{$spouting-whale},

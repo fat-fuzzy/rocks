@@ -1,10 +1,6 @@
 import type {UiBlockProps, FuzzyPayload, ToggleProps} from '$types'
 import {UiState} from '$types'
 
-export type ToggleState = UiState.active | UiState.inactive
-
-export type ToggleMenuPayload = FuzzyPayload[]
-
 export type ToggleMenuProps = UiBlockProps & {
 	/**
 	 * State props
@@ -22,5 +18,3 @@ export type ToggleMenuProps = UiBlockProps & {
 		payload: {name: string; value?: string | number; state: string}[],
 	) => void
 }
-
-export type ToggleMenuStateType = Map<string, FuzzyPayload>
