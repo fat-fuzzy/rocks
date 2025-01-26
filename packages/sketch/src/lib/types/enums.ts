@@ -51,6 +51,7 @@ export enum SketchEvent {
 	exit = 'exit',
 	loadOk = 'loadOk',
 	loadNok = 'loadNok',
+	exitNok = 'exitNok',
 }
 
 export enum SketchAction {

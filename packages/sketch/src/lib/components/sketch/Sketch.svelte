@@ -220,7 +220,7 @@
 			stop()
 		} catch (e: unknown) {
 			actor.feedback.sketch.push({status: 'error', message: e as string})
-			actor.update(SketchEvent.loadNok) // TODO: fix this
+			actor.update(SketchEvent.exitNok)
 		}
 	})
 </script>

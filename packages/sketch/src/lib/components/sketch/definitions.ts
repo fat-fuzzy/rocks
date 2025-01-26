@@ -98,6 +98,7 @@ export const SKETCH_TRANSITIONS: SketchTransitionsType = {
 		},
 		[SketchState.active]: {
 			[PlayerEvent.stop]: SketchState.idle,
+			[SketchEvent.exitNok]: SketchState.error,
 		},
 	},
 	canvas: {
