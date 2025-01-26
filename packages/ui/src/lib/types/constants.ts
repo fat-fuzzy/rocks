@@ -126,13 +126,13 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 	layouts: {
 		families: {
 			layout: {layout: 'switcher', threshold: 'md', breakpoint: 'lg'}, // need large breakpoint for Header default demo
-			container: {container: 'center', size: 'md'},
+			container: {container: 'taco', size: 'md'},
 		},
 	},
 }
 
 const APP_LINKS: {[key: string]: string}[] = [
-	{slug: 'about', title: 'About', layout: 'center'},
+	{slug: 'about', title: 'About', layout: 'taco'},
 ]
 
 const APP_SETTINGS: SettingsItems = {

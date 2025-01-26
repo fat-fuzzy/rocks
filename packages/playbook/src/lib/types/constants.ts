@@ -60,7 +60,7 @@ const DEFAULT_STYLES: StyleTree = {
 	},
 	layouts: {
 		families: {
-			container: {container: 'center', size: 'md'},
+			container: {container: 'taco', size: 'md'},
 		},
 	},
 }

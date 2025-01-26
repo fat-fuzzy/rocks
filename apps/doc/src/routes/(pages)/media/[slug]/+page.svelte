@@ -27,7 +27,7 @@
 
 <Sidebar {title} {description} size="md">
 	{#snippet side()}
-		<div class="l:stack:xs l:center:md">
+		<div class="l:stack:xs l:taco:md">
 			<button
 				onclick={() => history.back()}
 				class="bg:primary variant:fill size:xs"
@@ -41,9 +41,9 @@
 		</div>
 	{/snippet}
 	{#snippet main()}
-		<Sidebar {title} {description} size="2xs end" justify="center">
+		<Sidebar {title} {description} size="2xs end" justify="taco">
 			{#snippet main()}
-				<div class="l:center:md" hidden={stage}>
+				<div class="l:taco:md" hidden={stage}>
 					<Picture
 						src={media.src}
 						ext={media.ext}
@@ -83,7 +83,7 @@
 			Close
 		</button>
 	</form>
-	<div class="l:main:90 col:center">
+	<div class="l:main:90 col:taco">
 		<Picture
 			src={media.src}
 			ext={media.ext}

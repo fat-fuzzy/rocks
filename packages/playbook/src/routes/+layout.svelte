@@ -1,23 +1,27 @@
 <script lang="ts">
 	import '@fat-fuzzy/style'
 	import ui from '@fat-fuzzy/ui'
-	import type { Snippet } from 'svelte'
+	import type {Snippet} from 'svelte'
 
 	const {APP_SETTINGS, APP_LINKS} = ui.constants
 	const {Header} = ui.recipes
 
-	type Props = { children: Snippet }
+	type Props = {children: Snippet}
 
 	let {children}: Props = $props()
 	let navItems = $state({links: APP_LINKS, settings: APP_SETTINGS})
-	let layout = 'center'
+	let layout = 'taco'
 	let brightness = 'day'
 	let contrast = 'contrast'
 	let mainClass = `${brightness} l:${layout} l:stack:lg bg:${contrast}`
-	let footerClass = `l:center font:sm ${brightness} bg:${contrast}`
+	let footerClass = `l:taco font:sm ${brightness} bg:${contrast}`
 </script>
 
-<Header items={navItems} layout="center" app={{settings: {brightness: 'day', contrast: 'blend'}}}>
+<Header
+	items={navItems}
+	layout="taco"
+	app={{settings: {brightness: 'day', contrast: 'blend'}}}
+>
 	<h1 class="l:flex card:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style
 	</h1>

@@ -26,7 +26,7 @@
 			<EscapeHtml id={slug} {html} />
 		</div>
 		<div class="l:main:50">
-			<div class="l:center">
+			<div class="l:taco">
 				<Picture {...media} dimensions="full" />
 			</div>
 		</div>
