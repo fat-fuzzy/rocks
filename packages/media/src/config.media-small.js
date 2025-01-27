@@ -3,7 +3,7 @@
 const config = {
 	media: [
 		{
-			query: '(min-width: 500px)',
+			query: '(min-width: 300px)',
 			srcset: [
 				{
 					width: 500,
