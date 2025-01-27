@@ -10,7 +10,7 @@
 	"description": "Copilot's snippet suggests creating a heading and styles that use a 🌮 emoji, all inside a container that uses a 🌯 class. ",
 	"media": [
 		{
-			"query": "(min-width: 500px)",
+			"query": "(min-width: 300px)",
 			"srcset": [
 				{
 					"width": 500,
