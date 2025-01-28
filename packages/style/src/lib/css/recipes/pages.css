@@ -23,3 +23,7 @@
 [class*='page:media/'] main > [class*='l:sidebar'] {
 	padding: var(--ui-size);
 }
+
+[class^='page:'] {
+	min-block-size: 100vh;
+}
