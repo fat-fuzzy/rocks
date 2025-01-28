@@ -11,6 +11,7 @@
 	let media = $derived($page.data)
 	let title = $derived(media.title ?? '')
 	let description = $derived(media.description ?? '')
+	let frameclass = $derived(media.height < media.width ? 'maki:block:2xl' : '')
 
 	function openDialog(e) {
 		dialog.show()
@@ -27,7 +28,7 @@
 
 <Sidebar {title} {description} size="md">
 	{#snippet side()}
-		<div class="l:stack:xs l:taco:md">
+		<div class="l:stack:xs l:taco:md maki:block">
 			<button
 				onclick={() => history.back()}
 				class="bg:primary variant:fill size:xs"
@@ -41,9 +42,9 @@
 		</div>
 	{/snippet}
 	{#snippet main()}
-		<Sidebar {title} {description} size="2xs end" justify="taco">
+		<Sidebar {title} {description} size="2xs end" justify="center">
 			{#snippet main()}
-				<div class="l:taco:md" hidden={stage}>
+				<main class={frameclass} hidden={stage}>
 					<Picture
 						src={media.src}
 						ext={media.ext}
@@ -55,7 +56,7 @@
 						sizes={media.sizes}
 						media={media.media}
 					/>
-				</div>
+				</main>
 			{/snippet}
 			{#snippet side()}
 				<div class="l:stack:xs button-zoom maki:block">
@@ -83,7 +84,7 @@
 			Close
 		</button>
 	</form>
-	<div class="zoom l:main:90 col:taco">
+	<div class="zoom l:main:90 col:center">
 		<Picture
 			src={media.src}
 			ext={media.ext}
