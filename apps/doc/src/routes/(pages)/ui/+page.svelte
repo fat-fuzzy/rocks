@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 	import {api} from '@fat-fuzzy/playbook'
 
@@ -8,7 +8,7 @@
 
 	const {PlaybookCollection} = api
 
-	let path = $derived($page.url.pathname)
+	let path = $derived(page.url.pathname)
 
 	let actionPath = '/ui'
 	let formaction = 'updateState'
@@ -17,8 +17,8 @@
 
 	const categories = ['tokens', 'blocks', 'layouts', 'recipes']
 
-	let content = $derived($page.data.content)
-	let markdowns = $derived($page.data.markdowns)
+	let content = $derived(page.data.content)
+	let markdowns = $derived(page.data.markdowns)
 	let slug = $derived(content.meta.slug)
 </script>
 
@@ -32,10 +32,10 @@
 					{markdowns}
 					depth={1}
 					isPage={false}
-					path={`${path}/${category}${$page.url.hash}`}
+					path={`${path}/${category}${page.url.hash}`}
 					{formaction}
 					{actionPath}
-					redirect={$page.url.pathname}
+					redirect={page.url.pathname}
 					{content}
 				>
 					<EscapeHtml

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
 
-	let markdowns = $state($page.data.markdowns.decisions)
+	let markdowns = $state(page.data.markdowns.decisions)
 
 	let title = 'Decision Log'
 	let description = 'Log of Architectural decisions'
@@ -20,7 +20,7 @@
 				{#if meta.status !== 'draft'}
 					<a
 						class="font:lg surface:2:neutral card:md"
-						href={`${$page.url.pathname}/${meta.slug}`}
+						href={`${page.url.pathname}/${meta.slug}`}
 					>
 						{Number(meta.id)} - {meta.title}
 					</a>
@@ -39,7 +39,7 @@
 							{#if meta.tags.includes(tag)}
 								<li class={`card:3xs`}>
 									{#if meta.status !== 'draft'}
-										<a href={`${$page.url.pathname}/${meta.slug}`}>
+										<a href={`${page.url.pathname}/${meta.slug}`}>
 											{meta.title}
 										</a>
 									{/if}

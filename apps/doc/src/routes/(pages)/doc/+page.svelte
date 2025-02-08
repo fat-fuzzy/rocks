@@ -1,14 +1,14 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
 	const {Picture} = ui.drafts
 
-	let images = $state($page.data.images)
-	let brightness = $state($page.data.settings.brightness || '')
-	let markdown = $state($page.data.content)
+	let images = $state(page.data.images)
+	let brightness = $state(page.data.settings.brightness || '')
+	let markdown = $state(page.data.content)
 	let title = $state(markdown.meta.title)
 	let description = $state(markdown.meta.description)
 	let html = $state(markdown.html)
