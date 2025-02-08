@@ -34,7 +34,7 @@
 	{/if}
 	<div class="l:stack:xs">
 		{#if series}
-			<p class="h5">{`Part ${page} of a ${series.length}-part series:`}</p>
+			<p class="h5">{`Part ${page} of ${series.length}`}</p>
 			<ol>
 				{#each series as item, index}
 					<li
