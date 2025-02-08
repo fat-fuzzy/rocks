@@ -6,14 +6,13 @@
 	const {EscapeHtml} = ui.headless
 	const {Picture} = ui.drafts
 
-	let images = $derived($page.data.images)
-
-	let brightness = $derived($page.data.settings.brightness || '')
-	let markdown = $derived($page.data.content)
-	let title = $derived(markdown.meta.title)
-	let description = $derived(markdown.meta.description)
-	let html = $derived(markdown.html)
-	let slug = $derived(markdown.meta.slug)
+	let images = $state($page.data.images)
+	let brightness = $state($page.data.settings.brightness || '')
+	let markdown = $state($page.data.content)
+	let title = $state(markdown.meta.title)
+	let description = $state(markdown.meta.description)
+	let html = $state(markdown.html)
+	let slug = $state(markdown.meta.slug)
 	let media = $derived(brightness ? images[brightness] : images['day'])
 </script>
 
