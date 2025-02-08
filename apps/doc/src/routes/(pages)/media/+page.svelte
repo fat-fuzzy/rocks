@@ -1,10 +1,10 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
 
-	let markdown = $derived($page.data.content)
+	let markdown = $derived(page.data.content)
 	let title = $derived('')
 	let description = $derived(markdown.meta.description)
 </script>

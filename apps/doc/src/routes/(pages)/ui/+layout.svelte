@@ -3,7 +3,7 @@
 	import type {Snippet} from 'svelte'
 
 	import {onMount, getContext, setContext} from 'svelte'
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import {api} from '@fat-fuzzy/playbook'
 	const {Playbook} = api
 
@@ -17,8 +17,8 @@
 	let playbookContext = api.stylesApi.initStyles()
 	setContext('playbookContext', playbookContext)
 
-	let {styles} = $state($page.data)
-	let nav = $derived($page.data.nav)
+	let {styles} = $state(page.data)
+	let nav = $derived(page.data.nav)
 
 	onMount(() => {
 		if (styles) {

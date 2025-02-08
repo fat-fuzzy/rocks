@@ -1,15 +1,15 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import '$lib/styles/css/main.css'
 	import ui from '@fat-fuzzy/ui'
 
 	const {Feedback} = ui.blocks
 	const {PageMain} = ui.content
 
-	let title = $derived($page.status)
+	let title = $derived(page.status)
 	let status = $state('error')
 	let asset = $derived.by(() => {
-		switch ($page.status) {
+		switch (page.status) {
 			case 404:
 				return 'not-found'
 			default:
@@ -17,14 +17,14 @@
 		}
 	})
 	let description = 'Something went wrong!'
-	let message = $derived($page.error?.message ?? 'An error occurred')
+	let message = $derived(page.error?.message ?? 'An error occurred')
 </script>
 
 <PageMain
 	title={String(title)}
 	{description}
 	size="xl"
-	pageName={String($page.status)}
+	pageName={String(page.status)}
 	justify="center"
 >
 	{#snippet header()}

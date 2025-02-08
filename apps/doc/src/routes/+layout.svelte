@@ -4,7 +4,7 @@
 	import {setContext} from 'svelte'
 	import '$lib/styles/css/main.css'
 
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
 	import FatFuzzyStore from '$lib/stores/stores.svelte'
@@ -20,7 +20,7 @@
 
 	let {children}: Props = $props()
 
-	const store = new FatFuzzyStore($page.data.settings)
+	const store = new FatFuzzyStore(page.data.settings)
 	setContext('fatFuzzyStore', store)
 
 	let app = $derived(store.app)
@@ -28,7 +28,7 @@
 	let brightness = $derived(app.settings.brightness)
 	let contrast = $derived(app.settings.contrast)
 	let pageClass = $derived(
-		ui.utils.format.getClassNameFromPathname($page.url.pathname),
+		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
 	let themeClass = $derived(
 		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
@@ -74,9 +74,9 @@
 		id="main-nav"
 		name="main-nav"
 		label=""
-		path={$page.url.pathname}
+		path={page.url.pathname}
 		actionPath="/"
-		redirect={$page.url.pathname}
+		redirect={page.url.pathname}
 		formaction="toggleNav"
 		items={{
 			links,

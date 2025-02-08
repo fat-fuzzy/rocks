@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import '@fat-fuzzy/style'
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 	import sketchStore from '$lib/stores/stores.svelte'
 
@@ -13,7 +13,7 @@
 
 	let {children}: Props = $props()
 
-	let sketches = $state($page.data.sketches)
+	let sketches = $state(page.data.sketches)
 	let appSettings = $derived(sketchStore.app)
 
 	let path = ''

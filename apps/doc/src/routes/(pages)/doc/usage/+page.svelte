@@ -1,10 +1,10 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
 
-	let markdowns = $state($page.data.markdowns.usages)
+	let markdowns = $state(page.data.markdowns.usages)
 	let title = 'Usage'
 	let description =
 		'Fat Fuzzy Doc: how to use the packages in this project, examples, notes'
@@ -17,7 +17,7 @@
 				{#if meta.status !== 'draft'}
 					<a
 						class="font:lg surface:2:neutral card:md"
-						href={`${$page.url.pathname}/${meta.slug}`}
+						href={`${page.url.pathname}/${meta.slug}`}
 					>
 						{Number(meta.id)} - {meta.title}
 					</a>

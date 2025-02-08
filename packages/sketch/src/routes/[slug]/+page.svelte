@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 
 	import gfx from '@fat-fuzzy/gfx'
 	import ui from '@fat-fuzzy/ui'
@@ -8,7 +8,7 @@
 	const {PageMain} = ui.content
 
 	let scene = $derived(
-		gfx.gl.sketches.learning.find((s) => s.meta.slug === $page.data.slug),
+		gfx.gl.sketches.learning.find((s) => s.meta.slug === page.data.slug),
 	)
 	let title = $derived(scene?.meta.title || '')
 	let description = $derived(`${title} - Play`)

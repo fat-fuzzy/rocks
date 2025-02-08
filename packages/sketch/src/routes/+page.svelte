@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
@@ -7,8 +7,8 @@
 	const description =
 		'A sandbox environment to experiment and learn web-based computer graphics.'
 
-	const path = $derived($page.url.pathname)
-	let sketches = $page.data.sketches
+	const path = $derived(page.url.pathname)
+	let sketches = page.data.sketches
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
 </script>
 

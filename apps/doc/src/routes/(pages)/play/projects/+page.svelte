@@ -1,18 +1,18 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	const path = $derived($page.url.pathname)
+	const path = $derived(page.url.pathname)
 
-	let markdown = $page.data.content
+	let markdown = page.data.content
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
 	let slug = $derived(markdown.meta.slug)
-	let sketches = $state($page.data.projects)
+	let sketches = $state(page.data.projects)
 
 	// TODO: Use webgl & webglfundamentals tags to group sketches elsewhere
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))

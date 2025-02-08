@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {Picture} = ui.drafts
@@ -8,7 +8,7 @@
 
 	let dialog: HTMLDialogElement
 	let stage: boolean | undefined = $state(undefined)
-	let media = $derived($page.data)
+	let media = $derived(page.data)
 	let title = $derived(media.title ?? '')
 	let description = $derived(media.description ?? '')
 	let frameclass = $derived(media.height < media.width ? 'maki:block:2xl' : '')
