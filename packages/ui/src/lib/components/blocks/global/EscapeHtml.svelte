@@ -1,11 +1,12 @@
 <script lang="ts">
+	import {browser} from '$app/environment'
 	import DOMPurify from 'isomorphic-dompurify'
 	import {onMount} from 'svelte'
 
 	let {id, html, size}: {id: string; html: string; size?: string} = $props()
 	let escaped = $state(html)
 	onMount(() => {
-		if (window !== undefined) {
+		if (browser) {
 			escaped = DOMPurify.sanitize(html)
 		}
 	})
