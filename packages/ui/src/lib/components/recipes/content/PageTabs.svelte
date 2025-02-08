@@ -59,9 +59,9 @@
 				class={`surface:0:${color}`}
 			>
 				<a
+					role="tab"
 					id={`tab-${slug}`}
 					href={`#${slug}`}
-					role="tab"
 					aria-selected={currentHash === slug}
 					aria-controls={slug}
 					onclick={() => updateActiveTab(slug)}
