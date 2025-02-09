@@ -55,7 +55,7 @@
 	})
 
 	function toggleReveal(event) {
-		if (event.id !== `button-reveal-${id}` || event.state === expanded) {
+		if (event.id !== `button-reveal-${id}`) {
 			return
 		}
 
@@ -156,6 +156,7 @@
 		onsubmit={toggleReveal}
 		class={formClasses}
 		bind:this={boundForm}
+		use:enhance
 	>
 		<input type="hidden" name="formId" value={id} oninput={handleInput} />
 		<input

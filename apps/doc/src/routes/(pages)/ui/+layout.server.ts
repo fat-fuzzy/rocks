@@ -8,6 +8,7 @@ import uiStateService from '$lib/forms/services/ui-state'
 const page = 'ui'
 let markdowns = assets.markdowns
 const {APP_PREFIX} = ui.constants
+
 const revealForms = [
 	// ui page forms
 	'tokens',
@@ -37,7 +38,7 @@ const blockNames = Object.keys(ui.blocks).sort(sortAsc)
 const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
 const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
 
-export const load = async ({locals, cookies, params, url}) => {
+export const load = async ({locals, cookies, params}) => {
 	const dsState = uiStateService.getUiState({
 		cookies,
 		key: `${APP_PREFIX}-ui-state`,
@@ -70,6 +71,7 @@ export const load = async ({locals, cookies, params, url}) => {
 	locals.dsStyles = dsStyles
 
 	let sidebar = buildNav('ui')
+	sidebar.reveal = locals.sidebar.reveal || sidebar.reveal
 	sidebar.items[0].items = (sidebar.items[0].items || []).map((item) => {
 		if (item.slug === 'tokens') {
 			item.items = tokenNames.map((c) => ({
@@ -133,7 +135,6 @@ export const load = async ({locals, cookies, params, url}) => {
 			throw error(404, {message: 'Not found'})
 		}
 	}
-	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 
 	return {
 		sidebar,

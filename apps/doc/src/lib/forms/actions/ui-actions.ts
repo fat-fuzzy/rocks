@@ -1,5 +1,5 @@
 import type {UiActionSetInput} from '$lib/types/actions.js'
-import {error, fail} from '@sveltejs/kit'
+import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/forms/services/ui-state.js'
@@ -45,7 +45,6 @@ async function handleToggleUiReveal({
 				path: '/',
 			},
 		})
-
 		return {
 			success: true,
 			key,
@@ -53,11 +52,11 @@ async function handleToggleUiReveal({
 		}
 	} catch (error) {
 		console.error(error)
-		return fail(500, {
+		return {
 			success: false,
 			type: element,
 			error: 'Failed to update UI state', // TODO: improve / manage error message with intl package
-		})
+		}
 	}
 }
 
