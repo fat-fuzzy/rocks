@@ -14,10 +14,10 @@
 	const {LayoutSidebar} = ui.content
 
 	let fatFuzzyStore: FatFuzzyStore = getContext('fatFuzzyStore')
-	let nav = $derived(page.data.nav)
+	let sidebar = $derived(page.data.sidebar)
 </script>
 
-<LayoutSidebar {nav} app={fatFuzzyStore.app}>
+<LayoutSidebar nav={sidebar} app={fatFuzzyStore.app}>
 	{#if children}
 		{@render children()}
 	{:else}

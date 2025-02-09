@@ -10,9 +10,9 @@ const usagesMarkdowns = usages.markdowns
 	.filter(({meta}) => meta.status !== 'draft')
 	.reverse()
 
-let nav = buildNav('doc')
+let sidebar = buildNav('doc')
 
-nav.items[0].items = nav.items[0].items.map((item) => {
+sidebar.items[0].items = sidebar.items[0].items.map((item) => {
 	if (item.slug === 'usage') {
 		item.items = usagesMarkdowns.map(({meta}) => meta)
 	} else if (item.slug === 'decisions') {
@@ -21,11 +21,10 @@ nav.items[0].items = nav.items[0].items.map((item) => {
 	return item
 })
 
-export const load = async (event) => {
-	nav.reveal = event.locals.sidebar.reveal ?? nav.reveal
-
+export const load = async ({locals}) => {
+	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	const data = {
-		nav,
+		sidebar,
 		markdowns: {
 			decisions: decisionsMarkdowns,
 			usages: usagesMarkdowns,

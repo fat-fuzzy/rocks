@@ -1,6 +1,6 @@
 import constants from '$lib/types/constants.js'
 
-const {DEFAULT_REVEAL_STATE} = constants
+const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
 class UiReveal {
 	state: {[key: string]: string}
@@ -29,7 +29,7 @@ class UiReveal {
 		}
 
 		if (updated) {
-			this.state.reveal = updated
+			this.state.reveal = TRANSITION_REVEAL[updated]
 			return {
 				success: true,
 				state: this.state,
