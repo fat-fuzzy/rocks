@@ -11,11 +11,6 @@ const revealForms = [
 	// doc page forms
 	'usage',
 	'decisions',
-	// ui page forms
-	'tokens',
-	'blocks',
-	'layouts',
-	'recipes',
 	// play page forms
 	'projects',
 	'learning',
@@ -26,14 +21,6 @@ enum FormsEnum {
 	nav = 'nav',
 	settings = 'settings',
 	sidebar = 'sidebar',
-	// ui page forms
-	tokens = 'tokens',
-	blocks = 'blocks',
-	layouts = 'layouts',
-	recipes = 'recipes',
-	dsState = 'dsState',
-	dsStyles = 'dsStyles',
-	currentTabs = 'currentTabs',
 }
 
 export const handle = (async ({event, resolve}) => {
@@ -43,14 +30,6 @@ export const handle = (async ({event, resolve}) => {
 	const appSettings = uiStateService.getUiState({
 		cookies,
 		key: `${APP_PREFIX}-settings-app`,
-	})
-	const dsState = uiStateService.getUiState({
-		cookies,
-		key: `${APP_PREFIX}-ui-state`,
-	})
-	const dsStyles = uiStateService.getUiState({
-		cookies,
-		key: `${APP_PREFIX}-ui-styles`,
 	})
 
 	const appLocalsMap = revealForms.map((form) => ({
@@ -72,16 +51,6 @@ export const handle = (async ({event, resolve}) => {
 
 	// LayoutSidebar nav
 	event.locals.sidebar = appLocals[FormsEnum.sidebar]
-
-	// UI nav
-	event.locals.navTokens = appLocals[FormsEnum.tokens]
-	event.locals.navBlocks = appLocals[FormsEnum.blocks]
-	event.locals.navLayouts = appLocals[FormsEnum.layouts]
-	event.locals.navRecipes = appLocals[FormsEnum.recipes]
-
-	// UI state and styles
-	event.locals.dsState = dsState
-	event.locals.dsStyles = dsStyles
 
 	const response = await resolve(event)
 	return response

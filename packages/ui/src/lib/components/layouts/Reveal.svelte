@@ -44,7 +44,7 @@
 		onclick,
 	}: RevealLayoutProps = $props()
 
-	let expanded = $state(reveal)
+	let expanded = $derived(reveal)
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
 	let validator: FormValidator = new FormValidator('UiStateValidationFunction')
@@ -59,7 +59,6 @@
 			return
 		}
 
-		expanded = event.state
 		if (onclick) {
 			onclick(event)
 		}
@@ -154,12 +153,7 @@
 		{name}
 		{method}
 		action={actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-		use:enhance={() => {
-			// prevent default callback from resetting the form
-			return ({update}) => {
-				update({reset: false})
-			}
-		}}
+		onsubmit={toggleReveal}
 		class={formClasses}
 		bind:this={boundForm}
 	>
@@ -180,9 +174,8 @@
 			controls={`${id}-reveal`}
 			{asset}
 			justify={`${justify} nowrap`}
-			initial={reveal}
+			initial={expanded}
 			place={placeIcon}
-			onclick={toggleReveal}
 			states={revealStates}
 			{disabled}
 		>

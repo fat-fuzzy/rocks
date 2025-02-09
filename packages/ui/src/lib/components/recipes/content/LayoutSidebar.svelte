@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import type {RevealNavProps} from '$types'
+	import {DismissEvent} from '$types'
 	import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 	type Props = {
@@ -27,7 +28,7 @@
 				justify="between"
 				formaction="toggleSidebar"
 				size="md"
-				dismiss="click"
+				dismiss={DismissEvent.click}
 			/>
 		</div>
 	{/if}
