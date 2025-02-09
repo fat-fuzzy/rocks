@@ -12,7 +12,10 @@ const {DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = ui.constants
 
 export const actions = {
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
+	toggleSidebar: async (event) => {
+		const updated = await uiActions.handleToggleSidebar(event)
+		event.locals.sidebar = updated.state
+	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleTokens: async (event) => uiActions.handleToggleTokens(event),
 	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),

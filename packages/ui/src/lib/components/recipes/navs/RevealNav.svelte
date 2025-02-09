@@ -28,10 +28,6 @@
 		onclick,
 	}: RevealNavProps = $props()
 
-	function toggleReveal(event) {
-		if (onclick) onclick(event)
-	}
-
 	let navContainer = $derived(container ? `${container}:${size}` : '')
 	let navLayoutThreshold = $derived(
 		breakpoint ? `bp:${breakpoint}` : threshold ? `th:${threshold}` : '',
@@ -72,7 +68,7 @@
 		{place}
 		{align}
 		{justify}
-		onclick={toggleReveal}
+		{onclick}
 	>
 		<LinkTree id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</Reveal>

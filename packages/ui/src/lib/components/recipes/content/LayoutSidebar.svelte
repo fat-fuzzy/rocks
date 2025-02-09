@@ -26,7 +26,6 @@
 				position="sticky"
 				place="left"
 				justify="between"
-				formaction="toggleSidebar"
 				size="md"
 				dismiss={DismissEvent.click}
 			/>
