@@ -53,27 +53,35 @@ export const handle = (async ({event, resolve}) => {
 		key: `${APP_PREFIX}-ui-styles`,
 	})
 
-	const appLocalsPromises = revealForms.map((form) => ({
+	const appLocalsMap = revealForms.map((form) => ({
 		[form]: uiStateService.getUiState({
 			cookies,
 			key: `${APP_PREFIX}-reveal-${form}`,
 		}),
 	}))
 
-	const appLocals = await (
-		await Promise.all(appLocalsPromises)
-	).reduce((acc, curr) => {
+	const appLocals = appLocalsMap.reduce((acc, curr) => {
 		return {...acc, ...curr}
 	}, {})
+
+	// App settings
 	event.locals.settings = appSettings
-	event.locals.dsState = dsState
-	event.locals.dsStyles = dsStyles
-	event.locals.sidebar = appLocals[FormsEnum.sidebar]
+
+	// Main header nav
 	event.locals.nav = appLocals[FormsEnum.nav]
+
+	// LayoutSidebar nav
+	event.locals.sidebar = appLocals[FormsEnum.sidebar]
+
+	// UI nav
 	event.locals.navTokens = appLocals[FormsEnum.tokens]
 	event.locals.navBlocks = appLocals[FormsEnum.blocks]
 	event.locals.navLayouts = appLocals[FormsEnum.layouts]
 	event.locals.navRecipes = appLocals[FormsEnum.recipes]
+
+	// UI state and styles
+	event.locals.dsState = dsState
+	event.locals.dsStyles = dsStyles
 
 	const response = await resolve(event)
 	return response

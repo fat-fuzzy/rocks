@@ -7,7 +7,7 @@ import {buildNav} from '$data/nav'
 const page = 'ui'
 let markdowns = assets.markdowns
 
-let nav = buildNav('ui')
+let sidebar = buildNav('ui')
 
 // TODO: move to utils / clean
 function sortAsc(a, b) {
@@ -18,7 +18,7 @@ const tokenNames = Object.keys(ui.tokens).sort(sortAsc)
 const blockNames = Object.keys(ui.blocks).sort(sortAsc)
 const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
 const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
-nav.items[0].items = nav.items[0].items.map((item) => {
+sidebar.items[0].items = sidebar.items[0].items.map((item) => {
 	if (item.slug === 'tokens') {
 		item.items = tokenNames.map((c) => ({
 			slug: c,
@@ -83,10 +83,10 @@ export const load = async ({locals, params}) => {
 			throw error(404, {message: 'Not found'})
 		}
 	}
-	nav.reveal = locals.sidebar.reveal ?? nav.reveal
+	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 
 	return {
-		nav,
+		sidebar,
 		styles: locals.dsStyles,
 		context: locals.dsContext,
 		ui: locals.dsState,
