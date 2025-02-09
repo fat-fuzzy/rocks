@@ -28,7 +28,7 @@
 		onclick,
 	}: ExpandProps = $props()
 
-	let store = new Actor({
+	let actor = new Actor({
 		initial,
 		onclick,
 		machine: states,
@@ -37,14 +37,14 @@
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value: store.value,
-		expanded: store.expanded,
-		state: store.state,
-		action: store.update.bind(store),
+		value: actor.value,
+		expanded: actor.expanded,
+		state: actor.state,
+		action: actor.update.bind(actor),
 	})
 
 	let buttonClasses = $derived(
-		store.getStyles({
+		actor.getStyles({
 			color,
 			size,
 			shape,
@@ -59,9 +59,9 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		store.update(store.currentState.event as ButtonEvent)
-		if (store.currentState.action)
-			store.currentState.action(payload as FuzzyPayload)
+		actor.update(actor.currentState.event as ButtonEvent)
+		if (actor.currentState.action)
+			actor.currentState.action(payload as FuzzyPayload)
 	}
 
 	onMount(() => {
@@ -76,10 +76,10 @@
 	{title}
 	{disabled}
 	{formaction}
-	value={store.value}
+	value={actor.value}
 	class={buttonClasses}
 	data-key={name}
-	aria-expanded={store.expanded}
+	aria-expanded={actor.expanded}
 	aria-controls={controls}
 	onclick={handleClick}
 	data-testid={id}
@@ -90,6 +90,6 @@
 		<span class="sr-only">{title}</span>
 	{:else}
 		<span class="sr-only">{title}</span>
-		<span class="viz-only">{store.label}</span>
+		<span class="viz-only">{actor.label}</span>
 	{/if}
 </button>
