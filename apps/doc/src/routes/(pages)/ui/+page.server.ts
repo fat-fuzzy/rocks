@@ -11,7 +11,6 @@ const {SignUpUser} = ui.forms
 const {DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = ui.constants
 
 export const actions = {
-	toggleNav: async (event) => uiActions.handleToggleNav(event),
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleTokens: async (event) => uiActions.handleToggleTokens(event),
 	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),

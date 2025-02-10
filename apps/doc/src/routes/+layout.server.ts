@@ -6,14 +6,18 @@ export const ssr = true
 export const load = async ({locals}) => {
 	let styles
 	let settings
+	let nav
+	if (locals.nav) {
+		nav = locals.nav
+	}
 	if (locals.styles) {
 		styles = locals.styles
 	}
 	if (locals.settings) {
 		settings = locals.settings
 	}
-
 	return {
+		nav,
 		styles,
 		settings,
 	}

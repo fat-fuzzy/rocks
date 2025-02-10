@@ -76,12 +76,19 @@ export const load = async ({params, locals}) => {
 			sections,
 		}
 	} catch (e) {
-		error(500, 'Error loading image data')
+		error(500, 'There was an error when loading the page')
 	}
 }
 
 export const actions = {
-	toggleNav: async (event) => uiActions.handleToggleNav(event),
+	toggleNav: async (event) => {
+		const updated = await uiActions.handleToggleNav(event)
+		event.locals.nav = updated.state
+		const redirectTo = event.url.searchParams.get('redirectTo')
+		if (redirectTo) {
+			redirect(303, redirectTo)
+		}
+	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleSidebar: async (event) => {
 		const updated = await uiActions.handleToggleSidebar(event)

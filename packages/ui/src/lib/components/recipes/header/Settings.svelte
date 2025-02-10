@@ -17,6 +17,8 @@
 		asset = 'settings',
 		align = 'end',
 		formaction,
+		actionPath,
+		redirect,
 		items,
 		onupdate,
 	}: SettingsProps = $props()
@@ -45,6 +47,8 @@
 		id={`${id}-menu`}
 		items={items.switch}
 		{formaction}
+		{actionPath}
+		{redirect}
 		{onupdate}
 	/>
 	<ul class="links:settings end unstyled">
