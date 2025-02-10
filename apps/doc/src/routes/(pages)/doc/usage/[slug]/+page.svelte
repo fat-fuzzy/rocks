@@ -26,7 +26,9 @@
 			/>
 		{/snippet}
 		<article class="l:sidebar:md">
-			<EscapeHtml id={slug} {html} size="lg" />
+			<div class="l:main">
+				<EscapeHtml id={slug} {html} size="md" />
+			</div>
 		</article>
 	</PageMain>
 {/key}

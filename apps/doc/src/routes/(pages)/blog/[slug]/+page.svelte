@@ -50,7 +50,7 @@
 			</div>
 		{/snippet}
 		<article class="l:sidebar:md">
-			<EscapeHtml id={slug} {html} size="lg" />
+			<EscapeHtml id={slug} {html} size="md" />
 		</article>
 	</PageMain>
 {/key}
