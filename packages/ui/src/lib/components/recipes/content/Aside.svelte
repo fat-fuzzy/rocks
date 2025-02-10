@@ -32,9 +32,9 @@
 			</Feedback>
 		</div>
 	{/if}
-	<div class="l:stack:xs">
+	<div class="l:stack:xs maki:inline size:sm">
 		{#if series}
-			<p class="h5">{`Part ${page} of ${series.length}`}</p>
+			<p class="h5 maki:inline size:sm">{`Part ${page} of ${series.length}`}</p>
 			<ol>
 				{#each series as item, index}
 					<li

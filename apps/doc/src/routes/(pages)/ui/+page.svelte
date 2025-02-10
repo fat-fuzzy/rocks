@@ -25,7 +25,7 @@
 <PageMain {title} {description} size="md">
 	<article class="l:sidebar:md">
 		<section class="l:main">
-			<EscapeHtml id={slug} html={content.html} size="lg" />
+			<EscapeHtml id={slug} html={content.html} size="md" />
 			{#each categories as category}
 				<PlaybookCollection
 					{category}
@@ -42,7 +42,7 @@
 						id={`${slug}-${category}`}
 						html={markdowns.categories.find(({meta}) => meta.slug === category)
 							.html}
-						size="lg"
+						size="md"
 					/>
 				</PlaybookCollection>
 			{/each}

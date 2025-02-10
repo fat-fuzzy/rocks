@@ -56,7 +56,7 @@
 	{redirect}
 >
 	{#if isPage}
-		<EscapeHtml id={content.meta.slug} html={content.html} size="lg" />
+		<EscapeHtml id={content.meta.slug} html={content.html} size="md" />
 	{:else if children}
 		{@render children()}
 	{/if}
