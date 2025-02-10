@@ -38,7 +38,7 @@ const blockNames = Object.keys(ui.blocks).sort(sortAsc)
 const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
 const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
 
-export const load = async ({locals, cookies, params}) => {
+export const load = async ({locals, cookies, params, url}) => {
 	const dsState = uiStateService.getUiState({
 		cookies,
 		key: `${APP_PREFIX}-ui-state`,
@@ -72,6 +72,8 @@ export const load = async ({locals, cookies, params}) => {
 
 	let sidebar = buildNav('ui')
 	sidebar.reveal = locals.sidebar.reveal || sidebar.reveal
+	sidebar.actionPath = url.pathname
+	sidebar.redirect = url.pathname
 	sidebar.items[0].items = (sidebar.items[0].items || []).map((item) => {
 		if (item.slug === 'tokens') {
 			item.items = tokenNames.map((c) => ({
