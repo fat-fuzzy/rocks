@@ -17,6 +17,8 @@ const navBase = {
 	position: 'fixed',
 	place: 'left',
 	formaction: 'toggleSidebar',
+	actionPath: '/',
+	redirect: '/',
 	items: [] as NavItem[],
 }
 

@@ -15,6 +15,10 @@ export const actions = {
 	toggleSidebar: async (event) => {
 		const updated = await uiActions.handleToggleSidebar(event)
 		event.locals.sidebar = updated.state
+		const redirectTo = event.url.searchParams.get('redirectTo')
+		if (redirectTo) {
+			redirect(303, redirectTo)
+		}
 	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleTokens: async (event) => uiActions.handleToggleTokens(event),

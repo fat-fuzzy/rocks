@@ -11,6 +11,8 @@
 		path = '',
 		reveal,
 		formaction,
+		actionPath,
+		redirect,
 		layout,
 		dismiss = DismissEvent.outside,
 		color,
@@ -64,6 +66,8 @@
 		{reveal}
 		{dismiss}
 		{formaction}
+		{actionPath}
+		{redirect}
 		{position}
 		{place}
 		{align}
