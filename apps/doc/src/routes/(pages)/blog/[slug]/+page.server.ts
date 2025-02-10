@@ -37,7 +37,6 @@ export const load = ({params}) => {
 
 export const actions = {
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	updateSettings: async (event) =>
 		settingsActions.handleUpdateAppSettings({event}),

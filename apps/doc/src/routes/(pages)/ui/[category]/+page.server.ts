@@ -10,7 +10,6 @@ const {DEFAULT_DS_STATE} = ui.constants
 
 export const actions = {
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleTokens: async (event) => uiActions.handleToggleTokens(event),
 	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),
