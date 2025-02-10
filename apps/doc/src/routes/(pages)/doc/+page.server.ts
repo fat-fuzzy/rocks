@@ -48,7 +48,6 @@ export const load = async ({locals}) => {
 }
 
 export const actions = {
-	toggleNav: async (event) => uiActions.handleToggleNav(event),
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
 	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),

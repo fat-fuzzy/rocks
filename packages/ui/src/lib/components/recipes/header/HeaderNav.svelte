@@ -1,9 +1,6 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
-	import constants from '$lib/types/constants.js'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
-
-	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'ui-header-nav-app',
@@ -16,12 +13,12 @@
 		auto,
 		title,
 		path,
+		reveal,
+		actionPath,
 		formaction,
+		redirect,
 		links,
 	}: HeaderProps = $props()
-
-	let navReveal = $state(DEFAULT_REVEAL_STATE)
-	let reveal = $derived(navReveal.reveal)
 </script>
 
 <Reveal
@@ -39,6 +36,8 @@
 	{reveal}
 	{breakpoint}
 	{formaction}
+	{actionPath}
+	{redirect}
 >
 	<ul class="l:switcher:sm unstyled color:primary">
 		<li aria-current={path === '/' ? 'page' : undefined}>

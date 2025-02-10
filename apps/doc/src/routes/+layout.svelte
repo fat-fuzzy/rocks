@@ -20,7 +20,7 @@
 
 	let {children}: Props = $props()
 
-	const store = new FatFuzzyStore(page.data.settings)
+	let store = new FatFuzzyStore(page.data.settings)
 	setContext('fatFuzzyStore', store)
 
 	let app = $derived(store.app)
@@ -71,10 +71,11 @@
 
 <div class={themeClass}>
 	<Header
-		id="main-nav"
-		name="main-nav"
+		id="nav"
+		name="nav"
 		label=""
 		path={page.url.pathname}
+		reveal={page.data.nav.reveal}
 		actionPath="/"
 		redirect={page.url.pathname}
 		formaction="toggleNav"
