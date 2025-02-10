@@ -1,4 +1,4 @@
-import {error} from '@sveltejs/kit'
+import {error, redirect} from '@sveltejs/kit'
 import pages from '$data/pages'
 import images from '$data/images'
 import uiActions from '$lib/forms/actions/ui-actions'
@@ -83,6 +83,14 @@ export const load = async ({params, locals}) => {
 export const actions = {
 	toggleNav: async (event) => uiActions.handleToggleNav(event),
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	toggleSidebar: async (event) => {
+		const updated = await uiActions.handleToggleSidebar(event)
+		event.locals.sidebar = updated.state
+		const redirectTo = event.url.searchParams.get('redirectTo')
+		if (redirectTo) {
+			redirect(303, redirectTo)
+		}
+	},
 	updateSettings: async (event) =>
 		settingsActions.handleUpdateAppSettings({event}),
 	reset: async ({cookies}) => {

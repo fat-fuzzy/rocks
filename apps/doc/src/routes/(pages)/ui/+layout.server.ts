@@ -71,10 +71,9 @@ export const load = async ({locals, cookies, params, url}) => {
 	locals.dsStyles = dsStyles
 
 	let sidebar = buildNav('ui')
-	sidebar.reveal = locals.sidebar.reveal || sidebar.reveal
-	sidebar.actionPath = url.pathname
+	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.redirect = url.pathname
-	sidebar.items[0].items = (sidebar.items[0].items || []).map((item) => {
+	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'tokens') {
 			item.items = tokenNames.map((c) => ({
 				slug: c,
