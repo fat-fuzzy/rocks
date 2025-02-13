@@ -10,7 +10,18 @@ const {DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
 const {SignUpUser} = ui.forms
 const {DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = ui.constants
 
+export const load = async ({parent}) => {
+	const {sidebar} = await parent()
+	return {
+		sidebar,
+	}
+}
+
 export const actions = {
+	toggleSidebar: async (event) => {
+		const updated = await uiActions.handleToggleSidebar(event)
+		event.locals.sidebar = updated.state
+	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleTokens: async (event) => uiActions.handleToggleTokens(event),
 	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),

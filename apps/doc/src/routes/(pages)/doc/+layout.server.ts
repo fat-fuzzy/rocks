@@ -13,7 +13,7 @@ const usagesMarkdowns = usages.markdowns
 export const load = async ({locals, url}) => {
 	let sidebar = buildNav('doc')
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
-	sidebar.redirect = url.pathname
+	sidebar.actionPath = url.pathname
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'usage') {
 			item.items = usagesMarkdowns.map(({meta}) => meta)

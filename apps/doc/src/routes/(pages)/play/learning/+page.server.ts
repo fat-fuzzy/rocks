@@ -5,7 +5,8 @@ import settingsActions from '$lib/forms/actions/settings-actions'
 
 const page = 'learning'
 
-export const load = async () => {
+export const load = async ({parent}) => {
+	let {sidebar} = await parent()
 	let content = await pages.fetchMarkdowns(page)
 
 	if (!content?.length) {
@@ -17,6 +18,7 @@ export const load = async () => {
 		throw error(404, {message: 'Not found'})
 	}
 	const data = {
+		sidebar,
 		content,
 	}
 
@@ -24,6 +26,10 @@ export const load = async () => {
 }
 
 export const actions = {
+	toggleSidebar: async (event) => {
+		const updated = await uiActions.handleToggleSidebar(event)
+		event.locals.sidebar = updated.state
+	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
