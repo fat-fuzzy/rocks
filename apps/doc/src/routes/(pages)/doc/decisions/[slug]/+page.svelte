@@ -7,7 +7,7 @@
 	const {EscapeHtml} = ui.headless
 
 	let markdown = $derived(
-		page.data.markdowns.decisions.find((d) => d.path === page.data.path),
+		page.data.markdowns.decisions.find((d) => d.path === page.data.html.path),
 	)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(`Decision Log ${markdown.meta.id}: ${title}`)

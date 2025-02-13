@@ -54,13 +54,12 @@
 		disabled = validator.formHasErrors()
 	})
 
-	function toggleReveal(event) {
-		if (event.id !== `button-reveal-${id}`) {
+	function toggleReveal(event: Event, payload: {state: string; id: string}) {
+		if (payload.id !== `button-reveal-${id}`) {
 			return
 		}
-
 		if (onclick) {
-			onclick(event)
+			onclick(payload)
 		}
 	}
 
@@ -112,14 +111,14 @@
 
 	function onKeyUp(e: KeyboardEvent) {
 		if (dismiss === DismissEvent.outside && e.key === 'Escape') {
-			toggleReveal({state: 'collapsed', id: `button-reveal-${id}`})
+			toggleReveal(e, {state: 'collapsed', id: `button-reveal-${id}`})
 		}
 	}
 
-	function handleClickOutside() {
+	function handleClickOutside(e: MouseEvent) {
 		if (dismiss === DismissEvent.outside && boundForm) {
 			clickOutside(boundForm, () =>
-				toggleReveal({state: 'collapsed', id: `button-reveal-${id}`}),
+				toggleReveal(e, {state: 'collapsed', id: `button-reveal-${id}`}),
 			)
 		}
 	}
@@ -152,10 +151,14 @@
 	<form
 		{name}
 		{method}
-		action={actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-		onsubmit={toggleReveal}
 		class={formClasses}
 		bind:this={boundForm}
+		onsubmit={(e) => toggleReveal}
+		action={action
+			? actionPath
+				? `${actionPath}?/${action}`
+				: `?/${action}`
+			: undefined}
 		use:enhance
 	>
 		<input type="hidden" name="formId" value={id} oninput={handleInput} />

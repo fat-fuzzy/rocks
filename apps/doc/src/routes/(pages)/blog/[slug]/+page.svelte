@@ -6,7 +6,7 @@
 	const {Aside} = ui.drafts
 	const {EscapeHtml} = ui.headless
 
-	let post = $derived(page.data)
+	let post = $derived(page.data.content)
 	let title = $derived(post.title)
 	let description = $derived(post.description)
 	let html = $derived(post.html)

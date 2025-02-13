@@ -8,7 +8,8 @@ import settingsActions from '$lib/forms/actions/settings-actions'
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
 
-export const load = async ({locals}) => {
+export const load = async ({parent}) => {
+	let {sidebar} = await parent()
 	const imageSlug = '001-intro'
 
 	if (!markdowns?.length) {
@@ -40,6 +41,7 @@ export const load = async ({locals}) => {
 					sources: nightImageData.json.sources,
 				},
 			},
+			sidebar,
 			content,
 		}
 	} catch (e) {
@@ -48,6 +50,10 @@ export const load = async ({locals}) => {
 }
 
 export const actions = {
+	toggleSidebar: async (event) => {
+		const updated = await uiActions.handleToggleSidebar(event)
+		event.locals.sidebar = updated.state
+	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
 	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),

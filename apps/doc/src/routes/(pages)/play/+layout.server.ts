@@ -12,7 +12,7 @@ let learning = gfx.gl.sketches.learning
 export const load = async ({locals, url}) => {
 	let sidebar = buildNav('play')
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
-	sidebar.redirect = url.pathname
+	sidebar.actionPath = url.pathname
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'learning') {
 			item.items = learning

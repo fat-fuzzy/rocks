@@ -3,7 +3,8 @@ import gfx from '@fat-fuzzy/gfx'
 import uiActions from '$lib/forms/actions/ui-actions'
 import settingsActions from '$lib/forms/actions/settings-actions'
 
-export const load = ({params}) => {
+export const load = async ({parent, params}) => {
+	let {sidebar} = await parent()
 	let sketchData = gfx.gl.sketches.projects.find((s) => {
 		return s.meta.slug === params.slug
 	})
@@ -17,10 +18,17 @@ export const load = ({params}) => {
 		throw error(500, {message: 'Sketch data not found'})
 	}
 
-	return meta
+	return {
+		sidebar,
+		meta,
+	}
 }
 
 export const actions = {
+	toggleSidebar: async (event) => {
+		const updated = await uiActions.handleToggleSidebar(event)
+		event.locals.sidebar = updated.state
+	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
