@@ -16,6 +16,7 @@ export const load = async ({locals, url}) => {
 	})
 
 	const data = {
+		nav: locals.nav,
 		sidebar,
 		markdowns: posts,
 	}

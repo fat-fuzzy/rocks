@@ -1,3 +1,4 @@
+import uiActions from '$lib/forms/actions/ui-actions'
 import {buildNav} from '$data/nav'
 
 import decisions from '$data/decisions'
@@ -24,6 +25,7 @@ export const load = async ({locals, url}) => {
 	})
 
 	const data = {
+		nav: locals.nav,
 		sidebar,
 		markdowns: {
 			decisions: decisionsMarkdowns,

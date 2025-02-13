@@ -25,6 +25,10 @@ export const load = async ({parent, params}) => {
 }
 
 export const actions = {
+	toggleNav: async (event) => {
+		const updated = await uiActions.handleToggleNav(event)
+		event.locals.nav = updated.state
+	},
 	toggleSidebar: async (event) => {
 		const updated = await uiActions.handleToggleSidebar(event)
 		event.locals.sidebar = updated.state

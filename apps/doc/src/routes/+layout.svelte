@@ -76,8 +76,7 @@
 		label=""
 		path={page.url.pathname}
 		reveal={page.data.nav.reveal}
-		actionPath="/"
-		redirect={page.url.pathname}
+		actionPath={page.url.pathname}
 		formaction="toggleNav"
 		items={{
 			links,
