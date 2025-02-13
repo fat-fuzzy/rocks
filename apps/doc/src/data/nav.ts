@@ -18,7 +18,6 @@ const navBase = {
 	place: 'left',
 	formaction: 'toggleSidebar',
 	actionPath: '/',
-	redirect: '/',
 	items: [] as NavItem[],
 }
 
