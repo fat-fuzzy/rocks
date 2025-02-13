@@ -51,11 +51,10 @@ async function handleToggleUiReveal({
 			state: newState.state,
 		}
 	} catch (error) {
-		console.error(error)
 		return {
 			success: false,
 			type: element,
-			error: 'Failed to update UI state', // TODO: improve / manage error message with intl package
+			error: 'Failed to update UI', // TODO: improve / manage error message with intl package
 		}
 	}
 }

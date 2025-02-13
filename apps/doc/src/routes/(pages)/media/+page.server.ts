@@ -7,6 +7,10 @@ export const load = async () => {
 }
 
 export const actions = {
+	toggleNav: async (event) => {
+		const updated = await uiActions.handleToggleNav(event)
+		event.locals.nav = updated.state
+	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	updateSettings: async (event) =>
 		settingsActions.handleUpdateAppSettings({event}),

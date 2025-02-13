@@ -60,7 +60,7 @@ export const load = async ({locals, cookies, params, url}) => {
 		return {...acc, ...curr}
 	}, {})
 
-	// UI nav
+	// UI sidebar nav
 	locals.navTokens = appLocals[FormsEnum.tokens]
 	locals.navBlocks = appLocals[FormsEnum.blocks]
 	locals.navLayouts = appLocals[FormsEnum.layouts]
@@ -138,6 +138,7 @@ export const load = async ({locals, cookies, params, url}) => {
 	}
 
 	return {
+		nav: locals.nav,
 		sidebar,
 		styles: locals.dsStyles,
 		context: locals.dsContext,

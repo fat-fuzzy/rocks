@@ -1,4 +1,4 @@
-import {error, redirect} from '@sveltejs/kit'
+import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
 import images from '$data/images'
 import uiActions from '$lib/forms/actions/ui-actions'
@@ -67,11 +67,12 @@ async function loadSectionsContent(pageAssets) {
 	return pageAssets.sections
 }
 
-export const load = async ({params, locals}) => {
+export const load = async ({locals}) => {
 	try {
 		const content = await pages.fetchMarkdowns(page)
 		const sections = await loadSectionsContent(pageAssets)
 		return {
+			nav: locals.nav,
 			content: content.length ? content[0] : {meta: {title: ''}},
 			sections,
 		}
@@ -84,10 +85,6 @@ export const actions = {
 	toggleNav: async (event) => {
 		const updated = await uiActions.handleToggleNav(event)
 		event.locals.nav = updated.state
-		const redirectTo = event.url.searchParams.get('redirectTo')
-		if (redirectTo) {
-			redirect(303, redirectTo)
-		}
 	},
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	updateSettings: async (event) =>
