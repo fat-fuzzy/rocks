@@ -7,6 +7,7 @@ export const load = async ({locals}) => {
 	let styles
 	let settings
 	let nav
+
 	if (locals.nav) {
 		nav = locals.nav
 	}

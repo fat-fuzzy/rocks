@@ -17,11 +17,11 @@ class FatFuzzyStore {
 	}
 
 	updateBrightness = (brightness: string) => {
-		this.app.settings = {...this.app.settings, brightness}
+		this.app.settings.brightness = brightness
 	}
 
 	updateContrast = (contrast: string) => {
-		this.app.settings = {...this.app.settings, contrast}
+		this.app.settings.contrast = contrast
 	}
 }
 

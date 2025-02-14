@@ -1,5 +1,5 @@
 import type {UiActionSetInput, UiActionSetOutput} from '$lib/types/actions.js'
-import {error, fail} from '@sveltejs/kit'
+import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/forms/services/ui-state.js'
@@ -15,11 +15,11 @@ async function handleUpdateAppSettings({
 	options,
 }: UiActionSetInput): Promise<UiActionSetOutput> {
 	const {request, cookies} = event
+	const data = await request.formData()
+	const key = `${APP_PREFIX}-settings`
+	let currentState = DEFAULT_APP_SETTINGS
 
 	try {
-		const data = await request.formData()
-		const key = `${APP_PREFIX}-settings-app`
-		let currentState = DEFAULT_APP_SETTINGS
 		const newState = new SettingsUpdate(currentState)
 
 		if (!newState.update(data)) {
@@ -42,10 +42,12 @@ async function handleUpdateAppSettings({
 			state: newState.toString(),
 		}
 	} catch (error) {
-		fail(500, {
+		return {
 			success: false,
-			error: 'Failed to update settings', // TODO: improve / manage error message with intl package
-		})
+			key,
+			message: 'Failed to update settings', // TODO: improve / manage error message with intl package,
+			state: currentState.toString(),
+		}
 	}
 }
 

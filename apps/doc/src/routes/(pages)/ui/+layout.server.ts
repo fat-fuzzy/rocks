@@ -139,6 +139,7 @@ export const load = async ({locals, cookies, params, url}) => {
 
 	return {
 		nav: locals.nav,
+		settings: locals.settings,
 		sidebar,
 		styles: locals.dsStyles,
 		context: locals.dsContext,

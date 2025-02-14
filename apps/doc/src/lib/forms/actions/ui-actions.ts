@@ -1,11 +1,11 @@
-import type {UiActionSetInput} from '$lib/types/actions.js'
+import type {UiActionSetInput, UiActionSetOutput} from '$lib/types/actions.js'
 import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/forms/services/ui-state.js'
-import UiReveal from '$lib/forms/services/ui-reveal.js'
 
 const {APP_PREFIX} = ui.constants
+const {UiReveal} = ui.forms
 /**
  * TODO validate input
  */
@@ -13,22 +13,22 @@ async function handleToggleUiReveal({
 	event,
 	element,
 	options,
-}: UiActionSetInput) {
+}: UiActionSetInput): Promise<UiActionSetOutput> {
 	const {request, cookies} = event
 
+	const data = await request.formData()
+
+	if (!element) {
+		error(500, `Cannot toggle ${element} element`)
+	}
+
+	const key = `${APP_PREFIX}-reveal-${element}`
+	const currentState = uiStateService.getUiState({
+		cookies,
+		key,
+	})
+
 	try {
-		const data = await request.formData()
-
-		if (!element) {
-			error(500, `Cannot toggle ${element} element`)
-		}
-
-		const key = `${APP_PREFIX}-reveal-${element}`
-		const currentState = uiStateService.getUiState({
-			cookies,
-			key,
-		})
-
 		const reveal = new UiReveal(currentState, element)
 		const newState = reveal.reveal(data)
 
@@ -54,7 +54,8 @@ async function handleToggleUiReveal({
 		return {
 			success: false,
 			type: element,
-			error: 'Failed to update UI', // TODO: improve / manage error message with intl package
+			message: 'Failed to update UI', // TODO: improve / manage error message with intl package,
+			state: currentState.toString(),
 		}
 	}
 }

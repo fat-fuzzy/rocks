@@ -1,7 +1,6 @@
 import {error} from '@sveltejs/kit'
 import blog from '$data/blog'
-import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
+import {commonActions} from '$lib/forms/services/page-actions'
 
 /**
  * Load data from markdown file based on route parameters
@@ -39,16 +38,4 @@ export const load = async ({parent, params}) => {
 	}
 }
 
-export const actions = {
-	toggleNav: async (event) => {
-		const updated = await uiActions.handleToggleNav(event)
-		event.locals.nav = updated.state
-	},
-	toggleSidebar: async (event) => {
-		const updated = await uiActions.handleToggleSidebar(event)
-		event.locals.sidebar = updated.state
-	},
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
-}
+export const actions = commonActions

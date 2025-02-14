@@ -24,11 +24,11 @@ class SettingsUpdate {
 		try {
 			let updated = data.get('brightness')?.toString()
 			if (updated) {
-				this.app.brightness = updated
+				this.app.brightness = TRANSITION_BRIGHTNESS[updated]
 			}
 			updated = data.get('contrast')?.toString()
 			if (updated) {
-				this.app.contrast = updated
+				this.app.contrast = TRANSITION_CONTRAST[updated]
 			}
 			return true
 		} catch (e) {
