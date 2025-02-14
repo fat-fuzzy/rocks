@@ -53,7 +53,7 @@
 				{actionPath}
 				{redirect}
 				items={items.settings.switch}
-				onupdate={items?.settings.onupdate}
+				onupdate={items.settings.onupdate}
 			/>
 			<ul class="links:settings end unstyled">
 				{#each items.settings.links as { title, url, shape, size, asset }}

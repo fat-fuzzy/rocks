@@ -25,7 +25,7 @@
 	})
 </script>
 
-<Playbook app={settings.app} nav={sidebar}>
+<Playbook app={settings} nav={sidebar}>
 	{#if children}
 		{@render children()}
 	{/if}

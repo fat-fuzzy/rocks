@@ -66,12 +66,14 @@ async function loadSectionsContent(pageAssets) {
 	return pageAssets.sections
 }
 
-export const load = async () => {
+export const load = async ({parent}) => {
+	let {settings} = await parent()
 	try {
 		const content = await pages.fetchMarkdowns(page)
 		const sections = await loadSectionsContent(pageAssets)
 
 		return {
+			settings,
 			content: content.length ? content[0] : {meta: {title: ''}},
 			sections,
 		}
