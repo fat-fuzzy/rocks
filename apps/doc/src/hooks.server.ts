@@ -24,12 +24,12 @@ enum FormsEnum {
 }
 
 export const handle = (async ({event, resolve}) => {
-	let {cookies} = event
+	let {cookies, url} = event
 	// Load all UI states into locals
 
 	const appSettings = uiStateService.getUiState({
 		cookies,
-		key: `${APP_PREFIX}-settings-app`,
+		key: `${APP_PREFIX}-settings`,
 	})
 
 	const appLocalsMap = revealForms.map((form) => ({
@@ -43,11 +43,12 @@ export const handle = (async ({event, resolve}) => {
 		return {...acc, ...curr}
 	}, {})
 
-	// App settings
 	event.locals.settings = appSettings
+	event.locals.settings.actionPath = url.pathname
 
 	// Main header nav
 	event.locals.nav = appLocals[FormsEnum.nav]
+	event.locals.nav.actionPath = url.pathname
 
 	// LayoutSidebar nav
 	event.locals.sidebar = appLocals[FormsEnum.sidebar]

@@ -1,10 +1,9 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
+import {commonActions} from '$lib/forms/services/page-actions'
 
 const page = 'blog'
 const markdowns = await pages.fetchMarkdowns(page)
-import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
 
 export const load = async ({parent}) => {
 	let {sidebar} = await parent()
@@ -23,16 +22,4 @@ export const load = async ({parent}) => {
 	}
 }
 
-export const actions = {
-	toggleNav: async (event) => {
-		const updated = await uiActions.handleToggleNav(event)
-		event.locals.nav = updated.state
-	},
-	toggleSidebar: async (event) => {
-		const updated = await uiActions.handleToggleSidebar(event)
-		event.locals.sidebar = updated.state
-	},
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
-}
+export const actions = commonActions

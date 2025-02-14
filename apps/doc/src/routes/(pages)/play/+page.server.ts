@@ -1,7 +1,7 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
 import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
+import {commonActions} from '$lib/forms/services/page-actions'
 
 const page = 'play'
 
@@ -26,17 +26,7 @@ export const load = async ({parent}) => {
 }
 
 export const actions = {
-	toggleNav: async (event) => {
-		const updated = await uiActions.handleToggleNav(event)
-		event.locals.nav = updated.state
-	},
-	toggleSidebar: async (event) => {
-		const updated = await uiActions.handleToggleSidebar(event)
-		event.locals.sidebar = updated.state
-	},
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	...commonActions,
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
 }

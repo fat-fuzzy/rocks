@@ -4,7 +4,7 @@ import {fail, redirect} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
 import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
+import {commonActions} from '$lib/forms/services/page-actions'
 
 const {DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
 const {SignUpUser} = ui.forms
@@ -18,22 +18,11 @@ export const load = async ({parent}) => {
 }
 
 export const actions = {
-	toggleNav: async (event) => {
-		const updated = await uiActions.handleToggleNav(event)
-		event.locals.nav = updated.state
-	},
-	toggleSidebar: async (event) => {
-		const updated = await uiActions.handleToggleSidebar(event)
-		event.locals.sidebar = updated.state
-	},
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	...commonActions,
 	toggleTokens: async (event) => uiActions.handleToggleTokens(event),
 	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),
 	toggleLayouts: async (event) => uiActions.handleToggleLayouts(event),
 	toggleRecipes: async (event) => uiActions.handleToggleRecipes(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
-
 	toggleContext: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('ff-ui-context-reveal')

@@ -1,8 +1,7 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
 import images from '$data/images'
-import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
+import {commonActions} from '$lib/forms/services/page-actions'
 
 const page = 'home'
 
@@ -71,8 +70,10 @@ export const load = async ({locals}) => {
 	try {
 		const content = await pages.fetchMarkdowns(page)
 		const sections = await loadSectionsContent(pageAssets)
+
 		return {
 			nav: locals.nav,
+			settings: locals.settings,
 			content: content.length ? content[0] : {meta: {title: ''}},
 			sections,
 		}
@@ -82,13 +83,7 @@ export const load = async ({locals}) => {
 }
 
 export const actions = {
-	toggleNav: async (event) => {
-		const updated = await uiActions.handleToggleNav(event)
-		event.locals.nav = updated.state
-	},
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
+	...commonActions,
 	reset: async ({cookies}) => {
 		cookies.getAll().forEach((cookie) => {
 			if (cookie.name.startsWith('ff-')) {

@@ -16,8 +16,10 @@ export type UiActionSetInput = {
 	} // TODO: improve options (use schema ?)
 }
 
-export type UiActionSetOutput = void | {
+export type UiActionSetOutput = {
 	success: boolean
-	key: string
-	state: any
+	key?: string
+	type?: string
+	state?: any
+	message?: string
 }
