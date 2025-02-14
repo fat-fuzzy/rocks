@@ -1,7 +1,6 @@
 import {error} from '@sveltejs/kit'
 import decisions from '$data/decisions'
-import uiActions from '$lib/forms/actions/ui-actions'
-import {commonActions} from '$lib/forms/services/page-actions'
+import {actions as parentActions} from '../+page.server'
 
 /**
  * Load data from markdown file based on route parameters
@@ -24,8 +23,4 @@ export const load = async ({parent, params}) => {
 	}
 }
 
-export const actions = {
-	...commonActions,
-	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
-	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),
-}
+export const actions = parentActions

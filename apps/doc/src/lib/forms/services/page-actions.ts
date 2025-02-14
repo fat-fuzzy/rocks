@@ -15,10 +15,11 @@ export const commonActions = {
 		const updated = await settingsActions.handleUpdateAppSettings({event})
 		event.locals.settings = JSON.parse(updated.state)
 	},
-
-	restart: async ({cookies, url}) => {
-		cookies.delete('ff-ui-styles', {path: '/'})
-		cookies.delete('ff-ui-state', {path: '/'})
-		cookies.delete('ff-ui-context-reveal', {path: '/'})
+	reset: async ({cookies}) => {
+		cookies.getAll().forEach((cookie) => {
+			if (cookie.name.startsWith('ff-')) {
+				cookies.delete(cookie.name, {path: '/'})
+			}
+		})
 	},
 }

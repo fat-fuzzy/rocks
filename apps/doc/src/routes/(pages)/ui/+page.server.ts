@@ -97,10 +97,4 @@ export const actions = {
 
 		return {success: true}
 	},
-
-	restart: async ({cookies, url}) => {
-		cookies.delete('ff-ui-styles', {path: '/'})
-		cookies.delete('ff-ui-state', {path: '/'})
-		cookies.delete('ff-ui-context-reveal', {path: '/'})
-	},
 } satisfies Actions

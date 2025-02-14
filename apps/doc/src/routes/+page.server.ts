@@ -82,13 +82,4 @@ export const load = async ({parent}) => {
 	}
 }
 
-export const actions = {
-	...commonActions,
-	reset: async ({cookies}) => {
-		cookies.getAll().forEach((cookie) => {
-			if (cookie.name.startsWith('ff-')) {
-				cookies.delete(cookie.name, {path: '/'})
-			}
-		})
-	},
-}
+export const actions = commonActions

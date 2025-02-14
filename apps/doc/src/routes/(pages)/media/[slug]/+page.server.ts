@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import images from '$data/images'
-import {commonActions} from '$lib/forms/services/page-actions'
+import {actions as parentActions} from '../+page.server'
 
 export const load = async ({params}) => {
 	const {slug} = params
@@ -22,8 +22,4 @@ export const load = async ({params}) => {
 	}
 }
 
-export const actions = {
-	toggleNav: commonActions.toggleNav,
-	toggleSettings: commonActions.toggleSettings,
-	updateSettings: commonActions.updateSettings,
-}
+export const actions = parentActions
