@@ -50,7 +50,7 @@
 				{breakpoint}
 				size="xs"
 				formaction="updateSettings"
-				actionPath={path}
+				{actionPath}
 				{redirect}
 				items={items.settings.switch}
 				onupdate={items?.settings.onupdate}

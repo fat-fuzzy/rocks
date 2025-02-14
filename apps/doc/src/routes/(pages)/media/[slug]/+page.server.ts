@@ -1,6 +1,4 @@
 import {error} from '@sveltejs/kit'
-import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
 import images from '$data/images'
 import {commonActions} from '$lib/forms/services/page-actions'
 

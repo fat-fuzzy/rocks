@@ -6,19 +6,21 @@
 
 	let {
 		id = 'ui-settings-menu',
+		name = 'settings-update',
 		method = 'POST',
 		background,
 		color = 'primary',
 		formaction,
+		actionPath,
+		redirect,
 		items,
 		onupdate,
 	}: SettingsMenuProps = $props()
 
 	let settingsId = id
-
-	function handleUpdate(payload) {
-		if (onupdate) onupdate(payload)
-	}
+	let action = $derived(
+		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
+	)
 
 	let showBackground = background
 		? `bg:${background}`
@@ -29,16 +31,16 @@
 </script>
 
 <form
-	name="settings-update"
+	{name}
 	{method}
-	action={`?/${formaction}`}
-	use:enhance={() => {
-		// prevent default callback from resetting the form
-		return ({update}) => {
-			update({reset: false})
-		}
-	}}
+	action={action
+		? actionPath
+			? `${actionPath}?/${action}`
+			: `?/${action}`
+		: undefined}
 	class={`menu:settings ${formClasses}`}
+	onsubmit={(e) => onupdate}
+	use:enhance
 >
 	{#each items as { id, name, title, initial, variant, shape, color, size, value, states }}
 		{@const switchStates = states ? states : SWITCH_MACHINE}
@@ -53,7 +55,6 @@
 			{value}
 			{initial}
 			states={switchStates}
-			onclick={handleUpdate}
 		/>
 	{/each}
 </form>
