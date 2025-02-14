@@ -32,16 +32,8 @@
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
-		inputs.switch.forEach((input) => {
-			if (input.id === 'brightness') {
-				input.value = brightness
-				input.initial = brightness === 'night' ? 'active' : 'inactive'
-			}
-			if (input.id === 'contrast') {
-				input.value = contrast
-				input.initial = contrast === 'contrast' ? 'active' : 'inactive'
-			}
-		})
+		inputs.switch[0].initial = brightness === 'night' ? 'active' : 'inactive'
+		inputs.switch[1].initial = contrast === 'blend' ? 'active' : 'inactive'
 		return inputs
 	})
 </script>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {SettingsMenuProps} from '$types'
 	import {enhance} from '$app/forms'
-	import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 
 	let {
@@ -38,12 +37,11 @@
 			? `${actionPath}?/${action}`
 			: `?/${action}`
 		: undefined}
+	use:enhance
 	class={`menu:settings ${formClasses}`}
 	onsubmit={(e) => onupdate}
-	use:enhance
 >
 	{#each items as { id, name, title, initial, variant, shape, color, size, value, states }}
-		{@const switchStates = states ? states : SWITCH_MACHINE}
 		<Switch
 			id={`${settingsId}-${id}`}
 			{name}
@@ -54,7 +52,7 @@
 			{size}
 			{value}
 			{initial}
-			states={switchStates}
+			{states}
 		/>
 	{/each}
 </form>

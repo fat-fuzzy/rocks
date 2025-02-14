@@ -9,7 +9,7 @@ const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
 
 export const load = async ({parent}) => {
-	let {sidebar} = await parent()
+	let {sidebar, settings} = await parent()
 	const imageSlug = '001-intro'
 
 	if (!markdowns?.length) {
@@ -43,6 +43,7 @@ export const load = async ({parent}) => {
 			},
 			sidebar,
 			content,
+			settings,
 		}
 	} catch (e) {
 		error(500, 'Error loading image data')
