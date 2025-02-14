@@ -1,7 +1,6 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
-import uiActions from '$lib/forms/actions/ui-actions'
-import {commonActions} from '$lib/forms/services/page-actions'
+import {actions as parentActions} from '../+page.server'
 
 const page = 'projects'
 
@@ -25,8 +24,4 @@ export const load = async ({parent}) => {
 	return data
 }
 
-export const actions = {
-	...commonActions,
-	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
-	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
-}
+export const actions = parentActions

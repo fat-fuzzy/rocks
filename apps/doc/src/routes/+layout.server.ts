@@ -8,8 +8,6 @@ const {APP_PREFIX} = ui.constants
 export const prerender = false
 export const ssr = true
 
-const {DEFAULT_APP_SETTINGS} = ui.constants
-
 const revealForms = [
 	// global app forms
 	'nav',

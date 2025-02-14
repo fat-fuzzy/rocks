@@ -21,6 +21,10 @@
 
 	let brightness = $derived(appSettings.brightness)
 	let contrast = $derived(appSettings.contrast)
+	let initialBrightness = $derived(
+		brightness === 'night' ? 'active' : 'inactive',
+	)
+	let initialContrast = $derived(brightness === 'night' ? 'active' : 'inactive')
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
@@ -32,10 +36,12 @@
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
-		inputs.switch[0].initial = brightness === 'night' ? 'active' : 'inactive'
-		inputs.switch[1].initial = contrast === 'blend' ? 'active' : 'inactive'
+		inputs.switch[0].initial = initialBrightness
+		inputs.switch[1].initial = initialContrast
 		return inputs
 	})
+
+	// TODO : Initialize settings menu from system settings
 </script>
 
 <div class={themeClass}>

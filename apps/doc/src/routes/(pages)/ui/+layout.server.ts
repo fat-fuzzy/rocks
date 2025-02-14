@@ -139,10 +139,10 @@ export const load = async ({locals, cookies, params, url}) => {
 
 	return {
 		sidebar,
+		markdowns,
+		content,
 		styles: locals.dsStyles,
 		context: locals.dsContext,
 		ui: locals.dsState,
-		markdowns,
-		content,
 	}
 }
