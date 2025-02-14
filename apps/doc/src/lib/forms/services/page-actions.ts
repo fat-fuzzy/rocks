@@ -13,9 +13,7 @@ export const commonActions = {
 	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
 	updateSettings: async (event) => {
 		const updated = await settingsActions.handleUpdateAppSettings({event})
-
 		event.locals.settings = JSON.parse(updated.state)
-		console.log('updateSettings event.locals.settings', event.locals.settings)
 	},
 
 	restart: async ({cookies, url}) => {

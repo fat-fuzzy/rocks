@@ -1,13 +1,11 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 
-	import {setContext} from 'svelte'
 	import '$lib/styles/css/main.css'
 
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
-	import FatFuzzyStore from '$lib/stores/stores.svelte'
 	import RcScout from '$lib/ui/RcScout.svelte'
 
 	const {Header} = ui.recipes
@@ -19,14 +17,10 @@
 	}
 
 	let {children}: Props = $props()
+	let appSettings = $derived(page.data.settings)
 
-	let store = new FatFuzzyStore(page.data.settings)
-	setContext('fatFuzzyStore', store)
-
-	let app = $derived(store.app)
-
-	let brightness = $derived(app.settings.brightness)
-	let contrast = $derived(app.settings.contrast)
+	let brightness = $derived(appSettings.brightness)
+	let contrast = $derived(appSettings.contrast)
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
@@ -48,25 +42,8 @@
 				input.initial = contrast === 'contrast' ? 'active' : 'inactive'
 			}
 		})
-		return {
-			...inputs,
-			formaction: 'updateSettings',
-			onupdate: updateSettings,
-		}
+		return inputs
 	})
-
-	function updateSettings(event) {
-		switch (event.id) {
-			case 'brightness':
-				store.updateBrightness(event.value)
-				break
-			case 'contrast':
-				store.updateContrast(event.value)
-				break
-			default:
-				break
-		}
-	}
 </script>
 
 <div class={themeClass}>
@@ -83,7 +60,7 @@
 			settings,
 		}}
 		breakpoint="sm"
-		{app}
+		app={appSettings}
 	/>
 	{#if children}
 		{@render children()}

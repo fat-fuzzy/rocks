@@ -10,7 +10,6 @@
 
 	let path = $derived(page.url.pathname)
 
-	let actionPath = '/ui'
 	let formaction = 'updateState'
 	let title = 'Fat Fuzzy UI'
 	let description = `${title} | Doc`
@@ -34,8 +33,8 @@
 					isPage={false}
 					path={`${path}/${category}${page.url.hash}`}
 					{formaction}
-					{actionPath}
-					redirect={page.url.pathname}
+					actionPath={path}
+					redirect={path}
 					{content}
 				>
 					<EscapeHtml
