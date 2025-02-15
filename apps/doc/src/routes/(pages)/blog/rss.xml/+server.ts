@@ -57,7 +57,7 @@ const get_rss = (posts) =>
 		.trim()
 
 export async function GET() {
-	const posts = await blog.markdowns.filter(({meta}) => meta.status !== 'draft')
+	const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 
 	return new Response(get_rss(posts), {
 		headers: {
