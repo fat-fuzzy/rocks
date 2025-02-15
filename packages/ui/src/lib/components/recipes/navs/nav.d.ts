@@ -5,6 +5,7 @@ import type {
 	FuzzyPayload,
 	FormCommonProps,
 	Tab,
+	UiState,
 } from '$types'
 import type {Snippet} from 'svelte'
 
@@ -31,27 +32,28 @@ export type BreadcrumbsProps = UiBlockProps & {
 	breadcrumbTabs?: Snippet
 }
 
-export type LinkTreeProps = UiBlockProps & {
-	id: string
-	depth: number
-	path: string
-	layout?: string
-	align?: string
-	container?: string
-	items: any[]
-	redirect?: string
-	oninput?: (payload: FuzzyPayload) => void
-}
+export type LinkTreeProps = UiBlockProps &
+	FormCommonProps & {
+		id: string
+		depth: number
+		path: string
+		layout?: string
+		align?: string
+		container?: string
+		items: any[]
+		oninput?: (payload: FuzzyPayload) => void
+	}
 
-export type ExpandLinkProps = UiBlockProps & {
-	href: string
-	slug: string
-	title: string
-	children: Snippet
-	reveal: UiState
-	formaction?: string
-	onclick?: (payload: FuzzyPayload) => void
-}
+export type ExpandLinkProps = UiBlockProps &
+	FormCommonProps & {
+		href: string
+		slug: string
+		title: string
+		children: Snippet
+		reveal: UiState
+		formaction?: string
+		onclick?: (payload: FuzzyPayload) => void
+	}
 
 export type RevealNavProps = NavProps &
 	RevealLayoutProps &

@@ -4,10 +4,20 @@ import images from '$data/images'
 import pages from '$data/pages'
 import uiActions from '$lib/forms/actions/ui-actions'
 import {commonActions} from '$lib/forms/services/page-actions'
+import type {NavItem} from '$types'
+import decisions from '$data/decisions'
+import usages from '$data/usages'
+import {buildNav} from '$data/nav.js'
 
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
 
+const decisionsMarkdowns = decisions.markdowns
+	.filter(({meta}) => meta.status !== 'draft')
+	.reverse()
+const usagesMarkdowns = usages.markdowns
+	.filter(({meta}) => meta.status !== 'draft')
+	.reverse()
 export const load = async ({parent}) => {
 	let {sidebar, settings} = await parent()
 	const imageSlug = '001-intro'
@@ -52,6 +62,30 @@ export const load = async ({parent}) => {
 
 export const actions = {
 	...commonActions,
-	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
+	toggleUsage: async (event) => {
+		const updated = await uiActions.handleToggleUsage(event)
+		const linkTree = event.url.pathname.split('/').filter(Boolean)
+		const revealKey = updated.key?.split('-').filter(Boolean)
+		event.locals.sidebar = buildNav(linkTree[0])
+		event.locals.sidebar.actionPath = event.url.pathname
+		event.locals.sidebar.items =
+			event.locals.sidebar?.items ?? event.locals.sidebar.items
+		event.locals.sidebar.actionPath = event.url.pathname
+		event.locals.sidebar.items[0].items =
+			event.locals.sidebar.items[0].items.map((item) => {
+				item.actionPath = event.url.pathname
+				if (revealKey && item.slug === revealKey[2]) {
+					item.reveal = updated.state.reveal
+				} else {
+					item.reveal = 'collapsed'
+				}
+				if (item.slug === 'usage') {
+					item.items = usagesMarkdowns.map(({meta}) => meta)
+				} else if (item.slug === 'decisions') {
+					item.items = decisionsMarkdowns.map(({meta}) => meta)
+				}
+				return item
+			})
+	},
 	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),
 }

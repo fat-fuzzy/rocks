@@ -7,7 +7,7 @@ export type FormCommonProps = InputCommonProps & {
 	formaction?: string
 	actionPath?: string
 	redirect?: string
-	method?: string
+	method?: HTTPMethod
 	disabled?: boolean
 }
 

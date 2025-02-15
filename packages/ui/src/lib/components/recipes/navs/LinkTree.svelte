@@ -6,9 +6,6 @@
 
 	import ExpandLink from './ExpandLink.svelte'
 	import LinkTree from './LinkTree.svelte'
-	import constants from '$lib/types/constants.js'
-
-	const {DEFAULT_REVEAL_STATE} = constants
 
 	let page = getStores().page
 
@@ -22,7 +19,8 @@
 		depth = 0,
 		container,
 		items = [], // TODO: fix type,
-		oninput,
+		actionPath,
+		redirect,
 	}: LinkTreeProps = $props()
 
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
@@ -36,11 +34,15 @@
 {#snippet nestedLinkTree(subItems, slug)}
 	<LinkTree
 		items={subItems}
+		name={`${id}-${path}`}
+		label={`${id}-${path}`}
 		path={format.formatHref(path, slug)}
 		id={`${id}-${slug}`}
 		{layout}
 		{size}
 		{align}
+		{actionPath}
+		{redirect}
 		depth={depth + 1}
 	/>
 {/snippet}
@@ -54,7 +56,6 @@
 		{@const itemClass = !subItems
 			? `${buttonAssetClass} ${alignClass}`
 			: alignClass}
-		{@const reveal = {[slug]: DEFAULT_REVEAL_STATE}}
 		<li
 			aria-current={$page.url.pathname === format.formatHref(path, slug)
 				? 'page'
@@ -64,24 +65,19 @@
 				: `${itemClass} ${linkAssetClass}`}
 		>
 			{#if subItems && depth > 0}
-				<input
-					type="hidden"
-					name={`state-${slug}`}
-					value={reveal[slug].reveal}
-					oninput={(e) => {
-						if (oninput) {
-							oninput(e)
-						}
-					}}
-				/>
 				<ExpandLink
 					{title}
-					{reveal}
+					reveal={item.reveal}
+					id={slug}
+					name={slug}
+					label={item.label}
 					{slug}
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
 					size={UiSize['2xs']}
-					formaction={`?/${item.formaction}`}
+					formaction={item.formaction}
+					{actionPath}
+					{redirect}
 				>
 					{@render nestedLinkTree(subItems, slug)}
 				</ExpandLink>

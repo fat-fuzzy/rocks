@@ -74,6 +74,17 @@
 		{justify}
 		{onclick}
 	>
-		<LinkTree id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
+		<LinkTree
+			id={`${id}-${path}`}
+			name={`${id}-${path}`}
+			label={`${id}-${path}`}
+			{path}
+			{items}
+			{size}
+			{align}
+			depth={0}
+			{actionPath}
+			{redirect}
+		/>
 	</Reveal>
 </nav>

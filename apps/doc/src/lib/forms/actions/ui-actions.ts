@@ -55,7 +55,7 @@ async function handleToggleUiReveal({
 			success: false,
 			type: element,
 			message: 'Failed to update UI', // TODO: improve / manage error message with intl package,
-			state: currentState.toString(),
+			state: currentState,
 		}
 	}
 }
