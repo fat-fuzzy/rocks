@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount, getContext, setContext, type Snippet} from 'svelte'
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
 	import playbookStore from '$lib/api/store.svelte'
 	import * as api from '$lib/api/styles.api'
@@ -15,7 +15,7 @@
 	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
 
-	let {styles, context, ui} = $state($page.data)
+	let {styles, context, ui} = $state(page.data)
 	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = fatFuzzyUi.constants
 
 	playbookStore.reveal = context

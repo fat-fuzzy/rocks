@@ -1,3 +1,5 @@
+import type {NavItem} from '$types'
+
 export const links = [
 	{slug: 'doc', title: 'Doc', layout: 'sidebar'},
 	{slug: 'ui', title: 'UI', layout: 'sidebar'},
@@ -15,10 +17,11 @@ const navBase = {
 	position: 'fixed',
 	place: 'left',
 	formaction: 'toggleSidebar',
-	items: [],
+	actionPath: '/',
+	items: [] as NavItem[],
 }
 
-export const pages: {[key: string]: any} = {
+export const pages: {[key: string]: NavItem} = {
 	blog: {
 		slug: 'blog',
 		title: 'Blog',

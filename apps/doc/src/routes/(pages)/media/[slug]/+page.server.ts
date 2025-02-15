@@ -1,7 +1,6 @@
 import {error} from '@sveltejs/kit'
-import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
 import images from '$data/images'
+import {actions as parentActions} from '../+page.server'
 
 export const load = async ({params}) => {
 	const {slug} = params
@@ -23,9 +22,4 @@ export const load = async ({params}) => {
 	}
 }
 
-export const actions = {
-	toggleNav: async (event) => uiActions.handleToggleNav(event),
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
-}
+export const actions = parentActions

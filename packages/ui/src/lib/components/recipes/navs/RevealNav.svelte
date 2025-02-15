@@ -11,6 +11,8 @@
 		path = '',
 		reveal,
 		formaction,
+		actionPath,
+		redirect,
 		layout,
 		dismiss = DismissEvent.outside,
 		color,
@@ -27,10 +29,6 @@
 		items = [],
 		onclick,
 	}: RevealNavProps = $props()
-
-	function toggleReveal(event) {
-		if (onclick) onclick(event)
-	}
 
 	let navContainer = $derived(container ? `${container}:${size}` : '')
 	let navLayoutThreshold = $derived(
@@ -68,11 +66,13 @@
 		{reveal}
 		{dismiss}
 		{formaction}
+		{actionPath}
+		{redirect}
 		{position}
 		{place}
 		{align}
 		{justify}
-		onclick={toggleReveal}
+		{onclick}
 	>
 		<LinkTree id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
 	</Reveal>

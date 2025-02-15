@@ -1,12 +1,12 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
 	const {Aside} = ui.drafts
 	const {EscapeHtml} = ui.headless
 
-	let post = $derived($page.data)
+	let post = $derived(page.data.content)
 	let title = $derived(post.title)
 	let description = $derived(post.description)
 	let html = $derived(post.html)
@@ -14,7 +14,7 @@
 	let series = $derived(
 		post.series
 			? post.series.items.map((id) =>
-					$page.data.markdowns.find((post) => post.meta.id === id),
+					page.data.markdowns.find((post) => post.meta.id === id),
 				)
 			: null,
 	)
@@ -50,7 +50,7 @@
 			</div>
 		{/snippet}
 		<article class="l:sidebar:md">
-			<EscapeHtml id={slug} {html} size="lg" />
+			<EscapeHtml id={slug} {html} size="md" />
 		</article>
 	</PageMain>
 {/key}

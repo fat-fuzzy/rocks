@@ -1,9 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import type FatFuzzyStore from '$lib/stores/stores.svelte'
 
-	import {getContext} from 'svelte'
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	type Props = {
@@ -13,11 +11,11 @@
 
 	const {LayoutSidebar} = ui.content
 
-	let fatFuzzyStore: FatFuzzyStore = getContext('fatFuzzyStore')
-	let nav = $derived($page.data.nav)
+	let sidebar = $derived(page.data.sidebar)
+	let settings = $derived(page.data.settings)
 </script>
 
-<LayoutSidebar {nav} app={fatFuzzyStore.app}>
+<LayoutSidebar nav={sidebar} app={settings}>
 	{#if children}
 		{@render children()}
 	{:else}

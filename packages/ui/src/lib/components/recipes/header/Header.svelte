@@ -1,23 +1,20 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
 	import {DismissEvent} from '$types'
-	import constants from '$lib/types/constants.js'
 	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
 	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
-
-	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'ui-header-app',
 		breakpoint = 'sm',
 		path,
+		reveal,
+		redirect,
+		actionPath,
 		items,
 	}: HeaderProps = $props()
 	let className = 'header-app'
-
-	let navReveal = $state(DEFAULT_REVEAL_STATE)
-	let reveal = $derived(navReveal.reveal)
 </script>
 
 <header class="sticky:top">
@@ -39,8 +36,9 @@
 				{path}
 				{reveal}
 				{breakpoint}
-				actionPath={path}
 				formaction="toggleNav"
+				{actionPath}
+				{redirect}
 			/>
 		</div>
 		<div class="l:side l:flex align:center">
@@ -52,8 +50,10 @@
 				{breakpoint}
 				size="xs"
 				formaction="updateSettings"
+				{actionPath}
+				{redirect}
 				items={items.settings.switch}
-				onupdate={items?.settings.onupdate}
+				onupdate={items.settings.onupdate}
 			/>
 			<ul class="links:settings end unstyled">
 				{#each items.settings.links as { title, url, shape, size, asset }}

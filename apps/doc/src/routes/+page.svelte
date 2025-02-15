@@ -1,11 +1,11 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageScrolly} = ui.drafts
 
-	let sections = $state($page.data.sections)
-	let markdown = $derived($page.data.content)
+	let sections = $state(page.data.sections)
+	let markdown = $derived(page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 </script>

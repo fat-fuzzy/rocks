@@ -9,22 +9,22 @@ let learning = gfx.gl.sketches.learning
 	.filter((markdown) => !markdown.meta.draft)
 	.map((sketch) => sketch.meta)
 
-let nav = buildNav('play')
-
-nav.items[0].items = nav.items[0].items.map((item) => {
-	if (item.slug === 'learning') {
-		item.items = learning
-	} else if (item.slug === 'projects') {
-		item.items = projects
-	}
-	return item
-})
-
-export const load = async (event) => {
-	nav.reveal = event.locals.sidebar.reveal ?? nav.reveal
+export const load = async ({locals, url}) => {
+	let sidebar = buildNav('play')
+	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
+	sidebar.actionPath = url.pathname
+	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
+		if (item.slug === 'learning') {
+			item.items = learning
+		} else if (item.slug === 'projects') {
+			item.items = projects
+		}
+		return item
+	})
 
 	const data = {
-		nav,
+		nav: locals.nav,
+		sidebar,
 		projects,
 		learning,
 	}

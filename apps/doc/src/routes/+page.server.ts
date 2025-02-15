@@ -1,8 +1,7 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
 import images from '$data/images'
-import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
+import {commonActions} from '$lib/forms/services/page-actions'
 
 const page = 'home'
 
@@ -67,29 +66,20 @@ async function loadSectionsContent(pageAssets) {
 	return pageAssets.sections
 }
 
-export const load = async ({params, locals}) => {
+export const load = async ({parent}) => {
+	let {settings} = await parent()
 	try {
 		const content = await pages.fetchMarkdowns(page)
 		const sections = await loadSectionsContent(pageAssets)
+
 		return {
+			settings,
 			content: content.length ? content[0] : {meta: {title: ''}},
 			sections,
 		}
 	} catch (e) {
-		error(500, 'Error loading image data')
+		error(500, 'There was an error when loading the page')
 	}
 }
 
-export const actions = {
-	toggleNav: async (event) => uiActions.handleToggleNav(event),
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
-	reset: async ({cookies}) => {
-		cookies.getAll().forEach((cookie) => {
-			if (cookie.name.startsWith('ff-')) {
-				cookies.delete(cookie.name, {path: '/'})
-			}
-		})
-	},
-}
+export const actions = commonActions

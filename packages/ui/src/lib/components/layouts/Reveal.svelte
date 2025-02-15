@@ -44,7 +44,7 @@
 		onclick,
 	}: RevealLayoutProps = $props()
 
-	let expanded = $state(reveal)
+	let expanded = $derived(reveal)
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
 	let validator: FormValidator = new FormValidator('UiStateValidationFunction')
@@ -54,14 +54,12 @@
 		disabled = validator.formHasErrors()
 	})
 
-	function toggleReveal(event) {
-		if (event.id !== `button-reveal-${id}` || event.state === expanded) {
+	function toggleReveal(event: Event, payload: {state: string; id: string}) {
+		if (payload.id !== `button-reveal-${id}`) {
 			return
 		}
-
-		expanded = event.state
 		if (onclick) {
-			onclick(event)
+			onclick(payload)
 		}
 	}
 
@@ -113,14 +111,14 @@
 
 	function onKeyUp(e: KeyboardEvent) {
 		if (dismiss === DismissEvent.outside && e.key === 'Escape') {
-			toggleReveal({state: 'collapsed', id: `button-reveal-${id}`})
+			toggleReveal(e, {state: 'collapsed', id: `button-reveal-${id}`})
 		}
 	}
 
-	function handleClickOutside() {
+	function handleClickOutside(e: MouseEvent) {
 		if (dismiss === DismissEvent.outside && boundForm) {
 			clickOutside(boundForm, () =>
-				toggleReveal({state: 'collapsed', id: `button-reveal-${id}`}),
+				toggleReveal(e, {state: 'collapsed', id: `button-reveal-${id}`}),
 			)
 		}
 	}
@@ -153,15 +151,15 @@
 	<form
 		{name}
 		{method}
-		action={actionPath ? `${actionPath}?/${action}` : `?/${action}`}
-		use:enhance={() => {
-			// prevent default callback from resetting the form
-			return ({update}) => {
-				update({reset: false})
-			}
-		}}
 		class={formClasses}
 		bind:this={boundForm}
+		onsubmit={(e) => toggleReveal}
+		action={action
+			? actionPath
+				? `${actionPath}?/${action}`
+				: `?/${action}`
+			: undefined}
+		use:enhance
 	>
 		<input type="hidden" name="formId" value={id} oninput={handleInput} />
 		<input
@@ -180,9 +178,8 @@
 			controls={`${id}-reveal`}
 			{asset}
 			justify={`${justify} nowrap`}
-			initial={reveal}
+			initial={expanded}
 			place={placeIcon}
-			onclick={toggleReveal}
 			states={revealStates}
 			{disabled}
 		>

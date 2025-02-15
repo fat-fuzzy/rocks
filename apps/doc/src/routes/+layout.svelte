@@ -1,13 +1,11 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 
-	import {setContext} from 'svelte'
 	import '$lib/styles/css/main.css'
 
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
-	import FatFuzzyStore from '$lib/stores/stores.svelte'
 	import RcScout from '$lib/ui/RcScout.svelte'
 
 	const {Header} = ui.recipes
@@ -19,16 +17,16 @@
 	}
 
 	let {children}: Props = $props()
+	let appSettings = $derived(page.data.settings)
 
-	const store = new FatFuzzyStore($page.data.settings)
-	setContext('fatFuzzyStore', store)
-
-	let app = $derived(store.app)
-
-	let brightness = $derived(app.settings.brightness)
-	let contrast = $derived(app.settings.contrast)
+	let brightness = $derived(appSettings.brightness)
+	let contrast = $derived(appSettings.contrast)
+	let initialBrightness = $derived(
+		brightness === 'night' ? 'active' : 'inactive',
+	)
+	let initialContrast = $derived(brightness === 'night' ? 'active' : 'inactive')
 	let pageClass = $derived(
-		ui.utils.format.getClassNameFromPathname($page.url.pathname),
+		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
 	let themeClass = $derived(
 		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
@@ -38,52 +36,29 @@
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
-		inputs.switch.forEach((input) => {
-			if (input.id === 'brightness') {
-				input.value = brightness
-				input.initial = brightness === 'night' ? 'active' : 'inactive'
-			}
-			if (input.id === 'contrast') {
-				input.value = contrast
-				input.initial = contrast === 'contrast' ? 'active' : 'inactive'
-			}
-		})
-		return {
-			...inputs,
-			formaction: 'updateSettings',
-			onupdate: updateSettings,
-		}
+		inputs.switch[0].initial = initialBrightness
+		inputs.switch[1].initial = initialContrast
+		return inputs
 	})
 
-	function updateSettings(event) {
-		switch (event.id) {
-			case 'brightness':
-				store.updateBrightness(event.value)
-				break
-			case 'contrast':
-				store.updateContrast(event.value)
-				break
-			default:
-				break
-		}
-	}
+	// TODO : Initialize settings menu from system settings
 </script>
 
 <div class={themeClass}>
 	<Header
-		id="main-nav"
-		name="main-nav"
+		id="nav"
+		name="nav"
 		label=""
-		path={$page.url.pathname}
-		actionPath="/"
-		redirect={$page.url.pathname}
+		path={page.url.pathname}
+		reveal={page.data.nav.reveal}
+		actionPath={page.url.pathname}
 		formaction="toggleNav"
 		items={{
 			links,
 			settings,
 		}}
 		breakpoint="sm"
-		{app}
+		app={appSettings}
 	/>
 	{#if children}
 		{@render children()}

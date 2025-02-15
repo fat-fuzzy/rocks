@@ -2,21 +2,22 @@ import blog from '$data/blog'
 
 import {buildNav} from '$data/nav'
 
-const posts = await blog.markdowns.filter(({meta}) => meta.status !== 'draft')
-let nav = buildNav('blog')
+const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 
-nav.items = nav.items.map((item) => {
-	if (item.slug === 'blog') {
-		item.items = posts.map(({meta}) => meta)
-	}
-	return item
-})
-
-export const load = async (event) => {
-	nav.reveal = event.locals.sidebar.reveal ?? nav.reveal
+export const load = async ({locals, url}) => {
+	let sidebar = buildNav('blog')
+	sidebar.actionPath = url.pathname
+	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
+	sidebar.items = sidebar.items.map((item) => {
+		if (item.slug === 'blog') {
+			item.items = posts.map(({meta}) => meta)
+		}
+		return item
+	})
 
 	const data = {
-		nav,
+		nav: locals.nav,
+		sidebar,
 		markdowns: posts,
 	}
 

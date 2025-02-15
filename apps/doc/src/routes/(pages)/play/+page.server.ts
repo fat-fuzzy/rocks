@@ -1,11 +1,12 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
 import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
+import {commonActions} from '$lib/forms/services/page-actions'
 
 const page = 'play'
 
-export const load = async ({params}) => {
+export const load = async ({parent}) => {
+	let {sidebar} = await parent()
 	let content = await pages.fetchMarkdowns(page)
 
 	if (!content?.length) {
@@ -17,6 +18,7 @@ export const load = async ({params}) => {
 		throw error(404, {message: 'Not found'})
 	}
 	const data = {
+		sidebar,
 		content,
 	}
 
@@ -24,11 +26,7 @@ export const load = async ({params}) => {
 }
 
 export const actions = {
-	toggleNav: async (event) => uiActions.handleToggleNav(event),
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	...commonActions,
 	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
 	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
 }

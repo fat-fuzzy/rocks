@@ -4,23 +4,25 @@ import {fail, redirect} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
 import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
+import {commonActions} from '$lib/forms/services/page-actions'
 
 const {DsStateUpdate, DsStylesUpdate, DsContextReveal} = forms
 const {SignUpUser} = ui.forms
 const {DEFAULT_STYLES, DEFAULT_DS_STATE, DEFAULT_REVEAL_STATE} = ui.constants
 
+export const load = async ({parent}) => {
+	const {sidebar} = await parent()
+	return {
+		sidebar,
+	}
+}
+
 export const actions = {
-	toggleNav: async (event) => uiActions.handleToggleNav(event),
-	toggleSidebar: async (event) => uiActions.handleToggleSidebar(event),
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	...commonActions,
 	toggleTokens: async (event) => uiActions.handleToggleTokens(event),
 	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),
 	toggleLayouts: async (event) => uiActions.handleToggleLayouts(event),
 	toggleRecipes: async (event) => uiActions.handleToggleRecipes(event),
-	updateSettings: async (event) =>
-		settingsActions.handleUpdateAppSettings({event}),
-
 	toggleContext: async ({request, url, cookies}) => {
 		const data = await request.formData()
 		const serialized = cookies.get('ff-ui-context-reveal')
@@ -94,11 +96,5 @@ export const actions = {
 		}
 
 		return {success: true}
-	},
-
-	restart: async ({cookies, url}) => {
-		cookies.delete('ff-ui-styles', {path: '/'})
-		cookies.delete('ff-ui-state', {path: '/'})
-		cookies.delete('ff-ui-context-reveal', {path: '/'})
 	},
 } satisfies Actions
