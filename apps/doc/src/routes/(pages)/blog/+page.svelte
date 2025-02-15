@@ -5,11 +5,11 @@
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	let markdown = $derived(page.data.content)
-	let title = $derived(markdown.meta.title)
-	let description = $derived(markdown.meta.description)
-	let html = $derived(markdown.html)
-	let slug = $derived(markdown.meta.slug)
+	let post = $derived(page.data.content)
+	let title = $derived(post.meta.title)
+	let description = $derived(post.meta.description)
+	let html = $derived(post.html)
+	let slug = $derived(post.meta.slug)
 </script>
 
 <PageMain {title} {description} size="md">
