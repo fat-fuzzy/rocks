@@ -30,6 +30,10 @@
 	}
 
 	.message {
+		text-wrap: wrap;
+		text-wrap: pretty;
+		max-inline-size: 100%;
+		block-size: fit-content;
 		margin-inline-start: 0;
 		font-size: var(--font-size-minus);
 	}

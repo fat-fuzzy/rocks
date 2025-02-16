@@ -1,22 +1,19 @@
-rf-popover {
-	display: flex;
-	max-inline-size: fit-content;
+rf-popover,
+.anchor {
+	display: block;
+	inline-size: max-content;
+	block-size: max-content;
 }
 
-rf-popover.fixed {
-	position: fixed;
-}
-
-.popover-anchor {
-	display: flex;
+.anchor {
 	position: relative;
-	max-inline-size: fit-content;
 }
 
 /* Use this selector to show / hide the popover, not to style the contents */
 [popover] {
 	border: 0;
-	height: 0;
+	block-size: 0;
+	inline-size: 0;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
@@ -26,59 +23,35 @@ rf-popover.fixed {
 
 /* The [popover] element, in its open state */
 :popover-open {
-	position: relative;
+	position: fixed;
+	display: block;
 	inset: unset;
-	height: auto;
-	filter: drop-shadow(1px 2px 3px var(--shadow-color));
+	inline-size: fit-content;
+	block-size: fit-content;
+	overflow: auto;
 	border-radius: var(--border-radius-md);
 	pointer-events: auto;
 }
 
-/* These are children of [popover]: use them to style content */
-.popover-main {
-	position: relative;
-	border-radius: var(--border-radius-md);
-	display: flex;
-	flex-direction: column;
-	padding-block-start: var(--space-fluid-2xs);
-}
-
-.popover-header {
-	padding-inline: var(--space-fluid-md);
-	padding-block: var(--space-fluid-md);
-	border-bottom: var(--border-width-px) solid var(--color-ui-neutral-active);
-	p {
-		font-size: var(--font-size-heading-h2);
-	}
-}
-
-.popover-footer {
-	padding-inline: var(--space-fluid-2xs);
-	padding-block: var(--space-fluid-2xs);
-	button:only-child {
-		inline-size: 100%;
-	}
-}
-
-.position\:top-left:popover-open {
+.place\:top-left:popover-open {
 	right: 0;
 }
 
-.position\:bottom-left:popover-open {
+.place\:bottom-left:popover-open {
 	top: 0;
 	right: 0;
 }
 
-.position\:bottom-right:popover-open {
+.place\:bottom-right:popover-open {
 	top: 0;
 }
 
-.position\:bottom-center:popover-open {
+.place\:bottom-center:popover-open {
 	top: 0;
 }
 
 @supports (anchor-name: -anchor-name) {
-	.popover-anchor {
+	.anchor {
 		--anchor-name: --popover-anchor;
 		anchor-name: var(--anchor-name);
 	}
@@ -87,27 +60,27 @@ rf-popover.fixed {
 		position-anchor: var(--anchor-name);
 	}
 
-	[class*='position:'][class*='bottom']:popover-open {
+	[class*='place:'][class*='bottom']:popover-open {
 		top: anchor(bottom);
 	}
 
-	[class*='position:'][class*='top']:popover-open {
+	[class*='place:'][class*='top']:popover-open {
 		bottom: anchor(top);
 	}
 
-	[class*='position:'][class*='left']:popover-open {
+	[class*='place:'][class*='left']:popover-open {
 		right: anchor(left);
 	}
 
-	[class*='position:'][class*='right']:popover-open {
+	[class*='place:'][class*='right']:popover-open {
 		left: anchor(right);
 	}
 
-	[class*='position:'][class*='-center']:popover-open {
+	[class*='place:'][class*='-center']:popover-open {
 		right: anchor(center);
 	}
 
-	[class*='position:'][class*='center-']:popover-open {
+	[class*='place:'][class*='center-']:popover-open {
 		top: anchor(center);
 	}
 }

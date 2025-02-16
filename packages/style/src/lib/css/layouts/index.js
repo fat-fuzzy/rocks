@@ -20,7 +20,7 @@ import './overflow.css' /* Use to manage content overflow*/
 import './reveal.css' /* Use for displaying hidden content with a button action */
 import './reveal-sticky.css' /* Use for displaying hidden content in response to a button action */
 import './details.css' /* Use to style <details> and <summary> elements */
-import './dialog.css' /* Use to style the <dialog> element */
+import './position.css' /* Use for to position elements */
 
 /* == Composed layouts == */
 

@@ -6,10 +6,12 @@ form {
 	--color-accent: var(--accent);
 	color: var(--ink);
 	max-height: fit-content;
+	max-inline-size: 100%;
 }
 
 form * {
 	font-family: var(--font-family-ui);
+	max-inline-size: 100%;
 }
 
 label,
