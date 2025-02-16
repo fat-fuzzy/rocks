@@ -19,7 +19,7 @@
 		redirect,
 		layout,
 		container,
-		depth = 2, // <h*> element depth
+		level = 2, // <h*> element level
 		size,
 		color = UiColor.primary,
 		variant = UiVariant.fill,
@@ -102,7 +102,7 @@
 		>
 			{#key validator}
 				<header class={`l:stack:${size} text:${align} ${asset}`}>
-					<svelte:element this={`h${depth}`}>{title}</svelte:element>
+					<svelte:element this={`h${level}`}>{title}</svelte:element>
 					<p class={`font:${size}`}>{description}</p>
 				</header>
 				<Input

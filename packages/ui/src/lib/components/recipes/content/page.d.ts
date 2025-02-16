@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {ScrollyItemProps} from '$types'
+import type {ScrollyItemProps, TabsProps} from '$types'
 
 type ProseProps = {
 	title: string

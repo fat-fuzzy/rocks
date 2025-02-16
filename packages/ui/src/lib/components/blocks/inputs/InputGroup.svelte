@@ -17,7 +17,7 @@
 		color,
 		variant,
 		oninput,
-	}: FieldsetProps & InputProps = $props()
+	}: FieldsetProps & Partial<InputProps> = $props()
 
 	// TODO: fix type
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
@@ -58,7 +58,7 @@
 			{...input}
 			name={id}
 			id={`${name}.${input.value}`}
-			oninput={(event) => handleInput(event, name)}
+			oninput={(event: Event) => handleInput(event, name)}
 		/>
 	{/each}
 </Fieldset>
