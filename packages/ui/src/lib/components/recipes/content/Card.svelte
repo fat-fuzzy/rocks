@@ -37,7 +37,7 @@
 			{@render header()}
 		</header>
 	{/if}
-	<div class="content">
+	<div class={`content l:stack:${size}`}>
 		{#if main}
 			{@render main()}
 		{/if}

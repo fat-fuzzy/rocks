@@ -117,7 +117,7 @@
 			bind:this={boundForm}
 			onsubmit={handleSubmit}
 		>
-			<Card layout="stack" {size} justify="center">
+			<Card layout="stack" size="lg" justify="center">
 				{#snippet header()}
 					<svelte:element this={`h${level}`} class="text:center">
 						{title}
@@ -127,7 +127,7 @@
 				{#snippet main()}
 					{#key validator}
 						<InputGroup
-							id="consent"
+							id="consent.site"
 							type="check"
 							name="cookies"
 							{size}
@@ -139,8 +139,8 @@
 							justify="between"
 						>
 							<InputCheck
-								id="consent.site"
-								name="consent.site"
+								id="site"
+								name="site"
 								type="checkbox"
 								value="false"
 								label="Site Cookies"
@@ -155,9 +155,22 @@
 								oninput={(event) => handleInput(event)}
 								{validator}
 							/>
+						</InputGroup>
+						<InputGroup
+							id="consent.analytics"
+							type="check"
+							name="cookies"
+							{size}
+							variant="bare"
+							onfocus={handleFocus}
+							onblur={handleBlur}
+							oninput={handleInput}
+							{validator}
+							justify="between"
+						>
 							<InputCheck
-								id="consent.analytics"
-								name="consent.analytics"
+								id="analytics"
+								name="analytics"
 								type="checkbox"
 								value="false"
 								label="Analytics Cookies"
