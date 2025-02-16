@@ -23,7 +23,8 @@
 
 	let sizeClass = size ? `size:${size}` : ''
 	let typeClass = type || ''
-	let classes = $derived(styleHelper.getStyles({
+	let classes = $derived(
+		styleHelper.getStyles({
 			size,
 			align,
 			justify,
@@ -33,7 +34,8 @@
 			breakpoint,
 			threshold,
 			container,
-		}))
+		}),
+	)
 </script>
 
 <fieldset {name} data-key={id} class={`${classes} ${typeClass}`} {disabled}>
