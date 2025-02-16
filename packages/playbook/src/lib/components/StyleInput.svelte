@@ -81,7 +81,7 @@
 	function handleToggle(
 		selected: {
 			name: string
-			value: string | number
+			value?: string | number
 			state: string
 		}[],
 		familyName: string,

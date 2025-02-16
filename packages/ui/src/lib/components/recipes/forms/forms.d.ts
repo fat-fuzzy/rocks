@@ -24,7 +24,7 @@ export type FormProps = InputProps & {
 }
 
 export type SignUpProps = InputProps & {
-	depth?: number
+	level?: number
 	description?: string
 	formaction?: string
 	actionPath?: string
