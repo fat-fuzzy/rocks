@@ -112,13 +112,13 @@ nav li[aria-current='page'] {
 }
 
 /* == Override heading styles for headings inside links == */
-a[class*='card'] {
+a[class*='ravioli'] {
 	text-decoration: none;
 	margin-inline-end: 0;
 }
 
 /* == Override heading styles for headings inside links == */
-a[class*='card']:hover > *:not(.icon) {
+a[class*='ravioli']:hover > *:not(.icon) {
 	text-decoration: underline;
 }
 

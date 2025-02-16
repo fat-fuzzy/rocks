@@ -26,8 +26,8 @@
 	background-color: inherit;
 }
 
-[class*=':outline'][class*='card'],
-[class*=':bare'][class*='card'] {
+[class*=':outline'][class*='ravioli'],
+[class*=':bare'][class*='ravioli'] {
 	background-color: var(--shade);
 }
 

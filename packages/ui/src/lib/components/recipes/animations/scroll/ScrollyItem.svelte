@@ -36,7 +36,7 @@
 	{#if item.link}
 		<div class="l:burrito:lg">
 			<div
-				class={`card:xs font:lg text:center surface:4:${variant} emoji:${item.asset}`}
+				class={`ravioli:xs font:lg text:center surface:4:${variant} emoji:${item.asset}`}
 			>
 				<a href={item.link} class={`h${level + 2}`}>
 					{item.title}
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 	{:else if item.title}
-		<div class={`card:lg text:center`}>
+		<div class={`ravioli:lg text:center`}>
 			<svelte:element
 				this={`h${level}`}
 				class={`emoji:${item.asset} h${level + 1}`}

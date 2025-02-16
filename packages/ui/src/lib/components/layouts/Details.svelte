@@ -39,9 +39,9 @@
 		{#if children}
 			{@render children()}
 		{:else}
-			<div class={`card layer ${size}`}>
+			<div class={`ravioli layer ${size}`}>
 				<h3>Revealed Content</h3>
-				<p>This is a card with some content</p>
+				<p>This is a ravioli with some content</p>
 			</div>
 		{/if}
 	</div>

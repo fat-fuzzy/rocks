@@ -9,10 +9,10 @@
 	const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 	const body = ['p', 'pre']
 
-	let cardClasses = `card:md l:${layout}:${size}`
+	let ravioliClasses = `ravioli:md l:${layout}:${size}`
 </script>
 
-<article class={cardClasses}>
+<article class={ravioliClasses}>
 	{#each headings as text}
 		<svelte:element this={text} class={color}>
 			Fox Jumps Over Dog

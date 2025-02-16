@@ -16,7 +16,7 @@
 			{#each markdowns as { meta }}
 				{#if meta.status !== 'draft'}
 					<a
-						class="font:lg surface:2:neutral card:md"
+						class="font:lg surface:2:neutral ravioli:md"
 						href={`${page.url.pathname}/${meta.slug}`}
 					>
 						{Number(meta.id)} - {meta.title}

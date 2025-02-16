@@ -99,7 +99,7 @@
 {/snippet}
 
 {#snippet comingSoon()}
-	<div class="card:lg text:center">
+	<div class="ravioli:lg text:center">
 		<p class={`font:xl`}>🐰</p>
 		<p class={`font:md`}>Coming soon!</p>
 	</div>
@@ -158,7 +158,7 @@
 			{@render comingSoon()}
 		{/if}
 		<details class={`l:stack:md ${size}`}>
-			<summary class={`surface:2:${color} card:2xs emoji:${category}`}>
+			<summary class={`surface:2:${color} ravioli:2xs emoji:${category}`}>
 				{category}
 			</summary>
 			<div class={layoutClass}>

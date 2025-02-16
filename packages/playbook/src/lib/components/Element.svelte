@@ -93,7 +93,9 @@
 	let settingsClasses = $derived(
 		`settings:${brightness}:${contrast} ${surfaceClass}`,
 	)
-	let sectionClasses = $derived(`l:main stage card:xl inset ${settingsClasses}`)
+	let sectionClasses = $derived(
+		`l:main stage ravioli:xl inset ${settingsClasses}`,
+	)
 	let containerClasses = $derived(isPage ? sectionContainer : articleContainer)
 
 	let GenericElement = $derived(ApiElement[category])
@@ -182,12 +184,12 @@
 	</PageTabs>
 {:else}
 	<article
-		id={`card-${title}`}
-		class={`card variant:bare l:stack:md w:auto ui:${title.toLowerCase()} ${settingsClasses}`}
+		id={`ravioli-${title}`}
+		class={`ravioli variant:bare l:stack:md w:auto ui:${title.toLowerCase()} ${settingsClasses}`}
 	>
 		<a
 			href={`${link}/${title}`}
-			class="title card:2xs l:flex emoji:link surface:1:primary align:center"
+			class="title ravioli:2xs l:flex emoji:link surface:1:primary align:center"
 		>
 			<svelte:element this={`h${String(depth)}`} class="link font:md">
 				{title}

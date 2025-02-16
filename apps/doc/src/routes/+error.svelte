@@ -29,10 +29,10 @@
 >
 	{#snippet header()}
 		<div class="surface:0:neutral w:full">
-			<h1 class="card:sm text:center">Fat Fuzzy {title}</h1>
+			<h1 class="ravioli:sm text:center">Fat Fuzzy {title}</h1>
 		</div>
 	{/snippet}
-	<div class="l:taco:2xs card:2xl maki:block:xl">
+	<div class="l:taco:2xs ravioli:2xl maki:block:xl">
 		<Feedback {asset} {status} context="prose" size="lg" container="taco">
 			<div class="l:stack:md">
 				<p>{message}</p>
@@ -43,7 +43,10 @@
 					>
 						Back
 					</button>
-					<a class={`variant:outline bg:primary:500 card:xs font:sm`} href="/">
+					<a
+						class={`variant:outline bg:primary:500 ravioli:xs font:sm`}
+						href="/"
+					>
 						Home
 					</a>
 				</div>
