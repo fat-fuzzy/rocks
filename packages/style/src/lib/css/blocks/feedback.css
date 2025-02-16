@@ -19,7 +19,7 @@
 	--icon-size: var(--font-size-minus);
 	color: var(--color-ink);
 	font-size: var(--font-size);
-	padding: var(--ui-size);
+	padding: var(--ui-size-sm);
 	border: var(--border-width-xl) solid var(--color-accent);
 	background-color: var(--color-bg);
 
