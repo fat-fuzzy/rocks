@@ -30,7 +30,9 @@ fieldset.check {
 	input {
 		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 		--color-accent: var(--accent-semantic, var(--accent));
-		flex-grow: 0;
+		aspect-ratio: 1/1;
+		block-size: var(--font-size);
+		inline-size: var(--font-size);
 		flex-basis: var(--font-size);
 		accent-color: var(--color-accent);
 	}
