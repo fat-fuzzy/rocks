@@ -22,7 +22,8 @@ import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
-import Popover from '$lib/components/blocks/global/Popover.svelte'
+import Popover from '$lib/components/blocks/overlays/Popover.svelte'
+import Dialog from '$lib/components/blocks/overlays/Dialog.svelte'
 
 import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
