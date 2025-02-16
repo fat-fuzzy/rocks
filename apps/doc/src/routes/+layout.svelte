@@ -4,6 +4,7 @@
 	import '$lib/styles/css/main.css'
 
 	import {page} from '$app/state'
+	import {dev} from '$app/environment'
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
 	import RcScout from '$lib/ui/RcScout.svelte'
@@ -92,11 +93,18 @@
 	id="cookies-banner"
 	title="Cookies"
 	asset="cookie"
-	open={true}
 	fixed={true}
 	container="burrito"
 	variant="fill"
+	color="accent"
 	place="bottom-right"
 >
 	<Cookies />
 </Popover>
+{#if !dev && appSettings.tracking}
+	<script
+		defer
+		src="https://static.cloudflareinsights.com/beacon.min.js"
+		data-cf-beacon={`{"token": "${appSettings.tracking}"}`}
+	></script>
+{/if}
