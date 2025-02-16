@@ -35,8 +35,7 @@
 	let disabled: boolean | undefined = $state(undefined)
 	let successPlaceholder: boolean = $state(false)
 	let title = 'Cookies'
-	let description =
-		'This site uses cookies to improve your experience, and to help me understand viewership. The website will continue to work without cookies, but some features may be limited.'
+	let description = 'You can save or change your preferences here'
 	let successMessage = `You're all set! Your cookie preferences have been saved.`
 
 	const inputTypes: {[name: string]: string} = {
@@ -115,10 +114,8 @@
 		>
 			<Card layout="stack" size="md" background="contrast">
 				{#snippet header()}
-					<div class="l:burrito:lg">
-						<svelte:element this={`h${level}`}>{title}</svelte:element>
-						<p>{description}</p>
-					</div>
+					<svelte:element this={`h${level}`}>{title}</svelte:element>
+					<p>{description}</p>
 				{/snippet}
 				{#snippet main()}
 					{#key validator}

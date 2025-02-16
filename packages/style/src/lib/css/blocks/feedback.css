@@ -20,6 +20,7 @@
 	color: var(--color-ink);
 	font-size: var(--font-size);
 	padding: var(--ui-size);
+	padding-inline-end: var(--ui-size-lg);
 	border: var(--border-width-xl) solid var(--color-accent);
 	background-color: var(--color-bg);
 
