@@ -78,7 +78,7 @@
 		{role}
 		popover={invoke}
 		aria-live="polite"
-		class={`place:${place}`}
+		class={fixed ? `fixed:${place}` : `place:${place}`}
 		style={popoverAnchorStyle}
 	>
 		{@render children()}
