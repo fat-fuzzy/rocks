@@ -86,7 +86,7 @@
 	})
 </script>
 
-<div class={`card:${size} ${background} l:${container}:${size}`}>
+<div class={`ravioli:${size} ${background} l:${container}:${size}`}>
 	{#if successPlaceholder}
 		<Feedback status={UiStatus.success} context={UiTextContext.form}>
 			Form submitted!
@@ -94,7 +94,7 @@
 	{:else}
 		<form
 			{method}
-			class={`l:stack:${size} card:${size}`}
+			class={`l:stack:${size} ravioli:${size}`}
 			action={action && actionPath ? `${actionPath}?/${action}` : undefined}
 			use:enhance
 			bind:this={boundForm}

@@ -41,7 +41,7 @@
 						aria-current={page && page === index + 1 ? 'page' : undefined}
 						class={page && page === index + 1 ? colorClass : ''}
 					>
-						<a href={item.link} class="card:2xs">{item.title}</a>
+						<a href={item.link} class="ravioli:2xs">{item.title}</a>
 					</li>
 				{/each}
 			</ol>

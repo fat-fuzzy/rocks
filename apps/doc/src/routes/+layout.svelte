@@ -31,8 +31,10 @@
 	let themeClass = $derived(
 		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
 	)
-	let footerClass = 'card:xs'
-	let aboutContainerClass = $derived(pageClass === 'page:home' ? 'card:xl' : '')
+	let footerClass = 'ravioli:xs'
+	let aboutContainerClass = $derived(
+		pageClass === 'page:home' ? 'ravioli:xl' : '',
+	)
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
@@ -71,7 +73,7 @@
 			class={`l:burrito:3xl color:neutral font:md maki:block:xl ${aboutContainerClass}`}
 			open={footerOpen}
 		>
-			<summary class="card:2xs">About</summary>
+			<summary class="ravioli:2xs">About</summary>
 			<div class="l:stack:2xl">
 				<p>
 					Made with 🩷 by <a

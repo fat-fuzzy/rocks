@@ -10,7 +10,7 @@
 	const variants = ['000', '100', '200', '300', '400', '500', '600']
 	const baseColor = ['light', 'dark']
 
-	let colorClasses = `card:md l:stack:sm font:sm text:center`
+	let colorClasses = `ravioli:md l:stack:sm font:sm text:center`
 </script>
 
 <div class="l:stack:xl">

@@ -56,7 +56,7 @@
 				<a
 					data-sveltekit-preload-data
 					href={item.path}
-					class={`l:flex card:2xs align:center ${font}`}
+					class={`l:flex ravioli:2xs align:center ${font}`}
 				>
 					{#if i === items.length - 1}
 						<svelte:element

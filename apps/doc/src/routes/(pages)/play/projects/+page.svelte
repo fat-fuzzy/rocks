@@ -26,7 +26,7 @@
 
 	<ul class="unstyled">
 		{#each sketches as { slug, asset, title }}
-			<li class={`card:3xs ${asset}`}>
+			<li class={`ravioli:3xs ${asset}`}>
 				<a class="font:md" href={`${path}/${slug}`}>
 					{title}
 				</a>
@@ -37,13 +37,13 @@
 		<h2>Tags</h2>
 		<div class="l:text l:grid:sm maki:block">
 			{#each tags as tag}
-				<details class="card:md l:stack size:sm bg:netural varian:bare">
-					<summary class="surface:2:neutral card:2xs">{tag}</summary>
+				<details class="ravioli:md l:stack size:sm bg:netural varian:bare">
+					<summary class="surface:2:neutral ravioli:2xs">{tag}</summary>
 					<div class="l:stack:xs maki:block">
 						<ul class="unstyled">
 							{#each sketches as { slug, asset, title, tags }}
 								{#if tags.includes(tag)}
-									<li class={`card:3xs ${asset}`}>
+									<li class={`ravioli:3xs ${asset}`}>
 										<a class="font:md" href={`${path}/${slug}`}>
 											{title}
 										</a>

@@ -22,7 +22,7 @@
 </script>
 
 {#snippet comingSoon()}
-	<div class="card:lg text:center">
+	<div class="ravioli:lg text:center">
 		<p class={`font:xl`}>🐰</p>
 		<p class={`font:md`}>Coming soon!</p>
 	</div>
