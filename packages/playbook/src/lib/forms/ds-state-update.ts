@@ -46,7 +46,7 @@ class DsStateUpdate {
 		if (data.has('button-ui-Header-nav-reveal')) {
 			return this.toggleSidebarReveal(data)
 		}
-		if (data.has('button-ui-Header-menu-settings')) {
+		if (data.has('button-ui-Header-settings-reveal')) {
 			return this.toggleSettingsReveal(data)
 		}
 	}
@@ -91,7 +91,7 @@ class DsStateUpdate {
 	}
 
 	toggleSettingsReveal(data: FormData) {
-		const updated = data.get('button-ui-Header-menu-settings')?.toString()
+		const updated = data.get('button-ui-Header-settings-reveal')?.toString()
 		if (updated) {
 			this.state.settingsReveal.reveal =
 				TRANSITION_REVEAL[this.state.settingsReveal.reveal]
