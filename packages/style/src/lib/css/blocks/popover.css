@@ -33,23 +33,6 @@ rf-popover,
 	pointer-events: auto;
 }
 
-.place\:top-left:popover-open {
-	right: 0;
-}
-
-.place\:bottom-left:popover-open {
-	top: 0;
-	right: 0;
-}
-
-.place\:bottom-right:popover-open {
-	top: 0;
-}
-
-.place\:bottom-center:popover-open {
-	top: 0;
-}
-
 @supports (anchor-name: -anchor-name) {
 	.anchor {
 		--anchor-name: --popover-anchor;

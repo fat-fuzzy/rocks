@@ -1,26 +1,33 @@
-[class*='fixed'] {
+[class*='fixed'],
+[class*='place'] {
 	--inset-size: var(--size-base-md);
-	position: fixed;
 	max-inline-size: calc(100% - 2 * var(--inset-size));
 	max-block-size: calc(100% - 2 * var(--inset-size));
 }
 
-.fixed\:top-left {
-	top: var(--inset-size);
-	left: var(--inset-size);
+[class*='fixed'] {
+	position: fixed;
 }
 
-.fixed\:top-right {
-	top: var(--inset-size);
-	right: var(--inset-size);
-}
+[class*='fixed'],
+[class*='place'] {
+	&[class*=':top-left'] {
+		top: var(--inset-size);
+		left: var(--inset-size);
+	}
 
-.fixed\:bottom-left {
-	bottom: var(--inset-size);
-	left: var(--inset-size);
-}
+	&[class*=':top-right'] {
+		top: var(--inset-size);
+		right: var(--inset-size);
+	}
 
-.fixed\:bottom-right {
-	bottom: var(--inset-size);
-	right: var(--inset-size);
+	&[class*=':bottom-left'] {
+		bottom: var(--inset-size);
+		left: var(--inset-size);
+	}
+
+	&[class*=':bottom-right'] {
+		bottom: var(--inset-size);
+		right: var(--inset-size);
+	}
 }
