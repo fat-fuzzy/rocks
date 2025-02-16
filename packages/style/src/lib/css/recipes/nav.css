@@ -209,7 +209,7 @@ a[class*='ravioli']:hover > *:not(.icon) {
 	}
 
 	.reveal-nav.collapsed + .l\:main > * {
-		margin-inline-start: var(--layout-sidebar-collapsed) - var(--gap);
+		margin-inline-start: calc(var(--layout-sidebar-collapsed) - var(--gap) / 2);
 	}
 
 	.reveal-nav.collapsed + .l\:main > *:has(.media) {
@@ -225,6 +225,6 @@ a[class*='ravioli']:hover > *:not(.icon) {
 
 @media screen and (min-width: 1360px) {
 	.reveal-nav.collapsed + .l\:main > * {
-		margin-inline-start: calc(var(--layout-sidebar-sm) - var(--gap));
+		margin-inline-start: calc(var(--layout-sidebar-2xs) - var(--gap));
 	}
 }

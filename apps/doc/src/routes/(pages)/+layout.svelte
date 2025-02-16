@@ -15,7 +15,7 @@
 	let settings = $derived(page.data.settings)
 </script>
 
-<LayoutSidebar nav={sidebar} app={settings}>
+<LayoutSidebar nav={sidebar} app={settings} size="md">
 	{#if children}
 		{@render children()}
 	{:else}
