@@ -1,9 +1,12 @@
 /* == Burrito container == */
 [class*='l:burrito'] {
-	container-type: inline-size;
-	container-name: burrito;
 	inline-size: 100%;
 	margin-inline: auto;
+
+	&.contain {
+		container-type: inline-size;
+		container-name: burrito;
+	}
 }
 
 /* == Sidebar content == */
@@ -18,43 +21,60 @@
 /* TODO: Fix container queries per size - not working
 - see also `scss/mixins/mq/burrito
 */
+
 /* Scale Burrito */
 .l\:burrito\:2xs {
-	container-name: burrito-2xs;
+	&.contain {
+		container-name: burrito-2xs;
+	}
 	--sidebar-width: var(--layout-sidebar-2xs);
 }
 
 .l\:burrito\:xs {
-	container-name: burrito-xs;
+	&.contain {
+		container-name: burrito-xs;
+	}
 	--sidebar-width: var(--layout-sidebar-xs);
 }
 
 .l\:burrito\:sm {
-	container-name: burrito-sm;
+	&.contain {
+		container-name: burrito-sm;
+	}
 	--sidebar-width: var(--layout-sidebar-sm);
 }
 
 .l\:burrito\:md {
-	container-name: burrito-md;
+	&.contain {
+		container-name: burrito-md;
+	}
 	--sidebar-width: var(--layout-sidebar-md);
 }
 
 .l\:burrito\:lg {
-	container-name: burrito-lg;
+	&.contain {
+		container-name: burrito-lg;
+	}
 	--sidebar-width: var(--layout-sidebar-lg);
 }
 
 .l\:burrito\:xl {
-	container-name: burrito-xl;
+	&.contain {
+		container-name: burrito-xl;
+	}
 	--sidebar-width: var(--layout-sidebar-xl);
 }
 
 .l\:burrito\:2xl {
-	container-name: burrito-2xl;
+	&.contain {
+		container-name: burrito-2xl;
+	}
 	--sidebar-width: var(--layout-sidebar-2xl);
 }
 
 .l\:burrito\:3xl {
-	container-name: burrito-3xl;
+	&.contain {
+		container-name: burrito-3xl;
+	}
 	--sidebar-width: var(--layout-sidebar-3xl);
 }
