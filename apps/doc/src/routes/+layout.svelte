@@ -8,6 +8,7 @@
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
 	import RcScout from '$lib/ui/RcScout.svelte'
+	import Beacon from '$lib/ui/Beacon.svelte'
 
 	const {Header} = ui.recipes
 	const {Popover, Cookies} = ui.drafts
@@ -96,15 +97,12 @@
 	fixed={true}
 	container="burrito"
 	variant="fill"
-	color="accent"
+	color="highlight"
 	place="bottom-right"
 >
 	<Cookies />
 </Popover>
+
 {#if !dev && appSettings.tracking}
-	<script
-		defer
-		src="https://static.cloudflareinsights.com/beacon.min.js"
-		data-cf-beacon={`{"token": "${appSettings.tracking}"}`}
-	></script>
+	<Beacon />
 {/if}
