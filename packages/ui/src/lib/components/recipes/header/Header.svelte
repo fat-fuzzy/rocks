@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
 	import {DismissEvent} from '$types'
-	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
+	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 
@@ -42,9 +42,9 @@
 			/>
 		</div>
 		<div class="l:side l:flex align:center">
-			<SettingsMenu
-				id={`${id}-menu-settings`}
-				name={`${id}-menu-settings`}
+			<Settings
+				id={`${id}-settings`}
+				name={`${id}-settings`}
 				label=""
 				{path}
 				{breakpoint}

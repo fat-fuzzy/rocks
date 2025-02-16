@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type {SettingsProps} from '$types'
+	import type {RevealSettingsProps} from '$types'
 	import constants from '$lib/types/constants.js'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
-	import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
+	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 
 	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
-		id = 'ui-settings',
+		id = 'ui-reveal-settings',
 		breakpoint = 'xs',
 		background,
 		layout,
@@ -21,7 +21,7 @@
 		redirect,
 		items,
 		onupdate,
-	}: SettingsProps = $props()
+	}: RevealSettingsProps = $props()
 
 	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
 	let reveal = $derived(settingsReveal.reveal)
@@ -43,7 +43,7 @@
 	{align}
 	formaction="toggleSettings"
 >
-	<SettingsMenu
+	<Settings
 		id={`${id}-menu`}
 		items={items.switch}
 		{formaction}

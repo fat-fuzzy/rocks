@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {SettingsMenuProps} from '$types'
+	import type {SettingsProps} from '$types'
 	import {enhance} from '$app/forms'
 	import Switch from '$lib/components/blocks/buttons/Switch/Switch.svelte'
 
 	let {
-		id = 'ui-settings-menu',
-		name = 'settings-update',
+		id = 'ui-settings',
+		name = 'settings',
 		method = 'POST',
 		background,
 		color = 'primary',
@@ -14,7 +14,7 @@
 		redirect,
 		items,
 		onupdate,
-	}: SettingsMenuProps = $props()
+	}: SettingsProps = $props()
 
 	let settingsId = id
 	let action = $derived(
@@ -38,7 +38,7 @@
 			: `?/${action}`
 		: undefined}
 	use:enhance
-	class={`menu:settings ${formClasses}`}
+	class={`menu:${name} ${formClasses}`}
 	onsubmit={(e) => onupdate}
 >
 	{#each items as { id, name, title, initial, variant, shape, color, size, value, states }}

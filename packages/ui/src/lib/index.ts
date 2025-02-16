@@ -44,7 +44,8 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
-import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
+import Settings from '$lib/components/recipes/forms/Settings.svelte'
+import RevealSettings from '$lib/components/recipes/forms/RevealSettings.svelte'
 
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
@@ -53,8 +54,6 @@ import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
-import Settings from '$lib/components/recipes/header/Settings.svelte'
-import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte'
 import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 
 /**
@@ -161,10 +160,9 @@ const drafts = {
 	Scrolly,
 	ScrollyItem,
 	Breadcrumbs,
-	HeaderSettings,
 	HeaderNav,
-	SettingsMenu,
 	Settings,
+	RevealSettings,
 	PageScrolly,
 	PageTabs,
 	Tabs,
