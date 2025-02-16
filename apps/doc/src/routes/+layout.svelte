@@ -97,12 +97,16 @@
 	fixed={true}
 	container="burrito"
 	variant="fill"
-	color="highlight"
+	color={!appSettings.consent?.analytics && appSettings.consent?.site
+		? 'primary'
+		: appSettings.consent?.analytics || appSettings.consent?.site
+			? 'accent'
+			: 'highlight'}
 	place="bottom-right"
 >
 	<Cookies />
 </Popover>
 
-{#if !dev && appSettings.tracking}
+{#if !dev && appSettings.consent?.analytics}
 	<Beacon />
 {/if}
