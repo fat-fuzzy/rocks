@@ -21,7 +21,7 @@
 		layout = 'stack',
 		container = 'burrito',
 		level = 3, // <h*> element level
-		size = 'lg',
+		size = 'md',
 		color = UiColor.accent,
 		variant = UiVariant.fill,
 		asset = 'cookie',
@@ -35,8 +35,8 @@
 	let disabled: boolean | undefined = $state(undefined)
 	let successPlaceholder: boolean = $state(false)
 	let title = 'Cookies'
-	let description = 'You can save or change your preferences here'
-	let successMessage = `You're all set! Your cookie preferences have been saved.`
+	let description = '🍪 This website uses cookies 🍪'
+	let successMessage = `You're all set! Your cookie preferences have been saved`
 
 	const inputTypes: {[name: string]: string} = {
 		preferences: 'checkbox_group',
@@ -99,9 +99,10 @@
 {:else}
 	<Feedback
 		status={UiStatus.default}
-		{asset}
+		asset="none"
 		context={UiTextContext.form}
-		size="md"
+		container="burrito"
+		size="lg"
 	>
 		<form
 			{id}
@@ -112,7 +113,7 @@
 			bind:this={boundForm}
 			onsubmit={handleSubmit}
 		>
-			<Card layout="stack" size="md" background="contrast">
+			<Card layout="stack" {size} background="contrast">
 				{#snippet header()}
 					<svelte:element this={`h${level}`}>{title}</svelte:element>
 					<p>{description}</p>
@@ -121,11 +122,10 @@
 					{#key validator}
 						<InputGroup
 							id="username"
-							type="checkbox"
+							type="check"
 							name="cookies"
-							legend="Select your cookie preferences"
 							{size}
-							{variant}
+							variant="bare"
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
@@ -139,7 +139,8 @@
 								label="Site Cookies"
 								hint="These cookies save the state of the site when you interact with things such as Brightness and Contrast settings, or the UI Playground sections."
 								{size}
-								{variant}
+								asset="none"
+								variant="bare"
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={(event) => handleInput(event)}
@@ -153,7 +154,8 @@
 								label="Tracking Cookies"
 								hint="This is a service provided by Cloudflare (https://developers.cloudflare.com/web-analytics/data-metrics/) to measure the performance of the site as well as providing metrics about viewership."
 								{size}
-								{variant}
+								asset="none"
+								variant="bare"
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={(event) => handleInput(event)}

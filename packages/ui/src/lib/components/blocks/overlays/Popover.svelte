@@ -18,11 +18,11 @@
 		fixed = false,
 		place,
 		asset,
-		invoke = AriaInvoke.manual,
+		invoke = AriaInvoke.auto,
 	}: OverlayProps = $props()
 
 	let popover: HTMLElement
-	let fixedClass = $derived(fixed ? `fixed:${place}` : '')
+	let fixedClass = $state(fixed ? `fixed:${place}` : '')
 	let reveal = $state(open ? 'expanded' : 'collapsed')
 
 	onMount(() => {

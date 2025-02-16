@@ -17,6 +17,7 @@
 		color,
 		variant,
 		oninput,
+		children,
 	}: FieldsetProps & Partial<InputProps> = $props()
 
 	// TODO: fix type
@@ -61,4 +62,7 @@
 			oninput={(event: Event) => handleInput(event, name)}
 		/>
 	{/each}
+	{#if children}
+		{@render children()}
+	{/if}
 </Fieldset>

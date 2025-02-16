@@ -37,7 +37,7 @@ fieldset.check {
 
 	legend {
 		inline-size: auto;
-		margin-inline-start: var(--ui-size);
+		margin-inline-start: 0;
 	}
 
 	label > span {
