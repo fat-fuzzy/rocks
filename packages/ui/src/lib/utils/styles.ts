@@ -101,13 +101,14 @@ function getFeedbackStyles(
 	status: UiStatus,
 	context: UiTextContext,
 ): string {
-	let {size, asset, assetType, variant, align, justify, container} = props
+	let {size, font, asset, assetType, variant, align, justify, container} = props
 
 	let variantClass = variant ? `variant:${variant}` : ''
 	let sizeClass = size ? `size:${size}` : ''
-	// if (fontClass) {
-	// 	fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
-	// }
+	let fontClass = font ? `font:${font}` : ''
+	if (fontClass) {
+		fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
+	}
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 	let statusClass = status ? `status:${status}` : ''

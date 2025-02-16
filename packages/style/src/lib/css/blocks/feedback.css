@@ -35,7 +35,7 @@
 		max-inline-size: 100%;
 		block-size: fit-content;
 		margin-inline-start: 0;
-		font-size: var(--font-size-minus);
+		font-size: var(--font-size);
 	}
 }
 
