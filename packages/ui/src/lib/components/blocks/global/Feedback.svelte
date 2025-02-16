@@ -4,6 +4,7 @@
 	import styleHelper from '$lib/utils/styles.js'
 
 	let {
+		id = 'Feedback',
 		asset = 'default',
 		justify = 'start',
 		align,
@@ -31,9 +32,9 @@
 {#if context === 'code'}
 	<pre
 		class={feedbackClasses}
-		data-testid="Feedback">{#if children}{@render children()}{:else if text}{text}{/if}</pre>
+		data-testid={id}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
-	<div class={feedbackClasses} data-testid="Feedback" aria-live={ariaLive}>
+	<div class={feedbackClasses} data-testid={id} aria-live={ariaLive}>
 		{#if context === 'prose' && status !== 'default'}
 			<p class="status">{status}</p>
 		{/if}

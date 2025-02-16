@@ -24,7 +24,6 @@
 		size = 'md',
 		color = UiColor.accent,
 		variant = UiVariant.fill,
-		asset = 'cookie',
 	}: CookiesPreferencesProps = $props()
 
 	let boundForm: HTMLFormElement | undefined = $state()
@@ -93,11 +92,16 @@
 </script>
 
 {#if successPlaceholder}
-	<Feedback status={UiStatus.success} context={UiTextContext.form}>
+	<Feedback
+		id="cookies-saved"
+		status={UiStatus.success}
+		context={UiTextContext.form}
+	>
 		{successMessage}
 	</Feedback>
 {:else}
 	<Feedback
+		id="cookies-consent"
 		status={UiStatus.default}
 		asset="none"
 		context={UiTextContext.form}
@@ -113,7 +117,7 @@
 			bind:this={boundForm}
 			onsubmit={handleSubmit}
 		>
-			<Card layout="stack" {size}>
+			<Card layout="stack" {size} justify="center">
 				{#snippet header()}
 					<svelte:element this={`h${level}`} class="text:center">
 						{title}
@@ -123,7 +127,7 @@
 				{#snippet main()}
 					{#key validator}
 						<InputGroup
-							id="username"
+							id="consent"
 							type="check"
 							name="cookies"
 							{size}
@@ -135,8 +139,8 @@
 							justify="between"
 						>
 							<InputCheck
-								id="site-cookies"
-								name="site-cookies"
+								id="consent.site"
+								name="consent.site"
 								type="checkbox"
 								value="false"
 								label="Site Cookies"
@@ -152,11 +156,11 @@
 								{validator}
 							/>
 							<InputCheck
-								id="tracking-cookies"
-								name="tracking-cookies"
+								id="consent.analytics"
+								name="consent.analytics"
 								type="checkbox"
 								value="false"
-								label="Tracking Cookies"
+								label="Analytics Cookies"
 								hint="This is a service provided by Cloudflare (https://developers.cloudflare.com/web-analytics/data-metrics/) to measure the performance of the site as well as providing metrics about viewership."
 								{size}
 								color="primary"

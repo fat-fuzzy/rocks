@@ -3,11 +3,12 @@
 	import {UiStatus, UiTextContext} from '$types'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
-	let {size, variant, errors}: InputFeedbackProps = $props()
+	let {id, size, variant, errors}: InputFeedbackProps = $props()
 </script>
 
 {#if errors?.length}
 	<Feedback
+		id={`input-feedback-${id}`}
 		context={UiTextContext.form}
 		status={UiStatus.error}
 		{size}

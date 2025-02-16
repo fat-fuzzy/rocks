@@ -68,7 +68,7 @@
 	/>
 </label>
 {#if hint}
-	<Feedback {asset} {status} context={UiTextContext.form} {size} {variant}>
+	<Feedback {id} {asset} {status} context={UiTextContext.form} {size} {variant}>
 		{hint}
 	</Feedback>
 {/if}
