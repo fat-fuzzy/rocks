@@ -136,3 +136,8 @@ export enum AriaLiveEnum {
 	off = 'off',
 	assertive = 'assertive',
 }
+
+export enum AriaInvoke {
+	manual = 'manual',
+	auto = 'auto',
+}

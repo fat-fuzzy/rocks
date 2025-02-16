@@ -28,4 +28,12 @@ export type PageScrollyProps = PageProps & {
 	items: ScrollyItemProps[]
 }
 
+export type RailsProps = UiLayoutProps & {
+	layout: string
+	lanes: number
+	items: {[key: string]: Snippet}
+}
+
 export type PageTabsProps = PageProps & TabsProps
+
+export type PageRailsProps = PageProps & RailsProps

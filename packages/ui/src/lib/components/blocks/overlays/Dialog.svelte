@@ -2,15 +2,7 @@
 	import type {OverlayProps} from '$types'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
-	let {
-		id,
-		open = false,
-		title,
-		header,
-		main,
-		footer,
-		children,
-	}: PopoverProps = $props()
+	let {id, open = false, title, children}: OverlayProps = $props()
 </script>
 
 <Expand
@@ -20,21 +12,7 @@
 >
 	{title}
 </Expand>
+
 <dialog id={`${id}-popover`} {open}>
-	{#if header}
-		<header>
-			{@render header()}
-		</header>
-	{/if}
-	{#if main}
-		{@render main()}
-	{/if}
-	{#if children}
-		{@render children()}
-	{/if}
-	{#if footer}
-		<footer>
-			{@render footer()}
-		</footer>
-	{/if}
+	{@render children()}
 </dialog>
