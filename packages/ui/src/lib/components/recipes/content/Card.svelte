@@ -29,30 +29,11 @@
 	let contentClasses = $derived(`${blockClasses} ${containerClasses}`)
 </script>
 
-{#if element}
-	<svelte:element this={element} class={contentClasses}>
-		{#if header}
-			<header>
-				{@render header()}
-			</header>
-		{/if}
-		<div class="content">
-			{#if main}
-				{@render main()}
-			{/if}
-			{#if children}
-				{@render children()}
-			{/if}
-		</div>
-		{#if footer}
-			<footer>
-				{@render footer()}
-			</footer>
-		{/if}
-	</svelte:element>
-{:else}
+{#snippet cardContent()}
 	{#if header}
-		<header class={blockClasses}>
+		<header
+			class={`l:stack:${size} justify:${justify} align${align} ${blockClasses}`}
+		>
 			{@render header()}
 		</header>
 	{/if}
@@ -65,8 +46,18 @@
 		{/if}
 	</div>
 	{#if footer}
-		<footer class={blockClasses}>
+		<footer
+			class={`l:switcher:${size} ${blockClasses} justify:${justify} align:${align} bg:inherit`}
+		>
 			{@render footer()}
 		</footer>
 	{/if}
+{/snippet}
+
+{#if element}
+	<svelte:element this={element} {id} class={contentClasses}>
+		{@render cardContent()}
+	</svelte:element>
+{:else}
+	{@render cardContent()}
 {/if}
