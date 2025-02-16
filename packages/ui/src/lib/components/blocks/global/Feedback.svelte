@@ -16,12 +16,10 @@
 		children,
 	}: FeedbackProps = $props()
 
-	let feedbackClasses = $derived(
-		styleHelper.getFeedbackStyles(
-			{size, asset, variant, align, justify, container},
-			status as UiStatus,
-			context as UiTextContext,
-		),
+	let feedbackClasses = styleHelper.getFeedbackStyles(
+		{size, asset, variant, align, justify, container},
+		status as UiStatus,
+		context as UiTextContext,
 	)
 	let ariaLive: AriaLive = $derived(
 		context === 'form' ? AriaLiveEnum.polite : undefined,

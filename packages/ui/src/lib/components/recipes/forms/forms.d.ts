@@ -32,3 +32,13 @@ export type SignUpProps = InputProps & {
 	method?: string
 	disabled?: boolean
 }
+
+export type CookiesPreferencesProps = InputProps & {
+	level?: number
+	description?: string
+	formaction?: string
+	actionPath?: string
+	redirect?: string
+	method?: string
+	disabled?: boolean
+}

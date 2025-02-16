@@ -77,6 +77,7 @@ import Aside from '$lib/components/recipes/content/Aside.svelte'
 import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
 import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
+import Cookies from '$lib/components/recipes/forms/Cookies.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
@@ -167,6 +168,7 @@ const drafts = {
 	PageScrolly,
 	PageTabs,
 	Tabs,
+	Cookies,
 }
 
 const headless = {

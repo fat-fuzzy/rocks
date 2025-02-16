@@ -9,6 +9,7 @@
 	import RcScout from '$lib/ui/RcScout.svelte'
 
 	const {Header} = ui.recipes
+	const {Popover, Cookies} = ui.drafts
 
 	type Props = {
 		fixed?: boolean
@@ -87,3 +88,15 @@
 		</details>
 	</footer>
 </div>
+<Popover
+	id="cookies-banner"
+	title="Cookies"
+	asset="cookie"
+	open={true}
+	fixed={true}
+	container="burrito"
+	variant="fill"
+	place="bottom-right"
+>
+	<Cookies />
+</Popover>
