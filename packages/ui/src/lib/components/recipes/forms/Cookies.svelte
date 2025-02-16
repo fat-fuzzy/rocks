@@ -106,7 +106,8 @@
 		asset="none"
 		context={UiTextContext.form}
 		container="burrito"
-		size="lg"
+		size="xl"
+		font="md"
 	>
 		<form
 			{id}
@@ -117,7 +118,7 @@
 			bind:this={boundForm}
 			onsubmit={handleSubmit}
 		>
-			<Card layout="stack" size="lg" justify="center">
+			<Card layout="stack" justify="center">
 				{#snippet header()}
 					<svelte:element this={`h${level}`} class="text:center">
 						{title}
@@ -142,9 +143,8 @@
 								id="site"
 								name="site"
 								type="checkbox"
-								value="false"
-								label="Site Cookies"
-								hint="These cookies save the state of the site when you interact with things such as Brightness and Contrast settings, or the UI Playground sections."
+								label="Site Functionality"
+								hint="These cookies save the state of the interface when you interact with settings such as Brightness and Contrast, or other interactive areas of the site."
 								{size}
 								color="primary"
 								asset="none"
@@ -173,8 +173,8 @@
 								name="analytics"
 								type="checkbox"
 								value="false"
-								label="Analytics Cookies"
-								hint="This is a service provided by Cloudflare (https://developers.cloudflare.com/web-analytics/data-metrics/) to measure the performance of the site as well as providing metrics about viewership."
+								label="Analytics"
+								hint="This is a beacon provided by Cloudflare (https://developers.cloudflare.com/web-analytics/data-metrics/) that measures the performance of the site as well as metrics about viewership."
 								{size}
 								color="primary"
 								asset="none"
