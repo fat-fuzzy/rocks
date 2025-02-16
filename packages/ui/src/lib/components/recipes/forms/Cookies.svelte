@@ -113,10 +113,12 @@
 			bind:this={boundForm}
 			onsubmit={handleSubmit}
 		>
-			<Card layout="stack" {size} background="contrast">
+			<Card layout="stack" {size}>
 				{#snippet header()}
-					<svelte:element this={`h${level}`}>{title}</svelte:element>
-					<p>{description}</p>
+					<svelte:element this={`h${level}`} class="text:center">
+						{title}
+					</svelte:element>
+					<p class="text:center">{description}</p>
 				{/snippet}
 				{#snippet main()}
 					{#key validator}
@@ -139,6 +141,7 @@
 								label="Site Cookies"
 								hint="These cookies save the state of the site when you interact with things such as Brightness and Contrast settings, or the UI Playground sections."
 								{size}
+								color="primary"
 								asset="none"
 								variant="bare"
 								onfocus={handleFocus}
@@ -154,6 +157,7 @@
 								label="Tracking Cookies"
 								hint="This is a service provided by Cloudflare (https://developers.cloudflare.com/web-analytics/data-metrics/) to measure the performance of the site as well as providing metrics about viewership."
 								{size}
+								color="primary"
 								asset="none"
 								variant="bare"
 								onfocus={handleFocus}
