@@ -12,6 +12,7 @@
 		type = 'radio', // checkbox, radio
 		items = [],
 		layout = 'stack',
+		justify = 'between',
 		container,
 		size,
 		color,
@@ -57,6 +58,7 @@
 			{checked}
 			color={input.color || color}
 			{...input}
+			{justify}
 			name={id}
 			id={`${name}.${input.value}`}
 			oninput={(event: Event) => handleInput(event, name)}

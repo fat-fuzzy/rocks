@@ -132,6 +132,7 @@
 							onblur={handleBlur}
 							oninput={handleInput}
 							{validator}
+							justify="between"
 						>
 							<InputCheck
 								id="site-cookies"
@@ -144,6 +145,7 @@
 								color="primary"
 								asset="none"
 								variant="bare"
+								justify="between"
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={(event) => handleInput(event)}
@@ -160,6 +162,7 @@
 								color="primary"
 								asset="none"
 								variant="bare"
+								justify="between"
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={(event) => handleInput(event)}
