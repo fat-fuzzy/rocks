@@ -21,8 +21,8 @@
 		children,
 	}: FieldsetProps = $props()
 
-	let sizeClass = size ? `size:${size}` : ''
-	let typeClass = type || ''
+	let sizeClass = $derived(size ? `size:${size}` : '')
+	let typeClass = $derived(type || '')
 	let classes = $derived(
 		styleHelper.getStyles({
 			size,
