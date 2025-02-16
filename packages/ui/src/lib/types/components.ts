@@ -52,7 +52,7 @@ export interface Content {
 
 export interface Drafts {
 	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
-	Popover: typeof import('$lib/components/blocks/global/Popover.svelte').default
+	Popover: typeof import('$lib/components/blocks/overlays/Popover.svelte').default
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default

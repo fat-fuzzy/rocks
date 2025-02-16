@@ -17,3 +17,5 @@ import './feedback.css' /* Use for feedback elements (success, warnings, errors,
 import './details.css' /* Use for detail + summary element */
 import './code.css' /* Use for code blocks and inline code text */
 import './magic.css' /* Use for page layout specifics */
+import './popover.css' /* Use for popovers */
+import './dialog.css' /* Use for dialogs */
