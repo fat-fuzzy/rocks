@@ -37,6 +37,7 @@
 	let title = 'Cookies'
 	let description =
 		'This site uses cookies to improve your experience, and to help me understand viewership. The website will continue to work without cookies, but some features may be limited.'
+	let successMessage = `You're all set! Your cookie preferences have been saved.`
 
 	const inputTypes: {[name: string]: string} = {
 		preferences: 'checkbox_group',
@@ -64,7 +65,7 @@
 	function handleSubmit(event: Event) {
 		event.preventDefault()
 
-		// Submit the form here
+		// TODO: Submit the form here
 		// ...
 		if (!validator.errors.length) {
 			successPlaceholder = true
@@ -94,7 +95,7 @@
 
 {#if successPlaceholder}
 	<Feedback status={UiStatus.success} context={UiTextContext.form}>
-		You're all set! Welcome 🤗
+		{successMessage}
 	</Feedback>
 {:else}
 	<Feedback
