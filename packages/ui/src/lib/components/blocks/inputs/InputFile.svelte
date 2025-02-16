@@ -69,7 +69,7 @@
 {#if hint}
 	<Fieldset id={`fieldset-${id}`} name={`fieldset-${name}`} {layout}>
 		{@render input()}
-		<Feedback {status} context={UiTextContext.form} {size} {variant}>
+		<Feedback {id} {status} context={UiTextContext.form} {size} {variant}>
 			{hint}
 		</Feedback>
 	</Fieldset>
