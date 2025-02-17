@@ -140,7 +140,7 @@ a[class*='ravioli']:hover > *:not(.icon) {
 	}
 }
 
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: 940px) {
 	.reveal-nav {
 		&.collapsed {
 			--sidebar-width: calc(
@@ -202,38 +202,4 @@ a[class*='ravioli']:hover > *:not(.icon) {
 			}
 		}
 	}
-
-	/* Make main content grow when sidebar collapses only if it has media content */
-	.reveal-nav + .l\:main > * {
-		transition: margin-inline 250ms ease-in-out;
-	}
-
-	/* .reveal-nav.collapsed + .l\:main > * {
-		margin-inline-start: calc(
-			var(--layout-sidebar-md) - var(--layout-sidebar-collapsed) - 2 *
-				var(--gap)
-		);
-	}
-
-	.reveal-nav.collapsed + .l\:main > *:has(.media) {
-		margin-inline-start: initial;
-	} */
 }
-
-/* @media screen and (min-width: 1260px) {
-	.reveal-nav.collapsed + .l\:main > * {
-		margin-inline-start: var(--layout-sidebar-collapsed);
-	}
-}
-
-@media screen and (min-width: 1360px) {
-	/* TODO: Fix navbar width scale * /
-	.reveal-nav + .l\:main > * {
-		margin-inline-start: calc(
-			var(--layout-sidebar-md) - var(--layout-sidebar-collapsed) - var(--gap)
-		);
-	}
-	.reveal-nav.collapsed + .l\:main > * {
-		margin-inline-start: calc(var(--layout-sidebar-md) - var(--gap) / 3);
-	}
-} */
