@@ -18,7 +18,7 @@
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
 	let layoutClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
 	let headerClass = $derived(
-		`${layoutClass} ${justifyClass} align:baseline maki:block:lg`,
+		`${layoutClass} ${justifyClass} align:baseline maki:block:md l:text margin:auto`,
 	)
 </script>
 

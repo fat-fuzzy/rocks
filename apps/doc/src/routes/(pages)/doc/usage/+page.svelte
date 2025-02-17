@@ -11,18 +11,23 @@
 </script>
 
 <PageMain {title} {description} size="lg" pageName="Doc">
-	<div class="l:text maki:block:2xs">
-		<ul class="l:grid:md w:full unstyled">
-			{#each markdowns as { meta }}
-				{#if meta.status !== 'draft'}
-					<a
-						class="font:lg surface:2:neutral ravioli:md"
-						href={`${page.url.pathname}/${meta.slug}`}
-					>
-						{Number(meta.id)} - {meta.title}
-					</a>
-				{/if}
-			{/each}
-		</ul>
-	</div>
+	<article class="l:sidebar:md">
+		<div class="l:main">
+			<div class="maki:block:2xs">
+				<ul class="l:grid:md w:full unstyled">
+					{#each markdowns as { meta }}
+						{#if meta.status !== 'draft'}
+							<a
+								class="font:lg surface:2:neutral ravioli:md"
+								href={`${page.url.pathname}/${meta.slug}`}
+							>
+								{Number(meta.id)} - {meta.title}
+							</a>
+						{/if}
+					{/each}
+				</ul>
+			</div>
+		</div>
+		<div class="l:side"></div>
+	</article>
 </PageMain>

@@ -22,38 +22,47 @@
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
-	<EscapeHtml id={slug} {html} size="lg" />
+	<article class="l:sidebar:md">
+		<div class="l:main">
+			<EscapeHtml id={slug} {html} size="md" margin="auto" />
 
-	<ul class="unstyled">
-		{#each sketches as { slug, asset, title }}
-			<li class={`ravioli:3xs ${asset}`}>
-				<a class="font:md" href={`${path}/${slug}`}>
-					{title}
-				</a>
-			</li>
-		{/each}
-	</ul>
-	{#if sketches.length > 5 && tags.size > 0}
-		<h2>Tags</h2>
-		<div class="l:text l:grid:sm maki:block">
-			{#each tags as tag}
-				<details class="ravioli:md l:stack size:sm bg:netural varian:bare">
-					<summary class="surface:2:neutral ravioli:2xs">{tag}</summary>
-					<div class="l:stack:xs maki:block">
-						<ul class="unstyled">
-							{#each sketches as { slug, asset, title, tags }}
-								{#if tags.includes(tag)}
-									<li class={`ravioli:3xs ${asset}`}>
-										<a class="font:md" href={`${path}/${slug}`}>
-											{title}
-										</a>
-									</li>
-								{/if}
-							{/each}
-						</ul>
+			<div class="l:text:md margin:auto">
+				<ul class="unstyled">
+					{#each sketches as { slug, asset, title }}
+						<li class={`ravioli:3xs ${asset}`}>
+							<a class="font:md" href={`${path}/${slug}`}>
+								{title}
+							</a>
+						</li>
+					{/each}
+				</ul>
+				{#if sketches.length > 5 && tags.size > 0}
+					<h2>Tags</h2>
+					<div class="l:text l:grid:sm maki:block">
+						{#each tags as tag}
+							<details
+								class="ravioli:md l:stack size:sm bg:netural varian:bare"
+							>
+								<summary class="surface:2:neutral ravioli:2xs">{tag}</summary>
+								<div class="l:stack:xs maki:block">
+									<ul class="unstyled">
+										{#each sketches as { slug, asset, title, tags }}
+											{#if tags.includes(tag)}
+												<li class={`ravioli:3xs ${asset}`}>
+													<a class="font:md" href={`${path}/${slug}`}>
+														{title}
+													</a>
+												</li>
+											{/if}
+										{/each}
+									</ul>
+								</div>
+							</details>
+						{/each}
 					</div>
-				</details>
-			{/each}
+				{/if}
+			</div>
 		</div>
-	{/if}
+		<div class="l:side"></div>
+	</article>
 </PageMain>

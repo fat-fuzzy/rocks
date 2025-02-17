@@ -22,7 +22,7 @@
 	{/snippet}
 	<article class="l:sidebar:2xl media">
 		<div class="l:side">
-			<EscapeHtml id={slug} {html} />
+			<EscapeHtml id={slug} {html} layout="media" />
 		</div>
 		<div class="l:main:50">
 			<div class="l:taco">

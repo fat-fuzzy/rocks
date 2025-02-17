@@ -48,7 +48,7 @@
 <nav {id} class={`breadcrumbs w:full ${navClasses}`}>
 	<ul {id} class={`l:flex size:${size} align:center unstyled`} data-testid={id}>
 		{#each items as item, i}
-			{@const font = items.length - 1 ? '' : 'font:sm'}
+			{@const font = i === items.length - 1 ? '' : 'font:xs'}
 			<li
 				aria-current={path === item.slug ? 'page' : undefined}
 				class={`l:flex nowrap align:center`}
