@@ -24,27 +24,32 @@
 <PageMain {title} {description} size="md">
 	<article class="l:sidebar:md">
 		<section class="l:main">
-			<EscapeHtml id={slug} html={content.html} size="md" />
-			{#each categories as category}
-				<PlaybookCollection
-					{category}
-					{markdowns}
-					depth={1}
-					isPage={false}
-					path={`${path}/${category}${page.url.hash}`}
-					{formaction}
-					actionPath={path}
-					redirect={path}
-					{content}
-				>
-					<EscapeHtml
-						id={`${slug}-${category}`}
-						html={markdowns.categories.find(({meta}) => meta.slug === category)
-							.html}
-						size="md"
-					/>
-				</PlaybookCollection>
-			{/each}
+			<EscapeHtml id={slug} html={content.html} size="md" margin="auto" />
+
+			<div class="l:text:md margin:auto">
+				{#each categories as category}
+					<PlaybookCollection
+						{category}
+						{markdowns}
+						depth={1}
+						isPage={false}
+						path={`${path}/${category}${page.url.hash}`}
+						{formaction}
+						actionPath={path}
+						redirect={path}
+						{content}
+					>
+						<EscapeHtml
+							id={`${slug}-${category}`}
+							html={markdowns.categories.find(
+								({meta}) => meta.slug === category,
+							).html}
+							size="md"
+						/>
+					</PlaybookCollection>
+				{/each}
+			</div>
 		</section>
+		<div class="l:side"></div>
 	</article>
 </PageMain>

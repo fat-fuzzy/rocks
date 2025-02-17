@@ -208,23 +208,32 @@ a[class*='ravioli']:hover > *:not(.icon) {
 		transition: margin-inline 250ms ease-in-out;
 	}
 
-	.reveal-nav.collapsed + .l\:main > * {
-		margin-inline-start: calc(var(--layout-sidebar-collapsed) - var(--gap) / 2);
+	/* .reveal-nav.collapsed + .l\:main > * {
+		margin-inline-start: calc(
+			var(--layout-sidebar-md) - var(--layout-sidebar-collapsed) - 2 *
+				var(--gap)
+		);
 	}
 
 	.reveal-nav.collapsed + .l\:main > *:has(.media) {
 		margin-inline-start: initial;
-	}
+	} */
 }
 
-@media screen and (min-width: 1260px) {
+/* @media screen and (min-width: 1260px) {
 	.reveal-nav.collapsed + .l\:main > * {
 		margin-inline-start: var(--layout-sidebar-collapsed);
 	}
 }
 
 @media screen and (min-width: 1360px) {
-	.reveal-nav.collapsed + .l\:main > * {
-		margin-inline-start: calc(var(--layout-sidebar-2xs) - var(--gap));
+	/* TODO: Fix navbar width scale * /
+	.reveal-nav + .l\:main > * {
+		margin-inline-start: calc(
+			var(--layout-sidebar-md) - var(--layout-sidebar-collapsed) - var(--gap)
+		);
 	}
-}
+	.reveal-nav.collapsed + .l\:main > * {
+		margin-inline-start: calc(var(--layout-sidebar-md) - var(--gap) / 3);
+	}
+} */

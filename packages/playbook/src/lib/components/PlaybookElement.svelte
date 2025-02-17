@@ -45,5 +45,11 @@
 	{actionPath}
 	{redirect}
 >
-	<EscapeHtml id={content.meta.slug} html={content.html} size="md" />
+	<EscapeHtml
+		id={content.meta.slug}
+		html={content.html}
+		size="md"
+		margin="auto"
+		element="article"
+	/>
 </Element>

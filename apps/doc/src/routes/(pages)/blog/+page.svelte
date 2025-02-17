@@ -17,6 +17,9 @@
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
 	<article class="l:sidebar:md">
-		<EscapeHtml id={slug} {html} size="md" />
+		<div class="l:main">
+			<EscapeHtml id={slug} {html} size="md" margin="auto" />
+		</div>
+		<div class="l:side"></div>
 	</article>
 </PageMain>
