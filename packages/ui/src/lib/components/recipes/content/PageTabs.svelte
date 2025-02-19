@@ -36,41 +36,42 @@
 <Head pageName={currentPage} {title} {description} />
 
 {#snippet breadcrumbTabs()}
-	<ul role="tablist" class="l:switcher:xs unstyled">
-		{#each tabs as { title, slug, color, size, variant, shape, asset }}
-			{@const iconClasses = styleHelper.getStyles({
-				color,
-				size,
-				variant,
-				shape,
-				asset,
-				assetType: 'emoji',
-			})}
-			{@const linkClasses = styleHelper.getStyles({
-				size: '2xs',
-				font: 'md',
-				color,
-				container: 'ravioli',
-			})}
-			<li
-				aria-current={currentHash === slug ? 'page' : undefined}
-				class={`surface:0:${color}`}
-			>
-				<a
-					role="tab"
-					id={`tab-${slug}`}
-					href={`#${slug}`}
-					aria-selected={currentHash === slug}
-					aria-controls={slug}
-					onclick={() => updateActiveTab(slug)}
-					class={`${presentationClasses} ${linkClasses}`}
+	<div class="ravioli:md bg:inherit fixed:top-right bg:blur">
+		<ul role="tablist" class="l:switcher:xs unstyled">
+			{#each tabs as { title, slug, color, size, variant, shape, asset }}
+				{@const iconClasses = styleHelper.getStyles({
+					color,
+					size,
+					variant,
+					shape,
+					asset,
+					assetType: 'emoji',
+				})}
+				{@const linkClasses = styleHelper.getStyles({
+					size: '2xs',
+					font: 'md',
+					color,
+					container: 'ravioli',
+				})}
+				<li
+					aria-current={currentHash === slug ? 'page' : undefined}
+					class={`surface:0:${color}`}
 				>
-					<ff-icon class={iconClasses}></ff-icon>
-					{title}
-				</a>
-			</li>
-		{/each}
-	</ul>
+					<a
+						role="tab"
+						id={`tab-${slug}`}
+						href={`#${slug}`}
+						aria-selected={currentHash === slug}
+						aria-controls={slug}
+						class={`${presentationClasses} ${linkClasses}`}
+					>
+						<ff-icon class={iconClasses}></ff-icon>
+						{title}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</div>
 {/snippet}
 
 {#snippet headerMain()}

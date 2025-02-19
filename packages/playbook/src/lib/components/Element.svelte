@@ -124,6 +124,11 @@
 	]
 
 	let description = $derived(`${title} | Doc`)
+
+	let header = $derived({
+		title,
+		main: headerMain,
+	})
 </script>
 
 {#snippet renderElement()}
@@ -145,6 +150,7 @@
 {/snippet}
 
 {#snippet playbookContent()}
+	<h2 id="playbook">Playbook</h2>
 	<div class="l:sidebar:md media end">
 		<aside class="l:side l:stack:md">
 			{#key title}
@@ -157,15 +163,23 @@
 				/>
 			{/key}
 		</aside>
-		<div class={sectionClasses}>
-			{@render renderElement()}
+		<div
+			id={`tabs-${category}-playbook`}
+			class={`l:main l:${container}:${size}`}
+		>
+			<div class={sectionClasses}>
+				{@render renderElement()}
+			</div>
 		</div>
 	</div>
 {/snippet}
 
 {#snippet docContent()}
 	<div class="l:sidebar:md">
-		<div class="l:main">
+		<div id={`tabs-${category}-doc`} class="l:main">
+			<div class="l:text:md margin:auto">
+				<h2 id="doc" class="w:auto">Doc</h2>
+			</div>
 			{#if children}
 				{@render children()}
 			{/if}
@@ -176,12 +190,13 @@
 	</div>
 {/snippet}
 
+{#snippet headerMain()}
+	<h1>{title}</h1>
+{/snippet}
+
 {#if isPage}
-	<PageTabs pageName="UI" {title} {description} {path} {tabs}>
-		{#snippet header()}
-			<h1 id={title} class="maki:block:md">{title}</h1>
-		{/snippet}
-	</PageTabs>
+	<PageTabs pageName="UI" {title} {description} {path} {tabs} {header}
+	></PageTabs>
 {:else}
 	<article
 		id={`ravioli-${title}`}
