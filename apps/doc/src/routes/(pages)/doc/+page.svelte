@@ -26,7 +26,7 @@
 	<h1>{title}</h1>
 {/snippet}
 
-<PageMain {title} {description} {header} size="md">
+<PageMain {title} {description} {header}>
 	<article class="l:sidebar:2xl media">
 		<div class="l:side">
 			<EscapeHtml id={slug} {html} layout="media" />
