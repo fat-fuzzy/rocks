@@ -24,6 +24,9 @@ nav li a[role='tab'] {
 	background-color: var(--shade);
 }
 
+/**
+ * Tabs: use with caution
+ */
 [role='tabpanel'] {
 	display: none;
 }
@@ -31,5 +34,5 @@ nav li a[role='tab'] {
 [role='tabpanel'][tabindex='0'],
 [role='tabpanel']:target {
 	display: block;
-	scroll-margin-block: 10em; /* TODO: fix magic number */
+	scroll-margin-block: 5em; /* TODO: fix magic number */
 }

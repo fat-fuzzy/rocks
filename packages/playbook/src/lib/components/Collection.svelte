@@ -79,6 +79,11 @@
 				: `l:${layout}:${size}`,
 	)
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
+
+	let header = $derived({
+		title,
+		main: headerMain,
+	})
 </script>
 
 {#snippet categoryElements()}
@@ -123,6 +128,7 @@
 			{/key}
 		</aside>
 		<div id={`tabs-${category}-playbook`} class={`l:main ${layoutClass}`}>
+			<h2 id="playbook">Playbook</h2>
 			{@render categoryElements()}
 		</div>
 	</div>
@@ -131,6 +137,9 @@
 {#snippet docContent()}
 	<div class="l:sidebar:md">
 		<div id={`tabs-${category}-doc`} class="l:main">
+			<div class="l:text:md margin:auto">
+				<h2 id="doc" class="w:auto">Doc</h2>
+			</div>
 			{#if children}
 				{@render children()}
 			{/if}
@@ -141,12 +150,13 @@
 	</div>
 {/snippet}
 
+{#snippet headerMain()}
+	<h1>{title}</h1>
+{/snippet}
+
 {#if isPage}
-	<PageTabs pageName="UI" {title} {description} size="lg" {path} {tabs}>
-		{#snippet header()}
-			<h1 id={category} class="maki:block:md">{title}</h1>
-		{/snippet}
-	</PageTabs>
+	<PageTabs pageName="UI" {title} {description} {path} {header} {tabs}
+	></PageTabs>
 {:else}
 	<section class="l:text:lg snap:start">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
