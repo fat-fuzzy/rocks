@@ -44,6 +44,7 @@
 .stage {
 	position: relative;
 	z-index: var(--layout-z-index-layer);
+	min-block-size: 100%;
 }
 
 .drop {
