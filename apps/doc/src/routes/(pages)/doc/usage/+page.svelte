@@ -8,9 +8,19 @@
 	let title = 'Usage'
 	let description =
 		'Fat Fuzzy Doc: how to use the packages in this project, examples, notes'
+
+	let header = $derived({
+		title,
+		media: true,
+		main: headerMain,
+	})
 </script>
 
-<PageMain {title} {description} size="lg" pageName="Doc">
+{#snippet headerMain()}
+	<h1>{title}</h1>
+{/snippet}
+
+<PageMain pageName="Doc" {title} {description} {header} size="lg">
 	<article class="l:sidebar:md">
 		<div class="l:main">
 			<div class="maki:block:2xs">
