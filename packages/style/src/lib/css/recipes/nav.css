@@ -140,7 +140,7 @@ a[class*='ravioli']:hover > *:not(.icon) {
 	}
 }
 
-@media screen and (min-width: 940px) {
+@media screen and (min-width: 975px) {
 	.reveal-nav {
 		&.collapsed {
 			--sidebar-width: calc(
