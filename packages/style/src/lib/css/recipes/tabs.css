@@ -40,9 +40,15 @@ nav li a[role='tab'] {
 }
 
 [role='tabpanel']:first-of-type:target {
-	scroll-margin-block: 15em; /* TODO: fix magic number */
+	scroll-margin-block: 18em; /* TODO: fix magic number */
 }
 
 [role='tabpanel']:target {
 	scroll-margin-block: 4.5em; /* TODO: fix magic number */
+}
+
+@media screen and (min-width: 975px) {
+	[role='tabpanel']:first-of-type:target {
+		scroll-margin-block: 15em; /* TODO: fix magic number */
+	}
 }

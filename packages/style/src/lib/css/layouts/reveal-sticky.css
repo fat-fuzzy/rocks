@@ -7,10 +7,6 @@
 	block-size: var(--y-size);
 	top: var(--y-axis);
 	z-index: 1;
-
-	> form > [aria-expanded] {
-		inline-size: 100%;
-	}
 }
 
 @media screen and (min-width: 975px) {
@@ -19,6 +15,10 @@
 			100vh - var(--ui-header-height) - 2 * var(--ui-size-lg)
 		);
 		--y-size: var(--y-size-sticky);
+
+		> form > [aria-expanded] {
+			inline-size: 100%;
+		}
 
 		&.collapsed > ff-reveal {
 			border: initial;
