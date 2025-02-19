@@ -6,6 +6,7 @@ date_updated: '2025-01-26'
 slug: css-taco
 description: 'Improving CSS class semantics'
 author: 'patiboh'
+tags: ['css']
 ---
 
 ## The situation
