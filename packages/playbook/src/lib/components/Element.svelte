@@ -177,7 +177,7 @@
 {/snippet}
 
 {#if isPage}
-	<PageTabs pageName="UI" {title} {description} {path} {tabs} size="lg">
+	<PageTabs pageName="UI" {title} {description} {path} {tabs}>
 		{#snippet header()}
 			<h1 id={title} class="maki:block:md">{title}</h1>
 		{/snippet}

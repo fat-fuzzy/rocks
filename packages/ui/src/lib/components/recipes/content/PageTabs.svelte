@@ -1,6 +1,7 @@
 <script lang="ts">
-	import type {PageTabsProps} from '$types'
+	import type {UiSize, PageTabsProps} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
+	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 	import styleHelper from '$lib/utils/styles.js'
 
@@ -17,10 +18,6 @@
 	}: PageTabsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
-	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let headerClass = $derived(`${layoutClass} ${justifyClass} align:baseline`)
-
 	let currentHash = $state(path.split('#')[1] ?? tabs[0].slug)
 
 	let presentationClasses = styleHelper.getStyles({
@@ -29,15 +26,17 @@
 		justify: 'between',
 	})
 
-	function updateActiveTab(slug: string) {
-		currentHash = slug
-	}
+	let header = $derived({
+		title,
+		main: headerMain,
+		side: headerSide,
+	})
 </script>
 
 <Head pageName={currentPage} {title} {description} />
 
 {#snippet breadcrumbTabs()}
-	<ul role="tablist" class="l:switcher:xs">
+	<ul role="tablist" class="l:switcher:xs unstyled">
 		{#each tabs as { title, slug, color, size, variant, shape, asset }}
 			{@const iconClasses = styleHelper.getStyles({
 				color,
@@ -54,7 +53,6 @@
 				container: 'ravioli',
 			})}
 			<li
-				role="presentation"
 				aria-current={currentHash === slug ? 'page' : undefined}
 				class={`surface:0:${color}`}
 			>
@@ -75,10 +73,16 @@
 	</ul>
 {/snippet}
 
+{#snippet headerMain()}
+	<Breadcrumbs {id} {title} {path} level={1} {breadcrumbTabs} size="2xs" />
+{/snippet}
+{#snippet headerSide()}
+	{#if breadcrumbTabs}
+		{@render breadcrumbTabs()}
+	{/if}
+{/snippet}
 <main {id}>
-	<header class={headerClass}>
-		<Breadcrumbs {id} {title} {path} level={1} {breadcrumbTabs} size="2xs" />
-	</header>
+	<PageHeader size={size as UiSize} {layout} {justify} {...header} />
 
 	<section class="tab-content">
 		{#each tabs as { slug, content }}
