@@ -22,7 +22,7 @@
 	)
 </script>
 
-<PageMain {title} {description} size="lg">
+<PageMain {title} {description} size="md">
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
