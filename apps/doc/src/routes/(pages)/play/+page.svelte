@@ -15,11 +15,7 @@
 	// let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []).filter((tag)=> tag !== 'webgl' && tag !== 'webglfundamentals'))
 </script>
 
-<PageMain {title} {description} size="lg">
-	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">{title}</h1>
-	{/snippet}
-
+<PageMain {title} {description} size="md">
 	<article class="l:sidebar:md">
 		<div class="l:main">
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />

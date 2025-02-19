@@ -14,13 +14,22 @@
 	)
 	let title = $derived(scene?.meta.title || '')
 	let description = `Sketch is a sandbox environment to experiment and learn web-based computer graphics`
+
+	let header = $derived({
+		title,
+		media: true,
+		main: headerMain,
+	})
 </script>
 
-<PageMain {title} {description} pageName="Learning" size="xl">
-	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">Sketch</h1>
+{#snippet headerMain()}
+	<div class="l:flex:md">
+		<h1>Sketch</h1>
 		<h2>{title}</h2>
-	{/snippet}
+	</div>
+{/snippet}
+
+<PageMain pageName="Learning" {title} {description} {header} size="xl">
 	{#key scene}
 		{#if scene}
 			<Sketch {scene} size="sm" {dev} />
