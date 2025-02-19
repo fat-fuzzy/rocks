@@ -8,13 +8,13 @@
 	let publishedIcon = updated !== created ? 'outdated' : 'published'
 </script>
 
-<aside class="l:side l:stack:md justify:end">
+<aside class="l:switcher:md th:sm justify:end">
 	{#if updated && created}
 		<div class="l:burrito:lg">
 			<Feedback
 				status="default"
 				variant="bare"
-				size="sm"
+				size="xs"
 				context="prose"
 				asset="none"
 				container="stack"
@@ -32,7 +32,7 @@
 			</Feedback>
 		</div>
 	{/if}
-	<div class="l:stack:xs maki:inline size:sm">
+	<div class="l:burrito:lg l:stack:xs maki:inline size:sm">
 		{#if series}
 			<p class="h5 maki:inline size:sm">{`Part ${page} of ${series.length}`}</p>
 			<ol>
