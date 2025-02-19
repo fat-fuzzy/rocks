@@ -35,7 +35,7 @@
 	let successPlaceholder: boolean = $state(false)
 	let title = 'Cookies'
 	let description = '🍪 This website uses cookies 🍪'
-	let successMessage = `You're all set! Your cookie preferences have been saved`
+	let successMessage = `Your cookie preferences have been saved. You're all set!`
 
 	const inputTypes: {[name: string]: string} = {
 		preferences: 'checkbox_group',
@@ -95,6 +95,7 @@
 	<Feedback
 		id="cookies-saved"
 		status={UiStatus.success}
+		justify="end"
 		context={UiTextContext.form}
 	>
 		{successMessage}
@@ -105,8 +106,8 @@
 		status={UiStatus.default}
 		asset="none"
 		context={UiTextContext.form}
-		container="burrito"
-		size="xl"
+		container="burrito:xl "
+		size="lg"
 		font="md"
 	>
 		<form
