@@ -2,6 +2,11 @@
 	padding-block: calc(var(--ui-size) + var(--border-width-xl));
 }
 
+[class*='fixed:top']:has([role='tablist']) {
+	--inset-size-top: calc(var(--ui-header-height) - var(--ui-size-sm));
+	--inset-size-right: 0;
+}
+
 [role='tablist'],
 [role='tab'] {
 	inline-size: fit-content;
@@ -27,12 +32,17 @@ nav li a[role='tab'] {
 /**
  * Tabs: use with caution
  */
-[role='tabpanel'] {
+/* [role='tabpanel'] {
 	display: none;
+} */
+[role='tabpanel'] {
+	margin-block-end: calc(2 * var(--size-base-2xl));
 }
 
-[role='tabpanel'][tabindex='0'],
+[role='tabpanel']:first-of-type:target {
+	scroll-margin-block: 15em; /* TODO: fix magic number */
+}
+
 [role='tabpanel']:target {
-	display: block;
-	scroll-margin-block: 5em; /* TODO: fix magic number */
+	scroll-margin-block: 4.5em; /* TODO: fix magic number */
 }

@@ -7,27 +7,28 @@
 
 [class*='fixed'] {
 	position: fixed;
+	z-index: var(--layout-z-index-sticky);
 }
 
 [class*='fixed'],
 [class*='place'] {
 	&[class*=':top-left'] {
-		top: var(--inset-size);
-		left: var(--inset-size);
+		top: var(--inset-size-top, var(--inset-size));
+		left: var(--inset-size-left, var(--inset-size));
 	}
 
 	&[class*=':top-right'] {
-		top: var(--inset-size);
-		right: var(--inset-size);
+		top: var(--inset-size-top, var(--inset-size));
+		right: var(--inset-size-right, var(--inset-size));
 	}
 
 	&[class*=':bottom-left'] {
-		bottom: var(--inset-size);
-		left: var(--inset-size);
+		bottom: var(--inset-size-bottom, var(--inset-size));
+		left: var(--inset-size-left, var(--inset-size));
 	}
 
 	&[class*=':bottom-right'] {
-		bottom: var(--inset-size);
-		right: var(--inset-size);
+		bottom: var(--inset-size-bottom, var(--inset-size));
+		right: var(--inset-size-right, var(--inset-size));
 	}
 }

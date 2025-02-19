@@ -115,6 +115,7 @@
 {/snippet}
 
 {#snippet playbookContent()}
+	<h2 id="playbook">Playbook</h2>
 	<div class="l:sidebar:md media end">
 		<aside class="l:side l:stack:md">
 			{#key category}
@@ -128,7 +129,6 @@
 			{/key}
 		</aside>
 		<div id={`tabs-${category}-playbook`} class={`l:main ${layoutClass}`}>
-			<h2 id="playbook">Playbook</h2>
 			{@render categoryElements()}
 		</div>
 	</div>
