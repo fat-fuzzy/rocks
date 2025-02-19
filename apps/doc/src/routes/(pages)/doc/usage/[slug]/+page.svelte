@@ -33,7 +33,7 @@
 {/snippet}
 
 {#key title}
-	<PageMain pageName="Usage" {title} {description} {header} size="md">
+	<PageMain pageName="Usage" {title} {description} {header}>
 		<article class="l:sidebar:md">
 			<div class="l:main">
 				<EscapeHtml id={slug} {html} size="md" margin="auto" />
