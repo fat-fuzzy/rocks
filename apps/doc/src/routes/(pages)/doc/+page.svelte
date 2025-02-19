@@ -14,12 +14,19 @@
 	let html = $derived(markdown.html)
 	let slug = $derived(markdown.meta.slug)
 	let media = $derived(brightness ? images[brightness] : images['day'])
+
+	let header = $derived({
+		title,
+		media: true,
+		main: headerMain,
+	})
 </script>
 
-<PageMain {title} {description} size="md">
-	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">{title}</h1>
-	{/snippet}
+{#snippet headerMain()}
+	<h1>{title}</h1>
+{/snippet}
+
+<PageMain {title} {description} {header} size="md">
 	<article class="l:sidebar:2xl media">
 		<div class="l:side">
 			<EscapeHtml id={slug} {html} layout="media" />

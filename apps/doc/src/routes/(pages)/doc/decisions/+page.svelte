@@ -11,9 +11,19 @@
 	let tags = new Set(
 		markdowns.reduce((acc, {meta}) => [...acc, ...meta.tags], []),
 	)
+
+	let header = $derived({
+		title,
+		media: true,
+		main: headerMain,
+	})
 </script>
 
-<PageMain {title} {description} size="lg">
+{#snippet headerMain()}
+	<h1>{title}</h1>
+{/snippet}
+
+<PageMain {title} {description} {header} size="lg">
 	<article class="l:sidebar:md">
 		<div class="l:main">
 			<div class="maki:block:2xs">

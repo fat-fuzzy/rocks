@@ -14,17 +14,26 @@
 	// let updated = $derived(markdown.meta.date_created) TODO
 	let html = $derived(markdown.html)
 	let slug = $derived(markdown.meta.slug)
+
+	let header = $derived({
+		title,
+		main: headerMain,
+		side: headerSide,
+	})
 </script>
 
+{#snippet headerMain()}
+	<h1>{title}</h1>
+{/snippet}
+{#snippet headerSide()}
+	<Aside
+		created={markdown.meta.date_created}
+		updated={markdown.meta.date_updated}
+	/>
+{/snippet}
+
 {#key title}
-	<PageMain pageName="Usage" {title} {description}>
-		{#snippet header()}
-			<h1 class="l:main:50 hug maki:block:md">{title}</h1>
-			<Aside
-				created={markdown.meta.date_created}
-				updated={markdown.meta.date_updated}
-			/>
-		{/snippet}
+	<PageMain pageName="Usage" {title} {description} {header} size="md">
 		<article class="l:sidebar:md">
 			<div class="l:main">
 				<EscapeHtml id={slug} {html} size="md" margin="auto" />
