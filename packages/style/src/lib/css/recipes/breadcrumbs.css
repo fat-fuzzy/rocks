@@ -23,5 +23,5 @@
 }
 
 .breadcrumbs > ul > li a:hover {
-	background-color: var(--accent);
+	border: var(--border-width-px) solid var(--accent);
 }

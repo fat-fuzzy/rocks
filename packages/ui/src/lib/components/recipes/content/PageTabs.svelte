@@ -21,7 +21,7 @@
 	let currentHash = $state(path.split('#')[1] ?? tabs[0].slug)
 
 	let presentationClasses = styleHelper.getStyles({
-		layout: 'switcher:xs',
+		layout: 'switcher:2xs',
 		align: 'center',
 		justify: 'between',
 	})
@@ -37,7 +37,7 @@
 
 {#snippet breadcrumbTabs()}
 	<div class="ravioli:xs bg:inherit fixed:top-right bg:blur">
-		<ul role="tablist" class="l:switcher:xs unstyled">
+		<ul role="tablist" class="l:switcher:2xs unstyled">
 			{#each tabs as { title, slug, color, size, variant, shape, asset }}
 				{@const iconClasses = styleHelper.getStyles({
 					color,
@@ -48,8 +48,8 @@
 					assetType: 'emoji',
 				})}
 				{@const linkClasses = styleHelper.getStyles({
-					size: '2xs',
-					font: 'md',
+					size: '3xs',
+					font: 'sm',
 					color,
 					container: 'ravioli',
 				})}
