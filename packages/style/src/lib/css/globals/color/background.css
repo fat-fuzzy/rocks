@@ -15,6 +15,7 @@
 }
 
 .bg\:blur {
+	--shade: transparent;
 	backdrop-filter: blur(var(--size-base-md));
 }
 

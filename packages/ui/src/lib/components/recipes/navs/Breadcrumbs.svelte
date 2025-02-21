@@ -63,7 +63,7 @@
 					<a
 						data-sveltekit-preload-data
 						href={item.path}
-						class={`l:flex ravioli:2xs align:center ${font}`}
+						class={`l:flex align:center ${font}`}
 					>
 						{item.title}
 					</a>

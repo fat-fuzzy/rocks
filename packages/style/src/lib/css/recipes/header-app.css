@@ -4,9 +4,6 @@
 
 .header-app {
 	position: relative;
-	color: var(--ink);
-	background-color: var(--shade);
-	justify-content: var(--justify, center);
 	padding-inline: var(--ui-size-sm);
 	padding-block: calc(var(--ui-size-sm) + var(--outline-offset-sm) / 2)
 		calc(var(--ui-size-sm) - var(--outline-offset-sm) / 2);
@@ -25,16 +22,11 @@
 	min-inline-size: unset;
 	flex-grow: 1;
 
-	ul {
-		color: var(--ink);
-		background-color: var(--shade);
-	}
-
 	li {
 		display: flex;
 		align-items: center;
 		background-color: inherit;
-		border-inline-start: var(--border-width-xl) solid var(--shade);
+		border-inline-start: var(--border-width-xl) solid transparent;
 		inline-size: 100%;
 		padding: 0 var(--outline-offset-sm);
 
