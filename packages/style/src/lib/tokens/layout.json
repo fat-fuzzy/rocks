@@ -29,7 +29,7 @@
 		},
 		"sidebar": {
 			"base": {
-				"$value": "22ch"
+				"$value": "24ch"
 			},
 			"collapsed": {
 				"$value": "6em"
