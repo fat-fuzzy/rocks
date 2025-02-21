@@ -14,8 +14,8 @@ nav li {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding: calc(var(--size-base-3xs) / var(--size-ratio-md))
-		var(--size-base-3xs);
+	padding-block: calc(var(--size-base-3xs) / var(--size-ratio-md));
+	padding-inline: var(--size-base-3xs);
 	margin-block: 0;
 	line-height: var(--font-leading-nav);
 }
@@ -68,7 +68,6 @@ ul.depth-1 {
 
 ul.depth-2 {
 	padding-inline: calc(2 * var(--ui-size-sm)) var(--outline-offset-sm);
-	margin-block: var(--ui-size-sm);
 }
 
 ul.depth-3 {
@@ -80,9 +79,15 @@ ul.depth-4 {
 }
 
 /* override Active Link styles for top level link */
+ul.depth-0 {
+	scrollbar-gutter: stable;
+}
+
+/* override Active Link styles for top level link */
 ul.depth-0 > li > a {
 	font-family: var(--font-family-heading);
 	font-weight: var(--font-weight-semibold);
+	padding-inline: 0;
 }
 
 /* == Link Overrides == */
@@ -127,6 +132,19 @@ a[class*='ravioli']:hover > *:not(.icon) {
 	flex-basis: var(--sidebar-width);
 }
 
+.form\:expanded,
+.reveal-nav > nav {
+	max-inline-size: calc(100% - 2 * var(--size-base-3xs));
+}
+
+.form\:collapsed {
+	max-inline-size: calc(100% - var(--ui-size));
+}
+
+.reveal-nav > nav {
+	margin: 0 auto;
+}
+
 .reveal-nav > form {
 	[aria-expanded='true'] ff-reveal {
 		margin: 0;
@@ -144,12 +162,11 @@ a[class*='ravioli']:hover > *:not(.icon) {
 	.reveal-nav {
 		&.collapsed {
 			--sidebar-width: calc(
-				var(--layout-sidebar-collapsed) + var(--ui-size-lg) +
-					var(--outline-offset-lg) * 2
+				var(--layout-sidebar-collapsed) + var(--ui-size-lg)
 			);
 		}
 
-		form.expanded > [aria-expanded] {
+		.form\:expanded > [aria-expanded] {
 			inline-size: 100%;
 		}
 	}
@@ -171,7 +188,7 @@ a[class*='ravioli']:hover > *:not(.icon) {
 
 			> ff-reveal {
 				inline-size: 100%;
-				transform: translateX(0);
+				transform: translateX(var(--size-base-3xs));
 				transition: transform 250ms ease-in;
 				transition: inline-size 250ms ease-in-out;
 			}
@@ -198,6 +215,7 @@ a[class*='ravioli']:hover > *:not(.icon) {
 					inline-size: 100%;
 					padding: calc(var(--ui-size-sm) / var(--size-ratio-lg));
 					margin: 0;
+					margin-block-start: var(--outline-offset-lg);
 				}
 			}
 		}
