@@ -177,9 +177,6 @@
 {#snippet docContent()}
 	<div class="l:sidebar:md">
 		<div id={`tabs-${category}-doc`} class="l:main">
-			<div class="l:text:md margin:auto">
-				<h2 id="doc" class="w:auto">Doc</h2>
-			</div>
 			{#if children}
 				{@render children()}
 			{/if}

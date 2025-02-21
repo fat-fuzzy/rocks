@@ -175,7 +175,7 @@
 								type="checkbox"
 								value="false"
 								label="Analytics"
-								hint="This is a beacon provided by Cloudflare (https://developers.cloudflare.com/web-analytics/data-metrics/) that measures the performance of the site as well as metrics about viewership."
+								hint="This cookie allows me to set up a beacon that measures the performance of the site as well as metrics about viewership. "
 								{size}
 								color="primary"
 								asset="none"
