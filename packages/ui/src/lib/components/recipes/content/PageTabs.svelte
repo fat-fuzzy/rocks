@@ -36,7 +36,7 @@
 <Head pageName={currentPage} {title} {description} />
 
 {#snippet breadcrumbTabs()}
-	<div class="ravioli:md bg:inherit fixed:top-right bg:blur">
+	<div class="ravioli:xs bg:inherit fixed:top-right bg:blur">
 		<ul role="tablist" class="l:switcher:xs unstyled">
 			{#each tabs as { title, slug, color, size, variant, shape, asset }}
 				{@const iconClasses = styleHelper.getStyles({

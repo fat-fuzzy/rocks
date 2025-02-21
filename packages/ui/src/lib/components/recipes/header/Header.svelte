@@ -17,7 +17,7 @@
 	let className = 'header-app'
 </script>
 
-<header class="sticky:top">
+<header class="sticky:top bg:inherit">
 	<SkipLinks />
 	<div class={`l:sidebar ${className} align:center`}>
 		<div class="l:main l:flex align:center">

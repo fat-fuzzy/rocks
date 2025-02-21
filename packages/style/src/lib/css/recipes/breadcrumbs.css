@@ -2,6 +2,10 @@
 	margin-block-end: var(--size-base-3xs);
 }
 
+.breadcrumbs > ul {
+	margin-block: 0;
+}
+
 .breadcrumbs > ul > li:has(a) {
 	padding-inline: var(--outline-offset-lg);
 }
@@ -11,8 +15,13 @@
 	padding: 0;
 	color: var(--ink);
 	font-weight: var(--font-weight-ui);
+	line-height: 1;
+}
+
+.breadcrumbs > ul > li a {
+	text-decoration: underline;
 }
 
 .breadcrumbs > ul > li a:hover {
-	text-decoration: underline;
+	background-color: var(--accent);
 }
