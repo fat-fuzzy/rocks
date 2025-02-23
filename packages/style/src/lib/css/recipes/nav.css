@@ -132,13 +132,8 @@ a[class*='ravioli']:hover > *:not(.icon) {
 	flex-basis: var(--sidebar-width);
 }
 
-.form\:expanded,
 .reveal-nav > nav {
 	max-inline-size: calc(100% - 2 * var(--size-base-3xs));
-}
-
-.form\:collapsed {
-	max-inline-size: calc(100% - var(--ui-size));
 }
 
 .reveal-nav > nav {
@@ -159,6 +154,11 @@ a[class*='ravioli']:hover > *:not(.icon) {
 }
 
 @media screen and (min-width: 975px) {
+	.form\:expanded,
+	.form\:collapsed {
+		max-inline-size: calc(100% - var(--ui-size));
+	}
+
 	.reveal-nav {
 		&.collapsed {
 			--sidebar-width: calc(
