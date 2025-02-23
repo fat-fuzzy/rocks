@@ -87,6 +87,7 @@
 	}
 
 	function loop(time: number) {
+		if (!scene) init()
 		scene.draw(time)
 		frame = requestAnimationFrame((time) => {
 			loop(time)
@@ -94,6 +95,7 @@
 	}
 
 	function render() {
+		if (!scene) init()
 		time = Date.now()
 		if (meta.controls.includes('loop')) {
 			loop(time)
