@@ -22,7 +22,7 @@
 	}: OverlayProps = $props()
 
 	let popover: HTMLElement
-	let fixedClass = $state(fixed ? `fixed:${place}` : '')
+	let fixedClass = $state(fixed ? `fixed:${place}` : `place:${place}`)
 	let reveal = $state(open ? 'expanded' : 'collapsed')
 
 	onMount(() => {
