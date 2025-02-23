@@ -71,6 +71,7 @@ export enum UiDimensions {
 export enum DismissEvent {
 	click = 'click',
 	outside = 'outside',
+	navigate = 'navigate',
 }
 
 export enum ButtonEvent {

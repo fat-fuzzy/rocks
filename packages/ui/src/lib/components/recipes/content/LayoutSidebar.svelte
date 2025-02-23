@@ -5,12 +5,12 @@
 	import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 	type Props = {
-		size: string
+		size?: string
 		nav: RevealNavProps
 		app?: {settings: {[key: string]: string}}
 		children: Snippet
 	}
-	let {size, nav, app, children}: Props = $props()
+	let {size = 'md', nav, app, children}: Props = $props()
 
 	let brightness = $derived(app?.settings?.brightness)
 	let contrast = $derived(app?.settings?.contrast)
