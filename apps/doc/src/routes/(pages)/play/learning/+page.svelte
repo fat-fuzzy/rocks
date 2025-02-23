@@ -22,10 +22,7 @@
 	)
 </script>
 
-<PageMain {title} {description} size="md">
-	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">{title}</h1>
-	{/snippet}
+<PageMain {title} {description}>
 	<article class="l:sidebar:md">
 		<div class="l:main">
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />

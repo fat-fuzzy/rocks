@@ -1,5 +1,6 @@
 <script lang="ts">
-	import {onMount, getContext, setContext, type Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
+	import {onMount, getContext, setContext} from 'svelte'
 	import {page} from '$app/state'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
 	import playbookStore from '$lib/api/store.svelte'

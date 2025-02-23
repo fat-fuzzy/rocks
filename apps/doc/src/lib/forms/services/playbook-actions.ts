@@ -1,5 +1,5 @@
 import type {Actions} from './$types'
-import {fail, redirect} from '@sveltejs/kit'
+import {fail} from '@sveltejs/kit'
 
 import ui from '@fat-fuzzy/ui'
 import {forms} from '@fat-fuzzy/playbook'
