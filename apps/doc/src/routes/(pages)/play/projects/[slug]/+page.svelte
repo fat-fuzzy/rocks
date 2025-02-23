@@ -29,7 +29,7 @@
 	</div>
 {/snippet}
 
-<PageMain pageName="Play" {title} {description} {header} size="xl">
+<PageMain pageName="Play" {title} {description} {header}>
 	{#key scene}
 		{#if scene}
 			<Sketch {scene} size="sm" {dev} />
