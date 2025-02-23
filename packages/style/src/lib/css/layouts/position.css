@@ -1,12 +1,17 @@
 [class*='fixed'],
 [class*='place'] {
-	--inset-size: var(--size-base-md);
+	--inset-size: var(--size-base-2xs);
 	max-inline-size: calc(100% - 2 * var(--inset-size));
 	max-block-size: calc(100% - 2 * var(--inset-size));
 }
 
 [class*='fixed'] {
 	position: fixed;
+	z-index: var(--layout-z-index-layer);
+}
+
+[class*='place'] {
+	position: absolute;
 	z-index: var(--layout-z-index-layer);
 }
 
