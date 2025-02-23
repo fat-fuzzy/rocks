@@ -39,6 +39,10 @@
 		pageClass === 'page:home' ? 'ravioli:xl' : '',
 	)
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
+	let cookiesPending = $derived(appSettings.consent === undefined)
+	let cookiesPartial = $derived(
+		appSettings.consent?.analytics || appSettings.consent?.site,
+	)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
 		inputs.switch[0].initial = initialBrightness
@@ -94,14 +98,10 @@
 	id="cookies-banner"
 	title="Cookies"
 	asset="cookie"
-	fixed={true}
+	fixed={cookiesPending}
 	container="burrito"
 	variant="fill"
-	color={!appSettings.consent?.analytics && appSettings.consent?.site
-		? 'primary'
-		: appSettings.consent?.analytics || appSettings.consent?.site
-			? 'accent'
-			: 'highlight'}
+	color={cookiesPending ? 'highlight' : cookiesPartial ? 'accent' : 'primary'}
 	place="bottom-right"
 >
 	<Cookies />
