@@ -66,8 +66,8 @@
 				? 'page'
 				: undefined}
 			class={$page.url.pathname === format.formatHref(path, slug)
-				? `${itemClass} ${linkAssetClass} ${colorClass}`
-				: `${itemClass} ${linkAssetClass}`}
+				? `${itemClass} ${colorClass}`
+				: `${itemClass}`}
 		>
 			{#if subItems && depth > 0}
 				<input
@@ -95,7 +95,7 @@
 				<a
 					data-sveltekit-preload-data
 					href={format.formatHref(path, slug)}
-					class={linkClass}
+					class={`${linkClass} ${linkAssetClass}`}
 				>
 					{title}
 				</a>
