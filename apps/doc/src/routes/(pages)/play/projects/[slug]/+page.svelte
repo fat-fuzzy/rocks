@@ -8,10 +8,9 @@
 
 	const {Sketch} = sketch.graphics
 	const {PageMain} = ui.content
+	const sketches = gfx.gl.sketches.projects
 
-	let scene = $derived(
-		gfx.gl.sketches.projects.find((s) => s.meta.slug === page.data.meta.slug),
-	)
+	let scene = $derived(sketches.find((s) => s.meta.slug === page.params.slug))
 	let title = $derived(scene?.meta.title || '')
 	let description = `Sketch is a sandbox environment to experiment and learn web-based computer graphics`
 
@@ -30,9 +29,7 @@
 {/snippet}
 
 <PageMain pageName="Play" {title} {description} {header}>
-	{#key scene}
-		{#if scene}
-			<Sketch {scene} size="sm" {dev} />
-		{/if}
-	{/key}
+	{#if scene}
+		<Sketch {scene} size="sm" {dev} />
+	{/if}
 </PageMain>
