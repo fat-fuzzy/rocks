@@ -8,6 +8,15 @@ import type {
 } from '$types'
 import type {Snippet} from 'svelte'
 
+export type NavItem = {
+	slug: string
+	title: string
+	asset?: string
+	formaction?: string
+	preload?: string
+	items?: NavItem[]
+}
+
 export type NavProps = UiBlockProps & {
 	id: string
 	title: string
@@ -16,7 +25,7 @@ export type NavProps = UiBlockProps & {
 	background?: string
 	container?: string
 	align?: string
-	items: any[]
+	items: NavItem[]
 }
 
 export type BreadcrumbsProps = UiBlockProps & {
@@ -38,7 +47,8 @@ export type LinkTreeProps = UiBlockProps & {
 	layout?: string
 	align?: string
 	container?: string
-	items: any[]
+	preload?: string
+	items: NavItem[]
 	redirect?: string
 	oninput?: (payload: FuzzyPayload) => void
 }
