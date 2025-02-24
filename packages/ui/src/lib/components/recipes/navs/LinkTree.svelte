@@ -21,7 +21,8 @@
 		id,
 		depth = 0,
 		container,
-		items = [], // TODO: fix type,
+		items = [],
+		preload,
 		oninput,
 	}: LinkTreeProps = $props()
 
@@ -45,7 +46,12 @@
 	/>
 {/snippet}
 
-<ul {id} class={`${gridClass} ${depthClass}`} data-testid={id}>
+<ul
+	{id}
+	class={`${gridClass} ${depthClass}`}
+	data-testid={id}
+	data-sveltekit-preload-data={preload ? preload : undefined}
+>
 	{#each items as item (item.slug)}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
