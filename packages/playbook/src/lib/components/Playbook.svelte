@@ -16,17 +16,23 @@
 	let playbookContext: api.StylesApi = getContext('playbookContext')
 	setContext('playbookStore', playbookStore)
 
-	let {styles, context, ui} = $state(page.data)
-	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = fatFuzzyUi.constants
+	let {styles, ui} = $state(page.data)
+	const {DEFAULT_REVEAL_STATE} = fatFuzzyUi.constants
 
-	playbookStore.reveal = context
-	playbookStore.navReveal = ui?.navReveal || DEFAULT_NAV_REVEAL_STATE
-	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
-	playbookStore.sidebarReveal = ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE
+	playbookStore.reveal = DEFAULT_REVEAL_STATE
+	playbookStore.navReveal = DEFAULT_REVEAL_STATE
+	playbookStore.settingsReveal = DEFAULT_REVEAL_STATE
+	playbookStore.sidebarReveal = DEFAULT_REVEAL_STATE
 
 	onMount(() => {
 		if (styles) {
 			playbookContext.applyStyles(styles)
+		}
+		if (ui) {
+			playbookStore.reveal = ui.Reveal
+			playbookStore.navReveal = ui.RevealNav
+			playbookStore.settingsReveal = ui.RevealSettings
+			playbookStore.sidebarReveal = ui.sidebarReveal
 		}
 		playbookStore.styles = playbookContext.getStyleTree()
 	})
