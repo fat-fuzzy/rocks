@@ -26,6 +26,7 @@
 
 	let {
 		scene,
+		meta,
 		layer = '0', // if 'layer' the canvas will appear on a layer (with drop shadow)
 		color,
 		size,
@@ -36,15 +37,14 @@
 		dev,
 	}: SketchProps = $props()
 
-	let id = $derived(scene.meta?.id ? `sketch-${scene.meta.id}` : 'sketch')
+	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
 	let debug = dev
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
 	let context: SceneContext = $state({})
-	let meta: SceneMeta = $state({controls: []})
-	let title = scene.meta.title
-	let asset = scene.meta.asset
-	let dimensions = scene.meta.dimensions || 'video'
+	let title = meta.title
+	let asset = meta.asset
+	let dimensions = meta.dimensions || 'video'
 
 	let frame: number
 	let time: number
@@ -76,7 +76,6 @@
 		if (canvas) {
 			try {
 				context = scene.main(canvas)
-				meta = scene.meta as SceneMeta
 				scene.update({...context, texture: {filters}})
 				actor.update(SketchEvent.loadOk)
 			} catch (e: unknown) {
@@ -87,7 +86,6 @@
 	}
 
 	function loop(time: number) {
-		if (!scene) init()
 		scene.draw(time)
 		frame = requestAnimationFrame((time) => {
 			loop(time)
@@ -95,7 +93,6 @@
 	}
 
 	function render() {
-		if (!scene) init()
 		time = Date.now()
 		if (meta.controls.includes('loop')) {
 			loop(time)

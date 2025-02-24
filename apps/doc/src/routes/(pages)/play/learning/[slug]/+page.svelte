@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {page} from '$app/state'
+	import {page} from '$app/stores'
 	import {dev} from '$app/environment'
 
 	import gfx from '@fat-fuzzy/gfx'
@@ -8,9 +8,9 @@
 
 	const {Sketch} = sketch.graphics
 	const {PageMain} = ui.content
-	const sketches = gfx.gl.sketches.learning
-
-	let scene = $derived(sketches.find((s) => s.meta.slug === page.params.slug))
+	let scene = $derived(
+		gfx.gl.sketches.learning.find((s) => s.meta.slug === $page.params.slug),
+	)
 	let title = $derived(scene?.meta.title || '')
 	let description = `Sketch is a sandbox environment to experiment and learn web-based computer graphics`
 
@@ -29,7 +29,9 @@
 {/snippet}
 
 <PageMain pageName="Learning" {title} {description} {header}>
-	{#if scene}
-		<Sketch {scene} size="sm" {dev} />
-	{/if}
+	{#key scene}
+		{#if scene}
+			<Sketch {scene} meta={scene.meta} size="sm" {dev} />
+		{/if}
+	{/key}
 </PageMain>
