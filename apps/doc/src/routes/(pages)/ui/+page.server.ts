@@ -5,7 +5,6 @@ import {commonActions} from '$lib/forms/services/page-actions'
 import {playbookActions} from '$lib/forms/services/playbook-actions'
 
 export const load = async ({parent, locals}) => {
-	console.log('Page load locals.dsState ', locals.dsState)
 	const {sidebar} = await parent()
 	return {
 		sidebar,
