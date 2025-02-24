@@ -55,6 +55,7 @@ export type SketchTransitionsType = {
 
 export type SketchProps = {
 	scene: Scene
+	meta: SceneMeta
 	layer?: string // if 'layer' the canvas will appear on a layer (with drop shadow)
 	color?: string
 	size?: string
