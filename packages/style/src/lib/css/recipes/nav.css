@@ -153,7 +153,7 @@ a[class*='ravioli']:hover > *:not(.icon) {
 	}
 }
 
-@media screen and (min-width: 975px) {
+@media screen and (min-width: 1024px) {
 	.form\:expanded,
 	.form\:collapsed {
 		max-inline-size: calc(100% - var(--ui-size));
