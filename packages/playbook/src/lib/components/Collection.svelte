@@ -44,7 +44,7 @@
 		actionPath,
 		redirect,
 		size = 'md',
-		color = 'neutral',
+		color = 'primary',
 		layout = 'switcher',
 		category,
 		markdowns,
@@ -116,7 +116,7 @@
 
 {#snippet playbookContent()}
 	<h2 id="playbook">Playbook</h2>
-	<div class="l:sidebar:md media end">
+	<div class="l:sidebar:sm media end">
 		<aside class="l:side l:stack:md">
 			{#key category}
 				<PropsDemo
@@ -165,7 +165,9 @@
 			{@render comingSoon()}
 		{/if}
 		<details class={`l:stack:md ${size}`}>
-			<summary class={`surface:2:${color} ravioli:2xs emoji:${category}`}>
+			<summary
+				class={`color:${color} variant:outline ravioli:2xs emoji:${category}`}
+			>
 				{category}
 			</summary>
 			<div class={layoutClass}>
