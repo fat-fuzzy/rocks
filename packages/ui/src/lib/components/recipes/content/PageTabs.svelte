@@ -4,6 +4,7 @@
 	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 	import styleHelper from '$lib/utils/styles.js'
+	import {onMount} from 'svelte'
 
 	let {
 		id = 'main',
@@ -19,6 +20,7 @@
 
 	let currentPage = $derived(pageName ?? title)
 	let currentHash = $state(path.split('#')[1] ?? tabs[0].slug)
+	let noJsClass = $state('nojs')
 
 	let presentationClasses = styleHelper.getStyles({
 		layout: 'switcher:2xs',
@@ -30,6 +32,10 @@
 		title,
 		main: headerMain,
 		side: headerSide,
+	})
+
+	onMount(() => {
+		noJsClass = ''
 	})
 </script>
 
@@ -85,7 +91,7 @@
 <main {id}>
 	<PageHeader size={size as UiSize} {layout} {justify} {...header} />
 
-	<section class="tab-content">
+	<section class={`tab-content ${noJsClass}`}>
 		{#each tabs as { slug, content }}
 			<!-- The article tag receives focus when the corresponding tab is active -->
 			<!-- aria-labelledby inside Breadcrumb -->
