@@ -81,6 +81,7 @@ ul.depth-4 {
 /* override Active Link styles for top level link */
 ul.depth-0 {
 	scrollbar-gutter: stable;
+	scrollbar-width: thin;
 }
 
 /* override Active Link styles for top level link */
@@ -156,7 +157,7 @@ a[class*='ravioli']:hover > *:not(.icon) {
 @media screen and (min-width: 1024px) {
 	.form\:expanded,
 	.form\:collapsed {
-		max-inline-size: calc(100% - var(--ui-size));
+		max-inline-size: calc(100% - var(--ui-size-sm));
 	}
 
 	.reveal-nav {
