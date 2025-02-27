@@ -24,8 +24,6 @@ enum FormsEnum {
 	layouts = 'layouts',
 	recipes = 'recipes',
 	dsState = 'dsState',
-	dsStyles = 'dsStyles',
-	currentTabs = 'currentTabs',
 }
 
 // TODO: move to utils / clean
@@ -42,11 +40,6 @@ export const load = async ({locals, cookies, params, url}) => {
 	const dsState = uiStateService.getUiState({
 		cookies,
 		key: `${APP_PREFIX}-ui-state`,
-	})
-
-	const dsStyles = uiStateService.getUiState({
-		cookies,
-		key: `${APP_PREFIX}-ui-styles`,
 	})
 
 	const appLocalsMap = revealForms.map((form) => ({
@@ -68,7 +61,6 @@ export const load = async ({locals, cookies, params, url}) => {
 
 	// UI state and styles
 	locals.dsState = dsState
-	locals.dsStyles = dsStyles
 
 	let sidebar = buildNav('ui')
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
@@ -141,8 +133,6 @@ export const load = async ({locals, cookies, params, url}) => {
 		sidebar,
 		markdowns,
 		content,
-		styles: locals.dsStyles,
-		context: locals.dsContext,
 		ui: locals.dsState,
 	}
 }

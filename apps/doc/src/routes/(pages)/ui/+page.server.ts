@@ -4,11 +4,11 @@ import uiActions from '$lib/forms/actions/ui-actions'
 import {commonActions} from '$lib/forms/services/page-actions'
 import {playbookActions} from '$lib/forms/services/playbook-actions'
 
-export const load = async ({parent, locals}) => {
-	const {sidebar} = await parent()
+export const load = async ({parent}) => {
+	const {sidebar, ui} = await parent()
 	return {
 		sidebar,
-		ui: locals.dsState,
+		ui,
 	}
 }
 

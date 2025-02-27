@@ -4,7 +4,6 @@
 
 	const {PlaybookCollection} = api
 
-	const actionPath = '/ui'
 	let formaction = 'updateState'
 
 	let path = $derived(page.url.pathname)
@@ -21,7 +20,6 @@
 		depth={1}
 		isPage={true}
 		{formaction}
-		{actionPath}
 		redirect={page.url.pathname}
 		{content}
 	/>

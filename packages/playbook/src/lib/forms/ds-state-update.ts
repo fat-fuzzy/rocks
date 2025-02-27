@@ -40,42 +40,44 @@ class DsStateUpdate {
 	 */
 	constructor(
 		state: {
-			reveal: Settings
-			menuReveal: Settings
-			navReveal: Settings
-			sidebarReveal: Settings
-			settingsReveal: Settings
+			Reveal: Settings
+			RevealMenu: Settings
+			RevealNav: Settings
+			HeaderRevealNav: Settings
+			HeaderRevealSettings: Settings
 		} | null = null,
 	) {
-		if (state) {
-			this.state = state
-		} else {
-			this.state = DEFAULT_DS_STATE
-		}
+		this.state = state ?? DEFAULT_DS_STATE
 	}
 
 	/**
 	 * Update State based on inputs
 	 */
 	enter(data: FormData) {
+		let success = false
 		if (data.has('button-reveal-Reveal')) {
-			return this.toggleReveal(data)
+			success = this.toggleReveal(data)
+
+			success = this.toggleReveal(data)
 		}
 		if (data.has('button-reveal-RevealMenu')) {
-			return this.toggleMenuReveal(data)
+			success = this.toggleMenuReveal(data)
 		}
 		if (data.has('button-reveal-RevealNav')) {
-			return this.toggleNavReveal(data)
+			success = this.toggleNavReveal(data)
 		}
 		if (data.has('button-reveal-Header-nav-reveal')) {
-			return this.toggleSidebarReveal(data)
+			success = this.toggleSidebarReveal(data)
 		}
 		if (data.has('button-reveal-Header-settings-reveal')) {
-			return this.toggleSettingsReveal(data)
+			success = this.toggleSettingsReveal(data)
+		}
+		if (success) {
+			this.state = this.state
 		}
 		return {
-			success: false,
-			message: 'Failed to update UI', // TODO: improve / manage error message with intl package,
+			success,
+			message: success ? '' : 'Failed to update UI', // TODO: improve / manage error message with intl package,
 		}
 	}
 
@@ -88,9 +90,6 @@ class DsStateUpdate {
 			return false
 		}
 		this.state[element] = newState.state ?? currentState
-
-		console.log(`Updated ${element} state`, this.state[element])
-		console.log(`this.state`, this.state)
 
 		return true
 	}

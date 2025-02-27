@@ -24,20 +24,6 @@ const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
 
 const DEFAULT_SCENE_ID = '004'
 
-const DEFAULT_DS_STATE: {
-	reveal: UiRevealState
-	menuReveal: UiRevealState
-	navReveal: UiRevealState
-	sidebarReveal: UiRevealState
-	settingsReveal: UiRevealState
-} = {
-	reveal: {reveal: UiState.collapsed},
-	menuReveal: {reveal: UiState.collapsed},
-	navReveal: {reveal: UiState.collapsed},
-	sidebarReveal: {reveal: UiState.collapsed},
-	settingsReveal: {reveal: UiState.collapsed},
-}
-
 const STATE_SWITCHER: {[key: string]: string} = {
 	active: UiState.inactive,
 	inactive: UiState.active,
@@ -206,7 +192,6 @@ export default {
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
-	DEFAULT_DS_STATE,
 	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,
