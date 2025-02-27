@@ -48,17 +48,17 @@ ul.unstyled {
 }
 
 .l\:text\:md {
-	inline-size: 65ch;
+	inline-size: 60ch;
 }
 
 .l\:text\:lg {
-	inline-size: 80ch;
+	inline-size: 70ch;
 }
 
 .l\:text\:xl {
-	inline-size: 95ch;
+	inline-size: 80ch;
 }
 
 .l\:text\:2xl {
-	inline-size: 110ch;
+	inline-size: 100ch;
 }
