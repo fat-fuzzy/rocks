@@ -8,7 +8,7 @@
 	const {PageMain} = ui.content
 
 	let scene = $derived(
-		gfx.gl.sketches.learning.find((s) => s.meta.slug === page.data.slug),
+		gfx.gl.sketches.learning.find((s) => s.meta.slug === page.params.slug),
 	)
 	let title = $derived(scene?.meta.title || '')
 	let description = $derived(`${title} - Play`)
