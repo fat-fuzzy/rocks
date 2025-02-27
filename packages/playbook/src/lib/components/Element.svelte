@@ -151,7 +151,7 @@
 
 {#snippet playbookContent()}
 	<h2 id="playbook">Playbook</h2>
-	<div class="l:sidebar:md media end">
+	<div class="l:sidebar:sm media end">
 		<aside class="l:side l:stack:md">
 			{#key title}
 				<PropsDemo
