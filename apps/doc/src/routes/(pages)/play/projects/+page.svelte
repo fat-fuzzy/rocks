@@ -18,8 +18,8 @@
 	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
 </script>
 
-<PageMain {title} {description}>
-	<article class="l:sidebar:md">
+<PageMain {title} {description} size="sm">
+	<article class="l:sidebar:sm">
 		<div class="l:main">
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />
 
