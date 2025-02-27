@@ -37,14 +37,16 @@
 	let sideContent = 'ravioli'
 	let mainContent = 'text'
 	let layoutContent = $derived(
-		`ravioli:${elementStyles.size} variant:outline size:${elementStyles.size} surface:1:accent`,
+		`ravioli:md variant:outline size:md surface:1:neutral`,
 	)
 	let fixtures = $derived(playbookStore.getLayoutFixtures(SpecifiedElement))
 </script>
 
 {#snippet children(props, contentType)}
 	{#if contentType === 'text'}
-		<p class={`ravioli:${elementStyles.size} surface:1:accent`}>{props.text}</p>
+		<p class={`ravioli:md surface:1:neutral`}>
+			{props.text}
+		</p>
 	{:else if contentType === 'ravioli'}
 		{#each props[content] as item}
 			<div class={layoutContent}>{item}</div>
