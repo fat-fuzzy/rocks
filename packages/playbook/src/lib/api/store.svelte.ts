@@ -14,12 +14,12 @@ const {
 class PlaybookStore {
 	api = $state()
 	styles = $state<StyleTree>(DEFAULT_STYLES)
-	reveal = $state(DEFAULT_REVEAL_STATE)
 	app = $state({settings: DEFAULT_APP_SETTINGS})
-	menuReveal = $state(DEFAULT_REVEAL_STATE)
-	navReveal = $state(DEFAULT_REVEAL_STATE)
-	sidebarReveal = $state(DEFAULT_NAV_REVEAL_STATE)
-	settingsReveal = $state(DEFAULT_REVEAL_STATE)
+	Reveal = $state(DEFAULT_REVEAL_STATE)
+	RevealMenu = $state(DEFAULT_REVEAL_STATE)
+	RevealNav = $state(DEFAULT_REVEAL_STATE)
+	HeaderRevealNav = $state(DEFAULT_REVEAL_STATE)
+	HeaderRevealSettings = $state(DEFAULT_NAV_REVEAL_STATE)
 
 	COMPONENT_FIXTURES: any = $state({
 		tokens: tokenFixtures,
@@ -27,6 +27,15 @@ class PlaybookStore {
 		layouts: layoutsFixtures,
 		// graphics: graphicsFixtures,
 		recipes: recipesFixtures,
+	})
+
+	COMPONENT_STATE: any = $state({
+		Reveal: this.Reveal,
+		RevealMenu: this.RevealMenu,
+		RevealNav: this.RevealNav,
+		HeaderRevealNav: this.HeaderRevealNav,
+		// graphics: graphicsFixtures,
+		HeaderRevealSettings: this.HeaderRevealSettings,
 	})
 
 	constructor() {}
@@ -48,6 +57,19 @@ class PlaybookStore {
 			this.COMPONENT_FIXTURES.layouts[component] ??
 			this.COMPONENT_FIXTURES.layouts.content
 		)
+	}
+
+	getRevealState(component: string) {
+		switch (component) {
+			case 'Reveal':
+			case 'RevealMenu':
+			case 'RevealNav':
+				return this.COMPONENT_STATE[component]
+			case 'Header-nav-reveal':
+				return this.COMPONENT_STATE['HeaderRevealNav']
+			case 'Header-settings-reveal':
+				return this.COMPONENT_STATE['HeaderRevealSettings']
+		}
 	}
 }
 

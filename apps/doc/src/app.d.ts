@@ -14,9 +14,6 @@ declare namespace App {
 		styles
 		app
 		dsState
-		dsStyles
-		dsContext
-		currentTabs
 	}
 	// interface PageData {}
 	// interface PageState {}

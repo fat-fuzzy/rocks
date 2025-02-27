@@ -2,7 +2,7 @@
 	import type {Snippet} from 'svelte'
 
 	import {onMount, setContext} from 'svelte'
-	import {page} from '$app/state'
+	import {page} from '$app/stores'
 	import {api} from '@fat-fuzzy/playbook'
 	const {Playbook} = api
 
@@ -14,18 +14,17 @@
 	let playbookContext = api.stylesApi.initStyles()
 	setContext('playbookContext', playbookContext)
 
-	let {styles} = $state(page.data)
-	let sidebar = $derived(page.data.sidebar)
-	let settings = $derived(page.data.settings)
+	let {ui} = $state($page.data)
+	let sidebar = $derived($page.data.sidebar)
 
 	onMount(() => {
-		if (styles) {
-			playbookContext.applyStyles(styles)
+		if (ui) {
+			playbookContext.applyStyles(ui)
 		}
 	})
 </script>
 
-<Playbook app={settings} nav={sidebar}>
+<Playbook nav={sidebar}>
 	{#if children}
 		{@render children()}
 	{/if}

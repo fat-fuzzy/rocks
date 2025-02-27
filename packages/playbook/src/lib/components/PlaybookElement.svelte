@@ -9,7 +9,7 @@
 		content: any
 		path: string
 		formaction?: string
-		actionPath: string
+		actionPath?: string
 		redirect: string
 		title: any
 	}
