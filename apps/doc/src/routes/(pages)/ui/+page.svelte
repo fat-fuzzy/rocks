@@ -21,8 +21,8 @@
 	let slug = $derived(content.meta.slug)
 </script>
 
-<PageMain {title} {description} size="md">
-	<article class="l:sidebar:md">
+<PageMain {title} {description} size="sm">
+	<article class="l:sidebar:sm">
 		<section class="l:main">
 			<EscapeHtml id={slug} html={content.html} size="md" margin="auto" />
 

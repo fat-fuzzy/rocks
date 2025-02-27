@@ -135,7 +135,7 @@
 {/snippet}
 
 {#snippet docContent()}
-	<div class="l:sidebar:md">
+	<div class="l:sidebar:sm">
 		<div id={`tabs-${category}-doc`} class="l:main">
 			{#if children}
 				{@render children()}
@@ -152,7 +152,7 @@
 {/snippet}
 
 {#if isPage}
-	<PageTabs pageName="UI" {title} {description} {path} {header} {tabs}
+	<PageTabs pageName="UI" {title} {description} {path} {header} {tabs} size="sm"
 	></PageTabs>
 {:else}
 	<section class="l:text:lg snap:start">
