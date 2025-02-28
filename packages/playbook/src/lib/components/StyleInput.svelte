@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {StylesApi} from '$lib/api/styles.api'
 	import type {IStyleInputGroup, IStyleFamily} from '$types'
 
 	import {onMount, getContext} from 'svelte'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
 
-	import PlaybookStore from '$lib/api/store.svelte'
+	import StylesApi from '$lib/api/styles.svelte'
+	import PlaybookActor from '$lib/api/actor.svelte'
 
 	const {InputRange} = fatFuzzyUi.blocks
 	const {InputGroup} = fatFuzzyUi.drafts
@@ -33,9 +33,9 @@
 		onupdate,
 	}: Props = $props()
 
-	const playbookContext: StylesApi = getContext('playbookContext')
-	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
-	let styles = $derived(playbookStore.styles)
+	let context: StylesApi = getContext('playbookContext')
+	let actor: PlaybookActor = getContext('playbookActor')
+	let styles = $derived(actor.styles)
 
 	let apiSize = '2xs'
 	let apiColor = 'primary'
@@ -63,7 +63,13 @@
 		onupdate(payload)
 	}
 
-	function handleSelect(event, familyName: string, name: string, id: string) {
+	function handleSelect(
+		event: Event,
+		familyName: string,
+		name: string,
+		id: string,
+	) {
+		let target = event.target as HTMLInputElement
 		// TODO: reject input if it's not in values list -> form validation /!\
 		const payload = {
 			name: familyName.toLowerCase(),
@@ -71,7 +77,7 @@
 				{
 					id,
 					name: name.toLowerCase(),
-					value: event.value,
+					value: target.value,
 				},
 			],
 		}
@@ -127,11 +133,6 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
-
-	onMount(() => {
-		// Set the initial styles
-		playbookContext.applyStyles(playbookStore.styles)
-	})
 
 	let {id, input, name, value, assetType, items} = $derived(styleInput)
 	let currentValue = $derived(
@@ -223,7 +224,7 @@
 				size={apiSize}
 				color={apiColor}
 				variant={styleInput.variant}
-				oninput={(event) => handleInput(event, familyName)}
+				oninput={(event: Event) => handleInput(event, familyName)}
 			/>
 		</Fieldset>
 	{/if}
@@ -238,7 +239,7 @@
 				id={`choice-${styleInput.name}`}
 				name={id}
 				class={apiSize}
-				oninput={(event) =>
+				oninput={(event: Event) =>
 					handleSelect(event, familyName, styleInput.name, styleInput.id)}
 			/>
 			<datalist id={`datalist-${styleInput.name}`}>

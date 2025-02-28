@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
+	import PlaybookActor from '$lib/api/actor.svelte'
 
 	type Props = {
 		id?: string
@@ -26,8 +26,8 @@
 
 	let page = ''
 
-	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
-	let styles = $derived(playbookStore.styles)
+	let actor: PlaybookActor = getContext('playbookActor')
+	let styles = $derived(actor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')

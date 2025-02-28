@@ -1,10 +1,10 @@
 import {fail} from '@sveltejs/kit'
 
 import ui from '@fat-fuzzy/ui'
-import {forms} from '@fat-fuzzy/playbook'
+import playbook from '@fat-fuzzy/playbook'
 import uiStateService from '$lib/forms/services/ui-state.js'
 
-const {DsStateUpdate, DsStylesUpdate} = forms
+const {DsStateUpdate, DsStylesUpdate} = playbook.actions
 const {SignUpUser} = ui.forms
 const {APP_PREFIX} = ui.constants
 
@@ -49,7 +49,6 @@ export const playbookActions = {
 		if (!styles.enter(data)) {
 			return fail(400, {stylesError: true})
 		}
-
 		uiStateService.setUiState({
 			cookies,
 			key,

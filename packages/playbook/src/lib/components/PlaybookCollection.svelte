@@ -1,7 +1,10 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import {setContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import Collection from '$lib/components/Collection.svelte'
+	import StylesApi from '$lib/api/styles.svelte'
+	import PlaybookActor from '$lib/api/actor.svelte'
 
 	const {EscapeHtml} = ui.headless
 
@@ -16,6 +19,8 @@
 		actionPath?: string
 		redirect?: string
 		children?: Snippet
+		actor: PlaybookActor
+		context: StylesApi
 	}
 
 	let {
@@ -29,7 +34,12 @@
 		actionPath,
 		redirect,
 		children,
+		actor,
+		context,
 	}: Props = $props()
+
+	setContext('playbookActor', actor)
+	setContext('playbookContext', context)
 
 	const components = [
 		{category: 'tokens', items: ui.tokens},
