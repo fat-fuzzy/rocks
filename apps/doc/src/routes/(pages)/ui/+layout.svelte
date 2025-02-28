@@ -1,31 +1,24 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 
-	import {onMount, setContext} from 'svelte'
-	import {page} from '$app/stores'
-	import {api} from '@fat-fuzzy/playbook'
-	const {Playbook} = api
+	import {page} from '$app/state'
+	import pageActor from './services/actor.svelte'
 
 	type Props = {
 		children: Snippet
 	}
 	let {children}: Props = $props()
-
-	let playbookContext = api.stylesApi.initStyles()
-	setContext('playbookContext', playbookContext)
-
-	let {ui} = $state($page.data)
-	let sidebar = $derived($page.data.sidebar)
-
-	onMount(() => {
+	let context = $derived(pageActor.getContext())
+	$effect(() => {
+		let ui = page.data.ui
 		if (ui) {
-			playbookContext.applyStyles(ui)
+			context.applyStyles(ui)
+			context.Reveal = ui.Reveal
+			context.RevealNav = ui.RevealNav
+			context.HeaderRevealNav = ui.HeaderRevealNav
+			context.HeaderRevealSettings = ui.HeaderRevealSettings
 		}
 	})
 </script>
 
-<Playbook nav={sidebar}>
-	{#if children}
-		{@render children()}
-	{/if}
-</Playbook>
+{@render children()}

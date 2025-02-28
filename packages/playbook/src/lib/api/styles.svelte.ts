@@ -13,13 +13,36 @@ import StyleInputGroup from './styles.input-group'
 import StyleFamily from './styles.family'
 import {getFamily} from '$lib/props/props-style'
 
-export class StylesApi {
-	app: AppStyles
-	tokens: TokenStyles
-	blocks: BlockStyles
-	layouts: LayoutStyles
+const tokens: TokenStyles = {
+	name: 'tokens',
+	families: {element: getFamily('tokens.element')},
+}
 
-	constructor({tokens, app, blocks, layouts}: StyleOptions) {
+const app: AppStyles = {
+	name: 'app',
+	families: {settings: getFamily('app.settings')},
+}
+
+const blocks: BlockStyles = {
+	name: 'blocks',
+	families: {element: getFamily('blocks.element')},
+}
+
+const layouts: LayoutStyles = {
+	name: 'layouts',
+	families: {
+		layout: getFamily('layouts.layout'),
+		container: getFamily('layouts.container'),
+		content: getFamily('layouts.content'),
+	},
+}
+class StylesApi {
+	app: AppStyles | undefined = $state()
+	tokens: TokenStyles | undefined = $state()
+	blocks: BlockStyles | undefined = $state()
+	layouts: LayoutStyles | undefined = $state()
+
+	constructor() {
 		this.tokens = tokens
 		this.app = app
 		this.blocks = blocks
@@ -220,28 +243,4 @@ export class StylesApi {
 	}
 }
 
-const tokens: TokenStyles = {
-	name: 'tokens',
-	families: {element: getFamily('tokens.element')},
-}
-
-const app: AppStyles = {
-	name: 'app',
-	families: {settings: getFamily('app.settings')},
-}
-
-const blocks: BlockStyles = {
-	name: 'blocks',
-	families: {element: getFamily('blocks.element')},
-}
-
-const layouts: LayoutStyles = {
-	name: 'layouts',
-	families: {
-		layout: getFamily('layouts.layout'),
-		container: getFamily('layouts.container'),
-		content: getFamily('layouts.content'),
-	},
-}
-
-export const initStyles = () => new StylesApi({app, tokens, blocks, layouts})
+export default StylesApi

@@ -11,7 +11,7 @@
 	type Props = {
 		path?: string
 		categories: string[]
-		method?: string
+		method?: 'POST' | 'GET'
 		actionPath?: string
 		redirect?: string
 		formaction?: string

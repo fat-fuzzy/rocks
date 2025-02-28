@@ -11,7 +11,8 @@ const {
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_STYLES,
 } = ui.constants
-class PlaybookStore {
+
+class PlaybookActor {
 	api = $state()
 	styles = $state<StyleTree>(DEFAULT_STYLES)
 	app = $state({settings: DEFAULT_APP_SETTINGS})
@@ -73,5 +74,4 @@ class PlaybookStore {
 	}
 }
 
-const store = new PlaybookStore()
-export default store
+export default PlaybookActor

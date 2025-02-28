@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
+	import PlaybookActor from '$lib/api/actor.svelte'
 
 	type Props = {
 		title: string
@@ -21,9 +21,9 @@
 		redirect,
 	}: Props = $props()
 
-	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
+	let actor: PlaybookActor = getContext('playbookActor')
 
-	let styles = $derived(playbookStore.styles)
+	let styles = $derived(actor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
@@ -36,13 +36,11 @@
 	let content = 'ravioli'
 	let sideContent = 'ravioli'
 	let mainContent = 'text'
-	let layoutContent = $derived(
-		`ravioli:md variant:outline size:md surface:1:neutral`,
-	)
-	let fixtures = $derived(playbookStore.getLayoutFixtures(SpecifiedElement))
+	let layoutContent = 'ravioli:md variant:outline size:md surface:1:neutral'
+	let fixtures = $derived(actor.getLayoutFixtures(SpecifiedElement))
 </script>
 
-{#snippet children(props, contentType)}
+{#snippet children(props, contentType: string)}
 	{#if contentType === 'text'}
 		<p class={`ravioli:md surface:1:neutral`}>
 			{props.text}
