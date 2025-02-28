@@ -36,12 +36,12 @@ nav li a[role='tab'] {
 	display: none;
 }
 
-.nojs [role='tabpanel'] {
-	display: block;
-}
-
 [role='tabpanel'] {
 	margin-block-end: calc(2 * var(--size-base-2xl));
+}
+
+.nojs [role='tabpanel'] {
+	display: block;
 }
 
 [role='tabpanel']:first-of-type:target {
