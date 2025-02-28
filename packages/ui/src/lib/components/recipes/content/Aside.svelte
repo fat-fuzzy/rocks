@@ -25,7 +25,7 @@
 					<span class="maki:inline">{created}</span>
 				</p>
 				{#if updated !== created}
-					<p class="l:flex size:2xs justify:between">
+					<p class="l:flex size:2xs font:2xs justify:between">
 						<span class="emoji:updated">Updated</span>
 						<span class="maki:inline">{updated}</span>
 					</p>
