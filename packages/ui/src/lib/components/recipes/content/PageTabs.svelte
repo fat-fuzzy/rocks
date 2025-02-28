@@ -70,6 +70,9 @@
 						aria-selected={currentHash === slug}
 						aria-controls={slug}
 						class={`${presentationClasses} ${linkClasses}`}
+						onclick={() => {
+							currentHash = slug
+						}}
 					>
 						<ff-icon class={iconClasses}></ff-icon>
 						{title}
