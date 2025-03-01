@@ -26,16 +26,16 @@
 
 	let page = ''
 
-	let actor: PlaybookActor = getContext('playbookActor')
-	let styles = $derived(actor.styles)
+	let playbookActor: PlaybookActor = getContext('playbookActor')
+	let styles = $derived(playbookActor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
-	let recipeName = $derived(name ? `ui-${name}` : `ui-${title}`)
+	let recipeName = $derived(name ? name : title)
 </script>
 
 <SpecifiedElement
-	id={id ?? title}
+	{id}
 	{page}
 	{title}
 	name={recipeName}

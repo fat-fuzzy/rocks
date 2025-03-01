@@ -1,6 +1,8 @@
 <script lang="ts">
+	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import Element from '$lib/components/Element.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 
 	const {EscapeHtml} = ui.headless
 

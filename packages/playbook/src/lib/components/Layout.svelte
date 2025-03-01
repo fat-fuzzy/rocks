@@ -3,6 +3,8 @@
 	import {PlaybookActor} from '$lib/api/actor.svelte'
 
 	type Props = {
+		id?: string
+		name?: string
 		title: string
 		isPage?: boolean
 		SpecifiedElement: any // TODO: fix types
@@ -13,6 +15,8 @@
 	}
 
 	let {
+		id,
+		name,
 		title,
 		SpecifiedElement,
 		props,
@@ -21,9 +25,9 @@
 		redirect,
 	}: Props = $props()
 
-	let actor: PlaybookActor = getContext('playbookActor')
+	let playbookActor: PlaybookActor = getContext('playbookActor')
 
-	let styles = $derived(actor.styles)
+	let styles = $derived(playbookActor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
@@ -33,11 +37,12 @@
 	// let sideContent = $derived(styles.layouts?.content.side ?? 'ravioli')
 	// let mainContent = $derived(styles.layouts?.content.main ?? 'text')
 
+	let layoutName = $derived(name ? name : title)
 	let content = 'ravioli'
 	let sideContent = 'ravioli'
 	let mainContent = 'text'
 	let layoutContent = 'ravioli:md variant:outline size:md surface:1:neutral'
-	let fixtures = $derived(actor.getLayoutFixtures(SpecifiedElement))
+	let fixtures = $derived(playbookActor.getLayoutFixtures(SpecifiedElement))
 </script>
 
 {#snippet children(props, contentType: string)}
@@ -69,7 +74,9 @@
 	</SpecifiedElement>
 {:else}
 	<SpecifiedElement
-		id={title}
+		{id}
+		{title}
+		name={layoutName}
 		{...containerStyles}
 		{...layoutStyles}
 		{...elementStyles}

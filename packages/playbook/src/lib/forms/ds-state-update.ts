@@ -28,10 +28,13 @@ export type UiActionSetOutput = {
 }
 
 export type DsState = {
-	[key: string]: Settings
+	Reveal: Settings
+	RevealMenu: Settings
+	RevealNav: Settings
+	HeaderRevealNav: Settings
+	HeaderRevealSettings: Settings
 }
 
-const {DEFAULT_DS_STATE} = constants
 const {UiReveal} = ui.forms
 
 class DsStateUpdate {
@@ -39,16 +42,20 @@ class DsStateUpdate {
 	/**
 	 * Initialize default State object or from the user's cookie values, if any
 	 */
-	constructor(
-		state: {
-			Reveal: Settings
-			RevealMenu: Settings
-			RevealNav: Settings
-			HeaderRevealNav: Settings
-			HeaderRevealSettings: Settings
-		} | null = null,
-	) {
-		this.state = state ?? DEFAULT_DS_STATE
+	constructor({
+		Reveal,
+		RevealMenu,
+		RevealNav,
+		HeaderRevealNav,
+		HeaderRevealSettings,
+	}: DsState) {
+		this.state = {
+			Reveal,
+			RevealMenu,
+			RevealNav,
+			HeaderRevealNav,
+			HeaderRevealSettings,
+		}
 	}
 
 	/**
@@ -83,14 +90,14 @@ class DsStateUpdate {
 	}
 
 	handleToggleUiReveal({data, element}): boolean {
-		const currentState = this.state[element]
+		const currentState = this.state[element as keyof DsState]
 
 		const reveal = new UiReveal(currentState, element)
 		const newState = reveal.reveal(data)
 		if (!newState.success) {
 			return false
 		}
-		this.state[element] = newState.state ?? currentState
+		this.state[element as keyof DsState] = newState.state ?? currentState
 
 		return true
 	}

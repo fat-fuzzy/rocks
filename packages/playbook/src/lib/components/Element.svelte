@@ -52,14 +52,13 @@
 		layouts: Layout,
 		recipes: Recipe,
 	}
-
 	let stylesApi: StylesApi = getContext('playbookContext')
 	let playbookActor: PlaybookActor = getContext('playbookActor')
+	let playbookSettings: PlaybookActor = getContext('playbookSettings')
 	let styles = $derived(stylesApi.getStyleTree())
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 	let {settings} = $derived(playbookActor.app)
-	let reveal = $derived(playbookActor.getRevealState(title))
 
 	//== App settings (user controlled)
 	let brightness = $derived(settings.brightness || '')
@@ -145,7 +144,6 @@
 			{actionPath}
 			{redirect}
 			{...settings}
-			{reveal}
 			id={title}
 		/>
 	</div>
