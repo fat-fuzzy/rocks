@@ -1,9 +1,14 @@
-import gfx from '@fat-fuzzy/gfx'
+import {error} from '@sveltejs/kit'
 
-export const load = ({params}) => {
-	const learning = gfx.gl.sketches.learning.find((s) => {
-		return s.meta.slug === params.slug
-	})?.meta
+export const load = async ({parent, params}) => {
+	let {sketches} = await parent()
+	let meta = sketches.find((s) => {
+		return s.slug === params.slug
+	})
 
-	return learning
+	if (!meta) {
+		throw error(404, {message: 'Sketch not found'})
+	}
+
+	return meta
 }
