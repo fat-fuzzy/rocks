@@ -108,11 +108,19 @@ export const load = async ({locals, params, url}) => {
 	let styles
 	let settings
 	let ui
+
+	// TODO: Figure out how to handle this better
 	if (locals.dsStyles) {
-		styles = JSON.parse(locals.dsStyles)
+		styles =
+			typeof locals.dsStyles === 'string'
+				? JSON.parse(locals.dsStyles)
+				: locals.dsStyles
 	}
 	if (locals.dsState) {
-		ui = JSON.parse(locals.dsStyles)
+		ui =
+			typeof locals.dsState === 'string'
+				? JSON.parse(locals.dsState)
+				: locals.dsState
 	}
 	if (locals.settings) {
 		settings = locals.settings
