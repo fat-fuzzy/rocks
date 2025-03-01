@@ -1,5 +1,6 @@
 <script lang="ts">
-	import {getContext, setContext, type Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
+	import {getContext, setContext} from 'svelte'
 	import {page} from '$app/state'
 	import playbookActor from '$lib/api/actor.svelte'
 	import StylesApi from '$lib/api/styles.svelte'
@@ -14,13 +15,13 @@
 
 	$effect(() => {
 		let {styles, ui} = page.data
+
 		if (styles) {
 			playbookContext.applyStyles(styles)
 		}
 		if (ui) {
 			playbookActor.context = ui
 		}
-
 		playbookActor.styles = playbookContext.getStyleTree()
 	})
 </script>

@@ -35,7 +35,6 @@
 						path={`${path}/${category}${page.url.hash}`}
 						{formaction}
 						actionPath={path}
-						redirect={path}
 						{content}
 					>
 						<EscapeHtml

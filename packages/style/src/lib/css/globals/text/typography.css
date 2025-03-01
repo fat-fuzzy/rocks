@@ -80,6 +80,14 @@ h5,
 	font-size: var(--font-size-base);
 }
 
+.font\:heading {
+	font-family: var(--font-family-heading);
+}
+
+.font\:semibold {
+	font-weight: var(--font-weight-h5);
+}
+
 article,
 .l\:text {
 	background-color: inherit;

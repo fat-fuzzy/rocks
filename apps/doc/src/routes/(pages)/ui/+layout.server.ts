@@ -3,28 +3,9 @@ import ui from '@fat-fuzzy/ui'
 import assets from '$data/ui'
 import pages from '$data/pages'
 import {buildNav} from '$data/nav'
-import uiStateService from '$lib/forms/services/ui-state'
 
 const page = 'ui'
 let markdowns = assets.markdowns
-const {APP_PREFIX} = ui.constants
-
-const revealForms = [
-	// ui page forms
-	'tokens',
-	'blocks',
-	'layouts',
-	'recipes',
-]
-
-enum FormsEnum {
-	// ui page forms
-	tokens = 'tokens',
-	blocks = 'blocks',
-	layouts = 'layouts',
-	recipes = 'recipes',
-	dsState = 'dsState',
-}
 
 // TODO: move to utils / clean
 function sortAsc(a, b) {
@@ -125,6 +106,7 @@ export const load = async ({locals, params, url}) => {
 	if (locals.settings) {
 		settings = locals.settings
 	}
+
 	return {
 		sidebar,
 		markdowns,

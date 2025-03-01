@@ -11,12 +11,14 @@
 	let content = $derived(page.data.content)
 </script>
 
-<PlaybookCollection
-	{category}
-	{markdowns}
-	path={`${path}${page.url.hash}`}
-	depth={1}
-	isPage={true}
-	{formaction}
-	{content}
-/>
+{#key category}
+	<PlaybookCollection
+		{category}
+		{markdowns}
+		path={`${path}${page.url.hash}`}
+		depth={1}
+		isPage={true}
+		{formaction}
+		{content}
+	/>
+{/key}

@@ -28,6 +28,7 @@
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let styles = $derived(playbookActor.styles)
+	let reveal = $derived(playbookActor.context[title]?.reveal || '')
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
@@ -46,4 +47,5 @@
 	{formaction}
 	{actionPath}
 	{redirect}
+	{reveal}
 />
