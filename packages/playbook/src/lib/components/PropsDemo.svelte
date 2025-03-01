@@ -28,7 +28,7 @@
 	</div>
 {/snippet}
 
-<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
+<!-- <Api categories={['app']} {meta} {path} {actionPath} {redirect} /> -->
 {#if categories && categories.length > 0 && meta.props_style}
 	<div class="ui:menu">
 		<Api {categories} {path} {actionPath} {redirect} {meta} />

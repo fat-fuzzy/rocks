@@ -93,9 +93,7 @@
 	let settingsClasses = $derived(
 		`settings:${brightness}:${contrast} ${surfaceClass}`,
 	)
-	let sectionClasses = $derived(
-		`l:main stage ravioli:xl inset ${settingsClasses}`,
-	)
+	let sectionClasses = $derived(`l:main stage ravioli:xl ${settingsClasses}`)
 	let containerClasses = $derived(isPage ? sectionContainer : articleContainer)
 
 	let GenericElement = $derived(ApiElement[category])
