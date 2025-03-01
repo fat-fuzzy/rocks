@@ -12,10 +12,12 @@
 	let content = $derived(page.data.content)
 </script>
 
-<PlaybookElement
-	{title}
-	{category}
-	{content}
-	path={`${path}${page.url.hash}`}
-	{formaction}
-/>
+{#key title}
+	<PlaybookElement
+		{title}
+		{category}
+		{content}
+		path={`${path}${page.url.hash}`}
+		{formaction}
+	/>
+{/key}

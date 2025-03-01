@@ -1,7 +1,8 @@
 import ui from '@fat-fuzzy/ui'
 import type {Settings} from '$types'
 import type {Cookies} from '@sveltejs/kit'
-import constants from '$lib/types/constants'
+
+const {DEFAULT_REVEAL_STATE} = ui.constants
 
 export type UiActionGetInput = {
 	cookies: Cookies
@@ -50,11 +51,11 @@ class DsStateUpdate {
 		HeaderRevealSettings,
 	}: DsState) {
 		this.state = {
-			Reveal,
-			RevealMenu,
-			RevealNav,
-			HeaderRevealNav,
-			HeaderRevealSettings,
+			Reveal: Reveal ?? DEFAULT_REVEAL_STATE,
+			RevealMenu: RevealMenu ?? DEFAULT_REVEAL_STATE,
+			RevealNav: RevealNav ?? DEFAULT_REVEAL_STATE,
+			HeaderRevealNav: HeaderRevealNav ?? DEFAULT_REVEAL_STATE,
+			HeaderRevealSettings: HeaderRevealSettings ?? DEFAULT_REVEAL_STATE,
 		}
 	}
 
@@ -64,8 +65,6 @@ class DsStateUpdate {
 	enter(data: FormData) {
 		let success = false
 		if (data.has('button-reveal-Reveal')) {
-			success = this.toggleReveal(data)
-
 			success = this.toggleReveal(data)
 		}
 		if (data.has('button-reveal-RevealMenu')) {
@@ -79,9 +78,6 @@ class DsStateUpdate {
 		}
 		if (data.has('button-reveal-Header-settings-reveal')) {
 			success = this.toggleSettingsReveal(data)
-		}
-		if (success) {
-			this.state = this.state
 		}
 		return {
 			success,
