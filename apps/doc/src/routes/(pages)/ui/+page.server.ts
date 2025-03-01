@@ -1,8 +1,8 @@
 import type {Actions} from './$types'
 
 import uiActions from '$lib/forms/actions/ui-actions'
-import {commonActions} from '$lib/forms/services/page-actions'
-import {playbookActions} from '$lib/forms/services/playbook-actions'
+import {commonActions} from '$lib/forms/actions/page-actions'
+import {playbookActions} from '$lib/forms/actions/playbook-actions'
 
 export const load = async ({parent}) => {
 	const {sidebar, ui} = await parent()

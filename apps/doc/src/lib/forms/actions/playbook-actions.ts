@@ -9,7 +9,7 @@ const {SignUpUser} = ui.forms
 const {APP_PREFIX} = ui.constants
 
 export const playbookActions = {
-	updateState: async ({request, cookies, locals}) => {
+	updateState: async ({request, cookies}) => {
 		const data = await request.formData()
 		if (data.has('reset')) {
 		}
@@ -28,26 +28,25 @@ export const playbookActions = {
 		uiStateService.setUiState({
 			cookies,
 			key,
-			value: toUpdate.state,
+			value: toUpdate.toString(),
 			options: {
 				host: 'localhost', // TODO: fix domain
 				path: '/',
 			},
 		})
-		locals.dsState = toUpdate.state
 		return {success: true}
 	},
 
-	updateStyles: async ({request, locals, cookies}) => {
+	updateStyles: async ({request, cookies}) => {
 		const data = await request.formData()
-		const key = `${APP_PREFIX}-ui-state`
+		const key = `${APP_PREFIX}-ui-styles`
 		const currentStyles = uiStateService.getUiState({
 			cookies,
 			key,
 		})
 		const styles = new DsStylesUpdate(currentStyles)
 		if (!styles.enter(data)) {
-			return fail(400, {stylesError: true})
+			fail(400, {stylesError: true})
 		}
 		uiStateService.setUiState({
 			cookies,
@@ -58,8 +57,6 @@ export const playbookActions = {
 				path: '/',
 			},
 		})
-		locals.dsState = styles
-
 		return {success: true}
 	},
 

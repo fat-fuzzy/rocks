@@ -1,7 +1,7 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
 import images from '$data/images'
-import {commonActions} from '$lib/forms/services/page-actions'
+import {commonActions} from '$lib/forms/actions/page-actions'
 
 const page = 'home'
 
@@ -66,14 +66,12 @@ async function loadSectionsContent(pageAssets) {
 	return pageAssets.sections
 }
 
-export const load = async ({parent}) => {
-	let {settings} = await parent()
+export const load = async () => {
 	try {
 		const content = await pages.fetchMarkdowns(page)
 		const sections = await loadSectionsContent(pageAssets)
 
 		return {
-			settings,
 			content: content.length ? content[0] : {meta: {title: ''}},
 			sections,
 		}

@@ -4,7 +4,7 @@
 
 	import {onMount, getContext} from 'svelte'
 
-	import PlaybookActor from '$lib/api/actor.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import StyleInput from './StyleInput.svelte'
 
 	type Props = {

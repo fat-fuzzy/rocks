@@ -11,8 +11,8 @@ declare namespace App {
 		navRecipes
 		sidebar
 		settings
-		styles
 		app
+		dsStyles
 		dsState
 	}
 	// interface PageData {}

@@ -1,14 +1,10 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import playbook from '@fat-fuzzy/playbook'
-	import pageActor from '../services/actor.svelte'
 
 	const {PlaybookCollection} = playbook
 
 	let formaction = 'updateState'
-	let context = $derived(pageActor.getContext())
-	let actor = $derived(pageActor.getActor())
-
 	let path = $derived(page.url.pathname)
 	let category = $derived(page.params.category)
 	let markdowns = $derived(page.data.markdowns)
@@ -23,6 +19,4 @@
 	isPage={true}
 	{formaction}
 	{content}
-	{actor}
-	{context}
 />

@@ -2,7 +2,6 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 	import playbook from '@fat-fuzzy/playbook'
-	import pageActor from './services/actor.svelte'
 
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
@@ -19,8 +18,6 @@
 	let content = $derived(page.data.content)
 	let markdowns = $derived(page.data.markdowns)
 	let slug = $derived(content.meta.slug)
-	let context = $derived(pageActor.getContext())
-	let actor = $derived(pageActor.getActor())
 </script>
 
 <PageMain {title} {description} size="sm">
@@ -40,8 +37,6 @@
 						actionPath={path}
 						redirect={path}
 						{content}
-						{actor}
-						{context}
 					>
 						<EscapeHtml
 							id={`${slug}-${category}`}

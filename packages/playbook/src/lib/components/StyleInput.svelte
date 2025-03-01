@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type {IStyleInputGroup, IStyleFamily} from '$types'
 
-	import {onMount, getContext} from 'svelte'
+	import {getContext} from 'svelte'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
 
 	import StylesApi from '$lib/api/styles.svelte'
-	import PlaybookActor from '$lib/api/actor.svelte'
 
 	const {InputRange} = fatFuzzyUi.blocks
 	const {InputGroup} = fatFuzzyUi.drafts
@@ -33,9 +32,8 @@
 		onupdate,
 	}: Props = $props()
 
-	let context: StylesApi = getContext('playbookContext')
-	let actor: PlaybookActor = getContext('playbookActor')
-	let styles = $derived(actor.styles)
+	let stylesApi: StylesApi = getContext('playbookContext')
+	let styles = $derived.by(() => stylesApi.getStyleTree())
 
 	let apiSize = '2xs'
 	let apiColor = 'primary'
