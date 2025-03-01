@@ -19,7 +19,6 @@ export default {
 		],
 	},
 	RevealMenu: {
-		slug: 'ui',
 		items: [
 			{id: 'reveal-menu.button.idea', label: 'Idea', asset: 'idea'},
 			{id: 'reveal-menu.button.profile', label: 'Profile', asset: 'profile'},
@@ -52,7 +51,6 @@ export default {
 		items: links,
 	},
 	RevealNav: {
-		slug: 'ui',
 		place: 'top',
 		items: [
 			{
@@ -74,7 +72,6 @@ export default {
 		],
 	},
 	SignUp: {
-		slug: 'ui',
 		title: 'SignUp',
 		validationFunction: 'SignUpValidationFunction',
 		dataPrefix: 'sample',
