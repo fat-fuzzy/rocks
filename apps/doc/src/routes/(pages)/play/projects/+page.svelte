@@ -15,7 +15,9 @@
 	let sketches = $derived(page.data.projects)
 
 	// TODO: Use webgl & webglfundamentals tags to group sketches elsewhere
-	let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []))
+	let tags = $derived(
+		new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], [])),
+	)
 </script>
 
 <PageMain {title} {description} size="sm">
