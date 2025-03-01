@@ -42,9 +42,6 @@
 			"lg": {
 				"$value": "3px"
 			}
-		},
-		"width": {
-			"$value": "1px"
 		}
 	}
 }

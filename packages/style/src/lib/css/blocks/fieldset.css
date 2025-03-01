@@ -30,14 +30,17 @@ fieldset.check {
 	input {
 		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 		--color-accent: var(--accent-semantic, var(--accent));
+		aspect-ratio: 1/1;
+		max-block-size: var(--ui-size-lg);
+		inline-size: auto;
 		flex-grow: 0;
-		flex-basis: var(--font-size);
+		flex-basis: var(--ui-size-lg);
 		accent-color: var(--color-accent);
 	}
 
 	legend {
 		inline-size: auto;
-		margin-inline-start: var(--ui-size);
+		margin-inline-start: 0;
 	}
 
 	label > span {
@@ -52,12 +55,14 @@ fieldset.check {
 		--color-bg: var(--shade);
 		--color-ink: var(--ink);
 		display: flex;
+		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
 		padding: var(--outline-offset-xs);
 		gap: var(--ui-size);
 		margin: 0;
 		width: 100%;
 		color: var(--color-ink);
+		line-height: 1;
 	}
 
 	input:checked {

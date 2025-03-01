@@ -5,7 +5,7 @@
 	const {PageMain} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	let markdown = page.data.content
+	let markdown = $derived(page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
@@ -15,10 +15,11 @@
 	// let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []).filter((tag)=> tag !== 'webgl' && tag !== 'webglfundamentals'))
 </script>
 
-<PageMain {title} {description} size="lg">
-	{#snippet header()}
-		<h1 class="l:side hug maki:block:md">{title}</h1>
-	{/snippet}
-
-	<EscapeHtml id={slug} {html} size="lg" />
+<PageMain {title} {description} size="sm">
+	<article class="l:sidebar:sm">
+		<div class="l:main">
+			<EscapeHtml id={slug} {html} size="md" margin="auto" />
+		</div>
+		<div class="l:side"></div>
+	</article>
 </PageMain>

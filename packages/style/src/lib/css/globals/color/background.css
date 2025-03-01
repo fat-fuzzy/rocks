@@ -14,6 +14,11 @@
 	background-color: inherit;
 }
 
+.bg\:blur {
+	--shade: transparent;
+	backdrop-filter: blur(var(--size-base-md));
+}
+
 /* Set current color LIGHTNESS and CHROMA according to a 7 point scale */
 [class*='bg:'][class*=':light'],
 [class*='bg:'][class*=':dark'] [class*='bg:'][class*=':light'] {

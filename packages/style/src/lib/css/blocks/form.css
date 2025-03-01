@@ -2,14 +2,19 @@ form {
 	--hue: var(--color-theme-primary);
 	--lightness-accent: var(--color-lightness-400);
 	--chroma-accent: var(--color-chroma-400);
+	--lightness-contrast: var(--color-lightness-base);
+	--chroma-contrast: var(--color-chroma-base);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--color-accent: var(--accent);
 	color: var(--ink);
 	max-height: fit-content;
+	max-inline-size: 100%;
 }
 
 form * {
 	font-family: var(--font-family-ui);
+	max-inline-size: 100%;
 }
 
 label,

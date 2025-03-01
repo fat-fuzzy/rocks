@@ -40,4 +40,4 @@
 	/>
 </label>
 
-<Feedback {errors} {size} {variant} />
+<Feedback {id} {errors} {size} {variant} />

@@ -24,8 +24,6 @@ enum FormsEnum {
 	layouts = 'layouts',
 	recipes = 'recipes',
 	dsState = 'dsState',
-	dsStyles = 'dsStyles',
-	currentTabs = 'currentTabs',
 }
 
 // TODO: move to utils / clean
@@ -38,65 +36,35 @@ const blockNames = Object.keys(ui.blocks).sort(sortAsc)
 const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
 const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
 
-export const load = async ({locals, cookies, params, url}) => {
-	const dsState = uiStateService.getUiState({
-		cookies,
-		key: `${APP_PREFIX}-ui-state`,
-	})
+let sidebar = buildNav('ui')
+sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
+	if (item.slug === 'tokens') {
+		item.items = tokenNames.map((c) => ({
+			slug: c,
+			title: c,
+		}))
+	} else if (item.slug === 'blocks') {
+		item.items = blockNames.map((c) => ({
+			slug: c,
+			title: c,
+		}))
+	} else if (item.slug === 'layouts') {
+		item.items = layoutNames.map((c) => ({
+			slug: c,
+			title: c,
+		}))
+	} else if (item.slug === 'recipes') {
+		item.items = recipeNames.map((c) => ({
+			slug: c,
+			title: c,
+		}))
+	}
+	return item
+})
 
-	const dsStyles = uiStateService.getUiState({
-		cookies,
-		key: `${APP_PREFIX}-ui-styles`,
-	})
-
-	const appLocalsMap = revealForms.map((form) => ({
-		[form]: uiStateService.getUiState({
-			cookies,
-			key: `${APP_PREFIX}-reveal-${form}`,
-		}),
-	}))
-
-	const appLocals = appLocalsMap.reduce((acc, curr) => {
-		return {...acc, ...curr}
-	}, {})
-
-	// UI sidebar nav
-	locals.navTokens = appLocals[FormsEnum.tokens]
-	locals.navBlocks = appLocals[FormsEnum.blocks]
-	locals.navLayouts = appLocals[FormsEnum.layouts]
-	locals.navRecipes = appLocals[FormsEnum.recipes]
-
-	// UI state and styles
-	locals.dsState = dsState
-	locals.dsStyles = dsStyles
-
-	let sidebar = buildNav('ui')
+export const load = async ({locals, params, url}) => {
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.actionPath = url.pathname
-	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
-		if (item.slug === 'tokens') {
-			item.items = tokenNames.map((c) => ({
-				slug: c,
-				title: c,
-			}))
-		} else if (item.slug === 'blocks') {
-			item.items = blockNames.map((c) => ({
-				slug: c,
-				title: c,
-			}))
-		} else if (item.slug === 'layouts') {
-			item.items = layoutNames.map((c) => ({
-				slug: c,
-				title: c,
-			}))
-		} else if (item.slug === 'recipes') {
-			item.items = recipeNames.map((c) => ({
-				slug: c,
-				title: c,
-			}))
-		}
-		return item
-	})
 	let content = null
 
 	let component = params.component
@@ -137,12 +105,32 @@ export const load = async ({locals, cookies, params, url}) => {
 		}
 	}
 
+	let styles
+	let settings
+	let ui
+
+	// TODO: Figure out how to handle this better
+	if (locals.dsStyles) {
+		styles =
+			typeof locals.dsStyles === 'string'
+				? JSON.parse(locals.dsStyles)
+				: locals.dsStyles
+	}
+	if (locals.dsState) {
+		ui =
+			typeof locals.dsState === 'string'
+				? JSON.parse(locals.dsState)
+				: locals.dsState
+	}
+	if (locals.settings) {
+		settings = locals.settings
+	}
 	return {
 		sidebar,
 		markdowns,
 		content,
-		styles: locals.dsStyles,
-		context: locals.dsContext,
-		ui: locals.dsState,
+		styles,
+		settings,
+		ui,
 	}
 }

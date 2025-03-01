@@ -44,7 +44,7 @@
 		actionPath,
 		redirect,
 		size = 'md',
-		color = 'neutral',
+		color = 'primary',
 		layout = 'switcher',
 		category,
 		markdowns,
@@ -79,6 +79,11 @@
 				: `l:${layout}:${size}`,
 	)
 	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
+
+	let header = $derived({
+		title,
+		main: headerMain,
+	})
 </script>
 
 {#snippet categoryElements()}
@@ -99,7 +104,7 @@
 {/snippet}
 
 {#snippet comingSoon()}
-	<div class="card:lg text:center">
+	<div class="ravioli:lg text:center">
 		<p class={`font:xl`}>🐰</p>
 		<p class={`font:md`}>Coming soon!</p>
 	</div>
@@ -110,7 +115,8 @@
 {/snippet}
 
 {#snippet playbookContent()}
-	<div class="l:sidebar:md media end">
+	<h2 id="playbook">Playbook</h2>
+	<div class="l:sidebar:sm media end">
 		<aside class="l:side l:stack:md">
 			{#key category}
 				<PropsDemo
@@ -129,7 +135,7 @@
 {/snippet}
 
 {#snippet docContent()}
-	<div class="l:sidebar:md">
+	<div class="l:sidebar:sm">
 		<div id={`tabs-${category}-doc`} class="l:main">
 			{#if children}
 				{@render children()}
@@ -141,12 +147,13 @@
 	</div>
 {/snippet}
 
+{#snippet headerMain()}
+	<h1>{title}</h1>
+{/snippet}
+
 {#if isPage}
-	<PageTabs pageName="UI" {title} {description} size="lg" {path} {tabs}>
-		{#snippet header()}
-			<h1 id={category} class="maki:block:md">{title}</h1>
-		{/snippet}
-	</PageTabs>
+	<PageTabs pageName="UI" {title} {description} {path} {header} {tabs} size="sm"
+	></PageTabs>
 {:else}
 	<section class="l:text:lg snap:start">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
@@ -158,7 +165,9 @@
 			{@render comingSoon()}
 		{/if}
 		<details class={`l:stack:md ${size}`}>
-			<summary class={`surface:2:${color} card:2xs emoji:${category}`}>
+			<summary
+				class={`color:${color} variant:outline ravioli:2xs emoji:${category}`}
+			>
 				{category}
 			</summary>
 			<div class={layoutClass}>

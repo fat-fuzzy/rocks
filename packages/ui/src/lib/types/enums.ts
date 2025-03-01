@@ -71,6 +71,7 @@ export enum UiDimensions {
 export enum DismissEvent {
 	click = 'click',
 	outside = 'outside',
+	navigate = 'navigate',
 }
 
 export enum ButtonEvent {
@@ -135,4 +136,9 @@ export enum AriaLiveEnum {
 	polite = 'polite',
 	off = 'off',
 	assertive = 'assertive',
+}
+
+export enum AriaInvoke {
+	manual = 'manual',
+	auto = 'auto',
 }

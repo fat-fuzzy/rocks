@@ -62,14 +62,22 @@
 			{multiple}
 			{required}
 			{disabled}
+			class={inputClasses}
 		/>
 	</label>
 {/snippet}
 
 {#if hint}
-	<Fieldset id={`fieldset-${id}`} name={`fieldset-${name}`} {layout}>
+	<Fieldset
+		id={`fieldset-${id}`}
+		name={`fieldset-${name}`}
+		{layout}
+		{size}
+		{color}
+		{variant}
+	>
 		{@render input()}
-		<Feedback {status} context={UiTextContext.form} {size} {variant}>
+		<Feedback {id} {status} context={UiTextContext.form} {size} {variant}>
 			{hint}
 		</Feedback>
 	</Fieldset>

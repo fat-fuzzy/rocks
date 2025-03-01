@@ -99,7 +99,7 @@
 	/>
 	{#await Promise.resolve()}
 		<!-- This will display if no JS is present -->>
-		<div class={`l:frame:twin card:lg`}>
+		<div class={`l:frame:twin ravioli:lg`}>
 			<Button
 				id="update-geometry"
 				name="update-geometry"

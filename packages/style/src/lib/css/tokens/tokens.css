@@ -182,7 +182,7 @@
   --layout-sidebar-2xl: calc(var(--layout-sidebar-xl) * var(--size-ratio-sm));
   --layout-sidebar-2xs: calc(var(--layout-sidebar-xs) / var(--size-ratio-sm));
   --layout-sidebar-3xl: calc(var(--layout-sidebar-2xl) * var(--size-ratio-lg));
-  --layout-sidebar-base: 22ch;
+  --layout-sidebar-base: 24ch;
   --layout-sidebar-collapsed: 6em;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
@@ -209,7 +209,6 @@
   --outline-offset-md: 2px;
   --outline-offset-sm: 1.75px;
   --outline-offset-xs: 1.5px;
-  --outline-width: 1px;
   --scale-base-00: 1rem;
   --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
   --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-sm));

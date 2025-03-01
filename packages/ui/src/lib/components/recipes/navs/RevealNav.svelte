@@ -13,6 +13,7 @@
 		formaction,
 		actionPath,
 		redirect,
+		preload,
 		layout,
 		dismiss = DismissEvent.outside,
 		color,
@@ -74,6 +75,14 @@
 		{justify}
 		{onclick}
 	>
-		<LinkTree id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
+		<LinkTree
+			id={`${id}-${path}`}
+			{path}
+			{items}
+			{size}
+			{align}
+			depth={0}
+			{preload}
+		/>
 	</Reveal>
 </nav>

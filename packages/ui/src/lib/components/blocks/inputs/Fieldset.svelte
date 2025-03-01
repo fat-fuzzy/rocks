@@ -21,9 +21,10 @@
 		children,
 	}: FieldsetProps = $props()
 
-	let sizeClass = size ? `size:${size}` : ''
-	let typeClass = type || ''
-	let classes = $derived(styleHelper.getStyles({
+	let sizeClass = $derived(size ? `size:${size}` : '')
+	let typeClass = $derived(type || '')
+	let classes = $derived(
+		styleHelper.getStyles({
 			size,
 			align,
 			justify,
@@ -33,7 +34,8 @@
 			breakpoint,
 			threshold,
 			container,
-		}))
+		}),
+	)
 </script>
 
 <fieldset {name} data-key={id} class={`${classes} ${typeClass}`} {disabled}>

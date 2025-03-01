@@ -45,7 +45,7 @@ const container = {
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
 		{id: 'container.taco', label: 'taco', value: 'taco'},
 		{id: 'container.burrito', label: 'burrito', value: 'burrito'},
@@ -57,7 +57,7 @@ const size = {
 	input: 'range',
 	layout: 'stack',
 	size: 'xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
 		{id: 'size.xs', label: 'xs', value: 'xs'},
 		{id: 'size.sm', label: 'sm', value: 'sm'},
@@ -72,7 +72,7 @@ const layout = {
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
 		{id: 'layout.stack', label: 'stack', value: 'stack'},
 		{
@@ -88,7 +88,7 @@ const threshold = {
 	input: 'range',
 	layout: 'stack',
 	size: 'xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
 		{id: 'threshold.xs', label: 'xs', value: 'xs'},
 		{id: 'threshold.sm', label: 'sm', value: 'sm'},
@@ -103,7 +103,7 @@ const breakpoint = {
 	input: 'range',
 	layout: 'stack',
 	size: 'xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
 		{id: 'breakpoint.xs', label: 'xs', value: 'xs'},
 		{id: 'breakpoint.sm', label: 'sm', value: 'sm'},
@@ -298,7 +298,7 @@ const asset = {
 }
 
 const spell = {
-	initial: 'card',
+	initial: 'ravioli',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
@@ -311,7 +311,7 @@ const spell = {
 }
 
 const uno = {
-	initial: 'card',
+	initial: 'ravioli',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
@@ -366,7 +366,7 @@ const uno = {
 }
 
 const due = {
-	initial: 'card',
+	initial: 'ravioli',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
@@ -421,7 +421,7 @@ const due = {
 }
 
 const level = {
-	initial: 'card',
+	initial: 'ravioli',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
@@ -443,26 +443,26 @@ const level = {
 // }
 
 const content = {
-	initial: 'card',
+	initial: 'ravioli',
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'content.card', label: 'card', value: 'card'},
+		{id: 'content.ravioli', label: 'ravioli', value: 'ravioli'},
 		{id: 'content.form', label: 'form', value: 'form'},
 		{id: 'content.text', label: 'text', value: 'text'},
 	],
 }
 
 const side = {
-	initial: 'card',
+	initial: 'ravioli',
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'side.card', label: 'card', value: 'card'},
+		{id: 'side.ravioli', label: 'ravioli', value: 'ravioli'},
 		{id: 'side.form', label: 'form', value: 'form'},
 		{id: 'side.text', label: 'text', value: 'text'},
 	],
@@ -475,7 +475,7 @@ const main = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'main.card', label: 'card', value: 'card'},
+		{id: 'main.ravioli', label: 'ravioli', value: 'ravioli'},
 		{id: 'main.form', label: 'form', value: 'form'},
 		{id: 'main.text', label: 'text', value: 'text'},
 	],
@@ -509,7 +509,7 @@ const elementFamily = {
 const containerFamily = {
 	layout: 'switcher',
 	size: 'xs',
-	container: 'card',
+	container: 'ravioli',
 	variant: 'bare',
 	props: ['container', 'size'],
 }
@@ -517,7 +517,7 @@ const containerFamily = {
 const layoutFamily = {
 	layout: 'switcher',
 	size: 'xs',
-	container: 'card',
+	container: 'ravioli',
 	variant: 'bare',
 	props: ['size', 'layout', 'threshold', 'breakpoint'],
 }

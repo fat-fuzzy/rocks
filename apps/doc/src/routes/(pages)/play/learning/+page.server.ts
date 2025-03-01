@@ -4,8 +4,7 @@ import {actions as parentActions} from '../+page.server'
 
 const page = 'learning'
 
-export const load = async ({parent}) => {
-	let {sidebar} = await parent()
+export const load = async () => {
 	let content = await pages.fetchMarkdowns(page)
 
 	if (!content?.length) {
@@ -17,7 +16,6 @@ export const load = async ({parent}) => {
 		throw error(404, {message: 'Not found'})
 	}
 	const data = {
-		sidebar,
 		content,
 	}
 

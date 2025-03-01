@@ -141,7 +141,7 @@
 		{disabled}
 	/>
 	{#await Promise.resolve()}
-		<div class={`l:frame:twin card:lg`}>
+		<div class={`l:frame:twin ravioli:lg`}>
 			<Button
 				id="update-geometry"
 				name="update-geometry"

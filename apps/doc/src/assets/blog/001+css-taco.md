@@ -6,13 +6,14 @@ date_updated: '2025-01-26'
 slug: css-taco
 description: 'Improving CSS class semantics'
 author: 'patiboh'
+tags: ['css']
 ---
 
 ## The situation
 
 I was working on some markup. I had GitHub Copilot turned on, and got a suggestion that made me happy about my CSS class names. It reminded me of Nicole's blogpost: [Names should be cute, not descriptive](https://ntietz.com/blog/name-your-projects-cutesy-things/).
 
-<div class="ff:callout magic:dante maki:block card text:center font:xl"><a href="/media/css-taco">the code made me giggle</a></div>
+<div class="ff:callout magic:dante maki:block ravioli text:center font:xl"><a href="/media/css-taco">the code made me giggle</a></div>
 
 But there was also a glaring hallucination going on here: 🌮 != 🌯
 

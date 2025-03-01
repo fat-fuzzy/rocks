@@ -62,7 +62,7 @@
 						size: '2xs',
 						font: 'md',
 						color,
-						container: 'card',
+						container: 'ravioli',
 					})}
 					<li
 						role="presentation"

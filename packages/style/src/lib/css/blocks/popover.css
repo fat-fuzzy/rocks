@@ -1,0 +1,69 @@
+rf-popover,
+.anchor {
+	display: block;
+	inline-size: max-content;
+	block-size: max-content;
+}
+
+.anchor {
+	position: relative;
+}
+
+/* Use this selector to show / hide the popover, not to style the contents */
+[popover] {
+	border: 0;
+	block-size: 0;
+	inline-size: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+/* The [popover] element, in its open state */
+:popover-open {
+	position: fixed;
+	display: block;
+	inset: unset;
+	inline-size: fit-content;
+	block-size: fit-content;
+	overflow: auto;
+	border-radius: var(--border-radius-md);
+	pointer-events: auto;
+}
+
+@supports (anchor-name: -anchor-name) {
+	.anchor {
+		--anchor-name: --popover-anchor;
+		anchor-name: var(--anchor-name);
+	}
+
+	[popover] {
+		position-anchor: var(--anchor-name);
+	}
+
+	[class*='place:'][class*='bottom']:popover-open {
+		top: anchor(bottom);
+	}
+
+	[class*='place:'][class*='top']:popover-open {
+		bottom: anchor(top);
+	}
+
+	[class*='place:'][class*='left']:popover-open {
+		right: anchor(left);
+	}
+
+	[class*='place:'][class*='right']:popover-open {
+		left: anchor(right);
+	}
+
+	[class*='place:'][class*='-center']:popover-open {
+		right: anchor(center);
+	}
+
+	[class*='place:'][class*='center-']:popover-open {
+		top: anchor(center);
+	}
+}

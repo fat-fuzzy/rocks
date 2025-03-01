@@ -11,7 +11,7 @@ import './align.css' /* Use for aligning items inside containers and setting wid
 import './burrito.css' /* Use for side content centering (narrow columns with max-width set using sidebar width variables  (in ch units))*/
 import './maki.css' /* Use for side content centering without any max-width */
 import './frame.css' /* Use for displaying content with a given aspect ratio */
-import './card.css' /* Use for displaying self-contained content items */
+import './ravioli.css' /* Use for displaying self-contained content items */
 import './shapes.css' /* Use to style geometric shapes */
 import './overflow.css' /* Use to manage content overflow*/
 
@@ -20,7 +20,7 @@ import './overflow.css' /* Use to manage content overflow*/
 import './reveal.css' /* Use for displaying hidden content with a button action */
 import './reveal-sticky.css' /* Use for displaying hidden content in response to a button action */
 import './details.css' /* Use to style <details> and <summary> elements */
-import './dialog.css' /* Use to style the <dialog> element */
+import './position.css' /* Use for to position elements */
 
 /* == Composed layouts == */
 

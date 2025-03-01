@@ -7,7 +7,6 @@ import type {UiStateGetInput, UiStateSetInput} from '$lib/types/services.js'
  */
 function getUiState({cookies, key}: UiStateGetInput): any {
 	const serialized = cookies.get(key)
-
 	if (!serialized) {
 		return {}
 	}

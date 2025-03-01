@@ -22,7 +22,7 @@
 	layout="taco"
 	app={{settings: {brightness: 'day', contrast: 'blend'}}}
 >
-	<h1 class="l:flex card:md icon:svg:egg size:xl font:xl align:center">
+	<h1 class="l:flex ravioli:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style
 	</h1>
 </Header>

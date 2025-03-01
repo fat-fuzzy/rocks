@@ -2,6 +2,7 @@ import type {UiBlockProps} from '$types'
 import {UiStatus, UiTextContext} from '$types'
 
 export type FeedbackProps = UiBlockProps & {
+	id?: string
 	text?: string
 	asset?: string // feedback context: code, form, dialog, prose
 	context: string // feedback context: code, form, dialog, prose

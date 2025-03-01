@@ -7,7 +7,7 @@
 </script>
 
 {#snippet comingSoon()}
-	<div class="card:lg text:center">
+	<div class="ravioli:lg text:center">
 		<p class={`font:xl`}>🐰</p>
 		<p class={`font:md`}>Coming soon!</p>
 	</div>
@@ -28,7 +28,7 @@
 						{@const blocksProps = blocks[prop]}
 						{#each blocksProps as style}
 							<li
-								class="card:2xs font:sm surface:1:primary"
+								class="ravioli:2xs font:sm surface:1:primary"
 								data-testid={`prop-block-${style}`}
 							>
 								{style}
@@ -42,7 +42,7 @@
 						{@const layoutsProp = layouts[prop]}
 						{#each layoutsProp as style}
 							<li
-								class="card:2xs font:sm surface:1:primary"
+								class="ravioli:2xs font:sm surface:1:primary"
 								data-testid={`prop-layout-${style}`}
 							>
 								{style}
@@ -59,7 +59,7 @@
 			<ul class="tags l:switcher:2xs" data-testid="doc-child-props">
 				{#each meta.content_types as prop}
 					<li
-						class="card:2xs font:sm surface:1:highlight"
+						class="ravioli:2xs font:sm surface:1:highlight"
 						data-testid={`prop-child-${prop}`}
 					>
 						{prop}
@@ -74,7 +74,7 @@
 			<ul class="tags l:switcher:2xs" data-testid="doc-state-props">
 				{#each meta.props_state as prop}
 					<li
-						class="card:2xs font:sm surface:1:accent"
+						class="ravioli:2xs font:sm surface:1:accent"
 						data-testid={`prop-state-${prop}`}
 					>
 						{prop}

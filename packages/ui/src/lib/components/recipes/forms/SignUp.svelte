@@ -19,7 +19,7 @@
 		redirect,
 		layout,
 		container,
-		depth = 2, // <h*> element depth
+		level = 2, // <h*> element level
 		size,
 		color = UiColor.primary,
 		variant = UiVariant.fill,
@@ -86,7 +86,7 @@
 	})
 </script>
 
-<div class={`card:${size} ${background} l:${container}:${size}`}>
+<div class={`ravioli:${size} ${background} l:${container}:${size}`}>
 	{#if successPlaceholder}
 		<Feedback status={UiStatus.success} context={UiTextContext.form}>
 			Form submitted!
@@ -94,7 +94,7 @@
 	{:else}
 		<form
 			{method}
-			class={`l:stack:${size} card:${size}`}
+			class={`l:stack:${size} ravioli:${size}`}
 			action={action && actionPath ? `${actionPath}?/${action}` : undefined}
 			use:enhance
 			bind:this={boundForm}
@@ -102,7 +102,7 @@
 		>
 			{#key validator}
 				<header class={`l:stack:${size} text:${align} ${asset}`}>
-					<svelte:element this={`h${depth}`}>{title}</svelte:element>
+					<svelte:element this={`h${level}`}>{title}</svelte:element>
 					<p class={`font:${size}`}>{description}</p>
 				</header>
 				<Input

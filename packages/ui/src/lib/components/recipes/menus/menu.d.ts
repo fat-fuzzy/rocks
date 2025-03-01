@@ -23,12 +23,3 @@ export type RevealMenuProps = RevealLayoutProps & {
 	items: any[]
 	onclick?: (event: MouseEvent, payload: any) => void // TODO: type this
 }
-
-export type SettingsMenuProps = UiBlockProps &
-	Partial<FormProps> & {
-		id: string
-		path?: String
-		items: SwitchProps[]
-		children?: Snippet
-		onupdate?: (payload: FuzzyPayload) => void
-	}

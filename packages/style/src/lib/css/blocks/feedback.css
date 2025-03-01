@@ -19,7 +19,7 @@
 	--icon-size: var(--font-size-minus);
 	color: var(--color-ink);
 	font-size: var(--font-size);
-	padding: var(--ui-size);
+	padding: var(--ui-size-sm);
 	border: var(--border-width-xl) solid var(--color-accent);
 	background-color: var(--color-bg);
 
@@ -30,8 +30,12 @@
 	}
 
 	.message {
+		text-wrap: wrap;
+		text-wrap: pretty;
+		max-inline-size: 100%;
+		block-size: fit-content;
 		margin-inline-start: 0;
-		font-size: var(--font-size-minus);
+		font-size: var(--font-size);
 	}
 }
 

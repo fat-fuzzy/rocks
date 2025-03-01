@@ -38,6 +38,7 @@ const FormInputs = schemas.schemaInputs
 const SignUpSchema = schemas.schemaSignUp
 // const AjvValidator = schemas.schemaAjvValidator
 const UiStateSchema = schemas.schemaUiState
+const CookiePreferencesSchema = schemas.schemaCookiePreferences
 const ajv = new Ajv({
 	...AJV_OPTIONS,
 	schemas: [
@@ -45,6 +46,7 @@ const ajv = new Ajv({
 		// AjvValidator,
 		SignUpSchema,
 		UiStateSchema,
+		CookiePreferencesSchema,
 	],
 })
 
@@ -58,6 +60,7 @@ let moduleCode = standaloneCode(ajv, {
 	// FormValidationFunction: '#/definitions/AjvValidator',
 	SignUpValidationFunction: '#/definitions/SignUpSchema',
 	UiStateValidationFunction: '#/definitions/UiStateSchema',
+	CookiePreferencesValidationFunction: '#/definitions/CookiePreferencesSchema',
 })
 
 /**

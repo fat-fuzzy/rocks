@@ -1,21 +1,18 @@
 import ui from '@fat-fuzzy/ui'
 import type {StyleTree} from '$types'
-import {initStyles} from '$lib/api/styles.api'
+import StylesApi from '$lib/api/styles.svelte'
 
-const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, NUMBER_TO_SIZE} =
-	ui.constants
+const {DEFAULT_APP_SETTINGS, NUMBER_TO_SIZE} = ui.constants
 
 class DsStylesUpdate {
 	api
 	settings
-	contextReveal
 	/**
 	 * Initialize default Styles object, then update styles from the user's cookie, if any
 	 */
 	constructor(styles: StyleTree | null = null) {
-		this.api = initStyles()
+		this.api = new StylesApi()
 		this.settings = DEFAULT_APP_SETTINGS
-		this.contextReveal = DEFAULT_REVEAL_STATE
 		if (styles) {
 			this.api.applyStyles(styles)
 		}

@@ -120,7 +120,7 @@ function clear() {
 function stop() {
 	clear()
 	if (buffers) {
-		if (buffers.position) gl.delete(buffers.position)
+		if (buffers.position) gl.deleteBuffer(buffers.position)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)

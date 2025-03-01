@@ -10,30 +10,30 @@
 	margin-right: auto;
 }
 
-.l\:center\:2xs {
+.l\:taco\:2xs {
 	--size-inverse: var(--size-inverse-2xs);
 }
 
-.l\:center\:xs {
+.l\:taco\:xs {
 	--size-inverse: var(--size-inverse-xs);
 }
 
-.l\:center\:sm {
+.l\:taco\:sm {
 	--size-inverse: var(--size-inverse-sm);
 }
 
-.l\:center\:md {
+.l\:taco\:md {
 	--size-inverse: var(--size-inverse-md);
 }
 
-.l\:center\:lg {
+.l\:taco\:lg {
 	--size-inverse: var(--size-inverse-lg);
 }
 
-.l\:center\:xl {
+.l\:taco\:xl {
 	--size-inverse: var(--size-inverse-xl);
 }
 
-.l\:center\:2xl {
+.l\:taco\:2xl {
 	--size-inverse: var(--size-inverse-2xl);
 }

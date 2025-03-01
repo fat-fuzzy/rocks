@@ -9,8 +9,8 @@
 		content: any
 		path: string
 		formaction?: string
-		actionPath: string
-		redirect: string
+		actionPath?: string
+		redirect?: string
 		title: any
 	}
 	let {
@@ -45,5 +45,11 @@
 	{actionPath}
 	{redirect}
 >
-	<EscapeHtml id={content.meta.slug} html={content.html} size="md" />
+	<EscapeHtml
+		id={content.meta.slug}
+		html={content.html}
+		size="md"
+		margin="auto"
+		element="article"
+	/>
 </Element>

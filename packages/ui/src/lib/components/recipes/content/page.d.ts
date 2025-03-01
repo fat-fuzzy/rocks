@@ -1,11 +1,26 @@
 import type {Snippet} from 'svelte'
-import type {ScrollyItemProps} from '$types'
+import type {
+	ScrollyItemProps,
+	TabsProps,
+	UiSize,
+	SidebarLayoutProps,
+} from '$types'
 
 type ProseProps = {
 	title: string
 	slug: string
 	asset: string
 	children: Snippet
+}
+
+export type PageHeaderProps = {
+	title: string
+	layout: string
+	justify?: string
+	size?: UiSize
+	media?: boolean
+	main?: Snippet
+	side?: Snippet
 }
 
 export type PageProps = {
@@ -15,7 +30,7 @@ export type PageProps = {
 	description: string
 	pageName?: string
 	size?: string
-	header?: Snippet
+	header?: SidebarLayoutProps
 	layout?: string
 	justify?: string
 	children?: Snippet
@@ -28,4 +43,12 @@ export type PageScrollyProps = PageProps & {
 	items: ScrollyItemProps[]
 }
 
+export type RailsProps = UiLayoutProps & {
+	layout: string
+	lanes: number
+	items: {[key: string]: Snippet}
+}
+
 export type PageTabsProps = PageProps & TabsProps
+
+export type PageRailsProps = PageProps & RailsProps

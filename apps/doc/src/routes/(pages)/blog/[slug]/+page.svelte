@@ -26,31 +26,38 @@
 				}))
 			: undefined,
 	)
+
+	let header = $derived({
+		title,
+		main: headerMain,
+		side: headerSide,
+	})
 </script>
 
+{#snippet headerMain()}
+	<h1>{title}</h1>
+	{#if post.subtitle}
+		<h2 class="h4">{post.subtitle}</h2>
+	{/if}
+	{#if description}<p>{description}</p>{/if}
+{/snippet}
+
+{#snippet headerSide()}
+	<Aside
+		created={post.date_created}
+		updated={post.date_updated}
+		series={seriesData}
+		page={post.index}
+	/>
+{/snippet}
+
 {#key post.id}
-	<PageMain pageName="Blog" {title} {description}>
-		{#snippet header()}
-			<div class="l:main:50 maki:block:md l:stack:lg">
-				<h1>{title}</h1>
-				{#if post.subtitle}<p class="h4">
-						{post.index
-							? `Part ${post.index}: ${post.subtitle}`
-							: post.subtitle}
-					</p>{/if}
-				{#if description}<p>{description}</p>{/if}
+	<PageMain pageName="Blog" {title} {description} {header} size="sm">
+		<article class="l:sidebar:sm">
+			<div class="l:main maki:block:2xl">
+				<EscapeHtml id={slug} {html} size="md" margin="auto" />
 			</div>
-			<div class="l:side">
-				<Aside
-					created={post.date_created}
-					updated={post.date_updated}
-					series={seriesData}
-					page={post.index}
-				/>
-			</div>
-		{/snippet}
-		<article class="l:sidebar:md">
-			<EscapeHtml id={slug} {html} size="md" />
+			<div class="l:side"></div>
 		</article>
 	</PageMain>
 {/key}

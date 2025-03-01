@@ -12,12 +12,14 @@
 		type = 'radio', // checkbox, radio
 		items = [],
 		layout = 'stack',
+		justify = 'between',
 		container,
 		size,
 		color,
 		variant,
 		oninput,
-	}: FieldsetProps & InputProps = $props()
+		children,
+	}: FieldsetProps & Partial<InputProps> = $props()
 
 	// TODO: fix type
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
@@ -56,9 +58,13 @@
 			{checked}
 			color={input.color || color}
 			{...input}
+			{justify}
 			name={id}
 			id={`${name}.${input.value}`}
-			oninput={(event) => handleInput(event, name)}
+			oninput={(event: Event) => handleInput(event, name)}
 		/>
 	{/each}
+	{#if children}
+		{@render children()}
+	{/if}
 </Fieldset>

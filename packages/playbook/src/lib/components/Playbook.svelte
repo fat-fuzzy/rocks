@@ -1,33 +1,27 @@
 <script lang="ts">
-	import {onMount, getContext, setContext, type Snippet} from 'svelte'
+	import {getContext, setContext, type Snippet} from 'svelte'
 	import {page} from '$app/state'
-	import fatFuzzyUi from '@fat-fuzzy/ui'
-	import playbookStore from '$lib/api/store.svelte'
-	import * as api from '$lib/api/styles.api'
+	import playbookActor from '$lib/api/actor.svelte'
+	import StylesApi from '$lib/api/styles.svelte'
 
 	type Props = {
 		app: {settings: {[key: string]: string}}
-		nav: any
 		children: Snippet
 	}
 	let {children}: Props = $props()
+	let playbookContext: StylesApi = getContext('playbookContext')
+	setContext('playbookActor', playbookActor)
 
-	let playbookContext: api.StylesApi = getContext('playbookContext')
-	setContext('playbookStore', playbookStore)
-
-	let {styles, context, ui} = $state(page.data)
-	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = fatFuzzyUi.constants
-
-	playbookStore.reveal = context
-	playbookStore.navReveal = ui?.navReveal || DEFAULT_NAV_REVEAL_STATE
-	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
-	playbookStore.sidebarReveal = ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE
-
-	onMount(() => {
+	$effect(() => {
+		let {styles, ui} = page.data
 		if (styles) {
 			playbookContext.applyStyles(styles)
 		}
-		playbookStore.styles = playbookContext.getStyleTree()
+		if (ui) {
+			playbookActor.context = ui
+		}
+
+		playbookActor.styles = playbookContext.getStyleTree()
 	})
 </script>
 

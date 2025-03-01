@@ -2,6 +2,11 @@
 	padding-block: calc(var(--ui-size) + var(--border-width-xl));
 }
 
+[class*='fixed:top']:has([role='tablist']) {
+	--inset-size-top: calc(var(--ui-header-height) - var(--ui-size-sm));
+	--inset-size-right: 0;
+}
+
 [role='tablist'],
 [role='tab'] {
 	inline-size: fit-content;
@@ -24,12 +29,33 @@ nav li a[role='tab'] {
 	background-color: var(--shade);
 }
 
+/**
+ * Tabs: use with caution
+ */
 [role='tabpanel'] {
 	display: none;
+}
+
+[role='tabpanel'] {
+	margin-block-end: calc(2 * var(--size-base-2xl));
+}
+
+.nojs [role='tabpanel'] {
+	display: block;
+}
+
+[role='tabpanel']:first-of-type:target {
+	scroll-margin-block: 18em; /* TODO: fix magic number */
 }
 
 [role='tabpanel'][tabindex='0'],
 [role='tabpanel']:target {
 	display: block;
-	scroll-margin-block: 10em; /* TODO: fix magic number */
+	scroll-margin-block: 4.5em; /* TODO: fix magic number */
+}
+
+@media screen and (min-width: 975px) {
+	[role='tabpanel']:first-of-type:target {
+		scroll-margin-block: 15em; /* TODO: fix magic number */
+	}
 }

@@ -21,7 +21,7 @@
 >
 	{#snippet header()}
 		<div class="w:full">
-			<h1 class="card:md text:center">Fat Fuzzy Rocks</h1>
+			<h1 class="ravioli:md text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
 </PageScrolly>

@@ -1,4 +1,4 @@
-import type {RequestEvent} from '@sveltejs/kit'
+import type {RequestEvent, Cookies} from '@sveltejs/kit'
 
 export type UiActionGetInput = {
 	cookies: Cookies

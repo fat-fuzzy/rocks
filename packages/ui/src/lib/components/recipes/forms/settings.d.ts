@@ -9,10 +9,14 @@ export type SettingsItems = {
 
 export type SettingsProps = UiBlockProps &
 	Partial<FormProps> & {
-		breakpoint: string
 		id: string
 		path?: String
-		items: SettingsItems
+		items: SwitchProps[]
 		children?: Snippet
 		onupdate?: (payload: FuzzyPayload) => void
+	}
+
+export type RevealSettingsProps = SettingsProps &
+	UiLayoutProps & {
+		breakpoint: string
 	}

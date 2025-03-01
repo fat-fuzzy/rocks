@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type {Meta, StyleTree} from '$types'
-	import type {StylesApi} from '$lib/api/styles.api'
+	import StylesApi from '$lib/api/styles.svelte'
 
 	import {onMount, getContext} from 'svelte'
 
-	import PlaybookStore from '$lib/api/store.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import StyleInput from './StyleInput.svelte'
 
 	type Props = {
@@ -15,9 +15,9 @@
 
 	let {category = 'app', formaction, meta}: Props = $props()
 
-	const playbookContext: StylesApi = getContext('playbookContext')
-	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
-	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
+	let context: StylesApi = getContext('playbookContext')
+	let actor: PlaybookActor = getContext('playbookActor')
+	let formOptions = $derived(context.getFormOptions(category, meta))
 
 	function updateStyles(payload: {
 		name: string
@@ -33,12 +33,12 @@
 			}
 			updatedStyles[category].families[family] = styleValue
 			if (style === 'brightness' || style === 'contrast') {
-				playbookStore.styles['app'].families[family] = styleValue
-				playbookStore.app = {...playbookStore.app, [style]: value}
+				actor.styles['app'].families[family] = styleValue
+				actor.app = {...actor.app, [style]: value}
 			}
 		})
-		playbookContext.applyStyles(updatedStyles)
-		playbookStore.styles = playbookContext.getStyleTree() // This should update the client if JS is available
+		context.applyStyles(updatedStyles)
+		actor.styles = context.getStyleTree() // This should update the client if JS is available
 	}
 
 	/**
@@ -55,7 +55,7 @@
 
 	onMount(() => {
 		// Set the initial styles
-		playbookContext.applyStyles(playbookStore.styles)
+		context.applyStyles(actor.styles)
 	})
 </script>
 
