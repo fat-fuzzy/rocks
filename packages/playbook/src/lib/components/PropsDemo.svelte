@@ -28,17 +28,11 @@
 	</div>
 {/snippet}
 
-<details class="l:stack:2xs size:2xs">
-	<summary class={`variant:fill surface:2:neutral`}> Settings</summary>
-	<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
-</details>
-<details open class="l:stack:2xs size:2xs">
-	<summary class={`variant:fill surface:2:${color}`}> Style Props</summary>
-	{#if categories && categories.length > 0 && meta.props_style}
-		<div class="ui:menu">
-			<Api {categories} {path} {actionPath} {redirect} {meta} />
-		</div>
-	{:else}
-		{@render comingSoon()}
-	{/if}
-</details>
+<Api categories={['app']} {meta} {path} {actionPath} {redirect} />
+{#if categories && categories.length > 0 && meta.props_style}
+	<div class="ui:menu">
+		<Api {categories} {path} {actionPath} {redirect} {meta} />
+	</div>
+{:else}
+	{@render comingSoon()}
+{/if}
