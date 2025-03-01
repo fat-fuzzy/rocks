@@ -15,8 +15,8 @@
 		constants
 
 	let {
-		id = 'ui-reveal',
-		name = 'ui-reveal',
+		id = 'Reveal',
+		name = 'Reveal',
 		title = 'Reveal',
 		method = 'POST', // TODO: change to GET with params
 		auto = false,
@@ -149,6 +149,7 @@
 
 {#snippet revealForm()}
 	<form
+		{id}
 		{name}
 		{method}
 		class={formClasses}

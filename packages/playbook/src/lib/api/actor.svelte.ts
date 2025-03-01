@@ -5,39 +5,30 @@ import tokenFixtures from '$lib/fixtures/js/tokens'
 import layoutsFixtures from '$lib/fixtures/js/layouts'
 import recipesFixtures from '$lib/fixtures/js/recipes'
 
-const {
-	DEFAULT_REVEAL_STATE,
-	DEFAULT_NAV_REVEAL_STATE,
-	DEFAULT_APP_SETTINGS,
-	DEFAULT_STYLES,
-} = ui.constants
+const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, DEFAULT_STYLES} =
+	ui.constants
 
+const DEFAULT_STATE: any = {
+	Reveal: DEFAULT_REVEAL_STATE,
+	RevealMenu: DEFAULT_REVEAL_STATE,
+	RevealNav: DEFAULT_REVEAL_STATE,
+	HeaderRevealNav: DEFAULT_REVEAL_STATE,
+	// graphics: graphicsFixtures,
+	HeaderRevealSettings: DEFAULT_REVEAL_STATE,
+}
+
+const COMPONENT_FIXTURES: any = $state({
+	tokens: tokenFixtures,
+	blocks: buttonFixtures,
+	layouts: layoutsFixtures,
+	// graphics: graphicsFixtures,
+	recipes: recipesFixtures,
+})
 export class PlaybookActor {
 	api = $state()
 	styles = $state<StyleTree>(DEFAULT_STYLES)
 	app = $state({settings: DEFAULT_APP_SETTINGS})
-	Reveal = $state(DEFAULT_REVEAL_STATE)
-	RevealMenu = $state(DEFAULT_REVEAL_STATE)
-	RevealNav = $state(DEFAULT_REVEAL_STATE)
-	HeaderRevealNav = $state(DEFAULT_REVEAL_STATE)
-	HeaderRevealSettings = $state(DEFAULT_NAV_REVEAL_STATE)
-
-	COMPONENT_FIXTURES: any = $state({
-		tokens: tokenFixtures,
-		blocks: buttonFixtures,
-		layouts: layoutsFixtures,
-		// graphics: graphicsFixtures,
-		recipes: recipesFixtures,
-	})
-
-	COMPONENT_STATE: any = $state({
-		Reveal: this.Reveal,
-		RevealMenu: this.RevealMenu,
-		RevealNav: this.RevealNav,
-		HeaderRevealNav: this.HeaderRevealNav,
-		// graphics: graphicsFixtures,
-		HeaderRevealSettings: this.HeaderRevealSettings,
-	})
+	context = $state(DEFAULT_STATE)
 
 	constructor() {}
 
@@ -48,29 +39,24 @@ export class PlaybookActor {
 		category: string
 		component: string
 	}) {
-		if (this.COMPONENT_FIXTURES[category]) {
-			return this.COMPONENT_FIXTURES[category][component]
+		if (COMPONENT_FIXTURES[category]) {
+			return COMPONENT_FIXTURES[category][component]
 		}
 	}
 
 	getLayoutFixtures(component: string) {
 		return (
-			this.COMPONENT_FIXTURES.layouts[component] ??
-			this.COMPONENT_FIXTURES.layouts.content
+			COMPONENT_FIXTURES.layouts[component] ??
+			COMPONENT_FIXTURES.layouts.content
 		)
 	}
 
+	setRevealState(component: string, reveal: any) {
+		this.context[component] = reveal.reveal
+	}
+
 	getRevealState(component: string) {
-		switch (component) {
-			case 'Reveal':
-			case 'RevealMenu':
-			case 'RevealNav':
-				return this.COMPONENT_STATE[component]
-			case 'Header-nav-reveal':
-				return this.COMPONENT_STATE['HeaderRevealNav']
-			case 'Header-settings-reveal':
-				return this.COMPONENT_STATE['HeaderRevealSettings']
-		}
+		return this.context[component]
 	}
 }
 

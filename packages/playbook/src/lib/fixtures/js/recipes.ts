@@ -20,8 +20,6 @@ export default {
 	},
 	RevealMenu: {
 		slug: 'ui',
-		title: 'RevealMenu',
-		actionPath: '/',
 		items: [
 			{id: 'reveal-menu.button.idea', label: 'Idea', asset: 'idea'},
 			{id: 'reveal-menu.button.profile', label: 'Profile', asset: 'profile'},
@@ -55,9 +53,6 @@ export default {
 	},
 	RevealNav: {
 		slug: 'ui',
-		path: '/ui',
-		title: 'RevealNav',
-		actionPath: '/',
 		place: 'top',
 		items: [
 			{

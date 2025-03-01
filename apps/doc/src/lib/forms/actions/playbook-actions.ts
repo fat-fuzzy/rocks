@@ -30,12 +30,13 @@ export const playbookActions = {
 		uiStateService.setUiState({
 			cookies,
 			key,
-			value: toUpdate.toString(), // TODO : understand why stringify(stringify(object)) passes size constraints while stringify(object) fails
+			value: toUpdate.state, // TODO : understand why stringify(stringify(object)) passes size constraints while stringify(object) fails
 			options: {
 				host: 'localhost', // TODO: fix domain
 				path: '/',
 			},
 		})
+
 		return {success: true}
 	},
 

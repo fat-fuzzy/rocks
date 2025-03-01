@@ -34,6 +34,6 @@
 	})
 </script>
 
-<Playbook app={playbookSettings.app}>
+<Playbook app={{settings}}>
 	{@render children()}
 </Playbook>
