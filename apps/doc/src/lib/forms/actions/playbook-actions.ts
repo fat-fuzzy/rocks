@@ -15,10 +15,12 @@ export const playbookActions = {
 		}
 		const key = `${APP_PREFIX}-ui-state`
 
-		const currentState = uiStateService.getUiState({
+		const cookieValue = uiStateService.getUiState({
 			cookies,
 			key,
 		})
+		let currentState =
+			typeof cookieValue === 'string' ? JSON.parse(cookieValue) : cookieValue
 		const toUpdate = new DsStateUpdate(currentState)
 
 		if (!toUpdate.enter(data)) {
@@ -40,10 +42,12 @@ export const playbookActions = {
 	updateStyles: async ({request, cookies}) => {
 		const data = await request.formData()
 		const key = `${APP_PREFIX}-ui-styles`
-		const currentStyles = uiStateService.getUiState({
+		const cookieValue = uiStateService.getUiState({
 			cookies,
 			key,
 		})
+		let currentStyles =
+			typeof cookieValue === 'string' ? JSON.parse(cookieValue) : cookieValue
 		const styles = new DsStylesUpdate(currentStyles)
 		if (!styles.enter(data)) {
 			fail(400, {stylesError: true})
