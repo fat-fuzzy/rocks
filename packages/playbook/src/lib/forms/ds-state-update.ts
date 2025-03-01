@@ -1,6 +1,7 @@
 import ui from '@fat-fuzzy/ui'
 import type {Settings} from '$types'
 import type {Cookies} from '@sveltejs/kit'
+import constants from '$lib/types/constants'
 
 export type UiActionGetInput = {
 	cookies: Cookies
@@ -30,7 +31,7 @@ export type DsState = {
 	[key: string]: Settings
 }
 
-const {DEFAULT_DS_STATE, APP_PREFIX} = ui.constants
+const {DEFAULT_DS_STATE} = constants
 const {UiReveal} = ui.forms
 
 class DsStateUpdate {
