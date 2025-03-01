@@ -88,7 +88,7 @@ async function testAsset(page: Page, title: string) {
 	await expect(
 		page.getByTestId('blocks.element.asset.default'),
 	).toHaveAttribute('aria-pressed', 'false')
-	await expect(page.getByTestId(title)).not.toHaveClass(/emoji:/)
+	await expect(page.getByTestId(title)).toHaveClass(/emoji:default/)
 }
 
 async function testShape(page: Page, title: string) {
