@@ -21,17 +21,10 @@
 </script>
 
 <PageMain
-	title={String(title)}
+	title={`Fat Fuzzy ${title}`}
 	{description}
-	size="xl"
 	pageName={String(page.status)}
-	justify="center"
 >
-	{#snippet header()}
-		<div class="surface:0:neutral w:full">
-			<h1 class="ravioli:sm text:center">Fat Fuzzy {title}</h1>
-		</div>
-	{/snippet}
 	<div class="l:taco:2xs ravioli:2xl maki:block:xl">
 		<Feedback {asset} {status} context="prose" size="lg" container="taco">
 			<div class="l:stack:md">
