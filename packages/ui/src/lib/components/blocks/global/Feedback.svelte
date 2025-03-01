@@ -27,14 +27,15 @@
 	let ariaLive: AriaLive = $derived(
 		context === 'form' ? AriaLiveEnum.polite : undefined,
 	)
+	let testId = $derived(id === 'Feedback' ? id : `Feedback-${id}`)
 </script>
 
 {#if context === 'code'}
 	<pre
 		class={feedbackClasses}
-		data-testid={id}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
+		data-testid={testId}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
-	<div class={feedbackClasses} data-testid={id} aria-live={ariaLive}>
+	<div class={feedbackClasses} data-testid={testId} aria-live={ariaLive}>
 		{#if context === 'prose' && status !== 'default'}
 			<p class="status">{status}</p>
 		{/if}
