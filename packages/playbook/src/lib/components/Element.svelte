@@ -4,7 +4,7 @@
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import StylesApi from '$lib/api/styles.svelte'
-	import PlaybookActor from '$lib/api/actor.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import {getPlaybookTab, getDocTab} from '$lib/props'
 
 	import Token from './Token.svelte'
@@ -53,13 +53,13 @@
 		recipes: Recipe,
 	}
 
-	const stylesApi: StylesApi = getContext('playbookContext')
-	const actor: PlaybookActor = getContext('playbookActor')
-	let styles = $derived(actor.styles)
+	let stylesApi: StylesApi = getContext('playbookContext')
+	let playbookActor: PlaybookActor = getContext('playbookActor')
+	let styles = $derived(stylesApi.getStyleTree())
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
-	let {settings} = $derived(actor.app)
-	let reveal = $derived(actor.getRevealState(title))
+	let {settings} = $derived(playbookActor.app)
+	let reveal = $derived(playbookActor.getRevealState(title))
 
 	//== App settings (user controlled)
 	let brightness = $derived(settings.brightness || '')
@@ -101,7 +101,7 @@
 
 	let GenericElement = $derived(ApiElement[category])
 	let fixtures = $derived(
-		actor.getElementFixtures({category, component: title}),
+		playbookActor.getElementFixtures({category, component: title}),
 	)
 	let statusFixures = $derived(
 		fixtures?.status ? fixtures.status.find((p) => p.value === status) : {},

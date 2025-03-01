@@ -13,6 +13,7 @@ import PropsDoc from '$lib/components/PropsDoc.svelte'
 import PropsDemo from '$lib/components/PropsDemo.svelte'
 import PlaybookCollection from '$lib/components/PlaybookCollection.svelte'
 import PlaybookElement from '$lib/components/PlaybookElement.svelte'
+import Playbook from '$lib/components/Playbook.svelte'
 
 import StylesApi from '$lib/api/styles.svelte'
 import * as props from '$lib/props'
@@ -27,7 +28,7 @@ import DsStateUpdate from '$lib/forms/ds-state-update'
 /**
  * Stores
  */
-import PlaybookActor from '$lib/api/actor.svelte'
+import {PlaybookActor} from '$lib/api/actor.svelte'
 
 /**
  * Tests Api components
@@ -49,12 +50,13 @@ const playbook = {
 	Collection,
 	Token,
 	Element,
-	PlaybookActor,
 	PropsDoc,
 	PropsDemo,
 	PlaybookCollection,
 	PlaybookElement,
+	Playbook,
 	StylesApi,
+	PlaybookActor,
 	props,
 	actions,
 }

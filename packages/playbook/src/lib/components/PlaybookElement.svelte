@@ -1,9 +1,6 @@
 <script lang="ts">
-	import {setContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import Element from '$lib/components/Element.svelte'
-	import StylesApi from '$lib/api/styles.svelte'
-	import PlaybookActor from '$lib/api/actor.svelte'
 
 	const {EscapeHtml} = ui.headless
 
@@ -15,8 +12,6 @@
 		actionPath?: string
 		redirect?: string
 		title: any
-		actor: PlaybookActor
-		context: StylesApi
 	}
 	let {
 		category,
@@ -26,12 +21,7 @@
 		actionPath,
 		redirect,
 		title,
-		actor,
-		context,
 	}: Props = $props()
-
-	setContext('playbookActor', actor)
-	setContext('playbookContext', context)
 
 	let categoryItems: {[name: string]: any} = {
 		tokens: ui.tokens,

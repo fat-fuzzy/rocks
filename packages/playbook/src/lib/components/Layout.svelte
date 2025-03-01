@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import PlaybookActor from '$lib/api/actor.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 
 	type Props = {
 		title: string

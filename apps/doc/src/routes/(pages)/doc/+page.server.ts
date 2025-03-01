@@ -3,7 +3,7 @@ import {error} from '@sveltejs/kit'
 import images from '$data/images'
 import pages from '$data/pages'
 import uiActions from '$lib/forms/actions/ui-actions'
-import {commonActions} from '$lib/forms/services/page-actions'
+import {commonActions} from '$lib/forms/actions/page-actions'
 
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
