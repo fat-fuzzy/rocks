@@ -67,16 +67,25 @@
 			{@const families = Object.keys(categoryOptions.families)}
 			{#each families as familyName}
 				{@const family = categoryOptions.families[familyName]}
-				{#each family.items as styleInputGroup}
-					<StyleInput
-						{family}
-						styleInput={styleInputGroup}
+				<details class="l:stack:2xs">
+					<summary
+						class="font:sm font:heading font:semi size:2xs variant:bare color:neutral"
+					>
 						{familyName}
-						categoryName={categoryOptions.name}
-						{formaction}
-						onupdate={updateStyles}
-					/>
-				{/each}
+					</summary>
+					<div class="l:switcher:2xs">
+						{#each family.items as styleInputGroup}
+							<StyleInput
+								{family}
+								styleInput={styleInputGroup}
+								{familyName}
+								categoryName={categoryOptions.name}
+								{formaction}
+								onupdate={updateStyles}
+							/>
+						{/each}
+					</div>
+				</details>
 			{/each}
 		{/if}
 	{/each}

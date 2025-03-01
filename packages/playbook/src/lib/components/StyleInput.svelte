@@ -159,7 +159,6 @@
 {#if input === 'toggle'}
 	<Fieldset
 		id={family.name}
-		legend={family.name}
 		layout={family.layout}
 		container={family.container}
 		size={family.size}
@@ -205,7 +204,6 @@
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
 		<Fieldset
 			id={family.name}
-			legend={family.name}
 			layout={family.layout}
 			container={family.container}
 			size={family.size ?? apiSize}
