@@ -37,10 +37,10 @@ const layouts: LayoutStyles = {
 	},
 }
 class StylesApi {
-	app: AppStyles | undefined = $state()
-	tokens: TokenStyles | undefined = $state()
-	blocks: BlockStyles | undefined = $state()
-	layouts: LayoutStyles | undefined = $state()
+	app: AppStyles
+	tokens: TokenStyles
+	blocks: BlockStyles
+	layouts: LayoutStyles
 
 	constructor() {
 		this.tokens = tokens

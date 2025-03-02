@@ -26,7 +26,6 @@
 	}: Props = $props()
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
-
 	let styles = $derived(playbookActor.styles)
 	let reveal = $derived(playbookActor.context[title]?.reveal || '')
 

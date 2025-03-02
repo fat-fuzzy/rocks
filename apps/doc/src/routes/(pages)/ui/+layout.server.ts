@@ -3,6 +3,8 @@ import ui from '@fat-fuzzy/ui'
 import assets from '$data/ui'
 import pages from '$data/pages'
 import {buildNav} from '$data/nav'
+import uiStateService from '$lib/forms/services/ui-state'
+const {APP_PREFIX} = ui.constants
 
 const page = 'ui'
 let markdowns = assets.markdowns
@@ -43,7 +45,7 @@ sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 	return item
 })
 
-export const load = async ({locals, params, url}) => {
+export const load = async ({locals, params, url, cookies}) => {
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.actionPath = url.pathname
 	let content = null
@@ -86,25 +88,18 @@ export const load = async ({locals, params, url}) => {
 		}
 	}
 
-	let styles
 	let settings
+	let styles
 	let ui
 
-	// TODO: Figure out how to handle this better
-	if (locals.dsStyles) {
-		styles =
-			typeof locals.dsStyles === 'string'
-				? JSON.parse(locals.dsStyles)
-				: locals.dsStyles
-	}
-	if (locals.dsState) {
-		ui =
-			typeof locals.dsState === 'string'
-				? JSON.parse(locals.dsState)
-				: locals.dsState
-	}
 	if (locals.settings) {
 		settings = locals.settings
+	}
+	if (locals.dsStyles) {
+		styles = locals.dsStyles
+	}
+	if (locals.dsState) {
+		ui = locals.dsState
 	}
 
 	return {
