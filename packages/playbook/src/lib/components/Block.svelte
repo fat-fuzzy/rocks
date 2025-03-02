@@ -12,9 +12,8 @@
 
 	let {title, name = title, SpecifiedElement, props}: Props = $props()
 
-	const actor: PlaybookActor = getContext('playbookActor')
-
-	let styles = $derived(actor.styles)
+	let playbookActor: PlaybookActor = getContext('playbookActor')
+	let styles = $derived(playbookActor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 </script>
 

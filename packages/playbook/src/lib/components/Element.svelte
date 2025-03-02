@@ -3,7 +3,6 @@
 	import type {Meta} from '$types'
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-	import StylesApi from '$lib/api/styles.svelte'
 	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import {getPlaybookTab, getDocTab} from '$lib/props'
 
@@ -52,10 +51,8 @@
 		layouts: Layout,
 		recipes: Recipe,
 	}
-	let stylesApi: StylesApi = getContext('playbookContext')
 	let playbookActor: PlaybookActor = getContext('playbookActor')
-	let playbookSettings: PlaybookActor = getContext('playbookSettings')
-	let styles = $derived(stylesApi.getStyleTree())
+	let styles = $derived(playbookActor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 	let {settings} = $derived(playbookActor.app)
@@ -130,18 +127,15 @@
 </script>
 
 {#snippet renderElement()}
-	<div class={containerClasses}>
+	<div class={`ravioli:lg ${containerClasses}`}>
 		<GenericElement
 			{isPage}
 			{path}
 			{title}
 			{SpecifiedElement}
-			{stylesApi}
 			props={currentProps}
 			{formaction}
 			{actionPath}
-			{redirect}
-			{...settings}
 			id={title}
 		/>
 	</div>
@@ -192,13 +186,13 @@
 {:else}
 	<article
 		id={`ravioli-${title}`}
-		class={`ravioli variant:bare l:stack:md w:auto ui:${title.toLowerCase()} ${settingsClasses}`}
+		class={`variant:bare w:auto ui:${title.toLowerCase()} ${settingsClasses}`}
 	>
 		<a
 			href={`${link}/${title}`}
 			class="title ravioli:2xs l:flex emoji:link surface:1:primary align:center"
 		>
-			<svelte:element this={`h${String(depth)}`} class="link font:md">
+			<svelte:element this={`h${String(depth)}`} class="link font:xs">
 				{title}
 			</svelte:element>
 		</a>

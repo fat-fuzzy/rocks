@@ -15,7 +15,11 @@
 
 	let {category = 'app', formaction, meta}: Props = $props()
 
+	// This is the context that provides form options and updates the StyleTree every time the Styles API is updated
 	let context: StylesApi = getContext('playbookContext')
+
+	// This is the global actor that provides state updates to the Playbook Elements:
+	// it is updated every time the StyleTree is updated (see function below)
 	let actor: PlaybookActor = getContext('playbookActor')
 	let formOptions = $derived(context.getFormOptions(category, meta))
 
@@ -25,6 +29,7 @@
 	}) {
 		let updatedStyles: StyleTree = {}
 		payload.items.forEach(({id, value}) => {
+			if (!id) return
 			const [category, family, style, name] = id.split('.')
 			const styleValue = {[style]: value}
 
