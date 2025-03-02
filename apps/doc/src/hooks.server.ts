@@ -58,11 +58,13 @@ export const handle = (async ({event, resolve}) => {
 		}),
 	}))
 
-	const appLocals = await (
-		await Promise.all(appLocalsPromises)
-	).reduce((acc, curr) => {
-		return {...acc, ...curr}
-	}, {})
+	const appLocals = (await Promise.all(appLocalsPromises)).reduce(
+		(acc, curr) => {
+			return {...acc, ...curr}
+		},
+		{},
+	)
+
 	event.locals.settings = appSettings
 	event.locals.dsState = dsState
 	event.locals.dsStyles = dsStyles

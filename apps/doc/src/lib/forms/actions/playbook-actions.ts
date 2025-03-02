@@ -9,7 +9,7 @@ const {SignUpUser} = ui.forms
 const {APP_PREFIX} = ui.constants
 
 export const playbookActions = {
-	updateState: async ({request, cookies}) => {
+	updateState: async ({request, cookies, locals}) => {
 		const data = await request.formData()
 		if (data.has('reset')) {
 		}
@@ -19,9 +19,7 @@ export const playbookActions = {
 			cookies,
 			key,
 		})
-		let currentState =
-			typeof cookieValue === 'string' ? JSON.parse(cookieValue) : cookieValue
-		const toUpdate = new DsStateUpdate(currentState)
+		const toUpdate = new DsStateUpdate(cookieValue)
 
 		if (!toUpdate.enter(data)) {
 			fail(400, {stylesError: true})
@@ -30,42 +28,41 @@ export const playbookActions = {
 		uiStateService.setUiState({
 			cookies,
 			key,
-			value: toUpdate.state, // TODO : understand why stringify(stringify(object)) passes size constraints while stringify(object) fails
+			value: toUpdate.state,
 			options: {
 				host: 'localhost', // TODO: fix domain
 				path: '/',
 			},
 		})
-
+		locals.dsState = toUpdate.state
 		return {success: true}
 	},
 
-	updateStyles: async ({request, cookies}) => {
+	updateStyles: async ({request, cookies, locals}) => {
 		const data = await request.formData()
 		const key = `${APP_PREFIX}-ui-styles`
 		const cookieValue = uiStateService.getUiState({
 			cookies,
 			key,
 		})
-		let currentStyles =
-			typeof cookieValue === 'string' ? JSON.parse(cookieValue) : cookieValue
-		const styles = new DsStylesUpdate(currentStyles)
+		const styles = new DsStylesUpdate(cookieValue)
 		if (!styles.enter(data)) {
 			fail(400, {stylesError: true})
 		}
 		uiStateService.setUiState({
 			cookies,
 			key,
-			value: styles.toString(), // TODO : understand why stringify(stringify(object)) passes size constraints while stringify(object) fails
+			value: styles.api.getStyleTree(),
 			options: {
 				host: 'localhost', // TODO: fix domain
 				path: '/',
 			},
 		})
+		locals.dsStyles = styles.api.getStyleTree()
 		return {success: true}
 	},
 
-	signup: async ({request, url, cookies}) => {
+	signup: async ({request}) => {
 		const data = await request.formData()
 		const signupUser = new SignUpUser()
 		if (!signupUser.signup(data)) {

@@ -3,7 +3,6 @@
 	import type {Meta} from '$types'
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-	import StylesApi from '$lib/api/styles.svelte'
 	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import {getPlaybookTab, getDocTab} from '$lib/props'
 
@@ -52,10 +51,8 @@
 		layouts: Layout,
 		recipes: Recipe,
 	}
-	let stylesApi: StylesApi = getContext('playbookContext')
 	let playbookActor: PlaybookActor = getContext('playbookActor')
-	let playbookSettings: PlaybookActor = getContext('playbookSettings')
-	let styles = $derived(stylesApi.getStyleTree())
+	let styles = $derived(playbookActor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 	let {settings} = $derived(playbookActor.app)
@@ -136,12 +133,9 @@
 			{path}
 			{title}
 			{SpecifiedElement}
-			{stylesApi}
 			props={currentProps}
 			{formaction}
 			{actionPath}
-			{redirect}
-			{...settings}
 			id={title}
 		/>
 	</div>
