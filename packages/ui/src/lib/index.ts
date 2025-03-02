@@ -120,11 +120,11 @@ const blocks = {
 	Switch,
 	Toggle,
 	Feedback,
+	Magic,
 	InputCheck,
 	InputRadio,
 	InputRange,
 	InputFile,
-	Magic,
 }
 
 const layouts = {

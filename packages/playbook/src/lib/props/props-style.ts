@@ -298,7 +298,7 @@ const asset = {
 }
 
 const spell = {
-	initial: 'ravioli',
+	initial: 'bleu',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
@@ -311,7 +311,7 @@ const spell = {
 }
 
 const uno = {
-	initial: 'ravioli',
+	initial: 'magic',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
@@ -366,7 +366,7 @@ const uno = {
 }
 
 const due = {
-	initial: 'ravioli',
+	initial: 'sparkles',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
@@ -421,7 +421,7 @@ const due = {
 }
 
 const level = {
-	initial: 'ravioli',
+	initial: '',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',

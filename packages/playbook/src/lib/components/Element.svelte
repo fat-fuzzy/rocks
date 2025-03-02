@@ -130,7 +130,7 @@
 </script>
 
 {#snippet renderElement()}
-	<div class={containerClasses}>
+	<div class={`ravioli:lg ${containerClasses}`}>
 		<GenericElement
 			{isPage}
 			{path}
@@ -192,13 +192,13 @@
 {:else}
 	<article
 		id={`ravioli-${title}`}
-		class={`ravioli variant:bare l:stack:md w:auto ui:${title.toLowerCase()} ${settingsClasses}`}
+		class={`variant:bare w:auto ui:${title.toLowerCase()} ${settingsClasses}`}
 	>
 		<a
 			href={`${link}/${title}`}
 			class="title ravioli:2xs l:flex emoji:link surface:1:primary align:center"
 		>
-			<svelte:element this={`h${String(depth)}`} class="link font:md">
+			<svelte:element this={`h${String(depth)}`} class="link font:xs">
 				{title}
 			</svelte:element>
 		</a>
