@@ -25,7 +25,7 @@
 		<section class="l:main">
 			<EscapeHtml id={slug} html={content.html} size="md" margin="auto" />
 
-			<div class="l:text:md margin:auto">
+			<div class="l:text:md maki:auto">
 				{#each categories as category}
 					<PlaybookCollection
 						{category}

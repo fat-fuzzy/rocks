@@ -22,7 +22,7 @@
 	let escaped = $state(html)
 	let containerTag = $state(element || 'div')
 	let textClass = $state(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let marginClass = $state(margin ? `margin:${margin}` : '')
+	let marginClass = $state(margin ? `maki:${margin}` : '')
 	let containerClasses = $state(`${textClass} ${marginClass}`)
 	onMount(() => {
 		if (browser) {
