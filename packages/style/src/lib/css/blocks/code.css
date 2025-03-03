@@ -23,7 +23,7 @@ kbd {
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
 	padding-inline: var(--ui-size);
 	margin-inline: calc(var(--ui-size) / 2);
-	border: var(--border-width) solid var(--color-accent);
+	border: var(--border-width-md) solid var(--color-accent);
 	border-radius: var(--border-radius-base);
 }
 

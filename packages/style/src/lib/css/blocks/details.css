@@ -9,9 +9,10 @@ p + details {
 details > summary {
 	cursor: pointer;
 	display: block;
-	color: var(--ink);
+	color: var(--color-ui-ink, var(--ink));
+	background-color: var(--color-ui-bg, var(--shade));
+	border: var(--border-width-md) solid var(--color-ui-border, var(--accent));
 	font-weight: var(--font-weight-ui);
-	border: var(--border-width) solid var(--ink);
 	padding: var(--ui-size-sm);
 	max-width: 100%;
 	background-color: var(--shade);
@@ -27,9 +28,10 @@ details > summary::before {
 }
 
 details[open] > summary {
-	color: var(--ink);
-	background-color: var(--shade);
-	border: var(--border-width) solid var(--ink);
+	color: var(--color-ui-ink-active, var(--ink));
+	background-color: var(--color-ui-bg-active, var(--shade));
+	border: var(--border-width-md) solid
+		var(--color-ui-border-active, var(--accent));
 }
 
 details[open] > summary::before {
