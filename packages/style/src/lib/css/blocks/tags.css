@@ -9,6 +9,5 @@
 	border-radius: var(--border-radius-lg);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
-	font-size: var(--font-size-small);
-	padding: var(--ui-size-sm) var(--ui-size);
+	padding: var(--ui-size-sm);
 }
