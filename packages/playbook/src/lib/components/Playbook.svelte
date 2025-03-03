@@ -19,8 +19,15 @@
 		if (ui) {
 			playbookActor.context = ui
 		}
+		if (styles) {
+			playbookContext.applyStyles(styles)
+		}
+
+		$inspect(styles)
+		$inspect(playbookActor.styles)
 	})
 	onMount(() => {
+		$inspect(styles)
 		// This need to be updated every time the user interacts the Style API controls, which are submitted via a form action
 		if (styles) {
 			playbookContext.applyStyles(styles)

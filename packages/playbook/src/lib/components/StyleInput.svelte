@@ -5,6 +5,7 @@
 	import fatFuzzyUi from '@fat-fuzzy/ui'
 
 	import StylesApi from '$lib/api/styles.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 
 	const {InputRange} = fatFuzzyUi.blocks
 	const {InputGroup} = fatFuzzyUi.drafts
@@ -23,22 +24,33 @@
 		}) => void
 	}
 
-	let {
-		styleInput,
-		family,
-		categoryName,
-		familyName,
-		formaction,
-		onupdate,
-	}: Props = $props()
+	let {styleInput, family, familyName, formaction, onupdate}: Props = $props()
 
-	let stylesApi: StylesApi = getContext('playbookContext')
-	let styles = $derived.by(() => stylesApi.getStyleTree())
+	let playbookContext: StylesApi = getContext('playbookContext')
+	let playbookActor: PlaybookActor = getContext('playbookActor')
+	let styles = $derived(playbookActor.styles)
 
 	let apiSize = '2xs'
+	let apiFont = 'sm'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
 	let apiJustify = 'stretch'
+
+	let {id, input, name, value, assetType, items} = $derived(styleInput)
+	let currentValue = $derived(value)
+
+	let updatedItems = $derived(
+		items.map((i) => {
+			return {
+				...i,
+				text: i.text ?? '',
+				asset: i.asset ?? '',
+				initial: i.value === currentValue ? 'active' : 'inactive',
+				name: i.id,
+				id: i.id,
+			}
+		}),
+	)
 
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
 		radio: InputGroup,
@@ -47,9 +59,9 @@
 		toggle: ToggleMenu,
 	}
 
-	function handleInput(event, name: string) {
+	function handleInput(event) {
 		const payload = {
-			name,
+			name: familyName.toLowerCase(),
 			items: [
 				{
 					id: event.id,
@@ -88,17 +100,12 @@
 			value?: string | number
 			state: string
 		}[],
-		familyName: string,
-		id: string,
 	) {
-		let payload: {
-			id: string
-			name: string
-			items: {id: string; name: string; value: string}[]
-		} = {
+		let items: {id: string; name: string; value: string}[] = []
+		let payload = {
 			id,
 			name: familyName.toLowerCase(),
-			items: [],
+			items,
 		}
 		if (selected.length) {
 			payload.items = selected.map((item) => {
@@ -109,13 +116,12 @@
 				}
 			})
 		} else {
-			payload.items = [
-				{
-					id,
-					name: id,
-					value: '',
-				},
-			]
+			let singleton = {
+				id,
+				name: id,
+				value: '',
+			}
+			payload.items = [singleton]
 		}
 		onupdate(payload)
 	}
@@ -131,27 +137,6 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
-
-	let {id, input, name, value, assetType, items} = $derived(styleInput)
-	let currentValue = $derived(
-		styles[categoryName] &&
-			styles[categoryName].families[familyName] &&
-			styles[categoryName].families[familyName][name]
-			? styles[categoryName].families[familyName][name]
-			: value,
-	)
-	let updatedItems = $derived(
-		items.map((i) => {
-			return {
-				...i,
-				text: i.text ?? '',
-				asset: i.asset ?? '',
-				initial: i.value === currentValue ? 'active' : 'inactive',
-				name: i.id,
-				id: i.id,
-			}
-		}),
-	)
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -177,8 +162,8 @@
 			mode={styleInput.mode ?? 'radio'}
 			{assetType}
 			{formaction}
-			onupdate={(event) => handleToggle(event, familyName, styleInput.id)}
-			init={(event) => handleToggle(event, familyName, currentValue)}
+			onupdate={(event) => handleToggle(event)}
+			init={(event) => handleToggle(event)}
 		/>
 	</Fieldset>
 {:else}
@@ -196,8 +181,9 @@
 			threshold={apiSize}
 			size={family.size ?? apiSize}
 			color={apiColor}
+			font={apiFont}
 			variant={styleInput.variant}
-			oninput={(event) => handleInput(event, familyName)}
+			oninput={(event) => handleInput(event)}
 		/>
 	{/if}
 	{#if input == 'range'}
@@ -219,8 +205,9 @@
 				layout={styleInput.layout ?? ''}
 				size={apiSize}
 				color={apiColor}
+				font={apiFont}
 				variant={styleInput.variant}
-				oninput={(event: Event) => handleInput(event, familyName)}
+				oninput={(event: Event) => handleInput(event)}
 			/>
 		</Fieldset>
 	{/if}

@@ -159,6 +159,19 @@ class StylesApi {
 		}
 	}
 
+	getValue(styles: StyleTree, id: string): string {
+		let [category, family, style, _] = id.split('.')
+		let result = ''
+		if (
+			styles[category] &&
+			styles[category].families[family] &&
+			styles[category].families[family][style]
+		) {
+			result = styles[category].families[family][style]
+		}
+		return result
+	}
+
 	getStyleTree(): StyleTree {
 		let appFamilies = {families: {}}
 		let tokensFamilies = {families: {}}
