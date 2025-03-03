@@ -69,7 +69,7 @@
 				{@const family = categoryOptions.families[familyName]}
 				<details class="l:stack:2xs">
 					<summary
-						class="font:sm font:heading font:semi size:2xs variant:bare color:neutral"
+						class="font:sm font:heading font:semi size:2xs variant:bare color:accent"
 					>
 						{familyName}
 					</summary>
