@@ -13,7 +13,7 @@
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
-	const {PageTabs} = ui.drafts
+	const {PageRails} = ui.drafts
 
 	type Props = {
 		title: string
@@ -181,8 +181,15 @@
 {/snippet}
 
 {#if isPage}
-	<PageTabs pageName="UI" {title} {description} {path} {tabs} {header} size="sm"
-	></PageTabs>
+	<PageRails
+		pageName="UI"
+		{title}
+		{description}
+		{path}
+		{tabs}
+		{header}
+		size="sm"
+	></PageRails>
 {:else}
 	<article
 		id={`ravioli-${title}`}
