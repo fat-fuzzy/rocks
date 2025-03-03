@@ -22,6 +22,7 @@
 		container,
 		justify,
 		color,
+		font,
 		size,
 		variant,
 		background,
@@ -112,7 +113,7 @@
 </script>
 
 <label for={id} class={inputClasses} data-testid={id}>
-	<span class={`font:${size}`}>
+	<span class={`font:${font ? font : size}`}>
 		{label}:
 		{valueLabel}
 	</span>

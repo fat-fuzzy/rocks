@@ -43,12 +43,17 @@ const contrast = {
 const container = {
 	initial: 'taco',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex grow ',
 	size: '2xs',
 	container: 'ravioli',
 	items: [
-		{id: 'container.taco', label: 'taco', value: 'taco'},
-		{id: 'container.burrito', label: 'burrito', value: 'burrito'},
+		{id: 'container.taco', label: 'taco', value: 'taco', asset: 'taco'},
+		{
+			id: 'container.burrito',
+			label: 'burrito',
+			value: 'burrito',
+			asset: 'burrito',
+		},
 	],
 }
 
@@ -70,7 +75,7 @@ const size = {
 const layout = {
 	initial: 'switcher',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex grow ',
 	size: '2xs',
 	container: 'ravioli',
 	items: [
@@ -249,7 +254,7 @@ const status = {
 }
 
 const context = {
-	initial: 'form',
+	initial: 'prose',
 	input: 'radio',
 	layout: 'stack',
 	variant: 'bare',
@@ -489,8 +494,8 @@ const settingsFamily = {
 }
 
 const elementFamily = {
-	layout: 'switcher',
-	size: 'xs',
+	layout: 'flex',
+	size: '2xs',
 	props: [
 		'color',
 		'variant',
@@ -507,24 +512,24 @@ const elementFamily = {
 }
 
 const containerFamily = {
-	layout: 'switcher',
-	size: 'xs',
+	layout: 'flex',
+	size: '2xs',
 	container: 'ravioli',
 	variant: 'bare',
 	props: ['container', 'size'],
 }
 
 const layoutFamily = {
-	layout: 'switcher',
-	size: 'xs',
+	layout: 'flex',
+	size: '2xs',
 	container: 'ravioli',
 	variant: 'bare',
 	props: ['size', 'layout', 'threshold', 'breakpoint'],
 }
 
 const contentFamily = {
-	layout: 'switcher',
-	size: 'xs',
+	layout: 'flex',
+	size: '2xs',
 	props: ['content', 'side', 'main'],
 }
 
