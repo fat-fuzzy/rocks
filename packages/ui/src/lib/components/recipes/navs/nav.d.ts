@@ -37,7 +37,7 @@ export type BreadcrumbsProps = UiBlockProps & {
 	background?: string
 	container?: string
 	align?: string
-	breadcrumbTabs?: Snippet
+	breadcrumbTabs?: Snippet // TODO: deprecate with tabs
 }
 
 export type LinkTreeProps = UiBlockProps & {

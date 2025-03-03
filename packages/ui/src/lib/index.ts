@@ -62,7 +62,7 @@ import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
  */
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
-import PageTabs from '$lib/components/recipes/content/PageTabs.svelte'
+import PageRails from '$lib/components/recipes/content/PageRails.svelte'
 import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
 
 /**
@@ -166,7 +166,7 @@ const drafts = {
 	Settings,
 	RevealSettings,
 	PageScrolly,
-	PageTabs,
+	PageRails,
 	Tabs,
 	Cookies,
 }

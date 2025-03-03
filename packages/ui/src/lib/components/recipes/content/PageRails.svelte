@@ -1,99 +1,99 @@
 <script lang="ts">
-	import type {PageTabsProps} from '$types'
+	import type {UiSize, PageRailsProps} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
+	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		id = 'main',
-		title = 'PageMain',
+		title = 'PageRails',
 		path = '',
+		hash,
 		description = `Basic page layout`,
 		pageName,
 		size,
 		layout = 'sidebar',
 		justify,
-		tabs,
-	}: PageTabsProps = $props()
+		main,
+		side,
+		nav,
+	}: PageRailsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
-	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let headerClass = $derived(`${layoutClass} ${justifyClass} align:baseline`)
-
-	let currentHash = $state(path.split('#')[1] ?? tabs[0].slug)
+	let currentHash = $state(hash ?? nav[0].slug)
 
 	let presentationClasses = styleHelper.getStyles({
-		layout: 'switcher:xs',
+		size: '2xs',
+		layout: 'flex',
 		align: 'center',
-		justify: 'between',
 	})
 
-	function updateActiveTab(slug: string) {
-		currentHash = slug
-	}
+	let header = $derived({
+		title,
+		main: headerMain,
+		side: headerSide,
+	})
 </script>
 
 <Head pageName={currentPage} {title} {description} />
 
-{#snippet breadcrumbTabs()}
-	<ul role="tablist" class="l:switcher:xs">
-		{#each tabs as { title, slug, color, size, variant, shape, asset }}
-			{@const iconClasses = styleHelper.getStyles({
-				color,
-				size,
-				variant,
-				shape,
-				asset,
-				assetType: 'emoji',
-			})}
-			{@const linkClasses = styleHelper.getStyles({
-				size: '2xs',
-				font: 'md',
-				color,
-				container: 'ravioli',
-			})}
-			<li
-				role="presentation"
-				aria-current={currentHash === slug ? 'page' : undefined}
-				class={`surface:0:${color}`}
-			>
-				<a
-					role="tab"
-					id={`tab-${slug}`}
-					href={`#${slug}`}
-					aria-selected={currentHash === slug}
-					aria-controls={slug}
-					onclick={() => updateActiveTab(slug)}
-					class={`${presentationClasses} ${linkClasses}`}
+{#snippet pageNav()}
+	<nav class="page-nav">
+		<ul class="l:stack:2xs unstyled">
+			{#each nav as { title, slug, color, size, variant, shape, asset }}
+				{@const iconClasses = styleHelper.getStyles({
+					color,
+					size,
+					variant,
+					shape,
+					asset,
+					assetType: 'emoji',
+				})}
+				{@const linkClasses = styleHelper.getStyles({
+					font: 'sm',
+					size: '3xs',
+					color,
+					container: 'ravioli',
+				})}
+				<li
+					class="raviolink"
+					aria-current={currentHash === slug ? 'page' : undefined}
 				>
-					<ff-icon class={iconClasses}></ff-icon>
-					{title}
-				</a>
-			</li>
-		{/each}
-	</ul>
+					<a
+						id={`tab-${slug}`}
+						href={`#${slug}`}
+						class={`${presentationClasses} ${linkClasses} surface:1:${color} link`}
+						onclick={() => {
+							currentHash = slug
+						}}
+					>
+						<ff-icon class={iconClasses}></ff-icon>
+						{title}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
 {/snippet}
 
+{#snippet headerMain()}
+	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
+{/snippet}
+{#snippet headerSide()}
+	{#if pageNav}
+		{@render pageNav()}
+	{/if}
+{/snippet}
 <main {id}>
-	<header class={headerClass}>
-		<Breadcrumbs {id} {title} {path} level={1} {breadcrumbTabs} size="2xs" />
-	</header>
+	<PageHeader size={size as UiSize} {layout} {justify} {...header} />
 
-	<section class="tab-content">
-		{#each tabs as { slug, content }}
-			<!-- The article tag receives focus when the corresponding tab is active -->
-			<!-- aria-labelledby inside Breadcrumb -->
-
-			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
-			<article
-				id={slug}
-				aria-labelledby={title}
-				tabindex={currentHash === slug ? 0 : undefined}
-				role="tabpanel"
-			>
-				{@render content()}
-			</article>
-		{/each}
+	<section class={`l:sidebar:${size}`}>
+		<div class="l:main">
+			{@render main()}
+		</div>
+		<aside class="l:side">
+			{@render side()}
+		</aside>
 	</section>
 </main>
