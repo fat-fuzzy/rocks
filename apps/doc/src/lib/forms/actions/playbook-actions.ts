@@ -66,7 +66,7 @@ export const playbookActions = {
 		const data = await request.formData()
 		const signupUser = new SignUpUser()
 		if (!signupUser.signup(data)) {
-			return fail(400, {signupUser: true})
+			fail(400, {signupUser: true})
 		}
 
 		return {success: true}
