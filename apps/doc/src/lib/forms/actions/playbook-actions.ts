@@ -59,6 +59,7 @@ export const playbookActions = {
 			},
 		})
 		locals.dsStyles = styles.api.getStyleTree()
+
 		return {success: true}
 	},
 
