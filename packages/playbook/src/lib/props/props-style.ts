@@ -119,7 +119,7 @@ const breakpoint = {
 }
 
 const color = {
-	initial: '',
+	initial: 'primary',
 	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
@@ -166,7 +166,7 @@ const variant = {
 }
 
 const shape = {
-	initial: '',
+	initial: 'none',
 	input: 'toggle',
 	layout: 'flex',
 	size: '2xs',
@@ -184,6 +184,12 @@ const shape = {
 			value: 'square',
 			shape: 'square',
 			asset: 'square',
+		},
+		{
+			id: 'shape.none',
+			label: 'none',
+			value: '',
+			shape: '',
 		},
 	],
 }
@@ -426,18 +432,29 @@ const due = {
 }
 
 const level = {
-	initial: '',
+	initial: 'paradiso',
 	input: 'toggle',
 	layout: 'switcher',
 	size: '2xs',
 	variant: 'bare',
 	items: [
 		{
+			id: 'level.inferno',
+			label: 'inferno',
+			value: 'inferno',
+			parent: 'spell.dante',
+		},
+		{
 			id: 'level.purgatorio',
 			label: 'purgatorio',
 			value: 'purgatorio',
+			parent: 'spell.dante',
 		},
-		{id: 'level.inferno', label: 'inferno', value: 'inferno'},
+		{
+			id: 'level.paradiso',
+			label: 'paradiso',
+			value: '',
+		},
 	],
 }
 
