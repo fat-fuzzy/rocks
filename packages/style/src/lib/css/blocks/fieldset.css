@@ -3,6 +3,9 @@ fieldset {
 	border-radius: var(--border-radius-base);
 	max-inline-size: 100%;
 	max-width: 100%;
+	flex-grow: 1;
+	padding: 0;
+	margin: 0;
 
 	legend {
 		font-size: var(--font-size-ui);
@@ -16,7 +19,8 @@ fieldset {
 	}
 
 	> label,
-	> .feedback {
+	> .feedback,
+	> .menu {
 		inline-size: 100%;
 		max-inline-size: 100%;
 		max-width: 100%;
@@ -41,6 +45,7 @@ fieldset.check {
 	legend {
 		inline-size: auto;
 		margin-inline-start: 0;
+		margin-block-end: var(--ui-size);
 	}
 
 	label > span {

@@ -1,0 +1,4 @@
+.page-nav li {
+	padding: var(--border-width-lg);
+	margin: 0;
+}

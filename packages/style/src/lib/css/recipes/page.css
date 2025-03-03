@@ -27,3 +27,7 @@
 [class^='page:'] {
 	min-block-size: 100vh;
 }
+
+[class^='page:']h2:target {
+	scroll-margin-block: 2.5em; /* TODO: fix magic number */
+}
