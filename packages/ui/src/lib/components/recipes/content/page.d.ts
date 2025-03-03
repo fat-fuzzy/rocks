@@ -4,6 +4,7 @@ import type {
 	TabsProps,
 	UiSize,
 	SidebarLayoutProps,
+	NavItem,
 } from '$types'
 
 type ProseProps = {
@@ -45,8 +46,9 @@ export type PageScrollyProps = PageProps & {
 
 export type RailsProps = UiLayoutProps & {
 	layout: string
-	lanes: number
-	items: {[key: string]: Snippet}
+	main: Snippet
+	side: Snippet
+	nav: NavItem
 }
 
 export type PageTabsProps = PageProps & TabsProps
