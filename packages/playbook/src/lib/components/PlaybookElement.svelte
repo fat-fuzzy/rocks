@@ -23,23 +23,16 @@
 	type Props = {
 		category: any // TODO: fix types
 		content: any
-		path: string
 		title: string
-		depth?: number
-		isPage?: boolean
+		path: string
 		formaction?: string
 		actionPath?: string
 		redirect?: string
-		color?: string
-		meta: Meta
-		children?: Snippet
 	}
 	let {
 		category,
 		content,
 		title,
-		isPage = false,
-		depth = 0,
 		path,
 		formaction,
 		actionPath,
@@ -75,11 +68,6 @@
 	let styles = $derived(playbookActor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
-	let {settings} = $derived(playbookActor.app)
-
-	//== App settings (user controlled)
-	let brightness = $derived(settings.brightness || '')
-	let contrast = $derived(settings.contrast || '')
 
 	//== Layout settings (user controlled)
 	// Container options
@@ -88,29 +76,13 @@
 	let size = $derived(containerStyles.size ?? '') // Container size
 	let status = $derived(elementStyles.status ?? '')
 
-	let sectionContainer = $derived(
+	let containerClasses = $derived(
 		category === 'blocks'
 			? 'col:center'
 			: category !== 'tokens'
 				? `l:${container}:${size}`
 				: '',
 	)
-	let articleContainer = $derived(
-		category === 'blocks'
-			? 'col:center'
-			: category !== 'tokens' &&
-				  category !== 'blocks' &&
-				  title !== 'Burrito' &&
-				  title !== 'Stack' &&
-				  title !== 'Switcher'
-				? `l:${container}:${size}`
-				: '',
-	)
-	let surfaceClass = $derived(`surface:0:neutral`)
-	let settingsClasses = $derived(
-		`settings:${brightness}:${contrast} ${surfaceClass}`,
-	)
-	let containerClasses = $derived(isPage ? sectionContainer : articleContainer)
 
 	let GenericElement = $derived(ApiElement[category])
 	let fixtures = $derived(
@@ -120,9 +92,6 @@
 		fixtures?.status ? fixtures.status.find((p) => p.value === status) : {},
 	)
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
-	let link = $derived(
-		path.substring(0, path.indexOf(category) + category.length),
-	)
 
 	let SpecifiedElement = $derived(categoryItems[category][title])
 </script>
@@ -130,7 +99,7 @@
 {#snippet renderElement()}
 	<div class={`ravioli:lg ${containerClasses}`}>
 		<GenericElement
-			{isPage}
+			isPage={true}
 			{path}
 			{title}
 			{SpecifiedElement}
@@ -152,41 +121,24 @@
 	size="sm"
 >
 	{#snippet main()}
-		{#if isPage}
-			<EscapeHtml
-				id={content.meta.slug}
-				html={content.html}
-				size="md"
-				margin="auto"
-				element="article"
-			/>
+		<EscapeHtml
+			id={content.meta.slug}
+			html={content.html}
+			size="md"
+			margin="auto"
+			element="article"
+		/>
 
-			<div class="maki:block:2xl">
-				<div class="l:text:lg maki:auto size:xl">
-					<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
-						<h2 id="playbook" class="w:full text:center">Playbook</h2>
-					</Magic>
-				</div>
-				<div class="media l:grid:sm">
-					{@render renderElement()}
-				</div>
+		<div class="maki:block:2xl">
+			<div class="l:text:lg maki:auto size:xl">
+				<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
+					<h2 id="playbook" class="w:full text:center">Playbook</h2>
+				</Magic>
 			</div>
-		{:else}
-			<article
-				id={`ravioli-${title}`}
-				class={`variant:bare w:auto ui:${title.toLowerCase()} ${settingsClasses}`}
-			>
-				<a
-					href={`${link}/${title}`}
-					class="title ravioli:2xs l:flex emoji:link surface:1:primary align:center"
-				>
-					<svelte:element this={`h${String(depth)}`} class="link font:xs">
-						{title}
-					</svelte:element>
-				</a>
+			<div class="media">
 				{@render renderElement()}
-			</article>
-		{/if}
+			</div>
+		</div>
 	{/snippet}
 
 	{#snippet side()}

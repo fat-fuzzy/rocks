@@ -128,7 +128,7 @@
 				margin="auto"
 				element="article"
 			/>
-			<div class="maki:block:2xl">
+			<div class="maki:block size:2xl">
 				<div class="l:text:lg maki:auto size:xl">
 					<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
 						<h2 id="playbook" class="w:full text:center">Playbook</h2>
