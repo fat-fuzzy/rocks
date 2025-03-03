@@ -118,7 +118,7 @@
 					<h2 id="playbook" class="w:full text:center">Playbook</h2>
 				</Magic>
 			</div>
-			<div class="media">
+			<div class="media l:frame:video align:start">
 				<div class={`ravioli:lg ${containerClasses}`}>
 					<GenericElement
 						isPage={true}
