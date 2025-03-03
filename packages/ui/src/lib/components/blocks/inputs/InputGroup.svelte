@@ -14,6 +14,7 @@
 		layout = 'stack',
 		justify = 'between',
 		container,
+		font,
 		size,
 		color,
 		variant,
@@ -46,6 +47,7 @@
 	{legend}
 	{layout}
 	{size}
+	{font}
 	{variant}
 	container={container ?? ''}
 	{color}

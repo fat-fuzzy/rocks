@@ -74,7 +74,7 @@
 					>
 						{familyName}
 					</summary>
-					<div class="l:switcher:2xs">
+					<div class="l:flex:2xs justify:stretch align:start">
 						{#each family.items as styleInputGroup}
 							<StyleInput
 								{family}

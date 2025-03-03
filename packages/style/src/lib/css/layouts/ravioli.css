@@ -7,7 +7,7 @@
 	padding-block-start: var(--gap);
 }
 
-[class*='ravioli:'] {
+[class*='ravioli'] {
 	--ratio: var(--size-ratio-md);
 	/* Default range */
 	--ui-size-sm: calc(var(--ui-size) / var(--ratio));
@@ -22,6 +22,11 @@
 /* Major range */
 [class*='ravioli:'].scale\:major {
 	--ratio: var(--size-ratio-lg);
+}
+
+.raviolink {
+	/* Base size */
+	--ui-size: var(--border-width-xl);
 }
 
 .ravioli\:3xs {
