@@ -43,7 +43,6 @@
 			}
 		})
 		playbookContext.applyStyles(updatedStyles)
-		let styleTree = playbookContext.getStyleTree()
 		playbookActor.styles = playbookContext.getStyleTree() // This should update the client if JS is available
 	}
 
