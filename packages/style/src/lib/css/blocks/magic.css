@@ -11,6 +11,10 @@ ff-icon {
 	font-weight: var(--font-weight-ui);
 }
 
+.ff\:magic.w\:full {
+	inline-size: 100%;
+}
+
 .ff\:callout[class*='magic'],
 ff-callout[class*='magic'] {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
