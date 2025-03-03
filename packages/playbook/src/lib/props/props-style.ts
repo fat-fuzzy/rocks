@@ -95,11 +95,11 @@ const threshold = {
 	size: 'xs',
 	container: 'ravioli',
 	items: [
-		{id: 'threshold.xs', label: 'xs', value: 'xs'},
-		{id: 'threshold.sm', label: 'sm', value: 'sm'},
-		{id: 'threshold.md', label: 'md', value: 'md'},
-		{id: 'threshold.lg', label: 'lg', value: 'lg'},
-		{id: 'threshold.xl', label: 'xl', value: 'xl'},
+		{id: 'threshold.xs', label: 'xs', value: 'xs', parent: 'layout.switcher'},
+		{id: 'threshold.sm', label: 'sm', value: 'sm', parent: 'layout.switcher'},
+		{id: 'threshold.md', label: 'md', value: 'md', parent: 'layout.switcher'},
+		{id: 'threshold.lg', label: 'lg', value: 'lg', parent: 'layout.switcher'},
+		{id: 'threshold.xl', label: 'xl', value: 'xl', parent: 'layout.switcher'},
 	],
 }
 
@@ -484,9 +484,14 @@ const side = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'side.ravioli', label: 'ravioli', value: 'ravioli'},
-		{id: 'side.form', label: 'form', value: 'form'},
-		{id: 'side.text', label: 'text', value: 'text'},
+		{
+			id: 'side.ravioli',
+			label: 'ravioli',
+			value: 'ravioli',
+			parent: 'layout.sidebar',
+		},
+		{id: 'side.form', label: 'form', value: 'form', parent: 'layout.sidebar'},
+		{id: 'side.text', label: 'text', value: 'text', parent: 'layout.sidebar'},
 	],
 }
 
@@ -497,9 +502,14 @@ const main = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'main.ravioli', label: 'ravioli', value: 'ravioli'},
-		{id: 'main.form', label: 'form', value: 'form'},
-		{id: 'main.text', label: 'text', value: 'text'},
+		{
+			id: 'main.ravioli',
+			label: 'ravioli',
+			value: 'ravioli',
+			parent: 'layout.sidebar',
+		},
+		{id: 'main.form', label: 'form', value: 'form', parent: 'layout.sidebar'},
+		{id: 'main.text', label: 'text', value: 'text', parent: 'layout.sidebar'},
 	],
 }
 
