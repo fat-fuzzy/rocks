@@ -17,6 +17,12 @@
 	--ratio: var(--size-ratio-lg);
 }
 
+.size\:3xs {
+	/* Base size */
+	--ui-size: var(--size-base-3xs);
+	--font-size: var(--font-size-2xs) / var(--fluid-min-ratio);
+}
+
 .size\:2xs {
 	/* Base size */
 	--ui-size: var(--size-base-2xs);
