@@ -12,15 +12,17 @@
 	}: PageHeaderProps = $props()
 
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
+	let layoutClass = $derived(
+		size ? `l:${layout}:${size} reverse` : `l:${layout}`,
+	)
 	let headerClass = $derived(
 		`${layoutClass} ${justifyClass} align:baseline maki:block:lg`,
 	)
-	let contentClasses = $derived(media ? `l:text:md` : 'l:text:md margin:auto')
+	let contentClasses = $derived(media ? `l:text:md` : 'l:text:md maki:auto')
 </script>
 
 <header class={headerClass}>
-	<div class="l:main">
+	<div class="l:main:50">
 		<div class={contentClasses}>
 			{#if main}
 				{@render main()}
