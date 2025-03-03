@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
-	import type {Meta} from '$types'
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 
@@ -96,21 +94,6 @@
 	let SpecifiedElement = $derived(categoryItems[category][title])
 </script>
 
-{#snippet renderElement()}
-	<div class={`ravioli:lg ${containerClasses}`}>
-		<GenericElement
-			isPage={true}
-			{path}
-			{title}
-			{SpecifiedElement}
-			props={currentProps}
-			{formaction}
-			{actionPath}
-			id={title}
-		/>
-	</div>
-{/snippet}
-
 <PageRails
 	pageName="UI"
 	{title}
@@ -136,7 +119,18 @@
 				</Magic>
 			</div>
 			<div class="media">
-				{@render renderElement()}
+				<div class={`ravioli:lg ${containerClasses}`}>
+					<GenericElement
+						isPage={true}
+						{path}
+						{title}
+						{SpecifiedElement}
+						props={currentProps}
+						{formaction}
+						{actionPath}
+						id={title}
+					/>
+				</div>
 			</div>
 		</div>
 	{/snippet}

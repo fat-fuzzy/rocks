@@ -1,16 +1,14 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import {getContext} from 'svelte'
+
 	import ui from '@fat-fuzzy/ui'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 	import Element from './Element.svelte'
 
-	import {
-		getCategoryMarkdowns,
-		getElementMeta,
-		getPlaybookTab,
-		getDocTab,
-	} from '$lib/props'
+	import {getPlaybookTab, getDocTab} from '$lib/props'
 	import {page} from '$app/state'
 
 	const {EscapeHtml} = ui.headless
@@ -35,7 +33,6 @@
 
 	let {
 		category,
-		markdowns,
 		content,
 		path,
 		depth = 1,
@@ -49,6 +46,8 @@
 		children,
 	}: Props = $props()
 
+	let playbookActor: PlaybookActor = getContext('playbookActor')
+	let {settings} = $derived(playbookActor.app)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
@@ -75,8 +74,13 @@
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
 	let componentNames = $derived(Object.keys(items))
-	let categoryMarkdowns = $derived(getCategoryMarkdowns(category, markdowns))
-
+	//== App settings (user controlled)
+	let brightness = $derived(settings.brightness || '')
+	let contrast = $derived(settings.contrast || '')
+	let surfaceClass = $derived(`surface:0:neutral`)
+	let settingsClasses = $derived(
+		`settings:${brightness}:${contrast} ${surfaceClass}`,
+	)
 	let layoutClass = $derived(
 		category === 'tokens'
 			? `l:stack:${size}`
@@ -84,22 +88,35 @@
 				? `l:${layout}:lg`
 				: `l:${layout}:${size}`,
 	)
+	let link = $derived(
+		path.substring(0, path.indexOf(category) + category.length),
+	)
 </script>
 
 {#snippet categoryElements()}
 	{#each componentNames as name}
 		{@const SpecifiedElement = items[name]}
-		<Element
-			title={name}
-			depth={isPage ? Number(depth) + 1 : Number(depth) + 2}
-			{path}
-			{category}
-			{SpecifiedElement}
-			{formaction}
-			{actionPath}
-			meta={getElementMeta(name, categoryMarkdowns)}
-			{redirect}
-		/>
+		<article
+			id={`ravioli-${title}`}
+			class={`variant:bare w:auto ui:${name.toLowerCase()} ${settingsClasses}`}
+		>
+			<a
+				href={`${link}/${name}`}
+				class="title ravioli:sm size:sm l:flex emoji:link surface:1:primary align:center"
+			>
+				<svelte:element this={`h${String(depth)}`} class="link font:sm">
+					{name}
+				</svelte:element>
+			</a>
+			<Element
+				title={name}
+				{path}
+				{category}
+				{SpecifiedElement}
+				{formaction}
+				{actionPath}
+			/>
+		</article>
 	{/each}
 {/snippet}
 
@@ -110,70 +127,71 @@
 	</div>
 {/snippet}
 
-<PageRails
-	pageName="UI"
-	{title}
-	{description}
-	{path}
-	hash={page.url.hash}
-	nav={pageNav}
-	size="sm"
->
-	{#snippet main()}
-		{#if isPage}
+{#if isPage}
+	<PageRails
+		pageName="UI"
+		{title}
+		{description}
+		{path}
+		hash={page.url.hash}
+		nav={pageNav}
+		size="sm"
+	>
+		{#snippet main()}
 			<EscapeHtml
 				id={content.meta.slug}
 				html={content.html}
 				size="md"
 				margin="auto"
-				element="article"
+				element="section"
 			/>
-			<div class="maki:block size:2xl">
+			<section class="maki:block size:2xl">
 				<div class="l:text:lg maki:auto size:xl">
 					<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
 						<h2 id="playbook" class="w:full text:center">Playbook</h2>
 					</Magic>
 				</div>
-				<div class="media l:grid:sm">
+				<div class={`media ${layoutClass}`}>
 					{@render categoryElements()}
 				</div>
-			</div>
-		{:else if children}
-			<section class="l:text:lg snap:start">
-				<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
-					{category}
-				</svelte:element>
-				{#if children}
-					{@render children()}
-				{:else}
-					{@render comingSoon()}
-				{/if}
-				<details class={`l:stack:md ${size}`}>
-					<summary
-						class={`color:${color} variant:outline ravioli:2xs emoji:${category}`}
-					>
-						{category}
-					</summary>
-					<div class={layoutClass}>
-						{@render categoryElements()}
-					</div>
-				</details>
 			</section>
-		{/if}
-	{/snippet}
+		{/snippet}
 
-	{#snippet side()}
-		<div class="l:stack:md">
-			{#key category}
-				<PropsDoc meta={content.meta} />
-				<PropsDemo
-					{path}
-					{actionPath}
-					{redirect}
-					meta={content.meta}
-					categories={[category]}
-				/>
-			{/key}
-		</div>
-	{/snippet}
-</PageRails>
+		{#snippet side()}
+			<div class="l:stack:md">
+				{#key category}
+					<PropsDoc meta={content.meta} />
+					<PropsDemo
+						{path}
+						{actionPath}
+						{redirect}
+						meta={content.meta}
+						categories={[category]}
+					/>
+				{/key}
+			</div>
+		{/snippet}
+	</PageRails>
+{:else}
+	<section class="l:text:lg snap:start">
+		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+			{category}
+		</svelte:element>
+		{#if children}
+			{@render children()}
+		{:else}
+			{@render comingSoon()}
+		{/if}
+
+		<details class={`l:stack:md ${size}`}>
+			<summary
+				class={`color:${color} variant:outline ravioli:2xs emoji:${category}`}
+			>
+				{category}
+			</summary>
+			<div class={layoutClass}>
+				{@render categoryElements()}
+			</div>
+		</details>
+	</section>
+{/if}
