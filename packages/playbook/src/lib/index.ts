@@ -8,7 +8,6 @@
 import Api from '$lib/components/Api.svelte'
 import Token from '$lib/components/Token.svelte'
 import Element from '$lib/components/Element.svelte'
-import Collection from '$lib/components/Collection.svelte'
 import PropsDoc from '$lib/components/PropsDoc.svelte'
 import PropsDemo from '$lib/components/PropsDemo.svelte'
 import PlaybookCollection from '$lib/components/PlaybookCollection.svelte'
@@ -47,7 +46,6 @@ const actions = {
 
 const playbook = {
 	Api,
-	Collection,
 	Token,
 	Element,
 	PropsDoc,

@@ -26,10 +26,6 @@
 
 	let {styleInput, family, familyName, formaction, onupdate}: Props = $props()
 
-	let playbookContext: StylesApi = getContext('playbookContext')
-	let playbookActor: PlaybookActor = getContext('playbookActor')
-	let styles = $derived(playbookActor.styles)
-
 	let apiSize = '2xs'
 	let apiFont = 'sm'
 	let apiColor = 'primary'
