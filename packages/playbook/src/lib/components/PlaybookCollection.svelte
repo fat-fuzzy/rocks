@@ -12,7 +12,7 @@
 	import {page} from '$app/state'
 
 	const {EscapeHtml} = ui.headless
-	const {PageRails} = ui.drafts
+	const {PageRails} = ui.content
 	const {Magic} = ui.blocks
 
 	type Props = {
