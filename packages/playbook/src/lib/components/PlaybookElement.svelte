@@ -13,7 +13,7 @@
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
-	const {PageRails} = ui.drafts
+	const {PageRails} = ui.content
 	const {Magic} = ui.blocks
 
 	const {EscapeHtml} = ui.headless

@@ -46,8 +46,11 @@ export interface Recipes {
 }
 
 export interface Content {
+	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
 	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
+	PageRails: typeof import('$lib/components/recipes/content/PageRails.svelte').default
 	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
+	LayoutGrid: typeof import('$lib/components/recipes/content/LayoutGrid.svelte').default
 }
 
 export interface Drafts {
@@ -55,7 +58,6 @@ export interface Drafts {
 	Popover: typeof import('$lib/components/blocks/overlays/Popover.svelte').default
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
-	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
 	HeaderNav: typeof import('$lib/components/recipes/header/HeaderNav.svelte').default
@@ -64,7 +66,6 @@ export interface Drafts {
 	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
 	RevealSettings: typeof import('$lib/components/recipes/forms/RevealSettings.svelte').default
 	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default
-	PageRails: typeof import('$lib/components/recipes/content/PageRails.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 }
 
