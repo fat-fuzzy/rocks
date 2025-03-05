@@ -34,6 +34,9 @@
 			"collapsed": {
 				"$value": "6em"
 			},
+			"height": {
+				"$value": "60vh"
+			},
 			"2xs": {
 				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
 			},

@@ -184,6 +184,7 @@
   --layout-sidebar-3xl: calc(var(--layout-sidebar-2xl) * var(--size-ratio-lg));
   --layout-sidebar-base: 24ch;
   --layout-sidebar-collapsed: 6em;
+  --layout-sidebar-height: 60vh;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
