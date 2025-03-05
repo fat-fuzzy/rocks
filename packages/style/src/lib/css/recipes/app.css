@@ -1,14 +1,17 @@
 .app {
-	min-height: 100vh;
+	min-block-size: 100vh;
 	position: relative;
+}
+.app:has(.l\:grid\:rails) {
+	block-size: 100vh;
 }
 
 @media screen and (min-width: 620px) {
-	.app > main {
-		min-height: calc(100vh - var(--ui-header-height));
+	.app:not(:has(.l\:grid\:rails)) > main {
+		min-block-size: calc(100vh - var(--ui-header-height));
 	}
 
-	.app > main > *:only-child {
-		min-height: calc(100vh - 2 * var(--ui-header-height));
+	.app:not(:has(.l\:grid\:rails)) > main > *:only-child {
+		min-block-size: calc(100vh - 2 * var(--ui-header-height));
 	}
 }

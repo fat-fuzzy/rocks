@@ -1,0 +1,143 @@
+/**
+ * Grid Rails Layout
+ */
+
+body:has(.l\:grid\:rails) {
+	inline-size: 100vw;
+	block-size: 100vh;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.main-header {
+	grid-area: main-header;
+}
+
+.sidenav {
+	grid-area: sidenav;
+	justify-self: start;
+	position: relative;
+	inline-size: 100%;
+	max-inline-size: var(--sidebar-width);
+}
+
+.sidenav > nav.expanded > ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	overflow: hidden auto;
+	max-block-size: var(--layout-sidebar-height);
+	z-index: var(--layout-z-index-reveal);
+	inline-size: var(--sidebar-width);
+}
+
+.sidenav > nav > form > [aria-expanded] {
+	inline-size: 100%;
+}
+
+.page-main {
+	overflow: hidden auto;
+	grid-area: page-main;
+	min-block-size: unset;
+	scrollbar-gutter: stable;
+	/* prevent parent scroll chaining on y scroll */
+	overscroll-behavior-y: contain;
+}
+
+.page-context {
+	grid-area: page-context;
+	justify-self: end;
+	position: relative;
+	inline-size: 100%;
+	max-inline-size: var(--sidebar-width);
+}
+
+.l\:grid\:rails {
+	--sidebar-width: var(--layout-sidebar-md);
+	margin: 0;
+	padding: 0;
+	inline-size: 100vw;
+	block-size: 100vh;
+	overflow: hidden;
+	grid-template-areas:
+		'main-header    main-header'
+		'sidenav   			page-context'
+		'page-main      page-main'
+		'page-main    page-main';
+	grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (min-width: 620px) {
+	.l\:grid\:rails {
+		grid-template-areas:
+			'main-header   main-header'
+			'sidenav  		 page-context'
+			'page-main     page-context'
+			'page-main   page-context';
+		grid-template-columns: auto auto;
+	}
+
+	.page-context {
+		overflow: hidden auto;
+		scrollbar-gutter: stable;
+		/* prevent parent scroll chaining on y scroll */
+		overscroll-behavior-y: contain;
+	}
+
+	.sidenav > nav.expanded ff-reveal {
+		position: unset;
+		max-block-size: unset;
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.l\:grid\:rails {
+		grid-template-areas:
+			'main-header    main-header  main-header'
+			'sidenav        page-main    page-context'
+			'sidenav        page-main  page-context';
+		grid-template-columns: auto auto auto;
+	}
+
+	.sidenav {
+		overflow: hidden auto;
+		scrollbar-gutter: stable;
+		/* prevent parent scroll chaining on y scroll */
+		overscroll-behavior-y: contain;
+	}
+
+	.page-context {
+		overflow: hidden auto;
+		scrollbar-gutter: stable;
+		/* prevent parent scroll chaining on y scroll */
+		overscroll-behavior-y: contain;
+	}
+}
+
+.l\:grid\:rails.size\:2xs {
+	--grid-gap: var(--size-base-2xs);
+}
+
+.l\:grid\:rails.size\:xs {
+	--grid-gap: var(--size-base-xs);
+}
+
+.l\:grid\:rails.size\:sm {
+	--grid-gap: var(--size-base-sm);
+}
+
+.l\:grid\:rails.size\:md {
+	--grid-gap: var(--size-base-md);
+}
+
+.l\:grid\:rails.size\:lg {
+	--grid-gap: var(--size-base-lg);
+}
+
+.l\:grid\:rails.size\:xl {
+	--grid-gap: var(--size-base-xl);
+}
+
+.l\:grid\:rails.size\:2xl {
+	--grid-gap: var(--size-base-2xl);
+}
