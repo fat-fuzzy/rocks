@@ -61,7 +61,7 @@ import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
  * Recipes - Content
  */
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
-import LayoutGrid from '$lib/components/recipes/content/LayoutGrid.svelte'
+import LayoutRails from '$lib/components/recipes/content/LayoutRails.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 import PageRails from '$lib/components/recipes/content/PageRails.svelte'
 import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
@@ -151,7 +151,7 @@ const content = {
 	PageMain,
 	PageRails,
 	LayoutSidebar,
-	LayoutGrid,
+	LayoutRails,
 }
 
 const drafts = {

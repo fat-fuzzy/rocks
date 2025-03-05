@@ -3,6 +3,7 @@
 	import Head from '$lib/components/blocks/global/Head.svelte'
 	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
+	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import styleHelper from '$lib/utils/styles.js'
 
 	let {
@@ -16,12 +17,13 @@
 		layout = 'sidebar',
 		justify,
 		main,
-		side,
 		nav,
+		aside,
+		footer,
 	}: PageRailsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
-	let currentHash = $state(hash ?? nav[0].slug)
+	let currentHash = $state(hash ?? '')
 
 	let presentationClasses = styleHelper.getStyles({
 		size: '2xs',
@@ -32,7 +34,6 @@
 	let header = $derived({
 		title,
 		main: headerMain,
-		side: headerSide,
 	})
 </script>
 
@@ -80,20 +81,32 @@
 {#snippet headerMain()}
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
-{#snippet headerSide()}
-	{#if pageNav}
-		{@render pageNav()}
-	{/if}
-{/snippet}
-<main {id}>
-	<PageHeader size={size as UiSize} {layout} {justify} {...header} />
 
-	<section class={`l:sidebar:${size}`}>
-		<div class="l:main">
-			{@render main()}
-		</div>
-		<aside class="l:side">
-			{@render side()}
-		</aside>
-	</section>
+<main {id} class="page-main">
+	<PageHeader size={size as UiSize} {layout} {justify} {...header} />
+	{@render main()}
 </main>
+
+<div class="page-context">
+	<Reveal
+		auto={true}
+		reveal="expanded"
+		title="On this Page"
+		layout="sidebar"
+		position={false}
+		color="primary:600"
+		size="md"
+		breakpoint="xs"
+	>
+		{@render pageNav()}
+		{#if aside}
+			{@render aside()}
+		{/if}
+	</Reveal>
+</div>
+
+{#if footer}
+	<div class="main-footer">
+		{@render footer()}
+	</div>
+{/if}
