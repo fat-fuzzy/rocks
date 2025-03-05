@@ -62,13 +62,16 @@ body:has(.l\:grid\:rails) {
 	justify-self: end;
 	position: relative;
 	inline-size: var(--sidebar-width);
-	max-inline-size: 100%;
+	max-inline-size: calc(100% - var(--ui-size-lg));
 	padding: var(--outline-offset-md) var(--size-base-2xs);
 }
 
-.page-context.l\:reveal\:auto {
-	inline-size: var(--sidebar-width);
-	max-inline-size: 100%;
+.page-context > * {
+	max-inline-size: calc(100% - var(--ui-size-lg));
+}
+
+.page-context .l\:reveal\:auto {
+	inline-size: 100%;
 }
 
 .l\:grid\:rails {
@@ -104,7 +107,7 @@ body:has(.l\:grid\:rails) {
 	}
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 935px) {
 	.l\:grid\:rails {
 		grid-template-areas:
 			'main-header    main-header  main-header'
