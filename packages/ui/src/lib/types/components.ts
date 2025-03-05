@@ -50,7 +50,7 @@ export interface Content {
 	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
 	PageRails: typeof import('$lib/components/recipes/content/PageRails.svelte').default
 	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
-	LayoutGrid: typeof import('$lib/components/recipes/content/LayoutGrid.svelte').default
+	LayoutRails: typeof import('$lib/components/recipes/content/LayoutRails.svelte').default
 }
 
 export interface Drafts {

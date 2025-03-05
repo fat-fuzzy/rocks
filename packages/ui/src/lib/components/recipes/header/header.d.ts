@@ -6,6 +6,8 @@ export type HeaderProps = UiBlockProps &
 		id?: string
 		title?: string
 		path?: string
+		position?: string
+		placement?: string
 		items: {
 			links: {[key: string]: string}[]
 			settings: SettingsItems
