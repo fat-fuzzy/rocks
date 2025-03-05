@@ -28,10 +28,19 @@ body:has(.l\:grid\:rails) {
 	overflow: hidden auto;
 	max-block-size: var(--layout-sidebar-height);
 	z-index: var(--layout-z-index-reveal);
+	inline-size: calc(var(--sidebar-width) - var(--ui-size));
+	max-inline-size: calc(100% - var(--ui-size-sm));
+}
+
+.sidenav > nav > form {
 	inline-size: var(--sidebar-width);
 }
 
-.sidenav > nav > form > [aria-expanded] {
+.sidenav > nav.expanded > form {
+	inline-size: calc(var(--sidebar-width) - var(--ui-size));
+}
+
+.sidenav > nav > form [aria-expanded] {
 	inline-size: 100%;
 }
 
@@ -40,6 +49,7 @@ body:has(.l\:grid\:rails) {
 	grid-area: page-main;
 	min-block-size: unset;
 	scrollbar-gutter: stable;
+	scrollbar-width: thin;
 	/* prevent parent scroll chaining on y scroll */
 	overscroll-behavior-y: contain;
 }
@@ -48,12 +58,11 @@ body:has(.l\:grid\:rails) {
 	grid-area: page-context;
 	justify-self: end;
 	position: relative;
-	inline-size: 100%;
-	max-inline-size: var(--sidebar-width);
+	inline-size: var(--sidebar-width);
+	max-inline-size: 100%;
 }
 
 .l\:grid\:rails {
-	--sidebar-width: var(--layout-sidebar-md);
 	margin: 0;
 	padding: 0;
 	inline-size: 100vw;
@@ -74,7 +83,7 @@ body:has(.l\:grid\:rails) {
 			'sidenav  		 page-context'
 			'page-main     page-context'
 			'page-main   page-context';
-		grid-template-columns: auto auto;
+		grid-template-columns: 3fr auto;
 	}
 
 	.page-context {
@@ -83,32 +92,41 @@ body:has(.l\:grid\:rails) {
 		/* prevent parent scroll chaining on y scroll */
 		overscroll-behavior-y: contain;
 	}
-
-	.sidenav > nav.expanded ff-reveal {
-		position: unset;
-		max-block-size: unset;
-	}
 }
 
-@media screen and (min-width: 935px) {
+@media screen and (min-width: 1200px) {
 	.l\:grid\:rails {
 		grid-template-areas:
 			'main-header    main-header  main-header'
 			'sidenav        page-main    page-context'
 			'sidenav        page-main  page-context';
-		grid-template-columns: auto auto auto;
+		grid-template-columns: auto 3fr auto;
 	}
 
 	.sidenav {
 		overflow: hidden auto;
 		scrollbar-gutter: stable;
+		scrollbar-width: thin;
 		/* prevent parent scroll chaining on y scroll */
 		overscroll-behavior-y: contain;
+	}
+
+	.sidenav > nav.collapsed {
+		--sidebar-width: var(--layout-sidebar-collapsed);
+	}
+
+	.sidenav > nav.expanded > ff-reveal,
+	.sidenav > nav.collapsed > ff-reveal {
+		position: unset;
+		block-size: fit-content;
+		max-block-size: unset;
+		max-inline-size: var(--sidebar-width);
 	}
 
 	.page-context {
 		overflow: hidden auto;
 		scrollbar-gutter: stable;
+		scrollbar-width: thin;
 		/* prevent parent scroll chaining on y scroll */
 		overscroll-behavior-y: contain;
 	}

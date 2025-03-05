@@ -27,7 +27,6 @@
 		layout?: string
 		formaction?: string
 		actionPath?: string
-		redirect?: string
 		children?: Snippet
 	}
 
@@ -42,7 +41,6 @@
 		layout = 'switcher',
 		formaction,
 		actionPath,
-		redirect,
 		children,
 	}: Props = $props()
 
@@ -51,18 +49,7 @@
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
-	let description = $derived(`${title} | Doc`)
 	let titleDepth = $derived(Number(depth) + 1)
-	let pageNav = [
-		{
-			...getDocTab(),
-			labelledBy: category,
-		},
-		{
-			...getPlaybookTab(),
-			labelledBy: category,
-		},
-	]
 	const components: {category: string; items: any}[] = [
 		{category: 'tokens', items: ui.tokens},
 		{category: 'blocks', items: ui.blocks},
@@ -128,50 +115,16 @@
 {/snippet}
 
 {#if isPage}
-	<PageRails
-		pageName="UI"
-		{title}
-		{description}
-		{path}
-		hash={page.url.hash}
-		nav={pageNav}
-		size="sm"
-	>
-		{#snippet main()}
-			<EscapeHtml
-				id={content.meta.slug}
-				html={content.html}
-				size="md"
-				margin="auto"
-				element="section"
-			/>
-			<section class="maki:block size:2xl">
-				<div class="l:text:lg maki:auto size:xl">
-					<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
-						<h2 id="playbook" class="w:full text:center">Playbook</h2>
-					</Magic>
-				</div>
-				<div class={`media ${layoutClass}`}>
-					{@render categoryElements()}
-				</div>
-			</section>
-		{/snippet}
-
-		{#snippet side()}
-			<div class="l:stack:md">
-				{#key category}
-					<PropsDoc meta={content.meta} />
-					<PropsDemo
-						{path}
-						{actionPath}
-						{redirect}
-						meta={content.meta}
-						categories={[category]}
-					/>
-				{/key}
-			</div>
-		{/snippet}
-	</PageRails>
+	<section class="maki:block size:2xl">
+		<div class="l:text:lg maki:auto size:xl">
+			<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
+				<h2 id="playbook" class="w:full text:center">Playbook</h2>
+			</Magic>
+		</div>
+		<div class={`media ${layoutClass}`}>
+			{@render categoryElements()}
+		</div>
+	</section>
 {:else}
 	<section class="l:text:lg snap:start">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">

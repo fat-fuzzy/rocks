@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {Snippet} from 'svelte'
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 
@@ -26,6 +27,7 @@
 		formaction?: string
 		actionPath?: string
 		redirect?: string
+		footer: Snippet
 	}
 	let {
 		category,
@@ -35,6 +37,7 @@
 		formaction,
 		actionPath,
 		redirect,
+		footer,
 	}: Props = $props()
 
 	let description = $derived(`${title} | Doc`)
@@ -104,6 +107,7 @@
 	size="sm"
 >
 	{#snippet main()}
+		<h2 id="doc" class="w:full text:center">Doc</h2>
 		<EscapeHtml
 			id={content.meta.slug}
 			html={content.html}
@@ -135,7 +139,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet side()}
+	{#snippet aside()}
 		<div class="l:stack:md">
 			{#key category}
 				<PropsDoc meta={content.meta} />
@@ -149,4 +153,8 @@
 			{/key}
 		</div>
 	{/snippet}
+
+	{#if footer}
+		{@render footer()}
+	{/if}
 </PageRails>

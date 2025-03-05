@@ -155,8 +155,8 @@ a[class*='ravioli']:hover > *:not(.icon) {
 }
 
 @media screen and (min-width: 1024px) {
-	.form\:expanded,
-	.form\:collapsed {
+	.reveal-nav .form\:expanded,
+	.reveal-nav .form\:collapsed {
 		max-inline-size: calc(100% - var(--ui-size-sm));
 	}
 
