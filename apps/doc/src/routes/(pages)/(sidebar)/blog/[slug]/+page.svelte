@@ -2,8 +2,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain} = ui.content
-	const {Aside} = ui.drafts
+	const {PageMain, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
 
 	let post = $derived(page.data.content)
