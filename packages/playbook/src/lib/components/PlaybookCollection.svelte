@@ -28,6 +28,7 @@
 		formaction?: string
 		actionPath?: string
 		children?: Snippet
+		footer: Snippet
 	}
 
 	let {
@@ -42,6 +43,7 @@
 		formaction,
 		actionPath,
 		children,
+		footer,
 	}: Props = $props()
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
@@ -50,6 +52,17 @@
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
 	let titleDepth = $derived(Number(depth) + 1)
+	let description = $derived(`${title} | Doc`)
+	let pageNav = [
+		{
+			...getDocTab(),
+			labelledBy: category,
+		},
+		{
+			...getPlaybookTab(),
+			labelledBy: category,
+		},
+	]
 	const components: {category: string; items: any}[] = [
 		{category: 'tokens', items: ui.tokens},
 		{category: 'blocks', items: ui.blocks},
@@ -115,16 +128,50 @@
 {/snippet}
 
 {#if isPage}
-	<section class="maki:block size:2xl">
-		<div class="l:text:lg maki:auto size:xl">
-			<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
-				<h2 id="playbook" class="w:full text:center">Playbook</h2>
-			</Magic>
-		</div>
-		<div class={`media ${layoutClass}`}>
-			{@render categoryElements()}
-		</div>
-	</section>
+	<PageRails
+		{title}
+		{description}
+		path={page.url.pathname}
+		hash={page.url.hash}
+		nav={pageNav}
+		size="sm"
+	>
+		{#snippet main()}
+			<div class="l:text:md margin:auto">
+				<h2 id="doc">Doc</h2>
+			</div>
+			<EscapeHtml
+				id="doc"
+				html={content.html}
+				size="md"
+				margin="auto"
+				element="section"
+			/>
+			<section class="maki:block size:2xl">
+				<div class="l:text:lg maki:auto size:xl">
+					<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
+						<h2 id="playbook" class="w:full text:center">Playbook</h2>
+					</Magic>
+				</div>
+				<div class={`media ${layoutClass}`}>
+					{@render categoryElements()}
+				</div>
+			</section>
+
+			{#if footer}
+				{@render footer()}
+			{/if}
+		{/snippet}
+
+		{#snippet aside()}
+			<div class="l:stack:md">
+				{#key category}
+					<PropsDoc meta={content.meta} />
+					<PropsDemo {path} meta={content.meta} categories={[category]} />
+				{/key}
+			</div>
+		{/snippet}
+	</PageRails>
 {:else}
 	<section class="l:text:lg snap:start">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">

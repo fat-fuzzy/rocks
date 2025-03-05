@@ -16,7 +16,7 @@ type ProseProps = {
 
 export type PageHeaderProps = {
 	title: string
-	layout: string
+	layout?: string
 	justify?: string
 	size?: UiSize
 	media?: boolean

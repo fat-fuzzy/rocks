@@ -40,24 +40,12 @@
 
 			<div class="l:text:md maki:auto">
 				{#each categories as category}
-					<PlaybookCollection
-						{category}
-						{markdowns}
-						depth={1}
-						isPage={false}
-						path={`${path}/${category}${page.url.hash}`}
-						{formaction}
-						actionPath={path}
-						{content}
-					>
-						<EscapeHtml
-							id={`${slug}-${category}`}
-							html={markdowns.categories.find(
-								({meta}) => meta.slug === category,
-							).html}
-							size="md"
-						/>
-					</PlaybookCollection>
+					<EscapeHtml
+						id={`${slug}-${category}`}
+						html={markdowns.categories.find(({meta}) => meta.slug === category)
+							.html}
+						size="md"
+					/>
 				{/each}
 			</div>
 		</div>

@@ -20,6 +20,7 @@ body:has(.l\:grid\:rails) {
 	position: relative;
 	inline-size: 100%;
 	max-inline-size: var(--sidebar-width);
+	padding: var(--outline-offset-md) var(--size-base-2xs);
 }
 
 .sidenav > nav.expanded > ff-reveal {
@@ -28,7 +29,9 @@ body:has(.l\:grid\:rails) {
 	overflow: hidden auto;
 	max-block-size: var(--layout-sidebar-height);
 	z-index: var(--layout-z-index-reveal);
-	inline-size: calc(var(--sidebar-width) - var(--ui-size));
+	inline-size: calc(
+		var(--sidebar-width) - var(--ui-size) - var(--size-base-xs)
+	);
 	max-inline-size: calc(100% - var(--ui-size-sm));
 }
 
@@ -60,6 +63,12 @@ body:has(.l\:grid\:rails) {
 	position: relative;
 	inline-size: var(--sidebar-width);
 	max-inline-size: 100%;
+	padding: var(--outline-offset-md) var(--size-base-2xs);
+}
+
+.page-context.l\:reveal\:auto {
+	inline-size: var(--sidebar-width);
+	max-inline-size: 100%;
 }
 
 .l\:grid\:rails {
@@ -68,6 +77,7 @@ body:has(.l\:grid\:rails) {
 	inline-size: 100vw;
 	block-size: 100vh;
 	overflow: hidden;
+	gap: var(--outline-offset-lg);
 	grid-template-areas:
 		'main-header    main-header'
 		'sidenav   			page-context'
