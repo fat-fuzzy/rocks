@@ -123,6 +123,15 @@ async function handleToggleRecipes(event) {
 	})
 }
 
+async function handleToggleContext(event) {
+	const element = 'page-context'
+	return handleToggleUiReveal({
+		event,
+		element,
+		options: {},
+	})
+}
+
 async function handleToggleUsage(event) {
 	const element = 'usage'
 	return handleToggleUiReveal({
@@ -167,6 +176,7 @@ export default {
 	handleToggleBlocks,
 	handleToggleLayouts,
 	handleToggleRecipes,
+	handleToggleContext,
 	handleToggleUsage,
 	handleToggleDecisions,
 	handleToggleLearning,
