@@ -22,7 +22,7 @@
 </script>
 
 <header class={headerClass}>
-	<div class="l:main:50">
+	<div class={layout ? `l:main:50` : ''}>
 		<div class={contentClasses}>
 			{#if main}
 				{@render main()}
@@ -31,9 +31,9 @@
 			{/if}
 		</div>
 	</div>
-	<div class="l:side">
-		{#if side}
+	{#if side}
+		<div class={layout ? `l:side` : ''}>
 			{@render side()}
-		{/if}
-	</div>
+		</div>
+	{/if}
 </header>

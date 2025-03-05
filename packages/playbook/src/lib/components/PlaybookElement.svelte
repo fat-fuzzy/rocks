@@ -107,9 +107,11 @@
 	size="sm"
 >
 	{#snippet main()}
-		<h2 id="doc" class="w:full text:center">Doc</h2>
+		<div class="l:text:md margin:auto">
+			<h2 id="doc">Doc</h2>
+		</div>
 		<EscapeHtml
-			id={content.meta.slug}
+			id="doc"
 			html={content.html}
 			size="md"
 			margin="auto"
@@ -137,6 +139,10 @@
 				</div>
 			</div>
 		</div>
+
+		{#if footer}
+			{@render footer()}
+		{/if}
 	{/snippet}
 
 	{#snippet aside()}
@@ -153,8 +159,4 @@
 			{/key}
 		</div>
 	{/snippet}
-
-	{#if footer}
-		{@render footer()}
-	{/if}
 </PageRails>

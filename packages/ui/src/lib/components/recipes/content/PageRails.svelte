@@ -14,7 +14,6 @@
 		description = `Basic page layout`,
 		pageName,
 		size,
-		layout = 'sidebar',
 		justify,
 		main,
 		nav,
@@ -83,20 +82,21 @@
 {/snippet}
 
 <main {id} class="page-main">
-	<PageHeader size={size as UiSize} {layout} {justify} {...header} />
+	<PageHeader size={size as UiSize} layout="flex" {justify} {...header} />
 	{@render main()}
 </main>
 
 <div class="page-context">
 	<Reveal
+		id="page-context"
 		auto={true}
 		reveal="expanded"
 		title="On this Page"
-		layout="sidebar"
 		position={false}
 		color="primary:600"
 		size="md"
 		breakpoint="xs"
+		formaction="toggleContext"
 	>
 		{@render pageNav()}
 		{#if aside}
