@@ -16,7 +16,7 @@
 		size ? `l:${layout}:${size} reverse` : `l:${layout}`,
 	)
 	let headerClass = $derived(
-		`${layoutClass} ${justifyClass} align:baseline maki:block:lg`,
+		`${layoutClass} ${justifyClass} align:baseline maki:block:lg  ravioli:md`,
 	)
 	let contentClasses = $derived(media ? `l:text:md` : 'l:text:md maki:auto')
 </script>

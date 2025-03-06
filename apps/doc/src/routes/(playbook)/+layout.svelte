@@ -46,7 +46,7 @@
 		/>
 	</div>
 
-	<div class="sidenav">
+	<div class="sidenav ravioli:md">
 		<RevealNav
 			{...sidenav}
 			position={false}
