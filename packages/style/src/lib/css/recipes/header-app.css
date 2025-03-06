@@ -4,12 +4,8 @@
 
 .header-app {
 	position: relative;
-	padding-inline: calc(
-		var(--ui-size-sm) / var(--size-ratio-md) - var(--border-width-md)
-	);
-	padding-block: calc(
-		var(--ui-size-sm) / var(--size-ratio-md) - var(--border-width-md)
-	);
+	padding-inline: var(--ui-size);
+	padding-block: var(--ui-size-sm);
 
 	.expanded > ff-reveal {
 		--y-axis: var(--ui-header-height);

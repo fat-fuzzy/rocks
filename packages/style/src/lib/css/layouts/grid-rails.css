@@ -20,7 +20,7 @@ body:has(.l\:grid\:rails) {
 	position: relative;
 	inline-size: 100%;
 	max-inline-size: var(--sidebar-width);
-	padding: var(--outline-offset-md) var(--size-base-2xs);
+	padding-block: var(--outline-offset-md);
 }
 
 .sidenav > nav.expanded > ff-reveal {
@@ -61,16 +61,14 @@ body:has(.l\:grid\:rails) {
 	grid-area: page-context;
 	justify-self: end;
 	position: relative;
-	inline-size: var(--sidebar-width);
-	max-inline-size: calc(100% - var(--ui-size-lg));
-	padding: var(--outline-offset-md) var(--size-base-2xs);
+	inline-size: 100%;
+	padding-block: var(--outline-offset-md);
 }
 
 .page-context > * {
-	max-inline-size: calc(100% - var(--ui-size-lg));
+	inline-size: 100%;
 }
-
-.page-context .l\:reveal\:auto {
+.page-context > .expanded > form [aria-expanded] {
 	inline-size: 100%;
 }
 
@@ -104,6 +102,8 @@ body:has(.l\:grid\:rails) {
 		scrollbar-gutter: stable;
 		/* prevent parent scroll chaining on y scroll */
 		overscroll-behavior-y: contain;
+		inline-size: var(--sidebar-width);
+		max-inline-size: calc(100% - var(--ui-size-lg));
 	}
 }
 
@@ -122,6 +122,7 @@ body:has(.l\:grid\:rails) {
 		scrollbar-width: thin;
 		/* prevent parent scroll chaining on y scroll */
 		overscroll-behavior-y: contain;
+		inline-size: var(--sidebar-width);
 	}
 
 	.sidenav > nav.collapsed {
