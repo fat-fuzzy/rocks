@@ -2,12 +2,20 @@
  * Grid Rails Layout
  */
 
+html:has(.l\:grid\:rails) {
+	block-size: 100%;
+	scroll-snap-type: y mandatory;
+}
+
 body:has(.l\:grid\:rails) {
 	inline-size: 100vw;
 	block-size: 100vh;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	scroll-snap-align: start;
+	scroll-snap-stop: normal;
+	scroll-padding-block-start: var(--ui-size);
 }
 
 .main-header {
@@ -19,24 +27,29 @@ body:has(.l\:grid\:rails) {
 	justify-self: start;
 	position: relative;
 	inline-size: 100%;
-	max-inline-size: var(--sidebar-width);
 	padding-block: var(--outline-offset-md);
+	max-inline-size: calc(var(--sidebar-width) - 2 * var(--size-base-md));
 }
 
 .sidenav > nav.expanded > ff-reveal {
+	--sidebar-width: var(--layout-sidebar-md);
 	position: absolute;
 	top: var(--ui-header-height);
-	overflow: hidden auto;
 	max-block-size: var(--layout-sidebar-height);
 	z-index: var(--layout-z-index-reveal);
 	inline-size: calc(
 		var(--sidebar-width) - var(--ui-size) - var(--size-base-xs)
 	);
-	max-inline-size: calc(100% - var(--ui-size-sm));
+	max-inline-size: var(--sidebar-width);
+	overflow: hidden auto;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+	overscroll-behavior-y: contain;
 }
 
 .sidenav > nav > form {
 	inline-size: var(--sidebar-width);
+	max-inline-size: 100%;
 }
 
 .sidenav > nav.expanded > form {
@@ -45,31 +58,55 @@ body:has(.l\:grid\:rails) {
 
 .sidenav > nav > form [aria-expanded] {
 	inline-size: 100%;
+	max-inline-size: unset;
 }
 
 .page-main {
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--ink);
 	overflow: hidden auto;
 	grid-area: page-main;
-	min-block-size: unset;
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
-	/* prevent parent scroll chaining on y scroll */
-	overscroll-behavior-y: contain;
+	scrollbar-color: var(--thumb) var(--track);
+	max-block-size: calc(100vh - 2 * var(--ui-header-height));
 }
 
 .page-context {
 	grid-area: page-context;
-	justify-self: end;
 	position: relative;
+	justify-self: end;
 	inline-size: 100%;
 	padding-block: var(--outline-offset-md);
+	max-inline-size: calc(var(--sidebar-width) - 2 * var(--size-base-md));
 }
 
 .page-context > * {
-	inline-size: 100%;
+	inline-size: var(--sidebar-width);
+	max-inline-size: 100%;
 }
+
 .page-context > .expanded > form [aria-expanded] {
 	inline-size: 100%;
+	max-inline-size: unset;
+}
+
+.page-context > .expanded > ff-reveal {
+	--sidebar-width: var(--layout-sidebar-md);
+	position: absolute;
+	top: var(--ui-header-height);
+	max-block-size: var(--layout-sidebar-height);
+	z-index: var(--layout-z-index-reveal);
+	inline-size: calc(
+		var(--sidebar-width) - var(--ui-size) - var(--size-base-xs)
+	);
+	max-inline-size: var(--sidebar-width);
+	overflow: hidden auto;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+	overscroll-behavior-y: contain;
 }
 
 .l\:grid\:rails {
@@ -77,14 +114,16 @@ body:has(.l\:grid\:rails) {
 	padding: 0;
 	inline-size: 100vw;
 	block-size: 100vh;
-	overflow: hidden;
+	max-block-size: 100vh;
 	gap: var(--outline-offset-lg);
 	grid-template-areas:
 		'main-header    main-header'
 		'sidenav   			page-context'
-		'page-main      page-main'
-		'page-main    page-main';
-	grid-template-columns: 1fr 1fr;
+		'page-main      page-main';
+	grid-template-columns: minmax(50%, var(--sidebar-width)) minmax(
+			50%,
+			var(--sidebar-width)
+		);
 }
 
 @media screen and (min-width: 620px) {
@@ -92,18 +131,37 @@ body:has(.l\:grid\:rails) {
 		grid-template-areas:
 			'main-header   main-header'
 			'sidenav  		 page-context'
-			'page-main     page-context'
-			'page-main   page-context';
-		grid-template-columns: 3fr auto;
+			'page-main     page-context';
+		grid-template-columns: 1fr auto;
+	}
+
+	.page-main {
+		max-block-size: calc(100vh - 2 * var(--ui-header-height));
 	}
 
 	.page-context {
 		overflow: hidden auto;
-		scrollbar-gutter: stable;
-		/* prevent parent scroll chaining on y scroll */
 		overscroll-behavior-y: contain;
+		scrollbar-gutter: stable;
+		scrollbar-width: thin;
 		inline-size: var(--sidebar-width);
-		max-inline-size: calc(100% - var(--ui-size-lg));
+		max-inline-size: var(--sidebar-width);
+	}
+	.page-context ff-reveal {
+		position: unset;
+	}
+
+	.page-context .expanded > ff-reveal,
+	.page-context .collapsed > ff-reveal {
+		position: unset;
+		block-size: fit-content;
+		max-block-size: calc(100vh - 2 * var(--ui-header-height));
+		max-inline-size: unset;
+	}
+
+	.page-context .collapsed,
+	.page-context .collapsed > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-collapsed);
 	}
 }
 
@@ -111,38 +169,30 @@ body:has(.l\:grid\:rails) {
 	.l\:grid\:rails {
 		grid-template-areas:
 			'main-header    main-header  main-header'
-			'sidenav        page-main    page-context'
-			'sidenav        page-main  page-context';
-		grid-template-columns: auto 3fr auto;
+			'sidenav        page-main    page-context';
+		grid-template-columns: auto 1fr auto;
 	}
 
 	.sidenav {
-		overflow: hidden auto;
-		scrollbar-gutter: stable;
-		scrollbar-width: thin;
-		/* prevent parent scroll chaining on y scroll */
-		overscroll-behavior-y: contain;
 		inline-size: var(--sidebar-width);
+		max-inline-size: unset;
 	}
 
-	.sidenav > nav.collapsed {
-		--sidebar-width: var(--layout-sidebar-collapsed);
+	.sidenav > nav > ff-reveal {
+		position: unset;
 	}
 
 	.sidenav > nav.expanded > ff-reveal,
 	.sidenav > nav.collapsed > ff-reveal {
 		position: unset;
 		block-size: fit-content;
-		max-block-size: unset;
+		max-block-size: calc(100vh - 2 * var(--ui-header-height));
 		max-inline-size: var(--sidebar-width);
 	}
 
-	.page-context {
-		overflow: hidden auto;
-		scrollbar-gutter: stable;
-		scrollbar-width: thin;
-		/* prevent parent scroll chaining on y scroll */
-		overscroll-behavior-y: contain;
+	.sidenav > nav.collapsed,
+	.sidenav > nav.collapsed > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-collapsed);
 	}
 }
 
