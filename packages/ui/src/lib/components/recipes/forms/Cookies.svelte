@@ -54,8 +54,9 @@
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : undefined,
 	)
 
-	let layoutClasses = styleHelper.getLayoutStyles({
+	let layoutClasses = styleHelper.getStyles({
 		size,
+		font: 'md',
 		layout,
 		container,
 	})
@@ -134,6 +135,7 @@
 							name="cookies"
 							{size}
 							variant="bare"
+							font="md"
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
@@ -149,6 +151,7 @@
 								{size}
 								color="primary"
 								asset="none"
+								font="md"
 								variant="bare"
 								justify="between"
 								onfocus={handleFocus}
@@ -163,6 +166,7 @@
 							name="cookies"
 							{size}
 							variant="bare"
+							font="md"
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
@@ -180,6 +184,7 @@
 								color="primary"
 								asset="none"
 								variant="bare"
+								font="md"
 								justify="between"
 								onfocus={handleFocus}
 								onblur={handleBlur}
@@ -192,9 +197,10 @@
 				{#snippet footer()}
 					<Button
 						id="button-submit-cookies"
-						{size}
+						size="md"
 						{color}
 						{variant}
+						font="md"
 						name="submit"
 						alignSelf="center"
 						{disabled}

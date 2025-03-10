@@ -9,6 +9,7 @@
 		label,
 		value = $bindable(),
 		required,
+		font,
 		size,
 		color,
 		variant,
@@ -21,9 +22,10 @@
 	}: InputProps = $props()
 
 	let errors = $derived(validator.getFieldErrors(name))
+	let fontClass = $derived(font ? `font:${font}` : '')
 </script>
 
-<label class={`l:stack:${size}`}>
+<label class={`l:stack:${size} ${fontClass}`}>
 	{label}
 	<input
 		{id}
@@ -40,4 +42,4 @@
 	/>
 </label>
 
-<Feedback {id} {errors} {size} {variant} />
+<Feedback {id} {errors} {size} {variant} {font} />

@@ -89,6 +89,7 @@
 		styleHelper.getStyles({
 			color,
 			size,
+			font,
 			variant,
 			justify,
 			layout,
@@ -139,7 +140,7 @@
 	{/if}
 </label>
 {#if hint}
-	<Feedback {id} {status} context={UiTextContext.form} {size} {variant}>
+	<Feedback {id} {status} context={UiTextContext.form} {size} {font} {variant}>
 		{hint}
 	</Feedback>
 {/if}

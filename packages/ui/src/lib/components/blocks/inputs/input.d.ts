@@ -27,6 +27,7 @@ export type FeedbackMessage = {
 export type InputFeedbackProps = {
 	id: string
 	size?: string
+	font?: string
 	variant?: string
 	errors?: string[]
 }
