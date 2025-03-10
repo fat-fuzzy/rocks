@@ -118,10 +118,10 @@
 			element="article"
 		/>
 
-		<div class="maki:block:2xl">
+		<section id="playbook" class="maki:block size:2xl">
 			<div class="l:text:lg maki:auto size:xl">
 				<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
-					<h2 id="playbook" class="w:full text:center">Playbook</h2>
+					<h2 class="w:full text:center">Playbook</h2>
 				</Magic>
 			</div>
 			<div class="media">
@@ -138,7 +138,7 @@
 					/>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		{#if footer}
 			{@render footer()}
