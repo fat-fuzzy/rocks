@@ -107,7 +107,7 @@
 	size="sm"
 >
 	{#snippet main()}
-		<div class="l:text:md margin:auto">
+		<div class="l:text:md maki:auto">
 			<h2 id="doc">Doc</h2>
 		</div>
 		<EscapeHtml
@@ -146,7 +146,7 @@
 	{/snippet}
 
 	{#snippet aside()}
-		<div class="l:stack:md">
+		<div class="l:stack:2xs">
 			{#key category}
 				<PropsDoc meta={content.meta} />
 				<PropsDemo

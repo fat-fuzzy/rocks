@@ -30,9 +30,7 @@
 
 <!-- <Api categories={['app']} {meta} {path} {actionPath} {redirect} /> -->
 {#if categories && categories.length > 0 && meta.props_style}
-	<div class="ui:menu">
-		<Api {categories} {path} {actionPath} {redirect} {meta} />
-	</div>
+	<Api {categories} {path} {actionPath} {redirect} {meta} />
 {:else}
 	{@render comingSoon()}
 {/if}

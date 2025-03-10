@@ -73,7 +73,7 @@
 					>
 						{familyName}
 					</summary>
-					<div class="l:flex:2xs justify:stretch align:start">
+					<div class="l:flex:2xs justify:stretch align:start ravioli:xs">
 						{#each family.items as styleInputGroup}
 							<StyleInput
 								{family}

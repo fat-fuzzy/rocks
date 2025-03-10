@@ -16,7 +16,7 @@
 {#if !meta}
 	{@render comingSoon()}
 {:else}
-	{#if meta.props_style}
+	<!-- {#if meta.props_style}
 		{@const blocks = meta.props_style.blocks}
 		{@const layouts = meta.props_style.layouts}
 		<details class="l:stack:2xs">
@@ -56,7 +56,7 @@
 				{/if}
 			</ul>
 		</details>
-	{/if}
+	{/if} -->
 	{#if meta.props_state}
 		<details class="l:stack:2xs">
 			<summary

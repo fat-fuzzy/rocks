@@ -88,6 +88,7 @@
 				? `l:${layout}:lg`
 				: `l:${layout}:${size}`,
 	)
+
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
 	)
@@ -137,7 +138,7 @@
 		size="sm"
 	>
 		{#snippet main()}
-			<div class="l:text:md margin:auto">
+			<div class="l:text:md maki:auto">
 				<h2 id="doc">Doc</h2>
 			</div>
 			<EscapeHtml
@@ -147,13 +148,13 @@
 				margin="auto"
 				element="section"
 			/>
-			<section class="maki:block size:2xl">
-				<div class="l:text:lg maki:auto size:xl">
+			<section id="playbook" class="maki:block size:2xl">
+				<div class="l:text:md maki:auto size:xl">
 					<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
-						<h2 id="playbook" class="w:full text:center">Playbook</h2>
+						<h2 class="text:center">Playbook</h2>
 					</Magic>
 				</div>
-				<div class={`media ${layoutClass}`}>
+				<div class={`l:text:md maki:auto ${layoutClass}`}>
 					{@render categoryElements()}
 				</div>
 			</section>
@@ -164,7 +165,7 @@
 		{/snippet}
 
 		{#snippet aside()}
-			<div class="l:stack:md">
+			<div class="l:stack:2xs">
 				{#key category}
 					<PropsDoc meta={content.meta} />
 					<PropsDemo {path} meta={content.meta} categories={[category]} />
@@ -173,7 +174,7 @@
 		{/snippet}
 	</PageRails>
 {:else}
-	<section class="l:text:lg snap:start">
+	<section class="l:text:lg">
 		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
 			{category}
 		</svelte:element>
