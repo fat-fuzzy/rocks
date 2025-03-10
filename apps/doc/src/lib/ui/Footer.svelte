@@ -15,7 +15,7 @@
 
 <footer class={footerClass}>
 	<details
-		class={`l:burrito:3xl color:neutral font:md maki:block:xl ${aboutContainerClass}`}
+		class={`l:burrito:3xl font:md maki:block:xl ${aboutContainerClass}`}
 		open={footerOpen}
 	>
 		<summary class="ravioli:2xs">About</summary>
