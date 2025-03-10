@@ -10,24 +10,3 @@
 		padding-block-start: calc(var(--font-size-h1) + var(--size-base-2xl));
 	}
 }
-
-/* This Centers content in the sidebar's main section */
-/* TODO: Figure out how to handle this better (use container query ?)
- * Currently used for media page: see also blocks/media.css
- */
-
-[class*='page:media/'] main {
-	position: relative;
-}
-
-[class*='page:media/'] main > [class*='l:sidebar'] {
-	padding: var(--ui-size);
-}
-
-[class^='page:'] {
-	min-block-size: 100vh;
-}
-
-[class^='page:']h2:target {
-	scroll-margin-block: 2.5em; /* TODO: fix magic number */
-}
