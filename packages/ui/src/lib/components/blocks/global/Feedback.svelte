@@ -12,6 +12,7 @@
 		context,
 		status,
 		size,
+		font,
 		variant,
 		container,
 		children,
@@ -19,7 +20,7 @@
 
 	let feedbackClasses = $derived(
 		styleHelper.getFeedbackStyles(
-			{size, asset, variant, align, justify, container},
+			{size, font, asset, variant, align, justify, container},
 			status as UiStatus,
 			context as UiTextContext,
 		),

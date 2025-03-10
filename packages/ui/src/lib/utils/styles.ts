@@ -101,14 +101,21 @@ function getFeedbackStyles(
 	status: UiStatus,
 	context: UiTextContext,
 ): string {
-	let {size, font, asset, assetType, variant, align, justify, container} = props
+	let {
+		size,
+		font,
+		asset,
+		assetType,
+		variant,
+		align,
+		justify,
+		layer,
+		container,
+	} = props
 
 	let variantClass = variant ? `variant:${variant}` : ''
 	let sizeClass = size ? `size:${size}` : ''
 	let fontClass = font ? `font:${font}` : ''
-	if (fontClass) {
-		fontClass = context === 'form' ? `${fontClass}:minus` : fontClass
-	}
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 	let statusClass = status ? `status:${status}` : ''
@@ -120,10 +127,11 @@ function getFeedbackStyles(
 			: ''
 	let typeClass = context ? `feedback:${context}` : 'feedback'
 	let backgroundClass = context === 'code' ? '' : `bg:${status}:100`
+	let layerClass = layer ? `layer:${layer}` : ''
 	let containerClass =
 		container && context !== 'code' ? `l:${container}:${size}` : ''
 
-	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${sizeClass} ${variantClass} ${alignClass} ${justifyClass} ${backgroundClass} ${containerClass}`
+	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${sizeClass} ${fontClass} ${variantClass} ${alignClass} ${justifyClass} ${layerClass} ${backgroundClass} ${containerClass}`
 
 	return feedbackClasses.trim()
 }

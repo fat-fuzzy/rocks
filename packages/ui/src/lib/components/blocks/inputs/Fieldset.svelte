@@ -28,6 +28,7 @@
 	let classes = $derived(
 		styleHelper.getStyles({
 			size,
+			font,
 			align,
 			justify,
 			variant,
