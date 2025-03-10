@@ -1,3 +1,5 @@
+/* Scroll container */
+
 .scroll\:y {
 	--lightness-scrollbar: var(--lightness-base);
 	--chroma-scrollbar: var(--chroma-base);
@@ -18,6 +20,14 @@
 	scrollbar-color: var(--thumb) var(--track);
 }
 
+.scroll\:y.snap {
+	scroll-snap-type: y mandatory;
+}
+
+.scroll\:x.snap {
+	scroll-snap-type: x mandatory;
+}
+
 .snap\:start {
 	scroll-snap-align: start;
 	scroll-snap-stop: normal;
@@ -30,21 +40,17 @@
 	scroll-padding-block: var(--ui-size);
 }
 
-.scroll\:y.snap {
-	scroll-snap-type: y mandatory;
+/* Scroll content */
+.snap\:start {
+	scroll-snap-align: start;
+	scroll-snap-stop: normal;
+	scroll-padding-block-start: var(--ui-size);
 }
 
-.scroll\:x.snap {
-	scroll-snap-type: x mandatory;
-}
-
-.noscrollbar {
-	scrollbar-width: none;
-
-	&::-webkit-scrollbar {
-		width: 0;
-		height: 0;
-	}
+.snap\:center {
+	scroll-snap-align: center;
+	scroll-snap-stop: normal;
+	scroll-padding-block: var(--ui-size);
 }
 
 @media (prefers-reduced-motion: no-preference) {
