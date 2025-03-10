@@ -56,10 +56,7 @@
 					color,
 					container: 'ravioli',
 				})}
-				<li
-					class="raviolink"
-					aria-current={currentHash === slug ? 'page' : undefined}
-				>
+				<li aria-current={currentHash === slug ? 'page' : undefined}>
 					<a
 						id={`tab-${slug}`}
 						href={`#${slug}`}
@@ -93,15 +90,18 @@
 		reveal="expanded"
 		title="On this Page"
 		position={false}
-		color="primary:600"
+		color="primary"
 		size="md"
+		variant="outline"
 		breakpoint="xs"
 		formaction="toggleContext"
 	>
-		{@render pageNav()}
-		{#if aside}
-			{@render aside()}
-		{/if}
+		<div class="l:stack:2xs">
+			{@render pageNav()}
+			{#if aside}
+				{@render aside()}
+			{/if}
+		</div>
 	</Reveal>
 </div>
 
