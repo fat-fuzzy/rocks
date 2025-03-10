@@ -19,9 +19,9 @@
 		formaction = 'saveCookiePreferences',
 		redirect,
 		layout = 'stack',
-		container = 'burrito',
+		container = 'center',
 		level = 3, // <h*> element level
-		size = 'md',
+		size = 'xl',
 		color = UiColor.accent,
 		variant = UiVariant.fill,
 	}: CookiesPreferencesProps = $props()
@@ -110,6 +110,7 @@
 		container="burrito:xl "
 		size="lg"
 		font="md"
+		layer="1"
 	>
 		<form
 			{id}
