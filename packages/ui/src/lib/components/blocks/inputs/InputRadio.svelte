@@ -29,7 +29,7 @@
 		oninput,
 	}: InputProps = $props()
 
-	function handleInput(event) {
+	function handleInput(event: Event) {
 		if (oninput) oninput(payload)
 	}
 
