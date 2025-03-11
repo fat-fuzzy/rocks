@@ -7,7 +7,7 @@
 
 [class*='fixed'] {
 	position: fixed;
-	z-index: var(--layout-z-index-layer);
+	z-index: var(--layout-z-index-fixed);
 }
 
 [class*='place'] {

@@ -149,6 +149,9 @@
 			"3": {
 				"$value": "3"
 			},
+			"4": {
+				"$value": "4"
+			},
 			"inset": {
 				"$value": "{layout.z-index.0}"
 			},
@@ -160,6 +163,9 @@
 			},
 			"reveal": {
 				"$value": "{layout.z-index.3}"
+			},
+			"fixed": {
+				"$value": "{layout.z-index.4}"
 			}
 		}
 	}
