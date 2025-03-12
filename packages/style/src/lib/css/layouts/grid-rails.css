@@ -32,17 +32,21 @@ body:has(.l\:grid\:rails) {
 }
 
 .sidenav > nav.expanded > ff-reveal {
-	--sidebar-width: var(--layout-sidebar-md);
 	position: absolute;
 	top: var(--ui-header-height);
 	max-block-size: var(--layout-sidebar-height);
-	z-index: var(--layout-z-index-reveal);
-	inline-size: calc(var(--sidebar-width) - var(--ui-size-lg));
-	max-inline-size: var(--sidebar-width);
+	/* inline-size: calc(var(--sidebar-width) - var(--ui-size-lg));
+	max-inline-size: var(--sidebar-width); */
 	overflow: hidden auto;
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	overscroll-behavior-y: contain;
+	left: var(--ui-size);
+	right: var(--ui-size);
+	inline-size: calc(100vw - 2 * var(--ui-size));
+	max-inline-size: unset;
+	z-index: var(--layout-z-index-reveal);
+	box-shadow: var(--shadow-md);
 }
 
 .sidenav > nav > form {
@@ -70,11 +74,11 @@ body:has(.l\:grid\:rails) {
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
 	max-block-size: calc(100vh - 2 * var(--ui-header-height));
+	padding-inline: var(--ui-size);
 }
 
 .page-context {
 	grid-area: page-context;
-	position: relative;
 	justify-self: end;
 	inline-size: 100%;
 	padding-block: var(--outline-offset-md);
@@ -94,20 +98,24 @@ body:has(.l\:grid\:rails) {
 .page-context > .expanded > ff-reveal {
 	--sidebar-width: var(--layout-sidebar-md);
 	position: absolute;
-	top: var(--ui-header-height);
+	top: calc(2 * var(--ui-header-height) + var(--outline-offset-md));
 	max-block-size: var(--layout-sidebar-height);
 	z-index: var(--layout-z-index-reveal);
-	inline-size: calc(
-		var(--sidebar-width) - var(--ui-size) - var(--size-base-xs)
-	);
 	max-inline-size: var(--sidebar-width);
 	overflow: hidden auto;
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	overscroll-behavior-y: contain;
+	left: var(--ui-size);
+	right: var(--ui-size);
+	inline-size: calc(100vw - 2 * var(--ui-size));
+	max-inline-size: unset;
+	z-index: var(--layout-z-index-reveal);
+	box-shadow: var(--shadow-md);
 }
 
 .l\:grid\:rails {
+	position: relative;
 	margin: 0;
 	padding: 0;
 	inline-size: 100vw;
@@ -143,7 +151,7 @@ body:has(.l\:grid\:rails) {
 		scrollbar-gutter: stable;
 		scrollbar-width: thin;
 		inline-size: var(--sidebar-width);
-		max-inline-size: var(--sidebar-width);
+		max-inline-size: 100%;
 	}
 	.page-context ff-reveal {
 		position: unset;
@@ -154,7 +162,9 @@ body:has(.l\:grid\:rails) {
 		position: unset;
 		block-size: fit-content;
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));
-		max-inline-size: unset;
+		inline-size: var(--sidebar-width);
+		max-inline-size: 100%;
+		box-shadow: unset;
 	}
 
 	.page-context .collapsed,
@@ -173,7 +183,6 @@ body:has(.l\:grid\:rails) {
 
 	.sidenav {
 		inline-size: var(--sidebar-width);
-		max-inline-size: unset;
 	}
 
 	.sidenav > nav > ff-reveal {
@@ -185,7 +194,9 @@ body:has(.l\:grid\:rails) {
 		position: unset;
 		block-size: fit-content;
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));
+		inline-size: 100%;
 		max-inline-size: var(--sidebar-width);
+		box-shadow: unset;
 	}
 
 	.sidenav > nav.collapsed,
