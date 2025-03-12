@@ -67,9 +67,13 @@
 	}
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let styles = $derived(playbookActor.styles)
+	let {settings} = $derived(playbookActor.app)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
+	//== App settings (user controlled)
+	let brightness = $derived(settings.brightness || '')
+	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 	//== Layout settings (user controlled)
 	// Container options
 	// - [container + size] work together
@@ -120,7 +124,7 @@
 
 		<section id="playbook" class="maki:block size:2xl">
 			<div class="l:text:lg maki:auto size:xl">
-				<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
+				<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
 					<h2 class="w:full text:center">Playbook</h2>
 				</Magic>
 			</div>
