@@ -12,6 +12,7 @@ button {
 
 	color: var(--ink);
 	background-color: var(--shade);
+	border-color: var(--accent);
 	display: flex;
 	align-items: center;
 	justify-content: var(--justify, center);
