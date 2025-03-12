@@ -103,7 +103,49 @@ ff-callout[class*='magic'] {
 	}
 }
 
-.ink\:white {
+.magic\:dawn {
+	--magic-gradient: linear-gradient(
+		148deg,
+		color(display-p3 0.92 0.64 0.77) 12% 12%,
+		color(display-p3 0.71 0.65 0.96) 49% 49%,
+		color(display-p3 0.63 0.82 0.83) 88% 88%
+	);
+	--lightness-contrast: var(--color-lightness-600);
+	--chroma-contrast: var(--color-chroma-600);
+	--hue: var(--color-theme-primary);
+
+	&[class*='svg'] {
+		--magic-gradient: linear-gradient(
+			148deg,
+			color(display-p3 0.92 0.64 0.77) 22% 22%,
+			color(display-p3 0.71 0.65 0.96) 49% 49%,
+			color(display-p3 0.63 0.82 0.83) 88% 88%
+		);
+	}
+}
+
+.magic\:dusk {
+	--magic-gradient: linear-gradient(
+		148deg,
+		color(display-p3 0.75 0.16 0.41) 12% 12%,
+		color(display-p3 0.21 0.14 0.51) 49% 49%,
+		color(display-p3 0.24 0.54 0.55) 88% 88%
+	);
 	--lightness-contrast: var(--color-lightness-000);
 	--chroma-contrast: var(--color-chroma-000);
+	--hue: var(--color-theme-primary);
+
+	&[class*='svg'] {
+		--magic-gradient: linear-gradient(
+			148deg,
+			color(display-p3 0.75 0.16 0.41) 22% 22%,
+			color(display-p3 0.21 0.14 0.51) 49% 49%,
+			color(display-p3 0.24 0.54 0.55) 88% 88%
+		);
+	}
 }
+
+/* .ink\:white {
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma-contrast: var(--color-chroma-000);
+} */

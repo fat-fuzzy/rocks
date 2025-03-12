@@ -76,11 +76,7 @@
 	let componentNames = $derived(Object.keys(items))
 	//== App settings (user controlled)
 	let brightness = $derived(settings.brightness || '')
-	let contrast = $derived(settings.contrast || '')
-	let surfaceClass = $derived(`surface:0:neutral`)
-	let settingsClasses = $derived(
-		`settings:${brightness}:${contrast} ${surfaceClass}`,
-	)
+	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 	let layoutClass = $derived(
 		category === 'tokens'
 			? `l:stack:${size}`
@@ -150,7 +146,7 @@
 			/>
 			<section id="playbook" class="maki:block size:2xl">
 				<div class="l:text:md maki:auto size:xl">
-					<Magic spell="bleu" uno="magic" due="sparkles" size="md" grow={true}>
+					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
 						<h2 class="text:center">Playbook</h2>
 					</Magic>
 				</div>
