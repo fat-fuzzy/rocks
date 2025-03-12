@@ -99,7 +99,7 @@
 		{@const SpecifiedElement = items[name]}
 		<article
 			id={`ravioli-${title}`}
-			class={`variant:bare w:auto ui:${name.toLowerCase()} ${settingsClasses}`}
+			class={`variant:bare w:auto ui:${name.toLowerCase()}`}
 		>
 			<a
 				href={`${link}/${name}`}

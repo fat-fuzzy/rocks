@@ -39,6 +39,7 @@ export type RevealLayoutProps = LayoutProps &
 	}
 
 export type SidebarLayoutProps = LayoutProps & {
+	theme: string
 	main: Snippet
 	side: Snippet
 }

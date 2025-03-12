@@ -3,6 +3,7 @@
 	import {setContext} from 'svelte'
 	import playbook from '@fat-fuzzy/playbook'
 	import PlaybookSettings from '$lib/forms/actions/playbook-settings.svelte'
+	import {page} from '$app/state'
 
 	const {StylesApi, Playbook} = playbook
 
@@ -17,6 +18,6 @@
 	setContext('playbookSettings', playbookSettings)
 </script>
 
-<Playbook app={playbookSettings.app}>
+<Playbook app={{settings: page.data.settings}}>
 	{@render children()}
 </Playbook>
