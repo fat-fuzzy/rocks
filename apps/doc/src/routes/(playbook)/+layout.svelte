@@ -19,6 +19,12 @@
 
 	let brightness = $derived(appSettings.brightness)
 	let contrast = $derived(appSettings.contrast)
+	let pageClass = $derived(
+		ui.utils.format.getClassNameFromPathname(page.url.pathname),
+	)
+	let themeClass = $derived(
+		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
+	)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
 		inputs.switch[0].initial = brightness === 'night' ? 'active' : 'inactive'
@@ -27,7 +33,7 @@
 	})
 </script>
 
-<LayoutRails {sidenav}>
+<LayoutRails {sidenav} theme={themeClass}>
 	<div class="main-header">
 		<Header
 			id="nav"
@@ -42,7 +48,7 @@
 				settings,
 			}}
 			breakpoint="sm"
-			app={{settings}}
+			app={appSettings}
 		/>
 	</div>
 
