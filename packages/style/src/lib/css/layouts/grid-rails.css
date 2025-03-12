@@ -37,9 +37,7 @@ body:has(.l\:grid\:rails) {
 	top: var(--ui-header-height);
 	max-block-size: var(--layout-sidebar-height);
 	z-index: var(--layout-z-index-reveal);
-	inline-size: calc(
-		var(--sidebar-width) - var(--ui-size) - var(--size-base-xs)
-	);
+	inline-size: calc(var(--sidebar-width) - var(--ui-size-lg));
 	max-inline-size: var(--sidebar-width);
 	overflow: hidden auto;
 	scrollbar-gutter: stable;

@@ -91,6 +91,8 @@
 		title="On this Page"
 		position={false}
 		color="primary"
+		justify="evenly"
+		font="sm"
 		size="md"
 		variant="outline"
 		breakpoint="xs"

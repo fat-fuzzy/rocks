@@ -51,7 +51,8 @@
 			{...sidenav}
 			position={false}
 			place="left"
-			justify="between"
+			justify="evenly"
+			font="sm"
 			size="md"
 			dismiss="click"
 		/>
