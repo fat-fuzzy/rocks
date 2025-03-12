@@ -97,6 +97,10 @@
 	--justify: space-evenly;
 }
 
+.justify\:around {
+	--justify: space-around;
+}
+
 .justify\:between {
 	--justify: space-between;
 }

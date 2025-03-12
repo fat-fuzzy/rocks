@@ -30,6 +30,7 @@
 		position,
 		color,
 		size,
+		font,
 		breakpoint,
 		// trigger = ButtonEvent.click,
 		dismiss = DismissEvent.click,
@@ -75,9 +76,13 @@
 			layer,
 		}),
 	)
-	let formClasses = $derived(`form:${expanded}`)
-	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : '' // TODO: fix this
-	let revealLayoutClasses = $derived(`${expanded} ${layoutClasses}`)
+	let formClasses = $derived(expanded ? `form:${expanded}` : '')
+	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : ''
+
+	// TODO: fix this
+	let revealLayoutClasses = $derived(
+		expanded ? `${expanded} ${layoutClasses}` : layoutClasses,
+	)
 	let revealClasses = $derived(
 		auto
 			? `l:reveal:auto ${revealLayoutClasses}`
@@ -184,7 +189,7 @@
 			states={revealStates}
 			{disabled}
 		>
-			<span class="ellipsis">{title}</span>
+			<span class={`ellipsis text:${justify} font:${font}`}>{title}</span>
 		</Expand>
 	</form>
 	<ff-reveal id={`${id}-reveal`}>

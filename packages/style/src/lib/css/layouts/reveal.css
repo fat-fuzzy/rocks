@@ -20,6 +20,12 @@
 	}
 }
 
+[class^='l:reveal'] > form > [aria-expanded] {
+	font-family: var(--font-family-heading);
+	font-weight: var(--font-weight-ui);
+	padding: var(--ui-size-sm) var(--ui-size);
+}
+
 ff-reveal {
 	/* transition: transform 250ms ease-in-out; */
 	--lightness-scrollbar: var(--lightness-base);
@@ -56,4 +62,11 @@ ff-reveal {
 
 [class^='l:reveal'][class^='bp:'].l\:stack:only-child {
 	inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
+}
+
+@media screen and (min-width: 1024px) {
+	.form\:collapsed + ff-reveal,
+	.collapsed > ff-reveal {
+		margin-block-start: var(--outline-offset-lg);
+	}
 }

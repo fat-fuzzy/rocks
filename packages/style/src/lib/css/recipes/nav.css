@@ -14,7 +14,7 @@ nav li {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding-block: calc(var(--size-base-3xs) / var(--size-ratio-md));
+	padding-block: var(--outline-offset-lg);
 	padding-inline: var(--size-base-3xs);
 	margin-block: 0;
 	line-height: var(--font-leading-nav);
@@ -62,7 +62,7 @@ nav li a:visited {
 
 /* == RevealNav (tree-like navigation menus) == */
 ul.depth-1 {
-	--gap: 0;
+	--grid-gap: var(--outline-offset-lg);
 	padding-inline-start: 0;
 }
 

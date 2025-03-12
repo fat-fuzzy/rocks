@@ -1,5 +1,5 @@
 details {
-	padding-inline: var(--outline-offset-xs);
+	padding: var(--outline-offset-xs);
 }
 
 p + details {
@@ -12,8 +12,9 @@ details > summary {
 	color: var(--color-ui-ink, var(--ink));
 	background-color: var(--color-ui-bg, var(--shade));
 	border: var(--border-width-md) solid var(--color-ui-border, var(--accent));
+	border-radius: var(--border-radius-base);
 	font-weight: var(--font-weight-ui);
-	padding: var(--ui-size-sm);
+	padding: var(--ui-size-sm) var(--ui-size);
 	max-width: 100%;
 	background-color: var(--shade);
 }
@@ -23,8 +24,11 @@ details > summary + * {
 }
 
 details > summary::before {
+	margin-inline-end: var(--ui-size-lg);
+}
+
+details > summary::before {
 	content: '👉';
-	margin-inline-end: var(--ui-size-sm);
 }
 
 details[open] > summary {
@@ -36,7 +40,6 @@ details[open] > summary {
 
 details[open] > summary::before {
 	content: '👇';
-	margin-inline-end: var(--ui-size-sm);
 }
 
 details > summary:hover {
