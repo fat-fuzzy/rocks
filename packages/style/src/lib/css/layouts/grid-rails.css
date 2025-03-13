@@ -90,7 +90,7 @@ body:has(.l\:grid\:rails) {
 	max-inline-size: 100%;
 }
 
-.page-context > .expanded > form [aria-expanded] {
+.page-context form:first-of-type [aria-expanded] {
 	inline-size: 100%;
 	max-inline-size: unset;
 }

@@ -89,11 +89,15 @@ export const load = async ({locals, params, url, cookies}) => {
 	}
 
 	let settings
+	let context
 	let styles
 	let ui
 
 	if (locals.settings) {
 		settings = locals.settings
+	}
+	if (locals.context) {
+		context = locals.context
 	}
 	if (locals.dsStyles) {
 		styles = locals.dsStyles
@@ -104,6 +108,7 @@ export const load = async ({locals, params, url, cookies}) => {
 
 	return {
 		sidebar,
+		context,
 		markdowns,
 		content,
 		styles,

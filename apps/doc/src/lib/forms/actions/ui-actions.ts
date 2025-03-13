@@ -124,7 +124,7 @@ async function handleToggleRecipes(event) {
 }
 
 async function handleToggleContext(event) {
-	const element = 'page-context'
+	const element = 'context'
 	return handleToggleUiReveal({
 		event,
 		element,

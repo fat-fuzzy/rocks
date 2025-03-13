@@ -5,6 +5,7 @@ import type {
 	UiSize,
 	SidebarLayoutProps,
 	NavItem,
+	UiRevealState,
 } from '$types'
 
 type ProseProps = {
@@ -50,6 +51,7 @@ export type PageRailsProps = UiLayoutProps &
 		main: Snippet
 		nav: NavItem
 		aside?: Snippet
+		context?: UiRevealState
 		footer?: Snippet
 	}
 
