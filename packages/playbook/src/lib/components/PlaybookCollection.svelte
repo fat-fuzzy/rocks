@@ -132,6 +132,7 @@
 		hash={page.url.hash}
 		nav={pageNav}
 		size="sm"
+		context={page.data.context}
 	>
 		{#snippet main()}
 			<div class="l:text:md maki:auto">

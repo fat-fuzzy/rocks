@@ -19,6 +19,7 @@
 		nav,
 		aside,
 		footer,
+		context,
 	}: PageRailsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
@@ -85,9 +86,9 @@
 
 <div class="page-context ravioli:md">
 	<Reveal
-		id="page-context"
+		id="context"
 		auto={true}
-		reveal="expanded"
+		reveal={context.reveal}
 		title="On this Page"
 		position={false}
 		color="primary"

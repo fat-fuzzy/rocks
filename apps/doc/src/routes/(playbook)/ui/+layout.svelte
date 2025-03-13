@@ -13,8 +13,8 @@
 	let {children}: Props = $props()
 
 	let playbookSettings = new PlaybookSettings()
-	let context = new StylesApi()
-	setContext('playbookContext', context)
+	let playbookContext = new StylesApi()
+	setContext('playbookContext', playbookContext)
 	setContext('playbookSettings', playbookSettings)
 </script>
 

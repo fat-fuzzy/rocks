@@ -1,16 +1,10 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import playbook from '@fat-fuzzy/playbook'
 	import Footer from '$lib/ui/Footer.svelte'
 
 	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
-	const {PlaybookCollection} = playbook
-
-	let path = $derived(page.url.pathname)
-
-	let formaction = 'updateState'
 	let title = 'Fat Fuzzy UI'
 	let description = `${title} | Doc`
 
@@ -27,6 +21,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	size="sm"
+	context={page.data.context}
 >
 	{#snippet main()}
 		<div class="w:full ravioli:md">

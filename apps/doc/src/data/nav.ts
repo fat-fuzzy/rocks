@@ -9,7 +9,7 @@ export const links = [
 
 const navBase = {
 	id: 'sidebar',
-	title: 'Content',
+	title: 'content',
 	reveal: 'collapsed',
 	breakpoint: 'sm',
 	size: 'sm',
