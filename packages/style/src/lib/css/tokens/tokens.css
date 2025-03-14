@@ -5,9 +5,11 @@
  */
 
 :root {
-  --border-radius-base: 0.16rem;
+  --border-radius-base: var(--border-radius-md);
   --border-radius-lg:  0.34rem;
+  --border-radius-md: 0.26rem;
   --border-radius-nul: 0;
+  --border-radius-sm: 0.16rem;
   --border-radius-xl: 0.66rem;
   --border-width-lg: 2px;
   --border-width-md: 1px;
@@ -183,7 +185,7 @@
   --layout-sidebar-2xs: calc(var(--layout-sidebar-xs) / var(--size-ratio-sm));
   --layout-sidebar-3xl: calc(var(--layout-sidebar-2xl) * var(--size-ratio-lg));
   --layout-sidebar-base: 24ch;
-  --layout-sidebar-collapsed: 6em;
+  --layout-sidebar-collapsed: 6.5em;
   --layout-sidebar-height: 60vh;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
