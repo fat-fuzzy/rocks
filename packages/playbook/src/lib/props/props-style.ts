@@ -309,9 +309,10 @@ const asset = {
 }
 
 const spell = {
+	subgroup: 'spell',
 	initial: 'bleu',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'stack',
 	size: '2xs',
 	variant: 'bare',
 	items: [
@@ -321,10 +322,39 @@ const spell = {
 	],
 }
 
+const level = {
+	subgroup: 'spell',
+	initial: 'paradiso',
+	input: 'toggle',
+	layout: 'stack',
+	size: '2xs',
+	variant: 'bare',
+	items: [
+		{
+			id: 'level.inferno',
+			label: 'inferno',
+			value: 'inferno',
+			parent: 'spell.dante',
+		},
+		{
+			id: 'level.purgatorio',
+			label: 'purgatorio',
+			value: 'purgatorio',
+			parent: 'spell.dante',
+		},
+		{
+			id: 'level.paradiso',
+			label: 'paradiso',
+			value: '',
+		},
+	],
+}
+
 const uno = {
+	subgroup: 'genie',
 	initial: 'magic',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex grow',
 	size: '2xs',
 	variant: 'bare',
 	items: [
@@ -377,9 +407,10 @@ const uno = {
 }
 
 const due = {
+	subgroup: 'genie',
 	initial: 'sparkles',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex grow',
 	size: '2xs',
 	variant: 'bare',
 	items: [
@@ -427,33 +458,6 @@ const due = {
 			shape: 'square',
 			asset: 'magic',
 			assetType: 'svg',
-		},
-	],
-}
-
-const level = {
-	initial: 'paradiso',
-	input: 'toggle',
-	layout: 'switcher',
-	size: '2xs',
-	variant: 'bare',
-	items: [
-		{
-			id: 'level.inferno',
-			label: 'inferno',
-			value: 'inferno',
-			parent: 'spell.dante',
-		},
-		{
-			id: 'level.purgatorio',
-			label: 'purgatorio',
-			value: 'purgatorio',
-			parent: 'spell.dante',
-		},
-		{
-			id: 'level.paradiso',
-			label: 'paradiso',
-			value: '',
 		},
 	],
 }

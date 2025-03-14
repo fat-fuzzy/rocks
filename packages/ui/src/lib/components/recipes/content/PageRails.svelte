@@ -41,7 +41,7 @@
 
 {#snippet pageNav()}
 	<nav class="page-nav">
-		<ul class="l:stack:2xs unstyled">
+		<ul class="l:switcher:2xs th:2xs unstyled">
 			{#each nav as { title, slug, color, size, variant, shape, asset }}
 				{@const iconClasses = styleHelper.getStyles({
 					color,
