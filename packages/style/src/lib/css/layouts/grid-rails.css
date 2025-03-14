@@ -48,11 +48,12 @@ body:has(.l\:grid\:rails) {
 
 .sidenav > nav.expanded > ff-reveal {
 	position: absolute;
-	top: var(--ui-header-height);
+	top: calc(var(--ui-header-height) - var(--outline-offset-lg));
 	left: calc(var(--ui-size) + var(--outline-offset-lg));
 	right: var(--ui-size);
 	inline-size: var(--side-track-width-viewport-sm);
 	max-block-size: var(--layout-sidebar-height);
+	margin-block-start: 0;
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--ui-size-sm);
 	box-shadow: var(--shadow-md);
@@ -110,12 +111,13 @@ body:has(.l\:grid\:rails) {
 .page-context > .expanded > ff-reveal {
 	--sidebar-width: var(--layout-sidebar-md);
 	position: absolute;
-	top: calc(2 * var(--ui-header-height) + 2 * var(--outline-offset-lg));
+	top: calc(2 * var(--ui-header-height) + 2 * var(--outline-offset-md));
 	left: calc(var(--ui-size) + var(--outline-offset-sm));
 	right: var(--ui-size);
 	inline-size: var(--side-track-width-viewport-sm);
 	max-inline-size: unset;
 	max-block-size: var(--layout-sidebar-height);
+	margin-block-start: 0;
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--ui-size-sm);
 	box-shadow: var(--shadow-md);
@@ -169,12 +171,14 @@ body:has(.l\:grid\:rails) {
 		inline-size: var(--sidebar-width);
 		max-inline-size: 100%;
 	}
+
 	.page-context ff-reveal {
 		position: unset;
 	}
 
 	.page-context .expanded > ff-reveal,
 	.page-context .collapsed > ff-reveal {
+		margin-block-start: var(--outline-offset-lg);
 		position: unset;
 		block-size: fit-content;
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));
@@ -214,6 +218,7 @@ body:has(.l\:grid\:rails) {
 
 	.sidenav > nav.expanded > ff-reveal,
 	.sidenav > nav.collapsed > ff-reveal {
+		margin-block-start: var(--outline-offset-lg);
 		position: unset;
 		block-size: fit-content;
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));

@@ -37,6 +37,7 @@ ff-reveal {
 	max-block-size: var(--y-size);
 	scrollbar-color: var(--thumb) var(--track);
 	background-color: var(--shade, inherit);
+	border-radius: var(--border-radius-lg);
 }
 
 ff-reveal {
