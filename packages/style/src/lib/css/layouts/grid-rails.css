@@ -156,6 +156,14 @@ body:has(.l\:grid\:rails) {
 		z-index: var(--z-index-reveal);
 	}
 
+	.header-nav {
+		justify-content: flex-start;
+	}
+
+	.expanded > ff-reveal:has(.header-nav) {
+		box-shadow: unset;
+	}
+
 	.sidenav > nav.expanded > ff-reveal {
 		inline-size: calc(100vw - 5 * var(--ui-size) - var(--sidebar-width));
 		z-index: var(--z-index-reveal);
@@ -196,14 +204,6 @@ body:has(.l\:grid\:rails) {
 			'main-header    main-header  main-header'
 			'sidenav        page-main    page-context';
 		grid-template-columns: auto 1fr auto;
-	}
-
-	.header-nav {
-		justify-content: flex-start;
-	}
-
-	.expanded > ff-reveal:has(.header-nav) {
-		box-shadow: unset;
 	}
 
 	.sidenav {
