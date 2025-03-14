@@ -29,9 +29,10 @@
 	box-shadow: var(--shadow-md);
 }
 
-.header-nav.l\:flex {
+.header-nav.l\:flex[class*='size'] {
 	--justify: space-evenly;
 	--gap: var(--size-base-xs);
+	gap: var(--gap);
 
 	li {
 		background-color: inherit;
@@ -45,6 +46,7 @@
 			inline-size: fit-content;
 			text-transform: uppercase;
 			padding: var(--ui-size-sm);
+			padding-inline: var(--size-base-2xs);
 		}
 
 		&[aria-current='page'] {
