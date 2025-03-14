@@ -4,6 +4,7 @@
 	flex-wrap: wrap;
 	align-items: var(--align-items);
 	gap: var(--gap);
+	justify-content: var(--justify, space-between);
 }
 
 .l\:flex.reverse {

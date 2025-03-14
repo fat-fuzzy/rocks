@@ -17,8 +17,14 @@
 	max-inline-size: 100%;
 }
 
+.l\:flex.hug > *,
 .hug {
 	inline-size: fit-content;
+}
+
+.l\:flex.grow > *,
+.l\:flex .grow {
+	flex-grow: 1;
 }
 
 [class*='align-self:'] {
