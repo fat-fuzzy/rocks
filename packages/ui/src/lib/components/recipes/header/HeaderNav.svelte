@@ -4,7 +4,7 @@
 
 	let {
 		id = 'ui-header-nav-app',
-		breakpoint = 'sm',
+		breakpoint = 'xs',
 		size,
 		variant,
 		asset,
@@ -39,7 +39,9 @@
 	{actionPath}
 	{redirect}
 >
-	<ul class="l:switcher:sm unstyled color:primary">
+	<ul
+		class="header-nav l:flex size:md unstyled color:primary align:center justify:evenly w:full"
+	>
 		<li aria-current={path === '/' ? 'page' : undefined}>
 			<a data-sveltekit-preload-data href="/">Home</a>
 		</li>

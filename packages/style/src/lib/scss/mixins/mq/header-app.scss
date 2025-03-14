@@ -18,7 +18,12 @@
 				block-size: fit-content;
 				inline-size: fit-content;
 				padding: 0;
+				box-shadow: unset;
 			}
+		}
+
+		.expanded > ff-reveal:has(.header-nav) {
+			box-shadow: unset;
 		}
 
 		nav.l\:reveal\:auto.bp\:#{$size} {
@@ -42,15 +47,7 @@
 				display: flex;
 				align-items: var(--align, center);
 				justify-content: var(--justify, center);
-				border-inline-start: none;
-				border-block-start: var(--border-width-xl) solid var(--shade);
 				inline-size: fit-content;
-
-				&[aria-current='page'] {
-					flex-direction: row;
-					border-inline-start: none;
-					border-color: var(--accent);
-				}
 			}
 
 			a {

@@ -8,7 +8,7 @@
 	padding-block: var(--ui-size-sm);
 
 	.expanded > ff-reveal {
-		--y-axis: var(--ui-header-height);
+		--y-axis: calc(var(--ui-header-height) + var(--outline-offset-lg));
 		position: absolute;
 		top: var(--y-axis);
 		block-size: fit-content;
@@ -20,21 +20,30 @@
 .header-app > [class*='l:main'] {
 	min-inline-size: unset;
 	flex-grow: 1;
+}
+
+.expanded > ff-reveal:has(.header-nav) {
+	display: flex;
+	left: var(--x-axis);
+	right: var(--x-axis);
+	box-shadow: var(--shadow-md);
+}
+
+.header-nav {
+	--justify: space-evenly;
+	gap: var(--size-base-xs);
 
 	li {
-		display: flex;
-		align-items: center;
 		background-color: inherit;
-		border-inline-start: var(--border-width-xl) solid transparent;
-		inline-size: 100%;
+		border-block-start: var(--border-width-xl) solid var(--shade);
+		inline-size: fit-content;
 		padding: 0 var(--outline-offset-sm);
 
 		a {
 			display: flex;
 			block-size: calc(100% - 2 * var(--border-width-xl));
-			inline-size: calc(100% - var(--border-width-xl));
+			inline-size: fit-content;
 			text-transform: uppercase;
-			margin-inline: var(--outline-offset-sm);
 			padding: var(--ui-size-sm);
 		}
 
@@ -47,28 +56,11 @@
 			}
 		}
 	}
-
-	.expanded > ff-reveal {
-		display: flex;
-		flex-direction: column;
-		left: var(--x-axis);
-		right: var(--x-axis);
-	}
 }
 
 .header-app > [class*='l:side'] {
 	flex-basis: content; /* property as content of flex container */
 	flex-grow: 0;
-
-	.expanded > ff-reveal {
-		color: var(--ink);
-		background-color: var(--shade);
-		display: flex;
-		right: var(--x-axis);
-		justify-content: flex-end;
-		block-size: fit-content;
-		inline-size: max-content;
-	}
 
 	menu {
 		li {
