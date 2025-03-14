@@ -59,7 +59,7 @@
 			place="left"
 			justify="evenly"
 			font="sm"
-			size="md"
+			size="sm"
 			dismiss="click"
 		/>
 	</div>

@@ -44,9 +44,9 @@ body:has(.l\:grid\:rails) {
 	left: var(--ui-size);
 	right: var(--ui-size);
 	inline-size: calc(100vw - 2 * var(--ui-size));
-	max-inline-size: unset;
 	z-index: var(--layout-z-index-reveal);
 	box-shadow: var(--shadow-md);
+	padding: var(--ui-size);
 }
 
 .sidenav > nav > form {
@@ -73,8 +73,13 @@ body:has(.l\:grid\:rails) {
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
-	max-block-size: calc(100vh - 2 * var(--ui-header-height));
+	block-size: 100%;
 	padding-inline: var(--ui-size);
+	padding-block-end: var(--ui-header-height);
+}
+
+.page-main > section {
+	scroll-margin-block: var(--size-base-2xl);
 }
 
 .page-context {
@@ -98,7 +103,6 @@ body:has(.l\:grid\:rails) {
 .page-context > .expanded > ff-reveal {
 	--sidebar-width: var(--layout-sidebar-md);
 	position: absolute;
-	top: calc(2 * var(--ui-header-height) + var(--outline-offset-md));
 	max-block-size: var(--layout-sidebar-height);
 	z-index: var(--layout-z-index-reveal);
 	max-inline-size: var(--sidebar-width);
@@ -106,12 +110,14 @@ body:has(.l\:grid\:rails) {
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	overscroll-behavior-y: contain;
-	left: var(--ui-size);
-	right: var(--ui-size);
-	inline-size: calc(100vw - 2 * var(--ui-size));
+	top: calc(2 * var(--ui-header-height) + 2 * var(--outline-offset-lg));
+	left: calc(2 * var(--ui-size));
+	right: calc(2 * var(--ui-size));
+	inline-size: calc(100vw - 2 * calc(2 * var(--ui-size)));
 	max-inline-size: unset;
 	z-index: var(--layout-z-index-reveal);
 	box-shadow: var(--shadow-md);
+	padding: var(--ui-size);
 }
 
 .l\:grid\:rails {
@@ -145,6 +151,16 @@ body:has(.l\:grid\:rails) {
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));
 	}
 
+	.expanded > ff-reveal:has(.header-nav) {
+		inline-size: calc(100vw - var(--sidebar-width));
+		z-index: var(--z-index-reveal);
+	}
+
+	.sidenav > nav.expanded > ff-reveal {
+		inline-size: calc(100vw - 5 * var(--ui-size) - var(--sidebar-width));
+		z-index: var(--z-index-reveal);
+	}
+
 	.page-context {
 		overflow: hidden auto;
 		overscroll-behavior-y: contain;
@@ -165,6 +181,7 @@ body:has(.l\:grid\:rails) {
 		inline-size: var(--sidebar-width);
 		max-inline-size: 100%;
 		box-shadow: unset;
+		padding: 0;
 	}
 
 	.page-context .collapsed,
@@ -181,6 +198,14 @@ body:has(.l\:grid\:rails) {
 		grid-template-columns: auto 1fr auto;
 	}
 
+	.header-nav {
+		justify-content: flex-start;
+	}
+
+	.expanded > ff-reveal:has(.header-nav) {
+		box-shadow: unset;
+	}
+
 	.sidenav {
 		inline-size: var(--sidebar-width);
 	}
@@ -194,14 +219,15 @@ body:has(.l\:grid\:rails) {
 		position: unset;
 		block-size: fit-content;
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
+		max-inline-size: calc(var(--sidebar-width) - var(--ui-size));
 		box-shadow: unset;
+		padding: 0;
 	}
 
 	.sidenav > nav.collapsed,
 	.sidenav > nav.collapsed > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-collapsed);
+		max-inline-size: var(--sidebar-width);
 	}
 }
 

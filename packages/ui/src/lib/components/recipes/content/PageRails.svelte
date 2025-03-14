@@ -94,7 +94,7 @@
 		color="primary"
 		justify="evenly"
 		font="sm"
-		size="md"
+		size="sm"
 		variant="outline"
 		breakpoint="xs"
 		formaction="toggleContext"
