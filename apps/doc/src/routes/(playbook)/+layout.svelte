@@ -47,7 +47,7 @@
 				links,
 				settings,
 			}}
-			breakpoint="sm"
+			breakpoint="xs"
 			app={appSettings}
 		/>
 	</div>

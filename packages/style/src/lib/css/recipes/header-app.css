@@ -29,9 +29,9 @@
 	box-shadow: var(--shadow-md);
 }
 
-.header-nav {
+.header-nav.l\:flex {
 	--justify: space-evenly;
-	gap: var(--size-base-xs);
+	--gap: var(--size-base-xs);
 
 	li {
 		background-color: inherit;
