@@ -20,7 +20,7 @@
 	items={sections}
 >
 	{#snippet header()}
-		<div class="w:full">
+		<div class="w:full maki:block size:2xl">
 			<h1 class="ravioli:md text:center">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}

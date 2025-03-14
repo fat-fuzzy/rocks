@@ -84,6 +84,9 @@ ul.depth-0 {
 	scrollbar-width: thin;
 }
 
+ul.depth-0 > li {
+	padding-block-end: calc(var(--ui-size-sm) - var(--outline-offset-sm));
+}
 /* override Active Link styles for top level link */
 ul.depth-0 > li > a {
 	font-family: var(--font-family-heading);
