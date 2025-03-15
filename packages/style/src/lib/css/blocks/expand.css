@@ -16,8 +16,8 @@
 	filter: grayscale(0.35);
 }
 
-.expand[aria-expanded].variant\:outline:hover
-	.expand[aria-expanded].variant\:bare:hover {
+.expand[aria-expanded].variant\:outline:hover,
+.expand[aria-expanded].variant\:bare:hover {
 	background-color: var(--shade);
 }
 
