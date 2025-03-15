@@ -91,6 +91,7 @@
 		reveal={context.reveal}
 		title="On this Page"
 		position={false}
+		place="left"
 		color="primary"
 		justify="evenly"
 		font="sm"

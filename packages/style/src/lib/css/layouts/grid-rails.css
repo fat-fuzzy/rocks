@@ -120,7 +120,7 @@ body:has(.l\:grid\:rails) {
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	overscroll-behavior-y: contain;
-	z-index: var(--layout-z-index-reveal);
+	z-index: var(--layout-z-index-sticky);
 }
 
 @media screen and (min-width: 620px) {
