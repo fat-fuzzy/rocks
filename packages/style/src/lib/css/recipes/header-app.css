@@ -9,11 +9,14 @@
 
 	.expanded > ff-reveal {
 		--y-axis: calc(var(--ui-header-height) + var(--outline-offset-lg));
+		--x-axis: calc(2 * var(--outline-offset-sm));
 		position: absolute;
 		top: var(--y-axis);
 		block-size: fit-content;
 		max-block-size: calc(100vh - var(--y-axis));
 		overflow: auto;
+		max-inline-size: calc(100vw - 2 * var(--x-axis));
+		margin-block-start: var(--outline-offset-sm);
 	}
 }
 
