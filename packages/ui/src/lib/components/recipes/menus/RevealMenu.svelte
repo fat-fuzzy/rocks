@@ -7,7 +7,7 @@
 	const VARIANT_MATCH: {[key: string]: string} = {
 		outline: 'bare',
 		bare: 'bare',
-		default: 'outline',
+		fill: 'outline',
 	}
 
 	let {
@@ -22,6 +22,7 @@
 		color,
 		size,
 		threshold,
+		justify = 'start',
 		variant = '',
 		align = 'start',
 		background,
@@ -59,8 +60,9 @@
 	{redirect}
 	{position}
 	{place}
+	{justify}
 >
-	<menu id={`menu-${id}`} class={`content layer ${menuClasses} ${show}`}>
+	<menu id={`menu-${id}`} class={`${menuClasses} ${show}`}>
 		{#each items as buttonProps}
 			<li>
 				<Button
