@@ -2,52 +2,12 @@ import {error, redirect} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 import assets from '$data/ui'
 import pages from '$data/pages'
-import {buildNav} from '$data/nav'
-import uiStateService from '$lib/forms/services/ui-state'
-const {APP_PREFIX} = ui.constants
 
 const page = 'ui'
 let markdowns = assets.markdowns
+const {DEFAULT_REVEAL_STATE} = ui.constants
 
-// TODO: move to utils / clean
-function sortAsc(a, b) {
-	return a < b ? -1 : b < a ? 1 : 0
-}
-
-const tokenNames = Object.keys(ui.tokens).sort(sortAsc)
-const blockNames = Object.keys(ui.blocks).sort(sortAsc)
-const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
-const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
-
-let sidebar = buildNav('ui')
-sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
-	if (item.slug === 'tokens') {
-		item.items = tokenNames.map((c) => ({
-			slug: c,
-			title: c,
-		}))
-	} else if (item.slug === 'blocks') {
-		item.items = blockNames.map((c) => ({
-			slug: c,
-			title: c,
-		}))
-	} else if (item.slug === 'layouts') {
-		item.items = layoutNames.map((c) => ({
-			slug: c,
-			title: c,
-		}))
-	} else if (item.slug === 'recipes') {
-		item.items = recipeNames.map((c) => ({
-			slug: c,
-			title: c,
-		}))
-	}
-	return item
-})
-
-export const load = async ({locals, params, url, cookies}) => {
-	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
-	sidebar.actionPath = url.pathname
+export const load = async ({locals, params}) => {
 	let content = null
 
 	let component = params.component
@@ -88,17 +48,10 @@ export const load = async ({locals, params, url, cookies}) => {
 		}
 	}
 
-	let settings
-	let context
 	let styles
 	let ui
+	let context = locals.context ?? DEFAULT_REVEAL_STATE
 
-	if (locals.settings) {
-		settings = locals.settings
-	}
-	if (locals.context) {
-		context = locals.context
-	}
 	if (locals.dsStyles) {
 		styles = locals.dsStyles
 	}
@@ -107,12 +60,10 @@ export const load = async ({locals, params, url, cookies}) => {
 	}
 
 	return {
-		sidebar,
 		context,
 		markdowns,
 		content,
 		styles,
-		settings,
 		ui,
 	}
 }
