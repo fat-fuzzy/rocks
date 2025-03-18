@@ -29,7 +29,7 @@ class UiReveal {
 		}
 
 		if (updated) {
-			this.state.reveal = TRANSITION_REVEAL[updated]
+			this.state.reveal = updated
 			return {
 				success: true,
 				state: this.state,
