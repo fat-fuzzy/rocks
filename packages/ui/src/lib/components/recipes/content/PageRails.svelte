@@ -99,6 +99,7 @@
 		variant="outline"
 		breakpoint="xs"
 		formaction="toggleContext"
+		dismiss="outside"
 	>
 		<div class="l:stack:2xs">
 			{@render pageNav()}

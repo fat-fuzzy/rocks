@@ -43,6 +43,7 @@
 			reveal={page.data.nav.reveal}
 			actionPath={page.url.pathname}
 			formaction="toggleNav"
+			dismiss="outside"
 			items={{
 				links,
 				settings,
@@ -60,7 +61,7 @@
 			justify="evenly"
 			font="sm"
 			size="sm"
-			dismiss="click"
+			dismiss="outside"
 		/>
 	</div>
 	{#if children}
