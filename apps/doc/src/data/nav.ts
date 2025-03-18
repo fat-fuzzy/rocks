@@ -1,4 +1,7 @@
 import type {NavItem} from '$types'
+import ui from '@fat-fuzzy/ui'
+
+const {DEFAULT_SIDEBAR_REVEAL_STATE} = ui.constants
 
 export const links = [
 	{slug: 'doc', title: 'Doc', layout: 'sidebar'},
@@ -10,7 +13,7 @@ export const links = [
 const navBase = {
 	id: 'sidebar',
 	title: 'content',
-	reveal: 'collapsed',
+	reveal: DEFAULT_SIDEBAR_REVEAL_STATE.reveal,
 	breakpoint: 'sm',
 	size: 'sm',
 	variant: 'outline',
@@ -106,6 +109,7 @@ export const pages: {[key: string]: NavItem} = {
 
 export function buildNav(page: string) {
 	let nav = {...navBase}
+	nav.title = `${page} menu`
 	nav.items = [pages[page]]
 
 	return nav

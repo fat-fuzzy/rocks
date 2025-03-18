@@ -18,6 +18,8 @@ const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 
 const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
+const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
+
 const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
 
 const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
@@ -191,6 +193,7 @@ export default {
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,
+	DEFAULT_SIDEBAR_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
 	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,

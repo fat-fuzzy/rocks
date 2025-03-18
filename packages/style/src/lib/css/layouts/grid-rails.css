@@ -48,10 +48,9 @@ body:has(.l\:grid\:rails) {
 
 .sidenav > nav.expanded > ff-reveal {
 	position: absolute;
-	top: calc(var(--ui-header-height) - 2 * var(--outline-offset-lg));
+	top: calc(var(--ui-header-height) - var(--outline-offset-lg));
 	left: calc(var(--ui-size) + var(--outline-offset-lg));
 	right: var(--ui-size);
-	inline-size: var(--side-track-width-viewport-sm);
 	max-block-size: var(--layout-sidebar-height);
 	margin-block-start: 0;
 	padding-block: var(--ui-size-sm);
@@ -106,7 +105,7 @@ body:has(.l\:grid\:rails) {
 .page-context > .expanded > ff-reveal {
 	--sidebar-width: var(--layout-sidebar-md);
 	position: absolute;
-	top: calc(2 * var(--ui-header-height) + var(--outline-offset-md));
+	top: calc(2 * var(--ui-header-height) + 2 * var(--outline-offset-md));
 	left: calc(var(--ui-size) + var(--outline-offset-sm));
 	right: var(--ui-size);
 	inline-size: var(--side-track-width-viewport-sm);

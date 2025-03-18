@@ -24,8 +24,8 @@ class UiReveal {
 	reveal(data: FormData) {
 		let updated
 
-		if (data.has(`state-${this.id}`)) {
-			updated = data.get(`state-${this.id}`)?.toString()
+		if (data.has(`button-reveal-${this.id}`)) {
+			updated = data.get(`button-reveal-${this.id}`)?.toString()
 		}
 
 		if (updated) {
