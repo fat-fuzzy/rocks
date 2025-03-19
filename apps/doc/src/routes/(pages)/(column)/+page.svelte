@@ -21,7 +21,7 @@
 >
 	{#snippet header()}
 		<div class="w:full maki:block size:2xl">
-			<h1 class="ravioli:md text:center">Fat Fuzzy Rocks</h1>
+			<h1 class="ravioli:md text:center maki:block size:xs">Fat Fuzzy Rocks</h1>
 		</div>
 	{/snippet}
 </PageScrolly>

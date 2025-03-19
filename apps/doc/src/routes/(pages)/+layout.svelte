@@ -68,7 +68,7 @@
 			links,
 			settings,
 		}}
-		breakpoint="sm"
+		breakpoint="xs"
 		app={appSettings}
 	/>
 	{#if children}
