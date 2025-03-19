@@ -1,7 +1,10 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
+	import playbook from '@fat-fuzzy/playbook'
 	import Footer from '$lib/ui/Footer.svelte'
+
+	const {PlaybookCollection} = playbook
 
 	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
@@ -35,12 +38,23 @@
 
 			<div class="l:text:md maki:auto">
 				{#each categories as category}
-					<EscapeHtml
-						id={`${slug}-${category}`}
-						html={markdowns.categories.find(({meta}) => meta.slug === category)
-							.html}
-						size="md"
-					/>
+					<PlaybookCollection
+						{category}
+						{markdowns}
+						path={page.url.pathname}
+						depth={1}
+						isPage={false}
+						formaction="updateState"
+						{content}
+					>
+						<EscapeHtml
+							id={`${slug}-${category}`}
+							html={markdowns.categories.find(
+								({meta}) => meta.slug === category,
+							).html}
+							size="md"
+						/>
+					</PlaybookCollection>
 				{/each}
 			</div>
 		</div>
