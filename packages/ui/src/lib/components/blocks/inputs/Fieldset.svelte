@@ -8,7 +8,6 @@
 		legend,
 		type, // input group if any
 		disabled,
-
 		align,
 		container,
 		layout = 'stack',

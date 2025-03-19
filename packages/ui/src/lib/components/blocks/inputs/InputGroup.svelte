@@ -49,7 +49,7 @@
 	{size}
 	{font}
 	{variant}
-	container={container ?? ''}
+	{container}
 	{color}
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
@@ -61,6 +61,7 @@
 			color={input.color || color}
 			{...input}
 			{justify}
+			{container}
 			name={id}
 			id={`${name}.${input.value}`}
 			oninput={(event: Event) => handleInput(event, name)}

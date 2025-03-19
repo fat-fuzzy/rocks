@@ -164,9 +164,15 @@ body:has(.l\:grid\:rails) {
 		overscroll-behavior-y: contain;
 		scrollbar-gutter: stable;
 		scrollbar-width: thin;
-		inline-size: var(--sidebar-width);
+		inline-size: 100%;
+		max-inline-size: var(--sidebar-width);
 		block-size: fit-content;
 		max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
+		padding-inline: var(--outline-offset-lg) 0;
+	}
+
+	.page-context > .l\:reveal\:auto {
+		inline-size: var(--sidebar-width);
 	}
 
 	.page-context ff-reveal.expanded:first-of-type {
@@ -199,7 +205,8 @@ body:has(.l\:grid\:rails) {
 	}
 
 	.sidenav {
-		inline-size: var(--sidebar-width);
+		inline-size: 100%;
+		max-inline-size: unset;
 	}
 
 	.sidenav > nav > ff-reveal {

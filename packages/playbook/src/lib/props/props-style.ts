@@ -224,7 +224,9 @@ const status = {
 	initial: 'default',
 	input: 'radio',
 	layout: 'stack',
-	variant: 'bare',
+	variant: 'outline',
+	container: 'ravioli',
+	size: '3xs',
 	items: [
 		{
 			id: 'status.default',
@@ -263,7 +265,9 @@ const context = {
 	initial: 'prose',
 	input: 'radio',
 	layout: 'stack',
-	variant: 'bare',
+	variant: 'outline',
+	container: 'ravioli',
+	size: '3xs',
 	items: [
 		{id: 'context.prose', label: 'prose', value: 'prose'},
 		{id: 'context.code', label: 'code', value: 'code'},
@@ -636,6 +640,7 @@ function getInputGroup(name: string, category: string, family: string) {
 		size: PROPS_STYLE[slug].size,
 		mode: PROPS_STYLE[slug].mode,
 		variant: PROPS_STYLE[slug].variant,
+		container: PROPS_STYLE[slug].container,
 		items: PROPS_STYLE[slug].items.map((item) => {
 			return {...item, id: `${category}.${family}.${item.id}`}
 		}),

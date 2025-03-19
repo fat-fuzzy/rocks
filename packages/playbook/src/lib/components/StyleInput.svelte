@@ -175,7 +175,7 @@
 			layout={styleInput.layout ?? ''}
 			container={styleInput.container ?? ''}
 			threshold={apiSize}
-			size={family.size ?? apiSize}
+			size={styleInput.size ?? apiSize}
 			color={apiColor}
 			font={apiFont}
 			variant={styleInput.variant}
