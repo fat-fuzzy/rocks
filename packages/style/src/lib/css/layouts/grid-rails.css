@@ -34,6 +34,15 @@ body:has(.l\:grid\:rails) {
 		);
 }
 
+.l\:grid\:rails:has([class*='media:']) {
+	grid-template-areas:
+		'main-header    main-header'
+		'sidenav   			page-context'
+		'page-context   page-context'
+		'page-main      page-main';
+	grid-template-columns: auto 1fr;
+}
+
 .main-header {
 	grid-area: main-header;
 }
@@ -124,6 +133,17 @@ body:has(.l\:grid\:rails) {
 	z-index: var(--layout-z-index-sticky);
 }
 
+.page-context[class*='media:'],
+.page-context[class*='media:'] ff-reveal.expanded:first-of-type,
+.page-context[class*='media:'] ff-reveal.collapsed:first-of-type {
+	max-block-size: unset;
+	box-shadow: none;
+}
+
+.page-context[class*='media:'] {
+	max-block-size: unset;
+}
+
 @media screen and (min-width: 620px) {
 	.l\:grid\:rails {
 		grid-template-areas:
@@ -131,6 +151,14 @@ body:has(.l\:grid\:rails) {
 			'sidenav  		 page-context'
 			'page-main     page-context';
 		grid-template-columns: 1fr auto;
+	}
+
+	.l\:grid\:rails:has([class*='media:']) {
+		grid-template-areas:
+			'main-header   main-header'
+			'sidenav  		 page-context'
+			'page-main     page-context';
+		grid-template-columns: 1fr 1fr;
 	}
 
 	.page-main {
@@ -154,6 +182,7 @@ body:has(.l\:grid\:rails) {
 
 	.sidenav > nav.expanded > ff-reveal {
 		inline-size: calc(100vw - 6 * var(--ui-size) - var(--sidebar-width));
+		max-inline-size: calc(100% - 2 * var(--ui-size));
 		z-index: var(--layout-z-index-reveal);
 	}
 
@@ -188,6 +217,16 @@ body:has(.l\:grid\:rails) {
 		box-shadow: unset;
 		padding: 0;
 	}
+
+	.page-context[class*='media:'],
+	.page-context[class*='media:'] ff-reveal.expanded:first-of-type,
+	.page-context[class*='media:'] ff-reveal.collapsed:first-of-type {
+		max-inline-size: unset;
+	}
+
+	.page-context[class*='media:'] > .l\:reveal\:auto {
+		inline-size: 100%;
+	}
 }
 
 @media screen and (min-width: 935px) {
@@ -196,6 +235,13 @@ body:has(.l\:grid\:rails) {
 			'main-header    main-header  main-header'
 			'sidenav        page-main    page-context';
 		grid-template-columns: auto 1fr auto;
+	}
+
+	.l\:grid\:rails:has([class*='media:']) {
+		grid-template-areas:
+			'main-header    main-header  main-header'
+			'sidenav        page-main    page-context';
+		grid-template-columns: auto 1fr 1fr;
 	}
 
 	.sidenav {

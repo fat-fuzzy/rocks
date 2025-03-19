@@ -14,6 +14,7 @@
 		description = `Basic page layout`,
 		pageName,
 		size,
+		dimensions,
 		justify,
 		main,
 		nav,
@@ -24,7 +25,7 @@
 
 	let currentPage = $derived(pageName ?? title)
 	let currentHash = $state(hash ?? '')
-
+	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
 	let presentationClasses = styleHelper.getStyles({
 		size: '2xs',
 		layout: 'flex',
@@ -84,11 +85,11 @@
 	{@render main()}
 </main>
 
-<div class="page-context">
+<div class={`page-context ${mediaClass}`}>
 	<Reveal
 		id="context"
 		auto={true}
-		reveal={context.reveal}
+		reveal={context?.reveal || ''}
 		title="On this Page"
 		position={false}
 		place="left"

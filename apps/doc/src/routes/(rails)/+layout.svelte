@@ -70,5 +70,4 @@
 	{:else}
 		<p class="feedback bare emoji:default">Coming Soon!</p>
 	{/if}
-	<Footer />
 </LayoutRails>
