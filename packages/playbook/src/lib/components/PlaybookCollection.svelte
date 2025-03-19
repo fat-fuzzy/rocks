@@ -28,7 +28,7 @@
 		formaction?: string
 		actionPath?: string
 		children?: Snippet
-		footer: Snippet
+		footer?: Snippet
 	}
 
 	let {
