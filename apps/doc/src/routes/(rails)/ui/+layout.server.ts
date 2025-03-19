@@ -1,11 +1,9 @@
 import {error, redirect} from '@sveltejs/kit'
-import ui from '@fat-fuzzy/ui'
 import assets from '$data/ui'
 import pages from '$data/pages'
 
 const page = 'ui'
 let markdowns = assets.markdowns
-const {DEFAULT_REVEAL_STATE} = ui.constants
 
 export const load = async ({locals, params}) => {
 	let content = null
@@ -50,7 +48,6 @@ export const load = async ({locals, params}) => {
 
 	let styles
 	let ui
-	let context = locals.context ?? DEFAULT_REVEAL_STATE
 
 	if (locals.dsStyles) {
 		styles = locals.dsStyles
@@ -60,7 +57,6 @@ export const load = async ({locals, params}) => {
 	}
 
 	return {
-		context,
 		markdowns,
 		content,
 		styles,

@@ -2,7 +2,7 @@
 	"border": {
 		"$type": "dimension",
 		"radius": {
-			"nul": {
+			"null": {
 				"$value": "0"
 			},
 			"sm": {

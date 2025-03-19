@@ -8,7 +8,7 @@
   --border-radius-base: var(--border-radius-md);
   --border-radius-lg:  0.34rem;
   --border-radius-md: 0.26rem;
-  --border-radius-nul: 0;
+  --border-radius-null: 0;
   --border-radius-sm: 0.16rem;
   --border-radius-xl: 0.66rem;
   --border-width-lg: 2px;
@@ -216,6 +216,7 @@
   --overlay-height-lg: 80vh;
   --overlay-height-md: 60vh;
   --overlay-height-sm: 40vh;
+  --overlay-height-xs: 26vh;
   --scale-base-00: 1rem;
   --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
   --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-sm));

@@ -1,0 +1,64 @@
+<script lang="ts">
+	import {page} from '$app/stores'
+	import ui from '@fat-fuzzy/ui'
+
+	const {PageRails} = ui.content
+	const {EscapeHtml} = ui.headless
+
+	const path = $derived($page.url.pathname)
+
+	let markdown = $derived($page.data.content)
+	let title = $derived(markdown.meta.title)
+	let description = $derived(markdown.meta.description)
+	let html = $derived(markdown.html)
+	let slug = $derived(markdown.meta.slug)
+	let sketches = $derived($page.data.learning)
+
+	// TODO: Use webgl & webglfundamentals tags to group sketches elsewhere
+	let tags = new Set(
+		sketches
+			.reduce((acc, {tags}) => [...acc, ...tags], [])
+			.filter((tag) => tag !== 'webgl' && tag !== 'webglfundamentals'),
+	)
+</script>
+
+<PageRails
+	{title}
+	{description}
+	size="sm"
+	path={$page.url.pathname}
+	nav={$page.data.nav}
+	context={$page.data.context}
+>
+	{#snippet main()}
+		<div class="w:full ravioli:md">
+			<EscapeHtml id={slug} {html} size="md" margin="auto" />
+		</div>
+	{/snippet}
+	{#snippet aside()}
+		{#if tags.size > 0}
+			<h2>Tags</h2>
+			<div class="l:grid:sm maki:block">
+				{#each tags as tag}
+					<details class="bg:netural variant:bare">
+						<summary class="surface:2:neutral font:sm font:heading ravioli:3xs">
+							{tag}
+						</summary>
+						<div class="ravioli:md">
+							<ul class="unstyled">
+								{#each sketches as { slug, asset, title, tags }}
+									{#if tags.includes(tag)}
+										<li class={`size:sm emoji:${asset}`}>
+											<a class="font:sm" href={`${path}/${slug}`}>
+												{title}
+											</a>
+										</li>
+									{/if}
+								{/each}
+							</ul>
+						</div>
+					</details>
+				{/each}
+			</div>
+		{/if}{/snippet}
+</PageRails>

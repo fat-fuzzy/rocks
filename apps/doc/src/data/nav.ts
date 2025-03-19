@@ -1,6 +1,15 @@
 import type {NavItem} from '$types'
 import ui from '@fat-fuzzy/ui'
 
+// TODO: move to utils / clean
+function sortAsc(a, b) {
+	return a < b ? -1 : b < a ? 1 : 0
+}
+const tokenNames = Object.keys(ui.tokens).sort(sortAsc)
+const blockNames = Object.keys(ui.blocks).sort(sortAsc)
+const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
+const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
+
 const {DEFAULT_SIDEBAR_REVEAL_STATE} = ui.constants
 
 export const links = [
@@ -111,6 +120,33 @@ export function buildNav(page: string) {
 	let nav = {...navBase}
 	nav.title = `${page} menu`
 	nav.items = [pages[page]]
+
+	if (page === 'ui') {
+		nav.items[0].items = (nav.items[0].items ?? []).map((item) => {
+			if (item.slug === 'tokens') {
+				item.items = tokenNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			} else if (item.slug === 'blocks') {
+				item.items = blockNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			} else if (item.slug === 'layouts') {
+				item.items = layoutNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			} else if (item.slug === 'recipes') {
+				item.items = recipeNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			}
+			return item
+		})
+	}
 
 	return nav
 }

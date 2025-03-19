@@ -52,7 +52,7 @@ body:has(.l\:grid\:rails) {
 	top: calc(var(--ui-header-height) - var(--outline-offset-lg));
 	left: calc(var(--ui-size) + var(--outline-offset-lg));
 	right: calc(2 * var(--outline-offset-lg));
-	max-block-size: var(--overlay-height-sm);
+	max-block-size: var(--overlay-height-xs);
 	margin-block-start: 0;
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--ui-size-sm);
@@ -112,7 +112,7 @@ body:has(.l\:grid\:rails) {
 	left: calc(2 * var(--outline-offset-lg));
 	right: calc(var(--ui-size) + var(--outline-offset-lg));
 	max-inline-size: var(--side-track-width-viewport-sm);
-	max-block-size: var(--overlay-height-sm);
+	max-block-size: var(--overlay-height-xs);
 	margin-block-start: 0;
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--outline-offset-lg);
@@ -141,17 +141,15 @@ body:has(.l\:grid\:rails) {
 		inline-size: var(--sidebar-width);
 	}
 
-	.expanded > ff-reveal:has(.header-nav) {
+	ff-reveal:has(.header-nav) {
+		box-shadow: unset;
 		inline-size: calc(100vw - var(--sidebar-width));
 		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
 	}
 
 	.header-nav {
 		justify-content: flex-start;
-	}
-
-	.expanded > ff-reveal:has(.header-nav) {
-		box-shadow: unset;
 	}
 
 	.sidenav > nav.expanded > ff-reveal {
@@ -189,10 +187,6 @@ body:has(.l\:grid\:rails) {
 		max-inline-size: var(--sidebar-width);
 		box-shadow: unset;
 		padding: 0;
-	}
-
-	.page-context ff-reveal.collapsed:first-of-type {
-		--sidebar-width: var(--layout-sidebar-collapsed);
 	}
 }
 

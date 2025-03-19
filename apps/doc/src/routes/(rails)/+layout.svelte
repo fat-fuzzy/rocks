@@ -4,6 +4,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
+	import Footer from '$lib/ui/Footer.svelte'
 
 	const {Header, RevealNav} = ui.recipes
 
@@ -69,4 +70,5 @@
 	{:else}
 		<p class="feedback bare emoji:default">Coming Soon!</p>
 	{/if}
+	<Footer />
 </LayoutRails>
