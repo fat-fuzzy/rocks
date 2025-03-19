@@ -2,42 +2,36 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain} = ui.content
+	const {PageRails} = ui.content
 
 	let markdowns = $state(page.data.markdowns.usages)
 	let title = 'Usage'
 	let description =
 		'Fat Fuzzy Doc: how to use the packages in this project, examples, notes'
-
-	let header = $derived({
-		title,
-		media: true,
-		main: headerMain,
-	})
 </script>
 
-{#snippet headerMain()}
-	<h1>{title}</h1>
-{/snippet}
-
-<PageMain pageName="Doc" {title} {description} {header} size="lg">
-	<article class="l:sidebar:md">
-		<div class="l:main">
-			<div class="maki:block:2xs">
-				<ul class="l:grid:md w:full unstyled">
-					{#each markdowns as { meta }}
-						{#if meta.status !== 'draft'}
-							<a
-								class="font:lg surface:2:neutral ravioli:md"
-								href={`${page.url.pathname}/${meta.slug}`}
-							>
-								{Number(meta.id)} - {meta.title}
-							</a>
-						{/if}
-					{/each}
-				</ul>
-			</div>
+<PageRails
+	{title}
+	{description}
+	path={page.url.pathname}
+	nav={page.data.nav}
+	context={page.data.context}
+	layout=""
+>
+	{#snippet main()}
+		<div class="l:text:md maki:auto">
+			<ul class="l:grid:sm unstyled">
+				{#each markdowns as { meta }}
+					{#if meta.status !== 'draft'}
+						<a
+							class="surface:2:neutral ravioli:sm"
+							href={`${page.url.pathname}/${meta.slug}`}
+						>
+							{Number(meta.id)} - {meta.title}
+						</a>
+					{/if}
+				{/each}
+			</ul>
 		</div>
-		<div class="l:side"></div>
-	</article>
-</PageMain>
+	{/snippet}
+</PageRails>

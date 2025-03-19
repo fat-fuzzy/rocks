@@ -23,6 +23,7 @@
 	path={$page.url.pathname}
 	nav={$page.data.nav}
 	context={$page.data.context}
+	layout=""
 >
 	{#snippet main()}
 		<div class="w:full ravioli:md">
