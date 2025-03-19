@@ -7,7 +7,7 @@
 	import {dev} from '$app/environment'
 	import {links} from '$data/nav'
 	import ui from '@fat-fuzzy/ui'
-	import RcScout from '$lib/ui/RcScout.svelte'
+	import Footer from '$lib/ui/Footer.svelte'
 	import Beacon from '$lib/ui/Beacon.svelte'
 
 	const {Header} = ui.recipes
@@ -34,11 +34,6 @@
 	let themeClass = $derived(
 		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
 	)
-	let footerClass = 'ravioli:xs'
-	let aboutContainerClass = $derived(
-		pageClass === 'page:home' ? 'ravioli:xl' : '',
-	)
-	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 	let cookiesPending = $derived(appSettings.consent === undefined)
 	let cookiesPartial = $derived(
 		appSettings.consent?.analytics || appSettings.consent?.site,
@@ -77,24 +72,7 @@
 		<p>Nothing to see here</p>
 	{/if}
 
-	<footer class={footerClass}>
-		<details
-			class={`l:burrito:3xl color:neutral font:md maki:block:xl ${aboutContainerClass}`}
-			open={footerOpen}
-		>
-			<summary class="ravioli:2xs">About</summary>
-			<div class="l:stack:2xl">
-				<p>
-					Made with 🩷 by <a
-						href="https://github.com/patiboh"
-						target="_blank"
-						rel="noopener">@patiboh</a
-					>
-				</p>
-				<RcScout />
-			</div>
-		</details>
-	</footer>
+	<Footer />
 </div>
 <Popover
 	id="cookies-banner"

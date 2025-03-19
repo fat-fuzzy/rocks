@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
+	import Footer from '$lib/ui/Footer.svelte'
 
 	const {PageRails} = ui.content
 
@@ -36,6 +37,8 @@
 				{/each}
 			</ul>
 		</div>
+
+		<Footer />
 	{/snippet}
 	{#snippet aside()}
 		<h2>Tags</h2>

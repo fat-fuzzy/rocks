@@ -43,8 +43,8 @@
 					</li>
 				{/each}
 			</ul>
-			<Footer />
 		</div>
+		<Footer />
 	{/snippet}
 	{#snippet aside()}
 		{#if sketches.length > 5 && tags.size > 0}
