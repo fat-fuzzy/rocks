@@ -10,5 +10,4 @@ export const actions = {
 	toggleBlocks: async (event) => uiActions.handleToggleBlocks(event),
 	toggleLayouts: async (event) => uiActions.handleToggleLayouts(event),
 	toggleRecipes: async (event) => uiActions.handleToggleRecipes(event),
-	toggleContext: async (event) => uiActions.handleToggleContext(event),
 } satisfies Actions

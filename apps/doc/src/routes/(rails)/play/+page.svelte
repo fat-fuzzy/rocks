@@ -1,11 +1,12 @@
 <script lang="ts">
-	import {page} from '$app/state'
+	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
+	import Footer from '$lib/ui/Footer.svelte'
 
-	const {PageMain} = ui.content
+	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	let markdown = $derived(page.data.content)
+	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
@@ -15,11 +16,21 @@
 	// let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []).filter((tag)=> tag !== 'webgl' && tag !== 'webglfundamentals'))
 </script>
 
-<PageMain {title} {description} size="sm">
-	<article class="l:sidebar:sm">
-		<div class="l:main">
+<PageRails
+	{title}
+	{description}
+	size="sm"
+	path={$page.url.pathname}
+	nav={$page.data.nav}
+	context={$page.data.context}
+>
+	{#snippet main()}
+		<div class="w:full ravioli:md">
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />
 		</div>
-		<div class="l:side"></div>
-	</article>
-</PageMain>
+		<Footer />
+	{/snippet}
+	{#snippet aside()}
+		<p class="feedback">Some Context</p>
+	{/snippet}
+</PageRails>

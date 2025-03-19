@@ -169,6 +169,9 @@
 	"overlay": {
 		"$type": "dimension",
 		"height": {
+			"xs": {
+				"$value": "26vh"
+			},
 			"sm": {
 				"$value": "40vh"
 			},
