@@ -28,7 +28,7 @@ let meta = {
 	slug: 'matrix-2d',
 	title: 'Matrix 2D',
 	asset: 'geometry-3d',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['2D', 'webgl', 'webglfundamentals', 'matrix'],
 	controls: ['matrix-2d', 'loop'],
 }

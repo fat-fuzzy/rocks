@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {SketchProps, SceneContext, SceneMeta, Filters} from '$types'
+	import type {SketchProps, SceneContext, Filters} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -227,12 +227,13 @@
 </script>
 
 <PageRails
-	pageName="Learning"
+	pageName={meta.categories[0]}
 	{title}
 	description={meta.description}
 	path={page.url.pathname}
 	nav={page.data.nav}
 	context={page.data.context}
+	layout=""
 >
 	{#snippet main()}
 		<div class="scene">
