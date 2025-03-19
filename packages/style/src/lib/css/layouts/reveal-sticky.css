@@ -20,7 +20,7 @@
 		);
 		--y-size: var(--y-size-sticky);
 
-		&.collapsed > ff-reveal {
+		ff-reveal.collapsed {
 			border: initial;
 			margin: initial;
 			overflow: auto;

@@ -22,7 +22,7 @@
 			}
 		}
 
-		.expanded > ff-reveal:has(.header-nav) {
+		ff-reveal.collapsed:has(.header-nav) {
 			box-shadow: unset;
 		}
 

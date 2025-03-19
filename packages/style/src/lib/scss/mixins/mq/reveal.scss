@@ -10,7 +10,7 @@
 
 		/* Fixes bug in Safari where .content overflows parent width */
 		[class^='l:side'] > [class^='l:reveal'] {
-			&.collapsed:not([class*='sticky']) ff-reveal {
+			&:not([class*='sticky']) ff-reveal.collapsed {
 				padding: var(--ui-size);
 				white-space: normal;
 				overflow: hidden;
@@ -19,11 +19,11 @@
 				margin: initial;
 			}
 
-			&:not([class*='sticky']) [class*='expand'] {
+			&:not([class*='sticky']) [aria-expanded] {
 				display: none;
 			}
 
-			&:not([class*='sticky']) [class*='expand'] + * {
+			&:not([class*='sticky']) [aria-expanded] + * {
 				margin-top: 0;
 			}
 		}

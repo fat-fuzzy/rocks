@@ -40,19 +40,12 @@
 		layer,
 		asset,
 		children,
-		onclick,
 	}: RevealLayoutProps = $props()
 
-	let expanded = $derived(reveal)
-	let payload = $derived({state: expanded, id: `button-reveal-${id}`})
-	let revealContent: HTMLFormElement | undefined
-	let disabled: boolean | undefined = $state(undefined)
-
-	function toggleReveal(event: Event) {
-		if (onclick) {
-			onclick(payload)
-		}
-	}
+	let payload = $derived({
+		state: reveal,
+		id: `button-reveal-${id}`,
+	})
 
 	let layoutClasses = $derived.by(() =>
 		styleHelper.getLayoutStyles({
@@ -67,6 +60,7 @@
 		}),
 	)
 
+	let expanded = $derived(payload.state)
 	let revealLayoutClasses = $derived(`${expanded} ${layoutClasses}`)
 	let revealClasses = $derived(
 		auto
@@ -74,7 +68,6 @@
 			: `l:reveal ${revealLayoutClasses}`,
 	)
 	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : ''
-
 	let revealStates = {
 		expanded: {
 			...EXPAND_MACHINE.expanded,
@@ -97,26 +90,26 @@
 	)
 
 	function onKeyUp(e: KeyboardEvent) {
-		if (e.key === 'Escape' && revealContent) {
-			payload.state = 'collapsed'
-			clickOutside(revealContent, () => {
-				payload.state = 'collapsed'
-				toggleReveal(e)
-			})
+		if (e.key === 'Escape' && payload.state === 'expanded') {
+			return
 		}
+		payload.state = 'collapsed'
 	}
 
 	function handleClickOutside(e: MouseEvent) {
-		if (dismiss === DismissEvent.outside && revealContent) {
-			clickOutside(revealContent, () => {
-				payload.state = 'collapsed'
-				toggleReveal(e)
-			})
+		const target = e.target as HTMLElement
+		if (
+			dismiss !== DismissEvent.outside ||
+			payload.state !== 'expanded' ||
+			target.id !== `${id}-reveal`
+		) {
+			return
 		}
+		payload.state = 'collapsed' // TODO: Fix this does nothing
 	}
 </script>
 
-<svelte:window onkeyup={onKeyUp} onclick={handleClickOutside} />
+<svelte:window onkeyup={onKeyUp} />
 
 {#if auto}
 	<svelte:element this={element} {id} class={revealClasses} aria-label={title}>
@@ -151,12 +144,17 @@
 			initial={expanded}
 			place={placeIcon}
 			states={revealStates}
-			{disabled}
 		>
 			<span class={`ellipsis text:${justify} font:${font}`}>{title}</span>
 		</Expand>
 	</form>
-	<ff-reveal id={`${id}-reveal`} bind:this={revealContent}>
+
+	<ff-reveal
+		id={`${id}-reveal`}
+		class={expanded}
+		use:clickOutside
+		onclickoutside={handleClickOutside}
+	>
 		{#if children}
 			{@render children()}
 		{/if}

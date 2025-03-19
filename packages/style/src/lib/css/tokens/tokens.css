@@ -186,7 +186,6 @@
   --layout-sidebar-3xl: calc(var(--layout-sidebar-2xl) * var(--size-ratio-lg));
   --layout-sidebar-base: 24ch;
   --layout-sidebar-collapsed: 6.5em;
-  --layout-sidebar-height: 60vh;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
@@ -214,6 +213,9 @@
   --outline-offset-md: 2px;
   --outline-offset-sm: 1.75px;
   --outline-offset-xs: 1.5px;
+  --overlay-height-lg: 80vh;
+  --overlay-height-md: 60vh;
+  --overlay-height-sm: 40vh;
   --scale-base-00: 1rem;
   --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
   --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-sm));

@@ -84,7 +84,7 @@
 	{@render main()}
 </main>
 
-<div class="page-context ravioli:md">
+<div class="page-context">
 	<Reveal
 		id="context"
 		auto={true}
