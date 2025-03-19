@@ -3,22 +3,20 @@
 	import RcScout from '$lib/ui/RcScout.svelte'
 	import {page} from '$app/state'
 
-	let footerClass = 'ravioli:xs'
+	let footerClass = ''
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
-	let aboutContainerClass = $derived(
-		pageClass === 'page:home' ? 'ravioli:xl' : '',
-	)
+	let aboutContainerClass = $derived(pageClass === 'page:home' ? '' : '')
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 </script>
 
 <footer class={footerClass}>
 	<details
-		class={`l:burrito:3xl font:md maki:block:xl ${aboutContainerClass}`}
+		class={`l:burrito:3xl font:md maki:block:2xl ${aboutContainerClass}`}
 		open={footerOpen}
 	>
-		<summary class="ravioli:2xs">About</summary>
+		<summary class="ravioli:3xs font:heading bg:inherit">About</summary>
 		<div class="l:stack:2xl">
 			<p>
 				Made with 🩷 by <a
