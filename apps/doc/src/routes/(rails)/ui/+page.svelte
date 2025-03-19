@@ -19,12 +19,14 @@
 </script>
 
 <PageRails
+	pageName="UI"
 	{title}
 	{description}
 	path={page.url.pathname}
 	nav={page.data.nav}
 	size="sm"
 	context={page.data.context}
+	layout=""
 >
 	{#snippet main()}
 		<div class="w:full ravioli:md">

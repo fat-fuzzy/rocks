@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
+	import Footer from '$lib/ui/Footer.svelte'
 
 	const {PageRails, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
@@ -30,6 +31,7 @@
 			<div class="w:full ravioli:md">
 				<EscapeHtml id={slug} {html} size="md" margin="auto" />
 			</div>
+			<Footer />
 		{/snippet}
 		{#snippet aside()}
 			<Aside
