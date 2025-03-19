@@ -47,7 +47,8 @@ function getElementStyles(props: UiBlockProps): string {
 function getContainerStyles(props: UiBlockProps): string {
 	let {size, container, dimensions, layer} = props
 
-	let containerClass = container ? `l:${container} ` : ''
+	let containerClass =
+		container === 'ravioli' ? container : container ? `l:${container} ` : ''
 	let layerClass = layer ? ` layer:${layer}` : ''
 
 	if (containerClass) {
