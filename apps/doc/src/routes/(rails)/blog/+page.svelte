@@ -2,7 +2,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain} = ui.content
+	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 
 	let post = $derived(page.data.content)
@@ -12,11 +12,18 @@
 	let slug = $derived(post.meta.slug)
 </script>
 
-<PageMain {title} {description} size="sm">
-	<article class="l:sidebar:sm">
-		<div class="l:main">
+<PageRails
+	{title}
+	{description}
+	size="sm"
+	path={page.url.pathname}
+	nav={page.data.nav}
+	context={page.data.context}
+	layout=""
+>
+	{#snippet main()}
+		<div class="w:full ravioli:md">
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />
 		</div>
-		<div class="l:side"></div>
-	</article>
-</PageMain>
+	{/snippet}
+</PageRails>
