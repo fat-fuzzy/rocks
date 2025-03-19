@@ -2,7 +2,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain, Aside} = ui.content
+	const {PageRails, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
 
 	let post = $derived(page.data.content)
@@ -25,38 +25,32 @@
 				}))
 			: undefined,
 	)
-
-	let header = $derived({
-		title,
-		main: headerMain,
-		side: headerSide,
-	})
 </script>
 
-{#snippet headerMain()}
-	<h1>{title}</h1>
-	{#if post.subtitle}
-		<h2 class="h4">{post.subtitle}</h2>
-	{/if}
-	{#if description}<p>{description}</p>{/if}
-{/snippet}
-
-{#snippet headerSide()}
-	<Aside
-		created={post.date_created}
-		updated={post.date_updated}
-		series={seriesData}
-		page={post.index}
-	/>
-{/snippet}
-
 {#key post.id}
-	<PageMain pageName="Blog" {title} {description} {header} size="sm">
-		<article class="l:sidebar:sm">
-			<div class="l:main maki:block:2xl">
+	<PageRails
+		pageName="Blog"
+		{title}
+		subtitle={post.subtitle}
+		{description}
+		size="sm"
+		path={page.url.pathname}
+		nav={page.data.nav}
+		context={page.data.context}
+		layout=""
+	>
+		{#snippet main()}
+			<div class="w:full ravioli:md">
 				<EscapeHtml id={slug} {html} size="md" margin="auto" />
 			</div>
-			<div class="l:side"></div>
-		</article>
-	</PageMain>
+		{/snippet}
+		{#snippet aside()}
+			<Aside
+				created={post.date_created}
+				updated={post.date_updated}
+				series={seriesData}
+				page={post.index}
+			/>
+		{/snippet}
+	</PageRails>
 {/key}
