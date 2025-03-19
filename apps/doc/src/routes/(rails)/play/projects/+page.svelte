@@ -1,18 +1,19 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
+	import Footer from '$lib/ui/Footer.svelte'
 
 	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	const path = $derived(page.url.pathname)
+	const path = $derived($page.url.pathname)
 
-	let markdown = $derived(page.data.content)
+	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
 	let slug = $derived(markdown.meta.slug)
-	let sketches = $derived(page.data.projects)
+	let sketches = $derived($page.data.projects)
 
 	// TODO: Use webgl & webglfundamentals tags to group sketches elsewhere
 	let tags = $derived(
@@ -21,12 +22,14 @@
 </script>
 
 <PageRails
+	pageName="Projects"
 	{title}
 	{description}
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.nav}
 	context={$page.data.context}
+	layout=""
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" margin="auto" />
@@ -40,6 +43,7 @@
 					</li>
 				{/each}
 			</ul>
+			<Footer />
 		</div>
 	{/snippet}
 	{#snippet aside()}

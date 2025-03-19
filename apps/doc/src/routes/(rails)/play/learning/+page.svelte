@@ -23,12 +23,14 @@
 </script>
 
 <PageRails
+	pageName="Learning"
 	{title}
 	{description}
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.nav}
 	context={$page.data.context}
+	layout=""
 >
 	{#snippet main()}
 		<div class="w:full ravioli:md">
@@ -60,5 +62,6 @@
 					</details>
 				{/each}
 			</div>
-		{/if}{/snippet}
+		{/if}
+	{/snippet}
 </PageRails>

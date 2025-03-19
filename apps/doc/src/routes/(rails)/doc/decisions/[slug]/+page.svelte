@@ -2,7 +2,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageMain, Aside} = ui.content
+	const {PageRails, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
 
 	let markdown = $derived(
@@ -12,31 +12,29 @@
 	let description = $derived(`Decision Log ${markdown.meta.id}: ${title}`)
 	let html = $derived(markdown.html)
 	let slug = $derived(markdown.meta.slug)
-
-	let header = $derived({
-		title,
-		main: headerMain,
-		side: headerSide,
-	})
 </script>
 
-{#snippet headerMain()}
-	<h1>{title}</h1>
-{/snippet}
-{#snippet headerSide()}
-	<Aside
-		created={markdown.meta.date_created}
-		updated={markdown.meta.date_updated}
-	/>
-{/snippet}
-
 {#key title}
-	<PageMain pageName="Decisions" {title} {description} {header} size="sm">
-		<article class="l:sidebar:sm">
-			<div class="l:main">
+	<PageRails
+		pageName="Decisions"
+		{title}
+		{description}
+		size="sm"
+		path={page.url.pathname}
+		nav={page.data.nav}
+		context={page.data.context}
+		layout=""
+	>
+		{#snippet main()}
+			<div class="w:full ravioli:md">
 				<EscapeHtml id={slug} {html} size="md" margin="auto" />
 			</div>
-			<div class="l:side"></div>
-		</article>
-	</PageMain>
+		{/snippet}
+		{#snippet aside()}
+			<Aside
+				created={markdown.meta.date_created}
+				updated={markdown.meta.date_updated}
+			/>
+		{/snippet}
+	</PageRails>
 {/key}
