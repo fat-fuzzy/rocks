@@ -28,7 +28,7 @@ let meta = {
 	slug: 'projection',
 	title: 'Projection',
 	asset: 'projection',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['2D', 'webgl', 'webglfundamentals', 'matrix'],
 	controls: ['matrix-2d', 'loop'],
 }

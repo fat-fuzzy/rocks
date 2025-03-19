@@ -28,7 +28,7 @@ let meta = {
 	slug: 'hierarchical',
 	title: 'Hierarchical',
 	asset: 'russian-dolls',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['2D', 'webgl', 'webglfundamentals', 'matrix'],
 	controls: ['matrix-2d', 'loop'],
 }
