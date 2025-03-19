@@ -1,8 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
+	import Footer from '$lib/ui/Footer.svelte'
 
-	const {PageMain} = ui.content
+	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 	const {Picture} = ui.drafts
 
@@ -26,15 +27,24 @@
 	<h1>{title}</h1>
 {/snippet}
 
-<PageMain {title} {description} {header}>
-	<article class="l:sidebar:2xl media">
-		<div class="l:side">
-			<EscapeHtml id={slug} {html} layout="media" />
+<PageRails
+	{title}
+	{description}
+	{header}
+	path={page.url.pathname}
+	nav={page.data.nav}
+	context={page.data.context}
+	dimensions="twin"
+>
+	{#snippet main()}
+		<div class="w:full ravioli:md">
+			<EscapeHtml id={slug} {html} size="md" margin="auto" />
 		</div>
-		<div class="l:main:50">
-			<div class="l:taco">
-				<Picture {...media} dimensions="full" />
-			</div>
+		<Footer />
+	{/snippet}
+	{#snippet aside()}
+		<div class="l:taco">
+			<Picture {...media} dimensions="full" />
 		</div>
-	</article>
-</PageMain>
+	{/snippet}
+</PageRails>
