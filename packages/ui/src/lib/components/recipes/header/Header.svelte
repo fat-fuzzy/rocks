@@ -12,6 +12,7 @@
 		reveal,
 		redirect,
 		actionPath,
+		formaction = 'updateState',
 		items,
 		position,
 		placement,
@@ -40,7 +41,7 @@
 				{path}
 				{reveal}
 				{breakpoint}
-				formaction="toggleNav"
+				{formaction}
 				{actionPath}
 				{redirect}
 			/>

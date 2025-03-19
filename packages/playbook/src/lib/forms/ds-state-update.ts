@@ -73,10 +73,10 @@ class DsStateUpdate {
 		if (data.has('button-reveal-RevealNav')) {
 			success = this.toggleNavReveal(data)
 		}
-		if (data.has('button-reveal-Header-nav-reveal')) {
+		if (data.has('button-reveal-Header-nav')) {
 			success = this.toggleSidebarReveal(data)
 		}
-		if (data.has('button-reveal-Header-settings-reveal')) {
+		if (data.has('button-reveal-Header-settings')) {
 			success = this.toggleSettingsReveal(data)
 		}
 		return {

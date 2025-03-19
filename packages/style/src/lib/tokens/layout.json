@@ -34,9 +34,6 @@
 			"collapsed": {
 				"$value": "6.5em"
 			},
-			"height": {
-				"$value": "60vh"
-			},
 			"2xs": {
 				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
 			},
@@ -166,6 +163,20 @@
 			},
 			"fixed": {
 				"$value": "{layout.z-index.4}"
+			}
+		}
+	},
+	"overlay": {
+		"$type": "dimension",
+		"height": {
+			"sm": {
+				"$value": "40vh"
+			},
+			"md": {
+				"$value": "60vh"
+			},
+			"lg": {
+				"$value": "80vh"
 			}
 		}
 	}

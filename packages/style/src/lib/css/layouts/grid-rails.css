@@ -43,6 +43,7 @@ body:has(.l\:grid\:rails) {
 	position: relative;
 	inline-size: 100%;
 	padding-block: var(--outline-offset-md);
+	padding-inline: var(--ui-size) var(--outline-offset-lg);
 	max-inline-size: var(--side-track-width-viewport-sm);
 }
 
@@ -50,8 +51,8 @@ body:has(.l\:grid\:rails) {
 	position: absolute;
 	top: calc(var(--ui-header-height) - var(--outline-offset-lg));
 	left: calc(var(--ui-size) + var(--outline-offset-lg));
-	right: var(--ui-size);
-	max-block-size: var(--layout-sidebar-height);
+	right: calc(2 * var(--outline-offset-lg));
+	max-block-size: var(--overlay-height-sm);
 	margin-block-start: 0;
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--ui-size-sm);
@@ -92,28 +93,29 @@ body:has(.l\:grid\:rails) {
 
 .page-context {
 	grid-area: page-context;
+	position: relative;
 	justify-self: end;
 	inline-size: 100%;
+	max-inline-size: var(--side-track-width-viewport-sm);
 	padding-block: var(--outline-offset-md);
-	padding-inline: var(--ui-size);
+	padding-inline: var(--outline-offset-lg) var(--ui-size);
 }
 
 .page-context form:first-of-type [aria-expanded] {
 	inline-size: 100%;
 }
 
-.page-context > .expanded > ff-reveal {
+.page-context ff-reveal.expanded:first-of-type {
 	--sidebar-width: var(--layout-sidebar-md);
 	position: absolute;
-	top: calc(2 * var(--ui-header-height) + 2 * var(--outline-offset-md));
-	left: calc(var(--ui-size) + var(--outline-offset-sm));
-	right: var(--ui-size);
-	inline-size: var(--side-track-width-viewport-sm);
-	max-inline-size: unset;
-	max-block-size: var(--layout-sidebar-height);
+	top: calc(var(--ui-header-height) - var(--outline-offset-lg));
+	left: calc(2 * var(--outline-offset-lg));
+	right: calc(var(--ui-size) + var(--outline-offset-lg));
+	max-inline-size: var(--side-track-width-viewport-sm);
+	max-block-size: var(--overlay-height-sm);
 	margin-block-start: 0;
 	padding-block: var(--ui-size-sm);
-	padding-inline: var(--ui-size-sm);
+	padding-inline: var(--outline-offset-lg);
 	box-shadow: var(--shadow-md);
 	overflow: hidden auto;
 	scrollbar-gutter: stable;
@@ -163,27 +165,27 @@ body:has(.l\:grid\:rails) {
 		scrollbar-gutter: stable;
 		scrollbar-width: thin;
 		inline-size: var(--sidebar-width);
-		max-inline-size: 100%;
+		block-size: fit-content;
+		max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
 	}
 
-	.page-context ff-reveal {
+	.page-context ff-reveal.expanded:first-of-type {
 		position: unset;
 	}
 
-	.page-context .expanded > ff-reveal,
-	.page-context .collapsed > ff-reveal {
+	.page-context ff-reveal.expanded:first-of-type,
+	.page-context ff-reveal.collapsed:first-of-type {
 		margin-block-start: var(--outline-offset-lg);
 		position: unset;
 		block-size: fit-content;
-		max-block-size: calc(100vh - 2 * var(--ui-header-height));
-		inline-size: var(--sidebar-width);
-		max-inline-size: 100%;
+		max-block-size: unset;
+		inline-size: 100%;
+		max-inline-size: var(--sidebar-width);
 		box-shadow: unset;
 		padding: 0;
 	}
 
-	.page-context .collapsed,
-	.page-context .collapsed > ff-reveal {
+	.page-context ff-reveal.collapsed:first-of-type {
 		--sidebar-width: var(--layout-sidebar-collapsed);
 	}
 }
@@ -210,8 +212,8 @@ body:has(.l\:grid\:rails) {
 		);
 	}
 
-	.sidenav > nav.expanded > ff-reveal,
-	.sidenav > nav.collapsed > ff-reveal {
+	.sidenav > nav > ff-reveal.expanded,
+	.sidenav > nav > ff-reveal.collapsed {
 		margin-block-start: var(--outline-offset-lg);
 		position: unset;
 		block-size: fit-content;
@@ -222,7 +224,7 @@ body:has(.l\:grid\:rails) {
 	}
 
 	.sidenav > nav.collapsed,
-	.sidenav > nav.collapsed > ff-reveal {
+	.sidenav > nav > ff-reveal.collapsed {
 		--sidebar-width: var(--layout-sidebar-collapsed);
 		max-inline-size: var(--sidebar-width);
 	}
