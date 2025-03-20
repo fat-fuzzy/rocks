@@ -141,7 +141,7 @@
 			controls={`${id}-reveal`}
 			{asset}
 			justify={`${justify} nowrap`}
-			initial={expanded}
+			initial={reveal}
 			place={placeIcon}
 			states={revealStates}
 		>
@@ -149,7 +149,7 @@
 		</Expand>
 	</form>
 
-	<ff-reveal id={`${id}-reveal`} class={expanded}>
+	<ff-reveal id={`${id}-reveal`} class={reveal}>
 		{#if children}
 			{@render children()}
 		{/if}
