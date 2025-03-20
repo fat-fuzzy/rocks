@@ -27,16 +27,24 @@ class UiReveal {
 		if (data.has(`button-reveal-${this.id}`)) {
 			updated = data.get(`button-reveal-${this.id}`)?.toString()
 		}
-
-		if (updated) {
-			this.state.reveal = updated
+		if (!updated) {
 			return {
-				success: true,
-				state: this.state,
+				success: false,
 			}
 		}
+
+		/**
+		 * This makes it work without javascript:
+		 * The button value changes with JS but not without
+		 */
+		if (updated === this.state.reveal) {
+			updated = TRANSITION_REVEAL[updated]
+		}
+
+		this.state.reveal = updated
 		return {
-			success: false,
+			success: true,
+			state: this.state,
 		}
 	}
 
