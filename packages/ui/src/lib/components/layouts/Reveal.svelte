@@ -5,7 +5,7 @@
 	import {DismissEvent} from '$types'
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
-	import {clickOutside} from '$lib/utils/click-outside.js'
+	// import {clickOutside} from '$lib/utils/click-outside.js'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
@@ -96,17 +96,17 @@
 		payload.state = 'collapsed'
 	}
 
-	function handleClickOutside(e: MouseEvent) {
-		const target = e.target as HTMLElement
-		if (
-			dismiss !== DismissEvent.outside ||
-			payload.state !== 'expanded' ||
-			target.id !== `${id}-reveal`
-		) {
-			return
-		}
-		payload.state = 'collapsed' // TODO: Fix this does nothing
-	}
+	// function handleClickOutside(e: MouseEvent) {
+	// 	const target = e.target as HTMLElement
+	// 	if (
+	// 		dismiss !== DismissEvent.outside ||
+	// 		payload.state !== 'expanded' ||
+	// 		target.id !== `${id}-reveal`
+	// 	) {
+	// 		return
+	// 	}
+	// 	payload.state = 'collapsed' // TODO: Fix this does nothing
+	// }
 </script>
 
 <svelte:window onkeyup={onKeyUp} />
@@ -149,12 +149,7 @@
 		</Expand>
 	</form>
 
-	<ff-reveal
-		id={`${id}-reveal`}
-		class={expanded}
-		use:clickOutside
-		onclickoutside={handleClickOutside}
-	>
+	<ff-reveal id={`${id}-reveal`} class={expanded}>
 		{#if children}
 			{@render children()}
 		{/if}
