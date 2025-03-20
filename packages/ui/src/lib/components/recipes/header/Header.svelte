@@ -12,12 +12,17 @@
 		reveal,
 		redirect,
 		actionPath,
+		formaction = 'updateState',
 		items,
+		position,
+		placement,
 	}: HeaderProps = $props()
 	let className = 'header-app'
+
+	let positionClass = position ? `${position}:${placement}` : ''
 </script>
 
-<header class="sticky:top bg:inherit">
+<header class={`${positionClass} bg:inherit`}>
 	<SkipLinks />
 	<div class={`l:sidebar ${className} align:center`}>
 		<div class="l:main l:flex align:center">
@@ -36,7 +41,7 @@
 				{path}
 				{reveal}
 				{breakpoint}
-				formaction="toggleNav"
+				{formaction}
 				{actionPath}
 				{redirect}
 			/>

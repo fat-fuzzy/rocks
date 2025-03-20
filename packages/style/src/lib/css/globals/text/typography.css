@@ -120,6 +120,7 @@ a {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	color: var(--ink);
 	background-color: inherit;
+	max-inline-size: 100%;
 	ol,
 	ul {
 		margin-block: var(--ui-size);

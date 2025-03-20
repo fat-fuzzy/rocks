@@ -12,15 +12,17 @@
 	}: PageHeaderProps = $props()
 
 	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let headerClass = $derived(
-		`${layoutClass} ${justifyClass} align:baseline maki:block:lg`,
+	let layoutClass = $derived(
+		size ? `l:${layout}:${size} reverse` : `l:${layout}`,
 	)
-	let contentClasses = $derived(media ? `l:text:md` : 'l:text:md margin:auto')
+	let headerClass = $derived(
+		`${layoutClass} ${justifyClass} align:baseline maki:block:lg  ravioli:md`,
+	)
+	let contentClasses = $derived(media ? `l:text:md` : 'l:text:md maki:auto')
 </script>
 
 <header class={headerClass}>
-	<div class="l:main">
+	<div class={layout ? `l:main:50` : ''}>
 		<div class={contentClasses}>
 			{#if main}
 				{@render main()}
@@ -29,9 +31,9 @@
 			{/if}
 		</div>
 	</div>
-	<div class="l:side">
-		{#if side}
+	{#if side}
+		<div class={layout ? `l:side` : ''}>
 			{@render side()}
-		{/if}
-	</div>
+		</div>
+	{/if}
 </header>

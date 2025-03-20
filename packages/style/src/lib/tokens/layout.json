@@ -32,7 +32,7 @@
 				"$value": "24ch"
 			},
 			"collapsed": {
-				"$value": "6em"
+				"$value": "6.5em"
 			},
 			"2xs": {
 				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
@@ -146,6 +146,9 @@
 			"3": {
 				"$value": "3"
 			},
+			"4": {
+				"$value": "4"
+			},
 			"inset": {
 				"$value": "{layout.z-index.0}"
 			},
@@ -157,6 +160,26 @@
 			},
 			"reveal": {
 				"$value": "{layout.z-index.3}"
+			},
+			"fixed": {
+				"$value": "{layout.z-index.4}"
+			}
+		}
+	},
+	"overlay": {
+		"$type": "dimension",
+		"height": {
+			"xs": {
+				"$value": "26vh"
+			},
+			"sm": {
+				"$value": "40vh"
+			},
+			"md": {
+				"$value": "60vh"
+			},
+			"lg": {
+				"$value": "80vh"
 			}
 		}
 	}

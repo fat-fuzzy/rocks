@@ -21,6 +21,7 @@
 		justify,
 		color,
 		size,
+		font,
 		variant,
 		background,
 		container,
@@ -35,7 +36,7 @@
 	let classes = $derived(
 		styleHelper.getStyles({
 			color,
-			font: size,
+			font,
 			size,
 			align,
 			justify,
@@ -68,7 +69,15 @@
 	/>
 </label>
 {#if hint}
-	<Feedback {id} {asset} {status} context={UiTextContext.form} {size} {variant}>
+	<Feedback
+		{id}
+		{asset}
+		{status}
+		context={UiTextContext.form}
+		{font}
+		{size}
+		{variant}
+	>
 		{hint}
 	</Feedback>
 {/if}

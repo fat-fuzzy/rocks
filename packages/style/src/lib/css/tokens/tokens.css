@@ -5,9 +5,11 @@
  */
 
 :root {
-  --border-radius-base: 0.16rem;
+  --border-radius-base: var(--border-radius-md);
   --border-radius-lg:  0.34rem;
-  --border-radius-nul: 0;
+  --border-radius-md: 0.26rem;
+  --border-radius-null: 0;
+  --border-radius-sm: 0.16rem;
   --border-radius-xl: 0.66rem;
   --border-width-lg: 2px;
   --border-width-md: 1px;
@@ -183,7 +185,7 @@
   --layout-sidebar-2xs: calc(var(--layout-sidebar-xs) / var(--size-ratio-sm));
   --layout-sidebar-3xl: calc(var(--layout-sidebar-2xl) * var(--size-ratio-lg));
   --layout-sidebar-base: 24ch;
-  --layout-sidebar-collapsed: 6em;
+  --layout-sidebar-collapsed: 6.5em;
   --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
   --layout-sidebar-md: var(--layout-sidebar-base);
   --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
@@ -201,6 +203,8 @@
   --layout-z-index-1: 1;
   --layout-z-index-2: 2;
   --layout-z-index-3: 3;
+  --layout-z-index-4: 4;
+  --layout-z-index-fixed: var(--layout-z-index-4);
   --layout-z-index-inset: var(--layout-z-index-0);
   --layout-z-index-layer: var(--layout-z-index-1);
   --layout-z-index-reveal: var(--layout-z-index-3);
@@ -209,6 +213,10 @@
   --outline-offset-md: 2px;
   --outline-offset-sm: 1.75px;
   --outline-offset-xs: 1.5px;
+  --overlay-height-lg: 80vh;
+  --overlay-height-md: 60vh;
+  --overlay-height-sm: 40vh;
+  --overlay-height-xs: 26vh;
   --scale-base-00: 1rem;
   --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
   --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-sm));

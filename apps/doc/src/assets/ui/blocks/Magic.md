@@ -3,7 +3,7 @@ title: Magic
 slug: Magic
 category: 'blocks'
 content_types: ['text', 'link']
-props_style: {'blocks': {'element': ['size', 'spell', 'level', 'uno', 'due']}}
+props_style: {'blocks': {'element': ['uno', 'due', 'spell', 'level','size' ]}}
 ---
 
 ## Usage

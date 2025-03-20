@@ -16,12 +16,12 @@
 {#if !meta}
 	{@render comingSoon()}
 {:else}
-	{#if meta.props_style}
+	<!-- {#if meta.props_style}
 		{@const blocks = meta.props_style.blocks}
 		{@const layouts = meta.props_style.layouts}
-		<details open class="l:stack:2xs">
+		<details class="l:stack:2xs">
 			<summary
-				class="font:sm font:heading font:semi size:2xs surface:2:primary"
+				class="font:sm font:heading font:semi size:2xs color:primary variant:bare"
 			>
 				Style Props
 			</summary>
@@ -32,7 +32,7 @@
 						{@const blocksProps = blocks[prop]}
 						{#each blocksProps as style}
 							<li
-								class="font:xs size:2xs surface:1:primary"
+								class="font:xs ravioli:3xs surface:1:primary"
 								data-testid={`prop-block-${style}`}
 							>
 								{style}
@@ -46,7 +46,7 @@
 						{@const layoutsProp = layouts[prop]}
 						{#each layoutsProp as style}
 							<li
-								class="font:xs size:2xs surface:1:primary"
+								class="font:xs ravioli:3xs surface:1:primary"
 								data-testid={`prop-layout-${style}`}
 							>
 								{style}
@@ -56,19 +56,19 @@
 				{/if}
 			</ul>
 		</details>
-	{/if}
-	{#if meta.content_types}
-		<details open class="l:stack:2xs">
+	{/if} -->
+	{#if meta.props_state}
+		<details class="l:stack:2xs">
 			<summary
-				class="font:sm font:heading font:semi size:2xs surface:2:highlight"
+				class="font:sm font:heading font:semi size:2xs color:primary variant:bare"
 			>
-				Children
+				State Props
 			</summary>
-			<ul class="tags l:switcher:2xs" data-testid="doc-child-props">
-				{#each meta.content_types as prop}
+			<ul class="tags l:switcher:2xs" data-testid="doc-state-props">
+				{#each meta.props_state as prop}
 					<li
-						class="font:xs size:2xs surface:1:highlight"
-						data-testid={`prop-child-${prop}`}
+						class="font:xs ravioli:3xs surface:1:primary"
+						data-testid={`prop-state-${prop}`}
 					>
 						{prop}
 					</li>
@@ -76,16 +76,18 @@
 			</ul>
 		</details>
 	{/if}
-	{#if meta.props_state}
-		<details open class="l:stack:2xs">
-			<summary class="font:sm font:heading font:semi size:2xs surface:2:accent">
-				State Props
+	{#if meta.content_types}
+		<details class="l:stack:2xs">
+			<summary
+				class="font:sm font:heading font:semi size:2xs color:highlight variant:bare"
+			>
+				Children
 			</summary>
-			<ul class="tags l:switcher:2xs" data-testid="doc-state-props">
-				{#each meta.props_state as prop}
+			<ul class="tags l:switcher:2xs" data-testid="doc-child-props">
+				{#each meta.content_types as prop}
 					<li
-						class="font:xs size:2xs surface:1:accent"
-						data-testid={`prop-state-${prop}`}
+						class="font:xs ravioli:3xs surface:1:highlight"
+						data-testid={`prop-child-${prop}`}
 					>
 						{prop}
 					</li>

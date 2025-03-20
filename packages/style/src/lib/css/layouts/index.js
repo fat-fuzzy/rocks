@@ -22,6 +22,5 @@ import './reveal-sticky.css' /* Use for displaying hidden content in response to
 import './details.css' /* Use to style <details> and <summary> elements */
 import './position.css' /* Use for to position elements */
 
-/* == Composed layouts == */
-
-import './grid-sidebar.css' /* Use for a full app layout with side navigation */
+/* == Recipe layouts == */
+import './grid-rails.css' /* Use for base grid with page template areas and scrolling sidebars */

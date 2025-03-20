@@ -1,8 +1,9 @@
 <script lang="ts">
-	import type {SketchProps, SceneContext, SceneMeta, Filters} from '$types'
+	import type {SketchProps, SceneContext, Filters} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
+	import {page} from '$app/state'
 
 	import {
 		CanvasState,
@@ -23,6 +24,7 @@
 	import actor from './actor.svelte'
 
 	const {Feedback} = ui.blocks
+	const {PageRails} = ui.content
 
 	let {
 		scene,
@@ -224,91 +226,105 @@
 	})
 </script>
 
-<article class="l:grid:sketch bp:xs size:sm media">
-	<div class="scene">
-		<div class={frameClasses}>
-			<canvas
-				id={`${id}.canvas`}
-				aria-label={title}
-				data-testid="canvas"
-				bind:this={canvas}
-				inert={actor.getSketchDisabled()}
-			>
-				<p class={`feedback emoji:default ${size} content`}>
-					The canvas element needs JavaScript enabled to display and interact
-					with animations
-				</p>
-			</canvas>
-			{#if actor.feedback.canvas.length}
-				<div class="feedback">
-					{#each actor.feedback.canvas as feedback}
-						<Feedback status={feedback.status} context="code" {size}>
-							{feedback.message}
-						</Feedback>
-					{/each}
-				</div>
-			{/if}
-		</div>
-	</div>
-	<aside class="context">
-		{#if canvas}
-			<Player
-				play={updateCanvas}
-				pause={updateCanvas}
-				clear={updateCanvas}
-				stop={updateCanvas}
-				initial={actor.getPlayButtonState()}
-				{color}
-				size="xs"
-				{variant}
-				disabled={actor.hasError() ?? undefined}
-				{init}
-			/>
-			{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
-				{#if context.geometry && meta.controls.includes('matrix-2d')}
-					<Geometry2D
-						id={`${id}-context-2d`}
-						onupdate={updateGeometry}
-						threshold={breakpoint}
-						context={context.geometry}
-						canvasWidth={canvas.getBoundingClientRect().width}
-						canvasHeight={canvas.getBoundingClientRect().height}
-						disabled={actor.getSketchDisabled()}
-					/>
-				{:else}
-					<div class={`l:${layout}:${size} maki:block`}>
-						{#if meta.controls.includes('camera')}
-							<CameraControls
-								id={`${id}-camera-controls`}
-								onupdate={updateCamera}
-							/>
-						{/if}
-						{#if context.geometry && meta.controls.includes('matrix-3d')}
-							<GeometryControls
-								id={`${id}-geometry-controls`}
-								{canvas}
-								onupdate={updateGeometry}
-								{context}
-							/>
-						{/if}
-						{#if meta.controls.includes('texture')}
-							{#key resetEvent}
-								<TextureControls
-									id={`${id}-texture-controls`}
-									filters={meta.filters ?? DEFAULT_FILTERS}
-									onupdate={updateTexture}
-								/>
-							{/key}
-						{/if}
+<PageRails
+	pageName={meta.categories[0]}
+	{title}
+	description={meta.description}
+	path={page.url.pathname}
+	nav={page.data.nav}
+	context={page.data.context}
+	layout=""
+>
+	{#snippet main()}
+		<div class="scene">
+			<div class={frameClasses}>
+				<canvas
+					id={`${id}.canvas`}
+					aria-label={title}
+					data-testid="canvas"
+					bind:this={canvas}
+					inert={actor.getSketchDisabled()}
+				>
+					<p class={`feedback emoji:default ${size} content`}>
+						The canvas element needs JavaScript enabled to display and interact
+						with animations
+					</p>
+				</canvas>
+				{#if actor.feedback.canvas.length}
+					<div class="feedback">
+						{#each actor.feedback.canvas as feedback}
+							<Feedback status={feedback.status} context="code" {size}>
+								{feedback.message}
+							</Feedback>
+						{/each}
 					</div>
 				{/if}
-			{/if}
+			</div>
+		</div>
+		{#if debug}
+			<Debug {meta} context={actor} />
 		{/if}
-	</aside>
-	{#if debug}
-		<Debug {meta} context={actor} />
-	{/if}
-</article>
+	{/snippet}
+	{#snippet aside()}
+		<aside class="l:stack size:sm">
+			{#if canvas}
+				<Player
+					play={updateCanvas}
+					pause={updateCanvas}
+					clear={updateCanvas}
+					stop={updateCanvas}
+					initial={actor.getPlayButtonState()}
+					{color}
+					size="xs"
+					{variant}
+					disabled={actor.hasError() ?? undefined}
+					{init}
+				/>
+				{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
+					{#if context.geometry && meta.controls.includes('matrix-2d')}
+						<Geometry2D
+							id={`${id}-context-2d`}
+							onupdate={updateGeometry}
+							threshold={breakpoint}
+							context={context.geometry}
+							canvasWidth={canvas.getBoundingClientRect().width}
+							canvasHeight={canvas.getBoundingClientRect().height}
+							disabled={actor.getSketchDisabled()}
+						/>
+					{:else}
+						<div class={`l:${layout}:${size} maki:block`}>
+							{#if meta.controls.includes('camera')}
+								<CameraControls
+									id={`${id}-camera-controls`}
+									onupdate={updateCamera}
+								/>
+							{/if}
+							{#if context.geometry && meta.controls.includes('matrix-3d')}
+								<GeometryControls
+									id={`${id}-geometry-controls`}
+									{canvas}
+									onupdate={updateGeometry}
+									{context}
+								/>
+							{/if}
+							{#if meta.controls.includes('texture')}
+								{#key resetEvent}
+									<TextureControls
+										id={`${id}-texture-controls`}
+										filters={meta.filters ?? DEFAULT_FILTERS}
+										onupdate={updateTexture}
+									/>
+								{/key}
+							{/if}
+						</div>
+					{/if}
+				{/if}
+			{/if}
+		</aside>
+	{/snippet}
+</PageRails>
+
+<!-- <article class="l:grid:sketch bp:xs size:sm media"></article> -->
 
 <style lang="scss">
 	@forward '../../styles/scss/grid-sketch.scss';

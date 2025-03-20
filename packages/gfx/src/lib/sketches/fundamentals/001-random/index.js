@@ -29,7 +29,7 @@ let meta = {
 	title: 'Random',
 	asset: 'random',
 	dimensions: 'video',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['2D', 'webgl', 'webglfundamentals'],
 	controls: ['loop'],
 }

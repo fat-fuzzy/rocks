@@ -42,7 +42,7 @@
 <Head pageName={currentPage} {title} {description} />
 
 {#snippet breadcrumbTabs()}
-	<div class="ravioli:xs bg:inherit fixed:top-right bg:blur">
+	<div class="ravioli:xs">
 		<ul role="tablist" class="l:switcher:2xs unstyled">
 			{#each tabs as { title, slug, color, size, variant, shape, asset }}
 				{@const iconClasses = styleHelper.getStyles({

@@ -21,6 +21,7 @@
 		justify,
 		color,
 		size,
+		font,
 		variant,
 		background,
 		container,
@@ -28,14 +29,14 @@
 		oninput,
 	}: InputProps = $props()
 
-	function handleInput(event) {
+	function handleInput(event: Event) {
 		if (oninput) oninput(payload)
 	}
 
 	let classes = $derived(
 		styleHelper.getStyles({
 			color,
-			font: size,
+			font,
 			size,
 			align,
 			justify,
@@ -68,7 +69,15 @@
 	/>
 </label>
 {#if hint}
-	<Feedback {id} {asset} {status} context={UiTextContext.form} {size} {variant}>
+	<Feedback
+		{id}
+		{asset}
+		{status}
+		context={UiTextContext.form}
+		{size}
+		{font}
+		{variant}
+	>
 		{hint}
 	</Feedback>
 {/if}

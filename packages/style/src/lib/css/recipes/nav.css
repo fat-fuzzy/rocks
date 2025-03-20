@@ -14,7 +14,7 @@ nav li {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	padding-block: calc(var(--size-base-3xs) / var(--size-ratio-md));
+	padding-block: var(--outline-offset-lg);
 	padding-inline: var(--size-base-3xs);
 	margin-block: 0;
 	line-height: var(--font-leading-nav);
@@ -62,7 +62,7 @@ nav li a:visited {
 
 /* == RevealNav (tree-like navigation menus) == */
 ul.depth-1 {
-	--gap: 0;
+	--grid-gap: var(--outline-offset-lg);
 	padding-inline-start: 0;
 }
 
@@ -84,6 +84,9 @@ ul.depth-0 {
 	scrollbar-width: thin;
 }
 
+ul.depth-0 > li {
+	padding-block-end: calc(var(--ui-size-sm) - var(--outline-offset-sm));
+}
 /* override Active Link styles for top level link */
 ul.depth-0 > li > a {
 	font-family: var(--font-family-heading);
@@ -155,8 +158,8 @@ a[class*='ravioli']:hover > *:not(.icon) {
 }
 
 @media screen and (min-width: 1024px) {
-	.form\:expanded,
-	.form\:collapsed {
+	.reveal-nav .form\:expanded,
+	.reveal-nav .form\:collapsed {
 		max-inline-size: calc(100% - var(--ui-size-sm));
 	}
 
@@ -186,29 +189,22 @@ a[class*='ravioli']:hover > *:not(.icon) {
 			--x-size: var(--sidebar-width);
 			transition: inline-size 250ms ease-in-out;
 			/* transition: transform 250ms ease-in-out; */
-
-			> ff-reveal {
-				inline-size: 100%;
-				transform: translateX(var(--size-base-3xs));
-				transition: transform 250ms ease-in;
-				transition: inline-size 250ms ease-in-out;
-			}
-
-			> ff-reveal > * {
-				inline-size: 100%;
-				transition: inline-size 250ms ease-in-out;
-			}
 		}
 
+		> ff-reveal.expanded {
+			inline-size: 100%;
+			transform: translateX(var(--size-base-3xs));
+			transition: transform 250ms ease-in;
+			transition: inline-size 250ms ease-in-out;
+		}
+
+		> ff-reveal.expanded > * {
+			inline-size: 100%;
+			transition: inline-size 250ms ease-in-out;
+		}
 		> .collapsed {
 			--y-size: var(--ui-header-height);
 			--x-size: calc(--sidebar-width);
-
-			> ff-reveal {
-				--x-axis: calc(var(--x-size) * -1);
-				inline-size: 100%;
-				block-size: var(--y-size);
-			}
 
 			ul {
 				> * {
@@ -219,6 +215,12 @@ a[class*='ravioli']:hover > *:not(.icon) {
 					margin-block-start: var(--outline-offset-lg);
 				}
 			}
+		}
+
+		> ff-reveal.collapsed {
+			--x-axis: calc(var(--x-size) * -1);
+			inline-size: 100%;
+			block-size: var(--y-size);
 		}
 	}
 }

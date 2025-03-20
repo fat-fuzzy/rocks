@@ -11,10 +11,6 @@ export type ToggleMenuProps = UiBlockProps & {
 	disabled?: boolean | undefined
 	formaction?: string
 	items: ToggleProps[]
-	init: (
-		payload: {name: string; value?: string | number; state: string}[],
-	) => void
-	onupdate: (
-		payload: {name: string; value?: string | number; state: string}[],
-	) => void
+	init: (payload: FuzzyPayload[]) => void
+	onupdate: (payload: FuzzyPayload[]) => void
 }

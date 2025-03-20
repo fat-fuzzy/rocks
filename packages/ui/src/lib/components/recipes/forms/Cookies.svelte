@@ -19,9 +19,9 @@
 		formaction = 'saveCookiePreferences',
 		redirect,
 		layout = 'stack',
-		container = 'burrito',
+		container = 'center',
 		level = 3, // <h*> element level
-		size = 'md',
+		size = 'xl',
 		color = UiColor.accent,
 		variant = UiVariant.fill,
 	}: CookiesPreferencesProps = $props()
@@ -54,8 +54,9 @@
 		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : undefined,
 	)
 
-	let layoutClasses = styleHelper.getLayoutStyles({
+	let layoutClasses = styleHelper.getStyles({
 		size,
+		font: 'md',
 		layout,
 		container,
 	})
@@ -109,6 +110,7 @@
 		container="burrito:xl "
 		size="lg"
 		font="md"
+		layer="1"
 	>
 		<form
 			{id}
@@ -134,6 +136,7 @@
 							name="cookies"
 							{size}
 							variant="bare"
+							font="md"
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
@@ -149,6 +152,7 @@
 								{size}
 								color="primary"
 								asset="none"
+								font="md"
 								variant="bare"
 								justify="between"
 								onfocus={handleFocus}
@@ -163,6 +167,7 @@
 							name="cookies"
 							{size}
 							variant="bare"
+							font="md"
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
@@ -180,6 +185,7 @@
 								color="primary"
 								asset="none"
 								variant="bare"
+								font="md"
 								justify="between"
 								onfocus={handleFocus}
 								onblur={handleBlur}
@@ -192,9 +198,10 @@
 				{#snippet footer()}
 					<Button
 						id="button-submit-cookies"
-						{size}
+						size="md"
 						{color}
 						{variant}
+						font="md"
 						name="submit"
 						alignSelf="center"
 						{disabled}

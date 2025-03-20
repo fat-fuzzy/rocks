@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {RevealNavProps} from '$types'
 	import {DismissEvent} from '$types'
+	import styleHelper from '$lib/utils/styles.js'
 	import Reveal from '$lib/components/layouts/Reveal.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
@@ -18,6 +19,7 @@
 		dismiss = DismissEvent.outside,
 		color,
 		size,
+		font,
 		breakpoint,
 		threshold,
 		variant,
@@ -31,27 +33,25 @@
 		onclick,
 	}: RevealNavProps = $props()
 
-	let navContainer = $derived(container ? `${container}:${size}` : '')
-	let navLayoutThreshold = $derived(
-		breakpoint ? `bp:${breakpoint}` : threshold ? `th:${threshold}` : '',
-	)
-	let navLayout = $derived(
-		layout ? `l:${layout}:${size} ${navLayoutThreshold}` : '',
-	)
-	let showBackground = $derived(background ? `bg:${background}` : '')
-	let showSidebar = $derived(`${reveal} ${showBackground} ${place}`)
-	let navClasses = $derived(
-		`${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `,
-	)
-	let revealClasses = $derived(`l:reveal ${place} ${navClasses} ${reveal}`)
 	let layoutClasses = $derived(
-		position ? `${position} ${revealClasses}` : revealClasses,
+		styleHelper.getStyles({
+			position,
+			size,
+			justify,
+			align,
+			layout,
+			breakpoint,
+			threshold,
+			background,
+			container,
+		}),
 	)
+	let revealClasses = $derived(`l:reveal ${place} ${reveal} ${layoutClasses}`)
 </script>
 
 <nav
 	id={`nav-${id}`}
-	class={layoutClasses}
+	class={revealClasses}
 	aria-label={title}
 	data-testid={`nav-${id}`}
 >
@@ -63,6 +63,7 @@
 		{variant}
 		{title}
 		{size}
+		{font}
 		{color}
 		{reveal}
 		{dismiss}

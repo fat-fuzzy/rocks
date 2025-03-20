@@ -80,6 +80,8 @@ export default {
 	Header: {
 		slug: 'ui',
 		title: 'Header',
+		id: 'Header-nav',
+		formaction: 'updateState',
 		items: {
 			links,
 			settings: APP_SETTINGS,

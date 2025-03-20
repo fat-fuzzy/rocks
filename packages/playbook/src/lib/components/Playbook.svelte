@@ -9,7 +9,7 @@
 		app: {settings: {[key: string]: string}}
 		children: Snippet
 	}
-	let {children}: Props = $props()
+	let {children, app}: Props = $props()
 	let playbookContext: StylesApi = getContext('playbookContext')
 	setContext('playbookActor', playbookActor)
 	let {styles, ui} = $derived(page.data)
@@ -19,8 +19,16 @@
 		if (ui) {
 			playbookActor.context = ui
 		}
+		playbookActor.app = app
+		if (styles) {
+			playbookContext.applyStyles(styles)
+		}
+
+		$inspect(styles)
+		$inspect(playbookActor.styles)
 	})
 	onMount(() => {
+		$inspect(styles)
 		// This need to be updated every time the user interacts the Style API controls, which are submitted via a form action
 		if (styles) {
 			playbookContext.applyStyles(styles)

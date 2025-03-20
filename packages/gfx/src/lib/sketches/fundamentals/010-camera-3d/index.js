@@ -28,7 +28,7 @@ let meta = {
 	slug: 'camera-3d',
 	title: 'Camera 3D',
 	asset: 'camera-3d',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['3D', 'camera', 'webgl', 'webglfundamentals'],
 	controls: ['camera', 'loop'],
 }

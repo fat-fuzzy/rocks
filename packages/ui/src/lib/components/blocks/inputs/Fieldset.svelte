@@ -8,11 +8,11 @@
 		legend,
 		type, // input group if any
 		disabled,
-
 		align,
 		container,
 		layout = 'stack',
 		justify,
+		font,
 		size = 'sm',
 		variant,
 		breakpoint,
@@ -22,10 +22,12 @@
 	}: FieldsetProps = $props()
 
 	let sizeClass = $derived(size ? `size:${size}` : '')
+	let fontClass = $derived(font ? `font:${font}` : '')
 	let typeClass = $derived(type || '')
 	let classes = $derived(
 		styleHelper.getStyles({
 			size,
+			font,
 			align,
 			justify,
 			variant,
@@ -39,7 +41,7 @@
 </script>
 
 <fieldset {name} data-key={id} class={`${classes} ${typeClass}`} {disabled}>
-	{#if legend}<legend class={sizeClass}>{legend}</legend>{/if}
+	{#if legend}<legend class={`${fontClass} ${sizeClass}`}>{legend}</legend>{/if}
 	{#if children}
 		{@render children()}
 	{/if}

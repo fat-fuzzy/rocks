@@ -36,9 +36,8 @@
 		},
 	}
 
-	let layoutClasses = $derived(
-		`l:reveal top ${linkReveal[slug].reveal ?? 'collapsed'}`,
-	)
+	let revalClasses = $derived(linkReveal[slug].reveal ?? 'collapsed')
+	let layoutClasses = $derived(`l:reveal top ${revalClasses}`)
 
 	function toggleReveal(payload: FuzzyPayload) {
 		linkReveal[slug].reveal = payload.state
@@ -69,7 +68,7 @@
 			onclick={toggleReveal}
 		/>
 	</div>
-	<ff-reveal id={`links-${slug}`}>
+	<ff-reveal id={`links-${slug}`} class={revalClasses}>
 		{#if children}
 			{@render children()}
 		{/if}

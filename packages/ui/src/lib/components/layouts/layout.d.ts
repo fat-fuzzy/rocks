@@ -7,6 +7,7 @@ import type {
 	UiBlockProps,
 	FormProps,
 	UiAnimationEvent,
+	NavItem,
 } from '$types'
 
 export type LayoutProps = UiLayoutProps & UiContentProps & FormProps
@@ -38,6 +39,11 @@ export type RevealLayoutProps = LayoutProps &
 	}
 
 export type SidebarLayoutProps = LayoutProps & {
+	theme: string
 	main: Snippet
 	side: Snippet
+}
+
+export type LayoutRailsProps = LayoutProps & {
+	children: Snippet
 }

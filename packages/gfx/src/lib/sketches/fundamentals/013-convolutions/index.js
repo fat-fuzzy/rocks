@@ -44,7 +44,7 @@ let meta = {
 	slug: 'convolution',
 	title: 'Convolution',
 	asset: 'convolution',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['matrix', 'texture', 'webgl', 'webglfundamentals'],
 	controls: ['texture'],
 	filename: 'plants.png',

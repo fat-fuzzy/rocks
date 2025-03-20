@@ -16,11 +16,18 @@ a:active,
 a:visited {
 	--hue: var(--color-theme-primary);
 	text-decoration: underline;
+
+	&[class*='accent'] {
+		--hue: var(--color-theme-accent);
+	}
+	&[class*='highlight'] {
+		--hue: var(--color-theme-highlight);
+	}
 }
 
 a:hover {
 	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-400);
+	--lightness-contrast: var(--color-lightness-600);
 }
 
 /* TODO: CHeck link styles */

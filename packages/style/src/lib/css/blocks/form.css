@@ -9,12 +9,10 @@ form {
 	--color-accent: var(--accent);
 	color: var(--ink);
 	max-height: fit-content;
-	max-inline-size: 100%;
 }
 
 form * {
 	font-family: var(--font-family-ui);
-	max-inline-size: 100%;
 }
 
 label,
@@ -43,7 +41,7 @@ legend {
 input,
 select,
 textarea {
-	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
+	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width-md));
 	--padding-inline: var(--ui-size);
 	border: 1px solid var(--accent);
 	border-radius: var(--border-radius-base);
@@ -94,10 +92,15 @@ label:hover > [type='file'] {
 
 /* Display range input step labels */
 
+label:has([type='range']) {
+	line-height: 1;
+}
+
 [type='range'][list='markers'] + datalist {
 	display: flex;
 	justify-content: var(--justify, space-between);
 	padding: 0 var(--ui-size);
+	margin-block-start: var(--ui-size-sm);
 }
 
 [type='range'][list='markers'] + datalist > option {

@@ -22,6 +22,7 @@
 		justify,
 		color,
 		size,
+		font,
 		variant,
 		background,
 		breakpoint,
@@ -30,7 +31,7 @@
 	let inputClasses = $derived(
 		styleHelper.getStyles({
 			color,
-			font: size,
+			font,
 			size,
 			align,
 			justify,

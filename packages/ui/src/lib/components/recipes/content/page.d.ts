@@ -4,6 +4,9 @@ import type {
 	TabsProps,
 	UiSize,
 	SidebarLayoutProps,
+	NavItem,
+	UiRevealState,
+	UiLayoutProps,
 } from '$types'
 
 type ProseProps = {
@@ -15,7 +18,7 @@ type ProseProps = {
 
 export type PageHeaderProps = {
 	title: string
-	layout: string
+	layout?: string
 	justify?: string
 	size?: UiSize
 	media?: boolean
@@ -26,7 +29,9 @@ export type PageHeaderProps = {
 export type PageProps = {
 	id?: string
 	title: string
+	subtitle?: string
 	path?: string
+	hash?: string
 	description: string
 	pageName?: string
 	size?: string
@@ -43,12 +48,14 @@ export type PageScrollyProps = PageProps & {
 	items: ScrollyItemProps[]
 }
 
-export type RailsProps = UiLayoutProps & {
-	layout: string
-	lanes: number
-	items: {[key: string]: Snippet}
-}
+export type PageRailsProps = UiLayoutProps &
+	PageProps & {
+		layout: string
+		main: Snippet
+		nav: NavItem[]
+		aside?: Snippet
+		context?: UiRevealState
+		footer?: Snippet
+	}
 
 export type PageTabsProps = PageProps & TabsProps
-
-export type PageRailsProps = PageProps & RailsProps
