@@ -60,7 +60,10 @@ export type Scene = {
 	meta: SceneMeta
 	init: () => void
 	draw: (time?: number) => void
-	main: (canvas: HTMLCanvasElement, options?: SceneOptions) => SceneContext
+	main: (
+		canvas: HTMLCanvasElement,
+		options?: SceneOptions,
+	) => Promise<SceneContext>
 	update: (value: SceneContext, event?: MouseEvent | TouchEvent) => void
 	clear: () => void
 	stop: () => void

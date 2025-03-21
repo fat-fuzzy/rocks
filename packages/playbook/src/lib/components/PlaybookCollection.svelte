@@ -133,6 +133,7 @@
 		nav={pageNav}
 		size="sm"
 		context={page.data.context}
+		layout=""
 	>
 		{#snippet main()}
 			<div class="l:text:md maki:auto">
