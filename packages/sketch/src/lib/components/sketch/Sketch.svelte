@@ -73,11 +73,11 @@
 		`canvas ${backgroundClass} ${layer} ${currentState} ${currentAsset}`,
 	)
 
-	function init() {
+	async function init() {
 		actor.update(SketchEvent.load)
 		if (canvas) {
 			try {
-				context = scene.main(canvas)
+				context = await scene.main(canvas)
 				scene.update({...context, texture: {filters}})
 				actor.update(SketchEvent.loadOk)
 			} catch (e: unknown) {
@@ -105,9 +105,9 @@
 		}
 	}
 
-	function play() {
+	async function play() {
 		if (actor.state.canvas === CanvasState.idle) {
-			init()
+			await init()
 		}
 		render()
 		actor.update(PlayerEvent.play)
@@ -124,10 +124,10 @@
 		)
 	}
 
-	function clear() {
+	async function clear() {
 		const prevCanvasState = actor.state.canvas
 		reset()
-		init()
+		await init()
 		render()
 		if (prevCanvasState === CanvasState.paused) {
 			pause()
@@ -174,12 +174,12 @@
 		actor.update(ControlsEvent.update)
 	}
 
-	function updateCanvas(payload: {
+	async function updateCanvas(payload: {
 		event: SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
 	}) {
 		switch (payload.event) {
 			case 'play':
-				play()
+				await play()
 				break
 			case 'pause':
 				pause()
@@ -207,9 +207,9 @@
 		}
 	}
 
-	onMount(() => {
+	onMount(async () => {
 		try {
-			init()
+			await init()
 		} catch (e: unknown) {
 			actor.feedback.sketch.push({status: 'error', message: e as string})
 			actor.update(SketchEvent.loadNok)
@@ -218,7 +218,7 @@
 
 	onDestroy(() => {
 		try {
-			stop()
+			if (scene) stop()
 		} catch (e: unknown) {
 			actor.feedback.sketch.push({status: 'error', message: e as string})
 			actor.update(SketchEvent.exitNok)

@@ -149,7 +149,7 @@ function render(canvas) {
 
 async function main(canvas) {
 	init(canvas)
-	image = await loadImage(url, () => render(canvas))
+	programInfo = await Promise.resolve(loadProgram(canvas))
 	return programInfo.context
 }
 
