@@ -85,7 +85,7 @@
 	{@render main()}
 </main>
 
-<div class={`page-context ${mediaClass}`}>
+<aside id={`context-${id}`} class={`page-context ${mediaClass}`}>
 	<Reveal
 		id="context"
 		auto={true}
@@ -111,7 +111,7 @@
 			{/if}
 		</div>
 	</Reveal>
-</div>
+</aside>
 
 {#if footer}
 	<div class="main-footer">
