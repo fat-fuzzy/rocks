@@ -9,7 +9,6 @@
 	let {
 		id = 'main',
 		title = 'PageRails',
-		subtitle = '',
 		path = '',
 		hash,
 		description = `Basic page layout`,
@@ -79,10 +78,6 @@
 
 {#snippet headerMain()}
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
-	{#if subtitle}
-		<h2 class="h4">{subtitle}</h2>
-	{/if}
-	{#if description}<p>{description}</p>{/if}
 {/snippet}
 
 <main {id} class="page-main">
@@ -108,7 +103,9 @@
 		dismiss="outside"
 	>
 		<div class="l:stack:2xs">
-			{@render pageNav()}
+			{#if nav.length > 0}
+				{@render pageNav()}
+			{/if}
 			{#if aside}
 				{@render aside()}
 			{/if}

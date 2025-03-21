@@ -27,6 +27,8 @@ body {
 	font-size: var(--font-size-body);
 	font-weight: var(--font-weight-body);
 	line-height: var(--font-leading-body);
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--track);
 }
 
 main {

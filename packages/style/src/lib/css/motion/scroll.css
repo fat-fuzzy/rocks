@@ -1,23 +1,17 @@
 /* Scroll container */
-
-.scroll\:y {
-	--lightness-scrollbar: var(--lightness-base);
-	--chroma-scrollbar: var(--chroma-base);
-	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
-	--thumb: var(--ink);
-	overflow: hidden auto;
+[class*='scroll:'] {
 	block-size: 100%;
 	scrollbar-color: var(--thumb) var(--track);
 }
 
-.scroll\:x {
-	--lightness-scrollbar: var(--lightness-base);
-	--chroma-scrollbar: var(--chroma-base);
-	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
-	--thumb: var(--ink);
-	overflow: auto hidden;
+.scroll\:y {
+	overflow: hidden auto;
 	block-size: 100%;
-	scrollbar-color: var(--thumb) var(--track);
+}
+
+.scroll\:x {
+	overflow: auto hidden;
+	inline-size: 100%;
 }
 
 .scroll\:y.snap {
