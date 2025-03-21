@@ -27,14 +27,12 @@
 	layout=""
 >
 	{#snippet main()}
-		<div class="w:full ravioli:md">
-			<EscapeHtml id={slug} {html} size="md" margin="auto" />
-		</div>
-		<Footer />
+		<EscapeHtml id={slug} {html} size="md" margin="auto" />
 	{/snippet}
 	{#snippet aside()}
-		<div class="l:taco">
+		<div class="l:taco:sm">
 			<Picture {...media} dimensions="full" />
+			<Footer />
 		</div>
 	{/snippet}
 </PageRails>
