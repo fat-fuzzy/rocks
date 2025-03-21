@@ -16,7 +16,9 @@
 		class={`l:burrito:3xl font:md maki:block:2xl ${aboutContainerClass}`}
 		open={footerOpen}
 	>
-		<summary class="ravioli:3xs font:heading bg:inherit">About</summary>
+		<summary class="ravioli:3xs font:heading color:primary variant:bare">
+			About
+		</summary>
 		<div class="l:stack:2xl">
 			<p>
 				Made with 🩷 by <a
