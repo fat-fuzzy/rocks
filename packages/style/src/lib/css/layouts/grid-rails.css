@@ -253,6 +253,7 @@ body:has(.l\:grid\:rails) {
 	.sidenav {
 		inline-size: 100%;
 		max-inline-size: unset;
+		min-inline-size: var(--sidebar-width);
 	}
 
 	.sidenav > nav > ff-reveal {
