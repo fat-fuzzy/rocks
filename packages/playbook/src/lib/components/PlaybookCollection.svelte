@@ -28,7 +28,7 @@
 		formaction?: string
 		actionPath?: string
 		children?: Snippet
-		footer?: Snippet
+		mainFooter?: Snippet
 	}
 
 	let {
@@ -43,7 +43,7 @@
 		formaction,
 		actionPath,
 		children,
-		footer,
+		mainFooter,
 	}: Props = $props()
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
@@ -156,10 +156,6 @@
 					{@render categoryElements()}
 				</div>
 			</section>
-
-			{#if footer}
-				{@render footer()}
-			{/if}
 		{/snippet}
 
 		{#snippet aside()}
@@ -169,6 +165,12 @@
 					<PropsDemo {path} meta={content.meta} categories={[category]} />
 				{/key}
 			</div>
+		{/snippet}
+
+		{#snippet footer()}
+			{#if mainFooter}
+				{@render mainFooter()}
+			{/if}
 		{/snippet}
 	</PageRails>
 {:else}

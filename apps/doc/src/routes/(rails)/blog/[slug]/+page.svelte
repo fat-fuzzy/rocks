@@ -41,9 +41,6 @@
 	>
 		{#snippet main()}
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />
-			<div class="l:text:md maki:auto">
-				<Footer />
-			</div>
 		{/snippet}
 		{#snippet aside()}
 			<Aside
@@ -52,6 +49,9 @@
 				series={seriesData}
 				page={post.index}
 			/>
+		{/snippet}
+		{#snippet footer()}
+			<Footer />
 		{/snippet}
 	</PageRails>
 {/key}

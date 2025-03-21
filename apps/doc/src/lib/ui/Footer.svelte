@@ -3,7 +3,7 @@
 	import RcScout from '$lib/ui/RcScout.svelte'
 	import {page} from '$app/state'
 
-	let footerClass = ''
+	let footerClass = 'l:text:md maki:auto text:center'
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
@@ -13,13 +13,13 @@
 
 <footer class={footerClass}>
 	<details
-		class={`l:burrito:3xl font:md maki:block:2xl ${aboutContainerClass}`}
+		class={`font:md maki:block:2xl ${aboutContainerClass}`}
 		open={footerOpen}
 	>
 		<summary class="ravioli:3xs font:heading color:primary variant:bare">
 			About
 		</summary>
-		<div class="l:stack:2xl">
+		<div class="l:stack:2xl maki:block size:lg">
 			<p>
 				Made with 🩷 by <a
 					href="https://github.com/patiboh"

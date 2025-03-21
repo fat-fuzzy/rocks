@@ -227,6 +227,7 @@ body:has(.l\:grid\:rails) {
 	.page-context[class*='media:'],
 	.page-context[class*='media:'] ff-reveal.expanded:first-of-type,
 	.page-context[class*='media:'] ff-reveal.collapsed:first-of-type {
+		inline-size: 100%;
 		max-inline-size: unset;
 	}
 

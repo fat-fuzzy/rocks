@@ -19,10 +19,6 @@ details > summary {
 	background-color: var(--shade);
 }
 
-details > summary + * {
-	margin-block-start: var(--ui-size);
-}
-
 details > summary::before {
 	margin-inline-end: var(--ui-size-lg);
 }

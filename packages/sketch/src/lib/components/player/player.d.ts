@@ -51,5 +51,5 @@ export type PlayerProps = {
 	pause: (payload: {event: PlayerEvent}) => void
 	clear: (payload: {event: PlayerEvent}) => void
 	stop: (payload: {event: PlayerEvent}) => void
-	init: (payload: {event: PlayerEvent}) => void
+	init?: (payload: {event: PlayerEvent}) => void
 }
