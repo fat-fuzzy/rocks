@@ -1,12 +1,13 @@
-menu.player {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: var(--border-width-lg);
-}
 
 menu.player > li {
-	height: 100%;
-	width: auto;
+	flex-basis: 28%;
 	aspect-ratio: 1/1;
 	padding-block: var(--border-width-lg);
+	padding-inline: var(--ui-size-sm);
+}
+
+menu.player > li button[class*="shape:"] {
+	block-size: 100%;
+	max-block-size: calc(var(--ui-header-height) + var(--ui-size));
+	inline-size: auto;
 }

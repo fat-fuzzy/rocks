@@ -56,7 +56,7 @@
 	})
 </script>
 
-<menu {id} class={`player l:grid:2xs l:burrito:sm`}>
+<menu {id} class={`player l:flex size:${size}`}>
 	<li>
 		{#key actor.playState}
 			<Switch
