@@ -44,16 +44,17 @@
 				{/each}
 			</ul>
 		</div>
-		<Footer />
 	{/snippet}
 	{#snippet aside()}
 		{#if sketches.length > 5 && tags.size > 0}
-			<h2>Tags</h2>
+			<p class="font:md font:heading maki:inline size:md">Tags</p>
 			<div class="l:text l:grid:sm maki:block">
 				{#each tags as tag}
-					<details class="ravioli:md l:stack size:sm bg:netural varian:bare">
-						<summary class="surface:2:neutral ravioli:2xs">{tag}</summary>
-						<div class="l:stack:xs maki:block">
+					<details class="bg:netural variant:bare">
+						<summary class="surface:2:neutral font:sm font:heading ravioli:3xs">
+							{tag}
+						</summary>
+						<div class="maki:inline size:sm">
 							<ul class="unstyled">
 								{#each sketches as { slug, asset, title, tags }}
 									{#if tags.includes(tag)}
@@ -70,5 +71,8 @@
 				{/each}
 			</div>
 		{/if}
+	{/snippet}
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageRails>

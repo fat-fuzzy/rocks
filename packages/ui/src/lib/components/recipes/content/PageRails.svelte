@@ -83,11 +83,15 @@
 <main {id} class="page-main">
 	<PageHeader size={size as UiSize} layout="flex" {justify} {...header} />
 	{@render main()}
+	{#if footer}
+		{@render footer()}
+	{/if}
 </main>
 
-<aside id={`context-${id}`} class={`page-context ${mediaClass}`}>
+<div id={`context-${id}`} class={`page-context ${mediaClass}`}>
 	<Reveal
 		id="context"
+		element="aside"
 		auto={true}
 		reveal={context?.reveal || ''}
 		title="On this Page"
@@ -111,10 +115,4 @@
 			{/if}
 		</div>
 	</Reveal>
-</aside>
-
-{#if footer}
-	<div class="main-footer">
-		{@render footer()}
-	</div>
-{/if}
+</div>

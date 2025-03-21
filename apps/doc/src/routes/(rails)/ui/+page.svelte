@@ -56,10 +56,14 @@
 					/>
 				</PlaybookCollection>
 			{/each}
-			<Footer />
 		</div>
 	{/snippet}
+
 	{#snippet aside()}
 		<p class="feedback">Some Context</p>
+	{/snippet}
+
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageRails>

@@ -24,8 +24,8 @@
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" margin="auto" />
-		<div class="l:text:md maki:auto">
-			<Footer />
-		</div>
+	{/snippet}
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageRails>

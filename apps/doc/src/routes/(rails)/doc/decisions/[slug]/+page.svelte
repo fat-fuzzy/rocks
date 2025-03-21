@@ -28,15 +28,15 @@
 	>
 		{#snippet main()}
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />
-			<div class="l:text:md maki:auto">
-				<Footer />
-			</div>
 		{/snippet}
 		{#snippet aside()}
 			<Aside
 				created={markdown.meta.date_created}
 				updated={markdown.meta.date_updated}
 			/>
+		{/snippet}
+		{#snippet footer()}
+			<Footer />
 		{/snippet}
 	</PageRails>
 {/key}

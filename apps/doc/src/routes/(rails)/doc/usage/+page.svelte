@@ -21,7 +21,7 @@
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">
-			<ul class="l:grid:sm unstyled">
+			<ul class="l:grid:xs unstyled">
 				{#each markdowns as { meta }}
 					{#if meta.status !== 'draft'}
 						<a
@@ -34,7 +34,8 @@
 				{/each}
 			</ul>
 		</div>
-
+	{/snippet}
+	{#snippet footer()}
 		<Footer />
 	{/snippet}
 </PageRails>

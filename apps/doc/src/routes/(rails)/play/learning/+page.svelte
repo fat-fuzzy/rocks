@@ -35,20 +35,17 @@
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" margin="auto" />
-		<div class="l:text:md maki:auto">
-			<Footer />
-		</div>
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
-			<h2>Tags</h2>
-			<div class="l:grid:sm maki:block">
+			<p class="font:md font:heading maki:inline size:md">Tags</p>
+			<div class="l:text l:grid:sm maki:block">
 				{#each tags as tag}
 					<details class="bg:netural variant:bare">
 						<summary class="surface:2:neutral font:sm font:heading ravioli:3xs">
 							{tag}
 						</summary>
-						<div class="ravioli:md">
+						<div class="maki:inline size:sm">
 							<ul class="unstyled">
 								{#each sketches as { slug, asset, title, tags }}
 									{#if tags.includes(tag)}
@@ -65,5 +62,8 @@
 				{/each}
 			</div>
 		{/if}
+	{/snippet}
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageRails>

@@ -21,7 +21,7 @@
 		path={`${path}${page.url.hash}`}
 		{formaction}
 	>
-		{#snippet footer()}
+		{#snippet mainFooter()}
 			<Footer />
 		{/snippet}
 	</PlaybookElement>

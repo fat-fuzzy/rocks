@@ -27,7 +27,7 @@
 		formaction?: string
 		actionPath?: string
 		redirect?: string
-		footer: Snippet
+		mainFooter?: Snippet
 	}
 	let {
 		category,
@@ -37,7 +37,7 @@
 		formaction,
 		actionPath,
 		redirect,
-		footer,
+		mainFooter,
 	}: Props = $props()
 
 	let description = $derived(`${title} | Doc`)
@@ -110,6 +110,7 @@
 	nav={pageNav}
 	size="sm"
 	context={page.data.context}
+	layout=""
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">
@@ -144,10 +145,6 @@
 				</div>
 			</div>
 		</section>
-
-		{#if footer}
-			{@render footer()}
-		{/if}
 	{/snippet}
 
 	{#snippet aside()}
@@ -163,5 +160,11 @@
 				/>
 			{/key}
 		</div>
+	{/snippet}
+
+	{#snippet footer()}
+		{#if mainFooter}
+			{@render mainFooter()}
+		{/if}
 	{/snippet}
 </PageRails>

@@ -13,6 +13,7 @@ import {
 	PlayerState,
 	PlayerAction,
 } from '$types'
+import type {Snippet} from 'svelte'
 
 export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
 
@@ -64,4 +65,5 @@ export type SketchProps = {
 	layout?: string
 	breakpoint?: string
 	dev?: boolean
+	mainFooter?: Snippet
 }

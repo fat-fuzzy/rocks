@@ -37,6 +37,7 @@
 		layout = 'switcher',
 		breakpoint,
 		dev,
+		mainFooter,
 	}: SketchProps = $props()
 
 	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
@@ -265,6 +266,7 @@
 			<Debug {meta} context={actor} />
 		{/if}
 	{/snippet}
+
 	{#snippet aside()}
 		<aside class="l:stack size:sm">
 			{#if canvas}
@@ -321,6 +323,12 @@
 				{/if}
 			{/if}
 		</aside>
+	{/snippet}
+
+	{#snippet footer()}
+		{#if mainFooter}
+			{@render mainFooter()}
+		{/if}
 	{/snippet}
 </PageRails>
 

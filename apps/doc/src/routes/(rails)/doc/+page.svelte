@@ -32,7 +32,9 @@
 	{#snippet aside()}
 		<div class="l:taco:sm">
 			<Picture {...media} dimensions="full" />
-			<Footer />
 		</div>
+	{/snippet}
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageRails>

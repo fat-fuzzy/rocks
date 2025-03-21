@@ -127,7 +127,7 @@ a[class*='ravioli'] {
 }
 
 /* == Override heading styles for headings inside links == */
-a[class*='ravioli']:hover > *:not(.icon) {
+a[class*='ravioli']:hover {
 	text-decoration: underline;
 }
 
