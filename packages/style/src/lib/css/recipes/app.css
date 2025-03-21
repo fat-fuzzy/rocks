@@ -1,3 +1,5 @@
 .app {
 	min-block-size: 100vh;
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--track);
 }
