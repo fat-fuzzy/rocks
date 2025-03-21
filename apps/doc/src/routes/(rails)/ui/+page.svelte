@@ -29,38 +29,35 @@
 	layout=""
 >
 	{#snippet main()}
-		<div class="w:full ravioli:md">
-			<EscapeHtml
-				id={slug}
-				html={content.html}
-				size="md"
-				margin="auto"
-				element="section"
-			/>
+		<EscapeHtml
+			id={slug}
+			html={content.html}
+			size="md"
+			margin="auto"
+			element="section"
+		/>
 
-			<div class="l:text:md maki:auto">
-				{#each categories as category}
-					<PlaybookCollection
-						{category}
-						{markdowns}
-						path={page.url.pathname}
-						depth={1}
-						isPage={false}
-						formaction="updateState"
-						{content}
-					>
-						<EscapeHtml
-							id={`${slug}-${category}`}
-							html={markdowns.categories.find(
-								({meta}) => meta.slug === category,
-							).html}
-							size="md"
-						/>
-					</PlaybookCollection>
-				{/each}
-			</div>
+		<div class="l:text:md maki:auto">
+			{#each categories as category}
+				<PlaybookCollection
+					{category}
+					{markdowns}
+					path={page.url.pathname}
+					depth={1}
+					isPage={false}
+					formaction="updateState"
+					{content}
+				>
+					<EscapeHtml
+						id={`${slug}-${category}`}
+						html={markdowns.categories.find(({meta}) => meta.slug === category)
+							.html}
+						size="md"
+					/>
+				</PlaybookCollection>
+			{/each}
+			<Footer />
 		</div>
-		<Footer />
 	{/snippet}
 	{#snippet aside()}
 		<p class="feedback">Some Context</p>

@@ -12,6 +12,10 @@ export type NavItem = {
 	slug: string
 	title: string
 	asset?: string
+	color?: string
+	size?: string
+	variant?: string
+	shape?: string
 	formaction?: string
 	preload?: string
 	items?: NavItem[]

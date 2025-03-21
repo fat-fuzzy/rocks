@@ -32,7 +32,6 @@
 	<PageRails
 		pageName="Blog"
 		{title}
-		subtitle={post.subtitle}
 		{description}
 		size="sm"
 		path={page.url.pathname}
@@ -41,10 +40,10 @@
 		layout=""
 	>
 		{#snippet main()}
-			<div class="w:full ravioli:md">
-				<EscapeHtml id={slug} {html} size="md" margin="auto" />
+			<EscapeHtml id={slug} {html} size="md" margin="auto" />
+			<div class="l:text:md maki:auto">
+				<Footer />
 			</div>
-			<Footer />
 		{/snippet}
 		{#snippet aside()}
 			<Aside

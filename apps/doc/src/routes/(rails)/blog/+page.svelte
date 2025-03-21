@@ -23,9 +23,9 @@
 	layout=""
 >
 	{#snippet main()}
-		<div class="w:full ravioli:md">
-			<EscapeHtml id={slug} {html} size="md" margin="auto" />
+		<EscapeHtml id={slug} {html} size="md" margin="auto" />
+		<div class="l:text:md maki:auto">
+			<Footer />
 		</div>
-		<Footer />
 	{/snippet}
 </PageRails>

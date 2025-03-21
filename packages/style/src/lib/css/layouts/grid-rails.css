@@ -202,6 +202,12 @@ body:has(.l\:grid\:rails) {
 		inline-size: var(--sidebar-width);
 	}
 
+	.page-context > .l\:reveal\:auto > ff-reveal {
+		inline-size: 100%;
+		max-inline-size: var(--sidebar-width);
+		padding-inline: var(--ui-size) 0;
+	}
+
 	.page-context ff-reveal.expanded:first-of-type {
 		position: unset;
 	}

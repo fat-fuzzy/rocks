@@ -29,7 +29,6 @@ export type PageHeaderProps = {
 export type PageProps = {
 	id?: string
 	title: string
-	subtitle?: string
 	path?: string
 	hash?: string
 	description: string
