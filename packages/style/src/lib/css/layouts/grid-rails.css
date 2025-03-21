@@ -191,11 +191,11 @@ body:has(.l\:grid\:rails) {
 		overscroll-behavior-y: contain;
 		scrollbar-gutter: stable;
 		scrollbar-width: thin;
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
+		inline-size: var(--sidebar-width);
+		max-inline-size: 100%;
 		block-size: fit-content;
 		max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
-		padding-inline: var(--outline-offset-lg) 0;
+		padding-inline: var(--outline-offset-lg) var(--ui-size);
 	}
 
 	.page-context > .l\:reveal\:auto {
