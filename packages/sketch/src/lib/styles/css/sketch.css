@@ -81,9 +81,6 @@
 	font-size: calc(var(--fluid-4) * 5);
 }
 
-.scene  {
-	min-block-size: calc(100vh - 4 * var(--ui-header-height));
-}
 
 .scene .feedback {
 	position: absolute;
