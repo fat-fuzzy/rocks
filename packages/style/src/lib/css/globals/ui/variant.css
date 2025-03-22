@@ -35,6 +35,6 @@
 	background-color: var(--shade);
 }
 
-[class*='dotted'] {
+.dotted {
 	border: var(--border-width-md) dotted var(--color-accent, var(--color-bg));
 }
