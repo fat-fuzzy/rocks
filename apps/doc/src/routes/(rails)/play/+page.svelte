@@ -28,9 +28,7 @@
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" margin="auto" />
 	{/snippet}
-	{#snippet aside()}
-		<p class="feedback">Some Context</p>
-	{/snippet}
+
 	{#snippet footer()}
 		<Footer />
 	{/snippet}
