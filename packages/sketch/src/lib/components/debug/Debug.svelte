@@ -18,7 +18,7 @@
 	})
 </script>
 
-<aside class="debug l:stack:sm maki:block size:2xs overflow:x ravioli:dotted">
+<aside class="debug l:stack:sm maki:block size:2xs scroll:x ravioli:md dotted">
 	<table class="text:center font:sm" data-testid="debug-table">
 		<thead class="surface:3:primary">
 			<tr>
