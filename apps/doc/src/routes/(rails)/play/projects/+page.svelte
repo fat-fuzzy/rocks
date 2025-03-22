@@ -47,11 +47,13 @@
 	{/snippet}
 	{#snippet aside()}
 		{#if sketches.length > 5 && tags.size > 0}
-			<p class="font:md font:heading maki:inline size:md">Tags</p>
+			<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
+				Tags
+			</p>
 			<div class="l:text l:grid:sm maki:block">
 				{#each tags as tag}
-					<details class="bg:netural variant:bare">
-						<summary class="surface:2:neutral font:sm font:heading ravioli:3xs">
+					<details class="bg:netural">
+						<summary class="color:primary font:sm font:heading ravioli:3xs">
 							{tag}
 						</summary>
 						<div class="maki:inline size:sm">

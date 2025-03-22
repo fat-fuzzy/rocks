@@ -39,17 +39,13 @@
 		</div>
 	{/snippet}
 	{#snippet aside()}
-		<p
-			class="font:md font:heading font:semibold size:sm ravioli:3xs surface:1:neutral variant:bare"
-		>
+		<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
 			Tags
 		</p>
 		<div class="l:text l:grid:sm maki:block">
 			{#each tags as tag}
 				<details class="bg:netural">
-					<summary
-						class="color:primary variant:bare font:sm font:heading ravioli:3xs"
-					>
+					<summary class="color:primary font:sm font:heading ravioli:3xs">
 						{tag}
 					</summary>
 					<div class="maki:inline size:sm">
