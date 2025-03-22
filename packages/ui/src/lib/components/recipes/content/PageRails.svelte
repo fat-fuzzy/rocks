@@ -88,31 +88,33 @@
 	{/if}
 </main>
 
-<div id={`context-${id}`} class={`page-context ${mediaClass}`}>
-	<Reveal
-		id="context"
-		element="aside"
-		auto={true}
-		reveal={context?.reveal || ''}
-		title="On this Page"
-		position={false}
-		place="left"
-		color="primary"
-		justify="evenly"
-		font="sm"
-		size="sm"
-		variant="outline"
-		breakpoint="xs"
-		formaction="toggleContext"
-		dismiss="outside"
-	>
-		<div class="l:stack:2xs">
-			{#if nav.length > 0}
-				{@render pageNav()}
-			{/if}
-			{#if aside}
-				{@render aside()}
-			{/if}
-		</div>
-	</Reveal>
-</div>
+{#if nav.length > 0 || aside}
+	<div id={`context-${id}`} class={`page-context ${mediaClass}`}>
+		<Reveal
+			id="context"
+			element="aside"
+			auto={true}
+			reveal={context?.reveal || ''}
+			title="On this Page"
+			position={false}
+			place="left"
+			color="primary"
+			justify="evenly"
+			font="sm"
+			size="sm"
+			variant="outline"
+			breakpoint="xs"
+			formaction="toggleContext"
+			dismiss="outside"
+		>
+			<div class="l:stack:2xs">
+				{#if nav.length > 0}
+					{@render pageNav()}
+				{/if}
+				{#if aside}
+					{@render aside()}
+				{/if}
+			</div>
+		</Reveal>
+	</div>
+{/if}

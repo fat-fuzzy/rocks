@@ -162,7 +162,13 @@ body:has(.l\:grid\:rails) {
 	}
 
 	.page-main {
+		min-block-size: calc(100vh - 6 * var(--ui-header-height));
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));
+		padding-block-end: var(--ui-header-height);
+	}
+
+	.page-main footer {
+		padding-block-end: var(--ui-header-height);
 	}
 
 	.sidenav > nav > form {
@@ -196,6 +202,7 @@ body:has(.l\:grid\:rails) {
 		block-size: fit-content;
 		max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
 		padding-inline: var(--outline-offset-lg) var(--ui-size);
+		padding-block-end: var(--ui-header-height);
 	}
 
 	.page-context > .l\:reveal\:auto {
