@@ -23,6 +23,7 @@
 
 /* == Layout meals  == */
 @import './grid-rails.css'; /* Use for base grid with page template areas and scrolling sidebars */
+@import './grid-metro.css'; /* Use for base grid with page template areas and scrolling sidebars */
 
 /* == Layout spices  == */
 @import './breakpoint.css'; /* Breakpoint utilities */

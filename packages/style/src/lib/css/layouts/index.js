@@ -21,9 +21,6 @@ import './reveal.css' /* Use for displaying hidden content with a button action 
 import './reveal-sticky.css' /* Use for displaying hidden content in response to a button action */
 import './details.css' /* Use to style <details> and <summary> elements */
 
-/* == Layout meals  == */
-import './grid-rails.css' /* Use for base grid with page template areas and scrolling sidebars */
-
 /* == Layout spices  == */
 import './breakpoint.css' /* Breakpoint utilities */
 import './shapes.css' /* Use to style geometric shapes */
@@ -31,3 +28,7 @@ import './flex.css' /* Use for flex layouts */
 import './grid.css' /* Use for grid layouts base + gallery grid layout (equal sized areas) */
 import './align.css' /* Use for aligning items inside containers and setting widths */
 import './position.css' /* Use for to position elements */
+
+/* == Moving around the viewport == */
+import './grid-rails.css' /* Use for base grid with page template areas and scrolling sidebars */
+import './grid-metro.css' /* Use for more detailed grid with headers and page template areas */
