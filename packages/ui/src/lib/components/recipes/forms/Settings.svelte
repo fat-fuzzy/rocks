@@ -26,7 +26,7 @@
 		: !color
 			? 'bg:inherit'
 			: ''
-	let formClasses = `l:flex nowrap ${showBackground}`
+	let formClasses = `l:flex size:3xs nowrap ${showBackground}`
 </script>
 
 <form

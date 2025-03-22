@@ -64,10 +64,8 @@
 		formaction="toggleNav"
 		position="sticky"
 		placement="top"
-		items={{
-			links,
-			settings,
-		}}
+		main={links}
+		context={settings}
 		breakpoint="sm"
 		app={appSettings}
 	/>

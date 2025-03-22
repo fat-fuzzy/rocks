@@ -2,14 +2,16 @@
 	import type {RevealNavProps} from '$types'
 	import {DismissEvent} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
-	import Reveal from '$lib/components/layouts/Reveal.svelte'
+	import Reveal from '$lib/components/layouts/Reveal/Reveal.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
 
 	let {
 		id = 'reveal-nav',
 		title = 'RevealNav',
+		label = 'RevealNav',
 		path = '',
+		asset,
 		reveal,
 		formaction,
 		actionPath,
@@ -59,9 +61,10 @@
 	<Reveal
 		{id}
 		name={id}
-		label=""
+		{label}
 		{variant}
 		{title}
+		{asset}
 		{size}
 		{font}
 		{color}

@@ -1,9 +1,10 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
-	import Reveal from '$lib/components/layouts/Reveal.svelte'
+	import Reveal from '$lib/components/layouts/Reveal/Reveal.svelte'
 
 	let {
 		id = 'ui-header-nav-app',
+		label,
 		breakpoint = 'xs',
 		size,
 		variant,
@@ -24,7 +25,7 @@
 <Reveal
 	{id}
 	name={id}
-	label=""
+	{label}
 	element="nav"
 	{title}
 	{size}

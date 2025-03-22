@@ -21,7 +21,7 @@ export const links = [
 
 const navBase = {
 	id: 'sidebar',
-	title: 'content',
+	label: 'content',
 	reveal: DEFAULT_SIDEBAR_REVEAL_STATE.reveal,
 	breakpoint: 'sm',
 	size: 'sm',
@@ -37,12 +37,14 @@ const navBase = {
 export const pages: {[key: string]: NavItem} = {
 	blog: {
 		slug: 'blog',
-		title: 'Blog',
+		title: 'Posts',
+		asset: 'pencil',
 		items: [],
 	},
 	doc: {
 		slug: 'doc',
 		title: 'Doc',
+		asset: 'pencil',
 		items: [
 			{
 				slug: 'usage',
@@ -62,7 +64,8 @@ export const pages: {[key: string]: NavItem} = {
 	},
 	play: {
 		slug: 'play',
-		title: 'Play',
+		title: 'Sketches',
+		asset: 'rainbow',
 		items: [
 			{
 				slug: 'projects',
@@ -82,7 +85,9 @@ export const pages: {[key: string]: NavItem} = {
 	},
 	ui: {
 		slug: 'ui', // root path of the Playbook
-		title: 'Library',
+		title: 'UI Library',
+		asset: 'playbook',
+		label: 'Playbook',
 		items: [
 			{
 				slug: 'tokens',
@@ -117,8 +122,8 @@ export const pages: {[key: string]: NavItem} = {
 }
 
 export function buildNav(page: string) {
-	let nav = {...navBase}
-	nav.title = `${page} menu`
+	let nav = {...navBase, ...pages[page]}
+	nav.label = pages[page].label ?? page
 	nav.items = [pages[page]]
 
 	if (page === 'ui') {
