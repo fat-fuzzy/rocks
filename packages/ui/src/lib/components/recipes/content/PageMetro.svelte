@@ -5,14 +5,13 @@
 	import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
 	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 	import Reveal from '$lib/components/layouts/Reveal/Reveal.svelte'
-	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		id = 'main',
-		title = 'PageRails',
+		title = 'PageMetro',
 		path = '',
 		hash,
-		description = `Rails page layout with header, main content and scrolling sidebars`,
+		description = `Metro page layout with header areas, main content and placeable context areas`,
 		pageName,
 		size,
 		dimensions,
@@ -26,6 +25,7 @@
 
 	let currentPage = $derived(pageName ?? title)
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
+
 	let header = $derived({
 		title,
 		main: headerMain,

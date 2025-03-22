@@ -29,7 +29,7 @@ export interface Blocks {
 
 export interface Layouts {
 	Burrito: typeof import('$lib/components/layouts/Burrito.svelte').default
-	Reveal: typeof import('$lib/components/layouts/Reveal.svelte').default
+	Reveal: typeof import('$lib/components/layouts/Reveal/Reveal.svelte').default
 	Stack: typeof import('$lib/components/layouts/Stack.svelte').default
 	Switcher: typeof import('$lib/components/layouts/Switcher.svelte').default
 	Sidebar: typeof import('$lib/components/layouts/Sidebar.svelte').default
@@ -47,10 +47,12 @@ export interface Recipes {
 
 export interface Content {
 	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
-	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
-	PageRails: typeof import('$lib/components/recipes/content/PageRails.svelte').default
-	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
+	LayoutMetro: typeof import('$lib/components/recipes/content/LayoutMetro.svelte').default
 	LayoutRails: typeof import('$lib/components/recipes/content/LayoutRails.svelte').default
+	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
+	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
+	PageMetro: typeof import('$lib/components/recipes/content/PageMetro.svelte').default
+	PageRails: typeof import('$lib/components/recipes/content/PageRails.svelte').default
 }
 
 export interface Drafts {
@@ -61,8 +63,10 @@ export interface Drafts {
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
 	HeaderNav: typeof import('$lib/components/recipes/header/HeaderNav.svelte').default
+	HeaderMetro: typeof import('$lib/components/recipes/header/HeaderMetro.svelte').default
 	Cookies: typeof import('$lib/components/recipes/forms/Cookies.svelte').default
 	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
+	PageNav: typeof import('$lib/components/recipes/navs/PageNav.svelte').default
 	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
 	RevealSettings: typeof import('$lib/components/recipes/forms/RevealSettings.svelte').default
 	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default

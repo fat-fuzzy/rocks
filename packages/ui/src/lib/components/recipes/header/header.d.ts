@@ -8,10 +8,9 @@ export type HeaderProps = UiBlockProps &
 		path?: string
 		position?: string
 		placement?: string
-		items: {
-			links: {[key: string]: string}[]
-			settings: SettingsItems
-		}
+		main: {[key: string]: string}[]
+		sidebar?: Snippet
+		context: SettingsItems
 		app: {settings: {[key: string]: string}}
 		children?: Snippet
 	}

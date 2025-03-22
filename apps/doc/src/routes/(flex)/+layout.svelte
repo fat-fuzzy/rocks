@@ -59,10 +59,8 @@
 		formaction="toggleNav"
 		position="sticky"
 		placement="top"
-		items={{
-			links,
-			settings,
-		}}
+		main={links}
+		context={settings}
 		breakpoint="xs"
 		app={appSettings}
 	/>

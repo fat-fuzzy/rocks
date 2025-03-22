@@ -13,7 +13,9 @@
 		redirect,
 		actionPath,
 		formaction = 'updateState',
-		items,
+		main,
+		page,
+		context,
 		position,
 		placement,
 	}: HeaderProps = $props()
@@ -29,7 +31,7 @@
 			<HeaderNav
 				{id}
 				name={id}
-				label=""
+				label="Menu"
 				title="Menu"
 				size="xs"
 				variant="outline"
@@ -37,7 +39,7 @@
 				justify="start"
 				dismiss={DismissEvent.outside}
 				auto={true}
-				links={items.links}
+				links={main}
 				{path}
 				{reveal}
 				{breakpoint}
@@ -46,22 +48,22 @@
 				{redirect}
 			/>
 		</div>
-		<div class="l:side l:flex align:center">
+		<div class="l:side l:flex size:3xs align:center">
 			<Settings
 				id={`${id}-settings`}
 				name={`${id}-settings`}
-				label=""
+				label="Settings"
 				{path}
 				{breakpoint}
 				size="xs"
 				formaction="updateSettings"
 				{actionPath}
 				{redirect}
-				items={items.settings.switch}
-				onupdate={items.settings.onupdate}
+				items={context.switch}
+				onupdate={context.onupdate}
 			/>
 			<ul class="links:settings end unstyled">
-				{#each items.settings.links as { title, url, shape, size, asset }}
+				{#each context.links as { title, url, shape, size, asset }}
 					<li>
 						<a
 							class={`shape:${shape} ${asset} size:${size}`}

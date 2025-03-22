@@ -34,7 +34,7 @@ import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
  * Layout components
  */
 import Burrito from '$lib/components/layouts/Burrito.svelte'
-import Reveal from '$lib/components/layouts/Reveal.svelte'
+import Reveal from '$lib/components/layouts/Reveal/Reveal.svelte'
 import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
@@ -52,6 +52,8 @@ import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
+import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
+import HeaderMetro from '$lib/components/recipes/header/HeaderMetro.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
@@ -60,9 +62,11 @@ import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 /**
  * Recipes - Content
  */
-import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
+import LayoutMetro from '$lib/components/recipes/content/LayoutMetro.svelte'
 import LayoutRails from '$lib/components/recipes/content/LayoutRails.svelte'
+import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
+import PageMetro from '$lib/components/recipes/content/PageMetro.svelte'
 import PageRails from '$lib/components/recipes/content/PageRails.svelte'
 import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
 
@@ -148,10 +152,12 @@ const recipes = {
 
 const content = {
 	Aside,
-	PageMain,
-	PageRails,
-	LayoutSidebar,
+	LayoutMetro,
 	LayoutRails,
+	LayoutSidebar,
+	PageMain,
+	PageMetro,
+	PageRails,
 }
 
 const drafts = {
@@ -167,6 +173,8 @@ const drafts = {
 	Breadcrumbs,
 	HeaderNav,
 	Settings,
+	PageNav,
+	HeaderMetro,
 	RevealSettings,
 	PageScrolly,
 	Tabs,

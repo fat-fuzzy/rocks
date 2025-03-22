@@ -32,6 +32,16 @@ export type NavProps = UiBlockProps & {
 	items: NavItem[]
 }
 
+export type PageNavProps = UiBlockProps & {
+	id: string
+	hash?: string
+	layout?: string
+	background?: string
+	container?: string
+	align?: string
+	items: NavItem[]
+}
+
 export type BreadcrumbsProps = UiBlockProps & {
 	level: number
 	id: string
