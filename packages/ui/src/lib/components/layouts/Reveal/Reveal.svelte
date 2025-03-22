@@ -1,23 +1,22 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
-	import {enhance} from '$app/forms'
 
 	import {DismissEvent} from '$types'
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
 	// import {clickOutside} from '$lib/utils/click-outside.js'
-	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
-	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import RevealForm from '$lib/components/layouts/Reveal/RevealForm.svelte'
+	import RevealContent from '$lib/components/layouts/Reveal/RevealContent.svelte'
 
-	const {ALIGN_ANIMATION_DIRECTION, ALIGN_OPPOSITE, DEFAULT_REVEAL_STATE} =
-		constants
+	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'Reveal',
 		name = 'Reveal',
 		title = 'Reveal',
-		method = 'POST', // TODO: change to GET with params
+		label = 'Reveal',
 		auto = false,
+		method = 'POST', // TODO: change to GET with params
 		formaction,
 		actionPath,
 		redirect,
@@ -67,27 +66,6 @@
 			? `l:reveal:auto ${revealLayoutClasses}`
 			: `l:reveal ${revealLayoutClasses}`,
 	)
-	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : ''
-	let revealStates = {
-		expanded: {
-			...EXPAND_MACHINE.expanded,
-			text: title,
-			asset: asset
-				? asset
-				: `point-${ALIGN_ANIMATION_DIRECTION[place]['expanded']}`,
-		},
-		collapsed: {
-			...EXPAND_MACHINE.collapsed,
-			text: title,
-			asset: asset
-				? asset
-				: `point-${ALIGN_ANIMATION_DIRECTION[place]['collapsed']}`,
-		},
-	}
-
-	let action = $state(
-		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
-	)
 
 	function onKeyUp(e: KeyboardEvent) {
 		if (e.key === 'Escape' && payload.state === 'expanded') {
@@ -120,38 +98,27 @@
 {/if}
 
 {#snippet revealForm()}
-	<form
+	<RevealForm
 		{id}
+		{label}
 		{name}
 		{method}
-		action={action
-			? actionPath
-				? `${actionPath}?/${action}`
-				: `?/${action}`
-			: undefined}
-		use:enhance
-	>
-		<Expand
-			id={`button-reveal-${id}`}
-			name={`button-reveal-${id}`}
-			{title}
-			{color}
-			{variant}
-			{size}
-			controls={`${id}-reveal`}
-			{asset}
-			justify={`${justify} nowrap`}
-			initial={reveal}
-			place={placeIcon}
-			states={revealStates}
-		>
-			<span class={`ellipsis text:${justify} font:${font}`}>{title}</span>
-		</Expand>
-	</form>
+		{actionPath}
+		{formaction}
+		{redirect}
+		{reveal}
+		{asset}
+		{color}
+		{size}
+		{font}
+		{variant}
+		{align}
+		{justify}
+	/>
 
-	<ff-reveal id={`${id}-reveal`} class={reveal}>
+	<RevealContent {id} {place} {reveal}>
 		{#if children}
 			{@render children()}
 		{/if}
-	</ff-reveal>
+	</RevealContent>
 {/snippet}
