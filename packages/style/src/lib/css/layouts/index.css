@@ -9,10 +9,10 @@
 @import './taco.css'; /* Use for main content centering (wide columns with max-width set using: percentage - margin (in  em units))*/
 @import './burrito.css'; /* Use for side content centering (narrow columns with max-width set using sidebar width variables  (in ch units))*/
 
-/* Maki are for Margin */
+/* Maki is for Margin */
 @import './maki.css'; /* Use for side content centering without any max-width */
 
-/* Pasta are for Padding */
+/* Pasta is for Padding */
 @import './cannelloni.css'; /* Use single axis padding  */
 @import './ravioli.css'; /* Use for all-round padding  */
 
@@ -21,7 +21,7 @@
 @import './reveal-sticky.css'; /* Use for displaying hidden content in response to a button action */
 @import './details.css'; /* Use to style <details> and <summary> elements */
 
-/* == Layout feasts  == */
+/* == Layout meals  == */
 @import './grid-rails.css'; /* Use for base grid with page template areas and scrolling sidebars */
 
 /* == Layout spices  == */
