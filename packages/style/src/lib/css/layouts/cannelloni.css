@@ -1,12 +1,12 @@
-[class*='ravioli'] {
-	padding: var(--ui-size);
+.cannelloni\:inline {
+	padding-inline: var(--ui-size);
 }
 
-[class*='ravioli:feature'] {
-	padding-block-start: var(--gap);
+.cannelloni\:block {
+	padding-block: var(--ui-size);
 }
 
-[class*='ravioli'] {
+[class*='cannelloni:'] {
 	--ratio: var(--size-ratio-md);
 	/* Default range */
 	--ui-size-sm: calc(var(--ui-size) / var(--ratio));
@@ -14,56 +14,51 @@
 }
 
 /* Minor range */
-[class*='ravioli:'].scale\:minor {
+[class*='cannelloni:'].scale\:minor {
 	--ratio: var(--size-ratio-sm);
 }
 
 /* Major range */
-[class*='ravioli:'].scale\:major {
+[class*='cannelloni:'].scale\:major {
 	--ratio: var(--size-ratio-lg);
 }
 
-.raviolink {
-	/* Base size */
-	--ui-size: var(--border-width-xl);
-}
-
-.ravioli\:3xs {
+[class*='cannelloni:'].size\:3xs {
 	/* Base size */
 	--ui-size: var(--size-base-3xs);
 }
 
-.ravioli\:2xs {
+[class*='cannelloni:'].size\:2xs {
 	/* Base size */
 	--ui-size: var(--size-base-2xs);
 }
 
-.ravioli\:xs {
+[class*='cannelloni:'].size\:xs {
 	/* Base size */
 	--ui-size: var(--size-base-xs);
 }
 
-.ravioli\:sm {
+[class*='cannelloni:'].size\:sm {
 	/* Base size */
 	--ui-size: var(--size-base-sm);
 }
 
-.ravioli\:md {
+[class*='cannelloni:'].size\:md {
 	/* Base size */
 	--ui-size: var(--size-base-md);
 }
 
-.ravioli\:lg {
+[class*='cannelloni:'].size\:lg {
 	/* Base size */
 	--ui-size: var(--size-base-lg);
 }
 
-.ravioli\:xl {
+[class*='cannelloni:'].size\:xl {
 	/* Base size */
 	--ui-size: var(--size-base-xl);
 }
 
-.ravioli\:2xl {
+[class*='cannelloni:'].size\:2xl {
 	/* Base size */
 	--ui-size: var(--size-base-2xl);
 }
