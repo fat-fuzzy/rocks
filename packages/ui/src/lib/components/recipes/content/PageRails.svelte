@@ -4,8 +4,7 @@
 	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 	import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
 	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
-	import Reveal from '$lib/components/layouts/Reveal/Reveal.svelte'
-	import styleHelper from '$lib/utils/styles.js'
+	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 
 	let {
 		id = 'main',

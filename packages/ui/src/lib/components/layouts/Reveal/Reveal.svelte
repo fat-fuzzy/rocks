@@ -5,8 +5,8 @@
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
 	// import {clickOutside} from '$lib/utils/click-outside.js'
-	import RevealForm from '$lib/components/layouts/Reveal/RevealForm.svelte'
-	import RevealContent from '$lib/components/layouts/Reveal/RevealContent.svelte'
+	import RevealForm from '$lib/components/layouts/reveal/RevealForm.svelte'
+	import RevealContent from '$lib/components/layouts/reveal/RevealContent.svelte'
 
 	const {DEFAULT_REVEAL_STATE} = constants
 

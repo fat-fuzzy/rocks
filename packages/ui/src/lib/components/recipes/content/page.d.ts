@@ -50,8 +50,9 @@ export type PageScrollyProps = PageProps & {
 export type PageRailsProps = UiLayoutProps &
 	PageProps & {
 		layout: string
-		main: Snippet
 		nav: NavItem[]
+		main: Snippet
+		details?: Snippet
 		aside?: Snippet
 		context?: UiRevealState
 		footer?: Snippet

@@ -22,6 +22,8 @@
 		variant,
 		justify,
 		asset,
+		init,
+		onclick,
 	}: RevealLayoutProps = $props()
 
 	let buttonAset = $state(asset)
@@ -81,6 +83,8 @@
 		initial={reveal}
 		place={placeIcon}
 		states={revealStates}
+		{init}
+		{onclick}
 	>
 		<span class={`ellipsis text:${justify} font:${font}`}>{label}</span>
 	</Expand>

@@ -28,16 +28,6 @@ export type GridLayoutProps = LayoutProps & {
 	footer?: Snippet
 }
 
-export type RevealLayoutProps = LayoutProps &
-	UiBlockProps & {
-		reveal: string
-		auto?: boolean
-		element?: string
-		trigger?: UiAnimationEvent
-		dismiss?: DismissEvent
-		onclick?: (payload: FuzzyPayload) => void
-	}
-
 export type SidebarLayoutProps = LayoutProps & {
 	theme: string
 	main: Snippet
