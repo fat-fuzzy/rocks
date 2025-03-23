@@ -29,7 +29,7 @@ export interface Blocks {
 
 export interface Layouts {
 	Burrito: typeof import('$lib/components/layouts/Burrito.svelte').default
-	Reveal: typeof import('$lib/components/layouts/Reveal/Reveal.svelte').default
+	Reveal: typeof import('$lib/components/layouts/reveal/Reveal.svelte').default
 	Stack: typeof import('$lib/components/layouts/Stack.svelte').default
 	Switcher: typeof import('$lib/components/layouts/Switcher.svelte').default
 	Sidebar: typeof import('$lib/components/layouts/Sidebar.svelte').default
@@ -63,7 +63,6 @@ export interface Drafts {
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
 	HeaderNav: typeof import('$lib/components/recipes/header/HeaderNav.svelte').default
-	HeaderMetro: typeof import('$lib/components/recipes/header/HeaderMetro.svelte').default
 	Cookies: typeof import('$lib/components/recipes/forms/Cookies.svelte').default
 	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
 	PageNav: typeof import('$lib/components/recipes/navs/PageNav.svelte').default

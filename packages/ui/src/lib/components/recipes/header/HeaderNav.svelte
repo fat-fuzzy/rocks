@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
-	import Reveal from '$lib/components/layouts/Reveal/Reveal.svelte'
+	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 
 	let {
 		id = 'ui-header-nav-app',

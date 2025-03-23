@@ -3,7 +3,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import Footer from '$lib/ui/Footer.svelte'
 
-	const {PageRails} = ui.content
+	const {PageMetro} = ui.content
 	const {EscapeHtml} = ui.headless
 
 	let markdown = $derived($page.data.content)
@@ -16,7 +16,7 @@
 	// let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []).filter((tag)=> tag !== 'webgl' && tag !== 'webglfundamentals'))
 </script>
 
-<PageRails
+<PageMetro
 	{title}
 	{description}
 	size="sm"
@@ -32,4 +32,4 @@
 	{#snippet footer()}
 		<Footer />
 	{/snippet}
-</PageRails>
+</PageMetro>

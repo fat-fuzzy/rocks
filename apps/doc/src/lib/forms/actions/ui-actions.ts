@@ -11,9 +11,7 @@ const {
 	DEFAULT_SIDEBAR_REVEAL_STATE,
 } = ui.constants
 const {UiReveal} = ui.forms
-/**
- * TODO validate input
- */
+
 async function handleToggleUiReveal({
 	event,
 	element,

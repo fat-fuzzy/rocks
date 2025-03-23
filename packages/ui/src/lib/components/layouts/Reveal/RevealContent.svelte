@@ -6,12 +6,14 @@
 	let {
 		id = 'RevealContent',
 		reveal = DEFAULT_REVEAL_STATE.reveal,
+		area,
 		children,
 	}: RevealLayoutProps = $props()
+
 	let expanded = $derived(reveal)
 </script>
 
-<ff-reveal id={`${id}-reveal`} class={expanded}>
+<ff-reveal id={`${id}-reveal`} class={`${expanded} ${area}`}>
 	{#if children}
 		{@render children()}
 	{/if}

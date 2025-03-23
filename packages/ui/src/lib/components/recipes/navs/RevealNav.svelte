@@ -2,7 +2,7 @@
 	import type {RevealNavProps} from '$types'
 	import {DismissEvent} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
-	import Reveal from '$lib/components/layouts/Reveal/Reveal.svelte'
+	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
 

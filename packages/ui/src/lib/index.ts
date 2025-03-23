@@ -34,7 +34,7 @@ import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
  * Layout components
  */
 import Burrito from '$lib/components/layouts/Burrito.svelte'
-import Reveal from '$lib/components/layouts/Reveal/Reveal.svelte'
+import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
@@ -53,7 +53,6 @@ import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
-import HeaderMetro from '$lib/components/recipes/header/HeaderMetro.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
@@ -174,7 +173,6 @@ const drafts = {
 	HeaderNav,
 	Settings,
 	PageNav,
-	HeaderMetro,
 	RevealSettings,
 	PageScrolly,
 	Tabs,

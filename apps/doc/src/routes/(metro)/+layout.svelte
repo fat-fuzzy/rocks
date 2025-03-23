@@ -5,8 +5,7 @@
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
 
-	const {RevealNav} = ui.recipes
-	const {HeaderMetro} = ui.drafts
+	const {Header, RevealNav} = ui.recipes
 	const {LayoutMetro} = ui.content
 
 	type Props = {
@@ -34,35 +33,40 @@
 </script>
 
 <LayoutMetro {sidenav} theme={themeClass}>
-	<HeaderMetro
-		id="nav"
-		name="nav"
-		label="Menu"
-		path={page.url.pathname}
-		reveal={page.data.nav.reveal}
-		actionPath={page.url.pathname}
-		formaction="toggleNav"
-		dismiss="outside"
-		main={links}
-		context={settings}
-		breakpoint="xs"
-		app={appSettings}
-	>
-		{#snippet sidebar()}
-			<RevealNav
-				{...sidenav}
-				position={false}
-				place="left"
-				justify="evenly"
-				font="sm"
-				size="2xs"
-				dismiss="outside"
-			/>
-		{/snippet}
-	</HeaderMetro>
-	{#if children}
-		{@render children()}
-	{:else}
-		<p class="feedback bare emoji:default">Coming Soon!</p>
-	{/if}
+	<div class="main-nav">
+		<Header
+			id="nav"
+			name="nav"
+			label="Menu"
+			path={page.url.pathname}
+			reveal={page.data.nav.reveal}
+			actionPath={page.url.pathname}
+			formaction="toggleNav"
+			dismiss="outside"
+			main={links}
+			context={settings}
+			breakpoint="sm"
+			app={appSettings}
+		/>
+	</div>
+
+	<div class="side-nav">
+		<RevealNav
+			{...sidenav}
+			position={false}
+			place="left"
+			justify="evenly"
+			font="sm"
+			size="sm"
+			dismiss="outside"
+		/>
+	</div>
+
+	<div class="zone:content">
+		{#if children}
+			{@render children()}
+		{:else}
+			<p class="feedback bare emoji:default">Coming Soon!</p>
+		{/if}
+	</div>
 </LayoutMetro>
