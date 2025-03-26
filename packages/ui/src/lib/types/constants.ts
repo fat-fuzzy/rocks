@@ -3,6 +3,8 @@ import type {
 	SettingsItems,
 	UiRevealState,
 	ButtonContext,
+	CookiePreferences,
+	ViewingPreferences,
 } from '$types'
 import {UiState} from '$types'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
@@ -16,6 +18,12 @@ const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
 	value: '',
 }
 
+const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
+	functional: false,
+	analytics: false,
+	thirdParty: false,
+}
+
 const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
 const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
@@ -23,6 +31,13 @@ const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
 const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
 
 const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
+
+const DEFAULT_PREFERENCES: ViewingPreferences = {
+	reveal: UiState.collapsed,
+	brightness: '',
+	contrast: '',
+	cookies: DEFAULT_COOKIES_CONSENT,
+}
 
 const DEFAULT_SCENE_ID = '004'
 
@@ -195,6 +210,7 @@ export default {
 	DEFAULT_NAV_REVEAL_STATE,
 	DEFAULT_SIDEBAR_REVEAL_STATE,
 	DEFAULT_APP_SETTINGS,
+	DEFAULT_PREFERENCES,
 	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,
