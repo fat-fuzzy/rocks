@@ -18,6 +18,6 @@
 	setContext('playbookSettings', playbookSettings)
 </script>
 
-<Playbook app={{settings: page.data.settings}}>
+<Playbook app={{settings: page.data.context}}>
 	{@render children()}
 </Playbook>

@@ -79,7 +79,7 @@ async function handleToggleSidebar(event) {
 }
 
 async function handleToggleSettings(event) {
-	const element = 'settings'
+	const element = 'app-context'
 	return handleToggleUiReveal({
 		event,
 		element,

@@ -1,3 +1,6 @@
+import ui from '@fat-fuzzy/ui'
+const {DEFAULT_PREFERENCES} = ui.constants
+
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production
 export const prerender = false
@@ -6,10 +9,11 @@ export const ssr = true
 export const load = async ({locals, url}) => {
 	// Main header nav
 	locals.nav.actionPath = url.pathname
-	locals.settings.actionPath = url.pathname
+	locals.context.actionPath = url.pathname
 
+	let context = locals.context ?? DEFAULT_PREFERENCES
 	return {
 		nav: locals.nav,
-		settings: locals.settings,
+		context,
 	}
 }

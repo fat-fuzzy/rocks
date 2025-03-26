@@ -20,7 +20,7 @@
 	}
 
 	let {children}: Props = $props()
-	let appSettings = $derived(page.data.settings)
+	let appSettings = $derived(page.data.context)
 
 	let brightness = $derived(appSettings.brightness)
 	let contrast = $derived(appSettings.contrast)

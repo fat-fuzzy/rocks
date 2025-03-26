@@ -5,7 +5,8 @@
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
 
-	const {Header, RevealNav} = ui.recipes
+	const {RevealNav} = ui.recipes
+	const {HeaderMetro} = ui.drafts
 	const {LayoutMetro} = ui.content
 
 	type Props = {
@@ -14,7 +15,7 @@
 	let {children}: Props = $props()
 
 	let sidenav = $derived(page.data.sidebar)
-	let appSettings = $derived(page.data.settings)
+	let appSettings = $derived(page.data.context)
 
 	let brightness = $derived(appSettings.brightness)
 	let contrast = $derived(appSettings.contrast)
@@ -24,17 +25,23 @@
 	let themeClass = $derived(
 		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
 	)
-	let settings = $derived.by(() => {
-		let inputs = ui.constants.APP_SETTINGS
-		inputs.switch[0].initial = brightness === 'night' ? 'active' : 'inactive'
-		inputs.switch[1].initial = contrast === 'night' ? 'active' : 'inactive'
-		return inputs
+	let preferences = $derived.by(() => {
+		let preferences = ui.constants.APP_SETTINGS
+		preferences.switch[0].initial =
+			brightness === 'night' ? 'active' : 'inactive'
+		preferences.switch[1].initial = contrast === 'night' ? 'active' : 'inactive'
+		return preferences
+	})
+
+	let context = $derived({
+		...preferences,
+		reveal: appSettings.reveal,
 	})
 </script>
 
 <LayoutMetro {sidenav} theme={themeClass}>
 	<div class="main-nav">
-		<Header
+		<HeaderMetro
 			id="nav"
 			name="nav"
 			label="Menu"
@@ -44,9 +51,8 @@
 			formaction="toggleNav"
 			dismiss="outside"
 			main={links}
-			context={settings}
+			{context}
 			breakpoint="sm"
-			app={appSettings}
 		/>
 	</div>
 
@@ -57,7 +63,7 @@
 			place="left"
 			justify="evenly"
 			font="sm"
-			size="sm"
+			size="xs"
 			dismiss="outside"
 		/>
 	</div>

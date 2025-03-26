@@ -8,6 +8,7 @@ const revealForms = [
 	// global app forms
 	'nav',
 	'sidebar',
+	'context',
 	// doc page forms
 	'usage',
 	'decisions',
@@ -16,7 +17,6 @@ const revealForms = [
 	'blocks',
 	'layouts',
 	'recipes',
-	'context',
 	// play page forms
 	'projects',
 	'learning',
@@ -67,12 +67,16 @@ export const handle = (async ({event, resolve}) => {
 		{},
 	)
 
-	event.locals.settings = appSettings
-	event.locals.dsState = dsState
-	event.locals.dsStyles = dsStyles
+	// Global Forms
+	event.locals.nav = appLocals[FormsEnum.nav]
 	event.locals.sidebar = appLocals[FormsEnum.sidebar]
 	event.locals.context = appLocals[FormsEnum.context]
-	event.locals.nav = appLocals[FormsEnum.nav]
+	event.locals.context = appSettings
+	event.locals.context.reveal = appLocals[FormsEnum.settings]
+
+	// UI Page Forms
+	event.locals.dsState = dsState
+	event.locals.dsStyles = dsStyles
 	event.locals.navTokens = appLocals[FormsEnum.tokens]
 	event.locals.navBlocks = appLocals[FormsEnum.blocks]
 	event.locals.navLayouts = appLocals[FormsEnum.layouts]

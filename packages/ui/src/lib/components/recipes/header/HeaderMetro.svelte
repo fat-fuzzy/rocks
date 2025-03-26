@@ -50,8 +50,8 @@
 		</div>
 		<div class="l:flex align:center">
 			<RevealSettings
-				id={`app-settings`}
-				name={`app-settings`}
+				id={`app-context`}
+				name={`app-context`}
 				label="Settings"
 				{path}
 				{breakpoint}
