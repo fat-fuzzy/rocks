@@ -17,10 +17,10 @@
 	}
 
 	let {children}: Props = $props()
-	let appSettings = $derived(page.data.context)
-	let cookiesPending = $derived(appSettings.consent === undefined)
+	let appContext = $derived(page.data.context)
+	let cookiesPending = $derived(appContext.consent === undefined)
 	let cookiesPartial = $derived(
-		appSettings.consent?.analytics || appSettings.consent?.site,
+		appContext.consent?.analytics || appContext.consent?.site,
 	)
 </script>
 
@@ -43,6 +43,6 @@
 	<Cookies />
 </Popover>
 
-{#if !dev && appSettings.consent?.analytics}
+{#if !dev && appContext.consent?.analytics}
 	<Beacon />
 {/if}

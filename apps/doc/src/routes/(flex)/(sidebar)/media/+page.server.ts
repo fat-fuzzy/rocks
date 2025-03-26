@@ -7,6 +7,6 @@ export const load = async () => {
 
 export const actions = {
 	toggleNav: commonActions.toggleNav,
-	toggleSettings: commonActions.toggleSettings,
+	toggleAppContext: commonActions.toggleAppContext,
 	updateSettings: commonActions.updateSettings,
 }

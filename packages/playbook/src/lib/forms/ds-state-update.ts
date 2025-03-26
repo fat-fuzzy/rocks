@@ -77,7 +77,7 @@ class DsStateUpdate {
 			success = this.toggleSidebarReveal(data)
 		}
 		if (data.has('button-reveal-Header-settings')) {
-			success = this.toggleSettingsReveal(data)
+			success = this.toggleAppContextReveal(data)
 		}
 		return {
 			success,
@@ -126,10 +126,10 @@ class DsStateUpdate {
 		})
 	}
 
-	toggleSettingsReveal(data: FormData) {
+	toggleAppContextReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'Header-settings-reveal',
+			element: 'Header-app-context-reveal',
 		})
 	}
 

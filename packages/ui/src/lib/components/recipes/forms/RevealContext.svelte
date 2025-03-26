@@ -36,7 +36,7 @@
 	{variant}
 	{asset}
 	{align}
-	formaction="toggleSettings"
+	formaction="toggleAppContext"
 >
 	<Settings
 		id={`${id}-menu`}

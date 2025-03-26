@@ -27,7 +27,7 @@ class DsStylesUpdate {
 			data.has('ui-Header-menu-settings-menu-contrast')
 		) {
 			// TODO: fix this not doing anything
-			// return this.toggleSettingsUpdate(data)
+			// return this.appContextUpdate(data)
 		}
 
 		const styleValues = []
@@ -71,7 +71,7 @@ class DsStylesUpdate {
 		return true
 	}
 
-	toggleSettingsUpdate(data: FormData) {
+	appContextUpdate(data: FormData) {
 		let updated = data
 			.get('ui-Header-menu-settings-menu-brightness')
 			?.toString()

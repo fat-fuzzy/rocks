@@ -78,7 +78,7 @@ async function handleToggleSidebar(event) {
 	})
 }
 
-async function handleToggleSettings(event) {
+async function handleToggleAppContext(event) {
 	const element = 'app-context'
 	return handleToggleUiReveal({
 		event,
@@ -202,7 +202,7 @@ async function handleToggleProjects(event) {
 export default {
 	handleToggleSidebar,
 	handleToggleNav,
-	handleToggleSettings,
+	handleToggleAppContext,
 	handleToggleTokens,
 	handleToggleBlocks,
 	handleToggleLayouts,
