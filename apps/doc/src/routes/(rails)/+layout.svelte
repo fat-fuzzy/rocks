@@ -15,7 +15,7 @@
 	const {LayoutRails} = ui.content
 
 	let sidenav = $derived(page.data.sidebar)
-	let appSettings = $derived(page.data.settings)
+	let appSettings = $derived(page.data.context)
 
 	let brightness = $derived(appSettings.brightness)
 	let contrast = $derived(appSettings.contrast)

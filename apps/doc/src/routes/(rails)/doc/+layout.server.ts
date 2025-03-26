@@ -24,7 +24,7 @@ export const load = async ({locals, url}) => {
 
 	const data = {
 		nav: locals.nav,
-		settings: locals.settings,
+		context: locals.context,
 		sidebar,
 		markdowns: {
 			decisions: decisionsMarkdowns,

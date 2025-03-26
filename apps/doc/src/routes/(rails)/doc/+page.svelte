@@ -8,7 +8,7 @@
 	const {Picture} = ui.drafts
 
 	let images = $derived(page.data.images)
-	let brightness = $derived(page.data.settings.brightness)
+	let brightness = $derived(page.data.context.brightness)
 	let markdown = $derived(page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)

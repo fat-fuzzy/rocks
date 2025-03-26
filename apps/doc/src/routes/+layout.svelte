@@ -17,7 +17,7 @@
 	}
 
 	let {children}: Props = $props()
-	let appSettings = $derived(page.data.settings)
+	let appSettings = $derived(page.data.context)
 	let cookiesPending = $derived(appSettings.consent === undefined)
 	let cookiesPartial = $derived(
 		appSettings.consent?.analytics || appSettings.consent?.site,

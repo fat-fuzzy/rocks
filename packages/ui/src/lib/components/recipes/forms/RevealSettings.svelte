@@ -1,10 +1,7 @@
 <script lang="ts">
 	import type {RevealSettingsProps} from '$types'
-	import constants from '$lib/types/constants.js'
 	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
-
-	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'ui-reveal-settings',
@@ -20,11 +17,9 @@
 		actionPath,
 		redirect,
 		items,
+		reveal,
 		onupdate,
 	}: RevealSettingsProps = $props()
-
-	let settingsReveal = $state(DEFAULT_REVEAL_STATE)
-	let reveal = $derived(settingsReveal.reveal)
 </script>
 
 <Reveal

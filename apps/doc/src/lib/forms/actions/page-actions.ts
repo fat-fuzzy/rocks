@@ -10,10 +10,14 @@ export const commonActions = {
 		const updated = await uiActions.handleToggleSidebar(event)
 		event.locals.sidebar = updated.state
 	},
-	toggleSettings: async (event) => uiActions.handleToggleSettings(event),
+	toggleSettings: async (event) => {
+		const updated = await uiActions.handleToggleSettings(event)
+		event.locals.context.reveal = updated.state.reveal
+	},
 	updateSettings: async (event) => {
 		const updated = await settingsActions.handleUpdateAppSettings({event})
-		event.locals.settings = JSON.parse(updated.state)
+
+		event.locals.context.preferences = JSON.parse(updated.state)
 	},
 	toggleContext: async (event) => await uiActions.handleToggleContext(event),
 	reset: async ({cookies}) => {
