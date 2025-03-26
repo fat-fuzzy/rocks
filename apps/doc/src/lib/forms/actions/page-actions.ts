@@ -12,8 +12,6 @@ export const commonActions = {
 	},
 	toggleAppContext: async (event) => {
 		const updated = await uiActions.handleToggleAppContext(event)
-		console.log('updated', updated)
-
 		event.locals.context.reveal = updated.state.reveal
 	},
 	updateSettings: async (event) => {
