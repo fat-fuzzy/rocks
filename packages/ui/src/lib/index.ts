@@ -46,7 +46,7 @@ import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
 import Settings from '$lib/components/recipes/forms/Settings.svelte'
-import RevealSettings from '$lib/components/recipes/forms/RevealSettings.svelte'
+import RevealContext from '$lib/components/recipes/forms/RevealContext.svelte'
 
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
@@ -175,7 +175,7 @@ const drafts = {
 	HeaderMetro,
 	Settings,
 	PageNav,
-	RevealSettings,
+	RevealContext,
 	PageScrolly,
 	Tabs,
 	Cookies,

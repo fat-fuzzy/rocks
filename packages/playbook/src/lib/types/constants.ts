@@ -11,13 +11,13 @@ const DEFAULT_DS_STATE: {
 	RevealMenu: Settings
 	RevealNav: Settings
 	HeaderRevealNav: Settings
-	HeaderRevealSettings: Settings
+	HeaderRevealContext: Settings
 } = {
 	Reveal: {reveal: 'collapsed'},
 	RevealMenu: {reveal: 'collapsed'},
 	RevealNav: {reveal: 'collapsed'},
 	HeaderRevealNav: {reveal: 'collapsed'},
-	HeaderRevealSettings: {reveal: 'collapsed'},
+	HeaderRevealContext: {reveal: 'collapsed'},
 }
 
 const TRANSITION_REVEAL: {[key: string]: string} = {

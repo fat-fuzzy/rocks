@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
 	import {DismissEvent} from '$types'
-	import RevealSettings from '$lib/components/recipes/forms/RevealSettings.svelte'
+	import RevealContext from '$lib/components/recipes/forms/RevealContext.svelte'
 	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 
@@ -49,7 +49,7 @@
 			/>
 		</div>
 		<div class="l:flex align:center">
-			<RevealSettings
+			<RevealContext
 				id={`app-context`}
 				name={`app-context`}
 				label="Settings"
@@ -77,7 +77,7 @@
 						</li>
 					{/each}
 				</ul>
-			</RevealSettings>
+			</RevealContext>
 		</div>
 	</div>
 </header>
