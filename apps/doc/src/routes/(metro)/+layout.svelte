@@ -29,7 +29,7 @@
 		let preferences = ui.constants.APP_SETTINGS
 		preferences.switch[0].initial =
 			brightness === 'night' ? 'active' : 'inactive'
-		preferences.switch[1].initial = contrast === 'night' ? 'active' : 'inactive'
+		preferences.switch[1].initial = contrast === 'blend' ? 'active' : 'inactive'
 		return preferences
 	})
 

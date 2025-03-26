@@ -61,6 +61,7 @@
 				{redirect}
 				items={context.switch}
 				onupdate={context.onupdate}
+				reveal={context.reveal}
 			>
 				<ul class="links:settings end unstyled">
 					{#each context.links as { title, url, shape, size, asset }}

@@ -9,11 +9,8 @@ export const ssr = true
 export const load = async ({locals, url}) => {
 	// Main header nav
 	locals.nav.actionPath = url.pathname
-	locals.context.actionPath = url.pathname
 
-	let context = locals.context ?? DEFAULT_PREFERENCES
 	return {
 		nav: locals.nav,
-		context,
 	}
 }
