@@ -30,7 +30,7 @@ body:has(.l\:grid\:metro) {
 		'zone-content   zone-content  zone-content'
 		'zone-content   zone-content  zone-content'
 		'zone-content   zone-content  zone-content';
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: minmax(fit-content, 30%) 1fr auto;
 	grid-template-rows: var(--ui-header-height) auto auto 1fr auto auto;
 }
 
@@ -70,8 +70,6 @@ body:has(.l\:grid\:metro) {
 .l\:grid\:metro {
 	.main-nav {
 		grid-area: main-nav;
-		padding-block: var(--outline-offset-md);
-		padding-inline: var(--ui-size) var(--outline-offset-lg);
 		align-content: center;
 		position: relative;
 	}
@@ -82,8 +80,6 @@ body:has(.l\:grid\:metro) {
 
 	.side-nav {
 		grid-area: side-nav;
-		padding-block: var(--outline-offset-md);
-		padding-inline: var(--ui-size) var(--outline-offset-lg);
 		max-inline-size: var(--side-track-width-viewport-sm);
 		position: relative;
 	}
