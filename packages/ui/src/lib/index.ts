@@ -57,6 +57,7 @@ import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
 import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
+import HeaderMetro from '$lib/components/recipes/header/HeaderMetro.svelte'
 
 /**
  * Recipes - Content
@@ -171,6 +172,7 @@ const drafts = {
 	ScrollyItem,
 	Breadcrumbs,
 	HeaderNav,
+	HeaderMetro,
 	Settings,
 	PageNav,
 	RevealSettings,
