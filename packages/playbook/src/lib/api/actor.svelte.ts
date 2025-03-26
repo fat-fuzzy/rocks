@@ -14,7 +14,7 @@ const DEFAULT_STATE: any = {
 	RevealNav: DEFAULT_REVEAL_STATE,
 	HeaderRevealNav: DEFAULT_REVEAL_STATE,
 	// graphics: graphicsFixtures,
-	HeaderRevealSettings: DEFAULT_REVEAL_STATE,
+	HeaderRevealContext: DEFAULT_REVEAL_STATE,
 }
 
 const COMPONENT_FIXTURES: any = $state({

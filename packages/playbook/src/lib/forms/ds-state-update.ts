@@ -33,7 +33,7 @@ export type DsState = {
 	RevealMenu: Settings
 	RevealNav: Settings
 	HeaderRevealNav: Settings
-	HeaderRevealSettings: Settings
+	HeaderRevealContext: Settings
 }
 
 const {UiReveal} = ui.forms
@@ -48,14 +48,14 @@ class DsStateUpdate {
 		RevealMenu,
 		RevealNav,
 		HeaderRevealNav,
-		HeaderRevealSettings,
+		HeaderRevealContext,
 	}: DsState) {
 		this.state = {
 			Reveal: Reveal ?? DEFAULT_REVEAL_STATE,
 			RevealMenu: RevealMenu ?? DEFAULT_REVEAL_STATE,
 			RevealNav: RevealNav ?? DEFAULT_REVEAL_STATE,
 			HeaderRevealNav: HeaderRevealNav ?? DEFAULT_REVEAL_STATE,
-			HeaderRevealSettings: HeaderRevealSettings ?? DEFAULT_REVEAL_STATE,
+			HeaderRevealContext: HeaderRevealContext ?? DEFAULT_REVEAL_STATE,
 		}
 	}
 

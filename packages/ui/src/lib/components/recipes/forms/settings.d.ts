@@ -37,7 +37,7 @@ export type SettingsProps = UiBlockProps &
 		onupdate?: (payload: FuzzyPayload) => void
 	}
 
-export type RevealSettingsProps = SettingsProps &
+export type RevealContextProps = SettingsProps &
 	UiLayoutProps & {
 		breakpoint: string
 	}

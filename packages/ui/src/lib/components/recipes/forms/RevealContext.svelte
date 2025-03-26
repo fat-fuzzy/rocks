@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {RevealSettingsProps} from '$types'
+	import type {RevealContextProps} from '$types'
 	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 
@@ -19,7 +19,7 @@
 		items,
 		reveal,
 		onupdate,
-	}: RevealSettingsProps = $props()
+	}: RevealContextProps = $props()
 </script>
 
 <Reveal
