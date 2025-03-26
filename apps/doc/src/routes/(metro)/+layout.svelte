@@ -15,10 +15,10 @@
 	let {children}: Props = $props()
 
 	let sidenav = $derived(page.data.sidebar)
-	let appSettings = $derived(page.data.context)
+	let appContext = $derived(page.data.context)
 
-	let brightness = $derived(appSettings.brightness)
-	let contrast = $derived(appSettings.contrast)
+	let brightness = $derived(appContext.brightness)
+	let contrast = $derived(appContext.contrast)
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
@@ -35,7 +35,7 @@
 
 	let context = $derived({
 		...preferences,
-		reveal: appSettings.reveal,
+		reveal: appContext.reveal,
 	})
 </script>
 

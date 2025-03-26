@@ -25,7 +25,7 @@ const revealForms = [
 enum FormsEnum {
 	// global app forms
 	nav = 'nav',
-	settings = 'settings',
+	appContext = 'app-context',
 	sidebar = 'sidebar',
 	context = 'context',
 	// ui page forms
@@ -40,9 +40,9 @@ enum FormsEnum {
 export const handle = (async ({event, resolve}) => {
 	let {cookies} = event
 	// Load all UI states into locals
-	const appSettings = uiStateService.getUiState({
+	const appContext = uiStateService.getUiState({
 		cookies,
-		key: `${APP_PREFIX}-settings`,
+		key: `${APP_PREFIX}-context`,
 	})
 	const dsState = uiStateService.getUiState({
 		cookies,
@@ -70,9 +70,8 @@ export const handle = (async ({event, resolve}) => {
 	// Global Forms
 	event.locals.nav = appLocals[FormsEnum.nav]
 	event.locals.sidebar = appLocals[FormsEnum.sidebar]
-	event.locals.context = appLocals[FormsEnum.context]
-	event.locals.context = appSettings
-	event.locals.context.reveal = appLocals[FormsEnum.settings]
+	event.locals.context = appContext
+	event.locals.context.reveal = appLocals[FormsEnum.appContext]
 
 	// UI Page Forms
 	event.locals.dsState = dsState

@@ -15,10 +15,10 @@
 	const {LayoutRails} = ui.content
 
 	let sidenav = $derived(page.data.sidebar)
-	let appSettings = $derived(page.data.context)
+	let appContext = $derived(page.data.context)
 
-	let brightness = $derived(appSettings.brightness)
-	let contrast = $derived(appSettings.contrast)
+	let brightness = $derived(appContext.brightness)
+	let contrast = $derived(appContext.contrast)
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
@@ -47,7 +47,7 @@
 			main={links}
 			context={settings}
 			breakpoint="xs"
-			app={appSettings}
+			app={appContext}
 		/>
 	</div>
 

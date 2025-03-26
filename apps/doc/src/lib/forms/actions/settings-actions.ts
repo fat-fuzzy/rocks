@@ -16,7 +16,7 @@ async function handleUpdateAppSettings({
 }: UiActionSetInput): Promise<UiActionSetOutput> {
 	const {request, cookies} = event
 	const data = await request.formData()
-	const key = `${APP_PREFIX}-settings`
+	const key = `${APP_PREFIX}-context`
 	let currentState = DEFAULT_APP_SETTINGS
 
 	try {
@@ -45,7 +45,7 @@ async function handleUpdateAppSettings({
 		return {
 			success: false,
 			key,
-			message: 'Failed to update settings', // TODO: improve / manage error message with intl package,
+			message: `Failed to update ${key}`, // TODO: improve / manage error message with intl package,
 			state: currentState.toString(),
 		}
 	}
