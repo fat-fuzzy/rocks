@@ -5,6 +5,7 @@
 
 	const {PageRails} = ui.content
 
+	let appContext = $derived(page.data.appContext)
 	let markdowns = $state(page.data.markdowns.decisions)
 
 	let title = 'Decision Log'
@@ -19,7 +20,7 @@
 	{description}
 	path={page.url.pathname}
 	nav={page.data.nav}
-	context={page.data.context}
+	app={appContext}
 	layout=""
 >
 	{#snippet main()}

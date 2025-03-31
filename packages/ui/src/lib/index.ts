@@ -91,7 +91,7 @@ import Cookies from '$lib/components/recipes/forms/Cookies.svelte'
  */
 import UiReveal from '$lib/forms/ui-reveal.js'
 import SignUpUser from '$lib/forms/ui-sample-signup.js'
-import SettingsUpdate from '$lib/forms/settings-update.js'
+import AppContext from '$lib/forms/app-context.js'
 
 /**
  * Utilities
@@ -110,7 +110,7 @@ const utils = {
 
 const forms = {
 	UiReveal,
-	SettingsUpdate,
+	AppContext,
 	SignUpUser,
 }
 

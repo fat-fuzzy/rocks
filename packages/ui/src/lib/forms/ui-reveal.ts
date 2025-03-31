@@ -25,7 +25,7 @@ class UiReveal {
 		let updated
 
 		if (data.has(`button-reveal-${this.id}`)) {
-			updated = data.get(`button-reveal-${this.id}`)?.toString()
+			updated = data.get(`button-reveal-${this.id}`)
 		}
 		if (!updated) {
 			return {
@@ -41,7 +41,7 @@ class UiReveal {
 			updated = TRANSITION_REVEAL[updated]
 		}
 
-		this.state.reveal = updated
+		this.state.reveal = updated.toString()
 		return {
 			success: true,
 			state: this.state,

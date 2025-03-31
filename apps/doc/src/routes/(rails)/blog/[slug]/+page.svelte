@@ -6,6 +6,7 @@
 	const {PageRails, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
 
+	let appContext = $derived(page.data.appContext)
 	let post = $derived(page.data.content)
 	let title = $derived(post.title)
 	let description = $derived(post.description)
@@ -36,7 +37,7 @@
 		size="sm"
 		path={page.url.pathname}
 		nav={page.data.nav}
-		context={page.data.context}
+		app={appContext}
 		layout=""
 	>
 		{#snippet main()}

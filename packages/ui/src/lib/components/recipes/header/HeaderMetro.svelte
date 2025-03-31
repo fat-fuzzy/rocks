@@ -15,7 +15,7 @@
 		formaction = 'updateState',
 		main,
 		page,
-		context,
+		app,
 		position,
 		placement,
 	}: HeaderProps = $props()
@@ -50,8 +50,8 @@
 		</div>
 		<div class="l:flex align:center">
 			<RevealContext
-				id={`app-context`}
-				name={`app-context`}
+				id="appContext"
+				name="appContext"
 				label="Settings"
 				{path}
 				{breakpoint}
@@ -59,12 +59,12 @@
 				formaction="updateSettings"
 				{actionPath}
 				{redirect}
-				items={context.switch}
-				onupdate={context.onupdate}
-				reveal={context.reveal}
+				items={app.switch}
+				onupdate={app.onupdate}
+				reveal={app.reveal}
 			>
 				<ul class="links:settings end unstyled">
-					{#each context.links as { title, url, shape, size, asset }}
+					{#each app.links as { title, url, shape, size, asset }}
 						<li>
 							<a
 								class={`shape:${shape} ${asset} size:${size}`}

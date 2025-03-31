@@ -20,7 +20,7 @@
 		nav,
 		aside,
 		footer,
-		context,
+		app,
 	}: PageRailsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
@@ -51,7 +51,7 @@
 			id="context"
 			element="aside"
 			auto={true}
-			reveal={context?.reveal || ''}
+			reveal={app?.reveal || 'collapsed'}
 			title="On this Page"
 			position={false}
 			place="left"

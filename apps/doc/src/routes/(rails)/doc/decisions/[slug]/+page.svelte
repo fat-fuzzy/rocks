@@ -6,6 +6,7 @@
 	const {PageRails, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
 
+	let appContext = $derived(page.data.appContext)
 	let markdown = $derived(
 		page.data.markdowns.decisions.find((d) => d.path === page.data.html.path),
 	)
@@ -23,7 +24,7 @@
 		size="sm"
 		path={page.url.pathname}
 		nav={page.data.nav}
-		context={page.data.context}
+		app={appContext}
 		layout=""
 	>
 		{#snippet main()}

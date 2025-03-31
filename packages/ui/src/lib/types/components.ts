@@ -5,7 +5,7 @@ export interface Utils {
 
 export interface Forms {
 	UiReveal: typeof import('$lib/forms/ui-reveal.js').default
-	SettingsUpdate: typeof import('$lib/forms/settings-update.js').default
+	AppContext: typeof import('$lib/forms/app-context.js').default
 	SignUpUser: typeof import('$lib/forms/ui-sample-signup.js').default
 }
 

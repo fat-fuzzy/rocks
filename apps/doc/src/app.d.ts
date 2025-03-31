@@ -11,6 +11,8 @@ declare namespace App {
 		navRecipes
 		sidebar
 		settings
+		appContext
+		pageContext
 		context
 		app
 		dsStyles
