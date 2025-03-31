@@ -8,6 +8,7 @@
 
 	const path = $derived($page.url.pathname)
 
+	let appContext = $derived($page.data.appContext)
 	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
@@ -28,7 +29,7 @@
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.nav}
-	context={$page.data.context}
+	app={appContext}
 	layout=""
 >
 	{#snippet main()}

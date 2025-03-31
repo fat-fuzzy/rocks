@@ -5,9 +5,10 @@ import {commonActions} from '$lib/forms/actions/page-actions'
 
 const page = 'play'
 
-export const load = async ({parent}) => {
+export const load = async ({parent, locals}) => {
 	let {sidebar} = await parent()
 	let content = await pages.fetchMarkdowns(page)
+	let appContext = locals.appContext
 
 	if (!content?.length) {
 		throw error(404, {message: 'Not found'})
@@ -20,6 +21,7 @@ export const load = async ({parent}) => {
 	const data = {
 		sidebar,
 		content,
+		appContext,
 	}
 
 	return data

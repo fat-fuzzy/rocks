@@ -6,10 +6,10 @@ export const ssr = true
 export const load = async ({locals, url}) => {
 	// Main header nav
 	locals.nav.actionPath = url.pathname
-	locals.context.actionPath = url.pathname
+	locals.appContext.actionPath = url.pathname
 
 	return {
 		nav: locals.nav,
-		context: locals.context,
+		appContext: locals.appContext,
 	}
 }

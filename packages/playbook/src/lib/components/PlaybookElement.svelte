@@ -66,6 +66,8 @@
 		recipes: Recipe,
 	}
 	let playbookActor: PlaybookActor = getContext('playbookActor')
+
+	let appContext = $derived(page.data.appContext)
 	let styles = $derived(playbookActor.styles)
 	let {settings} = $derived(playbookActor.app)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
@@ -109,7 +111,7 @@
 	hash={page.url.hash}
 	nav={pageNav}
 	size="sm"
-	context={page.data.context}
+	app={appContext}
 	layout=""
 >
 	{#snippet main()}

@@ -4,7 +4,7 @@ import constants from '$lib/types/constants.js'
 const {DEFAULT_APP_SETTINGS, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
 	constants
 
-class SettingsUpdate {
+class AppContext {
 	app: Settings
 	/**
 	 * Initialize default Settings object or from the user's cookie values, if any
@@ -44,4 +44,4 @@ class SettingsUpdate {
 	}
 }
 
-export default SettingsUpdate
+export default AppContext

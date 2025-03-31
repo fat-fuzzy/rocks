@@ -3,7 +3,7 @@ import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/forms/services/ui-state.js'
-const {SettingsUpdate} = ui.forms
+const {AppContext} = ui.forms
 const {DEFAULT_APP_SETTINGS} = ui.constants
 
 const {APP_PREFIX} = ui.constants
@@ -20,7 +20,7 @@ async function handleUpdateAppSettings({
 	let currentState = DEFAULT_APP_SETTINGS
 
 	try {
-		const newState = new SettingsUpdate(currentState)
+		const newState = new AppContext(currentState)
 
 		if (!newState.update(data)) {
 			error(500, `Failed to update ${key}`)

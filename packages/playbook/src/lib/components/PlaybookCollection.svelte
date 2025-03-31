@@ -47,6 +47,7 @@
 	}: Props = $props()
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
+	let appContext = $derived(page.data.appContext)
 	let {settings} = $derived(playbookActor.app)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
@@ -132,7 +133,7 @@
 		hash={page.url.hash}
 		nav={pageNav}
 		size="sm"
-		context={page.data.context}
+		app={appContext}
 		layout=""
 	>
 		{#snippet main()}

@@ -41,6 +41,7 @@
 	}: SketchProps = $props()
 
 	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
+	let appContext = $derived(page.data.appContext)
 	let debug = dev
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
@@ -233,7 +234,7 @@
 	description={meta.description}
 	path={page.url.pathname}
 	nav={page.data.nav}
-	context={page.data.context}
+	app={appContext}
 	layout=""
 >
 	{#snippet main()}

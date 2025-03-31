@@ -129,7 +129,14 @@ class DsStateUpdate {
 	toggleAppContextReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'Header-app-context-reveal',
+			element: 'Header-appContext-reveal',
+		})
+	}
+
+	togglePageContextReveal(data: FormData) {
+		return this.handleToggleUiReveal({
+			data,
+			element: 'pageContext-reveal',
 		})
 	}
 

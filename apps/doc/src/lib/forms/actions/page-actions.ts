@@ -12,12 +12,11 @@ export const commonActions = {
 	},
 	toggleAppContext: async (event) => {
 		const updated = await uiActions.handleToggleAppContext(event)
-		event.locals.context.reveal = updated.state.reveal
+		event.locals.appContext.reveal = updated.state.reveal
 	},
 	updateSettings: async (event) => {
 		const updated = await settingsActions.handleUpdateAppSettings({event})
-
-		event.locals.context.preferences = JSON.parse(updated.state)
+		event.locals.appContext.preferences = JSON.parse(updated.state)
 	},
 	toggleContext: async (event) => await uiActions.handleToggleContext(event),
 	reset: async ({cookies}) => {

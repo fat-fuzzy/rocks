@@ -9,5 +9,6 @@ export const load = async ({locals, url}) => {
 
 	return {
 		nav: locals.nav,
+		appContext: locals.appContext,
 	}
 }

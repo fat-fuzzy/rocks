@@ -15,7 +15,7 @@
 	let {children}: Props = $props()
 
 	let sidenav = $derived(page.data.sidebar)
-	let appContext = $derived(page.data.context)
+	let appContext = $derived(page.data.appContext)
 
 	let brightness = $derived(appContext.brightness)
 	let contrast = $derived(appContext.contrast)
@@ -32,11 +32,6 @@
 		preferences.switch[1].initial = contrast === 'blend' ? 'active' : 'inactive'
 		return preferences
 	})
-
-	let context = $derived({
-		...preferences,
-		reveal: appContext.reveal,
-	})
 </script>
 
 <LayoutMetro {sidenav} theme={themeClass}>
@@ -51,7 +46,7 @@
 			formaction="toggleNav"
 			dismiss="outside"
 			main={links}
-			{context}
+			context={{...appContext, ...preferences}}
 			breakpoint="sm"
 		/>
 	</div>
