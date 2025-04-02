@@ -21,18 +21,41 @@ class AppContext {
 	 * Update Settings based on inputs
 	 */
 	update(data: FormData) {
-		try {
-			let updated = data.get('brightness')?.toString()
-			if (updated) {
-				this.app.brightness = TRANSITION_BRIGHTNESS[updated]
+		let updated
+		if (data.has('brightness')) {
+			updated = data.get('brightness')
+		}
+		if (updated && typeof updated === 'string') {
+			/**
+			 * This makes it work without javascript:
+			 * The button value changes with JS but not without
+			 */
+			if (updated === this.app.brightness) {
+				updated = TRANSITION_BRIGHTNESS[updated]
 			}
-			updated = data.get('contrast')?.toString()
-			if (updated) {
-				this.app.contrast = TRANSITION_CONTRAST[updated]
+			this.app.brightness = updated
+		}
+		if (data.has('contrast')) {
+			updated = data.get('contrast')
+		}
+		if (updated && typeof updated === 'string') {
+			/**
+			 * This makes it work without javascript:
+			 * The button value changes with JS but not without
+			 */
+			if (updated === this.app.contrast) {
+				updated = TRANSITION_CONTRAST[updated]
 			}
-			return true
-		} catch (e) {
-			return false
+			this.app.contrast = updated
+		}
+		if (!updated) {
+			return {
+				success: false,
+			}
+		}
+		return {
+			success: true,
+			state: this.app,
 		}
 	}
 
