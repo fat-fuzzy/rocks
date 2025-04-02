@@ -1,6 +1,9 @@
+import ui from '@fat-fuzzy/ui'
 import gfx from '@fat-fuzzy/gfx'
 
 import {buildNav} from '$data/nav'
+
+const {DEFAULT_REVEAL_STATE} = ui.constants
 
 let projects = gfx.gl.sketches.projects
 	.filter((markdown) => !markdown.meta.draft)
@@ -22,11 +25,14 @@ export const load = async ({locals, url}) => {
 		return item
 	})
 
-	const data = {
-		nav: locals.nav,
+	let pageContext = locals.pageContext
+	pageContext.actionPath = url.pathname
+	pageContext.reveal = pageContext.reveal ?? DEFAULT_REVEAL_STATE.reveal
+
+	return {
+		pageContext,
 		sidebar,
 		projects,
 		learning,
 	}
-	return data
 }

@@ -6,6 +6,7 @@
 	const {PageMetro} = ui.content
 	const {EscapeHtml} = ui.headless
 
+	let pageContext = $derived({...$page.data.pageContext, title: 'On this Page'})
 	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
@@ -21,7 +22,8 @@
 	{description}
 	size="sm"
 	path={$page.url.pathname}
-	nav={$page.data.nav}
+	nav={$page.data.pageNav}
+	context={pageContext}
 	layout=""
 >
 	{#snippet main()}

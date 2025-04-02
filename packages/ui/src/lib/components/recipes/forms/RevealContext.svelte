@@ -24,8 +24,8 @@
 
 <Reveal
 	{id}
-	title="Settings"
 	name={id}
+	label="Settings"
 	auto={true}
 	{reveal}
 	{breakpoint}

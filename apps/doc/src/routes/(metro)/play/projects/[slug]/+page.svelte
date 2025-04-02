@@ -6,8 +6,9 @@
 	import sketch from '@fat-fuzzy/sketch'
 
 	const {Sketch} = sketch.graphics
+	let slug = $derived($page.params.slug)
 	let scene = $derived(
-		gfx.gl.sketches.projects.find((s) => s.meta.slug === $page.params.slug),
+		gfx.gl.sketches.projects.find((s) => s.meta.slug === slug),
 	)
 </script>
 
