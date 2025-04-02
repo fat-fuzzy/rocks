@@ -26,7 +26,7 @@ const COMPONENT_FIXTURES: any = $state({
 export class PlaybookActor {
 	api = $state()
 	styles = $state<StyleTree>(DEFAULT_STYLES)
-	app = $state(DEFAULT_PREFERENCES)
+	preferences = $state(DEFAULT_PREFERENCES)
 	context = $state(DEFAULT_STATE)
 
 	constructor() {}

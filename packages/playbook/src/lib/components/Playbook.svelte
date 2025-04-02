@@ -4,9 +4,10 @@
 	import {page} from '$app/state'
 	import playbookActor from '$lib/api/actor.svelte'
 	import StylesApi from '$lib/api/styles.svelte'
+	import type {ViewingPreferences} from '../../../../ui/dist/types' // TODO: fix this import
 
 	type Props = {
-		app: {settings: {[key: string]: string}}
+		app: ViewingPreferences
 		children: Snippet
 	}
 	let {children, app}: Props = $props()
@@ -19,7 +20,7 @@
 		if (ui) {
 			playbookActor.context = ui
 		}
-		playbookActor.app = app
+		playbookActor.preferences = app
 		if (styles) {
 			playbookContext.applyStyles(styles)
 		}

@@ -69,12 +69,12 @@
 
 	let appContext = $derived(page.data.appContext)
 	let styles = $derived(playbookActor.styles)
-	let {settings} = $derived(playbookActor.app)
+	let preferences = $derived(playbookActor.preferences)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	//== App settings (user controlled)
-	let brightness = $derived(settings.brightness || '')
+	let brightness = $derived(preferences.brightness || '')
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 	//== Layout settings (user controlled)
 	// Container options

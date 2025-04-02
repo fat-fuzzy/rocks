@@ -8,8 +8,6 @@ export const load = async ({locals, url}) => {
 	sidebar.actionPath = url.pathname
 	appContext.actionPath = url.pathname
 	appContext = locals.appContext
-	console.log('(metro) layout load appContext')
-	console.log(appContext)
 
 	return {
 		nav: locals.nav,

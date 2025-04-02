@@ -40,8 +40,8 @@
 	)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
-		inputs.switch[0].initial = initialBrightness
-		inputs.switch[1].initial = initialContrast
+		inputs.display[0].initial = initialBrightness
+		inputs.display[1].initial = initialContrast
 		return inputs
 	})
 
