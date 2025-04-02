@@ -6,7 +6,6 @@
 	const {PageMetro} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	let appContext = $derived($page.data.appContext)
 	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)

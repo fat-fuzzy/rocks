@@ -59,7 +59,7 @@
 				formaction="updateSettings"
 				{actionPath}
 				{redirect}
-				items={context.switch}
+				items={context.display}
 				onupdate={context.onupdate}
 			/>
 			<ul class="links:settings end unstyled">

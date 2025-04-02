@@ -39,7 +39,10 @@
 
 			if (style === 'brightness' || style === 'contrast') {
 				playbookActor.styles['app'].families[family] = styleValue
-				playbookActor.app = {...playbookActor.app, [style]: value}
+				playbookActor.preferences = {
+					...playbookActor.preferences,
+					[style]: value,
+				}
 			}
 		})
 		playbookContext.applyStyles(updatedStyles)

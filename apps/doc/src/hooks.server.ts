@@ -8,7 +8,6 @@ const revealForms = [
 	// global app forms
 	'nav',
 	'sidebar',
-	'context',
 	'appContext',
 	'pageContext',
 	// doc page forms
@@ -30,7 +29,6 @@ enum FormsEnum {
 	appContext = 'appContext',
 	pageContext = 'pageContext',
 	sidebar = 'sidebar',
-	context = 'context',
 	// ui page forms
 	tokens = 'tokens',
 	blocks = 'blocks',
@@ -45,7 +43,7 @@ export const handle = (async ({event, resolve}) => {
 	// Load all UI states into locals
 	const preferences = uiStateService.getUiState({
 		cookies,
-		key: `${APP_PREFIX}-appContext`,
+		key: `${APP_PREFIX}-context`,
 	})
 	const dsState = uiStateService.getUiState({
 		cookies,
@@ -67,15 +65,12 @@ export const handle = (async ({event, resolve}) => {
 		return {...acc, ...curr}
 	}, {})
 
-	console.log('Hooks reveal')
-	console.log(JSON.stringify(reveal))
-
 	// Global Forms
 	event.locals.nav = reveal[FormsEnum.nav]
 	event.locals.sidebar = reveal[FormsEnum.sidebar]
 	event.locals.appContext = {
-		...reveal[FormsEnum.appContext],
 		...preferences,
+		...reveal[FormsEnum.appContext],
 	}
 
 	// UI Page Forms

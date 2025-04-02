@@ -27,8 +27,8 @@
 	)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
-		inputs.switch[0].initial = brightness === 'night' ? 'active' : 'inactive'
-		inputs.switch[1].initial = contrast === 'night' ? 'active' : 'inactive'
+		inputs.display[0].initial = brightness === 'night' ? 'active' : 'inactive'
+		inputs.display[1].initial = contrast === 'night' ? 'active' : 'inactive'
 		return inputs
 	})
 </script>

@@ -48,7 +48,7 @@
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let appContext = $derived(page.data.appContext)
-	let {settings} = $derived(playbookActor.app)
+	let preferences = $derived(playbookActor.preferences)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
@@ -75,8 +75,8 @@
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
 	let componentNames = $derived(Object.keys(items))
-	//== App settings (user controlled)
-	let brightness = $derived(settings.brightness || '')
+	//== App preferences (user controlled)
+	let brightness = $derived(preferences.brightness || '')
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 	let layoutClass = $derived(
 		category === 'tokens'
