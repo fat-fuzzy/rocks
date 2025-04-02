@@ -68,8 +68,8 @@
 	)
 
 	let backgroundClass = background
-		? `l:frame:${dimensions} bg:${background}`
-		: `l:frame:${dimensions}`
+		? `l:frame:${dimensions} scene bg:${background}`
+		: `l:frame:${dimensions} scene`
 
 	let frameClasses = $derived(
 		`canvas ${backgroundClass} ${layer} ${currentState} ${currentAsset}`,
@@ -241,35 +241,31 @@
 	path={page.url.pathname}
 	nav={page.data.pageNav}
 	{context}
-	layout=""
 >
 	{#snippet main()}
-		<div class="scene">
-			<div class={frameClasses}>
-				<canvas
-					id={`${id}.canvas`}
-					aria-label={title}
-					data-testid="canvas"
-					bind:this={canvas}
-					inert={actor.getSketchDisabled()}
-				>
-					<p class={`feedback emoji:default ${size} content`}>
-						The canvas element needs JavaScript enabled to display and interact
-						with animations
-					</p>
-				</canvas>
-				{#if actor.feedback.canvas.length}
-					<div class="feedback">
-						{#each actor.feedback.canvas as feedback}
-							<Feedback status={feedback.status} context="code" {size}>
-								{feedback.message}
-							</Feedback>
-						{/each}
-					</div>
-				{/if}
-			</div>
+		<div class={frameClasses}>
+			<canvas
+				id={`${id}.canvas`}
+				aria-label={title}
+				data-testid="canvas"
+				bind:this={canvas}
+				inert={actor.getSketchDisabled()}
+			>
+				<p class={`feedback emoji:default ${size} content`}>
+					The canvas element needs JavaScript enabled to display and interact
+					with animations
+				</p>
+			</canvas>
+			{#if actor.feedback.canvas.length}
+				<div class="feedback">
+					{#each actor.feedback.canvas as feedback}
+						<Feedback status={feedback.status} context="code" {size}>
+							{feedback.message}
+						</Feedback>
+					{/each}
+				</div>
+			{/if}
 		</div>
-
 		{#if debug}
 			<div class="scroll:x">
 				<Debug {meta} context={actor} />

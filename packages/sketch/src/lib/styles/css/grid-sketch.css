@@ -1,5 +1,5 @@
 .scene {
-	grid-area: scene;
+	max-inline-size: calc(100vw - 2 * var(--ui-size));
 }
 
 .context {

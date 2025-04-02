@@ -2,8 +2,8 @@
 	overflow: hidden;
 	display: flex;
 	justify-content: var(--justify, center);
-	align-items: center; /* TODO: use var */
-	max-inline-size: 100%;
+	align-items: var(--align, center);
+	max-inline-size: calc(100vw - 2 * var(--ui-size));
 }
 
 [class*='l:frame'] > img,

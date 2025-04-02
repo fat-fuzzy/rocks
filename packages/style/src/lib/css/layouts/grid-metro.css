@@ -146,10 +146,10 @@ body:has(.l\:grid\:metro) {
 	.page-main {
 		grid-area: page-main;
 		padding-inline: var(--ui-size);
-		padding-block-end: var(--ui-header-height);
 		overflow: unset;
 		block-size: 100%;
-		max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
+		inline-size: 100%;
+		max-inline-size: calc(100vw - 2 * var(--ui-size));
 		padding-inline: var(--ui-size);
 	}
 
