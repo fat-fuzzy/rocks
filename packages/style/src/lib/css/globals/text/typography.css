@@ -116,17 +116,6 @@ a {
 	padding-block: 0;
 }
 
-[class*='l:text'] {
-	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	color: var(--ink);
-	background-color: inherit;
-	max-inline-size: 100%;
-	ol,
-	ul {
-		margin-block: var(--ui-size);
-	}
-}
-
 pre,
 code {
 	font-family: var(--font-family-mono);
@@ -155,4 +144,5 @@ blockquote {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-height: var(--font-leading-neutral);
 }
