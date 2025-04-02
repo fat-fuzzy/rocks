@@ -61,7 +61,7 @@
 			size="sm"
 			variant="outline"
 			breakpoint="xs"
-			formaction="toggleContext"
+			formaction="togglePageContext"
 			dismiss="outside"
 		>
 			<div class="l:stack:2xs">

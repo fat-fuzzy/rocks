@@ -27,6 +27,8 @@
 	let currentPage = $derived(pageName ?? title)
 
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
+	let contextReval = $derived(context?.reveal || '')
+	let contextTitle = $derived(context?.title || 'On this Page')
 
 	let header = $derived({
 		title,
@@ -46,7 +48,7 @@
 	</div>
 
 	<div id={`context-${id}`} class={`page-details ${mediaClass}`}>
-		{#if nav.length > 0}
+		{#if nav && nav.length > 0}
 			<PageNav id="page-nav" {hash} items={nav} />
 		{/if}
 
@@ -63,11 +65,12 @@
 <div id={`context-${id}`} class={`page-context ${mediaClass}`}>
 	{#if aside}
 		<Reveal
-			id="context"
+			id="pageContext"
+			name="pageContext"
 			element="aside"
 			auto={true}
-			reveal={context?.reveal || ''}
-			title="On this Page"
+			reveal={contextReval}
+			label={contextTitle}
 			position={false}
 			place="left"
 			color="primary"
@@ -76,7 +79,7 @@
 			size="sm"
 			variant="outline"
 			breakpoint="xs"
-			formaction="toggleContext"
+			formaction="togglePageContext"
 			dismiss="outside"
 		>
 			<div class="l:stack:2xs">

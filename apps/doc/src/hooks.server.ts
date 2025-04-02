@@ -72,7 +72,7 @@ export const handle = (async ({event, resolve}) => {
 		...preferences,
 		...reveal[FormsEnum.appContext],
 	}
-
+	event.locals.pageContext = reveal[FormsEnum.pageContext]
 	// UI Page Forms
 	event.locals.dsState = dsState
 	event.locals.dsStyles = dsStyles

@@ -18,7 +18,10 @@ export const commonActions = {
 		const updated = await settingsActions.handleUpdateAppSettings({event})
 		event.locals.appContext.preferences = JSON.parse(updated.state)
 	},
-	toggleContext: async (event) => await uiActions.handleToggleContext(event),
+	togglePageContext: async (event) => {
+		const updated = await uiActions.handleTogglePageContext(event)
+		event.locals.pageContext = updated.state
+	},
 	reset: async ({cookies}) => {
 		cookies.getAll().forEach((cookie) => {
 			if (cookie.name.startsWith('ff-')) {

@@ -14,6 +14,7 @@
 	}
 	let {children}: Props = $props()
 
+	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
 
@@ -42,7 +43,7 @@
 			name="nav"
 			label="Menu"
 			path={page.url.pathname}
-			reveal={page.data.nav.reveal}
+			reveal={mainNav.reveal}
 			actionPath={page.url.pathname}
 			formaction="toggleNav"
 			dismiss="outside"

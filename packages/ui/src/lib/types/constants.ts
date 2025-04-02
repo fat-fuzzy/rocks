@@ -18,7 +18,7 @@ const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
 
 const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
-const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
+const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
 const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
 

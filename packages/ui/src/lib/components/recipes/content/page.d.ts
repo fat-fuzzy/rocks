@@ -63,6 +63,10 @@ export type PageRailsProps = UiLayoutProps &
 			language?: string
 			cookies?: CookiePreferences
 		}
+		context?: {
+			reveal: UiRevealState
+			title?: string
+		}
 		footer?: Snippet
 	}
 
