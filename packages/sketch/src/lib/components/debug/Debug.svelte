@@ -18,7 +18,7 @@
 	})
 </script>
 
-<aside class="debug l:stack:sm maki:block size:2xs scroll:x ravioli:md dotted">
+<aside class="debug l:stack:sm maki:block">
 	<table class="text:center font:sm" data-testid="debug-table">
 		<thead class="surface:3:primary">
 			<tr>
@@ -30,16 +30,18 @@
 		</thead>
 		<tbody class="text:center">
 			<tr>
-				<td class="justify:center l:flex nowrap align:center maki:block">
+				<td
+					class="justify:center l:flex size:xs nowrap align:center maki:block"
+				>
 					<span>Event</span>
-					<span class="ravioli:2xs surface:2:accent variant:bare">prev</span>
-					<span class="ravioli:2xs surface:1:accent">current</span>
+					<span class="ravioli:3xs surface:2:accent variant:bare">prev</span>
+					<span class="ravioli:3xs surface:1:accent">current</span>
 				</td>
 				{#each sketchUi as ui}
 					<td class="variant:outline" data-testid={`debug-event-${ui}`}>
 						<div class="justify:center l:flex nowrap align:center">
 							<span
-								class="ravioli:2xs surface:2:accent variant:bare"
+								class="ravioli:3xs surface:2:accent variant:bare"
 								data-testid="previous-event"
 							>
 								{context.getPreviousEvent()}

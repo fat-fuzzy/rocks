@@ -17,7 +17,6 @@
 		dimensions,
 		justify,
 		main,
-		details,
 		nav,
 		aside,
 		footer,
@@ -33,6 +32,7 @@
 	let header = $derived({
 		title,
 		main: headerMain,
+		layout: 'flex',
 	})
 </script>
 
@@ -44,7 +44,7 @@
 
 <main {id} class="zone:main">
 	<div class="page-header">
-		<PageHeader size={size as UiSize} layout="flex" {justify} {...header} />
+		<PageHeader {...header} size={size as UiSize} {justify} />
 	</div>
 
 	<div class="page-main">
