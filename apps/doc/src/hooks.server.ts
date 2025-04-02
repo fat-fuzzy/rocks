@@ -43,7 +43,7 @@ export const handle = (async ({event, resolve}) => {
 	// Load all UI states into locals
 	const preferences = uiStateService.getUiState({
 		cookies,
-		key: `${APP_PREFIX}-context`,
+		key: `${APP_PREFIX}-preferences`,
 	})
 	const dsState = uiStateService.getUiState({
 		cookies,
