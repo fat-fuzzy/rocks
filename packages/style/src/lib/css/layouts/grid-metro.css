@@ -24,68 +24,100 @@ body:has(.l\:grid\:metro) {
 	block-size: 100vh;
 	gap: var(--outline-offset-lg);
 	grid-template-areas:
-		'side-nav       main-nav      main-nav'
-		'ff-reveal      ff-reveal     ff-reveal'
+		'zone-sidebar   zone-header   zone-header'
+		'zone-sidebar   zone-header   zone-header'
 		'zone-content   zone-content  zone-content'
 		'zone-content   zone-content  zone-content'
 		'zone-content   zone-content  zone-content'
 		'zone-content   zone-content  zone-content';
-	grid-template-columns: minmax(fit-content, 30%) 1fr auto;
+	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) auto auto 1fr auto auto;
 }
 
 .l\:grid\:metro [class*='zone:'] {
 	display: grid;
+	grid-template-rows: subgrid;
+}
+
+.zone\:sidebar {
+	grid-area: zone-sidebar;
+	grid-template-areas:
+		'side-nav'
+		'ff-reveal';
+}
+
+.zone\:header {
+	grid-area: zone-header;
+	grid-template-areas:
+		'header-nav    app-context'
+		'ff-reveal     ff-reveal';
+	grid-template-columns: 1fr auto;
 }
 
 .zone\:content {
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--ink);
 	grid-area: zone-content;
 	grid-template-areas:
-		'zone-main     zone-main     zone-main'
-		'zone-main     zone-main     zone-main'
-		'page-context  page-context  page-context'
-		'main-footer   main-footer   main-footer';
+		'zone-main    zone-main    zone-main'
+		'zone-main    zone-main    zone-main'
+		'page-context page-context page-context'
+		'main-footer  main-footer  main-footer';
 	grid-template-columns: subgrid;
-	grid-template-rows: subgrid;
+	max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
+	overflow: hidden auto;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--track);
 }
 
 .zone\:main {
 	grid-area: zone-main;
 	grid-template-areas:
-		'page-header   page-header   page-details'
-		'page-main     page-main     page-main';
-	grid-template-columns: subgrid;
+		'page-header page-header page-header'
+		'page-main   page-main   page-main';
+	grid-column: span 3;
 	grid-template-rows: subgrid;
 }
 
-/* .gare\:ouest {
-	align-content: center;
-
-	ff-reveal {
-		grid-area: ff-reveal;
-		grid-column-start: -1;
-	}
-} */
-
 .l\:grid\:metro {
-	.main-nav {
-		grid-area: main-nav;
+	position: relative;
+
+	.zone\:header > nav {
+		grid-area: header-nav;
 		align-content: center;
-		position: relative;
+	}
+
+	.zone\:header > * > ff-reveal {
+		grid-area: ff-reveal;
+		position: absolute;
+		top: var(--ui-header-height);
+	}
+
+	.zone\:header > [aria-label='Settings'] {
+		grid-area: app-context;
+		align-content: center;
 	}
 
 	.main-footer {
 		grid-area: main-footer;
 	}
 
-	.side-nav {
-		grid-area: side-nav;
+	.zone\:sidebar {
+		grid-area: zone-sidebar;
 		max-inline-size: var(--side-track-width-viewport-sm);
-		position: relative;
+		align-content: center;
 	}
 
-	.side-nav > nav.expanded > ff-reveal {
-		position: relative;
+	.zone\:sidebar > ff-reveal {
+		grid-area: ff-reveal;
+		position: absolute;
+		top: var(--ui-header-height);
+	}
+
+	.zone\:sidebar.expanded > ff-reveal {
 		align-content: center;
 		max-block-size: var(--overlay-height-xs);
 		margin-block-start: 0;
@@ -99,16 +131,12 @@ body:has(.l\:grid\:metro) {
 		z-index: var(--layout-z-index-reveal);
 	}
 
-	.main-nav .header-app {
-		position: unset;
+	.zone\:sidebar > form {
+		inline-size: fit-content;
 	}
 
-	.side-nav > nav > form {
-		max-inline-size: 100%;
-	}
-
-	.side-nav > nav > form [aria-expanded] {
-		inline-size: 100%;
+	.zone\:sidebar > form [aria-expanded] {
+		inline-size: fit-content;
 	}
 
 	.page-header {
@@ -116,20 +144,13 @@ body:has(.l\:grid\:metro) {
 	}
 
 	.page-main {
-		--lightness-scrollbar: var(--lightness-base);
-		--chroma-scrollbar: var(--chroma-base);
-		--track: oklch(
-			var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue)
-		);
-		--thumb: var(--ink);
-		overflow: hidden auto;
 		grid-area: page-main;
-		scrollbar-gutter: stable;
-		scrollbar-width: thin;
-		scrollbar-color: var(--thumb) var(--track);
-		block-size: 100%;
 		padding-inline: var(--ui-size);
 		padding-block-end: var(--ui-header-height);
+		overflow: unset;
+		block-size: 100%;
+		max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
+		padding-inline: var(--ui-size);
 	}
 
 	.page-main > section {
@@ -139,7 +160,6 @@ body:has(.l\:grid\:metro) {
 	.page-context {
 		grid-area: page-context;
 		position: relative;
-		justify-self: end;
 		inline-size: 100%;
 		max-inline-size: var(--side-track-width-viewport-sm);
 		padding-block: var(--outline-offset-md);
@@ -152,8 +172,11 @@ body:has(.l\:grid\:metro) {
 
 	.page-context ff-reveal.expanded:first-of-type {
 		--sidebar-width: var(--layout-sidebar-md);
+		position: absolute;
 		max-inline-size: var(--side-track-width-viewport-sm);
 		max-block-size: var(--overlay-height-xs);
+		bottom: calc(var(--ui-header-height) - var(--outline-offset-lg));
+		top: unset;
 		margin-block-start: 0;
 		padding-block: var(--ui-size-sm);
 		padding-inline: var(--outline-offset-lg);
@@ -180,8 +203,8 @@ body:has(.l\:grid\:metro) {
 @media screen and (min-width: 620px) {
 	.l\:grid\:metro {
 		grid-template-areas:
-			'side-nav      main-nav      main-nav'
-			'ff-reveal     ff-reveal     ff-reveal'
+			'zone-sidebar  zone-header   zone-header'
+			'zone-sidebar  zone-header   zone-header'
 			'zone-content  zone-content  zone-content'
 			'zone-content  zone-content  zone-content'
 			'zone-content  zone-content  zone-content';
@@ -197,12 +220,12 @@ body:has(.l\:grid\:metro) {
 	}
 
 	.zone\:main {
-		grid-area: zone-main;
 		grid-template-areas:
 			'page-header   page-header   page-details'
 			'page-main     page-main     page-main';
 		grid-template-columns: subgrid;
 		grid-template-rows: subgrid;
+		max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
 	}
 
 	.l\:grid\:metro {
@@ -216,22 +239,25 @@ body:has(.l\:grid\:metro) {
 			padding-block-end: var(--ui-header-height);
 		}
 
-		.side-nav > nav > form {
+		.zone\:sidebar > form {
 			inline-size: var(--sidebar-width);
 		}
 
-		ff-reveal:has(.main-nav) {
+		.zone\:header > nav {
+			justify-content: flex-start;
+		}
+
+		.zone\:header > nav.expanded > ff-reveal,
+		.zone\:header > nav.collapsed > ff-reveal {
+			position: unset;
 			box-shadow: unset;
 			inline-size: calc(100vw - var(--sidebar-width));
 			z-index: var(--layout-z-index-reveal);
 			border-radius: var(--border-radius-null);
 		}
 
-		.main-nav {
-			justify-content: flex-start;
-		}
-
-		.side-nav > nav.expanded > ff-reveal {
+		.zone\:sidebar.expanded > ff-reveal {
+			position: unset;
 			inline-size: calc(100vw - 6 * var(--ui-size) - var(--sidebar-width));
 			max-inline-size: calc(100% - 2 * var(--ui-size));
 			z-index: var(--layout-z-index-reveal);
@@ -292,11 +318,12 @@ body:has(.l\:grid\:metro) {
 @media screen and (min-width: 935px) {
 	.l\:grid\:metro {
 		grid-template-areas:
-			'side-nav    main-nav   main-nav'
-			'ff-reveal   zone-content     zone-content'
-			'ff-reveal   zone-content     zone-content'
-			'ff-reveal   zone-content     zone-content'
-			'ff-reveal   zone-content     zone-content';
+			'zone-sidebar  zone-header   zone-header'
+			'zone-sidebar  zone-header   zone-header'
+			'zone-sidebar  zone-content  zone-content'
+			'zone-sidebar  zone-content  zone-content'
+			'zone-sidebar  zone-content  zone-content'
+			'zone-sidebar  zone-content  zone-content';
 		grid-template-columns: auto 1fr auto;
 		grid-template-rows: var(--ui-header-height) auto 1fr;
 	}
@@ -318,24 +345,24 @@ body:has(.l\:grid\:metro) {
 	}
 
 	.l\:grid\:metro {
-		.side-nav {
+		.zone\:sidebar {
 			inline-size: 100%;
 			max-inline-size: unset;
 			min-inline-size: var(--sidebar-width);
 		}
 
-		.side-nav > nav > ff-reveal {
+		.zone\:sidebar > ff-reveal {
 			position: unset;
 		}
 
-		.side-nav > nav.expanded > form {
+		.zone\:sidebar.expanded > form {
 			inline-size: calc(
 				var(--sidebar-width) - var(--ui-size) + var(--outline-offset-sm)
 			);
 		}
 
-		.side-nav > nav > ff-reveal.expanded,
-		.side-nav > nav > ff-reveal.collapsed {
+		.zone\:sidebar > ff-reveal.expanded,
+		.zone\:sidebar > ff-reveal.collapsed {
 			margin-block-start: var(--outline-offset-lg);
 			position: unset;
 			block-size: fit-content;
@@ -345,8 +372,8 @@ body:has(.l\:grid\:metro) {
 			padding: 0;
 		}
 
-		.side-nav > nav.collapsed,
-		.side-nav > nav > ff-reveal.collapsed {
+		.zone\:sidebar > nav.collapsed,
+		.zone\:sidebar > nav > ff-reveal.collapsed {
 			--sidebar-width: var(--layout-sidebar-collapsed);
 			max-inline-size: var(--sidebar-width);
 		}

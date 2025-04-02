@@ -90,7 +90,12 @@
 <svelte:window onkeyup={onKeyUp} />
 
 {#if auto}
-	<svelte:element this={element} {id} class={revealClasses} aria-label={title}>
+	<svelte:element
+		this={element}
+		{id}
+		class={revealClasses}
+		aria-label={label ?? title}
+	>
 		{@render revealForm()}
 	</svelte:element>
 {:else}
