@@ -16,7 +16,7 @@ async function handleUpdateAppSettings({
 }: UiActionSetInput): Promise<UiActionSetOutput> {
 	const {request, cookies} = event
 	const data = await request.formData()
-	const key = `${APP_PREFIX}-context`
+	const key = `${APP_PREFIX}-preferences`
 	let currentState = DEFAULT_PREFERENCES
 
 	try {

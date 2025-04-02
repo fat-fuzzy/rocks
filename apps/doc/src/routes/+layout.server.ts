@@ -5,7 +5,9 @@ export const ssr = true
 
 export const load = async ({locals, url}) => {
 	// Main header nav
-	locals.nav.actionPath = url.pathname
+	let nav = locals.nav
+	nav.reveal = locals.nav.reveal ?? nav.reveal
+	nav.actionPath = url.pathname
 
 	return {
 		nav: locals.nav,

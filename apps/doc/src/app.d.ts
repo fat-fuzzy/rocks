@@ -13,8 +13,6 @@ declare namespace App {
 		settings
 		appContext
 		pageContext
-		context
-		app
 		dsStyles
 		dsState
 	}
