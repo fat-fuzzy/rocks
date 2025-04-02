@@ -4,8 +4,6 @@ const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
 const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'expanded'}
 
-const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
-
 const DEFAULT_DS_STATE: {
 	Reveal: Settings
 	RevealMenu: Settings
@@ -102,7 +100,6 @@ export default {
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,
-	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
 	TRANSITION_REVEAL,
 	NUMBER_TO_SIZE,

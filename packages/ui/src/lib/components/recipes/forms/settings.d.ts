@@ -9,8 +9,9 @@ import type {
 } from '$types'
 import {Preferences} from '$types'
 
-export type SettingsItems = {
-	switch: SwitchProps[]
+export type AppContextItems = {
+	display: SwitchProps[]
+	// language?:  ///
 	links: {[key: string]: string}[]
 	onupdate?: (payload: FuzzyPayload) => void
 }
@@ -23,8 +24,8 @@ export type CookiePreferences = {
 
 export type ViewingPreferences = {
 	reveal: UiState
-	brightness: string
-	contrast: string
+	brightness: UiSettings
+	contrast: UiSettings
 	cookies: CookiePreferences
 }
 

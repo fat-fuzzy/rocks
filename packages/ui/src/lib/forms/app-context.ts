@@ -1,19 +1,19 @@
-import type {Settings} from '$types'
+import type {ViewingPreferences} from '$types'
 import constants from '$lib/types/constants.js'
 
-const {DEFAULT_APP_SETTINGS, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
+const {DEFAULT_PREFERENCES, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
 	constants
 
 class AppContext {
-	app: Settings
+	app: ViewingPreferences
 	/**
 	 * Initialize default Settings object or from the user's cookie values, if any
 	 */
-	constructor(settings: Settings | null = null) {
+	constructor(settings: ViewingPreferences | null = null) {
 		if (settings) {
 			this.app = settings
 		} else {
-			this.app = DEFAULT_APP_SETTINGS
+			this.app = DEFAULT_PREFERENCES
 		}
 	}
 

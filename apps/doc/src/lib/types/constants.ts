@@ -14,7 +14,6 @@ export type ButtonState = {
 }
 
 const DEFAULT_REVEAL_STATE: Settings = {reveal: 'collapsed'}
-const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
 	expanded: 'collapsed',
@@ -72,7 +71,6 @@ const APP_LINKS: {[key: string]: string}[] = [
 export default {
 	UI_STATE,
 	DEFAULT_REVEAL_STATE,
-	DEFAULT_APP_SETTINGS,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,
 	TRANSITION_CONTRAST,

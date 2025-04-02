@@ -15,7 +15,8 @@
 		formaction = 'updateState',
 		main,
 		page,
-		app,
+		preferences,
+		context,
 		position,
 		placement,
 	}: HeaderProps = $props()
@@ -59,12 +60,12 @@
 				formaction="updateSettings"
 				{actionPath}
 				{redirect}
-				items={app.switch}
-				onupdate={app.onupdate}
-				reveal={app.reveal}
+				items={preferences}
+				onupdate={preferences.onupdate}
+				reveal={context.reveal}
 			>
 				<ul class="links:settings end unstyled">
-					{#each app.links as { title, url, shape, size, asset }}
+					{#each preferences.links as { title, url, shape, size, asset }}
 						<li>
 							<a
 								class={`shape:${shape} ${asset} size:${size}`}

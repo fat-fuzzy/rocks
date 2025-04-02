@@ -1,9 +1,9 @@
 import ui from '@fat-fuzzy/ui'
 
-const {DEFAULT_APP_SETTINGS} = ui.constants
+const {DEFAULT_PREFERENCES} = ui.constants
 
 class SketchStore {
-	app = $state({settings: DEFAULT_APP_SETTINGS})
+	app = $state(DEFAULT_PREFERENCES)
 	constructor() {}
 	// TODO: init and update functions
 }
