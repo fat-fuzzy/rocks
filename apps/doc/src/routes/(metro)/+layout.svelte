@@ -27,9 +27,10 @@
 	)
 	let preferences = $derived.by(() => {
 		let preferences = ui.constants.APP_SETTINGS
-		preferences.switch[0].initial =
+		preferences.display[0].initial =
 			brightness === 'night' ? 'active' : 'inactive'
-		preferences.switch[1].initial = contrast === 'blend' ? 'active' : 'inactive'
+		preferences.display[1].initial =
+			contrast === 'blend' ? 'active' : 'inactive'
 		return preferences
 	})
 </script>
@@ -46,7 +47,8 @@
 			formaction="toggleNav"
 			dismiss="outside"
 			main={links}
-			context={{...appContext, ...preferences}}
+			context={appContext}
+			{preferences}
 			breakpoint="sm"
 		/>
 	</div>

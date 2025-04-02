@@ -40,7 +40,7 @@
 >
 	<Settings
 		id={`${id}-menu`}
-		items={items.switch}
+		items={items.display}
 		{formaction}
 		{actionPath}
 		{redirect}

@@ -5,8 +5,7 @@ import tokenFixtures from '$lib/fixtures/js/tokens'
 import layoutsFixtures from '$lib/fixtures/js/layouts'
 import recipesFixtures from '$lib/fixtures/js/recipes'
 
-const {DEFAULT_REVEAL_STATE, DEFAULT_APP_SETTINGS, DEFAULT_STYLES} =
-	ui.constants
+const {DEFAULT_REVEAL_STATE, DEFAULT_PREFERENCES, DEFAULT_STYLES} = ui.constants
 
 const DEFAULT_STATE: any = {
 	Reveal: DEFAULT_REVEAL_STATE,
@@ -27,7 +26,7 @@ const COMPONENT_FIXTURES: any = $state({
 export class PlaybookActor {
 	api = $state()
 	styles = $state<StyleTree>(DEFAULT_STYLES)
-	app = $state({settings: DEFAULT_APP_SETTINGS})
+	app = $state(DEFAULT_PREFERENCES)
 	context = $state(DEFAULT_STATE)
 
 	constructor() {}

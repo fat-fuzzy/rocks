@@ -143,3 +143,10 @@ export enum Preferences {
 	locale = 'locale',
 	cookies = 'cookies',
 }
+
+export enum UiSettings {
+	day = 'day',
+	night = 'night',
+	blend = 'blend',
+	contrast = 'contrast',
+}

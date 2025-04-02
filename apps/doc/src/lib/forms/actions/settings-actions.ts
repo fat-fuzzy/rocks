@@ -4,7 +4,7 @@ import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/forms/services/ui-state.js'
 const {AppContext} = ui.forms
-const {DEFAULT_APP_SETTINGS} = ui.constants
+const {DEFAULT_PREFERENCES} = ui.constants
 
 const {APP_PREFIX} = ui.constants
 /**
@@ -17,7 +17,7 @@ async function handleUpdateAppSettings({
 	const {request, cookies} = event
 	const data = await request.formData()
 	const key = `${APP_PREFIX}-context`
-	let currentState = DEFAULT_APP_SETTINGS
+	let currentState = DEFAULT_PREFERENCES
 
 	try {
 		const newState = new AppContext(currentState)

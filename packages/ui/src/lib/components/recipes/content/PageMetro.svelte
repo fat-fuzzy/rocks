@@ -21,10 +21,11 @@
 		nav,
 		aside,
 		footer,
-		app,
+		context,
 	}: PageRailsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
+
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
 
 	let header = $derived({
@@ -65,7 +66,7 @@
 			id="context"
 			element="aside"
 			auto={true}
-			reveal={app?.reveal || ''}
+			reveal={context?.reveal || ''}
 			title="On this Page"
 			position={false}
 			place="left"
