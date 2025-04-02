@@ -24,7 +24,7 @@
 	import actor from './actor.svelte'
 
 	const {Feedback} = ui.blocks
-	const {PageRails} = ui.content
+	const {PageMetro} = ui.content
 
 	let {
 		scene,
@@ -38,14 +38,14 @@
 		breakpoint,
 		dev,
 		mainFooter,
+		context,
 	}: SketchProps = $props()
 
 	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
-	let appContext = $derived(page.data.appContext)
 	let debug = dev
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
-	let context: SceneContext = $state({})
+	let sceneContext: SceneContext = $state({})
 	let title = meta.title
 	let asset = meta.asset
 	let dimensions = meta.dimensions || 'video'
@@ -79,8 +79,8 @@
 		actor.update(SketchEvent.load)
 		if (canvas) {
 			try {
-				context = await scene.main(canvas)
-				scene.update({...context, texture: {filters}})
+				sceneContext = await scene.main(canvas)
+				scene.update({...sceneContext, texture: {filters}})
 				actor.update(SketchEvent.loadOk)
 			} catch (e: unknown) {
 				actor.update(SketchEvent.loadNok)
@@ -154,11 +154,13 @@
 	}
 
 	function updateGeometry(payload: SceneContext) {
-		context.geometry = payload.geometry
-		if (context.camera && payload.camera) {
-			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
+		sceneContext.geometry = payload.geometry
+		if (sceneContext.camera && payload.camera) {
+			sceneContext.camera.fieldOfView = degToRad(
+				payload.camera.fieldOfView ?? 60,
+			)
 		}
-		scene.update({...context, texture: {filters}})
+		scene.update({...sceneContext, texture: {filters}})
 		actor.update(ControlsEvent.update)
 	}
 
@@ -167,12 +169,16 @@
 	}
 
 	function updateCamera(payload: SceneContext) {
-		if (context.camera && payload.camera) {
-			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
-			context.camera.cameraAngle = degToRad(payload.camera.cameraAngle ?? 0)
+		if (sceneContext.camera && payload.camera) {
+			sceneContext.camera.fieldOfView = degToRad(
+				payload.camera.fieldOfView ?? 60,
+			)
+			sceneContext.camera.cameraAngle = degToRad(
+				payload.camera.cameraAngle ?? 0,
+			)
 		}
-		context.texture = {filters}
-		scene.update(context)
+		sceneContext.texture = {filters}
+		scene.update(sceneContext)
 		actor.update(ControlsEvent.update)
 	}
 
@@ -197,8 +203,8 @@
 
 	function updateTexture(filters: Filters) {
 		try {
-			context.texture = {filters}
-			scene.update(context)
+			sceneContext.texture = {filters}
+			scene.update(sceneContext)
 			if (meta.controls.includes('texture')) {
 				render()
 			}
@@ -228,13 +234,13 @@
 	})
 </script>
 
-<PageRails
+<PageMetro
 	pageName={meta.categories[0]}
 	{title}
 	description={meta.description}
 	path={page.url.pathname}
-	nav={page.data.nav}
-	app={appContext}
+	nav={page.data.pageNav}
+	{context}
 	layout=""
 >
 	{#snippet main()}
@@ -263,67 +269,68 @@
 				{/if}
 			</div>
 		</div>
+
 		{#if debug}
-			<Debug {meta} context={actor} />
+			<div class="scroll:x">
+				<Debug {meta} context={actor} />
+			</div>
 		{/if}
 	{/snippet}
 
 	{#snippet aside()}
-		<aside class="l:stack size:sm">
-			{#if canvas}
-				<Player
-					play={updateCanvas}
-					pause={updateCanvas}
-					clear={updateCanvas}
-					stop={updateCanvas}
-					initial={actor.getPlayButtonState()}
-					{color}
-					size="2xs"
-					{variant}
-					disabled={actor.hasError() ?? undefined}
-					{init}
-				/>
-				{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
-					{#if context.geometry && meta.controls.includes('matrix-2d')}
-						<Geometry2D
-							id={`${id}-context-2d`}
-							onupdate={updateGeometry}
-							threshold={breakpoint}
-							context={context.geometry}
-							canvasWidth={canvas.getBoundingClientRect().width}
-							canvasHeight={canvas.getBoundingClientRect().height}
-							disabled={actor.getSketchDisabled()}
-						/>
-					{:else}
-						<div class={`l:${layout}:${size} maki:block`}>
-							{#if meta.controls.includes('camera')}
-								<CameraControls
-									id={`${id}-camera-controls`}
-									onupdate={updateCamera}
+		{#if canvas}
+			<Player
+				play={updateCanvas}
+				pause={updateCanvas}
+				clear={updateCanvas}
+				stop={updateCanvas}
+				initial={actor.getPlayButtonState()}
+				{color}
+				size="2xs"
+				{variant}
+				disabled={actor.hasError() ?? undefined}
+				{init}
+			/>
+			{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
+				{#if sceneContext.geometry && meta.controls.includes('matrix-2d')}
+					<Geometry2D
+						id={`${id}-context-2d`}
+						onupdate={updateGeometry}
+						threshold={breakpoint}
+						context={sceneContext.geometry}
+						canvasWidth={canvas.getBoundingClientRect().width}
+						canvasHeight={canvas.getBoundingClientRect().height}
+						disabled={actor.getSketchDisabled()}
+					/>
+				{:else}
+					<div class={`l:${layout}:${size} maki:block`}>
+						{#if meta.controls.includes('camera')}
+							<CameraControls
+								id={`${id}-camera-controls`}
+								onupdate={updateCamera}
+							/>
+						{/if}
+						{#if sceneContext.geometry && meta.controls.includes('matrix-3d')}
+							<GeometryControls
+								id={`${id}-geometry-controls`}
+								{canvas}
+								onupdate={updateGeometry}
+								context={sceneContext}
+							/>
+						{/if}
+						{#if meta.controls.includes('texture')}
+							{#key resetEvent}
+								<TextureControls
+									id={`${id}-texture-controls`}
+									filters={meta.filters ?? DEFAULT_FILTERS}
+									onupdate={updateTexture}
 								/>
-							{/if}
-							{#if context.geometry && meta.controls.includes('matrix-3d')}
-								<GeometryControls
-									id={`${id}-geometry-controls`}
-									{canvas}
-									onupdate={updateGeometry}
-									{context}
-								/>
-							{/if}
-							{#if meta.controls.includes('texture')}
-								{#key resetEvent}
-									<TextureControls
-										id={`${id}-texture-controls`}
-										filters={meta.filters ?? DEFAULT_FILTERS}
-										onupdate={updateTexture}
-									/>
-								{/key}
-							{/if}
-						</div>
-					{/if}
+							{/key}
+						{/if}
+					</div>
 				{/if}
 			{/if}
-		</aside>
+		{/if}
 	{/snippet}
 
 	{#snippet footer()}
@@ -331,7 +338,7 @@
 			{@render mainFooter()}
 		{/if}
 	{/snippet}
-</PageRails>
+</PageMetro>
 
 <!-- <article class="l:grid:sketch bp:xs size:sm media"></article> -->
 

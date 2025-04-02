@@ -14,6 +14,7 @@ import {
 	PlayerAction,
 } from '$types'
 import type {Snippet} from 'svelte'
+import type {UiRevealState} from '../../../../../ui/dist/types/ui.js' // TODO: fix this import
 
 export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
 
@@ -66,4 +67,5 @@ export type SketchProps = {
 	breakpoint?: string
 	dev?: boolean
 	mainFooter?: Snippet
+	context?: UiRevealState
 }

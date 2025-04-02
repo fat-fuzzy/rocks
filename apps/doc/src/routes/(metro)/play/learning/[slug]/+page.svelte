@@ -6,6 +6,7 @@
 	import sketch from '@fat-fuzzy/sketch'
 
 	const {Sketch} = sketch.graphics
+	let pageContext = $derived($page.data.pageContext)
 	let scene = $derived(
 		gfx.gl.sketches.learning.find((s) => s.meta.slug === $page.params.slug),
 	)
@@ -13,6 +14,6 @@
 
 {#key scene}
 	{#if scene}
-		<Sketch {scene} meta={scene.meta} size="sm" {dev} />
+		<Sketch {scene} meta={scene.meta} size="sm" {dev} context={pageContext} />
 	{/if}
 {/key}

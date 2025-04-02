@@ -29,7 +29,6 @@
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.pageNav}
-	context={pageContext}
 	layout=""
 >
 	{#snippet main()}

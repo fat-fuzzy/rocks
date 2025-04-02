@@ -8,7 +8,7 @@
 
 	const path = $derived($page.url.pathname)
 
-	let pageContext = $derived({...$page.data.pageContext, title: 'On this Page'})
+	let pageContext = $derived({...$page.data.pageContext, title: 'Tags'})
 	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
