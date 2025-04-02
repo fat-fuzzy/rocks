@@ -14,72 +14,65 @@
 		actionPath,
 		formaction = 'updateState',
 		main,
-		page,
 		preferences,
 		context,
 		position,
 		placement,
 	}: HeaderProps = $props()
-	let className = 'header-app'
 
 	let positionClass = position ? `${position}:${placement}` : ''
 </script>
 
-<header class={`${positionClass} bg:inherit`}>
+<header class={`${positionClass} zone:header bg:inherit`}>
 	<SkipLinks />
-	<div class={`${className} l:flex size:3xs align:center`}>
-		<div class="l:flex align:center">
-			<HeaderNav
-				{id}
-				name={id}
-				label="Menu"
-				title="Menu"
-				size="xs"
-				variant="outline"
-				asset="home"
-				justify="start"
-				dismiss={DismissEvent.outside}
-				auto={true}
-				links={main}
-				{path}
-				{reveal}
-				{breakpoint}
-				{formaction}
-				{actionPath}
-				{redirect}
-			/>
-		</div>
-		<div class="l:flex align:center">
-			<RevealContext
-				id="appContext"
-				name="appContext"
-				label="Settings"
-				{path}
-				{breakpoint}
-				size="xs"
-				formaction="updateSettings"
-				{actionPath}
-				{redirect}
-				items={preferences}
-				onupdate={preferences.onupdate}
-				reveal={context.reveal}
-			>
-				<ul class="links:settings end unstyled">
-					{#each preferences.links as { title, url, shape, size, asset }}
-						<li>
-							<a
-								class={`shape:${shape} ${asset} size:${size}`}
-								href={url}
-								target="_blank"
-								rel="noreferrer"
-								{title}
-								aria-label={title}
-							>
-							</a>
-						</li>
-					{/each}
-				</ul>
-			</RevealContext>
-		</div>
-	</div>
+	<HeaderNav
+		{id}
+		name={id}
+		label="Menu"
+		title="Menu"
+		size="xs"
+		variant="outline"
+		asset="home"
+		justify="start"
+		dismiss={DismissEvent.outside}
+		auto={true}
+		links={main}
+		{path}
+		{reveal}
+		{breakpoint}
+		{formaction}
+		{actionPath}
+		{redirect}
+	/>
+
+	<RevealContext
+		id="appContext"
+		name="appContext"
+		label="Settings"
+		{path}
+		{breakpoint}
+		size="xs"
+		formaction="updateSettings"
+		{actionPath}
+		{redirect}
+		items={preferences}
+		onupdate={preferences.onupdate}
+		reveal={context.reveal}
+	>
+		<ul class="links:settings end unstyled">
+			{#each preferences.links as { title, url, shape, size, asset }}
+				<li>
+					<a
+						class={`shape:${shape} ${asset} size:${size}`}
+						href={url}
+						target="_blank"
+						rel="noreferrer"
+						{title}
+						aria-label={title}
+					>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</RevealContext>
 </header>

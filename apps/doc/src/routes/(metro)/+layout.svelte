@@ -37,34 +37,30 @@
 </script>
 
 <LayoutMetro {sidenav} theme={themeClass}>
-	<div class="main-nav">
-		<HeaderMetro
-			id="nav"
-			name="nav"
-			label="Menu"
-			path={page.url.pathname}
-			reveal={mainNav.reveal}
-			actionPath={page.url.pathname}
-			formaction="toggleNav"
-			dismiss="outside"
-			main={links}
-			context={appContext}
-			{preferences}
-			breakpoint="sm"
-		/>
-	</div>
+	<HeaderMetro
+		id="nav"
+		name="nav"
+		label="Menu"
+		path={page.url.pathname}
+		reveal={mainNav.reveal}
+		actionPath={page.url.pathname}
+		formaction="toggleNav"
+		dismiss="outside"
+		main={links}
+		context={appContext}
+		{preferences}
+		breakpoint="sm"
+	/>
 
-	<div class="side-nav">
-		<RevealNav
-			{...sidenav}
-			position={false}
-			place="left"
-			justify="evenly"
-			font="sm"
-			size="xs"
-			dismiss="outside"
-		/>
-	</div>
+	<RevealNav
+		{...sidenav}
+		position={false}
+		place="left"
+		justify="evenly"
+		font="sm"
+		size="xs"
+		dismiss="outside"
+	/>
 
 	<div class="zone:content">
 		{#if children}

@@ -7,6 +7,7 @@
 
 	const {Sketch} = sketch.graphics
 	let slug = $derived($page.params.slug)
+	let pageContext = $derived({...$page.data.pageContext, title: 'Player'})
 	let scene = $derived(
 		gfx.gl.sketches.projects.find((s) => s.meta.slug === slug),
 	)
@@ -14,6 +15,6 @@
 
 {#key scene}
 	{#if scene}
-		<Sketch {scene} meta={scene.meta} size="sm" {dev} />
+		<Sketch {scene} meta={scene.meta} size="sm" {dev} context={pageContext} />
 	{/if}
 {/key}

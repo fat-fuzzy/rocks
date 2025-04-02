@@ -47,23 +47,16 @@
 		<PageHeader size={size as UiSize} layout="flex" {justify} {...header} />
 	</div>
 
-	<div id={`context-${id}`} class={`page-details ${mediaClass}`}>
-		{#if nav && nav.length > 0}
-			<PageNav id="page-nav" {hash} items={nav} />
-		{/if}
-
-		{#if details}
-			{@render details()}
-		{/if}
-	</div>
-
 	<div class="page-main">
 		{@render main()}
 	</div>
 </main>
 
 <div id={`context-${id}`} class={`page-context ${mediaClass}`}>
-	{#if aside}
+	{#if nav && nav.length > 0}
+		<PageNav id="page-nav" {hash} items={nav} />
+	{/if}
+	{#if context && aside}
 		<Reveal
 			id="pageContext"
 			name="pageContext"
