@@ -93,7 +93,7 @@ body:has(.l\:grid\:rails) {
 	scrollbar-color: var(--thumb) var(--track);
 	block-size: 100%;
 	padding-inline: var(--ui-size);
-	padding-block-end: var(--ui-header-height);
+	padding-block-end: var(--ui-size);
 }
 
 .page-main > section {
