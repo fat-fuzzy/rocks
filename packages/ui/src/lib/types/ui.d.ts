@@ -51,6 +51,7 @@ export type UiLayoutProps = {
 	size?: string
 	font?: string
 
+	scroll?: string
 	container?: string
 	direction?: string
 	place?: string

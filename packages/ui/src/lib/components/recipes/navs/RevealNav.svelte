@@ -18,6 +18,7 @@
 		redirect,
 		preload,
 		layout,
+		scroll,
 		dismiss = DismissEvent.outside,
 		color,
 		size,
@@ -71,6 +72,7 @@
 		{font}
 		{color}
 		{reveal}
+		{scroll}
 		{dismiss}
 		{formaction}
 		{actionPath}

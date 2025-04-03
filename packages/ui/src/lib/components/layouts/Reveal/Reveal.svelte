@@ -34,6 +34,7 @@
 		variant,
 		align,
 		justify,
+		scroll,
 		height,
 		background,
 		layer,
@@ -121,7 +122,7 @@
 		{justify}
 	/>
 
-	<RevealContent {id} {place} {reveal}>
+	<RevealContent {id} {place} {reveal} {scroll}>
 		{#if children}
 			{@render children()}
 		{/if}
