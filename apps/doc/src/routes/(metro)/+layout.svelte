@@ -51,18 +51,19 @@
 		{preferences}
 		breakpoint="sm"
 	/>
-
-	<RevealNav
-		{...sidenav}
-		position={false}
-		place="left"
-		justify="evenly"
-		font="sm"
-		size="xs"
-		dismiss="outside"
-	/>
-
-	<div class="zone:content">
+	<div class="zone:sidebar">
+		<RevealNav
+			{...sidenav}
+			position={false}
+			place="left"
+			scroll="y"
+			justify="evenly"
+			font="sm"
+			size="xs"
+			dismiss="outside"
+		/>
+	</div>
+	<div class="zone:content scroll:y">
 		{#if children}
 			{@render children()}
 		{:else}

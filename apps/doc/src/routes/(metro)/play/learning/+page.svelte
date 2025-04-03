@@ -41,16 +41,15 @@
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
-			<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
-				Tags
-			</p>
-			<div class="l:text l:grid:sm maki:block">
+			<div class="l:text l:grid:xs">
 				{#each tags as tag}
 					<details class="bg:netural">
-						<summary class="color:primary font:sm font:heading ravioli:3xs">
+						<summary
+							class="l:flex nowrap color:accent font:xs font:heading ravioli:3xs"
+						>
 							{tag}
 						</summary>
-						<div class="maki:inline size:sm">
+						<div class="maki:block size:xs">
 							<ul class="unstyled">
 								{#each sketches as { slug, asset, title, tags }}
 									{#if tags.includes(tag)}
