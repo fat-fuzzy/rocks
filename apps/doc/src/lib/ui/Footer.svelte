@@ -3,7 +3,7 @@
 	import RcScout from '$lib/ui/RcScout.svelte'
 	import {page} from '$app/state'
 
-	let footerClass = 'l:text:md maki:auto text:center'
+	let footerClass = 'text:center'
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)

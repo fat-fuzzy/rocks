@@ -49,9 +49,7 @@
 			container,
 		}),
 	)
-	let revealClasses = $derived(
-		`l:reveal zone:sidebar ${place} ${reveal} ${layoutClasses}`,
-	)
+	let revealClasses = $derived(`l:reveal ${place} ${reveal} ${layoutClasses}`)
 </script>
 
 <nav
