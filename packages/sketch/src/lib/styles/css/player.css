@@ -1,6 +1,6 @@
 
 menu.player > li {
-	flex-basis: 28%;
+	flex-grow: 0;
 	aspect-ratio: 1/1;
 	padding-block: var(--border-width-lg);
 	padding-inline: var(--ui-size-sm);

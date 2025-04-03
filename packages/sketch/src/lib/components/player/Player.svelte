@@ -56,7 +56,23 @@
 	})
 </script>
 
-<menu {id} class={`player l:flex size:${size}`}>
+<menu {id} class={`player l:flex justify:center size:${size}`}>
+	<li>
+		<Button
+			id="stop"
+			name="stop"
+			{color}
+			{variant}
+			{size}
+			value="stop"
+			asset="rect"
+			shape="square"
+			onclick={updatePlayer}
+			disabled={actor.getStopDisabled()}
+		>
+			Stop
+		</Button>
+	</li>
 	<li>
 		{#key actor.playState}
 			<Switch
@@ -90,22 +106,6 @@
 			disabled={actor.getClearDisabled()}
 		>
 			Clear
-		</Button>
-	</li>
-	<li>
-		<Button
-			id="stop"
-			name="stop"
-			{color}
-			{variant}
-			{size}
-			value="stop"
-			asset="rect"
-			shape="square"
-			onclick={updatePlayer}
-			disabled={actor.getStopDisabled()}
-		>
-			Stop
 		</Button>
 	</li>
 </menu>

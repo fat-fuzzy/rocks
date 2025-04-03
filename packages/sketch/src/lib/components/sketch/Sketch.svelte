@@ -267,9 +267,7 @@
 			{/if}
 		</div>
 		{#if debug}
-			<div class="scroll:x">
-				<Debug {meta} context={actor} />
-			</div>
+			<Debug {meta} context={actor} />
 		{/if}
 	{/snippet}
 
