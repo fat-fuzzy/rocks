@@ -7,13 +7,15 @@
 		id = 'RevealContent',
 		reveal = DEFAULT_REVEAL_STATE.reveal,
 		area,
+		scroll,
 		children,
 	}: RevealLayoutProps = $props()
 
 	let expanded = $derived(reveal)
+	let scrollClass = $derived(scroll ? `scroll:${scroll}` : '')
 </script>
 
-<ff-reveal id={`${id}-reveal`} class={`${expanded} ${area}`}>
+<ff-reveal id={`${id}-reveal`} class={`${expanded} ${area} ${scrollClass}`}>
 	{#if children}
 		{@render children()}
 	{/if}

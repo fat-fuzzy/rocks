@@ -42,7 +42,7 @@
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
 
-<main {id} class="zone:main">
+<main {id} class="zone:main scroll:y">
 	<div class="page-header">
 		<PageHeader {...header} size={size as UiSize} {justify} />
 	</div>
@@ -70,6 +70,7 @@
 			justify="evenly"
 			font="sm"
 			size="sm"
+			scroll="y"
 			variant="outline"
 			breakpoint="xs"
 			formaction="togglePageContext"

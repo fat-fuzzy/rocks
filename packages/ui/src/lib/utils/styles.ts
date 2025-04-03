@@ -68,6 +68,7 @@ function getLayoutStyles(props: UiBlockProps): string {
 		height,
 		shape,
 		layout,
+		scroll,
 		position,
 		threshold,
 		breakpoint,
@@ -78,6 +79,7 @@ function getLayoutStyles(props: UiBlockProps): string {
 	let thresholdClass = threshold ? `th:${threshold}` : ''
 	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
 	let layoutClass = layout && shape ? 'stack' : layout
+	let scrollClass = scroll ? `scroll:${scroll}` : ''
 	let heightClass = height ? ` h:${height}` : ''
 	let layerClass = layer ? ` layer:${layer}` : ''
 	let positionClass = position ? position : ''
@@ -92,7 +94,7 @@ function getLayoutStyles(props: UiBlockProps): string {
 					: ''
 	}
 
-	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass} ${heightClass} ${backgroundClass} ${layerClass} ${positionClass}`
+	let layoutClasses = `${layoutClass} ${thresholdClass} ${breakpointClass} ${heightClass} ${backgroundClass} ${layerClass} ${positionClass} ${scrollClass}`
 
 	return layoutClasses.trim()
 }
@@ -149,6 +151,7 @@ function getStyles(props: UiBlockProps): string {
 		assetType,
 		variant,
 		layout,
+		scroll,
 		container,
 		dimensions,
 		threshold,
@@ -172,6 +175,7 @@ function getStyles(props: UiBlockProps): string {
 		size,
 		shape,
 		layout,
+		scroll,
 		threshold,
 		breakpoint,
 		background,
