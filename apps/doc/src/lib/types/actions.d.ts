@@ -1,3 +1,5 @@
+import type {Cookies} from '@sveltejs/kit'
+
 import type {RequestEvent, Cookies} from '@sveltejs/kit'
 
 export type UiActionGetInput = {
@@ -22,4 +24,12 @@ export type UiActionSetOutput = {
 	type?: string
 	state?: any
 	message?: string
+}
+
+export type SecureCookieProps = {
+	cookies: Cookies
+	key: string
+	value: string
+	path?: string
+	maxAge?: number
 }
