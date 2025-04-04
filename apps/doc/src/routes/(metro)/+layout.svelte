@@ -51,7 +51,7 @@
 		{preferences}
 		breakpoint="sm"
 	/>
-	<div class="zone:sidebar">
+	<div class="l:grid zone:sidebar">
 		<RevealNav
 			{...sidenav}
 			position={false}
@@ -63,7 +63,7 @@
 			dismiss="outside"
 		/>
 	</div>
-	<div class="zone:content scroll:y">
+	<div class="l:grid zone:content scroll:y">
 		{#if children}
 			{@render children()}
 		{:else}

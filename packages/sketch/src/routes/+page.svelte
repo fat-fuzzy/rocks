@@ -18,7 +18,7 @@
 	{#snippet header()}
 		<h1 class="l:side hug maki:block:md">{title}</h1>
 	{/snippet}
-	<div class="l:grid:sm maki:block">
+	<div class="l:grid:auto size:sm maki:block">
 		{#each tags as tag}
 			<details class="ravioli:md l:stack size:sm bg:netural varian:bare" open>
 				<summary class="surface:2:neutral ravioli:2xs">{tag}</summary>

@@ -22,7 +22,7 @@
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">
-			<ul class="l:grid:xs unstyled">
+			<ul class="l:grid:auto size:xs unstyled">
 				{#each markdowns as { meta }}
 					{#if meta.status !== 'draft'}
 						<a

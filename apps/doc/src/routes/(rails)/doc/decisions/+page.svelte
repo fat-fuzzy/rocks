@@ -25,7 +25,7 @@
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">
-			<ul class="l:grid:sm unstyled">
+			<ul class="l:grid:auto size:sm unstyled">
 				{#each markdowns as { meta }}
 					{#if meta.status !== 'draft'}
 						<a
@@ -43,7 +43,7 @@
 		<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
 			Tags
 		</p>
-		<div class="l:text l:grid:sm maki:block">
+		<div class="l:grid:auto size:sm maki:block">
 			{#each tags as tag}
 				<details class="bg:netural">
 					<summary class="color:primary font:sm font:heading ravioli:3xs">

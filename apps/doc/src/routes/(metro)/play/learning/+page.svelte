@@ -41,7 +41,7 @@
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
-			<div class="l:text l:grid:xs">
+			<div class="l:text l:grid:auto size:xs">
 				{#each tags as tag}
 					<details class="bg:netural">
 						<summary
