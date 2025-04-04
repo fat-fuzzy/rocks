@@ -1,0 +1,175 @@
+[class*='zone:'] {
+	grid-template-rows: subgrid;
+}
+
+.zone\:header {
+	grid-area: zone-header;
+	grid-template-areas: 'header-nav	app-context';
+	grid-template-columns: 1fr auto;
+}
+
+.zone\:content {
+	grid-area: zone-content;
+	grid-template-areas:
+		'zone-main    zone-main    zone-main'
+		'zone-main    zone-main    zone-main'
+		'page-context page-context page-context'
+		'main-footer  main-footer  main-footer';
+	grid-template-columns: subgrid;
+	max-block-size: var(--max-block-size);
+}
+
+.zone\:main {
+	grid-area: zone-main;
+	grid-template-areas:
+		'page-header page-header page-header'
+		'page-main   page-main   page-main';
+	grid-column: span 3;
+}
+
+.zone\:header > nav {
+	grid-area: header-nav;
+	align-content: center;
+}
+
+.zone\:header > * > ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+}
+
+.zone\:header > nav,
+.zone\:header > nav form,
+.zone\:header > nav [aria-expanded] {
+	inline-size: 100%;
+}
+
+.zone\:header > nav [aria-expanded] span {
+	text-align: center;
+}
+
+.zone\:header > [aria-label='Settings'] {
+	grid-area: app-context;
+	align-content: center;
+}
+
+.zone\:sidebar {
+	grid-area: zone-sidebar;
+	grid-template-areas: 'side-nav';
+	align-content: center;
+}
+
+.zone\:sidebar > .expanded > ff-reveal {
+	--max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
+	position: absolute;
+	top: var(--ui-header-height);
+	align-content: center;
+	margin-block-start: 0;
+	inline-size: var(--sidebar-width);
+	block-size: fit-content;
+	max-block-size: var(--max-block-size);
+	padding-block: var(--ui-size-sm);
+	padding-inline: var(--ui-size-sm);
+	box-shadow: var(--shadow-md);
+	z-index: var(--layout-z-index-reveal);
+}
+
+.zone\:sidebar > nav > form {
+	inline-size: 100%;
+}
+
+.zone\:sidebar > nav > form [aria-expanded] {
+	inline-size: 100%;
+}
+
+@media screen and (min-width: 620px) {
+	.zone\:content {
+		grid-template-areas:
+			'zone-main    zone-main    page-context'
+			'zone-main    zone-main    page-context'
+			'main-footer  main-footer  page-context';
+	}
+
+	.zone\:main {
+		grid-template-areas:
+			'page-header   page-header   page-details'
+			'page-main     page-main     page-main';
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+		max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
+	}
+
+	.zone\:sidebar > form {
+		inline-size: var(--sidebar-width);
+	}
+
+	.zone\:header > nav {
+		justify-content: flex-start;
+	}
+
+	.zone\:header > nav.expanded > ff-reveal,
+	.zone\:header > nav.collapsed > ff-reveal {
+		position: unset;
+		box-shadow: unset;
+		inline-size: calc(100vw - var(--sidebar-width));
+		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
+	}
+
+	.zone\:sidebar.expanded > ff-reveal {
+		position: unset;
+		inline-size: calc(100vw - 6 * var(--ui-size) - var(--sidebar-width));
+		max-inline-size: calc(100% - 2 * var(--ui-size));
+		z-index: var(--layout-z-index-reveal);
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.zone\:content {
+		grid-template-areas:
+			'zone-main  zone-main  page-context'
+			'zone-main  zone-main  page-context'
+			'main-footer  main-footer  page-context';
+	}
+
+	.zone\:main {
+		grid-area: zone-main;
+		grid-template-areas:
+			'page-header   page-header   page-details'
+			'page-main     page-main     page-main';
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+	}
+
+	.zone\:sidebar {
+		inline-size: 100%;
+		max-inline-size: unset;
+		min-inline-size: var(--sidebar-width);
+	}
+
+	.zone\:sidebar > ff-reveal {
+		position: unset;
+	}
+
+	.zone\:sidebar.expanded > form {
+		inline-size: calc(
+			var(--sidebar-width) - var(--ui-size) + var(--outline-offset-sm)
+		);
+	}
+
+	.zone\:sidebar > ff-reveal.expanded,
+	.zone\:sidebar > ff-reveal.collapsed {
+		margin-block-start: var(--outline-offset-lg);
+		position: unset;
+		block-size: fit-content;
+		max-block-size: calc(100vh - 2 * var(--ui-header-height));
+		max-inline-size: var(--sidebar-width);
+		box-shadow: unset;
+		padding: 0;
+	}
+
+	.zone\:sidebar > nav.collapsed,
+	.zone\:sidebar > nav > ff-reveal.collapsed {
+		--sidebar-width: var(--layout-sidebar-collapsed);
+		max-inline-size: var(--sidebar-width);
+	}
+}

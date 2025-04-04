@@ -25,10 +25,12 @@ import './details.css' /* Use to style <details> and <summary> elements */
 import './breakpoint.css' /* Breakpoint utilities */
 import './shapes.css' /* Use to style geometric shapes */
 import './flex.css' /* Use for flex layouts */
-import './grid.css' /* Use for grid layouts base + gallery grid layout (equal sized areas) */
 import './align.css' /* Use for aligning items inside containers and setting widths */
 import './position.css' /* Use for to position elements */
 
-/* == Moving around the viewport == */
-import './grid-rails.css' /* Use for base grid with page template areas and scrolling sidebars */
-import './grid-metro.css' /* Use for more detailed grid with headers and page template areas */
+/* == Grids == */
+import './grid/base.css' /* Grid layouts base  */
+import './grid/auto.css' /* Gallery grid layout with equal sized areas */
+import './grid/rails.css' /* Grid with page template areas and scrolling sidebars  */
+import './grid/metro.css' /* Detailed grid with headers and page template areas */
+import './grid/zones.css' /* Metro grid areas (zones) */

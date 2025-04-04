@@ -291,31 +291,3 @@ body:has(.l\:grid\:rails) {
 		max-inline-size: var(--sidebar-width);
 	}
 }
-
-.l\:grid\:rails.size\:2xs {
-	--grid-gap: var(--size-base-2xs);
-}
-
-.l\:grid\:rails.size\:xs {
-	--grid-gap: var(--size-base-xs);
-}
-
-.l\:grid\:rails.size\:sm {
-	--grid-gap: var(--size-base-sm);
-}
-
-.l\:grid\:rails.size\:md {
-	--grid-gap: var(--size-base-md);
-}
-
-.l\:grid\:rails.size\:lg {
-	--grid-gap: var(--size-base-lg);
-}
-
-.l\:grid\:rails.size\:xl {
-	--grid-gap: var(--size-base-xl);
-}
-
-.l\:grid\:rails.size\:2xl {
-	--grid-gap: var(--size-base-2xl);
-}
