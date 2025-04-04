@@ -1,24 +1,17 @@
 import type {ViewingPreferences} from '$types'
 import constants from '$lib/types/constants.js'
 
-const {
-	DEFAULT_PREFERENCES,
-	DEFAULT_REVEAL_STATE,
-	TRANSITION_BRIGHTNESS,
-	TRANSITION_CONTRAST,
-} = constants
+const {DEFAULT_PREFERENCES, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
+	constants
 
 class AppContext {
-	app: ViewingPreferences = $state({
-		...DEFAULT_PREFERENCES,
-		...DEFAULT_REVEAL_STATE,
-	})
+	state: ViewingPreferences = $state(DEFAULT_PREFERENCES)
 	/**
 	 * Initialize default Settings object or from the user's cookie values, if any
 	 */
 	constructor(preferences: ViewingPreferences | null = null) {
 		if (preferences) {
-			this.app = {...this.app, ...preferences}
+			this.state = preferences
 		}
 	}
 
@@ -26,41 +19,26 @@ class AppContext {
 	 * Update Settings based on inputs
 	 */
 	update(data: FormData) {
-		let updated
+		let updated = false
 		if (data.has('brightness')) {
-			updated = data.get('brightness')
-		}
-		if (updated && typeof updated === 'string') {
-			/**
-			 * This makes it work without javascript:
-			 * The button value changes with JS but not without
-			 */
-			if (updated === this.app.brightness) {
-				updated = TRANSITION_BRIGHTNESS[updated]
-			}
-			this.app.brightness = updated
+			let brightness = data.get('brightness')
+			this.state.brightness = TRANSITION_BRIGHTNESS[String(brightness)]
+			updated = true
 		}
 		if (data.has('contrast')) {
-			updated = data.get('contrast')
+			let contrast = data.get('contrast')
+			this.state.contrast = TRANSITION_CONTRAST[String(contrast)]
+			updated = true
 		}
-		if (updated && typeof updated === 'string') {
-			/**
-			 * This makes it work without javascript:
-			 * The button value changes with JS but not without
-			 */
-			if (updated === this.app.contrast) {
-				updated = TRANSITION_CONTRAST[updated]
-			}
-			this.app.contrast = updated
-		}
-		if (!updated) {
+		if (updated) {
 			return {
-				success: false,
+				success: true,
+				state: this.toString(),
 			}
 		}
+
 		return {
-			success: true,
-			state: this.app,
+			success: false,
 		}
 	}
 
@@ -68,7 +46,7 @@ class AppContext {
 	 * Serialize Settings so it can be set as a cookie
 	 */
 	toString() {
-		return JSON.stringify(this.app)
+		return JSON.stringify(this.state)
 	}
 }
 
