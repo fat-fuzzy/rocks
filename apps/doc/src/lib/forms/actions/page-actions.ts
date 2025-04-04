@@ -1,5 +1,9 @@
+import ui from '@fat-fuzzy/ui'
+
 import uiActions from '$lib/forms/actions/ui-actions'
 import settingsActions from '$lib/forms/actions/settings-actions'
+
+const {APP_PREFIX} = ui.constants
 
 export const commonActions = {
 	toggleNav: async (event) => {
@@ -16,7 +20,8 @@ export const commonActions = {
 	},
 	updateSettings: async (event) => {
 		const updated = await settingsActions.handleUpdateAppSettings({event})
-		event.locals.appContext.preferences = JSON.parse(updated.state)
+		event.locals.appContext.brightness = updated.state.brightness
+		event.locals.appContext.contrast = updated.state.contrast
 	},
 	togglePageContext: async (event) => {
 		const updated = await uiActions.handleTogglePageContext(event)
@@ -24,7 +29,7 @@ export const commonActions = {
 	},
 	reset: async ({cookies}) => {
 		cookies.getAll().forEach((cookie) => {
-			if (cookie.name.startsWith('ff-')) {
+			if (cookie.name.startsWith(APP_PREFIX)) {
 				cookies.delete(cookie.name, {path: '/'})
 			}
 		})
