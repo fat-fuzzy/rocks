@@ -23,7 +23,7 @@
 		layout,
 		reveal = DEFAULT_REVEAL_STATE.reveal,
 		place = 'top',
-		element = 'div',
+		element = 'div', // HTML tag or tag.class
 		position,
 		color,
 		size,
@@ -42,6 +42,8 @@
 		children,
 	}: RevealLayoutProps = $props()
 
+	let tag = $state(element)
+	let className = $state('')
 	let payload = $derived({
 		state: reveal,
 		id: `button-reveal-${id}`,
@@ -64,8 +66,8 @@
 	let revealLayoutClasses = $derived(`${expanded} ${layoutClasses}`)
 	let revealClasses = $derived(
 		auto
-			? `l:reveal:auto ${revealLayoutClasses}`
-			: `l:reveal ${revealLayoutClasses}`,
+			? `${className} l:reveal:auto ${revealLayoutClasses}`
+			: `${className} l:reveal ${revealLayoutClasses}`,
 	)
 
 	function onKeyUp(e: KeyboardEvent) {
@@ -86,13 +88,18 @@
 	// 	}
 	// 	payload.state = 'collapsed' // TODO: Fix this does nothing
 	// }
+	$effect(() => {
+		let html = element.split('.')
+		tag = html[0]
+		className = html[1]
+	})
 </script>
 
 <svelte:window onkeyup={onKeyUp} />
 
 {#if auto}
 	<svelte:element
-		this={element}
+		this={tag}
 		{id}
 		class={revealClasses}
 		aria-label={label ?? title}
