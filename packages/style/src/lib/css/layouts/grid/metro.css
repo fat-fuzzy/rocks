@@ -13,7 +13,7 @@ body:has(.l\:grid\:metro) {
 }
 
 .l\:grid\:metro {
-	--viewport-width-sm: calc(100vw - 2 * var(--ui-size));
+	--metro-sidebar-sm: calc(100vw - 2 * var(--ui-size));
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
 	--max-inline-size: calc(100vw - 2 * var(--outline-offset-lg));
 	inline-size: 100vw;
@@ -24,7 +24,7 @@ body:has(.l\:grid\:metro) {
 		'zone-content   zone-content  zone-content'
 		'zone-content   zone-content  zone-content'
 		'zone-content   zone-content  zone-content';
-	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-columns: auto 2fr auto;
 	grid-template-rows: var(--ui-header-height) auto 1fr auto auto;
 }
 
@@ -62,7 +62,7 @@ body:has(.l\:grid\:metro) {
 		grid-area: page-context;
 		position: relative;
 		inline-size: 100%;
-		max-inline-size: var(--viewport-width-sm);
+		max-inline-size: var(--metro-sidebar-sm);
 		padding-block: var(--outline-offset-md);
 		padding-inline: var(--outline-offset-lg) var(--ui-size);
 	}
@@ -74,7 +74,7 @@ body:has(.l\:grid\:metro) {
 	.page-context ff-reveal.expanded:first-of-type {
 		--sidebar-width: var(--layout-sidebar-md);
 		position: absolute;
-		max-inline-size: var(--viewport-width-sm);
+		max-inline-size: var(--metro-sidebar-sm);
 		block-size: fit-content;
 		max-block-size: var(--overlay-height-2xs);
 		bottom: calc(var(--ui-header-height) - var(--outline-offset-lg));
@@ -101,7 +101,6 @@ body:has(.l\:grid\:metro) {
 @media screen and (min-width: 620px) {
 	.l\:grid\:metro {
 		grid-template-areas:
-			'zone-sidebar  zone-header   zone-header'
 			'zone-sidebar  zone-header   zone-header'
 			'zone-content  zone-content  zone-content'
 			'zone-content  zone-content  zone-content'
