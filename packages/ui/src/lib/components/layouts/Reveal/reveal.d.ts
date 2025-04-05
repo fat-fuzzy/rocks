@@ -10,7 +10,7 @@ export type RevealLayoutProps = LayoutProps &
 
 export type RevealTrainProps = LayoutProps &
 	UiBlockProps & {
-		element?: string
+		element?: string // Element can be a string defining an HTML tag or a tag.class composed name. Ex: element = 'aside.page-context'
 		area?: string
 		reveal: {id: string; state: string}
 		stations: RevealLayoutProps[]

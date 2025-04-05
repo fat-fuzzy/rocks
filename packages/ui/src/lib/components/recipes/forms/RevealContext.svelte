@@ -27,6 +27,7 @@
 	name={id}
 	label="Settings"
 	auto={true}
+	element="div.app-context"
 	{reveal}
 	{breakpoint}
 	{background}
