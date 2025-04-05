@@ -33,6 +33,8 @@
 	padding: 0;
 	position: absolute;
 	width: 1px;
+	inline-size: 1px;
+	block-size: 1px;
 	white-space: nowrap;
 	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); /* TODO : use Svelte animations */
 }
