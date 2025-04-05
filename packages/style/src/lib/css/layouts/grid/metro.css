@@ -19,11 +19,11 @@ body:has(.l\:grid\:metro) {
 	inline-size: 100vw;
 	block-size: 100vh;
 	grid-template-areas:
-		'zone-sidebar   zone-header   zone-header'
-		'zone-content   zone-content  zone-content'
-		'zone-content   zone-content  zone-content'
-		'zone-content   zone-content  zone-content'
-		'zone-content   zone-content  zone-content';
+		'zone-1   zone-2  zone-2'
+		'zone-3   zone-3  zone-3'
+		'zone-3   zone-3  zone-3'
+		'zone-3   zone-3  zone-3'
+		'zone-3   zone-3  zone-3';
 	grid-template-columns: auto 2fr auto;
 	grid-template-rows: var(--ui-header-height) auto 1fr auto auto;
 }
@@ -101,10 +101,10 @@ body:has(.l\:grid\:metro) {
 @media screen and (min-width: 620px) {
 	.l\:grid\:metro {
 		grid-template-areas:
-			'zone-sidebar  zone-header   zone-header'
-			'zone-content  zone-content  zone-content'
-			'zone-content  zone-content  zone-content'
-			'zone-content  zone-content  zone-content';
+			'zone-1  zone-2  zone-2'
+			'zone-3  zone-3  zone-3'
+			'zone-3  zone-3  zone-3'
+			'zone-3  zone-3  zone-3';
 		grid-template-columns: auto 1fr auto;
 		grid-template-rows: var(--ui-header-height) auto 1fr;
 	}
@@ -174,12 +174,12 @@ body:has(.l\:grid\:metro) {
 @media screen and (min-width: 935px) {
 	.l\:grid\:metro {
 		grid-template-areas:
-			'zone-sidebar  zone-header   zone-header'
-			'zone-sidebar  zone-header   zone-header'
-			'zone-sidebar  zone-content  zone-content'
-			'zone-sidebar  zone-content  zone-content'
-			'zone-sidebar  zone-content  zone-content'
-			'zone-sidebar  zone-content  zone-content';
+			'zone-1  zone-2  zone-2'
+			'zone-1  zone-2  zone-2'
+			'zone-1  zone-3  zone-3'
+			'zone-1  zone-3  zone-3'
+			'zone-1  zone-3  zone-3'
+			'zone-1  zone-3  zone-3';
 		grid-template-columns: auto 1fr auto;
 		grid-template-rows: var(--ui-header-height) auto 1fr;
 	}

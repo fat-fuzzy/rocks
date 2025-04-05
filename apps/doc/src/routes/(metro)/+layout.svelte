@@ -49,9 +49,9 @@
 		main={links}
 		context={appContext}
 		{preferences}
-		breakpoint="sm"
+		breakpoint="xs"
 	/>
-	<div class="l:grid zone:sidebar">
+	<div class="l:grid zone:1">
 		<RevealNav
 			{...sidenav}
 			position={false}
@@ -63,7 +63,7 @@
 			dismiss="outside"
 		/>
 	</div>
-	<div class="l:grid zone:content scroll:y">
+	<div class="l:grid zone:3 scroll:y">
 		{#if children}
 			{@render children()}
 		{:else}
