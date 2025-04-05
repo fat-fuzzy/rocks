@@ -7,6 +7,12 @@
 	grid-area: zone-1;
 	grid-template-areas: 'navbar	app-context';
 	grid-template-rows: subgrid;
+
+	.app-context {
+		grid-area: app-context;
+		align-content: center;
+		flex-grow: 0;
+	}
 }
 
 .zone\:1 > .navbar {
