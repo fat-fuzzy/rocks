@@ -2,7 +2,7 @@
 	--gap: var(--ui-size);
 	display: flex;
 	flex-wrap: wrap;
-	align-items: var(--align-items);
+	align-items: var(--align-items, center);
 	gap: var(--gap);
 }
 
