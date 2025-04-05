@@ -2,7 +2,7 @@
 	- between var(--sidebar-width) and 100% of available width
 	*/
 @supports (width: min(var(--grid-item-size), 100%)) {
-	[class*='l:grid'] {
+	.l\:grid\:auto {
 		grid-template-columns: repeat(
 			auto-fill,
 			minmax(min(var(--grid-item-size), 100%), 1fr)

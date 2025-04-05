@@ -38,7 +38,6 @@
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" margin="auto" />
-		<Footer />
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
@@ -67,5 +66,8 @@
 				{/each}
 			</div>
 		{/if}
+	{/snippet}
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageMetro>

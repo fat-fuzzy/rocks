@@ -6,11 +6,11 @@
 	grid-area: zone-3;
 	grid-template-areas:
 		'zone-main    zone-main    zone-main'
-		'zone-main    zone-main    zone-main'
 		'page-context page-context page-context'
 		'main-footer  main-footer  main-footer';
 	grid-template-columns: subgrid;
 	max-block-size: var(--max-block-size);
+	grid-row: span 3;
 }
 
 .zone\:main {
@@ -59,9 +59,7 @@
 		position: absolute;
 		max-inline-size: var(--metro-sidebar-sm);
 		block-size: fit-content;
-		max-block-size: var(--overlay-height-2xs);
-		bottom: calc(var(--ui-header-height) - var(--outline-offset-lg));
-		top: unset;
+		max-block-size: var(--overlay-height-sm);
 		margin-block-start: 0;
 		padding-block: var(--ui-size-sm);
 		padding-inline: var(--outline-offset-lg);

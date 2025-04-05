@@ -43,7 +43,6 @@
 				{/each}
 			</ul>
 		</div>
-		<Footer />
 	{/snippet}
 	{#snippet aside()}
 		{#if sketches.length > 5 && tags.size > 0}
@@ -73,5 +72,8 @@
 				{/each}
 			</div>
 		{/if}
+	{/snippet}
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageMetro>
