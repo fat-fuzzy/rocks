@@ -28,6 +28,8 @@
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" margin="auto" />
+	{/snippet}
+	{#snippet footer()}
 		<Footer />
 	{/snippet}
 </PageMetro>
