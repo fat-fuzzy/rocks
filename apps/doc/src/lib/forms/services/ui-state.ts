@@ -1,4 +1,5 @@
 import type {Cookies} from '@sveltejs/kit'
+import {dev} from '$app/environment'
 import type {UiStateGetInput, UiStateSetInput} from '$lib/types/services.js'
 
 const expire = {
@@ -43,13 +44,20 @@ function getUiState({cookies, key}: UiStateGetInput): any {
 }
 
 function setUiState({cookies, key, value, options}: UiStateSetInput) {
-	setSecureCookie({
-		cookies,
-		key,
-		value: JSON.stringify(value),
-		path: options.path ?? '/',
-		maxAge: expire.short,
-	})
+	if (dev) {
+		cookies.set(key, JSON.stringify(value), {
+			path: options.path ?? '/',
+			maxAge: expire.short,
+		})
+	} else {
+		setSecureCookie({
+			cookies,
+			key,
+			value: JSON.stringify(value),
+			path: options.path ?? '/',
+			maxAge: expire.short,
+		})
+	}
 }
 
 export default {getUiState, setUiState}
