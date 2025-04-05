@@ -37,6 +37,12 @@ body:has(.l\:grid\:metro) {
 		grid-area: page-header;
 	}
 
+	.app-context {
+		grid-area: app-context;
+		align-content: center;
+		flex-grow: 0;
+	}
+
 	.page-main {
 		grid-area: page-main;
 		padding-inline: var(--ui-size);

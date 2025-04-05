@@ -24,26 +24,28 @@
 </script>
 
 <header class={`${positionClass} l:grid zone:header bg:inherit`}>
-	<SkipLinks />
-	<HeaderNav
-		{id}
-		name={id}
-		label="Menu"
-		title="Menu"
-		size="xs"
-		variant="outline"
-		asset="home"
-		justify="start"
-		dismiss={DismissEvent.outside}
-		auto={true}
-		links={main}
-		{path}
-		{reveal}
-		{breakpoint}
-		{formaction}
-		{actionPath}
-		{redirect}
-	/>
+	<div class="navbar">
+		<SkipLinks />
+		<HeaderNav
+			{id}
+			name={id}
+			label="Menu"
+			title="Menu"
+			size="xs"
+			variant="outline"
+			asset="home"
+			justify="start"
+			dismiss={DismissEvent.outside}
+			auto={true}
+			links={main}
+			{path}
+			{reveal}
+			{breakpoint}
+			{formaction}
+			{actionPath}
+			{redirect}
+		/>
+	</div>
 
 	<RevealContext
 		id="appContext"
