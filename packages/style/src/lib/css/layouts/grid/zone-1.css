@@ -1,0 +1,55 @@
+/**
+ * ZONE 1
+ * Contains the header with main navigation and app context
+ */
+
+.zone\:1 {
+	grid-area: zone-1;
+	grid-template-areas: 'navbar	app-context';
+	grid-template-rows: subgrid;
+}
+
+.zone\:1 > .navbar {
+	grid-area: navbar;
+	align-content: center;
+}
+
+.zone\:1 > .navbar ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	right: var(--ui-size);
+}
+
+.zone\:1 > .app-settings ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	right: var(--ui-size);
+}
+
+.zone\:1 > nav,
+.zone\:1 > nav form,
+.zone\:1 > nav [aria-expanded] {
+	inline-size: 100%;
+}
+
+.zone\:1 > nav [aria-expanded] span {
+	text-align: center;
+}
+
+@media screen and (min-width: 620px) {
+	.zone\:1 > nav {
+		justify-content: flex-start;
+	}
+
+	.zone\:1 > nav form {
+		display: none;
+	}
+
+	.zone\:1 > nav.expanded > ff-reveal,
+	.zone\:1 > nav.collapsed > ff-reveal {
+		margin: 0 auto;
+		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+	}
+}

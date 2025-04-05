@@ -1,0 +1,66 @@
+/**
+ * ZONE 3
+ * Contains main content page context and footer
+ */
+.zone\:3 {
+	grid-area: zone-3;
+	grid-template-areas:
+		'zone-main    zone-main    zone-main'
+		'zone-main    zone-main    zone-main'
+		'page-context page-context page-context'
+		'main-footer  main-footer  main-footer';
+	grid-template-columns: subgrid;
+	max-block-size: var(--max-block-size);
+}
+
+.zone\:main {
+	grid-area: zone-main;
+	grid-template-areas:
+		'page-header page-header page-header'
+		'page-main   page-main   page-main';
+	grid-column: span 3;
+}
+
+@media screen and (min-width: 620px) {
+	.zone\:3 {
+		grid-template-areas:
+			'zone-main    zone-main    page-context'
+			'zone-main    zone-main    page-context'
+			'main-footer  main-footer  page-context';
+	}
+
+	.zone\:3.scroll\:y {
+		overflow: hidden;
+		block-size: calc(100vh - var(--ui-header-height));
+	}
+
+	.zone\:main {
+		grid-template-areas:
+			'page-header   page-header'
+			'page-main     page-main';
+		grid-column: span 2;
+	}
+
+	.zone\:main.scroll\:y {
+		min-block-size: unset;
+		block-size: max-content;
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.zone\:3 {
+		grid-template-areas:
+			'zone-main  zone-main  page-context'
+			'zone-main  zone-main  page-context'
+			'main-footer  main-footer  page-context';
+	}
+
+	.zone\:main {
+		grid-area: zone-main;
+		grid-template-areas:
+			'page-header   page-header   page-details'
+			'page-main     page-main     page-main';
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+	}
+}

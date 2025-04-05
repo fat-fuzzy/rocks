@@ -33,4 +33,6 @@
 @import './grid/auto.css'; /* Gallery grid layout with equal sized areas */
 @import './grid/rails.css'; /* Grid with page template areas and scrolling sidebars */
 @import './grid/metro.css'; /* Detailed grid with header and page template areas (zones) */
-@import './grid/zones.css'; /* Metro grid areas (zones) */
+@import './grid/zone-1.css'; /* Metro grid areas (zone-1) */
+@import './grid/zone-2.css'; /* Metro grid areas (zone-2) */
+@import './grid/zone-3.css'; /* Metro grid areas (zone-3) */
