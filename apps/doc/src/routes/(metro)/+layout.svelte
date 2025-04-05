@@ -51,7 +51,7 @@
 		{preferences}
 		breakpoint="xs"
 	/>
-	<div class="l:grid zone:1">
+	<div class="l:grid zone:2">
 		<RevealNav
 			{...sidenav}
 			position={false}

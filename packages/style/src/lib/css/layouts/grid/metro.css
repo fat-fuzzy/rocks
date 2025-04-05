@@ -19,7 +19,7 @@ body:has(.l\:grid\:metro) {
 	inline-size: 100vw;
 	block-size: 100vh;
 	grid-template-areas:
-		'zone-1   zone-2  zone-2'
+		'zone-2   zone-1  zone-1'
 		'zone-3   zone-3  zone-3'
 		'zone-3   zone-3  zone-3'
 		'zone-3   zone-3  zone-3'
@@ -101,7 +101,7 @@ body:has(.l\:grid\:metro) {
 @media screen and (min-width: 620px) {
 	.l\:grid\:metro {
 		grid-template-areas:
-			'zone-1  zone-2  zone-2'
+			'zone-2  zone-1  zone-1'
 			'zone-3  zone-3  zone-3'
 			'zone-3  zone-3  zone-3'
 			'zone-3  zone-3  zone-3';
@@ -174,13 +174,11 @@ body:has(.l\:grid\:metro) {
 @media screen and (min-width: 935px) {
 	.l\:grid\:metro {
 		grid-template-areas:
-			'zone-1  zone-2  zone-2'
-			'zone-1  zone-2  zone-2'
-			'zone-1  zone-3  zone-3'
-			'zone-1  zone-3  zone-3'
-			'zone-1  zone-3  zone-3'
-			'zone-1  zone-3  zone-3';
+			'zone-2  zone-1  zone-1'
+			'zone-2  zone-3  zone-3'
+			'zone-2  zone-3  zone-3'
+			'zone-2  zone-3  zone-3';
 		grid-template-columns: auto 1fr auto;
-		grid-template-rows: var(--ui-header-height) auto 1fr;
+		grid-template-rows: var(--ui-header-height) 1fr auto;
 	}
 }
