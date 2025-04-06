@@ -2,7 +2,6 @@
 /// <reference path="./types/index.d.ts" />
 import type {FatFuzzySketch} from '$types'
 
-import './styles/css/debug.css' /* Use for a Sketch layout */
 import './styles/scss/grid-sketch.scss' /* Use for a Sketch layout */
 import './styles/css/grid-sketch.css' /* Use for a Sketch layout */
 import './styles/css/sketch.css' /* Use for player inputs layout */
