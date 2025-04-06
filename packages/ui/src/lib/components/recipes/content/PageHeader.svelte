@@ -22,7 +22,7 @@
 </script>
 
 <header class={headerClass}>
-	<div class={layout ? `l:main:50` : ''}>
+	<div class={layout === 'sidebar' ? `l:main:50` : ''}>
 		<div class={contentClasses}>
 			{#if main}
 				{@render main()}

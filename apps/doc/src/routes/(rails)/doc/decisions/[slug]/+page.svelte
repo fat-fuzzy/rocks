@@ -6,6 +6,7 @@
 	const {PageRails, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
 
+	let appContext = $derived(page.data.appContext)
 	let markdown = $derived(
 		page.data.markdowns.decisions.find((d) => d.path === page.data.html.path),
 	)
@@ -23,20 +24,20 @@
 		size="sm"
 		path={page.url.pathname}
 		nav={page.data.nav}
-		context={page.data.context}
+		app={appContext}
 		layout=""
 	>
 		{#snippet main()}
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />
-			<div class="l:text:md maki:auto">
-				<Footer />
-			</div>
 		{/snippet}
 		{#snippet aside()}
 			<Aside
 				created={markdown.meta.date_created}
 				updated={markdown.meta.date_updated}
 			/>
+		{/snippet}
+		{#snippet footer()}
+			<Footer />
 		{/snippet}
 	</PageRails>
 {/key}

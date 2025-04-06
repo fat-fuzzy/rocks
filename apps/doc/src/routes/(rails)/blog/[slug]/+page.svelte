@@ -6,6 +6,7 @@
 	const {PageRails, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
 
+	let appContext = $derived(page.data.appContext)
 	let post = $derived(page.data.content)
 	let title = $derived(post.title)
 	let description = $derived(post.description)
@@ -36,14 +37,11 @@
 		size="sm"
 		path={page.url.pathname}
 		nav={page.data.nav}
-		context={page.data.context}
+		app={appContext}
 		layout=""
 	>
 		{#snippet main()}
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />
-			<div class="l:text:md maki:auto">
-				<Footer />
-			</div>
 		{/snippet}
 		{#snippet aside()}
 			<Aside
@@ -52,6 +50,9 @@
 				series={seriesData}
 				page={post.index}
 			/>
+		{/snippet}
+		{#snippet footer()}
+			<Footer />
 		{/snippet}
 	</PageRails>
 {/key}

@@ -1,6 +1,11 @@
 /* Scroll container */
 [class*='scroll:'] {
-	block-size: 100%;
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--ink);
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
 }
 

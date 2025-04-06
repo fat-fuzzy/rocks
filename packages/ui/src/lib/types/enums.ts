@@ -16,12 +16,6 @@ export enum UiStatus {
 	error = 'error',
 }
 
-export enum UiSettings {
-	brightness = 'brightness',
-	contrast = 'contrast',
-	locale = 'locale',
-}
-
 export enum UiTextContext {
 	form = 'form',
 	prose = 'prose',
@@ -141,4 +135,18 @@ export enum AriaLiveEnum {
 export enum AriaInvoke {
 	manual = 'manual',
 	auto = 'auto',
+}
+
+export enum Preferences {
+	brightness = 'brightness',
+	contrast = 'contrast',
+	locale = 'locale',
+	cookies = 'cookies',
+}
+
+export enum UiSettings {
+	day = 'day',
+	night = 'night',
+	blend = 'blend',
+	contrast = 'contrast',
 }

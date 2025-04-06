@@ -3,7 +3,7 @@
 	import RcScout from '$lib/ui/RcScout.svelte'
 	import {page} from '$app/state'
 
-	let footerClass = ''
+	let footerClass = 'text:center'
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
@@ -12,14 +12,11 @@
 </script>
 
 <footer class={footerClass}>
-	<details
-		class={`l:burrito:3xl font:md maki:block:2xl ${aboutContainerClass}`}
-		open={footerOpen}
-	>
-		<summary class="ravioli:3xs font:heading color:primary variant:bare">
+	<details class={`font:sm ${aboutContainerClass}`} open={footerOpen}>
+		<summary class="raviolink font:heading variant:outine color:primary">
 			About
 		</summary>
-		<div class="l:stack:2xl">
+		<div class="l:stack:2xl maki:block size:lg">
 			<p>
 				Made with 🩷 by <a
 					href="https://github.com/patiboh"

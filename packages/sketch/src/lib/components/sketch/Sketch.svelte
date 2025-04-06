@@ -24,7 +24,7 @@
 	import actor from './actor.svelte'
 
 	const {Feedback} = ui.blocks
-	const {PageRails} = ui.content
+	const {PageMetro} = ui.content
 
 	let {
 		scene,
@@ -37,13 +37,15 @@
 		layout = 'switcher',
 		breakpoint,
 		dev,
+		mainFooter,
+		context,
 	}: SketchProps = $props()
 
 	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
 	let debug = dev
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | null = $state(null)
-	let context: SceneContext = $state({})
+	let sceneContext: SceneContext = $state({})
 	let title = meta.title
 	let asset = meta.asset
 	let dimensions = meta.dimensions || 'video'
@@ -66,8 +68,8 @@
 	)
 
 	let backgroundClass = background
-		? `l:frame:${dimensions} bg:${background}`
-		: `l:frame:${dimensions}`
+		? `l:frame:${dimensions} scene bg:${background}`
+		: `l:frame:${dimensions} scene`
 
 	let frameClasses = $derived(
 		`canvas ${backgroundClass} ${layer} ${currentState} ${currentAsset}`,
@@ -77,8 +79,8 @@
 		actor.update(SketchEvent.load)
 		if (canvas) {
 			try {
-				context = await scene.main(canvas)
-				scene.update({...context, texture: {filters}})
+				sceneContext = await scene.main(canvas)
+				scene.update({...sceneContext, texture: {filters}})
 				actor.update(SketchEvent.loadOk)
 			} catch (e: unknown) {
 				actor.update(SketchEvent.loadNok)
@@ -152,11 +154,13 @@
 	}
 
 	function updateGeometry(payload: SceneContext) {
-		context.geometry = payload.geometry
-		if (context.camera && payload.camera) {
-			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
+		sceneContext.geometry = payload.geometry
+		if (sceneContext.camera && payload.camera) {
+			sceneContext.camera.fieldOfView = degToRad(
+				payload.camera.fieldOfView ?? 60,
+			)
 		}
-		scene.update({...context, texture: {filters}})
+		scene.update({...sceneContext, texture: {filters}})
 		actor.update(ControlsEvent.update)
 	}
 
@@ -165,12 +169,16 @@
 	}
 
 	function updateCamera(payload: SceneContext) {
-		if (context.camera && payload.camera) {
-			context.camera.fieldOfView = degToRad(payload.camera.fieldOfView ?? 60)
-			context.camera.cameraAngle = degToRad(payload.camera.cameraAngle ?? 0)
+		if (sceneContext.camera && payload.camera) {
+			sceneContext.camera.fieldOfView = degToRad(
+				payload.camera.fieldOfView ?? 60,
+			)
+			sceneContext.camera.cameraAngle = degToRad(
+				payload.camera.cameraAngle ?? 0,
+			)
 		}
-		context.texture = {filters}
-		scene.update(context)
+		sceneContext.texture = {filters}
+		scene.update(sceneContext)
 		actor.update(ControlsEvent.update)
 	}
 
@@ -195,8 +203,8 @@
 
 	function updateTexture(filters: Filters) {
 		try {
-			context.texture = {filters}
-			scene.update(context)
+			sceneContext.texture = {filters}
+			scene.update(sceneContext)
 			if (meta.controls.includes('texture')) {
 				render()
 			}
@@ -226,47 +234,45 @@
 	})
 </script>
 
-<PageRails
+<PageMetro
 	pageName={meta.categories[0]}
 	{title}
 	description={meta.description}
 	path={page.url.pathname}
-	nav={page.data.nav}
-	context={page.data.context}
-	layout=""
+	nav={page.data.pageNav}
+	{context}
 >
 	{#snippet main()}
-		<div class="scene">
-			<div class={frameClasses}>
-				<canvas
-					id={`${id}.canvas`}
-					aria-label={title}
-					data-testid="canvas"
-					bind:this={canvas}
-					inert={actor.getSketchDisabled()}
-				>
-					<p class={`feedback emoji:default ${size} content`}>
-						The canvas element needs JavaScript enabled to display and interact
-						with animations
-					</p>
-				</canvas>
-				{#if actor.feedback.canvas.length}
-					<div class="feedback">
-						{#each actor.feedback.canvas as feedback}
-							<Feedback status={feedback.status} context="code" {size}>
-								{feedback.message}
-							</Feedback>
-						{/each}
-					</div>
-				{/if}
-			</div>
+		<div class={frameClasses}>
+			<canvas
+				id={`${id}.canvas`}
+				aria-label={title}
+				data-testid="canvas"
+				bind:this={canvas}
+				inert={actor.getSketchDisabled()}
+			>
+				<p class={`feedback emoji:default ${size} content`}>
+					The canvas element needs JavaScript enabled to display and interact
+					with animations
+				</p>
+			</canvas>
+			{#if actor.feedback.canvas.length}
+				<div class="feedback">
+					{#each actor.feedback.canvas as feedback}
+						<Feedback status={feedback.status} context="code" {size}>
+							{feedback.message}
+						</Feedback>
+					{/each}
+				</div>
+			{/if}
 		</div>
 		{#if debug}
 			<Debug {meta} context={actor} />
 		{/if}
 	{/snippet}
+
 	{#snippet aside()}
-		<aside class="l:stack size:sm">
+		<div class="l:grid:auto size:sm maki:block w:full">
 			{#if canvas}
 				<Player
 					play={updateCanvas}
@@ -281,12 +287,12 @@
 					{init}
 				/>
 				{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
-					{#if context.geometry && meta.controls.includes('matrix-2d')}
+					{#if sceneContext.geometry && meta.controls.includes('matrix-2d')}
 						<Geometry2D
 							id={`${id}-context-2d`}
 							onupdate={updateGeometry}
 							threshold={breakpoint}
-							context={context.geometry}
+							context={sceneContext.geometry}
 							canvasWidth={canvas.getBoundingClientRect().width}
 							canvasHeight={canvas.getBoundingClientRect().height}
 							disabled={actor.getSketchDisabled()}
@@ -299,12 +305,12 @@
 									onupdate={updateCamera}
 								/>
 							{/if}
-							{#if context.geometry && meta.controls.includes('matrix-3d')}
+							{#if sceneContext.geometry && meta.controls.includes('matrix-3d')}
 								<GeometryControls
 									id={`${id}-geometry-controls`}
 									{canvas}
 									onupdate={updateGeometry}
-									{context}
+									context={sceneContext}
 								/>
 							{/if}
 							{#if meta.controls.includes('texture')}
@@ -320,14 +326,18 @@
 					{/if}
 				{/if}
 			{/if}
-		</aside>
+		</div>
 	{/snippet}
-</PageRails>
+
+	{#snippet footer()}
+		{#if mainFooter}
+			{@render mainFooter()}
+		{/if}
+	{/snippet}
+</PageMetro>
 
 <!-- <article class="l:grid:sketch bp:xs size:sm media"></article> -->
 
 <style lang="scss">
-	@forward '../../styles/scss/grid-sketch.scss';
-	@forward '../../styles/css/grid-sketch.css';
 	@forward '../../styles/css/sketch.css';
 </style>

@@ -5,6 +5,7 @@
 
 	const {PageRails} = ui.content
 
+	let appContext = $derived(page.data.appContext)
 	let markdowns = $state(page.data.markdowns.decisions)
 
 	let title = 'Decision Log'
@@ -19,12 +20,12 @@
 	{description}
 	path={page.url.pathname}
 	nav={page.data.nav}
-	context={page.data.context}
+	app={appContext}
 	layout=""
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">
-			<ul class="l:grid:sm unstyled">
+			<ul class="l:grid:auto size:sm unstyled">
 				{#each markdowns as { meta }}
 					{#if meta.status !== 'draft'}
 						<a
@@ -37,18 +38,18 @@
 				{/each}
 			</ul>
 		</div>
-
-		<Footer />
 	{/snippet}
 	{#snippet aside()}
-		<h2>Tags</h2>
-		<div class="l:text l:grid:sm maki:block">
+		<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
+			Tags
+		</p>
+		<div class="l:grid:auto size:sm maki:block">
 			{#each tags as tag}
-				<details class="bg:netural variant:bare">
-					<summary class="surface:2:neutral font:sm font:heading ravioli:3xs">
+				<details class="bg:netural">
+					<summary class="color:primary font:sm font:heading ravioli:3xs">
 						{tag}
 					</summary>
-					<div class="ravioli:md">
+					<div class="maki:inline size:sm">
 						<ul class="unstyled">
 							{#each markdowns as { meta }}
 								{#if meta.tags.includes(tag)}
@@ -69,5 +70,8 @@
 				</details>
 			{/each}
 		</div>
+	{/snippet}
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageRails>

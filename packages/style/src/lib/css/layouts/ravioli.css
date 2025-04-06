@@ -1,5 +1,4 @@
 [class*='ravioli'] {
-	border-radius: var(--border-radius-base);
 	padding: var(--ui-size);
 }
 

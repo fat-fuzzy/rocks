@@ -1,0 +1,64 @@
+.cannelloni\:inline {
+	padding-inline: var(--ui-size);
+}
+
+.cannelloni\:block {
+	padding-block: var(--ui-size);
+}
+
+[class*='cannelloni:'] {
+	--ratio: var(--size-ratio-md);
+	/* Default range */
+	--ui-size-sm: calc(var(--ui-size) / var(--ratio));
+	--ui-size-lg: calc(var(--ui-size) * var(--ratio));
+}
+
+/* Minor range */
+[class*='cannelloni:'].scale\:minor {
+	--ratio: var(--size-ratio-sm);
+}
+
+/* Major range */
+[class*='cannelloni:'].scale\:major {
+	--ratio: var(--size-ratio-lg);
+}
+
+[class*='cannelloni:'].size\:3xs {
+	/* Base size */
+	--ui-size: var(--size-base-3xs);
+}
+
+[class*='cannelloni:'].size\:2xs {
+	/* Base size */
+	--ui-size: var(--size-base-2xs);
+}
+
+[class*='cannelloni:'].size\:xs {
+	/* Base size */
+	--ui-size: var(--size-base-xs);
+}
+
+[class*='cannelloni:'].size\:sm {
+	/* Base size */
+	--ui-size: var(--size-base-sm);
+}
+
+[class*='cannelloni:'].size\:md {
+	/* Base size */
+	--ui-size: var(--size-base-md);
+}
+
+[class*='cannelloni:'].size\:lg {
+	/* Base size */
+	--ui-size: var(--size-base-lg);
+}
+
+[class*='cannelloni:'].size\:xl {
+	/* Base size */
+	--ui-size: var(--size-base-xl);
+}
+
+[class*='cannelloni:'].size\:2xl {
+	/* Base size */
+	--ui-size: var(--size-base-2xl);
+}

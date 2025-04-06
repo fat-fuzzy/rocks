@@ -23,7 +23,7 @@
 		{formaction}
 		{content}
 	>
-		{#snippet footer()}
+		{#snippet mainFooter()}
 			<Footer />
 		{/snippet}
 	</PlaybookCollection>

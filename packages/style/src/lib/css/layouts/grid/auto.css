@@ -1,0 +1,25 @@
+.l\:grid\:auto > * {
+	/* needed for the flex layout fallback */
+	margin-bottom: var(--grid-gap, var(--gap));
+}
+
+/* We set the margins to 0 and use gap in grid */
+@supports (display: grid) {
+	.l\:grid\:auto > * {
+		inline-size: auto;
+		margin: 0;
+		max-inline-size: 100%;
+	}
+}
+
+/* Basic grid that will automatically create columns if space is available for given column dimensions:
+	- between var(--sidebar-width) and 100% of available width
+	*/
+@supports (width: min(var(--grid-item-size), 100%)) {
+	.l\:grid\:auto {
+		grid-template-columns: repeat(
+			auto-fill,
+			minmax(min(var(--grid-item-size), 100%), 1fr)
+		);
+	}
+}

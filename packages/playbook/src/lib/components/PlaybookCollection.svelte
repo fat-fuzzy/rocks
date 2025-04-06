@@ -28,7 +28,7 @@
 		formaction?: string
 		actionPath?: string
 		children?: Snippet
-		footer?: Snippet
+		mainFooter?: Snippet
 	}
 
 	let {
@@ -43,11 +43,12 @@
 		formaction,
 		actionPath,
 		children,
-		footer,
+		mainFooter,
 	}: Props = $props()
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
-	let {settings} = $derived(playbookActor.app)
+	let appContext = $derived(page.data.appContext)
+	let preferences = $derived(playbookActor.preferences)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
@@ -74,8 +75,8 @@
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
 	let componentNames = $derived(Object.keys(items))
-	//== App settings (user controlled)
-	let brightness = $derived(settings.brightness || '')
+	//== App preferences (user controlled)
+	let brightness = $derived(preferences.brightness || '')
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 	let layoutClass = $derived(
 		category === 'tokens'
@@ -132,7 +133,7 @@
 		hash={page.url.hash}
 		nav={pageNav}
 		size="sm"
-		context={page.data.context}
+		app={appContext}
 		layout=""
 	>
 		{#snippet main()}
@@ -156,10 +157,6 @@
 					{@render categoryElements()}
 				</div>
 			</section>
-
-			{#if footer}
-				{@render footer()}
-			{/if}
 		{/snippet}
 
 		{#snippet aside()}
@@ -169,6 +166,12 @@
 					<PropsDemo {path} meta={content.meta} categories={[category]} />
 				{/key}
 			</div>
+		{/snippet}
+
+		{#snippet footer()}
+			{#if mainFooter}
+				{@render mainFooter()}
+			{/if}
 		{/snippet}
 	</PageRails>
 {:else}

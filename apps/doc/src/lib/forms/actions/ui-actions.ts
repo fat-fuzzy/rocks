@@ -11,9 +11,7 @@ const {
 	DEFAULT_SIDEBAR_REVEAL_STATE,
 } = ui.constants
 const {UiReveal} = ui.forms
-/**
- * TODO validate input
- */
+
 async function handleToggleUiReveal({
 	event,
 	element,
@@ -64,7 +62,6 @@ async function handleToggleUiReveal({
 			success: false,
 			type: element,
 			message: 'Failed to update UI', // TODO: improve / manage error message with intl package,
-			state: currentState.toString(),
 		}
 	}
 }
@@ -80,8 +77,8 @@ async function handleToggleSidebar(event) {
 	})
 }
 
-async function handleToggleSettings(event) {
-	const element = 'settings'
+async function handleToggleAppContext(event) {
+	const element = 'appContext'
 	return handleToggleUiReveal({
 		event,
 		element,
@@ -146,8 +143,8 @@ async function handleToggleRecipes(event) {
 	})
 }
 
-async function handleToggleContext(event) {
-	const element = 'context'
+async function handleTogglePageContext(event) {
+	const element = 'pageContext'
 	return handleToggleUiReveal({
 		event,
 		element,
@@ -204,12 +201,12 @@ async function handleToggleProjects(event) {
 export default {
 	handleToggleSidebar,
 	handleToggleNav,
-	handleToggleSettings,
+	handleToggleAppContext,
 	handleToggleTokens,
 	handleToggleBlocks,
 	handleToggleLayouts,
 	handleToggleRecipes,
-	handleToggleContext,
+	handleTogglePageContext,
 	handleToggleUsage,
 	handleToggleDecisions,
 	handleToggleLearning,

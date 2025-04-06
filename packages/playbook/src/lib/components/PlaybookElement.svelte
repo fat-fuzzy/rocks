@@ -27,7 +27,7 @@
 		formaction?: string
 		actionPath?: string
 		redirect?: string
-		footer: Snippet
+		mainFooter?: Snippet
 	}
 	let {
 		category,
@@ -37,7 +37,7 @@
 		formaction,
 		actionPath,
 		redirect,
-		footer,
+		mainFooter,
 	}: Props = $props()
 
 	let description = $derived(`${title} | Doc`)
@@ -66,13 +66,15 @@
 		recipes: Recipe,
 	}
 	let playbookActor: PlaybookActor = getContext('playbookActor')
+
+	let appContext = $derived(page.data.appContext)
 	let styles = $derived(playbookActor.styles)
-	let {settings} = $derived(playbookActor.app)
+	let preferences = $derived(playbookActor.preferences)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	//== App settings (user controlled)
-	let brightness = $derived(settings.brightness || '')
+	let brightness = $derived(preferences.brightness || '')
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 	//== Layout settings (user controlled)
 	// Container options
@@ -109,7 +111,8 @@
 	hash={page.url.hash}
 	nav={pageNav}
 	size="sm"
-	context={page.data.context}
+	app={appContext}
+	layout=""
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">
@@ -144,10 +147,6 @@
 				</div>
 			</div>
 		</section>
-
-		{#if footer}
-			{@render footer()}
-		{/if}
 	{/snippet}
 
 	{#snippet aside()}
@@ -163,5 +162,11 @@
 				/>
 			{/key}
 		</div>
+	{/snippet}
+
+	{#snippet footer()}
+		{#if mainFooter}
+			{@render mainFooter()}
+		{/if}
 	{/snippet}
 </PageRails>

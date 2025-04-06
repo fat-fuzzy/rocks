@@ -15,10 +15,10 @@
 	const {LayoutRails} = ui.content
 
 	let sidenav = $derived(page.data.sidebar)
-	let appSettings = $derived(page.data.settings)
+	let appContext = $derived(page.data.appContext)
 
-	let brightness = $derived(appSettings.brightness)
-	let contrast = $derived(appSettings.contrast)
+	let brightness = $derived(appContext.brightness)
+	let contrast = $derived(appContext.contrast)
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
@@ -27,8 +27,8 @@
 	)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
-		inputs.switch[0].initial = brightness === 'night' ? 'active' : 'inactive'
-		inputs.switch[1].initial = contrast === 'night' ? 'active' : 'inactive'
+		inputs.display[0].initial = brightness === 'night' ? 'active' : 'inactive'
+		inputs.display[1].initial = contrast === 'night' ? 'active' : 'inactive'
 		return inputs
 	})
 </script>
@@ -38,18 +38,16 @@
 		<Header
 			id="nav"
 			name="nav"
-			label=""
+			label="Menu"
 			path={page.url.pathname}
 			reveal={page.data.nav.reveal}
 			actionPath={page.url.pathname}
 			formaction="toggleNav"
 			dismiss="outside"
-			items={{
-				links,
-				settings,
-			}}
+			main={links}
+			context={settings}
 			breakpoint="xs"
-			app={appSettings}
+			app={appContext}
 		/>
 	</div>
 

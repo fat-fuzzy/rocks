@@ -158,7 +158,7 @@
 	</div>
 
 	<article class="l:side l:stack:md">
-		<div class="bg:primary:000 ravioli:fill layer">
+		<div class="bg:primary:000 ravioli:md variant:fill layer">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
@@ -167,7 +167,7 @@
 				perspiciatis.
 			</p>
 		</div>
-		<div class="bg:primary:000 ravioli:outline">
+		<div class="bg:primary:000 ravioli:md variant:outline">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
@@ -176,7 +176,7 @@
 				perspiciatis.
 			</p>
 		</div>
-		<div class="bg:accent:000 ravioli box:dotted">
+		<div class="bg:accent:000 ravioli:md dotted">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
@@ -185,7 +185,7 @@
 				perspiciatis.
 			</p>
 		</div>
-		<div class="bg:higlight:000 ravioli dotted">
+		<div class="bg:higlight:000 ravioli:md dotted">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>

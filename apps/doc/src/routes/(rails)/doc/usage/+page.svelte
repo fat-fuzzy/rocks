@@ -5,6 +5,7 @@
 
 	const {PageRails} = ui.content
 
+	let appContext = $derived(page.data.appContext)
 	let markdowns = $state(page.data.markdowns.usages)
 	let title = 'Usage'
 	let description =
@@ -16,12 +17,12 @@
 	{description}
 	path={page.url.pathname}
 	nav={page.data.nav}
-	context={page.data.context}
+	app={appContext}
 	layout=""
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">
-			<ul class="l:grid:sm unstyled">
+			<ul class="l:grid:auto size:xs unstyled">
 				{#each markdowns as { meta }}
 					{#if meta.status !== 'draft'}
 						<a
@@ -34,7 +35,8 @@
 				{/each}
 			</ul>
 		</div>
-
+	{/snippet}
+	{#snippet footer()}
 		<Footer />
 	{/snippet}
 </PageRails>

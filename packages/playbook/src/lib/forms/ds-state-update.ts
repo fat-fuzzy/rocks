@@ -33,7 +33,7 @@ export type DsState = {
 	RevealMenu: Settings
 	RevealNav: Settings
 	HeaderRevealNav: Settings
-	HeaderRevealSettings: Settings
+	HeaderRevealContext: Settings
 }
 
 const {UiReveal} = ui.forms
@@ -48,14 +48,14 @@ class DsStateUpdate {
 		RevealMenu,
 		RevealNav,
 		HeaderRevealNav,
-		HeaderRevealSettings,
+		HeaderRevealContext,
 	}: DsState) {
 		this.state = {
 			Reveal: Reveal ?? DEFAULT_REVEAL_STATE,
 			RevealMenu: RevealMenu ?? DEFAULT_REVEAL_STATE,
 			RevealNav: RevealNav ?? DEFAULT_REVEAL_STATE,
 			HeaderRevealNav: HeaderRevealNav ?? DEFAULT_REVEAL_STATE,
-			HeaderRevealSettings: HeaderRevealSettings ?? DEFAULT_REVEAL_STATE,
+			HeaderRevealContext: HeaderRevealContext ?? DEFAULT_REVEAL_STATE,
 		}
 	}
 
@@ -77,7 +77,7 @@ class DsStateUpdate {
 			success = this.toggleSidebarReveal(data)
 		}
 		if (data.has('button-reveal-Header-settings')) {
-			success = this.toggleSettingsReveal(data)
+			success = this.toggleAppContextReveal(data)
 		}
 		return {
 			success,
@@ -126,10 +126,17 @@ class DsStateUpdate {
 		})
 	}
 
-	toggleSettingsReveal(data: FormData) {
+	toggleAppContextReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'Header-settings-reveal',
+			element: 'Header-appContext-reveal',
+		})
+	}
+
+	togglePageContextReveal(data: FormData) {
+		return this.handleToggleUiReveal({
+			data,
+			element: 'pageContext-reveal',
 		})
 	}
 

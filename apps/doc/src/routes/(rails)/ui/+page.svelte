@@ -13,6 +13,7 @@
 
 	const categories = ['tokens', 'blocks', 'layouts', 'recipes']
 
+	let appContext = $derived(page.data.appContext)
 	let content = $derived(page.data.content)
 	let markdowns = $derived(page.data.markdowns)
 	let slug = $derived(content.meta.slug)
@@ -25,7 +26,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	size="sm"
-	context={page.data.context}
+	app={appContext}
 	layout=""
 >
 	{#snippet main()}
@@ -56,10 +57,10 @@
 					/>
 				</PlaybookCollection>
 			{/each}
-			<Footer />
 		</div>
 	{/snippet}
-	{#snippet aside()}
-		<p class="feedback">Some Context</p>
+
+	{#snippet footer()}
+		<Footer />
 	{/snippet}
 </PageRails>

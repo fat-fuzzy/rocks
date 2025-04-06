@@ -7,6 +7,8 @@ import type {
 	NavItem,
 	UiRevealState,
 	UiLayoutProps,
+	Settings,
+	CookiePreferences,
 } from '$types'
 
 type ProseProps = {
@@ -49,11 +51,21 @@ export type PageScrollyProps = PageProps & {
 
 export type PageRailsProps = UiLayoutProps &
 	PageProps & {
-		layout: string
-		main: Snippet
 		nav: NavItem[]
+		main: Snippet
+		details?: Snippet
 		aside?: Snippet
-		context?: UiRevealState
+		app?: {
+			reveal: UiRevealState
+			brightness: string
+			contrast: string
+			language?: string
+			cookies?: CookiePreferences
+		}
+		context?: {
+			reveal: UiRevealState
+			title?: string
+		}
 		footer?: Snippet
 	}
 

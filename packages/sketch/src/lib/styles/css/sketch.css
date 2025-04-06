@@ -81,6 +81,15 @@
 	font-size: calc(var(--fluid-4) * 5);
 }
 
+.scene {
+	margin-inline-end: var(--ui-size-lg)
+}
+
+.debug {
+	margin-block: var(--ui-size-lg);
+	margin-inline-end: var(--ui-size-lg)
+}
+
 
 .scene .feedback {
 	position: absolute;

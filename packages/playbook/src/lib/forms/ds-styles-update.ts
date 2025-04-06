@@ -2,7 +2,7 @@ import ui from '@fat-fuzzy/ui'
 import type {StyleTree} from '$types'
 import StylesApi from '$lib/api/styles.svelte'
 
-const {DEFAULT_APP_SETTINGS, NUMBER_TO_SIZE} = ui.constants
+const {DEFAULT_PREFERENCES, NUMBER_TO_SIZE} = ui.constants
 
 class DsStylesUpdate {
 	api
@@ -12,7 +12,7 @@ class DsStylesUpdate {
 	 */
 	constructor(styles: StyleTree | null = null) {
 		this.api = new StylesApi()
-		this.settings = DEFAULT_APP_SETTINGS
+		this.settings = DEFAULT_PREFERENCES
 		if (styles) {
 			this.api.applyStyles(styles)
 		}
@@ -27,7 +27,7 @@ class DsStylesUpdate {
 			data.has('ui-Header-menu-settings-menu-contrast')
 		) {
 			// TODO: fix this not doing anything
-			// return this.toggleSettingsUpdate(data)
+			// return this.appContextUpdate(data)
 		}
 
 		const styleValues = []
@@ -71,7 +71,7 @@ class DsStylesUpdate {
 		return true
 	}
 
-	toggleSettingsUpdate(data: FormData) {
+	appContextUpdate(data: FormData) {
 		let updated = data
 			.get('ui-Header-menu-settings-menu-brightness')
 			?.toString()

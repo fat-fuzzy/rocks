@@ -106,6 +106,7 @@
   --font-leading-body: 2;
   --font-leading-heading: 1.25;
   --font-leading-nav: 2;
+  --font-leading-neutral: 1;
   --font-leading-ui: 1.25;
   --font-size-2xl: var(--fluid-3);
   --font-size-2xs: var(--fluid--3);
@@ -213,6 +214,7 @@
   --outline-offset-md: 2px;
   --outline-offset-sm: 1.75px;
   --outline-offset-xs: 1.5px;
+  --overlay-height-2xs: 20vh;
   --overlay-height-lg: 80vh;
   --overlay-height-md: 60vh;
   --overlay-height-sm: 40vh;

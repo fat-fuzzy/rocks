@@ -2,7 +2,7 @@
 	import type {RevealMenuProps} from '$types'
 
 	import styleHelper from '$lib/utils/styles.js'
-	import Reveal from '$lib/components/layouts/Reveal.svelte'
+	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	const VARIANT_MATCH: {[key: string]: string} = {
 		outline: 'bare',

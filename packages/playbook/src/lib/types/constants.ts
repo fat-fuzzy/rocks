@@ -4,20 +4,18 @@ const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
 const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'expanded'}
 
-const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
-
 const DEFAULT_DS_STATE: {
 	Reveal: Settings
 	RevealMenu: Settings
 	RevealNav: Settings
 	HeaderRevealNav: Settings
-	HeaderRevealSettings: Settings
+	HeaderRevealContext: Settings
 } = {
 	Reveal: {reveal: 'collapsed'},
 	RevealMenu: {reveal: 'collapsed'},
 	RevealNav: {reveal: 'collapsed'},
 	HeaderRevealNav: {reveal: 'collapsed'},
-	HeaderRevealSettings: {reveal: 'collapsed'},
+	HeaderRevealContext: {reveal: 'collapsed'},
 }
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
@@ -102,7 +100,6 @@ export default {
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,
-	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
 	TRANSITION_REVEAL,
 	NUMBER_TO_SIZE,

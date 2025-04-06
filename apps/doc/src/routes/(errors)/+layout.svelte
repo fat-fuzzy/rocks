@@ -20,10 +20,10 @@
 	}
 
 	let {children}: Props = $props()
-	let appSettings = $derived(page.data.settings)
+	let appContext = $derived(page.data.appContext)
 
-	let brightness = $derived(appSettings.brightness)
-	let contrast = $derived(appSettings.contrast)
+	let brightness = $derived(appContext.brightness)
+	let contrast = $derived(appContext.contrast)
 	let initialBrightness = $derived(
 		brightness === 'night' ? 'active' : 'inactive',
 	)
@@ -39,14 +39,14 @@
 		pageClass === 'page:home' ? 'ravioli:xl' : '',
 	)
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
-	let cookiesPending = $derived(appSettings.consent === undefined)
+	let cookiesPending = $derived(appContext.consent === undefined)
 	let cookiesPartial = $derived(
-		appSettings.consent?.analytics || appSettings.consent?.site,
+		appContext.consent?.analytics || appContext.consent?.site,
 	)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
-		inputs.switch[0].initial = initialBrightness
-		inputs.switch[1].initial = initialContrast
+		inputs.display[0].initial = initialBrightness
+		inputs.display[1].initial = initialContrast
 		return inputs
 	})
 
@@ -64,12 +64,10 @@
 		formaction="toggleNav"
 		position="sticky"
 		placement="top"
-		items={{
-			links,
-			settings,
-		}}
+		main={links}
+		context={settings}
 		breakpoint="sm"
-		app={appSettings}
+		app={appContext}
 	/>
 	{#if children}
 		{@render children()}
@@ -109,6 +107,6 @@
 	<Cookies />
 </Popover>
 
-{#if !dev && appSettings.consent?.analytics}
+{#if !dev && appContext.consent?.analytics}
 	<Beacon />
 {/if}
