@@ -68,6 +68,10 @@
 		display: none;
 	}
 
+	.zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+		block-size: fit-content;
+	}
+
 	.zone\:1 > .navbar > .expanded > ff-reveal,
 	.zone\:1 > .navbar > .collapsed > ff-reveal {
 		position: unset;
