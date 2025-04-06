@@ -34,6 +34,7 @@ body:has(.l\:grid\:metro) {
 			'zone-2  zone-1  zone-1'
 			'zone-3  zone-3  zone-3'
 			'zone-3  zone-3  zone-3'
+			'zone-3  zone-3  zone-3'
 			'zone-3  zone-3  zone-3';
 		grid-template-rows: var(--ui-header-height) auto 1fr;
 	}
@@ -43,6 +44,7 @@ body:has(.l\:grid\:metro) {
 	.l\:grid\:metro {
 		grid-template-areas:
 			'zone-2  zone-1  zone-1'
+			'zone-2  zone-3  zone-3'
 			'zone-2  zone-3  zone-3'
 			'zone-2  zone-3  zone-3'
 			'zone-2  zone-3  zone-3';

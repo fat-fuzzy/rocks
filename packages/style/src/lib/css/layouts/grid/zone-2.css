@@ -12,15 +12,16 @@
 	--max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
 	position: absolute;
 	top: var(--ui-header-height);
+	z-index: var(--layout-z-index-reveal);
 	align-content: center;
-	margin-block-start: 0;
+	margin-block-start: var(--outline-offset-lg);
 	inline-size: var(--sidebar-width);
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--ui-size-sm);
+	border-radius: var(--border-radius-md);
 	box-shadow: var(--shadow-md);
-	z-index: var(--layout-z-index-reveal);
 }
 
 .zone\:2 > nav > form {

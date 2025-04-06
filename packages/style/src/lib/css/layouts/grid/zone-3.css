@@ -6,11 +6,11 @@
 	grid-area: zone-3;
 	grid-template-areas:
 		'zone-main    zone-main    zone-main'
+		'zone-main    zone-main    zone-main'
 		'page-context page-context page-context'
 		'main-footer  main-footer  main-footer';
 	grid-template-columns: subgrid;
 	max-block-size: var(--max-block-size);
-	grid-row: span 3;
 }
 
 .zone\:main {

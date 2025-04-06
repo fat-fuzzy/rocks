@@ -14,22 +14,37 @@
 	align-content: center;
 }
 
-.zone\:1 > .app-context {
-	grid-area: app-context;
-	align-content: center;
-	justify-self: flex-end;
-}
-
 .zone\:1 > .navbar ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	right: var(--ui-size);
 }
 
-.zone\:1 > .app-settings ff-reveal {
+.zone\:1 > .app-context {
+	grid-area: app-context;
+	align-content: center;
+	justify-self: flex-end;
+}
+
+.zone\:1 > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	right: var(--ui-size);
+	left: var(--ui-size);
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-self: flex-end;
+	box-shadow: var(--shadow-md);
+}
+
+.zone\:1 > .app-context.expanded ff-reveal ul {
+	padding: var(--ui-size-sm);
+}
+
+.zone\:1 > .app-context ff-reveal form {
+	display: flex;
+	gap: var(--ui-size-lg);
+	padding-inline-start: var(--ui-size-lg);
 }
 
 .zone\:1 > nav,
@@ -51,11 +66,17 @@
 		display: none;
 	}
 
-	.zone\:1 > nav.expanded > ff-reveal,
-	.zone\:1 > nav.collapsed > ff-reveal {
+	.zone\:1 > .navbar > .expanded > ff-reveal,
+	.zone\:1 > .navbar > .collapsed > ff-reveal {
+		position: unset;
 		margin: 0 auto;
 		z-index: var(--layout-z-index-reveal);
 		border-radius: var(--border-radius-null);
 		box-shadow: unset;
+	}
+
+	.zone\:1 > .app-context ff-reveal {
+		position: unset;
+		padding: 0;
 	}
 }
