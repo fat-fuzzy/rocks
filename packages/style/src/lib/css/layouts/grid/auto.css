@@ -1,3 +1,8 @@
+.l\:grid\:auto > * {
+	/* needed for the flex layout fallback */
+	margin-bottom: var(--grid-gap, var(--gap));
+}
+
 /* We set the margins to 0 and use gap in grid */
 @supports (display: grid) {
 	.l\:grid\:auto > * {
