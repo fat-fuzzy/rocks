@@ -82,7 +82,8 @@
 }
 
 .scene {
-	margin-inline-end: var(--ui-size-lg)
+	margin-inline-end: var(--ui-size-lg);
+	margin-inline-start: var(--outline-offset-lg);
 }
 
 .debug {
