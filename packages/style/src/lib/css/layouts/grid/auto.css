@@ -1,3 +1,12 @@
+/* We set the margins to 0 and use gap in grid */
+@supports (display: grid) {
+	.l\:grid\:auto > * {
+		inline-size: auto;
+		margin: 0;
+		max-inline-size: 100%;
+	}
+}
+
 /* Basic grid that will automatically create columns if space is available for given column dimensions:
 	- between var(--sidebar-width) and 100% of available width
 	*/

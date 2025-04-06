@@ -19,16 +19,6 @@
 [class*=':grid'][class*=':end'] > :only-child {
 	order: -1;
 }
-
-/* We set the margins to 0 and use gap in grid */
-@supports (display: grid) {
-	[class*='l:grid'] > * {
-		inline-size: auto;
-		margin: 0;
-		max-inline-size: 100%;
-	}
-}
-
 /* flex layout fallback */
 [class*=':grid'][class*=':end'] {
 	flex-direction: row-reverse;

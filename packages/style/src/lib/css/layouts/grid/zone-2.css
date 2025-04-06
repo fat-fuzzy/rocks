@@ -6,7 +6,7 @@
 	grid-area: zone-2;
 	grid-template-areas: 'side-nav';
 	align-content: center;
-	padding-inline-start: var(--ui-size);
+	max-block-size: var(--ui-header-height);
 }
 
 .zone\:2 > .expanded > ff-reveal {

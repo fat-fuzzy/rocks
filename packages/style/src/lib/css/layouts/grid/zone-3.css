@@ -32,12 +32,10 @@
 .zone\:3 {
 	.page-header {
 		grid-area: page-header;
-		padding-inline: var(--ui-size);
 	}
 
 	.page-main {
 		grid-area: page-main;
-		padding-inline: var(--ui-size);
 		overflow: unset;
 		block-size: 100%;
 		inline-size: 100%;
@@ -118,6 +116,7 @@
 
 		.page-context > .l\:reveal\:auto {
 			inline-size: var(--sidebar-width);
+			max-inline-size: 100%;
 		}
 
 		.page-context > .l\:reveal\:auto > ff-reveal {
@@ -155,11 +154,6 @@
 		}
 	}
 
-	.zone\:3.scroll\:y {
-		overflow: hidden;
-		block-size: calc(100vh - var(--ui-header-height));
-	}
-
 	.zone\:main {
 		grid-template-areas:
 			'page-header   page-header'
@@ -176,13 +170,13 @@
 @media screen and (min-width: 935px) {
 	.zone\:3 {
 		grid-template-areas:
-			'zone-page  zone-page  page-context'
-			'zone-page  zone-page  page-context'
+			'zone-page    zone-page    page-context'
+			'zone-page    zone-page    page-context'
 			'main-footer  main-footer  page-context';
+		grid-template-columns: subgrid;
 	}
 
 	.zone\:main {
-		grid-area: zone-page;
 		grid-template-areas:
 			'page-header   page-header   page-details'
 			'page-main     page-main     page-main';
