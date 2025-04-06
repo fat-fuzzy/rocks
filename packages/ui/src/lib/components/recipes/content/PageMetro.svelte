@@ -26,6 +26,7 @@
 	let currentPage = $derived(pageName ?? title)
 
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
+	let pageHeaderClass = $derived(dimensions ? '' : 'l:text:md maki:auto')
 	let contextReval = $derived(context?.reveal || '')
 	let contextTitle = $derived(context?.title || 'On this Page')
 
@@ -44,7 +45,7 @@
 
 <div class="l:grid zone:page">
 	<main {id} class="l:grid zone:main">
-		<div class="page-header">
+		<div class={`page-header ${pageHeaderClass}`}>
 			<PageHeader {...header} size={size as UiSize} {justify} />
 		</div>
 
@@ -85,7 +86,8 @@
 		{/if}
 	</div>
 </div>
-<div class="main-footer l:text:md maki:auto">
+
+<div class="main-footer l:text:lg maki:auto">
 	{#if footer}
 		{@render footer()}
 	{/if}

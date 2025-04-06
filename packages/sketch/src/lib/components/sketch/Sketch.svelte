@@ -241,6 +241,7 @@
 	path={page.url.pathname}
 	nav={page.data.pageNav}
 	{context}
+	{dimensions}
 >
 	{#snippet main()}
 		<div class={frameClasses}>
