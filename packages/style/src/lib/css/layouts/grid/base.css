@@ -9,11 +9,6 @@
 	grid-gap: var(--grid-gap, var(--gap));
 }
 
-[class*='l:grid'] > * {
-	/* needed for the flex layout fallback */
-	margin-bottom: var(--grid-gap, var(--gap));
-}
-
 /* Fix cell alignment in an end aligned grid */
 [class*=':grid'][class*=':end'] > :empty,
 [class*=':grid'][class*=':end'] > :only-child {
