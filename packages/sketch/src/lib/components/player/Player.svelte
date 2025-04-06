@@ -56,23 +56,7 @@
 	})
 </script>
 
-<menu {id} class={`player l:flex justify:center size:${size}`}>
-	<li>
-		<Button
-			id="stop"
-			name="stop"
-			{color}
-			{variant}
-			{size}
-			value="stop"
-			asset="rect"
-			shape="square"
-			onclick={updatePlayer}
-			disabled={actor.getStopDisabled()}
-		>
-			Stop
-		</Button>
-	</li>
+<menu {id} class={`player l:switcher:xs size:${size}`}>
 	<li>
 		{#key actor.playState}
 			<Switch
@@ -82,7 +66,6 @@
 				states={actor.playSwitch}
 				{color}
 				{size}
-				shape="round"
 				layout="stack"
 				initial={actor.playState}
 				disabled={actor.getPlayDisabled()}
@@ -101,15 +84,25 @@
 			{size}
 			value="clear"
 			asset="clear"
-			shape="square"
 			onclick={updatePlayer}
 			disabled={actor.getClearDisabled()}
 		>
 			Clear
 		</Button>
 	</li>
+	<li>
+		<Button
+			id="stop"
+			name="stop"
+			{color}
+			{variant}
+			{size}
+			value="stop"
+			asset="rect"
+			onclick={updatePlayer}
+			disabled={actor.getStopDisabled()}
+		>
+			Stop
+		</Button>
+	</li>
 </menu>
-
-<style>
-	@import '../../styles/css/player.css';
-</style>
