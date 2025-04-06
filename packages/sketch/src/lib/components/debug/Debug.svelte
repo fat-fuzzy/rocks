@@ -18,11 +18,11 @@
 	})
 </script>
 
-<details class={`font:md`}>
-	<summary class="ravioli:3xs font:heading codebuglor:primary variant:bare">
+<details>
+	<summary class="ravioli:3xs font:heading font:sm color:primary variant:bare">
 		Debug
 	</summary>
-	<div class="l:stack:2xl maki:block size:lg scroll:x">
+	<div class="maki:block scroll:x">
 		<table class="text:center font:sm" data-testid="debug-table">
 			<thead class="ravioli:3xs surface:3:primary">
 				<tr>
@@ -102,7 +102,3 @@
 		</table>
 	</div>
 </details>
-
-<style>
-	@import '../../styles/css/debug.css';
-</style>
