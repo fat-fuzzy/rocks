@@ -56,7 +56,7 @@
 	})
 </script>
 
-<menu {id} class={`player l:switcher:xs size:${size}`}>
+<menu {id} class={`player l:grid:auto size:${size}`}>
 	<li>
 		{#key actor.playState}
 			<Switch

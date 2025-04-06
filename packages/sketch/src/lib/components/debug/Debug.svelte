@@ -18,7 +18,7 @@
 	})
 </script>
 
-<details>
+<details class="debug">
 	<summary class="ravioli:3xs font:heading font:sm color:primary variant:bare">
 		Debug
 	</summary>

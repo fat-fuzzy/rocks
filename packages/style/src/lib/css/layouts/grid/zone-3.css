@@ -98,18 +98,16 @@
 			'zone-main     zone-main      page-context'
 			'zone-main     zone-main      page-context'
 			'zone-main     zone-main      page-context';
+		overflow: hidden;
 	}
 
 	.zone\:main {
-		block-size: 100%;
-		max-block-size: unset;
+		max-block-size: var(--max-block-size);
 		overflow: hidden auto;
 	}
 
 	.zone\:3 {
 		.page-main {
-			block-size: 100%;
-			max-block-size: var(--max-block-size);
 			padding-block-end: var(--ui-header-height);
 		}
 
@@ -119,13 +117,14 @@
 
 		.page-context {
 			position: unset;
-			inline-size: var(--sidebar-width);
-			max-inline-size: 100%;
+			inline-size: 100%;
+			max-inline-size: unset;
 			block-size: fit-content;
+			padding-inline: 0;
 			max-block-size: var(--max-block-size);
-			padding-inline: var(--outline-offset-lg) var(--ui-size);
 			padding-block-end: var(--ui-header-height);
 			overflow: hidden auto;
+			scrollbar-gutter: stable;
 		}
 
 		.page-context > .l\:reveal\:auto {
