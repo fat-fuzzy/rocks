@@ -42,47 +42,46 @@
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
 
-<main {id} class="l:grid zone:main">
-	<div class="page-header">
-		<PageHeader {...header} size={size as UiSize} {justify} />
-	</div>
+<div class="l:grid zone:page">
+	<main {id} class="l:grid zone:main">
+		<div class="page-header">
+			<PageHeader {...header} size={size as UiSize} {justify} />
+		</div>
 
-	<div class="page-main">
-		{@render main()}
-	</div>
-</main>
+		<div class="page-main">
+			{@render main()}
+		</div>
+	</main>
 
-<div id={`context-${id}`} class={`page-context ${mediaClass}`}>
-	{#if nav && nav.length > 0}
-		<PageNav id="page-nav" {hash} items={nav} />
-	{/if}
-	{#if context && aside}
-		<Reveal
-			id="pageContext"
-			name="pageContext"
-			element="aside"
-			auto={true}
-			reveal={contextReval}
-			label={contextTitle}
-			position={false}
-			place="left"
-			color="primary"
-			justify="evenly"
-			font="sm"
-			size="sm"
-			scroll="y"
-			variant="outline"
-			breakpoint="xs"
-			formaction="togglePageContext"
-			dismiss="outside"
-		>
-			<div class="l:stack:2xs">
+	<div id={`context-${id}`} class={`page-context ${mediaClass}`}>
+		{#if nav && nav.length > 0}
+			<PageNav id="page-nav" {hash} items={nav} />
+		{/if}
+		{#if context && aside}
+			<Reveal
+				id="pageContext"
+				name="pageContext"
+				element="aside"
+				auto={true}
+				reveal={contextReval}
+				label={contextTitle}
+				position={false}
+				place="left"
+				color="primary"
+				justify="evenly"
+				font="sm"
+				size="sm"
+				scroll="y"
+				variant="outline"
+				breakpoint="xs"
+				formaction="togglePageContext"
+				dismiss="outside"
+			>
 				{@render aside()}
-			</div>
-		</Reveal>
-	{/if}
+			</Reveal>
+		{/if}
+	</div>
 </div>
-
 <div class="main-footer">
 	{#if footer}
 		{@render footer()}

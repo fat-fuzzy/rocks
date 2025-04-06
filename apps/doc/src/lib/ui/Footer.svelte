@@ -12,11 +12,8 @@
 </script>
 
 <footer class={footerClass}>
-	<details
-		class={`font:md maki:block:2xl ${aboutContainerClass}`}
-		open={footerOpen}
-	>
-		<summary class="ravioli:3xs font:heading color:primary variant:bare">
+	<details class={`font:sm ${aboutContainerClass}`} open={footerOpen}>
+		<summary class="raviolink font:heading variant:outine color:primary">
 			About
 		</summary>
 		<div class="l:stack:2xl maki:block size:lg">
