@@ -25,7 +25,7 @@
 .zone\:main {
 	grid-area: zone-main;
 	grid-template-areas:
-		'page-header    page-header'
+		'page-header    page-nav'
 		'page-main      page-main';
 }
 
@@ -49,9 +49,14 @@
 
 	.page-context {
 		grid-area: page-context;
+		grid-template-rows: subgrid;
 		position: relative;
 		inline-size: 100%;
 		max-inline-size: var(--metro-sidebar-sm);
+	}
+
+	.page-nav {
+		grid-area: page-nav;
 	}
 
 	.page-context .tags {
@@ -95,10 +100,16 @@
 			'zone-main     zone-main      page-context';
 	}
 
+	.zone\:main {
+		block-size: 100%;
+		max-block-size: unset;
+		overflow: hidden auto;
+	}
+
 	.zone\:3 {
 		.page-main {
-			min-block-size: calc(100vh - 6 * var(--ui-header-height));
-			max-block-size: calc(100vh - 2 * var(--ui-header-height));
+			block-size: 100%;
+			max-block-size: var(--max-block-size);
 			padding-block-end: var(--ui-header-height);
 		}
 
@@ -107,11 +118,14 @@
 		}
 
 		.page-context {
+			position: unset;
 			inline-size: var(--sidebar-width);
 			max-inline-size: 100%;
 			block-size: fit-content;
+			max-block-size: var(--max-block-size);
 			padding-inline: var(--outline-offset-lg) var(--ui-size);
 			padding-block-end: var(--ui-header-height);
+			overflow: hidden auto;
 		}
 
 		.page-context > .l\:reveal\:auto {
@@ -159,6 +173,7 @@
 			'page-header   page-header'
 			'page-main     page-main';
 		grid-column: span 2;
+		block-size: 100%;
 	}
 
 	.zone\:main.scroll\:y {
