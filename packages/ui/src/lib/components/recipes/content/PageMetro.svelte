@@ -48,15 +48,18 @@
 			<PageHeader {...header} size={size as UiSize} {justify} />
 		</div>
 
+		{#if nav && nav.length > 0}
+			<div class="page-nav">
+				<PageNav id="page-nav" {hash} items={nav} />
+			</div>
+		{/if}
+
 		<div class="page-main">
 			{@render main()}
 		</div>
 	</main>
 
 	<div id={`context-${id}`} class={`page-context ${mediaClass}`}>
-		{#if nav && nav.length > 0}
-			<PageNav id="page-nav" {hash} items={nav} />
-		{/if}
 		{#if context && aside}
 			<Reveal
 				id="pageContext"

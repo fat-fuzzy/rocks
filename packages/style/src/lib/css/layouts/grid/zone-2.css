@@ -7,6 +7,8 @@
 	grid-template-areas: 'side-nav';
 	align-content: center;
 	max-block-size: var(--ui-header-height);
+	padding-inline: var(--ui-size);
+	inline-size: var(--sidebar-width);
 }
 
 .zone\:2 > .expanded > ff-reveal {
@@ -16,7 +18,7 @@
 	z-index: var(--layout-z-index-reveal);
 	align-content: center;
 	margin-block-start: var(--outline-offset-lg);
-	inline-size: var(--sidebar-width);
+	min-inline-size: var(--sidebar-width);
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
 	padding-block: var(--ui-size-sm);
@@ -34,35 +36,29 @@
 }
 
 @media screen and (min-width: 620px) {
-	.zone\:2 > form {
-		inline-size: var(--sidebar-width);
-	}
-
-	.zone\:2.expanded > ff-reveal {
-		position: unset;
-		inline-size: calc(100vw - 6 * var(--ui-size) - var(--sidebar-width));
+	.zone\:2 > .expanded > ff-reveal {
+		top: var(--ui-header-height);
+		inline-size: calc(100vw - 2 * var(--ui-size) - var(--sidebar-width));
 		max-inline-size: calc(100% - 2 * var(--ui-size));
 		z-index: var(--layout-z-index-reveal);
 	}
 }
 
 @media screen and (min-width: 935px) {
-	.zone\:2,
-	.zone\:2 > ff-reveal {
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
-	}
-
-	.zone\:2.expanded > form {
-		inline-size: calc(
-			var(--sidebar-width) - var(--ui-size) + var(--outline-offset-sm)
-		);
-	}
-
-	.zone\:2 > ff-reveal.expanded,
-	.zone\:2 > ff-reveal.collapsed {
-		margin-block-start: var(--outline-offset-lg);
+	.zone\:2 {
+		align-content: start;
+		inline-size: fit-content;
 		position: unset;
+		max-block-size: var(--max-block-size);
+		margin-block-start: var(--ui-size-sm);
+	}
+
+	.zone\:2 > .expanded > ff-reveal,
+	.zone\:2 > .collapsed > ff-reveal {
+		position: static;
+		max-block-size: unset;
+		margin-block-start: var(--outline-offset-lg);
+		inline-size: 100%;
 		block-size: fit-content;
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));
 		max-inline-size: var(--sidebar-width);
