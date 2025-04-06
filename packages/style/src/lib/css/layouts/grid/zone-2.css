@@ -7,7 +7,7 @@
 	grid-template-areas: 'side-nav';
 	align-content: center;
 	max-block-size: var(--ui-header-height);
-	padding-inline: var(--ui-size);
+	padding-inline-start: var(--ui-size-sm);
 	inline-size: var(--sidebar-width);
 }
 
