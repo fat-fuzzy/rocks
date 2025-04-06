@@ -41,27 +41,25 @@
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
-			<div class="l:text l:grid:auto size:xs">
+			<div class="tags l:grid:auto size:2xs maki:block">
 				{#each tags as tag}
 					<details class="bg:netural">
 						<summary
-							class="l:flex nowrap color:accent font:xs font:heading ravioli:3xs"
+							class="l:flex nowrap color:accent font:xs font:heading raviolink"
 						>
 							{tag}
 						</summary>
-						<div class="maki:block size:xs">
-							<ul class="unstyled">
-								{#each sketches as { slug, asset, title, tags }}
-									{#if tags.includes(tag)}
-										<li class={`size:sm emoji:${asset}`}>
-											<a class="font:sm" href={`${path}/${slug}`}>
-												{title}
-											</a>
-										</li>
-									{/if}
-								{/each}
-							</ul>
-						</div>
+						<ul class="unstyled">
+							{#each sketches as { slug, asset, title, tags }}
+								{#if tags.includes(tag)}
+									<li class={`size:sm emoji:${asset}`}>
+										<a class="font:sm" href={`${path}/${slug}`}>
+											{title}
+										</a>
+									</li>
+								{/if}
+							{/each}
+						</ul>
 					</details>
 				{/each}
 			</div>
