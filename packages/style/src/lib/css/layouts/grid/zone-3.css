@@ -3,6 +3,7 @@
  * Contains main content page context and footer
  */
 .zone\:3 {
+	--max-block-size: calc(100vh - var(--ui-header-height));
 	grid-area: zone-3;
 	grid-template-areas:
 		'zone-page    zone-page'
@@ -27,6 +28,7 @@
 	grid-template-areas:
 		'page-header    page-nav'
 		'page-main      page-main';
+	padding-block-end: var(--ui-header-height);
 }
 
 .zone\:3 {
