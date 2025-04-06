@@ -272,59 +272,61 @@
 	{/snippet}
 
 	{#snippet aside()}
-		{#if canvas}
-			<Player
-				play={updateCanvas}
-				pause={updateCanvas}
-				clear={updateCanvas}
-				stop={updateCanvas}
-				initial={actor.getPlayButtonState()}
-				{color}
-				size="2xs"
-				{variant}
-				disabled={actor.hasError() ?? undefined}
-				{init}
-			/>
-			{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
-				{#if sceneContext.geometry && meta.controls.includes('matrix-2d')}
-					<Geometry2D
-						id={`${id}-context-2d`}
-						onupdate={updateGeometry}
-						threshold={breakpoint}
-						context={sceneContext.geometry}
-						canvasWidth={canvas.getBoundingClientRect().width}
-						canvasHeight={canvas.getBoundingClientRect().height}
-						disabled={actor.getSketchDisabled()}
-					/>
-				{:else}
-					<div class={`l:${layout}:${size} maki:block`}>
-						{#if meta.controls.includes('camera')}
-							<CameraControls
-								id={`${id}-camera-controls`}
-								onupdate={updateCamera}
-							/>
-						{/if}
-						{#if sceneContext.geometry && meta.controls.includes('matrix-3d')}
-							<GeometryControls
-								id={`${id}-geometry-controls`}
-								{canvas}
-								onupdate={updateGeometry}
-								context={sceneContext}
-							/>
-						{/if}
-						{#if meta.controls.includes('texture')}
-							{#key resetEvent}
-								<TextureControls
-									id={`${id}-texture-controls`}
-									filters={meta.filters ?? DEFAULT_FILTERS}
-									onupdate={updateTexture}
+		<div class="l:switcher:xs th:sm">
+			{#if canvas}
+				<Player
+					play={updateCanvas}
+					pause={updateCanvas}
+					clear={updateCanvas}
+					stop={updateCanvas}
+					initial={actor.getPlayButtonState()}
+					{color}
+					size="2xs"
+					{variant}
+					disabled={actor.hasError() ?? undefined}
+					{init}
+				/>
+				{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
+					{#if sceneContext.geometry && meta.controls.includes('matrix-2d')}
+						<Geometry2D
+							id={`${id}-context-2d`}
+							onupdate={updateGeometry}
+							threshold={breakpoint}
+							context={sceneContext.geometry}
+							canvasWidth={canvas.getBoundingClientRect().width}
+							canvasHeight={canvas.getBoundingClientRect().height}
+							disabled={actor.getSketchDisabled()}
+						/>
+					{:else}
+						<div class={`l:${layout}:${size} maki:block`}>
+							{#if meta.controls.includes('camera')}
+								<CameraControls
+									id={`${id}-camera-controls`}
+									onupdate={updateCamera}
 								/>
-							{/key}
-						{/if}
-					</div>
+							{/if}
+							{#if sceneContext.geometry && meta.controls.includes('matrix-3d')}
+								<GeometryControls
+									id={`${id}-geometry-controls`}
+									{canvas}
+									onupdate={updateGeometry}
+									context={sceneContext}
+								/>
+							{/if}
+							{#if meta.controls.includes('texture')}
+								{#key resetEvent}
+									<TextureControls
+										id={`${id}-texture-controls`}
+										filters={meta.filters ?? DEFAULT_FILTERS}
+										onupdate={updateTexture}
+									/>
+								{/key}
+							{/if}
+						</div>
+					{/if}
 				{/if}
 			{/if}
-		{/if}
+		</div>
 	{/snippet}
 
 	{#snippet footer()}
@@ -337,7 +339,5 @@
 <!-- <article class="l:grid:sketch bp:xs size:sm media"></article> -->
 
 <style lang="scss">
-	@forward '../../styles/scss/grid-sketch.scss';
-	@forward '../../styles/css/grid-sketch.css';
 	@forward '../../styles/css/sketch.css';
 </style>
