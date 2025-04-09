@@ -17,7 +17,7 @@
 .zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: var(--ui-size);
+	left: var(--ui-size-sm);
 	right: var(--ui-size);
 }
 
@@ -31,7 +31,6 @@
 .zone\:1 > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: var(--ui-size);
 	right: var(--ui-size);
 	display: flex;
 	align-items: center;

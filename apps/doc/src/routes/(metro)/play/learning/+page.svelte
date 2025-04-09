@@ -44,9 +44,7 @@
 			<div class="tags l:grid:auto size:2xs maki:block">
 				{#each tags as tag}
 					<details class="bg:netural">
-						<summary
-							class="l:flex nowrap color:accent font:xs font:heading raviolink"
-						>
+						<summary class="color:accent font:xs font:heading raviolink">
 							{tag}
 						</summary>
 						<ul class="unstyled">

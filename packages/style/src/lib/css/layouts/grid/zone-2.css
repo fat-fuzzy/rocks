@@ -8,7 +8,6 @@
 	align-content: center;
 	max-block-size: var(--ui-header-height);
 	padding-inline-start: var(--ui-size-sm);
-	inline-size: var(--sidebar-width);
 }
 
 .zone\:2 > .expanded > ff-reveal {
@@ -18,21 +17,13 @@
 	z-index: var(--layout-z-index-reveal);
 	align-content: center;
 	margin-block-start: var(--outline-offset-lg);
-	min-inline-size: var(--sidebar-width);
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--ui-size-sm);
+	margin-inline-start: var(--outline-offset-md);
 	border-radius: var(--border-radius-md);
 	box-shadow: var(--shadow-md);
-}
-
-.zone\:2 > nav > form {
-	inline-size: 100%;
-}
-
-.zone\:2 > nav > form [aria-expanded] {
-	inline-size: 100%;
 }
 
 @media screen and (min-width: 620px) {
@@ -51,6 +42,7 @@
 		position: unset;
 		max-block-size: var(--max-block-size);
 		margin-block-start: var(--ui-size-sm);
+		inline-size: var(--sidebar-width);
 	}
 
 	.zone\:2 > .expanded > ff-reveal,
@@ -64,6 +56,7 @@
 		max-inline-size: var(--sidebar-width);
 		box-shadow: unset;
 		padding: 0;
+		margin-inline-start: 0;
 	}
 
 	.zone\:2 > nav.collapsed,

@@ -87,7 +87,7 @@
 	</div>
 </div>
 
-<div class="main-footer l:text:lg maki:auto">
+<div class="main-footer">
 	{#if footer}
 		{@render footer()}
 	{/if}

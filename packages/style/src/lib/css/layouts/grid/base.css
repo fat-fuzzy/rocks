@@ -14,6 +14,7 @@
 [class*=':grid'][class*=':end'] > :only-child {
 	order: -1;
 }
+
 /* flex layout fallback */
 [class*=':grid'][class*=':end'] {
 	flex-direction: row-reverse;
