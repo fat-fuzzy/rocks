@@ -26,7 +26,7 @@
 	let currentPage = $derived(pageName ?? title)
 
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
-	let pageHeaderClass = $derived(dimensions ? '' : 'l:text:md maki:auto')
+	let mainClass = $derived(dimensions ? '' : 'l:text:md maki:auto')
 	let contextReval = $derived(context?.reveal || '')
 	let contextTitle = $derived(context?.title || 'On this Page')
 
@@ -43,9 +43,9 @@
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
 
-<div class="l:grid zone:page">
-	<main {id} class="l:grid zone:main">
-		<div class={`page-header ${pageHeaderClass}`}>
+<div class="l:grid zone:page scroll:y">
+	<main {id} class={`l:grid zone:main ${mainClass}`}>
+		<div class="page-header">
 			<PageHeader {...header} size={size as UiSize} {justify} />
 		</div>
 
@@ -60,7 +60,7 @@
 		</div>
 	</main>
 
-	<div id={`context-${id}`} class={`page-context ${mediaClass}`}>
+	<div id={`context-${id}`} class={`page-context ${mediaClass} scroll:y`}>
 		{#if context && aside}
 			<Reveal
 				id="pageContext"
@@ -83,6 +83,9 @@
 			>
 				{@render aside()}
 			</Reveal>
+		{/if}
+		{#if aside}
+			{@render aside()}
 		{/if}
 	</div>
 </div>

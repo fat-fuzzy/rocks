@@ -60,7 +60,7 @@
 </script>
 
 <form
-	class={`l:${layout}:${size} th:${threshold} maki:block geometry ${backgroundClass}`}
+	class={`l:grid:auto size:xs maki:block geometry ${backgroundClass}`}
 	name="geometry-update"
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 >

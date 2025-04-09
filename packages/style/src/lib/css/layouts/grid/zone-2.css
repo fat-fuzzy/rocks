@@ -53,15 +53,26 @@
 		inline-size: 100%;
 		block-size: fit-content;
 		max-block-size: calc(100vh - 2 * var(--ui-header-height));
-		max-inline-size: var(--sidebar-width);
 		box-shadow: unset;
 		padding: 0;
 		margin-inline-start: 0;
+		overflow: hidden auto;
 	}
 
-	.zone\:2 > nav.collapsed,
-	.zone\:2 > nav > ff-reveal.collapsed {
+	.zone\:2:has(nav.collapsed) {
 		--sidebar-width: var(--layout-sidebar-collapsed);
 		max-inline-size: var(--sidebar-width);
+	}
+
+	.zone\:2 > nav > form,
+	.zone\:2 > nav > form [aria-expanded] {
+		inline-size: 100%;
+		max-inline-size: calc(100% - 2 * var(--outline-offset-lg));
+	}
+
+	.zone\:2 > nav.expanded > form [aria-expanded] {
+		max-inline-size: calc(
+			100% - 2 * var(--ui-size) - 2 * var(--outline-offset-lg)
+		);
 	}
 }
