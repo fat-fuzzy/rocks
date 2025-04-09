@@ -1,6 +1,13 @@
 footer {
 	text-align: center;
-	padding-block-start: var(--size-sm);
-	padding-block-end: var(--size-sm);
 	background-color: var(--shade);
+	border-color: var(--shade);
+}
+
+footer summary {
+	border-color: var(--shade);
+}
+
+footer [open] summary {
+	border-color: var(--shade);
 }
