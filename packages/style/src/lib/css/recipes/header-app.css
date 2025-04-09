@@ -33,7 +33,7 @@
 .header-nav.l\:flex[class*='size'] {
 	--justify: space-evenly;
 	--gap: var(--size-base-xs);
-	gap: var(--gap);
+	gap: 0;
 
 	li {
 		background-color: inherit;
