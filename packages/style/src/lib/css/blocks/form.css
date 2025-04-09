@@ -53,7 +53,7 @@ textarea {
 }
 
 label > input {
-	max-width: 100%;
+	max-inline-size: 100%;
 }
 
 label > input[type='radio'],
@@ -92,8 +92,13 @@ label:hover > [type='file'] {
 
 /* Display range input step labels */
 
+input[type='range'] {
+	padding-inline: 0;
+}
+
 label:has([type='range']) {
 	line-height: 1;
+	padding-inline: var(--outline-offset-md);
 }
 
 [type='range'][list='markers'] + datalist {
