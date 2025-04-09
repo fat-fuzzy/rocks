@@ -13,9 +13,7 @@
 
 <footer class={footerClass}>
 	<details class={`font:sm ${aboutContainerClass}`} open={footerOpen}>
-		<summary class="raviolink font:heading variant:outine color:primary">
-			About
-		</summary>
+		<summary class="raviolink font:heading"> About </summary>
 		<div class="l:stack:2xl maki:block size:lg">
 			<p>
 				Made with 🩷 by <a
