@@ -10,7 +10,6 @@
 	background-color: inherit;
 	inline-size: 100%;
 	max-inline-size: var(--text-inline-size);
-	padding-block-end: var(--ui-size-lg);
 
 	ol,
 	ul {
