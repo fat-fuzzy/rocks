@@ -27,7 +27,7 @@
 	layout=""
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} {html} size="md" margin="auto" />
+		<EscapeHtml id={slug} {html} size="md" />
 	{/snippet}
 	{#snippet footer()}
 		<Footer />

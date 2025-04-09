@@ -11,8 +11,7 @@
 		'zone-page    zone-page'
 		'zone-page    zone-page'
 		'main-footer  main-footer';
-	grid-template-rows: subgrid;
-	max-block-size: var(--max-block-size);
+	padding-block-end: calc(2 * var(--ui-header-height));
 }
 
 .zone\:page {
@@ -22,8 +21,6 @@
 		'zone-main      zone-main'
 		'page-context   page-context';
 	grid-template-rows: subgrid;
-	max-block-size: var(--max-block-size);
-	padding-block-end: calc(2 * var(--ui-header-height));
 	grid-gap: var(--grid-gap);
 }
 
@@ -39,29 +36,24 @@
 .zone\:3 {
 	.page-header {
 		grid-area: page-header;
-		padding-inline: var(--ui-size);
 	}
 
 	.page-main {
 		grid-area: page-main;
-		overflow: unset;
-		block-size: 100%;
+		block-size: fit-content;
 		inline-size: 100%;
 		max-inline-size: var(--max-inline-size);
 		margin: 0 auto;
 	}
 
-	.page-main > section {
-		scroll-margin-block: var(--size-base-2xl);
-	}
-
 	.page-context {
 		grid-area: page-context;
-		grid-template-rows: subgrid;
 		position: relative;
 		inline-size: 100%;
-		scroll-margin-block-end: var(--size-base-2xl);
 		padding-inline: var(--ui-size);
+		block-size: fit-content;
+		max-block-size: var(--overlay-height-sm);
+		padding-block-end: var(--ui-header-height);
 	}
 
 	.page-nav {
@@ -112,6 +104,7 @@
 	.zone\:main {
 		max-block-size: var(--max-block-size);
 		overflow: hidden auto;
+		scrollbar-width: thin;
 	}
 
 	.zone\:3.scroll\:y {
@@ -136,7 +129,7 @@
 
 		.page-context {
 			position: unset;
-			max-inline-size: var(--sidebar-width);
+			inline-size: var(--sidebar-width);
 			block-size: fit-content;
 			padding-inline: 0;
 			max-block-size: var(--max-block-size);
@@ -191,10 +184,10 @@
 
 	.zone\:main {
 		grid-template-areas:
-			'page-header   page-header   page-details'
+			'page-header   page-header   page-header'
 			'page-main     page-main     page-main';
 		grid-template-columns: subgrid;
-		grid-template-rows: subgrid;
+		grid-template-rows: auto 1fr;
 	}
 
 	.zone\:3 {
