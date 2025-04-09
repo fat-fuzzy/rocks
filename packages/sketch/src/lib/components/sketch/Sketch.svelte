@@ -292,7 +292,7 @@
 						<Geometry2D
 							id={`${id}-context-2d`}
 							onupdate={updateGeometry}
-							threshold={breakpoint}
+							threshold="2xs"
 							context={sceneContext.geometry}
 							canvasWidth={canvas.getBoundingClientRect().width}
 							canvasHeight={canvas.getBoundingClientRect().height}

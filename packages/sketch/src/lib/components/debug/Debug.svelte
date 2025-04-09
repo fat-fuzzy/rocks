@@ -22,7 +22,7 @@
 	<summary class="ravioli:3xs font:heading font:sm color:primary variant:bare">
 		Debug
 	</summary>
-	<div class="maki:block scroll:x">
+	<div class="maki:block scroll:x text:center">
 		<table class="text:center font:sm" data-testid="debug-table">
 			<thead class="ravioli:3xs surface:3:primary">
 				<tr>
