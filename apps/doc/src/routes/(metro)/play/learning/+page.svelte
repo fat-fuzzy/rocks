@@ -33,15 +33,14 @@
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.pageNav}
-	context={pageContext}
 	layout=""
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} {html} size="md" margin="auto" />
+		<EscapeHtml id={slug} {html} size="md" />
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
-			<div class="tags l:grid:auto size:2xs maki:block">
+			<div class="tags l:grid:auto size:xs maki:block">
 				{#each tags as tag}
 					<details class="bg:netural">
 						<summary class="color:accent font:xs font:heading raviolink">
