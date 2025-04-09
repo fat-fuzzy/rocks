@@ -60,7 +60,7 @@
 		</div>
 	</main>
 
-	<div id={`context-${id}`} class={`page-context ${mediaClass}`}>
+	<div id={`context-${id}`} class={`page-context ${mediaClass} scroll:y`}>
 		{#if context && aside}
 			<Reveal
 				id="pageContext"
@@ -83,6 +83,9 @@
 			>
 				{@render aside()}
 			</Reveal>
+		{/if}
+		{#if aside}
+			{@render aside()}
 		{/if}
 	</div>
 </div>
