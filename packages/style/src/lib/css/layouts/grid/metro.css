@@ -36,6 +36,5 @@ body:has(.l\:grid\:metro) {
 			'zone-2  zone-3  zone-3'
 			'zone-2  zone-3  zone-3';
 		grid-template-columns: auto 1fr auto;
-		grid-template-rows: var(--ui-header-height) 1fr auto;
 	}
 }

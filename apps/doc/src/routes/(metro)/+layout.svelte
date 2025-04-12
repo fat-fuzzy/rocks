@@ -63,7 +63,7 @@
 			dismiss="outside"
 		/>
 	</div>
-	<div class="l:grid zone:3 scroll:y">
+	<div class="l:grid zone:3">
 		{#if children}
 			{@render children()}
 		{:else}

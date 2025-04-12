@@ -43,7 +43,10 @@
 .l\:frame\:feature > img,
 .l\:frame\:feature > video,
 .l\:frame\:feature > canvas {
-	max-block-size: calc(100vh - var(--ui-header-height) - var(--gap));
+	max-block-size: var(
+		--max-block-size,
+		calc(100vh - var(--ui-header-height) - var(--gap))
+	);
 	inline-size: auto;
 	margin-left: auto;
 	margin-right: auto;
