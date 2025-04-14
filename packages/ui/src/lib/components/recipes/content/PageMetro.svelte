@@ -42,7 +42,7 @@
 {#snippet headerMain()}
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
-<div class="l:grid zone:page scroll:y">
+<div class="l:grid zone:page">
 	<main {id} class={`l:grid zone:main ${mainClass} scroll:y`}>
 		<div class="page-header">
 			<PageHeader {...header} size={size as UiSize} {justify} />
@@ -56,6 +56,10 @@
 
 		<div class="page-main">
 			{@render main()}
+
+			{#if footer}
+				{@render footer()}
+			{/if}
 		</div>
 	</main>
 
@@ -87,10 +91,4 @@
 			{@render aside()}
 		{/if}
 	</div>
-</div>
-
-<div class="main-footer">
-	{#if footer}
-		{@render footer()}
-	{/if}
 </div>

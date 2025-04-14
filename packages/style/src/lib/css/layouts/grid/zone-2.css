@@ -5,13 +5,11 @@
 .zone\:2 {
 	grid-area: zone-2;
 	grid-template-areas: 'side-nav';
-	align-content: center;
-	max-block-size: var(--ui-header-height);
+	align-items: center;
 	padding-inline-start: var(--ui-size-sm);
 }
 
 .zone\:2 > .expanded > ff-reveal {
-	--max-block-size: calc(100vh - var(--ui-header-height) - var(--ui-size));
 	position: absolute;
 	top: var(--ui-header-height);
 	z-index: var(--layout-z-index-reveal);

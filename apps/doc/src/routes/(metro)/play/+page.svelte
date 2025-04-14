@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
-	import Footer from '$lib/ui/Footer.svelte'
 
 	const {PageMetro} = ui.content
 	const {EscapeHtml} = ui.headless
@@ -28,8 +27,5 @@
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" />
-	{/snippet}
-	{#snippet footer()}
-		<Footer />
 	{/snippet}
 </PageMetro>

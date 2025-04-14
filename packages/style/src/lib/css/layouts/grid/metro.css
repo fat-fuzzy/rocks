@@ -3,13 +3,13 @@
  */
 
 html:has(.l\:grid\:metro) {
-	block-size: 100%;
+	height: -webkit-fill-available;
 }
 
 body:has(.l\:grid\:metro) {
-	inline-size: 100vw;
-	block-size: 100vh;
-	overflow: hidden;
+	min-block-size: 100vh;
+	/* mobile viewport bug fix */
+	min-block-size: -webkit-fill-available;
 }
 
 .l\:grid\:metro {
@@ -17,12 +17,13 @@ body:has(.l\:grid\:metro) {
 	--max-inline-size: calc(100vw - 2 * var(--ui-size));
 	inline-size: 100vw;
 	block-size: 100vh;
+	block-size: -webkit-fill-available;
 	grid-template-areas:
 		'zone-2   zone-1  zone-1'
 		'zone-3   zone-3  zone-3'
 		'zone-3   zone-3  zone-3'
 		'zone-3   zone-3  zone-3'
-		'zone-3   zone-3  zone-3';
+		'zone-4   zone-4  zone-4';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) auto 1fr auto auto;
 }
@@ -34,7 +35,7 @@ body:has(.l\:grid\:metro) {
 			'zone-2  zone-3  zone-3'
 			'zone-2  zone-3  zone-3'
 			'zone-2  zone-3  zone-3'
-			'zone-2  zone-3  zone-3';
+			'zone-2  zone-4  zone-4';
 		grid-template-columns: auto 1fr auto;
 	}
 }

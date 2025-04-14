@@ -1,0 +1,21 @@
+/**
+ * ZONE 4
+ * Contains main footer and cookies settings access
+ */
+.zone\:4 {
+	grid-area: zone-4;
+	.main-footer {
+		grid-area: main-footer;
+		grid-template-areas: 'main-footer   main-footer   main-footer';
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+		padding-inline: var(--ui-size);
+		padding-block: 0 var(--ui-size);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.zone\:4 {
+		grid-template-areas: 'main-footer';
+	}
+}

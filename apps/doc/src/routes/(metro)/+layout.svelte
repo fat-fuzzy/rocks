@@ -4,6 +4,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
+	import Footer from '$lib/ui/Footer.svelte'
 
 	const {RevealNav} = ui.recipes
 	const {HeaderMetro} = ui.drafts
@@ -17,6 +18,9 @@
 	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
+	let sketchClasses = $derived(
+		page.data.id && page.data.slug ? 'zone:sketch' : '',
+	)
 
 	let brightness = $derived(appContext.brightness)
 	let contrast = $derived(appContext.contrast)
@@ -63,11 +67,14 @@
 			dismiss="outside"
 		/>
 	</div>
-	<div class="l:grid zone:3">
+	<div class={`l:grid zone:3 scroll:y ${sketchClasses}`}>
 		{#if children}
 			{@render children()}
 		{:else}
 			<p class="feedback bare emoji:default">Coming Soon!</p>
 		{/if}
+	</div>
+	<div class="l:grid zone:4">
+		<Footer />
 	</div>
 </LayoutMetro>

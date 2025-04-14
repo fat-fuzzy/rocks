@@ -1,62 +1,69 @@
 /**
  * ZONE 3
- * Contains main content page context and footer
+ * Contains main content page context
  */
 .zone\:3 {
 	--grid-gap: 0;
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
 	grid-area: zone-3;
 	grid-template-areas:
-		'zone-page    zone-page'
-		'zone-page    zone-page'
-		'zone-page    zone-page'
-		'main-footer  main-footer';
-	grid-template-rows: subgrid;
+		'zone-page    zone-page    zone-page'
+		'zone-page    zone-page    zone-page'
+		'zone-page    zone-page    zone-page';
+	grid-template-columns: subgrid;
+
+	/**
+ * ZONE Sketch
+ * Contains canvas with controls
+ */
+	&.zone\:sketch {
+		grid-template-rows: subgrid;
+	}
 }
 
 .zone\:page {
 	grid-area: zone-page;
 	grid-template-areas:
-		'zone-main      zone-main'
-		'zone-main      zone-main'
-		'page-context   page-context';
+		'zone-main      zone-main     zone-main'
+		'zone-main      zone-main     zone-main'
+		'page-context   page-context  page-context';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
 	grid-gap: var(--grid-gap);
-	max-block-size: 100%;
+	align-items: start;
 }
 
 .zone\:main {
 	grid-area: zone-main;
 	grid-template-areas:
-		'page-header    page-header'
-		'page-main      page-main';
+		'page-header    page-header    page-header'
+		'page-main      page-main      page-main';
+	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	grid-gap: var(--grid-gap);
+	max-block-size: var(--max-block-size);
 }
 
 .zone\:3 {
 	.page-header {
 		grid-area: page-header;
 		padding-inline: var(--ui-size);
+		grid-row: span 1;
 	}
 
 	.page-main {
 		grid-area: page-main;
-		block-size: fit-content;
-		max-block-size: var(--overlay-height-lg);
-		inline-size: 100%;
 		margin: 0 auto;
 		padding-inline: var(--ui-size);
-		padding-block-end: calc(2 * var(--ui-header-height));
+		max-inline-size: var(--max-inline-size);
 	}
 
 	.page-context {
 		grid-area: page-context;
 		position: relative;
 		inline-size: 100%;
-		block-size: fit-content;
-		max-block-size: 100%;
 		padding-inline: var(--ui-size);
-		padding-block-end: calc(2 * var(--ui-header-height));
+		padding-block-end: var(--ui-header-height);
+		max-block-size: var(--overlay-height-sm);
 	}
 
 	.page-nav {
@@ -65,31 +72,7 @@
 
 	.page-context .tags {
 		inline-size: 100%;
-		max-inline-size: var(100vw - var(--ui-size));
-		align-content: flex-start;
-	}
-
-	.page-context > .l\:reveal\:auto.expanded > ff-reveal {
-		display: flex;
-		inline-size: 100%;
-		block-size: fit-content;
-		max-block-size: var(--overlay-height-sm);
-	}
-
-	.page-context form:first-of-type [aria-expanded] {
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
-	}
-
-	.page-context form > * {
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
-	}
-
-	.main-footer {
-		grid-area: main-footer;
-		padding-inline: var(--ui-size);
-		padding-block: 0 var(--ui-size);
+		max-inline-size: var(--max-inline-size);
 	}
 }
 
@@ -111,13 +94,8 @@
 		grid-template-rows: auto 1fr;
 	}
 
-	.zone\:3.scroll\:y {
-		overflow: unset;
-	}
-
 	.zone\:3 {
 		overflow: unset;
-
 		.page-header {
 			padding-inline: var(--ui-size) calc(2 * var(--ui-size));
 		}
@@ -127,16 +105,12 @@
 			padding-block-end: var(--ui-header-height);
 		}
 
-		.page-main footer {
-			padding-block-end: var(--ui-header-height);
-		}
-
 		.page-context {
 			--sidebar-width: var(--layout-sidebar-sm);
 			position: unset;
 			inline-size: var(--sidebar-width);
 			block-size: fit-content;
-			padding-inline: 0;
+			padding-inline: 0 var(--ui-size);
 			max-block-size: var(--max-block-size);
 			padding-block-end: var(--ui-header-height);
 			overflow: hidden auto;
@@ -168,13 +142,7 @@
 		grid-template-areas:
 			'page-header   page-header'
 			'page-main     page-main';
-		grid-column: span 2;
 		block-size: 100%;
-	}
-
-	.zone\:main.scroll\:y {
-		min-block-size: unset;
-		block-size: max-content;
 	}
 }
 
@@ -183,7 +151,7 @@
 		grid-template-areas:
 			'zone-page    zone-page    page-context'
 			'zone-page    zone-page    page-context'
-			'main-footer  main-footer  page-context';
+			'zone-page    zone-page    page-context';
 		grid-template-columns: subgrid;
 	}
 
@@ -199,9 +167,15 @@
 		.page-context .tags {
 			max-inline-size: var(--sidebar-width);
 		}
-	}
 
-	.page-context {
-		--sidebar-width: var(--layout-sidebar-sm);
+		.page-main {
+			margin: 0;
+			padding-inline: var(--ui-size);
+		}
+
+		.page-context {
+			--sidebar-width: var(--layout-sidebar-sm);
+			padding-inline: var(--ui-size) var(--outline-offset-lg);
+		}
 	}
 }
