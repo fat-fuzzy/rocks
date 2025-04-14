@@ -40,6 +40,7 @@
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	grid-gap: var(--grid-gap);
+	max-block-size: var(--max-block-size);
 }
 
 .zone\:3 {
@@ -53,6 +54,7 @@
 		grid-area: page-main;
 		margin: 0 auto;
 		padding-inline: var(--ui-size);
+		max-inline-size: var(--max-inline-size);
 	}
 
 	.page-context {
@@ -61,6 +63,7 @@
 		inline-size: 100%;
 		padding-inline: var(--ui-size);
 		padding-block-end: var(--ui-header-height);
+		max-block-size: var(--overlay-height-sm);
 	}
 
 	.page-nav {
@@ -69,22 +72,7 @@
 
 	.page-context .tags {
 		inline-size: 100%;
-		max-inline-size: var(100vw - var(--ui-size));
-	}
-
-	.page-context > .l\:reveal\:auto.expanded > ff-reveal {
-		display: flex;
-		inline-size: 100%;
-	}
-
-	.page-context form:first-of-type [aria-expanded] {
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
-	}
-
-	.page-context form > * {
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
+		max-inline-size: var(--max-inline-size);
 	}
 }
 
@@ -114,10 +102,6 @@
 
 		.page-main {
 			padding-inline: var(--ui-size) calc(2 * var(--ui-size));
-			padding-block-end: var(--ui-header-height);
-		}
-
-		.page-main footer {
 			padding-block-end: var(--ui-header-height);
 		}
 
@@ -158,13 +142,7 @@
 		grid-template-areas:
 			'page-header   page-header'
 			'page-main     page-main';
-		grid-column: span 2;
 		block-size: 100%;
-	}
-
-	.zone\:main.scroll\:y {
-		min-block-size: unset;
-		block-size: max-content;
 	}
 }
 
@@ -173,7 +151,7 @@
 		grid-template-areas:
 			'zone-page    zone-page    page-context'
 			'zone-page    zone-page    page-context'
-			'main-footer  main-footer  page-context';
+			'zone-page    zone-page    page-context';
 		grid-template-columns: subgrid;
 	}
 

@@ -267,9 +267,6 @@
 				</div>
 			{/if}
 		</div>
-		{#if debug}
-			<Debug {meta} context={actor} />
-		{/if}
 	{/snippet}
 
 	{#snippet aside()}
@@ -331,6 +328,9 @@
 	{/snippet}
 
 	{#snippet footer()}
+		{#if debug}
+			<Debug {meta} context={actor} />
+		{/if}
 		{#if mainFooter}
 			{@render mainFooter()}
 		{/if}

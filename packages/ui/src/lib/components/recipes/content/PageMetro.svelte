@@ -56,6 +56,10 @@
 
 		<div class="page-main">
 			{@render main()}
+
+			{#if footer}
+				{@render footer()}
+			{/if}
 		</div>
 	</main>
 
@@ -87,10 +91,4 @@
 			{@render aside()}
 		{/if}
 	</div>
-</div>
-
-<div class="main-footer">
-	{#if footer}
-		{@render footer()}
-	{/if}
 </div>
