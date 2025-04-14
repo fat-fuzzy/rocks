@@ -4,6 +4,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
+	import Footer from '$lib/ui/Footer.svelte'
 
 	const {RevealNav} = ui.recipes
 	const {HeaderMetro} = ui.drafts
@@ -69,5 +70,8 @@
 		{:else}
 			<p class="feedback bare emoji:default">Coming Soon!</p>
 		{/if}
+	</div>
+	<div class="l:grid zone:4">
+		<Footer />
 	</div>
 </LayoutMetro>
