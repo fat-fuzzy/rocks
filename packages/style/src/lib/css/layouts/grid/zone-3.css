@@ -62,7 +62,6 @@
 
 @media screen and (min-width: 620px) {
 	.zone\:page {
-		grid-area: zone-page;
 		grid-template-areas:
 			'zone-main     zone-main      page-context'
 			'zone-main     zone-main      page-context'
@@ -74,11 +73,13 @@
 		max-block-size: var(--max-block-size);
 		overflow: hidden auto;
 		scrollbar-width: thin;
-		grid-template-rows: auto 1fr;
 	}
 
 	.zone\:3 {
-		overflow: unset;
+		&.zone\:sketch {
+			grid-template-rows: auto 1fr auto;
+		}
+
 		.page-header {
 			padding-inline: var(--ui-size) calc(2 * var(--ui-size));
 		}
@@ -136,12 +137,23 @@
 			'zone-page    zone-page    page-context'
 			'zone-page    zone-page    page-context';
 		grid-template-columns: subgrid;
+
+		&.zone\:sketch {
+			grid-template-rows: auto 1fr auto;
+		}
+	}
+
+	.zone\:page {
+		grid-template-areas: 'zone-main';
+		grid-template-columns: subgrid;
+		grid-column: span 2;
+		grid-row: span 3;
 	}
 
 	.zone\:main {
 		grid-template-areas:
-			'page-header   page-header   page-header'
-			'page-main     page-main     page-main';
+			'page-header'
+			'page-main';
 		grid-template-columns: subgrid;
 		grid-template-rows: auto 1fr;
 	}
