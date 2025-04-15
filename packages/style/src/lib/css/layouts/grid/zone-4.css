@@ -4,6 +4,7 @@
  */
 .zone\:4 {
 	grid-area: zone-4;
+
 	.main-footer {
 		grid-area: main-footer;
 		grid-template-areas: 'main-footer   main-footer   main-footer';
@@ -16,6 +17,8 @@
 
 @media screen and (min-width: 620px) {
 	.zone\:4 {
-		grid-template-areas: 'main-footer';
+		.main-footer {
+			grid-template-areas: 'main-footer ......';
+		}
 	}
 }

@@ -70,6 +70,7 @@
 		block-size: fit-content;
 	}
 
+	.zone\:1 > .app-context.expanded ff-reveal,
 	.zone\:1 > .navbar > .expanded > ff-reveal,
 	.zone\:1 > .navbar > .collapsed > ff-reveal {
 		position: unset;

@@ -10,6 +10,7 @@
 		'zone-page    zone-page    zone-page'
 		'zone-page    zone-page    zone-page';
 	grid-template-columns: subgrid;
+	align-content: flex-start;
 
 	/**
  * ZONE Sketch
@@ -28,8 +29,7 @@
 		'page-context   page-context  page-context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	grid-gap: var(--grid-gap);
-	align-items: start;
+	padding-inline: var(--ui-size);
 }
 
 .zone\:main {
@@ -39,40 +39,24 @@
 		'page-main      page-main      page-main';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	grid-gap: var(--grid-gap);
-	max-block-size: var(--max-block-size);
 }
 
 .zone\:3 {
 	.page-header {
 		grid-area: page-header;
-		padding-inline: var(--ui-size);
-		grid-row: span 1;
 	}
 
 	.page-main {
 		grid-area: page-main;
-		margin: 0 auto;
-		padding-inline: var(--ui-size);
-		max-inline-size: var(--max-inline-size);
 	}
 
 	.page-context {
 		grid-area: page-context;
 		position: relative;
-		inline-size: 100%;
-		padding-inline: var(--ui-size);
-		padding-block-end: var(--ui-header-height);
-		max-block-size: var(--overlay-height-sm);
 	}
 
 	.page-nav {
 		grid-area: page-nav;
-	}
-
-	.page-context .tags {
-		inline-size: 100%;
-		max-inline-size: var(--max-inline-size);
 	}
 }
 
@@ -83,8 +67,7 @@
 			'zone-main     zone-main      page-context'
 			'zone-main     zone-main      page-context'
 			'zone-main     zone-main      page-context';
-		overflow: hidden;
-		grid-template-columns: 1fr 1fr auto;
+		grid-template-columns: subgrid;
 	}
 
 	.zone\:main {
