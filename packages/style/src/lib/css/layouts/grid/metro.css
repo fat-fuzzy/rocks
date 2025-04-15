@@ -10,6 +10,11 @@ body:has(.l\:grid\:metro) {
 	min-block-size: 100vh;
 	/* mobile viewport bug fix */
 	min-block-size: -webkit-fill-available;
+	overflow: hidden;
+}
+
+.app:has(.l\:grid\:metro) {
+	overflow: hidden;
 }
 
 .l\:grid\:metro {
@@ -25,6 +30,7 @@ body:has(.l\:grid\:metro) {
 		'zone-4   zone-4  zone-4';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) auto 1fr auto auto;
+	overflow: hidden;
 }
 
 @media screen and (min-width: 935px) {
@@ -36,5 +42,6 @@ body:has(.l\:grid\:metro) {
 			'zone-2  zone-3  zone-3'
 			'zone-2  zone-4  ......';
 		grid-template-columns: auto 1fr auto;
+		overflow: hidden;
 	}
 }
