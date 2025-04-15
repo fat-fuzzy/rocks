@@ -26,9 +26,6 @@
 	let currentPage = $derived(pageName ?? title)
 
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
-	let mainClass = $derived(dimensions ? '' : 'l:text:md maki:auto')
-	let contextReval = $derived(context?.reveal || '')
-	let contextTitle = $derived(context?.title || 'On this Page')
 
 	let header = $derived({
 		title,
@@ -43,7 +40,7 @@
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
 <div class="l:grid zone:page">
-	<main {id} class={`l:grid zone:main ${mainClass} scroll:y`}>
+	<main {id} class="l:grid zone:main">
 		<div class="page-header">
 			<PageHeader {...header} size={size as UiSize} {justify} />
 		</div>
@@ -64,29 +61,6 @@
 	</main>
 
 	<div id={`context-${id}`} class={`page-context ${mediaClass} scroll:y`}>
-		{#if context && aside}
-			<Reveal
-				id="pageContext"
-				name="pageContext"
-				element="aside"
-				auto={true}
-				reveal={contextReval}
-				label={contextTitle}
-				position={false}
-				place="left"
-				color="primary"
-				justify="evenly"
-				font="sm"
-				size="sm"
-				scroll="y"
-				variant="outline"
-				breakpoint="xs"
-				formaction="togglePageContext"
-				dismiss="outside"
-			>
-				{@render aside()}
-			</Reveal>
-		{/if}
 		{#if aside}
 			{@render aside()}
 		{/if}
