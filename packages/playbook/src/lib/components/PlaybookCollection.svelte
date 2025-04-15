@@ -12,7 +12,7 @@
 	import {page} from '$app/state'
 
 	const {EscapeHtml} = ui.headless
-	const {PageRails} = ui.content
+	const {PageMetro} = ui.content
 	const {Magic} = ui.blocks
 
 	type Props = {
@@ -47,7 +47,7 @@
 	}: Props = $props()
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
-	let appContext = $derived(page.data.appContext)
+	let pageContext = $derived(page.data.pageContext)
 	let preferences = $derived(playbookActor.preferences)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
@@ -100,7 +100,7 @@
 		>
 			<a
 				href={`${link}/${name}`}
-				class="title ravioli:sm size:sm l:flex emoji:link surface:1:primary align:center"
+				class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 			>
 				<svelte:element this={`h${String(depth)}`} class="link font:sm">
 					{name}
@@ -126,18 +126,17 @@
 {/snippet}
 
 {#if isPage}
-	<PageRails
+	<PageMetro
 		{title}
 		{description}
 		path={page.url.pathname}
-		hash={page.url.hash}
 		nav={pageNav}
 		size="sm"
-		app={appContext}
+		context={pageContext}
 		layout=""
 	>
 		{#snippet main()}
-			<div class="l:text:md maki:auto">
+			<div class="l:text:md">
 				<h2 id="doc">Doc</h2>
 			</div>
 			<EscapeHtml
@@ -148,35 +147,27 @@
 				element="section"
 			/>
 			<section id="playbook" class="maki:block size:2xl">
-				<div class="l:text:md maki:auto size:xl">
+				<div class="l:text:md size:xl">
 					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
 						<h2 class="text:center">Playbook</h2>
 					</Magic>
 				</div>
-				<div class={`l:text:md maki:auto ${layoutClass}`}>
+				<div class={`l:text:md ${layoutClass}`}>
 					{@render categoryElements()}
 				</div>
 			</section>
 		{/snippet}
 
 		{#snippet aside()}
-			<div class="l:stack:2xs">
-				{#key category}
-					<PropsDoc meta={content.meta} />
-					<PropsDemo {path} meta={content.meta} categories={[category]} />
-				{/key}
-			</div>
+			{#key category}
+				<PropsDoc meta={content.meta} />
+				<PropsDemo {path} meta={content.meta} categories={[category]} />
+			{/key}
 		{/snippet}
-
-		{#snippet footer()}
-			{#if mainFooter}
-				{@render mainFooter()}
-			{/if}
-		{/snippet}
-	</PageRails>
+	</PageMetro>
 {:else}
-	<section class="l:text:lg">
-		<svelte:element this={`h${String(titleDepth)}`} class="font:lg">
+	<section class="l:text:md">
+		<svelte:element this={`h${String(titleDepth)}`}>
 			{category}
 		</svelte:element>
 		{#if children}

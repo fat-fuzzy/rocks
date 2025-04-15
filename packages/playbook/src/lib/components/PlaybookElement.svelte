@@ -14,7 +14,7 @@
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
-	const {PageRails} = ui.content
+	const {PageMetro} = ui.content
 	const {Magic} = ui.blocks
 
 	const {EscapeHtml} = ui.headless
@@ -67,7 +67,7 @@
 	}
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 
-	let appContext = $derived(page.data.appContext)
+	let pageContext = $derived(page.data.pageContext)
 	let styles = $derived(playbookActor.styles)
 	let preferences = $derived(playbookActor.preferences)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
@@ -103,19 +103,17 @@
 	let SpecifiedElement = $derived(categoryItems[category][title])
 </script>
 
-<PageRails
-	pageName="UI"
+<PageMetro
 	{title}
 	{description}
 	{path}
-	hash={page.url.hash}
 	nav={pageNav}
 	size="sm"
-	app={appContext}
+	context={pageContext}
 	layout=""
 >
 	{#snippet main()}
-		<div class="l:text:md maki:auto">
+		<div class="l:text:md">
 			<h2 id="doc">Doc</h2>
 		</div>
 		<EscapeHtml
@@ -127,7 +125,7 @@
 		/>
 
 		<section id="playbook" class="maki:block size:2xl">
-			<div class="l:text:lg maki:auto size:xl">
+			<div class="l:text:lg size:xl">
 				<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
 					<h2 class="w:full text:center">Playbook</h2>
 				</Magic>
@@ -150,23 +148,15 @@
 	{/snippet}
 
 	{#snippet aside()}
-		<div class="l:stack:2xs">
-			{#key category}
-				<PropsDoc meta={content.meta} />
-				<PropsDemo
-					{path}
-					{actionPath}
-					{redirect}
-					meta={content.meta}
-					categories={[category]}
-				/>
-			{/key}
-		</div>
+		{#key category}
+			<PropsDoc meta={content.meta} />
+			<PropsDemo
+				{path}
+				{actionPath}
+				{redirect}
+				meta={content.meta}
+				categories={[category]}
+			/>
+		{/key}
 	{/snippet}
-
-	{#snippet footer()}
-		{#if mainFooter}
-			{@render mainFooter()}
-		{/if}
-	{/snippet}
-</PageRails>
+</PageMetro>
