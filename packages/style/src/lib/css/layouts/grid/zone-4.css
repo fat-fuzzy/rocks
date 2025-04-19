@@ -5,7 +5,6 @@
 .zone\:4 {
 	grid-area: zone-4;
 	grid-template-areas: 'main-footer';
-	grid-template-rows: subgrid;
 	block-size: fit-content;
 
 	.main-footer {
@@ -13,6 +12,5 @@
 		grid-area: main-footer;
 		padding-inline: var(--ui-size);
 		padding-block: 0 var(--ui-size);
-		grid-template-rows: subgrid;
 	}
 }
