@@ -67,7 +67,7 @@
 			dismiss="outside"
 		/>
 	</div>
-	<div class={`l:grid zone:3 scroll:y ${sketchClasses}`}>
+	<div class={`l:grid zone:3 ${sketchClasses}`}>
 		{#if children}
 			{@render children()}
 		{:else}

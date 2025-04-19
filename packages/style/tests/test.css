@@ -2,8 +2,7 @@
 Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palettes
 */
 
-@import '/src/css/tokens/tokens.css';
-@import '/src/css/core/index.css';
+@import 'dist/main.css';
 @layer demo.usage {
 	h1 {
 		font-size: 2rem;
