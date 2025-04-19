@@ -39,30 +39,25 @@
 {#snippet headerMain()}
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
-<div class="l:grid zone:page">
-	<main {id} class="l:grid zone:main">
-		<div class="page-header">
-			<PageHeader {...header} size={size as UiSize} {justify} />
-		</div>
+<main {id} class="l:grid zone:main scroll:y">
+	<div class="page-header">
+		<PageHeader {...header} size={size as UiSize} {justify} />
+	</div>
 
-		{#if nav && nav.length > 0}
-			<div class="page-nav">
-				<PageNav id="page-nav" {hash} items={nav} />
-			</div>
-		{/if}
+	<div class="page-main">
+		{@render main()}
 
-		<div class="page-main">
-			{@render main()}
-
-			{#if footer}
-				{@render footer()}
-			{/if}
-		</div>
-	</main>
-
-	<div id={`context-${id}`} class={`page-context ${mediaClass} scroll:y`}>
-		{#if aside}
-			{@render aside()}
+		{#if footer}
+			{@render footer()}
 		{/if}
 	</div>
+</main>
+
+<div id={`context-${id}`} class={`l:grid page-context scroll:y ${mediaClass}`}>
+	{#if nav && nav.length > 0}
+		<PageNav id="page-nav" {hash} items={nav} />
+	{/if}
+	{#if aside}
+		{@render aside()}
+	{/if}
 </div>

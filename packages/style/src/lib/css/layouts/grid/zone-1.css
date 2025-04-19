@@ -6,6 +6,8 @@
 .zone\:1 {
 	grid-area: zone-1;
 	grid-template-areas: 'navbar	app-context';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
 }
 
 .zone\:1 > .navbar {
@@ -16,7 +18,7 @@
 .zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: var(--ui-size-sm);
+	left: var(--ui-size);
 	right: var(--ui-size);
 }
 
@@ -24,7 +26,6 @@
 	grid-area: app-context;
 	align-content: center;
 	justify-self: flex-end;
-	padding-inline-end: var(--ui-size);
 }
 
 .zone\:1 > .app-context.expanded ff-reveal {
@@ -87,9 +88,5 @@
 		align-items: center;
 		justify-content: flex-end;
 		gap: var(--ui-size-sm);
-	}
-
-	.zone\:1 > .app-context {
-		inline-size: 100%;
 	}
 }
