@@ -270,7 +270,7 @@
 	{/snippet}
 
 	{#snippet aside()}
-		<div class="l:grid:auto size:sm maki:block w:full">
+		<div class="maki:block w:full">
 			{#if canvas}
 				<Player
 					play={updateCanvas}
