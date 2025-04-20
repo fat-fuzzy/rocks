@@ -11,10 +11,11 @@
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Recipe from './Recipe.svelte'
+	import Raw from './Raw.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
-	const {PageMetro} = ui.content
+	const {PageMetro, PageMain} = ui.content
 	const {Magic} = ui.blocks
 
 	const {EscapeHtml} = ui.headless
@@ -56,6 +57,7 @@
 		blocks: ui.blocks,
 		layouts: ui.layouts,
 		recipes: ui.recipes,
+		raw: ui.raw,
 	}
 
 	// TODO: fix types
@@ -64,6 +66,7 @@
 		blocks: Block,
 		layouts: Layout,
 		recipes: Recipe,
+		raw: Raw,
 	}
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 
@@ -103,60 +106,68 @@
 	let SpecifiedElement = $derived(categoryItems[category][title])
 </script>
 
-<PageMetro
-	{title}
-	{description}
-	{path}
-	nav={pageNav}
-	size="sm"
-	context={pageContext}
-	layout=""
->
-	{#snippet main()}
-		<div class="l:text:md">
-			<h2 id="doc">Doc</h2>
+{#if category === 'raw'}
+	<PageMain {title} {description} {path} size="sm" layout="center">
+		<div class="scroll:y">
+			<GenericElement children={SpecifiedElement} />
 		</div>
-		<EscapeHtml
-			id="doc"
-			html={content.html}
-			size="md"
-			margin="auto"
-			element="article"
-		/>
-
-		<section id="playbook" class="maki:block size:2xl">
-			<div class="l:text:lg size:xl">
-				<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-					<h2 class="w:full text:center">Playbook</h2>
-				</Magic>
+	</PageMain>
+{:else}
+	<PageMetro
+		{title}
+		{description}
+		{path}
+		nav={pageNav}
+		size="sm"
+		context={pageContext}
+		layout=""
+	>
+		{#snippet main()}
+			<div class="l:text:md">
+				<h2 id="doc">Doc</h2>
 			</div>
-			<div class="media">
-				<div class={`ravioli:lg ${containerClasses}`}>
-					<GenericElement
-						isPage={true}
-						{path}
-						{title}
-						{SpecifiedElement}
-						props={currentProps}
-						{formaction}
-						{actionPath}
-						id={title}
-					/>
-				</div>
-			</div>
-		</section>
-	{/snippet}
-
-	{#snippet aside()}
-		{#key category}
-			<PropsDoc meta={content.meta} />
-			<PropsDemo
-				{path}
-				{actionPath}
-				{redirect}
-				meta={content.meta}
-				categories={[category]}
+			<EscapeHtml
+				id="doc"
+				html={content.html}
+				size="md"
+				margin="auto"
+				element="article"
 			/>
-		{/key}
-	{/snippet}
-</PageMetro>
+
+			<section id="playbook" class="maki:block size:2xl">
+				<div class="l:text:lg size:xl">
+					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+						<h2 class="w:full text:center">Playbook</h2>
+					</Magic>
+				</div>
+				<div class="media">
+					<div class={`ravioli:lg ${containerClasses}`}>
+						<GenericElement
+							isPage={true}
+							{path}
+							{title}
+							{SpecifiedElement}
+							props={currentProps}
+							{formaction}
+							{actionPath}
+							id={title}
+						/>
+					</div>
+				</div>
+			</section>
+		{/snippet}
+
+		{#snippet aside()}
+			{#key category}
+				<PropsDoc meta={content.meta} />
+				<PropsDemo
+					{path}
+					{actionPath}
+					{redirect}
+					meta={content.meta}
+					categories={[category]}
+				/>
+			{/key}
+		{/snippet}
+	</PageMetro>
+{/if}

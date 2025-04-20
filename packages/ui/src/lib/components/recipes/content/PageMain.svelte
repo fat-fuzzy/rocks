@@ -20,7 +20,7 @@
 
 <Head pageName={currentPage} {title} {description} />
 
-<main {id}>
+<main {id} class={`l:${layout}`}>
 	<PageHeader {title} size={size as UiSize} {layout} {justify} {...header} />
 
 	{#if children}

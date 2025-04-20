@@ -9,6 +9,7 @@ const tokenNames = Object.keys(ui.tokens).sort(sortAsc)
 const blockNames = Object.keys(ui.blocks).sort(sortAsc)
 const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
 const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
+const rawNames = Object.keys(ui.raw).sort(sortAsc)
 
 const {DEFAULT_SIDEBAR_REVEAL_STATE} = ui.constants
 
@@ -117,6 +118,13 @@ export const pages: {[key: string]: NavItem} = {
 				formaction: 'toggleRecipes',
 				items: [],
 			},
+			{
+				slug: 'raw',
+				title: 'Raw',
+				asset: 'raw',
+				formaction: 'toggleRaw',
+				items: [],
+			},
 		],
 	},
 }
@@ -145,6 +153,11 @@ export function buildNav(page: string) {
 				}))
 			} else if (item.slug === 'recipes') {
 				item.items = recipeNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			} else if (item.slug === 'raw') {
+				item.items = rawNames.map((c) => ({
 					slug: c,
 					title: c,
 				}))

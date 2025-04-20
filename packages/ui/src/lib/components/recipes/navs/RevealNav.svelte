@@ -28,6 +28,7 @@
 		variant,
 		align,
 		justify,
+		area = '',
 		place = 'top',
 		position,
 		container,
@@ -49,7 +50,9 @@
 			container,
 		}),
 	)
-	let revealClasses = $derived(`l:reveal ${place} ${reveal} ${layoutClasses}`)
+	let revealClasses = $derived(
+		`l:reveal ${place} ${reveal} ${layoutClasses} ${area}`,
+	)
 </script>
 
 <nav

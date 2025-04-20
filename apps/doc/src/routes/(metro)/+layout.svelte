@@ -18,8 +18,14 @@
 	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
-	let sketchClasses = $derived(
-		page.data.id && page.data.slug ? 'zone:sketch' : '',
+	let playgroundClass = $derived(
+		page.data.id && page.data.slug ? 'zone:playground' : '',
+	)
+
+	let playbookClass = $derived(
+		page.params.category && page.params.category !== 'raw'
+			? 'zone:playground'
+			: '',
 	)
 
 	let brightness = $derived(appContext.brightness)
@@ -67,7 +73,7 @@
 			dismiss="outside"
 		/>
 	</div>
-	<div class={`l:grid zone:3 ${sketchClasses}`}>
+	<div class={`l:grid zone:3 ${playgroundClass} ${playbookClass}`}>
 		{#if children}
 			{@render children()}
 		{:else}

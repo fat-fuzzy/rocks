@@ -71,6 +71,13 @@ import PageRails from '$lib/components/recipes/content/PageRails.svelte'
 import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
 
 /**
+ * Raw - CSS Layout templates: use as guides, not as drop-in components
+ */
+import CSSTheme from '$lib/components/raw/css-theme.svelte'
+import CSSMetro from '$lib/components/raw/css-grid-metro.svelte'
+import CSSTram from '$lib/components/raw/css-grid-tram.svelte'
+
+/**
  * Draft components
  */
 import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
@@ -150,6 +157,12 @@ const recipes = {
 	Header,
 }
 
+const raw = {
+	CSSTheme,
+	CSSMetro,
+	CSSTram,
+}
+
 const content = {
 	Aside,
 	LayoutMetro,
@@ -193,6 +206,7 @@ export default {
 	blocks,
 	layouts,
 	recipes,
+	raw,
 	content,
 	utils,
 	forms,
