@@ -2,6 +2,7 @@
 title: CSSMetro
 slug: CSSMetro
 category: 'raw'
+group: 'rails'
 ---
 
 ## Usage

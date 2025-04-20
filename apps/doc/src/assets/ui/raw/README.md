@@ -7,4 +7,7 @@ props_style: {}
 
 ## What is Raw ????
 
-`Raw` components are [HTML/CSS]-only templates. These are not meant to be used as drop-in components: they are testing grounds and guides.
+`Raw` components are [HTML/CSS]-only templates. These templates are not meant to be used as drop-in components: they are testing grounds and guides.
+
+- `CSS Theme` is a simple test sheet for CSS theme values
+- `rails` templates are grid templates named using railway transport analogies (`CSSRailway`, `CSSTgv`, etc). These are helpful to think about layout in terms of information architecture of full page views or page sections. `CSSTgv` refers to _Train à Grande Vitesse_, the french fast train railway system.

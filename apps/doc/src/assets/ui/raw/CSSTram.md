@@ -2,6 +2,7 @@
 title: CSSTram
 slug: CSSTram
 category: 'raw'
+group: 'rails'
 ---
 
 ## Usage
