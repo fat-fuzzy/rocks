@@ -59,5 +59,3 @@
 @import './grid/tgv/tgv.css'; /* Detailed grid with headers and page template areas */
 @import './grid/tgv/zone-1.css'; /* Metro grid areas (zone-1) */
 @import './grid/tgv/zone-2.css'; /* Metro grid areas (zone-2) */
-@import './grid/tgv/zone-3.css'; /* Metro grid areas (zone-3) */
-@import './grid/tgv/zone-4.css'; /* Metro grid areas (zone-4) */

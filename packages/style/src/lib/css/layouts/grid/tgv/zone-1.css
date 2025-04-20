@@ -6,7 +6,7 @@
 .v-zone\:1 {
 	grid-area: v-zone-1;
 	grid-template-areas: 'navbar	app-context';
-	grid-template-columns: subgrid;
+	grid-template-columns: 1fr auto;
 	grid-template-rows: subgrid;
 }
 
