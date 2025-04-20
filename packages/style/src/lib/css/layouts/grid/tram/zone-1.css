@@ -3,79 +3,79 @@
  * Contains the header with main navigation and app context
  */
 
-.zone\:1 {
-	grid-area: zone-1;
+.t-zone\:1 {
+	grid-area: t-zone-1;
 	grid-template-areas: 'navbar	app-context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 }
 
-.zone\:1 > .navbar {
+.t-zone\:1 > .navbar {
 	grid-area: navbar;
 	align-content: center;
 }
 
-.zone\:1 > .navbar .expanded ff-reveal {
+.t-zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	left: var(--outline-offset-lg);
 	right: var(--outline-offset-xs);
 }
 
-.zone\:1 > .app-context {
+.t-zone\:1 > .app-context {
 	grid-area: app-context;
 	align-content: center;
 	justify-self: flex-end;
 }
 
-.zone\:1 > .app-context ff-reveal {
+.t-zone\:1 > .app-context ff-reveal {
 	display: flex;
 	align-items: center;
 }
 
-.zone\:1 > .app-context.expanded ff-reveal {
+.t-zone\:1 > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	right: var(--ui-size-sm);
 	box-shadow: var(--shadow-md);
 }
 
-.zone\:1 > .app-context.expanded ff-reveal ul {
+.t-zone\:1 > .app-context.expanded ff-reveal ul {
 	padding: var(--ui-size-sm);
 }
 
-.zone\:1 > .app-context ff-reveal form {
+.t-zone\:1 > .app-context ff-reveal form {
 	display: flex;
 	gap: var(--ui-size-lg);
 	padding-inline-start: var(--ui-size-lg);
 }
 
-.zone\:1 > nav,
-.zone\:1 > nav form,
-.zone\:1 > nav [aria-expanded] {
+.t-zone\:1 > nav,
+.t-zone\:1 > nav form,
+.t-zone\:1 > nav [aria-expanded] {
 	inline-size: 100%;
 }
 
-.zone\:1 > nav [aria-expanded] span {
+.t-zone\:1 > nav [aria-expanded] span {
 	text-align: center;
 }
 
 @media screen and (min-width: 620px) {
-	.zone\:1 > nav {
+	.t-zone\:1 > nav {
 		justify-content: flex-start;
 	}
 
-	.zone\:1 > nav form {
+	.t-zone\:1 > nav form {
 		display: none;
 	}
 
-	.zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+	.t-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
 		block-size: fit-content;
 	}
 
-	.zone\:1 > .app-context.expanded ff-reveal,
-	.zone\:1 > .navbar > .expanded > ff-reveal,
-	.zone\:1 > .navbar > .collapsed > ff-reveal {
+	.t-zone\:1 > .app-context.expanded ff-reveal,
+	.t-zone\:1 > .navbar > .expanded > ff-reveal,
+	.t-zone\:1 > .navbar > .collapsed > ff-reveal {
 		position: unset;
 		margin: 0 auto;
 		z-index: var(--layout-z-index-reveal);
@@ -83,7 +83,7 @@
 		box-shadow: unset;
 	}
 
-	.zone\:1 > .app-context ff-reveal {
+	.t-zone\:1 > .app-context ff-reveal {
 		position: unset;
 		padding: 0;
 		display: flex;

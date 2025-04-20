@@ -2,26 +2,29 @@
  * ZONE 2
  * Left Sidebar contains secondary navigation
  */
-.zone\:2 {
-	grid-area: zone-2;
-	grid-template-areas: 'side-nav';
+.t-zone\:2 {
+	grid-area: t-zone-2;
+	grid-template-areas:
+		'gare-control'
+		'gare-depot';
 	align-items: center;
 	padding: 0;
 }
 
-.zone\:2[open],
-.l\:reveal.zone\:2 > .expanded {
-	position: relative;
-	z-index: var(--layout-z-index-reveal);
+.t-zone\:2 > .gare-control {
+	grid-area: gare-control;
 }
 
-/*
-.zone\:2 > summary {
+.t-zone\:2 > .gare-depot {
+	grid-area: gare-depot;
+}
+
+.t-zone\:2 > summary {
 	inline-size: fit-content;
 }
 
-.zone\:2 > ff-reveal,
-.zone\:2 > .expanded > ff-reveal {
+.t-zone\:2 > ff-reveal,
+.t-zone\:2 > .expanded > ff-reveal {
 	--max-block-size: calc(
 		100vh - 2 * var(--ui-header-height) + 2 * var(--outline-offset-lg)
 	);
@@ -29,50 +32,51 @@
 	inline-size: var(--inline-size);
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
-	margin-inline-start: var(--outline-offset-md);
-	padding-block: var(--ui-size-sm);
-	padding-inline: var(--ui-size-sm);
-	border-radius: var(--border-radius-md);
-	box-shadow: var(--shadow-md);
 }
 
-.zone\:2[open] {
-	grid-column-end: 2;
-}
-
-.zone\:2[open] > ff-reveal,
-.zone\:2 > .expanded > ff-reveal {
+.t-zone\:2[class*='gare:'][open] > ff-reveal,
+.t-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 	position: relative;
 	z-index: var(--layout-z-index-reveal);
 }
 
-.zone\:2 > ff-reveal,
-.zone\:2 > .collapsed > ff-reveal {
+/* .t-zone\:2[open] {
+	grid-column-end: 2;
+}
+
+.t-zone\:2[open] > ff-reveal,
+.t-zone\:2 > .expanded > ff-reveal {
+	position: relative;
+	z-index: var(--layout-z-index-reveal);
+}
+
+.t-zone\:2 > ff-reveal,
+.t-zone\:2 > .collapsed > ff-reveal {
 	--collapse-x: -100%;
 	transform: translate(var(--collapse-x), 0);
 	transition: transform 250ms ease-in-out;
 }
 
-.zone\:2 > ff-reveal > *,
-.zone\:2 > .collapsed > ff-reveal > * {
+.t-zone\:2 > ff-reveal > *,
+.t-zone\:2 > .collapsed > ff-reveal > * {
 	transform: translate(var(--collapse-x), 0);
 	transition: transform 200ms ease-in-out;
 }
 
-.zone\:2[open] > ff-reveal,
-.zone\:2 > .expanded > ff-reveal {
+.t-zone\:2[open] > ff-reveal,
+.t-zone\:2 > .expanded > ff-reveal {
 	transform: translate(0, 0);
 	transition: transform 200ms ease-out;
 }
 
-.zone\:2[open] > ff-reveal > *,
-.zone\:2 > .expanded > ff-reveal > * {
+.t-zone\:2[open] > ff-reveal > *,
+.t-zone\:2 > .expanded > ff-reveal > * {
 	transform: translate(0, 0);
 	transition: transform 250ms ease-out;
 } */
 
-/*
-.zone\:2 > .expanded > ff-reveal {
+/* 
+.t-zone\:2 > .expanded > ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	z-index: var(--layout-z-index-reveal);
@@ -90,20 +94,20 @@
 } */
 
 @media screen and (min-width: 620px) {
-	.zone\:2 > .expanded > ff-reveal {
+	.t-zone\:2 > .expanded > ff-reveal {
 		top: var(--ui-header-height);
 		inline-size: calc(100vw - 2 * var(--sidebar-width) + 4 * var(--ui-size));
 		z-index: var(--layout-z-index-reveal);
 	}
 
-	.zone\:2 > ff-reveal,
-	.zone\:2 > .collapsed > ff-reveal {
+	.t-zone\:2 > ff-reveal,
+	.t-zone\:2 > .collapsed > ff-reveal {
 		--collapse-x: 0;
 	}
 }
 
 @media screen and (min-width: 935px) {
-	.zone\:2 {
+	.t-zone\:2 {
 		--max-block-size: calc(100vh - var(--ui-header-height) + var(--ui-size));
 		align-content: start;
 		inline-size: fit-content;
@@ -112,8 +116,8 @@
 		inline-size: var(--sidebar-width);
 	}
 
-	.zone\:2 > .expanded > ff-reveal,
-	.zone\:2 > .collapsed > ff-reveal {
+	.t-zone\:2 > .expanded > ff-reveal,
+	.t-zone\:2 > .collapsed > ff-reveal {
 		position: static;
 		max-block-size: unset;
 		margin-block-start: var(--outline-offset-lg);
@@ -126,18 +130,18 @@
 		overflow: hidden auto;
 	}
 
-	.zone\:2:has(nav.collapsed) {
+	.t-zone\:2:has(nav.collapsed) {
 		--sidebar-width: var(--layout-sidebar-collapsed);
 		max-inline-size: var(--sidebar-width);
 	}
 
-	.zone\:2 > nav > form,
-	.zone\:2 > nav > form [aria-expanded] {
+	.t-zone\:2 > nav > form,
+	.t-zone\:2 > nav > form [aria-expanded] {
 		inline-size: 100%;
 		max-inline-size: calc(100% - 2 * var(--outline-offset-lg));
 	}
 
-	.zone\:2 > nav.expanded > form [aria-expanded] {
+	.t-zone\:2 > nav.expanded > form [aria-expanded] {
 		max-inline-size: calc(
 			100% - 2 * var(--ui-size) - 2 * var(--outline-offset-lg)
 		);

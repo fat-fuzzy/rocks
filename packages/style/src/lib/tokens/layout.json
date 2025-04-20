@@ -35,28 +35,28 @@
 				"$value": "6.5em"
 			},
 			"2xs": {
-				"$value": "calc(var(--layout-sidebar-xs) / var(--size-ratio-sm))"
+				"$value": "10ch"
 			},
 			"xs": {
-				"$value": "calc(var(--layout-sidebar-sm) / var(--size-ratio-sm))"
+				"$value": "12ch"
 			},
 			"sm": {
-				"$value": "calc(var(--layout-sidebar-md) / var(--size-ratio-sm))"
+				"$value": "18ch"
 			},
 			"md": {
 				"$value": "{layout.sidebar.base}"
 			},
 			"lg": {
-				"$value": "calc(var(--layout-sidebar-md) * var(--size-ratio-sm))"
+				"$value": "30ch"
 			},
 			"xl": {
-				"$value": "calc(var(--layout-sidebar-lg) * var(--size-ratio-sm))"
+				"$value": "36ch"
 			},
 			"2xl": {
-				"$value": "calc(var(--layout-sidebar-xl) * var(--size-ratio-sm))"
+				"$value": "46ch"
 			},
 			"3xl": {
-				"$value": "calc(var(--layout-sidebar-2xl) * var(--size-ratio-lg))"
+				"$value": "60ch"
 			}
 		},
 		"grid": {
@@ -170,19 +170,22 @@
 		"$type": "dimension",
 		"height": {
 			"2xs": {
-				"$value": "20vh"
+				"$value": "calc(20vh - var(--ui-size))"
 			},
 			"xs": {
-				"$value": "26vh"
+				"$value": "calc(30vh - var(--ui-size))"
 			},
 			"sm": {
-				"$value": "40vh"
+				"$value": "calc(40vh - var(--ui-size))"
 			},
 			"md": {
-				"$value": "60vh"
+				"$value": "calc(60vh - var(--ui-size))"
 			},
 			"lg": {
-				"$value": "80vh"
+				"$value": "calc(80vh - var(--ui-size))"
+			},
+			"xl": {
+				"$value": "calc(100vh - var(--ui-header-height) - var(--ui-size) - var(--outline-offset-lg))"
 			}
 		}
 	}

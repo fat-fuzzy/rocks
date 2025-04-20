@@ -1,0 +1,89 @@
+/**
+ * GARE [cardinality]
+ * Left Sidebar contains secondary navigation
+ */
+
+.gare-control {
+	border-radius: 0;
+}
+
+[class*='gare:'] {
+	padding: 0;
+	margin: 0;
+}
+
+details[class*='gare:'] > ff-reveal,
+.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+	--y-size: var(--overlay-height-xl);
+	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
+	inline-size: 100%;
+	max-block-size: var(--y-size, var(--max-block-size));
+	margin-inline-start: var(--outline-offset-md);
+}
+
+details.gare\:ouest > summary,
+.l\:reveal.gare\:ouest > form > [aria-expanded] {
+	inline-size: max-content;
+	max-inline-size: var(--max-inline-size);
+}
+
+details.gare\:ouest > ff-reveal,
+.l\:reveal > .collapsed > ff-reveal {
+	--collapse-x: -100%;
+	--x-size: 0;
+	block-size: var(--x-size);
+	transform: translate(var(--collapse-x), 0);
+	transition: transform 250ms ease-in-out;
+}
+
+details.gare\:ouest > ff-reveal > *,
+.l\:reveal > .collapsed > ff-reveal > * {
+	transform: translate(var(--collapse-x), 0);
+	transition: transform 200ms ease-in-out;
+}
+
+details[open].gare\:ouest > ff-reveal,
+.l\:reveal.gare\:ouest > .expanded > ff-reveal {
+	--x-size: fit-content;
+	transform: translate(0, 0);
+	transition: transform 200ms ease-out;
+}
+
+details[open].gare\:ouest > ff-reveal > *,
+.l\:reveal > .expanded > ff-reveal > * {
+	transform: translate(0, 0);
+	transition: transform 250ms ease-out;
+}
+
+details.gare\:nord > ff-reveal,
+.l\:reveal > .collapsed > ff-reveal {
+	--collapse-y: calc(-1 * var(--ui-header-height));
+	transform: translate(0, var(--collapse-y));
+	transition: transform 250ms ease-in-out 200ms;
+}
+
+details.gare\:nord > ff-reveal > *,
+.l\:reveal > .collapsed > ff-reveal > * {
+	--y-size: 0;
+	block-size: var(--y-size);
+	transition: block-size 200ms ease-in-out;
+}
+
+details[open].gare\:nord > ff-reveal,
+.l\:reveal.gare\:nord > .expanded > ff-reveal {
+	--collapse-y: 0;
+	transition: transform 200ms ease-out;
+}
+
+details[open].gare\:nord > ff-reveal > *,
+.l\:reveal > .expanded > ff-reveal > * {
+	--y-size: fit-content;
+	transition: block-size 250ms ease-in-out 200ms;
+}
+
+@media screen and (min-width: 620px) {
+	details[class*='gare:'] > ff-reveal,
+	.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+		--inline-size: var(---max-inline-size);
+	}
+}

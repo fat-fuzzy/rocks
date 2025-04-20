@@ -2,7 +2,7 @@
  * Grid Rails Layout
  */
 
-html:has(.l\:grid\:metro) {
+html:has(.l\:grid\:tram) {
 	--hue: var(--color-theme-primary);
 	--lightness-scrollbar: var(--lightness-base);
 	--chroma-scrollbar: var(--chroma-base);
@@ -12,9 +12,10 @@ html:has(.l\:grid\:metro) {
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
+	/* scroll-snap-type: y proximity; */
 }
 
-body:has(.l\:grid\:metro) {
+body:has(.l\:grid\:tram) {
 	min-block-size: 100vh;
 	/* mobile viewport bug fix */
 	min-block-size: -webkit-fill-available;
@@ -22,18 +23,18 @@ body:has(.l\:grid\:metro) {
 	flex-direction: column;
 }
 
-.app:has(.l\:grid\:metro) {
+.app:has(.l\:grid\:tram) {
 	overflow: hidden;
 }
 
-.l\:grid\:metro {
+.l\:grid\:tram {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
 	inline-size: 100%;
 	min-block-size: 100vh;
 	grid-template-areas:
-		'zone-2   zone-1  zone-1'
-		'zone-3   zone-3  zone-3'
-		'zone-4   zone-4  zone-4';
+		't-zone-2   t-zone-1  t-zone-1'
+		't-zone-3   t-zone-3  t-zone-3'
+		't-zone-4   t-zone-4  t-zone-4';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) 1fr auto;
 	padding-block: 0 var(--ui-size);
@@ -41,11 +42,11 @@ body:has(.l\:grid\:metro) {
 }
 
 @media screen and (min-width: 935px) {
-	.l\:grid\:metro {
+	.l\:grid\:tram {
 		grid-template-areas:
-			'zone-2  zone-1  zone-1'
-			'zone-2  zone-3  zone-3'
-			'zone-2  zone-4  zone-4';
+			't-zone-2  t-zone-1  t-zone-1'
+			't-zone-2  t-zone-3  t-zone-3'
+			't-zone-2  t-zone-4  t-zone-4';
 		padding-block: 0;
 	}
 }

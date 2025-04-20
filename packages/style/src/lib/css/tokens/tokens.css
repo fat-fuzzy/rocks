@@ -182,16 +182,16 @@
   --layout-grid-item-sm: 15rem;
   --layout-grid-item-xl: 30rem;
   --layout-grid-item-xs: 10rem;
-  --layout-sidebar-2xl: calc(var(--layout-sidebar-xl) * var(--size-ratio-sm));
-  --layout-sidebar-2xs: calc(var(--layout-sidebar-xs) / var(--size-ratio-sm));
-  --layout-sidebar-3xl: calc(var(--layout-sidebar-2xl) * var(--size-ratio-lg));
+  --layout-sidebar-2xl: 46ch;
+  --layout-sidebar-2xs: 10ch;
+  --layout-sidebar-3xl: 60ch;
   --layout-sidebar-base: 24ch;
   --layout-sidebar-collapsed: 6.5em;
-  --layout-sidebar-lg: calc(var(--layout-sidebar-md) * var(--size-ratio-sm));
+  --layout-sidebar-lg: 30ch;
   --layout-sidebar-md: var(--layout-sidebar-base);
-  --layout-sidebar-sm: calc(var(--layout-sidebar-md) / var(--size-ratio-sm));
-  --layout-sidebar-xl: calc(var(--layout-sidebar-lg) * var(--size-ratio-sm));
-  --layout-sidebar-xs: calc(var(--layout-sidebar-sm) / var(--size-ratio-sm));
+  --layout-sidebar-sm: 18ch;
+  --layout-sidebar-xl: 36ch;
+  --layout-sidebar-xs: 12ch;
   --layout-threshold-2xl: var(--layout-breakpoint-2xl);
   --layout-threshold-2xs: var(--layout-breakpoint-2xs);
   --layout-threshold-3xs: var(--layout-sidebar-collapsed);
@@ -214,11 +214,12 @@
   --outline-offset-md: 2px;
   --outline-offset-sm: 1.75px;
   --outline-offset-xs: 1.5px;
-  --overlay-height-2xs: 20vh;
-  --overlay-height-lg: 80vh;
-  --overlay-height-md: 60vh;
-  --overlay-height-sm: 40vh;
-  --overlay-height-xs: 26vh;
+  --overlay-height-2xs: calc(20vh - var(--ui-size));
+  --overlay-height-lg: calc(80vh - var(--ui-size));
+  --overlay-height-md: calc(60vh - var(--ui-size));
+  --overlay-height-sm: calc(40vh - var(--ui-size));
+  --overlay-height-xl: calc(100vh - var(--ui-header-height) - var(--ui-size) - var(--outline-offset-lg));
+  --overlay-height-xs: calc(30vh - var(--ui-size));
   --scale-base-00: 1rem;
   --scale-base-01: calc(var(--scale-base-00) / var(--size-ratio-xs));
   --scale-base-02: calc(var(--scale-base-01) / var(--size-ratio-sm));
@@ -266,10 +267,7 @@
   --size-ratio-sm: 1.25;
   --size-ratio-xs: 1.15;
   --ui-footer-height: var(--font-size-body);
-  --ui-header-height: var(--scale-base-50);
-  --ui-header-icon-height: 2.25rem;
-  --ui-header-margin: calc(var(--gap) / 2);
-  --ui-header-max-height: 30vh;
+  --ui-header-height: 3rem;
 }
 
 @supports (color: color(display-p3 1 1 1)) {

@@ -43,6 +43,10 @@
 	--align-self: center;
 }
 
+.align-self\:stretch {
+	--align-self: stretch;
+}
+
 [class*='align:'] {
 	align-items: var(--align-items, auto);
 }
@@ -68,15 +72,19 @@
 }
 
 .align-content\:start {
-	--align-content: flex-start;
+	--align-content: start;
 }
 
 .align-content\:end {
-	--align-content: flex-end;
+	--align-content: end;
 }
 
 .align-content\:center {
 	--align-content: center;
+}
+
+.align-content\:stretch {
+	--align-content: stretch;
 }
 
 [class*='justify:'] {
@@ -116,11 +124,15 @@
 }
 
 .justify-self\:start {
-	--justify-self: flex-start;
+	--justify-self: start;
 }
 
 .justify-self\:end {
-	--justify-self: flex-end;
+	--justify-self: end;
+}
+
+.justify-self\:end {
+	--justify-self: end;
 }
 
 [class*='text:'] {
@@ -137,8 +149,4 @@
 
 .text\:center {
 	--text-align: center;
-}
-
-.margin\:auto {
-	margin: 0 auto;
 }

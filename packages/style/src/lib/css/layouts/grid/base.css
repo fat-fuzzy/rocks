@@ -2,11 +2,14 @@
 [class*='l:grid'] {
 	display: flex;
 	flex-wrap: wrap;
+	align-content: var(--align-content, stretch);
+	justify-content: var(--justify-content, stretch);
 }
 
 [class*='l:grid'] {
+	--grid-gap: var(--gap, 0);
 	display: grid;
-	grid-gap: var(--grid-gap, var(--gap));
+	grid-gap: var(--grid-gap);
 }
 
 /* Fix cell alignment in an end aligned grid */
@@ -18,6 +21,11 @@
 /* flex layout fallback */
 [class*=':grid'][class*=':end'] {
 	flex-direction: row-reverse;
+}
+
+/* Pack grid: Use carefully, as this can create reading flow issues (ex: for image galleries is OK, for forms is not OK) */
+[class*=':grid'].dense {
+	grid-auto-flow: dense;
 }
 
 [class*='l:grid'].size\:2xs {
