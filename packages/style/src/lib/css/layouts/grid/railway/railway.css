@@ -1,0 +1,52 @@
+/**
+ * Grid Rails Layout
+ */
+
+html:has(.l\:grid\:railway) {
+	--hue: var(--color-theme-primary);
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--ink);
+	height: -webkit-fill-available;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--track);
+	/* scroll-snap-type: y proximity; */
+}
+
+body:has(.l\:grid\:railway) {
+	min-block-size: 100vh;
+	/* mobile viewport bug fix */
+	min-block-size: -webkit-fill-available;
+	display: flex;
+	flex-direction: column;
+}
+
+.app:has(.l\:grid\:railway) {
+	overflow: hidden;
+}
+
+.l\:grid\:railway {
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
+	inline-size: 100%;
+	min-block-size: 100vh;
+	grid-template-areas:
+		'r-zone-1  r-zone-2  r-zone-3'
+		'r-zone-4  r-zone-4  r-zone-4'
+		'r-zone-5  r-zone-5  r-zone-5';
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: var(--ui-header-height) 1fr auto;
+	padding-block: 0 var(--ui-size);
+	padding-inline: var(--ui-size) var(--ui-size-sm);
+}
+
+@media screen and (min-width: 935px) {
+	.l\:grid\:railway {
+		grid-template-areas:
+			'r-zone-2  r-zone-1  r-zone-3'
+			'r-zone-2  r-zone-4  r-zone-4'
+			'r-zone-2  r-zone-5  r-zone-5';
+		padding-block: 0;
+	}
+}
