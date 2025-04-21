@@ -11,16 +11,16 @@
 		'main-footer';
 	grid-template-rows: 1fr auto;
 
-	.page-header {
+	> .page-header {
 		grid-area: page-header;
 	}
 
-	.page-main {
+	> .page-main {
 		grid-area: page-main;
 		padding-block-end: var(--ui-size);
 	}
 
-	.v-zone\:main {
+	> .v-zone\:main {
 		grid-area: v-zone-main;
 		grid-template-areas:
 			'page-header'
@@ -29,7 +29,7 @@
 		min-block-size: unset;
 	}
 
-	.main-footer {
+	> .main-footer {
 		display: grid;
 		grid-area: main-footer;
 		padding-inline: var(--ui-size);

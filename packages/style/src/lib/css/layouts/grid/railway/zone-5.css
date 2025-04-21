@@ -7,7 +7,7 @@
 	grid-template-areas: 'main-footer';
 	block-size: fit-content;
 
-	.main-footer {
+	> .main-footer {
 		display: grid;
 		grid-area: main-footer;
 		padding-inline: var(--ui-size);
