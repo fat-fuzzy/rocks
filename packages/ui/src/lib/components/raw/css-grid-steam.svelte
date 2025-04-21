@@ -12,28 +12,22 @@
 	</div>
 	<details class="l:grid s-zone:2 gare:ouest surface:2:primary">
 		<summary class="gare-control ravioli:3xs">Nav 2</summary>
-		<ff-reveal class="gare-depot scroll:y layer:1">
+		<ff-reveal class="gare-depot scroll:y layer:1 ravioli:md">
 			<ol class="unstyled">
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
+				<li class="raviolink justify:start emoji:bubbles">Bubbles Sketch</li>
+				<li class="raviolink justify:start emoji:day">Wonderland</li>
+				<li class="raviolink justify:start emoji:perf">Zapping Aliens</li>
+				<li class="raviolink justify:start emoji:rainbow">Color Experiment</li>
+				<li class="raviolink justify:start emoji:texture">Texture load</li>
+				<li class="raviolink justify:start emoji:ollie">Tiny creatures</li>
+				<li class="raviolink justify:start emoji:sparkles">Particles</li>
+				<li class="raviolink justify:start emoji:star">Stars Sketch</li>
+				<li class="raviolink justify:start emoji:tuning">Moving things</li>
+				<li class="raviolink justify:start emoji:warning">Sound effect</li>
+				<li class="raviolink justify:start emoji:matrix-3d">Feeling lucky</li>
+				<li class="raviolink justify:start emoji:projection">Explorations</li>
+				<li class="raviolink justify:start emoji:sparkles">More particles</li>
+				<li class="raviolink justify:start emoji:convolution">Shaders</li>
 			</ol>
 		</ff-reveal>
 	</details>
