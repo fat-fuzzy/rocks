@@ -6,7 +6,7 @@
 .l\:grid\:railway {
 	details[open].gare\:ouest > ff-reveal,
 	.l\:reveal.gare\:ouest > .expanded > ff-reveal {
-		--collapse-x: calc(-1 * var(--layout-sidebar-collapsed));
+		--collapse-x: 0;
 	}
 }
 
