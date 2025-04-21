@@ -207,14 +207,14 @@
 				</details>
 			</div>
 		</div>
-		<div class="l:grid page-context scroll:y surface:1:info">
-			<nav class="l:flex maki:block size:lg">
-				<h4 class="maki:inline size:sm">Stopping at:</h4>
-				<ul class="unstyled l:stack:sm l:burrito:md">
-					<li class="ellipsis">
+		<div class="l:grid page-context surface:1:info scroll:y">
+			<nav class="l:stack size:lg">
+				<h4 class="maki:inline maki:block size:sm">Stopping at:</h4>
+				<ul class="unstyled l:stack size:md l:burrito:md scroll:y snap">
+					<li class="ellipsis snap:start">
 						<a href="#section-1" class="raviolink"> 04:45 - Paris s’éveille </a>
 					</li>
-					<li class="ellipsis">
+					<li class="ellipsis snap:start">
 						<a
 							href="#section-2"
 							class="raviolink"
@@ -223,10 +223,10 @@
 							17:44 - Should I Stay or Should I Go
 						</a>
 					</li>
-					<li class="ellipsis">
+					<li class="ellipsis snap:start">
 						<a href="#section-3" class="raviolink"> 01:58 - Nightclubbing </a>
 					</li>
-					<li class="ellipsis">
+					<li class="ellipsis snap:start">
 						<a href="#section-4" class="raviolink"> 06:07 - Sunday Morning </a>
 					</li>
 				</ul>

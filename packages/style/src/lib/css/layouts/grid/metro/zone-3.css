@@ -26,6 +26,7 @@
 		position: relative;
 		padding-block-end: var(--ui-size);
 		max-inline-size: var(--sidebar-width);
+		max-block-size: var(--overlay-height-3xs);
 	}
 
 	.m-zone\:main {
@@ -34,7 +35,7 @@
 			'page-header'
 			'page-main';
 		grid-template-rows: auto 1fr;
-		max-block-size: var(--max-block-size);
+		min-block-size: unset;
 	}
 }
 
@@ -44,10 +45,10 @@
 		grid-template-areas: 'm-zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
-		max-block-size: var(--max-block-size);
 
 		.page-context {
 			position: unset;
+			max-block-size: unset;
 		}
 
 		.page-context > * {
