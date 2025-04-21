@@ -54,7 +54,7 @@
 	.r-zone\:2[class*='gare:'][open] > ff-reveal,
 	.r-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 		--max-inline-size: calc(
-			100vw - var(--sidebar-width) - 3 * var(--ui-size) +
+			100vw - var(--sidebar-width) - 3 * var(--ui-size) -
 				var(--outline-offset-lg)
 		);
 		z-index: var(--layout-z-index-reveal);

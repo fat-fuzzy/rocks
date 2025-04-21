@@ -170,7 +170,7 @@
 		"$type": "dimension",
 		"height": {
 			"3xs": {
-				"$value": "calc(12vh - var(--ui-size))"
+				"$value": "calc(14vh - var(--ui-size))"
 			},
 			"2xs": {
 				"$value": "calc(20vh - var(--ui-size))"

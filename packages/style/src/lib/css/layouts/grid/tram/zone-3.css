@@ -24,7 +24,7 @@
 		align-content: start;
 		position: relative;
 		padding-block-end: var(--ui-size);
-		block-size: var(--overlay-height-xs);
+		block-size: var(--overlay-height-3xs);
 	}
 
 	.t-zone\:main {
@@ -35,13 +35,14 @@
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
 		align-content: start;
-		max-block-size: var(--overlay-height-lg);
+		max-block-size: var(--max-block-size);
 		overscroll-behavior-y: contain;
 	}
 }
 
 @media screen and (min-width: 620px) {
 	.t-zone\:3 {
+		--sidebar-width: var(--layout-sidebar-xs);
 		--max-block-size: calc(
 			100vh - var(--ui-header-height) - var(--outline-offset-lg)
 		);
@@ -50,7 +51,6 @@
 		grid-template-rows: 1fr;
 
 		.page-context {
-			--sidebar-width: var(--layout-sidebar-sm);
 			position: unset;
 			block-size: 100%;
 			max-block-size: var(--max-block-size);

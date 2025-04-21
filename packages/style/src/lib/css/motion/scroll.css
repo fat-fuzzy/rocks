@@ -22,11 +22,11 @@
 }
 
 .scroll\:y.snap {
-	scroll-snap-type: y mandatory;
+	scroll-snap-type: y;
 }
 
 .scroll\:x.snap {
-	scroll-snap-type: x mandatory;
+	scroll-snap-type: x;
 }
 
 /* .scrollbar\:hide-y {

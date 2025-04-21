@@ -24,6 +24,7 @@
 		align-content: start;
 		position: relative;
 		padding-block-end: var(--ui-size);
+		max-block-size: var(--overlay-height-2xs);
 	}
 
 	.r-zone\:main {
@@ -34,17 +35,6 @@
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
 		align-content: start;
-	}
-
-	&.r-zone\:playground .r-zone\:main {
-		max-block-size: var(--overlay-height-md);
-		overscroll-behavior-y: contain;
-	}
-
-	&.r-zone\:playground .page-context {
-		max-block-size: var(--overlay-height-sm);
-		min-block-size: var(--overlay-height-xs);
-		overscroll-behavior-y: contain;
 	}
 }
 
@@ -57,12 +47,21 @@
 		.page-context {
 			--sidebar-width: var(--layout-sidebar-sm);
 			position: unset;
+			max-block-size: unset;
 		}
 
-		&.r-zone\:playground,
-		&.r-zone\:playground .page-context,
-		&.r-zone\:playground .r-zone\:main {
-			max-block-size: var(--max-block-size);
+		.page-context > * {
+			--max-inline-size: calc(100% - 3 * var(--ui-size));
+			inline-size: 100%;
+			max-inline-size: var(--max-inline-size);
+		}
+
+		.page-context > details {
+			--max-inline-size: calc(
+				100% - 4 * var(--ui-size) - var(--outline-offset-lg)
+			);
+			margin-inline-start: var(--ui-size-sm);
+			max-inline-size: var(--max-inline-size);
 		}
 	}
 

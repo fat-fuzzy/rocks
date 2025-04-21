@@ -52,13 +52,17 @@
 		}
 
 		.page-context > * {
-			--max-inline-size: calc(100% - var(--ui-size));
+			--max-inline-size: calc(100% - 3 * var(--ui-size));
 			inline-size: 100%;
 			max-inline-size: var(--max-inline-size);
 		}
 
 		.page-context > details {
-			margin-inline-start: var(--outline-offset-lg);
+			--max-inline-size: calc(
+				100% - 4 * var(--ui-size) - var(--outline-offset-lg)
+			);
+			margin-inline-start: var(--ui-size-sm);
+			max-inline-size: var(--max-inline-size);
 		}
 
 		.page-context > nav > ul > li.ellipsis {
