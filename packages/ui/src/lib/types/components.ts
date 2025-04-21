@@ -46,9 +46,11 @@ export interface Recipes {
 }
 
 export interface Raw {
-	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
-	CSSMetro: typeof import('$lib/components/raw/css-theme.svelte').default
-	CSSTram: typeof import('$lib/components/raw/css-theme.svelte').default
+	CSSMetro: typeof import('$lib/components/raw/css-grid-metro.svelte').default
+	CSSRailway: typeof import('$lib/components/raw/css-grid-railway.svelte').default
+	CSSSteam: typeof import('$lib/components/raw/css-grid-steam.svelte').default
+	CSSTgv: typeof import('$lib/components/raw/css-grid-tgv.svelte').default
+	CSSTram: typeof import('$lib/components/raw/css-grid-tram.svelte').default
 }
 
 export interface Content {
@@ -77,6 +79,7 @@ export interface Drafts {
 	RevealContext: typeof import('$lib/components/recipes/forms/RevealContext.svelte').default
 	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
+	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
 }
 
 export interface Headless {

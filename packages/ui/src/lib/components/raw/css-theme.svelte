@@ -2,7 +2,7 @@
 	<main class="l:grid:auto size:xl">
 		<article class="l:stack:md">
 			<header>
-				<h1>This is a Title</h1>
+				<h1>🌈 CSS Theme</h1>
 				<small>This is small text</small>
 			</header>
 			<div class="surface:0:accent ravioli:md variant:fill">

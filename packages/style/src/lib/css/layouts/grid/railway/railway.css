@@ -28,7 +28,7 @@ body:has(.l\:grid\:railway) {
 }
 
 .l\:grid\:railway {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
 	inline-size: 100%;
 	min-block-size: 100vh;
 	grid-template-areas:

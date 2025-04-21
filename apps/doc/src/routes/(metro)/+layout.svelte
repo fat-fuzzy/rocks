@@ -19,12 +19,12 @@
 	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
 	let playgroundClass = $derived(
-		page.data.id && page.data.slug ? 'zone:playground' : '',
+		page.data.id && page.data.slug ? 'm-zone:playground' : '',
 	)
 
 	let playbookClass = $derived(
 		page.params.category && page.params.category !== 'raw'
-			? 'zone:playground'
+			? 'm-zone:playbook'
 			: '',
 	)
 
@@ -61,7 +61,7 @@
 		{preferences}
 		breakpoint="xs"
 	/>
-	<div class="l:grid zone:2">
+	<div class="l:grid m-zone:2">
 		<RevealNav
 			{...sidenav}
 			position={false}
@@ -73,14 +73,14 @@
 			dismiss="outside"
 		/>
 	</div>
-	<div class={`l:grid zone:3 ${playgroundClass} ${playbookClass}`}>
+	<div class={`l:grid m-zone:3 ${playgroundClass} ${playbookClass}`}>
 		{#if children}
 			{@render children()}
 		{:else}
 			<p class="feedback bare emoji:default">Coming Soon!</p>
 		{/if}
 	</div>
-	<div class="l:grid zone:4">
+	<div class="l:grid m-zone:4">
 		<Footer />
 	</div>
 </LayoutMetro>

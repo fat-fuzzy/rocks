@@ -14,10 +14,8 @@
 
 details[class*='gare:'] > ff-reveal,
 .l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-	--y-size: var(--overlay-height-xl);
 	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
 	inline-size: 100%;
-	block-size: var(--y-size);
 	max-block-size: var(--max-block-size);
 	margin-inline-start: var(--outline-offset-md);
 }

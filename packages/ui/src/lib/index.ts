@@ -75,6 +75,9 @@ import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
  */
 import CSSTheme from '$lib/components/raw/css-theme.svelte'
 import CSSMetro from '$lib/components/raw/css-grid-metro.svelte'
+import CSSRailway from '$lib/components/raw/css-grid-railway.svelte'
+import CSSSteam from '$lib/components/raw/css-grid-steam.svelte'
+import CSSTgv from '$lib/components/raw/css-grid-tgv.svelte'
 import CSSTram from '$lib/components/raw/css-grid-tram.svelte'
 
 /**
@@ -157,11 +160,7 @@ const recipes = {
 	Header,
 }
 
-const raw = {
-	CSSTheme,
-	CSSMetro,
-	CSSTram,
-}
+const raw = {CSSMetro, CSSRailway, CSSSteam, CSSTgv, CSSTram}
 
 const content = {
 	Aside,
@@ -174,6 +173,7 @@ const content = {
 }
 
 const drafts = {
+	CSSTheme,
 	Fieldset,
 	Popover,
 	// InputPassword,

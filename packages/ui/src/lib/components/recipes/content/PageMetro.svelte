@@ -38,7 +38,7 @@
 {#snippet headerMain()}
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
-<main {id} class="l:grid zone:main scroll:y">
+<main {id} class="l:grid m-zone:main scroll:y">
 	<div class="page-header">
 		<PageHeader {...header} size={size as UiSize} {justify} />
 	</div>

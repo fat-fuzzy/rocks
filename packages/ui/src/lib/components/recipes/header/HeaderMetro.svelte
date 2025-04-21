@@ -23,7 +23,7 @@
 	let positionClass = position ? `${position}:${placement}` : ''
 </script>
 
-<header class={`${positionClass} l:grid zone:1 bg:inherit`}>
+<header class={`${positionClass} l:grid m-zone:1 bg:inherit`}>
 	<div class="navbar">
 		<SkipLinks />
 		<HeaderNav

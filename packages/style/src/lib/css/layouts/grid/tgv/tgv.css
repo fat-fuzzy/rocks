@@ -3,7 +3,7 @@
  */
 
 html:has(.l\:grid\:tgv) {
-	--hue: var(--color-theme-primary);
+	--hue: var(--color-theme-neutral);
 	--lightness-scrollbar: var(--lightness-base);
 	--chroma-scrollbar: var(--chroma-base);
 	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
@@ -27,7 +27,7 @@ body:has(.l\:grid\:tgv) {
 }
 
 .l\:grid\:tgv {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
 	inline-size: 100%;
 	block-size: 100vh;
 	grid-template-areas:

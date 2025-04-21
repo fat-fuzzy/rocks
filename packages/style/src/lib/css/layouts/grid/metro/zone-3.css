@@ -2,11 +2,11 @@
  * ZONE 3
  * Contains main content page context
  */
-.zone\:3 {
+.m-zone\:3 {
 	--grid-gap: 0;
-	grid-area: zone-3;
+	grid-area: m-zone-3;
 	grid-template-areas:
-		'zone-main'
+		'm-zone-main'
 		'page-context';
 	grid-template-rows: 1fr auto;
 
@@ -20,47 +20,52 @@
 	}
 
 	.page-context {
+		--sidebar-width: 100%;
 		grid-area: page-context;
 		align-items: start;
 		position: relative;
 		padding-block-end: var(--ui-size);
+		max-inline-size: var(--sidebar-width);
 	}
 
-	.zone\:main {
-		grid-area: zone-main;
+	.m-zone\:main {
+		grid-area: m-zone-main;
 		grid-template-areas:
 			'page-header'
 			'page-main';
 		grid-template-rows: auto 1fr;
-		min-block-size: unset;
-	}
-
-	&.zone\:playground,
-	&.zone\:playground .page-context,
-	&.zone\:playground .zone\:main {
-		max-block-size: var(--overlay-height-md);
+		max-block-size: var(--max-block-size);
 	}
 }
 
 @media screen and (min-width: 620px) {
-	.zone\:3 {
-		grid-template-areas: 'zone-main page-context';
+	.m-zone\:3 {
+		--sidebar-width: var(--layout-sidebar-md);
+		grid-template-areas: 'm-zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
+		max-block-size: var(--max-block-size);
 
 		.page-context {
-			--sidebar-width: var(--layout-sidebar-sm);
 			position: unset;
 		}
 
-		&.zone\:playground,
-		&.zone\:playground .page-context,
-		&.zone\:playground .zone\:main {
-			max-block-size: var(--max-block-size);
+		.page-context > * {
+			--max-inline-size: calc(100% - var(--ui-size));
+			inline-size: 100%;
+			max-inline-size: var(--max-inline-size);
+		}
+
+		.page-context > details {
+			margin-inline-start: var(--outline-offset-lg);
+		}
+
+		.page-context > nav > ul > li.ellipsis {
+			max-inline-size: 100%;
 		}
 	}
 
-	.zone\:main {
+	.m-zone\:main {
 		grid-template-areas:
 			'page-header'
 			'page-main';
