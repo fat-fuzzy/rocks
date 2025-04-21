@@ -1,7 +1,7 @@
 <div class="l:grid:steam">
-	<div class="l:grid s-zone:1 surface:1:primary dotted">
+	<header class="l:grid s-zone:1 surface:1:primary dotted">
 		<div class="navbar surface:3:primary scroll:y">
-			<nav class="l:flex">
+			<nav id="nav-1" class="l:flex" aria-label="Main navigation">
 				<p class="maki:inline">Nav 1</p>
 				<a href="./" title="CSS Tests">🧪</a>
 			</nav>
@@ -9,32 +9,36 @@
 		<div class="app-context surface:3:primary">
 			<p class="maki:inline">App Context</p>
 		</div>
-	</div>
+	</header>
 	<details class="l:grid s-zone:2 gare:ouest surface:2:primary">
-		<summary class="gare-control ravioli:3xs">Nav 2</summary>
+		<summary id="nav-2-label" class="gare-control ravioli:3xs"> Nav 2 </summary>
 		<ff-reveal class="gare-depot scroll:y layer:1 ravioli:md">
-			<ol class="unstyled">
-				<li class="raviolink justify:start emoji:bubbles">Bubbles Sketch</li>
-				<li class="raviolink justify:start emoji:day">Wonderland</li>
-				<li class="raviolink justify:start emoji:perf">Zapping Aliens</li>
-				<li class="raviolink justify:start emoji:rainbow">Color Experiment</li>
-				<li class="raviolink justify:start emoji:texture">Texture load</li>
-				<li class="raviolink justify:start emoji:ollie">Tiny creatures</li>
-				<li class="raviolink justify:start emoji:sparkles">Particles</li>
-				<li class="raviolink justify:start emoji:star">Stars Sketch</li>
-				<li class="raviolink justify:start emoji:tuning">Moving things</li>
-				<li class="raviolink justify:start emoji:warning">Sound effect</li>
-				<li class="raviolink justify:start emoji:matrix-3d">Feeling lucky</li>
-				<li class="raviolink justify:start emoji:projection">Explorations</li>
-				<li class="raviolink justify:start emoji:sparkles">More particles</li>
-				<li class="raviolink justify:start emoji:convolution">Shaders</li>
-			</ol>
+			<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
+				<ol class="unstyled">
+					<li class="raviolink justify:start emoji:bubbles">Bubbles Sketch</li>
+					<li class="raviolink justify:start emoji:day">Wonderland</li>
+					<li class="raviolink justify:start emoji:perf">Zapping Aliens</li>
+					<li class="raviolink justify:start emoji:rainbow">
+						Color Experiment
+					</li>
+					<li class="raviolink justify:start emoji:texture">Texture load</li>
+					<li class="raviolink justify:start emoji:ollie">Tiny creatures</li>
+					<li class="raviolink justify:start emoji:sparkles">Particles</li>
+					<li class="raviolink justify:start emoji:star">Stars Sketch</li>
+					<li class="raviolink justify:start emoji:tuning">Moving things</li>
+					<li class="raviolink justify:start emoji:warning">Sound effect</li>
+					<li class="raviolink justify:start emoji:matrix-3d">Feeling lucky</li>
+					<li class="raviolink justify:start emoji:projection">Explorations</li>
+					<li class="raviolink justify:start emoji:sparkles">More particles</li>
+					<li class="raviolink justify:start emoji:convolution">Shaders</li>
+				</ol>
+			</nav>
 		</ff-reveal>
 	</details>
 	<div
 		class="l:grid s-zone:3 snap:start surface:3:primary dotted s-zone:playground align-self:stretch align-content:stretch"
 	>
-		<div class="l:grid s-zone:main scroll:y surface:1:primary">
+		<main class="l:grid s-zone:main scroll:y surface:1:primary">
 			<div class="page-header ravioli:lg">
 				<h1 class="color:primary">🚂 Steam</h1>
 			</div>
@@ -64,8 +68,8 @@
 					</ff-reveal>
 				</details>
 			</div>
-		</div>
-		<div class="l:grid page-context scroll:y surface:2:primary">
+		</main>
+		<aside class="l:grid page-context scroll:y surface:2:primary">
 			<details class="l:grid gare:nord surface:0:neutral">
 				<summary class="gare-control ravioli:3xs">
 					Interaction Controls
@@ -85,9 +89,9 @@
 					</ol>
 				</ff-reveal>
 			</details>
-		</div>
+		</aside>
 	</div>
-	<div class="l:grid s-zone:4 surface:3:primary">
+	<footer class="l:grid s-zone:4 surface:3:primary">
 		<p class="ravioli:2xs">Footer</p>
-	</div>
+	</footer>
 </div>

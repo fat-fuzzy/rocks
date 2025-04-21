@@ -1,7 +1,7 @@
 <div class="l:grid:tram">
-	<div class="l:grid t-zone:1 surface:1:accent dotted">
+	<header class="l:grid t-zone:1 surface:1:accent dotted">
 		<div class="navbar surface:3:accent">
-			<nav class="l:flex">
+			<nav id="nav-1" class="l:flex" aria-label="Main navigation">
 				<p class="maki:inline">Nav 1</p>
 				<a href="./" title="CSS Tests">🧪</a>
 			</nav>
@@ -9,38 +9,40 @@
 		<div class="app-context surface:3:accent">
 			<p class="maki:inline">App Context</p>
 		</div>
-	</div>
+	</header>
 	<details class="l:grid t-zone:2 gare:ouest surface:2:accent">
-		<summary class="gare-control ravioli:3xs">Nav 2</summary>
+		<summary id="nav-2-label" class="gare-control ravioli:3xs"> Nav 2 </summary>
 		<ff-reveal class="gare-depot scroll:y layer:1">
-			<ol class="unstyled">
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-			</ol>
+			<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
+				<ol class="unstyled">
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+				</ol>
+			</nav>
 		</ff-reveal>
 	</details>
 	<div
 		class="l:grid t-zone:3 surface:2:accent dotted align-self:stretch align-content:stretch"
 	>
-		<div class="l:grid t-zone:main scroll:y surface:0:accent">
+		<main class="l:grid t-zone:main scroll:y surface:0:accent">
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class="color:accent">🚋 Tram</h1>
 			</div>
@@ -129,8 +131,8 @@
 					</ff-reveal>
 				</details>
 			</div>
-		</div>
-		<div class="l:grid page-context scroll:y surface:2:accent">
+		</main>
+		<aside class="l:grid page-context scroll:y surface:2:accent">
 			<details class="l:grid gare:nord surface:0:neutral">
 				<summary class="gare-control ravioli:3xs">Page Context</summary>
 				<ff-reveal class="scroll:y layer:1">
@@ -148,9 +150,9 @@
 					</ol>
 				</ff-reveal>
 			</details>
-		</div>
+		</aside>
 	</div>
-	<div class="l:grid t-zone:4 surface:3:accent">
+	<footer class="l:grid t-zone:4 surface:3:accent">
 		<p class="ravioli:2xs">Footer</p>
-	</div>
+	</footer>
 </div>

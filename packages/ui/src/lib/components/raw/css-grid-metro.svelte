@@ -1,7 +1,7 @@
 <div class="l:grid:metro">
-	<div class="l:grid m-zone:1 surface:1:info dotted">
+	<header class="l:grid m-zone:1 surface:1:info dotted">
 		<div class="navbar surface:3:info">
-			<nav class="l:flex">
+			<nav id="nav-1" class="l:flex" aria-label="Main navigation">
 				<p class="maki:inline">Nav 1</p>
 				<a href="./" title="CSS Tests">🧪</a>
 			</nav>
@@ -9,35 +9,37 @@
 		<div class="app-context surface:3:info">
 			<p class="maki:inline">App Context</p>
 		</div>
-	</div>
+	</header>
 	<details class="l:grid m-zone:2 gare:ouest surface:2:info">
-		<summary class="gare-control ravioli:3xs">Nav 2</summary>
+		<summary id="nav-2-label" class="gare-control ravioli:3xs"> Nav 2 </summary>
 		<ff-reveal class="gare-depot scroll:y layer:1">
-			<ol class="unstyled">
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-				<li class="raviolink">Item</li>
-			</ol>
+			<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
+				<ol class="unstyled">
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+					<li class="raviolink">Item</li>
+				</ol>
+			</nav>
 		</ff-reveal>
 	</details>
-	<div class="l:grid m-zone:3 surface:2:info dotted">
+	<main class="l:grid m-zone:3 surface:2:info dotted">
 		<div class="l:grid m-zone:main scroll:y surface:0:info">
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class="color:info">🚇 Metro</h1>
@@ -265,8 +267,8 @@
 				</ff-reveal>
 			</details>
 		</div>
-	</div>
-	<div class="l:grid m-zone:4">
+	</main>
+	<footer class="l:grid m-zone:4">
 		<details class="l:grid gare:nord">
 			<summary class="gare-control ravioli:3xs surface:3:info">
 				Footer
@@ -296,5 +298,5 @@
 				</ol>
 			</ff-reveal>
 		</details>
-	</div>
+	</footer>
 </div>

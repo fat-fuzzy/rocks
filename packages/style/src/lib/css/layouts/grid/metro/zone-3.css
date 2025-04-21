@@ -63,12 +63,13 @@
 		.page-context > nav > ul > li.ellipsis {
 			max-inline-size: 100%;
 		}
-	}
 
-	.m-zone\:main {
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
+		.m-zone\:main {
+			grid-template-areas:
+				'page-header'
+				'page-main';
+			grid-template-rows: auto 1fr;
+			max-block-size: unset;
+		}
 	}
 }
