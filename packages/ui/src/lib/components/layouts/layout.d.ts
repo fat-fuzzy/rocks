@@ -23,7 +23,3 @@ export type SidebarLayoutProps = LayoutProps & {
 	main: Snippet
 	side: Snippet
 }
-
-export type LayoutRailsProps = LayoutProps & {
-	children: Snippet
-}

@@ -8,7 +8,7 @@
 
 	const {RevealNav} = ui.recipes
 	const {HeaderMetro} = ui.drafts
-	const {LayoutMetro} = ui.content
+	const {LayoutGrid} = ui.content
 
 	type Props = {
 		children: Snippet
@@ -46,7 +46,7 @@
 	})
 </script>
 
-<LayoutMetro {sidenav} theme={themeClass}>
+<LayoutGrid grid="metro" {sidenav} theme={themeClass}>
 	<HeaderMetro
 		id="nav"
 		name="nav"
@@ -83,4 +83,4 @@
 	<div class="l:grid m-zone:4">
 		<Footer />
 	</div>
-</LayoutMetro>
+</LayoutGrid>

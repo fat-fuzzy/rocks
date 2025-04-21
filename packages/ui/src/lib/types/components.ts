@@ -55,8 +55,7 @@ export interface Raw {
 
 export interface Content {
 	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
-	LayoutMetro: typeof import('$lib/components/recipes/content/LayoutMetro.svelte').default
-	LayoutRails: typeof import('$lib/components/recipes/content/LayoutRails.svelte').default
+	LayoutGrid: typeof import('$lib/components/recipes/grid/LayoutGrid.svelte').default
 	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
 	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
 	PageMetro: typeof import('$lib/components/recipes/content/PageMetro.svelte').default

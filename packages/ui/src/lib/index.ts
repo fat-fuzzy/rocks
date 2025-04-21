@@ -62,8 +62,7 @@ import HeaderMetro from '$lib/components/recipes/header/HeaderMetro.svelte'
 /**
  * Recipes - Content
  */
-import LayoutMetro from '$lib/components/recipes/content/LayoutMetro.svelte'
-import LayoutRails from '$lib/components/recipes/content/LayoutRails.svelte'
+import LayoutGrid from '$lib/components/recipes/grid/LayoutGrid.svelte'
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 import PageMetro from '$lib/components/recipes/content/PageMetro.svelte'
@@ -165,8 +164,7 @@ const raw = {CSSMetro, CSSRailway, CSSSteam, CSSTgv, CSSTram}
 
 const content = {
 	Aside,
-	LayoutMetro,
-	LayoutRails,
+	LayoutGrid,
 	LayoutSidebar,
 	PageMain,
 	PageMetro,

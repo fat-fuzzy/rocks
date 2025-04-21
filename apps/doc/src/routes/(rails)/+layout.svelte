@@ -12,7 +12,7 @@
 	}
 	let {children}: Props = $props()
 
-	const {LayoutRails} = ui.content
+	const {LayoutGrid} = ui.content
 
 	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
@@ -33,7 +33,7 @@
 	})
 </script>
 
-<LayoutRails {sidenav} theme={themeClass}>
+<LayoutGrid grid="rails" {sidenav} theme={themeClass}>
 	<div class="main-header">
 		<Header
 			id="nav"
@@ -67,4 +67,4 @@
 	{:else}
 		<p class="feedback bare emoji:default">Coming Soon!</p>
 	{/if}
-</LayoutRails>
+</LayoutGrid>
