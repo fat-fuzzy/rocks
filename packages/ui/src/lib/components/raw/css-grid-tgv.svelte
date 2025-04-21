@@ -1,12 +1,12 @@
 <div class="l:grid:tgv">
 	<div class="l:grid v-zone:1 surface:1:neutral dotted">
-		<div class="navbar surface:2:neutral scroll:y">
+		<div class="navbar surface:3:neutral">
 			<nav class="l:flex">
 				<p class="maki:inline">Nav 1</p>
 				<a href="./" title="CSS Tests">🧪</a>
 			</nav>
 		</div>
-		<div class="app-context surface:2:neutral">
+		<div class="app-context surface:3:neutral">
 			<p class="maki:inline">App Context</p>
 		</div>
 	</div>
@@ -15,7 +15,7 @@
 	>
 		<div class="l:grid v-zone:main surface:1:neutral">
 			<div class="page-header ravioli:lg">
-				<h1 class="text:center">🚄 TGV</h1>
+				<h1 class="text:center color:neutral">🚄 TGV</h1>
 			</div>
 			<div class="page-main maki:inline size:lg">
 				<ul class="unstyled l:stack:lg">
@@ -57,7 +57,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="l:grid v-zone:footer surface:2:neutral">
+		<div class="l:grid v-zone:footer surface:3:neutral">
 			<p class="ravioli:2xs">Footer</p>
 		</div>
 	</div>

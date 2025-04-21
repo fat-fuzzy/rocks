@@ -1,6 +1,6 @@
 <div class="l:grid:railway">
-	<div class="l:grid r-zone:1 surface:2:highlight variant:outline">
-		<div class="navbar surface:2:highlight scroll:y">
+	<div class="l:grid r-zone:1">
+		<div class="navbar surface:3:highlight">
 			<nav class="l:flex">
 				<p class="maki:inline">Nav 1</p>
 				<a href="./" title="CSS Tests">🧪</a>
@@ -34,23 +34,70 @@
 			</ol>
 		</ff-reveal>
 	</details>
-	<div class="l:grid r-zone:3 surface:1:highlight variant:outline">
-		<div class="app-context surface:2:highlight">
+	<div class="l:grid r-zone:3">
+		<div class="app-context surface:3:highlight">
 			<p class="maki:inline">App Context</p>
 		</div>
 	</div>
 	<div
-		class="l:grid r-zone:4 snap:start surface:2:highlight variant:outline r-zone:playground align-self:stretch align-content:stretch"
+		class="l:grid r-zone:4 snap:start surface:2:highlight r-zone:playground align-self:stretch align-content:stretch"
 	>
 		<div class="l:grid r-zone:main scroll:y surface:0:highlight">
-			<div class="page-header">
-				<h1>🚞 Railway</h1>
+			<div class="page-header l:text:md ravioli:lg">
+				<h1 class="color:highlight">🚞 Railway</h1>
 			</div>
-			<div class="page-main">
-				<p>Page Content</p>
-				<div class="l:frame:video variant:dotted">
-					<p class="emoji:rainbow">Welcome!</p>
-				</div>
+			<div class="page-main maki:inline l:stack size:lg">
+				<article class="l:text:md">
+					<h2 id="section-1">The Passenger</h2>
+					<h3>Artist: Iggy Pop</h3>
+					<p>I am the passenger and I ride and I ride</p>
+					<p>I ride through the city's backsides</p>
+					<p>I see the stars come out of the sky</p>
+					<p>Yeah the bright and hollow sky</p>
+					<p>You know it looks so good tonight</p>
+					<br />
+					<p>I am the passenger</p>
+					<p>I stay under glass</p>
+					<p>I look through my window so bright</p>
+					<p>I see the stars come out tonight</p>
+					<p>I see the bright and hollow sky</p>
+					<p>Over the city's ripped backsides</p>
+					<p>And everything looks good tonight</p>
+					<p>Get into the car, we'll be the passenger</p>
+					<p>We'll ride through the city tonight</p>
+					<p>We'll see the city's ripped backside</p>
+					<p>We'll see the bright and hollow sky</p>
+					<p>We'll see the stars that shine so bright</p>
+					<p>Stars made for us tonight</p>
+					<p>Oh the passenger</p>
+					<p>Oh how he rides</p>
+					<p>Oh the passenger</p>
+					<p>He rides and he rides</p>
+					<p>He looks through his window</p>
+					<br />
+					<p>What does he see ?</p>
+					<p>He sees the bright and hollow sky</p>
+					<p>He sees the stars come out tonight</p>
+					<p>He sees the city's ripped backsides</p>
+					<p>He sees the winding ocean drive</p>
+					<p>And everything was made for you and me</p>
+					<p>All of it was made for you and me</p>
+					<p>Cause it belongs to you and me</p>
+					<p>So let's take a ride</p>
+					<p>And see what's mine</p>
+					<p>Oh the passenger</p>
+					<p>He rides and he rides</p>
+					<p>He sees things from under glass</p>
+					<p>He looks through his window side</p>
+					<p>He sees the things he knows are his</p>
+					<p>He sees the bright and hollow sky</p>
+					<p>He sees the city sleep at night</p>
+					<p>He sees the stars are out tonight</p>
+					<br />
+					<p>And all of it is yours and mine</p>
+					<p>And all of it is yours and mine</p>
+					<p>So let's ride and ride</p>
+				</article>
 				<details class="l:grid gare:nord surface:1:neutral">
 					<summary class="gare-control ravioli:3xs"> Article Context </summary>
 					<ff-reveal class="scroll:y layer:1">
@@ -70,7 +117,42 @@
 				</details>
 			</div>
 		</div>
-		<div class="l:grid page-context scroll:y surface:1:highlight">
+		<div class="l:grid page-context scroll:y surface:2:highlight">
+			<nav class="l:flex maki:block size:lg">
+				<h4 class="maki:inline size:sm">Stopping at:</h4>
+				<ul class="unstyled l:stack:sm l:burrito:md">
+					<li class="ellipsis">
+						<a href="#section-1" class="raviolink"> 09:45 - The Passenger </a>
+					</li>
+				</ul>
+				<h4 class="maki:inline size:sm">Take the blue line for:</h4>
+				<ul class="unstyled l:stack:sm l:burrito:md">
+					<li class="ellipsis">
+						<a href="./grid-metro.html#section-1" class="raviolink">
+							04:45 - Paris s’éveille
+						</a>
+					</li>
+					<li class="ellipsis">
+						<a
+							href="./grid-metro.html#section-2"
+							class="raviolink"
+							title="Should I Stay or Should I Go"
+						>
+							17:44 - Should I Stay or Should I Go
+						</a>
+					</li>
+					<li class="ellipsis">
+						<a href="./grid-metro.html#section-3" class="raviolink">
+							01:58 - Nightclubbing
+						</a>
+					</li>
+					<li class="ellipsis">
+						<a href="./grid-metro.html#section-4" class="raviolink">
+							06:07 - Sunday Morning
+						</a>
+					</li>
+				</ul>
+			</nav>
 			<details class="l:grid gare:nord surface:0:neutral">
 				<summary class="gare-control ravioli:3xs">Page Context</summary>
 				<ff-reveal class="scroll:y layer:1">
@@ -90,7 +172,7 @@
 			</details>
 		</div>
 	</div>
-	<div class="l:grid r-zone:5 surface:2:highlight">
+	<div class="l:grid r-zone:5 surface:3:highlight">
 		<p class="ravioli:2xs">Footer</p>
 	</div>
 </div>

@@ -10,7 +10,7 @@
 			<p class="maki:inline">App Context</p>
 		</div>
 	</div>
-	<details class="l:grid s-zone:2 gare:ouest surface:3:primary">
+	<details class="l:grid s-zone:2 gare:ouest surface:2:primary">
 		<summary class="gare-control ravioli:3xs">Nav 2</summary>
 		<ff-reveal class="gare-depot scroll:y layer:1 ravioli:md">
 			<ol class="unstyled">
@@ -36,7 +36,7 @@
 	>
 		<div class="l:grid s-zone:main scroll:y surface:1:primary">
 			<div class="page-header ravioli:lg">
-				<h1 class="l:text:md">🚂 Steam</h1>
+				<h1 class="color:primary">🚂 Steam</h1>
 			</div>
 			<div class="page-main">
 				<div
