@@ -39,6 +39,7 @@ body:has(.l\:grid\:railway) {
 	grid-template-rows: var(--ui-header-height) 1fr auto;
 	padding-block: 0 var(--ui-size);
 	padding-inline: var(--ui-size) var(--ui-size-sm);
+	position: relative;
 }
 
 @media screen and (min-width: 935px) {

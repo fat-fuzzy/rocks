@@ -26,12 +26,13 @@
 .t-zone\:2 > ff-reveal,
 .t-zone\:2 > .expanded > ff-reveal {
 	--max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) + 2 * var(--outline-offset-lg)
+		100vh - var(--ui-header-height) - var(--outline-offset-lg)
 	);
 	--inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
 	inline-size: var(--inline-size);
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
+	padding-block-end: var(--ui-size);
 }
 
 .t-zone\:2[class*='gare:'][open] > ff-reveal,
@@ -55,7 +56,7 @@
 
 @media screen and (min-width: 935px) {
 	.t-zone\:2 {
-		--max-block-size: calc(100vh - var(--ui-header-height) + var(--ui-size));
+		--max-block-size: calc(100% - var(--ui-header-height));
 		align-content: start;
 		inline-size: fit-content;
 		position: unset;
@@ -63,18 +64,17 @@
 		inline-size: var(--sidebar-width);
 	}
 
+	.t-zone\:2 > ff-reveal,
+	.t-zone\:2[open] > ff-reveal,
 	.t-zone\:2 > .expanded > ff-reveal,
 	.t-zone\:2 > .collapsed > ff-reveal {
 		position: static;
-		max-block-size: unset;
 		margin-block-start: var(--outline-offset-lg);
 		inline-size: 100%;
-		block-size: fit-content;
-		max-block-size: 100%;
+		block-size: var(--max-block-size);
 		box-shadow: unset;
 		padding: 0;
 		margin-inline-start: 0;
-		overflow: hidden auto;
 	}
 
 	.t-zone\:2:has(nav.collapsed) {
