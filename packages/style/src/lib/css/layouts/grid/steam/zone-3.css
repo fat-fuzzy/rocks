@@ -57,19 +57,15 @@
 		.page-context {
 			--sidebar-width: var(--layout-sidebar-sm);
 			position: unset;
-		}
-
-		&.s-zone\:playground,
-		&.s-zone\:playground .page-context,
-		&.s-zone\:playground .s-zone\:main {
 			max-block-size: var(--max-block-size);
 		}
-	}
 
-	.s-zone\:main {
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
+		.s-zone\:main {
+			grid-template-areas:
+				'page-header'
+				'page-main';
+			grid-template-rows: auto 1fr;
+			max-block-size: unset;
+		}
 	}
 }

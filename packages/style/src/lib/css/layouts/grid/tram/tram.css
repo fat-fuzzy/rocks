@@ -36,7 +36,7 @@ body:has(.l\:grid\:tram) {
 		't-zone-3   t-zone-3  t-zone-3'
 		't-zone-4   t-zone-4  t-zone-4';
 	grid-template-columns: auto 1fr auto;
-	grid-template-rows: var(--ui-header-height) 1fr auto;
+	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 	padding-block: 0 var(--ui-size);
 	padding-inline: var(--ui-size) var(--ui-size-sm);
 }

@@ -7,11 +7,6 @@
 	border-radius: 0;
 }
 
-[class*='gare:'] {
-	padding: 0;
-	margin: 0;
-}
-
 details[class*='gare:'] > ff-reveal,
 .l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
