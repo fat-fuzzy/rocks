@@ -39,6 +39,7 @@ body:has(.l\:grid\:steam) {
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 	padding-block: 0 var(--ui-size);
 	padding-inline: var(--ui-size) var(--ui-size-sm);
+	position: relative;
 }
 
 @media screen and (min-width: 935px) {

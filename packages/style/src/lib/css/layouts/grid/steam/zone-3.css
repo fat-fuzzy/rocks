@@ -17,6 +17,12 @@
 	.page-main {
 		grid-area: page-main;
 		padding-block-end: var(--ui-size);
+		max-inline-size: 100%;
+	}
+
+	.page-main > * {
+		--max-inline-size: calc(100% - var(--outline-offset-lg));
+		max-inline-size: var(--max-inline-size);
 	}
 
 	.page-context {

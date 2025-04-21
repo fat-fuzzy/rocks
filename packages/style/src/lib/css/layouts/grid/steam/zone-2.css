@@ -30,8 +30,7 @@
 	);
 	--inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
 	inline-size: var(--inline-size);
-	block-size: fit-content;
-	max-block-size: var(--max-block-size);
+	block-size: var(--max-block-size);
 	padding-block-end: var(--ui-size);
 }
 
@@ -94,6 +93,33 @@
 	box-shadow: var(--shadow-md);
 } */
 
+/* 
+
+// Railway Nav version
+@media screen and (min-width: 620px) {
+	.s-zone\:2 {
+		position: unset;
+	}
+
+	.s-zone\:2 > .expanded > ff-reveal,
+	.s-zone\:2[class*='gare:'][open] > ff-reveal,
+	.s-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+		--max-inline-size: calc(100vw - 2 * var(--ui-size));
+		position: absolute;
+		top: var(--ui-header-height);
+		left: var(--ui-size);
+		right: var(--ui-size);
+		z-index: var(--layout-z-index-reveal);
+		max-block-size: var(--overlay-height-sm);
+		max-inline-size: var(--max-inline-size);
+	}
+
+	.s-zone\:2 > ff-reveal,
+	.s-zone\:2 > .collapsed > ff-reveal {
+		--collapse-x: 0;
+	}
+} */
+
 @media screen and (min-width: 620px) {
 	.s-zone\:2 > .expanded > ff-reveal {
 		top: var(--ui-header-height);
@@ -114,7 +140,7 @@
 		inline-size: fit-content;
 		position: unset;
 		block-size: var(--max-block-size);
-		inline-size: var(--sidebar-width);
+		inline-size: fit-content;
 	}
 
 	.s-zone\:2 > ff-reveal,

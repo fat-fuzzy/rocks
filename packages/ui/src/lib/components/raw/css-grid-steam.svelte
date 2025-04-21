@@ -40,17 +40,20 @@
 	<div
 		class="l:grid s-zone:3 snap:start surface:2:primary variant:outline s-zone:playground align-self:stretch align-content:stretch"
 	>
-		<div class="l:grid s-zone:main scroll:y surface:0:primary">
-			<div class="page-header">
-				<h1>🚂 Steam</h1>
+		<div class="l:grid s-zone:main scroll:y surface:1:primary">
+			<div class="page-header ravioli:lg">
+				<h1 class="l:text:md">🚂 Steam</h1>
 			</div>
 			<div class="page-main">
-				<p>Page Content</p>
-				<div class="l:frame:video variant:dotted">
-					<p class="emoji:rainbow">Welcome!</p>
+				<div
+					class="l:frame:video justify:center surface:0:primary dotted font:2xl"
+				>
+					<p class="l:stack size:2xl emoji:sparkles align:center justify:end">
+						Add your interactive content here
+					</p>
 				</div>
 				<details class="l:grid gare:nord surface:1:neutral">
-					<summary class="gare-control ravioli:3xs"> Article Context </summary>
+					<summary class="gare-control ravioli:3xs"> Content details </summary>
 					<ff-reveal class="scroll:y layer:1">
 						<ol class="unstyled">
 							<li class="raviolink">Item</li>
@@ -70,7 +73,9 @@
 		</div>
 		<div class="l:grid page-context scroll:y surface:1:primary">
 			<details class="l:grid gare:nord surface:0:neutral">
-				<summary class="gare-control ravioli:3xs">Page Context</summary>
+				<summary class="gare-control ravioli:3xs">
+					Interaction Controls
+				</summary>
 				<ff-reveal class="scroll:y layer:1">
 					<ol class="unstyled">
 						<li class="raviolink">Item</li>
