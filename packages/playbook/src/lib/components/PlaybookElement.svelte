@@ -16,6 +16,7 @@
 	import PropsDoc from './PropsDoc.svelte'
 
 	const {PageMetro, PageMain} = ui.content
+	const {Zoomer} = ui.drafts
 	const {Magic} = ui.blocks
 
 	const {EscapeHtml} = ui.headless
@@ -106,34 +107,39 @@
 	let SpecifiedElement = $derived(categoryItems[category][title])
 </script>
 
-{#if category === 'raw'}
-	<PageMain {title} {description} {path} size="sm" layout="center">
-		<div class="scroll:y">
-			<GenericElement children={SpecifiedElement} />
+<PageMetro
+	{title}
+	{description}
+	{path}
+	nav={pageNav}
+	size="sm"
+	context={pageContext}
+	layout=""
+>
+	{#snippet main()}
+		<div class="l:text:md">
+			<h2 id="doc">Doc</h2>
 		</div>
-	</PageMain>
-{:else}
-	<PageMetro
-		{title}
-		{description}
-		{path}
-		nav={pageNav}
-		size="sm"
-		context={pageContext}
-		layout=""
-	>
-		{#snippet main()}
-			<div class="l:text:md">
-				<h2 id="doc">Doc</h2>
-			</div>
-			<EscapeHtml
-				id="doc"
-				html={content.html}
-				size="md"
-				margin="auto"
-				element="article"
-			/>
+		<EscapeHtml
+			id="doc"
+			html={content.html}
+			size="md"
+			margin="auto"
+			element="article"
+		/>
 
+		{#if category === 'raw'}
+			<Zoomer
+				{title}
+				{description}
+				{path}
+				size="sm"
+				layout="center"
+				cta="Open layout"
+			>
+				<GenericElement children={SpecifiedElement} />
+			</Zoomer>
+		{:else}
 			<section id="playbook" class="maki:block size:2xl">
 				<div class="l:text:lg size:xl">
 					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
@@ -155,19 +161,19 @@
 					</div>
 				</div>
 			</section>
-		{/snippet}
+		{/if}
+	{/snippet}
 
-		{#snippet aside()}
-			{#key category}
-				<PropsDoc meta={content.meta} />
-				<PropsDemo
-					{path}
-					{actionPath}
-					{redirect}
-					meta={content.meta}
-					categories={[category]}
-				/>
-			{/key}
-		{/snippet}
-	</PageMetro>
-{/if}
+	{#snippet aside()}
+		{#key category}
+			<PropsDoc meta={content.meta} />
+			<PropsDemo
+				{path}
+				{actionPath}
+				{redirect}
+				meta={content.meta}
+				categories={[category]}
+			/>
+		{/key}
+	{/snippet}
+</PageMetro>

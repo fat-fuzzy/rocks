@@ -89,6 +89,7 @@ import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
 import Aside from '$lib/components/recipes/content/Aside.svelte'
+import Zoomer from '$lib/components/recipes/content/Zoomer.svelte'
 import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
 import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
@@ -190,6 +191,7 @@ const drafts = {
 	PageNav,
 	RevealContext,
 	PageScrolly,
+	Zoomer,
 	Tabs,
 	Cookies,
 }
