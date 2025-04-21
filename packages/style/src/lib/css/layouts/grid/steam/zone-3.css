@@ -24,6 +24,9 @@
 		align-content: start;
 		position: relative;
 		padding-block-end: var(--ui-size);
+		max-block-size: var(--overlay-height-sm);
+		min-block-size: var(--overlay-height-xs);
+		overscroll-behavior-y: contain;
 	}
 
 	.s-zone\:main {
@@ -34,16 +37,7 @@
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
 		align-content: start;
-	}
-
-	&.s-zone\:playground .s-zone\:main {
 		max-block-size: var(--overlay-height-md);
-		overscroll-behavior-y: contain;
-	}
-
-	&.s-zone\:playground .page-context {
-		max-block-size: var(--overlay-height-sm);
-		min-block-size: var(--overlay-height-xs);
 		overscroll-behavior-y: contain;
 	}
 }
