@@ -1,12 +1,12 @@
 <div class="l:grid:metro">
-	<div class="l:grid m-zone:1 surface:2:info variant:outline">
-		<div class="navbar surface:2:info">
+	<div class="l:grid m-zone:1 surface:1:info dotted">
+		<div class="navbar surface:3:info">
 			<nav class="l:flex">
 				<p class="maki:inline">Nav 1</p>
 				<a href="./" title="CSS Tests">🧪</a>
 			</nav>
 		</div>
-		<div class="app-context surface:2:info">
+		<div class="app-context surface:3:info">
 			<p class="maki:inline">App Context</p>
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 			</ol>
 		</ff-reveal>
 	</details>
-	<div class="l:grid m-zone:3 surface:2:info variant:outline">
+	<div class="l:grid m-zone:3 surface:2:info dotted">
 		<div class="l:grid m-zone:main scroll:y surface:0:info">
 			<div class="page-header l:text:md ravioli:lg">
 				<h1>🚇 Metro</h1>
@@ -258,9 +258,11 @@
 			</details>
 		</div>
 	</div>
-	<div class="l:grid m-zone:4 surface:2:info">
-		<details class="l:grid gare:nord surface:2:info">
-			<summary class="gare-control ravioli:3xs">Footer</summary>
+	<div class="l:grid m-zone:4">
+		<details class="l:grid gare:nord">
+			<summary class="gare-control ravioli:3xs surface:3:info">
+				Footer
+			</summary>
 			<ff-reveal class="scroll:y layer:1">
 				<ol class="unstyled">
 					<li class="raviolink">Item</li>

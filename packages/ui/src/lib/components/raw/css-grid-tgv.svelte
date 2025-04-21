@@ -1,5 +1,5 @@
 <div class="l:grid:tgv">
-	<div class="l:grid v-zone:1 surface:1:neutral variant:outline">
+	<div class="l:grid v-zone:1 surface:1:neutral dotted">
 		<div class="navbar surface:2:neutral scroll:y">
 			<nav class="l:flex">
 				<p class="maki:inline">Nav 1</p>
@@ -11,7 +11,7 @@
 		</div>
 	</div>
 	<div
-		class="l:grid v-zone:2 surface:2:neutral variant:outline align-self:stretch align-content:stretch"
+		class="l:grid v-zone:2 surface:2:neutral align-self:stretch align-content:stretch"
 	>
 		<div class="l:grid v-zone:main surface:1:neutral">
 			<div class="page-header ravioli:lg">

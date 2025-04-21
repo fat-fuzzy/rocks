@@ -1,16 +1,16 @@
 <div class="l:grid:steam">
-	<div class="l:grid s-zone:1 surface:2:primary variant:outline">
-		<div class="navbar surface:2:primary scroll:y">
+	<div class="l:grid s-zone:1 surface:1:primary dotted">
+		<div class="navbar surface:3:primary scroll:y">
 			<nav class="l:flex">
 				<p class="maki:inline">Nav 1</p>
 				<a href="./" title="CSS Tests">🧪</a>
 			</nav>
 		</div>
-		<div class="app-context surface:2:primary">
+		<div class="app-context surface:3:primary">
 			<p class="maki:inline">App Context</p>
 		</div>
 	</div>
-	<details class="l:grid s-zone:2 gare:ouest surface:2:primary">
+	<details class="l:grid s-zone:2 gare:ouest surface:3:primary">
 		<summary class="gare-control ravioli:3xs">Nav 2</summary>
 		<ff-reveal class="gare-depot scroll:y layer:1 ravioli:md">
 			<ol class="unstyled">
@@ -32,7 +32,7 @@
 		</ff-reveal>
 	</details>
 	<div
-		class="l:grid s-zone:3 snap:start surface:2:primary variant:outline s-zone:playground align-self:stretch align-content:stretch"
+		class="l:grid s-zone:3 snap:start surface:3:primary dotted s-zone:playground align-self:stretch align-content:stretch"
 	>
 		<div class="l:grid s-zone:main scroll:y surface:1:primary">
 			<div class="page-header ravioli:lg">
@@ -65,7 +65,7 @@
 				</details>
 			</div>
 		</div>
-		<div class="l:grid page-context scroll:y surface:1:primary">
+		<div class="l:grid page-context scroll:y surface:2:primary">
 			<details class="l:grid gare:nord surface:0:neutral">
 				<summary class="gare-control ravioli:3xs">
 					Interaction Controls
@@ -87,7 +87,7 @@
 			</details>
 		</div>
 	</div>
-	<div class="l:grid s-zone:4 surface:2:primary">
+	<div class="l:grid s-zone:4 surface:3:primary">
 		<p class="ravioli:2xs">Footer</p>
 	</div>
 </div>

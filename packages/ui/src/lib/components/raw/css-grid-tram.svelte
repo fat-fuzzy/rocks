@@ -1,12 +1,12 @@
 <div class="l:grid:tram">
-	<div class="l:grid t-zone:1 surface:2:accent variant:outline">
-		<div class="navbar surface:2:accent scroll:y">
+	<div class="l:grid t-zone:1 surface:1:accent dotted">
+		<div class="navbar surface:3:accent scroll:y">
 			<nav class="l:flex">
 				<p class="maki:inline">Nav 1</p>
 				<a href="./" title="CSS Tests">🧪</a>
 			</nav>
 		</div>
-		<div class="app-context surface:2:accent">
+		<div class="app-context surface:3:accent">
 			<p class="maki:inline">App Context</p>
 		</div>
 	</div>
@@ -88,7 +88,7 @@
 			</details>
 		</div>
 	</div>
-	<div class="l:grid t-zone:4 surface:2:accent">
+	<div class="l:grid t-zone:4 surface:3:accent">
 		<p class="ravioli:2xs">Footer</p>
 	</div>
 </div>
