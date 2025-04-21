@@ -14,36 +14,45 @@
 		class="l:grid v-zone:2 surface:2:neutral variant:outline align-self:stretch align-content:stretch"
 	>
 		<div class="l:grid v-zone:main surface:1:neutral">
-			<div class="page-header">
-				<h1>🚄 TGV</h1>
+			<div class="page-header ravioli:lg">
+				<h1 class="text:center l:text:md">🚄 TGV</h1>
 			</div>
-			<div class="page-main">
-				<p>Page Content</p>
-				<ul class="unstyled">
+			<div class="page-main maki:inline size:lg">
+				<ul class="unstyled l:stack:lg">
 					<li
-						class="div l:frame:video emoji:rainbow justify:center surface:0:neutral variant:bare dotted font:2xl"
+						class="l:frame:video justify:center surface:0:neutral dotted font:2xl"
 					>
-						Welcome!
+						<p class="l:stack size:2xl emoji:default align:center">
+							Welcome to the TGV grid layout!
+						</p>
 					</li>
 					<li
-						class="div l:frame:video emoji:blocks justify:center surface:0:neutral variant:bare dotted font:2xl"
+						class="l:frame:video justify:center surface:0:neutral dotted font:2xl"
 					>
-						Section 1
+						<p class="l:stack size:2xl emoji:pause align:center">
+							Enjoy a fast and pleasant journey though the page
+						</p>
 					</li>
 					<li
-						class="div l:frame:video emoji:default justify:center surface:0:neutral variant:bare dotted font:2xl"
+						class="l:frame:video justify:center surface:0:neutral dotted font:2xl"
 					>
-						Section 2
+						<p class="l:stack size:2xl emoji:magic align:center">
+							Structure media content on wide sections
+						</p>
 					</li>
 					<li
-						class="div l:frame:video emoji:profile justify:center surface:0:neutral variant:bare dotted font:2xl"
+						class="l:frame:video justify:center surface:0:neutral dotted font:2xl"
 					>
-						Section 3
+						<p class="l:stack size:2xl emoji:wave align:center justify:end">
+							Keep it optimized and simple
+						</p>
 					</li>
 					<li
-						class="div l:frame:video emoji:success justify:center surface:0:neutral variant:bare dotted font:2xl"
+						class="l:frame:video justify:center surface:0:neutralx dotted font:2xl"
 					>
-						Section 4
+						<p class="l:stack size:2xl emoji:rainbow align:center justify:end">
+							And enjoy the ride!
+						</p>
 					</li>
 				</ul>
 			</div>
