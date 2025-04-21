@@ -52,15 +52,15 @@
 					<ol class="unstyled l:grid:auto size:xs">
 						<li>
 							<div
-								class="l:frame:square surface:4:accent dotted l:stack size:md text:center justify:center"
+								class="l:frame:square variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
-								<span class="emoji:recipes"></span>
+								<span class="emoji:day"></span>
 								<p>Welcome!</p>
 							</div>
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:4:accent dotted l:stack size:md text:center justify:center"
+								class="l:frame:square variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:moby"></span>
 								<p>See the Whales</p>
@@ -68,7 +68,7 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:4:accent dotted l:stack size:md text:center justify:center"
+								class="l:frame:square variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:tiger"></span>
 								<p>and the Tigers</p>
@@ -76,7 +76,7 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:4:accent dotted l:stack size:md text:center justify:center"
+								class="l:frame:square variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:otter"></span>
 								<p>and the Otters</p>
@@ -84,7 +84,7 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:4:accent dotted l:stack size:md text:center justify:center"
+								class="l:frame:square variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:turtle"></span>
 								<p>and the Turtles</p>
@@ -92,7 +92,7 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:4:accent dotted l:stack size:md text:center justify:center"
+								class="l:frame:square variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:ollie"></span>
 								<p>and don't forget the Octopuses</p>
@@ -100,7 +100,7 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:4:accent dotted l:stack size:md text:center justify:center"
+								class="l:frame:square variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:tram"></span>
 								<p>on the CSS Tram</p>
@@ -108,7 +108,7 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:4:accent dotted l:stack size:md text:center justify:center"
+								class="l:frame:square variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:rainbow"></span>
 								<p>Enjoy the ride!</p>
@@ -117,11 +117,11 @@
 					</ol>
 				</article>
 				<article>
-					<h2 id="section-2" class="color:warning">Halloween Tour</h2>
+					<h2 id="section-2">Halloween Tour</h2>
 					<ol class="unstyled l:grid:auto size:xs">
 						<li>
 							<div
-								class="l:frame:square surface:5:warning dotted l:stack size:md text:center justify:center"
+								class="l:frame:square surface:0:warning variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:fat-fuzzy"></span>
 								<p>Welcome ... if you Dare!</p>
@@ -129,23 +129,23 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:5:warning dotted l:stack size:md text:center justify:center"
+								class="l:frame:square surface:0:warning variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:vader"></span>
-								<p>See the Bugs</p>
+								<p>See the Weird Stuff</p>
 							</div>
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:5:warning dotted l:stack size:md text:center justify:center"
+								class="l:frame:square surface:0:warning variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
-								<span class="emoji:perf"></span>
+								<span class="emoji:turtle"></span>
 								<p>and the Perf issues</p>
 							</div>
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:5:warning dotted l:stack size:md text:center justify:center"
+								class="l:frame:square surface:0:warning variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:error"></span>
 								<p>and the Errors</p>
@@ -153,7 +153,15 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:5:warning dotted l:stack size:md text:center justify:center"
+								class="l:frame:square surface:0:warning variant:bare dotted layer:1 l:stack size:md text:center justify:center"
+							>
+								<span class="emoji:filters"></span>
+								<p>and the Garish Colors</p>
+							</div>
+						</li>
+						<li>
+							<div
+								class="l:frame:square surface:0:warning variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:not-found"></span>
 								<p>and don't forget the 404s</p>
@@ -161,7 +169,7 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:5:warning dotted l:stack size:md text:center justify:center"
+								class="l:frame:square surface:0:warning variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:tram"></span>
 								<p>on the CSS Tram</p>
@@ -169,7 +177,7 @@
 						</li>
 						<li>
 							<div
-								class="l:frame:square surface:5:warning dotted l:stack size:md text:center justify:center"
+								class="l:frame:square surface:0:warning variant:bare dotted layer:1 l:stack size:md text:center justify:center"
 							>
 								<span class="emoji:log"></span>
 								<p>Log an issue !</p>
