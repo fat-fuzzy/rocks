@@ -15,7 +15,7 @@
 	>
 		<div class="l:grid v-zone:main surface:1:neutral">
 			<div class="page-header ravioli:lg">
-				<h1 class="text:center l:text:md">🚄 TGV</h1>
+				<h1 class="text:center">🚄 TGV</h1>
 			</div>
 			<div class="page-main maki:inline size:lg">
 				<ul class="unstyled l:stack:lg">
