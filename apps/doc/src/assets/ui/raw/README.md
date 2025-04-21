@@ -7,7 +7,7 @@ props_style: {}
 
 ## What is Raw ????
 
-`Raw` components are [HTML/CSS]-only templates, the raw ingredients of a web page if you accept my analogy.
+`Raw` components are [HTML/CSS]-only templates, the raw ingredients of a web page if you accept the analogy.
 These templates are not meant to be used as drop-in components: they are testing grounds and guides.
 
 - `CSS Theme` is a simple test sheet for CSS theme values
