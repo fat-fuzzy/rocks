@@ -1,10 +1,6 @@
 import {buildNav} from '$data/nav'
 
-export const load = async ({locals, url, parent}) => {
-	// Main header nav
-	let nav = locals.nav
-	nav.actionPath = url.pathname
-
+export const load = async ({locals, url}) => {
 	let sidebar = buildNav(url.pathname.split('/')[1])
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.actionPath = url.pathname
@@ -13,7 +9,6 @@ export const load = async ({locals, url, parent}) => {
 	pageContext.actionPath = url.pathname
 
 	return {
-		nav,
 		sidebar,
 		pageContext,
 	}

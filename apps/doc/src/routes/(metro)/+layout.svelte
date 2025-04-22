@@ -18,24 +18,9 @@
 	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
-	let playgroundClass = $derived(
-		page.data.id && page.data.slug ? 'm-zone:playground' : '',
-	)
-
-	let playbookClass = $derived(
-		page.params.category && page.params.category !== 'raw'
-			? 'm-zone:playbook'
-			: '',
-	)
 
 	let brightness = $derived(appContext.brightness)
 	let contrast = $derived(appContext.contrast)
-	let pageClass = $derived(
-		ui.utils.format.getClassNameFromPathname(page.url.pathname),
-	)
-	let themeClass = $derived(
-		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
-	)
 	let preferences = $derived.by(() => {
 		let preferences = ui.constants.APP_SETTINGS
 		preferences.display[0].initial =
@@ -44,9 +29,32 @@
 			contrast === 'blend' ? 'active' : 'inactive'
 		return preferences
 	})
+
+	let areas = [
+		{
+			zone: zone1,
+			grid: true,
+			gare: 'nord',
+		},
+		{
+			zone: zone2,
+			grid: true,
+			gare: 'ouest',
+		},
+		{
+			zone: zone3,
+			grid: true,
+		},
+		{
+			zone: zone4,
+			grid: true,
+		},
+	]
 </script>
 
-<LayoutGrid grid="metro" {sidenav} theme={themeClass}>
+<LayoutGrid {areas} {sidenav} app={appContext} path={page.url.pathname} />
+
+{#snippet zone1()}
 	<HeaderMetro
 		id="nav"
 		name="nav"
@@ -61,26 +69,29 @@
 		{preferences}
 		breakpoint="xs"
 	/>
-	<div class="l:grid m-zone:2">
-		<RevealNav
-			{...sidenav}
-			position={false}
-			place="left"
-			scroll="y"
-			justify="evenly"
-			font="sm"
-			size="xs"
-			dismiss="outside"
-		/>
-	</div>
-	<div class={`l:grid m-zone:3 ${playgroundClass} ${playbookClass}`}>
-		{#if children}
-			{@render children()}
-		{:else}
-			<p class="feedback bare emoji:default">Coming Soon!</p>
-		{/if}
-	</div>
-	<div class="l:grid m-zone:4">
-		<Footer />
-	</div>
-</LayoutGrid>
+{/snippet}
+
+{#snippet zone2()}
+	<RevealNav
+		{...sidenav}
+		position={false}
+		place="left"
+		scroll="y"
+		justify="evenly"
+		font="sm"
+		size="xs"
+		dismiss="outside"
+	/>
+{/snippet}
+
+{#snippet zone3()}
+	{#if children}
+		{@render children()}
+	{:else}
+		<p class="feedback bare emoji:default">Coming Soon!</p>
+	{/if}
+{/snippet}
+
+{#snippet zone4()}
+	<Footer />
+{/snippet}

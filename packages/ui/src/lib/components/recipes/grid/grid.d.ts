@@ -1,13 +1,20 @@
 import type {Snippet} from 'svelte'
-import type {LayoutProps} from '$types'
+import type {LayoutProps, NavItem, PageProps} from '$types'
 
-export type LayoutGridProps = LayoutProps & {
-	grid: string
-	areas?: string
-	flex?: boolean
-	navs?: Snippet
-	content?: Snippet
-	header?: Snippet
-	actions?: Snippet
-	footer?: Snippet
+export type LayoutGridProps = GridProps & {
+	app?: {
+		reveal: UiRevealState
+		brightness: string
+		contrast: string
+		language?: string
+		cookies?: CookiePreferences
+	}
+	sidenav?: NavItem
+}
+
+export type PageGridProps = GridProps & {
+	context?: PageProps & {
+		reveal: UiRevealState
+		title?: string
+	}
 }

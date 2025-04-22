@@ -67,6 +67,7 @@ export const pages: {[key: string]: NavItem} = {
 		slug: 'play',
 		title: 'Sketches',
 		asset: 'rainbow',
+		layout: 'metro',
 		items: [
 			{
 				slug: 'projects',
@@ -89,6 +90,7 @@ export const pages: {[key: string]: NavItem} = {
 		title: 'UI Library',
 		asset: 'playbook',
 		label: 'Playbook',
+		layout: 'metro',
 		items: [
 			{
 				slug: 'tokens',
