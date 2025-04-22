@@ -33,8 +33,8 @@
 		onclick,
 	}: RevealMenuProps = $props()
 
-	let innerVariant = VARIANT_MATCH[variant]
-	let show = reveal ? `expanded ${place}` : `collapsed ${place}`
+	let innerVariant = $derived(VARIANT_MATCH[variant])
+	let show = $derived(reveal ? `expanded ${place}` : `collapsed ${place}`)
 	let menuClasses = $derived(
 		styleHelper.getStyles({
 			color,
