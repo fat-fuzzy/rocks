@@ -1,46 +1,30 @@
-<div class="l:grid:steam">
-	<header class="l:grid s-zone:1 surface:1:primary dotted">
-		<div class="navbar surface:3:primary scroll:y">
-			<nav id="nav-1" class="l:flex" aria-label="Main navigation">
-				<p class="maki:inline">Nav 1</p>
-				<a href="./" title="CSS Tests">🧪</a>
-			</nav>
-		</div>
-		<div class="app-context surface:3:primary">
-			<p class="maki:inline">App Context</p>
-		</div>
+<script lang="ts">
+	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
+	import SideNav from '$lib/components/raw/fixtures/nav-2.svelte'
+	import NavItems from '$lib/components/raw/fixtures/nav-2-emojis.svelte'
+	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
+	import Details from '$lib/components/raw/fixtures/details.svelte'
+
+	let title = '🚂 Steam'
+	let parent = 'steam'
+	let theme = 'primary'
+	let zone = 's-zone'
+</script>
+
+<div class={`l:grid:${parent}`}>
+	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
+		<MainNav {theme} />
+		<AppContext {theme} />
 	</header>
-	<details class="l:grid s-zone:2 gare:ouest surface:2:primary">
-		<summary id="nav-2-label" class="gare-control ravioli:3xs"> Nav 2 </summary>
-		<ff-reveal class="gare-depot scroll:y layer:1 ravioli:md">
-			<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
-				<ol class="unstyled">
-					<li class="raviolink justify:start emoji:bubbles">Bubbles Sketch</li>
-					<li class="raviolink justify:start emoji:day">Wonderland</li>
-					<li class="raviolink justify:start emoji:perf">Zapping Aliens</li>
-					<li class="raviolink justify:start emoji:rainbow">
-						Color Experiment
-					</li>
-					<li class="raviolink justify:start emoji:texture">Texture load</li>
-					<li class="raviolink justify:start emoji:ollie">Tiny creatures</li>
-					<li class="raviolink justify:start emoji:sparkles">Particles</li>
-					<li class="raviolink justify:start emoji:star">Stars Sketch</li>
-					<li class="raviolink justify:start emoji:tuning">Moving things</li>
-					<li class="raviolink justify:start emoji:warning">Sound effect</li>
-					<li class="raviolink justify:start emoji:matrix-3d">Feeling lucky</li>
-					<li class="raviolink justify:start emoji:projection">Explorations</li>
-					<li class="raviolink justify:start emoji:sparkles">More particles</li>
-					<li class="raviolink justify:start emoji:convolution">Shaders</li>
-				</ol>
-			</nav>
-		</ff-reveal>
-	</details>
+	<SideNav zone={`${zone}:2`} {theme} layout="grid" gare="ouest">
+		<NavItems />
+	</SideNav>
 	<div
-		class="l:grid s-zone:3 snap:start surface:3:primary dotted s-zone:playground align-self:stretch align-content:stretch"
+		class={`l:grid ${zone}:3 surface:2:${theme} snap:start align-self:stretch align-content:stretch dotted`}
 	>
-		<main class="l:grid s-zone:main scroll:y surface:1:primary">
-			<div class="page-header ravioli:lg">
-				<h1 class="color:primary">🚂 Steam</h1>
+		<main class={`l:grid ${zone}:main scroll:y surface:0:${theme}`}>
+			<div class="page-header l:text:md ravioli:lg">
+				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
 			<div class="page-main">
 				<div
@@ -50,48 +34,14 @@
 						Add your interactive content here
 					</p>
 				</div>
-				<details class="l:grid gare:nord surface:1:neutral">
-					<summary class="gare-control ravioli:3xs"> Content details </summary>
-					<ff-reveal class="scroll:y layer:1">
-						<ol class="unstyled">
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-							<li class="raviolink">Item</li>
-						</ol>
-					</ff-reveal>
-				</details>
+				<Details title="Content Details" {theme} layout="grid" gare="nord" />
 			</div>
 		</main>
-		<aside class="l:grid page-context scroll:y surface:2:primary">
-			<details class="l:grid gare:nord surface:0:neutral">
-				<summary class="gare-control ravioli:3xs">
-					Interaction Controls
-				</summary>
-				<ff-reveal class="scroll:y layer:1">
-					<ol class="unstyled">
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-						<li class="raviolink">Item</li>
-					</ol>
-				</ff-reveal>
-			</details>
+		<aside class={`l:grid page-context surface:1:${theme} scroll:y snap`}>
+			<Details title="Interaction Controls" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class="l:grid s-zone:4 surface:3:primary">
-		<p class="ravioli:2xs">Footer</p>
+	<footer class={`l:grid ${zone}:4`}>
+		<Details title="Footer" {theme} layout="grid" gare="nord" surface="3" />
 	</footer>
 </div>

@@ -1,21 +1,25 @@
-<div class="l:grid:tgv">
-	<header class="l:grid v-zone:1 surface:1:neutral dotted">
-		<div class="navbar surface:3:neutral">
-			<nav id="nav-1" class="l:flex" aria-label="Main navigation">
-				<p class="maki:inline">Nav 1</p>
-				<a href="./" title="CSS Tests">🧪</a>
-			</nav>
-		</div>
-		<div class="app-context surface:3:neutral">
-			<p class="maki:inline">App Context</p>
-		</div>
+<script lang="ts">
+	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
+	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
+	import Details from '$lib/components/raw/fixtures/details.svelte'
+
+	let title = '🚄 TGV'
+	let parent = 'tgv'
+	let theme = 'neutral'
+	let zone = 'v-zone'
+</script>
+
+<div class={`l:grid:${parent}`}>
+	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
+		<MainNav {theme} />
+		<AppContext {theme} />
 	</header>
 	<div
-		class="l:grid v-zone:2 surface:2:neutral align-self:stretch align-content:stretch"
+		class={`l:grid ${zone}:2 surface:2:${theme} align-self:stretch align-content:stretch`}
 	>
-		<main class="l:grid v-zone:main surface:1:neutral text:center">
+		<main class={`l:grid ${zone}:main surface:1:${theme} text:center`}>
 			<div class="page-header ravioli:lg">
-				<h1 class="color:neutral">🚄 TGV</h1>
+				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
 			<article class="page-main maki:inline size:lg">
 				<ul class="unstyled l:stack:lg">
@@ -47,8 +51,8 @@
 				</ul>
 			</article>
 		</main>
-		<footer class="l:grid v-zone:footer surface:3:neutral">
-			<p class="ravioli:2xs">Footer</p>
+		<footer class={`l:grid ${zone}:footer surface:3:${theme}`}>
+			<Details title="Footer" {theme} layout="grid" gare="nord" surface="3" />
 		</footer>
 	</div>
 </div>
