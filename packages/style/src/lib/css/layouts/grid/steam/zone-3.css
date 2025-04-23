@@ -10,19 +10,12 @@
 		'page-context';
 	grid-template-rows: 1fr auto;
 
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
+
 	> .page-header {
 		grid-area: page-header;
-	}
-
-	> .page-main {
-		grid-area: page-main;
-		padding-block-end: var(--ui-size);
-		max-inline-size: 100%;
-	}
-
-	> .page-main > * {
-		--max-inline-size: calc(100% - var(--outline-offset-lg));
-		max-inline-size: var(--max-inline-size);
 	}
 
 	> .page-context {
@@ -53,6 +46,17 @@
 		align-content: start;
 		max-block-size: var(--overlay-height-md);
 		overscroll-behavior-y: contain;
+
+		> .page-main {
+			grid-area: page-main;
+			padding-block-end: var(--ui-size);
+			max-inline-size: 100%;
+		}
+
+		> .page-main > * {
+			--max-inline-size: calc(100% - var(--outline-offset-lg));
+			max-inline-size: var(--max-inline-size);
+		}
 	}
 }
 

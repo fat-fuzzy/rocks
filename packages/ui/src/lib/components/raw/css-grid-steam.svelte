@@ -26,15 +26,22 @@
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
-			<div class="page-main">
+			<div class="page-main l:flex justify:center">
 				<div
 					class="l:frame:video justify:center surface:0:primary dotted font:2xl"
 				>
-					<p class="l:stack size:2xl emoji:sparkles align:center justify:end">
-						Add your interactive content here
+					<p class="emoji:sparkles text:center justify:end">
+						Add your
+						<span>interactive content </span>
+						<span>here</span>
 					</p>
 				</div>
-				<Details title="Content Details" {theme} layout="grid" gare="nord" />
+				<Details
+					title="Content Details"
+					{theme}
+					layout="grid w:full"
+					gare="nord"
+				/>
 			</div>
 		</main>
 		<aside class={`l:grid page-context surface:1:${theme} scroll:y snap`}>

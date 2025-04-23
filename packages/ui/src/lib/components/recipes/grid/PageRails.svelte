@@ -41,8 +41,17 @@
 		tram: 't-zone',
 	}
 
+	const mainClasses: {[key: string]: string} = {
+		metro: '',
+		railway: '',
+		steam: 'l:flex justify:center',
+		tgv: '',
+		tram: '',
+	}
+
 	let zoneId = $derived(zones[layout] ?? 'zone')
 	let contextClass = $derived(nav?.length || aside ? 'page-context' : 'empty')
+	let mainClass = $derived(mainClasses[layout])
 </script>
 
 <Head pageName={currentPage} {title} {description} />
@@ -56,7 +65,7 @@
 		<PageHeader {...header} size={size as UiSize} {justify} />
 	</div>
 
-	<div class="page-main">
+	<div class={`page-main ${mainClass}`}>
 		{@render main()}
 
 		{#if footer}

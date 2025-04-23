@@ -22,6 +22,7 @@ body:has(.l\:grid\:metro) {
 	);
 	inline-size: 100%;
 	block-size: 100vh;
+	block-size: -webkit-fill-available;
 	grid-template-areas:
 		'm-zone-2   m-zone-1  m-zone-1'
 		'm-zone-3   m-zone-3  m-zone-3'

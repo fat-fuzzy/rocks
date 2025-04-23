@@ -19,6 +19,7 @@ body:has(.l\:grid\:steam) {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
 	inline-size: 100%;
 	block-size: 100vh;
+	block-size: -webkit-fill-available;
 	grid-template-areas:
 		's-zone-2   s-zone-1  s-zone-1'
 		's-zone-3   s-zone-3  s-zone-3'

@@ -12,6 +12,10 @@
 		1fr
 		minmax(auto, var(--overlay-height-3xs));
 
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
+
 	> .page-context {
 		--sidebar-width: 100%;
 		grid-area: page-context;
