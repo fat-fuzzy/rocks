@@ -16,10 +16,10 @@ importers:
         version: link:packages/config
       commitizen:
         specifier: ^4.3.0
-        version: 4.3.0(@types/node@22.7.8)(typescript@5.6.3)
+        version: 4.3.0
       cz-conventional-changelog:
         specifier: ^3.3.0
-        version: 3.3.0(@types/node@22.7.8)(typescript@5.6.3)
+        version: 3.3.0
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -188,7 +188,7 @@ importers:
         version: 3.0.0
       commitizen:
         specifier: ^4.3.0
-        version: 4.3.0(@types/node@22.7.8)(typescript@5.6.3)
+        version: 4.3.0
       conventional-commit-types:
         specifier: ^3.0.0
         version: 3.0.0
@@ -201,10 +201,6 @@ importers:
       word-wrap:
         specifier: ^1.2.5
         version: 1.2.5
-    optionalDependencies:
-      '@commitlint/load':
-        specifier: ^19.4.0
-        version: 19.4.0(@types/node@22.7.8)(typescript@5.6.3)
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
@@ -233,6 +229,10 @@ importers:
       semver:
         specifier: 7.7.1
         version: 7.7.1
+    optionalDependencies:
+      '@commitlint/load':
+        specifier: ^19.4.0
+        version: 19.4.0(@types/node@22.7.8)(typescript@5.6.3)
 
   packages/gfx:
     devDependencies:
@@ -334,7 +334,7 @@ importers:
         version: 4.1.1(picomatch@4.0.2)(svelte@5.16.0)(typescript@5.6.3)
       svelte-preprocess:
         specifier: ^6.0.3
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.1))(postcss@8.5.1)(sass@1.80.3)(svelte@5.16.0)(typescript@5.6.3)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(sass@1.80.3)(svelte@5.16.0)(typescript@5.6.3)
       tslib:
         specifier: ^2.8.0
         version: 2.8.0
@@ -451,7 +451,7 @@ importers:
         version: 4.1.1(picomatch@4.0.2)(svelte@5.16.0)(typescript@5.6.3)
       svelte-preprocess:
         specifier: ^6.0.3
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.1))(postcss@8.5.1)(sass@1.80.3)(svelte@5.16.0)(typescript@5.6.3)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(sass@1.80.3)(svelte@5.16.0)(typescript@5.6.3)
       tslib:
         specifier: ^2.8.0
         version: 2.8.0
@@ -536,7 +536,7 @@ importers:
         version: 5.0.2(@sveltejs/kit@2.15.0(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.0)(vite@6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0)))(svelte@5.16.0)(vite@6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0)))(wrangler@3.67.1(@cloudflare/workers-types@4.20250204.0))
       '@sveltejs/enhanced-img':
         specifier: ^0.3.9
-        version: 0.3.9(rollup@4.40.0)(svelte@5.16.0)(vite@6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0))
+        version: 0.3.9(rollup@4.24.0)(svelte@5.16.0)(vite@6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0))
       '@sveltejs/kit':
         specifier: ^2.15.0
         version: 2.15.0(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.0)(vite@6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0)))(svelte@5.16.0)(vite@6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0))
@@ -8056,14 +8056,6 @@ snapshots:
     optionalDependencies:
       rollup: 4.24.0
 
-  '@rollup/pluginutils@5.1.0(rollup@4.40.0)':
-    dependencies:
-      '@types/estree': 1.0.6
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-    optionalDependencies:
-      rollup: 4.40.0
-
   '@rollup/rollup-android-arm-eabi@4.24.0':
     optional: true
 
@@ -8271,16 +8263,6 @@ snapshots:
       svelte-parse-markup: 0.1.5(svelte@5.16.0)
       vite: 6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0)
       vite-imagetools: 7.0.4(rollup@4.24.0)
-    transitivePeerDependencies:
-      - rollup
-
-  '@sveltejs/enhanced-img@0.3.9(rollup@4.40.0)(svelte@5.16.0)(vite@6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0))':
-    dependencies:
-      magic-string: 0.30.11
-      svelte: 5.16.0
-      svelte-parse-markup: 0.1.5(svelte@5.16.0)
-      vite: 6.2.6(@types/node@22.7.8)(jiti@1.21.6)(sass@1.80.3)(terser@5.31.3)(yaml@2.5.0)
-      vite-imagetools: 7.0.4(rollup@4.40.0)
     transitivePeerDependencies:
       - rollup
 
@@ -9205,10 +9187,10 @@ snapshots:
 
   commander@7.2.0: {}
 
-  commitizen@4.3.0(@types/node@22.7.8)(typescript@5.6.3):
+  commitizen@4.3.0:
     dependencies:
       cachedir: 2.3.0
-      cz-conventional-changelog: 3.3.0(@types/node@22.7.8)(typescript@5.6.3)
+      cz-conventional-changelog: 3.3.0
       dedent: 0.7.0
       detect-indent: 6.1.0
       find-node-modules: 2.1.3
@@ -9432,10 +9414,10 @@ snapshots:
 
   culori@4.0.1: {}
 
-  cz-conventional-changelog@3.3.0(@types/node@22.7.8)(typescript@5.6.3):
+  cz-conventional-changelog@3.3.0:
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.3.0(@types/node@22.7.8)(typescript@5.6.3)
+      commitizen: 4.3.0
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
@@ -11714,6 +11696,14 @@ snapshots:
     optionalDependencies:
       postcss: 8.5.1
 
+  postcss-load-config@3.1.4(postcss@8.5.3):
+    dependencies:
+      lilconfig: 2.1.0
+      yaml: 1.10.2
+    optionalDependencies:
+      postcss: 8.5.3
+    optional: true
+
   postcss-logical@8.0.0(postcss@8.5.1):
     dependencies:
       postcss: 8.5.1
@@ -12891,6 +12881,15 @@ snapshots:
       sass: 1.80.3
       typescript: 5.6.3
 
+  svelte-preprocess@6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(sass@1.80.3)(svelte@5.16.0)(typescript@5.6.3):
+    dependencies:
+      svelte: 5.16.0
+    optionalDependencies:
+      postcss: 8.5.3
+      postcss-load-config: 3.1.4(postcss@8.5.3)
+      sass: 1.80.3
+      typescript: 5.6.3
+
   svelte2tsx@0.7.13(svelte@5.16.0)(typescript@5.6.3):
     dependencies:
       dedent-js: 1.0.1
@@ -13220,14 +13219,6 @@ snapshots:
   vite-imagetools@7.0.4(rollup@4.24.0):
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.24.0)
-      imagetools-core: 7.0.1
-      sharp: 0.33.4
-    transitivePeerDependencies:
-      - rollup
-
-  vite-imagetools@7.0.4(rollup@4.40.0):
-    dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.40.0)
       imagetools-core: 7.0.1
       sharp: 0.33.4
     transitivePeerDependencies:
