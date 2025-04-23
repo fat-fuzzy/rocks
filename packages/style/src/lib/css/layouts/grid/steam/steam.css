@@ -3,16 +3,8 @@
  */
 
 html:has(.l\:grid\:steam) {
-	--hue: var(--color-theme-primary);
-	--lightness-scrollbar: var(--lightness-base);
-	--chroma-scrollbar: var(--chroma-base);
-	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
-	--thumb: var(--ink);
 	height: -webkit-fill-available;
-	scrollbar-gutter: stable;
-	scrollbar-width: thin;
-	scrollbar-color: var(--thumb) var(--track);
-	/* scroll-snap-type: y proximity; */
+	overflow: hidden;
 }
 
 body:has(.l\:grid\:steam) {
@@ -26,15 +18,13 @@ body:has(.l\:grid\:steam) {
 .l\:grid\:steam {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
 	inline-size: 100%;
-	min-block-size: 100vh;
+	block-size: 100vh;
 	grid-template-areas:
 		's-zone-2   s-zone-1  s-zone-1'
 		's-zone-3   s-zone-3  s-zone-3'
 		's-zone-4   s-zone-4  s-zone-4';
 	grid-template-columns: auto 1fr auto;
-	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
-	padding-block: 0 var(--ui-size);
-	padding-inline: var(--ui-size) var(--ui-size-sm);
+	grid-template-rows: var(--ui-header-height) 1fr auto;
 	position: relative;
 }
 

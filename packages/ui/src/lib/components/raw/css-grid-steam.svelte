@@ -20,7 +20,7 @@
 		<NavItems />
 	</SideNav>
 	<div
-		class={`l:grid ${zone}:3 surface:2:${theme} snap:start align-self:stretch align-content:stretch dotted`}
+		class={`l:grid ${zone}:3 surface:2:${theme} scroll:y snap:start align-self:stretch align-content:stretch dotted`}
 	>
 		<main class={`l:grid ${zone}:main scroll:y surface:0:${theme}`}>
 			<div class="page-header l:text:md ravioli:lg">
