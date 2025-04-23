@@ -168,8 +168,8 @@
 		overflow: auto;
 		transform: scaleY(1);
 		padding-block: var(--gap);
-		block-size: max-content;
-		min-block-size: 100%;
+		block-size: 100%;
+		max-block-size: 100vh;
 		& > * {
 			inline-size: 100%;
 			block-size: 100%;
