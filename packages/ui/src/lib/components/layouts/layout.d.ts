@@ -16,6 +16,7 @@ export type GridProps = LayoutProps & {
 		zone: Snippet
 		grid?: boolean
 		gare?: string
+		scroll?: string
 	}[]
 }
 

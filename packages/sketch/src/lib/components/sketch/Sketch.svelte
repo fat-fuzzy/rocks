@@ -24,7 +24,7 @@
 	import actor from './actor.svelte'
 
 	const {Feedback} = ui.blocks
-	const {PageMetro} = ui.content
+	const {PageRails} = ui.content
 
 	let {
 		scene,
@@ -234,7 +234,7 @@
 	})
 </script>
 
-<PageMetro
+<PageRails
 	pageName={meta.categories[0]}
 	{title}
 	description={meta.description}
@@ -242,6 +242,7 @@
 	nav={page.data.pageNav}
 	{context}
 	{dimensions}
+	layout="steam"
 >
 	{#snippet main()}
 		<div class={frameClasses}>
@@ -335,7 +336,7 @@
 			{@render mainFooter()}
 		{/if}
 	{/snippet}
-</PageMetro>
+</PageRails>
 
 <!-- <article class="l:grid:sketch bp:xs size:sm media"></article> -->
 

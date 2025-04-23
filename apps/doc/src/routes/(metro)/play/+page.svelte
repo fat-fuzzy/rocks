@@ -2,7 +2,7 @@
 	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageMetro} = ui.content
+	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 
 	let pageContext = $derived({...$page.data.pageContext, title: 'On this Page'})
@@ -16,16 +16,16 @@
 	// let tags = new Set(sketches.reduce((acc, {tags}) => [...acc, ...tags], []).filter((tag)=> tag !== 'webgl' && tag !== 'webglfundamentals'))
 </script>
 
-<PageMetro
+<PageRails
 	{title}
 	{description}
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.pageNav}
 	context={pageContext}
-	layout=""
+	layout="metro"
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" />
 	{/snippet}
-</PageMetro>
+</PageRails>

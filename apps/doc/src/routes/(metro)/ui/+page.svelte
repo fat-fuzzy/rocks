@@ -5,7 +5,7 @@
 
 	const {PlaybookCollection} = playbook
 
-	const {PageMetro} = ui.content
+	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 	let title = 'Fat Fuzzy UI'
 	let description = `${title} | Doc`
@@ -18,14 +18,14 @@
 	let pageContext = $derived({...page.data.pageContext, title: 'On this Page'})
 </script>
 
-<PageMetro
+<PageRails
 	{title}
 	{description}
 	size="sm"
 	path={page.url.pathname}
 	nav={page.data.nav}
 	app={pageContext}
-	layout=""
+	layout="metro"
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} html={content.html} size="md" element="section" />
@@ -49,4 +49,4 @@
 			</PlaybookCollection>
 		{/each}
 	{/snippet}
-</PageMetro>
+</PageRails>

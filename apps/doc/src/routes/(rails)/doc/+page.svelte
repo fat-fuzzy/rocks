@@ -25,7 +25,7 @@
 	nav={page.data.nav}
 	app={appContext}
 	dimensions="twin"
-	layout=""
+	layout="tram"
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" margin="auto" />

@@ -57,7 +57,7 @@ import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
 import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
-import HeaderMetro from '$lib/components/recipes/header/HeaderMetro.svelte'
+import HeaderGrid from '$lib/components/recipes/header/HeaderGrid.svelte'
 
 /**
  * Recipes - Content
@@ -65,8 +65,7 @@ import HeaderMetro from '$lib/components/recipes/header/HeaderMetro.svelte'
 import LayoutGrid from '$lib/components/recipes/grid/LayoutGrid.svelte'
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
-import PageMetro from '$lib/components/recipes/content/PageMetro.svelte'
-import PageRails from '$lib/components/recipes/content/PageRails.svelte'
+import PageRails from '$lib/components/recipes/grid/PageRails.svelte'
 import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
 
 /**
@@ -167,7 +166,6 @@ const content = {
 	LayoutGrid,
 	LayoutSidebar,
 	PageMain,
-	PageMetro,
 	PageRails,
 }
 
@@ -184,7 +182,7 @@ const drafts = {
 	ScrollyItem,
 	Breadcrumbs,
 	HeaderNav,
-	HeaderMetro,
+	HeaderGrid,
 	Settings,
 	PageNav,
 	RevealContext,

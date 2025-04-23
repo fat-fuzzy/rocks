@@ -10,8 +10,8 @@ export const load = async ({parent, params}) => {
 	if (!meta) {
 		throw error(404, {message: 'Sketch not found'})
 	}
-
-	return meta
+	meta
+	return {meta, layout: 'steam'}
 }
 
 export const actions = parentActions

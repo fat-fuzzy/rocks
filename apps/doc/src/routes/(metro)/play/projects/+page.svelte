@@ -2,7 +2,7 @@
 	import {page} from '$app/stores'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageMetro} = ui.content
+	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 
 	const path = $derived($page.url.pathname)
@@ -20,14 +20,14 @@
 	)
 </script>
 
-<PageMetro
+<PageRails
 	pageName="Projects"
 	{title}
 	{description}
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.pageNav}
-	layout=""
+	layout="metro"
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" />
@@ -72,4 +72,4 @@
 			</div>
 		{/if}
 	{/snippet}
-</PageMetro>
+</PageRails>

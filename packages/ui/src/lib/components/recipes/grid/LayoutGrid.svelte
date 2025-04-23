@@ -10,14 +10,25 @@
 	let themeClass = $derived(
 		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
 	)
+
+	const zones: {[key: string]: string} = {
+		metro: 'm-zone',
+		railway: 'r-zone',
+		steam: 's-zone',
+		tgv: 'v-zone',
+		tram: 't-zone',
+	}
+
+	let zoneId = $derived(zones[sidenav.layout] ?? 'zone')
 </script>
 
 <div class={`l:grid:${sidenav.layout} ${themeClass}`}>
-	{#each areas as { zone, grid, gare }, i}
+	{#each areas as { zone, grid, gare, scroll }, i}
 		{@const gareClass = gare ? `gare:${gare}` : ''}
-		{@const gridClass = grid ? `l:grid:${grid}` : ''}
+		{@const gridClass = grid ? `l:grid` : ''}
+		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 
-		<div class={`m-zone:${i + 1} ${gridClass} ${gareClass}`}>
+		<div class={`${zoneId}:${i + 1} ${gridClass} ${gareClass} ${scrollClass}`}>
 			{@render zone()}
 		</div>
 	{/each}

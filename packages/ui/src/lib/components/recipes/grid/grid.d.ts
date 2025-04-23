@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {LayoutProps, NavItem, PageProps} from '$types'
+import type {LayoutProps, NavItem, PageProps, GridProps} from '$types'
 
 export type LayoutGridProps = GridProps & {
 	app?: {

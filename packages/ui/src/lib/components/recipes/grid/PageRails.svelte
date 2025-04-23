@@ -7,10 +7,10 @@
 
 	let {
 		id = 'main',
-		title = 'PageMetro',
+		title = 'PageRails',
 		path = '',
 		hash,
-		description = `Metro page layout with header, main content and placeable context areas`,
+		description = `Metro layout (zones 1-4)`,
 		pageName,
 		size,
 		dimensions,
@@ -20,6 +20,7 @@
 		aside,
 		footer,
 		context,
+		layout = 'metro',
 	}: PageRailsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
@@ -31,6 +32,17 @@
 		main: headerMain,
 		layout: 'flex',
 	})
+
+	const zones: {[key: string]: string} = {
+		metro: 'm-zone',
+		railway: 'r-zone',
+		steam: 's-zone',
+		tgv: 'v-zone',
+		tram: 't-zone',
+	}
+
+	let zoneId = $derived(zones[layout] ?? 'zone')
+	let contextClass = $derived(nav?.length || aside ? 'page-context' : 'empty')
 </script>
 
 <Head pageName={currentPage} {title} {description} />
@@ -38,7 +50,8 @@
 {#snippet headerMain()}
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
-<main {id} class="l:grid m-zone:main scroll:y">
+
+<main {id} class={`l:grid ${zoneId}:main scroll:y`}>
 	<div class="page-header">
 		<PageHeader {...header} size={size as UiSize} {justify} />
 	</div>
@@ -52,7 +65,10 @@
 	</div>
 </main>
 
-<div id={`context-${id}`} class={`l:grid page-context scroll:y ${mediaClass}`}>
+<div
+	id={`context-${id}`}
+	class={`l:grid ${contextClass} scroll:y ${mediaClass}`}
+>
 	{#if nav && nav.length > 0}
 		<PageNav id="page-nav" {hash} items={nav} />
 	{/if}

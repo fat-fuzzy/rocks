@@ -18,7 +18,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	app={appContext}
-	layout=""
+	layout="tram"
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">

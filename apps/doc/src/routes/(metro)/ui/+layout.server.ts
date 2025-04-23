@@ -5,13 +5,15 @@ import pages from '$data/pages'
 const page = 'ui'
 let markdowns = assets.markdowns
 
-export const load = async ({locals, params}) => {
+export const load = async ({locals, params, parent}) => {
+	let {sidebar} = await parent()
 	let content = null
 
 	let component = params.component
 	let category = params.category
 
 	let slug = component ? component : category
+	sidebar.layout = slug ? 'steam' : sidebar.layout
 
 	if (!slug) {
 		content = await pages.fetchMarkdowns(page)

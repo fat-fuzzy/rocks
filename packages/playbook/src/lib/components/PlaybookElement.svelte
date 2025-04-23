@@ -15,7 +15,7 @@
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
-	const {PageMetro, PageMain} = ui.content
+	const {PageRails} = ui.content
 	const {Zoomer} = ui.drafts
 	const {Magic} = ui.blocks
 
@@ -107,14 +107,14 @@
 	let SpecifiedElement = $derived(categoryItems[category][title])
 </script>
 
-<PageMetro
+<PageRails
 	{title}
 	{description}
 	{path}
 	nav={pageNav}
 	size="sm"
 	context={pageContext}
-	layout=""
+	layout="steam"
 >
 	{#snippet main()}
 		<div class="l:text:md">
@@ -176,4 +176,4 @@
 			/>
 		{/key}
 	{/snippet}
-</PageMetro>
+</PageRails>

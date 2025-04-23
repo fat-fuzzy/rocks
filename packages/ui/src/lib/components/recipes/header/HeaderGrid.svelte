@@ -16,14 +16,21 @@
 		main,
 		preferences,
 		context,
-		position,
-		placement,
+		layout,
 	}: HeaderProps = $props()
 
-	let positionClass = position ? `${position}:${placement}` : ''
+	const zones: {[key: string]: string} = {
+		metro: 'm-zone',
+		railway: 'r-zone',
+		steam: 's-zone',
+		tgv: 'v-zone',
+		tram: 't-zone',
+	}
+
+	let zoneId = $derived(zones[layout] ?? 'zone')
 </script>
 
-<header class={`${positionClass} l:grid m-zone:1 bg:inherit`}>
+<header class={`l:grid ${zoneId}:1 bg:inherit`}>
 	<div class="navbar">
 		<SkipLinks />
 		<HeaderNav

@@ -12,9 +12,10 @@ let learning = gfx.gl.sketches.learning
 	.filter((markdown) => !markdown.meta.draft)
 	.map((sketch) => sketch.meta)
 
-export const load = async ({locals, url}) => {
-	let sidebar = buildNav('play')
+export const load = async ({locals, url, params, parent}) => {
+	let {sidebar} = await parent()
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
+	sidebar.layout = params.slug ? 'steam' : sidebar.layout
 	sidebar.actionPath = url.pathname
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'learning') {

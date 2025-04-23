@@ -7,7 +7,7 @@
 	import Footer from '$lib/ui/Footer.svelte'
 
 	const {RevealNav} = ui.recipes
-	const {HeaderMetro} = ui.drafts
+	const {HeaderGrid} = ui.drafts
 	const {LayoutGrid} = ui.content
 
 	type Props = {
@@ -16,6 +16,7 @@
 	let {children}: Props = $props()
 
 	let mainNav = $derived(page.data.nav)
+	let gridLayout = $derived(page.data.layout ?? page.data.nav.layout)
 	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
 
@@ -44,6 +45,7 @@
 		{
 			zone: zone3,
 			grid: true,
+			scroll: 'y',
 		},
 		{
 			zone: zone4,
@@ -52,10 +54,16 @@
 	]
 </script>
 
-<LayoutGrid {areas} {sidenav} app={appContext} path={page.url.pathname} />
+<LayoutGrid
+	layout={gridLayout}
+	{areas}
+	{sidenav}
+	app={appContext}
+	path={page.url.pathname}
+/>
 
 {#snippet zone1()}
-	<HeaderMetro
+	<HeaderGrid
 		id="nav"
 		name="nav"
 		label="Menu"
@@ -68,6 +76,7 @@
 		context={appContext}
 		{preferences}
 		breakpoint="xs"
+		layout={sidenav.layout}
 	/>
 {/snippet}
 

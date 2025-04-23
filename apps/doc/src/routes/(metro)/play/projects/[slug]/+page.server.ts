@@ -12,7 +12,7 @@ export const load = async ({parent, params, locals}) => {
 	}
 
 	let pageContext = locals.pageContext
-	return {meta, pageContext}
+	return {meta, pageContext, layout: 'steam'}
 }
 
 export const actions = parentActions
