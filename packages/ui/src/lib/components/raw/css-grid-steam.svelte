@@ -28,7 +28,7 @@
 			</div>
 			<div class="page-main l:flex justify:center">
 				<div
-					class="l:frame:video justify:center surface:0:primary dotted font:2xl"
+					class="l:frame:video justify:center surface:0:primary dotted font:2xl w:full"
 				>
 					<p class="emoji:sparkles text:center justify:end">
 						Add your

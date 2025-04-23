@@ -21,13 +21,15 @@ details[class*='gare:'] > ff-reveal,
  */
 details.gare\:ouest > summary,
 .l\:reveal.gare\:ouest > form > [aria-expanded] {
-	inline-size: max-content;
+	--sidebar-width: var(--layout-sidebar-collapsed);
+	inline-size: var(--sidebar-width, max-content);
 	max-inline-size: var(--max-inline-size);
 }
 
 details.gare\:ouest > ff-reveal,
 .l\:reveal > .collapsed > ff-reveal {
-	--collapse-x: -100%;
+	--sidebar-width: var(--layout-sidebar-collapsed);
+	--collapse-x: calc(-100% + var(--sidebar-width));
 	transform: translate(var(--collapse-x), 0);
 	transition: transform 250ms ease-in-out;
 }
@@ -35,13 +37,14 @@ details.gare\:ouest > ff-reveal,
 details[open].gare\:ouest > ff-reveal,
 .l\:reveal.gare\:ouest > .expanded > ff-reveal {
 	--collapse-x: 0;
+	--sidebar-width: var(--layout-sidebar-md);
 	transition: transform 200ms ease-out;
 }
 
 details.gare\:ouest > ff-reveal > *,
 .l\:reveal > .collapsed > ff-reveal > * {
-	--x-size: 0;
-	inline-size: var(--x-size);
+	--x-size: var(--sidebar-width);
+	max-inline-size: var(--x-size);
 	transition: inline-size 200ms ease-in-out;
 }
 
@@ -87,5 +90,10 @@ details[open].gare\:nord > ff-reveal > *,
 	.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 		--inline-size: var(---max-inline-size);
 		--collapse-x: 0;
+	}
+
+	details[open].gare\:ouest > ff-reveal > *,
+	.l\:reveal > .expanded > ff-reveal > * {
+		--x-size: var(--layout-sidebar-md);
 	}
 }

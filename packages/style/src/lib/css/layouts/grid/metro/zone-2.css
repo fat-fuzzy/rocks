@@ -30,21 +30,21 @@
 	);
 	--inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
 	inline-size: var(--inline-size);
-	position: relative;
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
 	padding-block-end: var(--ui-size);
 }
 
+.m-zone\:2 > .expanded > ff-reveal,
 .m-zone\:2[class*='gare:'][open] > ff-reveal,
 .m-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-	position: relative;
+	position: absolute;
+	top: var(--ui-header-height);
 	z-index: var(--layout-z-index-reveal);
 }
 
 @media screen and (min-width: 620px) {
 	.m-zone\:2 > .expanded > ff-reveal {
-		top: var(--ui-header-height);
 		inline-size: calc(100vw - 2 * var(--sidebar-width) + 4 * var(--ui-size));
 		z-index: var(--layout-z-index-reveal);
 	}
@@ -74,6 +74,12 @@
 		box-shadow: unset;
 		padding: 0;
 		margin-inline-start: 0;
+	}
+
+	.m-zone\:2 > .expanded > ff-reveal,
+	.m-zone\:2[class*='gare:'][open] > ff-reveal,
+	.m-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+		position: unset;
 	}
 
 	.m-zone\:2:has(nav.collapsed) {
