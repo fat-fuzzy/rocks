@@ -23,10 +23,6 @@ body:has(.l\:grid\:tram) {
 	flex-direction: column;
 }
 
-.app:has(.l\:grid\:tram) {
-	overflow: hidden;
-}
-
 .l\:grid\:tram {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
 	inline-size: 100%;

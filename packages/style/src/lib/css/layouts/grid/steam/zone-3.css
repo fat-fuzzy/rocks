@@ -35,6 +35,14 @@
 		overscroll-behavior-y: contain;
 	}
 
+	> .page-context.media\:video {
+		block-size: var(--overlay-height-md);
+	}
+
+	> .page-context.media\:square {
+		block-size: var(--overlay-height-sm);
+	}
+
 	> .s-zone\:main {
 		grid-area: s-zone-main;
 		grid-template-areas:

@@ -22,10 +22,6 @@ body:has(.l\:grid\:tgv) {
 	flex-direction: column;
 }
 
-.app:has(.l\:grid\:tgv) {
-	overflow: hidden;
-}
-
 .l\:grid\:tgv {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
 	inline-size: 100%;

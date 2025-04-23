@@ -30,6 +30,7 @@
 	);
 	--inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
 	inline-size: var(--inline-size);
+	position: relative;
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
 	padding-block-end: var(--ui-size);
@@ -67,7 +68,6 @@
 	.m-zone\:2[open] > ff-reveal,
 	.m-zone\:2 > .expanded > ff-reveal,
 	.m-zone\:2 > .collapsed > ff-reveal {
-		position: static;
 		margin-block-start: var(--outline-offset-lg);
 		inline-size: 100%;
 		block-size: var(--max-block-size);

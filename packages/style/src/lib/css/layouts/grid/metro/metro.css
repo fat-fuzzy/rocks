@@ -3,15 +3,8 @@
  */
 
 html:has(.l\:grid\:metro) {
-	--hue: var(--color-theme-primary);
-	--lightness-scrollbar: var(--lightness-base);
-	--chroma-scrollbar: var(--chroma-base);
-	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
-	--thumb: var(--ink);
 	height: -webkit-fill-available;
-	scrollbar-gutter: stable;
-	scrollbar-width: thin;
-	scrollbar-color: var(--thumb) var(--track);
+	overflow: hidden;
 }
 
 body:has(.l\:grid\:metro) {
@@ -20,10 +13,6 @@ body:has(.l\:grid\:metro) {
 	min-block-size: -webkit-fill-available;
 	display: flex;
 	flex-direction: column;
-}
-
-.app:has(.l\:grid\:metro) {
-	overflow: hidden;
 }
 
 .l\:grid\:metro {
@@ -38,9 +27,9 @@ body:has(.l\:grid\:metro) {
 		'm-zone-3   m-zone-3  m-zone-3'
 		'm-zone-4   m-zone-4  m-zone-4';
 	grid-template-columns: auto 1fr auto;
-	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
-	padding-block: 0 var(--ui-size);
-	padding-inline: var(--ui-size) var(--ui-size-sm);
+	grid-template-rows:
+		var(--ui-header-height) 1fr
+		auto;
 }
 
 @media screen and (min-width: 935px) {
