@@ -12,7 +12,7 @@
 	import {page} from '$app/state'
 
 	const {EscapeHtml} = ui.headless
-	const {PageMetro} = ui.content
+	const {PageRails} = ui.content
 	const {Magic} = ui.blocks
 
 	type Props = {
@@ -126,14 +126,14 @@
 {/snippet}
 
 {#if isPage}
-	<PageMetro
+	<PageRails
 		{title}
 		{description}
 		path={page.url.pathname}
 		nav={pageNav}
 		size="sm"
 		context={pageContext}
-		layout=""
+		layout="tram"
 	>
 		{#snippet main()}
 			<div class="l:text:md">
@@ -164,7 +164,7 @@
 				<PropsDemo {path} meta={content.meta} categories={[category]} />
 			{/key}
 		{/snippet}
-	</PageMetro>
+	</PageRails>
 {:else}
 	<section class="l:text:md">
 		<svelte:element this={`h${String(titleDepth)}`}>

@@ -103,12 +103,12 @@
 
 <style>
 	@media (max-width: 600px) {
-		/* Hide zoom button when there is no roo mto zoom  */
+		/* Hide zoom button when there is no room to zoom  */
 		:global(.l\:side:has(.button-zoom)) {
 			display: none;
 			flex-basis: 0;
 			flex-grow: 0;
-			& > * {
+			> * {
 				display: none;
 			}
 		}
@@ -125,7 +125,7 @@
 			block-size 0.3s ease-out,
 			overlay 0.5s ease-out allow-discrete,
 			display 0.5s ease-out allow-discrete;
-		& > * {
+		> * {
 			inline-size: 0;
 			block-size: 0;
 		}
@@ -140,11 +140,16 @@
 		overflow: auto;
 		transform: scaleY(1);
 		padding-block: var(--gap);
-		block-size: max-content;
-		min-block-size: 100%;
-		& > * {
+		block-size: 100%;
+		max-block-size: 100vh;
+		> * {
 			inline-size: 100%;
-			block-size: 100%;
+			block-size: fit-content;
+		}
+
+		> form {
+			position: relative;
+			top: calc(2 * var(--ui-size) + var(--outline-offset-lg));
 		}
 	}
 

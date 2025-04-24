@@ -57,18 +57,26 @@ import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
 import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
-import HeaderMetro from '$lib/components/recipes/header/HeaderMetro.svelte'
+import HeaderGrid from '$lib/components/recipes/header/HeaderGrid.svelte'
 
 /**
  * Recipes - Content
  */
-import LayoutMetro from '$lib/components/recipes/content/LayoutMetro.svelte'
-import LayoutRails from '$lib/components/recipes/content/LayoutRails.svelte'
+import LayoutGrid from '$lib/components/recipes/grid/LayoutGrid.svelte'
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
-import PageMetro from '$lib/components/recipes/content/PageMetro.svelte'
-import PageRails from '$lib/components/recipes/content/PageRails.svelte'
+import PageRails from '$lib/components/recipes/grid/PageRails.svelte'
 import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
+
+/**
+ * Raw - CSS Layout templates: use as guides, not as drop-in components
+ */
+import CSSTheme from '$lib/components/raw/css-theme.svelte'
+import CSSMetro from '$lib/components/raw/css-grid-metro.svelte'
+import CSSRailway from '$lib/components/raw/css-grid-railway.svelte'
+import CSSSteam from '$lib/components/raw/css-grid-steam.svelte'
+import CSSTgv from '$lib/components/raw/css-grid-tgv.svelte'
+import CSSTram from '$lib/components/raw/css-grid-tram.svelte'
 
 /**
  * Draft components
@@ -79,6 +87,7 @@ import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
 import Aside from '$lib/components/recipes/content/Aside.svelte'
+import Zoomer from '$lib/components/recipes/content/Zoomer.svelte'
 import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
 import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
@@ -150,17 +159,18 @@ const recipes = {
 	Header,
 }
 
+const raw = {CSSMetro, CSSRailway, CSSSteam, CSSTgv, CSSTram}
+
 const content = {
 	Aside,
-	LayoutMetro,
-	LayoutRails,
+	LayoutGrid,
 	LayoutSidebar,
 	PageMain,
-	PageMetro,
 	PageRails,
 }
 
 const drafts = {
+	CSSTheme,
 	Fieldset,
 	Popover,
 	// InputPassword,
@@ -172,11 +182,12 @@ const drafts = {
 	ScrollyItem,
 	Breadcrumbs,
 	HeaderNav,
-	HeaderMetro,
+	HeaderGrid,
 	Settings,
 	PageNav,
 	RevealContext,
 	PageScrolly,
+	Zoomer,
 	Tabs,
 	Cookies,
 }
@@ -193,6 +204,7 @@ export default {
 	blocks,
 	layouts,
 	recipes,
+	raw,
 	content,
 	utils,
 	forms,

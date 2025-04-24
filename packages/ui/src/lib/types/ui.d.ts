@@ -50,6 +50,7 @@ export type UiLayoutProps = {
 	justify?: string
 	size?: string
 	font?: string
+	theme?: string
 
 	scroll?: string
 	container?: string

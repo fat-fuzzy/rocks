@@ -11,10 +11,12 @@
 	import Block from './Block.svelte'
 	import Layout from './Layout.svelte'
 	import Recipe from './Recipe.svelte'
+	import Raw from './Raw.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 
-	const {PageMetro} = ui.content
+	const {PageRails} = ui.content
+	const {Zoomer} = ui.drafts
 	const {Magic} = ui.blocks
 
 	const {EscapeHtml} = ui.headless
@@ -56,6 +58,7 @@
 		blocks: ui.blocks,
 		layouts: ui.layouts,
 		recipes: ui.recipes,
+		raw: ui.raw,
 	}
 
 	// TODO: fix types
@@ -64,6 +67,7 @@
 		blocks: Block,
 		layouts: Layout,
 		recipes: Recipe,
+		raw: Raw,
 	}
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 
@@ -103,14 +107,14 @@
 	let SpecifiedElement = $derived(categoryItems[category][title])
 </script>
 
-<PageMetro
+<PageRails
 	{title}
 	{description}
 	{path}
 	nav={pageNav}
 	size="sm"
 	context={pageContext}
-	layout=""
+	layout="steam"
 >
 	{#snippet main()}
 		<div class="l:text:md">
@@ -124,27 +128,40 @@
 			element="article"
 		/>
 
-		<section id="playbook" class="maki:block size:2xl">
-			<div class="l:text:lg size:xl">
-				<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-					<h2 class="w:full text:center">Playbook</h2>
-				</Magic>
-			</div>
-			<div class="media">
-				<div class={`ravioli:lg ${containerClasses}`}>
-					<GenericElement
-						isPage={true}
-						{path}
-						{title}
-						{SpecifiedElement}
-						props={currentProps}
-						{formaction}
-						{actionPath}
-						id={title}
-					/>
+		{#if category === 'raw'}
+			<Zoomer
+				{title}
+				{description}
+				{path}
+				size="sm"
+				layout="center"
+				cta="Open layout"
+			>
+				<GenericElement children={SpecifiedElement} />
+			</Zoomer>
+		{:else}
+			<section id="playbook" class="maki:block size:2xl">
+				<div class="l:text:lg size:xl">
+					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+						<h2 class="w:full text:center">Playbook</h2>
+					</Magic>
 				</div>
-			</div>
-		</section>
+				<div class="media">
+					<div class={`ravioli:lg ${containerClasses}`}>
+						<GenericElement
+							isPage={true}
+							{path}
+							{title}
+							{SpecifiedElement}
+							props={currentProps}
+							{formaction}
+							{actionPath}
+							id={title}
+						/>
+					</div>
+				</div>
+			</section>
+		{/if}
 	{/snippet}
 
 	{#snippet aside()}
@@ -159,4 +176,4 @@
 			/>
 		{/key}
 	{/snippet}
-</PageMetro>
+</PageRails>

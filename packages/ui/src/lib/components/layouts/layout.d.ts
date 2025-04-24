@@ -11,6 +11,14 @@ import type {
 } from '$types'
 
 export type LayoutProps = UiLayoutProps & UiContentProps & FormProps
+export type GridProps = LayoutProps & {
+	areas?: {
+		zone: Snippet
+		grid?: boolean
+		gare?: string
+		scroll?: string
+	}[]
+}
 
 export type DetailsLayoutProps = LayoutProps & {
 	summary: Snippet
@@ -18,22 +26,7 @@ export type DetailsLayoutProps = LayoutProps & {
 	open?: boolean
 }
 
-export type GridLayoutProps = LayoutProps & {
-	areas: string
-	flex?: boolean
-	navs?: Snippet
-	content?: Snippet
-	header?: Snippet
-	actions?: Snippet
-	footer?: Snippet
-}
-
 export type SidebarLayoutProps = LayoutProps & {
-	theme: string
 	main: Snippet
 	side: Snippet
-}
-
-export type LayoutRailsProps = LayoutProps & {
-	children: Snippet
 }

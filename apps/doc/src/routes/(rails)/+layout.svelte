@@ -4,67 +4,103 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
+	import Footer from '$lib/ui/Footer.svelte'
 
-	const {Header, RevealNav} = ui.recipes
+	const {RevealNav} = ui.recipes
+	const {HeaderGrid} = ui.drafts
+	const {LayoutGrid} = ui.content
 
 	type Props = {
 		children: Snippet
 	}
 	let {children}: Props = $props()
 
-	const {LayoutRails} = ui.content
-
+	let mainNav = $derived(page.data.nav)
+	let gridLayout = $derived(page.data.layout ?? page.data.nav.layout)
 	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
 
 	let brightness = $derived(appContext.brightness)
 	let contrast = $derived(appContext.contrast)
-	let pageClass = $derived(
-		ui.utils.format.getClassNameFromPathname(page.url.pathname),
-	)
-	let themeClass = $derived(
-		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
-	)
-	let settings = $derived.by(() => {
-		let inputs = ui.constants.APP_SETTINGS
-		inputs.display[0].initial = brightness === 'night' ? 'active' : 'inactive'
-		inputs.display[1].initial = contrast === 'night' ? 'active' : 'inactive'
-		return inputs
+	let preferences = $derived.by(() => {
+		let preferences = ui.constants.APP_SETTINGS
+		preferences.display[0].initial =
+			brightness === 'night' ? 'active' : 'inactive'
+		preferences.display[1].initial =
+			contrast === 'blend' ? 'active' : 'inactive'
+		return preferences
 	})
+
+	let areas = [
+		{
+			zone: zone1,
+			grid: true,
+			gare: 'nord',
+		},
+		{
+			zone: zone2,
+			grid: true,
+			gare: 'ouest',
+		},
+		{
+			zone: zone3,
+			grid: true,
+			scroll: 'y',
+		},
+		{
+			zone: zone4,
+			grid: true,
+		},
+	]
 </script>
 
-<LayoutRails {sidenav} theme={themeClass}>
-	<div class="main-header">
-		<Header
-			id="nav"
-			name="nav"
-			label="Menu"
-			path={page.url.pathname}
-			reveal={page.data.nav.reveal}
-			actionPath={page.url.pathname}
-			formaction="toggleNav"
-			dismiss="outside"
-			main={links}
-			context={settings}
-			breakpoint="xs"
-			app={appContext}
-		/>
-	</div>
+<LayoutGrid
+	layout={gridLayout}
+	{areas}
+	{sidenav}
+	app={appContext}
+	path={page.url.pathname}
+/>
 
-	<div class="sidenav">
-		<RevealNav
-			{...sidenav}
-			position={false}
-			place="left"
-			justify="evenly"
-			font="sm"
-			size="sm"
-			dismiss="outside"
-		/>
-	</div>
+{#snippet zone1()}
+	<HeaderGrid
+		id="nav"
+		name="nav"
+		label="Menu"
+		path={page.url.pathname}
+		reveal={mainNav.reveal}
+		actionPath={page.url.pathname}
+		formaction="toggleNav"
+		dismiss="outside"
+		main={links}
+		context={appContext}
+		{preferences}
+		breakpoint="xs"
+		layout={sidenav.layout}
+	/>
+{/snippet}
+
+{#snippet zone2()}
+	<RevealNav
+		{...sidenav}
+		position={false}
+		place="left"
+		scroll="y"
+		justify="evenly"
+		font="sm"
+		size="xs"
+		dismiss="outside"
+	/>
+{/snippet}
+
+{#snippet zone3()}
 	{#if children}
 		{@render children()}
 	{:else}
 		<p class="feedback bare emoji:default">Coming Soon!</p>
 	{/if}
-</LayoutRails>
+{/snippet}
+
+{#snippet zone4()}
+	<Footer />
+{/snippet}

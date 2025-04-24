@@ -1,0 +1,106 @@
+/**
+ * ZONE 2
+ * Left Sidebar contains secondary navigation
+ */
+.s-zone\:2 {
+	grid-area: s-zone-2;
+	grid-template-areas:
+		'gare-control'
+		'gare-depot';
+	align-items: center;
+	padding: 0;
+}
+
+.s-zone\:2 > .gare-control {
+	grid-area: gare-control;
+}
+
+.s-zone\:2 > .gare-depot {
+	grid-area: gare-depot;
+}
+
+.s-zone\:2 > summary {
+	inline-size: fit-content;
+}
+
+.s-zone\:2 > ff-reveal,
+.s-zone\:2 > .expanded > ff-reveal {
+	--max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size)
+	);
+	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
+	inline-size: var(--max-inline-size);
+	block-size: fit-content;
+	max-block-size: var(--max-block-size);
+	padding-block-end: var(--ui-size);
+}
+
+.s-zone\:2 > .expanded > ff-reveal,
+.s-zone\:2[class*='gare:'][open] > ff-reveal,
+.s-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	z-index: var(--layout-z-index-reveal);
+}
+
+@media screen and (min-width: 620px) {
+	.s-zone\:2 > .expanded > ff-reveal {
+		--max-block-size: var(--overlay-height-sm);
+		--max-inline-size: calc(
+			100vw - var(--layout-sidebar-md) - 4 * var(--ui-size)
+		);
+		z-index: var(--layout-z-index-reveal);
+		max-block-size: unset;
+	}
+
+	.s-zone\:2 > ff-reveal,
+	.s-zone\:2 > .collapsed > ff-reveal {
+		--collapse-x: 0;
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.s-zone\:2 {
+		--max-block-size: 100%;
+		--sidebar-width: var(--layout-sidebar-md);
+		align-content: start;
+		inline-size: fit-content;
+		position: unset;
+		block-size: fit-content;
+		max-block-size: var(--max-block-size);
+		inline-size: fit-content;
+	}
+
+	.s-zone\:2 > ff-reveal,
+	.s-zone\:2[open] > ff-reveal,
+	.s-zone\:2 > .expanded > ff-reveal,
+	.s-zone\:2 > .collapsed > ff-reveal {
+		margin-block-start: var(--outline-offset-lg);
+		inline-size: var(--sidebar-width);
+		block-size: fit-content;
+		box-shadow: unset;
+		margin-inline-start: 0;
+	}
+
+	.s-zone\:2 > .expanded > ff-reveal,
+	.s-zone\:2[class*='gare:'][open] > ff-reveal,
+	.s-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+		position: unset;
+		max-block-size: unset;
+	}
+
+	.s-zone\:2:has(nav.collapsed) {
+		--sidebar-width: var(--layout-sidebar-collapsed);
+		max-inline-size: var(--sidebar-width);
+	}
+
+	.s-zone\:2 > nav > form,
+	.s-zone\:2 > nav > form [aria-expanded] {
+		inline-size: var(--sidebar-width);
+		max-inline-size: calc(100% - 2 * var(--outline-offset-lg));
+	}
+
+	.s-zone\:2 > nav.expanded > form [aria-expanded] {
+		inline-size: var(--sidebar-width);
+	}
+}

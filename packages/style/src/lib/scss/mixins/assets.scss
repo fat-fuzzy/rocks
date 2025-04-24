@@ -77,6 +77,9 @@ $calendar: '📅';
 $tear-off-calendar: '📆';
 $chilli: '🌶️';
 $cookie: '🍪';
+$tangerine: '🍊';
+$bubbles: '🫧';
+$tram-car: '🚋';
 $emojis: (
 	// Text emojis
 	link: #{$link},
@@ -155,6 +158,15 @@ $emojis: (
 	outdated: #{$tear-off-calendar},
 	spicy: #{$chilli},
 	cookie: #{$cookie},
+
+	// Raw Emojis
+	raw: #{$tangerine},
+	magic: #{$magic-wand},
+	wave: #{$wave},
+	perf: #{$lightning},
+	tuning: #{$gear},
+	bubbles: #{$bubbles},
+	tram: #{$tram-car},
 
 	// Playground fixture emojis
 	sketch: #{$spouting-whale},

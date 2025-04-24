@@ -4,5 +4,6 @@ export type NavItem = {
 	label?: string
 	asset?: string
 	formaction?: string
+	layout?: string
 	items?: NavItem[]
 }

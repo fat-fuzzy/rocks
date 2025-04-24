@@ -31,9 +31,36 @@ import './position.css' /* Use for to position elements */
 /* == Grids == */
 import './grid/base.css' /* Grid layouts base  */
 import './grid/auto.css' /* Gallery grid layout with equal sized areas */
+import './grid/gare.css' /* Grit item utilities */
+import './grid/items.css' /* Grit item utilities */
 import './grid/rails.css' /* Grid with page template areas and scrolling sidebars  */
-import './grid/metro.css' /* Detailed grid with headers and page template areas */
-import './grid/zone-1.css' /* Metro grid areas (zone-1) */
-import './grid/zone-2.css' /* Metro grid areas (zone-2) */
-import './grid/zone-3.css' /* Metro grid areas (zone-3) */
-import './grid/zone-4.css' /* Metro grid areas (zone-4) */
+
+import './grid/metro/metro.css' /* Detailed grid with headers and page template areas */
+import './grid/metro/zone-1.css' /* Metro grid areas (zone-1) */
+import './grid/metro/zone-2.css' /* Metro grid areas (zone-2) */
+import './grid/metro/zone-3.css' /* Metro grid areas (zone-3) */
+import './grid/metro/zone-4.css' /* Metro grid areas (zone-4) */
+
+import './grid/railway/railway.css' /* Detailed grid with headers and page template areas */
+import './grid/railway/gare.css' /* Detailed grid with headers and page template areas */
+import './grid/railway/zone-1.css' /* Metro grid areas (zone-1) */
+import './grid/railway/zone-2.css' /* Metro grid areas (zone-2) */
+import './grid/railway/zone-3.css' /* Metro grid areas (zone-3) */
+import './grid/railway/zone-4.css' /* Metro grid areas (zone-4) */
+import './grid/railway/zone-5.css' /* Metro grid areas (zone-5) */
+
+import './grid/steam/steam.css' /* Detailed grid with headers and page template areas */
+import './grid/steam/zone-1.css' /* Metro grid areas (zone-1) */
+import './grid/steam/zone-2.css' /* Metro grid areas (zone-2) */
+import './grid/steam/zone-3.css' /* Metro grid areas (zone-3) */
+import './grid/steam/zone-4.css' /* Metro grid areas (zone-4) */
+
+import './grid/tgv/tgv.css' /* Single track grid for content showcase */
+import './grid/tgv/zone-1.css' /* Metro grid areas (zone-1) */
+import './grid/tgv/zone-2.css' /* Metro grid areas (zone-2) */
+
+import './grid/tram/tram.css' /* Detailed grid with headers and page template areas */
+import './grid/tram/zone-1.css' /* Metro grid areas (zone-1) */
+import './grid/tram/zone-2.css' /* Metro grid areas (zone-2) */
+import './grid/tram/zone-3.css' /* Metro grid areas (zone-3) */
+import './grid/tram/zone-4.css' /* Metro grid areas (zone-4) */

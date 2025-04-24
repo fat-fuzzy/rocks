@@ -10,22 +10,28 @@
 }
 
 .scroll\:y {
+	--size-y: 100%;
 	overflow: hidden auto;
-	block-size: 100%;
+	block-size: var(--size-y);
 }
 
 .scroll\:x {
+	--size-x: 100%;
 	overflow: auto hidden;
-	inline-size: 100%;
+	inline-size: var(--size-x);
 }
 
 .scroll\:y.snap {
-	scroll-snap-type: y mandatory;
+	scroll-snap-type: y;
 }
 
 .scroll\:x.snap {
-	scroll-snap-type: x mandatory;
+	scroll-snap-type: x;
 }
+
+/* .scrollbar\:hide-y {
+	width: calc(100% + 100px);
+} */
 
 .snap\:start {
 	scroll-snap-align: start;

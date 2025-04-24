@@ -9,10 +9,11 @@ const usagesMarkdowns = usages.markdowns
 	.filter(({meta}) => meta.status !== 'draft')
 	.reverse()
 
-export const load = async ({locals, url}) => {
+export const load = async ({locals, params, url}) => {
 	let sidebar = buildNav('doc')
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.actionPath = url.pathname
+	sidebar.layout = params.slug ? 'steam' : sidebar.layout
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'usage') {
 			item.items = usagesMarkdowns.map(({meta}) => meta)

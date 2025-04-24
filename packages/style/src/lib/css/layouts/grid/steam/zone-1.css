@@ -1,0 +1,94 @@
+/**
+ * ZONE 1
+ * Contains the header with main navigation and app context
+ */
+
+.s-zone\:1 {
+	grid-area: s-zone-1;
+	grid-template-areas: 'navbar	app-context';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+}
+
+.s-zone\:1 > .navbar {
+	grid-area: navbar;
+	align-content: center;
+}
+
+.s-zone\:1 > .navbar .expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	left: var(--outline-offset-lg);
+	right: var(--outline-offset-xs);
+}
+
+.s-zone\:1 > .app-context {
+	grid-area: app-context;
+	align-content: center;
+	justify-self: flex-end;
+}
+
+.s-zone\:1 > .app-context ff-reveal {
+	display: flex;
+	align-items: center;
+}
+
+.s-zone\:1 > .app-context.expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	right: var(--ui-size-sm);
+	box-shadow: var(--shadow-md);
+}
+
+.s-zone\:1 > .app-context.expanded ff-reveal ul {
+	padding: var(--ui-size-sm);
+}
+
+.s-zone\:1 > .app-context ff-reveal form {
+	display: flex;
+	gap: var(--ui-size-lg);
+	padding-inline-start: var(--ui-size-lg);
+}
+
+.s-zone\:1 > nav,
+.s-zone\:1 > nav form,
+.s-zone\:1 > nav [aria-expanded] {
+	inline-size: 100%;
+}
+
+.s-zone\:1 > nav [aria-expanded] span {
+	text-align: center;
+}
+
+@media screen and (min-width: 620px) {
+	.s-zone\:1 > nav {
+		justify-content: flex-start;
+	}
+
+	.s-zone\:1 > nav form {
+		display: none;
+	}
+
+	.s-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+		block-size: fit-content;
+	}
+
+	.s-zone\:1 > .app-context.expanded ff-reveal,
+	.s-zone\:1 > .navbar > .expanded > ff-reveal,
+	.s-zone\:1 > .navbar > .collapsed > ff-reveal {
+		position: unset;
+		margin: 0 auto;
+		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+	}
+
+	.s-zone\:1 > .app-context ff-reveal {
+		position: unset;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: var(--ui-size-sm);
+	}
+}
