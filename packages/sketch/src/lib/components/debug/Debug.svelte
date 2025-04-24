@@ -23,7 +23,7 @@
 		Debug
 	</summary>
 	<div class="maki:block scroll:x text:center">
-		<table class="text:center font:sm" data-testid="debug-table">
+		<table class="text:center font:sm w:full" data-testid="debug-table">
 			<thead class="ravioli:3xs surface:3:primary">
 				<tr>
 					<th class="surface:3:accent" scope="col">Event</th>

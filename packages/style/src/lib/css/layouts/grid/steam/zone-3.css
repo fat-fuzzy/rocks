@@ -25,6 +25,10 @@
 		padding-inline: var(--ui-size) 0;
 	}
 
+	> .page-context > summary {
+		max-inline-size: var(--sidebar-width);
+	}
+
 	> .page-context.media\:video {
 		block-size: var(--overlay-height-md);
 	}
@@ -50,9 +54,10 @@
 		}
 
 		> .page-main {
+			--max-inline-size: calc(100vw - var(--outline-offset-lg));
 			grid-area: page-main;
 			padding-block-end: var(--ui-size);
-			max-inline-size: 100%;
+			max-inline-size: var(--max-inline-size);
 		}
 
 		> .page-main > * {
