@@ -40,12 +40,14 @@ export const pages: {[key: string]: NavItem} = {
 		slug: 'blog',
 		title: 'Posts',
 		asset: 'pencil',
+		layout: 'metro',
 		items: [],
 	},
 	doc: {
 		slug: 'doc',
 		title: 'Doc',
 		asset: 'pencil',
+		layout: 'metro',
 		items: [
 			{
 				slug: 'usage',

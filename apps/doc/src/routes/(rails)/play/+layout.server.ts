@@ -1,8 +1,6 @@
 import ui from '@fat-fuzzy/ui'
 import gfx from '@fat-fuzzy/gfx'
 
-import {buildNav} from '$data/nav'
-
 const {DEFAULT_REVEAL_STATE} = ui.constants
 
 let projects = gfx.gl.sketches.projects
