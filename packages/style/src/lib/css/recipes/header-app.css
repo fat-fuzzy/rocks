@@ -39,7 +39,8 @@
 		background-color: inherit;
 		border-block-start: var(--border-width-xl) solid var(--shade);
 		inline-size: fit-content;
-		padding: 0 var(--outline-offset-sm);
+		padding-block: 0 var(--outline-offset-sm);
+		padding-inline: var(--outline-offset-sm);
 
 		a {
 			display: flex;
