@@ -28,7 +28,6 @@
 		formaction?: string
 		actionPath?: string
 		children?: Snippet
-		mainFooter?: Snippet
 	}
 
 	let {
@@ -43,12 +42,10 @@
 		formaction,
 		actionPath,
 		children,
-		mainFooter,
 	}: Props = $props()
 
-	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let pageContext = $derived(page.data.pageContext)
-	let preferences = $derived(playbookActor.preferences)
+	let appContext = $derived(page.data.appContext)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
@@ -76,13 +73,13 @@
 	)
 	let componentNames = $derived(Object.keys(items))
 	//== App preferences (user controlled)
-	let brightness = $derived(preferences.brightness || '')
+	let brightness = $derived(appContext.brightness || '')
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 	let layoutClass = $derived(
 		category === 'tokens'
 			? `l:stack:${size}`
 			: category === 'recipes'
-				? `l:${layout}:lg`
+				? `l:grid:auto size:lg`
 				: `l:${layout}:${size}`,
 	)
 
@@ -136,7 +133,7 @@
 		layout="tram"
 	>
 		{#snippet main()}
-			<div class="l:text:md">
+			<div class="l:text:md maki:auto">
 				<h2 id="doc">Doc</h2>
 			</div>
 			<EscapeHtml
@@ -146,16 +143,19 @@
 				margin="auto"
 				element="section"
 			/>
-			<section id="playbook" class="maki:block size:2xl">
-				<div class="l:text:md size:xl">
-					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-						<h2 class="text:center">Playbook</h2>
-					</Magic>
-				</div>
-				<div class={`l:text:md ${layoutClass}`}>
-					{@render categoryElements()}
-				</div>
-			</section>
+
+			{#if category !== 'raw'}
+				<section id="playbook" class="maki:block size:2xl">
+					<div class="l:text:lg size:xl maki:auto">
+						<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+							<h2 class="text:center">Playbook</h2>
+						</Magic>
+					</div>
+					<div class={`maki:block ${layoutClass}`}>
+						{@render categoryElements()}
+					</div>
+				</section>
+			{/if}
 		{/snippet}
 
 		{#snippet aside()}

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import playbook from '@fat-fuzzy/playbook'
-	import Footer from '$lib/ui/Footer.svelte'
 
 	const {PlaybookElement} = playbook
 
@@ -20,9 +19,5 @@
 		{content}
 		path={`${path}${page.url.hash}`}
 		{formaction}
-	>
-		{#snippet mainFooter()}
-			<Footer />
-		{/snippet}
-	</PlaybookElement>
+	/>
 {/key}

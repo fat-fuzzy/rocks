@@ -28,25 +28,33 @@
 	layout="metro"
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} html={content.html} size="md" element="section" />
+		<EscapeHtml
+			id={slug}
+			html={content.html}
+			size="md"
+			margin="auto"
+			element="section"
+		/>
 
-		{#each categories as category}
-			<PlaybookCollection
-				{category}
-				{markdowns}
-				path={page.url.pathname}
-				depth={1}
-				isPage={false}
-				formaction="updateState"
-				{content}
-			>
-				<EscapeHtml
-					id={`${slug}-${category}`}
-					html={markdowns.categories.find(({meta}) => meta.slug === category)
-						.html}
-					size="md"
-				/>
-			</PlaybookCollection>
-		{/each}
+		<div class="l:text:md maki:auto">
+			{#each categories as category}
+				<PlaybookCollection
+					{category}
+					{markdowns}
+					path={page.url.pathname}
+					depth={1}
+					isPage={false}
+					formaction="updateState"
+					{content}
+				>
+					<EscapeHtml
+						id={`${slug}-${category}`}
+						html={markdowns.categories.find(({meta}) => meta.slug === category)
+							.html}
+						size="md"
+					/>
+				</PlaybookCollection>
+			{/each}
+		</div>
 	{/snippet}
 </PageRails>
