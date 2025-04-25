@@ -6,8 +6,6 @@
 	const {EscapeHtml} = ui.headless
 
 	const path = $derived($page.url.pathname)
-
-	let pageContext = $derived({...$page.data.pageContext, title: 'Tags'})
 	let markdown = $derived($page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
@@ -35,7 +33,7 @@
 	layout="metro"
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} {html} size="md" />
+		<EscapeHtml id={slug} {html} size="md" margin="auto" />
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
