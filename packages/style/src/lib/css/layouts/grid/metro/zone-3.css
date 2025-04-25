@@ -61,6 +61,7 @@
 
 		> .page-context {
 			position: unset;
+			box-shadow: unset;
 			max-block-size: unset;
 		}
 

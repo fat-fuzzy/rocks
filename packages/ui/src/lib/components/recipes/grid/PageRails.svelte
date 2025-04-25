@@ -50,11 +50,11 @@
 	}
 
 	const contextClasses: {[key: string]: string} = {
-		metro: '',
-		railway: '',
+		metro: 'layer:1 ravioli:md',
+		railway: 'layer:1 ravioli:md',
 		steam: 'layer:1 ravioli:md',
 		tgv: '',
-		tram: '',
+		tram: 'layer:1 ravioli:md',
 	}
 
 	let zoneId = $derived(zones[layout] ?? 'zone')
