@@ -59,7 +59,9 @@
 
 	let zoneId = $derived(zones[layout] ?? 'zone')
 	let contextClass = $derived(
-		nav?.length || aside ? `page-context ${contextClasses[layout]}` : 'empty',
+		nav?.length || aside
+			? `page-context ${contextClasses[layout]}`
+			: 'page-context empty',
 	)
 	let mainClass = $derived(mainClasses[layout])
 </script>
@@ -71,7 +73,7 @@
 {/snippet}
 
 <main {id} class={`l:grid ${zoneId}:main scroll:y`}>
-	<div class="page-header">
+	<div class="page-header l:text:md maki:auto">
 		<PageHeader {...header} size={size as UiSize} {justify} />
 	</div>
 
