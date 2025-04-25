@@ -49,8 +49,18 @@
 		tram: '',
 	}
 
+	const contextClasses: {[key: string]: string} = {
+		metro: '',
+		railway: '',
+		steam: 'layer:1 ravioli:md',
+		tgv: '',
+		tram: '',
+	}
+
 	let zoneId = $derived(zones[layout] ?? 'zone')
-	let contextClass = $derived(nav?.length || aside ? 'page-context' : 'empty')
+	let contextClass = $derived(
+		nav?.length || aside ? `page-context ${contextClasses[layout]}` : 'empty',
+	)
 	let mainClass = $derived(mainClasses[layout])
 </script>
 

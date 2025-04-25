@@ -1,5 +1,5 @@
 table {
-	width: 100%;
+	inline-size: var(--max-inline-size, 100%);
 	border-collapse: collapse;
 	font-family: var(--font-family-ui);
 	line-height: var(--font-leading-ui);

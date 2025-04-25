@@ -22,7 +22,7 @@
 	let zoneId = $derived(zones[sidenav.layout] ?? 'zone')
 </script>
 
-<div class={`l:grid:${sidenav.layout} ${themeClass}`}>
+<div class={`rails l:grid:${sidenav.layout} ${themeClass}`}>
 	{#each areas as { zone, grid, gare, scroll }, i}
 		{@const gareClass = gare ? `gare:${gare}` : ''}
 		{@const gridClass = grid ? `l:grid` : ''}
