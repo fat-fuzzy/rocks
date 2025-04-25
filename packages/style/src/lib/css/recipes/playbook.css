@@ -7,10 +7,6 @@
 	margin-inline: auto;
 }
 
-.media {
-	min-height: 50vh;
-}
-
 @media screen and (min-width: 620px) {
 	.page-header .ui\:menu {
 		margin-inline: var(--ui-size);

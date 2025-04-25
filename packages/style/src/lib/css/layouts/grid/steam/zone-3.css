@@ -19,18 +19,21 @@
 		align-content: start;
 		position: relative;
 		padding-block-end: var(--ui-size);
-		max-block-size: var(--overlay-height-sm);
-		min-block-size: var(--overlay-height-xs);
+		max-block-size: var(--overlay-height-xs);
+		min-block-size: var(--overlay-height-2xs);
 		overscroll-behavior-y: contain;
-		padding-inline: var(--ui-size) 0;
+	}
+
+	> .page-context > summary {
+		max-inline-size: var(--sidebar-width);
 	}
 
 	> .page-context.media\:video {
-		block-size: var(--overlay-height-md);
+		block-size: var(--overlay-height-xs);
 	}
 
 	> .page-context.media\:square {
-		block-size: var(--overlay-height-sm);
+		block-size: var(--overlay-height-2xs);
 	}
 
 	> .s-zone\:main {
@@ -43,7 +46,6 @@
 		align-content: start;
 		max-block-size: var(--overlay-height-md);
 		overscroll-behavior-y: contain;
-		padding-inline: var(--ui-size);
 
 		> .page-header {
 			grid-area: page-header;
@@ -51,13 +53,6 @@
 
 		> .page-main {
 			grid-area: page-main;
-			padding-block-end: var(--ui-size);
-			max-inline-size: 100%;
-		}
-
-		> .page-main > * {
-			--max-inline-size: calc(100% - var(--outline-offset-lg));
-			max-inline-size: var(--max-inline-size);
 		}
 	}
 }
@@ -71,8 +66,14 @@
 
 		> .page-context {
 			position: unset;
+			box-shadow: unset;
 			max-block-size: var(--max-block-size);
 			max-inline-size: var(--sidebar-width);
+		}
+
+		> .page-context[class*='media:'] {
+			block-size: 100%;
+			max-block-size: var(--max-block-size);
 		}
 
 		> .s-zone\:main {

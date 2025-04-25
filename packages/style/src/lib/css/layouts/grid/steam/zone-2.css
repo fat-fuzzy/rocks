@@ -44,13 +44,16 @@
 }
 
 @media screen and (min-width: 620px) {
-	.s-zone\:2 > .expanded > ff-reveal {
+	.s-zone\:2 {
 		--max-block-size: var(--overlay-height-sm);
+	}
+
+	.s-zone\:2 > .expanded > ff-reveal {
 		--max-inline-size: calc(
 			100vw - var(--layout-sidebar-md) - 4 * var(--ui-size)
 		);
 		z-index: var(--layout-z-index-reveal);
-		max-block-size: unset;
+		max-block-size: var(--max-block-size);
 	}
 
 	.s-zone\:2 > ff-reveal,
@@ -61,14 +64,15 @@
 
 @media screen and (min-width: 935px) {
 	.s-zone\:2 {
-		--max-block-size: 100%;
 		--sidebar-width: var(--layout-sidebar-md);
+		--max-block-size: calc(
+			100vh - 2 * var(--ui-header-height) + var(--ui-size)
+		);
 		align-content: start;
 		inline-size: fit-content;
 		position: unset;
 		block-size: fit-content;
 		max-block-size: var(--max-block-size);
-		inline-size: fit-content;
 	}
 
 	.s-zone\:2 > ff-reveal,
@@ -86,18 +90,13 @@
 	.s-zone\:2[class*='gare:'][open] > ff-reveal,
 	.s-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 		position: unset;
-		max-block-size: unset;
-	}
-
-	.s-zone\:2:has(nav.collapsed) {
-		--sidebar-width: var(--layout-sidebar-collapsed);
-		max-inline-size: var(--sidebar-width);
+		max-block-size: var(--max-block-size);
 	}
 
 	.s-zone\:2 > nav > form,
 	.s-zone\:2 > nav > form [aria-expanded] {
-		inline-size: var(--sidebar-width);
-		max-inline-size: calc(100% - 2 * var(--outline-offset-lg));
+		inline-size: fit-content;
+		max-inline-size: 100%;
 	}
 
 	.s-zone\:2 > nav.expanded > form [aria-expanded] {

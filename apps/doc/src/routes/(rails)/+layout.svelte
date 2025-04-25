@@ -88,7 +88,7 @@
 		scroll="y"
 		justify="evenly"
 		font="sm"
-		size="xs"
+		size="md"
 		dismiss="outside"
 	/>
 {/snippet}

@@ -44,27 +44,33 @@
 	)
 </script>
 
-<nav {id} class={`breadcrumbs l:stack:${size} w:full ${navClasses}`}>
+<div class={`breadcrumbs l:stack:${size} w:full`}>
 	<svelte:element this={`h${level}`} id={title} class="l:flex align:center">
 		{title}
 	</svelte:element>
-	<ul {id} class={`l:flex size:${size} align:center unstyled`} data-testid={id}>
-		{#each items as item, i}
-			{@const font = i === items.length - 1 ? '' : 'font:xs'}
-			{#if i < items.length - 1}
-				<li
-					aria-current={path === item.slug ? 'page' : undefined}
-					class={`l:flex nowrap align:center`}
-				>
-					<a
-						data-sveltekit-preload-data
-						href={item.path}
-						class={`l:flex align:center ${font}`}
+	<nav {id} class={navClasses}>
+		<ul
+			{id}
+			class={`l:flex size:${size} align:center unstyled`}
+			data-testid={id}
+		>
+			{#each items as item, i}
+				{@const font = i === items.length - 1 ? '' : 'font:xs'}
+				{#if i < items.length - 1}
+					<li
+						aria-current={path === item.slug ? 'page' : undefined}
+						class={`l:flex nowrap align:center`}
 					>
-						{item.title}
-					</a>
-				</li>
-			{/if}
-		{/each}
-	</ul>
-</nav>
+						<a
+							data-sveltekit-preload-data
+							href={item.path}
+							class={`l:flex align:center ${font}`}
+						>
+							{item.title}
+						</a>
+					</li>
+				{/if}
+			{/each}
+		</ul>
+	</nav>
+</div>

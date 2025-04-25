@@ -64,6 +64,11 @@
 		inline-size: var(--sidebar-width);
 	}
 
+	.m-zone\:2 > nav.expanded > form [aria-expanded] {
+		inline-size: 100%;
+		max-inline-size: calc(100% - var(--ui-size-sm) - var(--outline-offset-sm));
+	}
+
 	.m-zone\:2 > ff-reveal,
 	.m-zone\:2[open] > ff-reveal,
 	.m-zone\:2 > .expanded > ff-reveal,
@@ -80,22 +85,5 @@
 	.m-zone\:2[class*='gare:'][open] > ff-reveal,
 	.m-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 		position: unset;
-	}
-
-	.m-zone\:2:has(nav.collapsed) {
-		--sidebar-width: var(--layout-sidebar-collapsed);
-		max-inline-size: var(--sidebar-width);
-	}
-
-	.m-zone\:2 > nav > form,
-	.m-zone\:2 > nav > form [aria-expanded] {
-		inline-size: 100%;
-		max-inline-size: calc(100% - 2 * var(--outline-offset-lg));
-	}
-
-	.m-zone\:2 > nav.expanded > form [aria-expanded] {
-		max-inline-size: calc(
-			100% - 2 * var(--ui-size) - 2 * var(--outline-offset-lg)
-		);
 	}
 }

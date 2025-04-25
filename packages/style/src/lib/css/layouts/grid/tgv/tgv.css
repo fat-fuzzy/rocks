@@ -2,26 +2,6 @@
  * Grid Rails Layout
  */
 
-html:has(.l\:grid\:tgv) {
-	--hue: var(--color-theme-neutral);
-	--lightness-scrollbar: var(--lightness-base);
-	--chroma-scrollbar: var(--chroma-base);
-	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
-	--thumb: var(--ink);
-	height: -webkit-fill-available;
-	scrollbar-gutter: stable;
-	scrollbar-width: thin;
-	scrollbar-color: var(--thumb) var(--track);
-}
-
-body:has(.l\:grid\:tgv) {
-	min-block-size: 100vh;
-	/* mobile viewport bug fix */
-	min-block-size: -webkit-fill-available;
-	display: flex;
-	flex-direction: column;
-}
-
 .l\:grid\:tgv {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
 	inline-size: 100%;

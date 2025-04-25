@@ -52,7 +52,7 @@
 .canvas[class*='clear']::before,
 .canvas[class*='pause']::before,
 .canvas[class*='warning']::before,
-.canvas[class*='error']::before   {
+.canvas[class*='error']::before {
 	display: flex;
 	align-items: center;
 	justify-content: var(--justify, center);
@@ -63,7 +63,7 @@
 	padding: var(--ui-size-sm);
 	line-height: 1;
 	border-radius: 100vmax;
-  background-color: var(--ink);
+	background-color: var(--ink);
 	aspect-ratio: 1/1;
 }
 
@@ -83,12 +83,15 @@
 
 .scene,
 .debug {
-	--max-inline-size: calc(100% - 2 * var(--outline-offset-lg));
-	margin: var(--outline-offset-lg);
+	--max-inline-size: calc(100% - 2 * var(--ui-size));
 	inline-size: 100%;
 	max-inline-size: var(--max-inline-size);
 }
 
+.debug .scroll\:x {
+	inline-size: max-content;
+	max-inline-size: 100%;
+}
 
 .scene .feedback {
 	position: absolute;

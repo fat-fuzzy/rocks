@@ -27,6 +27,7 @@
 	> .page-context.empty {
 		--size-y: 0;
 		block-size: 0;
+		inline-size: 0;
 		padding: 0;
 	}
 
@@ -61,6 +62,7 @@
 
 		> .page-context {
 			position: unset;
+			box-shadow: unset;
 			max-block-size: unset;
 		}
 

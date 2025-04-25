@@ -15,6 +15,5 @@ package-lock.json
 yarn.lock
 
 **/dist
-**/src/lib/styles/css
 **/playwright/.cache
 **/playwright_report

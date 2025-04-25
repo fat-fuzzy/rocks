@@ -1,7 +1,7 @@
 import {actions as parentActions} from '../+page.server'
 
 export const load = async () => {
-	return {layout: 'steam'}
+	return {layout: 'tram'}
 }
 
 export const actions = parentActions

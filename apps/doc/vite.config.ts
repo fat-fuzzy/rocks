@@ -6,6 +6,7 @@ const config: UserConfig = {
 	build: {
 		target: 'esnext',
 		commonjsOptions: {transformMixedEsModules: true},
+		assetsInlineLimit: 0,
 	},
 }
 

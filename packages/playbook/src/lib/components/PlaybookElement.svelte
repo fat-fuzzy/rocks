@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 
@@ -29,7 +28,6 @@
 		formaction?: string
 		actionPath?: string
 		redirect?: string
-		mainFooter?: Snippet
 	}
 	let {
 		category,
@@ -39,7 +37,6 @@
 		formaction,
 		actionPath,
 		redirect,
-		mainFooter,
 	}: Props = $props()
 
 	let description = $derived(`${title} | Doc`)
@@ -72,13 +69,13 @@
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 
 	let pageContext = $derived(page.data.pageContext)
+	let appContext = $derived(page.data.appContext)
 	let styles = $derived(playbookActor.styles)
-	let preferences = $derived(playbookActor.preferences)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	//== App settings (user controlled)
-	let brightness = $derived(preferences.brightness || '')
+	let brightness = $derived(appContext.brightness || '')
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 	//== Layout settings (user controlled)
 	// Container options
@@ -114,39 +111,35 @@
 	nav={pageNav}
 	size="sm"
 	context={pageContext}
-	layout="steam"
+	layout="tram"
 >
 	{#snippet main()}
-		<div class="l:text:md">
+		<div class="l:text:md maki:auto">
 			<h2 id="doc">Doc</h2>
 		</div>
-		<EscapeHtml
-			id="doc"
-			html={content.html}
-			size="md"
-			margin="auto"
-			element="article"
-		/>
+		<EscapeHtml id="doc" html={content.html} size="md" margin="auto" />
 
-		{#if category === 'raw'}
-			<Zoomer
-				{title}
-				{description}
-				{path}
-				size="sm"
-				layout="center"
-				cta="Open layout"
-			>
-				<GenericElement children={SpecifiedElement} />
-			</Zoomer>
-		{:else}
-			<section id="playbook" class="maki:block size:2xl">
-				<div class="l:text:lg size:xl">
+		<section id="playbook" class="maki:block size:2xl">
+			{#if category === 'raw'}
+				<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+					<Zoomer
+						{title}
+						{description}
+						{path}
+						size="sm"
+						layout="center"
+						cta="Open layout"
+					>
+						<GenericElement children={SpecifiedElement} />
+					</Zoomer>
+				</Magic>
+			{:else}
+				<div class="l:text:lg size:xl maki:auto">
 					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
 						<h2 class="w:full text:center">Playbook</h2>
 					</Magic>
 				</div>
-				<div class="media">
+				<div class="media maki:block">
 					<div class={`ravioli:lg ${containerClasses}`}>
 						<GenericElement
 							isPage={true}
@@ -160,8 +153,8 @@
 						/>
 					</div>
 				</div>
-			</section>
-		{/if}
+			{/if}
+		</section>
 	{/snippet}
 
 	{#snippet aside()}
