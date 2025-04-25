@@ -15,14 +15,13 @@ html:has(.rails[class*='l:grid']) {
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
 	/* scroll-snap-type: y proximity; */
+	max-block-size: calc(100vh + var(--ui-header-height));
 }
 
 body:has(.rails[class*='l:grid']) {
 	min-block-size: 100vh;
 	/* mobile viewport bug fix */
 	min-block-size: -webkit-fill-available;
-	display: flex;
-	flex-direction: column;
 }
 
 /* TODO: Make utility class for this */

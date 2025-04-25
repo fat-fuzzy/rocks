@@ -48,7 +48,6 @@
 		overscroll-behavior-y: contain;
 
 		> .page-header {
-			padding-inline: var(--ui-size);
 			grid-area: page-header;
 		}
 
@@ -70,6 +69,11 @@
 			box-shadow: unset;
 			max-block-size: var(--max-block-size);
 			max-inline-size: var(--sidebar-width);
+		}
+
+		> .page-context[class*='media:'] {
+			block-size: 100%;
+			max-block-size: var(--max-block-size);
 		}
 
 		> .s-zone\:main {
