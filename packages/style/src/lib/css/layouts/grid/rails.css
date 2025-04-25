@@ -1,21 +1,28 @@
 /**
  * Grid Rails Layout
  */
+/* Flex layout fallback */
 
-html:has(.l\:grid\:rails) {
-	block-size: 100%;
-	scroll-snap-type: y mandatory;
+html:has(.rails[class*='l:grid']) {
+	height: -webkit-fill-available;
+	--hue: var(--color-theme-primary);
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--ink);
+	height: -webkit-fill-available;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--track);
+	/* scroll-snap-type: y proximity; */
 }
 
-body:has(.l\:grid\:rails) {
-	inline-size: 100vw;
-	block-size: 100vh;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	scroll-snap-align: start;
-	scroll-snap-stop: normal;
-	scroll-padding-block-start: var(--ui-size);
+body:has(.rails[class*='l:grid']) {
+	min-block-size: 100vh;
+	/* mobile viewport bug fix */
+	min-block-size: -webkit-fill-available;
+	display: flex;
+	flex-direction: column;
 }
 
 .l\:grid\:rails {

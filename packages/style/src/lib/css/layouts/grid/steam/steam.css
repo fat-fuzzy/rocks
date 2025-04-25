@@ -2,19 +2,6 @@
  * Grid Rails Layout
  */
 
-html:has(.l\:grid\:steam) {
-	height: -webkit-fill-available;
-	overflow: hidden;
-}
-
-body:has(.l\:grid\:steam) {
-	min-block-size: 100vh;
-	/* mobile viewport bug fix */
-	min-block-size: -webkit-fill-available;
-	display: flex;
-	flex-direction: column;
-}
-
 .l\:grid\:steam {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
 	inline-size: 100%;
