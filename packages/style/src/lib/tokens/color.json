@@ -96,10 +96,13 @@
 				"$value": 180.22
 			},
 			"lime": {
-				"$value": 104.29
+				"$value": 109.59
 			},
 			"yellow": {
-				"$value": 93.71
+				"$value": 97.94
+			},
+			"orange": {
+				"$value": 89.47
 			},
 			"red": {
 				"$value": 11.8
@@ -139,6 +142,12 @@
 		"palette": {
 			"lime": {
 				"$value": "{color.hue.lime}"
+			},
+			"banana": {
+				"$value": "{color.hue.yellow}"
+			},
+			"tangerine": {
+				"$value": "{color.hue.orange}"
 			}
 		},
 		"state": {
