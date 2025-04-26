@@ -2,6 +2,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
+	const {Sidebar} = ui.layouts
 	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 	const {Picture} = ui.drafts
@@ -25,10 +26,16 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	context={pageContext}
-	layout="metro"
+	layout="voyager"
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} {html} size="md" margin="auto" />
-		<Picture {...media} dimensions="full" />
+		<Sidebar dimension={50} size="xl hug" reverse={true} wrap="reverse">
+			{#snippet main()}
+				<EscapeHtml id={slug} {html} size="md" margin="auto" />
+			{/snippet}
+			{#snippet side()}
+				<Picture {...media} dimensions="full" />
+			{/snippet}
+		</Sidebar>
 	{/snippet}
 </PageRails>
