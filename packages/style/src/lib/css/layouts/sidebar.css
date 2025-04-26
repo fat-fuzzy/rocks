@@ -36,11 +36,16 @@
 	flex-wrap: wrap-reverse;
 }
 
+[class*='l:sidebar'].hug {
+	max-inline-size: var(--main-width);
+}
+
 [class*='l:main'] {
 	flex-basis: 0;
 	flex-grow: 999;
 	/* ~ min-width in horizontal\:tb writing mode: if (width < 70%) -> wrap */
-	min-inline-size: 70%;
+	--main-width: 70%;
+	min-inline-size: var(--main-width);
 
 	> main {
 		block-size: 100%;
@@ -127,29 +132,29 @@
 /* Scale Sidebar > Main */
 
 .l\:main\:30 {
-	min-inline-size: 30%;
+	--main-width: 30%;
 }
 
 .l\:main\:40 {
-	min-inline-size: 40%;
+	--main-width: 40%;
 }
 
 .l\:main\:50 {
-	min-inline-size: 50%;
+	--main-width: 50%;
 }
 
 .l\:main\:60 {
-	min-inline-size: 60%;
+	--main-width: 60%;
 }
 
 .l\:main\:70 {
-	min-inline-size: 70%;
+	--main-width: 70%;
 }
 
 .l\:main\:80 {
-	min-inline-size: 80%;
+	--main-width: 80%;
 }
 
 .l\:main\:90 {
-	min-inline-size: 90%;
+	--main-width: 90%;
 }

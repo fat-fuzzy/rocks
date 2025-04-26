@@ -48,12 +48,13 @@ export const pages: {[key: string]: NavItem} = {
 		title: 'Doc',
 		label: 'Doc',
 		asset: 'pencil',
-		layout: 'metro',
+		layout: 'voyager',
 		items: [
 			{
 				slug: 'usage',
 				title: 'Usage',
 				asset: 'usage',
+				layout: 'metro',
 				formaction: 'toggleUsage',
 				items: [],
 			},
@@ -61,6 +62,7 @@ export const pages: {[key: string]: NavItem} = {
 				slug: 'decisions',
 				title: 'Decisions',
 				asset: 'decisions',
+				layout: 'metro',
 				formaction: 'toggleDecisions',
 				items: [],
 			},
