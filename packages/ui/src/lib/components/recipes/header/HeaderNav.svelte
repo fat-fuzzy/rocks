@@ -7,6 +7,7 @@
 		label,
 		breakpoint = 'xs',
 		size,
+		font,
 		variant,
 		asset,
 		justify,
@@ -29,6 +30,7 @@
 	element="nav"
 	{title}
 	{size}
+	{font}
 	{variant}
 	{asset}
 	{justify}
