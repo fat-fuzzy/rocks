@@ -12,7 +12,6 @@
 
 .r-zone\:1 > .navbar {
 	grid-area: navbar;
-	align-content: center;
 }
 
 .r-zone\:1 > .navbar .expanded ff-reveal {

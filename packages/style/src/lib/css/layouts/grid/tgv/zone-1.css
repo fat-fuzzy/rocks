@@ -13,7 +13,6 @@
 
 .g-zone\:1 > .navbar {
 	grid-area: navbar;
-	align-content: center;
 }
 
 .g-zone\:1 > .navbar .expanded ff-reveal {
@@ -25,7 +24,6 @@
 
 .g-zone\:1 > .app-context {
 	grid-area: app-context;
-	align-content: center;
 	justify-self: flex-end;
 }
 

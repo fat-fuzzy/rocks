@@ -46,6 +46,7 @@ export const pages: {[key: string]: NavItem} = {
 	doc: {
 		slug: 'doc',
 		title: 'Doc',
+		label: 'Doc',
 		asset: 'pencil',
 		layout: 'metro',
 		items: [

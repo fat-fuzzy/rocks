@@ -9,6 +9,8 @@
 		id = 'ui-header-app',
 		breakpoint = 'sm',
 		path,
+		size = 'md',
+		font,
 		reveal,
 		redirect,
 		actionPath,
@@ -39,7 +41,6 @@
 			name={id}
 			label="Menu"
 			title="Menu"
-			size="xs"
 			variant="outline"
 			asset="home"
 			justify="start"
@@ -47,6 +48,8 @@
 			auto={true}
 			links={main}
 			{path}
+			{size}
+			{font}
 			{reveal}
 			{breakpoint}
 			{formaction}
@@ -61,7 +64,8 @@
 		label="Settings"
 		{path}
 		{breakpoint}
-		size="xs"
+		{size}
+		{font}
 		formaction="updateSettings"
 		{actionPath}
 		{redirect}

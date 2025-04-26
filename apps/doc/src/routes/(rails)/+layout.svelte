@@ -94,6 +94,7 @@
 		id="nav"
 		name="nav"
 		label="Menu"
+		font="sm"
 		path={page.url.pathname}
 		reveal={mainNav.reveal}
 		actionPath={page.url.pathname}
@@ -113,9 +114,8 @@
 			id="nav"
 			name="nav"
 			label="Menu"
-			title="Menu"
-			size="md"
 			font="sm"
+			title="Menu"
 			variant="outline"
 			asset="home"
 			justify="start"
@@ -138,8 +138,8 @@
 		place="left"
 		scroll="y"
 		justify="evenly"
-		font="sm"
 		size="md"
+		font="sm"
 		dismiss="outside"
 	/>
 {/snippet}

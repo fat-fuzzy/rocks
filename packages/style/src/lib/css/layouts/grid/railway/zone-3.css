@@ -12,7 +12,6 @@
 
 .r-zone\:3 > .app-context {
 	grid-area: app-context;
-	align-content: center;
 	justify-self: flex-end;
 }
 

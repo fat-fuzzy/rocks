@@ -21,7 +21,7 @@
 <PageRails
 	{title}
 	{description}
-	size="sm"
+	size="md"
 	path={page.url.pathname}
 	nav={page.data.nav}
 	app={pageContext}

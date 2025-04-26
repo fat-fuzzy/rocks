@@ -25,6 +25,7 @@ body:has(.rails[class*='l:grid']) {
 	position: relative;
 }
 
+.rails [class*='-zone:1'] > nav > form > button,
 .rails [class*='-zone:2'] > nav > form > button,
 .rails .navbar > nav > form > button,
 .rails .app-context > form > button {
