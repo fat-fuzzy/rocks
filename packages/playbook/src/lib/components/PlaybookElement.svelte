@@ -121,18 +121,21 @@
 
 		<section id="playbook" class="maki:block size:2xl">
 			{#if category === 'raw'}
-				<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-					<Zoomer
-						{title}
-						{description}
-						{path}
-						size="sm"
-						layout="center"
-						cta="Open layout"
-					>
-						<GenericElement children={SpecifiedElement} />
-					</Zoomer>
-				</Magic>
+				<div class="l:text:lg size:xl maki:auto">
+					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+						<Zoomer
+							{title}
+							{description}
+							{path}
+							size="md"
+							variant="fill"
+							layout="center"
+							cta="Open layout"
+						>
+							<GenericElement children={SpecifiedElement} />
+						</Zoomer>
+					</Magic>
+				</div>
 			{:else}
 				<div class="l:text:lg size:xl maki:auto">
 					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>

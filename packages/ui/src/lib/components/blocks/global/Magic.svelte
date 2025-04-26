@@ -13,7 +13,7 @@
 	data-testid="Magic"
 >
 	<ff-callout
-		class={`magic:${spell} ${levelClass} font:${size} ${grow ? 'grow:1' : ''}`}
+		class={`magic:${spell} ${levelClass} font:${size} ${grow ? 'grow:1 l:flex align:center justify:center' : ''}`}
 	>
 		{#if text}
 			{text}
