@@ -28,7 +28,7 @@
 			</div>
 			<div class="page-main maki:inline size:lg l:stack size:lg">
 				<Gallery id="creatures" {theme} />
-				<Gallery id="halloween" theme="banana" />
+				<Gallery id="halloween" theme="tangerine" />
 			</div>
 		</main>
 		<aside class={`l:grid page-context scroll:y surface:0:${theme}`}>
