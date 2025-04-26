@@ -9,16 +9,6 @@
 		'r-zone-main'
 		'page-context';
 	grid-template-rows: 1fr auto;
-
-	> .page-header {
-		grid-area: page-header;
-	}
-
-	> .page-main {
-		grid-area: page-main;
-		padding-block-end: var(--ui-size);
-	}
-
 	> .page-context {
 		grid-area: page-context;
 		align-content: start;
@@ -35,6 +25,15 @@
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
 		align-content: start;
+
+		> .page-header {
+			grid-area: page-header;
+		}
+
+		> .page-main {
+			grid-area: page-main;
+			padding-block-end: var(--ui-size);
+		}
 	}
 }
 

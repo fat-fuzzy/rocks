@@ -20,10 +20,6 @@
 	grid-area: gare-depot;
 }
 
-.r-zone\:2 > summary {
-	inline-size: fit-content;
-}
-
 .r-zone\:2 > ff-reveal,
 .r-zone\:2 > .expanded > ff-reveal {
 	--max-block-size: calc(
