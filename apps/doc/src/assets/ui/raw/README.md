@@ -5,7 +5,7 @@ tags: ['raw']
 props_style: {}
 ---
 
-## What is Raw ????
+## What is Raw ?
 
 `Raw` components are [HTML/CSS]-only templates, the raw ingredients of a web page if you accept the analogy.
 These templates are not meant to be used as drop-in components: they are testing grounds and guides.

@@ -127,6 +127,7 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Raw',
 				asset: 'raw',
 				formaction: 'toggleRaw',
+				layout: 'voyager',
 				items: [],
 			},
 		],
