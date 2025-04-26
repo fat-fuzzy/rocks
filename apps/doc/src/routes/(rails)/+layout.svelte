@@ -7,7 +7,7 @@
 	import Footer from '$lib/ui/Footer.svelte'
 
 	const {RevealNav} = ui.recipes
-	const {HeaderGrid} = ui.drafts
+	const {HeaderGrid, HeaderNav, RevealContext} = ui.drafts
 	const {LayoutGrid} = ui.content
 
 	type Props = {
@@ -31,27 +31,54 @@
 		return preferences
 	})
 
-	let areas = [
-		{
-			zone: zone1,
-			grid: true,
-			gare: 'nord',
-		},
-		{
-			zone: zone2,
-			grid: true,
-			gare: 'ouest',
-		},
-		{
-			zone: zone3,
-			grid: true,
-			scroll: 'y',
-		},
-		{
-			zone: zone4,
-			grid: true,
-		},
-	]
+	let areas = $derived(
+		sidenav.layout === 'voyager' || sidenav.layout === 'railway'
+			? [
+					{
+						zone: zoneNav1,
+						grid: true,
+						gare: 'nord',
+					},
+					{
+						zone: zoneNav2,
+						grid: true,
+						gare: 'ouest',
+					},
+					{
+						zone: zoneAppContext,
+						grid: true,
+					},
+					{
+						zone: zoneContent,
+						grid: true,
+					},
+					{
+						zone: zoneFooter,
+						grid: true,
+					},
+				]
+			: [
+					{
+						zone: zoneHeader,
+						grid: true,
+						gare: 'nord',
+					},
+					{
+						zone: zoneNav2,
+						grid: true,
+						gare: 'ouest',
+					},
+					{
+						zone: zoneContent,
+						grid: true,
+						scroll: 'y',
+					},
+					{
+						zone: zoneFooter,
+						grid: true,
+					},
+				],
+	)
 </script>
 
 <LayoutGrid
@@ -62,7 +89,7 @@
 	path={page.url.pathname}
 />
 
-{#snippet zone1()}
+{#snippet zoneHeader()}
 	<HeaderGrid
 		id="nav"
 		name="nav"
@@ -80,7 +107,31 @@
 	/>
 {/snippet}
 
-{#snippet zone2()}
+{#snippet zoneNav1()}
+	<div class="navbar">
+		<HeaderNav
+			id="nav"
+			name="nav"
+			label="Menu"
+			title="Menu"
+			size="md"
+			font="sm"
+			variant="outline"
+			asset="home"
+			justify="start"
+			dismiss="outside"
+			auto={true}
+			{links}
+			path={page.url.pathname}
+			reveal={mainNav.reveal}
+			actionPath={page.url.pathname}
+			breakpoint="xs"
+			formaction="toggleNav"
+		/>
+	</div>
+{/snippet}
+
+{#snippet zoneNav2()}
 	<RevealNav
 		{...sidenav}
 		position={false}
@@ -93,7 +144,40 @@
 	/>
 {/snippet}
 
-{#snippet zone3()}
+{#snippet zoneAppContext()}
+	<RevealContext
+		id="appContext"
+		name="appContext"
+		label="Settings"
+		path={page.url.pathname}
+		actionPath={page.url.pathname}
+		breakpoint="xs"
+		size="md"
+		font="sm"
+		formaction="updateSettings"
+		items={preferences}
+		onupdate={preferences.onupdate}
+		reveal={appContext.reveal}
+	>
+		<ul class="links:settings end unstyled">
+			{#each preferences.links as { title, url, shape, size, asset }}
+				<li>
+					<a
+						class={`shape:${shape} ${asset} size:${size}`}
+						href={url}
+						target="_blank"
+						rel="noreferrer"
+						{title}
+						aria-label={title}
+					>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</RevealContext>
+{/snippet}
+
+{#snippet zoneContent()}
 	{#if children}
 		{@render children()}
 	{:else}
@@ -101,6 +185,6 @@
 	{/if}
 {/snippet}
 
-{#snippet zone4()}
+{#snippet zoneFooter()}
 	<Footer />
 {/snippet}

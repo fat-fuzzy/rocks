@@ -92,7 +92,7 @@ export const pages: {[key: string]: NavItem} = {
 		title: 'UI Library',
 		asset: 'playbook',
 		label: 'Playbook',
-		layout: 'metro',
+		layout: 'voyager',
 		items: [
 			{
 				slug: 'tokens',

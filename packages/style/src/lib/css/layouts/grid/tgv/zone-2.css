@@ -3,7 +3,7 @@
  * Contains main content page context
  * - main footer and cookies settings access
  */
-.v-zone\:2 {
+.g-zone\:2 {
 	--grid-gap: 0;
 	grid-area: v-zone-2;
 	grid-template-areas:
@@ -20,7 +20,7 @@
 		padding-block-end: var(--ui-size);
 	}
 
-	> .v-zone\:main {
+	> .g-zone\:main {
 		grid-area: v-zone-main;
 		grid-template-areas:
 			'page-header'

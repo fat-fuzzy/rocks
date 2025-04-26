@@ -1,0 +1,58 @@
+/**
+ * ZONE 3
+ * Contains main content page context
+ */
+.v-zone\:4 {
+	grid-area: v-zone-4;
+	grid-template-rows: 1fr auto;
+
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
+
+	> .page-context {
+		position: relative;
+		padding-block-end: var(--ui-size);
+		max-block-size: var(--overlay-height-2xs);
+	}
+
+	> .v-zone\:main {
+		min-block-size: unset;
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.v-zone\:4 {
+		grid-template-areas: 'v-zone-main';
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+
+		> .page-context {
+			--sidebar-width: var(--layout-sidebar-sm);
+			position: unset;
+			box-shadow: unset;
+			max-block-size: unset;
+		}
+
+		> .page-context > * {
+			--max-inline-size: calc(100% - 3 * var(--ui-size));
+			inline-size: 100%;
+			max-inline-size: var(--max-inline-size);
+		}
+
+		> .page-context > details {
+			--max-inline-size: calc(
+				100% - 4 * var(--ui-size) - var(--outline-offset-lg)
+			);
+			margin-inline-start: var(--ui-size-sm);
+			max-inline-size: var(--max-inline-size);
+		}
+
+		> .v-zone\:main {
+			grid-template-areas:
+				'page-header'
+				'page-main';
+			grid-template-rows: auto 1fr;
+		}
+	}
+}

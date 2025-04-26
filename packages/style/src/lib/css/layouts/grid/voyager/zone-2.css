@@ -1,0 +1,103 @@
+/**
+ * ZONE 2
+ * Left Sidebar contains secondary navigation
+ */
+.v-zone\:2 {
+	grid-area: v-zone-2;
+	grid-template-areas:
+		'gare-control'
+		'gare-depot';
+	align-items: center;
+	padding: 0;
+}
+
+.v-zone\:2 > .gare-control {
+	grid-area: gare-control;
+}
+
+.v-zone\:2 > .gare-depot {
+	grid-area: gare-depot;
+}
+
+.v-zone\:2 > ff-reveal,
+.v-zone\:2 > .expanded > ff-reveal {
+	--max-block-size: calc(
+		100vh - var(--ui-header-height) - var(--outline-offset-lg)
+	);
+	--inline-size: calc(100vw - 2 * var(--ui-size));
+	inline-size: var(--inline-size);
+	block-size: fit-content;
+	max-block-size: var(--max-block-size);
+	padding-block-end: var(--ui-size);
+}
+
+.v-zone\:2 > .expanded > ff-reveal,
+.v-zone\:2[class*='gare:'][open] > ff-reveal,
+.v-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+	--max-inline-size: calc(100vw - 2 * var(--ui-size));
+	position: absolute;
+	top: var(--ui-header-height);
+	left: var(--ui-size);
+	right: var(--ui-size);
+	z-index: var(--layout-z-index-reveal);
+	max-block-size: var(--overlay-height-sm);
+	max-inline-size: var(--max-inline-size);
+}
+
+@media screen and (min-width: 620px) {
+	.v-zone\:2 > .expanded > ff-reveal,
+	.v-zone\:2[class*='gare:'][open] > ff-reveal,
+	.v-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+		--max-inline-size: calc(
+			100vw - var(--sidebar-width) - 3 * var(--ui-size) -
+				var(--outline-offset-lg)
+		);
+		z-index: var(--layout-z-index-reveal);
+	}
+
+	.v-zone\:2 > ff-reveal,
+	.v-zone\:2 > .collapsed > ff-reveal {
+		--collapse-x: 0;
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.v-zone\:2 {
+		--max-block-size: 100%;
+		--max-inline-size: calc(100vw - 2 * var(--ui-size));
+		align-content: start;
+		inline-size: fit-content;
+		position: unset;
+		block-size: var(--max-block-size);
+		inline-size: var(--sidebar-width);
+	}
+
+	.v-zone\:2 > ff-reveal,
+	.v-zone\:2[open] > ff-reveal,
+	.v-zone\:2 > .expanded > ff-reveal,
+	.v-zone\:2 > .collapsed > ff-reveal {
+		position: static;
+		margin-block-start: var(--outline-offset-lg);
+		inline-size: 100%;
+		block-size: var(--max-block-size);
+		padding: 0;
+		margin-inline-start: 0;
+	}
+
+	.v-zone\:2:has(nav.collapsed) {
+		--sidebar-width: var(--layout-sidebar-collapsed);
+		max-inline-size: var(--sidebar-width);
+	}
+
+	.v-zone\:2 > nav > form,
+	.v-zone\:2 > nav > form [aria-expanded] {
+		inline-size: 100%;
+		max-inline-size: calc(100% - 2 * var(--outline-offset-lg));
+	}
+
+	.v-zone\:2 > nav.expanded > form [aria-expanded] {
+		max-inline-size: calc(
+			100% - 2 * var(--ui-size) - 2 * var(--outline-offset-lg)
+		);
+	}
+}

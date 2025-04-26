@@ -6,7 +6,7 @@
 	let title = '🚄 TGV'
 	let parent = 'tgv'
 	let theme = 'neutral'
-	let zone = 'v-zone'
+	let zone = 'g-zone'
 </script>
 
 <div class={`l:grid:${parent}`}>

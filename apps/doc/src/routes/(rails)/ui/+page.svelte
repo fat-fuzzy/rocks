@@ -25,7 +25,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	app={pageContext}
-	layout="metro"
+	layout="voyager"
 >
 	{#snippet main()}
 		<EscapeHtml

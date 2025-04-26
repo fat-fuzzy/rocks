@@ -15,8 +15,9 @@
 		metro: 'm-zone',
 		railway: 'r-zone',
 		steam: 's-zone',
-		tgv: 'v-zone',
+		tgv: 'g-zone',
 		tram: 't-zone',
+		voyager: 'v-zone',
 	}
 
 	let zoneId = $derived(zones[sidenav.layout] ?? 'zone')
