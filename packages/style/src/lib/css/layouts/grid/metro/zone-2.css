@@ -49,6 +49,10 @@
 		z-index: var(--layout-z-index-reveal);
 	}
 
+	.m-zone\:2 > .collapsed {
+		inline-size: fit-content;
+	}
+
 	.m-zone\:2 > ff-reveal,
 	.m-zone\:2 > .collapsed > ff-reveal {
 		--collapse-x: 0;

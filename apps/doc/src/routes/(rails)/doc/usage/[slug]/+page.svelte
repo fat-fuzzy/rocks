@@ -37,8 +37,5 @@
 				updated={markdown.meta.date_updated}
 			/>
 		{/snippet}
-		{#snippet footer()}
-			<Footer />
-		{/snippet}
 	</PageRails>
 {/key}

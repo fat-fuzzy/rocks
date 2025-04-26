@@ -3,79 +3,82 @@
  * Contains the header with main navigation and app context
  */
 
-.v-zone\:1 {
+.g-zone\:1 {
+	--sidebar-width: var(--layout-sidebar-sm);
 	grid-area: v-zone-1;
-	grid-template-areas: 'navbar	app-context';
-	grid-template-columns: 1fr auto;
+	grid-template-areas: '.... navbar	app-context';
+	grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
 	grid-template-rows: subgrid;
 }
 
-.v-zone\:1 > .navbar {
+.g-zone\:1 > .navbar {
 	grid-area: navbar;
-	align-content: center;
 }
 
-.v-zone\:1 > .navbar .expanded ff-reveal {
+.g-zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	left: var(--outline-offset-lg);
 	right: var(--outline-offset-xs);
 }
 
-.v-zone\:1 > .app-context {
+.g-zone\:1 > .app-context {
 	grid-area: app-context;
-	align-content: center;
 	justify-self: flex-end;
 }
 
-.v-zone\:1 > .app-context ff-reveal {
+.g-zone\:1 > .app-context ff-reveal {
 	display: flex;
 	align-items: center;
 }
 
-.v-zone\:1 > .app-context.expanded ff-reveal {
+.g-zone\:1 > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	right: var(--ui-size-sm);
 	box-shadow: var(--shadow-md);
 }
 
-.v-zone\:1 > .app-context.expanded ff-reveal ul {
+.g-zone\:1 > .app-context.expanded ff-reveal ul {
 	padding: var(--ui-size-sm);
 }
 
-.v-zone\:1 > .app-context ff-reveal form {
+.g-zone\:1 > .app-context ff-reveal form {
 	display: flex;
 	gap: var(--ui-size-lg);
 	padding-inline-start: var(--ui-size-lg);
 }
 
-.v-zone\:1 > nav,
-.v-zone\:1 > nav form,
-.v-zone\:1 > nav [aria-expanded] {
+.g-zone\:1 > nav,
+.g-zone\:1 > nav form,
+.g-zone\:1 > nav [aria-expanded] {
 	inline-size: 100%;
 }
 
-.v-zone\:1 > nav [aria-expanded] span {
+.g-zone\:1 > nav [aria-expanded] span {
 	text-align: center;
 }
 
 @media screen and (min-width: 620px) {
-	.v-zone\:1 > nav {
+	.g-zone\:1 {
+		--sidebar-width: var(--layout-sidebar-md);
+	}
+
+	.g-zone\:1 > nav {
 		justify-content: flex-start;
 	}
 
-	.v-zone\:1 > nav form {
+	.g-zone\:1 > nav form {
 		display: none;
 	}
 
-	.v-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+	.g-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
 		block-size: fit-content;
 	}
 
-	.v-zone\:1 > .app-context.expanded ff-reveal,
-	.v-zone\:1 > .navbar > .expanded > ff-reveal,
-	.v-zone\:1 > .navbar > .collapsed > ff-reveal {
+	.g-zone\:1 > .app-context.expanded ff-reveal,
+	.g-zone\:1 > .navbar > .expanded > ff-reveal,
+	.g-zone\:1 > .navbar > .collapsed > ff-reveal {
 		position: unset;
 		margin: 0 auto;
 		z-index: var(--layout-z-index-reveal);
@@ -83,7 +86,7 @@
 		box-shadow: unset;
 	}
 
-	.v-zone\:1 > .app-context ff-reveal {
+	.g-zone\:1 > .app-context ff-reveal {
 		position: unset;
 		padding: 0;
 		display: flex;

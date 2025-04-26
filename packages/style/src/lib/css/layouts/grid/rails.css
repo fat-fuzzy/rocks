@@ -4,7 +4,6 @@
 /* Flex layout fallback */
 
 html:has(.rails[class*='l:grid']) {
-	height: -webkit-fill-available;
 	--hue: var(--color-theme-primary);
 	--lightness-scrollbar: var(--lightness-base);
 	--chroma-scrollbar: var(--chroma-base);
@@ -14,8 +13,6 @@ html:has(.rails[class*='l:grid']) {
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
-	/* scroll-snap-type: y proximity; */
-	max-block-size: calc(100vh + var(--ui-header-height));
 }
 
 body:has(.rails[class*='l:grid']) {
@@ -24,7 +21,20 @@ body:has(.rails[class*='l:grid']) {
 	min-block-size: -webkit-fill-available;
 }
 
-/* TODO: Make utility class for this */
-.rails[class*='l:grid'] [class*='-zone:2'][class*='gare:'] > nav form button {
+.rails[class*='l:grid'] {
+	position: relative;
+}
+
+.rails [class*='-zone:1'] > nav > form > button,
+.rails [class*='-zone:2'] > nav > form > button,
+.rails .navbar > nav > form > button,
+.rails .app-context > form > button {
 	border-radius: 0;
+	margin: 0;
+	font-family: var(--font-family-heading);
+}
+
+.rails [class*='-zone:2'] > nav > form > button {
+	max-inline-size: unset;
+	inline-size: 100%;
 }

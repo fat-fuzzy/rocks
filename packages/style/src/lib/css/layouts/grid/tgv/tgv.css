@@ -11,6 +11,5 @@
 		'v-zone-2'
 		'v-zone-3';
 	grid-template-columns: 1fr;
-	grid-template-rows: var(--ui-header-height) 1fr auto;
-	padding-inline: var(--ui-size) var(--ui-size-sm);
+	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }

@@ -3,7 +3,9 @@
  */
 
 .l\:grid\:tram {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
+	--max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size)
+	);
 	inline-size: 100%;
 	min-block-size: 100vh;
 	grid-template-areas:
@@ -12,8 +14,6 @@
 		't-zone-4   t-zone-4  t-zone-4';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
-	padding-block: 0 var(--ui-size);
-	padding-inline: var(--ui-size) var(--ui-size-sm);
 }
 
 @media screen and (min-width: 935px) {

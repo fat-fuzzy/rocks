@@ -7,11 +7,11 @@
 
 	let title = '🚋 Tram'
 	let parent = 'tram'
-	let theme = 'accent'
+	let theme = 'lime'
 	let zone = 't-zone'
 </script>
 
-<div class={`l:grid:${parent}`}>
+<div class={`rails l:grid:${parent}`}>
 	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 		<AppContext {theme} />
@@ -28,10 +28,10 @@
 			</div>
 			<div class="page-main maki:inline size:lg l:stack size:lg">
 				<Gallery id="creatures" {theme} />
-				<Gallery id="halloween" theme="warning" />
+				<Gallery id="halloween" theme="tangerine" />
 			</div>
 		</main>
-		<aside class="l:grid page-context scroll:y surface:0:accent">
+		<aside class={`l:grid page-context scroll:y surface:0:${theme}`}>
 			<div class="l:stack maki:inline size:md">
 				<h4 class="maki:block">Tours:</h4>
 				<ul class="unstyled l:stack size:md">
@@ -46,6 +46,6 @@
 		</aside>
 	</div>
 	<footer class={`l:grid ${zone}:4`}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="3" />
+		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

@@ -1,0 +1,92 @@
+/**
+ * ZONE 2
+ * Left Sidebar contains secondary navigation
+ */
+.v-zone\:2 {
+	grid-area: v-zone-2;
+	grid-template-areas:
+		'gare-control'
+		'gare-depot';
+	padding: 0;
+}
+
+.v-zone\:2 > .gare-control {
+	grid-area: gare-control;
+}
+
+.v-zone\:2 > .gare-depot {
+	grid-area: gare-depot;
+}
+
+.v-zone\:2 > .expanded > ff-reveal,
+.v-zone\:2[class*='gare:'][open] > ff-reveal {
+	--max-inline-size: calc(100vw - 2 * var(--ui-size));
+	--max-block-size: var(--overlay-height-sm);
+	position: absolute;
+	top: var(--ui-header-height);
+	left: var(--ui-size);
+	right: var(--ui-size);
+	z-index: var(--layout-z-index-reveal);
+	inline-size: var(--inline-size);
+	block-size: fit-content;
+	max-block-size: var(--overlay-height-sm);
+	max-inline-size: var(--max-inline-size);
+	padding-block-end: var(--ui-size);
+}
+
+@media screen and (min-width: 620px) {
+	.v-zone\:2 > .expanded > ff-reveal,
+	.v-zone\:2[class*='gare:'][open] > ff-reveal {
+		--max-inline-size: calc(
+			100vw - var(--sidebar-width) - 3 * var(--ui-size) -
+				var(--outline-offset-lg)
+		);
+		--max-block-size: calc(
+			100vh - var(--ui-header-height) + 2 * var(--ui-size) +
+				var(--outline-offset-lg)
+		);
+		z-index: var(--layout-z-index-reveal);
+		max-block-size: var(--max-block-size);
+	}
+
+	.v-zone\:2 > .collapsed {
+		inline-size: fit-content;
+	}
+
+	.v-zone\:2 > ff-reveal,
+	.v-zone\:2 > .collapsed > ff-reveal {
+		--collapse-x: 0;
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.v-zone\:2 {
+		--max-block-size: 100%;
+		--max-inline-size: var(--sidebar-width);
+		align-content: start;
+		inline-size: var(--max-inline-size);
+		position: unset;
+		block-size: var(--max-block-size);
+	}
+
+	.v-zone\:2 > ff-reveal,
+	.v-zone\:2[open] > ff-reveal,
+	.v-zone\:2 > .expanded > ff-reveal,
+	.v-zone\:2 > .collapsed > ff-reveal {
+		position: static;
+		margin-block-start: var(--outline-offset-lg);
+		inline-size: 100%;
+		block-size: var(--max-block-size);
+		padding: 0;
+		margin-inline-start: 0;
+	}
+
+	.v-zone\:2:has(nav.collapsed) {
+		--sidebar-width: var(--layout-sidebar-collapsed);
+	}
+
+	.v-zone\:2 > nav.expanded > form [aria-expanded] {
+		inline-size: 100%;
+		max-inline-size: calc(100% - var(--ui-size-sm) - var(--outline-offset-sm));
+	}
+}

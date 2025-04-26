@@ -1,0 +1,26 @@
+/**
+ * Grid Voyager Layout
+ */
+
+.l\:grid\:voyager {
+	--max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size)
+	);
+	inline-size: 100%;
+	min-block-size: 100vh;
+	grid-template-areas:
+		'v-zone-1  v-zone-2  v-zone-3'
+		'v-zone-4  v-zone-4  v-zone-4'
+		'v-zone-5  v-zone-5  v-zone-5';
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
+}
+
+@media screen and (min-width: 620px) {
+	.l\:grid\:voyager {
+		grid-template-areas:
+			'v-zone-2  v-zone-1  v-zone-3'
+			'v-zone-2  v-zone-4  v-zone-4'
+			'v-zone-2  v-zone-5  v-zone-5';
+	}
+}

@@ -46,6 +46,7 @@ export const pages: {[key: string]: NavItem} = {
 	doc: {
 		slug: 'doc',
 		title: 'Doc',
+		label: 'Doc',
 		asset: 'pencil',
 		layout: 'metro',
 		items: [
@@ -92,7 +93,7 @@ export const pages: {[key: string]: NavItem} = {
 		title: 'UI Library',
 		asset: 'playbook',
 		label: 'Playbook',
-		layout: 'metro',
+		layout: 'voyager',
 		items: [
 			{
 				slug: 'tokens',
@@ -127,6 +128,7 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Raw',
 				asset: 'raw',
 				formaction: 'toggleRaw',
+				layout: 'voyager',
 				items: [],
 			},
 		],

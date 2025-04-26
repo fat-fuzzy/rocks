@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import Footer from '$lib/ui/Footer.svelte'
 
 	const {PageRails, Aside} = ui.content
 	const {EscapeHtml} = ui.headless
@@ -35,9 +34,6 @@
 				created={markdown.meta.date_created}
 				updated={markdown.meta.date_updated}
 			/>
-		{/snippet}
-		{#snippet footer()}
-			<Footer />
 		{/snippet}
 	</PageRails>
 {/key}

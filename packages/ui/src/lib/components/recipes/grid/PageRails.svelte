@@ -37,8 +37,9 @@
 		metro: 'm-zone',
 		railway: 'r-zone',
 		steam: 's-zone',
-		tgv: 'v-zone',
+		tgv: 'g-zone',
 		tram: 't-zone',
+		voyager: 'v-zone',
 	}
 
 	const mainClasses: {[key: string]: string} = {
@@ -47,6 +48,7 @@
 		steam: 'l:flex justify:center',
 		tgv: '',
 		tram: '',
+		voyager: '',
 	}
 
 	const contextClasses: {[key: string]: string} = {
@@ -55,6 +57,7 @@
 		steam: 'layer:1 ravioli:md',
 		tgv: '',
 		tram: 'layer:1 ravioli:md',
+		voyager: '',
 	}
 
 	let zoneId = $derived(zones[layout] ?? 'zone')

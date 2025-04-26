@@ -3,49 +3,49 @@
  * Contains the header with main navigation and app context
  */
 
-.r-zone\:1 {
-	grid-area: r-zone-1;
+.v-zone\:1 {
+	grid-area: v-zone-1;
 	grid-template-areas: 'navbar';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 }
 
-.r-zone\:1 > .navbar {
+.v-zone\:1 > .navbar {
 	grid-area: navbar;
 }
 
-.r-zone\:1 > .navbar .expanded ff-reveal {
+.v-zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	left: var(--outline-offset-lg);
 	right: var(--outline-offset-xs);
 }
 
-.r-zone\:1 > nav,
-.r-zone\:1 > nav form,
-.r-zone\:1 > nav [aria-expanded] {
+.v-zone\:1 > nav,
+.v-zone\:1 > nav form,
+.v-zone\:1 > nav [aria-expanded] {
 	inline-size: 100%;
 }
 
-.r-zone\:1 > nav [aria-expanded] span {
+.v-zone\:1 > nav [aria-expanded] span {
 	text-align: center;
 }
 
 @media screen and (min-width: 620px) {
-	.r-zone\:1 > nav {
+	.v-zone\:1 > nav {
 		justify-content: flex-start;
 	}
 
-	.r-zone\:1 > nav form {
+	.v-zone\:1 > nav form {
 		display: none;
 	}
 
-	.r-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+	.v-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
 		block-size: fit-content;
 	}
 
-	.r-zone\:1 > .navbar > .expanded > ff-reveal,
-	.r-zone\:1 > .navbar > .collapsed > ff-reveal {
+	.v-zone\:1 > .navbar > .expanded > ff-reveal,
+	.v-zone\:1 > .navbar > .collapsed > ff-reveal {
 		position: unset;
 		margin: 0 auto;
 		z-index: var(--layout-z-index-reveal);

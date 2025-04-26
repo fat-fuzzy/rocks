@@ -20,10 +20,6 @@
 	grid-area: gare-depot;
 }
 
-.r-zone\:2 > summary {
-	inline-size: fit-content;
-}
-
 .r-zone\:2 > ff-reveal,
 .r-zone\:2 > .expanded > ff-reveal {
 	--max-block-size: calc(
@@ -42,8 +38,8 @@
 	--max-inline-size: calc(100vw - 2 * var(--ui-size));
 	position: absolute;
 	top: var(--ui-header-height);
-	left: var(--ui-size);
-	right: var(--ui-size);
+	left: 0;
+	right: 0;
 	z-index: var(--layout-z-index-reveal);
 	max-block-size: var(--overlay-height-sm);
 	max-inline-size: var(--max-inline-size);
@@ -54,8 +50,7 @@
 	.r-zone\:2[class*='gare:'][open] > ff-reveal,
 	.r-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 		--max-inline-size: calc(
-			100vw - var(--sidebar-width) - 3 * var(--ui-size) -
-				var(--outline-offset-lg)
+			100vw - var(--sidebar-width) - var(--ui-size) + var(--outline-offset-lg)
 		);
 		z-index: var(--layout-z-index-reveal);
 	}

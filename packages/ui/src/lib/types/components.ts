@@ -51,6 +51,7 @@ export interface Raw {
 	CSSSteam: typeof import('$lib/components/raw/css-grid-steam.svelte').default
 	CSSTgv: typeof import('$lib/components/raw/css-grid-tgv.svelte').default
 	CSSTram: typeof import('$lib/components/raw/css-grid-tram.svelte').default
+	CSSVoyager: typeof import('$lib/components/raw/css-grid-voyager.svelte').default
 }
 
 export interface Content {

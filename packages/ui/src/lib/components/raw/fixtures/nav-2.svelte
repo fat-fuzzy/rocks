@@ -21,7 +21,7 @@
 	let gareDepot = gare ? 'gare-depot' : ''
 </script>
 
-<details class={`${zone} ${gareClass} ${layoutClass} surface:2:${theme}`}>
+<details class={`${zone} ${gareClass} ${layoutClass} surface:3:${theme}`}>
 	<summary id="nav-2-label" class={`${gareControl} ravioli:3xs`}>
 		Nav 2
 	</summary>

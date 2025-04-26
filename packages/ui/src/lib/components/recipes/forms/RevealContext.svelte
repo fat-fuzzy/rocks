@@ -10,6 +10,7 @@
 		layout,
 		color = 'primary',
 		size = 'sm',
+		font = 'sm',
 		variant = 'outline',
 		asset = 'settings',
 		align = 'end',
@@ -33,6 +34,7 @@
 	{background}
 	{layout}
 	{size}
+	{font}
 	{color}
 	{variant}
 	{asset}

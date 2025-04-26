@@ -5,20 +5,21 @@
 	import Prose from '$lib/components/raw/fixtures/prose-short.svelte'
 	import Details from '$lib/components/raw/fixtures/details.svelte'
 	import LineShort from '$lib/components/raw/fixtures/line-short.svelte'
+	import LineMedium from '$lib/components/raw/fixtures/line-medium.svelte'
 	import LineLong from '$lib/components/raw/fixtures/line-long.svelte'
 
-	let title = '🚞 Railway'
+	let title = '🚆 Railway'
 	let parent = 'railway'
-	let theme = 'highlight'
+	let theme = 'blueberry'
 	let zone = 'r-zone'
 </script>
 
-<div class={`l:grid:${parent}`}>
+<div class={`rails l:grid:${parent}`}>
 	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 	</header>
 	<SideNav zone={`${zone}:2`} {theme} layout="grid" gare="nord" />
-	<aside class="l:grid r-zone:3">
+	<aside class={`l:grid ${zone}:3`}>
 		<AppContext {theme} />
 	</aside>
 	<div
@@ -37,13 +38,14 @@
 			<nav class="l:stack maki:block">
 				<h4 class="maki:inline size:sm">Stopping at:</h4>
 				<LineShort />
-				<h4 class="maki:inline size:sm">Take the blue line for:</h4>
+				<h4 class="maki:inline size:sm">Exchange At:</h4>
+				<LineMedium />
 				<LineLong />
 			</nav>
 			<Details title="Page Context" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
 	<footer class={`l:grid ${zone}:5 surface:3:${theme}`}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="3" />
+		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

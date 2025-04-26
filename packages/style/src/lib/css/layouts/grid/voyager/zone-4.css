@@ -2,45 +2,33 @@
  * ZONE 3
  * Contains main content page context
  */
-.r-zone\:4 {
-	--grid-gap: 0;
-	grid-area: r-zone-4;
-	grid-template-areas:
-		'r-zone-main'
-		'page-context';
+.v-zone\:4 {
+	--max-block-size: calc(
+		100vh - var(--ui-header-height) + 2 * var(--ui-size) +
+			var(--outline-offset-lg)
+	);
+	grid-area: v-zone-4;
 	grid-template-rows: 1fr auto;
+
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
+
 	> .page-context {
-		grid-area: page-context;
-		align-content: start;
 		position: relative;
 		padding-block-end: var(--ui-size);
 		max-block-size: var(--overlay-height-2xs);
 	}
 
-	> .r-zone\:main {
-		grid-area: r-zone-main;
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
+	> .v-zone\:main {
 		min-block-size: unset;
-		align-content: start;
-
-		> .page-header {
-			grid-area: page-header;
-		}
-
-		> .page-main {
-			grid-area: page-main;
-			padding-block-end: var(--ui-size);
-		}
 	}
 }
 
 @media screen and (min-width: 620px) {
-	.r-zone\:4 {
-		grid-template-areas: 'r-zone-main page-context';
-		grid-template-columns: 1fr var(--sidebar-width);
+	.v-zone\:4 {
+		grid-template-areas: 'v-zone-main';
+		grid-template-columns: 1fr;
 		grid-template-rows: 1fr;
 
 		> .page-context {
@@ -64,7 +52,7 @@
 			max-inline-size: var(--max-inline-size);
 		}
 
-		> .r-zone\:main {
+		> .v-zone\:main {
 			grid-template-areas:
 				'page-header'
 				'page-main';
