@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" dir="ltr">
 	<head>
-		<title>CSS | 🚞 Railway</title>
+		<title>CSS | 🚆 Railway</title>
 		<meta charset="utf-8" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,23 +16,23 @@
 			media="(prefers-color-scheme: dark)"
 			content="night"
 		/>
-		<meta name="description" content="CSS 🚞 Railway layout" />
+		<meta name="description" content="CSS 🚆 Railway layout" />
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<link rel="stylesheet" href="/dist/main.css" />
 		<script type="module" src="/index.js"></script>
 	</head>
 	<body class="surface:0:neutral">
-		<div class="l:grid:railway">
+		<div class="rails l:grid:railway">
 			<header class="l:grid r-zone:1">
-				<div class="navbar surface:3:highlight">
+				<div class="navbar surface:4:highlight">
 					<nav id="nav-1" class="l:flex" aria-label="Main navigation">
 						<p class="maki:inline">Nav 1</p>
 						<a href="./" title="CSS Tests">🧪</a>
 					</nav>
 				</div>
 			</header>
-			<details class="l:grid r-zone:2 gare:ouest surface:2:highlight">
+			<details class="l:grid r-zone:2 gare:ouest surface:3:highlight">
 				<summary id="nav-2-label" class="gare-control ravioli:3xs">
 					Nav 2
 				</summary>
@@ -69,11 +69,11 @@
 				</div>
 			</aside>
 			<div
-				class="l:grid r-zone:4 snap:start surface:2:highlight r-zone:playground align-self:stretch align-content:stretch"
+				class="l:grid r-zone:4 snap:start surface:3:highlight align-self:stretch align-content:stretch"
 			>
 				<main class="l:grid r-zone:main scroll:y surface:0:highlight">
 					<div class="page-header l:text:md ravioli:lg">
-						<h1 class="color:highlight">🚞 Railway</h1>
+						<h1 class="color:highlight">🚆 Railway</h1>
 					</div>
 					<div class="page-main maki:inline l:stack size:lg">
 						<article class="l:text:md">
@@ -158,7 +158,7 @@
 								</a>
 							</li>
 						</ul>
-						<h4 class="maki:inline size:sm">Take the blue line for:</h4>
+						<h4 class="maki:inline size:sm">On the Blue Line:</h4>
 						<ul class="l:stack size:md">
 							<li class="ellipsis snap:center">
 								<a href="./grid-metro.html#section-1" class="raviolink">
@@ -185,6 +185,14 @@
 								</a>
 							</li>
 						</ul>
+						<h4 class="maki:inline size:sm">On the Yellow Line:</h4>
+						<ul class="l:stack size:md">
+							<li class="ellipsis snap:center">
+								<a href="./grid-voyager.html#section-1" class="raviolink">
+									00:00 - Around The World
+								</a>
+							</li>
+						</ul>
 					</nav>
 					<details class="l:grid gare:nord surface:0:neutral">
 						<summary class="gare-control ravioli:3xs">Page Context</summary>
@@ -205,7 +213,7 @@
 					</details>
 				</aside>
 			</div>
-			<footer class="l:grid r-zone:5 surface:3:highlight">
+			<footer class="l:grid r-zone:5 surface:4:highlight">
 				<p class="ravioli:2xs">Footer</p>
 			</footer>
 		</div>

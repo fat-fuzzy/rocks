@@ -23,9 +23,9 @@
 		<script type="module" src="/index.js"></script>
 	</head>
 	<body class="surface:0:neutral">
-		<div class="l:grid:metro">
+		<div class="rails l:grid:metro">
 			<header class="l:grid m-zone:1 surface:1:info dotted">
-				<div class="navbar surface:3:info">
+				<div class="navbar surface:4:info">
 					<nav id="nav-1" class="l:flex" aria-label="Main navigation">
 						<p class="maki:inline">Nav 1</p>
 						<a href="./" title="CSS Tests">🧪</a>
@@ -35,7 +35,7 @@
 					<p class="maki:inline">App Context</p>
 				</div>
 			</header>
-			<details class="l:grid m-zone:2 gare:ouest surface:2:info">
+			<details class="l:grid m-zone:2 gare:ouest surface:3:info">
 				<summary id="nav-2-label" class="gare-control ravioli:3xs">
 					Nav 2
 				</summary>
@@ -66,7 +66,7 @@
 					</nav>
 				</ff-reveal>
 			</details>
-			<div class="l:grid m-zone:3 scroll:y surface:2:info dotted">
+			<div class="l:grid m-zone:3 scroll:y surface:3:info dotted">
 				<main class="l:grid m-zone:main scroll:y surface:0:info">
 					<div class="page-header l:text:md ravioli:lg">
 						<h1 class="color:info">🚇 Metro</h1>
@@ -242,7 +242,7 @@
 						</details>
 					</div>
 				</main>
-				<aside class="l:grid page-context surface:1:info scroll:y snap">
+				<aside class="l:grid page-context surface:2:info scroll:y snap">
 					<nav class="l:stack maki:block">
 						<h4 class="maki:inline size:sm">Stopping at:</h4>
 						<ul class="l:stack size:md">
@@ -271,11 +271,19 @@
 								</a>
 							</li>
 						</ul>
-						<h4 class="maki:inline size:sm">Take the red line for:</h4>
+						<h4 class="maki:inline size:sm">On the Red Line:</h4>
 						<ul class="l:stack size:md">
 							<li class="ellipsis snap:center">
 								<a href="./grid-railway.html#section-1" class="raviolink">
 									09:45 - The Passenger
+								</a>
+							</li>
+						</ul>
+						<h4 class="maki:inline size:sm">On the Yellow Line:</h4>
+						<ul class="l:stack size:md">
+							<li class="ellipsis snap:center">
+								<a href="./grid-voyager.html#section-1" class="raviolink">
+									00:00 - Around The World
 								</a>
 							</li>
 						</ul>
@@ -311,7 +319,7 @@
 			</div>
 			<footer class="l:grid m-zone:4">
 				<details class="l:grid gare:nord">
-					<summary class="gare-control ravioli:3xs surface:3:info">
+					<summary class="gare-control ravioli:3xs surface:4:info">
 						Footer
 					</summary>
 					<ff-reveal class="scroll:y layer:1">
