@@ -51,8 +51,5 @@
 				page={post.index}
 			/>
 		{/snippet}
-		{#snippet footer()}
-			<Footer />
-		{/snippet}
 	</PageRails>
 {/key}

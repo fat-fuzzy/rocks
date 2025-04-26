@@ -36,7 +36,4 @@
 			</ul>
 		</div>
 	{/snippet}
-	{#snippet footer()}
-		<Footer />
-	{/snippet}
 </PageRails>
