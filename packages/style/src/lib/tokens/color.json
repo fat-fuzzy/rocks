@@ -95,8 +95,11 @@
 			"green": {
 				"$value": 180.22
 			},
+			"lime": {
+				"$value": 104.29
+			},
 			"yellow": {
-				"$value": 90.53
+				"$value": 93.71
 			},
 			"red": {
 				"$value": 11.8
@@ -131,6 +134,11 @@
 			},
 			"danger": {
 				"$value": "{color.hue.red}"
+			}
+		},
+		"palette": {
+			"lime": {
+				"$value": "{color.hue.lime}"
 			}
 		},
 		"state": {

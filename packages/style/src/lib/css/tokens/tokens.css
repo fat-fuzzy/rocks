@@ -36,10 +36,11 @@
   --color-hue-gray: 0;
   --color-hue-gray-violet: 308.5;
   --color-hue-green: 180.22;
+  --color-hue-lime: 104.29;
   --color-hue-red: 11.8;
   --color-hue-seagreen: 194.96;
   --color-hue-violet: 285.94;
-  --color-hue-yellow: 90.53;
+  --color-hue-yellow: 93.71;
   --color-lightness-000: 95%;
   --color-lightness-100: 90%;
   --color-lightness-200: 80%;
@@ -62,6 +63,7 @@
   --color-magic-success-a: #34fee080;
   --color-magic-warning: #fed634;
   --color-magic-warning-a: #fed63480;
+  --color-palette-lime: var(--color-hue-lime);
   --color-semantic-danger: var(--color-hue-red);
   --color-semantic-info: var(--color-hue-blue);
   --color-semantic-success: var(--color-hue-green);
