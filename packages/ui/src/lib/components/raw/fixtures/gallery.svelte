@@ -37,12 +37,16 @@
 	<h2 id={`section-${id}`} class={`color:${theme}`}>{tours[id].title}</h2>
 	<ol class="unstyled l:grid:auto size:xs">
 		{#each tours[id].items as { emoji, text }}
-			<li>
+			<li
+				class={`l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:${theme}`}
+			>
 				<div
-					class={`l:frame:square surface:2:${theme} variant:bare dotted layer:1 l:stack size:md text:center justify:center`}
+					class={`l:frame:square surface:0:${theme} variant:bare  ravioli:md`}
 				>
-					<span class={`emoji:${emoji}`}></span>
-					<p>{text}</p>
+					<div class="text:center">
+						<span class={`emoji:${emoji}`}></span>
+						<p>{text}</p>
+					</div>
 				</div>
 			</li>
 		{/each}

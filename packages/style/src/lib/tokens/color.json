@@ -83,11 +83,17 @@
 			"violet": {
 				"$value": 285.94
 			},
+			"lilac": {
+				"$value": 294.88
+			},
 			"seagreen": {
 				"$value": 194.96
 			},
-			"fuschia": {
+			"framboise": {
 				"$value": 360
+			},
+			"fuschia": {
+				"$value": 339.35
 			},
 			"blue": {
 				"$value": 269.95
@@ -106,6 +112,9 @@
 			},
 			"red": {
 				"$value": 11.8
+			},
+			"cherry": {
+				"$value": 13.24
 			}
 		},
 		"theme": {
@@ -116,7 +125,7 @@
 				"$value": "{color.hue.seagreen}"
 			},
 			"highlight": {
-				"$value": "{color.hue.fuschia}"
+				"$value": "{color.hue.framboise}"
 			},
 			"surface": {
 				"$value": "{color.hue.gray-violet}"
@@ -148,6 +157,21 @@
 			},
 			"tangerine": {
 				"$value": "{color.hue.orange}"
+			},
+			"framboise": {
+				"$value": "{color.hue.framboise}"
+			},
+			"apple": {
+				"$value": "{color.hue.red}"
+			},
+			"litchee": {
+				"$value": "{color.hue.fuschia}"
+			},
+			"grape": {
+				"$value": "{color.hue.lilac}"
+			},
+			"blueberry": {
+				"$value": "{color.hue.blue}"
 			}
 		},
 		"state": {

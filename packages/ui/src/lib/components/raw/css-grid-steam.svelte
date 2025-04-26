@@ -7,11 +7,11 @@
 
 	let title = '🚂 Steam'
 	let parent = 'steam'
-	let theme = 'primary'
+	let theme = 'litchee'
 	let zone = 's-zone'
 </script>
 
-<div class={`l:grid:${parent}`}>
+<div class={`rails l:grid:${parent}`}>
 	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 		<AppContext {theme} />
@@ -49,6 +49,6 @@
 		</aside>
 	</div>
 	<footer class={`l:grid ${zone}:4`}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="3" />
+		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

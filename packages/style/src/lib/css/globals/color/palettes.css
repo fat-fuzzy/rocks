@@ -1,47 +1,31 @@
 [class*=':lime'] {
 	--hue: var(--color-palette-lime);
-	--shadow: oklch(
-		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
-	);
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
-
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-
-	--shadow-inset-sm: var(--shadow-sm);
-	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*=':banana'] {
 	--hue: var(--color-palette-banana);
-	--shadow: oklch(
-		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
-	);
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
-
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-
-	--shadow-inset-sm: var(--shadow-sm);
-	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*=':tangerine'] {
 	--hue: var(--color-palette-tangerine);
-	--shadow: oklch(
-		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
-	);
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+}
 
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+[class*=':litchee'] {
+	--hue: var(--color-palette-litchee);
+}
 
-	--shadow-inset-sm: var(--shadow-sm);
-	--shadow-inset-md: var(--shadow-md);
+[class*=':apple'] {
+	--hue: var(--color-palette-apple);
+}
+
+[class*=':framboise'] {
+	--hue: var(--color-palette-framboise);
+}
+
+[class*=':grape'] {
+	--hue: var(--color-palette-grape);
+}
+
+[class*=':blueberry'] {
+	--hue: var(--color-palette-blueberry);
 }
