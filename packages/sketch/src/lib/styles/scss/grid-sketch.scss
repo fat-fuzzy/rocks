@@ -3,7 +3,7 @@
 @mixin switchToRowStyles_GridSketch($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
 		.l\:grid\:sketch.bp\:#{$size} {
-			grid-template: auto 1fr / auto var(--sidebar-size);
+			grid-template: auto 1fr / auto var(--sidebar-width);
 			grid-template-areas:
 				'scene context'
 				'scene context'
@@ -13,7 +13,7 @@
 
 	@container (min-width: #{$breakpoint}) {
 		.l\:grid\:sketch.bp\:#{$size} {
-			grid-template: auto 1fr / auto var(--sidebar-size);
+			grid-template: auto 1fr / auto var(--sidebar-width);
 			grid-template-areas:
 				'scene context'
 				'scene context'
