@@ -6,8 +6,6 @@ export const load = async ({locals, url}) => {
 	let pageName = url.pathname.split('/')
 	let sidebar
 
-	console.log('pageName', pageName)
-
 	if (pageName.length > 0 && pageName[1]) {
 		let sidebar = buildNav(pageName[1])
 		sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
