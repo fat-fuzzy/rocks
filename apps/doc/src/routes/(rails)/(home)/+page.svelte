@@ -2,26 +2,26 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageScrolly} = ui.drafts
+	const {PageRails} = ui.content
+	const {Scrolly} = ui.drafts
 
 	let sections = $state(page.data.sections)
 	let markdown = $derived(page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
+	let appContext = $derived(page.data.appContext)
 </script>
 
-<PageScrolly
+<PageRails
 	{title}
 	{description}
 	size="md"
-	justify="center"
-	animations={['fade']}
-	fixed={false}
-	items={sections}
+	path={page.url.pathname}
+	nav={page.data.nav}
+	app={appContext}
+	layout="tgv"
 >
-	{#snippet header()}
-		<div class="w:full maki:block size:2xl">
-			<h1 class="ravioli:md text:center maki:block size:xs">Fat Fuzzy Rocks</h1>
-		</div>
+	{#snippet main()}
+		<Scrolly animations={['fade']} items={sections} level={0} />
 	{/snippet}
-</PageScrolly>
+</PageRails>

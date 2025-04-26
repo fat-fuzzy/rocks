@@ -51,6 +51,15 @@
 		voyager: '',
 	}
 
+	const pageHeaderClasses: {[key: string]: string} = {
+		metro: '',
+		railway: '',
+		steam: '',
+		tgv: 'text:center',
+		tram: '',
+		voyager: '',
+	}
+
 	const contextClasses: {[key: string]: string} = {
 		metro: 'layer:1 ravioli:md',
 		railway: 'layer:1 ravioli:md',
@@ -67,6 +76,7 @@
 			: 'page-context empty',
 	)
 	let mainClass = $derived(mainClasses[layout])
+	let headerClass = $derived(pageHeaderClasses[layout])
 </script>
 
 <Head pageName={currentPage} {title} {description} />
@@ -76,8 +86,12 @@
 {/snippet}
 
 <main {id} class={`l:grid ${zoneId}:main scroll:y`}>
-	<div class="page-header l:text:md maki:auto">
-		<PageHeader {...header} size={size as UiSize} {justify} />
+	<div class={`page-header l:text:md maki:auto ${headerClass}`}>
+		{#if layout === 'tgv'}
+			<PageHeader {title} size={size as UiSize} {justify} />
+		{:else}
+			<PageHeader {...header} size={size as UiSize} {justify} />
+		{/if}
 	</div>
 
 	<div class={`page-main ${mainClass}`}>

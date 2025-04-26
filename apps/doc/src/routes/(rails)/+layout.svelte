@@ -6,7 +6,7 @@
 	import {links} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 
-	const {RevealNav} = ui.recipes
+	const {RevealNav, Header} = ui.recipes
 	const {HeaderGrid, HeaderNav, RevealContext} = ui.drafts
 	const {LayoutGrid} = ui.content
 
@@ -31,54 +31,87 @@
 		return preferences
 	})
 
-	let areas = $derived(
-		sidenav.layout === 'voyager' || sidenav.layout === 'railway'
-			? [
-					{
-						zone: zoneNav1,
-						grid: true,
-						gare: 'nord',
-					},
-					{
-						zone: zoneNav2,
-						grid: true,
-						gare: 'ouest',
-					},
-					{
-						zone: zoneAppContext,
-						grid: true,
-					},
-					{
-						zone: zoneContent,
-						grid: true,
-					},
-					{
-						zone: zoneFooter,
-						grid: true,
-					},
-				]
-			: [
-					{
-						zone: zoneHeader,
-						grid: true,
-						gare: 'nord',
-					},
-					{
-						zone: zoneNav2,
-						grid: true,
-						gare: 'ouest',
-					},
-					{
-						zone: zoneContent,
-						grid: true,
-						scroll: 'y',
-					},
-					{
-						zone: zoneFooter,
-						grid: true,
-					},
-				],
-	)
+	type AreaZone = {
+		zone: Snippet
+		grid?: boolean
+		gare?: string
+		scroll?: string
+	}
+
+	type Areas = {
+		[key: string]: AreaZone[]
+	}
+
+	const twoZones = [
+		{
+			zone: zoneHeader,
+			grid: true,
+			gare: 'nord',
+		},
+		{
+			zone: zoneContent,
+			grid: true,
+		},
+		{
+			zone: zoneFooter,
+			grid: true,
+		},
+	]
+	const fourZones = [
+		{
+			zone: zoneHeaderGrid,
+			grid: true,
+			gare: 'nord',
+		},
+		{
+			zone: zoneNav2,
+			grid: true,
+			gare: 'ouest',
+		},
+		{
+			zone: zoneContent,
+			grid: true,
+			scroll: 'y',
+		},
+		{
+			zone: zoneFooter,
+			grid: true,
+		},
+	]
+	const fiveZones = [
+		{
+			zone: zoneNav1,
+			grid: true,
+			gare: 'nord',
+		},
+		{
+			zone: zoneNav2,
+			grid: true,
+			gare: 'ouest',
+		},
+		{
+			zone: zoneAppContext,
+			grid: true,
+		},
+		{
+			zone: zoneContent,
+			grid: true,
+		},
+		{
+			zone: zoneFooter,
+			grid: true,
+		},
+	]
+	const zoneGroups: Areas = {
+		tgv: twoZones,
+		metro: fourZones,
+		steam: fourZones,
+		tram: fourZones,
+		voyager: fiveZones,
+		railway: fiveZones,
+	}
+
+	let areas = $derived(zoneGroups[sidenav.layout])
 </script>
 
 <LayoutGrid
@@ -89,7 +122,7 @@
 	path={page.url.pathname}
 />
 
-{#snippet zoneHeader()}
+{#snippet zoneHeaderGrid()}
 	<HeaderGrid
 		id="nav"
 		name="nav"
@@ -105,6 +138,24 @@
 		{preferences}
 		breakpoint="xs"
 		layout={sidenav.layout}
+	/>
+{/snippet}
+
+{#snippet zoneHeader()}
+	<Header
+		id="nav"
+		name="nav"
+		label=""
+		path={page.url.pathname}
+		reveal={page.data.nav.reveal}
+		actionPath={page.url.pathname}
+		formaction="toggleNav"
+		position="sticky"
+		placement="top"
+		main={links}
+		context={appContext}
+		breakpoint="xs"
+		app={appContext}
 	/>
 {/snippet}
 
