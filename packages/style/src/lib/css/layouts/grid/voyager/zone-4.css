@@ -3,6 +3,10 @@
  * Contains main content page context
  */
 .v-zone\:4 {
+	--max-block-size: calc(
+		100vh - var(--ui-header-height) + 2 * var(--ui-size) +
+			var(--outline-offset-lg)
+	);
 	grid-area: v-zone-4;
 	grid-template-rows: 1fr auto;
 
