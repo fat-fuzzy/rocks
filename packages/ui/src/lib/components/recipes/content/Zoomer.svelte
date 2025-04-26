@@ -4,15 +4,14 @@
 	import type {Snippet} from 'svelte'
 
 	const {Picture} = ui.drafts
-	const {Head} = ui.headless
-	const {Sidebar} = ui.layouts
 
 	let {
 		children,
 		title,
 		description,
 		path,
-		size = 'sm',
+		size = 'md',
+		variant = 'outline',
 		layout = 'center',
 		cta = 'Zoom',
 	}: {
@@ -20,6 +19,7 @@
 		description: string
 		path: string
 		size: string
+		variant: string
 		layout: string
 		children: Snippet
 		cta: string
@@ -42,7 +42,10 @@
 	}
 </script>
 
-<button class="bg:primary variant:outline size:xs" onclick={openDialog}>
+<button
+	class={`bg:primary variant:${variant}  size:${size} maki:block`}
+	onclick={openDialog}
+>
 	{cta}
 </button>
 
