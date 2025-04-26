@@ -13,7 +13,7 @@ export const load = async ({locals, params, parent}) => {
 	let category = params.category
 
 	let slug = component ? component : category
-	sidebar.layout = slug ? 'steam' : sidebar.layout
+	sidebar.layout = slug ? 'tram' : sidebar.layout
 
 	if (!slug) {
 		content = await pages.fetchMarkdowns(page)

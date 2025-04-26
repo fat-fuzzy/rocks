@@ -7,7 +7,7 @@
 	import LineShort from '$lib/components/raw/fixtures/line-short.svelte'
 	import LineLong from '$lib/components/raw/fixtures/line-long.svelte'
 
-	let title = '🚞 Railway'
+	let title = '🚆 Railway'
 	let parent = 'railway'
 	let theme = 'highlight'
 	let zone = 'r-zone'
