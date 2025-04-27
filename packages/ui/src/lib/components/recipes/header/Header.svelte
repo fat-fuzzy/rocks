@@ -43,12 +43,6 @@
 	})
 
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
-	let headerClass = $derived(
-		styleHelper.getStyles({
-			layout,
-			size,
-		}),
-	)
 </script>
 
 {#snippet headerMain()}
@@ -69,7 +63,7 @@
 		{path}
 		{reveal}
 		{breakpoint}
-		{formaction}
+		formaction="toggleNav"
 		{actionPath}
 		{redirect}
 	/>
