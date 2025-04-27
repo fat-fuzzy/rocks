@@ -24,13 +24,17 @@
 </script>
 
 <div class={`rails l:grid:${sidenav.layout} ${themeClass}`}>
-	{#each areas as { zone, grid, gare, scroll }, i}
+	{#each areas as { zone, grid, gare, scroll, tag }, i}
 		{@const gareClass = gare ? `gare:${gare}` : ''}
 		{@const gridClass = grid ? `l:grid` : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
+		{@const element = tag ? tag : 'div'}
 
-		<div class={`${zoneId}:${i + 1} ${gridClass} ${gareClass} ${scrollClass}`}>
+		<svelte:element
+			this={element}
+			class={`${zoneId}:${i + 1} ${gridClass} ${gareClass} ${scrollClass}`}
+		>
 			{@render zone()}
-		</div>
+		</svelte:element>
 	{/each}
 </div>

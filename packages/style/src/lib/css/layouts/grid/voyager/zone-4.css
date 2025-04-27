@@ -3,10 +3,7 @@
  * Contains main content page context
  */
 .v-zone\:4 {
-	--max-block-size: calc(
-		100vh - var(--ui-header-height) + 2 * var(--ui-size) +
-			var(--outline-offset-lg)
-	);
+	grid-template-areas: 'v-zone-main';
 	grid-area: v-zone-4;
 	grid-template-rows: 1fr auto;
 
@@ -16,21 +13,18 @@
 
 	> .page-context {
 		position: relative;
-		padding-block-end: var(--ui-size);
+		block-size: fit-content;
 		max-block-size: var(--overlay-height-2xs);
 	}
 
 	> .v-zone\:main {
 		min-block-size: unset;
+		padding-inline: var(--ui-size);
 	}
 }
 
 @media screen and (min-width: 620px) {
 	.v-zone\:4 {
-		grid-template-areas: 'v-zone-main';
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
 		> .page-context {
 			--sidebar-width: var(--layout-sidebar-sm);
 			position: unset;

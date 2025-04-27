@@ -1,11 +1,4 @@
 .page\:home main {
-	header {
-		z-index: 1;
-		top: calc(var(--ui-header-height) - var(--scale-base-05));
-		left: 0;
-		right: 0;
-		margin-block-end: 0;
-	}
 	> section:first-child {
 		padding-block-start: calc(var(--font-size-h1) + var(--size-base-2xl));
 	}

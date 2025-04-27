@@ -10,31 +10,35 @@ html:has(.rails[class*='l:grid']) {
 	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
 	--thumb: var(--ink);
 	height: -webkit-fill-available;
-	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
+	overflow: hidden auto;
+	scrollbar-gutter: stable;
 }
 
 body:has(.rails[class*='l:grid']) {
-	min-block-size: 100vh;
+	block-size: 100vh;
 	/* mobile viewport bug fix */
-	min-block-size: -webkit-fill-available;
+	block-size: -webkit-fill-available;
 }
 
 .rails[class*='l:grid'] {
 	position: relative;
 }
 
-.rails [class*='-zone:1'] > nav > form > button,
-.rails [class*='-zone:2'] > nav > form > button,
-.rails .navbar > nav > form > button,
-.rails .app-context > form > button {
+.rails [class*='-zone:2'] > nav > form > [aria-expanded],
+.rails .navbar > nav > form > [aria-expanded],
+.rails .app-context > form > [aria-expanded] {
 	border-radius: 0;
 	margin: 0;
 	font-family: var(--font-family-heading);
 }
 
-.rails [class*='-zone:2'] > nav > form > button {
+.rails [class*='-zone:2'] > nav > form > [aria-expanded] {
 	max-inline-size: unset;
 	inline-size: 100%;
+}
+
+.rails [class*='-zone:1'] .app-name ff-callout {
+	border-radius: 0;
 }

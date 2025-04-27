@@ -1,39 +1,58 @@
 <script lang="ts">
 	import type {PageHeaderProps} from '$types'
+	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		title = 'PageHeder',
 		size,
-		layout = 'sidebar',
+		layout,
 		justify,
 		media,
 		main,
 		side,
 	}: PageHeaderProps = $props()
 
-	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass = $derived(
-		size ? `l:${layout}:${size} reverse` : `l:${layout}`,
-	)
 	let headerClass = $derived(
-		`${layoutClass} ${justifyClass} align:baseline maki:block:lg`,
+		styleHelper.getStyles({
+			layout,
+			size,
+			justify,
+			align: 'baseline',
+		}),
 	)
+
+	let mainClasses = $derived(layout === 'center' ? `text:center` : '')
 	let contentClasses = $derived(media ? `l:text:md` : 'l:text:md maki:auto')
 </script>
 
-<header class={headerClass}>
-	<div class={layout === 'sidebar' ? `l:main:50` : ''}>
-		<div class={contentClasses}>
-			{#if main}
-				{@render main()}
-			{:else}
-				<h1 class="w:auto">{title}</h1>
+{#snippet headerMain()}
+	{#if main}
+		{@render main()}
+	{:else}
+		<h1 class={contentClasses}>{title}</h1>
+	{/if}
+{/snippet}
+
+<header class={`page-header ${headerClass} ${mainClasses}`}>
+	{#if layout === 'tgv'}
+		<div class="l:main:50">
+			{@render headerMain()}
+		</div>
+	{:else if layout === 'voyager' || layout === 'steam'}
+		<div class="l:main:50">
+			{@render headerMain()}
+		</div>
+	{/if}
+	{#if layout === 'sidebar'}
+		<div class="l:main:50">
+			{@render headerMain()}
+		</div>
+		<div class="l:side">
+			{#if side}
+				{@render side()}
 			{/if}
 		</div>
-	</div>
-	{#if side}
-		<div class={layout ? `l:side` : ''}>
-			{@render side()}
-		</div>
+	{:else}
+		{@render headerMain()}
 	{/if}
 </header>

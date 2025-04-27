@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type {RevealContextProps} from '$types'
+
+	import constants from '$lib/types/constants.js'
 	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 
@@ -17,10 +19,20 @@
 		formaction,
 		actionPath,
 		redirect,
-		items,
 		reveal,
-		onupdate,
+		context,
 	}: RevealContextProps = $props()
+
+	let brightness = $derived(context.brightness)
+	let contrast = $derived(context.contrast)
+	let preferences = $derived.by(() => {
+		let preferences = constants.APP_SETTINGS
+		preferences.display[0].initial =
+			brightness === 'night' ? 'active' : 'inactive'
+		preferences.display[1].initial =
+			contrast === 'blend' ? 'active' : 'inactive'
+		return preferences
+	})
 </script>
 
 <Reveal
@@ -43,14 +55,14 @@
 >
 	<Settings
 		id={`${id}-menu`}
-		items={items.display}
+		items={preferences.display}
 		{formaction}
 		{actionPath}
 		{redirect}
-		{onupdate}
+		onupdate={preferences.onupdate}
 	/>
 	<ul class="links:settings end unstyled">
-		{#each items.links as { title, url, shape, size, asset }}
+		{#each preferences.links as { title, url, shape, size, asset }}
 			<li>
 				<a
 					class={`${variant} shape:${shape} color:${color} ${asset} size:${size}`}

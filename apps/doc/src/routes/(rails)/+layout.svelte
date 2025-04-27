@@ -6,7 +6,7 @@
 	import {links} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 
-	const {RevealNav} = ui.recipes
+	const {RevealNav, Header} = ui.recipes
 	const {HeaderGrid, HeaderNav, RevealContext} = ui.drafts
 	const {LayoutGrid} = ui.content
 
@@ -16,80 +16,101 @@
 	let {children}: Props = $props()
 
 	let mainNav = $derived(page.data.nav)
-	let gridLayout = $derived(page.data.layout ?? page.data.nav.layout)
 	let sidenav = $derived(page.data.sidebar)
+	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
 
-	let brightness = $derived(appContext.brightness)
-	let contrast = $derived(appContext.contrast)
-	let preferences = $derived.by(() => {
-		let preferences = ui.constants.APP_SETTINGS
-		preferences.display[0].initial =
-			brightness === 'night' ? 'active' : 'inactive'
-		preferences.display[1].initial =
-			contrast === 'blend' ? 'active' : 'inactive'
-		return preferences
-	})
+	type AreaZone = {
+		zone: Snippet
+		grid?: boolean
+		gare?: string
+		scroll?: string
+	}
 
-	let areas = $derived(
-		sidenav.layout === 'voyager' || sidenav.layout === 'railway'
-			? [
-					{
-						zone: zoneNav1,
-						grid: true,
-						gare: 'nord',
-					},
-					{
-						zone: zoneNav2,
-						grid: true,
-						gare: 'ouest',
-					},
-					{
-						zone: zoneAppContext,
-						grid: true,
-					},
-					{
-						zone: zoneContent,
-						grid: true,
-					},
-					{
-						zone: zoneFooter,
-						grid: true,
-					},
-				]
-			: [
-					{
-						zone: zoneHeader,
-						grid: true,
-						gare: 'nord',
-					},
-					{
-						zone: zoneNav2,
-						grid: true,
-						gare: 'ouest',
-					},
-					{
-						zone: zoneContent,
-						grid: true,
-						scroll: 'y',
-					},
-					{
-						zone: zoneFooter,
-						grid: true,
-					},
-				],
-	)
+	type Areas = {
+		[key: string]: AreaZone[]
+	}
+
+	const twoZones = [
+		{
+			zone: zoneHeader,
+			grid: true,
+			tag: 'header',
+		},
+		{
+			zone: zoneContent,
+			grid: true,
+		},
+		{
+			zone: zoneFooter,
+			grid: true,
+		},
+	]
+	const fourZones = [
+		{
+			zone: zoneHeaderGrid,
+			grid: true,
+			tag: 'header',
+		},
+		{
+			zone: zoneNav2,
+			grid: true,
+			gare: 'ouest',
+		},
+		{
+			zone: zoneContent,
+			grid: true,
+		},
+		{
+			zone: zoneFooter,
+			grid: true,
+		},
+	]
+	const fiveZones = [
+		{
+			zone: zoneNav1,
+			grid: true,
+			gare: 'nord',
+		},
+		{
+			zone: zoneNav2,
+			grid: true,
+			gare: 'ouest',
+		},
+		{
+			zone: zoneAppContext,
+			grid: true,
+		},
+		{
+			zone: zoneContent,
+			grid: true,
+		},
+		{
+			zone: zoneFooter,
+			grid: true,
+		},
+	]
+	const zoneGroups: Areas = {
+		tgv: twoZones,
+		metro: fourZones,
+		steam: fourZones,
+		tram: fourZones,
+		voyager: fiveZones,
+		railway: fiveZones,
+	}
+
+	let areas = $derived(zoneGroups[sidenav.layout])
 </script>
 
 <LayoutGrid
-	layout={gridLayout}
+	{layout}
 	{areas}
 	{sidenav}
 	app={appContext}
 	path={page.url.pathname}
 />
 
-{#snippet zoneHeader()}
+{#snippet zoneHeaderGrid()}
 	<HeaderGrid
 		id="nav"
 		name="nav"
@@ -102,9 +123,25 @@
 		dismiss="outside"
 		main={links}
 		context={appContext}
-		{preferences}
 		breakpoint="xs"
-		layout={sidenav.layout}
+	/>
+{/snippet}
+
+{#snippet zoneHeader()}
+	<Header
+		id="nav"
+		name="nav"
+		title="Menu"
+		label="Menu"
+		font="sm"
+		path={page.url.pathname}
+		reveal={page.data.nav.reveal}
+		actionPath={page.url.pathname}
+		formaction="updateSettings"
+		main={links}
+		context={appContext}
+		breakpoint="xs"
+		layout="grid"
 	/>
 {/snippet}
 
@@ -113,9 +150,9 @@
 		<HeaderNav
 			id="nav"
 			name="nav"
+			title="Menu"
 			label="Menu"
 			font="sm"
-			title="Menu"
 			variant="outline"
 			asset="home"
 			justify="start"
@@ -155,26 +192,9 @@
 		size="md"
 		font="sm"
 		formaction="updateSettings"
-		items={preferences}
-		onupdate={preferences.onupdate}
+		context={appContext}
 		reveal={appContext.reveal}
-	>
-		<ul class="links:settings end unstyled">
-			{#each preferences.links as { title, url, shape, size, asset }}
-				<li>
-					<a
-						class={`shape:${shape} ${asset} size:${size}`}
-						href={url}
-						target="_blank"
-						rel="noreferrer"
-						{title}
-						aria-label={title}
-					>
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</RevealContext>
+	/>
 {/snippet}
 
 {#snippet zoneContent()}

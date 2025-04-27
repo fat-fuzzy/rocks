@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
 	import {DismissEvent} from '$types'
+
+	import constants from '$lib/types/constants.js'
 	import RevealContext from '$lib/components/recipes/forms/RevealContext.svelte'
 	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
@@ -16,7 +18,6 @@
 		actionPath,
 		formaction = 'updateState',
 		main,
-		preferences,
 		context,
 		layout,
 	}: HeaderProps = $props()
@@ -31,9 +32,20 @@
 	}
 
 	let zoneId = $derived(zones[layout] ?? 'zone')
+
+	let brightness = $derived(context.brightness)
+	let contrast = $derived(context.contrast)
+	let preferences = $derived.by(() => {
+		let preferences = constants.APP_SETTINGS
+		preferences.display[0].initial =
+			brightness === 'night' ? 'active' : 'inactive'
+		preferences.display[1].initial =
+			contrast === 'blend' ? 'active' : 'inactive'
+		return preferences
+	})
 </script>
 
-<header class={`l:grid ${zoneId}:1 bg:inherit`}>
+{#snippet headerContent()}
 	<div class="navbar">
 		<SkipLinks />
 		<HeaderNav
@@ -71,6 +83,7 @@
 		{redirect}
 		items={preferences}
 		onupdate={preferences.onupdate}
+		{context}
 		reveal={context.reveal}
 	>
 		<ul class="links:settings end unstyled">
@@ -89,4 +102,13 @@
 			{/each}
 		</ul>
 	</RevealContext>
-</header>
+{/snippet}
+
+{#if layout}
+	<header class={`l:grid ${zoneId}:1 bg:inherit`}>
+		{@render headerContent()}
+	</header>
+{:else}
+	<!-- The header tag must provided by the parent component  -->
+	{@render headerContent()}
+{/if}

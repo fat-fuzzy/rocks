@@ -4,10 +4,12 @@
 
 .l\:grid\:tram {
 	--max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size)
+		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size) -
+			var(--outline-offset-lg)
 	);
 	inline-size: 100%;
-	min-block-size: 100vh;
+	block-size: 100vh;
+	block-size: -webkit-fill-available;
 	grid-template-areas:
 		't-zone-2   t-zone-1  t-zone-1'
 		't-zone-3   t-zone-3  t-zone-3'
