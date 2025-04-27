@@ -3,12 +3,14 @@
  * Left Sidebar contains secondary navigation
  */
 .t-zone\:2 {
+	--max-sidebar-inline: calc(100vw - 2 * var(--ui-size));
+	--max-sidebar-block: var(--overlay-height-sm);
 	grid-area: t-zone-2;
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
-	align-items: center;
 	padding: 0;
+	grid-template-rows: subgrid;
 }
 
 .t-zone\:2 > .gare-control {
@@ -17,29 +19,23 @@
 
 .t-zone\:2 > .gare-depot {
 	grid-area: gare-depot;
+	grid-row: span 2;
 }
 
 .t-zone\:2 > summary {
 	inline-size: fit-content;
 }
 
-.t-zone\:2 > ff-reveal,
-.t-zone\:2 > .expanded > ff-reveal {
-	--max-block-size: calc(
-		100vh - var(--ui-header-height) - var(--outline-offset-lg)
-	);
+.t-zone\:2 > .expanded > ff-reveal,
+.t-zone\:2[class*='gare:'][open] > ff-reveal {
 	--inline-size: var(--sidebar-width);
-	inline-size: var(--inline-size);
-	block-size: fit-content;
-	max-block-size: var(--max-block-size);
-	padding-block-end: var(--ui-size);
-}
-
-.t-zone\:2[class*='gare:'][open] > ff-reveal,
-.t-zone\:2 > .expanded > ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	z-index: var(--layout-z-index-reveal);
+	inline-size: var(--inline-size);
+	block-size: fit-content;
+	max-block-size: var(--max-sidebar-block);
+	padding-block-end: var(--ui-size);
 }
 
 @media screen and (min-width: 620px) {
@@ -57,24 +53,25 @@
 
 @media screen and (min-width: 935px) {
 	.t-zone\:2 {
-		--sidebar-width: var(--layout-sidebar-sm);
-		--max-block-size: calc(
-			100vh - 2 * var(--ui-header-height) + var(--ui-size)
+		--sidebar-width: var(--layout-sidebar-md);
+		--max-sidebar-block: calc(
+			100vh - 3 * var(--ui-size) - var(--outline-offset-lg)
 		);
 		align-content: start;
 		inline-size: fit-content;
 		position: unset;
 		block-size: fit-content;
-		max-block-size: var(--max-block-size);
+		max-block-size: var(--max-sidebar-block);
 	}
 
 	.t-zone\:2 > ff-reveal,
-	.t-zone\:2[open] > ff-reveal,
+	.t-zone\:2[class*='gare:'][open] > ff-reveal,
 	.t-zone\:2 > .expanded > ff-reveal,
 	.t-zone\:2 > .collapsed > ff-reveal {
+		position: static;
 		margin-block-start: var(--outline-offset-lg);
 		inline-size: var(--sidebar-width);
-		block-size: var(--max-block-size);
+		block-size: var(--max-sidebar-block);
 		box-shadow: unset;
 		margin-inline-start: 0;
 	}

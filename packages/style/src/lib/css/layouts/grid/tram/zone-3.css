@@ -3,66 +3,51 @@
  * Contains main content page context
  */
 .t-zone\:3 {
+	--max-content-block: calc(
+		100vh - 3 * var(--ui-header-height) - 3 * var(--ui-size) - 2 *
+			var(--outline-offset-lg)
+	);
 	--grid-gap: 0;
 	grid-area: t-zone-3;
 	grid-template-areas:
 		't-zone-main'
 		'page-context';
-	grid-template-rows: 1fr auto;
+	grid-template-rows: var(--max-content-block) auto;
 
 	> .page-context {
 		grid-area: page-context;
 		align-content: start;
-		position: relative;
-		padding-block-end: var(--ui-size);
 		block-size: var(--overlay-height-3xs);
 	}
 
 	> .t-zone\:main {
 		grid-area: t-zone-main;
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
 		min-block-size: unset;
-		align-content: start;
-		max-block-size: var(--max-block-size);
-		overscroll-behavior-y: contain;
-		padding-block-end: var(--ui-size);
-
-		> .page-header {
-			grid-area: page-header;
-		}
-
-		> .page-main {
-			grid-area: page-main;
-			padding-block-end: var(--ui-size);
-		}
+		block-size: var(--max-content-block);
 	}
 }
 
 @media screen and (min-width: 620px) {
 	.t-zone\:3 {
 		--sidebar-width: var(--layout-sidebar-sm);
-		--max-block-size: calc(
-			100vh - var(--ui-header-height) - var(--outline-offset-lg)
+		--max-content-block: calc(
+			100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size) - 2 *
+				var(--outline-offset-lg)
 		);
 		grid-template-areas: 't-zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
-		grid-template-rows: 1fr;
+		grid-template-rows: var(--max-content-block);
 
 		> .page-context {
 			position: unset;
-			block-size: 100%;
-			max-block-size: var(--max-block-size);
+			box-shadow: unset;
+			block-size: var(--max-content-block);
 		}
+	}
+}
 
-		> .t-zone\:main {
-			grid-template-areas:
-				'page-header'
-				'page-main';
-			grid-template-rows: auto 1fr;
-			max-block-size: unset;
-		}
+@media screen and (min-width: 935px) {
+	.t-zone\:3 {
+		--sidebar-width: var(--layout-sidebar-md);
 	}
 }

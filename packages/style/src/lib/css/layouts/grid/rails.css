@@ -13,6 +13,7 @@ html:has(.rails[class*='l:grid']) {
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
 	overflow: hidden auto;
+	scrollbar-gutter: stable;
 }
 
 body:has(.rails[class*='l:grid']) {
