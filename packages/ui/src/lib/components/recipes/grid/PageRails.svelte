@@ -96,13 +96,25 @@
 {/snippet}
 
 <main {id} class={`${zoneId}:main scroll:y ${zoneMainClass}`}>
-	<div class={`page-header l:text:md maki:auto ${headerClass}`}>
-		{#if layout === 'tgv'}
-			<PageHeader {title} size={size as UiSize} {justify} />
-		{:else}
-			<PageHeader {...header} size={size as UiSize} {justify} />
-		{/if}
-	</div>
+	{#if layout === 'tgv'}
+		<PageHeader {title} size={size as UiSize} {justify} layout="center" />
+	{:else if layout === 'voyager'}
+		<PageHeader {title} size={size as UiSize} {justify} layout="sidebar">
+			{#snippet side()}
+				<div></div>
+			{/snippet}
+		</PageHeader>
+	{:else if layout === 'steam'}
+		<PageHeader
+			{title}
+			size={size as UiSize}
+			{justify}
+			layout="sidebar"
+			media={true}
+		/>
+	{:else}
+		<PageHeader {...header} size={size as UiSize} {justify} />
+	{/if}
 
 	<div class={`page-main ${pageMainClass}`}>
 		{@render main()}

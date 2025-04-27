@@ -20,17 +20,6 @@
 	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
 
-	let brightness = $derived(appContext.brightness)
-	let contrast = $derived(appContext.contrast)
-	let preferences = $derived.by(() => {
-		let preferences = ui.constants.APP_SETTINGS
-		preferences.display[0].initial =
-			brightness === 'night' ? 'active' : 'inactive'
-		preferences.display[1].initial =
-			contrast === 'blend' ? 'active' : 'inactive'
-		return preferences
-	})
-
 	type AreaZone = {
 		zone: Snippet
 		grid?: boolean
@@ -46,7 +35,7 @@
 		{
 			zone: zoneHeader,
 			grid: true,
-			gare: 'nord',
+			tag: 'header',
 		},
 		{
 			zone: zoneContent,
@@ -134,7 +123,6 @@
 		dismiss="outside"
 		main={links}
 		context={appContext}
-		{preferences}
 		breakpoint="xs"
 	/>
 {/snippet}
@@ -143,17 +131,17 @@
 	<Header
 		id="nav"
 		name="nav"
-		label=""
+		title="Menu"
+		label="Menu"
+		font="sm"
 		path={page.url.pathname}
 		reveal={page.data.nav.reveal}
 		actionPath={page.url.pathname}
-		formaction="toggleNav"
-		position="sticky"
-		placement="top"
+		formaction="updateSettings"
 		main={links}
 		context={appContext}
 		breakpoint="xs"
-		app={appContext}
+		layout="grid"
 	/>
 {/snippet}
 
@@ -162,9 +150,9 @@
 		<HeaderNav
 			id="nav"
 			name="nav"
+			title="Menu"
 			label="Menu"
 			font="sm"
-			title="Menu"
 			variant="outline"
 			asset="home"
 			justify="start"
@@ -204,26 +192,9 @@
 		size="md"
 		font="sm"
 		formaction="updateSettings"
-		items={preferences}
-		onupdate={preferences.onupdate}
+		context={appContext}
 		reveal={appContext.reveal}
-	>
-		<ul class="links:settings end unstyled">
-			{#each preferences.links as { title, url, shape, size, asset }}
-				<li>
-					<a
-						class={`shape:${shape} ${asset} size:${size}`}
-						href={url}
-						target="_blank"
-						rel="noreferrer"
-						{title}
-						aria-label={title}
-					>
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</RevealContext>
+	/>
 {/snippet}
 
 {#snippet zoneContent()}
