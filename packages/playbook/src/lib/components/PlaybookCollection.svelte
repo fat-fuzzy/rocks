@@ -1,9 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import {getContext} from 'svelte'
 
 	import ui from '@fat-fuzzy/ui'
-	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 	import Element from './Element.svelte'
@@ -49,7 +47,8 @@
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
-	let titleDepth = $derived(Number(depth) + 1)
+	let titleDepth = $derived(depth + 1)
+	let elementTitleDepth = $derived(titleDepth + 1)
 	let description = $derived(`${title} | Doc`)
 	let pageNav = [
 		{
@@ -89,30 +88,35 @@
 </script>
 
 {#snippet categoryElements()}
-	{#each componentNames as name}
-		{@const SpecifiedElement = items[name]}
-		<article
-			id={`ravioli-${title}`}
-			class={`variant:bare w:auto ui:${name.toLowerCase()}`}
-		>
-			<a
-				href={`${link}/${name}`}
-				class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+	<div class={layoutClass}>
+		{#each componentNames as name}
+			{@const SpecifiedElement = items[name]}
+			<article
+				id={`ravioli-${title}`}
+				class={`variant:bare w:auto ui:${name.toLowerCase()}`}
 			>
-				<svelte:element this={`h${String(depth)}`} class="link font:sm">
-					{name}
-				</svelte:element>
-			</a>
-			<Element
-				title={name}
-				{path}
-				{category}
-				{SpecifiedElement}
-				{formaction}
-				{actionPath}
-			/>
-		</article>
-	{/each}
+				<a
+					href={`${link}/${name}`}
+					class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+				>
+					<svelte:element
+						this={`h${String(elementTitleDepth)}`}
+						class="link font:sm"
+					>
+						{name}
+					</svelte:element>
+				</a>
+				<Element
+					title={name}
+					{path}
+					{category}
+					{SpecifiedElement}
+					{formaction}
+					{actionPath}
+				/>
+			</article>
+		{/each}
+	</div>
 {/snippet}
 
 {#snippet comingSoon()}
@@ -145,15 +149,14 @@
 			/>
 
 			{#if category !== 'raw'}
-				<section id="playbook" class="maki:block size:2xl">
-					<div class="l:text:lg size:xl maki:auto">
+				<section id="playbook" class="l:stack size:2xl">
+					<div class="l:text:lg maki:auto">
 						<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
 							<h2 class="text:center">Playbook</h2>
 						</Magic>
 					</div>
-					<div class={`maki:block ${layoutClass}`}>
-						{@render categoryElements()}
-					</div>
+
+					{@render categoryElements()}
 				</section>
 			{/if}
 		{/snippet}
@@ -182,9 +185,8 @@
 			>
 				{category}
 			</summary>
-			<div class={layoutClass}>
-				{@render categoryElements()}
-			</div>
+
+			{@render categoryElements()}
 		</details>
 	</section>
 {/if}
