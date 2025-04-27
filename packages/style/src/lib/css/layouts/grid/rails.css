@@ -10,22 +10,21 @@ html:has(.rails[class*='l:grid']) {
 	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
 	--thumb: var(--ink);
 	height: -webkit-fill-available;
-	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
+	overflow: hidden auto;
 }
 
 body:has(.rails[class*='l:grid']) {
-	min-block-size: 100vh;
+	block-size: 100vh;
 	/* mobile viewport bug fix */
-	min-block-size: -webkit-fill-available;
+	block-size: -webkit-fill-available;
 }
 
 .rails[class*='l:grid'] {
 	position: relative;
 }
 
-.rails [class*='-zone:1'] > nav > form > button,
 .rails [class*='-zone:2'] > nav > form > button,
 .rails .navbar > nav > form > button,
 .rails .app-context > form > button {
