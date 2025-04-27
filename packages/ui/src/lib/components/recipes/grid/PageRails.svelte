@@ -42,7 +42,16 @@
 		voyager: 'v-zone',
 	}
 
-	const mainClasses: {[key: string]: string} = {
+	const zoneMainClasses: {[key: string]: string} = {
+		metro: 'l:grid',
+		railway: 'l:grid',
+		steam: 'l:grid',
+		tgv: 'snap:center',
+		tram: 'snap:start',
+		voyager: 'snap:start',
+	}
+
+	const pageMainClasses: {[key: string]: string} = {
 		metro: '',
 		railway: '',
 		steam: 'l:flex justify:center',
@@ -75,8 +84,9 @@
 			? `page-context ${contextClasses[layout]}`
 			: 'page-context empty',
 	)
-	let mainClass = $derived(mainClasses[layout])
 	let headerClass = $derived(pageHeaderClasses[layout])
+	let zoneMainClass = $derived(zoneMainClasses[layout])
+	let pageMainClass = $derived(pageMainClasses[layout])
 </script>
 
 <Head pageName={currentPage} {title} {description} />
@@ -85,7 +95,7 @@
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
 
-<main {id} class={`l:grid ${zoneId}:main scroll:y`}>
+<main {id} class={`${zoneId}:main scroll:y ${zoneMainClass}`}>
 	<div class={`page-header l:text:md maki:auto ${headerClass}`}>
 		{#if layout === 'tgv'}
 			<PageHeader {title} size={size as UiSize} {justify} />
@@ -94,7 +104,7 @@
 		{/if}
 	</div>
 
-	<div class={`page-main ${mainClass}`}>
+	<div class={`page-main ${pageMainClass}`}>
 		{@render main()}
 
 		{#if footer}

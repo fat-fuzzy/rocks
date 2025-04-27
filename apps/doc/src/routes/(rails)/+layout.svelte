@@ -71,7 +71,6 @@
 		{
 			zone: zoneContent,
 			grid: true,
-			scroll: 'y',
 		},
 		{
 			zone: zoneFooter,
