@@ -61,7 +61,7 @@
 		{
 			zone: zoneHeaderGrid,
 			grid: true,
-			gare: 'nord',
+			tag: 'header',
 		},
 		{
 			zone: zoneNav2,
@@ -137,7 +137,6 @@
 		context={appContext}
 		{preferences}
 		breakpoint="xs"
-		layout={sidenav.layout}
 	/>
 {/snippet}
 

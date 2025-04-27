@@ -33,7 +33,7 @@
 	let zoneId = $derived(zones[layout] ?? 'zone')
 </script>
 
-<header class={`l:grid ${zoneId}:1 bg:inherit`}>
+{#snippet headerContent()}
 	<div class="navbar">
 		<SkipLinks />
 		<HeaderNav
@@ -89,4 +89,13 @@
 			{/each}
 		</ul>
 	</RevealContext>
-</header>
+{/snippet}
+
+{#if layout}
+	<header class={`l:grid ${zoneId}:1 bg:inherit`}>
+		{@render headerContent()}
+	</header>
+{:else}
+	<!-- The header tag must be provided by the parent component  -->
+	{@render headerContent()}
+{/if}
