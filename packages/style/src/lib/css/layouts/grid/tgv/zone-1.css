@@ -6,9 +6,14 @@
 .g-zone\:1 {
 	--sidebar-width: var(--layout-sidebar-sm);
 	grid-area: v-zone-1;
-	grid-template-areas: '.... navbar	app-context';
-	grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
+	grid-template-areas: 'navbar	app-name  app-context';
+	grid-template-columns: auto 1fr auto;
 	grid-template-rows: subgrid;
+}
+
+.g-zone\:1 > .app-name {
+	grid-area: app-name;
+	padding-block-start: var(--border-width-md);
 }
 
 .g-zone\:1 > .navbar {
@@ -62,6 +67,11 @@
 @media screen and (min-width: 620px) {
 	.g-zone\:1 {
 		--sidebar-width: var(--layout-sidebar-md);
+		grid-template-areas: 'app-name  navbar	app-context';
+		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr minmax(
+				auto,
+				var(--sidebar-width)
+			);
 	}
 
 	.g-zone\:1 > nav {
