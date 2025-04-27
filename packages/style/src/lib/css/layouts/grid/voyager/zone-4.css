@@ -19,6 +19,7 @@
 
 	> .v-zone\:main {
 		min-block-size: unset;
+		padding-inline: var(--ui-size);
 	}
 }
 
