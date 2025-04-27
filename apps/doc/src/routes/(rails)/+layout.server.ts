@@ -13,7 +13,7 @@ export const load = async ({locals, url}) => {
 	}
 
 	if (!sidebar) {
-		sidebar = {layout: 'tgv'}
+		sidebar = {layout: 'tgv', items: []}
 	}
 	let appContext = locals.appContext ?? {
 		...DEFAULT_REVEAL_STATE,

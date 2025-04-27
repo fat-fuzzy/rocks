@@ -16,8 +16,8 @@
 	let {children}: Props = $props()
 
 	let mainNav = $derived(page.data.nav)
-	let gridLayout = $derived(page.data.layout ?? page.data.nav.layout)
 	let sidenav = $derived(page.data.sidebar)
+	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
 
 	let brightness = $derived(appContext.brightness)
@@ -115,7 +115,7 @@
 </script>
 
 <LayoutGrid
-	layout={gridLayout}
+	{layout}
 	{areas}
 	{sidenav}
 	app={appContext}
