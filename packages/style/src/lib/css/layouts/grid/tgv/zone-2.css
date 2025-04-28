@@ -31,6 +31,7 @@
 			'page-main';
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
+		padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
 	}
 
 	> .main-footer {

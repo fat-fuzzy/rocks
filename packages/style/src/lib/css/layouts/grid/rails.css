@@ -35,7 +35,6 @@ body:has(.rails[class*='l:grid']) {
 
 .rails [class*='-zone:'] {
 	border-radius: 0;
-	padding-inline: var(--grid-gap);
 }
 
 .rails [class*='-zone:2'] > nav > form > [aria-expanded] {
@@ -55,10 +54,5 @@ body:has(.rails[class*='l:grid']) {
 @media screen and (min-width: 620px) {
 	html:has(.rails[class*='l:grid']) {
 		scrollbar-gutter: stable;
-	}
-
-	.rails [class*='-zone:1'],
-	.rails [class*='-zone:2'] {
-		padding-inline: 0;
 	}
 }

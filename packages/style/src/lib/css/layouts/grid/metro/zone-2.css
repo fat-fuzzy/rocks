@@ -8,7 +8,7 @@
 		'gare-control'
 		'gare-depot';
 	align-items: center;
-	padding: 0;
+	padding-inline-start: var(--grid-gap);
 }
 
 .m-zone\:2 > .gare-control {

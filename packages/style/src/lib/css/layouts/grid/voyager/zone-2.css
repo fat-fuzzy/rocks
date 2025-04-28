@@ -9,7 +9,6 @@
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
-	padding: 0;
 	grid-template-rows: subgrid;
 }
 

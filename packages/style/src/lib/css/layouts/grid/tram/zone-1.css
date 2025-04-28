@@ -8,6 +8,7 @@
 	grid-template-areas: 'navbar	app-context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
+	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 .t-zone\:1 > .navbar {
@@ -17,8 +18,8 @@
 .t-zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: var(--outline-offset-lg);
-	right: var(--outline-offset-xs);
+	left: calc(var(--outline-offset-md) + var(--grid-gap));
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 .t-zone\:1 > .app-context {
@@ -34,7 +35,7 @@
 .t-zone\:1 > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	right: var(--ui-size-sm);
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 	box-shadow: var(--shadow-md);
 }
 

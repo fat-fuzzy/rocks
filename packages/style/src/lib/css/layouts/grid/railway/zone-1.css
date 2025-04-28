@@ -8,6 +8,7 @@
 	grid-template-areas: 'navbar';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
+	padding-inline-start: var(--grid-gap);
 }
 
 .r-zone\:1 > .navbar {
@@ -17,8 +18,8 @@
 .r-zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: var(--grid-gap);
-	right: var(--grid-gap);
+	left: calc(var(--outline-offset-md) + var(--grid-gap));
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 .r-zone\:1 > nav,

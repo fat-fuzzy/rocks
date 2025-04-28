@@ -9,8 +9,8 @@
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
-	padding: 0;
 	grid-template-rows: subgrid;
+	padding-inline-start: var(--grid-gap);
 }
 
 .t-zone\:2 > .gare-control {

@@ -9,6 +9,8 @@
 	grid-template-areas: 'navbar	app-name  app-context';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: subgrid;
+	padding-inline: var(--grid-gap)
+		calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 .g-zone\:1 > .app-name {
@@ -23,8 +25,8 @@
 .g-zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: var(--outline-offset-lg);
-	right: var(--outline-offset-xs);
+	left: calc(var(--outline-offset-md) + var(--grid-gap));
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 .g-zone\:1 > .app-context {
@@ -40,7 +42,7 @@
 .g-zone\:1 > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	right: var(--ui-size-sm);
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 	box-shadow: var(--shadow-md);
 }
 
