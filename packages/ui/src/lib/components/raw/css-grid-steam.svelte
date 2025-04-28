@@ -9,14 +9,15 @@
 	let parent = 'steam'
 	let theme = 'litchee'
 	let zone = 's-zone'
+	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent}`}>
-	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
+<div class={`rails l:grid:${parent} size:${size}`}>
+	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 		<AppContext {theme} />
 	</header>
-	<SideNav zone={`${zone}:2`} {theme} layout="grid" gare="ouest">
+	<SideNav zone={`${zone}:2 size:${size}`} {theme} layout="grid" gare="ouest">
 		<NavItems />
 	</SideNav>
 	<div

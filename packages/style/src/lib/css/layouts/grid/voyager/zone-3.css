@@ -8,6 +8,7 @@
 	grid-template-areas: 'app-context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
+	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 .v-zone\:3 > .app-context {
@@ -23,7 +24,7 @@
 .v-zone\:3 > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	right: var(--ui-size-sm);
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 	box-shadow: var(--shadow-md);
 }
 

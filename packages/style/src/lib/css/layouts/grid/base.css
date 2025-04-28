@@ -7,7 +7,7 @@
 }
 
 [class*='l:grid'] {
-	--grid-gap: var(--gap, 0);
+	--grid-gap: 0;
 	display: grid;
 	grid-gap: var(--grid-gap);
 }
@@ -26,6 +26,11 @@
 /* Pack grid: Use carefully, as this can create reading flow issues (ex: for image galleries is OK, for forms is not OK) */
 [class*=':grid'].dense {
 	grid-auto-flow: dense;
+}
+
+[class*='l:grid'].size\:3xs {
+	--grid-gap: var(--size-base-3xs);
+	--grid-item-size: var(--layout-grid-item-3xs);
 }
 
 [class*='l:grid'].size\:2xs {

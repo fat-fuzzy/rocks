@@ -8,7 +8,7 @@
 		'gare-control'
 		'gare-depot';
 	align-items: center;
-	padding: 0;
+	padding-inline-start: var(--grid-gap);
 }
 
 .s-zone\:2 > .gare-control {
@@ -26,13 +26,12 @@
 .s-zone\:2 > ff-reveal,
 .s-zone\:2 > .expanded > ff-reveal {
 	--max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size)
+		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap)
 	);
 	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
 	inline-size: var(--max-inline-size);
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
-	padding-block-end: var(--ui-size);
 }
 
 .s-zone\:2 > .expanded > ff-reveal,
@@ -50,7 +49,7 @@
 
 	.s-zone\:2 > .expanded > ff-reveal {
 		--max-inline-size: calc(
-			100vw - var(--layout-sidebar-md) - 4 * var(--ui-size)
+			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
 		);
 		z-index: var(--layout-z-index-reveal);
 		max-block-size: var(--max-block-size);
@@ -66,7 +65,7 @@
 	.s-zone\:2 {
 		--sidebar-width: var(--layout-sidebar-md);
 		--max-block-size: calc(
-			100vh - 2 * var(--ui-header-height) + var(--ui-size)
+			100vh - 2 * var(--ui-header-height) + var(--grid-gap)
 		);
 		align-content: start;
 		inline-size: fit-content;

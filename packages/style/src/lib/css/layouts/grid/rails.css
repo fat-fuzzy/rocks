@@ -1,7 +1,6 @@
 /**
  * Grid Rails Layout
  */
-/* Flex layout fallback */
 
 html:has(.rails[class*='l:grid']) {
 	--hue: var(--color-theme-primary);
@@ -13,7 +12,6 @@ html:has(.rails[class*='l:grid']) {
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
 	overflow: hidden auto;
-	scrollbar-gutter: stable;
 }
 
 body:has(.rails[class*='l:grid']) {
@@ -24,6 +22,7 @@ body:has(.rails[class*='l:grid']) {
 
 .rails[class*='l:grid'] {
 	position: relative;
+	padding-block-end: var(--grid-gap);
 }
 
 .rails [class*='-zone:2'] > nav > form > [aria-expanded],
@@ -34,11 +33,26 @@ body:has(.rails[class*='l:grid']) {
 	font-family: var(--font-family-heading);
 }
 
+.rails [class*='-zone:'] {
+	border-radius: 0;
+}
+
 .rails [class*='-zone:2'] > nav > form > [aria-expanded] {
 	max-inline-size: unset;
 	inline-size: 100%;
 }
 
+.rails [class*='-zone:1'],
+.rails [class*='-zone:2'] {
+	z-index: var(--layout-z-index-reveal);
+}
+
 .rails [class*='-zone:1'] .app-name ff-callout {
 	border-radius: 0;
+}
+
+@media screen and (min-width: 620px) {
+	html:has(.rails[class*='l:grid']) {
+		scrollbar-gutter: stable;
+	}
 }

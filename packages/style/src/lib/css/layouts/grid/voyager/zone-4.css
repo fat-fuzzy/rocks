@@ -29,7 +29,7 @@
 			--sidebar-width: var(--layout-sidebar-sm);
 			position: unset;
 			box-shadow: unset;
-			max-block-size: unset;
+			max-block-size: var(--max-block-size);
 		}
 
 		> .page-context > * {

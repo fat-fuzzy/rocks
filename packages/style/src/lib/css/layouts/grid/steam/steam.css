@@ -3,7 +3,7 @@
  */
 
 .l\:grid\:steam {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--ui-size));
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
 	inline-size: 100%;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
@@ -12,7 +12,7 @@
 		's-zone-3   s-zone-3  s-zone-3'
 		's-zone-4   s-zone-4  s-zone-4';
 	grid-template-columns: auto 1fr auto;
-	grid-template-rows: var(--ui-header-height) 1fr auto;
+	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
 @media screen and (min-width: 935px) {

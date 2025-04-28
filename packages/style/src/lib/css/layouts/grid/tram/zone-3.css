@@ -4,10 +4,9 @@
  */
 .t-zone\:3 {
 	--max-content-block: calc(
-		100vh - 3 * var(--ui-header-height) - 3 * var(--ui-size) - 2 *
+		100vh - 3 * var(--ui-header-height) - 3 * var(--grid-gap) - 2 *
 			var(--outline-offset-lg)
 	);
-	--grid-gap: 0;
 	grid-area: t-zone-3;
 	grid-template-areas:
 		't-zone-main'
@@ -31,12 +30,12 @@
 	.t-zone\:3 {
 		--sidebar-width: var(--layout-sidebar-sm);
 		--max-content-block: calc(
-			100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size) - 2 *
+			100vh - 2 * var(--ui-header-height) - var(--grid-gap) - 2 *
 				var(--outline-offset-lg)
 		);
 		grid-template-areas: 't-zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
-		grid-template-rows: var(--max-content-block);
+		grid-template-rows: 1fr;
 
 		> .page-context {
 			position: unset;

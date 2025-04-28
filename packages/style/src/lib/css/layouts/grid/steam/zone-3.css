@@ -2,8 +2,12 @@
  * ZONE 3
  * Contains main content page context
  */
+
+.l\:grid\:steam [class*='-zone:3'] {
+	padding-inline: 0;
+}
+
 .s-zone\:3 {
-	--grid-gap: 0;
 	grid-area: s-zone-3;
 	grid-template-areas:
 		's-zone-main'
@@ -81,7 +85,7 @@
 				'page-header'
 				'page-main';
 			grid-template-rows: auto 1fr;
-			max-block-size: unset;
+			max-block-size: var(--max-block-size);
 		}
 	}
 }

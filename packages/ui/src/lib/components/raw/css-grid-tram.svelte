@@ -9,20 +9,23 @@
 	let parent = 'tram'
 	let theme = 'lime'
 	let zone = 't-zone'
+	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent}`}>
-	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
+<div class={`rails l:grid:${parent} size:${size}`}>
+	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 		<AppContext {theme} />
 	</header>
 
-	<SideNav zone={`${zone}:2`} {theme} layout="grid" gare="ouest" />
+	<SideNav zone={`${zone}:2 size:${size}`} {theme} layout="grid" gare="ouest" />
 
 	<div
-		class={`l:grid ${zone}:3 surface:2:${theme}  align-self:stretch align-content:stretch dotted`}
+		class={`l:grid ${zone}:3 size:${size} surface:2:${theme}  align-self:stretch align-content:stretch dotted`}
 	>
-		<main class={`l:grid ${zone}:main scroll:y surface:0:${theme}`}>
+		<main
+			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
+		>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
@@ -31,7 +34,9 @@
 				<Gallery id="halloween" theme="tangerine" />
 			</div>
 		</main>
-		<aside class={`l:grid page-context scroll:y surface:0:${theme}`}>
+		<aside
+			class={`l:grid page-context size:${size} scroll:y surface:0:${theme}`}
+		>
 			<div class="l:stack maki:inline size:md">
 				<h4 class="maki:block">Tours:</h4>
 				<ul class="unstyled l:stack size:md">
@@ -45,7 +50,7 @@
 			</div>
 		</aside>
 	</div>
-	<footer class={`l:grid ${zone}:4`}>
+	<footer class={`l:grid ${zone}:4 size:${size}`}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

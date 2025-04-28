@@ -3,13 +3,12 @@
  * Left Sidebar contains secondary navigation
  */
 .v-zone\:2 {
-	--max-sidebar-inline: calc(100vw - 2 * var(--ui-size));
+	--max-sidebar-inline: calc(100vw - 2 * var(--grid-gap));
 	--max-sidebar-block: var(--overlay-height-sm);
 	grid-area: v-zone-2;
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
-	padding: 0;
 	grid-template-rows: subgrid;
 }
 
@@ -38,20 +37,20 @@
 
 @media screen and (min-width: 620px) {
 	.v-zone\:2 {
-		position: relative;
-	}
-
-	.v-zone\:2 > .expanded > ff-reveal,
-	.v-zone\:2[class*='gare:'][open] > ff-reveal {
 		--max-sidebar-inline: calc(
 			100vw - var(--sidebar-width) - 3 * var(--ui-size) -
 				var(--outline-offset-lg)
 		);
 		--max-sidebar-block: calc(
-			100vh - 3 * var(--ui-size) - var(--outline-offset-lg)
+			100vh - 3 * var(--grid-gap) - var(--outline-offset-lg)
 		);
-		z-index: var(--layout-z-index-reveal);
 		max-block-size: var(--max-sidebar-block);
+		position: relative;
+	}
+
+	.v-zone\:2 > .expanded > ff-reveal,
+	.v-zone\:2[class*='gare:'][open] > ff-reveal {
+		z-index: var(--layout-z-index-reveal);
 	}
 
 	.v-zone\:2 > .collapsed {
@@ -70,7 +69,6 @@
 		align-content: start;
 		inline-size: var(--max-sidebar-inline);
 		grid-row: span 3;
-		overflow: hidden;
 	}
 
 	.v-zone\:2 > ff-reveal,
@@ -78,19 +76,17 @@
 	.v-zone\:2 > .expanded > ff-reveal,
 	.v-zone\:2 > .collapsed > ff-reveal {
 		position: static;
+		box-shadow: unset;
 		margin-block-start: var(--outline-offset-lg);
 		inline-size: 100%;
 		max-block-size: var(--max-sidebar-block);
 		padding: 0;
 		margin-inline-start: 0;
-	}
-
-	.v-zone\:2:has(nav.collapsed) {
-		--sidebar-width: var(--layout-sidebar-collapsed);
+		overflow: hidden auto;
 	}
 
 	.v-zone\:2 > nav.expanded > form [aria-expanded] {
 		inline-size: 100%;
-		max-inline-size: calc(100% - var(--ui-size-sm) - var(--outline-offset-sm));
+		max-inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-sm));
 	}
 }

@@ -3,8 +3,12 @@
  * Contains main content page context
  * - main footer and cookies settings access
  */
+
+.rails [class*='-zone:2'] {
+	z-index: 0;
+}
+
 .g-zone\:2 {
-	--grid-gap: 0;
 	grid-area: v-zone-2;
 	grid-template-areas:
 		'v-zone-main'
@@ -27,6 +31,7 @@
 			'page-main';
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
+		padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
 	}
 
 	> .main-footer {

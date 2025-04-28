@@ -60,15 +60,6 @@
 		voyager: '',
 	}
 
-	const pageHeaderClasses: {[key: string]: string} = {
-		metro: '',
-		railway: '',
-		steam: '',
-		tgv: 'text:center',
-		tram: '',
-		voyager: '',
-	}
-
 	const contextClasses: {[key: string]: string} = {
 		metro: 'layer:1 ravioli:md',
 		railway: 'layer:1 ravioli:md',
@@ -84,7 +75,6 @@
 			? `page-context ${contextClasses[layout]}`
 			: 'page-context empty',
 	)
-	let headerClass = $derived(pageHeaderClasses[layout])
 	let zoneMainClass = $derived(zoneMainClasses[layout])
 	let pageMainClass = $derived(pageMainClasses[layout])
 </script>

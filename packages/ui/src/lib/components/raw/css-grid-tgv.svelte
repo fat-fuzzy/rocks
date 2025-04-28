@@ -7,17 +7,20 @@
 	let parent = 'tgv'
 	let theme = 'neutral'
 	let zone = 'g-zone'
+	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent}`}>
+<div class={`rails l:grid:${parent} size:${size}`}>
 	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 		<AppContext {theme} />
 	</header>
 	<div
-		class={`l:grid ${zone}:2 surface:2:${theme} align-self:stretch align-content:stretch`}
+		class={`l:grid ${zone}:2 size:${size} surface:2:${theme} align-self:stretch align-content:stretch`}
 	>
-		<main class={`l:grid ${zone}:main surface:1:${theme} text:center`}>
+		<main
+			class={`l:grid ${zone}:main size:${size} surface:1:${theme} text:center`}
+		>
 			<div class="page-header ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
@@ -61,7 +64,7 @@
 				</ul>
 			</article>
 		</main>
-		<footer class={`l:grid ${zone}:footer surface:3:${theme}`}>
+		<footer class={`l:grid ${zone}:footer size:${size} surface:3:${theme}`}>
 			<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 		</footer>
 	</div>
