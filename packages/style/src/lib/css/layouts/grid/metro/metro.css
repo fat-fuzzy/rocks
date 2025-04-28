@@ -3,10 +3,7 @@
  */
 
 .l\:grid\:metro {
-	--max-block-size: calc(
-		100vh - var(--ui-header-height) + 2 * var(--ui-size) +
-			var(--outline-offset-lg)
-	);
+	--max-block-size: calc(100vh - var(--ui-header-height) - 2 * var(--grid-gap));
 	inline-size: 100%;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;

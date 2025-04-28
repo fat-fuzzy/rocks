@@ -38,11 +38,6 @@
 
 @media screen and (min-width: 620px) {
 	.v-zone\:2 {
-		position: relative;
-	}
-
-	.v-zone\:2 > .expanded > ff-reveal,
-	.v-zone\:2[class*='gare:'][open] > ff-reveal {
 		--max-sidebar-inline: calc(
 			100vw - var(--sidebar-width) - 3 * var(--ui-size) -
 				var(--outline-offset-lg)
@@ -50,8 +45,13 @@
 		--max-sidebar-block: calc(
 			100vh - 3 * var(--grid-gap) - var(--outline-offset-lg)
 		);
-		z-index: var(--layout-z-index-reveal);
 		max-block-size: var(--max-sidebar-block);
+		position: relative;
+	}
+
+	.v-zone\:2 > .expanded > ff-reveal,
+	.v-zone\:2[class*='gare:'][open] > ff-reveal {
+		z-index: var(--layout-z-index-reveal);
 	}
 
 	.v-zone\:2 > .collapsed {
@@ -70,7 +70,6 @@
 		align-content: start;
 		inline-size: var(--max-sidebar-inline);
 		grid-row: span 3;
-		overflow: hidden;
 	}
 
 	.v-zone\:2 > ff-reveal,
@@ -84,10 +83,7 @@
 		max-block-size: var(--max-sidebar-block);
 		padding: 0;
 		margin-inline-start: 0;
-	}
-
-	.v-zone\:2:has(nav.collapsed) {
-		--sidebar-width: var(--layout-sidebar-collapsed);
+		overflow: hidden auto;
 	}
 
 	.v-zone\:2 > nav.expanded > form [aria-expanded] {

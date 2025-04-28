@@ -1,7 +1,6 @@
 /**
  * Grid Rails Layout
  */
-/* Flex layout fallback */
 
 html:has(.rails[class*='l:grid']) {
 	--hue: var(--color-theme-primary);

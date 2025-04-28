@@ -3,7 +3,7 @@
  */
 
 .l\:grid\:railway {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height) + var(--grid-gap));
+	--max-block-size: calc(100vh - var(--ui-header-height) - 2 * var(--grid-gap));
 	inline-size: 100%;
 	min-block-size: 100vh;
 	grid-template-areas:

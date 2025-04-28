@@ -17,8 +17,8 @@
 .r-zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: var(--outline-offset-lg);
-	right: var(--outline-offset-xs);
+	left: var(--grid-gap);
+	right: var(--grid-gap);
 }
 
 .r-zone\:1 > nav,
