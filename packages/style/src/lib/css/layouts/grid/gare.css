@@ -85,6 +85,12 @@ details[open].gare\:nord > ff-reveal > *,
 	transition: block-size 250ms ease-in-out 200ms;
 }
 
+[class*='-zone:'] > .navbar > nav form > [class*='l:switcher'],
+[class*='-zone:'] > .app-context > form > [class*='l:switcher'],
+[class*='-zone:'] > nav > form > [class*='l:switcher'] {
+	--gap: var(--grid-gap);
+}
+
 @media screen and (min-width: 620px) {
 	details[class*='gare:'] > ff-reveal,
 	.l\:reveal[class*='gare:'] > .expanded > ff-reveal {

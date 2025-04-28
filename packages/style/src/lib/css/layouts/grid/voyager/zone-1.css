@@ -25,7 +25,8 @@
 .v-zone\:1 > nav,
 .v-zone\:1 > nav form,
 .v-zone\:1 > nav [aria-expanded] {
-	inline-size: 100%;
+	--icon-gap: var(--grid-gap);
+	inline-size: fit-content;
 }
 
 .v-zone\:1 > nav [aria-expanded] span {
@@ -39,6 +40,11 @@
 
 	.v-zone\:1 > nav form {
 		display: none;
+	}
+
+	.v-zone\:1 > nav,
+	.v-zone\:1 > nav [aria-expanded] {
+		inline-size: 100%;
 	}
 
 	.v-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {

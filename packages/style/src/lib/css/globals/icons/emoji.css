@@ -7,7 +7,8 @@
 }
 
 [class*='shape:'][class*='emoji'] {
-	padding: var(--ui-size-sm);
+	--icon-gap: var(--ui-size-sm);
+	padding: var(--icon-gap);
 	max-inline-size: fit-content;
 }
 
@@ -16,18 +17,5 @@ button[class*='emoji:'][class*='shape:']:not([class*='l:stack'])::before {
 }
 
 [class*='emoji:']:not([class*='justify:'], [class*='l:frame'])::before {
-	margin-inline: var(--ui-size-sm);
-}
-
-[class*='emoji:'].justify\:start::before,
-[class*='emoji:']:not([class*='shape:']).justify\:center::before {
-	margin-inline: 0 var(--ui-size-sm);
-}
-
-[class*='emoji:'].justify\:end::after {
-	margin-inline: var(--ui-size-sm) 0;
-}
-
-[class*='emoji:'][class*='shape:']:not(:has(.sr-only), :empty)::before {
-	margin-block: var(--outline-offset-settings);
+	margin-inline: var(--icon-gap);
 }
