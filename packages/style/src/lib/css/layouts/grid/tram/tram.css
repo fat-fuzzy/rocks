@@ -4,7 +4,7 @@
 
 .l\:grid\:tram {
 	--max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size) -
+		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap) -
 			var(--outline-offset-lg)
 	);
 	inline-size: 100%;
@@ -24,6 +24,5 @@
 			't-zone-2  t-zone-1  t-zone-1'
 			't-zone-2  t-zone-3  t-zone-3'
 			't-zone-2  t-zone-4  t-zone-4';
-		padding-block: 0;
 	}
 }

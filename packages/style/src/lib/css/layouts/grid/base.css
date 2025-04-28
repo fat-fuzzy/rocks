@@ -28,6 +28,11 @@
 	grid-auto-flow: dense;
 }
 
+[class*='l:grid'].size\:3xs {
+	--grid-gap: var(--size-base-3xs);
+	--grid-item-size: var(--layout-grid-item-3xs);
+}
+
 [class*='l:grid'].size\:2xs {
 	--grid-gap: var(--size-base-2xs);
 	--grid-item-size: var(--layout-grid-item-2xs);

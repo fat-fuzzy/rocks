@@ -3,7 +3,7 @@
  * Left Sidebar contains secondary navigation
  */
 .v-zone\:2 {
-	--max-sidebar-inline: calc(100vw - 2 * var(--ui-size));
+	--max-sidebar-inline: calc(100vw - 2 * var(--grid-gap));
 	--max-sidebar-block: var(--overlay-height-sm);
 	grid-area: v-zone-2;
 	grid-template-areas:
@@ -48,7 +48,7 @@
 				var(--outline-offset-lg)
 		);
 		--max-sidebar-block: calc(
-			100vh - 3 * var(--ui-size) - var(--outline-offset-lg)
+			100vh - 3 * var(--grid-gap) - var(--outline-offset-lg)
 		);
 		z-index: var(--layout-z-index-reveal);
 		max-block-size: var(--max-sidebar-block);
@@ -78,6 +78,7 @@
 	.v-zone\:2 > .expanded > ff-reveal,
 	.v-zone\:2 > .collapsed > ff-reveal {
 		position: static;
+		box-shadow: unset;
 		margin-block-start: var(--outline-offset-lg);
 		inline-size: 100%;
 		max-block-size: var(--max-sidebar-block);
@@ -91,6 +92,6 @@
 
 	.v-zone\:2 > nav.expanded > form [aria-expanded] {
 		inline-size: 100%;
-		max-inline-size: calc(100% - var(--ui-size-sm) - var(--outline-offset-sm));
+		max-inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-sm));
 	}
 }

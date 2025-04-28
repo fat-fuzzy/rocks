@@ -12,20 +12,23 @@
 	let parent = 'railway'
 	let theme = 'blueberry'
 	let zone = 'r-zone'
+	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent}`}>
-	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
+<div class={`rails l:grid:${parent} size:${size}`}>
+	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 	</header>
-	<SideNav zone={`${zone}:2`} {theme} layout="grid" gare="nord" />
-	<aside class={`l:grid ${zone}:3`}>
+	<SideNav zone={`${zone}:2 size:${size}`} {theme} layout="grid" gare="nord" />
+	<aside class={`l:grid ${zone}:3 size:${size} `}>
 		<AppContext {theme} />
 	</aside>
 	<div
-		class={`l:grid ${zone}:4 surface:2:${theme} snap:start align-self:stretch align-content:stretch dotted`}
+		class={`l:grid ${zone}:4 size:${size} surface:2:${theme} snap:start align-self:stretch align-content:stretch dotted`}
 	>
-		<main class={`l:grid ${zone}:main scroll:y surface:0:${theme}`}>
+		<main
+			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
+		>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
@@ -34,7 +37,9 @@
 				<Details title="Content Details" {theme} layout="grid" gare="nord" />
 			</div>
 		</main>
-		<aside class={`l:grid page-context surface:1:${theme} scroll:y snap`}>
+		<aside
+			class={`l:grid size:${size} page-context surface:1:${theme} scroll:y snap`}
+		>
 			<nav class="l:stack maki:block">
 				<h4 class="maki:inline size:sm">Stopping at:</h4>
 				<LineShort />
@@ -45,7 +50,7 @@
 			<Details title="Page Context" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class={`l:grid ${zone}:5 surface:3:${theme}`}>
+	<footer class={`l:grid ${zone}:5 size:${size} surface:3:${theme}`}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

@@ -3,7 +3,6 @@
  * Contains main content page context
  */
 .s-zone\:3 {
-	--grid-gap: 0;
 	grid-area: s-zone-3;
 	grid-template-areas:
 		's-zone-main'

@@ -2,7 +2,7 @@
 	import type {LayoutGridProps} from '$types'
 	import format from '$lib/utils/format.js'
 
-	let {areas, sidenav, app, path}: LayoutGridProps = $props()
+	let {areas, size, sidenav, app, path}: LayoutGridProps = $props()
 
 	let brightness = $derived(app.brightness)
 	let contrast = $derived(app.contrast)
@@ -21,12 +21,13 @@
 	}
 
 	let zoneId = $derived(zones[sidenav.layout] ?? 'zone')
+	let sizeClass = $derived(size ? `size:${size}` : '')
 </script>
 
-<div class={`rails l:grid:${sidenav.layout} ${themeClass}`}>
+<div class={`rails l:grid:${sidenav.layout} ${themeClass} ${sizeClass}`}>
 	{#each areas as { zone, grid, gare, scroll, tag }, i}
 		{@const gareClass = gare ? `gare:${gare}` : ''}
-		{@const gridClass = grid ? `l:grid` : ''}
+		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}
 

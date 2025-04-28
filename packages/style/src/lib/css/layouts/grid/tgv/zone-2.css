@@ -4,7 +4,6 @@
  * - main footer and cookies settings access
  */
 .g-zone\:2 {
-	--grid-gap: 0;
 	grid-area: v-zone-2;
 	grid-template-areas:
 		'v-zone-main'
