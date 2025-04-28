@@ -106,6 +106,7 @@
 	{layout}
 	{areas}
 	{sidenav}
+	size={'3xs'}
 	app={appContext}
 	path={page.url.pathname}
 />
@@ -116,6 +117,7 @@
 		name="nav"
 		label="Menu"
 		font="sm"
+		size="md"
 		path={page.url.pathname}
 		reveal={mainNav.reveal}
 		actionPath={page.url.pathname}
@@ -134,6 +136,7 @@
 		title="Menu"
 		label="Menu"
 		font="sm"
+		size="md"
 		path={page.url.pathname}
 		reveal={page.data.nav.reveal}
 		actionPath={page.url.pathname}
@@ -153,6 +156,7 @@
 			title="Menu"
 			label="Menu"
 			font="sm"
+			size="md"
 			variant="outline"
 			asset="home"
 			justify="start"
