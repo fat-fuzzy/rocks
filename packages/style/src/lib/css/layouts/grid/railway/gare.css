@@ -18,3 +18,7 @@
 		}
 	}
 }
+
+.l\:grid\:railway [class*='-zone:3'] {
+	padding-inline: 0;
+}

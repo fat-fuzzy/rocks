@@ -3,6 +3,11 @@
  * Contains main content page context
  * - main footer and cookies settings access
  */
+
+.rails [class*='-zone:2'] {
+	z-index: 0;
+}
+
 .g-zone\:2 {
 	grid-area: v-zone-2;
 	grid-template-areas:

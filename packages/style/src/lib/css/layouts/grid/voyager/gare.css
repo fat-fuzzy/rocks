@@ -18,3 +18,7 @@
 		}
 	}
 }
+
+.l\:grid\:voyager [class*='-zone:3'] {
+	padding-inline: 0;
+}

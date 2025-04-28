@@ -57,12 +57,12 @@
 		grid-template-areas: 'm-zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
-		max-block-size: unset;
+		max-block-size: var(--max-block-size);
 
 		> .page-context {
 			position: unset;
 			box-shadow: unset;
-			max-block-size: unset;
+			max-block-size: var(--max-block-size);
 		}
 
 		> .page-context > * {
@@ -87,7 +87,7 @@
 			grid-template-areas:
 				'page-header'
 				'page-main';
-			max-block-size: unset;
+			max-block-size: var(--max-block-size);
 		}
 	}
 }
