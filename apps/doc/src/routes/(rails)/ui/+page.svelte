@@ -28,15 +28,9 @@
 	layout="voyager"
 >
 	{#snippet main()}
-		<EscapeHtml
-			id={slug}
-			html={content.html}
-			size="md"
-			margin="auto"
-			element="section"
-		/>
+		<EscapeHtml id={slug} html={content.html} size="md" element="section" />
 
-		<div class="l:text:md maki:auto">
+		<div class="l:text:md">
 			{#each categories as category}
 				<PlaybookCollection
 					{category}
