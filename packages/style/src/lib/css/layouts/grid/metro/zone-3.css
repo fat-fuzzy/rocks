@@ -66,15 +66,13 @@
 		}
 
 		> .page-context > * {
-			--max-inline-size: calc(100% - 3 * var(--ui-size));
+			--max-inline-size: calc(var(--layout-sidebar-md) - 2 * var(--grid-gap));
 			inline-size: 100%;
 			max-inline-size: var(--max-inline-size);
 		}
 
 		> .page-context > details {
-			--max-inline-size: calc(
-				100% - 4 * var(--ui-size) - var(--outline-offset-lg)
-			);
+			--max-inline-size: calc(var(--layout-sidebar-md) - 3 * var(--grid-gap));
 			margin-inline-start: var(--ui-size-sm);
 			max-inline-size: var(--max-inline-size);
 		}

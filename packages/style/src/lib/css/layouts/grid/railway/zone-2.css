@@ -25,7 +25,7 @@
 		100vh - var(--ui-header-height) - var(--outline-offset-lg)
 	);
 	--inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
-	inline-size: var(--inline-size);
+	inline-size: 100%;
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);
 	padding-block-end: var(--ui-size);
@@ -34,10 +34,10 @@
 .r-zone\:2 > .expanded > ff-reveal,
 .r-zone\:2[class*='gare:'][open] > ff-reveal,
 .r-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-	--max-inline-size: calc(100vw - 2 * var(--grid-gap));
+	--max-inline-size: calc(100vw - 3 * var(--grid-gap));
 	position: absolute;
 	top: var(--ui-header-height);
-	left: 0;
+	left: var(--grid-gap);
 	right: 0;
 	z-index: var(--layout-z-index-reveal);
 	max-block-size: var(--overlay-height-sm);
@@ -48,9 +48,7 @@
 	.r-zone\:2 > .expanded > ff-reveal,
 	.r-zone\:2[class*='gare:'][open] > ff-reveal,
 	.r-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-		--max-inline-size: calc(
-			100vw - var(--sidebar-width) - var(--grid-gap) + var(--outline-offset-lg)
-		);
+		--max-inline-size: calc(100vw - var(--sidebar-width) - 4 * var(--grid-gap));
 		z-index: var(--layout-z-index-reveal);
 	}
 

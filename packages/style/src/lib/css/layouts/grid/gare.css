@@ -7,10 +7,13 @@
 	border-radius: 0;
 }
 
+details:has(.gare-control) {
+	padding-block: 0;
+}
+
 details[class*='gare:'] > ff-reveal,
 .l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
-	inline-size: 100%;
 	max-block-size: var(--max-block-size);
 	margin-inline-start: var(--outline-offset-md);
 }
@@ -94,7 +97,7 @@ details[open].gare\:nord > ff-reveal > *,
 @media screen and (min-width: 620px) {
 	details[class*='gare:'] > ff-reveal,
 	.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-		--inline-size: var(---max-inline-size);
+		--inline-size: var(--max-inline-size);
 		--collapse-x: 0;
 	}
 

@@ -8,7 +8,6 @@
 		'gare-control'
 		'gare-depot';
 	align-items: center;
-	padding-inline-start: var(--grid-gap);
 }
 
 .m-zone\:2 > .gare-control {
@@ -26,7 +25,7 @@
 .m-zone\:2 > ff-reveal,
 .m-zone\:2 > .expanded > ff-reveal {
 	--max-block-size: calc(
-		100vh - var(--ui-header-height) - var(--outline-offset-lg)
+		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap)
 	);
 	--inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
 	inline-size: var(--inline-size);
@@ -61,11 +60,11 @@
 
 @media screen and (min-width: 935px) {
 	.m-zone\:2 {
-		--max-block-size: calc(100% - var(--ui-header-height));
 		align-content: start;
 		inline-size: fit-content;
 		position: unset;
 		inline-size: var(--sidebar-width);
+		block-size: 100vh;
 	}
 
 	.m-zone\:2 > nav.expanded > form [aria-expanded] {
@@ -77,12 +76,13 @@
 	.m-zone\:2[open] > ff-reveal,
 	.m-zone\:2 > .expanded > ff-reveal,
 	.m-zone\:2 > .collapsed > ff-reveal {
+		position: relative;
 		margin-block-start: var(--outline-offset-lg);
 		inline-size: 100%;
-		block-size: var(--max-block-size);
 		box-shadow: unset;
 		padding: 0;
 		margin-inline-start: 0;
+		max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
 	}
 
 	.m-zone\:2 > .expanded > ff-reveal,

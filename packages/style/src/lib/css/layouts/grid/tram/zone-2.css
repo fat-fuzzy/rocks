@@ -4,7 +4,6 @@
  */
 .t-zone\:2 {
 	--max-sidebar-inline: calc(100vw - 2 * var(--ui-size));
-	--max-sidebar-block: var(--overlay-height-sm);
 	grid-area: t-zone-2;
 	grid-template-areas:
 		'gare-control'
@@ -34,7 +33,7 @@
 	z-index: var(--layout-z-index-reveal);
 	inline-size: var(--inline-size);
 	block-size: fit-content;
-	max-block-size: var(--max-sidebar-block);
+	max-block-size: var(--overlay-height-sm);
 	padding-block-end: var(--ui-size);
 }
 
@@ -54,24 +53,22 @@
 @media screen and (min-width: 935px) {
 	.t-zone\:2 {
 		--sidebar-width: var(--layout-sidebar-md);
-		--max-sidebar-block: calc(
-			100vh - 3 * var(--ui-size) - var(--outline-offset-lg)
-		);
+		--max-block-size: 100vh;
 		align-content: start;
 		inline-size: fit-content;
 		position: unset;
-		block-size: fit-content;
-		max-block-size: var(--max-sidebar-block);
+		block-size: var(--max-block-size);
 	}
 
 	.t-zone\:2 > ff-reveal,
 	.t-zone\:2[class*='gare:'][open] > ff-reveal,
 	.t-zone\:2 > .expanded > ff-reveal,
 	.t-zone\:2 > .collapsed > ff-reveal {
+		--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
 		position: static;
 		margin-block-start: var(--outline-offset-lg);
 		inline-size: var(--sidebar-width);
-		block-size: var(--max-sidebar-block);
+		max-block-size: var(--max-block-size);
 		box-shadow: unset;
 		margin-inline-start: 0;
 	}
