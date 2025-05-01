@@ -8,7 +8,6 @@
 		'gare-control'
 		'gare-depot';
 	grid-template-rows: subgrid;
-	padding-inline-start: var(--grid-gap);
 }
 
 .u-zone\:2 > .gare-control {
