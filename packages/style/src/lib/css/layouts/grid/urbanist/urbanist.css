@@ -1,0 +1,40 @@
+/**
+ * Grid Voyager Layout
+ */
+
+.l\:grid\:urbanist {
+	--max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap) -
+			var(--outline-offset-md)
+	);
+	inline-size: 100%;
+	block-size: 100vh;
+	block-size: -webkit-fill-available;
+	grid-template-areas:
+		'u-zone-1  u-zone-2  u-zone-3'
+		'u-zone-4  u-zone-4  u-zone-4'
+		'u-zone-5  u-zone-5  u-zone-5';
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
+}
+
+@media screen and (min-width: 620px) {
+	.l\:grid\:urbanist {
+		--sidebar-width: var(--layout-sidebar-sm);
+		grid-template-areas:
+			'u-zone-2  u-zone-1  u-zone-3'
+			'u-zone-4  u-zone-4  u-zone-4'
+			'u-zone-5  u-zone-5  u-zone-5';
+		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.l\:grid\:urbanist {
+		--sidebar-width: var(--layout-sidebar-md);
+		grid-template-areas:
+			'u-zone-2  u-zone-1  u-zone-3'
+			'u-zone-2  u-zone-4  u-zone-4'
+			'u-zone-2  u-zone-5  u-zone-5';
+	}
+}

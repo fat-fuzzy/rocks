@@ -74,3 +74,11 @@
 @import './grid/voyager/zone-3.css'; /* Metro grid areas (zone-3) */
 @import './grid/voyager/zone-4.css'; /* Metro grid areas (zone-4) */
 @import './grid/voyager/zone-5.css'; /* Metro grid areas (zone-5) */
+
+@import './grid/urbanist/urbanist.css'; /* Detailed grid with headers and page template areas */
+@import './grid/urbanist/gare.css'; /* Detailed grid with headers and page template areas */
+@import './grid/urbanist/zone-1.css'; /* Metro grid areas (zone-1) */
+@import './grid/urbanist/zone-2.css'; /* Metro grid areas (zone-2) */
+@import './grid/urbanist/zone-3.css'; /* Metro grid areas (zone-3) */
+@import './grid/urbanist/zone-4.css'; /* Metro grid areas (zone-4) */
+@import './grid/urbanist/zone-5.css'; /* Metro grid areas (zone-5) */

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+		<title>CSS | 🚉 Urbanist</title>
+		<meta charset="utf-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta
+			name="theme-color"
+			media="(prefers-color-scheme: light)"
+			content="day"
+		/>
+		<meta
+			name="theme-color"
+			media="(prefers-color-scheme: dark)"
+			content="night"
+		/>
+		<meta name="description" content="CSS 🚉 Urbanist layout" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="stylesheet" href="/dist/main.css" />
+		<script type="module" src="/index.js"></script>
+	</head>
+	<body class="surface:0:accent">
+		<div class="rails l:grid:urbanist size:3xs">
+			<header class="u-zone:1 l:grid size:3xs">
+				<div class="navbar surface:4:accent l:flex align:center">
+					<nav id="nav-1" class="l:flex" aria-label="Main navigation">
+						<p class="maki:inline">Nav 1</p>
+						<a href="./" title="CSS Tests">🧪</a>
+					</nav>
+				</div>
+			</header>
+			<details class="u-zone:2 l:grid size:3xs gare:ouest surface:3:accent">
+				<summary id="nav-2-label" class="gare-control ravioli:3xs">
+					Nav 2
+				</summary>
+				<ff-reveal class="gare-depot scroll:y layer:1">
+					<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
+						<ol class="unstyled">
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+							<li class="raviolink">Item</li>
+						</ol>
+					</nav>
+				</ff-reveal>
+			</details>
+			<aside class="u-zone:3 l:grid size:3xs">
+				<div class="app-context surface:3:accent l:flex align:center">
+					<p class="maki:inline">Context</p>
+				</div>
+			</aside>
+			<div class="u-zone:4 scroll:y snap:start">
+				<div class="page-header">
+					<div class="l:sidebar:md ravioli:lg">
+						<div class="l:main">
+							<h1 class="color:accent">🚉 Urbanist</h1>
+						</div>
+						<div class="l:side maki:block l:stack size:md">
+							<h4>Stopping at:</h4>
+							<ul class="unstyled l:stack size:md">
+								<li class="ellipsis snap:center">
+									<a href="#section-1" class="raviolink">
+										00:00 - Around The World
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="l:sidebar size:md">
+					<main class="l:main">
+						<div class="page-main maki:inline l:stack size:lg">
+							<article class="l:text:md">
+								<h2 id="section-1">Around The World</h2>
+								<h3>Artist: Daft Punk</h3>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<br />
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<br />
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<br />
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<p>Around the world, around the world</p>
+								<br />
+								<p>(etc, etc, etc, etc .....)</p>
+								<br />
+								<p>(etc....)</p>
+								<br />
+							</article>
+							<details class="l:grid size:3xs gare:nord surface:1:accent">
+								<summary class="gare-control ravioli:3xs">
+									Article Context
+								</summary>
+								<ff-reveal class="scroll:y layer:1">
+									<ol class="unstyled">
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+										<li class="raviolink">Item</li>
+									</ol>
+								</ff-reveal>
+							</details>
+						</div>
+					</main>
+					<aside class="l:side surface:2:accent maki:block l:grid:auto size:md">
+						<nav class="l:stack size:lg">
+							<h4 class="maki:inline size:sm">Exchange At:</h4>
+							<ul class="l:stack">
+								<li>
+									<h3 class="maki:inline size:sm">Railway Line:</h3>
+									<ul class="l:stack size:md">
+										<li class="ellipsis snap:center">
+											<a href="./grid-railway.html#section-1" class="raviolink">
+												09:45 - The Passenger
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h3 class="maki:inline size:sm">Metro Line:</h3>
+									<ul class="l:stack size:md">
+										<li class="ellipsis snap:center">
+											<a href="./grid-metro.html#section-1" class="raviolink">
+												04:45 - Paris s’éveille
+											</a>
+										</li>
+										<li class="ellipsis snap:center">
+											<a
+												href="./grid-metro.html#section-2"
+												class="raviolink"
+												title="Should I Stay or Should I Go"
+											>
+												17:44 - Should I Stay or Should I Go
+											</a>
+										</li>
+										<li class="ellipsis snap:center">
+											<a href="./grid-metro.html#section-3" class="raviolink">
+												01:58 - Nightclubbing
+											</a>
+										</li>
+										<li class="ellipsis snap:center">
+											<a href="./grid-metro.html#section-4" class="raviolink">
+												06:07 - Sunday Morning
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+						<details class="l:grid gare:nord surface:0:accent">
+							<summary class="gare-control ravioli:3xs">Page Context</summary>
+							<ff-reveal class="scroll:y layer:1 scroll:y snap:start">
+								<ol class="unstyled">
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+								</ol>
+							</ff-reveal>
+						</details>
+					</aside>
+				</div>
+			</div>
+			<footer class="l:grid size:3xs u-zone:5 surface:4:accent">
+				<p class="ravioli:2xs">Footer</p>
+			</footer>
+		</div>
+	</body>
+</html>

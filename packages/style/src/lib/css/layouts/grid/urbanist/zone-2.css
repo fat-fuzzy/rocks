@@ -1,0 +1,97 @@
+/**
+ * ZONE 2
+ * Left Sidebar contains secondary navigation
+ */
+.u-zone\:2 {
+	grid-area: u-zone-2;
+	grid-template-areas:
+		'gare-control'
+		'gare-depot';
+	grid-template-rows: subgrid;
+	padding-inline-start: var(--grid-gap);
+}
+
+.u-zone\:2 > .gare-control {
+	grid-area: gare-control;
+}
+
+.u-zone\:2 > .gare-depot {
+	grid-area: gare-depot;
+	grid-row: span 2;
+}
+
+.u-zone\:2 > .expanded > ff-reveal,
+.u-zone\:2[class*='gare:'][open] > ff-reveal {
+	--max-inline-size: calc(100vw - 3 * var(--grid-gap));
+	position: absolute;
+	left: var(--ui-size);
+	right: var(--ui-size);
+	z-index: var(--layout-z-index-reveal);
+	inline-size: var(--inline-size);
+	block-size: fit-content;
+	max-block-size: var(--overlay-height-sm);
+	max-inline-size: var(--max-inline-size);
+	padding-block-end: var(--ui-size);
+}
+
+@media screen and (min-width: 620px) {
+	.u-zone\:2 {
+		--max-inline-size: calc(
+			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
+		);
+		--max-block-size: 100vh;
+		position: relative;
+		max-block-size: var(--max-block-size);
+	}
+
+	.u-zone\:2 > .expanded > ff-reveal,
+	.u-zone\:2[class*='gare:'][open] > ff-reveal {
+		--max-inline-size: calc(
+			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
+		);
+		--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
+		z-index: var(--layout-z-index-reveal);
+		block-size: fit-content;
+		max-block-size: var(--max-block-size);
+		overflow: hidden auto;
+	}
+
+	.u-zone\:2 > .collapsed {
+		inline-size: fit-content;
+	}
+
+	.u-zone\:2 > ff-reveal,
+	.u-zone\:2 > .collapsed > ff-reveal {
+		--collapse-x: 0;
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.u-zone\:2 {
+		--max-inline-size: calc(
+			var(--sidebar-width) - 2 * var(--outline-offset-lg)
+		);
+		align-content: start;
+		inline-size: var(--sidebar-width);
+	}
+
+	.u-zone\:2 > ff-reveal,
+	.u-zone\:2[open] > ff-reveal,
+	.u-zone\:2[class*='gare:'][open] > ff-reveal,
+	.u-zone\:2 > .expanded > ff-reveal,
+	.u-zone\:2 > .collapsed > ff-reveal {
+		position: static;
+		box-shadow: unset;
+		margin-block-start: var(--outline-offset-lg);
+		inline-size: 100%;
+		max-inline-size: var(--max-inline-size);
+		padding: 0;
+		margin-inline-start: 0;
+		overflow: hidden auto;
+	}
+
+	.u-zone\:2 > nav.expanded > form [aria-expanded] {
+		inline-size: 100%;
+		max-inline-size: var(--max-inline-size);
+	}
+}
