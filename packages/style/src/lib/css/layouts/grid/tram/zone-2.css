@@ -67,7 +67,7 @@
 		--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
 		position: static;
 		margin-block-start: var(--outline-offset-lg);
-		inline-size: var(--sidebar-width);
+		max-inline-size: var(--sidebar-width);
 		max-block-size: var(--max-block-size);
 		box-shadow: unset;
 		margin-inline-start: 0;

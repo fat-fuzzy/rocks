@@ -9,6 +9,7 @@
 		'gare-depot';
 	align-items: center;
 	position: unset;
+	padding-inline-start: var(--grid-gap);
 }
 
 .r-zone\:2 > .gare-control {
@@ -24,7 +25,6 @@
 	--max-block-size: calc(
 		100vh - var(--ui-header-height) - var(--outline-offset-lg)
 	);
-	--inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
 	inline-size: 100%;
 	block-size: fit-content;
 	max-block-size: var(--max-block-size);

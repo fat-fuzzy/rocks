@@ -3,12 +3,12 @@
  * Left Sidebar contains secondary navigation
  */
 .v-zone\:2 {
-	--max-sidebar-inline: calc(100vw - 2 * var(--grid-gap));
 	grid-area: v-zone-2;
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
 	grid-template-rows: subgrid;
+	padding-inline-start: var(--grid-gap);
 }
 
 .v-zone\:2 > .gare-control {
@@ -22,23 +22,22 @@
 
 .v-zone\:2 > .expanded > ff-reveal,
 .v-zone\:2[class*='gare:'][open] > ff-reveal {
+	--max-inline-size: calc(100vw - 3 * var(--grid-gap));
 	position: absolute;
-	top: var(--ui-header-height);
 	left: var(--ui-size);
 	right: var(--ui-size);
 	z-index: var(--layout-z-index-reveal);
 	inline-size: var(--inline-size);
 	block-size: fit-content;
 	max-block-size: var(--overlay-height-sm);
-	max-inline-size: var(--max-sidebar-inline);
+	max-inline-size: var(--max-inline-size);
 	padding-block-end: var(--ui-size);
 }
 
 @media screen and (min-width: 620px) {
 	.v-zone\:2 {
-		--max-sidebar-inline: calc(
-			100vw - var(--sidebar-width) - 3 * var(--ui-size) -
-				var(--outline-offset-lg)
+		--max-inline-size: calc(
+			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
 		);
 		--max-block-size: 100vh;
 		position: relative;
@@ -47,10 +46,14 @@
 
 	.v-zone\:2 > .expanded > ff-reveal,
 	.v-zone\:2[class*='gare:'][open] > ff-reveal {
-		z-index: var(--layout-z-index-reveal);
+		--max-inline-size: calc(
+			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
+		);
 		--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
+		z-index: var(--layout-z-index-reveal);
 		block-size: fit-content;
 		max-block-size: var(--max-block-size);
+		overflow: hidden auto;
 	}
 
 	.v-zone\:2 > .collapsed {
@@ -65,20 +68,23 @@
 
 @media screen and (min-width: 935px) {
 	.v-zone\:2 {
-		--max-sidebar-inline: var(--sidebar-width);
+		--max-inline-size: calc(
+			var(--sidebar-width) - 2 * var(--outline-offset-lg)
+		);
 		align-content: start;
-		inline-size: var(--max-sidebar-inline);
-		block-size: 100vh;
+		inline-size: var(--sidebar-width);
 	}
 
 	.v-zone\:2 > ff-reveal,
 	.v-zone\:2[open] > ff-reveal,
+	.v-zone\:2[class*='gare:'][open] > ff-reveal,
 	.v-zone\:2 > .expanded > ff-reveal,
 	.v-zone\:2 > .collapsed > ff-reveal {
 		position: static;
 		box-shadow: unset;
 		margin-block-start: var(--outline-offset-lg);
 		inline-size: 100%;
+		max-inline-size: var(--max-inline-size);
 		padding: 0;
 		margin-inline-start: 0;
 		overflow: hidden auto;
@@ -86,6 +92,6 @@
 
 	.v-zone\:2 > nav.expanded > form [aria-expanded] {
 		inline-size: 100%;
-		max-inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-sm));
+		max-inline-size: var(--max-inline-size);
 	}
 }

@@ -25,12 +25,14 @@
 .s-zone\:2 > .expanded > ff-reveal,
 .s-zone\:2[class*='gare:'][open] > ff-reveal,
 .s-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
+	--max-inline-size: calc(100vw - 3 * var(--grid-gap));
+	--max-block-size: var(--overlay-height-md);
 	inline-size: var(--max-inline-size);
 	position: absolute;
 	top: var(--ui-header-height);
 	z-index: var(--layout-z-index-reveal);
-	max-block-size: var(--overlay-height-md);
+	block-size: fit-content;
+	max-block-size: var(--max-block-size);
 	overflow: hidden auto;
 }
 
@@ -41,11 +43,6 @@
 		);
 		z-index: var(--layout-z-index-reveal);
 	}
-
-	.s-zone\:2 > ff-reveal,
-	.s-zone\:2 > .collapsed > ff-reveal {
-		--collapse-x: 0;
-	}
 }
 
 @media screen and (min-width: 935px) {
@@ -53,9 +50,8 @@
 		--sidebar-width: var(--layout-sidebar-md);
 		--max-block-size: 100vh;
 		inline-size: fit-content;
-		block-size: fit-content;
-		position: unset;
 		block-size: var(--max-block-size);
+		position: unset;
 	}
 
 	.s-zone\:2 > ff-reveal,
@@ -64,9 +60,11 @@
 	.s-zone\:2 > .collapsed > ff-reveal,
 	.s-zone\:2[class*='gare:'][open] > ff-reveal {
 		--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
+		--max-inline-size: var(--sidebar-width);
 		position: unset;
 		margin-block-start: var(--outline-offset-lg);
-		inline-size: var(--sidebar-width);
+		inline-size: 100%;
+		max-inline-size: var(--max-inline-size);
 		box-shadow: unset;
 		margin-inline-start: 0;
 		max-block-size: var(--max-block-size);
@@ -85,5 +83,6 @@
 
 	.s-zone\:2 > nav.expanded > form [aria-expanded] {
 		inline-size: var(--sidebar-width);
+		max-inline-size: var(--max-inline-size);
 	}
 }

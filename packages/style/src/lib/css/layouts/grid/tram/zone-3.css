@@ -3,7 +3,7 @@
  * Contains main content page context
  */
 .t-zone\:3 {
-	--max-content-block: calc(
+	--max-block-size: calc(
 		100vh - 3 * var(--ui-header-height) - 3 * var(--grid-gap) - 2 *
 			var(--outline-offset-lg)
 	);
@@ -11,7 +11,7 @@
 	grid-template-areas:
 		't-zone-main'
 		'page-context';
-	grid-template-rows: var(--max-content-block) auto;
+	grid-template-rows: var(--max-block-size) auto;
 
 	> .page-context {
 		grid-area: page-context;

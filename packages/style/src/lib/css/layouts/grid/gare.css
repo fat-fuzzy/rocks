@@ -9,6 +9,7 @@
 
 details:has(.gare-control) {
 	padding-block: 0;
+	position: unset;
 }
 
 details[class*='gare:'] > ff-reveal,
