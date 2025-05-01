@@ -50,6 +50,7 @@
 
 		> .page-header {
 			grid-area: page-header;
+			padding-inline: var(--ui-size);
 		}
 
 		> .page-main {

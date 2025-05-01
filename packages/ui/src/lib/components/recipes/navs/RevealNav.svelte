@@ -19,6 +19,7 @@
 		preload,
 		layout,
 		scroll,
+		layer,
 		dismiss = DismissEvent.outside,
 		color,
 		size,
@@ -73,6 +74,7 @@
 		{font}
 		{color}
 		{reveal}
+		{layer}
 		{scroll}
 		{dismiss}
 		{formaction}

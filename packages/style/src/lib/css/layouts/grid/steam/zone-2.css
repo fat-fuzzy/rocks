@@ -26,11 +26,12 @@
 .s-zone\:2[class*='gare:'][open] > ff-reveal,
 .s-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
 	inline-size: var(--max-inline-size);
 	position: absolute;
 	top: var(--ui-header-height);
 	z-index: var(--layout-z-index-reveal);
+	max-block-size: var(--overlay-height-md);
+	overflow: hidden auto;
 }
 
 @media screen and (min-width: 620px) {
@@ -39,7 +40,6 @@
 			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
 		);
 		z-index: var(--layout-z-index-reveal);
-		max-block-size: var(--max-block-size);
 	}
 
 	.s-zone\:2 > ff-reveal,
