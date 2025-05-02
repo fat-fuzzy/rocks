@@ -20,7 +20,7 @@
 		grid-area: page-context;
 		align-items: start;
 		position: relative;
-		padding-block-end: var(--ui-size);
+		padding-block-end: var(--grid-gap);
 	}
 
 	> .page-context.empty {
@@ -37,7 +37,7 @@
 			'page-main';
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
-		padding-inline: var(--ui-size);
+		padding-inline: var(--grid-gap);
 
 		> .page-header {
 			grid-area: page-header;
@@ -46,7 +46,7 @@
 
 		> .page-main {
 			grid-area: page-main;
-			padding-block-end: var(--ui-size);
+			padding-block-end: var(--grid-gap);
 		}
 	}
 }
@@ -86,6 +86,7 @@
 				'page-header'
 				'page-main';
 			max-block-size: var(--max-block-size);
+			padding-inline: var(--grid-gap);
 		}
 	}
 }

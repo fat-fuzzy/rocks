@@ -77,6 +77,7 @@
 				auto,
 				var(--sidebar-width)
 			);
+		padding-inline: 0;
 	}
 
 	.g-zone\:1 > .app-name {

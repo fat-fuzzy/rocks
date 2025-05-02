@@ -92,24 +92,6 @@
 	path={page.url.pathname}
 />
 
-{#snippet zoneHeaderGrid()}
-	<HeaderGrid
-		id="nav"
-		name="nav"
-		label="Menu"
-		font="sm"
-		size="md"
-		path={page.url.pathname}
-		reveal={mainNav.reveal}
-		actionPath={page.url.pathname}
-		formaction="toggleNav"
-		dismiss="outside"
-		main={links}
-		context={appContext}
-		breakpoint="xs"
-	/>
-{/snippet}
-
 {#snippet zoneHeader()}
 	<Header
 		id="nav"

@@ -18,7 +18,7 @@
 		grid-area: page-context;
 		align-content: start;
 		position: relative;
-		padding-block-end: var(--ui-size);
+		padding-block-end: var(--grid-gap);
 		max-block-size: var(--overlay-height-xs);
 		min-block-size: var(--overlay-height-2xs);
 		overscroll-behavior-y: contain;
@@ -47,10 +47,10 @@
 		max-block-size: var(--overlay-height-md);
 		overscroll-behavior-y: contain;
 		padding-block-end: var(--grid-gap);
+		padding-inline: var(--grid-gap);
 
 		> .page-header {
 			grid-area: page-header;
-			padding-inline: var(--ui-size);
 		}
 
 		> .page-main {

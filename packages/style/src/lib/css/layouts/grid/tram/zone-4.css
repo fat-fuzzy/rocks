@@ -23,6 +23,7 @@
 		grid-area: t-zone-main;
 		min-block-size: unset;
 		block-size: var(--max-block-size);
+		padding-inline: var(--grid-gap);
 	}
 }
 

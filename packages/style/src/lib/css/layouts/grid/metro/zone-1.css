@@ -61,6 +61,10 @@
 }
 
 @media screen and (min-width: 620px) {
+	.m-zone\:1 {
+		padding-inline: 0;
+	}
+
 	.m-zone\:1 > nav {
 		justify-content: flex-start;
 	}

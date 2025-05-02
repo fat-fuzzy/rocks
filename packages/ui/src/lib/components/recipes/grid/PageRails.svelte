@@ -43,9 +43,9 @@
 	}
 
 	const zoneMainClasses: {[key: string]: string} = {
-		metro: 'l:grid',
-		railway: 'l:grid',
-		steam: 'l:grid',
+		metro: 'l:grid size:3xs',
+		railway: 'l:grid size:3xs',
+		steam: 'l:grid size:3xs',
 		tgv: 'snap:center',
 		tram: 'snap:start',
 		voyager: 'snap:start',
@@ -54,7 +54,7 @@
 	const pageMainClasses: {[key: string]: string} = {
 		metro: '',
 		railway: '',
-		steam: 'l:flex justify:center ravioli:xs',
+		steam: 'l:flex justify:center',
 		tgv: '',
 		tram: '',
 		voyager: '',

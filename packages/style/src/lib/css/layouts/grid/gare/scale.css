@@ -72,11 +72,16 @@
 }
 
 @media screen and (min-width: 935px) {
-	[class*='zone:']:has([class*='gare:']) {
+	[class*='zone:']:has([class*='l:rails']) {
 		inline-size: var(--sidebar-width);
 	}
 
-	[class*='zone:']:has([class*='gare:'][class*='l:rails'].collapsed) {
+	[class*='-zone:main'],
+	[class*='zone:']:has([class*='-zone:main']) {
+		inline-size: auto;
+	}
+
+	[class*='zone:']:has([class*='l:rails'].collapsed) {
 		--sidebar-width: var(--layout-collapsed);
 	}
 
