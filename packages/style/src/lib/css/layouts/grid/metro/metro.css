@@ -3,7 +3,9 @@
  */
 
 .l\:grid\:metro {
-	--max-block-size: calc(100vh - var(--ui-header-height) - 2 * var(--grid-gap));
+	--max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 3 * var(--grid-gap)
+	);
 	inline-size: 100%;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
@@ -15,6 +17,13 @@
 	grid-template-rows:
 		var(--ui-header-height) 1fr
 		auto;
+}
+
+@media screen and (min-width: 620px) {
+	.l\:grid\:metro {
+		--sidebar-width: var(--layout-sidebar-md);
+		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
+	}
 }
 
 @media screen and (min-width: 935px) {

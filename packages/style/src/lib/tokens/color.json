@@ -161,11 +161,11 @@
 			"framboise": {
 				"$value": "{color.hue.framboise}"
 			},
-			"apple": {
-				"$value": "{color.hue.red}"
+			"mora": {
+				"$value": "{color.hue.fuschia}"
 			},
 			"litchee": {
-				"$value": "{color.hue.fuschia}"
+				"$value": "{color.hue.red}"
 			},
 			"grape": {
 				"$value": "{color.hue.lilac}"

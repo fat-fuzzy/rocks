@@ -14,8 +14,8 @@
 	--hue: var(--color-palette-litchee);
 }
 
-[class*=':apple'] {
-	--hue: var(--color-palette-apple);
+[class*=':mora'] {
+	--hue: var(--color-palette-mora);
 }
 
 [class*=':framboise'] {

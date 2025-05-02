@@ -15,7 +15,6 @@
 
 .g-zone\:1 > .app-name {
 	grid-area: app-name;
-	padding-block-start: var(--border-width-md);
 }
 
 .g-zone\:1 > .navbar {
@@ -69,11 +68,18 @@
 @media screen and (min-width: 620px) {
 	.g-zone\:1 {
 		--sidebar-width: var(--layout-sidebar-md);
+		--max-inline-size: calc(
+			var(--sidebar-width) - 2 * var(--outline-offset-lg)
+		);
 		grid-template-areas: 'app-name  navbar	app-context';
 		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr minmax(
 				auto,
 				var(--sidebar-width)
 			);
+	}
+
+	.g-zone\:1 > .app-name {
+		max-inline-size: var(--max-inline-size);
 	}
 
 	.g-zone\:1 > nav {

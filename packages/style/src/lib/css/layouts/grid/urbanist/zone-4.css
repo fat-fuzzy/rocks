@@ -1,10 +1,10 @@
 /**
- * ZONE 5
+ * ZONE 4
  * Contains main content page context
  */
-.v-zone\:4 {
-	grid-template-areas: 'v-zone-main';
-	grid-area: v-zone-4;
+.u-zone\:4 {
+	grid-template-areas: 'u-zone-main';
+	grid-area: u-zone-4;
 	grid-template-rows: 1fr auto;
 
 	&.scroll\:y {
@@ -17,14 +17,14 @@
 		max-block-size: var(--overlay-height-2xs);
 	}
 
-	> .v-zone\:main {
+	> .u-zone\:main {
 		min-block-size: unset;
 		padding-inline: var(--ui-size);
 	}
 }
 
 @media screen and (min-width: 620px) {
-	.v-zone\:4 {
+	.u-zone\:4 {
 		> .page-context {
 			--sidebar-width: var(--layout-sidebar-sm);
 			position: unset;
@@ -46,7 +46,7 @@
 			max-inline-size: var(--max-inline-size);
 		}
 
-		> .v-zone\:main {
+		> .u-zone\:main {
 			grid-template-areas:
 				'page-header'
 				'page-main';

@@ -178,6 +178,7 @@
 		position={false}
 		place="left"
 		scroll="y"
+		layer={1}
 		justify="evenly"
 		size="md"
 		font="sm"

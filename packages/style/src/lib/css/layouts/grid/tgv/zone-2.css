@@ -4,7 +4,7 @@
  * - main footer and cookies settings access
  */
 
-.rails [class*='-zone:2'] {
+.rails .g-zone\:2 {
 	z-index: 0;
 }
 

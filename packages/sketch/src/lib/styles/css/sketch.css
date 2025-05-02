@@ -83,9 +83,7 @@
 
 .scene,
 .debug {
-	--max-inline-size: calc(100% - 2 * var(--ui-size));
 	inline-size: 100%;
-	max-inline-size: var(--max-inline-size);
 }
 
 .debug .scroll\:x {

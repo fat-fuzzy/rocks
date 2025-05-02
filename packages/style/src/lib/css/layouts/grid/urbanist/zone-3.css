@@ -1,0 +1,17 @@
+/**
+ * ZONE 3
+ * Contains the header with main navigation and app context
+ */
+
+.u-zone\:3 {
+	grid-area: u-zone-3;
+	grid-template-areas: 'app-context';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
+	z-index: 3;
+}
+
+.u-zone\:3 > .app-context {
+	grid-area: app-context;
+}

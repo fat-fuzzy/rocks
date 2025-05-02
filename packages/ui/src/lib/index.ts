@@ -78,6 +78,7 @@ import CSSSteam from '$lib/components/raw/css-grid-steam.svelte'
 import CSSTgv from '$lib/components/raw/css-grid-tgv.svelte'
 import CSSTram from '$lib/components/raw/css-grid-tram.svelte'
 import CSSVoyager from '$lib/components/raw/css-grid-voyager.svelte'
+import CSSUrbanist from '$lib/components/raw/css-grid-urbanist.svelte'
 /**
  * Draft components
  */
@@ -159,7 +160,15 @@ const recipes = {
 	Header,
 }
 
-const raw = {CSSMetro, CSSRailway, CSSSteam, CSSTgv, CSSTram, CSSVoyager}
+const raw = {
+	CSSMetro,
+	CSSRailway,
+	CSSSteam,
+	CSSTgv,
+	CSSTram,
+	CSSVoyager,
+	CSSUrbanist,
+}
 
 const content = {
 	Aside,

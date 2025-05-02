@@ -1,0 +1,63 @@
+/**
+ * ZONE 1
+ * Contains the header with main navigation and app context
+ */
+
+.u-zone\:1 {
+	grid-area: u-zone-1;
+	grid-template-areas: 'navbar';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+	padding-inline-start: var(--grid-gap);
+	z-index: 1;
+}
+
+.u-zone\:1 > .navbar {
+	grid-area: navbar;
+}
+
+.u-zone\:1 > .navbar .expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	left: calc(var(--outline-offset-md) + var(--grid-gap));
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+}
+
+.u-zone\:1 > nav,
+.u-zone\:1 > nav form,
+.u-zone\:1 > nav [aria-expanded] {
+	--icon-gap: var(--grid-gap);
+	inline-size: fit-content;
+}
+
+.u-zone\:1 > nav [aria-expanded] span {
+	text-align: center;
+}
+
+@media screen and (min-width: 620px) {
+	.u-zone\:1 > nav {
+		justify-content: flex-start;
+	}
+
+	.u-zone\:1 > nav form {
+		display: none;
+	}
+
+	.u-zone\:1 > nav,
+	.u-zone\:1 > nav [aria-expanded] {
+		inline-size: 100%;
+	}
+
+	.u-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+		block-size: fit-content;
+	}
+
+	.u-zone\:1 > .navbar > .expanded > ff-reveal,
+	.u-zone\:1 > .navbar > .collapsed > ff-reveal {
+		position: unset;
+		margin: 0 auto;
+		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+	}
+}

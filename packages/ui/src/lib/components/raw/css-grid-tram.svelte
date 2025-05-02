@@ -18,7 +18,14 @@
 		<AppContext {theme} />
 	</header>
 
-	<SideNav zone={`${zone}:2 size:${size}`} {theme} layout="grid" gare="ouest" />
+	<SideNav
+		zone={`${zone}:2 size:${size}`}
+		{theme}
+		layout="grid"
+		gare="ouest"
+		width="md hug"
+		height="sm"
+	/>
 
 	<div
 		class={`l:grid ${zone}:3 size:${size} surface:2:${theme}  align-self:stretch align-content:stretch dotted`}

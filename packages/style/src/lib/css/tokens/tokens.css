@@ -67,13 +67,13 @@
   --color-magic-success-a: #34fee080;
   --color-magic-warning: #fed634;
   --color-magic-warning-a: #fed63480;
-  --color-palette-apple: var(--color-hue-red);
   --color-palette-banana: var(--color-hue-yellow);
   --color-palette-blueberry: var(--color-hue-blue);
   --color-palette-framboise: var(--color-hue-framboise);
   --color-palette-grape: var(--color-hue-lilac);
   --color-palette-lime: var(--color-hue-lime);
-  --color-palette-litchee: var(--color-hue-fuschia);
+  --color-palette-litchee: var(--color-hue-red);
+  --color-palette-mora: var(--color-hue-fuschia);
   --color-palette-tangerine: var(--color-hue-orange);
   --color-semantic-danger: var(--color-hue-red);
   --color-semantic-info: var(--color-hue-blue);
@@ -200,6 +200,7 @@
   --layout-sidebar-3xl: 60ch;
   --layout-sidebar-base: 24ch;
   --layout-sidebar-collapsed: 6.5em;
+  --layout-sidebar-hidden: 0;
   --layout-sidebar-lg: 30ch;
   --layout-sidebar-md: var(--layout-sidebar-base);
   --layout-sidebar-sm: 18ch;

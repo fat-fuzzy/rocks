@@ -1,5 +1,5 @@
 /**
- * ZONE 3
+ * ZONE 4
  * Contains main content page context
  */
 .r-zone\:4 {
@@ -49,15 +49,13 @@
 		}
 
 		> .page-context > * {
-			--max-inline-size: calc(100% - 3 * var(--grid-gap));
+			--max-inline-size: calc(var(--layout-sidebar-md) - 2 * var(--grid-gap));
 			inline-size: 100%;
 			max-inline-size: var(--max-inline-size);
 		}
 
 		> .page-context > details {
-			--max-inline-size: calc(
-				100% - 4 * var(--grid-gap) - var(--outline-offset-lg)
-			);
+			--max-inline-size: calc(var(--layout-sidebar-md) - 3 * var(--grid-gap));
 			margin-inline-start: var(--ui-size-sm);
 			max-inline-size: var(--max-inline-size);
 		}

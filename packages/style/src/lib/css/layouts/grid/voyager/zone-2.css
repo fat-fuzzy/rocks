@@ -3,13 +3,12 @@
  * Left Sidebar contains secondary navigation
  */
 .v-zone\:2 {
-	--max-sidebar-inline: calc(100vw - 2 * var(--grid-gap));
-	--max-sidebar-block: var(--overlay-height-sm);
 	grid-area: v-zone-2;
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
 	grid-template-rows: subgrid;
+	padding-inline-start: var(--grid-gap);
 }
 
 .v-zone\:2 > .gare-control {
@@ -19,74 +18,4 @@
 .v-zone\:2 > .gare-depot {
 	grid-area: gare-depot;
 	grid-row: span 2;
-}
-
-.v-zone\:2 > .expanded > ff-reveal,
-.v-zone\:2[class*='gare:'][open] > ff-reveal {
-	position: absolute;
-	top: var(--ui-header-height);
-	left: var(--ui-size);
-	right: var(--ui-size);
-	z-index: var(--layout-z-index-reveal);
-	inline-size: var(--inline-size);
-	block-size: fit-content;
-	max-block-size: var(--max-sidebar-block);
-	max-inline-size: var(--max-sidebar-inline);
-	padding-block-end: var(--ui-size);
-}
-
-@media screen and (min-width: 620px) {
-	.v-zone\:2 {
-		--max-sidebar-inline: calc(
-			100vw - var(--sidebar-width) - 3 * var(--ui-size) -
-				var(--outline-offset-lg)
-		);
-		--max-sidebar-block: calc(
-			100vh - 3 * var(--grid-gap) - var(--outline-offset-lg)
-		);
-		max-block-size: var(--max-sidebar-block);
-		position: relative;
-	}
-
-	.v-zone\:2 > .expanded > ff-reveal,
-	.v-zone\:2[class*='gare:'][open] > ff-reveal {
-		z-index: var(--layout-z-index-reveal);
-	}
-
-	.v-zone\:2 > .collapsed {
-		inline-size: fit-content;
-	}
-
-	.v-zone\:2 > ff-reveal,
-	.v-zone\:2 > .collapsed > ff-reveal {
-		--collapse-x: 0;
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.v-zone\:2 {
-		--max-sidebar-inline: var(--sidebar-width);
-		align-content: start;
-		inline-size: var(--max-sidebar-inline);
-		grid-row: span 3;
-	}
-
-	.v-zone\:2 > ff-reveal,
-	.v-zone\:2[open] > ff-reveal,
-	.v-zone\:2 > .expanded > ff-reveal,
-	.v-zone\:2 > .collapsed > ff-reveal {
-		position: static;
-		box-shadow: unset;
-		margin-block-start: var(--outline-offset-lg);
-		inline-size: 100%;
-		max-block-size: var(--max-sidebar-block);
-		padding: 0;
-		margin-inline-start: 0;
-		overflow: hidden auto;
-	}
-
-	.v-zone\:2 > nav.expanded > form [aria-expanded] {
-		inline-size: 100%;
-		max-inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-sm));
-	}
 }

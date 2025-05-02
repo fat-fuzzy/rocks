@@ -18,7 +18,7 @@
 .s-zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: calc(var(--outline-offset-md) + var(--grid-gap));
+	left: var(--grid-gap);
 	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 

@@ -7,7 +7,7 @@
 
 	let title = '🚂 Steam'
 	let parent = 'steam'
-	let theme = 'litchee'
+	let theme = 'mora'
 	let zone = 's-zone'
 	let size = '2xs'
 </script>
@@ -17,7 +17,14 @@
 		<MainNav {theme} />
 		<AppContext {theme} />
 	</header>
-	<SideNav zone={`${zone}:2 size:${size}`} {theme} layout="grid" gare="ouest">
+	<SideNav
+		zone={`${zone}:2 size:${size}`}
+		{theme}
+		layout="grid"
+		gare="ouest"
+		width="lg hug"
+		height="sm"
+	>
 		<NavItems />
 	</SideNav>
 	<div

@@ -3,10 +3,6 @@
  * Contains main content page context
  */
 
-.l\:grid\:steam [class*='-zone:3'] {
-	padding-inline: 0;
-}
-
 .s-zone\:3 {
 	grid-area: s-zone-3;
 	grid-template-areas:
@@ -50,9 +46,11 @@
 		align-content: start;
 		max-block-size: var(--overlay-height-md);
 		overscroll-behavior-y: contain;
+		padding-block-end: var(--grid-gap);
 
 		> .page-header {
 			grid-area: page-header;
+			padding-inline: var(--ui-size);
 		}
 
 		> .page-main {

@@ -7,8 +7,8 @@
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
-	align-items: center;
-	position: unset;
+	grid-template-rows: subgrid;
+	padding-inline-start: var(--grid-gap);
 }
 
 .r-zone\:2 > .gare-control {
@@ -17,86 +17,4 @@
 
 .r-zone\:2 > .gare-depot {
 	grid-area: gare-depot;
-}
-
-.r-zone\:2 > ff-reveal,
-.r-zone\:2 > .expanded > ff-reveal {
-	--max-block-size: calc(
-		100vh - var(--ui-header-height) - var(--outline-offset-lg)
-	);
-	--inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
-	inline-size: var(--inline-size);
-	block-size: fit-content;
-	max-block-size: var(--max-block-size);
-	padding-block-end: var(--ui-size);
-}
-
-.r-zone\:2 > .expanded > ff-reveal,
-.r-zone\:2[class*='gare:'][open] > ff-reveal,
-.r-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-	--max-inline-size: calc(100vw - 2 * var(--grid-gap));
-	position: absolute;
-	top: var(--ui-header-height);
-	left: 0;
-	right: 0;
-	z-index: var(--layout-z-index-reveal);
-	max-block-size: var(--overlay-height-sm);
-	max-inline-size: var(--max-inline-size);
-}
-
-@media screen and (min-width: 620px) {
-	.r-zone\:2 > .expanded > ff-reveal,
-	.r-zone\:2[class*='gare:'][open] > ff-reveal,
-	.r-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-		--max-inline-size: calc(
-			100vw - var(--sidebar-width) - var(--grid-gap) + var(--outline-offset-lg)
-		);
-		z-index: var(--layout-z-index-reveal);
-	}
-
-	.r-zone\:2 > ff-reveal,
-	.r-zone\:2 > .collapsed > ff-reveal {
-		--collapse-x: 0;
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.r-zone\:2 {
-		--max-block-size: 100%;
-		--max-inline-size: calc(100vw - 2 * var(--grid-gap));
-		align-content: start;
-		inline-size: fit-content;
-		position: unset;
-		block-size: var(--max-block-size);
-		inline-size: var(--sidebar-width);
-	}
-
-	.r-zone\:2 > ff-reveal,
-	.r-zone\:2[open] > ff-reveal,
-	.r-zone\:2 > .expanded > ff-reveal,
-	.r-zone\:2 > .collapsed > ff-reveal {
-		position: static;
-		margin-block-start: var(--outline-offset-lg);
-		inline-size: 100%;
-		block-size: var(--max-block-size);
-		padding: 0;
-		margin-inline-start: 0;
-	}
-
-	.r-zone\:2:has(nav.collapsed) {
-		--sidebar-width: var(--layout-sidebar-collapsed);
-		max-inline-size: var(--sidebar-width);
-	}
-
-	.r-zone\:2 > nav > form,
-	.r-zone\:2 > nav > form [aria-expanded] {
-		inline-size: 100%;
-		max-inline-size: calc(100% - 2 * var(--outline-offset-lg));
-	}
-
-	.r-zone\:2 > nav.expanded > form [aria-expanded] {
-		max-inline-size: calc(
-			100% - 2 * var(--ui-size) - 2 * var(--outline-offset-lg)
-		);
-	}
 }

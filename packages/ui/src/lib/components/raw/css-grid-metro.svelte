@@ -2,15 +2,16 @@
 	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
 	import SideNav from '$lib/components/raw/fixtures/nav-2.svelte'
 	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
-	import Prose from '$lib/components/raw/fixtures/prose-long.svelte'
+	import Prose from '$lib/components/raw/fixtures/prose-longest.svelte'
 	import Details from '$lib/components/raw/fixtures/details.svelte'
 	import LineShort from '$lib/components/raw/fixtures/line-short.svelte'
 	import LineMedium from '$lib/components/raw/fixtures/line-medium.svelte'
 	import LineLong from '$lib/components/raw/fixtures/line-long.svelte'
+	import LineLongest from '$lib/components/raw/fixtures/line-longest.svelte'
 
 	let title = '🚇 Metro'
 	let parent = 'metro'
-	let theme = 'apple'
+	let theme = 'litchee'
 	let zone = 'm-zone'
 	let size = '2xs'
 </script>
@@ -20,7 +21,14 @@
 		<MainNav {theme} />
 		<AppContext {theme} />
 	</header>
-	<SideNav zone={`${zone}:2 size:${size}`} {theme} layout="grid" gare="ouest" />
+	<SideNav
+		zone={`${zone}:2 size:${size}`}
+		{theme}
+		layout="grid"
+		gare="ouest"
+		width="md"
+		height="lg"
+	/>
 	<div
 		class={`l:grid ${zone}:3  size:${size} scroll:y surface:3:${theme} dotted`}
 	>
@@ -40,8 +48,9 @@
 		>
 			<nav class="l:stack maki:block">
 				<h4 class="maki:inline size:sm">Stopping at:</h4>
-				<LineLong />
+				<LineLongest />
 				<h4 class="maki:inline size:sm">Exchange At:</h4>
+				<LineLong />
 				<LineShort />
 				<LineMedium />
 			</nav>
