@@ -31,9 +31,9 @@
 /* == Grids == */
 @import './grid/base.css'; /* Grid layouts base  */
 @import './grid/auto.css'; /* Gallery grid layout with equal sized areas */
-@import './grid/gare/position.css'; /* Grit item utilities */
 @import './grid/gare/scale.css'; /* Grit item utilities */
 @import './grid/gare/base.css'; /* Grit item utilities */
+@import './grid/gare/animation.css'; /* Grit item utilities */
 @import './grid/items.css'; /* Grit item utilities */
 @import './grid/rails.css'; /* Grid with page template areas and scrolling sidebars */
 

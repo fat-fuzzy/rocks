@@ -3,6 +3,26 @@
  * Expand / Collapse content
  */
 
+.gare-control {
+	border-radius: 0;
+}
+
+details:has(.gare-control) {
+	padding-block: 0;
+	position: unset;
+}
+
+details[class*='gare:'] > ff-reveal,
+.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+	margin-inline-start: var(--outline-offset-md);
+}
+
+[class*='-zone:'] > .navbar > nav form > [class*='l:switcher'],
+[class*='-zone:'] > .app-context > form > [class*='l:switcher'],
+[class*='-zone:'] > nav > form > [class*='l:switcher'] {
+	--gap: var(--grid-gap);
+}
+
 .gare\:est,
 .gare\:ouest {
 	--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
