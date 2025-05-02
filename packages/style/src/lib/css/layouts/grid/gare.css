@@ -24,7 +24,6 @@ details:has(.gare-control) {
 
 details[class*='gare:'] > ff-reveal,
 .l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));
 	max-block-size: var(--max-block-size);
 	margin-inline-start: var(--outline-offset-md);
 }

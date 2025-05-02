@@ -52,6 +52,7 @@
 @import './grid/railway/zone-5.css'; /* Metro grid areas (zone-5) */
 
 @import './grid/steam/steam.css'; /* Detailed grid with headers and page template areas */
+@import './grid/steam/gare.css'; /* Detailed grid with headers and page template areas */
 @import './grid/steam/zone-1.css'; /* Metro grid areas (zone-1) */
 @import './grid/steam/zone-2.css'; /* Metro grid areas (zone-2) */
 @import './grid/steam/zone-3.css'; /* Metro grid areas (zone-3) */

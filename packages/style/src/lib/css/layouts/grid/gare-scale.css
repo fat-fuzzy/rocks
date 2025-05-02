@@ -73,7 +73,9 @@
 
 	.gare\:ouest ff-reveal,
 	.gare\:ouest:is([open], .expanded) ff-reveal {
-		--overlay-inline-size: var(--sidebar-width);
+		--overlay-inline-size: calc(
+			var(--overlay-inline-size) - 2 * var(--grid-gap)
+		);
 	}
 
 	.gare\:est ff-reveal,
@@ -81,6 +83,18 @@
 		--overlay-inline-size: calc(
 			var(--sidebar-width) - var(--grid-gap) - 2 * var(--outline-offset-md)
 		);
+	}
+
+	[class*='gare:'].hug:is([open], .expanded) ff-reveal {
+		--overlay-inline-size: fit-content;
+	}
+
+	[class*='gare:'].hug .gare-control {
+		inline-size: fit-content;
+	}
+
+	[class*='gare:'].hug:is([open], .expanded) .gare-control {
+		inline-size: calc(var(--overlay-inline-size) - 2 * var(--grid-gap));
 	}
 
 	[class*='gare:'][class*='height:']:not(.width\:full) {
