@@ -37,16 +37,6 @@ body:has(.rails[class*='l:grid']) {
 	border-radius: 0;
 }
 
-.rails [class*='-zone:2'] > nav > form > [aria-expanded] {
-	max-inline-size: unset;
-	inline-size: 100%;
-}
-
-.rails [class*='-zone:1'],
-.rails [class*='-zone:2'] {
-	z-index: var(--layout-z-index-reveal);
-}
-
 .rails [class*='-zone:1'] .app-name ff-callout {
 	border-radius: 0;
 }
