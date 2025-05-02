@@ -1,16 +1,52 @@
 /**
- * ZONE 4
- * Contains main footer and cookies settings access
+ * ZONE 3
+ * Contains main content page context
  */
 .t-zone\:4 {
+	--max-block-size: calc(
+		100vh - 3 * var(--ui-header-height) - 3 * var(--grid-gap) - 2 *
+			var(--outline-offset-lg)
+	);
 	grid-area: t-zone-4;
-	grid-template-areas: 'main-footer';
-	block-size: fit-content;
+	grid-template-areas:
+		't-zone-main'
+		'page-context';
+	grid-template-rows: var(--max-block-size) auto;
 
-	> .main-footer {
-		display: grid;
-		grid-area: main-footer;
-		padding-inline: var(--ui-size);
-		padding-block: 0 var(--ui-size);
+	> .page-context {
+		grid-area: page-context;
+		align-content: start;
+		max-block-size: var(--overlay-height-3xs);
+	}
+
+	> .t-zone\:main {
+		grid-area: t-zone-main;
+		min-block-size: unset;
+		block-size: var(--max-block-size);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.t-zone\:4 {
+		--sidebar-width: var(--layout-sidebar-sm);
+		grid-template-areas: 't-zone-main page-context';
+		grid-template-columns: 1fr var(--sidebar-width);
+		grid-template-rows: 1fr;
+
+		> .page-context {
+			position: unset;
+			box-shadow: unset;
+			max-block-size: var(--max-block-size);
+		}
+
+		> .t-zone\:main {
+			block-size: auto;
+		}
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.t-zone\:4 {
+		--sidebar-width: var(--layout-sidebar-md);
 	}
 }

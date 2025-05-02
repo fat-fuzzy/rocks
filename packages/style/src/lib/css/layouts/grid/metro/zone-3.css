@@ -1,6 +1,6 @@
 /**
  * ZONE 3
- * Contains the header with main navigation and app context
+ * Contains main app context
  */
 
 .m-zone\:3 {
@@ -9,50 +9,9 @@
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
+	z-index: 3;
 }
 
 .m-zone\:3 > .app-context {
 	grid-area: app-context;
-	justify-self: flex-end;
-}
-
-.m-zone\:3 > .app-context ff-reveal {
-	display: flex;
-	align-items: center;
-}
-
-.m-zone\:3 > .app-context.expanded ff-reveal {
-	position: absolute;
-	top: var(--ui-headem-height);
-	right: calc(var(--outline-offset-lg) + var(--grid-gap));
-	box-shadow: var(--shadow-md);
-}
-
-.m-zone\:3 > .app-context.expanded ff-reveal ul {
-	padding: var(--ui-size-sm);
-}
-
-.m-zone\:3 > .app-context ff-reveal form {
-	display: flex;
-	gap: var(--ui-size-lg);
-	padding-inline-start: var(--ui-size-lg);
-}
-
-@media screen and (min-width: 620px) {
-	.m-zone\:3 > .app-context.expanded ff-reveal {
-		position: unset;
-		margin: 0 auto;
-		z-index: var(--layout-z-index-reveal);
-		border-radius: var(--border-radius-null);
-		box-shadow: unset;
-	}
-
-	.m-zone\:3 > .app-context ff-reveal {
-		position: unset;
-		padding: 0;
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		gap: var(--ui-size-sm);
-	}
 }

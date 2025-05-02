@@ -67,6 +67,7 @@ import './grid/tram/zone-1.css' /* Metro grid areas (zone-1) */
 import './grid/tram/zone-2.css' /* Metro grid areas (zone-2) */
 import './grid/tram/zone-3.css' /* Metro grid areas (zone-3) */
 import './grid/tram/zone-4.css' /* Metro grid areas (zone-4) */
+import './grid/tram/zone-5.css' /* Metro grid areas (zone-4) */
 
 import './grid/voyager/voyager.css' /* Detailed grid with headers and page template areas */
 import './grid/voyager/zone-1.css' /* Metro grid areas (zone-1) */
