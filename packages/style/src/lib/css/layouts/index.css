@@ -64,6 +64,7 @@
 @import './grid/tgv/zone-2.css'; /* Metro grid areas (zone-2) */
 
 @import './grid/tram/tram.css'; /* Detailed grid with headers and page template areas */
+@import './grid/tram/gare.css'; /* Detailed grid with headers and page template areas */
 @import './grid/tram/zone-1.css'; /* Metro grid areas (zone-1) */
 @import './grid/tram/zone-2.css'; /* Metro grid areas (zone-2) */
 @import './grid/tram/zone-3.css'; /* Metro grid areas (zone-3) */
