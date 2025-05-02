@@ -1,89 +1,58 @@
 /**
  * ZONE 3
- * Contains main content page context
+ * Contains the header with main navigation and app context
  */
 
 .s-zone\:3 {
 	grid-area: s-zone-3;
-	grid-template-areas:
-		's-zone-main'
-		'page-context';
-	grid-template-rows: 1fr auto;
+	grid-template-areas: 'app-context';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
+}
 
-	&.scroll\:y {
-		scrollbar-gutter: auto;
-	}
+.s-zone\:3 > .app-context {
+	grid-area: app-context;
+	justify-self: flex-end;
+}
 
-	> .page-context {
-		grid-area: page-context;
-		align-content: start;
-		position: relative;
-		padding-block-end: var(--ui-size);
-		max-block-size: var(--overlay-height-xs);
-		min-block-size: var(--overlay-height-2xs);
-		overscroll-behavior-y: contain;
-	}
+.s-zone\:3 > .app-context ff-reveal {
+	display: flex;
+	align-items: center;
+}
 
-	> .page-context > summary {
-		max-inline-size: var(--sidebar-width);
-	}
+.s-zone\:3 > .app-context.expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+	box-shadow: var(--shadow-md);
+}
 
-	> .page-context.media\:video {
-		block-size: var(--overlay-height-xs);
-	}
+.s-zone\:3 > .app-context.expanded ff-reveal ul {
+	padding: var(--ui-size-sm);
+}
 
-	> .page-context.media\:square {
-		block-size: var(--overlay-height-2xs);
-	}
-
-	> .s-zone\:main {
-		grid-area: s-zone-main;
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
-		min-block-size: unset;
-		align-content: start;
-		max-block-size: var(--overlay-height-md);
-		overscroll-behavior-y: contain;
-		padding-block-end: var(--grid-gap);
-
-		> .page-header {
-			grid-area: page-header;
-			padding-inline: var(--ui-size);
-		}
-
-		> .page-main {
-			grid-area: page-main;
-		}
-	}
+.s-zone\:3 > .app-context ff-reveal form {
+	display: flex;
+	gap: var(--ui-size-lg);
+	padding-inline-start: var(--ui-size-lg);
 }
 
 @media screen and (min-width: 620px) {
-	.s-zone\:3 {
-		--sidebar-width: var(--layout-sidebar-md);
-		grid-template-areas: 's-zone-main page-context';
-		grid-template-columns: 1fr var(--sidebar-width);
-		grid-template-rows: 1fr;
+	.s-zone\:3 > .app-context.expanded ff-reveal {
+		position: unset;
+		margin: 0 auto;
+		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+	}
 
-		> .page-context {
-			position: unset;
-			box-shadow: unset;
-			max-block-size: var(--max-block-size);
-			max-inline-size: var(--sidebar-width);
-		}
-
-		> .page-context[class*='media:'] {
-			block-size: 100%;
-			max-block-size: var(--max-block-size);
-		}
-
-		> .s-zone\:main {
-			grid-template-areas:
-				'page-header'
-				'page-main';
-			grid-template-rows: auto 1fr;
-			max-block-size: var(--max-block-size);
-		}
+	.s-zone\:3 > .app-context ff-reveal {
+		position: unset;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: var(--ui-size-sm);
 	}
 }

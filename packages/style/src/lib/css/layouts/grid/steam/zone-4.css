@@ -1,16 +1,89 @@
 /**
  * ZONE 4
- * Contains main footer and cookies settings access
+ * Contains main content page context
  */
+
 .s-zone\:4 {
 	grid-area: s-zone-4;
-	grid-template-areas: 'main-footer';
-	block-size: fit-content;
+	grid-template-areas:
+		's-zone-main'
+		'page-context';
+	grid-template-rows: 1fr auto;
 
-	> .main-footer {
-		display: grid;
-		grid-area: main-footer;
-		padding-inline: var(--ui-size);
-		padding-block: 0 var(--ui-size);
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
+
+	> .page-context {
+		grid-area: page-context;
+		align-content: start;
+		position: relative;
+		padding-block-end: var(--ui-size);
+		max-block-size: var(--overlay-height-xs);
+		min-block-size: var(--overlay-height-2xs);
+		overscroll-behavior-y: contain;
+	}
+
+	> .page-context > summary {
+		max-inline-size: var(--sidebar-width);
+	}
+
+	> .page-context.media\:video {
+		block-size: var(--overlay-height-xs);
+	}
+
+	> .page-context.media\:square {
+		block-size: var(--overlay-height-2xs);
+	}
+
+	> .s-zone\:main {
+		grid-area: s-zone-main;
+		grid-template-areas:
+			'page-header'
+			'page-main';
+		grid-template-rows: auto 1fr;
+		min-block-size: unset;
+		align-content: start;
+		max-block-size: var(--overlay-height-md);
+		overscroll-behavior-y: contain;
+		padding-block-end: var(--grid-gap);
+
+		> .page-header {
+			grid-area: page-header;
+			padding-inline: var(--ui-size);
+		}
+
+		> .page-main {
+			grid-area: page-main;
+		}
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.s-zone\:4 {
+		--sidebar-width: var(--layout-sidebar-md);
+		grid-template-areas: 's-zone-main page-context';
+		grid-template-columns: 1fr var(--sidebar-width);
+		grid-template-rows: 1fr;
+
+		> .page-context {
+			position: unset;
+			box-shadow: unset;
+			max-block-size: var(--max-block-size);
+			max-inline-size: var(--sidebar-width);
+		}
+
+		> .page-context[class*='media:'] {
+			block-size: 100%;
+			max-block-size: var(--max-block-size);
+		}
+
+		> .s-zone\:main {
+			grid-template-areas:
+				'page-header'
+				'page-main';
+			grid-template-rows: auto 1fr;
+			max-block-size: var(--max-block-size);
+		}
 	}
 }

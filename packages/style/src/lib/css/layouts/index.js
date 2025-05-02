@@ -56,6 +56,7 @@ import './grid/steam/zone-1.css' /* Metro grid areas (zone-1) */
 import './grid/steam/zone-2.css' /* Metro grid areas (zone-2) */
 import './grid/steam/zone-3.css' /* Metro grid areas (zone-3) */
 import './grid/steam/zone-4.css' /* Metro grid areas (zone-4) */
+import './grid/steam/zone-5.css' /* Metro grid areas (zone-5) */
 
 import './grid/tgv/tgv.css' /* Single track grid for content showcase */
 import './grid/tgv/zone-1.css' /* Metro grid areas (zone-1) */
