@@ -7,7 +7,7 @@
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
-	align-items: center;
+	grid-template-rows: subgrid;
 	padding-inline-start: var(--grid-gap);
 }
 
@@ -17,94 +17,5 @@
 
 .m-zone\:2 > .gare-depot {
 	grid-area: gare-depot;
-}
-
-.m-zone\:2 > summary {
-	inline-size: fit-content;
-}
-
-.m-zone\:2 > ff-reveal,
-.m-zone\:2 > .expanded > ff-reveal {
-	--max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap)
-	);
-	--max-inline-size: calc(
-		100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
-	);
-	max-inline-size: var(--max-inline-size);
-	block-size: fit-content;
-	max-block-size: var(--max-block-size);
-	padding-block-end: var(--ui-size);
-	overflow: hidden auto;
-}
-
-.m-zone\:2 > .expanded > ff-reveal,
-.m-zone\:2[class*='gare:'][open] > ff-reveal,
-.m-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-	position: absolute;
-	top: var(--ui-header-height);
-	z-index: var(--layout-z-index-reveal);
-	inline-size: var(--max-inline-size);
-}
-
-@media screen and (min-width: 620px) {
-	.m-zone\:2 > .expanded > ff-reveal {
-		--max-inline-size: var(--layout-sidebar-md);
-		z-index: var(--layout-z-index-reveal);
-	}
-
-	.m-zone\:2 > ff-reveal,
-	.m-zone\:2 > .collapsed > ff-reveal {
-		--collapse-x: 0;
-		--max-inline-size: var(--layout-sidebar-collapsed);
-		inline-size: fit-content;
-		overflow: hidden auto;
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.m-zone\:2 {
-		align-content: start;
-		inline-size: fit-content;
-		position: unset;
-		inline-size: var(--sidebar-width);
-		block-size: 100vh;
-	}
-
-	.m-zone\:2 > nav.expanded > form [aria-expanded] {
-		inline-size: var(--sidebar-width);
-		max-inline-size: var(--max-inline-size);
-	}
-
-	.m-zone\:2 > ff-reveal,
-	.m-zone\:2[open] > ff-reveal,
-	.m-zone\:2 > .expanded > ff-reveal,
-	.m-zone\:2 > .collapsed > ff-reveal {
-		--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
-		position: unset;
-		margin-block-start: var(--outline-offset-lg);
-		inline-size: 100%;
-		max-inline-size: var(--max-inline-size);
-		box-shadow: unset;
-		padding: 0;
-		margin-inline-start: 0;
-		max-block-size: var(--max-block-size);
-	}
-
-	.m-zone\:2 > .expanded > ff-reveal,
-	.m-zone\:2[class*='gare:'][open] > ff-reveal,
-	.m-zone\:2.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
-		position: unset;
-	}
-
-	.m-zone\:2 > nav > form,
-	.m-zone\:2 > nav > form [aria-expanded] {
-		inline-size: fit-content;
-		max-inline-size: 100%;
-	}
-
-	.m-zone\:2 > nav.expanded > form [aria-expanded] {
-		inline-size: var(--sidebar-width);
-		max-inline-size: var(--max-inline-size);
-	}
+	grid-row: span 2;
 }

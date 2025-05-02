@@ -38,6 +38,10 @@
 			box-shadow: unset;
 			max-block-size: var(--max-block-size);
 		}
+
+		> .t-zone\:main {
+			block-size: auto;
+		}
 	}
 }
 

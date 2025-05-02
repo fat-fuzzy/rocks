@@ -3,15 +3,6 @@
  * Left Sidebar contains secondary navigation
  */
 
-.gare-control {
-	border-radius: 0;
-}
-
-details:has(.gare-control) {
-	padding-block: 0;
-	position: unset;
-}
-
 details[class*='gare:'] > ff-reveal,
 .l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 	--max-inline-size: calc(var(--sidebar-width) - 2 * var(--outline-offset-lg));

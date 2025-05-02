@@ -1,0 +1,90 @@
+/**
+ * GARES
+ * Expand / Collapse content
+ */
+
+.gare-control {
+	border-radius: 0;
+}
+
+details:has(.gare-control) {
+	padding-block: 0;
+	position: unset;
+}
+
+[class*='gare:'].hidden {
+	/* TODO: Use transforms here instead */
+	--overlay-inline-size: 0;
+	--overlay-block-size: 0;
+}
+
+[class*='gare:'].collapsed {
+	--sidebar-width: var(--layout-sidebar-collapsed);
+	--overlay-inline-size: var(--sidebar-width);
+}
+
+[class*='gare:'].width\:sm {
+	--sidebar-width: var(--layout-sidebar-sm);
+	--overlay-inline-size: var(--sidebar-width);
+}
+
+[class*='gare:'].width\:md {
+	--sidebar-width: var(--layout-sidebar-md);
+	--overlay-inline-size: var(--sidebar-width);
+}
+
+[class*='gare:'].width\:lg {
+	--overlay-inline-size: calc(100vw - 3 * var(--grid-gap));
+}
+
+[class*='gare:'].height\:sm {
+	--overlay-block-size: var(--overlay-height-sm);
+}
+
+[class*='gare:'].height\:md {
+	--overlay-block-size: var(--overlay-height-md);
+}
+
+[class*='gare:'].height\:lg {
+	--overlay-block-size: var(--overlay-height-lg);
+}
+
+[class*='gare:'].height\:full {
+	--overlay-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - var(--grid-gap) -
+			var(--outline-offset-md)
+	);
+}
+
+@media screen and (min-width: 620px) {
+	[class*='gare:'].width\:lg,
+	[class*='gare:'].width\:lg:is([open], .expanded) ff-reveal {
+		--overlay-inline-size: calc(
+			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
+		);
+	}
+}
+
+@media screen and (min-width: 935px) {
+	[class*='gare:'][class*='width:'],
+	[class*='gare:'][class*='width:']:is([open], .expanded) ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
+		--overlay-inline-size: var(--sidebar-width);
+	}
+
+	.gare\:ouest ff-reveal,
+	.gare\:ouest:is([open], .expanded) ff-reveal {
+		--overlay-inline-size: var(--sidebar-width);
+	}
+
+	.gare\:est ff-reveal,
+	.gare\:est:is([open], .expanded) ff-reveal {
+		--overlay-inline-size: calc(
+			var(--sidebar-width) - var(--grid-gap) - 2 * var(--outline-offset-md)
+		);
+	}
+
+	[class*='gare:'][class*='height:'] {
+		--overlay-block-size: var(--max-block-size);
+	}
+}
