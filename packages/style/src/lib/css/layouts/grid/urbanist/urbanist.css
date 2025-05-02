@@ -18,6 +18,13 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
+.l\:grid\:urbanist.exchange {
+	grid-template-areas:
+		'u-zone-2  u-zone-1  u-zone-3'
+		'u-zone-4  u-zone-4  u-zone-4'
+		'u-zone-5  u-zone-5  u-zone-5';
+}
+
 @media screen and (min-width: 620px) {
 	.l\:grid\:urbanist {
 		--sidebar-width: var(--layout-sidebar-sm);

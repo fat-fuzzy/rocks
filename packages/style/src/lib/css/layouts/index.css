@@ -42,6 +42,7 @@
 @import './grid/metro/zone-2.css'; /* Metro grid areas (zone-2) */
 @import './grid/metro/zone-3.css'; /* Metro grid areas (zone-3) */
 @import './grid/metro/zone-4.css'; /* Metro grid areas (zone-4) */
+@import './grid/metro/zone-5.css'; /* Metro grid areas (zone-5) */
 
 @import './grid/railway/railway.css'; /* Detailed grid with headers and page template areas */
 @import './grid/railway/zone-1.css'; /* Metro grid areas (zone-1) */
