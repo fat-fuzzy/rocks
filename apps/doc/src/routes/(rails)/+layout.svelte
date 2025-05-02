@@ -46,26 +46,7 @@
 			grid: true,
 		},
 	]
-	const fourZones = [
-		{
-			zone: zoneHeaderGrid,
-			grid: true,
-			tag: 'header',
-		},
-		{
-			zone: zoneNav2,
-			grid: true,
-			gare: 'ouest',
-		},
-		{
-			zone: zoneContent,
-			grid: true,
-		},
-		{
-			zone: zoneFooter,
-			grid: true,
-		},
-	]
+
 	const fiveZones = [
 		{
 			zone: zoneNav1,
@@ -176,7 +157,9 @@
 	<RevealNav
 		{...sidenav}
 		position={false}
-		place="left"
+		area="gare"
+		place="ouest"
+		layout="rails"
 		scroll="y"
 		layer={1}
 		justify="evenly"

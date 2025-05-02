@@ -54,7 +54,7 @@
 	const pageMainClasses: {[key: string]: string} = {
 		metro: '',
 		railway: '',
-		steam: 'l:flex justify:center',
+		steam: 'l:flex justify:center ravioli:xs',
 		tgv: '',
 		tram: '',
 		voyager: '',

@@ -50,11 +50,21 @@
 	);
 }
 
+[class*='zone:']:has([class*='gare:']) {
+	max-block-size: var(--max-block-size);
+}
+
+[class*='zone:']:has([class*='gare:'][class*='l:rails']) {
+	--overlay-block-size: var(--overlay-height-sm);
+	block-size: fit-content;
+}
+
 @media screen and (min-width: 620px) {
 	[class*='gare:'].width\:lg,
-	[class*='gare:'].width\:lg:is([open], .expanded) ff-reveal,
+	[class*='gare:'].width\:lg:is([open], .expanded) > ff-reveal,
 	[class*='gare:'].width\:full,
-	[class*='gare:'].width\:full:is([open], .expanded) ff-reveal {
+	[class*='gare:'].width\:full:is([open], .expanded) > ff-reveal,
+	[class*='gare:'][class*='l:rails:'] > ff-reveal {
 		--overlay-inline-size: calc(
 			100vw - var(--sidebar-width) - 4 * var(--grid-gap)
 		);
@@ -62,15 +72,28 @@
 }
 
 @media screen and (min-width: 935px) {
+	[class*='zone:']:has([class*='gare:']) {
+		inline-size: var(--sidebar-width);
+	}
+
+	[class*='zone:']:has([class*='gare:'][class*='l:rails'].collapsed) {
+		--sidebar-width: var(--layout-collapsed);
+	}
+
 	[class*='gare:'][class*='width:']:not([class*=':full']),
 	[class*='gare:'][class*='width:']:not([class*=':full']):is([open], .expanded)
-		ff-reveal {
+		> ff-reveal,
+	[class*='gare:'][class*='l:rails:'] > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
 		--overlay-inline-size: var(--sidebar-width);
 	}
 
-	.gare\:ouest ff-reveal,
-	.gare\:ouest:is([open], .expanded) ff-reveal {
+	[class*='gare:'][class*='l:rails:'] > ff-reveal {
+		--overlay-block-size: var(--max-block-size);
+	}
+
+	.gare\:ouest > ff-reveal,
+	.gare\:ouest:is([open], .expanded) > ff-reveal {
 		--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
 	}
 

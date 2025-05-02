@@ -52,13 +52,15 @@
 		}),
 	)
 	let revealClasses = $derived(
-		`l:reveal ${place} ${reveal} ${layoutClasses} ${area}`,
+		area ? `${area}:${place} ${reveal}` : `l:reveal ${place} ${reveal}`,
 	)
+
+	let navClasses = $derived(`${layoutClasses} ${revealClasses}`)
 </script>
 
 <nav
 	id={`nav-${id}`}
-	class={revealClasses}
+	class={navClasses}
 	aria-label={title}
 	data-testid={`nav-${id}`}
 >
