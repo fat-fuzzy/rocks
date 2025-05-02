@@ -9,6 +9,7 @@
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	padding-inline-start: var(--grid-gap);
+	z-index: 1;
 }
 
 .u-zone\:1 > .navbar {

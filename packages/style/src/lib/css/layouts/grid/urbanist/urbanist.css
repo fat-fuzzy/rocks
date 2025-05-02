@@ -25,7 +25,10 @@
 			'u-zone-2  u-zone-1  u-zone-3'
 			'u-zone-4  u-zone-4  u-zone-4'
 			'u-zone-5  u-zone-5  u-zone-5';
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
+		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr minmax(
+				auto,
+				var(--sidebar-width)
+			);
 	}
 }
 

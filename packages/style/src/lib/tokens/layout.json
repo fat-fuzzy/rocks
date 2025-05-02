@@ -31,6 +31,9 @@
 			"base": {
 				"$value": "24ch"
 			},
+			"hidden": {
+				"$value": "0"
+			},
 			"collapsed": {
 				"$value": "6.5em"
 			},

@@ -1,20 +1,70 @@
 /**
- * GARE OUEST
- * Expand / Collapse westbound animation
+ * GARES
+ * Expand / Collapse content
  */
 
-.l\:grid\:urbanist {
-	details[open].gare\:ouest > ff-reveal,
-	.l\:reveal.gare\:ouest > .expanded > ff-reveal {
-		--collapse-x: 0;
-	}
+.l\:grid\:urbanist .gare\:est,
+.l\:grid\:urbanist .gare\:ouest {
+	block-size: fit-content;
+	max-block-size: var(--max-block-size);
+}
+
+.l\:grid\:urbanist .gare\:est:is([open], .expanded) ff-reveal,
+.l\:grid\:urbanist .gare\:ouest:is([open], .expanded) ff-reveal {
+	--overlay-size: var(--overlay-height-sm);
+	position: absolute;
+	block-size: fit-content;
+	max-block-size: var(--overlay-size);
+	inline-size: var(--max-inline-size);
+	z-index: var(--layout-z-index-reveal);
+	padding-block-end: var(--grid-gap);
+}
+
+.l\:grid\:urbanist .gare\:est:is([open], .expanded) ff-reveal {
+	--max-inline-size: var(--sidebar-width);
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+}
+
+.l\:grid\:urbanist .gare\:ouest:is([open], .expanded) ff-reveal {
+	--max-inline-size: calc(100vw - 3 * var(--grid-gap));
+	left: var(--grid-gap);
+	right: var(--grid-gap);
 }
 
 @media screen and (min-width: 620px) {
-	.l\:grid\:urbanist {
-		details[open].gare\:ouest > ff-reveal,
-		.l\:reveal.gare\:ouest > .expanded > ff-reveal {
-			--collapse-x: 0;
-		}
+	.l\:grid\:urbanist .gare\:ouest:is([open], .expanded) ff-reveal {
+		--max-inline-size: calc(
+			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
+		);
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.l\:grid\:urbanist .gare\:est ff-reveal,
+	.l\:grid\:urbanist .gare\:ouest ff-reveal,
+	.l\:grid\:urbanist .gare\:est:is([open], .expanded) ff-reveal,
+	.l\:grid\:urbanist .gare\:ouest:is([open], .expanded) ff-reveal {
+		--overlay-size: var(--max-block-size);
+	}
+
+	.l\:grid\:urbanist .gare\:ouest ff-reveal,
+	.l\:grid\:urbanist .gare\:ouest:is([open], .expanded) ff-reveal {
+		--overlay-size: var(--max-block-size);
+		position: unset;
+		box-shadow: unset;
+		z-index: 0;
+	}
+
+	.l\:grid\:urbanist .gare\:est ff-reveal,
+	.l\:grid\:urbanist .gare\:ouest ff-reveal,
+	.l\:grid\:urbanist .gare\:est:is([open], .expanded) ff-reveal,
+	.l\:grid\:urbanist .gare\:ouest:is([open], .expanded) ff-reveal {
+		--overlay-size: var(--max-block-size);
+	}
+
+	.l\:grid\:urbanist .gare\:est .gare-control,
+	.l\:grid\:urbanist .gare\:ouest .gare-control {
+		inline-size: 100%;
+		max-inline-size: var(--max-inline-size);
 	}
 }
