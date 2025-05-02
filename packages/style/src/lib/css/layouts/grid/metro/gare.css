@@ -1,0 +1,51 @@
+/**
+ * GARES
+ * Expand / Collapse content
+ */
+
+.l\:grid\:metro .gare\:est,
+.l\:grid\:metro .gare\:ouest {
+	--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
+	block-size: fit-content;
+	max-block-size: var(--max-block-size);
+}
+
+.l\:grid\:metro .gare\:est:is([open], .expanded) ff-reveal,
+.l\:grid\:metro .gare\:ouest:is([open], .expanded) ff-reveal {
+	block-size: fit-content;
+	max-block-size: var(--overlay-block-size);
+	overflow: hidden auto;
+}
+
+.l\:grid\:metro .gare\:est:is([open], .expanded) ff-reveal,
+.l\:grid\:metro .gare\:ouest:is([open], .expanded) ff-reveal {
+	position: absolute;
+	block-size: fit-content;
+	max-block-size: var(--overlay-block-size);
+	inline-size: var(--overlay-inline-size);
+	z-index: var(--layout-z-index-reveal);
+	padding-block-end: var(--grid-gap);
+}
+
+.l\:grid\:metro .gare\:est:is([open], .expanded) ff-reveal {
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+}
+
+.l\:grid\:metro .gare\:ouest:is([open], .expanded) ff-reveal {
+	left: var(--grid-gap);
+	right: var(--grid-gap);
+}
+
+@media screen and (min-width: 935px) {
+	.l\:grid\:metro .gare\:ouest ff-reveal,
+	.l\:grid\:metro .gare\:ouest:is([open], .expanded) ff-reveal {
+		box-shadow: unset;
+		z-index: 0;
+	}
+
+	.l\:grid\:metro .gare\:est .gare-control,
+	.l\:grid\:metro .gare\:ouest .gare-control {
+		inline-size: 100%;
+		max-inline-size: var(--overlay-inline-size);
+	}
+}
