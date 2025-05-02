@@ -9,10 +9,10 @@
 	import LineLong from '$lib/components/raw/fixtures/line-long.svelte'
 	import LineLongest from '$lib/components/raw/fixtures/line-longest.svelte'
 
-	let title = '🚈 Voyager'
-	let parent = 'voyager'
-	let theme = 'grape'
-	let zone = 'v-zone'
+	let title = '🚉 Urbanist'
+	let parent = 'urbanist'
+	let theme = 'accent'
+	let zone = 'u-zone'
 	let size = '2xs'
 </script>
 
@@ -31,24 +31,31 @@
 	<aside class={`l:grid ${zone}:3 size:${size}`}>
 		<AppContext {theme} />
 	</aside>
-	<div class={`l:grid ${zone}:4 size:${size} scroll:y snap:start`}>
+	<div class={`${zone}:4 size:${size} scroll:y snap:start`}>
 		<main
 			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
 		>
-			<header class="page-header">
-				<div class="l:sidebar size:md">
-					<div class="l:main">
-						<h1 class={`color:${theme}`}>{title}</h1>
-					</div>
-					<div class="l:side maki:block l:stack size:md">
-						<h4>Stopping at:</h4>
-						<LineMedium />
-					</div>
+			<header class="page-header l:sidebar size:md">
+				<div class="l:main">
+					<h1 class={`color:${theme} l:text:md maki:inline maki:block size:lg`}>
+						{title}
+					</h1>
+				</div>
+				<div class="l:side maki:block l:stack size:md">
+					<h3>Stopping at:</h3>
+					<LineLong />
 				</div>
 			</header>
-			<div class="l:sidebar size:md">
-				<main class="l:main">
-					<div class="page-main maki:inline l:stack size:lg">
+			<div class="page-main l:sidebar size:md">
+				<div class="l:main">
+					<div class="l:text:md maki:inline size:lg">
+						<h2 id="section-1">
+							A Huge Ever Growing Pulsating Brain That Rules from the Centre of
+							the Ultraworld
+						</h2>
+						<h3>Artist: The Orb</h3>
+					</div>
+					<div class="maki:inline l:stack size:lg">
 						<Prose />
 						<Details
 							title="Content Details"
@@ -57,14 +64,15 @@
 							gare="nord"
 						/>
 					</div>
-				</main>
+				</div>
+
 				<aside
 					class={`l:side surface:2:${theme} maki:block l:grid:auto size:md`}
 				>
 					<nav class="l:stack size:lg">
 						<h4 class="maki:inline size:sm">Exchange At:</h4>
-						<LineLong />
 						<LineShort />
+						<LineMedium />
 						<LineLongest />
 					</nav>
 					<Details title="Page Context" {theme} layout="grid" gare="nord" />

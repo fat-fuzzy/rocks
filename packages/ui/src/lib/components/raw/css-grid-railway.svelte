@@ -7,6 +7,7 @@
 	import LineShort from '$lib/components/raw/fixtures/line-short.svelte'
 	import LineMedium from '$lib/components/raw/fixtures/line-medium.svelte'
 	import LineLong from '$lib/components/raw/fixtures/line-long.svelte'
+	import LineLongest from '$lib/components/raw/fixtures/line-longest.svelte'
 
 	let title = '🚆 Railway'
 	let parent = 'railway'
@@ -19,7 +20,14 @@
 	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 	</header>
-	<SideNav zone={`${zone}:2 size:${size}`} {theme} layout="grid" gare="nord" />
+	<SideNav
+		zone={`${zone}:2 size:${size}`}
+		{theme}
+		layout="grid"
+		gare="ouest"
+		width="full"
+		height="sm"
+	/>
 	<aside class={`l:grid ${zone}:3 size:${size} `}>
 		<AppContext {theme} />
 	</aside>
@@ -44,8 +52,9 @@
 				<h4 class="maki:inline size:sm">Stopping at:</h4>
 				<LineShort />
 				<h4 class="maki:inline size:sm">Exchange At:</h4>
-				<LineMedium />
 				<LineLong />
+				<LineMedium />
+				<LineLongest />
 			</nav>
 			<Details title="Page Context" {theme} layout="grid" gare="nord" />
 		</aside>
