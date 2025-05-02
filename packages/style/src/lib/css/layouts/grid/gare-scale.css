@@ -1,16 +1,7 @@
 /**
- * GARES
+ * GARES: Scale
  * Expand / Collapse content
  */
-
-.gare-control {
-	border-radius: 0;
-}
-
-details:has(.gare-control) {
-	padding-block: 0;
-	position: unset;
-}
 
 [class*='gare:'].hidden {
 	/* TODO: Use transforms here instead */
@@ -33,7 +24,8 @@ details:has(.gare-control) {
 	--overlay-inline-size: var(--sidebar-width);
 }
 
-[class*='gare:'].width\:lg {
+[class*='gare:'].width\:lg,
+[class*='gare:'].width\:full {
 	--overlay-inline-size: calc(100vw - 3 * var(--grid-gap));
 }
 
@@ -58,16 +50,23 @@ details:has(.gare-control) {
 
 @media screen and (min-width: 620px) {
 	[class*='gare:'].width\:lg,
-	[class*='gare:'].width\:lg:is([open], .expanded) ff-reveal {
+	[class*='gare:'].width\:lg:is([open], .expanded) ff-reveal,
+	[class*='gare:'].width\:full,
+	[class*='gare:'].width\:full:is([open], .expanded) ff-reveal {
 		--overlay-inline-size: calc(
-			100vw - var(--layout-sidebar-md) - 4 * var(--grid-gap)
+			100vw - var(--sidebar-width) - 4 * var(--grid-gap)
 		);
+	}
+
+	.gare\:ouest.width\:full:is([open], .expanded) ff-reveal {
+		left: 0;
 	}
 }
 
 @media screen and (min-width: 935px) {
-	[class*='gare:'][class*='width:'],
-	[class*='gare:'][class*='width:']:is([open], .expanded) ff-reveal {
+	[class*='gare:'][class*='width:']:not([class*=':full']),
+	[class*='gare:'][class*='width:']:not([class*=':full']):is([open], .expanded)
+		ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
 		--overlay-inline-size: var(--sidebar-width);
 	}
@@ -84,7 +83,7 @@ details:has(.gare-control) {
 		);
 	}
 
-	[class*='gare:'][class*='height:'] {
+	[class*='gare:'][class*='height:']:not(.width\:full) {
 		--overlay-block-size: var(--max-block-size);
 	}
 }

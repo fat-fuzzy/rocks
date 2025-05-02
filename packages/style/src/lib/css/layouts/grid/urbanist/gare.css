@@ -27,19 +27,9 @@
 	padding-block-end: var(--grid-gap);
 }
 
-.l\:grid\:urbanist .gare\:est:is([open], .expanded) ff-reveal {
-	right: calc(var(--outline-offset-lg) + var(--grid-gap));
-}
-
-.l\:grid\:urbanist .gare\:ouest:is([open], .expanded) ff-reveal {
-	left: var(--grid-gap);
-	right: var(--grid-gap);
-}
-
 @media screen and (min-width: 935px) {
 	.l\:grid\:urbanist .gare\:ouest ff-reveal,
 	.l\:grid\:urbanist .gare\:ouest:is([open], .expanded) ff-reveal {
-		left: 0;
 		box-shadow: unset;
 		z-index: 0;
 	}
