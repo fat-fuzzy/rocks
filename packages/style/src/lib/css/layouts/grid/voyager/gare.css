@@ -1,20 +1,42 @@
 /**
- * GARE OUEST
- * Expand / Collapse westbound animation
+ * GARES
+ * Expand / Collapse content
  */
 
-.l\:grid\:voyager {
-	details[open].gare\:ouest > ff-reveal,
-	.l\:reveal.gare\:ouest > .expanded > ff-reveal {
-		--collapse-x: 0;
-	}
+.l\:grid\:voyager .gare\:est,
+.l\:grid\:voyager .gare\:ouest {
+	--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
+	block-size: fit-content;
+	max-block-size: var(--max-block-size);
 }
 
-@media screen and (min-width: 620px) {
-	.l\:grid\:voyager {
-		details[open].gare\:ouest > ff-reveal,
-		.l\:reveal.gare\:ouest > .expanded > ff-reveal {
-			--collapse-x: 0;
-		}
+.l\:grid\:voyager .gare\:est:is([open], .expanded) ff-reveal,
+.l\:grid\:voyager .gare\:ouest:is([open], .expanded) ff-reveal {
+	block-size: fit-content;
+	max-block-size: var(--overlay-block-size);
+	overflow: hidden auto;
+}
+
+.l\:grid\:voyager .gare\:est:is([open], .expanded) ff-reveal,
+.l\:grid\:voyager .gare\:ouest:is([open], .expanded) ff-reveal {
+	position: absolute;
+	block-size: fit-content;
+	max-block-size: var(--overlay-block-size);
+	inline-size: var(--overlay-inline-size);
+	z-index: var(--layout-z-index-reveal);
+	padding-block-end: var(--grid-gap);
+}
+
+@media screen and (min-width: 935px) {
+	.l\:grid\:voyager .gare\:ouest ff-reveal,
+	.l\:grid\:voyager .gare\:ouest:is([open], .expanded) ff-reveal {
+		box-shadow: unset;
+		z-index: 0;
+	}
+
+	.l\:grid\:voyager .gare\:est .gare-control,
+	.l\:grid\:voyager .gare\:ouest .gare-control {
+		inline-size: 100%;
+		max-inline-size: var(--overlay-inline-size);
 	}
 }

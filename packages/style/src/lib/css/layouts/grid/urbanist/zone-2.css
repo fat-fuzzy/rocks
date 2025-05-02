@@ -8,7 +8,6 @@
 		'gare-control'
 		'gare-depot';
 	grid-template-rows: subgrid;
-	z-index: 2;
 	padding-inline-start: var(--grid-gap);
 }
 
