@@ -11,6 +11,7 @@
 	grid-template-rows: subgrid;
 	padding-inline: var(--grid-gap)
 		calc(var(--outline-offset-lg) + var(--grid-gap));
+	z-index: 1;
 }
 
 .g-zone\:1 > .app-name {

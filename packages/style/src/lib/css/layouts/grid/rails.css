@@ -25,7 +25,7 @@ body:has(.rails[class*='l:grid']) {
 	padding-block-end: var(--grid-gap);
 }
 
-.rails [class*='-zone:2'] > nav > form > [aria-expanded],
+.rails [class*='zone:2'] > nav > form > [aria-expanded],
 .rails .navbar > nav > form > [aria-expanded],
 .rails .app-context > form > [aria-expanded] {
 	border-radius: 0;
@@ -33,7 +33,7 @@ body:has(.rails[class*='l:grid']) {
 	font-family: var(--font-family-heading);
 }
 
-.rails [class*='-zone:'] {
+.rails [class*='zone:'] {
 	border-radius: 0;
 }
 

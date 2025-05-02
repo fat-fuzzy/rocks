@@ -92,9 +92,9 @@
 	]
 	const zoneGroups: Areas = {
 		tgv: twoZones,
-		metro: fourZones,
-		steam: fourZones,
-		tram: fourZones,
+		metro: fiveZones,
+		steam: fiveZones,
+		tram: fiveZones,
 		voyager: fiveZones,
 		railway: fiveZones,
 	}

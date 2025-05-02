@@ -1,0 +1,58 @@
+/**
+ * ZONE 1
+ * Contains main navigation
+ */
+
+.zone\:1 {
+	grid-area: zone-1;
+	grid-template-areas: 'navbar	app-context';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+	padding-inline: var(--grid-gap)
+		calc(var(--outline-offset-lg) + var(--grid-gap));
+	z-index: 1;
+}
+
+.zone\:1 > .navbar {
+	grid-area: navbar;
+}
+
+.zone\:1 > .navbar .expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	left: calc(var(--outline-offset-md) + var(--grid-gap));
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+}
+
+.zone\:1 > nav,
+.zone\:1 > nav form,
+.zone\:1 > nav [aria-expanded] {
+	inline-size: 100%;
+}
+
+.zone\:1 > nav [aria-expanded] span {
+	text-align: center;
+}
+
+@media screen and (min-width: 620px) {
+	.zone\:1 > nav {
+		justify-content: flex-start;
+	}
+
+	.zone\:1 > nav form {
+		display: none;
+	}
+
+	.zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+		block-size: fit-content;
+	}
+
+	.zone\:1 > .navbar > .expanded > ff-reveal,
+	.zone\:1 > .navbar > .collapsed > ff-reveal {
+		position: unset;
+		margin: 0 auto;
+		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+	}
+}

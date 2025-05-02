@@ -2,20 +2,21 @@
  * ZONE 2
  * Left Sidebar contains secondary navigation
  */
-.t-zone\:2 {
-	grid-area: t-zone-2;
+.zone\:2 {
+	grid-area: zone-2;
 	grid-template-areas:
 		'gare-control'
 		'gare-depot';
 	grid-template-rows: subgrid;
 	padding-inline-start: var(--grid-gap);
+	z-index: 2;
 }
 
-.t-zone\:2 > .gare-control {
+.zone\:2 > .gare-control {
 	grid-area: gare-control;
 }
 
-.t-zone\:2 > .gare-depot {
+.zone\:2 > .gare-depot {
 	grid-area: gare-depot;
 	grid-row: span 2;
 }

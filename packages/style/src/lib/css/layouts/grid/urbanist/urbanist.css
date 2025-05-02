@@ -11,7 +11,7 @@
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
 	grid-template-areas:
-		'u-zone-1  u-zone-2  u-zone-3'
+		'u-zone-1  zone-2    zone-3'
 		'u-zone-4  u-zone-4  u-zone-4'
 		'u-zone-5  u-zone-5  u-zone-5';
 	grid-template-columns: auto 1fr auto;
@@ -20,7 +20,7 @@
 
 .l\:grid\:urbanist.exchange {
 	grid-template-areas:
-		'u-zone-2  u-zone-1  u-zone-3'
+		'zone-2    u-zone-1  zone-3'
 		'u-zone-4  u-zone-4  u-zone-4'
 		'u-zone-5  u-zone-5  u-zone-5';
 }
@@ -29,7 +29,7 @@
 	.l\:grid\:urbanist {
 		--sidebar-width: var(--layout-sidebar-sm);
 		grid-template-areas:
-			'u-zone-2  u-zone-1  u-zone-3'
+			'zone-2    u-zone-1  zone-3'
 			'u-zone-4  u-zone-4  u-zone-4'
 			'u-zone-5  u-zone-5  u-zone-5';
 		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr minmax(
@@ -43,8 +43,8 @@
 	.l\:grid\:urbanist {
 		--sidebar-width: var(--layout-sidebar-md);
 		grid-template-areas:
-			'u-zone-2  u-zone-1  u-zone-3'
-			'u-zone-2  u-zone-4  u-zone-4'
-			'u-zone-2  u-zone-5  u-zone-5';
+			'zone-2  u-zone-1  zone-3'
+			'zone-2  u-zone-4  u-zone-4'
+			'zone-2  u-zone-5  u-zone-5';
 	}
 }

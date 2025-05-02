@@ -26,6 +26,8 @@
 
 <div class={`rails l:grid:${sidenav.layout} ${themeClass} ${sizeClass}`}>
 	{#each areas as { zone, grid, gare, scroll, tag }, i}
+		{@const localZoneId =
+			(i === 1 || i === 2) && sidenav.layout !== 'tgv' ? 'zone' : zoneId}
 		{@const gareClass = gare ? `gare:${gare}` : ''}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
@@ -33,7 +35,7 @@
 
 		<svelte:element
 			this={element}
-			class={`${zoneId}:${i + 1} ${gridClass} ${gareClass} ${scrollClass}`}
+			class={`${localZoneId}:${i + 1} ${gridClass} ${gareClass} ${scrollClass}`}
 		>
 			{@render zone()}
 		</svelte:element>

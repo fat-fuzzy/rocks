@@ -38,13 +38,15 @@
 }
 
 [class*='gare:'].height\:lg {
-	--overlay-block-size: var(--overlay-height-lg);
+	--overlay-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - var(--grid-gap) -
+			var(--outline-offset-lg)
+	);
 }
 
 [class*='gare:'].height\:full {
 	--overlay-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - var(--grid-gap) -
-			var(--outline-offset-md)
+		100vh - var(--ui-header-height) - var(--grid-gap) - var(--outline-offset-lg)
 	);
 }
 
@@ -69,20 +71,7 @@
 
 	.gare\:ouest ff-reveal,
 	.gare\:ouest:is([open], .expanded) ff-reveal {
-		--overlay-inline-size: calc(
-			var(--overlay-inline-size) - 2 * var(--grid-gap)
-		);
-	}
-
-	.gare\:est ff-reveal,
-	.gare\:est:is([open], .expanded) ff-reveal {
-		--overlay-inline-size: calc(
-			var(--sidebar-width) - var(--grid-gap) - 2 * var(--outline-offset-md)
-		);
-	}
-
-	[class*='gare:'].hug:is([open], .expanded) ff-reveal {
-		--overlay-inline-size: fit-content;
+		--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
 	}
 
 	[class*='gare:'].hug .gare-control {
