@@ -10,6 +10,7 @@ pre {
 	--color-bg: var(--shade);
 	--color-ink: var(--ink);
 	--color-accent: var(--accent);
+	--ui-size: var(--font-size);
 	color: var(--color-ink);
 	background-color: var(--color-bg);
 	padding-inline: var(--ui-size) var(--ui-size-lg);

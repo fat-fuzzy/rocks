@@ -80,7 +80,7 @@
 			</div>
 		</main>
 	</div>
-	<footer class={`l:grid ${zone}:5 size:${size} surface:3:${theme}`}>
+	<footer class={`zone:5 l:grid size:${size} surface:3:${theme}`}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

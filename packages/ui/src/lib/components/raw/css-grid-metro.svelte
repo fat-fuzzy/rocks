@@ -17,7 +17,7 @@
 </script>
 
 <div class={`rails l:grid:${parent} exchange size:${size}`}>
-	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
+	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 	</header>
 	<SideNav
@@ -57,7 +57,7 @@
 			<Details title="Page Context" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class={`${zone}:5 l:grid size:${size} `}>
+	<footer class={`zone:5 l:grid size:${size} `}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

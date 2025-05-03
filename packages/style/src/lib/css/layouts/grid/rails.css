@@ -38,7 +38,7 @@ body:has(.rails[class*='l:grid']) {
 	border-radius: 0;
 }
 
-.rails [class*='-zone:1'] .app-name ff-callout {
+.rails [class*='zone:1'] .app-name ff-callout {
 	border-radius: 0;
 }
 

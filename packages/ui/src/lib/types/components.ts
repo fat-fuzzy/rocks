@@ -77,7 +77,7 @@ export interface Drafts {
 	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
 	RevealContext: typeof import('$lib/components/recipes/forms/RevealContext.svelte').default
 	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default
-	Zoomer: typeof import('$lib/components/recipes/content/Zoomer.svelte').default
+	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
 }

@@ -114,50 +114,57 @@
 	layout="tram"
 >
 	{#snippet main()}
-		<div class="l:text:md maki:auto">
-			<h2 id="doc">Doc</h2>
-		</div>
-		<EscapeHtml id="doc" html={content.html} size="md" margin="auto" />
+		<div class="l:stack size:2xl">
+			<EscapeHtml
+				id="doc"
+				html={content.html}
+				size="md"
+				font="md"
+				margin="auto"
+			/>
 
-		<section id="playbook" class="maki:block size:2xl">
-			{#if category === 'raw'}
-				<div class="l:text:lg size:xl maki:auto">
-					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-						<Zoomer
-							{title}
-							{description}
-							{path}
-							size="md"
-							variant="fill"
-							layout="center"
-							cta="Open layout"
-						>
-							<GenericElement children={SpecifiedElement} />
-						</Zoomer>
-					</Magic>
-				</div>
-			{:else}
-				<div class="l:text:lg size:xl maki:auto">
-					<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-						<h2 class="w:full text:center">Playbook</h2>
-					</Magic>
-				</div>
-				<div class="media maki:block">
-					<div class={`ravioli:lg ${containerClasses}`}>
-						<GenericElement
-							isPage={true}
-							{path}
-							{title}
-							{SpecifiedElement}
-							props={currentProps}
-							{formaction}
-							{actionPath}
-							id={title}
-						/>
+			<section id="playbook" class="l:stack size:2xl">
+				{#if category === 'raw'}
+					<div class="l:text:lg size:xl maki:auto">
+						<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+							<Zoomer
+								{title}
+								{description}
+								{path}
+								size="md"
+								variant="fill"
+								layout="center"
+								cta="Open layout"
+							>
+								<GenericElement children={SpecifiedElement} />
+							</Zoomer>
+						</Magic>
 					</div>
-				</div>
-			{/if}
-		</section>
+				{:else}
+					<div class="l:stack size:2xl">
+						<div class="l:text:lg size:xl maki:auto">
+							<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+								<h2 class="w:full text:center">Playbook</h2>
+							</Magic>
+						</div>
+						<div class="media maki:block">
+							<div class={`ravioli:lg ${containerClasses}`}>
+								<GenericElement
+									isPage={true}
+									{path}
+									{title}
+									{SpecifiedElement}
+									props={currentProps}
+									{formaction}
+									{actionPath}
+									id={title}
+								/>
+							</div>
+						</div>
+					</div>
+				{/if}
+			</section>
+		</div>
 	{/snippet}
 
 	{#snippet aside()}

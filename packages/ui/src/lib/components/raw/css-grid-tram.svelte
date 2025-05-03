@@ -58,7 +58,7 @@
 			</div>
 		</aside>
 	</div>
-	<footer class={`${zone}:5 l:grid size:${size}`}>
+	<footer class={`zone:5 l:grid size:${size}`}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>
