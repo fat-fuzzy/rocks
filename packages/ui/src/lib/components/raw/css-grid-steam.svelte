@@ -56,7 +56,7 @@
 			<Details title="Interaction Controls" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class={`${zone}:5 l:grid `}>
+	<footer class={`zone:5 l:grid `}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

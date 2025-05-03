@@ -26,7 +26,7 @@
 
 <div class={`rails l:grid:${sidenav.layout} ${themeClass} ${sizeClass}`}>
 	{#each areas as { zone, grid, gare, scroll, tag }, i}
-		{@const localZoneId = i === 1 || i === 2 ? 'zone' : zoneId}
+		{@const localZoneId = i <= 2 || i === 4 ? 'zone' : zoneId}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}

@@ -51,36 +51,22 @@
 @import './grid/zone/zone-5.css';
 
 @import './grid/metro/metro.css';
-@import './grid/metro/zone-1.css';
 @import './grid/metro/zone-4.css';
-@import './grid/metro/zone-5.css';
 
 @import './grid/railway/railway.css';
-@import './grid/railway/zone-1.css';
 @import './grid/railway/zone-4.css';
-@import './grid/railway/zone-5.css';
 
 @import './grid/steam/steam.css';
-@import './grid/steam/zone-1.css';
 @import './grid/steam/zone-4.css';
-@import './grid/steam/zone-5.css';
 
 @import './grid/tgv/tgv.css';
-@import './grid/tgv/zone-1.css';
 @import './grid/tgv/zone-4.css';
-@import './grid/tgv/zone-5.css';
 
 @import './grid/tram/tram.css';
-@import './grid/tram/zone-1.css';
 @import './grid/tram/zone-4.css';
-@import './grid/tram/zone-5.css';
 
 @import './grid/voyager/voyager.css';
-@import './grid/voyager/zone-1.css';
 @import './grid/voyager/zone-4.css';
-@import './grid/voyager/zone-5.css';
 
 @import './grid/urbanist/urbanist.css';
-@import './grid/urbanist/zone-1.css';
 @import './grid/urbanist/zone-4.css';
-@import './grid/urbanist/zone-5.css';
