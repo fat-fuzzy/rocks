@@ -25,6 +25,15 @@
 		's-zone-5   s-zone-5  s-zone-5';
 }
 
+@media screen and (min-width: 620px) {
+	.l\:grid\:steam {
+		grid-template-areas:
+			'zone-2     s-zone-1   zone-3'
+			's-zone-4   s-zone-4  s-zone-4'
+			's-zone-5   s-zone-5  s-zone-5';
+	}
+}
+
 @media screen and (min-width: 935px) {
 	.l\:grid\:steam {
 		grid-template-areas:

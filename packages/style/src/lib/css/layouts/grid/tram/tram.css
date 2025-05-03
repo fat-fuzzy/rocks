@@ -25,11 +25,21 @@
 		't-zone-5   t-zone-5  t-zone-5';
 }
 
+@media screen and (min-width: 620px) {
+	.l\:grid\:tram {
+		grid-template-areas:
+			'zone-2     t-zone-1  zone-3'
+			't-zone-4   t-zone-4  t-zone-4'
+			't-zone-5   t-zone-5  t-zone-5';
+	}
+}
+
 @media screen and (min-width: 935px) {
 	.l\:grid\:tram {
 		grid-template-areas:
 			'zone-2  t-zone-1  zone-3'
 			'zone-2  t-zone-4  t-zone-4'
 			'zone-2  t-zone-5  t-zone-5';
+		padding-block: 0;
 	}
 }

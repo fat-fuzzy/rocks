@@ -25,16 +25,11 @@
 @media screen and (min-width: 620px) {
 	.l\:grid\:railway {
 		--sidebar-width: var(--layout-sidebar-md);
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.l\:grid\:railway {
 		grid-template-areas:
 			'zone-2  r-zone-1  zone-3'
 			'zone-2  r-zone-4  r-zone-4'
 			'zone-2  r-zone-5  r-zone-5';
+		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
 		padding-block: 0;
 	}
 }

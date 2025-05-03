@@ -29,16 +29,11 @@
 @media screen and (min-width: 620px) {
 	.l\:grid\:metro {
 		--sidebar-width: var(--layout-sidebar-md);
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.l\:grid\:metro {
 		grid-template-areas:
 			'zone-2  m-zone-1  zone-3'
 			'zone-2  m-zone-4  m-zone-4'
 			'zone-2  m-zone-5  m-zone-5';
 		padding-block: 0;
+		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
 	}
 }
