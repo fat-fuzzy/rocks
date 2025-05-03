@@ -17,7 +17,7 @@
 </script>
 
 <div class={`rails l:grid:${parent} size:${size}`}>
-	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
+	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 	</header>
 	<SideNav
@@ -28,12 +28,12 @@
 		width="lg"
 		height="sm"
 	/>
-	<aside class={`l:grid ${zone}:3 size:${size}`}>
+	<aside class={`${zone}:3 l:grid size:${size}`}>
 		<AppContext {theme} />
 	</aside>
-	<div class={`l:grid ${zone}:4 size:${size} scroll:y snap:start`}>
+	<div class={`${zone}:4 l:grid size:${size} scroll:y snap:start`}>
 		<main
-			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
+			class={`${zone}:main l:grid size:${size} scroll:y surface:0:${theme}`}
 		>
 			<header class="page-header">
 				<div class="l:sidebar size:md">
