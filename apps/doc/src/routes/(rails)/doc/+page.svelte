@@ -29,9 +29,9 @@
 	layout="voyager"
 >
 	{#snippet main()}
-		<Sidebar dimension={50} size="xl hug" reverse={true} wrap="reverse">
+		<Sidebar dimension={50} size="2xl" reverse={true} wrap="reverse">
 			{#snippet main()}
-				<EscapeHtml id={slug} {html} size="md" margin="auto" />
+				<EscapeHtml id={slug} {html} size="md" />
 			{/snippet}
 			{#snippet side()}
 				<Picture {...media} dimensions="full" />
