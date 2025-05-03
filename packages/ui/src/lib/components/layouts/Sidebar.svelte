@@ -18,7 +18,9 @@
 	let wrapClass = wrap ? `wrap:${wrap}` : ''
 </script>
 
-<div class={`l:sidebar:${size} ${alignClass} ${justifyClass} ${wrapClass}`}>
+<div
+	class={`l:sidebar size:${size} ${alignClass} ${justifyClass} ${wrapClass}`}
+>
 	{#if reverse}
 		<div class={mainClass}>
 			{#if main}
