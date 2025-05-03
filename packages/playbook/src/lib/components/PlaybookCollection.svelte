@@ -137,28 +137,29 @@
 		layout="tram"
 	>
 		{#snippet main()}
-			<div class="l:text:md maki:auto">
-				<h2 id="doc">Doc</h2>
+			<div class="l:stack size:2xl">
+				<EscapeHtml
+					id="doc"
+					html={content.html}
+					size="md"
+					font="md"
+					margin="auto"
+					element="section"
+				/>
+
+				{#if category !== 'raw'}
+					<section id="playbook">
+						<div class="l:stack size:2xl">
+							<div class="l:text:lg maki:auto">
+								<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+									<h2 class="text:center">Playbook</h2>
+								</Magic>
+							</div>
+							{@render categoryElements()}
+						</div>
+					</section>
+				{/if}
 			</div>
-			<EscapeHtml
-				id="doc"
-				html={content.html}
-				size="md"
-				margin="auto"
-				element="section"
-			/>
-
-			{#if category !== 'raw'}
-				<section id="playbook" class="l:stack size:2xl">
-					<div class="l:text:lg maki:auto">
-						<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-							<h2 class="text:center">Playbook</h2>
-						</Magic>
-					</div>
-
-					{@render categoryElements()}
-				</section>
-			{/if}
 		{/snippet}
 
 		{#snippet aside()}
