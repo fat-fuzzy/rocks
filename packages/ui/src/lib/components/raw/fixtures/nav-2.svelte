@@ -40,7 +40,7 @@
 					{@render children()}
 				{:else}
 					<ol class="unstyled">
-						{#each Array(20) as _, i}
+						{#each Array(15) as _, i}
 							<li class="raviolink">Item {i + 1}</li>
 						{/each}
 					</ol>
