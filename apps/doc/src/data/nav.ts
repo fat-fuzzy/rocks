@@ -28,8 +28,6 @@ const navBase = {
 	size: 'sm',
 	variant: 'outline',
 	color: 'primary',
-	position: 'fixed',
-	place: 'left',
 	formaction: 'toggleSidebar',
 	actionPath: '/',
 	items: [] as NavItem[],

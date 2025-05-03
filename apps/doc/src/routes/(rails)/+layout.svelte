@@ -7,7 +7,7 @@
 	import Footer from '$lib/ui/Footer.svelte'
 
 	const {RevealNav, Header} = ui.recipes
-	const {HeaderGrid, HeaderNav, RevealContext} = ui.drafts
+	const {HeaderNav, RevealContext} = ui.drafts
 	const {LayoutGrid} = ui.content
 
 	type Props = {
@@ -51,12 +51,10 @@
 		{
 			zone: zoneNav1,
 			grid: true,
-			gare: 'nord',
 		},
 		{
 			zone: zoneNav2,
 			grid: true,
-			gare: 'ouest',
 		},
 		{
 			zone: zoneAppContext,
@@ -71,6 +69,7 @@
 			grid: true,
 		},
 	]
+
 	const zoneGroups: Areas = {
 		tgv: twoZones,
 		metro: fiveZones,

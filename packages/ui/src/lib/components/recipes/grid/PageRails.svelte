@@ -10,7 +10,7 @@
 		title = 'PageRails',
 		path = '',
 		hash,
-		description = `Metro layout (zones 1-4)`,
+		description = `Rails layout (zones 1-5)`,
 		pageName,
 		size,
 		dimensions,

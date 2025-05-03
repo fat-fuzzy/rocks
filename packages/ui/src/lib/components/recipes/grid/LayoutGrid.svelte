@@ -34,7 +34,7 @@
 
 		<svelte:element
 			this={element}
-			class={`${localZoneId}:${i + 1} ${gridClass} ${scrollClass}`}
+			class={`${localZoneId}:${i + 1} ${gridClass} ${scrollClass} ${gare}`}
 		>
 			{@render zone()}
 		</svelte:element>
