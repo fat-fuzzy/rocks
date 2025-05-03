@@ -20,3 +20,18 @@
 	grid-area: gare-depot;
 	grid-row: span 2;
 }
+
+.zone\:2 > ff-callout,
+.zone\:2 > nav {
+	inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
+}
+
+.zone\:2 > nav > form,
+.zone\:2 > nav > form > [class*='l:switcher'] {
+	inline-size: 100%;
+}
+
+.zone\:2 > nav.collapsed > form,
+.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
+	inline-size: var(--sidebar-width);
+}

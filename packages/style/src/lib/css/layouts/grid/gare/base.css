@@ -17,9 +17,9 @@ details[class*='gare:'] > ff-reveal,
 	margin-inline-start: var(--outline-offset-md);
 }
 
-[class*='-zone:'] > .navbar > nav form > [class*='l:switcher'],
-[class*='-zone:'] > .app-context > form > [class*='l:switcher'],
-[class*='-zone:'] > nav > form > [class*='l:switcher'] {
+[class*='zone:'] > .navbar > nav form > [class*='l:switcher'],
+[class*='zone:'] > .app-context > form > [class*='l:switcher'],
+[class*='zone:'] > nav > form > [class*='l:switcher'] {
 	--gap: var(--grid-gap);
 }
 

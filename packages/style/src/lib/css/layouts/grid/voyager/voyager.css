@@ -25,7 +25,7 @@
 			'zone-2    v-zone-1  zone-3'
 			'v-zone-4  v-zone-4  v-zone-4'
 			'v-zone-5  v-zone-5  v-zone-5';
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
+		grid-template-columns: auto 1fr auto;
 	}
 }
 

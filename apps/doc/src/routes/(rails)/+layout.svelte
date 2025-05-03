@@ -78,6 +78,7 @@
 		voyager: fiveZones,
 		railway: fiveZones,
 	}
+	zoneGroups.steam[1].gare = 'hug'
 
 	let areas = $derived(zoneGroups[sidenav.layout])
 </script>

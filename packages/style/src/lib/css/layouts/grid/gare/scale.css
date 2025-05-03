@@ -81,8 +81,9 @@
 		inline-size: auto;
 	}
 
-	[class*='zone:']:has([class*='l:rails'].collapsed) {
-		--sidebar-width: var(--layout-collapsed);
+	[class*='zone:'].hug:has([class*='l:rails'].collapsed) {
+		--sidebar-width: var(--layout-sidebar-collapsed);
+		min-inline-size: max-content;
 	}
 
 	[class*='gare:'][class*='width:']:not([class*=':full']),
