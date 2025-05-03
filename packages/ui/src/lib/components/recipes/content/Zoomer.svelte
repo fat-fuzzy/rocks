@@ -119,8 +119,7 @@
 		overflow: auto;
 		transform: scaleY(1);
 		padding-block: var(--gap);
-		block-size: 100%;
-		max-block-size: 100vh;
+		block-size: fit-content;
 		> * {
 			inline-size: 100%;
 			block-size: fit-content;
