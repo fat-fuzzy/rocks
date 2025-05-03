@@ -15,6 +15,13 @@
 	position: relative;
 }
 
+.l\:grid\:railway.exchange {
+	grid-template-areas:
+		'zone-2     r-zone-1  zone-3'
+		'r-zone-4   r-zone-4  r-zone-4'
+		'r-zone-5   r-zone-5  r-zone-5';
+}
+
 @media screen and (min-width: 620px) {
 	.l\:grid\:railway {
 		--sidebar-width: var(--layout-sidebar-md);

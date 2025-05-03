@@ -37,7 +37,7 @@
 			'page-main';
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
-		padding-inline: var(--grid-gap);
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 
 		> .page-header {
 			grid-area: page-header;
@@ -86,7 +86,6 @@
 				'page-header'
 				'page-main';
 			max-block-size: var(--max-block-size);
-			padding-inline: var(--grid-gap);
 		}
 	}
 }

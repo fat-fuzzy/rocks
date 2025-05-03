@@ -106,8 +106,8 @@
 {#snippet zoneNav2()}
 	{#if sidenav.layout === 'tgv'}
 		<div class="app-name">
-			<Magic {spell} size="xs" grow={true}>
-				<p class="text:center font:heading font:sm">Home</p>
+			<Magic {spell} size="xs" font="sm" grow={true}>
+				<p class="text:center font:heading">Home</p>
 			</Magic>
 		</div>
 	{:else}

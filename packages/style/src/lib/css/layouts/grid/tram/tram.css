@@ -11,11 +11,18 @@
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
 	grid-template-areas:
-		'zone-2     t-zone-1  zone-3'
+		't-zone-1   zone-2    zone-3'
 		't-zone-4   t-zone-4  t-zone-4'
 		't-zone-5   t-zone-5  t-zone-5';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
+}
+
+.l\:grid\:tram.exchange {
+	grid-template-areas:
+		'zone-2     t-zone-1  zone-3'
+		't-zone-4   t-zone-4  t-zone-4'
+		't-zone-5   t-zone-5  t-zone-5';
 }
 
 @media screen and (min-width: 935px) {

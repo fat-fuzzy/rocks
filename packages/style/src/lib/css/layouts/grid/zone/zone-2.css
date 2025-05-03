@@ -24,6 +24,11 @@
 	grid-row: span 2;
 }
 
+.zone\:2 > .app-name ff-callout {
+	border-top: var(--border-width-md) dotted var(--shade);
+	border-radius: 0;
+}
+
 .zone\:2 > .app-name,
 .zone\:2:has(.app-name),
 .zone\:2 > nav > form > [class*='l:switcher'],

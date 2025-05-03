@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type {MagicProps} from '$types'
-	let {text, spell, level, uno, due, size, grow, children}: MagicProps =
+	let {text, spell, level, uno, due, size, font, grow, children}: MagicProps =
 		$props()
 
 	let genieUno = $derived(uno ? `magic:${spell} svg:${uno}` : '')
 	let genieDue = $derived(due ? `magic:${spell} svg:${due} size:${size}` : '')
 	let levelClass = $derived(level ? level : '')
+	let fontClass = $derived(font ? `font:${font}` : size ? `font:${size}` : '')
 </script>
 
 <div
@@ -13,7 +14,7 @@
 	data-testid="Magic"
 >
 	<ff-callout
-		class={`magic:${spell} ${levelClass} font:${size} ${grow ? 'grow:1 l:flex align:center justify:center' : ''}`}
+		class={`magic:${spell} ${levelClass} ${fontClass} ${grow ? 'grow:1 l:flex align:center justify:center' : ''}`}
 	>
 		{#if text}
 			{text}

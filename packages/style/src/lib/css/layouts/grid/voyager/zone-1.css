@@ -8,7 +8,13 @@
 	grid-template-areas: 'navbar';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	padding-inline-start: var(--grid-gap);
+	padding-inline: var(--grid-gap) 0;
+	z-index: 1;
+}
+
+.exchange .t-zone\:1 {
+	padding-inline: var(--grid-gap)
+		calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 .v-zone\:1 > .navbar {
