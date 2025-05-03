@@ -4,7 +4,8 @@
 
 .l\:grid\:tgv {
 	--max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size)
+		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size) -
+			var(--outline-offset-md)
 	);
 	inline-size: 100%;
 	block-size: 100vh;
