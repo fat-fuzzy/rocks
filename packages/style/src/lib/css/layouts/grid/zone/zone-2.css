@@ -8,8 +8,11 @@
 		'gare-control'
 		'gare-depot';
 	grid-template-rows: subgrid;
-	padding-inline-start: var(--grid-gap);
 	z-index: 2;
+}
+
+.exchange .zone\:2 {
+	padding-inline-start: var(--grid-gap);
 }
 
 .zone\:2 > .gare-control {
@@ -22,16 +25,29 @@
 }
 
 .zone\:2 > ff-callout,
-.zone\:2 > nav {
+.zone\:2 > nav .zone\:2 > nav > form,
+.zone\:2 > nav > form {
 	inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
 }
 
-.zone\:2 > nav > form,
-.zone\:2 > nav > form > [class*='l:switcher'] {
+.zone\:2 > ff-callout,
+.zone\:2 > nav > form > [class*='l:switcher'],
+.zone\:2 > nav.collapsed > form,
+.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
 	inline-size: 100%;
 }
 
-.zone\:2 > nav.collapsed > form,
-.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
-	inline-size: var(--sidebar-width);
+@media screen and (min-width: 620px) {
+	.zone\:2 > nav.collapsed > form,
+	.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
+		inline-size: var(--sidebar-width);
+		max-inline-size: var(--sidebar-width);
+	}
+
+	.zone\:2 > ff-callout,
+	.zone\:2 > nav > form > [class*='l:switcher'],
+	.zone\:2 > nav.collapsed > form,
+	.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
+		max-inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
+	}
 }

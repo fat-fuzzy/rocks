@@ -61,7 +61,6 @@ details[class*='gare:'] > ff-reveal,
 	.gare\:ouest > ff-reveal,
 	.gare\:ouest:is([open], .expanded) > ff-reveal {
 		box-shadow: unset;
-		z-index: 0;
 	}
 
 	.gare\:est .gare-control,

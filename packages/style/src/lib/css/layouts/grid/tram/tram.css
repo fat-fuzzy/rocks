@@ -18,12 +18,6 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
-@media screen and (min-width: 620px) {
-	.l\:grid\:tram {
-		--sidebar-width: var(--layout-sidebar-sm);
-	}
-}
-
 @media screen and (min-width: 935px) {
 	.l\:grid\:tram {
 		grid-template-areas:
