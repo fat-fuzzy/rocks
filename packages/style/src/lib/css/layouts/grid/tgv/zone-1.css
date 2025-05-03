@@ -1,6 +1,6 @@
 /**
  * ZONE 1
- * Contains the header with main navigation and app context
+ * Contains main navigation
  */
 
 .g-zone\:1 {
@@ -11,6 +11,7 @@
 	grid-template-rows: subgrid;
 	padding-inline: var(--grid-gap)
 		calc(var(--outline-offset-lg) + var(--grid-gap));
+	z-index: 1;
 }
 
 .g-zone\:1 > .app-name {
@@ -76,6 +77,7 @@
 				auto,
 				var(--sidebar-width)
 			);
+		padding-inline: 0;
 	}
 
 	.g-zone\:1 > .app-name {

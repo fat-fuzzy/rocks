@@ -22,16 +22,14 @@
 		<AppContext {theme} />
 	</header>
 	<SideNav
-		zone={`${zone}:2 size:${size}`}
+		zone={`zone:2 size:${size}`}
 		{theme}
 		layout="grid"
 		gare="ouest"
 		width="md"
 		height="lg"
 	/>
-	<div
-		class={`l:grid ${zone}:3  size:${size} scroll:y surface:3:${theme} dotted`}
-	>
+	<div class={`l:grid zone:3 size:${size} scroll:y surface:3:${theme} dotted`}>
 		<main
 			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
 		>

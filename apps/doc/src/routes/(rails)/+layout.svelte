@@ -46,26 +46,7 @@
 			grid: true,
 		},
 	]
-	const fourZones = [
-		{
-			zone: zoneHeaderGrid,
-			grid: true,
-			tag: 'header',
-		},
-		{
-			zone: zoneNav2,
-			grid: true,
-			gare: 'ouest',
-		},
-		{
-			zone: zoneContent,
-			grid: true,
-		},
-		{
-			zone: zoneFooter,
-			grid: true,
-		},
-	]
+
 	const fiveZones = [
 		{
 			zone: zoneNav1,
@@ -92,9 +73,9 @@
 	]
 	const zoneGroups: Areas = {
 		tgv: twoZones,
-		metro: fourZones,
-		steam: fourZones,
-		tram: fourZones,
+		metro: fiveZones,
+		steam: fiveZones,
+		tram: fiveZones,
 		voyager: fiveZones,
 		railway: fiveZones,
 	}
@@ -110,24 +91,6 @@
 	app={appContext}
 	path={page.url.pathname}
 />
-
-{#snippet zoneHeaderGrid()}
-	<HeaderGrid
-		id="nav"
-		name="nav"
-		label="Menu"
-		font="sm"
-		size="md"
-		path={page.url.pathname}
-		reveal={mainNav.reveal}
-		actionPath={page.url.pathname}
-		formaction="toggleNav"
-		dismiss="outside"
-		main={links}
-		context={appContext}
-		breakpoint="xs"
-	/>
-{/snippet}
 
 {#snippet zoneHeader()}
 	<Header
@@ -176,7 +139,9 @@
 	<RevealNav
 		{...sidenav}
 		position={false}
-		place="left"
+		area="gare"
+		place="ouest"
+		layout="rails"
 		scroll="y"
 		layer={1}
 		justify="evenly"

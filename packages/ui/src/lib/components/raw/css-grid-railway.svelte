@@ -21,14 +21,14 @@
 		<MainNav {theme} />
 	</header>
 	<SideNav
-		zone={`${zone}:2 size:${size}`}
+		zone={`zone:2 size:${size}`}
 		{theme}
 		layout="grid"
 		gare="ouest"
 		width="full"
 		height="sm"
 	/>
-	<aside class={`l:grid ${zone}:3 size:${size} `}>
+	<aside class={`l:grid  zone:3 size:${size} `}>
 		<AppContext {theme} />
 	</aside>
 	<div

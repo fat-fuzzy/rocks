@@ -3,54 +3,52 @@
  * Contains main navigation
  */
 
-.r-zone\:1 {
-	grid-area: r-zone-1;
-	grid-template-areas: 'navbar';
+.zone\:1 {
+	grid-area: zone-1;
+	grid-template-areas: 'navbar	app-context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	padding-inline-start: var(--grid-gap);
+	padding-inline: var(--grid-gap)
+		calc(var(--outline-offset-lg) + var(--grid-gap));
+	z-index: 1;
 }
 
-.r-zone\:1 > .navbar {
+.zone\:1 > .navbar {
 	grid-area: navbar;
 }
 
-.r-zone\:1 > .navbar .expanded ff-reveal {
+.zone\:1 > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
 	left: calc(var(--outline-offset-md) + var(--grid-gap));
 	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
-.r-zone\:1 > nav,
-.r-zone\:1 > nav form,
-.r-zone\:1 > nav [aria-expanded] {
+.zone\:1 > nav,
+.zone\:1 > nav form,
+.zone\:1 > nav [aria-expanded] {
 	inline-size: 100%;
 }
 
-.r-zone\:1 > nav [aria-expanded] span {
+.zone\:1 > nav [aria-expanded] span {
 	text-align: center;
 }
 
 @media screen and (min-width: 620px) {
-	.r-zone\:1 {
-		padding-inline: 0;
-	}
-
-	.r-zone\:1 > nav {
+	.zone\:1 > nav {
 		justify-content: flex-start;
 	}
 
-	.r-zone\:1 > nav form {
+	.zone\:1 > nav form {
 		display: none;
 	}
 
-	.r-zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+	.zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
 		block-size: fit-content;
 	}
 
-	.r-zone\:1 > .navbar > .expanded > ff-reveal,
-	.r-zone\:1 > .navbar > .collapsed > ff-reveal {
+	.zone\:1 > .navbar > .expanded > ff-reveal,
+	.zone\:1 > .navbar > .collapsed > ff-reveal {
 		position: unset;
 		margin: 0 auto;
 		z-index: var(--layout-z-index-reveal);

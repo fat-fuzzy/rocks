@@ -11,9 +11,9 @@
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
 	grid-template-areas:
-		't-zone-2   t-zone-1  t-zone-1'
-		't-zone-3   t-zone-3  t-zone-3'
-		't-zone-4   t-zone-4  t-zone-4';
+		'zone-2     t-zone-1  zone-3'
+		't-zone-4   t-zone-4  t-zone-4'
+		't-zone-5   t-zone-5  t-zone-5';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
@@ -27,8 +27,8 @@
 @media screen and (min-width: 935px) {
 	.l\:grid\:tram {
 		grid-template-areas:
-			't-zone-2  t-zone-1  t-zone-1'
-			't-zone-2  t-zone-3  t-zone-3'
-			't-zone-2  t-zone-4  t-zone-4';
+			'zone-2  t-zone-1  zone-3'
+			'zone-2  t-zone-4  t-zone-4'
+			'zone-2  t-zone-5  t-zone-5';
 	}
 }

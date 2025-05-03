@@ -1,6 +1,6 @@
 /**
  * ZONE 1
- * Contains the header with main navigation and app context
+ * Contains main navigation
  */
 
 .m-zone\:1 {
@@ -61,6 +61,10 @@
 }
 
 @media screen and (min-width: 620px) {
+	.m-zone\:1 {
+		padding-inline: 0;
+	}
+
 	.m-zone\:1 > nav {
 		justify-content: flex-start;
 	}

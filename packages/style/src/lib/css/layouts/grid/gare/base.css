@@ -30,25 +30,25 @@ details[class*='gare:'] > ff-reveal,
 	max-block-size: var(--max-block-size);
 }
 
-.gare\:ouest ff-reveal,
-.gare\:ouest:is([open], .expanded) ff-reveal {
+.gare\:ouest > ff-reveal,
+.gare\:ouest:is([open], .expanded) > ff-reveal {
 	left: var(--grid-gap);
 	right: 0;
 }
 
-.gare\:est:is([open], .expanded) ff-reveal {
+.gare\:est:is([open], .expanded) > ff-reveal {
 	right: 0;
 }
 
-.gare\:est:is([open], .expanded) ff-reveal,
-.gare\:ouest:is([open], .expanded) ff-reveal {
+.gare\:est:is([open], .expanded) > ff-reveal,
+.gare\:ouest:is([open], .expanded) > ff-reveal {
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
 	overflow: hidden auto;
 }
 
-.gare\:est:is([open], .expanded) ff-reveal,
-.gare\:ouest:is([open], .expanded) ff-reveal {
+.gare\:est:is([open], .expanded) > ff-reveal,
+.gare\:ouest:is([open], .expanded) > ff-reveal {
 	position: absolute;
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
@@ -58,8 +58,8 @@ details[class*='gare:'] > ff-reveal,
 }
 
 @media screen and (min-width: 935px) {
-	.gare\:ouest ff-reveal,
-	.gare\:ouest:is([open], .expanded) ff-reveal {
+	.gare\:ouest > ff-reveal,
+	.gare\:ouest:is([open], .expanded) > ff-reveal {
 		box-shadow: unset;
 		z-index: 0;
 	}

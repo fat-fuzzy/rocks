@@ -19,7 +19,7 @@
 
 	> .v-zone\:main {
 		min-block-size: unset;
-		padding-inline: var(--ui-size);
+		padding-inline: var(--grid-gap);
 	}
 }
 
@@ -33,14 +33,14 @@
 		}
 
 		> .page-context > * {
-			--max-inline-size: calc(100% - 3 * var(--ui-size));
+			--max-inline-size: calc(100% - 3 * var(--grid-gap));
 			inline-size: 100%;
 			max-inline-size: var(--max-inline-size);
 		}
 
 		> .page-context > details {
 			--max-inline-size: calc(
-				100% - 4 * var(--ui-size) - var(--outline-offset-lg)
+				100% - 4 * var(--grid-gap) - var(--outline-offset-lg)
 			);
 			margin-inline-start: var(--ui-size-sm);
 			max-inline-size: var(--max-inline-size);

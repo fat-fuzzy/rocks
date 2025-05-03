@@ -13,13 +13,13 @@
 </script>
 
 <div class={`rails l:grid:${parent} size:${size}`}>
-	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
+	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 		<AppContext {theme} />
 	</header>
 
 	<SideNav
-		zone={`${zone}:2 size:${size}`}
+		zone={`zone:2 size:${size}`}
 		{theme}
 		layout="grid"
 		gare="ouest"

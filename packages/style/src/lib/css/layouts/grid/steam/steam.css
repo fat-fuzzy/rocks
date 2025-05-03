@@ -11,9 +11,9 @@
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
 	grid-template-areas:
-		's-zone-2   s-zone-1  s-zone-1'
-		's-zone-3   s-zone-3  s-zone-3'
-		's-zone-4   s-zone-4  s-zone-4';
+		'zone-2     s-zone-1  zone-3'
+		's-zone-4   s-zone-4  s-zone-4'
+		's-zone-5   s-zone-5  s-zone-5';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
@@ -21,9 +21,9 @@
 @media screen and (min-width: 935px) {
 	.l\:grid\:steam {
 		grid-template-areas:
-			's-zone-2  s-zone-1  s-zone-1'
-			's-zone-2  s-zone-3  s-zone-3'
-			's-zone-2  s-zone-4  s-zone-4';
+			'zone-2  s-zone-1  zone-3'
+			'zone-2  s-zone-4  s-zone-4'
+			'zone-2  s-zone-5  s-zone-5';
 		padding-block: 0;
 	}
 }
