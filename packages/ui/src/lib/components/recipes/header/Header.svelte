@@ -2,7 +2,6 @@
 	import type {HeaderProps} from '$types'
 	import {DismissEvent} from '$types'
 
-	import styleHelper from '$lib/utils/styles.js'
 	import constants from '$lib/types/constants.js'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'

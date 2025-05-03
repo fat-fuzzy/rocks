@@ -8,10 +8,38 @@
 	);
 	inline-size: 100%;
 	block-size: 100vh;
+	block-size: -webkit-fill-available;
 	grid-template-areas:
-		'v-zone-1'
-		'v-zone-2'
-		'v-zone-3';
-	grid-template-columns: 1fr;
+		'g-zone-1     zone-2  zone-3'
+		'g-zone-4   g-zone-4  g-zone-4'
+		'g-zone-5   g-zone-5  g-zone-5';
+	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
+}
+
+.l\:grid\:tgv.exchange {
+	grid-template-areas:
+		'zone-2    g-zone-1  zone-3'
+		'g-zone-4  g-zone-4  g-zone-4'
+		'g-zone-5  g-zone-5  g-zone-5';
+}
+
+@media screen and (min-width: 620px) {
+	.l\:grid\:tgv {
+		--sidebar-width: var(--layout-sidebar-sm);
+		grid-template-areas:
+			'zone-2    g-zone-1  zone-3'
+			'g-zone-4  g-zone-4  g-zone-4'
+			'g-zone-5  g-zone-5  g-zone-5';
+		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr minmax(
+				auto,
+				var(--sidebar-width)
+			);
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.l\:grid\:tgv {
+		--sidebar-width: var(--layout-sidebar-md);
+	}
 }
