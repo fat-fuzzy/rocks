@@ -17,7 +17,7 @@
 </script>
 
 <div class={`rails l:grid:${parent} exchange size:${size}`}>
-	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
+	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 	</header>
 	<SideNav
