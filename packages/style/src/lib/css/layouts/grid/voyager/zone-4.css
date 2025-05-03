@@ -19,7 +19,7 @@
 
 	> .v-zone\:main {
 		min-block-size: unset;
-		padding-inline: var(--grid-gap);
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 	}
 }
 

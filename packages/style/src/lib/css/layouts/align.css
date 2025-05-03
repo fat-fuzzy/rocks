@@ -17,8 +17,7 @@
 	max-inline-size: 100%;
 }
 
-.l\:flex.hug > *,
-.hug {
+.l\:flex.hug > * {
 	inline-size: fit-content;
 }
 

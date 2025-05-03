@@ -19,7 +19,7 @@
 	)
 </script>
 
-<div class={`l:sidebar:${size} align-content:start ${settingsClass}`}>
+<div class={`l:sidebar size:${size} align-content:start ${settingsClass}`}>
 	{#if nav}
 		<div class={`l:side reveal-nav ${nav.reveal}`}>
 			<RevealNav

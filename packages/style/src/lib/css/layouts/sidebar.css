@@ -66,7 +66,7 @@
 }
 
 /* Scale Sidebar */
-.l\:sidebar\:2xs {
+.l\:sidebar.size\:2xs {
 	--gap: var(--size-base-sm);
 	--sidebar-width: var(--layout-sidebar-2xs);
 	> [class*='l:main'] {
@@ -75,7 +75,7 @@
 	}
 }
 
-.l\:sidebar\:xs {
+.l\:sidebar.size\:xs {
 	--gap: var(--size-base-sm);
 	--sidebar-width: var(--layout-sidebar-xs);
 	> [class*='l:main'] {
@@ -84,7 +84,7 @@
 	}
 }
 
-.l\:sidebar\:sm {
+.l\:sidebar.size\:sm {
 	--gap: var(--size-base-md);
 	--sidebar-width: var(--layout-sidebar-sm);
 	> [class*='l:main'] {
@@ -93,7 +93,7 @@
 	}
 }
 
-.l\:sidebar\:md {
+.l\:sidebar.size\:md {
 	--gap: var(--size-base-md);
 	--sidebar-width: var(--layout-sidebar-md);
 	> [class*='l:main'] {
@@ -102,7 +102,7 @@
 	}
 }
 
-.l\:sidebar\:lg {
+.l\:sidebar.size\:lg {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-lg);
 	> [class*='l:main'] {
@@ -111,7 +111,7 @@
 	}
 }
 
-.l\:sidebar\:xl {
+.l\:sidebar.size\:xl {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-xl);
 	> [class*='l:main'] {
@@ -120,7 +120,7 @@
 	}
 }
 
-.l\:sidebar\:2xl {
+.l\:sidebar.size\:2xl {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-2xl);
 	> [class*='l:main'] {

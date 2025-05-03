@@ -28,8 +28,6 @@ const navBase = {
 	size: 'sm',
 	variant: 'outline',
 	color: 'primary',
-	position: 'fixed',
-	place: 'left',
 	formaction: 'toggleSidebar',
 	actionPath: '/',
 	items: [] as NavItem[],
@@ -94,7 +92,7 @@ export const pages: {[key: string]: NavItem} = {
 		slug: 'ui', // root path of the Playbook
 		title: 'UI Library',
 		asset: 'playbook',
-		label: 'Playbook',
+		label: 'UI',
 		layout: 'voyager',
 		items: [
 			{

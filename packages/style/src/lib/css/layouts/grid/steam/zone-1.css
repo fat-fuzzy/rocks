@@ -5,10 +5,16 @@
 
 .s-zone\:1 {
 	grid-area: s-zone-1;
-	grid-template-areas: 'navbar	app-context';
+	grid-template-areas: 'navbar';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
+	padding-inline: var(--grid-gap) 0;
+	z-index: 1;
+}
+
+.exchange .s-zone\:1 {
+	padding-inline: var(--grid-gap)
+		calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 .s-zone\:1 > .navbar {

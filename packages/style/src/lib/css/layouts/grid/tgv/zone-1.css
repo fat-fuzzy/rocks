@@ -5,13 +5,17 @@
 
 .g-zone\:1 {
 	--sidebar-width: var(--layout-sidebar-sm);
-	grid-area: v-zone-1;
-	grid-template-areas: 'navbar	app-name  app-context';
-	grid-template-columns: auto 1fr auto;
+	grid-area: g-zone-1;
+	grid-template-areas: 'navbar';
+	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
+	padding-inline: var(--grid-gap) 0;
+	z-index: 1;
+}
+
+.exchange .g-zone\:1 {
 	padding-inline: var(--grid-gap)
 		calc(var(--outline-offset-lg) + var(--grid-gap));
-	z-index: 1;
 }
 
 .g-zone\:1 > .app-name {
@@ -72,11 +76,6 @@
 		--max-inline-size: calc(
 			var(--sidebar-width) - 2 * var(--outline-offset-lg)
 		);
-		grid-template-areas: 'app-name  navbar	app-context';
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr minmax(
-				auto,
-				var(--sidebar-width)
-			);
 		padding-inline: 0;
 	}
 

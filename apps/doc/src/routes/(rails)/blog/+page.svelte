@@ -23,6 +23,6 @@
 	layout="metro"
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} {html} size="md" margin="auto" />
+		<EscapeHtml id={slug} {html} size="md" />
 	{/snippet}
 </PageRails>

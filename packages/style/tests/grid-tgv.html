@@ -24,10 +24,7 @@
 	</head>
 	<body class="surface:0:neutral">
 		<div class="rails l:grid:tgv size:3xs">
-			<header class="g-zone:1 l:grid size:3xs surface:1:neutral dotted">
-				<div class="app-name l:flex align:center">
-					<p class="maki:inline font:heading">Grid Tgv</p>
-				</div>
+			<header class="g-zone:1 l:grid size:3xs">
 				<div class="navbar surface:4:neutral l:flex align:center nowrap">
 					<nav
 						id="nav-1"
@@ -38,13 +35,52 @@
 						<a href="./" title="CSS Tests">🧪</a>
 					</nav>
 				</div>
-				<div class="app-context surface:4:neutral l:flex align:center">
-					<p class="maki:inline">Context</p>
-				</div>
 			</header>
-			<div
-				class="g-zone:2 l:grid size:3xs surface:3:neutral align-self:stretch align-content:stretch"
-			>
+			<div class="zone:2 l:grid size:3xs surface:1:neutral">
+				<div class="app-name l:flex align:center">
+					<p class="maki:inline font:heading">Grid Tgv</p>
+				</div>
+			</div>
+			<aside class="zone:3 l:grid size:3xs surface:1:neutral">
+				<details
+					class="app-context gare:est width:md height:sm surface:3:neutral"
+				>
+					<summary id="nav-2-label" class="gare-control ravioli:3xs">
+						Zone 3
+					</summary>
+					<ff-reveal class="gare-depot scroll:y layer:1 surface:3:neutral">
+						<nav
+							id="nav-2"
+							class="l:flex surface:3:neutral"
+							aria-labelledby="#nav-2-label"
+						>
+							<ol class="unstyled">
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+							</ol>
+						</nav>
+					</ff-reveal>
+				</details>
+			</aside>
+			<div class="g-zone:4 scroll:y">
 				<main class="g-zone:main l:grid size:3xs surface:2:neutral text:center">
 					<div class="page-header ravioli:lg">
 						<h1 class="color:neutral">🚄 TGV</h1>
@@ -93,10 +129,10 @@
 						</ul>
 					</article>
 				</main>
-				<footer class="g-zone:footer l:grid size:3xs surface:4:neutral">
-					<p class="ravioli:2xs">Footer</p>
-				</footer>
 			</div>
+			<footer class="g-zone:5 l:grid size:3xs surface:4:neutral">
+				<p class="ravioli:2xs">Zone 5</p>
+			</footer>
 		</div>
 	</body>
 </html>

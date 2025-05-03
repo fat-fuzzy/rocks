@@ -29,20 +29,11 @@
 	{#if main}
 		{@render main()}
 	{:else}
-		<h1 class={contentClasses}>{title}</h1>
+		<h1>{title}</h1>
 	{/if}
 {/snippet}
 
-<header class={`page-header ${headerClass} ${mainClasses}`}>
-	{#if layout === 'tgv'}
-		<div class="l:main:50">
-			{@render headerMain()}
-		</div>
-	{:else if layout === 'voyager' || layout === 'steam'}
-		<div class="l:main:50">
-			{@render headerMain()}
-		</div>
-	{/if}
+<header class={`page-header ${headerClass} ${mainClasses} ${contentClasses}`}>
 	{#if layout === 'sidebar'}
 		<div class="l:main:50">
 			{@render headerMain()}

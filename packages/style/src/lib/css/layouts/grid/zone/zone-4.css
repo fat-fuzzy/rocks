@@ -38,6 +38,7 @@
 		grid-template-rows: auto 1fr;
 		min-block-size: unset;
 		padding-inline: var(--ui-size);
+		padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
 
 		> .page-header {
 			grid-area: page-header;

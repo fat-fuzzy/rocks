@@ -23,7 +23,7 @@
 		grid-area: t-zone-main;
 		min-block-size: unset;
 		block-size: var(--max-block-size);
-		padding-inline: var(--grid-gap);
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 	}
 }
 

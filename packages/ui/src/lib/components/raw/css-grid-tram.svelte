@@ -13,9 +13,8 @@
 </script>
 
 <div class={`rails l:grid:${parent} size:${size}`}>
-	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
+	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
-		<AppContext {theme} />
 	</header>
 
 	<SideNav
@@ -27,11 +26,13 @@
 		height="sm"
 	/>
 
-	<div
-		class={`l:grid ${zone}:3 size:${size} surface:2:${theme}  align-self:stretch align-content:stretch dotted`}
-	>
+	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
+		<AppContext {theme} />
+	</aside>
+
+	<div class={`${zone}:4 l:grid size:${size} scroll:y surface:3:${theme}`}>
 		<main
-			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
+			class={`${zone}:main l:grid size:${size} scroll:y surface:0:${theme}`}
 		>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
@@ -57,7 +58,7 @@
 			</div>
 		</aside>
 	</div>
-	<footer class={`l:grid ${zone}:4 size:${size}`}>
+	<footer class={`${zone}:5 l:grid size:${size}`}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>

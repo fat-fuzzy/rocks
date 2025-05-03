@@ -6,9 +6,10 @@
 	import {links} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 
-	const {RevealNav, Header} = ui.recipes
-	const {HeaderGrid, HeaderNav, RevealContext} = ui.drafts
+	const {HeaderNav, RevealContext} = ui.drafts
+	const {RevealNav} = ui.recipes
 	const {LayoutGrid} = ui.content
+	const {Magic} = ui.blocks
 
 	type Props = {
 		children: Snippet
@@ -31,32 +32,14 @@
 		[key: string]: AreaZone[]
 	}
 
-	const twoZones = [
-		{
-			zone: zoneHeader,
-			grid: true,
-			tag: 'header',
-		},
-		{
-			zone: zoneContent,
-			grid: true,
-		},
-		{
-			zone: zoneFooter,
-			grid: true,
-		},
-	]
-
 	const fiveZones = [
 		{
 			zone: zoneNav1,
 			grid: true,
-			gare: 'nord',
 		},
 		{
 			zone: zoneNav2,
 			grid: true,
-			gare: 'ouest',
 		},
 		{
 			zone: zoneAppContext,
@@ -71,16 +54,20 @@
 			grid: true,
 		},
 	]
+
 	const zoneGroups: Areas = {
-		tgv: twoZones,
+		tgv: fiveZones,
 		metro: fiveZones,
 		steam: fiveZones,
 		tram: fiveZones,
 		voyager: fiveZones,
 		railway: fiveZones,
 	}
+	zoneGroups.steam[1].gare = 'hug'
 
 	let areas = $derived(zoneGroups[sidenav.layout])
+	let brightness = $derived(appContext.brightness)
+	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 </script>
 
 <LayoutGrid
@@ -91,25 +78,6 @@
 	app={appContext}
 	path={page.url.pathname}
 />
-
-{#snippet zoneHeader()}
-	<Header
-		id="nav"
-		name="nav"
-		title="Menu"
-		label="Menu"
-		font="sm"
-		size="md"
-		path={page.url.pathname}
-		reveal={page.data.nav.reveal}
-		actionPath={page.url.pathname}
-		formaction="updateSettings"
-		main={links}
-		context={appContext}
-		breakpoint="xs"
-		layout="grid"
-	/>
-{/snippet}
 
 {#snippet zoneNav1()}
 	<div class="navbar">
@@ -136,19 +104,27 @@
 {/snippet}
 
 {#snippet zoneNav2()}
-	<RevealNav
-		{...sidenav}
-		position={false}
-		area="gare"
-		place="ouest"
-		layout="rails"
-		scroll="y"
-		layer={1}
-		justify="evenly"
-		size="md"
-		font="sm"
-		dismiss="outside"
-	/>
+	{#if sidenav.layout === 'tgv'}
+		<div class="app-name">
+			<Magic {spell} size="xs" font="sm" grow={true}>
+				<p class="text:center font:heading">Home</p>
+			</Magic>
+		</div>
+	{:else}
+		<RevealNav
+			{...sidenav}
+			position={false}
+			area="gare"
+			place="ouest"
+			layout="rails"
+			scroll="y"
+			layer={1}
+			justify="evenly"
+			size="md"
+			font="sm"
+			dismiss="outside"
+		/>
+	{/if}
 {/snippet}
 
 {#snippet zoneAppContext()}

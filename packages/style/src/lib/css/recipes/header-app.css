@@ -32,7 +32,7 @@
 
 .header-nav.l\:flex[class*='size'] {
 	--justify: space-evenly;
-	--gap: var(--size-base-xs);
+	--gap: var(--grid-gap, var(--size-base-xs));
 	gap: 0;
 
 	li {
@@ -48,7 +48,7 @@
 			inline-size: fit-content;
 			text-transform: uppercase;
 			padding: var(--ui-size-sm);
-			padding-inline: var(--size-base-2xs);
+			padding-inline: var(--gap, var(--size-base-2xs));
 		}
 
 		&[aria-current='page'] {

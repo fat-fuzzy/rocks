@@ -18,6 +18,13 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
+.l\:grid\:voyager.exchange {
+	grid-template-areas:
+		'zone-2    v-zone-1  zone-3'
+		'v-zone-4  v-zone-4  v-zone-4'
+		'v-zone-5  v-zone-5  v-zone-5';
+}
+
 @media screen and (min-width: 620px) {
 	.l\:grid\:voyager {
 		--sidebar-width: var(--layout-sidebar-sm);
@@ -25,7 +32,7 @@
 			'zone-2    v-zone-1  zone-3'
 			'v-zone-4  v-zone-4  v-zone-4'
 			'v-zone-5  v-zone-5  v-zone-5';
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
+		grid-template-columns: auto 1fr auto;
 	}
 }
 

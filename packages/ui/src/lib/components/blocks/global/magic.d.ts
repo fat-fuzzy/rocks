@@ -7,6 +7,7 @@ export type MagicProps = {
 	uno?: string
 	due?: string
 	size: string
+	font?: string
 	grow?: boolean
 	children?: Snippet
 }

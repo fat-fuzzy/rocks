@@ -1,5 +1,7 @@
 <script lang="ts">
 	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
+	import SideNav from '$lib/components/raw/fixtures/nav-2.svelte'
+	import NavItems from '$lib/components/raw/fixtures/nav-2-emojis.svelte'
 	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
 	import Details from '$lib/components/raw/fixtures/details.svelte'
 
@@ -13,11 +15,16 @@
 <div class={`rails l:grid:${parent} size:${size}`}>
 	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
 		<MainNav {theme} />
-		<AppContext {theme} />
 	</header>
-	<div
-		class={`l:grid ${zone}:2 size:${size} surface:2:${theme} align-self:stretch align-content:stretch`}
-	>
+	<div class="zone:2 l:grid size:3xs surface:1:neutral">
+		<div class="app-name l:flex align:center">
+			<p class="maki:inline font:heading">Grid Tgv</p>
+		</div>
+	</div>
+	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
+		<AppContext {theme} />
+	</aside>
+	<div class={`${zone}:4 scroll:y`}>
 		<main
 			class={`l:grid ${zone}:main size:${size} surface:1:${theme} text:center`}
 		>
@@ -64,8 +71,8 @@
 				</ul>
 			</article>
 		</main>
-		<footer class={`l:grid ${zone}:footer size:${size} surface:3:${theme}`}>
-			<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
-		</footer>
 	</div>
+	<footer class={`${zone}:5 l:grid size:${size} surface:4:${theme}`}>
+		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
+	</footer>
 </div>
