@@ -30,8 +30,8 @@
 	layout="metro"
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} {html} size="md" margin="auto" />
-		<div class="l:text:md maki:auto">
+		<EscapeHtml id={slug} {html} size="md" />
+		<div class="l:text:md">
 			<ul class="unstyled">
 				{#each sketches as { slug, asset, title }}
 					<li class={`ravioli:3xs ${asset}`}>

@@ -96,8 +96,8 @@
 			layout="sidebar"
 			media={true}
 		/>
-	{:else if layout === 'voyager'}
-		<PageHeader {...header} size={size as UiSize} {justify} layout="sidebar" />
+	{:else if layout === 'voyager' || layout === 'metro' || layout === 'urbanist' || layout === 'railway'}
+		<PageHeader {...header} size={size as UiSize} {justify} media={true} />
 	{:else}
 		<PageHeader {...header} size={size as UiSize} {justify} />
 	{/if}
