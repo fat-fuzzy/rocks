@@ -31,10 +31,10 @@
 	{#snippet main()}
 		<Sidebar dimension={50} size="2xl" reverse={true} wrap="reverse">
 			{#snippet main()}
-				<EscapeHtml id={slug} {html} size="md" />
+				<EscapeHtml id={slug} {html} size="md" margin="auto" />
 			{/snippet}
 			{#snippet side()}
-				<Picture {...media} dimensions="full" />
+				<Picture {...media} />
 			{/snippet}
 		</Sidebar>
 	{/snippet}

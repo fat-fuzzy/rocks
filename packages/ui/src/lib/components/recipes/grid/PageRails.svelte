@@ -88,13 +88,7 @@
 <main {id} class={`${zoneId}:main scroll:y ${zoneMainClass}`}>
 	{#if layout === 'tgv'}
 		<PageHeader {title} size={size as UiSize} {justify} layout="center" />
-	{:else if layout === 'voyager'}
-		<PageHeader {title} size={size as UiSize} {justify} layout="sidebar">
-			{#snippet side()}
-				<div></div>
-			{/snippet}
-		</PageHeader>
-	{:else if layout === 'steam'}
+	{:else if layout === 'steam' || layout === 'tram'}
 		<PageHeader
 			{title}
 			size={size as UiSize}
@@ -102,6 +96,8 @@
 			layout="sidebar"
 			media={true}
 		/>
+	{:else if layout === 'voyager'}
+		<PageHeader {...header} size={size as UiSize} {justify} layout="sidebar" />
 	{:else}
 		<PageHeader {...header} size={size as UiSize} {justify} />
 	{/if}
