@@ -16,10 +16,9 @@
 	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent} size:${size}`}>
+<div class={`rails l:grid:${parent} exchange size:${size}`}>
 	<header class={`${zone}:1 l:grid size:${size} surface:1:${theme} dotted`}>
 		<MainNav {theme} />
-		<AppContext {theme} />
 	</header>
 	<SideNav
 		zone={`zone:2 size:${size}`}
@@ -29,7 +28,10 @@
 		width="md"
 		height="lg"
 	/>
-	<div class={`l:grid zone:3 size:${size} scroll:y surface:3:${theme} dotted`}>
+	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
+		<AppContext {theme} />
+	</aside>
+	<div class={`${zone}:4 l:grid size:${size} scroll:y surface:3:${theme} `}>
 		<main
 			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
 		>
@@ -55,7 +57,7 @@
 			<Details title="Page Context" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class={`l:grid ${zone}:4 size:${size} `}>
+	<footer class={`${zone}:5 l:grid size:${size} `}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>
