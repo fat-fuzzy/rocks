@@ -5,7 +5,7 @@
 
 .s-zone\:1 {
 	grid-area: s-zone-1;
-	grid-template-areas: 'navbar	app-context';
+	grid-template-areas: 'navbar';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));

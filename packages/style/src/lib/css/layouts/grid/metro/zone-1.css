@@ -5,7 +5,7 @@
 
 .m-zone\:1 {
 	grid-area: m-zone-1;
-	grid-template-areas: 'navbar	app-context';
+	grid-template-areas: 'navbar';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	padding-inline: var(--grid-gap)
@@ -21,33 +21,6 @@
 	top: var(--ui-header-height);
 	left: calc(var(--outline-offset-md) + var(--grid-gap));
 	right: calc(var(--outline-offset-lg) + var(--grid-gap));
-}
-
-.m-zone\:1 > .app-context {
-	grid-area: app-context;
-	justify-self: flex-end;
-}
-
-.m-zone\:1 > .app-context ff-reveal {
-	display: flex;
-	align-items: center;
-}
-
-.m-zone\:1 > .app-context.expanded ff-reveal {
-	position: absolute;
-	top: var(--ui-header-height);
-	right: calc(var(--outline-offset-lg) + var(--grid-gap));
-	box-shadow: var(--shadow-md);
-}
-
-.m-zone\:1 > .app-context.expanded ff-reveal ul {
-	padding: var(--ui-size-sm);
-}
-
-.m-zone\:1 > .app-context ff-reveal form {
-	display: flex;
-	gap: var(--ui-size-lg);
-	padding-inline-start: var(--ui-size-lg);
 }
 
 .m-zone\:1 > nav,
@@ -77,7 +50,6 @@
 		block-size: fit-content;
 	}
 
-	.m-zone\:1 > .app-context.expanded ff-reveal,
 	.m-zone\:1 > .navbar > .expanded > ff-reveal,
 	.m-zone\:1 > .navbar > .collapsed > ff-reveal {
 		position: unset;
@@ -85,14 +57,5 @@
 		z-index: var(--layout-z-index-reveal);
 		border-radius: var(--border-radius-null);
 		box-shadow: unset;
-	}
-
-	.m-zone\:1 > .app-context ff-reveal {
-		position: unset;
-		padding: 0;
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		gap: var(--ui-size-sm);
 	}
 }

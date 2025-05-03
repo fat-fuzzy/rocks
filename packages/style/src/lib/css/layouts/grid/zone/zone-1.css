@@ -5,7 +5,7 @@
 
 .zone\:1 {
 	grid-area: zone-1;
-	grid-template-areas: 'navbar	app-context';
+	grid-template-areas: 'navbar';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	padding-inline: var(--grid-gap)
