@@ -219,9 +219,11 @@
   --layout-z-index-2: 2;
   --layout-z-index-3: 3;
   --layout-z-index-4: 4;
+  --layout-z-index-5: 5;
   --layout-z-index-fixed: var(--layout-z-index-4);
   --layout-z-index-inset: var(--layout-z-index-0);
   --layout-z-index-layer: var(--layout-z-index-1);
+  --layout-z-index-overlay: var(--layout-z-index-5);
   --layout-z-index-reveal: var(--layout-z-index-3);
   --layout-z-index-sticky: var(--layout-z-index-2);
   --outline-offset-lg: 3px;
