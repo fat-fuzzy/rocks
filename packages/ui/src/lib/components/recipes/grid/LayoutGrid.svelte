@@ -17,12 +17,13 @@
 <div class={`rails l:grid:${sidenav.layout} ${themeClass} ${sizeClass}`}>
 	{#each areas as { zone, grid, gare, scroll, tag }, i}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
+		{@const gareClass = gare ? gare : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}
 
 		<svelte:element
 			this={element}
-			class={`zone:${i + 1} ${sidenav.layout} ${gridClass} ${scrollClass} ${gare}`}
+			class={`zone:${i + 1} ${sidenav.layout} ${gridClass} ${scrollClass} ${gareClass}`}
 		>
 			{@render zone()}
 		</svelte:element>

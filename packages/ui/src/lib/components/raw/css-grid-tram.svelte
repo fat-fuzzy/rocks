@@ -32,9 +32,7 @@
 	<div
 		class={`zone:4 ${parent} l:grid size:${size} scroll:y surface:3:${theme}`}
 	>
-		<main
-			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
-		>
+		<main class={`zone:main ${parent} scroll:y surface:0:${theme} snap:start`}>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>

@@ -32,7 +32,7 @@
 	</aside>
 	<div class={`zone:4 ${parent} l:grid size:${size} scroll:y snap:start`}>
 		<main
-			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
+			class={`zone:main ${parent} size:${size} scroll:y surface:0:${theme}`}
 		>
 			<header class="page-header">
 				<div class="l:sidebar size:md">

@@ -31,9 +31,7 @@
 		<AppContext {theme} />
 	</aside>
 	<div class={`zone:4 ${parent} size:${size} scroll:y snap:start`}>
-		<main
-			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
-		>
+		<main class={`zone:main ${parent}  scroll:y surface:0:${theme}`}>
 			<header class="page-header l:sidebar size:md">
 				<div class="l:main">
 					<h1 class={`color:${theme} l:text:md maki:inline maki:block size:lg`}>
