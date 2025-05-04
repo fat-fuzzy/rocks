@@ -2,12 +2,3 @@
 	min-block-size: unset;
 	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
-
-@media screen and (min-width: 620px) {
-	.voyager.zone\:main {
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
-	}
-}

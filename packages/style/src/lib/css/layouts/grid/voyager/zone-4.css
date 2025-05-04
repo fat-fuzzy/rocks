@@ -3,9 +3,6 @@
  * Contains main content & page context
  */
 .voyager.zone\:4 {
-	grid-template-areas: 'zone-main';
-	grid-template-rows: 1fr auto;
-
 	> .page-context {
 		position: relative;
 		block-size: fit-content;
