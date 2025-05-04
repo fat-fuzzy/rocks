@@ -1,21 +1,15 @@
 /**
  * ZONE 4
- * Contains main content page context
+ * Contains main content & page context
  */
 
-.s-zone\:4 {
-	grid-area: s-zone-4;
+.steam.zone\:4 {
 	grid-template-areas:
-		's-zone-main'
+		'zone-main'
 		'page-context';
 	grid-template-rows: 1fr auto;
 
-	&.scroll\:y {
-		scrollbar-gutter: auto;
-	}
-
-	> .page-context {
-		grid-area: page-context;
+	.page-context {
 		align-content: start;
 		position: relative;
 		padding-block-end: var(--grid-gap);
@@ -35,54 +29,22 @@
 	> .page-context.media\:square {
 		block-size: var(--overlay-height-2xs);
 	}
-
-	> .s-zone\:main {
-		grid-area: s-zone-main;
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
-		min-block-size: unset;
-		align-content: start;
-		max-block-size: var(--overlay-height-md);
-		overscroll-behavior-y: contain;
-		padding-block-end: var(--grid-gap);
-		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
-
-		> .page-header {
-			grid-area: page-header;
-		}
-
-		> .page-main {
-			grid-area: page-main;
-		}
-	}
 }
 
 @media screen and (min-width: 620px) {
-	.s-zone\:4 {
+	.steam.zone\:4 {
 		--sidebar-width: var(--layout-sidebar-md);
-		grid-template-areas: 's-zone-main page-context';
+		grid-template-areas: 'zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
 
 		> .page-context {
-			position: unset;
-			box-shadow: unset;
-			max-block-size: var(--max-block-size);
 			max-inline-size: var(--sidebar-width);
+			max-block-size: var(--max-block-size);
 		}
 
 		> .page-context[class*='media:'] {
 			block-size: 100%;
-			max-block-size: var(--max-block-size);
-		}
-
-		> .s-zone\:main {
-			grid-template-areas:
-				'page-header'
-				'page-main';
-			grid-template-rows: auto 1fr;
 			max-block-size: var(--max-block-size);
 		}
 	}

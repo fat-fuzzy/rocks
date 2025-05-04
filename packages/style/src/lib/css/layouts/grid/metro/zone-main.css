@@ -1,0 +1,25 @@
+.metro.zone\:main {
+	grid-template-areas:
+		'page-header'
+		'page-main';
+	grid-template-rows: auto 1fr;
+	min-block-size: unset;
+	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+
+	> .page-header {
+		block-size: fit-content;
+	}
+
+	> .page-main {
+		padding-block-end: var(--grid-gap);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.metro.zone\:main {
+		grid-template-areas:
+			'page-header'
+			'page-main';
+		max-block-size: var(--max-block-size);
+	}
+}

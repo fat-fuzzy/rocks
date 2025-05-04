@@ -12,7 +12,6 @@
 	let title = '🚆 Railway'
 	let parent = 'railway'
 	let theme = 'blueberry'
-	let zone = 'r-zone'
 	let size = '2xs'
 </script>
 
@@ -32,10 +31,10 @@
 		<AppContext {theme} />
 	</aside>
 	<div
-		class={`l:grid ${zone}:4 size:${size} surface:2:${theme} snap:start align-self:stretch align-content:stretch dotted`}
+		class={`zone:4 ${parent} l:grid size:${size} surface:2:${theme} snap:start align-self:stretch align-content:stretch dotted`}
 	>
 		<main
-			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
+			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
 		>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>

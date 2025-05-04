@@ -8,7 +8,6 @@
 	let title = '🚋 Tram'
 	let parent = 'tram'
 	let theme = 'lime'
-	let zone = 't-zone'
 	let size = '2xs'
 </script>
 
@@ -30,9 +29,11 @@
 		<AppContext {theme} />
 	</aside>
 
-	<div class={`${zone}:4 l:grid size:${size} scroll:y surface:3:${theme}`}>
+	<div
+		class={`zone:4 ${parent} l:grid size:${size} scroll:y surface:3:${theme}`}
+	>
 		<main
-			class={`${zone}:main l:grid size:${size} scroll:y surface:0:${theme}`}
+			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
 		>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>

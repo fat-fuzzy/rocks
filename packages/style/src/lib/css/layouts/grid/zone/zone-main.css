@@ -1,0 +1,15 @@
+.zone\:main {
+	grid-area: zone-main;
+	padding-inline: var(--ui-size);
+	padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
+
+	> .page-header {
+		grid-area: page-header;
+		block-size: fit-content;
+	}
+
+	> .page-main {
+		grid-area: page-main;
+		padding-block-end: var(--ui-size);
+	}
+}

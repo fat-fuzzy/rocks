@@ -33,15 +33,6 @@
 		layout: 'flex',
 	})
 
-	const zones: {[key: string]: string} = {
-		metro: 'm-zone',
-		railway: 'r-zone',
-		steam: 's-zone',
-		tgv: 'g-zone',
-		tram: 't-zone',
-		voyager: 'v-zone',
-	}
-
 	const zoneMainClasses: {[key: string]: string} = {
 		metro: 'l:grid size:3xs',
 		railway: 'l:grid size:3xs',
@@ -69,7 +60,6 @@
 		voyager: '',
 	}
 
-	let zoneId = $derived(zones[layout] ?? 'zone')
 	let contextClass = $derived(
 		nav?.length || aside
 			? `page-context ${contextClasses[layout]}`
@@ -85,7 +75,7 @@
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
 
-<main {id} class={`${zoneId}:main scroll:y ${zoneMainClass}`}>
+<main {id} class={`zone:main ${layout} scroll:y ${zoneMainClass}`}>
 	{#if layout === 'tgv'}
 		<PageHeader {title} size={size as UiSize} {justify} layout="center" />
 	{:else if layout === 'steam' || layout === 'tram'}
@@ -113,7 +103,7 @@
 
 <div
 	id={`context-${id}`}
-	class={`l:grid ${contextClass} scroll:y ${mediaClass}`}
+	class={`${contextClass} l:stack size:${size} surface:0:neutral scroll:y ${mediaClass}`}
 >
 	{#if nav && nav.length > 0}
 		<PageNav id="page-nav" {hash} items={nav} />

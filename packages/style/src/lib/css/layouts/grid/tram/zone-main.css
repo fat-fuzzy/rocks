@@ -1,0 +1,10 @@
+.tram.zone\:main {
+	min-block-size: unset;
+	block-size: var(--max-block-size);
+	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+}
+@media screen and (min-width: 620px) {
+	.tram.zone\:main {
+		block-size: auto;
+	}
+}

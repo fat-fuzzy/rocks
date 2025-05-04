@@ -63,8 +63,6 @@ import LayoutGrid from '$lib/components/recipes/grid/LayoutGrid.svelte'
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
 import PageRails from '$lib/components/recipes/grid/PageRails.svelte'
-import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
-
 /**
  * Raw - CSS Layout templates: use as guides, not as drop-in components
  */
@@ -191,7 +189,6 @@ const drafts = {
 	Settings,
 	PageNav,
 	RevealContext,
-	PageScrolly,
 	Zoomer,
 	Tabs,
 	Cookies,

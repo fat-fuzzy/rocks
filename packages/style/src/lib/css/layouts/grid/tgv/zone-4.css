@@ -1,31 +1,10 @@
 /**
  * ZONE 4
- * Contains main content page context
- * - main footer and cookies settings access
+ * Contains main content & page context
  */
 
-.g-zone\:4 {
-	grid-area: g-zone-4;
-	grid-template-areas: 'g-zone-main';
+.tgv.zone\:4 {
+	grid-template-areas: 'zone-main';
 	grid-template-rows: 1fr auto;
 	z-index: 0;
-
-	> .g-zone\:main {
-		grid-area: g-zone-main;
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
-		min-block-size: unset;
-		padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
-
-		> .page-header {
-			grid-area: page-header;
-		}
-
-		> .page-main {
-			grid-area: page-main;
-			padding-block-end: var(--ui-size);
-		}
-	}
 }

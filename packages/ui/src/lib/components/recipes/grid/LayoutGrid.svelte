@@ -11,29 +11,18 @@
 		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
 	)
 
-	const zones: {[key: string]: string} = {
-		metro: 'm-zone',
-		railway: 'r-zone',
-		steam: 's-zone',
-		tgv: 'g-zone',
-		tram: 't-zone',
-		voyager: 'v-zone',
-	}
-
-	let zoneId = $derived(zones[sidenav.layout] ?? 'zone')
 	let sizeClass = $derived(size ? `size:${size}` : '')
 </script>
 
 <div class={`rails l:grid:${sidenav.layout} ${themeClass} ${sizeClass}`}>
 	{#each areas as { zone, grid, gare, scroll, tag }, i}
-		{@const localZoneId = i <= 2 || i === 4 ? 'zone' : zoneId}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}
 
 		<svelte:element
 			this={element}
-			class={`${localZoneId}:${i + 1} ${gridClass} ${scrollClass} ${gare}`}
+			class={`zone:${i + 1} ${sidenav.layout} ${gridClass} ${scrollClass} ${gare}`}
 		>
 			{@render zone()}
 		</svelte:element>

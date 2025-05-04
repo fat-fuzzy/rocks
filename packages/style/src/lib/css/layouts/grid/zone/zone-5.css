@@ -7,10 +7,10 @@
 	grid-template-areas: 'main-footer';
 	block-size: fit-content;
 
-	> .main-footer {
+	> footer {
 		display: grid;
 		grid-area: main-footer;
-		padding-inline: var(--ui-size);
-		padding-block: 0 var(--ui-size);
+		padding-inline: var(--grid-gap);
+		padding-block: 0;
 	}
 }

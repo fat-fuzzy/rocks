@@ -8,7 +8,6 @@
 	let title = '🚂 Steam'
 	let parent = 'steam'
 	let theme = 'mora'
-	let zone = 's-zone'
 	let size = '2xs'
 </script>
 
@@ -29,8 +28,8 @@
 	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
 		<AppContext {theme} />
 	</aside>
-	<div class={`${zone}:4 l:grid surface:2:${theme} scroll:y snap:start`}>
-		<main class={`${zone}:main l:grid  scroll:y surface:0:${theme}`}>
+	<div class={`zone:4 ${parent} l:grid surface:2:${theme} scroll:y snap:start`}>
+		<main class={`zone:main ${parent} l:grid  scroll:y surface:0:${theme}`}>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
