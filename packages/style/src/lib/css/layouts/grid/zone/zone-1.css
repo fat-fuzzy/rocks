@@ -9,7 +9,7 @@
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	padding-inline: var(--grid-gap) 0;
-	z-index: 1;
+	z-index: var(--layout-z-index-layer);
 }
 
 .exchange .zone\:1 {
@@ -41,6 +41,7 @@
 @media screen and (min-width: 620px) {
 	.zone\:1 {
 		padding-inline: 0;
+		z-index: initial;
 	}
 
 	.zone\:1 > nav {

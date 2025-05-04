@@ -10,7 +10,7 @@
 	grid-template-rows: subgrid;
 	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
 	align-content: center;
-	z-index: 3;
+	z-index: var(--layout-z-index-layer);
 }
 
 .zone\:3 > .app-context {
@@ -41,6 +41,10 @@
 }
 
 @media screen and (min-width: 620px) {
+	.zone\:3 {
+		z-index: initial;
+	}
+
 	.zone\:3 {
 		padding-inline-end: var(--grid-gap);
 	}

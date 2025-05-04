@@ -10,7 +10,7 @@
 </script>
 
 <div class={`rails l:grid:${parent} size:${size}`}>
-	<header class={`${zone}:1 l:grid surface:1:${theme} dotted`}>
+	<header class={`zone:1 l:grid surface:1:${theme} dotted`}>
 		<MainNav {theme} />
 	</header>
 	<div class="zone:2 l:grid size:3xs surface:1:neutral">
@@ -21,10 +21,8 @@
 	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
 		<AppContext {theme} />
 	</aside>
-	<div class={`${zone}:4 scroll:y`}>
-		<main
-			class={`l:grid ${zone}:main size:${size} surface:1:${theme} text:center`}
-		>
+	<div class={`zone:4 scroll:y`}>
+		<main class={`zone:main surface:1:${theme} text:center`}>
 			<div class="page-header ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>

@@ -27,7 +27,6 @@
 
 @media screen and (min-width: 620px) {
 	.l\:grid\:tgv {
-		--sidebar-width: var(--layout-sidebar-sm);
 		grid-template-areas:
 			'zone-2  zone-1  zone-3'
 			'zone-4  zone-4  zone-4'
@@ -36,11 +35,5 @@
 				auto,
 				var(--sidebar-width)
 			);
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.l\:grid\:tgv {
-		--sidebar-width: var(--layout-sidebar-md);
 	}
 }

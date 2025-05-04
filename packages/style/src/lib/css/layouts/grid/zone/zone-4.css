@@ -11,6 +11,8 @@
 
 	> .page-context:not(.empty) {
 		grid-area: page-context;
+		align-content: start;
+		align-items: start;
 		z-index: var(--layout-z-index-layer);
 	}
 

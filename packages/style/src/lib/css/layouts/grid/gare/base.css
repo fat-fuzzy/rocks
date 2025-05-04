@@ -25,9 +25,8 @@ details[class*='gare:'] > ff-reveal,
 
 .gare\:est,
 .gare\:ouest {
-	--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
 	block-size: fit-content;
-	max-block-size: var(--max-block-size);
+	max-block-size: var(--overlay-block-size);
 }
 
 .gare\:ouest > ff-reveal,
@@ -53,8 +52,8 @@ details[class*='gare:'] > ff-reveal,
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
 	inline-size: var(--overlay-inline-size);
-	z-index: var(--layout-z-index-reveal);
 	padding-block-end: var(--grid-gap);
+	z-index: var(--layout-z-index-reveal);
 }
 
 @media screen and (min-width: 935px) {

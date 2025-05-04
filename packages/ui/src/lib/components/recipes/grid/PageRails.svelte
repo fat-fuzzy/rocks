@@ -40,6 +40,7 @@
 		tgv: 'snap:center',
 		tram: 'snap:start',
 		voyager: 'snap:start',
+		urbanist: 'snap:start',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
@@ -49,6 +50,7 @@
 		tgv: '',
 		tram: '',
 		voyager: '',
+		urbanist: '',
 	}
 
 	const contextClasses: {[key: string]: string} = {
@@ -58,6 +60,7 @@
 		tgv: '',
 		tram: 'layer:1 ravioli:3xs',
 		voyager: '',
+		urbanist: '',
 	}
 
 	let contextClass = $derived(

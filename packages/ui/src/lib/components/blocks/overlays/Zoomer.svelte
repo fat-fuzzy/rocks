@@ -49,10 +49,7 @@
 	{cta}
 </button>
 
-<dialog
-	bind:this={dialog}
-	class="w:full l:stack:lg surface:0:neutral ravioli:md"
->
+<dialog bind:this={dialog} class="zoomer">
 	<form method="dialog" class="l:flex justify:end button-zoom ravioli:md">
 		<button
 			class="bg:primary variant:outline size:xs maki:block"
@@ -61,7 +58,7 @@
 			Close
 		</button>
 	</form>
-	<ff-dialog>
+	<ff-dialog class="ff-zoom">
 		{#if children}
 			{@render children()}
 		{/if}
