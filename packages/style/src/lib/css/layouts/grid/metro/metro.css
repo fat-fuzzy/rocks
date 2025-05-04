@@ -10,9 +10,9 @@
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
 	grid-template-areas:
-		'zone-1     zone-2    zone-3'
-		'm-zone-4   m-zone-4  m-zone-4'
-		'zone-5     zone-5    zone-5';
+		'zone-1  zone-2  zone-3'
+		'zone-4  zone-4  zone-4'
+		'zone-5  zone-5  zone-5';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows:
 		var(--ui-header-height) 1fr
@@ -21,18 +21,18 @@
 
 .l\:grid\:metro.exchange {
 	grid-template-areas:
-		'zone-2     zone-1    zone-3'
-		'm-zone-4   m-zone-4  m-zone-4'
-		'zone-5     zone-5    zone-5';
+		'zone-2  zone-1  zone-3'
+		'zone-4  zone-4  zone-4'
+		'zone-5  zone-5  zone-5';
 }
 
 @media screen and (min-width: 620px) {
 	.l\:grid\:metro {
 		--sidebar-width: var(--layout-sidebar-md);
 		grid-template-areas:
-			'zone-2  zone-1    zone-3'
-			'zone-2  m-zone-4  m-zone-4'
-			'zone-5  zone-5    zone-5';
+			'zone-2  zone-1  zone-3'
+			'zone-2  zone-4  zone-4'
+			'zone-5  zone-5  zone-5';
 		padding-block: 0;
 		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
 	}

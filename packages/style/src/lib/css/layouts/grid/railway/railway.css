@@ -7,9 +7,9 @@
 	inline-size: 100%;
 	min-block-size: 100vh;
 	grid-template-areas:
-		'zone-1    zone-2    zone-3'
-		'r-zone-4  r-zone-4  r-zone-4'
-		'zone-5    zone-5    zone-5';
+		'zone-1  zone-2  zone-3'
+		'zone-4  zone-4  zone-4'
+		'zone-5  zone-5  zone-5';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 	position: relative;
@@ -17,18 +17,18 @@
 
 .l\:grid\:railway.exchange {
 	grid-template-areas:
-		'zone-2     zone-1    zone-3'
-		'r-zone-4   r-zone-4  r-zone-4'
-		'zone-5     zone-5    zone-5';
+		'zone-2   zone-1  zone-3'
+		'zone-4   zone-4  zone-4'
+		'zone-5   zone-5  zone-5';
 }
 
 @media screen and (min-width: 620px) {
 	.l\:grid\:railway {
 		--sidebar-width: var(--layout-sidebar-md);
 		grid-template-areas:
-			'zone-2  zone-1    zone-3'
-			'zone-2  r-zone-4  r-zone-4'
-			'zone-5  zone-5    zone-5';
+			'zone-2  zone-1  zone-3'
+			'zone-2  zone-4  zone-4'
+			'zone-5  zone-5  zone-5';
 		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
 		padding-block: 0;
 	}

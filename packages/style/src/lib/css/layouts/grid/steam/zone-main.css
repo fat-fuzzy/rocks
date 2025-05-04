@@ -1,0 +1,22 @@
+.steam.zone\:main {
+	grid-template-areas:
+		'page-header'
+		'page-main';
+	grid-template-rows: auto 1fr;
+	min-block-size: unset;
+	align-content: start;
+	max-block-size: var(--overlay-height-md);
+	overscroll-behavior-y: contain;
+	padding-block-end: var(--grid-gap);
+	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+}
+
+@media screen and (min-width: 620px) {
+	.steam.zone\:main {
+		grid-template-areas:
+			'page-header'
+			'page-main';
+		grid-template-rows: auto 1fr;
+		max-block-size: var(--max-block-size);
+	}
+}

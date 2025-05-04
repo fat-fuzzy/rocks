@@ -1,41 +1,27 @@
 /**
  * ZONE 4
- * Contains main content page context
+ * Contains main content & page context
  */
-.u-zone\:4 {
-	grid-template-areas: 'u-zone-main';
-	grid-area: u-zone-4;
+.urbanist.zone\:4 {
+	grid-template-areas: 'zone-main';
 	grid-template-rows: 1fr auto;
-
-	&.scroll\:y {
-		scrollbar-gutter: auto;
-	}
 
 	> .page-context {
 		position: relative;
 		block-size: fit-content;
 		max-block-size: var(--overlay-height-2xs);
 	}
-
-	> .u-zone\:main {
-		min-block-size: unset;
-		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
-	}
 }
 
 @media screen and (min-width: 620px) {
-	.u-zone\:4 {
+	.urbanist.zone\:4 {
 		> .page-context {
 			--sidebar-width: var(--layout-sidebar-sm);
-			position: unset;
-			box-shadow: unset;
-			max-block-size: var(--max-block-size);
 		}
 
 		> .page-context > * {
 			--max-inline-size: calc(100% - 3 * var(--grid-gap));
 			inline-size: 100%;
-			max-inline-size: var(--max-inline-size);
 		}
 
 		> .page-context > details {
@@ -43,14 +29,6 @@
 				100% - 4 * var(--grid-gap) - var(--outline-offset-lg)
 			);
 			margin-inline-start: var(--ui-size-sm);
-			max-inline-size: var(--max-inline-size);
-		}
-
-		> .u-zone\:main {
-			grid-template-areas:
-				'page-header'
-				'page-main';
-			grid-template-rows: auto 1fr;
 		}
 	}
 }

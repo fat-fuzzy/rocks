@@ -12,7 +12,6 @@
 	let title = '🚈 Voyager'
 	let parent = 'voyager'
 	let theme = 'grape'
-	let zone = 'v-zone'
 	let size = '2xs'
 </script>
 
@@ -31,9 +30,9 @@
 	<aside class={`zone:3 l:grid size:${size}`}>
 		<AppContext {theme} />
 	</aside>
-	<div class={`${zone}:4 l:grid size:${size} scroll:y snap:start`}>
+	<div class={`zone:4 ${parent} l:grid size:${size} scroll:y snap:start`}>
 		<main
-			class={`${zone}:main l:grid size:${size} scroll:y surface:0:${theme}`}
+			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
 		>
 			<header class="page-header">
 				<div class="l:sidebar size:md">

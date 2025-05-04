@@ -1,14 +1,11 @@
 <script lang="ts">
 	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
-	import SideNav from '$lib/components/raw/fixtures/nav-2.svelte'
-	import NavItems from '$lib/components/raw/fixtures/nav-2-emojis.svelte'
 	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
 	import Details from '$lib/components/raw/fixtures/details.svelte'
 
 	let title = '🚄 TGV'
 	let parent = 'tgv'
 	let theme = 'neutral'
-	let zone = 'g-zone'
 	let size = '2xs'
 </script>
 

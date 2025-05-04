@@ -12,7 +12,6 @@
 	let title = '🚇 Metro'
 	let parent = 'metro'
 	let theme = 'litchee'
-	let zone = 'm-zone'
 	let size = '2xs'
 </script>
 
@@ -31,9 +30,11 @@
 	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
 		<AppContext {theme} />
 	</aside>
-	<div class={`${zone}:4 l:grid size:${size} scroll:y surface:3:${theme} `}>
+	<div
+		class={`zone:4 ${parent} l:grid size:${size} scroll:y surface:3:${theme} `}
+	>
 		<main
-			class={`l:grid ${zone}:main size:${size} scroll:y surface:0:${theme}`}
+			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
 		>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>

@@ -1,0 +1,13 @@
+.urbanist.zone\:main {
+	min-block-size: unset;
+	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+}
+
+@media screen and (min-width: 620px) {
+	.urbanist.zone\:main {
+		grid-template-areas:
+			'page-header'
+			'page-main';
+		grid-template-rows: auto 1fr;
+	}
+}

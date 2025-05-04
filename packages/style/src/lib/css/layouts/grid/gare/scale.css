@@ -76,8 +76,8 @@
 		inline-size: var(--sidebar-width);
 	}
 
-	[class*='-zone:main'],
-	[class*='zone:']:has([class*='-zone:main']) {
+	.zone\:main,
+	[class*='zone:']:has(.zone\:main) {
 		inline-size: auto;
 	}
 
