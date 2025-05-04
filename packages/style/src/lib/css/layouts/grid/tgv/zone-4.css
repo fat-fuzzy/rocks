@@ -6,5 +6,5 @@
 .tgv.zone\:4 {
 	grid-template-areas: 'zone-main';
 	grid-template-rows: 1fr auto;
-	z-index: 0;
+	z-index: var(--z-index-inset);
 }

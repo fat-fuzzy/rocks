@@ -8,7 +8,7 @@
 		'gare-control'
 		'gare-depot';
 	grid-template-rows: subgrid;
-	z-index: 2;
+	z-index: var(--layout-z-index-layer);
 }
 
 .exchange .zone\:2 {
@@ -46,6 +46,10 @@
 }
 
 @media screen and (min-width: 935px) {
+	.zone\:2 {
+		z-index: initial;
+	}
+
 	.zone\:2 > nav.collapsed > form,
 	.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
 		inline-size: var(--sidebar-width);
