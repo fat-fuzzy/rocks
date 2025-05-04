@@ -24,7 +24,6 @@
 
 @media screen and (min-width: 620px) {
 	.l\:grid\:railway {
-		--sidebar-width: var(--layout-sidebar-md);
 		grid-template-areas:
 			'zone-2  zone-1  zone-3'
 			'zone-2  zone-4  zone-4'

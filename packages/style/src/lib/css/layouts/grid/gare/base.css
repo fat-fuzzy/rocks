@@ -25,9 +25,8 @@ details[class*='gare:'] > ff-reveal,
 
 .gare\:est,
 .gare\:ouest {
-	--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
 	block-size: fit-content;
-	max-block-size: var(--max-block-size);
+	max-block-size: var(--overlay-block-size);
 }
 
 .gare\:ouest > ff-reveal,

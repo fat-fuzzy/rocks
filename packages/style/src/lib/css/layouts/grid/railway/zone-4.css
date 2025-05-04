@@ -22,7 +22,6 @@
 		grid-template-rows: 1fr;
 
 		> .page-context {
-			--sidebar-width: var(--layout-sidebar-sm);
 			max-block-size: var(--max-block-size);
 		}
 
