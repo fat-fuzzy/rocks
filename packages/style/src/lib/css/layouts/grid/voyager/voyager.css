@@ -42,6 +42,6 @@
 		grid-template-areas:
 			'zone-2  zone-1    zone-3'
 			'zone-2  v-zone-4  v-zone-4'
-			'zone-2  zone-5    zone-5';
+			'zone-5  zone-5    zone-5';
 	}
 }
