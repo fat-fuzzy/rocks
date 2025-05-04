@@ -9,7 +9,7 @@ import {actions as parentActions} from '../+page.server'
 export const load = async ({parent, params}) => {
 	let {sidebar} = await parent()
 	const {slug} = params
-	const markdowns = await usages.markdowns
+	const markdowns = usages.markdowns
 	const html = markdowns?.find((v) => v.meta.slug === slug)
 
 	if (!html) {

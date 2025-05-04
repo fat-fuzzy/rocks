@@ -24,7 +24,7 @@
 		path={page.url.pathname}
 		nav={page.data.nav}
 		app={appContext}
-		layout="tram"
+		layout={page.data.sidebar.layout}
 	>
 		{#snippet main()}
 			<EscapeHtml id={slug} {html} size="md" margin="auto" />

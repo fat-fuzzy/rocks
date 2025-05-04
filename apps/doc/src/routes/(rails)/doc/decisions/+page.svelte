@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import Footer from '$lib/ui/Footer.svelte'
 
 	const {PageRails} = ui.content
 
@@ -21,7 +20,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	app={appContext}
-	layout="tram"
+	layout={page.data.sidebar.layout}
 >
 	{#snippet main()}
 		<div class="l:text:md maki:auto">
