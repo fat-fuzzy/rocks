@@ -4,17 +4,17 @@
  */
 .tram.zone\:4 {
 	--max-block-size: calc(
-		100vh - 3 * var(--ui-header-height) - 3 * var(--grid-gap) - 2 *
+		100vh - 2 * var(--ui-header-height) - 3 * var(--grid-gap) - 2 *
 			var(--outline-offset-lg)
 	);
 	grid-template-areas:
 		'zone-main'
 		'page-context';
-	grid-template-rows: var(--max-block-size) auto;
+	grid-template-rows: minmax(var(--overlay-height-md), 1fr) auto;
 
 	> .page-context {
 		align-content: start;
-		max-block-size: var(--overlay-height-3xs);
+		max-block-size: var(--overlay-height-2xs);
 	}
 }
 

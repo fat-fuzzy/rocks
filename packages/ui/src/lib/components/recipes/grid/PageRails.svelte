@@ -103,7 +103,7 @@
 
 <div
 	id={`context-${id}`}
-	class={`l:grid ${contextClass} scroll:y ${mediaClass}`}
+	class={`${contextClass} l:stack size:${size} surface:0:neutral scroll:y ${mediaClass}`}
 >
 	{#if nav && nav.length > 0}
 		<PageNav id="page-nav" {hash} items={nav} />
