@@ -52,7 +52,7 @@
 			</div>
 		</main>
 		<aside class={`l:grid page-context surface:1:${theme} scroll:y snap`}>
-			<Details title="Interaction Controls" {theme} layout="grid" gare="nord" />
+			<Details title="Controls" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
 	<footer class={`zone:5 l:grid `}>
