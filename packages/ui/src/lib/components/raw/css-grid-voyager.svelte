@@ -61,7 +61,7 @@
 					class={`l:side surface:2:${theme} maki:block l:grid:auto size:md`}
 				>
 					<nav class="l:stack size:lg">
-						<h4 class="maki:inline size:sm">Exchange At:</h4>
+						<h4 class="maki:inline size:sm">Exchange At</h4>
 						<LineLong />
 						<LineShort />
 						<LineLongest />

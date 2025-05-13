@@ -2,3 +2,11 @@
 	min-block-size: unset;
 	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
+
+@media screen and (min-width: 620px) {
+	.voyager.zone\:main {
+		> .page-main > aside > nav > ul {
+			max-inline-size: var(--sidebar-width);
+		}
+	}
+}

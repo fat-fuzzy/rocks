@@ -50,7 +50,7 @@
 			<nav class="l:stack maki:block">
 				<h4 class="maki:inline size:sm">Stopping at:</h4>
 				<LineLongest />
-				<h4 class="maki:inline size:sm">Exchange At:</h4>
+				<h4 class="maki:inline size:sm">Exchange At</h4>
 				<LineLong />
 				<LineShort />
 				<LineMedium />
