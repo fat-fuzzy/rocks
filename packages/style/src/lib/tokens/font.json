@@ -211,7 +211,7 @@
 		"leading": {
 			"$type": "dimension",
 			"heading": {
-				"$value": "1.25"
+				"$value": "1.30"
 			},
 			"ui": {
 				"$value": "1.25"
@@ -220,6 +220,9 @@
 				"$value": "2"
 			},
 			"body": {
+				"$value": "1.4"
+			},
+			"large": {
 				"$value": "2"
 			},
 			"neutral": {

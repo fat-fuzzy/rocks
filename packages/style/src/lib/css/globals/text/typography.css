@@ -106,10 +106,6 @@ ul {
 	&.unstyled {
 		list-style: none;
 	}
-
-	li {
-		line-height: var(--font-leading-nav);
-	}
 }
 
 a {
