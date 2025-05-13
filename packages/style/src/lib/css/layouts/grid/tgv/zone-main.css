@@ -1,4 +1,9 @@
 .tgv.zone\:main {
+	grid-template-areas:
+		'page-header'
+		'page-main';
+	grid-template-rows: auto 1fr;
+	grid-template-columns: subgrid;
 	min-block-size: unset;
 	padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
 
