@@ -1,0 +1,78 @@
+/**
+ * ZONE 3
+ * Contains main app context
+ */
+
+.urbanist.zone\:3 {
+	grid-area: zone-3;
+	grid-template-areas: 'app-context';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
+	align-content: center;
+	z-index: var(--layout-z-index-layer);
+}
+
+.urbanist.zone\:3 > .app-context {
+	grid-area: app-context;
+	grid-template-columns: subgrid;
+	justify-self: flex-end;
+	padding: 0;
+}
+
+.urbanist.zone\:3 > .app-context ff-reveal {
+	display: flex;
+	align-items: center;
+}
+
+.urbanist.zone\:3 > .app-context.expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+	box-shadow: var(--shadow-md);
+	padding-block: var(--grid-gap);
+	padding-inline: var(--grid-gap);
+}
+
+.urbanist.zone\:3 > .app-context ff-reveal > form {
+	display: flex;
+	padding-inline: 0 var(--grid-gap);
+	padding-block: 0;
+	gap: var(--grid-gap);
+}
+
+@media screen and (min-width: 620px) {
+	.urbanist.zone\:3 {
+		z-index: initial;
+		padding-inline-end: var(--grid-gap);
+	}
+
+	.urbanist.zone\:3 > .app-context {
+		grid-column: span 3;
+	}
+
+	.urbanist.zone\:3 > .app-context.collapsed ff-reveal,
+	.urbanist.zone\:3 > .app-context.expanded ff-reveal {
+		margin: 0 auto;
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+		padding-inline: 0 var(--outline-offset-lg);
+		padding-block: var(--grid-gap);
+	}
+
+	.urbanist.zone\:3 > .app-context ff-reveal {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		padding-inline: 0 var(--outline-offset-lg);
+	}
+
+	.urbanist.zone\:3 > .app-context:not(details) ff-reveal {
+		position: unset;
+	}
+
+	.urbanist.zone\:3 > .app-context:not(details).collapsed ff-reveal,
+	.urbanist.zone\:3 > .app-context:not(details).expanded ff-reveal {
+		position: unset;
+	}
+}

@@ -9,5 +9,9 @@
 			'page-header'
 			'page-main';
 		grid-template-rows: auto 1fr;
+
+		> .page-main > aside > nav > ul {
+			max-inline-size: var(--sidebar-width);
+		}
 	}
 }

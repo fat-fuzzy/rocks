@@ -7,6 +7,11 @@
 		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap) -
 			var(--outline-offset-md)
 	);
+	--sidebar-sm: var(--layout-sidebar-collapsed);
+	--sidebar-md: calc(
+		var(--layout-sidebar-sm) - var(--layout-sidebar-collapsed)
+	);
+	--sidebar-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
 	inline-size: 100%;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
@@ -28,21 +33,25 @@
 @media screen and (min-width: 620px) {
 	.l\:grid\:urbanist {
 		grid-template-areas:
-			'zone-2  zone-1  zone-3'
-			'zone-4  zone-4  zone-4'
-			'zone-5  zone-5  zone-5';
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr minmax(
-				auto,
-				var(--sidebar-width)
-			);
+			'zone-2  zone-1  zone-3  zone-3'
+			'zone-4  zone-4  zone-4  zone-4'
+			'zone-5  zone-5  zone-5  zone-5';
+		grid-template-columns:
+			minmax(auto, var(--sidebar-width)) 1fr
+			var(--sidebar-md) var(--sidebar-sm);
 	}
 }
 
 @media screen and (min-width: 935px) {
 	.l\:grid\:urbanist {
 		grid-template-areas:
-			'zone-2  zone-1  zone-3'
-			'zone-2  zone-4  zone-4'
-			'zone-5  zone-5  zone-5';
+			'zone-2  zone-2  zone-2  zone-1  zone-3  zone-3  zone-3'
+			'zone-2  zone-2  zone-2  zone-4  zone-4  zone-4  zone-4'
+			'zone-5  zone-5  zone-5  zone-5  zone-5  zone-5  zone-5';
+		grid-template-columns:
+			var(--sidebar-sm) var(--sidebar-md) var(--sidebar-lg) 1fr var(
+				--sidebar-lg
+			)
+			var(--sidebar-md) var(--sidebar-sm);
 	}
 }
