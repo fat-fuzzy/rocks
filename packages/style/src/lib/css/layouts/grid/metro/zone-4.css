@@ -11,7 +11,6 @@
 		minmax(auto, var(--overlay-height-3xs));
 
 	> .page-context {
-		--sidebar-width: 100%;
 		align-items: start;
 		position: relative;
 		padding-block-end: var(--grid-gap);
@@ -26,12 +25,12 @@
 		max-block-size: var(--max-block-size);
 
 		> .page-context > * {
-			--max-inline-size: calc(var(--layout-sidebar-md) - 2 * var(--grid-gap));
+			--max-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
 			inline-size: 100%;
 		}
 
 		> .page-context > details {
-			--max-inline-size: calc(var(--layout-sidebar-md) - 3 * var(--grid-gap));
+			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
 			margin-inline-start: var(--ui-size-sm);
 		}
 	}
