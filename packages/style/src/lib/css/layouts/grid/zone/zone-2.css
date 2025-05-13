@@ -37,6 +37,14 @@
 	inline-size: 100%;
 }
 
+.zone\:2 .app-name ff-callout {
+	border-radius: 0;
+}
+
+.zone\:2 .app-name ff-callout > p {
+	line-height: var(--font-leading-large);
+}
+
 @media screen and (min-width: 620px) {
 	.zone\:2 {
 		padding-inline: var(--grid-gap) 0;
