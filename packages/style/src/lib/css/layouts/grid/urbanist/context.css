@@ -4,6 +4,7 @@
  */
 
 .urbanist.context {
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
 	grid-area: context;
 	grid-template-areas: 'app-context';
 	grid-template-columns: subgrid;
@@ -16,7 +17,7 @@
 .urbanist.context > .app-context {
 	grid-area: app-context;
 	grid-template-columns: subgrid;
-	justify-self: flex-end;
+	justify-self: stretch;
 	padding: 0;
 }
 
@@ -27,7 +28,6 @@
 
 .urbanist.context > .app-context.expanded ff-reveal {
 	position: absolute;
-	top: var(--ui-header-height);
 	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 	box-shadow: var(--shadow-md);
 	padding-block: var(--grid-gap);
@@ -43,12 +43,9 @@
 
 @media screen and (min-width: 620px) {
 	.urbanist.context {
+		--overlay-inline-size: calc(var(--layout-sidebar-md) + var(--grid-gap));
 		z-index: initial;
 		padding-inline-end: var(--grid-gap);
-	}
-
-	.urbanist.context > .app-context {
-		grid-column: span 3;
 	}
 
 	.urbanist.context > .app-context.collapsed ff-reveal,
@@ -71,8 +68,20 @@
 		position: unset;
 	}
 
-	.urbanist.context > .app-context:not(details).collapsed ff-reveal,
-	.urbanist.context > .app-context:not(details).expanded ff-reveal {
-		position: unset;
+	.urbanist.context [class*='gare:'][class*='width:']:not([class*=':full']),
+	.urbanist.context
+		[class*='gare:'][class*='width:']:not([class*=':full']):is(
+			[open],
+			.expanded
+		)
+		> ff-reveal,
+	.urbanist.context [class*='gare:'][class*='l:rails:'] > ff-reveal {
+		--overlay-inline-size: calc(var(--layout-sidebar-md) + 2 * var(--grid-gap));
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.urbanist.context > .app-context {
+		grid-column: span 3;
 	}
 }

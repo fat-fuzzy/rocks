@@ -31,7 +31,7 @@ details[class*='gare:'] > ff-reveal,
 
 .gare\:ouest > ff-reveal,
 .gare\:ouest:is([open], .expanded) > ff-reveal {
-	left: var(--grid-gap);
+	left: 0;
 	right: 0;
 }
 
@@ -56,7 +56,7 @@ details[class*='gare:'] > ff-reveal,
 	z-index: var(--layout-z-index-reveal);
 }
 
-@media screen and (min-width: 935px) {
+@media screen and (min-width: 1360px) {
 	.gare\:ouest > ff-reveal,
 	.gare\:ouest:is([open], .expanded) > ff-reveal {
 		box-shadow: unset;
