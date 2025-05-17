@@ -6,18 +6,11 @@
 	--max-block-size: calc(
 		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap)
 	);
-	--sidebar-2xs: var(--layout-sidebar-hidden);
-	--sidebar-xs: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
-	--sidebar-sm: var(--layout-sidebar-collapsed);
-	--sidebar-md: calc(
+	--sidebar-track-sm: var(--layout-sidebar-collapsed);
+	--sidebar-track-md: calc(
 		var(--layout-sidebar-sm) - var(--layout-sidebar-collapsed)
 	);
-	--sidebar-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
-	--sidebar-xl: calc(
-		100vw - var(--sidebar-width) - 2 * var(--grid-gap) -
-			var(--outline-offset-lg)
-	);
-	--sidebar-2xl: calc(100vw - 2 * var(--grid-gap));
+	--sidebar-track-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
 	inline-size: 100%;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
@@ -49,9 +42,9 @@
 			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'
 			'zone-3  zone-3  zone-3  zone-3  zone-3  zone-3  zone-3';
 		grid-template-columns:
-			var(--sidebar-sm) var(--sidebar-md) var(--sidebar-lg) 1fr var(
-				--sidebar-lg
+			var(--sidebar-track-sm) var(--sidebar-track-md) var(--sidebar-track-lg) 1fr var(
+				--sidebar-track-lg
 			)
-			var(--sidebar-md) var(--sidebar-sm);
+			var(--sidebar-track-md) var(--sidebar-track-sm);
 	}
 }

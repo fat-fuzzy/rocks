@@ -63,7 +63,6 @@
 		> ff-reveal,
 	.urbanist.sidebar [class*='gare:'][class*='l:rails:'] > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
-		--overlay-inline-size: var(--sidebar-2xl);
 	}
 }
 
@@ -78,7 +77,6 @@
 		> ff-reveal,
 	.urbanist.sidebar [class*='gare:'][class*='l:rails:'] > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
-		--overlay-inline-size: var(--sidebar-xl);
 		--overlay-block-size: var(--overlay-height-sm);
 	}
 }

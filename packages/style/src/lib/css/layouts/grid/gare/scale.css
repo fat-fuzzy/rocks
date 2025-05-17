@@ -24,9 +24,19 @@
 	--overlay-inline-size: var(--sidebar-width);
 }
 
-[class*='gare:'].width\:lg,
+[class*='gare:'].width\:lg {
+	--sidebar-lg: calc(100vw - var(--sidebar-width) - 2 * var(--grid-gap));
+	--overlay-inline-size: var(--sidebar-lg);
+}
+
+[class*='gare:'].width\:xl {
+	--sidebar-xl: calc(50vw - 2 * var(--grid-gap));
+	--overlay-inline-size: var(--sidebar-xl);
+}
+
 [class*='gare:'].width\:full {
-	--overlay-inline-size: var(--sidebar-xl, calc(100vw - 3 * var(--grid-gap)));
+	--sidebar-2xl: calc(100vw - 2 * var(--grid-gap));
+	--overlay-inline-size: var(--sidebar-2xl);
 }
 
 [class*='gare:'].height\:sm {
@@ -60,18 +70,13 @@
 }
 
 @media screen and (min-width: 620px) {
-	[class*='gare:'].width\:lg,
-	[class*='gare:'].width\:lg:is([open], .expanded) > ff-reveal,
-	[class*='gare:'].width\:full,
-	[class*='gare:'].width\:full:is([open], .expanded) > ff-reveal,
-	[class*='gare:'][class*='l:rails:'] > ff-reveal {
-		--overlay-inline-size: calc(
-			100vw - var(--sidebar-width) - 4 * var(--grid-gap)
-		);
+	[class*='gare:'].width\:lg {
+		--sidebar-lg: calc(100vw - var(--sidebar-width) - 4 * var(--grid-gap));
+		--overlay-inline-size: var(--sidebar-lg);
 	}
 }
 
-@media screen and (min-width: 935px) {
+@media screen and (min-width: 1360px) {
 	[class*='zone:']:has([class*='l:rails']) {
 		inline-size: var(--sidebar-width);
 	}
