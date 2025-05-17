@@ -3,7 +3,7 @@
  * Contains main navigation
  */
 
-.urbanist.zone\:1 {
+.zone\:1.exchange {
 	grid-area: zone-1;
 	grid-template-areas: 'navbar sidebar context';
 	grid-template-columns: subgrid;
@@ -12,24 +12,24 @@
 	z-index: var(--layout-z-index-layer);
 }
 
-.swap .urbanist.zone\:1 {
+.swap .zone\:1.exchange {
 	padding-inline: var(--grid-gap)
 		calc(var(--outline-offset-lg) + var(--grid-gap));
 }
 
 @media screen and (min-width: 620px) {
-	.urbanist.zone\:1 {
+	.zone\:1.exchange {
 		grid-template-areas: 'sidebar navbar context';
 	}
 
-	.urbanist.zone\:1 {
+	.zone\:1.exchange {
 		padding-inline: 0;
 		z-index: initial;
 	}
 }
 
 @media screen and (min-width: 1360px) {
-	.urbanist.zone\:1 {
+	.zone\:1.exchange {
 		grid-template-areas: 'sidebar sidebar sidebar navbar context context context';
 	}
 }
