@@ -43,7 +43,6 @@
 
 @media screen and (min-width: 620px) {
 	.exchange > .context {
-		--overlay-inline-size: calc(var(--layout-sidebar-md) + var(--grid-gap));
 		z-index: initial;
 		padding-inline-end: var(--grid-gap);
 	}
@@ -66,23 +65,6 @@
 
 	.exchange > .context > .app-context:not(details) ff-reveal {
 		position: unset;
-	}
-
-	.urbanist.exchange
-		> .context
-		[class*='gare:'][class*='width:']:not([class*=':full']),
-	.urbanist.exchange
-		> .context
-		[class*='gare:'][class*='width:']:not([class*=':full']):is(
-			[open],
-			.expanded
-		)
-		> ff-reveal,
-	.urbanist.exchange
-		> .context
-		[class*='gare:'][class*='l:rails:']
-		> ff-reveal {
-		--overlay-inline-size: calc(var(--layout-sidebar-md) + 2 * var(--grid-gap));
 	}
 }
 

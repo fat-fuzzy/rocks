@@ -74,6 +74,11 @@
 		--sidebar-lg: calc(100vw - var(--sidebar-width) - 4 * var(--grid-gap));
 		--overlay-inline-size: var(--sidebar-lg);
 	}
+
+	[class*='gare:'].width\:full {
+		--sidebar-lg: calc(100vw - var(--sidebar-width) - 3 * var(--grid-gap));
+		--overlay-inline-size: var(--sidebar-lg);
+	}
 }
 
 @media screen and (min-width: 1360px) {
@@ -94,12 +99,12 @@
 	[class*='gare:'][class*='width:']:not([class*=':full']),
 	[class*='gare:'][class*='width:']:not([class*=':full']):is([open], .expanded)
 		> ff-reveal,
-	[class*='gare:'][class*='l:rails:'] > ff-reveal {
+	[class*='gare:'] > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
 		--overlay-inline-size: calc(var(--sidebar-width) + 2 * var(--grid-gap));
 	}
 
-	[class*='gare:'][class*='l:rails:'] > ff-reveal {
+	[class*='gare:'] > ff-reveal {
 		--overlay-block-size: var(--max-block-size);
 	}
 

@@ -20,17 +20,6 @@
 	position: relative;
 }
 
-@media screen and (min-width: 620px) {
-	.l\:grid\:railway {
-		grid-template-areas:
-			'zone-1  zone-1  zone-1'
-			'zone-2  zone-2  zone-2'
-			'zone-3  zone-3  zone-3';
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr auto;
-		padding-block: 0;
-	}
-}
-
 @media screen and (min-width: 1360px) {
 	.l\:grid\:railway {
 		grid-template-areas:

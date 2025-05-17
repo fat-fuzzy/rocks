@@ -5,7 +5,7 @@
 
 .zone\:1.exchange {
 	grid-area: zone-1;
-	grid-template-areas: 'navbar sidebar context';
+	grid-template-areas: 'sidebar navbar context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	padding-inline: var(--grid-gap) 0;
@@ -13,12 +13,11 @@
 }
 
 .swap .zone\:1.exchange {
-	padding-inline: var(--grid-gap)
-		calc(var(--outline-offset-lg) + var(--grid-gap));
+	grid-template-areas: ' navbar sidebar context';
 }
 
 @media screen and (min-width: 620px) {
-	.zone\:1.exchange {
+	.swap .zone\:1.exchange {
 		grid-template-areas: 'sidebar navbar context';
 	}
 
