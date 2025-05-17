@@ -49,7 +49,7 @@
 		{title}
 	</svelte:element>
 	<nav {id} class={navClasses}>
-		<ul
+		<ol
 			{id}
 			class={`l:flex size:${size} align:center unstyled`}
 			data-testid={id}
@@ -71,6 +71,6 @@
 					</li>
 				{/if}
 			{/each}
-		</ul>
+		</ol>
 	</nav>
 </div>
