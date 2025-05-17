@@ -4,7 +4,7 @@
  */
 
 .urbanist.context {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
 	grid-area: context;
 	grid-template-areas: 'app-context';
 	grid-template-columns: subgrid;

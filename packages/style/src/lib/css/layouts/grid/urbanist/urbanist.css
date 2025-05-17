@@ -3,7 +3,9 @@
  */
 
 .l\:grid\:urbanist {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
+	--max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap)
+	);
 	--sidebar-2xs: var(--layout-sidebar-hidden);
 	--sidebar-xs: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
 	--sidebar-sm: var(--layout-sidebar-collapsed);
@@ -12,10 +14,10 @@
 	);
 	--sidebar-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
 	--sidebar-xl: calc(
-		100vw - var(--sidebar-width) - 4 * var(--grid-gap) -
+		100vw - var(--sidebar-width) - 2 * var(--grid-gap) -
 			var(--outline-offset-lg)
 	);
-	--sidebar-2xl: calc(100vw - 3 * var(--grid-gap));
+	--sidebar-2xl: calc(100vw - 2 * var(--grid-gap));
 	inline-size: 100%;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;

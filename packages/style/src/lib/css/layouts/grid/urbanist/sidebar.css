@@ -4,7 +4,7 @@
  */
 
 .urbanist.sidebar {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height));
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
 	grid-area: sidebar;
 	grid-template-areas:
 		'gare-control'
@@ -62,11 +62,12 @@
 		[class*='gare:'].width\:full:is([open], .expanded)
 		> ff-reveal,
 	.urbanist.sidebar [class*='gare:'][class*='l:rails:'] > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
 		--overlay-inline-size: var(--sidebar-2xl);
 	}
 }
 
-@media screen and (min-width: 880px) {
+@media screen and (min-width: 935px) {
 	.urbanist.sidebar [class*='gare:'].width\:lg,
 	.urbanist.sidebar
 		[class*='gare:'].width\:lg:is([open], .expanded)
