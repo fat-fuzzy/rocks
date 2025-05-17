@@ -96,7 +96,7 @@
 		> ff-reveal,
 	[class*='gare:'][class*='l:rails:'] > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
-		--overlay-inline-size: var(--sidebar-width);
+		--overlay-inline-size: calc(var(--sidebar-width) + 2 * var(--grid-gap));
 	}
 
 	[class*='gare:'][class*='l:rails:'] > ff-reveal {
@@ -108,15 +108,8 @@
 		--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
 	}
 
-	[class*='gare:'].hug .gare-control {
-		--overlay-inline-size: calc(
-			var(--sidebar-width) - var(--outline-offset-lg)
-		);
-		inline-size: fit-content;
-	}
-
-	[class*='gare:'].hug:is([open], .expanded) .gare-control {
-		inline-size: calc(var(--overlay-inline-size) - 2 * var(--grid-gap));
+	[class*='gare:'] .gare-control {
+		inline-size: 100%;
 	}
 
 	[class*='gare:'][class*='height:']:not(.width\:full) {

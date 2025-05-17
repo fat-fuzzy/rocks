@@ -19,7 +19,6 @@
 
 @media screen and (min-width: 1360px) {
 	.metro.zone\:main {
-		grid-template-rows: subgrid;
 		grid-column: span 4;
 	}
 }

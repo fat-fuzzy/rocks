@@ -37,10 +37,8 @@
 @media screen and (min-width: 620px) {
 	.metro.zone\:2 {
 		grid-template-areas: 'zone-main page-context';
-		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
 		max-block-size: var(--max-block-size);
-		grid-column-start: 1;
 
 		> .page-context {
 			position: unset;
@@ -51,6 +49,7 @@
 		> .page-context > * {
 			--max-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
 			inline-size: 100%;
+			max-inline-size: var(--max-inline-size);
 		}
 
 		> .page-context > nav > ul > li.ellipsis {
@@ -58,14 +57,8 @@
 		}
 
 		> .page-context > details {
-			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
+			--max-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
 			margin-inline-start: var(--ui-size-sm);
 		}
-	}
-}
-
-@media screen and (min-width: 1360px) {
-	.metro.zone\:2 {
-		grid-column-start: 1;
 	}
 }
