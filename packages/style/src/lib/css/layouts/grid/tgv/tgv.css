@@ -18,7 +18,7 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
-.l\:grid\:tgv.exchange {
+.l\:grid\:tgv.swap {
 	grid-template-areas:
 		'zone-2  zone-1  zone-3'
 		'zone-4  zone-4  zone-4'

@@ -22,7 +22,7 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
-.l\:grid\:urbanist.exchange {
+.l\:grid\:urbanist.swap {
 	grid-template-areas:
 		'zone-1  zone-1  zone-1'
 		'zone-2  zone-2  zone-2'

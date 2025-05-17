@@ -12,7 +12,7 @@
 	z-index: var(--layout-z-index-layer);
 }
 
-.exchange .urbanist.zone\:1 {
+.swap .urbanist.zone\:1 {
 	padding-inline: var(--grid-gap)
 		calc(var(--outline-offset-lg) + var(--grid-gap));
 }

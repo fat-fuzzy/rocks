@@ -19,7 +19,7 @@
 		auto;
 }
 
-.l\:grid\:metro.exchange {
+.l\:grid\:metro.swap {
 	grid-template-areas:
 		'zone-2  zone-1  zone-3'
 		'zone-4  zone-4  zone-4'
