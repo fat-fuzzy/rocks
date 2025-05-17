@@ -22,13 +22,6 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
-.l\:grid\:urbanist.swap {
-	grid-template-areas:
-		'zone-1  zone-1  zone-1'
-		'zone-2  zone-2  zone-2'
-		'zone-3  zone-3  zone-3';
-}
-
 @media screen and (min-width: 620px) {
 	.l\:grid\:urbanist {
 		--overlay-inline-size: var(--sidebar-xl);

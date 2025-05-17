@@ -1,4 +1,5 @@
 .metro.zone\:main {
+	grid-area: zone-main;
 	grid-template-areas:
 		'page-header'
 		'page-main';
