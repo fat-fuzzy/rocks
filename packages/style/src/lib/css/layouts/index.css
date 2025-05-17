@@ -79,5 +79,7 @@
 @import './grid/urbanist/zone-1.css';
 @import './grid/urbanist/zone-2.css';
 @import './grid/urbanist/zone-3.css';
-@import './grid/urbanist/zone-4.css';
+@import './grid/urbanist/context.css';
+@import './grid/urbanist/navbar.css';
+@import './grid/urbanist/sidebar.css';
 @import './grid/urbanist/zone-main.css';

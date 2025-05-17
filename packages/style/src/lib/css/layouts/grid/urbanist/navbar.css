@@ -1,0 +1,44 @@
+.urbanist.navbar {
+	grid-area: navbar;
+	grid-template-columns: subgrid;
+}
+
+.urbanist.navbar .expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	left: calc(var(--outline-offset-md) + var(--grid-gap));
+	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+}
+
+.urbanist.navbar > nav,
+.urbanist.navbar > nav form,
+.urbanist.navbar > nav [aria-expanded] {
+	inline-size: 100%;
+}
+
+.urbanist.navbar > nav [aria-expanded] span {
+	text-align: center;
+}
+
+@media screen and (min-width: 620px) {
+	.urbanist.navbar > nav {
+		justify-content: flex-start;
+	}
+
+	.urbanist.navbar > nav form {
+		display: none;
+	}
+
+	.urbanist.zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+		block-size: fit-content;
+	}
+
+	.urbanist.navbar > .expanded > ff-reveal,
+	.urbanist.navbar > .collapsed > ff-reveal {
+		position: unset;
+		margin: 0 auto;
+		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+	}
+}

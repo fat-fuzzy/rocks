@@ -16,7 +16,6 @@ details > summary {
 	font-weight: var(--font-weight-ui);
 	line-height: var(--font-leading-large);
 	padding: var(--ui-size-sm) var(--ui-size);
-	max-width: 100%;
 	background-color: var(--shade);
 }
 

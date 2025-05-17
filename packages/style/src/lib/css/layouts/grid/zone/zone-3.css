@@ -3,74 +3,83 @@
  * Contains main app context
  */
 
-.zone\:3 {
-	grid-area: zone-3;
-	grid-template-areas: 'app-context';
-	grid-template-columns: subgrid;
-	grid-template-rows: subgrid;
-	padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
-	align-content: center;
-	z-index: var(--layout-z-index-layer);
-}
-
-.zone\:3 > .app-context {
-	grid-area: app-context;
-	justify-self: flex-end;
-	padding: 0;
-}
-
-.zone\:3 > .app-context ff-reveal {
-	display: flex;
-	align-items: center;
-}
-
-.zone\:3 > .app-context.expanded ff-reveal {
-	position: absolute;
-	top: var(--ui-header-height);
-	right: calc(var(--outline-offset-lg) + var(--grid-gap));
-	box-shadow: var(--shadow-md);
-	padding-block: var(--grid-gap);
-	padding-inline: var(--grid-gap);
-}
-
-.zone\:3 > .app-context ff-reveal > form {
-	display: flex;
-	padding-inline: 0 var(--grid-gap);
-	padding-block: 0;
-	gap: var(--grid-gap);
-}
-
-@media screen and (min-width: 620px) {
+:where(
+		[class*='metro'],
+		[class*='railway'],
+		[class*='steam'],
+		[class*='tgv'],
+		[class*='tram'],
+		[class*='voyager']
+	) {
 	.zone\:3 {
-		z-index: initial;
+		grid-area: zone-3;
+		grid-template-areas: 'app-context';
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+		padding-inline-end: calc(var(--outline-offset-lg) + var(--grid-gap));
+		align-content: center;
+		z-index: var(--layout-z-index-layer);
 	}
 
-	.zone\:3 {
-		padding-inline-end: var(--grid-gap);
-	}
-
-	.zone\:3 > .app-context.collapsed ff-reveal,
-	.zone\:3 > .app-context.expanded ff-reveal {
-		margin: 0 auto;
-		border-radius: var(--border-radius-null);
-		box-shadow: unset;
-		padding-inline: 0 var(--outline-offset-lg);
-		padding-block: var(--grid-gap);
+	.zone\:3 > .app-context {
+		grid-area: app-context;
+		justify-self: flex-end;
+		padding: 0;
 	}
 
 	.zone\:3 > .app-context ff-reveal {
 		display: flex;
 		align-items: center;
-		justify-content: flex-end;
-		padding-inline: 0 var(--outline-offset-lg);
 	}
 
-	.zone\:3 > .app-context:not(details) ff-reveal {
-		position: unset;
+	.zone\:3 > .app-context.expanded ff-reveal {
+		position: absolute;
+		top: var(--ui-header-height);
+		right: calc(var(--outline-offset-lg) + var(--grid-gap));
+		box-shadow: var(--shadow-md);
+		padding-block: var(--grid-gap);
+		padding-inline: var(--grid-gap);
 	}
 
-	.zone\:3 > .app-context:not(details).collapsed ff-reveal,
-	.zone\:3 > .app-context:not(details).expanded ff-reveal {
-		position: unset;
+	.zone\:3 > .app-context ff-reveal > form {
+		display: flex;
+		padding-inline: 0 var(--grid-gap);
+		padding-block: 0;
+		gap: var(--grid-gap);
+	}
+
+	@media screen and (min-width: 620px) {
+		.zone\:3 {
+			z-index: initial;
+		}
+
+		.zone\:3 {
+			padding-inline-end: var(--grid-gap);
+		}
+
+		.zone\:3 > .app-context.collapsed ff-reveal,
+		.zone\:3 > .app-context.expanded ff-reveal {
+			margin: 0 auto;
+			border-radius: var(--border-radius-null);
+			box-shadow: unset;
+			padding-inline: 0 var(--outline-offset-lg);
+			padding-block: var(--grid-gap);
+		}
+
+		.zone\:3 > .app-context ff-reveal {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding-inline: 0 var(--outline-offset-lg);
+		}
+
+		.zone\:3 > .app-context:not(details) ff-reveal {
+			position: unset;
+		}
+
+		.zone\:3 > .app-context:not(details).collapsed ff-reveal,
+		.zone\:3 > .app-context:not(details).expanded ff-reveal {
+			position: unset;
+		}
 	}
 }

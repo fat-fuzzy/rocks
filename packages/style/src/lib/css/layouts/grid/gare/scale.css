@@ -26,7 +26,7 @@
 
 [class*='gare:'].width\:lg,
 [class*='gare:'].width\:full {
-	--overlay-inline-size: calc(100vw - 3 * var(--grid-gap));
+	--overlay-inline-size: var(--sidebar-xl, calc(100vw - 3 * var(--grid-gap)));
 }
 
 [class*='gare:'].height\:sm {
