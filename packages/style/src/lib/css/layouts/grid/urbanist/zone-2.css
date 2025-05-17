@@ -14,7 +14,7 @@
 		grid-column-start: 1;
 	}
 
-	.urbanist.zone\:1:has(.gare\:ouest[open]) ~ .urbanist.zone\:2.hug {
+	.exchange.zone\:1:has(.gare\:ouest[open]) ~ .zone\:2.hug {
 		grid-column-start: 4;
 	}
 }

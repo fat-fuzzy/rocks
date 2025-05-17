@@ -2,24 +2,24 @@
 	grid-template-areas:
 		'page-header'
 		'page-main';
-	grid-template-rows: auto 1fr;
+	grid-column: span 3;
 	min-block-size: unset;
 	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 
 	> .page-header {
+		grid-area: page-header;
 		block-size: fit-content;
 	}
 
 	> .page-main {
+		grid-area: page-main;
 		padding-block-end: var(--grid-gap);
 	}
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 1360px) {
 	.metro.zone\:main {
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		max-block-size: var(--max-block-size);
+		grid-template-rows: subgrid;
+		grid-column: span 4;
 	}
 }
