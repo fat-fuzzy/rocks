@@ -4,7 +4,6 @@
  */
 
 :where(
-		[class*='metro'],
 		[class*='railway'],
 		[class*='steam'],
 		[class*='tgv'],

@@ -50,7 +50,8 @@ import './grid/zone/zone-5.css'
 import './grid/zone/zone-main.css'
 
 import './grid/metro/metro.css'
-import './grid/metro/zone-4.css'
+import './grid/metro/zone-2.css'
+import './grid/metro/zone-3.css'
 import './grid/metro/zone-main.css'
 
 import './grid/railway/railway.css'
