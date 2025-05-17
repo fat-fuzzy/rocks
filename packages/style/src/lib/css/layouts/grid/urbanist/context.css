@@ -43,7 +43,6 @@
 
 @media screen and (min-width: 620px) {
 	.urbanist.context {
-		grid-column: 5 / span 3;
 		z-index: initial;
 		padding-inline-end: var(--grid-gap);
 	}

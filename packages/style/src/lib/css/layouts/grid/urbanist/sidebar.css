@@ -17,6 +17,10 @@
 	padding-inline-start: var(--grid-gap);
 }
 
+.urbanist.sidebar > .gare\:ouest {
+	grid-column: span 3;
+}
+
 .urbanist.sidebar > .gare-control {
 	grid-area: gare-control;
 	grid-template-columns: subgrid;
@@ -83,7 +87,6 @@
 
 @media screen and (min-width: 1360px) {
 	.urbanist.sidebar {
-		grid-column: 1 / span 3;
 		z-index: initial;
 	}
 
@@ -91,6 +94,10 @@
 	.urbanist.sidebar > nav.collapsed > form > [class*='l:switcher'] {
 		inline-size: 100%;
 		max-inline-size: var(--sidebar-width);
+	}
+
+	.urbanist.sidebar:has([open], .expanded) {
+		grid-row: span 2;
 	}
 
 	.urbanist.sidebar > nav,
@@ -112,5 +119,8 @@
 		> ff-reveal,
 	.urbanist.sidebar [class*='gare:'][class*='l:rails:'] > ff-reveal {
 		--overlay-inline-size: var(--layout-sidebar-md);
+		--overlay-block-size: var(--max-block-size);
+		left: var(--grid-gap);
+		right: unset;
 	}
 }

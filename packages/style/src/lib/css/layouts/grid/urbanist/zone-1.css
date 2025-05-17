@@ -27,3 +27,9 @@
 		z-index: initial;
 	}
 }
+
+@media screen and (min-width: 1360px) {
+	.urbanist.zone\:1 {
+		grid-template-areas: 'sidebar sidebar sidebar navbar context context context';
+	}
+}
