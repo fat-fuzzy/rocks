@@ -10,11 +10,16 @@
 }
 
 @media screen and (min-width: 1360px) {
-	.hug.zone\:2 {
+	.zone\:2 {
+		grid-column-start: 4;
+	}
+
+	.zone\:2.hug {
 		grid-column-start: 1;
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest[open]) ~ .zone\:2.hug {
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug {
 		grid-column-start: 4;
 	}
 }

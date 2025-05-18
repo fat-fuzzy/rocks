@@ -31,7 +31,7 @@
 		tag?: string
 	}
 
-	const areas: AreaZone[] = [
+	const areas: AreaZone[] = $derived([
 		{
 			zone: zoneHeader,
 			grid: true,
@@ -40,14 +40,14 @@
 		},
 		{
 			zone: zoneContent,
-			hug: true,
+			hug: layout === 'steam' || layout === 'voyager' || layout === 'urbanist',
 			grid: true,
 		},
 		{
 			zone: zoneFooter,
 			grid: true,
 		},
-	]
+	])
 
 	let brightness = $derived(appContext.brightness)
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')

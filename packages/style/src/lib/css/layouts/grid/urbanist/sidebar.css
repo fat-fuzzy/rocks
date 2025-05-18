@@ -75,17 +75,11 @@
 }
 
 @media screen and (min-width: 935px) {
-	.exchange > .sidebar [class*='gare:'].width\:lg,
-	.exchange
-		> .sidebar
-		[class*='gare:'].width\:lg:is([open], .expanded)
-		> ff-reveal,
 	.exchange > .sidebar [class*='gare:'].width\:xl,
 	.exchange
 		> .sidebar
 		[class*='gare:'].width\:xl:is([open], .expanded)
-		> ff-reveal,
-	.exchange > .sidebar [class*='gare:'] > ff-reveal {
+		> ff-reveal {
 		--overlay-block-size: var(--overlay-height-sm);
 	}
 }
@@ -98,24 +92,15 @@
 		grid-column: span 3;
 	}
 
-	.exchange > .sidebar > .app-name,
-	.exchange > .sidebar > nav.collapsed > form,
-	.exchange > .sidebar > nav.collapsed > form > [class*='l:switcher'] {
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
-	}
-
 	.exchange > .sidebar:has([open], .expanded) {
 		grid-row: span 2;
 	}
 
+	.exchange > .sidebar > .app-name,
 	.exchange > .sidebar > nav,
 	.exchange > .sidebar > nav > form {
-		inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
-	}
-
-	.exchange > .sidebar > nav > form > [class*='l:switcher'] {
-		max-inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
+		inline-size: 100%;
+		max-inline-size: var(--overlay-inline-size);
 	}
 
 	.exchange > .sidebar [class*='gare:'].width\:lg,

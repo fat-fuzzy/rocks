@@ -8,6 +8,16 @@
 	grid-column: span 3;
 	min-block-size: unset;
 	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+
+	> .page-header {
+		grid-area: page-header;
+		block-size: fit-content;
+	}
+
+	> .page-main {
+		grid-area: page-main;
+		padding-block-end: var(--ui-size);
+	}
 }
 
 @media screen and (min-width: 620px) {
@@ -20,8 +30,30 @@
 	}
 }
 
+@media screen and (min-width: 935px) {
+	.voyager.zone\:main {
+		padding-inline: calc(4 * var(--grid-gap)) calc(2 * var(--grid-gap));
+	}
+}
+
 @media screen and (min-width: 1360px) {
 	.voyager.zone\:main {
-		grid-column: span 7;
+		grid-column: 1 / span 7;
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+
+		> .page-header {
+			grid-column: 1 / span 4;
+		}
+
+		> .page-main {
+			grid-column: 1 / span 4;
+		}
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.voyager.zone\:main {
+		grid-column: 1 / span 7;
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 	}
 }

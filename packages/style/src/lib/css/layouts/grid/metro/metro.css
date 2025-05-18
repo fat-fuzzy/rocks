@@ -40,7 +40,7 @@
 	.l\:grid\:metro {
 		grid-template-areas:
 			'zone-1  zone-1  zone-1  zone-1  zone-1  zone-1  zone-1'
-			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'
+			'......  ......  ......  zone-2  zone-2  zone-2  zone-2'
 			'zone-3  zone-3  zone-3  zone-3  zone-3  zone-3  zone-3';
 		padding-block: 0;
 		grid-template-columns:

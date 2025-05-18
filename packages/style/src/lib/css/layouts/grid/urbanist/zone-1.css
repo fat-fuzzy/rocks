@@ -8,7 +8,7 @@
 	grid-template-areas: 'sidebar navbar context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	z-index: var(--layout-z-index-layer);
+	z-index: var(--layout-z-index-reveal);
 	padding-inline: var(--grid-gap);
 }
 

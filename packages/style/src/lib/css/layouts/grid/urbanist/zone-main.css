@@ -20,8 +20,22 @@
 	}
 }
 
+@media screen and (min-width: 935px) {
+	.urbanist.zone\:main {
+		padding-inline: calc(4 * var(--grid-gap)) calc(2 * var(--grid-gap));
+	}
+}
+
 @media screen and (min-width: 1360px) {
 	.urbanist.zone\:main {
 		grid-column: span 7;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.urbanist.zone\:main {
+		grid-column: span 4;
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg))
+			calc(2 * var(--grid-gap));
 	}
 }
