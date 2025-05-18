@@ -12,4 +12,19 @@
 	&.scroll\:y {
 		scrollbar-gutter: auto;
 	}
+
+	> .page-context {
+		grid-area: page-context;
+		grid-column: span 3;
+		align-content: start;
+		position: relative;
+		max-block-size: var(--overlay-height-2xs);
+	}
+
+	> .page-context.empty {
+		--size-y: 0;
+		block-size: 0;
+		inline-size: 0;
+		padding: 0;
+	}
 }

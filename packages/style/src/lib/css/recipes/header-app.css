@@ -33,7 +33,7 @@
 .header-nav.l\:flex[class*='size'] {
 	--justify: space-evenly;
 	--gap: var(--grid-gap, var(--size-base-xs));
-	gap: 0;
+	gap: var(--grid-gap, 0);
 
 	li {
 		background-color: inherit;
@@ -47,7 +47,7 @@
 			block-size: calc(100% - 2 * var(--border-width-xl));
 			inline-size: fit-content;
 			text-transform: uppercase;
-			padding: var(--ui-size-sm);
+			padding-block: var(--gap, var(--size-base-3xs));
 			padding-inline: var(--gap, var(--size-base-2xs));
 		}
 

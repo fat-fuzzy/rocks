@@ -26,9 +26,12 @@
 		grid?: boolean
 		gare?: string
 		scroll?: string
+		exchange?: boolean
+		hug?: boolean
+		tag?: string
 	}
 
-	const areas = [
+	const areas: AreaZone[] = [
 		{
 			zone: zoneHeader,
 			grid: true,
@@ -67,7 +70,7 @@
 			title="Menu"
 			label="Menu"
 			size="sm"
-			font="sm"
+			font="xs"
 			variant="outline"
 			asset="home"
 			justify="start"
@@ -84,8 +87,8 @@
 
 	<div class="sidebar l:grid size:3xs align:center width:lg height:sm">
 		{#if sidenav.layout === 'tgv'}
-			<div class="app-name">
-				<Magic {spell} size="xs" font="sm" grow={true}>
+			<div class="app-name dotted surface:1:primary">
+				<Magic {spell} size="xs" font="xs" grow={true}>
 					<p class="text:center font:heading">Home</p>
 				</Magic>
 			</div>
@@ -100,7 +103,7 @@
 				layer={1}
 				justify="evenly"
 				size="sm"
-				font="sm"
+				font="xs"
 				dismiss="outside"
 			/>
 		{/if}
