@@ -11,12 +11,12 @@
 	z-index: var(--layout-z-index-layer);
 }
 
-.swap .zone\:1.exchange {
+.swap.exchange {
 	grid-template-areas: ' navbar sidebar context';
 }
 
 @media screen and (min-width: 620px) {
-	.swap .zone\:1.exchange {
+	.swap.exchange {
 		grid-template-areas: 'sidebar navbar context';
 	}
 
@@ -28,7 +28,7 @@
 
 @media screen and (min-width: 1360px) {
 	.zone\:1.exchange,
-	.swap .zone\:1.exchange {
+	.swap.exchange {
 		grid-template-areas: 'sidebar sidebar sidebar navbar context context context';
 	}
 }

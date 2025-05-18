@@ -14,7 +14,7 @@
 	z-index: var(--layout-z-index-layer);
 }
 
-.swap .exchange > .sidebar {
+.exchange.swap > .sidebar {
 	padding-inline-start: var(--grid-gap);
 }
 

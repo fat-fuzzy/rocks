@@ -13,7 +13,7 @@
 		z-index: var(--layout-z-index-layer);
 	}
 
-	.swap .zone\:2 {
+	.swap.exchange {
 		padding-inline-start: var(--grid-gap);
 	}
 
