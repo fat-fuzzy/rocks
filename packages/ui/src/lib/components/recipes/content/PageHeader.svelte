@@ -35,7 +35,7 @@
 
 <header class={`page-header ${headerClass} ${mainClasses} ${contentClasses}`}>
 	{#if layout === 'sidebar'}
-		<div class="l:main:50">
+		<div class="l:main">
 			{@render headerMain()}
 		</div>
 		<div class="l:side">

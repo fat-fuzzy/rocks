@@ -9,6 +9,7 @@
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	z-index: var(--layout-z-index-layer);
+	padding-inline: var(--grid-gap);
 }
 
 .swap.exchange {

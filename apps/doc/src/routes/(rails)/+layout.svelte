@@ -60,14 +60,14 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar">
+	<div class="navbar l:grid size:3xs align:center">
 		<HeaderNav
 			id="nav"
 			name="nav"
 			title="Menu"
 			label="Menu"
+			size="sm"
 			font="sm"
-			size="md"
 			variant="outline"
 			asset="home"
 			justify="start"
@@ -82,7 +82,7 @@
 		/>
 	</div>
 
-	<div class="sidebar">
+	<div class="sidebar l:grid size:3xs align:center width:lg height:sm">
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
 				<Magic {spell} size="xs" font="sm" grow={true}>
@@ -99,14 +99,14 @@
 				scroll="y"
 				layer={1}
 				justify="evenly"
-				size="md"
+				size="sm"
 				font="sm"
 				dismiss="outside"
 			/>
 		{/if}
 	</div>
 
-	<div class="context">
+	<div class="context l:grid size:3xs align:center">
 		<RevealContext
 			id="appContext"
 			name="appContext"
@@ -114,8 +114,8 @@
 			path={page.url.pathname}
 			actionPath={page.url.pathname}
 			breakpoint="xs"
-			size="md"
-			font="sm"
+			size="sm"
+			font="xs"
 			formaction="updateSettings"
 			context={appContext}
 			reveal={appContext.reveal}

@@ -85,7 +85,7 @@
 		> .sidebar
 		[class*='gare:'].width\:xl:is([open], .expanded)
 		> ff-reveal,
-	.exchange > .sidebar [class*='gare:'][class*='l:rails:'] > ff-reveal {
+	.exchange > .sidebar [class*='gare:'] > ff-reveal {
 		--overlay-block-size: var(--overlay-height-sm);
 	}
 }

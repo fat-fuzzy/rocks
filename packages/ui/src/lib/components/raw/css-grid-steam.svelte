@@ -32,7 +32,7 @@
 			<AppContext {theme} />
 		</aside>
 	</header>
-	<div class={`zone:4 ${parent} l:grid surface:2:${theme} scroll:y snap:start`}>
+	<div class={`zone:2 ${parent} l:grid surface:2:${theme} scroll:y snap:start`}>
 		<main class={`zone:main ${parent} l:grid  scroll:y surface:0:${theme}`}>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
@@ -59,7 +59,17 @@
 			<Details title="Controls" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class={`zone:5 l:grid `}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
-	</footer>
+
+	<div class={`zone:3 ${parent} l:grid size:${size}`}>
+		<footer class={`l:grid size:${size} `}>
+			<Details
+				title="Footer"
+				{theme}
+				layout="grid"
+				gare="nord"
+				surface="4"
+				height="md"
+			/>
+		</footer>
+	</div>
 </div>

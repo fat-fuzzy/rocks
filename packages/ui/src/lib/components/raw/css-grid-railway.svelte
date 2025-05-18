@@ -64,7 +64,16 @@
 		</aside>
 	</div>
 
-	<footer class={`zone:3 l:grid size:${size} surface:3:${theme}`}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
-	</footer>
+	<div class={`zone:3 ${parent} l:grid size:${size}`}>
+		<footer class={`l:grid size:${size} `}>
+			<Details
+				title="Footer"
+				{theme}
+				layout="grid"
+				gare="nord"
+				surface="4"
+				height="md"
+			/>
+		</footer>
+	</div>
 </div>
