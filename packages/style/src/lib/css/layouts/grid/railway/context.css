@@ -1,0 +1,3 @@
+.railway.exchange > .context {
+	--max-block-size: calc(100vh - var(--ui-header-height) - var(--grid-gap));
+}
