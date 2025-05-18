@@ -28,25 +28,16 @@
 		scroll?: string
 	}
 
-	type Areas = {
-		[key: string]: AreaZone[]
-	}
-
-	const fiveZones = [
+	const areas = [
 		{
-			zone: zoneNav1,
+			zone: zoneHeader,
 			grid: true,
-		},
-		{
-			zone: zoneNav2,
-			grid: true,
-		},
-		{
-			zone: zoneAppContext,
-			grid: true,
+			exchange: true,
+			tag: 'header',
 		},
 		{
 			zone: zoneContent,
+			hug: true,
 			grid: true,
 		},
 		{
@@ -55,17 +46,6 @@
 		},
 	]
 
-	const zoneGroups: Areas = {
-		tgv: fiveZones,
-		metro: fiveZones,
-		steam: fiveZones,
-		tram: fiveZones,
-		voyager: fiveZones,
-		railway: fiveZones,
-	}
-	zoneGroups.steam[1].gare = 'hug'
-
-	let areas = $derived(zoneGroups[sidenav.layout])
 	let brightness = $derived(appContext.brightness)
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
 </script>
@@ -79,7 +59,7 @@
 	path={page.url.pathname}
 />
 
-{#snippet zoneNav1()}
+{#snippet zoneHeader()}
 	<div class="navbar">
 		<HeaderNav
 			id="nav"
@@ -101,46 +81,46 @@
 			formaction="toggleNav"
 		/>
 	</div>
-{/snippet}
 
-{#snippet zoneNav2()}
-	{#if sidenav.layout === 'tgv'}
-		<div class="app-name">
-			<Magic {spell} size="xs" font="sm" grow={true}>
-				<p class="text:center font:heading">Home</p>
-			</Magic>
-		</div>
-	{:else}
-		<RevealNav
-			{...sidenav}
-			position={false}
-			area="gare"
-			place="ouest"
-			layout="rails"
-			scroll="y"
-			layer={1}
-			justify="evenly"
+	<div class="sidebar">
+		{#if sidenav.layout === 'tgv'}
+			<div class="app-name">
+				<Magic {spell} size="xs" font="sm" grow={true}>
+					<p class="text:center font:heading">Home</p>
+				</Magic>
+			</div>
+		{:else}
+			<RevealNav
+				{...sidenav}
+				position={false}
+				area="gare"
+				place="ouest"
+				layout="rails"
+				scroll="y"
+				layer={1}
+				justify="evenly"
+				size="md"
+				font="sm"
+				dismiss="outside"
+			/>
+		{/if}
+	</div>
+
+	<div class="context">
+		<RevealContext
+			id="appContext"
+			name="appContext"
+			label="Settings"
+			path={page.url.pathname}
+			actionPath={page.url.pathname}
+			breakpoint="xs"
 			size="md"
 			font="sm"
-			dismiss="outside"
+			formaction="updateSettings"
+			context={appContext}
+			reveal={appContext.reveal}
 		/>
-	{/if}
-{/snippet}
-
-{#snippet zoneAppContext()}
-	<RevealContext
-		id="appContext"
-		name="appContext"
-		label="Settings"
-		path={page.url.pathname}
-		actionPath={page.url.pathname}
-		breakpoint="xs"
-		size="md"
-		font="sm"
-		formaction="updateSettings"
-		context={appContext}
-		reveal={appContext.reveal}
-	/>
+	</div>
 {/snippet}
 
 {#snippet zoneContent()}

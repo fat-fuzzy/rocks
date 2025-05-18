@@ -16,21 +16,26 @@
 </script>
 
 <div class={`rails l:grid:${parent} size:${size}`}>
-	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
+	<header
+		class={`zone:1 exchange l:grid size:${size} surface:1:${theme} dotted`}
+	>
 		<MainNav {theme} />
+
+		<SideNav
+			zone={`sidebar size:${size}`}
+			{theme}
+			layout="grid"
+			gare="ouest"
+			width="lg"
+			height="sm"
+		/>
+
+		<aside class={`context l:grid size:${size}`}>
+			<AppContext {theme} />
+		</aside>
 	</header>
-	<SideNav
-		zone={`zone:2 size:${size}`}
-		{theme}
-		layout="grid"
-		gare="ouest"
-		width="lg"
-		height="sm"
-	/>
-	<aside class={`zone:3 l:grid size:${size}`}>
-		<AppContext {theme} />
-	</aside>
-	<div class={`zone:4 ${parent} size:${size} scroll:y snap:start`}>
+
+	<div class={`zone:2 ${parent} size:${size} scroll:y snap:start`}>
 		<main class={`zone:main ${parent}  scroll:y surface:0:${theme}`}>
 			<header class="page-header l:sidebar size:md">
 				<div class="l:main">
@@ -77,7 +82,8 @@
 			</div>
 		</main>
 	</div>
-	<footer class={`zone:5 l:grid size:${size} surface:3:${theme}`}>
+
+	<footer class={`zone:3 l:grid size:${size} surface:3:${theme}`}>
 		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
 	</footer>
 </div>
