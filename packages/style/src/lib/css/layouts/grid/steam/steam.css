@@ -27,8 +27,12 @@
 }
 
 @media screen and (min-width: 620px) {
-	.l\:grid\:urbanist {
+	.l\:grid\:steam {
 		--overlay-inline-size: var(--sidebar-xl);
+		grid-template-columns:
+			calc(var(--sidebar-track-sm) + 2 * var(--grid-gap))
+			1fr
+			var(--sidebar-width);
 	}
 }
 

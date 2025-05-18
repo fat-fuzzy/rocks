@@ -39,7 +39,6 @@
 @media screen and (min-width: 620px) {
 	.tram.zone\:2 {
 		grid-template-areas: 'zone-main page-context';
-		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
 
 		> .page-context {

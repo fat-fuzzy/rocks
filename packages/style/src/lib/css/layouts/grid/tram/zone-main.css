@@ -31,6 +31,10 @@
 			max-inline-size: var(--sidebar-width);
 		}
 	}
+
+	.tram.zone\:main {
+		grid-column: span 2;
+	}
 }
 
 @media screen and (min-width: 1360px) {
