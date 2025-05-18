@@ -33,6 +33,12 @@
 	grid-row: span 2;
 }
 
+.exchange > .sidebar > .app-name {
+	grid-template-columns: subgrid;
+	inline-size: 100%;
+	max-inline-size: var(--sidebar-width);
+}
+
 .exchange > .sidebar > .app-name ff-callout {
 	border-top: var(--border-width-md) dotted var(--shade);
 	border-radius: 0;
@@ -88,7 +94,11 @@
 	.exchange > .sidebar {
 		z-index: initial;
 	}
+	.exchange > .sidebar > .app-name {
+		grid-column: span 3;
+	}
 
+	.exchange > .sidebar > .app-name,
 	.exchange > .sidebar > nav.collapsed > form,
 	.exchange > .sidebar > nav.collapsed > form > [class*='l:switcher'] {
 		inline-size: 100%;

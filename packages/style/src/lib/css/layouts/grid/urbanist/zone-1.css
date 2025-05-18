@@ -8,7 +8,6 @@
 	grid-template-areas: 'sidebar navbar context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	padding-inline: var(--grid-gap) 0;
 	z-index: var(--layout-z-index-layer);
 }
 
@@ -28,7 +27,8 @@
 }
 
 @media screen and (min-width: 1360px) {
-	.zone\:1.exchange {
+	.zone\:1.exchange,
+	.swap .zone\:1.exchange {
 		grid-template-areas: 'sidebar sidebar sidebar navbar context context context';
 	}
 }

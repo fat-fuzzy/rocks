@@ -9,7 +9,6 @@
 	block-size: fit-content;
 
 	> footer {
-		display: grid;
 		grid-area: main-footer;
 		padding-inline: var(--grid-gap);
 		padding-block: 0;

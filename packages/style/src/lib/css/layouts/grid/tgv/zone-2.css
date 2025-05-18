@@ -8,7 +8,6 @@
 	grid-template-areas: 'zone-main';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	z-index: var(--z-index-inset);
 
 	&.scroll\:y {
 		scrollbar-gutter: auto;
