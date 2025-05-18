@@ -3,7 +3,7 @@
  * Contains main navigation
  */
 
-:where([class*='voyager']) {
+:where([class*='test']) {
 	.zone\:1 {
 		grid-area: zone-1;
 		grid-template-areas: 'navbar';

@@ -76,7 +76,8 @@ import './grid/tram/zone-3.css'
 import './grid/tram/zone-main.css'
 
 import './grid/voyager/voyager.css'
-import './grid/voyager/zone-4.css'
+import './grid/voyager/zone-2.css'
+import './grid/voyager/zone-3.css'
 import './grid/voyager/zone-main.css'
 
 import './grid/urbanist/urbanist.css'

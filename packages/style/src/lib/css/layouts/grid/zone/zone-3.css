@@ -3,7 +3,7 @@
  * Contains main app context
  */
 
-:where([class*='voyager']) {
+:where([class*='test']) {
 	.zone\:3 {
 		grid-area: zone-3;
 		grid-template-areas: 'app-context';

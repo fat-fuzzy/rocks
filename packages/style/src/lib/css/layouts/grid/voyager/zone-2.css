@@ -1,8 +1,13 @@
 /**
- * ZONE 4
+ * ZONE 2
  * Contains main content & page context
  */
-.voyager.zone\:4 {
+.voyager.zone\:2 {
+	grid-area: zone-2;
+	grid-template-areas: 'zone-main';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+
 	> .page-context {
 		position: relative;
 		block-size: fit-content;
@@ -11,7 +16,7 @@
 }
 
 @media screen and (min-width: 620px) {
-	.voyager.zone\:4 {
+	.voyager.zone\:2 {
 		> .page-context > * {
 			--max-inline-size: calc(100% - 3 * var(--grid-gap));
 			inline-size: 100%;

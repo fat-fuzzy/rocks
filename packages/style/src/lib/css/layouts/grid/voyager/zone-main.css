@@ -1,4 +1,11 @@
 .voyager.zone\:main {
+	grid-area: zone-main;
+	grid-template-areas:
+		'page-header'
+		'page-main';
+	grid-template-rows: auto 1fr;
+	grid-template-columns: subgrid;
+	grid-column: span 3;
 	min-block-size: unset;
 	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
@@ -8,5 +15,11 @@
 		> .page-main > aside > nav > ul {
 			max-inline-size: var(--sidebar-width);
 		}
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.voyager.zone\:main {
+		grid-column: span 7;
 	}
 }
