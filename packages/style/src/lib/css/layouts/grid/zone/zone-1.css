@@ -3,7 +3,7 @@
  * Contains main navigation
  */
 
-:where([class*='steam'], [class*='tgv'], [class*='tram'], [class*='voyager']) {
+:where([class*='tgv'], [class*='tram'], [class*='voyager']) {
 	.zone\:1 {
 		grid-area: zone-1;
 		grid-template-areas: 'navbar';

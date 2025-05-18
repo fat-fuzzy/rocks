@@ -3,13 +3,21 @@
  * Contains main content & page context
  */
 
-.steam.zone\:4 {
+.steam.zone\:2 {
+	grid-area: zone-2;
 	grid-template-areas:
 		'zone-main'
 		'page-context';
+	grid-template-columns: subgrid;
 	grid-template-rows: 1fr auto;
 
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
+
 	.page-context {
+		grid-area: page-context;
+		grid-column: span 3;
 		align-content: start;
 		position: relative;
 		padding-block-end: var(--grid-gap);
@@ -32,7 +40,7 @@
 }
 
 @media screen and (min-width: 620px) {
-	.steam.zone\:4 {
+	.steam.zone\:2 {
 		grid-template-areas: 'zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
@@ -46,5 +54,15 @@
 			block-size: 100%;
 			max-block-size: var(--max-block-size);
 		}
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.steam.zone\:2 {
+		grid-column-start: 1;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open]) ~ .zone\:2.hug {
+		grid-column-start: 4;
 	}
 }

@@ -3,7 +3,7 @@
  * Contains main app context
  */
 
-:where([class*='steam'], [class*='tgv'], [class*='tram'], [class*='voyager']) {
+:where([class*='tgv'], [class*='tram'], [class*='voyager']) {
 	.zone\:3 {
 		grid-area: zone-3;
 		grid-template-areas: 'app-context';

@@ -1,7 +1,9 @@
 .steam.zone\:main {
+	grid-area: zone-main;
 	grid-template-areas:
 		'page-header'
 		'page-main';
+	grid-column: span 3;
 	grid-template-rows: auto 1fr;
 	min-block-size: unset;
 	align-content: start;
@@ -9,6 +11,16 @@
 	overscroll-behavior-y: contain;
 	padding-block-end: var(--grid-gap);
 	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+
+	> .page-header {
+		grid-area: page-header;
+		block-size: fit-content;
+	}
+
+	> .page-main {
+		grid-area: page-main;
+		padding-block-end: var(--grid-gap);
+	}
 }
 
 @media screen and (min-width: 620px) {
