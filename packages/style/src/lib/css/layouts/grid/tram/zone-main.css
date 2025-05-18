@@ -1,12 +1,40 @@
 .tram.zone\:main {
+	grid-area: zone-main;
+	grid-template-areas:
+		'page-header'
+		'page-main';
+	grid-template-columns: subgrid;
+	grid-column: span 3;
 	min-block-size: unset;
 	max-block-size: var(--overlay-height-lg);
 	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+
+	> .page-header {
+		grid-area: page-header;
+		block-size: fit-content;
+	}
+
+	> .page-main {
+		grid-area: page-main;
+		padding-block-end: var(--grid-gap);
+	}
 }
 
 @media screen and (min-width: 620px) {
 	.tram.zone\:main {
 		block-size: auto;
 		max-block-size: var(--max-block-size);
+	}
+
+	.tram.zone\:main {
+		> .page-main > aside > nav > ul {
+			max-inline-size: var(--sidebar-width);
+		}
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.tram.zone\:main {
+		grid-column: span 7;
 	}
 }

@@ -3,7 +3,7 @@
  * Left Sidebar contains secondary navigation
  */
 
-:where([class*='tram'], [class*='voyager']) {
+:where([class*='voyager']) {
 	.zone\:2 {
 		grid-area: zone-2;
 		grid-template-areas:

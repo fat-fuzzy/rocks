@@ -2,19 +2,42 @@
  * ZONE 3
  * Contains main content & page context
  */
-.tram.zone\:4 {
+.tram.zone\:2 {
+	grid-area: zone-2;
 	grid-template-areas:
 		'zone-main'
 		'page-context';
+	grid-template-columns: subgrid;
 	grid-template-rows: minmax(var(--overlay-height-md), 1fr) auto;
+
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
 
 	> .page-context {
 		max-block-size: var(--overlay-height-2xs);
 	}
+
+	> .page-context:not(.empty) {
+		grid-area: page-context;
+		grid-column: span 3;
+		position: relative;
+		align-content: start;
+		align-items: start;
+		z-index: var(--layout-z-index-layer);
+		padding-block-end: var(--grid-gap);
+	}
+
+	> .page-context.empty {
+		--size-y: 0;
+		block-size: 0;
+		inline-size: 0;
+		padding: 0;
+	}
 }
 
 @media screen and (min-width: 620px) {
-	.tram.zone\:4 {
+	.tram.zone\:2 {
 		grid-template-areas: 'zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
