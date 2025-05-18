@@ -143,7 +143,6 @@
 					html={content.html}
 					size="md"
 					font="md"
-					margin="auto"
 					element="section"
 				/>
 
