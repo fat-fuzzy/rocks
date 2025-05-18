@@ -49,6 +49,7 @@
 			text-transform: uppercase;
 			padding-block: var(--gap, var(--size-base-3xs));
 			padding-inline: var(--gap, var(--size-base-2xs));
+			line-height: var(--font-leading-ui);
 		}
 
 		&[aria-current='page'] {

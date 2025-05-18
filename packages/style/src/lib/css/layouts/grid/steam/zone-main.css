@@ -26,5 +26,10 @@
 @media screen and (min-width: 620px) {
 	.steam.zone\:main {
 		max-block-size: var(--max-block-size);
+		padding-block-start: var(--ui-size-lg);
+
+		> .page-main > aside > nav > ul {
+			max-inline-size: var(--sidebar-width);
+		}
 	}
 }

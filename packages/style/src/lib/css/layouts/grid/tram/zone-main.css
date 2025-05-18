@@ -24,6 +24,7 @@
 		grid-column: span 2;
 		block-size: auto;
 		max-block-size: var(--max-block-size);
+		padding-block-start: var(--ui-size-lg);
 
 		> .page-main > aside > nav > ul {
 			max-inline-size: var(--sidebar-width);

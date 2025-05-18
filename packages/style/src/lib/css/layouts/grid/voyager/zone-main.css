@@ -12,6 +12,8 @@
 
 @media screen and (min-width: 620px) {
 	.voyager.zone\:main {
+		padding-block-start: var(--ui-size-lg);
+
 		> .page-main > aside > nav > ul {
 			max-inline-size: var(--sidebar-width);
 		}
