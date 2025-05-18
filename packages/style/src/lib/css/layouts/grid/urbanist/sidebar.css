@@ -63,7 +63,7 @@
 		> .sidebar
 		[class*='gare:'].width\:xl:is([open], .expanded)
 		> ff-reveal,
-	.exchange > .sidebar [class*='gare:'][class*='l:rails:'] > ff-reveal {
+	.exchange > .sidebar [class*='gare:'] > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
 	}
 }
@@ -80,7 +80,6 @@
 		[class*='gare:'].width\:xl:is([open], .expanded)
 		> ff-reveal,
 	.exchange > .sidebar [class*='gare:'][class*='l:rails:'] > ff-reveal {
-		--sidebar-width: var(--layout-sidebar-md);
 		--overlay-block-size: var(--overlay-height-sm);
 	}
 }
@@ -123,6 +122,16 @@
 		--overlay-inline-size: calc(var(--sidebar-width) + 3 * var(--grid-gap));
 		left: 0;
 		right: unset;
+	}
+
+	.exchange > .sidebar [class*='gare:'].width\:lg,
+	.exchange
+		> .sidebar
+		[class*='gare:'].width\:lg:is([open], .expanded)
+		> ff-reveal,
+	.exchange > .sidebar [class*='gare:'] > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
+		--overlay-block-size: var(--max-block-size);
 	}
 
 	.exchange > .sidebar [class*='gare:'].width\:full > ff-reveal {

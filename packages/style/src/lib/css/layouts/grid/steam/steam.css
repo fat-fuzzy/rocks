@@ -23,6 +23,12 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
+@media screen and (min-width: 620px) {
+	.l\:grid\:urbanist {
+		--overlay-inline-size: var(--sidebar-xl);
+	}
+}
+
 @media screen and (min-width: 1360px) {
 	.l\:grid\:steam {
 		grid-template-areas:

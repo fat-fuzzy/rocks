@@ -39,6 +39,7 @@ details[class*='gare:'] > ff-reveal,
 	right: 0;
 }
 
+.gare\:nord:is([open], .expanded) > ff-reveal,
 .gare\:est:is([open], .expanded) > ff-reveal,
 .gare\:ouest:is([open], .expanded) > ff-reveal {
 	block-size: fit-content;
