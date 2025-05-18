@@ -3,7 +3,6 @@
 	grid-template-areas:
 		'page-header'
 		'page-main';
-	grid-template-columns: subgrid;
 	grid-column: span 3;
 	min-block-size: unset;
 	max-block-size: var(--overlay-height-lg);
@@ -22,23 +21,22 @@
 
 @media screen and (min-width: 620px) {
 	.tram.zone\:main {
+		grid-column: span 2;
 		block-size: auto;
 		max-block-size: var(--max-block-size);
-	}
 
-	.tram.zone\:main {
 		> .page-main > aside > nav > ul {
 			max-inline-size: var(--sidebar-width);
 		}
-	}
-
-	.tram.zone\:main {
-		grid-column: span 2;
 	}
 }
 
 @media screen and (min-width: 1360px) {
 	.tram.zone\:main {
-		grid-column: span 7;
+		grid-column: span 4;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open]) ~ .zone\:2.hug .tram.zone\:main {
+		grid-column: span 1;
 	}
 }
