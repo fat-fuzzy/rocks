@@ -66,7 +66,8 @@ import './grid/steam/zone-3.css'
 import './grid/steam/zone-main.css'
 
 import './grid/tgv/tgv.css'
-import './grid/tgv/zone-4.css'
+import './grid/tgv/zone-2.css'
+import './grid/tgv/zone-3.css'
 import './grid/tgv/zone-main.css'
 
 import './grid/tram/tram.css'

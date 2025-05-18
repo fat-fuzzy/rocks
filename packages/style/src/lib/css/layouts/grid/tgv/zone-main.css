@@ -1,13 +1,42 @@
 .tgv.zone\:main {
+	grid-area: zone-main;
 	grid-template-areas:
 		'page-header'
 		'page-main';
 	grid-template-rows: auto 1fr;
 	grid-template-columns: subgrid;
+	grid-column: span 3;
 	min-block-size: unset;
 	padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
 
 	> .page-main {
+		grid-area: page-main;
+		grid-column: span 3;
 		padding-block-end: var(--ui-size);
+	}
+
+	.page-context {
+		grid-area: page-context;
+		grid-column: span 3;
+		align-content: start;
+		position: relative;
+		padding-block-end: var(--grid-gap);
+		max-block-size: var(--overlay-height-xs);
+		min-block-size: var(--overlay-height-2xs);
+		overscroll-behavior-y: contain;
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.tgv.zone\:main {
+		> .page-main > aside > nav > ul {
+			max-inline-size: var(--sidebar-width);
+		}
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.tgv.zone\:main {
+		grid-column: span 7;
 	}
 }

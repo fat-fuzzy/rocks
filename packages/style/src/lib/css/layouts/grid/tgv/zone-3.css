@@ -1,0 +1,17 @@
+/**
+ * ZONE 5
+ * Contains main footer and cookies settings access
+ */
+
+.tgv.zone\:3 {
+	grid-area: zone-3;
+	grid-template-areas: 'main-footer';
+	block-size: fit-content;
+
+	> footer {
+		display: grid;
+		grid-area: main-footer;
+		padding-inline: var(--grid-gap);
+		padding-block: 0;
+	}
+}

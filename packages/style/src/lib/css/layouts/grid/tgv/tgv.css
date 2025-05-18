@@ -7,33 +7,32 @@
 		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size) -
 			var(--outline-offset-md)
 	);
+	--sidebar-track-sm: var(--layout-sidebar-collapsed);
+	--sidebar-track-md: calc(
+		var(--layout-sidebar-sm) - var(--layout-sidebar-collapsed)
+	);
+	--sidebar-track-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
 	inline-size: 100%;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
 	grid-template-areas:
-		'zone-1   zone-2  zone-3'
-		'zone-4   zone-4  zone-4'
-		'zone-5   zone-5  zone-5';
+		'zone-1  zone-1  zone-1'
+		'zone-2  zone-2  zone-2'
+		'zone-3  zone-3  zone-3';
 	grid-template-columns: auto 1fr auto;
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
-}
-
-.l\:grid\:tgv.swap {
-	grid-template-areas:
-		'zone-2  zone-1  zone-3'
-		'zone-4  zone-4  zone-4'
-		'zone-5  zone-5  zone-5';
 }
 
 @media screen and (min-width: 620px) {
 	.l\:grid\:tgv {
 		grid-template-areas:
-			'zone-2  zone-1  zone-3'
-			'zone-4  zone-4  zone-4'
-			'zone-5  zone-5  zone-5';
-		grid-template-columns: minmax(auto, var(--sidebar-width)) 1fr minmax(
-				auto,
-				var(--sidebar-width)
-			);
+			'zone-1  zone-1  zone-1  zone-1  zone-1  zone-1  zone-1'
+			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'
+			'zone-3  zone-3  zone-3  zone-3  zone-3  zone-3  zone-3';
+		grid-template-columns:
+			var(--sidebar-track-sm) var(--sidebar-track-md) var(--sidebar-track-lg) 1fr var(
+				--sidebar-track-lg
+			)
+			var(--sidebar-track-md) var(--sidebar-track-sm);
 	}
 }
