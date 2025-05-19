@@ -91,9 +91,13 @@
 
 	<div class="sidebar l:grid size:3xs align:center width:lg height:sm">
 		{#if sidenav.layout === 'tgv'}
-			<div class="app-name dotted surface:1:primary">
-				<Magic {spell} size="xs" font="xs" grow={true}>
-					<p class="text:center font:heading">Home</p>
+			<div class="app-name">
+				<Magic {spell} size="xs" font="xs" grow={true} circle="dotted">
+					<p
+						class="emoji:home l:flex justify:center w:full text:center font:heading"
+					>
+						Home
+					</p>
 				</Magic>
 			</div>
 		{:else}

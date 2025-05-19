@@ -1,16 +1,28 @@
 <script lang="ts">
 	import type {MagicProps} from '$types'
-	let {text, spell, level, uno, due, size, font, grow, children}: MagicProps =
-		$props()
+	let {
+		text,
+		spell,
+		level,
+		uno,
+		due,
+		circle,
+		size,
+		font,
+		grow,
+		children,
+	}: MagicProps = $props()
 
 	let genieUno = $derived(uno ? `magic:${spell} svg:${uno}` : '')
 	let genieDue = $derived(due ? `magic:${spell} svg:${due} size:${size}` : '')
 	let levelClass = $derived(level ? level : '')
+	let variantClass = $derived(circle ? circle : '')
+	let growClass = $derived(grow ? 'w:full' : '')
 	let fontClass = $derived(font ? `font:${font}` : size ? `font:${size}` : '')
 </script>
 
 <div
-	class={`ff:magic ${genieUno} align:center justify:between size:${size} ${grow ? 'w:full' : ''}`}
+	class={`ff:magic ${genieUno} align:center justify:between size:${size} ${growClass} ${variantClass}`}
 	data-testid="Magic"
 >
 	<ff-callout
