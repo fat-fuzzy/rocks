@@ -1,29 +1,8 @@
 .urbanist.zone\:main {
-	grid-area: zone-main;
-	grid-template-areas:
-		'page-header'
-		'page-main';
 	grid-template-rows: auto 1fr;
 	grid-template-columns: subgrid;
 	grid-column: span 3;
 	min-block-size: unset;
-	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
-}
-
-@media screen and (min-width: 620px) {
-	.urbanist.zone\:main {
-		padding-block-start: var(--ui-size-lg);
-
-		> .page-main > aside > nav > ul {
-			max-inline-size: var(--sidebar-width);
-		}
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.urbanist.zone\:main {
-		padding-inline: calc(4 * var(--grid-gap)) calc(2 * var(--grid-gap));
-	}
 }
 
 @media screen and (min-width: 1360px) {

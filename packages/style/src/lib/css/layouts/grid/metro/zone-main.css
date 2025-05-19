@@ -1,37 +1,6 @@
 .metro.zone\:main {
-	grid-area: zone-main;
-	grid-template-areas:
-		'page-header'
-		'page-main';
 	grid-column: span 3;
 	min-block-size: unset;
-	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
-
-	> .page-header {
-		grid-area: page-header;
-		block-size: fit-content;
-	}
-
-	> .page-main {
-		grid-area: page-main;
-		padding-block-end: var(--grid-gap);
-	}
-}
-
-@media screen and (min-width: 620px) {
-	.metro.zone\:main {
-		padding-block-start: var(--ui-size-lg);
-
-		> .page-main > aside > nav > ul {
-			max-inline-size: var(--sidebar-width);
-		}
-	}
-}
-
-@media screen and (min-width: 935px) {
-	.metro.zone\:main {
-		padding-inline: calc(3 * var(--grid-gap)) 0;
-	}
 }
 
 @media screen and (min-width: 1360px) {

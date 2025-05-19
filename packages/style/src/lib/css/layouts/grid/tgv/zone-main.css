@@ -1,38 +1,19 @@
 .tgv.zone\:main {
-	grid-area: zone-main;
-	grid-template-areas:
-		'page-header'
-		'page-main';
 	grid-template-columns: subgrid;
 	grid-template-rows: auto 1fr;
 	grid-column: span 3;
 	min-block-size: unset;
-	padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
 
 	> .page-header {
-		grid-area: page-header;
 		grid-template-columns: subgrid;
 		grid-template-rows: subgrid;
-		block-size: fit-content;
 		grid-column: span 3;
 	}
 
 	> .page-main {
-		grid-area: page-main;
 		grid-template-columns: subgrid;
 		grid-template-rows: subgrid;
 		grid-column: span 3;
-		padding-block-end: var(--ui-size);
-	}
-}
-
-@media screen and (min-width: 620px) {
-	.tgv.zone\:main {
-		padding-block-start: var(--ui-size-lg);
-
-		> .page-main > aside > nav > ul {
-			max-inline-size: var(--sidebar-width);
-		}
 	}
 }
 

@@ -1,7 +1,10 @@
 .zone\:main {
 	grid-area: zone-main;
-	padding-inline: var(--ui-size);
-	padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
+	grid-template-areas:
+		'page-header'
+		'page-main';
+	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+	padding-block: var(--grid-gap) calc(var(--ui-header-height) + var(--ui-size));
 
 	> .page-header {
 		grid-area: page-header;
@@ -10,6 +13,22 @@
 
 	> .page-main {
 		grid-area: page-main;
-		padding-block-end: var(--ui-size);
+		padding-block-end: var(--grid-gap);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.zone\:main {
+		padding-block-start: var(--ui-size-lg);
+
+		> .page-main > aside > nav > ul {
+			max-inline-size: var(--sidebar-width);
+		}
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.zone\:main {
+		padding-inline: calc(4 * var(--grid-gap)) calc(2 * var(--grid-gap));
 	}
 }
