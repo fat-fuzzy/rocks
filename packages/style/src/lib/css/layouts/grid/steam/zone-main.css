@@ -10,6 +10,7 @@
 @media screen and (min-width: 620px) {
 	.steam.zone\:main {
 		max-block-size: var(--max-block-size);
+		padding-inline-end: calc(2 * var(--grid-gap));
 	}
 
 	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)

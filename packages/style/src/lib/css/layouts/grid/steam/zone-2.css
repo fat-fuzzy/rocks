@@ -21,20 +21,18 @@
 
 @media screen and (min-width: 620px) {
 	.steam.zone\:2 {
-		grid-template-areas: 'zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
-		grid-template-rows: 1fr;
 		padding-inline-end: var(--grid-gap);
-
-		> .page-context {
-			box-shadow: unset;
-			max-inline-size: var(--sidebar-width);
-			max-block-size: var(--max-block-size);
-		}
 
 		> .page-context[class*='media:'] {
 			block-size: 100%;
 			max-block-size: var(--max-block-size);
 		}
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.steam.zone\:2 {
+		padding-inline-end: 0;
 	}
 }

@@ -4,30 +4,16 @@
  */
 .railway.zone\:2 {
 	grid-template-rows: 1fr auto;
+
+	> .page-context {
+		max-block-size: var(--overlay-height-2xs);
+	}
 }
 
 @media screen and (min-width: 620px) {
 	.railway.zone\:2 {
-		grid-template-areas: 'zone-main page-context';
-		grid-template-rows: 1fr;
-
-		> .page-context {
+		> .page-context:not(.empty) {
 			max-block-size: var(--max-block-size);
-		}
-
-		> .page-context > * {
-			--max-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
-			inline-size: 100%;
-			max-inline-size: var(--max-inline-size);
-		}
-
-		> .page-context > nav > ul > li.ellipsis {
-			max-inline-size: 100%;
-		}
-
-		> .page-context > details {
-			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
-			margin-inline-start: var(--ui-size-sm);
 		}
 	}
 }

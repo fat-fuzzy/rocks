@@ -32,3 +32,30 @@
 		padding: 0;
 	}
 }
+
+@media screen and (min-width: 620px) {
+	.zone\:2 {
+		grid-template-areas: 'zone-main page-context';
+		grid-template-rows: 1fr;
+
+		> .page-context {
+			box-shadow: unset;
+			max-block-size: var(--max-block-size);
+		}
+
+		> .page-context > * {
+			--max-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
+			inline-size: 100%;
+			max-inline-size: var(--max-inline-size);
+		}
+
+		> .page-context > nav > ul > li.ellipsis {
+			max-inline-size: 100%;
+		}
+
+		> .page-context > details {
+			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
+			margin-inline-start: var(--ui-size-sm);
+		}
+	}
+}

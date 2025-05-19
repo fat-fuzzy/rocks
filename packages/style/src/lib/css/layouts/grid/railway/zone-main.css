@@ -5,8 +5,16 @@
 	align-content: start;
 }
 
+@media screen and (min-width: 620px) {
+	.railway.zone\:main {
+		grid-column: span 2;
+		padding-inline-end: var(--grid-gap);
+	}
+}
+
 @media screen and (min-width: 1360px) {
 	.railway.zone\:main {
-		grid-column: span 4;
+		grid-column-start: 2;
+		grid-column: span 1;
 	}
 }
