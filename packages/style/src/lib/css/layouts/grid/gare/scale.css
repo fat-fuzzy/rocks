@@ -65,8 +65,8 @@
 }
 
 @media screen and (min-width: 620px) {
-	[class*='gare:'].width\:lg,
-	[class*='gare:'].width\:lg > ff-reveal {
+	[class*='gare:'].width\:xl,
+	[class*='gare:'].width\:xl > ff-reveal {
 		--overlay-inline-size: calc(
 			100vw - var(--sidebar-width) - 4 * var(--grid-gap)
 		);

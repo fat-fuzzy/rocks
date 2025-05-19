@@ -3,9 +3,7 @@
  * Contains main content & page context
  */
 .urbanist.zone\:2 {
-	grid-area: zone-2;
 	grid-template-areas: 'zone-main';
-	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 }
 

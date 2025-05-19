@@ -9,3 +9,10 @@
 		grid-column: span 2;
 	}
 }
+
+@media screen and (min-width: 1360px) {
+	.zone\:main {
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg))
+			calc(2 * var(--grid-gap));
+	}
+}

@@ -26,9 +26,7 @@
 			max-inline-size: var(--sidebar-width);
 		}
 	}
-}
 
-@media screen and (min-width: 935px) {
 	.zone\:main {
 		padding-inline: calc(2 * var(--grid-gap)) 0;
 	}

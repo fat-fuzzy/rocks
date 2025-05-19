@@ -3,80 +3,32 @@
  * Left Sidebar contains secondary navigation
  */
 
-:where([class*='test']) {
-	.zone\:2 {
-		grid-area: zone-2;
-		grid-template-areas:
-			'gare-control'
-			'gare-depot';
-		grid-template-rows: subgrid;
+.zone\:2 {
+	grid-area: zone-2;
+	grid-template-areas:
+		'zone-main'
+		'page-context';
+	grid-template-columns: subgrid;
+	z-index: var(--layout-z-index-layer);
+
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
+
+	> .page-context:not(.empty) {
+		grid-area: page-context;
+		grid-column: span 3;
+		position: relative;
+		align-content: start;
+		align-items: start;
 		z-index: var(--layout-z-index-layer);
+		padding-block-end: var(--grid-gap);
 	}
 
-	.swap.exchange {
-		padding-inline-start: var(--grid-gap);
-	}
-
-	.zone\:2 > .gare-control {
-		grid-area: gare-control;
-	}
-
-	.zone\:2 > .gare-depot {
-		grid-area: gare-depot;
-		grid-row: span 2;
-	}
-
-	.zone\:2 > .app-name ff-callout {
-		border-top: var(--border-width-md) dotted var(--shade);
-		border-radius: 0;
-	}
-
-	.zone\:2 > .app-name,
-	.zone\:2:has(.app-name),
-	.zone\:2 > nav > form > [class*='l:switcher'],
-	.zone\:2 > nav.collapsed > form,
-	.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
-		inline-size: 100%;
-	}
-
-	.zone\:2 .app-name ff-callout {
-		border-radius: 0;
-	}
-
-	.zone\:2 .app-name ff-callout > p {
-		line-height: var(--font-leading-large);
-	}
-
-	@media screen and (min-width: 620px) {
-		.zone\:2 {
-			padding-inline: var(--grid-gap) 0;
-		}
-
-		.zone\:2 > .app-name,
-		.zone\:2:has(.app-name) {
-			inline-size: auto;
-			max-inline-size: var(--sidebar-width);
-		}
-	}
-
-	@media screen and (min-width: 935px) {
-		.zone\:2 {
-			z-index: initial;
-		}
-
-		.zone\:2 > nav.collapsed > form,
-		.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
-			inline-size: var(--sidebar-width);
-			max-inline-size: var(--sidebar-width);
-		}
-
-		.zone\:2 > nav .zone\:2 > nav > form,
-		.zone\:2 > nav > form {
-			inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
-		}
-
-		.zone\:2 > nav > form > [class*='l:switcher'] {
-			max-inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
-		}
+	> .page-context.empty {
+		--size-y: 0;
+		block-size: 0;
+		inline-size: 0;
+		padding: 0;
 	}
 }

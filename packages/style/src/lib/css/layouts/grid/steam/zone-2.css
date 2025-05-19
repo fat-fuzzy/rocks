@@ -4,27 +4,7 @@
  */
 
 .steam.zone\:2 {
-	grid-area: zone-2;
-	grid-template-areas:
-		'zone-main'
-		'page-context';
-	grid-template-columns: subgrid;
 	grid-template-rows: 1fr auto;
-
-	&.scroll\:y {
-		scrollbar-gutter: auto;
-	}
-
-	.page-context {
-		grid-area: page-context;
-		grid-column: span 3;
-		align-content: start;
-		position: relative;
-		padding-block-end: var(--grid-gap);
-		max-block-size: var(--overlay-height-xs);
-		min-block-size: var(--overlay-height-2xs);
-		overscroll-behavior-y: contain;
-	}
 
 	> .page-context > summary {
 		max-inline-size: var(--sidebar-width);
