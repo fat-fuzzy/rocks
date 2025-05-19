@@ -7,7 +7,6 @@
 	grid-template-rows: subgrid;
 
 	> .page-context {
-		position: relative;
 		block-size: fit-content;
 		max-block-size: var(--overlay-height-2xs);
 	}
