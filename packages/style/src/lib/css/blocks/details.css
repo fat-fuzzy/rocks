@@ -27,6 +27,17 @@ details > summary::before {
 	content: '👉';
 }
 
+/* Chrome etc */
+details > summary::marker,
+/* Safari */
+details > summary::-webkit-details-marker {
+	color: transparent;
+	inline-size: 0;
+	block-size: 0;
+	margin: 0;
+	padding: 0;
+}
+
 details[open] > summary {
 	color: var(--color-ui-ink-active, var(--ink));
 	background-color: var(--color-ui-bg-active, var(--shade));
