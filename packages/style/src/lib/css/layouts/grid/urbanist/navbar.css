@@ -1,7 +1,6 @@
 .exchange > .navbar {
 	grid-area: navbar;
 	grid-template-columns: subgrid;
-	inline-size: fit-content;
 }
 
 .exchange > .navbar .expanded ff-reveal {

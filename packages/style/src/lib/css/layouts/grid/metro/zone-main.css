@@ -5,6 +5,6 @@
 
 @media screen and (min-width: 935px) {
 	.metro.zone\:main {
-		grid-column: span 1;
+		grid-column: span 2;
 	}
 }

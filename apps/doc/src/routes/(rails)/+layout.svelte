@@ -112,7 +112,7 @@
 				justify="evenly"
 				size="sm"
 				font="xs"
-				width="full"
+				width="xl"
 				height="sm"
 				dismiss="outside"
 			/>

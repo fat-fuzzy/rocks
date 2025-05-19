@@ -44,8 +44,10 @@
 		grid-template-areas: 'zone-main page-context';
 		grid-template-columns: 1fr var(--sidebar-width);
 		grid-template-rows: 1fr;
+		padding-inline-end: var(--grid-gap);
 
 		> .page-context {
+			box-shadow: unset;
 			max-inline-size: var(--sidebar-width);
 			max-block-size: var(--max-block-size);
 		}
