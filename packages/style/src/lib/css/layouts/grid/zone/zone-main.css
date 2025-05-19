@@ -3,8 +3,9 @@
 	grid-template-areas:
 		'page-header'
 		'page-main';
+	grid-template-rows: auto 1fr;
 	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
-	padding-block: var(--grid-gap) calc(var(--ui-header-height) + var(--ui-size));
+	padding-block: calc(var(--ui-header-height) + var(--ui-size)) var(--grid-gap);
 
 	> .page-header {
 		grid-area: page-header;
@@ -29,6 +30,6 @@
 
 @media screen and (min-width: 935px) {
 	.zone\:main {
-		padding-inline: calc(4 * var(--grid-gap)) calc(2 * var(--grid-gap));
+		padding-inline: calc(2 * var(--grid-gap)) 0;
 	}
 }

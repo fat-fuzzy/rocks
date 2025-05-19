@@ -19,16 +19,16 @@
 		'zone-2  zone-2  zone-2'
 		'zone-3  zone-3  zone-3';
 	grid-template-columns:
-		calc(var(--sidebar-track-sm) + 2 * var(--grid-gap))
+		calc(var(--sidebar-track-sm) + 3 * var(--grid-gap))
 		1fr
-		calc(var(--sidebar-track-sm) + 2 * var(--grid-gap));
+		calc(var(--sidebar-track-sm) + 3 * var(--grid-gap));
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
 @media screen and (min-width: 620px) {
 	.l\:grid\:urbanist {
 		grid-template-columns:
-			calc(var(--sidebar-track-sm) + 2 * var(--grid-gap))
+			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
 			1fr
 			var(--sidebar-width);
 	}

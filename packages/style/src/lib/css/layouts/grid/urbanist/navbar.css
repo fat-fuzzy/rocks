@@ -1,13 +1,14 @@
 .exchange > .navbar {
 	grid-area: navbar;
 	grid-template-columns: subgrid;
+	inline-size: fit-content;
 }
 
 .exchange > .navbar .expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	left: calc(var(--outline-offset-md) + var(--grid-gap));
-	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+	left: calc(var(--outline-offset-sm) + var(--grid-gap));
+	right: var(--grid-gap);
 }
 
 .exchange > .navbar > nav,

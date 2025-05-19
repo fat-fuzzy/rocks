@@ -14,10 +14,6 @@
 	z-index: var(--layout-z-index-layer);
 }
 
-.exchange.swap > .sidebar {
-	padding-inline-start: var(--grid-gap);
-}
-
 .exchange > .sidebar > .gare\:ouest {
 	grid-column: span 3;
 }
@@ -55,10 +51,18 @@
 }
 
 @media screen and (min-width: 620px) {
+	.exchange.swap > .sidebar {
+		padding-inline-start: 0;
+	}
+
 	.exchange > .sidebar > .app-name,
 	.exchange > .sidebar:has(.app-name) {
 		inline-size: auto;
 		max-inline-size: var(--sidebar-width);
+	}
+
+	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] {
+		gap: 0;
 	}
 
 	.exchange > .sidebar.width\:lg,
@@ -99,7 +103,7 @@
 	.exchange > .sidebar:is([open], .expanded) > ff-reveal,
 	.exchange > .sidebar:is([open], .expanded) > ff-reveal {
 		--overlay-inline-size: calc(var(--sidebar-width) + 3 * var(--grid-gap));
-		left: calc(3 * var(--grid-gap));
+		left: calc(2 * var(--grid-gap));
 		right: unset;
 	}
 

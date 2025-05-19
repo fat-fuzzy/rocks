@@ -35,7 +35,7 @@
 }
 
 [class*='gare:'].width\:full {
-	--sidebar-2xl: calc(100vw - 2 * var(--grid-gap));
+	--sidebar-2xl: calc(100vw - 3 * var(--grid-gap));
 	--overlay-inline-size: var(--sidebar-2xl);
 }
 
@@ -61,23 +61,31 @@
 }
 
 [class*='zone:']:has([class*='gare:']) {
-	max-block-size: var(--max-block-size);
-}
-
-[class*='zone:']:has([class*='gare:'][class*='l:rails']) {
 	--overlay-block-size: var(--overlay-height-sm);
-	block-size: fit-content;
 }
 
 @media screen and (min-width: 620px) {
-	[class*='gare:'].width\:lg {
-		--sidebar-lg: calc(100vw - var(--sidebar-width) - 4 * var(--grid-gap));
-		--overlay-inline-size: var(--sidebar-lg);
+	[class*='gare:'].width\:lg,
+	[class*='gare:'].width\:lg > ff-reveal {
+		--overlay-inline-size: calc(
+			100vw - var(--sidebar-width) - 4 * var(--grid-gap)
+		);
 	}
 
-	[class*='gare:'].width\:full {
-		--sidebar-lg: calc(100vw - var(--sidebar-width) - 3 * var(--grid-gap));
-		--overlay-inline-size: var(--sidebar-lg);
+	[class*='gare:'].width\:full,
+	[class*='gare:'].width\:full > ff-reveal {
+		--overlay-inline-size: calc(
+			100vw - var(--sidebar-width) - 3 * var(--grid-gap)
+		);
+	}
+}
+
+@media screen and (min-width: 935px) {
+	[class*='gare:'].width\:lg,
+	[class*='gare:'].width\:lg > ff-reveal,
+	[class*='gare:'].width\:full,
+	[class*='gare:'].width\:full > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
 	}
 }
 
@@ -110,7 +118,8 @@
 
 	.gare\:ouest > ff-reveal,
 	.gare\:ouest:is([open], .expanded) > ff-reveal {
-		--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
+		--sidebar-width: var(--layout-sidebar-md);
+		--overlay-inline-size: calc(var(--sidebar-width) + 6 * var(--grid-gap));
 	}
 
 	[class*='gare:'] .gare-control {

@@ -8,8 +8,13 @@
 	grid-template-areas: 'sidebar navbar context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
+	grid-auto-flow: row;
 	z-index: var(--layout-z-index-reveal);
-	padding-inline: var(--grid-gap) 0;
+	padding-inline: var(--grid-gap);
+
+	details > summary {
+		display: block;
+	}
 }
 
 .swap.exchange {
@@ -24,7 +29,7 @@
 
 @media screen and (min-width: 935px) {
 	.zone\:1.exchange {
-		padding-inline: calc(3 * var(--grid-gap)) 0;
+		padding-inline: calc(2 * var(--grid-gap)) 0;
 	}
 }
 

@@ -16,8 +16,13 @@
 .exchange > .context > .app-context {
 	grid-area: app-context;
 	grid-template-columns: subgrid;
-	justify-self: stretch;
-	padding: 0;
+	justify-self: end;
+	padding-block: var(--grid-gap);
+	inline-size: 100%;
+}
+
+.exchange > .context > details.app-context {
+	padding-block: 0;
 }
 
 .exchange > .context > .app-context ff-reveal {
@@ -28,12 +33,18 @@
 .exchange > .context > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	right: calc(var(--outline-offset-lg) + var(--grid-gap));
+	right: var(--grid-gap);
 	box-shadow: var(--shadow-md);
 	padding-block: var(--grid-gap);
-	padding-inline: var(--grid-gap);
+	padding-inline: var(--grid-gap) 0;
 }
 
+/* This form contains the actual settings */
+.exchange > .context > .app-context > form > button {
+	inline-size: 100%;
+}
+
+/* This form contains the actual settings */
 .exchange > .context > .app-context ff-reveal > form {
 	display: flex;
 	padding-inline: 0 var(--grid-gap);
@@ -41,14 +52,14 @@
 	gap: var(--grid-gap);
 }
 
+/* This form contains the actual settings */
+.exchange > .context > .app-context ff-reveal ul {
+	padding-inline: 0 var(--grid-gap);
+}
+
 @media screen and (min-width: 620px) {
 	.exchange > .context {
 		z-index: initial;
-		padding-inline-end: var(--grid-gap);
-	}
-
-	.exchange > .context > .app-context {
-		justify-self: end;
 	}
 
 	.exchange > .context > .app-context.collapsed ff-reveal,
@@ -56,8 +67,9 @@
 		margin: 0 auto;
 		border-radius: var(--border-radius-null);
 		box-shadow: unset;
+		position: unset;
 		padding-inline: 0 var(--outline-offset-lg);
-		padding-block: var(--grid-gap);
+		padding-block: 0;
 	}
 
 	.exchange > .context > .app-context ff-reveal {
