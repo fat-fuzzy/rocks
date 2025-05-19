@@ -31,12 +31,14 @@ details[class*='gare:'] > ff-reveal,
 
 .gare\:ouest > ff-reveal,
 .gare\:ouest:is([open], .expanded) > ff-reveal {
-	left: 0;
-	right: 0;
+	top: var(--ui-header-height);
+	left: var(--grid-gap);
+	right: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
 
 .gare\:est:is([open], .expanded) > ff-reveal {
-	right: 0;
+	top: var(--ui-header-height);
+	right: calc(2 * var(--grid-gap) + var(--outline-offset-lg));
 }
 
 .gare\:nord:is([open], .expanded) > ff-reveal,
@@ -55,6 +57,17 @@ details[class*='gare:'] > ff-reveal,
 	inline-size: var(--overlay-inline-size);
 	padding-block-end: var(--grid-gap);
 	z-index: var(--layout-z-index-reveal);
+}
+
+@media screen and (min-width: 935px) {
+	.gare\:ouest > ff-reveal,
+	.gare\:ouest:is([open], .expanded) > ff-reveal {
+		left: calc(3 * var(--grid-gap));
+	}
+
+	.gare\:est:is([open], .expanded) > ff-reveal {
+		right: calc(3 * var(--grid-gap));
+	}
 }
 
 @media screen and (min-width: 1360px) {

@@ -104,6 +104,8 @@
 				justify="evenly"
 				size="sm"
 				font="xs"
+				width="full"
+				height="sm"
 				dismiss="outside"
 			/>
 		{/if}

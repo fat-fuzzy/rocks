@@ -16,7 +16,7 @@
 .exchange > .context > .app-context {
 	grid-area: app-context;
 	grid-template-columns: subgrid;
-	justify-self: end;
+	justify-self: stretch;
 	padding: 0;
 }
 
@@ -27,6 +27,7 @@
 
 .exchange > .context > .app-context.expanded ff-reveal {
 	position: absolute;
+	top: var(--ui-header-height);
 	right: calc(var(--outline-offset-lg) + var(--grid-gap));
 	box-shadow: var(--shadow-md);
 	padding-block: var(--grid-gap);
@@ -44,6 +45,10 @@
 	.exchange > .context {
 		z-index: initial;
 		padding-inline-end: var(--grid-gap);
+	}
+
+	.exchange > .context > .app-context {
+		justify-self: end;
 	}
 
 	.exchange > .context > .app-context.collapsed ff-reveal,

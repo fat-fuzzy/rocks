@@ -9,7 +9,7 @@
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	z-index: var(--layout-z-index-reveal);
-	padding-inline: var(--grid-gap);
+	padding-inline: var(--grid-gap) 0;
 }
 
 .swap.exchange {
@@ -20,10 +20,11 @@
 	.swap.exchange {
 		grid-template-areas: 'sidebar navbar context';
 	}
+}
 
+@media screen and (min-width: 935px) {
 	.zone\:1.exchange {
-		padding-inline: 0;
-		z-index: initial;
+		padding-inline: calc(3 * var(--grid-gap)) 0;
 	}
 }
 
