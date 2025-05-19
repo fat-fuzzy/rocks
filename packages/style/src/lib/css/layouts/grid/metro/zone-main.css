@@ -1,4 +1,5 @@
 .metro.zone\:main {
+	grid-template-rows: auto 1fr;
 	grid-column: span 3;
 	min-block-size: unset;
 }

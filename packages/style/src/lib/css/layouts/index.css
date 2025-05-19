@@ -44,6 +44,9 @@
 @import './grid/gare/animation.css';
 
 /* Metro grid areas (zones 1- 5 ...) */
+@import './grid/zone/context.css';
+@import './grid/zone/navbar.css';
+@import './grid/zone/sidebar.css';
 @import './grid/zone/zone-1.css';
 @import './grid/zone/zone-2.css';
 @import './grid/zone/zone-3.css';
@@ -83,10 +86,6 @@
 @import './grid/voyager/zone-main.css';
 
 @import './grid/urbanist/urbanist.css';
-@import './grid/urbanist/zone-1.css';
 @import './grid/urbanist/zone-2.css';
 @import './grid/urbanist/zone-3.css';
-@import './grid/urbanist/context.css';
-@import './grid/urbanist/navbar.css';
-@import './grid/urbanist/sidebar.css';
 @import './grid/urbanist/zone-main.css';

@@ -17,6 +17,7 @@ pre {
 	padding-block: var(--ui-size);
 	border: var(--border-width-xl) solid var(--color-accent);
 	max-inline-size: 100%;
+	max-inline-size: calc(100vw - 2 * var(--gap));
 	overflow: auto;
 }
 
