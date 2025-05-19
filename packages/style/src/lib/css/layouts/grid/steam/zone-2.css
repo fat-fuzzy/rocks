@@ -3,20 +3,8 @@
  * Contains main content & page context
  */
 
-.steam.zone\:4 {
-	grid-template-areas:
-		'zone-main'
-		'page-context';
+.steam.zone\:2 {
 	grid-template-rows: 1fr auto;
-
-	.page-context {
-		align-content: start;
-		position: relative;
-		padding-block-end: var(--grid-gap);
-		max-block-size: var(--overlay-height-xs);
-		min-block-size: var(--overlay-height-2xs);
-		overscroll-behavior-y: contain;
-	}
 
 	> .page-context > summary {
 		max-inline-size: var(--sidebar-width);
@@ -32,19 +20,19 @@
 }
 
 @media screen and (min-width: 620px) {
-	.steam.zone\:4 {
-		grid-template-areas: 'zone-main page-context';
+	.steam.zone\:2 {
 		grid-template-columns: 1fr var(--sidebar-width);
-		grid-template-rows: 1fr;
-
-		> .page-context {
-			max-inline-size: var(--sidebar-width);
-			max-block-size: var(--max-block-size);
-		}
+		padding-inline-end: var(--grid-gap);
 
 		> .page-context[class*='media:'] {
 			block-size: 100%;
 			max-block-size: var(--max-block-size);
 		}
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.steam.zone\:2 {
+		padding-inline-end: 0;
 	}
 }

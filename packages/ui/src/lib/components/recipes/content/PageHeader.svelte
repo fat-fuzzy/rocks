@@ -7,7 +7,6 @@
 		size,
 		layout,
 		justify,
-		media,
 		main,
 		side,
 	}: PageHeaderProps = $props()
@@ -15,14 +14,15 @@
 	let headerClass = $derived(
 		styleHelper.getStyles({
 			layout,
-			size,
 			justify,
 			align: 'baseline',
 		}),
 	)
 
 	let mainClasses = $derived(layout === 'center' ? `text:center` : '')
-	let contentClasses = $derived(media ? `l:text:md` : 'l:text:md maki:auto')
+	let contentClasses = $derived(
+		layout === 'center' ? 'l:text:md maki:auto' : `l:text:md`,
+	)
 </script>
 
 {#snippet headerMain()}
@@ -33,9 +33,11 @@
 	{/if}
 {/snippet}
 
-<header class={`page-header ${headerClass} ${mainClasses} ${contentClasses}`}>
+<header
+	class={`page-header l:text:md ${headerClass} ${mainClasses} ${contentClasses}`}
+>
 	{#if layout === 'sidebar'}
-		<div class="l:main:50">
+		<div class="l:main">
 			{@render headerMain()}
 		</div>
 		<div class="l:side">

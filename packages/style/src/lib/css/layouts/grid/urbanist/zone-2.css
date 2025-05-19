@@ -1,0 +1,23 @@
+/**
+ * ZONE 4
+ * Contains main content & page context
+ */
+.urbanist.zone\:2 {
+	grid-template-areas: 'zone-main';
+	grid-template-rows: subgrid;
+}
+
+@media screen and (min-width: 1360px) {
+	.zone\:2 {
+		grid-column-start: 4;
+	}
+
+	.zone\:2.hug {
+		grid-column-start: 1;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug {
+		grid-column-start: 4;
+	}
+}

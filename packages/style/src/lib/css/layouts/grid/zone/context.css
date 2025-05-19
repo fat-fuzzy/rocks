@@ -1,0 +1,91 @@
+/**
+ * ZONE 3
+ * Contains main app context
+ */
+
+.exchange > .context {
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
+	grid-area: context;
+	grid-template-areas: 'app-context';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+	align-content: center;
+	z-index: var(--layout-z-index-layer);
+}
+
+.exchange > .context > .app-context {
+	grid-area: app-context;
+	grid-template-columns: subgrid;
+	justify-self: end;
+	padding-block: var(--grid-gap);
+	inline-size: 100%;
+}
+
+.exchange > .context > details.app-context {
+	padding-block: 0;
+}
+
+.exchange > .context > .app-context ff-reveal {
+	display: flex;
+	align-items: center;
+}
+
+.exchange > .context > .app-context.expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	right: var(--grid-gap);
+	box-shadow: var(--shadow-md);
+	padding-block: var(--grid-gap);
+	padding-inline: var(--grid-gap) 0;
+}
+
+/* This form contains the actual settings */
+.exchange > .context > .app-context > form > button {
+	inline-size: 100%;
+}
+
+/* This form contains the actual settings */
+.exchange > .context > .app-context ff-reveal > form {
+	display: flex;
+	padding-inline: 0 var(--grid-gap);
+	padding-block: 0;
+	gap: var(--grid-gap);
+}
+
+/* This form contains the actual settings */
+.exchange > .context > .app-context ff-reveal ul {
+	padding-inline: 0 var(--grid-gap);
+}
+
+@media screen and (min-width: 620px) {
+	.exchange > .context {
+		z-index: initial;
+	}
+
+	.exchange > .context > .app-context.collapsed ff-reveal,
+	.exchange > .context > .app-context.expanded ff-reveal {
+		margin: 0 auto;
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+		position: unset;
+		padding-inline: 0 var(--outline-offset-lg);
+		padding-block: 0;
+	}
+
+	.exchange > .context > .app-context ff-reveal {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		padding-inline: 0 var(--outline-offset-lg);
+	}
+
+	.exchange > .context > .app-context:not(details) ff-reveal {
+		position: unset;
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.exchange > .context > .app-context {
+		grid-column: span 3;
+	}
+}

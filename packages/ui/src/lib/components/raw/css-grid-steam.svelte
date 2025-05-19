@@ -12,23 +12,27 @@
 </script>
 
 <div class={`rails l:grid:${parent} size:${size}`}>
-	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
-		<MainNav {theme} />
-	</header>
-	<SideNav
-		zone={`zone:2 size:${size}`}
-		{theme}
-		layout="grid"
-		gare="ouest"
-		width="lg hug"
-		height="sm"
+	<header
+		class={`zone:1 exchange l:grid size:${size} surface:1:${theme} dotted`}
 	>
-		<NavItems />
-	</SideNav>
-	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
-		<AppContext {theme} />
-	</aside>
-	<div class={`zone:4 ${parent} l:grid surface:2:${theme} scroll:y snap:start`}>
+		<MainNav {theme} />
+
+		<SideNav
+			zone={`sidebar size:${size}`}
+			{theme}
+			layout="grid"
+			gare="ouest"
+			width="lg hug"
+			height="sm"
+		>
+			<NavItems />
+		</SideNav>
+
+		<aside class={`context l:grid size:3xs surface:1:${theme}`}>
+			<AppContext {theme} />
+		</aside>
+	</header>
+	<div class={`zone:2 ${parent} l:grid surface:2:${theme} scroll:y snap:start`}>
 		<main class={`zone:main ${parent} l:grid  scroll:y surface:0:${theme}`}>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
@@ -52,10 +56,20 @@
 			</div>
 		</main>
 		<aside class={`l:grid page-context surface:1:${theme} scroll:y snap`}>
-			<Details title="Interaction Controls" {theme} layout="grid" gare="nord" />
+			<Details title="Controls" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class={`zone:5 l:grid `}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
-	</footer>
+
+	<div class={`zone:3 ${parent} l:grid size:${size}`}>
+		<footer class={`l:grid size:${size} `}>
+			<Details
+				title="Footer"
+				{theme}
+				layout="grid"
+				gare="nord"
+				surface="4"
+				height="md"
+			/>
+		</footer>
+	</div>
 </div>

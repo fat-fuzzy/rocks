@@ -1,8 +1,24 @@
 .tgv.zone\:main {
+	grid-template-columns: subgrid;
+	grid-template-rows: auto 1fr;
+	grid-column: span 3;
 	min-block-size: unset;
-	padding-block-start: calc(var(--ui-header-height) + var(--ui-size));
+
+	> .page-header {
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+		grid-column: span 3;
+	}
 
 	> .page-main {
-		padding-block-end: var(--ui-size);
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+		grid-column: span 3;
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.tgv.zone\:main {
+		grid-column: span 7;
 	}
 }

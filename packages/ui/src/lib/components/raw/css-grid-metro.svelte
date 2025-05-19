@@ -15,24 +15,24 @@
 	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent} exchange size:${size}`}>
-	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
-		<MainNav {theme} />
-	</header>
-	<SideNav
-		zone={`zone:2 size:${size}`}
-		{theme}
-		layout="grid"
-		gare="ouest"
-		width="md"
-		height="lg"
-	/>
-	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
-		<AppContext {theme} />
-	</aside>
-	<div
-		class={`zone:4 ${parent} l:grid size:${size} scroll:y surface:3:${theme} `}
+<div class={`rails l:grid:${parent} swap size:${size}`}>
+	<header
+		class={`zone:1 exchange l:grid size:${size} surface:1:${theme} dotted`}
 	>
+		<MainNav {theme} />
+		<SideNav
+			zone={`sidebar size:${size}`}
+			{theme}
+			layout="grid"
+			gare="ouest"
+			width="md"
+			height="lg"
+		/>
+		<aside class={`context l:grid size:3xs surface:1:${theme}`}>
+			<AppContext {theme} />
+		</aside>
+	</header>
+	<div class={`zone:2 ${parent} l:grid size:${size}`}>
 		<main
 			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
 		>
@@ -50,7 +50,7 @@
 			<nav class="l:stack maki:block">
 				<h4 class="maki:inline size:sm">Stopping at:</h4>
 				<LineLongest />
-				<h4 class="maki:inline size:sm">Exchange At:</h4>
+				<h4 class="maki:inline size:sm">Exchange At</h4>
 				<LineLong />
 				<LineShort />
 				<LineMedium />
@@ -58,7 +58,16 @@
 			<Details title="Page Context" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class={`zone:5 l:grid size:${size} `}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
-	</footer>
+	<div class={`zone:3 ${parent} l:grid size:${size}`}>
+		<footer class={`l:grid size:${size} `}>
+			<Details
+				title="Footer"
+				{theme}
+				layout="grid"
+				gare="nord"
+				surface="4"
+				height="md"
+			/>
+		</footer>
+	</div>
 </div>

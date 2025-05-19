@@ -14,8 +14,8 @@ details > summary {
 	border: var(--border-width-md) solid var(--color-ui-border, var(--accent));
 	border-radius: var(--border-radius-base);
 	font-weight: var(--font-weight-ui);
+	line-height: var(--font-leading-large);
 	padding: var(--ui-size-sm) var(--ui-size);
-	max-width: 100%;
 	background-color: var(--shade);
 }
 
@@ -25,6 +25,17 @@ details > summary::before {
 
 details > summary::before {
 	content: '👉';
+}
+
+/* Chrome etc */
+details > summary::marker,
+/* Safari */
+details > summary::-webkit-details-marker {
+	color: transparent;
+	inline-size: 0;
+	block-size: 0;
+	margin: 0;
+	padding: 0;
 }
 
 details[open] > summary {

@@ -3,65 +3,39 @@
  * Contains main navigation
  */
 
-.zone\:1 {
+.zone\:1.exchange {
 	grid-area: zone-1;
-	grid-template-areas: 'navbar';
+	grid-template-areas: 'sidebar navbar context';
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
-	padding-inline: var(--grid-gap) 0;
-	z-index: var(--layout-z-index-layer);
+	grid-auto-flow: row;
+	z-index: var(--layout-z-index-reveal);
+	padding-inline: var(--grid-gap);
+
+	details > summary {
+		display: block;
+	}
 }
 
-.exchange .zone\:1 {
-	padding-inline: var(--grid-gap)
-		calc(var(--outline-offset-lg) + var(--grid-gap));
-}
-
-.zone\:1 > .navbar {
-	grid-area: navbar;
-}
-
-.zone\:1 > .navbar .expanded ff-reveal {
-	position: absolute;
-	top: var(--ui-header-height);
-	left: calc(var(--outline-offset-md) + var(--grid-gap));
-	right: calc(var(--outline-offset-lg) + var(--grid-gap));
-}
-
-.zone\:1 > nav,
-.zone\:1 > nav form,
-.zone\:1 > nav [aria-expanded] {
-	inline-size: 100%;
-}
-
-.zone\:1 > nav [aria-expanded] span {
-	text-align: center;
+.swap.exchange {
+	grid-template-areas: ' navbar sidebar context';
 }
 
 @media screen and (min-width: 620px) {
-	.zone\:1 {
-		padding-inline: 0;
-		z-index: initial;
+	.swap.exchange {
+		grid-template-areas: 'sidebar navbar context';
 	}
+}
 
-	.zone\:1 > nav {
-		justify-content: flex-start;
+@media screen and (min-width: 935px) {
+	.zone\:1.exchange {
+		padding-inline: calc(2 * var(--grid-gap)) 0;
 	}
+}
 
-	.zone\:1 > nav form {
-		display: none;
-	}
-
-	.zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
-		block-size: fit-content;
-	}
-
-	.zone\:1 > .navbar > .expanded > ff-reveal,
-	.zone\:1 > .navbar > .collapsed > ff-reveal {
-		position: unset;
-		margin: 0 auto;
-		z-index: var(--layout-z-index-reveal);
-		border-radius: var(--border-radius-null);
-		box-shadow: unset;
+@media screen and (min-width: 1360px) {
+	.zone\:1.exchange,
+	.swap.exchange {
+		grid-template-areas: 'sidebar sidebar sidebar navbar context context context';
 	}
 }

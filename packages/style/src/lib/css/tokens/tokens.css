@@ -116,8 +116,9 @@
   --font-family-vendor-mono: "Anonymous Pro";
   --font-family-vendor-sans: Montserrat;
   --font-family-vendor-serif: Trirong;
-  --font-leading-body: 2;
-  --font-leading-heading: 1.25;
+  --font-leading-body: 1.85;
+  --font-leading-heading: 1.30;
+  --font-leading-large: 2;
   --font-leading-nav: 2;
   --font-leading-neutral: 1;
   --font-leading-ui: 1.25;

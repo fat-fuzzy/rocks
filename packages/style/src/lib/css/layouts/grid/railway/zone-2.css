@@ -1,0 +1,19 @@
+/**
+ * ZONE 4
+ * Contains main content page context
+ */
+.railway.zone\:2 {
+	grid-template-rows: 1fr auto;
+
+	> .page-context {
+		max-block-size: var(--overlay-height-2xs);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.railway.zone\:2 {
+		> .page-context:not(.empty) {
+			max-block-size: var(--max-block-size);
+		}
+	}
+}

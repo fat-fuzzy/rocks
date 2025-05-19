@@ -8,6 +8,7 @@
 		layout,
 		gare,
 		surface,
+		height,
 		children,
 	}: {
 		title: string
@@ -15,6 +16,7 @@
 		zone?: string
 		layout?: string
 		gare?: string
+		height?: string
 		surface?: string
 		children?: Snippet
 	} = $props()
@@ -27,9 +29,12 @@
 	let gareClass = gare ? `gare:${gare}` : ''
 	let gareControl = gare ? 'gare-control' : ''
 	let gareDepot = gare ? 'gare-depot' : ''
+	let heightClass = height ? `height:${height}` : ''
 </script>
 
-<details class={`${zoneClass} ${gareClass} ${layoutClass} ${surfaceClass}`}>
+<details
+	class={`${zoneClass} ${gareClass} ${layoutClass} ${surfaceClass} ${heightClass}`}
+>
 	<summary class={`${gareControl} ravioli:3xs`}>{title}</summary>
 	<ff-reveal class={`${gareDepot} scroll:y layer:1`}>
 		{#if children}

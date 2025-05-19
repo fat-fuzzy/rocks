@@ -1,13 +1,18 @@
 .urbanist.zone\:main {
+	grid-template-rows: auto 1fr;
+	grid-template-columns: subgrid;
+	grid-column: span 3;
 	min-block-size: unset;
-	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 1360px) {
 	.urbanist.zone\:main {
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
+		grid-column: span 7;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.urbanist.zone\:main {
+		grid-column: span 4;
 	}
 }

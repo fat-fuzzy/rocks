@@ -2,10 +2,7 @@
  * ZONE 3
  * Contains main content & page context
  */
-.tram.zone\:4 {
-	grid-template-areas:
-		'zone-main'
-		'page-context';
+.tram.zone\:2 {
 	grid-template-rows: minmax(var(--overlay-height-md), 1fr) auto;
 
 	> .page-context {
@@ -14,11 +11,7 @@
 }
 
 @media screen and (min-width: 620px) {
-	.tram.zone\:4 {
-		grid-template-areas: 'zone-main page-context';
-		grid-template-columns: 1fr var(--sidebar-width);
-		grid-template-rows: 1fr;
-
+	.tram.zone\:2 {
 		> .page-context {
 			max-block-size: var(--max-block-size);
 		}

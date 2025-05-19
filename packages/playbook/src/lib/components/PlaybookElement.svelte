@@ -115,17 +115,11 @@
 >
 	{#snippet main()}
 		<div class="l:stack size:2xl">
-			<EscapeHtml
-				id="doc"
-				html={content.html}
-				size="md"
-				font="md"
-				margin="auto"
-			/>
+			<EscapeHtml id="doc" html={content.html} size="md" font="md" />
 
 			<section id="playbook" class="l:stack size:2xl">
 				{#if category === 'raw'}
-					<div class="l:text:lg size:xl maki:auto">
+					<div class="l:text:lg size:xl">
 						<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
 							<Zoomer
 								{title}

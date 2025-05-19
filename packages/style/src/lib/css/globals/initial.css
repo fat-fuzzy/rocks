@@ -40,7 +40,7 @@ a {
 	color: var(--color-ink-nav, var(--ink));
 	font-size: var(--font-size-ui);
 	font-family: var(--font-family-ui);
-	line-height: 1;
+	line-height: var(--font-leading-body);
 	font-weight: var(--font-weight-link);
 }
 

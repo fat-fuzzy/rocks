@@ -1,4 +1,27 @@
 .voyager.zone\:main {
+	grid-template-rows: auto 1fr;
+	grid-template-columns: subgrid;
+	grid-column: span 3;
 	min-block-size: unset;
-	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+}
+
+@media screen and (min-width: 1360px) {
+	.voyager.zone\:main {
+		grid-column: 1 / span 7;
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
+
+		> .page-header {
+			grid-column: 1 / span 4;
+		}
+
+		> .page-main {
+			grid-column: 1 / span 4;
+		}
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.voyager.zone\:main {
+		grid-column: 1 / span 7;
+	}
 }

@@ -15,23 +15,28 @@
 	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent} exchange size:${size}`}>
-	<header class={`zone:1 l:grid size:${size} surface:1:${theme} dotted`}>
+<div class={`rails l:grid:${parent} swap size:${size}`}>
+	<header
+		class={`zone:1 exchange railway l:grid size:${size} surface:1:${theme} dotted`}
+	>
 		<MainNav {theme} />
+
+		<SideNav
+			zone={`sidebar size:${size}`}
+			{theme}
+			layout="grid"
+			gare="ouest"
+			width="full"
+			height="sm"
+		/>
+
+		<aside class={`context l:grid size:${size} `}>
+			<AppContext {theme} />
+		</aside>
 	</header>
-	<SideNav
-		zone={`zone:2 size:${size}`}
-		{theme}
-		layout="grid"
-		gare="ouest"
-		width="full"
-		height="sm"
-	/>
-	<aside class={`l:grid  zone:3 size:${size} `}>
-		<AppContext {theme} />
-	</aside>
+
 	<div
-		class={`zone:4 ${parent} l:grid size:${size} surface:2:${theme} snap:start align-self:stretch align-content:stretch dotted`}
+		class={`zone:2 ${parent} l:grid size:${size} surface:2:${theme} snap:start align-self:stretch align-content:stretch dotted`}
 	>
 		<main
 			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
@@ -50,7 +55,7 @@
 			<nav class="l:stack maki:block">
 				<h4 class="maki:inline size:sm">Stopping at:</h4>
 				<LineShort />
-				<h4 class="maki:inline size:sm">Exchange At:</h4>
+				<h4 class="maki:inline size:sm">Exchange At</h4>
 				<LineLong />
 				<LineMedium />
 				<LineLongest />
@@ -58,7 +63,17 @@
 			<Details title="Page Context" {theme} layout="grid" gare="nord" />
 		</aside>
 	</div>
-	<footer class={`zone:5 l:grid size:${size} surface:3:${theme}`}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
-	</footer>
+
+	<div class={`zone:3 ${parent} l:grid size:${size}`}>
+		<footer class={`l:grid size:${size} `}>
+			<Details
+				title="Footer"
+				{theme}
+				layout="grid"
+				gare="nord"
+				surface="4"
+				height="md"
+			/>
+		</footer>
+	</div>
 </div>

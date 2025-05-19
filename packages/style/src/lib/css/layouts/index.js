@@ -42,37 +42,39 @@ import './grid/gare/base.css'
 import './grid/gare/animation.css'
 
 /* Metro grid areas (zones 1- 5 ...) */
+import './grid/zone/context.css'
+import './grid/zone/navbar.css'
+import './grid/zone/sidebar.css'
 import './grid/zone/zone-1.css'
 import './grid/zone/zone-2.css'
 import './grid/zone/zone-3.css'
-import './grid/zone/zone-4.css'
-import './grid/zone/zone-5.css'
 import './grid/zone/zone-main.css'
 
 import './grid/metro/metro.css'
-import './grid/metro/zone-4.css'
+import './grid/metro/zone-2.css'
 import './grid/metro/zone-main.css'
 
 import './grid/railway/railway.css'
-import './grid/railway/zone-4.css'
+import './grid/railway/context.css'
+import './grid/railway/zone-2.css'
 import './grid/railway/zone-main.css'
 
 import './grid/steam/steam.css'
-import './grid/steam/zone-4.css'
+import './grid/steam/zone-2.css'
 import './grid/steam/zone-main.css'
 
 import './grid/tgv/tgv.css'
-import './grid/tgv/zone-4.css'
+import './grid/tgv/zone-2.css'
 import './grid/tgv/zone-main.css'
 
 import './grid/tram/tram.css'
-import './grid/tram/zone-4.css'
+import './grid/tram/zone-2.css'
 import './grid/tram/zone-main.css'
 
 import './grid/voyager/voyager.css'
-import './grid/voyager/zone-4.css'
+import './grid/voyager/zone-2.css'
 import './grid/voyager/zone-main.css'
 
 import './grid/urbanist/urbanist.css'
-import './grid/urbanist/zone-4.css'
+import './grid/urbanist/zone-2.css'
 import './grid/urbanist/zone-main.css'

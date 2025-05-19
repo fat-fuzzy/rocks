@@ -1,18 +1,20 @@
 .railway.zone\:main {
-	grid-template-areas:
-		'page-header'
-		'page-main';
+	grid-column: span 3;
 	grid-template-rows: auto 1fr;
 	min-block-size: unset;
 	align-content: start;
-	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
 
 @media screen and (min-width: 620px) {
 	.railway.zone\:main {
-		grid-template-areas:
-			'page-header'
-			'page-main';
-		grid-template-rows: auto 1fr;
+		grid-column: span 2;
+		padding-inline-end: var(--grid-gap);
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.railway.zone\:main {
+		grid-column-start: 2;
+		grid-column: span 1;
 	}
 }

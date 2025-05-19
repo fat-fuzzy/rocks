@@ -1,20 +1,19 @@
 /**
- * ZONE 4
+ * ZONE 2
  * Contains main content & page context
  */
-.urbanist.zone\:4 {
+.voyager.zone\:2 {
 	grid-template-areas: 'zone-main';
-	grid-template-rows: 1fr auto;
+	grid-template-rows: subgrid;
 
 	> .page-context {
-		position: relative;
 		block-size: fit-content;
 		max-block-size: var(--overlay-height-2xs);
 	}
 }
 
 @media screen and (min-width: 620px) {
-	.urbanist.zone\:4 {
+	.voyager.zone\:2 {
 		> .page-context > * {
 			--max-inline-size: calc(100% - 3 * var(--grid-gap));
 			inline-size: 100%;

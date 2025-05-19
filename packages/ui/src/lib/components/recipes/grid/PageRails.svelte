@@ -38,16 +38,16 @@
 		railway: 'l:grid size:3xs',
 		steam: 'l:grid size:3xs',
 		tgv: 'snap:center',
-		tram: 'snap:start',
-		voyager: 'snap:start',
-		urbanist: 'snap:start',
+		tram: 'snap:start l:grid size:3xs',
+		voyager: 'snap:start size:3xs',
+		urbanist: 'snap:start l:grid size:3xs',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
 		metro: '',
 		railway: '',
 		steam: 'l:flex justify:center',
-		tgv: '',
+		tgv: 'l:grid',
 		tram: '',
 		voyager: '',
 		urbanist: '',
@@ -81,16 +81,10 @@
 <main {id} class={`zone:main ${layout} scroll:y ${zoneMainClass}`}>
 	{#if layout === 'tgv'}
 		<PageHeader {title} size={size as UiSize} {justify} layout="center" />
-	{:else if layout === 'steam' || layout === 'tram'}
-		<PageHeader
-			{title}
-			size={size as UiSize}
-			{justify}
-			layout="sidebar"
-			media={true}
-		/>
+	{:else if layout === 'steam' || layout === 'tram' || layout === 'voyager'}
+		<PageHeader {title} size={size as UiSize} {justify} layout="sidebar" />
 	{:else if layout === 'voyager' || layout === 'metro' || layout === 'urbanist' || layout === 'railway'}
-		<PageHeader {...header} size={size as UiSize} {justify} media={true} />
+		<PageHeader {...header} size={size as UiSize} {justify} />
 	{:else}
 		<PageHeader {...header} size={size as UiSize} {justify} />
 	{/if}

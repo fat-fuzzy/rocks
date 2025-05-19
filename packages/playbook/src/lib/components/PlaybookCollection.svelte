@@ -143,7 +143,6 @@
 					html={content.html}
 					size="md"
 					font="md"
-					margin="auto"
 					element="section"
 				/>
 
@@ -180,7 +179,7 @@
 			{@render comingSoon()}
 		{/if}
 
-		<details class={`l:stack:md ${size}`}>
+		<details class={`l:stack size:${size} maki:block`}>
 			<summary
 				class={`color:${color} variant:outline ravioli:2xs emoji:${category}`}
 			>

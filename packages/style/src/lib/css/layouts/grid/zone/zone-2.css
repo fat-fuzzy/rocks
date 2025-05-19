@@ -2,70 +2,60 @@
  * ZONE 2
  * Left Sidebar contains secondary navigation
  */
+
 .zone\:2 {
 	grid-area: zone-2;
 	grid-template-areas:
-		'gare-control'
-		'gare-depot';
-	grid-template-rows: subgrid;
+		'zone-main'
+		'page-context';
+	grid-template-columns: subgrid;
 	z-index: var(--layout-z-index-layer);
-}
 
-.exchange .zone\:2 {
-	padding-inline-start: var(--grid-gap);
-}
+	&.scroll\:y {
+		scrollbar-gutter: auto;
+	}
 
-.zone\:2 > .gare-control {
-	grid-area: gare-control;
-}
+	> .page-context:not(.empty) {
+		grid-area: page-context;
+		grid-column: span 3;
+		position: relative;
+		align-content: start;
+		align-items: start;
+		z-index: var(--layout-z-index-layer);
+		padding-block-end: var(--grid-gap);
+	}
 
-.zone\:2 > .gare-depot {
-	grid-area: gare-depot;
-	grid-row: span 2;
-}
-
-.zone\:2 > .app-name ff-callout {
-	border-top: var(--border-width-md) dotted var(--shade);
-	border-radius: 0;
-}
-
-.zone\:2 > .app-name,
-.zone\:2:has(.app-name),
-.zone\:2 > nav > form > [class*='l:switcher'],
-.zone\:2 > nav.collapsed > form,
-.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
-	inline-size: 100%;
+	> .page-context.empty {
+		--size-y: 0;
+		block-size: 0;
+		inline-size: 0;
+		padding: 0;
+	}
 }
 
 @media screen and (min-width: 620px) {
 	.zone\:2 {
-		padding-inline: var(--grid-gap) 0;
-	}
+		grid-template-areas: 'zone-main page-context';
+		grid-template-rows: 1fr;
 
-	.zone\:2 > .app-name,
-	.zone\:2:has(.app-name) {
-		inline-size: auto;
-		max-inline-size: var(--sidebar-width);
-	}
-}
+		> .page-context {
+			box-shadow: unset;
+			max-block-size: var(--max-block-size);
+		}
 
-@media screen and (min-width: 935px) {
-	.zone\:2 {
-		z-index: initial;
-	}
+		> .page-context > * {
+			--max-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
+			inline-size: 100%;
+			max-inline-size: var(--max-inline-size);
+		}
 
-	.zone\:2 > nav.collapsed > form,
-	.zone\:2 > nav.collapsed > form > [class*='l:switcher'] {
-		inline-size: var(--sidebar-width);
-		max-inline-size: var(--sidebar-width);
-	}
+		> .page-context > nav > ul > li.ellipsis {
+			max-inline-size: 100%;
+		}
 
-	.zone\:2 > nav .zone\:2 > nav > form,
-	.zone\:2 > nav > form {
-		inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
-	}
-
-	.zone\:2 > nav > form > [class*='l:switcher'] {
-		max-inline-size: calc(100% - var(--grid-gap) - var(--outline-offset-md));
+		> .page-context > details {
+			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
+			margin-inline-start: var(--ui-size-sm);
+		}
 	}
 }

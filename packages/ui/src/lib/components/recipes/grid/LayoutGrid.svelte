@@ -15,15 +15,17 @@
 </script>
 
 <div class={`rails l:grid:${sidenav.layout} ${themeClass} ${sizeClass}`}>
-	{#each areas as { zone, grid, gare, scroll, tag }, i}
+	{#each areas as { zone, grid, gare, exchange, hug, scroll, tag }, i}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const gareClass = gare ? gare : ''}
+		{@const exchangeClass = exchange ? 'exchange' : ''}
+		{@const hugClass = hug ? 'hug' : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}
 
 		<svelte:element
 			this={element}
-			class={`zone:${i + 1} ${sidenav.layout} ${gridClass} ${scrollClass} ${gareClass}`}
+			class={`zone:${i + 1} ${sidenav.layout} ${exchangeClass} ${gridClass} ${hugClass} ${scrollClass} ${gareClass}`}
 		>
 			{@render zone()}
 		</svelte:element>

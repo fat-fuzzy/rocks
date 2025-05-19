@@ -10,18 +10,20 @@
 </script>
 
 <div class={`rails l:grid:${parent} size:${size}`}>
-	<header class={`zone:1 l:grid surface:1:${theme} dotted`}>
+	<header class={`zone:1 exchange swap l:grid surface:1:${theme} dotted`}>
 		<MainNav {theme} />
-	</header>
-	<div class="zone:2 l:grid size:3xs surface:1:neutral">
-		<div class="app-name l:flex align:center">
-			<p class="maki:inline font:heading">Grid Tgv</p>
+
+		<div class="sidebar l:grid size:3xs surface:1:neutral">
+			<div class="app-name l:flex align:center">
+				<p class="maki:inline font:heading">Grid Tgv</p>
+			</div>
 		</div>
-	</div>
-	<aside class={`zone:3 l:grid size:3xs surface:1:${theme}`}>
-		<AppContext {theme} />
-	</aside>
-	<div class={`zone:4 scroll:y`}>
+		<aside class={`context l:grid size:3xs surface:1:${theme}`}>
+			<AppContext {theme} />
+		</aside>
+	</header>
+
+	<div class={`zone:2 scroll:y`}>
 		<main class={`zone:main surface:1:${theme} text:center`}>
 			<div class="page-header ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
@@ -67,7 +69,17 @@
 			</article>
 		</main>
 	</div>
-	<footer class={`zone:5 l:grid size:${size} surface:4:${theme}`}>
-		<Details title="Footer" {theme} layout="grid" gare="nord" surface="4" />
-	</footer>
+
+	<div class={`zone:3 ${parent} l:grid size:${size}`}>
+		<footer class={`l:grid size:${size} `}>
+			<Details
+				title="Footer"
+				{theme}
+				layout="grid"
+				gare="nord"
+				surface="4"
+				height="md"
+			/>
+		</footer>
+	</div>
 </div>

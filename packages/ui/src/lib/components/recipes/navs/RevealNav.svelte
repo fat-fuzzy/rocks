@@ -29,7 +29,9 @@
 		variant,
 		align,
 		justify,
-		area = '',
+		area,
+		width,
+		height,
 		place = 'top',
 		position,
 		container,
@@ -51,8 +53,14 @@
 			container,
 		}),
 	)
+
+	let widthClass = $derived(width ? `width:${width}` : '')
+	let heightClass = $derived(area ? `height:${height}` : '')
+
 	let revealClasses = $derived(
-		area ? `${area}:${place} ${reveal}` : `l:reveal ${place} ${reveal}`,
+		area
+			? `${area}:${place} ${reveal} ${widthClass} ${heightClass}`
+			: `l:reveal ${place} ${reveal}`,
 	)
 
 	let navClasses = $derived(`${layoutClasses} ${revealClasses}`)
