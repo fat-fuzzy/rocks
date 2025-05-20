@@ -17,7 +17,7 @@
 
 	> .page-context:not(.empty) {
 		grid-area: page-context;
-		grid-column: span 3;
+		grid-column: span 1;
 		position: relative;
 		align-content: start;
 		align-items: start;
@@ -57,5 +57,11 @@
 			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
 			margin-inline-start: var(--ui-size-sm);
 		}
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.zone\:2 .page-context:not(.empty) {
+		grid-column: span 3;
 	}
 }

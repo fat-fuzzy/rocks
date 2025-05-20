@@ -1,3 +1,7 @@
+/*
+ * EXPERIMENT: this is not performant, do not use in production!!
+ */
+
 .scroll\:container {
 	position: relative;
 	background: linear-gradient(to bottom, #ffffff 0%, #6928ea 100%);
