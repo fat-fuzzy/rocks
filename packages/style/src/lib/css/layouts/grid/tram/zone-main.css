@@ -15,7 +15,7 @@
 		}
 	}
 }
-@media screen and (min-width: 1360px) {
+@media screen and (min-width: 1100px) {
 	.tram.zone\:main {
 		grid-column: span 1;
 	}
