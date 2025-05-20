@@ -21,6 +21,10 @@
 }
 
 @media screen and (min-width: 620px) {
+	.exchange > .navbar {
+		grid-column: span 1;
+	}
+
 	.exchange > .navbar > nav {
 		justify-content: flex-start;
 	}

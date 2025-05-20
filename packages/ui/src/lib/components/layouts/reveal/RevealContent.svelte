@@ -15,11 +15,12 @@
 	let expanded = $derived(reveal)
 	let scrollClass = $derived(scroll ? `scroll:${scroll}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
+	let areaClass = $derived(area ? area : '')
 </script>
 
 <ff-reveal
 	id={`${id}-reveal`}
-	class={`${expanded} ${area} ${scrollClass} ${layerClass}`}
+	class={`${expanded} ${areaClass} ${scrollClass} ${layerClass}`}
 >
 	{#if children}
 		{@render children()}

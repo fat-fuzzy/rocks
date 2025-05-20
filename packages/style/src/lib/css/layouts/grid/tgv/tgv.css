@@ -26,7 +26,7 @@
 	grid-template-rows: var(--ui-header-height) 1fr auto;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.l\:grid\:tgv {
 		grid-template-columns:
 			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))

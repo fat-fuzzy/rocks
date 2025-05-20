@@ -119,7 +119,7 @@
 		{/if}
 	</div>
 
-	<div class="context l:grid size:3xs align:center">
+	<div class="context l:grid size:3xs">
 		<RevealContext
 			id="appContext"
 			name="appContext"
@@ -129,6 +129,7 @@
 			breakpoint="xs"
 			size="sm"
 			font="xs"
+			layout="grid"
 			formaction="updateSettings"
 			context={appContext}
 			reveal={appContext.reveal}
