@@ -41,9 +41,11 @@ details[class*='gare:'] > ff-reveal,
 	right: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
 
-.gare\:nord:is([open], .expanded) > ff-reveal,
-.gare\:est:is([open], .expanded) > ff-reveal,
-.gare\:ouest:is([open], .expanded) > ff-reveal {
+[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord']):is(
+		[open],
+		.expanded
+	)
+	> ff-reveal {
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
 	overflow: hidden auto;
@@ -79,7 +81,7 @@ details[class*='gare:'] > ff-reveal,
 	}
 }
 
-@media screen and (min-width: 1360px) {
+@media screen and (min-width: 1100px) {
 	.gare\:ouest > ff-reveal,
 	.gare\:ouest:is([open], .expanded) > ff-reveal {
 		box-shadow: unset;

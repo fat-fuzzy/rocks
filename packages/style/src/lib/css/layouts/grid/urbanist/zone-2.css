@@ -7,7 +7,7 @@
 	grid-template-rows: subgrid;
 }
 
-@media screen and (min-width: 1360px) {
+@media screen and (min-width: 1100px) {
 	.zone\:2 {
 		grid-column-start: 4;
 	}

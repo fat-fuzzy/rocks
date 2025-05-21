@@ -21,8 +21,6 @@
 <PageRails
 	{title}
 	{description}
-	size="sm"
-	dimensions="twin"
 	path={page.url.pathname}
 	nav={page.data.nav}
 	context={pageContext}
@@ -34,7 +32,9 @@
 				<EscapeHtml id={slug} {html} size="md" />
 			{/snippet}
 			{#snippet main()}
-				<Picture {...media} />
+				<div class="l:text:md">
+					<Picture {...media} />
+				</div>
 			{/snippet}
 		</Sidebar>
 	{/snippet}

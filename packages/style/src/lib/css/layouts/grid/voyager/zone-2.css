@@ -5,11 +5,6 @@
 .voyager.zone\:2 {
 	grid-template-areas: 'zone-main';
 	grid-template-rows: subgrid;
-
-	> .page-context {
-		block-size: fit-content;
-		max-block-size: var(--overlay-height-2xs);
-	}
 }
 
 @media screen and (min-width: 620px) {

@@ -8,16 +8,14 @@
 	grid-area: context;
 	grid-template-areas: 'app-context';
 	grid-template-columns: subgrid;
-	grid-template-rows: subgrid;
-	align-content: center;
 	z-index: var(--layout-z-index-layer);
 }
 
 .exchange > .context > .app-context {
 	grid-area: app-context;
 	grid-template-columns: subgrid;
-	justify-self: end;
-	padding-block: var(--grid-gap);
+	align-items: center;
+	justify-content: start;
 	inline-size: 100%;
 }
 
@@ -33,10 +31,10 @@
 .exchange > .context > .app-context.expanded ff-reveal {
 	position: absolute;
 	top: var(--ui-header-height);
-	right: var(--grid-gap);
+	right: var(--size-base-3xs);
 	box-shadow: var(--shadow-md);
-	padding-block: var(--grid-gap);
-	padding-inline: var(--grid-gap) 0;
+	padding-block: var(--size-base-3xs);
+	padding-inline: var(--size-base-3xs);
 }
 
 /* This form contains the actual settings */
@@ -47,36 +45,38 @@
 /* This form contains the actual settings */
 .exchange > .context > .app-context ff-reveal > form {
 	display: flex;
-	padding-inline: 0 var(--grid-gap);
+	padding-inline: var(--outline-offset-lg) 0;
 	padding-block: 0;
-	gap: var(--grid-gap);
+	gap: var(--outline-offset-lg);
 }
 
-/* This form contains the actual settings */
+/* This list contains links */
 .exchange > .context > .app-context ff-reveal ul {
-	padding-inline: 0 var(--grid-gap);
+	padding-inline: var(--outline-offset-lg);
 }
 
 @media screen and (min-width: 620px) {
+	/* This form contains the actual settings */
+	.exchange > .context > .app-context > form {
+		display: none;
+	}
+
 	.exchange > .context {
 		z-index: initial;
 	}
 
-	.exchange > .context > .app-context.collapsed ff-reveal,
-	.exchange > .context > .app-context.expanded ff-reveal {
-		margin: 0 auto;
+	.exchange > .context > .app-context:is(.collapsed, .expanded) ff-reveal {
 		border-radius: var(--border-radius-null);
 		box-shadow: unset;
 		position: unset;
-		padding-inline: 0 var(--outline-offset-lg);
-		padding-block: 0;
+		grid-column: span 3;
+		padding-inline: var(--size-base-3xs);
 	}
 
 	.exchange > .context > .app-context ff-reveal {
+		--gap: var(--size-base-3xs);
 		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		padding-inline: 0 var(--outline-offset-lg);
+		justify-content: flex-start;
 	}
 
 	.exchange > .context > .app-context:not(details) ff-reveal {
@@ -84,7 +84,18 @@
 	}
 }
 
-@media screen and (min-width: 1360px) {
+@media screen and (min-width: 690px) {
+	.exchange > .context,
+	.exchange > .context > .app-context:is(.collapsed, .expanded) ff-reveal {
+		justify-content: flex-end;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.exchange > .context {
+		grid-column-start: 5;
+	}
+
 	.exchange > .context > .app-context {
 		grid-column: span 3;
 	}

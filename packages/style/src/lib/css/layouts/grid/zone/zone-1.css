@@ -33,7 +33,7 @@
 	}
 }
 
-@media screen and (min-width: 1360px) {
+@media screen and (min-width: 1100px) {
 	.zone\:1.exchange,
 	.swap.exchange {
 		grid-template-areas: 'sidebar sidebar sidebar navbar context context context';

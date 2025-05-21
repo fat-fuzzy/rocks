@@ -47,7 +47,7 @@
 			block-size: calc(100% - 2 * var(--border-width-xl));
 			inline-size: fit-content;
 			text-transform: uppercase;
-			padding-block: var(--size-base-3xs);
+			padding-block: calc(var(--size-base-3xs) + var(--border-width-md));
 			padding-inline: var(--gap, var(--size-base-2xs));
 			line-height: var(--font-leading-ui);
 		}
