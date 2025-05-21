@@ -21,7 +21,7 @@
 
 @media screen and (min-width: 620px) {
 	.steam.zone\:2 {
-		grid-template-columns: 1fr var(--sidebar-width);
+		grid-template-rows: subgrid;
 		padding-inline-end: var(--grid-gap);
 
 		> .page-context[class*='media:'] {

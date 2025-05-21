@@ -40,11 +40,7 @@
 		},
 		{
 			zone: zoneContent,
-			hug:
-				layout === 'steam' ||
-				layout === 'voyager' ||
-				layout === 'tram' ||
-				layout === 'urbanist',
+			hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
 			grid: true,
 		},
 		{
@@ -89,7 +85,9 @@
 		/>
 	</div>
 
-	<div class="sidebar l:grid size:3xs align:center width:lg height:sm">
+	<div
+		class={`${sidenav.reveal} sidebar l:grid size:3xs align:center width:lg height:sm`}
+	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
 				<Magic {spell} size="xs" font="xs" grow={true} circle="dotted">

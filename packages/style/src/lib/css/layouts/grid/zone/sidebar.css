@@ -14,10 +14,6 @@
 	z-index: var(--layout-z-index-layer);
 }
 
-.exchange > .sidebar > .gare\:ouest {
-	grid-column: span 3;
-}
-
 .exchange > .sidebar > .gare-control {
 	grid-area: gare-control;
 	grid-template-columns: subgrid;
@@ -27,12 +23,6 @@
 	grid-area: gare-depot;
 	grid-template-columns: subgrid;
 	grid-row: span 2;
-}
-
-.exchange > .sidebar > .app-name {
-	grid-template-columns: subgrid;
-	inline-size: 100%;
-	max-inline-size: var(--sidebar-width);
 }
 
 .exchange > .sidebar > .app-name ff-callout {
@@ -57,7 +47,7 @@
 
 	.exchange > .sidebar > .app-name,
 	.exchange > .sidebar:has(.app-name) {
-		inline-size: auto;
+		inline-size: 100%;
 		max-inline-size: var(--sidebar-width);
 	}
 
@@ -110,6 +100,7 @@
 		--overlay-inline-size: calc(var(--sidebar-width) + 3 * var(--grid-gap));
 		left: calc(2 * var(--grid-gap));
 		right: unset;
+		grid-row-start: 1;
 	}
 
 	.exchange > .sidebar.width\:lg,

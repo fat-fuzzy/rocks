@@ -4,7 +4,6 @@
 		'page-header'
 		'page-main';
 	grid-template-rows: auto 1fr;
-	padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 	padding-block: calc(var(--ui-header-height) + var(--ui-size)) var(--grid-gap);
 
 	> .page-header {
@@ -14,6 +13,7 @@
 
 	> .page-main {
 		grid-area: page-main;
+		padding-inline: var(--outline-offset-sm);
 		padding-block-end: var(--grid-gap);
 	}
 }
@@ -21,13 +21,6 @@
 @media screen and (min-width: 620px) {
 	.zone\:main {
 		padding-block-start: var(--ui-size-lg);
-
-		> .page-main > aside > nav > ul {
-			max-inline-size: var(--sidebar-width);
-		}
-	}
-
-	.zone\:main {
 		padding-inline: calc(2 * var(--grid-gap)) 0;
 	}
 }

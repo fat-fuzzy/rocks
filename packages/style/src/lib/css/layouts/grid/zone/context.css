@@ -70,14 +70,12 @@
 		box-shadow: unset;
 		position: unset;
 		grid-column: span 3;
-		justify-content: center;
 		padding-inline: var(--size-base-3xs);
 	}
 
 	.exchange > .context > .app-context ff-reveal {
 		--gap: var(--size-base-3xs);
 		display: flex;
-		align-items: center;
 		justify-content: flex-start;
 	}
 
@@ -94,7 +92,10 @@
 }
 
 @media screen and (min-width: 1100px) {
-	.exchange > .context,
+	.exchange > .context {
+		grid-column-start: 5;
+	}
+
 	.exchange > .context > .app-context {
 		grid-column: span 3;
 	}
