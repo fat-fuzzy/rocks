@@ -75,12 +75,9 @@
 	.exchange > .sidebar {
 		z-index: initial;
 	}
-	.exchange > .sidebar > .app-name {
+	.exchange > .sidebar > .app-name,
+	.exchange > .sidebar > details {
 		grid-column: span 3;
-	}
-
-	.exchange > .sidebar:is([open], .expanded) {
-		grid-row: span 2;
 	}
 
 	.exchange > .sidebar > .app-name,

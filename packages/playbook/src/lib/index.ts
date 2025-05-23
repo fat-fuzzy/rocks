@@ -5,11 +5,6 @@
  * Styles Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
-import Api from '$lib/components/Api.svelte'
-import Token from '$lib/components/Token.svelte'
-import Element from '$lib/components/Element.svelte'
-import PropsDoc from '$lib/components/PropsDoc.svelte'
-import PropsDemo from '$lib/components/PropsDemo.svelte'
 import PlaybookCollection from '$lib/components/PlaybookCollection.svelte'
 import PlaybookElement from '$lib/components/PlaybookElement.svelte'
 import Playbook from '$lib/components/Playbook.svelte'
@@ -45,11 +40,6 @@ const actions = {
 }
 
 const playbook = {
-	Api,
-	Token,
-	Element,
-	PropsDoc,
-	PropsDemo,
 	PlaybookCollection,
 	PlaybookElement,
 	Playbook,
