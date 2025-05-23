@@ -73,4 +73,8 @@
 	.zone\:2 .page-context:not(.empty) {
 		grid-column: span 3;
 	}
+
+	.zone\:2:has(dialog.zoomer[open]) {
+		z-index: var(--layout-index-sticky);
+	}
 }
