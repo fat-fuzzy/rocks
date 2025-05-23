@@ -27,7 +27,7 @@
 	let heightClass = height ? `height:${height}` : ''
 </script>
 
-<div class={`zone-2 ${layoutClass}`}>
+<div class={`sidebar ${layoutClass}`}>
 	<details
 		class={` ${gareClass} ${widthClass} ${heightClass} surface:3:${theme}`}
 	>
