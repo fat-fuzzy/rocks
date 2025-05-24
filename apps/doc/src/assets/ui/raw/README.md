@@ -5,6 +5,8 @@ tags: ['raw']
 props_style: {}
 ---
 
+<p class="feedback:prose status:warning bg:default:100 variant:bare emoji:wip">Work in Progress!</p>
+
 ## What is Raw ?
 
 `Raw` components are [HTML/CSS]-only templates, the raw ingredients of a web page if you accept the analogy.
