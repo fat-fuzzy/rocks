@@ -81,7 +81,7 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar l:grid size:3xs align:center">
+	<div class="navbar bg:inherit l:grid size:3xs align:center">
 		<HeaderNav
 			id="nav"
 			name="nav"
@@ -99,12 +99,13 @@
 			reveal={mainNav.reveal}
 			actionPath={page.url.pathname}
 			breakpoint="xs"
+			background="inherit"
 			formaction="toggleNav"
 		/>
 	</div>
 
 	<div
-		class={`${sidenav.reveal} sidebar l:grid size:3xs align:center width:lg height:sm`}
+		class={`${sidenav.reveal} sidebar bg:inherit l:grid size:3xs align:center width:lg height:sm`}
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
@@ -130,12 +131,13 @@
 				font="xs"
 				width="lg"
 				height="sm"
+				background="inherit"
 				dismiss="outside"
 			/>
 		{/if}
 	</div>
 
-	<div class="context l:grid size:3xs">
+	<div class="context l:grid size:3xs bg:inherit">
 		<RevealContext
 			id="appContext"
 			name="appContext"
@@ -147,6 +149,7 @@
 			font="xs"
 			layout="grid"
 			formaction="updateSettings"
+			background="inherit"
 			context={appContext}
 			reveal={appContext.reveal}
 		/>

@@ -48,6 +48,7 @@ class AppContext {
 			}
 			updated = true
 		}
+
 		if (updated) {
 			return {
 				success: true,
