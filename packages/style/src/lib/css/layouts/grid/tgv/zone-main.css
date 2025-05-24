@@ -1,19 +1,17 @@
 .tgv.zone\:main {
-	grid-template-columns: subgrid;
-	grid-template-rows: auto 1fr;
+	display: flex;
+	flex-direction: column;
 	grid-column: span 3;
 	min-block-size: unset;
 	padding-inline: 0;
 
 	> .page-header {
-		grid-template-columns: subgrid;
-		grid-template-rows: subgrid;
+		display: flex;
 		grid-column: span 3;
 	}
 
 	> .page-main {
-		grid-template-columns: subgrid;
-		grid-template-rows: subgrid;
+		display: flex;
 		grid-column: span 3;
 	}
 }

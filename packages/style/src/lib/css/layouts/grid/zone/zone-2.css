@@ -64,7 +64,6 @@
 
 		> .page-context > details {
 			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
-			margin-inline-start: var(--ui-size-sm);
 		}
 	}
 }

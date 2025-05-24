@@ -36,10 +36,5 @@
 		> .page-context > nav > ul > li.ellipsis {
 			max-inline-size: 100%;
 		}
-
-		> .page-context > details {
-			--max-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
-			margin-inline-start: var(--ui-size-sm);
-		}
 	}
 }

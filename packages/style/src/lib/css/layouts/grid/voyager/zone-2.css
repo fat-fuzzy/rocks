@@ -18,7 +18,6 @@
 			--max-inline-size: calc(
 				100% - 4 * var(--grid-gap) - var(--outline-offset-lg)
 			);
-			margin-inline-start: var(--ui-size-sm);
 		}
 	}
 }
