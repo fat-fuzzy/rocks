@@ -17,5 +17,5 @@ button[class*='emoji:'][class*='shape:']:not([class*='l:stack'])::before {
 }
 
 [class*='emoji:']:not([class*='justify:'], [class*='l:frame'])::before {
-	margin-inline: var(--icon-gap);
+	margin-inline: var(--icon-gap, var(--ui-size-sm));
 }
