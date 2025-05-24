@@ -15,6 +15,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:e2e": "./node_modules/@fat-fuzzy/config/node_modules/.bin/playwright test",
+		"test:report": "playwright show:report",
 		"test:unit": "vitest run"
 	},
 	"main": "./dist/index.js",
