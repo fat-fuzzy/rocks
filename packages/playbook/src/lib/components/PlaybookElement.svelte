@@ -102,6 +102,10 @@
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 
 	let SpecifiedElement = $derived(categoryItems[category][title])
+
+	let link = $derived(
+		path.substring(0, path.indexOf(category) + category.length),
+	)
 </script>
 
 <PageRails
@@ -121,25 +125,22 @@
 				<div class="l:stack size:2xl">
 					<div class="l:text:lg size:xl maki:auto">
 						<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-							<h2 class="w:full text:center">Playbook</h2>
+							<h2 class="w:full text:center">
+								{category === 'raw' ? 'Template' : 'Playbook'}
+							</h2>
 						</Magic>
 					</div>
 					<div class="media maki:block">
 						{#if category === 'raw'}
 							<div class="l:text:lg size:xl">
-								<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-									<Zoomer
-										{title}
-										{description}
-										{path}
-										size="md"
-										variant="fill"
-										layout="center"
-										cta="Open layout"
-									>
-										<GenericElement children={SpecifiedElement} />
-									</Zoomer>
-								</Magic>
+								<a
+									href={`${link}/${title}/template`}
+									class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+								>
+									<svelte:element this={`h3`} class="link font:sm">
+										Open {title} template
+									</svelte:element>
+								</a>
 							</div>
 						{:else}
 							<div class={`ravioli:lg ${containerClasses}`}>

@@ -91,18 +91,18 @@
 {#snippet categoryElements()}
 	{#if category === 'raw'}
 		<div>
-			<ul class="unstyled l:stack size:md">
+			<ul class="unstyled l:grid:auto size:sm">
 				{#each componentNames as name}
 					<li>
 						<a
-							href={`${link}/${name}/template`}
+							href={`${link}/${name}`}
 							class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 						>
 							<svelte:element
 								this={`h${String(elementTitleDepth)}`}
 								class="link font:sm"
 							>
-								Open {name}
+								{name}
 							</svelte:element>
 						</a>
 					</li>
@@ -173,7 +173,9 @@
 					<div class="l:stack size:2xl">
 						<div class="l:text:lg maki:auto">
 							<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-								<h2 class="text:center">Playbook</h2>
+								<h2 class="text:center">
+									{category === 'raw' ? 'Templates' : 'Playbook'}
+								</h2>
 							</Magic>
 						</div>
 						{@render categoryElements()}

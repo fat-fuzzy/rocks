@@ -15,11 +15,17 @@
 </script>
 
 <div class={`rails l:grid:${sidenav.layout} ${themeClass} ${sizeClass}`}>
-	{#each areas as { zone, grid, gare, exchange, hug, scroll, tag }, i}
+	{#each areas as { zone, grid, gare, hug, exchange, scroll, tag }, i}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const gareClass = gare ? gare : ''}
 		{@const exchangeClass = exchange ? 'exchange bg:inherit' : ''}
-		{@const hugClass = hug ? 'hug' : ''}
+		{@const hugClass =
+			sidenav.layout === 'steam' ||
+			sidenav.layout === 'tram' ||
+			sidenav.layout === 'urbanist' ||
+			hug
+				? 'hug'
+				: ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}
 

@@ -40,7 +40,7 @@
 		},
 		{
 			zone: zoneContent,
-			hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
+			// hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
 			grid: true,
 		},
 		{
