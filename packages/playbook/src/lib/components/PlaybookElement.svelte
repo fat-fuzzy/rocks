@@ -139,7 +139,7 @@
 					</div>
 					<div class="media maki:block">
 						{#if category === 'raw'}
-							<div class="l:text:lg size:xl">
+							<div class="l:center size:sm col:center">
 								<a
 									href={`${link}/${title}/template`}
 									class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
