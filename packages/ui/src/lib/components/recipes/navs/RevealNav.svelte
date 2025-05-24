@@ -95,6 +95,7 @@
 		{align}
 		{justify}
 		{onclick}
+		{background}
 	>
 		<LinkTree
 			id={`${id}-${path}`}

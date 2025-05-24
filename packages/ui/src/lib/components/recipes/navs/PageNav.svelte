@@ -45,7 +45,7 @@
 				<a
 					id={`tab-${slug}`}
 					href={`#${slug}`}
-					class={`${linkLayoutClasses} ${linkClasses} surface:1:${color} link`}
+					class={`${linkLayoutClasses} ${linkClasses} surface:0:${color} link`}
 					onclick={() => {
 						currentHash = slug
 					}}
