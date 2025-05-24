@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
+	import {onMount, type Snippet} from 'svelte'
 
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
@@ -20,6 +20,7 @@
 	let sidenav = $derived(page.data.sidebar)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
+	let useDarkScheme = $state(false)
 
 	type AreaZone = {
 		zone: Snippet
@@ -49,8 +50,25 @@
 		},
 	])
 
-	let brightness = $derived(appContext.brightness)
+	let brightness = $derived(
+		useDarkScheme ? 'night' : (appContext.brightness ?? 'day'),
+	)
+
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
+
+	function handleThemeChange(event) {
+		if (event.matches) {
+			useDarkScheme = true
+		} else {
+			useDarkScheme = false
+		}
+	}
+
+	onMount(() => {
+		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+		handleThemeChange(prefersDarkScheme)
+	})
 </script>
 
 <LayoutGrid
