@@ -157,6 +157,7 @@ packages/prose/static/fonts/
 packages/playbook/static/fonts
 apps/doc/static/fonts/*/*/demo.html
 apps/doc/static/fonts/*/*/stylesheet.css
+apps/doc/tests/e2e/test-results
 apps/play/static/fonts/
 
 # Working samples
