@@ -169,11 +169,11 @@
 					element="section"
 				/>
 
-				<section>
+				<section id="playbook">
 					<div class="l:stack size:2xl">
 						<div class="l:text:lg maki:auto">
 							<Magic
-								id="playbook"
+								id="playbook-heading"
 								{spell}
 								uno="magic"
 								due="sparkles"
