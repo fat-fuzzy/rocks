@@ -49,14 +49,3 @@
 		</ff-reveal>
 	</details>
 </div>
-
-<style>
-	/**TODO: fix nested grid issues (use iframe or web component)
-	* - 👇 Workaround that compensates for the parent grid container
-	*/
-	[class*='gare:'].width\:full:is([open], .expanded) > ff-reveal {
-		--overlay-inline-size: calc(
-			100vw - var(--sidebar-width) - 9 * var(--grid-gap)
-		);
-	}
-</style>

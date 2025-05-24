@@ -79,14 +79,14 @@
 	}
 }
 
-@media screen and (min-width: 935px) {
+/* @media screen and (min-width: 935px) {
 	[class*='gare:']:is(.width\:xl, .width\:full),
 	[class*='gare:']:is(.width\:xl, .width\:full) > ff-reveal {
 		--overlay-inline-size: calc(
 			100vw - var(--layout-sidebar-lg) - 4 * var(--grid-gap)
 		);
 	}
-}
+} */
 
 @media screen and (min-width: 1100px) {
 	[class*='zone:']:has([class*='l:rails']) {
@@ -117,12 +117,20 @@
 		--overlay-inline-size: calc(var(--sidebar-width) + 6 * var(--grid-gap));
 	}
 
+	.gare\:ouest[open]:not([class*=':full']) > ff-reveal {
+		inline-size: var(--sidebar-width);
+	}
+
 	[class*='gare:'] .gare-control {
 		inline-size: 100%;
 	}
 
 	[class*='gare:'] > ff-reveal,
 	[class*='gare:'][class*='height:']:not(.width\:full) {
+		--overlay-block-size: var(--max-block-size);
+	}
+
+	.gare\:ouest[open].width\:full > ff-reveal {
 		--overlay-block-size: var(--max-block-size);
 	}
 }
