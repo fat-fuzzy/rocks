@@ -30,6 +30,24 @@ class AppContext {
 			this.state.contrast = TRANSITION_CONTRAST[String(contrast)]
 			updated = true
 		}
+		if (data.has('submit')) {
+			if (!this.state.consent) {
+				this.state.consent = {}
+			}
+			if (data.has('analytics')) {
+				let analytics = data.get('analytics')
+				this.state.consent.analytics = analytics?.toString() === 'on'
+			} else {
+				this.state.consent.analytics = false
+			}
+			if (data.has('functional')) {
+				let functional = data.get('functional')
+				this.state.consent.functional = functional?.toString() === 'on'
+			} else {
+				this.state.consent.functional = false
+			}
+			updated = true
+		}
 		if (updated) {
 			return {
 				success: true,

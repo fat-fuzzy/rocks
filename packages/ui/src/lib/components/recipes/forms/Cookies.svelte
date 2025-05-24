@@ -21,9 +21,11 @@
 		layout = 'stack',
 		container = 'center',
 		level = 3, // <h*> element level
-		size = 'xl',
+		size = 'lg',
 		color = UiColor.accent,
 		variant = UiVariant.fill,
+		consent,
+		onupdate,
 	}: CookiesPreferencesProps = $props()
 
 	let boundForm: HTMLFormElement | undefined = $state()
@@ -51,7 +53,7 @@
 	 * - The `<form>` element must set `action` to `?/${action}` instead of `undefined` (see `action` prop in form element)
 	 */
 	let action = $derived(
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : undefined,
+		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
 	)
 
 	let layoutClasses = styleHelper.getStyles({
@@ -62,12 +64,10 @@
 	})
 
 	function handleSubmit(event: Event) {
-		event.preventDefault()
-
-		// TODO: Submit the form here
-		// ...
 		if (!validator.errors.length) {
-			successPlaceholder = true
+			if (onupdate) {
+				onupdate(event)
+			}
 		}
 	}
 
@@ -108,7 +108,7 @@
 		asset="none"
 		context={UiTextContext.form}
 		container="burrito:xl "
-		size="lg"
+		size="md"
 		font="md"
 		layer="1"
 	>
@@ -116,8 +116,17 @@
 			{id}
 			{method}
 			class={layoutClasses}
-			action={action && actionPath ? `${actionPath}?/${action}` : undefined}
-			use:enhance
+			action={action
+				? actionPath
+					? `${actionPath}?/${action}`
+					: `?/${action}`
+				: undefined}
+			use:enhance={() => {
+				// prevent default callback from resetting the form
+				return ({update}) => {
+					update({reset: false})
+				}
+			}}
 			bind:this={boundForm}
 			onsubmit={handleSubmit}
 		>
@@ -131,9 +140,9 @@
 				{#snippet main()}
 					{#key validator}
 						<InputGroup
-							id="consent.site"
+							id="consent.functional"
 							type="check"
-							name="cookies"
+							name="consent"
 							{size}
 							variant="bare"
 							font="md"
@@ -144,8 +153,8 @@
 							justify="between"
 						>
 							<InputCheck
-								id="site"
-								name="site"
+								id="functional"
+								name="functional"
 								type="checkbox"
 								label="Site Functionality"
 								hint="These cookies save the state of the interface when you interact with settings such as Brightness and Contrast, or other interactive areas of the site."
@@ -158,27 +167,13 @@
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={(event) => handleInput(event)}
+								checked={consent && consent?.functional}
 								{validator}
 							/>
-						</InputGroup>
-						<InputGroup
-							id="consent.analytics"
-							type="check"
-							name="cookies"
-							{size}
-							variant="bare"
-							font="md"
-							onfocus={handleFocus}
-							onblur={handleBlur}
-							oninput={handleInput}
-							{validator}
-							justify="between"
-						>
 							<InputCheck
 								id="analytics"
 								name="analytics"
 								type="checkbox"
-								value="false"
 								label="Analytics"
 								hint="This cookie allows me to set up a beacon that measures the performance of the site as well as metrics about viewership. "
 								{size}
@@ -190,6 +185,7 @@
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={(event) => handleInput(event)}
+								checked={consent && consent?.analytics}
 								{validator}
 							/>
 						</InputGroup>

@@ -1,3 +1,4 @@
+import type {RequestEvent} from '@sveltejs/kit'
 import {fail} from '@sveltejs/kit'
 
 import ui from '@fat-fuzzy/ui'
@@ -9,7 +10,7 @@ const {SignUpUser} = ui.forms
 const {APP_PREFIX} = ui.constants
 
 export const playbookActions = {
-	updateState: async ({request, cookies, locals}) => {
+	updateState: async ({request, cookies, locals}: RequestEvent) => {
 		const data = await request.formData()
 		if (data.has('reset')) {
 		}
@@ -38,7 +39,7 @@ export const playbookActions = {
 		return {success: true}
 	},
 
-	updateStyles: async ({request, cookies, locals}) => {
+	updateStyles: async ({request, cookies, locals}: RequestEvent) => {
 		const data = await request.formData()
 		const key = `${APP_PREFIX}-ui-styles`
 		const cookieValue = uiStateService.getUiState({
@@ -63,7 +64,7 @@ export const playbookActions = {
 		return {success: true}
 	},
 
-	signup: async ({request}) => {
+	signup: async ({request}: RequestEvent) => {
 		const data = await request.formData()
 		const signupUser = new SignUpUser()
 		if (!signupUser.signup(data)) {

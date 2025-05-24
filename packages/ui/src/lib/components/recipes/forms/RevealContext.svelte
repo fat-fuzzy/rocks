@@ -67,8 +67,6 @@
 				<a
 					class={`${variant} shape:${shape} color:${color} ${asset} size:${size}`}
 					href={url}
-					target="_blank"
-					rel="noreferrer"
 					{title}
 					aria-label={title}
 				>

@@ -40,7 +40,7 @@
 	color={cookiesPending ? 'highlight' : cookiesPartial ? 'accent' : 'primary'}
 	place="bottom-right"
 >
-	<Cookies />
+	<Cookies consent={appContext.consent} />
 </Popover>
 
 {#if !dev && appContext.consent?.analytics}

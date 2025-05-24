@@ -60,7 +60,7 @@ export type PageRailsProps = UiLayoutProps &
 			brightness: string
 			contrast: string
 			language?: string
-			cookies?: CookiePreferences
+			consent?: CookiePreferences
 		}
 		context?: {
 			reveal: UiRevealState

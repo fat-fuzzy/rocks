@@ -39,8 +39,8 @@
 		pageClass === 'page:home' ? 'ravioli:xl' : '',
 	)
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
-	let cookiesPending = $derived(appContext.consent === undefined)
-	let cookiesPartial = $derived(
+	let consentPending = $derived(appContext.consent === undefined)
+	let consentPartial = $derived(
 		appContext.consent?.analytics || appContext.consent?.site,
 	)
 	let settings = $derived.by(() => {
@@ -95,16 +95,16 @@
 	</footer>
 </div>
 <Popover
-	id="cookies-banner"
+	id="consent-banner"
 	title="Cookies"
 	asset="cookie"
-	fixed={cookiesPending}
+	fixed={consentPending}
 	container="burrito"
 	variant="fill"
-	color={cookiesPending ? 'highlight' : cookiesPartial ? 'accent' : 'primary'}
+	color={consentPending ? 'highlight' : consentPartial ? 'accent' : 'primary'}
 	place="bottom-right"
 >
-	<Cookies />
+	<Cookies consent={appContext.consent} />
 </Popover>
 
 {#if !dev && appContext.consent?.analytics}

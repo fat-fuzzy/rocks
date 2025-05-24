@@ -26,7 +26,7 @@ const DEFAULT_PREFERENCES: ViewingPreferences = {
 	reveal: UiState.collapsed,
 	brightness: UiSettings.day,
 	contrast: UiSettings.contrast,
-	cookies: DEFAULT_COOKIES_CONSENT,
+	consent: DEFAULT_COOKIES_CONSENT,
 }
 
 const DEFAULT_SCENE_ID = '004'
