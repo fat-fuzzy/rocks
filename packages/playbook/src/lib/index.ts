@@ -7,6 +7,7 @@
  */
 import PlaybookCollection from '$lib/components/PlaybookCollection.svelte'
 import PlaybookElement from '$lib/components/PlaybookElement.svelte'
+import PlaybookRaw from '$lib/components/PlaybookRaw.svelte'
 import Playbook from '$lib/components/Playbook.svelte'
 
 import StylesApi from '$lib/api/styles.svelte'
@@ -42,6 +43,7 @@ const actions = {
 const playbook = {
 	PlaybookCollection,
 	PlaybookElement,
+	PlaybookRaw,
 	Playbook,
 	StylesApi,
 	PlaybookActor,

@@ -55,6 +55,7 @@ const DEFAULT_STYLES: StyleTree = {
 				context: 'form',
 				asset: 'emoji:default',
 				size: 'md',
+				shape: 'none',
 			},
 		},
 	},

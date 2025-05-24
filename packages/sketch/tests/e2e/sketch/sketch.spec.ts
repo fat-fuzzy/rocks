@@ -37,7 +37,7 @@ sketches.map((sketch) => {
 			.getByTestId(`debug-event-sketch`)
 			.getByTestId(`current-event`)
 
-		await expect(previousEvent).toHaveText('load')
+		await expect(previousEvent).toHaveText('loadOk')
 		await expect(currentEvent).toHaveText('loadOk')
 
 		sketchState = page

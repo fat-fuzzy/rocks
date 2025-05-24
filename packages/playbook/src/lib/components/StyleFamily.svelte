@@ -73,10 +73,14 @@
 				<details class="l:stack:2xs">
 					<summary
 						class="font:sm font:heading font:semi size:2xs variant:bare color:accent"
+						data-testid={`summary-${familyName}`}
 					>
 						{familyName}
 					</summary>
-					<div class="l:flex:2xs justify:stretch align:start ravioli:xs">
+					<div
+						class="l:flex:2xs justify:stretch align:start ravioli:xs"
+						data-testid={`content-${familyName}`}
+					>
 						{#each family.items as styleInputGroup}
 							<StyleInput
 								{family}

@@ -9,8 +9,9 @@
 	let sketchUi = $derived.by(() => {
 		let ui = ['sketch', 'canvas', 'player']
 		if (
-			meta.controls?.length > 1 ||
-			(meta.controls?.length === 1 && meta.controls[0] !== 'loop')
+			meta?.controls &&
+			(meta.controls.length > 1 ||
+				(meta.controls.length === 1 && meta.controls[0] !== 'loop'))
 		) {
 			ui = [...ui, 'controls']
 		}

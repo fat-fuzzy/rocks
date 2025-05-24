@@ -2,7 +2,8 @@ import {test, expect} from '@playwright/test'
 import utils from '../utils/constants'
 
 const categories = [...utils.categories.ready, ...utils.categories.draft]
-const sidebarTestId = 'sidebar--ui'
+const sidebarTestId = 'nav-sidebar'
+const uiNavTestId = 'sidebar--ui'
 // const blocks = [...utils.blocks.ready, ...utils.blocks.draft]
 
 categories.forEach(async (category) => {
@@ -11,6 +12,11 @@ categories.forEach(async (category) => {
 	}) => {
 		await page.goto(utils.categories.path())
 		await expect(page.getByTestId(sidebarTestId)).toBeVisible()
+		// TODO: Enable open sidebar by default on > 1100px breakpoints
+		await page
+			.getByTestId(sidebarTestId)
+			.getByRole('button', {name: 'UI'})
+			.click()
 		await page
 			.getByTestId(sidebarTestId)
 			.getByRole('link', {name: category})
@@ -26,14 +32,19 @@ utils.blocks.ready.forEach(async (block) => {
 		page,
 	}) => {
 		await page.goto(utils.blocks.path())
-		await expect(page.getByTestId(`${sidebarTestId}-blocks`)).toBeVisible()
+		// TODO: Enable open sidebar by default on > 1100px breakpoints
 		await page
 			.getByTestId(sidebarTestId)
+			.getByRole('button', {name: 'UI'})
+			.click()
+		await expect(page.getByTestId(`${uiNavTestId}-blocks`)).toBeVisible()
+		await page
+			.getByTestId(uiNavTestId)
 			.getByTestId('button-reveal-blocks')
 			.click()
 		await page
-			.getByTestId(sidebarTestId)
-			.getByTestId(`${sidebarTestId}-blocks`)
+			.getByTestId(uiNavTestId)
+			.getByTestId(`${uiNavTestId}-blocks`)
 			.getByRole('link', {name: block})
 			.click()
 		await expect(

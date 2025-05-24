@@ -82,5 +82,6 @@ export const handle = (async ({event, resolve}) => {
 	event.locals.navRecipes = reveal[FormsEnum.recipes]
 
 	const response = await resolve(event)
+
 	return response
 }) satisfies Handle

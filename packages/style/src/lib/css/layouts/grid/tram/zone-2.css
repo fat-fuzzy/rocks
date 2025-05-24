@@ -17,3 +17,29 @@
 		}
 	}
 }
+
+@media screen and (min-width: 1100px) {
+	.tram.zone\:2 .page-context:not(.empty) {
+		grid-column: span 3;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2,
+	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2.hug {
+		grid-column: 1 / span 7;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2.hug {
+		.zone\:main {
+			grid-column: 1 / span 4;
+		}
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .tram.zone\:2.hug {
+		grid-column: 4 / span 4;
+
+		.zone\:main {
+			grid-column: span 1;
+		}
+	}
+}
