@@ -118,30 +118,30 @@
 			<EscapeHtml id="doc" html={content.html} size="md" font="md" />
 
 			<section id="playbook" class="l:stack size:2xl">
-				{#if category === 'raw'}
-					<div class="l:text:lg size:xl">
+				<div class="l:stack size:2xl">
+					<div class="l:text:lg size:xl maki:auto">
 						<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-							<Zoomer
-								{title}
-								{description}
-								{path}
-								size="md"
-								variant="fill"
-								layout="center"
-								cta="Open layout"
-							>
-								<GenericElement children={SpecifiedElement} />
-							</Zoomer>
+							<h2 class="w:full text:center">Playbook</h2>
 						</Magic>
 					</div>
-				{:else}
-					<div class="l:stack size:2xl">
-						<div class="l:text:lg size:xl maki:auto">
-							<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-								<h2 class="w:full text:center">Playbook</h2>
-							</Magic>
-						</div>
-						<div class="media maki:block">
+					<div class="media maki:block">
+						{#if category === 'raw'}
+							<div class="l:text:lg size:xl">
+								<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+									<Zoomer
+										{title}
+										{description}
+										{path}
+										size="md"
+										variant="fill"
+										layout="center"
+										cta="Open layout"
+									>
+										<GenericElement children={SpecifiedElement} />
+									</Zoomer>
+								</Magic>
+							</div>
+						{:else}
 							<div class={`ravioli:lg ${containerClasses}`}>
 								<GenericElement
 									isPage={true}
@@ -154,9 +154,9 @@
 									id={title}
 								/>
 							</div>
-						</div>
+						{/if}
 					</div>
-				{/if}
+				</div>
 			</section>
 		</div>
 	{/snippet}

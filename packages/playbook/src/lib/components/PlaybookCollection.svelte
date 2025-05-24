@@ -65,6 +65,7 @@
 		{category: 'blocks', items: ui.blocks},
 		{category: 'layouts', items: ui.layouts},
 		{category: 'recipes', items: ui.recipes},
+		{category: 'raw', items: ui.raw},
 	]
 
 	let items = $derived(
@@ -88,35 +89,57 @@
 </script>
 
 {#snippet categoryElements()}
-	<div class={layoutClass}>
-		{#each componentNames as name}
-			{@const SpecifiedElement = items[name]}
-			<article
-				id={`ravioli-${title}`}
-				class={`variant:bare w:auto ui:${name.toLowerCase()}`}
-			>
-				<a
-					href={`${link}/${name}`}
-					class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+	{#if category === 'raw'}
+		<div>
+			<ul class="unstyled l:stack size:md">
+				{#each componentNames as name}
+					<li>
+						<a
+							href={`${link}/${name}/template`}
+							class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+						>
+							<svelte:element
+								this={`h${String(elementTitleDepth)}`}
+								class="link font:sm"
+							>
+								Open {name}
+							</svelte:element>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	{:else}
+		<div class={layoutClass}>
+			{#each componentNames as name}
+				{@const SpecifiedElement = items[name]}
+				<article
+					id={`ravioli-${title}`}
+					class={`variant:bare w:auto ui:${name.toLowerCase()}`}
 				>
-					<svelte:element
-						this={`h${String(elementTitleDepth)}`}
-						class="link font:sm"
+					<a
+						href={`${link}/${name}`}
+						class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 					>
-						{name}
-					</svelte:element>
-				</a>
-				<Element
-					title={name}
-					{path}
-					{category}
-					{SpecifiedElement}
-					{formaction}
-					{actionPath}
-				/>
-			</article>
-		{/each}
-	</div>
+						<svelte:element
+							this={`h${String(elementTitleDepth)}`}
+							class="link font:sm"
+						>
+							{name}
+						</svelte:element>
+					</a>
+					<Element
+						title={name}
+						{path}
+						{category}
+						{SpecifiedElement}
+						{formaction}
+						{actionPath}
+					/>
+				</article>
+			{/each}
+		</div>
+	{/if}
 {/snippet}
 
 {#snippet comingSoon()}
@@ -146,18 +169,16 @@
 					element="section"
 				/>
 
-				{#if category !== 'raw'}
-					<section id="playbook">
-						<div class="l:stack size:2xl">
-							<div class="l:text:lg maki:auto">
-								<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
-									<h2 class="text:center">Playbook</h2>
-								</Magic>
-							</div>
-							{@render categoryElements()}
+				<section id="playbook">
+					<div class="l:stack size:2xl">
+						<div class="l:text:lg maki:auto">
+							<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+								<h2 class="text:center">Playbook</h2>
+							</Magic>
 						</div>
-					</section>
-				{/if}
+						{@render categoryElements()}
+					</div>
+				</section>
 			</div>
 		{/snippet}
 
