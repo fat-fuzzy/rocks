@@ -122,7 +122,6 @@
 				position={false}
 				area="gare"
 				place="ouest"
-				background="inherit"
 				layout="rails"
 				scroll="y"
 				layer={1}
@@ -146,7 +145,6 @@
 			breakpoint="xs"
 			size="sm"
 			font="xs"
-			background="inherit"
 			layout="grid"
 			formaction="updateSettings"
 			context={appContext}
