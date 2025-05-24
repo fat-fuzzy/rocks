@@ -169,10 +169,17 @@
 					element="section"
 				/>
 
-				<section id="playbook">
+				<section>
 					<div class="l:stack size:2xl">
 						<div class="l:text:lg maki:auto">
-							<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+							<Magic
+								id="playbook"
+								{spell}
+								uno="magic"
+								due="sparkles"
+								size="md"
+								grow={true}
+							>
 								<h2 class="text:center">
 									{category === 'raw' ? 'Templates' : 'Playbook'}
 								</h2>

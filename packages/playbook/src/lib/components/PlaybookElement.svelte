@@ -121,10 +121,17 @@
 		<div class="l:stack size:2xl">
 			<EscapeHtml id="doc" html={content.html} size="md" font="md" />
 
-			<section id="playbook" class="l:stack size:2xl">
+			<section class="l:stack size:2xl">
 				<div class="l:stack size:2xl">
 					<div class="l:text:lg size:xl maki:auto">
-						<Magic {spell} uno="magic" due="sparkles" size="md" grow={true}>
+						<Magic
+							id="playbook"
+							{spell}
+							uno="magic"
+							due="sparkles"
+							size="md"
+							grow={true}
+						>
 							<h2 class="w:full text:center">
 								{category === 'raw' ? 'Template' : 'Playbook'}
 							</h2>
