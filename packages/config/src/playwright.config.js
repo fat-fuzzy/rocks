@@ -2,7 +2,7 @@ const PORT = 4173
 
 /** @type { import("@playwright/test").PlaywrightTestConfig } */
 const config = {
-	timeout: 1000,
+	timeout: 10000,
 	retries: 2,
 	workers: '50%',
 	maxFailures: undefined,

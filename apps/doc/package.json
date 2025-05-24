@@ -13,7 +13,7 @@
 		"preview": "pnpm build:csstokens && vite preview",
 		"test": "pnpm build:csstokens && pnpm test:e2e",
 		"test:ui": "playwright test --ui",
-		"test:e2e": "playwright test",
+		"test:e2e": "playwright test --reporter=html",
 		"test:report": "playwright show:report",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
