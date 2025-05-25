@@ -405,6 +405,20 @@
 				"spread": {
 					"$value": "0"
 				}
+			},
+			"lg": {
+				"offsetX": {
+					"$value": "0"
+				},
+				"offsetY": {
+					"$value": "1px"
+				},
+				"blur": {
+					"$value": "8px"
+				},
+				"spread": {
+					"$value": "0"
+				}
 			}
 		}
 	}

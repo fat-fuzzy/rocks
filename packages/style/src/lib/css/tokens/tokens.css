@@ -256,6 +256,10 @@
   --scale-major-third-10: 1.25;
   --scale-major-third-20: 1.6;
   --scale-major-third-30: 2;
+  --shadow-base-lg-blur: 8px;
+  --shadow-base-lg-offsetX: 0;
+  --shadow-base-lg-offsetY: 1px;
+  --shadow-base-lg-spread: 0;
   --shadow-base-md-blur: 6px;
   --shadow-base-md-offsetX: 0;
   --shadow-base-md-offsetY: 1px;

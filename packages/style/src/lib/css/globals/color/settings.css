@@ -50,14 +50,6 @@
 		--shadow: oklch(
 			var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 		);
-
-		--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
-			var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-		--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
-			var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-
-		--shadow-inset-sm: var(--shadow-sm);
-		--shadow-inset-md: var(--shadow-md);
 	}
 }
 
@@ -114,14 +106,6 @@
 		--shadow: oklch(
 			var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 		);
-
-		--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
-			var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-		--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
-			var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-
-		--shadow-inset-sm: var(--shadow-sm);
-		--shadow-inset-md: var(--shadow-md);
 	}
 }
 
@@ -177,14 +161,6 @@
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);
-
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-
-	--shadow-inset-sm: var(--shadow-sm);
-	--shadow-inset-md: var(--shadow-md);
 }
 
 [class*='settings:night'],
@@ -240,14 +216,6 @@
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);
-
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
-		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-
-	--shadow-inset-sm: var(--shadow-sm);
-	--shadow-inset-md: var(--shadow-md);
 }
 
 .settings\:day\:contrast {

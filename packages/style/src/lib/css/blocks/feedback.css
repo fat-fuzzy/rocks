@@ -41,16 +41,13 @@
 
 [class*='feedback:']:not(.feedback\:code).variant\:fill {
 	border: var(--border-width-xl) solid var(--color-accent);
-	box-shadow: var(--shadow-md);
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:outline {
 	background-color: var(--color-bg);
-	box-shadow: unset;
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:bare {
 	background-color: var(--color-bg);
 	border-color: var(--color-bg);
-	box-shadow: unset;
 }

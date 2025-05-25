@@ -3,6 +3,7 @@
 	box-shadow: var(--layer);
 }
 
+/* TODO: Make nicer shadows */
 .layer\:0 {
 	--layer: unset;
 }
