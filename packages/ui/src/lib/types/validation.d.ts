@@ -7,6 +7,7 @@ export interface IFormValidator {
 	validationHandler(): ProxyHandler<any>
 	validate: () => void
 	init(formData: FormData, fields: {[name: string]: string}): void
+	destroy(): void
 	formHasErrors(): boolean
 	fieldHasError(name: string): boolean
 	getFieldErrors(name: string): string[]

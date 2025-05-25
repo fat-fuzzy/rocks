@@ -54,8 +54,10 @@
 	let description = '🍪 This website uses cookies 🍪'
 	let successMessage = `Your cookie preferences have been saved. You're all set!`
 
+	// TODO: Integrate inputTypes into validator from schema
 	const inputTypes: {[name: string]: string} = {
-		preferences: 'checkbox_group',
+		analytics: 'checkbox',
+		functional: 'checkbox',
 	}
 
 	$effect(() => {
@@ -123,6 +125,9 @@
 		if (boundForm) {
 			formData = new FormData(boundForm)
 			validator.init(formData, inputTypes)
+			return () => {
+				validator.destroy()
+			}
 		}
 	})
 </script>
@@ -167,6 +172,7 @@
 			<form
 				{id}
 				{method}
+				name="cookie-preferences"
 				class={layoutClasses}
 				action={action
 					? actionPath
@@ -233,7 +239,7 @@
 									onfocus={handleFocus}
 									onblur={handleBlur}
 									oninput={(event) => handleInput(event)}
-									checked={updated && updated?.analytics}
+									checked={(updated && updated?.analytics) || false}
 									{validator}
 								/>
 							</InputGroup>
