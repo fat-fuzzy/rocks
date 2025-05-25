@@ -23,7 +23,7 @@ import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
-import Popover from '$lib/components/blocks/overlays/Popover.svelte'
+import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
 import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/inputs/InputRange.svelte'
@@ -100,6 +100,11 @@ import SignUpUser from '$lib/forms/ui-sample-signup.js'
 import AppContext from '$lib/forms/app-context.svelte.js'
 
 /**
+ * Actors
+ */
+import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.js'
+
+/**
  * Utilities
  */
 import constants from '$lib/types/constants.js'
@@ -112,6 +117,10 @@ import format from '$lib/utils/format.js'
 const utils = {
 	format,
 	clickOutside,
+}
+
+const actors = {
+	PopoverActor,
 }
 
 const forms = {
@@ -201,6 +210,7 @@ const headless = {
 }
 
 export default {
+	actors,
 	drafts,
 	headless,
 	tokens,
