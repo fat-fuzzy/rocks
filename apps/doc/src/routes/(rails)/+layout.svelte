@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
+	import {onMount, type Snippet} from 'svelte'
 
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
@@ -20,6 +20,7 @@
 	let sidenav = $derived(page.data.sidebar)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
+	let useDarkScheme = $state(false)
 
 	type AreaZone = {
 		zone: Snippet
@@ -49,8 +50,25 @@
 		},
 	])
 
-	let brightness = $derived(appContext.brightness)
+	let brightness = $derived(
+		useDarkScheme ? 'night' : (appContext.brightness ?? 'day'),
+	)
+
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
+
+	function handleThemeChange(event) {
+		if (event.matches) {
+			useDarkScheme = true
+		} else {
+			useDarkScheme = false
+		}
+	}
+
+	onMount(() => {
+		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+		handleThemeChange(prefersDarkScheme)
+	})
 </script>
 
 <LayoutGrid
@@ -63,7 +81,7 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar l:grid size:3xs align:center">
+	<div class="navbar bg:inherit l:grid size:3xs align:center">
 		<HeaderNav
 			id="nav"
 			name="nav"
@@ -81,12 +99,13 @@
 			reveal={mainNav.reveal}
 			actionPath={page.url.pathname}
 			breakpoint="xs"
+			background="inherit"
 			formaction="toggleNav"
 		/>
 	</div>
 
 	<div
-		class={`${sidenav.reveal} sidebar l:grid size:3xs align:center width:lg height:sm`}
+		class={`${sidenav.reveal} sidebar bg:inherit l:grid size:3xs align:center width:lg height:sm`}
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
@@ -112,12 +131,13 @@
 				font="xs"
 				width="lg"
 				height="sm"
+				background="inherit"
 				dismiss="outside"
 			/>
 		{/if}
 	</div>
 
-	<div class="context l:grid size:3xs">
+	<div class="context l:grid size:3xs bg:inherit">
 		<RevealContext
 			id="appContext"
 			name="appContext"
@@ -129,6 +149,7 @@
 			font="xs"
 			layout="grid"
 			formaction="updateSettings"
+			background="inherit"
 			context={appContext}
 			reveal={appContext.reveal}
 		/>

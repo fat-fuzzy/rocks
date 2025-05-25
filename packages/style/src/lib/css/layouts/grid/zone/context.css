@@ -89,6 +89,12 @@
 	.exchange > .context > .app-context:is(.collapsed, .expanded) ff-reveal {
 		justify-content: flex-end;
 	}
+
+	/* This form contains the actual settings */
+	.exchange > .context > .app-context ff-reveal > form {
+		padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
+		padding-block: var(--outline-offset-sm);
+	}
 }
 
 @media screen and (min-width: 1100px) {

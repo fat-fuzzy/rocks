@@ -50,7 +50,7 @@ nav a:hover {
 	--lightness-contrast: var(--color-lightness-400);
 }
 
-nav a[class*='surface:1']:hover {
+nav a[class*='surface:0']:hover {
 	--lightness: var(--lightness-surface-2);
 	--lightness-contrast: var(--lightness-surface-2-contrast);
 	--chroma: var(--chroma-surface-2);

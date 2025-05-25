@@ -17,8 +17,8 @@ export type AppContextItems = {
 }
 
 export type CookiePreferences = {
-	functional: boolean
-	analytics: boolean
+	functional?: boolean
+	analytics?: boolean
 	thirdParty?: boolean
 }
 
@@ -26,7 +26,7 @@ export type ViewingPreferences = {
 	reveal: UiState
 	brightness: UiSettings
 	contrast: UiSettings
-	cookies: CookiePreferences
+	consent: CookiePreferences
 }
 
 export type SettingsProps = UiBlockProps &

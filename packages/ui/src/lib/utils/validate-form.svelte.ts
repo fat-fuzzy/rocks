@@ -41,6 +41,13 @@ class FormValidator implements IFormValidator {
 		}
 	}
 
+	async destroy() {
+		this.form = {}
+		this.inputTypes = {}
+		this.errors = []
+		this.ajvValidate = () => ({})
+	}
+
 	async init(formData: FormData, fields: {[name: string]: string}) {
 		if (!formData) {
 			// We shouldn't reach this state: the data should be available, or the server should have returned an error before reaching this point and the form should not have been rendered

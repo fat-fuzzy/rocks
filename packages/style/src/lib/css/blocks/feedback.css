@@ -8,8 +8,12 @@
 	gap: var(--ui-size-sm);
 }
 
-:where(p, label, input) + [class*='feedback:'] {
-	margin-block-start: var(--ui-size);
+p + [class*='feedback:'] {
+	margin-block-start: var(--ui-size-sm);
+}
+
+:where(label, input) + [class*='feedback:'] {
+	--gap: var(--outline-offset-lg);
 }
 
 [class*='feedback:']:not(.feedback\:code) {
@@ -41,16 +45,13 @@
 
 [class*='feedback:']:not(.feedback\:code).variant\:fill {
 	border: var(--border-width-xl) solid var(--color-accent);
-	box-shadow: var(--shadow-md);
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:outline {
 	background-color: var(--color-bg);
-	box-shadow: unset;
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:bare {
 	background-color: var(--color-bg);
 	border-color: var(--color-bg);
-	box-shadow: unset;
 }

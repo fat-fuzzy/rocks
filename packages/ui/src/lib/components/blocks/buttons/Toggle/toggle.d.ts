@@ -28,7 +28,7 @@ export type ToggleProps = UiBlockProps & {
 	type?: ButtonType
 	children?: Snippet
 	text?: string
-	initial?: string
+	initial?: UiState // Initial state of the button
 	value?: string | number
 	states?: FuzzyMachine
 	onclick?: (payload: FuzzyPayload) => void

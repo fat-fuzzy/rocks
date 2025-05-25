@@ -129,7 +129,7 @@
 		{justify}
 	/>
 
-	<RevealContent {id} {place} {reveal} {scroll} {layer}>
+	<RevealContent {id} {place} {reveal} {scroll} {layer} {background}>
 		{#if children}
 			{@render children()}
 		{/if}

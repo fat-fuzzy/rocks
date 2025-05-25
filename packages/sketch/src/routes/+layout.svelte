@@ -24,6 +24,7 @@
 		id: 'nav-sketches',
 		items: sketches,
 		reveal: 'expanded',
+		background: 'inherit',
 		breakpoint: 'sm',
 		size: 'sm',
 		color: 'primary',

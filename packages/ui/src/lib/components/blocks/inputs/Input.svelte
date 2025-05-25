@@ -27,12 +27,13 @@
 		styleHelper.getStyles({
 			font,
 			size,
+			color,
 			variant,
 		}),
 	)
 </script>
 
-<label class={`l:stack:${size} ${inputClasses}`}>
+<label class={`l:stack size:${size} ${inputClasses}`}>
 	{label}
 	<input
 		{id}

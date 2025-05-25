@@ -9,6 +9,7 @@
 		size,
 		font,
 		variant,
+		background,
 		asset,
 		justify,
 		dismiss,
@@ -32,6 +33,7 @@
 	{size}
 	{font}
 	{variant}
+	{background}
 	{asset}
 	{justify}
 	{dismiss}

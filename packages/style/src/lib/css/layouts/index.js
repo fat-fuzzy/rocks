@@ -29,6 +29,7 @@ import './shapes.css' /* Use to style geometric shapes */
 import './flex.css' /* Use for flex layouts */
 import './align.css' /* Use for aligning items inside containers */
 import './position.css' /* Use for to position elements */
+import './layers.css' /* Use to display emoji icons */
 
 /* == Grids == */
 import './grid/base.css'

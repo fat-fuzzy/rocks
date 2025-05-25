@@ -141,7 +141,7 @@ export enum Preferences {
 	brightness = 'brightness',
 	contrast = 'contrast',
 	locale = 'locale',
-	cookies = 'cookies',
+	consent = 'consent',
 }
 
 export enum UiSettings {

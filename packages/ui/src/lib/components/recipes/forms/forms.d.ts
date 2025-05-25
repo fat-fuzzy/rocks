@@ -1,4 +1,4 @@
-import type {InputCommonProps, ButtonType} from '$types'
+import type {InputCommonProps, ButtonType, FuzzyPayload} from '$types'
 import FormValidator from '$lib/utils/validate-form.svelte.js'
 
 export type FormCommonProps = InputCommonProps & {

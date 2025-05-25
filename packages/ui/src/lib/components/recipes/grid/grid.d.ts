@@ -7,7 +7,7 @@ export type LayoutGridProps = GridProps & {
 		brightness: string
 		contrast: string
 		language?: string
-		cookies?: CookiePreferences
+		consent?: CookiePreferences
 	}
 	sidenav?: NavItem
 }

@@ -11,7 +11,7 @@ import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.
 const APP_PREFIX = 'ff'
 
 const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
-	functional: false,
+	functional: true,
 	analytics: false,
 	thirdParty: false,
 }
@@ -26,7 +26,7 @@ const DEFAULT_PREFERENCES: ViewingPreferences = {
 	reveal: UiState.collapsed,
 	brightness: UiSettings.day,
 	contrast: UiSettings.contrast,
-	cookies: DEFAULT_COOKIES_CONSENT,
+	consent: DEFAULT_COOKIES_CONSENT,
 }
 
 const DEFAULT_SCENE_ID = '004'

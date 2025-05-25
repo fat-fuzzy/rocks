@@ -10,7 +10,6 @@
 		label = 'Checkbox input',
 		checked,
 		disabled,
-		value,
 		required,
 		status = UiStatus.default,
 		hint,
@@ -51,7 +50,7 @@
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value,
+		value: checked,
 	})
 </script>
 
@@ -59,10 +58,9 @@
 	<span>{label}</span>
 	<input
 		{id}
-		type="checkbox"
-		{value}
 		{name}
-		{checked}
+		type="checkbox"
+		bind:checked
 		{required}
 		oninput={handleInput}
 		{disabled}

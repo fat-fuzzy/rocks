@@ -12,6 +12,7 @@ import './color/palettes.css'
 import './color/ui.css'
 import './color/ink.css'
 import './color/gradient.css'
+import './color/shadow.css'
 
 /* State */
 import './ui/state.css'
@@ -33,6 +34,3 @@ import './icons/icon.css' /* Use to display emojis and svg icons */
 import './icons/svg.css' /* Use to display svg icons */
 import './icons/assets.css' /* Use to display svg icons */
 import './icons/emoji.css' /* Use to display emoji icons */
-
-/* Content */
-import './layers.css' /* Use to display emoji icons */

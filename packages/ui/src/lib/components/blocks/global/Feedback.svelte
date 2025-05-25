@@ -14,13 +14,14 @@
 		size,
 		font,
 		variant,
+		layer,
 		container,
 		children,
 	}: FeedbackProps = $props()
 
 	let feedbackClasses = $derived(
 		styleHelper.getFeedbackStyles(
-			{size, font, asset, variant, align, justify, container},
+			{size, font, asset, variant, layer, align, justify, container},
 			status as UiStatus,
 			context as UiTextContext,
 		),
@@ -36,7 +37,11 @@
 		class={feedbackClasses}
 		data-testid={testId}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
-	<div class={feedbackClasses} data-testid={testId} aria-live={ariaLive}>
+	<ff-feedback
+		class={feedbackClasses}
+		data-testid={testId}
+		aria-live={ariaLive}
+	>
 		{#if context === 'prose' && status !== 'default'}
 			<p class="status">{status}</p>
 		{/if}
@@ -47,5 +52,5 @@
 				<p>{text}</p>
 			{/if}
 		</div>
-	</div>
+	</ff-feedback>
 {/if}

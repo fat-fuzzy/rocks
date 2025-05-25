@@ -9,6 +9,10 @@ export interface Forms {
 	SignUpUser: typeof import('$lib/forms/ui-sample-signup.js').default
 }
 
+export interface Actors {
+	PopoverActor: typeof import('$lib/components/blocks/overlays/Popover/actor.svelte.js').default
+}
+
 export interface Tokens {
 	Color: typeof import('$lib/components/tokens/Color.svelte').default
 	Typography: typeof import('$lib/components/tokens/Typography.svelte').default
@@ -65,7 +69,7 @@ export interface Content {
 
 export interface Drafts {
 	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
-	Popover: typeof import('$lib/components/blocks/overlays/Popover.svelte').default
+	Popover: typeof import('$lib/components/blocks/overlays/Popover/Popover.svelte').default
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
@@ -87,15 +91,18 @@ export interface Headless {
 }
 
 export interface FatFuzzyUi {
+	// Components
+	blocks: Blocks
+	content: Content
 	drafts: Drafts
 	headless: Headless
-	tokens: Tokens
-	blocks: Blocks
 	layouts: Layouts
-	recipes: Recipes
 	raw: Raw
-	content: Content
-	utils: Utils
+	recipes: Recipes
+	tokens: Tokens
+	// Tools
+	actors: Actors
 	forms: Forms
 	constants: typeof import('$lib/types/constants.js').default
+	utils: Utils
 }

@@ -1,4 +1,5 @@
-import type {UiActionSetInput, UiActionSetOutput} from '$lib/types/actions.js'
+import type {UiActionSetOutput} from '$lib/types/actions.js'
+import type {RequestEvent} from '@sveltejs/kit'
 import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
@@ -7,9 +8,9 @@ const {AppContext} = ui.forms
 
 const {APP_PREFIX, DEFAULT_PREFERENCES} = ui.constants
 
-async function handleUpdateAppSettings({
-	event,
-}: UiActionSetInput): Promise<UiActionSetOutput> {
+async function handleUpdateAppSettings(
+	event: RequestEvent,
+): Promise<UiActionSetOutput> {
 	const {request, cookies} = event
 	const data = await request.formData()
 

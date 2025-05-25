@@ -9,4 +9,5 @@ export type OverlayProps = UiBlockProps &
 		open?: boolean
 		fixed?: boolean
 		children?: Snippet
+		onbeforetoggle?: (payload: FuzzyPayload) => void
 	}

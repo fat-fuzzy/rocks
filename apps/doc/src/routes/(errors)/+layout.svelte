@@ -11,7 +11,7 @@
 	import Beacon from '$lib/ui/Beacon.svelte'
 
 	const {Header} = ui.recipes
-	const {Popover, Cookies} = ui.drafts
+	const {Cookies} = ui.drafts
 
 	type Props = {
 		fixed?: boolean
@@ -39,10 +39,6 @@
 		pageClass === 'page:home' ? 'ravioli:xl' : '',
 	)
 	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
-	let cookiesPending = $derived(appContext.consent === undefined)
-	let cookiesPartial = $derived(
-		appContext.consent?.analytics || appContext.consent?.site,
-	)
 	let settings = $derived.by(() => {
 		let inputs = ui.constants.APP_SETTINGS
 		inputs.display[0].initial = initialBrightness
@@ -94,18 +90,8 @@
 		</details>
 	</footer>
 </div>
-<Popover
-	id="cookies-banner"
-	title="Cookies"
-	asset="cookie"
-	fixed={cookiesPending}
-	container="burrito"
-	variant="fill"
-	color={cookiesPending ? 'highlight' : cookiesPartial ? 'accent' : 'primary'}
-	place="bottom-right"
->
-	<Cookies />
-</Popover>
+
+<Cookies consent={appContext.consent} />
 
 {#if !dev && appContext.consent?.analytics}
 	<Beacon />
