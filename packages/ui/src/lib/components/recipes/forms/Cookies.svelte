@@ -123,10 +123,6 @@
 		if (boundForm) {
 			formData = new FormData(boundForm)
 			validator.init(formData, inputTypes)
-
-			return () => {
-				validator.destroy()
-			}
 		}
 	})
 </script>
@@ -204,6 +200,7 @@
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={handleInput}
+								{validator}
 								justify="between"
 							>
 								<InputCheck
@@ -219,6 +216,7 @@
 									justify="between"
 									disabled={true}
 									checked={true}
+									{validator}
 								/>
 								<br />
 								<InputCheck
@@ -236,6 +234,7 @@
 									onblur={handleBlur}
 									oninput={(event) => handleInput(event)}
 									checked={updated && updated?.analytics}
+									{validator}
 								/>
 							</InputGroup>
 						{/key}
