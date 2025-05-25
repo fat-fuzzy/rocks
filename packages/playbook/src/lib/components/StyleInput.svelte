@@ -27,7 +27,7 @@
 	let {styleInput, family, familyName, formaction, onupdate}: Props = $props()
 
 	let apiSize = '2xs'
-	let apiFont = 'sm'
+	let apiFont = 'xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
 	let apiJustify = 'stretch'
@@ -172,7 +172,7 @@
 			type={input}
 			value={currentValue}
 			legend={name}
-			layout={styleInput.layout ?? ''}
+			layout={styleInput.layout ?? 'switcher'}
 			container={styleInput.container ?? ''}
 			threshold={apiSize}
 			size={styleInput.size ?? apiSize}

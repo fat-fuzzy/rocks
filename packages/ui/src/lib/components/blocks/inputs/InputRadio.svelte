@@ -30,7 +30,7 @@
 	}: InputProps = $props()
 
 	function handleInput(event: Event) {
-		if (oninput) oninput(payload)
+		if (oninput) oninput(event)
 	}
 
 	let classes = $derived(
@@ -47,20 +47,14 @@
 			background: background ? background : 'inherit',
 		}),
 	)
-
-	let payload = $derived({
-		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
-		name,
-		value,
-	})
 </script>
 
-<label for={id} class={classes} data-testid={id}>
+<label for={id} class={`ravioli:${size} ${classes} nowrap`} data-testid={id}>
 	<span>{label}</span>
 	<input
 		{id}
 		type="radio"
-		{value}
+		bind:value
 		{name}
 		{checked}
 		{required}
@@ -68,6 +62,7 @@
 		{disabled}
 	/>
 </label>
+
 {#if hint}
 	<Feedback
 		{id}

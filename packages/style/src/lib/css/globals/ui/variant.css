@@ -30,11 +30,6 @@
 	background-color: inherit;
 }
 
-[class*=':outline'][class*='ravioli'],
-[class*=':bare'][class*='ravioli'] {
-	background-color: var(--shade);
-}
-
 .dotted {
 	border: var(--border-width-md) dotted var(--accent, var(--shade));
 }
