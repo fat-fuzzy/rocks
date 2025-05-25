@@ -11,7 +11,7 @@ import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.
 const APP_PREFIX = 'ff'
 
 const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
-	functional: false,
+	functional: true,
 	analytics: false,
 	thirdParty: false,
 }

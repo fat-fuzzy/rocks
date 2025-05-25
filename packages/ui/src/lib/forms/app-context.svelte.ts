@@ -30,7 +30,8 @@ class AppContext {
 			this.state.contrast = TRANSITION_CONTRAST[String(contrast)]
 			updated = true
 		}
-		if (data.has('submit')) {
+
+		if (data.has('consent-submit') || data.has('consent-reset')) {
 			if (!this.state.consent) {
 				this.state.consent = {}
 			}

@@ -8,7 +8,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import Beacon from '$lib/ui/Beacon.svelte'
 
-	const {Popover, Cookies} = ui.drafts
+	const {Cookies} = ui.drafts
 
 	type Props = {
 		fixed?: boolean
@@ -18,10 +18,6 @@
 
 	let {children}: Props = $props()
 	let appContext = $derived(page.data.appContext)
-	let cookiesPending = $derived(appContext.consent === undefined)
-	let cookiesPartial = $derived(
-		appContext.consent?.analytics || appContext.consent?.site,
-	)
 </script>
 
 {#if children}
@@ -30,18 +26,7 @@
 	<p>Nothing to see here</p>
 {/if}
 
-<Popover
-	id="cookies-banner"
-	title="Cookies"
-	asset="cookie"
-	fixed={cookiesPending}
-	container="burrito"
-	variant="fill"
-	color={cookiesPending ? 'highlight' : cookiesPartial ? 'accent' : 'primary'}
-	place="bottom-right"
->
-	<Cookies consent={appContext.consent} />
-</Popover>
+<Cookies consent={appContext.consent} />
 
 {#if !dev && appContext.consent?.analytics}
 	<Beacon />
