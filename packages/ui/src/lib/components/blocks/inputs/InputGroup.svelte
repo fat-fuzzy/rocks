@@ -62,6 +62,7 @@
 			{...input}
 			{justify}
 			{container}
+			{size}
 			name={id}
 			id={`${name}.${input.value}`}
 			oninput={(event: Event) => handleInput(event, name)}
