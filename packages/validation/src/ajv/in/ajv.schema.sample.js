@@ -226,7 +226,8 @@ const schemaCookiePreferences = {
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
 	properties: {
-		preferences: {$ref: '#/definitions/checkbox_group'},
+		functional: {$ref: '#/definitions/checkbox'},
+		analytics: {$ref: '#/definitions/checkbox'},
 	},
 	definitions: schemaInputs,
 }
