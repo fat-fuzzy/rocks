@@ -167,6 +167,7 @@
 			<form
 				{id}
 				{method}
+				name="cookie-preferences"
 				class={layoutClasses}
 				action={action
 					? actionPath
@@ -233,7 +234,7 @@
 									onfocus={handleFocus}
 									onblur={handleBlur}
 									oninput={(event) => handleInput(event)}
-									checked={updated && updated?.analytics}
+									checked={(updated && updated?.analytics) || false}
 									{validator}
 								/>
 							</InputGroup>
