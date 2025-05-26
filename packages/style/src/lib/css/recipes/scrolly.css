@@ -27,6 +27,39 @@
 	line-height: 0;
 }
 
+.scroll\:item .media {
+	position: relative;
+}
+
+.scroll\:item .item-link {
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	z-index: 2;
+	transform: translate(58%, 95%);
+	transition: transform 300ms ease-in-out;
+	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
+}
+
+.scroll\:item .item-link ff-callout {
+	filter: opacity(1);
+	transition: filter 150ms ease-out;
+}
+
+.scroll\:item .item-link:focus {
+	outline: var(--border-width-lg) dotted var(--color-magic-highlight);
+}
+
+.scroll\:item .item-link:hover ff-callout {
+	filter: opacity(0.85);
+	transition: filter 150ms ease-out;
+}
+
+.scroll\:item .item-link > * {
+	inline-size: 100%;
+	block-size: 100%;
+}
+
 .scroll\:container[class*='l:frame'] {
 	block-size: 85vh;
 }
@@ -37,6 +70,26 @@
 	margin-block: var(--size-base-2xl);
 }
 
+@media screen and (min-width: 600px) {
+	.scroll\:item .item-link {
+		transform: translate(53%, -12%);
+		min-inline-size: calc(
+			var(--layout-sidebar-collapsed) / var(--size-ratio-md) - 2 *
+				var(--outline-offset-lg)
+		);
+	}
+}
+
+@media screen and (min-width: 600px) and (max-height: 600px) {
+	.scroll\:item .item-link {
+		transform: translate(53%, -20%);
+		min-inline-size: calc(
+			var(--layout-sidebar-collapsed) / var(--size-ratio-md) - 2 *
+				var(--ui-size)
+		);
+	}
+}
+
 @media screen and (min-width: 768px) {
 	.scroll\:item {
 		justify-content: var(--justify, flex-start);
@@ -44,5 +97,28 @@
 
 	.scroll\:item .media {
 		margin-block: 0;
+	}
+}
+
+@media screen and (min-width: 800px) and (max-height: 400px) {
+	.scroll\:item .item-link {
+		min-inline-size: calc(
+			var(--layout-sidebar-collapsed) / var(--size-ratio-md) - 2 *
+				var(--ui-size)
+		);
+	}
+}
+
+@media screen and (min-width: 800px) and (min-height: 500px) {
+	.scroll\:item .item-link {
+		min-inline-size: calc(
+			var(--layout-sidebar-collapsed) / var(--size-ratio-sm)
+		);
+	}
+}
+
+@media screen and (min-width: 935px) and (min-height: 600px) {
+	.scroll\:item .item-link {
+		min-inline-size: var(--layout-sidebar-collapsed);
 	}
 }

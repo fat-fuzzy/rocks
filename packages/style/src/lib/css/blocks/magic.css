@@ -18,8 +18,7 @@ ff-icon {
 .ff\:callout[class*='magic'],
 ff-callout[class*='magic'] {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	background-clip: text;
-	background: var(--magic-gradient);
+	background-image: var(--magic-gradient);
 	color: var(--ink);
 	padding: var(--ui-size-sm);
 	border-radius: var(--border-radius-base);
@@ -27,6 +26,13 @@ ff-callout[class*='magic'] {
 	&:has(~ [class*='icon']) {
 		margin-inline-end: var(--ui-size-sm);
 	}
+}
+
+.ff\:callout[class*='magic'].shape\:round,
+ff-callout[class*='magic'].shape\:round {
+	border-radius: 100vmax;
+	justify-content: center;
+	inline-size: 100%;
 }
 
 .magic\:bleu {
@@ -141,6 +147,27 @@ ff-callout[class*='magic'] {
 			color(display-p3 0.75 0.16 0.41) 22% 22%,
 			color(display-p3 0.21 0.14 0.51) 49% 49%,
 			color(display-p3 0.24 0.54 0.55) 88% 88%
+		);
+	}
+}
+
+.magic\:fuzzy {
+	--magic-gradient: radial-gradient(
+		closest-side,
+		var(--color-magic-primary) 50%,
+		var(--color-magic-highlight),
+		var(--color-magic-warning)
+	);
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma-contrast: var(--color-chroma-000);
+	--hue: var(--color-theme-primary);
+
+	&[class*='svg'] {
+		--magic-gradient: radial-gradient(
+			closest-side,
+			var(--color-magic-highlight) 50%,
+			var(--color-magic-primary),
+			var(--color-magic-warning)
 		);
 	}
 }

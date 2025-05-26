@@ -22,6 +22,12 @@
 	layout="tgv"
 >
 	{#snippet main()}
-		<Scrolly animations={['fade']} items={sections} level={0} />
+		<Scrolly
+			animations={['fade']}
+			items={sections}
+			level={0}
+			snap="center"
+			magic={{spell: 'fuzzy', shape: 'round'}}
+		/>
 	{/snippet}
 </PageRails>
