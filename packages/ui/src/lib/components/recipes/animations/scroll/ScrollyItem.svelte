@@ -42,7 +42,6 @@
 <li bind:this={observedArea} class={`${animations} scroll:item snap:${snap}`}>
 	{#if item.link}
 		{#if item.image}
-			>
 			<div class="media l:stack:2xl">
 				<a
 					href={item.link}
