@@ -67,9 +67,7 @@ class FormValidator implements IFormValidator {
 
 			/* This initializes the field value, if any  */
 			for (const [name, value] of formData) {
-				this.form[name] = {
-					value: value,
-				}
+				this.form[name].value = value
 			}
 		}
 	}
