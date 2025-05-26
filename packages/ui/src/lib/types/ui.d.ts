@@ -28,7 +28,7 @@ export type AriaLive =
 export type Autocomplete = FullAutoFill | null | undefined
 
 export type Settings = {
-	[setting in UiSettings]?: string
+	[option in Preferences]?: string
 }
 
 export type UiRevealState = {
@@ -50,7 +50,9 @@ export type UiLayoutProps = {
 	justify?: string
 	size?: string
 	font?: string
+	theme?: string
 
+	scroll?: string
 	container?: string
 	direction?: string
 	place?: string
@@ -68,6 +70,7 @@ export type UiBlockProps = UiLayoutProps & {
 	asset?: string // the `value` part of emoji:value or svg:value
 	assetType?: string // the `svg` or `emoji` part of emoji:value or svg:value
 	color?: string
+	font?: string
 	shape?: string
 	variant?: string
 	background?: string

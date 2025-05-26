@@ -1,0 +1,39 @@
+[class*='fixed'],
+[class*='place'] {
+	--inset-size: var(--size-base-2xs);
+	max-inline-size: calc(100% - 2 * var(--inset-size));
+	max-block-size: calc(100% - 2 * var(--inset-size));
+}
+
+[class*='fixed'] {
+	position: fixed;
+	z-index: var(--layout-z-index-fixed);
+}
+
+[class*='place'] {
+	position: absolute;
+	z-index: var(--layout-z-index-layer);
+}
+
+[class*='fixed'],
+[class*='place'] {
+	&[class*=':top-left'] {
+		top: var(--inset-size-top, var(--inset-size));
+		left: var(--inset-size-left, var(--inset-size));
+	}
+
+	&[class*=':top-right'] {
+		top: var(--inset-size-top, var(--inset-size));
+		right: var(--inset-size-right, var(--inset-size));
+	}
+
+	&[class*=':bottom-left'] {
+		bottom: var(--inset-size-bottom, var(--inset-size));
+		left: var(--inset-size-left, var(--inset-size));
+	}
+
+	&[class*=':bottom-right'] {
+		bottom: var(--inset-size-bottom, var(--inset-size));
+		right: var(--inset-size-right, var(--inset-size));
+	}
+}

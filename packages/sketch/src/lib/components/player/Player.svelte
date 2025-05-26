@@ -56,7 +56,7 @@
 	})
 </script>
 
-<menu {id} class={`player l:grid:2xs l:burrito:sm`}>
+<menu {id} class={`player l:switcher:${size} th:2xs`}>
 	<li>
 		{#key actor.playState}
 			<Switch
@@ -66,7 +66,6 @@
 				states={actor.playSwitch}
 				{color}
 				{size}
-				shape="round"
 				layout="stack"
 				initial={actor.playState}
 				disabled={actor.getPlayDisabled()}
@@ -85,7 +84,6 @@
 			{size}
 			value="clear"
 			asset="clear"
-			shape="square"
 			onclick={updatePlayer}
 			disabled={actor.getClearDisabled()}
 		>
@@ -101,7 +99,6 @@
 			{size}
 			value="stop"
 			asset="rect"
-			shape="square"
 			onclick={updatePlayer}
 			disabled={actor.getStopDisabled()}
 		>
@@ -109,7 +106,3 @@
 		</Button>
 	</li>
 </menu>
-
-<style>
-	@import '../../styles/css/player.css';
-</style>

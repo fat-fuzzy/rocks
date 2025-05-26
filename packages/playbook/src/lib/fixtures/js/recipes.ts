@@ -19,9 +19,6 @@ export default {
 		],
 	},
 	RevealMenu: {
-		slug: 'ui',
-		title: 'RevealMenu',
-		actionPath: '/',
 		items: [
 			{id: 'reveal-menu.button.idea', label: 'Idea', asset: 'idea'},
 			{id: 'reveal-menu.button.profile', label: 'Profile', asset: 'profile'},
@@ -54,10 +51,6 @@ export default {
 		items: links,
 	},
 	RevealNav: {
-		slug: 'ui',
-		path: '/ui',
-		title: 'RevealNav',
-		actionPath: '/',
 		place: 'top',
 		items: [
 			{
@@ -79,7 +72,6 @@ export default {
 		],
 	},
 	SignUp: {
-		slug: 'ui',
 		title: 'SignUp',
 		validationFunction: 'SignUpValidationFunction',
 		dataPrefix: 'sample',
@@ -88,6 +80,8 @@ export default {
 	Header: {
 		slug: 'ui',
 		title: 'Header',
+		id: 'Header-nav',
+		formaction: 'updateState',
 		items: {
 			links,
 			settings: APP_SETTINGS,

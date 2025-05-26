@@ -21,15 +21,16 @@
 		id,
 		depth = 0,
 		container,
-		items = [], // TODO: fix type,
+		items = [],
+		preload,
 		oninput,
 	}: LinkTreeProps = $props()
 
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
-	let colorClass = color ? `surface:1:${color}` : ''
+	let colorClass = color ? `surface:1:${color}` : 'bg:inherit'
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
-	let gridClass = depth === 1 ? `l:grid:sm` : layoutClass
+	let gridClass = depth === 1 ? `l:grid:auto size:xs` : layoutClass
 	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
 </script>
 
@@ -45,7 +46,12 @@
 	/>
 {/snippet}
 
-<ul {id} class={`${gridClass} ${depthClass}`} data-testid={id}>
+<ul
+	{id}
+	class={`${gridClass} ${depthClass}`}
+	data-testid={id}
+	data-sveltekit-preload-data={preload ? preload : undefined}
+>
 	{#each items as item (item.slug)}
 		{@const {slug, title, asset} = item}
 		{@const subItems = item.items}
@@ -60,8 +66,8 @@
 				? 'page'
 				: undefined}
 			class={$page.url.pathname === format.formatHref(path, slug)
-				? `${itemClass} ${linkAssetClass} ${colorClass}`
-				: `${itemClass} ${linkAssetClass}`}
+				? `${itemClass} ${colorClass}`
+				: `${itemClass}`}
 		>
 			{#if subItems && depth > 0}
 				<input
@@ -89,7 +95,7 @@
 				<a
 					data-sveltekit-preload-data
 					href={format.formatHref(path, slug)}
-					class={linkClass}
+					class={`${linkClass} ${linkAssetClass}`}
 				>
 					{title}
 				</a>

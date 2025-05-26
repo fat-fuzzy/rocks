@@ -43,7 +43,7 @@ let meta = {
 	slug: 'filters',
 	title: 'Filters',
 	asset: 'filters',
-	categories: ['learning'],
+	categories: ['Learning'],
 	tags: ['color', 'filters', 'webgl', 'webglfundamentals'],
 	controls: ['texture'],
 	filename: 'plants.png',

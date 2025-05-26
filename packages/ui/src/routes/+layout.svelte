@@ -9,20 +9,21 @@
 	type Props = {children: Snippet}
 
 	let {children}: Props = $props()
-	let navItems = $state({links: APP_LINKS, settings: APP_SETTINGS})
+	let headerData = $state({links: APP_LINKS, settings: APP_SETTINGS})
 	let layout = 'taco'
 	let brightness = 'day'
 	let contrast = 'contrast'
 	let mainClass = `${brightness} l:${layout} l:stack:lg bg:${contrast}`
-	let footerClass = 'font:sm card:2xl color:primary'
+	let footerClass = 'font:sm ravioli:2xl color:primary'
 </script>
 
 <Header
-	items={navItems}
+	main={headerData.links}
+	context={headerData.settings}
 	layout="taco"
 	app={{settings: {brightness: 'day', contrast: 'blend'}}}
 >
-	<h1 class="l:flex card:md icon:svg:egg size:xl font:xl align:center">
+	<h1 class="l:flex ravioli:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style
 	</h1>
 </Header>

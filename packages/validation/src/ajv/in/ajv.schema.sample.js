@@ -218,4 +218,24 @@ const schemaUiState = {
 	definitions: schemaInputs,
 }
 
-export default {schemaInputs, schemaSignUp, schemaUiState, schemaAjvValidator}
+/**
+ * Validation schema for Cookie Preferences.
+ */
+const schemaCookiePreferences = {
+	$id: '#/definitions/CookiePreferencesSchema',
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	type: 'object',
+	properties: {
+		functional: {$ref: '#/definitions/checkbox'},
+		analytics: {$ref: '#/definitions/checkbox'},
+	},
+	definitions: schemaInputs,
+}
+
+export default {
+	schemaInputs,
+	schemaSignUp,
+	schemaUiState,
+	schemaCookiePreferences,
+	schemaAjvValidator,
+}

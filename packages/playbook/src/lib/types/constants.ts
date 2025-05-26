@@ -4,18 +4,18 @@ const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
 
 const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'expanded'}
 
-const DEFAULT_APP_SETTINGS: Settings = {brightness: 'day', contrast: 'blend'}
-
 const DEFAULT_DS_STATE: {
-	menuReveal: Settings
-	navReveal: Settings
-	sidebarReveal: Settings
-	settingsReveal: Settings
+	Reveal: Settings
+	RevealMenu: Settings
+	RevealNav: Settings
+	HeaderRevealNav: Settings
+	HeaderRevealContext: Settings
 } = {
-	menuReveal: {reveal: 'collapsed'},
-	navReveal: {reveal: 'collapsed'},
-	sidebarReveal: {reveal: 'collapsed'},
-	settingsReveal: {reveal: 'collapsed'},
+	Reveal: {reveal: 'collapsed'},
+	RevealMenu: {reveal: 'collapsed'},
+	RevealNav: {reveal: 'collapsed'},
+	HeaderRevealNav: {reveal: 'collapsed'},
+	HeaderRevealContext: {reveal: 'collapsed'},
 }
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
@@ -55,6 +55,7 @@ const DEFAULT_STYLES: StyleTree = {
 				context: 'form',
 				asset: 'emoji:default',
 				size: 'md',
+				shape: 'none',
 			},
 		},
 	},
@@ -79,9 +80,9 @@ const TABS = [
 		slug: 'doc',
 		title: 'Doc',
 		initial: true,
-		variant: 'outline',
+		variant: 'link',
 		color: 'primary',
-		size: 'md',
+		size: 'xs',
 		shape: 'round',
 		asset: 'doc',
 	},
@@ -89,9 +90,9 @@ const TABS = [
 		slug: 'playbook',
 		title: 'Playbook',
 		initial: false,
-		variant: 'outline',
+		variant: 'link',
 		color: 'accent',
-		size: 'md',
+		size: 'xs',
 		shape: 'round',
 		asset: 'playbook',
 	},
@@ -100,7 +101,6 @@ export default {
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,
-	DEFAULT_APP_SETTINGS,
 	DEFAULT_DS_STATE,
 	TRANSITION_REVEAL,
 	NUMBER_TO_SIZE,

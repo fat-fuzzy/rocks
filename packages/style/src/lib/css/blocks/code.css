@@ -10,12 +10,14 @@ pre {
 	--color-bg: var(--shade);
 	--color-ink: var(--ink);
 	--color-accent: var(--accent);
+	--ui-size: var(--font-size);
 	color: var(--color-ink);
 	background-color: var(--color-bg);
 	padding-inline: var(--ui-size) var(--ui-size-lg);
 	padding-block: var(--ui-size);
 	border: var(--border-width-xl) solid var(--color-accent);
 	max-inline-size: 100%;
+	max-inline-size: calc(100vw - 2 * var(--gap));
 	overflow: auto;
 }
 
@@ -23,7 +25,7 @@ kbd {
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
 	padding-inline: var(--ui-size);
 	margin-inline: calc(var(--ui-size) / 2);
-	border: var(--border-width) solid var(--color-accent);
+	border: var(--border-width-md) solid var(--color-accent);
 	border-radius: var(--border-radius-base);
 }
 

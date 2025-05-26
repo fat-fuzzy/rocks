@@ -9,6 +9,10 @@
 	margin-block: var(--block-margin);
 }
 
+.maki\:auto {
+	margin: 0 auto;
+}
+
 .maki\:inline\:2xs {
 	--inline-margin: var(--size-base-2xs);
 }

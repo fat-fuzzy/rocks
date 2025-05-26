@@ -1,0 +1,38 @@
+/**
+ * ZONE 4
+ * Contains main content & page context
+ */
+
+.steam.zone\:2 {
+	grid-template-rows: 1fr auto;
+
+	> .page-context > summary {
+		max-inline-size: var(--sidebar-width);
+	}
+
+	> .page-context.media\:video {
+		block-size: var(--overlay-height-xs);
+	}
+
+	> .page-context.media\:square {
+		block-size: var(--overlay-height-2xs);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.steam.zone\:2 {
+		grid-template-rows: subgrid;
+		padding-inline-end: var(--grid-gap);
+
+		> .page-context[class*='media:'] {
+			block-size: 100%;
+			max-block-size: var(--max-block-size);
+		}
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.steam.zone\:2 {
+		padding-inline-end: 0;
+	}
+}

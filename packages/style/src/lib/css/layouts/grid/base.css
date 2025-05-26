@@ -1,0 +1,69 @@
+/* Flex layout fallback */
+[class*='l:grid'] {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: var(--align-content, stretch);
+	justify-content: var(--justify-content, stretch);
+}
+
+[class*='l:grid'] {
+	--grid-gap: 0;
+	display: grid;
+	grid-gap: var(--grid-gap);
+}
+
+/* Fix cell alignment in an end aligned grid */
+[class*=':grid'][class*=':end'] > :empty,
+[class*=':grid'][class*=':end'] > :only-child {
+	order: -1;
+}
+
+/* flex layout fallback */
+[class*=':grid'][class*=':end'] {
+	flex-direction: row-reverse;
+}
+
+/* Pack grid: Use carefully, as this can create reading flow issues (ex: for image galleries is OK, for forms is not OK) */
+[class*=':grid'].dense {
+	grid-auto-flow: dense;
+}
+
+[class*='l:grid'].size\:3xs {
+	--grid-gap: var(--size-base-3xs);
+	--grid-item-size: var(--layout-grid-item-3xs);
+}
+
+[class*='l:grid'].size\:2xs {
+	--grid-gap: var(--size-base-2xs);
+	--grid-item-size: var(--layout-grid-item-2xs);
+}
+
+[class*='l:grid'].size\:xs {
+	--grid-gap: var(--size-base-xs);
+	--grid-item-size: var(--layout-grid-item-xs);
+}
+
+[class*='l:grid'].size\:sm {
+	--grid-gap: var(--size-base-sm);
+	--grid-item-size: var(--layout-grid-item-sm);
+}
+
+[class*='l:grid'].size\:md {
+	--grid-gap: var(--size-base-md);
+	--grid-item-size: var(--layout-grid-item-md);
+}
+
+[class*='l:grid'].size\:lg {
+	--grid-gap: var(--size-base-lg);
+	--grid-item-size: var(--layout-grid-item-lg);
+}
+
+[class*='l:grid'].size\:xl {
+	--grid-gap: var(--size-base-xl);
+	--grid-item-size: var(--layout-grid-item-xl);
+}
+
+[class*='l:grid'].size\:2xl {
+	--grid-gap: var(--size-base-2xl);
+	--grid-item-size: var(--layout-grid-item-2xl);
+}

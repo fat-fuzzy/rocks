@@ -1,0 +1,150 @@
+<nav id="nav-1" class="l:flex" aria-label="Main navigation">
+	<a href="./">🧪 CSS Tests</a>
+</nav>
+<main class="l:grid:auto size:xl">
+	<article class="l:stack:md">
+		<header>
+			<h1>🌈 CSS Theme</h1>
+			<small>This is small text</small>
+		</header>
+		<div class="surface:0:accent ravioli:md variant:fill">
+			<h2>This is a Subtitle</h2>
+			<small>Lorem ipsum dolor</small>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+				doloremque modi veniam aspernatur voluptatum labore dolores
+				perspiciatis.
+			</p>
+		</div>
+		<div class="surface:0:accent ravioli:md variant:outline">
+			<h2>This is a Subtitle</h2>
+			<small>Lorem ipsum dolor</small>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+				doloremque modi veniam aspernatur voluptatum labore dolores
+				perspiciatis.
+			</p>
+		</div>
+		<div class="surface:0:accent ravioli:md variant:bare">
+			<h2>This is a Subtitle</h2>
+			<small>Lorem ipsum dolor</small>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+				doloremque modi veniam aspernatur voluptatum labore dolores
+				perspiciatis.
+			</p>
+		</div>
+	</article>
+	<div class="palette l:grid:auto size:xs">
+		<div class="hue">
+			<figure class="bg:primary:000">
+				<p>primary 000</p>
+			</figure>
+			<figure class="bg:primary:100">
+				<p>primary 100</p>
+			</figure>
+			<figure class="bg:primary:200">
+				<p>primary 200</p>
+			</figure>
+			<figure class="bg:primary:300">
+				<p>primary 300</p>
+			</figure>
+			<figure class="bg:primary:400">
+				<p>primary 400</p>
+			</figure>
+			<figure class="bg:primary:500">
+				<p>primary 500</p>
+			</figure>
+			<figure class="bg:primary:600">
+				<p>primary 600</p>
+			</figure>
+		</div>
+
+		<div class="hue">
+			<figure class="bg:accent:000">
+				<p>accent 000</p>
+			</figure>
+			<figure class="bg:accent:100">
+				<p>accent 100</p>
+			</figure>
+			<figure class="bg:accent:200">
+				<p>accent 200</p>
+			</figure>
+			<figure class="bg:accent:300">
+				<p>accent 300</p>
+			</figure>
+			<figure class="bg:accent:400">
+				<p>accent 400</p>
+			</figure>
+			<figure class="bg:accent:500">
+				<p>accent 500</p>
+			</figure>
+			<figure class="bg:accent:600">
+				<p>accent 600</p>
+			</figure>
+		</div>
+
+		<div class="hue">
+			<figure class="bg:highlight:000">
+				<p>highlight 000</p>
+			</figure>
+			<figure class="bg:highlight:100">
+				<p>highlight 100</p>
+			</figure>
+			<figure class="bg:highlight:200">
+				<p>highlight 200</p>
+			</figure>
+			<figure class="bg:highlight:300">
+				<p>highlight 300</p>
+			</figure>
+			<figure class="bg:highlight:400">
+				<p>highlight 400</p>
+			</figure>
+			<figure class="bg:highlight:500">
+				<p>highlight 500</p>
+			</figure>
+			<figure class="bg:highlight:600">
+				<p>highlight 600</p>
+			</figure>
+		</div>
+	</div>
+	<div class="buttons l:stack:md">
+		<p class="feedback:prose variant:fill status:warning emoji:warning">
+			Scales are WIP
+		</p>
+		<div class="scale:minor">
+			<div class="default">
+				<button class="bg:neutral:100 size:sm">neutral:100 minor sm</button>
+				<button class="bg:neutral:100 size:md">neutral:200 minor md</button>
+				<button class="bg:neutral:100 size:lg">neutral:200 minor lg</button>
+			</div>
+			<div class="variants">
+				<button class="bg:primary:200:outline size:sm">
+					primary:200 minor sm
+				</button>
+				<button class="bg:primary:100:bare size:md">
+					primary:100 minor md
+				</button>
+				<button class="bg:primary:300 size:lg">primary:300 minor lg</button>
+			</div>
+		</div>
+		<div class="minor">
+			<div class="default">
+				<button class="bg:accent:100 size:sm">accent:100 default sm</button>
+				<button class="bg:accent:200 size:md">accent:200 default md</button>
+				<button class="bg:accent:300 size:lg">accent:300 default lg</button>
+			</div>
+			<div class="">
+				<button class="bg:highlight:100 size:sm">
+					highlight:100 major sm
+				</button>
+				<button class="bg:highlight:200 size:md">
+					highlight:200 major md
+				</button>
+				<button class="bg:highlight:300 size:lg">
+					highlight:300 major lg
+				</button>
+			</div>
+		</div>
+	</div>
+</main>

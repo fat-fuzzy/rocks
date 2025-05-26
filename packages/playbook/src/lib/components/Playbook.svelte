@@ -1,33 +1,40 @@
 <script lang="ts">
-	import {onMount, getContext, setContext, type Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
+	import {onMount, getContext, setContext} from 'svelte'
 	import {page} from '$app/state'
-	import fatFuzzyUi from '@fat-fuzzy/ui'
-	import playbookStore from '$lib/api/store.svelte'
-	import * as api from '$lib/api/styles.api'
+	import playbookActor from '$lib/api/actor.svelte'
+	import StylesApi from '$lib/api/styles.svelte'
+	import type {ViewingPreferences} from '../../../../ui/dist/types' // TODO: fix this import
 
 	type Props = {
-		app: {settings: {[key: string]: string}}
-		nav: any
+		app: ViewingPreferences
 		children: Snippet
 	}
-	let {children}: Props = $props()
+	let {children, app}: Props = $props()
+	let playbookContext: StylesApi = getContext('playbookContext')
+	setContext('playbookActor', playbookActor)
+	let {styles, ui} = $derived(page.data)
 
-	let playbookContext: api.StylesApi = getContext('playbookContext')
-	setContext('playbookStore', playbookStore)
-
-	let {styles, context, ui} = $state(page.data)
-	const {DEFAULT_REVEAL_STATE, DEFAULT_NAV_REVEAL_STATE} = fatFuzzyUi.constants
-
-	playbookStore.reveal = context
-	playbookStore.navReveal = ui?.navReveal || DEFAULT_NAV_REVEAL_STATE
-	playbookStore.settingsReveal = ui?.settingsReveal || DEFAULT_REVEAL_STATE
-	playbookStore.sidebarReveal = ui?.sidebarReveal || DEFAULT_NAV_REVEAL_STATE
-
-	onMount(() => {
+	$effect(() => {
+		// This need to be updated every time the user interacts with a UI component demo (the component itself)
+		if (ui) {
+			playbookActor.context = ui
+		}
+		playbookActor.preferences = app
 		if (styles) {
 			playbookContext.applyStyles(styles)
 		}
-		playbookStore.styles = playbookContext.getStyleTree()
+
+		$inspect(styles)
+		$inspect(playbookActor.styles)
+	})
+	onMount(() => {
+		$inspect(styles)
+		// This need to be updated every time the user interacts the Style API controls, which are submitted via a form action
+		if (styles) {
+			playbookContext.applyStyles(styles)
+		}
+		playbookActor.styles = playbookContext.getStyleTree()
 	})
 </script>
 

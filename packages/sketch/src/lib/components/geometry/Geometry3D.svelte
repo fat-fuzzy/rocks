@@ -74,7 +74,7 @@
 </script>
 
 <form
-	class={`l:${layout}:${size} th:${threshold} maki:block geometry ${backgroundClass}`}
+	class={`l:grid:auto size:xs maki:block geometry ${backgroundClass}`}
 	name="geometry-update"
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 >
@@ -94,36 +94,40 @@
 		size="xs"
 		{disabled}
 	/>
-	<Rotation
-		id={`${id}-rotation-x`}
-		label="Angle x"
-		bind:angle={angleX}
-		max={360}
-		onupdate={update}
-		color="accent"
-		size="xs"
-		{disabled}
-	/>
-	<Rotation
-		id={`${id}-rotation-y`}
-		label="Angle y"
-		bind:angle={angleY}
-		max={360}
-		onupdate={update}
-		color="accent"
-		size="xs"
-		{disabled}
-	/>
-	<Rotation
-		id={`${id}-rotation-z`}
-		label="Angle z"
-		bind:angle={angleZ}
-		max={360}
-		onupdate={update}
-		color="accent"
-		size="xs"
-		{disabled}
-	/>
+
+	<div class="l:switcher:xs th:2xs">
+		<Rotation
+			id={`${id}-rotation-x`}
+			label="Angle x"
+			bind:angle={angleX}
+			max={360}
+			onupdate={update}
+			color="accent"
+			size="xs"
+			{disabled}
+		/>
+		<Rotation
+			id={`${id}-rotation-y`}
+			label="Angle y"
+			bind:angle={angleY}
+			max={360}
+			onupdate={update}
+			color="accent"
+			size="xs"
+			{disabled}
+		/>
+		<Rotation
+			id={`${id}-rotation-z`}
+			label="Angle z"
+			bind:angle={angleZ}
+			max={360}
+			onupdate={update}
+			color="accent"
+			size="xs"
+			{disabled}
+		/>
+	</div>
+
 	<Scale
 		id={`${id}-scale`}
 		bind:scaleX
@@ -141,7 +145,7 @@
 		{disabled}
 	/>
 	{#await Promise.resolve()}
-		<div class={`l:frame:twin card:lg`}>
+		<div class={`l:frame:twin ravioli:lg`}>
 			<Button
 				id="update-geometry"
 				name="update-geometry"

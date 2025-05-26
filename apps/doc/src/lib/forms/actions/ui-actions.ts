@@ -4,11 +4,14 @@ import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/forms/services/ui-state.js'
 
-const {APP_PREFIX} = ui.constants
+const {
+	APP_PREFIX,
+	DEFAULT_REVEAL_STATE,
+	DEFAULT_NAV_REVEAL_STATE,
+	DEFAULT_SIDEBAR_REVEAL_STATE,
+} = ui.constants
 const {UiReveal} = ui.forms
-/**
- * TODO validate input
- */
+
 async function handleToggleUiReveal({
 	event,
 	element,
@@ -27,6 +30,10 @@ async function handleToggleUiReveal({
 		cookies,
 		key,
 	})
+
+	if (!currentState.reveal) {
+		currentState.reveal = options?.state?.reveal
+	}
 
 	try {
 		const reveal = new UiReveal(currentState, element)
@@ -55,7 +62,6 @@ async function handleToggleUiReveal({
 			success: false,
 			type: element,
 			message: 'Failed to update UI', // TODO: improve / manage error message with intl package,
-			state: currentState.toString(),
 		}
 	}
 }
@@ -65,16 +71,20 @@ async function handleToggleSidebar(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_SIDEBAR_REVEAL_STATE,
+		},
 	})
 }
 
-async function handleToggleSettings(event) {
-	const element = 'settings'
+async function handleToggleAppContext(event) {
+	const element = 'appContext'
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
@@ -83,7 +93,9 @@ async function handleToggleNav(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_NAV_REVEAL_STATE,
+		},
 	})
 }
 
@@ -92,7 +104,9 @@ async function handleToggleTokens(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
@@ -101,7 +115,9 @@ async function handleToggleBlocks(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
@@ -110,7 +126,9 @@ async function handleToggleLayouts(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
@@ -119,7 +137,20 @@ async function handleToggleRecipes(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
+	})
+}
+
+async function handleTogglePageContext(event) {
+	const element = 'pageContext'
+	return handleToggleUiReveal({
+		event,
+		element,
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
@@ -128,7 +159,9 @@ async function handleToggleUsage(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
@@ -137,7 +170,9 @@ async function handleToggleDecisions(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
@@ -146,7 +181,9 @@ async function handleToggleLearning(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
@@ -155,18 +192,21 @@ async function handleToggleProjects(event) {
 	return handleToggleUiReveal({
 		event,
 		element,
-		options: {},
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
 	})
 }
 
 export default {
 	handleToggleSidebar,
 	handleToggleNav,
-	handleToggleSettings,
+	handleToggleAppContext,
 	handleToggleTokens,
 	handleToggleBlocks,
 	handleToggleLayouts,
 	handleToggleRecipes,
+	handleTogglePageContext,
 	handleToggleUsage,
 	handleToggleDecisions,
 	handleToggleLearning,

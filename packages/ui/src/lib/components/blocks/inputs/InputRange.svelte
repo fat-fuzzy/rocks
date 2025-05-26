@@ -22,6 +22,7 @@
 		container,
 		justify,
 		color,
+		font,
 		size,
 		variant,
 		background,
@@ -88,6 +89,7 @@
 		styleHelper.getStyles({
 			color,
 			size,
+			font,
 			variant,
 			justify,
 			layout,
@@ -112,7 +114,7 @@
 </script>
 
 <label for={id} class={inputClasses} data-testid={id}>
-	<span class={`font:${size}`}>
+	<span class={`font:${font ? font : size}`}>
 		{label}:
 		{valueLabel}
 	</span>
@@ -138,7 +140,7 @@
 	{/if}
 </label>
 {#if hint}
-	<Feedback {status} context={UiTextContext.form} {size} {variant}>
+	<Feedback {id} {status} context={UiTextContext.form} {size} {font} {variant}>
 		{hint}
 	</Feedback>
 {/if}

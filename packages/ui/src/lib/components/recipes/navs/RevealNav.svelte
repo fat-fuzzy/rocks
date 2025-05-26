@@ -1,27 +1,37 @@
 <script lang="ts">
 	import type {RevealNavProps} from '$types'
 	import {DismissEvent} from '$types'
-	import Reveal from '$lib/components/layouts/Reveal.svelte'
+	import styleHelper from '$lib/utils/styles.js'
+	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
 
 	let {
 		id = 'reveal-nav',
 		title = 'RevealNav',
+		label = 'RevealNav',
 		path = '',
+		asset,
 		reveal,
 		formaction,
 		actionPath,
 		redirect,
+		preload,
 		layout,
+		scroll,
+		layer,
 		dismiss = DismissEvent.outside,
 		color,
 		size,
+		font,
 		breakpoint,
 		threshold,
 		variant,
 		align,
 		justify,
+		area,
+		width,
+		height,
 		place = 'top',
 		position,
 		container,
@@ -30,27 +40,35 @@
 		onclick,
 	}: RevealNavProps = $props()
 
-	let navContainer = $derived(container ? `${container}:${size}` : '')
-	let navLayoutThreshold = $derived(
-		breakpoint ? `bp:${breakpoint}` : threshold ? `th:${threshold}` : '',
-	)
-	let navLayout = $derived(
-		layout ? `l:${layout}:${size} ${navLayoutThreshold}` : '',
-	)
-	let showBackground = $derived(background ? `bg:${background}` : '')
-	let showSidebar = $derived(`${reveal} ${showBackground} ${place}`)
-	let navClasses = $derived(
-		`${navLayout} ${navContainer} ${showSidebar} align:${align} ${size} `,
-	)
-	let revealClasses = $derived(`l:reveal ${place} ${navClasses} ${reveal}`)
 	let layoutClasses = $derived(
-		position ? `${position} ${revealClasses}` : revealClasses,
+		styleHelper.getStyles({
+			position,
+			size,
+			justify,
+			align,
+			layout,
+			breakpoint,
+			threshold,
+			background,
+			container,
+		}),
 	)
+
+	let widthClass = $derived(width ? `width:${width}` : '')
+	let heightClass = $derived(area ? `height:${height}` : '')
+
+	let revealClasses = $derived(
+		area
+			? `${area}:${place} ${reveal} ${widthClass} ${heightClass}`
+			: `l:reveal ${place} ${reveal}`,
+	)
+
+	let navClasses = $derived(`${layoutClasses} ${revealClasses}`)
 </script>
 
 <nav
 	id={`nav-${id}`}
-	class={layoutClasses}
+	class={navClasses}
 	aria-label={title}
 	data-testid={`nav-${id}`}
 >
@@ -58,12 +76,16 @@
 	<Reveal
 		{id}
 		name={id}
-		label=""
+		{label}
 		{variant}
 		{title}
+		{asset}
 		{size}
+		{font}
 		{color}
 		{reveal}
+		{layer}
+		{scroll}
 		{dismiss}
 		{formaction}
 		{actionPath}
@@ -73,7 +95,16 @@
 		{align}
 		{justify}
 		{onclick}
+		{background}
 	>
-		<LinkTree id={`${id}-${path}`} {path} {items} {size} {align} depth={0} />
+		<LinkTree
+			id={`${id}-${path}`}
+			{path}
+			{items}
+			{size}
+			{align}
+			depth={0}
+			{preload}
+		/>
 	</Reveal>
 </nav>

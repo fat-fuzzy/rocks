@@ -1,32 +1,61 @@
 import ui from '@fat-fuzzy/ui'
 import type {Settings} from '$types'
+import type {Cookies} from '@sveltejs/kit'
 
-const {DEFAULT_DS_STATE, TRANSITION_REVEAL} = ui.constants
+const {DEFAULT_REVEAL_STATE} = ui.constants
+
+export type UiActionGetInput = {
+	cookies: Cookies
+	key: string
+	defaultAction?: any
+}
+
+export type UiActionSetInput = {
+	data: FormData
+	element: string
+	value?: any
+	options: {
+		state?: any
+		domain?: string
+	} // TODO: improve options (use schema ?)
+}
+
+export type UiActionSetOutput = {
+	success: boolean
+	key?: string
+	type?: string
+	state?: any
+	message?: string
+}
+
+export type DsState = {
+	Reveal: Settings
+	RevealMenu: Settings
+	RevealNav: Settings
+	HeaderRevealNav: Settings
+	HeaderRevealContext: Settings
+}
+
+const {UiReveal} = ui.forms
 
 class DsStateUpdate {
-	state: {
-		reveal: Settings
-		menuReveal: Settings
-		navReveal: Settings
-		sidebarReveal: Settings
-		settingsReveal: Settings
-	}
+	state: DsState
 	/**
 	 * Initialize default State object or from the user's cookie values, if any
 	 */
-	constructor(
-		state: {
-			reveal: Settings
-			menuReveal: Settings
-			navReveal: Settings
-			sidebarReveal: Settings
-			settingsReveal: Settings
-		} | null = null,
-	) {
-		if (state) {
-			this.state = state
-		} else {
-			this.state = DEFAULT_DS_STATE
+	constructor({
+		Reveal,
+		RevealMenu,
+		RevealNav,
+		HeaderRevealNav,
+		HeaderRevealContext,
+	}: DsState) {
+		this.state = {
+			Reveal: Reveal ?? DEFAULT_REVEAL_STATE,
+			RevealMenu: RevealMenu ?? DEFAULT_REVEAL_STATE,
+			RevealNav: RevealNav ?? DEFAULT_REVEAL_STATE,
+			HeaderRevealNav: HeaderRevealNav ?? DEFAULT_REVEAL_STATE,
+			HeaderRevealContext: HeaderRevealContext ?? DEFAULT_REVEAL_STATE,
 		}
 	}
 
@@ -34,70 +63,81 @@ class DsStateUpdate {
 	 * Update State based on inputs
 	 */
 	enter(data: FormData) {
-		if (data.has('button-ui-Reveal')) {
-			return this.toggleReveal(data)
+		let success = false
+		if (data.has('button-reveal-Reveal')) {
+			success = this.toggleReveal(data)
 		}
-		if (data.has('button-ui-RevealMenu')) {
-			return this.toggleMenuReveal(data)
+		if (data.has('button-reveal-RevealMenu')) {
+			success = this.toggleMenuReveal(data)
 		}
-		if (data.has('button-ui-RevealNav')) {
-			return this.toggleNavReveal(data)
+		if (data.has('button-reveal-RevealNav')) {
+			success = this.toggleNavReveal(data)
 		}
-		if (data.has('button-ui-Header-nav-reveal')) {
-			return this.toggleSidebarReveal(data)
+		if (data.has('button-reveal-Header-nav')) {
+			success = this.toggleSidebarReveal(data)
 		}
-		if (data.has('button-ui-Header-menu-settings')) {
-			return this.toggleSettingsReveal(data)
+		if (data.has('button-reveal-Header-settings')) {
+			success = this.toggleAppContextReveal(data)
 		}
+		return {
+			success,
+			message: success ? '' : 'Failed to update UI', // TODO: improve / manage error message with intl package,
+		}
+	}
+
+	handleToggleUiReveal({data, element}): boolean {
+		const currentState = this.state[element as keyof DsState]
+
+		const reveal = new UiReveal(currentState, element)
+		const newState = reveal.reveal(data)
+		if (!newState.success) {
+			return false
+		}
+		this.state[element as keyof DsState] = newState.state ?? currentState
+
+		return true
 	}
 
 	toggleReveal(data: FormData) {
-		const updated = data.get('button-reveal-Reveal')?.toString()
-		if (updated) {
-			this.state.reveal.reveal = TRANSITION_REVEAL[this.state.reveal.reveal]
-			return true
-		}
-		return false
+		return this.handleToggleUiReveal({
+			data,
+			element: 'Reveal',
+		})
 	}
 
 	toggleMenuReveal(data: FormData) {
-		const updated = data.get('button-ui-RevealMenu')?.toString()
-		if (updated) {
-			this.state.menuReveal.reveal =
-				TRANSITION_REVEAL[this.state.menuReveal.reveal]
-			return true
-		}
-		return false
+		return this.handleToggleUiReveal({
+			data,
+			element: 'RevealMenu',
+		})
 	}
 
 	toggleNavReveal(data: FormData) {
-		const updated = data.get('button-ui-RevealNav')?.toString()
-		if (updated) {
-			this.state.navReveal.reveal =
-				TRANSITION_REVEAL[this.state.navReveal.reveal]
-			return true
-		}
-		return false
+		return this.handleToggleUiReveal({
+			data,
+			element: 'RevealNav',
+		})
 	}
 
 	toggleSidebarReveal(data: FormData) {
-		const updated = data.get('button-ui-Header-nav-reveal')?.toString()
-		if (updated) {
-			this.state.sidebarReveal.reveal =
-				TRANSITION_REVEAL[this.state.sidebarReveal.reveal]
-			return true
-		}
-		return false
+		return this.handleToggleUiReveal({
+			data,
+			element: 'Header-nav-reveal',
+		})
 	}
 
-	toggleSettingsReveal(data: FormData) {
-		const updated = data.get('button-ui-Header-menu-settings')?.toString()
-		if (updated) {
-			this.state.settingsReveal.reveal =
-				TRANSITION_REVEAL[this.state.settingsReveal.reveal]
-			return true
-		}
-		return false
+	toggleAppContextReveal(data: FormData) {
+		return this.handleToggleUiReveal({
+			data,
+			element: 'Header-appContext-reveal',
+		})
+	}
+
+	togglePageContextReveal(data: FormData) {
+		return this.handleToggleUiReveal({
+			data,
+			element: 'pageContext-reveal',
+		})
 	}
 
 	/**

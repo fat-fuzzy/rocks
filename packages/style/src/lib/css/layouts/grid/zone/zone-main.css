@@ -1,0 +1,26 @@
+.zone\:main {
+	grid-area: zone-main;
+	grid-template-areas:
+		'page-header'
+		'page-main';
+	grid-template-rows: auto 1fr;
+	padding-block: calc(var(--ui-header-height) + var(--ui-size)) var(--grid-gap);
+
+	> .page-header {
+		grid-area: page-header;
+		block-size: fit-content;
+	}
+
+	> .page-main {
+		grid-area: page-main;
+		padding-inline: var(--outline-offset-sm);
+		padding-block-end: var(--grid-gap);
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.zone\:main {
+		padding-block-start: var(--ui-size-lg);
+		padding-inline: calc(2 * var(--grid-gap));
+	}
+}

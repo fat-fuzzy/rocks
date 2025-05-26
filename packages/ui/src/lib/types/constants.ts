@@ -1,42 +1,35 @@
 import type {
-	Settings,
-	SettingsItems,
+	AppContextItems,
 	UiRevealState,
-	ButtonContext,
+	CookiePreferences,
+	ViewingPreferences,
 } from '$types'
-import {UiState} from '$types'
+import {UiState, UiSettings} from '$types'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 
 const APP_PREFIX = 'ff'
 
-const DEFAULT_BUTTON_CONTEXT: ButtonContext = {
-	id: '',
-	name: '',
-	value: '',
+const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
+	functional: true,
+	analytics: false,
+	thirdParty: false,
 }
 
 const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
+const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
+
 const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
 
-const DEFAULT_APP_SETTINGS: Settings = {brightness: '', contrast: ''}
+const DEFAULT_PREFERENCES: ViewingPreferences = {
+	reveal: UiState.collapsed,
+	brightness: UiSettings.day,
+	contrast: UiSettings.contrast,
+	consent: DEFAULT_COOKIES_CONSENT,
+}
 
 const DEFAULT_SCENE_ID = '004'
-
-const DEFAULT_DS_STATE: {
-	reveal: UiRevealState
-	menuReveal: UiRevealState
-	navReveal: UiRevealState
-	sidebarReveal: UiRevealState
-	settingsReveal: UiRevealState
-} = {
-	reveal: {reveal: UiState.collapsed},
-	menuReveal: {reveal: UiState.collapsed},
-	navReveal: {reveal: UiState.collapsed},
-	sidebarReveal: {reveal: UiState.collapsed},
-	settingsReveal: {reveal: UiState.collapsed},
-}
 
 const STATE_SWITCHER: {[key: string]: string} = {
 	active: UiState.inactive,
@@ -135,8 +128,8 @@ const APP_LINKS: {[key: string]: string}[] = [
 	{slug: 'about', title: 'About', layout: 'taco'},
 ]
 
-const APP_SETTINGS: SettingsItems = {
-	switch: [
+const APP_SETTINGS: AppContextItems = {
+	display: [
 		{
 			id: 'brightness',
 			name: 'brightness',
@@ -201,12 +194,11 @@ export default {
 	APP_PREFIX,
 	UI_STATE,
 	STATE_SWITCHER,
-	DEFAULT_BUTTON_CONTEXT,
 	DEFAULT_STYLES,
 	DEFAULT_REVEAL_STATE,
 	DEFAULT_NAV_REVEAL_STATE,
-	DEFAULT_APP_SETTINGS,
-	DEFAULT_DS_STATE,
+	DEFAULT_SIDEBAR_REVEAL_STATE,
+	DEFAULT_PREFERENCES,
 	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,

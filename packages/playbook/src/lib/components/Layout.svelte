@@ -1,8 +1,10 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import PlaybookStore from '$lib/api/store.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 
 	type Props = {
+		id?: string
+		name?: string
 		title: string
 		isPage?: boolean
 		SpecifiedElement: any // TODO: fix types
@@ -13,6 +15,8 @@
 	}
 
 	let {
+		id,
+		name,
 		title,
 		SpecifiedElement,
 		props,
@@ -21,31 +25,33 @@
 		redirect,
 	}: Props = $props()
 
-	let playbookStore: typeof PlaybookStore = getContext('playbookStore')
+	let playbookActor: PlaybookActor = getContext('playbookActor')
+	let styles = $derived(playbookActor.styles)
+	let reveal = $derived(playbookActor.context[title]?.reveal || '')
 
-	let styles = $derived(playbookStore.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	// Content options
-	// let content = $derived(styles.layouts?.content.content ?? 'card')
-	// let sideContent = $derived(styles.layouts?.content.side ?? 'card')
+	// let content = $derived(styles.layouts?.content.content ?? 'ravioli')
+	// let sideContent = $derived(styles.layouts?.content.side ?? 'ravioli')
 	// let mainContent = $derived(styles.layouts?.content.main ?? 'text')
 
-	let content = 'card'
-	let sideContent = 'card'
+	let layoutName = $derived(name ? name : title)
+	let content = 'ravioli'
+	let sideContent = 'ravioli'
 	let mainContent = 'text'
-	let layoutContent = $derived(
-		`card:${elementStyles.size} variant:outline size:${elementStyles.size} surface:1:accent`,
-	)
-	let fixtures = $derived(playbookStore.getLayoutFixtures(SpecifiedElement))
+	let layoutContent = 'ravioli:md variant:outline size:md surface:1:neutral'
+	let fixtures = $derived(playbookActor.getLayoutFixtures(SpecifiedElement))
 </script>
 
-{#snippet children(props, contentType)}
+{#snippet children(props, contentType: string)}
 	{#if contentType === 'text'}
-		<p class={`card:${elementStyles.size} surface:1:accent`}>{props.text}</p>
-	{:else if contentType === 'card'}
+		<p class={`ravioli:md surface:1:neutral`}>
+			{props.text}
+		</p>
+	{:else if contentType === 'ravioli'}
 		{#each props[content] as item}
 			<div class={layoutContent}>{item}</div>
 		{/each}
@@ -69,7 +75,9 @@
 	</SpecifiedElement>
 {:else}
 	<SpecifiedElement
-		id={title}
+		{id}
+		{title}
+		name={layoutName}
 		{...containerStyles}
 		{...layoutStyles}
 		{...elementStyles}
@@ -77,6 +85,7 @@
 		{actionPath}
 		{redirect}
 		{formaction}
+		{reveal}
 	>
 		{@render children(fixtures, content)}
 	</SpecifiedElement>

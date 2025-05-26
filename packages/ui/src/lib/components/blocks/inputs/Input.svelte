@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {InputProps} from '$types'
+	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 	let {
@@ -9,6 +10,7 @@
 		label,
 		value = $bindable(),
 		required,
+		font,
 		size,
 		color,
 		variant,
@@ -21,9 +23,17 @@
 	}: InputProps = $props()
 
 	let errors = $derived(validator.getFieldErrors(name))
+	let inputClasses = $derived(
+		styleHelper.getStyles({
+			font,
+			size,
+			color,
+			variant,
+		}),
+	)
 </script>
 
-<label class={`l:stack:${size}`}>
+<label class={`l:stack size:${size} ${inputClasses}`}>
 	{label}
 	<input
 		{id}
@@ -40,4 +50,4 @@
 	/>
 </label>
 
-<Feedback {errors} {size} {variant} />
+<Feedback {id} {errors} {size} {variant} {font} />

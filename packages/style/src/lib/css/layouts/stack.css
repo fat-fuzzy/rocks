@@ -17,7 +17,7 @@
 	margin-block-start: var(--gap);
 }
 
-[class*='l:stack']:not(:is([class*='w:auto'])) > * {
+[class*='l:stack'] > * {
 	inline-size: 100%;
 }
 

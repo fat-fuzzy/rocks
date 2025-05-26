@@ -80,6 +80,14 @@ h5,
 	font-size: var(--font-size-base);
 }
 
+.font\:heading {
+	font-family: var(--font-family-heading);
+}
+
+.font\:semibold {
+	font-weight: var(--font-weight-h5);
+}
+
 article,
 .l\:text {
 	background-color: inherit;
@@ -94,28 +102,15 @@ figcaption {
 ol,
 ul {
 	margin: 0;
+	padding-inline-start: calc(2 * var(--ui-size));
 
 	&.unstyled {
 		list-style: none;
-	}
-
-	li {
-		line-height: var(--font-leading-nav);
 	}
 }
 
 a {
 	padding-block: 0;
-}
-
-[class*='l:text'] {
-	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	color: var(--ink);
-	background-color: inherit;
-	ol,
-	ul {
-		margin-block: var(--ui-size);
-	}
 }
 
 pre,
@@ -146,4 +141,5 @@ blockquote {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-height: var(--font-leading-neutral);
 }

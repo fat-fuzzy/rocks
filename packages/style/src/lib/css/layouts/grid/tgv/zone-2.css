@@ -1,0 +1,22 @@
+/**
+ * ZONE 2
+ * Contains main content & page context
+ */
+
+.tgv.zone\:2 {
+	--grid-gap: 0;
+	grid-template-areas: 'zone-main';
+	grid-template-rows: subgrid;
+}
+
+@media screen and (min-width: 620px) {
+	.tgv.zone\:2 {
+		padding-inline: 0;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.tgv.zone\:2 {
+		grid-column-start: 1;
+	}
+}

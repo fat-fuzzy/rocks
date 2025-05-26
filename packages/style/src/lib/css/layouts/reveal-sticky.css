@@ -13,14 +13,14 @@
 	}
 }
 
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: 1024px) {
 	[class*='l:reveal'].sticky {
 		--y-size-sticky: calc(
 			100vh - var(--ui-header-height) - 2 * var(--ui-size-lg)
 		);
 		--y-size: var(--y-size-sticky);
 
-		&.collapsed > ff-reveal {
+		ff-reveal.collapsed {
 			border: initial;
 			margin: initial;
 			overflow: auto;

@@ -26,13 +26,13 @@ a[class*='icon:']::before {
 	justify-content: var(--justify, space-between);
 }
 
-[class*='card:'][class*='icon:'][class*=':2xs']:not(.feedback)::before,
-[class*='card:'][class*='icon:'][class*=':xs']:not(.feedback)::before,
-[class*='card:'][class*='icon:'][class*=':sm']:not(.feedback)::before,
-[class*='card:'][class*='icon:'][class*=':md']:not(.feedback)::before,
-[class*='card:'][class*='icon:'][class*=':lg']:not(.feedback)::before,
-[class*='card:'][class*='icon:'][class*=':xl']:not(.feedback)::before,
-[class*='card:'][class*='icon:'][class*=':2xl']:not(.feedback)::before {
+[class*='ravioli:'][class*='icon:'][class*=':2xs']:not(.feedback)::before,
+[class*='ravioli:'][class*='icon:'][class*=':xs']:not(.feedback)::before,
+[class*='ravioli:'][class*='icon:'][class*=':sm']:not(.feedback)::before,
+[class*='ravioli:'][class*='icon:'][class*=':md']:not(.feedback)::before,
+[class*='ravioli:'][class*='icon:'][class*=':lg']:not(.feedback)::before,
+[class*='ravioli:'][class*='icon:'][class*=':xl']:not(.feedback)::before,
+[class*='ravioli:'][class*='icon:'][class*=':2xl']:not(.feedback)::before {
 	margin-inline: 0;
 }
 

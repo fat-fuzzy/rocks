@@ -11,7 +11,7 @@
 	type Props = {
 		path?: string
 		categories: string[]
-		method?: string
+		method?: 'POST' | 'GET'
 		actionPath?: string
 		redirect?: string
 		formaction?: string
@@ -31,7 +31,7 @@
 	}: Props = $props()
 	// export let reset = 'reset'
 
-	let apiLayout = 'l:switcher:xs nowrap grow align:center'
+	let apiLayout = 'l:switcher:xs th:xs grow align:center'
 	let apiSize = '2xs'
 	let apiBreakpoint = '2xs'
 
@@ -57,14 +57,9 @@
 <svelte:window on:keydown={keydown} />
 {#if categories?.length}
 	<form
-		name="styles-update"
+		name={`styles-update-${categories[0]}`}
 		{method}
-		use:enhance={() => {
-			// prevent default callback from resetting the form
-			return ({update}) => {
-				update({reset: false})
-			}
-		}}
+		use:enhance
 		class={`${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 	>
 		{#each categories as category}
@@ -79,8 +74,8 @@
 		{#await Promise.resolve()}
 			<div class={frameClass}>
 				<Button
-					id={`submit.${path}`}
-					name={`submit.${path}`}
+					id={`submit.${path}-${categories[0]}`}
+					name={`submit.${path}-${categories[0]}`}
 					title="Apply styles"
 					type="submit"
 					size="lg"

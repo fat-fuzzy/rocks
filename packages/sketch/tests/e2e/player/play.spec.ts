@@ -26,7 +26,7 @@ sketches.map((sketch) => {
 			.getByTestId(`debug-event-player`)
 			.getByTestId(`current-event`)
 
-		await expect(previousEvent).toHaveText('load')
+		await expect(previousEvent).toHaveText('loadOk')
 		await expect(currentEvent).toHaveText('loadOk')
 
 		// Expects the Play button to start the canvas animation

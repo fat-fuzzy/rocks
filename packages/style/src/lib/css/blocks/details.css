@@ -1,5 +1,5 @@
 details {
-	padding-inline: var(--outline-offset-xs);
+	padding: var(--outline-offset-xs);
 }
 
 p + details {
@@ -9,32 +9,44 @@ p + details {
 details > summary {
 	cursor: pointer;
 	display: block;
-	color: var(--ink);
+	color: var(--color-ui-ink, var(--ink));
+	background-color: var(--color-ui-bg, var(--shade));
+	border: var(--border-width-md) solid var(--color-ui-border, var(--accent));
+	border-radius: var(--border-radius-base);
 	font-weight: var(--font-weight-ui);
-	border: var(--border-width) solid var(--ink);
-	padding: var(--ui-size-sm);
-	max-width: 100%;
+	line-height: var(--font-leading-large);
+	padding: var(--ui-size-sm) var(--ui-size);
 	background-color: var(--shade);
 }
 
-details > summary + * {
-	margin-block-start: var(--ui-size);
+details > summary::before {
+	margin-inline-end: var(--ui-size-lg);
 }
 
 details > summary::before {
 	content: '👉';
-	margin-inline-end: var(--ui-size-sm);
+}
+
+/* Chrome etc */
+details > summary::marker,
+/* Safari */
+details > summary::-webkit-details-marker {
+	color: transparent;
+	inline-size: 0;
+	block-size: 0;
+	margin: 0;
+	padding: 0;
 }
 
 details[open] > summary {
-	color: var(--ink);
-	background-color: var(--shade);
-	border: var(--border-width) solid var(--ink);
+	color: var(--color-ui-ink-active, var(--ink));
+	background-color: var(--color-ui-bg-active, var(--shade));
+	border: var(--border-width-md) solid
+		var(--color-ui-border-active, var(--accent));
 }
 
 details[open] > summary::before {
 	content: '👇';
-	margin-inline-end: var(--ui-size-sm);
 }
 
 details > summary:hover {
@@ -44,40 +56,47 @@ details > summary:hover {
 }
 
 details > summary.variant\:outline {
-	--color-accent: var(--accent, var(--shade));
-	--lightness: var(--color-lightness-400);
-	--lightness-contrast: var(--color-lightness-000);
+	--lightness: var(--color-lightness-600);
+	--lightness-accent: var(--lightness-ui-base);
+	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
+	border-color: var(--accent);
 }
 
 details > summary.variant\:bare {
 	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-400);
+	--lightness-accent: var(--lightness-base);
+	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
+	border: var(--border-width-md) solid var(--accent);
 }
 
 details > summary.variant\:outline:hover {
-	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--color-bg);
+	--lightness: var(--lightness-base);
+	--contrast: var(--contrast-base);
+	--lightness-contrast: var(--contrast-base);
+	--chroma-contrast: var(--chroma-contrast-base);
+	background-color: var(--shade);
 }
 
 details > summary.variant\:bare:hover {
-	--lightness: var(--color-lightness-000);
-	--lightness-contrast: var(--color-lightness-400);
-	background-color: var(--color-bg);
+	--lightness: var(--lightness-base);
+	--contrast: var(--contrast-base);
+	--lightness-contrast: var(--lightness-contrast-base);
+	--chroma-contrast: var(--chroma-contrast-base);
+	background-color: var(--shade);
 }
 
 details > summary.variant\:outline:active {
 	--lightness: var(--color-lightness-200);
-	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--color-bg);
+	--lightness-contrast: var(--color-lightness-600);
+	background-color: var(--shade);
 }
 
 details > summary.variant\:bare:active {
 	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-500);
-	background-color: var(--color-bg);
+	--lightness-contrast: var(--color-lightness-600);
+	background-color: var(--shade);
 }
 
 details > summary:not([class*=':neutral']) {

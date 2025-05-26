@@ -36,11 +36,16 @@
 	flex-wrap: wrap-reverse;
 }
 
+[class*='l:sidebar'].hug {
+	max-inline-size: var(--main-width);
+}
+
 [class*='l:main'] {
 	flex-basis: 0;
 	flex-grow: 999;
 	/* ~ min-width in horizontal\:tb writing mode: if (width < 70%) -> wrap */
-	min-inline-size: 70%;
+	--main-width: 70%;
+	min-inline-size: var(--main-width);
 
 	> main {
 		block-size: 100%;
@@ -61,7 +66,7 @@
 }
 
 /* Scale Sidebar */
-.l\:sidebar\:2xs {
+.l\:sidebar.size\:2xs {
 	--gap: var(--size-base-sm);
 	--sidebar-width: var(--layout-sidebar-2xs);
 	> [class*='l:main'] {
@@ -70,7 +75,7 @@
 	}
 }
 
-.l\:sidebar\:xs {
+.l\:sidebar.size\:xs {
 	--gap: var(--size-base-sm);
 	--sidebar-width: var(--layout-sidebar-xs);
 	> [class*='l:main'] {
@@ -79,7 +84,7 @@
 	}
 }
 
-.l\:sidebar\:sm {
+.l\:sidebar.size\:sm {
 	--gap: var(--size-base-md);
 	--sidebar-width: var(--layout-sidebar-sm);
 	> [class*='l:main'] {
@@ -88,7 +93,7 @@
 	}
 }
 
-.l\:sidebar\:md {
+.l\:sidebar.size\:md {
 	--gap: var(--size-base-md);
 	--sidebar-width: var(--layout-sidebar-md);
 	> [class*='l:main'] {
@@ -97,7 +102,7 @@
 	}
 }
 
-.l\:sidebar\:lg {
+.l\:sidebar.size\:lg {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-lg);
 	> [class*='l:main'] {
@@ -106,7 +111,7 @@
 	}
 }
 
-.l\:sidebar\:xl {
+.l\:sidebar.size\:xl {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-xl);
 	> [class*='l:main'] {
@@ -115,7 +120,7 @@
 	}
 }
 
-.l\:sidebar\:2xl {
+.l\:sidebar.size\:2xl {
 	--gap: var(--size-base-lg);
 	--sidebar-width: var(--layout-sidebar-2xl);
 	> [class*='l:main'] {
@@ -127,29 +132,29 @@
 /* Scale Sidebar > Main */
 
 .l\:main\:30 {
-	min-inline-size: 30%;
+	--main-width: 30%;
 }
 
 .l\:main\:40 {
-	min-inline-size: 40%;
+	--main-width: 40%;
 }
 
 .l\:main\:50 {
-	min-inline-size: 50%;
+	--main-width: 50%;
 }
 
 .l\:main\:60 {
-	min-inline-size: 60%;
+	--main-width: 60%;
 }
 
 .l\:main\:70 {
-	min-inline-size: 70%;
+	--main-width: 70%;
 }
 
 .l\:main\:80 {
-	min-inline-size: 80%;
+	--main-width: 80%;
 }
 
 .l\:main\:90 {
-	min-inline-size: 90%;
+	--main-width: 90%;
 }

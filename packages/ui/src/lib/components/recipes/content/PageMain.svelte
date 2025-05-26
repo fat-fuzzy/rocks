@@ -1,6 +1,7 @@
 <script lang="ts">
-	import type {PageProps} from '$types'
+	import type {UiSize, PageProps} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
+	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 
 	let {
 		id = 'main',
@@ -15,23 +16,12 @@
 	}: PageProps = $props()
 
 	let currentPage = $state(pageName ?? title)
-	let justifyClass = $derived(justify ? `justify:${justify}` : '')
-	let layoutClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let headerClass = $derived(
-		`${layoutClass} ${justifyClass} align:baseline maki:block:lg`,
-	)
 </script>
 
 <Head pageName={currentPage} {title} {description} />
 
-<main {id}>
-	<header class={headerClass}>
-		{#if header}
-			{@render header()}
-		{:else}
-			<h1 class="maki:block:md">{title}</h1>
-		{/if}
-	</header>
+<main {id} class={`l:${layout}`}>
+	<PageHeader {title} size={size as UiSize} {layout} {justify} {...header} />
 
 	{#if children}
 		{@render children()}

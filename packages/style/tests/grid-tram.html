@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+		<title>CSS | 🚋 Tram</title>
+		<meta charset="utf-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta
+			name="theme-color"
+			media="(prefers-color-scheme: light)"
+			content="day"
+		/>
+		<meta
+			name="theme-color"
+			media="(prefers-color-scheme: dark)"
+			content="night"
+		/>
+
+		<meta name="description" content="CSS 🚋 Tram layout" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="stylesheet" href="/dist/main.css" />
+		<script type="module" src="/index.js"></script>
+	</head>
+	<body class="surface:0:lime">
+		<div class="rails l:grid:tram size:3xs">
+			<header
+				class="zone:1 exchange swap l:grid size:3xs surface:1:lime dotted"
+			>
+				<div class="navbar surface:4:lime l:flex align:center">
+					<nav
+						id="nav-1"
+						class="l:flex align:center"
+						aria-label="Main navigation"
+					>
+						<p class="maki:inline">Nav 1</p>
+						<a href="./" title="CSS Tests">🧪</a>
+					</nav>
+				</div>
+				<div class="sidebar l:grid size:3xs align:center surface:3:lime">
+					<details class="gare:ouest width:full height:sm surface:3:lime">
+						<summary id="nav-2-label" class="gare-control ravioli:3xs">
+							Zone 2
+						</summary>
+						<ff-reveal class="gare-depot scroll:y layer:1">
+							<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
+								<ol class="unstyled">
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+								</ol>
+							</nav>
+						</ff-reveal>
+					</details>
+				</div>
+				<aside class="context l:grid size:3xs align:center surface:3:lime">
+					<details
+						class="app-context gare:est width:md height:sm surface:3:lime"
+					>
+						<summary id="nav-2-label" class="gare-control ravioli:3xs">
+							Zone 3
+						</summary>
+						<ff-reveal class="gare-depot scroll:y layer:1 surface:3:lime">
+							<nav
+								id="nav-2"
+								class="l:flex surface:3:lime"
+								aria-labelledby="#nav-2-label"
+							>
+								<ol class="unstyled">
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+									<li class="raviolink">Item</li>
+								</ol>
+							</nav>
+						</ff-reveal>
+					</details>
+				</aside>
+			</header>
+			<div
+				class="zone:2 tram l:grid size:3xs dotted align-self:stretch align-content:stretch"
+			>
+				<main class="zone:main tram scroll:y snap:start">
+					<div class="page-header l:text:md ravioli:lg">
+						<h1 class="color:lime">🚋 Tram</h1>
+					</div>
+					<div class="page-main l:stack size:lg maki:inline">
+						<article>
+							<h2 id="section-1">Creatures Tour</h2>
+							<ol class="unstyled l:grid:auto size:xs">
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:lime"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:lime variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:day"></span>
+											<p>Welcome!</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:lime"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:lime variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:moby"></span>
+											<p>See the Whales</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:lime"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:lime variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:tiger"></span>
+											<p>and the Tigers</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:lime"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:lime variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:otter"></span>
+											<p>and the Otters</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:lime"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:lime variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:turtle"></span>
+											<p>and the Turtles</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:lime"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:lime variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:ollie"></span>
+											<p>and don't forget the Octopuses</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:lime"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:lime variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:tram"></span>
+											<p>on the CSS Tram</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:lime"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:lime variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:rainbow"></span>
+											<p>Enjoy the ride!</p>
+										</div>
+									</div>
+								</li>
+							</ol>
+						</article>
+						<article>
+							<h2 id="section-2">Halloween Tour</h2>
+							<ol class="unstyled l:grid:auto size:xs">
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:tangerine"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:banana variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:fat-fuzzy"></span>
+											<p>Welcome ... if you Dare!</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:tangerine"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:banana variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:vader"></span>
+											<p>See the Weird Stuff</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:tangerine"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:banana variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:turtle"></span>
+											<p>and the Perf issues</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:tangerine"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:banana variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:error"></span>
+											<p>and the Errors</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:tangerine"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:banana variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:filters"></span>
+											<p>and the Garish Colors</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:tangerine"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:banana variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:not-found"></span>
+											<p>and don't forget the 404s</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:tangerine"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:banana variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:tram"></span>
+											<p>on the CSS Tram</p>
+										</div>
+									</div>
+								</li>
+								<li
+									class="l:frame:square dotted layer:1 align:stretch justify:center ravioli:md surface:3:tangerine"
+								>
+									<div
+										class="l:frame:square ravioli:md surface:0:banana variant:bare"
+									>
+										<div class="text:center">
+											<span class="emoji:log"></span>
+											<p>Log an issue !</p>
+										</div>
+									</div>
+								</li>
+							</ol>
+						</article>
+					</div>
+				</main>
+				<aside class="l:grid size:3xs page-context scroll:y surface:2:lime">
+					<div class="l:stack maki:inline size:md">
+						<h4 class="maki:block">Tours:</h4>
+						<ul class="unstyled l:stack size:md">
+							<li class="ellipsis snap:center">
+								<a href="#section-1" class="raviolink">Creatures</a>
+							</li>
+							<li class="ellipsis snap:center">
+								<a href="#section-2" class="raviolink">Halloween</a>
+							</li>
+						</ul>
+					</div>
+				</aside>
+			</div>
+			<div class="zone:3 tram l:grid size:3xs surface:4:lime">
+				<footer class="l:grid size:3xs">
+					<details class="l:grid size:3xs gare:nord height:md">
+						<summary class="gare-control ravioli:3xs surface:4:lime">
+							Footer
+						</summary>
+						<ff-reveal class="scroll:y layer:1">
+							<ol class="unstyled">
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+								<li class="raviolink">Item</li>
+							</ol>
+						</ff-reveal>
+					</details>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>

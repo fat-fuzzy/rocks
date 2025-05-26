@@ -1,7 +1,9 @@
 import {expect, test} from '@playwright/test'
 import gfx from '@fat-fuzzy/gfx'
 
-const sketches = gfx.gl.sketches.learning.map((sketch) => sketch.meta)
+const sketches = gfx.gl.sketches.learning
+	.filter((sketch) => !sketch.meta.draft)
+	.map((sketch) => sketch.meta)
 
 /**
  * Test the Player loads in idle state for each sketch.

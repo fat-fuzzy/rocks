@@ -28,7 +28,7 @@ let meta = {
 	slug: 'camera-3d',
 	title: 'Camera 3D',
 	asset: 'camera-3d',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['3D', 'camera', 'webgl', 'webglfundamentals'],
 	controls: ['camera', 'loop'],
 }
@@ -45,10 +45,10 @@ function init(canvas) {
 	}
 }
 
-function main(canvas) {
+async function main(canvas) {
 	init(canvas)
 	clear()
-	programInfo = loadProgram(canvas)
+	programInfo = await Promise.resolve(loadProgram(canvas))
 	return programInfo.context
 }
 

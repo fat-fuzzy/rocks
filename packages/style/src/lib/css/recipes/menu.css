@@ -10,6 +10,8 @@ menu {
 .menu > p {
 	font-size: var(--font-size-small);
 	font-weight: var(--font-weight-ui);
+	line-height: 1;
+	margin-block-end: var(--ui-size);
 }
 
 menu > li > * {

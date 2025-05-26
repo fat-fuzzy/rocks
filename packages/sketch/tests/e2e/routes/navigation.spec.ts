@@ -1,7 +1,9 @@
 import {test, expect} from '@playwright/test'
 import gfx from '@fat-fuzzy/gfx'
 
-const sketches = gfx.gl.sketches.learning.map((sketch) => sketch.meta)
+const sketches = gfx.gl.sketches.learning
+	.filter((sketch) => !sketch.meta.draft)
+	.map((sketch) => sketch.meta)
 
 test('has title', async ({page}) => {
 	await page.goto('/')
@@ -15,7 +17,7 @@ sketches.map((sketch) => {
 		await page.goto('/')
 		await page
 			.getByLabel('Sketches')
-			.getByRole('link', {name: sketch.title})
+			.getByRole('link', {name: sketch.title, exact: false})
 			.click()
 
 		// Expects page to have a heading with the name of Installation.

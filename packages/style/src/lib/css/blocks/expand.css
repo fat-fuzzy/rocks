@@ -1,0 +1,35 @@
+/* == Toggle  default == */
+
+.expand[aria-expanded].variant\:fill:hover {
+	background-color: var(--shade);
+}
+
+.expand[aria-expanded='true'].variant\:fill {
+	box-shadow: inset var(--shadow-inset-md);
+	background-color: var(--shade);
+	filter: grayscale(0.15);
+}
+
+.expand[aria-expanded='true'].variant\:fill:hover {
+	box-shadow: inset var(--shadow-inset-sm);
+	background-color: var(--shade);
+	filter: grayscale(0.35);
+}
+
+.expand[aria-expanded].variant\:outline:hover,
+.expand[aria-expanded].variant\:bare:hover {
+	background-color: var(--shade);
+}
+
+.expand[aria-expanded='true'].variant\:outline,
+.expand[aria-expanded='true'].variant\:bare {
+	box-shadow: inset var(--shadow-inset-md);
+	background-color: var(--color-bg-active);
+}
+
+.expand[aria-expanded='true'].variant\:outline:hover,
+.expand[aria-expanded='true'].variant\:bare:hover {
+	box-shadow: inset var(--shadow-inset-sm);
+	background-color: var(--shade);
+	filter: grayscale(0.35);
+}

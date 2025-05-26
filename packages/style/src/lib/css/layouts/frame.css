@@ -2,8 +2,8 @@
 	overflow: hidden;
 	display: flex;
 	justify-content: var(--justify, center);
-	align-items: center; /* TODO: use var */
-	max-inline-size: 100%;
+	align-items: var(--align, center);
+	max-inline-size: calc(100vw - 2 * var(--ui-size));
 }
 
 [class*='l:frame'] > img,
@@ -43,7 +43,10 @@
 .l\:frame\:feature > img,
 .l\:frame\:feature > video,
 .l\:frame\:feature > canvas {
-	max-block-size: calc(100vh - var(--ui-header-height) - var(--gap));
+	max-block-size: var(
+		--max-block-size,
+		calc(100vh - var(--ui-header-height) - var(--gap))
+	);
 	inline-size: auto;
 	margin-left: auto;
 	margin-right: auto;

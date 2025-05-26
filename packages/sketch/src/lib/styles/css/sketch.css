@@ -1,6 +1,6 @@
 [class*='state:'].canvas {
 	position: relative;
-	border: var(--border-width-md) dotted var(--ink);
+	border: var(--border-inline-size-md) dotted var(--ink);
 }
 
 .canvas {
@@ -24,7 +24,7 @@
 	align-items: center;
 	justify-content: var(--justify, center);
 	/* Hide the canvas without changing its dimensions */
-	max-width: 100%;
+	max-inline-size: 100%;
 	overflow-x: hidden;
 }
 
@@ -52,18 +52,18 @@
 .canvas[class*='clear']::before,
 .canvas[class*='pause']::before,
 .canvas[class*='warning']::before,
-.canvas[class*='error']::before   {
+.canvas[class*='error']::before {
 	display: flex;
 	align-items: center;
 	justify-content: var(--justify, center);
 	position: absolute;
 	bottom: var(--ui-size-sm);
 	right: var(--ui-size-sm);
-	height: fit-content;
+	block-size: fit-content;
 	padding: var(--ui-size-sm);
 	line-height: 1;
 	border-radius: 100vmax;
-  background-color: var(--ink);
+	background-color: var(--ink);
 	aspect-ratio: 1/1;
 }
 
@@ -76,9 +76,19 @@
 	display: flex;
 	align-items: center;
 	justify-content: var(--justify, center);
-	width: 100%;
-	height: 100%;
+	inline-size: 100%;
+	block-size: 100%;
 	font-size: calc(var(--fluid-4) * 5);
+}
+
+.scene,
+.debug {
+	inline-size: 100%;
+}
+
+.debug .scroll\:x {
+	inline-size: max-content;
+	max-inline-size: 100%;
 }
 
 .scene .feedback {
@@ -86,8 +96,8 @@
 	top: 0;
 	left: 0;
 	margin: var(--ui-size-lg);
-	height: fit-content;
-	width: calc(100% - 2 * var(--ui-size-lg));
+	block-size: fit-content;
+	inline-size: calc(100% - 2 * var(--ui-size-lg));
 	max-height: calc(100% - 2 * var(--ui-size-lg));
 	overflow: auto;
 }

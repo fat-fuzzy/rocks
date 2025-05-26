@@ -2,7 +2,10 @@ form {
 	--hue: var(--color-theme-primary);
 	--lightness-accent: var(--color-lightness-400);
 	--chroma-accent: var(--color-chroma-400);
+	--lightness-contrast: var(--color-lightness-base);
+	--chroma-contrast: var(--color-chroma-base);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--color-accent: var(--accent);
 	color: var(--ink);
 	max-height: fit-content;
@@ -38,7 +41,7 @@ legend {
 input,
 select,
 textarea {
-	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width));
+	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width-md));
 	--padding-inline: var(--ui-size);
 	border: 1px solid var(--accent);
 	border-radius: var(--border-radius-base);
@@ -50,7 +53,7 @@ textarea {
 }
 
 label > input {
-	max-width: 100%;
+	max-inline-size: 100%;
 }
 
 label > input[type='radio'],
@@ -89,10 +92,20 @@ label:hover > [type='file'] {
 
 /* Display range input step labels */
 
+input[type='range'] {
+	padding-inline: 0;
+}
+
+label:has([type='range']) {
+	line-height: 1;
+	padding-inline: var(--outline-offset-md);
+}
+
 [type='range'][list='markers'] + datalist {
 	display: flex;
 	justify-content: var(--justify, space-between);
 	padding: 0 var(--ui-size);
+	margin-block-start: var(--ui-size-sm);
 }
 
 [type='range'][list='markers'] + datalist > option {

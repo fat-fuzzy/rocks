@@ -46,7 +46,7 @@
 </script>
 
 <ff-tabs class={layoutClasses}>
-	<header class="l:sidebar:lg">
+	<header class="l:sidebar size:lg">
 		<nav {id} class="l:main:50">
 			<ul role="tablist" class="unstyled l:switcher:xs">
 				{#each tabs as { title, slug, color, size, variant, shape, asset }}
@@ -62,7 +62,7 @@
 						size: '2xs',
 						font: 'md',
 						color,
-						container: 'card',
+						container: 'ravioli',
 					})}
 					<li
 						role="presentation"

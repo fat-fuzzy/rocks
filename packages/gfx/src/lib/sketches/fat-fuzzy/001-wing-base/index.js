@@ -37,7 +37,7 @@ let meta = {
 	title: 'Wing Base',
 	asset: 'wing',
 	// status: 'draft',
-	categories: ['sketches'],
+	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'sketches', 'wing', 'fat-fuzzy'],
 	controls: ['speed', 'color', 'grid', 'loop'],
 }
@@ -54,12 +54,12 @@ function init(canvas) {
 	}
 }
 
-function main(canvas) {
+async function main(canvas) {
 	init(canvas)
 	clear()
-
-	programInfo = loadProgram(canvas)
+	programInfo = await Promise.resolve(loadProgram(canvas))
 	bgColor = programInfo.context.background
+
 	return programInfo.context
 }
 

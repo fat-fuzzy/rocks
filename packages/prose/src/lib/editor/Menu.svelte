@@ -3,7 +3,7 @@
 	let { editor, commands }: { editor: Editor; commands: { [key: string]: boolean } } = $props();
 </script>
 
-<menu class="l:flex size:2xs card:2xs surface:1:neutral">
+<menu class="l:flex size:2xs ravioli:2xs surface:1:neutral">
 	<button
 		onclick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
 		aria-pressed={commands.h1 ? 'true' : undefined}

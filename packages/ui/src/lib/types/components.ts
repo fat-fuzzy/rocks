@@ -5,8 +5,12 @@ export interface Utils {
 
 export interface Forms {
 	UiReveal: typeof import('$lib/forms/ui-reveal.js').default
-	SettingsUpdate: typeof import('$lib/forms/settings-update.js').default
+	AppContext: typeof import('$lib/forms/app-context.svelte.js').default
 	SignUpUser: typeof import('$lib/forms/ui-sample-signup.js').default
+}
+
+export interface Actors {
+	PopoverActor: typeof import('$lib/components/blocks/overlays/Popover/actor.svelte.js').default
 }
 
 export interface Tokens {
@@ -29,7 +33,7 @@ export interface Blocks {
 
 export interface Layouts {
 	Burrito: typeof import('$lib/components/layouts/Burrito.svelte').default
-	Reveal: typeof import('$lib/components/layouts/Reveal.svelte').default
+	Reveal: typeof import('$lib/components/layouts/reveal/Reveal.svelte').default
 	Stack: typeof import('$lib/components/layouts/Stack.svelte').default
 	Switcher: typeof import('$lib/components/layouts/Switcher.svelte').default
 	Sidebar: typeof import('$lib/components/layouts/Sidebar.svelte').default
@@ -45,27 +49,41 @@ export interface Recipes {
 	Header: typeof import('$lib/components/recipes/header/Header.svelte').default
 }
 
+export interface Raw {
+	CSSMetro: typeof import('$lib/components/raw/css-grid-metro.svelte').default
+	CSSRailway: typeof import('$lib/components/raw/css-grid-railway.svelte').default
+	CSSSteam: typeof import('$lib/components/raw/css-grid-steam.svelte').default
+	CSSTgv: typeof import('$lib/components/raw/css-grid-tgv.svelte').default
+	CSSTram: typeof import('$lib/components/raw/css-grid-tram.svelte').default
+	CSSVoyager: typeof import('$lib/components/raw/css-grid-voyager.svelte').default
+	CSSUrbanist: typeof import('$lib/components/raw/css-grid-urbanist.svelte').default
+}
+
 export interface Content {
-	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
+	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
+	LayoutGrid: typeof import('$lib/components/recipes/grid/LayoutGrid.svelte').default
 	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
+	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
+	PageRails: typeof import('$lib/components/recipes/grid/PageRails.svelte').default
 }
 
 export interface Drafts {
 	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
-	Popover: typeof import('$lib/components/blocks/global/Popover.svelte').default
+	Popover: typeof import('$lib/components/blocks/overlays/Popover/Popover.svelte').default
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
-	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
-	HeaderSettings: typeof import('$lib/components/recipes/header/HeaderSettings.svelte').default
 	HeaderNav: typeof import('$lib/components/recipes/header/HeaderNav.svelte').default
-	Settings: typeof import('$lib/components/recipes/header/Settings.svelte').default
+	Cookies: typeof import('$lib/components/recipes/forms/Cookies.svelte').default
 	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
-	SettingsMenu: typeof import('$lib/components/recipes/menus/SettingsMenu.svelte').default
-	PageScrolly: typeof import('$lib/components/recipes/content/PageScrolly.svelte').default
-	PageTabs: typeof import('$lib/components/recipes/content/PageTabs.svelte').default
+	PageNav: typeof import('$lib/components/recipes/navs/PageNav.svelte').default
+	ExpandLink: typeof import('$lib/components/recipes/navs/ExpandLink.svelte').default
+	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
+	RevealContext: typeof import('$lib/components/recipes/forms/RevealContext.svelte').default
+	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
+	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
 }
 
 export interface Headless {
@@ -74,14 +92,18 @@ export interface Headless {
 }
 
 export interface FatFuzzyUi {
+	// Components
+	blocks: Blocks
+	content: Content
 	drafts: Drafts
 	headless: Headless
-	tokens: Tokens
-	blocks: Blocks
 	layouts: Layouts
+	raw: Raw
 	recipes: Recipes
-	content: Content
-	utils: Utils
+	tokens: Tokens
+	// Tools
+	actors: Actors
 	forms: Forms
 	constants: typeof import('$lib/types/constants.js').default
+	utils: Utils
 }

@@ -1,5 +1,6 @@
 // Reexport your entry components here
 /// <reference path="./types/index.d.ts" />
+
 import type {FatFuzzyUi} from '$types'
 /**
  * Headless components
@@ -22,8 +23,7 @@ import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
-import Popover from '$lib/components/blocks/global/Popover.svelte'
-
+import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
 import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 import InputRange from '$lib/components/blocks/inputs/InputRange.svelte'
@@ -33,7 +33,7 @@ import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
  * Layout components
  */
 import Burrito from '$lib/components/layouts/Burrito.svelte'
-import Reveal from '$lib/components/layouts/Reveal.svelte'
+import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
@@ -44,27 +44,37 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
-import SettingsMenu from '$lib/components/recipes/menus/SettingsMenu.svelte'
+import Settings from '$lib/components/recipes/forms/Settings.svelte'
+import RevealContext from '$lib/components/recipes/forms/RevealContext.svelte'
 
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
+import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
-import Settings from '$lib/components/recipes/header/Settings.svelte'
-import HeaderSettings from '$lib/components/recipes/header/HeaderSettings.svelte'
 import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 
 /**
  * Recipes - Content
  */
+import LayoutGrid from '$lib/components/recipes/grid/LayoutGrid.svelte'
 import LayoutSidebar from '$lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '$lib/components/recipes/content/PageMain.svelte'
-import PageTabs from '$lib/components/recipes/content/PageTabs.svelte'
-import PageScrolly from '$lib/components/recipes/content/PageScrolly.svelte'
-
+import PageRails from '$lib/components/recipes/grid/PageRails.svelte'
+/**
+ * Raw - CSS Layout templates: use as guides, not as drop-in components
+ */
+import CSSTheme from '$lib/components/raw/css-theme.svelte'
+import CSSMetro from '$lib/components/raw/css-grid-metro.svelte'
+import CSSRailway from '$lib/components/raw/css-grid-railway.svelte'
+import CSSSteam from '$lib/components/raw/css-grid-steam.svelte'
+import CSSTgv from '$lib/components/raw/css-grid-tgv.svelte'
+import CSSTram from '$lib/components/raw/css-grid-tram.svelte'
+import CSSVoyager from '$lib/components/raw/css-grid-voyager.svelte'
+import CSSUrbanist from '$lib/components/raw/css-grid-urbanist.svelte'
 /**
  * Draft components
  */
@@ -74,9 +84,12 @@ import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
 import Aside from '$lib/components/recipes/content/Aside.svelte'
+import Zoomer from '$lib/components/blocks/overlays/Zoomer.svelte'
 import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
 import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
+import ExpandLink from '$lib/components/recipes/navs/ExpandLink.svelte'
+import Cookies from '$lib/components/recipes/forms/Cookies.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
@@ -85,7 +98,12 @@ import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
  */
 import UiReveal from '$lib/forms/ui-reveal.js'
 import SignUpUser from '$lib/forms/ui-sample-signup.js'
-import SettingsUpdate from '$lib/forms/settings-update.js'
+import AppContext from '$lib/forms/app-context.svelte.js'
+
+/**
+ * Actors
+ */
+import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.js'
 
 /**
  * Utilities
@@ -102,9 +120,13 @@ const utils = {
 	clickOutside,
 }
 
+const actors = {
+	PopoverActor,
+}
+
 const forms = {
 	UiReveal,
-	SettingsUpdate,
+	AppContext,
 	SignUpUser,
 }
 
@@ -119,11 +141,11 @@ const blocks = {
 	Switch,
 	Toggle,
 	Feedback,
+	Magic,
 	InputCheck,
 	InputRadio,
 	InputRange,
 	InputFile,
-	Magic,
 }
 
 const layouts = {
@@ -144,30 +166,44 @@ const recipes = {
 	Header,
 }
 
+const raw = {
+	CSSMetro,
+	CSSRailway,
+	CSSSteam,
+	CSSTgv,
+	CSSTram,
+	CSSVoyager,
+	CSSUrbanist,
+}
+
 const content = {
-	PageMain,
+	Aside,
+	LayoutGrid,
 	LayoutSidebar,
+	PageMain,
+	PageRails,
 }
 
 const drafts = {
+	CSSTheme,
 	Fieldset,
 	Popover,
 	// InputPassword,
 	// InputFeedback,
+	ExpandLink,
 	InputGroup,
 	Image,
 	Picture,
-	Aside,
 	Scrolly,
 	ScrollyItem,
 	Breadcrumbs,
-	HeaderSettings,
 	HeaderNav,
-	SettingsMenu,
 	Settings,
-	PageScrolly,
-	PageTabs,
+	PageNav,
+	RevealContext,
+	Zoomer,
 	Tabs,
+	Cookies,
 }
 
 const headless = {
@@ -176,12 +212,14 @@ const headless = {
 }
 
 export default {
+	actors,
 	drafts,
 	headless,
 	tokens,
 	blocks,
 	layouts,
 	recipes,
+	raw,
 	content,
 	utils,
 	forms,

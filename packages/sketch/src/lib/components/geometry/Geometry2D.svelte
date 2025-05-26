@@ -60,7 +60,7 @@
 </script>
 
 <form
-	class={`l:${layout}:${size} th:${threshold} maki:block geometry ${backgroundClass}`}
+	class={`l:grid:auto size:xs maki:block geometry ${backgroundClass}`}
 	name="geometry-update"
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 >
@@ -99,7 +99,7 @@
 	/>
 	{#await Promise.resolve()}
 		<!-- This will display if no JS is present -->>
-		<div class={`l:frame:twin card:lg`}>
+		<div class={`l:frame:twin ravioli:lg`}>
 			<Button
 				id="update-geometry"
 				name="update-geometry"

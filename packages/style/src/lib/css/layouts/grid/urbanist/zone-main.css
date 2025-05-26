@@ -1,0 +1,18 @@
+.urbanist.zone\:main {
+	grid-template-rows: auto 1fr;
+	grid-template-columns: subgrid;
+	grid-column: span 3;
+	min-block-size: unset;
+}
+
+@media screen and (min-width: 1100px) {
+	.urbanist.zone\:main {
+		grid-column: span 7;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.urbanist.zone\:main {
+		grid-column: span 4;
+	}
+}

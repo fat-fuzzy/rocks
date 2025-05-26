@@ -1,13 +1,11 @@
 .tags {
 	list-style: none;
-	padding: 0;
+	margin-block: var(--ui-size);
 }
 
 .tags li {
 	color: var(--ink);
-	text-align: center;
 	border-radius: var(--border-radius-lg);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
-	font-size: var(--font-size-small);
 }

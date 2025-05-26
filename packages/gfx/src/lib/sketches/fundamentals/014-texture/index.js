@@ -46,7 +46,7 @@ let meta = {
 	slug: 'texture',
 	title: 'Texture',
 	asset: 'texture',
-	categories: ['learning'],
+	categories: ['Learning'],
 	tags: ['color', 'texture', 'matrix', 'camera', 'webgl', 'webglfundamentals'],
 	controls: ['loop', 'camera'],
 	filename: 'f-texture.png',

@@ -1,0 +1,23 @@
+/**
+ * ZONE 2
+ * Contains main content & page context
+ */
+.voyager.zone\:2 {
+	grid-template-areas: 'zone-main';
+	grid-template-rows: subgrid;
+}
+
+@media screen and (min-width: 620px) {
+	.voyager.zone\:2 {
+		> .page-context > * {
+			--max-inline-size: calc(100% - 3 * var(--grid-gap));
+			inline-size: 100%;
+		}
+
+		> .page-context > details {
+			--max-inline-size: calc(
+				100% - 4 * var(--grid-gap) - var(--outline-offset-lg)
+			);
+		}
+	}
+}

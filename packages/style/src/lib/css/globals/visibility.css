@@ -25,16 +25,18 @@
 .sr-only,
 .hide\:sr-always,
 .hide\:viz-only {
-	border: 0;
 	clip-path: rect(0 0 0 0);
+	border: 0;
 	height: auto;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
-	width: 1px;
+	width: 0;
+	height: 0;
+	inline-size: 0;
+	block-size: 0;
 	white-space: nowrap;
-	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); /* TODO : use Svelte animations */
 }
 
 /* To undo hide: */
@@ -46,8 +48,7 @@
 	overflow: hidden;
 	padding: var(--ui-size);
 	position: unset;
-	top: 0;
-	width: 100%;
+	width: initial;
 	white-space: normal;
 }
 

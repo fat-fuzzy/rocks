@@ -22,6 +22,11 @@
 	flex-direction: row-reverse;
 }
 
+/* TODO: THis shouldn't be necessary : figure out a container switcher */
+[class*='l:switcher:'].nowrap {
+	flex-wrap: nowrap;
+}
+
 .l\:switcher\:2xs {
 	--gap: var(--size-base-2xs);
 }

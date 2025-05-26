@@ -157,7 +157,7 @@
 	</div>
 
 	<article class="l:side l:stack:md">
-		<div class="bg:primary:000 card:fill layer">
+		<div class="bg:primary:000 ravioli:fill layer">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
@@ -166,7 +166,7 @@
 				perspiciatis.
 			</p>
 		</div>
-		<div class="bg:primary:000 card:outline">
+		<div class="bg:primary:000 ravioli:md variant:outline">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
@@ -175,7 +175,7 @@
 				perspiciatis.
 			</p>
 		</div>
-		<div class="bg:accent:000 card box:dotted">
+		<div class="bg:accent:000 ravioli:md dotted">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
@@ -184,7 +184,7 @@
 				perspiciatis.
 			</p>
 		</div>
-		<div class="bg:higlight:000 card dotted">
+		<div class="bg:higlight:000 ravioli:md dotted">
 			<h3>This is a Subtitle</h3>
 			<h4>Lorem ipsum dolor</h4>
 			<p>
@@ -219,8 +219,8 @@ Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palette
 		}
 	}
 
-	@layer demo.card {
-		.card {
+	@layer demo.ravioli {
+		.ravioli {
 			display: grid;
 		}
 	}

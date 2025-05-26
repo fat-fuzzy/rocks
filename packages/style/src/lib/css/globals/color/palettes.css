@@ -1,0 +1,31 @@
+[class*=':lime'] {
+	--hue: var(--color-palette-lime);
+}
+
+[class*=':banana'] {
+	--hue: var(--color-palette-banana);
+}
+
+[class*=':tangerine'] {
+	--hue: var(--color-palette-tangerine);
+}
+
+[class*=':litchee'] {
+	--hue: var(--color-palette-litchee);
+}
+
+[class*=':mora'] {
+	--hue: var(--color-palette-mora);
+}
+
+[class*=':framboise'] {
+	--hue: var(--color-palette-framboise);
+}
+
+[class*=':grape'] {
+	--hue: var(--color-palette-grape);
+}
+
+[class*=':blueberry'] {
+	--hue: var(--color-palette-blueberry);
+}

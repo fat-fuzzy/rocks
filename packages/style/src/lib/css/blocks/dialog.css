@@ -1,0 +1,55 @@
+/*   Closed state of the dialog   */
+dialog {
+	--max-dialog-block: 100%;
+	--max-dialog-inline: 100%;
+	border: none;
+	opacity: 0;
+	block-size: fit-content;
+	inline-size: fit-content;
+	transition:
+		opacity 0.3s ease-out,
+		transform 0.3s ease-out,
+		block-size 0.3s ease-out,
+		overlay 0.5s ease-out allow-discrete,
+		display 0.5s ease-out allow-discrete;
+
+	> ff-dialog {
+		display: none;
+	}
+}
+
+/*   Open state of the dialog  */
+dialog[open] {
+	--dialog-padding: var(--gap, var(--ui-size));
+	opacity: 1;
+	top: 0;
+	z-index: var(--layout-z-index-overlay);
+	overflow: auto;
+	padding-block: var(--dialog-padding);
+	padding-inline: var(--dialog-padding);
+	inline-size: var(--max-dialog-block);
+	block-size: var(--max-dialog-inline);
+	overflow: auto;
+
+	> form {
+		position: relative;
+		top: var(--dialog-padding);
+	}
+
+	> ff-dialog {
+		display: block;
+		inline-size: 100%;
+		block-size: 100%;
+	}
+}
+
+/* Transition the :backdrop when the dialog modal is promoted to the top layer */
+dialog::backdrop {
+	background-color: rgb(0 0 0 / 0%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	dialog {
+		transition: none;
+	}
+}

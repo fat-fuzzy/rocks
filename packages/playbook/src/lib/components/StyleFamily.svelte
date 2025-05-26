@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type {Meta, StyleTree} from '$types'
-	import type {StylesApi} from '$lib/api/styles.api'
 
-	import {onMount, getContext} from 'svelte'
+	import {getContext} from 'svelte'
 
-	import PlaybookStore from '$lib/api/store.svelte'
+	import StylesApi from '$lib/api/styles.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import StyleInput from './StyleInput.svelte'
 
 	type Props = {
@@ -15,15 +15,19 @@
 
 	let {category = 'app', formaction, meta}: Props = $props()
 
-	const playbookContext: StylesApi = getContext('playbookContext')
-	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
+	// This is the context that provides form options and updates the StyleTree every time the Styles API is updated
+	let playbookContext: StylesApi = getContext('playbookContext')
+
+	// This is the global actor that provides state updates to the Playbook Elements:
+	// it is updated every time the StyleTree is updated (see function below)
+	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let formOptions = $derived(playbookContext.getFormOptions(category, meta))
 
 	function updateStyles(payload: {
 		name: string
 		items: {id: string; value: string}[]
 	}) {
-		let updatedStyles: StyleTree = {}
+		let updatedStyles: StyleTree = playbookContext.getStyleTree()
 		payload.items.forEach(({id, value}) => {
 			const [category, family, style, name] = id.split('.')
 			const styleValue = {[style]: value}
@@ -32,13 +36,17 @@
 				updatedStyles[category] = {families: {}}
 			}
 			updatedStyles[category].families[family] = styleValue
+
 			if (style === 'brightness' || style === 'contrast') {
-				playbookStore.styles['app'].families[family] = styleValue
-				playbookStore.app = {...playbookStore.app, [style]: value}
+				playbookActor.styles['app'].families[family] = styleValue
+				playbookActor.preferences = {
+					...playbookActor.preferences,
+					[style]: value,
+				}
 			}
 		})
 		playbookContext.applyStyles(updatedStyles)
-		playbookStore.styles = playbookContext.getStyleTree() // This should update the client if JS is available
+		playbookActor.styles = playbookContext.getStyleTree() // This should update the client if JS is available
 	}
 
 	/**
@@ -52,11 +60,6 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
-
-	onMount(() => {
-		// Set the initial styles
-		playbookContext.applyStyles(playbookStore.styles)
-	})
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -67,16 +70,29 @@
 			{@const families = Object.keys(categoryOptions.families)}
 			{#each families as familyName}
 				{@const family = categoryOptions.families[familyName]}
-				{#each family.items as styleInputGroup}
-					<StyleInput
-						{family}
-						styleInput={styleInputGroup}
+				<details class="l:stack:2xs">
+					<summary
+						class="font:sm font:heading font:semi size:2xs variant:bare color:accent"
+						data-testid={`summary-${familyName}`}
+					>
 						{familyName}
-						categoryName={categoryOptions.name}
-						{formaction}
-						onupdate={updateStyles}
-					/>
-				{/each}
+					</summary>
+					<div
+						class="l:flex:2xs justify:stretch align:start ravioli:xs"
+						data-testid={`content-${familyName}`}
+					>
+						{#each family.items as styleInputGroup}
+							<StyleInput
+								{family}
+								styleInput={styleInputGroup}
+								{familyName}
+								categoryName={categoryOptions.name}
+								{formaction}
+								onupdate={updateStyles}
+							/>
+						{/each}
+					</div>
+				</details>
 			{/each}
 		{/if}
 	{/each}

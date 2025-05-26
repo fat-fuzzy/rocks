@@ -133,16 +133,7 @@
 		"$type": "dimension",
 		"header": {
 			"height": {
-				"$value": "var(--scale-base-50)"
-			},
-			"max-height": {
-				"$value": "30vh"
-			},
-			"icon-height": {
-				"$value": "2.25rem"
-			},
-			"margin": {
-				"$value": "calc(var(--gap) / 2)"
+				"$value": "3rem"
 			}
 		},
 		"footer": {

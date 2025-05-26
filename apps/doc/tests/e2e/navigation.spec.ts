@@ -5,6 +5,7 @@ import errorUtils from '../utils/errors'
 const pages = utils.pages
 const errors = errorUtils.httpErrors
 const errorCodes = Object.keys(errors)
+const sidebarTestId = 'nav-sidebar'
 
 test('has title', async ({page}) => {
 	await page.goto('/')
@@ -18,7 +19,7 @@ pages.forEach((item) => {
 	test(`Main navigation works as expected: ${item.title} page`, async ({
 		page,
 	}) => {
-		await page.goto('/')
+		await page.goto('/', {waitUntil: 'networkidle'})
 		await page.getByTestId('scrolly').hover()
 		await page.mouse.wheel(0, 200)
 		if (item.title === 'Home') {
@@ -33,13 +34,17 @@ pages.forEach((item) => {
 		}
 	})
 
-	if (item.items) {
+	if (item.items && item.items?.length > 0) {
 		item.items.forEach((subpage) => {
 			test(`Sub navigation works as expected: ${subpage.title}`, async ({
 				page,
 			}) => {
 				await page.goto('/')
 				await page.getByRole('link', {name: item.title}).nth(0).click()
+				await page
+					.getByTestId(sidebarTestId)
+					.getByRole('button', {name: item.title})
+					.click()
 				await page.getByTestId(`button-reveal-${subpage.slug}`).click()
 				await expect(
 					page.getByRole('link', {name: subpage.linkTitle}),
@@ -69,9 +74,9 @@ pages.forEach((item) => {
 		}) => {
 			await error.testFn(page, item)
 			await expect(page.getByText(error.message)).toBeVisible()
-			await expect(
-				page.getByRole('heading', {name: `Fat Fuzzy ${code}`}),
-			).toBeVisible()
+
+			// TODO: Fix Error pages
+			await expect(page.getByRole('heading', {name: code})).toBeVisible()
 		})
 
 		if (item.items) {

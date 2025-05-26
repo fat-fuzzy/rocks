@@ -4,12 +4,8 @@ import pages from '$data/pages'
 
 const page = 'blog'
 
-export async function GET(slug) {
-	const posts = await blog.markdowns
-
-	if (!slug) {
-		throw error(404, {message: 'Not found'})
-	}
+export async function GET({url}) {
+	const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 
 	const content = await pages.fetchMarkdowns(page)
 
@@ -18,7 +14,7 @@ export async function GET(slug) {
 	}
 
 	const data = {
-		markdowns: posts.filter(({meta}) => meta.status !== 'draft'),
+		markdowns: posts,
 		content,
 	}
 

@@ -29,7 +29,7 @@ let meta = {
 	title: 'Random',
 	asset: 'random',
 	dimensions: 'video',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['2D', 'webgl', 'webglfundamentals'],
 	controls: ['loop'],
 }
@@ -46,10 +46,10 @@ function init(canvas) {
 	}
 }
 
-function main(canvas) {
+async function main(canvas) {
 	init(canvas)
 	clear()
-	programInfo = loadProgram(canvas)
+	programInfo = await Promise.resolve(loadProgram(canvas))
 	return programInfo.context
 }
 
@@ -120,7 +120,7 @@ function clear() {
 function stop() {
 	clear()
 	if (buffers) {
-		if (buffers.position) gl.delete(buffers.position)
+		if (buffers.position) gl.deleteBuffer(buffers.position)
 	}
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)

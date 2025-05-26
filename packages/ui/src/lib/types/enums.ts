@@ -16,12 +16,6 @@ export enum UiStatus {
 	error = 'error',
 }
 
-export enum UiSettings {
-	brightness = 'brightness',
-	contrast = 'contrast',
-	locale = 'locale',
-}
-
 export enum UiTextContext {
 	form = 'form',
 	prose = 'prose',
@@ -71,6 +65,7 @@ export enum UiDimensions {
 export enum DismissEvent {
 	click = 'click',
 	outside = 'outside',
+	navigate = 'navigate',
 }
 
 export enum ButtonEvent {
@@ -135,4 +130,23 @@ export enum AriaLiveEnum {
 	polite = 'polite',
 	off = 'off',
 	assertive = 'assertive',
+}
+
+export enum AriaInvoke {
+	manual = 'manual',
+	auto = 'auto',
+}
+
+export enum Preferences {
+	brightness = 'brightness',
+	contrast = 'contrast',
+	locale = 'locale',
+	consent = 'consent',
+}
+
+export enum UiSettings {
+	day = 'day',
+	night = 'night',
+	blend = 'blend',
+	contrast = 'contrast',
 }

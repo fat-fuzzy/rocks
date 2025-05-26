@@ -1,0 +1,94 @@
+/**
+ * GARES
+ * Expand / Collapse content
+ */
+
+.gare-control {
+	border-radius: 0;
+}
+
+details:has(.gare-control) {
+	padding-block: 0;
+	position: unset;
+}
+
+details[class*='gare:'] > ff-reveal,
+.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+	margin-inline-start: var(--outline-offset-md);
+}
+
+[class*='zone:'] > .navbar > nav form > [class*='l:switcher'],
+[class*='zone:'] > .app-context > form > [class*='l:switcher'],
+[class*='zone:'] > nav > form > [class*='l:switcher'] {
+	--gap: var(--grid-gap);
+}
+
+.gare\:est,
+.gare\:ouest {
+	block-size: fit-content;
+	max-block-size: var(--overlay-block-size);
+}
+
+.gare\:ouest > ff-reveal,
+.gare\:ouest:is([open], .expanded) > ff-reveal {
+	top: var(--ui-header-height);
+	left: var(--grid-gap);
+	right: calc(var(--grid-gap) + var(--outline-offset-md));
+}
+
+.gare\:est:is([open], .expanded) > ff-reveal {
+	top: var(--ui-header-height);
+	right: calc(var(--grid-gap) + var(--outline-offset-lg));
+}
+
+[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord']):is(
+		[open],
+		.expanded
+	)
+	> ff-reveal {
+	block-size: fit-content;
+	max-block-size: var(--overlay-block-size);
+	overflow: hidden auto;
+}
+
+.gare\:est:is([open], .expanded) > ff-reveal,
+.gare\:ouest:is([open], .expanded) > ff-reveal {
+	position: absolute;
+	block-size: fit-content;
+	max-block-size: var(--overlay-block-size);
+	inline-size: var(--overlay-inline-size);
+	padding-block-end: var(--grid-gap);
+	z-index: var(--layout-z-index-reveal);
+}
+
+@media screen and (min-width: 935px) {
+	.gare\:ouest > ff-reveal,
+	.gare\:ouest:is([open], .expanded) > ff-reveal {
+		left: calc(2 * var(--grid-gap));
+	}
+
+	.gare\:est > ff-reveal,
+	.gare\:est:is([open], .expanded) > ff-reveal {
+		box-shadow: unset;
+	}
+
+	.gare\:est:is([open], .expanded) > ff-reveal,
+	.gare\:ouest:is([open], .expanded) > ff-reveal {
+		block-size: fit-content;
+		inline-size: 100%;
+		max-block-size: var(--overlay-block-size);
+		max-inline-size: var(--overlay-inline-size);
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.gare\:ouest > ff-reveal,
+	.gare\:ouest:is([open], .expanded) > ff-reveal {
+		box-shadow: unset;
+	}
+	.gare\:est .gare-control,
+	.gare\:ouest .gare-control {
+		inline-size: 100%;
+		max-inline-size: var(--overlay-inline-size);
+	}
+}

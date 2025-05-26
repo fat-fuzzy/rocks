@@ -1,0 +1,54 @@
+.exchange > .navbar {
+	grid-area: navbar;
+	grid-template-columns: subgrid;
+}
+
+.exchange > .navbar .expanded ff-reveal {
+	position: absolute;
+	top: var(--ui-header-height);
+	left: calc(var(--outline-offset-sm) + var(--grid-gap));
+	right: var(--grid-gap);
+}
+
+.exchange > .navbar > nav,
+.exchange > .navbar > nav form,
+.exchange > .navbar > nav [aria-expanded] {
+	inline-size: 100%;
+}
+
+.exchange > .navbar > nav [aria-expanded] span {
+	text-align: center;
+}
+
+@media screen and (min-width: 620px) {
+	.exchange > .navbar {
+		grid-column: span 1;
+	}
+
+	.exchange > .navbar > nav {
+		justify-content: flex-start;
+	}
+
+	.exchange > .navbar > nav form {
+		display: none;
+	}
+
+	.exchange > .zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
+		block-size: fit-content;
+	}
+
+	.exchange > .navbar > .expanded > ff-reveal,
+	.exchange > .navbar > .collapsed > ff-reveal {
+		position: unset;
+		margin: 0 auto;
+		z-index: var(--layout-z-index-reveal);
+		border-radius: var(--border-radius-null);
+		box-shadow: unset;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.exchange > .navbar {
+		grid-column-start: 4;
+	}
+}

@@ -10,7 +10,7 @@
 	const variants = ['000', '100', '200', '300', '400', '500', '600']
 	const baseColor = ['light', 'dark']
 
-	let colorClasses = `card:md l:stack:sm font:sm text:center`
+	let colorClasses = `ravioli:md l:stack:sm font:sm text:center`
 </script>
 
 <div class="l:stack:xl">
@@ -18,7 +18,7 @@
 		<svelte:element this={`h${depth + 1}`} class="font:lg maki:block:2xs">
 			Base colors
 		</svelte:element>
-		<article class="l:grid:md">
+		<article class="l:grid:auto size:md">
 			{#each baseColor as base}
 				<figure class={`${colorClasses} bg:primary:${base}`}>
 					<figcaption>color:{base}</figcaption>
@@ -31,7 +31,7 @@
 		<svelte:element this={`h${depth + 1}`} class="font:lg maki:block:2xs">
 			Theme colors
 		</svelte:element>
-		<div class="l:grid:sm">
+		<div class="l:grid:auto size:sm">
 			{#each colors as color}
 				<article class="l:switcher:md th:md">
 					<svelte:element this={`h${depth + 2}`} class="font:md">
@@ -53,7 +53,7 @@
 		<svelte:element this={`h${depth + 1}`} class="font:lg maki:block:2xs">
 			Semantic colors
 		</svelte:element>
-		<div class="l:grid:xs">
+		<div class="l:grid:auto size:xs">
 			{#each status as color}
 				<article class="l:switcher:md th:md">
 					<svelte:element this={`h${depth + 2}`} class="font:md">

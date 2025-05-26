@@ -12,24 +12,27 @@
 		type = 'radio', // checkbox, radio
 		items = [],
 		layout = 'stack',
+		justify = 'between',
 		container,
+		font,
 		size,
 		color,
 		variant,
 		oninput,
-	}: FieldsetProps & InputProps = $props()
+		children,
+	}: FieldsetProps & Partial<InputProps> = $props()
 
-	// TODO: fix type
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
 	}
 
-	function handleInput(event, name: string) {
+	function handleInput(event: Event, name: string) {
+		let target = event.target as HTMLInputElement
 		let payload = {
 			id,
 			name,
-			value: event.value,
+			value: target.value,
 		}
 		if (oninput) {
 			oninput(payload)
@@ -44,8 +47,9 @@
 	{legend}
 	{layout}
 	{size}
+	{font}
 	{variant}
-	container={container ?? ''}
+	{container}
 	{color}
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
@@ -56,9 +60,15 @@
 			{checked}
 			color={input.color || color}
 			{...input}
+			{justify}
+			{container}
+			{size}
 			name={id}
 			id={`${name}.${input.value}`}
-			oninput={(event) => handleInput(event, name)}
+			oninput={(event: Event) => handleInput(event, name)}
 		/>
 	{/each}
+	{#if children}
+		{@render children()}
+	{/if}
 </Fieldset>

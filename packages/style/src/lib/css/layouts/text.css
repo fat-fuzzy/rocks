@@ -3,10 +3,22 @@
  * - improve readability by using ch units to adapt to user zoom settings
  */
 
-[class^='l:text'] {
-	inline-size: 80ch;
-	max-inline-size: 100%;
-	padding-block-end: var(--ui-size-lg);
+[class*='l:text'] {
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--text-inline-size: 71ch;
+	color: var(--ink);
+	background-color: inherit;
+	inline-size: 100%;
+	max-inline-size: var(--text-inline-size);
+
+	ol,
+	ul {
+		margin-block: var(--ui-size);
+	}
+}
+
+[class*='l:text'] > * {
+	inline-size: 100%;
 }
 
 [class^='l:text'] > * + h1,
@@ -36,29 +48,29 @@ ul.unstyled {
 }
 
 .l\:text\:2xs {
-	inline-size: 20ch;
+	--text-inline-size: 20ch;
 }
 
 .l\:text\:xs {
-	inline-size: 35ch;
+	--text-inline-size: 35ch;
 }
 
 .l\:text\:sm {
-	inline-size: 50ch;
+	--text-inline-size: 50ch;
 }
 
 .l\:text\:md {
-	inline-size: 65ch;
+	--text-inline-size: 60ch;
 }
 
 .l\:text\:lg {
-	inline-size: 80ch;
+	--text-inline-size: 70ch;
 }
 
 .l\:text\:xl {
-	inline-size: 95ch;
+	--text-inline-size: 80ch;
 }
 
 .l\:text\:2xl {
-	inline-size: 110ch;
+	--text-inline-size: 90ch;
 }

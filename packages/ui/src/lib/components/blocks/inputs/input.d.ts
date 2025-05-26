@@ -25,7 +25,9 @@ export type FeedbackMessage = {
 }
 
 export type InputFeedbackProps = {
+	id: string
 	size?: string
+	font?: string
 	variant?: string
 	errors?: string[]
 }
@@ -58,6 +60,9 @@ export type InputCommonProps = {
 	onfocus?: (payload: InputPayload) => void
 	onblur?: (payload: InputPayload) => void
 	oninput?: (payload: InputPayload) => void
+	onreset?: (payload: FuzzyPayload) => void
+	onsubmit?: (payload: FuzzyPayload) => void
+	onchange?: (payload: FuzzyPayload) => void
 }
 
 export type InputProps = UiBlockProps & ValidationProps & InputCommonProps

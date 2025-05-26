@@ -14,7 +14,7 @@ export type ToggleMachine = {
 }
 
 /**
- * This component contains a button that will Toggle between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
+ * This component contains a button that will Toggle between two states. Each state has its own text and optional asset and style according to its active / inactive state
  */
 export type ToggleProps = UiBlockProps & {
 	/**
@@ -28,7 +28,7 @@ export type ToggleProps = UiBlockProps & {
 	type?: ButtonType
 	children?: Snippet
 	text?: string
-	initial?: string
+	initial?: UiState // Initial state of the button
 	value?: string | number
 	states?: FuzzyMachine
 	onclick?: (payload: FuzzyPayload) => void

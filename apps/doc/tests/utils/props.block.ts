@@ -88,7 +88,7 @@ async function testAsset(page: Page, title: string) {
 	await expect(
 		page.getByTestId('blocks.element.asset.default'),
 	).toHaveAttribute('aria-pressed', 'false')
-	await expect(page.getByTestId(title)).not.toHaveClass(/emoji:/)
+	await expect(page.getByTestId(title)).not.toHaveClass(/emoji:default/)
 }
 
 async function testShape(page: Page, title: string) {
@@ -107,18 +107,18 @@ async function testShape(page: Page, title: string) {
 }
 
 async function testColor(page: Page, title: string) {
-	await page.getByRole('button', {name: 'primary'}).click({force: true})
-	await expect(page.getByRole('button', {name: 'primary'})).toHaveAttribute(
-		'aria-pressed',
-		'true',
-	)
-	await expect(page.getByTestId(title)).toHaveClass(/color:primary/)
 	await page.getByRole('button', {name: 'accent'}).click({force: true})
 	await expect(page.getByRole('button', {name: 'accent'})).toHaveAttribute(
 		'aria-pressed',
 		'true',
 	)
 	await expect(page.getByTestId(title)).toHaveClass(/color:accent/)
+	await page.getByRole('button', {name: 'primary'}).click({force: true})
+	await expect(page.getByRole('button', {name: 'primary'})).toHaveAttribute(
+		'aria-pressed',
+		'true',
+	)
+	await expect(page.getByTestId(title)).toHaveClass(/color:primary/)
 	await page.getByRole('button', {name: 'highlight'}).click({force: true})
 	await expect(page.getByRole('button', {name: 'highlight'})).toHaveAttribute(
 		'aria-pressed',

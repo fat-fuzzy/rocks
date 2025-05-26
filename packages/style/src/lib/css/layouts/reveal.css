@@ -1,15 +1,14 @@
 [class^='l:reveal'] {
+	--x-axis: 0;
 	--y-axis: 0;
 	--x-size: 100%;
-	--x-axis: 0;
 	--y-size: fit-content;
 
 	display: flex;
 	flex-direction: column;
 	inline-size: var(--x-size);
 	block-size: var(--y-size);
-	max-inline-size: calc(100% - var(--outline-offset-xs));
-	margin: var(--outline-offset-xs);
+	inline-size: 100%;
 	color: var(--ink);
 	z-index: var(--layout-z-index-layer);
 	transition: inline-size 250ms ease-in-out;
@@ -21,6 +20,12 @@
 	}
 }
 
+[class^='l:reveal'] > form > [aria-expanded] {
+	font-family: var(--font-family-heading);
+	font-weight: var(--font-weight-ui);
+	padding: var(--ui-size-sm) var(--ui-size);
+}
+
 ff-reveal {
 	/* transition: transform 250ms ease-in-out; */
 	--lightness-scrollbar: var(--lightness-base);
@@ -28,14 +33,18 @@ ff-reveal {
 	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
 	--thumb: var(--ink);
 
-	top: var(--y-axis);
 	block-size: var(--y-size);
 	max-block-size: var(--y-size);
 	scrollbar-color: var(--thumb) var(--track);
+	background-color: var(--shade, inherit);
+	border-radius: var(--border-radius-lg);
 }
 
-.form\:collapsed + ff-reveal,
-.collapsed > ff-reveal {
+ff-reveal {
+	margin-block-start: var(--outline-offset-lg);
+}
+
+ff-reveal.collapsed {
 	--x-size: 0;
 	--y-size: 0;
 
@@ -53,4 +62,10 @@ ff-reveal {
 
 [class^='l:reveal'][class^='bp:'].l\:stack:only-child {
 	inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
+}
+
+@media screen and (min-width: 1024px) {
+	ff-reveal.collapsed {
+		margin-block-start: var(--outline-offset-lg);
+	}
 }

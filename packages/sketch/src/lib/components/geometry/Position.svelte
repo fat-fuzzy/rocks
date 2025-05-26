@@ -39,7 +39,7 @@
 	}
 </script>
 
-<div class="l:switcher:xs">
+<div class="l:switcher:xs th:2xs">
 	<InputRange
 		bind:value={coordX}
 		id={`${id}-x`}

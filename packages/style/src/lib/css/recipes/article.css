@@ -1,5 +1,5 @@
 article.box > header {
-	border-bottom: var(--border-width) solid var(--ink);
+	border-bottom: var(--border-width-md) solid var(--ink);
 }
 [class*='l:grid'] > .box:hover {
 	--lightness-contrast: var(--color-lightness-300);

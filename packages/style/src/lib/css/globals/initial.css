@@ -27,18 +27,20 @@ body {
 	font-size: var(--font-size-body);
 	font-weight: var(--font-weight-body);
 	line-height: var(--font-leading-body);
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--track);
 }
 
 main {
 	background-color: var(--shade);
-	min-height: calc(100vh - var(--ui-header-height));
+	min-block-size: calc(100vh - var(--ui-header-height));
 }
 
 a {
 	color: var(--color-ink-nav, var(--ink));
 	font-size: var(--font-size-ui);
 	font-family: var(--font-family-ui);
-	line-height: 1;
+	line-height: var(--font-leading-body);
 	font-weight: var(--font-weight-link);
 }
 
@@ -57,7 +59,7 @@ a:hover {
 	--hue: var(--color-theme-primary);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 	outline-offset: var(--ui-size-sm);
-	outline: var(--outline-width) dotted var(--accent); /* TODO: improve color */
+	outline: var(--border-width-md) dotted var(--accent); /* TODO: improve color */
 }
 
 :where(
@@ -71,13 +73,13 @@ a:hover {
 	--hue: var(--color-theme-primary);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 	outline-offset: var(--ui-size-sm);
-	outline: var(--outline-width) dotted var(--accent); /* TODO: improve color */
+	outline: var(--border-width-md) dotted var(--accent); /* TODO: improve color */
 }
 
 :where(a, button, input, select, textarea, details):not([disabled]):focus {
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 	outline-offset: var(--outline-offset-xs);
-	outline: var(--outline-width) solid var(--accent); /* TODO: improve color */
+	outline: var(--border-width-md) solid var(--accent); /* TODO: improve color */
 }
 
 /* Inherit fonts for inputs and buttons */

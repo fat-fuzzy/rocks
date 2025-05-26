@@ -2,17 +2,23 @@
 	"border": {
 		"$type": "dimension",
 		"radius": {
-			"nul": {
+			"null": {
 				"$value": "0"
 			},
-			"base": {
+			"sm": {
 				"$value": "0.16rem"
+			},
+			"md": {
+				"$value": "0.26rem"
 			},
 			"lg": {
 				"$value": " 0.34rem"
 			},
 			"xl": {
 				"$value": "0.66rem"
+			},
+			"base": {
+				"$value": "{border.radius.md}"
 			}
 		},
 		"width": {
@@ -42,9 +48,6 @@
 			"lg": {
 				"$value": "3px"
 			}
-		},
-		"width": {
-			"$value": "1px"
 		}
 	}
 }

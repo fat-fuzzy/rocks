@@ -12,7 +12,6 @@
 		background,
 		container,
 		path,
-		breadcrumbTabs,
 	}: BreadcrumbsProps = $props()
 
 	let items: {slug: string; title: string; path: string}[] = $derived.by(() => {
@@ -45,35 +44,33 @@
 	)
 </script>
 
-<nav {id} class={`breadcrumbs w:full ${navClasses}`}>
-	<ul {id} class={`l:flex size:${size} align:center unstyled`} data-testid={id}>
-		{#each items as item, i}
-			{@const font = items.length - 1 ? '' : 'font:sm'}
-			<li
-				aria-current={path === item.slug ? 'page' : undefined}
-				class={`l:flex nowrap align:center`}
-			>
-				<a
-					data-sveltekit-preload-data
-					href={item.path}
-					class={`l:flex card:2xs align:center ${font}`}
-				>
-					{#if i === items.length - 1}
-						<svelte:element
-							this={`h${level}`}
-							id={title}
-							class="l:flex align:center"
+<div class={`breadcrumbs l:stack:${size} w:full`}>
+	<svelte:element this={`h${level}`} id={title} class="l:flex align:center">
+		{title}
+	</svelte:element>
+	<nav {id} class={navClasses}>
+		<ol
+			{id}
+			class={`l:flex size:${size} align:center unstyled`}
+			data-testid={id}
+		>
+			{#each items as item, i}
+				{@const font = i === items.length - 1 ? '' : 'font:xs'}
+				{#if i < items.length - 1}
+					<li
+						aria-current={path === item.slug ? 'page' : undefined}
+						class={`l:flex nowrap align:center`}
+					>
+						<a
+							data-sveltekit-preload-data
+							href={item.path}
+							class={`l:flex align:center ${font}`}
 						>
 							{item.title}
-						</svelte:element>
-					{:else}
-						{item.title}
-					{/if}
-				</a>
-			</li>
-		{/each}
-	</ul>
-	{#if breadcrumbTabs}
-		{@render breadcrumbTabs()}
-	{/if}
-</nav>
+						</a>
+					</li>
+				{/if}
+			{/each}
+		</ol>
+	</nav>
+</div>

@@ -1,22 +1,37 @@
-.scroll\:y {
+/* Scroll container */
+[class*='scroll:'] {
 	--lightness-scrollbar: var(--lightness-base);
 	--chroma-scrollbar: var(--chroma-base);
 	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
 	--thumb: var(--ink);
-	overflow: hidden auto;
-	block-size: 100%;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
 }
 
-.scroll\:x {
-	--lightness-scrollbar: var(--lightness-base);
-	--chroma-scrollbar: var(--chroma-base);
-	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
-	--thumb: var(--ink);
-	overflow: auto hidden;
-	block-size: 100%;
-	scrollbar-color: var(--thumb) var(--track);
+.scroll\:y {
+	--size-y: 100%;
+	overflow: hidden auto;
+	block-size: var(--size-y);
 }
+
+.scroll\:x {
+	--size-x: 100%;
+	overflow: auto hidden;
+	inline-size: var(--size-x);
+}
+
+.scroll\:y.snap {
+	scroll-snap-type: y;
+}
+
+.scroll\:x.snap {
+	scroll-snap-type: x;
+}
+
+/* .scrollbar\:hide-y {
+	width: calc(100% + 100px);
+} */
 
 .snap\:start {
 	scroll-snap-align: start;
@@ -30,21 +45,17 @@
 	scroll-padding-block: var(--ui-size);
 }
 
-.scroll\:y.snap {
-	scroll-snap-type: y mandatory;
+/* Scroll content */
+.snap\:start {
+	scroll-snap-align: start;
+	scroll-snap-stop: normal;
+	scroll-padding-block-start: var(--ui-size);
 }
 
-.scroll\:x.snap {
-	scroll-snap-type: x mandatory;
-}
-
-.noscrollbar {
-	scrollbar-width: none;
-
-	&::-webkit-scrollbar {
-		width: 0;
-		height: 0;
-	}
+.snap\:center {
+	scroll-snap-align: center;
+	scroll-snap-stop: normal;
+	scroll-padding-block: var(--ui-size);
 }
 
 @media (prefers-reduced-motion: no-preference) {

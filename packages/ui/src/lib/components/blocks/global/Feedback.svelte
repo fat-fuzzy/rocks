@@ -4,6 +4,7 @@
 	import styleHelper from '$lib/utils/styles.js'
 
 	let {
+		id = 'Feedback',
 		asset = 'default',
 		justify = 'start',
 		align,
@@ -11,14 +12,16 @@
 		context,
 		status,
 		size,
+		font,
 		variant,
+		layer,
 		container,
 		children,
 	}: FeedbackProps = $props()
 
 	let feedbackClasses = $derived(
 		styleHelper.getFeedbackStyles(
-			{size, asset, variant, align, justify, container},
+			{size, font, asset, variant, layer, align, justify, container},
 			status as UiStatus,
 			context as UiTextContext,
 		),
@@ -26,14 +29,19 @@
 	let ariaLive: AriaLive = $derived(
 		context === 'form' ? AriaLiveEnum.polite : undefined,
 	)
+	let testId = $derived(id === 'Feedback' ? id : `Feedback-${id}`)
 </script>
 
 {#if context === 'code'}
 	<pre
 		class={feedbackClasses}
-		data-testid="Feedback">{#if children}{@render children()}{:else if text}{text}{/if}</pre>
+		data-testid={testId}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
-	<div class={feedbackClasses} data-testid="Feedback" aria-live={ariaLive}>
+	<ff-feedback
+		class={feedbackClasses}
+		data-testid={testId}
+		aria-live={ariaLive}
+	>
 		{#if context === 'prose' && status !== 'default'}
 			<p class="status">{status}</p>
 		{/if}
@@ -44,5 +52,5 @@
 				<p>{text}</p>
 			{/if}
 		</div>
-	</div>
+	</ff-feedback>
 {/if}

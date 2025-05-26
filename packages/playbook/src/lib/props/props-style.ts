@@ -43,12 +43,17 @@ const contrast = {
 const container = {
 	initial: 'taco',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex grow ',
 	size: '2xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
-		{id: 'container.taco', label: 'taco', value: 'taco'},
-		{id: 'container.burrito', label: 'burrito', value: 'burrito'},
+		{id: 'container.taco', label: 'taco', value: 'taco', asset: 'taco'},
+		{
+			id: 'container.burrito',
+			label: 'burrito',
+			value: 'burrito',
+			asset: 'burrito',
+		},
 	],
 }
 
@@ -57,7 +62,7 @@ const size = {
 	input: 'range',
 	layout: 'stack',
 	size: 'xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
 		{id: 'size.xs', label: 'xs', value: 'xs'},
 		{id: 'size.sm', label: 'sm', value: 'sm'},
@@ -70,9 +75,9 @@ const size = {
 const layout = {
 	initial: 'switcher',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex grow ',
 	size: '2xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
 		{id: 'layout.stack', label: 'stack', value: 'stack'},
 		{
@@ -88,13 +93,13 @@ const threshold = {
 	input: 'range',
 	layout: 'stack',
 	size: 'xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
-		{id: 'threshold.xs', label: 'xs', value: 'xs'},
-		{id: 'threshold.sm', label: 'sm', value: 'sm'},
-		{id: 'threshold.md', label: 'md', value: 'md'},
-		{id: 'threshold.lg', label: 'lg', value: 'lg'},
-		{id: 'threshold.xl', label: 'xl', value: 'xl'},
+		{id: 'threshold.xs', label: 'xs', value: 'xs', parent: 'layout.switcher'},
+		{id: 'threshold.sm', label: 'sm', value: 'sm', parent: 'layout.switcher'},
+		{id: 'threshold.md', label: 'md', value: 'md', parent: 'layout.switcher'},
+		{id: 'threshold.lg', label: 'lg', value: 'lg', parent: 'layout.switcher'},
+		{id: 'threshold.xl', label: 'xl', value: 'xl', parent: 'layout.switcher'},
 	],
 }
 
@@ -103,7 +108,7 @@ const breakpoint = {
 	input: 'range',
 	layout: 'stack',
 	size: 'xs',
-	container: 'card',
+	container: 'ravioli',
 	items: [
 		{id: 'breakpoint.xs', label: 'xs', value: 'xs'},
 		{id: 'breakpoint.sm', label: 'sm', value: 'sm'},
@@ -114,7 +119,7 @@ const breakpoint = {
 }
 
 const color = {
-	initial: '',
+	initial: 'primary',
 	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
@@ -161,7 +166,7 @@ const variant = {
 }
 
 const shape = {
-	initial: '',
+	initial: 'none',
 	input: 'toggle',
 	layout: 'flex',
 	size: '2xs',
@@ -179,6 +184,12 @@ const shape = {
 			value: 'square',
 			shape: 'square',
 			asset: 'square',
+		},
+		{
+			id: 'shape.none',
+			label: 'none',
+			value: '',
+			shape: '',
 		},
 	],
 }
@@ -213,7 +224,9 @@ const status = {
 	initial: 'default',
 	input: 'radio',
 	layout: 'stack',
-	variant: 'bare',
+	variant: 'outline',
+	container: 'ravioli',
+	size: '3xs',
 	items: [
 		{
 			id: 'status.default',
@@ -249,10 +262,12 @@ const status = {
 }
 
 const context = {
-	initial: 'form',
+	initial: 'prose',
 	input: 'radio',
 	layout: 'stack',
-	variant: 'bare',
+	variant: 'outline',
+	container: 'ravioli',
+	size: '3xs',
 	items: [
 		{id: 'context.prose', label: 'prose', value: 'prose'},
 		{id: 'context.code', label: 'code', value: 'code'},
@@ -298,9 +313,10 @@ const asset = {
 }
 
 const spell = {
-	initial: 'card',
+	subgroup: 'spell',
+	initial: 'bleu',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'stack',
 	size: '2xs',
 	variant: 'bare',
 	items: [
@@ -310,10 +326,39 @@ const spell = {
 	],
 }
 
-const uno = {
-	initial: 'card',
+const level = {
+	subgroup: 'spell',
+	initial: 'paradiso',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'stack',
+	size: '2xs',
+	variant: 'bare',
+	items: [
+		{
+			id: 'level.inferno',
+			label: 'inferno',
+			value: 'inferno',
+			parent: 'spell.dante',
+		},
+		{
+			id: 'level.purgatorio',
+			label: 'purgatorio',
+			value: 'purgatorio',
+			parent: 'spell.dante',
+		},
+		{
+			id: 'level.paradiso',
+			label: 'paradiso',
+			value: '',
+		},
+	],
+}
+
+const uno = {
+	subgroup: 'genie',
+	initial: 'magic',
+	input: 'toggle',
+	layout: 'flex grow',
 	size: '2xs',
 	variant: 'bare',
 	items: [
@@ -366,9 +411,10 @@ const uno = {
 }
 
 const due = {
-	initial: 'card',
+	subgroup: 'genie',
+	initial: 'sparkles',
 	input: 'toggle',
-	layout: 'switcher',
+	layout: 'flex grow',
 	size: '2xs',
 	variant: 'bare',
 	items: [
@@ -420,22 +466,6 @@ const due = {
 	],
 }
 
-const level = {
-	initial: 'card',
-	input: 'toggle',
-	layout: 'switcher',
-	size: '2xs',
-	variant: 'bare',
-	items: [
-		{
-			id: 'level.purgatorio',
-			label: 'purgatorio',
-			value: 'purgatorio',
-		},
-		{id: 'level.inferno', label: 'inferno', value: 'inferno'},
-	],
-}
-
 // TODO: Fix asset - SVG / emoji
 // const asset = {
 // 	emoji,
@@ -443,28 +473,33 @@ const level = {
 // }
 
 const content = {
-	initial: 'card',
+	initial: 'ravioli',
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'content.card', label: 'card', value: 'card'},
+		{id: 'content.ravioli', label: 'ravioli', value: 'ravioli'},
 		{id: 'content.form', label: 'form', value: 'form'},
 		{id: 'content.text', label: 'text', value: 'text'},
 	],
 }
 
 const side = {
-	initial: 'card',
+	initial: 'ravioli',
 	input: 'radio',
 	layout: 'stack',
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'side.card', label: 'card', value: 'card'},
-		{id: 'side.form', label: 'form', value: 'form'},
-		{id: 'side.text', label: 'text', value: 'text'},
+		{
+			id: 'side.ravioli',
+			label: 'ravioli',
+			value: 'ravioli',
+			parent: 'layout.sidebar',
+		},
+		{id: 'side.form', label: 'form', value: 'form', parent: 'layout.sidebar'},
+		{id: 'side.text', label: 'text', value: 'text', parent: 'layout.sidebar'},
 	],
 }
 
@@ -475,9 +510,14 @@ const main = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'main.card', label: 'card', value: 'card'},
-		{id: 'main.form', label: 'form', value: 'form'},
-		{id: 'main.text', label: 'text', value: 'text'},
+		{
+			id: 'main.ravioli',
+			label: 'ravioli',
+			value: 'ravioli',
+			parent: 'layout.sidebar',
+		},
+		{id: 'main.form', label: 'form', value: 'form', parent: 'layout.sidebar'},
+		{id: 'main.text', label: 'text', value: 'text', parent: 'layout.sidebar'},
 	],
 }
 
@@ -489,8 +529,8 @@ const settingsFamily = {
 }
 
 const elementFamily = {
-	layout: 'switcher',
-	size: 'xs',
+	layout: 'flex',
+	size: '2xs',
 	props: [
 		'color',
 		'variant',
@@ -507,24 +547,24 @@ const elementFamily = {
 }
 
 const containerFamily = {
-	layout: 'switcher',
-	size: 'xs',
-	container: 'card',
+	layout: 'flex',
+	size: '2xs',
+	container: 'ravioli',
 	variant: 'bare',
 	props: ['container', 'size'],
 }
 
 const layoutFamily = {
-	layout: 'switcher',
-	size: 'xs',
-	container: 'card',
+	layout: 'flex',
+	size: '2xs',
+	container: 'ravioli',
 	variant: 'bare',
 	props: ['size', 'layout', 'threshold', 'breakpoint'],
 }
 
 const contentFamily = {
-	layout: 'switcher',
-	size: 'xs',
+	layout: 'flex',
+	size: '2xs',
 	props: ['content', 'side', 'main'],
 }
 
@@ -600,6 +640,7 @@ function getInputGroup(name: string, category: string, family: string) {
 		size: PROPS_STYLE[slug].size,
 		mode: PROPS_STYLE[slug].mode,
 		variant: PROPS_STYLE[slug].variant,
+		container: PROPS_STYLE[slug].container,
 		items: PROPS_STYLE[slug].items.map((item) => {
 			return {...item, id: `${category}.${family}.${item.id}`}
 		}),

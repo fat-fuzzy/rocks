@@ -13,6 +13,8 @@ import {
 	PlayerState,
 	PlayerAction,
 } from '$types'
+import type {Snippet} from 'svelte'
+import type {UiRevealState} from '../../../../../ui/dist/types/ui.js' // TODO: fix this import
 
 export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
 
@@ -55,9 +57,7 @@ export type SketchTransitionsType = {
 
 export type SketchProps = {
 	scene: Scene
-	title: string
-	asset: string
-	dimensions: string
+	meta: SceneMeta
 	layer?: string // if 'layer' the canvas will appear on a layer (with drop shadow)
 	color?: string
 	size?: string
@@ -66,4 +66,6 @@ export type SketchProps = {
 	layout?: string
 	breakpoint?: string
 	dev?: boolean
+	mainFooter?: Snippet
+	context?: UiRevealState
 }

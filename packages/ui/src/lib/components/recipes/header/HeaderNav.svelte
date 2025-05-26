@@ -1,12 +1,15 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
-	import Reveal from '$lib/components/layouts/Reveal.svelte'
+	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 
 	let {
 		id = 'ui-header-nav-app',
-		breakpoint = 'sm',
+		label,
+		breakpoint = 'xs',
 		size,
+		font,
 		variant,
+		background,
 		asset,
 		justify,
 		dismiss,
@@ -24,11 +27,13 @@
 <Reveal
 	{id}
 	name={id}
-	label=""
+	{label}
 	element="nav"
 	{title}
 	{size}
+	{font}
 	{variant}
+	{background}
 	{asset}
 	{justify}
 	{dismiss}
@@ -39,7 +44,9 @@
 	{actionPath}
 	{redirect}
 >
-	<ul class="l:switcher:sm unstyled color:primary">
+	<ul
+		class="header-nav l:flex size:md unstyled color:primary align:center justify:evenly w:full"
+	>
 		<li aria-current={path === '/' ? 'page' : undefined}>
 			<a data-sveltekit-preload-data href="/">Home</a>
 		</li>

@@ -1,4 +1,17 @@
 import type {NavItem} from '$types'
+import ui from '@fat-fuzzy/ui'
+
+// TODO: move to utils / clean
+function sortAsc(a, b) {
+	return a < b ? -1 : b < a ? 1 : 0
+}
+const tokenNames = Object.keys(ui.tokens).sort(sortAsc)
+const blockNames = Object.keys(ui.blocks).sort(sortAsc)
+const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
+const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
+const rawNames = Object.keys(ui.raw).sort(sortAsc)
+
+const {DEFAULT_SIDEBAR_REVEAL_STATE} = ui.constants
 
 export const links = [
 	{slug: 'doc', title: 'Doc', layout: 'sidebar'},
@@ -9,13 +22,12 @@ export const links = [
 
 const navBase = {
 	id: 'sidebar',
-	title: 'Content',
-	reveal: 'collapsed',
+	label: 'content',
+	reveal: DEFAULT_SIDEBAR_REVEAL_STATE.reveal,
 	breakpoint: 'sm',
 	size: 'sm',
-	color: 'primary:600',
-	position: 'fixed',
-	place: 'left',
+	variant: 'outline',
+	color: 'primary',
 	formaction: 'toggleSidebar',
 	actionPath: '/',
 	items: [] as NavItem[],
@@ -24,12 +36,17 @@ const navBase = {
 export const pages: {[key: string]: NavItem} = {
 	blog: {
 		slug: 'blog',
-		title: 'Blog',
+		title: 'Posts',
+		asset: 'pencil',
+		layout: 'metro',
 		items: [],
 	},
 	doc: {
 		slug: 'doc',
 		title: 'Doc',
+		label: 'Doc',
+		asset: 'pencil',
+		layout: 'voyager',
 		items: [
 			{
 				slug: 'usage',
@@ -49,7 +66,9 @@ export const pages: {[key: string]: NavItem} = {
 	},
 	play: {
 		slug: 'play',
-		title: 'Play',
+		title: 'Sketches',
+		asset: 'rainbow',
+		layout: 'metro',
 		items: [
 			{
 				slug: 'projects',
@@ -69,12 +88,16 @@ export const pages: {[key: string]: NavItem} = {
 	},
 	ui: {
 		slug: 'ui', // root path of the Playbook
-		title: 'Library',
+		title: 'UI Library',
+		asset: 'playbook',
+		label: 'UI',
+		layout: 'voyager',
 		items: [
 			{
 				slug: 'tokens',
 				title: 'Tokens',
 				asset: 'tokens',
+				layout: 'tram',
 				formaction: 'toggleTokens',
 				items: [],
 			},
@@ -82,6 +105,7 @@ export const pages: {[key: string]: NavItem} = {
 				slug: 'blocks',
 				title: 'Blocks',
 				asset: 'blocks',
+				layout: 'tram',
 				formaction: 'toggleBlocks',
 				items: [],
 			},
@@ -89,6 +113,7 @@ export const pages: {[key: string]: NavItem} = {
 				slug: 'layouts',
 				title: 'Layouts',
 				asset: 'layouts',
+				layout: 'tram',
 				formaction: 'toggleLayouts',
 				items: [],
 			},
@@ -96,7 +121,16 @@ export const pages: {[key: string]: NavItem} = {
 				slug: 'recipes',
 				title: 'Recipes',
 				asset: 'recipes',
+				layout: 'tram',
 				formaction: 'toggleRecipes',
+				items: [],
+			},
+			{
+				slug: 'raw',
+				title: 'Raw',
+				asset: 'raw',
+				layout: 'tram',
+				formaction: 'toggleRaw',
 				items: [],
 			},
 		],
@@ -104,8 +138,41 @@ export const pages: {[key: string]: NavItem} = {
 }
 
 export function buildNav(page: string) {
-	let nav = {...navBase}
+	let nav = {...navBase, ...pages[page]}
+	nav.label = pages[page].label ?? page
 	nav.items = [pages[page]]
+
+	if (page === 'ui') {
+		nav.items[0].items = (nav.items[0].items ?? []).map((item) => {
+			if (item.slug === 'tokens') {
+				item.items = tokenNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			} else if (item.slug === 'blocks') {
+				item.items = blockNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			} else if (item.slug === 'layouts') {
+				item.items = layoutNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			} else if (item.slug === 'recipes') {
+				item.items = recipeNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			} else if (item.slug === 'raw') {
+				item.items = rawNames.map((c) => ({
+					slug: c,
+					title: c,
+				}))
+			}
+			return item
+		})
+	}
 
 	return nav
 }

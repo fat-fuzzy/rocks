@@ -15,5 +15,6 @@ dist
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+tests/e2e/test-results
 
 

@@ -14,7 +14,7 @@
 	let {children}: Props = $props()
 
 	let sketches = $state(page.data.sketches)
-	let appSettings = $derived(sketchStore.app)
+	let appContext = $derived(sketchStore.app)
 
 	let path = ''
 
@@ -24,6 +24,7 @@
 		id: 'nav-sketches',
 		items: sketches,
 		reveal: 'expanded',
+		background: 'inherit',
 		breakpoint: 'sm',
 		size: 'sm',
 		color: 'primary',
@@ -33,7 +34,7 @@
 	}
 </script>
 
-<LayoutSidebar {nav} app={{settings: appSettings}}>
+<LayoutSidebar {nav} app={{settings: appContext}}>
 	{#if children}
 		{@render children()}
 	{/if}

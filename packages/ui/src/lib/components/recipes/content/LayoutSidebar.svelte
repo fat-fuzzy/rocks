@@ -5,11 +5,12 @@
 	import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 	type Props = {
+		size?: string
 		nav: RevealNavProps
 		app?: {settings: {[key: string]: string}}
 		children: Snippet
 	}
-	let {nav, app, children}: Props = $props()
+	let {size = 'md', nav, app, children}: Props = $props()
 
 	let brightness = $derived(app?.settings?.brightness)
 	let contrast = $derived(app?.settings?.contrast)
@@ -18,7 +19,7 @@
 	)
 </script>
 
-<div class={`l:sidebar:lg align-content:start ${settingsClass}`}>
+<div class={`l:sidebar size:${size} align-content:start ${settingsClass}`}>
 	{#if nav}
 		<div class={`l:side reveal-nav ${nav.reveal}`}>
 			<RevealNav

@@ -12,6 +12,7 @@ button {
 
 	color: var(--ink);
 	background-color: var(--shade);
+	border-color: var(--accent);
 	display: flex;
 	align-items: center;
 	justify-content: var(--justify, center);
@@ -57,14 +58,18 @@ button.variant\:bare {
 }
 
 button.variant\:outline:hover {
-	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-400);
+	--lightness: var(--lightness-base);
+	--contrast: var(--contrast-base);
+	--lightness-contrast: var(--contrast-base);
+	--chroma-contrast: var(--chroma-contrast-base);
 	background-color: var(--shade);
 }
 
 button.variant\:bare:hover {
-	--lightness: var(--color-lightness-000);
-	--lightness-contrast: var(--color-lightness-400);
+	--lightness: var(--lightness-base);
+	--contrast: var(--contrast-base);
+	--lightness-contrast: var(--lightness-contrast-base);
+	--chroma-contrast: var(--chroma-contrast-base);
 	background-color: var(--shade);
 }
 
@@ -97,7 +102,7 @@ button.variant\:bare:active {
 	}
 }
 
-button[class*='bg:']:not([class*=':neutral'], :focus) {
+button[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:fill {
 		--chroma: var(--color-chroma-400);
 		--chroma-contrast: var(--color-chroma-000);
@@ -105,32 +110,26 @@ button[class*='bg:']:not([class*=':neutral'], :focus) {
 
 	&.variant\:outline {
 		--chroma: var(--color-chroma-600);
-		--chroma-contrast: var(--color-chroma-300);
 	}
 
 	&.variant\:bare {
 		--chroma: var(--color-chroma-100);
-		--chroma-contrast: var(--color-chroma-400);
 	}
 
 	&.variant\:outline:hover {
-		--chroma: var(--color-chroma-100);
-		--chroma-contrast: var(--color-chroma-400);
+		--chroma-contrast: var(--color-chroma-100);
 	}
 
 	&.variant\:bare:hover {
-		--chroma: var(--color-chroma-000);
-		--chroma-contrast: var(--color-chroma-400);
+		--chroma-contrast: var(--color-chroma-000);
 	}
 
 	&.variant\:outline:active {
 		--chroma: var(--color-chroma-200);
-		--chroma-contrast: var(--color-chroma-500);
 	}
 
 	&.variant\:bare:active {
 		--chroma: var(--color-chroma-100);
-		--chroma-contrast: var(--color-chroma-500);
 	}
 }
 

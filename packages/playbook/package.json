@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/playbook",
 	"name": "@fat-fuzzy/playbook",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"description": "A UI library explorer and demo",
 	"author": "Patricia Boh",
 	"license": "MIT",
@@ -15,6 +15,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:e2e": "./node_modules/@fat-fuzzy/config/node_modules/.bin/playwright test",
+		"test:report": "playwright show:report",
 		"test:unit": "vitest run"
 	},
 	"main": "./dist/index.js",

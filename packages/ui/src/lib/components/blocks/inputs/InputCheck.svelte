@@ -10,7 +10,6 @@
 		label = 'Checkbox input',
 		checked,
 		disabled,
-		value,
 		required,
 		status = UiStatus.default,
 		hint,
@@ -21,6 +20,7 @@
 		justify,
 		color,
 		size,
+		font,
 		variant,
 		background,
 		container,
@@ -28,14 +28,14 @@
 		oninput,
 	}: InputProps = $props()
 
-	function handleInput(event) {
-		if (oninput) oninput(payload)
+	function handleInput(event: Event) {
+		if (oninput) oninput(event)
 	}
 
 	let classes = $derived(
 		styleHelper.getStyles({
 			color,
-			font: size,
+			font,
 			size,
 			align,
 			justify,
@@ -46,29 +46,30 @@
 			background: background ? background : 'inherit',
 		}),
 	)
-
-	let payload = $derived({
-		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
-		name,
-		value,
-	})
 </script>
 
-<label for={id} class={classes} data-testid={id}>
+<label for={id} class={`ravioli:${size} ${classes} nowrap`} data-testid={id}>
 	<span>{label}</span>
 	<input
 		{id}
-		type="checkbox"
-		{value}
 		{name}
-		{checked}
+		type="checkbox"
+		bind:checked
 		{required}
 		oninput={handleInput}
 		{disabled}
 	/>
 </label>
 {#if hint}
-	<Feedback {status} context={UiTextContext.form} {size} {variant}>
+	<Feedback
+		{id}
+		{asset}
+		{status}
+		context={UiTextContext.form}
+		{font}
+		{size}
+		{variant}
+	>
 		{hint}
 	</Feedback>
 {/if}

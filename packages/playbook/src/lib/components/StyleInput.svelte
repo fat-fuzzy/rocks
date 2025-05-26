@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {StylesApi} from '$lib/api/styles.api'
 	import type {IStyleInputGroup, IStyleFamily} from '$types'
 
-	import {onMount, getContext} from 'svelte'
+	import {getContext} from 'svelte'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
 
-	import PlaybookStore from '$lib/api/store.svelte'
+	import StylesApi from '$lib/api/styles.svelte'
+	import {PlaybookActor} from '$lib/api/actor.svelte'
 
 	const {InputRange} = fatFuzzyUi.blocks
 	const {InputGroup} = fatFuzzyUi.drafts
@@ -24,23 +24,29 @@
 		}) => void
 	}
 
-	let {
-		styleInput,
-		family,
-		categoryName,
-		familyName,
-		formaction,
-		onupdate,
-	}: Props = $props()
-
-	const playbookContext: StylesApi = getContext('playbookContext')
-	const playbookStore: typeof PlaybookStore = getContext('playbookStore')
-	let styles = $derived(playbookStore.styles)
+	let {styleInput, family, familyName, formaction, onupdate}: Props = $props()
 
 	let apiSize = '2xs'
+	let apiFont = 'xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
 	let apiJustify = 'stretch'
+
+	let {id, input, name, value, assetType, items} = $derived(styleInput)
+	let currentValue = $derived(value)
+
+	let updatedItems = $derived(
+		items.map((i) => {
+			return {
+				...i,
+				text: i.text ?? '',
+				asset: i.asset ?? '',
+				initial: i.value === currentValue ? 'active' : 'inactive',
+				name: i.id,
+				id: i.id,
+			}
+		}),
+	)
 
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
 		radio: InputGroup,
@@ -49,9 +55,9 @@
 		toggle: ToggleMenu,
 	}
 
-	function handleInput(event, name: string) {
+	function handleInput(event) {
 		const payload = {
-			name,
+			name: familyName.toLowerCase(),
 			items: [
 				{
 					id: event.id,
@@ -63,7 +69,13 @@
 		onupdate(payload)
 	}
 
-	function handleSelect(event, familyName: string, name: string, id: string) {
+	function handleSelect(
+		event: Event,
+		familyName: string,
+		name: string,
+		id: string,
+	) {
+		let target = event.target as HTMLInputElement
 		// TODO: reject input if it's not in values list -> form validation /!\
 		const payload = {
 			name: familyName.toLowerCase(),
@@ -71,7 +83,7 @@
 				{
 					id,
 					name: name.toLowerCase(),
-					value: event.value,
+					value: target.value,
 				},
 			],
 		}
@@ -81,20 +93,15 @@
 	function handleToggle(
 		selected: {
 			name: string
-			value: string | number
+			value?: string | number
 			state: string
 		}[],
-		familyName: string,
-		id: string,
 	) {
-		let payload: {
-			id: string
-			name: string
-			items: {id: string; name: string; value: string}[]
-		} = {
+		let items: {id: string; name: string; value: string}[] = []
+		let payload = {
 			id,
 			name: familyName.toLowerCase(),
-			items: [],
+			items,
 		}
 		if (selected.length) {
 			payload.items = selected.map((item) => {
@@ -105,13 +112,12 @@
 				}
 			})
 		} else {
-			payload.items = [
-				{
-					id,
-					name: id,
-					value: '',
-				},
-			]
+			let singleton = {
+				id,
+				name: id,
+				value: '',
+			}
+			payload.items = [singleton]
 		}
 		onupdate(payload)
 	}
@@ -127,32 +133,6 @@
 			.querySelector(`[data-key="${event.key}" i]`)
 			?.dispatchEvent(new MouseEvent('click', {cancelable: true}))
 	}
-
-	onMount(() => {
-		// Set the initial styles
-		playbookContext.applyStyles(playbookStore.styles)
-	})
-
-	let {id, input, name, value, assetType, items} = $derived(styleInput)
-	let currentValue = $derived(
-		styles[categoryName] &&
-			styles[categoryName].families[familyName] &&
-			styles[categoryName].families[familyName][name]
-			? styles[categoryName].families[familyName][name]
-			: value,
-	)
-	let updatedItems = $derived(
-		items.map((i) => {
-			return {
-				...i,
-				text: i.text ?? '',
-				asset: i.asset ?? '',
-				initial: i.value === currentValue ? 'active' : 'inactive',
-				name: i.id,
-				id: i.id,
-			}
-		}),
-	)
 </script>
 
 <svelte:window on:keydown={keydown} />
@@ -160,7 +140,6 @@
 {#if input === 'toggle'}
 	<Fieldset
 		id={family.name}
-		legend={family.name}
 		layout={family.layout}
 		container={family.container}
 		size={family.size}
@@ -179,8 +158,8 @@
 			mode={styleInput.mode ?? 'radio'}
 			{assetType}
 			{formaction}
-			onupdate={(event) => handleToggle(event, familyName, styleInput.id)}
-			init={(event) => handleToggle(event, familyName, currentValue)}
+			onupdate={(event) => handleToggle(event)}
+			init={(event) => handleToggle(event)}
 		/>
 	</Fieldset>
 {:else}
@@ -193,20 +172,20 @@
 			type={input}
 			value={currentValue}
 			legend={name}
-			layout={styleInput.layout ?? ''}
+			layout={styleInput.layout ?? 'switcher'}
 			container={styleInput.container ?? ''}
 			threshold={apiSize}
-			size={family.size ?? apiSize}
+			size={styleInput.size ?? apiSize}
 			color={apiColor}
+			font={apiFont}
 			variant={styleInput.variant}
-			oninput={(event) => handleInput(event, familyName)}
+			oninput={(event) => handleInput(event)}
 		/>
 	{/if}
 	{#if input == 'range'}
 		{@const InputComponent = COMPONENT_IMPORTS[input]}
 		<Fieldset
 			id={family.name}
-			legend={family.name}
 			layout={family.layout}
 			container={family.container}
 			size={family.size ?? apiSize}
@@ -222,8 +201,9 @@
 				layout={styleInput.layout ?? ''}
 				size={apiSize}
 				color={apiColor}
+				font={apiFont}
 				variant={styleInput.variant}
-				oninput={(event) => handleInput(event, familyName)}
+				oninput={(event: Event) => handleInput(event)}
 			/>
 		</Fieldset>
 	{/if}
@@ -238,7 +218,7 @@
 				id={`choice-${styleInput.name}`}
 				name={id}
 				class={apiSize}
-				oninput={(event) =>
+				oninput={(event: Event) =>
 					handleSelect(event, familyName, styleInput.name, styleInput.id)}
 			/>
 			<datalist id={`datalist-${styleInput.name}`}>

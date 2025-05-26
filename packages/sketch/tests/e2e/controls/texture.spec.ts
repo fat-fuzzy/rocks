@@ -49,7 +49,7 @@ sketches.map((sketch) => {
 			.getByTestId('debug-table')
 			.getByTestId(`debug-actions-controls`)
 
-		await expect(previousEvent).toHaveText('load')
+		await expect(previousEvent).toHaveText('loadOk')
 		await expect(currentEvent).toHaveText('loadOk')
 		await expect(controlsState).toHaveText('hidden')
 		await expect(controlsActions).toBeEmpty()

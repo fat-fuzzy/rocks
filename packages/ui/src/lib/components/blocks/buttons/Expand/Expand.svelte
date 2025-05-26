@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {ExpandProps, FuzzyPayload} from '$types'
-	import {ButtonEvent} from '$types'
+	import {ButtonEvent, UiState} from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -66,6 +66,12 @@
 
 	onMount(() => {
 		if (init) init(payload)
+	})
+
+	$effect(() => {
+		let expandEvent =
+			initial === UiState.collapsed ? ButtonEvent.expand : ButtonEvent.collapse
+		actor.update(expandEvent)
 	})
 </script>
 

@@ -28,7 +28,7 @@ let meta = {
 	slug: 'projection',
 	title: 'Projection',
 	asset: 'projection',
-	categories: ['study'],
+	categories: ['Learning'],
 	tags: ['2D', 'webgl', 'webglfundamentals', 'matrix'],
 	controls: ['matrix-2d', 'loop'],
 }
@@ -45,10 +45,10 @@ function init(canvas) {
 	}
 }
 
-function main(canvas) {
+async function main(canvas) {
 	init(canvas)
 	clear()
-	programInfo = loadProgram(canvas)
+	programInfo = await Promise.resolve(loadProgram(canvas))
 	return programInfo.context
 }
 

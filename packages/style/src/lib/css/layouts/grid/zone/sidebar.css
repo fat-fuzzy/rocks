@@ -1,0 +1,118 @@
+/**
+ * ZONE 2
+ * Left Sidebar contains secondary navigation
+ */
+
+.exchange > .sidebar {
+	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
+	grid-area: sidebar;
+	grid-template-areas:
+		'gare-control'
+		'gare-depot';
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+	z-index: var(--layout-z-index-layer);
+}
+
+.exchange > .sidebar > .gare-control {
+	grid-area: gare-control;
+	grid-template-columns: subgrid;
+}
+
+.exchange > .sidebar > .gare-depot {
+	grid-area: gare-depot;
+	grid-template-columns: subgrid;
+	grid-row: span 2;
+}
+
+.exchange > .sidebar > .app-name ff-callout {
+	border-top: var(--border-width-md) dotted var(--shade);
+	border-radius: 0;
+}
+
+.exchange > .sidebar > .app-name,
+.exchange > .sidebar:has(.app-name),
+.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'],
+.exchange > .sidebar > .collapsed > [name='sidebar'],
+.exchange > .sidebar > .collapsed > [name='sidebar'] > [class*='l:switcher'] {
+	inline-size: 100%;
+	border-radius: var(--border-radius-null);
+	font-family: var(--font-family-heading);
+}
+
+@media screen and (min-width: 620px) {
+	.exchange.swap > .sidebar {
+		padding-inline-start: 0;
+	}
+
+	.exchange > .sidebar > .app-name,
+	.exchange > .sidebar:has(.app-name) {
+		inline-size: 100%;
+		max-inline-size: var(--sidebar-width);
+	}
+
+	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] {
+		gap: 0;
+	}
+
+	.exchange > .sidebar.width\:lg,
+	.exchange > .sidebar.width\:lg:is([open], .expanded) > ff-reveal,
+	.exchange > .sidebar.width\:xl,
+	.exchange > .sidebar.width\:xl:is([open], .expanded) > ff-reveal,
+	.exchange > .sidebar > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.exchange > .sidebar [class*='gare:'].width\:xl,
+	.exchange > .sidebar:is([open], .expanded) > ff-reveal {
+		--overlay-block-size: var(--overlay-height-sm);
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.exchange > .sidebar {
+		z-index: initial;
+	}
+	.exchange > .sidebar > .app-name,
+	.exchange > .sidebar > details {
+		grid-column: span 3;
+	}
+
+	.exchange > .sidebar > .app-name,
+	.exchange > .sidebar > nav,
+	.exchange > .sidebar > nav > form {
+		inline-size: 100%;
+		max-inline-size: var(--overlay-inline-size);
+		padding-inline-end: calc(var(--grid-gap) - var(--outline-offset-md));
+	}
+
+	.exchange > .sidebar > .app-name {
+		padding-inline-end: calc(var(--grid-gap) + var(--outline-offset-md));
+	}
+
+	.exchange > .sidebar:is([open], .expanded) > ff-reveal,
+	.exchange > .sidebar:is([open], .expanded) > ff-reveal {
+		--overlay-inline-size: calc(var(--sidebar-width) + 3 * var(--grid-gap));
+		left: calc(2 * var(--grid-gap));
+		right: unset;
+		grid-row-start: 1;
+	}
+
+	.exchange > .sidebar.width\:lg,
+	.exchange > .sidebar.width\:lg:is([open], .expanded) > ff-reveal,
+	.exchange > .sidebar > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
+		--overlay-block-size: var(--max-block-size);
+	}
+
+	.exchange > .sidebar.width\:full > ff-reveal {
+		--sidebar-lg: calc(
+			100vw - var(--sidebar-width) - 4 * var(--grid-gap) -
+				var(--outline-offset-lg)
+		);
+		--overlay-inline-size: var(--sidebar-lg);
+		--overlay-block-size: var(--overlay-height-sm);
+	}
+}

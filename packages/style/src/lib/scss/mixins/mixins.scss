@@ -74,18 +74,18 @@ $current_cssvars: ();
 	$width-max: calc(var(--fluid-max-width) / 16);
 	$size-min: calc(var(--fluid-min-size) / 16); // Min font size
 	$size-max: calc(var(--fluid-max-size) / 16); // Max font size
-	$width-neg: calc(-1 * $width-min); // Precalc
-	$fluid-width: calc($width-max - $width-min); // Precalc
-	$slope: calc(calc($size-max - $size-min) / calc($width-max - $width-min));
-	$y-axis: calc(calc(-1 * $width-min) * $slope + $size-min);
+	$width-neg: calc(-1 * #{$width-min}); // Precalc
+	$fluid-width: calc(#{$width-max} - #{$width-min}); // Precalc
+	$slope: calc(#{$size-max} - #{$size-min} / #{$width-max} - #{$width-min});
+	$y-axis: calc(calc(-1 * #{$width-min}) * #{$slope} + #{$size-min});
 
-	--f-slope: $slope;
-	--f-size-min-0: $size-max;
-	--f-size-max-0: $size-min;
+	--f-slope: #{$slope};
+	--f-size-min-0: #{$size-max};
+	--f-size-max-0: #{$size-min};
 	--fluid-0: clamp(
-		$size-min * 1rem,
-		$y-axis * 1rem + $slope * 100vw,
-		$size-max * 1rem
+		#{$size-min} * 1rem,
+		#{$y-axis} * 1rem + #{$slope} * 100vw,
+		#{$size-max} * 1rem
 	);
 
 	$previous-step: 0;
@@ -95,10 +95,10 @@ $current_cssvars: ();
 	$y-axis-step: $y-axis;
 
 	@each $step in $steps-plus {
-		$size-min-step: calc($size-min-step * var(--fluid-min-ratio));
-		$size-max-step: calc($size-min-step * var(--fluid-max-ratio));
-		$width-neg-step: calc(-1 * $size-min-step);
-		$y-axis-step: calc($width-neg-step * $slope + $size-min-step);
+		$size-min-step: calc(#{$size-min-step} * var(--fluid-min-ratio));
+		$size-max-step: calc(#{$size-min-step} * var(--fluid-max-ratio));
+		$width-neg-step: calc(-1 * #{$size-min-step});
+		$y-axis-step: calc(#{$width-neg-step} * #{$slope} + #{$size-min-step});
 
 		--f-size-min-#{$step}: #{$size-min-step};
 		--f-size-max-#{$step}: #{$size-max-step};
@@ -110,7 +110,7 @@ $current_cssvars: ();
 			var(--f-size-max-#{$step}) * 1rem
 		);
 
-		$previous-step: calc($previous-step + 1);
+		$previous-step: calc(#{$previous-step} + 1);
 	}
 
 	$previous-step: 0;
@@ -120,10 +120,10 @@ $current_cssvars: ();
 	$y-axis-step: $y-axis;
 
 	@each $step in $steps-minus {
-		$size-min-step: calc($size-min-step / var(--fluid-min-ratio));
-		$size-max-step: calc($size-min-step / var(--fluid-max-ratio));
-		$width-neg-step: calc(-1 * $size-min-step);
-		$y-axis-step: calc($width-neg-step * $slope + $size-min-step);
+		$size-min-step: calc(#{$size-min-step} / var(--fluid-min-ratio));
+		$size-max-step: calc(#{$size-min-step} / var(--fluid-max-ratio));
+		$width-neg-step: calc(-1 * #{$size-min-step});
+		$y-axis-step: calc(#{$width-neg-step} * #{$slope} + #{$size-min-step});
 
 		--f-size-min-#{$step}: #{$size-min-step};
 		--f-size-max-#{$step}: #{$size-max-step};
@@ -135,7 +135,7 @@ $current_cssvars: ();
 			var(--f-size-max-#{$step}) * 1rem
 		);
 
-		$previous-step: calc($previous-step - 1);
+		$previous-step: calc(#{$previous-step} - 1);
 	}
 }
 

@@ -1,0 +1,50 @@
+/**
+ * Grid Rails Layout
+ */
+
+.l\:grid\:tram {
+	--max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap) -
+			var(--outline-offset-lg)
+	);
+	--sidebar-track-sm: var(--layout-sidebar-collapsed);
+	--sidebar-track-md: calc(
+		var(--layout-sidebar-sm) - var(--layout-sidebar-collapsed)
+	);
+	--sidebar-track-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
+	inline-size: 100%;
+	block-size: 100vh;
+	block-size: -webkit-fill-available;
+	grid-template-areas:
+		'zone-1  zone-1  zone-1'
+		'zone-2  zone-2  zone-2'
+		'zone-3  zone-3  zone-3';
+	grid-template-columns:
+		calc(var(--sidebar-track-sm) + 3 * var(--grid-gap))
+		1fr
+		calc(var(--sidebar-track-sm) + 3 * var(--grid-gap));
+	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
+}
+
+@media screen and (min-width: 620px) {
+	.l\:grid\:tram {
+		grid-template-columns:
+			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
+			1fr
+			var(--sidebar-width);
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.l\:grid\:tram {
+		grid-template-areas:
+			'zone-1  zone-1  zone-1  zone-1  zone-1  zone-1  zone-1'
+			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'
+			'zone-3  zone-3  zone-3  zone-3  zone-3  zone-3  zone-3';
+		grid-template-columns:
+			var(--sidebar-track-sm) var(--sidebar-track-md) var(--sidebar-track-lg) 1fr var(
+				--sidebar-track-lg
+			)
+			var(--sidebar-track-md) var(--sidebar-track-sm);
+	}
+}

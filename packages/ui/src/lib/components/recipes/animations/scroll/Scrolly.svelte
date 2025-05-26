@@ -10,6 +10,8 @@
 		animations = ['fade'],
 		dimensions,
 		items,
+		snap = 'start',
+		magic,
 	}: ScrollyProps = $props()
 
 	let prevRatio = $state(0.0)
@@ -77,7 +79,14 @@
 	<ul bind:this={scrollArea} class="scroll:y snap w:full unstyled">
 		{#key observer}
 			{#each items as item, index (index)}
-				<ScrollyItem {observer} {item} {animations} level={nestedLevel} />
+				<ScrollyItem
+					{observer}
+					{item}
+					{animations}
+					level={nestedLevel}
+					{magic}
+					{snap}
+				/>
 			{/each}
 		{/key}
 	</ul>

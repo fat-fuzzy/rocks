@@ -1,0 +1,77 @@
+/**
+ * GARES : Animations
+ * Expand / Collapse content
+ */
+
+/**
+ * GARE EST / OUEST
+ */
+
+details.gare\:ouest > ff-reveal,
+.l\:reveal > .collapsed > ff-reveal {
+	--collapse-x: calc(-100% + var(--sidebar-width));
+	transform: translate(var(--collapse-x), 0);
+	transition: transform 250ms ease-in-out;
+}
+
+details[open].gare\:ouest > ff-reveal,
+.l\:reveal.gare\:ouest > .expanded > ff-reveal,
+details[open].gare\:est > ff-reveal,
+.l\:reveal.gare\:est > .expanded > ff-reveal {
+	--collapse-x: 0;
+	transition: transform 200ms ease-out;
+}
+
+details.gare\:ouest > ff-reveal > *,
+.l\:reveal > .collapsed > ff-reveal > *,
+details.gare\:est > ff-reveal > *,
+.l\:reveal > .collapsed > ff-reveal > * {
+	transition: inline-size 200ms ease-in-out;
+}
+
+details[open].gare\:ouest > ff-reveal > *,
+.l\:reveal > .expanded > ff-reveal > *,
+details[open].gare\:est > ff-reveal > *,
+.l\:reveal > .expanded > ff-reveal > * {
+	transition: inline-size 250ms ease-in-out;
+}
+
+details.gare\:est > ff-reveal,
+.l\:reveal > .collapsed > ff-reveal {
+	--collapse-x: calc(100% + var(--sidebar-width));
+	transform: translate(var(--collapse-x), 0);
+	transition: transform 250ms ease-in-out;
+}
+
+/**
+ * GARE NORD
+ */
+details.gare\:nord > ff-reveal,
+.l\:reveal > .collapsed > ff-reveal {
+	--collapse-y: calc(-1 * var(--ui-header-height));
+	transform: translate(0, var(--collapse-y));
+	transition: transform 250ms ease-in-out 200ms;
+}
+
+details.gare\:nord > ff-reveal > *,
+.l\:reveal > .collapsed > ff-reveal > * {
+	transition: block-size 200ms ease-in-out;
+}
+
+details[open].gare\:nord > ff-reveal,
+.l\:reveal.gare\:nord > .expanded > ff-reveal {
+	--collapse-y: 0;
+	transition: transform 200ms ease-out;
+}
+
+details[open].gare\:nord > ff-reveal > *,
+.l\:reveal > .expanded > ff-reveal > * {
+	transition: block-size 250ms ease-in-out 200ms;
+}
+
+@media screen and (min-width: 620px) {
+	details[class*='gare:'] > ff-reveal,
+	.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+		--collapse-x: 0;
+	}
+}

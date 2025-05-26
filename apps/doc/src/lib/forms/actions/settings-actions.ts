@@ -1,37 +1,44 @@
-import type {UiActionSetInput, UiActionSetOutput} from '$lib/types/actions.js'
+import type {UiActionSetOutput} from '$lib/types/actions.js'
+import type {RequestEvent} from '@sveltejs/kit'
 import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/forms/services/ui-state.js'
-const {SettingsUpdate} = ui.forms
-const {DEFAULT_APP_SETTINGS} = ui.constants
+const {AppContext} = ui.forms
 
-const {APP_PREFIX} = ui.constants
-/**
- * TODO validate input
- */
-async function handleUpdateAppSettings({
-	event,
-	options,
-}: UiActionSetInput): Promise<UiActionSetOutput> {
+const {APP_PREFIX, DEFAULT_PREFERENCES} = ui.constants
+
+async function handleUpdateAppSettings(
+	event: RequestEvent,
+): Promise<UiActionSetOutput> {
 	const {request, cookies} = event
 	const data = await request.formData()
-	const key = `${APP_PREFIX}-settings`
-	let currentState = DEFAULT_APP_SETTINGS
+
+	const key = `${APP_PREFIX}-preferences`
+	let currentState = uiStateService.getUiState({
+		cookies,
+		key,
+	})
+
+	if (!currentState.brightness) {
+		currentState.brightness = DEFAULT_PREFERENCES.brightness
+	}
+	if (!currentState.contrast) {
+		currentState.contrast = DEFAULT_PREFERENCES.contrast
+	}
 
 	try {
-		const newState = new SettingsUpdate(currentState)
+		const newState = new AppContext(currentState)
 
-		if (!newState.update(data)) {
+		if (!newState.update(data).success) {
 			error(500, `Failed to update ${key}`)
 		}
 
 		uiStateService.setUiState({
 			cookies,
 			key,
-			value: newState.app,
+			value: newState.state,
 			options: {
-				host: options?.domain,
 				path: '/',
 			},
 		})
@@ -39,38 +46,17 @@ async function handleUpdateAppSettings({
 		return {
 			success: true,
 			key,
-			state: newState.toString(),
+			state: newState.state,
 		}
 	} catch (error) {
 		return {
 			success: false,
 			key,
-			message: 'Failed to update settings', // TODO: improve / manage error message with intl package,
-			state: currentState.toString(),
+			message: `Failed to update ${key}`,
 		}
 	}
 }
 
-async function handleToggleBrightness(event) {
-	const element = 'brightness'
-	return handleUpdateAppSettings({
-		event,
-		element,
-		options: {},
-	})
-}
-
-async function handleToggleContrast(event) {
-	const element = 'contrast'
-	return handleUpdateAppSettings({
-		event,
-		element,
-		options: {},
-	})
-}
-
 export default {
-	handleToggleBrightness,
-	handleToggleContrast,
 	handleUpdateAppSettings,
 }

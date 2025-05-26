@@ -1,0 +1,28 @@
+.tram.zone\:main {
+	grid-column: span 3;
+	min-block-size: unset;
+	max-block-size: var(--overlay-height-lg);
+}
+
+@media screen and (min-width: 620px) {
+	.tram.zone\:main {
+		grid-column: span 2;
+		block-size: auto;
+		max-block-size: var(--max-block-size);
+
+		> .page-main > aside > nav > ul {
+			max-inline-size: var(--sidebar-width);
+		}
+	}
+}
+@media screen and (min-width: 1100px) {
+	.tram.zone\:main {
+		grid-column: span 4;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.tram.zone\:main {
+		grid-column: span 1;
+	}
+}

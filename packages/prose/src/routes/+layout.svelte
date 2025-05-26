@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import ui from '@fat-fuzzy/ui';
 	import '$lib/styles/css/main.css';
 
@@ -22,6 +21,7 @@
 		id: 'nav-blog',
 		items,
 		reveal: 'expanded',
+		background: 'inherit',
 		breakpoint: 'sm',
 		size: 'md',
 		color: 'primary:600',

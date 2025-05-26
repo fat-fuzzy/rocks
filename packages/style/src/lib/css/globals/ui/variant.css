@@ -17,6 +17,10 @@
 	border: var(--border-width-md) solid var(--color-accent);
 }
 
+[class*=':outline']:not(label, pre):hover {
+	background-color: inherit;
+}
+
 [class*=':bare']:not(label, pre) {
 	--border-color-bare: oklch(
 		var(--lightness-surface-2) var(--chroma-contrast) var(--hue)
@@ -26,11 +30,6 @@
 	background-color: inherit;
 }
 
-[class*=':outline'][class*='card'],
-[class*=':bare'][class*='card'] {
-	background-color: var(--shade);
-}
-
-[class*='dotted'] {
-	border: var(--border-width-md) dotted var(--color-accent, var(--color-bg));
+.dotted {
+	border: var(--border-width-md) dotted var(--accent, var(--shade));
 }

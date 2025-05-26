@@ -14,7 +14,6 @@
 	border-radius: 100vmax;
 }
 
-.shape\:round > *,
 .shape\:square > * {
 	border-radius: var(--border-radius-base);
 }

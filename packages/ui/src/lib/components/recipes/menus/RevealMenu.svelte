@@ -2,12 +2,12 @@
 	import type {RevealMenuProps} from '$types'
 
 	import styleHelper from '$lib/utils/styles.js'
-	import Reveal from '$lib/components/layouts/Reveal.svelte'
+	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	const VARIANT_MATCH: {[key: string]: string} = {
 		outline: 'bare',
 		bare: 'bare',
-		default: 'outline',
+		fill: 'outline',
 	}
 
 	let {
@@ -18,10 +18,11 @@
 		actionPath,
 		redirect,
 		layout,
-		container = 'card',
+		container = 'ravioli',
 		color,
 		size,
 		threshold,
+		justify = 'start',
 		variant = '',
 		align = 'start',
 		background,
@@ -32,8 +33,8 @@
 		onclick,
 	}: RevealMenuProps = $props()
 
-	let innerVariant = VARIANT_MATCH[variant]
-	let show = reveal ? `expanded ${place}` : `collapsed ${place}`
+	let innerVariant = $derived(VARIANT_MATCH[variant])
+	let show = $derived(reveal ? `expanded ${place}` : `collapsed ${place}`)
 	let menuClasses = $derived(
 		styleHelper.getStyles({
 			color,
@@ -59,8 +60,9 @@
 	{redirect}
 	{position}
 	{place}
+	{justify}
 >
-	<menu id={`menu-${id}`} class={`content layer ${menuClasses} ${show}`}>
+	<menu id={`menu-${id}`} class={`${menuClasses} ${show}`}>
 		{#each items as buttonProps}
 			<li>
 				<Button
