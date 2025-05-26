@@ -34,13 +34,13 @@
 	})
 
 	const zoneMainClasses: {[key: string]: string} = {
-		metro: 'l:grid size:3xs',
-		railway: 'l:grid size:3xs',
-		steam: 'l:grid size:3xs',
+		metro: 'l:grid size:3xs scroll:y ',
+		railway: 'l:grid size:3xs scroll:y ',
+		steam: 'l:grid size:3xs scroll:y ',
 		tgv: 'snap:center',
-		tram: 'snap:start size:3xs',
-		voyager: 'snap:start size:3xs',
-		urbanist: 'snap:start l:grid size:3xs',
+		tram: 'snap:start size:3xs scroll:y ',
+		voyager: 'snap:start size:3xs scroll:y ',
+		urbanist: 'snap:start l:grid size:3xs scroll:y ',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
@@ -78,7 +78,7 @@
 	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
 {/snippet}
 
-<main {id} class={`zone:main ${layout} scroll:y ${zoneMainClass}`}>
+<main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
 	{#if layout === 'tgv'}
 		<PageHeader {title} size={size as UiSize} {justify} layout="center" />
 	{:else if layout === 'steam' || layout === 'tram' || layout === 'voyager'}
