@@ -78,6 +78,7 @@ export interface Drafts {
 	Cookies: typeof import('$lib/components/recipes/forms/Cookies.svelte').default
 	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
 	PageNav: typeof import('$lib/components/recipes/navs/PageNav.svelte').default
+	ExpandLink: typeof import('$lib/components/recipes/navs/ExpandLink.svelte').default
 	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
 	RevealContext: typeof import('$lib/components/recipes/forms/RevealContext.svelte').default
 	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
