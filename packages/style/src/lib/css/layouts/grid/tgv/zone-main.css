@@ -4,6 +4,7 @@
 	grid-column: span 3;
 	min-block-size: unset;
 	padding-inline: 0;
+	scrollbar-gutter: unset;
 
 	> .page-header {
 		display: flex;
@@ -13,6 +14,19 @@
 	> .page-main {
 		display: flex;
 		grid-column: span 3;
+
+		.scroll\:container {
+			max-block-size: calc(var(--max-block-size) - var(--ui-header-height));
+			scrollbar-gutter: unset;
+		}
+	}
+}
+
+@media screen and (min-width: 620px) {
+	.tgv.zone\:main {
+		> .page-main {
+			padding-inline: 0;
+		}
 	}
 }
 
