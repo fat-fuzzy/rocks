@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.48
+
+### Patch Changes
+
+- 998bd5a: New rails layouts, raw templates, magic scrolly, consent
+
 ## 0.1.47
 
 ### Patch Changes
