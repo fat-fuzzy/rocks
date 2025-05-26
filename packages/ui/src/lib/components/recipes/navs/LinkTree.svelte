@@ -27,7 +27,7 @@
 	}: LinkTreeProps = $props()
 
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
-	let colorClass = color ? `surface:1:${color}` : ''
+	let colorClass = color ? `surface:1:${color}` : 'bg:inherit'
 	let alignClass = align ? `align:${align}` : ''
 	let depthClass = `depth-${depth}`
 	let gridClass = depth === 1 ? `l:grid:auto size:xs` : layoutClass
