@@ -23,7 +23,7 @@
 	layout={page.data.sidebar.layout}
 >
 	{#snippet main()}
-		<div class="l:text:md maki:auto">
+		<div class="l:text:md">
 			<ul class="l:grid:auto size:sm unstyled">
 				{#each markdowns as { meta }}
 					{#if meta.status !== 'draft'}

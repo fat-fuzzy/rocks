@@ -48,7 +48,7 @@
 
 <ul
 	{id}
-	class={`${gridClass} ${depthClass}`}
+	class={`${gridClass} ${depthClass} bg:inherit`}
 	data-testid={id}
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
