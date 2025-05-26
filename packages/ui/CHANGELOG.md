@@ -1,5 +1,15 @@
 # @fat-fuzzy/ui
 
+## 0.1.55
+
+### Patch Changes
+
+- 998bd5a: New rails layouts, raw templates, magic scrolly, consent
+- Updated dependencies [998bd5a]
+  - @fat-fuzzy/validation@0.1.4
+  - @fat-fuzzy/config@0.1.10
+  - @fat-fuzzy/style@0.1.6
+
 ## 0.1.54
 
 ### Patch Changes
