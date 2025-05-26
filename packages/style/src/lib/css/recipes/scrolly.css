@@ -36,7 +36,7 @@
 	top: 50%;
 	right: 50%;
 	z-index: 2;
-	transform: translate(58%, 95%);
+	transform: translate(55%, 95%);
 	transition: transform 300ms ease-in-out;
 	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
 }
