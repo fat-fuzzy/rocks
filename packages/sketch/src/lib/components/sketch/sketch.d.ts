@@ -14,7 +14,6 @@ import {
 	PlayerAction,
 } from '$types'
 import type {Snippet} from 'svelte'
-import type {UiRevealState} from '../../../../../ui/dist/types/ui.js' // TODO: fix this import
 
 export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
 
@@ -53,6 +52,11 @@ export type SketchTransitionsType = {
 			[event in UiEvent]?: UiState
 		}
 	}
+}
+
+// TODO: Get types from @fat-fuzzy/ui
+type UiRevealState = {
+	reveal: UiState
 }
 
 export type SketchProps = {
