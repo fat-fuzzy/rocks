@@ -17,4 +17,6 @@ type ScrollyProps = {
 	dimensions?: string
 	animations?: string[]
 	items: ScrollyItemProps[]
+	snap?: string
+	magic?: {spell: string; shape?: string}
 }

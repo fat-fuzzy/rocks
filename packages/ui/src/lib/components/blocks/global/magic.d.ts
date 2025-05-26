@@ -8,6 +8,7 @@ export type MagicProps = {
 	uno?: string
 	due?: string
 	circle?: string
+	shape?: string
 	size: string
 	font?: string
 	grow?: boolean
