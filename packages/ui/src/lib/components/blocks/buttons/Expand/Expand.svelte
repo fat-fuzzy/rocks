@@ -68,7 +68,7 @@
 		if (init) init(payload)
 	})
 
-	$effect(() => {
+	onMount(() => {
 		let expandEvent =
 			initial === UiState.collapsed ? ButtonEvent.expand : ButtonEvent.collapse
 		actor.update(expandEvent)
