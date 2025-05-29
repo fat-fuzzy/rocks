@@ -94,7 +94,7 @@
 
 	function handleReset(event: Event) {
 		formState = 'reset'
-		updated = undefined
+		updated = {functional: true, analytics: false}
 
 		if (onreset) {
 			onreset(event)
