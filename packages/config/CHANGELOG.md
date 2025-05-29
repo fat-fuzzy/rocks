@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.11
+
+### Patch Changes
+
+- 6c49a80: Update dependencies, UI fixes design improvements
+
 ## 0.1.10
 
 ### Patch Changes
