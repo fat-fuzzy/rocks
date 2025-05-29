@@ -1,5 +1,13 @@
 # @fat-fuzzy/sketch
 
+## 0.1.9
+
+### Patch Changes
+
+- 0bca672: Fix scrolly, update author
+- Updated dependencies [0bca672]
+  - @fat-fuzzy/ui@0.1.57
+
 ## 0.1.8
 
 ### Patch Changes
