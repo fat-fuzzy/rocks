@@ -1,5 +1,13 @@
 # @fat-fuzzy/prose
 
+## 0.1.4
+
+### Patch Changes
+
+- 4a4dd98: Update svelte to 5.33.7
+- Updated dependencies [4a4dd98]
+  - @fat-fuzzy/ui@0.1.58
+
 ## 0.1.3
 
 ### Patch Changes

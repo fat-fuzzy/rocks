@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/prose",
 	"name": "@fat-fuzzy/prose",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"description": "UI for writing and reading using markdown",
 	"author": "Patricia Boh",
 	"license": "MIT",
@@ -60,7 +60,7 @@
 		"globals": "^16.2.0",
 		"mdsvex": "^0.12.6",
 		"publint": "^0.3.12",
-		"svelte": "^5.33.6",
+		"svelte": "^5.33.7",
 		"svelte-check": "^4.2.1",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.5",
