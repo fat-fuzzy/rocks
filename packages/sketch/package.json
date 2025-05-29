@@ -1,6 +1,7 @@
 {
 	"package": "@fat-fuzzy/sketch",
 	"name": "@fat-fuzzy/sketch",
+	"author": "Patricia Boh",
 	"version": "0.1.8",
 	"scripts": {
 		"dev": "vite dev",
