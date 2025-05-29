@@ -39,7 +39,6 @@
 	)
 
 	let updated = $state(consent)
-	let cookiesPending = $derived(consent === undefined)
 	let cookiesPartial = $derived(
 		consent && (consent.analytics || consent.analytics),
 	)
@@ -117,11 +116,10 @@
 	id={popoverId}
 	title="Cookies"
 	asset="cookie"
-	fixed={cookiesPending}
 	container="burrito"
 	variant="fill"
 	layer="3"
-	color={cookiesPending ? 'highlight' : cookiesPartial ? 'accent' : 'primary'}
+	color={cookiesPartial ? 'accent' : 'primary'}
 	place="bottom-right"
 >
 	{#if successPlaceholder}
@@ -154,7 +152,12 @@
 						? `${actionPath}?/${action}`
 						: `?/${action}`
 					: undefined}
-				use:enhance
+				use:enhance={() => {
+					// prevent default callback from resetting the form
+					return ({update}) => {
+						update({reset: false})
+					}
+				}}
 				bind:this={boundForm}
 				onsubmit={handleSubmit}
 			>
