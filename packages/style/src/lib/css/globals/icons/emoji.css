@@ -12,6 +12,10 @@
 	max-inline-size: fit-content;
 }
 
+.shape\:pill[class*='emoji']::before {
+	margin-inline-end: var(--outline-offset-lg);
+}
+
 button[class*='emoji:'][class*='shape:']:not([class*='l:stack'])::before {
 	line-height: 0;
 }

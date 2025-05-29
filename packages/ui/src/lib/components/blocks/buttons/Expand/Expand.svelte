@@ -53,7 +53,7 @@
 			place,
 			asset,
 			variant,
-			layout: shape ? undefined : 'switcher',
+			layout: shape && shape !== 'pill' ? undefined : 'switcher',
 			dimensions,
 		}),
 	)

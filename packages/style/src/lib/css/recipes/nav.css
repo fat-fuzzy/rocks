@@ -36,7 +36,6 @@ nav li a {
 	margin: var(--outline-offset-sm);
 	inline-size: 100%;
 	max-inline-size: 100%;
-	border-radius: var(--border-radius-null);
 }
 
 .reveal-nav {

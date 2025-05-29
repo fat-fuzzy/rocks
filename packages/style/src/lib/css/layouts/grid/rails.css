@@ -29,13 +29,8 @@ body:has(.rails[class*='l:grid']) {
 .rails [class*='zone:2'] > nav > form > [aria-expanded],
 .rails .navbar > nav > form > [aria-expanded],
 .rails .app-context > form > [aria-expanded] {
-	border-radius: 0;
 	margin: 0;
 	font-family: var(--font-family-heading);
-}
-
-.rails [class*='zone:'] {
-	border-radius: 0;
 }
 
 @media screen and (min-width: 620px) {

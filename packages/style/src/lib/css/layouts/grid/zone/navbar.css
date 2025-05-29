@@ -14,6 +14,7 @@
 .exchange > .navbar > nav form,
 .exchange > .navbar > nav [aria-expanded] {
 	inline-size: 100%;
+	max-inline-size: unset;
 }
 
 .exchange > .navbar > nav [aria-expanded] span {
@@ -42,7 +43,6 @@
 		position: unset;
 		margin: 0 auto;
 		z-index: var(--layout-z-index-reveal);
-		border-radius: var(--border-radius-null);
 		box-shadow: unset;
 	}
 }
