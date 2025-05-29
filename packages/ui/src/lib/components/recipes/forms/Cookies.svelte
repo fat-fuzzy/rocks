@@ -27,13 +27,11 @@
 		color = UiColor.accent,
 		variant = UiVariant.fill,
 		consent,
-		onreset,
 		onsubmit,
 		onchange,
 	}: CookiesPreferencesProps = $props()
 
 	let popoverId = 'cookies-banner'
-	let formState = $state('pristine')
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
 	let validator: FormValidator = new FormValidator(
@@ -46,9 +44,6 @@
 		consent && (consent.analytics || consent.analytics),
 	)
 	let submitDisabled: boolean | undefined = $state(undefined)
-	let resetDisabled = $derived(
-		formState === 'reset' || (formState === 'pristine' && !cookiesPartial),
-	)
 	let successPlaceholder: boolean = $state(false)
 	let title = 'Cookies'
 	let description = '🍪 This website uses cookies 🍪'
@@ -87,32 +82,18 @@
 			if (onsubmit) {
 				onsubmit(event)
 			}
-
-			formState = 'submitted'
-		}
-	}
-
-	function handleReset(event: Event) {
-		formState = 'reset'
-		updated = {functional: true, analytics: false}
-
-		if (onreset) {
-			onreset(event)
 		}
 	}
 
 	function handleFocus(event: Event) {
-		formState = 'touched'
 		validator.touchInput(event)
 	}
 
 	function handleBlur(event: Event) {
-		formState = 'touched'
 		validator.validateInput(event)
 	}
 
 	function handleInput(event: Event) {
-		formState = 'dirty'
 		validator.changeInput(event)
 		validator.validateInput(event)
 
@@ -142,12 +123,6 @@
 	layer="3"
 	color={cookiesPending ? 'highlight' : cookiesPartial ? 'accent' : 'primary'}
 	place="bottom-right"
-	onbeforetoggle={(event: Event) => {
-		// @ts-expect-error - popover event type is not defined (yet)
-		if (event.newState === 'open') {
-			formState = 'pristine'
-		}
-	}}
 >
 	{#if successPlaceholder}
 		<Feedback
@@ -179,12 +154,7 @@
 						? `${actionPath}?/${action}`
 						: `?/${action}`
 					: undefined}
-				use:enhance={() => {
-					// prevent default callback from resetting the form
-					return ({update}) => {
-						update({reset: false})
-					}
-				}}
+				use:enhance
 				bind:this={boundForm}
 				onsubmit={handleSubmit}
 			>
@@ -238,8 +208,8 @@
 									justify="between"
 									onfocus={handleFocus}
 									onblur={handleBlur}
-									oninput={(event) => handleInput(event)}
-									checked={(updated && updated?.analytics) || false}
+									oninput={handleInput}
+									checked={updated?.analytics}
 									{validator}
 								/>
 							</InputGroup>
@@ -247,18 +217,6 @@
 					{/snippet}
 					{#snippet footer()}
 						<div class="l:flex size:md justify:center">
-							<Button
-								id="button-reset-cookies"
-								name="consent-reset"
-								type="reset"
-								size="sm"
-								{color}
-								variant="outline"
-								disabled={resetDisabled}
-								onclick={handleReset}
-							>
-								Reset
-							</Button>
 							<Button
 								id="button-submit-cookies"
 								{color}
