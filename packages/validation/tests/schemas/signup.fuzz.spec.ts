@@ -12,10 +12,10 @@ schemas.forEach((schema) => {
 		let ajvValidate = validations[schema.fn]
 		fc.assert(
 			fc.property(
-				fc.stringMatching(/\s(html|php|css|python|javascript?)\s/),
-				fc.stringMatching(/\s(html|php|css|python|javascript?)\s/),
-				fc.stringMatching(/\s(html|php|css|python|javascript?)\s/),
-				fc.stringMatching(/\s(html|php|css|python|javascript?)\s/),
+				fc.string(),
+				fc.string(),
+				fc.string(),
+				fc.string(),
 				fc.boolean(),
 				(username, email, password, confirm_password, match) => {
 					const validateMap = {
@@ -41,10 +41,10 @@ schemas.forEach((schema) => {
 		let ajvValidate = validations[schema.fn]
 		fc.assert(
 			fc.property(
-				fc.fullUnicodeString(),
-				fc.fullUnicodeString(),
-				fc.fullUnicodeString(),
-				fc.fullUnicodeString(),
+				fc.string(),
+				fc.string(),
+				fc.string(),
+				fc.string(),
 				fc.boolean(),
 				(username, email, password, confirm_password, match) => {
 					const validateMap = {
