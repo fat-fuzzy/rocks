@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.3
+
+### Patch Changes
+
+- 6c49a80: Update dependencies, UI fixes design improvements
+
 ## 0.1.2
 
 ### Patch Changes
