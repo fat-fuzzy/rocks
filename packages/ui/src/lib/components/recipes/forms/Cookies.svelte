@@ -38,7 +38,7 @@
 		'CookiePreferencesValidationFunction',
 	)
 
-	let updated = $state(consent)
+	let updated = $derived(consent)
 	let cookiesPartial = $derived(
 		consent && (consent.analytics || consent.analytics),
 	)
