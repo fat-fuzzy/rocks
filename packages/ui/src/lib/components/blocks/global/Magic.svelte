@@ -3,6 +3,7 @@
 	let {
 		id,
 		text,
+		mask,
 		spell,
 		level,
 		uno,
@@ -21,11 +22,12 @@
 	let variantClass = $derived(circle ? circle : '')
 	let shapeClass = $derived(shape ? `shape:${shape}` : '')
 	let growClass = $derived(grow ? 'w:full' : '')
+	let maskClass = $derived(mask ? `mask:${mask}` : '')
 	let fontClass = $derived(font ? `font:${font}` : size ? `font:${size}` : '')
 </script>
 
 <ff-magic
-	class={`ff:magic ${genieUno} ${shapeClass} align:center justify:between size:${size} ${growClass} ${variantClass}`}
+	class={`ff:magic ${genieUno} ${shapeClass} align:center justify:between size:${size} ${maskClass} ${growClass} ${variantClass}`}
 	data-testid={id}
 >
 	<ff-callout

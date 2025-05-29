@@ -80,8 +80,13 @@ h5,
 	font-size: var(--font-size-base);
 }
 
+.font\:h1 {
+	font-family: var(--font-family-heading-base);
+	font-weight: var(--font-weight-h1);
+}
+
 .font\:heading {
-	font-family: var(--font-family-heading);
+	font-family: var(--font-family-subheading);
 }
 
 .font\:semibold {

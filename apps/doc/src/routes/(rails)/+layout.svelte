@@ -50,12 +50,6 @@
 		},
 	])
 
-	let brightness = $derived(
-		useDarkScheme ? 'night' : (appContext.brightness ?? 'day'),
-	)
-
-	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
-
 	function handleThemeChange(event) {
 		if (event.matches) {
 			useDarkScheme = true
@@ -109,12 +103,11 @@
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
-				<Magic {spell} size="xs" font="xs" grow={true} circle="dotted">
-					<p
-						class="emoji:home l:flex justify:center w:full text:center font:heading"
-					>
-						Home
-					</p>
+				<Magic spell="fuzzy" size="xs" circle="dotted" mask="text">
+					<div class="l:flex align:center justify:center">
+						<ff-icon class="emoji:home font:lg"></ff-icon>
+						<p class="font:h1 font:lg">Fat Fuzzy</p>
+					</div>
 				</Magic>
 			</div>
 		{:else}

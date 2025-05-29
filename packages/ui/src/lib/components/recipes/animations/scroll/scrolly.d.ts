@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import {PictureProps} from '$types'
+import {PictureProps, MagicProps} from '$types'
 
 type ScrollyItemProps = {
 	overlay?: boolean
@@ -18,5 +18,5 @@ type ScrollyProps = {
 	animations?: string[]
 	items: ScrollyItemProps[]
 	snap?: string
-	magic?: {spell: string; shape?: string}
+	magic?: MagicProps
 }
