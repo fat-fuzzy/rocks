@@ -39,13 +39,15 @@
 	// input attributes
 	let angle = $state(0)
 
-	// Position
+	// Dimensions
 	let maxX = $state(canvasWidth)
 	let maxY = $state(canvasHeight)
-	let [coordX, coordY] = $state([translation[0] ?? 0, translation[1] ?? 0])
-
+	// Position
+	let coordX = $state(translation[0] ?? 0)
+	let coordY = $state(translation[1] ?? 0)
 	// Scale
-	let [scaleX, scaleY] = $state([scale[0] ?? 1, scale[1] ?? 1])
+	let scaleX = $state(scale[0] ?? 1)
+	let scaleY = $state(scale[1] ?? 1)
 
 	let payload = $derived({
 		color: context.color,

@@ -30,7 +30,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"dependencies": {
-		"dompurify": "^3.1.7"
+		"dompurify": "^3.2.6"
 	},
 	"peerDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
@@ -38,28 +38,29 @@
 		"@fat-fuzzy/validation": "workspace:*",
 		"@sveltejs/kit": "2.0.0",
 		"dompurify": "^3.1.7",
-		"svelte": "5.0.0"
+		"svelte": "5.0.0",
+		"wrangler": "^4.0.0"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/validation": "workspace:*",
-		"@playwright/test": "^1.48.1",
-		"@sveltejs/adapter-cloudflare": "^5.0.2",
-		"@sveltejs/enhanced-img": "^0.3.9",
-		"@sveltejs/kit": "^2.15.0",
-		"@sveltejs/package": "^2.3.4",
+		"@playwright/test": "^1.52.0",
+		"@sveltejs/adapter-cloudflare": "^7.0.3",
+		"@sveltejs/enhanced-img": "^0.6.0",
+		"@sveltejs/kit": "^2.21.1",
+		"@sveltejs/package": "^2.3.11",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"@types/dompurify": "^3.0.5",
-		"mdsvex": "^0.12.3",
-		"postcss": "^8.5.1",
-		"publint": "^0.2.11",
-		"svelte": "^5.16.0",
-		"svelte-check": "^4.1.1",
-		"tslib": "^2.8.0",
-		"typescript": "^5.6.3",
-		"vite": "^6.0.14",
-		"vitest": "^3.0.5"
+		"@types/dompurify": "^3.2.0",
+		"mdsvex": "^0.12.6",
+		"postcss": "^8.5.4",
+		"publint": "^0.3.12",
+		"svelte": "^5.33.6",
+		"svelte-check": "^4.2.1",
+		"tslib": "^2.8.1",
+		"typescript": "^5.8.3",
+		"vite": "^6.3.5",
+		"vitest": "^3.1.4"
 	},
 	"main": "./dist/index.js",
 	"svelte": "./dist/index.js",
