@@ -33,6 +33,10 @@ body:has(.rails[class*='l:grid']) {
 	font-family: var(--font-family-heading);
 }
 
+.rails [class*='zone:'] {
+	border-radius: 0;
+}
+
 @media screen and (min-width: 620px) {
 	.rails[class*='l:grid:'] {
 		--sidebar-width: var(--layout-sidebar-sm);
