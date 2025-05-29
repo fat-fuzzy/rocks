@@ -1,3 +1,4 @@
+import type { Snippet } from "svelte";
 export type Source = {width: string; height: string; format: string}
 
 export type MediaProps = {
@@ -16,8 +17,6 @@ export type MediaProps = {
 	dimensions?: string
 	sources: Source[]
 	sizes: {query?: string; slot: string}[]
-}
-
-export type PictureProps = MediaProps & {
-	media: {query?: string; srcset: {width: string; dpr: number}[]}[]
+	media?: {query?: string; srcset: {width: string; dpr: number}[]}[]
+	context?: Snippet
 }

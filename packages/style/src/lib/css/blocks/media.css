@@ -14,3 +14,20 @@ img {
 	inline-size: 100%;
 	max-inline-size: unset;
 }
+
+ff-media {
+	position: relative;
+	block-size: 100%;
+	max-inline-size: 100%;
+	margin-block: var(--size-base-2xl);
+}
+
+.media-context {
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	z-index: 2;
+	transform: translate(55%, 120%);
+	transition: transform 300ms ease-in-out;
+	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-sm));
+}
