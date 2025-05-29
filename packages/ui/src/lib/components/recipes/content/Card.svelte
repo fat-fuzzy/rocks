@@ -6,6 +6,7 @@
 		size,
 		layout,
 		color,
+		background,
 		justify,
 		align,
 		container,
@@ -20,6 +21,7 @@
 		size,
 		layout,
 		color,
+		background
 	})
 	let containerClasses = styleHelper.getLayoutStyles({
 		size,

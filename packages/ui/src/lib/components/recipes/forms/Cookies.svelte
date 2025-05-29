@@ -188,7 +188,7 @@
 				bind:this={boundForm}
 				onsubmit={handleSubmit}
 			>
-				<Card justify="center" {size} color="primary" {variant}>
+				<Card justify="center" {size} color="primary" {variant} background="inherit">
 					{#snippet header()}
 						<svelte:element this={`h${level}`} class="text:center">
 							{title}
