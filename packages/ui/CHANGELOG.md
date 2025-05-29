@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.58
+
+### Patch Changes
+
+- 4a4dd98: Update svelte to 5.33.7
+
 ## 0.1.57
 
 ### Patch Changes
