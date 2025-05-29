@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.50
+
+### Patch Changes
+
+- 4a4dd98: Update svelte to 5.33.7
+
 ## 0.1.49
 
 ### Patch Changes
