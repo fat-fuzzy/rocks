@@ -2,7 +2,7 @@ import type {UiActionSetInput, UiActionSetOutput} from '$lib/types/actions.js'
 import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
-import uiStateService from '$lib/forms/services/ui-state.js'
+import uiStateService from '$lib/forms/services/session.js'
 
 const {
 	APP_PREFIX,
