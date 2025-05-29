@@ -54,11 +54,11 @@
 	}
 
 	const contextClasses: {[key: string]: string} = {
-		metro: 'layer:1 ravioli:3xs',
-		railway: 'layer:1 ravioli:3xs',
+		metro: 'ravioli:3xs',
+		railway: 'ravioli:3xs',
 		steam: 'layer:1 ravioli:3xs',
 		tgv: '',
-		tram: 'layer:1 ravioli:3xs',
+		tram: 'ravioli:3xs',
 		voyager: '',
 		urbanist: '',
 	}

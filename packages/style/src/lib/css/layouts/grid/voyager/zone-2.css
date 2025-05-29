@@ -4,7 +4,6 @@
  */
 .voyager.zone\:2 {
 	grid-template-areas: 'zone-main';
-	grid-template-rows: subgrid;
 }
 
 @media screen and (min-width: 620px) {
