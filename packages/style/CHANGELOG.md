@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.7
+
+### Patch Changes
+
+- 6c49a80: Update dependencies, UI fixes design improvements
+
 ## 0.1.6
 
 ### Patch Changes

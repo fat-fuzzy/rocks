@@ -1,5 +1,13 @@
 # @fat-fuzzy/git-poule
 
+## 0.1.6
+
+### Patch Changes
+
+- 6c49a80: Update dependencies, UI fixes design improvements
+- Updated dependencies [6c49a80]
+  - @fat-fuzzy/config@0.1.11
+
 ## 0.1.5
 
 ### Patch Changes
