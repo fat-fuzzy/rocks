@@ -9,6 +9,7 @@
 		size,
 		font,
 		variant,
+		shape,
 		background,
 		asset,
 		justify,
@@ -31,6 +32,7 @@
 	element="nav"
 	{title}
 	{size}
+	{shape}
 	{font}
 	{variant}
 	{background}

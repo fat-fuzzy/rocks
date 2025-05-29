@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Image from './Image.svelte'
-	import type {PictureProps} from '$types'
+	import type {MediaProps} from '$types'
 
 	let {
 		id,
@@ -13,10 +13,10 @@
 		width,
 		height,
 		sources,
-		media,
+		media = [],
 		sizes,
 		style,
-	}: PictureProps = $props()
+	}: MediaProps = $props()
 
 	let frameClass = $derived(
 		dimensions === 'full'

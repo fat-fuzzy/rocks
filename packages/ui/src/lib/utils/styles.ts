@@ -78,7 +78,7 @@ function getLayoutStyles(props: UiBlockProps): string {
 
 	let thresholdClass = threshold ? `th:${threshold}` : ''
 	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
-	let layoutClass = layout && shape ? 'stack' : layout
+	let layoutClass = layout && shape && shape !== 'pill' ? 'stack' : layout
 	let scrollClass = scroll ? `scroll:${scroll}` : ''
 	let heightClass = height ? ` h:${height}` : ''
 	let layerClass = layer ? ` layer:${layer}` : ''

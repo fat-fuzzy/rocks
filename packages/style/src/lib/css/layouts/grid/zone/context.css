@@ -43,6 +43,12 @@
 }
 
 /* This form contains the actual settings */
+.exchange > .context > .app-context > form   {
+	display: flex;
+	justify-content: flex-end;
+}
+
+/* This form contains the actual settings */
 .exchange > .context > .app-context ff-reveal > form {
 	display: flex;
 	padding-inline: var(--outline-offset-lg) 0;
@@ -66,7 +72,6 @@
 	}
 
 	.exchange > .context > .app-context:is(.collapsed, .expanded) ff-reveal {
-		border-radius: var(--border-radius-null);
 		box-shadow: unset;
 		position: unset;
 		grid-column: span 3;

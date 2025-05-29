@@ -51,7 +51,7 @@
 			justify,
 			asset,
 			variant,
-			layout: shape ? layout : 'switcher',
+			layout: shape && shape !== 'pill' ? layout : 'switcher',
 			dimensions,
 		}),
 	)

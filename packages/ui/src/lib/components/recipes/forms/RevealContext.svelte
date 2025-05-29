@@ -11,6 +11,7 @@
 		background,
 		layout,
 		color = 'primary',
+		shape,
 		size = 'sm',
 		font = 'sm',
 		variant = 'outline',
@@ -48,6 +49,7 @@
 	{size}
 	{font}
 	{color}
+	{shape}
 	{variant}
 	{asset}
 	{align}

@@ -23,6 +23,7 @@
 		dismiss = DismissEvent.outside,
 		color,
 		size,
+		shape,
 		font,
 		breakpoint,
 		threshold,
@@ -83,6 +84,7 @@
 		{size}
 		{font}
 		{color}
+		{shape}
 		{reveal}
 		{layer}
 		{scroll}

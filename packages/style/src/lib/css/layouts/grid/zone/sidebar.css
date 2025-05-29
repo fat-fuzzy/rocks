@@ -40,7 +40,6 @@
 .exchange > .sidebar > .collapsed > [name='sidebar'],
 .exchange > .sidebar > .collapsed > [name='sidebar'] > [class*='l:switcher'] {
 	inline-size: 100%;
-	border-radius: var(--border-radius-null);
 	font-family: var(--font-family-heading);
 }
 

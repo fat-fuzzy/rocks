@@ -27,6 +27,7 @@
 		position,
 		color,
 		size,
+		shape,
 		font,
 		breakpoint,
 		// trigger = ButtonEvent.click,
@@ -123,6 +124,7 @@
 		{asset}
 		{color}
 		{size}
+		{shape}
 		{font}
 		{variant}
 		{align}

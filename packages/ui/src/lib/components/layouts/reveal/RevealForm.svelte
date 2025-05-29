@@ -18,6 +18,7 @@
 		reveal = DEFAULT_REVEAL_STATE.reveal,
 		color,
 		size,
+		shape,
 		font,
 		variant,
 		justify,
@@ -73,7 +74,7 @@
 	<Expand
 		id={`button-reveal-${id}`}
 		name={`button-reveal-${id}`}
-		{label}
+		{shape}
 		{color}
 		{variant}
 		{size}

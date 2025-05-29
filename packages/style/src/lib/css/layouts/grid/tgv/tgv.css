@@ -4,8 +4,7 @@
 
 .l\:grid\:tgv {
 	--max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size) -
-			var(--outline-offset-md)
+		100vh - 3 * var(--ui-header-height) - 2 * var(--ui-size)
 	);
 	--sidebar-track-sm: var(--layout-sidebar-collapsed);
 	--sidebar-track-md: calc(
@@ -28,6 +27,9 @@
 
 @media screen and (min-width: 690px) {
 	.l\:grid\:tgv {
+	--max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--ui-size)
+	);
 		grid-template-columns:
 			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
 			1fr

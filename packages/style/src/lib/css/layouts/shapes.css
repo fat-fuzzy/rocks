@@ -14,6 +14,10 @@
 	border-radius: 100vmax;
 }
 
+.shape\:pill  {
+	border-radius: 100vmax;
+}
+
 .shape\:square > * {
 	border-radius: var(--border-radius-base);
 }
