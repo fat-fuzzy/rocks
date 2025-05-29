@@ -38,7 +38,7 @@
 	]
 
 	function generateStepsFromItems(
-		items: {id: string; text: string; value: string}[],
+		items: {id: string; label: string; value: string}[],
 	) {
 		let currentValue = min
 		items.forEach((item, index) => {

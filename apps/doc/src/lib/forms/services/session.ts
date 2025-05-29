@@ -1,6 +1,7 @@
 import type {Cookies} from '@sveltejs/kit'
-import {dev} from '$app/environment'
 import type {UiStateGetInput, UiStateSetInput} from '$lib/types/services.js'
+import {dev} from '$app/environment'
+import {base} from '$app/paths'
 
 const expire = {
 	short: 60 * 60 * 15,
@@ -12,7 +13,7 @@ function setSecureCookie({
 	cookies,
 	key,
 	value,
-	path = '/',
+	path = base,
 	maxAge = expire.short,
 }: {
 	cookies: Cookies

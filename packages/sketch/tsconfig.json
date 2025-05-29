@@ -5,14 +5,13 @@
 		"checkJs": true,
 		"esModuleInterop": true,
 		"declaration": true,
-		"outDir": "./dist/lib",
+		"outDir": "./dist",
 		"declarationDir": "./dist/types",
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext"
+		"moduleResolution": "bundler"
 	}
 }

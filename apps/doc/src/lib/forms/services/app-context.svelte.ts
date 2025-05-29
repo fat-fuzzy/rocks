@@ -4,16 +4,15 @@ const {DEFAULT_REVEAL_STATE, DEFAULT_STYLES, DEFAULT_PREFERENCES} = ui.constants
 
 // TODO - Get type from @fat-fuzzy/ui
 type CookiePreferences = {
-	functional: boolean
-	analytics: boolean
-	thirdParty?: boolean
+	functional?: boolean
+	analytics?: boolean
 }
 
 type Settings = {
 	reveal: string
 	brightness: string
 	contrast: string
-	cookies: CookiePreferences
+	consent: CookiePreferences
 }
 
 class AppContext {
