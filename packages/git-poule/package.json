@@ -10,7 +10,7 @@
 	"license": "BSD-3-Clause",
 	"dependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"shelljs": "^0.8.5"
+		"shelljs": "^0.10.0"
 	},
 	"type": "module"
 }

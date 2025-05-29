@@ -5,6 +5,8 @@
 		"checkJs": true,
 		"esModuleInterop": true,
 		"declaration": true,
+		"outDir": "./dist/lib",
+		"declarationDir": "./dist/types",
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
