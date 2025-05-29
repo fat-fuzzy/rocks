@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.57
+
+### Patch Changes
+
+- 0bca672: Fix scrolly, update author
+
 ## 0.1.56
 
 ### Patch Changes
