@@ -1,6 +1,7 @@
 {
 	"package": "@fat-fuzzy/validation",
 	"name": "@fat-fuzzy/validation",
+	"author": "Patricia Boh",
 	"version": "0.1.4",
 	"main": "./dist/index.js",
 	"scripts": {
