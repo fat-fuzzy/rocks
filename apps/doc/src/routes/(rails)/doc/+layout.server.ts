@@ -9,7 +9,7 @@ const usagesMarkdowns = usages.markdowns
 	.filter(({meta}) => meta.status !== 'draft')
 	.reverse()
 
-export const load = async ({locals, url}) => {
+export const load = async ({locals, url, params}) => {
 	let sidebar = buildNav('doc')
 
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
@@ -35,6 +35,7 @@ export const load = async ({locals, url}) => {
 			decisions: decisionsMarkdowns,
 			usages: usagesMarkdowns,
 		},
+		layout: params.slug ? 'metro' : 'voyager',
 	}
 
 	return data

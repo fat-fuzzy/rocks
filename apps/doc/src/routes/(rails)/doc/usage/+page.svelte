@@ -17,7 +17,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	app={appContext}
-	layout={page.data.sidebar.layout}
+	layout={page.data.layout}
 >
 	{#snippet main()}
 		<div class="l:text:md">

@@ -20,11 +20,30 @@ ff-callout[class*='magic'] {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	background-image: var(--magic-gradient);
 	color: var(--ink);
-	padding: var(--ui-size-sm);
 	border-radius: var(--border-radius-base);
+	line-height: 1;
+	padding: var(--ui-size-sm);
 
 	&:has(~ [class*='icon']) {
 		margin-inline-end: var(--ui-size-sm);
+	}
+}
+
+.ff\:magic.mask\:text {
+	.ff\:callout[class*='magic'],
+	ff-callout[class*='magic'] {
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		background-image: unset;
+
+		a,
+		p,
+		svg {
+			background: var(--magic-gradient);
+			background: var(--webkit-magic-gradient);
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 	}
 }
 
@@ -37,6 +56,12 @@ ff-callout[class*='magic'].shape\:round {
 
 .magic\:bleu {
 	--magic-gradient: linear-gradient(
+		148deg,
+		var(--color-gradient-000-start) 12% 12%,
+		var(--color-gradient-000-middle) 49% 49%,
+		var(--color-gradient-000-end) 88% 88%
+	);
+	--webkit-magic-gradient: -webkit-linear-gradient(
 		148deg,
 		var(--color-gradient-000-start) 12% 12%,
 		var(--color-gradient-000-middle) 49% 49%,
@@ -62,6 +87,12 @@ ff-callout[class*='magic'].shape\:round {
 		var(--color-gradient-001-middle) 70% 70%,
 		var(--color-gradient-000-middle) 88% 88%
 	);
+	--webkit-magic-gradient: -webkit-linear-gradient(
+		148deg,
+		var(--color-gradient-000-end) 22% 22%,
+		var(--color-gradient-001-middle) 70% 70%,
+		var(--color-gradient-000-middle) 88% 88%
+	);
 	--lightness-contrast: var(--color-lightness-600);
 	--chroma-contrast: var(--color-chroma-600);
 
@@ -77,6 +108,12 @@ ff-callout[class*='magic'].shape\:round {
 
 .magic\:dante {
 	--magic-gradient: linear-gradient(
+		148deg,
+		var(--color-gradient-001-start) 12% 12%,
+		var(--color-gradient-001-middle) 49% 49%,
+		var(--color-gradient-001-end) 88% 88%
+	);
+	--webkit-magic-gradient: -webkit-linear-gradient(
 		148deg,
 		var(--color-gradient-001-start) 12% 12%,
 		var(--color-gradient-001-middle) 49% 49%,
@@ -116,6 +153,12 @@ ff-callout[class*='magic'].shape\:round {
 		color(display-p3 0.71 0.65 0.96) 49% 49%,
 		color(display-p3 0.63 0.82 0.83) 88% 88%
 	);
+	--webkit-magic-gradient: -webkit-linear-gradient(
+		148deg,
+		color(display-p3 0.92 0.64 0.77) 12% 12%,
+		color(display-p3 0.71 0.65 0.96) 49% 49%,
+		color(display-p3 0.63 0.82 0.83) 88% 88%
+	);
 	--lightness-contrast: var(--color-lightness-600);
 	--chroma-contrast: var(--color-chroma-600);
 	--hue: var(--color-theme-primary);
@@ -132,6 +175,12 @@ ff-callout[class*='magic'].shape\:round {
 
 .magic\:dusk {
 	--magic-gradient: linear-gradient(
+		148deg,
+		color(display-p3 0.75 0.16 0.41) 12% 12%,
+		color(display-p3 0.21 0.14 0.51) 49% 49%,
+		color(display-p3 0.24 0.54 0.55) 88% 88%
+	);
+	--webkit-magic-gradient: -webkit-linear-gradient(
 		148deg,
 		color(display-p3 0.75 0.16 0.41) 12% 12%,
 		color(display-p3 0.21 0.14 0.51) 49% 49%,
@@ -158,6 +207,14 @@ ff-callout[class*='magic'].shape\:round {
 		var(--color-magic-highlight),
 		var(--color-magic-warning)
 	);
+
+	/* Used for text masking: only use linear gradients */
+	--webkit-magic-gradient: -webkit-linear-gradient(
+		148deg,
+		var(--color-magic-primary),
+		var(--color-magic-highlight),
+		var(--color-magic-warning)
+	);
 	--lightness-contrast: var(--color-lightness-000);
 	--chroma-contrast: var(--color-chroma-000);
 	--hue: var(--color-theme-primary);
@@ -171,8 +228,3 @@ ff-callout[class*='magic'].shape\:round {
 		);
 	}
 }
-
-/* .ink\:white {
-	--lightness-contrast: var(--color-lightness-000);
-	--chroma-contrast: var(--color-chroma-000);
-} */

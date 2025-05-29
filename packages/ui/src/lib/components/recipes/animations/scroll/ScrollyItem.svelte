@@ -48,11 +48,7 @@
 					class={`h${level + 2} item-link text:center justify:center maki:auto bg:light ${shapeClass}`}
 				>
 					{#if magic}
-						<Magic
-							spell={magic?.spell || 'default'}
-							shape={magic?.shape}
-							size="lg"
-						>
+						<Magic {...magic} size="lg">
 							{item.title}
 						</Magic>
 					{:else}

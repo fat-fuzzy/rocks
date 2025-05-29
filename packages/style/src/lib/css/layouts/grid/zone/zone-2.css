@@ -26,6 +26,7 @@
 		padding-block-end: var(--grid-gap);
 		padding-inline: calc(var(--grid-gap) + 2 * var(--outline-offset-lg));
 		border-radius: var(--border-radius-lg);
+		scrollbar-width: none;
 	}
 
 	> .page-context.empty {
@@ -45,6 +46,7 @@
 		> .page-context:not(.empty) {
 			padding-inline: 0;
 			grid-column: span 1;
+			scrollbar-width: thin;
 		}
 
 		> .page-context {

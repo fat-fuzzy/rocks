@@ -5,6 +5,7 @@
 	align-content: start;
 	max-block-size: var(--overlay-height-md);
 	overscroll-behavior-y: contain;
+	scrollbar-width: none;
 }
 
 @media screen and (min-width: 620px) {
@@ -12,6 +13,7 @@
 		grid-column: span 2;
 		max-block-size: var(--max-block-size);
 		padding-inline-end: calc(2 * var(--grid-gap));
+		scrollbar-width: thin;
 	}
 }
 

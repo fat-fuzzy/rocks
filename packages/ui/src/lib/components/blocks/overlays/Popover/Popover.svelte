@@ -33,6 +33,27 @@
 	let layerClass = $state(layer ? `layer:${layer}` : '')
 	let revealClasses = $derived(`${fixedClass} ${layerClass}`)
 
+	function toggleReveal(payload: FuzzyPayload) {
+		if (payload.value === UiState.expanded) {
+			actor.showPopover(id)
+		} else if (payload.value === UiState.collapsed) {
+			actor.hidePopover(id)
+		}
+	}
+
+	let states = {
+		expanded: {
+			...EXPAND_MACHINE.expanded,
+			asset: asset ?? asset,
+		},
+		collapsed: {
+			...EXPAND_MACHINE.collapsed,
+			asset: asset ?? asset,
+		},
+	}
+
+	let popoverAnchorStyle = $derived(`--anchor-name: --popover-anchor-${id}`)
+
 	onMount(() => {
 		if (!popover) {
 			return
@@ -56,27 +77,6 @@
 			actor.removePopover(id)
 		}
 	})
-
-	function toggleReveal(payload: FuzzyPayload) {
-		if (payload.value === UiState.expanded) {
-			actor.showPopover(id)
-		} else if (payload.value === UiState.collapsed) {
-			actor.hidePopover(id)
-		}
-	}
-
-	let states = {
-		expanded: {
-			...EXPAND_MACHINE.expanded,
-			asset: asset ?? asset,
-		},
-		collapsed: {
-			...EXPAND_MACHINE.collapsed,
-			asset: asset ?? asset,
-		},
-	}
-
-	let popoverAnchorStyle = $derived(`--anchor-name: --popover-anchor-${id}`)
 </script>
 
 <ff-popover {id} bind:this={invoker} class={fixedClass} data-testid={id}>

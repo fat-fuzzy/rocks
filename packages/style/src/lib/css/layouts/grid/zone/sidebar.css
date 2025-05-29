@@ -30,6 +30,10 @@
 	border-radius: 0;
 }
 
+.exchange > .sidebar > .app-name ff-callout ff-icon {
+	display: none;
+}
+
 .exchange > .sidebar > .app-name,
 .exchange > .sidebar:has(.app-name),
 .exchange > .sidebar [name='sidebar'] > [class*='l:switcher'],
@@ -90,6 +94,10 @@
 
 	.exchange > .sidebar > .app-name {
 		padding-inline-end: calc(var(--grid-gap) + var(--outline-offset-md));
+	}
+
+	.exchange > .sidebar > .app-name ff-callout ff-icon {
+		display: block;
 	}
 
 	.exchange > .sidebar:is([open], .expanded) > ff-reveal,
