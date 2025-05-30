@@ -56,7 +56,7 @@ export type SketchTransitionsType = {
 
 // TODO: Get types from @fat-fuzzy/ui
 type UiRevealState = {
-	reveal: UiState
+	reveal: string
 }
 
 export type SketchProps = {
@@ -71,5 +71,8 @@ export type SketchProps = {
 	breakpoint?: string
 	dev?: boolean
 	mainFooter?: Snippet
-	context?: UiRevealState
+	context?: {
+		reveal: string
+		title?: string
+	}
 }

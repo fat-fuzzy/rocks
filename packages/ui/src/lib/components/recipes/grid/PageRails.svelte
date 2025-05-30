@@ -19,7 +19,7 @@
 		nav,
 		aside,
 		footer,
-		context,
+		context, // TODO: This should be the page context's expanded state
 		layout = 'metro',
 	}: PageRailsProps = $props()
 
@@ -91,7 +91,6 @@
 
 	<div class={`page-main ${pageMainClass}`}>
 		{@render main()}
-
 		{#if footer}
 			{@render footer()}
 		{/if}

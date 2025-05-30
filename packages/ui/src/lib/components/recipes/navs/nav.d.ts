@@ -1,5 +1,4 @@
 import type {
-	UiRevealState,
 	UiBlockProps,
 	RevealLayoutProps,
 	FuzzyPayload,

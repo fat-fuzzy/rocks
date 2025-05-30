@@ -1,12 +1,11 @@
 import type {
-	PlayerSwitchType,
 	PlayerEventsType,
 	PlayerActionsType,
 	PlayerTransitionsType,
 } from '$types'
 import {PlayerEvent, PlayerState, PlayerAction, EventOrder} from '$types'
 
-export const PLAYER_SWITCH: PlayerSwitchType = {
+export const PLAYER_SWITCH = {
 	active: {
 		id: 'active',
 		value: PlayerEvent.pause as string,

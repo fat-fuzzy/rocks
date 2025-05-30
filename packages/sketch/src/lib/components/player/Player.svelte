@@ -19,7 +19,7 @@
 		init,
 	}: PlayerProps = $props()
 
-	function updatePlayer(payload: {value: string | number}) {
+	function updatePlayer(payload: {value?: string | number}) {
 		let event = payload.value as PlayerEvent
 		if (event === 'play') {
 			event =
