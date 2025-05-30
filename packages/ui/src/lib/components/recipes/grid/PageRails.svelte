@@ -58,7 +58,7 @@
 		railway: 'ravioli:3xs',
 		steam: 'layer:1 ravioli:3xs',
 		tgv: '',
-		tram: 'ravioli:3xs',
+		tram: 'ravioli:3xs layer:1',
 		voyager: '',
 		urbanist: '',
 	}
