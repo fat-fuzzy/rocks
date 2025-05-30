@@ -79,7 +79,7 @@ a:hover {
 :where(a, button, input, select, textarea, details):not([disabled]):focus {
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 	outline-offset: var(--outline-offset-xs);
-	outline: var(--border-width-md) solid var(--accent); /* TODO: improve color */
+	outline: var(--border-width-lg) dotted var(--accent); /* TODO: improve color */
 }
 
 /* Inherit fonts for inputs and buttons */

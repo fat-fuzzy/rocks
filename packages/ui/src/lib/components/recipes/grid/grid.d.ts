@@ -3,7 +3,7 @@ import type {LayoutProps, NavItem, PageProps, GridProps} from '$types'
 
 export type LayoutGridProps = GridProps & {
 	app?: {
-		reveal: UiRevealState
+		reveal: string
 		brightness: string
 		contrast: string
 		language?: string
@@ -14,7 +14,7 @@ export type LayoutGridProps = GridProps & {
 
 export type PageGridProps = GridProps & {
 	context?: PageProps & {
-		reveal: UiRevealState
+		reveal: string
 		title?: string
 	}
 }

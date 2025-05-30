@@ -40,7 +40,7 @@
 			<div class="tags l:grid:auto size:xs maki:block">
 				{#each tags as tag}
 					<details class="bg:netural">
-						<summary class="color:accent font:xs font:heading raviolink">
+						<summary class="color:accent font:xs font:heading ravioli:3xs">
 							{tag}
 						</summary>
 						<ul class="unstyled">

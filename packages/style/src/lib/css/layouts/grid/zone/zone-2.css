@@ -54,12 +54,6 @@
 			max-block-size: var(--max-block-size);
 		}
 
-		> .page-context > * {
-			--max-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
-			inline-size: 100%;
-			max-inline-size: var(--max-inline-size);
-		}
-
 		> .page-context > nav > ul > li.ellipsis {
 			max-inline-size: 100%;
 		}

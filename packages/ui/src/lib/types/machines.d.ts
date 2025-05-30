@@ -22,7 +22,7 @@ export type FuzzyState = {
 	label?: string // Element label
 	asset?: string // Element icon: the `value` in emoji:value or svg:value
 	variant?: string // Variant style for the element state
-	state?: UiState // Name of the current state
+	state?: UiState | string// Name of the current state
 	event?: string // Event that can be emitted from the current state
 	action?: (payload: FuzzyPayload) => void // Action available on the current state
 }
