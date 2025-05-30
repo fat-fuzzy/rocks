@@ -522,10 +522,6 @@ importers:
         version: 3.1.4(@types/node@22.15.29)(jiti@2.4.2)(jsdom@26.0.0)(sass@1.89.0)(terser@5.31.3)(yaml@2.5.0)
 
   packages/style:
-    dependencies:
-      '@eslint/compat':
-        specifier: ^1.2.9
-        version: 1.2.9(eslint@9.28.0(jiti@2.4.2))
     devDependencies:
       '@cobalt-ui/cli':
         specifier: 1.11.3
@@ -542,6 +538,9 @@ importers:
       '@csstools/postcss-minify':
         specifier: ^2.0.4
         version: 2.0.4(postcss@8.5.4)
+      '@eslint/compat':
+        specifier: ^1.2.9
+        version: 1.2.9(eslint@9.28.0(jiti@2.4.2))
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
