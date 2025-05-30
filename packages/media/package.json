@@ -18,6 +18,9 @@
 	},
 	"author": "Patricia Boh",
 	"license": "MIT",
+	"peerDependencies": {
+		"@eslint/compat": "^1.2.9"
+	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@rollup/plugin-json": "^6.1.0",

@@ -1,4 +1,4 @@
 import config from '@fat-fuzzy/config'
-const {eslint} = config
+const {eslintSvelte} = config
 
-export default eslint
+export default eslintSvelte

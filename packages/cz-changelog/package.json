@@ -22,6 +22,9 @@
 	},
 	"author": "Jim Cummins <jimthedev@gmail.com>",
 	"license": "MIT",
+	"peerDependencies": {
+		"@eslint/compat": "^1.2.9"
+	},
 	"dependencies": {
 		"chalk": "^3.0.0",
 		"commitizen": "^4.3.0",
