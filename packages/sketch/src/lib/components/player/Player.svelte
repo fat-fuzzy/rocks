@@ -66,7 +66,7 @@
 				states={actor.playSwitch}
 				{color}
 				{size}
-				layout="stack"
+				shape="pill w:full"
 				initial={actor.playState}
 				disabled={actor.getPlayDisabled()}
 				onclick={updatePlayer}
@@ -82,6 +82,7 @@
 			{color}
 			{variant}
 			{size}
+			shape="pill w:full"
 			value="clear"
 			asset="clear"
 			onclick={updatePlayer}
@@ -97,6 +98,7 @@
 			{color}
 			{variant}
 			{size}
+			shape="pill w:full"
 			value="stop"
 			asset="rect"
 			onclick={updatePlayer}

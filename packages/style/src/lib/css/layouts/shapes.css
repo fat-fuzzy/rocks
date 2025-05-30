@@ -28,6 +28,10 @@ button[class*='shape:'] {
 	inline-size: auto;
 }
 
+button.shape\:pill {
+	inline-size: 100%;
+}
+
 .shape\:round[class*='l:stack']:only-child::before,
 .shape\:square[class*='l:stack']:only-child::before {
 	margin-inline: 0;

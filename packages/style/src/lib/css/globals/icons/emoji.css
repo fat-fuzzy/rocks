@@ -12,6 +12,10 @@
 	max-inline-size: fit-content;
 }
 
+.shape\:pill[class*='emoji']  {
+	max-inline-size: unset;
+}
+
 .shape\:pill[class*='emoji']::before {
 	margin-inline-end: var(--outline-offset-lg);
 }
