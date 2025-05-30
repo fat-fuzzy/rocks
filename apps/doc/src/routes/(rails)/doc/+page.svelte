@@ -24,7 +24,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	context={pageContext}
-	layout="tram"
+	layout="voyager"
 >
 	{#snippet main()}
 		<Sidebar dimension={50} size="2xl" wrap="reverse">

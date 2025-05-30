@@ -22,6 +22,7 @@
 		{@const hugClass =
 			sidenav.layout === 'steam' ||
 			sidenav.layout === 'tram' ||
+			sidenav.layout === 'voyager' ||
 			sidenav.layout === 'urbanist' ||
 			hug
 				? 'hug'
