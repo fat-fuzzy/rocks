@@ -34,6 +34,7 @@
 	--justify: space-evenly;
 	--gap: var(--grid-gap, var(--size-base-xs));
 	gap: var(--grid-gap, 0);
+	padding-inline: var(--outline-offset-lg);
 
 	li {
 		background-color: inherit;

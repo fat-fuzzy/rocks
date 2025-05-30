@@ -16,9 +16,8 @@ html:has(.rails[class*='l:grid']) {
 }
 
 body:has(.rails[class*='l:grid']) {
-	block-size: 100vh;
-	/* mobile viewport bug fix */
-	block-size: -webkit-fill-available;
+	min-block-size: 100vh;
+	min-block-size: -webkit-fill-available;
 }
 
 .rails[class*='l:grid'] {
