@@ -56,8 +56,6 @@ utils.blocks.ready.forEach(async (block) => {
 utils.blocks.draft.forEach(async (block) => {
 	test(`UI draft pages are not found: ${block} link`, async ({page}) => {
 		await page.goto(`${utils.blocks.path()}/${block}`)
-		await expect(
-			page.getByRole('heading', {level: 1, name: '404'}),
-		).toBeVisible()
+		await expect(page.getByText('404: Not Found')).toBeVisible()
 	})
 })

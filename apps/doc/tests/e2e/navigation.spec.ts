@@ -74,9 +74,7 @@ pages.forEach((item) => {
 		}) => {
 			await error.testFn(page, item)
 			await expect(page.getByText(error.message)).toBeVisible()
-
-			// TODO: Fix Error pages
-			await expect(page.getByRole('heading', {name: code})).toBeVisible()
+			await expect(page.getByText('404: Not Found')).toBeVisible()
 		})
 
 		if (item.items) {

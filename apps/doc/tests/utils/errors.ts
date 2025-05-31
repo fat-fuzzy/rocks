@@ -16,7 +16,7 @@ const httpErrors: {
 			}
 		},
 		code: 404,
-		message: 'Not Found',
+		message: '404: Not Found',
 	},
 }
 
