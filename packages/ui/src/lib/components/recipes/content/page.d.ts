@@ -5,7 +5,6 @@ import type {
 	UiSize,
 	SidebarLayoutProps,
 	NavItem,
-	UiRevealState,
 	UiLayoutProps,
 	Settings,
 	CookiePreferences,
@@ -56,14 +55,14 @@ export type PageRailsProps = UiLayoutProps &
 		details?: Snippet
 		aside?: Snippet
 		app?: {
-			reveal: UiRevealState
+			reveal: string
 			brightness: string
 			contrast: string
 			language?: string
 			consent?: CookiePreferences
 		}
 		context?: {
-			reveal: UiRevealState
+			reveal: string
 			title?: string
 		}
 		footer?: Snippet

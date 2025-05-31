@@ -1,5 +1,13 @@
 # @fat-fuzzy/git-poule
 
+## 0.1.7
+
+### Patch Changes
+
+- 3fff75a: Fix configs & error pages, clean design
+- Updated dependencies [3fff75a]
+  - @fat-fuzzy/config@0.1.12
+
 ## 0.1.6
 
 ### Patch Changes

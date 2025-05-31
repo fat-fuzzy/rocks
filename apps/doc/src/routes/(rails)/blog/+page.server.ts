@@ -6,14 +6,14 @@ const page = 'blog'
 const markdowns = await pages.fetchMarkdowns(page)
 
 export const load = async ({parent}) => {
-	let {sidebar} = await parent()
+	const {sidebar} = await parent()
 	if (!markdowns?.length) {
-		throw error(404, {message: 'Not found'})
+		error(404, {message: 'Not found'})
 	}
-	let content = markdowns[0]
+	const content = markdowns[0]
 
 	if (!content?.meta) {
-		throw error(404, {message: 'Not found'})
+		error(404, {message: 'Not found'})
 	}
 
 	return {

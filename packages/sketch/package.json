@@ -2,7 +2,7 @@
 	"package": "@fat-fuzzy/sketch",
 	"name": "@fat-fuzzy/sketch",
 	"author": "Patricia Boh",
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"scripts": {
 		"dev": "vite dev",
 		"build:ts": "tsc --outDir dist/lib --declarationDir dist/types --declaration true",
@@ -33,6 +33,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
+		"@eslint/compat": "^1.0.0",
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/gfx": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
@@ -53,7 +54,7 @@
 		"@sveltejs/package": "^2.3.11",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"publint": "^0.3.12",
-		"svelte": "^5.33.7",
+		"svelte": "^5.33.10",
 		"svelte-check": "^4.2.1",
 		"svelte-preprocess": "^6.0.3",
 		"tslib": "^2.8.1",

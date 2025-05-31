@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.8
+
+### Patch Changes
+
+- 3fff75a: Fix configs & error pages, clean design
+
 ## 0.1.7
 
 ### Patch Changes

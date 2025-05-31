@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/gfx",
 	"name": "@fat-fuzzy/gfx",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "Fat Fuzzy Graphics Libraries",
 	"main": "package/index.cjs.js",
 	"module": "package/index.esm.js",
@@ -19,6 +19,9 @@
 	},
 	"author": "Patricia Boh",
 	"license": "MIT",
+	"peerDependencies": {
+		"@eslint/compat": "^1.0.0"
+	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@rollup/plugin-json": "^6.1.0",

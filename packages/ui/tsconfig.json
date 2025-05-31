@@ -1,11 +1,12 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
+	"extends": ["./.svelte-kit/tsconfig.json"],
 	"compilerOptions": {
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
 		"declaration": true,
 		"outDir": "./dist",
+		"rootDir": "./",
 		"declarationDir": "./dist/types",
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,

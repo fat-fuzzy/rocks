@@ -1,6 +1,8 @@
 {
 	"name": "@fat-fuzzy/rocks",
 	"version": "0.1.0",
+	"type": "module",
+	"private": true,
 	"description": "Fat Fuzzy Rocks",
 	"main": "index.js",
 	"author": "Patricia Boh",
@@ -21,18 +23,19 @@
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.29.4",
+		"@eslint/compat": "^1.2.9",
 		"@fat-fuzzy/config": "workspace:*",
 		"commitizen": "^4.3.1",
 		"cz-conventional-changelog": "^3.3.0",
 		"husky": "^9.1.7",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.4.0",
-		"turbo": "2.5.3"
+		"turbo": "2.5.4"
 	},
 	"packageManager": "pnpm@10.11.0",
 	"engines": {
 		"node": ">=20.0.0",
 		"npm": ">=9.6.4"
 	},
-	"type": "module"
+	"prettier": "./packages/config/dist/prettier.config.js"
 }

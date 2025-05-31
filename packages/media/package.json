@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/media",
 	"name": "@fat-fuzzy/media",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"description": "Fat Fuzzy Media manipulation libraries",
 	"main": "package/index.cjs.js",
 	"module": "package/index.esm.js",
@@ -18,6 +18,9 @@
 	},
 	"author": "Patricia Boh",
 	"license": "MIT",
+	"peerDependencies": {
+		"@eslint/compat": "^1.0.0"
+	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@rollup/plugin-json": "^6.1.0",

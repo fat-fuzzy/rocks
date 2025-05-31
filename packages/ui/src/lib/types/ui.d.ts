@@ -32,7 +32,7 @@ export type Settings = {
 }
 
 export type UiRevealState = {
-	reveal: UiState
+	reveal: UiState | string
 }
 
 export type InputPayload = {

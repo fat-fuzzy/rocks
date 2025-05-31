@@ -1,5 +1,18 @@
+import baseConfig from '@fat-fuzzy/config/eslint/base'
+import svelteConfig from '@fat-fuzzy/config/eslint/svelte'
+import {includeIgnoreFile} from '@eslint/compat'
+import {fileURLToPath} from 'node:url'
+import path from 'node:path'
 
-import config from '@fat-fuzzy/config'
-const {eslint} = config
+// Correctly determine gitignorePath relative to *this* eslint.config.js file
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
-export default eslint
+// Apply gitignore at the project level
+const gitignorePath = path.resolve(__dirname, './.gitignore')
+
+export default [
+	includeIgnoreFile(gitignorePath),
+	...baseConfig,
+	...svelteConfig,
+]

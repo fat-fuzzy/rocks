@@ -65,6 +65,7 @@ export enum EventOrder {
 }
 export enum PlayerState {
 	idle = 'idle',
+	loading = 'loading',
 	error = 'error',
 	playing = 'playing',
 	paused = 'paused',

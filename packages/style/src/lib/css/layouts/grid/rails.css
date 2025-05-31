@@ -16,9 +16,8 @@ html:has(.rails[class*='l:grid']) {
 }
 
 body:has(.rails[class*='l:grid']) {
-	block-size: 100vh;
-	/* mobile viewport bug fix */
-	block-size: -webkit-fill-available;
+	min-block-size: 100vh;
+	min-block-size: -webkit-fill-available;
 }
 
 .rails[class*='l:grid'] {
@@ -31,6 +30,10 @@ body:has(.rails[class*='l:grid']) {
 .rails .app-context > form > [aria-expanded] {
 	margin: 0;
 	font-family: var(--font-family-heading);
+}
+
+.rails [class*='zone:'] {
+	border-radius: 0;
 }
 
 @media screen and (min-width: 620px) {

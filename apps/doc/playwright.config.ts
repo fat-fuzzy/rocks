@@ -1,9 +1,8 @@
-import type {PlaywrightTestConfig} from '@playwright/test'
 
-import config from '@fat-fuzzy/config'
-const {playwright} = config
+import playwright from '@fat-fuzzy/config/playwright'
 
-const playwrightConfig: PlaywrightTestConfig = {
+/** @type { import("@playwright/test").PlaywrightTestConfig } */
+const playwrightConfig = {
 	...playwright,
 	timeout: 1000,
 	projects: [

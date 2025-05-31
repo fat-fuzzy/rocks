@@ -1,4 +1,3 @@
-import config from '@fat-fuzzy/config'
-const {stylelint} = config
+import stylelint from '@fat-fuzzy/config/stylelint'
 
 export default stylelint

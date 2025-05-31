@@ -1,6 +1,5 @@
-// @fat-fuzzy/config/prettier.config.js
-
-export default {
+/** @type {import("prettier").Config} */
+const config = {
 	useTabs: true,
 	singleQuote: true,
 	printWidth: 80,
@@ -18,4 +17,6 @@ export default {
 			},
 		},
 	],
-}
+};
+
+export default config;

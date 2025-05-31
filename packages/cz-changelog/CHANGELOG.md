@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.4
+
+### Patch Changes
+
+- 3fff75a: Fix configs & error pages, clean design
+
 ## 0.1.3
 
 ### Patch Changes

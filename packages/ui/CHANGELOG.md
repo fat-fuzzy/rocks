@@ -1,5 +1,15 @@
 # @fat-fuzzy/ui
 
+## 0.1.59
+
+### Patch Changes
+
+- 3fff75a: Fix configs & error pages, clean design
+- Updated dependencies [3fff75a]
+  - @fat-fuzzy/validation@0.1.6
+  - @fat-fuzzy/config@0.1.12
+  - @fat-fuzzy/style@0.1.8
+
 ## 0.1.58
 
 ### Patch Changes

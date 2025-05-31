@@ -9,11 +9,11 @@ const {DEFAULT_NAV_REVEAL_STATE} = ui.constants
 
 export const load = async ({locals, url}) => {
 	// Main header nav
-	let nav = locals.nav
+	const nav = locals.nav
 	nav.actionPath = url.pathname
 	nav.reveal = nav.reveal ?? DEFAULT_NAV_REVEAL_STATE.reveal
 
-	let appContext = locals.appContext
+	const appContext = locals.appContext
 	appContext.actionPath = url.pathname
 
 	return {
