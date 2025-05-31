@@ -8,7 +8,7 @@ import {commonActions} from '$lib/forms/actions/page-actions'
  * @returns post data
  */
 export const load = async ({parent, params}) => {
-	let {sidebar} = await parent()
+	const {sidebar} = await parent()
 	const {slug} = params
 	const markdowns = blog.markdowns
 	const markdown = markdowns?.find(

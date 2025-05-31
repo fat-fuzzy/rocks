@@ -31,15 +31,12 @@
 				<p>{message}</p>
 				<div class="l:switcher:xs">
 					<button
-						class={`variant:fill bg:accent:500 size:sm`}
+						class="variant:fill bg:accent:500 size:sm"
 						onclick={() => history.back()}
 					>
 						Back
 					</button>
-					<a
-						class={`variant:outline bg:primary:500 ravioli:xs font:sm`}
-						href="/"
-					>
+					<a class="variant:outline bg:primary:500 ravioli:xs font:sm" href="/">
 						Home
 					</a>
 				</div>

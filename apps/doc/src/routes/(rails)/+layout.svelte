@@ -16,11 +16,14 @@
 	}
 	let {children}: Props = $props()
 
+	let useDarkScheme = $state(false)
 	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
-	let appContext = $derived(page.data.appContext)
-	let useDarkScheme = $state(false)
+	let appContext = $derived.by(() => ({
+		...page.data.appContext,
+		brightness: useDarkScheme ? 'dark' : 'light',
+	}))
 
 	type AreaZone = {
 		zone: Snippet
@@ -50,7 +53,7 @@
 		},
 	])
 
-	function handleThemeChange(event) {
+	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
 		if (event.matches) {
 			useDarkScheme = true
 		} else {
@@ -69,7 +72,7 @@
 	{layout}
 	{areas}
 	{sidenav}
-	size={'3xs'}
+	size="3xs"
 	app={appContext}
 	path={page.url.pathname}
 />
