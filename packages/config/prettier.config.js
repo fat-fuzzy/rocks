@@ -1,3 +1,3 @@
-import { prettier } from './src/prettier.config.js'; 
+import prettier from './src/prettier.config.js';
 
 export default prettier;
