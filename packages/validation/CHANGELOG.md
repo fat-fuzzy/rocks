@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.6
+
+### Patch Changes
+
+- 3fff75a: Fix configs & error pages, clean design
+
 ## 0.1.5
 
 ### Patch Changes

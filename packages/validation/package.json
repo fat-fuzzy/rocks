@@ -2,7 +2,7 @@
 	"package": "@fat-fuzzy/validation",
 	"name": "@fat-fuzzy/validation",
 	"author": "Patricia Boh",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"main": "./dist/index.js",
 	"scripts": {
 		"build": "pnpm build:ajv && rollup -c",
