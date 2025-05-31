@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.12
+
+### Patch Changes
+
+- 952b97e: Bugfixes & slignment fixes
+
 ## 0.1.11
 
 ### Patch Changes
