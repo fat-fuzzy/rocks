@@ -3,7 +3,7 @@ import {buildNav} from '$data/nav'
 const {DEFAULT_PREFERENCES, DEFAULT_REVEAL_STATE} = ui.constants
 
 export const load = async ({locals, url}) => {
-	let pageName = url.pathname.split('/')
+	const pageName = url.pathname.split('/')
 	let sidebar
 
 	if (pageName.length > 0 && pageName[1]) {
@@ -16,11 +16,11 @@ export const load = async ({locals, url}) => {
 		sidebar = {layout: 'tgv', items: []}
 	}
 
-	let appContext = locals.appContext ?? {
+	const appContext = locals.appContext ?? {
 		...DEFAULT_REVEAL_STATE,
 		...DEFAULT_PREFERENCES,
 	}
-	let pageContext = locals.pageContext
+	const pageContext = locals.pageContext
 	pageContext.actionPath = url.pathname
 
 	return {
