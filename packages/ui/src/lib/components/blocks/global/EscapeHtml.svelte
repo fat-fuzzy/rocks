@@ -41,5 +41,7 @@
 	class={containerClasses}
 	data-testid={`html-${id}`}
 >
+	<!-- This should only render if it has been escaped -->
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html escaped}
 </svelte:element>
