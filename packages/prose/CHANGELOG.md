@@ -1,5 +1,15 @@
 # @fat-fuzzy/prose
 
+## 0.1.5
+
+### Patch Changes
+
+- 3fff75a: Fix configs & error pages, clean design
+- Updated dependencies [3fff75a]
+  - @fat-fuzzy/config@0.1.12
+  - @fat-fuzzy/style@0.1.8
+  - @fat-fuzzy/ui@0.1.59
+
 ## 0.1.4
 
 ### Patch Changes
