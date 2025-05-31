@@ -1,5 +1,6 @@
 <script lang="ts">
-	import {onMount, type Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
+	import {onMount} from 'svelte'
 
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
@@ -62,6 +63,10 @@
 		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
 
 		handleThemeChange(prefersDarkScheme)
+
+		if (!appContext.brightness) {
+			appContext.brightness = useDarkScheme ? 'night' : 'day'
+		}
 	})
 </script>
 
