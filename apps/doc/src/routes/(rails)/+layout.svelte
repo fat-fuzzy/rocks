@@ -20,10 +20,7 @@
 	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
-	let appContext = $derived.by(() => ({
-		...page.data.appContext,
-		brightness: useDarkScheme ? 'dark' : 'light',
-	}))
+	let appContext = $derived(page.data.appContext)
 
 	type AreaZone = {
 		zone: Snippet
