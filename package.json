@@ -1,6 +1,8 @@
 {
 	"name": "@fat-fuzzy/rocks",
 	"version": "0.1.0",
+	"type": "module",
+	"private": true,
 	"description": "Fat Fuzzy Rocks",
 	"main": "index.js",
 	"author": "Patricia Boh",
@@ -35,5 +37,5 @@
 		"node": ">=20.0.0",
 		"npm": ">=9.6.4"
 	},
-	"type": "module"
+	"prettier": "./packages/config/prettier.config.js"
 }
