@@ -24,7 +24,7 @@
 		align-items: start;
 		z-index: var(--layout-z-index-layer);
 		padding-block-end: var(--grid-gap);
-		padding-inline: calc(var(--grid-gap) + 2 * var(--outline-offset-lg));
+		padding-inline: var(--grid-gap);
 		border-radius: var(--border-radius-lg);
 		scrollbar-width: none;
 	}
@@ -44,9 +44,9 @@
 		padding-inline: var(--grid-gap) 0;
 
 		> .page-context:not(.empty) {
-			padding-inline: 0;
 			grid-column: span 1;
 			scrollbar-width: thin;
+			padding-inline: calc(var(--grid-gap) + 2 * var(--outline-offset-lg));
 		}
 
 		> .page-context {
