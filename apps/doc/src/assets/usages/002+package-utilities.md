@@ -37,25 +37,37 @@ pnpm i -D @fat-fuzzy/config
 Import the shared config in another package:
 
 ```js
-// in .packages/new-package/.eslintrc.js
-import config from '@fat-fuzzy/config'
-const {eslint} = config
+// in .packages/new-package/.eslint.config.js
+import baseConfig from '@fat-fuzzy/config/eslint/base'
+import svelteConfig from '@fat-fuzzy/config/eslint/svelte'
+import { includeIgnoreFile } from '@eslint/compat';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
-export default eslint
+// Correctly determine gitignorePath relative to *this* eslint.config.js file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// Adjust '../../.gitignore' to point to your monorepo root .gitignore
+const gitignorePath = path.resolve(__dirname, './.gitignore');
+
+export default [ // ESLint 9 expects an array
+  includeIgnoreFile(gitignorePath), // Apply gitignore at the project level
+  ...baseConfig, // Spread the imported shared configuration
+ svelteConfig, // Spread the Svelte-specific configuration
+];
+
 ```
 
 ```js
 // in .packages/new-package/prettier.config.js
-import config from '@fat-fuzzy/config'
-const {prettier} = config
+import prettier from '@fat-fuzzy/config/prettier'
 
 export default prettier
 ```
 
 ```js
-// in .packages/new-package/prettier.config.js
-import config from '@fat-fuzzy/config'
-const {stylelint} = config
+// in .packages/new-package/stylelint.config.js
+import stylelint from '@fat-fuzzy/config/stylelint'
 
 export default stylelint
 ```
