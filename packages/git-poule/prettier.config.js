@@ -1,5 +1,3 @@
-import config from '@fat-fuzzy/config'
-const {prettier} = config
+import prettier from '@fat-fuzzy/config/prettier'
 
 export default prettier
-
