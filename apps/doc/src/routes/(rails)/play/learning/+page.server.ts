@@ -8,12 +8,12 @@ export const load = async () => {
 	let content = await pages.fetchMarkdowns(page)
 
 	if (!content?.length) {
-		throw error(404, {message: 'Not found'})
+		error(404, {message: 'Not found'})
 	}
 	content = content[0]
 
 	if (!content?.meta) {
-		throw error(404, {message: 'Not found'})
+		error(404, {message: 'Not found'})
 	}
 	const data = {
 		content,

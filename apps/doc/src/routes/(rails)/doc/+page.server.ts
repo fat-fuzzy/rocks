@@ -9,16 +9,16 @@ const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
 
 export const load = async ({parent}) => {
-	let {sidebar, pageContext} = await parent()
+	const {sidebar, pageContext} = await parent()
 	const imageSlug = '001-intro'
 
 	if (!markdowns?.length) {
-		throw error(404, {message: 'Not found'})
+		error(404, {message: 'Not found'})
 	}
-	let content = markdowns[0]
+	const content = markdowns[0]
 
 	if (!content?.meta) {
-		throw error(404, {message: 'Not found'})
+		error(404, {message: 'Not found'})
 	}
 
 	try {

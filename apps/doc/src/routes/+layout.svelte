@@ -11,8 +11,6 @@
 	const {Cookies} = ui.drafts
 
 	type Props = {
-		fixed?: boolean
-		sidebar?: Snippet
 		children?: Snippet
 	}
 

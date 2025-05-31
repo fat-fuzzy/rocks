@@ -1,7 +1,6 @@
 .ff\:magic,
 ff-icon {
 	color: var(--ink);
-	background-color: var(--shade);
 	display: inline-flex;
 	flex-wrap: nowrap;
 	block-size: fit-content;
