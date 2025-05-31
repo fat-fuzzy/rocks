@@ -33,7 +33,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"@eslint/compat": "^1.2.9",
+		"@eslint/compat": "^1.0.0",
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/gfx": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
@@ -43,6 +43,7 @@
 		"wrangler": "^4.0.0"
 	},
 	"devDependencies": {
+		"@eslint/compat": "^1.2.9",
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/gfx": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
