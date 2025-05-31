@@ -56,7 +56,7 @@
 	})
 </script>
 
-<menu {id} class={`player l:switcher:${size} th:2xs raviolink`}>
+<menu {id} class={`player l:switcher:2xs th:2xs raviolink`}>
 	<li>
 		{#key actor.playState}
 			<Switch
