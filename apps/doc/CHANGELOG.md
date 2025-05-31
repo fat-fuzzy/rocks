@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.52
+
+### Patch Changes
+
+- 952b97e: Bugfixes & slignment fixes
+
 ## 0.1.51
 
 ### Patch Changes
