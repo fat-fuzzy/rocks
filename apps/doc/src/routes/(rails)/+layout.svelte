@@ -61,12 +61,8 @@
 
 	onMount(() => {
 		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
-
 		handleThemeChange(prefersDarkScheme)
-
-		if (!appContext.brightness) {
-			appContext.brightness = useDarkScheme ? 'night' : 'day'
-		}
+		appContext.brightness = useDarkScheme ? 'night' : 'day'
 	})
 </script>
 
