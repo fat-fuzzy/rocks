@@ -1,7 +1,7 @@
 {
 	"name": "@fat-fuzzy/intl",
 	"package": "@fat-fuzzy/intl",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"description": "Basic i18n / L10n services library",
 	"author": "Patricia Boh",
 	"keywords": [],
