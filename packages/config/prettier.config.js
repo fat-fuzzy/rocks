@@ -1,5 +1,3 @@
-// @fat-fuzzy/config/prettier.config.js
-import config from '@fat-fuzzy/config'
-const {prettier} = config
+import { prettier } from './src/prettier.config.js'; 
 
-export default prettier
+export default prettier;
