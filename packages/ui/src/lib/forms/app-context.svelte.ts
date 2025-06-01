@@ -27,13 +27,27 @@ class AppContext {
 	update(data: FormData) {
 		let updated = false
 		if (data.has('brightness')) {
-			let brightness = data.get('brightness')
-			this.state.brightness = TRANSITION_BRIGHTNESS[String(brightness)]
+			let brightness = String(data.get('brightness'))
+			// This sets the inital brightness value and enables the sync of JS toggles
+			if (!this.state.brightness || this.state.brightness !== brightness) {
+				this.state.brightness = brightness
+			} else {
+				// This enables the sync of no-JS toggles
+				// TODO: Fix nojs init
+				this.state.brightness = TRANSITION_BRIGHTNESS[String(brightness)]
+			}
 			updated = true
 		}
 		if (data.has('contrast')) {
-			let contrast = data.get('contrast')
-			this.state.contrast = TRANSITION_CONTRAST[String(contrast)]
+			let contrast = String(data.get('contrast'))
+			// This sets the inital contrast value and enables the sync of JS toggles
+			if (!this.state.contrast || this.state.contrast !== contrast) {
+				this.state.contrast = contrast
+			} else {
+				// This enables the sync of no-JS toggles
+				// TODO: Fix nojs init
+				this.state.contrast = TRANSITION_CONTRAST[String(contrast)]
+			}
 			updated = true
 		}
 

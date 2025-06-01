@@ -6,7 +6,7 @@ import ui from '@fat-fuzzy/ui'
 import uiStateService from '$lib/forms/services/session.js'
 const {AppContext} = ui.forms
 
-const {APP_PREFIX, DEFAULT_PREFERENCES} = ui.constants
+const {APP_PREFIX} = ui.constants
 
 async function handleUpdateAppSettings(
 	event: RequestEvent,
@@ -15,17 +15,10 @@ async function handleUpdateAppSettings(
 	const data = await request.formData()
 
 	const key = `${APP_PREFIX}-preferences`
-	let currentState = uiStateService.getUiState({
+	const currentState = uiStateService.getUiState({
 		cookies,
 		key,
 	})
-
-	if (!currentState.brightness) {
-		currentState.brightness = DEFAULT_PREFERENCES.brightness
-	}
-	if (!currentState.contrast) {
-		currentState.contrast = DEFAULT_PREFERENCES.contrast
-	}
 
 	try {
 		const newState = new AppContext(currentState)
