@@ -6,6 +6,12 @@
 	max-inline-size: calc(100vw - 2 * var(--ui-size));
 }
 
+[class*='l:frame']:has(video, canvas) {
+	max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap, var(--gap))
+	);
+}
+
 [class*='l:frame'] > img,
 [class*='l:frame'] > video,
 [class*='l:frame'] > canvas,

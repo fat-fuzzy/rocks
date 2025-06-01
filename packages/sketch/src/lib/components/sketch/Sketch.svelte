@@ -35,7 +35,6 @@
 		variant = 'outline',
 		background,
 		layout = 'switcher',
-		breakpoint,
 		dev,
 		mainFooter,
 		context,
@@ -245,6 +244,20 @@
 	layout="steam"
 >
 	{#snippet main()}
+		{#if meta.warnings && meta.warnings.length && actor.state.canvas === CanvasState.idle}
+			<div class="feedback">
+				{#each meta.warnings as warning, i (i)}
+					<Feedback
+						status="warning"
+						context="prose"
+						{size}
+						title={warning.title}
+					>
+						{warning.message}
+					</Feedback>
+				{/each}
+			</div>
+		{/if}
 		<div class={frameClasses}>
 			<canvas
 				id={`${id}.canvas`}
@@ -260,7 +273,7 @@
 			</canvas>
 			{#if actor.feedback.canvas.length}
 				<div class="feedback">
-					{#each actor.feedback.canvas as feedback}
+					{#each actor.feedback.canvas as feedback, i (i)}
 						<Feedback status={feedback.status} context="code" {size}>
 							{feedback.message}
 						</Feedback>

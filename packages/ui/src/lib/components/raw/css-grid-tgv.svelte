@@ -23,13 +23,13 @@
 		</aside>
 	</header>
 
-	<div class={`zone:2 scroll:y`}>
-		<main class={`zone:main surface:1:${theme} text:center`}>
+	<div class={`zone:2 l:grid ${parent} scroll:y`}>
+		<main class={`zone:main ${parent} scroll:y snap:start surface:1:${theme}`}>
 			<div class="page-header ravioli:lg">
-				<h1 class={`color:${theme}`}>{title}</h1>
+				<h1 class={`color:${theme} text:center maki:auto`}>{title}</h1>
 			</div>
 			<article class="page-main maki:inline size:lg">
-				<ul class="unstyled l:stack:lg">
+				<ul class="unstyled w:full">
 					<li
 						class={`l:frame:video surface:0:${theme} dotted font:xl ravioli:xl`}
 					>
