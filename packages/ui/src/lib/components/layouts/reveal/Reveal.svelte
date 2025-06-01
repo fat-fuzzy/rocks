@@ -43,8 +43,12 @@
 		children,
 	}: RevealLayoutProps = $props()
 
-	let tag = $state(element)
-	let className = $state('')
+	let html = $state(element.split('.'))
+	let {tag, className} = $derived.by(() => ({
+		tag: html[0],
+		className: html[1],
+	}))
+
 	let payload = $derived({
 		state: reveal,
 		id: `button-reveal-${id}`,
@@ -89,11 +93,6 @@
 	// 	}
 	// 	payload.state = 'collapsed' // TODO: Fix this does nothing
 	// }
-	$effect(() => {
-		let html = element.split('.')
-		tag = html[0]
-		className = html[1]
-	})
 </script>
 
 <svelte:window onkeyup={onKeyUp} />
