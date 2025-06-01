@@ -64,7 +64,7 @@
 		onupdate={preferences.onupdate}
 	/>
 	<ul class="links:settings end unstyled">
-		{#each preferences.links as { title, url, shape, size, asset }}
+		{#each preferences.links as { title, url, shape, size, asset }, i (i)}
 			<li>
 				<a
 					class={`${variant} shape:${shape} color:${color} ${asset} size:${size}`}
