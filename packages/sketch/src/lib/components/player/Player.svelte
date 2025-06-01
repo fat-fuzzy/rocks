@@ -56,55 +56,57 @@
 	})
 </script>
 
-<menu {id} class="player l:switcher:2xs th:2xs raviolink">
-	<li>
-		{#key actor.playState}
-			<Switch
-				id="play"
-				name="play"
-				value="play"
-				states={actor.playSwitch}
-				{color}
+<div class="l:burrito contain">
+	<menu {id} class="player l:switcher:2xs raviolink">
+		<li>
+			{#key actor.playState}
+				<Switch
+					id="play"
+					name="play"
+					value="play"
+					states={actor.playSwitch}
+					{color}
+					{size}
+					shape="pill w:full"
+					initial={actor.playState}
+					disabled={actor.getPlayDisabled()}
+					onclick={updatePlayer}
+				>
+					{actor.playLabel}
+				</Switch>
+			{/key}
+		</li>
+		<li>
+			<Button
+				id="clear"
+				name="clear"
+				color="accent"
+				{variant}
 				{size}
 				shape="pill w:full"
-				initial={actor.playState}
-				disabled={actor.getPlayDisabled()}
+				value="clear"
+				asset="clear"
 				onclick={updatePlayer}
+				disabled={actor.getClearDisabled()}
 			>
-				{actor.playLabel}
-			</Switch>
-		{/key}
-	</li>
-	<li>
-		<Button
-			id="clear"
-			name="clear"
-			color="accent"
-			{variant}
-			{size}
-			shape="pill w:full"
-			value="clear"
-			asset="clear"
-			onclick={updatePlayer}
-			disabled={actor.getClearDisabled()}
-		>
-			Clear
-		</Button>
-	</li>
-	<li>
-		<Button
-			id="stop"
-			name="stop"
-			color="highlight"
-			{variant}
-			{size}
-			shape="pill w:full"
-			value="stop"
-			asset="rect"
-			onclick={updatePlayer}
-			disabled={actor.getStopDisabled()}
-		>
-			Stop
-		</Button>
-	</li>
-</menu>
+				Clear
+			</Button>
+		</li>
+		<li>
+			<Button
+				id="stop"
+				name="stop"
+				color="highlight"
+				{variant}
+				{size}
+				shape="pill w:full"
+				value="stop"
+				asset="rect"
+				onclick={updatePlayer}
+				disabled={actor.getStopDisabled()}
+			>
+				Stop
+			</Button>
+		</li>
+	</menu>
+</div>

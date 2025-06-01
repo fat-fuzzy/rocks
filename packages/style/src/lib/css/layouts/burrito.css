@@ -23,6 +23,11 @@
 */
 
 /* Scale Burrito */
+.l\:burrito.contain {
+	--sidebar-width: var(--layout-sidebar-md);
+}
+
+/* Scale Burrito */
 .l\:burrito\:2xs {
 	&.contain {
 		container-name: burrito-2xs;

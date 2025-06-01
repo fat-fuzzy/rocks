@@ -72,6 +72,7 @@
 
 	.zone\:2 .page-context:not(.empty) {
 		grid-column: span 3;
+		padding-inline: 0;
 	}
 
 	.zone\:2:has(dialog.zoomer[open]) {
