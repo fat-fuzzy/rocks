@@ -270,7 +270,12 @@
 		{#if meta.warnings && meta.warnings.length && actor.state.canvas === CanvasState.idle}
 			<div class="feedback">
 				{#each meta.warnings as warning, i (i)}
-					<Feedback status="warning" context="prose" {size}>
+					<Feedback
+						status="warning"
+						context="prose"
+						{size}
+						title={warning.title}
+					>
 						{warning.message}
 					</Feedback>
 				{/each}
