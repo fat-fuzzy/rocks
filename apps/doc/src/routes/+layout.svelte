@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import {onMount} from 'svelte'
 
 	import '$lib/styles/css/main.css'
 
@@ -15,7 +16,23 @@
 	}
 
 	let {children}: Props = $props()
+
+	let useDarkScheme = $state(false)
 	let appContext = $derived(page.data.appContext)
+
+	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
+		if (event.matches) {
+			useDarkScheme = true
+		} else {
+			useDarkScheme = false
+		}
+	}
+
+	onMount(() => {
+		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+		handleThemeChange(prefersDarkScheme)
+		appContext.brightness = useDarkScheme ? 'night' : 'day'
+	})
 </script>
 
 {#if children}
