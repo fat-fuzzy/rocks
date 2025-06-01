@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.53
+
+### Patch Changes
+
+- 5892255: UI bugfixes & cleanup
+
 ## 0.1.52
 
 ### Patch Changes
