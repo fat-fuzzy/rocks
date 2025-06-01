@@ -4,6 +4,9 @@
 	justify-content: var(--justify, center);
 	align-items: var(--align, center);
 	max-inline-size: calc(100vw - 2 * var(--ui-size));
+	max-block-size: calc(
+		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap, var(--gap))
+	);
 }
 
 [class*='l:frame'] > img,
