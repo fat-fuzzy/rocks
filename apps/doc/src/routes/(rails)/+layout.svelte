@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import {onMount} from 'svelte'
 
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
@@ -17,7 +16,6 @@
 	}
 	let {children}: Props = $props()
 
-	let useDarkScheme = $state(false)
 	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
@@ -50,20 +48,6 @@
 			grid: true,
 		},
 	])
-
-	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
-		if (event.matches) {
-			useDarkScheme = true
-		} else {
-			useDarkScheme = false
-		}
-	}
-
-	onMount(() => {
-		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
-		handleThemeChange(prefersDarkScheme)
-		appContext.brightness = useDarkScheme ? 'night' : 'day'
-	})
 </script>
 
 <LayoutGrid
