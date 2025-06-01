@@ -13,7 +13,7 @@
 
 <div class={`rails l:grid:${parent} size:${size}`}>
 	<header
-		class={`zone:1 exchange l:grid size:${size} surface:1:${theme} dotted`}
+		class={`zone:1 ${parent} exchange l:grid size:${size} surface:1:${theme}`}
 	>
 		<MainNav {theme} />
 
@@ -32,7 +32,7 @@
 			<AppContext {theme} />
 		</aside>
 	</header>
-	<div class={`zone:2 ${parent} l:grid surface:2:${theme} scroll:y snap:start`}>
+	<div class={`zone:2 ${parent} l:grid surface:2:${theme} hug`}>
 		<main class={`zone:main ${parent} l:grid  scroll:y surface:0:${theme}`}>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
