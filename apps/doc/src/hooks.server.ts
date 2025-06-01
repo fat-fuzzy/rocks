@@ -39,7 +39,7 @@ enum FormsEnum {
 }
 
 export const handle = (async ({event, resolve}) => {
-	let {cookies} = event
+	const {cookies} = event
 	// Load all UI states into locals
 	const preferences = uiStateService.getUiState({
 		cookies,

@@ -24,8 +24,6 @@ const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
 
 const DEFAULT_PREFERENCES: ViewingPreferences = {
 	reveal: UiState.collapsed,
-	brightness: UiSettings.day,
-	contrast: UiSettings.contrast,
 	consent: DEFAULT_COOKIES_CONSENT,
 }
 

@@ -7,7 +7,6 @@ import type {
 	SwitchProps,
 	FuzzyPayload,
 } from '$types'
-import {Preferences} from '$types'
 
 export type AppContextItems = {
 	display: SwitchProps[]
@@ -24,15 +23,15 @@ export type CookiePreferences = {
 
 export type ViewingPreferences = {
 	reveal: UiState
-	brightness: UiSettings
-	contrast: UiSettings
+	brightness?: UiSettings
+	contrast?: UiSettings
 	consent: CookiePreferences
 }
 
 export type SettingsProps = UiBlockProps &
 	Partial<FormProps> & {
 		id: string
-		path?: String
+		path?: string
 		items: SwitchProps[]
 		children?: Snippet
 		onupdate?: (payload: FuzzyPayload) => void
