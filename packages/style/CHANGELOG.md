@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.9
+
+### Patch Changes
+
+- 5892255: UI bugfixes & cleanup
+
 ## 0.1.8
 
 ### Patch Changes
