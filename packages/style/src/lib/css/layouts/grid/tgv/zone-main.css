@@ -8,12 +8,12 @@
 
 	> .page-header {
 		display: flex;
-		grid-column: span 3;
 	}
 
 	> .page-main {
 		display: flex;
-		grid-column: span 3;
+		inline-size: 100%;
+		block-size: 100%;
 
 		.scroll\:container {
 			max-block-size: calc(var(--max-block-size) - var(--ui-header-height));
