@@ -56,7 +56,7 @@
 	})
 </script>
 
-<menu {id} class={`player l:switcher:2xs th:2xs raviolink`}>
+<menu {id} class="player l:switcher:2xs th:2xs raviolink">
 	<li>
 		{#key actor.playState}
 			<Switch
@@ -79,7 +79,7 @@
 		<Button
 			id="clear"
 			name="clear"
-			{color}
+			color="accent"
 			{variant}
 			{size}
 			shape="pill w:full"
@@ -95,7 +95,7 @@
 		<Button
 			id="stop"
 			name="stop"
-			{color}
+			color="highlight"
 			{variant}
 			{size}
 			shape="pill w:full"

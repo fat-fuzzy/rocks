@@ -1,11 +1,12 @@
 [class*='state:'].canvas {
 	position: relative;
-	border: var(--border-inline-size-md) dotted var(--ink);
+	border: var(--border-width-md) dotted var(--ink);
 }
 
 .canvas {
+	--hue: var(--color-theme-primary);
 	position: relative;
-	box-shadow: var(--shadow-md);
+	border: var(--border-width-md) dotted var(--accent);
 }
 
 .state\:play {

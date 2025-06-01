@@ -8,15 +8,15 @@
 
 	> .page-header {
 		display: flex;
-		grid-column: span 3;
 	}
 
 	> .page-main {
 		display: flex;
-		grid-column: span 3;
+		inline-size: 100%;
+		block-size: 100%;
 
 		.scroll\:container {
-			max-block-size: calc(var(--max-block-size) - var(--ui-header-height));
+			max-block-size: var(--max-block-size);
 			scrollbar-gutter: unset;
 		}
 	}
@@ -26,6 +26,16 @@
 	.tgv.zone\:main {
 		> .page-main {
 			padding-inline: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 690px) {
+	.tgv.zone\:main {
+		> .page-main {
+			.scroll\:container {
+				max-block-size: calc(var(--max-block-size) - var(--ui-header-height));
+			}
 		}
 	}
 }
