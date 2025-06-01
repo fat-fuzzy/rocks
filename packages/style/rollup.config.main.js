@@ -32,7 +32,7 @@ export default {
 					files: [`${inDir}/css/tokens/tokens.css`],
 				}),
 				postcssJitProps({
-					files: [`${inDir}/css/tokens/tokens.css`],
+					files: [`${inDir}/css/*/**/*.css`],
 				}),
 				postcssPresetEnv(),
 				postcssMinify(),

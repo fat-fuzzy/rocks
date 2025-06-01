@@ -47,7 +47,7 @@ export default {
 				postcssMinify(),
 				autoprefixer(),
 				postcssJitProps({
-					files: [`${inDir}/css/tokens/tokens.css`],
+					files: [`${inDir}/css/*/**/*.css`],
 				}),
 			],
 			minimize: production,
