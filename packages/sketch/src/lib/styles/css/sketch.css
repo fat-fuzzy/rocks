@@ -33,6 +33,13 @@
 	margin-right: -100%; /* Hide the canvas without changing its dimensions */
 }
 
+.player li button {
+	inline-size: 100%;
+	min-inline-size: calc(
+		var(--sidebar-width) / 3 + var(--grid-gap) + var(--outline-offset-lg)
+	);
+}
+
 /* 
 [class*='pause'] canvas {
 	filter: grayscale(65%) opacity(35%) blur(1px);

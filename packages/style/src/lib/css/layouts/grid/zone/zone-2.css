@@ -67,11 +67,12 @@
 
 @media screen and (min-width: 1100px) {
 	.zone\:2 {
-		padding-inline: calc(4 * var(--grid-gap));
+		padding-inline: calc(4 * var(--grid-gap)) 0;
 	}
 
 	.zone\:2 .page-context:not(.empty) {
 		grid-column: span 3;
+		padding-inline: 0;
 	}
 
 	.zone\:2:has(dialog.zoomer[open]) {

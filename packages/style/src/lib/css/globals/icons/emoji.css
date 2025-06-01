@@ -9,11 +9,6 @@
 [class*='shape:'][class*='emoji'] {
 	--icon-gap: var(--ui-size-sm);
 	padding: var(--icon-gap);
-	max-inline-size: fit-content;
-}
-
-.shape\:pill[class*='emoji']  {
-	max-inline-size: unset;
 }
 
 .shape\:pill[class*='emoji']::before {

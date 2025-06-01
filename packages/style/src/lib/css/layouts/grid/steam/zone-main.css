@@ -19,12 +19,15 @@
 
 @media screen and (min-width: 1100px) {
 	.steam.zone\:main {
+		grid-column-start: 1;
 		grid-column: span 4;
 		max-block-size: var(--max-block-size);
 		padding-inline-end: calc(2 * var(--grid-gap));
 	}
 
-	.exchange.zone\:1:has(.sidebar.expanded) ~ .zone\:2.hug .steam.zone\:main {
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .steam.zone\:2.hug
+		.steam.zone\:main {
 		grid-column: span 1;
 	}
 }

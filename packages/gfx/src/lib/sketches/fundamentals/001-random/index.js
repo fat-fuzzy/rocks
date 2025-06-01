@@ -32,6 +32,14 @@ let meta = {
 	categories: ['Learning'],
 	tags: ['2D', 'webgl', 'webglfundamentals'],
 	controls: ['loop'],
+	warnings: [
+		{
+			slug: 'flashing-lights',
+			title: 'Heads Up!',
+			message:
+				'This sketch displays flashing lights or patterns. If you have photosensitivity, please proceed with caution.',
+		},
+	],
 }
 
 function init(canvas) {

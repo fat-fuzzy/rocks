@@ -23,9 +23,9 @@
 </div>
 
 <div class="palette l:taco:xs">
-	{#each hues as hue}
+	{#each hues as hue, i (i)}
 		<div class="hue">
-			{#each shades as shade}
+			{#each shades as shade, j (j)}
 				<figure class={`bg:${hue}:${shade}`}>
 					<p>{`bg:${hue}:${shade}`}</p>
 				</figure>

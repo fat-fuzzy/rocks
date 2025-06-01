@@ -141,13 +141,11 @@ const APP_SETTINGS: AppContextItems = {
 			states: {
 				active: {
 					...SWITCH_MACHINE.active,
-					text: 'night',
 					value: 'night',
 					asset: 'night',
 				},
 				inactive: {
 					...SWITCH_MACHINE.inactive,
-					text: 'day',
 					value: 'day',
 					asset: 'day',
 				},
@@ -164,13 +162,11 @@ const APP_SETTINGS: AppContextItems = {
 			states: {
 				active: {
 					...SWITCH_MACHINE.active,
-					text: 'contrast',
 					value: 'contrast',
 					asset: 'contrast',
 				},
 				inactive: {
 					...SWITCH_MACHINE.inactive,
-					text: 'blend',
 					value: 'blend',
 					asset: 'blend',
 				},

@@ -11,6 +11,7 @@
 		text,
 		context,
 		status,
+		title,
 		size,
 		font,
 		variant,
@@ -30,6 +31,13 @@
 		context === 'form' ? AriaLiveEnum.polite : undefined,
 	)
 	let testId = $derived(id === 'Feedback' ? id : `Feedback-${id}`)
+	let feedbackTitle = $derived(
+		title
+			? title
+			: context === 'prose' && status !== 'default'
+				? status
+				: undefined,
+	)
 </script>
 
 {#if context === 'code'}
@@ -42,8 +50,8 @@
 		data-testid={testId}
 		aria-live={ariaLive}
 	>
-		{#if context === 'prose' && status !== 'default'}
-			<p class="status">{status}</p>
+		{#if feedbackTitle}
+			<p class="status">{feedbackTitle}</p>
 		{/if}
 		<div class="message">
 			{#if children}
