@@ -4,10 +4,7 @@
 	grid-column: span 3;
 	min-block-size: unset;
 
-	> .page-header {
-		grid-column: span 3;
-	}
-
+	> .page-header,
 	> .page-main {
 		grid-column: span 3;
 	}
