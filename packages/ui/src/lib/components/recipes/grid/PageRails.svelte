@@ -34,23 +34,23 @@
 	})
 
 	const zoneMainClasses: {[key: string]: string} = {
-		metro: 'l:grid size:3xs scroll:y justify:center align:start',
-		railway: 'l:grid size:3xs scroll:y justify:center align:start',
+		metro: 'l:grid size:3xs scroll:y  align:start',
+		railway: 'l:grid size:3xs scroll:y  align:start',
 		steam: 'l:grid size:3xs scroll:y align:start justify:center align:start',
-		tgv: 'snap:center justify:center align:start',
+		tgv: 'snap:center align:start',
 		tram: 'l:grid snap:start size:3xs scroll:y justify:center align:start',
-		voyager: 'snap:start size:3xs scroll:y l:flex justify:center align:start',
+		voyager: 'snap:start size:3xs scroll:y  align:start',
 		urbanist: 'snap:start l:grid size:3xs scroll:y',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
-		metro: 'justify:center align:start',
-		railway: 'justify:center align:start',
+		metro: 'align:start',
+		railway: 'align:start',
 		steam: 'l:flex justify:center align:start',
-		tgv: 'l:grid',
+		tgv: '',
 		tram: 'l:grid align:start',
-		voyager: 'l:flex justify:center align:start l:text:md',
-		urbanist: 'justify:center align:start',
+		voyager: 'l:flex align:start l:text:md',
+		urbanist: 'l:flex align:start',
 	}
 
 	const contextClasses: {[key: string]: string} = {
