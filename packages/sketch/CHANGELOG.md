@@ -1,5 +1,15 @@
 # @fat-fuzzy/sketch
 
+## 0.1.13
+
+### Patch Changes
+
+- 5892255: UI bugfixes & cleanup
+- Updated dependencies [5892255]
+  - @fat-fuzzy/gfx@0.1.6
+  - @fat-fuzzy/style@0.1.9
+  - @fat-fuzzy/ui@0.1.60
+
 ## 0.1.12
 
 ### Patch Changes

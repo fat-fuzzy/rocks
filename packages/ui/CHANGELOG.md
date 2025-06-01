@@ -1,5 +1,13 @@
 # @fat-fuzzy/ui
 
+## 0.1.60
+
+### Patch Changes
+
+- 5892255: UI bugfixes & cleanup
+- Updated dependencies [5892255]
+  - @fat-fuzzy/style@0.1.9
+
 ## 0.1.59
 
 ### Patch Changes
