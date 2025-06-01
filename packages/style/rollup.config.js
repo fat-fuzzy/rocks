@@ -41,14 +41,14 @@ export default {
 			plugins: [
 				postcssBundler(),
 				postcssGlobalData({
-					files: ['src/lib/css/tokens/tokens.css'],
-				}),
-				postcssJitProps({
-					files: ['src/lib/css/tokens/tokens.css'],
+					files: [`${inDir}/css/tokens/tokens.css`],
 				}),
 				postcssPresetEnv(),
 				postcssMinify(),
 				autoprefixer(),
+				postcssJitProps({
+					files: [`${inDir}/css/tokens/tokens.css`],
+				}),
 			],
 			minimize: production,
 			sourceMap: !production,
