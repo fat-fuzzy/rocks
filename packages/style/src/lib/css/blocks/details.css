@@ -10,8 +10,8 @@ details > summary {
 	cursor: pointer;
 	display: block;
 	color: var(--color-ui-ink, var(--ink));
-	background-color: var(--color-ui-bg, var(--shade));
-	border: var(--border-width-md) solid var(--color-ui-border, var(--accent));
+	background-color: var(--color-bg, var(--shade));
+	border: var(--border-width-md) solid var(--border-color, var(--shade));
 	border-radius: var(--border-radius-base);
 	font-weight: var(--font-weight-ui);
 	line-height: var(--font-leading-large);
@@ -39,10 +39,9 @@ details > summary::-webkit-details-marker {
 }
 
 details[open] > summary {
-	color: var(--color-ui-ink-active, var(--ink));
-	background-color: var(--color-ui-bg-active, var(--shade));
-	border: var(--border-width-md) solid
-		var(--color-ui-border-active, var(--accent));
+	color: var(--color-ink, var(--ink));
+	background-color: var(--color-bg, var(--shade));
+	border: var(--border-width-md) solid var(--border-color, var(--accent));
 }
 
 details[open] > summary::before {
