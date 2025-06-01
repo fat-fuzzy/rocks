@@ -39,7 +39,7 @@
 		steam: 'l:grid size:3xs scroll:y align:start justify:center align:start',
 		tgv: 'snap:center align:start',
 		tram: 'l:grid snap:start size:3xs scroll:y justify:center align:start',
-		voyager: 'snap:start size:3xs scroll:y  align:start',
+		voyager: 'l:grid snap:start size:3xs scroll:y align:start',
 		urbanist: 'snap:start l:grid size:3xs scroll:y',
 	}
 
@@ -49,7 +49,7 @@
 		steam: 'l:flex justify:center align:start',
 		tgv: '',
 		tram: 'l:grid align:start',
-		voyager: 'l:flex align:start l:text:md',
+		voyager: 'l:flex align:start',
 		urbanist: 'l:flex align:start',
 	}
 
