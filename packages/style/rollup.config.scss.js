@@ -1,21 +1,17 @@
 import scss from 'rollup-plugin-scss'
-import postcss from 'postcss'
-import autoprefixer from 'autoprefixer'
-
-const production = process.env.NODE_ENV === 'production'
+import path from 'node:path'
+const inDir = path.resolve('src/lib/scss')
+const outDir = path.resolve('src/lib/css/mixins/')
 
 /**
  * This config will preprocess scss in `src/lib/scss/` and output a bundled CSS file to "src/mixins/index.css"
  */
 export default {
-	input: 'src/lib/scss/index.js',
-	output: {dir: 'src/lib/css/mixins/', format: 'esm'},
+	input: `${inDir}/index.js`,
+	output: {dir: outDir, format: 'esm'},
 	plugins: [
 		scss({
 			fileName: 'index.css',
-			processor: () => postcss([autoprefixer()]),
-			// processor: () => postcss([autoprefixer({overrideBrowserslist: 'Edge 18'})]),
-			watch: 'src/lib/scss',
 		}), // will output compiled styles to "src/lib/css/mixins/main.css",
 	],
 }
