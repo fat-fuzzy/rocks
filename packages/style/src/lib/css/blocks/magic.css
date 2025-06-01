@@ -129,6 +129,8 @@ ff-callout[class*='magic'].shape\:round {
 			var(--color-gradient-001-middle) 70% 70%,
 			var(--color-gradient-001-start) 88% 88%
 		);
+		--lightness-contrast: var(--color-lightness-000);
+		--chroma-contrast: var(--color-chroma-000);
 		font-weight: var(--font-weight-semibold);
 	}
 
