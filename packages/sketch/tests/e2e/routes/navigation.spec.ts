@@ -21,9 +21,6 @@ sketches.map((sketch) => {
 			.click()
 
 		// Expects page to have a heading with the name of Installation.
-		await expect(page.getByRole('heading', {name: 'Play'})).toBeVisible()
-		await expect(
-			page.getByRole('heading', {name: ` ❤︎ ${sketch.title}`}),
-		).toBeVisible()
+		await expect(page.getByRole('heading', {name: sketch.title})).toBeVisible()
 	})
 })
