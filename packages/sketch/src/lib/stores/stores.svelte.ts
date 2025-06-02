@@ -1,9 +1,5 @@
-import ui from '@fat-fuzzy/ui'
-
-const {DEFAULT_PREFERENCES} = ui.constants
-
 class SketchStore {
-	app = $state(DEFAULT_PREFERENCES)
+	app = $state({brightness: 'day', contrast: 'contrast'})
 	constructor() {}
 	// TODO: init and update functions
 }

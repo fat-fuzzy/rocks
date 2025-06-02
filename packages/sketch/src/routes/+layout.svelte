@@ -3,9 +3,9 @@
 	import '@fat-fuzzy/style'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import sketchStore from '$lib/stores/stores.svelte'
 
-	const {LayoutSidebar} = ui.content
+	const {RevealNav} = ui.recipes
+	const {LayoutGrid} = ui.content
 
 	type Props = {
 		children: Snippet
@@ -13,29 +13,89 @@
 
 	let {children}: Props = $props()
 
+	let appContext = $derived(page.data.appContext)
+
 	let sketches = $state(page.data.sketches)
-	let appContext = $derived(sketchStore.app)
 
 	let path = ''
 
 	let nav = {
 		path,
+		id: 'sidebar',
+		slug: 'play',
 		title: 'Sketches',
-		id: 'nav-sketches',
+		label: 'Sketches',
 		items: sketches,
 		reveal: 'expanded',
 		background: 'inherit',
 		breakpoint: 'sm',
 		size: 'sm',
 		color: 'primary',
-		position: 'fixed',
 		place: 'left',
 		formaction: 'toggleSidebar',
 	}
+
+	type AreaZone = {
+		zone: Snippet
+		grid?: boolean
+		gare?: string
+		scroll?: string
+		exchange?: boolean
+		hug?: boolean
+		tag?: string
+	}
+
+	const areas: AreaZone[] = $derived([
+		{
+			zone: zoneHeader,
+			grid: true,
+			exchange: true,
+			tag: 'header',
+		},
+		{
+			zone: zoneContent,
+			grid: true,
+		},
+		{
+			zone: zoneFooter,
+			grid: true,
+		},
+	])
 </script>
 
-<LayoutSidebar {nav} app={{settings: appContext}}>
+<LayoutGrid
+	layout="steam"
+	{areas}
+	size="3xs"
+	app={appContext}
+	path={page.url.pathname}
+/>
+
+{#snippet zoneHeader()}
+	<RevealNav
+		{...nav}
+		position={false}
+		area="gare"
+		place="ouest"
+		layout="rails"
+		scroll="y"
+		layer={1}
+		justify="evenly"
+		size="sm"
+		font="xs"
+		width="lg"
+		height="sm"
+		background="inherit"
+		dismiss="outside"
+	/>
+{/snippet}
+
+{#snippet zoneContent()}
 	{#if children}
 		{@render children()}
+	{:else}
+		<p class="feedback bare emoji:default">Coming Soon!</p>
 	{/if}
-</LayoutSidebar>
+{/snippet}
+
+{#snippet zoneFooter()}{/snippet}
