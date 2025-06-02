@@ -16,7 +16,7 @@ html:has(.rails[class*='l:grid']) {
 }
 
 body:has(.rails[class*='l:grid']) {
-	min-block-size: 100vh;
+	block-size: 100vh;
 	min-block-size: -webkit-fill-available;
 }
 

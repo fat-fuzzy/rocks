@@ -22,10 +22,21 @@ sketches.map((sketch) => {
 			(sketch.controls?.length === 1 && sketch.controls[0] !== 'loop')
 
 		// Expects page to have a heading with the name the Sketch
-		await expect(page.getByRole('heading', {name: 'Play'})).toBeVisible()
+		await expect(page.getByRole('heading', {name: sketch.title})).toBeVisible()
+
 		await expect(
-			page.getByRole('heading', {name: ` ❤︎ ${sketch.title}`}),
-		).toBeVisible()
+			page.getByRole('button', {name: 'Play', exact: false}),
+		).toBeEnabled()
+
+		await expect(
+			page.getByRole('button', {name: 'Clear', exact: false}),
+		).toBeDisabled()
+
+		await expect(
+			page.getByRole('button', {name: 'Stop', exact: false}),
+		).toBeDisabled()
+
+		await page.getByText('debug').click()
 
 		previousEvent = page
 			.getByTestId('debug-table')

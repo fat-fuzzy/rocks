@@ -3,7 +3,6 @@ import playwright from '@fat-fuzzy/config/playwright'
 /** @type { import("@playwright/test").PlaywrightTestConfig } */
 const playwrightConfig = {
 	...playwright,
-	timeout: 3000,
 	projects: [
 		{
 			name: 'Desktop',

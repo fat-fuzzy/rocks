@@ -17,8 +17,9 @@
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
 		"test:todo": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright test",
-		"test:report": "playwright show:report",
+		"test:ui": "NODE_ENV=test playwright test --ui",
+		"test:e2e": "NODE_ENV=test playwright test",
+		"test:report": "NODE_ENV=test playwright test --reporter=html",
 		"test": "echo \"@fat-fuzzy/prose: no tests specified\""
 	},
 	"files": [
@@ -61,7 +62,7 @@
 		"globals": "^16.2.0",
 		"mdsvex": "^0.12.6",
 		"publint": "^0.3.12",
-		"svelte": "^5.33.10",
+		"svelte": "^5.33.13",
 		"svelte-check": "^4.2.1",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.5",
