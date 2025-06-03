@@ -1,12 +1,17 @@
 [class*='state:'].canvas {
 	position: relative;
-	border: var(--border-width-md) dotted var(--ink);
+	border: var(--border-width-lg) dotted var(--accent);
 }
 
 .canvas {
-	--hue: var(--color-theme-primary);
 	position: relative;
-	border: var(--border-width-md) dotted var(--accent);
+	border: var(--border-width-lg) dotted var(--accent);
+}
+
+.canvas[class*='play'],
+.canvas[class*='clear'],
+.canvas[class*='pause'] {
+	border: var(--border-width-lg) dotted var(--shade);
 }
 
 .state\:play {
