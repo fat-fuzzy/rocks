@@ -15,14 +15,13 @@
 	import PropsDoc from './PropsDoc.svelte'
 
 	const {PageRails} = ui.content
-	const {Zoomer} = ui.drafts
 	const {Magic} = ui.blocks
 
 	const {EscapeHtml} = ui.headless
 
 	type Props = {
-		category: any // TODO: fix types
-		content: any
+		category: string
+		content: {html: string; meta: unknown} // TODO: fix types
 		title: string
 		path: string
 		formaction?: string
@@ -118,12 +117,12 @@
 	layout="tram"
 >
 	{#snippet main()}
-		<div class="l:stack size:2xl">
+		<div class="l:stack:2xl">
 			<EscapeHtml id="doc" html={content.html} size="md" font="md" />
 
-			<section id="playbook" class="l:stack size:2xl">
-				<div class="l:stack size:2xl">
-					<div class="l:text:lg size:xl maki:auto">
+			<section id="playbook" class="l:stack:2xl">
+				<div class="l:stack:2xl">
+					<div class="l:text:lg maki:auto">
 						<Magic
 							id="playbook-heading"
 							{spell}
