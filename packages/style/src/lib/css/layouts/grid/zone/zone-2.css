@@ -23,7 +23,6 @@
 		padding-block-end: var(--grid-gap);
 		padding-inline: var(--grid-gap);
 		border-radius: var(--border-radius-lg);
-		scrollbar-width: none;
 	}
 
 	> .page-context.empty {

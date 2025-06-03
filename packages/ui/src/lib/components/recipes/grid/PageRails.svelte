@@ -48,7 +48,7 @@
 		railway: 'align:start',
 		steam: 'l:flex justify:center align:start',
 		tgv: '',
-		tram: 'l:grid align:start',
+		tram: 'l:grid size:3xs align:start',
 		voyager: 'l:flex align:start',
 		urbanist: 'l:flex align:start',
 	}
