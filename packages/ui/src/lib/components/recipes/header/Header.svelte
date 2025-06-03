@@ -78,7 +78,7 @@
 		onupdate={preferences.onupdate}
 	/>
 	<ul class="links:settings end unstyled">
-		{#each preferences.links as { title, url, shape, size, asset }}
+		{#each preferences.links as { title, url, shape, size, asset }, i (i)}
 			<li>
 				<a
 					class={`${variant} shape:${shape} color:${color} ${asset} size:${size}`}
@@ -109,9 +109,6 @@
 	</div>
 {:else}
 	<header class={`${positionClass} bg:inherit`}>
-		<div class="app-name">
-			<p class="maki:inline">Rails</p>
-		</div>
 		<div class={`l:sidebar ${className} align:center`}>
 			<div class="l:main l:flex align:center">
 				{@render headerMain()}
