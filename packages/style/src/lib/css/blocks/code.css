@@ -13,8 +13,8 @@ pre {
 	--ui-size: var(--font-size);
 	color: var(--color-ink);
 	background-color: var(--color-bg);
-	padding-inline: var(--ui-size) var(--ui-size-lg);
-	padding-block: var(--ui-size);
+	padding-inline: var(--ui-size-lg);
+	padding-block: var(--ui-size-lg);
 	border: var(--border-width-xl) solid var(--color-accent);
 	max-inline-size: 100%;
 	max-inline-size: calc(100vw - 2 * var(--gap));

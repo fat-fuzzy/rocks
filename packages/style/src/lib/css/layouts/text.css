@@ -48,6 +48,11 @@ ul.unstyled {
 	padding: 0;
 }
 
+[class*='l:text'] > ol,
+[class*='l:text'] > ul {
+	padding-inline-start: calc(2 * var(--ui-size-lg));
+}
+
 .l\:text\:2xs {
 	--text-inline-size: 20ch;
 }
