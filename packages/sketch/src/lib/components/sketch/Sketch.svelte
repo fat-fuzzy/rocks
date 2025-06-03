@@ -258,7 +258,7 @@
 				{/each}
 			</div>
 		{/if}
-		<div class={frameClasses}>
+		<div class={`${frameClasses} color:primary`}>
 			<canvas
 				id={`${id}.canvas`}
 				aria-label={title}
