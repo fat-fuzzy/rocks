@@ -14,9 +14,8 @@
 	const {Magic} = ui.blocks
 
 	type Props = {
-		category: any // TODO: fix types
-		markdowns: any
-		content: any
+		category: string
+		content: {html: string; meta: unknown} // TODO: fix types
 		path: string
 		depth: number
 		isPage: boolean
@@ -60,7 +59,7 @@
 			labelledBy: category,
 		},
 	]
-	const components: {category: string; items: any}[] = [
+	const components: {category: string; items: unknown}[] = [
 		{category: 'tokens', items: ui.tokens},
 		{category: 'blocks', items: ui.blocks},
 		{category: 'layouts', items: ui.layouts},
@@ -92,7 +91,7 @@
 	{#if category === 'raw'}
 		<div>
 			<ul class="unstyled l:grid:auto size:sm">
-				{#each componentNames as name}
+				{#each componentNames as name, i (i)}
 					<li>
 						<a
 							href={`${link}/${name}`}
@@ -111,7 +110,7 @@
 		</div>
 	{:else}
 		<div class={layoutClass}>
-			{#each componentNames as name}
+			{#each componentNames as name, i (i)}
 				{@const SpecifiedElement = items[name]}
 				<article
 					id={`ravioli-${title}`}
@@ -144,8 +143,8 @@
 
 {#snippet comingSoon()}
 	<div class="ravioli:lg text:center">
-		<p class={`font:xl`}>🐰</p>
-		<p class={`font:md`}>Coming soon!</p>
+		<p class="font:xl">🐰</p>
+		<p class="font:md">Coming soon!</p>
 	</div>
 {/snippet}
 
@@ -160,17 +159,17 @@
 		layout="tram"
 	>
 		{#snippet main()}
-			<div class="l:stack size:2xl">
+			<div class="l:stack:2xl">
 				<EscapeHtml
 					id="doc"
-					html={content.html}
+					html={content.html || ''}
 					size="md"
 					font="md"
 					element="section"
 				/>
 
 				<section id="playbook">
-					<div class="l:stack size:2xl">
+					<div class="l:stack:2xl">
 						<div class="l:text:lg maki:auto">
 							<Magic
 								id="playbook-heading"
@@ -209,7 +208,7 @@
 			{@render comingSoon()}
 		{/if}
 
-		<details class={`l:stack size:${size} maki:block`}>
+		<details class={`l:stack:${size} maki:block`}>
 			<summary
 				class={`color:${color} variant:outline ravioli:2xs emoji:${category}`}
 			>
