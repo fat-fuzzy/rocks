@@ -10,7 +10,7 @@ const usagesMarkdowns = usages.markdowns
 	.reverse()
 
 export const load = async ({locals, url, params}) => {
-	let sidebar = buildNav('doc')
+	const sidebar = buildNav('doc')
 
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.actionPath = url.pathname

@@ -38,7 +38,7 @@
 		railway: 'l:grid size:3xs scroll:y  align:start',
 		steam: 'l:grid size:3xs scroll:y align:start justify:center align:start',
 		tgv: 'snap:center align:start',
-		tram: 'l:grid snap:start size:3xs scroll:y justify:center align:start',
+		tram: 'l:grid snap:start size:3xs scroll:y align:start',
 		voyager: 'l:grid snap:start size:3xs scroll:y align:start',
 		urbanist: 'snap:start l:grid size:3xs scroll:y',
 	}

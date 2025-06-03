@@ -9,17 +9,25 @@
 	> .page-header {
 		grid-area: page-header;
 		block-size: fit-content;
+		padding-inline: calc(2 * var(--grid-gap));
 	}
 
 	> .page-main {
 		grid-area: page-main;
-		padding-inline: var(--outline-offset-sm);
 		padding-block-end: var(--grid-gap);
+		padding-inline: calc(2 * var(--grid-gap));
 	}
 }
 
 @media screen and (min-width: 620px) {
 	.zone\:main {
 		padding-block-start: var(--ui-size-lg);
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.metro.zone\:main {
+		grid-column-start: 1;
+		grid-column-end: 3;
 	}
 }

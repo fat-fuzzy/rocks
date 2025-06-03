@@ -107,7 +107,7 @@ figcaption {
 ol,
 ul {
 	margin: 0;
-	padding-inline-start: calc(2 * var(--ui-size));
+	padding-inline-start: var(--gap, calc(2 * var(--ui-size)));
 
 	&.unstyled {
 		list-style: none;

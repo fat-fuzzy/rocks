@@ -24,8 +24,8 @@
 >
 	{#snippet main()}
 		<div class="l:text:md">
-			<ul class="l:grid:auto size:sm unstyled">
-				{#each markdowns as { meta }}
+			<ul class="l:grid:auto size:sm">
+				{#each markdowns as { meta }, i (i)}
 					{#if meta.status !== 'draft'}
 						<a
 							class="surface:2:neutral ravioli:sm"

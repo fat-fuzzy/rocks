@@ -6,11 +6,9 @@
 .zone\:2 {
 	grid-area: zone-2;
 	grid-template-areas:
-		'zone-main'
-		'page-context';
-	grid-template-columns: subgrid;
+		'zone-main    zone-main    zone-main'
+		'page-context page-context page-context';
 	z-index: var(--layout-z-index-layer);
-	padding-inline: calc(2 * var(--grid-gap));
 
 	&.scroll\:y {
 		scrollbar-gutter: auto;
@@ -18,7 +16,6 @@
 
 	> .page-context:not(.empty) {
 		grid-area: page-context;
-		grid-column: span 3;
 		position: relative;
 		align-content: start;
 		align-items: start;
@@ -35,19 +32,24 @@
 		inline-size: 0;
 		padding: 0;
 	}
+
+	> .page-main {
+		--size-y: 0;
+		block-size: 0;
+		inline-size: 0;
+		padding: 0;
+	}
 }
 
 @media screen and (min-width: 620px) {
 	.zone\:2 {
-		grid-template-areas: 'zone-main page-context';
+		grid-template-areas: 'zone-main zone-main page-context';
+		grid-template-columns: subgrid;
 		grid-template-rows: 1fr;
-		padding-inline: calc(4 * var(--grid-gap)) var(--grid-gap);
 
 		> .page-context:not(.empty) {
-			grid-column: span 1;
 			scrollbar-width: thin;
-			padding-inline: var(--grid-gap)
-				calc(var(--grid-gap) + 2 * var(--outline-offset-lg));
+			padding-inline: 0;
 		}
 
 		> .page-context {
