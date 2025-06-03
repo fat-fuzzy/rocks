@@ -210,7 +210,7 @@
 	{#if input === 'datalist'}
 		<label
 			for={`choice-${styleInput.name}`}
-			class={`l:stack size:${apiSize} font:${apiSize}`}
+			class={`l:stack:${apiSize} font:${apiSize}`}
 		>
 			{`Select ${styleInput.name}`}
 			<input
@@ -222,7 +222,7 @@
 					handleSelect(event, familyName, styleInput.name, styleInput.id)}
 			/>
 			<datalist id={`datalist-${styleInput.name}`}>
-				{#each items as { id, text, asset, value }}
+				{#each items as { id, text, asset, value }, i (i)}
 					<option {id} label={text} value={`${asset}:${value}`}> </option>
 				{/each}
 			</datalist>

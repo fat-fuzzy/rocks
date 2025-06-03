@@ -33,7 +33,7 @@
 	)
 </script>
 
-<label class={`l:stack size:${size} ${inputClasses}`}>
+<label class={`l:stack:${size} ${inputClasses}`}>
 	{label}
 	<input
 		{id}

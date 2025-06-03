@@ -43,7 +43,7 @@
 						{title}
 					</h1>
 				</div>
-				<div class="l:side maki:block l:stack size:md">
+				<div class="l:side maki:block l:stack:md">
 					<h3>Stopping at:</h3>
 					<LineLong />
 				</div>
@@ -57,7 +57,7 @@
 						</h2>
 						<h3>Artist: The Orb</h3>
 					</div>
-					<div class="maki:inline l:stack size:lg">
+					<div class="maki:inline l:stack:lg">
 						<Prose />
 						<Details
 							title="Content Details"
@@ -71,7 +71,7 @@
 				<aside
 					class={`l:side surface:2:${theme} maki:block l:grid:auto size:md`}
 				>
-					<nav class="l:stack size:lg">
+					<nav class="l:stack:lg">
 						<h4 class="maki:inline size:sm">Exchange At</h4>
 						<LineShort />
 						<LineMedium />

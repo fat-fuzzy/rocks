@@ -33,35 +33,35 @@
 					<li
 						class={`l:frame:video surface:0:${theme} dotted font:xl ravioli:xl`}
 					>
-						<p class="l:stack size:2xl emoji:default align:center text:center">
+						<p class="ll:stack:2xl emoji:default align:center text:center">
 							Welcome to the TGV grid layout!
 						</p>
 					</li>
 					<li
 						class={`l:frame:video surface:0:${theme} dotted font:xl ravioli:xl`}
 					>
-						<p class="l:stack size:2xl emoji:pause align:center">
+						<p class="ll:stack:2xl emoji:pause align:center">
 							Enjoy a fast and pleasant journey though the page
 						</p>
 					</li>
 					<li
 						class={`l:frame:video surface:0:${theme} dotted font:xl ravioli:xl`}
 					>
-						<p class="l:stack size:2xl emoji:magic align:center">
+						<p class="ll:stack:2xl emoji:magic align:center">
 							Structure media content on wide sections
 						</p>
 					</li>
 					<li
 						class={`l:frame:video surface:0:${theme} dotted font:xl ravioli:xl`}
 					>
-						<p class="l:stack size:2xl emoji:wave align:center justify:end">
+						<p class="ll:stack:2xl emoji:wave align:center justify:end">
 							Keep it optimized and simple
 						</p>
 					</li>
 					<li
 						class={`l:frame:video surface:0:${theme} dotted font:xl ravioli:xl`}
 					>
-						<p class="l:stack size:2xl emoji:rainbow align:center justify:end">
+						<p class="ll:stack:2xl emoji:rainbow align:center justify:end">
 							And enjoy the ride!
 						</p>
 					</li>

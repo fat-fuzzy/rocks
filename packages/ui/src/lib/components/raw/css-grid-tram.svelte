@@ -38,7 +38,7 @@
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
-			<div class="page-main maki:inline size:lg l:stack size:lg">
+			<div class="page-main maki:inline size:lg l:stack:lg">
 				<Gallery id="creatures" {theme} />
 				<Gallery id="halloween" theme="tangerine" />
 			</div>
@@ -48,7 +48,7 @@
 		>
 			<div class="l:stack maki:inline size:md">
 				<h4 class="maki:block">Tours:</h4>
-				<ul class="unstyled l:stack size:md">
+				<ul class="unstyled l:stack:md">
 					<li class="ellipsis snap:center">
 						<a href="#section-creatures" class="raviolink">Creatures</a>
 					</li>

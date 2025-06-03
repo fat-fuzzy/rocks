@@ -99,7 +99,7 @@
 
 <div
 	id={`context-${id}`}
-	class={`${contextClass} l:stack size:${size} bg:inherit scroll:y ${mediaClass}`}
+	class={`${contextClass} l:stack:${size} bg:inherit scroll:y ${mediaClass}`}
 >
 	{#if nav && nav.length > 0}
 		<PageNav id="page-nav" {hash} items={nav} />
