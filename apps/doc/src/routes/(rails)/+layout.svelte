@@ -18,7 +18,11 @@
 
 	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
-	let layout = $derived(page.data.layout ?? sidenav.layout)
+	let layout = $derived.by(() =>
+		page.url.pathname === '/doc/decisions' || page.url.pathname === '/doc/usage'
+			? 'tram'
+			: (page.data.layout ?? sidenav.layout),
+	)
 	let appContext = $derived(page.data.appContext)
 
 	type AreaZone = {

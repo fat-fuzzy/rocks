@@ -17,12 +17,12 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	app={appContext}
-	layout={page.data.layout}
+	layout="tram"
 >
 	{#snippet main()}
 		<div class="l:text:md">
-			<ul class="l:grid:auto size:xs unstyled">
-				{#each markdowns as { meta }}
+			<ul class="l:grid:auto size:xs">
+				{#each markdowns as { meta }, i (i)}
 					{#if meta.status !== 'draft'}
 						<a
 							class="surface:2:neutral ravioli:sm"
