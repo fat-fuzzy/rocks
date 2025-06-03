@@ -5,7 +5,7 @@
 .metro.zone\:2 {
 	grid-template-rows:
 		1fr
-		minmax(auto, var(--overlay-height-3xs));
+		minmax(auto, var(--overlay-height-2xs));
 	max-block-size: var(--max-block-size);
 }
 
