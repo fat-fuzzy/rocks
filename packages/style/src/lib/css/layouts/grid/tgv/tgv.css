@@ -25,6 +25,14 @@
 	grid-template-rows: var(--ui-header-height) 1fr auto;
 }
 
+@media screen and (min-width: 620px) {
+	.l\:grid\:tgv {
+		--max-block-size: calc(
+			100vh - 3 * var(--ui-header-height) - 2 * var(--grid-gap)
+		);
+	}
+}
+
 @media screen and (min-width: 690px) {
 	.l\:grid\:tgv {
 		--max-block-size: calc(
