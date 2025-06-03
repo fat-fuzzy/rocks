@@ -29,8 +29,7 @@
 @media screen and (min-width: 620px) {
 	.l\:grid\:steam {
 		--max-block-size: calc(
-			100vh - var(--ui-header-height) - var(--grid-gap) -
-				var(--outline-offset-md)
+			100vh - var(--ui-header-height) - var(--outline-offset-md)
 		);
 	}
 }
