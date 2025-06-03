@@ -26,6 +26,15 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
+@media screen and (min-width: 620px) {
+	.l\:grid\:steam {
+		--max-block-size: calc(
+			100vh - var(--ui-header-height) - var(--grid-gap) -
+				var(--outline-offset-md)
+		);
+	}
+}
+
 @media screen and (min-width: 690px) {
 	.l\:grid\:steam {
 		--overlay-inline-size: var(--sidebar-xl);
@@ -38,14 +47,17 @@
 
 @media screen and (min-width: 1100px) {
 	.l\:grid\:steam {
+		--max-block-size: calc(
+			100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap) -
+				var(--outline-offset-md)
+		);
 		grid-template-areas:
 			'zone-1  zone-1  zone-1  zone-1  zone-1  zone-1  zone-1'
 			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'
 			'zone-3  zone-3  zone-3  zone-3  zone-3  zone-3  zone-3';
 		grid-template-columns:
-			var(--sidebar-track-sm) var(--sidebar-track-md) var(
-				--sidebar-track-lg
-			) 1fr var(--sidebar-track-lg)
+			var(--sidebar-track-sm) var(--sidebar-track-md) var(--sidebar-track-lg)
+			1fr var(--sidebar-track-lg)
 			var(--sidebar-track-md) var(--sidebar-track-sm);
 	}
 }
