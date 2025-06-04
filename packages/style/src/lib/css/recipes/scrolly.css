@@ -1,4 +1,4 @@
-.scroll\:container {
+.scrolly.scroll\:container {
 	position: sticky;
 	background: linear-gradient(
 		to bottom,
@@ -8,14 +8,13 @@
 	block-size: 100%;
 }
 
-.scroll\:container {
+.scrolly.scroll\:container {
 	display: flex;
 	flex-direction: column;
 	gap: 20vh;
 	justify-content: var(--justify, space-between);
 	align-items: center;
 	inline-size: 100%;
-	overflow-y: auto;
 	scrollbar-color: var(--thumb) var(--track);
 }
 
@@ -60,7 +59,7 @@
 	block-size: 100%;
 }
 
-.scroll\:container[class*='l:frame'] {
+.scrolly.scroll\:container[class*='l:frame'] {
 	block-size: 85vh;
 }
 

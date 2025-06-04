@@ -21,6 +21,14 @@
 	inline-size: var(--size-x);
 }
 
+.scroll\:container:has(.scroll\:y) {
+	overflow: hidden auto;
+}
+
+.scroll\:container:has(.scroll\:x) {
+	overflow: auto hidden;
+}
+
 .scroll\:y.snap {
 	scroll-snap-type: y;
 }
