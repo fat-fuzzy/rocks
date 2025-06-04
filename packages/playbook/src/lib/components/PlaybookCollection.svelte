@@ -74,13 +74,6 @@
 	//== App preferences (user controlled)
 	let brightness = $derived(appContext.brightness || '')
 	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
-	let layoutClass = $derived(
-		category === 'tokens'
-			? `l:stack:${size}`
-			: category === 'recipes'
-				? `l:grid:auto size:lg`
-				: `l:${layout}:${size}`,
-	)
 
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
@@ -89,36 +82,12 @@
 
 {#snippet categoryElements()}
 	{#if category === 'raw'}
-		<div>
-			<ul class="unstyled l:grid:auto size:sm">
-				{#each componentNames as name, i (i)}
-					<li>
-						<a
-							href={`${link}/${name}`}
-							class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
-						>
-							<svelte:element
-								this={`h${String(elementTitleDepth)}`}
-								class="link font:sm"
-							>
-								{name}
-							</svelte:element>
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</div>
-	{:else}
-		<div class={layoutClass}>
+		<ul class="l:grid:auto size:sm">
 			{#each componentNames as name, i (i)}
-				{@const SpecifiedElement = items[name]}
-				<article
-					id={`ravioli-${title}`}
-					class={`variant:bare w:auto ui:${name.toLowerCase()}`}
-				>
+				<li>
 					<a
 						href={`${link}/${name}`}
-						class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+						class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 					>
 						<svelte:element
 							this={`h${String(elementTitleDepth)}`}
@@ -127,17 +96,37 @@
 							{name}
 						</svelte:element>
 					</a>
-					<Element
-						title={name}
-						{path}
-						{category}
-						{SpecifiedElement}
-						{formaction}
-						{actionPath}
-					/>
-				</article>
+				</li>
 			{/each}
-		</div>
+		</ul>
+	{:else}
+		{#each componentNames as name, i (i)}
+			{@const SpecifiedElement = items[name]}
+			<article
+				id={`ravioli-${title}`}
+				class={`variant:bare w:auto ui:${name.toLowerCase()}`}
+			>
+				<a
+					href={`${link}/${name}`}
+					class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+				>
+					<svelte:element
+						this={`h${String(elementTitleDepth)}`}
+						class="link font:sm"
+					>
+						{name}
+					</svelte:element>
+				</a>
+				<Element
+					title={name}
+					{path}
+					{category}
+					{SpecifiedElement}
+					{formaction}
+					{actionPath}
+				/>
+			</article>
+		{/each}
 	{/if}
 {/snippet}
 
