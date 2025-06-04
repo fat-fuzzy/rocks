@@ -65,7 +65,7 @@
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 </script>
 
-<div class={`ravioli:lg ${containerClasses}`}>
+<div class={`ravioli:md ${containerClasses}`}>
 	<GenericElement
 		isPage={false}
 		{path}

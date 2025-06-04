@@ -6,13 +6,11 @@
 .exchange > .context {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
 	grid-area: context;
-	grid-template-areas: 'app-context';
 	grid-template-columns: subgrid;
 	z-index: var(--layout-z-index-layer);
 }
 
 .exchange > .context > .app-context {
-	grid-area: app-context;
 	grid-template-columns: subgrid;
 	align-items: center;
 	justify-content: start;
@@ -43,7 +41,7 @@
 }
 
 /* This form contains the actual settings */
-.exchange > .context > .app-context > form   {
+.exchange > .context > .app-context > form {
 	display: flex;
 	justify-content: flex-end;
 }

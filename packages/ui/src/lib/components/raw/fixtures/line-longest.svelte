@@ -1,5 +1,5 @@
 <h3 class="maki:inline size:sm font:sm">Metro Line:</h3>
-<ul class="l:stack size:md">
+<ul class="l:stack:md">
 	<li class="ellipsis snap:center">
 		<a href="#section-1" class="raviolink"> 04:45 - Paris s’éveille </a>
 	</li>

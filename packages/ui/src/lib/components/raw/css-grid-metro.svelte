@@ -39,7 +39,7 @@
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
-			<div class="page-main maki:inline l:stack size:lg">
+			<div class="page-main maki:inline l:stack:lg">
 				<Prose />
 				<Details title="Content Details" {theme} layout="grid" gare="nord" />
 			</div>

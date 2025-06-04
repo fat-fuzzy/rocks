@@ -75,7 +75,10 @@
 	<svelte:element this={`h${level}`}></svelte:element>
 {/if}
 
-<nav data-testid="scrolly" class={`scroll:container ${scrollContainerClasses}`}>
+<nav
+	data-testid="scrolly"
+	class={`scrolly scroll:container ${scrollContainerClasses}`}
+>
 	<ul bind:this={scrollArea} class="scroll:y snap w:full unstyled">
 		{#key observer}
 			{#each items as item, index (index)}
