@@ -48,7 +48,7 @@
 
 		> .page-context:not(.empty) {
 			scrollbar-width: thin;
-			padding-inline: 0;
+			padding-inline: 0 calc(2 * var(--gap));
 		}
 
 		> .page-context {
@@ -63,6 +63,12 @@
 		> .page-context > details {
 			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
 		}
+	}
+}
+
+@media screen and (min-width: 690px) {
+	.page-context:not(.empty) {
+		padding-inline: 0 var(--gap);
 	}
 }
 
