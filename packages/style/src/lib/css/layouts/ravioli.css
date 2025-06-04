@@ -1,5 +1,5 @@
 [class*='ravioli'] {
-	padding: var(--ui-size);
+	padding: var(--ravioli-size);
 }
 
 [class*='ravioli:feature'] {
@@ -9,8 +9,8 @@
 [class*='ravioli'] {
 	--ratio: var(--size-ratio-md);
 	/* Default range */
-	--ui-size-sm: calc(var(--ui-size) / var(--ratio));
-	--ui-size-lg: calc(var(--ui-size) * var(--ratio));
+	--ravioli-size-sm: calc(var(--ravioli-size) / var(--ratio));
+	--ravioli-size-lg: calc(var(--ravioli-size) * var(--ratio));
 }
 
 /* Minor range */
@@ -25,45 +25,45 @@
 
 .raviolink {
 	/* Base size */
-	--ui-size: var(--border-width-xl);
+	--ravioli-size: var(--border-width-xl);
 }
 
 .ravioli\:3xs {
 	/* Base size */
-	--ui-size: var(--size-base-3xs);
+	--ravioli-size: var(--size-base-3xs);
 }
 
 .ravioli\:2xs {
 	/* Base size */
-	--ui-size: var(--size-base-2xs);
+	--ravioli-size: var(--size-base-2xs);
 }
 
 .ravioli\:xs {
 	/* Base size */
-	--ui-size: var(--size-base-xs);
+	--ravioli-size: var(--size-base-xs);
 }
 
 .ravioli\:sm {
 	/* Base size */
-	--ui-size: var(--size-base-sm);
+	--ravioli-size: var(--size-base-sm);
 }
 
 .ravioli\:md {
 	/* Base size */
-	--ui-size: var(--size-base-md);
+	--ravioli-size: var(--size-base-md);
 }
 
 .ravioli\:lg {
 	/* Base size */
-	--ui-size: var(--size-base-lg);
+	--ravioli-size: var(--size-base-lg);
 }
 
 .ravioli\:xl {
 	/* Base size */
-	--ui-size: var(--size-base-xl);
+	--ravioli-size: var(--size-base-xl);
 }
 
 .ravioli\:2xl {
 	/* Base size */
-	--ui-size: var(--size-base-2xl);
+	--ravioli-size: var(--size-base-2xl);
 }
