@@ -40,6 +40,7 @@ fieldset.check {
 		flex-grow: 0;
 		flex-basis: var(--ui-size-lg);
 		accent-color: var(--color-accent);
+		padding: var(--outline-offset-lg);
 	}
 
 	legend {
@@ -62,7 +63,7 @@ fieldset.check {
 		display: flex;
 		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
-		padding: var(--outline-offset-xs);
+		padding: var(--outline-offset-lg);
 		gap: var(--ui-size);
 		margin: 0;
 		width: 100%;

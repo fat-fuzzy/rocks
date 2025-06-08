@@ -57,9 +57,7 @@
 			{id}
 			{name}
 			accept={fileType}
-			aria-describedby={/* TODO: check is this correct? */ hint
-				? `${id}-hint`
-				: ''}
+			aria-describedby="input-feedback-{id}"
 			{multiple}
 			{required}
 			{disabled}

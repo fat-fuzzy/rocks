@@ -3,3 +3,13 @@
 		padding-block-start: calc(var(--font-size-h1) + var(--size-base-2xl));
 	}
 }
+
+[class*='page:'] h1 {
+	padding-block-start: var(--ui-header-height);
+}
+
+@media screen and (min-width: 620px) {
+	[class*='page:'] h1 {
+		padding-block-start: var(--grid-gap, var(--ui-size));
+	}
+}

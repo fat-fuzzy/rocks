@@ -23,9 +23,10 @@
 >
 	{#snippet main()}
 		<Scrolly
+			{title}
 			animations={['fade']}
 			items={sections}
-			level={0}
+			level={1}
 			snap="center"
 			magic={{spell: 'fuzzy', shape: 'round'}}
 		/>

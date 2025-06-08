@@ -1,5 +1,5 @@
 details {
-	padding: var(--outline-offset-xs);
+	padding: var(--outline-offset-md);
 }
 
 p + details {

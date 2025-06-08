@@ -64,7 +64,7 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar bg:inherit l:grid size:3xs align:center">
+	<div class="navbar l:grid size:3xs align:center bg:inherit">
 		<HeaderNav
 			id="nav"
 			name="nav"
@@ -86,7 +86,6 @@
 			formaction="toggleNav"
 		/>
 	</div>
-
 	<div
 		class={`${sidenav.reveal} sidebar bg:inherit l:grid size:3xs align:center width:lg height:sm`}
 	>

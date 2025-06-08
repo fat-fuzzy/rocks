@@ -3,7 +3,3 @@
 .toggle[aria-pressed='true'] {
 	box-shadow: inset var(--shadow-inset-md);
 }
-
-.toggle[aria-pressed='true']:hover {
-	box-shadow: inset var(--shadow-inset-sm);
-}

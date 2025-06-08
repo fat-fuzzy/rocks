@@ -2,33 +2,11 @@
 	gap: calc(var(--gap) / var(--size-ratio-md));
 	height: fit-content;
 	justify-content: var(--justify, flex-end);
-	padding-block: var(--outline-offset-sm);
+	padding-block: var(--outline-offset-md);
 }
 
 .menu\:settings + menu:empty {
 	display: none;
-}
-
-.menu\:settings *:focus {
-	outline-offset: var(--outline-offset-settings);
-}
-
-.menu\:settings li:hover {
-	background-color: inherit;
-}
-
-.menu\:settings [class*='switch'][aria-pressed] {
-	box-shadow: inset var(--shadow-inset-sm);
-}
-
-.menu\:settings [class*='switch'][aria-pressed].outline {
-	background-color: inherit;
-}
-
-.menu\:settings [class*='switch'][aria-pressed]:hover {
-	--lightness: var(--color-lightness-light);
-	background-color: var(--color-bg);
-	box-shadow: var(--shadow-md);
 }
 
 .links\:settings {

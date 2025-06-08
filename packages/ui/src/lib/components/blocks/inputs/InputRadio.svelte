@@ -60,6 +60,7 @@
 		{required}
 		oninput={handleInput}
 		{disabled}
+		aria-describedby="input-feedback-{id}"
 	/>
 </label>
 

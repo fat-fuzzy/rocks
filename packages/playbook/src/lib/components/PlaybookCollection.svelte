@@ -82,7 +82,7 @@
 
 {#snippet categoryElements()}
 	{#if category === 'raw'}
-		<ul class="l:grid:auto size:sm">
+		<ul class="l:grid:auto size:md text:start">
 			{#each componentNames as name, i (i)}
 				<li>
 					<a
@@ -100,33 +100,35 @@
 			{/each}
 		</ul>
 	{:else}
-		{#each componentNames as name, i (i)}
-			{@const SpecifiedElement = items[name]}
-			<article
-				id={`ravioli-${title}`}
-				class={`variant:bare w:auto ui:${name.toLowerCase()}`}
-			>
-				<a
-					href={`${link}/${name}`}
-					class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+		<div class="l:grid:auto size:sm">
+			{#each componentNames as name, i (i)}
+				{@const SpecifiedElement = items[name]}
+				<article
+					id={`ravioli-${title}`}
+					class={`variant:bare w:auto ui:${name.toLowerCase()}`}
 				>
-					<svelte:element
-						this={`h${String(elementTitleDepth)}`}
-						class="link font:sm"
+					<a
+						href={`${link}/${name}`}
+						class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 					>
-						{name}
-					</svelte:element>
-				</a>
-				<Element
-					title={name}
-					{path}
-					{category}
-					{SpecifiedElement}
-					{formaction}
-					{actionPath}
-				/>
-			</article>
-		{/each}
+						<svelte:element
+							this={`h${String(elementTitleDepth)}`}
+							class="link font:sm"
+						>
+							{name}
+						</svelte:element>
+					</a>
+					<Element
+						title={name}
+						{path}
+						{category}
+						{SpecifiedElement}
+						{formaction}
+						{actionPath}
+					/>
+				</article>
+			{/each}
+		</div>
 	{/if}
 {/snippet}
 
@@ -157,21 +159,23 @@
 					element="section"
 				/>
 
-				<section id="playbook">
+				<section id="playbook" class="l:stack:2xl">
 					<div class="l:stack:2xl">
-						<div class="l:text:lg maki:auto">
-							<Magic
-								id="playbook-heading"
-								{spell}
-								uno="magic"
-								due="sparkles"
-								size="md"
-								grow={true}
-							>
-								<h2 class="text:center">
-									{category === 'raw' ? 'Templates' : 'Playbook'}
-								</h2>
-							</Magic>
+						<div class="w:full l:flex justify:center">
+							<div class="l:text:lg">
+								<Magic
+									id="playbook-heading"
+									{spell}
+									uno="magic"
+									due="sparkles"
+									size="md"
+									grow={true}
+								>
+									<h2 class="text:center">
+										{category === 'raw' ? 'Templates' : 'Playbook'}
+									</h2>
+								</Magic>
+							</div>
 						</div>
 						{@render categoryElements()}
 					</div>
