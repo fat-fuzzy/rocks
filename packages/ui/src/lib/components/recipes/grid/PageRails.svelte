@@ -34,13 +34,14 @@
 	})
 
 	const zoneMainClasses: {[key: string]: string} = {
-		metro: 'l:grid size:3xs scroll:y  align:start',
-		railway: 'l:grid size:3xs scroll:y  align:start',
-		steam: 'l:grid size:3xs scroll:y align:start justify:center align:start',
-		tgv: 'snap:center align:start scroll:container',
-		tram: 'l:grid snap:start size:3xs scroll:y align:start',
-		voyager: 'l:grid snap:start size:3xs scroll:y align:start',
-		urbanist: 'snap:start l:grid size:3xs scroll:y',
+		metro: 'l:grid size:3xs scroll:y align:start bg:inherit',
+		railway: 'l:grid size:3xs scroll:y align:start bg:inherit',
+		steam:
+			'l:grid size:3xs scroll:y align:start justify:center align:start bg:inherit',
+		tgv: 'snap:center align:start scroll:container bg:inherit',
+		tram: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit',
+		voyager: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit',
+		urbanist: 'snap:start l:grid size:3xs scroll:y bg:inherit',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
