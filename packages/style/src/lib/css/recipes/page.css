@@ -4,8 +4,6 @@
 	}
 }
 
-/*
-TODO: padding for overlapping main on header (use w/ bg:blur)
 [class*='page:'] h1 {
 	padding-block-start: var(--ui-header-height);
-} */
+}
