@@ -122,19 +122,21 @@
 
 			<section id="playbook" class="l:stack:2xl">
 				<div class="l:stack:2xl">
-					<div class="l:text:lg text:center">
-						<Magic
-							id="playbook-heading"
-							{spell}
-							uno="magic"
-							due="sparkles"
-							size="md"
-							grow={true}
-						>
-							<h2 class="w:full text:center">
-								{category === 'raw' ? 'Template' : 'Playbook'}
-							</h2>
-						</Magic>
+					<div class="w:full l:flex justify:center">
+						<div class="l:text:lg">
+							<Magic
+								id="playbook-heading"
+								{spell}
+								uno="magic"
+								due="sparkles"
+								size="md"
+								grow={true}
+							>
+								<h2 class="w:full text:center">
+									{category === 'raw' ? 'Template' : 'Playbook'}
+								</h2>
+							</Magic>
+						</div>
 					</div>
 					<div class="media maki:block">
 						{#if category === 'raw'}
