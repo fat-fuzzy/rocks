@@ -73,6 +73,7 @@
 			size="sm"
 			font="xs"
 			variant="outline"
+			color="primary"
 			asset="home"
 			justify="start"
 			dismiss="outside"

@@ -42,9 +42,9 @@
 		<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
 			Tags
 		</p>
-		<div class="l:grid:auto size:sm maki:block">
+		<div class="l:grid:auto size:xs maki:block">
 			{#each tags as tag}
-				<details class="bg:netural">
+				<details class="bg:netural" open>
 					<summary class="color:primary font:sm font:heading ravioli:3xs">
 						{tag}
 					</summary>
