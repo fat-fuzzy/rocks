@@ -18,7 +18,7 @@
 	{#each areas as { zone, grid, gare, hug, exchange, scroll, tag }, i (i)}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const gareClass = gare ? gare : ''}
-		{@const exchangeClass = exchange ? 'exchange bg:inherit' : ''}
+		{@const exchangeClass = exchange ? 'exchange bg:blur' : 'bg:blur'}
 		{@const hugClass =
 			layout === 'steam' || layout === 'tram' || hug ? 'hug' : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}

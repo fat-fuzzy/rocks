@@ -2,6 +2,10 @@
 	display: flex;
 	flex-direction: column;
 	grid-column: span 3;
+	/*
+	TODO: rows for overlapping main on header (use w/ bg:blur)
+	grid-row-start: 1;
+	grid-row-end: 3; */
 	min-block-size: unset;
 	padding-inline: 0;
 	scrollbar-gutter: unset;
@@ -16,7 +20,6 @@
 		block-size: 100%;
 
 		.scroll\:container {
-			max-block-size: var(--max-block-size);
 			scrollbar-gutter: unset;
 		}
 	}
@@ -26,16 +29,6 @@
 	.tgv.zone\:main {
 		> .page-main {
 			padding-inline: 0;
-		}
-	}
-}
-
-@media screen and (min-width: 690px) {
-	.tgv.zone\:main {
-		> .page-main {
-			.scroll\:container {
-				max-block-size: calc(var(--max-block-size) - var(--ui-header-height));
-			}
 		}
 	}
 }

@@ -10,6 +10,11 @@
 		'page-context page-context page-context';
 	z-index: var(--layout-z-index-layer);
 
+	/*
+	TODO: rows for overlapping main on header (use w/ bg:blur)
+	grid-row-start: 1;
+	grid-row-end: 3; */
+
 	&.scroll\:y {
 		scrollbar-gutter: auto;
 	}

@@ -4,6 +4,10 @@
 		'page-header'
 		'page-main';
 	grid-template-rows: auto 1fr;
+	/*
+	TODO: rows for overlapping main on header (use w/ bg:blur)
+	grid-row-start: 1;
+	grid-row-end: 3; */
 	padding-block: calc(var(--ui-header-height) + var(--ui-size)) var(--grid-gap);
 
 	> .page-header {

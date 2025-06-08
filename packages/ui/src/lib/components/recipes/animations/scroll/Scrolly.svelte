@@ -71,15 +71,16 @@
 	})
 </script>
 
-{#if title}
-	<svelte:element this={`h${level}`}></svelte:element>
-{/if}
-
 <nav
 	data-testid="scrolly"
 	class={`scrolly scroll:container ${scrollContainerClasses}`}
 >
 	<ul bind:this={scrollArea} class="scroll:y snap w:full unstyled">
+		<li class={`snap:center scroll:title`}>
+			<svelte:element this={`h${level}`} class="w:full text:center">
+				{title}
+			</svelte:element>
+		</li>
 		{#key observer}
 			{#each items as item, index (index)}
 				<ScrollyItem

@@ -37,7 +37,7 @@
 		metro: 'l:grid size:3xs scroll:y  align:start',
 		railway: 'l:grid size:3xs scroll:y  align:start',
 		steam: 'l:grid size:3xs scroll:y align:start justify:center align:start',
-		tgv: 'snap:center align:start',
+		tgv: 'snap:center align:start scroll:container',
 		tram: 'l:grid snap:start size:3xs scroll:y align:start',
 		voyager: 'l:grid snap:start size:3xs scroll:y align:start',
 		urbanist: 'snap:start l:grid size:3xs scroll:y',
@@ -80,7 +80,8 @@
 
 <main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
 	{#if layout === 'tgv'}
-		<PageHeader {title} size={size as UiSize} {justify} layout="center" />
+		<!--Do nothing: title is displayed in Scrolly /-->
+		<!--PageHeader {title} size={size as UiSize} {justify} layout="center" /-->
 	{:else if layout === 'steam' || layout === 'tram' || layout === 'voyager'}
 		<PageHeader {title} size={size as UiSize} {justify} layout="sidebar" />
 	{:else if layout === 'voyager' || layout === 'metro' || layout === 'urbanist' || layout === 'railway'}
