@@ -64,30 +64,28 @@
 />
 
 {#snippet zoneHeader()}
-	{#if layout !== 'tgv'}
-		<div class="navbar bg:blur l:grid size:3xs align:center">
-			<HeaderNav
-				id="nav"
-				name="nav"
-				title="Menu"
-				label="Menu"
-				size="sm"
-				font="xs"
-				variant="outline"
-				asset="home"
-				justify="start"
-				dismiss="outside"
-				auto={true}
-				{links}
-				path={page.url.pathname}
-				reveal={mainNav.reveal}
-				actionPath={page.url.pathname}
-				breakpoint="xs"
-				background="blur"
-				formaction="toggleNav"
-			/>
-		</div>
-	{/if}
+	<div class="navbar l:grid size:3xs align:center bg:inherit">
+		<HeaderNav
+			id="nav"
+			name="nav"
+			title="Menu"
+			label="Menu"
+			size="sm"
+			font="xs"
+			variant="outline"
+			asset="home"
+			justify="start"
+			dismiss="outside"
+			auto={true}
+			{links}
+			path={page.url.pathname}
+			reveal={mainNav.reveal}
+			actionPath={page.url.pathname}
+			breakpoint="xs"
+			background="inherit"
+			formaction="toggleNav"
+		/>
+	</div>
 	<div
 		class={`${sidenav.reveal} sidebar bg:inherit l:grid size:3xs align:center width:lg height:sm`}
 	>
