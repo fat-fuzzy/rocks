@@ -122,7 +122,7 @@
 
 			<section id="playbook" class="l:stack:2xl">
 				<div class="l:stack:2xl">
-					<div class="l:text:lg maki:auto">
+					<div class="l:text:lg text:center">
 						<Magic
 							id="playbook-heading"
 							{spell}
