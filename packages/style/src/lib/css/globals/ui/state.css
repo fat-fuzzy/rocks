@@ -3,19 +3,6 @@
  - chroma
  - hue
 */
-:where(button, input, textarea, select):not([disabled]):hover {
-	--chroma: var(--color-chroma-400);
-	--lightness: var(--color-lightness-400);
-	--chroma-contrast: var(--color-chroma-000);
-	--lightness-contrast: var(--color-lightness-000);
-}
-
-:where(button, input, textarea, select):not([disabled]):active {
-	--chroma: var(--color-chroma-500);
-	--lightness: var(--color-lightness-500);
-	--chroma-contrast: var(--color-chroma-100);
-	--lightness-contrast: var(--color-lightness-100);
-}
 
 [disabled] {
 	--chroma: var(--color-chroma-neutral);

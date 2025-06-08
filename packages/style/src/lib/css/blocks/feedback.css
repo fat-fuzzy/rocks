@@ -13,7 +13,7 @@ p + [class*='feedback:'] {
 }
 
 :where(label, input) + [class*='feedback:'] {
-	--gap: var(--outline-offset-lg);
+	--gap: var(--ui-size-sm);
 }
 
 [class*='feedback:']:not(.feedback\:code) {
