@@ -29,7 +29,6 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 	max-inline-size: 100%;
 	padding: 0;
 	min-block-size: 85vh;
-	line-height: 0;
 }
 
 .scroll\:item .media {

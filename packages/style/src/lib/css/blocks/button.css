@@ -117,11 +117,15 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 
 	&.variant\:outline:hover {
+		--lightness: var(--color-lightness-000);
 		--chroma-contrast: var(--color-chroma-100);
+		background-color: var(--shade);
 	}
 
 	&.variant\:bare:hover {
+		--lightness: var(--color-lightness-000);
 		--chroma-contrast: var(--color-chroma-000);
+		background-color: var(--shade);
 	}
 
 	&.variant\:outline:active {
@@ -133,6 +137,30 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 }
 
-button:not([disabled]):hover {
-	box-shadow: var(--shadow-md);
+[class*='settings:day'],
+[color-scheme='light'] {
+	color-scheme: light;
+	button.variant\:fill:not([disabled]):hover {
+		--lightness: var(--color-lightness-400);
+	}
+}
+
+[class*='settings:night'],
+[color-scheme='dark'] {
+	color-scheme: dark;
+	button.variant\:fill:not([disabled]):hover {
+		--lightness: var(--color-lightness-300);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	button.variant\:fill:not([disabled]):hover {
+		--lightness: var(--color-lightness-400);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	button.variant\:fill:not([disabled]):hover {
+		--lightness: var(--color-lightness-300);
+	}
 }

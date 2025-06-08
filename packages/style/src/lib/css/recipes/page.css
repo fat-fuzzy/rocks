@@ -7,3 +7,9 @@
 [class*='page:'] h1 {
 	padding-block-start: var(--ui-header-height);
 }
+
+@media screen and (min-width: 620px) {
+	[class*='page:'] h1 {
+		padding-block-start: var(--grid-gap, var(--ui-size));
+	}
+}
