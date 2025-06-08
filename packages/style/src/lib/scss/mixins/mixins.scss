@@ -21,7 +21,7 @@
  *
  * Will result in
  *
- * :root {
+ * html {
  *    --base-font-size: 65.5%,
  *    --font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
  *    --primary-color:  #33b5e5;
@@ -146,7 +146,7 @@ $current_cssvars: ();
 	$emojis,
 	$prefix
 ) {
-	:root {
+	html {
 		// Generate Typographic variables
 		@include generate-css-vars($modular-scale, $prefix);
 		@include generate-typographic-scale(

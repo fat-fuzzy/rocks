@@ -5,7 +5,7 @@
 **/
 
 /* https://developer.chrome.com/docs/css-ui/animate-to-height-auto/ */
-:root {
+html {
 	interpolate-size: allow-keywords;
 }
 

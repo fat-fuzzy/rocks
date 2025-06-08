@@ -1,14 +1,14 @@
 /* == Global CSS starts == */
 
-:root {
-	--font-family-body: var(--font-family-body-base),
-		var(--font-family-body-fallback);
-	--font-family-heading: var(--font-family-heading-base),
-		var(--font-family-heading-fallback);
-	--font-family-subheading: var(--font-family-subheading-base),
-		var(--font-family-subheading-fallback);
-	--font-family-mono: var(--font-family-mono-base),
-		var(--font-family-mono-fallback);
+html {
+	--font-family-body:
+		var(--font-family-body-base), var(--font-family-body-fallback);
+	--font-family-heading:
+		var(--font-family-heading-base), var(--font-family-heading-fallback);
+	--font-family-subheading:
+		var(--font-family-subheading-base), var(--font-family-subheading-fallback);
+	--font-family-mono:
+		var(--font-family-mono-base), var(--font-family-mono-fallback);
 	--font-family-ui: var(--font-family-ui-base);
 
 	--ui-size: var(--scale-base-00);
