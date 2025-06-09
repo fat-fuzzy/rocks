@@ -71,6 +71,11 @@
 	)
 	let zoneMainClass = $derived(zoneMainClasses[layout])
 	let pageMainClass = $derived(pageMainClasses[layout])
+	let headerLayout = $derived(
+		layout === 'steam' || layout === 'tram' || layout === 'voyager'
+			? 'sidebar'
+			: '',
+	)
 </script>
 
 <Head pageName={currentPage} {title} {description} />
@@ -83,12 +88,13 @@
 	{#if layout === 'tgv'}
 		<!--Do nothing: title is displayed in Scrolly /-->
 		<!--PageHeader {title} size={size as UiSize} {justify} layout="center" /-->
-	{:else if layout === 'steam' || layout === 'tram' || layout === 'voyager'}
-		<PageHeader {title} size={size as UiSize} {justify} layout="sidebar" />
-	{:else if layout === 'voyager' || layout === 'metro' || layout === 'urbanist' || layout === 'railway'}
-		<PageHeader {...header} size={size as UiSize} {justify} />
 	{:else}
-		<PageHeader {...header} size={size as UiSize} {justify} />
+		<PageHeader
+			{...header}
+			size={size as UiSize}
+			{justify}
+			layout={headerLayout}
+		/>
 	{/if}
 
 	<div class={`page-main ${pageMainClass}`}>
