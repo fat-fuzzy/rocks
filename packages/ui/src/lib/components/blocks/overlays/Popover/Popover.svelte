@@ -3,8 +3,7 @@
 
 	import {onMount} from 'svelte'
 	import {UiShape, UiVariant, AriaInvoke, UiState} from '$types'
-	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
-	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
+	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import actor from './actor.svelte'
 
 	let {
@@ -41,17 +40,6 @@
 		}
 	}
 
-	let states = {
-		expanded: {
-			...EXPAND_MACHINE.expanded,
-			asset: asset ?? asset,
-		},
-		collapsed: {
-			...EXPAND_MACHINE.collapsed,
-			asset: asset ?? asset,
-		},
-	}
-
 	let popoverAnchorStyle = $derived(`--anchor-name: --popover-anchor-${id}`)
 
 	onMount(() => {
@@ -81,16 +69,14 @@
 
 <ff-popover {id} bind:this={invoker} class={fixedClass} data-testid={id}>
 	<span class="anchor" style={popoverAnchorStyle}>
-		<Expand
+		<Button
 			{asset}
 			id={`button-popover-${id}`}
 			{title}
 			{size}
 			{color}
-			{states}
 			{variant}
 			{shape}
-			initial={expanded}
 			name={`button-popover-${id}`}
 			popovertarget={`${id}-popover`}
 			onclick={toggleReveal}
