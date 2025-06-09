@@ -9,7 +9,7 @@
 	max-block-size: var(--max-block-size);
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.metro.zone\:2 {
 		grid-template-rows: 1fr;
 	}

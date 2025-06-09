@@ -45,6 +45,7 @@ fieldset.check {
 		inline-size: auto;
 		margin-inline-start: 0;
 		margin-block-end: var(--ui-size);
+		padding-inline: var(--ui-size-sm);
 	}
 
 	label > span {

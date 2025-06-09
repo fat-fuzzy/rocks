@@ -9,7 +9,10 @@
 	color: var(--ink);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
-	text-align: center;
 	max-inline-size: 60%;
+}
+
+.tags li.shape\:pill {
+	text-align: center;
 	margin: 0 auto;
 }

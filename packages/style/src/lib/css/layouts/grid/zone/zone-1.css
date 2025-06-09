@@ -21,7 +21,7 @@
 	grid-template-areas: ' navbar sidebar context';
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.swap.exchange {
 		grid-template-areas: 'sidebar navbar context';
 	}

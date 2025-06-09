@@ -23,7 +23,7 @@
 	position: relative;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.l\:grid\:railway {
 		grid-template-columns:
 			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
@@ -39,9 +39,9 @@
 			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'
 			'zone-3  zone-3  zone-3  zone-3  zone-3  zone-3  zone-3';
 		grid-template-columns:
-			var(--sidebar-track-sm) var(--sidebar-track-md) var(--sidebar-track-lg) 1fr var(
+			var(--sidebar-track-sm) var(--sidebar-track-md) var(
 				--sidebar-track-lg
-			)
+			) 1fr var(--sidebar-track-lg)
 			var(--sidebar-track-md) var(--sidebar-track-sm);
 	}
 }

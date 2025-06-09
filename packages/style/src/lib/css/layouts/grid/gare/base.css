@@ -57,7 +57,6 @@ details[class*='gare:'] > ff-reveal,
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
 	inline-size: var(--overlay-inline-size);
-	padding-block-end: var(--grid-gap);
 	z-index: var(--layout-z-index-reveal);
 }
 

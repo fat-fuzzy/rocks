@@ -39,12 +39,14 @@
 		{#if tags.size > 0}
 			<div class="tags l:grid:auto size:xs maki:block">
 				{#each tags as tag}
-					<details class="surface:1:neutral variant:bare" open>
-						<summary class="color:neutral font:sm font:heading ravioli:3xs">
+					<details class="surface:1:neutral shape:soft" open>
+						<summary
+							class="color:neutral font:sm font:heading ravioli:3xs shape:soft"
+						>
 							{tag}
 						</summary>
-						<div class="maki:inline size:xl">
-							<ul class="unstyled">
+						<div class="ravioli:3xs shape:soft">
+							<ul class="unstyled text:start">
 								{#each sketches as { slug, asset, title, tags }}
 									{#if tags.includes(tag)}
 										<li class={`size:sm emoji:${asset}`}>

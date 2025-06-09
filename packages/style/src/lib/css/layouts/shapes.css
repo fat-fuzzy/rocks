@@ -18,6 +18,14 @@
 	border-radius: 100vmax;
 }
 
+.shape\:mellow {
+	border-radius: var(--border-radius-lg);
+}
+
+.shape\:soft {
+	border-radius: var(--border-radius-xl);
+}
+
 .shape\:square > * {
 	border-radius: var(--border-radius-base);
 }
