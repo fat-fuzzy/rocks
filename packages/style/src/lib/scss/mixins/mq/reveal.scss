@@ -31,7 +31,7 @@
 }
 
 @include switchToRowStyles_Reveal(320px, '2xs');
-@include switchToRowStyles_Reveal(620px, 'xs');
+@include switchToRowStyles_Reveal(690px, 'xs');
 @include switchToRowStyles_Reveal(935px, 'sm');
 @include switchToRowStyles_Reveal(1360px, 'md');
 @include switchToRowStyles_Reveal(1620px, 'lg');

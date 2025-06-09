@@ -43,7 +43,7 @@
 	font-family: var(--font-family-heading);
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.exchange.swap > .sidebar {
 		padding-inline-start: 0;
 	}

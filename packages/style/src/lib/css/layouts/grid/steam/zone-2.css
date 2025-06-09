@@ -19,7 +19,7 @@
 	}
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.steam.zone\:2 {
 		> .page-context[class*='media:'] {
 			block-size: 100%;

@@ -6,7 +6,7 @@
 	grid-template-areas: 'zone-main';
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.voyager.zone\:2 {
 		> .page-context > * {
 			--max-inline-size: calc(100% - 3 * var(--grid-gap));

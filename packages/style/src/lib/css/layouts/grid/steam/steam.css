@@ -26,7 +26,7 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.l\:grid\:steam {
 		--max-block-size: calc(
 			100vh - var(--ui-header-height) - var(--outline-offset-md)

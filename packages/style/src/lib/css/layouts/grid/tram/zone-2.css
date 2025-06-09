@@ -8,7 +8,7 @@
 	}
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.tram.zone\:2 {
 		> .page-context {
 			max-block-size: var(--max-block-size);

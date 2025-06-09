@@ -8,7 +8,7 @@
 	scrollbar-width: none;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.steam.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 3;

@@ -26,7 +26,7 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 690px) {
 	.l\:grid\:voyager {
 		--sidebar-width: var(--layout-sidebar-sm);
 		grid-template-columns:
@@ -44,9 +44,9 @@
 			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'
 			'zone-3  zone-3  zone-3  zone-3  zone-3  zone-3  zone-3';
 		grid-template-columns:
-			var(--sidebar-track-sm) var(--sidebar-track-md) var(--sidebar-track-lg) 1fr var(
+			var(--sidebar-track-sm) var(--sidebar-track-md) var(
 				--sidebar-track-lg
-			)
+			) 1fr var(--sidebar-track-lg)
 			var(--sidebar-track-md) var(--sidebar-track-sm);
 	}
 }
