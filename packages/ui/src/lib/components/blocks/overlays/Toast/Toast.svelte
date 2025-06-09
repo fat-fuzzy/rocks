@@ -1,29 +1,30 @@
 <script lang="ts">
 	import type {FeedbackProps} from '$types'
 	import {onMount} from 'svelte'
-	import toastChef from '$lib/components/blocks/overlays/Toast/actor.svelte'
+	import toaster from '$lib/components/blocks/overlays/Toast/actor.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
 	const {
 		id,
 		context = 'prose',
 		status = 'default',
-		...props
+		text,
+		children,
 	}: Partial<FeedbackProps> & {id: string} = $props()
 
-	let ref: HTMLOutputElement
+	let toast: HTMLOutputElement
 
-	onMount(async () => {
-		toastChef.cookToast(id as string, ref)
+	onMount(() => {
+		toaster.cookToast(id as string, toast)
 	})
 </script>
 
-<output aria-live="polite" class="toast" bind:this={ref}>
-	<Feedback {id} {context} {status} {...props}>
-		{#if props.children}
-			{@render props.children()}
-		{:else if props.text}
-			<p>{props.text}</p>
+<output {id} aria-live="polite" class="toast" bind:this={toast}>
+	<Feedback {context} {status} font="sm">
+		{#if children}
+			{@render children()}
+		{:else if text}
+			<p>{text}</p>
 		{/if}
 	</Feedback>
 </output>

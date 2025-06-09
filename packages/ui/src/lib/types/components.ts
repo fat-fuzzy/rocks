@@ -10,6 +10,7 @@ export interface Forms {
 }
 
 export interface Actors {
+	Toaster: typeof import('$lib/components/blocks/overlays/Toast/actor.svelte.js').default
 	PopoverActor: typeof import('$lib/components/blocks/overlays/Popover/actor.svelte.js').default
 }
 
@@ -85,7 +86,7 @@ export interface Drafts {
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
 	Toast: typeof import('$lib/components/blocks/overlays/Toast/Toast.svelte').default
-	Toaster: typeof import('$lib/components/blocks/overlays/Toast/Toaster.svelte').default
+	ToastGroup: typeof import('$lib/components/blocks/overlays/Toast/ToastGroup.svelte').default
 }
 
 export interface Headless {

@@ -6,7 +6,7 @@
 	import {links} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 
-	const {Cookies, Toaster, HeaderNav, RevealContext} = ui.drafts
+	const {Cookies, HeaderNav, RevealContext} = ui.drafts
 	const {RevealNav} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks

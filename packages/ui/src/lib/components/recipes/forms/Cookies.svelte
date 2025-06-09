@@ -13,7 +13,7 @@
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
 	import Card from '$lib/components/recipes/content/Card.svelte'
-	import toastChef from '$lib/components/blocks/overlays/Toast/actor.svelte'
+	import {successToast} from '$lib/components/blocks/overlays/Toast/toasts.js'
 
 	let {
 		id = 'cookie-preferences',
@@ -46,7 +46,7 @@
 	let submitDisabled: boolean | undefined = $state(undefined)
 	let title = 'Cookies'
 	let description = '🍪 This website uses cookies 🍪'
-	let successMessage = `Your cookie preferences have been saved. You're all set!`
+	let successMessage = `Your cookie preferences have been saved!`
 
 	// TODO: Integrate inputTypes into validator from schema
 	const inputTypes: {[name: string]: string} = {
@@ -81,11 +81,7 @@
 			if (onsubmit) {
 				onsubmit(event)
 			}
-
-			toastChef.addToast({
-				status: UiStatus.success,
-				text: successMessage,
-			})
+			successToast(successMessage)
 		}
 	}
 

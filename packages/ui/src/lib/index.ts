@@ -91,7 +91,7 @@ import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
 import ExpandLink from '$lib/components/recipes/navs/ExpandLink.svelte'
 import Cookies from '$lib/components/recipes/forms/Cookies.svelte'
 import Toast from '$lib/components/blocks/overlays/Toast/Toast.svelte'
-import Toaster from '$lib/components/blocks/overlays/Toast/Toaster.svelte'
+import ToastGroup from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
@@ -105,6 +105,7 @@ import AppContext from '$lib/forms/app-context.svelte.js'
 /**
  * Actors
  */
+import Toaster from '$lib/components/blocks/overlays/Toast/actor.svelte.js'
 import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.js'
 
 /**
@@ -124,6 +125,7 @@ const utils = {
 
 const actors = {
 	PopoverActor,
+	Toaster,
 }
 
 const forms = {
@@ -207,7 +209,7 @@ const drafts = {
 	Tabs,
 	Cookies,
 	Toast,
-	Toaster,
+	ToastGroup,
 }
 
 const headless = {
