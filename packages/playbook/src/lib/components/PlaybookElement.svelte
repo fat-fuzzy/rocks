@@ -1,7 +1,5 @@
 <script lang="ts">
 	import {getContext} from 'svelte'
-	import {page} from '$app/state'
-
 	import ui from '@fat-fuzzy/ui'
 	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import {getPlaybookTab, getDocTab} from '$lib/props'
@@ -24,6 +22,17 @@
 		content: {html: string; meta: unknown} // TODO: fix types
 		title: string
 		path: string
+		hash: string
+		context: {
+			app: {
+				brightness?: string
+				contrast?: string
+			}
+			page?: {
+				reveal: string
+				title?: string
+			}
+		}
 		formaction?: string
 		actionPath?: string
 		redirect?: string
@@ -32,7 +41,9 @@
 		category,
 		content,
 		title,
-		path,
+		path = '',
+		hash = '', // `${path}${page.url.hash}`
+		context,
 		formaction,
 		actionPath,
 		redirect,
@@ -66,16 +77,12 @@
 		raw: Raw,
 	}
 	let playbookActor: PlaybookActor = getContext('playbookActor')
-
-	let pageContext = $derived(page.data.pageContext)
-	let appContext = $derived(page.data.appContext)
 	let styles = $derived(playbookActor.styles)
 	let elementStyles = $derived(styles.blocks?.families?.element || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	//== App settings (user controlled)
-	let brightness = $derived(appContext.brightness || '')
-	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
+	let spell = $derived(context.app.brightness === 'day' ? 'dawn' : 'dusk')
 	//== Layout settings (user controlled)
 	// Container options
 	// - [container + size] work together
@@ -113,7 +120,7 @@
 	{path}
 	nav={pageNav}
 	size="sm"
-	context={pageContext}
+	context={context.page}
 	layout="tram"
 >
 	{#snippet main()}

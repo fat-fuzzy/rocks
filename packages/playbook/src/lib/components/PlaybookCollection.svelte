@@ -1,13 +1,10 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-
 	import ui from '@fat-fuzzy/ui'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 	import Element from './Element.svelte'
-
 	import {getPlaybookTab, getDocTab} from '$lib/props'
-	import {page} from '$app/state'
 
 	const {EscapeHtml} = ui.headless
 	const {PageRails} = ui.content
@@ -16,12 +13,22 @@
 	type Props = {
 		category: string
 		content: {html: string; meta: unknown} // TODO: fix types
-		path: string
 		depth: number
+		path: string
 		isPage: boolean
 		color?: string
 		size?: string
 		layout?: string
+		context: {
+			app: {
+				brightness?: string
+				contrast?: string
+			}
+			page?: {
+				reveal: string
+				title?: string
+			}
+		}
 		formaction?: string
 		actionPath?: string
 		children?: Snippet
@@ -36,13 +43,12 @@
 		size = 'md',
 		color = 'primary',
 		layout = 'switcher',
+		context,
 		formaction,
 		actionPath,
 		children,
 	}: Props = $props()
 
-	let pageContext = $derived(page.data.pageContext)
-	let appContext = $derived(page.data.appContext)
 	let title = $derived(
 		`${category.charAt(0).toUpperCase()}${category.slice(1)}`,
 	)
@@ -71,9 +77,9 @@
 		components.find(({category: c}) => c === category)?.items ?? [],
 	)
 	let componentNames = $derived(Object.keys(items))
+
 	//== App preferences (user controlled)
-	let brightness = $derived(appContext.brightness || '')
-	let spell = $derived(brightness === 'day' ? 'dawn' : 'dusk')
+	let spell = $derived(context.app.brightness === 'day' ? 'dawn' : 'dusk')
 
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
@@ -82,25 +88,27 @@
 
 {#snippet categoryElements()}
 	{#if category === 'raw'}
-		<ul class="l:grid:auto size:md text:start">
-			{#each componentNames as name, i (i)}
-				<li>
-					<a
-						href={`${link}/${name}`}
-						class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
-					>
-						<svelte:element
-							this={`h${String(elementTitleDepth)}`}
-							class="link font:sm"
+		<div>
+			<ul class="l:grid:auto size:sm text:start unstyled">
+				{#each componentNames as name, i (i)}
+					<li>
+						<a
+							href={`${link}/${name}`}
+							class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 						>
-							{name}
-						</svelte:element>
-					</a>
-				</li>
-			{/each}
-		</ul>
+							<svelte:element
+								this={`h${String(elementTitleDepth)}`}
+								class="link font:sm"
+							>
+								{name}
+							</svelte:element>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</div>
 	{:else}
-		<div class="l:grid:auto size:sm">
+		<div class="l:grid:auto size:md">
 			{#each componentNames as name, i (i)}
 				{@const SpecifiedElement = items[name]}
 				<article
@@ -143,10 +151,10 @@
 	<PageRails
 		{title}
 		{description}
-		path={page.url.pathname}
+		{path}
 		nav={pageNav}
 		size="sm"
-		context={pageContext}
+		context={context.page}
 		layout="tram"
 	>
 		{#snippet main()}
@@ -160,25 +168,23 @@
 				/>
 
 				<section id="playbook" class="l:stack:2xl">
-					<div class="l:stack:2xl">
-						<div class="w:full l:flex justify:center">
-							<div class="l:text:lg">
-								<Magic
-									id="playbook-heading"
-									{spell}
-									uno="magic"
-									due="sparkles"
-									size="md"
-									grow={true}
-								>
-									<h2 class="text:center">
-										{category === 'raw' ? 'Templates' : 'Playbook'}
-									</h2>
-								</Magic>
-							</div>
+					<div class="w:full l:flex justify:center">
+						<div class="l:text:lg">
+							<Magic
+								id="playbook-heading"
+								{spell}
+								uno="magic"
+								due="sparkles"
+								size="md"
+								grow={true}
+							>
+								<h2 class="text:center">
+									{category === 'raw' ? 'Templates' : 'Playbook'}
+								</h2>
+							</Magic>
 						</div>
-						{@render categoryElements()}
 					</div>
+					{@render categoryElements()}
 				</section>
 			</div>
 		{/snippet}
