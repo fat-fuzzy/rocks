@@ -4,8 +4,8 @@
 * source : https://github.com/hankchizljaw/modern-css-reset/blob/master/src/reset.css
 **/
 
-/* https://developer.chrome.com/docs/css-ui/animate-to-height-auto/ */
 @layer reset {
+	/* https://developer.chrome.com/docs/css-ui/animate-to-height-auto/ */
 	html {
 		interpolate-size: allow-keywords;
 	}
