@@ -6,16 +6,7 @@
 	let {meta}: Props = $props()
 </script>
 
-{#snippet comingSoon()}
-	<div class="ravioli:lg text:center">
-		<p class={`font:xl`}>🐰</p>
-		<p class={`font:md`}>Coming soon!</p>
-	</div>
-{/snippet}
-
-{#if !meta}
-	{@render comingSoon()}
-{:else}
+{#if meta}
 	{#if meta.props_state}
 		<details class="surface:1:primary" open>
 			<summary class="color:primary font:sm font:heading ravioli:3xs">

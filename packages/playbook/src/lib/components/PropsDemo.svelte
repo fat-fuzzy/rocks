@@ -13,16 +13,7 @@
 	let {path = '', actionPath, redirect, meta, categories}: Props = $props()
 </script>
 
-{#snippet comingSoon()}
-	<div class="ravioli:lg text:center">
-		<p class={`font:xl`}>🐰</p>
-		<p class={`font:md`}>Coming soon!</p>
-	</div>
-{/snippet}
-
 <!-- <Api categories={['app']} {meta} {path} {actionPath} {redirect} /> -->
 {#if categories && categories.length > 0 && meta.props_style}
 	<Api {categories} {path} {actionPath} {redirect} {meta} />
-{:else}
-	{@render comingSoon()}
 {/if}

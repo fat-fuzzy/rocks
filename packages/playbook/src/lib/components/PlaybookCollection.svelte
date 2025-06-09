@@ -144,13 +144,6 @@
 	{/if}
 {/snippet}
 
-{#snippet comingSoon()}
-	<div class="ravioli:lg text:center">
-		<p class="font:xl">🐰</p>
-		<p class="font:md">Coming soon!</p>
-	</div>
-{/snippet}
-
 {#if isPage}
 	<PageRails
 		{title}
@@ -207,8 +200,6 @@
 		</svelte:element>
 		{#if children}
 			{@render children()}
-		{:else}
-			{@render comingSoon()}
 		{/if}
 
 		<details class={`l:stack:${size} maki:block`}>
