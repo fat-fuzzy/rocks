@@ -3,7 +3,7 @@ title: InputGroup
 slug: InputGroup
 category: 'blocks'
 status: 'draft'
-# props_style: {'blocks': {'element': ['color']}, 'layouts': {'container': ['container', 'size']}}
+# props_style: {'blocks': {'block': ['color']}, 'layouts': {'container': ['container', 'size']}}
 ---
 
 ## Usage

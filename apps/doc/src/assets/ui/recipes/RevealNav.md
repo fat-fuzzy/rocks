@@ -7,7 +7,7 @@ content_types: ['Nav']
 props_state: ['title', 'formaction', 'items']
 props_style:
   {
-    'blocks': {'element': ['color', 'variant', 'size', 'background']},
+    'blocks': {'block': ['color', 'variant', 'size', 'background']},
     'layouts': {'container': ['container', 'size']},
   }
 ---

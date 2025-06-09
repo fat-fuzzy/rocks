@@ -6,19 +6,11 @@
 		path?: string
 		actionPath?: string
 		redirect?: string
-		color?: string
 		meta: Meta
 		categories?: string[]
 	}
 
-	let {
-		path = '',
-		actionPath,
-		redirect,
-		color = 'primary',
-		meta,
-		categories,
-	}: Props = $props()
+	let {path = '', actionPath, redirect, meta, categories}: Props = $props()
 </script>
 
 {#snippet comingSoon()}

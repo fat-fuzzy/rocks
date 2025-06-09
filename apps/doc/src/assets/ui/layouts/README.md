@@ -4,7 +4,7 @@ slug: layouts
 tags: ['layouts']
 props_style:
   {
-    'blocks': {'element': ['size']},
+    'blocks': {'block': ['size']},
     'layouts':
       {
         'layout': ['threshold', 'breakpoint'],

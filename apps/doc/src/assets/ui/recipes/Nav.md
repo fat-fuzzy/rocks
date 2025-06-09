@@ -4,7 +4,7 @@ slug: Nav
 category: 'recipes'
 group: 'navs'
 props_state: ['items']
-props_style: {'blocks': {'element': ['size']}}
+props_style: {'blocks': {'block': ['size']}}
 ---
 
 ## Usage

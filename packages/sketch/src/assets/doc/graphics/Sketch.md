@@ -5,7 +5,7 @@ category: 'graphics'
 props_state: ['scene', 'title']
 props_style:
   {
-    'blocks': {'element': ['color', 'variant', 'dimensions']},
+    'blocks': {'block': ['color', 'variant', 'dimensions']},
     'layouts': {'container': ['container', 'size']},
   }
 context: ['app.settings']

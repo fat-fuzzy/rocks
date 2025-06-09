@@ -5,7 +5,7 @@ category: 'layouts'
 content_types: ['items']
 props_style:
   {
-    'blocks': {'element': ['size']},
+    'blocks': {'block': ['size']},
     'layouts': {'layout': ['threshold'], 'container': ['container', 'size']},
   }
 ---

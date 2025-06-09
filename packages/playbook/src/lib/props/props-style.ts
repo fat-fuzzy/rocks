@@ -528,7 +528,7 @@ const settingsFamily = {
 	props: ['brightness', 'contrast'],
 }
 
-const elementFamily = {
+const blockFamily = {
 	layout: 'flex',
 	size: '2xs',
 	props: [
@@ -570,8 +570,9 @@ const contentFamily = {
 
 const FAMILIES: {[key: string]: any} = {
 	settings: settingsFamily,
-	element: elementFamily,
+	block: blockFamily,
 	container: containerFamily,
+	token: containerFamily,
 	layout: layoutFamily,
 	content: contentFamily,
 }
@@ -586,13 +587,13 @@ const CATEGORIES: {[key: string]: any} = {
 	tokens: {
 		name: 'tokens',
 		families: {
-			element: FAMILIES['container'],
+			token: FAMILIES['tokens'],
 		},
 	},
 	blocks: {
 		name: 'blocks',
 		families: {
-			element: FAMILIES['element'],
+			block: FAMILIES['blocks'],
 		},
 	},
 	layouts: {
@@ -650,6 +651,7 @@ function getInputGroup(name: string, category: string, family: string) {
 function getFamily(familyId: string) {
 	const [category, family] = familyId.split('.')
 	const slug = family
+
 	return new StyleFamily({
 		name: slug,
 		title: '',

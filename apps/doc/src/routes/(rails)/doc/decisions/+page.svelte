@@ -44,11 +44,11 @@
 		</p>
 		<div class="l:grid:auto size:xs maki:block">
 			{#each tags as tag}
-				<details class="bg:netural" open>
-					<summary class="color:primary font:sm font:heading ravioli:3xs">
+				<details class="surface:1:neutral" open>
+					<summary class="color:neutral font:sm font:heading ravioli:3xs">
 						{tag}
 					</summary>
-					<div class="maki:inline size:sm">
+					<div class="maki:inline size:xl">
 						<ul class="unstyled">
 							{#each markdowns as { meta }}
 								{#if meta.tags.includes(tag)}

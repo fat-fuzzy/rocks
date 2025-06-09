@@ -29,7 +29,7 @@
 	let styles = $derived(playbookActor.styles)
 	let reveal = $derived(playbookActor.context[title]?.reveal || '')
 
-	let elementStyles = $derived(styles.blocks?.families?.element || '')
+	let blockStyles = $derived(styles.blocks?.families?.block || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
@@ -63,7 +63,7 @@
 		id={title}
 		{...containerStyles}
 		{...layoutStyles}
-		{...elementStyles}
+		{...blockStyles}
 		{...props}
 	>
 		{#snippet side()}
@@ -80,7 +80,7 @@
 		name={layoutName}
 		{...containerStyles}
 		{...layoutStyles}
-		{...elementStyles}
+		{...blockStyles}
 		{...props}
 		{actionPath}
 		{redirect}

@@ -12,7 +12,7 @@ export type UiActionGetInput = {
 
 export type UiActionSetInput = {
 	data: FormData
-	element: string
+	block: string
 	value?: any
 	options: {
 		state?: any
@@ -85,15 +85,15 @@ class DsStateUpdate {
 		}
 	}
 
-	handleToggleUiReveal({data, element}): boolean {
-		const currentState = this.state[element as keyof DsState]
+	handleToggleUiReveal({data, block}): boolean {
+		const currentState = this.state[block as keyof DsState]
 
-		const reveal = new UiReveal(currentState, element)
+		const reveal = new UiReveal(currentState, block)
 		const newState = reveal.reveal(data)
 		if (!newState.success) {
 			return false
 		}
-		this.state[element as keyof DsState] = newState.state ?? currentState
+		this.state[block as keyof DsState] = newState.state ?? currentState
 
 		return true
 	}
@@ -101,42 +101,42 @@ class DsStateUpdate {
 	toggleReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'Reveal',
+			block: 'Reveal',
 		})
 	}
 
 	toggleMenuReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'RevealMenu',
+			block: 'RevealMenu',
 		})
 	}
 
 	toggleNavReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'RevealNav',
+			block: 'RevealNav',
 		})
 	}
 
 	toggleSidebarReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'Header-nav-reveal',
+			block: 'Header-nav-reveal',
 		})
 	}
 
 	toggleAppContextReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'Header-appContext-reveal',
+			block: 'Header-appContext-reveal',
 		})
 	}
 
 	togglePageContextReveal(data: FormData) {
 		return this.handleToggleUiReveal({
 			data,
-			element: 'pageContext-reveal',
+			block: 'pageContext-reveal',
 		})
 	}
 

@@ -6,7 +6,7 @@ group: 'menus'
 props_state: ['title', 'formaction', 'value']
 props_style:
   {
-    'blocks': {'element': ['color', 'variant', 'size', 'shape']},
+    'blocks': {'block': ['color', 'variant', 'size', 'shape']},
     'layouts':
       {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
   }
