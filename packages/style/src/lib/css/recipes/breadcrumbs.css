@@ -1,12 +1,12 @@
-.breadcrumbs > ul {
+.breadcrumbs > ol {
 	margin-block: 0;
 }
 
-.breadcrumbs > ul > li:has(a) {
+.breadcrumbs > ol > li:has(a) {
 	padding-inline: var(--outline-offset-lg);
 }
 
-.breadcrumbs > ul > li + li::before {
+.breadcrumbs > ol > li + li::before {
 	content: '➜';
 	padding: 0;
 	color: var(--ink);
@@ -14,10 +14,10 @@
 	line-height: 1;
 }
 
-.breadcrumbs > ul > li a {
+.breadcrumbs > ol > li a {
 	text-decoration: underline;
 }
 
-.breadcrumbs > ul > li a:hover {
+.breadcrumbs > ol > li a:hover {
 	border: var(--border-width-px) solid var(--accent);
 }

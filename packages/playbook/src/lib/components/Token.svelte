@@ -12,10 +12,10 @@
 
 	const actor: PlaybookActor = getContext('playbookActor')
 	let styles = $derived(actor.styles)
-	let tokenStyles = $derived(styles.tokens?.families?.element || '')
+	let tokenStyles = $derived(styles.tokens?.families?.token || '')
 
 	let variant = ''
-	let size = '' // element's own size
+	let size = '' // token's own size
 	let asset = $derived(props?.asset || '')
 	let color = $derived(tokenStyles?.color || '')
 	let typography = $derived(tokenStyles?.typography || '')

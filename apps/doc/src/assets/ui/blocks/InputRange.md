@@ -4,7 +4,7 @@ slug: InputRange
 category: 'blocks'
 group: 'forms'
 props_state: ['label', 'value', 'errors']
-props_style: {'blocks': {'element': ['color', 'size']}}
+props_style: {'blocks': {'block': ['color', 'size']}}
 ---
 
 ## Usage

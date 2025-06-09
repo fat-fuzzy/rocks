@@ -10,14 +10,15 @@
 	let category = $derived(page.params.category)
 	let title = $derived(page.params.component)
 	let content = $derived(page.data.content)
+	let appContext = $derived(page.data.appContext)
+	let pageContext = $derived(page.data.pageContext)
 </script>
 
-{#key title}
-	<PlaybookElement
-		{title}
-		{category}
-		{content}
-		path={`${path}${page.url.hash}`}
-		{formaction}
-	/>
-{/key}
+<PlaybookElement
+	{title}
+	{category}
+	{content}
+	{path}
+	{formaction}
+	context={{app: appContext, page: pageContext}}
+/>

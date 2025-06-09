@@ -5,7 +5,7 @@ category: 'graphics'
 props_state: ['geometry']
 props_style:
   {
-    'blocks': {'element': ['color', 'size']},
+    'blocks': {'block': ['color', 'size']},
     'layouts':
       {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
   }

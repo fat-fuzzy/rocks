@@ -96,7 +96,7 @@
 	/* This form contains the actual settings */
 	.exchange > .context > .app-context ff-reveal > form {
 		padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
-		padding-block: var(--outline-offset-sm);
+		padding-block: var(--outline-offset-lg);
 	}
 }
 

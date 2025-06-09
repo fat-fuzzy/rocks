@@ -9,97 +9,101 @@ const sizes = [
 	{name: 'xs', value: '0'},
 ]
 async function testSize(page: Page, title: string) {
-	await page.getByTestId('blocks.element.size').fill('100')
+	await page.getByTestId('blocks.block.size').fill('100')
 	await expect(page.getByLabel('size: xl')).toBeVisible()
 	await expect(page.getByTestId(title)).toHaveClass(/size:xl/)
-	await page.getByTestId('blocks.element.size').fill('75')
+	await page.getByTestId('blocks.block.size').fill('75')
 	await expect(page.getByLabel('size: lg')).toBeVisible()
 	await expect(page.getByTestId(title)).toHaveClass(/size:lg/)
-	await page.getByTestId('blocks.element.size').fill('50')
+	await page.getByTestId('blocks.block.size').fill('50')
 	await expect(page.getByLabel('size: md')).toBeVisible()
 	await expect(page.getByTestId(title)).toHaveClass(/size:md/)
-	await page.getByTestId('blocks.element.size').fill('25')
+	await page.getByTestId('blocks.block.size').fill('25')
 	await expect(page.getByLabel('size: sm')).toBeVisible()
 	await expect(page.getByTestId(title)).toHaveClass(/size:sm/)
-	await page.getByTestId('blocks.element.size').fill('0')
+	await page.getByTestId('blocks.block.size').fill('0')
 	await expect(page.getByLabel('size: xs')).toBeVisible()
 	await expect(page.getByTestId(title)).toHaveClass(/size:xs/)
 }
 
 async function testContext(page: Page, title: string) {
-	await page.getByTestId(`blocks.element.context.code`).click({force: true})
-	await expect(page.getByTestId('blocks.element.context.code')).toBeChecked()
+	await page.getByTestId(`blocks.block.context.code`).click({force: true})
+	await expect(page.getByTestId('blocks.block.context.code')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/feedback:code/)
-	await page.getByTestId(`blocks.element.context.prose`).click({force: true})
-	await expect(page.getByTestId('blocks.element.context.prose')).toBeChecked()
+	await page.getByTestId(`blocks.block.context.prose`).click({force: true})
+	await expect(page.getByTestId('blocks.block.context.prose')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/feedback:prose/)
 }
 
 async function testStatus(page: Page, title: string) {
-	await page.getByTestId(`blocks.element.status.info`).click({force: true})
-	await expect(page.getByTestId('blocks.element.status.info')).toBeChecked()
+	await page.getByTestId(`blocks.block.status.info`).click({force: true})
+	await expect(page.getByTestId('blocks.block.status.info')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:info/)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:info/)
-	await page.getByTestId(`blocks.element.status.success`).click({force: true})
-	await expect(page.getByTestId('blocks.element.status.success')).toBeChecked()
+	await page.getByTestId(`blocks.block.status.success`).click({force: true})
+	await expect(page.getByTestId('blocks.block.status.success')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:success/)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:success/)
-	await page.getByTestId(`blocks.element.status.warning`).click({force: true})
-	await expect(page.getByTestId('blocks.element.status.warning')).toBeChecked()
+	await page.getByTestId(`blocks.block.status.warning`).click({force: true})
+	await expect(page.getByTestId('blocks.block.status.warning')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:warning/)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:warning/)
-	await page.getByTestId(`blocks.element.status.error`).click({force: true})
-	await expect(page.getByTestId('blocks.element.status.error')).toBeChecked()
+	await page.getByTestId(`blocks.block.status.error`).click({force: true})
+	await expect(page.getByTestId('blocks.block.status.error')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:error/)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:error/)
-	await page.getByTestId(`blocks.element.status.default`).click({force: true})
-	await expect(page.getByTestId('blocks.element.status.default')).toBeChecked()
+	await page.getByTestId(`blocks.block.status.default`).click({force: true})
+	await expect(page.getByTestId('blocks.block.status.default')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:default/)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:default/)
 }
 
 async function testAsset(page: Page, title: string) {
-	await page.getByTestId(`blocks.element.asset.profile`).click({force: true})
-	await expect(
-		page.getByTestId('blocks.element.asset.profile'),
-	).toHaveAttribute('aria-pressed', 'true')
+	await page.getByTestId(`blocks.block.asset.profile`).click({force: true})
+	await expect(page.getByTestId('blocks.block.asset.profile')).toHaveAttribute(
+		'aria-pressed',
+		'true',
+	)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:profile/)
 
-	await page.getByTestId(`blocks.element.asset.favorite`).click({force: true})
-	await expect(
-		page.getByTestId('blocks.element.asset.favorite'),
-	).toHaveAttribute('aria-pressed', 'true')
+	await page.getByTestId(`blocks.block.asset.favorite`).click({force: true})
+	await expect(page.getByTestId('blocks.block.asset.favorite')).toHaveAttribute(
+		'aria-pressed',
+		'true',
+	)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:favorite/)
 
-	await page.getByTestId(`blocks.element.asset.idea`).click({force: true})
-	await expect(page.getByTestId('blocks.element.asset.idea')).toHaveAttribute(
+	await page.getByTestId(`blocks.block.asset.idea`).click({force: true})
+	await expect(page.getByTestId('blocks.block.asset.idea')).toHaveAttribute(
 		'aria-pressed',
 		'true',
 	)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:idea/)
 
-	await page.getByTestId(`blocks.element.asset.default`).click({force: true})
-	await expect(
-		page.getByTestId('blocks.element.asset.default'),
-	).toHaveAttribute('aria-pressed', 'true')
+	await page.getByTestId(`blocks.block.asset.default`).click({force: true})
+	await expect(page.getByTestId('blocks.block.asset.default')).toHaveAttribute(
+		'aria-pressed',
+		'true',
+	)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:default/)
 
-	await page.getByTestId(`blocks.element.asset.default`).click({force: true})
-	await expect(
-		page.getByTestId('blocks.element.asset.default'),
-	).toHaveAttribute('aria-pressed', 'false')
+	await page.getByTestId(`blocks.block.asset.default`).click({force: true})
+	await expect(page.getByTestId('blocks.block.asset.default')).toHaveAttribute(
+		'aria-pressed',
+		'false',
+	)
 	await expect(page.getByTestId(title)).not.toHaveClass(/emoji:default/)
 }
 
 async function testShape(page: Page, title: string) {
-	await page.getByTestId(`blocks.element.shape.round`).click({force: true})
-	await expect(page.getByTestId('blocks.element.shape.round')).toHaveAttribute(
+	await page.getByTestId(`blocks.block.shape.round`).click({force: true})
+	await expect(page.getByTestId('blocks.block.shape.round')).toHaveAttribute(
 		'aria-pressed',
 		'true',
 	)
 	await expect(page.getByTestId(title)).toHaveClass(/shape:round/)
-	await page.getByTestId(`blocks.element.shape.square`).click({force: true})
-	await expect(page.getByTestId('blocks.element.shape.square')).toHaveAttribute(
+	await page.getByTestId(`blocks.block.shape.square`).click({force: true})
+	await expect(page.getByTestId('blocks.block.shape.square')).toHaveAttribute(
 		'aria-pressed',
 		'true',
 	)

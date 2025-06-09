@@ -4,7 +4,7 @@ slug: recipes
 tags: ['recipes']
 props_style:
   {
-    'blocks': { 'element': ['color', 'variant', 'size', 'shape'] },
+    'blocks': { 'block': ['color', 'variant', 'size', 'shape'] },
     'layouts': { 'container': ['container', 'size'] },
   }
 ---

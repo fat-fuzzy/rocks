@@ -50,11 +50,11 @@
 			</p>
 			<div class="l:grid:auto size:sm maki:block">
 				{#each tags as tag}
-					<details class="bg:netural">
-						<summary class="color:primary font:sm font:heading ravioli:3xs">
+					<details class="surface:1:neutral variant:bare" open>
+						<summary class="color:neutral font:sm font:heading ravioli:3xs">
 							{tag}
 						</summary>
-						<div class="maki:inline size:sm">
+						<div class="maki:inline size:xl">
 							<ul class="unstyled">
 								{#each sketches as { slug, asset, title, tags }}
 									{#if tags.includes(tag)}

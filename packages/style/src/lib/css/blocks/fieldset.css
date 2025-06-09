@@ -2,7 +2,6 @@ fieldset {
 	border: none;
 	border-radius: var(--border-radius-base);
 	max-inline-size: 100%;
-	max-width: 100%;
 	flex-grow: 1;
 	padding: 0;
 	margin: 0;
@@ -23,7 +22,6 @@ fieldset {
 	> .menu {
 		inline-size: 100%;
 		max-inline-size: 100%;
-		max-width: 100%;
 	}
 }
 
@@ -66,7 +64,7 @@ fieldset.check {
 		padding: var(--outline-offset-lg);
 		gap: var(--ui-size);
 		margin: 0;
-		width: 100%;
+		inline-size: 100%;
 		color: var(--color-ink);
 		line-height: 1;
 	}

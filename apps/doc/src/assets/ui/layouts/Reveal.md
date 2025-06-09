@@ -6,7 +6,7 @@ category: 'layouts'
 content_types: ['any']
 props_style:
   {
-    'blocks': {'element': ['size', 'color', 'variant']},
+    'blocks': {'block': ['size', 'color', 'variant']},
     'layouts': {'container': ['container', 'size']},
   }
 ---

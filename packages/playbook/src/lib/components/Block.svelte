@@ -14,7 +14,7 @@
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let styles = $derived(playbookActor.styles)
-	let elementStyles = $derived(styles.blocks?.families?.element || '')
+	let blockStyles = $derived(styles.blocks?.families?.block || '')
 </script>
 
-<SpecifiedElement id={title} {name} {...props} {...elementStyles} />
+<SpecifiedElement id={title} {name} {...props} {...blockStyles} />

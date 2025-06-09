@@ -29,7 +29,7 @@
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let styles = $derived(playbookActor.styles)
 	let reveal = $derived(playbookActor.context[title]?.reveal || '')
-	let elementStyles = $derived(styles.blocks?.families?.element || '')
+	let blockStyles = $derived(styles.blocks?.families?.block || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 	let recipeName = $derived(name ? name : title)
@@ -42,7 +42,7 @@
 	name={recipeName}
 	{...containerStyles}
 	{...layoutStyles}
-	{...elementStyles}
+	{...blockStyles}
 	{...props}
 	{formaction}
 	{actionPath}

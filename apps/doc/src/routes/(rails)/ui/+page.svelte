@@ -15,6 +15,7 @@
 	let content = $derived(page.data.content)
 	let markdowns = $derived(page.data.markdowns)
 	let slug = $derived(content.meta.slug)
+	let appContext = $derived(page.data.appContext)
 	let pageContext = $derived({...page.data.pageContext, title: 'On this Page'})
 </script>
 
@@ -34,12 +35,12 @@
 			{#each categories as category}
 				<PlaybookCollection
 					{category}
-					{markdowns}
 					path={page.url.pathname}
 					depth={1}
 					isPage={false}
 					formaction="updateState"
 					{content}
+					context={{app: appContext, page: pageContext}}
 				>
 					<EscapeHtml
 						id={`${slug}-${category}`}

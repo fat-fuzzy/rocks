@@ -6,7 +6,7 @@ props_style:
   {
     'blocks':
       {
-        'element':
+        'block':
           ['color', 'variant', 'size', 'asset', 'shape', 'context', 'status'],
       },
   }

@@ -15,7 +15,7 @@ import {getFamily} from '$lib/props/props-style'
 
 const tokens: TokenStyles = {
 	name: 'tokens',
-	families: {element: getFamily('tokens.element')},
+	families: {token: getFamily('tokens.token')},
 }
 
 const app: AppStyles = {
@@ -25,7 +25,7 @@ const app: AppStyles = {
 
 const blocks: BlockStyles = {
 	name: 'blocks',
-	families: {element: getFamily('blocks.element')},
+	families: {block: getFamily('blocks.block')},
 }
 
 const layouts: LayoutStyles = {
@@ -122,8 +122,8 @@ class StylesApi {
 		switch (family) {
 			case 'settings':
 				return category.families.settings
-			case 'element':
-				return category.families.element
+			case 'block':
+				return category.families.block
 			case 'layout':
 				return category.families.layout
 			case 'container':
@@ -183,10 +183,10 @@ class StylesApi {
 			appFamilies = {...this.app.families.settings?.getStyleTree()}
 		}
 		if (this.tokens) {
-			tokensFamilies = {...this.tokens.families.element?.getStyleTree()}
+			tokensFamilies = {...this.tokens.families.token?.getStyleTree()}
 		}
 		if (this.blocks) {
-			blocksFamilies = {...this.blocks.families.element?.getStyleTree()}
+			blocksFamilies = {...this.blocks.families.block?.getStyleTree()}
 		}
 		if (this.layouts) {
 			layoutsLayoutFamilies = {
@@ -220,7 +220,7 @@ class StylesApi {
 			switch (updatedCategory) {
 				case 'tokens':
 					styles.families = this.tokens.families || {
-						element: getFamily('tokens.element'),
+						block: getFamily('tokens.token'),
 					}
 					break
 				case 'app':
@@ -230,7 +230,7 @@ class StylesApi {
 					break
 				case 'blocks':
 					styles.families = this.blocks.families || {
-						element: getFamily('blocks.element'),
+						block: getFamily('blocks.block'),
 					}
 					break
 				case 'layouts':

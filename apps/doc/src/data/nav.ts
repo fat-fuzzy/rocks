@@ -36,6 +36,7 @@ const navBase = {
 export const pages: {[key: string]: NavItem} = {
 	blog: {
 		slug: 'blog',
+		label: 'Blog',
 		title: 'Posts',
 		asset: 'pencil',
 		layout: 'metro',
@@ -45,7 +46,7 @@ export const pages: {[key: string]: NavItem} = {
 		slug: 'doc',
 		title: 'Doc',
 		label: 'Doc',
-		asset: 'pencil',
+		asset: 'doc',
 		layout: 'voyager',
 		items: [
 			{

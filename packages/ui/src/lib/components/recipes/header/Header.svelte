@@ -25,13 +25,14 @@
 		position,
 		placement,
 		context,
+		app,
 	}: HeaderProps = $props()
 	let className = 'header-app'
 
 	let positionClass = position ? `${position}:${placement}` : ''
 
-	let brightness = $derived(context.brightness)
-	let contrast = $derived(context.contrast)
+	let brightness = $derived(app.brightness)
+	let contrast = $derived(app.contrast)
 	let preferences = $derived.by(() => {
 		let preferences = constants.APP_SETTINGS
 		preferences.display[0].initial =

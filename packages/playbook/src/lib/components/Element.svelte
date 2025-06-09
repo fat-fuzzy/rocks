@@ -34,7 +34,7 @@
 	}
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let styles = $derived(playbookActor.styles)
-	let elementStyles = $derived(styles.blocks?.families?.element || '')
+	let elementStyles = $derived(styles.blocks?.families?.block || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	//== Layout settings (user controlled)
