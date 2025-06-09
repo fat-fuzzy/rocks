@@ -84,6 +84,8 @@ export interface Drafts {
 	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
+	Toast: typeof import('$lib/components/blocks/overlays/Toast/Toast.svelte').default
+	Toaster: typeof import('$lib/components/blocks/overlays/Toast/Toaster.svelte').default
 }
 
 export interface Headless {

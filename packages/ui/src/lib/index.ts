@@ -90,6 +90,8 @@ import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.s
 import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
 import ExpandLink from '$lib/components/recipes/navs/ExpandLink.svelte'
 import Cookies from '$lib/components/recipes/forms/Cookies.svelte'
+import Toast from '$lib/components/blocks/overlays/Toast/Toast.svelte'
+import Toaster from '$lib/components/blocks/overlays/Toast/Toaster.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
@@ -204,6 +206,8 @@ const drafts = {
 	Zoomer,
 	Tabs,
 	Cookies,
+	Toast,
+	Toaster,
 }
 
 const headless = {

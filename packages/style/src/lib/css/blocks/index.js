@@ -20,4 +20,5 @@ import './code.css' /* Use for code blocks and inline code text */
 import './magic.css' /* Use for page layout specifics */
 import './popover.css' /* Use for popovers */
 import './dialog.css' /* Use for dialogs */
+import './toast.css' /* Use for toasts */
 import './zoomer.css' /* Use for full page zoom dialogs  */

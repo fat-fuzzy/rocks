@@ -1,0 +1,32 @@
+/* TOASTS COLORS
+ * Use for toasts
+ */
+
+.toast {
+	position: relative;
+	inline-size: var(--sidebar-width);
+	animation:
+		fade-in 0.4s ease,
+		fade-out 0.3s ease var(--motion-toast-animation-duration) forwards;
+}
+
+.toaster {
+	position: fixed;
+	inline-size: var(--sidebar-width);
+	bottom: var(--grid-gap, var(--ui-size));
+	right: var(--grid-gap, var(--ui-size));
+	z-index: 4;
+	block-size: fit-content;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-out {
+	to {
+		opacity: 0;
+	}
+}
