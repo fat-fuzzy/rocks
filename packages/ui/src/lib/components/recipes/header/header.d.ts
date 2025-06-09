@@ -11,6 +11,6 @@ export type HeaderProps = UiBlockProps &
 		main: {[key: string]: string}[]
 		sidebar?: Snippet
 		context: AppContextItems
-		app: {settings: {[key: string]: string}}
+		app: {[key: string]: string}
 		children?: Snippet
 	}
