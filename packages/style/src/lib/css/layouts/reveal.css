@@ -31,7 +31,7 @@ ff-reveal {
 	--lightness-scrollbar: var(--lightness-base);
 	--chroma-scrollbar: var(--chroma-base);
 	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
-	--thumb: var(--ink);
+	--thumb: var(--accent);
 
 	block-size: var(--y-size);
 	max-block-size: var(--y-size);
