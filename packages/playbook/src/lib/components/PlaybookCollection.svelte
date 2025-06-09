@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import type {Meta} from '$types'
 	import ui from '@fat-fuzzy/ui'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
@@ -191,8 +192,8 @@
 
 		{#snippet aside()}
 			{#key category}
-				<PropsDoc meta={content.meta} />
-				<PropsDemo {path} meta={content.meta} categories={[category]} />
+				<PropsDoc meta={content.meta as Meta} />
+				<PropsDemo {path} meta={content.meta as Meta} categories={[category]} />
 			{/key}
 		{/snippet}
 	</PageRails>

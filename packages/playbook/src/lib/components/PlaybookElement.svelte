@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {Meta} from '$types'
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {PlaybookActor} from '$lib/api/actor.svelte'
@@ -179,12 +180,12 @@
 
 	{#snippet aside()}
 		{#key category}
-			<PropsDoc meta={content.meta} />
+			<PropsDoc meta={content.meta as Meta} />
 			<PropsDemo
 				{path}
 				{actionPath}
 				{redirect}
-				meta={content.meta}
+				meta={content.meta as Meta}
 				categories={[category]}
 			/>
 		{/key}
