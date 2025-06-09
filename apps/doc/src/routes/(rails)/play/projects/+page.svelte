@@ -50,7 +50,7 @@
 			</p>
 			<div class="l:grid:auto size:sm maki:block">
 				{#each tags as tag}
-					<details class="surface:1:neutral" open>
+					<details class="surface:1:neutral variant:bare" open>
 						<summary class="color:neutral font:sm font:heading ravioli:3xs">
 							{tag}
 						</summary>
