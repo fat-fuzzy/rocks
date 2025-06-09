@@ -70,9 +70,9 @@
 			{@const families = Object.keys(categoryOptions.families)}
 			{#each families as familyName}
 				{@const family = categoryOptions.families[familyName]}
-				<details class="l:stack:2xs">
+				<details class="surface:1:neutral" open>
 					<summary
-						class="font:sm font:heading font:semi size:2xs variant:bare color:accent"
+						class="color:neutral font:sm font:heading ravioli:3xs"
 						data-testid={`summary-${familyName}`}
 					>
 						{familyName}

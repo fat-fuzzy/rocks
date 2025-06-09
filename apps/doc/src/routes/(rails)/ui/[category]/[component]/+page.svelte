@@ -7,7 +7,6 @@
 	let formaction = 'updateState'
 
 	let path = $derived(page.url.pathname)
-	let hash = $derived(page.url.hash)
 	let category = $derived(page.params.category)
 	let title = $derived(page.params.component)
 	let content = $derived(page.data.content)
@@ -21,7 +20,6 @@
 		{category}
 		{content}
 		{path}
-		{hash}
 		{formaction}
 		context={{app: appContext, page: pageContext}}
 	/>
