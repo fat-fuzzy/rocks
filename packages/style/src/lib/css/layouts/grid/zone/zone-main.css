@@ -18,17 +18,13 @@
 	> .page-main {
 		grid-area: page-main;
 		padding-block-end: var(--grid-gap);
-		padding-inline: var(--grid-gap);
+		padding-inline: calc(2 * var(--grid-gap));
 	}
 }
 
 @media screen and (min-width: 690px) {
 	.zone\:main {
 		padding-block-start: var(--ui-size-lg);
-
-		> .page-main {
-			padding-inline: calc(2 * var(--grid-gap));
-		}
 	}
 }
 

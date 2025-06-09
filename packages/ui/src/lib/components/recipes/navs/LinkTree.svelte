@@ -30,7 +30,7 @@
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
 	let colorClass = color ? `surface:1:${color}` : 'bg:inherit'
 	let alignClass = align ? `align:${align}` : ''
-	let shapeClass = $derived(shape ? `shape:${shape}` : '')
+	let shapeClass = $derived(shape ? `shape:${shape}` : `shape:mellow`)
 	let depthClass = `depth-${depth}`
 	let gridClass = depth === 1 ? `l:grid:auto size:xs` : layoutClass
 	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'

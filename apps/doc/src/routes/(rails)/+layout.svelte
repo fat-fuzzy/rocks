@@ -92,7 +92,7 @@
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
-				<Magic spell="fuzzy" size="xs" circle="dotted" mask="text">
+				<Magic spell="fuzzy" size="3xs" mask="text">
 					<div class="l:flex align:center justify:center">
 						<ff-icon class="emoji:home font:lg"></ff-icon>
 						<p class="font:h1 font:lg">Fat Fuzzy</p>
