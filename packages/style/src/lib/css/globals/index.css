@@ -1,5 +1,6 @@
-/* Global */
-@import './initial.css';
+/*
+ * Theme
+ */
 
 /* Color */
 @import './color/semantic.css';

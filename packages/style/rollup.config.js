@@ -2,11 +2,7 @@ import * as glob from 'glob'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import autoprefixer from 'autoprefixer'
-import postcssBundler from '@csstools/postcss-bundler'
-import postcssGlobalData from '@csstools/postcss-global-data'
-import postcssJitProps from 'postcss-jit-props'
 import postcssMinify from '@csstools/postcss-minify'
-import postcssPresetEnv from 'postcss-preset-env'
 import fs from 'node:fs'
 import path from 'node:path'
 
@@ -38,18 +34,7 @@ export default {
 		}),
 		postcss({
 			extract: true,
-			plugins: [
-				postcssBundler(),
-				postcssGlobalData({
-					files: [`${inDir}/css/tokens/tokens.css`],
-				}),
-				postcssPresetEnv(),
-				postcssMinify(),
-				autoprefixer(),
-				postcssJitProps({
-					files: [`${inDir}/css/tokens/tokens.css`],
-				}),
-			],
+			plugins: [postcssMinify(), autoprefixer()],
 			minimize: production,
 			sourceMap: !production,
 		}),

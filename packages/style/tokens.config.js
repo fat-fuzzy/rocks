@@ -2,7 +2,7 @@ import pluginCSS from '@cobalt-ui/plugin-css'
 
 const paths = {
 	in: './src/lib/tokens/',
-	out: './src/lib/css/tokens/',
+	out: './src/lib/css/base/',
 }
 
 const files = [

@@ -18,6 +18,7 @@
 		shape,
 		variant,
 		dimensions,
+		popovertarget,
 		type = 'submit',
 		children,
 		onclick,
@@ -60,6 +61,7 @@
 	data-key={name}
 	onclick={handleClick}
 	data-testid={id}
+	{popovertarget}
 >
 	{#if children}
 		{@render children()}

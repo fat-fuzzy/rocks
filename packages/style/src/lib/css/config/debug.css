@@ -1,4 +1,0 @@
-.debug[class^='l:'] {
-	outline: var(--border-width-md) dotted var(--ink);
-	background-color: var(--ink);
-}

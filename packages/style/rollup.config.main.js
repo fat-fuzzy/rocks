@@ -29,10 +29,10 @@ export default {
 			plugins: [
 				postcssBundler(),
 				postcssGlobalData({
-					files: [`${inDir}/css/tokens/tokens.css`],
+					files: [`${inDir}/css/base/tokens.css`],
 				}),
 				postcssJitProps({
-					files: [`${inDir}/css/tokens/tokens.css`],
+					files: [`${inDir}/css/base/tokens.css`],
 				}),
 				postcssPresetEnv(),
 				postcssMinify(),

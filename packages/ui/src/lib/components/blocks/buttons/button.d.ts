@@ -13,6 +13,7 @@ export type ButtonProps = UiBlockProps & {
 	title?: string
 	value?: string | number
 	disabled?: boolean
+	popovertarget?: string
 	formaction?: string
 
 	type?: ButtonType

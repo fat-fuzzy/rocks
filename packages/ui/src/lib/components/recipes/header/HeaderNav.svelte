@@ -10,6 +10,7 @@
 		font,
 		variant,
 		shape,
+		color,
 		background,
 		asset,
 		justify,
@@ -33,6 +34,7 @@
 	{title}
 	{size}
 	{shape}
+	{color}
 	{font}
 	{variant}
 	{background}

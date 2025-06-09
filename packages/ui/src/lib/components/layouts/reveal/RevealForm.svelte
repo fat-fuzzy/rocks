@@ -5,7 +5,7 @@
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
-	const {ALIGN_OPPOSITE, DEFAULT_REVEAL_STATE} = constants
+	const {ALIGN_OPPOSITE, DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
 	let {
 		id = 'RevealForm',
@@ -81,7 +81,7 @@
 		controls={`${id}-reveal`}
 		asset={buttonAset}
 		justify={`${justify} nowrap`}
-		initial={reveal}
+		initial={TRANSITION_REVEAL[reveal]}
 		place={placeIcon}
 		states={revealStates}
 		{init}
