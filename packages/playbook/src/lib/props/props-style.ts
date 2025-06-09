@@ -186,10 +186,18 @@ const shape = {
 			asset: 'square',
 		},
 		{
+			id: 'shape.pill',
+			title: 'pill',
+			value: 'pill',
+			shape: 'pill',
+			asset: 'pill',
+		},
+		{
 			id: 'shape.none',
 			label: 'none',
 			value: '',
 			shape: '',
+			asset: '',
 		},
 	],
 }
