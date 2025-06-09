@@ -28,5 +28,3 @@ a:hover {
 	--lightness: var(--color-lightness-100);
 	--lightness-contrast: var(--color-lightness-600);
 }
-
-/* TODO: CHeck link styles */
