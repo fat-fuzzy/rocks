@@ -73,13 +73,13 @@
 				<details class="surface:1:neutral" open>
 					<summary
 						class="color:neutral font:sm font:heading ravioli:3xs"
-						data-testid={`summary-${familyName}`}
+						data-testid={`details-summary-${familyName}`}
 					>
 						{familyName}
 					</summary>
 					<div
 						class="l:flex:2xs justify:stretch align:start ravioli:xs"
-						data-testid={`content-${familyName}`}
+						data-testid={`details-content-${familyName}`}
 					>
 						{#each family.items as styleInputGroup}
 							<StyleInput

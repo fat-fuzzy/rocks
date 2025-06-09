@@ -38,7 +38,6 @@ ready.forEach((component) => {
 		test(`Playbook has working size input`, async ({page}) => {
 			await page.goto(`${path}/${component}`)
 			await page.getByRole('link', {name: 'Playbook'}).click()
-			await page.getByTestId(`summary-element`).click()
 			await props.testSize(page, component)
 		})
 
@@ -46,8 +45,6 @@ ready.forEach((component) => {
 			test(`Playbook has working color input`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
 				await page.getByRole('link', {name: 'Playbook'}).click()
-				await page.getByTestId(`summary-element`).click()
-
 				await props.testColor(page, component)
 			})
 		}
@@ -62,8 +59,6 @@ ready.forEach((component) => {
 			test(`Playbook has working variant input`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
 				await page.getByRole('link', {name: 'Playbook'}).click()
-				await page.getByTestId(`summary-element`).click()
-
 				await props.testVariant(page, component)
 			})
 		}
@@ -78,10 +73,7 @@ ready.forEach((component) => {
 		) {
 			test(`Playbook has working asset input: ${component}`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
-
 				await page.getByRole('link', {name: 'Playbook'}).click()
-				await page.getByTestId(`summary-element`).click()
-
 				await props.testAsset(page, component)
 			})
 		}
@@ -94,10 +86,7 @@ ready.forEach((component) => {
 		) {
 			test(`Playbook has working shape input ${component}`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
-
 				await page.getByRole('link', {name: 'Playbook'}).click()
-				await page.getByTestId(`summary-element`).click()
-
 				await props.testShape(page, component)
 			})
 		}
@@ -109,10 +98,7 @@ ready.forEach((component) => {
 					.getByTestId('doc-style-props')
 					.getByRole('listitem')
 					.allInnerTexts()
-
 				await page.getByRole('link', {name: 'Playbook'}).click()
-				await page.getByTestId(`summary-element`).click()
-
 				await props.testContext(page, component)
 			})
 
@@ -122,10 +108,7 @@ ready.forEach((component) => {
 					.getByTestId('doc-style-props')
 					.getByRole('listitem')
 					.allInnerTexts()
-
 				await page.getByRole('link', {name: 'Playbook'}).click()
-				await page.getByTestId(`summary-element`).click()
-
 				await props.testStatus(page, component)
 			})
 		}
