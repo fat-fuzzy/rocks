@@ -1,13 +1,3 @@
 footer {
 	text-align: center;
-	background-color: var(--shade);
-	border-color: var(--shade);
-}
-
-footer summary {
-	border-color: var(--shade);
-}
-
-footer [open] summary {
-	border-color: var(--shade);
 }
