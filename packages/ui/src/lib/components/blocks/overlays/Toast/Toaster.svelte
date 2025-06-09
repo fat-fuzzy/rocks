@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import Toast from '$lib/components/blocks/overlays/Toast/Toast.svelte'
-	import {toastChef} from '$lib/components/blocks/overlays/Toast/actor.svelte'
+	import toastChef from '$lib/components/blocks/overlays/Toast/actor.svelte'
 
 	let ref: HTMLElement
 

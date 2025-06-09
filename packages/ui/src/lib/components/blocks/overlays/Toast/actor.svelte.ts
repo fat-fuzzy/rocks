@@ -2,8 +2,8 @@ import type {FeedbackProps} from '$types'
 
 class ToastChef {
 	public toasts = $state<(Partial<FeedbackProps> & {id: string})[]>([])
-	private toasterRef: HTMLElement | null = null
-	private toasterHeight = 0
+	private toasterRef: HTMLElement | null = $state(null)
+	private toasterHeight = $state(0)
 
 	constructor() {}
 
@@ -61,4 +61,6 @@ class ToastChef {
 	}
 }
 
-export const toastChef = new ToastChef()
+const toastChef = new ToastChef()
+
+export default toastChef
