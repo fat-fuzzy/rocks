@@ -5,7 +5,7 @@
 	--shadow: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	color: var(--ink);
 	background-color: var(--shade);
-	border-color: var(--accent);
+	accent-color: var(--accent);
 }
 
 .bg\:inherit {

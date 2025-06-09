@@ -109,19 +109,16 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 
 	&.variant\:outline {
-		--chroma: var(--color-chroma-600);
+		--chroma: var(--color-chroma-400);
 	}
 
 	&.variant\:bare {
 		--chroma: var(--color-chroma-100);
 	}
 
-	&.variant\:outline:active {
-		--chroma: var(--color-chroma-200);
-	}
-
+	&.variant\:outline:active,
 	&.variant\:bare:active {
-		--chroma: var(--color-chroma-100);
+		--chroma: var(--color-chroma-200);
 	}
 }
 
@@ -158,15 +155,25 @@ button[class*='bg:']:not([class*=':neutral']) {
 
 	button[class*='bg:']:not([class*=':neutral']) {
 		&.variant\:outline:hover {
-			--lightness: var(--color-lightness-500);
+			--lightness: var(--color-lightness-400);
 			background-color: var(--shade);
 			color: var(--ink);
 		}
 
 		&.variant\:bare:hover {
-			--lightness: var(--color-lightness-500);
+			--lightness: var(--color-lightness-400);
 			background-color: var(--shade);
 			color: var(--ink);
+		}
+	}
+
+	button[class*='bg:']:not([class*=':neutral']) {
+		&.variant\:outline:active {
+			--lightness-contrast: var(--color-lightness-000);
+		}
+
+		&.variant\:bare:active {
+			--lightness-contrast: var(--color-lightness-000);
 		}
 	}
 }
@@ -198,15 +205,25 @@ button[class*='bg:']:not([class*=':neutral']) {
 
 	button[class*='bg:']:not([class*=':neutral']) {
 		&.variant\:outline:hover {
-			--lightness: var(--color-lightness-500);
+			--lightness: var(--color-lightness-400);
 			background-color: var(--shade);
 			color: var(--ink);
 		}
 
 		&.variant\:bare:hover {
-			--lightness: var(--color-lightness-500);
+			--lightness: var(--color-lightness-400);
 			background-color: var(--shade);
 			color: var(--ink);
+		}
+	}
+
+	button[class*='bg:']:not([class*=':neutral']) {
+		&.variant\:outline:active {
+			--lightness-contrast: var(--color-lightness-000);
+		}
+
+		&.variant\:bare:active {
+			--lightness-contrast: var(--color-lightness-000);
 		}
 	}
 }
