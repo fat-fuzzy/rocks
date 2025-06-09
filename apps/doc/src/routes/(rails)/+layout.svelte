@@ -88,7 +88,7 @@
 		/>
 	</div>
 	<div
-		class={`${sidenav.reveal} sidebar bg:inherit l:grid size:3xs align:center width:lg height:sm`}
+		class={`${sidenav.reveal ?? ''} sidebar bg:inherit l:grid size:3xs align:center width:lg height:sm`}
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
