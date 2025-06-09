@@ -38,7 +38,7 @@
 
 	li {
 		background-color: inherit;
-		border-block-start: var(--border-width-xl) solid var(--shade);
+		border-block-start: var(--border-width-xl) solid transparent;
 		inline-size: fit-content;
 		padding-block: var(--outline-offset-md);
 		padding-inline: var(--outline-offset-sm);

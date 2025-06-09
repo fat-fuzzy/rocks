@@ -2,7 +2,7 @@
 	position: sticky;
 	background: linear-gradient(
 		to bottom,
-		var(--shade) 0%,
+		transparent 0%,
 		var(--color-shadow-primary) 100%
 	);
 	block-size: 100%;
