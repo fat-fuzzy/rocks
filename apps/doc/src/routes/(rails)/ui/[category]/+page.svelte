@@ -14,14 +14,12 @@
 	let pageContext = $derived(page.data.pageContext)
 </script>
 
-{#key category}
-	<PlaybookCollection
-		{category}
-		path={`${path}${hash}`}
-		depth={1}
-		isPage={true}
-		{formaction}
-		{content}
-		context={{app: appContext, page: pageContext}}
-	/>
-{/key}
+<PlaybookCollection
+	{category}
+	path={`${path}${hash}`}
+	depth={1}
+	isPage={true}
+	{formaction}
+	{content}
+	context={{app: appContext, page: pageContext}}
+/>

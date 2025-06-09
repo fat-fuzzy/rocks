@@ -1,12 +1,7 @@
 <script lang="ts">
 	import type {IStyleInputGroup, IStyleFamily} from '$types'
 
-	import {getContext} from 'svelte'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
-
-	import StylesApi from '$lib/api/styles.svelte'
-	import {PlaybookActor} from '$lib/api/actor.svelte'
-
 	const {InputRange} = fatFuzzyUi.blocks
 	const {InputGroup} = fatFuzzyUi.drafts
 	const {ToggleMenu} = fatFuzzyUi.recipes

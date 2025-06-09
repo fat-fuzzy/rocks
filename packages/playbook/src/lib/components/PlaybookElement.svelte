@@ -173,15 +173,13 @@
 	{/snippet}
 
 	{#snippet aside()}
-		{#key category}
-			<PropsDoc meta={content.meta as Meta} />
-			<PropsDemo
-				{path}
-				{actionPath}
-				{redirect}
-				meta={content.meta as Meta}
-				categories={[category]}
-			/>
-		{/key}
+		<PropsDoc meta={content.meta as Meta} />
+		<PropsDemo
+			{path}
+			{actionPath}
+			{redirect}
+			meta={content.meta as Meta}
+			categories={[category]}
+		/>
 	{/snippet}
 </PageRails>
