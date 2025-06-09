@@ -81,6 +81,9 @@
 
 	//== App preferences (user controlled)
 	let spell = $derived(context.app.brightness === 'day' ? 'dawn' : 'dusk')
+	let collectionContainer = $derived(
+		category === 'blocks' ? 'l:grid:auto size:md' : 'l:grid:auto size:lg',
+	)
 
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
@@ -109,7 +112,7 @@
 			</ul>
 		</div>
 	{:else}
-		<div class="l:grid:auto size:md">
+		<div class={collectionContainer}>
 			{#each componentNames as name, i (i)}
 				{@const SpecifiedElement = items[name]}
 				<article
