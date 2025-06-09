@@ -17,6 +17,7 @@
 		layout,
 		size = UiSize['2xs'],
 		color = UiColor.primary,
+		shape = 'mellow',
 		align,
 		id,
 		depth = 0,
@@ -29,6 +30,7 @@
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
 	let colorClass = color ? `surface:1:${color}` : 'bg:inherit'
 	let alignClass = align ? `align:${align}` : ''
+	let shapeClass = $derived(shape ? `shape:${shape}` : '')
 	let depthClass = `depth-${depth}`
 	let gridClass = depth === 1 ? `l:grid:auto size:xs` : layoutClass
 	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
@@ -66,8 +68,8 @@
 				? 'page'
 				: undefined}
 			class={$page.url.pathname === format.formatHref(path, slug)
-				? `${itemClass} ${colorClass}`
-				: `${itemClass}`}
+				? `${itemClass} ${colorClass} ${shapeClass}`
+				: `${itemClass} ${shapeClass}`}
 		>
 			{#if subItems && depth > 0}
 				<input
