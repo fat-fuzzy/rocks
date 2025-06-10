@@ -6,12 +6,13 @@
 	let {
 		id = 'Feedback',
 		asset = 'default',
-		justify = 'start',
-		align,
-		text,
-		context,
-		status,
 		title,
+		text,
+		status,
+		context,
+		shape = 'mellow',
+		align,
+		justify = 'start',
 		size,
 		font,
 		variant,
@@ -42,18 +43,18 @@
 
 {#if context === 'code'}
 	<pre
-		class={feedbackClasses}
+		class={`${feedbackClasses} shape:${shape}`}
 		data-testid={testId}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
 	<ff-feedback
-		class={feedbackClasses}
+		class={`${feedbackClasses} shape:${shape}`}
 		data-testid={testId}
 		aria-live={ariaLive}
 	>
 		{#if feedbackTitle}
 			<p class="status">{feedbackTitle}</p>
 		{/if}
-		<div class="message">
+		<div class={`message shape:${shape}`}>
 			{#if children}
 				{@render children()}
 			{:else if text}

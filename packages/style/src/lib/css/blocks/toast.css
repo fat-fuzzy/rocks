@@ -1,0 +1,28 @@
+.toast {
+	position: relative;
+	inline-size: var(--layout-sidebar-lg);
+	animation:
+		fade-in 400ms ease,
+		fade-out 300ms ease var(--animation-duration-lg) forwards;
+}
+
+.toaster {
+	position: fixed;
+	inline-size: var(--layout-sidebar-lg);
+	inset-block-end: var(--grid-gap, var(--ui-size));
+	inset-inline-end: var(--grid-gap, var(--ui-size));
+	z-index: 4;
+	block-size: fit-content;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-out {
+	to {
+		opacity: 0;
+	}
+}

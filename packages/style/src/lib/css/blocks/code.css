@@ -34,7 +34,6 @@ code:not([class^='language-']) {
 	border: none;
 	padding-block: calc(var(--ui-size-sm) / 2.5) calc(var(--ui-size-sm) / 2);
 	padding-inline: 0;
-	border-radius: var(--border-radius-base);
 	background-color: var(--color-bg);
 }
 

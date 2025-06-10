@@ -9,7 +9,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import Beacon from '$lib/ui/Beacon.svelte'
 
-	const {Cookies} = ui.drafts
+	const {Cookies, ToastGroup} = ui.drafts
 
 	type Props = {
 		children?: Snippet
@@ -41,7 +41,11 @@
 	<p>Nothing to see here</p>
 {/if}
 
-<Cookies consent={appContext.consent} />
+{#if !appContext.consent}
+	<Cookies consent={appContext.consent} font="lg" />
+{/if}
+
+<ToastGroup />
 
 {#if !dev && appContext.consent?.analytics}
 	<Beacon />

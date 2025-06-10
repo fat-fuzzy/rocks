@@ -6,7 +6,7 @@
 	import {links} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 
-	const {HeaderNav, RevealContext} = ui.drafts
+	const {Cookies, HeaderNav, RevealContext} = ui.drafts
 	const {RevealNav} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
@@ -147,5 +147,11 @@
 {/snippet}
 
 {#snippet zoneFooter()}
-	<Footer />
+	<Footer>
+		{#snippet actions()}
+			{#if appContext.consent}
+				<Cookies consent={appContext.consent} font="lg" />
+			{/if}
+		{/snippet}
+	</Footer>
 {/snippet}

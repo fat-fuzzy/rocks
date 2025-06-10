@@ -1,0 +1,19 @@
+{
+	"animation": {
+		"$type": "dimension",
+		"duration": {
+			"null": {
+				"$value": "0"
+			},
+			"sm": {
+				"$value": "500ms"
+			},
+			"md": {
+				"$value": "1000ms"
+			},
+			"lg": {
+				"$value": "5000ms"
+			}
+		}
+	}
+}
