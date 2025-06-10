@@ -147,8 +147,11 @@
 {/snippet}
 
 {#snippet zoneFooter()}
-	<Footer />
-	{#if appContext.consent}
-		<Cookies consent={appContext.consent} font="lg" />
-	{/if}
+	<Footer>
+		{#snippet actions()}
+			{#if appContext.consent}
+				<Cookies consent={appContext.consent} font="lg" />
+			{/if}
+		{/snippet}
+	</Footer>
 {/snippet}

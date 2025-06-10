@@ -4,13 +4,50 @@
  */
 .zone\:3 {
 	grid-area: zone-3;
-	grid-template-areas: 'main-footer';
+	grid-template-areas: 'footer footer footer';
+	grid-template-columns: subgrid;
 	block-size: fit-content;
 
 	> footer {
 		display: grid;
-		grid-area: main-footer;
+		grid-area: footer;
+		grid-template-areas: '..... footer-content footer-actions';
+		grid-template-columns: subgrid;
+		grid-template-columns: var(--ui-header-height) 1fr var(--ui-header-height);
 		padding-inline: var(--grid-gap);
 		padding-block: 0;
+	}
+
+	> footer .footer-content {
+		display: grid;
+		grid-area: footer-content;
+		padding-inline: var(--grid-gap);
+		padding-block: 0;
+	}
+
+	> footer .footer-actions {
+		display: grid;
+		grid-area: footer-actions;
+		padding-inline: var(--grid-gap);
+		padding-block: 0;
+		align-content: center;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.zone\:3 {
+		grid-template-areas: 'footer footer footer footer footer footer';
+		> footer {
+			grid-template-columns: subgrid;
+		}
+
+		> footer .footer-content {
+			grid-column-start: 4;
+			grid-column-end: 5;
+		}
+
+		> footer .footer-actions {
+			grid-column-start: 5;
+		}
 	}
 }

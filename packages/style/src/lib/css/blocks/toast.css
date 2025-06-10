@@ -1,20 +1,16 @@
-/* TOASTS COLORS
- * Use for toasts
- */
-
 .toast {
 	position: relative;
 	inline-size: var(--layout-sidebar-lg);
 	animation:
-		fade-in 0.4s ease,
-		fade-out 0.3s ease var(--animation-duration-lg) forwards;
+		fade-in 400ms ease,
+		fade-out 300ms ease var(--animation-duration-lg) forwards;
 }
 
 .toaster {
 	position: fixed;
 	inline-size: var(--layout-sidebar-lg);
-	bottom: var(--grid-gap, var(--ui-size));
-	right: var(--grid-gap, var(--ui-size));
+	inset-block-end: var(--grid-gap, var(--ui-size));
+	inset-inline-end: var(--grid-gap, var(--ui-size));
 	z-index: 4;
 	block-size: fit-content;
 }

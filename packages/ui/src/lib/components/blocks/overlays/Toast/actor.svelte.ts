@@ -1,5 +1,8 @@
 import type {FeedbackProps} from '$types'
 
+/**
+ * Adapted from : https://web.dev/articles/building/a-toast-component
+ */
 class Toaster {
 	public toasts: {
 		id: string
