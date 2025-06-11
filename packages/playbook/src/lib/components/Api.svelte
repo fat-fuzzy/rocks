@@ -59,7 +59,12 @@
 	<form
 		name={`styles-update-${categories[0]}`}
 		{method}
-		use:enhance
+		use:enhance={() => {
+			// prevent default callback from resetting the form
+			return ({update}) => {
+				update({reset: false})
+			}
+		}}
 		class={`${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 	>
 		{#each categories as category}
