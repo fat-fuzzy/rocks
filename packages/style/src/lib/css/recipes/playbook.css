@@ -7,7 +7,7 @@
 	margin-inline: auto;
 }
 
-@media screen and (min-width: 690px) {
+@media screen and (min-width: 620px) {
 	.page-header .ui\:menu {
 		margin-inline: var(--ui-size);
 		margin-block-start: var(--ui-size);

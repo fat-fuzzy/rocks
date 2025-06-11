@@ -28,7 +28,7 @@
 }
 
 @include switchToRowStyles_GridHeader(320px, '2xs');
-@include switchToRowStyles_GridHeader(690px, 'xs');
+@include switchToRowStyles_GridHeader(620px, 'xs');
 @include switchToRowStyles_GridHeader(935px, 'sm');
 @include switchToRowStyles_GridHeader(1360px, 'md');
 @include switchToRowStyles_GridHeader(1620px, 'lg');

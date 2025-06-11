@@ -45,10 +45,9 @@
 	}
 }
 
-@media screen and (min-width: 690px) {
+@media screen and (min-width: 620px) {
 	.zone\:2 {
 		grid-template-areas: 'zone-main zone-main page-context';
-		grid-template-columns: subgrid;
 		grid-template-rows: 1fr;
 
 		> .page-context:not(.empty) {

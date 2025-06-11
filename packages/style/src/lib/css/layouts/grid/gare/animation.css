@@ -69,7 +69,7 @@ details[open].gare\:nord > ff-reveal > *,
 	transition: block-size 250ms ease-in-out 200ms;
 }
 
-@media screen and (min-width: 690px) {
+@media screen and (min-width: 620px) {
 	details[class*='gare:'] > ff-reveal,
 	.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
 		--collapse-x: 0;
