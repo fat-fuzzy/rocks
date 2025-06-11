@@ -1,17 +1,14 @@
 [class*='state:'].canvas {
 	position: relative;
-	border: var(--border-width-lg) dotted var(--accent);
 }
 
 .canvas {
 	position: relative;
-	border: var(--border-width-lg) dotted var(--accent);
+	border: var(--border-width-lg) dotted var(--shade);
 }
 
-.canvas[class*='play'],
-.canvas[class*='clear'],
-.canvas[class*='pause'] {
-	border: var(--border-width-lg) dotted var(--shade);
+.canvas.state\:idle {
+	border: var(--border-width-lg) dotted var(--accent);
 }
 
 .state\:play {
