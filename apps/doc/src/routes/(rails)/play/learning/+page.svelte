@@ -37,7 +37,7 @@
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
-			<div class="tags l:grid:auto size:xs maki:block">
+			<div class="l:grid:auto size:sm maki:block">
 				{#each tags as tag}
 					<details class="surface:1:neutral shape:soft" open>
 						<summary
