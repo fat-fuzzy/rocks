@@ -10,14 +10,13 @@
 
 @media screen and (min-width: 620px) {
 	.tram.zone\:2 {
-		grid-template-columns: unset;
 		> .page-context {
 			max-block-size: var(--max-block-size);
 		}
 	}
 }
 
-@media screen and (min-width: 690px) {
+@media screen and (min-width: 935px) {
 	.tram.zone\:2 {
 		grid-template-columns: subgrid;
 	}
@@ -36,21 +35,19 @@
 
 	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2,
 	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2.hug {
-		grid-column: 1 / span 7;
+		grid-column-start: 1;
+		grid-column-end: -1;
 	}
 
 	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2.hug {
 		.zone\:main {
-			grid-column: 1 / span 4;
+			grid-column-start: 1;
+			grid-column-end: 5;
 		}
 	}
 
 	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
 		~ .tram.zone\:2.hug {
-		grid-column: 4 / span 4;
-
-		.zone\:main {
-			grid-column: span 1;
-		}
+		grid-column-start: 4;
 	}
 }
