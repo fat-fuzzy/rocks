@@ -19,8 +19,9 @@
 	}
 }
 
-@media screen and (min-width: 690px) {
+@media screen and (min-width: 620px) {
 	.steam.zone\:2 {
+		grid-template-columns: subgrid;
 		> .page-context[class*='media:'] {
 			block-size: 100%;
 			max-block-size: var(--max-block-size);
@@ -37,7 +38,7 @@
 @media screen and (min-width: 1100px) {
 	.steam.zone\:2.hug {
 		grid-column-start: 1;
-		grid-column: span 7;
+		grid-column-end: -1;
 		max-block-size: var(--max-block-size);
 		padding-inline-end: calc(2 * var(--grid-gap));
 	}

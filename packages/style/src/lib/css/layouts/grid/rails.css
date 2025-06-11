@@ -36,6 +36,12 @@ body:has(.rails[class*='l:grid']) {
 	border-radius: 0;
 }
 
+@media screen and (min-width: 620px) {
+	.rails[class*='l:grid:'] {
+		--sidebar-width: var(--layout-sidebar-collapsed);
+	}
+}
+
 @media screen and (min-width: 690px) {
 	.rails[class*='l:grid:'] {
 		--sidebar-width: var(--layout-sidebar-sm);

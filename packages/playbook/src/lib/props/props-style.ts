@@ -234,7 +234,7 @@ const status = {
 	layout: 'stack',
 	variant: 'outline',
 	container: 'ravioli',
-	size: '3xs',
+	size: '2xs',
 	items: [
 		{
 			id: 'status.default',
@@ -275,7 +275,7 @@ const context = {
 	layout: 'stack',
 	variant: 'outline',
 	container: 'ravioli',
-	size: '3xs',
+	size: '2xs',
 	items: [
 		{id: 'context.prose', label: 'prose', value: 'prose'},
 		{id: 'context.code', label: 'code', value: 'code'},

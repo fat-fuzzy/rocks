@@ -25,7 +25,7 @@
 	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
 }
 
-@media screen and (min-width: 690px) {
+@media screen and (min-width: 620px) {
 	.l\:grid\:urbanist {
 		grid-template-columns:
 			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
@@ -41,9 +41,8 @@
 			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'
 			'zone-3  zone-3  zone-3  zone-3  zone-3  zone-3  zone-3';
 		grid-template-columns:
-			var(--sidebar-track-sm) var(--sidebar-track-md) var(
-				--sidebar-track-lg
-			) 1fr var(--sidebar-track-lg)
+			var(--sidebar-track-sm) var(--sidebar-track-md) var(--sidebar-track-lg)
+			1fr var(--sidebar-track-lg)
 			var(--sidebar-track-md) var(--sidebar-track-sm);
 	}
 }

@@ -59,7 +59,7 @@
 	padding-inline: var(--outline-offset-lg);
 }
 
-@media screen and (min-width: 690px) {
+@media screen and (min-width: 620px) {
 	/* This form contains the actual settings */
 	.exchange > .context > .app-context > form {
 		display: none;

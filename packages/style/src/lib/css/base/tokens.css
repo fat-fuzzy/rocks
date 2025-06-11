@@ -181,7 +181,7 @@
   --layout-breakpoint-md: 1360px;
   --layout-breakpoint-sm: 935px;
   --layout-breakpoint-xl: 2048px;
-  --layout-breakpoint-xs: 690px;
+  --layout-breakpoint-xs: 620px;
   --layout-gap-2xl: var(--scale-base-30);
   --layout-gap-2xs: var(--scale-base-03);
   --layout-gap-lg: var(--scale-base-10);
