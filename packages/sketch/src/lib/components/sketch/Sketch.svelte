@@ -293,7 +293,8 @@
 					stop={updateCanvas}
 					initial={actor.getPlayButtonState()}
 					{color}
-					size="xs"
+					size="2xs"
+					font="xs"
 					{variant}
 					disabled={actor.hasError() ?? undefined}
 					{init}

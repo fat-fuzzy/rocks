@@ -9,6 +9,7 @@
 
 	let {
 		id = 'player',
+		font,
 		size,
 		variant = 'outline',
 		color = 'primary',
@@ -67,6 +68,7 @@
 					states={actor.playSwitch}
 					{color}
 					{size}
+					{font}
 					shape="pill w:full"
 					initial={actor.playState}
 					disabled={actor.getPlayDisabled()}
@@ -83,13 +85,14 @@
 				color="accent"
 				{variant}
 				{size}
+				{font}
 				shape="pill w:full"
 				value="clear"
 				asset="clear"
 				onclick={updatePlayer}
 				disabled={actor.getClearDisabled()}
 			>
-				Clear
+				clear
 			</Button>
 		</li>
 		<li>
@@ -99,13 +102,14 @@
 				color="highlight"
 				{variant}
 				{size}
+				{font}
 				shape="pill w:full"
 				value="stop"
 				asset="rect"
 				onclick={updatePlayer}
 				disabled={actor.getStopDisabled()}
 			>
-				Stop
+				stop
 			</Button>
 		</li>
 	</menu>

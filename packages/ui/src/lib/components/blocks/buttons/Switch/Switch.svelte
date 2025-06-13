@@ -17,6 +17,7 @@
 		asset,
 		color,
 		size,
+		font,
 		shape,
 		layout,
 		variant,
@@ -46,6 +47,7 @@
 		actor.getStyles({
 			color,
 			size,
+			font,
 			shape,
 			align,
 			justify,
