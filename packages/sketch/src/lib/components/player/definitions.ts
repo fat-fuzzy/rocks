@@ -9,7 +9,7 @@ export const PLAYER_SWITCH = {
 	active: {
 		id: 'active',
 		value: PlayerEvent.pause as string,
-		text: 'Pause',
+		text: 'pause',
 		asset: 'pause',
 		variant: 'outline',
 		state: 'active',
@@ -17,7 +17,7 @@ export const PLAYER_SWITCH = {
 	inactive: {
 		id: 'inactive',
 		value: PlayerEvent.play as string,
-		text: 'Play',
+		text: 'play',
 		asset: 'play',
 		variant: 'fill',
 		state: 'inactive',

@@ -58,7 +58,7 @@
 </script>
 
 <div class="l:burrito contain">
-	<menu {id} class="player l:switcher:2xs raviolink">
+	<menu {id} class="player l:switcher:2xs">
 		<li>
 			{#key actor.playState}
 				<Switch

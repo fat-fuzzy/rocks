@@ -284,7 +284,7 @@
 	{/snippet}
 
 	{#snippet aside()}
-		<div class="maki:block w:full">
+		<div class="maki:block w:full raviolink">
 			{#if canvas}
 				<Player
 					play={updateCanvas}
