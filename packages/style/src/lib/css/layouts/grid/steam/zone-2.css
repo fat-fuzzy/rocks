@@ -7,7 +7,7 @@
 	grid-template-rows: 1fr auto;
 
 	> .page-context:not(.empty) {
-		max-block-size: var(--overlay-height-sm);
+		max-block-size: var(--overlay-height-xs);
 	}
 
 	> .page-context > summary {
