@@ -265,6 +265,24 @@
 					}
 				}
 			},
+			"primary-light": {
+				"$value": "oklch(0.8132 0.0863 285.94 / 29.65%)",
+				"$extensions": {
+					"mode": {
+						"day": "oklch(0.8132 0.0863 285.94 / 29.65%)",
+						"night": "oklch(0.2994 0.1628 274.54 / 37.11%)"
+					}
+				}
+			},
+			"primary-dark": {
+				"$value": "oklch(0.2994 0.1628 274.54 / 37.11%)",
+				"$extensions": {
+					"mode": {
+						"day": "oklch(0.8132 0.0863 285.94 / 29.65%)",
+						"night": "oklch(0.2994 0.1628 274.54 / 37.11%)"
+					}
+				}
+			},
 			"accent": {
 				"$value": "hsla(188.19 90% 60% / 1)",
 				"$extensions": {

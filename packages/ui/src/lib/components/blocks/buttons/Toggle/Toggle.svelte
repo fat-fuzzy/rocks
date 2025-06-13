@@ -19,6 +19,7 @@
 		assetType,
 		color,
 		size,
+		font,
 		shape,
 		variant = 'fill',
 		dimensions,
@@ -45,6 +46,7 @@
 		store.getStyles({
 			color,
 			size,
+			font,
 			shape,
 			align,
 			justify,
@@ -85,6 +87,6 @@
 	{:else if shape}
 		<span class="sr-only">{title}</span>
 	{:else}
-		{label}
+		{label ?? title}
 	{/if}
 </button>

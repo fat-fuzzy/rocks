@@ -136,9 +136,10 @@
 							due="sparkles"
 							size="md"
 							grow={true}
+							shape="mellow"
 						>
 							<h2 class="w:full text:center">
-								{category === 'raw' ? 'Template' : 'Playbook'}
+								{category === 'raw' ? 'template' : 'playbook'}
 							</h2>
 						</Magic>
 					</div>

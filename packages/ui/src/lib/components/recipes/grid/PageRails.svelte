@@ -55,13 +55,14 @@
 	}
 
 	const contextClasses: {[key: string]: string} = {
-		metro: 'ravioli:3xs',
-		railway: 'ravioli:3xs',
-		steam: 'layer:1 ravioli:3xs',
+		metro: 'ravioli:3xs bg:inherit l:stack:2xs',
+		railway: 'ravioli:3xs bg:inherit  l:stack:2xs',
+		steam:
+			'ravioli:3xs ff:callout magic:feather shape:soft l:grid size:3xs  l:grid size:3xs',
 		tgv: '',
-		tram: 'ravioli:3xs layer:1',
-		voyager: '',
-		urbanist: '',
+		tram: 'ravioli:3xs ff:callout shape:soft  l:grid size:3xs',
+		voyager: 'bg:inherit  l:stack:2xs',
+		urbanist: 'bg:inherit  l:stack:2xs',
 	}
 
 	let contextClass = $derived(
@@ -105,14 +106,15 @@
 	</div>
 </main>
 
-<div
-	id={`context-${id}`}
-	class={`${contextClass} l:stack:${size} bg:inherit scroll:y ${mediaClass}`}
->
-	{#if nav && nav.length > 0}
-		<PageNav id="page-nav" {hash} items={nav} />
-	{/if}
-	{#if aside}
-		{@render aside()}
-	{/if}
-</div>
+{#if layout !== 'tgv'}
+	<div id={`context-${id}`} class={`page-context scroll:y`}>
+		{#if nav && nav.length > 0}
+			<PageNav id="page-nav" {hash} items={nav} />
+		{/if}
+		<div class={`${contextClass} ${mediaClass}`}>
+			{#if aside}
+				{@render aside()}
+			{/if}
+		</div>
+	</div>
+{/if}

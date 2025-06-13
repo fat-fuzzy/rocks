@@ -19,9 +19,6 @@ ff-callout[class*='magic'] {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	background-image: var(--magic-gradient);
 	color: var(--ink);
-	border-radius: var(--border-radius-base);
-	line-height: 1;
-	padding: var(--ui-size-sm);
 
 	&:has(~ [class*='icon']) {
 		margin-inline-end: var(--ui-size-sm);
@@ -227,5 +224,58 @@ ff-callout[class*='magic'].shape\:round {
 			var(--color-magic-primary),
 			var(--color-magic-warning)
 		);
+	}
+}
+
+.magic\:feather {
+	--color-magic-feather: var(--color-magic-primary-light);
+	--magic-gradient: linear-gradient(
+		to top,
+		transparent 0% 9%,
+		var(--color-magic-feather) 50% 100%
+	);
+
+	/* Used for text masking: only use linear gradients */
+	--webkit-magic-gradient: linear-gradient(
+		to top,
+		transparent 0% 9%,
+		var(--color-magic-feather) 50% 100%
+	);
+	--lightness-contrast: var(--color-lightness-000);
+	--chroma-contrast: var(--color-chroma-000);
+	--hue: var(--color-theme-primary-light);
+
+	&[class*='svg'] {
+		--magic-gradient: linear-gradient(
+			to top,
+			transparent 0% 9%,
+			var(--color-magic-feather) 50% 100%
+		);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.magic\:feather {
+		--color-magic-feather: var(--color-magic-primary-dark);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	.magic\:feather {
+		--color-magic-feather: var(--color-magic-primary-light);
+	}
+}
+
+[class*='settings:night'],
+[color-scheme='dark'] {
+	.magic\:feather {
+		--color-magic-feather: var(--color-magic-primary-dark);
+	}
+}
+
+[class*='settings:day'],
+[color-scheme='light'] {
+	.magic\:feather {
+		--color-magic-feather: var(--color-magic-primary-light);
 	}
 }

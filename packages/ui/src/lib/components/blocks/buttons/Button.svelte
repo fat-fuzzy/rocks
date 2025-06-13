@@ -15,6 +15,7 @@
 		asset, // the `value` in emoji:value or svg:value
 		color,
 		size,
+		font,
 		shape,
 		variant,
 		dimensions,
@@ -32,6 +33,7 @@
 		styleHelper.getStyles({
 			color,
 			size,
+			font,
 			shape,
 			align,
 			justify,
