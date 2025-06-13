@@ -52,7 +52,7 @@
 
 		> .page-context:not(.empty) {
 			scrollbar-width: thin;
-			padding-inline: 0 var(--grid-gap);
+			padding-inline: 0;
 		}
 
 		> .page-context {
@@ -78,7 +78,6 @@
 
 	.zone\:2 .page-context:not(.empty) {
 		grid-column: span 3;
-		padding-inline: 0 var(--grid-gap);
 	}
 
 	.zone\:2:has(dialog.zoomer[open]) {

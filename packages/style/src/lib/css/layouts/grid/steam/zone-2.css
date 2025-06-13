@@ -6,6 +6,10 @@
 .steam.zone\:2 {
 	grid-template-rows: 1fr auto;
 
+	> .page-context:not(.empty) {
+		max-block-size: var(--overlay-height-sm);
+	}
+
 	> .page-context > summary {
 		max-inline-size: var(--sidebar-width);
 	}
@@ -22,7 +26,8 @@
 @media screen and (min-width: 620px) {
 	.steam.zone\:2 {
 		grid-template-columns: subgrid;
-		> .page-context[class*='media:'] {
+
+		> .page-context:not(.empty) {
 			block-size: 100%;
 			max-block-size: var(--max-block-size);
 		}
