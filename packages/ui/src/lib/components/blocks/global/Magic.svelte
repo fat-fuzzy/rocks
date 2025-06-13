@@ -31,7 +31,7 @@
 	data-testid={id}
 >
 	<ff-callout
-		class={`magic:${spell} ${shapeClass} ${levelClass} ${fontClass} ${grow ? 'grow:1 l:flex align:center justify:center' : ''}`}
+		class={`magic:${spell} ${shapeClass} ${levelClass} ${fontClass} ravioli:${size} ${grow ? 'grow:1 l:flex align:center justify:center' : ''}`}
 	>
 		{#if text}
 			{text}
