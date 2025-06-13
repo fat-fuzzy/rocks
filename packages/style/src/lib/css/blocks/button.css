@@ -130,18 +130,21 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 
 	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:hover {
+		&.variant\:outline:hover,
+		&.variant\:bare:hover {
 			--lightness: var(--color-lightness-000);
-			--chroma-contrast: var(--color-chroma-100);
+			--chroma: var(--color-chroma-000);
+			--lightness-contrast: var(--color-lightness-400);
+			--chroma-contrast: var(--color-chroma-400);
 			background-color: var(--shade);
 			color: var(--ink);
 		}
+	}
 
-		&.variant\:bare:hover {
-			--lightness: var(--color-lightness-000);
-			--chroma-contrast: var(--color-chroma-000);
-			background-color: var(--shade);
-			color: var(--ink);
+	button[class*='bg:']:not([class*=':neutral']) {
+		&.variant\:outline:active,
+		&.variant\:bare:active {
+			--lightness-contrast: var(--color-lightness-500);
 		}
 	}
 }
@@ -154,26 +157,21 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 
 	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:hover {
-			--lightness: var(--color-lightness-400);
-			background-color: var(--shade);
-			color: var(--ink);
-		}
-
+		&.variant\:outline:hover,
 		&.variant\:bare:hover {
 			--lightness: var(--color-lightness-400);
+			--chroma: var(--color-chroma-400);
+			--lightness-contrast: var(--color-lightness-000);
+			--chroma-contrast: var(--color-chroma-000);
 			background-color: var(--shade);
 			color: var(--ink);
 		}
 	}
 
 	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:active {
-			--lightness-contrast: var(--color-lightness-000);
-		}
-
+		&.variant\:outline:active,
 		&.variant\:bare:active {
-			--lightness-contrast: var(--color-lightness-000);
+			--lightness-contrast: var(--color-lightness-100);
 		}
 	}
 }
@@ -184,16 +182,21 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 
 	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:hover {
+		&.variant\:outline:hover,
+		&.variant\:bare:hover {
 			--lightness: var(--color-lightness-000);
+			--chroma: var(--color-chroma-000);
+			--lightness-contrast: var(--color-lightness-400);
+			--chroma-contrast: var(--color-chroma-400);
 			background-color: var(--shade);
 			color: var(--ink);
 		}
+	}
 
-		&.variant\:bare:hover {
-			--lightness: var(--color-lightness-000);
-			background-color: var(--shade);
-			color: var(--ink);
+	button[class*='bg:']:not([class*=':neutral']) {
+		&.variant\:outline:active,
+		&.variant\:bare:active {
+			--lightness-contrast: var(--color-lightness-500);
 		}
 	}
 }
@@ -204,26 +207,21 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 
 	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:hover {
-			--lightness: var(--color-lightness-400);
-			background-color: var(--shade);
-			color: var(--ink);
-		}
-
+		&.variant\:outline:hover,
 		&.variant\:bare:hover {
 			--lightness: var(--color-lightness-400);
+			--chroma: var(--color-chroma-400);
+			--lightness-contrast: var(--color-lightness-000);
+			--chroma-contrast: var(--color-chroma-000);
 			background-color: var(--shade);
 			color: var(--ink);
 		}
 	}
 
 	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:active {
-			--lightness-contrast: var(--color-lightness-000);
-		}
-
+		&.variant\:outline:active,
 		&.variant\:bare:active {
-			--lightness-contrast: var(--color-lightness-000);
+			--lightness-contrast: var(--color-lightness-100);
 		}
 	}
 }
