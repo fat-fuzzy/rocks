@@ -32,6 +32,7 @@
 		padding-inline: var(--grid-gap);
 		padding-block: 0;
 		align-content: center;
+		justify-items: end;
 	}
 }
 
