@@ -80,18 +80,9 @@
 }
 
 @media screen and (min-width: 1100px) {
-	[class*='zone:']:has([class*='l:rails']) {
-		inline-size: var(--sidebar-width);
-	}
-
 	.zone\:main,
 	[class*='zone:']:has(.zone\:main) {
 		inline-size: auto;
-	}
-
-	[class*='zone:'].hug:has([class*='l:rails'].collapsed) {
-		--sidebar-width: var(--layout-sidebar-collapsed);
-		min-inline-size: max-content;
 	}
 
 	[class*='gare:'][class*='width:']:not([class*=':full']),

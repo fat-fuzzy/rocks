@@ -15,7 +15,7 @@
 	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent} size:${size}`}>
+<div class={`l:grid:urbanist ${parent} size:${size}`}>
 	<header
 		class={`zone:1 exchange l:grid size:${size} surface:1:${theme} dotted`}
 	>
@@ -35,7 +35,7 @@
 		</aside>
 	</header>
 
-	<div class={`zone:2 ${parent} size:${size} scroll:y snap:start`}>
+	<div class={`zone:2 ${parent} hug size:${size} scroll:y snap:start`}>
 		<main class={`zone:main ${parent}  scroll:y surface:0:${theme}`}>
 			<header class="page-header l:sidebar size:md">
 				<div class="l:main">
@@ -87,6 +87,7 @@
 		<footer class={`l:grid size:${size} `}>
 			<Details
 				title="Footer"
+				zone="footer-content"
 				{theme}
 				layout="grid"
 				gare="nord"
