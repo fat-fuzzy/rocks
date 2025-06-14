@@ -1,5 +1,13 @@
 # @fat-fuzzy/ui
 
+## 0.1.62
+
+### Patch Changes
+
+- d167aeb: Update raw templates
+- Updated dependencies [d167aeb]
+  - @fat-fuzzy/style@0.1.11
+
 ## 0.1.61
 
 ### Patch Changes
