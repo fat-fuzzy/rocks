@@ -15,7 +15,7 @@
 	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent} swap size:${size}`}>
+<div class={`l:grid:urbanist ${parent} swap size:${size}`}>
 	<header
 		class={`zone:1 exchange l:grid size:${size} surface:1:${theme} dotted`}
 	>
@@ -32,7 +32,7 @@
 			<AppContext {theme} />
 		</aside>
 	</header>
-	<div class={`zone:2 ${parent} l:grid size:${size}`}>
+	<div class={`zone:2 ${parent} l:grid size:${size} hug`}>
 		<main
 			class={`zone:main ${parent} l:grid size:${size} scroll:y surface:0:${theme}`}
 		>
@@ -63,6 +63,7 @@
 			<Details
 				title="Footer"
 				{theme}
+				zone="footer-content"
 				layout="grid"
 				gare="nord"
 				surface="4"

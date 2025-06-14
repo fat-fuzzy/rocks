@@ -11,7 +11,7 @@
 	let size = '2xs'
 </script>
 
-<div class={`rails l:grid:${parent} size:${size}`}>
+<div class={`l:grid:urbanist contain ${parent} size:${size}`}>
 	<header
 		class={`zone:1 ${parent} exchange l:grid size:${size} surface:1:${theme}`}
 	>
@@ -32,14 +32,16 @@
 			<AppContext {theme} />
 		</aside>
 	</header>
-	<div class={`zone:2 ${parent} l:grid surface:2:${theme} hug`}>
-		<main class={`zone:main ${parent} l:grid  scroll:y surface:0:${theme}`}>
+	<div class={`zone:2 ${parent} l:grid surface:0:${theme} hug`}>
+		<main
+			class={`zone:main ${parent} l:grid size:3xs scroll:y align:start justify:center scroll:y surface:0:${theme}`}
+		>
 			<div class="page-header l:text:md ravioli:lg">
 				<h1 class={`color:${theme}`}>{title}</h1>
 			</div>
 			<div class="page-main l:flex justify:center">
 				<div
-					class="l:frame:video justify:center surface:0:primary dotted font:2xl w:full"
+					class={`l:frame:video justify:center surface:0:${theme} dotted font:2xl w:full`}
 				>
 					<p class="emoji:sparkles text:center justify:end">
 						Add your
@@ -64,6 +66,7 @@
 		<footer class={`l:grid size:${size} `}>
 			<Details
 				title="Footer"
+				zone="footer-content"
 				{theme}
 				layout="grid"
 				gare="nord"
