@@ -38,10 +38,6 @@
 		--max-block-size: calc(
 			100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap)
 		);
-		grid-template-columns:
-			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
-			1fr
-			var(--sidebar-width);
 	}
 }
 

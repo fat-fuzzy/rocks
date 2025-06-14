@@ -15,14 +15,9 @@
 	}
 }
 
-@media screen and (min-width: 690px) {
-	.metro.zone\:2 {
-		grid-template-columns: subgrid;
-	}
-}
-
 @media screen and (min-width: 935px) {
 	.metro.zone\:2 {
+		grid-template-columns: subgrid;
 		max-block-size: var(--max-block-size);
 
 		> .page-context {

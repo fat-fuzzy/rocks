@@ -11,6 +11,8 @@
 	grid-auto-flow: row;
 	z-index: var(--layout-z-index-reveal);
 	padding-inline: var(--grid-gap);
+	max-inline-size: 100vw;
+	overflow: auto hidden;
 
 	details > summary {
 		display: block;
@@ -27,15 +29,11 @@
 	}
 }
 
-@media screen and (min-width: 935px) {
-	.zone\:1.exchange {
-		padding-inline: calc(2 * var(--grid-gap)) 0;
-	}
-}
-
 @media screen and (min-width: 1100px) {
 	.zone\:1.exchange,
 	.swap.exchange {
+		overflow: unset;
+		padding-inline: calc(2 * var(--grid-gap)) 0;
 		grid-template-areas: 'sidebar sidebar sidebar navbar context context context';
 	}
 }

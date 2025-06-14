@@ -23,15 +23,6 @@
 	position: relative;
 }
 
-@media screen and (min-width: 620px) {
-	.l\:grid\:railway {
-		grid-template-columns:
-			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
-			1fr
-			var(--sidebar-width);
-	}
-}
-
 @media screen and (min-width: 1100px) {
 	.l\:grid\:railway {
 		grid-template-areas:
