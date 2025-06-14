@@ -10,8 +10,8 @@
 	z-index: var(--layout-z-index-fixed);
 }
 
-[class*='place'] {
-	position: absolute;
+ff-reveal:has([class*='place']) {
+	position: relative;
 	z-index: var(--layout-z-index-layer);
 }
 

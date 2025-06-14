@@ -41,7 +41,7 @@
 
 	let updated = $derived(consent)
 	let cookiesPartial = $derived(
-		consent && (consent.analytics || consent.analytics),
+		consent && consent.functional && !consent.analytics,
 	)
 	let submitDisabled: boolean | undefined = $state(undefined)
 	let title = 'Cookies'
