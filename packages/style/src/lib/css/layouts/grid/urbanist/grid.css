@@ -3,10 +3,7 @@
  */
 
 .l\:grid\:urbanist {
-	--max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - 4 * var(--grid-gap)
-	);
-
+	--max-block-size: calc(100vh - var(--ui-header-height));
 	--sidebar-track-sm: var(--layout-sidebar-collapsed);
 	--sidebar-track-md: calc(
 		var(--layout-sidebar-sm) - var(--layout-sidebar-collapsed)

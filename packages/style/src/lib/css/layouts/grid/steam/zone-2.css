@@ -48,12 +48,12 @@
 		padding-inline-end: calc(2 * var(--grid-gap));
 	}
 
-	.exchange.zone\:1 ~ .steam.zone\:2.hug .page-context:not(.empty) {
+	.exchange ~ .steam.zone\:2.hug .page-context:not(.empty) {
 		grid-column-start: 5;
 		grid-column-end: -1;
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded) {
+	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) {
 		~ .steam.zone\:2.hug {
 			grid-column-start: 4;
 			grid-column-end: -1;
