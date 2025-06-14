@@ -11,7 +11,6 @@
 	grid-auto-flow: row;
 	z-index: var(--layout-z-index-reveal);
 	padding-inline: var(--grid-gap);
-	max-inline-size: 100vw;
 
 	details > summary {
 		display: block;

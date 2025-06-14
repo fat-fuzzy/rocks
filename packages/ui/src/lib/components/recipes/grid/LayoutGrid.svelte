@@ -11,16 +11,20 @@
 		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
 	)
 
+	let containClass = $derived(
+		layout === 'steam' || layout === 'tram' ? 'contain' : '',
+	)
 	let sizeClass = $derived(size ? `size:${size}` : '')
 </script>
 
-<div class={`rails l:grid:${layout} ${themeClass} ${sizeClass}`}>
+<div
+	class={`rails l:grid:urbanist ${containClass} ${layout} ${themeClass} ${sizeClass}`}
+>
 	{#each areas as { zone, grid, gare, hug, exchange, scroll, tag }, i (i)}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const gareClass = gare ? gare : ''}
 		{@const exchangeClass = exchange ? 'exchange bg:inherit' : 'bg:inherit'}
-		{@const hugClass =
-			layout === 'steam' || layout === 'tram' || hug ? 'hug' : ''}
+		{@const hugClass = i === 1 ? 'hug' : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}
 

@@ -4,11 +4,11 @@
  */
 .urbanist.zone\:2 {
 	grid-template-areas: 'zone-main';
-	grid-template-rows: subgrid;
 }
 
 @media screen and (min-width: 1100px) {
 	.zone\:2 {
+		max-block-size: var(--max-block-size);
 		grid-column-start: 4;
 	}
 

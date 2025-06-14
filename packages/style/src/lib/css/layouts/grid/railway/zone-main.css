@@ -14,7 +14,6 @@
 
 @media screen and (min-width: 1100px) {
 	.railway.zone\:main {
-		grid-column-start: 2;
-		grid-column: span 1;
+		grid-column-start: 1;
 	}
 }
