@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.12
+
+### Patch Changes
+
+- 99407a7: Clean grid layouts
+
 ## 0.1.11
 
 ### Patch Changes
