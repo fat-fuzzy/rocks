@@ -31,23 +31,25 @@
 	{#snippet main()}
 		<EscapeHtml id={slug} html={content.html} size="md" element="section" />
 
-		{#each categories as category}
-			<PlaybookCollection
-				{category}
-				path={page.url.pathname}
-				depth={1}
-				isPage={false}
-				formaction="updateState"
-				{content}
-				context={{app: appContext, page: pageContext}}
-			>
-				<EscapeHtml
-					id={`${slug}-${category}`}
-					html={markdowns.categories.find(({meta}) => meta.slug === category)
-						.html}
-					size="md"
-				/>
-			</PlaybookCollection>
-		{/each}
+		<div>
+			{#each categories as category}
+				<PlaybookCollection
+					{category}
+					path={page.url.pathname}
+					depth={1}
+					isPage={false}
+					formaction="updateState"
+					{content}
+					context={{app: appContext, page: pageContext}}
+				>
+					<EscapeHtml
+						id={`${slug}-${category}`}
+						html={markdowns.categories.find(({meta}) => meta.slug === category)
+							.html}
+						size="md"
+					/>
+				</PlaybookCollection>
+			{/each}
+		</div>
 	{/snippet}
 </PageRails>
