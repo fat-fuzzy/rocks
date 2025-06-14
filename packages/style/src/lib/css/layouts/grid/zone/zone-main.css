@@ -4,7 +4,6 @@
 		'page-header'
 		'page-main';
 	grid-template-rows: auto 1fr;
-	block-size: fit-content;
 	max-block-size: unset;
 
 	> .page-header {
