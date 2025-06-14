@@ -20,10 +20,6 @@
 	grid-template-rows: var(--ui-header-height) 1fr auto;
 }
 
-.l\:grid\:urbanist.contain {
-	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
-}
-
 .l\:grid\:urbanist [class*='zone:'] {
 	border-radius: 0;
 }
