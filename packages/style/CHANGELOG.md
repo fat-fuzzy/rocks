@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.11
+
+### Patch Changes
+
+- d167aeb: Update raw templates
+
 ## 0.1.10
 
 ### Patch Changes
