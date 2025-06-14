@@ -24,18 +24,18 @@
 		}
 	}
 
-	.exchange ~ .tram.zone\:2.hug .page-context:not(.empty) {
+	.exchange ~ .tram.hug .page-context:not(.empty) {
 		grid-column-start: 5;
 		grid-column-end: -1;
 	}
 
 	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) {
-		~ .tram.zone\:2.hug {
+		~ .tram.hug {
 			grid-column-start: 4;
 			grid-column-end: -1;
 		}
 
-		~ .tram.zone\:2.hug .page-context:not(.empty) {
+		~ .tram.hug .page-context:not(.empty) {
 			grid-column-start: 2;
 		}
 	}

@@ -80,8 +80,7 @@
 		grid-column-end: -1;
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .zone\:2.hug {
+	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) ~ .hug {
 		grid-column-start: 4;
 		grid-column-end: -1;
 	}
