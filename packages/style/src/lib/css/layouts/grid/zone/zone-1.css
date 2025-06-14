@@ -10,7 +10,7 @@
 	grid-template-rows: subgrid;
 	grid-auto-flow: row;
 	z-index: var(--layout-z-index-reveal);
-	padding-inline: var(--grid-gap);
+	padding-inline: var(--outline-offset-lg);
 
 	details > summary {
 		display: block;
@@ -22,6 +22,10 @@
 }
 
 @media screen and (min-width: 620px) {
+	.zone\:1.exchange {
+		padding-inline: var(--grid-gap);
+	}
+
 	.swap.exchange {
 		grid-template-areas: 'sidebar navbar context';
 	}
