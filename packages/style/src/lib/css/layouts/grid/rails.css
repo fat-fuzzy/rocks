@@ -45,10 +45,6 @@ body:has(.rails[class*='l:grid']) {
 @media screen and (min-width: 690px) {
 	.rails[class*='l:grid:'] {
 		--sidebar-width: var(--layout-sidebar-sm);
-		grid-template-columns:
-			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
-			1fr
-			var(--sidebar-width);
 	}
 }
 
