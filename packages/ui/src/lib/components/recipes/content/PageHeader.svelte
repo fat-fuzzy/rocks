@@ -33,9 +33,7 @@
 	{/if}
 {/snippet}
 
-<header
-	class={`page-header l:text:md ${headerClass} ${mainClasses} ${contentClasses}`}
->
+<header class={`page-header ${headerClass} ${mainClasses} ${contentClasses}`}>
 	{#if layout === 'sidebar'}
 		<div class="l:main">
 			{@render headerMain()}

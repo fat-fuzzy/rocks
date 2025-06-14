@@ -16,38 +16,27 @@
 	}
 }
 
-@media screen and (min-width: 935px) {
-	.tram.zone\:2 {
-		grid-template-columns: subgrid;
-	}
-}
-
 @media screen and (min-width: 1100px) {
 	.tram.zone\:2 {
+		grid-template-columns: subgrid;
 		> .page-context {
 			max-block-size: var(--max-block-size);
 		}
 	}
 
-	.tram.zone\:2 .page-context:not(.empty) {
-		grid-column: span 3;
-	}
-
-	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2,
-	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2.hug {
-		grid-column-start: 1;
+	.exchange.zone\:1 ~ .tram.zone\:2.hug .page-context:not(.empty) {
+		grid-column-start: 5;
 		grid-column-end: -1;
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest) ~ .tram.zone\:2.hug {
-		.zone\:main {
-			grid-column-start: 1;
-			grid-column-end: 5;
-		}
-	}
-
-	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded) {
 		~ .tram.zone\:2.hug {
-		grid-column-start: 4;
+			grid-column-start: 4;
+			grid-column-end: -1;
+		}
+
+		~ .tram.zone\:2.hug .page-context:not(.empty) {
+			grid-column-start: 2;
+		}
 	}
 }

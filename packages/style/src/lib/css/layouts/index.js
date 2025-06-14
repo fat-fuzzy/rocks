@@ -35,7 +35,6 @@ import './layers.css' /* Use to define layers content (uses shadows.css) */
 import './grid/base.css'
 import './grid/items.css'
 import './grid/auto.css' /* Gallery grid layout with equal sized areas */
-import './grid/rails.css' /* Grid with template areas and scrolling sidebars  */
 
 /* Metro grid collapsible elements */
 import './grid/gare/scale.css'
@@ -51,6 +50,11 @@ import './grid/zone/zone-2.css'
 import './grid/zone/zone-3.css'
 import './grid/zone/zone-main.css'
 
+import './grid/urbanist/base.css'
+import './grid/urbanist/grid.css'
+import './grid/urbanist/zone-2.css'
+import './grid/urbanist/zone-main.css'
+
 import './grid/metro/zone-2.css'
 import './grid/metro/zone-main.css'
 
@@ -58,21 +62,14 @@ import './grid/railway/context.css'
 import './grid/railway/zone-2.css'
 import './grid/railway/zone-main.css'
 
-import './grid/steam/steam.css'
 import './grid/steam/zone-2.css'
 import './grid/steam/zone-main.css'
 
-import './grid/tgv/tgv.css'
 import './grid/tgv/zone-2.css'
 import './grid/tgv/zone-main.css'
 
-import './grid/tram/tram.css'
 import './grid/tram/zone-2.css'
 import './grid/tram/zone-main.css'
 
 import './grid/voyager/zone-2.css'
 import './grid/voyager/zone-main.css'
-
-import './grid/urbanist/urbanist.css'
-import './grid/urbanist/zone-2.css'
-import './grid/urbanist/zone-main.css'

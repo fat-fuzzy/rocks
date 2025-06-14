@@ -11,6 +11,7 @@
 	z-index: var(--layout-z-index-layer);
 	block-size: fit-content;
 	max-block-size: unset;
+	padding-block-start: var(--grid-gap);
 	/*
 	TODO: rows for overlapping main on header (use w/ bg:blur)
 	grid-row-start: 1;
@@ -68,10 +69,6 @@
 	.zone\:2 {
 		grid-template-areas: 'zone-main zone-main zone-main zone-main page-context page-context page-context';
 		padding-inline: calc(4 * var(--grid-gap)) 0;
-	}
-
-	.zone\:2 .page-context:not(.empty) {
-		grid-column: span 3;
 	}
 
 	.zone\:2:has(dialog.zoomer[open]) {

@@ -1,7 +1,19 @@
 .metro.zone\:main {
+	grid-template-columns: subgrid;
 	grid-template-rows: auto 1fr;
-	grid-column: span 3;
+	grid-column-start: 1;
+	grid-column-end: -1;
 	min-block-size: unset;
+
+	> .page-header {
+		grid-column-start: 1;
+		grid-column-end: -1;
+	}
+
+	> .page-main {
+		grid-column-start: 1;
+		grid-column-end: -1;
+	}
 }
 
 @media screen and (min-width: 620px) {

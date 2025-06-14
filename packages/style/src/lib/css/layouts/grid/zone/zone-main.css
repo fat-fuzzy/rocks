@@ -43,8 +43,11 @@
 
 	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
 		~ .zone\:2.hug
-		.zone\:main {
+		.steam.zone\:main,
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.tram.zone\:main {
 		grid-column-start: 1;
-		grid-column-end: 2;
+		grid-column-end: 3;
 	}
 }

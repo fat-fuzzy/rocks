@@ -3,6 +3,10 @@
  * Contains main content & page context
  */
 
+.metro.zone\:2 {
+	grid-template-columns: subgrid;
+}
+
 @media screen and (min-width: 620px) {
 	.metro.zone\:2 {
 		grid-template-rows: 1fr;

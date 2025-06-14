@@ -193,7 +193,7 @@
 		{/snippet}
 	</PageRails>
 {:else}
-	<section class="l:text:md">
+	<section>
 		<svelte:element this={`h${String(titleDepth)}`}>
 			{category}
 		</svelte:element>

@@ -40,7 +40,7 @@
 			'l:grid size:3xs scroll:y align:start justify:center align:start bg:inherit',
 		tgv: 'snap:center align:start scroll:container bg:inherit',
 		tram: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit',
-		voyager: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit',
+		voyager: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit ',
 		urbanist: 'snap:start l:grid size:3xs scroll:y bg:inherit',
 	}
 
@@ -50,7 +50,7 @@
 		steam: 'l:flex justify:center align:start',
 		tgv: '',
 		tram: 'l:grid size:3xs align:start',
-		voyager: 'l:flex align:start',
+		voyager: 'l:flex align:start size:lg',
 		urbanist: 'l:flex align:start',
 	}
 
