@@ -35,12 +35,12 @@
 	}
 
 	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) {
-		~ .zone\:2.hug .metro.zone\:main {
+		~ .hug .metro.zone\:main {
 			grid-column-start: 1;
 			grid-column-end: 2;
 		}
 
-		~ .zone\:2.hug .page-context:not(.empty) {
+		~ .hug .page-context:not(.empty) {
 			grid-column-start: 2;
 		}
 	}

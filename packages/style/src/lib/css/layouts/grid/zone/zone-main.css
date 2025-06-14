@@ -48,6 +48,5 @@
 		~ .zone\:2.hug
 		.tram.zone\:main {
 		grid-column-start: 1;
-		grid-column-end: 3;
 	}
 }

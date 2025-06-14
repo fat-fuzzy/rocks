@@ -12,12 +12,11 @@
 		grid-column-start: 4;
 	}
 
-	.urbanist.zone\:2.hug {
+	.urbanist.hug {
 		grid-column-start: 1;
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .urbanist.zone\:2.hug {
+	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) ~ .urbanist.hug {
 		grid-column-start: 4;
 	}
 }

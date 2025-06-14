@@ -54,12 +54,12 @@
 	}
 
 	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) {
-		~ .steam.zone\:2.hug {
+		~ .steam.hug {
 			grid-column-start: 4;
 			grid-column-end: -1;
 		}
 
-		~ .steam.zone\:2.hug .page-context:not(.empty) {
+		~ .steam.hug .page-context:not(.empty) {
 			grid-column-start: 2;
 		}
 	}
