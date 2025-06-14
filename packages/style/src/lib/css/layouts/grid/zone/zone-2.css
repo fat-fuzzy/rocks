@@ -11,7 +11,6 @@
 	z-index: var(--layout-z-index-layer);
 	block-size: fit-content;
 	max-block-size: unset;
-
 	/*
 	TODO: rows for overlapping main on header (use w/ bg:blur)
 	grid-row-start: 1;
@@ -33,13 +32,6 @@
 	}
 
 	> .page-context.empty {
-		--size-y: 0;
-		block-size: 0;
-		inline-size: 0;
-		padding: 0;
-	}
-
-	> .page-main {
 		--size-y: 0;
 		block-size: 0;
 		inline-size: 0;
@@ -84,5 +76,16 @@
 
 	.zone\:2:has(dialog.zoomer[open]) {
 		z-index: var(--layout-index-sticky);
+	}
+
+	.zone\:2.hug {
+		grid-column-start: 1;
+		grid-column-end: -1;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug {
+		grid-column-start: 4;
+		grid-column-end: -1;
 	}
 }

@@ -12,11 +12,11 @@
 	min-block-size: var(--max-block-size);
 	max-block-size: var(--max-block-size);
 
-	> .page-header {
-		display: flex;
+	h1 {
+		padding-block-start: calc(var(--ui-header-height) + var(--size-base-3xs));
 	}
 
-	> .page-main {
+	.page-main {
 		display: flex;
 		inline-size: 100%;
 		block-size: 100%;
@@ -30,7 +30,11 @@
 
 @media screen and (min-width: 620px) {
 	.tgv.zone\:main {
-		> .page-main {
+		h1 {
+			padding-block-start: var(--size-base-3xs);
+		}
+
+		.page-main {
 			padding-inline: 0;
 		}
 	}

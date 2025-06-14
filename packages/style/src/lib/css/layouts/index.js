@@ -51,11 +51,9 @@ import './grid/zone/zone-2.css'
 import './grid/zone/zone-3.css'
 import './grid/zone/zone-main.css'
 
-import './grid/metro/metro.css'
 import './grid/metro/zone-2.css'
 import './grid/metro/zone-main.css'
 
-import './grid/railway/railway.css'
 import './grid/railway/context.css'
 import './grid/railway/zone-2.css'
 import './grid/railway/zone-main.css'
@@ -72,7 +70,6 @@ import './grid/tram/tram.css'
 import './grid/tram/zone-2.css'
 import './grid/tram/zone-main.css'
 
-import './grid/voyager/voyager.css'
 import './grid/voyager/zone-2.css'
 import './grid/voyager/zone-main.css'
 
