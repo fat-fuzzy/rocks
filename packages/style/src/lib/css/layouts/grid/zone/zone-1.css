@@ -22,12 +22,14 @@
 }
 
 @media screen and (min-width: 620px) {
-	.zone\:1.exchange {
-		padding-inline: var(--grid-gap);
-	}
-
 	.swap.exchange {
 		grid-template-areas: 'sidebar navbar context';
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.zone\:1.exchange {
+		padding-inline: var(--grid-gap);
 	}
 }
 

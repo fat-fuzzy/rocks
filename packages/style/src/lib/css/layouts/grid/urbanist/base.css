@@ -21,6 +21,7 @@ body:has(.l\:grid\:urbanist) {
 
 .l\:grid\:urbanist {
 	inline-size: fit-content;
+	max-inline-size: 100%;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
 	position: relative;
