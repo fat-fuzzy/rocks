@@ -11,6 +11,8 @@
 	grid-auto-flow: row;
 	z-index: var(--layout-z-index-reveal);
 	padding-inline: var(--grid-gap);
+	max-inline-size: 100vw;
+	overflow: auto hidden;
 
 	details > summary {
 		display: block;
@@ -29,6 +31,7 @@
 
 @media screen and (min-width: 935px) {
 	.zone\:1.exchange {
+		overflow: unset;
 		padding-inline: calc(2 * var(--grid-gap)) 0;
 	}
 }

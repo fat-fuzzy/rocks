@@ -4,6 +4,7 @@
 		'page-header'
 		'page-main';
 	grid-template-rows: auto 1fr;
+	max-inline-size: 100vw;
 	/*
 	TODO: rows for overlapping main on header (use w/ bg:blur)
 	grid-row-start: 1;
@@ -13,12 +14,14 @@
 		grid-area: page-header;
 		block-size: fit-content;
 		padding-inline: calc(2 * var(--grid-gap));
+		max-inline-size: 100vw;
 	}
 
 	> .page-main {
 		grid-area: page-main;
 		padding-block-end: var(--grid-gap);
 		padding-inline: calc(2 * var(--grid-gap));
+		max-inline-size: 100vw;
 	}
 }
 
