@@ -7,7 +7,6 @@
 	grid-template-areas: 'footer footer footer';
 	grid-template-columns: subgrid;
 	block-size: fit-content;
-	padding-block-end: var(--grid-gap);
 
 	> footer {
 		display: grid;

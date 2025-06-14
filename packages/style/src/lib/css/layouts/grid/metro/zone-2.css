@@ -4,7 +4,7 @@
  */
 
 .metro.zone\:2 {
-	grid-template-columns: subgrid;
+	grid-template-columns: 1fr auto;
 }
 
 @media screen and (min-width: 620px) {
@@ -15,7 +15,6 @@
 
 @media screen and (min-width: 935px) {
 	.metro.zone\:2 {
-		grid-template-columns: subgrid;
 		max-block-size: var(--max-block-size);
 
 		> .page-context {
@@ -27,5 +26,11 @@
 		> .page-context > nav > ul > li.ellipsis {
 			max-inline-size: 100%;
 		}
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.metro.zone\:2 {
+		grid-template-columns: subgrid;
 	}
 }

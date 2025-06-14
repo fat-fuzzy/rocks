@@ -25,8 +25,8 @@
 		padding-inline-end: calc(2 * var(--grid-gap));
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .zone\:2.hug
+	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .hug
 		.steam.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 2;
