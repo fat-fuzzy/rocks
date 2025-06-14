@@ -130,6 +130,7 @@
 		oninput={handleInput}
 		list={items ? `${id}-markers` : undefined}
 		{disabled}
+		aria-describedby="input-feedback-{id}"
 	/>
 	{#if items.length}
 		<datalist id={`${id}-markers`} class="l:flex justify:between">

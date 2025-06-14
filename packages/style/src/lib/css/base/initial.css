@@ -1,0 +1,195 @@
+/**
+	Modern CSS Reset
+	================
+* source : https://github.com/hankchizljaw/modern-css-reset/blob/master/src/reset.css
+**/
+
+@layer reset {
+	/* https://developer.chrome.com/docs/css-ui/animate-to-height-auto/ */
+	html {
+		interpolate-size: allow-keywords;
+	}
+
+	/* Tab size rules */
+	* {
+		tab-size: 4 !important;
+	}
+
+	/* Box sizing rules */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	/* Remove default margin */
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	p,
+	figure,
+	blockquote,
+	dl,
+	dd,
+	menu {
+		margin: 0;
+	}
+
+	/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+	menu[role='group'],
+	ul[role='group'],
+	li[role='group'] {
+		list-style: none;
+		padding: 0;
+	}
+
+	/* Set core root defaults */
+	html:focus-within {
+		scroll-behavior: smooth;
+	}
+
+	/* Set core body defaults */
+	body {
+		min-height: 100vh;
+		text-rendering: optimizespeed;
+	}
+
+	/* A elements that don't have a class get default styles */
+	a:not([class]) {
+		text-decoration-skip-ink: auto;
+	}
+
+	/* Make images easier to work with */
+	img {
+		max-inline-size: 100%;
+		display: block;
+	}
+
+	/* Inherit fonts for inputs and buttons */
+	input,
+	button,
+	textarea,
+	select {
+		font-family: inherit;
+	}
+
+	/* Remove all animations and transitions for people that prefer not to see them */
+	@media (prefers-reduced-motion: reduce) {
+		html:focus-within {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}
+
+@layer init {
+	html {
+		--font-family-body:
+			var(--font-family-body-base), var(--font-family-body-fallback);
+		--font-family-heading:
+			var(--font-family-heading-base), var(--font-family-heading-fallback);
+		--font-family-subheading:
+			var(--font-family-subheading-base), var(--font-family-subheading-fallback);
+		--font-family-mono:
+			var(--font-family-mono-base), var(--font-family-mono-fallback);
+		--font-family-ui: var(--font-family-ui-base);
+
+		--ui-size: var(--scale-base-00);
+		--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
+		--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
+		--font-size: var(--font-size-md);
+		--font-size-ui: var(--font-size-md);
+		--sidebar-width: var(--layout-sidebar-md);
+		--gap: var(--layout-gap-md);
+	}
+
+	body {
+		color: var(--ink);
+		background-color: var(--shade);
+		font-family: var(--font-family-body);
+		font-size: var(--font-size-body);
+		font-weight: var(--font-weight-body);
+		line-height: var(--font-leading-body);
+		scrollbar-width: thin;
+		scrollbar-color: var(--thumb) var(--track);
+	}
+
+	main {
+		background-color: var(--shade);
+		min-block-size: calc(100vh - var(--ui-header-height));
+	}
+
+	a {
+		color: var(--color-ink-nav, var(--ink));
+		font-size: var(--font-size-ui);
+		font-family: var(--font-family-ui);
+		line-height: var(--font-leading-body);
+		font-weight: var(--font-weight-link);
+	}
+
+	a[class^='font:'] {
+		font-size: var(--font-size);
+	}
+
+	a:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+	:where(audio, video:has[controls], object[form], [contenteditable]):not(
+			[disabled]
+		):focus {
+		--hue: var(--color-theme-primary);
+		--accent: oklch(
+			var(--lightness-accent) var(--chroma-accent-base) var(--hue)
+		);
+		outline-offset: var(--ui-size-sm);
+		outline: var(--border-width-md) dotted var(--accent); /* TODO: improve color */
+	}
+
+	:where(
+			audio,
+			video:has[controls],
+			object[form],
+			[contenteditable],
+			[role='tabpanel'],
+			[tabindex]
+		):not([disabled]):focus-visible {
+		--hue: var(--color-theme-primary);
+		--accent: oklch(
+			var(--lightness-accent) var(--chroma-accent-base) var(--hue)
+		);
+		outline-offset: var(--ui-size-sm);
+		outline: var(--border-width-md) dotted var(--accent); /* TODO: improve color */
+	}
+
+	:where(a, button, input, select, textarea, details):not([disabled]):focus {
+		--accent: oklch(
+			var(--lightness-accent) var(--chroma-accent-base) var(--hue)
+		);
+		outline-offset: var(--outline-offset-xs);
+		outline: var(--border-width-lg) dotted var(--accent); /* TODO: improve color */
+	}
+
+	/* Inherit fonts for inputs and buttons */
+	input,
+	button,
+	textarea,
+	select {
+		font-family: var(--font-family-ui);
+		font-weight: var(--font-weight-ui);
+	}
+
+	[disabled] {
+		pointer-events: none;
+	}
+}

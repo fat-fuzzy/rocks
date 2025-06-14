@@ -70,16 +70,16 @@
 			{@const families = Object.keys(categoryOptions.families)}
 			{#each families as familyName}
 				{@const family = categoryOptions.families[familyName]}
-				<details class="l:stack:2xs">
+				<details class="surface:1:neutral l:stack:2xs shape:soft" open>
 					<summary
-						class="font:sm font:heading font:semi size:2xs variant:bare color:accent"
-						data-testid={`summary-${familyName}`}
+						class="color:neutral font:sm font:heading ravioli:3xs shape:soft"
+						data-testid={`details-summary-${familyName}`}
 					>
 						{familyName}
 					</summary>
 					<div
-						class="l:flex:2xs justify:stretch align:start ravioli:xs"
-						data-testid={`content-${familyName}`}
+						class="l:flex:2xs justify:stretch align:start ravioli:xs shape:soft"
+						data-testid={`details-content-${familyName}`}
 					>
 						{#each family.items as styleInputGroup}
 							<StyleInput

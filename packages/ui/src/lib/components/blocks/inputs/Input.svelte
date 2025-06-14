@@ -47,6 +47,7 @@
 		{oninput}
 		{disabled}
 		{autocomplete}
+		aria-describedby="input-feedback-{id}"
 	/>
 </label>
 

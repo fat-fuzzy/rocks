@@ -2,7 +2,7 @@
 title: Graphics
 slug: graphics
 category: 'graphics'
-inputs: ['blocks.element', 'layouts.container', 'layouts.element']
+inputs: ['blocks.block', 'layouts.container', 'layouts.element']
 context: ['app.settings']
 ---
 

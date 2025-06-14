@@ -62,7 +62,7 @@
 </script>
 
 <form
-	class={`l:grid:auto size:xs maki:block geometry ${backgroundClass}`}
+	class={`l:grid:auto size:xs maki:block geometry raviolink ${backgroundClass}`}
 	name="geometry-update"
 	action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 >

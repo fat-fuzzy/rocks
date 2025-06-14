@@ -21,7 +21,7 @@
 	main={headerData.links}
 	context={headerData.settings}
 	layout="taco"
-	app={{settings: {brightness: 'day', contrast: 'blend'}}}
+	app={{brightness: 'day', contrast: 'blend'}}
 >
 	<h1 class="l:flex ravioli:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style

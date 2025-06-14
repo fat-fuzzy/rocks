@@ -1,9 +1,17 @@
 <script lang="ts">
+	import type {Snippet} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import RcScout from '$lib/ui/RcScout.svelte'
 	import {page} from '$app/state'
 
-	let footerClass = 'text:center'
+	const {ToastGroup} = ui.drafts
+
+	type Props = {
+		actions?: Snippet
+	}
+
+	let {actions}: Props = $props()
+	let footerClass = 'text:center bg:inherit'
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
@@ -13,8 +21,13 @@
 </script>
 
 <footer class={footerClass}>
-	<details class={`font:sm ${aboutContainerClass}`} open={footerOpen}>
-		<summary class="raviolink font:heading"> About </summary>
+	<details
+		class={`footer-content font:sm ${aboutContainerClass}`}
+		open={footerOpen}
+	>
+		<summary class="raviolink font:heading bg:inherit color:neutral">
+			About
+		</summary>
 		<div class="l:stack:2xl maki:block size:lg">
 			<p>
 				Made with 🩷 by <a
@@ -28,4 +41,9 @@
 			<RcScout />
 		</div>
 	</details>
+	<div class="footer-actions">
+		{#if actions}
+			{@render actions()}
+		{/if}
+	</div>
 </footer>

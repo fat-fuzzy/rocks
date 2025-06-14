@@ -1,5 +1,13 @@
 # @fat-fuzzy/ui
 
+## 0.1.61
+
+### Patch Changes
+
+- 6233b89: Urbanist: a11y & flow improvements
+- Updated dependencies [6233b89]
+  - @fat-fuzzy/style@0.1.10
+
 ## 0.1.60
 
 ### Patch Changes

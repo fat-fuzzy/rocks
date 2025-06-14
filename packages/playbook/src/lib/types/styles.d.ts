@@ -58,12 +58,12 @@ export interface AppStyles extends StyleCategory {
 
 export interface TokenStyles extends StyleCategory {
 	name: 'tokens'
-	families: {element: StyleFamily}
+	families: {token: StyleFamily}
 }
 
 export interface BlockStyles extends StyleCategory {
 	name: 'blocks'
-	families: {element: StyleFamily}
+	families: {block: StyleFamily}
 }
 
 export interface LayoutStyles extends StyleCategory {

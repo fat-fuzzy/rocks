@@ -79,15 +79,6 @@
 	}
 }
 
-/* @media screen and (min-width: 935px) {
-	[class*='gare:']:is(.width\:xl, .width\:full),
-	[class*='gare:']:is(.width\:xl, .width\:full) > ff-reveal {
-		--overlay-inline-size: calc(
-			100vw - var(--layout-sidebar-lg) - 4 * var(--grid-gap)
-		);
-	}
-} */
-
 @media screen and (min-width: 1100px) {
 	[class*='zone:']:has([class*='l:rails']) {
 		inline-size: var(--sidebar-width);

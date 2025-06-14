@@ -37,23 +37,27 @@
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
-			<div class="tags l:grid:auto size:xs maki:block">
+			<div class="l:grid:auto size:sm maki:block">
 				{#each tags as tag}
-					<details class="bg:netural">
-						<summary class="color:accent font:xs font:heading ravioli:3xs">
+					<details class="surface:1:neutral shape:soft" open>
+						<summary
+							class="color:neutral font:sm font:heading ravioli:3xs shape:soft"
+						>
 							{tag}
 						</summary>
-						<ul class="unstyled">
-							{#each sketches as { slug, asset, title, tags }}
-								{#if tags.includes(tag)}
-									<li class={`size:sm emoji:${asset}`}>
-										<a class="font:sm" href={`${path}/${slug}`}>
-											{title}
-										</a>
-									</li>
-								{/if}
-							{/each}
-						</ul>
+						<div class="ravioli:3xs shape:soft">
+							<ul class="unstyled text:start">
+								{#each sketches as { slug, asset, title, tags }}
+									{#if tags.includes(tag)}
+										<li class={`size:sm emoji:${asset}`}>
+											<a class="font:sm" href={`${path}/${slug}`}>
+												{title}
+											</a>
+										</li>
+									{/if}
+								{/each}
+							</ul>
+						</div>
 					</details>
 				{/each}
 			</div>

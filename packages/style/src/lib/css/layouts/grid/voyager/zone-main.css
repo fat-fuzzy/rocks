@@ -1,5 +1,4 @@
 .voyager.zone\:main {
-	grid-template-rows: auto 1fr;
 	grid-template-columns: subgrid;
 	grid-column: span 3;
 	min-block-size: unset;

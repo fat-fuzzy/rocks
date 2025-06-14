@@ -4,6 +4,7 @@
  */
 .railway.zone\:2 {
 	grid-template-rows: 1fr auto;
+	grid-template-columns: subgrid;
 
 	> .page-context {
 		max-block-size: var(--overlay-height-2xs);

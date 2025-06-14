@@ -63,6 +63,8 @@
   --color-magic-danger-a: #ff3375b3;
   --color-magic-highlight: #f53d9b;
   --color-magic-primary: #5500e3;
+  --color-magic-primary-dark: #1e147c5f;
+  --color-magic-primary-light: #bcbaf84c;
   --color-magic-success: #34fee0;
   --color-magic-success-a: #34fee080;
   --color-magic-warning: #fed634;
@@ -121,7 +123,7 @@
   --font-leading-large: 2;
   --font-leading-nav: 2;
   --font-leading-neutral: 1;
-  --font-leading-ui: 1.25;
+  --font-leading-ui: 1.32;
   --font-size-2xl: var(--fluid-3);
   --font-size-2xs: var(--fluid--3);
   --font-size-body: var(--fluid-0);
@@ -299,6 +301,8 @@
     --color-magic-danger-a: color(display-p3 1 0.2 0.4588235294117647 / 0.7019607843137254);
     --color-magic-highlight: color(display-p3 0.9607843137254902 0.23921568627450981 0.6078431372549019);
     --color-magic-primary: color(display-p3 0.3333333333333333 0 0.8901960784313725);
+    --color-magic-primary-dark: color(display-p3 0.11764705882352941 0.0784313725490196 0.48627450980392156 / 0.37254901960784315);
+    --color-magic-primary-light: color(display-p3 0.7372549019607844 0.7294117647058823 0.9725490196078431 / 0.2980392156862745);
     --color-magic-success: color(display-p3 0.20392156862745098 0.996078431372549 0.8784313725490196);
     --color-magic-success-a: color(display-p3 0.20392156862745098 0.996078431372549 0.8784313725490196 / 0.5019607843137255);
     --color-magic-warning: color(display-p3 0.996078431372549 0.8392156862745098 0.20392156862745098);

@@ -9,7 +9,7 @@
 	type Props = {children: Snippet}
 
 	let {children}: Props = $props()
-	let headerData = $state({links: APP_LINKS, settings: APP_SETTINGS})
+	let headerData = $derived({links: APP_LINKS, settings: APP_SETTINGS})
 	let layout = 'taco'
 	let brightness = 'day'
 	let contrast = 'contrast'
@@ -21,7 +21,7 @@
 	main={headerData.links}
 	context={headerData.settings}
 	layout="taco"
-	app={{settings: {brightness: 'day', contrast: 'blend'}}}
+	app={{brightness: 'day', contrast: 'blend'}}
 >
 	<h1 class="l:flex ravioli:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style

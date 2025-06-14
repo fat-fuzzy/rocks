@@ -10,7 +10,6 @@ nav > ul {
 
 /* == Keep nav links to one line with ellipsis == */
 nav li {
-	/* width: 100%; */
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;

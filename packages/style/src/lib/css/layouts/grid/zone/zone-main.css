@@ -4,12 +4,15 @@
 		'page-header'
 		'page-main';
 	grid-template-rows: auto 1fr;
-	padding-block: calc(var(--ui-header-height) + var(--ui-size)) var(--grid-gap);
+	max-block-size: unset;
 
 	> .page-header {
 		grid-area: page-header;
 		block-size: fit-content;
 		padding-inline: calc(2 * var(--grid-gap));
+		padding-block-start: calc(
+			var(--ui-header-height) + 2 * var(--size-base-3xs)
+		);
 	}
 
 	> .page-main {
@@ -22,11 +25,28 @@
 @media screen and (min-width: 620px) {
 	.zone\:main {
 		padding-block-start: var(--ui-size-lg);
+		max-block-size: var(--max-block-size);
+
+		> .page-header {
+			padding-block-start: calc(2 * var(--size-base-3xs));
+		}
 	}
 }
 
 @media screen and (min-width: 935px) {
 	.zone\:main {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg))
+			calc(2 * var(--grid-gap));
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.steam.zone\:main,
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+		~ .zone\:2.hug
+		.tram.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 3;
 	}

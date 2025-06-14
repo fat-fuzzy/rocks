@@ -35,7 +35,7 @@ const NUMBER_TO_SIZE: {[key: string]: string} = {
 const DEFAULT_STYLES: StyleTree = {
 	tokens: {
 		families: {
-			element: {color: 'primary', typography: 'h1'},
+			token: {color: 'primary', typography: 'h1'},
 		},
 	},
 	app: {
@@ -48,7 +48,7 @@ const DEFAULT_STYLES: StyleTree = {
 	},
 	blocks: {
 		families: {
-			element: {
+			block: {
 				variant: 'fill',
 				color: '',
 				status: 'default',

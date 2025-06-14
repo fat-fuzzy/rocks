@@ -3,7 +3,7 @@ title: Player
 slug: Player
 category: 'graphics'
 props_state: ['items']
-props_style: {'blocks': {'element': ['color', 'size', 'variant']}}
+props_style: {'blocks': {'block': ['color', 'size', 'variant']}}
 context: ['app.settings']
 ---
 

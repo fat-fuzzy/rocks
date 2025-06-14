@@ -1,9 +1,5 @@
-/* Generated CSS variables */
-
-import './css/tokens/tokens.css'
-
 /* Global config */
-import './css/config/index.js'
+import './css/base/index.js'
 
 /* Resets and global styles, set initial and global styles */
 import './css/globals/index.js'

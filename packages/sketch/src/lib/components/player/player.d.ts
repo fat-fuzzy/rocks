@@ -42,6 +42,7 @@ export type PlayerSwitchState = {
 export type PlayerProps = {
 	id?: string
 	size: string
+	font?: string
 	variant?: string
 
 	color?: string

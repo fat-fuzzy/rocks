@@ -34,6 +34,7 @@
 	{label}
 	<input
 		{id}
+		data-testid={id}
 		type="password"
 		{name}
 		bind:value
@@ -43,6 +44,7 @@
 		{oninput}
 		{disabled}
 		{autocomplete}
+		aria-describedby="input-feedback-{id}"
 	/>
 </label>
 

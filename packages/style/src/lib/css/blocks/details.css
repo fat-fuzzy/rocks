@@ -1,5 +1,5 @@
 details {
-	padding: var(--outline-offset-xs);
+	padding: var(--outline-offset-md);
 }
 
 p + details {
@@ -36,12 +36,6 @@ details > summary::-webkit-details-marker {
 	block-size: 0;
 	margin: 0;
 	padding: 0;
-}
-
-details[open] > summary {
-	color: var(--color-ink, var(--ink));
-	background-color: var(--color-bg, var(--shade));
-	border: var(--border-width-md) solid var(--border-color, var(--accent));
 }
 
 details[open] > summary::before {

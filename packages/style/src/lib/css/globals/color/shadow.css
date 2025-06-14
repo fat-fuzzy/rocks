@@ -1,4 +1,4 @@
-:root {
+html {
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);

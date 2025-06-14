@@ -1,11 +1,18 @@
 .tags {
 	list-style: none;
 	margin-block: var(--ui-size);
+	padding-inline: var(--ui-size);
+	justify-content: var(--justify, stretch);
 }
 
 .tags li {
 	color: var(--ink);
-	border-radius: var(--border-radius-lg);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
+	max-inline-size: 60%;
+}
+
+.tags li.shape\:pill {
+	text-align: center;
+	margin: 0 auto;
 }

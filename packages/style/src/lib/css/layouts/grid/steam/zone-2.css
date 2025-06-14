@@ -6,6 +6,10 @@
 .steam.zone\:2 {
 	grid-template-rows: 1fr auto;
 
+	> .page-context:not(.empty) {
+		max-block-size: var(--overlay-height-xs);
+	}
+
 	> .page-context > summary {
 		max-inline-size: var(--sidebar-width);
 	}
@@ -21,7 +25,9 @@
 
 @media screen and (min-width: 620px) {
 	.steam.zone\:2 {
-		> .page-context[class*='media:'] {
+		grid-template-columns: subgrid;
+
+		> .page-context:not(.empty) {
 			block-size: 100%;
 			max-block-size: var(--max-block-size);
 		}
@@ -37,14 +43,24 @@
 @media screen and (min-width: 1100px) {
 	.steam.zone\:2.hug {
 		grid-column-start: 1;
-		grid-column: span 7;
+		grid-column-end: -1;
 		max-block-size: var(--max-block-size);
 		padding-inline-end: calc(2 * var(--grid-gap));
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .steam.zone\:2.hug {
-		grid-column-start: 4;
+	.exchange.zone\:1 ~ .steam.zone\:2.hug .page-context:not(.empty) {
+		grid-column-start: 5;
 		grid-column-end: -1;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded) {
+		~ .steam.zone\:2.hug {
+			grid-column-start: 4;
+			grid-column-end: -1;
+		}
+
+		~ .steam.zone\:2.hug .page-context:not(.empty) {
+			grid-column-start: 2;
+		}
 	}
 }

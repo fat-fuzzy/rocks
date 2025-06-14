@@ -6,7 +6,7 @@ content_types: ['any']
 status: 'draft'
 props_style:
   {
-    'blocks': {'element': ['size', 'color', 'variant']},
+    'blocks': {'block': ['size', 'color', 'variant']},
     'layouts': {'layout': ['breakpoint'], 'container': ['container', 'size']},
   }
 ---

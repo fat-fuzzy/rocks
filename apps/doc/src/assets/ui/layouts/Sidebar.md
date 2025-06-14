@@ -5,7 +5,7 @@ category: 'layouts'
 content_types: ['main', 'side']
 props_style:
   {
-    'blocks': {'element': ['size']},
+    'blocks': {'block': ['size']},
     'layouts': {'container': ['container', 'size']},
   }
 ---

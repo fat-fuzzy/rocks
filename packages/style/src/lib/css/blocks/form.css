@@ -11,6 +11,18 @@ form {
 	max-height: fit-content;
 }
 
+/*
+
+TODO: Use native CSS form styling when available
+
+form:has(:invalid:not(:placeholder-shown)) {
+	--hue-semantic: var(--color-semantic-danger);
+}
+
+form:has(:valid) {
+	--hue-semantic: var(--color-semantic-success);
+} */
+
 form * {
 	font-family: var(--font-family-ui);
 }
@@ -119,5 +131,5 @@ label:has([type='range']) {
 }
 
 label[class*='l:stack'] > [type='range'] {
-	margin-block-start: 0;
+	margin-block-start: var(--ui-size-sm);
 }

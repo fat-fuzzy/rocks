@@ -6,7 +6,7 @@ group: 'forms'
 props_state: ['action']
 props_style:
   {
-    'blocks': {'element': ['color', 'variant', 'size']},
+    'blocks': {'block': ['color', 'variant', 'size']},
     'layouts': {'container': ['container', 'size']},
   }
 ---

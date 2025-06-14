@@ -1,19 +1,17 @@
 /**
- * Grid Rails Layout
+ * Grid Urbanist Layout
  */
 
-.l\:grid\:tgv {
+.l\:grid\:urbanist {
 	--max-block-size: calc(
-		100vh - 4 * var(--ui-header-height) - 2 * var(--grid-gap)
+		100vh - 2 * var(--ui-header-height) - 4 * var(--grid-gap)
 	);
+
 	--sidebar-track-sm: var(--layout-sidebar-collapsed);
 	--sidebar-track-md: calc(
 		var(--layout-sidebar-sm) - var(--layout-sidebar-collapsed)
 	);
 	--sidebar-track-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
-	inline-size: 100%;
-	block-size: 100vh;
-	block-size: -webkit-fill-available;
 	grid-template-areas:
 		'zone-1  zone-1  zone-1'
 		'zone-2  zone-2  zone-2'
@@ -25,28 +23,51 @@
 	grid-template-rows: var(--ui-header-height) 1fr auto;
 }
 
+.l\:grid\:urbanist.contain {
+	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
+}
+
+.l\:grid\:urbanist [class*='zone:'] {
+	border-radius: 0;
+}
+
+.l\:grid\:urbanist [class*='zone:2'] > nav > form > [aria-expanded],
+.l\:grid\:urbanist .navbar > nav > form > [aria-expanded],
+.l\:grid\:urbanist .app-context > form > [aria-expanded] {
+	margin: 0;
+	font-family: var(--font-family-heading);
+}
+
 @media screen and (min-width: 620px) {
-	.l\:grid\:tgv {
+	.l\:grid\:urbanist {
+		--sidebar-width: var(--layout-sidebar-collapsed);
+	}
+
+	.l\:grid\:urbanist.steam {
 		--max-block-size: calc(
-			100vh - 3 * var(--ui-header-height) - 2 * var(--grid-gap)
+			100vh - var(--ui-header-height) - var(--outline-offset-md)
 		);
 	}
 }
 
 @media screen and (min-width: 690px) {
-	.l\:grid\:tgv {
-		--max-block-size: calc(
-			100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap)
-		);
-		grid-template-columns:
-			calc(var(--sidebar-track-sm) + 5 * var(--grid-gap))
-			1fr
-			var(--sidebar-width);
+	.l\:grid\:urbanist {
+		--sidebar-width: var(--layout-sidebar-sm);
+	}
+
+	.l\:grid\:urbanist.steam {
+		--overlay-inline-size: var(--sidebar-xl);
+	}
+}
+
+@media screen and (min-width: 935px) {
+	.l\:grid\:urbanist {
+		--sidebar-width: var(--layout-sidebar-md);
 	}
 }
 
 @media screen and (min-width: 1100px) {
-	.l\:grid\:tgv {
+	.l\:grid\:urbanist {
 		grid-template-areas:
 			'zone-1  zone-1  zone-1  zone-1  zone-1  zone-1  zone-1'
 			'zone-2  zone-2  zone-2  zone-2  zone-2  zone-2  zone-2'

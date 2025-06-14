@@ -1,5 +1,5 @@
 @media (prefers-color-scheme: light) {
-	:root {
+	html {
 		color-scheme: light;
 		--hue: var(--color-theme-primary);
 		--lightness-base: var(--color-lightness-light-base);
@@ -54,7 +54,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
+	html {
 		color-scheme: dark;
 
 		--hue: var(--color-theme-primary);

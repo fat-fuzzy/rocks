@@ -34,13 +34,14 @@
 	})
 
 	const zoneMainClasses: {[key: string]: string} = {
-		metro: 'l:grid size:3xs scroll:y  align:start',
-		railway: 'l:grid size:3xs scroll:y  align:start',
-		steam: 'l:grid size:3xs scroll:y align:start justify:center align:start',
-		tgv: 'snap:center align:start',
-		tram: 'l:grid snap:start size:3xs scroll:y align:start',
-		voyager: 'l:grid snap:start size:3xs scroll:y align:start',
-		urbanist: 'snap:start l:grid size:3xs scroll:y',
+		metro: 'l:grid size:3xs scroll:y align:start bg:inherit',
+		railway: 'l:grid size:3xs scroll:y align:start bg:inherit',
+		steam:
+			'l:grid size:3xs scroll:y align:start justify:center align:start bg:inherit',
+		tgv: 'snap:center align:start scroll:container bg:inherit',
+		tram: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit',
+		voyager: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit ',
+		urbanist: 'snap:start l:grid size:3xs scroll:y bg:inherit',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
@@ -49,18 +50,19 @@
 		steam: 'l:flex justify:center align:start',
 		tgv: '',
 		tram: 'l:grid size:3xs align:start',
-		voyager: 'l:flex align:start',
+		voyager: 'l:flex align:start size:lg',
 		urbanist: 'l:flex align:start',
 	}
 
 	const contextClasses: {[key: string]: string} = {
-		metro: 'ravioli:3xs',
-		railway: 'ravioli:3xs',
-		steam: 'layer:1 ravioli:3xs',
+		metro: 'ravioli:3xs bg:inherit l:stack:2xs',
+		railway: 'ravioli:3xs bg:inherit  l:stack:2xs',
+		steam:
+			'ravioli:3xs ff:callout magic:feather shape:soft l:grid size:3xs  l:grid size:3xs',
 		tgv: '',
-		tram: 'ravioli:3xs layer:1',
-		voyager: '',
-		urbanist: '',
+		tram: 'ravioli:3xs ff:callout shape:soft  l:grid size:3xs',
+		voyager: 'bg:inherit  l:stack:2xs',
+		urbanist: 'bg:inherit  l:stack:2xs',
 	}
 
 	let contextClass = $derived(
@@ -70,6 +72,11 @@
 	)
 	let zoneMainClass = $derived(zoneMainClasses[layout])
 	let pageMainClass = $derived(pageMainClasses[layout])
+	let headerLayout = $derived(
+		layout === 'steam' || layout === 'tram' || layout === 'voyager'
+			? 'sidebar'
+			: '',
+	)
 </script>
 
 <Head pageName={currentPage} {title} {description} />
@@ -80,13 +87,15 @@
 
 <main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
 	{#if layout === 'tgv'}
-		<PageHeader {title} size={size as UiSize} {justify} layout="center" />
-	{:else if layout === 'steam' || layout === 'tram' || layout === 'voyager'}
-		<PageHeader {title} size={size as UiSize} {justify} layout="sidebar" />
-	{:else if layout === 'voyager' || layout === 'metro' || layout === 'urbanist' || layout === 'railway'}
-		<PageHeader {...header} size={size as UiSize} {justify} />
+		<!--Do nothing: title is displayed in Scrolly /-->
+		<!--PageHeader {title} size={size as UiSize} {justify} layout="center" /-->
 	{:else}
-		<PageHeader {...header} size={size as UiSize} {justify} />
+		<PageHeader
+			{...header}
+			size={size as UiSize}
+			{justify}
+			layout={headerLayout}
+		/>
 	{/if}
 
 	<div class={`page-main ${pageMainClass}`}>
@@ -97,14 +106,15 @@
 	</div>
 </main>
 
-<div
-	id={`context-${id}`}
-	class={`${contextClass} l:stack:${size} bg:inherit scroll:y ${mediaClass}`}
->
-	{#if nav && nav.length > 0}
-		<PageNav id="page-nav" {hash} items={nav} />
-	{/if}
-	{#if aside}
-		{@render aside()}
-	{/if}
-</div>
+{#if layout !== 'tgv'}
+	<div id={`context-${id}`} class={`page-context scroll:y`}>
+		{#if nav && nav.length > 0}
+			<PageNav id="page-nav" {hash} items={nav} />
+		{/if}
+		<div class={`${contextClass} ${mediaClass}`}>
+			{#if aside}
+				{@render aside()}
+			{/if}
+		</div>
+	</div>
+{/if}

@@ -7,6 +7,12 @@
 	--grid-gap: 0;
 	grid-template-areas: 'zone-main';
 	grid-template-rows: subgrid;
+	max-block-size: var(--max-block-size);
+
+	/*
+  TODO: rows for overlapping main on header (use w/ bg:blur)
+	grid-row-start: 1;
+	grid-row-end: 3; */
 }
 
 @media screen and (min-width: 620px) {

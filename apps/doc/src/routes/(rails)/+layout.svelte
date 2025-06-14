@@ -6,7 +6,7 @@
 	import {links} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 
-	const {HeaderNav, RevealContext} = ui.drafts
+	const {Cookies, HeaderNav, RevealContext} = ui.drafts
 	const {RevealNav} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
@@ -64,7 +64,7 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar bg:inherit l:grid size:3xs align:center">
+	<div class="navbar l:grid size:3xs align:center bg:inherit">
 		<HeaderNav
 			id="nav"
 			name="nav"
@@ -73,6 +73,7 @@
 			size="sm"
 			font="xs"
 			variant="outline"
+			color="primary"
 			asset="home"
 			justify="start"
 			dismiss="outside"
@@ -86,13 +87,12 @@
 			formaction="toggleNav"
 		/>
 	</div>
-
 	<div
-		class={`${sidenav.reveal} sidebar bg:inherit l:grid size:3xs align:center width:lg height:sm`}
+		class={`${sidenav.reveal ?? ''} sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm`}
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
-				<Magic spell="fuzzy" size="xs" circle="dotted" mask="text">
+				<Magic spell="fuzzy" size="3xs" mask="text">
 					<div class="l:flex align:center justify:center">
 						<ff-icon class="emoji:home font:lg"></ff-icon>
 						<p class="font:h1 font:lg">Fat Fuzzy</p>
@@ -113,7 +113,7 @@
 				font="xs"
 				width="lg"
 				height="sm"
-				background="inherit"
+				background="neutral"
 				dismiss="outside"
 			/>
 		{/if}
@@ -147,5 +147,11 @@
 {/snippet}
 
 {#snippet zoneFooter()}
-	<Footer />
+	<Footer>
+		{#snippet actions()}
+			{#if appContext.consent}
+				<Cookies consent={appContext.consent} font="lg" />
+			{/if}
+		{/snippet}
+	</Footer>
 {/snippet}

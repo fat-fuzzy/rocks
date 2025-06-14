@@ -15,9 +15,11 @@
 		asset, // the `value` in emoji:value or svg:value
 		color,
 		size,
+		font,
 		shape,
 		variant,
 		dimensions,
+		popovertarget,
 		type = 'submit',
 		children,
 		onclick,
@@ -31,6 +33,7 @@
 		styleHelper.getStyles({
 			color,
 			size,
+			font,
 			shape,
 			align,
 			justify,
@@ -60,6 +63,7 @@
 	data-key={name}
 	onclick={handleClick}
 	data-testid={id}
+	{popovertarget}
 >
 	{#if children}
 		{@render children()}

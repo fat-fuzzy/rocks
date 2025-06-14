@@ -1,0 +1,30 @@
+/**
+ * Grid Urbanist Layout
+ */
+
+html:has(.l\:grid\:urbanist) {
+	--hue: var(--color-theme-primary);
+	--lightness-scrollbar: var(--lightness-base);
+	--chroma-scrollbar: var(--chroma-base);
+	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
+	--thumb: var(--accent);
+	block-size: -webkit-fill-available;
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--track);
+	scrollbar-gutter: stable;
+}
+
+body:has(.l\:grid\:urbanist) {
+	min-block-size: 100vh;
+	min-block-size: -webkit-fill-available;
+}
+
+.l\:grid\:urbanist {
+	inline-size: fit-content;
+	block-size: 100vh;
+	block-size: -webkit-fill-available;
+	position: relative;
+	grid-gap: 0; /* Override gap only in parent grid */
+	min-inline-size: 100%;
+	min-block-size: fit-content;
+}

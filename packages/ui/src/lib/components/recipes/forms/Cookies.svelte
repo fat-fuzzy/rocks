@@ -13,6 +13,7 @@
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
 	import Card from '$lib/components/recipes/content/Card.svelte'
+	import {successToast} from '$lib/components/blocks/overlays/Toast/toasts.js'
 
 	let {
 		id = 'cookie-preferences',
@@ -40,13 +41,12 @@
 
 	let updated = $derived(consent)
 	let cookiesPartial = $derived(
-		consent && (consent.analytics || consent.analytics),
+		consent && consent.functional && !consent.analytics,
 	)
 	let submitDisabled: boolean | undefined = $state(undefined)
-	let successPlaceholder: boolean = $state(false)
 	let title = 'Cookies'
 	let description = '🍪 This website uses cookies 🍪'
-	let successMessage = `Your cookie preferences have been saved. You're all set!`
+	let successMessage = `Your cookie preferences have been saved!`
 
 	// TODO: Integrate inputTypes into validator from schema
 	const inputTypes: {[name: string]: string} = {
@@ -81,6 +81,7 @@
 			if (onsubmit) {
 				onsubmit(event)
 			}
+			successToast(successMessage)
 		}
 	}
 
@@ -121,119 +122,115 @@
 	layer="3"
 	color={cookiesPartial ? 'accent' : 'primary'}
 	place="bottom-right"
+	fixed={!consent ? 'bottom-right' : undefined}
 >
-	{#if successPlaceholder}
-		<Feedback
-			id="cookies-saved"
-			status={UiStatus.success}
-			justify="end"
-			context={UiTextContext.form}
+	<Feedback
+		id="cookies-consent"
+		status={UiStatus.default}
+		asset="none"
+		context={UiTextContext.form}
+		container="burrito:lg "
+		{size}
+		font="md"
+		variant="bare"
+	>
+		<form
+			{id}
+			{method}
+			name="cookie-preferences"
+			class={layoutClasses}
+			action={action
+				? actionPath
+					? `${actionPath}?/${action}`
+					: `?/${action}`
+				: undefined}
+			use:enhance={() => {
+				// prevent default callback from resetting the form
+				return ({update}) => {
+					update({reset: false})
+				}
+			}}
+			bind:this={boundForm}
+			onsubmit={handleSubmit}
 		>
-			{successMessage}
-		</Feedback>
-	{:else}
-		<Feedback
-			id="cookies-consent"
-			status={UiStatus.default}
-			asset="none"
-			context={UiTextContext.form}
-			container="burrito:lg "
-			{size}
-			font="md"
-			variant="bare"
-		>
-			<form
-				{id}
-				{method}
-				name="cookie-preferences"
-				class={layoutClasses}
-				action={action
-					? actionPath
-						? `${actionPath}?/${action}`
-						: `?/${action}`
-					: undefined}
-				use:enhance={() => {
-					// prevent default callback from resetting the form
-					return ({update}) => {
-						update({reset: false})
-					}
-				}}
-				bind:this={boundForm}
-				onsubmit={handleSubmit}
+			<Card
+				justify="center"
+				{size}
+				color="primary"
+				{variant}
+				background="inherit"
 			>
-				<Card justify="center" {size} color="primary" {variant} background="inherit">
-					{#snippet header()}
-						<svelte:element this={`h${level}`} class="text:center">
-							{title}
-						</svelte:element>
-						<p class="text:center">{description}</p>
-					{/snippet}
-					{#snippet main()}
-						{#key validator}
-							<InputGroup
-								id="consent.functional"
-								type="check"
-								name="consent"
+				{#snippet header()}
+					<svelte:element this={`h${level}`} class="text:center">
+						{title}
+					</svelte:element>
+					<p class="text:center">{description}</p>
+				{/snippet}
+				{#snippet main()}
+					{#key validator}
+						<InputGroup
+							id="consent.functional"
+							type="check"
+							name="consent"
+							size="sm"
+							variant="bare"
+							onfocus={handleFocus}
+							onblur={handleBlur}
+							oninput={handleInput}
+							{validator}
+							justify="between"
+						>
+							<InputCheck
+								id="functional"
+								name="functional"
+								type="checkbox"
+								label="Site Functionality"
+								hint="These cookies allow me to save your preferences on the site (including your cookie preferences). There is no personal data stored in these cookies."
+								color="primary"
+								asset="none"
 								size="sm"
 								variant="bare"
+								justify="between"
+								disabled={true}
+								checked={true}
+								{validator}
+							/>
+							<br />
+							<InputCheck
+								id="analytics"
+								name="analytics"
+								type="checkbox"
+								label="Analytics"
+								hint="This cookie allows me to measure the performance of the site as well as viewership. The data used are: referer, browser, device, location (country), date, and page views."
+								color="primary"
+								asset="none"
+								variant="bare"
+								size="sm"
+								justify="between"
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={handleInput}
+								checked={updated?.analytics}
 								{validator}
-								justify="between"
-							>
-								<InputCheck
-									id="functional"
-									name="functional"
-									type="checkbox"
-									label="Site Functionality"
-									hint="These cookies allow me to save your preferences on the site (including your cookie preferences). There is no personal data stored in these cookies."
-									color="primary"
-									asset="none"
-									size="sm"
-									variant="bare"
-									justify="between"
-									disabled={true}
-									checked={true}
-									{validator}
-								/>
-								<br />
-								<InputCheck
-									id="analytics"
-									name="analytics"
-									type="checkbox"
-									label="Analytics"
-									hint="This cookie allows me to measure the performance of the site as well as viewership. The data used are: referer, browser, device, location (country), date, and page views."
-									color="primary"
-									asset="none"
-									variant="bare"
-									size="sm"
-									justify="between"
-									onfocus={handleFocus}
-									onblur={handleBlur}
-									oninput={handleInput}
-									checked={updated?.analytics}
-									{validator}
-								/>
-							</InputGroup>
-						{/key}
-					{/snippet}
-					{#snippet footer()}
-						<div class="l:flex size:md justify:center">
-							<Button
-								id="button-submit-cookies"
-								{color}
-								{variant}
-								size="sm"
-								name="consent-submit"
-								disabled={submitDisabled}
-							>
-								Save
-							</Button>
-						</div>
-					{/snippet}
-				</Card>
-			</form>
-		</Feedback>
-	{/if}
+							/>
+						</InputGroup>
+					{/key}
+				{/snippet}
+				{#snippet footer()}
+					<div class="l:flex size:md justify:center">
+						<Button
+							id="button-submit-cookies"
+							{color}
+							{variant}
+							size="sm"
+							name="consent-submit"
+							disabled={submitDisabled}
+						>
+							Save
+						</Button>
+					</div>
+				{/snippet}
+			</Card>
+		</form>
+	</Feedback>
 </Popover>

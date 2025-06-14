@@ -23,6 +23,7 @@ export type ToggleProps = UiBlockProps & {
 	id: string // Use for machine id
 	name: string
 	title?: string
+	label?: string
 	disabled?: boolean
 	formaction?: string
 	type?: ButtonType

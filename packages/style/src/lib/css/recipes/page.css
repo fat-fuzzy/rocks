@@ -1,5 +1,0 @@
-.page\:home main {
-	> section:first-child {
-		padding-block-start: calc(var(--font-size-h1) + var(--size-base-2xl));
-	}
-}

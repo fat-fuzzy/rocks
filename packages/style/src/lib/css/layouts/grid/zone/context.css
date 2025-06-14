@@ -31,7 +31,7 @@
 	top: var(--ui-header-height);
 	right: var(--size-base-3xs);
 	box-shadow: var(--shadow-md);
-	padding-block: var(--size-base-3xs);
+	padding-block: var(--size-base-2xs) var(--size-base-3xs);
 	padding-inline: var(--size-base-3xs);
 }
 
@@ -87,7 +87,7 @@
 	}
 }
 
-@media screen and (min-width: 690px) {
+@media screen and (min-width: 935px) {
 	.exchange > .context,
 	.exchange > .context > .app-context:is(.collapsed, .expanded) ff-reveal {
 		justify-content: flex-end;
@@ -96,7 +96,7 @@
 	/* This form contains the actual settings */
 	.exchange > .context > .app-context ff-reveal > form {
 		padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
-		padding-block: var(--outline-offset-sm);
+		padding-block: var(--outline-offset-lg);
 	}
 }
 

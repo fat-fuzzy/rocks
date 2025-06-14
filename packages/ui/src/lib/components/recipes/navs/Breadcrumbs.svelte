@@ -44,16 +44,16 @@
 	)
 </script>
 
-<div class={`breadcrumbs l:stack:${size} w:full`}>
+<div class={`l:stack:${size} w:full`}>
 	<svelte:element this={`h${level}`} id={title} class="l:flex align:center">
 		{title}
 	</svelte:element>
-	<nav {id} class={navClasses}>
-		<ol
-			{id}
-			class={`l:flex size:${size} align:center unstyled`}
-			data-testid={id}
-		>
+	<nav
+		id={`breadcrumbs-${id}`}
+		class={`breadcrumbs ${navClasses}`}
+		data-testid={`breadcrumbs-${id}`}
+	>
+		<ol class={`l:flex size:${size} align:center unstyled`}>
 			{#each items as item, i}
 				{@const font = i === items.length - 1 ? '' : 'font:xs'}
 				{#if i < items.length - 1}

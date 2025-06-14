@@ -284,7 +284,7 @@
 	{/snippet}
 
 	{#snippet aside()}
-		<div class="maki:block w:full">
+		<div class="maki:block w:full raviolink">
 			{#if canvas}
 				<Player
 					play={updateCanvas}
@@ -293,7 +293,8 @@
 					stop={updateCanvas}
 					initial={actor.getPlayButtonState()}
 					{color}
-					size="xs"
+					size="2xs"
+					font="xs"
 					{variant}
 					disabled={actor.hasError() ?? undefined}
 					{init}

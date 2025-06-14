@@ -13,7 +13,7 @@ p + [class*='feedback:'] {
 }
 
 :where(label, input) + [class*='feedback:'] {
-	--gap: var(--outline-offset-lg);
+	--gap: var(--ui-size-sm);
 }
 
 [class*='feedback:']:not(.feedback\:code) {
@@ -35,7 +35,6 @@ p + [class*='feedback:'] {
 
 	.message {
 		text-wrap: wrap;
-		text-wrap: pretty;
 		max-inline-size: 100%;
 		block-size: fit-content;
 		margin-inline-start: 0;

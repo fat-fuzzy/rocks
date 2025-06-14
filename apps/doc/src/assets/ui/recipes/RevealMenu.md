@@ -7,7 +7,7 @@ content_types: ['menus']
 props_state: ['title', 'formaction', 'value']
 props_style:
   {
-    'blocks': {'element': ['color', 'variant', 'size', 'background']},
+    'blocks': {'block': ['color', 'variant', 'size', 'background']},
     'layouts':
       {'layout': ['layout', 'threshold'], 'container': ['container', 'size']},
   }
