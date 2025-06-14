@@ -122,6 +122,7 @@
 	layer="3"
 	color={cookiesPartial ? 'accent' : 'primary'}
 	place="bottom-right"
+	fixed={!consent ? 'bottom-right' : undefined}
 >
 	<Feedback
 		id="cookies-consent"
