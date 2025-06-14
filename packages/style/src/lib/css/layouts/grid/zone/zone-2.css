@@ -9,6 +9,8 @@
 		'zone-main    zone-main    zone-main'
 		'page-context page-context page-context';
 	z-index: var(--layout-z-index-layer);
+	block-size: fit-content;
+	max-block-size: unset;
 
 	/*
 	TODO: rows for overlapping main on header (use w/ bg:blur)

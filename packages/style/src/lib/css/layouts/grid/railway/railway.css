@@ -9,7 +9,7 @@
 		var(--layout-sidebar-sm) - var(--layout-sidebar-collapsed)
 	);
 	--sidebar-track-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
-	inline-size: 100%;
+	inline-size: fit-content;
 	min-block-size: 100vh;
 	grid-template-areas:
 		'zone-1  zone-1  zone-1'
@@ -19,7 +19,7 @@
 		calc(var(--sidebar-track-sm) + 3 * var(--grid-gap))
 		1fr
 		calc(var(--sidebar-track-sm) + 3 * var(--grid-gap));
-	grid-template-rows: var(--ui-header-height) var(--max-block-size) auto;
+	grid-template-rows: var(--ui-header-height) 1fr auto;
 	position: relative;
 }
 

@@ -8,21 +8,22 @@ html:has(.rails[class*='l:grid']) {
 	--chroma-scrollbar: var(--chroma-base);
 	--track: oklch(var(--lightness-scrollbar) var(--chroma-scrollbar) var(--hue));
 	--thumb: var(--accent);
-	height: -webkit-fill-available;
+	block-size: -webkit-fill-available;
 	scrollbar-width: thin;
 	scrollbar-color: var(--thumb) var(--track);
-	overflow: hidden auto;
 	scrollbar-gutter: stable;
 }
 
 body:has(.rails[class*='l:grid']) {
-	block-size: 100vh;
+	min-block-size: 100vh;
 	min-block-size: -webkit-fill-available;
 }
 
 .rails[class*='l:grid'] {
 	position: relative;
-	padding-block-end: var(--grid-gap);
+	grid-gap: 0; /* Override gap only in parent grid */
+	min-inline-size: 100%;
+	min-block-size: fit-content;
 }
 
 .rails [class*='zone:2'] > nav > form > [aria-expanded],

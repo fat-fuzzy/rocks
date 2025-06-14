@@ -9,7 +9,7 @@
 		var(--layout-sidebar-sm) - var(--layout-sidebar-collapsed)
 	);
 	--sidebar-track-lg: calc(var(--layout-sidebar-md) - var(--layout-sidebar-sm));
-	inline-size: 100%;
+	inline-size: fit-content;
 	block-size: 100vh;
 	block-size: -webkit-fill-available;
 	grid-template-areas:

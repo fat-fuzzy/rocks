@@ -9,6 +9,8 @@
 	min-block-size: unset;
 	padding-inline: 0;
 	scrollbar-gutter: unset;
+	min-block-size: var(--max-block-size);
+	max-block-size: var(--max-block-size);
 
 	> .page-header {
 		display: flex;
@@ -21,6 +23,7 @@
 
 		.scroll\:container {
 			scrollbar-gutter: unset;
+			max-block-size: var(--max-block-size);
 		}
 	}
 }
