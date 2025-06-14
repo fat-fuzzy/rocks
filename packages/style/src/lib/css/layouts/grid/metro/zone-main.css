@@ -28,4 +28,20 @@
 		grid-column-start: 1;
 		grid-column-end: 5;
 	}
+
+	.exchange.zone\:1 ~ .metro.zone\:2.hug .page-context:not(.empty) {
+		grid-column-start: 5;
+		grid-column-end: -1;
+	}
+
+	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded) {
+		~ .zone\:2.hug .metro.zone\:main {
+			grid-column-start: 1;
+			grid-column-end: 2;
+		}
+
+		~ .zone\:2.hug .page-context:not(.empty) {
+			grid-column-start: 2;
+		}
+	}
 }

@@ -26,7 +26,7 @@
 	}
 
 	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .steam.zone\:2.hug
+		~ .zone\:2.hug
 		.steam.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 2;
