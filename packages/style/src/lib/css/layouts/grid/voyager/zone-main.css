@@ -16,7 +16,7 @@
 		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
 		~ .zone\:2.hug
 		.voyager.zone\:main {
 		grid-column-start: 4;

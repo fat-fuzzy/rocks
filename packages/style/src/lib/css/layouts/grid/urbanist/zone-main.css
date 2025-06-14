@@ -10,7 +10,7 @@
 		grid-column: span 7;
 	}
 
-	.exchange.zone\:1:has(.gare\:ouest[open], .gare\:ouest.expanded)
+	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
 		~ .zone\:2.hug
 		.urbanist.zone\:main {
 		grid-column: span 4;
