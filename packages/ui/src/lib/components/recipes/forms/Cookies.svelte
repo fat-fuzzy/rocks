@@ -162,54 +162,56 @@
 					<p class="text:center">{description}</p>
 				{/snippet}
 				{#snippet main()}
-					{#key validator}
-						<InputGroup
-							id="consent.functional"
-							type="check"
-							name="consent"
-							size="sm"
-							variant="bare"
-							onfocus={handleFocus}
-							onblur={handleBlur}
-							oninput={handleInput}
-							{validator}
-							justify="between"
-						>
-							<InputCheck
-								id="functional"
-								name="functional"
-								type="checkbox"
-								label="Site Functionality"
-								hint="These cookies allow me to save your preferences on the site (including your cookie preferences). There is no personal data stored in these cookies."
-								color="primary"
-								asset="none"
+					<div class="text:start">
+						{#key validator}
+							<InputGroup
+								id="consent.functional"
+								type="check"
+								name="consent"
 								size="sm"
 								variant="bare"
-								justify="between"
-								disabled={true}
-								checked={true}
-								{validator}
-							/>
-							<br />
-							<InputCheck
-								id="analytics"
-								name="analytics"
-								type="checkbox"
-								label="Analytics"
-								hint="This cookie allows me to measure the performance of the site as well as viewership. The data used are: referer, browser, device, location (country), date, and page views."
-								color="primary"
-								asset="none"
-								variant="bare"
-								size="sm"
-								justify="between"
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={handleInput}
-								checked={updated?.analytics}
 								{validator}
-							/>
-						</InputGroup>
-					{/key}
+								justify="between"
+							>
+								<InputCheck
+									id="functional"
+									name="functional"
+									type="checkbox"
+									label="Site Functionality"
+									hint="These cookies allow me to save your preferences on the site (including your cookie preferences). There is no personal data stored in these cookies."
+									color="primary"
+									asset="none"
+									size="sm"
+									variant="bare"
+									justify="between"
+									disabled={true}
+									checked={true}
+									{validator}
+								/>
+								<br />
+								<InputCheck
+									id="analytics"
+									name="analytics"
+									type="checkbox"
+									label="Analytics"
+									hint="This cookie allows me to measure the performance of the site as well as viewership. The data used are: referer, browser, device, location (country), date, and page views."
+									color="primary"
+									asset="none"
+									variant="bare"
+									size="sm"
+									justify="between"
+									onfocus={handleFocus}
+									onblur={handleBlur}
+									oninput={handleInput}
+									checked={updated?.analytics}
+									{validator}
+								/>
+							</InputGroup>
+						{/key}
+					</div>
 				{/snippet}
 				{#snippet footer()}
 					<div class="l:flex size:md justify:center">
