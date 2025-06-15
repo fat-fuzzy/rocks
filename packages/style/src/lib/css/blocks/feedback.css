@@ -40,6 +40,12 @@ p + [class*='feedback:'] {
 		margin-inline-start: 0;
 		font-size: var(--font-size);
 	}
+
+	p {
+		text-wrap: wrap;
+		text-wrap: pretty;
+		max-inline-size: 100%;
+	}
 }
 
 [class*='feedback:']:not(.feedback\:code).variant\:fill {
