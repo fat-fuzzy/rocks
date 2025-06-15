@@ -8,7 +8,6 @@
 
 @import './header-app.css'; /* Use for main app header */
 @import './layout-page.css'; /* Define page layout varians here */
-@import './footer.css'; /* Use for main app footer */
 @import './article.css'; /* Use for articles (header + section(s) + optional footer) */
 
 @import './playbook.css'; /* Use for API components (used in Doc website) : TODO: move to playbook package */
