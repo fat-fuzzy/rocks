@@ -73,7 +73,6 @@
 		{layout}
 		{size}
 		{color}
-		{variant}
 	>
 		{@render input()}
 		<Feedback {id} {status} context={UiTextContext.form} {size} {variant}>
