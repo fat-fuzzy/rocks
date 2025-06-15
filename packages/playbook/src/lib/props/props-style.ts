@@ -193,6 +193,20 @@ const shape = {
 			asset: 'pill',
 		},
 		{
+			id: 'shape.mellow',
+			title: 'mellow',
+			value: 'mellow',
+			shape: 'mellow',
+			asset: 'mellow',
+		},
+		{
+			id: 'shape.soft',
+			title: 'soft',
+			value: 'soft',
+			shape: 'soft',
+			asset: 'soft',
+		},
+		{
 			id: 'shape.none',
 			label: 'none',
 			value: '',
