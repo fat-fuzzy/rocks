@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.13
+
+### Patch Changes
+
+- e05b410: Style fixes & cleanup
+
 ## 0.1.12
 
 ### Patch Changes

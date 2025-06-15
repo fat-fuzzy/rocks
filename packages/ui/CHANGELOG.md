@@ -1,5 +1,13 @@
 # @fat-fuzzy/ui
 
+## 0.1.64
+
+### Patch Changes
+
+- e05b410: Style fixes & cleanup
+- Updated dependencies [e05b410]
+  - @fat-fuzzy/style@0.1.13
+
 ## 0.1.63
 
 ### Patch Changes

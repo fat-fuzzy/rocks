@@ -1,5 +1,13 @@
 # @fat-fuzzy/prose
 
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies [e05b410]
+  - @fat-fuzzy/style@0.1.13
+  - @fat-fuzzy/ui@0.1.64
+
 ## 0.1.9
 
 ### Patch Changes
