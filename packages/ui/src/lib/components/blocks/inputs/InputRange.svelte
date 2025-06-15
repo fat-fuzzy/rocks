@@ -142,6 +142,6 @@
 </label>
 {#if hint}
 	<Feedback {id} {status} context={UiTextContext.form} {size} {font} {variant}>
-		{hint}
+		<p>{hint}</p>
 	</Feedback>
 {/if}

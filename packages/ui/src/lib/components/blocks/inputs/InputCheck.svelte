@@ -71,6 +71,6 @@
 		{size}
 		{variant}
 	>
-		{hint}
+		<p>{hint}</p>
 	</Feedback>
 {/if}

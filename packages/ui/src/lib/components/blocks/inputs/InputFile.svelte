@@ -77,7 +77,7 @@
 	>
 		{@render input()}
 		<Feedback {id} {status} context={UiTextContext.form} {size} {variant}>
-			{hint}
+			<p>{hint}</p>
 		</Feedback>
 	</Fieldset>
 {:else}
