@@ -4,7 +4,6 @@
 	) {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: baseline;
 	gap: var(--ui-size-sm);
 }
 
@@ -34,7 +33,6 @@ p + [class*='feedback:'] {
 	}
 
 	.message {
-		text-wrap: wrap;
 		max-inline-size: 100%;
 		block-size: fit-content;
 		margin-inline-start: 0;

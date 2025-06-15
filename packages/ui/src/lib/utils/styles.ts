@@ -110,6 +110,7 @@ function getFeedbackStyles(
 		asset,
 		assetType,
 		variant,
+		shape,
 		align,
 		justify,
 		layer,
@@ -119,8 +120,18 @@ function getFeedbackStyles(
 	let variantClass = variant ? `variant:${variant}` : ''
 	let sizeClass = size ? `size:${size}` : ''
 	let fontClass = font ? `font:${font}` : ''
+	let shapeClass = shape ? `shape:${shape}` : ''
+
+	let layoutClass = ''
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
+
+	if (shape === 'round' || shape === 'square') {
+		layoutClass = `l:stack${size}`
+		alignClass = 'align:center'
+		justifyClass = 'justify:center'
+	}
+
 	let statusClass = status ? `status:${status}` : ''
 	let assetTypeClass = asset === 'none' ? '' : assetType ? assetType : 'emoji'
 	let assetClass = status
@@ -134,7 +145,7 @@ function getFeedbackStyles(
 	let containerClass =
 		container && context !== 'code' ? `l:${container}:${size}` : ''
 
-	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${sizeClass} ${fontClass} ${variantClass} ${alignClass} ${justifyClass} ${layerClass} ${backgroundClass} ${containerClass}`
+	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${sizeClass} ${fontClass} ${shapeClass} ${layoutClass} ${variantClass} ${alignClass} ${justifyClass} ${layerClass} ${backgroundClass} ${containerClass}`
 
 	return feedbackClasses.trim()
 }

@@ -11,19 +11,19 @@
 		status,
 		context,
 		shape = 'mellow',
-		align,
+		align = 'baseline',
 		justify = 'start',
 		size,
 		font,
 		variant,
 		layer,
-		container,
+		container = 'raviolink ',
 		children,
 	}: FeedbackProps = $props()
 
 	let feedbackClasses = $derived(
 		styleHelper.getFeedbackStyles(
-			{size, font, asset, variant, layer, align, justify, container},
+			{size, font, asset, variant, shape, layer, align, justify, container},
 			status as UiStatus,
 			context as UiTextContext,
 		),
@@ -32,6 +32,12 @@
 		context === 'form' ? AriaLiveEnum.polite : undefined,
 	)
 	let testId = $derived(id === 'Feedback' ? id : `Feedback-${id}`)
+	let textAlign = $derived(
+		shape === 'round' || shape === 'square' ? 'text:center' : '',
+	)
+	let ravioli = $derived(
+		shape === 'round' || shape === 'square' ? `ravioli:${size}` : '',
+	)
 	let feedbackTitle = $derived(
 		title
 			? title
@@ -43,18 +49,18 @@
 
 {#if context === 'code'}
 	<pre
-		class={`${feedbackClasses} shape:${shape}`}
+		class={feedbackClasses}
 		data-testid={testId}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
 	<ff-feedback
-		class={`${feedbackClasses} shape:${shape}`}
+		class={feedbackClasses}
 		data-testid={testId}
 		aria-live={ariaLive}
 	>
 		{#if feedbackTitle}
-			<p class="status">{feedbackTitle}</p>
+			<p class={`status ${textAlign}`}>{feedbackTitle}</p>
 		{/if}
-		<div class="message">
+		<div class={`message ${ravioli} ${textAlign}`}>
 			{#if children}
 				{@render children()}
 			{:else if text}
