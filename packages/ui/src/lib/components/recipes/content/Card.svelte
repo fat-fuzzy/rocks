@@ -21,7 +21,7 @@
 		size,
 		layout,
 		color,
-		background
+		background,
 	})
 	let containerClasses = styleHelper.getLayoutStyles({
 		size,
@@ -33,9 +33,7 @@
 
 {#snippet cardContent()}
 	{#if header}
-		<header
-			class={`l:stack:${size} justify:${justify} align${align} ${blockClasses}`}
-		>
+		<header class={`l:stack:${size} ${blockClasses}`}>
 			{@render header()}
 		</header>
 	{/if}
@@ -48,9 +46,7 @@
 		{/if}
 	</div>
 	{#if footer}
-		<footer
-			class={`l:switcher:${size} ${blockClasses} justify:${justify} align:${align} bg:inherit`}
-		>
+		<footer class={`l:switcher:${size} ${blockClasses} bg:inherit`}>
 			{@render footer()}
 		</footer>
 	{/if}
