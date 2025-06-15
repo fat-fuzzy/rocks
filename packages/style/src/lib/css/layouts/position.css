@@ -1,8 +1,8 @@
 [class*='fixed'],
 [class*='place'] {
 	--inset-size: var(--size-base-2xs);
-	max-inline-size: calc(100% - 2 * var(--inset-size));
-	max-block-size: calc(100% - 2 * var(--inset-size));
+	max-inline-size: 100%;
+	max-block-size: 100%;
 }
 
 [class*='fixed'] {

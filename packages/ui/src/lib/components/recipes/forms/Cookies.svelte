@@ -22,7 +22,7 @@
 		formaction = 'saveCookiePreferences',
 		redirect,
 		layout = 'stack',
-		container = 'center',
+		container,
 		level = 3, // <h*> element level
 		size = 'md',
 		color = UiColor.accent,
@@ -47,6 +47,7 @@
 	let title = 'Cookies'
 	let description = '🍪 This website uses cookies 🍪'
 	let successMessage = `Your cookie preferences have been saved!`
+	let fixed = $derived(!consent ? 'bottom-right' : undefined)
 
 	// TODO: Integrate inputTypes into validator from schema
 	const inputTypes: {[name: string]: string} = {
@@ -122,7 +123,7 @@
 	layer="3"
 	color={cookiesPartial ? 'accent' : 'primary'}
 	place="bottom-right"
-	fixed={!consent ? 'bottom-right' : undefined}
+	{fixed}
 >
 	<Feedback
 		id="cookies-consent"
@@ -153,13 +154,7 @@
 			bind:this={boundForm}
 			onsubmit={handleSubmit}
 		>
-			<Card
-				justify="center"
-				{size}
-				color="primary"
-				{variant}
-				background="inherit"
-			>
+			<Card {size} color="primary" {variant} background="inherit">
 				{#snippet header()}
 					<svelte:element this={`h${level}`} class="text:center">
 						{title}
@@ -167,54 +162,56 @@
 					<p class="text:center">{description}</p>
 				{/snippet}
 				{#snippet main()}
-					{#key validator}
-						<InputGroup
-							id="consent.functional"
-							type="check"
-							name="consent"
-							size="sm"
-							variant="bare"
-							onfocus={handleFocus}
-							onblur={handleBlur}
-							oninput={handleInput}
-							{validator}
-							justify="between"
-						>
-							<InputCheck
-								id="functional"
-								name="functional"
-								type="checkbox"
-								label="Site Functionality"
-								hint="These cookies allow me to save your preferences on the site (including your cookie preferences). There is no personal data stored in these cookies."
-								color="primary"
-								asset="none"
+					<div class="text:start">
+						{#key validator}
+							<InputGroup
+								id="consent.functional"
+								type="check"
+								name="consent"
 								size="sm"
 								variant="bare"
-								justify="between"
-								disabled={true}
-								checked={true}
-								{validator}
-							/>
-							<br />
-							<InputCheck
-								id="analytics"
-								name="analytics"
-								type="checkbox"
-								label="Analytics"
-								hint="This cookie allows me to measure the performance of the site as well as viewership. The data used are: referer, browser, device, location (country), date, and page views."
-								color="primary"
-								asset="none"
-								variant="bare"
-								size="sm"
-								justify="between"
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={handleInput}
-								checked={updated?.analytics}
 								{validator}
-							/>
-						</InputGroup>
-					{/key}
+								justify="between"
+							>
+								<InputCheck
+									id="functional"
+									name="functional"
+									type="checkbox"
+									label="Site Functionality"
+									hint="These cookies allow me to save your preferences on the site (including your cookie preferences). There is no personal data stored in these cookies."
+									color="primary"
+									asset="none"
+									size="sm"
+									variant="bare"
+									justify="between"
+									disabled={true}
+									checked={true}
+									{validator}
+								/>
+								<br />
+								<InputCheck
+									id="analytics"
+									name="analytics"
+									type="checkbox"
+									label="Analytics"
+									hint="This cookie allows me to measure the performance of the site as well as viewership. The data used are: referer, browser, device, location (country), date, and page views."
+									color="primary"
+									asset="none"
+									variant="bare"
+									size="sm"
+									justify="between"
+									onfocus={handleFocus}
+									onblur={handleBlur}
+									oninput={handleInput}
+									checked={updated?.analytics}
+									{validator}
+								/>
+							</InputGroup>
+						{/key}
+					</div>
 				{/snippet}
 				{#snippet footer()}
 					<div class="l:flex size:md justify:center">

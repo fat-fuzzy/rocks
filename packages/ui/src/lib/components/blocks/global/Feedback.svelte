@@ -54,7 +54,7 @@
 		{#if feedbackTitle}
 			<p class="status">{feedbackTitle}</p>
 		{/if}
-		<div class={`message shape:${shape}`}>
+		<div class="message">
 			{#if children}
 				{@render children()}
 			{:else if text}

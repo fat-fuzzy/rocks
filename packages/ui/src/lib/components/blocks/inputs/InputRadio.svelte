@@ -74,6 +74,6 @@
 		{font}
 		{variant}
 	>
-		{hint}
+		<p>{hint}</p>
 	</Feedback>
 {/if}

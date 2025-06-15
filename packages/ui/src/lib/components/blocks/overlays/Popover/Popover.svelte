@@ -15,7 +15,7 @@
 		variant = UiVariant.fill,
 		shape = UiShape.round,
 		children,
-		fixed = false,
+		fixed,
 		place,
 		asset,
 		layer,
