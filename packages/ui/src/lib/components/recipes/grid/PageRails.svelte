@@ -107,11 +107,11 @@
 </main>
 
 {#if layout !== 'tgv'}
-	<div id={`context-${id}`} class={`page-context scroll:y`}>
+	<div id={`context-${id}`} class={`${contextClass} ${mediaClass} scroll:y`}>
 		{#if nav && nav.length > 0}
 			<PageNav id="page-nav" {hash} items={nav} />
 		{/if}
-		<div class={`${contextClass} ${mediaClass}`}>
+		<div>
 			{#if aside}
 				{@render aside()}
 			{/if}
