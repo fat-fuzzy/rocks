@@ -4,14 +4,12 @@
 	import RcScout from '$lib/ui/RcScout.svelte'
 	import {page} from '$app/state'
 
-	const {ToastGroup} = ui.drafts
-
 	type Props = {
 		actions?: Snippet
 	}
 
 	let {actions}: Props = $props()
-	let footerClass = 'text:center bg:inherit'
+	let footerClass = 'text:center bg:inherit color:neutral '
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)

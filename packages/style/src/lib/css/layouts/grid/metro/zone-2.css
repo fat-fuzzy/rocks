@@ -15,12 +15,9 @@
 
 @media screen and (min-width: 935px) {
 	.metro.zone\:2 {
-		max-block-size: var(--max-block-size);
-
 		> .page-context {
 			position: unset;
 			box-shadow: unset;
-			max-block-size: var(--max-block-size);
 		}
 
 		> .page-context > nav > ul > li.ellipsis {
