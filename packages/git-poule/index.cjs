@@ -95,11 +95,13 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 		],
 	]
 	commits.forEach((commit) => {
-		// console.log(commit)
 		let [hash, timestamp, author, subject, body] = commit.split(SEPARATOR)
 		let scope = null
 		let text = body ? body.trim() : subject ? subject.trim() : null
 
+		/********************************************
+		 * Prepare the commit data: split into data fields
+		 ********************************************/
 		if (text) {
 			// 1. Clean commits that for some reason (!) have a trailing `"` char
 			if (text[text.length - 1] === '"') {
@@ -117,54 +119,59 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 				scope = `[${commitTypeScoped[1].trim()}`
 			}
 
-			let descString
 			let pr = null
 			// Extract PR number if any
-			if (commitType === 'Merge') {
-				descString = description.join(' ')
-				// Split PR from DESCRIPTION if this is a Merge commit
-				let prMatch = descString.substring('pull request #'.length)
-				if (prMatch) {
-					description = prMatch.split(' ')
-					pr = description[0]
-					description.splice(0, 1)
-					descString = description.join(' ')
+			if (body && subject) {
+				// Split PR from commit subject if this is a Merge commit
+				let prMatch = subject.split('pull request #')
+				if (prMatch[1]) {
+					let prDescription = prMatch[1].split(' ')
+					pr = prDescription[0]
+					// prDescription.splice(0, 1)
+					// prDescription = prDescription.join(' ')
 					scope = null
 				}
+			}
+
+			/********************************************
+			 * Parse the description to extract the SCOPE
+			 ********************************************/
+			let descString = description.join(' ')
+
+			// Test if the SCOPE is in the description
+			let scopeMatch = descString.match(scopeRegex)
+			if (scopeMatch) {
+				// If there is a SCOPE match: remove it from the DESCRIPTION
+				scope = scopeMatch[0]
+				descString = descString.substring(scope.length)
 			} else {
-				let descString = description.join(' ')
-
-				// Test if the SCOPE is in the description
-				let scopeMatch = descString.match(scopeRegex)
+				// Test if the SCOPE is in the COMMIT_TYPE
+				scopeMatch = commitType.match(scopeRegex)
 				if (scopeMatch) {
-					// If there is a SCOPE match: remove it from the DESCRIPTION
+					// If there is a SCOPE match: remove it from the COMMIT_TYPE
 					scope = scopeMatch[0]
-					descString = descString.substring(scope.length)
-				} else {
-					// Test if the SCOPE is in the COMMIT_TYPE
-					scopeMatch = commitType.match(scopeRegex)
-					if (scopeMatch) {
-						// If there is a SCOPE match: remove it from the COMMIT_TYPE
-						scope = scopeMatch[0]
-						commitType = commitType.substring(scope.length)
-					}
-					if (!scope) {
-						// If scope does not match Regex: Test if DESCRIPTION contains a scope ending char : "]". If it does, split SCOPE from DESCRIPTION
-						const descriptionScoped = descString.split(']')
-						if (descriptionScoped.length == 2) {
-							scope = `${descriptionScoped[0].trim()}]`
-							descString = descriptionScoped[1].trim()
-						}
-					}
-
-					if (scope !== null && !scope.match(scopeRegex)) {
-						// If the current scope does not represent a true scope (i.e. the scope is just the first word of the description)
-						// -> re-attach the false scope to the DESCRIPTION and set the SCOPE to null
-						descString = `${String(scope)} ${descString}`
-						scope = null
+					commitType = commitType.substring(scope.length)
+				}
+				if (!scope) {
+					// If scope does not match Regex: Test if DESCRIPTION contains a scope ending char : "]". If it does, split SCOPE from DESCRIPTION
+					const descriptionScoped = descString.split(']')
+					if (descriptionScoped.length == 2) {
+						scope = `${descriptionScoped[0].trim()}]`
+						descString = descriptionScoped[1].trim()
 					}
 				}
+
+				if (scope !== null && !scope.match(scopeRegex)) {
+					// If the current scope does not represent a true scope (i.e. the scope is just the first word of the description)
+					// -> re-attach the false scope to the DESCRIPTION and set the SCOPE to null
+					descString = `${String(scope)} ${descString}`
+					scope = null
+				}
 			}
+
+			/********************************************
+			 * Parse whatever is left in the DESCRIPTION
+			 ********************************************/
 			if (!descString) {
 				descString = description.join(' ')
 			}
