@@ -22,10 +22,10 @@ body:has(.l\:grid\:urbanist) {
 .l\:grid\:urbanist {
 	inline-size: fit-content;
 	max-inline-size: 100%;
-	block-size: 100vh;
+	block-size: fit-content;
+	min-block-size: 100vh;
 	block-size: -webkit-fill-available;
 	position: relative;
 	grid-gap: 0; /* Override gap only in parent grid */
 	min-inline-size: 100%;
-	min-block-size: fit-content;
 }

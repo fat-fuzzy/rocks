@@ -37,6 +37,12 @@
 	.l\:grid\:urbanist {
 		--sidebar-width: var(--layout-sidebar-collapsed);
 	}
+
+	.l\:grid\:urbanist.voyager {
+		--max-block-size: calc(
+			100vh - 2 * var(--ui-header-height) - 3 * var(--grid-gap)
+		);
+	}
 }
 
 @media screen and (min-width: 690px) {
