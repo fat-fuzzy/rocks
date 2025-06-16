@@ -51,7 +51,6 @@ import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
-import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 import Header from '$lib/components/recipes/header/Header.svelte'
@@ -84,6 +83,8 @@ import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
 import Aside from '$lib/components/recipes/content/Aside.svelte'
+import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
+import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 import Zoomer from '$lib/components/blocks/overlays/Zoomer.svelte'
 import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
@@ -204,6 +205,7 @@ const drafts = {
 	HeaderNav,
 	Settings,
 	PageNav,
+	PageHeader,
 	RevealContext,
 	Zoomer,
 	Tabs,
