@@ -18,7 +18,10 @@
 	let {children}: Props = $props()
 
 	let useDarkScheme = $state(false)
-	let appContext = $derived(page.data.appContext)
+	let appContext = $derived({
+		...page.data.appContext,
+		brightness: useDarkScheme ? 'night' : 'day',
+	})
 
 	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
 		if (event.matches) {
@@ -31,7 +34,6 @@
 	onMount(() => {
 		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
 		handleThemeChange(prefersDarkScheme)
-		appContext.brightness = useDarkScheme ? 'night' : 'day'
 	})
 </script>
 
