@@ -7,6 +7,7 @@ const fs = require('fs')
 
 const COMMIT_HISTORY_FILE = 'commit-history.txt'
 const CZ_CONFIG_FILE = '.czrc'
+const SEPARATOR = '##SPLIT##'
 
 if (!shell.which('git')) {
 	shell.echo('Sorry, this script requires git')
@@ -14,9 +15,12 @@ if (!shell.which('git')) {
 }
 
 // Run external tool (Git) synchronously
+// Git doc is your friend: https://git-scm.com/docs/git-log
+// current logs:
+//  git log --all --pretty=format:'%h %ct %an %s %b',
 if (
 	shell.exec(
-		`git log --all --graph --pretty=format:'%C(yellow)%h %ct %an	%Creset	%s' > ${COMMIT_HISTORY_FILE}`,
+		`git log --all --pretty=format:'%h${SEPARATOR}%ct${SEPARATOR}%an${SEPARATOR}%s${SEPARATOR}%b' > ${COMMIT_HISTORY_FILE}`,
 	).code !== 0
 ) {
 	shell.echo('Error: Git log failed')
@@ -42,8 +46,6 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 	}
 
 	const commits = data.split('\n')
-	const hashRegex = /([a-z,\d]{7})/g
-	const timestampRegex = /([\d]{10})/g
 	const scopeRegex =
 		/\[(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}?\]/g
 
@@ -94,24 +96,19 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 	]
 	commits.forEach((commit) => {
 		// console.log(commit)
-		let testCommit = commit
+		let [hash, timestamp, author, subject, body] = commit.split(SEPARATOR)
 		let scope = null
-		// Clean commits that for some reason (!) have a trailing `"` char
-		if (testCommit[testCommit.length - 1] === '"') {
-			testCommit = testCommit.substring(0, testCommit.length - 2)
-		}
-		let [meta, ...text] = testCommit.split(/\t/)
-		text = text.join(' ').trim()
+		let text = body ? body.trim() : subject ? subject.trim() : null
 
-		if (meta !== '/' && text) {
-			// 1. Extract HASH, TIMESTAMP and AUTHOR from log
-			const [hash] = meta.match(hashRegex) /* Regex OK*/
-			const [timestamp] = meta.match(timestampRegex) /* Regex OK*/
-			const metaArray = meta.split(' ')
-			const author = metaArray[metaArray.length - 1]
-
-			// 2. Extract PR, COMMIT_TYPE, SCOPE, and DESCRIPTION from log
-			let [commitType, ...description] = text.split(' ')
+		if (text) {
+			// 1. Clean commits that for some reason (!) have a trailing `"` char
+			if (text[text.length - 1] === '"') {
+				text = text.substring(0, text.length - 2)
+			}
+			// 2. Extract PR, COMMIT_TYPE, SCOPE, and DESCRIPTION from subject
+			let commitTable = text.split(' ')
+			let commitType = commitTable[0].trim()
+			let description = commitTable.slice(1).map((d) => d.trim())
 
 			// Split COMMIT_TYPE from SCOPE if there is no space between the two
 			const commitTypeScoped = commitType.split('[')

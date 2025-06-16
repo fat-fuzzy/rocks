@@ -1,5 +1,11 @@
 # @fat-fuzzy/git-poule
 
+## 0.1.8
+
+### Patch Changes
+
+- 9c5eeee: Get merge commit body, update doc
+
 ## 0.1.7
 
 ### Patch Changes

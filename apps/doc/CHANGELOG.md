@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.55
+
+### Patch Changes
+
+- 9c5eeee: Get merge commit body, update doc
+
 ## 0.1.54
 
 ### Patch Changes

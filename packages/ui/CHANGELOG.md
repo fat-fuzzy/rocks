@@ -1,5 +1,13 @@
 # @fat-fuzzy/ui
 
+## 0.1.65
+
+### Patch Changes
+
+- 9c5eeee: Get merge commit body, update doc
+- Updated dependencies [9c5eeee]
+  - @fat-fuzzy/style@0.1.14
+
 ## 0.1.64
 
 ### Patch Changes

@@ -2,7 +2,7 @@
 	"package": "@fat-fuzzy/sketch",
 	"name": "@fat-fuzzy/sketch",
 	"author": "Patricia Boh",
-	"version": "0.1.17",
+	"version": "0.1.18",
 	"scripts": {
 		"dev": "vite dev",
 		"build:ts": "tsc --outDir dist/lib --declarationDir dist/types --declaration true",
