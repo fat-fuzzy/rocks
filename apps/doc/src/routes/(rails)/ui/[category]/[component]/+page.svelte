@@ -14,11 +14,13 @@
 	let pageContext = $derived(page.data.pageContext)
 </script>
 
-<PlaybookElement
-	{title}
-	{category}
-	{content}
-	{path}
-	{formaction}
-	context={{app: appContext, page: pageContext}}
-/>
+{#key path}
+	<PlaybookElement
+		{title}
+		{category}
+		{content}
+		{path}
+		{formaction}
+		context={{app: appContext, page: pageContext}}
+	/>
+{/key}
