@@ -9,6 +9,9 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"declaration": true
+		"declaration": true,
+		"outDir": "./dist",
+		"rootDir": "./",
+		"declarationDir": "./dist/types"
 	}
 }
