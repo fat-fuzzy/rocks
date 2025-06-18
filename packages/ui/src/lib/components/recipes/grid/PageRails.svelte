@@ -28,12 +28,6 @@
 
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
 
-	let header = $derived({
-		title,
-		main: headerMain,
-		layout: 'flex',
-	})
-
 	const zoneMainClasses: {[key: string]: string} = {
 		metro: 'l:grid size:3xs scroll:y align:start bg:inherit',
 		railway: 'l:grid size:3xs scroll:y align:start bg:inherit',
@@ -82,21 +76,16 @@
 
 <Head pageName={currentPage} {title} {description} />
 
-{#snippet headerMain()}
-	<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
-{/snippet}
-
 <main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
 	{#if layout === 'tgv' && !useHeader}
 		<!--Do nothing: title is displayed in Scrolly /-->
 		<!--PageHeader {title} size={size as UiSize} {justify} layout="center" /-->
 	{:else}
-		<PageHeader
-			{...header}
-			size={size as UiSize}
-			{justify}
-			layout={headerLayout}
-		/>
+		<PageHeader {title} size={size as UiSize} {justify} layout={headerLayout}>
+			{#snippet main()}
+				<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
+			{/snippet}
+		</PageHeader>
 	{/if}
 
 	<div class={`page-main ${pageMainClass}`}>
