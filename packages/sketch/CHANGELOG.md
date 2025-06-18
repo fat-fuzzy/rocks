@@ -1,5 +1,14 @@
 # @fat-fuzzy/sketch
 
+## 0.1.19
+
+### Patch Changes
+
+- 7c22b99: Update dependencies, bugfixes
+- Updated dependencies [7c22b99]
+  - @fat-fuzzy/style@0.1.15
+  - @fat-fuzzy/ui@0.1.66
+
 ## 0.1.18
 
 ### Patch Changes
