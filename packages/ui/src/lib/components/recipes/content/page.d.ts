@@ -54,6 +54,7 @@ export type PageRailsProps = UiLayoutProps &
 		main: Snippet
 		details?: Snippet
 		aside?: Snippet
+		useHeader?: boolean
 		app?: {
 			reveal: string
 			brightness: string
