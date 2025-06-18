@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.5
+
+### Patch Changes
+
+- 7c22b99: Update dependencies, bugfixes
+
 ## 0.1.4
 
 ### Patch Changes

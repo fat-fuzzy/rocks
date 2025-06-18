@@ -19,6 +19,7 @@
 		nav,
 		aside,
 		footer,
+		useHeader = true,
 		context, // TODO: This should be the page context's expanded state
 		layout = 'metro',
 	}: PageRailsProps = $props()
@@ -86,7 +87,7 @@
 {/snippet}
 
 <main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
-	{#if layout === 'tgv'}
+	{#if layout === 'tgv' && !useHeader}
 		<!--Do nothing: title is displayed in Scrolly /-->
 		<!--PageHeader {title} size={size as UiSize} {justify} layout="center" /-->
 	{:else}

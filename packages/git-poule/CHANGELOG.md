@@ -1,5 +1,11 @@
 # @fat-fuzzy/git-poule
 
+## 0.1.9
+
+### Patch Changes
+
+- 7c22b99: Update dependencies, bugfixes
+
 ## 0.1.8
 
 ### Patch Changes

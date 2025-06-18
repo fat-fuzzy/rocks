@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.7
+
+### Patch Changes
+
+- 7c22b99: Update dependencies, bugfixes
+
 ## 0.1.6
 
 ### Patch Changes

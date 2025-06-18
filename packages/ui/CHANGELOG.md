@@ -1,5 +1,14 @@
 # @fat-fuzzy/ui
 
+## 0.1.66
+
+### Patch Changes
+
+- 7c22b99: Update dependencies, bugfixes
+- Updated dependencies [7c22b99]
+  - @fat-fuzzy/validation@0.1.7
+  - @fat-fuzzy/style@0.1.15
+
 ## 0.1.65
 
 ### Patch Changes

@@ -2,7 +2,7 @@
 	"package": "@fat-fuzzy/sketch",
 	"name": "@fat-fuzzy/sketch",
 	"author": "Patricia Boh",
-	"version": "0.1.18",
+	"version": "0.1.19",
 	"scripts": {
 		"dev": "vite dev",
 		"build:ts": "tsc --outDir dist/lib --declarationDir dist/types --declaration true",
@@ -61,7 +61,7 @@
 		"tslib": "^2.8.1",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.5",
-		"vitest": "^3.1.4"
+		"vitest": "^3.2.4"
 	},
 	"main": "./dist/index.js",
 	"svelte": "./dist/index.js",
