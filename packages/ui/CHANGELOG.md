@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.67
+
+### Patch Changes
+
+- b2f80b5: Fix null pointer in breadcrumb
+
 ## 0.1.66
 
 ### Patch Changes
