@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.15
+
+### Patch Changes
+
+- 7c22b99: Update dependencies, bugfixes
+
 ## 0.1.14
 
 ### Patch Changes
