@@ -16,11 +16,12 @@
 
 	let items: {slug: string; title: string; path: string}[] = $derived.by(() => {
 		let links: string[] = path.split('/').filter((link: string) => link !== '')
-		let hashed = links[links.length - 1].split('#')
+		let hashed = links.length ? links[links.length - 1].split('#') : []
 		if (hashed.length > 1) {
 			links[links.length - 1] = hashed[0]
 		}
 		let linkPath = ''
+
 		return links.map((link, i) => {
 			linkPath = `${linkPath}/${link}`
 			let linkTitle =
