@@ -77,9 +77,10 @@
 <Head pageName={currentPage} {title} {description} />
 
 <main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
-	{#if layout === 'tgv' && !useHeader}
-		<!--Do nothing: title is displayed in Scrolly /-->
-		<!--PageHeader {title} size={size as UiSize} {justify} layout="center" /-->
+	{#if layout === 'tgv'}
+		{#if useHeader}
+			<PageHeader {title} size={size as UiSize} layout="center" />
+		{/if}
 	{:else}
 		<PageHeader {title} size={size as UiSize} {justify} layout={headerLayout}>
 			{#snippet main()}
