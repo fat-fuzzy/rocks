@@ -2,7 +2,7 @@ import path from 'node:path'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import adapter from '@sveltejs/adapter-cloudflare'
-import {sveltePreprocess} from 'svelte-preprocess'
+import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
 
 function isWebComponentSvelte(code) {
 	const svelteOptionsIdx = code.indexOf('<svelte:options ')
@@ -20,7 +20,7 @@ const config = {
 
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: [sveltePreprocess(), mdsvex(mdsvexConfig)],
+	preprocess: [vitePreprocess(), mdsvex(mdsvexConfig)],
 
 	kit: {
 		adapter: adapter(),

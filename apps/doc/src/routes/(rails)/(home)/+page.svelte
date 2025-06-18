@@ -20,6 +20,7 @@
 	nav={page.data.nav}
 	app={appContext}
 	layout="tgv"
+	useHeader={false}
 >
 	{#snippet main()}
 		<Scrolly
