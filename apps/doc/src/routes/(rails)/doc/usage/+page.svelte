@@ -20,19 +20,17 @@
 	layout="tram"
 >
 	{#snippet main()}
-		<div class="l:text:md">
-			<ul class="l:grid:auto size:xs">
-				{#each markdowns as { meta }, i (i)}
-					{#if meta.status !== 'draft'}
-						<a
-							class="surface:2:neutral ravioli:sm"
-							href={`${page.url.pathname}/${meta.slug}`}
-						>
-							{Number(meta.id)} - {meta.title}
-						</a>
-					{/if}
-				{/each}
-			</ul>
-		</div>
+		<ul class="l:grid:auto size:xs">
+			{#each markdowns as { meta }, i (i)}
+				{#if meta.status !== 'draft'}
+					<a
+						class="surface:2:neutral ravioli:sm"
+						href={`${page.url.pathname}/${meta.slug}`}
+					>
+						{Number(meta.id)} - {meta.title}
+					</a>
+				{/if}
+			{/each}
+		</ul>
 	{/snippet}
 </PageRails>

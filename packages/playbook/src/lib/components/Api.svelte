@@ -66,6 +66,7 @@
 			}
 		}}
 		class={`${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
+		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 	>
 		{#each categories as category}
 			<StyleFamily

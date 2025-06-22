@@ -12,7 +12,7 @@
 	min-block-size: var(--max-block-size);
 	max-block-size: var(--max-block-size);
 
-	h1 {
+	.scroll\:y h1 {
 		padding-block-start: calc(var(--ui-header-height) + var(--size-base-3xs));
 	}
 
@@ -30,7 +30,7 @@
 
 @media screen and (min-width: 620px) {
 	.tgv.zone\:main {
-		h1 {
+		.scroll\:y h1 {
 			padding-block-start: var(--size-base-3xs);
 		}
 
