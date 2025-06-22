@@ -64,8 +64,11 @@
 		},
 		"grid": {
 			"item": {
-				"2xs": {
+				"3xs": {
 					"$value": "5rem"
+				},
+				"2xs": {
+					"$value": "7rem"
 				},
 				"xs": {
 					"$value": "10rem"

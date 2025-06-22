@@ -192,7 +192,8 @@
   --layout-gap-xl: var(--scale-base-20);
   --layout-gap-xs: var(--scale-base-02);
   --layout-grid-item-2xl: 35rem;
-  --layout-grid-item-2xs: 5rem;
+  --layout-grid-item-2xs: 7rem;
+  --layout-grid-item-3xs: 5rem;
   --layout-grid-item-lg: 25rem;
   --layout-grid-item-md: 20rem;
   --layout-grid-item-sm: 15rem;
