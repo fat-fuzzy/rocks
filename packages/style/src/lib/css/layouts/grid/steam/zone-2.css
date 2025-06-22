@@ -30,6 +30,7 @@
 		> .page-context:not(.empty) {
 			block-size: 100%;
 			max-block-size: var(--max-block-size);
+			padding-inline: var(--grid-gap) 0;
 		}
 	}
 }
