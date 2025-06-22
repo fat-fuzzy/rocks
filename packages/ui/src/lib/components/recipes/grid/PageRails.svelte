@@ -50,18 +50,30 @@
 	}
 
 	const contextClasses: {[key: string]: string} = {
-		metro: 'ravioli:3xs bg:inherit l:stack:2xs',
-		railway: 'ravioli:3xs bg:inherit  l:stack:2xs',
-		steam:
-			'ravioli:3xs ff:callout magic:feather shape:soft l:grid size:3xs  l:grid size:3xs',
+		metro: 'l:stack:2xs',
+		railway: 'l:stack:2xs',
+		steam: 'l:grid size:3xs ',
 		tgv: '',
-		tram: 'ravioli:3xs ff:callout shape:soft  l:grid size:3xs',
-		voyager: 'bg:inherit  l:stack:2xs',
-		urbanist: 'bg:inherit  l:stack:2xs',
+		tram: 'l:grid size:3xs',
+		voyager: 'l:stack:2xs',
+		urbanist: 'l:stack:2xs',
+	}
+
+	const contextInnerClasses: {[key: string]: string} = {
+		metro: 'ravioli:3xs bg:inherit',
+		railway: 'ravioli:3xs bg:inherit',
+		steam: 'ravioli:3xs ff:callout magic:feather shape:soft',
+		tgv: '',
+		tram: 'ravioli:3xs ff:callout shape:soft',
+		voyager: 'bg:inherit',
+		urbanist: 'bg:inherit',
 	}
 
 	let contextClass = $derived(
 		nav?.length || aside ? `${contextClasses[layout]}` : 'empty',
+	)
+	let contextInnerClass = $derived(
+		nav?.length || aside ? `${contextInnerClasses[layout]}` : '',
 	)
 	let zoneMainClass = $derived(zoneMainClasses[layout])
 	let pageMainClass = $derived(pageMainClasses[layout])
@@ -98,13 +110,12 @@
 {#if layout !== 'tgv'}
 	<div
 		id={`context-${id}`}
-		class={`page-context 
-page-context  ${contextClass} ${mediaClass} scroll:y`}
+		class={`page-context ${contextClass} ${mediaClass} scroll:y`}
 	>
 		{#if nav && nav.length > 0}
 			<PageNav id="page-nav" {hash} items={nav} />
 		{/if}
-		<div class="l:stack:md">
+		<div class={`l:stack:md ${contextInnerClass}`}>
 			{#if aside}
 				{@render aside()}
 			{/if}

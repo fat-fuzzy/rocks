@@ -35,7 +35,7 @@
 
 @media screen and (min-width: 620px) {
 	.l\:grid\:urbanist {
-		--sidebar-width: var(--layout-sidebar-collapsed);
+		--sidebar-width: var(--layout-sidebar-sm);
 	}
 
 	.l\:grid\:urbanist.voyager {
@@ -46,16 +46,6 @@
 }
 
 @media screen and (min-width: 690px) {
-	.l\:grid\:urbanist {
-		--sidebar-width: var(--layout-sidebar-sm);
-	}
-
-	.l\:grid\:urbanist.steam {
-		--overlay-inline-size: var(--sidebar-xl);
-	}
-}
-
-@media screen and (min-width: 935px) {
 	.l\:grid\:urbanist {
 		--sidebar-width: var(--layout-sidebar-md);
 	}

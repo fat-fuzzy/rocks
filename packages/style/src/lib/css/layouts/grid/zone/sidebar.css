@@ -122,4 +122,12 @@
 		--overlay-inline-size: var(--sidebar-lg);
 		--overlay-block-size: var(--overlay-height-sm);
 	}
+
+	.exchange > .sidebar > .app-name,
+	.exchange > .sidebar:has(.app-name),
+	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'],
+	.exchange > .sidebar > .collapsed > [name='sidebar'],
+	.exchange > .sidebar > .collapsed > [name='sidebar'] > [class*='l:switcher'] {
+		inline-size: var(--overlay-inline-size);
+	}
 }
