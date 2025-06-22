@@ -37,8 +37,6 @@
 	.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 3;
-		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg))
-			calc(2 * var(--grid-gap));
 	}
 
 	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)

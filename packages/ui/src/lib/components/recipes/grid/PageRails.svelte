@@ -61,9 +61,7 @@
 	}
 
 	let contextClass = $derived(
-		nav?.length || aside
-			? `page-context ${contextClasses[layout]}`
-			: 'page-context empty',
+		nav?.length || aside ? `${contextClasses[layout]}` : 'empty',
 	)
 	let zoneMainClass = $derived(zoneMainClasses[layout])
 	let pageMainClass = $derived(pageMainClasses[layout])
@@ -98,11 +96,15 @@
 </main>
 
 {#if layout !== 'tgv'}
-	<div id={`context-${id}`} class={`${contextClass} ${mediaClass} scroll:y`}>
+	<div
+		id={`context-${id}`}
+		class={`page-context 
+page-context  ${contextClass} ${mediaClass} scroll:y`}
+	>
 		{#if nav && nav.length > 0}
 			<PageNav id="page-nav" {hash} items={nav} />
 		{/if}
-		<div>
+		<div class="l:stack:md">
 			{#if aside}
 				{@render aside()}
 			{/if}
