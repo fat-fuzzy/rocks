@@ -15,11 +15,11 @@
 /* Basic grid that will automatically create columns if space is available for given column dimensions:
 	- between var(--sidebar-width) and 100% of available width
 	*/
-@supports (width: min(var(--grid-item-size), 100%)) {
+@supports (width: minmax(var(--grid-item-size), 100%)) {
 	.l\:grid\:auto {
 		grid-template-columns: repeat(
 			auto-fill,
-			minmax(min(var(--grid-item-size), 100%), 1fr)
+			minmax(var(--grid-item-size), 1fr)
 		);
 	}
 }
