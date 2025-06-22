@@ -6,7 +6,7 @@
 				"^test"
 			],
 			"outputs": [
-				"test-results/**"
+				"tests/e2e/test-results/**"
 			]
 		},
 		"build": {
