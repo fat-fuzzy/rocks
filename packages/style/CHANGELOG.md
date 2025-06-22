@@ -1,5 +1,12 @@
 # @fat-fuzzy/style
 
+## 0.1.16
+
+### Patch Changes
+
+- 4a5e014: Config fixes
+- 88e7ca2: Style fixes & dependency updates
+
 ## 0.1.15
 
 ### Patch Changes
