@@ -1,5 +1,17 @@
 # @fat-fuzzy/ui
 
+## 0.1.68
+
+### Patch Changes
+
+- 4a5e014: Config fixes
+- 88e7ca2: Style fixes & dependency updates
+- Updated dependencies [4a5e014]
+- Updated dependencies [88e7ca2]
+  - @fat-fuzzy/config@0.1.13
+  - @fat-fuzzy/style@0.1.16
+  - @fat-fuzzy/validation@0.1.7
+
 ## 0.1.67
 
 ### Patch Changes
