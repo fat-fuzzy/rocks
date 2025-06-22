@@ -28,8 +28,7 @@
 		align-items: start;
 		z-index: var(--layout-z-index-layer);
 		padding-block-end: var(--grid-gap);
-		padding-inline: calc(2 * var(--grid-gap));
-		border-radius: var(--border-radius-lg);
+		padding-inline: calc(2 * var(--grid-gap)) var(--grid-gap);
 	}
 
 	> .page-context.empty {
