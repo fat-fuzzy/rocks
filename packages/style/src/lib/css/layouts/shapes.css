@@ -38,7 +38,7 @@ button[class*='shape:'] {
 
 button.shape\:pill {
 	inline-size: 100%;
-	min-inline-size: 6ch;
+	min-inline-size: 6ch; /* TODO: fix magic number */
 }
 
 .shape\:round[class*='l:stack']:only-child::before,

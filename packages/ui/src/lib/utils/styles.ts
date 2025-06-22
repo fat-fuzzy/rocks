@@ -132,6 +132,11 @@ function getFeedbackStyles(
 		justifyClass = 'justify:center'
 	}
 
+	if (shape === 'pill') {
+		alignClass = 'align:center'
+		justifyClass = 'justify:center'
+	}
+
 	let statusClass = status ? `status:${status}` : ''
 	let assetTypeClass = asset === 'none' ? '' : assetType ? assetType : 'emoji'
 	let assetClass = status
