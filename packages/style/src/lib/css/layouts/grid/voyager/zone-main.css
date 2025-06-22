@@ -13,7 +13,6 @@
 	.voyager.zone\:main {
 		grid-column-start: 1;
 		grid-column: span 4;
-		padding-inline: calc(var(--grid-gap) + var(--outline-offset-lg));
 	}
 
 	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
