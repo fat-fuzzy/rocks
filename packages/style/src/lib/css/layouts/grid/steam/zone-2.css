@@ -30,6 +30,7 @@
 		> .page-context:not(.empty) {
 			block-size: 100%;
 			max-block-size: var(--max-block-size);
+			padding-inline: var(--grid-gap) 0;
 		}
 	}
 }
@@ -45,7 +46,6 @@
 		grid-column-start: 1;
 		grid-column-end: -1;
 		max-block-size: var(--max-block-size);
-		padding-inline-end: calc(2 * var(--grid-gap));
 	}
 
 	.exchange ~ .steam.zone\:2.hug .page-context:not(.empty) {
