@@ -2,11 +2,6 @@
  * ZONE 3
  * Contains main content & page context
  */
-.tram.zone\:2 {
-	> .page-context {
-		max-block-size: var(--overlay-height-2xs);
-	}
-}
 
 @media screen and (min-width: 620px) {
 	.tram.zone\:2 {

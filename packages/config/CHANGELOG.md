@@ -1,5 +1,12 @@
 # @fat-fuzzy/config
 
+## 0.1.13
+
+### Patch Changes
+
+- 4a5e014: Config fixes
+- 88e7ca2: Style fixes & dependency updates
+
 ## 0.1.11
 
 ### Patch Changes

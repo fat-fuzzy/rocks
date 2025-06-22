@@ -1,5 +1,17 @@
 # @fat-fuzzy/playbook
 
+## 0.1.20
+
+### Patch Changes
+
+- 4a5e014: Config fixes
+- 88e7ca2: Style fixes & dependency updates
+- Updated dependencies [4a5e014]
+- Updated dependencies [88e7ca2]
+  - @fat-fuzzy/config@0.1.13
+  - @fat-fuzzy/style@0.1.16
+  - @fat-fuzzy/ui@0.1.68
+
 ## 0.1.19
 
 ### Patch Changes

@@ -28,7 +28,7 @@
 		align-items: start;
 		z-index: var(--layout-z-index-layer);
 		padding-block-end: var(--grid-gap);
-		padding-inline: var(--grid-gap);
+		padding-inline: calc(2 * var(--grid-gap));
 		border-radius: var(--border-radius-lg);
 	}
 
@@ -47,7 +47,7 @@
 
 		> .page-context:not(.empty) {
 			scrollbar-width: thin;
-			padding-inline: 0;
+			padding-inline: 0 var(--grid-gap);
 		}
 
 		> .page-context {

@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/config",
-	"version": "0.1.12",
+	"version": "0.1.13",
 	"type": "module",
 	"description": "",
 	"main": "./dist/index.js",
@@ -63,7 +63,7 @@
 		"@sveltejs/kit": "^2.21.1",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@types/eslint": "^9.6.1",
-		"@types/node": "^22.15.29",
+		"@types/node": "^24.0.3",
 		"@typescript-eslint/eslint-plugin": "^8.33.0",
 		"@typescript-eslint/parser": "^8.33.0",
 		"eslint": "^9.28.0",

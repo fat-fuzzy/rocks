@@ -23,7 +23,17 @@
 
 	let feedbackClasses = $derived(
 		styleHelper.getFeedbackStyles(
-			{size, font, asset, variant, shape, layer, align, justify, container},
+			{
+				size,
+				font,
+				asset,
+				shape,
+				variant,
+				layer,
+				align,
+				justify,
+				container,
+			},
 			status as UiStatus,
 			context as UiTextContext,
 		),
@@ -33,10 +43,14 @@
 	)
 	let testId = $derived(id === 'Feedback' ? id : `Feedback-${id}`)
 	let textAlign = $derived(
-		shape === 'round' || shape === 'square' ? 'text:center' : '',
+		shape === 'round' || shape === 'square' || shape === 'pill'
+			? 'text:center'
+			: '',
 	)
 	let ravioli = $derived(
-		shape === 'round' || shape === 'square' ? `ravioli:${size}` : '',
+		shape === 'round' || shape === 'square' || shape === 'pill'
+			? `ravioli:${size}`
+			: '',
 	)
 	let feedbackTitle = $derived(
 		title

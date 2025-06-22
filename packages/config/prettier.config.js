@@ -1,3 +1,3 @@
-import prettier from './src/prettier.config.js';
+import prettier from '@fat-fuzzy/config/prettier'
 
 export default prettier;

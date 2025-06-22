@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/playbook",
 	"name": "@fat-fuzzy/playbook",
-	"version": "0.1.19",
+	"version": "0.1.20",
 	"description": "A UI library explorer and demo",
 	"author": "Patricia Boh",
 	"license": "MIT",
@@ -51,7 +51,7 @@
 		"@sveltejs/package": "^2.3.11",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"svelte": "^5.33.13",
-		"svelte-check": "^4.2.1",
+		"svelte-check": "^4.2.2",
 		"svelte-preprocess": "^6.0.3",
 		"tslib": "^2.8.1",
 		"typescript": "^5.8.3",
