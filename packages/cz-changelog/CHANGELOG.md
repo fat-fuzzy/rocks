@@ -1,5 +1,12 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.6
+
+### Patch Changes
+
+- 4a5e014: Config fixes
+- 88e7ca2: Style fixes & dependency updates
+
 ## 0.1.5
 
 ### Patch Changes
