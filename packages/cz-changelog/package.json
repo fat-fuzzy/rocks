@@ -1,7 +1,7 @@
 {
 	"name": "@fat-fuzzy/cz-changelog",
 	"package": "@fat-fuzzy/cz-changelog",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "Commitizen adapter ADAPTED FROM the conventional-changelog format.",
 	"main": "index.js",
 	"scripts": {
