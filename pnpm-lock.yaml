@@ -35,10 +35,10 @@ importers:
         version: 9.1.7
       prettier:
         specifier: ^3.5.3
-        version: 3.5.3
+        version: 3.6.0
       prettier-plugin-svelte:
         specifier: ^3.4.0
-        version: 3.4.0(prettier@3.5.3)(svelte@5.34.7)
+        version: 3.4.0(prettier@3.6.0)(svelte@5.34.7)
       turbo:
         specifier: 2.5.4
         version: 2.5.4
@@ -186,10 +186,10 @@ importers:
         version: 16.2.0
       prettier:
         specifier: ^3.5.3
-        version: 3.5.3
+        version: 3.6.0
       prettier-plugin-svelte:
         specifier: ^3.4.0
-        version: 3.4.0(prettier@3.5.3)(svelte@5.34.7)
+        version: 3.4.0(prettier@3.6.0)(svelte@5.34.7)
       publint:
         specifier: ^0.3.12
         version: 0.3.12
@@ -243,8 +243,8 @@ importers:
         specifier: 4.3.3
         version: 4.3.3
       '@types/mocha':
-        specifier: 9.1.1
-        version: 9.1.1
+        specifier: 10.0.10
+        version: 10.0.10
       chai:
         specifier: ^5.1.1
         version: 5.2.0
@@ -2384,8 +2384,8 @@ packages:
   '@types/mime@3.0.4':
     resolution: {integrity: sha512-iJt33IQnVRkqeqC7PzBHPTC6fDlRNRW8vjrgqtScAhrmMwe8c4Eo7+fUGTa+XdWrpEgpyKWMYmi2dIwMAYRzPw==}
 
-  '@types/mocha@9.1.1':
-    resolution: {integrity: sha512-Z61JK7DKDtdKTWwLeElSEBcWGRLY8g95ic5FoQqI9CMx0ns/Ghep3B4DfcEimiKMvtamNVULVNKEsiwV3aQmXw==}
+  '@types/mocha@10.0.10':
+    resolution: {integrity: sha512-xPyYSz1cMPnJQhl0CLMH68j3gprKZaTjG3s5Vi+fDgx+uhG9NOXwbVt52eFS8ECyXhyKcjDLCBEqBExKuiZb7Q==}
 
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
@@ -5493,8 +5493,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.5.3:
-    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
+  prettier@3.6.0:
+    resolution: {integrity: sha512-ujSB9uXHJKzM/2GBuE0hBOUgC77CN3Bnpqa+g80bkv3T3A93wL/xlzDATHhnhkzifz/UE2SNOvmbTz5hSkDlHw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -8389,7 +8389,7 @@ snapshots:
 
   '@types/mime@3.0.4': {}
 
-  '@types/mocha@9.1.1': {}
+  '@types/mocha@10.0.10': {}
 
   '@types/node@12.20.55': {}
 
@@ -11802,14 +11802,14 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-svelte@3.4.0(prettier@3.5.3)(svelte@5.34.7):
+  prettier-plugin-svelte@3.4.0(prettier@3.6.0)(svelte@5.34.7):
     dependencies:
-      prettier: 3.5.3
+      prettier: 3.6.0
       svelte: 5.34.7
 
   prettier@2.8.8: {}
 
-  prettier@3.5.3: {}
+  prettier@3.6.0: {}
 
   pretty-ms@9.2.0:
     dependencies:
