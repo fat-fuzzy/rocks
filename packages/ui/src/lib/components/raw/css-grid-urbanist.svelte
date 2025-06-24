@@ -2,7 +2,7 @@
 	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
 	import SideNav from '$lib/components/raw/fixtures/nav-2.svelte'
 	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
-	import Prose from '$lib/components/raw/fixtures/prose-medium.svelte'
+	import Prose from '$lib/components/raw/fixtures/prose-long.svelte'
 	import Details from '$lib/components/raw/fixtures/details.svelte'
 	import LineShort from '$lib/components/raw/fixtures/line-short.svelte'
 	import LineMedium from '$lib/components/raw/fixtures/line-medium.svelte'
