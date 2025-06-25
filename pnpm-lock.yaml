@@ -20,7 +20,7 @@ importers:
         version: 2.29.5
       '@eslint/compat':
         specifier: ^1.2.9
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:packages/config
@@ -47,7 +47,7 @@ importers:
     dependencies:
       '@eslint/compat':
         specifier: ^1.0.0
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
       dompurify:
         specifier: ^3.2.6
         version: 3.2.6
@@ -141,7 +141,7 @@ importers:
     dependencies:
       '@eslint/compat':
         specifier: ^1.2.9
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
       '@eslint/js':
         specifier: ^9.28.0
         version: 9.29.0
@@ -216,10 +216,10 @@ importers:
     dependencies:
       '@eslint/compat':
         specifier: ^1.0.0
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
       chalk:
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^5.4.1
+        version: 5.4.1
       commitizen:
         specifier: ^4.3.0
         version: 4.3.1(@types/node@24.0.4)(typescript@5.8.3)
@@ -272,7 +272,7 @@ importers:
     dependencies:
       '@eslint/compat':
         specifier: ^1.0.0
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
@@ -306,7 +306,7 @@ importers:
     dependencies:
       '@eslint/compat':
         specifier: ^1.0.0
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
@@ -325,7 +325,7 @@ importers:
     dependencies:
       '@eslint/compat':
         specifier: ^1.0.0
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
@@ -350,7 +350,7 @@ importers:
     dependencies:
       '@eslint/compat':
         specifier: ^1.0.0
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
       wrangler:
         specifier: ^4.0.0
         version: 4.17.0(@cloudflare/workers-types@4.20250529.0)
@@ -405,7 +405,7 @@ importers:
     dependencies:
       '@eslint/compat':
         specifier: ^1.0.0
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
     devDependencies:
       '@fat-fuzzy/config':
         specifier: workspace:*
@@ -476,7 +476,7 @@ importers:
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.9
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
@@ -588,7 +588,7 @@ importers:
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.9
-        version: 1.3.0(eslint@9.29.0(jiti@2.4.2))
+        version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
@@ -1484,11 +1484,11 @@ packages:
     resolution: {integrity: sha512-CCZCDJuduB9OUkFkY2IgppNZMi2lBQgD2qzwXkEia16cge2pijY/aXi96CJMquDMn3nJdlPV1A5KrJEXwfLNzQ==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
 
-  '@eslint/compat@1.3.0':
-    resolution: {integrity: sha512-ZBygRBqpDYiIHsN+d1WyHn3TYgzgpzLEcgJUxTATyiInQbKZz6wZb6+ljwdg8xeeOe4v03z6Uh6lELiw0/mVhQ==}
+  '@eslint/compat@1.3.1':
+    resolution: {integrity: sha512-k8MHony59I5EPic6EQTCNOuPoVBnoYXkP+20xvwFjN7t0qI3ImyvyBgg+hIVPwC8JaxVjjUZld+cLfBLFDLucg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
-      eslint: ^9.10.0
+      eslint: ^8.40 || 9
     peerDependenciesMeta:
       eslint:
         optional: true
@@ -2782,10 +2782,6 @@ packages:
   chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
     engines: {node: '>=4'}
-
-  chalk@3.0.0:
-    resolution: {integrity: sha512-4D3B6Wf41KOYRFdszmDqMCGq5VV/uMAB273JILmO+3jAlh8X4qDtdtgCR3fxtbLEMzSx22QdhnDcJvu2u1fVwg==}
-    engines: {node: '>=8'}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -7524,7 +7520,7 @@ snapshots:
 
   '@eslint-community/regexpp@4.12.1': {}
 
-  '@eslint/compat@1.3.0(eslint@9.29.0(jiti@2.4.2))':
+  '@eslint/compat@1.3.1(eslint@9.29.0(jiti@2.4.2))':
     optionalDependencies:
       eslint: 9.29.0(jiti@2.4.2)
 
@@ -8852,11 +8848,6 @@ snapshots:
       ansi-styles: 3.2.1
       escape-string-regexp: 1.0.5
       supports-color: 5.5.0
-
-  chalk@3.0.0:
-    dependencies:
-      ansi-styles: 4.3.0
-      supports-color: 7.2.0
 
   chalk@4.1.2:
     dependencies:
