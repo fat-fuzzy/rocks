@@ -38,7 +38,8 @@
 		--sidebar-width: var(--layout-sidebar-sm);
 	}
 
-	.l\:grid\:urbanist.voyager {
+	.l\:grid\:urbanist.voyager,
+	.l\:grid\:urbanist.steam {
 		--max-block-size: calc(
 			100vh - 2 * var(--ui-header-height) - 3 * var(--grid-gap)
 		);

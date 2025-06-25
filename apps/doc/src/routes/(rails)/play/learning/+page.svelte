@@ -30,13 +30,16 @@
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.pageNav}
-	layout="metro"
+	layout="tram"
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" />
 	{/snippet}
 	{#snippet aside()}
 		{#if tags.size > 0}
+			<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
+				Tags
+			</p>
 			<div class="l:grid:auto size:sm maki:block">
 				{#each tags as tag}
 					<details class="surface:1:neutral shape:soft" open>
@@ -45,8 +48,8 @@
 						>
 							{tag}
 						</summary>
-						<div class="ravioli:3xs shape:soft">
-							<ul class="unstyled text:start">
+						<div class="ravioli:lg shape:soft">
+							<ul class="unstyled">
 								{#each sketches as { slug, asset, title, tags }}
 									{#if tags.includes(tag)}
 										<li class={`size:sm emoji:${asset}`}>

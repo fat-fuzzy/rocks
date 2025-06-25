@@ -23,7 +23,7 @@ ul.l\:grid\:auto {
 	.l\:grid\:auto {
 		grid-template-columns: repeat(
 			auto-fill,
-			minmax(var(--grid-item-size), 1fr)
+			minmax(min(100%, var(--grid-item-size)), 1fr)
 		);
 	}
 }
