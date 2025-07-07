@@ -49,7 +49,7 @@
 		"postcss": "8.5.6",
 		"postcss-jit-props": "^1.0.16",
 		"postcss-preset-env": "^10.2.0",
-		"rollup": "^4.41.1",
+		"rollup": "^4.44.2",
 		"rollup-plugin-postcss": "^4.0.2",
 		"rollup-plugin-scss": "^4.0.1",
 		"sass": "^1.89.1"
