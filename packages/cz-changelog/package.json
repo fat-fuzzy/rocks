@@ -41,7 +41,7 @@
 		"cosmiconfig": "^9.0.0",
 		"mocha": "11.7.0",
 		"mock-require": "3.0.3",
-		"semantic-release": "24.2.5",
+		"semantic-release": "24.2.6",
 		"semver": "7.7.2"
 	},
 	"optionalDependencies": {
