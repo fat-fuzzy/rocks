@@ -14,6 +14,7 @@ The underlying intention of all this is to build interfaces that can adapt to al
 The structure of the library as well as the way the components are designed draws heavily from the following sources:
 
 - [CUBE CSS](https://cube.fyi/)
+- [every-layout](https://every-layout.dev/)
 - [Open Props](https://open-props.style/)
 - [Inclusive Components](https://inclusive-components.design)
 
