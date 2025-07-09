@@ -240,8 +240,8 @@ importers:
         specifier: workspace:*
         version: link:../config
       '@types/chai':
-        specifier: 4.3.3
-        version: 4.3.3
+        specifier: 5.2.2
+        version: 5.2.2
       '@types/mocha':
         specifier: 9.1.1
         version: 9.1.1
@@ -2328,9 +2328,6 @@ packages:
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
-
-  '@types/chai@4.3.3':
-    resolution: {integrity: sha512-hC7OMnszpxhZPduX+m+nrx+uFoLkWOMiR4oa/AZF3MuSETYTZmFfJAHqZEM8MVlvfG7BEUcgvtwoCTxBp6hm3g==}
 
   '@types/chai@5.2.2':
     resolution: {integrity: sha512-8kB30R7Hwqf40JPiKhVzodJs2Qc1ZJ5zuT3uzw5Hq/dhNCl3G3l83jfpdI1e20BP348+fV7VIL/+FxaXkqBmWg==}
@@ -8340,8 +8337,6 @@ snapshots:
       '@tiptap/pm': 2.25.0
 
   '@trysound/sax@0.2.0': {}
-
-  '@types/chai@4.3.3': {}
 
   '@types/chai@5.2.2':
     dependencies:
