@@ -131,7 +131,7 @@
 	/>
 
 	<RevealContent
-		id={`content-${id}`}
+		id={`${id}-reveal-content`}
 		{place}
 		{reveal}
 		{scroll}

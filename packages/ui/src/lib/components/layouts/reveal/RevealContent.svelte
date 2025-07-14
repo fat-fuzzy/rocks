@@ -21,7 +21,7 @@
 </script>
 
 <ff-reveal
-	id={`${id}-reveal`}
+	{id}
 	class={`${expanded} ${areaClass} ${scrollClass} ${layerClass} ${backgroundClass}`}
 >
 	{#if children}
