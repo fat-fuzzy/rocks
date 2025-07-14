@@ -54,6 +54,7 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Usage',
 				asset: 'usage',
 				formaction: 'toggleUsage',
+				actionPath: '/doc/usage',
 				items: [],
 			},
 			{
@@ -61,6 +62,7 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Decisions',
 				asset: 'decisions',
 				formaction: 'toggleDecisions',
+				actionPath: '/doc/decisions',
 				items: [],
 			},
 		],
@@ -76,6 +78,7 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Projects',
 				asset: 'projects',
 				formaction: 'toggleProjects',
+				actionPath: '/play/projects',
 				items: [],
 			},
 			{
@@ -83,6 +86,7 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Learning',
 				asset: 'learning',
 				formaction: 'toggleLearning',
+				actionPath: '/play/learning',
 				items: [],
 			},
 		],
@@ -100,6 +104,7 @@ export const pages: {[key: string]: NavItem} = {
 				asset: 'tokens',
 				layout: 'tram',
 				formaction: 'toggleTokens',
+				actionPath: '/ui/tokens',
 				items: [],
 			},
 			{
@@ -108,6 +113,7 @@ export const pages: {[key: string]: NavItem} = {
 				asset: 'blocks',
 				layout: 'tram',
 				formaction: 'toggleBlocks',
+				actionPath: '/ui/blocks',
 				items: [],
 			},
 			{
@@ -116,6 +122,7 @@ export const pages: {[key: string]: NavItem} = {
 				asset: 'layouts',
 				layout: 'tram',
 				formaction: 'toggleLayouts',
+				actionPath: '/ui/layouts',
 				items: [],
 			},
 			{
@@ -124,6 +131,7 @@ export const pages: {[key: string]: NavItem} = {
 				asset: 'recipes',
 				layout: 'tram',
 				formaction: 'toggleRecipes',
+				actionPath: '/ui/recipes',
 				items: [],
 			},
 			{
@@ -132,6 +140,7 @@ export const pages: {[key: string]: NavItem} = {
 				asset: 'raw',
 				layout: 'tram',
 				formaction: 'toggleRaw',
+				actionPath: '/ui/raw',
 				items: [],
 			},
 		],

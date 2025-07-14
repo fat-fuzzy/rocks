@@ -16,6 +16,7 @@ export type NavItem = {
 	variant?: string
 	shape?: string
 	formaction?: string
+	actionPath?: string
 	preload?: string
 	items?: NavItem[]
 }
@@ -73,6 +74,7 @@ export type ExpandLinkProps = UiBlockProps & {
 	children: Snippet
 	reveal: UiState
 	formaction?: string
+	actionPath?: string
 	onclick?: (payload: FuzzyPayload) => void
 }
 
