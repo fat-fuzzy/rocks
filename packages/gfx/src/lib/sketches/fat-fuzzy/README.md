@@ -1,10 +1,12 @@
 ---
-title: Geometry 2D
-date: '2022'
-slug: geometry-2d
+title: 'Fat Fuzzy Wings
+date_created: '2022'
+date_updated: '2025-07-14'
+slug: fat-fuzzy-wings
 categories: ['webgl', 'learn']
 tags: ['2D']
 id: '004'
+series: ['001', '002', '003']
 ---
 
 ## 🚧 WHat / Why

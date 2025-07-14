@@ -46,8 +46,6 @@ export default class WingXp10 extends Wing {
 		let [x, y] = origin
 		let featherVectors = []
 
-		console.log('getFeatherVertices', angle, bone, magnitude, origin)
-
 		let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
 		let insertionOrigin = origin
 		let insertionDistance = 0
