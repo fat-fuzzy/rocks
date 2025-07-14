@@ -57,7 +57,7 @@
 			{id}
 			{name}
 			accept={fileType}
-			aria-describedby="input-feedback-{id}"
+			aria-describedby={hint ? `input-feedback-${id}` : undefined}
 			{multiple}
 			{required}
 			{disabled}
