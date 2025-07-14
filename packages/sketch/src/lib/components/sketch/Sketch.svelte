@@ -261,7 +261,6 @@
 		<div class={`${frameClasses} color:primary`}>
 			<canvas
 				id={`${id}.canvas`}
-				aria-label={title}
 				data-testid="canvas"
 				bind:this={canvas}
 				inert={actor.getSketchDisabled()}

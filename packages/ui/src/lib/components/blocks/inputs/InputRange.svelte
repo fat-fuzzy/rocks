@@ -32,7 +32,16 @@
 		oninput,
 	}: InputRangeProps = $props()
 
-	let valueLabel = $state(value)
+	const numberToClass: {[key: string]: string} = {
+		// TODO: figure out a generic way to map range number values to string labels with no JS
+		'0': 'xs',
+		'25': 'sm',
+		'50': 'md',
+		'75': 'lg',
+		'100': 'xl',
+	}
+
+	let valueLabel = $state(numberToClass[value])
 	let markers: {id: string; label: string; value: number}[] = [
 		{id: '', label: '', value: min},
 	]
@@ -69,20 +78,9 @@
 		}
 	}
 
-	const classToNumber: {[key: string]: string} = {
-		// TODO: figure out a generic way to map range number values to string labels with no JS
-		'0': 'xs',
-		'25': 'sm',
-		'50': 'md',
-		'75': 'lg',
-		'100': 'xl',
-	}
 	if (items.length) {
 		step = (max - min) / (items.length - 1)
 		generateStepsFromItems(items)
-		// Set default number value if nojs
-		let valueObject = classToNumber[value]
-		value = valueObject ? valueObject : value
 	}
 
 	let inputClasses = $derived(
@@ -108,7 +106,11 @@
 				valueLabel = selectedMarker.label
 			}
 		} else {
-			valueLabel = !Number.isNaN(value) ? value : min + max / 2
+			valueLabel = !Number.isNaN(value)
+				? numberToClass[value]
+				: numberToClass[min + max / 2]
+					? numberToClass[min + max / 2]
+					: String(min + max / 2)
 		}
 	})
 </script>
@@ -128,9 +130,9 @@
 		{max}
 		{step}
 		oninput={handleInput}
-		list={items ? `${id}-markers` : undefined}
+		list={items?.length ? `${id}-markers` : undefined}
 		{disabled}
-		aria-describedby="input-feedback-{id}"
+		aria-describedby={hint ? `input-feedback-${id}` : undefined}
 	/>
 	{#if items.length}
 		<datalist id={`${id}-markers`} class="l:flex justify:between">
@@ -141,7 +143,14 @@
 	{/if}
 </label>
 {#if hint}
-	<Feedback {id} {status} context={UiTextContext.form} {size} {font} {variant}>
+	<Feedback
+		id={`input-feedback-${id}`}
+		{status}
+		context={UiTextContext.form}
+		{size}
+		{font}
+		{variant}
+	>
 		<p>{hint}</p>
 	</Feedback>
 {/if}

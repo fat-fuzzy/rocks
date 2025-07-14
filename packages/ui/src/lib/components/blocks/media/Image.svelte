@@ -16,6 +16,7 @@
 
 	let srcset = $derived(
 		sources
+			.filter(({format: f}) => f === 'webp')
 			.map(({width, format}) => `${src}-${width}.${format} ${width}w`)
 			.join(`, `),
 	)

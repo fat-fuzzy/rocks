@@ -86,11 +86,15 @@
 	}
 
 	[class*='gare:'][class*='width:']:not([class*=':full']),
-	[class*='gare:'][class*='width:']:not([class*=':full']):is([open], .expanded)
-		> ff-reveal,
+	[class*='gare:'][class*='width:']:not([class*=':full']).expanded > ff-reveal,
 	[class*='gare:'] > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
 		--overlay-inline-size: calc(var(--sidebar-width) + 2 * var(--grid-gap));
+	}
+
+	[class*='gare:'][class*='width:']:not([class*=':full'])[open] > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
+		--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
 	}
 
 	.gare\:ouest > ff-reveal,
@@ -100,7 +104,7 @@
 	}
 
 	.gare\:ouest[open]:not([class*=':full']) > ff-reveal {
-		inline-size: var(--sidebar-width);
+		inline-size: var(--overlay-inline-size);
 	}
 
 	[class*='gare:'] .gare-control {

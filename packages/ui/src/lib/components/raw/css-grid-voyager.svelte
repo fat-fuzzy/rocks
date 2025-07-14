@@ -28,6 +28,7 @@
 			gare="ouest"
 			width="lg"
 			height="sm"
+			{size}
 		/>
 
 		<aside class={`context l:grid size:${size}`}>
@@ -51,7 +52,7 @@
 				</div>
 			</header>
 			<div class="l:sidebar size:md">
-				<main class="l:main">
+				<div class="l:main">
 					<div class="page-main maki:inline l:stack:lg">
 						<Prose />
 						<Details
@@ -61,7 +62,7 @@
 							gare="nord"
 						/>
 					</div>
-				</main>
+				</div>
 				<aside
 					class={`l:side surface:2:${theme} maki:block l:grid:auto size:md`}
 				>

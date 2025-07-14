@@ -46,7 +46,7 @@
 </script>
 
 {#snippet headerMain()}
-	<SkipLinks />
+	<SkipLinks id="main" />
 	<HeaderNav
 		{id}
 		name={id}

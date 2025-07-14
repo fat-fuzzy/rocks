@@ -43,6 +43,15 @@
 		}),
 	)
 
+	const classToNumber: {[key: string]: string} = {
+		// TODO: figure out a generic way to map range number values to string labels with no JS
+		xs: '0',
+		sm: '25',
+		md: '50',
+		lg: '75',
+		xl: '100',
+	}
+
 	const COMPONENT_IMPORTS: {[input: string]: any} = {
 		radio: InputGroup,
 		range: InputRange,
@@ -191,7 +200,7 @@
 				{id}
 				label={styleInput.name}
 				{items}
-				value={currentValue}
+				value={classToNumber[currentValue] ?? currentValue}
 				name={id}
 				layout={styleInput.layout ?? ''}
 				size={apiSize}

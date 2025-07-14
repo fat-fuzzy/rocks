@@ -2,7 +2,7 @@
 	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
 	import SideNav from '$lib/components/raw/fixtures/nav-2.svelte'
 	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
-	import Prose from '$lib/components/raw/fixtures/prose-medium.svelte'
+	import Prose from '$lib/components/raw/fixtures/prose-long.svelte'
 	import Details from '$lib/components/raw/fixtures/details.svelte'
 	import LineShort from '$lib/components/raw/fixtures/line-short.svelte'
 	import LineMedium from '$lib/components/raw/fixtures/line-medium.svelte'
@@ -28,6 +28,7 @@
 			gare="ouest"
 			width="lg"
 			height="sm"
+			{size}
 		/>
 
 		<aside class={`context l:grid size:${size}`}>
@@ -51,7 +52,7 @@
 			<div class="page-main l:sidebar size:md">
 				<div class="l:main">
 					<div class="l:text:md maki:inline size:lg">
-						<h2 id="section-1">
+						<h2>
 							A Huge Ever Growing Pulsating Brain That Rules from the Centre of
 							the Ultraworld
 						</h2>

@@ -63,14 +63,11 @@
 
 {#if context === 'code'}
 	<pre
+		{id}
 		class={feedbackClasses}
 		data-testid={testId}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
-	<ff-feedback
-		class={feedbackClasses}
-		data-testid={testId}
-		aria-live={ariaLive}
-	>
+	<aside {id} class={feedbackClasses} data-testid={testId} aria-live={ariaLive}>
 		{#if feedbackTitle}
 			<p class={`status ${textAlign}`}>{feedbackTitle}</p>
 		{/if}
@@ -81,5 +78,5 @@
 				<p>{text}</p>
 			{/if}
 		</div>
-	</ff-feedback>
+	</aside>
 {/if}
