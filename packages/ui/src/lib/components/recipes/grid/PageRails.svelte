@@ -94,7 +94,13 @@
 	{:else}
 		<PageHeader {title} size={size as UiSize} {justify} layout={headerLayout}>
 			{#snippet main()}
-				<Breadcrumbs {id} {title} {path} level={1} size="2xs" />
+				<Breadcrumbs
+					id={`${id}-header-content`}
+					{title}
+					{path}
+					level={1}
+					size="2xs"
+				/>
 			{/snippet}
 		</PageHeader>
 	{/if}
