@@ -141,7 +141,14 @@
 	{/if}
 </label>
 {#if hint}
-	<Feedback {id} {status} context={UiTextContext.form} {size} {font} {variant}>
+	<Feedback
+		id={`input-feedback-${id}`}
+		{status}
+		context={UiTextContext.form}
+		{size}
+		{font}
+		{variant}
+	>
 		<p>{hint}</p>
 	</Feedback>
 {/if}

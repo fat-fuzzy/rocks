@@ -75,7 +75,13 @@
 		{color}
 	>
 		{@render input()}
-		<Feedback {id} {status} context={UiTextContext.form} {size} {variant}>
+		<Feedback
+			id={`input-feedback-${id}`}
+			{status}
+			context={UiTextContext.form}
+			{size}
+			{variant}
+		>
 			<p>{hint}</p>
 		</Feedback>
 	</Fieldset>
