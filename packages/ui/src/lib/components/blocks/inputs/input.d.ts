@@ -85,7 +85,7 @@ export type InputRangeProps = InputProps & {
 	min?: number
 	max?: number
 	step?: number
-	items?: number[]
+	items?: {id: string; label: string; value: string}[]
 }
 
 type FileType = 'image/png, image/jpeg'
