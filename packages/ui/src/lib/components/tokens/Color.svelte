@@ -18,13 +18,13 @@
 		<svelte:element this={`h${depth + 1}`} class="font:lg maki:block:2xs">
 			Base colors
 		</svelte:element>
-		<article class="l:grid:auto size:md">
+		<div class="l:grid:auto size:md">
 			{#each baseColor as base}
 				<figure class={`${colorClasses} bg:primary:${base}`}>
 					<figcaption>color:{base}</figcaption>
 				</figure>
 			{/each}
-		</article>
+		</div>
 	</section>
 
 	<section class="l:stack:xs">
