@@ -156,7 +156,13 @@
 	>
 		{#snippet main()}
 			<div class="l:stack:2xl">
-				<EscapeHtml id="doc" html={content.html || ''} size="md" font="md" />
+				<EscapeHtml
+					id="doc"
+					html={content.html || ''}
+					size="md"
+					font="md"
+					element="section"
+				/>
 
 				<section id="playbook" class="l:stack:2xl">
 					<div class="w:full l:flex justify:center">
