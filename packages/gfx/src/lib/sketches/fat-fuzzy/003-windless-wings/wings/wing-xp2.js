@@ -35,14 +35,21 @@ export default class WingXp2 extends Wing {
 		})
 	}
 
-	getFeatherVertices(angle, bone, magnitude, origin) {
+	/**
+	 *
+	 * @param {*} magnitude
+	 * @param {*} origin
+	 * @param {number} angle
+	 * @return {number[]} featherVectors
+	 */
+	getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
 
 		let insertionOrigin
 		let insertionDistance = 0
 		let featherMagnitude = 100
-		let featherCount = this.magnitudes.feathers[bone - 1].featherCount
+		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 
@@ -51,16 +58,20 @@ export default class WingXp2 extends Wing {
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
 			// Save current coordinate system
-			if (bone === 1) {
+			if (this.currentStep === 0) {
 				featherAngle = utils.degToRad(
-					this.magnitudes.feathers[bone - 1].beginning,
+					this.magnitudes.feathers[this.currentStep].beginning,
 				)
 			}
-			if (bone === 2) {
-				featherAngle = utils.degToRad(this.magnitudes.feathers[bone - 1].middle)
+			if (this.currentStep === 1) {
+				featherAngle = utils.degToRad(
+					this.magnitudes.feathers[this.currentStep].middle,
+				)
 			}
-			if (bone === 3) {
-				featherAngle = utils.degToRad(this.magnitudes.feathers[bone - 1].end)
+			if (this.currentStep === 2) {
+				featherAngle = utils.degToRad(
+					this.magnitudes.feathers[this.currentStep].end,
+				)
 			}
 
 			featherVectors.push(x, y)
@@ -96,13 +107,13 @@ export default class WingXp2 extends Wing {
 		return featherVectors
 	}
 
-	_getFeatherVertices(angle, bone, magnitude, origin) {
+	_getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
 
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherCount = this.magnitudes.feathers[bone - 1].featherCount
+		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 

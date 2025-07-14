@@ -35,24 +35,22 @@ export default class WingXp10 extends Wing {
 	}
 
 	/**
-	 *
-	 * @param {*} angle
-	 * @param {*} bone
 	 * @param {*} magnitude
 	 * @param {*} origin
+	 * @param {number} angle
 	 * @return {number[]} featherVectors
 	 */
-	getFeatherVertices(angle, bone, magnitude, origin) {
+	getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
 
 		let dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
 		let insertionOrigin = origin
 		let insertionDistance = 0
-		let featherMagnitude = this.magnitudes.feathers[bone - 1].beginning
-		let featherCount = this.magnitudes.feathers[bone - 1].featherCount
+		let featherMagnitude = this.magnitudes.feathers[this.currentStep].beginning
+		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
-		let featherAngle = featherAngles[bone]
+		let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
 		// console.log('featherCount', featherCount)

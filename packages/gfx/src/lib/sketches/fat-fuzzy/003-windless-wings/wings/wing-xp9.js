@@ -34,16 +34,23 @@ export default class WingXp9 extends Wing {
 		})
 	}
 
-	getFeatherVertices(angle, bone, magnitude, origin) {
+	/**
+	 *
+	 * @param {*} magnitude
+	 * @param {*} origin
+	 * @param {number} angle
+	 * @return {number[]} featherVectors
+	 */
+	getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
 
 		let insertionOrigin = origin
 		let insertionDistance = 0
 		let featherMagnitude = 100
-		let featherCount = this.magnitudes.feathers[bone - 1].featherCount
+		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
-		let featherAngle = featherAngles[bone - 1]
+		let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
 		// console.log('featherCount', featherCount)
@@ -55,14 +62,14 @@ export default class WingXp9 extends Wing {
 			// Save current coordinate system
 			// if (bone === 1) {
 			// 	featherAngle = utils.degToRad(
-			// 		this.magnitudes.feathers[bone - 1].beginning,
+			// 		this.magnitudes.feathers[this.currentStep].beginning,
 			// 	)
 			// }
 			// if (bone === 2) {
-			// 	featherAngle = utils.degToRad(this.magnitudes.feathers[bone - 1].middle)
+			// 	featherAngle = utils.degToRad(this.magnitudes.feathers[this.currentStep].middle)
 			// }
 			// if (bone === 3) {
-			// 	featherAngle = utils.degToRad(this.magnitudes.feathers[bone - 1].end)
+			// 	featherAngle = utils.degToRad(this.magnitudes.feathers[this.currentStep].end)
 			// }
 
 			featherVectors.push(x, y)

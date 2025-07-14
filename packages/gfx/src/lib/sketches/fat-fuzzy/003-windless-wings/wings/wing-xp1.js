@@ -34,15 +34,22 @@ export default class WingXp1 extends Wing {
 		})
 	}
 
-	getFeatherVertices(angle, bone, magnitude, origin) {
+	/**
+	 *
+	 * @param {*} magnitude
+	 * @param {*} origin
+	 * @param {number} angle
+	 * @return {number[]} featherVectors
+	 */
+	getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
 
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherCount = this.magnitudes.feathers[bone - 1].featherCount
-		let featherAngles = this.angles.feathers[this.currentTime]
-		let featherAngle = featherAngles[this.currentStep]
+		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
+		// let featherAngles = this.angles.feathers[this.currentTime]
+		// let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
 		// console.log('featherCount', featherCount)
@@ -53,7 +60,7 @@ export default class WingXp1 extends Wing {
 			insertionDistance = distance * step
 			// Save current coordinate system
 
-			console.log('featherAngle', featherAngle)
+			// console.log('featherAngle', featherAngle)
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
 				y,
