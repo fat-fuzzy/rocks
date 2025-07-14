@@ -29,7 +29,7 @@
 	layout="voyager"
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} html={content.html} size="md" element="section" />
+		<EscapeHtml id={slug} html={content.html} size="md" />
 
 		<div>
 			{#each categories as category}
