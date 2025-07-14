@@ -42,3 +42,16 @@ export type TextureControlProps = {
 	onupdate: (payload: Filters) => void
 	filters: Filters
 }
+
+export type GridControlProps = {
+	id: string
+	color?: string
+	size?: string
+	variant?: string
+	background?: string
+	layout?: string
+	breakpoint?: string
+	threshold?: string
+	onupdate: (payload: string[]) => void
+	gridItems: string[]
+}
