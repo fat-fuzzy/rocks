@@ -28,6 +28,7 @@
 			gare="ouest"
 			width="lg"
 			height="sm"
+			{size}
 		/>
 
 		<aside class={`context l:grid size:${size}`}>

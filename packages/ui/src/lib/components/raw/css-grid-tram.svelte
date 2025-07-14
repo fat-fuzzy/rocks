@@ -24,6 +24,7 @@
 			gare="ouest"
 			width="md hug"
 			height="sm"
+			{size}
 		/>
 
 		<aside class={`context l:grid size:3xs surface:1:${theme}`}>

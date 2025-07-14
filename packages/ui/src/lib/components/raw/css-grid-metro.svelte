@@ -27,6 +27,7 @@
 			gare="ouest"
 			width="md"
 			height="lg"
+			{size}
 		/>
 		<aside class={`context l:grid size:3xs surface:1:${theme}`}>
 			<AppContext {theme} />
