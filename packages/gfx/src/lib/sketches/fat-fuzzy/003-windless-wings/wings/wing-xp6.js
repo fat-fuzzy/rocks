@@ -35,8 +35,9 @@ export default class WingXp6 extends Wing {
 		})
 	}
 
-	getFeatherVertices(angle, bone, magnitude, origin, vectorVertices) {
+	getFeatherVertices(angle, bone, magnitude, origin) {
 		let [x, y] = origin
+		let featherVectors = []
 
 		let insertionOrigin
 		let insertionDistance = 0
@@ -65,7 +66,7 @@ export default class WingXp6 extends Wing {
 			// 	featherAngle = utils.degToRad(this.magnitudes.feathers[bone - 1].end)
 			// }
 
-			vectorVertices.push(x, y)
+			featherVectors.push(x, y)
 			// console.log('featherAngle', featherAngle)
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
@@ -74,8 +75,8 @@ export default class WingXp6 extends Wing {
 				magnitude,
 			)
 
-			vectorVertices.push(x, y)
-			vectorVertices.push(...insertionOrigin)
+			featherVectors.push(x, y)
+			featherVectors.push(...insertionOrigin)
 			// console.log('featherAngle', featherAngle)
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
@@ -94,12 +95,13 @@ export default class WingXp6 extends Wing {
 			// let featherY = insertionOrigin[1] * featherAngle
 
 			// Draw the feather
-			vectorVertices.push(featherX, featherY)
+			featherVectors.push(featherX, featherY)
 		}
 	}
 
-	_getFeatherVertices(angle, bone, magnitude, origin, vectorVertices) {
+	_getFeatherVertices(angle, bone, magnitude, origin) {
 		let [x, y] = origin
+		let featherVectors = []
 
 		let insertionOrigin
 		let insertionDistance = 0
@@ -108,9 +110,9 @@ export default class WingXp6 extends Wing {
 		let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
-		console.log('featherCount', featherCount)
-		console.log('distance', distance)
-		console.log('magnitude', magnitude)
+		// console.log('featherCount', featherCount)
+		// console.log('distance', distance)
+		// console.log('magnitude', magnitude)
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
@@ -141,7 +143,7 @@ export default class WingXp6 extends Wing {
 
 			// New Wing Coordinates
 			// Draw the feather
-			vectorVertices.push(origin[0], origin[1])
+			featherVectors.push(origin[0], origin[1])
 			let featherX = insertionOrigin[0] + 100 * featherAngle
 			let featherY = insertionOrigin[1] + 100 * featherAngle
 			// Experiment 1
@@ -152,7 +154,7 @@ export default class WingXp6 extends Wing {
 			// let featherY = insertionOrigin[1] * featherAngle
 
 			// Draw the feather
-			vectorVertices.push(featherX, featherY)
+			featherVectors.push(featherX, featherY)
 		}
 	}
 }

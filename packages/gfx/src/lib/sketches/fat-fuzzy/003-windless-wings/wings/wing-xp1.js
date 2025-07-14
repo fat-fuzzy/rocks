@@ -34,8 +34,9 @@ export default class WingXp1 extends Wing {
 		})
 	}
 
-	getFeatherVertices(angle, bone, magnitude, origin, vectorVertices) {
+	getFeatherVertices(angle, bone, magnitude, origin) {
 		let [x, y] = origin
+		let featherVectors = []
 
 		let insertionOrigin
 		let insertionDistance = 0
@@ -44,9 +45,9 @@ export default class WingXp1 extends Wing {
 		let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
-		console.log('featherCount', featherCount)
-		console.log('distance', distance)
-		console.log('magnitude', magnitude)
+		// console.log('featherCount', featherCount)
+		// console.log('distance', distance)
+		// console.log('magnitude', magnitude)
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
@@ -62,7 +63,7 @@ export default class WingXp1 extends Wing {
 
 			// New Wing Coordinates
 			// Draw the feather
-			vectorVertices.push(x, y)
+			featherVectors.push(x, y)
 			let featherX = insertionOrigin[0] + 20
 			let featherY = insertionOrigin[1] + 100
 			;[x, y] = [x + featherX, y + featherY]
@@ -74,7 +75,9 @@ export default class WingXp1 extends Wing {
 			// let featherY = insertionOrigin[1] * featherAngle
 
 			// Draw the feather
-			vectorVertices.push(featherX, featherY)
+			featherVectors.push(featherX, featherY)
 		}
+
+		return featherVectors
 	}
 }
