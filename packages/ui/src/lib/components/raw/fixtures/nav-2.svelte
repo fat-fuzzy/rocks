@@ -9,6 +9,7 @@
 		children,
 		width,
 		height,
+		size,
 	}: {
 		zone: string
 		theme: string
@@ -17,9 +18,10 @@
 		children?: Snippet
 		width?: string
 		height?: string
+		size?: string
 	} = $props()
 
-	let layoutClass = layout ? `l:${layout}` : ''
+	let layoutClass = layout ? `l:${layout} size:${size}` : ''
 	let gareClass = gare ? `gare:${gare}` : ''
 	let gareControl = gare ? 'gare-control' : ''
 	let gareDepot = gare ? 'gare-depot' : ''
