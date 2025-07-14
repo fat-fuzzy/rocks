@@ -72,6 +72,7 @@
 		<Button
 			{asset}
 			id={`button-popover-${id}`}
+			type="button"
 			{title}
 			{size}
 			{color}
