@@ -69,7 +69,7 @@
 		}
 	}
 
-	const classToNumber: {[key: string]: string} = {
+	const numberToClass: {[key: string]: string} = {
 		// TODO: figure out a generic way to map range number values to string labels with no JS
 		'0': 'xs',
 		'25': 'sm',
@@ -81,7 +81,7 @@
 		step = (max - min) / (items.length - 1)
 		generateStepsFromItems(items)
 		// Set default number value if nojs
-		let valueObject = classToNumber[value]
+		let valueObject = numberToClass[value]
 		value = valueObject ? valueObject : value
 	}
 
