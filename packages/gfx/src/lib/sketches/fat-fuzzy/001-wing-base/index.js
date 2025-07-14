@@ -5,7 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
-import Wing from '../wing'
+import Wing from './wing-base'
 import props from '../props'
 import setup from '../../../webgl/setup'
 import {drawScene} from './draw-scene'
@@ -85,6 +85,8 @@ function loadProgram(canvas) {
 		bones: BONES,
 		feathers: FEATHERS,
 		colors: COLORS,
+		canvasWidth: canvas.width,
+		canvasHeight: canvas.height,
 	})
 	wing.init(gl.canvas.width, gl.canvas.height)
 
@@ -107,6 +109,8 @@ function loadProgram(canvas) {
 		context: wing.getGeometryCoords(),
 		errors: [],
 	}
+
+	clear()
 
 	buffers = initBuffers(gl, _programInfo)
 	error = gl.getError()

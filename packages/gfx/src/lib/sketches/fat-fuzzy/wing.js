@@ -1,21 +1,44 @@
 import utils from '../../math/utils'
 import vectors from '../../math/vectors'
+
 export default class Wing {
+	name
+	// Context
 	position
-	direction
 	layers
-	currentStep
-	currentTime
-	currentLayer
-	currentSection
+	direction
 	steps // This controls movement speed
 	pause // This controls the pause time at the end of each cycle
 	width
 	height
 
+	// Colors
+	colorDraw
+	colorBg
+	color
+	colors
+	drawFeathers
+
+	// State
+	currentLayer = 0
+	currentSection = 0
+	currentTime = 0
+	clear = false
+	erase = 0
+
+	clear
+	erase
+
+	// Angles and Magnitudes
+	boneAngles
+	featherAngles
+	magnitudes
+	angles
+
 	/**
 	 *
 	 * @param {*} wing state = {
+		  name: string,
 			position: number[],
 			direction: number,
 			step: number,
@@ -27,6 +50,7 @@ export default class Wing {
 		}
 	 */
 	constructor({
+		name,
 		position,
 		direction,
 		step,
@@ -40,6 +64,7 @@ export default class Wing {
 		canvasWidth,
 		canvasHeight,
 	}) {
+		this.name = name
 		// Context
 		this.position = position
 		this.layers = layers
@@ -58,14 +83,6 @@ export default class Wing {
 		this.drawFeathers = drawFeathers
 
 		// State
-		this.currentLayer = 0
-		this.currentSection = 0
-		this.currentTime = 0
-		this.width = 0
-		this.height = 0
-		this.clear = false
-		this.erase = 0
-
 		this.boneAngles = [
 			utils.normalizeAndInterpolate(
 				bones.beginning,
@@ -180,7 +197,6 @@ export default class Wing {
 	// TODO: transform wing data into geometry coordinates (= vertices)
 	getBoneVertices() {
 		// Save current coordinate system
-		// push()
 		let coords = this.position
 		let origin = coords
 		let angle = 0
@@ -188,6 +204,7 @@ export default class Wing {
 		let vectorVertices = []
 		let currentMovement = this.angles.bones[this.currentTime]
 		let bone
+
 		// 1. Add the  bone vertices in sequence so that a new bone's coords is the last bone's tip
 		for (bone = 0; bone < currentMovement.length - 1; bone++) {
 			// Translate to current coords (initial or previous bone coords)
@@ -205,11 +222,12 @@ export default class Wing {
 			vectorVertices.push(...coords)
 
 			if (this.drawFeathers && bone > 0) {
-				this.getFeatherVertices(angle, bone, coords, vectorVertices)
+				this.getFeatherVertices(angle, bone, magnitude, coords, vectorVertices)
 				// Draw the bone
 				vectorVertices.push(...coords)
 			}
 		}
+
 		// 2. Draw the last bone that shares its coords with the previous bone
 		magnitude = this.magnitudes.bones[bone]
 		angle = currentMovement[bone]
@@ -219,8 +237,15 @@ export default class Wing {
 
 		// Draw the bone
 		vectorVertices.push(...coords)
+
 		if (this.drawFeathers && bone > 0) {
-			this.getFeatherVertices(angle, bone - 1, coords, vectorVertices)
+			this.getFeatherVertices(
+				angle,
+				bone - 1,
+				magnitude,
+				coords,
+				vectorVertices,
+			)
 			// Draw the bone
 			vectorVertices.push(...coords)
 		}
@@ -228,13 +253,13 @@ export default class Wing {
 		return vectorVertices
 	}
 
-	getFeatherVertices(angle, bone, origin, vectorVertices) {
+	getFeatherVertices(angle, bone, magnitude, origin, vectorVertices) {
 		let [x, y] = origin
 
-		// Draw the feather
-		vectorVertices.push(...origin)
-		// Hypothenuse
-		let magnitude = Math.abs(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))
+		// // Draw the feather
+		// vectorVertices.push(...origin)
+		// // Hypothenuse
+		// let magnitude = Math.abs(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))
 
 		let featherMagnitude = this.magnitudes.feathers[bone - 1].beginning
 		let insertionOrigin
