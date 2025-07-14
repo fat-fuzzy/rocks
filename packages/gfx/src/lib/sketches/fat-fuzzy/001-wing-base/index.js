@@ -39,7 +39,7 @@ let meta = {
 	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'sketches', 'wing', 'fat-fuzzy'],
-	controls: ['speed', 'color', 'grid', 'loop'],
+	controls: ['speed', 'color', 'loop'],
 }
 
 function init(canvas) {

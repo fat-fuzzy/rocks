@@ -216,7 +216,6 @@
 	}
 
 	function updateGrid(grid: string[]) {
-		console.log('updateGrid', grid)
 		try {
 			sceneContext.grid = grid
 			scene.update(sceneContext)
