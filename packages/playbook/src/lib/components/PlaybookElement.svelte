@@ -146,14 +146,14 @@
 				</div>
 				{#if category === 'raw'}
 					<div class="l:center size:sm col:center">
-						<a
-							href={`${link}/${title}/template`}
-							class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
-						>
-							<svelte:element this={`h3`} class="link font:sm">
+						<svelte:element this={`h3`} class="link font:sm">
+							<a
+								href={`${link}/${title}/template`}
+								class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+							>
 								Open {title} template
-							</svelte:element>
-						</a>
+							</a>
+						</svelte:element>
 					</div>
 				{:else}
 					<div class={`ravioli:lg ${containerClasses}`}>

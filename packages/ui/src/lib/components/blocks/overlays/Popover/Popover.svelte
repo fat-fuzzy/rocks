@@ -69,6 +69,8 @@
 
 <ff-popover {id} bind:this={invoker} class={fixedClass} data-testid={id}>
 	<span class="anchor" style={popoverAnchorStyle}>
+		<!-- HTML Validation fails -->
+		<!-- TODO: watch issue github.com/validator/validator/issues/1534 -->
 		<Button
 			{asset}
 			id={`button-popover-${id}`}

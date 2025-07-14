@@ -116,20 +116,20 @@
 			{#each componentNames as name, i (i)}
 				{@const SpecifiedElement = items[name]}
 				<article
-					id={`ravioli-${title}`}
+					id={`article-${title}-${name}`}
 					class={`variant:bare w:auto ui:${name.toLowerCase()}`}
 				>
-					<a
-						href={`${link}/${name}`}
-						class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
+					<svelte:element
+						this={`h${String(elementTitleDepth)}`}
+						class="link font:sm"
 					>
-						<svelte:element
-							this={`h${String(elementTitleDepth)}`}
-							class="link font:sm"
+						<a
+							href={`${link}/${name}`}
+							class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 						>
 							{name}
-						</svelte:element>
-					</a>
+						</a>
+					</svelte:element>
 					<Element
 						title={name}
 						{path}
@@ -156,13 +156,7 @@
 	>
 		{#snippet main()}
 			<div class="l:stack:2xl">
-				<EscapeHtml
-					id="doc"
-					html={content.html || ''}
-					size="md"
-					font="md"
-					element="section"
-				/>
+				<EscapeHtml id="doc" html={content.html || ''} size="md" font="md" />
 
 				<section id="playbook" class="l:stack:2xl">
 					<div class="w:full l:flex justify:center">
