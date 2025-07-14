@@ -100,9 +100,9 @@
 {#if auto}
 	<svelte:element
 		this={tag}
-		{id}
+		id={`reveal-${id}`}
 		class={revealClasses}
-		aria-label={label ?? title}
+		aria-label={tag === 'menu' ? (label ?? title) : undefined}
 	>
 		{@render revealForm()}
 	</svelte:element>
@@ -130,7 +130,14 @@
 		{justify}
 	/>
 
-	<RevealContent {id} {place} {reveal} {scroll} {layer} {background}>
+	<RevealContent
+		id={`content-${id}`}
+		{place}
+		{reveal}
+		{scroll}
+		{layer}
+		{background}
+	>
 		{#if children}
 			{@render children()}
 		{/if}

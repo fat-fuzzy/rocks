@@ -51,4 +51,4 @@
 	/>
 </label>
 
-<Feedback {id} {errors} {size} {variant} {font} />
+<Feedback id={`input-feedback-${id}`} {errors} {size} {variant} {font} />
