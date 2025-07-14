@@ -73,7 +73,7 @@
 	aria-label={title}
 	data-testid={`nav-${id}`}
 >
-	<SkipLinks text="Skip to content" href="#main" />
+	<SkipLinks id="sidebar" text="Skip to content" href="#main" />
 	<Reveal
 		{id}
 		name={id}
