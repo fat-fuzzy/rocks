@@ -35,7 +35,7 @@
 			Nav 2
 		</summary>
 		<ff-reveal class={`${gareDepot} scroll:y layer:1`}>
-			<nav id="nav-2" class="l:flex ravioli:md" aria-labelledby="#nav-2-label">
+			<nav id="nav-2" class="l:flex ravioli:md" aria-labelledby="nav-2-label">
 				{#if children}
 					{@render children()}
 				{:else}

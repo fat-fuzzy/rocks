@@ -51,7 +51,7 @@
 			<div class="page-main l:sidebar size:md">
 				<div class="l:main">
 					<div class="l:text:md maki:inline size:lg">
-						<h2 id="section-1">
+						<h2>
 							A Huge Ever Growing Pulsating Brain That Rules from the Centre of
 							the Ultraworld
 						</h2>
