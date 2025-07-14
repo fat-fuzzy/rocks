@@ -63,7 +63,7 @@
 </label>
 {#if hint}
 	<Feedback
-		{id}
+		id={`input-feedback-${id}`}
 		{asset}
 		{status}
 		context={UiTextContext.form}
