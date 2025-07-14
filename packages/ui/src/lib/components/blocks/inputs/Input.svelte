@@ -47,7 +47,7 @@
 		{oninput}
 		{disabled}
 		{autocomplete}
-		aria-describedby="input-feedback-{id}"
+		aria-describedby={errors ? `input-feedback-${id}` : undefined}
 	/>
 </label>
 

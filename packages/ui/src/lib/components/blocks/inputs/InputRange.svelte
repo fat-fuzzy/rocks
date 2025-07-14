@@ -128,9 +128,9 @@
 		{max}
 		{step}
 		oninput={handleInput}
-		list={items ? `${id}-markers` : undefined}
+		list={items?.length ? `${id}-markers` : undefined}
 		{disabled}
-		aria-describedby="input-feedback-{id}"
+		aria-describedby={hint ? `input-feedback-${id}` : undefined}
 	/>
 	{#if items.length}
 		<datalist id={`${id}-markers`} class="l:flex justify:between">
