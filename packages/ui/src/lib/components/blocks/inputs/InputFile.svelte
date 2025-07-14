@@ -57,7 +57,7 @@
 			{id}
 			{name}
 			accept={fileType}
-			aria-describedby="input-feedback-{id}"
+			aria-describedby={hint ? `input-feedback-${id}` : undefined}
 			{multiple}
 			{required}
 			{disabled}
@@ -75,7 +75,13 @@
 		{color}
 	>
 		{@render input()}
-		<Feedback {id} {status} context={UiTextContext.form} {size} {variant}>
+		<Feedback
+			id={`input-feedback-${id}`}
+			{status}
+			context={UiTextContext.form}
+			{size}
+			{variant}
+		>
 			<p>{hint}</p>
 		</Feedback>
 	</Fieldset>

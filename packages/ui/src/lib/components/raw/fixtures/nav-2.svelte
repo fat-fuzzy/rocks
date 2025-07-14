@@ -9,6 +9,7 @@
 		children,
 		width,
 		height,
+		size,
 	}: {
 		zone: string
 		theme: string
@@ -17,9 +18,10 @@
 		children?: Snippet
 		width?: string
 		height?: string
+		size?: string
 	} = $props()
 
-	let layoutClass = layout ? `l:${layout}` : ''
+	let layoutClass = layout ? `l:${layout} size:${size}` : ''
 	let gareClass = gare ? `gare:${gare}` : ''
 	let gareControl = gare ? 'gare-control' : ''
 	let gareDepot = gare ? 'gare-depot' : ''
@@ -35,7 +37,7 @@
 			Nav 2
 		</summary>
 		<ff-reveal class={`${gareDepot} scroll:y layer:1`}>
-			<nav id="nav-2" class="l:flex ravioli:md" aria-labelledby="#nav-2-label">
+			<nav id="nav-2" class="l:flex ravioli:md" aria-labelledby="nav-2-label">
 				{#if children}
 					{@render children()}
 				{:else}

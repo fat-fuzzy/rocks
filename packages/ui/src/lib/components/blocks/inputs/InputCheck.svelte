@@ -58,12 +58,12 @@
 		{required}
 		oninput={handleInput}
 		{disabled}
-		aria-describedby="input-feedback-{id}"
+		aria-describedby={hint ? `input-feedback-${id}` : undefined}
 	/>
 </label>
 {#if hint}
 	<Feedback
-		{id}
+		id={`input-feedback-${id}`}
 		{asset}
 		{status}
 		context={UiTextContext.form}

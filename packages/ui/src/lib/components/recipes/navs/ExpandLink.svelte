@@ -19,6 +19,7 @@
 		children,
 		reveal,
 		formaction,
+		actionPath,
 		onclick,
 	}: ExpandLinkProps = $props()
 
@@ -38,6 +39,11 @@
 
 	let revealClasses = $derived(linkReveal[slug].reveal ?? 'collapsed')
 	let layoutClasses = $derived(`l:reveal top ${revealClasses}`)
+	let action = $state(
+		formaction && actionPath
+			? `${actionPath}?/${formaction}`
+			: `?/${formaction}`,
+	)
 
 	function toggleReveal(payload: FuzzyPayload) {
 		linkReveal[slug].reveal = payload.state
@@ -64,7 +70,7 @@
 			name={`reveal-${slug}`}
 			controls={`links-${slug}`}
 			{states}
-			{formaction}
+			formaction={action}
 			onclick={toggleReveal}
 		/>
 	</div>

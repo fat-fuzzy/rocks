@@ -45,14 +45,18 @@
 	)
 </script>
 
-<div class={`l:stack:${size} w:full`}>
-	<svelte:element this={`h${level}`} id={title} class="l:flex align:center">
+<div {id} class={`l:stack:${size} w:full`}>
+	<svelte:element
+		this={`h${level}`}
+		id={`${id}-heading`}
+		class="l:flex align:center"
+	>
 		{title}
 	</svelte:element>
 	<nav
-		id={`breadcrumbs-${id}`}
+		id={`${id}-breadcrumbs`}
 		class={`breadcrumbs ${navClasses}`}
-		data-testid={`breadcrumbs-${id}`}
+		data-testid={`${id}-breadcrumbs`}
 	>
 		<ol class={`l:flex size:${size} align:center unstyled`}>
 			{#each items as item, i}

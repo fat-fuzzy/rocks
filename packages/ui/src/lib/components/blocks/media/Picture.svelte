@@ -26,8 +26,10 @@
 				: 'l:frame',
 	)
 
-	function getSources(width: string) {
-		const _sources = sources.filter(({width: w}) => w === width)
+	function getWebPSources(width: string) {
+		const _sources = sources
+			.filter(({format: f}) => f === 'webp')
+			.filter(({width: w}) => w === width)
 		if (!_sources) return [`${src}-${width}.${ext}`]
 		return _sources.map((source) => `${src}-${source.width}.${source.format}`)
 	}
@@ -35,7 +37,7 @@
 	function getSrcset(srcset: {width: string; dpr: number}[]) {
 		return srcset
 			.map(({width, dpr}) => {
-				const _sources = getSources(width)
+				const _sources = getWebPSources(width)
 				return _sources.map((source) => `${source} ${dpr}x`).join(`, `)
 			})
 			.join(`, `)

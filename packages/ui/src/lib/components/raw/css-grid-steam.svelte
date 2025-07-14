@@ -24,6 +24,7 @@
 			gare="ouest"
 			width="lg hug"
 			height="sm"
+			{size}
 		>
 			<NavItems />
 		</SideNav>

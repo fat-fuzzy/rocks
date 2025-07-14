@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {LinkTreeProps} from '$types'
+	import type {LinkTreeProps, NavItem} from '$types'
 	import {UiSize, UiColor} from '$types'
 	import format from '$lib/utils/format.js'
 	import {getStores} from '$app/stores'
@@ -36,7 +36,7 @@
 	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
 </script>
 
-{#snippet nestedLinkTree(subItems, slug)}
+{#snippet nestedLinkTree(subItems: NavItem[], slug: string)}
 	<LinkTree
 		items={subItems}
 		path={format.formatHref(path, slug)}
@@ -89,7 +89,8 @@
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
 					size={UiSize['2xs']}
-					formaction={`?/${item.formaction}`}
+					actionPath={item.actionPath}
+					formaction={item.formaction}
 				>
 					{@render nestedLinkTree(subItems, slug)}
 				</ExpandLink>
