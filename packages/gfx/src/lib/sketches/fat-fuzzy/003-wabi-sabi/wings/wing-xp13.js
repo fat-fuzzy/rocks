@@ -47,6 +47,7 @@ export default class WingXp13 extends Wing {
 	getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
+
 		let insertionOrigin
 		let insertionDistance = 0
 		let featherMagnitude = this.magnitudes.feathers[this.currentStep].beginning

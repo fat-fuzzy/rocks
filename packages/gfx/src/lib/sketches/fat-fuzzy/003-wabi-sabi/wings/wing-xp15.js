@@ -52,11 +52,10 @@ export default class WingXp15 extends Wing {
 
 		let distance = magnitude / featherCount
 		let unit = vectors.getUnitVector(x, y, magnitude)
+		featherVectors.push(x, y)
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
-
-			featherVectors.push(x, y)
 
 			insertionOrigin = vectors.getIntersectionPoint(unit, insertionDistance)
 

@@ -1,3 +1,4 @@
+import utils from '../../../../math/utils.js'
 import vectors from '../../../../math/vectors.js'
 import Wing from '../../wing.js'
 
@@ -5,8 +6,9 @@ export default class WingXp9 extends Wing {
 	constructor({
 		name = 'xp9',
 		position,
-		translation = [0.835, 0.565],
-		scale = [0.5175, 0.5175],
+		translation = [0.95, 0.505],
+		scale = [0.615, 0.615],
+		rotation = utils.degToRad(12),
 		direction,
 		step,
 		layers,
@@ -24,6 +26,7 @@ export default class WingXp9 extends Wing {
 			position,
 			translation,
 			scale,
+			rotation,
 			direction,
 			step,
 			layers,
@@ -58,10 +61,11 @@ export default class WingXp9 extends Wing {
 
 		let distance = magnitude / featherCount
 
+		featherVectors.push(...insertionOrigin)
+
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
 
-			featherVectors.push(x, y)
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
 				y,
@@ -69,12 +73,12 @@ export default class WingXp9 extends Wing {
 				magnitude,
 			)
 
-			featherVectors.push(x, y)
+			featherVectors.push(...insertionOrigin)
 			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
-				featherAngle,
+				angle,
 			)
 
 			// New Wing Coordinates
