@@ -6,6 +6,8 @@ export default class WingXp4 extends Wing {
 	constructor({
 		name = 'xp4',
 		position,
+		translation = [0.4875, 0.275],
+		scale = [0.5995, 0.5995],
 		direction,
 		step,
 		layers,
@@ -21,6 +23,8 @@ export default class WingXp4 extends Wing {
 		super({
 			name,
 			position,
+			scale,
+			translation,
 			direction,
 			step,
 			layers,
@@ -42,7 +46,7 @@ export default class WingXp4 extends Wing {
 	 * @param {number} angle
 	 * @return {number[]} featherVectors
 	 */
-	getFeatherVertices(magnitude, origin, angle) {
+	_getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
 
@@ -108,7 +112,7 @@ export default class WingXp4 extends Wing {
 		return featherVectors
 	}
 
-	_getFeatherVertices(magnitude, origin, angle) {
+	getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
 
