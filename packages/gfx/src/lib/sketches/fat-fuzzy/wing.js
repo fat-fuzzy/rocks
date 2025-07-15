@@ -7,6 +7,7 @@ export default class Wing {
 	position
 	translation = [0.9, 0.6] // Default translation
 	scale = [1, 1] // Default scale
+	rotation = utils.degToRad(0)
 	layers
 	direction
 	steps // This controls movement speed
@@ -55,6 +56,7 @@ export default class Wing {
 		position,
 		translation = [0.9, 0.6],
 		scale = [1, 1],
+		rotation = utils.degToRad(0),
 		direction,
 		step,
 		layers,
@@ -71,6 +73,7 @@ export default class Wing {
 		// Context
 		this.position = position
 		this.scale = scale
+		this.rotation = rotation
 		this.translation = translation
 		this.layers = layers
 		this.direction = direction
@@ -344,7 +347,7 @@ export default class Wing {
 				this.width * this.translation[0],
 				this.height * this.translation[1],
 			],
-			rotation: [utils.degToRad(0)],
+			rotation: [this.rotation],
 			scale: this.scale,
 			width: this.width,
 			height: this.height,
