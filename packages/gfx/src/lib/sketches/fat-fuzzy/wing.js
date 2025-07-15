@@ -5,6 +5,8 @@ export default class Wing {
 	name
 	// Context
 	position
+	translation = [0.9, 0.6] // Default translation
+	scale = [1, 1] // Default scale
 	layers
 	direction
 	steps // This controls movement speed
@@ -51,6 +53,8 @@ export default class Wing {
 	constructor({
 		name,
 		position,
+		translation = [0.9, 0.6],
+		scale = [1, 1],
 		direction,
 		step,
 		layers,
@@ -66,6 +70,8 @@ export default class Wing {
 		this.name = name
 		// Context
 		this.position = position
+		this.scale = scale
+		this.translation = translation
 		this.layers = layers
 		this.direction = direction
 		this.currentStep = step
@@ -334,9 +340,12 @@ export default class Wing {
 				this.color,
 				this.currentTime / this.steps,
 			),
-			translation: [this.width * 0.9, this.height * 0.6],
+			translation: [
+				this.width * this.translation[0],
+				this.height * this.translation[1],
+			],
 			rotation: [utils.degToRad(0)],
-			scale: [1, 1],
+			scale: this.scale,
 			width: this.width,
 			height: this.height,
 			geometry: this.getBoneVertices(),
