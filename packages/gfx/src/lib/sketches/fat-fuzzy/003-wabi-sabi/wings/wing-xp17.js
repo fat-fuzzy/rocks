@@ -1,9 +1,9 @@
 import vectors from '../../../../math/vectors.js'
 import Wing from '../../wing.js'
 
-export default class WingXp16 extends Wing {
+export default class WingXp17 extends Wing {
 	constructor({
-		name = 'xp16',
+		name = 'xp17',
 		position,
 		direction,
 		step,
