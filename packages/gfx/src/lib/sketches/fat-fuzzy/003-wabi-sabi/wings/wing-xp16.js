@@ -6,7 +6,7 @@ export default class WingXp16 extends Wing {
 	constructor({
 		name = 'xp16',
 		position,
-		translation = [0.945, 0.665],
+		translation = [0.955, 0.665],
 		scale = [0.4025, 0.4025],
 		direction,
 		step,
@@ -58,14 +58,10 @@ export default class WingXp16 extends Wing {
 		let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
-		// console.log('featherCount', featherCount)
-		// console.log('distance', distance)
-		// console.log('magnitude', magnitude)
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
 
-			// Save current coordinate system
 			if (this.currentStep === 0) {
 				featherAngle = utils.degToRad(
 					this.magnitudes.feathers[this.currentStep].beginning,
@@ -83,7 +79,7 @@ export default class WingXp16 extends Wing {
 			}
 
 			featherVectors.push(x, y)
-			// console.log('featherAngle', featherAngle)
+
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
 				y,
@@ -93,18 +89,11 @@ export default class WingXp16 extends Wing {
 
 			featherVectors.push(x, y)
 			featherVectors.push(...insertionOrigin)
-			// console.log('featherAngle', featherAngle)
-			// let insertionDest = vectors.getCoordsFromMagAndAngle(
-			// 	featherMagnitude + step * 10,
-			// 	featherAngle,
-			// )
 
 			// New Wing Coordinates
-			// Draw the feather
 			let featherX = insertionOrigin[0] * featherAngle
 			let featherY = insertionOrigin[1] * featherAngle
 
-			// Draw the feather
 			featherVectors.push(featherX, featherY)
 		}
 

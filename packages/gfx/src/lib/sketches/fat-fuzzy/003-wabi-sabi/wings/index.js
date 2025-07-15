@@ -16,20 +16,6 @@ import xp15 from './wing-xp15.js'
 import xp16 from './wing-xp16.js'
 import xp17 from './wing-xp17.js'
 import xp18 from './wing-xp18.js'
-import xp19 from './wing-xp19.js'
-import xp20 from './wing-xp20.js'
-import xp21 from './wing-xp21.js'
-import xp22 from './wing-xp22.js'
-import xp23 from './wing-xp23.js'
-import xp24 from './wing-xp24.js'
-import xp25 from './wing-xp25.js'
-import xp26 from './wing-xp26.js'
-import xp27 from './wing-xp27.js'
-import xp28 from './wing-xp28.js'
-import xp29 from './wing-xp29.js'
-import xp30 from './wing-xp30.js'
-import xp31 from './wing-xp31.js'
-import xp32 from './wing-xp32.js'
 
 const wings = {
 	xp1,
@@ -50,20 +36,6 @@ const wings = {
 	xp16,
 	xp17,
 	xp18,
-	xp19,
-	xp20,
-	xp21,
-	xp22,
-	xp23,
-	xp24,
-	xp25,
-	xp26,
-	xp27,
-	xp28,
-	xp29,
-	xp30,
-	xp31,
-	xp32,
 }
 
 export default wings

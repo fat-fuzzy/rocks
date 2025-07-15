@@ -58,9 +58,6 @@ export default class WingXp5 extends Wing {
 		let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
-		// console.log('featherCount', featherCount)
-		// console.log('distance', distance)
-		// console.log('magnitude', magnitude)
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
@@ -93,18 +90,16 @@ export default class WingXp5 extends Wing {
 
 			featherVectors.push(x, y)
 			featherVectors.push(...insertionOrigin)
-			// console.log('featherAngle', featherAngle)
+
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
 				featherAngle,
 			)
 
 			// New Wing Coordinates
-			// Draw the feather
 			let featherX = insertionOrigin[0] + insertionDest[0]
 			let featherY = insertionOrigin[1] + insertionDest[1]
 
-			// Draw the feather
 			featherVectors.push(featherX, featherY)
 		}
 
