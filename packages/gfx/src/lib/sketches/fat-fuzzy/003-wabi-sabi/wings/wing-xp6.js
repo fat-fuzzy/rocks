@@ -6,6 +6,8 @@ export default class WingXp6 extends Wing {
 	constructor({
 		name = 'xp6',
 		position,
+		translation = [0.9, 0.525],
+		scale = [1.75, 1.75],
 		direction,
 		step,
 		layers,
@@ -21,6 +23,8 @@ export default class WingXp6 extends Wing {
 		super({
 			name,
 			position,
+			translation,
+			scale,
 			direction,
 			step,
 			layers,
