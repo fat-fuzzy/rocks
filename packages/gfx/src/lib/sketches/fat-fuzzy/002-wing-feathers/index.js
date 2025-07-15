@@ -38,7 +38,7 @@ let meta = {
 	asset: 'feather',
 	// status: 'draft',
 	categories: ['Projects'],
-	tags: ['2D', 'webgl', 'matrix', 'sketches', 'wing', 'fat-fuzzy'],
+	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
 }
 

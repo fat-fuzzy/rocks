@@ -40,7 +40,7 @@ let meta = {
 	dimensions: 'square',
 	// status: 'draft',
 	categories: ['Projects'],
-	tags: ['2D', 'webgl', 'matrix', 'sketches', 'wing'],
+	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
 	grid: [
 		'xp1',
