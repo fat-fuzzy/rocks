@@ -61,6 +61,8 @@ let meta = {
 		'xp16',
 		'xp17',
 		'xp18',
+		'xp19',
+		'xp20',
 	],
 }
 
@@ -83,6 +85,8 @@ const wings = {
 	xp16: wabiSabi.xp16,
 	xp17: wabiSabi.xp17,
 	xp18: wabiSabi.xp18,
+	xp19: wabiSabi.xp19,
+	xp20: wabiSabi.xp20,
 }
 
 function init(canvas) {
