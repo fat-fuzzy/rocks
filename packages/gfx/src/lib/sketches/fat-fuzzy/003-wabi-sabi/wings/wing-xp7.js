@@ -6,8 +6,9 @@ export default class WingXp7 extends Wing {
 	constructor({
 		name = 'xp7',
 		position,
-		translation = [0.835, 0.555],
-		scale = [0.5175, 0.5175],
+		translation = [0.895, 0.55],
+		scale = [0.575, 0.575],
+		rotation = utils.degToRad(5),
 		direction,
 		step,
 		layers,
@@ -25,6 +26,7 @@ export default class WingXp7 extends Wing {
 			position,
 			translation,
 			scale,
+			rotation,
 			direction,
 			step,
 			layers,
@@ -74,7 +76,7 @@ export default class WingXp7 extends Wing {
 			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
-				featherAngle,
+				featherAngle - angle,
 			)
 
 			// New Wing Coordinates

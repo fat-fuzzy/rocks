@@ -6,8 +6,8 @@ export default class WingXp2 extends Wing {
 	constructor({
 		name = 'xp2',
 		position,
-		translation = [0.775, 0.55],
-		scale = [0.785, 0.785],
+		translation = [0.635, 0.55],
+		scale = [0.575, 0.575],
 		direction,
 		step,
 		layers,
@@ -52,7 +52,7 @@ export default class WingXp2 extends Wing {
 
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = 100
+		let featherMagnitude = this.magnitudes.feathers[this.currentStep].middle
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
@@ -61,6 +61,7 @@ export default class WingXp2 extends Wing {
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
+
 			// Save current coordinate system
 			if (this.currentStep === 0) {
 				featherAngle = utils.degToRad(
@@ -88,6 +89,7 @@ export default class WingXp2 extends Wing {
 
 			featherVectors.push(x, y)
 			featherVectors.push(...insertionOrigin)
+
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
 				featherAngle,

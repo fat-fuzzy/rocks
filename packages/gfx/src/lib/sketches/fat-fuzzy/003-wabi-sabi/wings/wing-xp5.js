@@ -6,8 +6,9 @@ export default class WingXp5 extends Wing {
 	constructor({
 		name = 'xp5',
 		position,
-		translation = [0.635, 0.55],
-		scale = [0.575, 0.575],
+		translation = [0.825, 0.525],
+		scale = [0.985, 0.985],
+		rotation = utils.degToRad(15.75),
 		direction,
 		step,
 		layers,
@@ -25,6 +26,7 @@ export default class WingXp5 extends Wing {
 			position,
 			translation,
 			scale,
+			rotation,
 			direction,
 			step,
 			layers,
@@ -52,7 +54,7 @@ export default class WingXp5 extends Wing {
 
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = this.magnitudes.feathers[this.currentStep].middle
+		let featherMagnitude = 100
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
@@ -80,7 +82,6 @@ export default class WingXp5 extends Wing {
 			}
 
 			featherVectors.push(x, y)
-			// console.log('featherAngle', featherAngle)
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
 				y,
@@ -93,7 +94,7 @@ export default class WingXp5 extends Wing {
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
-				featherAngle,
+				featherAngle + angle,
 			)
 
 			// New Wing Coordinates

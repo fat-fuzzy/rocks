@@ -6,7 +6,7 @@ export default class WingXp11 extends Wing {
 		name = 'xp11',
 		position,
 		translation = [0.7075, 0.575],
-		scale = [0.4375, 0.4375],
+		scale = [0.445, 0.445],
 		direction,
 		step,
 		layers,

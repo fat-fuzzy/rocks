@@ -1,4 +1,3 @@
-import utils from '../../../../math/utils.js'
 import vectors from '../../../../math/vectors'
 import Wing from '../../wing.js'
 
