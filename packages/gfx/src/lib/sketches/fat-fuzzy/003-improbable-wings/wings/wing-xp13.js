@@ -1,4 +1,4 @@
-import vectors from '../../../../math/vectors'
+import vectors from '../../../../math/vectors.js'
 import Wing from '../../wing.js'
 
 export default class WingXp13 extends Wing {

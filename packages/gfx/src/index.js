@@ -30,7 +30,7 @@ import sketch_014 from './lib/sketches/fundamentals/014-texture/index'
 // Fat Fuzzy Projects
 import fat_fuzzy_001 from './lib/sketches/fat-fuzzy/001-wing-base/index'
 // import fat_fuzzy_002 from './lib/sketches/fat-fuzzy/002-wing-feathers/index'
-import fat_fuzzy_003 from './lib/sketches/fat-fuzzy/003-windless-wings/index'
+import fat_fuzzy_003 from './lib/sketches/fat-fuzzy/003-improbable-wings/index'
 
 const learning = [
 	sketch_001,

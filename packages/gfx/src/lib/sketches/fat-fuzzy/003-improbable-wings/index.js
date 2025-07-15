@@ -12,7 +12,7 @@ import {initBuffers} from '../../../webgl/buffers/geometry-2d.js'
 
 import {frag} from './shaders/fragment-shader.js'
 import {vert} from './shaders/vertex-shader-2d.js'
-import windlessWings from './wings/index.js'
+import improbableWings from './wings/index.js'
 
 let gl
 let program
@@ -34,9 +34,10 @@ let Wing
 let meta = {
 	project: 'fat-fuzzy',
 	id: '003',
-	slug: 'windless-wings',
-	title: 'Windless Wings',
+	slug: 'improbable-wings',
+	title: 'Improbable Wings',
 	asset: 'phoenix',
+	dimensions: 'square',
 	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'sketches', 'wing'],
@@ -78,38 +79,38 @@ let meta = {
 }
 
 const wings = {
-	xp1: windlessWings.xp1,
-	xp2: windlessWings.xp2,
-	xp3: windlessWings.xp3,
-	xp4: windlessWings.xp4,
-	xp5: windlessWings.xp5,
-	xp6: windlessWings.xp6,
-	xp7: windlessWings.xp7,
-	xp8: windlessWings.xp8,
-	xp9: windlessWings.xp9,
-	xp10: windlessWings.xp10,
-	xp11: windlessWings.xp11,
-	xp12: windlessWings.xp12,
-	xp13: windlessWings.xp13,
-	xp14: windlessWings.xp14,
-	xp15: windlessWings.xp15,
-	xp16: windlessWings.xp16,
-	xp17: windlessWings.xp17,
-	xp18: windlessWings.xp18,
-	xp19: windlessWings.xp19,
-	xp20: windlessWings.xp20,
-	xp21: windlessWings.xp21,
-	xp22: windlessWings.xp22,
-	xp23: windlessWings.xp23,
-	xp24: windlessWings.xp24,
-	xp25: windlessWings.xp25,
-	xp26: windlessWings.xp26,
-	xp27: windlessWings.xp27,
-	xp28: windlessWings.xp28,
-	xp29: windlessWings.xp29,
-	xp30: windlessWings.xp30,
-	xp31: windlessWings.xp31,
-	xp32: windlessWings.xp32,
+	xp1: improbableWings.xp1,
+	xp2: improbableWings.xp2,
+	xp3: improbableWings.xp3,
+	xp4: improbableWings.xp4,
+	xp5: improbableWings.xp5,
+	xp6: improbableWings.xp6,
+	xp7: improbableWings.xp7,
+	xp8: improbableWings.xp8,
+	xp9: improbableWings.xp9,
+	xp10: improbableWings.xp10,
+	xp11: improbableWings.xp11,
+	xp12: improbableWings.xp12,
+	xp13: improbableWings.xp13,
+	xp14: improbableWings.xp14,
+	xp15: improbableWings.xp15,
+	xp16: improbableWings.xp16,
+	xp17: improbableWings.xp17,
+	xp18: improbableWings.xp18,
+	xp19: improbableWings.xp19,
+	xp20: improbableWings.xp20,
+	xp21: improbableWings.xp21,
+	xp22: improbableWings.xp22,
+	xp23: improbableWings.xp23,
+	xp24: improbableWings.xp24,
+	xp25: improbableWings.xp25,
+	xp26: improbableWings.xp26,
+	xp27: improbableWings.xp27,
+	xp28: improbableWings.xp28,
+	xp29: improbableWings.xp29,
+	xp30: improbableWings.xp30,
+	xp31: improbableWings.xp31,
+	xp32: improbableWings.xp32,
 }
 
 function init(canvas) {

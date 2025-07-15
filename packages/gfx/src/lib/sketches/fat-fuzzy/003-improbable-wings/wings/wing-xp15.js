@@ -1,9 +1,9 @@
-import vectors from '../../../../math/vectors'
+import vectors from '../../../../math/vectors.js'
 import Wing from '../../wing.js'
 
-export default class WingXp16 extends Wing {
+export default class WingXp15 extends Wing {
 	constructor({
-		name = 'xp16',
+		name = 'xp15',
 		position,
 		direction,
 		step,
@@ -52,7 +52,6 @@ export default class WingXp16 extends Wing {
 
 		let distance = magnitude / featherCount
 		let unit = vectors.getUnitVector(x, y, magnitude)
-		featherVectors.push(x, y)
 		// console.log('featherCount', featherCount)
 		// console.log('distance', distance)
 		// console.log('magnitude', magnitude)
@@ -60,6 +59,7 @@ export default class WingXp16 extends Wing {
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
 
+			featherVectors.push(x, y)
 			// console.log('featherAngle', featherAngle)
 			insertionOrigin = vectors.getIntersectionPoint(unit, insertionDistance)
 

@@ -1,5 +1,5 @@
-import utils from '../../../../math/utils'
-import vectors from '../../../../math/vectors'
+import utils from '../../../../math/utils.js'
+import vectors from '../../../../math/vectors.js'
 import Wing from '../../wing.js'
 
 export default class WingXp17 extends Wing {
