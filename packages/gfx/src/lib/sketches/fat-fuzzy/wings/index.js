@@ -1,45 +1,46 @@
-import xp1 from './wing-xp1.js'
-import xp2 from './wing-xp2.js'
-import xp3 from './wing-xp3.js'
-import xp4 from './wing-xp4.js'
-import xp5 from './wing-xp5.js'
-import xp6 from './wing-xp6.js'
-import xp7 from './wing-xp7.js'
-import xp8 from './wing-xp8.js'
-import xp9 from './wing-xp9.js'
-import xp10 from './wing-xp10.js'
-import xp11 from './wing-xp11.js'
-import xp12 from './wing-xp12.js'
-import xp13 from './wing-xp13.js'
-import xp14 from './wing-xp14.js'
-import xp15 from './wing-xp15.js'
-import xp16 from './wing-xp16.js'
-import xp17 from './wing-xp17.js'
-import xp18 from './wing-xp18.js'
-import xp19 from './wing-xp19.js'
-import xp20 from './wing-xp20.js'
+import base1 from './wing-base-01.js'
+import base2 from './wing-base-02.js'
+import base3 from './wing-base-03.js'
+
+import ws01 from './wing-ws01.js'
+import ws02 from './wing-ws02.js'
+import ws03 from './wing-ws03.js'
+import ws04 from './wing-ws04.js'
+import ws05 from './wing-ws05.js'
+import ws06 from './wing-ws06.js'
+import ws07 from './wing-ws07.js'
+import ws08 from './wing-ws08.js'
+import ws09 from './wing-ws09.js'
+import ws10 from './wing-ws10.js'
+import ws11 from './wing-ws11.js'
+import ws12 from './wing-ws12.js'
+import ws13 from './wing-ws13.js'
+import ws14 from './wing-ws14.js'
+import ws15 from './wing-ws15.js'
+import ws16 from './wing-ws16.js'
+import ws17 from './wing-ws17.js'
 
 const wings = {
-	xp1,
-	xp2,
-	xp3,
-	xp4,
-	xp5,
-	xp6,
-	xp7,
-	xp8,
-	xp9,
-	xp10,
-	xp11,
-	xp12,
-	xp13,
-	xp14,
-	xp15,
-	xp16,
-	xp17,
-	xp18,
-	xp19,
-	xp20,
+	base1,
+	base2,
+	base3,
+	ws01,
+	ws02,
+	ws03,
+	ws04,
+	ws05,
+	ws06,
+	ws07,
+	ws08,
+	ws09,
+	ws10,
+	ws11,
+	ws12,
+	ws13,
+	ws14,
+	ws15,
+	ws16,
+	ws17,
 }
 
 export default wings

@@ -41,13 +41,13 @@ let meta = {
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
-	grid: ['xp6', 'xp15', 'xp18'],
+	grid: ['base1', 'base2', 'base3'],
 }
 
 const wings = {
-	xp6: wabiSabi.xp6,
-	xp15: wabiSabi.xp15,
-	xp18: wabiSabi.xp18,
+	base1: wabiSabi.base1,
+	base2: wabiSabi.base2,
+	base3: wabiSabi.base3,
 }
 
 function init(canvas) {
@@ -85,7 +85,7 @@ function loadProgram(canvas) {
 	dom.resize(canvas)
 
 	// Initial Wing
-	Wing = wings.xp6
+	Wing = wings.base1
 
 	currentWing = new Wing({
 		position: [0, 0],

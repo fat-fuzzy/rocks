@@ -2,13 +2,13 @@ import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
-export default class WingXp9 extends Wing {
+export default class WabiSabi05 extends Wing {
 	constructor({
-		name = 'xp9',
+		name = 'ws05',
 		position,
-		translation = [0.95, 0.505],
-		scale = [0.615, 0.615],
-		rotation = utils.degToRad(12),
+		translation = [0.825, 0.525],
+		scale = [0.985, 0.985],
+		rotation = utils.degToRad(15.75),
 		direction,
 		step,
 		layers,
@@ -52,7 +52,7 @@ export default class WingXp9 extends Wing {
 		let [x, y] = origin
 		let featherVectors = []
 
-		let insertionOrigin = origin
+		let insertionOrigin
 		let insertionDistance = 0
 		let featherMagnitude = 100
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
@@ -61,11 +61,27 @@ export default class WingXp9 extends Wing {
 
 		let distance = magnitude / featherCount
 
-		featherVectors.push(...insertionOrigin)
-
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
 
+			// Save current coordinate system
+			if (this.currentStep === 0) {
+				featherAngle = utils.degToRad(
+					this.magnitudes.feathers[this.currentStep].beginning,
+				)
+			}
+			if (this.currentStep === 1) {
+				featherAngle = utils.degToRad(
+					this.magnitudes.feathers[this.currentStep].middle,
+				)
+			}
+			if (this.currentStep === 2) {
+				featherAngle = utils.degToRad(
+					this.magnitudes.feathers[this.currentStep].end,
+				)
+			}
+
+			featherVectors.push(x, y)
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
 				y,
@@ -73,12 +89,12 @@ export default class WingXp9 extends Wing {
 				magnitude,
 			)
 
+			featherVectors.push(x, y)
 			featherVectors.push(...insertionOrigin)
-			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
-				angle,
+				featherAngle + angle,
 			)
 
 			// New Wing Coordinates
@@ -86,7 +102,6 @@ export default class WingXp9 extends Wing {
 			let featherY = insertionOrigin[1] + insertionDest[1]
 
 			featherVectors.push(featherX, featherY)
-			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
 		}
 
 		return featherVectors

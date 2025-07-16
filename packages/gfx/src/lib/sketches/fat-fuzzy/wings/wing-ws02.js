@@ -2,13 +2,12 @@ import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
-export default class WingXp5 extends Wing {
+export default class WabiSabi02 extends Wing {
 	constructor({
-		name = 'xp5',
+		name = 'ws02',
 		position,
-		translation = [0.825, 0.525],
-		scale = [0.985, 0.985],
-		rotation = utils.degToRad(15.75),
+		translation = [0.635, 0.55],
+		scale = [0.575, 0.575],
 		direction,
 		step,
 		layers,
@@ -24,9 +23,8 @@ export default class WingXp5 extends Wing {
 		super({
 			name,
 			position,
-			translation,
 			scale,
-			rotation,
+			translation,
 			direction,
 			step,
 			layers,
@@ -54,7 +52,7 @@ export default class WingXp5 extends Wing {
 
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = 100
+		let featherMagnitude = this.magnitudes.feathers[this.currentStep].middle
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
@@ -94,7 +92,7 @@ export default class WingXp5 extends Wing {
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
-				featherAngle + angle,
+				featherAngle,
 			)
 
 			// New Wing Coordinates

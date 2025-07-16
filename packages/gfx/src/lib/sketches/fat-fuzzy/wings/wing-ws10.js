@@ -1,13 +1,12 @@
-import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
-export default class WingXp16 extends Wing {
+export default class WabiSabi10 extends Wing {
 	constructor({
-		name = 'xp16',
+		name = 'ws10',
 		position,
-		translation = [0.9, 0.625],
-		scale = [0.4025, 0.4025],
+		translation = [0.7075, 0.575],
+		scale = [0.445, 0.445],
 		direction,
 		step,
 		layers,
@@ -50,9 +49,9 @@ export default class WingXp16 extends Wing {
 		let [x, y] = origin
 		let featherVectors = []
 
-		let insertionOrigin
+		let insertionOrigin = origin
 		let insertionDistance = 0
-		// let featherMagnitude = 100
+		let featherMagnitude = this.magnitudes.feathers[this.currentStep].beginning
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
@@ -61,22 +60,6 @@ export default class WingXp16 extends Wing {
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
-
-			if (this.currentStep === 0) {
-				featherAngle = utils.degToRad(
-					this.magnitudes.feathers[this.currentStep].beginning,
-				)
-			}
-			if (this.currentStep === 1) {
-				featherAngle = utils.degToRad(
-					this.magnitudes.feathers[this.currentStep].middle,
-				)
-			}
-			if (this.currentStep === 2) {
-				featherAngle = utils.degToRad(
-					this.magnitudes.feathers[this.currentStep].end,
-				)
-			}
 
 			featherVectors.push(x, y)
 
@@ -88,11 +71,16 @@ export default class WingXp16 extends Wing {
 			)
 
 			featherVectors.push(x, y)
-			featherVectors.push(...insertionOrigin)
+			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
+
+			let insertionDest = vectors.getCoordsFromMagAndAngle(
+				featherMagnitude + step * 10,
+				featherAngle,
+			)
 
 			// New Wing Coordinates
-			let featherX = insertionOrigin[0] * featherAngle
-			let featherY = insertionOrigin[1] * featherAngle
+			let featherX = insertionOrigin[0] + insertionDest[0]
+			let featherY = insertionOrigin[1] + insertionDest[1]
 
 			featherVectors.push(featherX, featherY)
 		}
