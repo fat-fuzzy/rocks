@@ -1,13 +1,13 @@
-import utils from '../../../../math/utils.js'
-import vectors from '../../../../math/vectors.js'
-import Wing from '../../wing.js'
+import utils from '../../../math/utils.js'
+import vectors from '../../../math/vectors.js'
+import Wing from './wing.js'
 
-export default class WingXp19 extends Wing {
+export default class WingXp20 extends Wing {
 	constructor({
-		name = 'xp19',
+		name = 'xp20',
 		position,
-		translation = [0.635, 0.45],
-		scale = [0.825, 0.825],
+		translation = [0.555, 0.5],
+		scale = [0.775, 0.775],
 		rotation = utils.degToRad(46.75),
 		direction,
 		step,
@@ -81,7 +81,7 @@ export default class WingXp19 extends Wing {
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
-				angle + featherAngle,
+				angle * featherAngle,
 			)
 
 			insertionOrigin = vectors.getIntersectionPoint(

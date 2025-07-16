@@ -12,7 +12,7 @@ import {initBuffers} from '../../../webgl/buffers/geometry-2d.js'
 
 import {frag} from './shaders/fragment-shader.js'
 import {vert} from './shaders/vertex-shader-2d.js'
-import wabiSabi from './wings/index.js'
+import wabiSabi from '../wings/index.js'
 
 let gl
 let program
@@ -23,7 +23,7 @@ let error
 let programInfo = {
 	errors: [],
 }
-let bgColor = [0.0298, 0.02089, 0.1233]
+let bgColor = [Math.random(), Math.random(), Math.random()]
 let {WING, BONES, FEATHERS, COLORS} = props
 
 // Initialize the wing here to maintain color across main calls
@@ -48,7 +48,6 @@ let meta = {
 		'xp3',
 		'xp4',
 		'xp5',
-		'xp6',
 		'xp7',
 		'xp8',
 		'xp9',
@@ -57,10 +56,8 @@ let meta = {
 		'xp12',
 		'xp13',
 		'xp14',
-		'xp15',
 		'xp16',
 		'xp17',
-		'xp18',
 		'xp19',
 		'xp20',
 	],
@@ -72,7 +69,6 @@ const wings = {
 	xp3: wabiSabi.xp3,
 	xp4: wabiSabi.xp4,
 	xp5: wabiSabi.xp5,
-	xp6: wabiSabi.xp6,
 	xp7: wabiSabi.xp7,
 	xp8: wabiSabi.xp8,
 	xp9: wabiSabi.xp9,
@@ -81,10 +77,8 @@ const wings = {
 	xp12: wabiSabi.xp12,
 	xp13: wabiSabi.xp13,
 	xp14: wabiSabi.xp14,
-	xp15: wabiSabi.xp15,
 	xp16: wabiSabi.xp16,
 	xp17: wabiSabi.xp17,
-	xp18: wabiSabi.xp18,
 	xp19: wabiSabi.xp19,
 	xp20: wabiSabi.xp20,
 }
@@ -106,6 +100,7 @@ async function main(canvas) {
 	clear()
 	programInfo = await Promise.resolve(loadProgram(canvas))
 	bgColor = programInfo.context.background
+
 	return programInfo.context
 }
 
@@ -123,10 +118,9 @@ function loadProgram(canvas) {
 	dom.resize(canvas)
 
 	// Initial Wing
-	Wing = wings['xp1']
+	Wing = wings.xp1
 
 	currentWing = new Wing({
-		name: 'xp1',
 		position: [0, 0],
 		direction: WING.direction,
 		step: WING.currentStep,
@@ -205,6 +199,9 @@ function update(sceneContext) {
 				canvasWidth: currentWing.width,
 				canvasHeight: currentWing.height,
 			})
+
+			currentWing.init(gl.canvas.width, gl.canvas.height)
+			bgColor = currentWing.colorBg
 		}
 	}
 	currentWing.updateWingState()

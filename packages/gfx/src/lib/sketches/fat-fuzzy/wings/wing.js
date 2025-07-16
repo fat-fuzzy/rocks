@@ -1,5 +1,5 @@
-import utils from '../../math/utils'
-import vectors from '../../math/vectors'
+import utils from '../../../math/utils'
+import vectors from '../../../math/vectors'
 
 export default class Wing {
 	name
@@ -173,6 +173,7 @@ export default class Wing {
 		}
 		this.width = canvasWidth
 		this.height = canvasHeight
+		this.magnitudes.bones = this.scaleToCanvasSize(this.magnitudes.bones)
 	}
 
 	/**
@@ -183,7 +184,6 @@ export default class Wing {
 	init(canvasWidth, canvasHeight) {
 		this.width = canvasWidth
 		this.height = canvasHeight
-		this.magnitudes.bones = this.scaleToCanvasSize(this.magnitudes.bones)
 	}
 
 	/**

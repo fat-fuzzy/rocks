@@ -5,7 +5,6 @@
  ***********************
  */
 import dom from '../../../dom'
-import Wing from './wing-base'
 import props from '../props'
 import setup from '../../../webgl/setup'
 import {drawScene} from './draw-scene'
@@ -13,6 +12,7 @@ import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-2d'
+import wabiSabi from '../wings/index.js'
 
 let gl
 let program
@@ -23,12 +23,13 @@ let programInfo = {
 	errors: [],
 }
 let error
-let bgColor = [0.0298, 0.02089, 0.1233]
+let bgColor = [Math.random(), Math.random(), Math.random()]
 let {WING, BONES, FEATHERS, COLORS} = props
 
 // Initialize the wing here to maintain color across main calls
 // TODO: chose color mode
-let wing
+let currentWing
+let Wing
 
 let meta = {
 	project: 'fat-fuzzy',
@@ -39,7 +40,14 @@ let meta = {
 	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
-	controls: ['speed', 'color', 'loop'],
+	controls: ['speed', 'color', 'grid', 'loop'],
+	grid: ['xp6', 'xp15', 'xp18'],
+}
+
+const wings = {
+	xp6: wabiSabi.xp6,
+	xp15: wabiSabi.xp15,
+	xp18: wabiSabi.xp18,
 }
 
 function init(canvas) {
@@ -73,9 +81,13 @@ function loadProgram(canvas) {
 			gl.useProgram(program)
 		}
 	}
+
 	dom.resize(canvas)
 
-	wing = new Wing({
+	// Initial Wing
+	Wing = wings.xp6
+
+	currentWing = new Wing({
 		position: [0, 0],
 		direction: WING.direction,
 		step: WING.currentStep,
@@ -85,10 +97,12 @@ function loadProgram(canvas) {
 		bones: BONES,
 		feathers: FEATHERS,
 		colors: COLORS,
+		drawFeathers: true,
 		canvasWidth: canvas.width,
 		canvasHeight: canvas.height,
 	})
-	wing.init(gl.canvas.width, gl.canvas.height)
+
+	currentWing.init(gl.canvas.width, gl.canvas.height)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -106,7 +120,7 @@ function loadProgram(canvas) {
 			// bind u_translation
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		context: wing.getGeometryCoords(),
+		context: currentWing.getGeometryCoords(),
 		errors: [],
 	}
 
@@ -125,9 +139,40 @@ function draw() {
 	drawScene(gl, programInfo, buffers)
 }
 
-function update() {
-	wing.updateWingState()
-	programInfo.context = wing.getGeometryCoords()
+function update(sceneContext) {
+	if (sceneContext) {
+		let {grid} = sceneContext
+		if (grid && grid[0] !== currentWing.name) {
+			Wing = wings[grid[0]]
+			if (!Wing) {
+				console.warn(`Wing ${grid[0]} not found`)
+				return
+			}
+
+			clear()
+
+			currentWing = new Wing({
+				name: grid[0],
+				position: [0, 0],
+				direction: WING.direction,
+				step: WING.currentStep,
+				layers: 1,
+				steps: WING.steps,
+				pause: WING.pause,
+				bones: BONES,
+				feathers: FEATHERS,
+				colors: COLORS,
+				drawFeathers: true,
+				canvasWidth: currentWing.width,
+				canvasHeight: currentWing.height,
+			})
+
+			currentWing.init(gl.canvas.width, gl.canvas.height)
+			bgColor = currentWing.colorBg
+		}
+	}
+	currentWing.updateWingState()
+	programInfo.context = currentWing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
 }
 
@@ -152,7 +197,7 @@ function stop() {
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
-	wing = null
+	currentWing = null
 }
 
 export default {init, meta, main, draw, update, clear, stop}

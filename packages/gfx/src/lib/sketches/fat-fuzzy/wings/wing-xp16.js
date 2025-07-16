@@ -1,6 +1,6 @@
-import utils from '../../../../math/utils'
-import vectors from '../../../../math/vectors.js'
-import Wing from '../../wing.js'
+import utils from '../../../math/utils.js'
+import vectors from '../../../math/vectors.js'
+import Wing from './wing.js'
 
 export default class WingXp16 extends Wing {
 	constructor({

@@ -1,5 +1,5 @@
 import vectors from '../../../math/vectors'
-import Wing from '../wing.js'
+import Wing from './wing.js'
 
 class Wing002 extends Wing {
 	constructor({

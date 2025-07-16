@@ -1,12 +1,12 @@
-import vectors from '../../../../math/vectors.js'
-import Wing from '../../wing.js'
+import vectors from '../../../math/vectors.js'
+import Wing from './wing.js'
 
 export default class WingXp13 extends Wing {
 	constructor({
 		name = 'xp13',
 		position,
-		translation = [0.715, 0.575],
-		scale = [0.445, 0.445],
+		translation = [0.955, 0.595],
+		scale = [0.675, 0.675],
 		direction,
 		step,
 		layers,
@@ -69,12 +69,11 @@ export default class WingXp13 extends Wing {
 				magnitude,
 			)
 
-			featherVectors.push(x, y)
 			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + step * 10,
-				featherAngle,
+				featherAngle + insertionOrigin * angle,
 			)
 
 			// New Wing Coordinates
@@ -82,8 +81,8 @@ export default class WingXp13 extends Wing {
 			let featherY = insertionOrigin[1] + insertionDest[1]
 
 			featherVectors.push(featherX, featherY)
-			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
 		}
+
 		return featherVectors
 	}
 }
