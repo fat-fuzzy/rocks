@@ -7,7 +7,7 @@ export default class WabiSabi16 extends Wing {
 		name = 'ws16',
 		position,
 		translation = [0.635, 0.45],
-		scale = [0.825, 0.825],
+		scale = [0.845, 0.845],
 		rotation = utils.degToRad(46.75),
 		direction,
 		step,

@@ -6,8 +6,8 @@ export default class WabiSabi08 extends Wing {
 	constructor({
 		name = 'ws08',
 		position,
-		translation = [0.95, 0.505],
-		scale = [0.615, 0.615],
+		translation = [0.965, 0.505],
+		scale = [0.605, 0.605],
 		rotation = utils.degToRad(12),
 		direction,
 		step,

@@ -6,8 +6,8 @@ export default class WabiSabi14 extends Wing {
 	constructor({
 		name = 'ws14',
 		position,
-		translation = [0.9, 0.625],
-		scale = [0.4025, 0.4025],
+		translation = [0.925, 0.655],
+		scale = [0.4, 0.4],
 		direction,
 		step,
 		layers,

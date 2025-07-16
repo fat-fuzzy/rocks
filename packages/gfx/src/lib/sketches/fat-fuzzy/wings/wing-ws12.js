@@ -6,7 +6,7 @@ export default class WabiSabi12 extends Wing {
 		name = 'ws12',
 		position,
 		translation = [0.955, 0.595],
-		scale = [0.675, 0.675],
+		scale = [0.665, 0.665],
 		direction,
 		step,
 		layers,
