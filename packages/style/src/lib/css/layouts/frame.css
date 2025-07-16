@@ -1,28 +1,37 @@
 [class*='l:frame'] {
+	--max-inline-size: calc(100vw - 2 * var(--ui-size));
 	overflow: hidden;
 	display: flex;
 	justify-content: var(--justify, center);
 	align-items: var(--align, center);
-	max-inline-size: calc(100vw - 2 * var(--ui-size));
+	max-inline-size: var(--max-inline-size);
 }
 
 [class*='l:frame']:has(video, canvas) {
-	max-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap, var(--gap))
+	--max-block-size: calc(
+		100vh - 3 * var(--ui-header-height) - 2 * var(--grid-gap, var(--gap))
 	);
+	max-block-size: var(--max-inline-size);
 }
 
-[class*='l:frame'] > img,
-[class*='l:frame'] > video,
-[class*='l:frame'] > canvas,
-[class*='l:frame'] > .content {
+[class*='l:frame'] > *:is(img, video, canvas, .content) {
 	inline-size: 100%;
 	block-size: 100%;
 	object-fit: cover;
 }
 
 .l\:frame\:square {
+	--max-inline-size: calc(
+		100vh - 3 * var(--ui-header-height) - 2 * var(--grid-gap, var(--gap))
+	);
 	aspect-ratio: 1 / 1;
+}
+
+.l\:frame\:rect-xs {
+	--max-inline-size: calc(
+		115vh - 3 * var(--ui-header-height) - 2 * var(--grid-gap, var(--gap))
+	);
+	aspect-ratio: 1.15/ 1;
 }
 
 .l\:frame\:video {

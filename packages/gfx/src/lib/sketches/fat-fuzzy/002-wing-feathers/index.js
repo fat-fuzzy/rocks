@@ -5,6 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
+import Wing from './wing-002.js'
 import props from '../props'
 import setup from '../../../webgl/setup'
 import {drawScene} from './draw-scene'
@@ -12,42 +13,33 @@ import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-2d'
-import wabiSabi from '../wings/index.js'
 
 let gl
 let program
 let buffers
 let vertexShader
 let fragmentShader
+let error
 let programInfo = {
 	errors: [],
 }
-let error
-let bgColor = [Math.random(), Math.random(), Math.random()]
+let bgColor = [0.0298, 0.02089, 0.1233]
 let {WING, BONES, FEATHERS, COLORS} = props
 
 // Initialize the wing here to maintain color across main calls
 // TODO: chose color mode
-let currentWing
-let Wing
+let wing
 
 let meta = {
 	project: 'fat-fuzzy',
-	id: '001',
-	slug: 'wing-base',
-	title: 'Wing Base',
-	asset: 'wing',
+	id: '002',
+	slug: 'wing-feathers',
+	title: 'Wing Feathers',
+	asset: 'feather',
 	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
-	grid: ['base1', 'base2', 'base3'],
-}
-
-const wings = {
-	base1: wabiSabi.base1,
-	base2: wabiSabi.base2,
-	base3: wabiSabi.base3,
 }
 
 function init(canvas) {
@@ -67,7 +59,6 @@ async function main(canvas) {
 	clear()
 	programInfo = await Promise.resolve(loadProgram(canvas))
 	bgColor = programInfo.context.background
-
 	return programInfo.context
 }
 
@@ -81,13 +72,10 @@ function loadProgram(canvas) {
 			gl.useProgram(program)
 		}
 	}
-
 	dom.resize(canvas)
 
-	// Initial Wing
-	Wing = wings.base1
-
-	currentWing = new Wing({
+	wing = new Wing({
+		name: 'wing-002',
 		position: [0, 0],
 		direction: WING.direction,
 		step: WING.currentStep,
@@ -102,7 +90,7 @@ function loadProgram(canvas) {
 		canvasHeight: canvas.height,
 	})
 
-	currentWing.init(gl.canvas.width, gl.canvas.height)
+	wing.init(canvas.width, canvas.height)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -120,7 +108,7 @@ function loadProgram(canvas) {
 			// bind u_translation
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		context: currentWing.getGeometryCoords(),
+		context: wing.getGeometryCoords(),
 		errors: [],
 	}
 
@@ -139,40 +127,9 @@ function draw() {
 	drawScene(gl, programInfo, buffers)
 }
 
-function update(sceneContext) {
-	if (sceneContext) {
-		let {grid} = sceneContext
-		if (grid && grid[0] !== currentWing.name) {
-			Wing = wings[grid[0]]
-			if (!Wing) {
-				console.warn(`Wing ${grid[0]} not found`)
-				return
-			}
-
-			clear()
-
-			currentWing = new Wing({
-				name: grid[0],
-				position: [0, 0],
-				direction: WING.direction,
-				step: WING.currentStep,
-				layers: 1,
-				steps: WING.steps,
-				pause: WING.pause,
-				bones: BONES,
-				feathers: FEATHERS,
-				colors: COLORS,
-				drawFeathers: true,
-				canvasWidth: currentWing.width,
-				canvasHeight: currentWing.height,
-			})
-
-			currentWing.init(gl.canvas.width, gl.canvas.height)
-			bgColor = currentWing.colorBg
-		}
-	}
-	currentWing.updateWingState()
-	programInfo.context = currentWing.getGeometryCoords()
+function update() {
+	wing.updateWingState()
+	programInfo.context = wing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
 }
 
@@ -197,7 +154,6 @@ function stop() {
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
-	currentWing = null
 }
 
 export default {init, meta, main, draw, update, clear, stop}

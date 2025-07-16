@@ -4,14 +4,14 @@
  * DRAW FUNCTIONS
  ***********************
  */
-import dom from '../../../dom'
-import props from '../props'
-import setup from '../../../webgl/setup'
-import {drawScene} from './draw-scene'
-import {initBuffers} from '../../../webgl/buffers/geometry-2d'
+import dom from '../../../dom.js'
+import props from '../props.js'
+import setup from '../../../webgl/setup.js'
+import {drawScene} from './draw-scene.js'
+import {initBuffers} from '../../../webgl/buffers/geometry-2d.js'
 
-import {frag} from './shaders/fragment-shader'
-import {vert} from './shaders/vertex-shader-2d'
+import {frag} from './shaders/fragment-shader.js'
+import {vert} from './shaders/vertex-shader-2d.js'
 import wabiSabi from '../wings/index.js'
 
 let gl
@@ -19,10 +19,10 @@ let program
 let buffers
 let vertexShader
 let fragmentShader
+let error
 let programInfo = {
 	errors: [],
 }
-let error
 let bgColor = [Math.random(), Math.random(), Math.random()]
 let {WING, BONES, FEATHERS, COLORS} = props
 
@@ -33,21 +33,54 @@ let Wing
 
 let meta = {
 	project: 'fat-fuzzy',
-	id: '001',
-	slug: 'wing-base',
-	title: 'Wing Base',
-	asset: 'wing',
+	id: '003',
+	slug: 'wabi-sabi',
+	title: 'Wabi-Sabi',
+	asset: 'phoenix',
+	dimensions: 'rect-xs',
 	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
-	grid: ['base1', 'base2', 'base3'],
+	grid: [
+		'ws01',
+		'ws02',
+		'ws03',
+		'ws04',
+		'ws05',
+		'ws06',
+		'ws07',
+		'ws08',
+		'ws09',
+		'ws10',
+		'ws11',
+		'ws12',
+		'ws13',
+		'ws14',
+		'ws15',
+		'ws16',
+		'ws17',
+	],
 }
 
 const wings = {
-	base1: wabiSabi.base1,
-	base2: wabiSabi.base2,
-	base3: wabiSabi.base3,
+	ws01: wabiSabi.ws01,
+	ws02: wabiSabi.ws02,
+	ws03: wabiSabi.ws03,
+	ws04: wabiSabi.ws04,
+	ws05: wabiSabi.ws05,
+	ws06: wabiSabi.ws06,
+	ws07: wabiSabi.ws07,
+	ws08: wabiSabi.ws08,
+	ws09: wabiSabi.ws09,
+	ws10: wabiSabi.ws10,
+	ws11: wabiSabi.ws11,
+	ws12: wabiSabi.ws12,
+	ws13: wabiSabi.ws13,
+	ws14: wabiSabi.ws14,
+	ws15: wabiSabi.ws15,
+	ws16: wabiSabi.ws16,
+	ws17: wabiSabi.ws17,
 }
 
 function init(canvas) {
@@ -85,7 +118,7 @@ function loadProgram(canvas) {
 	dom.resize(canvas)
 
 	// Initial Wing
-	Wing = wings.base1
+	Wing = wings.ws01
 
 	currentWing = new Wing({
 		position: [0, 0],
@@ -102,7 +135,7 @@ function loadProgram(canvas) {
 		canvasHeight: canvas.height,
 	})
 
-	currentWing.init(gl.canvas.width, gl.canvas.height)
+	currentWing.init(canvas.width, canvas.height)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -197,7 +230,6 @@ function stop() {
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
-	currentWing = null
 }
 
 export default {init, meta, main, draw, update, clear, stop}

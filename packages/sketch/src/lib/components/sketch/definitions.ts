@@ -23,6 +23,8 @@ import {
 
 import {PLAYER_TRANSITIONS} from '$lib/components/player/definitions.js'
 
+export const DEFAULT_GRID = ['001']
+
 export const DEFAULT_FILTERS: Filters = {
 	channels: ['rgba'],
 	blur: [0],
