@@ -75,4 +75,5 @@ export type SketchProps = {
 		reveal: string
 		title?: string
 	}
+	children?: Snippet
 }

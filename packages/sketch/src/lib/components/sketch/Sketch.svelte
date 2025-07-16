@@ -39,6 +39,7 @@
 		dev,
 		mainFooter,
 		context,
+		children,
 	}: SketchProps = $props()
 
 	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
@@ -270,26 +271,32 @@
 				{/each}
 			</div>
 		{/if}
-		<div class={`${frameClasses} color:primary`}>
-			<canvas
-				id={`${id}.canvas`}
-				data-testid="canvas"
-				bind:this={canvas}
-				inert={actor.getSketchDisabled()}
-			>
-				<p class={`feedback emoji:default ${size} content`}>
-					The canvas element needs JavaScript enabled to display and interact
-					with animations
-				</p>
-			</canvas>
-			{#if actor.feedback.canvas.length}
-				<div class="feedback">
-					{#each actor.feedback.canvas as feedback, i (i)}
-						<Feedback status={feedback.status} context="code" {size}>
-							{feedback.message}
-						</Feedback>
-					{/each}
-				</div>
+		<div class="l:stack:2xl">
+			<div class={`${frameClasses} color:primary`}>
+				<canvas
+					id={`${id}.canvas`}
+					data-testid="canvas"
+					bind:this={canvas}
+					inert={actor.getSketchDisabled()}
+				>
+					<p class={`feedback emoji:default ${size} content`}>
+						The canvas element needs JavaScript enabled to display and interact
+						with animations
+					</p>
+				</canvas>
+				{#if actor.feedback.canvas.length}
+					<div class="feedback">
+						{#each actor.feedback.canvas as feedback, i (i)}
+							<Feedback status={feedback.status} context="code" {size}>
+								{feedback.message}
+							</Feedback>
+						{/each}
+					</div>
+				{/if}
+			</div>
+
+			{#if children}
+				{@render children()}
 			{/if}
 		</div>
 	{/snippet}
