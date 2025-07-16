@@ -27,6 +27,7 @@ This renewed my enthusiasm with this website's coding thanks to a belated HTML s
 ## Wabi-Sabi
 
 Next, I needed to tackle a pressing issue: my creative coding had stalled!
+
 For context, I have a long running project that involves learning WebGL and coding Wings . If you look at the creature in [the home page](https://rocks.pages.dev/), you'll get an inkling of what motivates this. My first goal is to translate a [messily coded P5js sketch](https://editor.p5js.org/patiboh/sketches/5Tcl5y7w2) into a WebGL sketch that I can understand and manipulate, while learning a thing or two in the process.
 
 I'd managed to get the [wing's bone structure going](https://rocks.pages.dev/play/projects/wing-base).
@@ -35,6 +36,6 @@ However, translating the position of the feathers was giving me un-anatomical wi
 
 And yet, their brokenness was oddly satisfying: in my head I was somehow flying.
 
-So, after my HTML fixing, I decided to give these wings some loving (read: translation, rotation, and scale), and have published the [Wabi-Sabi](https://rocks.pages.dev/play/projects/wabi-sabi) collection! ❤️‍🩹
+So, after my HTML, I decided to give these wings some loving too (read: translation, rotation, and scale), and have published the [Wabi-Sabi](https://rocks.pages.dev/play/projects/wabi-sabi) collection! ❤️‍🩹
 
 Enjoy!
