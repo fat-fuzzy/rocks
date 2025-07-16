@@ -27,14 +27,12 @@
 	align-items: center;
 	justify-content: var(--justify, center);
 	/* Hide the canvas without changing its dimensions */
-	max-inline-size: var(--max-inline-size, 100%);
+	max-inline-size: 100%;
 	overflow-x: hidden;
 }
 
 [class*='idle'] canvas {
-	margin-right: calc(
-		-100% - var(--ui-size-sm)
-	); /* Hide the canvas without changing its dimensions */
+	margin-right: -100%; /* Hide the canvas without changing its dimensions */
 }
 
 .player li button {
