@@ -102,6 +102,10 @@
 	--ink-focus: oklch(
 		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
 	);
+	--accent: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
 	color: var(--ink-focus);
 	background-color: var(--shade-focus);
+	outline-color: var(--color-border, var(--accent));
 }
