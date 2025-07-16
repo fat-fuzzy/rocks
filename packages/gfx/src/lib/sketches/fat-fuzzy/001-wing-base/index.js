@@ -163,8 +163,8 @@ function update(sceneContext) {
 				feathers: FEATHERS,
 				colors: COLORS,
 				drawFeathers: true,
-				canvasWidth: currentWing.width,
-				canvasHeight: currentWing.height,
+				canvasWidth: gl.canvas.width,
+				canvasHeight: gl.canvas.height,
 			})
 
 			currentWing.init(gl.canvas.width, gl.canvas.height)
