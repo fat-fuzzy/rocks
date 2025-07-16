@@ -70,7 +70,7 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 
 .scroll\:item .media {
 	block-size: 100%;
-	max-inline-size: 100%;
+	max-inline-size: var(--max-inline-size, var(--text-inline-size, 100%));
 	margin-block: var(--size-base-2xl);
 }
 

@@ -158,7 +158,6 @@ function loadProgram(canvas) {
 	}
 
 	clear()
-
 	buffers = initBuffers(gl, _programInfo)
 	error = gl.getError()
 	if (error !== gl.NO_ERROR) {
@@ -196,14 +195,15 @@ function update(sceneContext) {
 				feathers: FEATHERS,
 				colors: COLORS,
 				drawFeathers: true,
-				canvasWidth: currentWing.width,
-				canvasHeight: currentWing.height,
+				canvasWidth: gl.canvas.width,
+				canvasHeight: gl.canvas.height,
 			})
 
 			currentWing.init(gl.canvas.width, gl.canvas.height)
 			bgColor = currentWing.colorBg
 		}
 	}
+
 	currentWing.updateWingState()
 	programInfo.context = currentWing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
