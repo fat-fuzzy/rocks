@@ -31,20 +31,9 @@
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="md" />
-		<div class="l:text:md">
-			<ul class="unstyled">
-				{#each sketches as { slug, asset, title }}
-					<li class={`ravioli:3xs ${asset}`}>
-						<a class="font:md" href={`${path}/${slug}`}>
-							{title}
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</div>
 	{/snippet}
 	{#snippet aside()}
-		{#if sketches.length > 5 && tags.size > 0}
+		{#if tags.size > 0}
 			<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
 				Tags
 			</p>

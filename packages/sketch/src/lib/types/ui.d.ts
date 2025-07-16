@@ -25,6 +25,7 @@ export type SceneContext = {
 	texture?: TextureContext
 	camera?: CameraContext
 	animationSpeed?: number
+	grid?: string[]
 }
 
 export type ProgramInfo = {
@@ -42,6 +43,7 @@ export type SceneMeta = {
 	camera?: number
 	filename?: string
 	filters?: Filters
+	grid?: string[]
 	draft?: boolean
 }
 

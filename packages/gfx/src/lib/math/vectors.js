@@ -1,4 +1,3 @@
-import utils from './utils'
 const VECTOR = {
 	cross: function (a, b) {
 		/* prettier-ignore */
@@ -50,6 +49,7 @@ function getIntersectionPoint(x, y, distance, magnitude) {
 
 export default {
 	VECTOR,
+	getUnitVector,
 	getMagnitudeFromCoords,
 	getCoordsFromMagAndAngle,
 	getIntersectionPoint,
