@@ -36,12 +36,13 @@ The `Playground`  component assumes that the UI library exports components group
 - `blocks`
 - `layouts`
 - `recipes`
+- `raw`
 
 You can see how this is done for the UI library package: [exports from @fat-fuzzy/ui](https://github.com/fat-fuzzy/rocks/blob/main/packages/ui/src/lib/index.ts)
 
 ### Building the pages
 
-Build the routing structure using this example: [UI route for @fat-fuzzy/doc](https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/routes/ui)
+Build the routing structure using this example: [UI route for @fat-fuzzy/doc](https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/routes/(rails)/ui)
 
 ### Providing content
 
