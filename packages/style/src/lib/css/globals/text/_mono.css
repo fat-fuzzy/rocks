@@ -1,7 +1,7 @@
 /**
 * Monospace font
 */
-@font-face {
+/* @font-face {
 	font-family: 'Anonymous Pro';
 	src:
 		url('/fonts/woff/Anonymous_Pro/AnonymousPro-BoldItalic.woff2')
@@ -10,9 +10,9 @@
 	font-weight: bold;
 	font-style: italic;
 	font-display: swap;
-}
+} */
 
-@font-face {
+/* @font-face {
 	font-family: 'Anonymous Pro';
 	src:
 		url('/fonts/woff/Anonymous_Pro/AnonymousPro-Italic.woff2') format('woff2'),
@@ -20,14 +20,14 @@
 	font-weight: normal;
 	font-style: italic;
 	font-display: swap;
-}
+} */
 
 @font-face {
 	font-family: 'Anonymous Pro';
 	src:
 		url('/fonts/woff/Anonymous_Pro/AnonymousPro-Bold.woff2') format('woff2'),
 		url('/fonts/woff/Anonymous_Pro/AnonymousPro-Bold.woff') format('woff');
-	font-weight: bold;
+	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
 }

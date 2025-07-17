@@ -4,7 +4,20 @@
 	import {page} from '$app/state'
 	import playbookActor from '$lib/api/actor.svelte'
 	import StylesApi from '$lib/api/styles.svelte'
-	import type {ViewingPreferences} from '../../../../ui/dist/types' // TODO: fix this import
+	// import type {ViewingPreferences} from '../../../../ui/dist/types' // TODO: fix this import
+
+	type CookiePreferences = {
+		functional?: boolean
+		analytics?: boolean
+		thirdParty?: boolean
+	}
+
+	type ViewingPreferences = {
+		reveal: string
+		brightness?: string
+		contrast?: string
+		consent: CookiePreferences
+	}
 
 	type Props = {
 		app: ViewingPreferences
@@ -25,11 +38,11 @@
 			playbookContext.applyStyles(styles)
 		}
 
-		$inspect(styles)
-		$inspect(playbookActor.styles)
+		// $inspect(styles)
+		// $inspect(playbookActor.styles)
 	})
 	onMount(() => {
-		$inspect(styles)
+		// $inspect(styles)
 		// This need to be updated every time the user interacts the Style API controls, which are submitted via a form action
 		if (styles) {
 			playbookContext.applyStyles(styles)
