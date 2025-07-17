@@ -15,14 +15,16 @@
 						"Apple Color Emoji",
 						"Segoe UI Emoji"
 					]
+				},
+				"mono": {
+					"$value": [
+						"Courier New",
+						"Courier",
+						"monospace"
+					]
 				}
 			},
 			"vendor": {
-				"serif": {
-					"$value": [
-						"Trirong"
-					]
-				},
 				"sans": {
 					"$value": [
 						"Montserrat"
@@ -37,14 +39,6 @@
 					"$value": [
 						"Anonymous Pro"
 					]
-				}
-			},
-			"serif": {
-				"base": {
-					"$value": "{font.family.vendor.serif}"
-				},
-				"fallback": {
-					"$value": "{font.family.system.sans}"
 				}
 			},
 			"sans": {
@@ -84,7 +78,7 @@
 					"$value": "{font.family.vendor.mono}"
 				},
 				"fallback": {
-					"$value": "{font.family.system.sans}"
+					"$value": "{font.family.system.mono}"
 				}
 			}
 		},
