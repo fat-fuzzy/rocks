@@ -23,7 +23,7 @@ TODO
 
 1. The wing has bones:
    - a scapula bone that moves the wing to and from the body
-   - a humerus bone that moves the wing up and down
+   - a humerus bone that moves the wing up and down`
    - a radius+ulna bone structure that moves the mid wing in and out
    - a metacarpal 'finger' bone that moves the wing tip in and out
    - a metacarpal 'thumb' bone that moves the wing tip in and out
@@ -49,17 +49,12 @@ TODO
 
 **1 Cycle** > **2 Sequences** > **5 Movements: [pause, beginning, middle, end, pause]** >  **100 - 1000 [middle steps], (100 - 1000) / 3 [end steps], 7 [pause steps]**
 
-1. **Cycle**
-   - the wing moves in a cycle of two sequences of movements:
-     - opening sequence
-     - closing sequence
-1. **Sequence**
-   - each sequence has the following movements:
-   | 1     | 2         | 3      | 4   | (five)  |
-   | ----- | --------- | -------|---- |-------- |
-   | pause | beginning | middle | end | (pause) |
-1. **Movement**
-   - each movement has a series of steps which can be variable in length
+1. Cycle
+   - the wing moves in a cycle of two sequences of movements: opening and closing
+1. Sequence
+   - each sequence has four (five) movements: pause, beginning, middle, end, (pause)
+1. Movement
+   - each movement has a sequence of steps which can be variable in length
    - the number of steps of a movement determines its speed and smoothness
    - the first movement (and last, TODO) is followed by a pause movement (= no translation)
 

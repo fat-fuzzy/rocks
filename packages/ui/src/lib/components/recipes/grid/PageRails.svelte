@@ -31,8 +31,7 @@
 	const zoneMainClasses: {[key: string]: string} = {
 		metro: 'l:grid size:3xs scroll:y align:start bg:inherit',
 		railway: 'l:grid size:3xs scroll:y align:start bg:inherit',
-		steam:
-			'l:grid size:3xs scroll:y align:start justify:center align:start bg:inherit',
+		steam: 'l:grid size:3xs scroll:y align:start align:start bg:inherit',
 		tgv: 'snap:center align:start scroll:container bg:inherit',
 		tram: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit',
 		voyager: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit ',

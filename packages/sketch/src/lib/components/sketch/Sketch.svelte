@@ -16,11 +16,12 @@
 	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
 	import Player from '$lib/components/player/Player.svelte'
 	import TextureControls from '$lib/components/menus/TextureControls.svelte'
+	import GridControls from '$lib/components/menus/GridControls.svelte'
 	import CameraControls from '$lib/components/menus/CameraControls.svelte'
 	import GeometryControls from '$lib/components/menus/GeometryControls.svelte'
 	import Debug from '$lib/components/debug/Debug.svelte'
 
-	import {DEFAULT_FILTERS} from './definitions.js'
+	import {DEFAULT_FILTERS, DEFAULT_GRID} from './definitions.js'
 	import actor from './actor.svelte'
 
 	const {Feedback} = ui.blocks
@@ -38,6 +39,7 @@
 		dev,
 		mainFooter,
 		context,
+		children,
 	}: SketchProps = $props()
 
 	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
@@ -214,6 +216,17 @@
 		}
 	}
 
+	function updateGrid(grid: string[]) {
+		try {
+			sceneContext.grid = grid
+			scene.update(sceneContext)
+			actor.update(ControlsEvent.update)
+		} catch (e: unknown) {
+			actor.feedback.canvas.push({status: 'error', message: e as string})
+			actor.update(CanvasEvent.error)
+		}
+	}
+
 	onMount(async () => {
 		try {
 			await init()
@@ -258,26 +271,32 @@
 				{/each}
 			</div>
 		{/if}
-		<div class={`${frameClasses} color:primary`}>
-			<canvas
-				id={`${id}.canvas`}
-				data-testid="canvas"
-				bind:this={canvas}
-				inert={actor.getSketchDisabled()}
-			>
-				<p class={`feedback emoji:default ${size} content`}>
-					The canvas element needs JavaScript enabled to display and interact
-					with animations
-				</p>
-			</canvas>
-			{#if actor.feedback.canvas.length}
-				<div class="feedback">
-					{#each actor.feedback.canvas as feedback, i (i)}
-						<Feedback status={feedback.status} context="code" {size}>
-							{feedback.message}
-						</Feedback>
-					{/each}
-				</div>
+		<div class="l:stack:2xl">
+			<div class={`${frameClasses} color:primary`}>
+				<canvas
+					id={`${id}.canvas`}
+					data-testid="canvas"
+					bind:this={canvas}
+					inert={actor.getSketchDisabled()}
+				>
+					<p class={`feedback emoji:default ${size} content`}>
+						The canvas element needs JavaScript enabled to display and interact
+						with animations
+					</p>
+				</canvas>
+				{#if actor.feedback.canvas.length}
+					<div class="feedback">
+						{#each actor.feedback.canvas as feedback, i (i)}
+							<Feedback status={feedback.status} context="code" {size}>
+								{feedback.message}
+							</Feedback>
+						{/each}
+					</div>
+				{/if}
+			</div>
+
+			{#if children}
+				{@render children()}
 			{/if}
 		</div>
 	{/snippet}
@@ -331,6 +350,16 @@
 										id={`${id}-texture-controls`}
 										filters={meta.filters ?? DEFAULT_FILTERS}
 										onupdate={updateTexture}
+									/>
+								{/key}
+							{/if}
+
+							{#if meta.controls.includes('grid')}
+								{#key resetEvent}
+									<GridControls
+										id={`${id}-grid-controls`}
+										gridItems={meta.grid ?? DEFAULT_GRID}
+										onupdate={updateGrid}
 									/>
 								{/key}
 							{/if}

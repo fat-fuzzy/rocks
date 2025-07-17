@@ -59,7 +59,11 @@
 						</span>
 					{/if}
 				</a>
-				<Picture {...item.image} />
+				<div class="l:flex justify:center">
+					<div class="l:text:2xl">
+						<Picture {...item.image} />
+					</div>
+				</div>
 			</div>
 		{:else}
 			<a href={item.link} class={`h${level + 2}`}>
@@ -78,8 +82,10 @@
 			</svelte:element>
 		</div>
 		{#if item.image}
-			<div class="media l:stack:2xl">
-				<Picture {...item.image} />
+			<div class="media l:flex justify:center">
+				<div class="l:text:2xl">
+					<Picture {...item.image} />
+				</div>
 			</div>
 		{/if}
 	{/if}
