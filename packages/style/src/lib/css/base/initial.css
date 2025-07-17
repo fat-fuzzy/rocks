@@ -101,7 +101,7 @@
 			var(--font-family-subheading-base), var(--font-family-subheading-fallback);
 		--font-family-mono:
 			var(--font-family-mono-base), var(--font-family-mono-fallback);
-		--font-family-ui: var(--font-family-ui-base);
+		--font-family-ui: var(--font-family-body);
 
 		--ui-size: var(--scale-base-00);
 		--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
