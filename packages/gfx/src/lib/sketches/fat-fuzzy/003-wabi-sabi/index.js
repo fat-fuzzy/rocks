@@ -198,13 +198,12 @@ function update(sceneContext) {
 				canvasWidth: gl.canvas.width,
 				canvasHeight: gl.canvas.height,
 			})
-
-			currentWing.init(gl.canvas.width, gl.canvas.height)
-			bgColor = currentWing.colorBg
 		}
 	}
 
+	currentWing.init(gl.canvas.width, gl.canvas.height)
 	currentWing.updateWingState()
+	bgColor = currentWing.colorBg
 	programInfo.context = currentWing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
 }
