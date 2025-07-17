@@ -79,7 +79,6 @@ import shader from '/some/shader.glsl?raw'
 - [Learn WebGL](https://learnwebgl.brown37.net/index.html)
 - [Raw WebGL - a talk by Nick Desaulniers](https://www.youtube.com/watch?v=H4c8t6myAWU)
 - [Introduction to computer graphics](https://math.hws.edu/graphicsbook/index.html)
-- [Introduction to WebGL](https://dev.opera.com/articles/introduction-to-webgl-part-1/)
 
 ## Notes from WebGL courses
 
