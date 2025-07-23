@@ -118,13 +118,16 @@
 				"$value": "{font.weight.500}"
 			},
 			"semibold": {
-				"$value": "{font.weight.700}"
+				"$value": "{font.weight.600}"
 			},
 			"bold": {
+				"$value": "{font.weight.700}"
+			},
+			"extrabold": {
 				"$value": "{font.weight.800}"
 			},
 			"h1": {
-				"$value": "{font.weight.bold}"
+				"$value": "{font.weight.extrabold}"
 			},
 			"h2": {
 				"$value": "{font.weight.semibold}"

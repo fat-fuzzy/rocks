@@ -147,9 +147,10 @@
   --font-weight-700: 700;
   --font-weight-800: 800;
   --font-weight-body: var(--font-weight-regular);
-  --font-weight-bold: var(--font-weight-800);
+  --font-weight-bold: var(--font-weight-700);
   --font-weight-code: var(--font-weight-regular);
-  --font-weight-h1: var(--font-weight-bold);
+  --font-weight-extrabold: var(--font-weight-800);
+  --font-weight-h1: var(--font-weight-extrabold);
   --font-weight-h2: var(--font-weight-semibold);
   --font-weight-h3: var(--font-weight-semibold);
   --font-weight-h4: var(--font-weight-semibold);
@@ -158,7 +159,7 @@
   --font-weight-link: var(--font-weight-regular);
   --font-weight-medium: var(--font-weight-500);
   --font-weight-regular: var(--font-weight-400);
-  --font-weight-semibold: var(--font-weight-700);
+  --font-weight-semibold: var(--font-weight-600);
   --font-weight-ui: var(--font-weight-medium);
   --icon-emoji-2xl: var(--scale-base-30);
   --icon-emoji-2xs: var(--scale-base-03);
