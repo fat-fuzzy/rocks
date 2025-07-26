@@ -181,7 +181,7 @@
 									name="functional"
 									type="checkbox"
 									label="Site Functionality"
-									hint="These cookies allow me to save your preferences on the site (including your cookie preferences). No personal data stored in these cookies."
+									hint="These cookies allow me to save your preferences on the site (including your cookie preferences). No personal data is stored in these cookies."
 									color="primary"
 									asset="none"
 									size="sm"
@@ -206,7 +206,7 @@
 									onfocus={handleFocus}
 									onblur={handleBlur}
 									oninput={handleInput}
-									checked={!updated ? true : updated.legitimateInterest}
+									checked={updated.legitimateInterest}
 									{validator}
 								/>
 							</InputGroup>

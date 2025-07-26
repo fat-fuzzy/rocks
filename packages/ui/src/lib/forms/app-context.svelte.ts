@@ -26,6 +26,7 @@ class AppContext {
 	 */
 	update(data: FormData) {
 		let updated = false
+
 		if (data.has('brightness')) {
 			let brightness = String(data.get('brightness'))
 			// This sets the inital brightness value and enables the sync of JS toggles
@@ -38,6 +39,7 @@ class AppContext {
 			}
 			updated = true
 		}
+
 		if (data.has('contrast')) {
 			let contrast = String(data.get('contrast'))
 			// This sets the inital contrast value and enables the sync of JS toggles
@@ -51,14 +53,10 @@ class AppContext {
 			updated = true
 		}
 
-		if (data.has('consent-submit') || data.has('consent-reset')) {
-			if (data.has('legitimateInterest')) {
-				let legitimateInterest = data.get('legitimateInterest')
-				this.state.consent.legitimateInterest =
-					legitimateInterest?.toString() === 'on'
-			} else {
-				this.state.consent.legitimateInterest = true
-			}
+		if (data.has('consent-submit')) {
+			let legitimateInterest = data.get('legitimateInterest')
+			this.state.consent.legitimateInterest =
+				legitimateInterest?.toString() === 'on'
 			updated = true
 		}
 
