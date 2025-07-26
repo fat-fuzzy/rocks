@@ -206,7 +206,7 @@
 									onfocus={handleFocus}
 									onblur={handleBlur}
 									oninput={handleInput}
-									checked={updated?.legitimateInterest}
+									checked={!updated ? true : updated?.legitimateInterest}
 									{validator}
 								/>
 							</InputGroup>

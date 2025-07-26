@@ -44,7 +44,11 @@
 {/if}
 
 {#if !appContext.consent}
-	<Cookies consent={appContext.consent} font="lg" />
+	<Cookies
+		consent={appContext.consent}
+		actionPath={appContext.actionPath}
+		font="lg"
+	/>
 {/if}
 
 <ToastGroup />
