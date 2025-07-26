@@ -197,7 +197,7 @@
 									name="legitimateInterest"
 									type="checkbox"
 									label="Legitimate Interest"
-									hint="This helps me improve this site using privacy friendly statistics provided by GoatCounter (https://goatcounter.com). You may turn this off, but it would be helpful for my work here if you don't!"
+									hint="Help me improve this site using privacy friendly statistics provided by GoatCounter (goatcounter.com). You may turn this off if you want to, but it would be helpful for my work here if you don't!"
 									color="primary"
 									asset="none"
 									variant="bare"
