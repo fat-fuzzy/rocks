@@ -39,7 +39,6 @@
 		'CookiePreferencesValidationFunction',
 	)
 
-	let updated = $derived(consent)
 	let cookiesPartial = $derived(
 		consent && consent.functional && !consent.legitimateInterest,
 	)
@@ -197,7 +196,7 @@
 									name="legitimateInterest"
 									type="checkbox"
 									label="Legitimate Interest"
-									hint="Help me improve this site using privacy friendly statistics provided by GoatCounter (goatcounter.com). You are free to turn these off if you want to but I would be helpful for my work here if you don't!"
+									hint="This helps me improve this site using privacy friendly statistics provided by goatcounter.com. You are free to turn these off if you wish to do so, but it would be helpful for my work here if you leave them on!"
 									color="primary"
 									asset="none"
 									variant="bare"
@@ -206,7 +205,7 @@
 									onfocus={handleFocus}
 									onblur={handleBlur}
 									oninput={handleInput}
-									checked={updated?.legitimateInterest ?? true}
+									checked={consent?.legitimateInterest ?? true}
 									{validator}
 								/>
 							</InputGroup>
