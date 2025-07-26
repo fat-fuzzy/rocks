@@ -227,7 +227,7 @@ const schemaCookiePreferences = {
 	type: 'object',
 	properties: {
 		functional: {$ref: '#/definitions/checkbox'},
-		analytics: {$ref: '#/definitions/checkbox'},
+		legitimateInterest: {$ref: '#/definitions/checkbox'},
 	},
 	definitions: schemaInputs,
 }

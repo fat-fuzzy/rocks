@@ -16,7 +16,7 @@ class AppContext {
 		if (!this.state.consent) {
 			this.state.consent = {
 				functional: true,
-				analytics: false,
+				legitimateInterest: true,
 			}
 		}
 	}
@@ -52,11 +52,12 @@ class AppContext {
 		}
 
 		if (data.has('consent-submit') || data.has('consent-reset')) {
-			if (data.has('analytics')) {
-				let analytics = data.get('analytics')
-				this.state.consent.analytics = analytics?.toString() === 'on'
+			if (data.has('legitimateInterest')) {
+				let legitimateInterest = data.get('legitimateInterest')
+				this.state.consent.legitimateInterest =
+					legitimateInterest?.toString() === 'on'
 			} else {
-				this.state.consent.analytics = false
+				this.state.consent.legitimateInterest = true
 			}
 			updated = true
 		}

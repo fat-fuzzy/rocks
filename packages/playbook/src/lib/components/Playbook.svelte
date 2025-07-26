@@ -8,8 +8,8 @@
 
 	type CookiePreferences = {
 		functional?: boolean
+		legitimateInterest?: boolean
 		analytics?: boolean
-		thirdParty?: boolean
 	}
 
 	type ViewingPreferences = {

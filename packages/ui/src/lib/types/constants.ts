@@ -12,8 +12,8 @@ const APP_PREFIX = 'ff'
 
 const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
 	functional: true,
+	legitimateInterest: true,
 	analytics: false,
-	thirdParty: false,
 }
 
 const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}

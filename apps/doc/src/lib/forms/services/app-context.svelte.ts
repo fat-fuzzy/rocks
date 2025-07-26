@@ -5,7 +5,7 @@ const {DEFAULT_REVEAL_STATE, DEFAULT_STYLES, DEFAULT_PREFERENCES} = ui.constants
 // TODO - Get type from @fat-fuzzy/ui
 type CookiePreferences = {
 	functional?: boolean
-	analytics?: boolean
+	legitimateInterest?: boolean
 }
 
 type Settings = {
