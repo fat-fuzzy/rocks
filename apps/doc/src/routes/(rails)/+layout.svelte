@@ -150,7 +150,11 @@
 	<Footer>
 		{#snippet actions()}
 			{#if appContext.consent}
-				<Cookies consent={appContext.consent} font="lg" />
+				<Cookies
+					consent={appContext.consent}
+					actionPath={appContext.actionPath}
+					font="lg"
+				/>
 			{/if}
 		{/snippet}
 	</Footer>

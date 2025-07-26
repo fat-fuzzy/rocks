@@ -21,6 +21,7 @@ export const load = async ({locals, url}) => {
 		...DEFAULT_PREFERENCES,
 	}
 	const pageContext = locals.pageContext
+	appContext.actionPath = url.pathname
 	pageContext.actionPath = url.pathname
 
 	return {
