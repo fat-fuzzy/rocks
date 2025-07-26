@@ -39,6 +39,7 @@
 		'CookiePreferencesValidationFunction',
 	)
 
+	let updated = $derived(consent)
 	let cookiesPartial = $derived(
 		consent && consent.functional && !consent.legitimateInterest,
 	)
@@ -205,7 +206,7 @@
 									onfocus={handleFocus}
 									onblur={handleBlur}
 									oninput={handleInput}
-									checked={!consent ? true : consent.legitimateInterest}
+									checked={updated?.legitimateInterest}
 									{validator}
 								/>
 							</InputGroup>
