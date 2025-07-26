@@ -7,5 +7,5 @@ export type UiStateSetInput = {
 	cookies: Cookies
 	key: string
 	value?: any
-	options: {path: string; host?: string} // TODO: improve options (use schema ?)
+	options: {path: string; domain?: string}
 }

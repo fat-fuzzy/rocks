@@ -31,7 +31,6 @@ export const playbookActions = {
 			key,
 			value: toUpdate.state,
 			options: {
-				host: 'localhost', // TODO: fix domain
 				path: '/',
 			},
 		})
@@ -55,7 +54,6 @@ export const playbookActions = {
 			key,
 			value: styles.api.getStyleTree(),
 			options: {
-				host: 'localhost', // TODO: fix domain
 				path: '/',
 			},
 		})
