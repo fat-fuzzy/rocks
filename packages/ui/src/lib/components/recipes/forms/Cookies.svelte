@@ -41,7 +41,7 @@
 
 	let updated = $derived(consent)
 	let cookiesPartial = $derived(
-		consent && consent.functional && !consent.analytics,
+		consent && consent.functional && !consent.legitimateInterest,
 	)
 	let submitDisabled: boolean | undefined = $state(undefined)
 	let title = 'Cookies'
@@ -51,7 +51,7 @@
 
 	// TODO: Integrate inputTypes into validator from schema
 	const inputTypes: {[name: string]: string} = {
-		analytics: 'checkbox',
+		legitimateInterest: 'checkbox',
 		functional: 'checkbox',
 	}
 
@@ -181,7 +181,7 @@
 									name="functional"
 									type="checkbox"
 									label="Site Functionality"
-									hint="These cookies allow me to save your preferences on the site (including your cookie preferences). There is no personal data stored in these cookies."
+									hint="These cookies allow me to save your preferences on the site (including your cookie preferences). No personal data stored in these cookies."
 									color="primary"
 									asset="none"
 									size="sm"
@@ -193,11 +193,11 @@
 								/>
 								<br />
 								<InputCheck
-									id="analytics"
-									name="analytics"
+									id="legitimateInterest"
+									name="legitimateInterest"
 									type="checkbox"
-									label="Analytics"
-									hint="This cookie allows me to measure the performance of the site as well as viewership. The data used are: referer, browser, device, location (country), date, and page views."
+									label="Legitimate Interest"
+									hint="This helps me improve this site using privacy friendly statistics provided by GoatCounter (https://goatcounter.com). You may turn this off, but it would be helpful for my work here if you don't!"
 									color="primary"
 									asset="none"
 									variant="bare"
@@ -206,7 +206,7 @@
 									onfocus={handleFocus}
 									onblur={handleBlur}
 									oninput={handleInput}
-									checked={updated?.analytics}
+									checked={!updated ? true : updated.legitimateInterest}
 									{validator}
 								/>
 							</InputGroup>

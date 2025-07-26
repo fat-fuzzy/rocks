@@ -49,6 +49,6 @@
 
 <ToastGroup />
 
-{#if !dev && appContext.consent?.analytics}
+{#if !dev && appContext.consent?.legitimateInterest}
 	<Beacon />
 {/if}

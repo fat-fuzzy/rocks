@@ -17,8 +17,8 @@ export type AppContextItems = {
 
 export type CookiePreferences = {
 	functional?: boolean
+	legitimateInterest?: boolean
 	analytics?: boolean
-	thirdParty?: boolean
 }
 
 export type ViewingPreferences = {
