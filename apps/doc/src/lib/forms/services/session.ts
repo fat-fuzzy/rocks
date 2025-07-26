@@ -9,18 +9,22 @@ const expire = {
 	long: 60 * 60 * 24 * 24 * 3,
 }
 
+const trustedDomains = ['localhost', 'rocks.pages.dev']
+
 function setSecureCookie({
 	cookies,
 	key,
 	value,
 	path = base,
 	maxAge = expire.short,
+	domain,
 }: {
 	cookies: Cookies
 	key: string
 	value: string
 	path?: string
 	maxAge?: number
+	domain?: string
 }) {
 	cookies.set(key, value, {
 		httpOnly: true,
@@ -28,6 +32,7 @@ function setSecureCookie({
 		secure: true,
 		path,
 		maxAge,
+		domain,
 	})
 }
 
@@ -49,6 +54,7 @@ function setUiState({cookies, key, value, options}: UiStateSetInput) {
 		cookies.set(key, JSON.stringify(value), {
 			path: options.path ?? '/',
 			maxAge: expire.short,
+			domain: trustedDomains[0],
 		})
 	} else {
 		setSecureCookie({
@@ -57,6 +63,7 @@ function setUiState({cookies, key, value, options}: UiStateSetInput) {
 			value: JSON.stringify(value),
 			path: options.path ?? '/',
 			maxAge: expire.short,
+			domain: trustedDomains[1],
 		})
 	}
 }

@@ -48,7 +48,6 @@ async function handleToggleUiReveal({
 			key,
 			value: newState.state,
 			options: {
-				host: options?.domain,
 				path: '/',
 			},
 		})
