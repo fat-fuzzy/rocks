@@ -2,7 +2,6 @@
 	"color": {
 		"$type": "number",
 		"lightness": {
-			"$type": "percentage",
 			"light": {
 				"base": {
 					"$value": 99
@@ -398,7 +397,7 @@
 			"$type": "dimension",
 			"sm": {
 				"offsetX": {
-					"$value": "0"
+					"$value": "0px"
 				},
 				"offsetY": {
 					"$value": "0.5px"
@@ -407,12 +406,12 @@
 					"$value": "4px"
 				},
 				"spread": {
-					"$value": "0"
+					"$value": "0px"
 				}
 			},
 			"md": {
 				"offsetX": {
-					"$value": "0"
+					"$value": "0px"
 				},
 				"offsetY": {
 					"$value": "1px"
@@ -421,12 +420,12 @@
 					"$value": "6px"
 				},
 				"spread": {
-					"$value": "0"
+					"$value": "0px"
 				}
 			},
 			"lg": {
 				"offsetX": {
-					"$value": "0"
+					"$value": "0px"
 				},
 				"offsetY": {
 					"$value": "1px"
@@ -435,7 +434,7 @@
 					"$value": "8px"
 				},
 				"spread": {
-					"$value": "0"
+					"$value": "0px"
 				}
 			}
 		}

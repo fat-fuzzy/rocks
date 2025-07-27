@@ -1,4 +1,5 @@
-import pluginCSS from '@cobalt-ui/plugin-css'
+import {defineConfig} from '@terrazzo/cli'
+import css from '@terrazzo/plugin-css'
 
 const paths = {
 	in: './src/lib/tokens/',
@@ -15,15 +16,10 @@ const files = [
 	'font.json',
 ]
 
-/**
- * This config will process JSON files in `src/lib/tokens/` and output a CSS file to "src/lib/css/tokens/"
- */
-/** @type {import("@cobalt-ui/core").Config} */
-export default {
+export default defineConfig({
 	tokens: files.map((file) => `${paths['in']}${file}`),
-	outDir: paths['out'],
 	plugins: [
-		pluginCSS({
+		css({
 			transform(token, mode) {
 				switch (token.$type) {
 					case 'reference': {
@@ -32,10 +28,17 @@ export default {
 					case 'percentage': {
 						return `${String(token.$value)}%`
 					}
+					case 'char': {
+						return token.$value
+					}
 					default:
 						break
 				}
 			},
 		}),
 	],
-}
+	outDir: paths['out'],
+	lint: {
+		/** @see https://terrazzo.app/docs/cli/lint */
+	},
+})
