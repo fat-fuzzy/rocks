@@ -90,6 +90,10 @@
 			"description": "Code comments",
 			"title": "Comments"
 		},
+		"🤓 ": {
+			"description": "Learning / Tutorial step",
+			"title": "Learning"
+		},
 		"💄 ": {
 			"description": "UI changes: styles / CSS",
 			"title": "UI Styles"
@@ -101,6 +105,10 @@
 		"👾 ": {
 			"description": "Graphics related changes",
 			"title": "Graphics"
+		},
+		"🧬 ": {
+			"description": "Build related changes (Nix)",
+			"title": "Nix"
 		},
 		"🦄 ": {
 			"description": "Backend related changes (Django)",
