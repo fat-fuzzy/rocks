@@ -3,7 +3,7 @@
 		"$type": "dimension",
 		"duration": {
 			"null": {
-				"$value": "0"
+				"$value": "0ms"
 			},
 			"sm": {
 				"$value": "500ms"

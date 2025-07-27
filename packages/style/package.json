@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/style",
 	"name": "@fat-fuzzy/style",
-	"version": "0.1.17",
+	"version": "0.1.18",
 	"description": "Fat Fuzzy CSS",
 	"author": "Patricia Boh",
 	"license": "MIT",
@@ -13,7 +13,7 @@
 		"build:css": "rollup --config rollup.config.js",
 		"build:main": "rollup --config rollup.config.main.js",
 		"build:scss": "rollup --config rollup.config.scss.js",
-		"build:tokens": "./node_modules/.bin/co build",
+		"build:tokens": "tz build",
 		"lint:css": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/css/**/*.css &> ./logs/stylelint-css.log",
 		"lint:scss": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/scss/**/*.scss &> ./logs/stylelint-scss.log",
 		"lint:prettier": "prettier --check --ignore-path=../../.prettierignore . && eslint \".\"",
@@ -38,12 +38,11 @@
 		"./css/tokens/*": "./dist/lib/css/tokens/*"
 	},
 	"devDependencies": {
-		"@cobalt-ui/cli": "1.12.0",
-		"@cobalt-ui/plugin-css": "1.7.5",
 		"@csstools/postcss-bundler": "^2.0.8",
 		"@csstools/postcss-global-data": "^3.0.0",
 		"@csstools/postcss-minify": "^2.0.4",
 		"@fat-fuzzy/config": "workspace:*",
+		"@terrazzo/plugin-css": "^0.10.1",
 		"autoprefixer": "^10.4.21",
 		"glob": "^11.0.3",
 		"postcss": "8.5.6",
@@ -55,5 +54,8 @@
 		"sass": "^1.89.2"
 	},
 	"browserslist": "defaults",
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@terrazzo/cli": "^0.10.1"
+	}
 }

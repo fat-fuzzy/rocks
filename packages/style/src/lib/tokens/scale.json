@@ -2,9 +2,10 @@
 	"size": {
 		"$type": "dimension",
 		"nul": {
-			"$value": "0"
+			"$value": "0px"
 		},
 		"base": {
+			"$type": "derived",
 			"3xs": {
 				"$value": "{scale.base.04}"
 			},
@@ -31,6 +32,7 @@
 			}
 		},
 		"inverse": {
+			"$type": "derived",
 			"2xs": {
 				"$value": "{size.base.2xl}"
 			},
@@ -54,22 +56,23 @@
 			}
 		},
 		"ratio": {
+			"$type": "number",
 			"xs": {
-				"$value": "1.15"
+				"$value": 1.15
 			},
 			"sm": {
-				"$value": "1.25"
+				"$value": 1.25
 			},
 			"md": {
-				"$value": "1.5"
+				"$value": 1.5
 			},
 			"lg": {
-				"$value": "2.75"
+				"$value": 2.75
 			}
 		}
 	},
 	"scale": {
-		"$type": "dimension",
+		"$type": "derived",
 		"base": {
 			"05": {
 				"$value": "calc(var(--scale-base-04) / var(--size-ratio-sm))"
@@ -106,26 +109,27 @@
 			}
 		},
 		"major-third": {
+			"$type": "number",
 			"03": {
-				"$value": "0.6"
+				"$value": 0.6
 			},
 			"02": {
-				"$value": "0.7"
+				"$value": 0.7
 			},
 			"01": {
-				"$value": "0.8"
+				"$value": 0.8
 			},
 			"00": {
-				"$value": "1"
+				"$value": 1
 			},
 			"10": {
-				"$value": "1.25"
+				"$value": 1.25
 			},
 			"20": {
-				"$value": "1.6"
+				"$value": 1.6
 			},
 			"30": {
-				"$value": "2"
+				"$value": 2
 			}
 		}
 	},
@@ -137,6 +141,7 @@
 			}
 		},
 		"footer": {
+			"$type": "derived",
 			"height": {
 				"$value": "var(--font-size-body)"
 			}
