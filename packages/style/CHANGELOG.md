@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.18
+
+### Patch Changes
+
+- 069e376: Update / change @cobalt-ui > @terrazzo
+
 ## 0.1.17
 
 ### Patch Changes
