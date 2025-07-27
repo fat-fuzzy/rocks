@@ -1,7 +1,7 @@
 {
 	"color": {
-		"$type": "number",
 		"lightness": {
+			"$type": "percentage",
 			"light": {
 				"base": {
 					"$value": 99
@@ -47,6 +47,7 @@
 			}
 		},
 		"chroma": {
+			"$type": "number",
 			"neutral": {
 				"$value": 0.001
 			},
@@ -73,6 +74,7 @@
 			}
 		},
 		"hue": {
+			"$type": "number",
 			"gray": {
 				"$value": 0
 			},
@@ -117,6 +119,7 @@
 			}
 		},
 		"theme": {
+			"$type": "number",
 			"primary": {
 				"$value": "{color.hue.violet}"
 			},
@@ -134,6 +137,7 @@
 			}
 		},
 		"semantic": {
+			"$type": "number",
 			"info": {
 				"$value": "{color.hue.blue}"
 			},
@@ -148,6 +152,7 @@
 			}
 		},
 		"palette": {
+			"$type": "number",
 			"lime": {
 				"$value": "{color.hue.lime}"
 			},
@@ -176,49 +181,61 @@
 		"state": {
 			"default": {
 				"lightness": {
+					"$type": "percentage",
 					"$value": "{color.lightness.300}"
 				},
 				"chroma": {
+					"$type": "number",
 					"$value": "{color.chroma.300}"
 				}
 			},
 			"active": {
 				"lightness": {
+					"$type": "percentage",
 					"$value": "{color.lightness.500}"
 				},
 				"chroma": {
+					"$type": "number",
 					"$value": "{color.chroma.500}"
 				}
 			},
 			"hover": {
 				"lightness": {
+					"$type": "percentage",
 					"$value": "{color.lightness.400}"
 				},
 				"chroma": {
+					"$type": "number",
 					"$value": "{color.chroma.400}"
 				}
 			},
 			"focus": {
 				"lightness": {
+					"$type": "percentage",
 					"$value": "{color.lightness.500}"
 				},
 				"chroma": {
+					"$type": "number",
 					"$value": "{color.chroma.500}"
 				}
 			},
 			"disabled": {
 				"lightness": {
+					"$type": "percentage",
 					"$value": "{color.lightness.100}"
 				},
 				"chroma": {
+					"$type": "number",
 					"$value": "{color.chroma.100}"
 				}
 			},
 			"visited": {
 				"lightness": {
+					"$type": "percentage",
 					"$value": "{color.lightness.200}"
 				},
 				"chroma": {
+					"$type": "number",
 					"$value": "{color.chroma.200}"
 				}
 			}
