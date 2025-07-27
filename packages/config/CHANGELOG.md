@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.14
+
+### Patch Changes
+
+- 54167fa: Dependency updates, bugfixes
+
 ## 0.1.13
 
 ### Patch Changes
