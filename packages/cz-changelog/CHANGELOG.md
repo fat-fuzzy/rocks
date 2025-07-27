@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.7
+
+### Patch Changes
+
+- 54167fa: Dependency updates, bugfixes
+
 ## 0.1.6
 
 ### Patch Changes

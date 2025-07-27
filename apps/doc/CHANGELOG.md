@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.58
+
+### Patch Changes
+
+- 54167fa: Dependency updates, bugfixes
+
 ## 0.1.57
 
 ### Patch Changes
