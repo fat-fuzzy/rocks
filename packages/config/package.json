@@ -27,8 +27,9 @@
 			"import": "./dist/eslint/eslint-svelte.config.js"
 		},
 		"./prettier": "./dist/prettier.config.js",
-		"./stylelint": "./dist/stylelint.config.js",
-		"./playwright": "./dist/playwright.config.js"
+		"./stylelint": "./dist/front/stylelint.config.js",
+		"./playwright": "./dist/front/playwright.config.js",
+		"./svelte": "./dist/front/svelte.config.ts"
 	},
 	"peerDependencies": {
 		"eslint": ">=9.0.0",
