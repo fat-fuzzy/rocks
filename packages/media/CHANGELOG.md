@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.6
+
+### Patch Changes
+
+- 54167fa: Dependency updates, bugfixes
+
 ## 0.1.5
 
 ### Patch Changes
