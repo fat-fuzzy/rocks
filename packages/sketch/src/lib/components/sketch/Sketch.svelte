@@ -293,11 +293,10 @@
 				</div>
 			{/if}
 		</div>
-		<div class="maki:block size:2xl font:md">
-			{#if children}
-				{@render children()}
-			{/if}
-		</div>
+
+		{#if children}
+			{@render children()}
+		{/if}
 	{/snippet}
 
 	{#snippet aside()}

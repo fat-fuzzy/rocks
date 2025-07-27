@@ -25,7 +25,7 @@
 }
 
 .l\:frame\:rect-xs {
-	--max-inline-size: calc(115vh - 3 * var(--ui-header-height));
+	--max-inline-size: calc(110vh - 3 * var(--ui-header-height));
 	aspect-ratio: 1.15/ 1;
 }
 
