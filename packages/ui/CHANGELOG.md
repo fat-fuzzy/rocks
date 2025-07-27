@@ -1,5 +1,12 @@
 # @fat-fuzzy/ui
 
+## 0.1.70
+
+### Patch Changes
+
+- Updated dependencies [069e376]
+  - @fat-fuzzy/style@0.1.18
+
 ## 0.1.69
 
 ### Patch Changes
