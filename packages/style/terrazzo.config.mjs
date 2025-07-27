@@ -3,7 +3,7 @@ import css from '@terrazzo/plugin-css'
 
 const paths = {
 	in: './src/lib/tokens/',
-	out: './src/lib/css/base/',
+	out: './src/lib/css/variables/',
 }
 
 const files = [
@@ -14,6 +14,7 @@ const files = [
 	'pages.json',
 	'scale.json',
 	'font.json',
+	'settings.json',
 ]
 
 export default defineConfig({
@@ -22,7 +23,7 @@ export default defineConfig({
 		css({
 			transform(token, mode) {
 				switch (token.$type) {
-					case 'reference': {
+					case 'derived': {
 						return String(token.$value)
 					}
 					case 'percentage': {

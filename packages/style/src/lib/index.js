@@ -1,4 +1,7 @@
 /* Global config */
+import './css/variables/index.js'
+
+/* Global config */
 import './css/base/index.js'
 
 /* Resets and global styles, set initial and global styles */
