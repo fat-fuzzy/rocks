@@ -1,23 +1,51 @@
 {
 	"icon": {
-		"$type": "dimension",
+		"$type": "derived",
 		"emoji": {
-			"2xs": {"$value": "{scale.base.03}"},
-			"xs": {"$value": "{scale.base.02}"},
-			"sm": {"$value": "{scale.base.01}"},
-			"md": {"$value": "{scale.base.00}"},
-			"lg": {"$value": "{scale.base.10}"},
-			"xl": {"$value": "{scale.base.20}"},
-			"2xl": {"$value": "{scale.base.30}"}
+			"2xs": {
+				"$value": "{scale.base.03}"
+			},
+			"xs": {
+				"$value": "{scale.base.02}"
+			},
+			"sm": {
+				"$value": "{scale.base.01}"
+			},
+			"md": {
+				"$value": "{scale.base.00}"
+			},
+			"lg": {
+				"$value": "{scale.base.10}"
+			},
+			"xl": {
+				"$value": "{scale.base.20}"
+			},
+			"2xl": {
+				"$value": "{scale.base.30}"
+			}
 		},
 		"svg": {
-			"2xs": {"$value": "calc(var(--icon-svg-xs) / var(--size-ratio-sm))"},
-			"xs": {"$value": "calc(var(--icon-svg-sm) / var(--size-ratio-sm))"},
-			"sm": {"$value": "calc(var(--icon-svg-md) / var(--size-ratio-sm))"},
-			"md": {"$value": "2rem"},
-			"lg": {"$value": "calc(var(--icon-svg-md) * var(--size-ratio-sm))"},
-			"xl": {"$value": "calc(var(--icon-svg-lg) * var(--size-ratio-sm))"},
-			"2xl": {"$value": "calc(var(--icon-svg-xl) * var(--size-ratio-sm))"}
+			"2xs": {
+				"$value": "calc(var(--icon-svg-xs) / var(--size-ratio-sm))"
+			},
+			"xs": {
+				"$value": "calc(var(--icon-svg-sm) / var(--size-ratio-sm))"
+			},
+			"sm": {
+				"$value": "calc(var(--icon-svg-md) / var(--size-ratio-sm))"
+			},
+			"md": {
+				"$value": "2rem"
+			},
+			"lg": {
+				"$value": "calc(var(--icon-svg-md) * var(--size-ratio-sm))"
+			},
+			"xl": {
+				"$value": "calc(var(--icon-svg-lg) * var(--size-ratio-sm))"
+			},
+			"2xl": {
+				"$value": "calc(var(--icon-svg-xl) * var(--size-ratio-sm))"
+			}
 		}
 	}
 }

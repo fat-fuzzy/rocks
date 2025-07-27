@@ -206,24 +206,24 @@
 			}
 		},
 		"leading": {
-			"$type": "dimension",
+			"$type": "number",
 			"heading": {
-				"$value": "1.30"
+				"$value": 1.30
 			},
 			"ui": {
-				"$value": "1.32"
+				"$value": 1.32
 			},
 			"nav": {
-				"$value": "2"
+				"$value": 2
 			},
 			"body": {
-				"$value": "1.85"
+				"$value": 1.85
 			},
 			"large": {
-				"$value": "2"
+				"$value": 2
 			},
 			"neutral": {
-				"$value": "1"
+				"$value": 1
 			}
 		}
 	}

@@ -3,7 +3,7 @@
 		"$type": "dimension",
 		"radius": {
 			"null": {
-				"$value": "0"
+				"$value": "0px"
 			},
 			"sm": {
 				"$value": "0.16rem"
@@ -12,7 +12,7 @@
 				"$value": "0.26rem"
 			},
 			"lg": {
-				"$value": " 0.34rem"
+				"$value": "0.34rem"
 			},
 			"xl": {
 				"$value": "0.66rem"
