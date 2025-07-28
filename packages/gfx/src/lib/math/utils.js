@@ -18,28 +18,29 @@ function isPowerOf2(value) {
  * @param {number} seed
  */
 function randomColorPair() {
-	let colorsMix = [Math.random(), Math.random(), Math.random()]
-	let moreColors = [
-		colorsMix[0] / Math.random() + 0.5,
-		colorsMix[0] / Math.random() + 0.5,
-		colorsMix[0] / Math.random() + 0.5,
-	]
-
-	const foreground = [
-		moreColors[0] > 1 ? moreColors[0] - 1 / Math.random() : moreColors[0],
-		moreColors[1] > 1 ? moreColors[1] - 1 / Math.random() : moreColors[1],
-		moreColors[2] > 1 ? moreColors[2] - 1 / Math.random() : moreColors[2],
-	]
+	const foreground = [Math.random(), Math.random(), Math.random()]
 
 	const background = [
-		foreground[0] / Math.random(),
-		foreground[1] / Math.random(),
-		foreground[2] / Math.random(),
+		foreground[0] < 0.1
+			? foreground[0] * Math.random()
+			: foreground[0] > 0.9
+				? foreground[0] / Math.random()
+				: foreground[0],
+		foreground[1] < 0.1
+			? foreground[1] * Math.random()
+			: foreground[1] > 0.9
+				? foreground[1] / Math.random()
+				: foreground[1],
+		foreground[2] < 0.1
+			? foreground[2] * Math.random()
+			: foreground[2] > 0.9
+				? foreground[2] / Math.random()
+				: foreground[2],
 	]
 
 	return {
-		foreground: foreground.map((c) => (c < 1 ? c : c / 1 + 1)),
-		background: background.map((c) => (c < 1 ? c : c / 1 + 1)),
+		foreground,
+		background,
 	}
 }
 
@@ -136,5 +137,6 @@ export default {
 	isPowerOf2,
 	round,
 	interpolate,
+	normalizeAngleDeg,
 	normalizeAndInterpolate,
 }
