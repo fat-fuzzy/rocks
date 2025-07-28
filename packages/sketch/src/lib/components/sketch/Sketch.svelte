@@ -271,7 +271,9 @@
 				{/each}
 			</div>
 		{/if}
-		<div class={`${frameClasses} color:primary`}>
+		<div
+			class={`${frameClasses} color:primary bg:${actor.state.canvas === CanvasState.idle ? 'light' : meta.background}`}
+		>
 			<canvas
 				id={`${id}.canvas`}
 				data-testid="canvas"

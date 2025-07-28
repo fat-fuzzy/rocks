@@ -37,6 +37,7 @@ let meta = {
 	slug: 'wing-base',
 	title: 'Wing Base',
 	asset: 'wing',
+	background: 'dark',
 	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
