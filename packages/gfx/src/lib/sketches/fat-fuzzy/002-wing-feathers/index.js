@@ -36,6 +36,7 @@ let meta = {
 	slug: 'wing-feathers',
 	title: 'Wing Feathers',
 	asset: 'feather',
+	background: 'dark',
 	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
