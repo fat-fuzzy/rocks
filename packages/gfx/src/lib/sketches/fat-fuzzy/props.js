@@ -41,10 +41,21 @@ const FEATHERS = {
 // }
 const COLORS = {
 	mute: (angle, color, step) => {
+		const fn1 = (c) => c + step / angle
+		const fn2 = (c) => c * (step / angle)
+		const fn3 = (c) => c / (step / angle)
+
+		const randomize = color[0]
+		let functions =
+			randomize > 0.7
+				? [fn1, fn2, fn3]
+				: randomize > 0.4
+					? [fn2, fn3, fn1]
+					: [fn3, fn1, fn2]
 		return [
-			color[0] * (step / angle),
-			color[1] * (step / angle),
-			color[2] * (step / angle),
+			functions[0](color[0]),
+			functions[1](color[1]),
+			functions[2](color[2]),
 			0.5,
 		]
 	},
