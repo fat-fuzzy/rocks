@@ -155,7 +155,7 @@
 			}
 		},
 		"size": {
-			"$type": "reference",
+			"$type": "derived",
 			"2xs": {
 				"$value": "var(--fluid--3)"
 			},
