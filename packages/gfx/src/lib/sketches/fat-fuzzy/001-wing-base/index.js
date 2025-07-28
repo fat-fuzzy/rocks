@@ -12,7 +12,7 @@ import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
 import {frag} from './shaders/fragment-shader'
 import {vert} from './shaders/vertex-shader-2d'
-import wabiSabi from '../wings/index.js'
+import wingBase from '../wings/index.js'
 
 let gl
 let program
@@ -45,9 +45,9 @@ let meta = {
 }
 
 const wings = {
-	base1: wabiSabi.base1,
-	base2: wabiSabi.base2,
-	base3: wabiSabi.base3,
+	base1: wingBase.base1,
+	base2: wingBase.base2,
+	base3: wingBase.base3,
 }
 
 function init(canvas) {
