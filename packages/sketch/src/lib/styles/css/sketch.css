@@ -2,9 +2,12 @@
 	position: relative;
 }
 
+[class*='l:frame']:has(.canvas) {
+	border: var(--border-width-lg) dotted var(--shade);
+}
+
 .canvas {
 	position: relative;
-	border: var(--border-width-lg) dotted var(--shade);
 }
 
 .canvas.state\:idle {
@@ -43,26 +46,6 @@
 	font-family: var(--font-family-heading);
 }
 
-/* 
-[class*='pause'] canvas {
-	filter: grayscale(65%) opacity(35%) blur(1px);
-} */
-
-/* INvestigate this interesting experiment */
-/* .canvas\:round[class*='play'],
-.canvas\:round[class*='update'],
-.canvas\:round[class*='clear'],
-.canvas\:round[class*='pause'] {
-	border-radius: 100vmax;
-  background-color: var(--ink);
-	filter: opacity(50%);
-} */
-
-.canvas[class*='play']::before,
-.canvas[class*='update']::before,
-.canvas[class*='clear']::before,
-.canvas[class*='pause']::before,
-.canvas[class*='warning']::before,
 .canvas[class*='error']::before {
 	display: flex;
 	align-items: center;
@@ -78,6 +61,11 @@
 	aspect-ratio: 1/1;
 }
 
+.canvas[class*='play']::before,
+.canvas[class*='update']::before,
+.canvas[class*='clear']::before,
+.canvas[class*='pause']::before,
+.canvas[class*='warning']::before,
 .state\:freeze canvas::before,
 .state\:snapshot canvas::before {
 	display: none;

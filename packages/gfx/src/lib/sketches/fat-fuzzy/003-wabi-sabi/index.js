@@ -37,6 +37,7 @@ let meta = {
 	slug: 'wabi-sabi',
 	title: 'Wabi-Sabi',
 	asset: 'phoenix',
+	background: 'dark',
 	dimensions: 'rect-xs',
 	// status: 'draft',
 	categories: ['Projects'],
