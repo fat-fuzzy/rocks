@@ -80,14 +80,15 @@ export default class Wing {
 		this.currentStep = step
 		this.steps = steps
 		this.pause = pause
+
+		// TODO: figure out color management
 		this.colors = colors
-		this.colorDraw = [Math.random(), Math.random(), Math.random()]
-		this.colorBg = [
-			this.colorDraw[0] / 2,
-			this.colorDraw[1] / 2,
-			this.colorDraw[2] / 2,
-		]
+
+		let drawingColors = utils.randomColorPair(Math.random())
+		this.colorDraw = drawingColors.foreground
+		this.colorBg = drawingColors.background
 		this.color = this.colorDraw
+
 		this.drawFeathers = drawFeathers
 
 		// State

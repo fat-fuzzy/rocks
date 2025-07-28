@@ -13,6 +13,37 @@ function isPowerOf2(value) {
 }
 
 /**
+ * Return a pair of foreground and background color vectors
+ * TODO; see how to control this better
+ * @param {number} seed
+ */
+function randomColorPair() {
+	let colorsMix = [Math.random(), Math.random(), Math.random()]
+	let moreColors = [
+		colorsMix[0] / Math.random() + 0.5,
+		colorsMix[0] / Math.random() + 0.5,
+		colorsMix[0] / Math.random() + 0.5,
+	]
+
+	const foreground = [
+		moreColors[0] > 1 ? moreColors[0] - 1 / Math.random() : moreColors[0],
+		moreColors[1] > 1 ? moreColors[1] - 1 / Math.random() : moreColors[1],
+		moreColors[2] > 1 ? moreColors[2] - 1 / Math.random() : moreColors[2],
+	]
+
+	const background = [
+		foreground[0] / Math.random(),
+		foreground[1] / Math.random(),
+		foreground[2] / Math.random(),
+	]
+
+	return {
+		foreground: foreground.map((c) => (c < 1 ? c : c / 1 + 1)),
+		background: background.map((c) => (c < 1 ? c : c / 1 + 1)),
+	}
+}
+
+/**
  *
  * @param {*} characters
  */
@@ -98,6 +129,7 @@ function normalizeAngleDeg(angle) {
 
 export default {
 	randomInt,
+	randomColorPair,
 	multiply,
 	degToRad,
 	radToDeg,
