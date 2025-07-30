@@ -5,13 +5,13 @@
 */
 
 [class*='status:']:where(
-		.status\:default,
-		.status\:info,
-		.status\:success,
-		.status\:warning,
-		.status\:danger,
-		.status\:error
-	) {
+	.status\:default,
+	.status\:info,
+	.status\:success,
+	.status\:warning,
+	.status\:danger,
+	.status\:error
+) {
 	--shade-semantic: oklch(
 		var(--lightness-base) var(--chroma) var(--hue-semantic)
 	);
@@ -64,11 +64,11 @@
 	);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+	--shadow-md: var(--shadow-base-md-offset-x) var(--shadow-base-md-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-lg: var(--shadow-base-lg-offsetX) var(--shadow-base-lg-offsetY)
+	--shadow-lg: var(--shadow-base-lg-offset-x) var(--shadow-base-lg-offset-y)
 		var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--shadow);
 
 	--shadow-inset-sm: var(--shadow-sm);
@@ -82,11 +82,11 @@
 	);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+	--shadow-md: var(--shadow-base-md-offset-x) var(--shadow-base-md-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-lg: var(--shadow-base-lg-offsetX) var(--shadow-base-lg-offsetY)
+	--shadow-lg: var(--shadow-base-lg-offset-x) var(--shadow-base-lg-offset-y)
 		var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--shadow);
 
 	--shadow-inset-sm: var(--shadow-sm);
@@ -100,11 +100,11 @@
 	);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+	--shadow-md: var(--shadow-base-md-offset-x) var(--shadow-base-md-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-lg: var(--shadow-base-lg-offsetX) var(--shadow-base-lg-offsetY)
+	--shadow-lg: var(--shadow-base-lg-offset-x) var(--shadow-base-lg-offset-y)
 		var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--shadow);
 
 	--shadow-inset-sm: var(--shadow-sm);
@@ -118,11 +118,11 @@
 	);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+	--shadow-md: var(--shadow-base-md-offset-x) var(--shadow-base-md-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-lg: var(--shadow-base-lg-offsetX) var(--shadow-base-lg-offsetY)
+	--shadow-lg: var(--shadow-base-lg-offset-x) var(--shadow-base-lg-offset-y)
 		var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--shadow);
 
 	--shadow-inset-sm: var(--shadow-sm);
@@ -136,11 +136,11 @@
 	);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 
-	--shadow-sm: var(--shadow-base-sm-offsetX) var(--shadow-base-sm-offsetY)
+	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-md: var(--shadow-base-md-offsetX) var(--shadow-base-md-offsetY)
+	--shadow-md: var(--shadow-base-md-offset-x) var(--shadow-base-md-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
-	--shadow-lg: var(--shadow-base-lg-offsetX) var(--shadow-base-lg-offsetY)
+	--shadow-lg: var(--shadow-base-lg-offset-x) var(--shadow-base-lg-offset-y)
 		var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--shadow);
 
 	--shadow-inset-sm: var(--shadow-sm);
