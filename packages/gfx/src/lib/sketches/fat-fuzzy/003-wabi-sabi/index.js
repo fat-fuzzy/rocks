@@ -4,15 +4,14 @@
  * DRAW FUNCTIONS
  ***********************
  */
-import dom from '../../../dom.js'
-import props from '../props.js'
-import setup from '../../../webgl/setup.js'
+import dom from '../../../dom'
+import props from '../props'
+import setup from '../../../webgl/setup'
 import {drawScene} from '../draw-wing'
-import {initBuffers} from '../../../webgl/buffers/geometry-2d.js'
+import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
-import {frag} from './shaders/fragment-shader.js'
-import {vert} from './shaders/vertex-shader-2d.js'
-import wabiSabi from '../wings/index.js'
+import {frag} from './shaders/fragment-shader'
+import {vert} from './shaders/vertex-shader-2d'
 
 let gl
 let program
@@ -24,12 +23,12 @@ let programInfo = {
 	errors: [],
 }
 let bgColor = [Math.random(), Math.random(), Math.random()]
-let {WING, BONES, FEATHERS, COLORS} = props
+let WINGS = props
 
 // Initialize the wing here to maintain color across main calls
 // TODO: chose color mode
 let currentWing
-let Wing
+let wingName
 
 let meta = {
 	project: 'fat-fuzzy',
@@ -64,24 +63,31 @@ let meta = {
 	],
 }
 
-const wings = {
-	ws01: wabiSabi.ws01,
-	ws02: wabiSabi.ws02,
-	ws03: wabiSabi.ws03,
-	ws04: wabiSabi.ws04,
-	ws05: wabiSabi.ws05,
-	ws06: wabiSabi.ws06,
-	ws07: wabiSabi.ws07,
-	ws08: wabiSabi.ws08,
-	ws09: wabiSabi.ws09,
-	ws10: wabiSabi.ws10,
-	ws11: wabiSabi.ws11,
-	ws12: wabiSabi.ws12,
-	ws13: wabiSabi.ws13,
-	ws14: wabiSabi.ws14,
-	ws15: wabiSabi.ws15,
-	ws16: wabiSabi.ws16,
-	ws17: wabiSabi.ws17,
+function createWing(wingName, canvas) {
+	const WingClass = WINGS[wingName].wingClass
+
+	if (!WingClass) {
+		console.warn(`Wing class ${wingName} not found`)
+		return null
+	}
+
+	if (typeof WingClass !== 'function') {
+		console.warn(`Wing class ${wingName} is not a function`)
+		return null
+	}
+
+	const wingDefaults = WINGS.default.options
+	const wingOptions = WINGS[wingName].options
+
+	const wing = new WingClass({
+		...wingDefaults,
+		...wingOptions,
+		canvasWidth: canvas.width,
+		canvasHeight: canvas.height,
+	})
+
+	wing.init(canvas.width, canvas.height)
+	return wing
 }
 
 function init(canvas) {
@@ -119,24 +125,10 @@ function loadProgram(canvas) {
 	dom.resize(canvas)
 
 	// Initial Wing
-	Wing = wings.ws01
+	wingName = meta.grid[0]
+	currentWing = createWing(meta.grid[0], canvas)
 
-	currentWing = new Wing({
-		position: [0, 0],
-		direction: WING.direction,
-		step: WING.currentStep,
-		layers: 1,
-		steps: WING.steps,
-		pause: WING.pause,
-		bones: BONES,
-		feathers: FEATHERS,
-		colors: COLORS,
-		drawFeathers: true,
-		canvasWidth: canvas.width,
-		canvasHeight: canvas.height,
-	})
-
-	currentWing.init(canvas.width, canvas.height)
+	currentWing.init(gl.canvas.width, gl.canvas.height)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -159,6 +151,7 @@ function loadProgram(canvas) {
 	}
 
 	clear()
+
 	buffers = initBuffers(gl, _programInfo)
 	error = gl.getError()
 	if (error !== gl.NO_ERROR) {
@@ -176,29 +169,14 @@ function update(sceneContext) {
 	if (sceneContext) {
 		let {grid} = sceneContext
 		if (grid && grid[0] !== currentWing.name) {
-			Wing = wings[grid[0]]
-			if (!Wing) {
+			wingName = grid[0]
+			if (!wingName) {
 				console.warn(`Wing ${grid[0]} not found`)
 				return
 			}
 
 			clear()
-
-			currentWing = new Wing({
-				name: grid[0],
-				position: [0, 0],
-				direction: WING.direction,
-				step: WING.currentStep,
-				layers: 1,
-				steps: WING.steps,
-				pause: WING.pause,
-				bones: BONES,
-				feathers: FEATHERS,
-				colors: COLORS,
-				drawFeathers: true,
-				canvasWidth: gl.canvas.width,
-				canvasHeight: gl.canvas.height,
-			})
+			currentWing = createWing(wingName, gl.canvas)
 		}
 	}
 
@@ -230,6 +208,8 @@ function stop() {
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
+	currentWing = null
+	wingName = null
 }
 
 export default {init, meta, main, draw, update, clear, stop}
