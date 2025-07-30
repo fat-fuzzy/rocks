@@ -7,7 +7,7 @@
 import dom from '../../../dom.js'
 import props from '../props.js'
 import setup from '../../../webgl/setup.js'
-import {drawScene} from './draw-scene.js'
+import {drawScene} from '../draw-wing'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d.js'
 
 import {frag} from './shaders/fragment-shader.js'
