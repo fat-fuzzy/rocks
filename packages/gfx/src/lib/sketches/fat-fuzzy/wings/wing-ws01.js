@@ -17,7 +17,7 @@ export default class WabiSabi01 extends Wing {
 		bones,
 		feathers,
 		colors,
-		drawFeathers = false,
+		drawFeathers,
 		canvasWidth,
 		canvasHeight,
 	}) {
@@ -69,8 +69,8 @@ export default class WabiSabi01 extends Wing {
 
 			// New Wing Coordinates
 			featherVectors.push(x, y)
-			let featherX = insertionOrigin[0] + 20
-			let featherY = insertionOrigin[1] + 100
+			let featherX = insertionOrigin[0] + this.scaleMagnitude(20)
+			let featherY = insertionOrigin[1] + this.scaleMagnitude(100)
 			;[x, y] = [x + featherX, y + featherY]
 
 			// Draw the feather

@@ -5,7 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
-import props from '../props'
+import {getWingProps} from '../wing-props'
 import setup from '../../../webgl/setup'
 import {drawScene} from '../draw-wing'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
@@ -23,7 +23,6 @@ let programInfo = {
 }
 let error
 let bgColor = [Math.random(), Math.random(), Math.random()]
-let WINGS = props
 
 // Initialize the wing here to maintain color across main calls
 // TODO: chose color mode
@@ -45,23 +44,21 @@ let meta = {
 }
 
 function createWing(wingName, canvas) {
-	const WingClass = WINGS[wingName].wingClass
-
-	if (!WingClass) {
+	const wingOptions = getWingProps(wingName)
+	if (!wingOptions) {
 		console.warn(`Wing class ${wingName} not found`)
 		return null
 	}
+
+	const WingClass = wingOptions.wingClass
 
 	if (typeof WingClass !== 'function') {
 		console.warn(`Wing class ${wingName} is not a function`)
 		return null
 	}
 
-	const wingDefaults = WINGS.default.options
-	const wingOptions = WINGS[wingName].options
 	const wing = new WingClass({
-		...wingDefaults,
-		...wingOptions,
+		...wingOptions.options,
 		canvasWidth: canvas.width,
 		canvasHeight: canvas.height,
 	})
@@ -106,8 +103,6 @@ function loadProgram(canvas) {
 	// Initial Wing
 	wingName = meta.grid[0]
 	currentWing = createWing(meta.grid[0], canvas)
-
-	currentWing.init(gl.canvas.width, gl.canvas.height)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -160,7 +155,6 @@ function update(sceneContext) {
 		}
 	}
 
-	currentWing.init(gl.canvas.width, gl.canvas.height)
 	currentWing.updateWingState()
 	bgColor = currentWing.colorBg
 	programInfo.context = currentWing.getGeometryCoords()

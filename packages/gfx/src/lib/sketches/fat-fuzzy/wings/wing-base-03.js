@@ -53,7 +53,9 @@ export default class WingXp18 extends Wing {
 		let featherVectors = []
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = this.magnitudes.feathers[this.currentStep].beginning
+		let featherMagnitude = this.scaleMagnitude(
+			this.magnitudes.feathers[this.currentStep].beginning,
+		)
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
@@ -69,7 +71,7 @@ export default class WingXp18 extends Wing {
 			insertionOrigin = vectors.getIntersectionPoint(unit, insertionDistance)
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
-				featherMagnitude + step * 10,
+				featherMagnitude + this.scaleMagnitude(step * 10),
 				featherAngle,
 			)
 

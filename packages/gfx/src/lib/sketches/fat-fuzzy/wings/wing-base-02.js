@@ -52,7 +52,9 @@ export default class WingXp15 extends Wing {
 		let featherVectors = []
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = this.magnitudes.feathers[this.currentStep].beginning
+		let featherMagnitude = this.scaleMagnitude(
+			this.magnitudes.feathers[this.currentStep].beginning,
+		)
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]

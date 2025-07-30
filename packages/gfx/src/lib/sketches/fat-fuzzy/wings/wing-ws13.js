@@ -17,7 +17,7 @@ export default class WabiSabi13 extends Wing {
 		bones,
 		feathers,
 		colors,
-		drawFeathers = false,
+		drawFeathers,
 		canvasWidth,
 		canvasHeight,
 	}) {
@@ -52,7 +52,6 @@ export default class WabiSabi13 extends Wing {
 		let featherVectors = []
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = this.magnitudes.feathers[this.currentStep].middle
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
@@ -73,11 +72,6 @@ export default class WabiSabi13 extends Wing {
 
 			featherVectors.push(x, y)
 			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
-
-			let insertionDest = vectors.getCoordsFromMagAndAngle(
-				featherMagnitude + step * 10,
-				featherAngle,
-			)
 
 			// New Wing Coordinates
 			let featherX = insertionOrigin[0] * featherAngle
