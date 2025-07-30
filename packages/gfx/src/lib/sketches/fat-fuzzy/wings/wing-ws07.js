@@ -1,3 +1,4 @@
+import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
@@ -7,6 +8,7 @@ export default class WabiSabi07 extends Wing {
 		position,
 		translation = [0.835, 0.475],
 		scale = [0.545, 0.545],
+		rotation = utils.degToRad(0),
 		direction,
 		step,
 		layers,
@@ -23,6 +25,7 @@ export default class WabiSabi07 extends Wing {
 			name,
 			position,
 			translation,
+			rotation,
 			scale,
 			direction,
 			step,

@@ -54,9 +54,9 @@ export default class Wing {
 	constructor({
 		name,
 		position,
-		translation = [0.9, 0.6],
-		scale = [1, 1],
-		rotation = utils.degToRad(0),
+		translation,
+		scale,
+		rotation,
 		direction,
 		step,
 		layers,

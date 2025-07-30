@@ -1,3 +1,4 @@
+import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
@@ -7,6 +8,7 @@ export default class WingXp18 extends Wing {
 		position,
 		translation = [0.945, 0.6],
 		scale = [1.1, 1.1],
+		rotation = utils.degToRad(0),
 		direction,
 		step,
 		layers,
@@ -24,6 +26,7 @@ export default class WingXp18 extends Wing {
 			position,
 			scale,
 			translation,
+			rotation,
 			direction,
 			step,
 			layers,
