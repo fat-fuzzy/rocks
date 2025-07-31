@@ -52,7 +52,7 @@ const COLORS = {
 		let functions =
 			randomize > 0.7
 				? [fn1, fn2, fn3]
-				: randomize > 0.4
+				: randomize > 0.35
 					? [fn2, fn3, fn1]
 					: [fn3, fn1, fn2]
 		return [
@@ -71,7 +71,7 @@ const COLORS = {
 }
 
 const MOVEMENT = {
-	steps: 600, // This controls movement speed
+	steps: 565, // This controls movement speed
 	pause: 20, // This controls the pause time at the end of each cycle
 	direction: -1,
 	currentStep: 1,
@@ -286,8 +286,8 @@ const WINGS = {
 		options: {
 			name: 'ws17',
 			position: [0, 0],
-			translation: [0.525, 0.51],
-			scale: [0.835, 0.835],
+			translation: [0.5025, 0.5075],
+			scale: [0.585, 0.585],
 			rotation: utils.degToRad(48.75),
 		},
 	},
