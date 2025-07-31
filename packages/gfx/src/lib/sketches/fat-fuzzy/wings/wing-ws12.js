@@ -1,3 +1,4 @@
+import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
@@ -7,6 +8,7 @@ export default class WabiSabi12 extends Wing {
 		position,
 		translation = [0.955, 0.595],
 		scale = [0.665, 0.665],
+		rotation = utils.degToRad(0),
 		direction,
 		step,
 		layers,
@@ -15,7 +17,7 @@ export default class WabiSabi12 extends Wing {
 		bones,
 		feathers,
 		colors,
-		drawFeathers = false,
+		drawFeathers,
 		canvasWidth,
 		canvasHeight,
 	}) {
@@ -23,6 +25,7 @@ export default class WabiSabi12 extends Wing {
 			name,
 			position,
 			translation,
+			rotation,
 			scale,
 			direction,
 			step,
@@ -50,7 +53,9 @@ export default class WabiSabi12 extends Wing {
 
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = this.magnitudes.feathers[this.currentStep].beginning
+		let featherMagnitude = this.scaleMagnitude(
+			this.magnitudes.feathers[this.currentStep].beginning,
+		)
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
@@ -72,7 +77,7 @@ export default class WabiSabi12 extends Wing {
 			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
-				featherMagnitude + step * 10,
+				featherMagnitude + this.scaleMagnitude(step * 10),
 				featherAngle + insertionOrigin * angle,
 			)
 

@@ -5,9 +5,9 @@ export default class Wing {
 	name
 	// Context
 	position
-	translation = [0.9, 0.6] // Default translation
-	scale = [1, 1] // Default scale
-	rotation = utils.degToRad(0)
+	translation
+	scale
+	rotation
 	layers
 	direction
 	steps // This controls movement speed
@@ -54,9 +54,9 @@ export default class Wing {
 	constructor({
 		name,
 		position,
-		translation = [0.9, 0.6],
-		scale = [1, 1],
-		rotation = utils.degToRad(0),
+		translation,
+		scale,
+		rotation,
 		direction,
 		step,
 		layers,
@@ -174,7 +174,6 @@ export default class Wing {
 		}
 		this.width = canvasWidth
 		this.height = canvasHeight
-		this.magnitudes.bones = this.scaleToCanvasSize(this.magnitudes.bones)
 	}
 
 	/**
@@ -200,19 +199,30 @@ export default class Wing {
 	}
 
 	/**
-	 *
-	 * @param {number[]} magnitudes
+	 * WIP - Do not use this method yet it will not work as expected
+	 * @param {*} bones
+	 * @param {*} feathers
+	 * @returns
 	 */
-	scaleToCanvasSize(magnitudes) {
-		if (!Array.isArray(magnitudes) || magnitudes.some(isNaN)) {
-			throw new Error('Invalid magnitudes array')
+	scaleBonesAndFeathers(bones, feathers) {
+		const scaledBones = bones.map((bone) => this.scaleMagnitude(bone))
+		const scaledFeathers = feathers.map((section) => ({
+			beginning: this.scaleMagnitude(section.beginning),
+			middle: this.scaleMagnitude(section.middle),
+			end: this.scaleMagnitude(section.end),
+		}))
+
+		return {
+			bones: scaledBones,
+			feathers: scaledFeathers,
 		}
-		let total = magnitudes.reduce((acc, curr) => acc + curr, 0)
-		if (total === 0) {
-			throw new Error('Total magnitude is zero')
-		}
-		let scale = this.width / total
-		return magnitudes.map((m) => m * scale)
+	}
+
+	scaleMagnitude(magnitude) {
+		// This constant is relative to the reference canvas size (TODO: make this configurable)
+		const referenceCanvasSize = 900
+		const scaleFactor = Math.min(this.width, this.height) / referenceCanvasSize
+		return magnitude * scaleFactor
 	}
 
 	// TODO: transform wing data into geometry coordinates (= vertices)
@@ -234,7 +244,7 @@ export default class Wing {
 			// Translate to current coords (initial or previous bone coords)
 			boneVectors.push(...coords)
 			origin = coords
-			magnitude = this.magnitudes.bones[bone]
+			magnitude = this.scaleMagnitude(this.magnitudes.bones[bone])
 			// Set the new angle -> This is what creates the movement !
 			angle = currentMovement[bone]
 
@@ -253,7 +263,7 @@ export default class Wing {
 		}
 
 		// 2. Draw the last bone that shares its coords with the previous bone
-		magnitude = this.magnitudes.bones[bone]
+		magnitude = this.scaleMagnitude(this.magnitudes.bones[bone])
 		angle = currentMovement[bone]
 		boneVectors.push(...origin)
 		dest = vectors.getCoordsFromMagAndAngle(magnitude, angle)
@@ -280,16 +290,11 @@ export default class Wing {
 	getFeatherVertices(magnitude, origin, angle) {
 		let [x, y] = origin
 		let featherVectors = []
-
-		// // Draw the feather
-		// featherVectors.push(...origin)
-		// // Hypothenuse
-		// let magnitude = Math.abs(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))
-
-		let featherMagnitude = this.magnitudes.feathers[this.currentStep].beginning
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
+		const currentFeatherSection = this.magnitudes.feathers[this.currentStep]
+		let featherMagnitude = currentFeatherSection.beginning
+		let featherCount = currentFeatherSection.featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 
@@ -301,17 +306,17 @@ export default class Wing {
 			let angleStep = step + 1
 			if (bone === 1) {
 				insertionDistance = distance * step
-				featherMagnitude = 30 + step * step
+				featherMagnitude = this.scaleMagnitude(30 + step * step)
 				featherAngle = featherAngle + angleStep
 			}
 			if (bone === 2) {
 				insertionDistance = distance * step
-				featherMagnitude = 20 + step * step
+				featherMagnitude = this.scaleMagnitude(20 + step * step)
 				featherAngle = featherAngle
 			}
 			if (bone === 3) {
 				insertionDistance = distance * step
-				featherMagnitude = 50 + step * step
+				featherMagnitude = this.scaleMagnitude(50 + step * step)
 				featherAngle = featherAngle + angleStep * 1.5
 			}
 
@@ -323,7 +328,6 @@ export default class Wing {
 			)
 
 			// New Wing Coordinates
-
 			let featherX = insertionOrigin[0] + featherMagnitude * featherAngle
 			let featherY = insertionOrigin[1] + featherMagnitude * featherAngle
 

@@ -1,0 +1,316 @@
+import wings from './wings/index'
+import utils from '../../math/utils.js'
+
+const BONES = {
+	magnitude: [160, 220, 200, 100, 60], // Bone magnitudes (=length in px)
+	beginning: [-120, -185, 180, -170, 220], // Bone angles in degrees : first movement
+	middle: [-105, -260, 255, -225, 120], // Bone angles in degrees : middle movement
+	end: [-85, -260, 280, -260, 100], // Bone angles in degrees : end movement
+}
+
+const FEATHERS = {
+	sections: [
+		{
+			featherCount: 8,
+			beginning: 180,
+			middle: 190,
+			end: 200,
+		},
+		{
+			featherCount: 10,
+			beginning: 360,
+			middle: 350,
+			end: 340,
+		},
+		{
+			featherCount: 8,
+			beginning: 160,
+			middle: 170,
+			end: 180,
+		},
+	],
+}
+
+// const colors = {
+// 	mute: (angle, step) => {
+// 		stroke(step * 10, step * 15, step * 22, 0.25)
+// 	},
+// 	bright: (angle, step) => {
+// 		stroke(angle + step, angle + step, angle + step, 0.25)
+// 	},
+// 	section: (angle, section, step) => {
+// 		stroke(angle + section + 0.5 * 12, step + 2 * 15, step + 2 * 20, 0.25)
+// 	},
+// }
+const COLORS = {
+	mute: (angle, color, step) => {
+		const fn1 = (c) => c + step / angle
+		const fn2 = (c) => c * (step / angle)
+		const fn3 = (c) => c / (step / angle)
+
+		const randomize = color[0]
+		let functions =
+			randomize > 0.7
+				? [fn1, fn2, fn3]
+				: randomize > 0.4
+					? [fn2, fn3, fn1]
+					: [fn3, fn1, fn2]
+		return [
+			functions[0](color[0]),
+			functions[1](color[1]),
+			functions[2](color[2]),
+			0.5,
+		]
+	},
+	bright: (angle, color, step) => {
+		return [angle + step, angle + step, angle + step, 0.5]
+	},
+	section: (angle, color, section, step) => {
+		return [angle + section + 0.5 * 12, step + 2 * 15, step + 2 * 20, 0.5]
+	},
+}
+
+const MOVEMENT = {
+	steps: 600, // This controls movement speed
+	pause: 20, // This controls the pause time at the end of each cycle
+	direction: -1,
+	currentStep: 1,
+}
+
+const WINGS = {
+	default: {
+		options: {
+			direction: MOVEMENT.direction,
+			step: MOVEMENT.currentStep,
+			layers: 1,
+			steps: MOVEMENT.steps,
+			pause: MOVEMENT.pause,
+			bones: BONES,
+			feathers: FEATHERS,
+			colors: COLORS,
+			drawFeathers: true,
+		},
+	},
+	base1: {
+		wingClass: wings.base1,
+		options: {
+			name: 'base1',
+			position: [0, 0],
+			translation: [0.905, 0.625],
+			scale: [2.25, 2.25],
+			rotation: utils.degToRad(0),
+		},
+	},
+	base2: {
+		wingClass: wings.base2,
+		options: {
+			name: 'base2',
+			position: [0, 0],
+			translation: [0.905, 0.625],
+			scale: [2.25, 2.25],
+			rotation: utils.degToRad(0),
+		},
+	},
+	base3: {
+		wingClass: wings.base3,
+		options: {
+			name: 'base3',
+			position: [0, 0],
+			translation: [0.905, 0.625],
+			scale: [2.25, 2.25],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws01: {
+		wingClass: wings.ws01,
+		options: {
+			name: 'ws01',
+			position: [0, 0],
+			translation: [0.75, 0.0275],
+			scale: [0.1, 0.1],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws02: {
+		wingClass: wings.ws02,
+		options: {
+			name: 'ws02',
+			position: [0, 0],
+			translation: [0.635, 0.565],
+			scale: [0.7925, 0.7925],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws03: {
+		wingClass: wings.ws03,
+		options: {
+			name: 'ws03',
+			position: [0, 0],
+			translation: [0.775, 0.55],
+			scale: [1.1, 1.1],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws04: {
+		wingClass: wings.ws04,
+		options: {
+			name: 'ws04',
+			position: [0, 0],
+			translation: [0.495, 0.275],
+			scale: [0.775, 0.775],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws05: {
+		wingClass: wings.ws05,
+		options: {
+			name: 'ws05',
+			position: [0, 0],
+			translation: [0.805, 0.535],
+			scale: [1.275, 1.275],
+			rotation: utils.degToRad(15.75),
+		},
+	},
+	ws06: {
+		wingClass: wings.ws06,
+		options: {
+			name: 'ws06',
+			position: [0, 0],
+			translation: [0.895, 0.535],
+			scale: [0.775, 0.775],
+			rotation: utils.degToRad(5),
+		},
+	},
+	ws07: {
+		wingClass: wings.ws07,
+		options: {
+			name: 'ws07',
+			position: [0, 0],
+			translation: [0.835, 0.475],
+			scale: [0.745, 0.745],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws08: {
+		wingClass: wings.ws08,
+		options: {
+			name: 'ws08',
+			position: [0, 0],
+			translation: [0.935, 0.53],
+			scale: [0.8, 0.8],
+			rotation: utils.degToRad(12),
+		},
+	},
+	ws09: {
+		wingClass: wings.ws09,
+		options: {
+			name: 'ws09',
+			position: [0, 0],
+			translation: [0.565, 0.525],
+			scale: [0.845, 0.845],
+			rotation: utils.degToRad(25.75),
+		},
+	},
+	ws10: {
+		wingClass: wings.ws10,
+		options: {
+			name: 'ws10',
+			position: [0, 1],
+			translation: [0.7075, 0.575],
+			scale: [0.445, 0.445],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws11: {
+		wingClass: wings.ws11,
+		options: {
+			name: 'ws11',
+			position: [0, 1],
+			translation: [0.375, 0.715],
+			scale: [0.22, 0.22],
+			rotation: utils.degToRad(32.5),
+		},
+	},
+	ws12: {
+		wingClass: wings.ws12,
+		options: {
+			name: 'ws12',
+			position: [0, 1],
+			translation: [0.955, 0.595],
+			scale: [0.665, 0.665],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws13: {
+		wingClass: wings.ws13,
+		options: {
+			name: 'ws13',
+			position: [0, 1],
+			translation: [0.935, 0.665],
+			scale: [0.4025, 0.4025],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws14: {
+		wingClass: wings.ws14,
+		options: {
+			name: 'ws14',
+			position: [0, 1],
+			translation: [0.925, 0.655],
+			scale: [0.4, 0.4],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws15: {
+		wingClass: wings.ws15,
+		options: {
+			name: 'ws15',
+			position: [0, 1],
+			translation: [0.655, 0.45],
+			scale: [0.905, 0.905],
+			rotation: utils.degToRad(46.75),
+		},
+	},
+	ws16: {
+		wingClass: wings.ws16,
+		options: {
+			name: 'ws16',
+			position: [0, 1],
+			translation: [0.635, 0.45],
+			scale: [0.845, 0.845],
+			rotation: utils.degToRad(46.75),
+		},
+	},
+	ws17: {
+		wingClass: wings.ws17,
+		options: {
+			name: 'ws17',
+			position: [0, 1],
+			translation: [0.555, 0.5],
+			scale: [0.775, 0.775],
+			rotation: utils.degToRad(46.75),
+		},
+	},
+}
+
+function getWingProps(wingName) {
+	const wing = WINGS[wingName]
+	if (!wing) {
+		console.warn(`Wing properties for ${wingName} not found`)
+		return null
+	}
+
+	const wingOptions = {
+		...WINGS.default.options,
+		...wing.options,
+		bones: JSON.parse(JSON.stringify(BONES)),
+		feathers: JSON.parse(JSON.stringify(FEATHERS)),
+	}
+
+	return {
+		wingClass: wing.wingClass,
+		options: wingOptions,
+	}
+}
+
+export {getWingProps}
