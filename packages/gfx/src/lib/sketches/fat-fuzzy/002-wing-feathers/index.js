@@ -5,10 +5,9 @@
  ***********************
  */
 import dom from '../../../dom'
-import Wing from './wing-002.js'
-import props from '../props'
+import {getWingProps} from '../wing-props'
 import setup from '../../../webgl/setup'
-import {drawScene} from './draw-scene'
+import {drawScene} from '../draw-wing'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
 import {frag} from './shaders/fragment-shader'
@@ -24,11 +23,9 @@ let programInfo = {
 	errors: [],
 }
 let bgColor = [0.0298, 0.02089, 0.1233]
-let {WING, BONES, FEATHERS, COLORS} = props
 
 // Initialize the wing here to maintain color across main calls
 // TODO: chose color mode
-let wing
 
 let meta = {
 	project: 'fat-fuzzy',
@@ -36,10 +33,39 @@ let meta = {
 	slug: 'wing-feathers',
 	title: 'Wing Feathers',
 	asset: 'feather',
+	background: 'dark',
 	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
+	grid: ['base1', 'base2', 'base3'],
+}
+let currentWing
+let wingName = meta.grid[0]
+
+function createWing(wingName, canvas) {
+	const wingOptions = getWingProps(wingName)
+	if (!wingOptions) {
+		console.warn(`Wing class ${wingName} not found`)
+		return null
+	}
+
+	const WingClass = wingOptions.wingClass
+
+	if (typeof WingClass !== 'function') {
+		console.warn(`Wing class ${wingName} is not a function`)
+		return null
+	}
+
+	const wing = new WingClass({
+		...wingOptions.options,
+		canvasWidth: canvas.width,
+		canvasHeight: canvas.height,
+	})
+	wing.init(canvas.width, canvas.height)
+	wingName = wing.name
+
+	return wing
 }
 
 function init(canvas) {
@@ -59,6 +85,7 @@ async function main(canvas) {
 	clear()
 	programInfo = await Promise.resolve(loadProgram(canvas))
 	bgColor = programInfo.context.background
+
 	return programInfo.context
 }
 
@@ -72,25 +99,13 @@ function loadProgram(canvas) {
 			gl.useProgram(program)
 		}
 	}
+
 	dom.resize(canvas)
 
-	wing = new Wing({
-		name: 'wing-002',
-		position: [0, 0],
-		direction: WING.direction,
-		step: WING.currentStep,
-		layers: 1,
-		steps: WING.steps,
-		pause: WING.pause,
-		bones: BONES,
-		feathers: FEATHERS,
-		colors: COLORS,
-		drawFeathers: true,
-		canvasWidth: canvas.width,
-		canvasHeight: canvas.height,
-	})
+	// Initial Wing
+	currentWing = createWing(wingName, canvas)
 
-	wing.init(canvas.width, canvas.height)
+	currentWing.init(gl.canvas.width, gl.canvas.height)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -108,7 +123,7 @@ function loadProgram(canvas) {
 			// bind u_translation
 			u_matrix: gl.getUniformLocation(program, 'u_matrix'),
 		},
-		context: wing.getGeometryCoords(),
+		context: currentWing.getGeometryCoords(),
 		errors: [],
 	}
 
@@ -127,9 +142,26 @@ function draw() {
 	drawScene(gl, programInfo, buffers)
 }
 
-function update() {
-	wing.updateWingState()
-	programInfo.context = wing.getGeometryCoords()
+function update(sceneContext) {
+	if (sceneContext) {
+		let {grid} = sceneContext
+		if (grid && grid[0] !== currentWing.name) {
+			wingName = grid[0]
+			if (!wingName) {
+				console.warn(`Wing ${grid[0]} not found`)
+				return
+			}
+
+			clear()
+
+			currentWing = createWing(wingName, gl.canvas)
+		}
+	}
+
+	currentWing.init(gl.canvas.width, gl.canvas.height)
+	currentWing.updateWingState()
+	bgColor = currentWing.colorBg
+	programInfo.context = currentWing.getGeometryCoords()
 	buffers = initBuffers(gl, programInfo)
 }
 
@@ -154,6 +186,8 @@ function stop() {
 	if (vertexShader) gl.deleteShader(vertexShader)
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
+	currentWing = null
+	wingName = meta.grid[0]
 }
 
 export default {init, meta, main, draw, update, clear, stop}

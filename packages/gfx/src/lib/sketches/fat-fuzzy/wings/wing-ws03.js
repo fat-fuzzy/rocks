@@ -1,3 +1,4 @@
+import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
@@ -7,6 +8,7 @@ export default class WabiSabi03 extends Wing {
 		position,
 		translation = [0.775, 0.55],
 		scale = [0.785, 0.785],
+		rotation = utils.degToRad(0),
 		direction,
 		step,
 		layers,
@@ -15,7 +17,7 @@ export default class WabiSabi03 extends Wing {
 		bones,
 		feathers,
 		colors,
-		drawFeathers = false,
+		drawFeathers,
 		canvasWidth,
 		canvasHeight,
 	}) {
@@ -24,6 +26,7 @@ export default class WabiSabi03 extends Wing {
 			position,
 			scale,
 			translation,
+			rotation,
 			direction,
 			step,
 			layers,
@@ -51,33 +54,17 @@ export default class WabiSabi03 extends Wing {
 
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = 100
+		let featherMagnitude = this.scaleMagnitude(100)
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
-		// console.log('featherCount', featherCount)
-		// console.log('distance', distance)
-		// console.log('magnitude', magnitude)
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
-			// Save current coordinate system
-			// if (bone === 1) {
-			// 	featherAngle = utils.degToRad(
-			// 		this.magnitudes.feathers[this.currentStep].beginning,
-			// 	)
-			// }
-			// if (bone === 2) {
-			// 	featherAngle = utils.degToRad(this.magnitudes.feathers[this.currentStep].middle)
-			// }
-			// if (bone === 3) {
-			// 	featherAngle = utils.degToRad(this.magnitudes.feathers[this.currentStep].end)
-			// }
 
 			featherVectors.push(x, y)
-			// console.log('featherAngle', featherAngle)
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
 				y,
@@ -87,9 +74,8 @@ export default class WabiSabi03 extends Wing {
 
 			featherVectors.push(x, y)
 			featherVectors.push(...insertionOrigin)
-			// console.log('featherAngle', featherAngle)
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
-				featherMagnitude + step * 10,
+				featherMagnitude + this.scaleMagnitude(step * 10),
 				featherAngle,
 			)
 
