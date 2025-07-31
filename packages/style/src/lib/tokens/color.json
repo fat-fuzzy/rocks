@@ -411,47 +411,47 @@
 	},
 	"shadow": {
 		"base": {
-			"$type": "number",
+			"$type": "dimension",
 			"sm": {
 				"offsetX": {
-					"$value": "0"
+					"$value": "0px"
 				},
 				"offsetY": {
-					"$value": "0.5"
+					"$value": "0.5px"
 				},
 				"blur": {
-					"$value": "4"
+					"$value": "4px"
 				},
 				"spread": {
-					"$value": "0"
+					"$value": "0px"
 				}
 			},
 			"md": {
 				"offsetX": {
-					"$value": "0"
+					"$value": "0px"
 				},
 				"offsetY": {
-					"$value": "1"
+					"$value": "1px"
 				},
 				"blur": {
-					"$value": "6"
+					"$value": "6px"
 				},
 				"spread": {
-					"$value": "0"
+					"$value": "0px"
 				}
 			},
 			"lg": {
 				"offsetX": {
-					"$value": "0"
+					"$value": "0px"
 				},
 				"offsetY": {
-					"$value": "1"
+					"$value": "1px"
 				},
 				"blur": {
-					"$value": "8"
+					"$value": "8px"
 				},
 				"spread": {
-					"$value": "0"
+					"$value": "0px"
 				}
 			}
 		}
