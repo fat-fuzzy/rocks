@@ -24,11 +24,6 @@ let programInfo = {
 }
 let bgColor = [Math.random(), Math.random(), Math.random()]
 
-// Initialize the wing here to maintain color across main calls
-// TODO: chose color mode
-let currentWing
-let wingName
-
 let meta = {
 	project: 'fat-fuzzy',
 	id: '003',
@@ -61,6 +56,8 @@ let meta = {
 		'ws17',
 	],
 }
+let currentWing
+let wingName = meta.grid[0]
 
 function createWing(wingName, canvas) {
 	const wingOptions = getWingProps(wingName)
@@ -82,6 +79,8 @@ function createWing(wingName, canvas) {
 		canvasHeight: canvas.height,
 	})
 	wing.init(canvas.width, canvas.height)
+	wingName = wing.name
+
 	return wing
 }
 
@@ -120,8 +119,7 @@ function loadProgram(canvas) {
 	dom.resize(canvas)
 
 	// Initial Wing
-	wingName = meta.grid[0]
-	currentWing = createWing(meta.grid[0], canvas)
+	currentWing = createWing(wingName, canvas)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -201,7 +199,7 @@ function stop() {
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 	currentWing = null
-	wingName = null
+	wingName = meta.grid[0]
 }
 
 export default {init, meta, main, draw, update, clear, stop}
