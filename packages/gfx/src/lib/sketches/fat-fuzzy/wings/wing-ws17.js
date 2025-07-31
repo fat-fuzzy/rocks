@@ -82,7 +82,7 @@ export default class WabiSabi17 extends Wing {
 			}
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
-				this.scaleMagnitude(featherMagnitude + step * 50),
+				featherMagnitude + this.scaleMagnitude(step * 50),
 				angle * featherAngle,
 			)
 

@@ -52,7 +52,7 @@ const COLORS = {
 		let functions =
 			randomize > 0.7
 				? [fn1, fn2, fn3]
-				: randomize > 0.4
+				: randomize > 0.35
 					? [fn2, fn3, fn1]
 					: [fn3, fn1, fn2]
 		return [
@@ -71,7 +71,7 @@ const COLORS = {
 }
 
 const MOVEMENT = {
-	steps: 600, // This controls movement speed
+	steps: 565, // This controls movement speed
 	pause: 20, // This controls the pause time at the end of each cycle
 	direction: -1,
 	currentStep: 1,
@@ -215,9 +215,9 @@ const WINGS = {
 		wingClass: wings.ws10,
 		options: {
 			name: 'ws10',
-			position: [0, 1],
-			translation: [0.7075, 0.575],
-			scale: [0.445, 0.445],
+			position: [0, 0],
+			translation: [0.71, 0.55],
+			scale: [0.615, 0.615],
 			rotation: utils.degToRad(0),
 		},
 	},
@@ -225,19 +225,19 @@ const WINGS = {
 		wingClass: wings.ws11,
 		options: {
 			name: 'ws11',
-			position: [0, 1],
+			position: [0, 0],
 			translation: [0.375, 0.715],
-			scale: [0.22, 0.22],
-			rotation: utils.degToRad(32.5),
+			scale: [0.325, 0.325],
+			rotation: utils.degToRad(31),
 		},
 	},
 	ws12: {
 		wingClass: wings.ws12,
 		options: {
 			name: 'ws12',
-			position: [0, 1],
-			translation: [0.955, 0.595],
-			scale: [0.665, 0.665],
+			position: [0, 0],
+			translation: [0.925, 0.595],
+			scale: [0.875, 0.875],
 			rotation: utils.degToRad(0),
 		},
 	},
@@ -245,9 +245,9 @@ const WINGS = {
 		wingClass: wings.ws13,
 		options: {
 			name: 'ws13',
-			position: [0, 1],
-			translation: [0.935, 0.665],
-			scale: [0.4025, 0.4025],
+			position: [0, 0],
+			translation: [0.925, 0.655],
+			scale: [0.555, 0.555],
 			rotation: utils.degToRad(0),
 		},
 	},
@@ -255,9 +255,9 @@ const WINGS = {
 		wingClass: wings.ws14,
 		options: {
 			name: 'ws14',
-			position: [0, 1],
+			position: [0, 0],
 			translation: [0.925, 0.655],
-			scale: [0.4, 0.4],
+			scale: [0.526, 0.526],
 			rotation: utils.degToRad(0),
 		},
 	},
@@ -265,19 +265,19 @@ const WINGS = {
 		wingClass: wings.ws15,
 		options: {
 			name: 'ws15',
-			position: [0, 1],
-			translation: [0.655, 0.45],
-			scale: [0.905, 0.905],
-			rotation: utils.degToRad(46.75),
+			position: [0, 0],
+			translation: [0.6375, 0.465],
+			scale: [1.215, 1.215],
+			rotation: utils.degToRad(48.5),
 		},
 	},
 	ws16: {
 		wingClass: wings.ws16,
 		options: {
 			name: 'ws16',
-			position: [0, 1],
+			position: [0, 0],
 			translation: [0.635, 0.45],
-			scale: [0.845, 0.845],
+			scale: [1.15, 1.15],
 			rotation: utils.degToRad(46.75),
 		},
 	},
@@ -285,10 +285,10 @@ const WINGS = {
 		wingClass: wings.ws17,
 		options: {
 			name: 'ws17',
-			position: [0, 1],
-			translation: [0.555, 0.5],
-			scale: [0.775, 0.775],
-			rotation: utils.degToRad(46.75),
+			position: [0, 0],
+			translation: [0.5025, 0.5075],
+			scale: [0.585, 0.585],
+			rotation: utils.degToRad(48.75),
 		},
 	},
 }
