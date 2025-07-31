@@ -63,7 +63,7 @@ export default class WabiSabi17 extends Wing {
 		let distance = magnitude / featherCount
 
 		for (let step = 0; step < featherCount; step++) {
-			insertionDistance = distance * step
+			insertionDistance = distance * this.scaleMagnitude(step)
 
 			if (this.currentStep === 1) {
 				featherAngle = utils.degToRad(
@@ -82,7 +82,7 @@ export default class WabiSabi17 extends Wing {
 			}
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
-				this.scaleMagnitude(featherMagnitude + step * 50),
+				featherMagnitude + this.scaleMagnitude(step * 50),
 				angle * featherAngle,
 			)
 
