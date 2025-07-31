@@ -1,3 +1,4 @@
+import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
@@ -5,6 +6,9 @@ export default class WingXp6 extends Wing {
 	constructor({
 		name = 'xp6',
 		position,
+		translation = [0.9, 0.6],
+		scale = [1, 1],
+		rotation = utils.degToRad(0),
 		direction,
 		step,
 		layers,
@@ -20,6 +24,9 @@ export default class WingXp6 extends Wing {
 		super({
 			name,
 			position,
+			translation,
+			scale,
+			rotation,
 			direction,
 			step,
 			layers,
@@ -47,7 +54,7 @@ export default class WingXp6 extends Wing {
 
 		let insertionOrigin
 		let insertionDistance = 0
-		let featherMagnitude = 100
+		let featherMagnitude = this.scaleMagnitude(100)
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
@@ -68,7 +75,7 @@ export default class WingXp6 extends Wing {
 			featherVectors.push(...insertionOrigin)
 
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
-				featherMagnitude + step * 10,
+				featherMagnitude + this.scaleMagnitude(step * 10),
 				featherAngle,
 			)
 

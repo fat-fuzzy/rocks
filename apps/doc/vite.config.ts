@@ -1,8 +1,9 @@
 import {sveltekit} from '@sveltejs/kit/vite'
+import devtoolsJson from 'vite-plugin-devtools-json'
 import type {UserConfig} from 'vite'
 
 const config: UserConfig = {
-	plugins: [sveltekit()],
+	plugins: [sveltekit(), devtoolsJson()],
 	build: {
 		target: 'esnext',
 		commonjsOptions: {transformMixedEsModules: true},

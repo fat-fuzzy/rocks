@@ -45,6 +45,11 @@ const config = {
 	build: {
 		target: 'esnext',
 	},
+	vitePlugin: {
+		inspector: {
+			toggleKeyCombo: 'meta-shift-G',
+		},
+	},
 }
 
 export default config

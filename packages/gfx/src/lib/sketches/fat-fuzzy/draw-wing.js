@@ -1,4 +1,4 @@
-import matrices from '../../../math/matrices'
+import matrices from '../../math/matrices'
 
 const {M3} = matrices
 
