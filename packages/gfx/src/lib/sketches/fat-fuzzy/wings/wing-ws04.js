@@ -2,9 +2,9 @@ import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
-export default class WabiSabi extends Wing {
+export default class WabiSabi04 extends Wing {
 	constructor({
-		name = 'ws05',
+		name = 'ws04',
 		position,
 		translation = [0.4875, 0.275],
 		scale = [0.565, 0.565],

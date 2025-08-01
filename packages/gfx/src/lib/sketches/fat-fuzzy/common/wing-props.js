@@ -1,5 +1,5 @@
-import wings from './wings/index'
-import utils from '../../math/utils.js'
+import wings from '../wings/index'
+import utils from '../../../math/utils.js'
 
 const BONES = {
 	magnitude: [160, 220, 200, 100, 60], // Bone magnitudes (=length in px)
@@ -313,4 +313,29 @@ function getWingProps(wingName) {
 	}
 }
 
-export {getWingProps}
+function createWing(wingName, canvas) {
+	const wingOptions = getWingProps(wingName)
+	if (!wingOptions) {
+		console.warn(`Wing class ${wingName} not found`)
+		return null
+	}
+
+	const WingClass = wingOptions.wingClass
+
+	if (typeof WingClass !== 'function') {
+		console.warn(`Wing class ${wingName} is not a function`)
+		return null
+	}
+
+	const wing = new WingClass({
+		...wingOptions.options,
+		canvasWidth: canvas.width,
+		canvasHeight: canvas.height,
+	})
+	wing.init(canvas.width, canvas.height)
+	wingName = wing.name
+
+	return wing
+}
+
+export {createWing}
