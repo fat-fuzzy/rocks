@@ -21,7 +21,7 @@
 	import GeometryControls from '$lib/components/menus/GeometryControls.svelte'
 	import Debug from '$lib/components/debug/Debug.svelte'
 
-	import {DEFAULT_FILTERS, DEFAULT_GRID} from './definitions.js'
+	import {DEFAULT_FILTERS} from './definitions.js'
 	import actor from './actor.svelte'
 
 	const {Feedback} = ui.blocks
@@ -358,7 +358,7 @@
 								{#key resetEvent}
 									<GridControls
 										id={`${id}-grid-controls`}
-										gridItems={meta.grid ?? DEFAULT_GRID}
+										gridItems={meta.grid ?? []}
 										onupdate={updateGrid}
 									/>
 								{/key}

@@ -2,7 +2,6 @@
 	import type {GridControlProps} from '$types'
 	import ui from '@fat-fuzzy/ui'
 	import actor from '$lib/components/sketch/actor.svelte'
-	import {DEFAULT_GRID} from '$lib/components/sketch/definitions.js'
 
 	const {ToggleMenu} = ui.recipes
 
@@ -17,13 +16,13 @@
 		})) || [],
 	)
 
-	let items = $state(DEFAULT_GRID)
+	let items: string[] = $state([])
 
 	function loadGrid(selected: {name: string}[]) {
 		if (selected.length > 0) {
 			items = selected.map((s) => s.name)
 		} else {
-			items = DEFAULT_GRID
+			items = []
 		}
 	}
 
