@@ -5,6 +5,7 @@ import Wing from './wing.js'
 export default class WingBase03 extends Wing {
 	constructor({
 		name,
+		group,
 		position,
 		translation = [0.945, 0.6],
 		scale = [1.1, 1.1],
@@ -23,6 +24,7 @@ export default class WingBase03 extends Wing {
 	}) {
 		super({
 			name,
+			group,
 			position,
 			scale,
 			translation,

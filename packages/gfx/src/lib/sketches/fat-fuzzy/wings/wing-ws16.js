@@ -5,6 +5,7 @@ import Wing from './wing.js'
 export default class WabiSabi16 extends Wing {
 	constructor({
 		name = 'ws16',
+		group,
 		position,
 		translation = [0.635, 0.45],
 		scale = [0.845, 0.845],
@@ -23,6 +24,7 @@ export default class WabiSabi16 extends Wing {
 	}) {
 		super({
 			name,
+			group,
 			position,
 			translation,
 			scale,

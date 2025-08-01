@@ -3,6 +3,7 @@ import vectors from '../../../math/vectors'
 
 export default class Wing {
 	name
+	group
 	// Context
 	position
 	translation
@@ -53,6 +54,7 @@ export default class Wing {
 	 */
 	constructor({
 		name,
+		group,
 		position,
 		translation,
 		scale,
@@ -70,6 +72,7 @@ export default class Wing {
 		canvasHeight,
 	}) {
 		this.name = name
+		this.group = group
 		// Context
 		this.position = position
 		this.scale = scale

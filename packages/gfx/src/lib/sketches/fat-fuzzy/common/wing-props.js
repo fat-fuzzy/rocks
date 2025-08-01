@@ -95,6 +95,7 @@ const WINGS = {
 		wingClass: wings.base1,
 		options: {
 			name: 'base1',
+			group: 'seed',
 			position: [0, 0],
 			translation: [0.905, 0.625],
 			scale: [2.25, 2.25],
@@ -105,6 +106,7 @@ const WINGS = {
 		wingClass: wings.base2,
 		options: {
 			name: 'base2',
+			group: 'seed',
 			position: [0, 0],
 			translation: [0.905, 0.625],
 			scale: [2.25, 2.25],
@@ -115,6 +117,7 @@ const WINGS = {
 		wingClass: wings.base3,
 		options: {
 			name: 'base3',
+			group: 'seed',
 			position: [0, 0],
 			translation: [0.905, 0.625],
 			scale: [2.25, 2.25],
@@ -125,6 +128,7 @@ const WINGS = {
 		wingClass: wings.ws01,
 		options: {
 			name: 'ws01',
+			group: 'ether',
 			position: [0, 0],
 			translation: [0.75, 0.0275],
 			scale: [0.1, 0.1],
@@ -135,6 +139,7 @@ const WINGS = {
 		wingClass: wings.ws02,
 		options: {
 			name: 'ws02',
+			group: 'blade',
 			position: [0, 0],
 			translation: [0.635, 0.565],
 			scale: [0.7925, 0.7925],
@@ -145,6 +150,7 @@ const WINGS = {
 		wingClass: wings.ws03,
 		options: {
 			name: 'ws03',
+			group: 'blade',
 			position: [0, 0],
 			translation: [0.775, 0.55],
 			scale: [1.1, 1.1],
@@ -155,6 +161,7 @@ const WINGS = {
 		wingClass: wings.ws04,
 		options: {
 			name: 'ws04',
+			group: 'antinomy',
 			position: [0, 0],
 			translation: [0.495, 0.275],
 			scale: [0.775, 0.775],
@@ -165,6 +172,7 @@ const WINGS = {
 		wingClass: wings.ws05,
 		options: {
 			name: 'ws05',
+			group: 'planar',
 			position: [0, 0],
 			translation: [0.805, 0.535],
 			scale: [1.275, 1.275],
@@ -175,6 +183,7 @@ const WINGS = {
 		wingClass: wings.ws06,
 		options: {
 			name: 'ws06',
+			group: 'endurance',
 			position: [0, 0],
 			translation: [0.895, 0.535],
 			scale: [0.775, 0.775],
@@ -185,6 +194,7 @@ const WINGS = {
 		wingClass: wings.ws07,
 		options: {
 			name: 'ws07',
+			group: 'antinomy',
 			position: [0, 0],
 			translation: [0.835, 0.475],
 			scale: [0.745, 0.745],
@@ -195,6 +205,7 @@ const WINGS = {
 		wingClass: wings.ws08,
 		options: {
 			name: 'ws08',
+			group: 'endurance',
 			position: [0, 0],
 			translation: [0.935, 0.53],
 			scale: [0.8, 0.8],
@@ -205,6 +216,7 @@ const WINGS = {
 		wingClass: wings.ws09,
 		options: {
 			name: 'ws09',
+			group: 'orbital',
 			position: [0, 0],
 			translation: [0.565, 0.525],
 			scale: [0.845, 0.845],
@@ -215,6 +227,7 @@ const WINGS = {
 		wingClass: wings.ws10,
 		options: {
 			name: 'ws10',
+			group: 'blade',
 			position: [0, 0],
 			translation: [0.71, 0.55],
 			scale: [0.615, 0.615],
@@ -225,6 +238,7 @@ const WINGS = {
 		wingClass: wings.ws11,
 		options: {
 			name: 'ws11',
+			group: 'ether',
 			position: [0, 0],
 			translation: [0.375, 0.715],
 			scale: [0.325, 0.325],
@@ -235,6 +249,7 @@ const WINGS = {
 		wingClass: wings.ws12,
 		options: {
 			name: 'ws12',
+			group: 'sail',
 			position: [0, 0],
 			translation: [0.925, 0.595],
 			scale: [0.875, 0.875],
@@ -245,6 +260,7 @@ const WINGS = {
 		wingClass: wings.ws13,
 		options: {
 			name: 'ws13',
+			group: 'sail',
 			position: [0, 0],
 			translation: [0.925, 0.655],
 			scale: [0.555, 0.555],
@@ -255,6 +271,7 @@ const WINGS = {
 		wingClass: wings.ws14,
 		options: {
 			name: 'ws14',
+			group: 'sail',
 			position: [0, 0],
 			translation: [0.925, 0.655],
 			scale: [0.526, 0.526],
@@ -265,6 +282,7 @@ const WINGS = {
 		wingClass: wings.ws15,
 		options: {
 			name: 'ws15',
+			group: 'blade',
 			position: [0, 0],
 			translation: [0.6375, 0.465],
 			scale: [1.215, 1.215],
@@ -275,6 +293,7 @@ const WINGS = {
 		wingClass: wings.ws16,
 		options: {
 			name: 'ws16',
+			group: 'planar',
 			position: [0, 0],
 			translation: [0.635, 0.45],
 			scale: [1.15, 1.15],
@@ -285,6 +304,7 @@ const WINGS = {
 		wingClass: wings.ws17,
 		options: {
 			name: 'ws17',
+			group: 'orbital',
 			position: [0, 0],
 			translation: [0.5025, 0.5075],
 			scale: [0.585, 0.585],
