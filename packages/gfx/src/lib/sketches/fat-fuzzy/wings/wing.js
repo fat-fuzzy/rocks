@@ -40,9 +40,12 @@ export default class Wing {
 	angles
 
 	/**
-	 * @param {*} wing state = {
+	 * @param {*} wingOptions = {
 			name: string,
 			position: number[],
+			translation: number[],
+			scale: number[],
+			rotation: number[],
 			direction: number,
 			step: number,
 			layers: number,
@@ -50,6 +53,10 @@ export default class Wing {
 			pause: number,
 			bones: { magnitude: number[], beginning: number[], middle: number[], end: number[] },
 			feathers: { sections: { featherCount: number, beginning: number, middle: number, end: number }[] },
+			colors, // colors functions
+			drawFeathers: boolean,
+			canvasWidth,
+			canvasHeight,
 		}
 	 */
 	constructor({

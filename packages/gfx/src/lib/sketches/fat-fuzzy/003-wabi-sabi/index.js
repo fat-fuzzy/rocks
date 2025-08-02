@@ -32,7 +32,6 @@ let meta = {
 	asset: 'phoenix',
 	background: 'dark',
 	dimensions: 'rect-xs',
-	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
