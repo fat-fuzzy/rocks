@@ -19,6 +19,7 @@ import ws14 from './wing-ws14.js'
 import ws15 from './wing-ws15.js'
 import ws16 from './wing-ws16.js'
 import ws17 from './wing-ws17.js'
+import ws18 from './wing-ws18.js'
 
 const wings = {
 	base1,
@@ -41,6 +42,7 @@ const wings = {
 	ws15,
 	ws16,
 	ws17,
+	ws18,
 }
 
 export default wings

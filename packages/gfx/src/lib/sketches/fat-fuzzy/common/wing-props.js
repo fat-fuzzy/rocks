@@ -331,6 +331,18 @@ const WINGS = {
 			rotation: utils.degToRad(48.75),
 		},
 	},
+	ws18: {
+		wingClass: wings.ws18,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws18',
+			group: 'orbital',
+			position: [0, 0],
+			translation: [0.63, 0.465],
+			scale: [1.22, 1.22],
+			rotation: utils.degToRad(48.75),
+		},
+	},
 }
 
 function getWingProps(wingName) {
