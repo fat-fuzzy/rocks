@@ -48,6 +48,8 @@ export type PlayerProps = {
 	color?: string
 	disabled?: boolean
 	initial?: string
+	canvas?: HTMLCanvasElement
+
 	play: (payload: {event: PlayerEvent}) => void
 	pause: (payload: {event: PlayerEvent}) => void
 	clear: (payload: {event: PlayerEvent}) => void

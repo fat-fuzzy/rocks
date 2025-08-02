@@ -78,6 +78,7 @@ export enum PlayerEvent {
 	pause = 'pause',
 	clear = 'clear',
 	stop = 'stop',
+	snap = 'snap',
 	loadOk = 'loadOk',
 }
 
@@ -86,6 +87,7 @@ export enum PlayerAction {
 	pause = 'pause',
 	clear = 'clear',
 	stop = 'stop',
+	snap = 'snap',
 }
 
 export enum PlayerError {

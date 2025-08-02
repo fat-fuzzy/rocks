@@ -45,7 +45,7 @@
 	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
 	let debug = dev
 	let filters: Filters = $state(DEFAULT_FILTERS)
-	let canvas: HTMLCanvasElement | null = $state(null)
+	let canvas: HTMLCanvasElement | undefined = $state(undefined)
 	let sceneContext: SceneContext = $state({})
 	let title = meta.title
 	let asset = meta.asset
@@ -305,6 +305,7 @@
 		<div class="maki:block w:full raviolink">
 			{#if canvas}
 				<Player
+					{canvas}
 					play={updateCanvas}
 					pause={updateCanvas}
 					clear={updateCanvas}
