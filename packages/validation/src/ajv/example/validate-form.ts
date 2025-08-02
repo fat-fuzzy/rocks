@@ -7,8 +7,14 @@ const {sanitize, validate} = validations
  * Use this Class to provide frontend validation capabilities to a form rendered by the server.
  * @param {string} formId The id of the <form> element
  * @param {FormData} formData The form data object
- * @param {string} validationFunctionName The name of the AJV validation function to use, generated using the package `@fat-fuzzy/validation` (`SignUpValidationFunction` is the default validation function for the sample SignUp form component). To Change the default validation function or add a new function, you must modify the `@fat-fuzzy/validation` package (TODO: define schemas in apps): add the schema of the form to `ajv.schema.forms.js` and rebuild the package
- * @returns a validation class with utility methods to validate the form and fields, check and manage field statuses, and manage feedback messages
+ * @param {string} validationFunctionName The name of the AJV validation function to use,
+ * generated using the package `@fat-fuzzy/validation`
+ * `SignUpValidationFunction` is the default validation function for the sample SignUp component.
+ * To Change the default validation function or add a new function, you must modify the
+ * `@fat-fuzzy/validation` package (TODO: define schemas in apps):
+ * - add the schema of the form to `ajv.schema.forms.js` and rebuild the package
+ * @returns a validation class with utility methods to validate the form and fields,
+ * check and manage field statuses, and manage feedback messages
  */
 class FormValidator implements IFormValidator {
 	form: {[key: string]: any} = {}
@@ -42,8 +48,11 @@ class FormValidator implements IFormValidator {
 
 	async init(formData: FormData, fields: {[name: string]: string}) {
 		if (!formData) {
-			// We shouldn't reach this state: the data should be available, or the server should have returned an error before reaching this point and the form should not have been rendered
-			// console.error('Error fetching form data')
+			/* We shouldn't reach this state: the data should be available,
+			 * or the server should have returned an error before reaching
+			 * this point and the form should not have been rendered
+			 * console.error('Error fetching form data')
+			 */
 		} else {
 			this.inputTypes = fields
 			for (const [name, value] of formData) {
@@ -128,8 +137,10 @@ class FormValidator implements IFormValidator {
 			const name = event.target.name
 			this.form[name].changed = true
 		}
-		// validate the field when it changes: remove this if you want to validate the form only on `blur` or `submit` events
-		// Use a debounce mechanism for slow/complex/async validations (e.g. API calls)
+		/* Validate the field when it changes:
+		 * remove this if you want to validate the form only on `blur` or `submit` events
+		 * Use a debounce mechanism for slow/complex/async validations (e.g. API calls)
+		 */
 		this.validateInput(event)
 	}
 }
