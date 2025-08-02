@@ -18,7 +18,29 @@
 		clear,
 		stop,
 		init,
+		canvas,
 	}: PlayerProps = $props()
+
+	let blobLink: HTMLAnchorElement | undefined = $state(undefined)
+	let blobUrl: string | undefined = $state(undefined)
+	let blobName: string | undefined = $state(undefined)
+	let downloadSnap = $derived(actor.getCurrentEvent() === PlayerEvent.snap)
+
+	// $effect(() => {
+	// 	const currentEvent = actor.getCurrentEvent()
+	// 	const previousEvent = actor.getPreviousEvent()
+
+	// 	console.log(
+	// 		`Current Event: ${currentEvent}, Previous Event: ${previousEvent}`,
+	// 	)
+
+	// 	downloadSnap = currentEvent === PlayerEvent.pause
+	// 	currentEvent === PlayerEvent.snap ||
+	// 		currentEvent === PlayerEvent.play ||
+	// 		previousEvent === PlayerEvent.pause ||
+	// 		previousEvent === PlayerEvent.play ||
+	// 		previousEvent === PlayerEvent.snap
+	// })
 
 	function updatePlayer(payload: {value?: string | number}) {
 		let event = payload.value as PlayerEvent
@@ -28,6 +50,7 @@
 					? PlayerEvent.pause
 					: PlayerEvent.play
 		}
+		downloadSnap = true // TODO: this should be handled by the actor
 		switch (payload.value) {
 			case PlayerEvent.play:
 				play({event})
@@ -36,13 +59,40 @@
 				pause({event})
 				break
 			case PlayerEvent.clear:
+				blobUrl = undefined
+				blobName = undefined
 				clear({event})
 				break
 			case PlayerEvent.stop:
+				blobUrl = undefined
+				blobName = undefined
 				stop({event})
 				break
 		}
 		actor.update(event as PlayerEvent)
+	}
+
+	function takeSnapshot() {
+		if (canvas) {
+			canvas.toBlob(
+				(blob: Blob | null) => {
+					if (blob) {
+						saveBlob()(blob, canvas)
+					}
+				},
+				'image/jpeg',
+				1,
+			)
+		}
+		actor.update(PlayerEvent.snap)
+		downloadSnap = true // TODO: this should be handled by the actor
+	}
+
+	function saveBlob() {
+		return function saveData(blob: Blob, canvas: HTMLCanvasElement) {
+			blobUrl = window.URL.createObjectURL(blob)
+			blobName = `snap-${canvas.width}x${canvas.height}-${Date.now()}`
+		}
 	}
 
 	onMount(() => {
@@ -97,6 +147,23 @@
 		</li>
 		<li>
 			<Button
+				id="snap"
+				name="snap"
+				color="neutral"
+				{variant}
+				{size}
+				{font}
+				shape="pill w:full"
+				value="snap"
+				asset="snap"
+				onclick={takeSnapshot}
+				disabled={actor.getSnapDisabled()}
+			>
+				snap
+			</Button>
+		</li>
+		<li>
+			<Button
 				id="stop"
 				name="stop"
 				color="highlight"
@@ -111,6 +178,18 @@
 			>
 				stop
 			</Button>
+		</li>
+		<li class="w:full text:center">
+			{#if blobUrl && blobName && downloadSnap}
+				<a
+					bind:this={blobLink}
+					href={blobUrl}
+					download={blobName}
+					class="font:xs raviolink"
+				>
+					Download snapshot
+				</a>
+			{/if}
 		</li>
 	</menu>
 </div>
