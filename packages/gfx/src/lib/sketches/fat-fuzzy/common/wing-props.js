@@ -367,6 +367,30 @@ const WINGS = {
 			rotation: utils.degToRad(40.75),
 		},
 	},
+	ws21: {
+		wingClass: wings.ws21,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws21',
+			group: 'ether',
+			position: [0, 0],
+			translation: [0.82775, 0.475],
+			scale: [0.105, 0.105],
+			rotation: utils.degToRad(50),
+		},
+	},
+	ws22: {
+		wingClass: wings.ws22,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws22',
+			group: 'endurance',
+			position: [0, 0],
+			translation: [0.895, 0.575],
+			scale: [0.775, 0.775],
+			rotation: utils.degToRad(5),
+		},
+	},
 }
 
 function getWingProps(wingName) {
