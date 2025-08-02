@@ -355,6 +355,18 @@ const WINGS = {
 			rotation: utils.degToRad(0),
 		},
 	},
+	ws20: {
+		wingClass: wings.ws20,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws20',
+			group: 'planar',
+			position: [0, 0],
+			translation: [0.585, 0.505],
+			scale: [0.8725, 0.8725],
+			rotation: utils.degToRad(40.75),
+		},
+	},
 }
 
 function getWingProps(wingName) {
