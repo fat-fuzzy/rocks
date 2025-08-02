@@ -180,7 +180,7 @@ const WINGS = {
 		collection: 'wabi-sabi',
 		options: {
 			name: 'ws05',
-			group: 'planar',
+			group: 'flora',
 			position: [0, 0],
 			translation: [0.805, 0.535],
 			scale: [1.275, 1.275],
@@ -192,7 +192,7 @@ const WINGS = {
 		collection: 'wabi-sabi',
 		options: {
 			name: 'ws06',
-			group: 'endurance',
+			group: 'adamant',
 			position: [0, 0],
 			translation: [0.895, 0.535],
 			scale: [0.775, 0.775],
@@ -216,7 +216,7 @@ const WINGS = {
 		collection: 'wabi-sabi',
 		options: {
 			name: 'ws08',
-			group: 'endurance',
+			group: 'adamant',
 			position: [0, 0],
 			translation: [0.935, 0.53],
 			scale: [0.8, 0.8],
@@ -312,7 +312,7 @@ const WINGS = {
 		collection: 'wabi-sabi',
 		options: {
 			name: 'ws16',
-			group: 'planar',
+			group: 'flora',
 			position: [0, 0],
 			translation: [0.635, 0.45],
 			scale: [1.15, 1.15],
@@ -360,7 +360,7 @@ const WINGS = {
 		collection: 'wabi-sabi',
 		options: {
 			name: 'ws20',
-			group: 'planar',
+			group: 'flora',
 			position: [0, 0],
 			translation: [0.585, 0.505],
 			scale: [0.8725, 0.8725],
@@ -384,7 +384,7 @@ const WINGS = {
 		collection: 'wabi-sabi',
 		options: {
 			name: 'ws22',
-			group: 'endurance',
+			group: 'adamant',
 			position: [0, 0],
 			translation: [0.895, 0.575],
 			scale: [0.775, 0.775],
