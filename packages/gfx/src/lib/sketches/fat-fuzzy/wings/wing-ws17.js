@@ -24,6 +24,7 @@ export default class WabiSabi17 extends Wing {
 	}) {
 		super({
 			name,
+			group,
 			position,
 			translation,
 			scale,
