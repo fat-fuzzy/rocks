@@ -496,14 +496,7 @@ function generateWingsGrid(collection) {
 		const largestGroup = sortedGroups[0]
 		const secondLargestGroup = sortedGroups.length > 1 ? sortedGroups[1] : null
 
-		if (
-			largestGroup[0] !== lastGroupName &&
-			secondLargestGroup &&
-			secondLargestGroup[0] !== lastGroupName
-		) {
-			const groupIndex = utils.randomInt(1)
-			selectedGroup = sortedGroups[groupIndex]
-		} else if (largestGroup[0] !== lastGroupName) {
+		if (largestGroup[0] !== lastGroupName) {
 			selectedGroup = largestGroup
 		} else {
 			selectedGroup = secondLargestGroup
