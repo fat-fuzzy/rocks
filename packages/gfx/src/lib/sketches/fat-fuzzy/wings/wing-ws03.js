@@ -1,46 +1,12 @@
-import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
 export default class WabiSabi03 extends Wing {
-	constructor({
-		name = 'ws03',
-		group,
-		position,
-		translation = [0.775, 0.55],
-		scale = [0.785, 0.785],
-		rotation = utils.degToRad(0),
-		direction,
-		step,
-		layers,
-		steps,
-		pause,
-		bones,
-		feathers,
-		colors,
-		drawFeathers,
-		canvasWidth,
-		canvasHeight,
-	}) {
-		super({
-			name,
-			group,
-			position,
-			scale,
-			translation,
-			rotation,
-			direction,
-			step,
-			layers,
-			steps,
-			pause,
-			bones,
-			feathers,
-			colors,
-			drawFeathers,
-			canvasWidth,
-			canvasHeight,
-		})
+	/**
+	 * @param {Object} wingOptions (see ./wing.js)
+	 */
+	constructor(options) {
+		super(options)
 	}
 
 	/**

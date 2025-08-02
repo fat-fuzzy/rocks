@@ -1,8 +1,10 @@
-import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
 export default class WabiSabi19 extends Wing {
+	/**
+	 * @param {Object} wingOptions (see ./wing.js)
+	 */
 	constructor(options) {
 		super(options)
 	}

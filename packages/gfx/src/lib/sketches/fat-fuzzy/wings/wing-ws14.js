@@ -3,44 +3,11 @@ import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
 export default class WabiSabi14 extends Wing {
-	constructor({
-		name = 'ws14',
-		group,
-		position,
-		translation = [0.925, 0.655],
-		scale = [0.4, 0.4],
-		rotation = utils.degToRad(0),
-		direction,
-		step,
-		layers,
-		steps,
-		pause,
-		bones,
-		feathers,
-		colors,
-		drawFeathers,
-		canvasWidth,
-		canvasHeight,
-	}) {
-		super({
-			name,
-			group,
-			position,
-			translation,
-			rotation,
-			scale,
-			direction,
-			step,
-			layers,
-			steps,
-			pause,
-			bones,
-			feathers,
-			colors,
-			drawFeathers,
-			canvasWidth,
-			canvasHeight,
-		})
+	/**
+	 * @param {Object} wingOptions (see ./wing.js)
+	 */
+	constructor(options) {
+		super(options)
 	}
 
 	/**
