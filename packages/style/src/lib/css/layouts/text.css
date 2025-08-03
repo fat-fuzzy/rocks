@@ -19,7 +19,7 @@
 
 [class*='l:text'] > * {
 	inline-size: 100%;
-	max-inline-size: calc(100% - var(--gap, var(--ui-size)));
+	max-inline-size: calc(100% - var(var(--grid-gap, --gap), var(--ui-size)));
 }
 
 [class^='l:text'] > * + h1,
