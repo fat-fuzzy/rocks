@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.59
+
+### Patch Changes
+
+- Enable snapshot, add new Wings, cleanup
+
 ## 0.1.58
 
 ### Patch Changes
