@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.19
+
+### Patch Changes
+
+- Enable snapshot, add new Wings, cleanup
+
 ## 0.1.18
 
 ### Patch Changes
