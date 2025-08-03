@@ -66,8 +66,7 @@
 .canvas[class*='clear']::before,
 .canvas[class*='pause']::before,
 .canvas[class*='warning']::before,
-.state\:freeze canvas::before,
-.state\:snapshot canvas::before {
+.canvas[class*='snap']::before {
 	display: none;
 }
 
