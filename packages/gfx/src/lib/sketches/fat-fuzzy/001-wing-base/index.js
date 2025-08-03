@@ -5,13 +5,13 @@
  ***********************
  */
 import dom from '../../../dom'
-import {getWingProps} from '../wing-props'
+import {createWing} from '../common/wing-props'
 import setup from '../../../webgl/setup'
-import {drawScene} from '../draw-wing'
+import {drawScene} from '../common/draw-wing'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
-import {frag} from './shaders/fragment-shader'
-import {vert} from './shaders/vertex-shader-2d'
+import {frag} from '../shaders/fragment-shader'
+import {vert} from '../shaders/vertex-shader-2d'
 
 let gl
 let program
@@ -40,31 +40,6 @@ let meta = {
 
 let currentWing
 let wingName = meta.grid[0]
-
-function createWing(wingName, canvas) {
-	const wingOptions = getWingProps(wingName)
-	if (!wingOptions) {
-		console.warn(`Wing class ${wingName} not found`)
-		return null
-	}
-
-	const WingClass = wingOptions.wingClass
-
-	if (typeof WingClass !== 'function') {
-		console.warn(`Wing class ${wingName} is not a function`)
-		return null
-	}
-
-	const wing = new WingClass({
-		...wingOptions.options,
-		canvasWidth: canvas.width,
-		canvasHeight: canvas.height,
-	})
-	wing.init(canvas.width, canvas.height)
-	wingName = wing.name
-
-	return wing
-}
 
 function init(canvas) {
 	// Initialize the GL context
@@ -145,7 +120,7 @@ function update(sceneContext) {
 			wingName = grid[0]
 			if (!wingName) {
 				console.warn(`Wing ${grid[0]} not found`)
-				return
+				wingName = meta.grid[0]
 			}
 
 			clear()

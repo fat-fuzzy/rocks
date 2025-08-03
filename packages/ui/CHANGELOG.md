@@ -1,5 +1,23 @@
 # @fat-fuzzy/ui
 
+## 0.1.72
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+- Updated dependencies [b5af28e]
+  - @fat-fuzzy/validation@0.1.9
+  - @fat-fuzzy/config@0.1.15
+  - @fat-fuzzy/style@0.1.20
+
+## 0.1.71
+
+### Patch Changes
+
+- Updated dependencies
+  - @fat-fuzzy/validation@0.1.8
+  - @fat-fuzzy/style@0.1.19
+
 ## 0.1.70
 
 ### Patch Changes

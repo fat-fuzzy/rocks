@@ -5,13 +5,13 @@
  ***********************
  */
 import dom from '../../../dom'
-import {getWingProps} from '../wing-props'
+import {createWing, generateWingsGrid} from '../common/wing-props'
 import setup from '../../../webgl/setup'
-import {drawScene} from '../draw-wing'
+import {drawScene} from '../common/draw-wing'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
 
-import {frag} from './shaders/fragment-shader'
-import {vert} from './shaders/vertex-shader-2d'
+import {frag} from '../shaders/fragment-shader'
+import {vert} from '../shaders/vertex-shader-2d'
 
 let gl
 let program
@@ -32,57 +32,13 @@ let meta = {
 	asset: 'phoenix',
 	background: 'dark',
 	dimensions: 'rect-xs',
-	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
-	grid: [
-		'ws01',
-		'ws02',
-		'ws03',
-		'ws04',
-		'ws05',
-		'ws06',
-		'ws07',
-		'ws08',
-		'ws09',
-		'ws10',
-		'ws11',
-		'ws12',
-		'ws13',
-		'ws14',
-		'ws15',
-		'ws16',
-		'ws17',
-	],
+	grid: generateWingsGrid('wabi-sabi'),
 }
 let currentWing
 let wingName = meta.grid[0]
-
-function createWing(wingName, canvas) {
-	const wingOptions = getWingProps(wingName)
-	if (!wingOptions) {
-		console.warn(`Wing class ${wingName} not found`)
-		return null
-	}
-
-	const WingClass = wingOptions.wingClass
-
-	if (typeof WingClass !== 'function') {
-		console.warn(`Wing class ${wingName} is not a function`)
-		return null
-	}
-
-	const wing = new WingClass({
-		...wingOptions.options,
-		canvasWidth: canvas.width,
-		canvasHeight: canvas.height,
-	})
-	wing.init(canvas.width, canvas.height)
-	wingName = wing.name
-
-	return wing
-}
 
 function init(canvas) {
 	// Initialize the GL context
@@ -163,10 +119,11 @@ function update(sceneContext) {
 			wingName = grid[0]
 			if (!wingName) {
 				console.warn(`Wing ${grid[0]} not found`)
-				return
+				wingName = meta.grid[0]
 			}
 
 			clear()
+
 			currentWing = createWing(wingName, gl.canvas)
 		}
 	}
@@ -199,6 +156,8 @@ function stop() {
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 	currentWing = null
+
+	meta.grid = generateWingsGrid('wabi-sabi')
 	wingName = meta.grid[0]
 }
 

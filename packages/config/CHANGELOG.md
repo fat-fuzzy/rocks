@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.15
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+
 ## 0.1.14
 
 ### Patch Changes

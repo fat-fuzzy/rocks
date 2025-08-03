@@ -1,5 +1,17 @@
 # @fat-fuzzy/style
 
+## 0.1.20
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+
+## 0.1.19
+
+### Patch Changes
+
+- Enable snapshot, add new Wings, cleanup
+
 ## 0.1.18
 
 ### Patch Changes

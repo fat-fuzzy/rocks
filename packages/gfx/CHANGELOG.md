@@ -1,5 +1,17 @@
 # @fat-fuzzy/lib
 
+## 0.1.10
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+
+## 0.1.9
+
+### Patch Changes
+
+- Enable snapshot, add new Wings, cleanup
+
 ## 0.1.8
 
 ### Patch Changes

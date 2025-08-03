@@ -1,44 +1,12 @@
-import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
 export default class WingBase01 extends Wing {
-	constructor({
-		name,
-		position,
-		translation = [0.9, 0.6],
-		scale = [1, 1],
-		rotation = utils.degToRad(0),
-		direction,
-		step,
-		layers,
-		steps,
-		pause,
-		bones,
-		feathers,
-		colors,
-		drawFeathers = false,
-		canvasWidth,
-		canvasHeight,
-	}) {
-		super({
-			name,
-			position,
-			translation,
-			scale,
-			rotation,
-			direction,
-			step,
-			layers,
-			steps,
-			pause,
-			bones,
-			feathers,
-			colors,
-			drawFeathers,
-			canvasWidth,
-			canvasHeight,
-		})
+	/**
+	 * @param {Object} wingOptions (see ./wing.js)
+	 */
+	constructor(options) {
+		super(options)
 	}
 
 	/**
@@ -59,7 +27,7 @@ export default class WingBase01 extends Wing {
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 
-		let distance = magnitude / featherCount
+		let distance = magnitude / this.scaleMagnitude(featherCount)
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step

@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.7
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+
 ## 0.1.6
 
 ### Patch Changes

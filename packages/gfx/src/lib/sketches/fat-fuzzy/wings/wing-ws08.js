@@ -1,44 +1,12 @@
-import utils from '../../../math/utils.js'
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
 export default class WabiSabi08 extends Wing {
-	constructor({
-		name = 'ws08',
-		position,
-		translation = [0.965, 0.505],
-		scale = [0.605, 0.605],
-		rotation = utils.degToRad(12),
-		direction,
-		step,
-		layers,
-		steps,
-		pause,
-		bones,
-		feathers,
-		colors,
-		drawFeathers,
-		canvasWidth,
-		canvasHeight,
-	}) {
-		super({
-			name,
-			position,
-			translation,
-			scale,
-			rotation,
-			direction,
-			step,
-			layers,
-			steps,
-			pause,
-			bones,
-			feathers,
-			colors,
-			drawFeathers,
-			canvasWidth,
-			canvasHeight,
-		})
+	/**
+	 * @param {Object} wingOptions (see ./wing.js)
+	 */
+	constructor(options) {
+		super(options)
 	}
 
 	/**
@@ -56,7 +24,6 @@ export default class WabiSabi08 extends Wing {
 		let insertionDistance = 0
 		let featherMagnitude = this.scaleMagnitude(100)
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
-		let featherAngles = this.angles.feathers[this.currentTime]
 
 		let distance = magnitude / featherCount
 

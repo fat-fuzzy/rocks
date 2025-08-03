@@ -1,5 +1,23 @@
 # @fat-fuzzy/prose
 
+## 0.1.18
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+- Updated dependencies [b5af28e]
+  - @fat-fuzzy/config@0.1.15
+  - @fat-fuzzy/style@0.1.20
+  - @fat-fuzzy/ui@0.1.72
+
+## 0.1.17
+
+### Patch Changes
+
+- Updated dependencies
+  - @fat-fuzzy/style@0.1.19
+  - @fat-fuzzy/ui@0.1.71
+
 ## 0.1.16
 
 ### Patch Changes
