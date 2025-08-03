@@ -24,7 +24,6 @@ export default class WabiSabi08 extends Wing {
 		let insertionDistance = 0
 		let featherMagnitude = this.scaleMagnitude(100)
 		let featherCount = this.magnitudes.feathers[this.currentStep].featherCount
-		let featherAngles = this.angles.feathers[this.currentTime]
 
 		let distance = magnitude / featherCount
 

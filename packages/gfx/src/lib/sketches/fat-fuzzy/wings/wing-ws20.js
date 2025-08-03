@@ -28,10 +28,10 @@ export default class WabiSabi20 extends Wing {
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 
-		let distance = magnitude / featherCount
+		let distance = magnitude / this.scaleMagnitude(featherCount)
 
 		for (let step = 0; step < featherCount; step++) {
-			insertionDistance = distance * step
+			insertionDistance = distance * this.scaleMagnitude(step)
 
 			// Save current coordinate system
 			if (this.currentStep === 0) {
@@ -52,8 +52,8 @@ export default class WabiSabi20 extends Wing {
 
 			featherVectors.push(x, y)
 			insertionOrigin = vectors.getIntersectionPoint(
-				this.scaleMagnitude(x + 10),
-				this.scaleMagnitude(y + 10),
+				x + this.scaleMagnitude(10),
+				y + this.scaleMagnitude(10),
 				insertionDistance,
 				magnitude,
 			)

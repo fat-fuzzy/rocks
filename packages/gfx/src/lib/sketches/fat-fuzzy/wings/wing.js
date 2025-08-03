@@ -308,7 +308,7 @@ export default class Wing {
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 
-		let distance = magnitude / featherCount
+		let distance = magnitude / this.scaleMagnitude(featherCount)
 
 		let bone = this.currentStep + 1
 		for (let step = 0; step < featherCount; step++) {
