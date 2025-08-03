@@ -254,22 +254,43 @@
 	}
 
 	function saveBlob() {
-		// This will timestamp the snapshot with the current date and time (UTC)
-		// TODO:  make intl helpers for L10n (mote to @fat-fuzzy/intl	)
+		// This will timestamp the snapshot with the current date and time (local timezone)
+		// TODO:  make intl helpers for L10n (mote to @fat-fuzzy/intl	...)
 		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatToParts
-		const date = new Date(Date.now())
-		const dateString = new Intl.DateTimeFormat([], {
-			dateStyle: 'short',
-		})
+		const date = Date.now()
+		const options = {
+			year: 'numeric',
+			month: 'numeric',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			second: 'numeric',
+			fractionalSecondDigits: 3,
+		}
+		// @ts-expect-error options are OK
+		const dateParts = new Intl.DateTimeFormat([], options)
 			.formatToParts(date)
 			.filter((part) => part.type !== 'literal')
+		const dateString = dateParts
+			.splice(0, 3) // year, month, day
 			.reverse()
 			.map((part) => part.value)
 			.join('-')
+		// const dateTime = dateParts // hour, minute, second, fractionalSecondDigits
+		// 	.map((part, i) => {
+		// 		return i === 0
+		// 			? `h${part.value}`
+		// 			: i === 1
+		// 				? `m${part.value}`
+		// 				: i === 2
+		// 					? `s${part.value}`
+		// 					: `ms${part.value}`
+		// 	})
+		// 	.join('')
 
 		return function saveData(blob: Blob, canvas: HTMLCanvasElement) {
 			blobUrl = URL.createObjectURL(blob)
-			blobName = `snap-${dateString}-${canvas.width}x${canvas.height}`
+			blobName = `snap-${dateString}-${date}-${canvas.width}x${canvas.height}`
 		}
 	}
 
