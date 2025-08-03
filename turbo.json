@@ -1,23 +1,24 @@
 {
 	"$schema": "https://turbo.build/schema.json",
 	"tasks": {
-		"test": {
-			"dependsOn": [
-				"^test"
-			],
-			"outputs": [
-				"tests/e2e/test-results/**"
-			]
-		},
 		"build": {
 			"dependsOn": [
 				"^build"
 			],
 			"outputs": [
 				".svelte-kit/**",
-				".vercel/**",
+				".wrangler/**",
 				"dist/**",
 				"package/**"
+			]
+		},
+		"test": {
+			"dependsOn": [
+				"^build",
+				"^test"
+			],
+			"outputs": [
+				"tests/e2e/test-results/**"
 			]
 		},
 		"lint": {

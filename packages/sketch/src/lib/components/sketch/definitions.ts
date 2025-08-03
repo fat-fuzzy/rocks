@@ -73,11 +73,13 @@ export const SKETCH_ACTIONS: SketchActionsType = {
 			PlayerAction.pause,
 			PlayerAction.stop,
 			PlayerAction.clear,
+			PlayerAction.snap,
 		],
 		[PlayerState.paused]: [
 			PlayerAction.play,
 			PlayerAction.stop,
 			PlayerAction.clear,
+			PlayerAction.snap,
 		],
 		[PlayerState.stopped]: [PlayerAction.play],
 	},
@@ -110,11 +112,13 @@ export const SKETCH_TRANSITIONS: SketchTransitionsType = {
 			[PlayerEvent.pause]: CanvasState.paused,
 			[PlayerEvent.stop]: CanvasState.idle,
 			[PlayerEvent.clear]: CanvasState.playing,
+			[PlayerEvent.snap]: CanvasState.playing,
 		},
 		[CanvasState.paused]: {
 			[PlayerEvent.play]: CanvasState.playing,
 			[PlayerEvent.stop]: CanvasState.idle,
 			[PlayerEvent.clear]: CanvasState.paused,
+			[PlayerEvent.snap]: CanvasState.paused,
 		},
 	},
 	controls: {

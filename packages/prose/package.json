@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/prose",
 	"name": "@fat-fuzzy/prose",
-	"version": "0.1.16",
+	"version": "0.1.17",
 	"description": "UI for writing and reading using markdown",
 	"author": "Patricia Boh",
 	"license": "MIT",
@@ -57,14 +57,14 @@
 		"@sveltejs/vite-plugin-svelte": "^6.1.0",
 		"@tiptap/core": "^3.0.7",
 		"@tiptap/pm": "^3.0.7",
-		"@tiptap/starter-kit": "^3.0.7",
+		"@tiptap/starter-kit": "^3.0.8",
 		"@types/eslint": "^9.6.1",
 		"globals": "^16.3.0",
 		"mdsvex": "^0.12.6",
 		"publint": "^0.3.12",
 		"svelte": "^5.37.0",
 		"svelte-check": "^4.3.0",
-		"typescript": "^5.8.3",
+		"typescript": "^5.9.2",
 		"vite": "^7.0.6",
 		"vitest": "^3.2.4"
 	}

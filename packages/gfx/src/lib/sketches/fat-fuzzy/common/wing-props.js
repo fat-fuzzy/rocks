@@ -93,8 +93,10 @@ const WINGS = {
 	},
 	base1: {
 		wingClass: wings.base1,
+		collection: 'wing-base',
 		options: {
 			name: 'base1',
+			group: 'seed',
 			position: [0, 0],
 			translation: [0.905, 0.625],
 			scale: [2.25, 2.25],
@@ -103,8 +105,10 @@ const WINGS = {
 	},
 	base2: {
 		wingClass: wings.base2,
+		collection: 'wing-base',
 		options: {
 			name: 'base2',
+			group: 'seed',
 			position: [0, 0],
 			translation: [0.905, 0.625],
 			scale: [2.25, 2.25],
@@ -113,8 +117,10 @@ const WINGS = {
 	},
 	base3: {
 		wingClass: wings.base3,
+		collection: 'wing-base',
 		options: {
 			name: 'base3',
+			group: 'seed',
 			position: [0, 0],
 			translation: [0.905, 0.625],
 			scale: [2.25, 2.25],
@@ -123,8 +129,10 @@ const WINGS = {
 	},
 	ws01: {
 		wingClass: wings.ws01,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws01',
+			group: 'ether',
 			position: [0, 0],
 			translation: [0.75, 0.0275],
 			scale: [0.1, 0.1],
@@ -133,8 +141,10 @@ const WINGS = {
 	},
 	ws02: {
 		wingClass: wings.ws02,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws02',
+			group: 'blade',
 			position: [0, 0],
 			translation: [0.635, 0.565],
 			scale: [0.7925, 0.7925],
@@ -143,8 +153,10 @@ const WINGS = {
 	},
 	ws03: {
 		wingClass: wings.ws03,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws03',
+			group: 'blade',
 			position: [0, 0],
 			translation: [0.775, 0.55],
 			scale: [1.1, 1.1],
@@ -153,8 +165,10 @@ const WINGS = {
 	},
 	ws04: {
 		wingClass: wings.ws04,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws04',
+			group: 'antinomy',
 			position: [0, 0],
 			translation: [0.495, 0.275],
 			scale: [0.775, 0.775],
@@ -163,8 +177,10 @@ const WINGS = {
 	},
 	ws05: {
 		wingClass: wings.ws05,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws05',
+			group: 'flora',
 			position: [0, 0],
 			translation: [0.805, 0.535],
 			scale: [1.275, 1.275],
@@ -173,8 +189,10 @@ const WINGS = {
 	},
 	ws06: {
 		wingClass: wings.ws06,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws06',
+			group: 'adamant',
 			position: [0, 0],
 			translation: [0.895, 0.535],
 			scale: [0.775, 0.775],
@@ -183,18 +201,22 @@ const WINGS = {
 	},
 	ws07: {
 		wingClass: wings.ws07,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws07',
+			group: 'antinomy',
 			position: [0, 0],
-			translation: [0.835, 0.475],
-			scale: [0.745, 0.745],
+			translation: [0.825, 0.475],
+			scale: [0.715, 0.715],
 			rotation: utils.degToRad(0),
 		},
 	},
 	ws08: {
 		wingClass: wings.ws08,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws08',
+			group: 'adamant',
 			position: [0, 0],
 			translation: [0.935, 0.53],
 			scale: [0.8, 0.8],
@@ -203,8 +225,10 @@ const WINGS = {
 	},
 	ws09: {
 		wingClass: wings.ws09,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws09',
+			group: 'orbital',
 			position: [0, 0],
 			translation: [0.565, 0.525],
 			scale: [0.845, 0.845],
@@ -213,8 +237,10 @@ const WINGS = {
 	},
 	ws10: {
 		wingClass: wings.ws10,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws10',
+			group: 'blade',
 			position: [0, 0],
 			translation: [0.71, 0.55],
 			scale: [0.615, 0.615],
@@ -223,8 +249,10 @@ const WINGS = {
 	},
 	ws11: {
 		wingClass: wings.ws11,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws11',
+			group: 'ether',
 			position: [0, 0],
 			translation: [0.375, 0.715],
 			scale: [0.325, 0.325],
@@ -233,8 +261,10 @@ const WINGS = {
 	},
 	ws12: {
 		wingClass: wings.ws12,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws12',
+			group: 'sail',
 			position: [0, 0],
 			translation: [0.925, 0.595],
 			scale: [0.875, 0.875],
@@ -243,28 +273,34 @@ const WINGS = {
 	},
 	ws13: {
 		wingClass: wings.ws13,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws13',
+			group: 'sail',
 			position: [0, 0],
 			translation: [0.925, 0.655],
-			scale: [0.555, 0.555],
+			scale: [0.545, 0.545],
 			rotation: utils.degToRad(0),
 		},
 	},
 	ws14: {
 		wingClass: wings.ws14,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws14',
+			group: 'sail',
 			position: [0, 0],
-			translation: [0.925, 0.655],
-			scale: [0.526, 0.526],
+			translation: [0.905, 0.655],
+			scale: [0.535, 0.535],
 			rotation: utils.degToRad(0),
 		},
 	},
 	ws15: {
 		wingClass: wings.ws15,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws15',
+			group: 'blade',
 			position: [0, 0],
 			translation: [0.6375, 0.465],
 			scale: [1.215, 1.215],
@@ -273,8 +309,10 @@ const WINGS = {
 	},
 	ws16: {
 		wingClass: wings.ws16,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws16',
+			group: 'flora',
 			position: [0, 0],
 			translation: [0.635, 0.45],
 			scale: [1.15, 1.15],
@@ -283,12 +321,98 @@ const WINGS = {
 	},
 	ws17: {
 		wingClass: wings.ws17,
+		collection: 'wabi-sabi',
 		options: {
 			name: 'ws17',
+			group: 'orbital',
 			position: [0, 0],
 			translation: [0.5025, 0.5075],
 			scale: [0.585, 0.585],
-			rotation: utils.degToRad(48.75),
+			rotation: utils.degToRad(52.65),
+		},
+	},
+	ws18: {
+		wingClass: wings.ws18,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws18',
+			group: 'orbital',
+			position: [0, 0],
+			translation: [0.55, 0.525],
+			scale: [0.825, 0.825],
+			rotation: utils.degToRad(48.65),
+		},
+	},
+	ws19: {
+		wingClass: wings.ws19,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws19',
+			group: 'antinomy',
+			position: [0, 0],
+			translation: [0.825, 0.475],
+			scale: [0.685, 0.685],
+			rotation: utils.degToRad(0),
+		},
+	},
+	ws20: {
+		wingClass: wings.ws20,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws20',
+			group: 'flora',
+			position: [0, 0],
+			translation: [0.625, 0.505],
+			scale: [0.825, 0.825],
+			rotation: utils.degToRad(36.75),
+		},
+	},
+	ws21: {
+		wingClass: wings.ws21,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws21',
+			group: 'ether',
+			position: [0, 0],
+			translation: [0.8, 0.415],
+			scale: [0.0675, 0.0675],
+			rotation: utils.degToRad(58),
+		},
+	},
+	ws22: {
+		wingClass: wings.ws22,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws22',
+			group: 'adamant',
+			position: [0, 0],
+			translation: [0.875, 0.575],
+			scale: [0.735, 0.735],
+			rotation: utils.degToRad(5),
+		},
+	},
+	ws23: {
+		wingClass: wings.ws23,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws23',
+			group: 'antinomy',
+			position: [0, 0],
+			translation: [0.7205, 0.51],
+			scale: [0.4575, 0.4575],
+			rotation: utils.degToRad(-12),
+		},
+	},
+	ws24: {
+		wingClass: wings.ws24,
+		collection: 'wabi-sabi',
+		options: {
+			name: 'ws24',
+			group: 'orbital',
+			position: [0, 0],
+			translation: [0.505, 0.505],
+			scale: [0.125, 0.125],
+			rotation: utils.degToRad(17.25),
 		},
 	},
 }
@@ -338,4 +462,87 @@ function createWing(wingName, canvas) {
 	return wing
 }
 
-export {createWing}
+/**
+ *
+ * @param {*} collection
+ * @param {*} orderedBy name, group, random
+ * @returns
+ */
+function generateWingsGrid(collection, orderedBy = 'random') {
+	const wingGroups = new Map()
+
+	let wingsTotal = 0
+	const grid = []
+
+	Object.values(WINGS).forEach((wing) => {
+		if (collection && wing.collection !== collection) {
+			return
+		}
+		if (orderedBy === 'name') {
+			grid.push(wing.options.name)
+			return
+		}
+		const groupName = wing.options.group
+		if (!wingGroups.has(groupName)) {
+			wingGroups.set(groupName, [])
+		}
+		wingGroups.get(groupName).push(wing)
+		wingsTotal++
+	})
+
+	if (orderedBy === 'name') {
+		return grid.sort((a, b) => b - a)
+	}
+
+	// TODO: order by group, or randomize
+	let lastGroupName = null
+
+	// const totalGroups = Array.from(wingGroups.entries())
+	// 	.filter((group) => group.length > 0)
+	// 	.sort(([, a], [, b]) => b.length - a.length)
+
+	// console.log(
+	// 	`Remaining groups: ${totalGroups.map((g) => `${g[0]} (${g[1].length})`).join(', ')}`,
+	// )
+
+	while (grid.length < wingsTotal) {
+		const sortedGroups = Array.from(wingGroups.entries())
+			.filter((group) => group.length > 0)
+			.sort(([, a], [, b]) => b.length - a.length)
+
+		if (sortedGroups.length === 0) {
+			break
+		}
+
+		// Select from largest group different from the last group
+		let selectedGroup
+		const largestGroup = sortedGroups[0]
+		const secondLargestGroup = sortedGroups.length > 1 ? sortedGroups[1] : null
+
+		if (largestGroup[0] !== lastGroupName) {
+			selectedGroup = largestGroup
+		} else {
+			selectedGroup = secondLargestGroup
+		}
+
+		if (!selectedGroup) {
+			console.warn(`No group found for selection`)
+			break
+		}
+
+		const [groupName, groupWings] = selectedGroup
+
+		// 4. Pick a random wing from the chosen group
+		const wingIndex = utils.randomInt(groupWings.length - 1)
+		const [wing] = groupWings.splice(wingIndex, 1)
+		wingGroups.set(groupName, groupWings)
+
+		grid.push(wing.options.name)
+
+		lastGroupName = groupName
+	}
+
+	return grid
+}
+
+export {createWing, generateWingsGrid}

@@ -5,7 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
-import {createWing} from '../common/wing-props'
+import {createWing, generateWingsGrid} from '../common/wing-props'
 import setup from '../../../webgl/setup'
 import {drawScene} from '../common/draw-wing'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
@@ -32,29 +32,10 @@ let meta = {
 	asset: 'phoenix',
 	background: 'dark',
 	dimensions: 'rect-xs',
-	// status: 'draft',
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
-	grid: [
-		'ws01',
-		'ws02',
-		'ws03',
-		'ws04',
-		'ws05',
-		'ws06',
-		'ws07',
-		'ws08',
-		'ws09',
-		'ws10',
-		'ws11',
-		'ws12',
-		'ws13',
-		'ws14',
-		'ws15',
-		'ws16',
-		'ws17',
-	],
+	grid: generateWingsGrid('wabi-sabi'),
 }
 let currentWing
 let wingName = meta.grid[0]
@@ -175,6 +156,8 @@ function stop() {
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 	currentWing = null
+
+	meta.grid = generateWingsGrid('wabi-sabi')
 	wingName = meta.grid[0]
 }
 

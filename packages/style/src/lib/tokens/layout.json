@@ -198,10 +198,10 @@
 				"$value": "calc(40vh - 2 * var(--ui-size))"
 			},
 			"md": {
-				"$value": "calc(60vh - 2 * var(--ui-size))"
+				"$value": "calc(64vh - 2 * var(--ui-size))"
 			},
 			"lg": {
-				"$value": "calc(80vh - 2 * var(--ui-size))"
+				"$value": "calc(76vh - 2 * var(--ui-size))"
 			},
 			"xl": {
 				"$value": "calc(100vh - var(--ui-header-height) - 2 * var(--ui-size) - var(--outline-offset-lg))"

@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/gfx",
 	"name": "@fat-fuzzy/gfx",
-	"version": "0.1.8",
+	"version": "0.1.9",
 	"description": "Fat Fuzzy Graphics Libraries",
 	"main": "package/index.cjs.js",
 	"module": "package/index.esm.js",
@@ -28,7 +28,7 @@
 		"@rollup/plugin-terser": "^0.4.4",
 		"rollup": "^4.46.2",
 		"tslib": "^2.8.1",
-		"typescript": "^5.8.3"
+		"typescript": "^5.9.2"
 	},
 	"type": "module",
 	"files": [

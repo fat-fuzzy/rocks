@@ -1,5 +1,11 @@
 # @fat-fuzzy/intl
 
+## 0.1.7
+
+### Patch Changes
+
+- Enable snapshot, add new Wings, cleanup
+
 ## 0.1.6
 
 ### Patch Changes
