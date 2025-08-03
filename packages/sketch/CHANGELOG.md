@@ -1,5 +1,15 @@
 # @fat-fuzzy/sketch
 
+## 0.1.24
+
+### Patch Changes
+
+- Enable snapshot, add new Wings, cleanup
+- Updated dependencies
+  - @fat-fuzzy/style@0.1.19
+  - @fat-fuzzy/gfx@0.1.9
+  - @fat-fuzzy/ui@0.1.71
+
 ## 0.1.23
 
 ### Patch Changes
