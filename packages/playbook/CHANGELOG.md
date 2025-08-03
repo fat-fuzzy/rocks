@@ -1,5 +1,13 @@
 # @fat-fuzzy/playbook
 
+## 0.1.23
+
+### Patch Changes
+
+- Updated dependencies
+  - @fat-fuzzy/style@0.1.19
+  - @fat-fuzzy/ui@0.1.71
+
 ## 0.1.22
 
 ### Patch Changes
