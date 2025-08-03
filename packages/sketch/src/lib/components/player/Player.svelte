@@ -90,7 +90,7 @@
 
 	function saveBlob() {
 		return function saveData(blob: Blob, canvas: HTMLCanvasElement) {
-			blobUrl = window.URL.createObjectURL(blob)
+			blobUrl = URL.createObjectURL(blob)
 			blobName = `snap-${canvas.width}x${canvas.height}-${Date.now()}`
 		}
 	}
