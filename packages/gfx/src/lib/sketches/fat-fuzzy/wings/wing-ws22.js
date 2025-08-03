@@ -1,7 +1,7 @@
 import vectors from '../../../math/vectors.js'
 import Wing from './wing.js'
 
-export default class WabiSabi06 extends Wing {
+export default class WabiSabi22 extends Wing {
 	/**
 	 * @param {Object} wingOptions (see ./wing.js)
 	 */
@@ -35,13 +35,13 @@ export default class WabiSabi06 extends Wing {
 			featherVectors.push(x, y)
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
-				y,
+				this.scaleMagnitude(y * 3),
 				insertionDistance,
 				magnitude,
 			)
 
-			featherVectors.push(x, y)
 			featherVectors.push(x + insertionOrigin[0], y + insertionOrigin[1])
+			featherVectors.push(x, y)
 			let insertionDest = vectors.getCoordsFromMagAndAngle(
 				featherMagnitude + this.scaleMagnitude(step * 10),
 				featherAngle - angle,

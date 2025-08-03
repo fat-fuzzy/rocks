@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
+
 	import ui from '@fat-fuzzy/ui'
 	import actor from './actor.svelte'
 	import type {PlayerProps} from '$types'
@@ -17,6 +18,7 @@
 		pause,
 		clear,
 		stop,
+		snap,
 		init,
 	}: PlayerProps = $props()
 
@@ -93,6 +95,23 @@
 				disabled={actor.getClearDisabled()}
 			>
 				clear
+			</Button>
+		</li>
+		<li>
+			<Button
+				id="snap"
+				name="snap"
+				color="neutral"
+				{variant}
+				{size}
+				{font}
+				shape="pill w:full"
+				value="snap"
+				asset="snap"
+				onclick={snap}
+				disabled={actor.getSnapDisabled()}
+			>
+				snap
 			</Button>
 		</li>
 		<li>

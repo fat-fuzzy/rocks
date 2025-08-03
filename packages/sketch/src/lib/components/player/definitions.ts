@@ -35,11 +35,13 @@ export const PLAYER_ACTIONS: PlayerActionsType = {
 		PlayerAction.pause,
 		PlayerAction.stop,
 		PlayerAction.clear,
+		PlayerAction.snap,
 	],
 	[PlayerState.paused]: [
 		PlayerAction.play,
 		PlayerAction.stop,
 		PlayerAction.clear,
+		PlayerAction.snap,
 	],
 	[PlayerState.stopped]: [PlayerAction.play],
 }
@@ -52,10 +54,12 @@ export const PLAYER_TRANSITIONS: PlayerTransitionsType = {
 		[PlayerEvent.pause]: PlayerState.paused,
 		[PlayerEvent.stop]: PlayerState.idle,
 		[PlayerEvent.clear]: PlayerState.playing,
+		[PlayerEvent.snap]: PlayerState.playing,
 	},
 	[PlayerState.paused]: {
 		[PlayerEvent.play]: PlayerState.playing,
 		[PlayerEvent.stop]: PlayerState.idle,
 		[PlayerEvent.clear]: PlayerState.paused,
+		[PlayerEvent.snap]: PlayerState.paused,
 	},
 }

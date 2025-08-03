@@ -56,10 +56,12 @@ class PlayerActor {
 		return this.feedback
 	}
 
+	// TODO:Fix this method to return the correct type
 	public getCurrentEvent(): string {
 		return this.events.current
 	}
 
+	// TODO:Fix this method to return the correct type
 	public getPreviousEvent(): string {
 		return this.events.previous
 	}
@@ -82,6 +84,11 @@ class PlayerActor {
 		return actions?.includes(PlayerAction.clear) ? undefined : true
 	}
 
+	public getSnapDisabled(): boolean | undefined {
+		const actions = this.actions[this.state]
+		return actions?.includes(PlayerAction.snap) ? undefined : true
+	}
+
 	public getTransition(event: PlayerEvent): PlayerState {
 		const transition = this.transitions[this.state]
 		if (transition) {
@@ -90,6 +97,7 @@ class PlayerActor {
 		return this.state
 	}
 
+	// TODO:Fix this method to update events correctly + Add tests
 	public update(event: PlayerEvent): void {
 		this.state = this.getTransition(event)
 		this.events.previous = this.events.current

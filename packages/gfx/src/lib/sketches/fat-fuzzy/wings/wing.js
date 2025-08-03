@@ -3,6 +3,7 @@ import vectors from '../../../math/vectors'
 
 export default class Wing {
 	name
+	group
 	// Context
 	position
 	translation
@@ -39,9 +40,12 @@ export default class Wing {
 	angles
 
 	/**
-	 * @param {*} wing state = {
+	 * @param {*} wingOptions = {
 			name: string,
 			position: number[],
+			translation: number[],
+			scale: number[],
+			rotation: number[],
 			direction: number,
 			step: number,
 			layers: number,
@@ -49,10 +53,15 @@ export default class Wing {
 			pause: number,
 			bones: { magnitude: number[], beginning: number[], middle: number[], end: number[] },
 			feathers: { sections: { featherCount: number, beginning: number, middle: number, end: number }[] },
+			colors, // colors functions
+			drawFeathers: boolean,
+			canvasWidth,
+			canvasHeight,
 		}
 	 */
 	constructor({
 		name,
+		group,
 		position,
 		translation,
 		scale,
@@ -70,6 +79,7 @@ export default class Wing {
 		canvasHeight,
 	}) {
 		this.name = name
+		this.group = group
 		// Context
 		this.position = position
 		this.scale = scale
@@ -298,7 +308,7 @@ export default class Wing {
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 
-		let distance = magnitude / featherCount
+		let distance = magnitude / this.scaleMagnitude(featherCount)
 
 		let bone = this.currentStep + 1
 		for (let step = 0; step < featherCount; step++) {
