@@ -1,4 +1,4 @@
-import type {Formatter, Errors} from '$types'
+import type {Formatter, ErrorMessages} from '$types'
 import {Locale} from '../types/enums.js'
 import errors_en from './en/ui-form-errors.js'
 import labels_en from './en/ui-form-labels.js'
@@ -25,7 +25,7 @@ class L10nFormatter implements Formatter {
 	}
 
 	getError(
-		messages: Errors,
+		messages: ErrorMessages,
 		key: string,
 		...args: (string | number)[]
 	): string {
