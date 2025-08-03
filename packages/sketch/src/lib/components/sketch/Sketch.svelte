@@ -55,6 +55,12 @@
 	let time: number
 	let resetEvent = $state(0)
 
+	// Snapshot related variables
+	let blobLink: HTMLAnchorElement | undefined = $state(undefined)
+	let blobUrl: string | undefined = $state(undefined)
+	let blobName: string | undefined = $state(undefined)
+	let downloadSnap = $derived(actor.getCurrentEvent() === PlayerEvent.snap)
+
 	let currentAsset = $derived(
 		actor.state.canvas === CanvasState.idle && asset
 			? `emoji:${asset}`
@@ -194,9 +200,11 @@
 				pause()
 				break
 			case 'clear':
+				clearBlob()
 				clear()
 				break
 			case 'stop':
+				clearBlob()
 				stop()
 				break
 		}
@@ -227,6 +235,53 @@
 		}
 	}
 
+	function takeSnapshot() {
+		clearBlob()
+
+		if (canvas) {
+			canvas.toBlob(
+				(blob: Blob | null) => {
+					if (blob && canvas) {
+						saveBlob()(blob, canvas)
+					}
+				},
+				'image/jpeg',
+				1,
+			)
+		}
+		actor.update(PlayerEvent.snap)
+		downloadSnap = true // TODO: this should be handled by the actor
+	}
+
+	function saveBlob() {
+		// This will timestamp the snapshot with the current date and time (UTC)
+		// TODO:  make intl helpers for L10n (mote to @fat-fuzzy/intl	)
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatToParts
+		const date = new Date(Date.now())
+		const dateString = new Intl.DateTimeFormat([], {
+			dateStyle: 'short',
+		})
+			.formatToParts(date)
+			.filter((part) => part.type !== 'literal')
+			.reverse()
+			.map((part) => part.value)
+			.join('-')
+
+		return function saveData(blob: Blob, canvas: HTMLCanvasElement) {
+			blobUrl = URL.createObjectURL(blob)
+			blobName = `snap-${dateString}-${canvas.width}x${canvas.height}`
+		}
+	}
+
+	function clearBlob() {
+		if (blobUrl) {
+			// If a snapshot was taken, revoke the URL to free memory
+			URL.revokeObjectURL(blobUrl)
+			blobUrl = undefined
+			blobName = undefined
+		}
+	}
+
 	onMount(async () => {
 		try {
 			await init()
@@ -239,6 +294,7 @@
 	onDestroy(() => {
 		try {
 			if (scene) stop()
+			clearBlob()
 		} catch (e: unknown) {
 			actor.feedback.sketch.push({status: 'error', message: e as string})
 			actor.update(SketchEvent.exitNok)
@@ -302,7 +358,7 @@
 	{/snippet}
 
 	{#snippet aside()}
-		<div class="maki:block w:full raviolink">
+		<div class="maki:block l:stack:xs w:full raviolink">
 			{#if canvas}
 				<Player
 					{canvas}
@@ -310,6 +366,7 @@
 					pause={updateCanvas}
 					clear={updateCanvas}
 					stop={updateCanvas}
+					snap={takeSnapshot}
 					initial={actor.getPlayButtonState()}
 					{color}
 					size="2xs"
@@ -318,6 +375,18 @@
 					disabled={actor.hasError() ?? undefined}
 					{init}
 				/>
+				<div class="w:full text:center">
+					{#if blobUrl && blobName && downloadSnap}
+						<a
+							bind:this={blobLink}
+							href={blobUrl}
+							download={blobName}
+							class="font:xs raviolink"
+						>
+							Download snapshot
+						</a>
+					{/if}
+				</div>
 				{#if meta && actor.getState('sketch') === 'active' && actor.getIsInteractive()}
 					{#if sceneContext.geometry && meta.controls.includes('matrix-2d')}
 						<Geometry2D

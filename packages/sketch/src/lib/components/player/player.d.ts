@@ -55,4 +55,5 @@ export type PlayerProps = {
 	clear: (payload: {event: PlayerEvent}) => void
 	stop: (payload: {event: PlayerEvent}) => void
 	init?: (payload: {event: PlayerEvent}) => void
+	snap?: (payload: {event: PlayerEvent}) => void
 }
