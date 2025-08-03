@@ -490,8 +490,20 @@ function generateWingsGrid(collection, orderedBy = 'random') {
 		wingsTotal++
 	})
 
-	const grid = []
+	if (orderedBy === 'name') {
+		return grid.sort((a, b) => b - a)
+	}
+
+	// TODO: order by group, or randomize
 	let lastGroupName = null
+
+	// const totalGroups = Array.from(wingGroups.entries())
+	// 	.filter((group) => group.length > 0)
+	// 	.sort(([, a], [, b]) => b.length - a.length)
+
+	// console.log(
+	// 	`Remaining groups: ${totalGroups.map((g) => `${g[0]} (${g[1].length})`).join(', ')}`,
+	// )
 
 	while (grid.length < wingsTotal) {
 		const sortedGroups = Array.from(wingGroups.entries())
