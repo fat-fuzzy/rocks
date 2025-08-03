@@ -206,8 +206,8 @@ const WINGS = {
 			name: 'ws07',
 			group: 'antinomy',
 			position: [0, 0],
-			translation: [0.835, 0.475],
-			scale: [0.745, 0.745],
+			translation: [0.825, 0.475],
+			scale: [0.715, 0.715],
 			rotation: utils.degToRad(0),
 		},
 	},
@@ -290,8 +290,8 @@ const WINGS = {
 			name: 'ws14',
 			group: 'sail',
 			position: [0, 0],
-			translation: [0.925, 0.655],
-			scale: [0.525, 0.525],
+			translation: [0.905, 0.655],
+			scale: [0.535, 0.535],
 			rotation: utils.degToRad(0),
 		},
 	},
@@ -328,7 +328,7 @@ const WINGS = {
 			position: [0, 0],
 			translation: [0.5025, 0.5075],
 			scale: [0.585, 0.585],
-			rotation: utils.degToRad(48.75),
+			rotation: utils.degToRad(52.65),
 		},
 	},
 	ws18: {
@@ -338,9 +338,9 @@ const WINGS = {
 			name: 'ws18',
 			group: 'orbital',
 			position: [0, 0],
-			translation: [0.63, 0.465],
-			scale: [1.22, 1.22],
-			rotation: utils.degToRad(48.75),
+			translation: [0.55, 0.525],
+			scale: [0.825, 0.825],
+			rotation: utils.degToRad(48.65),
 		},
 	},
 	ws19: {
@@ -350,8 +350,8 @@ const WINGS = {
 			name: 'ws19',
 			group: 'antinomy',
 			position: [0, 0],
-			translation: [0.805, 0.475],
-			scale: [0.725, 0.725],
+			translation: [0.825, 0.475],
+			scale: [0.685, 0.685],
 			rotation: utils.degToRad(0),
 		},
 	},
@@ -362,9 +362,9 @@ const WINGS = {
 			name: 'ws20',
 			group: 'flora',
 			position: [0, 0],
-			translation: [0.585, 0.505],
-			scale: [0.8725, 0.8725],
-			rotation: utils.degToRad(40.75),
+			translation: [0.625, 0.505],
+			scale: [0.825, 0.825],
+			rotation: utils.degToRad(36.75),
 		},
 	},
 	ws21: {
@@ -374,9 +374,9 @@ const WINGS = {
 			name: 'ws21',
 			group: 'ether',
 			position: [0, 0],
-			translation: [0.82775, 0.475],
-			scale: [0.105, 0.105],
-			rotation: utils.degToRad(50),
+			translation: [0.8, 0.415],
+			scale: [0.0675, 0.0675],
+			rotation: utils.degToRad(58),
 		},
 	},
 	ws22: {
@@ -386,8 +386,8 @@ const WINGS = {
 			name: 'ws22',
 			group: 'adamant',
 			position: [0, 0],
-			translation: [0.895, 0.575],
-			scale: [0.775, 0.775],
+			translation: [0.875, 0.575],
+			scale: [0.735, 0.735],
 			rotation: utils.degToRad(5),
 		},
 	},
@@ -410,8 +410,8 @@ const WINGS = {
 			name: 'ws24',
 			group: 'orbital',
 			position: [0, 0],
-			translation: [0.53, 0.515],
-			scale: [0.1825, 0.1825],
+			translation: [0.505, 0.505],
+			scale: [0.125, 0.125],
 			rotation: utils.degToRad(17.25),
 		},
 	},
@@ -462,13 +462,24 @@ function createWing(wingName, canvas) {
 	return wing
 }
 
-function generateWingsGrid(collection) {
+/**
+ *
+ * @param {*} collection
+ * @param {*} orderedBy name, group, random
+ * @returns
+ */
+function generateWingsGrid(collection, orderedBy = 'random') {
 	const wingGroups = new Map()
 
 	let wingsTotal = 0
+	const grid = []
 
 	Object.values(WINGS).forEach((wing) => {
 		if (collection && wing.collection !== collection) {
+			return
+		}
+		if (orderedBy === 'name') {
+			grid.push(wing.options.name)
 			return
 		}
 		const groupName = wing.options.group
