@@ -233,8 +233,8 @@
   --outline-offset-xs: 1.5px;
   --overlay-height-2xs: calc(20vh - 2 * var(--ui-size));
   --overlay-height-3xs: calc(14vh - 2 * var(--ui-size));
-  --overlay-height-lg: calc(80vh - 2 * var(--ui-size));
-  --overlay-height-md: calc(60vh - 2 * var(--ui-size));
+  --overlay-height-lg: calc(76vh - 2 * var(--ui-size));
+  --overlay-height-md: calc(64vh - 2 * var(--ui-size));
   --overlay-height-sm: calc(40vh - 2 * var(--ui-size));
   --overlay-height-xl: calc(100vh - var(--ui-header-height) - 2 * var(--ui-size) - var(--outline-offset-lg));
   --overlay-height-xs: calc(30vh - 2 * var(--ui-size));
