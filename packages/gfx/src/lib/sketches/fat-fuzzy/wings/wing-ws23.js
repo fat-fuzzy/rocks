@@ -28,13 +28,10 @@ export default class WabiSabi23 extends Wing {
 		let featherAngle = featherAngles[this.currentStep]
 
 		let distance = magnitude / featherCount
-		// console.log('featherCount', featherCount)
-		// console.log('distance', distance)
-		// console.log('magnitude', magnitude)
 
 		for (let step = 0; step < featherCount; step++) {
 			insertionDistance = distance * step
-			// Save current coordinate system
+
 			if (this.currentStep === 1) {
 				featherAngle = utils.degToRad(
 					this.magnitudes.feathers[this.currentStep].beginning,
@@ -51,7 +48,6 @@ export default class WabiSabi23 extends Wing {
 				)
 			}
 
-			// console.log('featherAngle', featherAngle)
 			insertionOrigin = vectors.getIntersectionPoint(
 				x,
 				y,

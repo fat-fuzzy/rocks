@@ -26,7 +26,8 @@ export default class WingBase02 extends Wing {
 		let featherAngles = this.angles.feathers[this.currentTime]
 		let featherAngle = featherAngles[this.currentStep]
 
-		let distance = magnitude / featherCount
+		let distance = magnitude / this.scaleMagnitude(featherCount)
+
 		let unit = vectors.getUnitVector(x, y, magnitude)
 		featherVectors.push(x, y)
 
