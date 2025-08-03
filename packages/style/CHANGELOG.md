@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.20
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+
 ## 0.1.19
 
 ### Patch Changes
