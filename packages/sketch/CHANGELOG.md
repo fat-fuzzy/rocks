@@ -1,5 +1,16 @@
 # @fat-fuzzy/sketch
 
+## 0.1.25
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+- Updated dependencies [b5af28e]
+  - @fat-fuzzy/config@0.1.15
+  - @fat-fuzzy/style@0.1.20
+  - @fat-fuzzy/gfx@0.1.10
+  - @fat-fuzzy/ui@0.1.72
+
 ## 0.1.24
 
 ### Patch Changes
