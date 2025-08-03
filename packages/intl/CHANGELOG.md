@@ -1,5 +1,13 @@
 # @fat-fuzzy/intl
 
+## 0.1.8
+
+### Patch Changes
+
+- b5af28e: Update dependencies
+- Updated dependencies [b5af28e]
+  - @fat-fuzzy/config@0.1.15
+
 ## 0.1.7
 
 ### Patch Changes
