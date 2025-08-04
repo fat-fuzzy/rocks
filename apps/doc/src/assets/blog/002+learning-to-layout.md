@@ -66,7 +66,7 @@ The latter are elements of design that tend to have a shorter shelf life than th
 
 ## Investing in your UI
 
-Like cherry blossoms: we are fascinated when they arrive and are charmed by their beauty. But they are ephemeral: it is the trunk and the branches that will take the tree through the winter so that the next generation of flowers can bloom and bear fruit again in the spring.
+Like cherry blossoms: we are fascinated with new styling trends when they arrive and are charmed by their beauty. But they are ephemeral: it is the trunk and the branches that will take the tree through the winter so that the next generation of flowers can bloom and bear fruit again in the spring.
 
 So: when we plan and code UI, we need to invest in the trees: your layout is the trunk from which the branches of your page will grow, so that your content can blossom on top and bear its fruit for all to enjoy.
 
