@@ -40,6 +40,11 @@
 		layout="metro"
 	>
 		{#snippet main()}
+			<p
+				class="feedback:prose status:default bg:default:100 size:md variant:bare maki:block l:text:md"
+			>
+				<span class="font:sm">{description}</span>
+			</p>
 			<EscapeHtml id={slug} {html} size="md" />
 		{/snippet}
 		{#snippet aside()}
