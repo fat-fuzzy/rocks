@@ -36,7 +36,7 @@
 		},
 		"@fat-fuzzy/ui#build": {
 			"dependsOn": [
-				"@fat-fuzzy/style#build:main"
+				"^@fat-fuzzy/style#build:main"
 			],
 			"outputs": [
 				".svelte-kit/**",
