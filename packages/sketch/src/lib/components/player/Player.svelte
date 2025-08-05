@@ -82,23 +82,6 @@
 		</li>
 		<li>
 			<Button
-				id="clear"
-				name="clear"
-				color="accent"
-				{variant}
-				{size}
-				{font}
-				shape="pill w:full"
-				value="clear"
-				asset="clear"
-				onclick={updatePlayer}
-				disabled={actor.getClearDisabled()}
-			>
-				clear
-			</Button>
-		</li>
-		<li>
-			<Button
 				id="snap"
 				name="snap"
 				color="neutral"
@@ -112,6 +95,23 @@
 				disabled={actor.getSnapDisabled()}
 			>
 				snap
+			</Button>
+		</li>
+		<li>
+			<Button
+				id="clear"
+				name="clear"
+				color="accent"
+				{variant}
+				{size}
+				{font}
+				shape="pill w:full"
+				value="clear"
+				asset="clear"
+				onclick={updatePlayer}
+				disabled={actor.getClearDisabled()}
+			>
+				clear
 			</Button>
 		</li>
 		<li>
@@ -133,3 +133,7 @@
 		</li>
 	</menu>
 </div>
+
+<style lang="scss">
+	@forward '../../styles/css/player.css';
+</style>

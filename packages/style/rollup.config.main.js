@@ -4,7 +4,6 @@ import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 import postcssBundler from '@csstools/postcss-bundler'
 import postcssGlobalData from '@csstools/postcss-global-data'
-import postcssJitProps from 'postcss-jit-props'
 import postcssMinify from '@csstools/postcss-minify'
 import postcssPresetEnv from 'postcss-preset-env'
 import path from 'node:path'
@@ -29,9 +28,6 @@ export default {
 			plugins: [
 				postcssBundler(),
 				postcssGlobalData({
-					files: [`${inDir}/css/base/tokens.css`],
-				}),
-				postcssJitProps({
 					files: [`${inDir}/css/base/tokens.css`],
 				}),
 				postcssPresetEnv(),

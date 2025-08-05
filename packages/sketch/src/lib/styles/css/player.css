@@ -1,0 +1,5 @@
+@media screen and (min-width: 1360px) {
+	.player {
+		gap: var(--ui-size-lg);
+	}
+}

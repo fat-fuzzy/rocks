@@ -109,3 +109,9 @@
 	background-color: var(--shade-focus);
 	outline-color: var(--color-border, var(--accent));
 }
+
+[class*='bg:'].color\:neutral.variant\:bare:focus,
+[class*='bg:'].color\:neutral.variant\:outline:focus {
+	outline-color: var(--color-border, var(--ink-focus));
+	border-color: var(--color-border, var(--ink-focus));
+}
