@@ -1,5 +1,6 @@
 import scss from 'rollup-plugin-scss'
 import path from 'node:path'
+import fs from 'node:fs'
 
 const inDir = path.resolve('src/lib/scss')
 const outDir = path.resolve('src/lib/css/mixins/')
@@ -12,6 +13,13 @@ export default {
 	plugins: [
 		scss({
 			fileName: 'index.css',
-		}), // will output compiled styles to "src/lib/css/mixins/main.css",
+		}), // will output compiled styles to "src/lib/css/mixins/main.css",,
+		{
+			name: 'create-index-js',
+			writeBundle() {
+				const cssImport = `import './main.css';\n`
+				fs.writeFileSync(path.join(outDir, 'index.js'), cssImport)
+			},
+		},
 	],
 }

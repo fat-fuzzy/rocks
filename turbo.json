@@ -34,17 +34,6 @@
 				"packages/style/dist/lib/**"
 			]
 		},
-		"@fat-fuzzy/ui#build": {
-			"dependsOn": [
-				"^@fat-fuzzy/style#build:main"
-			],
-			"outputs": [
-				".svelte-kit/**",
-				".wrangler/**",
-				"dist/**",
-				"package/**"
-			]
-		},
 		"test": {
 			"dependsOn": [
 				"^build",

@@ -7,6 +7,7 @@ import postcssGlobalData from '@csstools/postcss-global-data'
 import postcssMinify from '@csstools/postcss-minify'
 import postcssPresetEnv from 'postcss-preset-env'
 import path from 'node:path'
+import fs from 'node:fs'
 
 const production = process.env.NODE_ENV === 'production'
 const inDir = path.resolve('src/lib')
@@ -37,5 +38,13 @@ export default {
 			minimize: production,
 			sourceMap: !production,
 		}),
+		// This creates a index.js file (that Turborepo can detect ?)
+		{
+			name: 'create-index-js',
+			writeBundle() {
+				const cssImport = `import './main.css';\n`
+				fs.writeFileSync(path.join(outDir, 'index.js'), cssImport)
+			},
+		},
 	],
 }
