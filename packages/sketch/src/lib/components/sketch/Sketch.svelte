@@ -471,8 +471,6 @@
 	{/snippet}
 </PageRails>
 
-<!-- <article class="l:grid:sketch bp:xs size:sm media"></article> -->
-
 <style lang="scss">
 	@forward '../../styles/css/sketch.css';
 </style>
