@@ -11,10 +11,6 @@ const inDir = path.resolve('src/lib')
 const outDir = path.resolve('dist')
 const cssFiles = glob.sync('src/lib/css/**/*.css')
 
-// Always clean the dist folder before building.
-fs.rmSync(outDir, {recursive: true, force: true})
-fs.mkdirSync(outDir)
-
 /**
  * This config will preserve folder structure of source files (scss and css, not json) and output a css library in "dist/lib/"
  */
