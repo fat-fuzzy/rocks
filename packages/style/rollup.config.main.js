@@ -2,11 +2,11 @@ import scss from 'rollup-plugin-scss'
 import * as sass from 'sass'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-import postcssBundler from '@csstools/postcss-bundler'
-import postcssGlobalData from '@csstools/postcss-global-data'
-import postcssMinify from '@csstools/postcss-minify'
+import postcssImport from 'postcss-import'
+import cssnano from 'cssnano'
 import postcssPresetEnv from 'postcss-preset-env'
 import path from 'node:path'
+import fs from 'node:fs'
 
 const production = process.env.NODE_ENV === 'production'
 const inDir = path.resolve('src/lib')
@@ -25,17 +25,17 @@ export default {
 		}), // will output compiled styles to "dist/main.css",
 		postcss({
 			extract: true,
-			plugins: [
-				postcssBundler(),
-				postcssGlobalData({
-					files: [`${inDir}/css/base/tokens.css`],
-				}),
-				postcssPresetEnv(),
-				postcssMinify(),
-				autoprefixer(),
-			],
+			plugins: [postcssImport(), postcssPresetEnv(), autoprefixer(), cssnano()],
 			minimize: production,
 			sourceMap: !production,
 		}),
+		// This creates a index.js file (that Turborepo can detect ?)
+		{
+			name: 'create-index-js',
+			writeBundle() {
+				const cssImport = `import './main.css';\n`
+				fs.writeFileSync(path.join(outDir, 'index.js'), cssImport)
+			},
+		},
 	],
 }

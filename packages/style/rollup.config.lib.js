@@ -1,8 +1,9 @@
 import * as glob from 'glob'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
+import postcssPresetEnv from 'postcss-preset-env'
 import autoprefixer from 'autoprefixer'
-import postcssMinify from '@csstools/postcss-minify'
+import cssnano from 'cssnano'
 import fs from 'node:fs'
 import path from 'node:path'
 
@@ -10,10 +11,6 @@ const production = process.env.NODE_ENV === 'production'
 const inDir = path.resolve('src/lib')
 const outDir = path.resolve('dist')
 const cssFiles = glob.sync('src/lib/css/**/*.css')
-
-// Always clean the dist folder before building.
-fs.rmSync(outDir, {recursive: true, force: true})
-fs.mkdirSync(outDir)
 
 /**
  * This config will preserve folder structure of source files (scss and css, not json) and output a css library in "dist/lib/"
@@ -34,7 +31,7 @@ export default {
 		}),
 		postcss({
 			extract: true,
-			plugins: [postcssMinify(), autoprefixer()],
+			plugins: [postcssPresetEnv(), autoprefixer(), cssnano()],
 			minimize: production,
 			sourceMap: !production,
 		}),

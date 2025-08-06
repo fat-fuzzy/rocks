@@ -12,6 +12,28 @@
 				"package/**"
 			]
 		},
+		"@fat-fuzzy/style#build:scss": {
+			"outputs": [
+				"packages/style/src/lib/css/mixins/**"
+			],
+			"cache": false
+		},
+		"@fat-fuzzy/style#build:main": {
+			"dependsOn": [
+				"^@fat-fuzzy/style#build:scss"
+			],
+			"outputs": [
+				"packages/style/dist/**"
+			]
+		},
+		"@fat-fuzzy/style#build:lib": {
+			"dependsOn": [
+				"^@fat-fuzzy/style#build:scss"
+			],
+			"outputs": [
+				"packages/style/dist/lib/**"
+			]
+		},
 		"test": {
 			"dependsOn": [
 				"^build",
