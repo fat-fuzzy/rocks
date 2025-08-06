@@ -2,9 +2,8 @@ import scss from 'rollup-plugin-scss'
 import * as sass from 'sass'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-import postcssBundler from '@csstools/postcss-bundler'
-import postcssGlobalData from '@csstools/postcss-global-data'
-import postcssMinify from '@csstools/postcss-minify'
+import postcssImport from 'postcss-import'
+import cssnano from 'cssnano'
 import postcssPresetEnv from 'postcss-preset-env'
 import path from 'node:path'
 import fs from 'node:fs'
@@ -26,15 +25,7 @@ export default {
 		}), // will output compiled styles to "dist/main.css",
 		postcss({
 			extract: true,
-			plugins: [
-				postcssBundler(),
-				postcssGlobalData({
-					files: [`${inDir}/css/base/tokens.css`],
-				}),
-				postcssPresetEnv(),
-				autoprefixer(),
-				postcssMinify(),
-			],
+			plugins: [postcssImport(), postcssPresetEnv(), autoprefixer(), cssnano()],
 			minimize: production,
 			sourceMap: !production,
 		}),

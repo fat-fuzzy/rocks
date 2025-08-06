@@ -1,8 +1,9 @@
 import * as glob from 'glob'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
+import postcssPresetEnv from 'postcss-preset-env'
 import autoprefixer from 'autoprefixer'
-import postcssMinify from '@csstools/postcss-minify'
+import cssnano from 'cssnano'
 import fs from 'node:fs'
 import path from 'node:path'
 
@@ -30,7 +31,7 @@ export default {
 		}),
 		postcss({
 			extract: true,
-			plugins: [autoprefixer(), postcssMinify()],
+			plugins: [postcssPresetEnv(), autoprefixer(), cssnano()],
 			minimize: production,
 			sourceMap: !production,
 		}),
