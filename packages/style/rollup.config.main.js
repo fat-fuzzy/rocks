@@ -1,5 +1,4 @@
 import scss from 'rollup-plugin-scss'
-import * as sass from 'sass'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 import postcssImport from 'postcss-import'
@@ -21,7 +20,6 @@ export default {
 	plugins: [
 		scss({
 			fileName: 'main.css',
-			sass: sass,
 		}), // will output compiled styles to "dist/main.css",
 		postcss({
 			extract: true,
