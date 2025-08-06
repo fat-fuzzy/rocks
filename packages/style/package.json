@@ -8,7 +8,7 @@
 	"scripts": {
 		"clean": "node ./clean-dist.js",
 		"prebuild": "pnpm clean",
-		"build": "turbo run build:scss build:lib build:main",
+		"build": "turbo run build:scss build:main",
 		"build:all": "pnpm build:tokens && pnpm build",
 		"build:lib": "rollup --config rollup.config.lib.js",
 		"build:main": "rollup --config rollup.config.main.js",
@@ -30,14 +30,14 @@
 	"exports": {
 		".": "./dist/main.css",
 		"./css": "./dist/main.css",
-		"./css/blocks/*": "./dist/lib/css/blocks/*",
-		"./css/config/*": "./dist/lib/css/config/*",
-		"./css/globals/*": "./dist/lib/css/globals/*",
-		"./css/layouts/*": "./dist/lib/css/layouts/*",
-		"./css/mixins/*": "./dist/lib/css/mixins/*",
-		"./css/motion/*": "./dist/lib/css/motion/*",
-		"./css/recipes/*": "./dist/lib/css/recipes/*",
-		"./css/tokens/*": "./dist/lib/css/tokens/*"
+		"./css/blocks/*": "./src/lib/css/blocks/*",
+		"./css/config/*": "./src/lib/css/config/*",
+		"./css/globals/*": "./src/lib/css/globals/*",
+		"./css/layouts/*": "./src/lib/css/layouts/*",
+		"./css/mixins/*": "./src/lib/css/mixins/*",
+		"./css/motion/*": "./src/lib/css/motion/*",
+		"./css/recipes/*": "./src/lib/css/recipes/*",
+		"./css/tokens/*": "./src/lib/css/tokens/*"
 	},
 	"devDependencies": {
 		"@csstools/postcss-bundler": "^2.0.8",

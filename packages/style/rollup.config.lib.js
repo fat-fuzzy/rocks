@@ -30,7 +30,7 @@ export default {
 		}),
 		postcss({
 			extract: true,
-			plugins: [postcssMinify(), autoprefixer()],
+			plugins: [autoprefixer(), postcssMinify()],
 			minimize: production,
 			sourceMap: !production,
 		}),
