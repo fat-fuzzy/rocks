@@ -18,8 +18,9 @@ pre {
 	padding-block: var(--ui-size-lg);
 	border: var(--border-width-xl) solid var(--color-accent);
 	inline-size: auto;
-	max-inline-size: calc(100vw - 2 * var(--gap) - 2 * var(--border-width-lg));
+	max-inline-size: calc(100vw - 2 * var(--grid-gap, var(--gap)) - 2 * var(--border-width-lg));
 	overflow: auto;
+	margin-inline-start: var(--ui-size);
 }
 
 kbd {
@@ -48,6 +49,10 @@ pre[class*='feedback:'] {
 	background-color: var(--color-bg);
 	border: var(--border-width-xl) solid var(--color-accent);
 	max-inline-size: 100%;
+}
+
+pre[class*='feedback:']::before {
+	margin-inline-end: var(--ui-size);
 }
 
 pre[class*='feedback:'].variant\:fill {
