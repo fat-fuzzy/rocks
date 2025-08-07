@@ -1,5 +1,19 @@
+
+.player li  {
+	flex-basis: calc(
+		var(--sidebar-width) / 3 - var(--grid-gap)
+	);
+}
+
+.player li button {
+	inline-size: calc(
+		var(--sidebar-width) / 2 - var(--grid-gap) - var(--outline-offset-lg)
+	);
+	font-family: var(--font-family-heading);
+}
+
 @media screen and (min-width: 1360px) {
 	.player {
-		gap: var(--size-base-sm);
+		--grid-gap: var(--size-base-sm);
 	}
 }

@@ -471,6 +471,6 @@
 	{/snippet}
 </PageRails>
 
-<style lang="scss">
-	@forward '../../styles/css/sketch.css';
+<style>
+	@import '../../styles/css/sketch.css';
 </style>

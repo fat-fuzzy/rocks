@@ -7,14 +7,13 @@
 			],
 			"outputs": [
 				".svelte-kit/**",
-				".wrangler/**",
 				"dist/**",
 				"package/**"
 			]
 		},
 		"@fat-fuzzy/style#build:scss": {
 			"outputs": [
-				"packages/style/src/lib/css/mixins/**"
+				"src/lib/css/mixins/**"
 			],
 			"cache": false
 		},
@@ -23,7 +22,7 @@
 				"^@fat-fuzzy/style#build:scss"
 			],
 			"outputs": [
-				"packages/style/dist/**"
+				"dist/**"
 			]
 		},
 		"@fat-fuzzy/style#build:lib": {
@@ -31,7 +30,7 @@
 				"^@fat-fuzzy/style#build:scss"
 			],
 			"outputs": [
-				"packages/style/dist/lib/**"
+				"dist/lib/**"
 			]
 		},
 		"test": {

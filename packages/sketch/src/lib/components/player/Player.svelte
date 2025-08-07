@@ -134,6 +134,6 @@
 	</menu>
 </div>
 
-<style lang="scss">
-	@forward '../../styles/css/player.css';
+<style>
+	@import '../../styles/css/player.css';
 </style>
