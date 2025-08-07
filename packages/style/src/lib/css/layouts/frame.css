@@ -16,6 +16,13 @@
 	block-size: 100%;
 	inline-size: 100%;
 	max-inline-size: var(--max-inline-size, 100%);
+}
+
+[class*='l:frame'] > *:is(img, video, .content) {
+	object-fit: contain;
+}
+
+[class*='l:frame'] > canvas {
 	object-fit: cover;
 }
 
