@@ -95,9 +95,12 @@
 		<div>
 			<ul class="l:grid:auto size:sm text:start unstyled">
 				{#each componentNames as name, i (i)}
+					{@const href = isPage
+						? `${link}/${name}`
+						: `${link}/${category}/${name}`}
 					<li>
 						<a
-							href={`${link}/${name}`}
+							{href}
 							class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 						>
 							<svelte:element
@@ -115,6 +118,9 @@
 		<div class={collectionContainer}>
 			{#each componentNames as name, i (i)}
 				{@const SpecifiedElement = items[name]}
+				{@const href = isPage
+					? `${link}/${name}`
+					: `${link}/${category}/${name}`}
 				<article
 					id={`article-${title}-${name}`}
 					class={`variant:bare w:auto ui:${name.toLowerCase()}`}
@@ -124,7 +130,7 @@
 						class="link font:sm"
 					>
 						<a
-							href={`${link}/${name}`}
+							{href}
 							class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 						>
 							{name}
