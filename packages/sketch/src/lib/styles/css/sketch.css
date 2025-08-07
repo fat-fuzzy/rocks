@@ -73,6 +73,7 @@
 
 .scene,
 .debug {
+	inline-size: 100%;
 	max-inline-size: var(--max-inline-size, 100%);
 }
 
